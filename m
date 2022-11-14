@@ -1,177 +1,249 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2932409ejx;
-        Mon, 14 Nov 2022 08:18:14 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4yT46mjHRvkame6M5RtFWYnw35J8ubD14MXgj/Cq1NDEULWIKmNy4pYkyd0k7ZgOEa/hJd
-X-Received: by 2002:a17:903:2403:b0:186:9fb9:1f8c with SMTP id e3-20020a170903240300b001869fb91f8cmr45867plo.69.1668442694533;
-        Mon, 14 Nov 2022 08:18:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668442694; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3195760ejx;
+        Mon, 14 Nov 2022 15:31:31 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf67eW2WJ5CDgkyirlqLtr2N9CpXHJXypPHDU5eOnNLzYePVydCWtK507tidm3C1LsK0ycoI
+X-Received: by 2002:a37:e306:0:b0:6fa:23d1:856f with SMTP id y6-20020a37e306000000b006fa23d1856fmr13652337qki.564.1668468691281;
+        Mon, 14 Nov 2022 15:31:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668468691; cv=none;
         d=google.com; s=arc-20160816;
-        b=QTfhoDFOdZRIVVU0Zp7mF/jguLGO4oiORldw3NBUz+f/jrIfUh4uLvCajKFor3bO9a
-         AKC6Rvl72aayBfI5nLCGY79c2DFhoCtPWaK32bnjQfhkmuLxozVT7DhfZaaAbzpPRKsB
-         MzxLDksNn+TZMczWNk4nImO7+YRXeWd0xB8geQ1qYWDuPQEHQGgGD0xItRlbWMWAw7Dg
-         QVn7Yjr6R9ERzM1BbJfGKAfat5X9ifkvths+PQry3uEZpJtGR41CFzVcp/s1avwAk7wM
-         h2K1TwzG7xdRoGdpl2dj1zAtWnvIEQRB5P/s3kibBaQqOZvvzMzG+JNcOO8su5/5tJu2
-         QWMA==
+        b=sqYsi4Sb8JrRoKTy/Bv0av+atdxi+6Ufmd4ucfEZQVb50UPv2dDxEE46iP667ETSJM
+         nEssJw6QPbCbIIcgL+z1uWyB+ZXVY+w/cYW8MnInOPWfjvc49I7mEpVuX1ryUZ+PLshj
+         ldpoLXEYXIfcgUsX4R4gnc6jEW+W/6jx3O5mLX50f/39Ive3zZvtMvJpXOKEJWbhnrmy
+         WVJWGHDoCZDJ9KlIzXPuF2YbhPcXETrcqPkL2SKJVS1j4f4U77mFTXjl5zf47TdLYlOn
+         n3o+x8U4j6foH+tJfr55MEAu3kv2ZTCvkyzJJg+Fby9rplaihIf3uhogjd4VW+jOfhwI
+         f9aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature:dkim-filter:dkim-filter:delivered-to:dkim-filter
-         :dkim-filter;
-        bh=HeyrOS6KbhmreczGWsziwM1ar3gbwO4l/jP1boNV7UI=;
-        b=lsalY8lWPEtzVk1idgdKgalgv0R7/rFrfDsQjCMts6Xhv6yk98DTBmrnXkfEXJgT3T
-         g2E/MJBNAznES/Bcr+3+wbVDH6SzXwCwts/zgvVxzZvrQ84VmQcwAJ/alCN9hEub6dKT
-         WGEOnWmQnI/maFENiBrzo3/55N1ePiq1aVrieft7B9qGmE3c5b1hPiDgONHLWNyvT7fc
-         Fm0KTbyCrAcuHxglQXjZMqXtUytnH2OlYnegASkww8CaAZuN9tl+98lQy+Xbe2B3dXQl
-         RqpygnVOsqHiEv6Ot01ReV5nMiOj8r5pzrRuSCCOHYniGtEBQqkSv+orv8E0YrF0kXn5
-         IvUg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=UNcWyo4dEsCdrEF658NodGVxPzjNzPqCMlk3Adm9N8k=;
+        b=S87OWl4HjsrYqfjqqvFECjdkHajnvrtouVcJtL/ALLcmLyIzpViidRKb14d/F9hOWQ
+         GNIKmLCSzD475EfGvrzRZH8Q9pFk2Xc1n0aLAVO3ugOX+zDGrngxMhkIT3j919dAboJF
+         oyTm6fDP2lbWwk3a43G0fd3LJeOTDc2JONs5YgTX0t7Fih92n+D2ZZUPyioho/TFf8ih
+         c3sv4qrb+6Y+MIMgo0e4Gp8+Boxnh5PP7B7ZlhCHm/5p/sGV4S99UpoW/jPeKbA/B1w0
+         hRKA51Gxlw8EKhGIZsjNoYzO9p04mvFcokS1ryTngHUQInXyPImIpmfol9Ar+HiWDPS0
+         sHEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="L5NSdFA/";
-       spf=pass (google.com: domain of virtualization-bounces@lists.linux-foundation.org designates 2605:bc80:3010::136 as permitted sender) smtp.mailfrom=virtualization-bounces@lists.linux-foundation.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <virtualization-bounces@lists.linux-foundation.org>
-Received: from smtp3.osuosl.org (smtp3.osuosl.org. [2605:bc80:3010::136])
-        by mx.google.com with ESMTPS id pc3-20020a17090b3b8300b0021824fcc6b9si6158400pjb.63.2022.11.14.08.18.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Nov 2022 08:18:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of virtualization-bounces@lists.linux-foundation.org designates 2605:bc80:3010::136 as permitted sender) client-ip=2605:bc80:3010::136;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MagfRO+Z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i7-20020ac87647000000b0039cefc6b46esi6332465qtr.312.2022.11.14.15.31.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 14 Nov 2022 15:31:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="L5NSdFA/";
-       spf=pass (google.com: domain of virtualization-bounces@lists.linux-foundation.org designates 2605:bc80:3010::136 as permitted sender) smtp.mailfrom=virtualization-bounces@lists.linux-foundation.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AB3ED60DFC;
-	Mon, 14 Nov 2022 16:18:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AB3ED60DFC
-Authentication-Results: smtp3.osuosl.org;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=L5NSdFA/
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gbiDWnrU9spO; Mon, 14 Nov 2022 16:18:12 +0000 (UTC)
-Received: from lists.linuxfoundation.org (lf-lists.osuosl.org [IPv6:2605:bc80:3010:104::8cd3:938])
-	by smtp3.osuosl.org (Postfix) with ESMTPS id 4D7C860E07;
-	Mon, 14 Nov 2022 16:18:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4D7C860E07
-Received: from lf-lists.osuosl.org (localhost [127.0.0.1])
-	by lists.linuxfoundation.org (Postfix) with ESMTP id E3617C0033;
-	Mon, 14 Nov 2022 16:18:11 +0000 (UTC)
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists.linuxfoundation.org (Postfix) with ESMTP id B71B8C002D
- for <virtualization@lists.linux-foundation.org>;
- Mon, 14 Nov 2022 16:18:10 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8D31540317
- for <virtualization@lists.linux-foundation.org>;
- Mon, 14 Nov 2022 16:18:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D31540317
-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=L5NSdFA/
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zh9TninuTbrl
- for <virtualization@lists.linux-foundation.org>;
- Mon, 14 Nov 2022 16:18:09 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BB4DF4160A
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BB4DF4160A
- for <virtualization@lists.linux-foundation.org>;
- Mon, 14 Nov 2022 16:18:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668442688;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hxvXy2EJc9Qd0pwiulW/osrJ5/Pv/7EvjVfPKadkE/I=;
- b=L5NSdFA/m8vha7RHJPLdUF6dTe+i4vYrH7OGx+kVbO2wys68lk/osThEzqN/66Hp0LA9AM
- qveXH2y21kMEK3EQVHqAnYbLKbtyOLTDY/eChpTvn2wFzVtZ2QYWCRwyj7ZBJB0VTirolp
- A0QI1n31OSA/FaUT7DJqWvPY314ZV0E=
-Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
- [209.85.166.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-269-jy9UCdipOzuLDQtrknzYRg-1; Mon, 14 Nov 2022 11:18:05 -0500
-X-MC-Unique: jy9UCdipOzuLDQtrknzYRg-1
-Received: by mail-il1-f197.google.com with SMTP id
- l4-20020a056e021aa400b00300ad9535c8so9557859ilv.1
- for <virtualization@lists.linux-foundation.org>;
- Mon, 14 Nov 2022 08:18:05 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=MagfRO+Z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ouijG-00036V-7P; Mon, 14 Nov 2022 18:19:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ouieb-0003Da-Fk
+ for qemu-arm@nongnu.org; Mon, 14 Nov 2022 18:14:14 -0500
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oudNZ-00082q-8j
+ for qemu-arm@nongnu.org; Mon, 14 Nov 2022 12:36:18 -0500
+Received: by mail-pg1-x529.google.com with SMTP id o13so10836315pgu.7
+ for <qemu-arm@nongnu.org>; Mon, 14 Nov 2022 09:36:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=UNcWyo4dEsCdrEF658NodGVxPzjNzPqCMlk3Adm9N8k=;
+ b=MagfRO+ZmzLQXhw9sniE8KwxzKYiECG7mCmvNdkhyslPcWX6P1ys4LVBs0U+z7zcVK
+ 9W0fdPVOVApQwabxHFmrew9s/CMByBv5kqZJYobmHVfWfWfoLHEsUMok+xU1JGW+eE7I
+ Ch5sO8W5AQrnbNMdCOA08IOB/cHurnS8nkUK2pxdRinmqcfNhshmul6pPQNu5gukYmqw
+ UsHJcxPbREKfEeVOM+uCUbrmVa+E/L2QaKQXNxte1/kVLBxBZnjsYJDVutNqhSQ000V+
+ m7a1PkP4ajDiUhhD41Mh/23fSIOQi8Q1jd/q5dtdFWJd0b0oRmDE7AN0uaSYd6BNqHVf
+ UwEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=hxvXy2EJc9Qd0pwiulW/osrJ5/Pv/7EvjVfPKadkE/I=;
- b=ozk/jNs24CtrJIL5OTB2n5+NseqluUuK2nOMgQ2jIvquHbJlIf4am9Bg8J4eiMQu01
- GMoywthq5je5Enc9iwnOzD4l/2sVbxux9OIxnaoUhTj095IDgpwB04IlQY/rX2ufaMBl
- ecSangPP3uBMzR84FIeJoWa80Voy6tUXCNssa37ZyLemWYqkJN0LILhsrWPJrXVqLbmS
- +1xj2whLSrbmuno7IRDflVxBEAoFCm3fkXR5gZtzoiFmS0PuQmz5FZ7xO+WQJNhkTAG+
- PqF2MBZDlMSv54v7cuCjKxIM1c4qoxg2fEwiT6nPz8CYMMqodrlqv/y5QJagJR8m1J16
- Ebtw==
-X-Gm-Message-State: ANoB5pnP1HICc30W8JVSgCDRO2vXkJmK7smqxOAK7FNByx4hDeCA5aUX
- 57plwmGxWrabC9AuhbqqwHFDv8l+RW1WYFdkZpdF9cgJ4rgmzPA7/ZAvFK24jmuF7JZ3oVA49gc
- ioJGs7ccM1aDW5tqwlFZsjR+WjkHlvjc3dg/8I52zGQ==
-X-Received: by 2002:a05:6e02:1d06:b0:300:f4a5:7266 with SMTP id
- i6-20020a056e021d0600b00300f4a57266mr6579915ila.273.1668442684533; 
- Mon, 14 Nov 2022 08:18:04 -0800 (PST)
-X-Received: by 2002:a05:6e02:1d06:b0:300:f4a5:7266 with SMTP id
- i6-20020a056e021d0600b00300f4a57266mr6579906ila.273.1668442684300; 
- Mon, 14 Nov 2022 08:18:04 -0800 (PST)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- f19-20020a05660215d300b006ddf70e3ce8sm2290113iow.7.2022.11.14.08.18.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Nov 2022 08:18:03 -0800 (PST)
-Date: Mon, 14 Nov 2022 09:18:02 -0700
-From: Alex Williamson <alex.williamson@redhat.com>
-To: "leohou@tom.com" <leohou@tom.com>
-Subject: Re: vIOMMU&IOMMU  gIOVA  to  HPA mapping
-Message-ID: <20221114091802.6be5099e.alex.williamson@redhat.com>
-In-Reply-To: <2022111420314945171759@tom.com>
-References: <2022111420314945171759@tom.com>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UNcWyo4dEsCdrEF658NodGVxPzjNzPqCMlk3Adm9N8k=;
+ b=wqsY8yXej/fy1e5rGw8hFrpxREiPjBl+BE1Wx98wChhqWL1knk24ejYkpxq5iJ5/sp
+ 8zAJqt/nKpQI4f37HnUjrR4WulEbfbLD1OIRIKD6SrBFwB37DplC2iAYH8fyWzVR2gYS
+ WZct4qpmR3xoHhK2GWdtY6hr4JkRbSrwthL2rHfRf+T7X8L0hvvy7lNi4O+ytm1JQUEB
+ S8E6a7+szI7eihpkWQkTn8JUs+MNvSrs1Y9csv3xxgzAqusKUR3Ay+/JEaTzDf3Llmik
+ ZuK4pQqY3a3GRj0QCDuF6cpARZjiuoS/5TcWKdUhBIX/IrnaIfUbjMJRJWuooc2tslqU
+ KCnw==
+X-Gm-Message-State: ANoB5pn7vFBQPQrmy+K6l3852XWjsDv8c7RPYpUo8HsIINvFgq+42E03
+ B6C6snSEKtbK8O/qKtP/2UZ8ZXPdyfWthZODqGyiLA==
+X-Received: by 2002:a63:535e:0:b0:43c:7da:e64b with SMTP id
+ t30-20020a63535e000000b0043c07dae64bmr12830159pgl.231.1668447375689; Mon, 14
+ Nov 2022 09:36:15 -0800 (PST)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Cc: iommu <iommu@lists.linux.dev>, qemu-arm <qemu-arm@nongnu.org>,
- virtualization <virtualization@lists.linux-foundation.org>
-X-BeenThere: virtualization@lists.linux-foundation.org
-X-Mailman-Version: 2.1.15
+References: <20221112214900.24152-1-strahinja.p.jankovic@gmail.com>
+ <CAFEAcA_F0jcjviRGjgmb4J_Kos22+UE0vPbcXoTbPCP7xz-nXA@mail.gmail.com>
+ <CABtshVRnwQiTypOFaOqVE69+1wbVoVJEy_x7ELez8Mo6aXT=Yg@mail.gmail.com>
+In-Reply-To: <CABtshVRnwQiTypOFaOqVE69+1wbVoVJEy_x7ELez8Mo6aXT=Yg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 14 Nov 2022 17:36:03 +0000
+Message-ID: <CAFEAcA-s9a2zCy6O0j6=OXZOcYbj=_mS=aa2vxbKbuSMKNjMoQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/sd: Fix sun4i allwinner-sdhost for U-Boot
+To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Beniamino Galvani <b.galvani@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: Linux virtualization <virtualization.lists.linux-foundation.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/virtualization>, 
- <mailto:virtualization-request@lists.linux-foundation.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/virtualization/>
-List-Post: <mailto:virtualization@lists.linux-foundation.org>
-List-Help: <mailto:virtualization-request@lists.linux-foundation.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/virtualization>, 
- <mailto:virtualization-request@lists.linux-foundation.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Errors-To: virtualization-bounces@lists.linux-foundation.org
-Sender: "Virtualization" <virtualization-bounces@lists.linux-foundation.org>
-X-TUID: 3rx9SE10h1MA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gnorFxAPr1+f
 
-T24gTW9uLCAxNCBOb3YgMjAyMiAyMDozMTo0OSArMDgwMAoibGVvaG91QHRvbS5jb20iIDxsZW9o
-b3VAdG9tLmNvbT4gd3JvdGU6Cgo+IEhp77yMCj4gICAgICBIZXJlIGlzIG15IGFwcGxpY2F0aW9u
-IHNjZW5hcmlv77yaCj4gMS4gVGhlIE5JQyAoTmV0d29yayBJbmZvcm1hdGlvbiBDZW50ZXIpIHBh
-c3NlcyB0aHJvdWdoIHRvIHRoZSBWTShWaXJ0dWFsIE1hY2hpbmUpOwo+IDIuIFRoZSBWTSB1c2Vz
-IHRoZSB1c2VyIG1vZGUgZHJpdmVyIERQREs7Cj4gCj4gUXVlc3Rpb246Cj4gMS4gdklPTU1VIG1h
-aW50YWlucyB0aGUgbWFwcGluZyBnSU9WQS0+Z1BBLCBXaGVuIGRvIHlvdSB1c2UgdGhpcyBnUEEg
-PwoKUUVNVSBpbiB0aGUgaG9zdCBkZXJpdmVzIHRoZSBoVkEgZnJvbSB0aGUgZ1BBLiAgVGhlIHZJ
-T01NVSBkcml2ZXIgaW4KUUVNVSBpcyB0cmlnZ2VyaW5nIHRoZSBnSU9WQSB0byBoVkEgbWFwcGlu
-ZyB0aHJvdWdoIHZmaW8gaW4gdGhlIGhvc3QuCgo+IDIuIFBoeXNpY2FsIElPTU1VIG1haW50YWlu
-cyB0aGUgR0lPVkEtPkhQQSBtYXBwaW5nID8gIElmIHNvLCBieSB3aGF0IG1lYW5zIChnSU9WQSAt
-PiBIUEEpIG1hcHBpbmcgPwoKQXMgYWJvdmUsIHRoZSB2SU9NTVUgaW4gdGhlIGd1ZXN0IHByb3Zp
-ZGVzIGdJT1ZBIC0+IGdQQSwgaW4gUUVNVSB3ZSBkbwp0aGUgZ1BBIC0+IGhWQSwgdGhlbiB2Zmlv
-IGluIHRoZSBob3N0IGtlcm5lbCBwZXJmb3JtcyBoVkEgLT4gaFBBIHZpYQpwYWdlIHBpbm5pbmcu
-Cgo+IDMuIFdoYXQgZG9lcyBRRU1VIGRvIGluIE5JQyBwYXNzLXRocm91Z2ggYWRkcmVzcyB0cmFu
-c2xhdGlvbiDvvJ8KClRoZSBndWVzdCB2aXNpYmxlIHZJT01NVSB0cmlnZ2VycyBNZW1vcnlMaXN0
-ZW5lciBub3RpZmljYXRpb25zIGluIFFFTVUKZm9yIHRoZSBkZXZpY2UgYWRkcmVzcyBzcGFjZSwg
-d2hpY2ggaW5zZXJ0IGFuZCByZW1vdmVzIG1hcHBpbmdzIHRvIHRoZQp2ZmlvIGxheWVyIGJlbG93
-IGl0LiAgVGhhbmtzLAoKQWxleAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KVmlydHVhbGl6YXRpb24gbWFpbGluZyBsaXN0ClZpcnR1YWxpemF0aW9uQGxp
-c3RzLmxpbnV4LWZvdW5kYXRpb24ub3JnCmh0dHBzOi8vbGlzdHMubGludXhmb3VuZGF0aW9uLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL3ZpcnR1YWxpemF0aW9u
+On Mon, 14 Nov 2022 at 17:29, Strahinja Jankovic
+<strahinjapjankovic@gmail.com> wrote:
+>
+> Hi,
+>
+> Thank you for your reply.
+>
+> On Mon, Nov 14, 2022 at 4:42 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > On Sat, 12 Nov 2022 at 21:49, Strahinja Jankovic
+> > <strahinjapjankovic@gmail.com> wrote:
+> > >
+> > > Trying to run U-Boot for Cubieboard (Allwinner A10) fails because it cannot
+> > > access SD card. The problem is that FIFO register in current
+> > > allwinner-sdhost implementation is at the address corresponding to
+> > > Allwinner H3, but not A10.
+> > > Linux kernel is not affected since Linux driver uses DMA access and does
+> > > not use FIFO register for reading/writing.
+> > >
+> > > This patch adds new class parameter `is_sun4i` and based on that
+> > > parameter uses register at offset 0x100 either as FIFO register (if
+> > > sun4i) or as threshold register (if not sun4i; in this case register at
+> > > 0x200 is FIFO register).
+> > >
+> > > Tested with U-Boot and Linux kernel image built for Cubieboard and
+> > > OrangePi PC.
+> > >
+> > > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+> > > ---
+> > >  hw/sd/allwinner-sdhost.c         | 67 ++++++++++++++++++++++----------
+> > >  include/hw/sd/allwinner-sdhost.h |  1 +
+> > >  2 files changed, 47 insertions(+), 21 deletions(-)
+> > >
+> > > diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+> > > index 455d6eabf6..51e5e90830 100644
+> > > --- a/hw/sd/allwinner-sdhost.c
+> > > +++ b/hw/sd/allwinner-sdhost.c
+> > > @@ -65,7 +65,7 @@ enum {
+> > >      REG_SD_DLBA       = 0x84,  /* Descriptor List Base Address */
+> > >      REG_SD_IDST       = 0x88,  /* Internal DMA Controller Status */
+> > >      REG_SD_IDIE       = 0x8C,  /* Internal DMA Controller IRQ Enable */
+> > > -    REG_SD_THLDC      = 0x100, /* Card Threshold Control */
+> > > +    REG_SD_THLDC      = 0x100, /* Card Threshold Control / FIFO (sun4i only)*/
+> > >      REG_SD_DSBD       = 0x10C, /* eMMC DDR Start Bit Detection Control */
+> > >      REG_SD_RES_CRC    = 0x110, /* Response CRC from card/eMMC */
+> > >      REG_SD_DATA7_CRC  = 0x114, /* CRC Data 7 from card/eMMC */
+> > > @@ -415,10 +415,29 @@ static void allwinner_sdhost_dma(AwSdHostState *s)
+> > >      }
+> > >  }
+> > >
+> > > +static uint32_t allwinner_sdhost_fifo_read(AwSdHostState *s)
+> > > +{
+> > > +    uint32_t res = 0;
+> > > +
+> > > +    if (sdbus_data_ready(&s->sdbus)) {
+> > > +        sdbus_read_data(&s->sdbus, &res, sizeof(uint32_t));
+> > > +        le32_to_cpus(&res);
+> > > +        allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
+> > > +        allwinner_sdhost_auto_stop(s);
+> > > +        allwinner_sdhost_update_irq(s);
+> > > +    } else {
+> > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
+> > > +                      __func__);
+> > > +    }
+> > > +
+> > > +    return res;
+> > > +}
+> > > +
+> > >  static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
+> > >                                        unsigned size)
+> > >  {
+> > >      AwSdHostState *s = AW_SDHOST(opaque);
+> > > +    AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
+> > >      uint32_t res = 0;
+> > >
+> > >      switch (offset) {
+> > > @@ -508,8 +527,12 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
+> > >      case REG_SD_IDIE:      /* Internal DMA Controller Interrupt Enable */
+> > >          res = s->dmac_irq;
+> > >          break;
+> > > -    case REG_SD_THLDC:     /* Card Threshold Control */
+> > > -        res = s->card_threshold;
+> > > +    case REG_SD_THLDC:     /* Card Threshold Control or FIFO register (sun4i) */
+> > > +        if (sc->is_sun4i) {
+> > > +            res = allwinner_sdhost_fifo_read(s);
+> > > +        } else {
+> > > +            res = s->card_threshold;
+> > > +        }
+> > >          break;
+> > >      case REG_SD_DSBD:      /* eMMC DDR Start Bit Detection Control */
+> > >          res = s->startbit_detect;
+> > > @@ -531,16 +554,7 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
+> > >          res = s->status_crc;
+> > >          break;
+> > >      case REG_SD_FIFO:      /* Read/Write FIFO */
+> > > -        if (sdbus_data_ready(&s->sdbus)) {
+> > > -            sdbus_read_data(&s->sdbus, &res, sizeof(uint32_t));
+> > > -            le32_to_cpus(&res);
+> > > -            allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
+> > > -            allwinner_sdhost_auto_stop(s);
+> > > -            allwinner_sdhost_update_irq(s);
+> > > -        } else {
+> > > -            qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
+> > > -                          __func__);
+> > > -        }
+> > > +        res = allwinner_sdhost_fifo_read(s);
+> >
+> > Does the sun4i really have the FIFO at both addresses, or should
+> > this one do something else for sun4i ?
+>
+> The sun4i sdhost actually has no registers with offset higher than
+> 0x100 (offset of REG_SD_THLDC in patch), so REG_SD_DSBD, all
+> REG_SD_*_CRC, REG_SD_CRC_STA and REG_SD_FIFO@0x200 should not be
+> accessed from application code meant to run on sun4i. That is why I
+> only changed the FIFO/THLDC (offset 0x100) register behavior, since
+> that change makes U-Boot work.
+>
+> I could update the patch so all of these registers with offset bigger
+> than 0x100 log error if sun4i is selected, so that is more clear.
+> Would that be ok?
+
+Yes, I think that's a good idea, but let's do that change as a
+separate patch, so we can keep this one as it is as the bugfix.
+
+For this patch,
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

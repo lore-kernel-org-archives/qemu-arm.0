@@ -1,102 +1,166 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2341324ejx;
-        Sun, 13 Nov 2022 11:43:09 -0800 (PST)
-X-Received: by 2002:a05:600c:3b03:b0:3cf:b49e:1638 with SMTP id m3-20020a05600c3b0300b003cfb49e1638mr6165080wms.50.1668368589056;
-        Sun, 13 Nov 2022 11:43:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668368589; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2683690ejx;
+        Mon, 14 Nov 2022 02:06:27 -0800 (PST)
+X-Received: by 2002:a17:90a:9d8a:b0:212:de1a:355b with SMTP id k10-20020a17090a9d8a00b00212de1a355bmr13362954pjp.1.1668420387419;
+        Mon, 14 Nov 2022 02:06:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668420387; cv=none;
         d=google.com; s=arc-20160816;
-        b=yCXr2IgWTA0zhFbxAum+rcx5W0itYRRGRuJetKGSTAIpbrUofIsk1iNBtKUjA3bSI/
-         TvZltETGykQOruXnKOzYY2uG5GjtzDrCjMhATY8s/bVbAhmifYvqYWoRYoyUrmbJiKIF
-         4wGidq608gg5SMKZkVKISwnISwjrXvYANRyKmEYhDAdGu2IjCjkz7uG3rwH2X2MrJMdc
-         McWJSRVwZLW9h4cFI70hBG4gPhPFFy5znRrS+GlWPBbMz/lf3q3ltyCBiR9k85ixSRm6
-         oFOWhiJEZ/3HS4sn5ToGS6TdvhEDz1GnQLmv+bO9SJSzABeiZMJ6vW+qL6GlqYA19OCr
-         /GjQ==
+        b=ezwD7zV+slNDn4hg/lWlsAejiN1WidPbtQxrnDyTPrTJMhBqploXjyI+ntrR/ZL02e
+         A0dTmoOYrNX9jgrGW+7Is8You4D4rFLgxANbRH3h4czui9r1Brf7c0mRhcPa4g/qTtFi
+         AH2UqG5fDxG3FRGJ1KCrbM5rNLW+iAq82OjgM3Rahm23mem8arlPSJTB8lm6GeQGXAMw
+         P05BC1g3wmXvqnUIJlKP1IcklHK0JltPfa3BoRsJThw/8hUL7VWzu+kfmXGYZ5K9YKbA
+         jOku6sJGPbA+mZLDcJWLhP91UKC5RzQhQdiERLv8F+AEy8YQi4qKraPwK730iinnbPa4
+         EpWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=6L9jPYcz7ct8alLyJuxfORWnDzbFO03+CMn7zI/QyvQ=;
-        b=Pb0VcnYvhLQy5lp67gB6hXJvheNedcCmmSWly+OFjkIL2rIulop7934QZPe27HPSr3
-         1OSTG3rg38V0Tz8aFnIihwFpWbXRusrt73HCwxsuXkgRYHpwgH39cLC9aGj0JH00DeQr
-         o93FPQLJI71zTvroi3MQY5DLfO8DrJ41/a6zxKytgRf5r86QKCQLNPvFGZIqUZ1kqF8U
-         Qr2KImZR8SpRj0n66+NBbBERUIcT4WZmJCWp+co4pe2Dbg/aYeAX4E3cgb9NxwLYXLMr
-         jVzIEaS9vd4b2AwFCJfogspgx3VboX1Jx3IGFwHY+FHAntcPYSqACJxiROkxM0SNo8Ze
-         bhbQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=LbXul+PU6pL42Fsl6Wyc78F8fuex80+WE1jwHDJ7FzE=;
+        b=XzRWUpdwEf+hGqX8dvuSNNTdyBRJPlQ7mZ2mwhnbbn6idHj65SY4CfPE4DW74HE7II
+         LgxAhWQOQRu23dDSGNb/uy+2SgTZknH5ZmhPamp63+11puaxzMYa7yhukIYbDdQKUMpZ
+         2qFBfQ40C2xtElJXPBmn+ek62DJ3k+2Vzl9AlzcNv0Kj2XViSCo1ptSVHh/WxJtNo+ZI
+         hgXMBChqAE28zqGIpLCvw18vt7YycyNPKuqypa0nUWprPwN3/yO4/xlwZX+k2hBxbH5V
+         Kxi/PY/QX+qQUvN5uBDx1HnfX8y6csjHCbZmhvvshS7k8f60GGQvUWSquR4iOhNSaM6R
+         0EcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vxq8DKOR;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dpryn6k2;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c12-20020a056000184c00b00236b52b19dbsor3283664wri.40.2022.11.13.11.43.08
+        by mx.google.com with SMTPS id f4-20020a17090274c400b0018422d1d1f1sor3578165plt.21.2022.11.14.02.06.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 13 Nov 2022 11:43:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 14 Nov 2022 02:06:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vxq8DKOR;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dpryn6k2;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6L9jPYcz7ct8alLyJuxfORWnDzbFO03+CMn7zI/QyvQ=;
-        b=vxq8DKORJrOWTw7xsAduMLfKii8CMJHHUvMRt6USZEfjHwChqcAH659rArQnc0tMR1
-         Mu5P1mWjn6+jYcn+DUhxQLMTm1pqFcnhyrvmRij00/lBWZgAvcyX1K1XaGot5Vox4oSv
-         S+MQMXOb19gLYizz8suTL0JxmpWY3ilaYk7IcHKTxBXo8QD9bTEzotusOlfAgkZkKuzh
-         b3vPbEvWfr530LIk0kFtUKs3TA7eTjkkQ+0JSrPp4H3DdEjxgPTHn+nG7P5wAA/evOJ5
-         OwvjqM95P3whwxiAX0b1RDwsWgdapnjOOji8RD5nukDrhRZxYY837jqz230YUoz0GbmN
-         s3KQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LbXul+PU6pL42Fsl6Wyc78F8fuex80+WE1jwHDJ7FzE=;
+        b=Dpryn6k2jDcveKKccFLX0XGqb680Rnrn5CTRbe6BFixECtQJH4X7ZP7pcWuriRulKN
+         441EVhrowSuu3zoeo97LvpqZnzH5K//cdXIml9m8gGmXJpUi5vdb/dXVwa69maY8FSxx
+         Mv/2If0vX+HR6o8JD/7U+CViXP+j7Hee+0bUBgBYJZxJvi9Rit/rBSHFQFHsbzyuuzBK
+         gxxU+0FNhxSIUysno31K0MIRwu8RBoW/lY12WKkN3bmiLdKMq5PqN2utuEBS+w1PA2bm
+         Lx0zRDt1vPEvJB/nknMSkWo3oYQk2WvqNaTfYhZ2l3KFbEsnU0Skgi8NBpQ+6f9i0NjU
+         mUrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6L9jPYcz7ct8alLyJuxfORWnDzbFO03+CMn7zI/QyvQ=;
-        b=Wu6RiTX84A+QPyRPWvIV79Wztp4VlwgqOZw9Hk08L6GNFUVnMOZmMqf4OH5SV+zket
-         8qxZg4TxCZPNqF2mkuirt1dX7iDpRuTmnwLhGTulu9PXwxNxabN1aBkDpskaDo8bokyX
-         xidvecyTm3AA7+xQ30dPPjnC1D75JPq9zedjlF5N9SRBpWQtNush1RIWB/veqeFmdH41
-         ItWIqJAsoaC9dpqRV6R018FETXMWhp+45Z1/vhy12Y+U7P5Ij2bFAsKBjOoEH6xbF8ja
-         oJ6J5lNuecodLNdarT30qgx297b919ecfnjEpQScUzTRO5EnJLOfNy/uiSkU+yzdgO7P
-         JfEQ==
-X-Gm-Message-State: ANoB5pnhzzjAQbtT+7P/FLgipdo5btuEGvMokw2z+KD4osXBjNtPc5n+
-	9bHIa18hypztU3mqBF29SFbvampzRD9SMuIkW94=
-X-Google-Smtp-Source: AA0mqf4aesVuJ5L/Ev/ZKMy+Gf/W3Y04MQHW8aAxVj8OlhPr2GXnHf1N0KqhrNKZw3hQo7EhVZtg9Q==
-X-Received: by 2002:a5d:4809:0:b0:238:3fd0:dbe2 with SMTP id l9-20020a5d4809000000b002383fd0dbe2mr5703991wrq.347.1668368588520;
-        Sun, 13 Nov 2022 11:43:08 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.1.115] ([185.126.107.38])
-        by smtp.gmail.com with ESMTPSA id z15-20020a056000110f00b0022a3a887ceasm7572816wrw.49.2022.11.13.11.43.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 13 Nov 2022 11:43:07 -0800 (PST)
-Message-ID: <d45cf92b-06bc-ab47-51e9-55a0126edbea@linaro.org>
-Date: Sun, 13 Nov 2022 20:43:05 +0100
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LbXul+PU6pL42Fsl6Wyc78F8fuex80+WE1jwHDJ7FzE=;
+        b=N549vQWvw0FWsepByZqt85dVaKa+/sWhIRaQRYVOQ0UJjGjt/yS0t11IcuTWjDnNMU
+         5c5xuNOyrDzrOqWhCPf0nRGwXM7N3MPjh/PxHrbBuIS/sQJHg97qObYHuHgIQBFJWZd1
+         7SxUUi2nVfMTjm+comakWMnkMLjA2/PYdVHeQicRnms/QSYborW3lQPKt8YKgcNe+EZW
+         +Vm2uf6uU99Vtv6Doizajb0OqU+NySS0ZIAjijjg2GvBu7F2LI0AFm0prVeYMwLEuq2Y
+         YZUAe8I6THD0EL/0sxNtcetxywuHQBKsRigvdVDMtIhVj+6RRpyyeLfuP74Lg8SUxrI5
+         fx1g==
+X-Gm-Message-State: ANoB5pkqjCzgwKuyYNsPn/TtGw955hhkVYGbcXjWMMsr3lE6IoMs200O
+	WiAWOkYlj4SlSRxITjmqfoNqD0eAud5UjjpJtrhJDDNC
+X-Google-Smtp-Source: AA0mqf75OQPz2QigGhbWoizk6AC6Kovo2+MqMuwXeQgpLu68JGiWr2yZ84gAdgPUdctJEt+VTVGYb8IseWFZuFRYbwI=
+X-Received: by 2002:a17:902:c702:b0:186:9295:2012 with SMTP id
+ p2-20020a170902c70200b0018692952012mr12808805plp.19.1668420386964; Mon, 14
+ Nov 2022 02:06:26 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.2
-Subject: Re: [PATCH v5 09/20] hw/arm: remove current_cpu hack from pxa2xx
- access
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: f4bug@amsat.org, Peter Maydell <peter.maydell@linaro.org>,
- "open list:PXA2XX" <qemu-arm@nongnu.org>
-References: <20221111182535.64844-1-alex.bennee@linaro.org>
- <20221111182535.64844-10-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221111182535.64844-10-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: SL/pC5RSMHgQ
+References: <20220927141504.3886314-1-alex.bennee@linaro.org>
+ <20220927141504.3886314-2-alex.bennee@linaro.org> <769e0e8a-7787-b02b-9e26-87eca955666b@linaro.org>
+ <CAFEAcA-0zoNS0nWrYu6hM1=8tG4i4GkjHLL2v4OMmJv5GaDAMg@mail.gmail.com>
+ <87r0znlnmm.fsf@linaro.org> <CAFEAcA8Ft_YAC2TRCSErUJxY8_kZOQdF7Qa6oM6VF2RpAeHrBA@mail.gmail.com>
+ <b1a845ca-0972-1800-0c58-03f68d0c94a0@linaro.org> <CAFEAcA-jvg4t1O-wE+19rJgzdiSZqF+X-XmEDLnrJYZCo233Sw@mail.gmail.com>
+ <cb28a138-a82d-0604-a8cf-b302493ff286@linaro.org>
+In-Reply-To: <cb28a138-a82d-0604-a8cf-b302493ff286@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 14 Nov 2022 10:06:15 +0000
+Message-ID: <CAFEAcA-Rwuh9s0EoD-B7zgQPhcgZqBOmgK46S-Vd=vRYE1a1Bg@mail.gmail.com>
+Subject: Re: [PATCH v3 01/15] hw: encode accessing CPU index in MemTxAttrs
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	"Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>, 
+	Jason Wang <jasowang@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 3fuM+juSLokK
 
-On 11/11/22 19:25, Alex Bennée wrote:
-> We can derive the correct CPU from CPUARMState so lets not rely on
-> current_cpu.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   hw/arm/pxa2xx.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, 11 Nov 2022 at 13:23, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> On 31/10/22 14:03, Peter Maydell wrote:
+> > On Mon, 31 Oct 2022 at 12:08, Philippe Mathieu-Daud=C3=A9 <philmd@linar=
+o.org> wrote:
+> >>
+> >> On 4/10/22 16:54, Peter Maydell wrote:
+> >>> On Tue, 4 Oct 2022 at 14:33, Alex Benn=C3=A9e <alex.bennee@linaro.org=
+> wrote:
+> >>>>
+> >>>>
+> >>>> Peter Maydell <peter.maydell@linaro.org> writes:
+> >>>>> The MSC is in the address map like most other stuff, and thus there=
+ is
+> >>>>> no restriction on whether it can be accessed by other things than C=
+PUs
+> >>>>> (DMAing to it would be silly but is perfectly possible).
+> >>>>>
+> >>>>> The intent of the code is "pass this transaction through, but force
+> >>>>> it to be Secure/NonSecure regardless of what it was before". That
+> >>>>> should not involve a change of the requester type.
+> >>>>
+> >>>> Should we assert (or warn) when the requester_type is unspecified?
+> >>>
+> >>> Not in the design of MemTxAttrs that's currently in git, no:
+> >>> in that design it's perfectly fine for something generating
+> >>> memory transactions to use MEMTXATTRS_UNSPECIFIED (which defaults
+> >>> to meaning a bunch of things including "not secure").
+> >>
+> >> In tz_mpc_handle_block():
+> >>
+> >> static MemTxResult tz_mpc_handle_block(TZMPC *s, hwaddr addr, MemTxAtt=
+rs
+> >> attrs)
+> >> {
+> >>       /* Handle a blocked transaction: raise IRQ, capture info, etc */
+> >>       if (!s->int_stat) {
+> >>
+> >>           s->int_info1 =3D addr;
+> >>           s->int_info2 =3D 0;
+> >>           s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, HMASTER=
+,
+> >>                                     attrs.requester_id & 0xffff);
+> >>           s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, HNONSEC=
+,
+> >>                                     ~attrs.secure);
+> >>           s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, CFG_NS,
+> >>                                     tz_mpc_cfg_ns(s, addr));
+> >>
+> >>
+> >> Should we check whether the requester is MTRT_CPU?
+> >
+> > That code is basically assuming that the requester_id is the AMBA AHB
+> > 'HMASTER' field (i.e. something hopefully unique to all things that
+> > send out transactions, not necessarily limited only to CPUs), which is =
+a
+> > somewhat bogus assumption given that it isn't currently any such thing.=
+..
+> >
+> > I'm not sure if/how this patchset plans to model generic "ID of transac=
+tion
+> > generator".
+>
+> Does your 'generic "ID of transaction generator"' fit into MTRT_MACHINE
+> described as "for more complex encoding":
+>
+>    'MACHINE indicates a machine specific encoding which needs further
+>     processing to decode into its constituent parts.'
+>
+> ?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Not really, because "generic ID of a transaction generator" is a
+superset of "ID per CPU", not something separate that sits
+alongside it...
+
+-- PMM

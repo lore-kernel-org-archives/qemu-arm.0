@@ -1,222 +1,260 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3197341ejx;
-        Mon, 14 Nov 2022 15:34:29 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4YXuH7CP869xZL/71IPHGhjqHrJLVqShI8Bi0/1itIl2XxYCXJmqeH6PY3F+fnRfEi3QDf
-X-Received: by 2002:a05:620a:150f:b0:6fa:774:2822 with SMTP id i15-20020a05620a150f00b006fa07742822mr13491022qkk.410.1668468869196;
-        Mon, 14 Nov 2022 15:34:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668468869; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3208662ejx;
+        Mon, 14 Nov 2022 15:59:38 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6sgGY7oxDQ9SUz2wK5r/st72CITJIFYf61/FOzWVCDWwKYkW6kpTErGMHxZgbszTdnydX5
+X-Received: by 2002:a0c:ff02:0:b0:4bb:85ae:823c with SMTP id w2-20020a0cff02000000b004bb85ae823cmr14764733qvt.68.1668470378776;
+        Mon, 14 Nov 2022 15:59:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668470378; cv=none;
         d=google.com; s=arc-20160816;
-        b=uoKvfMbwlUcaCN6OqgKmg+6eybubstxblu64PCR+cW0OCLEpHsRC3usMRNPQCCq2Fv
-         vBoKjW2m3/+0N6ft8KQA/3qSkpBrHfcDU/R/WU5zmLyqPLzrZHSqI1AVwmXRFNtwttz4
-         C7nVpe4ONyG2qSu8s2T0K83637lBtHrrFdiWvlEHJQ7W7a+UWkzrKhiTYA04MMRtzFvr
-         js1UuSJKVwOpFaULXLY89WVtBKaFR/QJPpwQRvEGS1CXyEaqOVR9inbxEPHe+kvDRxar
-         l1XSMpBGHNM81gbYifmW5GeUfbLm29HpsLsu4WE/N+sOI47ddYdn5Q6bnczL2qoqFegE
-         rAjg==
+        b=KfmQ7kC/CU37BimyoKC5xL8NSJvkln0q402CCLxCx4/vM02GEay+1OaGo58Ssnf7+/
+         l6FlSjAEvIi/qypaxByt6EY7bmfXgYDyrjhwwRbsiWrSuRWXeeuFhthNrNeHG2zh2HK8
+         feRueuFZc9KkkLMXiz/kBoVGwkbLT0XeF/4tGYQDmMIdvWcS8WKz2cU4kviwCCaiNSfE
+         CG4yZD4Vs9WR6lfi6fHfhDbAjPhnzlNBUkVdMq9jh4nC81U6fCKPeazv2BXwp13j9aQe
+         EBlybXwwKUg6ue53B2lw1mE7LLkcGx8JKYyQ2ITlPlCXL+ZDIfJKdnI1M/igkaeSMX/E
+         OL2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=EH7xq0Cjay8bnTHLqhqbrmZMA4c8aW40WnuwGVm4dRc=;
-        b=XZlKOa+KwcNeP67noRWqpdxoawgNzTXYdGunp3voDnMEat+8h5kbWB4qv+boh31HJu
-         Tjm1OA3tIvKgIuRh/UdbVOV3FlOUu2KNzh/e8CE7weLECiqFCV1qTZ5DYGOISS4AZ7jC
-         ZnX3oPjdhCA23HY6NBslGu+Vdo7UvXJXUTyYCAjmcWqZnExDRhA15J+EEXw6mTkUlrpV
-         7R6Vc/ei5Cby103omPvP/6mHjaEiYYUP/EWKDKy4McOKGBfNp3OLQEP5NLfpW1+Zeh3f
-         jY40DodXV1piwjBZPXl7WSDGBRAMtzzldief/UctwyO6pRQqbOme/MXhp+vhzg+Z0KJq
-         Oeew==
+        bh=dEQhebuTndEE7Cg0DMsZsBTNOVRFeHqEvwguQLO1hH0=;
+        b=N9VdQXaXnpOfkeZdijBy04lk6fH9+4nrmmqbZFdHxG82L6rvgPjjHy/DIYMlDGqbWJ
+         zYhDzgfWJ1+NNZfKYVRYtABRmT8cWj6v9W+92xvaHqKnIqjxcFFOy8gGnkB0cN05Z5+5
+         +Ij4P8XPOIu7luP/dQIPQNU+IlGHLT7Hl+nj4AjomXbVc20NFBHpCYGECj2tELP1bcoY
+         W7sko/WVlBeyQgLtr/IEYbry3ZJTaV0ZOuYXwlW/5NEaJM0ibIiGRMKXqAJf/aHaFpmS
+         G7fDApt+rDrxBIGYOrZ7gcjry1eOBlrFzQAajaI8NREqiiabMrfu4/WNKtXggORtId3m
+         NrjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="pbXg6U/3";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cDPIzlCy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f8-20020ac81348000000b0039cc47752e3si5974210qtj.737.2022.11.14.15.34.29
+        by mx.google.com with ESMTPS id r6-20020a0562140c8600b004b405b04369si6571093qvr.353.2022.11.14.15.59.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Nov 2022 15:34:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Nov 2022 15:59:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="pbXg6U/3";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cDPIzlCy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ouinA-0007AS-8j; Mon, 14 Nov 2022 18:23:04 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ouiix-0002ah-5P; Mon, 14 Nov 2022 18:18:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ouif5-0004wo-BO
- for qemu-devel@nongnu.org; Mon, 14 Nov 2022 18:14:43 -0500
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1ouieP-0003Lu-1r; Mon, 14 Nov 2022 18:14:01 -0500
+Received: from mail-vs1-xe29.google.com ([2607:f8b0:4864:20::e29])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oubbA-0003tr-KI
- for qemu-devel@nongnu.org; Mon, 14 Nov 2022 10:42:14 -0500
-Received: by mail-pl1-x631.google.com with SMTP id v17so10411441plo.1
- for <qemu-devel@nongnu.org>; Mon, 14 Nov 2022 07:42:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1ouf2Y-0006zE-Dd; Mon, 14 Nov 2022 14:22:44 -0500
+Received: by mail-vs1-xe29.google.com with SMTP id i2so8061252vsc.1;
+ Mon, 14 Nov 2022 11:22:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=EH7xq0Cjay8bnTHLqhqbrmZMA4c8aW40WnuwGVm4dRc=;
- b=pbXg6U/3bVremElDd7eJfRZSkWTM/2O5Qw+t1t9TQrNfoSqCFGNix7yjlkl/naOYaY
- 8DG8gAZm05yEPw6VLLDsgLAAFUpvtGvjiYrRXylkTzMrDzQ8LadYLbZtMM8QAP7yJ7eK
- RkU0AJ+6hSei+q1q7QD8rYwFKSi7Qq7ZVp4w1eBakNhCM8+Z9fHR2+Fe74/o1rnd15/i
- NQlMOHHc76+Lo/POujFJFZg1Q9eJQkgZtt7p406Gd17VrJ8K69OsFYZhI4/Gm6bw0npR
- GJA+7HtKFkqhtira3530tB2ehlB0UwfffVg81FNanNBQkIsvRS2bl2vRyH+WvFY6JpsG
- P0Xg==
+ bh=dEQhebuTndEE7Cg0DMsZsBTNOVRFeHqEvwguQLO1hH0=;
+ b=cDPIzlCy80ojTjij/kbVPfM6wsfK7LzNryjZHuPIth0aaERd6+wALQQugAhmgcqSoT
+ dPfTdy4u29Yo3iUMaW3TfQy13FtJdyT4TFzUUMYJkdQCNvdkfGWvnfKhxVi6hZK3Xh7C
+ 8nOktiqwSuIXWiqHi46YTEVzP6RiWXTob841om6F+f/OvHMQC0BpT4m6bouOvfWfOS+I
+ RXqySzj4jzH9uRv94+D/w2FeZg3pOvMb66qGs7YVt6UntGOvY+JCNYVl3nc7Mz3/bse/
+ NX0eELOPy/vId5Qscddkj5XbeM8D61H0xhL2zdAdZsRW4l4POcniSCSAcQ13uTPhpGDp
+ 2/eQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=EH7xq0Cjay8bnTHLqhqbrmZMA4c8aW40WnuwGVm4dRc=;
- b=u8UnDj4JDwLCUih/h7aah48mI0n0T4f3nI5Trs191c/ZoHWrAE8qgXmQLncdl7DJfs
- kSPNqNZxdvm94ZY1ZNMr6eGT00b0rFzuhooUETo8CeAFWa8Gov67YUsrkI2kap324gzU
- ajsLG5WPGqFajdcTWXG6QrsUtOPiZxg/0kqDv/xfNMrwnFsV0ejVSsvHkBO5yT9DsfYe
- Av0VhThk15CojtiXI1xiOaEXATHyI5JqErlDhAnW7EZXFt6dH+UsKuOqz5QsHBjE8Ejf
- WBeXp+xz/Z0+eWIv4v66a9YV3yOhsuakRHLf6UpZKgoWgMzpev64SNvVhLq0J203KGwu
- MQ+w==
-X-Gm-Message-State: ANoB5pmvowDfZ0p1S9Dpwqs0ZgkA2z8bJ+eDibQVuzXZvn/loFnI9hMK
- UNTU3MtIp2KXOxajrJ/a0UVufy0pTCbsAwfxnQBbeQ==
-X-Received: by 2002:a17:90a:14a4:b0:212:d62a:aeb8 with SMTP id
- k33-20020a17090a14a400b00212d62aaeb8mr13835267pja.221.1668440531161; Mon, 14
- Nov 2022 07:42:11 -0800 (PST)
+ bh=dEQhebuTndEE7Cg0DMsZsBTNOVRFeHqEvwguQLO1hH0=;
+ b=dikCGIlx8j+gjcMzqLezAZdx4YXwJJb2W3A0lB/0+spt/Af2TA9LeagoOAWYkT06Xv
+ XM9JGpsBCIDbCkghXW0U4xFx/bHQ6lJsLJQl9EtMwTb/15CrNnfNC7ZcUXUIRKMBhqRM
+ q+DTpmUGueuDEsyyFNRn+j16Il/ap/Cf3O4kEmnlR9XOKkLXwy2LJgoZ/5rF/K/5vBmE
+ lttT07pDzHEKfW3R56bgf8c68VLJkXrtI7DiLxmZOhWYQWXfypCN4lMmmBmvclpaMmV8
+ vFnFfxMzSlXki4LWTtWOotVxre2vcgr+dSDbKiSEU/ZzJ+pfBSRkz6N5zeRF8/dNyle5
+ +f4Q==
+X-Gm-Message-State: ANoB5pkDiDROSF6NdJNpEqtktfFyKVOxFME66xIK3pS2ESrvDYRg5Vfo
+ VoLD29HNafL2ld6lwv/sYDyX+6XyC9pBCNtW1hc=
+X-Received: by 2002:a67:ea4e:0:b0:3aa:1249:73d3 with SMTP id
+ r14-20020a67ea4e000000b003aa124973d3mr6238224vso.5.1668453759967; Mon, 14 Nov
+ 2022 11:22:39 -0800 (PST)
 MIME-Version: 1.0
 References: <20221112214900.24152-1-strahinja.p.jankovic@gmail.com>
-In-Reply-To: <20221112214900.24152-1-strahinja.p.jankovic@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Nov 2022 15:41:59 +0000
-Message-ID: <CAFEAcA_F0jcjviRGjgmb4J_Kos22+UE0vPbcXoTbPCP7xz-nXA@mail.gmail.com>
+ <CAFEAcA_F0jcjviRGjgmb4J_Kos22+UE0vPbcXoTbPCP7xz-nXA@mail.gmail.com>
+ <CABtshVRnwQiTypOFaOqVE69+1wbVoVJEy_x7ELez8Mo6aXT=Yg@mail.gmail.com>
+ <CAFEAcA-s9a2zCy6O0j6=OXZOcYbj=_mS=aa2vxbKbuSMKNjMoQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-s9a2zCy6O0j6=OXZOcYbj=_mS=aa2vxbKbuSMKNjMoQ@mail.gmail.com>
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Date: Mon, 14 Nov 2022 20:22:28 +0100
+Message-ID: <CABtshVRjHMwoN+itKsty-==J8OpZFzuGUB5SsJ+UFPrZ97d6uw@mail.gmail.com>
 Subject: Re: [PATCH] hw/sd: Fix sun4i allwinner-sdhost for U-Boot
-To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+ Beniamino Galvani <b.galvani@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e29;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-vs1-xe29.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Bt3kTM+QEkoK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XWUEH3kR2KAs
 
-On Sat, 12 Nov 2022 at 21:49, Strahinja Jankovic
-<strahinjapjankovic@gmail.com> wrote:
+On Mon, Nov 14, 2022 at 6:36 PM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Trying to run U-Boot for Cubieboard (Allwinner A10) fails because it cannot
-> access SD card. The problem is that FIFO register in current
-> allwinner-sdhost implementation is at the address corresponding to
-> Allwinner H3, but not A10.
-> Linux kernel is not affected since Linux driver uses DMA access and does
-> not use FIFO register for reading/writing.
+> On Mon, 14 Nov 2022 at 17:29, Strahinja Jankovic
+> <strahinjapjankovic@gmail.com> wrote:
+> >
+> > Hi,
+> >
+> > Thank you for your reply.
+> >
+> > On Mon, Nov 14, 2022 at 4:42 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+> > >
+> > > On Sat, 12 Nov 2022 at 21:49, Strahinja Jankovic
+> > > <strahinjapjankovic@gmail.com> wrote:
+> > > >
+> > > > Trying to run U-Boot for Cubieboard (Allwinner A10) fails because it cannot
+> > > > access SD card. The problem is that FIFO register in current
+> > > > allwinner-sdhost implementation is at the address corresponding to
+> > > > Allwinner H3, but not A10.
+> > > > Linux kernel is not affected since Linux driver uses DMA access and does
+> > > > not use FIFO register for reading/writing.
+> > > >
+> > > > This patch adds new class parameter `is_sun4i` and based on that
+> > > > parameter uses register at offset 0x100 either as FIFO register (if
+> > > > sun4i) or as threshold register (if not sun4i; in this case register at
+> > > > 0x200 is FIFO register).
+> > > >
+> > > > Tested with U-Boot and Linux kernel image built for Cubieboard and
+> > > > OrangePi PC.
+> > > >
+> > > > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+> > > > ---
+> > > >  hw/sd/allwinner-sdhost.c         | 67 ++++++++++++++++++++++----------
+> > > >  include/hw/sd/allwinner-sdhost.h |  1 +
+> > > >  2 files changed, 47 insertions(+), 21 deletions(-)
+> > > >
+> > > > diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+> > > > index 455d6eabf6..51e5e90830 100644
+> > > > --- a/hw/sd/allwinner-sdhost.c
+> > > > +++ b/hw/sd/allwinner-sdhost.c
+> > > > @@ -65,7 +65,7 @@ enum {
+> > > >      REG_SD_DLBA       = 0x84,  /* Descriptor List Base Address */
+> > > >      REG_SD_IDST       = 0x88,  /* Internal DMA Controller Status */
+> > > >      REG_SD_IDIE       = 0x8C,  /* Internal DMA Controller IRQ Enable */
+> > > > -    REG_SD_THLDC      = 0x100, /* Card Threshold Control */
+> > > > +    REG_SD_THLDC      = 0x100, /* Card Threshold Control / FIFO (sun4i only)*/
+> > > >      REG_SD_DSBD       = 0x10C, /* eMMC DDR Start Bit Detection Control */
+> > > >      REG_SD_RES_CRC    = 0x110, /* Response CRC from card/eMMC */
+> > > >      REG_SD_DATA7_CRC  = 0x114, /* CRC Data 7 from card/eMMC */
+> > > > @@ -415,10 +415,29 @@ static void allwinner_sdhost_dma(AwSdHostState *s)
+> > > >      }
+> > > >  }
+> > > >
+> > > > +static uint32_t allwinner_sdhost_fifo_read(AwSdHostState *s)
+> > > > +{
+> > > > +    uint32_t res = 0;
+> > > > +
+> > > > +    if (sdbus_data_ready(&s->sdbus)) {
+> > > > +        sdbus_read_data(&s->sdbus, &res, sizeof(uint32_t));
+> > > > +        le32_to_cpus(&res);
+> > > > +        allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
+> > > > +        allwinner_sdhost_auto_stop(s);
+> > > > +        allwinner_sdhost_update_irq(s);
+> > > > +    } else {
+> > > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
+> > > > +                      __func__);
+> > > > +    }
+> > > > +
+> > > > +    return res;
+> > > > +}
+> > > > +
+> > > >  static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
+> > > >                                        unsigned size)
+> > > >  {
+> > > >      AwSdHostState *s = AW_SDHOST(opaque);
+> > > > +    AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
+> > > >      uint32_t res = 0;
+> > > >
+> > > >      switch (offset) {
+> > > > @@ -508,8 +527,12 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
+> > > >      case REG_SD_IDIE:      /* Internal DMA Controller Interrupt Enable */
+> > > >          res = s->dmac_irq;
+> > > >          break;
+> > > > -    case REG_SD_THLDC:     /* Card Threshold Control */
+> > > > -        res = s->card_threshold;
+> > > > +    case REG_SD_THLDC:     /* Card Threshold Control or FIFO register (sun4i) */
+> > > > +        if (sc->is_sun4i) {
+> > > > +            res = allwinner_sdhost_fifo_read(s);
+> > > > +        } else {
+> > > > +            res = s->card_threshold;
+> > > > +        }
+> > > >          break;
+> > > >      case REG_SD_DSBD:      /* eMMC DDR Start Bit Detection Control */
+> > > >          res = s->startbit_detect;
+> > > > @@ -531,16 +554,7 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
+> > > >          res = s->status_crc;
+> > > >          break;
+> > > >      case REG_SD_FIFO:      /* Read/Write FIFO */
+> > > > -        if (sdbus_data_ready(&s->sdbus)) {
+> > > > -            sdbus_read_data(&s->sdbus, &res, sizeof(uint32_t));
+> > > > -            le32_to_cpus(&res);
+> > > > -            allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
+> > > > -            allwinner_sdhost_auto_stop(s);
+> > > > -            allwinner_sdhost_update_irq(s);
+> > > > -        } else {
+> > > > -            qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
+> > > > -                          __func__);
+> > > > -        }
+> > > > +        res = allwinner_sdhost_fifo_read(s);
+> > >
+> > > Does the sun4i really have the FIFO at both addresses, or should
+> > > this one do something else for sun4i ?
+> >
+> > The sun4i sdhost actually has no registers with offset higher than
+> > 0x100 (offset of REG_SD_THLDC in patch), so REG_SD_DSBD, all
+> > REG_SD_*_CRC, REG_SD_CRC_STA and REG_SD_FIFO@0x200 should not be
+> > accessed from application code meant to run on sun4i. That is why I
+> > only changed the FIFO/THLDC (offset 0x100) register behavior, since
+> > that change makes U-Boot work.
+> >
+> > I could update the patch so all of these registers with offset bigger
+> > than 0x100 log error if sun4i is selected, so that is more clear.
+> > Would that be ok?
 >
-> This patch adds new class parameter `is_sun4i` and based on that
-> parameter uses register at offset 0x100 either as FIFO register (if
-> sun4i) or as threshold register (if not sun4i; in this case register at
-> 0x200 is FIFO register).
+> Yes, I think that's a good idea, but let's do that change as a
+> separate patch, so we can keep this one as it is as the bugfix.
 >
-> Tested with U-Boot and Linux kernel image built for Cubieboard and
-> OrangePi PC.
+> For this patch,
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 >
-> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-> ---
->  hw/sd/allwinner-sdhost.c         | 67 ++++++++++++++++++++++----------
->  include/hw/sd/allwinner-sdhost.h |  1 +
->  2 files changed, 47 insertions(+), 21 deletions(-)
->
-> diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
-> index 455d6eabf6..51e5e90830 100644
-> --- a/hw/sd/allwinner-sdhost.c
-> +++ b/hw/sd/allwinner-sdhost.c
-> @@ -65,7 +65,7 @@ enum {
->      REG_SD_DLBA       = 0x84,  /* Descriptor List Base Address */
->      REG_SD_IDST       = 0x88,  /* Internal DMA Controller Status */
->      REG_SD_IDIE       = 0x8C,  /* Internal DMA Controller IRQ Enable */
-> -    REG_SD_THLDC      = 0x100, /* Card Threshold Control */
-> +    REG_SD_THLDC      = 0x100, /* Card Threshold Control / FIFO (sun4i only)*/
->      REG_SD_DSBD       = 0x10C, /* eMMC DDR Start Bit Detection Control */
->      REG_SD_RES_CRC    = 0x110, /* Response CRC from card/eMMC */
->      REG_SD_DATA7_CRC  = 0x114, /* CRC Data 7 from card/eMMC */
-> @@ -415,10 +415,29 @@ static void allwinner_sdhost_dma(AwSdHostState *s)
->      }
->  }
->
-> +static uint32_t allwinner_sdhost_fifo_read(AwSdHostState *s)
-> +{
-> +    uint32_t res = 0;
-> +
-> +    if (sdbus_data_ready(&s->sdbus)) {
-> +        sdbus_read_data(&s->sdbus, &res, sizeof(uint32_t));
-> +        le32_to_cpus(&res);
-> +        allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
-> +        allwinner_sdhost_auto_stop(s);
-> +        allwinner_sdhost_update_irq(s);
-> +    } else {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
-> +                      __func__);
-> +    }
-> +
-> +    return res;
-> +}
-> +
->  static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
->                                        unsigned size)
->  {
->      AwSdHostState *s = AW_SDHOST(opaque);
-> +    AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
->      uint32_t res = 0;
->
->      switch (offset) {
-> @@ -508,8 +527,12 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
->      case REG_SD_IDIE:      /* Internal DMA Controller Interrupt Enable */
->          res = s->dmac_irq;
->          break;
-> -    case REG_SD_THLDC:     /* Card Threshold Control */
-> -        res = s->card_threshold;
-> +    case REG_SD_THLDC:     /* Card Threshold Control or FIFO register (sun4i) */
-> +        if (sc->is_sun4i) {
-> +            res = allwinner_sdhost_fifo_read(s);
-> +        } else {
-> +            res = s->card_threshold;
-> +        }
->          break;
->      case REG_SD_DSBD:      /* eMMC DDR Start Bit Detection Control */
->          res = s->startbit_detect;
-> @@ -531,16 +554,7 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
->          res = s->status_crc;
->          break;
->      case REG_SD_FIFO:      /* Read/Write FIFO */
-> -        if (sdbus_data_ready(&s->sdbus)) {
-> -            sdbus_read_data(&s->sdbus, &res, sizeof(uint32_t));
-> -            le32_to_cpus(&res);
-> -            allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
-> -            allwinner_sdhost_auto_stop(s);
-> -            allwinner_sdhost_update_irq(s);
-> -        } else {
-> -            qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
-> -                          __func__);
-> -        }
-> +        res = allwinner_sdhost_fifo_read(s);
 
-Does the sun4i really have the FIFO at both addresses, or should
-this one do something else for sun4i ?
+Ok, I will start preparing that separate patch for error logging for sun4i.
 
-thanks
--- PMM
+Since this is my first time submitting a patch, is there anything else
+I need to do with this one? Thanks!
+
+Best regards,
+Strahinja
+
+
+> thanks
+> -- PMM

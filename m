@@ -1,38 +1,38 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2683690ejx;
-        Mon, 14 Nov 2022 02:06:27 -0800 (PST)
-X-Received: by 2002:a17:90a:9d8a:b0:212:de1a:355b with SMTP id k10-20020a17090a9d8a00b00212de1a355bmr13362954pjp.1.1668420387419;
-        Mon, 14 Nov 2022 02:06:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668420387; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2796177ejx;
+        Mon, 14 Nov 2022 05:18:52 -0800 (PST)
+X-Received: by 2002:a63:a47:0:b0:46f:b3e:4d46 with SMTP id z7-20020a630a47000000b0046f0b3e4d46mr11669869pgk.265.1668431932443;
+        Mon, 14 Nov 2022 05:18:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668431932; cv=none;
         d=google.com; s=arc-20160816;
-        b=ezwD7zV+slNDn4hg/lWlsAejiN1WidPbtQxrnDyTPrTJMhBqploXjyI+ntrR/ZL02e
-         A0dTmoOYrNX9jgrGW+7Is8You4D4rFLgxANbRH3h4czui9r1Brf7c0mRhcPa4g/qTtFi
-         AH2UqG5fDxG3FRGJ1KCrbM5rNLW+iAq82OjgM3Rahm23mem8arlPSJTB8lm6GeQGXAMw
-         P05BC1g3wmXvqnUIJlKP1IcklHK0JltPfa3BoRsJThw/8hUL7VWzu+kfmXGYZ5K9YKbA
-         jOku6sJGPbA+mZLDcJWLhP91UKC5RzQhQdiERLv8F+AEy8YQi4qKraPwK730iinnbPa4
-         EpWw==
+        b=0VlyZIra07ZRjKk9eUtnshzsIoay4ggyS10U04N61+b5Gv5ijCFKztKIueO3pqekg3
+         Hp7LpKwFYlzAaoAwPhfQMXhwQOLVzWNO4cuHACewsQutEwFelc756XWlpFaGa8+eWpS2
+         ZB8rRKE8UD/k4NaBzKDh+z04pKmWZFQUT+xvTDy//+AgJ1p8phPf6zJnUE6o4FaY3kQG
+         LoDFL10cZc5aRuCjXgmisLJhp2NOry46M4dehnVhO16/6+mwCJu+q6oygTYwHV+P2Z7u
+         kYj18IsTjZm6qh+DJ3gh2GVy7sG4YIPxF0Nhw2+Ps44EVEcZstKJgCuY4EIUkSwZJsZq
+         GMJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=LbXul+PU6pL42Fsl6Wyc78F8fuex80+WE1jwHDJ7FzE=;
-        b=XzRWUpdwEf+hGqX8dvuSNNTdyBRJPlQ7mZ2mwhnbbn6idHj65SY4CfPE4DW74HE7II
-         LgxAhWQOQRu23dDSGNb/uy+2SgTZknH5ZmhPamp63+11puaxzMYa7yhukIYbDdQKUMpZ
-         2qFBfQ40C2xtElJXPBmn+ek62DJ3k+2Vzl9AlzcNv0Kj2XViSCo1ptSVHh/WxJtNo+ZI
-         hgXMBChqAE28zqGIpLCvw18vt7YycyNPKuqypa0nUWprPwN3/yO4/xlwZX+k2hBxbH5V
-         Kxi/PY/QX+qQUvN5uBDx1HnfX8y6csjHCbZmhvvshS7k8f60GGQvUWSquR4iOhNSaM6R
-         0EcQ==
+        bh=A78MonTqUVj6SW0ZTqjKXzSGKlFKvo8xINRWkrlof5A=;
+        b=wxKMPtGSkAd82vi1lUnkfS7T+KkG7XNgvK5g8KyFCg61Y8Eo/iHhxXxhiE/k5rs0Nx
+         BufBYp4nNSRlQOCNm3aUCga0dSK4Mpyanqhs3SA1EcuuxjOWly7i0TAAczFbYBzstf82
+         XxRV1P+ayETpMn2d8iJlSzW/OP16s+A7aObu/alTbEBqtNRgtlvSnEn1fr6QylZkZ8RW
+         4pT1tb12f8rtz82CvvdKMeT+oZJfqjoK5gzwNINIsKhcflrdCg9TF6fnNNv70RaElZXx
+         InIGe+MxQCq+WUNDAj9DQv6rKS1QtA6B9afwhufO7WMhie17LxbpdaHI3jHxQE8cc+DH
+         rPcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Dpryn6k2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hiqdPmFR;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f4-20020a17090274c400b0018422d1d1f1sor3578165plt.21.2022.11.14.02.06.27
+        by mx.google.com with SMTPS id f11-20020a170902f38b00b0017ce06ee06bsor3787257ple.11.2022.11.14.05.18.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 14 Nov 2022 02:06:27 -0800 (PST)
+        Mon, 14 Nov 2022 05:18:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Dpryn6k2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hiqdPmFR;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,127 +40,130 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LbXul+PU6pL42Fsl6Wyc78F8fuex80+WE1jwHDJ7FzE=;
-        b=Dpryn6k2jDcveKKccFLX0XGqb680Rnrn5CTRbe6BFixECtQJH4X7ZP7pcWuriRulKN
-         441EVhrowSuu3zoeo97LvpqZnzH5K//cdXIml9m8gGmXJpUi5vdb/dXVwa69maY8FSxx
-         Mv/2If0vX+HR6o8JD/7U+CViXP+j7Hee+0bUBgBYJZxJvi9Rit/rBSHFQFHsbzyuuzBK
-         gxxU+0FNhxSIUysno31K0MIRwu8RBoW/lY12WKkN3bmiLdKMq5PqN2utuEBS+w1PA2bm
-         Lx0zRDt1vPEvJB/nknMSkWo3oYQk2WvqNaTfYhZ2l3KFbEsnU0Skgi8NBpQ+6f9i0NjU
-         mUrA==
+        bh=A78MonTqUVj6SW0ZTqjKXzSGKlFKvo8xINRWkrlof5A=;
+        b=hiqdPmFRWf4Ykt+K7C5jCW4TX2bbJOY2VxJqGwpbnJckLKGoYHFq6WbtKZZR3HHA5B
+         8/C0vHRmYga9jwO8unhJBUmahOMqEiK9SipfCmCTPBbfL/tclD0vnkMHzsu6IcsHmyuS
+         6/b+nGWY3ueiERE4f9wp2oX0HYaHe0msBNThqrnYZtomvYD+3yu/1W5Tz3tbPLVjJP8q
+         0nSOwZzfdLK1DSVA9v/WMG6kkGJg5gFRchN5PTlXdcTkNQIEJZIuFVX9ZgJ0ACyJ2mR/
+         JF1KvZv8NbFppQQnJbCvx1IFeRhHLW4WUsCib+gCEr4znfsFcOi34Ol8neJ7PJAnz6M4
+         eBhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LbXul+PU6pL42Fsl6Wyc78F8fuex80+WE1jwHDJ7FzE=;
-        b=N549vQWvw0FWsepByZqt85dVaKa+/sWhIRaQRYVOQ0UJjGjt/yS0t11IcuTWjDnNMU
-         5c5xuNOyrDzrOqWhCPf0nRGwXM7N3MPjh/PxHrbBuIS/sQJHg97qObYHuHgIQBFJWZd1
-         7SxUUi2nVfMTjm+comakWMnkMLjA2/PYdVHeQicRnms/QSYborW3lQPKt8YKgcNe+EZW
-         +Vm2uf6uU99Vtv6Doizajb0OqU+NySS0ZIAjijjg2GvBu7F2LI0AFm0prVeYMwLEuq2Y
-         YZUAe8I6THD0EL/0sxNtcetxywuHQBKsRigvdVDMtIhVj+6RRpyyeLfuP74Lg8SUxrI5
-         fx1g==
-X-Gm-Message-State: ANoB5pkqjCzgwKuyYNsPn/TtGw955hhkVYGbcXjWMMsr3lE6IoMs200O
-	WiAWOkYlj4SlSRxITjmqfoNqD0eAud5UjjpJtrhJDDNC
-X-Google-Smtp-Source: AA0mqf75OQPz2QigGhbWoizk6AC6Kovo2+MqMuwXeQgpLu68JGiWr2yZ84gAdgPUdctJEt+VTVGYb8IseWFZuFRYbwI=
-X-Received: by 2002:a17:902:c702:b0:186:9295:2012 with SMTP id
- p2-20020a170902c70200b0018692952012mr12808805plp.19.1668420386964; Mon, 14
- Nov 2022 02:06:26 -0800 (PST)
+        bh=A78MonTqUVj6SW0ZTqjKXzSGKlFKvo8xINRWkrlof5A=;
+        b=gzE5g/ajPtRgq8flxhGBw209L1xUcfcq1qMDfaiwB9Vbk1Tp5p39NUaIW8xSY4+rWQ
+         wXfZqArk0xBxifCXj769WL9zTr+YBCgrCfIWA33syMH/G+76AqP32GU16gzwYSpRu7fZ
+         rZq+Hw6CEVPQslb6GnUfYZGgprw2CHz/EQtpuK83md+XWkFpkpXdfb0Og8aS2T2C6lQA
+         HjJQ1A6tdMxkW4AaV2ayjOANlRwuEkU0dkT+egBX4MCK8PbDVw7MY6LcNiDIj6Vu/TCp
+         ICtdCxAvKYVH9P6699B0XSSyZVnqaDB+Ua52DLHAprQShXx6ONkGT6RO2ktBXqVMHTy4
+         B58Q==
+X-Gm-Message-State: ANoB5pnHVZR/HqY2fGf/NTCHFESn9J72dxlRd4Sg0GkaA/Coyfp3d2kA
+	Ccu/9l6+5dLVVYllEGJzxKlSJd2Ypjc+fAwUgtVhBeynw+zjWl9S
+X-Google-Smtp-Source: AA0mqf6I7SqcmQY2M7gFiqrPTl2RTqGiqf6Vx6Bc12y/PxjCloYbwkopPD8yqtFkzkfxmS/1nLV21tos/C/BX9tlkK8=
+X-Received: by 2002:a17:902:ea91:b0:185:4ec3:c708 with SMTP id
+ x17-20020a170902ea9100b001854ec3c708mr13726401plb.60.1668431931940; Mon, 14
+ Nov 2022 05:18:51 -0800 (PST)
 MIME-Version: 1.0
-References: <20220927141504.3886314-1-alex.bennee@linaro.org>
- <20220927141504.3886314-2-alex.bennee@linaro.org> <769e0e8a-7787-b02b-9e26-87eca955666b@linaro.org>
- <CAFEAcA-0zoNS0nWrYu6hM1=8tG4i4GkjHLL2v4OMmJv5GaDAMg@mail.gmail.com>
- <87r0znlnmm.fsf@linaro.org> <CAFEAcA8Ft_YAC2TRCSErUJxY8_kZOQdF7Qa6oM6VF2RpAeHrBA@mail.gmail.com>
- <b1a845ca-0972-1800-0c58-03f68d0c94a0@linaro.org> <CAFEAcA-jvg4t1O-wE+19rJgzdiSZqF+X-XmEDLnrJYZCo233Sw@mail.gmail.com>
- <cb28a138-a82d-0604-a8cf-b302493ff286@linaro.org>
-In-Reply-To: <cb28a138-a82d-0604-a8cf-b302493ff286@linaro.org>
+References: <20221111145529.4020801-1-alex.bennee@linaro.org> <20221111145529.4020801-13-alex.bennee@linaro.org>
+In-Reply-To: <20221111145529.4020801-13-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Nov 2022 10:06:15 +0000
-Message-ID: <CAFEAcA-Rwuh9s0EoD-B7zgQPhcgZqBOmgK46S-Vd=vRYE1a1Bg@mail.gmail.com>
-Subject: Re: [PATCH v3 01/15] hw: encode accessing CPU index in MemTxAttrs
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>, 
-	Jason Wang <jasowang@redhat.com>
+Date: Mon, 14 Nov 2022 13:18:40 +0000
+Message-ID: <CAFEAcA_HoysKQ83rNUn-3X0gdUMjEaq9Xg-scCGnDb18C3MJOw@mail.gmail.com>
+Subject: Re: [PATCH v2 12/12] hw/intc: add implementation of GICD_IIDR to Arm GIC
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, fam@euphon.net, berrange@redhat.com, 
+	f4bug@amsat.org, aurelien@aurel32.net, pbonzini@redhat.com, 
+	stefanha@redhat.com, crosa@redhat.com, 
+	"open list:ARM cores" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 3fuM+juSLokK
+X-TUID: d/+yztQgRPdB
 
-On Fri, 11 Nov 2022 at 13:23, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
+On Fri, 11 Nov 2022 at 14:55, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> On 31/10/22 14:03, Peter Maydell wrote:
-> > On Mon, 31 Oct 2022 at 12:08, Philippe Mathieu-Daud=C3=A9 <philmd@linar=
-o.org> wrote:
-> >>
-> >> On 4/10/22 16:54, Peter Maydell wrote:
-> >>> On Tue, 4 Oct 2022 at 14:33, Alex Benn=C3=A9e <alex.bennee@linaro.org=
-> wrote:
-> >>>>
-> >>>>
-> >>>> Peter Maydell <peter.maydell@linaro.org> writes:
-> >>>>> The MSC is in the address map like most other stuff, and thus there=
- is
-> >>>>> no restriction on whether it can be accessed by other things than C=
-PUs
-> >>>>> (DMAing to it would be silly but is perfectly possible).
-> >>>>>
-> >>>>> The intent of the code is "pass this transaction through, but force
-> >>>>> it to be Secure/NonSecure regardless of what it was before". That
-> >>>>> should not involve a change of the requester type.
-> >>>>
-> >>>> Should we assert (or warn) when the requester_type is unspecified?
-> >>>
-> >>> Not in the design of MemTxAttrs that's currently in git, no:
-> >>> in that design it's perfectly fine for something generating
-> >>> memory transactions to use MEMTXATTRS_UNSPECIFIED (which defaults
-> >>> to meaning a bunch of things including "not secure").
-> >>
-> >> In tz_mpc_handle_block():
-> >>
-> >> static MemTxResult tz_mpc_handle_block(TZMPC *s, hwaddr addr, MemTxAtt=
-rs
-> >> attrs)
-> >> {
-> >>       /* Handle a blocked transaction: raise IRQ, capture info, etc */
-> >>       if (!s->int_stat) {
-> >>
-> >>           s->int_info1 =3D addr;
-> >>           s->int_info2 =3D 0;
-> >>           s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, HMASTER=
-,
-> >>                                     attrs.requester_id & 0xffff);
-> >>           s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, HNONSEC=
-,
-> >>                                     ~attrs.secure);
-> >>           s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, CFG_NS,
-> >>                                     tz_mpc_cfg_ns(s, addr));
-> >>
-> >>
-> >> Should we check whether the requester is MTRT_CPU?
-> >
-> > That code is basically assuming that the requester_id is the AMBA AHB
-> > 'HMASTER' field (i.e. something hopefully unique to all things that
-> > send out transactions, not necessarily limited only to CPUs), which is =
-a
-> > somewhat bogus assumption given that it isn't currently any such thing.=
-..
-> >
-> > I'm not sure if/how this patchset plans to model generic "ID of transac=
-tion
-> > generator".
+> a66a24585f (hw/intc/arm_gic: Implement read of GICC_IIDR) implemented
+> this for the CPU interface register. The fact we don't implement it
+> shows up when running Xen with -d guest_error which is definitely
+> wrong because the guest is perfectly entitled to read it.
 >
-> Does your 'generic "ID of transaction generator"' fit into MTRT_MACHINE
-> described as "for more complex encoding":
+> Lightly re-factor this region of registers and also add a comment to
+> the function in case anyway was under the illusion we only return
+> bytes from a function called readb.
 >
->    'MACHINE indicates a machine specific encoding which needs further
->     processing to decode into its constituent parts.'
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 >
-> ?
+> ---
+> v2
+>   - checkpatch fixes.
+> ---
+>  hw/intc/arm_gic.c | 44 ++++++++++++++++++++++++++++++--------------
+>  1 file changed, 30 insertions(+), 14 deletions(-)
+>
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index 492b2421ab..65b1ef7151 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -941,6 +941,10 @@ static void gic_complete_irq(GICState *s, int cpu, i=
+nt irq, MemTxAttrs attrs)
+>      gic_update(s);
+>  }
+>
+> +/*
+> + * Although this is named a byte read we don't always return bytes and
+> + * rely on the calling function oring bits together.
+> + */
 
-Not really, because "generic ID of a transaction generator" is a
-superset of "ID per CPU", not something separate that sits
-alongside it...
+Rather than documenting this, maybe it would be better to
+fix the weirdness? We only do this for exactly one register,
+the GICD_TYPER. Everything else is naturally byte-based.
+(The GICD_CTLR looks like it is also doing this, but the
+only non-zero bits are in the low byte, so it isn't really.)
 
+The GICD_TYPER returning bigger than a byte's worth of
+data I think is a bug we introduced in commit 5543d1abb6e2
+when we added the security extensions support -- before that
+all the bits we needed to return were in the low byte. So
+I think we can fix this with just (untested):
+
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -955,6 +955,7 @@ static uint32_t gic_dist_readb(void *opaque,
+hwaddr offset, MemTxAttrs attrs)
+     cm =3D 1 << cpu;
+     if (offset < 0x100) {
+         if (offset =3D=3D 0) {      /* GICD_CTLR */
++            /* We rely here on the only non-zero bits being in byte 0 */
+             if (s->security_extn && !attrs.secure) {
+                 /* The NS bank of this register is just an alias of the
+                  * EnableGrp1 bit in the S bank version.
+@@ -964,11 +965,14 @@ static uint32_t gic_dist_readb(void *opaque,
+hwaddr offset, MemTxAttrs attrs)
+                 return s->ctlr;
+             }
+         }
+-        if (offset =3D=3D 4)
+-            /* Interrupt Controller Type Register */
+-            return ((s->num_irq / 32) - 1)
+-                    | ((s->num_cpu - 1) << 5)
+-                    | (s->security_extn << 10);
++        if (offset =3D=3D 4) {
++            /* GICD_TYPER byte 0 */
++            return ((s->num_irq / 32) - 1) | ((s->num_cpu - 1) << 5);
++        }
++        if (offset =3D=3D 5) {
++            /* GICD_TYPER byte 1 */
++            return (s->security_extn << 2);
++        }
+         if (offset < 0x08)
+             return 0;
+         if (offset >=3D 0x80) {
+
+
+(you can add my Signed-off-by: if you want to turn that into a proper patch=
+.)
+
+thanks
 -- PMM

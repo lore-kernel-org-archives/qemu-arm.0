@@ -1,169 +1,179 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2796177ejx;
-        Mon, 14 Nov 2022 05:18:52 -0800 (PST)
-X-Received: by 2002:a63:a47:0:b0:46f:b3e:4d46 with SMTP id z7-20020a630a47000000b0046f0b3e4d46mr11669869pgk.265.1668431932443;
-        Mon, 14 Nov 2022 05:18:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668431932; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3197449ejx;
+        Mon, 14 Nov 2022 15:34:43 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7PfRxPUV+KbvI0i/IRzGTG8Hu3ZbAQdw7V4RfI4SBqtKASArgWWeLp6lNIresPN5Cd5Jon
+X-Received: by 2002:a05:620a:c10:b0:6fa:104e:ac20 with SMTP id l16-20020a05620a0c1000b006fa104eac20mr13677129qki.708.1668468883091;
+        Mon, 14 Nov 2022 15:34:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668468883; cv=none;
         d=google.com; s=arc-20160816;
-        b=0VlyZIra07ZRjKk9eUtnshzsIoay4ggyS10U04N61+b5Gv5ijCFKztKIueO3pqekg3
-         Hp7LpKwFYlzAaoAwPhfQMXhwQOLVzWNO4cuHACewsQutEwFelc756XWlpFaGa8+eWpS2
-         ZB8rRKE8UD/k4NaBzKDh+z04pKmWZFQUT+xvTDy//+AgJ1p8phPf6zJnUE6o4FaY3kQG
-         LoDFL10cZc5aRuCjXgmisLJhp2NOry46M4dehnVhO16/6+mwCJu+q6oygTYwHV+P2Z7u
-         kYj18IsTjZm6qh+DJ3gh2GVy7sG4YIPxF0Nhw2+Ps44EVEcZstKJgCuY4EIUkSwZJsZq
-         GMJQ==
+        b=fgoLHYTRRne5Pf4tdG81bUvx115A5zj1zN6M1LqOXOMbH1zImSwExYgSIgDOxEiPRo
+         GgpVr2adPV7ZpmyfgtacZwbkEjtwippP7Tno+o0FHoJQhMFRMONHRUtKX1EMIqG5ip9m
+         diqNKOLsDGHmp3nRc626jWLmQ9nN6zFcfdyPxcn70XHK2VJ1u9wQR1jDx9sjSXNy/kB+
+         EK0V5GpTEVkQg40Y8tAQG89GORRbbUD28oeFjCiSrboZHNuYQO5DEXIB47NEvXqO+mIn
+         vERnGIHSQPYrLQzTPrCbxY5sB2IIwsYkimOpMNlBFTdcdYED6aHDwyiRsrRGq6jl5sGq
+         RMxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=A78MonTqUVj6SW0ZTqjKXzSGKlFKvo8xINRWkrlof5A=;
-        b=wxKMPtGSkAd82vi1lUnkfS7T+KkG7XNgvK5g8KyFCg61Y8Eo/iHhxXxhiE/k5rs0Nx
-         BufBYp4nNSRlQOCNm3aUCga0dSK4Mpyanqhs3SA1EcuuxjOWly7i0TAAczFbYBzstf82
-         XxRV1P+ayETpMn2d8iJlSzW/OP16s+A7aObu/alTbEBqtNRgtlvSnEn1fr6QylZkZ8RW
-         4pT1tb12f8rtz82CvvdKMeT+oZJfqjoK5gzwNINIsKhcflrdCg9TF6fnNNv70RaElZXx
-         InIGe+MxQCq+WUNDAj9DQv6rKS1QtA6B9afwhufO7WMhie17LxbpdaHI3jHxQE8cc+DH
-         rPcg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=tfneRg/gsPSVQlEdifSjggr7QvzAAQiGCHa04CF2Nj4=;
+        b=FhX7vZo5rZlkPzV4SFp/UGfJl27m1aeyO0AI6ofMuY8Xf9zESDzPq2TybPuC35mzzF
+         cwe2zTYg8WJoXvMIqf6zSfx+uw4j0ybjkIGhvmkBerlhnXVXduveL2cME84jDMnoUVSc
+         5+wofC5oiLnUCw0T0Tj9sDxmzRxNkJUP57eCh56GLE+tEE3iG/KAKsOn/kqcpIkjpQO1
+         b3aEBAvZAXR/lQPQjPKeWwv4Ac5NMmY6qt+ziY0nXZc82t8zt23lnyAlmQhcv7niu4xa
+         87aYmKvzFEcHCW8sBnNK6uEC+noaEC9/0z5IZ85kB1pY0a1HptVurSmJb6qAvIjNpnCJ
+         KYgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hiqdPmFR;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D4QKCpPe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f11-20020a170902f38b00b0017ce06ee06bsor3787257ple.11.2022.11.14.05.18.52
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r6-20020ac87ee6000000b00397107724f3si6097043qtc.205.2022.11.14.15.34.42
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 14 Nov 2022 05:18:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 14 Nov 2022 15:34:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hiqdPmFR;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D4QKCpPe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=A78MonTqUVj6SW0ZTqjKXzSGKlFKvo8xINRWkrlof5A=;
-        b=hiqdPmFRWf4Ykt+K7C5jCW4TX2bbJOY2VxJqGwpbnJckLKGoYHFq6WbtKZZR3HHA5B
-         8/C0vHRmYga9jwO8unhJBUmahOMqEiK9SipfCmCTPBbfL/tclD0vnkMHzsu6IcsHmyuS
-         6/b+nGWY3ueiERE4f9wp2oX0HYaHe0msBNThqrnYZtomvYD+3yu/1W5Tz3tbPLVjJP8q
-         0nSOwZzfdLK1DSVA9v/WMG6kkGJg5gFRchN5PTlXdcTkNQIEJZIuFVX9ZgJ0ACyJ2mR/
-         JF1KvZv8NbFppQQnJbCvx1IFeRhHLW4WUsCib+gCEr4znfsFcOi34Ol8neJ7PJAnz6M4
-         eBhQ==
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ouinx-0008LR-3G; Mon, 14 Nov 2022 18:23:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jens.wiklander@linaro.org>)
+ id 1ouifP-0005Ez-B5
+ for qemu-devel@nongnu.org; Mon, 14 Nov 2022 18:15:04 -0500
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jens.wiklander@linaro.org>)
+ id 1ouZaP-0006Rz-Jp
+ for qemu-devel@nongnu.org; Mon, 14 Nov 2022 08:33:20 -0500
+Received: by mail-lj1-x22f.google.com with SMTP id s24so13166606ljs.11
+ for <qemu-devel@nongnu.org>; Mon, 14 Nov 2022 05:33:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=tfneRg/gsPSVQlEdifSjggr7QvzAAQiGCHa04CF2Nj4=;
+ b=D4QKCpPeCgFSMTCODtX9SYWW+gkq9ep1DeKfadZD48i8WsomBOT9cli55m1ELNyGV6
+ 9kHzCO/PHeOxAnmSuseC+VA4LprKh3Dbx9qVpZ9cJnRTOxApd8PLfEXu8UaXB46b/sTD
+ ObzZk1L/81pGki4DMiWkTRKM2PbZFk5LEMsHTgUR01QGUqf8Pf7XWXqn87j1MVhcaZDr
+ 5w8u5UM7vNiARvPdp7msFPBcHvkWYKa2hKGr2pjjDpDYXRPvVlBadCLEpL/qUxaXLL03
+ 3teltm4dWahR5K2Q+6qR6iwtc24KFCAdmswNLuoQQ1B8p2aJlhvLVUD1vVqEIVUOY5o1
+ LFxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=A78MonTqUVj6SW0ZTqjKXzSGKlFKvo8xINRWkrlof5A=;
-        b=gzE5g/ajPtRgq8flxhGBw209L1xUcfcq1qMDfaiwB9Vbk1Tp5p39NUaIW8xSY4+rWQ
-         wXfZqArk0xBxifCXj769WL9zTr+YBCgrCfIWA33syMH/G+76AqP32GU16gzwYSpRu7fZ
-         rZq+Hw6CEVPQslb6GnUfYZGgprw2CHz/EQtpuK83md+XWkFpkpXdfb0Og8aS2T2C6lQA
-         HjJQ1A6tdMxkW4AaV2ayjOANlRwuEkU0dkT+egBX4MCK8PbDVw7MY6LcNiDIj6Vu/TCp
-         ICtdCxAvKYVH9P6699B0XSSyZVnqaDB+Ua52DLHAprQShXx6ONkGT6RO2ktBXqVMHTy4
-         B58Q==
-X-Gm-Message-State: ANoB5pnHVZR/HqY2fGf/NTCHFESn9J72dxlRd4Sg0GkaA/Coyfp3d2kA
-	Ccu/9l6+5dLVVYllEGJzxKlSJd2Ypjc+fAwUgtVhBeynw+zjWl9S
-X-Google-Smtp-Source: AA0mqf6I7SqcmQY2M7gFiqrPTl2RTqGiqf6Vx6Bc12y/PxjCloYbwkopPD8yqtFkzkfxmS/1nLV21tos/C/BX9tlkK8=
-X-Received: by 2002:a17:902:ea91:b0:185:4ec3:c708 with SMTP id
- x17-20020a170902ea9100b001854ec3c708mr13726401plb.60.1668431931940; Mon, 14
- Nov 2022 05:18:51 -0800 (PST)
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=tfneRg/gsPSVQlEdifSjggr7QvzAAQiGCHa04CF2Nj4=;
+ b=6Jh+1TdYWsCKXI7f/UbaxNLx3Pd/JY95BSsyqM2r0LdF/dHvuCyEfS0EtWAmdxs6FE
+ QPVCYUbBiZlGc4Y2nxs3rCNxD4gT023/ezW8YTa1OCUPL+d8nQk3pQ1y6rT1HaKlV8Ty
+ rrowka6eOuh2ojzrCeGrMTUESZkT540uW8EkFLSVNRHQc6/pZU/aatet01y1fsd1G2kN
+ MVrsT8VTSgy7OmPxsTf5ceA2K+A6WDsKkNH5rHoz3ddfp1pdeSjy5r2grECog36kXjpE
+ WkHLr++GDYc4HleU03xexZ3jqYJrGM/VXlQJafjj5F1vw9va8bSLVA5v2uwgLTBwEZzA
+ qX5A==
+X-Gm-Message-State: ANoB5pms+ZiQVaq3gkpO4cQpCEH/51c/GXkSZSW21BXxReYV7B+m6MWw
+ 8wG0Pr9j/vKGFy5F9ylfI/IkRw==
+X-Received: by 2002:a2e:711a:0:b0:277:2f15:4179 with SMTP id
+ m26-20020a2e711a000000b002772f154179mr4193619ljc.408.1668432793718; 
+ Mon, 14 Nov 2022 05:33:13 -0800 (PST)
+Received: from jade.urgonet (h-79-136-84-253.A175.priv.bahnhof.se.
+ [79.136.84.253]) by smtp.gmail.com with ESMTPSA id
+ y15-20020a05651c106f00b0027760138c53sm2006609ljm.72.2022.11.14.05.33.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Nov 2022 05:33:13 -0800 (PST)
+From: Jens Wiklander <jens.wiklander@linaro.org>
+To: qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ Jens Wiklander <jens.wiklander@linaro.org>
+Subject: [PATCH] hw/intc/arm_gicv3: fix prio masking on pmr write
+Date: Mon, 14 Nov 2022 14:32:57 +0100
+Message-Id: <20221114133257.1752176-1-jens.wiklander@linaro.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-References: <20221111145529.4020801-1-alex.bennee@linaro.org> <20221111145529.4020801-13-alex.bennee@linaro.org>
-In-Reply-To: <20221111145529.4020801-13-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Nov 2022 13:18:40 +0000
-Message-ID: <CAFEAcA_HoysKQ83rNUn-3X0gdUMjEaq9Xg-scCGnDb18C3MJOw@mail.gmail.com>
-Subject: Re: [PATCH v2 12/12] hw/intc: add implementation of GICD_IIDR to Arm GIC
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, fam@euphon.net, berrange@redhat.com, 
-	f4bug@amsat.org, aurelien@aurel32.net, pbonzini@redhat.com, 
-	stefanha@redhat.com, crosa@redhat.com, 
-	"open list:ARM cores" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: d/+yztQgRPdB
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::22f;
+ envelope-from=jens.wiklander@linaro.org; helo=mail-lj1-x22f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fvbLCfoGSmcG
 
-On Fri, 11 Nov 2022 at 14:55, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> a66a24585f (hw/intc/arm_gic: Implement read of GICC_IIDR) implemented
-> this for the CPU interface register. The fact we don't implement it
-> shows up when running Xen with -d guest_error which is definitely
-> wrong because the guest is perfectly entitled to read it.
->
-> Lightly re-factor this region of registers and also add a comment to
-> the function in case anyway was under the illusion we only return
-> bytes from a function called readb.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> ---
-> v2
->   - checkpatch fixes.
-> ---
->  hw/intc/arm_gic.c | 44 ++++++++++++++++++++++++++++++--------------
->  1 file changed, 30 insertions(+), 14 deletions(-)
->
-> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-> index 492b2421ab..65b1ef7151 100644
-> --- a/hw/intc/arm_gic.c
-> +++ b/hw/intc/arm_gic.c
-> @@ -941,6 +941,10 @@ static void gic_complete_irq(GICState *s, int cpu, i=
-nt irq, MemTxAttrs attrs)
->      gic_update(s);
->  }
->
-> +/*
-> + * Although this is named a byte read we don't always return bytes and
-> + * rely on the calling function oring bits together.
-> + */
+With commit 39f29e599355 ("hw/intc/arm_gicv3: Use correct number of
+priority bits for the CPU") the number of priority bits was changed from
+the maximum value 8 to typically 5. As a consequence a few of the lowest
+bits in ICC_PMR_EL1 becomes RAZ/WI. However prior to this patch one of
+these bits was still used since the supplied priority value is masked
+before it's eventually right shifted with one bit. So the bit is not
+lost as one might expect when the register is read again.
 
-Rather than documenting this, maybe it would be better to
-fix the weirdness? We only do this for exactly one register,
-the GICD_TYPER. Everything else is naturally byte-based.
-(The GICD_CTLR looks like it is also doing this, but the
-only non-zero bits are in the low byte, so it isn't really.)
+The Linux kernel depends on lowest valid bit to be reset to zero, see
+commit 33625282adaa ("irqchip/gic-v3: Probe for SCR_EL3 being clear
+before resetting AP0Rn") for details.
 
-The GICD_TYPER returning bigger than a byte's worth of
-data I think is a bug we introduced in commit 5543d1abb6e2
-when we added the security extensions support -- before that
-all the bits we needed to return were in the low byte. So
-I think we can fix this with just (untested):
+So fix this by masking the priority value after it may have been right
+shifted by one bit.
 
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -955,6 +955,7 @@ static uint32_t gic_dist_readb(void *opaque,
-hwaddr offset, MemTxAttrs attrs)
-     cm =3D 1 << cpu;
-     if (offset < 0x100) {
-         if (offset =3D=3D 0) {      /* GICD_CTLR */
-+            /* We rely here on the only non-zero bits being in byte 0 */
-             if (s->security_extn && !attrs.secure) {
-                 /* The NS bank of this register is just an alias of the
-                  * EnableGrp1 bit in the S bank version.
-@@ -964,11 +965,14 @@ static uint32_t gic_dist_readb(void *opaque,
-hwaddr offset, MemTxAttrs attrs)
-                 return s->ctlr;
-             }
+Fixes: 39f29e599355 ("hw/intc/arm_gicv3: Use correct number of priority bits for the CPU")
+Signed-off-by: Jens Wiklander <jens.wiklander@linaro.org>
+---
+Hi,
+
+I've only tested this patch on top of v7.1.0 since I couldn't get current
+to run in my test setup.
+
+In case anyone wonders what I'm testing, it's a setup with Hafnium at
+S-EL2, OP-TEE at S-EL1 and the Linux kernel at NS-EL1 (no NS-EL2 for
+simplicity).
+
+Regards,
+Jens
+
+ hw/intc/arm_gicv3_cpuif.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index 8ca630e5ad1e..b17b29288c73 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1016,8 +1016,6 @@ static void icc_pmr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ 
+     trace_gicv3_icc_pmr_write(gicv3_redist_affid(cs), value);
+ 
+-    value &= icc_fullprio_mask(cs);
+-
+     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_is_secure(env) &&
+         (env->cp15.scr_el3 & SCR_FIQ)) {
+         /* NS access and Group 0 is inaccessible to NS: return the
+@@ -1029,6 +1027,7 @@ static void icc_pmr_write(CPUARMState *env, const ARMCPRegInfo *ri,
          }
--        if (offset =3D=3D 4)
--            /* Interrupt Controller Type Register */
--            return ((s->num_irq / 32) - 1)
--                    | ((s->num_cpu - 1) << 5)
--                    | (s->security_extn << 10);
-+        if (offset =3D=3D 4) {
-+            /* GICD_TYPER byte 0 */
-+            return ((s->num_irq / 32) - 1) | ((s->num_cpu - 1) << 5);
-+        }
-+        if (offset =3D=3D 5) {
-+            /* GICD_TYPER byte 1 */
-+            return (s->security_extn << 2);
-+        }
-         if (offset < 0x08)
-             return 0;
-         if (offset >=3D 0x80) {
+         value = (value >> 1) | 0x80;
+     }
++    value &= icc_fullprio_mask(cs);
+     cs->icc_pmr_el1 = value;
+     gicv3_cpuif_update(cs);
+ }
+-- 
+2.31.1
 
-
-(you can add my Signed-off-by: if you want to turn that into a proper patch=
-.)
-
-thanks
--- PMM

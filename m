@@ -1,37 +1,37 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp465809ejx;
-        Thu, 1 Dec 2022 06:30:32 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6ClwERbdk3OxGSofzSpZ4mVMbQ2+8ax9e64Us/uKmKEwBiSLDdIZD7s3jF3Gxss5CdKcRv
-X-Received: by 2002:a05:622a:22a8:b0:3a6:3756:c684 with SMTP id ay40-20020a05622a22a800b003a63756c684mr47776523qtb.10.1669905031912;
-        Thu, 01 Dec 2022 06:30:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669905031; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp466347ejx;
+        Thu, 1 Dec 2022 06:31:05 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4S9kwJgohsAKzE7FyIqmCLd+XLtceYn9HuAY/cefJ3ol+/5yAy+E2cCU+/9lC3sGxMSdyL
+X-Received: by 2002:a05:6214:15c1:b0:4b1:b8e5:8f66 with SMTP id p1-20020a05621415c100b004b1b8e58f66mr42946560qvz.36.1669905064869;
+        Thu, 01 Dec 2022 06:31:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669905064; cv=none;
         d=google.com; s=arc-20160816;
-        b=uidvZa5IBeutPlJc+La4HUy1IpRhMCLEXoepBtIGzpwuCHjXcy9371CzxeO1HHAV30
-         mXbejK4wq/20YbKs/YDsF9wMOAGj46Gv7RvAQogmAQzcMwneJRkGCwXmYKk22aojyzvw
-         1t47eoC0po0gyYqeHM5qWW8swuqGoz1TA0MP4kRZkQcKzFVQ4fm1tnZ9ApW9NTPsxbxT
-         /edIpuIPQXQGs9TbjsH1wsMuUmrGnXh+nIeTKdEUpTWmJmbF98VisUMuHSD9N+WBsuco
-         mHVEpskpJXyosLRHB6eTLvN84DPJftKxC0qpQkdlGYzV3zBUAxd5fZPyM0zkb/j7sMCk
-         Og4Q==
+        b=Srium49NAzrr/fg8aPtjnnNzZntaWdBg86wktEKaxlZ5wrZbPiNyKLWGZCufFL6gs6
+         tSFICuLu5jNB2HcL/Q/klpwTuMJa51ztF4SkOL/7gXQxmecG7z7ON6k5xji3N9j3/GTJ
+         CXpIqutHR7T8lFRNWWe0qKye+NzqncJuDC6UC3LIlQkr7CO4+mZKIgXoO0uISQmCMwhP
+         qs0S9GDNgLyeN/4Qtr1i/17GuL7q31VfKjzctNNv4czOGkPkXtc26ZzOWwq/vc+3SdD0
+         qT+9FPhILbtiN9ZU+l3pf4aLMEkPmWYW2Q/3vfMFHgEW+Ej+SNyLz1nOcwcllOX/TLH/
+         Yyuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:message-id:mime-version:subject
-         :date:from;
-        bh=MvSvRoMw+vwgKclT8yE/eH6MR+2dui29fayBNPD6aHk=;
-        b=DTNxeyf3QwfqWHSMynd1H7sBPcd0y68phR0zCToRLENPZM07GpoXAn7nCXxTLC6CSW
-         fZYzstLAqyomSrZ5rhWNefjuAWIBSjKcNTfbbEn6yL9HrinqTXPQRiG53qL+Gh4AXNXe
-         Kr8325Jix+KV08EVdHN8Sv35Bk7uPHyR+CR4ukxXScMXD0puSYQx8B9MS2LGdV9btkHs
-         u0rW9PcDi5+D0UBLb6Hi7hj+eREbPvhR1d05t//q6JP+RKUoqRrITJulDIbnOMLWkpzc
-         Y9UsCdndG4ZYP7xX+D0t8n8Q0eG5Xfb16ENiyu9Mn8EVVDD9nDpaxWvI3LFLqdXKsoJZ
-         exnw==
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
+         :from;
+        bh=MZ37UaF/aL4TWpnsKe6Uhm2G2uTYj9k2V2SPPHdM1Ww=;
+        b=gUVVJutwS7+yNpCfaLZ8t2RuHio2wYEsT60qT5F5IHhtCRIBOZ+nPs/lw7jXpRgS1L
+         hagye+/QS0I/05Ad8GuihQE8H5miR0Jn3wFOp+SMGjuTlNldOXnfLox2wKKqcHXmC+7B
+         UMLPMlzqhEJ8Ikwap71DTnJy8Yq3SqHNafgZayLlqJ6eQYJ+iGM85WE2kU7u6CfmhepU
+         4EvEfAxMEV0Co7dGdxnm0xIZc1In3wXfOSAPD7gSKMva2URWJK5W9GECH1ZlRgE+wh4b
+         bFiSP0/Jr+ST6dbvP64o9N6RsY05H1ZeZIUWaeOE5uv2GzT5icgvvNWNyVC69aRZCCTZ
+         cwTA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ga7-20020a05622a590700b003a51c7c0403si2730437qtb.526.2022.12.01.06.30.31
+        by mx.google.com with ESMTPS id v14-20020a05620a440e00b006fabf9ca754si2971429qkp.657.2022.12.01.06.31.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Dec 2022 06:30:31 -0800 (PST)
+        Thu, 01 Dec 2022 06:31:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -39,36 +39,38 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p0kZz-0004aP-NX; Thu, 01 Dec 2022 09:30:23 -0500
+	id 1p0kZz-0004aO-BP; Thu, 01 Dec 2022 09:30:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1p0kZx-0004ZL-5l; Thu, 01 Dec 2022 09:30:21 -0500
+ id 1p0kZx-0004ZX-Lq; Thu, 01 Dec 2022 09:30:21 -0500
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1p0kZt-0001My-9X; Thu, 01 Dec 2022 09:30:19 -0500
+ id 1p0kZu-0001NC-IN; Thu, 01 Dec 2022 09:30:20 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 18D1511EFD8;
- Thu,  1 Dec 2022 14:30:13 +0000 (UTC)
+ by mail-b.sr.ht (Postfix) with ESMTPSA id C6B0911F204;
+ Thu,  1 Dec 2022 14:30:15 +0000 (UTC)
 From: ~axelheider <axelheider@git.sr.ht>
-Date: Thu, 01 Dec 2022 14:30:12 +0000
-Subject: [PATCH qemu.git v2 0/1] hw/arm/virt: make second UART available
-MIME-Version: 1.0
-Message-ID: <166990501232.22022.16582561244534011083-0@git.sr.ht>
+Date: Mon, 14 Nov 2022 13:06:47 +0100
+Subject: [PATCH qemu.git v2 1/1] hw/arm/virt: make second UART available
+Message-ID: <166990501232.22022.16582561244534011083-1@git.sr.ht>
 X-Mailer: git.sr.ht
+In-Reply-To: <166990501232.22022.16582561244534011083-0@git.sr.ht>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
 Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
  helo=mail-b.sr.ht
-X-Spam_score_int: 2
-X-Spam_score: 0.2
-X-Spam_bar: /
-X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_REPLYTO=2.095,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: 36
+X-Spam_score: 3.6
+X-Spam_bar: +++
+X-Spam_report: (3.6 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
+ FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,33 +86,239 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: ~axelheider <axelheider@gmx.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2HHaVbRS4K9g
+X-TUID: lmcpDz3FxLFz
 
-This is a follow-up on older attempts to make a second UART
-available for the arm-virt machine in normal world. The use case
-is, that this give a simple I/O channel in addition to stdout, as this
-simplifies various test scenarios. Especially for non-Linux operating
-systems (e.g. seL4) where arm-virt is handy as a generic machine
-for testing purposes.
+From: Axel Heider <axel.heider@hensoldt.net>
 
-There are existing discussions about this topic at:
-- https://lists.gnu.org/archive/html/qemu-arm/2017-12/msg00063.html
-- https://lists.gnu.org/archive/html/qemu-discuss/2018-11/msg00001.html
-- https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg01613.html
+The first UART always always exists. If the security extensions are
+enabled, the second UART also always exists. Otherwise, it only exists
+if a backend is configured explicitly via '-serial <backend>', where
+'null' creates a dummy backend. This allows enabling the second UART
+explicitly on demand and does not interfere with any existing setup
+that just expect one (or two if security extensions are enabled)
+UARTs.
 
-This patch tries to address the concerns raised there and also
-avoid breaking compatibility with existing setups.
-
-v2 also updates the documentation in docs/system/arm/virt.rst
-
-Axel Heider (1):
-  hw/arm/virt: make second UART available
-
+Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+---
  docs/system/arm/virt.rst |  5 ++--
  hw/arm/virt-acpi-build.c | 12 ++++-----
  hw/arm/virt.c            | 57 ++++++++++++++++++++++++++++++----------
  include/hw/arm/virt.h    |  4 +--
  4 files changed, 54 insertions(+), 24 deletions(-)
 
--- 
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 20442ea2c1..0d9de6bb2e 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -26,7 +26,8 @@ The virt board supports:
+=20
+ - PCI/PCIe devices
+ - Flash memory
+-- One PL011 UART
++- Two PL011 UARTs. The second UART only exists if a backend is configured
++  explicitly or TrustZone is enabled.
+ - An RTC
+ - The fw_cfg device that allows a guest to obtain data from QEMU
+ - A PL061 GPIO controller
+@@ -42,7 +43,7 @@ The virt board supports:
+ - many CPUs (up to 512 if using a GICv3 and highmem)
+ - Secure-World-only devices if the CPU has TrustZone:
+=20
+-  - A second PL011 UART
++  - The second PL011 UART
+   - A second PL061 GPIO controller, with GPIO lines for triggering
+     a system reset or system poweroff
+   - A secure flash memory
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 4156111d49..3e1852a1b9 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -482,14 +482,14 @@ build_spcr(GArray *table_data, BIOSLinker *linker, Virt=
+MachineState *vms)
+     build_append_int_noprefix(table_data, 0, 3); /* Reserved */
+     /* Base Address */
+     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 8, 0, 1,
+-                     vms->memmap[VIRT_UART].base);
++                     vms->memmap[VIRT_UART0].base);
+     /* Interrupt Type */
+     build_append_int_noprefix(table_data,
+         (1 << 3) /* Bit[3] ARMH GIC interrupt */, 1);
+     build_append_int_noprefix(table_data, 0, 1); /* IRQ */
+     /* Global System Interrupt */
+     build_append_int_noprefix(table_data,
+-                              vms->irqmap[VIRT_UART] + ARM_SPI_BASE, 4);
++                              vms->irqmap[VIRT_UART0] + ARM_SPI_BASE, 4);
+     build_append_int_noprefix(table_data, 3 /* 9600 */, 1); /* Baud Rate */
+     build_append_int_noprefix(table_data, 0 /* No Parity */, 1); /* Parity */
+     /* Stop Bits */
+@@ -673,11 +673,11 @@ build_dbg2(GArray *table_data, BIOSLinker *linker, Virt=
+MachineState *vms)
+=20
+     /* BaseAddressRegister[] */
+     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 8, 0, 1,
+-                     vms->memmap[VIRT_UART].base);
++                     vms->memmap[VIRT_UART0].base);
+=20
+     /* AddressSize[] */
+     build_append_int_noprefix(table_data,
+-                              vms->memmap[VIRT_UART].size, 4);
++                              vms->memmap[VIRT_UART0].size, 4);
+=20
+     /* NamespaceString[] */
+     g_array_append_vals(table_data, name, namespace_length);
+@@ -858,8 +858,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMa=
+chineState *vms)
+      */
+     scope =3D aml_scope("\\_SB");
+     acpi_dsdt_add_cpus(scope, vms);
+-    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+-                       (irqmap[VIRT_UART] + ARM_SPI_BASE));
++    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
++                       (irqmap[VIRT_UART0] + ARM_SPI_BASE));
+     if (vmc->acpi_expose_flash) {
+         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b871350856..92f9401b23 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -143,11 +143,11 @@ static const MemMapEntry base_memmap[] =3D {
+     [VIRT_GIC_ITS] =3D            { 0x08080000, 0x00020000 },
+     /* This redistributor space allows up to 2*64kB*123 CPUs */
+     [VIRT_GIC_REDIST] =3D         { 0x080A0000, 0x00F60000 },
+-    [VIRT_UART] =3D               { 0x09000000, 0x00001000 },
++    [VIRT_UART0] =3D              { 0x09000000, 0x00001000 },
+     [VIRT_RTC] =3D                { 0x09010000, 0x00001000 },
+     [VIRT_FW_CFG] =3D             { 0x09020000, 0x00000018 },
+     [VIRT_GPIO] =3D               { 0x09030000, 0x00001000 },
+-    [VIRT_SECURE_UART] =3D        { 0x09040000, 0x00001000 },
++    [VIRT_UART1] =3D              { 0x09040000, 0x00001000 }, /* secure UART=
+ */
+     [VIRT_SMMU] =3D               { 0x09050000, 0x00020000 },
+     [VIRT_PCDIMM_ACPI] =3D        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+     [VIRT_ACPI_GED] =3D           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+@@ -184,11 +184,11 @@ static MemMapEntry extended_memmap[] =3D {
+ };
+=20
+ static const int a15irqmap[] =3D {
+-    [VIRT_UART] =3D 1,
++    [VIRT_UART0] =3D 1,
+     [VIRT_RTC] =3D 2,
+     [VIRT_PCIE] =3D 3, /* ... to 6 */
+     [VIRT_GPIO] =3D 7,
+-    [VIRT_SECURE_UART] =3D 8,
++    [VIRT_UART1] =3D 8,
+     [VIRT_ACPI_GED] =3D 9,
+     [VIRT_MMIO] =3D 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] =3D 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+@@ -843,6 +843,27 @@ static void create_uart(const VirtMachineState *vms, int=
+ uart,
+                         MemoryRegion *mem, Chardev *chr)
+ {
+     char *nodename;
++    /*
++     * The first UART always always exists. If the security extensions are
++     * enabled, the second UART also always exists. Otherwise, it only exists
++     * if a backend is configured explicitly via '-serial <backend>', where
++     * 'null' creates a dummy backend. This allows enabling the second UART
++     * explicitly on demand and does not interfere with any existing setup t=
+hat
++     * just expect one (or two if security extensions are enabled) UARTs.
++     */
++    switch(uart) {
++    case VIRT_UART0:
++        break;
++    case VIRT_UART1:
++        if (!vms->secure && !chr) {
++            return;
++        }
++        break;
++    default:
++        error_report("unsupported UART ID %d", uart);
++        exit(1);
++    }
++
+     hwaddr base =3D vms->memmap[uart].base;
+     hwaddr size =3D vms->memmap[uart].size;
+     int irq =3D vms->irqmap[uart];
+@@ -854,6 +875,7 @@ static void create_uart(const VirtMachineState *vms, int =
+uart,
+=20
+     qdev_prop_set_chr(dev, "chardev", chr);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    /* if security extensions are enabled, 'mem' is 'secure_sysmem' for UART=
+1 */
+     memory_region_add_subregion(mem, base,
+                                 sysbus_mmio_get_region(s, 0));
+     sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
+@@ -873,15 +895,21 @@ static void create_uart(const VirtMachineState *vms, in=
+t uart,
+     qemu_fdt_setprop(ms->fdt, nodename, "clock-names",
+                          clocknames, sizeof(clocknames));
+=20
+-    if (uart =3D=3D VIRT_UART) {
++    switch(uart) {
++    case VIRT_UART0:
+         qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
+-    } else {
+-        /* Mark as not usable by the normal world */
+-        qemu_fdt_setprop_string(ms->fdt, nodename, "status", "disabled");
+-        qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "okay");
+-
+-        qemu_fdt_setprop_string(ms->fdt, "/secure-chosen", "stdout-path",
+-                                nodename);
++        break;
++    case VIRT_UART1:
++        if (vms->secure) {
++            qemu_fdt_setprop_string(ms->fdt, nodename, "status", "disabled");
++            qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "oka=
+y");
++            qemu_fdt_setprop_string(ms->fdt, "/secure-chosen", "stdout-path",
++                                    nodename);
++        }
++        break;
++    default:
++        /* noting special */
++        break;
+     }
+=20
+     g_free(nodename);
+@@ -2222,11 +2250,12 @@ static void machvirt_init(MachineState *machine)
+=20
+     fdt_add_pmu_nodes(vms);
+=20
+-    create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
++    create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
++    create_uart(vms, VIRT_UART1, vms->secure ? secure_sysmem : sysmem,
++                serial_hd(1));
+=20
+     if (vms->secure) {
+         create_secure_ram(vms, secure_sysmem, secure_tag_sysmem);
+-        create_uart(vms, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
+     }
+=20
+     if (tag_sysmem) {
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 6ec479ca2b..90563c132b 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -69,7 +69,7 @@ enum {
+     VIRT_GIC_ITS,
+     VIRT_GIC_REDIST,
+     VIRT_SMMU,
+-    VIRT_UART,
++    VIRT_UART0,
+     VIRT_MMIO,
+     VIRT_RTC,
+     VIRT_FW_CFG,
+@@ -79,7 +79,7 @@ enum {
+     VIRT_PCIE_ECAM,
+     VIRT_PLATFORM_BUS,
+     VIRT_GPIO,
+-    VIRT_SECURE_UART,
++    VIRT_UART1, /* secure UART if vms->secure */
+     VIRT_SECURE_MEM,
+     VIRT_SECURE_GPIO,
+     VIRT_PCDIMM_ACPI,
+--=20
 2.34.5

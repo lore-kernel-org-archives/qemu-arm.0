@@ -1,242 +1,221 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3222290ejx;
-        Mon, 14 Nov 2022 16:21:48 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7GdB/47Ir2bzdkTfYupalyd8gYExhnkY8MBE2CfHsQYjxu0hn0yKcFbOQRBYKSb6SUd1ap
-X-Received: by 2002:a37:87c3:0:b0:6fb:3b4f:c609 with SMTP id j186-20020a3787c3000000b006fb3b4fc609mr13647688qkd.500.1668471708234;
-        Mon, 14 Nov 2022 16:21:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668471708; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3228459ejx;
+        Mon, 14 Nov 2022 16:34:06 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6YxmQdesC9P+7f7eyJERbsejbfI8xMCbWhSt3XDafm0WIDIOW8mqCBmN8i4ZDeY2xxuFZu
+X-Received: by 2002:ac8:6049:0:b0:3a4:f45a:ac1a with SMTP id k9-20020ac86049000000b003a4f45aac1amr14712998qtm.352.1668472446700;
+        Mon, 14 Nov 2022 16:34:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668472446; cv=none;
         d=google.com; s=arc-20160816;
-        b=E/UtawpnU/i2xCC4+R/lSWcBHBjSlS16GZVJP64aSn+vuOOOicICzwJ3qx7kVDsgX+
-         OEl2Zdkpkolqww4CnAPOQU8G3PMFe6bH1xigZSLMRBpoQddvVRA0QjAsQRuqyWaZGHU7
-         jOxVdfHmubv7Zr3aVU7i4/N4iY7//SY4h2XiQ/tyrqBmqMLglD2f82RSeQ5B1xEfTD2m
-         GZ+i1gPx/m4VE7pPEt0Vwn2ctT5HJa5uHuXM3Fd05xZqhBSjLVTYIOX/fVav1oqzTTmE
-         PfAnNfDDGUpwdjBUAQIweiyUDQionLHo3wZ+rE6svIphwvL5y9A9wMNlTVFigf2xTbki
-         OyiQ==
+        b=N6I8BU0y8yPxDm2GEBdjnxQuBpnhgLN3jSZTvsds1QQUiy+VN2lNZ9iuSb6WT5X1JX
+         vyAVCG+ZofW/XSh0Tf6MMlG7w8rPf/23opIN225vqvpRBxyTTB0PqSZRgfDQJuciNGQq
+         c7IVANnE0tODgjVZAITLg0vjI7cO7TP+07VfJedPIkDtLGQtwQbQpnWz2DEcveC6b2Kb
+         LfgUBZ57/whMAFgprEogRocf4yt2yAH0fnRUoxRYYu5nTpljc4B8sr+Nr3H5Q6LKvyrN
+         PP6q7EldseDn0PhzBBvBN7qn272x/PKTGjby4iR1akHGpq0G+43VrurdGOr9WEsXqVwF
+         4Ulg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=GxvDZeEJg9boR28NKE16peI7UQyIFf8KNc89TO+F7ts=;
-        b=fvRKKv22OWgpR0dRJd4oHVfuxpJ9sdPkZS1sf+wMes7FA7rZiRbzbw7p1lYX2+i/CI
-         zp8bc0JD99fcvoYqBj76qxFzpdg6N57zAaxC1hmkGjpw/2Ps69E03cWZ4q9R5Xgv26Xz
-         TcMaeLVoVvV1M1pxQ9FnvEjwjFsy+A5ePqUroB5iGUFn/A7farHdMSnJP36UOdr1T2U8
-         LH+w2J+0gsZVFysm2JG5Lt5p+PYmr4klgFIQNLafggWzYTmkzpMCHna5xaBfrUDUVsPm
-         UJwqxYbc/iLNFmBMQprTMh3Esje2Gl4Mm7Uf6ZsjTMD+KYAnpbVq9NpMWpuTx48qElhU
-         nHlg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:feedback-id:dkim-signature:dkim-signature;
+        bh=ZAF+khdGUFgCgGLigAQnJdrE+XOPl7sLY2zdFW2mxWU=;
+        b=WUpBwkG+vg9YAAc3FcFVZpkv7mKiDERbUo3SdaP+gLt/PHH0kxV+p5wzq2WhyO0IQ4
+         MTKbVp9jXkXa+tJy6qThX9v7X8NjCZZ7cK2hArmTa8Ex149ytXQ5isdd5Hhfen12IOeM
+         Rj0clzTiAzfsx5mtzYTk/5BeVvBA7gnmvcllN+cvBN6rEaq3RPvGKTxjtkxxy7NRSJWE
+         BcVE5oshovTqPz91fTFzXMKvIO4DISBP+yFGXh1jfO8yirs2hOrSypM5ScZ8sTOwfUJ9
+         QI4Lkq3fng9b/9Ah/kclndZTpHQDW0jY8/PYk1nfy3y/sZTB86D9bPk939qarNlMeJvW
+         YetA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fJq2AInM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=XdquSOyP;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=RNWBGeTB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i3-20020ad45c63000000b004b1b522cf0csi6804241qvh.54.2022.11.14.16.21.48
+        by mx.google.com with ESMTPS id d5-20020ac85345000000b0039cbdd485ddsi6067422qto.149.2022.11.14.16.34.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Nov 2022 16:21:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Nov 2022 16:34:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fJq2AInM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=XdquSOyP;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=RNWBGeTB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ouijv-0004WG-3D; Mon, 14 Nov 2022 18:19:43 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ouijR-0003OT-3I; Mon, 14 Nov 2022 18:19:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1ouieb-00039s-RO; Mon, 14 Nov 2022 18:14:14 -0500
-Received: from mail-vs1-xe29.google.com ([2607:f8b0:4864:20::e29])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1oudGl-0003rh-Qz; Mon, 14 Nov 2022 12:29:17 -0500
-Received: by mail-vs1-xe29.google.com with SMTP id k67so12164929vsk.2;
- Mon, 14 Nov 2022 09:29:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GxvDZeEJg9boR28NKE16peI7UQyIFf8KNc89TO+F7ts=;
- b=fJq2AInM2ibIWqR4NaA9Oe9UicRMvU/AG7K5pcgFlOp94NflXYIzYooKSoj0gKkENA
- AE+ciS0s+G0n+YUvMDsUKQHjVZfdpVPAM4SvIXTzg7/EBszAy6e4rq0wesswhJ7TEoP3
- OZVnFwgJsIZJKsDZN1VBulCO7cvlP8et+625aW6adCH9BoEmKD670zyUiWjQOw+3FqwB
- p2Xc0jE8MTbTdiVJEbClAS2mQBj7utIjz1ktEKSfOho/ZvENSS4KdcYzwsE4l67Np7NI
- rt63FDU2lhWzkYgNe5ZEJ7i5SclRrflOu0W4W+Yp2IhsD5uVONr3NCQ6jzPEFIG4EONY
- fwaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GxvDZeEJg9boR28NKE16peI7UQyIFf8KNc89TO+F7ts=;
- b=5N9dvAwbFIJP2RUFvN+DlmDabf8diBFkg5DrnHY2NZJ4rz+inljeCgorR6ABttRI+M
- jxhxoksikgDOBU/8GpDa+mr0H4xe905Pt0YfVpqun9Z/SMUbq6JDosuWE2hAzTEu0SNU
- 6w23VIpywtrowk7eda/vJj7veLUVHGHI3SUm1uMn9/wEPjuGFmAVTmHKSGFdOaybnrQN
- 4rHxR7mc+9ItH1iPrd9BLoLatUHHeSm9L4DFCI/0syv8OHQHnusYKkfrycV+K31qhJYU
- 8pH/4qgKZP9aTAcPWaMfsAkPJUussUGK8HcHys0maJpGAgcqFg9ba0dbWRYiOi/z7bRS
- vHIg==
-X-Gm-Message-State: ANoB5pmZ/XktVeV/q3q8mP1NP54eHLCs86hwAOTfDg9EjTXHoxBCctEn
- mGfSqiT6VQ7XCb/QL/lbEfPi38yKNQQNtz4AAaw=
-X-Received: by 2002:a05:6102:38cb:b0:3aa:255b:4704 with SMTP id
- k11-20020a05610238cb00b003aa255b4704mr6065160vst.38.1668446953548; Mon, 14
- Nov 2022 09:29:13 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1ouieS-0003Lu-R2; Mon, 14 Nov 2022 18:14:05 -0500
+Received: from out2-smtp.messagingengine.com ([66.111.4.26])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1oueop-0006UR-Rk; Mon, 14 Nov 2022 14:08:34 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 276605C00EF;
+ Mon, 14 Nov 2022 14:08:28 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Mon, 14 Nov 2022 14:08:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm2; t=1668452908; x=1668539308; bh=ZA
+ F+khdGUFgCgGLigAQnJdrE+XOPl7sLY2zdFW2mxWU=; b=XdquSOyPvPfhuuF0Re
+ 2JHneb5Q4Dk8JMpbldpm7ViGhMDFSg5UbgEZpQi90abd0ZET4UEVrIn7fOGvaZJm
+ 4MvBywmd5yno0EI0XOSF+egI9SNBMeMryYLQLnMUSabr+CzowANQrFocSWShKp7M
+ 1+eCHM4yVPfkkDmUUl3OQkl3229y6sbZVk5shAw/Y8bjPpRlgXH1bu5m2Qkqnd4j
+ jslDryYEsCqUBPnUcrX/dIVXjYj723zJzFsVP7Uip1i3Gsa2fEvE0axYUkHu4FUV
+ l1OoW/fZIQRRJ6OyfgRkwKdJWLI5XTg9462C+VWP4iKWwpLuBeMDyUym1gKfTAvA
+ Zk0Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; t=1668452908; x=1668539308; bh=ZAF+khdGUFgCg
+ GLigAQnJdrE+XOPl7sLY2zdFW2mxWU=; b=RNWBGeTB6r/im/cOJE5h90K98vand
+ ajuLHDMwFxkxT8KpT7DZTIIct6N9GdHTh2ZQ2dMXkKwSnsPB6gqfZd7FUiegb0xO
+ xY7vjVFz5JOnBYPDVpVf3gRg63YshAwjriFeqc5qzqKiS7Le/6ONonTMD4boYpEd
+ ektwCcLO2n77w1kPsPR0kFIbGNx5VpC/qCYozPlLM4bq/9M7Z1DNt53B5KyIzZFB
+ 0sDM/rzGB9OUdir9PO8z9VjZ2d6mQdisJf0S43TnNghTFzkb1Og60HiMMhSJTAqv
+ gsFiYihyNEketXb8/Qo3Vv6pTpReHqW0MICcrJg5t/z3Mgtda+HxJUPrQ==
+X-ME-Sender: <xms:K5JyY514kXAOudwBGFCu2uWUp8ay_I9CTT389PX7L40SW1veWrS9bg>
+ <xme:K5JyYwGF_z7TUtvY8JQNqsStDWiA56ciKvEHJMcwD-7kQcgw0ND4rNyarGTmKuxF_
+ 8gTK4vu4oBSrcUS6eY>
+X-ME-Received: <xmr:K5JyY57fltZ_8zUv6B2hMRM81SgsEl9x1hQGUuEiyHDKg6U2GJQUEl9-ud9f2g>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrgedvgdelfecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecumhhishhsihhnghcuvffquchfihgvlhguucdlfedtmd
+ enucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
+ htthgvrhhnpeetlefgueelfeffffefkeeigffhjeeugfdtgfetieegkedvfeffveeikedv
+ leetveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hpvghtvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:LJJyY22WsFmDks6p9K7UU7naGFR04fOX8liN-ZU0XgU_r5hr7Z2TUA>
+ <xmx:LJJyY8G-FUZIjJqrj66NFnx6PIl7zkSSw3jpWrPCtXH5PB9-uEH3GA>
+ <xmx:LJJyY386dhlPLyNkszPMO7z1t0Vxn-fFeux4RE6Tq-azCYV-CRT4TQ>
+ <xmx:LJJyYx4_cuqkQCgkZlSrlA3-u1PANPTFO4VSOnJ157vo0sQyk4XdSQ>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 14 Nov 2022 14:08:27 -0500 (EST)
+From: Peter Delevoryas <peter@pjd.dev>
+To: 
+Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter@pjd.dev,
+ patrick@stwcx.xyz
+Subject: [PATCH 1/1] hw/arm/aspeed: Automatically zero-extend flash images
+Date: Mon, 14 Nov 2022 11:08:23 -0800
+Message-Id: <20221114190823.1888691-2-peter@pjd.dev>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221114190823.1888691-1-peter@pjd.dev>
+References: <20221114190823.1888691-1-peter@pjd.dev>
 MIME-Version: 1.0
-References: <20221112214900.24152-1-strahinja.p.jankovic@gmail.com>
- <CAFEAcA_F0jcjviRGjgmb4J_Kos22+UE0vPbcXoTbPCP7xz-nXA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_F0jcjviRGjgmb4J_Kos22+UE0vPbcXoTbPCP7xz-nXA@mail.gmail.com>
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Mon, 14 Nov 2022 18:29:01 +0100
-Message-ID: <CABtshVRnwQiTypOFaOqVE69+1wbVoVJEy_x7ELez8Mo6aXT=Yg@mail.gmail.com>
-Subject: Re: [PATCH] hw/sd: Fix sun4i allwinner-sdhost for U-Boot
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Beniamino Galvani <b.galvani@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e29;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-vs1-xe29.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=66.111.4.26; envelope-from=peter@pjd.dev;
+ helo=out2-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fFF02/qRqirY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pPqWPXTP4s8K
 
-Hi,
+One thing that's really annoying about the Aspeed machines is that you
+have to provide a flash image that is the same size as the SPI-NOR flash
+device the board uses, or something larger. If you don't, you'll get
+this obscure error message:
 
-Thank you for your reply.
+    qemu-system-aarch64: failed to read the initial flash content
 
-On Mon, Nov 14, 2022 at 4:42 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Sat, 12 Nov 2022 at 21:49, Strahinja Jankovic
-> <strahinjapjankovic@gmail.com> wrote:
-> >
-> > Trying to run U-Boot for Cubieboard (Allwinner A10) fails because it cannot
-> > access SD card. The problem is that FIFO register in current
-> > allwinner-sdhost implementation is at the address corresponding to
-> > Allwinner H3, but not A10.
-> > Linux kernel is not affected since Linux driver uses DMA access and does
-> > not use FIFO register for reading/writing.
-> >
-> > This patch adds new class parameter `is_sun4i` and based on that
-> > parameter uses register at offset 0x100 either as FIFO register (if
-> > sun4i) or as threshold register (if not sun4i; in this case register at
-> > 0x200 is FIFO register).
-> >
-> > Tested with U-Boot and Linux kernel image built for Cubieboard and
-> > OrangePi PC.
-> >
-> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-> > ---
-> >  hw/sd/allwinner-sdhost.c         | 67 ++++++++++++++++++++++----------
-> >  include/hw/sd/allwinner-sdhost.h |  1 +
-> >  2 files changed, 47 insertions(+), 21 deletions(-)
-> >
-> > diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
-> > index 455d6eabf6..51e5e90830 100644
-> > --- a/hw/sd/allwinner-sdhost.c
-> > +++ b/hw/sd/allwinner-sdhost.c
-> > @@ -65,7 +65,7 @@ enum {
-> >      REG_SD_DLBA       = 0x84,  /* Descriptor List Base Address */
-> >      REG_SD_IDST       = 0x88,  /* Internal DMA Controller Status */
-> >      REG_SD_IDIE       = 0x8C,  /* Internal DMA Controller IRQ Enable */
-> > -    REG_SD_THLDC      = 0x100, /* Card Threshold Control */
-> > +    REG_SD_THLDC      = 0x100, /* Card Threshold Control / FIFO (sun4i only)*/
-> >      REG_SD_DSBD       = 0x10C, /* eMMC DDR Start Bit Detection Control */
-> >      REG_SD_RES_CRC    = 0x110, /* Response CRC from card/eMMC */
-> >      REG_SD_DATA7_CRC  = 0x114, /* CRC Data 7 from card/eMMC */
-> > @@ -415,10 +415,29 @@ static void allwinner_sdhost_dma(AwSdHostState *s)
-> >      }
-> >  }
-> >
-> > +static uint32_t allwinner_sdhost_fifo_read(AwSdHostState *s)
-> > +{
-> > +    uint32_t res = 0;
-> > +
-> > +    if (sdbus_data_ready(&s->sdbus)) {
-> > +        sdbus_read_data(&s->sdbus, &res, sizeof(uint32_t));
-> > +        le32_to_cpus(&res);
-> > +        allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
-> > +        allwinner_sdhost_auto_stop(s);
-> > +        allwinner_sdhost_update_irq(s);
-> > +    } else {
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
-> > +                      __func__);
-> > +    }
-> > +
-> > +    return res;
-> > +}
-> > +
-> >  static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
-> >                                        unsigned size)
-> >  {
-> >      AwSdHostState *s = AW_SDHOST(opaque);
-> > +    AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
-> >      uint32_t res = 0;
-> >
-> >      switch (offset) {
-> > @@ -508,8 +527,12 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
-> >      case REG_SD_IDIE:      /* Internal DMA Controller Interrupt Enable */
-> >          res = s->dmac_irq;
-> >          break;
-> > -    case REG_SD_THLDC:     /* Card Threshold Control */
-> > -        res = s->card_threshold;
-> > +    case REG_SD_THLDC:     /* Card Threshold Control or FIFO register (sun4i) */
-> > +        if (sc->is_sun4i) {
-> > +            res = allwinner_sdhost_fifo_read(s);
-> > +        } else {
-> > +            res = s->card_threshold;
-> > +        }
-> >          break;
-> >      case REG_SD_DSBD:      /* eMMC DDR Start Bit Detection Control */
-> >          res = s->startbit_detect;
-> > @@ -531,16 +554,7 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
-> >          res = s->status_crc;
-> >          break;
-> >      case REG_SD_FIFO:      /* Read/Write FIFO */
-> > -        if (sdbus_data_ready(&s->sdbus)) {
-> > -            sdbus_read_data(&s->sdbus, &res, sizeof(uint32_t));
-> > -            le32_to_cpus(&res);
-> > -            allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
-> > -            allwinner_sdhost_auto_stop(s);
-> > -            allwinner_sdhost_update_irq(s);
-> > -        } else {
-> > -            qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
-> > -                          __func__);
-> > -        }
-> > +        res = allwinner_sdhost_fifo_read(s);
->
-> Does the sun4i really have the FIFO at both addresses, or should
-> this one do something else for sun4i ?
+Which is just because the file isn't the right size. Zero-extending the
+file to 128MB (the largest SPI-NOR flash size) fixes this.
 
-The sun4i sdhost actually has no registers with offset higher than
-0x100 (offset of REG_SD_THLDC in patch), so REG_SD_DSBD, all
-REG_SD_*_CRC, REG_SD_CRC_STA and REG_SD_FIFO@0x200 should not be
-accessed from application code meant to run on sun4i. That is why I
-only changed the FIFO/THLDC (offset 0x100) register behavior, since
-that change makes U-Boot work.
+This commit just performs the zero-extend automatically, so people don't
+have to maintain bash scripts for it. And if your bash script does this
+already, it will be a no-op. And, if your firmware image is larger than
+the SPI-NOR device, then it will not truncate it.
 
-I could update the patch so all of these registers with offset bigger
-than 0x100 log error if sun4i is selected, so that is more clear.
-Would that be ok?
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+---
+ hw/arm/aspeed.c | 40 +++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 39 insertions(+), 1 deletion(-)
 
-Best regards,
-Strahinja
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 55f114ef72..26450d90db 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -260,6 +260,30 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
+     rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
+ }
+ 
++static int zero_extend_block_device(BlockBackend *blk, uint64_t size,
++                                    Error **errp)
++{
++    uint64_t perm, shared_perm;
++
++    blk_get_perm(blk, &perm, &shared_perm);
++
++    if (blk_set_perm(blk, BLK_PERM_ALL, BLK_PERM_ALL, errp)) {
++        error_append_hint(errp, "Unable to change permissions on block device");
++        return -1;
++    }
++    if (blk_truncate(blk, size, true, PREALLOC_MODE_OFF, BDRV_REQ_ZERO_WRITE,
++                     errp)) {
++        error_append_hint(errp, "Unable to zero-extend block device");
++        return -1;
++    }
++    if (blk_set_perm(blk, perm, shared_perm, errp)) {
++        error_append_hint(errp,
++                          "Unable to restore permissions on block device");
++        /* Ignore error since we successfully extended the device already */
++    }
++    return 0;
++}
++
+ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+                                       unsigned int count, int unit0)
+ {
+@@ -273,10 +297,24 @@ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+         DriveInfo *dinfo = drive_get(IF_MTD, 0, unit0 + i);
+         qemu_irq cs_line;
+         DeviceState *dev;
++        AspeedSMCFlash *flash = &s->flashes[i];
++        uint64_t flash_size = memory_region_size(&flash->mmio);
+ 
+         dev = qdev_new(flashtype);
+         if (dinfo) {
+-            qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
++            BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
++            int64_t blk_size = blk_getlength(blk);
++
++            if (blk_size > 0 && blk_size < (int64_t)flash_size) {
++                Error *err = NULL;
++
++                zero_extend_block_device(blk, flash_size, &err);
++                if (err) {
++                    warn_reportf_err(err, "Error zero-extending MTD drive[%d] "
++                                     "to flash size", i);
++                }
++            }
++            qdev_prop_set_drive(dev, "drive", blk);
+         }
+         qdev_realize_and_unref(dev, BUS(s->spi), &error_fatal);
+ 
+-- 
+2.38.1
 
-
->
-> thanks
-> -- PMM

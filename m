@@ -1,95 +1,187 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3646519ejx;
-        Tue, 15 Nov 2022 06:04:34 -0800 (PST)
-X-Received: by 2002:a17:903:2789:b0:179:c436:4528 with SMTP id jw9-20020a170903278900b00179c4364528mr4253851plb.102.1668521074704;
-        Tue, 15 Nov 2022 06:04:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668521074; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3649687ejx;
+        Tue, 15 Nov 2022 06:07:35 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4JD1OvngagiWwW5HQFSAQXX4BupAfzNuqpHOaDQHHfe88AEL2vHfIpGzXcD7a8NGTz+VK8
+X-Received: by 2002:a37:c01:0:b0:6ee:f54d:e17 with SMTP id 1-20020a370c01000000b006eef54d0e17mr15482858qkm.63.1668521254858;
+        Tue, 15 Nov 2022 06:07:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668521254; cv=none;
         d=google.com; s=arc-20160816;
-        b=ivutcl7NmSXZ0UDiHiI3Q7DUSpG3yABGtL8q0LVfv1hV46HzTyHHyamg/l6vPXMCYs
-         cHnCUjNJU4unDcN5FdhFSprqYyQElxdQSg21q5m83d4Jnem1MkiJjiLtM2Z0/usRS07K
-         Ny+PrntgywJdp779PTeRM1aRHJYZ9YNkUR9A7pXhngHMj970nXbax0REKfjq+w6PLo/J
-         FSzxCG9GEsb1GbfaU/uEIZJpsDn08AvvEFraaMNms3gEQnEVWEGCZub6ZCgAoAF3E0h6
-         x6Ajc0XhA3lGDcCWSgXZmkUl6g7cMaUv5tewxeqmpcOy7pWTKiPNHheToelS7ZoM/eMv
-         B9bA==
+        b=LMAKaYgqChCOWvFFA6Nu3ymbrnHpWtIqJU4IJFaZbvjStFHOF50iw6Qjc3HmweCuAH
+         JuDqEWakyOa3lK1R5z4T8tBdYuKdwNw9HJq0ji1JBCHrWHgfJpHsR+tRNEuxg4rlakep
+         HRiMqRApYGqFCYcd2/clNVX7jGkfrSDxwFdoZ9u8ljz3xyE9RCJ5zgXFWgfLxyF3W8m8
+         V2sYD2qYJqy0ov6LPEGm3CPdgPH3RT2GzVGEsBNSFxRvtM6k0G1TobRkjrf4NBzPRyWY
+         PWRGgESA1i4OVhODu2sKkRMQ8LmREAGcoUZE83TMquVPKq8Sqb8KfFPUS16e7KFsrTUF
+         8Rwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=4vw0jWL1UY59JxLi28pCqqiElu56mQCm09t30sAn/ZM=;
-        b=MaySCJUk5EwF884TBcFF+we3dM53Mc/HBvL86wWiZpVL9aRFBP0dcuTvgKmCs96bMO
-         LuihrAbyMgB8p/H7Xh+DJgGRDqlHo88CzJuoWwzwpzThC9ed3SIi8fEVUSLoXehC6UMZ
-         /SZP9amIQmHFwnKeQMCaXXeeXl/bhk0pOtl/1f88og1UHurBSlsUD6nMvE58rtCk+tU1
-         tHgFkDIEjzFuA90h/+dFcv5AjfcKHf6dUutDBOz2z3EBHx/1pkfHuJnV044NMUplH/DM
-         lHD7iC+nu7BblXd8dYtGiFUW8+w3ViOmCZqsHue7244RCOe1TM1eq4HYPVx8zHpBIRFc
-         KLfQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=3sMscB6jqooFoawxCrp3+4GNSGVIkFG6mpUHcB8j9Rc=;
+        b=ZIa3VCRnJxOg1ojENa7r5dzqp0vJ3k3nTUxKrLMbO59LZ9b/+Z1xXiSpxQC9Az9Dy6
+         iE29oecAygY+KtwN3bvZ39FRHi+QvrWw7GSCqapvjFdlum1YhWZr3p6S5pEqWtXiLHUd
+         O3H5pqLSyTqegESlw0i6qSRdg+yhxbh6e+rpqqPDxtNGx2fbnEQXHZlTaEdg4mxdCbME
+         RMzrgVE2RxJlMoZUDrbuVXDiPowsEIetDoEzC0JfVNqOSWL2hGiWY0zxFVNAhQSTKb0q
+         9KK2FHBPHs1sTvPllDg1elhyo6qLiJ8b9bIeYi86sFCpAOAl87To1MwvP4oh1p9fUkaC
+         yqgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SrsNf4dF;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aZJpvCIJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 12-20020a630d4c000000b004703a3950c9sor3057490pgn.70.2022.11.15.06.04.34
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h1-20020a0562140da100b004bb639dfab3si7531285qvh.432.2022.11.15.06.07.34
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 15 Nov 2022 06:04:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 15 Nov 2022 06:07:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SrsNf4dF;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aZJpvCIJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4vw0jWL1UY59JxLi28pCqqiElu56mQCm09t30sAn/ZM=;
-        b=SrsNf4dFX4YGdqrq2RTAgzGZ44zQ/EJ6DU2J55sykOHfm25zOUUG/tlH+bJtxCpaYY
-         TToC++quRtrCPuIOmT00/iZex40eiqrjm3USxtgtK3O3Byn+tcCMjCTOJvro+ssOVMzT
-         83ebh/Y/fDxFoFoYw3/GUNvL2jfP4+pG1WlmADVHM3TQdw9lQjDMtrY6qhHvmG8RpOQw
-         CK5S6gPTBA9c1al8NXqQCT0ObkdYOVoQqob+WVUrOkzHWcvdmCpQy5mfqYvCGwlTDGxM
-         fgjHoXZ+j5X7C9B4l8ttXymEITW6IfNalGfX8EHdWj5sAjS++hDloN9yrb6bvgIi2HnE
-         kleg==
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ouwaz-0004bO-DA; Tue, 15 Nov 2022 09:07:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ouwab-0004Tb-Me
+ for qemu-arm@nongnu.org; Tue, 15 Nov 2022 09:07:20 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ouwaZ-000210-1I
+ for qemu-arm@nongnu.org; Tue, 15 Nov 2022 09:07:01 -0500
+Received: by mail-ej1-x636.google.com with SMTP id m22so36208001eji.10
+ for <qemu-arm@nongnu.org>; Tue, 15 Nov 2022 06:06:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=3sMscB6jqooFoawxCrp3+4GNSGVIkFG6mpUHcB8j9Rc=;
+ b=aZJpvCIJZdY9UgUJxr2BWCjZc3Db86i0uv8Djcoh8P4t1JLP+XlL/e6ujsbA0HbXow
+ n57ETukEojdqJBq56aTVV0p+CkYHVX2O6+mL1xOUKp1LA4uBgkf8M2gTyXjznUCLvGP4
+ YaHkN3ez5JBguLuQW+le1zZBMhe77OQBc8xkZI4Efae8qaU2Dl/grzhbh0AT+2EYhhB6
+ QFbx1iqHXltsJa1AVSwYtHq4/eoK0gFfNuP3GQ6PJ7JjeIkaLCd791NS8M0YPeVtB2SH
+ 02viYpE6R+KPapEtToyyce4tCXZXJlxCDPC2zXT1Pxke9bU2I7k5WvxYcaLUnzhoaH5+
+ WWEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=4vw0jWL1UY59JxLi28pCqqiElu56mQCm09t30sAn/ZM=;
-        b=Nl6ktYZdgtuEP/9kkSoQdICxYkqpC7Tt9HJA94G+HP67FObUwrJEQftEvsch6++1hs
-         liUVLHpl61S4PTfaKQrqCPjWdlvKsoEotCVMuKQvBWczimP9orHXsjEhVL5WIPU3jfN+
-         DidIiP5O6p+3YfdFiizNFUA9RlflVPDV8mhzwwEzBffLuz+/g+jACbigMdOiPKEKboBX
-         BypoIIvJHvzrIwUvUCtUcFHJu+3T7T+9smx4XmadugPqNXh2Z5lanruPvOxcTJ9oJ858
-         qdkuJNOvczhM/NoJcKtmQl96YSrAOC/mS6v5Xovi4/XatgD/FdY19zC9qNI7LoH/qCcs
-         4GLg==
-X-Gm-Message-State: ANoB5pkZQ+mcWza83vSCvBq0WuOV3bkYzgOjqRg/MFLlA3OzhTtb2m7S
-	ob/ZD01mko/ORtJxx8N3T8ucy/TaAA0aacMZ/KEjJH8C7ONTIQ==
-X-Google-Smtp-Source: AA0mqf65/14kGha/JvK4McwqbI9jQsfD+IZCEq9Y5FPrN98q/JBkZCdQ/Vr6zOYSjGp8TF5O7Ug/ytpbv/Di9odUE7U=
-X-Received: by 2002:a63:1665:0:b0:426:9c23:9f94 with SMTP id
- 37-20020a631665000000b004269c239f94mr15986791pgw.105.1668521074287; Tue, 15
- Nov 2022 06:04:34 -0800 (PST)
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=3sMscB6jqooFoawxCrp3+4GNSGVIkFG6mpUHcB8j9Rc=;
+ b=zRk/sOuErFgBKmzHuFgb+OKidv6IUj61yLcreHqRFZPgdXuHRKnI7kjmP7YjZvxzz8
+ 2UbK3biEYMtYTs1Kg+2TP1gHT3A3OU+0wV3RcaiVRqDkTCnm1bmgZ4roEFCwnyTQBm0u
+ +sIl1KhodK3FI4oqsR1C8+6JmZP4s+N1VtJwVtIjUePvThLxhov2GkytRazMANO12Tt7
+ qLVrXoLgBroqI/MN2PiK4IPWWTNNFFQgwQ4JfXPApjd9roNzyj0xBrym08DXJDddUG18
+ mTIwSuM8hSq2QNfWVLe67JSrjujB4PBRzrkIrkrVbGUoIttVj54fyGnR/BSqQqq3/KbH
+ 3juQ==
+X-Gm-Message-State: ANoB5plJ7AbbId4Lnl8yxM1cQ4mpWv3Ddq/NHlpHPGgaX+1nsQpGfCUH
+ YjCF9LSd8Dz+U8HkN7bAW4f6Ag==
+X-Received: by 2002:a17:907:9a85:b0:7ad:b45c:dbca with SMTP id
+ km5-20020a1709079a8500b007adb45cdbcamr14269009ejc.388.1668521210702; 
+ Tue, 15 Nov 2022 06:06:50 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ g13-20020a50ec0d000000b0045b3853c4b7sm6210682edr.51.2022.11.15.06.06.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Nov 2022 06:06:49 -0800 (PST)
+Message-ID: <58687845-716a-76d0-a294-ffa26114ada0@linaro.org>
+Date: Tue, 15 Nov 2022 15:06:46 +0100
 MIME-Version: 1.0
-References: <20221115134048.2352715-1-alex.bennee@linaro.org> <20221115134048.2352715-3-alex.bennee@linaro.org>
-In-Reply-To: <20221115134048.2352715-3-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Nov 2022 14:04:22 +0000
-Message-ID: <CAFEAcA-fehcRRAEO2ukN5bcgZKqbXxOWrGn8-8Ez=Wwxy9VndA@mail.gmail.com>
-Subject: Re: [PATCH v1 2/2] hw/intc: add implementation of GICD_IIDR to Arm GIC
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: WiqxwXLsA2MU
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.2
+Subject: Re: [PATCH 0/1] hw/arm/aspeed: Automatically zero-extend flash images
+Content-Language: en-US
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Delevoryas <peter@pjd.dev>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, patrick@stwcx.xyz,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>
+References: <20221114190823.1888691-1-peter@pjd.dev>
+ <890395fe-ed58-8a5d-be76-b28d99e6289a@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <890395fe-ed58-8a5d-be76-b28d99e6289a@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cTSVEOjojO1M
 
-On Tue, 15 Nov 2022 at 13:40, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> a66a24585f (hw/intc/arm_gic: Implement read of GICC_IIDR) implemented
-> this for the CPU interface register. The fact we don't implement it
-> shows up when running Xen with -d guest_error which is definitely
-> wrong because the guest is perfectly entitled to read it.
->
-> Lightly re-factor this region of registers and also add a comment to
-> the function in case anyway was under the illusion we only return
-> bytes from a function called readb.
+On 15/11/22 14:06, Cédric Le Goater wrote:
+> Hello Peter,
+> 
+> On 11/14/22 20:08, Peter Delevoryas wrote:
+>> I've been using this patch for a long time so that I don't have to use
+>> dd to zero-extend stuff all the time. It's just doing what people are
+>> doing already, right? I hope it's not controversial.
+> 
+> I simply run :
+> 
+>     truncate --size <size>
+> 
+> on the FW file when needed and it is rare because most FW image builders
+> know the flash size of the target.
+> 
+> However, the current error message is confusing and the following could
+> be an improvement :
+> 
+> @@ -1606,6 +1606,13 @@ static void m25p80_realize(SSIPeripheral
+>       if (s->blk) {
+>           uint64_t perm = BLK_PERM_CONSISTENT_READ |
+>                           (blk_supports_write_perm(s->blk) ? 
+> BLK_PERM_WRITE : 0);
+> +
+> +        if (blk_getlength(s->blk) != s->size) {
 
-This bit of the commit message hasn't been updated since v1 :-)
+'!=' -> '<' ?
 
--- PMM
+> +            error_setg(errp, "backend file is too small for flash 
+> device %s (%d MB)",
+> +                       object_class_get_name(OBJECT_CLASS(mc)), s->size 
+>  >> 20);
+> +            return;
+> +        }
+> +
+>           ret = blk_set_perm(s->blk, perm, BLK_PERM_ALL, errp);
+>           if (ret < 0) {
+>               return;
+> 
+> I can send a patch for the above.
+> 
+> 
+> <hack>
+> 
+> I mostly run the QEMU machines with -snapshot, this hack  :
+> 
+>    blk_set_allow_write_beyond_eof(s->blk, true);
+> 
+> makes it work also ...
+> 
+> </hack>
+> 
+> 
+> Thanks,
+> 
+> C.

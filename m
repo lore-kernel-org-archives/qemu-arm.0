@@ -1,115 +1,120 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3853442ejx;
-        Tue, 15 Nov 2022 10:31:03 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6Rfu/fhcDJij8bKD72fkA+DDE+jxscRpk6Ovhp28RUQhOYgneBTkKAZKBl3PS+HGrn87uI
-X-Received: by 2002:a37:9a11:0:b0:6f9:da7f:84cf with SMTP id c17-20020a379a11000000b006f9da7f84cfmr16670522qke.618.1668537063739;
-        Tue, 15 Nov 2022 10:31:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668537063; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3912743ejx;
+        Tue, 15 Nov 2022 12:07:29 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5lrZtg1blgZLwDkGO4z84epP6g9yNvt2zIq8P5c0nBKoh29a88sQvp49wa6yJFKvQq2QVq
+X-Received: by 2002:a05:622a:6004:b0:39c:cb6a:300b with SMTP id he4-20020a05622a600400b0039ccb6a300bmr18374342qtb.181.1668542849390;
+        Tue, 15 Nov 2022 12:07:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668542849; cv=none;
         d=google.com; s=arc-20160816;
-        b=o95adtsdGphASI95NgiBhyZPgozHXqm5iZUhtnqUDtpU/BJD308llU3VqaaMhttPn7
-         3tcoO3UY6PJvH9oFmzQDm7zxoCBCnsXGiod5+BsEMJY7VLd+WQmMPMFYYLzt3uoqOW5q
-         rBd3g3zjhId20eRAoA3HUg8hN9awGCLw2ipD+FSAk2sdNjg0gRpI+vsVKjB1+N/cI8DR
-         AvrS/JZkVvm9xyKR7CMkzIbJfTQTC7mmQgV4F7g0v9nJoH9U6E7eSXBAw7b3+YwutYlE
-         UCO/QcApZFo450b7CG19C9aob657YvUDxZBiIZOtYl4n0FchHwjW7ASnVvsdgtNIxWbd
-         LlwQ==
+        b=EQEp56iwKgFaMDv3mV8K5/IRxvKKbM73qnCPK9/Y0WIElVSAmv4zUlbCeBd0rQmnrG
+         rqOYPv0tDkvZEomM3ej0roLbwatSFhhlspOxFWjkzlLofAdo05JwWYZ5xpG6tD4M31kN
+         6GxGuzpoE2Z0o76urYgMaeQnhmpydUAQJPW9AJzOFS+GGQLHYqGCyi/3egHwL70OsJzH
+         vaEECba/rw9lkNKGP4tGTyDgNUc7s/vr54n+QpigaMi96zjLMMxcPlVhJJotyvckh0KW
+         9A6rSN94ievlJw4G0EJjncPJHQy32fwP5Jm8JN/Kz2RgLkIZuVt6pqEASXPUo1wJ5H4l
+         S+/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=u5NwgeGgF6KrNcGUFbMahPesFkm4VF2snU+c4Fl9C4U=;
-        b=FtP1Fjns3HY0jPM78Uas/FLS79gSQYeX3+oGWNyBjgr2jnuiAnD4ntYdzpGDVgNO7T
-         vy9zOEQpBaovDUipHJ+DCNLlQznE18bJvGU3QL4VxhFswZSgu3Z88Z/rNJbOvbrQFJ+t
-         10SwOZKyuPCw8jUfc7Jj28J+BsVShV6a9p5qGS9SPPdfefGgxukV4dmbvYzS6i8D+2ET
-         WF91NpLpDPQQP+pvmRtDNqATGRoveQ/Y+9H42K8KkHFoKjoCx3ZSzm3VxD5ZLm5qfQlF
-         1To29scX+Pt3sz5HKIgIH6og9WCJQAENvG0ss7l4kkGzsWt1Wytu8nPtZD++MS1Rt6W4
-         zwKQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=blMSC6rHWmqBaSq87I6Gq4+okisjjnzCanjRRO0aYOM=;
+        b=sSKIWDHNOoPKzVl9JPl99oFx/vB18PC3ayViNmDwJ4LnxAFFjMBm4V+o5HLp3wOtPN
+         qhuWHl07e/vTqhiK8TjRqDRjfRwuTt5+kkIug9YdcXJddgVcQnMrGWKCOKmZlaXgtF84
+         GOTVHjROtj+QWOrIN7VYm36/9FJK2YWIYAF08PdeJXembxnYyyzR7snk5jYzeZp7W7IM
+         1fvIvPntDEK6Z8HaNJvz9CY3xSTZ+22ywyOQnwyM6WEH04oyBIDv9Kju4rahSXaSYtT8
+         F7+zj6l6DZd5xaIUwj8Rd/wbeT56sKa1vIT1Yv6YLZJ9X42XRybavsKK1HNqVlcD1g69
+         3Kdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=P36qQ0oB;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=mjjsWBsR;
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=HxIv8LTn;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="Su8fdR/O";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bi27-20020a05620a319b00b006eecc1446edsi8263179qkb.115.2022.11.15.10.31.03
+        by mx.google.com with ESMTPS id g5-20020a0562141cc500b004afb621a445si8034492qvd.75.2022.11.15.12.07.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Nov 2022 10:31:03 -0800 (PST)
+        Tue, 15 Nov 2022 12:07:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=P36qQ0oB;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=mjjsWBsR;
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=HxIv8LTn;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="Su8fdR/O";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ov0hs-0001tE-B8; Tue, 15 Nov 2022 13:30:48 -0500
+	id 1ov2Ch-0007tR-T4; Tue, 15 Nov 2022 15:06:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1ov0hr-0001t1-HE; Tue, 15 Nov 2022 13:30:47 -0500
+ id 1ov2Cf-0007si-Pp; Tue, 15 Nov 2022 15:06:41 -0500
 Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1ov0hp-00053Y-F5; Tue, 15 Nov 2022 13:30:47 -0500
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.west.internal (Postfix) with ESMTP id B62023200995;
- Tue, 15 Nov 2022 13:30:41 -0500 (EST)
+ id 1ov2Ce-0008MN-7n; Tue, 15 Nov 2022 15:06:41 -0500
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.west.internal (Postfix) with ESMTP id 6701F3200937;
+ Tue, 15 Nov 2022 15:06:34 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Tue, 15 Nov 2022 13:30:42 -0500
+ by compute5.internal (MEProxy); Tue, 15 Nov 2022 15:06:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm2; t=1668537041; x=1668623441; bh=u5NwgeGgF6
- KrNcGUFbMahPesFkm4VF2snU+c4Fl9C4U=; b=P36qQ0oB27P0G61sU7bNRaMpKP
- ohv0AomluCvYcV1606VpOpR4JxAGDZgRO5LAvwlu8oUF1XVFUprt/NtYn8OU9YPk
- jJ5cWsMQjKzySLMPqunfs0mDCgp1Orwy/a4kdQqU06NzuBBOVHgpeFJZSe+J7pa8
- mJ2/+PtH1QfGb0WoiGw3SK7bElD1XW77vOi1Gq6rDtwao1ZMdRKHUsyOiu7I2esA
- r841OVsFzqMO8n+StjeDw4nH5FZvrMSZBs1QDXyjW5h8MPzmLTk1rMazKY4TF03n
- uP6OHV9TFvYLn28CVoQHaocwuNF7khIcZYkPol1sLIBvHke9VaVcE1tdiD7w==
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1668542794; x=
+ 1668629194; bh=blMSC6rHWmqBaSq87I6Gq4+okisjjnzCanjRRO0aYOM=; b=H
+ xIv8LTn79rt/jvnUCX5KKiqvJNMoHHlaJ7UKtN0BPMWYTcRWPhdkpb/btKdM0BrX
+ MRpXWMccYEwi6zDo/MYjwSD5G3LRE2Y1dL7agrR970RG03LpMzkA0nKCZYNoTabI
+ XjMGyeEDVTbgACz8eWv2iDZiYVnSuQ7wINytgk8fL9Mau6CNX51l2qSprcF657Dl
+ VXtZtOIJUtoUGO4263desvoxZmK3W4Vi5bXRpoEKmpZqPH4HC4yuWuoEDawu3cEb
+ fCV8rGxQxftXijC2rMazwzRwwgiZN2Q4uFGyoUXOYZQjhC1SkgOr07S5Baj82KWK
+ ONMBU6GQhoe7mfKeXp0WQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1668537041; x=1668623441; bh=u5NwgeGgF6KrNcGUFbMahPesFkm4
- VF2snU+c4Fl9C4U=; b=mjjsWBsRgusDffHx7Wjc/aUUOXesEBPf33XEIaonTY8+
- icHU+WXKtRbAW5pYc8k6p+NZVNZ9kbhcUUSNN7krgnioKwX60N36fTeMQKHhigTU
- OONujjrg2nyRD58IMvHjjjJCadidRV+VWT5Q6quXV9yUZN417Rfm/yqYBSi724Jh
- 3bk6KLkN5mm+JnbqHBJouUB2+G8U9bV4EPaewtyocPbUFdU6tz5/xK9wanxCTAGN
- jSvacgqS/MvwpamZzKPF1EaH2oEndKymMaHym4XaKwAQq3rodtilX4cEtiT1RXfJ
- oYwAhsthn9CXkWHB+kEILyODwYQi5gqb1KSxw9cDdw==
-X-ME-Sender: <xms:0NpzY8xIKRzbRY4TKQqvk2HNTyUr__3aCwbInePH6OZzXEWrAYJnnQ>
- <xme:0NpzYwRjAWHkAAHAuwToNGeRRk76GR2MoG5fhpobg4eOGa7u1Kd9p3hBjlthvAnTg
- 8RrZPwsjiEgBIjwdJo>
-X-ME-Received: <xmr:0NpzY-UYnUPE4FrHHdNN-qVMvQ7uSXGhttIBHFMKaEOCKCEuGYCwB3SXFJCoBJv2vWYM0fBgC4_G>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrgeeggdduudegucetufdoteggodetrfdotf
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1668542794; x=
+ 1668629194; bh=blMSC6rHWmqBaSq87I6Gq4+okisjjnzCanjRRO0aYOM=; b=S
+ u8fdR/OLlVQSHRlnmpRQx/EszNNGrodTuqLJxUcPkbR7xBS97iQ7ez99hdLi28cV
+ aI113s81UepPwE2foaXsy0OtYEicaRAUo49uI635ae6LBH8Ri0A+30i4wfMADMYv
+ isccS9fRywEZBAKJbSCQxkWbEAJnnREGallOXlkRh+bLyTdx4EzD7pKHaD6OkFyp
+ A+B11qiGF2QWvcc5iWbKYSYFX/3poSFF49V4POmWweU4FGs7kst58UqvZRAeN4k7
+ I4cnySFvqvlbSVqpH8Y7RSoQToXyEqOJOdU1AORaz4cT1ru49bsD6Ovxyx2hZcO2
+ pIbtZB4xYours0nG2sspw==
+X-ME-Sender: <xms:SfFzY73mJ57l0b5T7Uf_8CsRGFJ7hp6-ZSGboEAqLwNS92tirZuMgA>
+ <xme:SfFzY6EofRRaHyt3xn43pfCudXkF2jyYRkWeu33jOY_s-e9vGHX-h8QnAh_Iqb_uE
+ 04KXzYXwvqrhrfm4cM>
+X-ME-Received: <xmr:SfFzY75KlzXZEDB7BmIrtPBK-H181gAnc05VgQ-v3E_x-_jSfsfaG9GSWmeoY3s1oZR1HqkMaWkC>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrgeeggddufeefucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomheprfgvthgv
- rhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrfgrth
- htvghrnhepfeetudffgfeuieeutdeghedtveetfeeuieeigedvuedugefgjeekffefhfev
- gfevnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
- dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:0NpzY6jDQLwnS3ZKBO-aRjwaxlBUZz9Eqenwl7tVmLiIK5GEe7SC4A>
- <xmx:0NpzY-ACgKLKzbouVpPBOocF2uE6Nzq9wfC2e9NLfDyTcQTQBp4P1Q>
- <xmx:0NpzY7IVfZrbvSzTS52tev9Yu9eLNg1yuhzT7fLgkNHMW2eFCwdwDQ>
- <xmx:0dpzYw156qBBN3Dw4INQ1T1JLJyATO8uxWrV_K5F203COX8Hav39Xg>
+ cujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
+ htthgvrhhnpefhgeffvedufeevteegkeetieejhffhudeujedvgedvheffheejveethffh
+ ffefueenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hpvghtvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:SfFzYw3znK6ofcREpMykVuapOVce7BLIpGgxc_Dig6VHbh_t-SzI5A>
+ <xmx:SfFzY-HucO1AbuBYNYMEkApIykjP4b6dB7ZQQ8UMBB41Ae5v7g5x0A>
+ <xmx:SfFzYx94BmY_w8UZeEMY6AIeXiGu5ALMjDGfuVWah_a3d5cGJxeW7A>
+ <xmx:SvFzYx0ddunej5xV8_4DQOpa9rBDK_Er3osGMphBHVGhT_K1un2DrQ>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 15 Nov 2022 13:30:39 -0500 (EST)
-Date: Tue, 15 Nov 2022 10:30:38 -0800
+ 15 Nov 2022 15:06:32 -0500 (EST)
+Date: Tue, 15 Nov 2022 12:06:30 -0800
 From: Peter Delevoryas <peter@pjd.dev>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: clg@kaod.org, andrew@aj.id.au, joel@jms.id.au, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, patrick@stwcx.xyz,
- Markus Armbruster <armbru@redhat.com>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, patrick@stwcx.xyz,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>
 Subject: Re: [PATCH 0/1] hw/arm/aspeed: Automatically zero-extend flash images
-Message-ID: <Y3PaznQgV800nX6K@pdel-fedora-MJ0HJWH9>
+Message-ID: <Y3PxRst9n5zmDx3V@pdel-fedora-MJ0HJWH9>
 References: <20221114190823.1888691-1-peter@pjd.dev>
- <CAFEAcA9itEDTrznX1KRVEza__Dch95aBpPzbdTJ0-tuxwiHtoQ@mail.gmail.com>
+ <890395fe-ed58-8a5d-be76-b28d99e6289a@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA9itEDTrznX1KRVEza__Dch95aBpPzbdTJ0-tuxwiHtoQ@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <890395fe-ed58-8a5d-be76-b28d99e6289a@kaod.org>
 Received-SPF: pass client-ip=64.147.123.20; envelope-from=peter@pjd.dev;
  helo=wout4-smtp.messagingengine.com
 X-Spam_score_int: -27
@@ -133,34 +138,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HsxZqsPnBykq
+X-TUID: IbOtVtvpKo3N
 
-On Tue, Nov 15, 2022 at 10:48:40AM +0000, Peter Maydell wrote:
-> On Mon, 14 Nov 2022 at 19:08, Peter Delevoryas <peter@pjd.dev> wrote:
-> >
+On Tue, Nov 15, 2022 at 02:06:57PM +0100, Cédric Le Goater wrote:
+> Hello Peter,
+> 
+> On 11/14/22 20:08, Peter Delevoryas wrote:
 > > I've been using this patch for a long time so that I don't have to use
 > > dd to zero-extend stuff all the time. It's just doing what people are
 > > doing already, right? I hope it's not controversial.
 > 
-> We just had a thread about this kind of thing for one of the
-> riscv boards (although there the attempted approach was to
-> change the size of the flash device to match the provided
-> file, rather than changing the file to match the flash device):
-> https://lore.kernel.org/qemu-devel/20221107130217.2243815-1-sunilvl@ventanamicro.com/
+> I simply run :
+> 
+>    truncate --size <size>
 
-Thanks for linking this!
+Ohhh I always forget about that command. That's certainly easier
+than what I was doing.
 
 > 
-> The short summary is (a) yes, it's controversial and
-> (b) if we do something for this we need to have a standard
-> approach that we do on all boards, not "some boards do
-> some weird magic in different ways from everything else"...
+> on the FW file when needed and it is rare because most FW image builders
+> know the flash size of the target.
 
-I see, that's ok, I'll investigate option (b) then.
+welllllll my yocto builds don't, I'm not sure we would want them to either?
 
-Thanks,
-Peter
+Because that would be extra data with no value to transfer to the BMC/etc.
+
+flashcp erases the whole flash initially, which is why I don't worry
+about providing a firmware image that is only covering the first 30 MB of
+flash.
 
 > 
-> thanks
-> -- PMM
+> However, the current error message is confusing and the following could
+> be an improvement :
+> 
+> @@ -1606,6 +1606,13 @@ static void m25p80_realize(SSIPeripheral
+>      if (s->blk) {
+>          uint64_t perm = BLK_PERM_CONSISTENT_READ |
+>                          (blk_supports_write_perm(s->blk) ? BLK_PERM_WRITE : 0);
+> +
+> +        if (blk_getlength(s->blk) != s->size) {
+> +            error_setg(errp, "backend file is too small for flash device %s (%d MB)",
+> +                       object_class_get_name(OBJECT_CLASS(mc)), s->size >> 20);
+> +            return;
+> +        }
+> +
+>          ret = blk_set_perm(s->blk, perm, BLK_PERM_ALL, errp);
+>          if (ret < 0) {
+>              return;
+> 
+> I can send a patch for the above.
+
+Ohhh yay! Thanks!
+
+> 
+> <hack>
+> 
+> I mostly run the QEMU machines with -snapshot, this hack  :
+> 
+>   blk_set_allow_write_beyond_eof(s->blk, true);
+> 
+> makes it work also ...
+
+!!! Ohhh! interesting...that seems more sketchy but certainly simpler.
+
+> 
+> </hack>
+> 
+> 
+> Thanks,
+> 
+> C.
+> 
+> > One note: I couldn't figure out how to make it work without changing the
+> > permissions on the block device to allow truncation. If somebody knows
+> > how to avoid the `blk_get_perm`, `blk_set_perm` calls here, let me know!
+> > 
+> > Thanks,
+> > Peter
+> > 
+> > Peter Delevoryas (1):
+> >    hw/arm/aspeed: Automatically zero-extend flash images
+> > 
+> >   hw/arm/aspeed.c | 40 +++++++++++++++++++++++++++++++++++++++-
+> >   1 file changed, 39 insertions(+), 1 deletion(-)
+> > 
+> 

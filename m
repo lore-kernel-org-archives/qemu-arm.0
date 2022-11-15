@@ -1,124 +1,102 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3228459ejx;
-        Mon, 14 Nov 2022 16:34:06 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6YxmQdesC9P+7f7eyJERbsejbfI8xMCbWhSt3XDafm0WIDIOW8mqCBmN8i4ZDeY2xxuFZu
-X-Received: by 2002:ac8:6049:0:b0:3a4:f45a:ac1a with SMTP id k9-20020ac86049000000b003a4f45aac1amr14712998qtm.352.1668472446700;
-        Mon, 14 Nov 2022 16:34:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668472446; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3504701ejx;
+        Tue, 15 Nov 2022 02:40:38 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4uyXFm2EgMUHB9HFahZKOEnJmPbcs4xsVHWqAkxgLAaf2HNVRnzYQgPmkqB3xyZiSBoCjX
+X-Received: by 2002:a37:e308:0:b0:6e4:e7c9:1a11 with SMTP id y8-20020a37e308000000b006e4e7c91a11mr14611271qki.85.1668508838047;
+        Tue, 15 Nov 2022 02:40:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668508838; cv=none;
         d=google.com; s=arc-20160816;
-        b=N6I8BU0y8yPxDm2GEBdjnxQuBpnhgLN3jSZTvsds1QQUiy+VN2lNZ9iuSb6WT5X1JX
-         vyAVCG+ZofW/XSh0Tf6MMlG7w8rPf/23opIN225vqvpRBxyTTB0PqSZRgfDQJuciNGQq
-         c7IVANnE0tODgjVZAITLg0vjI7cO7TP+07VfJedPIkDtLGQtwQbQpnWz2DEcveC6b2Kb
-         LfgUBZ57/whMAFgprEogRocf4yt2yAH0fnRUoxRYYu5nTpljc4B8sr+Nr3H5Q6LKvyrN
-         PP6q7EldseDn0PhzBBvBN7qn272x/PKTGjby4iR1akHGpq0G+43VrurdGOr9WEsXqVwF
-         4Ulg==
+        b=bIum/dqLnZv6x2dHyLVxKdGxsrnqS+nkXLeDi5Vtgk1G848PgXtnBCT7IJJzsFlFD1
+         bXVnYzPC0YH0fCADa5SGJzfUsn98+GqojvlPlzMcvUU1S1ryIsI85GNJI3shBJdic36L
+         1KrPY1umeFNT7fsXlc8qtcHpLp7vMNP4WiH5/t1QJ3RpmgOcd4br1famGYok7ZSUGpaJ
+         m7t3HAaalVvQElzDhXGgUyfcWf68Pr+9g8n++CIIj7xbeLwNwiH9wyqQ3gCKneHLzAIy
+         riIBaQLoFuh/9pQNCMI5w/kib0CMB8R2bAD/msRpIbuYrw8MzYn+RYpz/0ZTp9hWQnx+
+         SPZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:feedback-id:dkim-signature:dkim-signature;
-        bh=ZAF+khdGUFgCgGLigAQnJdrE+XOPl7sLY2zdFW2mxWU=;
-        b=WUpBwkG+vg9YAAc3FcFVZpkv7mKiDERbUo3SdaP+gLt/PHH0kxV+p5wzq2WhyO0IQ4
-         MTKbVp9jXkXa+tJy6qThX9v7X8NjCZZ7cK2hArmTa8Ex149ytXQ5isdd5Hhfen12IOeM
-         Rj0clzTiAzfsx5mtzYTk/5BeVvBA7gnmvcllN+cvBN6rEaq3RPvGKTxjtkxxy7NRSJWE
-         BcVE5oshovTqPz91fTFzXMKvIO4DISBP+yFGXh1jfO8yirs2hOrSypM5ScZ8sTOwfUJ9
-         QI4Lkq3fng9b/9Ah/kclndZTpHQDW0jY8/PYk1nfy3y/sZTB86D9bPk939qarNlMeJvW
-         YetA==
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date;
+        bh=wgLpH75izpNcNZWbO47lGbYn0d7i7HYlgGhnAwbqvns=;
+        b=MIEsvd6a0MBfhTPxFxDMioq3dHZZ9aBTputDElbS1PgpX0TmLCyXNLKINRh0RygdIr
+         hHUY4yOWQ/e7FTBLqritIyen/dQl+QuYPNagpCxRVgbF4Ns+rOznH007BAxuY6m4xqNr
+         D/hoWQDEgWd2te2pwi+XnIFTiI+E+lMzYdmiryDsdDKk5KbZFGKsHnQnlShId/9nrgcP
+         OtPA/ufZR1PyTmRdEJAE24GR+mO3ueizyPlSkq2gW9ewj9UhssEVYK3KmQzOqYzOrCQP
+         SZTmvEslGWzMlRZ0Wo5NgnOG/EdaIbKYw3gPVLHWuklTAPrquB3rhRn8lXN0a1pi/oAM
+         S+OQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=XdquSOyP;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=RNWBGeTB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5-20020ac85345000000b0039cbdd485ddsi6067422qto.149.2022.11.14.16.34.06
+        by mx.google.com with ESMTPS id y8-20020ac85f48000000b0039cb5cef5ebsi7729877qta.318.2022.11.15.02.40.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Nov 2022 16:34:06 -0800 (PST)
+        Tue, 15 Nov 2022 02:40:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=XdquSOyP;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=RNWBGeTB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ouijR-0003OT-3I; Mon, 14 Nov 2022 18:19:13 -0500
+	id 1outMH-0000dh-Kk; Tue, 15 Nov 2022 05:40:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1ouieS-0003Lu-R2; Mon, 14 Nov 2022 18:14:05 -0500
-Received: from out2-smtp.messagingengine.com ([66.111.4.26])
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1outME-0000aR-Kr
+ for qemu-arm@nongnu.org; Tue, 15 Nov 2022 05:40:00 -0500
+Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1oueop-0006UR-Rk; Mon, 14 Nov 2022 14:08:34 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 276605C00EF;
- Mon, 14 Nov 2022 14:08:28 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Mon, 14 Nov 2022 14:08:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm2; t=1668452908; x=1668539308; bh=ZA
- F+khdGUFgCgGLigAQnJdrE+XOPl7sLY2zdFW2mxWU=; b=XdquSOyPvPfhuuF0Re
- 2JHneb5Q4Dk8JMpbldpm7ViGhMDFSg5UbgEZpQi90abd0ZET4UEVrIn7fOGvaZJm
- 4MvBywmd5yno0EI0XOSF+egI9SNBMeMryYLQLnMUSabr+CzowANQrFocSWShKp7M
- 1+eCHM4yVPfkkDmUUl3OQkl3229y6sbZVk5shAw/Y8bjPpRlgXH1bu5m2Qkqnd4j
- jslDryYEsCqUBPnUcrX/dIVXjYj723zJzFsVP7Uip1i3Gsa2fEvE0axYUkHu4FUV
- l1OoW/fZIQRRJ6OyfgRkwKdJWLI5XTg9462C+VWP4iKWwpLuBeMDyUym1gKfTAvA
- Zk0Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; t=1668452908; x=1668539308; bh=ZAF+khdGUFgCg
- GLigAQnJdrE+XOPl7sLY2zdFW2mxWU=; b=RNWBGeTB6r/im/cOJE5h90K98vand
- ajuLHDMwFxkxT8KpT7DZTIIct6N9GdHTh2ZQ2dMXkKwSnsPB6gqfZd7FUiegb0xO
- xY7vjVFz5JOnBYPDVpVf3gRg63YshAwjriFeqc5qzqKiS7Le/6ONonTMD4boYpEd
- ektwCcLO2n77w1kPsPR0kFIbGNx5VpC/qCYozPlLM4bq/9M7Z1DNt53B5KyIzZFB
- 0sDM/rzGB9OUdir9PO8z9VjZ2d6mQdisJf0S43TnNghTFzkb1Og60HiMMhSJTAqv
- gsFiYihyNEketXb8/Qo3Vv6pTpReHqW0MICcrJg5t/z3Mgtda+HxJUPrQ==
-X-ME-Sender: <xms:K5JyY514kXAOudwBGFCu2uWUp8ay_I9CTT389PX7L40SW1veWrS9bg>
- <xme:K5JyYwGF_z7TUtvY8JQNqsStDWiA56ciKvEHJMcwD-7kQcgw0ND4rNyarGTmKuxF_
- 8gTK4vu4oBSrcUS6eY>
-X-ME-Received: <xmr:K5JyY57fltZ_8zUv6B2hMRM81SgsEl9x1hQGUuEiyHDKg6U2GJQUEl9-ud9f2g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrgedvgdelfecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecumhhishhsihhnghcuvffquchfihgvlhguucdlfedtmd
- enucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefrvght
- vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
- htthgvrhhnpeetlefgueelfeffffefkeeigffhjeeugfdtgfetieegkedvfeffveeikedv
- leetveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
- hpvghtvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:LJJyY22WsFmDks6p9K7UU7naGFR04fOX8liN-ZU0XgU_r5hr7Z2TUA>
- <xmx:LJJyY8G-FUZIjJqrj66NFnx6PIl7zkSSw3jpWrPCtXH5PB9-uEH3GA>
- <xmx:LJJyY386dhlPLyNkszPMO7z1t0Vxn-fFeux4RE6Tq-azCYV-CRT4TQ>
- <xmx:LJJyYx4_cuqkQCgkZlSrlA3-u1PANPTFO4VSOnJ157vo0sQyk4XdSQ>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 14 Nov 2022 14:08:27 -0500 (EST)
-From: Peter Delevoryas <peter@pjd.dev>
-To: 
-Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter@pjd.dev,
- patrick@stwcx.xyz
-Subject: [PATCH 1/1] hw/arm/aspeed: Automatically zero-extend flash images
-Date: Mon, 14 Nov 2022 11:08:23 -0800
-Message-Id: <20221114190823.1888691-2-peter@pjd.dev>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221114190823.1888691-1-peter@pjd.dev>
-References: <20221114190823.1888691-1-peter@pjd.dev>
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1outMB-0003c4-Lm
+ for qemu-arm@nongnu.org; Tue, 15 Nov 2022 05:39:57 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.92])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 3FF2627578;
+ Tue, 15 Nov 2022 10:39:43 +0000 (UTC)
+Received: from kaod.org (37.59.142.104) by DAG8EX2.mxp5.local (172.16.2.72)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Tue, 15 Nov
+ 2022 11:39:42 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R005d954870f-ac55-4152-8466-6dd756a65680,
+ 7295B31BD84C74A7464F90D7FA15D0970FC32DA5) smtp.auth=groug@kaod.org
+X-OVh-ClientIp: 78.197.208.248
+Date: Tue, 15 Nov 2022 11:39:41 +0100
+From: Greg Kurz <groug@kaod.org>
+To: Cornelia Huck <cohuck@redhat.com>
+CC: Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost
+ <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Yanan Wang
+ <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>, "Richard
+ Henderson" <richard.henderson@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>, "Daniel Henrique
+ Barboza" <danielhb413@gmail.com>, =?UTF-8?B?Q8OpZHJpYw==?= Le Goater
+ <clg@kaod.org>, David Gibson <david@gibson.dropbear.id.au>, Thomas Huth
+ <thuth@redhat.com>, David Hildenbrand <david@redhat.com>, Ilya Leoshkevich
+ <iii@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>, "Christian
+ Borntraeger" <borntraeger@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>, 
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <qemu-ppc@nongnu.org>,
+ <qemu-s390x@nongnu.org>
+Subject: Re: [PATCH for-8.0] hw: Add compat machines for 8.0
+Message-ID: <20221115113941.123db1e8@bahia>
+In-Reply-To: <20221111124534.129111-1-cohuck@redhat.com>
+References: <20221111124534.129111-1-cohuck@redhat.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.34; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=66.111.4.26; envelope-from=peter@pjd.dev;
- helo=out2-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG1EX2.mxp5.local (172.16.2.2) To DAG8EX2.mxp5.local
+ (172.16.2.72)
+X-Ovh-Tracer-GUID: f276a909-23c6-45b1-9043-da9b8a369f0b
+X-Ovh-Tracer-Id: 7813463880830065049
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvgedrgeeggddulecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeegkeejtdevgeekieelffdvtedvvdegtdduudeigffhhffgvdfhgeejteekheefkeenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoehgrhhouhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtoheptghohhhutghksehrvgguhhgrthdrtghomhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpfhgrrhhmrghnsehlihhnuhigrdhisghmrdgtohhmpdgsohhrnhhtrhgrvghgvghrsehlihhnuhigrdhisghmrdgtohhmpdhprghsihgtsehlihhnuhigrdhisghmrdgtohhmpdhiihhisehlihhnuhigrdhisghmrdgtohhmpdgurghvihgusehrvgguhhgrthdrtghomhdpthhhuhhthhesrhgvughhrghtrdgtohhmpdgurghvihguse
+ hgihgsshhonhdrughrohhpsggvrghrrdhiugdrrghupdhqvghmuhdqphhptgesnhhonhhgnhhurdhorhhgpdhqvghmuhdqshefledtgiesnhhonhhgnhhurdhorhhgpdhlrghurhgvnhhtsehvihhvihgvrhdrvghupdhmshhtsehrvgguhhgrthdrtghomhdprhhitghhrghrugdrhhgvnhguvghrshhonheslhhinhgrrhhordhorhhgpdhpsghonhiiihhnihesrhgvughhrghtrdgtohhmpdifrghnghihrghnrghnheehsehhuhgrfigvihdrtghomhdpphhhihhlmhgusehlihhnrghrohdrohhrghdpmhgrrhgtvghlrdgrphhfvghlsggruhhmsehgmhgrihhlrdgtohhmpdgvughurghrughosehhrggskhhoshhtrdhnvghtpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpuggrnhhivghlhhgsgedufeesghhmrghilhdrtghomhdptghlgheskhgrohgurdhorhhgpdfovfetjfhoshhtpehmohehhedvpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=188.165.49.222; envelope-from=groug@kaod.org;
+ helo=6.mo552.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,89 +111,262 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pPqWPXTP4s8K
+X-TUID: TwDQlJGFI5d3
 
-One thing that's really annoying about the Aspeed machines is that you
-have to provide a flash image that is the same size as the SPI-NOR flash
-device the board uses, or something larger. If you don't, you'll get
-this obscure error message:
+On Fri, 11 Nov 2022 13:45:34 +0100
+Cornelia Huck <cohuck@redhat.com> wrote:
 
-    qemu-system-aarch64: failed to read the initial flash content
+> Add 8.0 machine types for arm/i440fx/m68k/q35/s390x/spapr.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>  hw/arm/virt.c              |  9 ++++++++-
+>  hw/core/machine.c          |  3 +++
+>  hw/i386/pc.c               |  3 +++
+>  hw/i386/pc_piix.c          | 14 +++++++++++++-
+>  hw/i386/pc_q35.c           | 13 ++++++++++++-
+>  hw/m68k/virt.c             |  9 ++++++++-
+>  hw/ppc/spapr.c             | 15 +++++++++++++--
+>  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>  include/hw/boards.h        |  3 +++
+>  include/hw/i386/pc.h       |  3 +++
+>  10 files changed, 79 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index b87135085610..2a46660980e7 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -3096,10 +3096,17 @@ static void machvirt_machine_init(void)
+>  }
+>  type_init(machvirt_machine_init);
+>  
+> +static void virt_machine_8_0_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(8, 0)
+> +
+>  static void virt_machine_7_2_options(MachineClass *mc)
+>  {
+> +    virt_machine_8_0_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+>  }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(7, 2)
+> +DEFINE_VIRT_MACHINE(7, 2)
+>  
+>  static void virt_machine_7_1_options(MachineClass *mc)
+>  {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 8d34caa31dc8..f264fb53b46c 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -40,6 +40,9 @@
+>  #include "hw/virtio/virtio-pci.h"
+>  #include "qom/object_interfaces.h"
+>  
+> +GlobalProperty hw_compat_7_2[] ={};
 
-Which is just because the file isn't the right size. Zero-extending the
-file to 128MB (the largest SPI-NOR flash size) fixes this.
+Missing space between '=' and '{}'.
 
-This commit just performs the zero-extend automatically, so people don't
-have to maintain bash scripts for it. And if your bash script does this
-already, it will be a no-op. And, if your firmware image is larger than
-the SPI-NOR device, then it will not truncate it.
+Anyway, for ppc parts:
 
-Signed-off-by: Peter Delevoryas <peter@pjd.dev>
----
- hw/arm/aspeed.c | 40 +++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 39 insertions(+), 1 deletion(-)
+Reviewed-by: Greg Kurz <groug@kaod.org>
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 55f114ef72..26450d90db 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -260,6 +260,30 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
-     rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
- }
- 
-+static int zero_extend_block_device(BlockBackend *blk, uint64_t size,
-+                                    Error **errp)
-+{
-+    uint64_t perm, shared_perm;
-+
-+    blk_get_perm(blk, &perm, &shared_perm);
-+
-+    if (blk_set_perm(blk, BLK_PERM_ALL, BLK_PERM_ALL, errp)) {
-+        error_append_hint(errp, "Unable to change permissions on block device");
-+        return -1;
-+    }
-+    if (blk_truncate(blk, size, true, PREALLOC_MODE_OFF, BDRV_REQ_ZERO_WRITE,
-+                     errp)) {
-+        error_append_hint(errp, "Unable to zero-extend block device");
-+        return -1;
-+    }
-+    if (blk_set_perm(blk, perm, shared_perm, errp)) {
-+        error_append_hint(errp,
-+                          "Unable to restore permissions on block device");
-+        /* Ignore error since we successfully extended the device already */
-+    }
-+    return 0;
-+}
-+
- void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-                                       unsigned int count, int unit0)
- {
-@@ -273,10 +297,24 @@ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-         DriveInfo *dinfo = drive_get(IF_MTD, 0, unit0 + i);
-         qemu_irq cs_line;
-         DeviceState *dev;
-+        AspeedSMCFlash *flash = &s->flashes[i];
-+        uint64_t flash_size = memory_region_size(&flash->mmio);
- 
-         dev = qdev_new(flashtype);
-         if (dinfo) {
--            qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
-+            BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
-+            int64_t blk_size = blk_getlength(blk);
-+
-+            if (blk_size > 0 && blk_size < (int64_t)flash_size) {
-+                Error *err = NULL;
-+
-+                zero_extend_block_device(blk, flash_size, &err);
-+                if (err) {
-+                    warn_reportf_err(err, "Error zero-extending MTD drive[%d] "
-+                                     "to flash size", i);
-+                }
-+            }
-+            qdev_prop_set_drive(dev, "drive", blk);
-         }
-         qdev_realize_and_unref(dev, BUS(s->spi), &error_fatal);
- 
--- 
-2.38.1
+> +const size_t hw_compat_7_2_len = G_N_ELEMENTS(hw_compat_7_2);
+> +
+>  GlobalProperty hw_compat_7_1[] = {
+>      { "virtio-device", "queue_reset", "false" },
+>  };
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 546b703cb42c..9aeff77e9dca 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -107,6 +107,9 @@
+>      { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
+>      { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
+>  
+> +GlobalProperty pc_compat_7_2[] = {};
+> +const size_t pc_compat_7_2_len = G_N_ELEMENTS(pc_compat_7_2);
+> +
+>  GlobalProperty pc_compat_7_1[] = {};
+>  const size_t pc_compat_7_1_len = G_N_ELEMENTS(pc_compat_7_1);
+>  
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 0ad0ed160387..1c0a7b83b545 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -435,7 +435,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>      machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+>  }
+>  
+> -static void pc_i440fx_7_2_machine_options(MachineClass *m)
+> +static void pc_i440fx_8_0_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>      pc_i440fx_machine_options(m);
+> @@ -444,6 +444,18 @@ static void pc_i440fx_7_2_machine_options(MachineClass *m)
+>      pcmc->default_cpu_version = 1;
+>  }
+>  
+> +DEFINE_I440FX_MACHINE(v8_0, "pc-i440fx-8.0", NULL,
+> +                      pc_i440fx_8_0_machine_options);
+> +
+> +static void pc_i440fx_7_2_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_8_0_machine_options(m);
+> +    m->alias = NULL;
+> +    m->is_default = false;
+> +    compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+> +    compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
+> +}
+> +
+>  DEFINE_I440FX_MACHINE(v7_2, "pc-i440fx-7.2", NULL,
+>                        pc_i440fx_7_2_machine_options);
+>  
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index a496bd6e74f5..10bb49f679b0 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -370,7 +370,7 @@ static void pc_q35_machine_options(MachineClass *m)
+>      m->max_cpus = 288;
+>  }
+>  
+> -static void pc_q35_7_2_machine_options(MachineClass *m)
+> +static void pc_q35_8_0_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>      pc_q35_machine_options(m);
+> @@ -378,6 +378,17 @@ static void pc_q35_7_2_machine_options(MachineClass *m)
+>      pcmc->default_cpu_version = 1;
+>  }
+>  
+> +DEFINE_Q35_MACHINE(v8_0, "pc-q35-8.0", NULL,
+> +                   pc_q35_8_0_machine_options);
+> +
+> +static void pc_q35_7_2_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_8_0_machine_options(m);
+> +    m->alias = NULL;
+> +    compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+> +    compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
+> +}
+> +
+>  DEFINE_Q35_MACHINE(v7_2, "pc-q35-7.2", NULL,
+>                     pc_q35_7_2_machine_options);
+>  
+> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+> index da5eafd2756f..4cb5beef1a0c 100644
+> --- a/hw/m68k/virt.c
+> +++ b/hw/m68k/virt.c
+> @@ -346,10 +346,17 @@ type_init(virt_machine_register_types)
+>      } \
+>      type_init(machvirt_machine_##major##_##minor##_init);
+>  
+> +static void virt_machine_8_0_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE(8, 0, true)
+> +
+>  static void virt_machine_7_2_options(MachineClass *mc)
+>  {
+> +    virt_machine_8_0_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+>  }
+> -DEFINE_VIRT_MACHINE(7, 2, true)
+> +DEFINE_VIRT_MACHINE(7, 2, false)
+>  
+>  static void virt_machine_7_1_options(MachineClass *mc)
+>  {
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 66b414d2e9ba..da9c84c1198f 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4733,15 +4733,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
+>      }                                                                \
+>      type_init(spapr_machine_register_##suffix)
+>  
+> +/*
+> + * pseries-8.0
+> + */
+> +static void spapr_machine_8_0_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE(8_0, "8.0", true);
+> +
+>  /*
+>   * pseries-7.2
+>   */
+>  static void spapr_machine_7_2_class_options(MachineClass *mc)
+>  {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_8_0_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+>  }
+>  
+> -DEFINE_SPAPR_MACHINE(7_2, "7.2", true);
+> +DEFINE_SPAPR_MACHINE(7_2, "7.2", false);
+>  
+>  /*
+>   * pseries-7.1
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index 7d80bc183716..9d2f7c309f75 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -823,14 +823,26 @@ bool css_migration_enabled(void)
+>      }                                                                         \
+>      type_init(ccw_machine_register_##suffix)
+>  
+> +static void ccw_machine_8_0_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_8_0_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(8_0, "8.0", true);
+> +
+>  static void ccw_machine_7_2_instance_options(MachineState *machine)
+>  {
+> +    ccw_machine_8_0_instance_options(machine);
+>  }
+>  
+>  static void ccw_machine_7_2_class_options(MachineClass *mc)
+>  {
+> +    ccw_machine_8_0_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+>  }
+> -DEFINE_CCW_MACHINE(7_2, "7.2", true);
+> +DEFINE_CCW_MACHINE(7_2, "7.2", false);
+>  
+>  static void ccw_machine_7_1_instance_options(MachineState *machine)
+>  {
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 90f1dd3aeb79..d18d6d007335 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -379,6 +379,9 @@ struct MachineState {
+>      } \
+>      type_init(machine_initfn##_register_types)
+>  
+> +extern GlobalProperty hw_compat_7_2[];
+> +extern const size_t hw_compat_7_2_len;
+> +
+>  extern GlobalProperty hw_compat_7_1[];
+>  extern const size_t hw_compat_7_1_len;
+>  
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index c95333514ed3..991f905f5d25 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -200,6 +200,9 @@ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+>  /* sgx.c */
+>  void pc_machine_init_sgx_epc(PCMachineState *pcms);
+>  
+> +extern GlobalProperty pc_compat_7_2[];
+> +extern const size_t pc_compat_7_2_len;
+> +
+>  extern GlobalProperty pc_compat_7_1[];
+>  extern const size_t pc_compat_7_1_len;
+>  
 

@@ -1,541 +1,172 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp523482ejx;
-        Wed, 16 Nov 2022 07:28:15 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4Mesl7+WdNIOEEytHBT/WVrFuN++2HNpTFuvUY3DVhBEnHh8IOG0YWwFOstcP6y+4yZRid
-X-Received: by 2002:a05:620a:e0c:b0:6ee:6845:ced with SMTP id y12-20020a05620a0e0c00b006ee68450cedmr19455230qkm.530.1668612495590;
-        Wed, 16 Nov 2022 07:28:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668612495; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp529379ejx;
+        Wed, 16 Nov 2022 07:35:29 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5jK2wa+jtWnImFjptN+0GU1xoEBGjEanErsgM2+GtU5nPhjhc63VRTloWuYhpkTSleTdPk
+X-Received: by 2002:a0c:fa0f:0:b0:4b4:7ac1:aa38 with SMTP id q15-20020a0cfa0f000000b004b47ac1aa38mr21560785qvn.84.1668612929550;
+        Wed, 16 Nov 2022 07:35:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668612929; cv=none;
         d=google.com; s=arc-20160816;
-        b=YInNGnMQgILKghgng/sb5hlIoUxap2ZM5J3wK7Qrqn7Ui5Jg07tROI6bTqjGvIrpz4
-         E9wzOzy1HfS9lreeaYCRrN0y9JJ2fAWVAMOfvW7JcHvrpjsG3wu9KUIG++HSCRPC6zQ5
-         eOiyzQVk/Nsksu1daKOyKSC5OwePxIwobwbH0canbyobqZTByMVK8SlqXUdNa1ow+ZG8
-         8+aIQyyc7ZugQIPF09LuYQ5w8iu+ojFLVrGUPPz/IrJ40AKZDw9RM4yJiLFR5ss8Gx1K
-         hvV/bBuUDPfZ3zNbCrdBOATcvhvdwQG9gRJaWDkf+8QFABll4leAf/M4vIo9dKkK9iy5
-         FhSA==
+        b=dsWQ3Qu7yCEbRKiZgpIptGYPG1jGXih7Yvs4rNGZWO2/Q550fE5TcyXBr50jqc3dUk
+         b9xNy2zdsnTjVhoUPDqwiT0VWd8DxTmMkyIp0rdf67NiBTp0RBTG+E4Fpsm5RzTTUBeY
+         uxwQKqmVxuTm5OkWpngmRNfW/EFLMds7j56BOUYnwRhwkmzMjtsTOydfE8O8RD6VDS3F
+         1LCm/wUt/nR+rtKINzMWkbHt7K/2qF90kc0lmZK0ysWmvzYvirc+uyPSvUNMci6dsyHK
+         h0VFoEI8XJ3z7B7Ti3HmOH1aDdM09xaLEcU/droLbhqQQdNNJIIYnw1B7CRebVgwR0Nw
+         CcyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=2pVN6prRKi5m46fL5ZeECg/Q5oH/J1WYQ+RVRdNP4iI=;
-        b=wgm8Dzy3jwdMLTUAFuuvKilvdBA8xE8oDqHpBlPGSXlerDlWRVKBcguKZfLhLt+Qnz
-         hQsa7dnv73nSzJtVck6rXttTsA6Nt/CN7oo7H/xY5ZnWLMmT4zfdFiBebFdetmLf57BZ
-         RaUvMs+al7aLI+7DQQ3EM2FQwTCQ3f4RZhAL9dfojWcnARKNfc39Jcq8CaB7SHYXUxsX
-         mNt0xyce2qRlAu+raTmlnLoiKhVIh+35QSqAlx+L7EUCItfvLOBYFcNvU8cRcj69MF1I
-         2HdYYGtsBuK3RWSA2gSE6pCWdRSOItj08Ol+bgDhZ+6ksolvFgzFNuBoO9nZKRnskn3Q
-         ScsA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=j9i9Cxxmb674dr89ttZ5gU8/VkxeXeHN928+IK9XUhA=;
+        b=ysbItvrusAnrZSv/0RbuDTBuAnTsJmSM071QQRX6srhuHpXQOU9mRhOkm9N3G2LX+u
+         1v9tgPb15rsEetx/2qr2tfDd4XcZcVyEHjCAEx3zdHCBVXwojsZ0Ig+4fphTbYlBFJRF
+         wPPu+oqyVm/0reMwX01LQrflStHlr7aoWmeHsGgG3MzjDC/YLyLDBol8VrzyO68Cx9Ls
+         x/cUgViHpQcA1EJrrZKncDzUmzyfRWxxsLICOn4PW4KfenBjkdiNo/oyx0W2x2tbfL7Z
+         rmHQwZmNsBay7+4hI3OoPrAMfpPsyzp+SglWm/MOaN92ACO/3T2NPlCUmhjNOd+OoGHl
+         AuUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dQn6AFgQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=sQyPJZ59;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k2-20020ac80742000000b003a53b66c3c8si8926288qth.579.2022.11.16.07.28.15
+        by mx.google.com with ESMTPS id j13-20020a05620a146d00b006f981898519si8065874qkl.50.2022.11.16.07.35.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Nov 2022 07:28:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Nov 2022 07:35:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dQn6AFgQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=sQyPJZ59;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ovKKM-0003wk-71; Wed, 16 Nov 2022 10:27:50 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ovKRZ-0004NK-Tb; Wed, 16 Nov 2022 10:35:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1ovKKK-0003vV-2E
- for qemu-devel@nongnu.org; Wed, 16 Nov 2022 10:27:48 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1ovKKH-0004Dv-JH
- for qemu-devel@nongnu.org; Wed, 16 Nov 2022 10:27:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668612463;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2pVN6prRKi5m46fL5ZeECg/Q5oH/J1WYQ+RVRdNP4iI=;
- b=dQn6AFgQ8ckFl2GPNWURoK2GcTDDNDElSy1tb2JgCZf9LBVVpm0O0HsbmjrQ6D6EIvpK4l
- wgDud1snCAMTH5oI0BmppHQL64rEoxXPCSoV8KoHobDl4H+4TwseytKA7mpW7NBNXUJXNQ
- 38PvElN577DyvbUXV6Kkt5q8knzg9zU=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-588-RT2sq0PpPVupuNwGTJr_2w-1; Wed, 16 Nov 2022 10:27:39 -0500
-X-MC-Unique: RT2sq0PpPVupuNwGTJr_2w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EDD1F85A59D;
- Wed, 16 Nov 2022 15:27:38 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq2.redhat.com
- (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EF5E31121325;
- Wed, 16 Nov 2022 15:27:36 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ovKRY-0004Lu-HC
+ for qemu-arm@nongnu.org; Wed, 16 Nov 2022 10:35:16 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ovKRW-0005y3-Po
+ for qemu-arm@nongnu.org; Wed, 16 Nov 2022 10:35:16 -0500
+Received: by mail-ej1-x629.google.com with SMTP id gv23so12263561ejb.3
+ for <qemu-arm@nongnu.org>; Wed, 16 Nov 2022 07:35:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=j9i9Cxxmb674dr89ttZ5gU8/VkxeXeHN928+IK9XUhA=;
+ b=sQyPJZ59Tkb3+DuwPdhxl+U+4U97KF5YuTSihpfAo0Vii2u/hgRWHyjdUcbq+B3ktY
+ xY4Pmy8qWUpvx5mLV3q5kE5wwqDKOIiD5Ai3L9/lkqpxDpFFgYGgtwr3+N/dGbYFN/zc
+ Km4yR08Qygs+DXp2PxpF8EVINM67ity3PUMIuvjK1V4rDHjKWUjDLsRo6Icrkzs0weKQ
+ pV99aff5wfQuXx+67yWRLGVELQtevV/FTXTFjRwaJrzCpU9a9EC/hMNeWu4CjE4QPrmq
+ RGhxeGNyeF6AwcpKE4lTGnmnG/KpV/TpWQO/R2Uspcvi8sG9Vm91qRfZt75fpxZgnMmT
+ UZGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=j9i9Cxxmb674dr89ttZ5gU8/VkxeXeHN928+IK9XUhA=;
+ b=m1jETTzbg35VOiAn1tiAI0ue/Zb2AsXxbSkdhE0XUseWh1KjgwuJmI2asG5fdrWagh
+ 1sZLvelAzLNOVx7jq0XfoTCNgKvrpq52YI03HQDUWRqDrEggZ/6geSU5jaIiiZFybBqL
+ SL/VsfBrEIt4ErnQ8OVUUDtsQgKBfyNLnpP+lcyWTLMpvWLl2/UbIiDoreIUCv7s6gFA
+ Spe1VxVaIs6PFOREzTaPSywjIAnE8squhA2oEhCJKR85KR/2hkCCSe4BWkaPSz22AxG8
+ gbLpG4kNbOy31wnKLhh2VR3KJOYuz5VYRi2XcKc5dSOeESOo26jeCcSPJi50I3Z8RRwR
+ YnEw==
+X-Gm-Message-State: ANoB5plCr4P9EJM4NIzO7tbHYc7stzsrSorw6xwN24E33wKJxKMpvQ5t
+ la0nwzJ4zdw0UjI0mBVZ6z46mw==
+X-Received: by 2002:a17:906:5ac6:b0:7ad:ab0e:76aa with SMTP id
+ x6-20020a1709065ac600b007adab0e76aamr17679736ejs.435.1668612913335; 
+ Wed, 16 Nov 2022 07:35:13 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ 17-20020a170906201100b00731582babcasm7054385ejo.71.2022.11.16.07.35.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 16 Nov 2022 07:35:12 -0800 (PST)
+Message-ID: <894b767d-b071-a37a-db61-9538d63e00dc@linaro.org>
+Date: Wed, 16 Nov 2022 16:35:10 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.2
+Subject: Re: [PATCH 2/2] pci: drop redundant PCIDeviceClass::is_bridge field
+Content-Language: en-US
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
 Cc: mst@redhat.com, ani@anisinha.ca, pbonzini@redhat.com,
  richard.henderson@linaro.org, mark.cave-ayland@ilande.co.uk,
  peter.maydell@linaro.org, andrew.smirnov@gmail.com, paulburton@kernel.org,
  aleksandar.rikalo@syrmia.com, danielhb413@gmail.com, clg@kaod.org,
  david@gibson.dropbear.id.au, groug@kaod.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org
-Subject: [PATCH 2/2] pci: drop redundant PCIDeviceClass::is_bridge field
-Date: Wed, 16 Nov 2022 16:27:30 +0100
-Message-Id: <20221116152730.3691347-3-imammedo@redhat.com>
-In-Reply-To: <20221116152730.3691347-1-imammedo@redhat.com>
 References: <20221116152730.3691347-1-imammedo@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+ <20221116152730.3691347-3-imammedo@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221116152730.3691347-3-imammedo@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +Pw/mK6W5H/P
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eL6rfB6LsZId
 
-and use cast to TYPE_PCI_BRIDGE instead.
+On 16/11/22 16:27, Igor Mammedov wrote:
+> and use cast to TYPE_PCI_BRIDGE instead.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>   include/hw/pci/pci.h               | 11 +----------
+>   include/hw/pci/pci_bridge.h        |  1 +
+>   hw/acpi/pcihp.c                    |  3 +--
+>   hw/i386/acpi-build.c               |  5 ++---
+>   hw/pci-bridge/cxl_downstream.c     |  1 -
+>   hw/pci-bridge/cxl_upstream.c       |  1 -
+>   hw/pci-bridge/i82801b11.c          |  1 -
+>   hw/pci-bridge/pci_bridge_dev.c     |  1 -
+>   hw/pci-bridge/pcie_pci_bridge.c    |  1 -
+>   hw/pci-bridge/pcie_root_port.c     |  1 -
+>   hw/pci-bridge/simba.c              |  1 -
+>   hw/pci-bridge/xio3130_downstream.c |  1 -
+>   hw/pci-bridge/xio3130_upstream.c   |  1 -
+>   hw/pci-host/designware.c           |  1 -
+>   hw/pci-host/xilinx-pcie.c          |  1 -
+>   hw/pci/pci.c                       | 20 +++++++++-----------
+>   hw/ppc/spapr_pci.c                 | 15 +++++----------
+>   17 files changed, 19 insertions(+), 47 deletions(-)
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
- include/hw/pci/pci.h               | 11 +----------
- include/hw/pci/pci_bridge.h        |  1 +
- hw/acpi/pcihp.c                    |  3 +--
- hw/i386/acpi-build.c               |  5 ++---
- hw/pci-bridge/cxl_downstream.c     |  1 -
- hw/pci-bridge/cxl_upstream.c       |  1 -
- hw/pci-bridge/i82801b11.c          |  1 -
- hw/pci-bridge/pci_bridge_dev.c     |  1 -
- hw/pci-bridge/pcie_pci_bridge.c    |  1 -
- hw/pci-bridge/pcie_root_port.c     |  1 -
- hw/pci-bridge/simba.c              |  1 -
- hw/pci-bridge/xio3130_downstream.c |  1 -
- hw/pci-bridge/xio3130_upstream.c   |  1 -
- hw/pci-host/designware.c           |  1 -
- hw/pci-host/xilinx-pcie.c          |  1 -
- hw/pci/pci.c                       | 20 +++++++++-----------
- hw/ppc/spapr_pci.c                 | 15 +++++----------
- 17 files changed, 19 insertions(+), 47 deletions(-)
+> @@ -1090,9 +1088,10 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
+>       Error *local_err = NULL;
+>       DeviceState *dev = DEVICE(pci_dev);
+>       PCIBus *bus = pci_get_bus(pci_dev);
+> +    bool is_bridge = IS_PCI_BRIDGE(pci_dev);
+>   
+>       /* Only pci bridges can be attached to extra PCI root buses */
+> -    if (pci_bus_is_root(bus) && bus->parent_dev && !pc->is_bridge) {
+> +    if (pci_bus_is_root(bus) && bus->parent_dev && !IS_PCI_BRIDGE(pci_dev)) {
 
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index 6ccaaf5154..8b3a8571bf 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -250,16 +250,7 @@ struct PCIDeviceClass {
-     uint16_t class_id;
-     uint16_t subsystem_vendor_id;       /* only for header type = 0 */
-     uint16_t subsystem_id;              /* only for header type = 0 */
--
--    /*
--     * pci-to-pci bridge or normal device.
--     * This doesn't mean pci host switch.
--     * When card bus bridge is supported, this would be enhanced.
--     */
--    bool is_bridge;
--
--    /* rom bar */
--    const char *romfile;
-+    const char *romfile;                /* rom bar */
- };
- 
- typedef void (*PCIINTxRoutingNotifier)(PCIDevice *dev);
-diff --git a/include/hw/pci/pci_bridge.h b/include/hw/pci/pci_bridge.h
-index ba4bafac7c..ca6caf487e 100644
---- a/include/hw/pci/pci_bridge.h
-+++ b/include/hw/pci/pci_bridge.h
-@@ -53,6 +53,7 @@ struct PCIBridgeWindows {
- 
- #define TYPE_PCI_BRIDGE "base-pci-bridge"
- OBJECT_DECLARE_SIMPLE_TYPE(PCIBridge, PCI_BRIDGE)
-+#define IS_PCI_BRIDGE(dev) object_dynamic_cast(OBJECT(dev), TYPE_PCI_BRIDGE)
- 
- struct PCIBridge {
-     /*< private >*/
-diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index 84d75e6b84..99a898d9ae 100644
---- a/hw/acpi/pcihp.c
-+++ b/hw/acpi/pcihp.c
-@@ -186,7 +186,6 @@ static PCIBus *acpi_pcihp_find_hotplug_bus(AcpiPciHpState *s, int bsel)
- 
- static bool acpi_pcihp_pc_no_hotplug(AcpiPciHpState *s, PCIDevice *dev)
- {
--    PCIDeviceClass *pc = PCI_DEVICE_GET_CLASS(dev);
-     DeviceClass *dc = DEVICE_GET_CLASS(dev);
-     /*
-      * ACPI doesn't allow hotplug of bridge devices.  Don't allow
-@@ -196,7 +195,7 @@ static bool acpi_pcihp_pc_no_hotplug(AcpiPciHpState *s, PCIDevice *dev)
-      * Don't allow hot-unplug of SR-IOV Virtual Functions, as they
-      * will be removed implicitly, when Physical Function is unplugged.
-      */
--    return (pc->is_bridge && !dev->qdev.hotplugged) || !dc->hotpluggable ||
-+    return (IS_PCI_BRIDGE(dev) && !dev->qdev.hotplugged) || !dc->hotpluggable ||
-            pci_is_vf(dev);
- }
- 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index d9eaa5fc4d..aa15b11cde 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -403,7 +403,6 @@ static void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus,
- 
-     for (devfn = 0; devfn < ARRAY_SIZE(bus->devices); devfn++) {
-         DeviceClass *dc;
--        PCIDeviceClass *pc;
-         PCIDevice *pdev = bus->devices[devfn];
-         int slot = PCI_SLOT(devfn);
-         int func = PCI_FUNC(devfn);
-@@ -414,14 +413,14 @@ static void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus,
-         bool cold_plugged_bridge = false;
- 
-         if (pdev) {
--            pc = PCI_DEVICE_GET_CLASS(pdev);
-             dc = DEVICE_GET_CLASS(pdev);
- 
-             /*
-              * Cold plugged bridges aren't themselves hot-pluggable.
-              * Hotplugged bridges *are* hot-pluggable.
-              */
--            cold_plugged_bridge = pc->is_bridge && !DEVICE(pdev)->hotplugged;
-+            cold_plugged_bridge = IS_PCI_BRIDGE(pdev) &&
-+                                  !DEVICE(pdev)->hotplugged;
-             bridge_in_acpi =  cold_plugged_bridge && pcihp_bridge_en;
- 
-             hotpluggbale_slot = bsel && dc->hotpluggable &&
-diff --git a/hw/pci-bridge/cxl_downstream.c b/hw/pci-bridge/cxl_downstream.c
-index a361e519d0..3d4e6b59cd 100644
---- a/hw/pci-bridge/cxl_downstream.c
-+++ b/hw/pci-bridge/cxl_downstream.c
-@@ -217,7 +217,6 @@ static void cxl_dsp_class_init(ObjectClass *oc, void *data)
-     DeviceClass *dc = DEVICE_CLASS(oc);
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(oc);
- 
--    k->is_bridge = true;
-     k->config_write = cxl_dsp_config_write;
-     k->realize = cxl_dsp_realize;
-     k->exit = cxl_dsp_exitfn;
-diff --git a/hw/pci-bridge/cxl_upstream.c b/hw/pci-bridge/cxl_upstream.c
-index 9b8b57df9d..9df436cb73 100644
---- a/hw/pci-bridge/cxl_upstream.c
-+++ b/hw/pci-bridge/cxl_upstream.c
-@@ -375,7 +375,6 @@ static void cxl_upstream_class_init(ObjectClass *oc, void *data)
-     DeviceClass *dc = DEVICE_CLASS(oc);
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(oc);
- 
--    k->is_bridge = true;
-     k->config_write = cxl_usp_write_config;
-     k->config_read = cxl_usp_read_config;
-     k->realize = cxl_usp_realize;
-diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
-index f28181e210..d9f224818b 100644
---- a/hw/pci-bridge/i82801b11.c
-+++ b/hw/pci-bridge/i82801b11.c
-@@ -92,7 +92,6 @@ static void i82801b11_bridge_class_init(ObjectClass *klass, void *data)
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
--    k->is_bridge = true;
-     k->vendor_id = PCI_VENDOR_ID_INTEL;
-     k->device_id = PCI_DEVICE_ID_INTEL_82801BA_11;
-     k->revision = ICH9_D2P_A2_REVISION;
-diff --git a/hw/pci-bridge/pci_bridge_dev.c b/hw/pci-bridge/pci_bridge_dev.c
-index 657a06ddbe..3435df8d73 100644
---- a/hw/pci-bridge/pci_bridge_dev.c
-+++ b/hw/pci-bridge/pci_bridge_dev.c
-@@ -254,7 +254,6 @@ static void pci_bridge_dev_class_init(ObjectClass *klass, void *data)
-     k->vendor_id = PCI_VENDOR_ID_REDHAT;
-     k->device_id = PCI_DEVICE_ID_REDHAT_BRIDGE;
-     k->class_id = PCI_CLASS_BRIDGE_PCI;
--    k->is_bridge = true;
-     dc->desc = "Standard PCI Bridge";
-     dc->reset = qdev_pci_bridge_dev_reset;
-     device_class_set_props(dc, pci_bridge_dev_properties);
-diff --git a/hw/pci-bridge/pcie_pci_bridge.c b/hw/pci-bridge/pcie_pci_bridge.c
-index 1cd917a459..2301b2ca0b 100644
---- a/hw/pci-bridge/pcie_pci_bridge.c
-+++ b/hw/pci-bridge/pcie_pci_bridge.c
-@@ -145,7 +145,6 @@ static void pcie_pci_bridge_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(klass);
- 
--    k->is_bridge = true;
-     k->vendor_id = PCI_VENDOR_ID_REDHAT;
-     k->device_id = PCI_DEVICE_ID_REDHAT_PCIE_BRIDGE;
-     k->realize = pcie_pci_bridge_realize;
-diff --git a/hw/pci-bridge/pcie_root_port.c b/hw/pci-bridge/pcie_root_port.c
-index 460e48269d..e0a7a036f5 100644
---- a/hw/pci-bridge/pcie_root_port.c
-+++ b/hw/pci-bridge/pcie_root_port.c
-@@ -172,7 +172,6 @@ static void rp_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
- 
--    k->is_bridge = true;
-     k->config_write = rp_write_config;
-     k->realize = rp_realize;
-     k->exit = rp_exit;
-diff --git a/hw/pci-bridge/simba.c b/hw/pci-bridge/simba.c
-index ba55ab1939..17aa0d7b21 100644
---- a/hw/pci-bridge/simba.c
-+++ b/hw/pci-bridge/simba.c
-@@ -77,7 +77,6 @@ static void simba_pci_bridge_class_init(ObjectClass *klass, void *data)
-     k->device_id = PCI_DEVICE_ID_SUN_SIMBA;
-     k->revision = 0x11;
-     k->config_write = pci_bridge_write_config;
--    k->is_bridge = true;
-     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->reset = pci_bridge_reset;
-     dc->vmsd = &vmstate_pci_device;
-diff --git a/hw/pci-bridge/xio3130_downstream.c b/hw/pci-bridge/xio3130_downstream.c
-index 05e2b06c0c..38a2361fa2 100644
---- a/hw/pci-bridge/xio3130_downstream.c
-+++ b/hw/pci-bridge/xio3130_downstream.c
-@@ -159,7 +159,6 @@ static void xio3130_downstream_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
- 
--    k->is_bridge = true;
-     k->config_write = xio3130_downstream_write_config;
-     k->realize = xio3130_downstream_realize;
-     k->exit = xio3130_downstream_exitfn;
-diff --git a/hw/pci-bridge/xio3130_upstream.c b/hw/pci-bridge/xio3130_upstream.c
-index 5ff46ef050..a48bfe3bc5 100644
---- a/hw/pci-bridge/xio3130_upstream.c
-+++ b/hw/pci-bridge/xio3130_upstream.c
-@@ -128,7 +128,6 @@ static void xio3130_upstream_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
- 
--    k->is_bridge = true;
-     k->config_write = xio3130_upstream_write_config;
-     k->realize = xio3130_upstream_realize;
-     k->exit = xio3130_upstream_exitfn;
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index bde3a343a2..9e183caa48 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -600,7 +600,6 @@ static void designware_pcie_root_class_init(ObjectClass *klass, void *data)
-     k->device_id = 0xABCD;
-     k->revision = 0;
-     k->class_id = PCI_CLASS_BRIDGE_PCI;
--    k->is_bridge = true;
-     k->exit = pci_bridge_exitfn;
-     k->realize = designware_pcie_root_realize;
-     k->config_read = designware_pcie_root_config_read;
-diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
-index 38d5901a45..c9ab7052f4 100644
---- a/hw/pci-host/xilinx-pcie.c
-+++ b/hw/pci-host/xilinx-pcie.c
-@@ -298,7 +298,6 @@ static void xilinx_pcie_root_class_init(ObjectClass *klass, void *data)
-     k->device_id = 0x7021;
-     k->revision = 0;
-     k->class_id = PCI_CLASS_BRIDGE_HOST;
--    k->is_bridge = true;
-     k->realize = xilinx_pcie_root_realize;
-     k->exit = pci_bridge_exitfn;
-     dc->reset = pci_bridge_reset;
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 2f450f6a72..e93daab9f0 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -576,7 +576,7 @@ void pci_bus_range(PCIBus *bus, int *min_bus, int *max_bus)
-     for (i = 0; i < ARRAY_SIZE(bus->devices); ++i) {
-         PCIDevice *dev = bus->devices[i];
- 
--        if (dev && PCI_DEVICE_GET_CLASS(dev)->is_bridge) {
-+        if (dev && IS_PCI_BRIDGE(dev)) {
-             *min_bus = MIN(*min_bus, dev->config[PCI_SECONDARY_BUS]);
-             *max_bus = MAX(*max_bus, dev->config[PCI_SUBORDINATE_BUS]);
-         }
-@@ -592,7 +592,6 @@ static int get_pci_config_device(QEMUFile *f, void *pv, size_t size,
-                                  const VMStateField *field)
- {
-     PCIDevice *s = container_of(pv, PCIDevice, config);
--    PCIDeviceClass *pc = PCI_DEVICE_GET_CLASS(s);
-     uint8_t *config;
-     int i;
- 
-@@ -614,9 +613,8 @@ static int get_pci_config_device(QEMUFile *f, void *pv, size_t size,
-     memcpy(s->config, config, size);
- 
-     pci_update_mappings(s);
--    if (pc->is_bridge) {
--        PCIBridge *b = PCI_BRIDGE(s);
--        pci_bridge_update_mappings(b);
-+    if (IS_PCI_BRIDGE(s)) {
-+        pci_bridge_update_mappings(PCI_BRIDGE(s));
-     }
- 
-     memory_region_set_enabled(&s->bus_master_enable_region,
-@@ -1090,9 +1088,10 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
-     Error *local_err = NULL;
-     DeviceState *dev = DEVICE(pci_dev);
-     PCIBus *bus = pci_get_bus(pci_dev);
-+    bool is_bridge = IS_PCI_BRIDGE(pci_dev);
- 
-     /* Only pci bridges can be attached to extra PCI root buses */
--    if (pci_bus_is_root(bus) && bus->parent_dev && !pc->is_bridge) {
-+    if (pci_bus_is_root(bus) && bus->parent_dev && !IS_PCI_BRIDGE(pci_dev)) {
-         error_setg(errp,
-                    "PCI: Only PCI/PCIe bridges can be plugged into %s",
-                     bus->parent_dev->name);
-@@ -1154,7 +1153,7 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
-     pci_config_set_revision(pci_dev->config, pc->revision);
-     pci_config_set_class(pci_dev->config, pc->class_id);
- 
--    if (!pc->is_bridge) {
-+    if (!is_bridge) {
-         if (pc->subsystem_vendor_id || pc->subsystem_id) {
-             pci_set_word(pci_dev->config + PCI_SUBSYSTEM_VENDOR_ID,
-                          pc->subsystem_vendor_id);
-@@ -1171,7 +1170,7 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
-     pci_init_cmask(pci_dev);
-     pci_init_wmask(pci_dev);
-     pci_init_w1cmask(pci_dev);
--    if (pc->is_bridge) {
-+    if (is_bridge) {
-         pci_init_mask_bridge(pci_dev);
-     }
-     pci_init_multifunction(bus, pci_dev, &local_err);
-@@ -2096,7 +2095,7 @@ static bool pci_root_bus_in_range(PCIBus *bus, int bus_num)
-     for (i = 0; i < ARRAY_SIZE(bus->devices); ++i) {
-         PCIDevice *dev = bus->devices[i];
- 
--        if (dev && PCI_DEVICE_GET_CLASS(dev)->is_bridge) {
-+        if (dev && IS_PCI_BRIDGE(dev)) {
-             if (pci_secondary_bus_in_range(dev, bus_num)) {
-                 return true;
-             }
-@@ -2841,7 +2840,6 @@ void pci_setup_iommu(PCIBus *bus, PCIIOMMUFunc fn, void *opaque)
- static void pci_dev_get_w64(PCIBus *b, PCIDevice *dev, void *opaque)
- {
-     Range *range = opaque;
--    PCIDeviceClass *pc = PCI_DEVICE_GET_CLASS(dev);
-     uint16_t cmd = pci_get_word(dev->config + PCI_COMMAND);
-     int i;
- 
-@@ -2849,7 +2847,7 @@ static void pci_dev_get_w64(PCIBus *b, PCIDevice *dev, void *opaque)
-         return;
-     }
- 
--    if (pc->is_bridge) {
-+    if (IS_PCI_BRIDGE(dev)) {
-         pcibus_t base = pci_bridge_get_base(dev, PCI_BASE_ADDRESS_MEM_PREFETCH);
-         pcibus_t limit = pci_bridge_get_limit(dev, PCI_BASE_ADDRESS_MEM_PREFETCH);
- 
-diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-index 7b7618d5da..75aacda65a 100644
---- a/hw/ppc/spapr_pci.c
-+++ b/hw/ppc/spapr_pci.c
-@@ -1361,7 +1361,6 @@ static int spapr_dt_pci_device(SpaprPhbState *sphb, PCIDevice *dev,
- {
-     int offset;
-     g_autofree gchar *nodename = spapr_pci_fw_dev_name(dev);
--    PCIDeviceClass *pc = PCI_DEVICE_GET_CLASS(dev);
-     ResourceProps rp;
-     SpaprDrc *drc = drc_from_dev(sphb, dev);
-     uint32_t vendor_id = pci_default_read_config(dev, PCI_VENDOR_ID, 2);
-@@ -1446,7 +1445,7 @@ static int spapr_dt_pci_device(SpaprPhbState *sphb, PCIDevice *dev,
- 
-     spapr_phb_nvgpu_populate_pcidev_dt(dev, fdt, offset, sphb);
- 
--    if (!pc->is_bridge) {
-+    if (!IS_PCI_BRIDGE(dev)) {
-         /* Properties only for non-bridges */
-         uint32_t min_grant = pci_default_read_config(dev, PCI_MIN_GNT, 1);
-         uint32_t max_latency = pci_default_read_config(dev, PCI_MAX_LAT, 1);
-@@ -1544,7 +1543,6 @@ static void spapr_pci_pre_plug(HotplugHandler *plug_handler,
- {
-     SpaprPhbState *phb = SPAPR_PCI_HOST_BRIDGE(DEVICE(plug_handler));
-     PCIDevice *pdev = PCI_DEVICE(plugged_dev);
--    PCIDeviceClass *pc = PCI_DEVICE_GET_CLASS(plugged_dev);
-     SpaprDrc *drc = drc_from_dev(phb, pdev);
-     PCIBus *bus = PCI_BUS(qdev_get_parent_bus(DEVICE(pdev)));
-     uint32_t slotnr = PCI_SLOT(pdev->devfn);
-@@ -1560,7 +1558,7 @@ static void spapr_pci_pre_plug(HotplugHandler *plug_handler,
-         }
-     }
- 
--    if (pc->is_bridge) {
-+    if (IS_PCI_BRIDGE(plugged_dev)) {
-         if (!bridge_has_valid_chassis_nr(OBJECT(plugged_dev), errp)) {
-             return;
-         }
-@@ -1589,7 +1587,6 @@ static void spapr_pci_plug(HotplugHandler *plug_handler,
- {
-     SpaprPhbState *phb = SPAPR_PCI_HOST_BRIDGE(DEVICE(plug_handler));
-     PCIDevice *pdev = PCI_DEVICE(plugged_dev);
--    PCIDeviceClass *pc = PCI_DEVICE_GET_CLASS(plugged_dev);
-     SpaprDrc *drc = drc_from_dev(phb, pdev);
-     uint32_t slotnr = PCI_SLOT(pdev->devfn);
- 
-@@ -1603,7 +1600,7 @@ static void spapr_pci_plug(HotplugHandler *plug_handler,
- 
-     g_assert(drc);
- 
--    if (pc->is_bridge) {
-+    if (IS_PCI_BRIDGE(plugged_dev)) {
-         spapr_pci_bridge_plug(phb, PCI_BRIDGE(plugged_dev));
-     }
- 
-@@ -1646,7 +1643,6 @@ static void spapr_pci_bridge_unplug(SpaprPhbState *phb,
- static void spapr_pci_unplug(HotplugHandler *plug_handler,
-                              DeviceState *plugged_dev, Error **errp)
- {
--    PCIDeviceClass *pc = PCI_DEVICE_GET_CLASS(plugged_dev);
-     SpaprPhbState *phb = SPAPR_PCI_HOST_BRIDGE(DEVICE(plug_handler));
- 
-     /* some version guests do not wait for completion of a device
-@@ -1661,7 +1657,7 @@ static void spapr_pci_unplug(HotplugHandler *plug_handler,
-      */
-     pci_device_reset(PCI_DEVICE(plugged_dev));
- 
--    if (pc->is_bridge) {
-+    if (IS_PCI_BRIDGE(plugged_dev)) {
-         spapr_pci_bridge_unplug(phb, PCI_BRIDGE(plugged_dev));
-         return;
-     }
-@@ -1686,7 +1682,6 @@ static void spapr_pci_unplug_request(HotplugHandler *plug_handler,
-     g_assert(drc->dev == plugged_dev);
- 
-     if (!spapr_drc_unplug_requested(drc)) {
--        PCIDeviceClass *pc = PCI_DEVICE_GET_CLASS(plugged_dev);
-         uint32_t slotnr = PCI_SLOT(pdev->devfn);
-         SpaprDrc *func_drc;
-         SpaprDrcClass *func_drck;
-@@ -1694,7 +1689,7 @@ static void spapr_pci_unplug_request(HotplugHandler *plug_handler,
-         int i;
-         uint8_t chassis = chassis_from_bus(pci_get_bus(pdev));
- 
--        if (pc->is_bridge) {
-+        if (IS_PCI_BRIDGE(plugged_dev)) {
-             error_setg(errp, "PCI: Hot unplug of PCI bridges not supported");
-             return;
-         }
--- 
-2.31.1
+Can we use the recently assigned 'is_bridge' variable?
+
+Otherwise:
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

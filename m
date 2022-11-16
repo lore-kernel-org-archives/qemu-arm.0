@@ -1,630 +1,367 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp627403ejx;
-        Wed, 16 Nov 2022 09:48:17 -0800 (PST)
-X-Received: by 2002:a05:600c:1e89:b0:3cf:774b:ce6f with SMTP id be9-20020a05600c1e8900b003cf774bce6fmr2893575wmb.133.1668620896999;
-        Wed, 16 Nov 2022 09:48:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668620896; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp701783ejx;
+        Wed, 16 Nov 2022 11:40:15 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6To/pTdobnadyPQeofJYBXZ99+K07ZCZO4hjySqg7Qj0UgfvXK5SeOlIUV4H2RhD8OSENj
+X-Received: by 2002:a37:97c6:0:b0:6fa:6424:5e3c with SMTP id z189-20020a3797c6000000b006fa64245e3cmr20447861qkd.95.1668627615195;
+        Wed, 16 Nov 2022 11:40:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668627615; cv=none;
         d=google.com; s=arc-20160816;
-        b=cWBcJ7zy5Zkrz4ft50smT4H25Z3bQurNFpv7sQXSivqdYeQNbKRqGJRcK95/bOvWaP
-         fsinnCd5oFknqHX3rDsjbkNsaDjyV4M07MuEZXoEiShw4VgumeAIO40SrS8fYsm7c97P
-         NNl9J3TuCHnf25k00EGRDWxgi7fklh5NKX6XymsGoxrXsVTQ1Dfq5nl/HjkqSBr+NIw8
-         Q5TNiokPfUegLUj4DcuAZEjyXHO/GgjRzPmONWNDXGExb9DUvB7Q36DKYX/pllsdIfmQ
-         uafGUJC/cpZPuQ6oChZbcW03QN31xC8EF7/o5Son6amdgDsuhDibl8bHMxERo0LuaVqX
-         sgFw==
+        b=f63OFWwxMsYeW2J+Bcpy4Lrm54c/+vWNNH69OE3P+UwMcYtdM3Q36JXr6yrxM/nteH
+         iDuc/kijRP6A4avFaiUpC6Zc9GLY8uCttjwQQZ0klkBpU+wUPscCecD7us49tmpokc3O
+         /U9CfZiOdw2y6bhTHZsNZuf2SnmGd9vc5Nit9chJN4iWuhO51VsHhNgpCsCMt1Tc/bzC
+         7z9tS7zbbDRxNjILq7GrXP5hBy02ZFTT0y5SbxYoSJ+xF8hg7CWxkWKOWXl6f7ZdpaMO
+         /XPiW4FA0sIBPKBreWFJ7ZpNjIoR2zDV/BipiQmyr1okm5LGyBZWj/7CuC4UVFk1egIt
+         /zbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=p7NsJDp/JrHpKGCJphejeFdwXcPwioqdjw87NrGNIJo=;
-        b=s5VqiQFA84HtaHadm63lf8OGxNY4WUK32z+zENEWT2PMrRVvqewf9wDvuvpBD4V4nS
-         d8XXDmAegaFX0O3xFb59r44xbfXpF8es729FO2Dz2tS5a/0eLsy2rwpHas+wZ0Pfi6c4
-         Wo+HpVmhUUmFGvxXrik8ji4N2pQJ0AjWICXCxBVYvM3MfMFF5AtfH6JsdpNnWb4kck9Z
-         PKFN/VkvjzjJUFHMsSRBVz/J11Qd4izIc9qqtLx/CAXpy1EmxyEQEASDNo33GLzb2nvA
-         3JWVDkXAHpXqSUk+WpbJOo8eUbIf/MOMbnrNH3dlENU9mU1hMusfp+7WWJpnx3FWBDon
-         1dsQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=K4//5qNNFAYhb29dGtITFHlCDt5XG1ymqRao4kQpdEE=;
+        b=WR12Gmhl2oeB5ozGuKVyG6mosEKJ7Yvxxsp4pMYD9itdPMpdrJaNMGpbJJzJ2jeGpL
+         Osn57lBHcmod9FZfkKz4lrGCQ6W+eE1xsY/TCK3MNsl7lykwy3SFIZEvRNVuS6SvOSdp
+         elilJOp7nHEvJ//o1kYeyFITMzhZIzWYhllnjAGCktOda9p+cjWx2sbJXTSczq4leT13
+         BIibbrAL9B/xYGEUZKTOxw2xQelYFT7De2e54efCR0Cc7BMU9zW/ShNWO4yEwoos11i4
+         hVpKFSktXEKWiWRgDI/BQ17ZzLX9Ad6R0wvJkFXMNM4k++Ot+ePpdyB6G6pONwJ+rViJ
+         ROeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bVmwjrQ9;
-       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <francesco.cagnin@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l13-20020a05600c2ccd00b003cf9c01af70sor368151wmc.34.2022.11.16.09.48.16
-        (Google Transport Security);
-        Wed, 16 Nov 2022 09:48:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d22-20020ac85ad6000000b003a57eb1fa66si10438796qtd.265.2022.11.16.11.40.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 16 Nov 2022 11:40:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bVmwjrQ9;
-       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=p7NsJDp/JrHpKGCJphejeFdwXcPwioqdjw87NrGNIJo=;
-        b=bVmwjrQ9Fz2BqooY06UHyWtg1lrJYH/0SylTtV7JFWI+ZwiBYjMAqs0lGfxm8EPcf0
-         v4MaY4Er2yjWywmAtCwGafv/Sk0Bv0Gryb5uwpEgQpmc9K9d7ehj+g2gP2pSgmo54RkZ
-         ghGucd3+AC3yGSEQ0ko2gQpY/uUOTncyA05lzrtgnsZllRiOZD9SCftMKmjrjIDFeZoZ
-         Bni1okk4fYqrwLYzGRITib/ZeRL38yBzrCFPKDE18lOF1dYZhHr6wuA6vkSt0PALgSnH
-         e7U5p074jThhzjJWen3hOO6WTCTO1zKhImljUGtMAYhOskgQXMSJCnRA0b/TcAmr0rq/
-         T1UQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=p7NsJDp/JrHpKGCJphejeFdwXcPwioqdjw87NrGNIJo=;
-        b=olUghUFshR00IRodU5IYirmaVR253or8HHbqcETDs7vYHHxCEb9AcntE6ZedmJSbje
-         9eVKu6EQsTkQTsVsGg+eFpRZNnYD2c+L0pWnb3MLkQCHDhkPL/d4/Mf5y7rvF5YK8fBy
-         PapXMCIjW13cgjoB8J/ZqdMEaShafWYNUcNwzLgLWGjfIwCGlGRcCuODZD+Rn5KPRWjs
-         0AZEcZBX24z29vBb0kuw7HN+iIh0clVbzikn9wyG5Vg2EnGZLPs2e8oTR1UpW7CLa2Ol
-         pLH1F+t0/8b8AhaPy8VFTGbPEYBectdo9zBGB07BEq0E6Gf1R8uWxiTfgltA0wrKuiGN
-         SiRg==
-X-Gm-Message-State: ANoB5pnnDvn1cwa7w44kPIkOUPPtrtbxBZPhBQPDdJP6VPg/X3bbn1UJ
-	zhdsZb5FV2QbHnrhh0vnP2E=
-X-Google-Smtp-Source: AA0mqf6/h5kvMzP1dKaDDEbetoxIc5HUf16g0wNBx55zyAJpG50A8jEmawUkkL5io6gIOVbP8G5Sqw==
-X-Received: by 2002:a05:600c:5408:b0:3cf:85e7:7b40 with SMTP id he8-20020a05600c540800b003cf85e77b40mr195508wmb.63.1668620896608;
-        Wed, 16 Nov 2022 09:48:16 -0800 (PST)
-Return-Path: <francesco.cagnin@gmail.com>
-Received: from localhost.localdomain (229.19.205.77.rev.sfr.net. [77.205.19.229])
-        by smtp.gmail.com with ESMTPSA id n17-20020a05600c465100b003cf483ee8e0sm2477490wmo.24.2022.11.16.09.48.15
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 16 Nov 2022 09:48:16 -0800 (PST)
-From: francesco.cagnin@gmail.com
-X-Google-Original-From: fcagnin@quarkslab.com
-To: qemu-devel@nongnu.org
-Cc: mads@ynddal.dk,
-	dirty@apple.com,
-	peter.maydell@linaro.org,
-	qemu-arm@nongnu.org,
-	agraf@csgraf.de,
-	pbonzini@redhat.com,
-	alex.bennee@linaro.org,
-	Francesco Cagnin <fcagnin@quarkslab.com>
-Subject: [PATCH v2 2/3] hvf: implement guest debugging on Apple Silicon hosts
-Date: Wed, 16 Nov 2022 18:47:48 +0100
-Message-Id: <20221116174749.65175-3-fcagnin@quarkslab.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221116174749.65175-1-fcagnin@quarkslab.com>
-References: <20221116174749.65175-1-fcagnin@quarkslab.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ovOGZ-00065S-Ui; Wed, 16 Nov 2022 14:40:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1ovOGM-0005zE-Tw; Wed, 16 Nov 2022 14:40:00 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1ovOGG-0005Xc-M6; Wed, 16 Nov 2022 14:39:56 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id D0EAC74638A;
+ Wed, 16 Nov 2022 20:39:29 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 75CF9746335; Wed, 16 Nov 2022 20:39:29 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 70E6874632C;
+ Wed, 16 Nov 2022 20:39:29 +0100 (CET)
+Date: Wed, 16 Nov 2022 20:39:29 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Igor Mammedov <imammedo@redhat.com>
+cc: qemu-devel@nongnu.org, mst@redhat.com, ani@anisinha.ca, 
+ pbonzini@redhat.com, richard.henderson@linaro.org, 
+ mark.cave-ayland@ilande.co.uk, peter.maydell@linaro.org, 
+ andrew.smirnov@gmail.com, paulburton@kernel.org, 
+ aleksandar.rikalo@syrmia.com, danielhb413@gmail.com, clg@kaod.org, 
+ david@gibson.dropbear.id.au, groug@kaod.org, qemu-arm@nongnu.org, 
+ qemu-ppc@nongnu.org
+Subject: Re: [PATCH 1/2] remove DEC 21154 PCI bridge
+In-Reply-To: <20221116152730.3691347-2-imammedo@redhat.com>
+Message-ID: <79ad881d-ac77-5bca-bd5f-ba6290b2c830@eik.bme.hu>
+References: <20221116152730.3691347-1-imammedo@redhat.com>
+ <20221116152730.3691347-2-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: cUxInFRMs3+I
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 60xjjfmt4BjA
 
-From: Francesco Cagnin <fcagnin@quarkslab.com>
 
-Support is added for single-stepping, software breakpoints, hardware
-breakpoints and watchpoints. The code has been structured like the KVM
-counterpart (and many parts are basically identical).
 
-Guests can be debugged through the gdbstub.
+On Wed, 16 Nov 2022, Igor Mammedov wrote:
 
-Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
----
- accel/hvf/hvf-accel-ops.c | 123 ++++++++++++++++++++++++
- accel/hvf/hvf-all.c       |  24 +++++
- cpu.c                     |   3 +
- include/sysemu/hvf.h      |  29 ++++++
- include/sysemu/hvf_int.h  |   1 +
- target/arm/hvf/hvf.c      | 194 +++++++++++++++++++++++++++++++++++++-
- 6 files changed, 372 insertions(+), 2 deletions(-)
+> Code has not been used practically since its inception (2004)
+>  f2aa58c6f4a20 UniNorth PCI bridge support
+> or maybe even earlier, but it was consuming contributors time
+> as QEMU was being rewritten.
+> Drop it for now. Whomever would like to actually
+> use the thing, can make sure it actually works/reintroduce
+> it back when there is a user.
+>
+> PS:
+> I've stumbled upon this when replacing PCIDeviceClass::is_bridge
+> field with QOM cast to PCI_BRIDGE type. Unused DEC 21154
+> was the only one trying to use the field with plain PCIDevice.
+> It's not worth keeping the field around for the sake of the code
+> that was commented out 'forever'.
+>
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+> hw/pci-bridge/dec.h       |   9 ---
+> include/hw/pci/pci_ids.h  |   1 -
+> hw/pci-bridge/dec.c       | 164 --------------------------------------
+> hw/pci-bridge/meson.build |   2 -
+> hw/pci-host/uninorth.c    |   6 --
+> 5 files changed, 182 deletions(-)
+> delete mode 100644 hw/pci-bridge/dec.h
+> delete mode 100644 hw/pci-bridge/dec.c
+>
+> diff --git a/hw/pci-bridge/dec.h b/hw/pci-bridge/dec.h
+> deleted file mode 100644
+> index 869e90b136..0000000000
+> --- a/hw/pci-bridge/dec.h
+> +++ /dev/null
+> @@ -1,9 +0,0 @@
+> -#ifndef HW_PCI_BRIDGE_DEC_H
+> -#define HW_PCI_BRIDGE_DEC_H
+> -
+> -
+> -#define TYPE_DEC_21154 "dec-21154-sysbus"
+> -
+> -PCIBus *pci_dec_21154_init(PCIBus *parent_bus, int devfn);
+> -
+> -#endif
+> diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
+> index bc9f834fd1..e4386ebb20 100644
+> --- a/include/hw/pci/pci_ids.h
+> +++ b/include/hw/pci/pci_ids.h
+> @@ -169,7 +169,6 @@
+>
+> #define PCI_VENDOR_ID_DEC                0x1011
+> #define PCI_DEVICE_ID_DEC_21143          0x0019
+> -#define PCI_DEVICE_ID_DEC_21154          0x0026
+>
+> #define PCI_VENDOR_ID_CIRRUS             0x1013
+>
+> diff --git a/hw/pci-bridge/dec.c b/hw/pci-bridge/dec.c
+> deleted file mode 100644
+> index 4773d07e6d..0000000000
+> --- a/hw/pci-bridge/dec.c
+> +++ /dev/null
+> @@ -1,164 +0,0 @@
+> -/*
+> - * QEMU DEC 21154 PCI bridge
+> - *
+> - * Copyright (c) 2006-2007 Fabrice Bellard
+> - * Copyright (c) 2007 Jocelyn Mayer
+> - *
+> - * Permission is hereby granted, free of charge, to any person obtaining a copy
+> - * of this software and associated documentation files (the "Software"), to deal
+> - * in the Software without restriction, including without limitation the rights
+> - * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> - * copies of the Software, and to permit persons to whom the Software is
+> - * furnished to do so, subject to the following conditions:
+> - *
+> - * The above copyright notice and this permission notice shall be included in
+> - * all copies or substantial portions of the Software.
+> - *
+> - * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> - * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> - * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> - * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> - * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> - * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> - * THE SOFTWARE.
+> - */
+> -
+> -#include "qemu/osdep.h"
+> -#include "dec.h"
+> -#include "hw/sysbus.h"
+> -#include "qapi/error.h"
+> -#include "qemu/module.h"
+> -#include "hw/pci/pci.h"
+> -#include "hw/pci/pci_host.h"
+> -#include "hw/pci/pci_bridge.h"
+> -#include "hw/pci/pci_bus.h"
+> -#include "qom/object.h"
+> -
+> -OBJECT_DECLARE_SIMPLE_TYPE(DECState, DEC_21154)
+> -
+> -struct DECState {
+> -    PCIHostState parent_obj;
+> -};
+> -
+> -static int dec_map_irq(PCIDevice *pci_dev, int irq_num)
+> -{
+> -    return irq_num;
+> -}
+> -
+> -static void dec_pci_bridge_realize(PCIDevice *pci_dev, Error **errp)
+> -{
+> -    pci_bridge_initfn(pci_dev, TYPE_PCI_BUS);
+> -}
+> -
+> -static void dec_21154_pci_bridge_class_init(ObjectClass *klass, void *data)
+> -{
+> -    DeviceClass *dc = DEVICE_CLASS(klass);
+> -    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+> -
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+> -    k->realize = dec_pci_bridge_realize;
+> -    k->exit = pci_bridge_exitfn;
+> -    k->vendor_id = PCI_VENDOR_ID_DEC;
+> -    k->device_id = PCI_DEVICE_ID_DEC_21154;
+> -    k->config_write = pci_bridge_write_config;
+> -    k->is_bridge = true;
+> -    dc->desc = "DEC 21154 PCI-PCI bridge";
+> -    dc->reset = pci_bridge_reset;
+> -    dc->vmsd = &vmstate_pci_device;
+> -}
+> -
+> -static const TypeInfo dec_21154_pci_bridge_info = {
+> -    .name          = "dec-21154-p2p-bridge",
+> -    .parent        = TYPE_PCI_BRIDGE,
+> -    .instance_size = sizeof(PCIBridge),
+> -    .class_init    = dec_21154_pci_bridge_class_init,
+> -    .interfaces = (InterfaceInfo[]) {
+> -        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+> -        { },
+> -    },
+> -};
+> -
+> -PCIBus *pci_dec_21154_init(PCIBus *parent_bus, int devfn)
+> -{
+> -    PCIDevice *dev;
+> -    PCIBridge *br;
+> -
+> -    dev = pci_new_multifunction(devfn, false, "dec-21154-p2p-bridge");
+> -    br = PCI_BRIDGE(dev);
+> -    pci_bridge_map_irq(br, "DEC 21154 PCI-PCI bridge", dec_map_irq);
+> -    pci_realize_and_unref(dev, parent_bus, &error_fatal);
+> -    return pci_bridge_get_sec_bus(br);
+> -}
+> -
+> -static void pci_dec_21154_device_realize(DeviceState *dev, Error **errp)
+> -{
+> -    PCIHostState *phb;
+> -    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> -
+> -    phb = PCI_HOST_BRIDGE(dev);
+> -
+> -    memory_region_init_io(&phb->conf_mem, OBJECT(dev), &pci_host_conf_le_ops,
+> -                          dev, "pci-conf-idx", 0x1000);
+> -    memory_region_init_io(&phb->data_mem, OBJECT(dev), &pci_host_data_le_ops,
+> -                          dev, "pci-data-idx", 0x1000);
+> -    sysbus_init_mmio(sbd, &phb->conf_mem);
+> -    sysbus_init_mmio(sbd, &phb->data_mem);
+> -}
+> -
+> -static void dec_21154_pci_host_realize(PCIDevice *d, Error **errp)
+> -{
+> -    /* PCI2PCI bridge same values as PearPC - check this */
+> -}
+> -
+> -static void dec_21154_pci_host_class_init(ObjectClass *klass, void *data)
+> -{
+> -    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+> -    DeviceClass *dc = DEVICE_CLASS(klass);
+> -
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+> -    k->realize = dec_21154_pci_host_realize;
+> -    k->vendor_id = PCI_VENDOR_ID_DEC;
+> -    k->device_id = PCI_DEVICE_ID_DEC_21154;
+> -    k->revision = 0x02;
+> -    k->class_id = PCI_CLASS_BRIDGE_PCI;
+> -    k->is_bridge = true;
+> -    /*
+> -     * PCI-facing part of the host bridge, not usable without the
+> -     * host-facing part, which can't be device_add'ed, yet.
+> -     */
+> -    dc->user_creatable = false;
+> -}
+> -
+> -static const TypeInfo dec_21154_pci_host_info = {
+> -    .name          = "dec-21154",
+> -    .parent        = TYPE_PCI_DEVICE,
+> -    .instance_size = sizeof(PCIDevice),
+> -    .class_init    = dec_21154_pci_host_class_init,
+> -    .interfaces = (InterfaceInfo[]) {
+> -        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+> -        { },
+> -    },
+> -};
+> -
+> -static void pci_dec_21154_device_class_init(ObjectClass *klass, void *data)
+> -{
+> -    DeviceClass *dc = DEVICE_CLASS(klass);
+> -
+> -    dc->realize = pci_dec_21154_device_realize;
+> -}
+> -
+> -static const TypeInfo pci_dec_21154_device_info = {
+> -    .name          = TYPE_DEC_21154,
+> -    .parent        = TYPE_PCI_HOST_BRIDGE,
+> -    .instance_size = sizeof(DECState),
+> -    .class_init    = pci_dec_21154_device_class_init,
+> -};
+> -
+> -static void dec_register_types(void)
+> -{
+> -    type_register_static(&pci_dec_21154_device_info);
+> -    type_register_static(&dec_21154_pci_host_info);
+> -    type_register_static(&dec_21154_pci_bridge_info);
+> -}
+> -
+> -type_init(dec_register_types)
+> diff --git a/hw/pci-bridge/meson.build b/hw/pci-bridge/meson.build
+> index 243ceeda50..fe92d43de6 100644
+> --- a/hw/pci-bridge/meson.build
+> +++ b/hw/pci-bridge/meson.build
+> @@ -8,8 +8,6 @@ pci_ss.add(when: 'CONFIG_PXB', if_true: files('pci_expander_bridge.c'),
+> pci_ss.add(when: 'CONFIG_XIO3130', if_true: files('xio3130_upstream.c', 'xio3130_downstream.c'))
+> pci_ss.add(when: 'CONFIG_CXL', if_true: files('cxl_root_port.c', 'cxl_upstream.c', 'cxl_downstream.c'))
+>
+> -# NewWorld PowerMac
+> -pci_ss.add(when: 'CONFIG_DEC_PCI', if_true: files('dec.c'))
+> # Sun4u
+> pci_ss.add(when: 'CONFIG_SIMBA', if_true: files('simba.c'))
+>
+> diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
+> index aebd44d265..5c617e86c1 100644
+> --- a/hw/pci-host/uninorth.c
+> +++ b/hw/pci-host/uninorth.c
+> @@ -127,12 +127,6 @@ static void pci_unin_main_realize(DeviceState *dev, Error **errp)
+>                                    PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS);
+>
+>     pci_create_simple(h->bus, PCI_DEVFN(11, 0), "uni-north-pci");
+> -
+> -    /* DEC 21154 bridge */
+> -#if 0
+> -    /* XXX: not activated as PPC BIOS doesn't handle multiple buses properly */
 
-diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 24913ca9c4..1ce0f94a64 100644
---- a/accel/hvf/hvf-accel-ops.c
-+++ b/accel/hvf/hvf-accel-ops.c
-@@ -52,6 +52,7 @@
- #include "qemu/main-loop.h"
- #include "exec/address-spaces.h"
- #include "exec/exec-all.h"
-+#include "exec/gdbstub.h"
- #include "sysemu/cpus.h"
- #include "sysemu/hvf.h"
- #include "sysemu/hvf_int.h"
-@@ -340,12 +341,18 @@ static int hvf_accel_init(MachineState *ms)
-     return hvf_arch_init();
- }
- 
-+static int hvf_gdbstub_sstep_flags(void)
-+{
-+    return SSTEP_ENABLE | SSTEP_NOIRQ;
-+}
-+
- static void hvf_accel_class_init(ObjectClass *oc, void *data)
- {
-     AccelClass *ac = ACCEL_CLASS(oc);
-     ac->name = "HVF";
-     ac->init_machine = hvf_accel_init;
-     ac->allowed = &hvf_allowed;
-+    ac->gdbstub_supported_sstep_flags = hvf_gdbstub_sstep_flags;
- }
- 
- static const TypeInfo hvf_accel_type = {
-@@ -462,6 +469,117 @@ static void hvf_start_vcpu_thread(CPUState *cpu)
-                        cpu, QEMU_THREAD_JOINABLE);
- }
- 
-+static bool hvf_supports_guest_debug(void)
-+{
-+#ifdef TARGET_AARCH64
-+    return true;
-+#else
-+    return false;
-+#endif
-+}
-+
-+static int hvf_insert_breakpoint(CPUState *cpu, int type, hwaddr addr, hwaddr len)
-+{
-+    struct hvf_sw_breakpoint *bp;
-+    int err;
-+
-+    if (type == GDB_BREAKPOINT_SW) {
-+        bp = hvf_find_sw_breakpoint(cpu, addr);
-+        if (bp) {
-+            bp->use_count++;
-+            return 0;
-+        }
-+
-+        bp = g_new(struct hvf_sw_breakpoint, 1);
-+        bp->pc = addr;
-+        bp->use_count = 1;
-+        err = hvf_arch_insert_sw_breakpoint(cpu, bp);
-+        if (err) {
-+            g_free(bp);
-+            return err;
-+        }
-+
-+        QTAILQ_INSERT_HEAD(&cpu->hvf->hvf_sw_breakpoints, bp, entry);
-+    } else {
-+        err = hvf_arch_insert_hw_breakpoint(addr, len, type);
-+        if (err) {
-+            return err;
-+        }
-+    }
-+
-+    CPU_FOREACH(cpu) {
-+        err = hvf_update_guest_debug(cpu);
-+        if (err) {
-+            return err;
-+        }
-+    }
-+    return 0;
-+}
-+
-+static int hvf_remove_breakpoint(CPUState *cpu, int type, hwaddr addr, hwaddr len)
-+{
-+    struct hvf_sw_breakpoint *bp;
-+    int err;
-+
-+    if (type == GDB_BREAKPOINT_SW) {
-+        bp = hvf_find_sw_breakpoint(cpu, addr);
-+        if (!bp) {
-+            return -ENOENT;
-+        }
-+
-+        if (bp->use_count > 1) {
-+            bp->use_count--;
-+            return 0;
-+        }
-+
-+        err = hvf_arch_remove_sw_breakpoint(cpu, bp);
-+        if (err) {
-+            return err;
-+        }
-+
-+        QTAILQ_REMOVE(&cpu->hvf->hvf_sw_breakpoints, bp, entry);
-+        g_free(bp);
-+    } else {
-+        err = hvf_arch_remove_hw_breakpoint(addr, len, type);
-+        if (err) {
-+            return err;
-+        }
-+    }
-+
-+    CPU_FOREACH(cpu) {
-+        err = hvf_update_guest_debug(cpu);
-+        if (err) {
-+            return err;
-+        }
-+    }
-+    return 0;
-+}
-+
-+static void hvf_remove_all_breakpoints(CPUState *cpu)
-+{
-+    struct hvf_sw_breakpoint *bp, *next;
-+    CPUState *tmpcpu;
-+
-+    QTAILQ_FOREACH_SAFE(bp, &cpu->hvf->hvf_sw_breakpoints, entry, next) {
-+        if (hvf_arch_remove_sw_breakpoint(cpu, bp) != 0) {
-+            /* Try harder to find a CPU that currently sees the breakpoint. */
-+            CPU_FOREACH(tmpcpu)
-+            {
-+                if (hvf_arch_remove_sw_breakpoint(tmpcpu, bp) == 0) {
-+                    break;
-+                }
-+            }
-+        }
-+        QTAILQ_REMOVE(&cpu->hvf->hvf_sw_breakpoints, bp, entry);
-+        g_free(bp);
-+    }
-+    hvf_arch_remove_all_hw_breakpoints();
-+
-+    CPU_FOREACH(cpu) {
-+        hvf_update_guest_debug(cpu);
-+    }
-+}
-+
- static void hvf_accel_ops_class_init(ObjectClass *oc, void *data)
- {
-     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
-@@ -473,6 +591,11 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, void *data)
-     ops->synchronize_post_init = hvf_cpu_synchronize_post_init;
-     ops->synchronize_state = hvf_cpu_synchronize_state;
-     ops->synchronize_pre_loadvm = hvf_cpu_synchronize_pre_loadvm;
-+
-+    ops->supports_guest_debug = hvf_supports_guest_debug;
-+    ops->insert_breakpoint = hvf_insert_breakpoint;
-+    ops->remove_breakpoint = hvf_remove_breakpoint;
-+    ops->remove_all_breakpoints = hvf_remove_all_breakpoints;
- };
- static const TypeInfo hvf_accel_ops_type = {
-     .name = ACCEL_OPS_NAME("hvf"),
-diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-index 0043f4d308..3f02c090b1 100644
---- a/accel/hvf/hvf-all.c
-+++ b/accel/hvf/hvf-all.c
-@@ -10,6 +10,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/error-report.h"
-+#include "exec/gdbstub.h"
- #include "sysemu/hvf.h"
- #include "sysemu/hvf_int.h"
- 
-@@ -44,3 +45,26 @@ void assert_hvf_ok(hv_return_t ret)
- 
-     abort();
- }
-+
-+struct hvf_sw_breakpoint *hvf_find_sw_breakpoint(CPUState *cpu, target_ulong pc)
-+{
-+    struct hvf_sw_breakpoint *bp;
-+
-+    QTAILQ_FOREACH(bp, &cpu->hvf->hvf_sw_breakpoints, entry) {
-+        if (bp->pc == pc) {
-+            return bp;
-+        }
-+    }
-+    return NULL;
-+}
-+
-+int hvf_sw_breakpoints_active(CPUState *cpu)
-+{
-+    return !QTAILQ_EMPTY(&cpu->hvf->hvf_sw_breakpoints);
-+}
-+
-+int hvf_update_guest_debug(CPUState *cpu)
-+{
-+    hvf_arch_update_guest_debug(cpu);
-+    return 0;
-+}
-diff --git a/cpu.c b/cpu.c
-index 4a7d865427..1fd531aabd 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -33,6 +33,7 @@
- #endif
- #include "sysemu/tcg.h"
- #include "sysemu/kvm.h"
-+#include "sysemu/hvf.h"
- #include "sysemu/replay.h"
- #include "exec/cpu-common.h"
- #include "exec/exec-all.h"
-@@ -389,6 +390,8 @@ void cpu_single_step(CPUState *cpu, int enabled)
-         cpu->singlestep_enabled = enabled;
-         if (kvm_enabled()) {
-             kvm_update_guest_debug(cpu, 0);
-+        } else if (hvf_enabled()) {
-+            hvf_update_guest_debug(cpu);
-         }
-         trace_breakpoint_singlestep(cpu->cpu_index, enabled);
-     }
-diff --git a/include/sysemu/hvf.h b/include/sysemu/hvf.h
-index bb70082e45..3e99c80416 100644
---- a/include/sysemu/hvf.h
-+++ b/include/sysemu/hvf.h
-@@ -36,4 +36,33 @@ typedef struct HVFState HVFState;
- DECLARE_INSTANCE_CHECKER(HVFState, HVF_STATE,
-                          TYPE_HVF_ACCEL)
- 
-+#ifdef NEED_CPU_H
-+#include "cpu.h"
-+
-+int hvf_update_guest_debug(CPUState *cpu);
-+
-+struct hvf_sw_breakpoint {
-+    target_ulong pc;
-+    target_ulong saved_insn;
-+    int use_count;
-+    QTAILQ_ENTRY(hvf_sw_breakpoint) entry;
-+};
-+
-+struct hvf_sw_breakpoint *hvf_find_sw_breakpoint(CPUState *cpu,
-+                                                 target_ulong pc);
-+
-+int hvf_sw_breakpoints_active(CPUState *cpu);
-+
-+int hvf_arch_insert_sw_breakpoint(CPUState *cpu, struct hvf_sw_breakpoint *bp);
-+int hvf_arch_remove_sw_breakpoint(CPUState *cpu, struct hvf_sw_breakpoint *bp);
-+int hvf_arch_insert_hw_breakpoint(target_ulong addr, target_ulong len,
-+                                  int type);
-+int hvf_arch_remove_hw_breakpoint(target_ulong addr, target_ulong len,
-+                                  int type);
-+void hvf_arch_remove_all_hw_breakpoints(void);
-+
-+void hvf_arch_update_guest_debug(CPUState *cpu);
-+
-+#endif /* NEED_CPU_H */
-+
- #endif
-diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index 6545f7cd61..a7957d046b 100644
---- a/include/sysemu/hvf_int.h
-+++ b/include/sysemu/hvf_int.h
-@@ -53,6 +53,7 @@ struct hvf_vcpu_state {
-     void *exit;
-     bool vtimer_masked;
-     sigset_t unblock_ipi_mask;
-+    QTAILQ_HEAD(, hvf_sw_breakpoint) hvf_sw_breakpoints;
- };
- 
- void assert_hvf_ok(hv_return_t ret);
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 060aa0ccf4..66fc82e9b9 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -31,6 +31,22 @@
- #include "trace/trace-target_arm_hvf.h"
- #include "migration/vmstate.h"
- 
-+#include "exec/gdbstub.h"
-+
-+static void hvf_arm_init_debug(CPUState *cpu)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+
-+    max_hw_bps = arm_num_brps(arm_cpu);
-+    hw_breakpoints =
-+        g_array_sized_new(true, true, sizeof(HWBreakpoint), max_hw_bps);
-+
-+    max_hw_wps = arm_num_wrps(arm_cpu);
-+    hw_watchpoints =
-+        g_array_sized_new(true, true, sizeof(HWWatchpoint), max_hw_wps);
-+    return;
-+}
-+
- #define HVF_SYSREG(crn, crm, op0, op1, op2) \
-         ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
- #define PL1_WRITE_MASK 0x4
-@@ -621,6 +637,8 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-                               &arm_cpu->isar.id_aa64mmfr0);
-     assert_hvf_ok(ret);
- 
-+    hvf_arm_init_debug(cpu);
-+
-     return 0;
- }
- 
-@@ -1166,11 +1184,12 @@ int hvf_vcpu_exec(CPUState *cpu)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-     CPUARMState *env = &arm_cpu->env;
-+    int ret;
-     hv_vcpu_exit_t *hvf_exit = cpu->hvf->exit;
-     hv_return_t r;
-     bool advance_pc = false;
- 
--    if (hvf_inject_interrupts(cpu)) {
-+    if (!(cpu->singlestep_enabled & SSTEP_NOIRQ) && hvf_inject_interrupts(cpu)) {
-         return EXCP_INTERRUPT;
-     }
- 
-@@ -1188,6 +1207,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-     uint64_t syndrome = hvf_exit->exception.syndrome;
-     uint32_t ec = syn_get_ec(syndrome);
- 
-+    ret = 0;
-     qemu_mutex_lock_iothread();
-     switch (exit_reason) {
-     case HV_EXIT_REASON_EXCEPTION:
-@@ -1207,6 +1227,47 @@ int hvf_vcpu_exec(CPUState *cpu)
-     hvf_sync_vtimer(cpu);
- 
-     switch (ec) {
-+    case EC_SOFTWARESTEP: {
-+        ret = EXCP_DEBUG;
-+
-+        if (!cpu->singlestep_enabled) {
-+            error_report("EC_SOFTWARESTEP but single-stepping not enabled");
-+        }
-+        break;
-+    }
-+    case EC_AA64_BKPT: {
-+        ret = EXCP_DEBUG;
-+
-+        cpu_synchronize_state(cpu);
-+
-+        if (!hvf_find_sw_breakpoint(cpu, env->pc)) {
-+            error_report("EC_AA64_BKPT but unknown sw breakpoint");
-+        }
-+        break;
-+    }
-+    case EC_BREAKPOINT: {
-+        ret = EXCP_DEBUG;
-+
-+        cpu_synchronize_state(cpu);
-+
-+        if (!find_hw_breakpoint(cpu, env->pc)) {
-+            error_report("EC_BREAKPOINT but unknown hw breakpoint");
-+        }
-+        break;
-+    }
-+    case EC_WATCHPOINT: {
-+        ret = EXCP_DEBUG;
-+
-+        cpu_synchronize_state(cpu);
-+
-+        CPUWatchpoint *wp =
-+            find_hw_watchpoint(cpu, hvf_exit->exception.virtual_address);
-+        if (!wp) {
-+            error_report("EXCP_DEBUG but unknown hw watchpoint");
-+        }
-+        cpu->watchpoint_hit = wp;
-+        break;
-+    }
-     case EC_DATAABORT: {
-         bool isv = syndrome & ARM_EL_ISV;
-         bool iswrite = (syndrome >> 6) & 1;
-@@ -1313,7 +1374,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-         assert_hvf_ok(r);
-     }
- 
--    return 0;
-+    return ret;
- }
- 
- static const VMStateDescription vmstate_hvf_vtimer = {
-@@ -1347,3 +1408,132 @@ int hvf_arch_init(void)
-     qemu_add_vm_change_state_handler(hvf_vm_state_change, &vtimer);
-     return 0;
- }
-+
-+static inline bool hvf_arm_hw_debug_active(CPUState *cpu)
-+{
-+    return ((cur_hw_wps > 0) || (cur_hw_bps > 0));
-+}
-+
-+static const uint32_t brk_insn = 0xd4200000;
-+
-+int hvf_arch_insert_sw_breakpoint(CPUState *cpu, struct hvf_sw_breakpoint *bp)
-+{
-+    if (cpu_memory_rw_debug(cpu, bp->pc, (uint8_t *)&bp->saved_insn, 4, 0) ||
-+        cpu_memory_rw_debug(cpu, bp->pc, (uint8_t *)&brk_insn, 4, 1)) {
-+        return -EINVAL;
-+    }
-+    return 0;
-+}
-+
-+int hvf_arch_remove_sw_breakpoint(CPUState *cpu, struct hvf_sw_breakpoint *bp)
-+{
-+    static uint32_t brk;
-+
-+    if (cpu_memory_rw_debug(cpu, bp->pc, (uint8_t *)&brk, 4, 0) ||
-+        brk != brk_insn ||
-+        cpu_memory_rw_debug(cpu, bp->pc, (uint8_t *)&bp->saved_insn, 4, 1)) {
-+        return -EINVAL;
-+    }
-+    return 0;
-+}
-+
-+int hvf_arch_insert_hw_breakpoint(target_ulong addr, target_ulong len, int type)
-+{
-+    switch (type) {
-+    case GDB_BREAKPOINT_HW:
-+        return insert_hw_breakpoint(addr);
-+    case GDB_WATCHPOINT_READ:
-+    case GDB_WATCHPOINT_WRITE:
-+    case GDB_WATCHPOINT_ACCESS:
-+        return insert_hw_watchpoint(addr, len, type);
-+    default:
-+        return -ENOSYS;
-+    }
-+}
-+
-+int hvf_arch_remove_hw_breakpoint(target_ulong addr, target_ulong len, int type)
-+{
-+    switch (type) {
-+    case GDB_BREAKPOINT_HW:
-+        return delete_hw_breakpoint(addr);
-+    case GDB_WATCHPOINT_READ:
-+    case GDB_WATCHPOINT_WRITE:
-+    case GDB_WATCHPOINT_ACCESS:
-+        return delete_hw_watchpoint(addr, len, type);
-+    default:
-+        return -ENOSYS;
-+    }
-+}
-+
-+void hvf_arch_remove_all_hw_breakpoints(void)
-+{
-+    if (cur_hw_wps > 0) {
-+        g_array_remove_range(hw_watchpoints, 0, cur_hw_wps);
-+    }
-+    if (cur_hw_bps > 0) {
-+        g_array_remove_range(hw_breakpoints, 0, cur_hw_bps);
-+    }
-+}
-+
-+#define MDSCR_EL1_SS_SHIFT  0
-+#define MDSCR_EL1_MDE_SHIFT 15
-+
-+void hvf_arch_update_guest_debug(CPUState *cpu)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    hv_return_t r = HV_SUCCESS;
-+    bool trap_debug_exceptions = false;
-+
-+    cpu_synchronize_state(cpu);
-+
-+    if (cpu->singlestep_enabled) {
-+        trap_debug_exceptions = true;
-+
-+        env->cp15.mdscr_el1 =
-+            deposit64(env->cp15.mdscr_el1, MDSCR_EL1_SS_SHIFT, 1, 1);
-+        pstate_write(env, pstate_read(env) | PSTATE_SS);
-+    } else {
-+        env->cp15.mdscr_el1 =
-+            deposit64(env->cp15.mdscr_el1, MDSCR_EL1_SS_SHIFT, 1, 0);
-+    }
-+
-+    if (hvf_sw_breakpoints_active(cpu)) {
-+        trap_debug_exceptions = true;
-+    }
-+
-+    if (hvf_arm_hw_debug_active(cpu)) {
-+        trap_debug_exceptions = true;
-+
-+        env->cp15.mdscr_el1 =
-+            deposit64(env->cp15.mdscr_el1, MDSCR_EL1_MDE_SHIFT, 1, 1);
-+
-+        int i;
-+        for (i = 0; i < cur_hw_bps; i++) {
-+            HWBreakpoint *bp = get_hw_bp(i);
-+            env->cp15.dbgbcr[i] = bp->bcr;
-+            env->cp15.dbgbvr[i] = bp->bvr;
-+        }
-+        for (i = 0; i < cur_hw_wps; i++) {
-+            HWWatchpoint *bp = get_hw_wp(i);
-+            env->cp15.dbgwcr[i] = bp->wcr;
-+            env->cp15.dbgwvr[i] = bp->wvr;
-+        }
-+    } else {
-+        env->cp15.mdscr_el1 =
-+            deposit64(env->cp15.mdscr_el1, MDSCR_EL1_MDE_SHIFT, 1, 0);
-+
-+        int i;
-+        for (i = 0; i < max_hw_bps; i++) {
-+            env->cp15.dbgbcr[i] = 0;
-+            env->cp15.dbgbvr[i] = 0;
-+        }
-+        for (i = 0; i < max_hw_wps; i++) {
-+            env->cp15.dbgwcr[i] = 0;
-+            env->cp15.dbgwvr[i] = 0;
-+        }
-+    }
-+
-+    r = hv_vcpu_set_trap_debug_exceptions(cpu->hvf->fd, trap_debug_exceptions);
-+    assert_hvf_ok(r);
-+}
--- 
-2.38.1
+I think real hardware has this bridge and QEMU could emulate it but 
+OpenBIOS can't handle more than one PCI bus or this bridge yet so this was 
+disabled for that reason. Maybe leave the comment around as a reminder 
+that this could be brought back from git history if somebody wants to fix 
+it in the future, otherwise this may be forgotten and reimplemented from 
+scratch.
+
+Regards,
+BALATON Zoltan
+
+> -    pci_create_simple(h->bus, PCI_DEVFN(12, 0), "dec-21154");
+> -#endif
+> }
+>
+> static void pci_unin_main_init(Object *obj)
+>

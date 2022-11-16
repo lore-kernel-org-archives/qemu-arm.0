@@ -1,102 +1,102 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp252656ejx;
-        Wed, 16 Nov 2022 00:43:55 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf54XQZTCDNbuUTsgOymUBb6XWJdnCHJaF89r58I3syh2tsUKxXZmuvbNZFhUCFpcdqebN7I
-X-Received: by 2002:a05:622a:5810:b0:35b:ad00:5d9b with SMTP id fg16-20020a05622a581000b0035bad005d9bmr20227518qtb.417.1668588235216;
-        Wed, 16 Nov 2022 00:43:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668588235; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp252741ejx;
+        Wed, 16 Nov 2022 00:44:05 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5X8+2eS9PGnIIYzrfzFH3LHwToB7cERMBm5psWvLW/xdCx3oAgZxWfwLN3g3PI+dGoCq1Y
+X-Received: by 2002:a37:b686:0:b0:6fa:1500:8a4e with SMTP id g128-20020a37b686000000b006fa15008a4emr18077566qkf.442.1668588244800;
+        Wed, 16 Nov 2022 00:44:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668588244; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yeq+wbRO72aZh8+ALEPYwioymzdaIdvWCRe/kF3m8D8A3P/1AA+VGOwLPXKLKzRM8l
-         dvTIhlO4gj5GizlXIoGGmQobveGWy/aumORHm+FXdJkwPlB8bQMSTygPTsSq8OpOanuZ
-         zm8zeFpqmvr3vfqEBfKho69m+Tpuv5VpQtxJC3rrwEq1/UvKm2yGopwgekk+Cu68iRLx
-         w5U950xZ5F7DlKafcsuV5hbxiFaee855vbUoCWVFFjLtaz77pMAx94UQ3MekFOnuyTPP
-         +S1SO7O1u5tNovA32U2vck0P7BI2XzMGuxv2NkqfapJccEU21qioZ/V/D30ASSCJTEBk
-         tV+g==
+        b=h2rw0nIOWHbLGpe2K7PoDgCUKLjwWXol6/EvgjzTQkp3kdiF42Ap3/OD4UOLoT5S2j
+         EK1l3ldv8M2UhgJV/02tWLGH5sP4GHns7r+xXgFP38J2eWZGubPfD3oqlir5sNtBkHpn
+         u/Z/ysyXJ9MU+RPwAwPSQ3YLe0dSXs0uTMxMBJdG6sd1W2kTiIkTFbFpcXrw+2i79z2d
+         YoKUuDGCFhPI+aCYWrnmlOP+sqyg+/KU1fLxV8rpt8W9hRuuPMxlUXGfQSdBCinphv5r
+         CDAwaKbAomEMzYWTl10ZLYupzd8lkdNBZUgovac5ZGEN5nKSgvGzJnbShLwY0HiBWdja
+         2Y4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=/rN0rTF1X6pDkPhtLRcyqE/sj87c+jJLVjcU88yM6/s=;
-        b=xB6t6S7eey+xIKWjE9I50U/d41QrRxXFw9LD35MbG/Op45IHFmAyBE1MvKlU/VREdV
-         KYw+4dcerQAfr8QoFtAwua+onUW5mTsa0gfsVdxOQ/mMdHKjeTubbfufK/HKik3CSrrS
-         YMFU1UHZORBdhiLtsuW8hnHNnG0jwJUMQ94hld9SZ95L2avBfAp6SvxXLF0kXf6dGFL4
-         3iEt/a9Xm5vxFuGebg2tHigz+3DP6fYt/7eGnEQC3fl0FKrqzfOmCkuLVnMYk5kqTIiy
-         I3MDYe5BY7pIVslcgQpdEhfvA1GVh6cHYsf4xRMYDsLYvCe/im8rbE79f9bm4ZoqhPDT
-         MM1A==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:feedback-id:dkim-signature:dkim-signature;
+        bh=2c/TERD17gl9VYRuxGXF81cpmlodkST+HavpPPoOTUU=;
+        b=fHIgYfEDAzCPi++NDvo3tbrsrWgHKGBTGbXWiQHdACXbjayo2JzL7WkS4XxIFG1R+N
+         zNDtHu89i+7A2p7/2gopqw/QdFhppdW4AuQxKXjZ8PeG76DyjPUidHt8bp3vagww/8pv
+         1nIeOa/q+U2H9pXumJ2+FJtxLfXr9qFDxf41l0E0gZ6vyMOoz+tle2wK5BjO5+9A1mVp
+         JCA75YtjhhSvUJ5/Q5+XWxs63oRbQYbJPHIEueHISqwTNm7CCRBb8dP0s+nywbbLC3zZ
+         bF6EdwP6pJqSynssJMQNCNklzmhzKWpt+CaM1ZdAVEl1jDZqgNuKNyWLHgvs21aMJkCC
+         cDRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=V6aPY9FF;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=DnlDX8X2;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=mc1MFfMr;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=Qm9gEjbD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 137-20020a370a8f000000b006ced5d3f917si8036589qkk.71.2022.11.16.00.43.55
+        by mx.google.com with ESMTPS id u20-20020a05622a199400b0039cb7b37a81si9588327qtc.49.2022.11.16.00.44.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Nov 2022 00:43:55 -0800 (PST)
+        Wed, 16 Nov 2022 00:44:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=V6aPY9FF;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=DnlDX8X2;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=mc1MFfMr;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=Qm9gEjbD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ovE15-0005GL-R8; Wed, 16 Nov 2022 03:43:31 -0500
+	id 1ovE18-0005I6-5c; Wed, 16 Nov 2022 03:43:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1ovE0y-00058Z-86; Wed, 16 Nov 2022 03:43:24 -0500
+ id 1ovE13-0005C8-6k; Wed, 16 Nov 2022 03:43:29 -0500
 Received: from out2-smtp.messagingengine.com ([66.111.4.26])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1ovE0v-0001sT-M8; Wed, 16 Nov 2022 03:43:23 -0500
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id DFCB45C0274;
- Wed, 16 Nov 2022 03:43:17 -0500 (EST)
+ id 1ovE11-0001tZ-2b; Wed, 16 Nov 2022 03:43:28 -0500
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.nyi.internal (Postfix) with ESMTP id E93085C028D;
+ Wed, 16 Nov 2022 03:43:25 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute3.internal (MEProxy); Wed, 16 Nov 2022 03:43:17 -0500
+ by compute1.internal (MEProxy); Wed, 16 Nov 2022 03:43:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:message-id:mime-version:reply-to:sender
- :subject:subject:to:to; s=fm3; t=1668588197; x=1668674597; bh=/r
- N0rTF1X6pDkPhtLRcyqE/sj87c+jJLVjcU88yM6/s=; b=V6aPY9FFn/Y2SAkcuS
- ox0mgzEl0xZ3zjFc40rbv+WPnLLwq0StK5WlEIpJo20jTRBK+l2ZoDTOyMs5YHbw
- BfubvC8RA461prrkys8VXOfkuOvv2toG055tOuCsMPbAFKZji4P6LQhBUlqEFrOx
- ontqSUU1InXRNqtWv2dZf9fsGZo3x5oHLlvXlNf65SMM5uKf/zXUyivZLkoexvxX
- PE2YytW3+XuZjUB4D8mB7i53KMCnUgXQbmQNxVbwp52wViHD9VvRYVB8h5aPSZjd
- jy+el643+aT84toiSg8dFbl6VMh3JmD63ls9cS9OVGLQkJ1k+iJBaurjDfPoiH3F
- yIQg==
+ h=cc:cc:content-transfer-encoding:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1668588205; x=
+ 1668674605; bh=2c/TERD17gl9VYRuxGXF81cpmlodkST+HavpPPoOTUU=; b=m
+ c1MFfMr6ki5uVQ1XwUcxKOsSfUr2KICjxoVIju2pX0fEgtNsZif3Za/W7VU2Tp1K
+ EwK1cWvcEaF/Q1r1TKQbkwPbgngr15hTNkBBMXNiu5+5pth9l6bXhqG+pWOe5o09
+ R+K9YLiYwKlsPzgJp5TMSSAuDWtlwiFsQ45khsxEZYHBC/IGwS3AiroN+R+9XDCX
+ CBMKzet9sbxERy8yqb0rcIujUtL6a+fEwpMy6e12BkbQLcADH3O+5Utix1ZiAGOl
+ OGteHLSghzyQoGSvdkeJ/C05rDQUWp8Y+Tmhlqb+R8wR/auOGtz04mDWMLAxQm59
+ AtOpUlykwE4xXtVjtzeUg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:message-id:mime-version:reply-to:sender:subject
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; t=1668588197; x=1668674597; bh=/rN0rTF1X6pDk
- PhtLRcyqE/sj87c+jJLVjcU88yM6/s=; b=DnlDX8X2UAjIRc817PNzKSf1knwT8
- b0Mcdbwg6r1a7oHF5uX3dblj+niRhX+x/u57JkDA3RRoBD8GdgwB3XDbVGKFoaPO
- zpmbJbAc+apIPgi9IWsFhx2fuzM834qfu2Hx/Bkn5Bv1cCGZUVdilwaJUp4ACM0R
- 2FiVo00TOmi5PvS4D5wOSS6uKzfCVjpUD/hmBbVtqDpH47kObgA+2tyT3+4aBa8i
- bUXZ3sxzg9N+p0H3AFYKCbH9iTrecArJOsiqPJ42n4IS45+cgmgAdlc/13E041DT
- LmY7KdIMxRbm4BzMMt0uMf5vm/mItWLIdWP73TSHVBvyhAzCJdkUa/vCQ==
-X-ME-Sender: <xms:o6J0Yx4yJ6kVWPgRJLIrissPY41yeP4BCRiqMsMRm39jzHSjEjahYQ>
- <xme:o6J0Y-5mVbz7h9Xk1zlVcXSgJKLLq8zCVUYaR9dmrBXvTkINXH2z5m5i2IiXHKHxQ
- nVCnlj9rD8uCO42Vu0>
-X-ME-Received: <xmr:o6J0Y4f_nilOPJgEfTKib72bGnHPkjawdurTiNnFJLrGuoamGninr7UI28s5dL_oIWYJ_fWNkJE>
+ :x-sasl-enc; s=fm1; t=1668588205; x=1668674605; bh=2c/TERD17gl9V
+ YRuxGXF81cpmlodkST+HavpPPoOTUU=; b=Qm9gEjbDxPu+h0P3OABQZh5D53e5/
+ usYlOyVVgjeBEMO2F4FfYlUOkDIHrFQkoVU6frt7vo57gbQ1PvKliMXKKm3RUwyZ
+ zBjGjpShajikaQJ4ONqD/wcXNLEFBitlYnQuHwSVhTMBo1wDhioFLdvpSR1QG9ie
+ wmfNPZG/x0nw72GyKzXeA476RKAfYAV358Rd+4hx1cOqUyBpbRdes9SRDRRz+7tw
+ 4tXkzaC1O5R+0yJXF3pWXVwF1JBkiMF3B0AddBL86An3O6Koya71YlhMJo7cgtMg
+ cC827sYte+c2ZKAlPnU1tGuaq6ZMXfYs5qIbBSJu0ByMn65ZpcdndWkZQ==
+X-ME-Sender: <xms:rKJ0Y2mjI3ufvo0JGy5cCa0YOHoWs5kklCrivaKzIkIWmc7c-gZO8A>
+ <xme:rKJ0Y90Fv23uuidKjlMkm5d7rathBHZ41ZKwEYG82oKX_2JyproNbNoQZ3arOJnfG
+ mXQ_vg3xIuixSC9_2o>
+X-ME-Received: <xmr:rKJ0Y0pltl6-av220GfgdzJCK7BM0tDY7mB3WvSeV_M8w348bAFZJD6o1wPshRqRWMa-cPi3YS8>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrgeehgdduvddvucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhephffvvefufffkofgtggfgsehtkeertdertdejnecuhfhrohhmpefmlhgruhhs
- ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
- gvrhhnpeefgfehudefjedvgffhheelvddvvdehfffgtedvffeugeeigefggffggefhieej
- leenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihiivgeptd
- enucfrrghrrghmpehmrghilhhfrhhomhepihhtshesihhrrhgvlhgvvhgrnhhtrdgukh
-X-ME-Proxy: <xmx:o6J0Y6KCnXld6AwbENW_bfZK6PHY-dYcJiMBBCqhx4YYyOhn2BgGPg>
- <xmx:o6J0Y1LvCXGHvuSr0VkbVxIDivYozbIZSiTPSBBbEkRlZMY11imxMw>
- <xmx:o6J0YzwuvUph8nYyb6YfoJY4Ubez9HS0ylhp7mwYuD6MmUFQkPBcoA>
- <xmx:paJ0Y_xHKybBGiYn2AULJ6z30lBeadHLEj4VFIdtHG2Go6dTOYRjpQ>
+ cujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomhepmfhlrghu
+ shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
+ htvghrnhepjefgieelgfeiveehkeeuveehheekfeevgeeigfehfefgjeejhefffeegudej
+ udegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
+ htshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:rKJ0Y6kIxQPGoMUrZgqLx3L1_gmHgL-wlNQGolAcOwL4yre_--Inyw>
+ <xmx:rKJ0Y01KvGaisBRrgiRIPfE1ezW7589DNtHD_wQ5KAUUEFZy18rujw>
+ <xmx:rKJ0Yxttz67CGoibk9dnlti1b7eqtKwfHwjLGCbvwPCL1xREh-c22A>
+ <xmx:raJ0Y5v8VtD1K6w_Xn8NV1Pd0npFFLIj7-oIBhlJuLZyNjrr1beLQg>
 Feedback-ID: idc91472f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 16 Nov 2022 03:43:14 -0500 (EST)
+ 16 Nov 2022 03:43:22 -0500 (EST)
 From: Klaus Jensen <its@irrelevant.dk>
 To: qemu-devel@nongnu.org
 Cc: Andrew Jeffery <andrew@aj.id.au>, Keith Busch <kbusch@kernel.org>,
@@ -106,22 +106,22 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Keith Busch <kbusch@kernel.org>,
  Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Klaus Jensen <its@irrelevant.dk>, Klaus Jensen <k.jensen@samsung.com>
-Subject: [PATCH 0/3] hw/{i2c, nvme}: mctp endpoint,
- nvme management interface model
-Date: Wed, 16 Nov 2022 09:43:09 +0100
-Message-Id: <20221116084312.35808-1-its@irrelevant.dk>
+Subject: [PATCH RFC 3/3] hw/nvme: add nvme management interface model
+Date: Wed, 16 Nov 2022 09:43:12 +0100
+Message-Id: <20221116084312.35808-4-its@irrelevant.dk>
 X-Mailer: git-send-email 2.38.1
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20221116084312.35808-1-its@irrelevant.dk>
+References: <20221116084312.35808-1-its@irrelevant.dk>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2299; i=k.jensen@samsung.com;
- h=from:subject; bh=5WsFbZ8a27QXful4UaRPUhwUDZbOAa8X3pRMgQLNeMk=;
- b=owJ4nAFtAZL+kA0DAAoBTeGvMW1PDekByyZiAGN0oqD3dCoJIC8AFxEw49QLYPy6sG0UWVW55I7T
- 0Yf5Os4cOYkBMwQAAQoAHRYhBFIoM6p14tzmokdmwE3hrzFtTw3pBQJjdKKgAAoJEE3hrzFtTw3pj+
- YH+wRg1Os0qiqHxrNvMmIsndNCsWi8L7a41312+vsu/RNcRmltuWYAaTjSmAVq/r/3pXvlvbeF4lOM
- jEVVXbinkJ55UylODdiO6RuaF74t3v4NKjrxY1NGKfnevSPm3YIoC3ZrNeqsqWHnVpSUBAfzbuRLjE
- IboxMMzF+xbIh2JTSuJUmt5y69bd741qq5L2iA1m61uM6zciYRP/cAFvPxTAqjKi5dAw27Eu9cBNUb
- TQu/8PZ6OrSQbmwnBczDIe6RCfzj/BN1IIUnCJeVPSyMkmABq8fHc2G0Tkq8epNMKlfnikN42F6Il4
- G9heLVILAuORkKRizXmjL65tqJr+a6F+kRdqjB
+X-Developer-Signature: v=1; a=openpgp-sha256; l=11707; i=k.jensen@samsung.com;
+ h=from:subject; bh=NN3rgSR1PoHVKTWqAhcnEeOVUsbkEmb3ZeTlUCMCOf8=;
+ b=owJ4nAFtAZL+kA0DAAoBTeGvMW1PDekByyZiAGN0oqAsRSA28MKGYEk3VYPct+c1EIwcuZxYcvcv
+ 841WBy3om4kBMwQAAQoAHRYhBFIoM6p14tzmokdmwE3hrzFtTw3pBQJjdKKgAAoJEE3hrzFtTw3p5q
+ MH/2Nb9fEGcIzU9tt0iLd3D16Q0YAfgSrFyQoCRcvJet7PeEEo9MGPfKFRaaP4nttUkh+PTHgnHo8/
+ JFWKXbkZjlgZv9W+UJEUmesGcXUHNTFpdcxUJdvZSt3MdzgEUNIaaPRx2J3RRA2PxKktDt3L3IlrKt
+ PkqN/SZ9+XoBKv4DfCTGTYD0O3C3K8yNVVuUsjN9lbmljYnZekoi0Rlh5kUjA8woGuCpwKaAEL5ofs
+ lbYVUmd5owH4rMzqG98VcsbU6hhVOCfIoLUJBgl4hJNULr+ysuDWPGXsytJzMtibjy5C/tpMQofbEL
+ iMTydLbsBy0L+DtygBdlqYDhtDa0jlGueBMaiC
 X-Developer-Key: i=k.jensen@samsung.com; a=openpgp;
  fpr=DDCA4D9C9EF931CC3468427263D56FC5E55DA838
 Content-Transfer-Encoding: 8bit
@@ -148,76 +148,434 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FAzIKvAccbB5
+X-TUID: AtZWn3D5OLjJ
 
 From: Klaus Jensen <k.jensen@samsung.com>
 
-This adds a generic MCTP endpoint model that other devices may derive
-from. I'm not 100% happy with the design of the class methods, but it's
-a start.
+Add the 'nmi-i2c' device that emulates an NVMe Management Interface
+controller.
 
-Patch 1 is a bug fix, but since there are currently no in-tree users of
-the API, it is not critical. I'd like to have Peter verify the fix with
-his netdev code as well.
+Initial support is very basic (Read NMI DS, Configuration Get).
 
-Also included is a very basic implementation of an NVMe-MI device,
-supporting only a small subset of the required commands.
+This is based on previously posted code by Padmakar Kalghatgi, Arun
+Kumar Agasar and Saurav Kumar.
 
-Since this all relies on i2c target mode, this can currently only be
-used with an SoC that includes the Aspeed I2C controller.
-
-The easiest way to get up and running with this, is to grab my buildroot
-overlay[1]. It includes modified a modified dts as well as a couple of
-required packages.
-
-QEMU can then be launched along these lines:
-
-  qemu-system-arm \
-    -nographic \
-    -M ast2600-evb \
-    -kernel output/images/zImage \
-    -initrd output/images/rootfs.cpio \
-    -dtb output/images/aspeed-ast2600-evb-nmi.dtb \
-    -nic user,hostfwd=tcp::2222-:22 \
-    -device nmi-i2c,address=0x3a \
-    -serial mon:stdio
-
-From within the booted system,
-
-  mctp addr add 8 dev mctpi2c15
-  mctp link set mctpi2c15 up
-  mctp route add 9 via mctpi2c15
-  mctp neigh add 9 dev mctpi2c15 lladdr 0x3a
-  mi-mctp 1 9 info
-
-Comments are very welcome!
-
-  [1]: https://github.com/birkelund/buildroots/tree/main/mctp-i2c
-
-Klaus Jensen (3):
-  hw/i2c: only schedule pending master when bus is idle
-  hw/i2c: add mctp core
-  hw/nvme: add nvme management interface model
-
- hw/arm/Kconfig         |   1 +
- hw/i2c/Kconfig         |   4 +
- hw/i2c/aspeed_i2c.c    |   2 +
- hw/i2c/core.c          |  37 ++--
- hw/i2c/mctp.c          | 365 +++++++++++++++++++++++++++++++++++++++
- hw/i2c/meson.build     |   1 +
- hw/i2c/trace-events    |  12 ++
- hw/nvme/meson.build    |   1 +
- hw/nvme/nmi-i2c.c      | 381 +++++++++++++++++++++++++++++++++++++++++
- hw/nvme/trace-events   |   6 +
- include/hw/i2c/i2c.h   |   2 +
- include/hw/i2c/mctp.h  |  83 +++++++++
- include/hw/misc/mctp.h |  43 +++++
- 13 files changed, 923 insertions(+), 15 deletions(-)
- create mode 100644 hw/i2c/mctp.c
+Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+---
+ hw/nvme/meson.build  |   1 +
+ hw/nvme/nmi-i2c.c    | 381 +++++++++++++++++++++++++++++++++++++++++++
+ hw/nvme/trace-events |   6 +
+ 3 files changed, 388 insertions(+)
  create mode 100644 hw/nvme/nmi-i2c.c
- create mode 100644 include/hw/i2c/mctp.h
- create mode 100644 include/hw/misc/mctp.h
 
+diff --git a/hw/nvme/meson.build b/hw/nvme/meson.build
+index 3cf40046eea9..b231e3fa12c2 100644
+--- a/hw/nvme/meson.build
++++ b/hw/nvme/meson.build
+@@ -1 +1,2 @@
+ softmmu_ss.add(when: 'CONFIG_NVME_PCI', if_true: files('ctrl.c', 'dif.c', 'ns.c', 'subsys.c'))
++softmmu_ss.add(when: 'CONFIG_MCTP_I2C', if_true: files('nmi-i2c.c'))
+diff --git a/hw/nvme/nmi-i2c.c b/hw/nvme/nmi-i2c.c
+new file mode 100644
+index 000000000000..79fd18cdc5cf
+--- /dev/null
++++ b/hw/nvme/nmi-i2c.c
+@@ -0,0 +1,381 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-only
++ *
++ * SPDX-FileCopyrightText: Copyright (c) 2022 Samsung Electronics Co., Ltd.
++ *
++ * SPDX-FileContributor: Padmakar Kalghatgi <p.kalghatgi@samsung.com>
++ * SPDX-FileContributor: Arun Kumar Agasar <arun.kka@samsung.com>
++ * SPDX-FileContributor: Saurav Kumar <saurav.29@partner.samsung.com>
++ * SPDX-FileContributor: Klaus Jensen <k.jensen@samsung.com>
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/crc32c.h"
++#include "hw/i2c/i2c.h"
++#include "hw/registerfields.h"
++#include "hw/i2c/mctp.h"
++#include "trace.h"
++
++#define NMI_MAX_MESSAGE_LENGTH 4224
++
++#define TYPE_NMI_I2C_DEVICE "nmi-i2c"
++OBJECT_DECLARE_SIMPLE_TYPE(NMIDevice, NMI_I2C_DEVICE)
++
++typedef struct NMIDevice {
++    MCTPI2CEndpoint mctp;
++
++    uint8_t buffer[NMI_MAX_MESSAGE_LENGTH];
++    uint8_t scratch[NMI_MAX_MESSAGE_LENGTH];
++
++    size_t  len;
++    int64_t pos;
++} NMIDevice;
++
++FIELD(NMI_NMP, ROR, 7, 1)
++FIELD(NMI_NMP, NMIMT, 3, 4)
++
++#define NMI_NMP_NMIMT_NMI_CMD 0x1
++#define NMI_NMP_NMIMT_NM_ADMIN 0x2
++
++typedef struct NMIMessage {
++    uint8_t mctpd;
++    uint8_t nmp;
++    uint8_t rsvd2[2];
++    uint8_t payload[]; /* includes the Message Integrity Check */
++} NMIMessage;
++
++typedef struct NMIRequest {
++   uint8_t opc;
++   uint8_t rsvd1[3];
++   uint32_t dw0;
++   uint32_t dw1;
++   uint32_t mic;
++} NMIRequest;
++
++typedef struct NMIResponse {
++    uint8_t status;
++    uint8_t response[3];
++    uint8_t payload[]; /* includes the Message Integrity Check */
++} NMIResponse;
++
++typedef enum NMIReadDSType {
++    NMI_CMD_READ_NMI_DS_SUBSYSTEM       = 0x0,
++    NMI_CMD_READ_NMI_DS_PORTS           = 0x1,
++    NMI_CMD_READ_NMI_DS_CTRL_LIST       = 0x2,
++    NMI_CMD_READ_NMI_DS_CTRL_INFO       = 0x3,
++    NMI_CMD_READ_NMI_DS_CMD_SUPPORT     = 0x4,
++    NMI_CMD_READ_NMI_DS_MEB_CMD_SUPPORT = 0x5,
++} NMIReadDSType;
++
++static void nmi_handle_mi_read_nmi_ds(NMIDevice *nmi, NMIRequest *request)
++{
++    I2CSlave *i2c = I2C_SLAVE(nmi);
++
++    uint32_t dw0 = le32_to_cpu(request->dw0);
++    uint8_t dtyp = (dw0 >> 24) & 0xf;
++    uint8_t *buf;
++    size_t len;
++
++    trace_nmi_handle_mi_read_nmi_ds(dtyp);
++
++    static uint8_t nmi_ds_subsystem[36] = {
++        0x00,       /* success */
++        0x20,       /* response data length */
++        0x00, 0x00, /* reserved */
++        0x00,       /* number of ports */
++        0x01,       /* major version */
++        0x01,       /* minor version */
++    };
++
++    static uint8_t nmi_ds_ports[36] = {
++        0x00,       /* success */
++        0x20,       /* response data length */
++        0x00, 0x00, /* reserved */
++        0x02,       /* port type (smbus) */
++        0x00,       /* reserved */
++        0x40, 0x00, /* maximum mctp transission unit size (64 bytes) */
++        0x00, 0x00, 0x00, 0x00, /* management endpoint buffer size */
++        0x00, 0x00, /* vpd i2c address/freq */
++        0x00, 0x01, /* management endpoint i2c address/freq */
++    };
++
++    static uint8_t nmi_ds_error[4] = {
++        0x04,       /* invalid parameter */
++        0x00,       /* first invalid bit position */
++        0x00, 0x00, /* first invalid byte position */
++    };
++
++    static uint8_t nmi_ds_empty[8] = {
++        0x00,       /* success */
++        0x02,       /* response data length */
++        0x00, 0x00, /* reserved */
++        0x00, 0x00, /* number of controllers */
++        0x00, 0x00, /* padding */
++    };
++
++    switch (dtyp) {
++    case NMI_CMD_READ_NMI_DS_SUBSYSTEM:
++        len = 36;
++        buf = nmi_ds_subsystem;
++
++        break;
++
++    case NMI_CMD_READ_NMI_DS_PORTS:
++        len = 36;
++        buf = nmi_ds_ports;
++
++        /* patch in the i2c address of the endpoint */
++        buf[14] = i2c->address;
++
++        break;
++
++    case NMI_CMD_READ_NMI_DS_CTRL_INFO:
++        len = 4;
++        buf = nmi_ds_error;
++
++        break;
++
++    case NMI_CMD_READ_NMI_DS_CTRL_LIST:
++    case NMI_CMD_READ_NMI_DS_CMD_SUPPORT:
++    case NMI_CMD_READ_NMI_DS_MEB_CMD_SUPPORT:
++        len = 8;
++        buf = nmi_ds_empty;
++
++        break;
++
++    default:
++        len = 4;
++        buf = nmi_ds_error;
++
++        /* patch in the invalid parameter position */
++        buf[2] = 0x03; /* first invalid byte position (dtyp) */
++
++        break;
++    }
++
++    memcpy(nmi->scratch + nmi->pos, buf, len);
++    nmi->pos += len;
++}
++
++enum {
++    NMI_CMD_CONFIGURATION_GET_SMBUS_FREQ                = 0x1,
++    NMI_CMD_CONFIGURATION_GET_HEALTH_STATUS_CHANGE      = 0x2,
++    NMI_CMD_CONFIGURATION_GET_MCTP_TRANSMISSION_UNIT    = 0x3,
++};
++
++static void nmi_handle_mi_config_get(NMIDevice *nmi, NMIRequest *request)
++{
++    uint32_t dw0 = le32_to_cpu(request->dw0);
++    uint8_t identifier = dw0 & 0xff;
++    uint8_t *buf;
++
++    trace_nmi_handle_mi_config_get(identifier);
++
++    switch (identifier) {
++    case NMI_CMD_CONFIGURATION_GET_SMBUS_FREQ:
++        buf = (uint8_t[]) {
++            0x0, 0x1, 0x0, 0x0,
++        };
++
++        break;
++
++    case NMI_CMD_CONFIGURATION_GET_HEALTH_STATUS_CHANGE:
++        buf = (uint8_t[]) {
++            0x0, 0x0, 0x0, 0x0,
++        };
++
++        break;
++
++    case NMI_CMD_CONFIGURATION_GET_MCTP_TRANSMISSION_UNIT:
++        buf = (uint8_t[]) {
++            0x0, 0x40, 0x0, 0x0,
++        };
++
++        break;
++    }
++
++    memcpy(nmi->scratch + nmi->pos, buf, 4);
++    nmi->pos += 4;
++}
++
++enum {
++    NMI_CMD_READ_NMI_DS         = 0x0,
++    NMI_CMD_CONFIGURATION_GET   = 0x4,
++};
++
++static void nmi_set_parameter_error(NMIDevice *nmi, uint8_t bit, uint16_t byte)
++{
++    nmi->scratch[nmi->pos++] = 0x4;
++    nmi->scratch[nmi->pos++] = bit;
++    nmi->scratch[nmi->pos++] = (byte >> 4) & 0xf;
++    nmi->scratch[nmi->pos++] = byte & 0xf;
++}
++
++static void nmi_set_error(NMIDevice *nmi, uint8_t status)
++{
++    uint8_t buf[4] = {};
++
++    buf[0] = status;
++
++    memcpy(nmi->scratch + nmi->pos, buf, 4);
++    nmi->pos += 4;
++}
++
++static void nmi_handle_mi(NMIDevice *nmi, NMIMessage *msg)
++{
++    NMIRequest *request = (NMIRequest *)msg->payload;
++
++    trace_nmi_handle_mi(request->opc);
++
++    switch (request->opc) {
++    case NMI_CMD_READ_NMI_DS:
++        nmi_handle_mi_read_nmi_ds(nmi, request);
++        break;
++
++    case NMI_CMD_CONFIGURATION_GET:
++        nmi_handle_mi_config_get(nmi, request);
++        break;
++
++    default:
++        nmi_set_parameter_error(nmi, 0x0, 0x0);
++        fprintf(stderr, "nmi command 0x%x not handled\n", request->opc);
++
++        break;
++    }
++}
++
++enum {
++    NMI_MESSAGE_TYPE_NMI = 0x1,
++};
++
++static void nmi_handle_message(MCTPI2CEndpoint *mctp)
++{
++    NMIDevice *nmi = NMI_I2C_DEVICE(mctp);
++    NMIMessage *msg = (NMIMessage *)nmi->buffer;
++    uint32_t crc;
++    uint8_t nmimt;
++
++    uint8_t buf[] = {
++        MCTP_MESSAGE_TYPE_NMI | MCTP_MESSAGE_IC,
++        FIELD_DP8(msg->nmp, NMI_NMP, ROR, 1),
++        0x0, 0x0,
++    };
++
++    memcpy(nmi->scratch, buf, sizeof(buf));
++    nmi->pos = sizeof(buf);
++
++    nmimt = FIELD_EX8(msg->nmp, NMI_NMP, NMIMT);
++
++    trace_nmi_handle_msg(nmimt);
++
++    switch (nmimt) {
++    case NMI_MESSAGE_TYPE_NMI:
++        nmi_handle_mi(nmi, msg);
++        break;
++
++    default:
++        fprintf(stderr, "nmi message type 0x%x not handled\n", nmimt);
++
++        nmi_set_error(nmi, 0x3);
++
++        break;
++    }
++
++    /* add message integrity check */
++    memset(nmi->scratch + nmi->pos, 0x0, sizeof(crc));
++
++    crc = crc32c(0xffffffff, nmi->scratch, nmi->pos);
++    memcpy(nmi->scratch + nmi->pos, &crc, sizeof(crc));
++
++    nmi->len = nmi->pos + sizeof(crc);
++    nmi->pos = 0;
++
++    i2c_mctp_schedule_send(mctp);
++}
++
++static size_t nmi_get_message_bytes(MCTPI2CEndpoint *mctp, uint8_t *buf,
++                                    size_t maxlen, uint8_t *mctp_flags)
++{
++    NMIDevice *nmi = NMI_I2C_DEVICE(mctp);
++    size_t len;
++
++    len = MIN(maxlen, nmi->len - nmi->pos);
++
++    if (len == 0) {
++        return 0;
++    }
++
++    if (nmi->pos == 0) {
++        *mctp_flags |= MCTP_H_FLAGS_SOM;
++    }
++
++    memcpy(buf, nmi->scratch + nmi->pos, len);
++    nmi->pos += len;
++
++    if (nmi->pos == nmi->len) {
++        *mctp_flags |= MCTP_H_FLAGS_EOM;
++
++        nmi->pos = nmi->len = 0;
++    }
++
++    return len;
++}
++
++static int nmi_put_message_bytes(MCTPI2CEndpoint *mctp, uint8_t *buf,
++                                 size_t len)
++{
++    NMIDevice *nmi = NMI_I2C_DEVICE(mctp);
++
++    if (nmi->len + len > NMI_MAX_MESSAGE_LENGTH) {
++        return -1;
++    }
++
++    memcpy(nmi->buffer + nmi->len, buf, len);
++    nmi->len += len;
++
++    return 0;
++}
++
++static void nmi_reset_message(MCTPI2CEndpoint *mctp)
++{
++    NMIDevice *nmi = NMI_I2C_DEVICE(mctp);
++    nmi->len = 0;
++}
++
++static size_t nmi_get_message_types(MCTPI2CEndpoint *mctp, uint8_t *data)
++{
++    uint8_t buf[] = {
++        0x0, 0x1, 0x4,
++    };
++
++    memcpy(data, buf, sizeof(buf));
++
++    return sizeof(buf);
++}
++
++static void nvme_mi_class_init(ObjectClass *oc, void *data)
++{
++    MCTPI2CEndpointClass *mc = MCTP_I2C_ENDPOINT_CLASS(oc);
++
++    mc->get_message_types = nmi_get_message_types;
++
++    mc->get_message_bytes = nmi_get_message_bytes;
++    mc->put_message_bytes = nmi_put_message_bytes;
++
++    mc->handle_message = nmi_handle_message;
++    mc->reset_message = nmi_reset_message;
++}
++
++static const TypeInfo nvme_mi = {
++    .name = TYPE_NMI_I2C_DEVICE,
++    .parent = TYPE_MCTP_I2C_ENDPOINT,
++    .instance_size = sizeof(NMIDevice),
++    .class_init = nvme_mi_class_init,
++};
++
++static void register_types(void)
++{
++    type_register_static(&nvme_mi);
++}
++
++type_init(register_types);
+diff --git a/hw/nvme/trace-events b/hw/nvme/trace-events
+index fccb79f48973..669785780b2a 100644
+--- a/hw/nvme/trace-events
++++ b/hw/nvme/trace-events
+@@ -214,3 +214,9 @@ pci_nvme_ub_db_wr_invalid_sq(uint32_t qid) "submission queue doorbell write for
+ pci_nvme_ub_db_wr_invalid_sqtail(uint32_t qid, uint16_t new_tail) "submission queue doorbell write value beyond queue size, sqid=%"PRIu32", new_head=%"PRIu16", ignoring"
+ pci_nvme_ub_unknown_css_value(void) "unknown value in cc.css field"
+ pci_nvme_ub_too_many_mappings(void) "too many prp/sgl mappings"
++
++# nmi-i2c
++nmi_handle_mi_read_nmi_ds(uint8_t dtyp) "dtyp 0x%"PRIx8""
++nmi_handle_mi_config_get(uint8_t identifier) "identifier 0x%"PRIx8""
++nmi_handle_mi(uint8_t opc) "opc 0x%"PRIx8""
++nmi_handle_msg(uint8_t nmint) "nmint 0x%"PRIx8""
 -- 
 2.38.1
 

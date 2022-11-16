@@ -1,164 +1,151 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp441558ejx;
-        Wed, 16 Nov 2022 05:52:47 -0800 (PST)
-X-Received: by 2002:a17:902:8649:b0:187:3921:2b2d with SMTP id y9-20020a170902864900b0018739212b2dmr9388026plt.13.1668606767103;
-        Wed, 16 Nov 2022 05:52:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668606767; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp523250ejx;
+        Wed, 16 Nov 2022 07:27:54 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6hQhJMg/sWzmxdI92z4TQK50XxO42eS9q08iVTo6UAGsoVcg1FTNJKIgeHybyvzJUXVP9s
+X-Received: by 2002:a05:6214:5b89:b0:4bb:6b72:3c36 with SMTP id lq9-20020a0562145b8900b004bb6b723c36mr21138039qvb.121.1668612474765;
+        Wed, 16 Nov 2022 07:27:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668612474; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dz9/2mzmyn0mvzdRufwqqNX4w8mqZXmEq54BO0CuuUx0fctVPIQj4bNcw2vyLyQZOs
-         FgSIUzEkbEZfWhufyOtIRg1HRH54wS6rBxksGMZArhtqh342wHjjS0KF4Vy/aFT9fgkH
-         E1x6+M4nyk2CJT9ZwguwU2dmTS+or0MmZGsVp+um/Bma3Od7MFkuMfQ7Bi1voRoblA4I
-         wlqOsWUJNu6sXNlreg/FeewUBSv2h0vRtRgoiaFupZi0Va/BF0mJUuwYGNw7GWJuEU2p
-         ZAH8IGzNrwH2xeUymeOoZIWuUNAiJRW2uD1gVpCTBl/lhxZcMtTDMQuOqLKarFKOka8/
-         f4aw==
+        b=ZISr0od7+C/dxe5xu8fehZ9FT5smK1e9qg+HXfdCwGkMwGaA4DIPjst9yU/JUrnuqg
+         /1xa43iEmvz0C3qu/+N870DI4W4aQ4XrpVeC7cFhGciXlO4n4fsg3dm8Ce5rLflhJKvw
+         HX4OfFOG9ZHCxnveupvZvd+1U9fXqPN3GDPfqKyYIzKn2zyVZEuqqMHSPq0acTptnW6J
+         ug/Ouw9oWXdvshXvg1I7shp/N4UXjFsMDetirVqipevDXtBdDMatL+u+4aV6P/vOKiK9
+         +vxP6F0NSWY1A8QLKxLgmXr1N0/Tt28reFf88vObkV+K71JI1yEp+wRViIvM+7RFn1Sk
+         FKMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:dkim-signature;
-        bh=PKnuLmi4gRrfh0Yp/jxdYijZtWeyUMJTFGu0qgNv+lQ=;
-        b=J5Ghvdfixg/a5HapUrxmlonxIgBifVr22dkBnR2eJKdO2ZQigqXuSa3GWJcVJGcDdY
-         qw60TD709UrchGMG+ZX1PXUjNDr1Sa9n233TcEOvNOB5kT8ahtijjUJ0N8WHPO7YXE6J
-         JwG+wk/0e2eI8hs6vLPKutFEEvWOzgf7b2I7GYJPudyBG5uQx2fspyEFpP0QuH376Rn/
-         +AxvWMv7mKWuRkLnlUx4ZqHp9CFmbtl1vVhc2UNx66WRFCXmUZPlU4A5HrTUnsffVt7k
-         R5Uz+8KwogAcyCfMenGo9kkjRoJuPL2YpYUesCoPKLUEZn7nKyIUtbkm98E48l5Q4gPs
-         Juaw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=eHcjr1G5UsgFNqeXRp0WTxS47bfofFg325Nhqy6ODP4=;
+        b=nBSfHb+SDjvjA5falUeuzCsHKYGfOwyo0+fnx9SIZGQLE4SqCpyP6Ssxc4uAc2LGb+
+         kecJqgNH8mn3QA5l0LzYjZjuxKbCmkD1FIF1VanQ56Mjo+tijadrw+ClAmw1skcMRXxz
+         v4NzVBXDsRu+Y0Kujq8m7f2THeMFdJBjl9GFk0/T7sP3wuPcLm3/aHFYidclo222sa4F
+         iCf6Bz/PvU07kNpp/l7nZ2ppquVBj15zDkb7USpRgCxoPYnv6SUM19Kr2V02BKan/laE
+         8rtXXnwz11l3wgPJJc0YLIpJZBozs2VdFPzllJN3+a8AG8yxXGeA39KeYrjamCozg1MA
+         rFAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=mRVuaheT;
-       spf=pass (google.com: domain of schspa@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=schspa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <schspa@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u8-20020a170902b28800b00188d6e1b832sor2002951plr.167.2022.11.16.05.52.46
-        (Google Transport Security);
-        Wed, 16 Nov 2022 05:52:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of schspa@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AI3rA66C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p16-20020a05620a057000b006fb6a50fb20si5223259qkp.167.2022.11.16.07.27.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 16 Nov 2022 07:27:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=mRVuaheT;
-       spf=pass (google.com: domain of schspa@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=schspa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:from:to:cc:subject:date:message-id:reply-to;
-        bh=PKnuLmi4gRrfh0Yp/jxdYijZtWeyUMJTFGu0qgNv+lQ=;
-        b=mRVuaheTntle3DwM6AFb4eGQEokeW2cD9RWSWT+cLMMtOKOIdVHZr/QLxv++yU+8B8
-         vWEQlOPy6PmhADs6OtMOSok9ipDBOvw3If6fATvUeXkoLQ2oylka8lNILR4KssfuR6JS
-         FfkxycOA4Dw+/oc/ZQwGbmgJlhdGw1EF/tCj9e29ZtSdNTBJc4Icwl8GzlG5QG989MMn
-         pWuIaThSjiowHG/KHmIXKeM1jw5BmoNz0zC+9nMqstWsMNsgr42MuWGv3LkzMpbiNwDf
-         V/spbS5nh8bYc0H90QUZHX4eRlPiG3DXxoAkSOkFN0zkChn0o3lWHNHCDctAyqbsRG1A
-         42+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PKnuLmi4gRrfh0Yp/jxdYijZtWeyUMJTFGu0qgNv+lQ=;
-        b=RiewH+EPrROLdvULdClGoU70Ywxd45bsp0RvPMW+mjd8EsBADwEzoTKOopQIwKhynA
-         yIYXIu1Yn3Gw4p4hYpEPm02a5rOLWqSmqgRktJjvsH4mWaioQDtIzgUJT24d2YIlcSnr
-         oHvoHYFKrpgA8q/83N2h7aSrpVqnrzH/QEh+WJsK3UVr35+TvIeL/fW7EZa1qn+W/y+9
-         KxDObjawH9/fkL4IiYId6l3sQhvJiIkD01FX7lc5Dwdiz/oVulf0yw046pvuJLyvg2MH
-         pSKXh0ZEu06QjcWLDsuRdqHFEClrX4HkPkiyb5r7jEM4oAUyrnKqMZypyYbfsEkWCVSk
-         TbSA==
-X-Gm-Message-State: ANoB5pkt7UntqT5XlYoae1JNbsZH+TQVtxFyb7m6nEh2d4wiXMx2gkxZ
-	DHyaS7gbPK5AbX7G+gLnBxzXgFBdrtnhggVc
-X-Google-Smtp-Source: AA0mqf4pi48cVKfjDCcu/0CY82DVLr57opE6WEotr8oTYaXAji0/nkeIDMoUkV0bUD2qDB7suYGSmQ==
-X-Received: by 2002:a17:902:d642:b0:188:d552:fb02 with SMTP id y2-20020a170902d64200b00188d552fb02mr7569766plh.76.1668606766587;
-        Wed, 16 Nov 2022 05:52:46 -0800 (PST)
-Return-Path: <schspa@gmail.com>
-Received: from MBP ([183.159.178.109])
-        by smtp.gmail.com with ESMTPSA id x67-20020a623146000000b0056bee236e9csm11230377pfx.142.2022.11.16.05.52.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Nov 2022 05:52:45 -0800 (PST)
-References: <20221108023542.17557-1-schspa@gmail.com>
- <87fsetg5xh.fsf@linaro.org>
- <CAMA88Tqt-7rCTC38OhZGmCZyO4rFz+HHBNtDjaVCbhna01yScQ@mail.gmail.com>
- <CAFEAcA8J2Tx4gW5Y2q6qtkJ0BPpM4iWkt3nz0uezV+kiz6m_Ag@mail.gmail.com>
- <CAFEAcA8KnNE90tHQjRNEVny=s7YLD5Wmff9R8ZyLxxz47bwRGA@mail.gmail.com>
- <875yfpbg38.fsf@gmail.com>
- <CAFEAcA_5_78qUNFdgpYGnS0tS3QWD4cJokJCzMC6Tq270bYbJg@mail.gmail.com>
- <m2edu3ig2s.fsf@gmail.com>
- <CAFEAcA9k5a8O02zT6x1tqFvo11NmYupX9mfe2YdSwebBHKSdbw@mail.gmail.com>
-User-agent: mu4e 1.6.10; emacs 27.2
-From: Schspa Shi <schspa@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH] hw/arm/boot: set initrd parameters to 64bit in fdt
-Date: Wed, 16 Nov 2022 21:52:17 +0800
-In-reply-to: <CAFEAcA9k5a8O02zT6x1tqFvo11NmYupX9mfe2YdSwebBHKSdbw@mail.gmail.com>
-Message-ID: <m27czvhuqd.fsf@gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AI3rA66C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ovKKH-0003r6-Ac; Wed, 16 Nov 2022 10:27:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1ovKKF-0003oP-If
+ for qemu-arm@nongnu.org; Wed, 16 Nov 2022 10:27:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1ovKKE-0004DE-7x
+ for qemu-arm@nongnu.org; Wed, 16 Nov 2022 10:27:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1668612461;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=eHcjr1G5UsgFNqeXRp0WTxS47bfofFg325Nhqy6ODP4=;
+ b=AI3rA66CWqufJxLk+e/o4mGtKJWXVafYN0E/1cU0NYUhingHh59MSXysQzp8UI5JUIHfu8
+ FuJitzJygubHW2truvfQp4Ag85cq92T2UEVQiMkL0DNMFAghePZ+WszW5WnsDUPFaXl4YP
+ MFsHkxp6ImAbaMqHJrU05fIKPCOoWLE=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-224-l75-cGLROqGjhV2Hdj6rKw-1; Wed, 16 Nov 2022 10:27:35 -0500
+X-MC-Unique: l75-cGLROqGjhV2Hdj6rKw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9125A3810794;
+ Wed, 16 Nov 2022 15:27:34 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq2.redhat.com
+ (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8C25C112132C;
+ Wed, 16 Nov 2022 15:27:32 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: mst@redhat.com, ani@anisinha.ca, pbonzini@redhat.com,
+ richard.henderson@linaro.org, mark.cave-ayland@ilande.co.uk,
+ peter.maydell@linaro.org, andrew.smirnov@gmail.com, paulburton@kernel.org,
+ aleksandar.rikalo@syrmia.com, danielhb413@gmail.com, clg@kaod.org,
+ david@gibson.dropbear.id.au, groug@kaod.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org
+Subject: [PATCH 0/2] remove redundant field PCIDeviceClass::is_bridge
+Date: Wed, 16 Nov 2022 16:27:28 +0100
+Message-Id: <20221116152730.3691347-1-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: weKah8kk5Cyv
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3MoeQK574fix
 
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Igor Mammedov (2):
+  remove DEC 21154 PCI bridge
+  pci: drop redundant PCIDeviceClass::is_bridge field
 
-> On Wed, 16 Nov 2022 at 06:11, Schspa Shi <schspa@gmail.com> wrote:
->>
->>
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->> > On Tue, 8 Nov 2022 at 15:50, Schspa Shi <schspa@gmail.com> wrote:
->> >>
->> >>
->> >> Peter Maydell <peter.maydell@linaro.org> writes:
->> >>
->> >> > On Tue, 8 Nov 2022 at 13:54, Peter Maydell <peter.maydell@linaro.org> wrote:
->> >> >>
->> >> >> On Tue, 8 Nov 2022 at 12:52, Schspa Shi <schspa@gmail.com> wrote:
->> >> >> > I think this lowmem does not mean below 4GB. and it is to make sure
->> >> >> > the initrd_start > memblock_start_of_DRAM for Linux address range check.
->> >> >>
->> >> >> The wording of this comment pre-dates 64-bit CPU support: it
->> >> >> is talking about the requirement in the 32-bit booting doc
->> >> >> https://www.kernel.org/doc/Documentation/arm/Booting
->> >> >> that says
->> >> >> "If an initramfs is in use then, as with the dtb, it must be placed in
->> >> >> a region of memory where the kernel decompressor will not overwrite it
->> >> >> while also with the region which will be covered by the kernel's
->> >> >> low-memory mapping."
->> >> >>
->> >> >> So it does mean "below 4GB", because you can't boot a 32-bit kernel
->> >> >> if you don't put the kernel, initrd, etc below 4GB.
->> >> >
->> >> > A kernel person corrects me on the meaning of "lowmem" here -- the
->> >> > kernel means by it "within the first 768MB of RAM". There is also
->> >> > an implicit requirement that everything be within the bottom 32-bits
->> >> > of the physical address space.
->> >> >
->> >>
->> >> Thanks for your comment.
->> >>
->> >> In this view, initrd shouldn't be placed higher than 4GB ? But it
->> >> seems the Linux kernel can boot when there is no memory below 4GB.
->> >
->> > A *32 bit* kernel cannot -- it is completely unable to access
->> > anything above the 4GB mark when the MMU is off, as it is on
->> > initial boot. This QEMU code handles both 32 bit and 64 bit
->> > kernel boot. These days of course there is 64-bit only hardware,
->> > and that might choose to put its RAM above the 4GB mark,
->> > because it isn't ever going to boot a 32-bit kernel anyway.
->> >
->>
->> Yes, I think we should accept this patch, because it will not affect
->> 32-bit devices, and provides support for 64-bit devices to put initrd
->> above 4GB.
->
-> Yes, I agree. However since it doesn't cause a problem for any
-> of the machine models in upstream QEMU, I think we should leave
-> it until after the in-progress 7.2 release, so that we have
-> plenty of time to investigate just in case it does cause an
-> unexpected issue on 32-bit boards.
->
-> This patch is on my list to review and deal with when 7.2
-> goes out and development reopens for 8.0 (should be in about
-> four weeks).
->
-> thanks
-> -- PMM
-
-OK, thank you very much.
+ hw/pci-bridge/dec.h                |   9 --
+ include/hw/pci/pci.h               |  11 +-
+ include/hw/pci/pci_bridge.h        |   1 +
+ include/hw/pci/pci_ids.h           |   1 -
+ hw/acpi/pcihp.c                    |   3 +-
+ hw/i386/acpi-build.c               |   5 +-
+ hw/pci-bridge/cxl_downstream.c     |   1 -
+ hw/pci-bridge/cxl_upstream.c       |   1 -
+ hw/pci-bridge/dec.c                | 164 -----------------------------
+ hw/pci-bridge/i82801b11.c          |   1 -
+ hw/pci-bridge/meson.build          |   2 -
+ hw/pci-bridge/pci_bridge_dev.c     |   1 -
+ hw/pci-bridge/pcie_pci_bridge.c    |   1 -
+ hw/pci-bridge/pcie_root_port.c     |   1 -
+ hw/pci-bridge/simba.c              |   1 -
+ hw/pci-bridge/xio3130_downstream.c |   1 -
+ hw/pci-bridge/xio3130_upstream.c   |   1 -
+ hw/pci-host/designware.c           |   1 -
+ hw/pci-host/uninorth.c             |   6 --
+ hw/pci-host/xilinx-pcie.c          |   1 -
+ hw/pci/pci.c                       |  20 ++--
+ hw/ppc/spapr_pci.c                 |  15 +--
+ 22 files changed, 19 insertions(+), 229 deletions(-)
+ delete mode 100644 hw/pci-bridge/dec.h
+ delete mode 100644 hw/pci-bridge/dec.c
 
 -- 
-BRs
-Schspa Shi
+2.31.1
+

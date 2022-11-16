@@ -1,225 +1,146 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3912743ejx;
-        Tue, 15 Nov 2022 12:07:29 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5lrZtg1blgZLwDkGO4z84epP6g9yNvt2zIq8P5c0nBKoh29a88sQvp49wa6yJFKvQq2QVq
-X-Received: by 2002:a05:622a:6004:b0:39c:cb6a:300b with SMTP id he4-20020a05622a600400b0039ccb6a300bmr18374342qtb.181.1668542849390;
-        Tue, 15 Nov 2022 12:07:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668542849; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp179004ejx;
+        Tue, 15 Nov 2022 22:11:51 -0800 (PST)
+X-Received: by 2002:a17:902:d642:b0:188:d552:fb02 with SMTP id y2-20020a170902d64200b00188d552fb02mr6064500plh.76.1668579111235;
+        Tue, 15 Nov 2022 22:11:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668579111; cv=none;
         d=google.com; s=arc-20160816;
-        b=EQEp56iwKgFaMDv3mV8K5/IRxvKKbM73qnCPK9/Y0WIElVSAmv4zUlbCeBd0rQmnrG
-         rqOYPv0tDkvZEomM3ej0roLbwatSFhhlspOxFWjkzlLofAdo05JwWYZ5xpG6tD4M31kN
-         6GxGuzpoE2Z0o76urYgMaeQnhmpydUAQJPW9AJzOFS+GGQLHYqGCyi/3egHwL70OsJzH
-         vaEECba/rw9lkNKGP4tGTyDgNUc7s/vr54n+QpigaMi96zjLMMxcPlVhJJotyvckh0KW
-         9A6rSN94ievlJw4G0EJjncPJHQy32fwP5Jm8JN/Kz2RgLkIZuVt6pqEASXPUo1wJ5H4l
-         S+/w==
+        b=McWxxIaFv9APBdIotI1wTiCOMKxStugF274JHsK2iaW149ClrQ0Fi5PGXRWMSs/7CB
+         FrYrLdbkmWYfg/Tch5Dos9eAm2EgDJ5sW+iHnhfLhoDD1tfhnN/x4okBtlJvgLKfNQdx
+         od0rgUFLu2djS7H77kEnWACkQTLQllylKk9/8Au8h8uWVETbnaFgvLdkOfbgVHdDU6EM
+         oioD12HI2wlQPgdGoBmbF+dagaGv/jvUv+CXcNU1mJStk+pRl08lmMJmKq7f4LstjwXt
+         PaCUfc5WCTjurCt8VW/ejb53HgoK2gl0RRTOgx09i7bdjrJaKbut0Flmq/YcxF1ar+KG
+         mkuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=blMSC6rHWmqBaSq87I6Gq4+okisjjnzCanjRRO0aYOM=;
-        b=sSKIWDHNOoPKzVl9JPl99oFx/vB18PC3ayViNmDwJ4LnxAFFjMBm4V+o5HLp3wOtPN
-         qhuWHl07e/vTqhiK8TjRqDRjfRwuTt5+kkIug9YdcXJddgVcQnMrGWKCOKmZlaXgtF84
-         GOTVHjROtj+QWOrIN7VYm36/9FJK2YWIYAF08PdeJXembxnYyyzR7snk5jYzeZp7W7IM
-         1fvIvPntDEK6Z8HaNJvz9CY3xSTZ+22ywyOQnwyM6WEH04oyBIDv9Kju4rahSXaSYtT8
-         F7+zj6l6DZd5xaIUwj8Rd/wbeT56sKa1vIT1Yv6YLZJ9X42XRybavsKK1HNqVlcD1g69
-         3Kdg==
+        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
+         :user-agent:references:dkim-signature;
+        bh=JcHF3ORUXXQR3tJAYqImwRBo08c29Cshwc+UtkgxMLE=;
+        b=GwjuVwzFZWyVOuGCvvQ2JyPRV6/pU53SUdJ2r6Tttqc6L1CXRykF7sPhdjZuEQfkRj
+         a1CcLqSd7yVdvH4zX0ijtBeOb9Inj/hEb7roduKo2fx2HrxGvOIH6gTox6dLzqHxwbqP
+         Vd7QwNkm3pcO+dZQzOKhS4CTKIoK5uJBwH4HCxLnBlG3LKtZdaouC+FFDtuMFCOmfcvw
+         LwEvXvOKehjrel7hz+VUgB1Ym4zHcWsxn9UylnU1YxqKrFB6QyiH9bEJGHRfEcg9OnDf
+         Dh3Yu2tgyc2Td7fvl4n+uTaunQ4M3lUs3DNhVwV/zNcs8udj46IQ7ZkBParfA6yO1UuU
+         jNGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=HxIv8LTn;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="Su8fdR/O";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5-20020a0562141cc500b004afb621a445si8034492qvd.75.2022.11.15.12.07.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Nov 2022 12:07:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=oRaSgzM0;
+       spf=pass (google.com: domain of schspa@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=schspa@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <schspa@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id cu2-20020a056a00448200b00572723d7aa1sor2265397pfb.90.2022.11.15.22.11.50
+        (Google Transport Security);
+        Tue, 15 Nov 2022 22:11:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of schspa@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=HxIv8LTn;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="Su8fdR/O";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ov2Ch-0007tR-T4; Tue, 15 Nov 2022 15:06:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1ov2Cf-0007si-Pp; Tue, 15 Nov 2022 15:06:41 -0500
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1ov2Ce-0008MN-7n; Tue, 15 Nov 2022 15:06:41 -0500
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.west.internal (Postfix) with ESMTP id 6701F3200937;
- Tue, 15 Nov 2022 15:06:34 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute5.internal (MEProxy); Tue, 15 Nov 2022 15:06:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm2; t=1668542794; x=
- 1668629194; bh=blMSC6rHWmqBaSq87I6Gq4+okisjjnzCanjRRO0aYOM=; b=H
- xIv8LTn79rt/jvnUCX5KKiqvJNMoHHlaJ7UKtN0BPMWYTcRWPhdkpb/btKdM0BrX
- MRpXWMccYEwi6zDo/MYjwSD5G3LRE2Y1dL7agrR970RG03LpMzkA0nKCZYNoTabI
- XjMGyeEDVTbgACz8eWv2iDZiYVnSuQ7wINytgk8fL9Mau6CNX51l2qSprcF657Dl
- VXtZtOIJUtoUGO4263desvoxZmK3W4Vi5bXRpoEKmpZqPH4HC4yuWuoEDawu3cEb
- fCV8rGxQxftXijC2rMazwzRwwgiZN2Q4uFGyoUXOYZQjhC1SkgOr07S5Baj82KWK
- ONMBU6GQhoe7mfKeXp0WQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1668542794; x=
- 1668629194; bh=blMSC6rHWmqBaSq87I6Gq4+okisjjnzCanjRRO0aYOM=; b=S
- u8fdR/OLlVQSHRlnmpRQx/EszNNGrodTuqLJxUcPkbR7xBS97iQ7ez99hdLi28cV
- aI113s81UepPwE2foaXsy0OtYEicaRAUo49uI635ae6LBH8Ri0A+30i4wfMADMYv
- isccS9fRywEZBAKJbSCQxkWbEAJnnREGallOXlkRh+bLyTdx4EzD7pKHaD6OkFyp
- A+B11qiGF2QWvcc5iWbKYSYFX/3poSFF49V4POmWweU4FGs7kst58UqvZRAeN4k7
- I4cnySFvqvlbSVqpH8Y7RSoQToXyEqOJOdU1AORaz4cT1ru49bsD6Ovxyx2hZcO2
- pIbtZB4xYours0nG2sspw==
-X-ME-Sender: <xms:SfFzY73mJ57l0b5T7Uf_8CsRGFJ7hp6-ZSGboEAqLwNS92tirZuMgA>
- <xme:SfFzY6EofRRaHyt3xn43pfCudXkF2jyYRkWeu33jOY_s-e9vGHX-h8QnAh_Iqb_uE
- 04KXzYXwvqrhrfm4cM>
-X-ME-Received: <xmr:SfFzY75KlzXZEDB7BmIrtPBK-H181gAnc05VgQ-v3E_x-_jSfsfaG9GSWmeoY3s1oZR1HqkMaWkC>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrgeeggddufeefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefrvght
- vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
- htthgvrhhnpefhgeffvedufeevteegkeetieejhffhudeujedvgedvheffheejveethffh
- ffefueenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
- hpvghtvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:SfFzYw3znK6ofcREpMykVuapOVce7BLIpGgxc_Dig6VHbh_t-SzI5A>
- <xmx:SfFzY-HucO1AbuBYNYMEkApIykjP4b6dB7ZQQ8UMBB41Ae5v7g5x0A>
- <xmx:SfFzYx94BmY_w8UZeEMY6AIeXiGu5ALMjDGfuVWah_a3d5cGJxeW7A>
- <xmx:SvFzYx0ddunej5xV8_4DQOpa9rBDK_Er3osGMphBHVGhT_K1un2DrQ>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 15 Nov 2022 15:06:32 -0500 (EST)
-Date: Tue, 15 Nov 2022 12:06:30 -0800
-From: Peter Delevoryas <peter@pjd.dev>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Cc: peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, patrick@stwcx.xyz,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>
-Subject: Re: [PATCH 0/1] hw/arm/aspeed: Automatically zero-extend flash images
-Message-ID: <Y3PxRst9n5zmDx3V@pdel-fedora-MJ0HJWH9>
-References: <20221114190823.1888691-1-peter@pjd.dev>
- <890395fe-ed58-8a5d-be76-b28d99e6289a@kaod.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=oRaSgzM0;
+       spf=pass (google.com: domain of schspa@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=schspa@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
+         :user-agent:references:from:to:cc:subject:date:message-id:reply-to;
+        bh=JcHF3ORUXXQR3tJAYqImwRBo08c29Cshwc+UtkgxMLE=;
+        b=oRaSgzM09s0+yI/0c1yffJbAKyLBlDcOgvi990XrQrRffwWaS9/yAwnzxFT+kMP9tF
+         7AG/U3KQf75rRidTRMx8MAfnUXyaMFCSxzHAfaCgFLoaur7kAMeYsesL8O+UQYn9moc0
+         SFIb3r8/k0ePjLKJqFjWHUDGuGOY4Az052rZYq7/wy9CRApfd4ItzdMZucFaWGWqs95y
+         AF7/TBbksmztdNBaWKgVU76RUtbh/60Bj3qVpplcP1qsX/Y2nvYU0JTDnjIcXLh0WxI1
+         lrhzdZ/TeMq3/FP6ZrB+U4mA11t6/REaQTuZhdlm1hCX361UlrBjzfCTwGnyh4tw55Y9
+         eqnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
+         :user-agent:references:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JcHF3ORUXXQR3tJAYqImwRBo08c29Cshwc+UtkgxMLE=;
+        b=bsEzvJXM1hmp7dkBBPSsMmNYQCs19eneWlRzBOggMtN1YNqt+X/dgRFLb/X6lRClcb
+         Wpp1/bDxIkAjEg6DJcUau4Nsa6AF0XaWVa8hhk+hYawnWzimmHnWsjPSL9G74FDBGMEn
+         UPhkyKJi1rM/PLIdokkra/uTw4lwtsL6GvPj896A+f2xPv5mIu0lC8DoGRe9lM6wNNwQ
+         kxJ25n+3GsXtj54QdTLknwMN/WRaiLWZyFIseTkSfsrBzI4bFFyDKUO9I2ti7iS8RKo7
+         2aKVnJ8vd1YJudLuqu1Y89ipKQYj5LbFfcJc00N0XeBNRttECmhYwOe/z0vBUv6UM47x
+         qVJQ==
+X-Gm-Message-State: ANoB5pmOkQukI5H3Wsefw3HjgxLwrMEuVABNpt52vxSsAZfC0yO01dSY
+	eBlr/EZV0TLHIjvYagSBpPAPVs+OrTMHzQ==
+X-Google-Smtp-Source: AA0mqf6up6WIrQhCSVQgWR1+8nVA7kd+BwF9VOtVHKYQ/EbPd5qE2TgDi7x/lZ+NkAKZ94yKF5uFVw==
+X-Received: by 2002:a63:d94b:0:b0:43c:6412:994f with SMTP id e11-20020a63d94b000000b0043c6412994fmr18829540pgj.421.1668579110167;
+        Tue, 15 Nov 2022 22:11:50 -0800 (PST)
+Return-Path: <schspa@gmail.com>
+Received: from MBP ([39.170.101.209])
+        by smtp.gmail.com with ESMTPSA id h13-20020a170902680d00b00179e1f08634sm11115827plk.222.2022.11.15.22.11.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Nov 2022 22:11:49 -0800 (PST)
+References: <20221108023542.17557-1-schspa@gmail.com>
+ <87fsetg5xh.fsf@linaro.org>
+ <CAMA88Tqt-7rCTC38OhZGmCZyO4rFz+HHBNtDjaVCbhna01yScQ@mail.gmail.com>
+ <CAFEAcA8J2Tx4gW5Y2q6qtkJ0BPpM4iWkt3nz0uezV+kiz6m_Ag@mail.gmail.com>
+ <CAFEAcA8KnNE90tHQjRNEVny=s7YLD5Wmff9R8ZyLxxz47bwRGA@mail.gmail.com>
+ <875yfpbg38.fsf@gmail.com>
+ <CAFEAcA_5_78qUNFdgpYGnS0tS3QWD4cJokJCzMC6Tq270bYbJg@mail.gmail.com>
+User-agent: mu4e 1.6.10; emacs 27.2
+From: Schspa Shi <schspa@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH] hw/arm/boot: set initrd parameters to 64bit in fdt
+Date: Wed, 16 Nov 2022 14:07:46 +0800
+In-reply-to: <CAFEAcA_5_78qUNFdgpYGnS0tS3QWD4cJokJCzMC6Tq270bYbJg@mail.gmail.com>
+Message-ID: <m2edu3ig2s.fsf@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <890395fe-ed58-8a5d-be76-b28d99e6289a@kaod.org>
-Received-SPF: pass client-ip=64.147.123.20; envelope-from=peter@pjd.dev;
- helo=wout4-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IbOtVtvpKo3N
+Content-Type: text/plain
+X-TUID: uJbPrbEWVtT8
 
-On Tue, Nov 15, 2022 at 02:06:57PM +0100, Cédric Le Goater wrote:
-> Hello Peter,
-> 
-> On 11/14/22 20:08, Peter Delevoryas wrote:
-> > I've been using this patch for a long time so that I don't have to use
-> > dd to zero-extend stuff all the time. It's just doing what people are
-> > doing already, right? I hope it's not controversial.
-> 
-> I simply run :
-> 
->    truncate --size <size>
 
-Ohhh I always forget about that command. That's certainly easier
-than what I was doing.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-> 
-> on the FW file when needed and it is rare because most FW image builders
-> know the flash size of the target.
+> On Tue, 8 Nov 2022 at 15:50, Schspa Shi <schspa@gmail.com> wrote:
+>>
+>>
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>
+>> > On Tue, 8 Nov 2022 at 13:54, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> >>
+>> >> On Tue, 8 Nov 2022 at 12:52, Schspa Shi <schspa@gmail.com> wrote:
+>> >> > I think this lowmem does not mean below 4GB. and it is to make sure
+>> >> > the initrd_start > memblock_start_of_DRAM for Linux address range check.
+>> >>
+>> >> The wording of this comment pre-dates 64-bit CPU support: it
+>> >> is talking about the requirement in the 32-bit booting doc
+>> >> https://www.kernel.org/doc/Documentation/arm/Booting
+>> >> that says
+>> >> "If an initramfs is in use then, as with the dtb, it must be placed in
+>> >> a region of memory where the kernel decompressor will not overwrite it
+>> >> while also with the region which will be covered by the kernel's
+>> >> low-memory mapping."
+>> >>
+>> >> So it does mean "below 4GB", because you can't boot a 32-bit kernel
+>> >> if you don't put the kernel, initrd, etc below 4GB.
+>> >
+>> > A kernel person corrects me on the meaning of "lowmem" here -- the
+>> > kernel means by it "within the first 768MB of RAM". There is also
+>> > an implicit requirement that everything be within the bottom 32-bits
+>> > of the physical address space.
+>> >
+>>
+>> Thanks for your comment.
+>>
+>> In this view, initrd shouldn't be placed higher than 4GB ? But it
+>> seems the Linux kernel can boot when there is no memory below 4GB.
+>
+> A *32 bit* kernel cannot -- it is completely unable to access
+> anything above the 4GB mark when the MMU is off, as it is on
+> initial boot. This QEMU code handles both 32 bit and 64 bit
+> kernel boot. These days of course there is 64-bit only hardware,
+> and that might choose to put its RAM above the 4GB mark,
+> because it isn't ever going to boot a 32-bit kernel anyway.
+>
 
-welllllll my yocto builds don't, I'm not sure we would want them to either?
+Yes, I think we should accept this patch, because it will not affect
+32-bit devices, and provides support for 64-bit devices to put initrd
+above 4GB.
 
-Because that would be extra data with no value to transfer to the BMC/etc.
+> thanks
+> -- PMM
 
-flashcp erases the whole flash initially, which is why I don't worry
-about providing a firmware image that is only covering the first 30 MB of
-flash.
 
-> 
-> However, the current error message is confusing and the following could
-> be an improvement :
-> 
-> @@ -1606,6 +1606,13 @@ static void m25p80_realize(SSIPeripheral
->      if (s->blk) {
->          uint64_t perm = BLK_PERM_CONSISTENT_READ |
->                          (blk_supports_write_perm(s->blk) ? BLK_PERM_WRITE : 0);
-> +
-> +        if (blk_getlength(s->blk) != s->size) {
-> +            error_setg(errp, "backend file is too small for flash device %s (%d MB)",
-> +                       object_class_get_name(OBJECT_CLASS(mc)), s->size >> 20);
-> +            return;
-> +        }
-> +
->          ret = blk_set_perm(s->blk, perm, BLK_PERM_ALL, errp);
->          if (ret < 0) {
->              return;
-> 
-> I can send a patch for the above.
-
-Ohhh yay! Thanks!
-
-> 
-> <hack>
-> 
-> I mostly run the QEMU machines with -snapshot, this hack  :
-> 
->   blk_set_allow_write_beyond_eof(s->blk, true);
-> 
-> makes it work also ...
-
-!!! Ohhh! interesting...that seems more sketchy but certainly simpler.
-
-> 
-> </hack>
-> 
-> 
-> Thanks,
-> 
-> C.
-> 
-> > One note: I couldn't figure out how to make it work without changing the
-> > permissions on the block device to allow truncation. If somebody knows
-> > how to avoid the `blk_get_perm`, `blk_set_perm` calls here, let me know!
-> > 
-> > Thanks,
-> > Peter
-> > 
-> > Peter Delevoryas (1):
-> >    hw/arm/aspeed: Automatically zero-extend flash images
-> > 
-> >   hw/arm/aspeed.c | 40 +++++++++++++++++++++++++++++++++++++++-
-> >   1 file changed, 39 insertions(+), 1 deletion(-)
-> > 
-> 
+-- 
+BRs
+Schspa Shi

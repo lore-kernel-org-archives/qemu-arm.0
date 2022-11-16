@@ -1,146 +1,147 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp179004ejx;
-        Tue, 15 Nov 2022 22:11:51 -0800 (PST)
-X-Received: by 2002:a17:902:d642:b0:188:d552:fb02 with SMTP id y2-20020a170902d64200b00188d552fb02mr6064500plh.76.1668579111235;
-        Tue, 15 Nov 2022 22:11:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668579111; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp414534ejx;
+        Wed, 16 Nov 2022 05:15:11 -0800 (PST)
+X-Received: by 2002:a62:1c0b:0:b0:56e:5bcd:d025 with SMTP id c11-20020a621c0b000000b0056e5bcdd025mr22981026pfc.65.1668604510748;
+        Wed, 16 Nov 2022 05:15:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668604510; cv=none;
         d=google.com; s=arc-20160816;
-        b=McWxxIaFv9APBdIotI1wTiCOMKxStugF274JHsK2iaW149ClrQ0Fi5PGXRWMSs/7CB
-         FrYrLdbkmWYfg/Tch5Dos9eAm2EgDJ5sW+iHnhfLhoDD1tfhnN/x4okBtlJvgLKfNQdx
-         od0rgUFLu2djS7H77kEnWACkQTLQllylKk9/8Au8h8uWVETbnaFgvLdkOfbgVHdDU6EM
-         oioD12HI2wlQPgdGoBmbF+dagaGv/jvUv+CXcNU1mJStk+pRl08lmMJmKq7f4LstjwXt
-         PaCUfc5WCTjurCt8VW/ejb53HgoK2gl0RRTOgx09i7bdjrJaKbut0Flmq/YcxF1ar+KG
-         mkuw==
+        b=WTvWa/bnWJmKkVl2LxFu76W1qmww97bUBECYNk9UIvTtmWOr1e8+L+thH7pSx+kYUy
+         4cwpExaQKnLWLA+F4Y5d4mzGXJh/VhtJNO31bA+uQHH1X4Rl2MHDvZv6fcEyNcv9vv95
+         v4507pi/XOyJ/YCO8YlLDljLa3nvjH536+xSS0xW0jdZQYvtxDMaqW4cV1fQ02P8ZlnW
+         SLpfqaXOFutT1DfkzhcBRn8kdTVsuzR8/aLo4EyGwACA8Y9KaAMkiNsLYoQwIYE/SA6B
+         R7XwCVO7Gqu2wsCXIi9JTIo3r7W24TucBajIYxrDIBFbwqRVI4lFrvCouk71PvrRxDXJ
+         Yd3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:dkim-signature;
-        bh=JcHF3ORUXXQR3tJAYqImwRBo08c29Cshwc+UtkgxMLE=;
-        b=GwjuVwzFZWyVOuGCvvQ2JyPRV6/pU53SUdJ2r6Tttqc6L1CXRykF7sPhdjZuEQfkRj
-         a1CcLqSd7yVdvH4zX0ijtBeOb9Inj/hEb7roduKo2fx2HrxGvOIH6gTox6dLzqHxwbqP
-         Vd7QwNkm3pcO+dZQzOKhS4CTKIoK5uJBwH4HCxLnBlG3LKtZdaouC+FFDtuMFCOmfcvw
-         LwEvXvOKehjrel7hz+VUgB1Ym4zHcWsxn9UylnU1YxqKrFB6QyiH9bEJGHRfEcg9OnDf
-         Dh3Yu2tgyc2Td7fvl4n+uTaunQ4M3lUs3DNhVwV/zNcs8udj46IQ7ZkBParfA6yO1UuU
-         jNGA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=FlwqcxVGEX1FCQ+JbGFYqIHtt5TjFucWhfYOApa1LaM=;
+        b=cw+c1OOYsPOCZBgY7cIaEcc521XUBcK46+Bwxf+VbCxC7zONpTKHixmzrlpwWW0X84
+         p3OBpq3jD8DsYI+Nhv7HxSLlc9T9Gf3IurD+BG0mwh0ETF7ZG8SbURjuTQR3+OjgDdEe
+         Au5dwCTihmUliA1Hg5nTy610X505xJrhqhF7IkpXfIuzStSL7OLx5+ZqkLvex266DLq0
+         BeGzygjPA4YwtnkZvesyn/LLAEVAw4uKTVlD/n8FMKwo+4NIJMnKtti2ez2vGceBVzYg
+         uV3Ob4kX81Thr6dggSLhwqL27grsmrGDUOxcdJD40nNfRJ6zzxyAOpzPfSFqNMBroO5I
+         +JrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=oRaSgzM0;
-       spf=pass (google.com: domain of schspa@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=schspa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <schspa@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="H/BiymSS";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id cu2-20020a056a00448200b00572723d7aa1sor2265397pfb.90.2022.11.15.22.11.50
+        by mx.google.com with SMTPS id dt5-20020a17090afa4500b00212d1899392sor812522pjb.13.2022.11.16.05.15.10
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 15 Nov 2022 22:11:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of schspa@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 16 Nov 2022 05:15:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=oRaSgzM0;
-       spf=pass (google.com: domain of schspa@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=schspa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="H/BiymSS";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:from:to:cc:subject:date:message-id:reply-to;
-        bh=JcHF3ORUXXQR3tJAYqImwRBo08c29Cshwc+UtkgxMLE=;
-        b=oRaSgzM09s0+yI/0c1yffJbAKyLBlDcOgvi990XrQrRffwWaS9/yAwnzxFT+kMP9tF
-         7AG/U3KQf75rRidTRMx8MAfnUXyaMFCSxzHAfaCgFLoaur7kAMeYsesL8O+UQYn9moc0
-         SFIb3r8/k0ePjLKJqFjWHUDGuGOY4Az052rZYq7/wy9CRApfd4ItzdMZucFaWGWqs95y
-         AF7/TBbksmztdNBaWKgVU76RUtbh/60Bj3qVpplcP1qsX/Y2nvYU0JTDnjIcXLh0WxI1
-         lrhzdZ/TeMq3/FP6ZrB+U4mA11t6/REaQTuZhdlm1hCX361UlrBjzfCTwGnyh4tw55Y9
-         eqnA==
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=FlwqcxVGEX1FCQ+JbGFYqIHtt5TjFucWhfYOApa1LaM=;
+        b=H/BiymSScL0Wnd2WAYROsNcmgG71Gndmvi5mX513N4eCay30BZS0cy/oDAp7Np/6AI
+         BnAPLGx7EA5tyc1n+h5+T6gp7LfmC7HqN8Ds40VFDrD77JDSDQgaqSO6XOrdpvtdYd+j
+         pqEtuzYrTb4aEj2uXhGU3jTlxH54vIijGVxPMwGb8vxKaO3cc/f58pz0eGEBkKjyo98p
+         64ZXRVPgLDw3q9j1BIoNK5SIVmmxbkZ2n0P6QhHh2Wn7i4srYQZG1SMvHXsEXtdWmYNr
+         lpBB2xjN+rDLSLZVltgXDdEKLmZZiQ1lWt66/qIEo/KTXrepXSBu9RSCS/4uOBlwudgc
+         IDwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JcHF3ORUXXQR3tJAYqImwRBo08c29Cshwc+UtkgxMLE=;
-        b=bsEzvJXM1hmp7dkBBPSsMmNYQCs19eneWlRzBOggMtN1YNqt+X/dgRFLb/X6lRClcb
-         Wpp1/bDxIkAjEg6DJcUau4Nsa6AF0XaWVa8hhk+hYawnWzimmHnWsjPSL9G74FDBGMEn
-         UPhkyKJi1rM/PLIdokkra/uTw4lwtsL6GvPj896A+f2xPv5mIu0lC8DoGRe9lM6wNNwQ
-         kxJ25n+3GsXtj54QdTLknwMN/WRaiLWZyFIseTkSfsrBzI4bFFyDKUO9I2ti7iS8RKo7
-         2aKVnJ8vd1YJudLuqu1Y89ipKQYj5LbFfcJc00N0XeBNRttECmhYwOe/z0vBUv6UM47x
-         qVJQ==
-X-Gm-Message-State: ANoB5pmOkQukI5H3Wsefw3HjgxLwrMEuVABNpt52vxSsAZfC0yO01dSY
-	eBlr/EZV0TLHIjvYagSBpPAPVs+OrTMHzQ==
-X-Google-Smtp-Source: AA0mqf6up6WIrQhCSVQgWR1+8nVA7kd+BwF9VOtVHKYQ/EbPd5qE2TgDi7x/lZ+NkAKZ94yKF5uFVw==
-X-Received: by 2002:a63:d94b:0:b0:43c:6412:994f with SMTP id e11-20020a63d94b000000b0043c6412994fmr18829540pgj.421.1668579110167;
-        Tue, 15 Nov 2022 22:11:50 -0800 (PST)
-Return-Path: <schspa@gmail.com>
-Received: from MBP ([39.170.101.209])
-        by smtp.gmail.com with ESMTPSA id h13-20020a170902680d00b00179e1f08634sm11115827plk.222.2022.11.15.22.11.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Nov 2022 22:11:49 -0800 (PST)
-References: <20221108023542.17557-1-schspa@gmail.com>
- <87fsetg5xh.fsf@linaro.org>
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FlwqcxVGEX1FCQ+JbGFYqIHtt5TjFucWhfYOApa1LaM=;
+        b=CJgMuJmJCCkEGq2nCrSS7TI3uUX5sodyaDhftuO9ZEPEsy9utmcD3nzFDtpC48H5Ko
+         5pruZyylsutH6az6Yn2Xd4/UVXULYz6oD4YiXEUojso449hSjgX28oPf/A265oNk7BQ9
+         Y2PmG2AzFWi7YTUl4QZU50bnn+bCFVwlQWMAqSgPT20BvCZ2QR4pg9f/cbxBHDOHk44X
+         XxC2RD97s+rcI3UwEsUq3RZcQn+K5/RRsSt16OxYwm/M/gykMDEojbFq/vSTFWAp0aBm
+         9qWQDYpII71v9KMqJX0E+4+flW9CivFTlpnU2tkKush2bjwG4DvB7A2GzXr9vZziIraR
+         NMFg==
+X-Gm-Message-State: ANoB5plbQcyCnuIDXbAqegZpJkJnuSi7UR9LooPOO7W6h2Wm9xs1Ji7j
+	Di2N3nEE3l8nTc69qtq5/d8XaRuewTG2SpdHB+Z0jB/Ozs2qSg==
+X-Google-Smtp-Source: AA0mqf7lbvqARA9CKWPNGL2RH4UiW2uwF1FAAYVyLgpfbVbbXbPpW/FRcED5gvX0iD9bUwWJOzT7Ntb9kjSRbmDdnr4=
+X-Received: by 2002:a17:90a:cb8b:b0:205:edfd:13f7 with SMTP id
+ a11-20020a17090acb8b00b00205edfd13f7mr3747790pju.19.1668604510144; Wed, 16
+ Nov 2022 05:15:10 -0800 (PST)
+MIME-Version: 1.0
+References: <20221108023542.17557-1-schspa@gmail.com> <87fsetg5xh.fsf@linaro.org>
  <CAMA88Tqt-7rCTC38OhZGmCZyO4rFz+HHBNtDjaVCbhna01yScQ@mail.gmail.com>
  <CAFEAcA8J2Tx4gW5Y2q6qtkJ0BPpM4iWkt3nz0uezV+kiz6m_Ag@mail.gmail.com>
  <CAFEAcA8KnNE90tHQjRNEVny=s7YLD5Wmff9R8ZyLxxz47bwRGA@mail.gmail.com>
- <875yfpbg38.fsf@gmail.com>
- <CAFEAcA_5_78qUNFdgpYGnS0tS3QWD4cJokJCzMC6Tq270bYbJg@mail.gmail.com>
-User-agent: mu4e 1.6.10; emacs 27.2
-From: Schspa Shi <schspa@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
+ <875yfpbg38.fsf@gmail.com> <CAFEAcA_5_78qUNFdgpYGnS0tS3QWD4cJokJCzMC6Tq270bYbJg@mail.gmail.com>
+ <m2edu3ig2s.fsf@gmail.com>
+In-Reply-To: <m2edu3ig2s.fsf@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 16 Nov 2022 13:14:58 +0000
+Message-ID: <CAFEAcA9k5a8O02zT6x1tqFvo11NmYupX9mfe2YdSwebBHKSdbw@mail.gmail.com>
 Subject: Re: [PATCH] hw/arm/boot: set initrd parameters to 64bit in fdt
-Date: Wed, 16 Nov 2022 14:07:46 +0800
-In-reply-to: <CAFEAcA_5_78qUNFdgpYGnS0tS3QWD4cJokJCzMC6Tq270bYbJg@mail.gmail.com>
-Message-ID: <m2edu3ig2s.fsf@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: uJbPrbEWVtT8
+To: Schspa Shi <schspa@gmail.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: axyBousXNRqh
 
-
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> On Tue, 8 Nov 2022 at 15:50, Schspa Shi <schspa@gmail.com> wrote:
->>
->>
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->> > On Tue, 8 Nov 2022 at 13:54, Peter Maydell <peter.maydell@linaro.org> wrote:
->> >>
->> >> On Tue, 8 Nov 2022 at 12:52, Schspa Shi <schspa@gmail.com> wrote:
->> >> > I think this lowmem does not mean below 4GB. and it is to make sure
->> >> > the initrd_start > memblock_start_of_DRAM for Linux address range check.
->> >>
->> >> The wording of this comment pre-dates 64-bit CPU support: it
->> >> is talking about the requirement in the 32-bit booting doc
->> >> https://www.kernel.org/doc/Documentation/arm/Booting
->> >> that says
->> >> "If an initramfs is in use then, as with the dtb, it must be placed in
->> >> a region of memory where the kernel decompressor will not overwrite it
->> >> while also with the region which will be covered by the kernel's
->> >> low-memory mapping."
->> >>
->> >> So it does mean "below 4GB", because you can't boot a 32-bit kernel
->> >> if you don't put the kernel, initrd, etc below 4GB.
->> >
->> > A kernel person corrects me on the meaning of "lowmem" here -- the
->> > kernel means by it "within the first 768MB of RAM". There is also
->> > an implicit requirement that everything be within the bottom 32-bits
->> > of the physical address space.
->> >
->>
->> Thanks for your comment.
->>
->> In this view, initrd shouldn't be placed higher than 4GB ? But it
->> seems the Linux kernel can boot when there is no memory below 4GB.
+On Wed, 16 Nov 2022 at 06:11, Schspa Shi <schspa@gmail.com> wrote:
 >
-> A *32 bit* kernel cannot -- it is completely unable to access
-> anything above the 4GB mark when the MMU is off, as it is on
-> initial boot. This QEMU code handles both 32 bit and 64 bit
-> kernel boot. These days of course there is 64-bit only hardware,
-> and that might choose to put its RAM above the 4GB mark,
-> because it isn't ever going to boot a 32-bit kernel anyway.
 >
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+> > On Tue, 8 Nov 2022 at 15:50, Schspa Shi <schspa@gmail.com> wrote:
+> >>
+> >>
+> >> Peter Maydell <peter.maydell@linaro.org> writes:
+> >>
+> >> > On Tue, 8 Nov 2022 at 13:54, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >> >>
+> >> >> On Tue, 8 Nov 2022 at 12:52, Schspa Shi <schspa@gmail.com> wrote:
+> >> >> > I think this lowmem does not mean below 4GB. and it is to make sure
+> >> >> > the initrd_start > memblock_start_of_DRAM for Linux address range check.
+> >> >>
+> >> >> The wording of this comment pre-dates 64-bit CPU support: it
+> >> >> is talking about the requirement in the 32-bit booting doc
+> >> >> https://www.kernel.org/doc/Documentation/arm/Booting
+> >> >> that says
+> >> >> "If an initramfs is in use then, as with the dtb, it must be placed in
+> >> >> a region of memory where the kernel decompressor will not overwrite it
+> >> >> while also with the region which will be covered by the kernel's
+> >> >> low-memory mapping."
+> >> >>
+> >> >> So it does mean "below 4GB", because you can't boot a 32-bit kernel
+> >> >> if you don't put the kernel, initrd, etc below 4GB.
+> >> >
+> >> > A kernel person corrects me on the meaning of "lowmem" here -- the
+> >> > kernel means by it "within the first 768MB of RAM". There is also
+> >> > an implicit requirement that everything be within the bottom 32-bits
+> >> > of the physical address space.
+> >> >
+> >>
+> >> Thanks for your comment.
+> >>
+> >> In this view, initrd shouldn't be placed higher than 4GB ? But it
+> >> seems the Linux kernel can boot when there is no memory below 4GB.
+> >
+> > A *32 bit* kernel cannot -- it is completely unable to access
+> > anything above the 4GB mark when the MMU is off, as it is on
+> > initial boot. This QEMU code handles both 32 bit and 64 bit
+> > kernel boot. These days of course there is 64-bit only hardware,
+> > and that might choose to put its RAM above the 4GB mark,
+> > because it isn't ever going to boot a 32-bit kernel anyway.
+> >
+>
+> Yes, I think we should accept this patch, because it will not affect
+> 32-bit devices, and provides support for 64-bit devices to put initrd
+> above 4GB.
 
-Yes, I think we should accept this patch, because it will not affect
-32-bit devices, and provides support for 64-bit devices to put initrd
-above 4GB.
+Yes, I agree. However since it doesn't cause a problem for any
+of the machine models in upstream QEMU, I think we should leave
+it until after the in-progress 7.2 release, so that we have
+plenty of time to investigate just in case it does cause an
+unexpected issue on 32-bit boards.
 
-> thanks
-> -- PMM
+This patch is on my list to review and deal with when 7.2
+goes out and development reopens for 8.0 (should be in about
+four weeks).
 
-
--- 
-BRs
-Schspa Shi
+thanks
+-- PMM

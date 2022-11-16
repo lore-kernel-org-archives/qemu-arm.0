@@ -1,195 +1,134 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp539130ejx;
-        Wed, 16 Nov 2022 07:48:58 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7Lv9rZBbcSxFdVI/2L7JUd9Rpq1jmT6kpvAIRoYXImNqqOLgWxgKYzaleODzU4ux2hiLtc
-X-Received: by 2002:a0c:eb8f:0:b0:4bb:61d6:85bb with SMTP id x15-20020a0ceb8f000000b004bb61d685bbmr21299238qvo.86.1668613737816;
-        Wed, 16 Nov 2022 07:48:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668613737; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp627343ejx;
+        Wed, 16 Nov 2022 09:48:10 -0800 (PST)
+X-Received: by 2002:a05:600c:3ca6:b0:3cf:ca45:3b19 with SMTP id bg38-20020a05600c3ca600b003cfca453b19mr2770181wmb.179.1668620890177;
+        Wed, 16 Nov 2022 09:48:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668620890; cv=none;
         d=google.com; s=arc-20160816;
-        b=0e81NjNPHHVRkbbHtK69sHIljc+DJpBno3w2idFgI55HliafPUWNiF7PzqLTAfPG3h
-         6lxhLT37q7n6twaiomBo4zeM2IAQIh3IZLS3IWn6HcSJJ3vYhHRV9NM0hQ0zHUGdXYVU
-         SbO6mevUEj6241m/GB1NYm4uX+2FneGOPwtkC70tbnRM9zRd/GGMuqK/oN3h22chsnab
-         kuXFyannPH11DmH4SH4pNvpndH8efcTZl6mPqLWBoxcuybfZ9KFcAYcGsY5ag6yfQssQ
-         fZOYvaL0Gk6ypJjmb7y5aOnx58HL9bVfKS74mxVxktmIqIZIuALw+76BzAjagdP4CSkf
-         JwxA==
+        b=uDJhwNXRA9/SPDAu7jGWzFdo/+QxjHj8bgO417rfDFLkGYFirVAE87rf4/7iMmb5gQ
+         WaMvev/ty/jPRnfSPaHbybSUeaJLS2WVWSoL2n2vxeAVe8esMho3mt+22y7KrMZsWYiI
+         jOES4uQ+QZfnAkJGWVVjuPTTdJ00fXgXQxTkKySwGcJXuqm4ykRbxZgF7d70RANephT/
+         oejv990KOjMNcLOOi9I7eMu/oRbV0DhAnP8xzIq/FRw938LR+V67mwru/jssGCxkWnew
+         ohWuCGSvIwxgHdlus6ny5QVcabKISsmnvO7OY7csD+KGKBp0wkHMBeDrUomCIHmxuP33
+         n3Yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=dpszX8NAsdctKP7zqYiaMTdy749Jmnwnn12XCX7WItg=;
-        b=u8CNGgXoOZuMO4jRB8t78ZStjEsCUMRngIQwj1xrWnR0NZH8xmrPCsqnkUkZOsKfSt
-         GM9eMUmra6Mgev6W+xTDylj1mwFNAHsQcqbzYaim0KsWgx+BVBE2lc3h+gH/1TDE7pWt
-         rkn6Da5q9ZlIev9HY7JLbuUtug8fm1XCu6+qPOYqLgiZs6/2XzKhJtRH/yPjG0gSYEl7
-         JmlsDR89CUQU1bhqGRwlxaX+378r3IcFInHnPnjFSaTpV7CPXgRser/Rge0xgv7TdI1p
-         5u/+lJho5O3T6bhToiti6Sc0F4HY4hg8jpi+ZdpH960xTL1PCQSGlX6wNPvAK9yF4lX7
-         rfvg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=RMBo7pxLDFqLDNCPbIFxjqDC8i1LyC537dC2FLVS84U=;
+        b=YcL03d6/WezzOo19kErnaL55yz7j0/Zs6cIov0ckByLSAkXvapPMgmo06wqplzRxbs
+         alzjLG2mFTQ2oZJunEp9f2zLs9mfu5HKnvLh6mxGksv2sioCPAC4Xuua0FeQ7j0NdXmy
+         RrtyLZFLs49j6t8Swy6ZGX/FhQyX8aUfgst9IN/mQwz2VP32K1A689z+fETjnSI45gQX
+         S+BxiE0ZZYMEZGW1ULm0p728Es09GaMDcKVc3utR5sgMr8UztcAwhZxwdLDSh8Fq6LMu
+         KF8Gk5gf7LjnY6IYK8mLBUPipn/7OAKzRF+yhRyAdGrOUpBoC8CulnVA4O+1mU0z4KDi
+         jahw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f1WU2QRu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cg11-20020a05622a408b00b003a500649da5si9352454qtb.489.2022.11.16.07.48.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Nov 2022 07:48:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hNJ0gudQ;
+       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <francesco.cagnin@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i30-20020adfa51e000000b0022c9ae40241sor8211380wrb.2.2022.11.16.09.48.10
+        (Google Transport Security);
+        Wed, 16 Nov 2022 09:48:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f1WU2QRu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ovKeY-0004X7-ND; Wed, 16 Nov 2022 10:48:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1ovKeV-0004Tc-1Q
- for qemu-arm@nongnu.org; Wed, 16 Nov 2022 10:48:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1ovKeT-0002K8-5k
- for qemu-arm@nongnu.org; Wed, 16 Nov 2022 10:48:38 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668613716;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dpszX8NAsdctKP7zqYiaMTdy749Jmnwnn12XCX7WItg=;
- b=f1WU2QRukCgdr0ZcMf0bDPy9/KOmCb+oQmCTfstCo0bY/0NAc7byVT9GSlzHNC74TNeqmS
- hWu3rmOErjhS2W8Kd2hjzO+MFuxKcMjU38uK4rHsUPywG3jvmPBdCFsJAoRz1NymE1sPko
- fpVF43eWnZJPyR6SXZILT3BD6obkiTM=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-638-KmCROmYLOVa396mvDsZAow-1; Wed, 16 Nov 2022 10:48:34 -0500
-X-MC-Unique: KmCROmYLOVa396mvDsZAow-1
-Received: by mail-ej1-f72.google.com with SMTP id
- sb4-20020a1709076d8400b007ae596eac08so10397541ejc.22
- for <qemu-arm@nongnu.org>; Wed, 16 Nov 2022 07:48:33 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hNJ0gudQ;
+       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=RMBo7pxLDFqLDNCPbIFxjqDC8i1LyC537dC2FLVS84U=;
+        b=hNJ0gudQrRDr/N7kRIsybLmm6C+5zrDakidGGKTNQqMT9PsFoBk1C8tlAlw2BXa+8U
+         jx9/o/W9K9Anw3mrj6eSkhQZ/6PuG9GWoffBs7Ylf90vNMRqbBMEB6JxBoQ5DVoJrM2S
+         wIRjrwHKzrf6Y8hFrL2E+BvxmlEzPrA8L1uJS79Y0RDzaCT1xlLt/nMlaZGNNU8rE6qQ
+         jYY2vEfh3opWjYiwI+ZP8xBh14NWUFL0JolH+/R8zNQHe/g7hvyo2mGbfUrTg3lxsa3n
+         N59soeW0wNITsot8dz6iYYbpqRyse16VA/gBN0SlFqiIM1sp5cZMdc9/ubGDFSqtZcl6
+         WCIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=dpszX8NAsdctKP7zqYiaMTdy749Jmnwnn12XCX7WItg=;
- b=lPza9+YMJsexEUfHqWszsscMzHa605NBm+PEO0bCdxeaGzNsoiLgl5/SdfFisRlX8u
- VqOlAHBE/cZl0Q4E11htWbpgeBYYb2BNKjiMmEuR4vq7vasxlsulNE6iTTzrNMV8qk4N
- 2G0h0BCi2LpYNhEOC0DOJLyBhK26rMGSxs/3hpAKJn07F8WRNFY0uQjCXtX/ZYKFHDva
- YoX6Gqq/hGi/9Vmfl8wu8NJ5ejTqDrd+L84EReD2BfRvY1f7bzcP+Eh6QNS6f12TJRcE
- XD47XS0vfT7nqFIKq0lfh6VK4b0m1sSaVSmwjypvHJiV01juwB4U3DVc+P9fCyQMRanC
- VyUw==
-X-Gm-Message-State: ANoB5pkGyUzCTyzLj9XN4UtraDZ3FWsCaXdSJie/HgRjJcb0mKBYFrvh
- FO1ekDIQn8xVEFXN1NNvENDawpaTbYOtfdS6q8aOnnvOV3uzcJN5QZAQnFGL4eDObGxJQ0GqVqK
- 5dalBCW87NbLp
-X-Received: by 2002:a17:906:b181:b0:7ad:69eb:90c3 with SMTP id
- w1-20020a170906b18100b007ad69eb90c3mr18676142ejy.285.1668613712949; 
- Wed, 16 Nov 2022 07:48:32 -0800 (PST)
-X-Received: by 2002:a17:906:b181:b0:7ad:69eb:90c3 with SMTP id
- w1-20020a170906b18100b007ad69eb90c3mr18676117ejy.285.1668613712737; 
- Wed, 16 Nov 2022 07:48:32 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- 18-20020a170906201200b0079800b81709sm6953778ejo.219.2022.11.16.07.48.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Nov 2022 07:48:32 -0800 (PST)
-Date: Wed, 16 Nov 2022 16:48:31 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, mst@redhat.com, ani@anisinha.ca,
- pbonzini@redhat.com, richard.henderson@linaro.org,
- mark.cave-ayland@ilande.co.uk, peter.maydell@linaro.org,
- andrew.smirnov@gmail.com, paulburton@kernel.org,
- aleksandar.rikalo@syrmia.com, danielhb413@gmail.com, clg@kaod.org,
- david@gibson.dropbear.id.au, groug@kaod.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org
-Subject: Re: [PATCH 2/2] pci: drop redundant PCIDeviceClass::is_bridge field
-Message-ID: <20221116164831.4f4266cd@imammedo.users.ipa.redhat.com>
-In-Reply-To: <894b767d-b071-a37a-db61-9538d63e00dc@linaro.org>
-References: <20221116152730.3691347-1-imammedo@redhat.com>
- <20221116152730.3691347-3-imammedo@redhat.com>
- <894b767d-b071-a37a-db61-9538d63e00dc@linaro.org>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=RMBo7pxLDFqLDNCPbIFxjqDC8i1LyC537dC2FLVS84U=;
+        b=HEJrLcrI72r1ydR57tfV3y0tHJCIH1DEww2GnFTiKLJgjiQIc+5qU1xjkbHQuBhu6Z
+         MIJomj7LdrfvwhDem4qOs/453rF4vvcWAbYaBF4ZX+VTOOprm7bg6AE0+9/mybzZxxR+
+         To6j3Ax2iOsyrMlAP1uqAGXB3Xa1Qrkd8QDWK8fWqs0Va/8xnSWR3VtOdLtOqgWSnRXX
+         l2wFRe0tFF1hbI/jnVkyTRRBXg6ls2xwdPw0pasOzI4mR5COxDOW+5+tXMC7N4z5Rdcd
+         0Io5+D9kpsI4qmM6S0+15RpD9wbbN9DC5z/bvURTI0SspVHEPEZGvKVHD2undCd9YC1/
+         RC0w==
+X-Gm-Message-State: ANoB5pk5jRHQyp4YAIcgasrTzGE3GVAKO8D+DVpAu2HoQcl5VDEcCiHG
+	cAGakKZgbG1eVmhqt5Zh4SY7MUX8GejcDQ==
+X-Google-Smtp-Source: AA0mqf6B9Kh4eluxLtg+JE+UNkpsgtUA5oRZc2qflhr5qaskoG+yVaDRVcOV9s14iWaMedN1PFTT/Q==
+X-Received: by 2002:a5d:4386:0:b0:22e:3177:1401 with SMTP id i6-20020a5d4386000000b0022e31771401mr14091256wrq.148.1668620889856;
+        Wed, 16 Nov 2022 09:48:09 -0800 (PST)
+Return-Path: <francesco.cagnin@gmail.com>
+Received: from localhost.localdomain (229.19.205.77.rev.sfr.net. [77.205.19.229])
+        by smtp.gmail.com with ESMTPSA id n17-20020a05600c465100b003cf483ee8e0sm2477490wmo.24.2022.11.16.09.48.08
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 16 Nov 2022 09:48:09 -0800 (PST)
+From: francesco.cagnin@gmail.com
+X-Google-Original-From: fcagnin@quarkslab.com
+To: qemu-devel@nongnu.org
+Cc: mads@ynddal.dk,
+	dirty@apple.com,
+	peter.maydell@linaro.org,
+	qemu-arm@nongnu.org,
+	agraf@csgraf.de,
+	pbonzini@redhat.com,
+	alex.bennee@linaro.org,
+	Francesco Cagnin <fcagnin@quarkslab.com>
+Subject: [PATCH v2 0/3] Add gdbstub support to HVF
+Date: Wed, 16 Nov 2022 18:47:46 +0100
+Message-Id: <20221116174749.65175-1-fcagnin@quarkslab.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3wLdCSSAH0M6
+Content-Transfer-Encoding: 8bit
+X-TUID: Nyg0v9YVwy/O
 
-On Wed, 16 Nov 2022 16:35:10 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+From: Francesco Cagnin <fcagnin@quarkslab.com>
 
-> On 16/11/22 16:27, Igor Mammedov wrote:
-> > and use cast to TYPE_PCI_BRIDGE instead.
-> >=20
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> >   include/hw/pci/pci.h               | 11 +----------
-> >   include/hw/pci/pci_bridge.h        |  1 +
-> >   hw/acpi/pcihp.c                    |  3 +--
-> >   hw/i386/acpi-build.c               |  5 ++---
-> >   hw/pci-bridge/cxl_downstream.c     |  1 -
-> >   hw/pci-bridge/cxl_upstream.c       |  1 -
-> >   hw/pci-bridge/i82801b11.c          |  1 -
-> >   hw/pci-bridge/pci_bridge_dev.c     |  1 -
-> >   hw/pci-bridge/pcie_pci_bridge.c    |  1 -
-> >   hw/pci-bridge/pcie_root_port.c     |  1 -
-> >   hw/pci-bridge/simba.c              |  1 -
-> >   hw/pci-bridge/xio3130_downstream.c |  1 -
-> >   hw/pci-bridge/xio3130_upstream.c   |  1 -
-> >   hw/pci-host/designware.c           |  1 -
-> >   hw/pci-host/xilinx-pcie.c          |  1 -
-> >   hw/pci/pci.c                       | 20 +++++++++-----------
-> >   hw/ppc/spapr_pci.c                 | 15 +++++----------
-> >   17 files changed, 19 insertions(+), 47 deletions(-) =20
->=20
-> > @@ -1090,9 +1088,10 @@ static PCIDevice *do_pci_register_device(PCIDevi=
-ce *pci_dev,
-> >       Error *local_err =3D NULL;
-> >       DeviceState *dev =3D DEVICE(pci_dev);
-> >       PCIBus *bus =3D pci_get_bus(pci_dev);
-> > +    bool is_bridge =3D IS_PCI_BRIDGE(pci_dev);
-> >  =20
-> >       /* Only pci bridges can be attached to extra PCI root buses */
-> > -    if (pci_bus_is_root(bus) && bus->parent_dev && !pc->is_bridge) {
-> > +    if (pci_bus_is_root(bus) && bus->parent_dev && !IS_PCI_BRIDGE(pci_=
-dev)) { =20
->=20
-> Can we use the recently assigned 'is_bridge' variable?
+This patch series aims to add gdbstub support to HVF (the 'QEMU
+accelerator on macOS that employs Hypervisor.framework') on Apple
+Silicon hosts.
 
-yep, that was an intention behind the variable.
-I'll fix it up on respin.
+The proposed implementation, structured like the KVM counterpart,
+handles single-stepping, software breakpoints, hardware breakpoints and
+hardware watchpoints.
 
->=20
-> Otherwise:
->=20
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->=20
+The patch has been most recently tested working on macOS Ventura 13.0
+hosts and Linux kernel 5.19 guests with the test script
+'tests/guest-debug/test-gdbstub.py' (slightly updated to make it work
+with Linux kernels compiled on macOS).
 
+If deemed useful, I can also submit an analogous patch targeting Intel
+hosts.
+
+v2:
+* Move debug helpers to 'target/arm/hyp_gdbstub.c'
+* Add support for SSTEP_NOIRQ and multi-core (thanks Mads Ynddal)
+* Move calls to 'hv_vcpu_set_trap_debug_exceptions()' to
+  'hvf_arch_update_guest_debug()'
+* Use 'arm_num_brps()' and 'arm_num_wrps()' to compute the number of
+  breakpoints and watchpoints available (thanks Peter Maydell)
+
+Francesco Cagnin (3):
+  arm: move KVM breakpoints helpers
+  hvf: implement guest debugging on Apple Silicon hosts
+  hvf: handle writes of MDSCR_EL1 and DBG*_EL1
+
+ accel/hvf/hvf-accel-ops.c | 123 ++++++++++++++
+ accel/hvf/hvf-all.c       |  24 +++
+ cpu.c                     |   3 +
+ include/sysemu/hvf.h      |  29 ++++
+ include/sysemu/hvf_int.h  |   1 +
+ target/arm/hvf/hvf.c      | 334 +++++++++++++++++++++++++++++++++++++-
+ target/arm/hyp_gdbstub.c  | 242 +++++++++++++++++++++++++++
+ target/arm/internals.h    |  50 ++++++
+ target/arm/kvm64.c        | 276 -------------------------------
+ target/arm/meson.build    |   3 +-
+ 10 files changed, 806 insertions(+), 279 deletions(-)
+ create mode 100644 target/arm/hyp_gdbstub.c
+
+-- 
+2.38.1

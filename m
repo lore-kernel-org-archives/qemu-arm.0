@@ -1,114 +1,77 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1194504ejx;
-        Thu, 17 Nov 2022 03:59:51 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4p4E2GGmFVpBZRJGXVjbOGOPG+C4ZwcE18d4wwRHineCAoc6BGfNIXPQvAeBlYuGOtLRIH
-X-Received: by 2002:ae9:ed58:0:b0:6ec:1753:e4e8 with SMTP id c85-20020ae9ed58000000b006ec1753e4e8mr1197597qkg.746.1668686390756;
-        Thu, 17 Nov 2022 03:59:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668686390; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1264245ejx;
+        Thu, 17 Nov 2022 05:40:56 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5rvLm6p55r0lpZxnqap/Cl731uf0zh30XzZ9KgyzXq3kf5hP9rnVbNLX/W87/v9tGqTqq2
+X-Received: by 2002:ac8:1306:0:b0:3a5:9fb3:ba72 with SMTP id e6-20020ac81306000000b003a59fb3ba72mr2064394qtj.617.1668692456659;
+        Thu, 17 Nov 2022 05:40:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668692456; cv=none;
         d=google.com; s=arc-20160816;
-        b=wFPaim/K7XZIg8DIzqH/DhSrJUWY9PmK1Y/8ulzeJNXUpbFTTLEXnydO9fZl2hWQeB
-         g2wVP+5iSsARjaVtOV0ydIs28TDXnWy32UGPUv7GCrkTaJvHpeQkB+Ih6RnQbsQV3Q8P
-         GqdeDiHzMjX+QvupAWzc9cbamIql0m/YqSHgR1z4Y7OOJCB38Rx+Q2OK6LE9kIT3lZmu
-         KwgkNZXu/n3BNQxll19uNo2mm88o6Tzl12VWfRxWcH9kmikm08BERvzvhxYbBD7j4fdS
-         jsmWRqMs6cgnvoUuv+9JiG9fxx1OXuqOz3lUtAnhGae48aPgmfKbw9HO7dmUYj8/TMhh
-         UpvQ==
+        b=kLGL1RjJr7PAMgzio26dL68S7jJ27sNKMh+i83B61BfI7YQmvH9K7DhbRb5LE9i3M5
+         dfaU3/oND2/t9w2cLLFawR1uSYwnnUYGLr+o/yZkMOrGTWAzoNh1uO1hxon4JCynuwEC
+         dETyOjgnZs4YlV3RV1e0s49NoEiqbF5luxdSSZgdQJ/DsIa56fTe70OPyYIqc0z6sWWf
+         gcFpCd+liQIRx/6MHmoYIq/4h3OwDsPiMYRuKXkkqH9A/nQGiCDIOVPiWUH6NzVSeZER
+         Fyg2+y5t10hBc1iVaoSINHLRRAJCW8alKOSTeGdBJ2jM/epBd0HqTzfWIOWYwCbG7QUc
+         qLbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=B9V9izZVp+GlJoW++d6rpsz7KDeRiVITAk+pRTZEwwg=;
-        b=WkSu7WfUAirrKxkRT0bTMQVwCaeqldGOQZ6WbzVv3NsKc5ZzB9vvXweIp+jlEcoinO
-         FZERx8cV24Hu7ULHkvliwpaxHAbhRFh+NXGYL1a56BnRKB8eo2/ADkWrOpwxyc+yQACp
-         LWcNqlbSCEmRzxNt1fsjcmV7lGHEKApuADBfYwqA57r8QU38B9LJkFz3wqOhm0/TDx3V
-         L1q0QEVEwFNceiTAp5rWMCSu0rhnTHSVTLUpqeQ4fGm+DegPKJAgl+Tj72OCXhKWBkTH
-         qgnCttYxf9ezoF8Dza59EcgPTq8haa+iKixIOnKyN75T8G4LSrzomzonGy2Am6rCT4/c
-         xylg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=j/3dAh/dRwG++iE9EBxrXAb69njwhKV2S96eUi7oCC4=;
+        b=OXFUlKY1IYW1bvo1ckDFIhTa96zoEm8D6NC8IyJFCVm2fy+5+f27CqFPIqaOhT4Uvz
+         rcofLB7A7+QofbZ0mp5uGa++cui6bfD90GONII3ejHWbkHcisxt5yAA2ifUuBbEP1+Ni
+         i851CFG+Klkf+oJYc6uLJ1TjBEsY3+PCpJJUE+id6hs3o1SNLnuLJyIvpkwQFtiNjaS0
+         vMEqDp7QBWL7JucZySqSJDtYyY6DrswslB2+sYIPzz3w0MSDG+IAtND08wIonVGE7cfw
+         Pi6ja4yRxOijyEhV9FYoBf8mNkQHyp/+I/prErW56WBCENPjAfEksxpmTIdScbJVWjV0
+         wpgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=h3DvQXkA;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="w4z/OWAH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jx9-20020a0562142b0900b0049904e31195si325618qvb.24.2022.11.17.03.59.50
+        by mx.google.com with ESMTPS id eq13-20020ad4596d000000b004c624ad2f5dsi421079qvb.322.2022.11.17.05.40.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Nov 2022 03:59:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Nov 2022 05:40:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=h3DvQXkA;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="w4z/OWAH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ovdYA-0004mc-Jk; Thu, 17 Nov 2022 06:59:22 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ovf8B-0004ru-C4; Thu, 17 Nov 2022 08:40:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1ovdY4-0004kH-HY; Thu, 17 Nov 2022 06:59:16 -0500
-Received: from out1-smtp.messagingengine.com ([66.111.4.25])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1ovf89-0004r6-B0; Thu, 17 Nov 2022 08:40:37 -0500
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1ovdXu-0005LT-Fc; Thu, 17 Nov 2022 06:59:16 -0500
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.nyi.internal (Postfix) with ESMTP id 05A745C0828;
- Thu, 17 Nov 2022 06:59:03 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Thu, 17 Nov 2022 06:59:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
- h=cc:cc:content-type:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm3; t=1668686343; x=1668772743; bh=B9
- V9izZVp+GlJoW++d6rpsz7KDeRiVITAk+pRTZEwwg=; b=h3DvQXkAkRCrMqmkRQ
- VvL3jyaKkpQjfmvQYz4Oxdn3BzuOGG/ipucXDrxJnNRaM84zm+UUiWtCEuGq3D0i
- GGHJjbNYT7/X11tfqZkiBY7BmXQHoyT2r1MFCrvPN6D9nXmSIaZ2uR/btaNfrsk6
- b/Lg1PxvXmhhRe84c9DcQkIkEHjhJX4QhC4yET+rGTxhOmWtxwOtJK3pprjX2ABx
- 7GEl72S1Ei1041gFUy8VlZrPtTrh4BG6ekr3Bz3qKKSXH1ep7T36gKlFdqWy3KYP
- 6/wSlFwQ2+i+hGlsjSSTNi1bXA8OmBiZXhSBVAl+rrcQM4z0BCIstSH9Nn6yubUM
- wH0Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1668686343; x=1668772743; bh=B9V9izZVp+GlJoW++d6rpsz7KDeR
- iVITAk+pRTZEwwg=; b=w4z/OWAHjGpyHZjpS7lc2wk0IiWuIRsOSv3DlMmPuSqp
- e7S7zdzPdzQvTAtlQBEpIehZcWXkLTrofGSg/HJVhsod8yADceJh4QJso6tvcP7m
- OTUH/19zTRtin5h9UUCv0k3SOd2SWg8boacNJ4sLRCXcFP0mvPp2XpT2zmP9f4uE
- Wln943I+HXEcVUvaYeemtQwWhH6l3OxjrjJYltqQ5DDEK44KwX1trYIZ2iMJqLDN
- 4NdedsG2NX3k7hMJXdRh9lM5MmWbPurys2XmJCZWdBIaEEimQSWCd6ESGIeFzCBV
- n/6j5r9doXNJeys7YqRIQ5GsS9lChG8/A7uQyqokjg==
-X-ME-Sender: <xms:BiJ2Y0JZTbyc4K93DbhxlA_AqBW3iM-6S4KuvXRjXEKkva-dY8BKSA>
- <xme:BiJ2Y0Jp7neNe5eLRPSZYodz9lyXxOFtqGFJcQ26PDYES0CI8y6fyzqSk0iA9--lG
- 36dAtEbnXmuek6cUlE>
-X-ME-Received: <xmr:BiJ2Y0t1TH9jP_TIKmJgsq8Sgl3RpyNyR-T-lxmPr490MqKMG_M4Q0tfgTYBiw22n6R_NrBBK3qtW4Q6dyP-7_YlfWdq-Q>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrgeekgdeffecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvvefukfhfgggtuggjsehgtderredttdejnecuhfhrohhmpefmlhgruhhs
- ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
- gvrhhnpeejgfejfeffvdeuhfeifefhgffgueelhedukeevjeevtdduudegieegteffffej
- veenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehith
- hssehirhhrvghlvghvrghnthdrughk
-X-ME-Proxy: <xmx:BiJ2Yxa_9lTeftNy09lamFfhq_qQ_wXy8xbWWeo1S0Idu7iapwmjbg>
- <xmx:BiJ2Y7bkSFU7F-gGAXz2zFBYkyqhg1uVJSIf3nXJBDkCvf9dvg70wA>
- <xmx:BiJ2Y9CBM_oaUiTnzetoZS3raeP-iTna8uA7P6Mcm6hTLLCBOmeEgw>
- <xmx:ByJ2Y5Co7f43BWSKn0AkdIXny0LaCKxsJlYly1SHxm8aZWZsUUZF-w>
-Feedback-ID: idc91472f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 17 Nov 2022 06:58:59 -0500 (EST)
-Date: Thu, 17 Nov 2022 12:58:58 +0100
-From: Klaus Jensen <its@irrelevant.dk>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: qemu-devel@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Keith Busch <kbusch@kernel.org>, Corey Minyard <cminyard@mvista.com>,
- Peter Delevoryas <peter@pjd.dev>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Jeremy Kerr <jk@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Klaus Jensen <k.jensen@samsung.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1ovf87-0001xA-CC; Thu, 17 Nov 2022 08:40:37 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.235])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id A849F13FFB3E6;
+ Thu, 17 Nov 2022 14:40:30 +0100 (CET)
+Received: from kaod.org (37.59.142.96) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Thu, 17 Nov
+ 2022 14:40:29 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R0015ea10662-7451-4875-8c3e-4ed45b66f22d,
+ AE5717285A2AC47C671D2CB192D1CF6730B7D7F3) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <15100caa-4c03-a166-7ce3-fe1d30471a30@kaod.org>
+Date: Thu, 17 Nov 2022 14:40:27 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
 Subject: Re: [PATCH maybe-7.2 1/3] hw/i2c: only schedule pending master when
  bus is idle
-Message-ID: <Y3YiAhXX1FKuYMoc@cormorant.local>
+Content-Language: en-US
+To: Klaus Jensen <its@irrelevant.dk>
+CC: <qemu-devel@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>, Keith Busch
+ <kbusch@kernel.org>, Corey Minyard <cminyard@mvista.com>, Peter Delevoryas
+ <peter@pjd.dev>, <qemu-arm@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>, <qemu-block@nongnu.org>, Jeremy Kerr
+ <jk@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Klaus Jensen
+ <k.jensen@samsung.com>
 References: <20221116084312.35808-1-its@irrelevant.dk>
  <20221116084312.35808-2-its@irrelevant.dk>
  <8dd9ed34-93c3-0638-e152-f619f9e097e6@kaod.org>
@@ -116,134 +79,141 @@ References: <20221116084312.35808-1-its@irrelevant.dk>
  <6bfe7b2e-2e4f-c286-530a-b0342f9107a0@kaod.org>
  <Y3Xktt8b85RvJ89A@cormorant.local>
  <465b2d2e-5958-d63f-02dc-cf96dd1d459e@kaod.org>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="8FF7Db+hKOeOPdRA"
-Content-Disposition: inline
-In-Reply-To: <465b2d2e-5958-d63f-02dc-cf96dd1d459e@kaod.org>
-Received-SPF: pass client-ip=66.111.4.25; envelope-from=its@irrelevant.dk;
- helo=out1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <Y3YiAhXX1FKuYMoc@cormorant.local>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <Y3YiAhXX1FKuYMoc@cormorant.local>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 9fc5d7ef-695d-4cfa-8d39-8e04ae33fd2c
+X-Ovh-Tracer-Id: 4165266707627674616
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvgedrgeekgdehgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffdufeeliedujeeffffhjeffiefghffhhfdvkeeijeehledvueffhfejtdehgeegnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepihhtshesihhrrhgvlhgvvhgrnhhtrdgukhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdprghnughrvgifsegrjhdrihgurdgruhdpkhgsuhhstghhsehkvghrnhgvlhdrohhrghdptghmihhnhigrrhgusehmvhhishhtrgdrtghomhdpphgvthgvrhesphhjugdruggvvhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhqvghmuhdqsghlohgtkhesnhhonhhgnhhurdhorhhgpdhjkhestghouggvtg
+ honhhsthhruhgtthdrtghomhdrrghupdhjohgvlhesjhhmshdrihgurdgruhdpkhdrjhgvnhhsvghnsehsrghmshhunhhgrdgtohhmpdfovfetjfhoshhtpehmohehvdelpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hXMbL+1zNjWA
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 59p4oOH/ssLC
 
+On 11/17/22 12:58, Klaus Jensen wrote:
+> On Nov 17 09:01, Cédric Le Goater wrote:
+>> On 11/17/22 08:37, Klaus Jensen wrote:
+>>> On Nov 17 07:56, Cédric Le Goater wrote:
+>>>> On 11/17/22 07:40, Klaus Jensen wrote:
+>>>>> On Nov 16 16:58, Cédric Le Goater wrote:
+>>>>>> On 11/16/22 09:43, Klaus Jensen wrote:
+>>>>>>> From: Klaus Jensen <k.jensen@samsung.com>
+>>>>>>>
+>>>>>>> It is not given that the current master will release the bus after a
+>>>>>>> transfer ends. Only schedule a pending master if the bus is idle.
+>>>>>>>
+>>>>>>> Fixes: 37fa5ca42623 ("hw/i2c: support multiple masters")
+>>>>>>> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+>>>>>>> ---
+>>>>>>>      hw/i2c/aspeed_i2c.c  |  2 ++
+>>>>>>>      hw/i2c/core.c        | 37 ++++++++++++++++++++++---------------
+>>>>>>>      include/hw/i2c/i2c.h |  2 ++
+>>>>>>>      3 files changed, 26 insertions(+), 15 deletions(-)
+>>>>>>>
+>>>>>>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+>>>>>>> index c166fd20fa11..1f071a3811f7 100644
+>>>>>>> --- a/hw/i2c/aspeed_i2c.c
+>>>>>>> +++ b/hw/i2c/aspeed_i2c.c
+>>>>>>> @@ -550,6 +550,8 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
+>>>>>>>              }
+>>>>>>>              SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_STOP_CMD, 0);
+>>>>>>>              aspeed_i2c_set_state(bus, I2CD_IDLE);
+>>>>>>> +
+>>>>>>> +        i2c_schedule_pending_master(bus->bus);
+>>>>>>
+>>>>>> Shouldn't it be i2c_bus_release() ?
+>>>>>>
+>>>>>
+>>>>> The reason for having both i2c_bus_release() and
+>>>>> i2c_schedule_pending_master() is that i2c_bus_release() sort of pairs
+>>>>> with i2c_bus_master(). They either set or clear the bus->bh member.
+>>>>>
+>>>>> In the current design, the controller (in this case the Aspeed I2C) is
+>>>>> an "implicit" master (it does not have a bottom half driving it), so
+>>>>> there is no bus->bh to clear.
+>>>>>
+>>>>> I should (and will) write some documentation on the asynchronous API.
+>>>>
+>>>> I found the routine names confusing. Thanks for the clarification.
+>>>>
+>>>> Maybe we could do this rename  :
+>>>>
+>>>>     i2c_bus_release()             -> i2c_bus_release_and_clear()
+>>>>     i2c_schedule_pending_master() -> i2c_bus_release()
+>>>>
+>>>> and keep i2c_schedule_pending_master() internal the I2C core subsystem.
+>>>>
+>>>
+>>> How about renaming i2c_bus_master to i2c_bus_acquire() such that it
+>>> pairs with i2c_bus_release().
+>>
+>> Looks good to me.
+>>
+>>> And then add an i2c_bus_yield() to be used by the controller? I think we
+>>> should be able to assert in i2c_bus_yield() that bus->bh is NULL. But
+>>> I'll take a closer look at that.
+>>
+>> I am using your i2c-echo slave device to track regressions in the Aspeed
+>> machines. May be we could merge it for tests ?
+>>
+> 
+> Oh, cool.
+> 
+> Sure, I'd be happy to help "maintain" it ;)
 
---8FF7Db+hKOeOPdRA
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+And so, I am seeing errors with the little POC you sent.
 
-On Nov 17 09:01, C=C3=A9dric Le Goater wrote:
-> On 11/17/22 08:37, Klaus Jensen wrote:
-> > On Nov 17 07:56, C=C3=A9dric Le Goater wrote:
-> > > On 11/17/22 07:40, Klaus Jensen wrote:
-> > > > On Nov 16 16:58, C=C3=A9dric Le Goater wrote:
-> > > > > On 11/16/22 09:43, Klaus Jensen wrote:
-> > > > > > From: Klaus Jensen <k.jensen@samsung.com>
-> > > > > >=20
-> > > > > > It is not given that the current master will release the bus af=
-ter a
-> > > > > > transfer ends. Only schedule a pending master if the bus is idl=
-e.
-> > > > > >=20
-> > > > > > Fixes: 37fa5ca42623 ("hw/i2c: support multiple masters")
-> > > > > > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-> > > > > > ---
-> > > > > >     hw/i2c/aspeed_i2c.c  |  2 ++
-> > > > > >     hw/i2c/core.c        | 37 ++++++++++++++++++++++-----------=
-----
-> > > > > >     include/hw/i2c/i2c.h |  2 ++
-> > > > > >     3 files changed, 26 insertions(+), 15 deletions(-)
-> > > > > >=20
-> > > > > > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> > > > > > index c166fd20fa11..1f071a3811f7 100644
-> > > > > > --- a/hw/i2c/aspeed_i2c.c
-> > > > > > +++ b/hw/i2c/aspeed_i2c.c
-> > > > > > @@ -550,6 +550,8 @@ static void aspeed_i2c_bus_handle_cmd(Aspee=
-dI2CBus *bus, uint64_t value)
-> > > > > >             }
-> > > > > >             SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_STOP_=
-CMD, 0);
-> > > > > >             aspeed_i2c_set_state(bus, I2CD_IDLE);
-> > > > > > +
-> > > > > > +        i2c_schedule_pending_master(bus->bus);
-> > > > >=20
-> > > > > Shouldn't it be i2c_bus_release() ?
-> > > > >=20
-> > > >=20
-> > > > The reason for having both i2c_bus_release() and
-> > > > i2c_schedule_pending_master() is that i2c_bus_release() sort of pai=
-rs
-> > > > with i2c_bus_master(). They either set or clear the bus->bh member.
-> > > >=20
-> > > > In the current design, the controller (in this case the Aspeed I2C)=
- is
-> > > > an "implicit" master (it does not have a bottom half driving it), so
-> > > > there is no bus->bh to clear.
-> > > >=20
-> > > > I should (and will) write some documentation on the asynchronous AP=
-I.
-> > >=20
-> > > I found the routine names confusing. Thanks for the clarification.
-> > >=20
-> > > Maybe we could do this rename  :
-> > >=20
-> > >    i2c_bus_release()             -> i2c_bus_release_and_clear()
-> > >    i2c_schedule_pending_master() -> i2c_bus_release()
-> > >=20
-> > > and keep i2c_schedule_pending_master() internal the I2C core subsyste=
-m.
-> > >=20
-> >=20
-> > How about renaming i2c_bus_master to i2c_bus_acquire() such that it
-> > pairs with i2c_bus_release().
->=20
-> Looks good to me.
->=20
-> > And then add an i2c_bus_yield() to be used by the controller? I think we
-> > should be able to assert in i2c_bus_yield() that bus->bh is NULL. But
-> > I'll take a closer look at that.
->=20
-> I am using your i2c-echo slave device to track regressions in the Aspeed
-> machines. May be we could merge it for tests ?
->=20
+without:
+   
+   console: echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
+   console: # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
+   console: [    4.252431] i2c i2c-3: new_device: Instantiated device slave-24c02 at 0x64
+   console: i2cset -y 3 0x42 0x64 0x00 0xaa i
+   /console: # i2cset -y 3 0x42 0x64 0x00 0xaa i
+   console: # hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom
+   console: 0000000 ffaa ffff ffff ffff ffff ffff ffff ffff
+   console: poweroff
+   console: 0000010 ffff ffff ffff ffff ffff ffff ffff ffff
+   console: *
+   console: 0000100
 
-Oh, cool.
-
-Sure, I'd be happy to help "maintain" it ;)
-
---8FF7Db+hKOeOPdRA
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCgAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmN2IgEACgkQTeGvMW1P
-Delf7gf+MNJZmJ7V8ZDTkMyvowwhXkgYF7axvZV4y4yjbnQuKROkGw7f0qnys6XB
-nojBC3O6nIbIZtfrN0xWHSBG5WqSZfLrKVzFklQfvGHg0bRN0ya1TNlomj2ate9e
-SZBnTGO35utjGrop9cZWobZ2aUU6/9KPSenw0b7wFaTqavLVjV2n088gE2yobSoV
-pefWg1Zud61hcEmdzGAXHLYyiLbIZ4/DFLKRIzhuyaQtnhq3dRyfDr1wsDPl/HkG
-HHp06RtxgvJmKfu429a8DuCefjIsBPexwGZxMHFunt9wVf9yhOHQQmrJpkhAiO6b
-x+J8Oj8D1CkIkK02OvDiNyjQwUvTHQ==
-=wNto
------END PGP SIGNATURE-----
-
---8FF7Db+hKOeOPdRA--
+with:
+   
+   console: echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
+   console: # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
+   console: [    4.413210] i2c i2c-3: new_device: Instantiated device slave-24c02 at 0x64
+   console: i2cset -y 3 0x42 0x64 0x00 0xaa i
+   console: # i2cset -y 3 0x42 0x64 0x00 0xaa i
+   console: # hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom
+   console: 0000000 ffff ffff ffff ffff ffff ffff ffff ffff
+   console: *
+   console: 0000100
+   
+C.

@@ -1,367 +1,118 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp701783ejx;
-        Wed, 16 Nov 2022 11:40:15 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6To/pTdobnadyPQeofJYBXZ99+K07ZCZO4hjySqg7Qj0UgfvXK5SeOlIUV4H2RhD8OSENj
-X-Received: by 2002:a37:97c6:0:b0:6fa:6424:5e3c with SMTP id z189-20020a3797c6000000b006fa64245e3cmr20447861qkd.95.1668627615195;
-        Wed, 16 Nov 2022 11:40:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668627615; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1171810ejx;
+        Thu, 17 Nov 2022 03:16:31 -0800 (PST)
+X-Received: by 2002:a05:600c:1c1f:b0:3cf:aa11:93a9 with SMTP id j31-20020a05600c1c1f00b003cfaa1193a9mr1355623wms.138.1668683791614;
+        Thu, 17 Nov 2022 03:16:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668683791; cv=none;
         d=google.com; s=arc-20160816;
-        b=f63OFWwxMsYeW2J+Bcpy4Lrm54c/+vWNNH69OE3P+UwMcYtdM3Q36JXr6yrxM/nteH
-         iDuc/kijRP6A4avFaiUpC6Zc9GLY8uCttjwQQZ0klkBpU+wUPscCecD7us49tmpokc3O
-         /U9CfZiOdw2y6bhTHZsNZuf2SnmGd9vc5Nit9chJN4iWuhO51VsHhNgpCsCMt1Tc/bzC
-         7z9tS7zbbDRxNjILq7GrXP5hBy02ZFTT0y5SbxYoSJ+xF8hg7CWxkWKOWXl6f7ZdpaMO
-         /XPiW4FA0sIBPKBreWFJ7ZpNjIoR2zDV/BipiQmyr1okm5LGyBZWj/7CuC4UVFk1egIt
-         /zbA==
+        b=kpNwnS0zjE17LXfY2ZlOd7v6/XKtJCE79ivLmkGcgRj92/VFooBGpK7sbYlZoMa370
+         4sUwn2vjLXcrsmwDuOsdORhIZqDATzjGfzkKo9IOW6h9X6M8OVMsiyZqRRbiDp6qGszf
+         nwqxgDOLc/vh2Zx3ZFVmGKd40eZKwc0RctXGjUox9b9aaUrWP7+qSIT8cqzH8wVQvC+H
+         j7R5LWMatVJfFpJ1A1iNQ4WeC5e5cSyUnH2dxI6yqiWEqK/uriQ2pWFOnAhAQaXWW8/k
+         1aya5bDlpJgI4YfaQBoNSDtLUytTdugogv0RayUwIpIYCUX0MOK761B4/qNuA3XrIGnh
+         as6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=K4//5qNNFAYhb29dGtITFHlCDt5XG1ymqRao4kQpdEE=;
-        b=WR12Gmhl2oeB5ozGuKVyG6mosEKJ7Yvxxsp4pMYD9itdPMpdrJaNMGpbJJzJ2jeGpL
-         Osn57lBHcmod9FZfkKz4lrGCQ6W+eE1xsY/TCK3MNsl7lykwy3SFIZEvRNVuS6SvOSdp
-         elilJOp7nHEvJ//o1kYeyFITMzhZIzWYhllnjAGCktOda9p+cjWx2sbJXTSczq4leT13
-         BIibbrAL9B/xYGEUZKTOxw2xQelYFT7De2e54efCR0Cc7BMU9zW/ShNWO4yEwoos11i4
-         hVpKFSktXEKWiWRgDI/BQ17ZzLX9Ad6R0wvJkFXMNM4k++Ot+ePpdyB6G6pONwJ+rViJ
-         ROeA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=fzi4KYJh/qM2ppaYMaOLMZPqnWLshUFWMV6nz7L5wKg=;
+        b=bji+6piINwHhjpgPv2GZqwVs3nBJKx06VtpTNDUhvwOZ56Ke+1pDydR0drcF44upCC
+         FFy+MFSohtE/NbRgNEioKZOaw6ixvVr4Cj1GVoxNM6BLk1oJ7MWJp7YKcoj985IHz4q5
+         7sCb00PnR1+wNpz6q8qo62bzuAfOsSnpInBUwfk6qm7p75+bXRRF02H51IKuO9dCAo/r
+         /2vE2ky3ROTUV8Wae96QQ+yb1fsaHHi3haMboFe1z7e0694NFOrfH1lNuBRN89BuT2aH
+         xh6F98mZDFZyjuepoCfF3kBzkux2BWz4Iszw35uPtDYU++sykEgsA1KMnN2r8Q8B5MlG
+         Mzag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d22-20020ac85ad6000000b003a57eb1fa66si10438796qtd.265.2022.11.16.11.40.15
+       dkim=pass header.i=@linaro.org header.s=google header.b=ti5j5fwT;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id t7-20020adfba47000000b0023678018f07sor413373wrg.76.2022.11.17.03.16.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Nov 2022 11:40:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 17 Nov 2022 03:16:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ovOGZ-00065S-Ui; Wed, 16 Nov 2022 14:40:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1ovOGM-0005zE-Tw; Wed, 16 Nov 2022 14:40:00 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1ovOGG-0005Xc-M6; Wed, 16 Nov 2022 14:39:56 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id D0EAC74638A;
- Wed, 16 Nov 2022 20:39:29 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 75CF9746335; Wed, 16 Nov 2022 20:39:29 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 70E6874632C;
- Wed, 16 Nov 2022 20:39:29 +0100 (CET)
-Date: Wed, 16 Nov 2022 20:39:29 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Igor Mammedov <imammedo@redhat.com>
-cc: qemu-devel@nongnu.org, mst@redhat.com, ani@anisinha.ca, 
- pbonzini@redhat.com, richard.henderson@linaro.org, 
- mark.cave-ayland@ilande.co.uk, peter.maydell@linaro.org, 
- andrew.smirnov@gmail.com, paulburton@kernel.org, 
- aleksandar.rikalo@syrmia.com, danielhb413@gmail.com, clg@kaod.org, 
- david@gibson.dropbear.id.au, groug@kaod.org, qemu-arm@nongnu.org, 
- qemu-ppc@nongnu.org
-Subject: Re: [PATCH 1/2] remove DEC 21154 PCI bridge
-In-Reply-To: <20221116152730.3691347-2-imammedo@redhat.com>
-Message-ID: <79ad881d-ac77-5bca-bd5f-ba6290b2c830@eik.bme.hu>
-References: <20221116152730.3691347-1-imammedo@redhat.com>
- <20221116152730.3691347-2-imammedo@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=ti5j5fwT;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=fzi4KYJh/qM2ppaYMaOLMZPqnWLshUFWMV6nz7L5wKg=;
+        b=ti5j5fwTtqWWItxhCUTVFwgAsrXmeM+uEpoTiAqHlzdMWUUteqqXjzZu40NlHs9bPz
+         pCc7db2mVXnq6upuC8CzP9sBtCECSMLth478X4YKIP5aanRNy7NHd0H4g49/SiMle1Fw
+         jmPzGI3aEFcC/7majFh+ZNUcCDV/l/f0JxqCmOXxhYIY72l4OHJ0ausWYTpfeWgYJD7A
+         +jhzUJ2mksJkvz0gAiV3Y2pHb9Uxfb6bYkYngFKPDF+pJqpMuunR43c2lx/F8oDdhjXD
+         BWBbzsXg72OBxF4cGvpLIZ4PNFyqNJg+vnZcxdSJ1rxZcx4Z6rSDlNw1hMvQwl7XaLc5
+         jFPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=fzi4KYJh/qM2ppaYMaOLMZPqnWLshUFWMV6nz7L5wKg=;
+        b=Zkzofl/nLf91XG/ceHpxuRVOxb9VwUKFjTbPD1b34saxFlfBqRhzppsWmCGdwEitGo
+         dBRIgn1ENBtGBSVRcxyj7AtodZJJHXJPSlJlCY5JH9xw9FyCss3YupgHWLI2L6o6F5Xq
+         b2mmxGlIOzOzKAbRfwnDFpF6PByiLfsUXSxRi8kJajD9WHepJwBBeawGofRFRpwF929y
+         yk7t8fz6yk3DihdUqkVBYymo0J+qxeKN2JyM0haGR/0F2Nyzn8Z/7dcTDX6QV/7ozGmy
+         nz4wX7Pn/Jh6nnOP0t/Z6W1DPAXzX40J1mArWJGsenqqUgVVR7nKTTCFmP48hm01RJvM
+         PA4A==
+X-Gm-Message-State: ANoB5pkATy7/eBXaTjRYnjV6tiZ43tFEmHB0zpeH2ZDX5vyFtdl+W8lq
+	O91Ww9miGnfpQLBGzymOF99FisgMzG42amh+
+X-Google-Smtp-Source: AA0mqf7DcdEiu1BjgcBKZP3l6QzsIPjpG1Mh6uMlk3FaxiUAp5ZD51mQab6ZbOswOQmZcfugVx+E+w==
+X-Received: by 2002:a5d:5144:0:b0:22d:d4c:e99c with SMTP id u4-20020a5d5144000000b0022d0d4ce99cmr1131147wrt.582.1668683791366;
+        Thu, 17 Nov 2022 03:16:31 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id bg21-20020a05600c3c9500b003b497138093sm991144wmb.47.2022.11.17.03.16.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 17 Nov 2022 03:16:30 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>
+Subject: [PATCH for-7.2] tests/avocado/boot_linux.py: Bump aarch64 virt test timeout to 720s
+Date: Thu, 17 Nov 2022 11:16:28 +0000
+Message-Id: <20221117111628.911686-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 60xjjfmt4BjA
+Content-Transfer-Encoding: 8bit
+X-TUID: kD18dSrc/JR2
 
+The two tests
+tests/avocado/boot_linux.py:BootLinuxAarch64.test_virt_tcg_gicv2
+tests/avocado/boot_linux.py:BootLinuxAarch64.test_virt_tcg_gicv3
 
+take quite a long time to run, and the current timeout of 240s
+is not enough for the tests to complete on slow machines:
+we've seen these tests time out in the gitlab CI in the
+'avocado-system-alpine' CI job, for instance. The timeout
+is also insufficient for running the test with a debug build
+of QEMU: on my machine the tests take over 10 minutes to run
+in that config.
 
-On Wed, 16 Nov 2022, Igor Mammedov wrote:
+Push the timeout up to 720s so that the test definitely has
+enough time to complete.
 
-> Code has not been used practically since its inception (2004)
->  f2aa58c6f4a20 UniNorth PCI bridge support
-> or maybe even earlier, but it was consuming contributors time
-> as QEMU was being rewritten.
-> Drop it for now. Whomever would like to actually
-> use the thing, can make sure it actually works/reintroduce
-> it back when there is a user.
->
-> PS:
-> I've stumbled upon this when replacing PCIDeviceClass::is_bridge
-> field with QOM cast to PCI_BRIDGE type. Unused DEC 21154
-> was the only one trying to use the field with plain PCIDevice.
-> It's not worth keeping the field around for the sake of the code
-> that was commented out 'forever'.
->
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> hw/pci-bridge/dec.h       |   9 ---
-> include/hw/pci/pci_ids.h  |   1 -
-> hw/pci-bridge/dec.c       | 164 --------------------------------------
-> hw/pci-bridge/meson.build |   2 -
-> hw/pci-host/uninorth.c    |   6 --
-> 5 files changed, 182 deletions(-)
-> delete mode 100644 hw/pci-bridge/dec.h
-> delete mode 100644 hw/pci-bridge/dec.c
->
-> diff --git a/hw/pci-bridge/dec.h b/hw/pci-bridge/dec.h
-> deleted file mode 100644
-> index 869e90b136..0000000000
-> --- a/hw/pci-bridge/dec.h
-> +++ /dev/null
-> @@ -1,9 +0,0 @@
-> -#ifndef HW_PCI_BRIDGE_DEC_H
-> -#define HW_PCI_BRIDGE_DEC_H
-> -
-> -
-> -#define TYPE_DEC_21154 "dec-21154-sysbus"
-> -
-> -PCIBus *pci_dec_21154_init(PCIBus *parent_bus, int devfn);
-> -
-> -#endif
-> diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-> index bc9f834fd1..e4386ebb20 100644
-> --- a/include/hw/pci/pci_ids.h
-> +++ b/include/hw/pci/pci_ids.h
-> @@ -169,7 +169,6 @@
->
-> #define PCI_VENDOR_ID_DEC                0x1011
-> #define PCI_DEVICE_ID_DEC_21143          0x0019
-> -#define PCI_DEVICE_ID_DEC_21154          0x0026
->
-> #define PCI_VENDOR_ID_CIRRUS             0x1013
->
-> diff --git a/hw/pci-bridge/dec.c b/hw/pci-bridge/dec.c
-> deleted file mode 100644
-> index 4773d07e6d..0000000000
-> --- a/hw/pci-bridge/dec.c
-> +++ /dev/null
-> @@ -1,164 +0,0 @@
-> -/*
-> - * QEMU DEC 21154 PCI bridge
-> - *
-> - * Copyright (c) 2006-2007 Fabrice Bellard
-> - * Copyright (c) 2007 Jocelyn Mayer
-> - *
-> - * Permission is hereby granted, free of charge, to any person obtaining a copy
-> - * of this software and associated documentation files (the "Software"), to deal
-> - * in the Software without restriction, including without limitation the rights
-> - * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> - * copies of the Software, and to permit persons to whom the Software is
-> - * furnished to do so, subject to the following conditions:
-> - *
-> - * The above copyright notice and this permission notice shall be included in
-> - * all copies or substantial portions of the Software.
-> - *
-> - * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> - * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> - * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> - * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> - * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> - * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> - * THE SOFTWARE.
-> - */
-> -
-> -#include "qemu/osdep.h"
-> -#include "dec.h"
-> -#include "hw/sysbus.h"
-> -#include "qapi/error.h"
-> -#include "qemu/module.h"
-> -#include "hw/pci/pci.h"
-> -#include "hw/pci/pci_host.h"
-> -#include "hw/pci/pci_bridge.h"
-> -#include "hw/pci/pci_bus.h"
-> -#include "qom/object.h"
-> -
-> -OBJECT_DECLARE_SIMPLE_TYPE(DECState, DEC_21154)
-> -
-> -struct DECState {
-> -    PCIHostState parent_obj;
-> -};
-> -
-> -static int dec_map_irq(PCIDevice *pci_dev, int irq_num)
-> -{
-> -    return irq_num;
-> -}
-> -
-> -static void dec_pci_bridge_realize(PCIDevice *pci_dev, Error **errp)
-> -{
-> -    pci_bridge_initfn(pci_dev, TYPE_PCI_BUS);
-> -}
-> -
-> -static void dec_21154_pci_bridge_class_init(ObjectClass *klass, void *data)
-> -{
-> -    DeviceClass *dc = DEVICE_CLASS(klass);
-> -    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-> -
-> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-> -    k->realize = dec_pci_bridge_realize;
-> -    k->exit = pci_bridge_exitfn;
-> -    k->vendor_id = PCI_VENDOR_ID_DEC;
-> -    k->device_id = PCI_DEVICE_ID_DEC_21154;
-> -    k->config_write = pci_bridge_write_config;
-> -    k->is_bridge = true;
-> -    dc->desc = "DEC 21154 PCI-PCI bridge";
-> -    dc->reset = pci_bridge_reset;
-> -    dc->vmsd = &vmstate_pci_device;
-> -}
-> -
-> -static const TypeInfo dec_21154_pci_bridge_info = {
-> -    .name          = "dec-21154-p2p-bridge",
-> -    .parent        = TYPE_PCI_BRIDGE,
-> -    .instance_size = sizeof(PCIBridge),
-> -    .class_init    = dec_21154_pci_bridge_class_init,
-> -    .interfaces = (InterfaceInfo[]) {
-> -        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-> -        { },
-> -    },
-> -};
-> -
-> -PCIBus *pci_dec_21154_init(PCIBus *parent_bus, int devfn)
-> -{
-> -    PCIDevice *dev;
-> -    PCIBridge *br;
-> -
-> -    dev = pci_new_multifunction(devfn, false, "dec-21154-p2p-bridge");
-> -    br = PCI_BRIDGE(dev);
-> -    pci_bridge_map_irq(br, "DEC 21154 PCI-PCI bridge", dec_map_irq);
-> -    pci_realize_and_unref(dev, parent_bus, &error_fatal);
-> -    return pci_bridge_get_sec_bus(br);
-> -}
-> -
-> -static void pci_dec_21154_device_realize(DeviceState *dev, Error **errp)
-> -{
-> -    PCIHostState *phb;
-> -    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> -
-> -    phb = PCI_HOST_BRIDGE(dev);
-> -
-> -    memory_region_init_io(&phb->conf_mem, OBJECT(dev), &pci_host_conf_le_ops,
-> -                          dev, "pci-conf-idx", 0x1000);
-> -    memory_region_init_io(&phb->data_mem, OBJECT(dev), &pci_host_data_le_ops,
-> -                          dev, "pci-data-idx", 0x1000);
-> -    sysbus_init_mmio(sbd, &phb->conf_mem);
-> -    sysbus_init_mmio(sbd, &phb->data_mem);
-> -}
-> -
-> -static void dec_21154_pci_host_realize(PCIDevice *d, Error **errp)
-> -{
-> -    /* PCI2PCI bridge same values as PearPC - check this */
-> -}
-> -
-> -static void dec_21154_pci_host_class_init(ObjectClass *klass, void *data)
-> -{
-> -    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-> -    DeviceClass *dc = DEVICE_CLASS(klass);
-> -
-> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-> -    k->realize = dec_21154_pci_host_realize;
-> -    k->vendor_id = PCI_VENDOR_ID_DEC;
-> -    k->device_id = PCI_DEVICE_ID_DEC_21154;
-> -    k->revision = 0x02;
-> -    k->class_id = PCI_CLASS_BRIDGE_PCI;
-> -    k->is_bridge = true;
-> -    /*
-> -     * PCI-facing part of the host bridge, not usable without the
-> -     * host-facing part, which can't be device_add'ed, yet.
-> -     */
-> -    dc->user_creatable = false;
-> -}
-> -
-> -static const TypeInfo dec_21154_pci_host_info = {
-> -    .name          = "dec-21154",
-> -    .parent        = TYPE_PCI_DEVICE,
-> -    .instance_size = sizeof(PCIDevice),
-> -    .class_init    = dec_21154_pci_host_class_init,
-> -    .interfaces = (InterfaceInfo[]) {
-> -        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-> -        { },
-> -    },
-> -};
-> -
-> -static void pci_dec_21154_device_class_init(ObjectClass *klass, void *data)
-> -{
-> -    DeviceClass *dc = DEVICE_CLASS(klass);
-> -
-> -    dc->realize = pci_dec_21154_device_realize;
-> -}
-> -
-> -static const TypeInfo pci_dec_21154_device_info = {
-> -    .name          = TYPE_DEC_21154,
-> -    .parent        = TYPE_PCI_HOST_BRIDGE,
-> -    .instance_size = sizeof(DECState),
-> -    .class_init    = pci_dec_21154_device_class_init,
-> -};
-> -
-> -static void dec_register_types(void)
-> -{
-> -    type_register_static(&pci_dec_21154_device_info);
-> -    type_register_static(&dec_21154_pci_host_info);
-> -    type_register_static(&dec_21154_pci_bridge_info);
-> -}
-> -
-> -type_init(dec_register_types)
-> diff --git a/hw/pci-bridge/meson.build b/hw/pci-bridge/meson.build
-> index 243ceeda50..fe92d43de6 100644
-> --- a/hw/pci-bridge/meson.build
-> +++ b/hw/pci-bridge/meson.build
-> @@ -8,8 +8,6 @@ pci_ss.add(when: 'CONFIG_PXB', if_true: files('pci_expander_bridge.c'),
-> pci_ss.add(when: 'CONFIG_XIO3130', if_true: files('xio3130_upstream.c', 'xio3130_downstream.c'))
-> pci_ss.add(when: 'CONFIG_CXL', if_true: files('cxl_root_port.c', 'cxl_upstream.c', 'cxl_downstream.c'))
->
-> -# NewWorld PowerMac
-> -pci_ss.add(when: 'CONFIG_DEC_PCI', if_true: files('dec.c'))
-> # Sun4u
-> pci_ss.add(when: 'CONFIG_SIMBA', if_true: files('simba.c'))
->
-> diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
-> index aebd44d265..5c617e86c1 100644
-> --- a/hw/pci-host/uninorth.c
-> +++ b/hw/pci-host/uninorth.c
-> @@ -127,12 +127,6 @@ static void pci_unin_main_realize(DeviceState *dev, Error **errp)
->                                    PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS);
->
->     pci_create_simple(h->bus, PCI_DEVFN(11, 0), "uni-north-pci");
-> -
-> -    /* DEC 21154 bridge */
-> -#if 0
-> -    /* XXX: not activated as PPC BIOS doesn't handle multiple buses properly */
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ tests/avocado/boot_linux.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I think real hardware has this bridge and QEMU could emulate it but 
-OpenBIOS can't handle more than one PCI bus or this bridge yet so this was 
-disabled for that reason. Maybe leave the comment around as a reminder 
-that this could be brought back from git history if somebody wants to fix 
-it in the future, otherwise this may be forgotten and reimplemented from 
-scratch.
-
-Regards,
-BALATON Zoltan
-
-> -    pci_create_simple(h->bus, PCI_DEVFN(12, 0), "dec-21154");
-> -#endif
-> }
->
-> static void pci_unin_main_init(Object *obj)
->
+diff --git a/tests/avocado/boot_linux.py b/tests/avocado/boot_linux.py
+index 571d33882ae..32adae6ff6a 100644
+--- a/tests/avocado/boot_linux.py
++++ b/tests/avocado/boot_linux.py
+@@ -64,7 +64,7 @@ class BootLinuxAarch64(LinuxTest):
+     :avocado: tags=machine:virt
+     :avocado: tags=machine:gic-version=2
+     """
+-    timeout = 240
++    timeout = 720
+ 
+     def add_common_args(self):
+         self.vm.add_args('-bios',
+-- 
+2.25.1

@@ -1,263 +1,206 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp627424ejx;
-        Wed, 16 Nov 2022 09:48:19 -0800 (PST)
-X-Received: by 2002:a5d:630d:0:b0:236:57e8:c79a with SMTP id i13-20020a5d630d000000b0023657e8c79amr15258723wru.321.1668620899417;
-        Wed, 16 Nov 2022 09:48:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668620899; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1038145ejx;
+        Wed, 16 Nov 2022 22:41:26 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4TPR2UjBeEGg6jx9HhOkTQsmPp0RjpHWtzCuvgvyjBBaLGRIsmI1Gc8PMIZors8Qo0PzRI
+X-Received: by 2002:ae9:e88d:0:b0:6fa:d303:963 with SMTP id a135-20020ae9e88d000000b006fad3030963mr584980qkg.562.1668667285675;
+        Wed, 16 Nov 2022 22:41:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668667285; cv=none;
         d=google.com; s=arc-20160816;
-        b=uD8rUzfuWjY7CrxK2e/IkmD/MdrtP6rHIOMDHBPeDXoHJtLIdEprVAnwJUGVk7GK4+
-         O1WTzHs0xWRNdnn2bf5SP4ZXQGZ0Nt2eCOtQD2ACphTt9CD9Ye+zFixXBGWcf2ykvjhz
-         Twi20OzoGP2GDFTVJChL4DSNUHPq7oZZsPMR4Z8qV4rS6JvOO22A5VHFzIM8JON01FMa
-         UPZW3pbuXJAM7mrZaMfvthU/gSKfFC7+BQAZkEq3QfQLplvdm/LNALoBm9qSVujdMJPE
-         fGK6EjrO3DyxPCNAmT8HPDvo4LsSbzbfunUX+5iboTzQ8QHqoF1wIiiJmK/yyUrcVgoV
-         YW7g==
+        b=h1cnJ8bpVIFQPjfojaEpVFrXLhlV6p7XUiyEJ+o+wZSfCEvJ/LGeKRHx/Bs0gdnk/m
+         BkBLgIi4PNTVgtPn27/OnFIiYmUAHD+leBytvTaSa4O1ainY8cFKFH4FvfgXwlageEV9
+         NjOirmzBEfiqa+QW9KA6NPz5pagrcjsSENAUW4ktCkBZTOtnA/98lHYzPb49WZzXDTuV
+         ABPDz1eEhfGcGqsNa8xUuNtuh6ZbjT0TT2w5F6xwT8yUGcKFXCjEXDyoVJHTBBOL3cMr
+         2kvxWMppqQ1t7+YlNOVJfwZzBwB/iCqhzebujPo86ClTHMZRTeJVapwTlQNiAJAYRAGI
+         VqPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=KrvwPOtZNfEKsXjuC0ZbgXfL4yPk3ZZbpxNJSMb/UOA=;
-        b=FFciv9HPOeb53KsvkOHaqOEPz9SmBHgtHp5yrWDx+wMYd4ssKexq3r8xgWAJ74Ooxa
-         2o13nXUXQUHv+VtnJ0rzNIU0YQQ68frKcEtyPEKhN0FfMwOxCtb92V17IVcGp5dwqmQX
-         OSa42/6ePRm/SBoss5/3utordKvOB5sKSJZWP+QlHJBDsAaySNYkFFyDwoqOY/8Bn7vO
-         aMVDvGNpuvli8Wg67CnSZruLhOVPyces17a3Eeo+8zYa9xftgGLCFWAq9Q9S0HncVkwI
-         3ksLT6AJ6+lKJCk2rmMk7bkFxrfAvty9Qnht1r3UWTx+lWjhMtLty/XtnInqZKsCz2OY
-         s2Tg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=/DjujLued+f4maFRExX9+Utna5WnVzy5qA8N8/BO7KE=;
+        b=zXeCfkZUMCAzjrVZH9uIGMnpf15OxvWMDBJ1lqApXQf7oPPtJtjtHJvyIF9fqZWeOu
+         iFJJND9FwrhFhknP9/XYqGsfKlwGBXyUF719jSyM6hm/VfXV6qVZYra4zLBk5rTaKYdW
+         oLym7T294ZJ7UaJLE558A626foi72KI7RM8ghmUgCtFx8CEauf+JQAPoqqXr/85aSbnB
+         lSbAmCvi0n8XiYUEqWGHABbVfGDSjOTk0hGrrZIXVp2x4y2VZeptTHa9u5URPR+xiZ+V
+         7wa+A15B/LxvpHz1rGMtb9ajtAALjU15qleoDwXC41HklgNj8kQkFz20bwC3Fw/thRV0
+         oPNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="kv5/q0iz";
-       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <francesco.cagnin@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ja5-20020a05600c556500b003cf4e05544dsor390220wmb.17.2022.11.16.09.48.19
-        (Google Transport Security);
-        Wed, 16 Nov 2022 09:48:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=QbfaN3Ce;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="kk6u/381";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d21-20020ac84e35000000b00399cda33e61si9698779qtw.511.2022.11.16.22.41.25
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 16 Nov 2022 22:41:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="kv5/q0iz";
-       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KrvwPOtZNfEKsXjuC0ZbgXfL4yPk3ZZbpxNJSMb/UOA=;
-        b=kv5/q0izde86fUAHLrYnS/iqNpfCZR5yIllPFKLWllH/3jTLFYKnSVqvENoNgR+rgT
-         PZowt2UvPJkFgTgr8hZMVAfVBCp0QhejBqscpDb5NiROzyhFdVkw4+I/N8ddB38VaZtl
-         Yl3nFT8mxdorI5rCSQIJvZ0vsSpqKNqOL0R10WyDTHsNGEoKyuevGtDvfgs3DMFqSwoD
-         ck59Qxyzcg3mmEdgQMyn3WDV0dekpu/ZpRhYBe01apNx19o07xC4S1RqkC64S1HZK1Ly
-         D/ecKc8ZsrpH8q7plDDj+1/EyPk6cQD98oESeUWHUpFpXJwoJzoQQR0tj7SbKFtCSXgz
-         dj7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KrvwPOtZNfEKsXjuC0ZbgXfL4yPk3ZZbpxNJSMb/UOA=;
-        b=7l5KvWIzlB8pXiPcsdmzCha8bw4SEQ3xlaadMfm16uYCP0S3s5QjgrtcVFjY2S6WTZ
-         T2/wNrZ5FiNuSCZYTBCX/crEpofIlaH2AUdAx/W9ONamwZOiZ4e/vekwDp45BGQEpGC7
-         sNErQZQmP5J1nDB6e/oKvWGaZzmpJbLzjm85kJf0MPFdr+Znzp1V11jZZsL8dbxxJWrV
-         lV8dCHUC4B3Gfiz5nOy5x11XCWFYN0rGp5EWFicfXC0PHJMpuFMDTa/tNwGhIzoKYjaT
-         88qXlDrkbQlhzAFxNoTt05ty8ItKDqCLCzUIidqyaTi+VmTuCC9OVFTTZQMWjjBe+13v
-         qiDQ==
-X-Gm-Message-State: ANoB5pl51nQvA1tOwpjylQw/akgwhLUUJ5EWau7obmTkULDzydHaGvGO
-	Rro18lGQUyEbl4cvczdClY4=
-X-Google-Smtp-Source: AA0mqf6wdc3n0wBAT6sQF53c/7LvqiuSfO5xEgRE5OdT/HVAIB6I/w/aMLJ+tDVBV0+683DzVBMb6Q==
-X-Received: by 2002:a05:600c:3d1b:b0:3cf:670e:63cc with SMTP id bh27-20020a05600c3d1b00b003cf670e63ccmr2975784wmb.150.1668620899089;
-        Wed, 16 Nov 2022 09:48:19 -0800 (PST)
-Return-Path: <francesco.cagnin@gmail.com>
-Received: from localhost.localdomain (229.19.205.77.rev.sfr.net. [77.205.19.229])
-        by smtp.gmail.com with ESMTPSA id n17-20020a05600c465100b003cf483ee8e0sm2477490wmo.24.2022.11.16.09.48.18
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 16 Nov 2022 09:48:18 -0800 (PST)
-From: francesco.cagnin@gmail.com
-X-Google-Original-From: fcagnin@quarkslab.com
-To: qemu-devel@nongnu.org
-Cc: mads@ynddal.dk,
-	dirty@apple.com,
-	peter.maydell@linaro.org,
-	qemu-arm@nongnu.org,
-	agraf@csgraf.de,
-	pbonzini@redhat.com,
-	alex.bennee@linaro.org,
-	Francesco Cagnin <fcagnin@quarkslab.com>
-Subject: [PATCH v2 3/3] hvf: handle writes of MDSCR_EL1 and DBG*_EL1
-Date: Wed, 16 Nov 2022 18:47:49 +0100
-Message-Id: <20221116174749.65175-4-fcagnin@quarkslab.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221116174749.65175-1-fcagnin@quarkslab.com>
-References: <20221116174749.65175-1-fcagnin@quarkslab.com>
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=QbfaN3Ce;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="kk6u/381";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ovYaD-0001qm-Ch; Thu, 17 Nov 2022 01:41:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1ovYa3-0001pg-DN; Thu, 17 Nov 2022 01:40:59 -0500
+Received: from out3-smtp.messagingengine.com ([66.111.4.27])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1ovYa1-00040L-Ak; Thu, 17 Nov 2022 01:40:58 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 501AA5C00B3;
+ Thu, 17 Nov 2022 01:40:54 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Thu, 17 Nov 2022 01:40:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm3; t=1668667254; x=1668753654; bh=/D
+ jujLued+f4maFRExX9+Utna5WnVzy5qA8N8/BO7KE=; b=QbfaN3CebtT7qyoUEP
+ xmX7f6cCxsnaNtL8ZzgtXajUVuE2qbzbtFY1nOL04GXGvYHRyoFcyr3eb0Tzp8uu
+ p+spdr0rqWxMRjjZp5krL02wHrw21Wyhvd3uWM4Afboz0eYFz/tcMNKH7BfvblMp
+ un0ggcSUwWZLzyFVXUwFsOUkEiTUJtLHIl/g/uj861zXH7EwQGZhd6FNKkPkAjhb
+ jMz3tVCr+MBdsyfSr/ESWUUpAyUim/umMvcxVPBdMqPBh9kdZAp3oSHc0XDhKdAv
+ BZmK1Gw/kppKMLIjvfU6dWdLAtVJDKqJwBiXygVEl5Yl0MW1dRmjqA53pypMPSfl
+ oacw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+ :feedback-id:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm1; t=1668667254; x=1668753654; bh=/DjujLued+f4maFRExX9+Utna5Wn
+ Vzy5qA8N8/BO7KE=; b=kk6u/381OtoYLcMTJnp7MYXAmvWKAElOAeW3LLEHlpN6
+ QwIuUx3YYGVc6xVFtB8mDHSr82IuzbfNeQY1mToPyWGSKPO130vbd4fHqkxMgwov
+ eMD/7bxyHdIHpF+DWgHXFUb/t6BoUr1M7VhOtACWBadckJn2axwlru6WSQCZLZyF
+ exO3Gjdl7Vab4kr9pwUn6d+Zg8dJNNuDvR4Z4E9U54mgmtcwUboBtmRDOC4lw1RK
+ 4YJjKLw8Eac01oVRIDKwWqoUfDBq+Vr0fG85O9U4EWmBoAjOVM/VlpX7mkkzQAPU
+ +Bcd3jSJiixEkHPS14FWKInQYFFKqA4WTcoK4RWGjw==
+X-ME-Sender: <xms:ddd1Y-XPalsu6-5Lv7tabSKMQOGBTM-3Ppn6V_p0Upf9wWsePIji6w>
+ <xme:ddd1Y6leVGi_wOTo8ryWb4C0QPDNYmkA78bFtxEWWTa8WiGmMxo-vxvDk0tBTJUaT
+ G5S-qP7ujv8c4c9VDU>
+X-ME-Received: <xmr:ddd1YyZ8JAIfH054Ub5Jv-2v8WREmTKpjrtKst-1c-d2_ZWNXLTriV2QTUMEISgkQPsyOWaGty4rsVy1Gbuop0hegIZe2Q>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrgeejgdellecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpeffhffvvefukfhfgggtuggjsehgtderredttdejnecuhfhrohhmpefmlhgruhhs
+ ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
+ gvrhhnpeejgfejfeffvdeuhfeifefhgffgueelhedukeevjeevtdduudegieegteffffej
+ veenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehith
+ hssehirhhrvghlvghvrghnthdrughk
+X-ME-Proxy: <xmx:ddd1Y1Vs_lxP9DEzoktVwgGdtdEmiyZBO_VXKk0_f9GAtCvr5DLHgw>
+ <xmx:ddd1Y4lCSP6wjy-B5npZtMyKgpCU5X1vM5FvBHNsgNB7SMNyiSs4ZA>
+ <xmx:ddd1Y6cGvtUM1wl39RBurEz20qRsf6M9TEJbWFjEEYrbmuJUxZH3nw>
+ <xmx:dtd1YycRj6MHemh66muOCT8n4RTybUXoSTROm5OI-TY7ZiN-E8h5Qg>
+Feedback-ID: idc91472f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 17 Nov 2022 01:40:51 -0500 (EST)
+Date: Thu, 17 Nov 2022 07:40:49 +0100
+From: Klaus Jensen <its@irrelevant.dk>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Cc: qemu-devel@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Keith Busch <kbusch@kernel.org>, Corey Minyard <cminyard@mvista.com>,
+ Peter Delevoryas <peter@pjd.dev>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Jeremy Kerr <jk@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Klaus Jensen <k.jensen@samsung.com>
+Subject: Re: [PATCH maybe-7.2 1/3] hw/i2c: only schedule pending master when
+ bus is idle
+Message-ID: <Y3XXcWUnntBrIXq+@cormorant.local>
+References: <20221116084312.35808-1-its@irrelevant.dk>
+ <20221116084312.35808-2-its@irrelevant.dk>
+ <8dd9ed34-93c3-0638-e152-f619f9e097e6@kaod.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: 12RdLKzdeVLm
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="f1BjjTwSyNKKJ47c"
+Content-Disposition: inline
+In-Reply-To: <8dd9ed34-93c3-0638-e152-f619f9e097e6@kaod.org>
+Received-SPF: pass client-ip=66.111.4.27; envelope-from=its@irrelevant.dk;
+ helo=out3-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: S8K+mKrNyJTU
 
-From: Francesco Cagnin <fcagnin@quarkslab.com>
 
-This proved to be required when debugging the Linux kernel's initial
-code, as the Hypervisor framework was triggering 'EC_SYSTEMREGISTERTRAP'
-VM exits after enabling trap exceptions with
-'hv_vcpu_set_trap_debug_exceptions()'.
+--f1BjjTwSyNKKJ47c
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
----
- target/arm/hvf/hvf.c | 140 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 140 insertions(+)
+On Nov 16 16:58, C=C3=A9dric Le Goater wrote:
+> On 11/16/22 09:43, Klaus Jensen wrote:
+> > From: Klaus Jensen <k.jensen@samsung.com>
+> >=20
+> > It is not given that the current master will release the bus after a
+> > transfer ends. Only schedule a pending master if the bus is idle.
+> >=20
+> > Fixes: 37fa5ca42623 ("hw/i2c: support multiple masters")
+> > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> > ---
+> >   hw/i2c/aspeed_i2c.c  |  2 ++
+> >   hw/i2c/core.c        | 37 ++++++++++++++++++++++---------------
+> >   include/hw/i2c/i2c.h |  2 ++
+> >   3 files changed, 26 insertions(+), 15 deletions(-)
+> >=20
+> > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> > index c166fd20fa11..1f071a3811f7 100644
+> > --- a/hw/i2c/aspeed_i2c.c
+> > +++ b/hw/i2c/aspeed_i2c.c
+> > @@ -550,6 +550,8 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus =
+*bus, uint64_t value)
+> >           }
+> >           SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_STOP_CMD, 0);
+> >           aspeed_i2c_set_state(bus, I2CD_IDLE);
+> > +
+> > +        i2c_schedule_pending_master(bus->bus);
+>=20
+> Shouldn't it be i2c_bus_release() ?
+>=20
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 66fc82e9b9..c28c3dbdaa 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -95,6 +95,71 @@ static void hvf_arm_init_debug(CPUState *cpu)
- #define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
- #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
- #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
-+#define SYSREG_MDSCR_EL1      SYSREG(2, 0, 0, 2, 2)
-+#define SYSREG_DBGBVR0_EL1    SYSREG(2, 0, 0, 0, 4)
-+#define SYSREG_DBGBCR0_EL1    SYSREG(2, 0, 0, 0, 5)
-+#define SYSREG_DBGWVR0_EL1    SYSREG(2, 0, 0, 0, 6)
-+#define SYSREG_DBGWCR0_EL1    SYSREG(2, 0, 0, 0, 7)
-+#define SYSREG_DBGBVR1_EL1    SYSREG(2, 0, 0, 1, 4)
-+#define SYSREG_DBGBCR1_EL1    SYSREG(2, 0, 0, 1, 5)
-+#define SYSREG_DBGWVR1_EL1    SYSREG(2, 0, 0, 1, 6)
-+#define SYSREG_DBGWCR1_EL1    SYSREG(2, 0, 0, 1, 7)
-+#define SYSREG_DBGBVR2_EL1    SYSREG(2, 0, 0, 2, 4)
-+#define SYSREG_DBGBCR2_EL1    SYSREG(2, 0, 0, 2, 5)
-+#define SYSREG_DBGWVR2_EL1    SYSREG(2, 0, 0, 2, 6)
-+#define SYSREG_DBGWCR2_EL1    SYSREG(2, 0, 0, 2, 7)
-+#define SYSREG_DBGBVR3_EL1    SYSREG(2, 0, 0, 3, 4)
-+#define SYSREG_DBGBCR3_EL1    SYSREG(2, 0, 0, 3, 5)
-+#define SYSREG_DBGWVR3_EL1    SYSREG(2, 0, 0, 3, 6)
-+#define SYSREG_DBGWCR3_EL1    SYSREG(2, 0, 0, 3, 7)
-+#define SYSREG_DBGBVR4_EL1    SYSREG(2, 0, 0, 4, 4)
-+#define SYSREG_DBGBCR4_EL1    SYSREG(2, 0, 0, 4, 5)
-+#define SYSREG_DBGWVR4_EL1    SYSREG(2, 0, 0, 4, 6)
-+#define SYSREG_DBGWCR4_EL1    SYSREG(2, 0, 0, 4, 7)
-+#define SYSREG_DBGBVR5_EL1    SYSREG(2, 0, 0, 5, 4)
-+#define SYSREG_DBGBCR5_EL1    SYSREG(2, 0, 0, 5, 5)
-+#define SYSREG_DBGWVR5_EL1    SYSREG(2, 0, 0, 5, 6)
-+#define SYSREG_DBGWCR5_EL1    SYSREG(2, 0, 0, 5, 7)
-+#define SYSREG_DBGBVR6_EL1    SYSREG(2, 0, 0, 6, 4)
-+#define SYSREG_DBGBCR6_EL1    SYSREG(2, 0, 0, 6, 5)
-+#define SYSREG_DBGWVR6_EL1    SYSREG(2, 0, 0, 6, 6)
-+#define SYSREG_DBGWCR6_EL1    SYSREG(2, 0, 0, 6, 7)
-+#define SYSREG_DBGBVR7_EL1    SYSREG(2, 0, 0, 7, 4)
-+#define SYSREG_DBGBCR7_EL1    SYSREG(2, 0, 0, 7, 5)
-+#define SYSREG_DBGWVR7_EL1    SYSREG(2, 0, 0, 7, 6)
-+#define SYSREG_DBGWCR7_EL1    SYSREG(2, 0, 0, 7, 7)
-+#define SYSREG_DBGBVR8_EL1    SYSREG(2, 0, 0, 8, 4)
-+#define SYSREG_DBGBCR8_EL1    SYSREG(2, 0, 0, 8, 5)
-+#define SYSREG_DBGWVR8_EL1    SYSREG(2, 0, 0, 8, 6)
-+#define SYSREG_DBGWCR8_EL1    SYSREG(2, 0, 0, 8, 7)
-+#define SYSREG_DBGBVR9_EL1    SYSREG(2, 0, 0, 9, 4)
-+#define SYSREG_DBGBCR9_EL1    SYSREG(2, 0, 0, 9, 5)
-+#define SYSREG_DBGWVR9_EL1    SYSREG(2, 0, 0, 9, 6)
-+#define SYSREG_DBGWCR9_EL1    SYSREG(2, 0, 0, 9, 7)
-+#define SYSREG_DBGBVR10_EL1   SYSREG(2, 0, 0, 10, 4)
-+#define SYSREG_DBGBCR10_EL1   SYSREG(2, 0, 0, 10, 5)
-+#define SYSREG_DBGWVR10_EL1   SYSREG(2, 0, 0, 10, 6)
-+#define SYSREG_DBGWCR10_EL1   SYSREG(2, 0, 0, 10, 7)
-+#define SYSREG_DBGBVR11_EL1   SYSREG(2, 0, 0, 11, 4)
-+#define SYSREG_DBGBCR11_EL1   SYSREG(2, 0, 0, 11, 5)
-+#define SYSREG_DBGWVR11_EL1   SYSREG(2, 0, 0, 11, 6)
-+#define SYSREG_DBGWCR11_EL1   SYSREG(2, 0, 0, 11, 7)
-+#define SYSREG_DBGBVR12_EL1   SYSREG(2, 0, 0, 12, 4)
-+#define SYSREG_DBGBCR12_EL1   SYSREG(2, 0, 0, 12, 5)
-+#define SYSREG_DBGWVR12_EL1   SYSREG(2, 0, 0, 12, 6)
-+#define SYSREG_DBGWCR12_EL1   SYSREG(2, 0, 0, 12, 7)
-+#define SYSREG_DBGBVR13_EL1   SYSREG(2, 0, 0, 13, 4)
-+#define SYSREG_DBGBCR13_EL1   SYSREG(2, 0, 0, 13, 5)
-+#define SYSREG_DBGWVR13_EL1   SYSREG(2, 0, 0, 13, 6)
-+#define SYSREG_DBGWCR13_EL1   SYSREG(2, 0, 0, 13, 7)
-+#define SYSREG_DBGBVR14_EL1   SYSREG(2, 0, 0, 14, 4)
-+#define SYSREG_DBGBCR14_EL1   SYSREG(2, 0, 0, 14, 5)
-+#define SYSREG_DBGWVR14_EL1   SYSREG(2, 0, 0, 14, 6)
-+#define SYSREG_DBGWCR14_EL1   SYSREG(2, 0, 0, 14, 7)
-+#define SYSREG_DBGBVR15_EL1   SYSREG(2, 0, 0, 15, 4)
-+#define SYSREG_DBGBCR15_EL1   SYSREG(2, 0, 0, 15, 5)
-+#define SYSREG_DBGWVR15_EL1   SYSREG(2, 0, 0, 15, 6)
-+#define SYSREG_DBGWCR15_EL1   SYSREG(2, 0, 0, 15, 7)
- 
- #define WFX_IS_WFE (1 << 0)
- 
-@@ -1039,6 +1104,81 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         break;
-+    case SYSREG_MDSCR_EL1:
-+        env->cp15.mdscr_el1 = val;
-+        break;
-+    case SYSREG_DBGBVR0_EL1:
-+    case SYSREG_DBGBVR1_EL1:
-+    case SYSREG_DBGBVR2_EL1:
-+    case SYSREG_DBGBVR3_EL1:
-+    case SYSREG_DBGBVR4_EL1:
-+    case SYSREG_DBGBVR5_EL1:
-+    case SYSREG_DBGBVR6_EL1:
-+    case SYSREG_DBGBVR7_EL1:
-+    case SYSREG_DBGBVR8_EL1:
-+    case SYSREG_DBGBVR9_EL1:
-+    case SYSREG_DBGBVR10_EL1:
-+    case SYSREG_DBGBVR11_EL1:
-+    case SYSREG_DBGBVR12_EL1:
-+    case SYSREG_DBGBVR13_EL1:
-+    case SYSREG_DBGBVR14_EL1:
-+    case SYSREG_DBGBVR15_EL1:
-+        env->cp15.dbgbvr[SYSREG_CRM(reg)] = val;
-+        break;
-+    case SYSREG_DBGBCR0_EL1:
-+    case SYSREG_DBGBCR1_EL1:
-+    case SYSREG_DBGBCR2_EL1:
-+    case SYSREG_DBGBCR3_EL1:
-+    case SYSREG_DBGBCR4_EL1:
-+    case SYSREG_DBGBCR5_EL1:
-+    case SYSREG_DBGBCR6_EL1:
-+    case SYSREG_DBGBCR7_EL1:
-+    case SYSREG_DBGBCR8_EL1:
-+    case SYSREG_DBGBCR9_EL1:
-+    case SYSREG_DBGBCR10_EL1:
-+    case SYSREG_DBGBCR11_EL1:
-+    case SYSREG_DBGBCR12_EL1:
-+    case SYSREG_DBGBCR13_EL1:
-+    case SYSREG_DBGBCR14_EL1:
-+    case SYSREG_DBGBCR15_EL1:
-+        env->cp15.dbgbcr[SYSREG_CRM(reg)] = val;
-+        break;
-+    case SYSREG_DBGWVR0_EL1:
-+    case SYSREG_DBGWVR1_EL1:
-+    case SYSREG_DBGWVR2_EL1:
-+    case SYSREG_DBGWVR3_EL1:
-+    case SYSREG_DBGWVR4_EL1:
-+    case SYSREG_DBGWVR5_EL1:
-+    case SYSREG_DBGWVR6_EL1:
-+    case SYSREG_DBGWVR7_EL1:
-+    case SYSREG_DBGWVR8_EL1:
-+    case SYSREG_DBGWVR9_EL1:
-+    case SYSREG_DBGWVR10_EL1:
-+    case SYSREG_DBGWVR11_EL1:
-+    case SYSREG_DBGWVR12_EL1:
-+    case SYSREG_DBGWVR13_EL1:
-+    case SYSREG_DBGWVR14_EL1:
-+    case SYSREG_DBGWVR15_EL1:
-+        env->cp15.dbgwvr[SYSREG_CRM(reg)] = val;
-+        break;
-+    case SYSREG_DBGWCR0_EL1:
-+    case SYSREG_DBGWCR1_EL1:
-+    case SYSREG_DBGWCR2_EL1:
-+    case SYSREG_DBGWCR3_EL1:
-+    case SYSREG_DBGWCR4_EL1:
-+    case SYSREG_DBGWCR5_EL1:
-+    case SYSREG_DBGWCR6_EL1:
-+    case SYSREG_DBGWCR7_EL1:
-+    case SYSREG_DBGWCR8_EL1:
-+    case SYSREG_DBGWCR9_EL1:
-+    case SYSREG_DBGWCR10_EL1:
-+    case SYSREG_DBGWCR11_EL1:
-+    case SYSREG_DBGWCR12_EL1:
-+    case SYSREG_DBGWCR13_EL1:
-+    case SYSREG_DBGWCR14_EL1:
-+    case SYSREG_DBGWCR15_EL1:
-+        env->cp15.dbgwcr[SYSREG_CRM(reg)] = val;
-+        break;
-     default:
-         cpu_synchronize_state(cpu);
-         trace_hvf_unhandled_sysreg_write(env->pc, reg,
--- 
-2.38.1
+The reason for having both i2c_bus_release() and
+i2c_schedule_pending_master() is that i2c_bus_release() sort of pairs
+with i2c_bus_master(). They either set or clear the bus->bh member.
+
+In the current design, the controller (in this case the Aspeed I2C) is
+an "implicit" master (it does not have a bottom half driving it), so
+there is no bus->bh to clear.
+
+I should (and will) write some documentation on the asynchronous API.
+
+--f1BjjTwSyNKKJ47c
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCgAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmN113EACgkQTeGvMW1P
+Dekvmwf8CGDgu6+G8P4qeT5FE/bIzJVOMN/W2rpeJNHNdbAOCdhsBUqXieaLnk0g
+hzSwwow1nU+uxHRiasM9xoLxPydfP+jyQT8+4Fv546CFq7mi59375DOnqM7AzeRg
+KJeAdUnwhFCvDP+dYUnkJp4L2AptxPfS7RpntV0+9C46Te4aW4E+aDdjSHGXyjr2
+C5KjPbPiImhk+hUaNOenDYqjaifu1zrnJ5xSwey26SgjDinErr7wEE+FgdpmIn3I
+eZKNILEV5Wek5qY3pxcIfmMD5sJxkXye9IB/vBO59zbf4oQ/eJJtfb22Yp/nDzaE
++hqQ8MdItGEMyID/iwBmsK0XnX0OFQ==
+=viUC
+-----END PGP SIGNATURE-----
+
+--f1BjjTwSyNKKJ47c--

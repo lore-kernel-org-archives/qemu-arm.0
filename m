@@ -1,99 +1,99 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp364058ejx;
-        Fri, 18 Nov 2022 08:06:10 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6CQKfvjIX6uGYzoU+asN5TsrSyNs/fZIYrgopeGsF7QqTkiO/VX7dAQ5et1UIb6VHRU/RA
-X-Received: by 2002:ad4:4482:0:b0:4b1:9daa:b53e with SMTP id m2-20020ad44482000000b004b19daab53emr7267767qvt.79.1668787570069;
-        Fri, 18 Nov 2022 08:06:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668787570; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp494817ejx;
+        Fri, 18 Nov 2022 11:01:59 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6hK/yBL1ynxrExVqukjpVmauPi+WtaLiluN+TVyKJu1KCaGioEhlmS+ijTRXenJGK6YoB1
+X-Received: by 2002:a0c:8f02:0:b0:4b3:e485:ab7a with SMTP id z2-20020a0c8f02000000b004b3e485ab7amr8113317qvd.94.1668798119204;
+        Fri, 18 Nov 2022 11:01:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668798119; cv=none;
         d=google.com; s=arc-20160816;
-        b=pyIq0unnSqo4Mn/xgrH2fElFTktfKemqVR1YgDhXqKfqpRM6isHOETkkMHgS2zF1wg
-         sBEWeFMOj+VOxWCOWqZ6fq1Za+RmSm/M4RNiGWSml/KLC6fsJnZhUT+SCRGI/kngtuqQ
-         w+Pf/0PU8kh4FP+0h0StqF0cnA8Zq6RZ4w7/qjZp3lhhXISpnYS1cCOcA/b4VriR9jq3
-         oecJ6vjgqST3x0fiVPT1rc2qXe5whlGpTQnVdrDIUfNFFChaUrPvW4BFwzRRWxS1hBPe
-         eoPDtqrU8tU1V3M7ZtcsG5ZozN1g9vV+6pVPDjypHPzpQX0c4wpOkcPZjqJho6frd3Ve
-         A6bw==
+        b=0QN/KJSfRCql+KYyy7E0k6xIJRxspTUHvemIKQxrAHDqOe5fNhFAqUXyY1SXrsA8O7
+         ZnuKXr+oBu9t54eQguPGkMhwoGCvTsYi+MZ0oo5ird4IgU4jn5e3gYuB277du4dZn0uW
+         arwNe/J7dosv934vWH14Y5/jPp+adbY5E0KQRMLwHLyaXjWC9rLs2AZZVfGzr4Mp8OXJ
+         KA1uM6dzuW+GwRZUml20RDheRJuLLq2+7CW8LLsjDQzakJACQZDP1yQfI5t7POm6Y+/E
+         O4cHYUZ5a8qaMQVlZZVvkvAvMNGX/FmOuD9Mr9olrGFPg3FgrHnxXtqGHP3iW3kstLtS
+         eP1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=bi4ZAZJvkgJv41SrJLHt1DuZHHcsY5lnonEqW8hQ3j4=;
-        b=fofEyWCY8gvBF6Te7sWMrvZJgCpa9Y7EouXTC55SeI7uv79KieXlwD6+r981kR5zS9
-         T4LsIQc8ZMox/fzIE3wJQL0MT4SvmbHqq+vJCe8DA2fmMEEjzImUggwh7tcckI3zliO9
-         1av5t5IBDPifH3TILHdvpNODssJyR5ePHMBKzJIM+4qieESYkpQ5KJruytNrwSe0AOjf
-         tKrNxNE1Pyqy0vmjUyIjESDqyvkg1ShBEMvPHbFnuwz9lfsQml/lOM+ouNAadOAS4wYj
-         f/0jf40Q2BNuo49a8IVNEhzx/jJ5+CPzeiCu9Lzy6h3EIri6QzexFi+JKG0Fn60KsA5h
-         QVRA==
+        bh=g/w7Af8YXFedDR9eCd1f6jYgjnmBPzRtexW409YXHzY=;
+        b=mLZdL8oYrYsQGlGsXKTPToP+esYlB9ivuvO5L+Qa+ULOHaYQBTAHGOC4PC7dLEHdXS
+         6H1jvjjAlOv2eYNX8iyBrV2OLFWmXWlHlyYysFR3Dx3J20hFECEQopuw/lqZ3mpzrc9F
+         86Q6slCRKeO64PXDSsdyjZgEAIs4VFkRD/RWaCt/cRZo29O3QLGlq4VFgurBJ2Hlk7Wg
+         oXBwEqccf4vFRcxxVQGvCrUr4q3mxIEihx21FU6SGWmJqLsUpg+PkIw9clV/+Y9IGY65
+         i+PywJFAYdERNNEx8e8d4I1bvH/25zqgXqST6a0ZZHaYm9CyeRS4YINm7jSsy4CNzusy
+         C9Vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uwAKI4WL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZzYAeblX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fv8-20020a05622a4a0800b003a520b1e2eesi2217738qtb.21.2022.11.18.08.06.08
+        by mx.google.com with ESMTPS id h7-20020ac87447000000b003970f9f8769si2204753qtr.560.2022.11.18.11.01.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Nov 2022 08:06:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Nov 2022 11:01:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uwAKI4WL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZzYAeblX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ow3sN-00005d-R2; Fri, 18 Nov 2022 11:06:00 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ow6bv-0001Za-OV; Fri, 18 Nov 2022 14:01:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ow3s8-000050-W7
- for qemu-arm@nongnu.org; Fri, 18 Nov 2022 11:05:46 -0500
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ id 1ow6bu-0001Z6-5q
+ for qemu-devel@nongnu.org; Fri, 18 Nov 2022 14:01:10 -0500
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ow3s7-0004nf-0h
- for qemu-arm@nongnu.org; Fri, 18 Nov 2022 11:05:44 -0500
-Received: by mail-pl1-x636.google.com with SMTP id g10so4923876plo.11
- for <qemu-arm@nongnu.org>; Fri, 18 Nov 2022 08:05:42 -0800 (PST)
+ id 1ow6bp-0005su-9H
+ for qemu-devel@nongnu.org; Fri, 18 Nov 2022 14:01:09 -0500
+Received: by mail-pg1-x535.google.com with SMTP id n17so5743885pgh.9
+ for <qemu-devel@nongnu.org>; Fri, 18 Nov 2022 11:01:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=bi4ZAZJvkgJv41SrJLHt1DuZHHcsY5lnonEqW8hQ3j4=;
- b=uwAKI4WL2uvffHlebNWmcAOjzw+MDlMMSScYCOpnl2+hXnVon9THTUbV2FllNcd6TV
- S3C4GDsAgYjMEXi2N06ELYq8d/Ni/tIpcMEvvpTvHfZYv+83KAp1vCB2W7RHAMmyQgg6
- TMiEJtAI8YetF8ekEZxRTWxQtECQbx0tSPAPWK/UR3+yYc9wRGNPX9kXs4nyb3Zo1S6W
- yfGRD3cS/PF4fatPrG+zbkdJ7hDX3GcLy2jifTvkKUu2wI8oXn0WUxVmtSNIG1Akpnmz
- ULHSUCS9QzhZju4PNCvrP3xEK5cGTwhw++tX7mnRsKlyE6ssgZRjkAeyd+2UjlZMJq5C
- pNog==
+ bh=g/w7Af8YXFedDR9eCd1f6jYgjnmBPzRtexW409YXHzY=;
+ b=ZzYAeblX6HUWr0mdXQedGWlTI74+UDqAlnGDCeGFzIAJRassPfc4Pp6Uoj9gwbyrcv
+ z3XrcDJILYjcrkNSHqGoWXATU43b6zf2xkDzWSaRd5PsOnZ6GNDVs67nttbTUfnaevDG
+ 6i/6KmbxZrssKKJu2VfjGX2mkGRmo9mfnLX2AKcV9Qg0qrOJtKBQgANMKqp0w2KjQzGe
+ VrxiTIyhJghdf/cS7LcBbgb6/yFOzZ4tuE0QfGUG2BDMM880CdtJoMsIWeIrWPu7JOgm
+ wlQzcbFNjHtH+EIjsdEo4qXB8a/qDde+hvlCTZViwwX3jSN6FmZ6jbfopo9gT6EVr83H
+ 6ytw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=bi4ZAZJvkgJv41SrJLHt1DuZHHcsY5lnonEqW8hQ3j4=;
- b=R7T4EoGvcTQnbEDRYQpQESRQ+Fz+IAIrDjml3LEpgcYD2buSrp+mliT9HoJ4/UbiZ8
- X85EZwXC+WanCCoNCQ00mwMFRDgtLtSETHXa5DjmIhmtoUALQL0I2sMDHLE37G6Qj/5P
- /HK1n6d5I1GUsIJ3CSWDsnmeognc6iezGSYHavEFZ31R80LtnYEekEivj5FY5pCh2Y7R
- dwNz/Kfq3bZAk4C2Wl9WLg6jzErkGjqqdn1MDRug/9dsn0yZSfgrlxv7cfQ0V6SLGor1
- RzLlv1WLobpBiJklEDMOxXBCYyqe6EoldwepaFGIbzCji53tI5ICa4+S7cyWm1uW57xk
- 1W5g==
-X-Gm-Message-State: ANoB5pnz/HLXHf4Oebm0zDQmaJ0fKPurlI276yycr45p+ee5QDiv/74F
- /6CYrFFdLal2lruvNPAinGBteBdfGR/oHSsihtlWKA==
-X-Received: by 2002:a17:902:e950:b0:188:bc8f:5fb2 with SMTP id
- b16-20020a170902e95000b00188bc8f5fb2mr213266pll.48.1668787541420; Fri, 18 Nov
- 2022 08:05:41 -0800 (PST)
+ bh=g/w7Af8YXFedDR9eCd1f6jYgjnmBPzRtexW409YXHzY=;
+ b=3Kzf4j8Zh7Nwqm1/zUzMW0rhiHb/6CrvUn5v2MAztACvIkLrjwypOAZgIgMrJqTUHd
+ 0N4NosC4MqG31z1WRL3PDxHHh0QCgD3m77Aj/SnHoqYhV/RYF65WGhd2nClFCq07VQBK
+ GMoo0l2uZRGTLtWUfGpTqFmDfQMS/oDiNnDHVLg+7Q7SJAE6gGivAymmQKZJwI7yD5nx
+ eh8SzloJOFCgR+K7Oqr9ACO4ISzO+7KDiLFC9yHb+ev8rsWxV3/enqgVbGUCIslKdqyq
+ y/bre+pm3Xm3nM01mEXb3FJy3ULn/54CTKmVELxj4eQpeN8/JpeC9nifBheinLZaXPew
+ cBxA==
+X-Gm-Message-State: ANoB5pl6271hp/lrqWxDhHUjcz1IXF5do/OxyLW32R9IkuK/3b28K3eA
+ 3p2+IXT3MkD5z9ED5zHl1++sWhOfyh9m8Z+kJZL/MA==
+X-Received: by 2002:aa7:9ed0:0:b0:571:8549:89c3 with SMTP id
+ r16-20020aa79ed0000000b00571854989c3mr9100382pfq.26.1668798063431; Fri, 18
+ Nov 2022 11:01:03 -0800 (PST)
 MIME-Version: 1.0
 References: <166783932395.3279.1096141058484230644-0@git.sr.ht>
- <166783932395.3279.1096141058484230644-7@git.sr.ht>
-In-Reply-To: <166783932395.3279.1096141058484230644-7@git.sr.ht>
+ <166783932395.3279.1096141058484230644-9@git.sr.ht>
+In-Reply-To: <166783932395.3279.1096141058484230644-9@git.sr.ht>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 18 Nov 2022 16:05:29 +0000
-Message-ID: <CAFEAcA-TcDhKLFJGpT67OJLq2PG3qk-2S9mbDix7BdviXDeyEg@mail.gmail.com>
-Subject: Re: [PATCH qemu.git v2 7/9] hw/timer/imx_epit: factor out register
- write handlers
+Date: Fri, 18 Nov 2022 19:00:51 +0000
+Message-ID: <CAFEAcA-hDkGMnz4iO_V1FHHPer7uSMuNyzoaJu8wuoHY8NpCgg@mail.gmail.com>
+Subject: Re: [PATCH qemu.git v2 9/9] hw/timer/imx_epit: fix compare timer
+ handling
 To: "~axelheider" <axelheider@gmx.de>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x636.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,39 +102,226 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qgsmNLeSXDaX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5/MYN8mR6WIp
 
 On Mon, 7 Nov 2022 at 16:42, ~axelheider <axelheider@git.sr.ht> wrote:
 >
 > From: Axel Heider <axel.heider@hensoldt.net>
 >
+> - fix #1263
+> - rework compare time handling
+>   - The compare timer has to run even if CR.OCIEN is not set,
+>     as SR.OCIF must be updated.
+>   - The compare timer fires exactly once when the
+>     compare value is less than the current value, but the
+>     reload values is less than the compare value.
+>   - The compare timer will never fire if the reload value is
+>     less than the compare value. Disable it in this case.
+
+If you're correcting behaviour of the timer use here,
+you should start by fixing the way the timers are currently
+created with PTIMER_POLICY_LEGACY. That setting is basically
+"bug-for-bug-compatibility with very old QEMU, for devices
+where nobody really knows what the hardware behaviour should
+be". Where we do know what the hardware's supposed to do and
+we have some way of testing we're not breaking guest code,
+the right thing is to set the correct policy flags for
+the desired behaviour. These are documented in a comment
+near the top of include/hw/ptimer.h.
+
 > Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
 > ---
->  hw/timer/imx_epit.c | 211 ++++++++++++++++++++++++--------------------
->  1 file changed, 115 insertions(+), 96 deletions(-)
+>  hw/timer/imx_epit.c | 188 +++++++++++++++++++++++++++++---------------
+>  1 file changed, 123 insertions(+), 65 deletions(-)
+>
+> diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+> index 77bd2b0a2b..cb2880cabc 100644
+> --- a/hw/timer/imx_epit.c
+> +++ b/hw/timer/imx_epit.c
+> @@ -6,6 +6,7 @@
+>   * Originally written by Hans Jiang
+>   * Updated by Peter Chubb
+>   * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
+> + * Updated by Axel Heider
+>   *
+>   * This code is licensed under GPL version 2 or later.  See
+>   * the COPYING file in the top-level directory.
+> @@ -110,33 +111,84 @@ static uint64_t imx_epit_read(void *opaque, hwaddr offset, unsigned size)
+>      return reg_value;
+>  }
+>
+> -/* Must be called from ptimer_transaction_begin/commit block for s->timer_cmp */
+> -static void imx_epit_reload_compare_timer(IMXEPITState *s)
+> +/*
+> + * Must be called from a ptimer_transaction_begin/commit block for
+> + * s->timer_cmp, but outside of a transaction block of s->timer_reload,
+> + * so the proper counter value is read.
+> + */
+> +static void imx_epit_update_compare_timer(IMXEPITState *s)
+>  {
+> -    if ((s->cr & (CR_EN | CR_OCIEN)) == (CR_EN | CR_OCIEN))  {
+> -        /* if the compare feature is on and timers are running */
+> -        uint32_t tmp = ptimer_get_count(s->timer_reload);
+> -        uint64_t next;
+> -        if (tmp > s->cmp) {
+> -            /* It'll fire in this round of the timer */
+> -            next = tmp - s->cmp;
+> -        } else { /* catch it next time around */
+> -            next = tmp - s->cmp + ((s->cr & CR_RLD) ? EPIT_TIMER_MAX : s->lr);
+> +    uint64_t counter = 0;
+> +    bool is_oneshot = false;
+> +    /* The compare timer only has to run if the timer peripheral is active
+> +     * and there is an input clock, Otherwise it can be switched off.
+> +     */
 
-Good idea (unfortunate that git diff has not shown the change
-in a very clear way, but it does that sometimes). I won't
-review this one for now because changes I've suggested for
-earlier patches are going to affect the detail on this one.
+QEMU coding style wants the "/*" on a line of its own in multiline comments.
 
-(If you don't already, you might try setting
-   git config --global diff.algorithm histogram
-which I think often produces nicer patches. I don't know
-whether it will help in this particular case, though.)
+> +    bool is_active = (s->cr & CR_EN) && imx_epit_get_freq(s);
+> +    if (is_active)
+> +    {
+
+Brace goes on same line as "if".
+
+> +        /*
+> +         * Calculate next timeout for compare timer. Reading the reload
+> +         * counter returns proper results only if pending transactions
+> +         * on it are committed here. Otherwise stale values are be read.
+> +         */
+> +        counter = ptimer_get_count(s->timer_reload);
+> +        uint64_t limit = ptimer_get_limit(s->timer_cmp);
+> +        /* The compare timer is a periodic timer if the limit is at least
+> +         * the compare value. Otherwise it may fire at most once in the
+> +         * current round.
+> +         */
+> +        bool is_oneshot = (limit >= s->cmp);
+> +        if (counter >= s->cmp) {
+> +            /* The compare timer fires in the current round. */
+> +            counter -= s->cmp;
+> +        } else if (!is_oneshot) {
+> +            /*
+> +             * The compare timer fires after a reload, as it below the
+> +             * compare value already in this round. Note that the counter
+> +             * value calculated below can be above the 32-bit limit, which
+> +             * is legal here because the compare timer is an internal
+> +             * helper ptimer only.
+> +             */
+> +            counter += limit - s->cmp;
+> +        } else {
+> +            /*
+> +             * The compare timer wont fire in this round, and the limit is
+
+"won't"
+
+> +             * set to a value below the compare value. This practically means
+> +             * it will never fire, so it can be switched off.
+> +             */
+> +            is_active = false;
+>          }
+> -        ptimer_set_count(s->timer_cmp, next);
+>      }
+> +
+> +    /*
+> +     * Set the compare timer and let it run, or stop it. This is agnostic
+> +     * of CR.OCIEN bit, as this only matters for interrupt generation. The
+> +     * compare timer needs to run in any case, as the SR.OCIF bit must be
+> +     * updated even if no interrupt in generated.
+
+"is generated"
+
+> +     * Note that the timer might already be stopped or be running with
+> +     * counter values. However, finding out when an update is needed and
+> +     * when not is not trivial. It's much easier applying the setting again,
+> +     * as this does not harm either and the overhead is negligible.
+> +     */
+
+It is modestly harmful because the sequence
+   counter = ptimer_get_count(s->timer_reload);
+   ...
+   ptimer_set_count(s->timer_cmp, counter);
+
+will cause the counter to lose or gain time. This happens because when
+you call "get" the ptimer code will look at the current exact
+time in nanoseconds and tell you the counter value at that point.
+That is probably somewhere in the middle of a timer-clock period
+(which runs at whatever frequency you tell the ptimer to use):
+for argument's sake, suppose the timer-clock counts every 1000ns.
+Suppose at the point of the 'get' the next tick will be in 300ns time.
+When you do a "set" that is assumed to be the result of a guest
+register write of some kind, and will effectively start a new
+timer-clock period. This means the next tick will not be for
+a full 1000ns, and we just lost 300ns (or gained 700ns perhaps).
+
+So it's better to avoid this kind of "get-and-then-set" code.
+
+> +    if (is_active) {
+> +        ptimer_set_count(s->timer_cmp, counter);
+> +        ptimer_run(s->timer_cmp, is_oneshot ? 1 : 0);
+> +    } else {
+> +        ptimer_stop(s->timer_cmp);
+> +    }
+> +
+>  }
+
+> @@ -274,16 +326,22 @@ static void imx_epit_cmp(void *opaque)
+>  {
+>      IMXEPITState *s = IMX_EPIT(opaque);
+>
+> -    /* Set the interrupt status flag to signaled. */
+> -    DPRINTF("sr was %d\n", s->sr);
+> -    s->sr = 1;
+> +    if (s->cr & CR_EN) {
+> +        /* Set the interrupt status flag to signaled. */
+> +        DPRINTF("sr was %d\n", s->sr);
+> +        s->sr = 1;
+>
+> -    /*
+> -     * An actual interrupt is generated only if the peripheral is enabled
+> -     * and the interrupt generation is enabled.
+> -     */
+> -    if ((s->cr & (CR_EN | CR_OCIEN)) == (CR_EN | CR_OCIEN)) {
+> -        qemu_irq_raise(s->irq);
+> +        /* If CR,OCIEN is set, an actual interrupt is generated */
+> +        if (s->cr & CR_OCIEN) {
+> +            qemu_irq_raise(s->irq);
+> +        }
+> +    } else {
+> +        /*
+> +         * The cmp ptimer is not supposed to be running when the
+> +         * peripheral is not enabled. Ignore this. However, it's
+> +         * worth investigating why this happened.
+> +         */
+> +        DPRINTF("compare trigger when timer not enabled\n");
+
+Is this a "can't happen, it would be a bug in this code"? If so,
+use assert(). If it's a "guest code can program the timer in
+silly ways" situation then either do what the hardware does
+or (if it's not clear what that is) do something plausible.
+You can use qemu_log_mask(LOG_GUEST_ERROR, ...) to log things
+which are "guest has done something silly" if you like.
+
+More generally, please don't introduce new uses of the DPRINTF
+macro. For cases which are "this can be useful to the user to
+log for debugging either the driver or their guest code" we
+have a trace-events facility, where you put a line into
+hw/timer/trace-events that specifies the prototype and format
+string for the trace event, and then call a corresponding
+trace_whatever() function in the code. Some of the other timer
+devices do this, if you want to look at how it works.
+Older device models like this one still use debug-print macros,
+but they're not good practice in new code.
 
 thanks
 -- PMM

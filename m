@@ -1,219 +1,249 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1264245ejx;
-        Thu, 17 Nov 2022 05:40:56 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5rvLm6p55r0lpZxnqap/Cl731uf0zh30XzZ9KgyzXq3kf5hP9rnVbNLX/W87/v9tGqTqq2
-X-Received: by 2002:ac8:1306:0:b0:3a5:9fb3:ba72 with SMTP id e6-20020ac81306000000b003a59fb3ba72mr2064394qtj.617.1668692456659;
-        Thu, 17 Nov 2022 05:40:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668692456; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp273076ejx;
+        Fri, 18 Nov 2022 06:12:41 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7kgPKGAMNHttowgJGwhTlTfS3rY2pZYQAYyGLCgO7Lj2ObuEKbinoojRVW2uxbWY/ES6mI
+X-Received: by 2002:a05:622a:1e8c:b0:3a5:62:af4f with SMTP id bz12-20020a05622a1e8c00b003a50062af4fmr6537014qtb.431.1668780761687;
+        Fri, 18 Nov 2022 06:12:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668780761; cv=none;
         d=google.com; s=arc-20160816;
-        b=kLGL1RjJr7PAMgzio26dL68S7jJ27sNKMh+i83B61BfI7YQmvH9K7DhbRb5LE9i3M5
-         dfaU3/oND2/t9w2cLLFawR1uSYwnnUYGLr+o/yZkMOrGTWAzoNh1uO1hxon4JCynuwEC
-         dETyOjgnZs4YlV3RV1e0s49NoEiqbF5luxdSSZgdQJ/DsIa56fTe70OPyYIqc0z6sWWf
-         gcFpCd+liQIRx/6MHmoYIq/4h3OwDsPiMYRuKXkkqH9A/nQGiCDIOVPiWUH6NzVSeZER
-         Fyg2+y5t10hBc1iVaoSINHLRRAJCW8alKOSTeGdBJ2jM/epBd0HqTzfWIOWYwCbG7QUc
-         qLbw==
+        b=xj2TJPNpLBYdvby2y8lb5qJPBaLEW2M47/PAddsxH5Gr+w52brHkR6341Vl2bqwbKC
+         POkM3SBwDLW18gKKgB7CPq8trc8X3GUzyTlpUEt2Gbmc7J28D8m3sfgythA5lKFbRrq7
+         mqsVMQku+19qWLSpie8ryuyO6LcnClzog8AL8uwFdkw0GP5eQdUVu1faQ5mUMv4P0ZjF
+         USK7Auy0EgicbM7KX6/2q5aAO5u1gU9rRjtTWAOlZNvF/xgw4ZfGR9uosLryUZU+h8xf
+         q3UR1ToYCTUAeQyFvzSQMCwz5mk+qOTNELzhVvlHa72lkiPlRF3JFRLkWLhGJjo2XKfh
+         dCBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=j/3dAh/dRwG++iE9EBxrXAb69njwhKV2S96eUi7oCC4=;
-        b=OXFUlKY1IYW1bvo1ckDFIhTa96zoEm8D6NC8IyJFCVm2fy+5+f27CqFPIqaOhT4Uvz
-         rcofLB7A7+QofbZ0mp5uGa++cui6bfD90GONII3ejHWbkHcisxt5yAA2ifUuBbEP1+Ni
-         i851CFG+Klkf+oJYc6uLJ1TjBEsY3+PCpJJUE+id6hs3o1SNLnuLJyIvpkwQFtiNjaS0
-         vMEqDp7QBWL7JucZySqSJDtYyY6DrswslB2+sYIPzz3w0MSDG+IAtND08wIonVGE7cfw
-         Pi6ja4yRxOijyEhV9FYoBf8mNkQHyp/+I/prErW56WBCENPjAfEksxpmTIdScbJVWjV0
-         wpgA==
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=/wSohw/W7bgCsvhQamLahjPWqdXNnc2y0sFvcI06aT8=;
+        b=T9FJb3Uq3k4IKKmk43KwJO3XWXEQxKnqmhBInkPxQF7b064YMNUnXLPaby+p80VI0t
+         rInIRoeVqlqVHiStUOGXgjtzgEX78ULuScldvT5TdfN4qiDwdkDO+1SHqiy2LPKQRB9D
+         8XdIImCjR3hRpbJIhum1gvTYuiZBJeGB/QzjyYEjmhVmEE+XCtuqJfJKtOT1DEZvDR1N
+         WNPscq/kCBmk6572JV3SUxLaZiCVvx+ja+5gIo8VyYMB98t146GcGmvpUrZ6fsCHN4p/
+         PVeo6t6T9Ilp+1YUlJCKD0EX0PEUiW/YoMrCmL6aSZKctHIvTbXWxRGUMnFtW4ointFa
+         y3fA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pv0o7HYb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eq13-20020ad4596d000000b004c624ad2f5dsi421079qvb.322.2022.11.17.05.40.56
+        by mx.google.com with ESMTPS id t2-20020a0562140c6200b00496b2053145si1926843qvj.41.2022.11.18.06.12.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Nov 2022 05:40:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Nov 2022 06:12:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pv0o7HYb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ovf8B-0004ru-C4; Thu, 17 Nov 2022 08:40:39 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ow26M-0003wY-Hk; Fri, 18 Nov 2022 09:12:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ovf89-0004r6-B0; Thu, 17 Nov 2022 08:40:37 -0500
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ow26L-0003wG-5r
+ for qemu-arm@nongnu.org; Fri, 18 Nov 2022 09:12:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ovf87-0001xA-CC; Thu, 17 Nov 2022 08:40:37 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.235])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id A849F13FFB3E6;
- Thu, 17 Nov 2022 14:40:30 +0100 (CET)
-Received: from kaod.org (37.59.142.96) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Thu, 17 Nov
- 2022 14:40:29 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R0015ea10662-7451-4875-8c3e-4ed45b66f22d,
- AE5717285A2AC47C671D2CB192D1CF6730B7D7F3) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <15100caa-4c03-a166-7ce3-fe1d30471a30@kaod.org>
-Date: Thu, 17 Nov 2022 14:40:27 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ow26J-0008E4-CY
+ for qemu-arm@nongnu.org; Fri, 18 Nov 2022 09:12:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1668780734;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/wSohw/W7bgCsvhQamLahjPWqdXNnc2y0sFvcI06aT8=;
+ b=Pv0o7HYbciCjGFY1fQ6WYC/5iOyoacNfnaPmHj96VRIb9Z9+iBI2kBsUSUzZPIhqcwA0UF
+ 2U2f7SA9MUEpZIIjeIwP1gmJio0HuvbMQ/C/ntWpBwRyEPKwmHz0o2Djym+8f41WFloRS8
+ Jk02O5zzHTfnb/3pFsgjOSidLayxM+E=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-392-m3LK92NYNqWV8XPQ7JfLng-1; Fri, 18 Nov 2022 09:12:12 -0500
+X-MC-Unique: m3LK92NYNqWV8XPQ7JfLng-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ c10-20020a7bc84a000000b003cf81c2d3efso1181831wml.7
+ for <qemu-arm@nongnu.org>; Fri, 18 Nov 2022 06:12:12 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=/wSohw/W7bgCsvhQamLahjPWqdXNnc2y0sFvcI06aT8=;
+ b=14bp1HXQ0+21TYpYjg+2Lzk2b38iVeaLge5THtKj8mKoaGdMclAo2gdlaOm/PU84TO
+ BFE19qpnVGmDz40wQZfBKYHZPcm9/mcxODP7yJc3mmHCJGXYjCR2RNb5kaDUxCf4ZLyL
+ 331UrNnOkt5Ne9t0vaswWQRCMnD1oLbuooKU2Hyjn8gpGdbxRgHGKmEHN9K4er/vq3Gr
+ /qp1+Lptwrk5h5N8se5LVLujhZkLhYVy+54VocswS1arv/wIDTaUWql1+7LXk/MxqxQ0
+ pgxghWwExO2oXBvg/RtRPuF98/u094V7jjsJoGlHzQw1CFEPih+xcVnUY6cEE4CLhvqU
+ HopQ==
+X-Gm-Message-State: ANoB5pmAoUN1Th7agFzxFQa/buOP5H+MvdMN8yRZm/vOTNFcdzzW0LWf
+ M768+86TuZ/tECZsMlJxdWqdBUBz/QVu1rFILGhhacHR+ax2/IlsmOl7YYffhH6iyUseS9uulgX
+ O9f16wXLSfLsG
+X-Received: by 2002:a05:600c:4211:b0:3c6:b656:5b52 with SMTP id
+ x17-20020a05600c421100b003c6b6565b52mr8723141wmh.1.1668780731672; 
+ Fri, 18 Nov 2022 06:12:11 -0800 (PST)
+X-Received: by 2002:a05:600c:4211:b0:3c6:b656:5b52 with SMTP id
+ x17-20020a05600c421100b003c6b6565b52mr8723099wmh.1.1668780731276; 
+ Fri, 18 Nov 2022 06:12:11 -0800 (PST)
+Received: from [192.168.0.5] (ip-109-43-177-78.web.vodafone.de.
+ [109.43.177.78]) by smtp.gmail.com with ESMTPSA id
+ i14-20020adff30e000000b002368a6deaf8sm3718594wro.57.2022.11.18.06.12.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 18 Nov 2022 06:12:10 -0800 (PST)
+Message-ID: <57f8506b-5c82-9b8b-57c9-02992963f2c4@redhat.com>
+Date: Fri, 18 Nov 2022 15:12:08 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Subject: Re: [PATCH maybe-7.2 1/3] hw/i2c: only schedule pending master when
- bus is idle
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH for-8.0] hw: Add compat machines for 8.0
+To: Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org
+References: <20221111124534.129111-1-cohuck@redhat.com>
+ <32f9a700-28f3-ada6-9526-c53cdcd3b5ac@redhat.com> <87pmdksh6k.fsf@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <87pmdksh6k.fsf@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Klaus Jensen <its@irrelevant.dk>
-CC: <qemu-devel@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>, Keith Busch
- <kbusch@kernel.org>, Corey Minyard <cminyard@mvista.com>, Peter Delevoryas
- <peter@pjd.dev>, <qemu-arm@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>, <qemu-block@nongnu.org>, Jeremy Kerr
- <jk@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Klaus Jensen
- <k.jensen@samsung.com>
-References: <20221116084312.35808-1-its@irrelevant.dk>
- <20221116084312.35808-2-its@irrelevant.dk>
- <8dd9ed34-93c3-0638-e152-f619f9e097e6@kaod.org>
- <Y3XXcWUnntBrIXq+@cormorant.local>
- <6bfe7b2e-2e4f-c286-530a-b0342f9107a0@kaod.org>
- <Y3Xktt8b85RvJ89A@cormorant.local>
- <465b2d2e-5958-d63f-02dc-cf96dd1d459e@kaod.org>
- <Y3YiAhXX1FKuYMoc@cormorant.local>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <Y3YiAhXX1FKuYMoc@cormorant.local>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 9fc5d7ef-695d-4cfa-8d39-8e04ae33fd2c
-X-Ovh-Tracer-Id: 4165266707627674616
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvgedrgeekgdehgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffdufeeliedujeeffffhjeffiefghffhhfdvkeeijeehledvueffhfejtdehgeegnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepihhtshesihhrrhgvlhgvvhgrnhhtrdgukhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdprghnughrvgifsegrjhdrihgurdgruhdpkhgsuhhstghhsehkvghrnhgvlhdrohhrghdptghmihhnhigrrhgusehmvhhishhtrgdrtghomhdpphgvthgvrhesphhjugdruggvvhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhqvghmuhdqsghlohgtkhesnhhonhhgnhhurdhorhhgpdhjkhestghouggvtg
- honhhsthhruhgtthdrtghomhdrrghupdhjohgvlhesjhhmshdrihgurdgruhdpkhdrjhgvnhhsvghnsehsrghmshhunhhgrdgtohhmpdfovfetjfhoshhtpehmohehvdelpdhmohguvgepshhmthhpohhuth
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 59p4oOH/ssLC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AEFP03ian3Gv
 
-On 11/17/22 12:58, Klaus Jensen wrote:
-> On Nov 17 09:01, Cédric Le Goater wrote:
->> On 11/17/22 08:37, Klaus Jensen wrote:
->>> On Nov 17 07:56, Cédric Le Goater wrote:
->>>> On 11/17/22 07:40, Klaus Jensen wrote:
->>>>> On Nov 16 16:58, Cédric Le Goater wrote:
->>>>>> On 11/16/22 09:43, Klaus Jensen wrote:
->>>>>>> From: Klaus Jensen <k.jensen@samsung.com>
->>>>>>>
->>>>>>> It is not given that the current master will release the bus after a
->>>>>>> transfer ends. Only schedule a pending master if the bus is idle.
->>>>>>>
->>>>>>> Fixes: 37fa5ca42623 ("hw/i2c: support multiple masters")
->>>>>>> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
->>>>>>> ---
->>>>>>>      hw/i2c/aspeed_i2c.c  |  2 ++
->>>>>>>      hw/i2c/core.c        | 37 ++++++++++++++++++++++---------------
->>>>>>>      include/hw/i2c/i2c.h |  2 ++
->>>>>>>      3 files changed, 26 insertions(+), 15 deletions(-)
->>>>>>>
->>>>>>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
->>>>>>> index c166fd20fa11..1f071a3811f7 100644
->>>>>>> --- a/hw/i2c/aspeed_i2c.c
->>>>>>> +++ b/hw/i2c/aspeed_i2c.c
->>>>>>> @@ -550,6 +550,8 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
->>>>>>>              }
->>>>>>>              SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_STOP_CMD, 0);
->>>>>>>              aspeed_i2c_set_state(bus, I2CD_IDLE);
->>>>>>> +
->>>>>>> +        i2c_schedule_pending_master(bus->bus);
->>>>>>
->>>>>> Shouldn't it be i2c_bus_release() ?
->>>>>>
->>>>>
->>>>> The reason for having both i2c_bus_release() and
->>>>> i2c_schedule_pending_master() is that i2c_bus_release() sort of pairs
->>>>> with i2c_bus_master(). They either set or clear the bus->bh member.
->>>>>
->>>>> In the current design, the controller (in this case the Aspeed I2C) is
->>>>> an "implicit" master (it does not have a bottom half driving it), so
->>>>> there is no bus->bh to clear.
->>>>>
->>>>> I should (and will) write some documentation on the asynchronous API.
->>>>
->>>> I found the routine names confusing. Thanks for the clarification.
->>>>
->>>> Maybe we could do this rename  :
->>>>
->>>>     i2c_bus_release()             -> i2c_bus_release_and_clear()
->>>>     i2c_schedule_pending_master() -> i2c_bus_release()
->>>>
->>>> and keep i2c_schedule_pending_master() internal the I2C core subsystem.
->>>>
+On 18/11/2022 11.14, Cornelia Huck wrote:
+> On Fri, Nov 18 2022, Thomas Huth <thuth@redhat.com> wrote:
+> 
+>> On 11/11/2022 13.45, Cornelia Huck wrote:
+>>> Add 8.0 machine types for arm/i440fx/m68k/q35/s390x/spapr.
 >>>
->>> How about renaming i2c_bus_master to i2c_bus_acquire() such that it
->>> pairs with i2c_bus_release().
+>>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>>> ---
+>> ...
+>>> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+>>> index 0ad0ed160387..1c0a7b83b545 100644
+>>> --- a/hw/i386/pc_piix.c
+>>> +++ b/hw/i386/pc_piix.c
+>>> @@ -435,7 +435,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>>>        machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+>>>    }
+>>>    
+>>> -static void pc_i440fx_7_2_machine_options(MachineClass *m)
+>>> +static void pc_i440fx_8_0_machine_options(MachineClass *m)
+>>>    {
+>>>        PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>>>        pc_i440fx_machine_options(m);
+>>> @@ -444,6 +444,18 @@ static void pc_i440fx_7_2_machine_options(MachineClass *m)
+>>>        pcmc->default_cpu_version = 1;
 >>
->> Looks good to me.
+>> Instead of renaming pc_i440fx_7_2_machine_options() and introducing a new
+>> pc_i440fx_7_2_machine_options() below, what about moving
+>> pcmc->default_cpu_version = 1 into pc_i440fx_machine_options() instead, like
+>> it is done with all other options? Then you could introduce a completely new
+>> pc_i440fx_8_0_machine_options() which would be way more logical (also when
+>> looking at this file with "git blame" later).
 >>
->>> And then add an i2c_bus_yield() to be used by the controller? I think we
->>> should be able to assert in i2c_bus_yield() that bus->bh is NULL. But
->>> I'll take a closer look at that.
+>>>    }
+>>>    
+>>> +DEFINE_I440FX_MACHINE(v8_0, "pc-i440fx-8.0", NULL,
+>>> +                      pc_i440fx_8_0_machine_options);
+>>> +
+>>> +static void pc_i440fx_7_2_machine_options(MachineClass *m)
+>>> +{
+>>> +    pc_i440fx_8_0_machine_options(m);
+>>> +    m->alias = NULL;
+>>> +    m->is_default = false;
+>>> +    compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+>>> +    compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
+>>> +}
+>>> +
+>>>    DEFINE_I440FX_MACHINE(v7_2, "pc-i440fx-7.2", NULL,
+>>>                          pc_i440fx_7_2_machine_options);
+>>>    
+>>> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+>>> index a496bd6e74f5..10bb49f679b0 100644
+>>> --- a/hw/i386/pc_q35.c
+>>> +++ b/hw/i386/pc_q35.c
+>>> @@ -370,7 +370,7 @@ static void pc_q35_machine_options(MachineClass *m)
+>>>        m->max_cpus = 288;
+>>>    }
+>>>    
+>>> -static void pc_q35_7_2_machine_options(MachineClass *m)
+>>> +static void pc_q35_8_0_machine_options(MachineClass *m)
+>>>    {
+>>>        PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>>>        pc_q35_machine_options(m);
+>>> @@ -378,6 +378,17 @@ static void pc_q35_7_2_machine_options(MachineClass *m)
+>>>        pcmc->default_cpu_version = 1;
 >>
->> I am using your i2c-echo slave device to track regressions in the Aspeed
->> machines. May be we could merge it for tests ?
+>> dito
 >>
+>>>    }
+>>>    
+>>> +DEFINE_Q35_MACHINE(v8_0, "pc-q35-8.0", NULL,
+>>> +                   pc_q35_8_0_machine_options);
+>>> +
+>>> +static void pc_q35_7_2_machine_options(MachineClass *m)
+>>> +{
+>>> +    pc_q35_8_0_machine_options(m);
+>>> +    m->alias = NULL;
+>>> +    compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+>>> +    compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
+>>> +}
+>>> +
+>>>    DEFINE_Q35_MACHINE(v7_2, "pc-q35-7.2", NULL,
+>>>                       pc_q35_7_2_machine_options);
+>>>    
+>>
+>> Would it make sense to remove the m->alias = NULL from the 7.1 and earlier
+>> machine types now?
 > 
-> Oh, cool.
-> 
-> Sure, I'd be happy to help "maintain" it ;)
+> Hm, all of this is how we've done machine type updates for the last few
+> years :) We can certainly clean up the redundant stuff, but I'd prefer
+> to do that via a separate patch.
 
-And so, I am seeing errors with the little POC you sent.
+OK, that's fair. I'll try to come up with a patch or two if nobody beats me 
+to it once the 8.0 development phase starts.
 
-without:
-   
-   console: echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
-   console: # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
-   console: [    4.252431] i2c i2c-3: new_device: Instantiated device slave-24c02 at 0x64
-   console: i2cset -y 3 0x42 0x64 0x00 0xaa i
-   /console: # i2cset -y 3 0x42 0x64 0x00 0xaa i
-   console: # hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom
-   console: 0000000 ffaa ffff ffff ffff ffff ffff ffff ffff
-   console: poweroff
-   console: 0000010 ffff ffff ffff ffff ffff ffff ffff ffff
-   console: *
-   console: 0000100
+  Thomas
 
-with:
-   
-   console: echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
-   console: # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
-   console: [    4.413210] i2c i2c-3: new_device: Instantiated device slave-24c02 at 0x64
-   console: i2cset -y 3 0x42 0x64 0x00 0xaa i
-   console: # i2cset -y 3 0x42 0x64 0x00 0xaa i
-   console: # hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom
-   console: 0000000 ffff ffff ffff ffff ffff ffff ffff ffff
-   console: *
-   console: 0000100
-   
-C.

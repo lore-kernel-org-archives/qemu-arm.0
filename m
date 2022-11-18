@@ -1,95 +1,136 @@
-Received: by 2002:a05:7022:459c:b0:46:f5cc:2c85 with SMTP id cf28csp104974dlb;
-        Thu, 17 Nov 2022 22:16:33 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4TW7qMH1hTlj68G1QF/q2U3HBs4cYR19lr46ZEioaf7iC9iu/FzLofu95S2N+/45+Ko4xm
-X-Received: by 2002:ac8:7216:0:b0:3a5:fbf9:1f40 with SMTP id a22-20020ac87216000000b003a5fbf91f40mr5368379qtp.323.1668752193831;
-        Thu, 17 Nov 2022 22:16:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668752193; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp15218ejx;
+        Thu, 17 Nov 2022 23:00:18 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4F8HniBhepjlLYs0oEoiDa3OBbRKeRXhqiOsBNx234Wt5ARWIfnOXzws9zwW9JXcLOIXzn
+X-Received: by 2002:a05:622a:1b0b:b0:3a5:454e:4ec with SMTP id bb11-20020a05622a1b0b00b003a5454e04ecmr5613494qtb.67.1668754818186;
+        Thu, 17 Nov 2022 23:00:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1668754818; cv=none;
         d=google.com; s=arc-20160816;
-        b=aBicoigc5x/SVIfyJ9sq2fUw+d9KoCgwU6cdlc8zckzXhB/7KglfRvskvVOb+fYUww
-         qRe7Q5uL+xxs8yOnCaQ9PiqY3lEJFaonJC+DDJneppXK4sEWa8wvUYegkeumfQ3bPUpb
-         BSEYR4RQjwEBZy/YQldBT0tv9oT0bjM4Sm8vgg38AnQ3H37YCz52tRB0RYS6RuhyNbXP
-         sAnx7INqSwzpAxmmfZ2tT+Ba3Ke9DU8sXF/vlJFyRY5Z9ELiX/lFVccKFMDU4aqt2hyG
-         wk75YOGHHwUPlofCdhViBF4rEVKCYF4Pj3vOKbZ168FC7CXj55uygyfv4Xg/F/0AyK3d
-         /uRA==
+        b=VCFiEQfRDFj+XFsrrIRXUib+lEqma5ioh01ArVhTDu0w9siEHY/TT5djIzpt/MRHuX
+         ordw/Swar1JU25WqPDboVz0YmQCDEHrqtzaWHCVEtXebI+Yp7SVnR0FKNl2hDwS/OlDb
+         1WeFAthSfUNPOBnbo+u5aPdWdZrJzxbaDnxEIxZb3AwUQ/Cj88KLr9Ub9J1410pblYsh
+         /Tgtfodu6l8GpdogpuPAtsK1x6wrGV/+fTM3IU5geXcv/m+Gf01xynGDmIR9Qql4k534
+         WsjhpWi1Mx1mkaRRzPUC+s2rGggJuouzBxx/yTEbbBsa6Hz9nTy2gY3Hos51eOOxVboB
+         aRug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=AoeLfpwjhGucJ0mk+CgAZN3heDtSf281OPv5BqgGRoI=;
-        b=HFurCVVEAW3E8iFB9NHO+1SmVE/9QA8hKNsvIcC8h1d0w0wtggigheEywTqs4hbej4
-         MiewxUZl05HA6MW4fq3iRAD3v5Y4ZVOFqitoVrlvVeF4HhecbZXJ5lxphF21L6BKOHqN
-         YkFckpkMX2EnhwYa/MfBayfZog33/reBWa5lmSn3EE1hn6gq3353I/l3XgNzQ5RH328f
-         29rhQ7f7I/dMRERcQg0wopys2janLwfkQ9RFqTedBuomeEqdXyAM8jI+BRX/4Bf6GEnK
-         CKTR40SbErGlfP8UxWUmPQiAA4zOxibwk1CdIEnrWdrzgoy1Szimt0fR3dWQYef5Wm9m
-         zYWg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=pW6Kgx4cj+nlQORhSJz95x6N6ZJaQS3qrgFFcVd4b28=;
+        b=ViCUwvPy4/v258qF9WCcPMcatvAYoipjNNbKWRutIyhtRGDkPX/HCT4P/mPmRaLX8c
+         4uGzHC2QxQEetF/I3oe3kH+Hg6QOrWp1sWqs8c+vM0zvVW/NUJZLPo3DTvQrJuKMhv1k
+         3mXMrE41QTvTF8PoZjnOmTofypfkEmhy0nKCQ3f3FD/0IoOlXl+ygZosoWxj4XFF5+a8
+         i0fO3G/PyfD1q5ahH+cLWK7gru4zw4MQX5xSW0mctAEdF4r9CpIJN8ZRYglNH7kbcE01
+         vYcuJn1+96jc1ZRGU4hml/8p66HDFelyGzwnvSfqb788z4f2n0OYkNeq6/pXlp4HhV71
+         xzHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=Dy0sGL5M;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=a06gxQ+p;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=eiaK6jn9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v9-20020a05620a440900b006f107aac53asi1642755qkp.759.2022.11.17.22.16.33
+        by mx.google.com with ESMTPS id cj16-20020a05622a259000b00399155bfd0esi1603762qtb.311.2022.11.17.23.00.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Nov 2022 22:16:33 -0800 (PST)
+        Thu, 17 Nov 2022 23:00:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=Dy0sGL5M;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=a06gxQ+p;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=eiaK6jn9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ovufQ-00074b-Bp; Fri, 18 Nov 2022 01:16:00 -0500
+	id 1ovvM0-0002Ks-6A; Fri, 18 Nov 2022 02:00:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jk@codeconstruct.com.au>)
- id 1ovufN-00073J-V8; Fri, 18 Nov 2022 01:15:57 -0500
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1ovvLj-0002Fd-Oa; Fri, 18 Nov 2022 01:59:44 -0500
+Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jk@codeconstruct.com.au>)
- id 1ovufK-0003nY-Qz; Fri, 18 Nov 2022 01:15:57 -0500
-Received: from pecola.lan (unknown [159.196.93.152])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id D65D620032;
- Fri, 18 Nov 2022 14:15:43 +0800 (AWST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1668752145;
- bh=AoeLfpwjhGucJ0mk+CgAZN3heDtSf281OPv5BqgGRoI=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=Dy0sGL5MYnGFKOdD/CHvfM1MDU0Phbtaer7539InMUKsYRlrpKMa7cbhiHfIJvh9y
- savfv+j7PrIgjZiEbB868+IAPOijcqpmPukWDHOcjfWxB3fAsFzU8OCVXrwgaSz+Hk
- TM8e3LatxetsFVQ/vBoU7CzTTGDOXyN6z2ic+/lmdR+5TnAm6FPoQ5pF64cd3omnvS
- +POkKBI97xTzoZhVU8UqwUT125IEdBkxhoUi9NRSh8a4f1uDG2ixGnqn2tQSxw1+cV
- qoMI+A8yYulq44HEeXSAl4lfVO8eoKW/rIGmiPwcoiDiA257k2V7P7AwH1+l50HDM3
- t66E3GsBZPfdw==
-Message-ID: <be1a8590ee2f06d159987c45f85b4552695f8ed1.camel@codeconstruct.com.au>
-Subject: Re: [PATCH RFC 2/3] hw/i2c: add mctp core
-From: Jeremy Kerr <jk@codeconstruct.com.au>
-To: Klaus Jensen <its@irrelevant.dk>, qemu-devel@nongnu.org
-Cc: Andrew Jeffery <andrew@aj.id.au>, Keith Busch <kbusch@kernel.org>, Corey
- Minyard <cminyard@mvista.com>, Peter Delevoryas <peter@pjd.dev>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Joel Stanley <joel@jms.id.au>, 
- =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Klaus Jensen
- <k.jensen@samsung.com>, Matt Johnston <matt@codeconstruct.com.au>
-Date: Fri, 18 Nov 2022 14:15:43 +0800
-In-Reply-To: <d8a8549c6fc29650131046ee00b7968ebedf886b.camel@codeconstruct.com.au>
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1ovvLh-0001OS-5i; Fri, 18 Nov 2022 01:59:43 -0500
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.west.internal (Postfix) with ESMTP id E82FE3200932;
+ Fri, 18 Nov 2022 01:59:34 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Fri, 18 Nov 2022 01:59:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm3; t=1668754774; x=1668841174; bh=pW
+ 6Kgx4cj+nlQORhSJz95x6N6ZJaQS3qrgFFcVd4b28=; b=a06gxQ+pl1He0Dn20Q
+ 3OxfN7T6oEVSHvyOOTQl+NX72SUu111gebauuurSb7HTNu/3mr23B6ZU6aZaEhtK
+ KJMQR9i70gmDfY/byac4Gda546G7/M88wEoGdEz5hD6/5/LU85/DIR9U+ToPnWnC
+ CaTw53NCqVqcjyPBGoSd1D6nteJjvQMS/LMygF6p/oDaQx/suPtGTwOMNa52iD6r
+ vvBKoqYALje4BzvKKUQovDe1R1KH1Jbtniy+Hrakk7xw+BS0ZEcwTFQs/u1mAtb3
+ +eKi0SZzT59EHGj+UUytIbc1iEMXJN+Uqk7znp4gAssDPa8UW+9Xq9WLR26+gRp7
+ Tf0A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+ :feedback-id:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm1; t=1668754774; x=1668841174; bh=pW6Kgx4cj+nlQORhSJz95x6N6ZJa
+ QS3qrgFFcVd4b28=; b=eiaK6jn9TIEePt+yX/M3jgJvn9V8/gLP932gMgLaJ3C9
+ IzjHWyelxDKXNuiEmpltlGNgpKKgc3gkXknTvWxren7X3jPmmVfDX0L5FUTFfxCa
+ BcX+SyS7lTETe2PLyUFFp7JGKWO/HjerDsOXha3csxBudYEh6pNYWLtbW6VUWDdE
+ Bpwb/6Q+GmMkF5lIQmSojDrPggVsxj4e1YBZVPRx+YZIydbH44ur8pcn40aRTm6H
+ +yy/IMeUWpaFfiuHjl/PaQ90hu6gPaNg99cDgvwCE4Z2Tt7nr4Y7ZJfWrtg58GqT
+ IQysrVe49aQt3Q3Re74xDMLhlIMEBcx9buV0tV6gZQ==
+X-ME-Sender: <xms:VS13Y9q000UpdFUh7eWJtWVYoXCJ7a9VgtaFwUiZ_GtGvwcHjLHbsA>
+ <xme:VS13Y_r4jfw39phFJJ-PH7tYMKPzxTmWDc4K7Jp6p4eNV4mEqNQFUtY8zxzAHQ-U2
+ k39eZB-6blJwPgRzho>
+X-ME-Received: <xmr:VS13Y6P2-1-6nzXfeUO_AXOWNO8IuzleNcf6B2hfMUoVC3TyXN5X7L5xjUsD498sHnbxBtL8CW-vFcoLKYgjAffVdLX4Vw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrgeelgddutddvucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghu
+ shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
+ htvghrnhepjefgjeefffdvuefhieefhffggfeuleehudekveejvedtuddugeeigeetffff
+ jeevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
+ htshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:VS13Y47hBTvN8gHzPYMtdu0LWmbHdiwIIlOhAz9QxAalfvn3acrDag>
+ <xmx:VS13Y85hUrk-KpmfO9NIhVVzcSLZCm2iZ_80Bb9jhgbqdKJK0LnFjw>
+ <xmx:VS13YwhVwTrq6IiHA7fISKlRsYcnjSmvXsjYOnhCzwqB-mpKZJdtQw>
+ <xmx:Vi13Y8i59jN3naGkGmM67_-7l9XomxvOoDobjMr9yVacHe6pUA730Q>
+Feedback-ID: idc91472f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 18 Nov 2022 01:59:31 -0500 (EST)
+Date: Fri, 18 Nov 2022 07:59:29 +0100
+From: Klaus Jensen <its@irrelevant.dk>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Cc: qemu-devel@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Keith Busch <kbusch@kernel.org>, Corey Minyard <cminyard@mvista.com>,
+ Peter Delevoryas <peter@pjd.dev>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Jeremy Kerr <jk@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Klaus Jensen <k.jensen@samsung.com>
+Subject: Re: [PATCH maybe-7.2 1/3] hw/i2c: only schedule pending master when
+ bus is idle
+Message-ID: <Y3ctUbaowmewOQuc@cormorant.local>
 References: <20221116084312.35808-1-its@irrelevant.dk>
- <20221116084312.35808-3-its@irrelevant.dk>
- <d8a8549c6fc29650131046ee00b7968ebedf886b.camel@codeconstruct.com.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.1-1 
+ <20221116084312.35808-2-its@irrelevant.dk>
+ <8dd9ed34-93c3-0638-e152-f619f9e097e6@kaod.org>
+ <Y3XXcWUnntBrIXq+@cormorant.local>
+ <6bfe7b2e-2e4f-c286-530a-b0342f9107a0@kaod.org>
+ <Y3Xktt8b85RvJ89A@cormorant.local>
+ <465b2d2e-5958-d63f-02dc-cf96dd1d459e@kaod.org>
+ <Y3YiAhXX1FKuYMoc@cormorant.local>
+ <15100caa-4c03-a166-7ce3-fe1d30471a30@kaod.org>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=jk@codeconstruct.com.au; helo=codeconstruct.com.au
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="JKoW8XXF55sI3fLG"
+Content-Disposition: inline
+In-Reply-To: <15100caa-4c03-a166-7ce3-fe1d30471a30@kaod.org>
+Received-SPF: pass client-ip=64.147.123.24; envelope-from=its@irrelevant.dk;
+ helo=wout1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,113 +146,148 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 27IMCxXpjsJ4
-
-Hi Klaus,
-
-> With those changes, I can get control protocol going, and multi-
-> packet messages work.
-
-Ah, I also needed a change to the aspeed I2C driver, as I'm seeing
-the interrupt handler being invoked with both a stop and a start event
-pending.
-
-Patch below; if this seems sensible I will propose upstream.
-
-Cheers,
+X-TUID: vzd6OadMoosC
 
 
-Jeremy
+--JKoW8XXF55sI3fLG
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
----
-From 6331cf2499c182606979029d2aaed93ee3e544fa Mon Sep 17 00:00:00 2001
-From: Jeremy Kerr <jk@codeconstruct.com.au>
-Date: Fri, 18 Nov 2022 14:04:50 +0800
-Subject: [PATCH] i2c: aspeed: Allow combined STOP & START irqs
+On Nov 17 14:40, C=C3=A9dric Le Goater wrote:
+> On 11/17/22 12:58, Klaus Jensen wrote:
+> > On Nov 17 09:01, C=C3=A9dric Le Goater wrote:
+> > > On 11/17/22 08:37, Klaus Jensen wrote:
+> > > > On Nov 17 07:56, C=C3=A9dric Le Goater wrote:
+> > > > > On 11/17/22 07:40, Klaus Jensen wrote:
+> > > > > > On Nov 16 16:58, C=C3=A9dric Le Goater wrote:
+> > > > > > > On 11/16/22 09:43, Klaus Jensen wrote:
+> > > > > > > > From: Klaus Jensen <k.jensen@samsung.com>
+> > > > > > > >=20
+> > > > > > > > It is not given that the current master will release the bu=
+s after a
+> > > > > > > > transfer ends. Only schedule a pending master if the bus is=
+ idle.
+> > > > > > > >=20
+> > > > > > > > Fixes: 37fa5ca42623 ("hw/i2c: support multiple masters")
+> > > > > > > > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> > > > > > > > ---
+> > > > > > > >      hw/i2c/aspeed_i2c.c  |  2 ++
+> > > > > > > >      hw/i2c/core.c        | 37 ++++++++++++++++++++++------=
+---------
+> > > > > > > >      include/hw/i2c/i2c.h |  2 ++
+> > > > > > > >      3 files changed, 26 insertions(+), 15 deletions(-)
+> > > > > > > >=20
+> > > > > > > > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> > > > > > > > index c166fd20fa11..1f071a3811f7 100644
+> > > > > > > > --- a/hw/i2c/aspeed_i2c.c
+> > > > > > > > +++ b/hw/i2c/aspeed_i2c.c
+> > > > > > > > @@ -550,6 +550,8 @@ static void aspeed_i2c_bus_handle_cmd(A=
+speedI2CBus *bus, uint64_t value)
+> > > > > > > >              }
+> > > > > > > >              SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_=
+STOP_CMD, 0);
+> > > > > > > >              aspeed_i2c_set_state(bus, I2CD_IDLE);
+> > > > > > > > +
+> > > > > > > > +        i2c_schedule_pending_master(bus->bus);
+> > > > > > >=20
+> > > > > > > Shouldn't it be i2c_bus_release() ?
+> > > > > > >=20
+> > > > > >=20
+> > > > > > The reason for having both i2c_bus_release() and
+> > > > > > i2c_schedule_pending_master() is that i2c_bus_release() sort of=
+ pairs
+> > > > > > with i2c_bus_master(). They either set or clear the bus->bh mem=
+ber.
+> > > > > >=20
+> > > > > > In the current design, the controller (in this case the Aspeed =
+I2C) is
+> > > > > > an "implicit" master (it does not have a bottom half driving it=
+), so
+> > > > > > there is no bus->bh to clear.
+> > > > > >=20
+> > > > > > I should (and will) write some documentation on the asynchronou=
+s API.
+> > > > >=20
+> > > > > I found the routine names confusing. Thanks for the clarification.
+> > > > >=20
+> > > > > Maybe we could do this rename  :
+> > > > >=20
+> > > > >     i2c_bus_release()             -> i2c_bus_release_and_clear()
+> > > > >     i2c_schedule_pending_master() -> i2c_bus_release()
+> > > > >=20
+> > > > > and keep i2c_schedule_pending_master() internal the I2C core subs=
+ystem.
+> > > > >=20
+> > > >=20
+> > > > How about renaming i2c_bus_master to i2c_bus_acquire() such that it
+> > > > pairs with i2c_bus_release().
+> > >=20
+> > > Looks good to me.
+> > >=20
+> > > > And then add an i2c_bus_yield() to be used by the controller? I thi=
+nk we
+> > > > should be able to assert in i2c_bus_yield() that bus->bh is NULL. B=
+ut
+> > > > I'll take a closer look at that.
+> > >=20
+> > > I am using your i2c-echo slave device to track regressions in the Asp=
+eed
+> > > machines. May be we could merge it for tests ?
+> > >=20
+> >=20
+> > Oh, cool.
+> >=20
+> > Sure, I'd be happy to help "maintain" it ;)
+>=20
+> And so, I am seeing errors with the little POC you sent.
+>=20
+> without:
+>   console: echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
+>   console: # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_dev=
+ice
+>   console: [    4.252431] i2c i2c-3: new_device: Instantiated device slav=
+e-24c02 at 0x64
+>   console: i2cset -y 3 0x42 0x64 0x00 0xaa i
+>   /console: # i2cset -y 3 0x42 0x64 0x00 0xaa i
+>   console: # hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom
+>   console: 0000000 ffaa ffff ffff ffff ffff ffff ffff ffff
+>   console: poweroff
+>   console: 0000010 ffff ffff ffff ffff ffff ffff ffff ffff
+>   console: *
+>   console: 0000100
+>=20
+> with:
+>   console: echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device
+>   console: # echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_dev=
+ice
+>   console: [    4.413210] i2c i2c-3: new_device: Instantiated device slav=
+e-24c02 at 0x64
+>   console: i2cset -y 3 0x42 0x64 0x00 0xaa i
+>   console: # i2cset -y 3 0x42 0x64 0x00 0xaa i
+>   console: # hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom
+>   console: 0000000 ffff ffff ffff ffff ffff ffff ffff ffff
+>   console: *
+>   console: 0000100
+> C.
 
-Currently, if we enter our interrupt handler with both a stop and start
-condition pending, the stop event handler will override the current
-state, so we'll then lose the start condition.
+Interesting,
 
-This change handles the stop condition before anything else, which means
-we can then restart the state machine on any pending start state.
+I'll check it out.
 
-Because of this, we no longer need the ASPEED_I2C_SLAVE_STOP state,
-because we're just reverting directly to INACTIVE.
+--JKoW8XXF55sI3fLG
+Content-Type: application/pgp-signature; name="signature.asc"
 
-I have only seen this condition on emulation; it may be impossible to
-hit on real HW.
+-----BEGIN PGP SIGNATURE-----
 
-Signed-off-by: Jeremy Kerr <jk@codeconstruct.com.au>
----
- drivers/i2c/busses/i2c-aspeed.c | 23 ++++++++++++-----------
- 1 file changed, 12 insertions(+), 11 deletions(-)
+iQEzBAEBCgAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmN3LVAACgkQTeGvMW1P
+Del8XQf/dj8z2GjqEoRl6jvoylakl2FiY2HqBrfqJb82piBuK4LwJjQnY37uFZ+j
+aX92GiHjOFdC6rVYo5Hf0AOg3/j09o6G3tWtElaQwiFMALyguUzy0NOrc/iYln3K
+0TOJCLT7RGA9TuR5qR2CK7zAMryREYZhNjDf6rpeJjFW8n/m39O4Lw97X/B18+xV
+xDZfsj5GST2+kqnBZiXFR+eugEevqvTN04xJi2qAEcFK5o8vkTdtGlqZabpOrV0t
+1y3auwoNNb5Fl8iNR8F6M+XzbTP3ZkYcgLEu74tToq0APdD4Rn6Dz13BEEFiLzu8
+V1tQX8zcXQJn1NMZZbociADhyyYgbw==
+=pfee
+-----END PGP SIGNATURE-----
 
-diff --git a/drivers/i2c/busses/i2c-aspeed.c b/drivers/i2c/busses/i2c-aspee=
-d.c
-index 185dedfebbac..45f2766b2b66 100644
---- a/drivers/i2c/busses/i2c-aspeed.c
-+++ b/drivers/i2c/busses/i2c-aspeed.c
-@@ -135,7 +135,6 @@ enum aspeed_i2c_slave_state {
- 	ASPEED_I2C_SLAVE_READ_PROCESSED,
- 	ASPEED_I2C_SLAVE_WRITE_REQUESTED,
- 	ASPEED_I2C_SLAVE_WRITE_RECEIVED,
--	ASPEED_I2C_SLAVE_STOP,
- };
-=20
- struct aspeed_i2c_bus {
-@@ -250,6 +249,14 @@ static u32 aspeed_i2c_slave_irq(struct aspeed_i2c_bus =
-*bus, u32 irq_status)
-=20
- 	command =3D readl(bus->base + ASPEED_I2C_CMD_REG);
-=20
-+	/* handle a stop before starting any new events */
-+	if (bus->slave_state !=3D ASPEED_I2C_SLAVE_INACTIVE &&
-+	    irq_status & ASPEED_I2CD_INTR_NORMAL_STOP) {
-+		irq_handled |=3D ASPEED_I2CD_INTR_NORMAL_STOP;
-+		i2c_slave_event(slave, I2C_SLAVE_STOP, &value);
-+		bus->slave_state =3D ASPEED_I2C_SLAVE_INACTIVE;
-+	}
-+
- 	/* Slave was requested, restart state machine. */
- 	if (irq_status & ASPEED_I2CD_INTR_SLAVE_MATCH) {
- 		irq_handled |=3D ASPEED_I2CD_INTR_SLAVE_MATCH;
-@@ -278,15 +285,11 @@ static u32 aspeed_i2c_slave_irq(struct aspeed_i2c_bus=
- *bus, u32 irq_status)
- 		irq_handled |=3D ASPEED_I2CD_INTR_RX_DONE;
- 	}
-=20
--	/* Slave was asked to stop. */
--	if (irq_status & ASPEED_I2CD_INTR_NORMAL_STOP) {
--		irq_handled |=3D ASPEED_I2CD_INTR_NORMAL_STOP;
--		bus->slave_state =3D ASPEED_I2C_SLAVE_STOP;
--	}
- 	if (irq_status & ASPEED_I2CD_INTR_TX_NAK &&
- 	    bus->slave_state =3D=3D ASPEED_I2C_SLAVE_READ_PROCESSED) {
- 		irq_handled |=3D ASPEED_I2CD_INTR_TX_NAK;
--		bus->slave_state =3D ASPEED_I2C_SLAVE_STOP;
-+		i2c_slave_event(slave, I2C_SLAVE_STOP, &value);
-+		bus->slave_state =3D ASPEED_I2C_SLAVE_INACTIVE;
- 	}
-=20
- 	switch (bus->slave_state) {
-@@ -316,13 +319,11 @@ static u32 aspeed_i2c_slave_irq(struct aspeed_i2c_bus=
- *bus, u32 irq_status)
- 	case ASPEED_I2C_SLAVE_WRITE_RECEIVED:
- 		i2c_slave_event(slave, I2C_SLAVE_WRITE_RECEIVED, &value);
- 		break;
--	case ASPEED_I2C_SLAVE_STOP:
--		i2c_slave_event(slave, I2C_SLAVE_STOP, &value);
--		bus->slave_state =3D ASPEED_I2C_SLAVE_INACTIVE;
--		break;
- 	case ASPEED_I2C_SLAVE_START:
- 		/* Slave was just started. Waiting for the next event. */;
- 		break;
-+	case ASPEED_I2C_SLAVE_INACTIVE:
-+		break;
- 	default:
- 		dev_err(bus->dev, "unknown slave_state: %d\n",
- 			bus->slave_state);
---=20
-2.35.1
-
+--JKoW8XXF55sI3fLG--

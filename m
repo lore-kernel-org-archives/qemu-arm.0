@@ -1,327 +1,321 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp494817ejx;
-        Fri, 18 Nov 2022 11:01:59 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6hK/yBL1ynxrExVqukjpVmauPi+WtaLiluN+TVyKJu1KCaGioEhlmS+ijTRXenJGK6YoB1
-X-Received: by 2002:a0c:8f02:0:b0:4b3:e485:ab7a with SMTP id z2-20020a0c8f02000000b004b3e485ab7amr8113317qvd.94.1668798119204;
-        Fri, 18 Nov 2022 11:01:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668798119; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp983286ejx;
+        Sat, 19 Nov 2022 04:30:17 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5hYmGzl6n+BoXhHL9TbdSyKBmuVJl9lZV8cNgqSuvb8twmCltT+7XRkqCh8wHm4r6ATO6L
+X-Received: by 2002:a05:6214:481:b0:4bb:68f5:74ee with SMTP id pt1-20020a056214048100b004bb68f574eemr1401471qvb.85.1668861016952;
+        Sat, 19 Nov 2022 04:30:16 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1668861016; cv=pass;
         d=google.com; s=arc-20160816;
-        b=0QN/KJSfRCql+KYyy7E0k6xIJRxspTUHvemIKQxrAHDqOe5fNhFAqUXyY1SXrsA8O7
-         ZnuKXr+oBu9t54eQguPGkMhwoGCvTsYi+MZ0oo5ird4IgU4jn5e3gYuB277du4dZn0uW
-         arwNe/J7dosv934vWH14Y5/jPp+adbY5E0KQRMLwHLyaXjWC9rLs2AZZVfGzr4Mp8OXJ
-         KA1uM6dzuW+GwRZUml20RDheRJuLLq2+7CW8LLsjDQzakJACQZDP1yQfI5t7POm6Y+/E
-         O4cHYUZ5a8qaMQVlZZVvkvAvMNGX/FmOuD9Mr9olrGFPg3FgrHnxXtqGHP3iW3kstLtS
-         eP1A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=L9pcp0AEBGMrHEwO5YqMV7SWTLB9xuD1U2gnN+IE+8WSo7NrF+vdE2/qiXWF14oIUB
+         3MCDfkpl0CHcj1H6lxK8SagSuW7PJeptnEnZt2NXNakBq0B2k9AHM+J87s9oHYrSMuH2
+         EFb5F8SFWzBjM7mB6m8nYApkhiBBsV1edCG3aGxFyhlA0lP2nSGsSfPwX1SkJU8zt8ge
+         rCLH0q12MYdzljzhQVS6iLBT6oA5lrGqWLNqHBBa1+fjbN8k/cCM8EFpmP+xQRmGVUGY
+         OG7XaQWkBA5Gd1zPcS024pWdky7vIaDc0x5tHtfnTkKw7hM28Fpko5UO/ee6IS/H3X2B
+         ZtMQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=g/w7Af8YXFedDR9eCd1f6jYgjnmBPzRtexW409YXHzY=;
-        b=mLZdL8oYrYsQGlGsXKTPToP+esYlB9ivuvO5L+Qa+ULOHaYQBTAHGOC4PC7dLEHdXS
-         6H1jvjjAlOv2eYNX8iyBrV2OLFWmXWlHlyYysFR3Dx3J20hFECEQopuw/lqZ3mpzrc9F
-         86Q6slCRKeO64PXDSsdyjZgEAIs4VFkRD/RWaCt/cRZo29O3QLGlq4VFgurBJ2Hlk7Wg
-         oXBwEqccf4vFRcxxVQGvCrUr4q3mxIEihx21FU6SGWmJqLsUpg+PkIw9clV/+Y9IGY65
-         i+PywJFAYdERNNEx8e8d4I1bvH/25zqgXqST6a0ZZHaYm9CyeRS4YINm7jSsy4CNzusy
-         C9Vg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZzYAeblX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature:dkim-signature;
+        bh=5nAq210glcspJMzuimImYlKqNANwK4iKBnAOxZ1+7y0=;
+        b=ij+wThvCsFQMp/GJTi1XRDvGkDm0eU6NzmtdYbl4netuFZBCwn1Tv7uDwI6gTVULXq
+         S0I6Ho9AgjVfLOd6iKcPnwaHbPxYUYkpnHsgJiBY/4vgyU+vpo3ld4nROkcEKdzYvo+d
+         xdm6XtzRyNxco48GCjlKA6CeYt+fD+eNBUEGw+gPBiAgQ57vgZq35tUppksW17cO50/a
+         B/2Aqkoj8dNYdbB8/gQImNjWsP9KUD3s7O5IrjPstf1F5Yrzcwc+zFNm8vZsTzVx2lru
+         shB1035ri3baRMRIjkWxoLrjGb8bCwGK8b7RkJPbG24XliJsXoHzTUHMKA7l4KyfzrBM
+         U9Xw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=G6L9iGVm;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b="JRF/0QEK";
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h7-20020ac87447000000b003970f9f8769si2204753qtr.560.2022.11.18.11.01.58
+        by mx.google.com with ESMTPS id br9-20020a05622a1e0900b003a5258621adsi3280431qtb.167.2022.11.19.04.30.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Nov 2022 11:01:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 19 Nov 2022 04:30:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZzYAeblX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=G6L9iGVm;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b="JRF/0QEK";
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ow6bv-0001Za-OV; Fri, 18 Nov 2022 14:01:11 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1owMyn-0005uq-9p; Sat, 19 Nov 2022 07:29:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ow6bu-0001Z6-5q
- for qemu-devel@nongnu.org; Fri, 18 Nov 2022 14:01:10 -0500
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ow6bp-0005su-9H
- for qemu-devel@nongnu.org; Fri, 18 Nov 2022 14:01:09 -0500
-Received: by mail-pg1-x535.google.com with SMTP id n17so5743885pgh.9
- for <qemu-devel@nongnu.org>; Fri, 18 Nov 2022 11:01:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=g/w7Af8YXFedDR9eCd1f6jYgjnmBPzRtexW409YXHzY=;
- b=ZzYAeblX6HUWr0mdXQedGWlTI74+UDqAlnGDCeGFzIAJRassPfc4Pp6Uoj9gwbyrcv
- z3XrcDJILYjcrkNSHqGoWXATU43b6zf2xkDzWSaRd5PsOnZ6GNDVs67nttbTUfnaevDG
- 6i/6KmbxZrssKKJu2VfjGX2mkGRmo9mfnLX2AKcV9Qg0qrOJtKBQgANMKqp0w2KjQzGe
- VrxiTIyhJghdf/cS7LcBbgb6/yFOzZ4tuE0QfGUG2BDMM880CdtJoMsIWeIrWPu7JOgm
- wlQzcbFNjHtH+EIjsdEo4qXB8a/qDde+hvlCTZViwwX3jSN6FmZ6jbfopo9gT6EVr83H
- 6ytw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=g/w7Af8YXFedDR9eCd1f6jYgjnmBPzRtexW409YXHzY=;
- b=3Kzf4j8Zh7Nwqm1/zUzMW0rhiHb/6CrvUn5v2MAztACvIkLrjwypOAZgIgMrJqTUHd
- 0N4NosC4MqG31z1WRL3PDxHHh0QCgD3m77Aj/SnHoqYhV/RYF65WGhd2nClFCq07VQBK
- GMoo0l2uZRGTLtWUfGpTqFmDfQMS/oDiNnDHVLg+7Q7SJAE6gGivAymmQKZJwI7yD5nx
- eh8SzloJOFCgR+K7Oqr9ACO4ISzO+7KDiLFC9yHb+ev8rsWxV3/enqgVbGUCIslKdqyq
- y/bre+pm3Xm3nM01mEXb3FJy3ULn/54CTKmVELxj4eQpeN8/JpeC9nifBheinLZaXPew
- cBxA==
-X-Gm-Message-State: ANoB5pl6271hp/lrqWxDhHUjcz1IXF5do/OxyLW32R9IkuK/3b28K3eA
- 3p2+IXT3MkD5z9ED5zHl1++sWhOfyh9m8Z+kJZL/MA==
-X-Received: by 2002:aa7:9ed0:0:b0:571:8549:89c3 with SMTP id
- r16-20020aa79ed0000000b00571854989c3mr9100382pfq.26.1668798063431; Fri, 18
- Nov 2022 11:01:03 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <dongli.zhang@oracle.com>)
+ id 1owMyh-0005sh-2u; Sat, 19 Nov 2022 07:29:47 -0500
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dongli.zhang@oracle.com>)
+ id 1owMyf-0006hv-7E; Sat, 19 Nov 2022 07:29:46 -0500
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 2AJCP2HJ025394; Sat, 19 Nov 2022 12:29:17 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : content-transfer-encoding : content-type :
+ mime-version; s=corp-2022-7-12;
+ bh=5nAq210glcspJMzuimImYlKqNANwK4iKBnAOxZ1+7y0=;
+ b=G6L9iGVm+AaESpUPAdF70cupb6A9r7QIM/n3BKNVkFn5uL0L3ziAEP5AVnxyCzELx8Fb
+ lHzVD1m1JcDa66aOjtc5Fo/SWQnLBHto6wu2/BAVwk/gt00LOKodvH7RGhnwtNi/pTdt
+ lKD063aV2/7nijoUF+IMQLrXXx15t4aR6JWetQWN/xVinkN5yENreFaCWFwsFkKiTDEf
+ p2efHwU5vFyNUKczctiDZafK2HCjVHgP3iRoOTJut6w7ExUnt+ptJkJMYJf6jlsBBy8A
+ p4v3kdD73SaTHTJ/mPG/VZ6Ob+OFmfTD+9HwRuZpZGUa7eS6fA8wTXx8UQRPmcBd/qbZ rA== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3kxy4e003f-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 19 Nov 2022 12:29:16 +0000
+Received: from pps.filterd
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
+ with ESMTP id 2AJ8N6E2028055; Sat, 19 Nov 2022 12:29:15 GMT
+Received: from nam11-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11lp2176.outbound.protection.outlook.com [104.47.57.176])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3kxnk7mefq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 19 Nov 2022 12:29:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bE0eyZw1kuKPfUU969L2HGL7tr8yV7Zj+pAhMs8tOrZxwGKBn0flFa7UTJjW1KAf6KjWdgjT43vpnzHW73UprXS78yRSXv8+9x4lWew4DNQuPebtvIDE73dKf66LboEV++p7s2gCd1OwObzv2UphE97kMnQrODQv6JQJElqdMfrblimvvvTSZfNbJnW0p2c6hdIS7GhuzgoysUrFDLKZzIXW1PB8kvXmZhDeZ0pkE/HQ1f3+hRNgQQDQ8aOF02JHrkR4UJeazylUA6KFKt3/Q1ymG9ODpexrsWqWAk5pnYtDukpApSDPWa9DI94fWAqGWEOIZlEnH2GA5FeD2g6Gdw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5nAq210glcspJMzuimImYlKqNANwK4iKBnAOxZ1+7y0=;
+ b=Xxxos7MT24AaN1cznZMt5VOcfZljyxaH/9TrpE3YItkdGmRrMaj4ovzc69rAFlxaAjrVs7gJFlOvskBykmktkqDG+wF6xfO4++SbTE+Qe3h8UyOro+NHsXdA4FUfsi+zxwlxiSYtsbaQ4damniL5FHIHB5qYJzOEs8s51SLHc7s7EJwdu7uHbKEA5v7v/RvxR++zdlzlcKfiS3aT3u0HqdW0MOTRJBKsQ3MOORpu7aOwDYrqP5W+fP0M/hG3QMGMBMj7ONDIc46WVcXJ56oYlkTnTlanf8m7wvYqM1/4I6hYy992AwbtLlTwoJeMBwP7Gp1Aoya8MdirYMvUpQnEmw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5nAq210glcspJMzuimImYlKqNANwK4iKBnAOxZ1+7y0=;
+ b=JRF/0QEKSkPqW0ELPOuSKZy7Hde0FK0f881jfnL9HZKHtiH23XAx9FXF9zqcn11iHfdAMnMkk12elTGD+6EEHal+7tkG4xhIH9zg92XkiPybOlingN/lWRYEaH/psMXIUtnBr+AfhrqYofYNJVOvlBiHzMYFEhLPH+572M25/Uo=
+Received: from BYAPR10MB2663.namprd10.prod.outlook.com (2603:10b6:a02:a9::20)
+ by CY8PR10MB6443.namprd10.prod.outlook.com (2603:10b6:930:61::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5834.9; Sat, 19 Nov
+ 2022 12:29:12 +0000
+Received: from BYAPR10MB2663.namprd10.prod.outlook.com
+ ([fe80::cf3b:2176:14e5:d04d]) by BYAPR10MB2663.namprd10.prod.outlook.com
+ ([fe80::cf3b:2176:14e5:d04d%4]) with mapi id 15.20.5834.009; Sat, 19 Nov 2022
+ 12:29:12 +0000
+From: Dongli Zhang <dongli.zhang@oracle.com>
+To: kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Cc: pbonzini@redhat.com, peter.maydell@linaro.org, mtosatti@redhat.com,
+ chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
+ jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ danielhb413@gmail.com, clg@kaod.org, david@gibson.dropbear.id.au,
+ groug@kaod.org, palmer@dabbelt.com, alistair.francis@wdc.com,
+ bin.meng@windriver.com, pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
+ thuth@redhat.com, joe.jin@oracle.com, likexu@tencent.com
+Subject: [PATCH 0/3] kvm: fix two svm pmu virtualization bugs
+Date: Sat, 19 Nov 2022 04:28:58 -0800
+Message-Id: <20221119122901.2469-1-dongli.zhang@oracle.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SJ0PR03CA0335.namprd03.prod.outlook.com
+ (2603:10b6:a03:39c::10) To BYAPR10MB2663.namprd10.prod.outlook.com
+ (2603:10b6:a02:a9::20)
 MIME-Version: 1.0
-References: <166783932395.3279.1096141058484230644-0@git.sr.ht>
- <166783932395.3279.1096141058484230644-9@git.sr.ht>
-In-Reply-To: <166783932395.3279.1096141058484230644-9@git.sr.ht>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 18 Nov 2022 19:00:51 +0000
-Message-ID: <CAFEAcA-hDkGMnz4iO_V1FHHPer7uSMuNyzoaJu8wuoHY8NpCgg@mail.gmail.com>
-Subject: Re: [PATCH qemu.git v2 9/9] hw/timer/imx_epit: fix compare timer
- handling
-To: "~axelheider" <axelheider@gmx.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BYAPR10MB2663:EE_|CY8PR10MB6443:EE_
+X-MS-Office365-Filtering-Correlation-Id: df3fdc51-e440-4222-9d02-08daca29a9c9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 4qc3I9xRiXwnX+8K9I5WnFIjaMqLcE66Bba0dPt9AAmdZYTd7XA9YL3Xmk9ip8CvgFXKqQttp2kobUYpXmpdM0AHYw8Tg3ELGax5mV1w+aH9Xl9xzExKxjK9MB5z8TWyozEemfQts3XFUOeNbp1aYs0ghIsCcVdziuVk4sj6Ae3EU2NcfYimhI8pSkY89D4SMMwPHJIKVCUiSUopDlV7MxaErfzLAvfNsZYROSMOmqaZhkbkNLuk1DGEpMeifLXpFJIPXT1cNt/n1gGXFhH3T9Us1DpV3QKP45lXYm6s3Loe709kMQrHIiaSVyumCOqlcsvsn4vnqUwcDe5EBdFBiNImtmPPEjLP9FB/XIb36C0W6vYkH8daAIs6O4lSqf7HvrynfzVNk0HL8AxXlMvKnehdLuQ0K7fmWL9/PDB3HWLZvZ5z93983DEINGKoNYVUQ/1TgMjbUDb84kteNaSh39lo7l0sWAReCzuOntLY/e2zDHoE8gKh0SzHQB35781+kLlrHL+y4e+DUE/BM7ykG/hOpudq3Iydnb9CfmdsrjBjIWJR5TSy4QO2EX4sSh2VfAMMVh0DXFkNG4efjXDQeEOM1falZTXr92r2+tjQDahNpF2eFb8GTWlXqc3NdrGs91hzQmdqJbjJnUP+4CHnbxSZNsxeWodS5/VTQ74mmws=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR10MB2663.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(376002)(366004)(396003)(39860400002)(136003)(346002)(451199015)(36756003)(38100700002)(2906002)(44832011)(8676002)(7416002)(4326008)(8936002)(83380400001)(86362001)(316002)(1076003)(2616005)(186003)(6486002)(966005)(478600001)(66556008)(66946007)(66476007)(5660300002)(41300700001)(6506007)(6512007)(6666004)(26005);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?IetVamL/7IAUlAk38CbGnjX+yteLJzGlm+WaIwXfly9BHJZdOBcY4ZYFPSZV?=
+ =?us-ascii?Q?/vHw7HHBjvcHMCoziyewxG88BHSkp5ty2JaMDAEkzCa5JLg3VvcPi8eIjl9S?=
+ =?us-ascii?Q?TvrfytiCpJSiOHUYeK3t678hCUMM+P1HdHImvYfNwjl1PIHRgt+yeWJIejVZ?=
+ =?us-ascii?Q?8wrvKfOhjdOSfNUi5ka6LPZnzdPSZPY945oy5milsVmuDkCgDzOOWE9jJfeM?=
+ =?us-ascii?Q?V0Ny6UUW9vnVkXkj0AyMlLfnNCCMEVsp0S7k3jKoxdzOeJAANQNw7kO6pIdI?=
+ =?us-ascii?Q?HpGjjsjNA1hZeF9SFNCZiehzMT55U/JjVAkDIYKSyv44Egqf0r6xk+w87Loh?=
+ =?us-ascii?Q?BdGtHeJ/LQeUyo7jmGOezAxaeGJ0N8NR9LUHIUXvbFTOs5OSrHxncRpXMY4q?=
+ =?us-ascii?Q?VnW3wtJAUhzTjqL8QSny/5IuvzVYMSOxrtOFkO+4iRM0gE7+C9cDpfSZKvUO?=
+ =?us-ascii?Q?o2dCc6uDoIRLjW+SUixVXgHuWvaRP3Na4O2Jwj/evvvqUnaaO3wFyHJD4BBd?=
+ =?us-ascii?Q?tSdN5Bms4g9JfencP3Po/82rsBkYXlD/deayZgojnjx0s0xgcIymoj7Whpnk?=
+ =?us-ascii?Q?yy1USgfUpFTPmDGLhOxt3NYGxthgZrQP00mu4DHs79WbIbtiAYWTDm9CYIJ/?=
+ =?us-ascii?Q?fNyfopqvwGyAfn5QgTWjeECVtPXq2RzIwxJPJZFx7FpEZf/ZhRJf7cbK513m?=
+ =?us-ascii?Q?eet9aHXSpDYbAYXf93NGvGDDTE2f9Ohs7biZ6bQs7Jg5hTzdUl7No5czwehq?=
+ =?us-ascii?Q?1lffYvSIb+Gzala7EryeiaKtCfv5Kks49zkr2Rl4ypjtfLA1VS4OEMokwvkk?=
+ =?us-ascii?Q?wrL246uQAwMndBwh1dA9P4C7ITVk/aV6gCX5e7yGyhnvcjn3DJULml2u+FUS?=
+ =?us-ascii?Q?H6M7+OtU/20wDPHm7u63+tX61Vtlly1i4yNPJEtT/zZwgYyj7mhZhPGQFdsj?=
+ =?us-ascii?Q?mbck8catAfwsP14xULEj4b3j1ZcGjfBJWYtgCBodseki3W0mtqDU5xvREC3S?=
+ =?us-ascii?Q?UztQOZ357XM0uccXqh0VeeeXLvrmdbmnlAyZ8ILkPEjQynwdl0YkML16uzCJ?=
+ =?us-ascii?Q?sBtvyXrthHtxvtNbE0VIMb6jGqPe7nq2oZvtM3Tx5rY7kLzzza+m5R9mHAsC?=
+ =?us-ascii?Q?q63TKMvnNcOCUgjeaaxRfBfQT94Zeg8N5JrTGOvBjyLCLG/Q1M1bgv+fYscd?=
+ =?us-ascii?Q?us4Nv3PXmcnrKuRZEnR3+01IZgmqrQqz/RP9RHE1s8ueZiTybOGmA5m3q+v8?=
+ =?us-ascii?Q?+/pGT/XIUD4APkGF9KKbZFTbl9OKzUl6wgWDlz+LlpKfhq6/N8bcYmhSRrJz?=
+ =?us-ascii?Q?A5J0MpCKnDryyLj/IyB6RW4yTXQGB2CHcjHQaodahxxV+kBp97wIgWlXG6q1?=
+ =?us-ascii?Q?Sc7bAV6H9zuEx+okp+yD2sOHBJtlcVirwiJ8/SnssiGzXFh199I0LwllrZ7t?=
+ =?us-ascii?Q?kQcFO1CDcdnLcZKyutJiTqr0mrE/4KahVm3fJ2v3A8ASaGh5dmdSeozHt05l?=
+ =?us-ascii?Q?ukR0Hy7Kt9U3RiFcQTKaztZ2yxueMn+Pu2qXeY3FXe0dwEk3Pql9NVBVu60R?=
+ =?us-ascii?Q?hvXi8xOF1tq9XpJc+OFMe5DrpvMIpak8kTrUD36h?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?us-ascii?Q?i8covhIWM8M4i+Ve/LQcKM1fBrWmylSw13OnGmILSgJKKTiXjGvFvQ702FSX?=
+ =?us-ascii?Q?QfrRPBjf9yFVkUMvPr4rTLY2tOkL7p7iQbS1A3Ti+kvstLZwe9OpkxUvaepj?=
+ =?us-ascii?Q?NpI7fXRRe2D2UVjiMdPzT57+mLdsxwXgdLLzzx6OKnlPCWrZXKDyTqCrh48G?=
+ =?us-ascii?Q?Z+iEOCL976jp0bwtOqx/lS5IlNo+wwgd7s208Y5s5h5Tu+Lr5V+6+vS36T1g?=
+ =?us-ascii?Q?bP2bjS8kCMsN+gYNB+VHK2VutwFHK8l7G1Vz2eDM81EZTYQ2I4qXXviqaBPp?=
+ =?us-ascii?Q?BWwAQ9R781w2+6RNuiQtwRSZEhb8vJ8ByD3vMTRTP72BnwmxxUyf1JTCQk2U?=
+ =?us-ascii?Q?AtsGlO4ypiKQcp2WDG+xvpHuXXj7BdFq8CdK/XQ0fTLd7/07e4ujhy9uCw6u?=
+ =?us-ascii?Q?oQeIwewzsUDoxsOuX9xz76MzycBKnpARLCq5/LGgWcjiUVnNC3FlyhmKP99E?=
+ =?us-ascii?Q?Y28ScR2/R3/12T2wusn4y4OTGWy4maTlz5xrTYe9RjVWmDML/R7ZEk7yMonS?=
+ =?us-ascii?Q?KuQav3RoXqNVxm006Jx/M6xAFDz0z/2X8P/1kN/TN0YHSSgON0yufbRbLIMw?=
+ =?us-ascii?Q?twi54qFVp4CV9umzqqLFbJWuYPS09bsHyZxQuW5C8yQyhDDOez6UDVBeiGLW?=
+ =?us-ascii?Q?LptW356uaD+QozzbcjY1YaXQ2czFokkit2qz3n2xfVqmXx5VDxae1v0G5oPW?=
+ =?us-ascii?Q?/lQVrQd9l4sxo9eO7zGhRktPdvd/X599Nt3xAYBILCEFrpmwAD4OlvMtf1YG?=
+ =?us-ascii?Q?ubs/eWR6IsKqGCFLCKWiuaeDFzXIG85uePr83xBO6kgKINxGDj4SdC7vAWJY?=
+ =?us-ascii?Q?HlSv6X3mNUsXvkEziml5I69pO+hXtLhtbaa3RW3bhARtIDKPtuqn3F+u9Jks?=
+ =?us-ascii?Q?hE9BRCqd3fHV3QVUtfABGFoWw1gJdd6FMApi9bqG6W0BCH+J7/VV5UAIwmZ8?=
+ =?us-ascii?Q?mwVvP22s2bq7S0y2KmRqDUu31Aw0V+nWTz4ycS8oX757n8lmdPP5HLp83FGh?=
+ =?us-ascii?Q?BCn/WSd4q/BKdRHo7FHMuC/ZyZcdogp4xeolVUdTX34vJI5NNF92bpUU3UDA?=
+ =?us-ascii?Q?rbAXJkv2KFtISn21CM2DDmEAkI0cG/ECbEah/PXqMwjNNm5f0W391yP0eJL1?=
+ =?us-ascii?Q?7amDy3bcjlWHw3lpkmZDWCUWXurmRS9cZ+uRrh327jzFZ6oTccsW8H6ZXEZw?=
+ =?us-ascii?Q?+l89RU42bJeUYSv6DPnuJ/cQxdvmR+FyKAGnTKWirrIRAmXFHTto0+fU/fet?=
+ =?us-ascii?Q?sLbeep2/jUhwoVVmYVv1+e8SGbOHBJZRCZnsTa+Edka1b0dFbEMjggi9oDco?=
+ =?us-ascii?Q?6aL5NWuay95FVlDQ3WvMuq92PRopizpEbuxKqp08E9GjF2hajKExEuskeI97?=
+ =?us-ascii?Q?DxNGFN3RYK7Rvnm/NfB7SY0mN0J5BNdpK4cZc8JsKxQLvYESczQTRSwEnMGi?=
+ =?us-ascii?Q?o7z4b2cP0nZCNuf1XAOsqjgA0L5qjwhfNE8jk2JuP4mecV24T2Kz/79b56kd?=
+ =?us-ascii?Q?3GVYhm5Vh0y78wkir0x9i/0R1IrbZGgFXqtC/P201UviAJaSgDv9fU9oBjGD?=
+ =?us-ascii?Q?ErT1XFLRWsb4i9YkLTZnUkZ/u6XLnLFhwcSNtQGFiDpV9XIce6KcCYZ8Vpsl?=
+ =?us-ascii?Q?ig=3D=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: df3fdc51-e440-4222-9d02-08daca29a9c9
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR10MB2663.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Nov 2022 12:29:11.9722 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZfAfRSS2M78bxmGZZeD7BjB5ldp4jgo1nUSNio4yKd175y+ivoc1Zayj0xwX2t3anH8YyHLP5PcsNNbXC3VNaQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR10MB6443
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2022-11-18_08,2022-11-18_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ phishscore=0
+ adultscore=0 suspectscore=0 spamscore=0 mlxlogscore=938 mlxscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2210170000 definitions=main-2211190092
+X-Proofpoint-GUID: WKy90SXqG4PVQDzqwshzgelY_GTkZK_H
+X-Proofpoint-ORIG-GUID: WKy90SXqG4PVQDzqwshzgelY_GTkZK_H
+Received-SPF: pass client-ip=205.220.165.32;
+ envelope-from=dongli.zhang@oracle.com; helo=mx0a-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5/MYN8mR6WIp
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: t8j5T0kpyMKt
 
-On Mon, 7 Nov 2022 at 16:42, ~axelheider <axelheider@git.sr.ht> wrote:
->
-> From: Axel Heider <axel.heider@hensoldt.net>
->
-> - fix #1263
-> - rework compare time handling
->   - The compare timer has to run even if CR.OCIEN is not set,
->     as SR.OCIF must be updated.
->   - The compare timer fires exactly once when the
->     compare value is less than the current value, but the
->     reload values is less than the compare value.
->   - The compare timer will never fire if the reload value is
->     less than the compare value. Disable it in this case.
+This patchset is to fix two svm pmu virtualization bugs.
 
-If you're correcting behaviour of the timer use here,
-you should start by fixing the way the timers are currently
-created with PTIMER_POLICY_LEGACY. That setting is basically
-"bug-for-bug-compatibility with very old QEMU, for devices
-where nobody really knows what the hardware behaviour should
-be". Where we do know what the hardware's supposed to do and
-we have some way of testing we're not breaking guest code,
-the right thing is to set the correct policy flags for
-the desired behaviour. These are documented in a comment
-near the top of include/hw/ptimer.h.
+1. The 1st bug is that "-cpu,-pmu" cannot disable svm pmu virtualization.
 
-> Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
-> ---
->  hw/timer/imx_epit.c | 188 +++++++++++++++++++++++++++++---------------
->  1 file changed, 123 insertions(+), 65 deletions(-)
->
-> diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-> index 77bd2b0a2b..cb2880cabc 100644
-> --- a/hw/timer/imx_epit.c
-> +++ b/hw/timer/imx_epit.c
-> @@ -6,6 +6,7 @@
->   * Originally written by Hans Jiang
->   * Updated by Peter Chubb
->   * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
-> + * Updated by Axel Heider
->   *
->   * This code is licensed under GPL version 2 or later.  See
->   * the COPYING file in the top-level directory.
-> @@ -110,33 +111,84 @@ static uint64_t imx_epit_read(void *opaque, hwaddr offset, unsigned size)
->      return reg_value;
->  }
->
-> -/* Must be called from ptimer_transaction_begin/commit block for s->timer_cmp */
-> -static void imx_epit_reload_compare_timer(IMXEPITState *s)
-> +/*
-> + * Must be called from a ptimer_transaction_begin/commit block for
-> + * s->timer_cmp, but outside of a transaction block of s->timer_reload,
-> + * so the proper counter value is read.
-> + */
-> +static void imx_epit_update_compare_timer(IMXEPITState *s)
->  {
-> -    if ((s->cr & (CR_EN | CR_OCIEN)) == (CR_EN | CR_OCIEN))  {
-> -        /* if the compare feature is on and timers are running */
-> -        uint32_t tmp = ptimer_get_count(s->timer_reload);
-> -        uint64_t next;
-> -        if (tmp > s->cmp) {
-> -            /* It'll fire in this round of the timer */
-> -            next = tmp - s->cmp;
-> -        } else { /* catch it next time around */
-> -            next = tmp - s->cmp + ((s->cr & CR_RLD) ? EPIT_TIMER_MAX : s->lr);
-> +    uint64_t counter = 0;
-> +    bool is_oneshot = false;
-> +    /* The compare timer only has to run if the timer peripheral is active
-> +     * and there is an input clock, Otherwise it can be switched off.
-> +     */
+To use "-cpu EPYC" or "-cpu host,-pmu" cannot disable the pmu
+virtualization. There is still below at the VM linux side ...
 
-QEMU coding style wants the "/*" on a line of its own in multiline comments.
+[    0.510611] Performance Events: Fam17h+ core perfctr, AMD PMU driver.
 
-> +    bool is_active = (s->cr & CR_EN) && imx_epit_get_freq(s);
-> +    if (is_active)
-> +    {
+... although we expect something like below.
 
-Brace goes on same line as "if".
+[    0.596381] Performance Events: PMU not available due to virtualization, using software events only.
+[    0.600972] NMI watchdog: Perf NMI watchdog permanently disabled
 
-> +        /*
-> +         * Calculate next timeout for compare timer. Reading the reload
-> +         * counter returns proper results only if pending transactions
-> +         * on it are committed here. Otherwise stale values are be read.
-> +         */
-> +        counter = ptimer_get_count(s->timer_reload);
-> +        uint64_t limit = ptimer_get_limit(s->timer_cmp);
-> +        /* The compare timer is a periodic timer if the limit is at least
-> +         * the compare value. Otherwise it may fire at most once in the
-> +         * current round.
-> +         */
-> +        bool is_oneshot = (limit >= s->cmp);
-> +        if (counter >= s->cmp) {
-> +            /* The compare timer fires in the current round. */
-> +            counter -= s->cmp;
-> +        } else if (!is_oneshot) {
-> +            /*
-> +             * The compare timer fires after a reload, as it below the
-> +             * compare value already in this round. Note that the counter
-> +             * value calculated below can be above the 32-bit limit, which
-> +             * is legal here because the compare timer is an internal
-> +             * helper ptimer only.
-> +             */
-> +            counter += limit - s->cmp;
-> +        } else {
-> +            /*
-> +             * The compare timer wont fire in this round, and the limit is
+The patch 1-2 is to disable the pmu virtualization via KVM_PMU_CAP_DISABLE
+if the per-vcpu "pmu" property is disabled.
 
-"won't"
+I considered 'KVM_X86_SET_MSR_FILTER' initially.
+Since both KVM_X86_SET_MSR_FILTER and KVM_PMU_CAP_DISABLE are VM ioctl. I
+finally used the latter because it is easier to use.
 
-> +             * set to a value below the compare value. This practically means
-> +             * it will never fire, so it can be switched off.
-> +             */
-> +            is_active = false;
->          }
-> -        ptimer_set_count(s->timer_cmp, next);
->      }
-> +
-> +    /*
-> +     * Set the compare timer and let it run, or stop it. This is agnostic
-> +     * of CR.OCIEN bit, as this only matters for interrupt generation. The
-> +     * compare timer needs to run in any case, as the SR.OCIF bit must be
-> +     * updated even if no interrupt in generated.
 
-"is generated"
+2. The 2nd bug is that un-reclaimed perf events (after QEMU system_reset)
+at the KVM side may inject random unwanted/unknown NMIs to the VM.
 
-> +     * Note that the timer might already be stopped or be running with
-> +     * counter values. However, finding out when an update is needed and
-> +     * when not is not trivial. It's much easier applying the setting again,
-> +     * as this does not harm either and the overhead is negligible.
-> +     */
+The svm pmu registers are not reset during QEMU system_reset.
 
-It is modestly harmful because the sequence
-   counter = ptimer_get_count(s->timer_reload);
-   ...
-   ptimer_set_count(s->timer_cmp, counter);
+(1). The VM resets (e.g., via QEMU system_reset or VM kdump/kexec) while it
+is running "perf top". The pmu registers are not disabled gracefully.
 
-will cause the counter to lose or gain time. This happens because when
-you call "get" the ptimer code will look at the current exact
-time in nanoseconds and tell you the counter value at that point.
-That is probably somewhere in the middle of a timer-clock period
-(which runs at whatever frequency you tell the ptimer to use):
-for argument's sake, suppose the timer-clock counts every 1000ns.
-Suppose at the point of the 'get' the next tick will be in 300ns time.
-When you do a "set" that is assumed to be the result of a guest
-register write of some kind, and will effectively start a new
-timer-clock period. This means the next tick will not be for
-a full 1000ns, and we just lost 300ns (or gained 700ns perhaps).
+(2). Although the x86_cpu_reset() resets many registers to zero, the
+kvm_put_msrs() does not puts AMD pmu registers to KVM side. As a result,
+some pmu events are still enabled at the KVM side.
 
-So it's better to avoid this kind of "get-and-then-set" code.
+(3). The KVM pmc_speculative_in_use() always returns true so that the events
+will not be reclaimed. The kvm_pmc->perf_event is still active.
 
-> +    if (is_active) {
-> +        ptimer_set_count(s->timer_cmp, counter);
-> +        ptimer_run(s->timer_cmp, is_oneshot ? 1 : 0);
-> +    } else {
-> +        ptimer_stop(s->timer_cmp);
-> +    }
-> +
->  }
+(4). After the reboot, the VM kernel reports below error:
 
-> @@ -274,16 +326,22 @@ static void imx_epit_cmp(void *opaque)
->  {
->      IMXEPITState *s = IMX_EPIT(opaque);
->
-> -    /* Set the interrupt status flag to signaled. */
-> -    DPRINTF("sr was %d\n", s->sr);
-> -    s->sr = 1;
-> +    if (s->cr & CR_EN) {
-> +        /* Set the interrupt status flag to signaled. */
-> +        DPRINTF("sr was %d\n", s->sr);
-> +        s->sr = 1;
->
-> -    /*
-> -     * An actual interrupt is generated only if the peripheral is enabled
-> -     * and the interrupt generation is enabled.
-> -     */
-> -    if ((s->cr & (CR_EN | CR_OCIEN)) == (CR_EN | CR_OCIEN)) {
-> -        qemu_irq_raise(s->irq);
-> +        /* If CR,OCIEN is set, an actual interrupt is generated */
-> +        if (s->cr & CR_OCIEN) {
-> +            qemu_irq_raise(s->irq);
-> +        }
-> +    } else {
-> +        /*
-> +         * The cmp ptimer is not supposed to be running when the
-> +         * peripheral is not enabled. Ignore this. However, it's
-> +         * worth investigating why this happened.
-> +         */
-> +        DPRINTF("compare trigger when timer not enabled\n");
+[    0.092011] Performance Events: Fam17h+ core perfctr, Broken BIOS detected, complain to your hardware vendor.
+[    0.092023] [Firmware Bug]: the BIOS has corrupted hw-PMU resources (MSR c0010200 is 530076)
 
-Is this a "can't happen, it would be a bug in this code"? If so,
-use assert(). If it's a "guest code can program the timer in
-silly ways" situation then either do what the hardware does
-or (if it's not clear what that is) do something plausible.
-You can use qemu_log_mask(LOG_GUEST_ERROR, ...) to log things
-which are "guest has done something silly" if you like.
+(5). In a worse case, the active kvm_pmc->perf_event is still able to
+inject unknown NMIs randomly to the VM kernel.
 
-More generally, please don't introduce new uses of the DPRINTF
-macro. For cases which are "this can be useful to the user to
-log for debugging either the driver or their guest code" we
-have a trace-events facility, where you put a line into
-hw/timer/trace-events that specifies the prototype and format
-string for the trace event, and then call a corresponding
-trace_whatever() function in the code. Some of the other timer
-devices do this, if you want to look at how it works.
-Older device models like this one still use debug-print macros,
-but they're not good practice in new code.
+[...] Uhhuh. NMI received for unknown reason 30 on CPU 0.
 
-thanks
--- PMM
+The patch 3 is to fix the issue by resetting AMD pmu registers as well as
+Intel registers.
+
+
+This patchset does cover does not cover PerfMonV2, until the below patchset
+is merged into the KVM side.
+
+[PATCH v3 0/8] KVM: x86: Add AMD Guest PerfMonV2 PMU support
+https://lore.kernel.org/all/20221111102645.82001-1-likexu@tencent.com/
+
+
+Dongli Zhang (3):
+      kvm: introduce a helper before creating the 1st vcpu
+      i386: kvm: disable KVM_CAP_PMU_CAPABILITY if "pmu" is disabled
+      target/i386/kvm: get and put AMD pmu registers
+
+ accel/kvm/kvm-all.c    |   7 ++-
+ include/sysemu/kvm.h   |   2 +
+ target/arm/kvm64.c     |   4 ++
+ target/i386/cpu.h      |   5 +++
+ target/i386/kvm/kvm.c  | 104 +++++++++++++++++++++++++++++++++++++++++++-
+ target/mips/kvm.c      |   4 ++
+ target/ppc/kvm.c       |   4 ++
+ target/riscv/kvm.c     |   4 ++
+ target/s390x/kvm/kvm.c |   4 ++
+ 9 files changed, 134 insertions(+), 4 deletions(-)
+
+Thank you very much!
+
+Dongli Zhang
+
+

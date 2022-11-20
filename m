@@ -1,37 +1,37 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp531478ejx;
-        Thu, 1 Dec 2022 07:43:25 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf69XtJ9+1QAPzFdiPbPnOh/QDFMwUZEYD8YM4NFNC02RF/clbF27PUQoTxFRbI/cz1ZwWoG
-X-Received: by 2002:a05:620a:a5c:b0:6fa:1e19:8e6a with SMTP id j28-20020a05620a0a5c00b006fa1e198e6amr59666706qka.587.1669909405642;
-        Thu, 01 Dec 2022 07:43:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669909405; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp531820ejx;
+        Thu, 1 Dec 2022 07:43:53 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4TCBDjeHr8TmV/Nheld0WJDm5gSotOKAOcUozXsdNn/x4bxK0qcRdV1/t7RRMm9qNrwiZ7
+X-Received: by 2002:a05:622a:5a8d:b0:35b:62a:6532 with SMTP id fz13-20020a05622a5a8d00b0035b062a6532mr51776130qtb.156.1669909433702;
+        Thu, 01 Dec 2022 07:43:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669909433; cv=none;
         d=google.com; s=arc-20160816;
-        b=oiSF66AInixOQ9c19Qy2tC5CiRGFb0BIXI0dqI5PRUlDkUjwaf5Uk7S+ErFmT22vkU
-         KsNnL1tKru3mz1hMKj08nkO2SbdIbpkrA7cFtSfxZgjR8KMYoJTNz7HvDmA2f0RJsfpw
-         c5fooF9YF10inLp505fagbusc6bFOGhAgJSzJfr3QlZtfRWXRmuPKn1oRQL65qVvyEKD
-         M4KE98z2zmPTcam6TRKm55HiHzKpwQ59KBYEOYJJdY1XsXGTqnnUfT+HcHqvw1GmDxhE
-         X1MOkSLxCa30o3qHRo/RHEwcwMAnhS3d4236s8uKI1vgvaCi8kPOHP5F2eoy6RUG68el
-         QC0w==
+        b=lBkuHHFQagh9yn0pVgToB5kOOOfO8MJ91B9V22uXNs7efBLlnHFIdStXYmAo3U8ZNZ
+         lT1Tr7yAV+B5FEFtT7ZnTUAU36uFCdJdP8KhWMWZDcK++qabg28fv8fKO3KSMQBmxZoS
+         nJXBUOblch0ZeuzBH81S89jorY1VMDubDs+p2jIxiIDCkOTPpaU2MxBsLHYXNAbghCFN
+         LGiRE+QmZApwagy/dQJn577Xgmqz2+uucWnNYA5CYYJp6a78NR5Lb96RHb7EhgEdHaDu
+         hlRC3iwLqwGU2rrJh65P0IJBMSjYxKhtUEe9gzyHMloa7EgrmaUs1QTPW4OUhcSqQGC3
+         3q+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:message-id:mime-version:subject
-         :date:from;
-        bh=8ksG/+58jubSbBf9dl914FDT2fuSBaMZ/VLRkwRuCi4=;
-        b=uGh5xpZFZQzCJYn7pQNcFpsQK287X9ALf6Ac1S5V0s6uecOlnBfqzzc1qs/aehdQ4k
-         PDONwHPn/U1UgHz4IOG8tyDXCn+ufX+6opB8PEh/M4pu39fL0fRaD8/jIm7NjQpEvV73
-         SoSAH+6ztYlfdN4uygslMzgRntK3gnFTvpeqjPr7Du4as4nnRUzjcYp+2s1dnHCUPRub
-         lFLDi1YOjDAMTw+oGQSBEeqA0SV9W2NXbEA55hpNOb3hJUjMdYlEAqyNm0DQ5H9cQA3U
-         +oiw+2qe0RBth8qNeCXjsW4CUJUdMQd+Gp6+YDQQSAcCUKMsFlecD/KXlZpi/s+ZdnoZ
-         yypg==
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
+         :from;
+        bh=dfDVG2HVvt2kAQ1cc1E8pcIp8qRjKKDKtzbXXIVx9e8=;
+        b=tpHSxTgqtTEmSaUz+cwxfsjT1rCOlnzltCjILTFG6xBrbtqduZ8wFn4DY10UoQyYys
+         JnuN//BIVIVLr46vx9Uz2A64P8YeDnsXVsNkqi2HlNnMlrg76fQ0HkqZK16aOZhpJZKF
+         7gutC9Pp/mUPJMcUQNVYZTtKQgn/MzD+xkLC2w+i4Y30JK6EWTlT7HioTaiLE4ZhKQ5W
+         oEqbUBikY+AB9/BG1VrS8DKo5YFz1xYBfPb1qw3yu2adgv5MQexFV9+GGMB+PaLHlvT7
+         5wiMZezY34o8FLOQMW7Jpa8J9KdK96MjrvepgDYHCHaxqZhzQm59nSFpWJQBMjxtcFvV
+         JQhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cb10-20020a05622a1f8a00b00399ce3c7f87si2529729qtb.246.2022.12.01.07.43.25
+        by mx.google.com with ESMTPS id a10-20020a0ce38a000000b004c6fb33baadsi2232701qvl.565.2022.12.01.07.43.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Dec 2022 07:43:25 -0800 (PST)
+        Thu, 01 Dec 2022 07:43:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -39,37 +39,38 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p0lhX-0005KE-Go; Thu, 01 Dec 2022 10:42:15 -0500
+	id 1p0lhR-0005HF-HL; Thu, 01 Dec 2022 10:42:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1p0lhN-0005Eo-DL; Thu, 01 Dec 2022 10:42:05 -0500
+ id 1p0lhP-0005GL-1T; Thu, 01 Dec 2022 10:42:07 -0500
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1p0lhL-0004vv-4O; Thu, 01 Dec 2022 10:42:05 -0500
+ id 1p0lhM-0004wo-Ki; Thu, 01 Dec 2022 10:42:06 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id E18D711EFD8;
- Thu,  1 Dec 2022 15:42:00 +0000 (UTC)
+ by mail-b.sr.ht (Postfix) with ESMTPSA id F139C11F9A3;
+ Thu,  1 Dec 2022 15:42:01 +0000 (UTC)
 From: ~axelheider <axelheider@git.sr.ht>
-Date: Thu, 01 Dec 2022 15:42:00 +0000
-Subject: [PATCH qemu.git v3 0/8] hw/timer/imx_epit: improve and fix EPIT
- compare timer
-MIME-Version: 1.0
-Message-ID: <166990932074.29941.8709118178538288040-0@git.sr.ht>
+Date: Sun, 20 Nov 2022 20:05:25 +0100
+Subject: [PATCH qemu.git v3 8/8] hw/timer/imx_epit: fix compare timer handling
+Message-ID: <166990932074.29941.8709118178538288040-8@git.sr.ht>
 X-Mailer: git.sr.ht
+In-Reply-To: <166990932074.29941.8709118178538288040-0@git.sr.ht>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
 Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
  helo=mail-b.sr.ht
-X-Spam_score_int: 2
-X-Spam_score: 0.2
-X-Spam_bar: /
-X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_REPLYTO=2.095,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: 36
+X-Spam_score: 3.6
+X-Spam_bar: +++
+X-Spam_report: (3.6 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
+ FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,46 +86,278 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Reply-To: ~axelheider <axelheider@gmx.de>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ATIX/lmaFdrz
+X-TUID: B7LIw1PbE22X
 
-This patch set improves the i.MX EPIT emulation:
-- fix #1263 for writes to CR
-- ensure SR_OCIF is set properly even if CR_OCIEN is off
-- hardware reset initialized CR to 0
-- interrupt state update on CR writes (e.g. software reset)
-- remove explicit fields cnt and freq (they are redundant)
-- general code and documentation improvements
+From: Axel Heider <axel.heider@hensoldt.net>
 
-v3 addresses the comments from the previous iterations, but still keeps
-the scope of this patchset limited to addressing the obvious bugs in the
-behavior. It does not try to improve the timer accuracy, thus the
-following remarks remain to be fixed in a future patch after this one is
-merged:
-- don't use PTIMER_POLICY_LEGACY. Fine tuning this requires more
-  time and currently this is not a major concern, because the timer is
-  working reasonably well.
-- replace the modestly harmful sequence
-        counter = ptimer_get_count(s->timer_reload);
-        ...
-        ptimer_set_count(s->timer_cmp, counter);
-  by something better that does not lose or gain time. The current
-  patchset does not introduce this sequence, it has been there
-  before already. Again,  the current lack of accuracy here is not a
-  major concern because the timer is working reasonably well.
+- fix #1263 for CR writes
+- rework compare time handling
+  - The compare timer has to run even if CR.OCIEN is not set,
+    as SR.OCIF must be updated.
+  - The compare timer fires exactly once when the
+    compare value is less than the current value, but the
+    reload values is less than the compare value.
+  - The compare timer will never fire if the reload value is
+    less than the compare value. Disable it in this case.
 
-Axel Heider (8):
-  hw/timer/imx_epit: improve comments
-  hw/timer/imx_epit: cleanup CR defines
-  hw/timer/imx_epit: define SR_OCIF
-  hw/timer/imx_epit: update interrupt state on CR write access
-  hw/timer/imx_epit: hard reset initializes CR with 0
-  hw/timer/imx_epit: factor out register write handlers
-  hw/timer/imx_epit: remove explicit fields cnt and freq
-  hw/timer/imx_epit: fix compare timer handling
+Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+---
+ hw/timer/imx_epit.c | 184 ++++++++++++++++++++++++++------------------
+ 1 file changed, 110 insertions(+), 74 deletions(-)
 
- hw/timer/imx_epit.c         | 370 +++++++++++++++++++++---------------
- include/hw/timer/imx_epit.h |   8 +-
- 2 files changed, 222 insertions(+), 156 deletions(-)
-
--- 
+diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+index cf13496165..663907f9cf 100644
+--- a/hw/timer/imx_epit.c
++++ b/hw/timer/imx_epit.c
+@@ -6,6 +6,7 @@
+  * Originally written by Hans Jiang
+  * Updated by Peter Chubb
+  * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
++ * Updated by Axel Heider
+  *
+  * This code is licensed under GPL version 2 or later.  See
+  * the COPYING file in the top-level directory.
+@@ -151,95 +152,130 @@ static uint64_t imx_epit_read(void *opaque, hwaddr off=
+set, unsigned size)
+     return reg_value;
+ }
+=20
+-/* Must be called from ptimer_transaction_begin/commit block for s->timer_cm=
+p */
+-static void imx_epit_reload_compare_timer(IMXEPITState *s)
++/*
++ * Must be called from a ptimer_transaction_begin/commit block for
++ * s->timer_cmp, but outside of a transaction block of s->timer_reload,
++ * so the proper counter value is read.
++ */
++static void imx_epit_update_compare_timer(IMXEPITState *s)
+ {
+-    if ((s->cr & (CR_EN | CR_OCIEN)) =3D=3D (CR_EN | CR_OCIEN))  {
+-        /* if the compare feature is on and timers are running */
+-        uint32_t tmp =3D ptimer_get_count(s->timer_reload);
+-        uint64_t next;
+-        if (tmp > s->cmp) {
+-            /* It'll fire in this round of the timer */
+-            next =3D tmp - s->cmp;
+-        } else { /* catch it next time around */
+-            next =3D tmp - s->cmp + ((s->cr & CR_RLD) ? EPIT_TIMER_MAX : s->=
+lr);
++    uint64_t counter =3D 0;
++    bool is_oneshot =3D false;
++    /* The compare timer only has to run if the timer peripheral is active
++     * and there is an input clock, Otherwise it can be switched off.
++     */
++    bool is_active =3D (s->cr & CR_EN) && imx_epit_get_freq(s);
++    if (is_active) {
++        /*
++         * Calculate next timeout for compare timer. Reading the reload
++         * counter returns proper results only if pending transactions
++         * on it are committed here. Otherwise stale values are be read.
++         */
++        counter =3D ptimer_get_count(s->timer_reload);
++        uint64_t limit =3D ptimer_get_limit(s->timer_cmp);
++        /*
++         * The compare timer is a periodic timer if the limit is at least
++         * the compare value. Otherwise it may fire at most once in the
++         * current round.
++         */
++        bool is_oneshot =3D (limit >=3D s->cmp);
++        if (counter >=3D s->cmp) {
++            /* The compare timer fires in the current round. */
++            counter -=3D s->cmp;
++        } else if (!is_oneshot) {
++            /*
++             * The compare timer fires after a reload, as it below the
++             * compare value already in this round. Note that the counter
++             * value calculated below can be above the 32-bit limit, which
++             * is legal here because the compare timer is an internal
++             * helper ptimer only.
++             */
++            counter +=3D limit - s->cmp;
++        } else {
++            /*
++             * The compare timer won't fire in this round, and the limit is
++             * set to a value below the compare value. This practically means
++             * it will never fire, so it can be switched off.
++             */
++            is_active =3D false;
+         }
+-        ptimer_set_count(s->timer_cmp, next);
+     }
++
++    /*
++     * Set the compare timer and let it run, or stop it. This is agnostic
++     * of CR.OCIEN bit, as this bit affects interrupt generation only. The
++     * compare timer needs to run even if no interrupts are to be generated,
++     * because the SR.OCIF bit must be updated also.
++     * Note that the timer might already be stopped or be running with
++     * counter values. However, finding out when an update is needed and
++     * when not is not trivial. It's much easier applying the setting again,
++     * as this does not harm either and the overhead is negligible.
++     */
++    if (is_active) {
++        ptimer_set_count(s->timer_cmp, counter);
++        ptimer_run(s->timer_cmp, is_oneshot ? 1 : 0);
++    } else {
++        ptimer_stop(s->timer_cmp);
++    }
++
+ }
+=20
+ static void imx_epit_write_cr(IMXEPITState *s, uint32_t value)
+ {
+-    uint32_t freq =3D 0;
+     uint32_t oldcr =3D s->cr;
+=20
+     s->cr =3D value & 0x03ffffff;
+=20
+     if (s->cr & CR_SWR) {
+-        /* handle the reset */
++        /*
++         * Reset clears CR.SWR again. It does not touch CR.EN, but the timers
++         * are still stopped because the input clock is disabled.
++         */
+         imx_epit_reset(s, false);
+-    }
+-
+-    /*
+-     * The interrupt state can change due to:
+-     * - reset clears both SR.OCIF and CR.OCIE
+-     * - write to CR.EN or CR.OCIE
+-     */
+-    imx_epit_update_int(s);
+-
+-    /*
+-     * TODO: could we 'break' here for reset? following operations appear
+-     * to duplicate the work imx_epit_reset() already did.
+-     */
+-
+-    ptimer_transaction_begin(s->timer_cmp);
+-    ptimer_transaction_begin(s->timer_reload);
+-
+-    /*
+-     * Update the frequency. In case of a reset the input clock was
+-     * switched off, so this can be skipped.
+-     */
+-    if (!(s->cr & CR_SWR)) {
+-        freq =3D imx_epit_get_freq(s);
++    } else {
++        ptimer_transaction_begin(s->timer_cmp);
++        ptimer_transaction_begin(s->timer_reload);
++        uint32_t freq =3D imx_epit_get_freq(s);
+         if (freq) {
+             ptimer_set_freq(s->timer_reload, freq);
+             ptimer_set_freq(s->timer_cmp, freq);
+         }
+-    }
+-
+-    if (freq && (s->cr & CR_EN) && !(oldcr & CR_EN)) {
+-        if (s->cr & CR_ENMOD) {
+-            if (s->cr & CR_RLD) {
+-                ptimer_set_limit(s->timer_reload, s->lr, 1);
+-                ptimer_set_limit(s->timer_cmp, s->lr, 1);
+-            } else {
+-                ptimer_set_limit(s->timer_reload, EPIT_TIMER_MAX, 1);
+-                ptimer_set_limit(s->timer_cmp, EPIT_TIMER_MAX, 1);
++        uint32_t toggled_cr_bits =3D oldcr ^ s->cr;
++        /* re-initialize the limits if CR.RLD has changed */
++        bool set_limit =3D toggled_cr_bits & CR_RLD;
++        /* set the counter if the timer got just enabled and CR.ENMOD is set=
+ */
++        bool is_switched_on =3D (toggled_cr_bits & s->cr) & CR_EN;
++        bool set_counter =3D is_switched_on && (s->cr & CR_ENMOD);
++        if (set_limit || set_counter) {
++            uint64_t limit =3D (s->cr & CR_RLD) ? s->lr : EPIT_TIMER_MAX;
++            ptimer_set_limit(s->timer_reload, limit, set_counter ? 1 : 0);
++            if (set_limit) {
++                ptimer_set_limit(s->timer_cmp, limit, 0);
+             }
+         }
+-
+-        imx_epit_reload_compare_timer(s);
+-        ptimer_run(s->timer_reload, 0);
+-        if (s->cr & CR_OCIEN) {
+-            ptimer_run(s->timer_cmp, 0);
++        /*
++         * If there is an input clock and the peripheral is enabled, then
++         * ensure the wall clock timer is ticking. Otherwise stop the timers.
++         * The compare timer will be updated later.
++         */
++        if (freq && (s->cr & CR_EN)) {
++            ptimer_run(s->timer_reload, 0);
+         } else {
+-            ptimer_stop(s->timer_cmp);
+-        }
+-    } else if (!(s->cr & CR_EN)) {
+-        /* stop both timers */
+-        ptimer_stop(s->timer_reload);
+-        ptimer_stop(s->timer_cmp);
+-    } else  if (s->cr & CR_OCIEN) {
+-        if (!(oldcr & CR_OCIEN)) {
+-            imx_epit_reload_compare_timer(s);
+-            ptimer_run(s->timer_cmp, 0);
++            ptimer_stop(s->timer_reload);
+         }
+-    } else {
+-        ptimer_stop(s->timer_cmp);
++        /* Commit changes to reload timer, so they can propagate. */
++        ptimer_transaction_commit(s->timer_reload);
++        /* Update compare timer based on the committed reload timer value. */
++        imx_epit_update_compare_timer(s);
++        ptimer_transaction_commit(s->timer_cmp);
+     }
+=20
+-    ptimer_transaction_commit(s->timer_cmp);
+-    ptimer_transaction_commit(s->timer_reload);
++    /*
++     * The interrupt state can change due to:
++     * - reset clears both SR.OCIF and CR.OCIE
++     * - write to CR.EN or CR.OCIE
++     */
++    imx_epit_update_int(s);
+ }
+=20
+ static void imx_epit_write_sr(IMXEPITState *s, uint32_t value)
+@@ -266,14 +302,10 @@ static void imx_epit_write_lr(IMXEPITState *s, uint32_t=
+ value)
+         /* If IOVW bit is set then set the timer value */
+         ptimer_set_count(s->timer_reload, s->lr);
+     }
+-    /*
+-     * Commit the change to s->timer_reload, so it can propagate. Otherwise
+-     * the timer interrupt may not fire properly. The commit must happen
+-     * before calling imx_epit_reload_compare_timer(), which reads
+-     * s->timer_reload internally again.
+-     */
++    /* Commit the changes to s->timer_reload, so they can propagate. */
+     ptimer_transaction_commit(s->timer_reload);
+-    imx_epit_reload_compare_timer(s);
++    /* Update the compare timer based on the committed reload timer value. */
++    imx_epit_update_compare_timer(s);
+     ptimer_transaction_commit(s->timer_cmp);
+ }
+=20
+@@ -281,8 +313,9 @@ static void imx_epit_write_cmp(IMXEPITState *s, uint32_t =
+value)
+ {
+     s->cmp =3D value;
+=20
++    /* Update the compare timer based on the committed reload timer value. */
+     ptimer_transaction_begin(s->timer_cmp);
+-    imx_epit_reload_compare_timer(s);
++    imx_epit_update_compare_timer(s);
+     ptimer_transaction_commit(s->timer_cmp);
+ }
+=20
+@@ -322,6 +355,9 @@ static void imx_epit_cmp(void *opaque)
+ {
+     IMXEPITState *s =3D IMX_EPIT(opaque);
+=20
++    /* The cmp ptimer can't be running when the peripheral is disabled */
++    assert(s->cr & CR_EN);
++
+     DPRINTF("sr was %d\n", s->sr);
+     /* Set interrupt status bit SR.OCIF and update the interrupt state */
+     s->sr |=3D SR_OCIF;
+--=20
 2.34.5

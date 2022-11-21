@@ -1,318 +1,184 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2427984ejx;
-        Mon, 21 Nov 2022 06:28:39 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6znMqDQpURA1TWeQHpaoipxwqgMa2chVOEEubXtsGIlx5qeee5I5FcX74z0OypL2XVRe+k
-X-Received: by 2002:a62:a515:0:b0:56e:28b1:56a3 with SMTP id v21-20020a62a515000000b0056e28b156a3mr824690pfm.43.1669040919154;
-        Mon, 21 Nov 2022 06:28:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669040919; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2464171ejx;
+        Mon, 21 Nov 2022 07:10:35 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6Qv1VFqMSBeCPpKGNihjrruSZDJ8gXQo6w3CY8yXypF520smggbylTRwnNM2LX54ClWWcp
+X-Received: by 2002:a0c:f744:0:b0:4c6:911b:38d8 with SMTP id e4-20020a0cf744000000b004c6911b38d8mr6287150qvo.63.1669043435455;
+        Mon, 21 Nov 2022 07:10:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669043435; cv=none;
         d=google.com; s=arc-20160816;
-        b=o2OJCo1UDmfcTDYs8ThbHrMaJXHp68te3O+gp0nZoBAAKp2LJc1qXsnyMVOr7xPsoC
-         Gm70Zt+HKaodXtxmMpXEFrXUbO6ga5H2XyU4vaCF3seB+bQsYwC7jix8Yr02bPWlLnFa
-         LXMroMrHLKUqzEt9s/IOQalNkdQ9kuUqn6jdqBhNE2dTTt6TflH0gUeb0lnTvdjYkSp9
-         Uc/FTjRKknTosC8G4sH6C53Qv55I55cJ5uGOO7gOgTwSM/0aayALeo89TJHuc7+KmHpv
-         r4rsLmGPh4HQ84UqFKRc0UlTTiLdJ8EenAUHritDUCbw+LYLQuauY/QDS+5ovZ+VQzzP
-         N2Ow==
+        b=X5YAf8FgL3C4iVmOdrZn1TNjOLpMUKN16IzDUpRcZbZXpPez33R38S3etYIotfxgl3
+         8+0ANQQuAfln6KofcoUMI3FxkDlWs5viUznBIfHqI33PqVjkNGE3PiW17aSz2n/HqAw0
+         uCdGRUuS2gO3c95trl2ExmQb/LFTjHMJYrM1rmthX8d0/hdZkHw4elGR9UgLSkQG5qWU
+         2QtsBp8wUN/FTJYbjylwBuMmFT0gDtKTJlSAGJxm7ywTq1f1xeDuAMIwbafUBdzs0T0L
+         +2pfgKnTLfi9St9Yg+FXBQ1roUgjfKY7cfprjSwPEi8DGhu4n5EcXm5gsKnuJowAV1KQ
+         zYVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=5zhEtdmEkFo9VdIm4gjZs/qMfIsNfNo6eduh1VXurC8=;
-        b=cJZGoCLMMSYs38N4qRzDjwA+vk6D5d2wOziY/x2sTxoZUgUHANPbdDatKdUMo8hRux
-         cH+APG3Nf3M8RYajJQJVPLitC18CGAp+2dO/+TXX32n6ZCtQEvH7MCzJ30YiWR6ceQcS
-         jdPk9z+VrcKA1XhE1ldwdC3uKtvQFw2ub1/7ikRiDjHnBOsT5gISPzBWoiI6XWUpPQtq
-         RsG1G2y4iABwJ5z8xZnItExI4Z9qaCON/QPZTKImrLFN/lI+gSFLzu2ycn9pGmm5XFV2
-         NMLrFdQaEoT9h8QzCysGV9LUzzMeXIOnCEKGYKKGRDSu3jfOjC3Cu66HxsWC1NDsHokI
-         buYw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=xFY009GFhT1UuTyDYlXOHAwIOmP6sgsC0FRZfkajRg0=;
+        b=YuMIlBOsnTzCW1BW7gIigdMfSB3n8jx9DJUuFx4G0+85idbKwXwo7C+QHOyE3at5Z0
+         GDs87KeCyL86K5lhGhQW0przlflDexbvfSbFq29ASUYi898gHS1ZgGgb2HYGQOLfoEv8
+         5zHd3RgIIt27i2kYQNNdMxSqx/dENS87ANE7ohA8WKHLugrU5Tve+SXTg3nqlyalalJ6
+         zRasHW6Ut8gID6wlKNTB39WI3WQOo9RxYmODkq89NosuKsCRWlTXrqeUgofpAq48Npp4
+         NeWqsQWCl5La9gaBnBnSSg2wWy4tA4c/UlAD73rclz8sKUnuRZugPIeIUV2+h8vPWbsj
+         iVmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@digitalocean.com header.s=google header.b=WGaWYuIC;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=digitalocean.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id k190-20020a6384c7000000b00476a190f972si11803439pgd.852.2022.11.21.06.28.38;
-        Mon, 21 Nov 2022 06:28:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ZStvIAxq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t6-20020a372d06000000b006fb3078411asi5864052qkh.635.2022.11.21.07.10.35
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 21 Nov 2022 07:10:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@digitalocean.com header.s=google header.b=WGaWYuIC;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=digitalocean.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229915AbiKUO2h (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 3 others); Mon, 21 Nov 2022 09:28:37 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:41930 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229476AbiKUO2f (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 21 Nov 2022 09:28:35 -0500
-Received: from mail-qt1-x82b.google.com (mail-qt1-x82b.google.com [IPv6:2607:f8b0:4864:20::82b])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id EBA3758BCD
-        for <kvm@vger.kernel.org>; Mon, 21 Nov 2022 06:28:33 -0800 (PST)
-Received: by mail-qt1-x82b.google.com with SMTP id h24so7298526qta.9
-        for <kvm@vger.kernel.org>; Mon, 21 Nov 2022 06:28:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=digitalocean.com; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5zhEtdmEkFo9VdIm4gjZs/qMfIsNfNo6eduh1VXurC8=;
-        b=WGaWYuICWBTUxapnXeLbTTiSj+b+UQr1CSimb3jCEW4QyJzQNaRVOiCJfLfgYQDUJC
-         gbPHMtG0an1Uyv3fHbdZO0S3g1lG+769VF/kvHNGyrCthcyjlECa78GbYQfw402BAjmU
-         SZlk+l1CqVkde0eyJjEUPJtFXTYPkf5FxoJS4=
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ZStvIAxq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ox8QZ-00041j-6F; Mon, 21 Nov 2022 10:09:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tkutergin@gmail.com>)
+ id 1ox8QW-0003y9-Tp
+ for qemu-arm@nongnu.org; Mon, 21 Nov 2022 10:09:40 -0500
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tkutergin@gmail.com>)
+ id 1ox8QR-0002cN-K8
+ for qemu-arm@nongnu.org; Mon, 21 Nov 2022 10:09:40 -0500
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-398cff43344so66476957b3.0
+ for <qemu-arm@nongnu.org>; Mon, 21 Nov 2022 07:09:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=xFY009GFhT1UuTyDYlXOHAwIOmP6sgsC0FRZfkajRg0=;
+ b=ZStvIAxqAZ2tTIdsnX7o6+lLXp6lWyGBWAuOBOuHWlot/oisbpSj0jNDPRjl5GCWjU
+ zbN/VPRatpt7QWHv2OCrYOxfqKBwUVSwUyWaTRANLC/052Nn3o2iUsxwWKBulxMOY6rl
+ lY7O7O3krcah8kyZEgej7TKNdV6JP4/J8n9AFj3VT5oaU7C8vH4hZeNbXos9wBekU8CE
+ ZcqTdrO5+bk+7aFAG8aoTh0jbWU7zVCh/i4CG2Sw/OWz523xkAPkIqL5x91lzkSeGe0a
+ 3G9rSZtIFbT0V9/1rdx9igzUv4/GkJUCL4Z/4AchV8dVEr6grDWAyH7U4Nb945KO3XmQ
+ HZnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5zhEtdmEkFo9VdIm4gjZs/qMfIsNfNo6eduh1VXurC8=;
-        b=toDUmCiTYGnMm8prYvTyHtS+T+so9FsidEd0UtrqpqxzZQ8Ar17TbYKJfon+uLc4Ie
-         xPX2tBUYUF1gIzVOlAZZyaurc9uaX+A/BLbV1FFmfvPKe9lZ0uv59YQdenKr8jEOfMfB
-         mGoRv5rilbR2x80M40f74XGKdnZ8V9yGicGNWBF9q4PvJ7M1pWGpbakPIqgfq/Nh8Lls
-         KWyMFsA99bbvqSsUxB++JlZoXekYr9t6zovcKCp6vJ5gwxGZcvrR0ZdmjUMlNVp+mu7V
-         JLoAPuFkTUkfbQynsgeIdYwJenSsVcuzXloom6jyzmZZpCX8+GHY162jd/pFxPwFLzeJ
-         Feeg==
-X-Gm-Message-State: ANoB5pm16oeKS1WQUuf66hk9TSboM1Hn3uftw0FeaNRPL7Y9BJRdkKMm
-        z+6v/ddkqO1gFgbRycefRE1vQQ==
-X-Received: by 2002:a05:622a:1b0e:b0:3a6:2197:520c with SMTP id bb14-20020a05622a1b0e00b003a62197520cmr16012886qtb.183.1669040913016;
-        Mon, 21 Nov 2022 06:28:33 -0800 (PST)
-Received: from [192.168.2.110] (107-142-220-210.lightspeed.wlfrct.sbcglobal.net. [107.142.220.210])
-        by smtp.gmail.com with ESMTPSA id m19-20020a05620a291300b006fa43e139b5sm8235210qkp.59.2022.11.21.06.28.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 06:28:32 -0800 (PST)
-Message-ID: <8b197d19-a43a-3b29-3a05-c92a09e28d5f@digitalocean.com>
-Date:   Mon, 21 Nov 2022 09:28:29 -0500
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=xFY009GFhT1UuTyDYlXOHAwIOmP6sgsC0FRZfkajRg0=;
+ b=r+61Ld/TDjm0+tNQla9R3fDjorqE53FjFFwgmThcK+O1brGlTuYnXOJoabuNMW6tJ+
+ ATg2yU6ROcOxixVpslCLR8QNR7qTguYeqzS+DDWjWBwicwDHVR9+nUI9yDvrwgvkUJFr
+ EKTML0ZMOIp2fvkkcmBpUGZ6yzQ8ahSnlBg5rIuzRFn6D/aG2uJedSvMLnezojHB1So4
+ ooR3tVj9AGI3AY33+K9402PatMHQyrXKgx9edUdOhw4E7s2+HZ0CYT8CYgFos9MNR5hZ
+ 9oyDqRrPN2qS8ed4Urn0raX5eJgfQlO5AmdIOflJwf+rg0mEsoEFgJRKYEEN4eAd4tIY
+ 7dgg==
+X-Gm-Message-State: ANoB5pkh4P02QHyKc/ZlwP+GGTmz+okbL67EpY9gDiUIkpXVq6YC2SS7
+ mnP/JQh7cvmxpTXhhxbOfsfga1qLlrBBHijK520=
+X-Received: by 2002:a0d:e384:0:b0:35c:5c82:4664 with SMTP id
+ m126-20020a0de384000000b0035c5c824664mr6094903ywe.306.1669043374403; Mon, 21
+ Nov 2022 07:09:34 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 3/3] target/i386/kvm: get and put AMD pmu registers
-Content-Language: en-US
-To:     Dongli Zhang <dongli.zhang@oracle.com>, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-        qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Cc:     pbonzini@redhat.com, peter.maydell@linaro.org, mtosatti@redhat.com,
-        chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
-        jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
-        danielhb413@gmail.com, clg@kaod.org, david@gibson.dropbear.id.au,
-        groug@kaod.org, palmer@dabbelt.com, alistair.francis@wdc.com,
-        bin.meng@windriver.com, pasic@linux.ibm.com,
-        borntraeger@linux.ibm.com, richard.henderson@linaro.org,
-        david@redhat.com, iii@linux.ibm.com, thuth@redhat.com,
-        joe.jin@oracle.com, likexu@tencent.com
-References: <20221119122901.2469-1-dongli.zhang@oracle.com>
- <20221119122901.2469-4-dongli.zhang@oracle.com>
-From:   Liang Yan <lyan@digitalocean.com>
-In-Reply-To: <20221119122901.2469-4-dongli.zhang@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,
-        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: xYkNEvjd2rfn
+References: <20221121134605.2762683-1-tkutergin@gmail.com>
+ <CAFEAcA8Sqfud80PbJr361kJPSOH8aUw-r2eku0T2idghy0Evqg@mail.gmail.com>
+In-Reply-To: <CAFEAcA8Sqfud80PbJr361kJPSOH8aUw-r2eku0T2idghy0Evqg@mail.gmail.com>
+From: Timofey Kutergin <tkutergin@gmail.com>
+Date: Mon, 21 Nov 2022 18:09:23 +0300
+Message-ID: <CACKEeRNmSxFxtaBhFrSFx4ymHvqo2VC76GMmVSVwJiLbtco9oA@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: added cortex-a55 CPU support for qemu-virt
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000072350605edfc716a"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=tkutergin@gmail.com; helo=mail-yw1-x1133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Dh1ihTcSAAWS
 
-A little bit more information from kernel perspective.
+--00000000000072350605edfc716a
+Content-Type: text/plain; charset="UTF-8"
 
-https://lkml.org/lkml/2022/10/31/476
-
-
-I was kindly thinking of the same idea, but not sure if it is expected  
-from a bare-metal perspective, since the four legacy MSRs
-
-are always there. Also not sure if they are used by other applications.
-
-
-~Liang
+Hi, I am very sorry - still confused sometimes by the process.
+Done
+BR
+Timofey
 
 
-On 11/19/22 07:29, Dongli Zhang wrote:
-> The QEMU side calls kvm_get_msrs() to save the pmu registers from the KVM
-> side to QEMU, and calls kvm_put_msrs() to store the pmu registers back to
-> the KVM side.
+On Mon, Nov 21, 2022 at 5:25 PM Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> On Mon, 21 Nov 2022 at 13:46, Timofey Kutergin <tkutergin@gmail.com>
+> wrote:
+> >
+> >   cortex-a55 is one of newer armv8.2+ CPUs supporting native
+> >   Privileged Access Never (PAN) feature. Using this CPU
+> >   provides access to this feature without using fictitious "max"
+> >   CPU.
+> >
+> > Signed-off-by: Timofey Kutergin <tkutergin@gmail.com>
 >
-> However, only the Intel gp/fixed/global pmu registers are involved. There
-> is not any implementation for AMD pmu registers. The
-> 'has_architectural_pmu_version' and 'num_architectural_pmu_gp_counters' are
-> calculated at kvm_arch_init_vcpu() via cpuid(0xa). This does not work for
-> AMD. Before AMD PerfMonV2, the number of gp registers is decided based on
-> the CPU version.
+> Hi; it looks like you forgot to cc qemu-devel on this mail.
+> All our automated tooling looks at that list to find patches;
+> would you mind resending the email cc'ing that list as well,
+> please?
 >
-> This patch is to add the support for AMD version=1 pmu, to get and put AMD
-> pmu registers. Otherwise, there will be a bug:
+> thanks
+> -- PMM
 >
-> 1. The VM resets (e.g., via QEMU system_reset or VM kdump/kexec) while it
-> is running "perf top". The pmu registers are not disabled gracefully.
->
-> 2. Although the x86_cpu_reset() resets many registers to zero, the
-> kvm_put_msrs() does not puts AMD pmu registers to KVM side. As a result,
-> some pmu events are still enabled at the KVM side.
->
-> 3. The KVM pmc_speculative_in_use() always returns true so that the events
-> will not be reclaimed. The kvm_pmc->perf_event is still active.
->
-> 4. After the reboot, the VM kernel reports below error:
->
-> [    0.092011] Performance Events: Fam17h+ core perfctr, Broken BIOS detected, complain to your hardware vendor.
-> [    0.092023] [Firmware Bug]: the BIOS has corrupted hw-PMU resources (MSR c0010200 is 530076)
->
-> 5. In a worse case, the active kvm_pmc->perf_event is still able to
-> inject unknown NMIs randomly to the VM kernel.
->
-> [...] Uhhuh. NMI received for unknown reason 30 on CPU 0.
->
-> The patch is to fix the issue by resetting AMD pmu registers during the
-> reset.
->
-> Cc: Joe Jin <joe.jin@oracle.com>
-> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-> ---
->   target/i386/cpu.h     |  5 +++
->   target/i386/kvm/kvm.c | 83 +++++++++++++++++++++++++++++++++++++++++--
->   2 files changed, 86 insertions(+), 2 deletions(-)
->
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index d4bc19577a..4cf0b98817 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -468,6 +468,11 @@ typedef enum X86Seg {
->   #define MSR_CORE_PERF_GLOBAL_CTRL       0x38f
->   #define MSR_CORE_PERF_GLOBAL_OVF_CTRL   0x390
->   
-> +#define MSR_K7_EVNTSEL0                 0xc0010000
-> +#define MSR_K7_PERFCTR0                 0xc0010004
-> +#define MSR_F15H_PERF_CTL0              0xc0010200
-> +#define MSR_F15H_PERF_CTR0              0xc0010201
-> +
->   #define MSR_MC0_CTL                     0x400
->   #define MSR_MC0_STATUS                  0x401
->   #define MSR_MC0_ADDR                    0x402
-> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> index 0b1226ff7f..023fcbce48 100644
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -2005,6 +2005,32 @@ int kvm_arch_init_vcpu(CPUState *cs)
->           }
->       }
->   
-> +    if (IS_AMD_CPU(env)) {
-> +        int64_t family;
-> +
-> +        family = (env->cpuid_version >> 8) & 0xf;
-> +        if (family == 0xf) {
-> +            family += (env->cpuid_version >> 20) & 0xff;
-> +        }
-> +
-> +        /*
-> +         * If KVM_CAP_PMU_CAPABILITY is not supported, there is no way to
-> +         * disable the AMD pmu virtualization.
-> +         *
-> +         * If KVM_CAP_PMU_CAPABILITY is supported, "!has_pmu_cap" indicates
-> +         * the KVM side has already disabled the pmu virtualization.
-> +         */
-> +        if (family >= 6 && (!has_pmu_cap || cpu->enable_pmu)) {
-> +            has_architectural_pmu_version = 1;
-> +
-> +            if (env->features[FEAT_8000_0001_ECX] & CPUID_EXT3_PERFCORE) {
-> +                num_architectural_pmu_gp_counters = 6;
-> +            } else {
-> +                num_architectural_pmu_gp_counters = 4;
-> +            }
-> +        }
-> +    }
-> +
->       cpu_x86_cpuid(env, 0x80000000, 0, &limit, &unused, &unused, &unused);
->   
->       for (i = 0x80000000; i <= limit; i++) {
-> @@ -3326,7 +3352,7 @@ static int kvm_put_msrs(X86CPU *cpu, int level)
->               kvm_msr_entry_add(cpu, MSR_KVM_POLL_CONTROL, env->poll_control_msr);
->           }
->   
-> -        if (has_architectural_pmu_version > 0) {
-> +        if (has_architectural_pmu_version > 0 && IS_INTEL_CPU(env)) {
->               if (has_architectural_pmu_version > 1) {
->                   /* Stop the counter.  */
->                   kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR_CTRL, 0);
-> @@ -3357,6 +3383,26 @@ static int kvm_put_msrs(X86CPU *cpu, int level)
->                                     env->msr_global_ctrl);
->               }
->           }
-> +
-> +        if (has_architectural_pmu_version > 0 && IS_AMD_CPU(env)) {
-> +            uint32_t sel_base = MSR_K7_EVNTSEL0;
-> +            uint32_t ctr_base = MSR_K7_PERFCTR0;
-> +            uint32_t step = 1;
-> +
-> +            if (num_architectural_pmu_gp_counters == 6) {
-> +                sel_base = MSR_F15H_PERF_CTL0;
-> +                ctr_base = MSR_F15H_PERF_CTR0;
-> +                step = 2;
-> +            }
-> +
-> +            for (i = 0; i < num_architectural_pmu_gp_counters; i++) {
-> +                kvm_msr_entry_add(cpu, ctr_base + i * step,
-> +                                  env->msr_gp_counters[i]);
-> +                kvm_msr_entry_add(cpu, sel_base + i * step,
-> +                                  env->msr_gp_evtsel[i]);
-> +            }
-> +        }
-> +
->           /*
->            * Hyper-V partition-wide MSRs: to avoid clearing them on cpu hot-add,
->            * only sync them to KVM on the first cpu
-> @@ -3817,7 +3863,7 @@ static int kvm_get_msrs(X86CPU *cpu)
->       if (env->features[FEAT_KVM] & (1 << KVM_FEATURE_POLL_CONTROL)) {
->           kvm_msr_entry_add(cpu, MSR_KVM_POLL_CONTROL, 1);
->       }
-> -    if (has_architectural_pmu_version > 0) {
-> +    if (has_architectural_pmu_version > 0 && IS_INTEL_CPU(env)) {
->           if (has_architectural_pmu_version > 1) {
->               kvm_msr_entry_add(cpu, MSR_CORE_PERF_FIXED_CTR_CTRL, 0);
->               kvm_msr_entry_add(cpu, MSR_CORE_PERF_GLOBAL_CTRL, 0);
-> @@ -3833,6 +3879,25 @@ static int kvm_get_msrs(X86CPU *cpu)
->           }
->       }
->   
-> +    if (has_architectural_pmu_version > 0 && IS_AMD_CPU(env)) {
-> +        uint32_t sel_base = MSR_K7_EVNTSEL0;
-> +        uint32_t ctr_base = MSR_K7_PERFCTR0;
-> +        uint32_t step = 1;
-> +
-> +        if (num_architectural_pmu_gp_counters == 6) {
-> +            sel_base = MSR_F15H_PERF_CTL0;
-> +            ctr_base = MSR_F15H_PERF_CTR0;
-> +            step = 2;
-> +        }
-> +
-> +        for (i = 0; i < num_architectural_pmu_gp_counters; i++) {
-> +            kvm_msr_entry_add(cpu, ctr_base + i * step,
-> +                              env->msr_gp_counters[i]);
-> +            kvm_msr_entry_add(cpu, sel_base + i * step,
-> +                              env->msr_gp_evtsel[i]);
-> +        }
-> +    }
-> +
->       if (env->mcg_cap) {
->           kvm_msr_entry_add(cpu, MSR_MCG_STATUS, 0);
->           kvm_msr_entry_add(cpu, MSR_MCG_CTL, 0);
-> @@ -4118,6 +4183,20 @@ static int kvm_get_msrs(X86CPU *cpu)
->           case MSR_P6_EVNTSEL0 ... MSR_P6_EVNTSEL0 + MAX_GP_COUNTERS - 1:
->               env->msr_gp_evtsel[index - MSR_P6_EVNTSEL0] = msrs[i].data;
->               break;
-> +        case MSR_K7_EVNTSEL0 ... MSR_K7_EVNTSEL0 + 3:
-> +            env->msr_gp_evtsel[index - MSR_K7_EVNTSEL0] = msrs[i].data;
-> +            break;
-> +        case MSR_K7_PERFCTR0 ... MSR_K7_PERFCTR0 + 3:
-> +            env->msr_gp_counters[index - MSR_K7_PERFCTR0] = msrs[i].data;
-> +            break;
-> +        case MSR_F15H_PERF_CTL0 ... MSR_F15H_PERF_CTL0 + 0xb:
-> +            index = index - MSR_F15H_PERF_CTL0;
-> +            if (index & 0x1) {
-> +                env->msr_gp_counters[index] = msrs[i].data;
-> +            } else {
-> +                env->msr_gp_evtsel[index] = msrs[i].data;
-> +            }
-> +            break;
->           case HV_X64_MSR_HYPERCALL:
->               env->msr_hv_hypercall = msrs[i].data;
->               break;
+
+--00000000000072350605edfc716a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi, I am very sorry - still confused sometimes by the proc=
+ess.<br>Done<div>BR</div><div>Timofey<br><br></div></div><br><div class=3D"=
+gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Nov 21, 2022 at =
+5:25 PM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter=
+.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex">On Mon, 21 Nov 2022 at 13:46, Timofey Kutergin &lt;<a hr=
+ef=3D"mailto:tkutergin@gmail.com" target=3D"_blank">tkutergin@gmail.com</a>=
+&gt; wrote:<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0cortex-a55 is one of newer armv8.2+ CPUs supporting native=
+<br>
+&gt;=C2=A0 =C2=A0Privileged Access Never (PAN) feature. Using this CPU<br>
+&gt;=C2=A0 =C2=A0provides access to this feature without using fictitious &=
+quot;max&quot;<br>
+&gt;=C2=A0 =C2=A0CPU.<br>
+&gt;<br>
+&gt; Signed-off-by: Timofey Kutergin &lt;<a href=3D"mailto:tkutergin@gmail.=
+com" target=3D"_blank">tkutergin@gmail.com</a>&gt;<br>
+<br>
+Hi; it looks like you forgot to cc qemu-devel on this mail.<br>
+All our automated tooling looks at that list to find patches;<br>
+would you mind resending the email cc&#39;ing that list as well,<br>
+please?<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
+
+--00000000000072350605edfc716a--

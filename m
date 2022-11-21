@@ -1,386 +1,184 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2624670ejx;
-        Mon, 21 Nov 2022 10:32:39 -0800 (PST)
-X-Received: by 2002:a63:550e:0:b0:470:5b0d:b5a8 with SMTP id j14-20020a63550e000000b004705b0db5a8mr2657288pgb.152.1669055559228;
-        Mon, 21 Nov 2022 10:32:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669055559; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2736023ejx;
+        Mon, 21 Nov 2022 13:24:58 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5dnC3rv42Dw5lSTUZqacH+yMIDaZ1vq/Yw4fZWRqMh4uNToUsFjhMEJhbNUGwlhKLaigHP
+X-Received: by 2002:a0c:c343:0:b0:4b1:79b2:207e with SMTP id j3-20020a0cc343000000b004b179b2207emr850765qvi.89.1669065898260;
+        Mon, 21 Nov 2022 13:24:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669065898; cv=none;
         d=google.com; s=arc-20160816;
-        b=gVMuqjWgmUqcVS1qqIrPz/mL6B0+EVhGNbJgZjrURwJq42E+T/NLLUIckjy5AH8SG+
-         1mol3oV0g+Wa9DfTKc9GSQW7HQko73TNl/fJuhO26YV5IPkow3hn9l6ehM1k18EjJnz7
-         u+M7RudOlcvBEJt8cXMXHAsBkWl0JgBK/qrVXZvdtlCZmgypdpGgq4NHwxJecidyeBpE
-         Ii9pNJGbK0b6E3HK0n2CQp92w7BA1BNG8RQx+D2dW0+TGlkSl/hmIEizB2VDholBnRyG
-         nYfGs83cuECnJwvlcZ8uZpLvJ6vcbYk4oEMOK/OPah2BJBUybq0aB5pxZhexbE7raPjw
-         GPVw==
+        b=WYWKY0QPlrHJQtjPQMSJjZN69wPl9vbPqmWxq6dgy8OflvOPFI2O4ls+e+kPyJL5Lq
+         xcoGcnVM2lTVFSm9/qHEg/GwsH8Bj9XKUI2ef7SOlwF5BIhiteF40g6njDXqII0K857U
+         ZfgSQrB86k658ezXqpmkMYfXTYpSuuqpIqUEENPqS2QvijiyWAL0oUwskDYfZWjsDiqL
+         JZZMg+eHO07lFQ/1/HxfQ4M0OnG/XOBNeXoPLgy7M2KWCLvTiYmdb6+9Y3B33CHuQ0be
+         SNFv5QONrNWS+qkEORb1A2bPtOWBDIkARoblTqgniH+b2E1+3Rn/9YhkI9O2OiubQzk3
+         Q6jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=TDCt5JZs7nN7aMjb+43rOTLwlrIATvUH8K0OR0ntUqc=;
-        b=PJC0YtYbhlbSfbHj8GeCoA9wY+lE39qUvItJsAXJ05DyiSZsx0iXqyKJmoK4zyjOem
-         dYAO4PE+cMLIO3o3ZHZXCzL0iWnKZbMt6vdEDU4oT7nlTwpoHjfZyxPfrHrkQPQHalPu
-         T1zeWJosl+Ww7BkUnQDqX7+lnib2xEtYUqK2x8hYgZnYZZ4qDBDOFxGg3ibyTpAMDebL
-         kjx1Pp1SOio/wLQ19CeINzbPcy1yzS6WmxgWb/W538H3OEmGnDvH8iEz2h4uVNfWztUb
-         jkO5oWrc6HXBTikSsUkwT0VIH63fRfCurMJX2XqGUm18iyuxTM8cBVCkzb2YQ2FKiBpw
-         QVUQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8gkv8kvW5LJw8L5Xe3JzRzRvQ07cJtVsiJm2+QBkpmY=;
+        b=Hi6EIsp/bfepuwhBfiyIgTet/mU5tas+ho/JSJL8d8VO65IejoANdDfwr8g6+en7uH
+         P7ItSVAudfWpnP3FQ38G4o6y2dYFXY2DuQOtpOVJYdLYIQuk8xWonOMrcp6u0agAxQXC
+         HG7Jb6rYLupF9ewxxYaSdpzxgNLOiPZjWvk9D13gwOZR7mkX2nA0QNX3M8Fit8l47/cx
+         oIzm8WFbCer0DAB9Zi4iH8GGt4AqjyGHNogB9v3FvIXv2REbZ+icH0yE9WO/nCWgKTtg
+         MnozHzMsIamzVy2XQf+OWpGjCHS99wcjyKVi86+KBg0JmvwdSRe5AsbzB62cNTh7RssA
+         /tBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ID4J0qXk;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qkEMBhw8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id w1-20020a654101000000b00434dbbc86f4sor5752767pgp.27.2022.11.21.10.32.38
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g15-20020a0562141ccf00b004796ba3f0cbsi4873853qvd.136.2022.11.21.13.24.58
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 21 Nov 2022 10:32:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 21 Nov 2022 13:24:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ID4J0qXk;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qkEMBhw8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TDCt5JZs7nN7aMjb+43rOTLwlrIATvUH8K0OR0ntUqc=;
-        b=ID4J0qXkmQAfooRBavHV+5Cfju+jFqyTH+Iz0SZNtkagw8I3FmBLnik54fuX3jwIzR
-         MM2LW0Nme5k51kCMUddF/mxpRXKb5BT5UAHzV3e/SF+mQV40OvP1sDw6dl0Ul1ltWgqo
-         IsWXqw12PnM4uFLd7nLUjd4/44TZ0uD+M9vsiEM96ZclMIWswhomvcno2v3dCObpDv+1
-         MYTQGot8R/jHjzqe2YMqA9qVIp1DeNpDU8uZKvpH5VCHPYvFypBuXLXdRvZJLrIlGG8g
-         IZ/xYqA7woRK9E3P6dY9gAluV02pyjhXI6+m6L8fK/dNW7UStfdnv+Ggle2P5yrCQZYQ
-         rcIA==
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1oxEHO-0004XQ-OB; Mon, 21 Nov 2022 16:24:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oxEGz-0004Jy-Mr
+ for qemu-devel@nongnu.org; Mon, 21 Nov 2022 16:24:15 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oxEGu-00083N-BL
+ for qemu-devel@nongnu.org; Mon, 21 Nov 2022 16:24:10 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ c65-20020a1c3544000000b003cfffd00fc0so9766940wma.1
+ for <qemu-devel@nongnu.org>; Mon, 21 Nov 2022 13:24:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=8gkv8kvW5LJw8L5Xe3JzRzRvQ07cJtVsiJm2+QBkpmY=;
+ b=qkEMBhw8WpRLi0SK/AIrmEo6m8CHUL997iWpOhHRXeuz84PurIkzwW5U2e9vYqdIXD
+ iMx2gqbIsF+LEQxJ3cDPLMqUoMhjOiiZM7rzp8nt6y3Wl2Rmj6QLZuR30VRjFvQcNGhr
+ wHNrgIKhg+spRWly4YUOPKpmKa2iYP611lACP6Wv3uu/KiJTaEwIwL1d5dMONxy+BqyU
+ /+xnIjDTH41kMlvfxluR5lyo6IGgAMSok+yOY/LmkO00OEaC42ohUSNjktWHELyqPqpc
+ SEuOOiH/62Eh2kcKfl+OZBnGew411C5kBlBRiw0dbuEWjCNt/7xU0irqwq6FIwBHhgc9
+ 3B4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TDCt5JZs7nN7aMjb+43rOTLwlrIATvUH8K0OR0ntUqc=;
-        b=FtC3vN0rLqZ3WtF7xS4NPNtrM+WVotrVKD4BQiwTfXkx5atXartEYpFWChY2sR6Xje
-         bZawGiQfXWaLnph5RIhcsDxGfLcl0hVg2jcKkybXkQ1/R5bRe0sjrwFluHewuS86AVe7
-         RfGeEns0pZ8yVZZqWrQJXVGV0a4v3DKYwTODm6cIbl61CJmW/DVm0cbf+xp+gmBSTeaf
-         NzCmeerGDZyxIqSVweu2mPyeWVgyd/UrpMoWD58PAjMjkPdpDkSOIw6XAhH0EF9hs+K2
-         PI4VfQ0LwfODZSiOg6Qpg9Xdvj7xAfx0TXjz30BROCc7SJm2nHHHHbg1wB44UmCkCcak
-         YlYQ==
-X-Gm-Message-State: ANoB5pnCqpSA3mDu0FU4fJHsaP3cpKhiX7sxOxpoRJPbFo+55VRt/NOs
-	IVICZ9tlI06DbFvpEdKzgDtniSASgGHKnb66MPsqSm5oCY+rHQ==
-X-Google-Smtp-Source: AA0mqf7FVDMb6nrfIBaoM7JjoqWuhdHXJ9AQ2sVF0HycixvuHJdRJJvXyo8hfJpAKwhSjn88H0WshqddojHGFfIrGWY=
-X-Received: by 2002:a63:5146:0:b0:477:86c1:640f with SMTP id
- r6-20020a635146000000b0047786c1640fmr78823pgl.231.1669055558360; Mon, 21 Nov
- 2022 10:32:38 -0800 (PST)
-MIME-Version: 1.0
-References: <20221111182535.64844-1-alex.bennee@linaro.org> <20221111182535.64844-2-alex.bennee@linaro.org>
-In-Reply-To: <20221111182535.64844-2-alex.bennee@linaro.org>
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8gkv8kvW5LJw8L5Xe3JzRzRvQ07cJtVsiJm2+QBkpmY=;
+ b=r0nWxBDL2Syl8TyV7PGJrh7FhSdRSljUaXdhu4KNvzOq9gBGAkDRt6ZrAVMgBqgGmd
+ 4eP3MhWP7RK8/wq6DnfK1oNdvwKdQfeVSzfbkX3Sv2BCi2ErsaUlqO3QOHIRxlnd8vpU
+ xKojwx1gRLTTWmW2PDTbdwwOd2ZqZe4cOl1oqN5/t1zajg00TCmnv+sPx6q7zLxkf5yw
+ XTWeANBAkcuBPi4r0V48aT8s3J3zGCt/z46+9rjacDif2ZDv4Uzlvloi+Uwg5p8tf2AL
+ qQDItSjNnLRg9ohq25/faKnEpzW+Id6mMnE5/rnBwRe/Phpiw84RjMkNcwkvRp3QmFWW
+ 8fEA==
+X-Gm-Message-State: ANoB5pk7oInqAOMFJSZEeyI03RuqO7O+6pfvWT4rLB/5fz3iZl6HR5H+
+ heQlcxG+xAjlZo4VSXhXznWPSA==
+X-Received: by 2002:a05:600c:a0d:b0:3cf:6c0d:a27 with SMTP id
+ z13-20020a05600c0a0d00b003cf6c0d0a27mr13954630wmp.196.1669065846540; 
+ Mon, 21 Nov 2022 13:24:06 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ r24-20020adfa158000000b00236b2804d79sm12675461wrr.2.2022.11.21.13.24.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 21 Nov 2022 13:24:05 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Nov 2022 18:32:26 +0000
-Message-ID: <CAFEAcA8LjMXWTJvwd2jpa66ww4QTtxUe21G2rCOoWLKPBKExxg@mail.gmail.com>
-Subject: Re: [PATCH v5 01/20] hw: encode accessing CPU index in MemTxAttrs
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, f4bug@amsat.org, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
-	Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>, 
-	Jason Wang <jasowang@redhat.com>, 
-	"open list:ARM PrimeCell and..." <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: C5DHDSZjKFyc
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Jens Wiklander <jens.wiklander@linaro.org>
+Subject: [PATCH for-7.2] target/arm: Don't do two-stage lookup if stage 2 is
+ disabled
+Date: Mon, 21 Nov 2022 21:24:04 +0000
+Message-Id: <20221121212404.1450382-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 93VhPrxF6O94
 
-On Fri, 11 Nov 2022 at 18:25, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> We currently have hacks across the hw/ to reference current_cpu to
-> work out what the current accessing CPU is. This breaks in some cases
-> including using gdbstub to access HW state. As we have MemTxAttrs to
-> describe details about the access lets extend it so CPU accesses can
-> be explicitly marked.
->
-> To achieve this we create a new requester_type which indicates to
-> consumers how requester_id it to be consumed. We absorb the existing
-> unspecified:1 bitfield into this type and also document a potential
-> machine specific encoding which will be useful to (currently)
-> out-of-tree extensions.
->
-> Places that checked to see if things where unspecified now instead
-> check the source if what they expected.
->
-> There are a number of places we need to fix up including:
->
->   CPU helpers directly calling address_space_*() fns
->   models in hw/ fishing the data out of current_cpu
->   hypervisors offloading device emulation to QEMU
->
-> I'll start addressing some of these in following patches.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+In get_phys_addr_with_struct(), we call get_phys_addr_twostage() if
+the CPU supports EL2.  However, we don't check here that stage 2 is
+actually enabled.  Instead we only check that inside
+get_phys_addr_twostage() to skip stage 2 translation.  This means
+that even if stage 2 is disabled we still tell the stage 1 lookup to
+do its page table walks via stage 2.
 
->  include/exec/memattrs.h | 68 ++++++++++++++++++++++++++++++++---------
->  hw/i386/amd_iommu.c     |  6 ++--
->  hw/i386/intel_iommu.c   |  2 +-
->  hw/misc/tz-mpc.c        |  2 +-
->  hw/misc/tz-msc.c        |  6 ++--
->  hw/pci/pci.c            |  4 +--
->  6 files changed, 60 insertions(+), 28 deletions(-)
->
-> diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
-> index 9fb98bc1ef..8359fc448b 100644
-> --- a/include/exec/memattrs.h
-> +++ b/include/exec/memattrs.h
-> @@ -14,7 +14,32 @@
->  #ifndef MEMATTRS_H
->  #define MEMATTRS_H
->
-> -/* Every memory transaction has associated with it a set of
-> +/**
-> + * typedef MemTxRequesterType - source of memory transaction
-> + *
-> + * Every memory transaction comes from a specific place which defines
-> + * how requester_id should be handled if at all.
-> + *
-> + * UNSPECIFIED: the default for otherwise undefined MemTxAttrs
-> + * CPU: requester_id is the global cpu_index
-> + *      This needs further processing if you need to work out which
-> + *      socket or complex it comes from
-> + * PCI: indicates the requester_id is a PCI id
-> + * MACHINE: indicates a machine specific encoding
-> + *          This will require further processing to decode into its
-> + *          constituent parts.
-> + */
-> +typedef enum MemTxRequesterType {
-> +    MTRT_UNSPECIFIED =3D 0,
-> +    MTRT_CPU,
-> +    MTRT_PCI,
-> +    MTRT_MACHINE
-> +} MemTxRequesterType;
+This works by luck for normal CPU accesses, but it breaks for debug
+accesses, which are used by the disassembler and also by semihosting
+file reads and writes, because the debug case takes a different code
+path inside S1_ptw_translate().
 
-This ends up squashing two distinct things into one field:
- (1) what are the semantics of the requester_id field?
- (2) did the caller explicitly specify their attrs, or
-     are they using the legacy MEMTXATTRS_UNSPECIFIED macro?
+This means that setups that use semihosting for file loads are broken
+(a regression since 7.1, introduced in recent ptw refactoring), and
+that sometimes disassembly in debug logs reports "unable to read
+memory" rather than showing the guest insns.
 
-One might reasonably be explicitly specifying tx attrs
-and yet not be using any of the 3 listed requester_id field
-semantics. (In fact we have various places that do
-exactly that, like tulip_desc_read().)
+Fix the bug by hoisting the "is stage 2 enabled?" check up to
+get_phys_addr_with_struct(), so that we handle S2 disabled the same
+way we do the "no EL2" case, with a simple single stage lookup.
 
-I think that the requester_type field should just be a
-discriminator field that tells you how to interpret
-requester_id, and nothing more, so the values would
-be "CPU", "PCI", "machine" and "none".
+Reported-by: Jens Wiklander <jens.wiklander@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This patch has RTH's r-by because I ran a couple of options for
+fixing this by him over private email.
+---
+ target/arm/ptw.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-I'm not super-enthusiastic about "MACHINE" here, but
-I guess we can see how it works out over time.
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 3745ac97234..4264002021a 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2604,8 +2604,8 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
+ 
+     ret = get_phys_addr_with_struct(env, ptw, address, access_type, result, fi);
+ 
+-    /* If S1 fails or S2 is disabled, return early.  */
+-    if (ret || regime_translation_disabled(env, ARMMMUIdx_Stage2, is_secure)) {
++    /* If S1 fails, return early.  */
++    if (ret) {
+         return ret;
+     }
+ 
+@@ -2731,7 +2731,8 @@ static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
+          * Otherwise, a stage1+stage2 translation is just stage 1.
+          */
+         ptw->in_mmu_idx = mmu_idx = s1_mmu_idx;
+-        if (arm_feature(env, ARM_FEATURE_EL2)) {
++        if (arm_feature(env, ARM_FEATURE_EL2) &&
++            !regime_translation_disabled(env, ARMMMUIdx_Stage2, is_secure)) {
+             return get_phys_addr_twostage(env, ptw, address, access_type,
+                                           result, fi);
+         }
+-- 
+2.25.1
 
-> +/**
-> + * typedef MemTxAttrs - attributes of a memory transaction
-> + *
-> + * Every memory transaction has associated with it a set of
->   * attributes. Some of these are generic (such as the ID of
->   * the bus master); some are specific to a particular kind of
->   * bus (such as the ARM Secure/NonSecure bit). We define them
-> @@ -23,13 +48,12 @@
->   * different semantics.
->   */
->  typedef struct MemTxAttrs {
-> -    /* Bus masters which don't specify any attributes will get this
-> -     * (via the MEMTXATTRS_UNSPECIFIED constant), so that we can
-> -     * distinguish "all attributes deliberately clear" from
-> -     * "didn't specify" if necessary.
-> -     */
-> -    unsigned int unspecified:1;
-> -    /* ARM/AMBA: TrustZone Secure access
-> +    /* Requester type (e.g. CPU or PCI MSI) */
-> +    MemTxRequesterType requester_type:2;
-> +    /* Requester ID */
-> +    unsigned int requester_id:16;
-> +    /*
-> +     * ARM/AMBA: TrustZone Secure access
->       * x86: System Management Mode access
->       */
->      unsigned int secure:1;
-> @@ -43,8 +67,6 @@ typedef struct MemTxAttrs {
->       * (see MEMTX_ACCESS_ERROR).
->       */
->      unsigned int memory:1;
-> -    /* Requester ID (for MSI for example) */
-> -    unsigned int requester_id:16;
->      /* Invert endianness for this page */
->      unsigned int byte_swap:1;
->      /*
-> @@ -59,12 +81,28 @@ typedef struct MemTxAttrs {
->      unsigned int target_tlb_bit2 : 1;
->  } MemTxAttrs;
->
-> -/* Bus masters which don't specify any attributes will get this,
-> - * which has all attribute bits clear except the topmost one
-> - * (so that we can distinguish "all attributes deliberately clear"
-> - * from "didn't specify" if necessary).
-> +/*
-> + * Bus masters which don't specify any attributes will get this which
-> + * indicates none of the attributes can be used.
-> + */
-> +#define MEMTXATTRS_UNSPECIFIED ((MemTxAttrs) \
-> +                                { .requester_type =3D MTRT_UNSPECIFIED }=
-)
-
-This isn't the semantics I intended for MEMTXATTRS_UNSPECIFIED --
-the recipient of a MEMTXATTRS_UNSPECIFIED is still allowed to look
-at the various attribute bits, which should be set to "plausible
-defaults". It just means that you can tell, for instance, "non-secure
-because sender specifically asked for that" from "non-secure because
-sender is an old bit of non-memtxattrs-aware code that doesn't
-care to specify". Almost all code that looks at attrs.secure, for
-instance, does it without previously checking attrs.unspecified,
-because it doesn't have to. There are only a very few places that
-do need to check attrs.unspecified:
- * the two places changed in this patch, which are really trying
-   to check "is this a PCI transaction with PCI requester_id"
- * tz-mpc.c, which wants to treat MEMTXATTRS_UNSPECIFIED as being
-   Secure for the reasons described in the comment in
-   tz_mpc_attrs_to_index()
-
-Perhaps what we should do is address the reason that tz-mpc.c
-is trying to use attrs.unspecified in a better way. Specifically,
-we could add a MemTxAttrs:is_debug bit that indicates debug
-writes, and arrange that code like the rom-image-loader sets
-that appropriately. Then tz-mpc.c could say "pass through a
-debug transaction regardless of its secure bit, but treat
-real transactions the way the hardware does", instead of the
-current fudge it does.
-
-> +/*
-> + * Helper for setting a basic CPU sourced transaction, it expects a
-> + * CPUState *
-> + */
-> +#define MEMTXATTRS_CPU(cs) ((MemTxAttrs) \
-> +                            {.requester_type =3D MTRT_CPU, \
-> +                             .requester_id =3D cs->cpu_index})
-> +
-> +/*
-> + * Helper for setting a basic PCI sourced transaction, it expects a
-> + * PCIDevice *
->   */
-> -#define MEMTXATTRS_UNSPECIFIED ((MemTxAttrs) { .unspecified =3D 1 })
-> +#define MEMTXATTRS_PCI(dev) ((MemTxAttrs) \
-> +                             {.requester_type =3D MTRT_PCI,   \
-> +                             .requester_id =3D pci_requester_id(dev)})
-
-Indent looks odd.
-
->  /* New-style MMIO accessors can indicate that the transaction failed.
->   * A zero (MEMTX_OK) response means success; anything else is a failure
-> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-> index 725f69095b..284359c16e 100644
-> --- a/hw/i386/amd_iommu.c
-> +++ b/hw/i386/amd_iommu.c
-> @@ -153,9 +153,7 @@ static void amdvi_assign_andq(AMDVIState *s, hwaddr a=
-ddr, uint64_t val)
->  static void amdvi_generate_msi_interrupt(AMDVIState *s)
->  {
->      MSIMessage msg =3D {};
-> -    MemTxAttrs attrs =3D {
-> -        .requester_id =3D pci_requester_id(&s->pci.dev)
-> -    };
-> +    MemTxAttrs attrs =3D MEMTXATTRS_PCI(&s->pci.dev);
->
->      if (msi_enabled(&s->pci.dev)) {
->          msg =3D msi_get_message(&s->pci.dev, 0);
-> @@ -1356,7 +1354,7 @@ static MemTxResult amdvi_mem_ir_write(void *opaque,=
- hwaddr addr,
->
->      trace_amdvi_mem_ir_write_req(addr, value, size);
->
-> -    if (!attrs.unspecified) {
-> +    if (attrs.requester_type =3D=3D MTRT_PCI) {
->          /* We have explicit Source ID */
->          sid =3D attrs.requester_id;
->      }
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index a08ee85edf..12752413eb 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -3517,7 +3517,7 @@ static MemTxResult vtd_mem_ir_write(void *opaque, h=
-waddr addr,
->      from.address =3D (uint64_t) addr + VTD_INTERRUPT_ADDR_FIRST;
->      from.data =3D (uint32_t) value;
->
-> -    if (!attrs.unspecified) {
-> +    if (attrs.requester_type =3D=3D MTRT_PCI) {
->          /* We have explicit Source ID */
->          sid =3D attrs.requester_id;
->      }
-> diff --git a/hw/misc/tz-mpc.c b/hw/misc/tz-mpc.c
-> index 30481e1c90..4beb5daa1a 100644
-> --- a/hw/misc/tz-mpc.c
-> +++ b/hw/misc/tz-mpc.c
-> @@ -461,7 +461,7 @@ static int tz_mpc_attrs_to_index(IOMMUMemoryRegion *i=
-ommu, MemTxAttrs attrs)
->       * All the real during-emulation transactions from the CPU will
->       * specify attributes.
->       */
-> -    return (attrs.unspecified || attrs.secure) ? IOMMU_IDX_S : IOMMU_IDX=
-_NS;
-> +    return ((attrs.requester_type =3D=3D MTRT_UNSPECIFIED) || attrs.secu=
-re) ? IOMMU_IDX_S : IOMMU_IDX_NS;
->  }
->
->  static int tz_mpc_num_indexes(IOMMUMemoryRegion *iommu)
-> diff --git a/hw/misc/tz-msc.c b/hw/misc/tz-msc.c
-> index acbe94400b..e93bfc7083 100644
-> --- a/hw/misc/tz-msc.c
-> +++ b/hw/misc/tz-msc.c
-> @@ -137,11 +137,9 @@ static MemTxResult tz_msc_read(void *opaque, hwaddr =
-addr, uint64_t *pdata,
->          return MEMTX_OK;
->      case MSCAllowSecure:
->          attrs.secure =3D 1;
-> -        attrs.unspecified =3D 0;
->          break;
->      case MSCAllowNonSecure:
->          attrs.secure =3D 0;
-> -        attrs.unspecified =3D 0;
->          break;
->      }
->
-> @@ -179,11 +177,11 @@ static MemTxResult tz_msc_write(void *opaque, hwadd=
-r addr, uint64_t val,
->          return MEMTX_OK;
->      case MSCAllowSecure:
->          attrs.secure =3D 1;
-> -        attrs.unspecified =3D 0;
-> +        attrs.requester_type =3D MTRT_CPU;
->          break;
->      case MSCAllowNonSecure:
->          attrs.secure =3D 0;
-> -        attrs.unspecified =3D 0;
-> +        attrs.requester_type =3D MTRT_CPU;
->          break;
->      }
-
-Whatever we do here, the handling of read and write transactions
-should be the same, not different.
-
-Forcing the requester_type to "this is the CPU" looks odd,
-because the transaction might not be from the CPU (it could
-be from a DMA-capable device).
-
-I think probably the right thing here is "set attrs.secure as
-required; don't touch any other fields of the attrs".
-
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 2f450f6a72..1d0d8d866f 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -319,9 +319,7 @@ void pci_device_deassert_intx(PCIDevice *dev)
->
->  static void pci_msi_trigger(PCIDevice *dev, MSIMessage msg)
->  {
-> -    MemTxAttrs attrs =3D {};
-> -
-> -    attrs.requester_id =3D pci_requester_id(dev);
-> +    MemTxAttrs attrs =3D MEMTXATTRS_PCI(dev);
->      address_space_stl_le(&dev->bus_master_as, msg.address, msg.data,
->                           attrs, NULL);
->  }
-> --
-> 2.34.1
-
-thanks
--- PMM

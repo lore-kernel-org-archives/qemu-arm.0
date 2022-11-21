@@ -1,108 +1,114 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2569548ejx;
-        Mon, 21 Nov 2022 09:18:04 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5qlUZnYGJqlfzEE20y0UB8zt7i6kli8YmVjk7etunbB1D5o4egxCuMMG9s8jUfUh4pv1o4
-X-Received: by 2002:ad4:408c:0:b0:4c6:8fa7:c94b with SMTP id l12-20020ad4408c000000b004c68fa7c94bmr154709qvp.43.1669051084198;
-        Mon, 21 Nov 2022 09:18:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669051084; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2583692ejx;
+        Mon, 21 Nov 2022 09:36:19 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6YGoYMUpN6FBD5YHxX3bT+J7pE+7HxN0in9DOpi37KIEok/XRD9vOJaNyt7N6YC7kRebD/
+X-Received: by 2002:ac8:66d4:0:b0:3a5:3388:4093 with SMTP id m20-20020ac866d4000000b003a533884093mr18432601qtp.262.1669052179392;
+        Mon, 21 Nov 2022 09:36:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669052179; cv=none;
         d=google.com; s=arc-20160816;
-        b=XQeN0tok7GDySwiVcp/0zZ+jsX5eOpK7jJY7vjynsD5qU7BEK9Llsj09APyk0vLg3M
-         A6XHy+AP8OKh+MVG5jbZFemoDMn13yqqGGMS0t99uVvVwIP09GuGcIKJxAXjbwOM9FJN
-         leJfmRoj1SejoaVQa3YDXR0sNNFLA8+fYMLOwvcCaG2ja91KIHBggavD+/HBeNLadCnl
-         d42H6qP2AGgJZRG/HjJqdaPNzDgCP2+CCbX2xXdDT9lwHKBEQTqWmMqeU0AKTx9zi6MF
-         CHOHMO6YTdMnfX5pIAg7TcpnFR3oaw5DvDsIBipLnrA3vrRmgz8CSBK7/kuPT2Kcgfyt
-         XLwA==
+        b=ve3S5crNNPOROfj9Wg941mr2wvHsU+N1LDnevdOwwSSvgeKgszXJ3YZvwsHesc37j7
+         Z1hpPMXodP2yNSRfP8uX7Dqz6pohYGk2G3ibVz6+ThClHwt5Qr95y5YfSnzfXFmUfIVP
+         387c91agyc9K9PdOp/EMte+6kzvYNE72dd0vhYjsfR6rIGuW0gZNCWdnUIzd5Ek3exxf
+         2tOVudx6KxAK6xZfERhn6Ag3mCM/3TmxclOLA5PPllTdn5g2SJsmBg71N1DZec34kjP+
+         feA+KaQFRj6ZasRWqohaXs6+f0/BLmNEApwleXqAgztAO6VQy96CZHo4ARJDVozULydL
+         RvIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=9trGTYQdEqf435WY8HaPZYeyH5W380OlK97rMJw3M1g=;
-        b=W7QMAEQa9jxuZ3LDpFx8gzm80x4JRjfXaHJI4mtn4K+7wnn/aB36wx6K9OMy4K7tRw
-         1zr/0LMV0wWM/Mm7uOuNsvtucXhlRVBpoqmUONRSZf5UPiaXCL3asAx6J/h5UqIUakJ6
-         7Zd7dPF1mo+qjoGGannRCvxcwkB+8dhaAVDkX3ALADDRPqtZ4N8jsU7p6YlZrNa8zC57
-         Qord8NAEdepYbYj9MANq2qn7iuqB06IODllQaTZ9DGj3IOkaJ4eWx0V1stYpOEfDE0Ee
-         Xnb/clFM/uXA8oc2N7CcyHmCwrhJ/qg6GCtBu9dql7f+F0cI8OH7J+/mqmJPooiMr0vi
-         9btg==
+         :list-unsubscribe:list-id:precedence:ui-outboundreport
+         :content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=5GqM5IDMiOwkvWd6cJfGf6BoidyNYvs1Aui8lxWcf3U=;
+        b=IAk1lzIjX4pO79a2IBkr7oqMjH2ncCfP7lwcoQQKD0v4Tbn8hW6bTinBgUqYDTGNIk
+         zk1k22sefM6/3t1xomvesd8f/Uyb9PHKZ/yfHd8eCn4mfnXDkxRunVdf3hZtDzkwkO+f
+         dbol2vkRmQ1n9SfLW8cgUEB8uKIsfM4BGvUwXX7A2uvtmfviIEu3FDFd0RSNrug3bSAA
+         4u+NJ7OKsmaB7msoWEG96+MLp82M8QZ7cKpyUtr5YyjkuXm1CAe4x+63oQqAXpDVRjuI
+         wllAwyjhhe6iBTG8oT4zNNSIIxb7193xwH7basAbbwq92bpK9YGQAnOPUGNZjA4iAcqN
+         YS8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QnXPKiRK;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=G2hy9WBe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i16-20020a05620a249000b006fa82b94793si6816805qkn.252.2022.11.21.09.18.03
+        by mx.google.com with ESMTPS id r22-20020a37a816000000b006fa0c1f449asi5900125qke.621.2022.11.21.09.36.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Nov 2022 09:18:04 -0800 (PST)
+        Mon, 21 Nov 2022 09:36:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QnXPKiRK;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=G2hy9WBe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oxAPx-0005rw-Sy; Mon, 21 Nov 2022 12:17:13 -0500
+	id 1oxAi4-0002Ks-F5; Mon, 21 Nov 2022 12:35:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oxAPw-0005rC-TQ
- for qemu-arm@nongnu.org; Mon, 21 Nov 2022 12:17:12 -0500
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oxAPs-0002Qw-0x
- for qemu-arm@nongnu.org; Mon, 21 Nov 2022 12:17:12 -0500
-Received: by mail-pj1-x102f.google.com with SMTP id
- y14-20020a17090a2b4e00b002189a1b84d4so5486299pjc.2
- for <qemu-arm@nongnu.org>; Mon, 21 Nov 2022 09:17:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=9trGTYQdEqf435WY8HaPZYeyH5W380OlK97rMJw3M1g=;
- b=QnXPKiRKx2zZJC3Z6QMm0eZrbsfQJz0fsKgZwCbw6xipWrjTUVOg1V2iwQs8UuA7XJ
- Gga24a4FiPl5iK1M5bO+QRq9rCfCZIjfZIDCknvqSxV/XCE9foK8szqRC91dYl6mglj6
- C/6MTDGW0sdwMgYgQxHFeAQ5WD57b8q6B0Ge7dWkpGUNOhEkVszKBgNgzysKF7SZWY/O
- 0sEQPpdVwgInfToROt8Nwpa6YbqibupGieM1sGRxEGKnfBq4VHTL5HOzHjga11PpCSX2
- 7AyU+V91mFyt/cDegK3JrOSHEJFDsYG//mZ6Y5QTjn1FkuUD2UvZLXlqt/Us4Klm5wZx
- pzNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=9trGTYQdEqf435WY8HaPZYeyH5W380OlK97rMJw3M1g=;
- b=U+TCYnQt0+KcGHS9FuAeGJSnwdeKjIJQe34DrTJqaidTMhOg75+YjciX9qORlpJXj9
- nPiLgEvu84u3tGtret1cPJNzyJvX5XeApMG4nClb3LFyZ0WfvpsdhlbAKI61D2mDVb30
- /Oye+t/hkU7dR7U/+6i1ZrrHwNvrJD0dLOpm+2V8XPLwc6EV2dIGnIGulD119inAWn+t
- 69iuxZjvUnU9Lh5oKM+rb92xrtqOswQmnCG1D90NoaRQV/jJZwqrrYRcezehRBSDcwgx
- 1FjvKg/fC9xoMs5WZdhjNJhJ07rMFbela9f5J02rxHP0Czo2m3T5s5E05oCUn1HQCVwU
- ACtQ==
-X-Gm-Message-State: ANoB5pk3HVJk0qmDzZM3IVfFKpIb8WH5YE42xl8E1RwvC16015wzKc00
- YUEytDgCiluCWdi7nMIilyc7M3laatQz0Vp3VqSBzw==
-X-Received: by 2002:a17:902:6505:b0:185:4ec3:c708 with SMTP id
- b5-20020a170902650500b001854ec3c708mr2698947plk.60.1669051017873; Mon, 21 Nov
- 2022 09:16:57 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
+ id 1oxAhw-0002KR-MA; Mon, 21 Nov 2022 12:35:48 -0500
+Received: from mout.gmx.net ([212.227.15.19])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
+ id 1oxAhu-0006Ck-PO; Mon, 21 Nov 2022 12:35:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
+ t=1669052142; bh=5GqM5IDMiOwkvWd6cJfGf6BoidyNYvs1Aui8lxWcf3U=;
+ h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=G2hy9WBeAN46av5yEaVU2u4mrhKAtprQCYYJNH35SQzw33ELnG7bh8/vyg/o89IrF
+ oaxHztXr02t1VwE7eBEe7VfD1PwEPyzOR/AiefwssScRqdVmq1L89ovG9l9JWLfa1z
+ tG7MD0zAR942iocFg3tGQe4tRsPQg5ZSYRKVosH83+33p0FGkbQvsieVJDHL0sQ/j9
+ rBoORzdIeqFcV7A+PU5fAZRVbdxB6GNiCr0UjaD8MO1QyIznqaWJMoDpHrTzd4PUlx
+ OVJQNO+jwrgQ362ElEuz6ahD86+sd+kjQoI+6L8FK3tRD0McIoLkoSjLfv4kfSu7TH
+ FGPlhHEjkGq2w==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [192.168.177.189] ([5.199.177.82]) by mail.gmx.net (mrgmx005
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1Mw9UE-1pFnS60pKW-00sAbR; Mon, 21
+ Nov 2022 18:35:42 +0100
+Message-ID: <4ebf808a-b4f3-258a-f86f-8f8fa96d381f@gmx.de>
+Date: Mon, 21 Nov 2022 18:35:39 +0100
 MIME-Version: 1.0
-References: <20221029224307.138822-1-gshan@redhat.com>
-In-Reply-To: <20221029224307.138822-1-gshan@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Nov 2022 17:16:46 +0000
-Message-ID: <CAFEAcA9W35dF0L=r2qQppd1FVZ+Di6=3af4qb3T5h2vf8EMsfQ@mail.gmail.com>
-Subject: Re: [PATCH v7 0/7] hw/arm/virt: Improve address assignment for high
- memory regions
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, maz@kernel.org, 
- eric.auger@redhat.com, cohuck@redhat.com, richard.henderson@linaro.org, 
- zhenyzha@redhat.com, shan.gavin@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH qemu.git v2 3/9] hw/timer/imx_epit: simplify interrupt
+ logic
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <166783932395.3279.1096141058484230644-0@git.sr.ht>
+ <166783932395.3279.1096141058484230644-3@git.sr.ht>
+ <CAFEAcA8e13HHR7yyFv7kWNOrMuPTtsHMTChyN8=Q3z6VFveXCQ@mail.gmail.com>
+Content-Language: de-DE
+From: Axel Heider <axelheider@gmx.de>
+In-Reply-To: <CAFEAcA8e13HHR7yyFv7kWNOrMuPTtsHMTChyN8=Q3z6VFveXCQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:U/q5ftXTPg2lJ7uoDNUUn2Ty2cIa9NvYQGvtxLGkIJfQU/vQ4kx
+ hPWH0eemBBeVGVQcPXZynyEj0DbJarwcA2IBDuP8TXsPteAd3u1Kvs/EDjFt3rRD1cwbidi
+ lPM2sMhoCwWzt51dClgPFyb5Tz+su/Rzr7UO/2Nr+rpk4m84p6WiUHaiQJBnEI13OLl/7M1
+ vIxIZwX+MRYLF0bdV+Ibg==
+UI-OutboundReport: notjunk:1;M01:P0:/78v5ud+feA=;esbhKSCajiTLwVk20lqJQiVs1Za
+ 6f13nczDH4Bbjt5F5I9+IPzCFkMv+XCTwqUGvaBdWG41V9qF9NR0ljBUNmEy8lcPI61cUF9M0
+ 55u0Thc79AbQN1GO+XiVZsBoINbJTy+qDDqIRM4mvtnec+ujfcH2g3WhTwuv97jtUfip2k38N
+ C2UIKkkcI4gXEb3Hy4/dmLeXuWZ2lThvjgUByavagB2lgHfvpVLU1yWpwkQgC3Yt8JpkMxYI1
+ 84II8Qp61woIONIzMPBj7KpOlNB55zNdH0app83dmJpDJ6zg3dBD2iEAB6hh8qTztSVZ5cfI/
+ zOqhrPUzmTlHpG3vcOi02iltj5b/ObQ2CGVzSRISHklBM2nSsEBB7tq1ozxqL5fCItzqQvc5j
+ MEUzuZxaBQxY61mzC60vhICkZa1UwSwm+Bf4XtnXH+pOFiC43ZF4TefGoRHEEvIHdO96gq6xm
+ dGu7tfhgVObPsVJ9JhzrFjfHLCnRdQwh3enWvVXyzgC/YbW+mtt9PLIlTdu8n2qV0ul51VHoM
+ XJznFBlnmallLjMXpGy+Rc04x+0S+XstYFWgDjy0IeO/8ZTn1+BmmsG3q4tXQLB5br9BANrIm
+ /hyXZgh0A2GCSdbHHG+iiiyEvQNWafD/ymmnprzTR/dZH16EeaaRsyTXJi+E1FNrfOwPEYgFi
+ fTQ23CGHW74A7Y2JaoXQHp5Im/oO1Ir5HpYaScQ3CVMkwMu0RUw23KTHqRLWs7vhkKkk+pM2i
+ VnQYArp03BNJgqaT64mHbIeRK4lNsXhUXl3T+p7gbBtbNSC0R5ej3LEgFijnPHXV4oPmUgwgN
+ ZMzrc5+yiWQ5d/5H+7E47MjufcxI5B4ftVdg3jwjIdRMCp6mdrDUCkd8KBl3XDVRGUdt5nAi6
+ nDIuTgwhGdUzLG/uvAj042pQiQKKEF3zQE0AS9kK0bv9fFXePOa82Tk1039d2iZPcY+q8/Q4A
+ zW2R2w==
+Received-SPF: pass client-ip=212.227.15.19; envelope-from=axelheider@gmx.de;
+ helo=mout.gmx.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,40 +123,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kAqYYMgXta3I
+X-TUID: l/W30WiHXiEB
 
-On Sat, 29 Oct 2022 at 23:43, Gavin Shan <gshan@redhat.com> wrote:
->
-> There are three high memory regions, which are VIRT_HIGH_REDIST2,
-> VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
-> are floating on highest RAM address. However, they can be disabled
-> in several cases.
->
-> (1) One specific high memory region is disabled by developer by
->     toggling vms->highmem_{redists, ecam, mmio}.
->
-> (2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
->     'virt-2.12' or ealier than it.
->
-> (3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
->     on 32-bits system.
->
-> (4) One specific high memory region is disabled when it breaks the
->     PA space limit.
->
-> The current implementation of virt_set_memmap() isn't comprehensive
-> because the space for one specific high memory region is always
-> reserved from the PA space for case (1), (2) and (3). In the code,
-> 'base' and 'vms->highest_gpa' are always increased for those three
-> cases. It's unnecessary since the assigned space of the disabled
-> high memory region won't be used afterwards.
->
-> The series intends to improve the address assignment for these
-> high memory regions and introduces new properties for user to
-> selectively disable those 3 high memory regions.
 
-I've applied this patchset to a target-arm-for-8.0 branch
-that will end up being the target-arm queue once 7.2 is out.
 
-thanks
--- PMM
+> Having an "update interrupt" function is the more common
+> convention in QEMU device models -- it means you have one
+> function you can call from any point where you've updated
+> any of the state that affects whether an interrupt is generated or not.
+
+Ok, will keept it.
+
+> For instance there's currently I think a bug where when the
+> guest writes to the CR register and changes the value of
+> the CR_OCIEN bit we aren't updating the state of the IRQ line.
+> If you keep the imx_epit_update_int() function then fixing
+> that bug is fairly straightforward: you just need to call it
+> in the appropriate place. Without the function then the
+> logic of "what is the IRQ line state given the current
+> device register state" ends up dispersed across the device
+> model code and potentially duplicated.
+
+That bug is fixed for the next iteration of this patch set.
+
+Axel

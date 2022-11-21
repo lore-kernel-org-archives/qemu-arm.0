@@ -1,175 +1,230 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2421647ejx;
-        Mon, 21 Nov 2022 06:21:13 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf588hcoM8gWgOsMgB6WWvDpFXT09fMhi0KOpUXIE1bBXpy25LyuJKpdVoRzSXOajSr4BmCA
-X-Received: by 2002:a0c:edd0:0:b0:4b1:8d88:1982 with SMTP id i16-20020a0cedd0000000b004b18d881982mr1611958qvr.33.1669040473172;
-        Mon, 21 Nov 2022 06:21:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669040473; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2424220ejx;
+        Mon, 21 Nov 2022 06:24:11 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6A8N0ZhiN5BmMl77OX9gAk3uLjGUkrDm9aDtqEw/OyOIAWyU/0niOG2pRO8tymXVMhXqDe
+X-Received: by 2002:ac8:528f:0:b0:38a:9db4:8006 with SMTP id s15-20020ac8528f000000b0038a9db48006mr17782480qtn.166.1669040650900;
+        Mon, 21 Nov 2022 06:24:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669040650; cv=none;
         d=google.com; s=arc-20160816;
-        b=JScgD6C/di4F15fVg/p5IY3Xy1WQKh0rXWSSLnYWGG5l+MZ1HkdVnzTUM5EPiddql4
-         KWioez2OT3w4EyY7tBfmlu4Hfz2HHMEISSKhH4xAdiD3XD+rj6xWURvM0R0lz3XqKwtK
-         CQsan8dC9zX476edQIOzwNsJEYD/DxTC9QK7tZw9xDzd/P0H9oMRX6FU9Jz8nVEwYOlI
-         atr0je8b3JO+gzS6Z5JHZhda3abBHcil8g0UCNuuflXpUT88oyHt8Sn/OqhEfsKVu8eL
-         bPGiia/xgFOA5AY7Vlf6rrlUKscUvGzp52i8ixgG4C81pLMNMu2Bd6aXD+mJoyo1X5Dy
-         5Zog==
+        b=cuQLg9pKhuYletRmZDk3Pn/BMGpCkq8PbHnwzYZRsoYC/hLwiNCIVAIyte6Czql0vA
+         dRAyIgqY0eB+7uCtIENz2ixXuExhuo8oPl0kMFTWHXgzvHHzqc1rZBVmuNBM+/fEwAPZ
+         SAv4j2u9aQ9cpI/rxONIjuPdJjht4x8QRd15lFpvlVBz4XGScCzYfUDTehWiyhaMR02s
+         gpwW30Jd0DT8Q6hff6K+BpQiE1NdFQIYsjKiAD8l0rHkKIEMWfIIMl4hHXNQKhVNmqbU
+         5uOFxTaWh1sq6Gk0q8/hGmI/nO38tqkcg3CxI2MTbA51DJ+oJBHNKIHwUjWr+BUhoC1J
+         h/+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=JgJk6lNPb1VybQ+KnkB29GKT/z0GPi5XQivENuVAS/Q=;
-        b=Z93/FmYAaceL2Ska5SW34LkitWLTXU12NXv6ed5k9jrVhIJiMmTfSQGlZ2NbGCkm+x
-         BphokqTdB11yGyYso0EAJigG6qAOsH4ZkLTpbB+3nOw5N8PIiJTmxk67OD5lLj/sfdlY
-         FkicTUH/AzSzlqVcYxs0Z4Pvexk6BBOqRmqD/ERmrHxdiYV+ZW198l0VtTdhzu0/blYl
-         UxrLLy6LYtRVJJ9S/bTBk14yHbShasblB0b/vWs0iOaaZYwo7q/WEnD2PIHktK7RkHci
-         UgiBmq03Z/si8PgmZQgODDjDn+ABWS+SvfepSPbfDAFAJyKRuI7SogrUVuwWg8C6VV1m
-         NqIA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:subject:from:content-language:references:cc:to
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=2J1cgZnf+hEAYJW0tGMwAKWSUEmTIr7fF82Fb35eHbY=;
+        b=cMPH7XJZqLMdl3iU3RAPZnakXPRaV55pKKT36Cq+5/OzMDlFXGb0nqg1HdwzMQUUaI
+         IeeZx3g+itIq940/dN0gQI2/B3fWMC9rj0Z3CyC8ET1JCk8DvuVuzwmkhE06usi9nSan
+         Lrj75rQD8iRBvxK0OEd3U2/uHDC5I3JHFmxyAWNdi2UnGVPhm0QTsiQEVZkye70jpx0r
+         mCELn1tOe/8Exgh3qOEwBcpkHet6dt4CkaHtERs0poSWlCWvd2+LZnRZbbmJ6mJcWra/
+         Ww6/YspobppTeG/WK+qmKHHVKSRTv2m5Qgx/v0dFGYFv34h098Jb1J/vS3K+BSTUWecv
+         7k2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=ThfVsdVH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@digitalocean.com header.s=google header.b="Lh2f76/8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=digitalocean.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h22-20020ac846d6000000b0039a610a04b2si5919662qto.236.2022.11.21.06.21.12
+        by mx.google.com with ESMTPS id f12-20020a05622a114c00b0039cbfe871f6si6381848qty.593.2022.11.21.06.24.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Nov 2022 06:21:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Nov 2022 06:24:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=ThfVsdVH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       dkim=pass header.i=@digitalocean.com header.s=google header.b="Lh2f76/8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=digitalocean.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ox7fS-0000pt-TI; Mon, 21 Nov 2022 09:21:02 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ox7iF-0002KU-Ou; Mon, 21 Nov 2022 09:23:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <matt@codeconstruct.com.au>)
- id 1ox1nZ-0003OJ-7c; Mon, 21 Nov 2022 03:05:02 -0500
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <matt@codeconstruct.com.au>)
- id 1ox1nW-0008Hz-Fu; Mon, 21 Nov 2022 03:05:00 -0500
-Received: by codeconstruct.com.au (Postfix, from userid 10001)
- id 30F1920031; Mon, 21 Nov 2022 16:04:45 +0800 (AWST)
+ (Exim 4.90_1) (envelope-from <lyan@digitalocean.com>)
+ id 1ox7iE-0002K7-42
+ for qemu-devel@nongnu.org; Mon, 21 Nov 2022 09:23:54 -0500
+Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <lyan@digitalocean.com>)
+ id 1ox7i8-00015K-GE
+ for qemu-devel@nongnu.org; Mon, 21 Nov 2022 09:23:53 -0500
+Received: by mail-qv1-xf2e.google.com with SMTP id n12so2015238qvr.11
+ for <qemu-devel@nongnu.org>; Mon, 21 Nov 2022 06:23:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1669017885;
- bh=JgJk6lNPb1VybQ+KnkB29GKT/z0GPi5XQivENuVAS/Q=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To;
- b=ThfVsdVHbealDrQfNuGlYsJmMkiq69orAQMtLbd5R98yCpePPb6i4mdUZ1/lEsniw
- g2s0OeOMg+kGkQDaGBnAyRT6u1z1HyZAYhR7dvdCE+xkLLhkbfYei6Hj+APFjd1q+c
- uMgWYs5G7xPeEm5BpKynif20xF8PwZAdpObetYEM0zwUnB+BLF5c7jjkOoJv693hUk
- Soo+vv6NvSiOxp/7Gr/onugMGYtAb09dsmzgRbHsXHDuFN0Ex0MlcjWUjRD7Wt/Ws2
- f2qHLHXFqFZkvHnV5FZ8dAbUNLg2qRjJk7vIFjkE4jYc5X5b7C+bc9kdhsKsNYVJD+
- 1Yjw5gE51m1MA==
-Date: Mon, 21 Nov 2022 16:04:45 +0800
-From: Matt Johnston <matt@codeconstruct.com.au>
-To: Klaus Jensen <its@irrelevant.dk>
-Cc: Jeremy Kerr <jk@codeconstruct.com.au>, qemu-devel@nongnu.org,
- Andrew Jeffery <andrew@aj.id.au>, Keith Busch <kbusch@kernel.org>,
- Corey Minyard <cminyard@mvista.com>,
- Peter Delevoryas <peter@pjd.dev>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Joel Stanley <joel@jms.id.au>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Klaus Jensen <k.jensen@samsung.com>
-Subject: Re: [PATCH RFC 2/3] hw/i2c: add mctp core
-Message-ID: <20221121080445.GA29062@codeconstruct.com.au>
-References: <20221116084312.35808-1-its@irrelevant.dk>
- <20221116084312.35808-3-its@irrelevant.dk>
- <d8a8549c6fc29650131046ee00b7968ebedf886b.camel@codeconstruct.com.au>
- <Y3ct1OzQfPLGEQ1T@cormorant.local>
+ d=digitalocean.com; s=google;
+ h=content-transfer-encoding:in-reply-to:subject:from:content-language
+ :references:cc:to:user-agent:mime-version:date:message-id:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=2J1cgZnf+hEAYJW0tGMwAKWSUEmTIr7fF82Fb35eHbY=;
+ b=Lh2f76/8990pibuviVeiDXMSV0EgGS4n8a3z9jHzZUSJhb5CMDjyASTqpxIGkyxret
+ vTGsee6bxdqHQCVQCCiVzA/tyXaMfqsucH4uTQ5EijBCVVYwHEL+PsoLtIzmXgu6DJUg
+ YTYLS0QpSe16a2ZWKGASPQMlUWpxn/BaCkzno=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:subject:from:content-language
+ :references:cc:to:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2J1cgZnf+hEAYJW0tGMwAKWSUEmTIr7fF82Fb35eHbY=;
+ b=1FPARk27sZMQQF7/3qDI/npJNzeXiTrV9UvdnJpIoydRG0nXlP8vbZhII6r1asnZco
+ +J8NzRxBBakjSwmi/q1I5F6eE89cT91pOJ5bgKPFyXbaJa2bKbRBSQ8ygZpKQC3I3f/R
+ FugTx3wYoK2QgXiZnyYvXHNzQGRyy5nA5K9mIaxHpqNaciTg9iQhCociV+lAbURJzyEz
+ 5/59toiqPTdoxglusNpj+HkPxh7txDxtayrAPlbMPQVwk0nOL6hpsZF0EXKy9tg7bTg2
+ 2Hh9N4DU2QOLpkoRzP79vhJYLmyVnPUWMj6AauOuF30Vfa7mwDlaXa8vZI9hPLgPnad9
+ +GNg==
+X-Gm-Message-State: ANoB5plIQdyFxYXvL3Qd0OyJgreHTg2QtwBJ6aWIkjwdQxMt/hg31hWd
+ snlbqgp1u1cO21oeIMNbW2Z4cA==
+X-Received: by 2002:a05:6214:368a:b0:4bb:6b58:2c96 with SMTP id
+ nl10-20020a056214368a00b004bb6b582c96mr17830235qvb.127.1669040620750; 
+ Mon, 21 Nov 2022 06:23:40 -0800 (PST)
+Received: from [192.168.2.110]
+ (107-142-220-210.lightspeed.wlfrct.sbcglobal.net. [107.142.220.210])
+ by smtp.gmail.com with ESMTPSA id
+ e8-20020ac84908000000b003a4f14378d1sm6729083qtq.33.2022.11.21.06.23.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 21 Nov 2022 06:23:39 -0800 (PST)
+Message-ID: <98067697-4205-4061-1cbb-a666f7021692@digitalocean.com>
+Date: Mon, 21 Nov 2022 09:23:37 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y3ct1OzQfPLGEQ1T@cormorant.local>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=matt@codeconstruct.com.au; helo=codeconstruct.com.au
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+To: Greg Kurz <groug@kaod.org>, Dongli Zhang <dongli.zhang@oracle.com>
+Cc: kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ pbonzini@redhat.com, peter.maydell@linaro.org, mtosatti@redhat.com,
+ chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
+ jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ danielhb413@gmail.com, clg@kaod.org, david@gibson.dropbear.id.au,
+ palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
+ thuth@redhat.com, joe.jin@oracle.com, likexu@tencent.com
+References: <20221119122901.2469-1-dongli.zhang@oracle.com>
+ <20221119122901.2469-3-dongli.zhang@oracle.com>
+ <20221121120311.2731a912@bahia>
+Content-Language: en-US
+From: Liang Yan <lyan@digitalocean.com>
+Subject: Re: [PATCH 2/3] i386: kvm: disable KVM_CAP_PMU_CAPABILITY if "pmu" is
+ disabled
+In-Reply-To: <20221121120311.2731a912@bahia>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2e;
+ envelope-from=lyan@digitalocean.com; helo=mail-qv1-xf2e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 21 Nov 2022 09:20:48 -0500
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J2nQDc2ZQ3zR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rvfbNmiPBTvH
 
-On Fri, Nov 18, 2022 at 08:01:40AM +0100, Klaus Jensen wrote:
-> On Nov 18 13:56, Jeremy Kerr wrote:
-> > Hi Klaus,
-> > 
-> > > Add an abstract MCTP over I2C endpoint model. This implements MCTP
-> > > control message handling as well as handling the actual I2C transport
-> > > (packetization).
-> > > 
-> > With those changes, I can get control protocol going, and multi-packet
-> > messages work. There's a couple of failures from unsupported commands,
-> > but otherwise looks good:
-> > 
-> >   # mctp addr add 8 dev mctpi2c6
-> >   # mctp link set mctpi2c6 up
-> >   # mctp link set mctpi2c6 mtu 254
-> >   # systemctl restart mctpd
-> >   # busctl --no-pager call xyz.openbmc_project.MCTP \
-> >     /xyz/openbmc_project/mctp au.com.CodeConstruct.MCTP \
-> >     SetupEndpoint say mctpi2c6 1 0x1d
 
-Hi Klaus,
+On 11/21/22 06:03, Greg Kurz wrote:
+> On Sat, 19 Nov 2022 04:29:00 -0800
+> Dongli Zhang <dongli.zhang@oracle.com> wrote:
+>
+>> The "perf stat" at the VM side still works even we set "-cpu host,-pmu" in
+>> the QEMU command line. That is, neither "-cpu host,-pmu" nor "-cpu EPYC"
+>> could disable the pmu virtualization in an AMD environment.
+>>
+>> We still see below at VM kernel side ...
+>>
+>> [    0.510611] Performance Events: Fam17h+ core perfctr, AMD PMU driver.
+>>
+>> ... although we expect something like below.
+>>
+>> [    0.596381] Performance Events: PMU not available due to virtualization, using software events only.
+>> [    0.600972] NMI watchdog: Perf NMI watchdog permanently disabled
+>>
+>> This is because the AMD pmu (v1) does not rely on cpuid to decide if the
+>> pmu virtualization is supported.
+>>
+>> We disable KVM_CAP_PMU_CAPABILITY if the 'pmu' is disabled in the vcpu
+>> properties.
+>>
+>> Cc: Joe Jin <joe.jin@oracle.com>
+>> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+>> ---
+>>   target/i386/kvm/kvm.c | 17 +++++++++++++++++
+>>   1 file changed, 17 insertions(+)
+>>
+>> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+>> index 8fec0bc5b5..0b1226ff7f 100644
+>> --- a/target/i386/kvm/kvm.c
+>> +++ b/target/i386/kvm/kvm.c
+>> @@ -137,6 +137,8 @@ static int has_triple_fault_event;
+>>   
+>>   static bool has_msr_mcg_ext_ctl;
+>>   
+>> +static int has_pmu_cap;
+>> +
+>>   static struct kvm_cpuid2 *cpuid_cache;
+>>   static struct kvm_cpuid2 *hv_cpuid_cache;
+>>   static struct kvm_msr_list *kvm_feature_msrs;
+>> @@ -1725,6 +1727,19 @@ static void kvm_init_nested_state(CPUX86State *env)
+>>   
+>>   void kvm_arch_pre_create_vcpu(CPUState *cs)
+>>   {
+>> +    X86CPU *cpu = X86_CPU(cs);
+>> +    int ret;
+>> +
+>> +    if (has_pmu_cap && !cpu->enable_pmu) {
+>> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
+>> +                                KVM_PMU_CAP_DISABLE);
+> It doesn't seem conceptually correct to configure VM level stuff out of
+> a vCPU property, which could theoretically be different for each vCPU,
+> even if this isn't the case with the current code base.
+>
+> Maybe consider controlling PMU with a machine property and this
+> could be done in kvm_arch_init() like other VM level stuff ?
+>
 
-Thanks for the MCTP model, it's useful here.
+There is already a 'pmu' property for x86_cpu with variable 'enable_pmu' 
+as we see the above code. It is mainly used by Intel CPU and set to off 
+by default since qemu 1.5.
 
-I needed the following patch to be able to call SetupEndpoint again when a
-device has already been assigned an EID. That tries a Set Endpoint ID/
-Get Endpoint ID, addressed to EID 0.
+And, this property is spread to AMD CPU too.
 
-Cheers,
-Matt
+I think you may need setup a machine property to disable it from current 
+machine model. Otherwise, it will break the Live Migration scenario.
 
----
-From cb7ad91474367f8e47bdaf03aba9a822f2648f41 Mon Sep 17 00:00:00 2001
-From: Matt Johnston <matt@codeconstruct.com.au>
-Date: Mon, 21 Nov 2022 15:10:13 +0800
-Subject: [PATCH] i2c/mctp: Allow receiving messages to dest eid 0
 
-The Null Destination ID, 0, is used for MCTP control messages when
-addressing by physical ID. That is used for Get Endpoint ID and
-Set Endpoint ID when querying/assigning an EID to an endpoint.
-
-Signed-off-by: Matt Johnston <matt@codeconstruct.com.au>
----
- hw/i2c/mctp.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/hw/i2c/mctp.c b/hw/i2c/mctp.c
-index 1775deb46f..9d9e519ba9 100644
---- a/hw/i2c/mctp.c
-+++ b/hw/i2c/mctp.c
-@@ -258,7 +258,8 @@ static int i2c_mctp_event_cb(I2CSlave *i2c, enum i2c_event event)
-             goto drop;
-         }
- 
--        if (pkt->mctp.hdr.eid.dest != mctp->my_eid) {
-+        if (!(pkt->mctp.hdr.eid.dest == mctp->my_eid
-+            || pkt->mctp.hdr.eid.dest == 0)) {
-             trace_i2c_mctp_drop_invalid_eid(pkt->mctp.hdr.eid.dest,
-                                             mctp->my_eid);
-             goto drop;
--- 
-2.37.2
-
+>> +        if (ret < 0) {
+>> +            error_report("kvm: Failed to disable pmu cap: %s",
+>> +                         strerror(-ret));
+>> +        }
+>> +
+>> +        has_pmu_cap = 0;
+>> +    }
+>>   }
+>>   
+>>   int kvm_arch_init_vcpu(CPUState *cs)
+>> @@ -2517,6 +2532,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>>           }
+>>       }
+>>   
+>> +    has_pmu_cap = kvm_check_extension(s, KVM_CAP_PMU_CAPABILITY);
+>> +
+>>       ret = kvm_get_supported_msrs(s);
+>>       if (ret < 0) {
+>>           return ret;
+>

@@ -1,102 +1,107 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2394259ejx;
-        Mon, 21 Nov 2022 05:51:41 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4WcgiaZVjHiigbPfhcu7ZkyDJf2w9OqFWgV0/KIM9sa+2jocsHgJerVHJevuX3HP/y9Ssh
-X-Received: by 2002:ac8:607:0:b0:3a5:3553:7e67 with SMTP id d7-20020ac80607000000b003a535537e67mr1573524qth.221.1669038701639;
-        Mon, 21 Nov 2022 05:51:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669038701; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2569548ejx;
+        Mon, 21 Nov 2022 09:18:04 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5qlUZnYGJqlfzEE20y0UB8zt7i6kli8YmVjk7etunbB1D5o4egxCuMMG9s8jUfUh4pv1o4
+X-Received: by 2002:ad4:408c:0:b0:4c6:8fa7:c94b with SMTP id l12-20020ad4408c000000b004c68fa7c94bmr154709qvp.43.1669051084198;
+        Mon, 21 Nov 2022 09:18:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669051084; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uor5AxRODWnvVN1iXsbdGynbCw5xU/yUGvJG2G+1JpFhsGJV1lKdpyCoUarJ0YiOXV
-         oXDjXMis0Gu87ZcoxkQyJlO6x1jwPnsjA+9gUYo4x0gCM3ksUA0Okpa0N5IW6oIq8usT
-         NSA7nqCisFT+jMqmw17plWaZ83OW8pC9vRzxQzeS7B0wf20Q5ASmBJm4H5OGgIMVLd8Q
-         BwO0mYYKfklF7B9EojRQyERsoNlMO2uiCY4bTn11asiPdG1R8G7HBVvXixK7m8zVtNA+
-         QMq3gVJHtMY31Nnhz148uvmX/UQMLBL3aAa8W0uujwAzQ5X1FY+dSxZb929g6xXLbT+N
-         gPOw==
+        b=XQeN0tok7GDySwiVcp/0zZ+jsX5eOpK7jJY7vjynsD5qU7BEK9Llsj09APyk0vLg3M
+         A6XHy+AP8OKh+MVG5jbZFemoDMn13yqqGGMS0t99uVvVwIP09GuGcIKJxAXjbwOM9FJN
+         leJfmRoj1SejoaVQa3YDXR0sNNFLA8+fYMLOwvcCaG2ja91KIHBggavD+/HBeNLadCnl
+         d42H6qP2AGgJZRG/HjJqdaPNzDgCP2+CCbX2xXdDT9lwHKBEQTqWmMqeU0AKTx9zi6MF
+         CHOHMO6YTdMnfX5pIAg7TcpnFR3oaw5DvDsIBipLnrA3vrRmgz8CSBK7/kuPT2Kcgfyt
+         XLwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=tYSCdZr8jozkIo/OxQP/IKVsczdxUtO8OsrKUB/QLWs=;
-        b=r8ZlWhpleAY7bTirEPMfrO5c5d+EXIYgV9WKTw5w9yjWbBo7mHW20/FMe37s952Z49
-         E+YJh1s7lulLVYAciRFy3a/NwADxvG7wjum68d1jzQtGgtDI1VQPe4Mryn1ASM8+a3SJ
-         sVpUO9dpW5rRyysg55/edLmpc5nIZJO0ec1nNXSQm2QLyGucAuNdtcvaXdcjQcxrf/AW
-         s7U4bqmsqRvU7gHQaPF11mHphZJfjZQxNwRtE2OFb8ZYGxECExeY6NX6q7QrxaArA4GR
-         9czRf3cZOdHC22W35VWsuY7kyGzK+Jl0rT+vtmNw8yCOz2TWHRyq3Rh1iU2ptANtso6C
-         6wlg==
+        bh=9trGTYQdEqf435WY8HaPZYeyH5W380OlK97rMJw3M1g=;
+        b=W7QMAEQa9jxuZ3LDpFx8gzm80x4JRjfXaHJI4mtn4K+7wnn/aB36wx6K9OMy4K7tRw
+         1zr/0LMV0wWM/Mm7uOuNsvtucXhlRVBpoqmUONRSZf5UPiaXCL3asAx6J/h5UqIUakJ6
+         7Zd7dPF1mo+qjoGGannRCvxcwkB+8dhaAVDkX3ALADDRPqtZ4N8jsU7p6YlZrNa8zC57
+         Qord8NAEdepYbYj9MANq2qn7iuqB06IODllQaTZ9DGj3IOkaJ4eWx0V1stYpOEfDE0Ee
+         Xnb/clFM/uXA8oc2N7CcyHmCwrhJ/qg6GCtBu9dql7f+F0cI8OH7J+/mqmJPooiMr0vi
+         9btg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XTQaoedc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QnXPKiRK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gc9-20020a056214230900b004b4519eadc3si5907892qvb.52.2022.11.21.05.51.41
+        by mx.google.com with ESMTPS id i16-20020a05620a249000b006fa82b94793si6816805qkn.252.2022.11.21.09.18.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Nov 2022 05:51:41 -0800 (PST)
+        Mon, 21 Nov 2022 09:18:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XTQaoedc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QnXPKiRK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ox7Ce-00063V-OK; Mon, 21 Nov 2022 08:51:16 -0500
+	id 1oxAPx-0005rw-Sy; Mon, 21 Nov 2022 12:17:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tkutergin@gmail.com>)
- id 1ox7Cc-0005yv-W1; Mon, 21 Nov 2022 08:51:15 -0500
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oxAPw-0005rC-TQ
+ for qemu-arm@nongnu.org; Mon, 21 Nov 2022 12:17:12 -0500
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tkutergin@gmail.com>)
- id 1ox7CQ-0002rk-6R; Mon, 21 Nov 2022 08:51:05 -0500
-Received: by mail-yb1-xb2f.google.com with SMTP id k84so13649481ybk.3;
- Mon, 21 Nov 2022 05:51:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oxAPs-0002Qw-0x
+ for qemu-arm@nongnu.org; Mon, 21 Nov 2022 12:17:12 -0500
+Received: by mail-pj1-x102f.google.com with SMTP id
+ y14-20020a17090a2b4e00b002189a1b84d4so5486299pjc.2
+ for <qemu-arm@nongnu.org>; Mon, 21 Nov 2022 09:17:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=tYSCdZr8jozkIo/OxQP/IKVsczdxUtO8OsrKUB/QLWs=;
- b=XTQaoedc8lvo28t6qC8Fhgp76z2BRR4zaDsP7jz9BDGugMT1SyGL8gx1Il+1s8NyZG
- Hn+upwdqQu5qiX0Asa6yGE1VbLn/QEVIPd3/aik4dQ9qwLAUQQEfuF/XW2B8w1l2emBd
- o0t9vLJaqNdgSFYQohjkwFt9sffHz7IxXGf7ndpJVhSCzM+TFkYqEkt+g8AkSPLoooUS
- 5xr6Fq4//L4QMvO1sLfc31PCmPRTnr7NceZURKevuq/ztM2lXBJw5lrmAHSSTDWhry4T
- imXXeAzaNc5j7Arlq85ZRKinJVOmjWNJMQIwe+2HEkfT/S9MwVaI4K60+D1mvH4d/B1g
- +K5Q==
+ bh=9trGTYQdEqf435WY8HaPZYeyH5W380OlK97rMJw3M1g=;
+ b=QnXPKiRKx2zZJC3Z6QMm0eZrbsfQJz0fsKgZwCbw6xipWrjTUVOg1V2iwQs8UuA7XJ
+ Gga24a4FiPl5iK1M5bO+QRq9rCfCZIjfZIDCknvqSxV/XCE9foK8szqRC91dYl6mglj6
+ C/6MTDGW0sdwMgYgQxHFeAQ5WD57b8q6B0Ge7dWkpGUNOhEkVszKBgNgzysKF7SZWY/O
+ 0sEQPpdVwgInfToROt8Nwpa6YbqibupGieM1sGRxEGKnfBq4VHTL5HOzHjga11PpCSX2
+ 7AyU+V91mFyt/cDegK3JrOSHEJFDsYG//mZ6Y5QTjn1FkuUD2UvZLXlqt/Us4Klm5wZx
+ pzNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=tYSCdZr8jozkIo/OxQP/IKVsczdxUtO8OsrKUB/QLWs=;
- b=0teYQswjbRATyAQ5xOq8PBFpw0F6qSgfRbW690jzMD4eVC4be/CWSswCORolQ5kbCA
- fXUjPziKc0keF4+Jpt1nnr00jA+7lN0dFM8V+mthslkRaTf6aiMc5wp1jJB85/5Xez68
- 3T18Fay42n/Pb71R+ORK5wBtKQz7i04YEaRI6aunnhJoTGf/7zqDTKyNmZ0cW3v4wqDF
- uscgDghUG3ANFiqNaTLW3tZppd4qURg0TXbRRj/3hWZvJvjeEdcwHnAg3iRNVsGEhXsP
- eRJfQUYVE+Sw7ubBIHcTVZlqY/kEYx1mHD9SYOfHuVdgcLJxRfR6BYsk9nl+SFazagWD
- gOXw==
-X-Gm-Message-State: ANoB5plEFbGD8Va1ZdD5OlsauZYedTBG0XYesPC0UIAjfaY1gOfZv9IQ
- /j1SLU5qWXuaOsesr5suivm8FZvZ9Vy4rZ75egtFFrTTAyM=
-X-Received: by 2002:a5b:4c3:0:b0:6dc:8f28:163c with SMTP id
- u3-20020a5b04c3000000b006dc8f28163cmr17234808ybp.505.1669038660686; Mon, 21
- Nov 2022 05:51:00 -0800 (PST)
+ bh=9trGTYQdEqf435WY8HaPZYeyH5W380OlK97rMJw3M1g=;
+ b=U+TCYnQt0+KcGHS9FuAeGJSnwdeKjIJQe34DrTJqaidTMhOg75+YjciX9qORlpJXj9
+ nPiLgEvu84u3tGtret1cPJNzyJvX5XeApMG4nClb3LFyZ0WfvpsdhlbAKI61D2mDVb30
+ /Oye+t/hkU7dR7U/+6i1ZrrHwNvrJD0dLOpm+2V8XPLwc6EV2dIGnIGulD119inAWn+t
+ 69iuxZjvUnU9Lh5oKM+rb92xrtqOswQmnCG1D90NoaRQV/jJZwqrrYRcezehRBSDcwgx
+ 1FjvKg/fC9xoMs5WZdhjNJhJ07rMFbela9f5J02rxHP0Czo2m3T5s5E05oCUn1HQCVwU
+ ACtQ==
+X-Gm-Message-State: ANoB5pk3HVJk0qmDzZM3IVfFKpIb8WH5YE42xl8E1RwvC16015wzKc00
+ YUEytDgCiluCWdi7nMIilyc7M3laatQz0Vp3VqSBzw==
+X-Received: by 2002:a17:902:6505:b0:185:4ec3:c708 with SMTP id
+ b5-20020a170902650500b001854ec3c708mr2698947plk.60.1669051017873; Mon, 21 Nov
+ 2022 09:16:57 -0800 (PST)
 MIME-Version: 1.0
-References: <20221110090444.550362-1-tkutergin@gmail.com>
- <CAFEAcA9yitrE0n1b4Q1_=VaZH-RF0bVPUSTihOKhOFCTidARXg@mail.gmail.com>
-In-Reply-To: <CAFEAcA9yitrE0n1b4Q1_=VaZH-RF0bVPUSTihOKhOFCTidARXg@mail.gmail.com>
-From: Timofey Kutergin <tkutergin@gmail.com>
-Date: Mon, 21 Nov 2022 16:50:49 +0300
-Message-ID: <CACKEeRN5=fFgnWqZKtRpJ+R334NgF5khFDyj1xdaY2q0c9wq4A@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: added cortex-a55 CPU support for qemu-virt
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000007c969405edfb5875"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
- envelope-from=tkutergin@gmail.com; helo=mail-yb1-xb2f.google.com
+References: <20221029224307.138822-1-gshan@redhat.com>
+In-Reply-To: <20221029224307.138822-1-gshan@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 21 Nov 2022 17:16:46 +0000
+Message-ID: <CAFEAcA9W35dF0L=r2qQppd1FVZ+Di6=3af4qb3T5h2vf8EMsfQ@mail.gmail.com>
+Subject: Re: [PATCH v7 0/7] hw/arm/virt: Improve address assignment for high
+ memory regions
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, maz@kernel.org, 
+ eric.auger@redhat.com, cohuck@redhat.com, richard.henderson@linaro.org, 
+ zhenyzha@redhat.com, shan.gavin@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,334 +117,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tw5/izrDswbx
+X-TUID: kAqYYMgXta3I
 
---0000000000007c969405edfb5875
-Content-Type: text/plain; charset="UTF-8"
+On Sat, 29 Oct 2022 at 23:43, Gavin Shan <gshan@redhat.com> wrote:
+>
+> There are three high memory regions, which are VIRT_HIGH_REDIST2,
+> VIRT_HIGH_PCIE_ECAM and VIRT_HIGH_PCIE_MMIO. Their base addresses
+> are floating on highest RAM address. However, they can be disabled
+> in several cases.
+>
+> (1) One specific high memory region is disabled by developer by
+>     toggling vms->highmem_{redists, ecam, mmio}.
+>
+> (2) VIRT_HIGH_PCIE_ECAM region is disabled on machine, which is
+>     'virt-2.12' or ealier than it.
+>
+> (3) VIRT_HIGH_PCIE_ECAM region is disabled when firmware is loaded
+>     on 32-bits system.
+>
+> (4) One specific high memory region is disabled when it breaks the
+>     PA space limit.
+>
+> The current implementation of virt_set_memmap() isn't comprehensive
+> because the space for one specific high memory region is always
+> reserved from the PA space for case (1), (2) and (3). In the code,
+> 'base' and 'vms->highest_gpa' are always increased for those three
+> cases. It's unnecessary since the assigned space of the disabled
+> high memory region won't be used afterwards.
+>
+> The series intends to improve the address assignment for these
+> high memory regions and introduces new properties for user to
+> selectively disable those 3 high memory regions.
 
-Thank you very much for your comments, I have tried to fix them.
-Regarding L3 cache - cortex-a55 may have or not have it. CLIDR register
-value shows that this specific instance (dumped from odroid c4) does not
-have it.
-But if you think that having L3 cache may be useful - it may be added too...
+I've applied this patchset to a target-arm-for-8.0 branch
+that will end up being the target-arm queue once 7.2 is out.
 
-BR
-Timofey
-
-On Thu, Nov 17, 2022 at 6:54 PM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Thu, 10 Nov 2022 at 09:04, Timofey Kutergin <tkutergin@gmail.com>
-> wrote:
-> >
-> >   cortex-a55 is one of newer armv8.2+ CPUs supporting native
-> >   Privileged Access Never (PAN) feature.
->
-> Hi; thanks for this patch. There are a few missing ID register
-> values below, but otherwise it looks good.
->
-> > Using this CPU
-> >   provides access to this feature without using fictious "max"
->
-> "fictitious"
->
-> >   CPU.
-> >
-> > Signed-off-by: Timofey Kutergin <tkutergin@gmail.com>
-> > ---
-> >  hw/arm/virt.c      |  1 +
-> >  target/arm/cpu64.c | 55 ++++++++++++++++++++++++++++++++++++++++++++++
-> >  2 files changed, 56 insertions(+)
-> >
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index b871350856..fc0c9baba6 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -201,6 +201,7 @@ static const char *valid_cpus[] = {
-> >      ARM_CPU_TYPE_NAME("cortex-a15"),
-> >      ARM_CPU_TYPE_NAME("cortex-a35"),
-> >      ARM_CPU_TYPE_NAME("cortex-a53"),
-> > +    ARM_CPU_TYPE_NAME("cortex-a55"),
-> >      ARM_CPU_TYPE_NAME("cortex-a57"),
-> >      ARM_CPU_TYPE_NAME("cortex-a72"),
-> >      ARM_CPU_TYPE_NAME("cortex-a76"),
->
-> There's a corresponding list of supported CPUs in
-> docs/system/arm/virt.rst that also needs the new CPU type adding.
->
-> > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> > index 3d74f134f5..e1ade1b2a3 100644
-> > --- a/target/arm/cpu64.c
-> > +++ b/target/arm/cpu64.c
-> > @@ -792,6 +792,60 @@ static void aarch64_a53_initfn(Object *obj)
-> >      define_cortex_a72_a57_a53_cp_reginfo(cpu);
-> >  }
-> >
-> > +static void aarch64_a55_initfn(Object *obj)
-> > +{
-> > +    ARMCPU *cpu = ARM_CPU(obj);
-> > +
-> > +    cpu->dtb_compatible = "arm,cortex-a55";
-> > +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> > +    set_feature(&cpu->env, ARM_FEATURE_NEON);
-> > +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-> > +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> > +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-> > +    set_feature(&cpu->env, ARM_FEATURE_EL2);
-> > +    set_feature(&cpu->env, ARM_FEATURE_EL3);
-> > +    set_feature(&cpu->env, ARM_FEATURE_PMU);
->
-> It's helpful for review to order the ID register values in
-> the same layout they are in the TRM, in the "AArch64 registers
-> by functional group" table, which is how we've ordered other
-> new CPUs we've added recently (eg see the Neoverse N1 or
-> the Cortex-A76).
->
-> > +    cpu->midr = 0x411fd050;
->
-> There's an r2p0 TRM out, so we might as well advertise
-> ourselves as r2p0:  0x412FD050
->
-> > +    cpu->revidr = 0x00000000;
-> > +    cpu->reset_fpsid = 0x41034070;
-> > +    cpu->isar.mvfr0 = 0x10110222;
-> > +    cpu->isar.mvfr1 = 0x13211111;
-> > +    cpu->isar.mvfr2 = 0x00000043;
-> > +    cpu->ctr = 0x84448004; /* L1Ip = VIPT */
-> > +    cpu->reset_sctlr = 0x00c50838;
->
-> Should be 0x30c50838 : bits [29:28] are RES1
->
-> > +    cpu->isar.id_pfr0 = 0x10000131;
-> > +    cpu->isar.id_pfr1 = 0x00011011;
->
-> Forgotten id_pfr2: 0x00000011
->
-> > +    cpu->isar.id_dfr0 = 0x04010088;
-> > +    cpu->id_afr0 = 0x00000000;
-> > +    cpu->isar.id_mmfr0 = 0x10201105;
-> > +    cpu->isar.id_mmfr1 = 0x40000000;
-> > +    cpu->isar.id_mmfr2 = 0x01260000;
-> > +    cpu->isar.id_mmfr3 = 0x02122211;
->
-> You've forgotten id_mmfr4 : 0x00021110
->
-> > +    cpu->isar.id_isar0 = 0x02101110;
-> > +    cpu->isar.id_isar1 = 0x13112111;
-> > +    cpu->isar.id_isar2 = 0x21232042;
-> > +    cpu->isar.id_isar3 = 0x01112131;
-> > +    cpu->isar.id_isar4 = 0x00011142;
-> > +    cpu->isar.id_isar5 = 0x01011121;
-> > +    cpu->isar.id_isar6 = 0x00000010;
-> > +    cpu->isar.id_aa64pfr0 = 0x10112222;
->
-> You've missed out id_aa64pfr1 : should be 0x0000000000000010ull
->
-> > +    cpu->isar.id_aa64dfr0 = 0x10305408;
-> > +    cpu->isar.id_aa64isar0 = 0x10211120;
->
-> You've missed out the DP field: this should be
-> 0x0000100010211120ull
->
-> > +    cpu->isar.id_aa64isar1 = 0x00100001;
-> > +    cpu->isar.id_aa64mmfr0 = 0x00101122;
-> > +    cpu->isar.id_aa64mmfr1 = 0x10212122;
-> > +    cpu->isar.id_aa64mmfr2 = 0x00001011;
-> > +    cpu->isar.dbgdidr = 0x3516d000;
-> > +    cpu->clidr = 0x82000023;
-> > +    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
-> > +    cpu->ccsidr[1] = 0x200fe01a; /* 32KB L1 icache */
-> > +    cpu->ccsidr[2] = 0x703fe07a; /* 512KB L2 cache */
->
-> The A55 TRM says that it has an L3 cache, so I think we
-> also need to fill in cpu->ccsidr[4] here (NB not [3], which
-> is a reserved index since the L2 is not split I&D).
->
-> > +    cpu->dcz_blocksize = 4; /* 64 bytes */
-> > +    cpu->gic_num_lrs = 4;
-> > +    cpu->gic_vpribits = 5;
-> > +    cpu->gic_vprebits = 5;
->
-> You need to set gic_pribits also.
->
-> Missing reset_pmcr_el0: 0x41453000
->
-> The impdef sysregs are different from A53/A57/A72 etc,
-> so it's correct that we don't call
-> define_cortex_a72_a57_a53_cp_reginfo(). We can add definitions
-> of the impdef sysregs later if guest software runs into them
-> I guess...
->
-> thanks
-> -- PMM
->
-
---0000000000007c969405edfb5875
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Thank you very much for your comments, I have tried to fix=
- them.<div>Regarding L3 cache - cortex-a55 may have or not have it. CLIDR r=
-egister value shows that this specific instance (dumped from odroid c4) doe=
-s not have it.</div><div>But if you think that having L3 cache may be usefu=
-l - it may be added too...<br><br>BR</div><div>Timofey</div></div><br><div =
-class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Nov 17,=
- 2022 at 6:54 PM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.o=
-rg">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"g=
-mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
-,204,204);padding-left:1ex">On Thu, 10 Nov 2022 at 09:04, Timofey Kutergin =
-&lt;<a href=3D"mailto:tkutergin@gmail.com" target=3D"_blank">tkutergin@gmai=
-l.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0cortex-a55 is one of newer armv8.2+ CPUs supporting native=
-<br>
-&gt;=C2=A0 =C2=A0Privileged Access Never (PAN) feature.<br>
-<br>
-Hi; thanks for this patch. There are a few missing ID register<br>
-values below, but otherwise it looks good.<br>
-<br>
-&gt; Using this CPU<br>
-&gt;=C2=A0 =C2=A0provides access to this feature without using fictious &qu=
-ot;max&quot;<br>
-<br>
-&quot;fictitious&quot;<br>
-<br>
-&gt;=C2=A0 =C2=A0CPU.<br>
-&gt;<br>
-&gt; Signed-off-by: Timofey Kutergin &lt;<a href=3D"mailto:tkutergin@gmail.=
-com" target=3D"_blank">tkutergin@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 hw/arm/virt.c=C2=A0 =C2=A0 =C2=A0 |=C2=A0 1 +<br>
-&gt;=C2=A0 target/arm/cpu64.c | 55 ++++++++++++++++++++++++++++++++++++++++=
-++++++<br>
-&gt;=C2=A0 2 files changed, 56 insertions(+)<br>
-&gt;<br>
-&gt; diff --git a/hw/arm/virt.c b/hw/arm/virt.c<br>
-&gt; index b871350856..fc0c9baba6 100644<br>
-&gt; --- a/hw/arm/virt.c<br>
-&gt; +++ b/hw/arm/virt.c<br>
-&gt; @@ -201,6 +201,7 @@ static const char *valid_cpus[] =3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 ARM_CPU_TYPE_NAME(&quot;cortex-a15&quot;),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 ARM_CPU_TYPE_NAME(&quot;cortex-a35&quot;),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 ARM_CPU_TYPE_NAME(&quot;cortex-a53&quot;),<br>
-&gt; +=C2=A0 =C2=A0 ARM_CPU_TYPE_NAME(&quot;cortex-a55&quot;),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 ARM_CPU_TYPE_NAME(&quot;cortex-a57&quot;),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 ARM_CPU_TYPE_NAME(&quot;cortex-a72&quot;),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 ARM_CPU_TYPE_NAME(&quot;cortex-a76&quot;),<br>
-<br>
-There&#39;s a corresponding list of supported CPUs in<br>
-docs/system/arm/virt.rst that also needs the new CPU type adding.<br>
-<br>
-&gt; diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c<br>
-&gt; index 3d74f134f5..e1ade1b2a3 100644<br>
-&gt; --- a/target/arm/cpu64.c<br>
-&gt; +++ b/target/arm/cpu64.c<br>
-&gt; @@ -792,6 +792,60 @@ static void aarch64_a53_initfn(Object *obj)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 define_cortex_a72_a57_a53_cp_reginfo(cpu);<br>
-&gt;=C2=A0 }<br>
-&gt;<br>
-&gt; +static void aarch64_a55_initfn(Object *obj)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 ARMCPU *cpu =3D ARM_CPU(obj);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;dtb_compatible =3D &quot;arm,cortex-a55&quot;;<=
-br>
-&gt; +=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_V8);<br>
-&gt; +=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_NEON);<br>
-&gt; +=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_GENERIC_TIMER=
-);<br>
-&gt; +=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_AARCH64);<br>
-&gt; +=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_CBAR_RO);<br>
-&gt; +=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_EL2);<br>
-&gt; +=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_EL3);<br>
-&gt; +=C2=A0 =C2=A0 set_feature(&amp;cpu-&gt;env, ARM_FEATURE_PMU);<br>
-<br>
-It&#39;s helpful for review to order the ID register values in<br>
-the same layout they are in the TRM, in the &quot;AArch64 registers<br>
-by functional group&quot; table, which is how we&#39;ve ordered other<br>
-new CPUs we&#39;ve added recently (eg see the Neoverse N1 or<br>
-the Cortex-A76).<br>
-<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;midr =3D 0x411fd050;<br>
-<br>
-There&#39;s an r2p0 TRM out, so we might as well advertise<br>
-ourselves as r2p0:=C2=A0 0x412FD050<br>
-<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;revidr =3D 0x00000000;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;reset_fpsid =3D 0x41034070;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.mvfr0 =3D 0x10110222;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.mvfr1 =3D 0x13211111;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.mvfr2 =3D 0x00000043;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;ctr =3D 0x84448004; /* L1Ip =3D VIPT */<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;reset_sctlr =3D 0x00c50838;<br>
-<br>
-Should be 0x30c50838 : bits [29:28] are RES1<br>
-<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_pfr0 =3D 0x10000131;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_pfr1 =3D 0x00011011;<br>
-<br>
-Forgotten id_pfr2: 0x00000011<br>
-<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_dfr0 =3D 0x04010088;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;id_afr0 =3D 0x00000000;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_mmfr0 =3D 0x10201105;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_mmfr1 =3D 0x40000000;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_mmfr2 =3D 0x01260000;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_mmfr3 =3D 0x02122211;<br>
-<br>
-You&#39;ve forgotten id_mmfr4 : 0x00021110<br>
-<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_isar0 =3D 0x02101110;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_isar1 =3D 0x13112111;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_isar2 =3D 0x21232042;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_isar3 =3D 0x01112131;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_isar4 =3D 0x00011142;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_isar5 =3D 0x01011121;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_isar6 =3D 0x00000010;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_aa64pfr0 =3D 0x10112222;<br>
-<br>
-You&#39;ve missed out id_aa64pfr1 : should be 0x0000000000000010ull<br>
-<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_aa64dfr0 =3D 0x10305408;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_aa64isar0 =3D 0x10211120;<br>
-<br>
-You&#39;ve missed out the DP field: this should be<br>
-0x0000100010211120ull<br>
-<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_aa64isar1 =3D 0x00100001;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_aa64mmfr0 =3D 0x00101122;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_aa64mmfr1 =3D 0x10212122;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.id_aa64mmfr2 =3D 0x00001011;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;isar.dbgdidr =3D 0x3516d000;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;clidr =3D 0x82000023;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;ccsidr[0] =3D 0x700fe01a; /* 32KB L1 dcache */<=
-br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;ccsidr[1] =3D 0x200fe01a; /* 32KB L1 icache */<=
-br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;ccsidr[2] =3D 0x703fe07a; /* 512KB L2 cache */<=
-br>
-<br>
-The A55 TRM says that it has an L3 cache, so I think we<br>
-also need to fill in cpu-&gt;ccsidr[4] here (NB not [3], which<br>
-is a reserved index since the L2 is not split I&amp;D).<br>
-<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;dcz_blocksize =3D 4; /* 64 bytes */<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;gic_num_lrs =3D 4;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;gic_vpribits =3D 5;<br>
-&gt; +=C2=A0 =C2=A0 cpu-&gt;gic_vprebits =3D 5;<br>
-<br>
-You need to set gic_pribits also.<br>
-<br>
-Missing reset_pmcr_el0: 0x41453000<br>
-<br>
-The impdef sysregs are different from A53/A57/A72 etc,<br>
-so it&#39;s correct that we don&#39;t call<br>
-define_cortex_a72_a57_a53_cp_reginfo(). We can add definitions<br>
-of the impdef sysregs later if guest software runs into them<br>
-I guess...<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---0000000000007c969405edfb5875--
+thanks
+-- PMM

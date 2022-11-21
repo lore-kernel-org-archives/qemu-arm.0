@@ -1,327 +1,213 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1708200ejx;
-        Sun, 20 Nov 2022 07:07:39 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5ewHhsoXitLllpTtorm3nx9T96m68BZ1I9hQye4nAQKTFFaaJYaG6mr8zWn75Z4x5GCKUB
-X-Received: by 2002:a05:622a:1144:b0:3a5:2307:9f23 with SMTP id f4-20020a05622a114400b003a523079f23mr13714265qty.514.1668956859088;
-        Sun, 20 Nov 2022 07:07:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1668956859; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2127764ejx;
+        Sun, 20 Nov 2022 22:42:50 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5U8QCPADxTij8ID8F/NzGKlEQ5NQWSl+BShvB0/OVRfJHOgdRdvFUWldpeB7K/kvjhSCNN
+X-Received: by 2002:a05:6402:2a08:b0:461:5e99:a299 with SMTP id ey8-20020a0564022a0800b004615e99a299mr15007325edb.40.1669012969961;
+        Sun, 20 Nov 2022 22:42:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669012969; cv=none;
         d=google.com; s=arc-20160816;
-        b=eEhaq4+8BlZm7kAJeBQU8eUvp4TQSteIYcUJtFhA51/x/FKFnqWAmLHyG5aHtD7Xhj
-         SB6j4fS7WLaUEKtgzNmmMOWbi8Mpfaqcfqn2Gq5yba4XP14kzsh1f2s+97i17JynOVah
-         LCazcsrTbVvzQ7IFe9zr65Ldpzj8wIXwY6ODnDcgCHnkCxhv38UGNwmE9fbHmH4LyvMU
-         wSCg+775TFdMSWUVc3e5SnpmFmqlUKR+ULTzvZQLNp+jhpSam60nmhxxcFHOyTyk550a
-         r5EP4lUr4/BDYbj/idY4EGdt4R9ddc+A3AIMwIDMY1VF1s3APAQljENmZ6QMg+f0basJ
-         zKlQ==
+        b=Au3Rim/2u0DGNdRLVJUSW5sG3RJqWBQQOI7hLVNoY/ADZH0lpW7/Q0K88Nj/7ArkbP
+         uDLXFoYFjcmkrsG4aqHhI413nrO/s+I8suEwbG+FL1IJV4axQeetzGR13ev4nAhpgTm+
+         I3OSB2Eq3tm1H3KrGqqyTv9+47aeKvzjMygLvgWZCRyc3alrRJ0XfoDpDomxTe+o4ffZ
+         4OqyDnBW2Rmm/EasZGnDob7JdK6A33TNIxODlo9Hs84wed1DCEP22fQczmarmexq6uBb
+         gMnpuzlrFOZuYYFVC9+z0hnGoIRdlDd45G1WHs7hEga4LsoGpX85I3hRVh4DmEjlU4ZX
+         dWRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=RupXXG9LxqizCm25x5DZfegVWd8XQCxByXgEiCGa2SA=;
-        b=ytnWf5a3w2ZTDNyINa91v2WWNU41HFME5tRLMblQIddBPfz1jYpG2Q9U5TsfNKtemh
-         UdT7Pdf28H8n9Zl71TUgJVM4rAQqk2OaeIAuDKWGQydWnmFgFf/SHLPMtraQ4y7bAOZd
-         YWJVnDgH4v7y8OSAtmqmb4LMZfAi4nC/oOkd9F1O/BCYTEjdvdPNMrvKM4GfpymqleS/
-         bjp9/CMgbcs3aParpcNXXodPJqCkA8lBgOqaaQOOa6Bh2mWeQkSNQabwykY6ob+GuiGy
-         yAxVrImh0mP5IQhVS3BubSeb16wxobGe+9plo7VUkDULvCzs+xOtBaBhLsjg5fxPD76D
-         odyg==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=nIn/dq+22PWaLv4hHMDs3f3KAdqnytvpjqipVfySebg=;
+        b=xA+zKFV5j+y8USe1mxtf+B/RbN0KvEdaNrWoT15iLNv3B+zthXXL4nQBWrF6wyv4Lo
+         rYcHRdMJtqTu7QwWkhTYUCqTIIVgXcJ73PHHtMAtyRGpfo99ZorcavbjsQx+iPHiLPYZ
+         w9ueVAzYiFTiT9BLdNEe7cQAIi8miw4gfD5rSxi23y3VY6rSkT4DPzbzBONuus4ZgvAe
+         0yrwMpiFj6G+UHDfKrLoe1u9V8DWNbt51fOqX/ebIxm3X7+gzKhjMawqNnmZVtHQ6ktM
+         G/sDjkNs9W5hPSC18GKSxZDbNISYgNJzEA/8z024q35BQ1J4bgXqcQXikguNIcGBuY0H
+         9+3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EecpGOO+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AWiMixJC;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jp15-20020ad45f8f000000b004b188527552si5227340qvb.80.2022.11.20.07.07.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Nov 2022 07:07:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id i11-20020a1709064fcb00b00779a3220c5asi1001172ejw.343.2022.11.20.22.42.49;
+        Sun, 20 Nov 2022 22:42:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EecpGOO+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AWiMixJC;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1owlu3-0002Hh-9T; Sun, 20 Nov 2022 10:06:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1owlu1-0002HH-OS; Sun, 20 Nov 2022 10:06:37 -0500
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1owltz-0001xH-OG; Sun, 20 Nov 2022 10:06:37 -0500
-Received: by mail-ej1-x62d.google.com with SMTP id n12so23389552eja.11;
- Sun, 20 Nov 2022 07:06:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=RupXXG9LxqizCm25x5DZfegVWd8XQCxByXgEiCGa2SA=;
- b=EecpGOO+oX4jGiep077zUttl5GqnN/LTL4zbMWKdzqfOxF2kEEfjXa984wcVWbLU9Z
- CbtmGovwCUvvWxUwGo0QZWQHCBk8v07PeM4ZCw+Zu7RJjzcsZmR5K2ioqYjDFArYhRLE
- pjKZSkKzqpCkg3mmqx1Rei80eUj6czdIkE6y2wo611+51b2M3ho2F37nPRuKTXVWuNzW
- GKDM1h85GjVnB9mLWcNnsWD2Wu1twKouPQ4OhcgHE24fbul9W5DkRgikPmI3CkxtqzUb
- VikMToTtJxes7tEFfg4vxy8ivQv+Fm6LmA2q6TxLfNygjP0dbwB8dYnoJL5z46n5yVEy
- gnuA==
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S229746AbiKUGmr (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 3 others); Mon, 21 Nov 2022 01:42:47 -0500
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:59392 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229632AbiKUGmp (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 21 Nov 2022 01:42:45 -0500
+Received: from mail-pl1-x635.google.com (mail-pl1-x635.google.com [IPv6:2607:f8b0:4864:20::635])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 32793273C
+        for <kvm@vger.kernel.org>; Sun, 20 Nov 2022 22:42:36 -0800 (PST)
+Received: by mail-pl1-x635.google.com with SMTP id g10so9719822plo.11
+        for <kvm@vger.kernel.org>; Sun, 20 Nov 2022 22:42:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nIn/dq+22PWaLv4hHMDs3f3KAdqnytvpjqipVfySebg=;
+        b=AWiMixJCpFyWPBEJXHdf7HWjJyHvbXhLMGk+mOjs0xnQYpIsFf66uMAcg5YVl/EIsZ
+         4uOMbVTRm1oZskMdV2SP9Z/PznA8Vxs49gV7HRlD+233vh2k5lkmCCd6db4xcrolRLvO
+         Udn63wNkw8DoyqzYG0065+J/3jSrFyL4JawTNwBErVvBknBl4N/Zq5H2LGDHGRH+rALF
+         6lq/8F2h/xL18440sxn7c0SWSAz8vqHAon02eJggvLmYjWN9PX50Fl82rR4Tn3DTPSRl
+         Dkb8wByATyxBMi/xCv+puY7/wnjleMs5VJukq06pzqjHCtv+LSw09a6kQcx3BKRakcn/
+         mLLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=RupXXG9LxqizCm25x5DZfegVWd8XQCxByXgEiCGa2SA=;
- b=dUxnTkRS/Y5J9mUBLTaGzS37I61981MTmAm/BGTc+jomP0PB9XHObqOEzSUB32BiWB
- FRkCybyXrQ3STy5XKgDOqKweEyJJbHcgWe6VB1FuG0t5vcO+BYxet7aY2IC2kCcpQ9te
- qRRVAIQkQksjdeDf/uEr7mXv9RXNk3xo18e6a4ToGNtMfQiPZqMl+idi4pXCkNGXOHCm
- 0aw/vvPp8VkzEv+dd3xTIfWx2jRED6EXRruUaMhmBv68U4ND/S+RZWQxN/id7micfOiB
- USSlpk7DnTFDLAXihvSnWgjoGJ5FeMK0CXUm/c/AdJhbHaAjWJTCPXSNz4+ZOhLmC9eE
- oCQw==
-X-Gm-Message-State: ANoB5pmLbeyxjc/UBsf87csh2ukNFCUrekCyPAVOLhy83WETuUcyGluB
- cYilAQBUr57C+xkcQ30/KLiNeKBy8rc=
-X-Received: by 2002:a17:906:fcd0:b0:7ad:b8c0:3057 with SMTP id
- qx16-20020a170906fcd000b007adb8c03057mr12455927ejb.440.1668956793445; 
- Sun, 20 Nov 2022 07:06:33 -0800 (PST)
-Received: from localhost.localdomain
- (dynamic-077-013-067-205.77.13.pool.telefonica.de. [77.13.67.205])
- by smtp.gmail.com with ESMTPSA id
- u10-20020a1709061daa00b007b2a3cad2cfsm4026785ejh.132.2022.11.20.07.06.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Nov 2022 07:06:33 -0800 (PST)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: John G Johnson <john.g.johnson@oracle.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Jagannathan Raman <jag.raman@oracle.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 1/3] hw/pci/pci: Factor out pci_bus_map_irqs() from
- pci_bus_irqs()
-Date: Sun, 20 Nov 2022 16:05:48 +0100
-Message-Id: <20221120150550.63059-2-shentey@gmail.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221120150550.63059-1-shentey@gmail.com>
-References: <20221120150550.63059-1-shentey@gmail.com>
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nIn/dq+22PWaLv4hHMDs3f3KAdqnytvpjqipVfySebg=;
+        b=cxYCw/WbG46GuYO75nsYL/u9gczKU1YmCaP+Y8XTMYlxUG8W/VxA+pTe/ZI2EOr24F
+         GS+h6Kf3yqHaVnInULyv4asmHnsreuTKDyryye/iyk8MwhFkX6vnSBmSoYPukk0T6J5T
+         kh5IIMpJmk+Kswm+/8CDaj6I2n17+4Bo6woajyfQIWFhn0Z8DsyA7DTA5/1pYYcFV2c+
+         gchOkFUvxiMjxKpO2DiLuwwEe47m1YjC6fdLLFmnAuWv9nV0u5Wui1VOdcV3CKGmikJd
+         Lu3s2WoS+IPPUt28BkcbvjClZ0wXVtbdfxBAykfSYANz+GzLNoh5rqezdH8BsTIYStXc
+         2Ccg==
+X-Gm-Message-State: ANoB5pntbvluFDS2GoY4G7pUoye+kL9s3JrHhwaeMg3lQvioZN5hxlTl
+        uxnMYW9XEAt6ldU5O+LmQU4=
+X-Received: by 2002:a17:90a:4fc1:b0:213:16b5:f45e with SMTP id q59-20020a17090a4fc100b0021316b5f45emr24562450pjh.170.1669012955526;
+        Sun, 20 Nov 2022 22:42:35 -0800 (PST)
+Received: from [192.168.255.10] ([103.7.29.32])
+        by smtp.gmail.com with ESMTPSA id y19-20020a1709027c9300b0017f9db0236asm8805479pll.82.2022.11.20.22.42.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 20 Nov 2022 22:42:35 -0800 (PST)
+Message-ID: <187668e7-f32e-b509-8ce1-4b35d98c7d31@gmail.com>
+Date:   Mon, 21 Nov 2022 14:42:20 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Daf3UwpPTQxs
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.0
+Subject: Re: [PATCH 0/3] kvm: fix two svm pmu virtualization bugs
+To:     Dongli Zhang <dongli.zhang@oracle.com>
+Cc:     pbonzini@redhat.com, peter.maydell@linaro.org, mtosatti@redhat.com,
+        chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
+        jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+        danielhb413@gmail.com, clg@kaod.org, david@gibson.dropbear.id.au,
+        groug@kaod.org, palmer@dabbelt.com, alistair.francis@wdc.com,
+        bin.meng@windriver.com, pasic@linux.ibm.com,
+        borntraeger@linux.ibm.com, richard.henderson@linaro.org,
+        david@redhat.com, iii@linux.ibm.com, thuth@redhat.com,
+        joe.jin@oracle.com, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
+        qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+        kvm list <kvm@vger.kernel.org>, qemu-devel@nongnu.org
+References: <20221119122901.2469-1-dongli.zhang@oracle.com>
+Content-Language: en-US
+From:   Like Xu <like.xu.linux@gmail.com>
+In-Reply-To: <20221119122901.2469-1-dongli.zhang@oracle.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FROM,NICE_REPLY_A,
+        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_PASS autolearn=ham
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: gSTIGVfo4U4+
 
-pci_bus_irqs() coupled together the assignment of pci_set_irq_fn and
-pci_map_irq_fn to a PCI bus. This coupling gets in the way when the
-pci_map_irq_fn is board-specific while the pci_set_irq_fn is device-
-specific.
+On 19/11/2022 8:28 pm, Dongli Zhang wrote:
+> This patchset is to fix two svm pmu virtualization bugs.
+> 
+> 1. The 1st bug is that "-cpu,-pmu" cannot disable svm pmu virtualization.
+> 
+> To use "-cpu EPYC" or "-cpu host,-pmu" cannot disable the pmu
+> virtualization. There is still below at the VM linux side ...
 
-For example, both of QEMU's PIIX south bridge models have different
-pci_map_irq_fn implementations which are board-specific rather than
-device-specific. These implementations should therefore reside in board
-code. The pci_set_irq_fn's, however, should stay in the device models
-because they access memory internal to the model.
+Many QEMU vendor forks already have similar fixes, and
+thanks for bringing this issue back to the mainline.
 
-Factoring out pci_bus_map_irqs() from pci_bus_irqs() allows the
-assignments to be decoupled, resolving the problem described above.
+> 
+> [    0.510611] Performance Events: Fam17h+ core perfctr, AMD PMU driver.
+> 
+> ... although we expect something like below.
+> 
+> [    0.596381] Performance Events: PMU not available due to virtualization, using software events only.
+> [    0.600972] NMI watchdog: Perf NMI watchdog permanently disabled
+> 
+> The patch 1-2 is to disable the pmu virtualization via KVM_PMU_CAP_DISABLE
+> if the per-vcpu "pmu" property is disabled.
+> 
+> I considered 'KVM_X86_SET_MSR_FILTER' initially.
+> Since both KVM_X86_SET_MSR_FILTER and KVM_PMU_CAP_DISABLE are VM ioctl. I
+> finally used the latter because it is easier to use.
+> 
+> 
+> 2. The 2nd bug is that un-reclaimed perf events (after QEMU system_reset)
+> at the KVM side may inject random unwanted/unknown NMIs to the VM.
+> 
+> The svm pmu registers are not reset during QEMU system_reset.
+> 
+> (1). The VM resets (e.g., via QEMU system_reset or VM kdump/kexec) while it
+> is running "perf top". The pmu registers are not disabled gracefully.
+> 
+> (2). Although the x86_cpu_reset() resets many registers to zero, the
+> kvm_put_msrs() does not puts AMD pmu registers to KVM side. As a result,
+> some pmu events are still enabled at the KVM side.
+> 
+> (3). The KVM pmc_speculative_in_use() always returns true so that the events
+> will not be reclaimed. The kvm_pmc->perf_event is still active.
 
-Note also how pci_vpb_realize() which gets touched in this commit
-assigns different pci_map_irq_fn's depending on the board.
+I'm not sure if you're saying KVM doing something wrong, I don't think so
+because KVM doesn't sense the system_reset defined by QEME or other user space,
+AMD's vPMC will continue to be enabled (if it was enabled before), generating pmi
+injection into the guest, and the newly started guest doesn't realize the 
+counter is still
+enabled and blowing up the error log.
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/i386/pc_q35.c        |  4 ++--
- hw/isa/piix3.c          |  8 ++++----
- hw/isa/piix4.c          |  3 ++-
- hw/pci-host/raven.c     |  3 ++-
- hw/pci-host/versatile.c |  3 ++-
- hw/pci/pci.c            | 12 +++++++++---
- hw/remote/machine.c     |  3 ++-
- include/hw/pci/pci.h    |  3 ++-
- 8 files changed, 25 insertions(+), 14 deletions(-)
+> 
+> (4). After the reboot, the VM kernel reports below error:
+> 
+> [    0.092011] Performance Events: Fam17h+ core perfctr, Broken BIOS detected, complain to your hardware vendor.
+> [    0.092023] [Firmware Bug]: the BIOS has corrupted hw-PMU resources (MSR c0010200 is 530076)
+> 
+> (5). In a worse case, the active kvm_pmc->perf_event is still able to
+> inject unknown NMIs randomly to the VM kernel.
+> 
+> [...] Uhhuh. NMI received for unknown reason 30 on CPU 0.
+> 
+> The patch 3 is to fix the issue by resetting AMD pmu registers as well as
+> Intel registers.
 
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index a496bd6e74..39f035903c 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -268,8 +268,8 @@ static void pc_q35_init(MachineState *machine)
-     for (i = 0; i < GSI_NUM_PINS; i++) {
-         qdev_connect_gpio_out_named(lpc_dev, ICH9_GPIO_GSI, i, x86ms->gsi[i]);
-     }
--    pci_bus_irqs(host_bus, ich9_lpc_set_irq, ich9_lpc_map_irq, ich9_lpc,
--                 ICH9_LPC_NB_PIRQS);
-+    pci_bus_irqs(host_bus, ich9_lpc_set_irq, ich9_lpc, ICH9_LPC_NB_PIRQS);
-+    pci_bus_map_irqs(host_bus, ich9_lpc_map_irq);
-     pci_bus_set_route_irq_fn(host_bus, ich9_route_intx_pin_to_irq);
-     isa_bus = ich9_lpc->isa_bus;
- 
-diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
-index f9b4af5c05..7ad26b82e8 100644
---- a/hw/isa/piix3.c
-+++ b/hw/isa/piix3.c
-@@ -388,8 +388,8 @@ static void piix3_realize(PCIDevice *dev, Error **errp)
-         return;
-     }
- 
--    pci_bus_irqs(pci_bus, piix3_set_irq, pci_slot_get_pirq,
--                 piix3, PIIX_NUM_PIRQS);
-+    pci_bus_irqs(pci_bus, piix3_set_irq, piix3, PIIX_NUM_PIRQS);
-+    pci_bus_map_irqs(pci_bus, pci_slot_get_pirq);
-     pci_bus_set_route_irq_fn(pci_bus, piix3_route_intx_pin_to_irq);
- }
- 
-@@ -424,8 +424,8 @@ static void piix3_xen_realize(PCIDevice *dev, Error **errp)
-      * connected to the IOAPIC directly.
-      * These additional routes can be discovered through ACPI.
-      */
--    pci_bus_irqs(pci_bus, xen_piix3_set_irq, xen_pci_slot_get_pirq,
--                 piix3, XEN_PIIX_NUM_PIRQS);
-+    pci_bus_irqs(pci_bus, xen_piix3_set_irq, piix3, XEN_PIIX_NUM_PIRQS);
-+    pci_bus_map_irqs(pci_bus, xen_pci_slot_get_pirq);
- }
- 
- static void piix3_xen_class_init(ObjectClass *klass, void *data)
-diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-index 8fc1db6dc9..f9211d085f 100644
---- a/hw/isa/piix4.c
-+++ b/hw/isa/piix4.c
-@@ -271,7 +271,8 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
-     }
-     qdev_connect_gpio_out(DEVICE(&s->pm), 0, s->isa[9]);
- 
--    pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s, PIIX_NUM_PIRQS);
-+    pci_bus_irqs(pci_bus, piix4_set_irq, s, PIIX_NUM_PIRQS);
-+    pci_bus_map_irqs(pci_bus, pci_slot_get_pirq);
- }
- 
- static void piix4_init(Object *obj)
-diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
-index 7a105e4a63..2db577df4f 100644
---- a/hw/pci-host/raven.c
-+++ b/hw/pci-host/raven.c
-@@ -258,7 +258,8 @@ static void raven_pcihost_realizefn(DeviceState *d, Error **errp)
- 
-     qdev_init_gpio_in(d, raven_change_gpio, 1);
- 
--    pci_bus_irqs(&s->pci_bus, raven_set_irq, raven_map_irq, s, PCI_NUM_PINS);
-+    pci_bus_irqs(&s->pci_bus, raven_set_irq, s, PCI_NUM_PINS);
-+    pci_bus_map_irqs(&s->pci_bus, raven_map_irq);
- 
-     memory_region_init_io(&h->conf_mem, OBJECT(h), &pci_host_conf_le_ops, s,
-                           "pci-conf-idx", 4);
-diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-index f66384fa02..c77a999955 100644
---- a/hw/pci-host/versatile.c
-+++ b/hw/pci-host/versatile.c
-@@ -422,7 +422,8 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
-         mapfn = pci_vpb_map_irq;
-     }
- 
--    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, mapfn, s->irq, 4);
-+    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, s->irq, 4);
-+    pci_bus_map_irqs(&s->pci_bus, mapfn);
- 
-     /* Our memory regions are:
-      * 0 : our control registers
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 2f450f6a72..6396cde004 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -283,6 +283,7 @@ static void pci_change_irq_level(PCIDevice *pci_dev, int irq_num, int change)
-     PCIBus *bus;
-     for (;;) {
-         bus = pci_get_bus(pci_dev);
-+        assert(bus->map_irq);
-         irq_num = bus->map_irq(pci_dev, irq_num);
-         if (bus->set_irq)
-             break;
-@@ -521,16 +522,20 @@ void pci_root_bus_cleanup(PCIBus *bus)
-     qbus_unrealize(BUS(bus));
- }
- 
--void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq, pci_map_irq_fn map_irq,
-+void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq,
-                   void *irq_opaque, int nirq)
- {
-     bus->set_irq = set_irq;
--    bus->map_irq = map_irq;
-     bus->irq_opaque = irq_opaque;
-     bus->nirq = nirq;
-     bus->irq_count = g_malloc0(nirq * sizeof(bus->irq_count[0]));
- }
- 
-+void pci_bus_map_irqs(PCIBus *bus, pci_map_irq_fn map_irq)
-+{
-+    bus->map_irq = map_irq;
-+}
-+
- void pci_bus_irqs_cleanup(PCIBus *bus)
- {
-     bus->set_irq = NULL;
-@@ -552,7 +557,8 @@ PCIBus *pci_register_root_bus(DeviceState *parent, const char *name,
- 
-     bus = pci_root_bus_new(parent, name, address_space_mem,
-                            address_space_io, devfn_min, typename);
--    pci_bus_irqs(bus, set_irq, map_irq, irq_opaque, nirq);
-+    pci_bus_irqs(bus, set_irq, irq_opaque, nirq);
-+    pci_bus_map_irqs(bus, map_irq);
-     return bus;
- }
- 
-diff --git a/hw/remote/machine.c b/hw/remote/machine.c
-index 75d550daae..519f855ec1 100644
---- a/hw/remote/machine.c
-+++ b/hw/remote/machine.c
-@@ -63,8 +63,9 @@ static void remote_machine_init(MachineState *machine)
-     } else {
-         remote_iohub_init(&s->iohub);
- 
--        pci_bus_irqs(pci_host->bus, remote_iohub_set_irq, remote_iohub_map_irq,
-+        pci_bus_irqs(pci_host->bus, remote_iohub_set_irq,
-                      &s->iohub, REMOTE_IOHUB_NB_PIRQS);
-+        pci_bus_map_irqs(pci_host->bus, remote_iohub_map_irq);
-     }
- 
-     qbus_set_hotplug_handler(BUS(pci_host->bus), OBJECT(s));
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index 6ccaaf5154..01ea267253 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -446,8 +446,9 @@ PCIBus *pci_root_bus_new(DeviceState *parent, const char *name,
-                          MemoryRegion *address_space_io,
-                          uint8_t devfn_min, const char *typename);
- void pci_root_bus_cleanup(PCIBus *bus);
--void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq, pci_map_irq_fn map_irq,
-+void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq,
-                   void *irq_opaque, int nirq);
-+void pci_bus_map_irqs(PCIBus *bus, pci_map_irq_fn map_irq);
- void pci_bus_irqs_cleanup(PCIBus *bus);
- int pci_bus_get_irq_level(PCIBus *bus, int irq_num);
- /* 0 <= pin <= 3 0 = INTA, 1 = INTB, 2 = INTC, 3 = INTD */
--- 
-2.38.1
+This fix idea looks good, it does require syncing the new changed device state 
+of QEMU to KVM.
 
+> 
+> 
+> This patchset does cover does not cover PerfMonV2, until the below patchset
+> is merged into the KVM side.
+> 
+> [PATCH v3 0/8] KVM: x86: Add AMD Guest PerfMonV2 PMU support
+> https://lore.kernel.org/all/20221111102645.82001-1-likexu@tencent.com/
+> 
+> 
+> Dongli Zhang (3):
+>        kvm: introduce a helper before creating the 1st vcpu
+>        i386: kvm: disable KVM_CAP_PMU_CAPABILITY if "pmu" is disabled
+>        target/i386/kvm: get and put AMD pmu registers
+> 
+>   accel/kvm/kvm-all.c    |   7 ++-
+>   include/sysemu/kvm.h   |   2 +
+>   target/arm/kvm64.c     |   4 ++
+>   target/i386/cpu.h      |   5 +++
+>   target/i386/kvm/kvm.c  | 104 +++++++++++++++++++++++++++++++++++++++++++-
+>   target/mips/kvm.c      |   4 ++
+>   target/ppc/kvm.c       |   4 ++
+>   target/riscv/kvm.c     |   4 ++
+>   target/s390x/kvm/kvm.c |   4 ++
+>   9 files changed, 134 insertions(+), 4 deletions(-)
+> 
+> Thank you very much!
+> 
+> Dongli Zhang
+> 
+> 
+> 

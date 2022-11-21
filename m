@@ -1,101 +1,109 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2267589ejx;
-        Mon, 21 Nov 2022 03:03:52 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4FPxCbDFdVuiJHp4w/pJAsfjKt2DVbr3PeNrLl/EPkb8hj1MB7W2AMWRKjR9WTY7cXgFVz
-X-Received: by 2002:ae9:eb4c:0:b0:6fa:4749:cbe3 with SMTP id b73-20020ae9eb4c000000b006fa4749cbe3mr15771941qkg.171.1669028632542;
-        Mon, 21 Nov 2022 03:03:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669028632; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2390537ejx;
+        Mon, 21 Nov 2022 05:46:52 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4ujM+xj3CbrrsB9FRZm51JwJKPcTddJKIuTDL0cJvuKSumpHIIPNtS7Fs8EUtH57TLiu4e
+X-Received: by 2002:a05:620a:205e:b0:6fa:57a4:6526 with SMTP id d30-20020a05620a205e00b006fa57a46526mr949041qka.671.1669038411958;
+        Mon, 21 Nov 2022 05:46:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669038411; cv=none;
         d=google.com; s=arc-20160816;
-        b=m5ayIpZyd65pQQ6M3OucMd9VWSh9NgNIVHTglT8B0+P6mrCcpNOkJHaUe6zsbXDcCm
-         sjAlD5T3fgJyN6mFhFchQnY92MsQFbcV2q5eVAj/hCo/p1Ny2YRTfIVIwtA3ceW29GOx
-         zXxa1AL4l2ZPU25fdvORkI1hp6EJ5FTnVCEE8plGHi+Z+kFOMjKP2doGbuuIvM0Hj4+T
-         1FoY4SPrwoR+1AiqTSvkpfQnS6Z2tfRi7iF/nmtEjI9FO2mWKdMnqht74lH6j97YTDg9
-         AU+6RdGScWrGZVQ7DM3jK3JZmhNYNsvcVCAslq1R8guGvnxgZrfjyFTTddEqpcvtwRUa
-         Ugmg==
+        b=uItyS7JnrOhsv9BzBty5YmNyC9+TTXw75y/bI6wVUfj2+FI2FSnXb/E9xIeH8rOdvV
+         Acksm2QKJN8o9rLRozWV3U2vyFTkzGkjPhHQ10yVCl6BoI6CkDE6O3Nq6f9wEuzfXjdJ
+         BCJrKNA8XjpRtkeeR8sosvDezUZ83UFxPoF3/9uRymxGIiHiiXqvcp+4CX0RJhNQxDuY
+         4T91du0eDFjhZF9+HTeJE9uN/g95PrnTgtwn5wb+hSfpILqEtbupsGYbSItLqn9/txcO
+         0YmM+oy6PFk2X/NA/hV7Uzdz9cFm63WRjvC/F01/gm+L6qHgt41Yaa+6CVamBSx1ZUW7
+         GJ9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date;
-        bh=NBHa1fq+dkB/cbMR5xUlYkqcXQiU82edTxzWNpEQY7E=;
-        b=uxA8EAjE1t8Iht+MQlxe8lLNZ1E0U2BHHEsFcBLjKHK6lcRjwv5rPIFFoKrH4GOIAV
-         wuike4LUQ/oWej1e3XAKArfTJ2QlE19EMpPjGjOtQoQ0ySxdZOqsos94Xtx71XGd9QAG
-         HtMK3Gf/T+o89hQzDtd1Lv1dKZsxWUe+TSPZwITeVHPmusINuzts7C62a3o7F96XVQH7
-         XTuCyzVu3ZbvxmUD4grRa4Bvg0trigUO1Th5xPcCN/IE9A2HYKy/WaBAH9HaZv6FtaXZ
-         0osm8SRqjkY0GHYdRcng/7BbbFaOVNpOLO0kZlLAt6x6SLXdvY8JK94qVJ1qagRP5X5I
-         vZiQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=P0hkIqbBe/RseetpPmCKez9mYuN6qSjmPAo1amuK0T4=;
+        b=Al1L+VjkNnwo6eR5607D8F1vTu4YkZuOB7PbXSpn9MD5sCNXuU5zd/LVhe/A4vqnAp
+         /XwkSrJTTUZ2HqVl0mTAODDRWgmpJ4yYvBPpSFrbW2U3aJ08STY4kHavA98xlkRCqFf9
+         f0CMrI2olVT7PR42HYpB+ZVZ9+Qeo4X+EaekXMrASpAVtecS4hp6hn3tBeUyxwEXbvcC
+         1xyE86JDPb8So+gUdyS7RuOj6WFBlyvSIbELzKs92piQy+OPFaM9yk3x9A+L5fiMn4yy
+         17s2HkMoQwODsqHU1c2tLzl1EZ78n0ZDNwBIb0tQZSSoMtFr/jEypFKLaGAg7pYBOFSM
+         3J4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XmerbbgW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l9-20020a05620a28c900b006cde5dd186esi6398800qkp.245.2022.11.21.03.03.52
+        by mx.google.com with ESMTPS id bj5-20020a05620a190500b006fa22e9ae50si6344637qkb.519.2022.11.21.05.46.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Nov 2022 03:03:52 -0800 (PST)
+        Mon, 21 Nov 2022 05:46:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XmerbbgW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ox4aU-00028l-7i; Mon, 21 Nov 2022 06:03:43 -0500
+	id 1ox78H-0003Mc-47; Mon, 21 Nov 2022 08:46:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1ox4aK-00025c-EA
- for qemu-arm@nongnu.org; Mon, 21 Nov 2022 06:03:36 -0500
-Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1ox4aF-0007GU-5c
- for qemu-arm@nongnu.org; Mon, 21 Nov 2022 06:03:31 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.6])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id C440423070;
- Mon, 21 Nov 2022 11:03:13 +0000 (UTC)
-Received: from kaod.org (37.59.142.98) by DAG8EX2.mxp5.local (172.16.2.72)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Mon, 21 Nov
- 2022 12:03:12 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002374dfbf7-e072-4805-b686-6b2b08b22e5e,
- DDADA6E0A258960EA2C3EFDC8F36B73C7D77DF4E) smtp.auth=groug@kaod.org
-X-OVh-ClientIp: 78.197.208.248
-Date: Mon, 21 Nov 2022 12:03:11 +0100
-From: Greg Kurz <groug@kaod.org>
-To: Dongli Zhang <dongli.zhang@oracle.com>
-CC: <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>, <qemu-s390x@nongnu.org>,
- <pbonzini@redhat.com>, <peter.maydell@linaro.org>, <mtosatti@redhat.com>,
- <chenhuacai@kernel.org>, <philmd@linaro.org>, <aurelien@aurel32.net>,
- <jiaxun.yang@flygoat.com>, <aleksandar.rikalo@syrmia.com>,
- <danielhb413@gmail.com>, <clg@kaod.org>, <david@gibson.dropbear.id.au>,
- <palmer@dabbelt.com>, <alistair.francis@wdc.com>, <bin.meng@windriver.com>,
- <pasic@linux.ibm.com>, <borntraeger@linux.ibm.com>,
- <richard.henderson@linaro.org>, <david@redhat.com>, <iii@linux.ibm.com>,
- <thuth@redhat.com>, <joe.jin@oracle.com>, <likexu@tencent.com>
-Subject: Re: [PATCH 2/3] i386: kvm: disable KVM_CAP_PMU_CAPABILITY if "pmu"
- is disabled
-Message-ID: <20221121120311.2731a912@bahia>
-In-Reply-To: <20221119122901.2469-3-dongli.zhang@oracle.com>
-References: <20221119122901.2469-1-dongli.zhang@oracle.com>
- <20221119122901.2469-3-dongli.zhang@oracle.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.34; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <tkutergin@gmail.com>)
+ id 1ox77t-0003Le-2E
+ for qemu-arm@nongnu.org; Mon, 21 Nov 2022 08:46:25 -0500
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tkutergin@gmail.com>)
+ id 1ox77r-0001pG-13
+ for qemu-arm@nongnu.org; Mon, 21 Nov 2022 08:46:20 -0500
+Received: by mail-lf1-x12b.google.com with SMTP id g12so18922449lfh.3
+ for <qemu-arm@nongnu.org>; Mon, 21 Nov 2022 05:46:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=P0hkIqbBe/RseetpPmCKez9mYuN6qSjmPAo1amuK0T4=;
+ b=XmerbbgW38NkeT+ukwUmh3gZcuUStYr8fN7BU11RrEPz4eYRf7Pwtd0y7hJDg6ePOg
+ vlN7b2xRWAS89uRHo+aetK5qeCwYcg9foE6x/dvKrCPzfTvzM6eYdqz9HqsbwPYQ9RIX
+ 7IG0In2lFgXvLRoPOTv8BXzW3cI63cRKsuhGxSfBtTzx6UMxnYDbwI0ViBTRgFCitz+3
+ hULOlHyeSHeOLkX5609GVpnTUrDscK5K2juSFSAzK+J+bMe3ckRdxhJV+cVDr3DOvtDC
+ PfIf+3Mxb9AmD3NCoQeskxrrpM9f0aQy043vrzPH8Pr0/ONfwpIKyZd0GLfmZvObpHzn
+ +GDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=P0hkIqbBe/RseetpPmCKez9mYuN6qSjmPAo1amuK0T4=;
+ b=dU4CEVP1j52gxStUIcxGOfX03yIx9MNwi8IJ3LIaZM/CImbdkpN0lqg3G7AtzmvjLX
+ SrA6u9VJMf+tCts/IkrcoY4mh7QmSz6flMgH291nsgxrG+gZc87LqomjICO/66N3X4rV
+ NhyE5aRrZRgzb9IKNtzV+X+eV81cHbYQR8BNRi5kBFhUjCpf6XSUNPB0//0D87VCREKq
+ IBAsGQMSP1gu6rCf7egvLWVovlLKEObgCg0Is5yPSc3wKUQe9AyHLGogGkFVb6Ow8gT8
+ t4JNnDUUT/qO9EQCGFEPrhjBtZTmP0LDNvAyZM4qP02nMT9nI5ZEWgkxCa9zyuWKeHmB
+ QkjQ==
+X-Gm-Message-State: ANoB5pl2W0VW5eMDJBzHDmTbouWd4LKd9HCK0X+dtMaoSvKwtRWk90gI
+ yFElZufLCKs0KZv2V+e08zA=
+X-Received: by 2002:ac2:4bc5:0:b0:4b4:c099:a994 with SMTP id
+ o5-20020ac24bc5000000b004b4c099a994mr3906641lfq.193.1669038375193; 
+ Mon, 21 Nov 2022 05:46:15 -0800 (PST)
+Received: from NBK05906.kdtln.ru (79-126-20-183.dynamic.mts-nn.ru.
+ [79.126.20.183]) by smtp.gmail.com with ESMTPSA id
+ s29-20020a19771d000000b004afeacffb84sm2029501lfc.98.2022.11.21.05.46.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 21 Nov 2022 05:46:14 -0800 (PST)
+From: Timofey Kutergin <tkutergin@gmail.com>
+To: peter.maydell@linaro.org,
+	qemu-arm@nongnu.org
+Cc: tkutergin@gmail.com
+Subject: [PATCH] target/arm: added cortex-a55 CPU support for qemu-virt
+Date: Mon, 21 Nov 2022 16:46:05 +0300
+Message-Id: <20221121134605.2762683-1-tkutergin@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: 23266189-71d4-438d-a62b-bfc5ce6d4539
-X-Ovh-Tracer-Id: 6553018936605383147
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvgedrheeigddvvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeegkeejtdevgeekieelffdvtedvvdegtdduudeigffhhffgvdfhgeejteekheefkeenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeoghhrohhugheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopeguohhnghhlihdriihhrghnghesohhrrggtlhgvrdgtohhmpdhthhhuthhhsehrvgguhhgrthdrtghomhdpihhiiheslhhinhhugidrihgsmhdrtghomhdpuggrvhhiugesrhgvughhrghtrdgtohhmpdhrihgthhgrrhgurdhhvghnuggvrhhsohhnsehlihhnrghrohdrohhrghdpsghorhhnthhrrggvghgvrheslhhinhhugidrihgsmhdrtghomhdpphgrshhitgeslhhinhhugidrihgsmhdrtghomhdpsghinhdrmhgvnhhgseifihhnughrihhvvghrrdgtohhmpdgrlhhishhtrghirhdrfhhrrg
- hntghishesfigutgdrtghomhdpphgrlhhmvghrsegurggssggvlhhtrdgtohhmpdgurghvihgusehgihgsshhonhdrughrohhpsggvrghrrdhiugdrrghupdgurghnihgvlhhhsgegudefsehgmhgrihhlrdgtohhmpdhjohgvrdhjihhnsehorhgrtghlvgdrtghomhdprghlvghkshgrnhgurghrrdhrihhkrghlohesshihrhhmihgrrdgtohhmpdgruhhrvghlihgvnhesrghurhgvlhefvddrnhgvthdpphhhihhlmhgusehlihhnrghrohdrohhrghdptghhvghnhhhurggtrghisehkvghrnhgvlhdrohhrghdpmhhtohhsrghtthhisehrvgguhhgrthdrtghomhdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhpsghonhiiihhnihesrhgvughhrghtrdgtohhmpdhqvghmuhdqshefledtgiesnhhonhhgnhhurdhorhhgpdhqvghmuhdqrhhishgtvhesnhhonhhgnhhurdhorhhgpdhqvghmuhdqphhptgesnhhonhhgnhhurdhorhhgpdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhkvhhmsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhjihgrgihunhdrhigrnhhgsehflhihghhorghtrdgtohhmpdhlihhkvgiguhesthgvnhgtvghnthdrtghomhdptghlgheskhgrohgurdhorhhgpdfovfetjfhoshhtpehmohehgeekpdhmohguvgepshhmthhpohhuth
-Received-SPF: pass client-ip=188.165.58.48; envelope-from=groug@kaod.org;
- helo=6.mo548.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=tkutergin@gmail.com; helo=mail-lf1-x12b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,84 +118,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TYPKdx+Vsa9+
+X-TUID: myxOXMzK3upG
 
-On Sat, 19 Nov 2022 04:29:00 -0800
-Dongli Zhang <dongli.zhang@oracle.com> wrote:
+  cortex-a55 is one of newer armv8.2+ CPUs supporting native
+  Privileged Access Never (PAN) feature. Using this CPU
+  provides access to this feature without using fictitious "max"
+  CPU.
 
-> The "perf stat" at the VM side still works even we set "-cpu host,-pmu" in
-> the QEMU command line. That is, neither "-cpu host,-pmu" nor "-cpu EPYC"
-> could disable the pmu virtualization in an AMD environment.
-> 
-> We still see below at VM kernel side ...
-> 
-> [    0.510611] Performance Events: Fam17h+ core perfctr, AMD PMU driver.
-> 
-> ... although we expect something like below.
-> 
-> [    0.596381] Performance Events: PMU not available due to virtualization, using software events only.
-> [    0.600972] NMI watchdog: Perf NMI watchdog permanently disabled
-> 
-> This is because the AMD pmu (v1) does not rely on cpuid to decide if the
-> pmu virtualization is supported.
-> 
-> We disable KVM_CAP_PMU_CAPABILITY if the 'pmu' is disabled in the vcpu
-> properties.
-> 
-> Cc: Joe Jin <joe.jin@oracle.com>
-> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-> ---
->  target/i386/kvm/kvm.c | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
-> 
-> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> index 8fec0bc5b5..0b1226ff7f 100644
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -137,6 +137,8 @@ static int has_triple_fault_event;
->  
->  static bool has_msr_mcg_ext_ctl;
->  
-> +static int has_pmu_cap;
-> +
->  static struct kvm_cpuid2 *cpuid_cache;
->  static struct kvm_cpuid2 *hv_cpuid_cache;
->  static struct kvm_msr_list *kvm_feature_msrs;
-> @@ -1725,6 +1727,19 @@ static void kvm_init_nested_state(CPUX86State *env)
->  
->  void kvm_arch_pre_create_vcpu(CPUState *cs)
->  {
-> +    X86CPU *cpu = X86_CPU(cs);
-> +    int ret;
-> +
-> +    if (has_pmu_cap && !cpu->enable_pmu) {
-> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
-> +                                KVM_PMU_CAP_DISABLE);
+Signed-off-by: Timofey Kutergin <tkutergin@gmail.com>
+---
+ docs/system/arm/virt.rst |  1 +
+ hw/arm/virt.c            |  1 +
+ target/arm/cpu64.c       | 69 ++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 71 insertions(+)
 
-It doesn't seem conceptually correct to configure VM level stuff out of
-a vCPU property, which could theoretically be different for each vCPU,
-even if this isn't the case with the current code base.
-
-Maybe consider controlling PMU with a machine property and this
-could be done in kvm_arch_init() like other VM level stuff ?
-
-> +        if (ret < 0) {
-> +            error_report("kvm: Failed to disable pmu cap: %s",
-> +                         strerror(-ret));
-> +        }
-> +
-> +        has_pmu_cap = 0;
-> +    }
->  }
->  
->  int kvm_arch_init_vcpu(CPUState *cs)
-> @@ -2517,6 +2532,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->          }
->      }
->  
-> +    has_pmu_cap = kvm_check_extension(s, KVM_CAP_PMU_CAPABILITY);
-> +
->      ret = kvm_get_supported_msrs(s);
->      if (ret < 0) {
->          return ret;
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 20442ea2c1..8055c59afa 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -54,6 +54,7 @@ Supported guest CPU types:
+ - ``cortex-a15`` (32-bit; the default)
+ - ``cortex-a35`` (64-bit)
+ - ``cortex-a53`` (64-bit)
++- ``cortex-a55`` (64-bit)
+ - ``cortex-a57`` (64-bit)
+ - ``cortex-a72`` (64-bit)
+ - ``cortex-a76`` (64-bit)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b871350856..fc0c9baba6 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -201,6 +201,7 @@ static const char *valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("cortex-a15"),
+     ARM_CPU_TYPE_NAME("cortex-a35"),
+     ARM_CPU_TYPE_NAME("cortex-a53"),
++    ARM_CPU_TYPE_NAME("cortex-a55"),
+     ARM_CPU_TYPE_NAME("cortex-a57"),
+     ARM_CPU_TYPE_NAME("cortex-a72"),
+     ARM_CPU_TYPE_NAME("cortex-a76"),
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 3d74f134f5..cec64471b4 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -792,6 +792,74 @@ static void aarch64_a53_initfn(Object *obj)
+     define_cortex_a72_a57_a53_cp_reginfo(cpu);
+ }
+ 
++static void aarch64_a55_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    cpu->dtb_compatible = "arm,cortex-a55";
++    set_feature(&cpu->env, ARM_FEATURE_V8);
++    set_feature(&cpu->env, ARM_FEATURE_NEON);
++    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
++    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
++    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
++    set_feature(&cpu->env, ARM_FEATURE_EL3);
++    set_feature(&cpu->env, ARM_FEATURE_PMU);
++
++    /* Ordered by B2.4 AArch64 registers by functional group */
++    cpu->clidr = 0x82000023;
++    cpu->ctr = 0x84448004; /* L1Ip = VIPT */
++    cpu->dcz_blocksize = 4; /* 64 bytes */
++    cpu->isar.id_aa64dfr0  = 0x0000000010305408ull;
++    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
++    cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
++    cpu->isar.id_aa64mmfr0 = 0x0000000000101122ull;
++    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
++    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
++    cpu->isar.id_aa64pfr0  = 0x0000000010112222ull;
++    cpu->isar.id_aa64pfr1  = 0x0000000000000010ull;
++    cpu->id_afr0       = 0x00000000;
++    cpu->isar.id_dfr0  = 0x04010088;
++    cpu->isar.id_isar0 = 0x02101110;
++    cpu->isar.id_isar1 = 0x13112111;
++    cpu->isar.id_isar2 = 0x21232042;
++    cpu->isar.id_isar3 = 0x01112131;
++    cpu->isar.id_isar4 = 0x00011142;
++    cpu->isar.id_isar5 = 0x01011121;
++    cpu->isar.id_isar6 = 0x00000010;
++    cpu->isar.id_mmfr0 = 0x10201105;
++    cpu->isar.id_mmfr1 = 0x40000000;
++    cpu->isar.id_mmfr2 = 0x01260000;
++    cpu->isar.id_mmfr3 = 0x02122211;
++    cpu->isar.id_mmfr4 = 0x00021110;
++    cpu->isar.id_pfr0  = 0x10010131;
++    cpu->isar.id_pfr1  = 0x00011011;
++    cpu->isar.id_pfr2  = 0x00000011;
++    cpu->midr = 0x412FD050;          /* r2p0 */
++    cpu->revidr = 0;
++
++    /* From B2.23 CCSIDR_EL1 */
++    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
++    cpu->ccsidr[1] = 0x200fe01a; /* 32KB L1 icache */
++    cpu->ccsidr[2] = 0x703fe07a; /* 512KB L2 cache */
++
++    /* From B2.96 SCTLR_EL3 */
++    cpu->reset_sctlr = 0x30c50838;
++
++    /* From B4.45 ICH_VTR_EL2 */
++    cpu->gic_num_lrs = 4;
++    cpu->gic_vpribits = 5;
++    cpu->gic_vprebits = 5;
++    cpu->gic_pribits = 5;
++
++    cpu->isar.mvfr0 = 0x10110222;
++    cpu->isar.mvfr1 = 0x13211111;
++    cpu->isar.mvfr2 = 0x00000043;
++
++    /* From D5.4 AArch64 PMU register summary */
++    cpu->isar.reset_pmcr_el0 = 0x410b3000;
++}
++
+ static void aarch64_a72_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -1243,6 +1311,7 @@ static const ARMCPUInfo aarch64_cpus[] = {
+     { .name = "cortex-a35",         .initfn = aarch64_a35_initfn },
+     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
+     { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
++    { .name = "cortex-a55",         .initfn = aarch64_a55_initfn },
+     { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
+     { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
+     { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
+-- 
+2.25.1
 

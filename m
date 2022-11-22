@@ -1,110 +1,149 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3295882ejx;
-        Tue, 22 Nov 2022 05:41:12 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7qs32erCX+7MqaXkeJH2YNmpXWd6xIMIkVaKFQ5zHWA4DRVKbFsnirB9SBt6W5NSPzttdm
-X-Received: by 2002:a05:622a:4115:b0:3a5:e656:2432 with SMTP id cc21-20020a05622a411500b003a5e6562432mr6288938qtb.299.1669124471872;
-        Tue, 22 Nov 2022 05:41:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669124471; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3300937ejx;
+        Tue, 22 Nov 2022 05:48:53 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4SmC55dpyvOVeaH6P5Y13GT6pOBdX6ai7szDkO40dV6vcAygIfff0brzYkaCb2JZko7jkq
+X-Received: by 2002:a05:620a:2233:b0:6fa:3226:f34e with SMTP id n19-20020a05620a223300b006fa3226f34emr20647049qkh.464.1669124933763;
+        Tue, 22 Nov 2022 05:48:53 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1669124933; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rHesm9TaLt4of6gVJPenxMWLtxKKQzUl+TcF1MLYj2ALEtF4dLe08zUL5PDOjp88GZ
-         J/l62cbFBSx4nM4+FEkI+NOpVs5gEFAKfhGTYFP8I+lB70mTkM/WJrVUml9rS0s0iINE
-         n8UkfI6GGyGsmYDKlriYGZuE8ZpBYlfzGkptCfb1JizhyBcbcN4AXXRtVx5Xno7A6sq8
-         XG11yrGOr4xCcGDLt807qfDSUFRdc4rtgY5iAdBHjgtpMRc3wUXrXSyCpra7aOqP/gcU
-         kyZxYfBOqnBloQAtRgfYvO9w+mXcCQycKrLzhDONCc4s1GAM3CwdCL+sCQaM1BZCMCzp
-         7+Wg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=W/8muZJckWkBitTHZxWdn7JvYQuDW3Gvlne4ZDqlx6ExiH3ZkHE9CMVlvtAtOGe32b
+         1WhEM7EQyoSbIhIF2IQhy8ehmQ8kpDdW0fZZd3W//RXJCHQ9c7qZHee1vC/8iKBZ5xAu
+         x72u88+H26p9thUw4+ljNPfQU4fb9ojhXJLs8uWFzvc1v5AoohyR+q5AVqj1NkWH5a9s
+         h6qca501cyPH/yKOalsNS/Tty6EiE+czeM0hljTXerrAKq3tjGJfANmWq+P4BIj3nHVD
+         Wuuyp9xQKfCLV8mTQ0Gjzzh/ul3iP5Yn4/kW3ks6u++HudyHaEBGKEpx2JB5+06gavf8
+         XwCA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=eGZl5MR383EDLkMFu4CiNdwBldjRqi6X6iIfUUmsxA8=;
-        b=i0vgercSRzakDk+QVxgV5XBGOrCvbLAdulQNAQt3V63KLLxoqE7UDZShxq1v086704
-         XQSCzzLa81Ay0pCiZudSu/YwG9xu7AKMSWfUwQnEA9WTaYhx2ny7JTMnjUOOuWb1PGty
-         shtOvy96B3rDwf4luZqWVYwkqaLblcabdt38wC+735imkpHsgo5q9SeNuO5+pY/XtYfm
-         yby/xzURJmYzZNxvvqKIU7L8zZ8Yn80fv2DPRGkjXnpX4Mz5fA8lnUB/Os2j26gpyJg1
-         tBpxFv1Q98D7rNkCAo3dXnYNgjvvD6VDCzrQHYRI993+Nzsv0h5a4K1Vh+WicnK3jUXr
-         lNtA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=M0bcxgO+;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=ah+xn56tt6K48JLBuBwrurm2zfGpGwFBTrLgugvhpno=;
+        b=ZHsbrl/dnRLDOxVEBC30tKmX8EdjQ4lUwUKH3HkB1U5j+qg/imRkpA2cY4DPT5w8UN
+         0wTx7Ql52ROQSbIzBHQ2VE89U//5XfnwCBX2m8kjvVa+vFNxWrvOyJOWGd1o/is1Cbb0
+         +9RYfAvm0T8ukrX5+ZgS1AoYrBvO/hiYpoAGPOajcb2AuZZfCkYl4EISt1KXAmRr/m8S
+         cYTjPHpzqk1mMz+Xm9Gx5dFV4dNW9XYxwTXYWaAbQ/WVMDt5bUz5dWTxl4QpIR6KY0ch
+         25P3Zj1mHRm3GsFWXqGQHEJv3XHhxt+kjfHHG7T+9AofoNznFlqNoMDfPh0XgGpm3U9s
+         J14Q==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=LYcLUGjS;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w39-20020a05622a192700b003a52cbc3961si7763964qtc.736.2022.11.22.05.41.11
+        by mx.google.com with ESMTPS id u20-20020a05620a0c5400b006e5b07ced84si8614679qki.544.2022.11.22.05.48.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Nov 2022 05:41:11 -0800 (PST)
+        Tue, 22 Nov 2022 05:48:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=M0bcxgO+;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=LYcLUGjS;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oxTW7-00058r-24; Tue, 22 Nov 2022 08:40:51 -0500
+	id 1oxTdg-0008AS-Ih; Tue, 22 Nov 2022 08:48:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oxTW4-00058J-6O
- for qemu-arm@nongnu.org; Tue, 22 Nov 2022 08:40:49 -0500
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oxTVy-0004ZO-1G
- for qemu-arm@nongnu.org; Tue, 22 Nov 2022 08:40:47 -0500
-Received: by mail-pf1-x429.google.com with SMTP id 130so14369996pfu.8
- for <qemu-arm@nongnu.org>; Tue, 22 Nov 2022 05:40:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=eGZl5MR383EDLkMFu4CiNdwBldjRqi6X6iIfUUmsxA8=;
- b=M0bcxgO+8tVCczv5IF63PwAK+NUaVlittdBTNM49YKHS2JVVnkXVfItQykxlV4bF7U
- 9KcHZ00aEO2dqwJxqHBdDGrEHR3l+gGyGo5apn3UXc5kadMF04DqCPIBq2HG/nz2PVFa
- bgzpbdqIMwI+mJTxqUj8BulU/Qs0t7PvZTW3mT16LFGpKKmyI2HD23MS40ZObNn+PKmL
- 2wwl1PO63MZr2vLU/ZUrYwNpWLvzjS4oUL5Nsk/+p86+FQOTtnJF61thDgYa345N+09B
- 2a/Cq/3qJEBVcISg+SyjHxTTGJCmmKbqwHC+6SLRfiLcVvSUFroUE9i6gBBwpOMnlBPK
- vvOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=eGZl5MR383EDLkMFu4CiNdwBldjRqi6X6iIfUUmsxA8=;
- b=jemQgfL31J6J5lnhRUR5gV7J7hDjx4vyKTCIVtMwVHNuzBYDHVATLHmbnjCY9HZFFV
- BMtDiEyP8GgcE04ZxJgfvvVhVK9jODOheiqrMOT6EWxH+VqEch/kypR6qVpVmdiHp7Fo
- duX7Jz49w3pinbUQsXyTObxtBCrTqvYEFw27vJalhou7ReWGVraoIwhJRKtIKTfT/ZA2
- zPAglrU5RY/LtKGNwMr1L5vOqiU/aUC0clt5vsn1PGHzCOtpUH2Nj+aNQ+Z71JrNPh4X
- tVNkKr3VcVa668tztanvHfPktbaKGKmW98LQ3cQ0Md4clolK9eESqLxHoxGonUSE7agJ
- TN+A==
-X-Gm-Message-State: ANoB5pnAKzfpFYFqTWifE8VRZRNniAUW7noudLMiGx5mZ3RLhYaNyL+k
- /4VwpPXWYNEgBPf0VoQxhvPdRYDqPFO37javddNccQ==
-X-Received: by 2002:aa7:9ed0:0:b0:571:8549:89c3 with SMTP id
- r16-20020aa79ed0000000b00571854989c3mr4103540pfq.26.1669124440351; Tue, 22
- Nov 2022 05:40:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
+ id 1oxJbJ-0005pe-AS; Mon, 21 Nov 2022 22:05:33 -0500
+Received: from mail-dm6nam11olkn20811.outbound.protection.outlook.com
+ ([2a01:111:f400:7eaa::811]
+ helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
+ id 1oxJbH-0000Hp-4v; Mon, 21 Nov 2022 22:05:32 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WCR2GsC5flrVxqDkxvgUIlC1hUgzy6bogteSFrPySEpaKe98Ca47K+TXy2yJ0/N1GghlUVNmrSo1g5yAKOXFk+3IqAL2WlszJ//XRXSEpYtChRYg3bQo6QoiUStdOBE+B9hy1Bje81KYtiSGdb8bX8TKmWVYowkjoSt16XN4+lA2qp41qtqDvjU1vXjXBsZE6aaZhjszPxob/Ht1F2ErFb29bkeo1zWarlWQvkrD0QiH/pzOiWtsmyXJ5s0emVFAhV4bl7DqZn3TdmzL1aoSs+fuYsbdlOGIW4XYry6DG2FDA2K2aBnQK5WzNtetiNU023CNAOSzUi92pqJ/eJKk7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ah+xn56tt6K48JLBuBwrurm2zfGpGwFBTrLgugvhpno=;
+ b=CfcIB6NYOFvWYQTsgqAFfkKUIuYvtPXm3wSRqQpYYfwY7RntOQyoV7wG6XoCzziGgRgDeqrF0ab+OS9oWEnDLmWqYfPuMZ2K4Tx5XKGEeSav4rSL9vMQ6A7Dj4sdVp/GIzQ4BQvRHXltAuFjjuQP1VX38Lj4gT4ql/qVfnJQghVULYEtuDGRvD1WH6Hek1ltDNni7g4Y8OOHnAvQkAM9nFC2btxmi2Dd5UQvsEWjKuNNmfK0JBCiq3oMKtNYVkYFxwd6T2kSidh+hZ5oINXawKwbHxtGgKJrA0sj4eS/IR3C6wSKYgOXe+5s60DAz5TlRebGBXzqBPrIdsk75foJXQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ah+xn56tt6K48JLBuBwrurm2zfGpGwFBTrLgugvhpno=;
+ b=LYcLUGjSZjRBbkYxOLjPuW/ZF6zh6XVhYPuAb5FaWBM5BzhA64lyKgdKvw8AV65peoqABTVhdBTso4g2HiwIMz0a1f8mCZO6L8na3Do8C7YcgdlDVSW+aw84AecgOHyARD5L/LjLWRJDc6gXMsfvumnnsPKqu8IHBBmNO9/hIFFHWgqZAMcms7M9dOAav8vfujbD9zhH2jZEEbM73qA3OrLFu+ipMAW9OVPE8jgXNWc5dvRirAWg9lQ2m+NlrrpOEQBMTM0MNEnFASyskR8yRx+ucQeB7PEbLVLAGHmDvChhgqww4GUXm6YbmyKOuuMStna8nSOjEo1apPkF7360dg==
+Received: from DS7PR12MB6309.namprd12.prod.outlook.com (2603:10b6:8:96::19) by
+ SN7PR12MB7787.namprd12.prod.outlook.com (2603:10b6:806:347::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5834.15; Tue, 22 Nov
+ 2022 03:05:23 +0000
+Received: from DS7PR12MB6309.namprd12.prod.outlook.com
+ ([fe80::6481:82ef:ffb1:4d0a]) by DS7PR12MB6309.namprd12.prod.outlook.com
+ ([fe80::6481:82ef:ffb1:4d0a%7]) with mapi id 15.20.5834.015; Tue, 22 Nov 2022
+ 03:05:22 +0000
+From: Zhuojia Shen <chaosdefinition@hotmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Zhuojia Shen <chaosdefinition@hotmail.com>
+Subject: [PATCH] target/arm: align exposed ID registers with Linux
+Date: Mon, 21 Nov 2022 18:48:23 -0800
+Message-ID: <DS7PR12MB6309CF26249A273C1E2A6AAAAC0D9@DS7PR12MB6309.namprd12.prod.outlook.com>
+X-Mailer: git-send-email 2.38.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TMN: [WiS9OyKcz00ltviuUyRNYQYq7GYeJNhW]
+X-ClientProxiedBy: SJ0PR05CA0047.namprd05.prod.outlook.com
+ (2603:10b6:a03:33f::22) To DS7PR12MB6309.namprd12.prod.outlook.com
+ (2603:10b6:8:96::19)
+X-Microsoft-Original-Message-ID: <20221122024822.5756-1-chaosdefinition@hotmail.com>
 MIME-Version: 1.0
-References: <1668789029-5432-1-git-send-email-mihai.carabas@oracle.com>
- <CAFEAcA_H8UEcp4HNFe1CwaheLxg7453QQBjTa9wSnsW6TgsRKA@mail.gmail.com>
- <eea06d91-492b-3c1a-6e0d-5e52507b3b1a@oracle.com>
- <CAFEAcA8isy4_0iYHWX+3RksCNQwT3U_SH14xg6t-KUPx4b9d=Q@mail.gmail.com>
- <4b4ea622-871f-749a-1de3-b260e1d64b1f@oracle.com>
- <CAFEAcA8BpE2N_91J1HXRvC0CqWLwpMhgU6prh6aO3PLO1C4Lww@mail.gmail.com>
-In-Reply-To: <CAFEAcA8BpE2N_91J1HXRvC0CqWLwpMhgU6prh6aO3PLO1C4Lww@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Nov 2022 13:40:28 +0000
-Message-ID: <CAFEAcA_LYASx7t9pNJs8BsQUwdEsNNq8P-a38PhJ36ivJFLRDg@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: build smbios 19 table
-To: Mihai Carabas <mihai.carabas@oracle.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x429.google.com
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|SN7PR12MB7787:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3639f446-1867-405e-b9a7-08dacc366557
+X-MS-Exchange-SLBlob-MailProps: dx7TrgQSB6eSv4UmQnMV9cVCGzYXm8r2MmKrYmjsTnDJx+4f366FEmDROppUfKbIOkafE1mu9GMWA1z8wSf2c6XQaQRc9iXgbFjBD5tV4tsJOAAk93m737x/aUKmz5XPpI89O9YU3hMNkPuDHT446RxcSeEUv6881b9OTRl0fuzdKobc90VHxAK3odRJM5WxD7g+9/boh1S83NeHgqSc5atsqEtL4RK5OuGsZg4OSdMYPCm5WaJePXeJGFBRXnMW0COw8K0XSfuQ77SQhz7mUXjyff86Fk+z8zI4m+strXrpZMd8VCnHwHXA8rC7Rcv7OK1CkrmeJPX+J0qd7AONZ92xWR23/furglVHxanQFFcWCbVL3S26Fn3YHQuVW6dsfbWRg9N/wDLSM56J3LPBisvsb462WgxIiyp3XQWq4bmwIZ0R+BpHKgYeH0MDP+1BWEHNLSH0+KqMziTPFYCqmAkHUcQ//lmA6uGkgdgXf1KXbfx9kv0JJgi6C1f1yHoDRsBn1mtvhT1WOcaokUTze/OuVgzyJWCRwgqBglgWHicAWh0d7c/qMK5ELrQYyWxzjMiKVIpy9yn8bqhnTdX9/pMZEQ4D8ea4k+FrYDHwg1efl5A4uN008AzU1im9NROEpQWzoDsoe2n2qMU6s82DflpnKaFNYMnaUlcYdgjEem4LCI6IhSFxEVNvncaN9FcWKrjA7qRLfTXBuJWaGWiFSacC8/LITDk6xF6mchA7d6mvfZovOcT2bVI4VOQwGGfvLleYsk8qOc8=
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: pZ/0LFAmNaD8g4iGsq/4SVb0XcXTQCO/uAqMXavoYmNkgpIaCh6O59my81guipkgjhulYV+v0HZo5lKZvJYB9CrF67rZX4DvusCqHojv9KjgcB3PWb9kJXkkjXyYPM1iJz3zWfC8mPM0lzthgqtMv+FvXStLcpSfY5xtRVcDXTLzQW36IOEDolm2ZVSLNiI13qGWTX0hhlHzczEMxQ33u1aFc5hP/LKoV9+oUCEDsGVVhIjDdMQ6ZqugiAbdUEQ9hp/U1U8sz7dliJun3esdQwSp1k4VippIPZ12d2SrFpNrXMT7My9XXCiLOwMoTxLgcpx+6MNwjofdqzyBmvXCKt0zAD04LS6x4ex4Hzeh55iGB9PyQafhbhxlpndGu0IRXHy9BU92lAfAvqTTkrbz9tMDnn5DzXigtdvSgV3h2sd0oL6C3ZHGkza/NtNYf6iRfnkAp5rlPKQF5xx0MsozBVNAqI00PLateVmQ0ok8afSi/O0cg0faXei71rEuXwtwj0Nlo3EPLoStOJzzCcfC11cVCWLDsTmHBVZHHOL+L9/HlIv1We+cJdBfdZA/fXiMKWZpt5DH6+572foJA3uhsbfxdzkUQLkbu2ckvQMgWTQDtQgEDspv8T6e1KHbhM2zOWyZwkpifLQzvYo7ZVq3pA==
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?gpvvFkJaxckp4xJOwQEi3bWmWxFWA2H/MIHiNip5uYHK6wrbTCLFIBEXHCFl?=
+ =?us-ascii?Q?jPPX1RPSfe+u49UWRvAFvbuc6AXEGYDeDiOL09WNdxU6UGpXAuuScsdnhNwr?=
+ =?us-ascii?Q?RSk0D3xMQSlDck8W4U78R3cC0JVg6Kd7VXz3+tdzu3DetybegFWzMEaDCFRu?=
+ =?us-ascii?Q?vXGFjU0CNIJcX53Yd4XU1Z5YiPi/HG7Hlrn1zaQE9vuYOy01x2A3N4/eoFcP?=
+ =?us-ascii?Q?e05JCJy98UtEcFElrnOvvU3qbXbJTsbDGXAJHwwpSBVIn5TvlrXF0HK04IM7?=
+ =?us-ascii?Q?9EHxg4qojBtnVzkkL3vqIoQmpdXfybzLY04RdXCd5JyZXY53IJqjtX82vdTS?=
+ =?us-ascii?Q?XCpK55WvRvxtAQzBngNX/Y6ralgVo2idCWHzyxhqsyBbGt6c69Ve+F3YZTG3?=
+ =?us-ascii?Q?ir11ZAk06QYXRQA1/r5wKTTrTIvVh6s01KzINI4zFo0o56SROhYN4qphuIaq?=
+ =?us-ascii?Q?UIIglqKm8/0ggxy+GcpSzUBGBMlLU6FEsF4yttYf61eu1Lqx5zffDUdq3cga?=
+ =?us-ascii?Q?Xj+58lpzYtGoYV7r8/6xSvDOt+1HxmUUARrYGeVBccPjjXhu4hlSHEKBH871?=
+ =?us-ascii?Q?+/F4zi02J4/VuV20++A9BQKq4ORVbkBDZMILao1Z7q+dQFpO8thgKXXlishC?=
+ =?us-ascii?Q?WsE31C5qj1S45JnfXPFw/u1xM/Sr/daSvOwcCoYeQescWTFjtHqjgFS6w+kH?=
+ =?us-ascii?Q?5rDrPF6AaVDMIfBjcvlTdtS1xjfJZ2j60hcCxqVz35ckEhfMof9K2JC4tQJJ?=
+ =?us-ascii?Q?K7C2HrLcJpoyY9u06iMTDrsgLVQwVxyFmmH+3A2IftiUKJmk0HFJdK+CkiGt?=
+ =?us-ascii?Q?Q90i1Hs0Wp8EPdfgtHcY63vJHB/TXMeC0TnUYXi2WzntlawBDt3K/ww9DIow?=
+ =?us-ascii?Q?B+4mdWzcOTqdhwO+UnJ8mhg59nyJS7sGhQONu5IFXsHJMQvfLkF+F2P8HFK2?=
+ =?us-ascii?Q?Ssy2bqPAmm7WL2nJV7EdDKqIHpO/F0F7cg7oy9EmPDPoj5W6CfpX/2SfGBD7?=
+ =?us-ascii?Q?adn/utKm9mJMw0bMP1U4oUg4aev6afkgMwQ7aHhqHCYOLDTmbIjgVW/KiKE2?=
+ =?us-ascii?Q?ALIX+EWKT7JxRCZaEUfaQrIcinwLe8H/iJTDozvTRS4Q9jSpx6e1PezJMtyw?=
+ =?us-ascii?Q?VBvzR4MJ9B11zx42XX5436LeyQK8S3gqymt3NlJQ9fmSrZUP9KknR9Bazl29?=
+ =?us-ascii?Q?DTscpo9XLFM+vsmvpsTO94V141GviR5jIpAnzF2YVUAERaP9cggCOmJfzZTb?=
+ =?us-ascii?Q?khigv3OJo3LuTHy8ZO05nTB0dBYgjWG9Yj/ALYxOtgNc0YE35Q1SKxEcmzr9?=
+ =?us-ascii?Q?vBI=3D?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-71ea3.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3639f446-1867-405e-b9a7-08dacc366557
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6309.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Nov 2022 03:05:22.8769 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7787
+Received-SPF: pass client-ip=2a01:111:f400:7eaa::811;
+ envelope-from=chaosdefinition@hotmail.com;
+ helo=NAM11-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 22 Nov 2022 08:48:39 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,56 +157,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Yvr4lAPMqtjc
+X-TUID: KWKqQ6gIf2hW
 
-On Mon, 21 Nov 2022 at 11:43, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Mon, 21 Nov 2022 at 11:24, Mihai Carabas <mihai.carabas@oracle.com> wrote:
-> >
-> > La 21.11.2022 13:02, Peter Maydell a scris:
-> > > On Sun, 20 Nov 2022 at 17:53, Mihai Carabas <mihai.carabas@oracle.com> wrote:
-> > >> La 18.11.2022 21:11, Peter Maydell a scris:
-> > >>> On Fri, 18 Nov 2022 at 17:37, Mihai Carabas <mihai.carabas@oracle.com> wrote:
-> > >>>> Use the base_memmap to build the SMBIOS 19 table which provides the address
-> > >>>> mapping for a Physical Memory Array (from spec [1] chapter 7.20).
-> > >>>>
-> > >>>> This was present on i386 from commit c97294ec1b9e36887e119589d456557d72ab37b5
-> > >>>> ("SMBIOS: Build aggregate smbios tables and entry point").
-> > >>>>
-> > >>>> [1] https://urldefense.com/v3/__https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.5.0.pdf__;!!ACWV5N9M2RV99hQ!KF2xmQw9nxPvqvNCgDleyVHv4MoZseoZFHmR1veww7O2BmRxSH1spOCNWX-c-FvzcaR_o8PunXSWWH2ECvFqlR4E7vw$
-> > >>>>
-> > >>>> Signed-off-by: Mihai Carabas <mihai.carabas@oracle.com>
-> > >>> Is this a bug fix, or a new feature? What are the consequences
-> > >>> of it being missing? Is this important enough to go into the 7.2
-> > >>> release? (My default position would be "no", given this has been
-> > >>> like this on the virt board for a very long time.)
-> > >>
-> > >> This is required by ARM SystemReady Virtual Environment [1]. As
-> > >> described in the Arm SystemReady Requirements Specification v2.0
-> > >>    [2] page 9, 2.5.1 SystemReady Virtual Environment (VE) v1.0
-> > >> requirements,: "FirmwareTestSuite (FWTS) must still be used" -> fwts
-> > >> checks for the presence of SMBIOS type 19 table and fails the test in
-> > >> this case.
-> > > OK, so it's a spec requirement. Are there any actual realworld
-> > > guests that don't work because we get this wrong ?
-> >
-> > We do not have a clear example. The thing we hit was the ARM SystemReady
-> > certification based on fwts.
->
-> Thanks for clarifying; in that case given we're quite far along
-> in the 7.2 release cycle I think we shouldn't try to get this
-> patch in to that release but instead put it in for 8.0.
+In CPUID registers exposed to userspace, some registers were missing
+and some fields were not exposed.  This patch aligns exposed ID
+registers and their fields with what Linux exposes currently.
 
-I checked how x86 sets up this smbios table, and it doesn't
-put any pluggable DIMMs in it, only the initial fixed RAM,
-so I'm happy that virt doesn't need to do anything special
-there. I've applied this patch to a target-arm-for-8.0 branch
-that will eventually turn into target-arm when 7.2 is released
-in a few weeks time.
+Specifically, the following new ID registers/fields are exposed to
+userspace:
 
-I've tweaked the commit message to make it clear that this
-is fixing a spec issue which doesn't to our knowledge
-cause any guest OS problems.
+ID_AA64PFR1_EL1.BT:       bits 3-0
+ID_AA64PFR1_EL1.MTE:      bits 11-8
+ID_AA64PFR1_EL1.SME:      bits 27-24
 
-thanks
--- PMM
+ID_AA64ZFR0_EL1.SVEver:   bits 3-0
+ID_AA64ZFR0_EL1.AES:      bits 7-4
+ID_AA64ZFR0_EL1.BitPerm:  bits 19-16
+ID_AA64ZFR0_EL1.BF16:     bits 23-20
+ID_AA64ZFR0_EL1.SHA3:     bits 35-32
+ID_AA64ZFR0_EL1.SM4:      bits 43-40
+ID_AA64ZFR0_EL1.I8MM:     bits 47-44
+ID_AA64ZFR0_EL1.F32MM:    bits 55-52
+ID_AA64ZFR0_EL1.F64MM:    bits 59-56
+
+ID_AA64SMFR0_EL1.F32F32:  bit 32
+ID_AA64SMFR0_EL1.B16F32:  bit 34
+ID_AA64SMFR0_EL1.F16F32:  bit 35
+ID_AA64SMFR0_EL1.I8I32:   bits 39-36
+ID_AA64SMFR0_EL1.F64F64:  bit 48
+ID_AA64SMFR0_EL1.I16I64:  bits 55-52
+ID_AA64SMFR0_EL1.FA64:    bit 63
+
+ID_AA64MMFR0_EL1.ECV:     bits 63-60
+
+ID_AA64MMFR1_EL1.AFP:     bits 47-44
+
+ID_AA64MMFR2_EL1.AT:      bits 35-32
+
+ID_AA64ISAR0_EL1.RNDR:    bits 63-60
+
+ID_AA64ISAR1_EL1.FRINTTS: bits 35-32
+ID_AA64ISAR1_EL1.BF16:    bits 47-44
+ID_AA64ISAR1_EL1.DGH:     bits 51-48
+ID_AA64ISAR1_EL1.I8MM:    bits 55-52
+
+ID_AA64ISAR2_EL1.WFxT:    bits 3-0
+ID_AA64ISAR2_EL1.RPRES:   bits 7-4
+ID_AA64ISAR2_EL1.GPA3:    bits 11-8
+ID_AA64ISAR2_EL1.APA3:    bits 15-12
+
+Signed-off-by: Zhuojia Shen <chaosdefinition@hotmail.com>
+---
+ target/arm/helper.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index d8c8223ec3..ce6fd7a96d 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7826,13 +7826,20 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .exported_bits = 0x000f000f00ff0000,
+               .fixed_bits    = 0x0000000000000011 },
+             { .name = "ID_AA64PFR1_EL1",
+-              .exported_bits = 0x00000000000000f0 },
++              .exported_bits = 0x000000000f000fff },
+             { .name = "ID_AA64PFR*_EL1_RESERVED",
+               .is_glob = true                     },
+-            { .name = "ID_AA64ZFR0_EL1"           },
++            { .name = "ID_AA64ZFR0_EL1",
++              .exported_bits = 0x0ff0ff0f00ff00ff },
++            { .name = "ID_AA64SMFR0_EL1",
++              .exported_bits = 0x80f100fd00000000 },
+             { .name = "ID_AA64MMFR0_EL1",
++              .exported_bits = 0xf000000000000000,
+               .fixed_bits    = 0x00000000ff000000 },
+-            { .name = "ID_AA64MMFR1_EL1"          },
++            { .name = "ID_AA64MMFR1_EL1",
++              .exported_bits = 0x0000f00000000000 },
++            { .name = "ID_AA64MMFR2_EL1",
++              .exported_bits = 0x0000000f00000000 },
+             { .name = "ID_AA64MMFR*_EL1_RESERVED",
+               .is_glob = true                     },
+             { .name = "ID_AA64DFR0_EL1",
+@@ -7843,9 +7850,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             { .name = "ID_AA64AFR*",
+               .is_glob = true                     },
+             { .name = "ID_AA64ISAR0_EL1",
+-              .exported_bits = 0x00fffffff0fffff0 },
++              .exported_bits = 0xf0fffffff0fffff0 },
+             { .name = "ID_AA64ISAR1_EL1",
+-              .exported_bits = 0x000000f0ffffffff },
++              .exported_bits = 0x00fff0ffffffffff },
++            { .name = "ID_AA64ISAR2_EL1",
++              .exported_bits = 0x000000000000ffff },
+             { .name = "ID_AA64ISAR*_EL1_RESERVED",
+               .is_glob = true                     },
+         };
+-- 
+2.38.1
+

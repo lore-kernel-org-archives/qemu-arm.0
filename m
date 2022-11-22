@@ -1,104 +1,155 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3530385ejx;
-        Tue, 22 Nov 2022 10:27:09 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6FC55ltEPIJECi2ZXZfNGh8kjU5KUkTFlLOQm/ADZNsufXQq0Z0qjHTx6ChIVJWsw5dzyM
-X-Received: by 2002:ae9:ef93:0:b0:6fa:8a0c:ff59 with SMTP id d141-20020ae9ef93000000b006fa8a0cff59mr21875786qkg.785.1669141629707;
-        Tue, 22 Nov 2022 10:27:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669141629; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3543566ejx;
+        Tue, 22 Nov 2022 10:46:50 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4ND3ZcNsfF9ynhO/pVlHRE3WPnKJoYxPMX7iPLu0w0zO35eM+l4Aci7U/H8QekIadPd+tY
+X-Received: by 2002:a05:620a:22ab:b0:6fa:9fb8:c50b with SMTP id p11-20020a05620a22ab00b006fa9fb8c50bmr21919644qkh.48.1669142809870;
+        Tue, 22 Nov 2022 10:46:49 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1669142809; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lnxC5UaDXJwc9/CZVKnfkhbTlhi0nOdP0lbJiBv7iNjkaAMKkAgoAKqj1n6A1QAjmR
-         OjCR7N5rEGgWdDBtDHwHMLkC4nbxcVCyX96CpgbbTS0dzdZgth+mrO/vEkJeD6c9SeM3
-         GnoiAj4qSH8VmAABBR93dx568r/vNUIEJl6/8/3eBgvt3AFLJFE/2V69wRcnWkYuTkxO
-         jaAJRFui/1XFYBfBGAirWRU9fAh+yuOMdN2gderXPRKt0MA+Lf83DzKd+ab13cJTKsX9
-         sn4FPur0nlLrx3OTLT8fUTFNBVwfuMpmFJYtKfNL4uwtKpR9ExW0/f/X1JhigSXdGiSx
-         AsAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=VX1ikx46GRPhpmOFEzbfO4TLN/y2257tjQyWqss1D1OfnwxshE3xuEKrAOF7dbjBVr
+         XfEQnFWsmYZc+jIE9ZrACyuSjTbErkYKzsvnPL4ipChMb2sU/74a/2TG0ypdL0K/69WE
+         /3gIWX4aX18h8cXHHSVAzBpVoHnuyAujQmXSK93aX9O6GwOUCDcO48C11c0J4AfCv/Mg
+         EfZodmQLmjTD17Fx3pKhZezg6a8i4jPbZnujEcYRb1JMlQO4RHnhXNGF9hHLYAAiDzOh
+         KCoaXadKFUxv9o+FHTjjqAqFupYZ0jymalXqNY1xnnwBZCcGeOHUW9/8Rd5N+2BgCKvr
+         yq6A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=14pywuwH1T0Z1TFG62pzJ880c2fj33OabHssQ5MWNgE=;
-        b=I6GSTayw7wuif5JQCUjd6zZ+RnlDeyFox24G90f4/fuJCXrq6TIOH5BYZXNEMN+zHG
-         1gLrPEiTMFllxgCu2/AO/dSXB33KgjMRuHdoLWaSp5RuekAwLxoDTAivykPV1Da5H1IC
-         /B327X5Kla3tx7nBNK2Y//bUCpab390nUPGqiwYFuXNjVx5/+/72gxWcePLKtUOe/zq9
-         cJ9BN3156CffmCVyJv/M2D40Z55HdBflUroQr/1JxIdzIYxAmxqEqo6sS6gcnA6Jtnmr
-         fvXkmI8lfl+GD6v5qYs/2i8smWSAayKvileiQrMCqa8RP0X8VniimwDiyiUWpiqEh0h7
-         8XAQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kZ91z5XO;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :in-reply-to:content-disposition:references:message-id:subject:cc:to
+         :from:date:dkim-signature;
+        bh=Or5VcmIEaDFG2zyJaZ6oSEBn/5A3NFWI9l3XxU6UMgE=;
+        b=eZNLKEr5l6w1IQpriunp/Gq543Y6mFAA8jOiLsyH9CA3FOWlbDUeTJR2lJPMmKpKnd
+         cWwLJK8edjUPciQah/ebA7obGPiyVJOC2HVl4udIJAAUKj4qkAeOrUhdfz2mvDsao01k
+         404kcuTBngGzUj0P8cbEPDEYq3PRV7YsA4T9jWc4qa0s4iASz+NtAWK2EzbfRbektTO1
+         Bb3U6dU0zMspYbDtwdU73kAm9mL0l2ME07zm2oGW6wXaTxj8F3dJMUx7v8mVxOwnmiUI
+         r/TQ5j2mhbSp9jm5LB684YthJxMY6VS7CqT7r9O7fP67Nk3Xafy1Eb5pbV9V3apGfRKB
+         1Q3g==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=WuW1anwE;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r3-20020a0562140c8300b004c642e8b272si2229206qvr.558.2022.11.22.10.27.09
+        by mx.google.com with ESMTPS id g13-20020a05620a218d00b006fba3fff6b3si7247662qka.498.2022.11.22.10.46.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Nov 2022 10:27:09 -0800 (PST)
+        Tue, 22 Nov 2022 10:46:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kZ91z5XO;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=WuW1anwE;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oxXz7-0001re-5d; Tue, 22 Nov 2022 13:27:05 -0500
+	id 1oxYHk-00078W-AK; Tue, 22 Nov 2022 13:46:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oxXz5-0001qo-2a
- for qemu-arm@nongnu.org; Tue, 22 Nov 2022 13:27:03 -0500
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oxXz3-0007Je-72
- for qemu-arm@nongnu.org; Tue, 22 Nov 2022 13:27:02 -0500
-Received: by mail-pj1-x1032.google.com with SMTP id g5so5444469pjp.4
- for <qemu-arm@nongnu.org>; Tue, 22 Nov 2022 10:27:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=14pywuwH1T0Z1TFG62pzJ880c2fj33OabHssQ5MWNgE=;
- b=kZ91z5XOrPqvjbaMDwOV4k3ecIH3iaTAkGE74kxOYoEeX9QErfufX/sNmhx3aBQ95x
- Or2qpM/oTx7OOoySXNHoMnRbhRZvgu8Oe5iySgV5IIyJXyxT/NeiOspqTzI6nd6U/Gs5
- JWUlJa1NESX/BVyC6uF5nLqEZ5YXtR+4kwszU8djzZ75udHVCKVs90+EV+uGFzBYaZ0R
- aEOJUdjXo2+sEDuSxblTv+/JL45W79HFz7+8EozOrEroXLI4Uiz4YX28IPT5FkqRZlU+
- CeFsHubObcCPzg2WnZuSpMA+7IETnjLTAFRzTFpNhZV9pLUOiS8FLwcVPo5tbmRw5E9w
- jSvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=14pywuwH1T0Z1TFG62pzJ880c2fj33OabHssQ5MWNgE=;
- b=HwcYCHjGLNuPuf3Ub2ujOJHmYI9t5xP14Rxz/i6mXyV0ZM25mGnSs/RB6znG4OB4ng
- 7SZqY5Zhp5WmDZRKVukvwSuMTNlOJW9vm0xDP4PFXXbje7wd4yhF6itY6TF65nU3WT0g
- n/+uQc0d45aZ6tBDANhINbECLk+9NwGt9X7HLBAw1GWHhIn4CFgn9hszNpWzRgOvFqvb
- VGuxOPDOv0DKvRLBZbqA+tqfmFX4LOmCpd70uaGCO1cW+WxIT6furLK3PnTZal9RX9/4
- 2BT87QyweSa6552WWvBYuSw2mGWtksOrnSSDyhNnzgH/usKpPxHTQjs9uGPAajIIv9ca
- 53LA==
-X-Gm-Message-State: ANoB5pnFAo7h4y+/S4xbc9FNNpeszV+mw/BKcHxxchDYlX00dXlYt43U
- t69UpiawAI3BWKkWjUBgs2CXMdwBjlZAFD/DOFdjY7Lvztg=
-X-Received: by 2002:a17:902:6505:b0:185:4ec3:c708 with SMTP id
- b5-20020a170902650500b001854ec3c708mr7961391plk.60.1669141619714; Tue, 22 Nov
- 2022 10:26:59 -0800 (PST)
-MIME-Version: 1.0
-References: <DS7PR12MB6309CF26249A273C1E2A6AAAAC0D9@DS7PR12MB6309.namprd12.prod.outlook.com>
-In-Reply-To: <DS7PR12MB6309CF26249A273C1E2A6AAAAC0D9@DS7PR12MB6309.namprd12.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Nov 2022 18:26:48 +0000
-Message-ID: <CAFEAcA85sSz3bvAvz6XLqa4TxBSgYWRG-oXTCr7Q4tNYRk+GEw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: align exposed ID registers with Linux
-To: Zhuojia Shen <chaosdefinition@hotmail.com>
+ (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
+ id 1oxYHe-00076W-LD; Tue, 22 Nov 2022 13:46:15 -0500
+Received: from mail-dm3nam02olkn2082d.outbound.protection.outlook.com
+ ([2a01:111:f400:7e83::82d]
+ helo=NAM02-DM3-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
+ id 1oxYHb-0007CB-Hm; Tue, 22 Nov 2022 13:46:14 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=lKoEoFK6Gw/CZmSYhB6XPK5Zf6gRCGeBIeoI4hFOAJNX4szXMGoss3p2PgAE3D5qB0wikIUgxH1VlARchNSruKMIHf0uu8ik5B4FBO+KAOYWz21o5h3Yck3Mju3dUCCFAXbz9lhyCHsPi7OopiCxZSImZ1XtCnzFBeJYy/9HX6E8H87Ikf+cJ41iFeIdw3uC1KVmxVlNElyiKVEqkAfmikTCJnR7gCyPvUO28oELGldL1ew8/wlGEbTZhgp3lr7+3ql8pLPXOKgTRUR2EISSlK69zANy4YbG44rvS2YLEWfU30TKxfAX+dA+X0zvTFTCLemHjFKQ3+j8rf3XEokJfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Or5VcmIEaDFG2zyJaZ6oSEBn/5A3NFWI9l3XxU6UMgE=;
+ b=TTEVLw0sLKCs9JUJvYpXx8XErfyd0iR6YQJmz3gV102lLF1/0SGRUpRpHYso2vgzXa0M2KiUn3WBTN/59YTBh41T4WRro8LFD9AAoHjCpz5tndEnn75SOmlpu0VobHN20WkS/2sUOIZVmPWJnHKG2eKT2iEH/dtXNrB79EZC64J8wrXyr2RFI79X3vcDUErCmLlox7Len8/gMPfYfhIfL/OEfWj0cxdiIfENwLr3HHtRlNd0u/+VMXp9DCvtCkCGFwML/uTkaoR0M3SlQdLhLbiVCHOj95T5zxvoTlBuluIj7kncA/VdeBp+Qjit5TBPfOqjV5saLLRjowrdkv8yoQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Or5VcmIEaDFG2zyJaZ6oSEBn/5A3NFWI9l3XxU6UMgE=;
+ b=WuW1anwEb5E7Ag+sf0UQIE+usDIK42OsKingprFpA4vSl45LFS1XMWplm93LClTIu9ouOOGThtOy7Vu+6GSnPFP7+ghzhrCmxBzM+G/dxAvk/cFeG8wOIiCf1tkgbsjWFC7GuZ+p5hurujPrFTAp557qeFOmr/bePQ9U1sMTCTyk2ZgcRGvQIa9U7kHJtpNM5zP9p0HrANq0+MUZdH/6smYfgYQLhsJvFLxvQwYO8nRH4qtYjmKByQTVNd8/JgYq8c5Xl+CIP8HoVQDXhUy9RpRC28yDW0x/6r9Vx7OMmcsb9i/7RAXgYksg7fVaP7hguJCWSmXs+4yuvzjV/u0+0w==
+Received: from DS7PR12MB6309.namprd12.prod.outlook.com (2603:10b6:8:96::19) by
+ MW3PR12MB4538.namprd12.prod.outlook.com (2603:10b6:303:55::15) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5834.15; Tue, 22 Nov 2022 18:46:08 +0000
+Received: from DS7PR12MB6309.namprd12.prod.outlook.com
+ ([fe80::6481:82ef:ffb1:4d0a]) by DS7PR12MB6309.namprd12.prod.outlook.com
+ ([fe80::6481:82ef:ffb1:4d0a%7]) with mapi id 15.20.5834.015; Tue, 22 Nov 2022
+ 18:46:08 +0000
+Date: Tue, 22 Nov 2022 10:46:05 -0800
+From: Zhuojia Shen <chaosdefinition@hotmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x1032.google.com
+Subject: Re: [PATCH] target/arm: align exposed ID registers with Linux
+Message-ID: <DS7PR12MB6309F9F33122ABB528F8CB51AC0D9@DS7PR12MB6309.namprd12.prod.outlook.com>
+References: <DS7PR12MB6309CF26249A273C1E2A6AAAAC0D9@DS7PR12MB6309.namprd12.prod.outlook.com>
+ <CAFEAcA85sSz3bvAvz6XLqa4TxBSgYWRG-oXTCr7Q4tNYRk+GEw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA85sSz3bvAvz6XLqa4TxBSgYWRG-oXTCr7Q4tNYRk+GEw@mail.gmail.com>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-TMN: [SQcNFfvoiueO/4k5V5iE0Xyf5cE/qLJp]
+X-ClientProxiedBy: BY3PR05CA0020.namprd05.prod.outlook.com
+ (2603:10b6:a03:254::25) To DS7PR12MB6309.namprd12.prod.outlook.com
+ (2603:10b6:8:96::19)
+X-Microsoft-Original-Message-ID: <Y30Y7W6qTvFaymAb@manjaro-vmryzen>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|MW3PR12MB4538:EE_
+X-MS-Office365-Filtering-Correlation-Id: c908d0b3-d336-4422-dccb-08daccb9d177
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: eG9+mvOQIOTEZw5tPAdj/tIHjlx/ak9Sg7nnXDOOyb1jAj0yQSsrCZu8sp999/aSfGcpChvP08y8FEStCIaEiOUINn3ZWivKvbh5D/YkVMHJ7MWI817UUg5tAyIQPUHtA0yFxseRdKriJqRPIcB6cfEDgnT7lvOSSGZUsdQy5TTKKMeF0azxLtvfEdX2Ly9GlK/U1ZSJOZefESi72cKTEmdQdikGI/6A/PhcuwcqTYQhsw1u0klkfiWKkqzz825ZjW4AknLe87Cl21aPFPtw1yzOYORQ+xhO+jg3dfq+4e1bICj7N0CYrpfodVNHXqDx94u7SILoNREd8ntw078APQGwgcNOhfto75QK143dLVhjq7rIj8IV10bzT/JApqTU+lv9zFpUrZyIeHkfqO573NHkUtitR3IfagknLRdI6Cp8vNp2IpwNK2UfiC8crtE42IfAed3CZxTbzxCDCvkfFgsbpGOHH4VEC2N9eKyJkQcayhexcpaIHVyIxSYOW70z2KP7rFe7hjlGoE+MaAdC+aDjPlZxf4l1Doiq7H1R5TwTPtLyrCo61ugki7Vtk6tH6Sp5QZFkGIUC1Dx0MF32CyEn+dGVYuI104bfTcMVQtLTLadjYBJAi8nDcLn7pagh1TCjG89+KiYuktEhHN3IGR8anWoBf49qkp0dIJNWypEWhTO0v6GqgFE+VGwXml9D
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TUF3UnduVVVHV0luOTBpSit0UFRNZS94OHhHcDVPZk9mTXNkczljWFlEY2Nv?=
+ =?utf-8?B?TlRJQy94bXV3SU0ySGI5U1Nqb085WkNsMjlFWlBMdHRJcXRJR1lscElQTlFs?=
+ =?utf-8?B?QWV2bmtENXJzM09Sc2h4R2M3UkZjOFlnZ0tWQS93V2JEKzBXaFFSd3gwYSsw?=
+ =?utf-8?B?bHFoaWhGMlNZdTJ6cm44ZHJVLzB4eU9aOWNVR3VSM3JWTDhzOGZsQnZXV2Rv?=
+ =?utf-8?B?Z1J1RTZ2eDF0T28xZWRKYWpZdkhhUm1JcXNyUUYwaVhjMDlNU0JUbC91NEZO?=
+ =?utf-8?B?WVF5THRpd2crSzNiNG5GWU5jQTM3S1hhU0hXSU92VWhyUkdzcFVFWGNKT3la?=
+ =?utf-8?B?Zko2WDF5NU4rSGJ4Q3U4MnV5QzhXRy9JZzYva2xWQloyUlU1UEkxQnRPUWlT?=
+ =?utf-8?B?YjRyQ0Naa2R0S2pPTWNsQ0hjcDJWTmF5RGUza0FYS1FvSXd3R3YvYzBzR3NB?=
+ =?utf-8?B?eXBBeU8zUlN5MGVDVjBnSWNacGt5WEVTbTN2SFI4YURFNWE3amZUUFprbDNp?=
+ =?utf-8?B?NHYrWUh3QXNBYzFBYURLSFJPcE5QOGlhcFBRWU42bFBZMi9GbWNYczV6a2tK?=
+ =?utf-8?B?bWlIWkNxemduUkpuY2RoMjE1WnhKWVRsT0FDUVpZQUF0cUprakNvc1dPNldv?=
+ =?utf-8?B?cFVzeEkrUHZOVlByY0pLK296dzYrbGFPaWFSSWZCcitOWkw2ZWkrdEZkT0lq?=
+ =?utf-8?B?RkZ5SVhlSlBLbW1CU1plMWk1cnJlSUE1akNoK3RjUmtZVlJqYXMxL0ZzeGdO?=
+ =?utf-8?B?VWxTWUhNL2Zlc0Z1bEoyLzFORTNzYUJZQ21ZSW9Mc3NHVm4wVDBxZVNiU2RJ?=
+ =?utf-8?B?SmZtLzA4N0pDZ1U0ZklPcFJrNGpBZW51anBtMlhjSTl6anovZVgrSWQycEl3?=
+ =?utf-8?B?NlRyUGpRbFlQRnNzT2NNQ015SGx3MnRJV3A0aWRlYkRVVGYvOWVjLzNvMk5O?=
+ =?utf-8?B?U01qWlNIUWtFbjhHTjhVWlJyVWpjYUp6WmVQZGFBSks5NENuOUZtSko3RWE5?=
+ =?utf-8?B?emNiQWpnWFM4a2gxNThBaWx5VWdxZ1NaRm5ZR254dDlKQXloOFlMYmxyWVRo?=
+ =?utf-8?B?ZVhHOUhzMGVLb3J6cW1YMTVjaWlGK2J1dkMyeWtHZ2hxSjduWnl4eHk5TU5Q?=
+ =?utf-8?B?ME1sUkgvZjBreXJUN2dWNXlwOG5tdmI1ZVJVaFhqVUVCUjdjbU04ZXJndjBX?=
+ =?utf-8?B?UWtDQUxLVTV6Y3hkT1Y4cGlxaFRMUCtJcjdIa3FhdiswUS8vR05nTGFRUzBP?=
+ =?utf-8?B?cWlLNmFTcmI0amRQdFFZdmFNSk9tQjh1Wm9YUVhEWXN1RFUvcUl5V3lhbTBR?=
+ =?utf-8?B?MHZyQ2hPZ3F2SHphb2RVZjZ0Y2Jwd1hhQzh2NmtQVFA2N3pqUzU4QVZ6U0U1?=
+ =?utf-8?B?Qmt4bno3ZFRMK1lkeGduL0h4cG4xZ0lBZzZLTVB0T25ESDFPN1dmN1BWSmZ5?=
+ =?utf-8?B?cnpNOHVOaHVJT3hscTd6QmZDY25XcCt4MU5Ka0U3U3Awb3g2dnlFV0g4QnNm?=
+ =?utf-8?B?aFQ0a2lMcFF4eWZma2RFMXByNVRKbnhocHhPR0M5U2ozK2poSlBrMkxIVFl4?=
+ =?utf-8?B?QXBOSFh3ZTMvNWdoVFJWdXZkS0I3V1QwVlM0OVhQYjIyYVkyNmNLaStxeGd3?=
+ =?utf-8?B?czFkR1RuTGdXS0FjalBWdlpHTlYyT2pLc0ZReDNFRTlPLzNNTWxwcktPaE52?=
+ =?utf-8?B?UWthTWNKZFpaQ0F3cVVpZ29QaFZ1Vm1wcnRtZmF3SXZBTHhaRVRycmcra1Zy?=
+ =?utf-8?Q?p9MPp+sucfwOVCkVpY=3D?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-71ea3.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: c908d0b3-d336-4422-dccb-08daccb9d177
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6309.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Nov 2022 18:46:08.3843 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4538
+Received-SPF: pass client-ip=2a01:111:f400:7e83::82d;
+ envelope-from=chaosdefinition@hotmail.com;
+ helo=NAM02-DM3-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,43 +164,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VQDkhK4O4+7F
+X-TUID: 4HbrCyyJteWo
 
-On Tue, 22 Nov 2022 at 03:05, Zhuojia Shen <chaosdefinition@hotmail.com> wrote:
->
-> In CPUID registers exposed to userspace, some registers were missing
-> and some fields were not exposed.  This patch aligns exposed ID
-> registers and their fields with what Linux exposes currently.
->
-> Specifically, the following new ID registers/fields are exposed to
-> userspace:
+On 11/22/2022 06:26 PM +0000, Peter Maydell wrote:
+> On Tue, 22 Nov 2022 at 03:05, Zhuojia Shen <chaosdefinition@hotmail.com> wrote:
+> >
+> > In CPUID registers exposed to userspace, some registers were missing
+> > and some fields were not exposed.  This patch aligns exposed ID
+> > registers and their fields with what Linux exposes currently.
+> >
+> > Specifically, the following new ID registers/fields are exposed to
+> > userspace:
+> 
+> These changes don't quite seem to line up with what the kernel
+> documents that it exposes:
+> https://www.kernel.org/doc/Documentation/arm64/cpu-feature-registers.rst
 
-These changes don't quite seem to line up with what the kernel
-documents that it exposes:
-https://www.kernel.org/doc/Documentation/arm64/cpu-feature-registers.rst
+This kernel document seems not quite up-to-date.  The patch is based on
+the upstream code:
+https://github.com/torvalds/linux/blob/master/arch/arm64/kernel/cpufeature.c
 
-> ID_AA64PFR1_EL1.BT:       bits 3-0
-> ID_AA64PFR1_EL1.MTE:      bits 11-8
-> ID_AA64PFR1_EL1.SME:      bits 27-24
+> 
+> > ID_AA64PFR1_EL1.BT:       bits 3-0
+> > ID_AA64PFR1_EL1.MTE:      bits 11-8
+> > ID_AA64PFR1_EL1.SME:      bits 27-24
+> 
+> .SME not listed as exposed.
+> 
+> > ID_AA64SMFR0_EL1.F32F32:  bit 32
+> > ID_AA64SMFR0_EL1.B16F32:  bit 34
+> > ID_AA64SMFR0_EL1.F16F32:  bit 35
+> > ID_AA64SMFR0_EL1.I8I32:   bits 39-36
+> > ID_AA64SMFR0_EL1.F64F64:  bit 48
+> > ID_AA64SMFR0_EL1.I16I64:  bits 55-52
+> > ID_AA64SMFR0_EL1.FA64:    bit 63
+> 
+> This register not listed as exposed.
 
-.SME not listed as exposed.
+This register and ID_AA64PFR1_EL1.SME are exposed since v5.19.
 
-> ID_AA64SMFR0_EL1.F32F32:  bit 32
-> ID_AA64SMFR0_EL1.B16F32:  bit 34
-> ID_AA64SMFR0_EL1.F16F32:  bit 35
-> ID_AA64SMFR0_EL1.I8I32:   bits 39-36
-> ID_AA64SMFR0_EL1.F64F64:  bit 48
-> ID_AA64SMFR0_EL1.I16I64:  bits 55-52
-> ID_AA64SMFR0_EL1.FA64:    bit 63
+> 
+> > ID_AA64ISAR2_EL1.WFxT:    bits 3-0
+> > ID_AA64ISAR2_EL1.RPRES:   bits 7-4
+> > ID_AA64ISAR2_EL1.GPA3:    bits 11-8
+> > ID_AA64ISAR2_EL1.APA3:    bits 15-12
+> 
+> GPA3 and APA3 not listed as exposed.
 
-This register not listed as exposed.
+These two are exposed since v5.18.
 
-> ID_AA64ISAR2_EL1.WFxT:    bits 3-0
-> ID_AA64ISAR2_EL1.RPRES:   bits 7-4
-> ID_AA64ISAR2_EL1.GPA3:    bits 11-8
-> ID_AA64ISAR2_EL1.APA3:    bits 15-12
-
-GPA3 and APA3 not listed as exposed.
-
-thanks
--- PMM
+> 
+> thanks
+> -- PMM

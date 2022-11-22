@@ -1,124 +1,44 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id m29-20020a05600c3b1d00b003c6b7f5567csm2259001wms.0.2022.11.22.01.56.12
+        by smtp.gmail.com with ESMTPSA id p3-20020a05600c358300b003c6b9749505sm22440681wmq.30.2022.11.22.02.06.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Nov 2022 01:56:13 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6C8251FFC1;
-	Tue, 22 Nov 2022 09:56:11 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: stefanha@redhat.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	qemu-arm@nongnu.org (open list:Virt)
-Subject: [PULL v2 09/11] tests/avocado: introduce alpine virt test for CI
-Date: Tue, 22 Nov 2022 09:56:08 +0000
-Message-Id: <20221122095610.3343175-10-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221122095610.3343175-1-alex.bennee@linaro.org>
-References: <20221122095610.3343175-1-alex.bennee@linaro.org>
+        Tue, 22 Nov 2022 02:06:47 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id D9D181FFB7;
+	Tue, 22 Nov 2022 10:06:46 +0000 (GMT)
+References: <20221116174749.65175-1-fcagnin@quarkslab.com>
+ <20221116174749.65175-2-fcagnin@quarkslab.com>
+User-agent: mu4e 1.9.3; emacs 28.2.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: francesco.cagnin@gmail.com
+Cc: qemu-devel@nongnu.org, mads@ynddal.dk, dirty@apple.com,
+ peter.maydell@linaro.org, qemu-arm@nongnu.org, agraf@csgraf.de,
+ pbonzini@redhat.com, Francesco Cagnin <fcagnin@quarkslab.com>
+Subject: Re: [PATCH v2 1/3] arm: move KVM breakpoints helpers
+Date: Tue, 22 Nov 2022 10:06:21 +0000
+In-reply-to: <20221116174749.65175-2-fcagnin@quarkslab.com>
+Message-ID: <87o7szb8w9.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 7eRm3eBu2e18
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: pAyg+QDYDHYx
 
-The boot_linux tests download and run a full cloud image boot and
-start a full distro. While the ability to test the full boot chain is
-worthwhile it is perhaps a little too heavy weight and causes issues
-in CI. Fix this by introducing a new alpine linux ISO boot in
-machine_aarch64_virt.
 
-This boots a fully loaded -cpu max with all the bells and whistles in
-31s on my machine. A full debug build takes around 180s on my machine
-so we set a more generous timeout to cover that.
+francesco.cagnin@gmail.com writes:
 
-We don't add a test for lesser GIC versions although there is some
-coverage for that already in the boot_xen.py tests. If we want to
-introduce more comprehensive testing we can do it with a custom kernel
-and initrd rather than a full distro boot.
+> From: Francesco Cagnin <fcagnin@quarkslab.com>
+>
+> These helpers will be also used for HVF. Aside from reformatting a
+> couple of comments for 'checkpatch.pl' and updating meson to compile
+> 'hyp_gdbstub.c', this is just code motion.
+>
+> Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20221117172532.538149-10-alex.bennee@linaro.org>
+Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-diff --git a/tests/avocado/machine_aarch64_virt.py b/tests/avocado/machine_aarch64_virt.py
-index 21848cba70..c2b2ba2cf8 100644
---- a/tests/avocado/machine_aarch64_virt.py
-+++ b/tests/avocado/machine_aarch64_virt.py
-@@ -1,4 +1,5 @@
--# Functional test that boots a Linux kernel and checks the console
-+# Functional test that boots a various Linux systems and checks the
-+# console output.
- #
- # Copyright (c) 2022 Linaro Ltd.
- #
-@@ -8,19 +9,62 @@
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
- import time
-+import os
- 
- from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado_qemu import exec_command
-+from avocado_qemu import BUILD_DIR
- 
- class Aarch64VirtMachine(QemuSystemTest):
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
-+    timeout = 360
- 
-     def wait_for_console_pattern(self, success_message, vm=None):
-         wait_for_console_pattern(self, success_message,
-                                  failure_message='Kernel panic - not syncing',
-                                  vm=vm)
- 
-+    # This tests the whole boot chain from EFI to Userspace
-+    # We only boot a whole OS for the current top level CPU and GIC
-+    # Other test profiles should use more minimal boots
-+    def test_alpine_virt_tcg_gic_max(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=machine:virt
-+        :avocado: tags=accel:tcg
-+        """
-+        iso_url = ('https://dl-cdn.alpinelinux.org/'
-+                   'alpine/v3.16/releases/aarch64/'
-+                   'alpine-virt-3.16.3-aarch64.iso')
-+
-+        # Alpine use sha256 so I recalculated this myself
-+        iso_sha1 = '0683bc089486d55c91bf6607d5ecb93925769bc0'
-+        iso_path = self.fetch_asset(iso_url, asset_hash=iso_sha1)
-+
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyAMA0')
-+        self.require_accelerator("tcg")
-+
-+        self.vm.add_args("-accel", "tcg")
-+        self.vm.add_args("-cpu", "max,pauth-impdef=on")
-+        self.vm.add_args("-machine",
-+                         "virt,acpi=on,"
-+                         "virtualization=on,"
-+                         "mte=on,"
-+                         "gic-version=max,iommu=smmuv3")
-+        self.vm.add_args("-smp", "2", "-m", "1024")
-+        self.vm.add_args('-bios', os.path.join(BUILD_DIR, 'pc-bios',
-+                                               'edk2-aarch64-code.fd'))
-+        self.vm.add_args("-drive", f"file={iso_path},format=raw")
-+        self.vm.add_args('-device', 'virtio-rng-pci,rng=rng0')
-+        self.vm.add_args('-object', 'rng-random,id=rng0,filename=/dev/urandom')
-+
-+        self.vm.launch()
-+        self.wait_for_console_pattern('Welcome to Alpine Linux 3.16')
-+
-+
-     def test_aarch64_virt(self):
-         """
-         :avocado: tags=arch:aarch64
--- 
-2.34.1
+Peter,
+
+I assume as this is all in target/arm you'll take it via your tree?
+
+--=20
+Alex Benn=C3=A9e

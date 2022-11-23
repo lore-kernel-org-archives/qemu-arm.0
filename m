@@ -1,344 +1,155 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3721583ejx;
-        Tue, 22 Nov 2022 15:26:22 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4mhPlQcjJ24CeVd4Pzz5Ovt/n4HEMT5lUyGPA/CKxN2/bM5Eajnr31j/CKcUDqDHCiKlEt
-X-Received: by 2002:a05:6214:924:b0:4b1:9605:d953 with SMTP id dk4-20020a056214092400b004b19605d953mr24071457qvb.11.1669159582380;
-        Tue, 22 Nov 2022 15:26:22 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1669159582; cv=pass;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp4088005ejx;
+        Wed, 23 Nov 2022 03:26:51 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf60DHhlUOjQAxKjJPR2Mgtrx+yenTEN2pyl7PrZz/7ieaeqhrm47U539qzj7gkk1VameJAG
+X-Received: by 2002:a50:fc10:0:b0:464:2afe:ae18 with SMTP id i16-20020a50fc10000000b004642afeae18mr25944863edr.183.1669202811128;
+        Wed, 23 Nov 2022 03:26:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669202811; cv=none;
         d=google.com; s=arc-20160816;
-        b=wmcmqaAIZAEZF/NgGwLEROGn3fc/v00v6+I8joSup+TAVDhzNwlYr9wHBZqeg5hbBd
-         w6lkE7wiKD0PNmLNrJHeWsZ+Dn0eTOwB4v4UFv4o3Z277WNcEMxvekvbkAYQRMtkbiTZ
-         60lW+MQR2hwczir1j/8FmkoG7SP5KZlteR5U0Hz+8X6ttRktWpaizTjOHHy8jiVFl1FG
-         G8mH5rg/00VkVcGcktyuMX2NFhQlUw0EdSJ58qH50GQeB7Dojc4snHnVzhr8y8TN80wW
-         grTLWcsddqJr9SwsI4afuXYiWO8lQy2e6GjnIDUwVKvAkIh+mSrGHWZfhH340mUdnUoq
-         4FKA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from
+        b=ziAmejrGkPt+7Q+oE2+mIs7gmQ+33/anB7u0t3Wl1ESp+CEZDNLIbUNdKyDGkDJaoz
+         i4fv9FML2KydOQ949VULc7N+YT504uYq9Rfa1ybseqRoWGp7lz9Gwbp6ThhG/V7ZmWLM
+         KoZSHtez7UBrWIwt3k3BwgdNv/KHWI3YI/LWWzmHtU/U8bO4njvD7VmNCYHK6Pu3Qzim
+         O0c+gHq0EOVkf3eApSsMNxb5baoKAUsHXgXbd0qRYkPzEVwn1frvITY4okRnM1AeTgrX
+         YkiVsVeiiLP5+nGYzj1dAMcKWzLr/+hQFmh/GbqYPQc5OaihWaJ1xBNxFHF89DwNLAHh
+         g/vg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:subject:from
+         :references:cc:to:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=IEIZnGfCOIESqBIaJhm1AfHrqZDpjZg/IFaWEOkocU4=;
-        b=Ie8f0HFlHX72gzP1cN9tH8jtKBDjl18K8cvxUcEPYlKYwwjSY3gEj/mRYufUwoyaeg
-         R0kdGvHcopnmaKsxrEWSrgqbGmLtIAd8ZKJqOtBBc3kvdzkxONLdKOjNw/Vt4r9ha/kk
-         +fTRr1On2F1V6QgOwtBUcdYyr7F5V+LeVyGybuxTl9hcWu1esDgg8Zr4LomelTIL4Pew
-         MF7mf+te+cZafVICn5hS0cANw2MOXsgPXKBHHgz5n1Rmjz0D+qHz5IBARzYHSryeroHj
-         izph1u1cnqucy7oDdXHbTuYLUB/IaSfvHWUL3VvdNNXiG+7Yoy/5fr5pzWUUeYUmVmHA
-         OJ+w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=jxjwF2dN;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9-20020ac84b49000000b003a5fce04f65si8174550qts.366.2022.11.22.15.26.22
+        bh=/uVeYx6CjoYEK3tX9urIsDYRKGgSlWj2VcVgfP/GhA0=;
+        b=0cBhip5W2ttjQxXR+SIcolEfuCv+yvEJsOved/M2HjJsVa+6PJ2OX9JmVIa3CGPVaf
+         nKrpOrFdgspazBxAA5atwhWi/KnHDoywoqNt/iquCOj2aH1+RrLMdjWNi6AXOQZaLy+i
+         z1fw1My02v4nNO0Dw3ERnZ4XyGqclybMw9N3YhDKyI+2HlrYSQ6+xZPXnp515aN0sOFK
+         LQa31IpIcOCUdyAmCJsjUkIxtVuRGH9mmuUvzTScPnwauadS1gRtwwrc1Qgn/wRGQB9W
+         L8yLwf18vqlcVPdVoApHRwmgMtXu1DZ0f+5jSBe64Hz+3eYBmLM9A2GLwrnU5e1R1I7o
+         3cHw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JzfarWVr;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id lc24-20020a170906f91800b0078d027ceb41si12154022ejb.857.2022.11.23.03.26.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Nov 2022 15:26:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 23 Nov 2022 03:26:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=jxjwF2dN;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oxceO-0008Iw-PV; Tue, 22 Nov 2022 18:26:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1oxceJ-0008IM-VF; Tue, 22 Nov 2022 18:25:56 -0500
-Received: from mail-dm6nam04olkn20830.outbound.protection.outlook.com
- ([2a01:111:f400:7e8b::830]
- helo=NAM04-DM6-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1oxceI-0002SN-1v; Tue, 22 Nov 2022 18:25:55 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cTfJPyWiqsQHqNDy6msQR+DRfrcbrFG0VotlU429gEJvnZT+vyLQjZqefDlnlAUaFdMWa2j+6ssbRsWQIQlpUgOPvLn6X6U8DpNy9M3qIGr2ynPHAMffS6/xpCYJEmG/e6X7fZ8c9zQvvjGJ2Aley/x/lph/oqFXHhJv2Pgi3lk/SU+HoOCos5tLEHhAmeexJzoHH0QVmVXMrf93wmDxx66zFrvxx+a5ncRG67lUEX4pAdiWnQIH+M8Dy+dFSwi8yVI3DNMm0zWMbiU+REuT5mxCPNSMfysfYl3joDHXDRZiozenCqmGdqE2J3nlKAOiJYbcRoG8sBcGn5s6Tuwipg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=IEIZnGfCOIESqBIaJhm1AfHrqZDpjZg/IFaWEOkocU4=;
- b=jE7nEd/XAgMXfCUvBfffCjRvySwLG6var9WEoR+6SiwRhnT6aaBv9u2w34RzDwswwmciOYgMHANAgizoNw+68fIBSR+zUYfXd/WnTkRI8axSrqw2brprzuyibEmjnbtBef1QOTnZm5TN2Rxi/ADYbC8KohaVODJgDcaK1UoYj0XaWQo6SZbT+ydGU9KVlyz1Vu2K3sYilN3KVINEp4dW4EPLPB7y29+9QULRjlaB/skR2R3QwjT2YucWoAYZFOeLmVtPXTlWdhzIVfpVkt/SIJTHowHC/OJyqFZ/F9caAkENSbSEiCZ6xTJZ0X6uzbPw+k1MF/TioIf6dH1CObBlSg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=IEIZnGfCOIESqBIaJhm1AfHrqZDpjZg/IFaWEOkocU4=;
- b=jxjwF2dNboHDoNz8PN/lNuuaSfXCw/fjx+77oVxPmJsphJrgolV4D1Wkpq7vJRRHICnDMoTYbkplJdVmev1ntc2XmGqZlQIAh1bzkosddlHd/AarOTs0LPMkR2dMowLX2NXdQoSFfguh5SkKi7YGWnjYWx9GwKgbhJ+CqAAjhSPjUZb1aQR7yxY8Xeg8V7C6ddv+cczmE9U2NWHiXM+d/LVQjYoHQsBzmburJNBVx217Ld8o1sbNVXkjSzrzXF1ii+9zkLEuemFfpypyOzXAIQDpNdosK9PGCCKWrQN2VCjbEPhTSFin4megKr3e7ouw4gQ+5c9v22rJjgIVUYzFLA==
-Received: from DS7PR12MB6309.namprd12.prod.outlook.com (2603:10b6:8:96::19) by
- CY8PR12MB7193.namprd12.prod.outlook.com (2603:10b6:930:5b::16) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5813.18; Tue, 22 Nov 2022 23:25:51 +0000
-Received: from DS7PR12MB6309.namprd12.prod.outlook.com
- ([fe80::6481:82ef:ffb1:4d0a]) by DS7PR12MB6309.namprd12.prod.outlook.com
- ([fe80::6481:82ef:ffb1:4d0a%7]) with mapi id 15.20.5834.015; Tue, 22 Nov 2022
- 23:25:51 +0000
-From: Zhuojia Shen <chaosdefinition@hotmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Zhuojia Shen <chaosdefinition@hotmail.com>
-Subject: [PATCH v2] target/arm: align exposed ID registers with Linux
-Date: Tue, 22 Nov 2022 15:09:15 -0800
-Message-ID: <DS7PR12MB6309BC9133877BCC6FC419FEAC0D9@DS7PR12MB6309.namprd12.prod.outlook.com>
-X-Mailer: git-send-email 2.38.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TMN: [pE1q3l6pHUrDutyp0V+C8HaFjtRkGSWz]
-X-ClientProxiedBy: BYAPR08CA0052.namprd08.prod.outlook.com
- (2603:10b6:a03:117::29) To DS7PR12MB6309.namprd12.prod.outlook.com
- (2603:10b6:8:96::19)
-X-Microsoft-Original-Message-ID: <20221122230915.13567-1-chaosdefinition@hotmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JzfarWVr;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1669202810;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/uVeYx6CjoYEK3tX9urIsDYRKGgSlWj2VcVgfP/GhA0=;
+	b=JzfarWVrpQNcU6mppvTfZlp8nIXgSRowqES19EA5iLHQ3euTIK3xObB8fr5OLGKzElnqA+
+	0b1ECiDD/NdBZV5XsCe5m3CB3LRRTRpWMxXveYRaVa9wOJe+ToM7CDRgs6s/+xihQlQhHI
+	4VbMP9FmuNSv5Xx7oF7UEXP7f76EgAk=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-364-vgQmqT8IO9GOdc-YrNDNvw-1; Wed, 23 Nov 2022 06:26:49 -0500
+X-MC-Unique: vgQmqT8IO9GOdc-YrNDNvw-1
+Received: by mail-wm1-f70.google.com with SMTP id c10-20020a7bc84a000000b003cf81c2d3efso697165wml.7
+        for <alex.bennee@linaro.org>; Wed, 23 Nov 2022 03:26:48 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/uVeYx6CjoYEK3tX9urIsDYRKGgSlWj2VcVgfP/GhA0=;
+        b=3wg+aiCQkND9LSyOmM6z+EensdaYrUpHFZgIPDpUjvlx0JI4i+0rAvjQd8JlfPQcvo
+         6Sgq2vcIU1MbYERjnctKzgPlTd0YLpdfAX5K6THU9Z63ZySw5vKK9KuXtLmhjQJLGwP0
+         MdxW36b4Kr9rKZL7Ele+FH6ejBK4T281eGrdU5eEv2I8UFBmbigFCdxWbnw/nL6pWDUA
+         sEYrVftsGQFyeeiaB9EbtPnPzWtHN55BCI8LUgRKV/is/uhK8MGDuZbx/sqlwXR+ADZ8
+         1RVCy0wQLm0OOoNZFUCpq3W0QtEbnmPN0fJIVnBnByYScTX3tykdMqA8252BpjY8KAlB
+         a5uQ==
+X-Gm-Message-State: ANoB5plVKtu9tV4I8XSJXMs+EbgGf/6tz7X5Dw8uPauKfE8RF5kPL8q4
+	YHRZN25Ulml6TGUvauLm+s2wTmcuqCa+pzpRw9/FolXT3Z2n4bB/Q6KzpJ/SoTzr3R8g1T9v5mm
+	Eyoq+cBuQwbyxVVWO
+X-Received: by 2002:adf:d4cb:0:b0:241:e680:b5be with SMTP id w11-20020adfd4cb000000b00241e680b5bemr3909647wrk.717.1669202807866;
+        Wed, 23 Nov 2022 03:26:47 -0800 (PST)
+X-Received: by 2002:adf:d4cb:0:b0:241:e680:b5be with SMTP id w11-20020adfd4cb000000b00241e680b5bemr3909636wrk.717.1669202807665;
+        Wed, 23 Nov 2022 03:26:47 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.5] (ip-109-43-178-58.web.vodafone.de. [109.43.178.58])
+        by smtp.gmail.com with ESMTPSA id t10-20020a5d6a4a000000b00241f467f888sm781662wrw.74.2022.11.23.03.26.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 23 Nov 2022 03:26:47 -0800 (PST)
+Message-ID: <8f6f531f-3ed9-6a14-9ad6-8c0ff6b32c22@redhat.com>
+Date: Wed, 23 Nov 2022 12:26:45 +0100
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|CY8PR12MB7193:EE_
-X-MS-Office365-Filtering-Correlation-Id: d3329629-e6f6-41fa-dadb-08dacce0e49d
-X-MS-Exchange-SLBlob-MailProps: znQPCv1HvwWbbou6HBxIYezIxL6R5N2bhZXcuf/+fJVGCnE0AaReus9PTyEGLZODrrBUNPd6tJmWG5RTMJsJ2Tp7c12ISkGZ04uJkNlCbjZNr69Pk20fQMSCRiwjC5PGHYti7aGTMkXZk+MsNXGzFj41mnFlnUvhp/qu+67+MVwEdjGDn28USNh0ySofgw+l115oqQcqF+IgIccUzvi9Fl4qLcABwBafc/rKy383pG76cnRYdsNuAAltmMKl+TtiDZcXrEAhYF4CzM5Lck3nOmc7kqty9VTUMLY3CBVi7xBrOS6+5xXOmLeA/JMoZKbkVvG6fIC6yzSICiCIGqCgE7KcHFTLqo6JdCaboO3UxHeyiYTqYAjp4o+ZkhfA7xxyiNWncvuU45p6GLcRMAnxjZqIJzJ01yQcOIEthvung5R3e1PovVme1mU6QC+SpJm/ayd31wVfO8wEM+EvlAW5iWE674N5PPd57IDOuLIclYyrgCy8yxjXlo3x58u5dpaJw6uAhsUTTlHx48r5z7podtoza2hARCSueope9SYEdLHEm0Boj4RuTIXtX0x6yUtKh1WvxBMsntRgu9JB8Rdq5jgqLPUVA8B0xwCYFfWPA7U7Ok2TcUIHkseVLnHQEDZkk4lhlgaZYmYhDWo6kI+ACDrwLKOWVvjByyvsiN4evSY75W+Ya1Vq+3nZtcVTHp9rNRYXXkImf1SYCplNtvjfmIHFWaSr738k/CeuopVpAjEHPZjiXE9/zvt7Wknw9p18DJFVp8I+4vw=
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: vDZyUD9giMIjJJfxKwkH4QFWWtpNC5Ey0Sl/6x+6X3WGBGvR8q5xfwo5FJk1DLfXIsIA+Pb1bXykgVztqB7KQfjjxYh2eZ9k+4HB5VtCL/ZTCvikKxVvEzEPGAdsKfWVfKQpABBbhW1RcA1T6dRQJB8+5tYKLZVS60rHGlatIDSpg7wAJOXxV6yBXsNdv0XlKzCBAkes2tc8d1Bmn8a4yF+OCMseUcyVlEUpZfdN3gxMfueOsJ3wjE6+d+G9xeiFQb8s/E55ImlOYHOYUTJo0S+wTII0S7xip5s07ZBPIl7EqutaxLQe1T6HQgXwAwow/gciIULpG9sxXOXKODcIa7kZHYrYyPlQjvKR1UCB+LI8t3GMh/HaX0mujzOFC7rjz/buqC0P0Q+yr+1IzMzX6HlJWfqMs5GVJnLtCaG2JurzwyjHXw2/SLPU1LUizF3o8v7KVEqiEtGJdsFGZfNuIGWftp1f9R3lPZuPAAIhuzene5L1hD7LYmSLQNua7QKLjhkTl4FXfIO4f9GxUsSP7gHLJS59v4C7wqoRBBHzgkqYx5AsMZsWspSgFE8XMroFkxri/PV/aBnS1nFN0Eav9ZXmnbxa//CpC71Dc562ujaSX/2uQtj0+NhyBMIrMZcNMXLEX+cgcAhJ8VMCW6L7JvDHzWHOM3H2Q1r4RVsZZeM=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?SxPr3AoVsTIheReVrZTtisaw3zMDXDQd2Md2TDR9g/HkMziOcpXRjfXydUok?=
- =?us-ascii?Q?tWMPNLyC36mj0SCJ0J8Mug5LRqzhlmC8/KpNfei3sklG3euP0mKhkW1NfK2P?=
- =?us-ascii?Q?bIrNRas51gLeIYIAityegQeB57Gx6j/vHM7DpDTwuzsLBoTT5DBiHKJrReGd?=
- =?us-ascii?Q?KbWaL4nonIfhTOjs7c8wlln4+cnN6FJBRPC+Ysyx8D/0MFHUQuJEZilHGRzz?=
- =?us-ascii?Q?k2EMXeK8p7DWHXHDukWnh7KLu5y9YTshuVvQ3AYo9q3TWm5IGoiG29cQblX/?=
- =?us-ascii?Q?YCFIhKNZk/HoZW7DxddU5SI5G76i997sLmJreProLsmalozJ8RMuyfiVkEQZ?=
- =?us-ascii?Q?byTmNkWOR5UJmL/AMwY1ITnmk35NM3Nd8Kfz6Na1rz/vlqcRByMVR8kaMMJm?=
- =?us-ascii?Q?hdmCTz2X5KnIsMsl0ueRropZYunCS1Lky7dFoOw7cKaQ3HUlWQgJP3K6Ti70?=
- =?us-ascii?Q?eqcGPODjMXThq4SF1j9h2h8YYsMcQqOfBkjb5co09Ch0+NJVMMcL8gNB9yLx?=
- =?us-ascii?Q?kCoF7wAMbrq6p/lZduprmp/KBt/nPK6eUDas2IOGsRMcCZ71Vors7TQKwOMF?=
- =?us-ascii?Q?bu9mg+DEBCsSh/cqRmvD97R7SpJZxQGXzi5EWMjI219n/1mZNqSnzn92y6rV?=
- =?us-ascii?Q?r1efNPo9DJnUS3zDcsVz5Bss9Jt99QE0IpQVogGIVKdboc7IN5Qb6+Ug64SG?=
- =?us-ascii?Q?UYQ6CwSx8mstqG/GyFphe3fHJOdiX3sXDsOI3WWVFqmKY0vjh/oODdqHgyd4?=
- =?us-ascii?Q?hLvkgDf8rbOpuh/fm6kN1bcLTsbk1CXF7L5R0u+Qtp4yndcQkT6ScvN3Twbt?=
- =?us-ascii?Q?/WQUQccN82JBlGe9khN+onF7tnqkm8CDkeXU4iN5wtUZOX3Ua0FXo4JCKRI2?=
- =?us-ascii?Q?uYUpByHlgfOPPmHpMWRf9CpW/QKyP/tS8OVEiFYhVHqxGMZOXFD1k4m4/QdL?=
- =?us-ascii?Q?cakRjStJuEJt8qT6CNGogCCyO9DM4QVUVu+RbcnPHVku9cUajTtqpXujCEnz?=
- =?us-ascii?Q?a9fJUyL5fOGAMSYa4DeWYDFXu22HD/GbysooIQcad7tFaNgrOQatiQIAx7gV?=
- =?us-ascii?Q?cOdva5O3vC2SbPAeEwOl+JuJZTKEValZkAYIKwpW48WDJAvSXw+oNSBGNCRb?=
- =?us-ascii?Q?R4WLma/WvAeM4ofqKzSJlhYgZJMzvmjp78OJTPbBR5BwRBbOr/xtsQWlREDm?=
- =?us-ascii?Q?d86oyWaFLkBPIXnIZxZXZCTGdqhyOSyGb+Zb7ACvvlik8XBnRCx+imY428c9?=
- =?us-ascii?Q?5xYbd4YutgXY55B2nEnEwUKeX3sTbpPmjlXhv8vzxJFTZiNQ09HWmdNfe0Re?=
- =?us-ascii?Q?XcQ=3D?=
-X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-71ea3.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: d3329629-e6f6-41fa-dadb-08dacce0e49d
-X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6309.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Nov 2022 23:25:51.0230 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7193
-Received-SPF: pass client-ip=2a01:111:f400:7e8b::830;
- envelope-from=chaosdefinition@hotmail.com;
- helo=NAM04-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CUrnyQbvhniT
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
+References: <20221118113309.1057790-1-alex.bennee@linaro.org>
+ <8c4b6387-450d-88af-c1d4-3171a9c3067b@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [RFC PATCH] tests/avocado: use new rootfs for orangepi test
+In-Reply-To: <8c4b6387-450d-88af-c1d4-3171a9c3067b@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: /RFlkR7Ek2xv
 
-In CPUID registers exposed to userspace, some registers were missing
-and some fields were not exposed.  This patch aligns exposed ID
-registers and their fields with what the upstream kernel currently
-exposes.
+On 23/11/2022 12.15, Philippe Mathieu-Daudé wrote:
+> On 18/11/22 12:33, Alex Bennée wrote:
+>> The old URL wasn't stable. I suspect the current URL will only be
+>> stable for a few months so maybe we need another strategy for hosting
+>> rootfs snapshots?
+>>
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>> ---
+>>   tests/avocado/boot_linux_console.py | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/tests/avocado/boot_linux_console.py 
+>> b/tests/avocado/boot_linux_console.py
+>> index 4c9d551f47..5a2923c423 100644
+>> --- a/tests/avocado/boot_linux_console.py
+>> +++ b/tests/avocado/boot_linux_console.py
+>> @@ -793,8 +793,8 @@ def test_arm_orangepi_sd(self):
+>>           dtb_path = 
+>> '/usr/lib/linux-image-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+>>           dtb_path = self.extract_from_deb(deb_path, dtb_path)
+>>           rootfs_url = 
+>> ('http://storage.kernelci.org/images/rootfs/buildroot/'
+>> -                      'kci-2019.02/armel/base/rootfs.ext2.xz')
+>> -        rootfs_hash = '692510cb625efda31640d1de0a8d60e26040f061'
+>> +                      'buildroot-baseline/20221116.0/armel/rootfs.ext2.xz')
+>> +        rootfs_hash = 'fae32f337c7b87547b10f42599acf109da8b6d9a'
+> If Avocado doesn't find an artifact in its local cache, it will fetch it
+> from the URL.
+> The cache might be populated with artifacts previously downloaded, but
+> their URL is not valid anymore (my case for many tests).
+> We can also add artifacts manually, see [1].
+> 
+> I'd rather keep pre-existing tests if possible, to test older (kernel / 
+> user-space) images. We don't need to run all the tests all the time:
+> tests can be filtered by tags (see [2]).
+> 
+> My preference here is to refactor this test, adding the "kci-2019.02"
+> and "baseline-20221116.0" releases. I can prepare the patch if you /
+> Thomas don't object.
 
-Specifically, the following new ID registers/fields are exposed to
-userspace:
+IMHO we shouldn't keep tests in the upstream git repository where the 
+binaries are not available in public anymore. They won't get run by new 
+contributors anymore, and also could vanish from the disks of the people who 
+previously downloaded it, once they wipe their cache or upgrade to a new 
+installation, so the test code will sooner or later be bitrotting. But if 
+you want to keep the tests around on your hard disk, you could also stick 
+the test in a local branch on your hard disk instead.
 
-ID_AA64PFR1_EL1.BT:       bits 3-0
-ID_AA64PFR1_EL1.MTE:      bits 11-8
-ID_AA64PFR1_EL1.SME:      bits 27-24
+The other possibility is to upload the binaries to a new public location in 
+the web ... but for software that contains GPLed software, you should then 
+also make sure to provide the source code to comply with the license.
 
-ID_AA64ZFR0_EL1.SVEver:   bits 3-0
-ID_AA64ZFR0_EL1.AES:      bits 7-4
-ID_AA64ZFR0_EL1.BitPerm:  bits 19-16
-ID_AA64ZFR0_EL1.BF16:     bits 23-20
-ID_AA64ZFR0_EL1.SHA3:     bits 35-32
-ID_AA64ZFR0_EL1.SM4:      bits 43-40
-ID_AA64ZFR0_EL1.I8MM:     bits 47-44
-ID_AA64ZFR0_EL1.F32MM:    bits 55-52
-ID_AA64ZFR0_EL1.F64MM:    bits 59-56
-
-ID_AA64SMFR0_EL1.F32F32:  bit 32
-ID_AA64SMFR0_EL1.B16F32:  bit 34
-ID_AA64SMFR0_EL1.F16F32:  bit 35
-ID_AA64SMFR0_EL1.I8I32:   bits 39-36
-ID_AA64SMFR0_EL1.F64F64:  bit 48
-ID_AA64SMFR0_EL1.I16I64:  bits 55-52
-ID_AA64SMFR0_EL1.FA64:    bit 63
-
-ID_AA64MMFR0_EL1.ECV:     bits 63-60
-
-ID_AA64MMFR1_EL1.AFP:     bits 47-44
-
-ID_AA64MMFR2_EL1.AT:      bits 35-32
-
-ID_AA64ISAR0_EL1.RNDR:    bits 63-60
-
-ID_AA64ISAR1_EL1.FRINTTS: bits 35-32
-ID_AA64ISAR1_EL1.BF16:    bits 47-44
-ID_AA64ISAR1_EL1.DGH:     bits 51-48
-ID_AA64ISAR1_EL1.I8MM:    bits 55-52
-
-ID_AA64ISAR2_EL1.WFxT:    bits 3-0
-ID_AA64ISAR2_EL1.RPRES:   bits 7-4
-ID_AA64ISAR2_EL1.GPA3:    bits 11-8
-ID_AA64ISAR2_EL1.APA3:    bits 15-12
-
-The code is also refactored to use symbolic names for ID register fields
-for better readability and maintainability.
-
-Signed-off-by: Zhuojia Shen <chaosdefinition@hotmail.com>
----
- target/arm/helper.c | 96 +++++++++++++++++++++++++++++++++++++--------
- 1 file changed, 79 insertions(+), 17 deletions(-)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d8c8223ec3..82e45be04a 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7823,31 +7823,89 @@ void register_cp_regs_for_features(ARMCPU *cpu)
- #ifdef CONFIG_USER_ONLY
-         static const ARMCPRegUserSpaceInfo v8_user_idregs[] = {
-             { .name = "ID_AA64PFR0_EL1",
--              .exported_bits = 0x000f000f00ff0000,
--              .fixed_bits    = 0x0000000000000011 },
-+              .exported_bits = R_ID_AA64PFR0_FP_MASK |
-+                               R_ID_AA64PFR0_ADVSIMD_MASK |
-+                               R_ID_AA64PFR0_SVE_MASK |
-+                               R_ID_AA64PFR0_DIT_MASK,
-+              .fixed_bits = (0x1 << R_ID_AA64PFR0_EL0_SHIFT) |
-+                            (0x1 << R_ID_AA64PFR0_EL1_SHIFT) },
-             { .name = "ID_AA64PFR1_EL1",
--              .exported_bits = 0x00000000000000f0 },
-+              .exported_bits = R_ID_AA64PFR1_BT_MASK |
-+                               R_ID_AA64PFR1_SSBS_MASK |
-+                               R_ID_AA64PFR1_MTE_MASK |
-+                               R_ID_AA64PFR1_SME_MASK },
-             { .name = "ID_AA64PFR*_EL1_RESERVED",
--              .is_glob = true                     },
--            { .name = "ID_AA64ZFR0_EL1"           },
-+              .is_glob = true },
-+            { .name = "ID_AA64ZFR0_EL1",
-+              .exported_bits = R_ID_AA64ZFR0_SVEVER_MASK |
-+                               R_ID_AA64ZFR0_AES_MASK |
-+                               R_ID_AA64ZFR0_BITPERM_MASK |
-+                               R_ID_AA64ZFR0_BFLOAT16_MASK |
-+                               R_ID_AA64ZFR0_SHA3_MASK |
-+                               R_ID_AA64ZFR0_SM4_MASK |
-+                               R_ID_AA64ZFR0_I8MM_MASK |
-+                               R_ID_AA64ZFR0_F32MM_MASK |
-+                               R_ID_AA64ZFR0_F64MM_MASK },
-+            { .name = "ID_AA64SMFR0_EL1",
-+              .exported_bits = R_ID_AA64SMFR0_F32F32_MASK |
-+                               R_ID_AA64SMFR0_B16F32_MASK |
-+                               R_ID_AA64SMFR0_F16F32_MASK |
-+                               R_ID_AA64SMFR0_I8I32_MASK |
-+                               R_ID_AA64SMFR0_F64F64_MASK |
-+                               R_ID_AA64SMFR0_I16I64_MASK |
-+                               R_ID_AA64SMFR0_FA64_MASK },
-             { .name = "ID_AA64MMFR0_EL1",
--              .fixed_bits    = 0x00000000ff000000 },
--            { .name = "ID_AA64MMFR1_EL1"          },
-+              .exported_bits = R_ID_AA64MMFR0_ECV_MASK,
-+              .fixed_bits = (0xf << R_ID_AA64MMFR0_TGRAN64_SHIFT) |
-+                            (0xf << R_ID_AA64MMFR0_TGRAN4_SHIFT) },
-+            { .name = "ID_AA64MMFR1_EL1",
-+              .exported_bits = R_ID_AA64MMFR1_AFP_MASK },
-+            { .name = "ID_AA64MMFR2_EL1",
-+              .exported_bits = R_ID_AA64MMFR2_AT_MASK },
-             { .name = "ID_AA64MMFR*_EL1_RESERVED",
--              .is_glob = true                     },
-+              .is_glob = true },
-             { .name = "ID_AA64DFR0_EL1",
--              .fixed_bits    = 0x0000000000000006 },
--            { .name = "ID_AA64DFR1_EL1"           },
-+              .fixed_bits = (0x6 << R_ID_AA64DFR0_DEBUGVER_SHIFT) },
-+            { .name = "ID_AA64DFR1_EL1" },
-             { .name = "ID_AA64DFR*_EL1_RESERVED",
--              .is_glob = true                     },
-+              .is_glob = true },
-             { .name = "ID_AA64AFR*",
--              .is_glob = true                     },
-+              .is_glob = true },
-             { .name = "ID_AA64ISAR0_EL1",
--              .exported_bits = 0x00fffffff0fffff0 },
-+              .exported_bits = R_ID_AA64ISAR0_AES_MASK |
-+                               R_ID_AA64ISAR0_SHA1_MASK |
-+                               R_ID_AA64ISAR0_SHA2_MASK |
-+                               R_ID_AA64ISAR0_CRC32_MASK |
-+                               R_ID_AA64ISAR0_ATOMIC_MASK |
-+                               R_ID_AA64ISAR0_RDM_MASK |
-+                               R_ID_AA64ISAR0_SHA3_MASK |
-+                               R_ID_AA64ISAR0_SM3_MASK |
-+                               R_ID_AA64ISAR0_SM4_MASK |
-+                               R_ID_AA64ISAR0_DP_MASK |
-+                               R_ID_AA64ISAR0_FHM_MASK |
-+                               R_ID_AA64ISAR0_TS_MASK |
-+                               R_ID_AA64ISAR0_RNDR_MASK },
-             { .name = "ID_AA64ISAR1_EL1",
--              .exported_bits = 0x000000f0ffffffff },
-+              .exported_bits = R_ID_AA64ISAR1_DPB_MASK |
-+                               R_ID_AA64ISAR1_APA_MASK |
-+                               R_ID_AA64ISAR1_API_MASK |
-+                               R_ID_AA64ISAR1_JSCVT_MASK |
-+                               R_ID_AA64ISAR1_FCMA_MASK |
-+                               R_ID_AA64ISAR1_LRCPC_MASK |
-+                               R_ID_AA64ISAR1_GPA_MASK |
-+                               R_ID_AA64ISAR1_GPI_MASK |
-+                               R_ID_AA64ISAR1_FRINTTS_MASK |
-+                               R_ID_AA64ISAR1_SB_MASK |
-+                               R_ID_AA64ISAR1_BF16_MASK |
-+                               R_ID_AA64ISAR1_DGH_MASK |
-+                               R_ID_AA64ISAR1_I8MM_MASK },
-+            { .name = "ID_AA64ISAR2_EL1",
-+              .exported_bits = R_ID_AA64ISAR2_WFXT_MASK |
-+                               R_ID_AA64ISAR2_RPRES_MASK |
-+                               R_ID_AA64ISAR2_GPA3_MASK |
-+                               R_ID_AA64ISAR2_APA3_MASK },
-             { .name = "ID_AA64ISAR*_EL1_RESERVED",
--              .is_glob = true                     },
-+              .is_glob = true },
-         };
-         modify_arm_cp_regs(v8_idregs, v8_user_idregs);
- #endif
-@@ -8165,8 +8223,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
- #ifdef CONFIG_USER_ONLY
-         static const ARMCPRegUserSpaceInfo id_v8_user_midr_cp_reginfo[] = {
-             { .name = "MIDR_EL1",
--              .exported_bits = 0x00000000ffffffff },
--            { .name = "REVIDR_EL1"                },
-+              .exported_bits = R_MIDR_EL1_REVISION_MASK |
-+                               R_MIDR_EL1_PARTNUM_MASK |
-+                               R_MIDR_EL1_ARCHITECTURE_MASK |
-+                               R_MIDR_EL1_VARIANT_MASK |
-+                               R_MIDR_EL1_IMPLEMENTER_MASK },
-+            { .name = "REVIDR_EL1" },
-         };
-         modify_arm_cp_regs(id_v8_midr_cp_reginfo, id_v8_user_midr_cp_reginfo);
- #endif
--- 
-2.38.1
-
+  Thomas

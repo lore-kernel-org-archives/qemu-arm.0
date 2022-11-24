@@ -1,92 +1,92 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp4997725ejx;
-        Thu, 24 Nov 2022 03:51:22 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7k6zCvlEXGaMLKH1AkmAa85inshZExpk3lotsFtO+GgI9xshXq7tFKaEgIyBMk1TYtEg0Z
-X-Received: by 2002:ac8:7217:0:b0:3a5:8288:17d5 with SMTP id a23-20020ac87217000000b003a5828817d5mr30762945qtp.80.1669290682657;
-        Thu, 24 Nov 2022 03:51:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669290682; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp4997734ejx;
+        Thu, 24 Nov 2022 03:51:23 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4HTywTXVgUVyNazqWRICodT3Lplqix8ywOPjbK8GTYSIWCK9/1tPenP8ZMZmOMfujgF6a1
+X-Received: by 2002:ac8:45c9:0:b0:3a5:1f29:f1d with SMTP id e9-20020ac845c9000000b003a51f290f1dmr16491214qto.239.1669290683137;
+        Thu, 24 Nov 2022 03:51:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669290683; cv=none;
         d=google.com; s=arc-20160816;
-        b=XoHPvSCeAM4+CO9bxVeZCQm8Tb1gRtaMizZwhQTSyE+srFazYOFk4D35Gx8M2Py5ue
-         0/lSdq7pgkd2ItmJt6hc1jrkU9mRQyBjfy8tQRPyceAfx5l8k776ToeT17kxq+iDQyjC
-         top4376jzeCms+oJS+ebqinna/fhHyA1LvJfARWpuiFVDmOAFnDBPX2wUSCgXfTPik79
-         +jeqwI1WjxnACfBkwFbCMD260DR9dAHkr1SozZZzE4+pLRcNS1PeTATKGbVybw6e4hRb
-         /MdOAHoYuZH66KdosQJ5Ra4ZZncW3YI7QSU2I/fcOsut8O56PYoN/mP/3N/jyKL/8D6L
-         +THQ==
+        b=YXbWNnbf7SUp5jzX47VSHrEDNBfxOvMV8RSMV/+Rp8X5rjN8Ivv6x24PnTzmq6pQ5H
+         pqJybVFrfb4poSegCNSuSGStTTxtMqS+COu7LEfIgjtSOv1890rD01NCgSSNMUDyplcK
+         pkb/8P7qZ9C3LqgQZ4Y7dJE4+IoqzxedtSxJoRq3GP8wW9IqhTJEL0HYLS2jQxi6dbEr
+         buQ3SF4KZqvHpCugTNj8ri3gdW9kcgndcAaw9FxzeaMo7sPjuX1p9jG9IsTQH9dhc2Zq
+         Iaf5OccW3Vvt+okc2/lRANtblcDN5yjeh8pJma4E+gF4A0rs3sHS/RpbuP4vnl7dJ9av
+         rfqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=5KqcOcEgIFi0TOph9IghaJwhk/riQMZsEbqVRIdHQT0=;
-        b=qHs4ov+sekrHJZSU85OmEVbeHIsLNa/PVHHYxQocVQ6SXK66QzFBzP12fKQnvusC1l
-         ykEmnElJWyjX1RMzWTnMfFL3BHMG0GKaslIj0PYDT1X8zKyKFBgxXTyakAbxP4biSkNm
-         avRe5MIMhHGElamE8c9IRUzEK4BYVI5v/x9gHhxPQIFs7hF4hvINE6xSkirqOC3ubr+J
-         IHvqYDN2OFXKaon33I/6Lu4Z+MJCKtRT1v1pq+RTDZk8k7QjiFKFYraSoe5XyCnd/rl1
-         UBjFCxYFnLHh8ZI9jmnIY7ujL/6exGisAU6kVMwu6Ud+b2kEY6PBqDDWBUL9DcK4Sh3F
-         JtSw==
+        bh=hsda7Zq3jpyzptb9XynNFoMbGolRoFCYCg8lAZ1ErIY=;
+        b=HVQkwWMJ2lLgFTVkNV+XN4bNiXnqhjg5pMAgrzY6RnNMscbrH5EPHWfV8323sjhyzY
+         sMWBWolDNC/Ldw/4Iks2AtxruivSQJeEdvC39lVgYtY21tPEhbPoTtQa0gD1Ec2tQOF6
+         wHVxXnE8js+qN675ccWkkkEeRZZpYBtlCHvkjgJxyqsLRUzprHx16r+4+GKrQaZSDqLT
+         X64hsHoYlnqGMkenlwbDMtaML1Oie6ArQ/IUxdXszjCI7Qno4zOGNfBJmlR4wKtmbiIO
+         06hWmwr3O06qjmcB9ljM5jtQoNpilYT5v619SWHi+ObaTPkP3KNDecxx6k53dEwT11oe
+         OvCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ApUEl7Xi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=idcImeyG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12-20020a05620a408c00b006f9b019034bsi481365qko.259.2022.11.24.03.51.22
+        by mx.google.com with ESMTPS id f10-20020a05620a408a00b006fbaf9c1b77si579118qko.716.2022.11.24.03.51.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Nov 2022 03:51:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Nov 2022 03:51:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ApUEl7Xi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=idcImeyG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1oyAky-00046Q-W4; Thu, 24 Nov 2022 06:51:06 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1oyAkt-0003uZ-Na; Thu, 24 Nov 2022 06:50:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oyAkp-0003k5-3s
- for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:50:55 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1oyAkk-0003b1-Sm
+ for qemu-arm@nongnu.org; Thu, 24 Nov 2022 06:50:51 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oyAki-0004xK-5l
- for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:50:54 -0500
-Received: by mail-wr1-x434.google.com with SMTP id q7so1232677wrr.8
- for <qemu-devel@nongnu.org>; Thu, 24 Nov 2022 03:50:45 -0800 (PST)
+ id 1oyAkd-0004wF-80
+ for qemu-arm@nongnu.org; Thu, 24 Nov 2022 06:50:46 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id x5so2121754wrt.7
+ for <qemu-arm@nongnu.org>; Thu, 24 Nov 2022 03:50:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5KqcOcEgIFi0TOph9IghaJwhk/riQMZsEbqVRIdHQT0=;
- b=ApUEl7XienxaTZM34NxC40iIUE3iPt4pf0H75DjK1W/AiYLYUPiGbsZ3zUdJaGuXaw
- ZVQUK01taqHHpAU1BjMhZvTBZXYiHQ7fRLUhxHe1+dRWOOn2am7I53H+okPQ+Gfwguir
- eZ9AG+ZWs2nx6Mo7V6ZP4qLgeoE1FwfV00T6b207whdoWidowz9eHGn5aZcFYuhOlshb
- zIS0nR5c73PWxb3Hj7xDM1F+mPKXCcviZJ1xXNWqkbI3Iu4+c5qcXCUo4Z7c1pvqqxI3
- 0R5o8rkCKU9dCr/M4o2RAnTiXgf8qfEvdpS+Rxh4DBYGYAoqDFa4edteV5LR4hIdzuTs
- yrVw==
+ bh=hsda7Zq3jpyzptb9XynNFoMbGolRoFCYCg8lAZ1ErIY=;
+ b=idcImeyGPJcbrfK80jQE5KdO0ppMXgOCpgoGsyDlc0mbIS5e906iZvS8oWRxdmjWWw
+ INBIjkBKlsQ8SGXP15u7ME3hXSKa0Sn9gx9C5RP8rQi19r0JoS9bLY9kQIbZtMQek/ep
+ 4W7s/NWFM8qY54k/O6wiieiaSAMz2L+pUgtWJoNXJD9VnaVz5X6PQul286voFwFsJe1o
+ KjPiUdAWXQqC1ICGdlXVo3fOl1/EbgoGID4hda7K8TF3pSwvqNDxvTllpnc8PZ0MlWtw
+ RfowLrCRx8aGBNe23g843Vu4YolLbyBOIDs2ofrZVFH2stAx1FnueWINyGGUV7UmwOQq
+ Jfow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=5KqcOcEgIFi0TOph9IghaJwhk/riQMZsEbqVRIdHQT0=;
- b=sGRl0PdzxKpJkDkNO0uqmginrZXwd+bBEc1DZ5BUP3a8hV1CynuJOcZLwMc7r42tB1
- HMaYB4+fROzG+bolE9g3QIpAQdyu/rxPTqKsGGYhC4CpDuy56mGxbUv4npGbf3LMi+Gh
- VW4uYU0VLRUGOnObjUUg+WMwP6DajC6cqGTAze92UmkpLwbWteKaUTbx/8l25oTo9IHq
- gxwOOrzA3FYXjfG3JXxMejp98Cu71bIRMpMVKa4n0wI/Eb7FZl9Gr/GEKJ7HTkmKua7A
- 0Am6Bw1AL3KRGzmiaJkhD9r8wyF24pJDeo3pxaxE/pYFqjGbyLUrmikmop7VnyVD3YcJ
- NVVg==
-X-Gm-Message-State: ANoB5pnswGKPIBfIU3rNcMSRSDUuznphhkckGIyvRgEpvTWS40z8rapv
- lyHqzX3qhcDpQOs5l6Hddgwl+A4cHRvpIg==
-X-Received: by 2002:a05:6000:1d94:b0:238:3d85:8e2c with SMTP id
- bk20-20020a0560001d9400b002383d858e2cmr20372497wrb.650.1669290644214; 
- Thu, 24 Nov 2022 03:50:44 -0800 (PST)
+ bh=hsda7Zq3jpyzptb9XynNFoMbGolRoFCYCg8lAZ1ErIY=;
+ b=UiEep5Cn9i4A9opQlQlFppYMfyKeDbqPaF+BYHYbyNjpTVMn8zPGheY1hjTZfIyliz
+ 2gNZsjLLTms6wdfezd66JBkP4x/voYMnRMVOhYatFesG/3sB58dcdDxRUwyq/u89L5Ye
+ 8zXX8rgkl9MfiR5BHRZTZwjSu9DrqEvE3UognhNs5TtwZbFbM9p+lFtjzt5c8BvBHOMN
+ 7ppQp1d53UOsNAoH9EWsmF8OtZ9X+nJpgCHFvTvcrzcHM4dnfSnJwIjT80jMnd0Ir7Dx
+ Ed50OOvxmtyQ/WXSZoV0KCL7Seb16TQO9jcpJgijcIoNQY9+0XmDfL8//EJa3tjoHehi
+ +YwA==
+X-Gm-Message-State: ANoB5pl9EkoOAP8CN4GKdycl7ahx8mqBJWky3DIDoeRbBeJ0pHjcsXG2
+ A732XawdyuMzf8lGwQFqUjV3xA==
+X-Received: by 2002:a5d:4533:0:b0:241:d13a:1d52 with SMTP id
+ j19-20020a5d4533000000b00241d13a1d52mr13278689wra.270.1669290641533; 
+ Thu, 24 Nov 2022 03:50:41 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- f14-20020a05600c154e00b003c6f3e5ba42sm6212559wmg.46.2022.11.24.03.50.42
+ f14-20020a05600c154e00b003c6f3e5ba42sm6212559wmg.46.2022.11.24.03.50.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Nov 2022 03:50:43 -0800 (PST)
+ Thu, 24 Nov 2022 03:50:40 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -113,16 +113,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org
-Subject: [PATCH for-8.0 12/19] target/openrisc: Convert to 3-phase reset
-Date: Thu, 24 Nov 2022 11:50:15 +0000
-Message-Id: <20221124115023.2437291-13-peter.maydell@linaro.org>
+Subject: [PATCH for-8.0 10/19] target/mips: Convert to 3-phase reset
+Date: Thu, 24 Nov 2022 11:50:13 +0000
+Message-Id: <20221124115023.2437291-11-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221124115023.2437291-1-peter.maydell@linaro.org>
 References: <20221124115023.2437291-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,89 +131,90 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: V0bzWW66HFvr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HfBSYPJ1l84x
 
-Convert the openrisc CPU class to use 3-phase reset, so it doesn't
+Convert the mips CPU class to use 3-phase reset, so it doesn't
 need to use device_class_set_parent_reset() any more.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/openrisc/cpu.h |  4 ++--
- target/openrisc/cpu.c | 12 ++++++++----
+ target/mips/cpu-qom.h |  4 ++--
+ target/mips/cpu.c     | 12 ++++++++----
  2 files changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-index 1d5efa5ca2f..5f607497052 100644
---- a/target/openrisc/cpu.h
-+++ b/target/openrisc/cpu.h
-@@ -34,7 +34,7 @@ OBJECT_DECLARE_CPU_TYPE(OpenRISCCPU, OpenRISCCPUClass, OPENRISC_CPU)
+diff --git a/target/mips/cpu-qom.h b/target/mips/cpu-qom.h
+index e28b5296073..0dffab453b2 100644
+--- a/target/mips/cpu-qom.h
++++ b/target/mips/cpu-qom.h
+@@ -34,7 +34,7 @@ OBJECT_DECLARE_CPU_TYPE(MIPSCPU, MIPSCPUClass, MIPS_CPU)
  /**
-  * OpenRISCCPUClass:
+  * MIPSCPUClass:
   * @parent_realize: The parent class' realize handler.
 - * @parent_reset: The parent class' reset handler.
 + * @parent_phases: The parent class' reset phase handlers.
   *
-  * A OpenRISC CPU model.
+  * A MIPS CPU model.
   */
-@@ -44,7 +44,7 @@ struct OpenRISCCPUClass {
+@@ -44,7 +44,7 @@ struct MIPSCPUClass {
      /*< public >*/
  
      DeviceRealize parent_realize;
 -    DeviceReset parent_reset;
 +    ResettablePhases parent_phases;
- };
+     const struct mips_def_t *cpu_def;
  
- #define TARGET_INSN_START_EXTRA_WORDS 1
-diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
-index de0176cd20c..4c11a1f7ada 100644
---- a/target/openrisc/cpu.c
-+++ b/target/openrisc/cpu.c
-@@ -70,13 +70,15 @@ static void openrisc_disas_set_info(CPUState *cpu, disassemble_info *info)
-     info->print_insn = print_insn_or1k;
- }
+     /* Used for the jazz board to modify mips_cpu_do_transaction_failed. */
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 7a565466cb3..c614b04607a 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -182,14 +182,16 @@ static bool mips_cpu_has_work(CPUState *cs)
  
--static void openrisc_cpu_reset(DeviceState *dev)
-+static void openrisc_cpu_reset_hold(Object *obj)
+ #include "cpu-defs.c.inc"
+ 
+-static void mips_cpu_reset(DeviceState *dev)
++static void mips_cpu_reset_hold(Object *obj)
  {
--    CPUState *s = CPU(dev);
-+    CPUState *s = CPU(obj);
-     OpenRISCCPU *cpu = OPENRISC_CPU(s);
-     OpenRISCCPUClass *occ = OPENRISC_CPU_GET_CLASS(cpu);
+-    CPUState *cs = CPU(dev);
++    CPUState *cs = CPU(obj);
+     MIPSCPU *cpu = MIPS_CPU(cs);
+     MIPSCPUClass *mcc = MIPS_CPU_GET_CLASS(cpu);
+     CPUMIPSState *env = &cpu->env;
  
--    occ->parent_reset(dev);
-+    if (occ->parent_phases.hold) {
-+        occ->parent_phases.hold(obj);
+-    mcc->parent_reset(dev);
++    if (mcc->parent_phases.hold) {
++        mcc->parent_phases.hold(obj);
 +    }
  
-     memset(&cpu->env, 0, offsetof(CPUOpenRISCState, end_reset_fields));
+     memset(env, 0, offsetof(CPUMIPSState, end_reset_fields));
  
-@@ -229,10 +231,12 @@ static void openrisc_cpu_class_init(ObjectClass *oc, void *data)
-     OpenRISCCPUClass *occ = OPENRISC_CPU_CLASS(oc);
-     CPUClass *cc = CPU_CLASS(occ);
-     DeviceClass *dc = DEVICE_CLASS(oc);
-+    ResettableClass *rc = RESETTABLE_CLASS(oc);
+@@ -562,10 +564,12 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
+     MIPSCPUClass *mcc = MIPS_CPU_CLASS(c);
+     CPUClass *cc = CPU_CLASS(c);
+     DeviceClass *dc = DEVICE_CLASS(c);
++    ResettableClass *rc = RESETTABLE_CLASS(c);
  
-     device_class_set_parent_realize(dc, openrisc_cpu_realizefn,
-                                     &occ->parent_realize);
--    device_class_set_parent_reset(dc, openrisc_cpu_reset, &occ->parent_reset);
-+    resettable_class_set_parent_phases(rc, NULL, openrisc_cpu_reset_hold, NULL,
-+                                       &occ->parent_phases);
+     device_class_set_parent_realize(dc, mips_cpu_realizefn,
+                                     &mcc->parent_realize);
+-    device_class_set_parent_reset(dc, mips_cpu_reset, &mcc->parent_reset);
++    resettable_class_set_parent_phases(rc, NULL, mips_cpu_reset_hold, NULL,
++                                       &mcc->parent_phases);
  
-     cc->class_by_name = openrisc_cpu_class_by_name;
-     cc->has_work = openrisc_cpu_has_work;
+     cc->class_by_name = mips_cpu_class_by_name;
+     cc->has_work = mips_cpu_has_work;
 -- 
 2.25.1
 

@@ -1,92 +1,92 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp4998148ejx;
-        Thu, 24 Nov 2022 03:52:03 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5B4Bfe36ytTBmh9gwmzjEiPz9ZwyN53WldaZe/Oi2WQH/nwKIvTnXGs2ke9niBhMnB42fQ
-X-Received: by 2002:a05:620a:4590:b0:6fa:3b2b:1da3 with SMTP id bp16-20020a05620a459000b006fa3b2b1da3mr28681252qkb.166.1669290723033;
-        Thu, 24 Nov 2022 03:52:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669290723; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp4998420ejx;
+        Thu, 24 Nov 2022 03:52:29 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6mXEaFkOdF8QJEYWVBKxR16ppSED6W2iJNo0ygAutDLGmXgXwqv06o5zfTSzc2cc10P7GI
+X-Received: by 2002:a0c:f7c8:0:b0:4c6:a76d:387f with SMTP id f8-20020a0cf7c8000000b004c6a76d387fmr14981065qvo.41.1669290749250;
+        Thu, 24 Nov 2022 03:52:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669290749; cv=none;
         d=google.com; s=arc-20160816;
-        b=NhHksAYLw8z0Iog7NdMwxtQYNasRCqXoYE5yrOAzCfNQj3flzyfz8e8lhAdMweWfqr
-         DmruRKp+k1Ch1JY33WfGv3DjK/khas+z9rYDEMxjqdTQnIn+/rZOFlQM849Jce23dzZk
-         hus8Jl5P3tRUIxSANL8dc1fG0PmOY1jTAmw+/d9vh+RIePn7z0m504KHHZO+FlUolgrV
-         D73CgJLrNfT7YVs/eOsPbSsfsIDDCFbcdNhyRdxfvNqGEJqvGiq1ZF/mB6qsjrjl1N5/
-         Twn+BNu/bFzPQSfKO4p3CE/abzXnBovT61SiJDHzscCaotRCLG+uAIL57T2GAesZ4vod
-         8ZSA==
+        b=AH9qtYlD6xfVceKVKnkKt039e+T5JupdYAjpyXpmPMJog6ZRDVeuAWHNkP+37cpOc9
+         T35SFXDi/r6yPAsFFAyy9/1mnEusU434UrxTHqpfijKIVQIoAKHFww6yaGQzkJ5T32yI
+         HvRUKYwULBJwSMA/qIVpI5SqzhZildVZrPvR0NSvKRqXb3EweKadEu1iLxtq6vUFAp0i
+         kBzn85J6GvkMeXkqYO0/xCoQwOd9jz0+oRdbWkHb1S1gwgu9PaqjYF8/nbyC/2VKY1Yl
+         2fl6vtYwQORwqPUxy8oVDER2Hzq36AzqYDqaO0rgQU6wav6RgQAnRShhTCjm0G3cwr7f
+         rGgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZpPOhWgTJeRtGlJ/Bb9mJkWWu83x48fPXZ9qUrHHGz0=;
-        b=yGT6LilH2nMqbuHi1IRC3WGAFtyhYZUvW6CIFiVA/DtO6oPluIqn51x1XyzlVGd+M6
-         NLvRnP9rmbsuJv7689SF5h/NZN2lz+kaXG3YAowGcI/ZihC5UZDZIsdf4k9yhztOXe4O
-         l5JqJsMYjvCMyv3JeZLqftsV7Rd/KQO3ceEGiNKdLJUT1MGsPTXaB7TbIW2axkkShHQQ
-         A9PACM80ewflWjlc3Dh+AETh8Hgeyxe054ttagwgVidE213lPWlQ1guRWo327zbm+rH0
-         Dq4id8C6Zd8mG5eEYNaxKBFFRmvupTiZcxOWISGSy0cE+Rj5X8FO3MjwXbOy1KCiJkuv
-         z9nw==
+        bh=tG2fS0Ltkyr6tkHuh7vNt9h6i4sUuPkno+hjIAk+/wY=;
+        b=hufTzfsAMm7WAXdFtF75q4YU4VJ3fxVqwWYyjgjaOP0ffaRSnDV+0ke9xcyB7DAnUQ
+         iru4PJaWUjU3vYCzmayzm5vyujfF5DQOwvlfpRl0HOsj+I+yBMDbeignWISu83dZwyA+
+         OIYejp0XjNl7Z8glzeg8IPs8/uOQPyrXgPxE24Q6qfvhCTKG4jI+RONBOsqiRO7954Dg
+         kSuUgrS1bIfdccijZ1SgyhB35oUxqdrqnhA6r961p2Cxv4YPartIdzZHhH8V1P9cTupI
+         i5N0w2SFF21Mn+ezyyXf5LHShnS0A5OIch86wG8JlVn0qPpiylcZ5RsbWqDUHJi5VFIT
+         wcvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RBQx5v8N;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=L3exwr8j;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p25-20020ac84619000000b003a4f6a56710si453231qtn.615.2022.11.24.03.52.02
+        by mx.google.com with ESMTPS id n16-20020a05620a295000b006e2b66fd947si638567qkp.454.2022.11.24.03.52.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Nov 2022 03:52:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Nov 2022 03:52:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RBQx5v8N;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=L3exwr8j;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oyAlB-0004P3-GH; Thu, 24 Nov 2022 06:51:17 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1oyAl2-0004DQ-Lv; Thu, 24 Nov 2022 06:51:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oyAks-0003s7-LL
- for qemu-arm@nongnu.org; Thu, 24 Nov 2022 06:50:59 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1oyAkp-0003kG-AF
+ for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:50:55 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oyAkm-0004wF-9D
- for qemu-arm@nongnu.org; Thu, 24 Nov 2022 06:50:58 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id x5so2122297wrt.7
- for <qemu-arm@nongnu.org>; Thu, 24 Nov 2022 03:50:51 -0800 (PST)
+ id 1oyAkl-0004y9-K3
+ for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:50:55 -0500
+Received: by mail-wr1-x429.google.com with SMTP id q7so1232768wrr.8
+ for <qemu-devel@nongnu.org>; Thu, 24 Nov 2022 03:50:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZpPOhWgTJeRtGlJ/Bb9mJkWWu83x48fPXZ9qUrHHGz0=;
- b=RBQx5v8NdoZVOHTk82/TeT0jLfN8OFur+hGOOdDp70zHx09Vu9fTBYXEo6BblxdzQp
- X6nxWJ0CYHaAIy0KTq8U5BV226hVzPVgAXLbqqPGqM3h2PxCp6eMmgdRCHm9jt/JHgXB
- exIFC+goYjYzJTs6MvAjq2/U0TuT9uYDx72PaF+PyVMusn4XcnkdCGD9DZsgZVn804PC
- 8jkrJKKFzBHMelvclFxnLPJAGkBd1Kk0kM6MC9/Ib8bRKP4x29tAVxcnPnp7BSUEUqLy
- BYRqGyC7q0WPWJOVe0rC3qJUbOOqYoQnCeHXxrdVSk7eME1nnfjISaaqy/RVR4uWEXZq
- Q61g==
+ bh=tG2fS0Ltkyr6tkHuh7vNt9h6i4sUuPkno+hjIAk+/wY=;
+ b=L3exwr8j7qW5/Y+l7P/HD6TGh97pFUliprBCrqZZ+PpR0xrhaN33PDSw7Lawxh2HtJ
+ FAFa6a/wPj8GgPI43cEKfJeAMoc7Q8r2uL1xdiKuQxoaTTp2/F6yDV4Pm0ji007jNpZ8
+ v8d4ysyCn73fYtM1JS/C76fioSFs3tbfB6jt1Lq8L18UsPzYi0Kj+WMnbpeCn6ON03Lx
+ ogY/zSKXwQHjR6R+XfJKrIjuoawgJLOkJTN+Q+eGcq1KelfkD/U3szbS25NDiFOf1f9I
+ Rjh6A8scYs7Z0yYgPuxkiKxwENCUI/tABqchPYcAU23ZBSph/gB9dEeUA6QjG32/Bp9J
+ +ryA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZpPOhWgTJeRtGlJ/Bb9mJkWWu83x48fPXZ9qUrHHGz0=;
- b=OgL+Thi/YWyz5is0uWM8bPuc+qin3W3U2FVk5S4EIocNVnFX6nQdlTCoxF4Of3upPj
- 05AXLr5BU/4JuddM/VpbwMT5L25Hc1Vp6MkcJFjOrQ+GFrN9aI4h8Uz0CerHJrCcg+l4
- lfnBh3DgILxDKnsGsM7sCSKZVtcjAFr5jsYgo/QSWTwlFYzEKeY1Yh5nII+SrJnPITvP
- W8kGkh2VzFUOzoU9EhCfWB6Jx7+i4C40u2/FCQu6f/dFztG81II7XJj0MNwU/CIinXKb
- Oho22sZ7X4/lGxOKbaLwgAlbBWffxokUXDnrFBJmOjjvJJEKjfDPJJLIgSzG5hQqluqu
- FX6A==
-X-Gm-Message-State: ANoB5pkzYPJF7fdm6gGbjEliekG4eOS0tvX8lxmJjzlSrO4DA+Ajbfqr
- v+Vm9wuUAThcL/ghki6zl7TXTQ==
-X-Received: by 2002:a05:6000:78d:b0:22e:3d63:80bc with SMTP id
- bu13-20020a056000078d00b0022e3d6380bcmr20933017wrb.30.1669290651334; 
- Thu, 24 Nov 2022 03:50:51 -0800 (PST)
+ bh=tG2fS0Ltkyr6tkHuh7vNt9h6i4sUuPkno+hjIAk+/wY=;
+ b=kCpgMgWRMTpR7eTwivtWnhHqQrsXyHyRj/yGEBnYYCVGSHrewfwRVN+vCRc23IyrE+
+ ZwdfJMuPl2V6KI6aXebmMagadVUwEj2WMhWhIPZ869AtztpKYAq7hDGZfvVIYECOzfrW
+ JgeHguacvMv/iwqdFSZ9rDtH4M22zq1cx/6VA18NFVyV/BcB15rg3PXAptNsAbWInioV
+ lrDnN3LYCDS9LxsFvqtwtXy1p0kcN4ZOWTIPK1zE6JHTg5Ohxdk2NeU0q0Omq8U8ZMms
+ AU+fpDzmQycrYS3BsFVWS8f6VyjeLMJBZZZiSrgtb5CiYzkMxo2noX3/KeJJ3c26VgAH
+ wnbw==
+X-Gm-Message-State: ANoB5pk9itBzw85V6KOltrJ5NEvlZjlnogLHpt0qQ2hb5JEyhaHhf0NJ
+ dZqVOPIOmasff5vYhAo98LV1kT5RzVc04g==
+X-Received: by 2002:adf:ee84:0:b0:241:e3b9:388a with SMTP id
+ b4-20020adfee84000000b00241e3b9388amr7632130wro.252.1669290645620; 
+ Thu, 24 Nov 2022 03:50:45 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- f14-20020a05600c154e00b003c6f3e5ba42sm6212559wmg.46.2022.11.24.03.50.50
+ f14-20020a05600c154e00b003c6f3e5ba42sm6212559wmg.46.2022.11.24.03.50.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Nov 2022 03:50:50 -0800 (PST)
+ Thu, 24 Nov 2022 03:50:45 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -113,16 +113,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org
-Subject: [PATCH for-8.0 17/19] target/sparc: Convert to 3-phase reset
-Date: Thu, 24 Nov 2022 11:50:20 +0000
-Message-Id: <20221124115023.2437291-18-peter.maydell@linaro.org>
+Subject: [PATCH for-8.0 13/19] target/ppc: Convert to 3-phase reset
+Date: Thu, 24 Nov 2022 11:50:16 +0000
+Message-Id: <20221124115023.2437291-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221124115023.2437291-1-peter.maydell@linaro.org>
 References: <20221124115023.2437291-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,92 +131,96 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ti7BTTdZYVlp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3shSfANIxxIS
 
-Convert the sparc CPU class to use 3-phase reset, so it doesn't
+Convert the ppc CPU class to use 3-phase reset, so it doesn't
 need to use device_class_set_parent_reset() any more.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/sparc/cpu-qom.h |  4 ++--
- target/sparc/cpu.c     | 12 ++++++++----
+ target/ppc/cpu-qom.h  |  4 ++--
+ target/ppc/cpu_init.c | 12 ++++++++----
  2 files changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/target/sparc/cpu-qom.h b/target/sparc/cpu-qom.h
-index 86ed37d9333..78bf00b9a23 100644
---- a/target/sparc/cpu-qom.h
-+++ b/target/sparc/cpu-qom.h
-@@ -35,7 +35,7 @@ typedef struct sparc_def_t sparc_def_t;
+diff --git a/target/ppc/cpu-qom.h b/target/ppc/cpu-qom.h
+index 89ff88f28c9..0fbd8b72468 100644
+--- a/target/ppc/cpu-qom.h
++++ b/target/ppc/cpu-qom.h
+@@ -143,7 +143,7 @@ typedef struct PPCHash64Options PPCHash64Options;
  /**
-  * SPARCCPUClass:
+  * PowerPCCPUClass:
   * @parent_realize: The parent class' realize handler.
 - * @parent_reset: The parent class' reset handler.
 + * @parent_phases: The parent class' reset phase handlers.
   *
-  * A SPARC CPU model.
+  * A PowerPC CPU model.
   */
-@@ -45,7 +45,7 @@ struct SPARCCPUClass {
-     /*< public >*/
+@@ -154,7 +154,7 @@ struct PowerPCCPUClass {
  
      DeviceRealize parent_realize;
+     DeviceUnrealize parent_unrealize;
 -    DeviceReset parent_reset;
 +    ResettablePhases parent_phases;
-     sparc_def_t *cpu_def;
- };
+     void (*parent_parse_features)(const char *type, char *str, Error **errp);
  
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index 4c3d08a8751..1734ef8dc6b 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -28,14 +28,16 @@
+     uint32_t pvr;
+diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+index cbf00813743..95d25856a0e 100644
+--- a/target/ppc/cpu_init.c
++++ b/target/ppc/cpu_init.c
+@@ -7031,16 +7031,18 @@ static bool ppc_cpu_has_work(CPUState *cs)
+     return cs->interrupt_request & CPU_INTERRUPT_HARD;
+ }
  
- //#define DEBUG_FEATURES
- 
--static void sparc_cpu_reset(DeviceState *dev)
-+static void sparc_cpu_reset_hold(Object *obj)
+-static void ppc_cpu_reset(DeviceState *dev)
++static void ppc_cpu_reset_hold(Object *obj)
  {
 -    CPUState *s = CPU(dev);
 +    CPUState *s = CPU(obj);
-     SPARCCPU *cpu = SPARC_CPU(s);
-     SPARCCPUClass *scc = SPARC_CPU_GET_CLASS(cpu);
-     CPUSPARCState *env = &cpu->env;
+     PowerPCCPU *cpu = POWERPC_CPU(s);
+     PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
+     CPUPPCState *env = &cpu->env;
+     target_ulong msr;
+     int i;
  
--    scc->parent_reset(dev);
-+    if (scc->parent_phases.hold) {
-+        scc->parent_phases.hold(obj);
+-    pcc->parent_reset(dev);
++    if (pcc->parent_phases.hold) {
++        pcc->parent_phases.hold(obj);
 +    }
  
-     memset(env, 0, offsetof(CPUSPARCState, end_reset_fields));
-     env->cwp = 0;
-@@ -889,12 +891,14 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
-     SPARCCPUClass *scc = SPARC_CPU_CLASS(oc);
+     msr = (target_ulong)0;
+     msr |= (target_ulong)MSR_HVB;
+@@ -7267,6 +7269,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+     PowerPCCPUClass *pcc = POWERPC_CPU_CLASS(oc);
      CPUClass *cc = CPU_CLASS(oc);
      DeviceClass *dc = DEVICE_CLASS(oc);
 +    ResettableClass *rc = RESETTABLE_CLASS(oc);
  
-     device_class_set_parent_realize(dc, sparc_cpu_realizefn,
-                                     &scc->parent_realize);
-     device_class_set_props(dc, sparc_cpu_properties);
+     device_class_set_parent_realize(dc, ppc_cpu_realize,
+                                     &pcc->parent_realize);
+@@ -7275,7 +7278,8 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+     pcc->pvr_match = ppc_pvr_match_default;
+     device_class_set_props(dc, ppc_cpu_properties);
  
--    device_class_set_parent_reset(dc, sparc_cpu_reset, &scc->parent_reset);
-+    resettable_class_set_parent_phases(rc, NULL, sparc_cpu_reset_hold, NULL,
-+                                       &scc->parent_phases);
+-    device_class_set_parent_reset(dc, ppc_cpu_reset, &pcc->parent_reset);
++    resettable_class_set_parent_phases(rc, NULL, ppc_cpu_reset_hold, NULL,
++                                       &pcc->parent_phases);
  
-     cc->class_by_name = sparc_cpu_class_by_name;
-     cc->parse_features = sparc_cpu_parse_features;
+     cc->class_by_name = ppc_cpu_class_by_name;
+     cc->has_work = ppc_cpu_has_work;
 -- 
 2.25.1
 

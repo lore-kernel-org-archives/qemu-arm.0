@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp4997878ejx;
-        Thu, 24 Nov 2022 03:51:35 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7Bqtz512A/cejtXwwf3q4yNOy+q9jdekXU3Wox3//qlfa8I+nGHQcxeHojQbbaXHtWVdyX
-X-Received: by 2002:a05:6214:806:b0:4c6:9385:eadb with SMTP id df6-20020a056214080600b004c69385eadbmr13545567qvb.114.1669290695674;
-        Thu, 24 Nov 2022 03:51:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669290695; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp4997961ejx;
+        Thu, 24 Nov 2022 03:51:44 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7eKfPx0i9swB5mlLkFsNXSRwyk3ZH8hofKoonP7df/y5KevZ6KsPd9AeRzrwYGRw/Huk5K
+X-Received: by 2002:a05:622a:5a14:b0:3a5:bf05:f0dd with SMTP id fy20-20020a05622a5a1400b003a5bf05f0ddmr12248533qtb.342.1669290703978;
+        Thu, 24 Nov 2022 03:51:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669290703; cv=none;
         d=google.com; s=arc-20160816;
-        b=EHVw3zbXw4oXTdjtJA/l4CBk9Wzr8s/OAMSAKquZ5YfOol/NSo7YHZtAVzeqxrYFbi
-         9ospj73nDQa3wsBTQzMiJPSWPCi+OMwlHDHiFjqogcmY9wJHGRs1NIr59iUVVlk0+kBc
-         oWlLmie3/fGROHOFYimm23TwnRgQYRu0v2c2F7ePZ5PitGtYKyyzSjMrCDWkblUl9k+J
-         mDaPYjZIf84raa+T1C6LDzmYqrFuZSRZEDyeCB85cP6pRRu9bXcDxetr0I1pxLT27tZx
-         Gv9zNSN5hLby75LyJkrWfRVstKxS5ymMjAJ0JRQlhGwlpMw5g3X8gu6IdpJF8sZOrtOa
-         v+UQ==
+        b=VDvyCx//dqNCNel3XkBYQ28NmDTY3nCgdWIts2LsMNpCBFKWMIIguaO6J9NKTIPVK5
+         MYkyHs6MAyvwdjU7N3BBH2Q/NAyNTQX0R2+aR3x/71VXAHKaU2O9QTpw1KTl+kJZevl7
+         bYFgiqgpMmiIpI+svGrk6W3OFEWEtpmAcErtU3fhOlG0HgxbmKa7WNXZGTByWxm4OTJZ
+         bYQClrKQrZ0xvJJqrlFg3dycxHelz5R5MkDrF0YIgg/4sNdk+HeoAVWFWq+AnBqTwsDq
+         oXBi33BsPa/E+ld4MDqFa8pGDac52Lxss4ggTAjiyAYGz+POBO7DGLheJL6VYuEWWD+H
+         L16Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=lxcgvzwggkDla5d1Sb8Xn1+c+5tt8+jDbD3DONm2szU=;
-        b=hPMziVrXi3vW3Ted+e4bWoLKNO9MNqBMza4uez9WEigrlZcZD1V8XKxRyYcfODRwUK
-         5IBohuNdH1qKvH05uGjCc9sRwpDYSNvKmwoq2xudA3oAfiIJiim4SKPu1FAZ/rnevS4u
-         DtHhkA9hsC0YB8cm64r5WG8zA99OH0T1xjsE/GmnTRnw5Yl99HsKJGUEchIa9Ubh0gPB
-         oylmsqcadu5X2kBw1la7P/RRrnp9bJI2pYRolEbOn05bc8B9wM+54JIzaNlFWKPgMwqr
-         G1DRkRNAty05NDMd/aFHTthTXheEaqg04HMRGi3Qde9FnPibuUiUB+T384TFL8TLxie7
-         Gwpg==
+        bh=DGCmc5zG7qiC9O+a1Tf+YC4O8NghpHhNCp4cgIMeJEM=;
+        b=b0gOmSAiWBSX5cHkAIvtwvN9uGLhXKwMzmZwNAOk9WPbqkMUAb9ctpqtusc5JlKpvR
+         U6DnTTsPYJ6JLGUl3uN/VloiwsmxUWck8GnRkPxZl87b0LnbHLAEFmSj5UC/r/6ZSSVs
+         UDW2HBPpf6H8n0/+nph3fnDJENDRhX7NND3kwdfyBAVLH3rxjvuVfsX2NR5VmY7gFkJC
+         yoOPf1mKukspIf0zlvlE7e/jCUe9uLLCHWjW6rKktnoVql1w1JKDOdpLaLaK6Q6R9a7A
+         UVh9bc6lD/PZCCGf+N6E+uSA3KiWVvrR4eTWMvYr2OssguZpNu7ZLCyl+hH+PX0v/hRf
+         /tkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KDti8LMD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wAw5HxTR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7-20020ad45aa7000000b004c66ff89b72si518298qvg.448.2022.11.24.03.51.35
+        by mx.google.com with ESMTPS id bb14-20020a05622a1b0e00b003a5214bbc72si484367qtb.0.2022.11.24.03.51.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Nov 2022 03:51:35 -0800 (PST)
+        Thu, 24 Nov 2022 03:51:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KDti8LMD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wAw5HxTR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1oyAkt-0003sU-9a; Thu, 24 Nov 2022 06:50:59 -0500
+	id 1oyAl5-0004HV-31; Thu, 24 Nov 2022 06:51:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oyAkb-0003WZ-Q6
- for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:50:45 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1oyAkt-0003tY-GI
+ for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:50:59 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oyAkW-0004rs-RI
- for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:50:41 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- j5-20020a05600c410500b003cfa9c0ea76so1061922wmi.3
- for <qemu-devel@nongnu.org>; Thu, 24 Nov 2022 03:50:34 -0800 (PST)
+ id 1oyAkn-0004pj-Fc
+ for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:50:59 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ t25-20020a1c7719000000b003cfa34ea516so4364069wmi.1
+ for <qemu-devel@nongnu.org>; Thu, 24 Nov 2022 03:50:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=lxcgvzwggkDla5d1Sb8Xn1+c+5tt8+jDbD3DONm2szU=;
- b=KDti8LMDP9qmDFJWzbaK5euUkCQCDTawxBacqMpqCIk9xr/PbtChFnvEyzmDd1f2Mp
- Al8GwgwJUUY3434vcwY9xwBpfQD7ZNnw1uawDzNKmVnp1gYXg5q2je5isKRmdTlq2jQp
- SCMYkIN7y/5WRj/8qnYbCgwA+gpVqhniXkmWEiXvwtMjM0l9aKbwkDLzvkAlNErz5Xth
- Rm4XxrwMIYTVf860P8muGy5EXedup8NjKGIqM6F0pIxjnoJORBmslkp5VtlgTmfTAWxq
- iq05HKgNFyILOkQfUOdfpldBVT+JrqS4oBeZWI4BBBmcqJOtFd44O1U90eeepXL36kqK
- KQIg==
+ bh=DGCmc5zG7qiC9O+a1Tf+YC4O8NghpHhNCp4cgIMeJEM=;
+ b=wAw5HxTRUcw0IdM23IH/clxdS6CtzahTsyWOEaUM+5oL5JVQ2eCbmTeZXfxUMUuTSu
+ R3ijriwlBCg4SjzN474ER5ZCYVYS3+ozndMgAwF1aNGYunYox3GR5s13gLyCkIPp9ev5
+ YNyYaOxu3iC7Psh+LFmJOccl5HNoE1E7JxKrWRR9+qiPRytxOoiqKw/+oW2fLdAp5X5N
+ 0jNQFoXaCHOxXdcwPkmmJyNIjCmAyQkty1KiDnTeDhHjrc4bSH2TAo6kgja3gk9niJit
+ caHLQhgndfFzQzVNus/pLXiZPBupbzKneeUpqH3lknGbnF7SlVLYaqHjnxbTQc1dsYy+
+ BRPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=lxcgvzwggkDla5d1Sb8Xn1+c+5tt8+jDbD3DONm2szU=;
- b=PPq+1DOUnc6bbMYApM95+dCRAvTWBSu4gQkcnDniKh1j24VHgOWoPJU4HhZLdGHt5p
- 2+WFy82suT7cYfITMM8kKS1fYmPMO1ooyVzjkXopHDt2ikOXKPK78OsZLSmPWU9JDhFN
- scC4KNDhW+scTqpw+08VSC7pAozB+iHR9HDM7VqFeamDnF9sZKZfz+WiBMb28fzpMYyr
- Q7NdKdTrD95uZdhKNPJX8W06G5mbW0//SRhj8Bk+k07WR/ml9Lq7Hb4wv7DndSIHVGKA
- zWqfeVZgwQdtNbdZ8O8qs4reHKaX2RUcQv9+vI8HHADqxrB3wsG3cTeTdIiprXriDyJZ
- 0R+g==
-X-Gm-Message-State: ANoB5plmsLnoAUEOkIl8SUzsyh4uPbb55u4ZKMcgbVirauXHpjjlYRH7
- ysuhpKPZ5OFUhhRFlCD+/uXa1lVu3URF6A==
-X-Received: by 2002:a05:600c:1c92:b0:3cf:88cf:1f8e with SMTP id
- k18-20020a05600c1c9200b003cf88cf1f8emr14329910wms.9.1669290633481; 
- Thu, 24 Nov 2022 03:50:33 -0800 (PST)
+ bh=DGCmc5zG7qiC9O+a1Tf+YC4O8NghpHhNCp4cgIMeJEM=;
+ b=g62Ud61tiOZ2IggLMzSlIX+F3J4LmCRJG/OZ1ZsJeX1mCKycsrz/JBMG8bqAQ27dh4
+ XtcSm4CAlXBrGmcDEq+0MpMZZZgeToRB1NokBGWolwjfdwVqzX5Hs0fEzAKbm9vnlY0e
+ cBFsEUGe5CCBH0Casm8HYYJ133+D0N1GPSPvBivWZo8BumK6aNC1EzlTIkSG7LWRyRdH
+ b1hJMTc8fTRI+F88H/DUrtpt86lv0pMcWsB3LHsYbDiiJHZFuE2E2iwaStC4Ewa+kfNf
+ 3j9FrSxfbtHOV4MliVCQ0UbNLagoQVP02U7jdU5vY6UCT/QJrazOHx0eZ/wyJ1kf5hcl
+ 7ncA==
+X-Gm-Message-State: ANoB5pmUud6DmQLhpFRT/doRIoXCaKUvTM16hx1oHvHrtdWF9UxRHomw
+ mXqdVVpVh64PLBJ1XGGmVVMbi/eODMh1PA==
+X-Received: by 2002:a05:600c:1d93:b0:3cf:d0ba:e5ff with SMTP id
+ p19-20020a05600c1d9300b003cfd0bae5ffmr23047297wms.36.1669290652711; 
+ Thu, 24 Nov 2022 03:50:52 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- f14-20020a05600c154e00b003c6f3e5ba42sm6212559wmg.46.2022.11.24.03.50.32
+ f14-20020a05600c154e00b003c6f3e5ba42sm6212559wmg.46.2022.11.24.03.50.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Nov 2022 03:50:32 -0800 (PST)
+ Thu, 24 Nov 2022 03:50:52 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -114,16 +114,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org
-Subject: [PATCH for-8.0 05/19] target/hexagon: Convert to 3-phase reset
-Date: Thu, 24 Nov 2022 11:50:08 +0000
-Message-Id: <20221124115023.2437291-6-peter.maydell@linaro.org>
+Subject: [PATCH for-8.0 18/19] target/tricore: Convert to 3-phase reset
+Date: Thu, 24 Nov 2022 11:50:21 +0000
+Message-Id: <20221124115023.2437291-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221124115023.2437291-1-peter.maydell@linaro.org>
 References: <20221124115023.2437291-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -145,69 +145,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TE4Jyzz8EKv8
+X-TUID: VgkEjzsAzTeR
 
-Convert the hexagon CPU class to use 3-phase reset, so it doesn't
+Convert the tricore CPU class to use 3-phase reset, so it doesn't
 need to use device_class_set_parent_reset() any more.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/hexagon/cpu.h |  2 +-
- target/hexagon/cpu.c | 12 ++++++++----
+ target/tricore/cpu-qom.h |  2 +-
+ target/tricore/cpu.c     | 12 ++++++++----
  2 files changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/target/hexagon/cpu.h b/target/hexagon/cpu.h
-index 2a65a57bab3..794a0453fd4 100644
---- a/target/hexagon/cpu.h
-+++ b/target/hexagon/cpu.h
-@@ -137,7 +137,7 @@ typedef struct HexagonCPUClass {
-     CPUClass parent_class;
+diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
+index ee24e9fa76a..612731daa09 100644
+--- a/target/tricore/cpu-qom.h
++++ b/target/tricore/cpu-qom.h
+@@ -32,7 +32,7 @@ struct TriCoreCPUClass {
      /*< public >*/
+ 
      DeviceRealize parent_realize;
 -    DeviceReset parent_reset;
 +    ResettablePhases parent_phases;
- } HexagonCPUClass;
+ };
  
- struct ArchCPU {
-diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
-index 03221fbdc28..658ca4ff783 100644
---- a/target/hexagon/cpu.c
-+++ b/target/hexagon/cpu.c
-@@ -281,14 +281,16 @@ static void hexagon_restore_state_to_opc(CPUState *cs,
-     env->gpr[HEX_REG_PC] = data[0];
+ 
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 2c54a2825f8..594cd1efd5e 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -68,14 +68,16 @@ static void tricore_restore_state_to_opc(CPUState *cs,
+     env->PC = data[0];
  }
  
--static void hexagon_cpu_reset(DeviceState *dev)
-+static void hexagon_cpu_reset_hold(Object *obj)
+-static void tricore_cpu_reset(DeviceState *dev)
++static void tricore_cpu_reset_hold(Object *obj)
  {
--    CPUState *cs = CPU(dev);
-+    CPUState *cs = CPU(obj);
-     HexagonCPU *cpu = HEXAGON_CPU(cs);
-     HexagonCPUClass *mcc = HEXAGON_CPU_GET_CLASS(cpu);
-     CPUHexagonState *env = &cpu->env;
+-    CPUState *s = CPU(dev);
++    CPUState *s = CPU(obj);
+     TriCoreCPU *cpu = TRICORE_CPU(s);
+     TriCoreCPUClass *tcc = TRICORE_CPU_GET_CLASS(cpu);
+     CPUTriCoreState *env = &cpu->env;
  
--    mcc->parent_reset(dev);
-+    if (mcc->parent_phases.hold) {
-+        mcc->parent_phases.hold(obj);
+-    tcc->parent_reset(dev);
++    if (tcc->parent_phases.hold) {
++        tcc->parent_phases.hold(obj);
 +    }
  
-     set_default_nan_mode(1, &env->fp_status);
-     set_float_detect_tininess(float_tininess_before_rounding, &env->fp_status);
-@@ -339,11 +341,13 @@ static void hexagon_cpu_class_init(ObjectClass *c, void *data)
-     HexagonCPUClass *mcc = HEXAGON_CPU_CLASS(c);
+     cpu_state_reset(env);
+ }
+@@ -180,11 +182,13 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
+     TriCoreCPUClass *mcc = TRICORE_CPU_CLASS(c);
      CPUClass *cc = CPU_CLASS(c);
      DeviceClass *dc = DEVICE_CLASS(c);
 +    ResettableClass *rc = RESETTABLE_CLASS(c);
  
-     device_class_set_parent_realize(dc, hexagon_cpu_realize,
+     device_class_set_parent_realize(dc, tricore_cpu_realizefn,
                                      &mcc->parent_realize);
  
--    device_class_set_parent_reset(dc, hexagon_cpu_reset, &mcc->parent_reset);
-+    resettable_class_set_parent_phases(rc, NULL, hexagon_cpu_reset_hold, NULL,
+-    device_class_set_parent_reset(dc, tricore_cpu_reset, &mcc->parent_reset);
++    resettable_class_set_parent_phases(rc, NULL, tricore_cpu_reset_hold, NULL,
 +                                       &mcc->parent_phases);
+     cc->class_by_name = tricore_cpu_class_by_name;
+     cc->has_work = tricore_cpu_has_work;
  
-     cc->class_by_name = hexagon_cpu_class_by_name;
-     cc->has_work = hexagon_cpu_has_work;
 -- 
 2.25.1
 

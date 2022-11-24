@@ -1,97 +1,128 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3330415ejx;
-        Tue, 22 Nov 2022 06:23:23 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6QCvhEAinQ1mBXUZRsCKN5TQVpGwU2SSd+UKQ6CbkZswVpeZxcNG9I/5B5qRIzflCeGqBh
-X-Received: by 2002:a05:6214:ab1:b0:4c6:a7fa:b7a with SMTP id ew17-20020a0562140ab100b004c6a7fa0b7amr10532759qvb.40.1669127003682;
-        Tue, 22 Nov 2022 06:23:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669127003; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp4997471ejx;
+        Thu, 24 Nov 2022 03:50:58 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4ah01R0BocGu9LGg/ICMTW3iwEX694MAhoKNhuB6zXGU/Ig067tRHx5S3fVuNXIuB13n1l
+X-Received: by 2002:ad4:4c03:0:b0:4bc:182e:78c2 with SMTP id bz3-20020ad44c03000000b004bc182e78c2mr11850273qvb.2.1669290658070;
+        Thu, 24 Nov 2022 03:50:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669290658; cv=none;
         d=google.com; s=arc-20160816;
-        b=j6yfDxAKArweflmJwxyp69fV9HvVLOIzPCPox77+wxkk9xMyLQEU9/9Aec/YSHiTIH
-         OgB3+aYavjO9CdPmCgfo949g1RtyJfF1c0NTEQAvH316X0kTeXxzSrWCoothso7tGnOX
-         IcrrOD/r5EB7a5FiccvGMsaKqzObjiqnRMjHKazSHxVCHC+ZrsceOciqy5D/cEeeQUMl
-         WtvfB79tdPc80UoiPkwDMTWG+x8hhjzS7AbiYafFN7pYVq9Qxsbzp51bz2hxy/gM+C27
-         QdUomUdlLyC8yMHgJVUdPjg88/L/yS7d1EZdPPsSwJj7xnUxwu+lbQG7bK4XAH5+Tf77
-         B4Nw==
+        b=h/EMNJq9mKz/EGEfHEQf+rP3+6OJypOqINWOhAzulHhYtR6uHhs3AKbpHpYePvQBIl
+         TuZ6YrqXYfgFqqV54J7XYpNPy4hQhqsI5UkPVb2GkIE2iHr2cisFuSD0kB7+2K+KVvtH
+         vBGYfsmMo6vUkuH0syFXkrGjVJK8RLpLwUaje8YE9NGLjb0Fjt1RYhfHj4xG5fw6s5aL
+         AE7xxFbTHmPgYmb7NLOFN37NdNLi25Ua5qeJhxPYIOjz6o0FUX5W4IHMqR/cQW3WleeA
+         3kiLYrsv1qoLgGUrqXNvKKEyO3aaleZn66hX5ixQtSai5uPQiAmZPDXbNb1lvMdqGam1
+         rWzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=V4Sw8aSxUN9A5QwjVO0Bw1eHNkGVVrDX+DJy0NatTCA=;
-        b=TI9dG26F4FIsE80xjdK6TjJFT3UnuN12S286mxSqbiZC5qsK5jmdsqDLiglAAbqmq4
-         td16zulEWMwRooavixYraN+XB+g1yxwQNqCQJ3eBu6L0wJWTVpmd4qwDcR+vlfoL3z1k
-         5gBV9K875mj0LLeDHEjw+1kUuCrWJ1yx81ekvSDDw2aqcXjwVOqnpCstOICPQpE59Tww
-         e59B3bmN99g1Ae/9X4J/LuQX+VLsTku2/GFqZ+3D9iFLjjbiZfLeIeC3dXuiJbnvlI4T
-         a3X+biXc06w08S1CrrkpiZsm/sgYj7E7JGzhULKpJJdaOrnT/LvFRfWJPIwKIM/AZI2l
-         ievQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=6ZF6j0QSh9sYA2HgkILcyWukmhzzkxCNhgIX/8WMk28=;
+        b=lDv5uSTWAzKZQJKxEFDPTQin0V/r03jftQ1Yi5GPIzeTTK1AcH+IhIGsngLJTfUhx+
+         DZD1VRbL5OZEvsd1RrKbpaLRrC0dl+hMeChJ/AO3EwH2AdErPhJ6P3dNqJM8cKWWNCCa
+         ecWghlXx9zNUyBmaeJt+YvoPz6m+zLZ84d+OpFU78nhgILx1pl+z3o2LGjW5PtndFiPQ
+         jYhX3r6bveo05KMuTMgC5JGiLpIvC0oTfbGrS3qzJ8m83BeT0CLdcd8iZk+OJLuPJnzL
+         jOBbSlzt4WRhN3yg3n6gTsjHvrFzuy7PkFCyXCYi41ALSuLSlspbdkkqb2wcFpPu8lBL
+         gtXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h4JBSVMz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NAT4FHh2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id do22-20020a05620a2b1600b006fc2508ce8esi251257qkb.729.2022.11.22.06.23.23
+        by mx.google.com with ESMTPS id eq2-20020ad45962000000b004bb591ab1besi497330qvb.389.2022.11.24.03.50.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Nov 2022 06:23:23 -0800 (PST)
+        Thu, 24 Nov 2022 03:50:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h4JBSVMz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NAT4FHh2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oxUBG-000362-V5; Tue, 22 Nov 2022 09:23:22 -0500
+	id 1oyAkn-0003gP-SL; Thu, 24 Nov 2022 06:50:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oxUBF-0002zO-8Y
- for qemu-arm@nongnu.org; Tue, 22 Nov 2022 09:23:21 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ id 1oyAkd-0003Ww-L4
+ for qemu-arm@nongnu.org; Thu, 24 Nov 2022 06:50:45 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oxUBD-0003ug-Sn
- for qemu-arm@nongnu.org; Tue, 22 Nov 2022 09:23:21 -0500
-Received: by mail-pl1-x635.google.com with SMTP id 4so13820014pli.0
- for <qemu-arm@nongnu.org>; Tue, 22 Nov 2022 06:23:19 -0800 (PST)
+ id 1oyAkY-0004u2-UI
+ for qemu-arm@nongnu.org; Thu, 24 Nov 2022 06:50:43 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id x17so2124235wrn.6
+ for <qemu-arm@nongnu.org>; Thu, 24 Nov 2022 03:50:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=V4Sw8aSxUN9A5QwjVO0Bw1eHNkGVVrDX+DJy0NatTCA=;
- b=h4JBSVMzURhPQYzyrI7pdrhFNkbFxsjFhZAc3KOUKyRXYW3zfMweTYenJSVnl6XySj
- 02pqy4uHNkad1GJY/Qq0prgL1psAWig2rH5/jMM7AXi7XcNNDrR9DUIIkKAPZ8TJVvJG
- tt7xHwwC3wQayQc8y7Nu+h/CJwN3NjQ6x0hIZGV/Rd/2yBqzzubCK/txBrj8zMgOYu6/
- NEPJ0hXtY96DIBn7wcTx64aKPLB+xwu/lQ4cI0OIYo1TdzMZghVd4lMNzTzrSC60HQSs
- tBx3T2g59t5mEFy6vL+OiMoC6rVHUCsb0O1xtjQY/+VmQ8NNMbQvFjS1Nzwaqq/D1JmZ
- gU8Q==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6ZF6j0QSh9sYA2HgkILcyWukmhzzkxCNhgIX/8WMk28=;
+ b=NAT4FHh2y5rfoCsN2LOyaBHUjKRRBGr4i2n+kh6KKWC9FTpJO2uKeVXKlXd67RYKfP
+ 1OcT1jIORmWT+rkZaYG4r9ZM2pMa75XvwYxq4h2d5Js4HqalHq4Dy3f7Kp91qEBiaVex
+ hlc+82YG/1xfezhc/951gCNyri7JysQt4mpLodDf+8gGXagB5G+wnRrNXq4Cj5jrn/4V
+ XGO0xAHBZRDm4JAjovVfnk1Ln4iic7UR+VoiwK7kh6b2lLsJFHWmqKQ4M3yIuTeGuG9A
+ 3CTA2in20ok/RxmkqYkVC/t7NMgwNqHrA/FrEWkeJS+MilCaJtjPjWeByuGIfuxM7o9x
+ XWsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=V4Sw8aSxUN9A5QwjVO0Bw1eHNkGVVrDX+DJy0NatTCA=;
- b=8BBa4VhD2HAK7CEvjl7nbLW20gny14LdVTbpqXt7NQ3JNdKftnsWVFgqztCUaH5/N2
- S4CSJTeR0DAfzBeuNsmc1/C8GFTZ8bZ8Qf1mB/wKCusr1wAiHW3hlHSK9CTpoiuXerMx
- LJNP7XHCy4HyF371oIT74co0z1/liPiZFELstWuBWJc3sKO3Alshxdb8F7CSBQF8g2B1
- cjMSG7XNLMx3nTzHTgNJyxu3vIvyuV02ootrXEiyxCKlONU9vQaRfilcF8btYXRBALWB
- ZBrNd5PAKnOuzE+5p7AYlbiZUaqahImBIynsWRWWC957F6XyKvARS01W0TgwWipfxE+e
- d8zQ==
-X-Gm-Message-State: ANoB5pk7p7J5QgBQ0lTzWIt3jdIy2Vz40Qc+S0VPCUF7PVe3+ouyBUj9
- VyfTljquQ16O+bvp0sb7WlgekFiz1ekbGWKyWltWdA==
-X-Received: by 2002:a17:90a:7004:b0:218:8757:8f2b with SMTP id
- f4-20020a17090a700400b0021887578f2bmr20720237pjk.221.1669126998448; Tue, 22
- Nov 2022 06:23:18 -0800 (PST)
-MIME-Version: 1.0
-References: <20221112042555.2622152-1-richard.henderson@linaro.org>
-In-Reply-To: <20221112042555.2622152-1-richard.henderson@linaro.org>
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=6ZF6j0QSh9sYA2HgkILcyWukmhzzkxCNhgIX/8WMk28=;
+ b=LNK9RbGRv/DB71QDWvwi2EMTxObiQ2FzLwiGfWfO5ZJhe5aHYHU+jOlBLDSF9zqaMY
+ bcmo4W9yXjFXq3Dmq+20JPrD8r+cojHaTV7bFDjfKJEf3lr9sJ0cosTY4bsKjzbossLy
+ ip7vhUMm6FpEmR4JYLatbBwQJ5lfg2Ik8CeKif+sSLgQQu0fxIsRUeziJXshDF4lVjmv
+ g1Tqt/9Hj2A336oVc879fmoZtqiRj0G3TK4SEBp5VXvfslx5EPyVqQ5zMuczZBiX1JtX
+ dda4+MwHFM1qy9scPwx7aS0YEXFz6Y/CZCIRwXzYg6qzKeQ3ApLhMaSutzQPnjLW+ttT
+ JVVA==
+X-Gm-Message-State: ANoB5pnDF9gaRSdd3WJQ3zggnDNe4xrceXzG+ZfYzridK9GBVD0h5ny5
+ Fq1R68z8Wu9ZbHSQeFIx9TRuVw==
+X-Received: by 2002:a05:6000:12c7:b0:241:c876:773c with SMTP id
+ l7-20020a05600012c700b00241c876773cmr14540856wrx.95.1669290637064; 
+ Thu, 24 Nov 2022 03:50:37 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ f14-20020a05600c154e00b003c6f3e5ba42sm6212559wmg.46.2022.11.24.03.50.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Nov 2022 03:50:36 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Nov 2022 14:23:07 +0000
-Message-ID: <CAFEAcA8yOn39EFtf7eoZJp4rm+1nARQCFj9V9Otmo7HTNqDO0g@mail.gmail.com>
-Subject: Re: [PATCH for-8.0 0/2] target/arm: Use tcg_gen_atomic_cmpxchg_i128
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x635.google.com
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Taylor Simpson <tsimpson@quicinc.com>, Song Gao <gaosong@loongson.cn>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
+ Stafford Horne <shorne@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org
+Subject: [PATCH for-8.0 07/19] target/loongarch: Convert to 3-phase reset
+Date: Thu, 24 Nov 2022 11:50:10 +0000
+Message-Id: <20221124115023.2437291-8-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221124115023.2437291-1-peter.maydell@linaro.org>
+References: <20221124115023.2437291-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,27 +144,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GhuuYpZZoI0X
+X-TUID: UJJaIalyqcLQ
 
-On Sat, 12 Nov 2022 at 04:27, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Use the new common function and avoid rolling our own helper(s).
->
-> r~
->
-> Based-on: 20221111074101.2069454-1-richard.henderson@linaro.org
-> ("tcg: Support for Int128 with helpers")
->
->
-> Richard Henderson (2):
->   target/arm: Use tcg_gen_atomic_cmpxchg_i128 for STXP
->   target/arm: Use tcg_gen_atomic_cmpxchg_i128 for CASP
+Convert the loongarch CPU class to use 3-phase reset, so it doesn't
+need to use device_class_set_parent_reset() any more.
 
-You can queue these patches in with whenever the
-underlying tcg series goes in if that's easier;
-otherwise please ping me when the dependency is
-upstream and these patches are ready to go in.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/loongarch/cpu.h |  4 ++--
+ target/loongarch/cpu.c | 12 ++++++++----
+ 2 files changed, 10 insertions(+), 6 deletions(-)
 
-thanks
--- PMM
+diff --git a/target/loongarch/cpu.h b/target/loongarch/cpu.h
+index e15c633b0bf..e35cf655975 100644
+--- a/target/loongarch/cpu.h
++++ b/target/loongarch/cpu.h
+@@ -356,7 +356,7 @@ OBJECT_DECLARE_CPU_TYPE(LoongArchCPU, LoongArchCPUClass,
+ /**
+  * LoongArchCPUClass:
+  * @parent_realize: The parent class' realize handler.
+- * @parent_reset: The parent class' reset handler.
++ * @parent_phases: The parent class' reset phase handlers.
+  *
+  * A LoongArch CPU model.
+  */
+@@ -366,7 +366,7 @@ struct LoongArchCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    DeviceReset parent_reset;
++    ResettablePhases parent_phases;
+ };
+ 
+ /*
+diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+index 46b04cbdad1..e8c42f17a54 100644
+--- a/target/loongarch/cpu.c
++++ b/target/loongarch/cpu.c
+@@ -452,14 +452,16 @@ void loongarch_cpu_list(void)
+     g_slist_free(list);
+ }
+ 
+-static void loongarch_cpu_reset(DeviceState *dev)
++static void loongarch_cpu_reset_hold(Object *obj)
+ {
+-    CPUState *cs = CPU(dev);
++    CPUState *cs = CPU(obj);
+     LoongArchCPU *cpu = LOONGARCH_CPU(cs);
+     LoongArchCPUClass *lacc = LOONGARCH_CPU_GET_CLASS(cpu);
+     CPULoongArchState *env = &cpu->env;
+ 
+-    lacc->parent_reset(dev);
++    if (lacc->parent_phases.hold) {
++        lacc->parent_phases.hold(obj);
++    }
+ 
+     env->fcsr0_mask = FCSR0_M1 | FCSR0_M2 | FCSR0_M3;
+     env->fcsr0 = 0x0;
+@@ -696,10 +698,12 @@ static void loongarch_cpu_class_init(ObjectClass *c, void *data)
+     LoongArchCPUClass *lacc = LOONGARCH_CPU_CLASS(c);
+     CPUClass *cc = CPU_CLASS(c);
+     DeviceClass *dc = DEVICE_CLASS(c);
++    ResettableClass *rc = RESETTABLE_CLASS(c);
+ 
+     device_class_set_parent_realize(dc, loongarch_cpu_realizefn,
+                                     &lacc->parent_realize);
+-    device_class_set_parent_reset(dc, loongarch_cpu_reset, &lacc->parent_reset);
++    resettable_class_set_parent_phases(rc, NULL, loongarch_cpu_reset_hold, NULL,
++                                       &lacc->parent_phases);
+ 
+     cc->class_by_name = loongarch_cpu_class_by_name;
+     cc->has_work = loongarch_cpu_has_work;
+-- 
+2.25.1
+

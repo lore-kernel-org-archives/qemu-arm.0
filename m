@@ -1,93 +1,92 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp5001127ejx;
-        Thu, 24 Nov 2022 03:57:23 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6cuo+kKNa1yOWlECa1IBP2KoVYiv36KCRy4uQJKiLKbLPi4HQFdjkomkEfGpk2dbA7KvBk
-X-Received: by 2002:a0c:fa91:0:b0:4bb:d324:3aa with SMTP id o17-20020a0cfa91000000b004bbd32403aamr13210604qvn.99.1669291043122;
-        Thu, 24 Nov 2022 03:57:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669291043; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp5001425ejx;
+        Thu, 24 Nov 2022 03:57:56 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7HTtrZBwWD6CPkK7de/NqV/jXeCeiYFPeMLDnB/Qe1V22GJpUIHvPT5HcF/sHnOUoT0UTU
+X-Received: by 2002:a37:6816:0:b0:6ce:7d05:9f9e with SMTP id d22-20020a376816000000b006ce7d059f9emr11318672qkc.409.1669291076436;
+        Thu, 24 Nov 2022 03:57:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669291076; cv=none;
         d=google.com; s=arc-20160816;
-        b=kX0wvNdeuPmSVy3TJrCB0EPbIgX+5TaKkKZ32AYYj2C/SBuvgE7il0bnOtFNiiU9jM
-         AAwkRYuhTBeFIReubBEWxs+N+q4K5knS8rX45AvuA7nh29zSxD9S/4NUKsV6nQCyCmqJ
-         Fk1eGbGdzCNRK+N5uHfP/Ch12rqufy2UGad1I/xnaFC6bbCoeZp35WgX3JexO7kM/HdG
-         s/h6i8PuR/VSrJMW/soWrPJY7KmYZFqjZPvZrGw4jcHzrhpMRgjIKN0qw2a0pCh75VMN
-         D99ffkkvcQ9caUpcIJfylPMhHV8wdqkLsAPNRRHeWum5YcR5gmNjoB13Fh7P1st4x98D
-         u26g==
+        b=PovHF14DBl77GHOFjma5SNnpZvzAYNXhXd2rLLQ+FHBOfMOIroVKqPfEeSfgRe86sN
+         x3/JkfrwsfLgG1b+8/w7ZbnTb4OtB/tialMV3Fu+IVOwlE0bX5Ehg6qZwHIlZuVvrdpa
+         Gf8vY7tGU5KYwQ72rZNNleBSLg3k0eFOQILe4o+BWQzUl6UrLYdcu/lGM9qcs9YkOa3n
+         w9dKy6vk4aWx6PBKU5qNEnnGCcTwI64y0EDwGSU/MlOFb14wFNW7jc9M7RIPaJjie1OT
+         EgRcucd403IFayyPadlPyTI9+EBQ56K63AFBthrPO6u9jZhORHE2cp5QPYNohtREFsJc
+         +jUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+pngmMhNFNeQ+gXXcDsfqo/V6FiO7zBgzlTDG8C44Z4=;
-        b=sZ2U8CH5A6M2Zp/RhRGsN+ZQHAgPCf2iPRlMFAJGBK3pRA61jk+KePAMih7DUDMJPp
-         xQklpZ/Chki7EPKW+bySU8oMlfh18ygBwb6VNB0QXRG6bt5ITsPxouHKrrlRuSKr3WW2
-         UL4uG19vcA6w0oK4lkNNbJY3k74vFpfbmJKcJV/m/qFElLiyfOuEwGSTNLgU/tE+1ojA
-         6KiFU8sVHorVlTN8yojCHiVosotICDvAO9saJiw/Lq95jDPL+xOAYoLovXNuFpnIsyp8
-         j+NVIHoc6NThTTE/1DEK1zEYCNTpneYuYz8/fS0Bhchnv9PwRimImJZjc8H0vez4vVWl
-         iL6A==
+        bh=CJxN8OwLvz4RIGrwju4T4c5A0ASCmNoxWaI71mOwfMg=;
+        b=CgfrSCHmr/d86978um6G5zYva8Mk6C72DGmvrh2auC3S3SpH+XIsQ5Mp0WjXAywHB1
+         0eBVJ44u/CC7+/vLAJy85TebPfgCxcjVUVWQB9pXIpyzEfGgALDn3tkVbqBYzVjjq1yv
+         mjOjSpcXu3DomXB6TJkCTsF0rRuUUJsA26inVB2+vcfnA1UaKd/AoejiW6w0T2bPJtOV
+         ODK+d0upMkYISus/MVCbKAY8z00XbPVZZ9tbMnjcl1e60JpVVIrXptR8l1HkCrHDnca0
+         GrVlv3lBi1OdENw3gO5wIIOWWlAQHfiFiIHQlkKG+9RNLq3PHcoyvvHctjR79XN85qJw
+         0D8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cex4TJEi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WYCZu0FB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g2-20020ac870c2000000b003a4d3a5ce56si476163qtp.245.2022.11.24.03.57.22
+        by mx.google.com with ESMTPS id de41-20020a05620a372900b006e5ecba85ffsi618935qkb.304.2022.11.24.03.57.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Nov 2022 03:57:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Nov 2022 03:57:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cex4TJEi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WYCZu0FB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1oyAlA-0004OF-QS; Thu, 24 Nov 2022 06:51:16 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1oyAl8-0004LC-Jx; Thu, 24 Nov 2022 06:51:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oyAkq-0003lp-Lv
- for qemu-arm@nongnu.org; Thu, 24 Nov 2022 06:50:56 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1oyAku-0003xz-TU
+ for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:51:00 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oyAkl-0004pl-Lf
- for qemu-arm@nongnu.org; Thu, 24 Nov 2022 06:50:56 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- r9-20020a1c4409000000b003d02dd48c45so3422771wma.0
- for <qemu-arm@nongnu.org>; Thu, 24 Nov 2022 03:50:47 -0800 (PST)
+ id 1oyAkp-000526-Ey
+ for qemu-devel@nongnu.org; Thu, 24 Nov 2022 06:51:00 -0500
+Received: by mail-wm1-x336.google.com with SMTP id v7so1151089wmn.0
+ for <qemu-devel@nongnu.org>; Thu, 24 Nov 2022 03:50:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+pngmMhNFNeQ+gXXcDsfqo/V6FiO7zBgzlTDG8C44Z4=;
- b=Cex4TJEi+yfXPgI+YyoSTGHPzvlkW4KQ5iwZdCIdf7+PQRewWEeefhvSxNYd2nz1h6
- R9M2QKi7HYywjLabejqKSylkDjaW2wOLeZY3RXzkhnkTVA8WfuBxdFi/bn4MB16C3s1G
- 7G+CZHEqBcG+Tk/TKUz5I1sEY47dYCMKrfUtAlLQy000n9fJQRJJGVdY2oeJVD3l9HZx
- 7hLokGlo+Kr4dDRHiETpRiR8RaZaVE6v1pgS2yB6BZECqmlGutZv+J4hZS1Oj6maXA+0
- 1H+MB/CWQWfGIoAXdp9M6CpZx2lxZ5gIVzcCYLoQkwil5RYeDsVL55cFqKtnZX2qehXW
- ZV+A==
+ bh=CJxN8OwLvz4RIGrwju4T4c5A0ASCmNoxWaI71mOwfMg=;
+ b=WYCZu0FBoPLym6lgz2W4phD1L4vtnHcb9H8Jd2tcm2xIojsGTcWN0xG3UI2tfP+jle
+ l9oT48HYjdf/xL48l5BQFqOS+i6ZmpnnVk3t1sE0KokrFOWeRFx+N9UmfwW4bqfcoomj
+ rQgVoL/lgb27BNAvGD6SBVvhgDQM+CrqXxZ9zwqopKmWwODz1ouLzbhCase9ybioYvGZ
+ vWWVrbupwi091AAcoQxPNckEynMUUEZ2W+gl9a3M1loa2nR8ZQN5ISu/PdHYXorelk/y
+ MCRN6wz4P7F20jHbjnj7SxGCk9BvLP3qs/zRg8O09nCJKN60ig4WFV/CdaTqGId4yWmP
+ SZAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+pngmMhNFNeQ+gXXcDsfqo/V6FiO7zBgzlTDG8C44Z4=;
- b=F9U6cdIjetyIgqgHQsMhXbH7quRvRlLzl9MWjLSobJHndYRMg0MBAEgvgtulBzpRLa
- dUBlE4a5zbESs5M+1EaQHjKkUY+1FfunUmYoYkvlolQg5SYIkC8DoW2uJ301m9V+emvh
- HaCF0Xi8xgTOn8i1ki7oGtoM7iuZ5tTPMINvIgY46xNxlHhaO5fsp1Bq0iFKrLMXcrV+
- cYaR4vXyoVp7NWbH6dR3uYETZodHuoczqK3N/EMto8ldEHo8+MBbfvNQXIwQEbYyhTD8
- FNpkS2zp+vuG0wXOPLGFWnu1bQyUxcZORmF4OZvv8zheVpwswxaA/bD+Qi+HYIkHFJq/
- arjw==
-X-Gm-Message-State: ANoB5pl5Iyf49kQdodVoTM4bR8hfWXk59J5GBEl0D3Bi/ZBvl99UYskB
- Qkv7++SzvfzJF5owdKFgKkflGA==
-X-Received: by 2002:a05:600c:19d1:b0:3cf:ca1a:332a with SMTP id
- u17-20020a05600c19d100b003cfca1a332amr27246324wmq.118.1669290647083; 
- Thu, 24 Nov 2022 03:50:47 -0800 (PST)
+ bh=CJxN8OwLvz4RIGrwju4T4c5A0ASCmNoxWaI71mOwfMg=;
+ b=7edc9bMy7ZMVmyoYEEtHPjQp4q3uknkahk1g+XE4bcPXw4yJA8b5MUTOgmiVyMXCQ5
+ Gu6hUXIkjl/1RldNk14z09lgmFsUY13bwzUgjHMSouc2swUBMDVbR/VjTtiy6vN8evz7
+ XnitQaFBnFNK9oalfq0IQaHE+LpfyvTBGfxrnCM1CFRhzMWcvms2CxK5eQgj6B4Fv+1e
+ QYPuf5YHXlLsrNMyxu4fQr3EKgwZjSpf7EnQoJRzbldLyaClRiyN3jJaRoQtwlZ1mSCW
+ IUtrrs9KVwDKN6akvXd3W3bYpwAp68S9vGLNAF6C9HTWpG+WEx4oi1PD2t9kMfGMBGwW
+ kC6Q==
+X-Gm-Message-State: ANoB5pl68GiTa920x2FCMf9riIvvg0xHeZtvVCO/mgfOHUxZX7G8p+00
+ HnuVOUm/83ec2FGeLykztuzMiccfAZlGfw==
+X-Received: by 2002:a05:600c:18a1:b0:3cf:a9d5:36c7 with SMTP id
+ x33-20020a05600c18a100b003cfa9d536c7mr9505500wmp.13.1669290654048; 
+ Thu, 24 Nov 2022 03:50:54 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- f14-20020a05600c154e00b003c6f3e5ba42sm6212559wmg.46.2022.11.24.03.50.45
+ f14-20020a05600c154e00b003c6f3e5ba42sm6212559wmg.46.2022.11.24.03.50.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Nov 2022 03:50:46 -0800 (PST)
+ Thu, 24 Nov 2022 03:50:53 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -114,16 +113,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org
-Subject: [PATCH for-8.0 14/19] target/riscv: Convert to 3-phase reset
-Date: Thu, 24 Nov 2022 11:50:17 +0000
-Message-Id: <20221124115023.2437291-15-peter.maydell@linaro.org>
+Subject: [PATCH for-8.0 19/19] target/xtensa: Convert to 3-phase reset
+Date: Thu, 24 Nov 2022 11:50:22 +0000
+Message-Id: <20221124115023.2437291-20-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221124115023.2437291-1-peter.maydell@linaro.org>
 References: <20221124115023.2437291-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,95 +131,93 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aV0J9iW05DkE
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bC4UlCGNZT6/
 
-Convert the riscv CPU class to use 3-phase reset, so it doesn't
+Convert the xtensa CPU class to use 3-phase reset, so it doesn't
 need to use device_class_set_parent_reset() any more.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/riscv/cpu.h |  4 ++--
- target/riscv/cpu.c | 12 ++++++++----
+ target/xtensa/cpu-qom.h |  4 ++--
+ target/xtensa/cpu.c     | 12 ++++++++----
  2 files changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index 3a9e25053f8..443d15a47c0 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -395,7 +395,7 @@ OBJECT_DECLARE_CPU_TYPE(RISCVCPU, RISCVCPUClass, RISCV_CPU)
+diff --git a/target/xtensa/cpu-qom.h b/target/xtensa/cpu-qom.h
+index 4fc35ee49b8..419c7d8e4a3 100644
+--- a/target/xtensa/cpu-qom.h
++++ b/target/xtensa/cpu-qom.h
+@@ -41,7 +41,7 @@ typedef struct XtensaConfig XtensaConfig;
  /**
-  * RISCVCPUClass:
+  * XtensaCPUClass:
   * @parent_realize: The parent class' realize handler.
 - * @parent_reset: The parent class' reset handler.
 + * @parent_phases: The parent class' reset phase handlers.
+  * @config: The CPU core configuration.
   *
-  * A RISCV CPU model.
-  */
-@@ -404,7 +404,7 @@ struct RISCVCPUClass {
-     CPUClass parent_class;
+  * An Xtensa CPU model.
+@@ -52,7 +52,7 @@ struct XtensaCPUClass {
      /*< public >*/
+ 
      DeviceRealize parent_realize;
 -    DeviceReset parent_reset;
 +    ResettablePhases parent_phases;
+ 
+     const XtensaConfig *config;
  };
- 
- struct RISCVCPUConfig {
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index d14e95c9dc1..6fe176e4833 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -519,18 +519,20 @@ static void riscv_restore_state_to_opc(CPUState *cs,
-     env->bins = data[1];
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index 09923301c40..2dc8f2d232f 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -85,16 +85,18 @@ bool xtensa_abi_call0(void)
  }
- 
--static void riscv_cpu_reset(DeviceState *dev)
-+static void riscv_cpu_reset_hold(Object *obj)
- {
- #ifndef CONFIG_USER_ONLY
-     uint8_t iprio;
-     int i, irq, rdzero;
  #endif
--    CPUState *cs = CPU(dev);
-+    CPUState *cs = CPU(obj);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cpu);
-     CPURISCVState *env = &cpu->env;
  
--    mcc->parent_reset(dev);
-+    if (mcc->parent_phases.hold) {
-+        mcc->parent_phases.hold(obj);
+-static void xtensa_cpu_reset(DeviceState *dev)
++static void xtensa_cpu_reset_hold(Object *obj)
+ {
+-    CPUState *s = CPU(dev);
++    CPUState *s = CPU(obj);
+     XtensaCPU *cpu = XTENSA_CPU(s);
+     XtensaCPUClass *xcc = XTENSA_CPU_GET_CLASS(cpu);
+     CPUXtensaState *env = &cpu->env;
+     bool dfpu = xtensa_option_enabled(env->config,
+                                       XTENSA_OPTION_DFP_COPROCESSOR);
+ 
+-    xcc->parent_reset(dev);
++    if (xcc->parent_phases.hold) {
++        xcc->parent_phases.hold(obj);
 +    }
- #ifndef CONFIG_USER_ONLY
-     env->misa_mxl = env->misa_mxl_max;
-     env->priv = PRV_M;
-@@ -1161,11 +1163,13 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
-     RISCVCPUClass *mcc = RISCV_CPU_CLASS(c);
-     CPUClass *cc = CPU_CLASS(c);
-     DeviceClass *dc = DEVICE_CLASS(c);
-+    ResettableClass *rc = RESETTABLE_CLASS(c);
  
-     device_class_set_parent_realize(dc, riscv_cpu_realize,
-                                     &mcc->parent_realize);
+     env->pc = env->config->exception_vector[EXC_RESET0 + env->static_vectors];
+     env->sregs[LITBASE] &= ~1;
+@@ -240,11 +242,13 @@ static void xtensa_cpu_class_init(ObjectClass *oc, void *data)
+     DeviceClass *dc = DEVICE_CLASS(oc);
+     CPUClass *cc = CPU_CLASS(oc);
+     XtensaCPUClass *xcc = XTENSA_CPU_CLASS(cc);
++    ResettableClass *rc = RESETTABLE_CLASS(oc);
  
--    device_class_set_parent_reset(dc, riscv_cpu_reset, &mcc->parent_reset);
-+    resettable_class_set_parent_phases(rc, NULL, riscv_cpu_reset_hold, NULL,
-+                                       &mcc->parent_phases);
+     device_class_set_parent_realize(dc, xtensa_cpu_realizefn,
+                                     &xcc->parent_realize);
  
-     cc->class_by_name = riscv_cpu_class_by_name;
-     cc->has_work = riscv_cpu_has_work;
+-    device_class_set_parent_reset(dc, xtensa_cpu_reset, &xcc->parent_reset);
++    resettable_class_set_parent_phases(rc, NULL, xtensa_cpu_reset_hold, NULL,
++                                       &xcc->parent_phases);
+ 
+     cc->class_by_name = xtensa_cpu_class_by_name;
+     cc->has_work = xtensa_cpu_has_work;
 -- 
 2.25.1
 

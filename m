@@ -1,212 +1,219 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1211810ejx;
-        Wed, 30 Nov 2022 05:28:17 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7Fi9+2YzsffAJwTh4WApPY9KbDZ/kV+I1kEoT/Ke/wB4Na7DNU2jghFPJGyj3BFxujHSVx
-X-Received: by 2002:a05:6214:5584:b0:4c6:f62c:acd0 with SMTP id mi4-20020a056214558400b004c6f62cacd0mr17969873qvb.90.1669814897664;
-        Wed, 30 Nov 2022 05:28:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669814897; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1439261ejx;
+        Wed, 30 Nov 2022 10:15:56 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf72izI/M15o07mm1o43av3qd/poaD1w3Figq/h4w4Hs0Yp4ZX2bfflr3wQyWXWVlzW8F4pU
+X-Received: by 2002:a05:620a:672:b0:6fa:3cb1:da73 with SMTP id a18-20020a05620a067200b006fa3cb1da73mr56660978qkh.175.1669832156550;
+        Wed, 30 Nov 2022 10:15:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669832156; cv=none;
         d=google.com; s=arc-20160816;
-        b=yXfkdjDXv4tqeFbSmokpjDNW+Ihd1y5SFqER+CO08qFrbBKgIJiKkWjKmJO9/9Zlpj
-         yp7ZNIXUIDOHGL6pT4OfSr1AnbaoBck//Y2cibDBmEGJP0Lb7R9Uo7htXCZmw50sKZg2
-         24mXeB+VF5S0Zqe3K3u1x3g3XrQvf2Ojc7djmrHdVhUv8PzWfCR+/eyY7WrTGaNhbrXU
-         WL2o5A4V3agXylr9hlFu8660gNIQWCU5wGG5uFBDctaHsDAOzKzJE96gMxjfvr98emOP
-         vmUhkmk1vrjE5T3sG0FnTjQhjMZVvK9Xz8QOQZYMsNml75JFecGO5/XgP/VALsfI3OT4
-         OnBg==
+        b=KxqcnxssaTa0jSGt09ffEoCPbnhz2TDfG73Tdj0q2UmwHgzcV4gtMhuLi9vZ6LBi+c
+         8Nkz+R1IH1Tol/MEr8lniPFRKtdG3SEyRqefhUO+8RJP1HWFQF85h/bZ9tyZ1oUkmb6a
+         dfBTjHSeeyEM42XnfJTD54xigTgbSAa0BjynCyT4PmDKqR27T/79t6EJpF6kDMds2s9b
+         q/hKFQtvdZmW0sity8PtLfMpAqYbrl0NlTQeo6kNQHz/nGVg73QntV9gT/CB7Vp1tJ/f
+         dgjqyzdLCGDYhWNhhZSmL0+3qh9mgB7siwoDFXKLR52TEWfYo7kCeCUvVs8in3aiNK0r
+         d49Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Q0hlyySKVnySixpBBftSUOW0ckS2cMlLLOX+y+Pz+0E=;
-        b=J52yaQSkpSwbd7o/iHV2/DH5ZcK9xVSiJ3LWDG125CJh4yotsmNuyaUv8Ujkgf7Rt+
-         y5eHeq/OxVYSlue190SsIIZTU0d4RGUqVjr1/PiYVYfTiZ5ScHx8B3xCd0pTovaVBrFI
-         EIxWRHdAdRwgHp88BHBbO3ux7Tan6XVDvZDz9atjcwR/M/xtuD5XpVSc6VLITBu8nxs6
-         iuHHNrBiPv7gEKwhiDTmb1z98bftJ8NTKsZ/LeES/d+REFmiJEPEkppVi0Edp/6Y0uRw
-         bRkMpz4qzJZ4VytocRm6fRgP8p2vdjEhOC+l0zM8KYfEG6O+vjmLScCXSXARMMrPC0A5
-         uaww==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=n+w9xat4dBHGB5/WI1ZFcdaTMZn738XokPqqirFMpYU=;
+        b=DnZWiUWxZX6+tJhIguwHuMCMwnQDUrQYmG+XKblYohvrvSbX+htKrUTS1b3AWkpDZ6
+         6Jjg/Zwqqyw/PYkO/N/0mowvgeTyP2U6VNE/NEXEWJXIb6JaY3DcilZOOP1ie7VgRTYX
+         FqFTUWrb9Rj3a7Z/fpFNp9g8E6nqbtNEqlZYPe1Kp5Mcg5+pJ6YcAKjAM/Ej3FREi4ek
+         gVTqVsAS7bp8phCVJlCp/HhwCd1al3M8A/KOoTQz5aZ1A8htnPx0G4ufwU2Z9EpHhxfg
+         +/tpaTvTHTCVAGzLbZbkSRdbkSUcueTIC4eYLf2u04Vt0s1UIYyM9VJXPJcC4nR8cL1I
+         NPPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="wUQ5/JV2";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bs65Mu4M;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5-20020a05620a240500b006fa8299b281si173535qkn.241.2022.11.30.05.28.17
+        by mx.google.com with ESMTPS id x14-20020a05620a258e00b006cf427bc181si1189079qko.8.2022.11.30.10.15.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Nov 2022 05:28:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 30 Nov 2022 10:15:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="wUQ5/JV2";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bs65Mu4M;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p0N7C-0003EX-UE; Wed, 30 Nov 2022 08:27:06 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p0RcS-0004fK-H4; Wed, 30 Nov 2022 13:15:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p0N7B-0003Be-Hq
- for qemu-arm@nongnu.org; Wed, 30 Nov 2022 08:27:05 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p0RcL-0004dB-6r
+ for qemu-devel@nongnu.org; Wed, 30 Nov 2022 13:15:34 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p0N79-0006JW-Cp
- for qemu-arm@nongnu.org; Wed, 30 Nov 2022 08:27:05 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- ay27-20020a05600c1e1b00b003d070f4060bso1389313wmb.2
- for <qemu-arm@nongnu.org>; Wed, 30 Nov 2022 05:27:02 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p0RcI-0001DD-SG
+ for qemu-devel@nongnu.org; Wed, 30 Nov 2022 13:15:32 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ p13-20020a05600c468d00b003cf8859ed1bso2048559wmo.1
+ for <qemu-devel@nongnu.org>; Wed, 30 Nov 2022 10:15:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Q0hlyySKVnySixpBBftSUOW0ckS2cMlLLOX+y+Pz+0E=;
- b=wUQ5/JV2Gfwkdh1f8GFbe3QP0HCQpR8Ul+V2CXYDP1W69q2HbZMBg+DFywPnHKowsW
- JYLwbtxxk/OaRU/KntXUlCmvti/XVsb+8ABJkox24MyBI2m862dCLGTksjvCYI5vRKEP
- 7FmROlj7DXp0a24v2J5kDuGSDtfbgUgODD9KJvlWu6Xb7zSkAwN8VFF50TEg0j31IPX8
- cITZ+42P2xHpvFr3ZOQsu0q/OxybY6OqgKSum1HbNNspgtNeTmbmtCExKzee4faczGrT
- ckv7m9HR1CvxNRj7bUgYiZchvI4Cp/U9f574soQMKAzwL3Z8SykEcOVBEN5IX0vrpsHz
- HoLg==
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=n+w9xat4dBHGB5/WI1ZFcdaTMZn738XokPqqirFMpYU=;
+ b=bs65Mu4MXqh2HCmt5kiqFEjRpzyBleG7T/CaphkYIhAMZzCzTmaQibtBGdkbV25ZFa
+ 3Ar8mxYFWZ9FMlCkSnDx0xnqyXqaD5cVaxueUL+fn7UXVbJZSxCQ9RE8xP88kWNz9ryW
+ j+sQb6DNy6IafkjBlS3qRKNR/9FsTByRqM6Gmt9l4wSPObiE8KUWhOhTyctScbyL+/h0
+ Ne4AKAmGz9n3WT8NNu9FcmfSrpI4pPZJVGfC2T4T4amt1tugdtiTDDMM9Wi1aSDbSlhx
+ UdqsfL40BTzO3d+qdjZti4fMcmlmWZmr3shKU5gURmRmK9W2uWIzdrDGEdKLxv81LnsN
+ ytbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Q0hlyySKVnySixpBBftSUOW0ckS2cMlLLOX+y+Pz+0E=;
- b=RTRJLmZkc1MlHT1zUzPKP7Q/l0bKt5F1d/faKQmnXmd+SeoeDO3eFJ0PoR7jP3Oxqw
- MBJXmpRCvIVyE30defhquurpBW23NrzSPl9NTt0IwOJYCDsnpRHkLIPrey51jNFuJvlz
- 9kQ0+IxcXDfTjV05ABZgRCmPiP4yEDVe07JUvqqgzICej4rg/e1kav8rjxCZpfjVcfLX
- GanH90SRzaeeZ0fSIiZWiVEXBOxfz4YtoqT5TWq8wnAvNZNJ6lROnPjDtnSkKFHlhj7q
- Ipyt0d7ktdQvxe14u3cH9iagrPVdlP2UdftrOoE+0y2xo8FqkhNSlAG8ZqFVgGl/4bjk
- uoXA==
-X-Gm-Message-State: ANoB5plcBQrgQ81AtF46mImEVvSmppHeazLeorwGMTZFbixbrMBw6vIw
- jDDpu7P03V9mqtvVtdgsWvhKPA==
-X-Received: by 2002:a7b:c3d5:0:b0:3d0:306c:f7a3 with SMTP id
- t21-20020a7bc3d5000000b003d0306cf7a3mr28008677wmj.128.1669814821888; 
- Wed, 30 Nov 2022 05:27:01 -0800 (PST)
-Received: from localhost.localdomain ([81.0.6.76])
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=n+w9xat4dBHGB5/WI1ZFcdaTMZn738XokPqqirFMpYU=;
+ b=53woBT+OiuBqWl7X7gB2qzCGM/iDFvBFKZ6yS+8MALR1mAoBAWef4pNvYIt3aInJj8
+ JLDHroNoSSOHHrEleQH1+Xg9k00H2q2xEPkSphyshgufhGLko5FNuzA0h9eMc+DM3g6q
+ ckQ9IgUWIReYes1ZYk3VLKwhfjLGd5Gs2lPvXxP9LpJmlAoplorrrjhwA7oZWbccHrXD
+ /syUR62LrbE527d2pxtQNkItVqAFZhvZFsRlsaz8P4abjREG3OQxEmjoQwM5jLgHre1u
+ YyxuOF9QJ5g6wPN8ohuvlFxbj5GODq2jGWub96nL0AT2lymhXYOoQT0hk13G3N1WlEA1
+ KnNA==
+X-Gm-Message-State: ANoB5pkMGd7sJosr0YVDpd8Ug/tycsomuzD7e8pS4NOj1AOKK8XF0TLS
+ DIxwwIGkyEonEDQnTYs/npIjTg==
+X-Received: by 2002:a05:600c:3ac9:b0:3cf:cfc8:9450 with SMTP id
+ d9-20020a05600c3ac900b003cfcfc89450mr32482220wms.99.1669832128912; 
+ Wed, 30 Nov 2022 10:15:28 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- k12-20020adfe8cc000000b00241b5af8697sm1610416wrn.85.2022.11.30.05.27.00
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 30 Nov 2022 05:27:01 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Huacai Chen <chenhuacai@kernel.org>, Thomas Huth <thuth@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, qemu-riscv@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, WANG Xuerui <git@xen0n.name>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-s390x@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>, qemu-arm@nongnu.org
-Subject: [PATCH-for-8.0 1/3] tcg/s390x: Fix coding style
-Date: Wed, 30 Nov 2022 14:26:52 +0100
-Message-Id: <20221130132654.76369-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221130132654.76369-1-philmd@linaro.org>
-References: <20221130132654.76369-1-philmd@linaro.org>
+ e25-20020a05600c4b9900b003cf4ec90938sm2510292wmp.21.2022.11.30.10.15.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Nov 2022 10:15:28 -0800 (PST)
+Message-ID: <5af1cbc2-5897-5e69-a727-6f423c5c08a5@linaro.org>
+Date: Wed, 30 Nov 2022 19:15:26 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.0
+Subject: Re: [PATCH qemu.git 1/1] hw/arm/virt: make second UART available
+Content-Language: en-US
+To: ~axelheider <axelheider@gmx.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, daniel.thompson@linaro.org
+References: <166982763526.10484.9925072056712598801-1@git.sr.ht>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <166982763526.10484.9925072056712598801-1@git.sr.ht>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.257,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zu625CQU8E2C
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8qDhIpvvnuU1
 
-We are going to modify this code, so fix its style first to avoid:
+Hi Axel,
 
-  ERROR: spaces required around that '*' (ctx:VxV)
-  #281: FILE: tcg/s390x/tcg-target.c.inc:1224:
-  +        uintptr_t mask = ~(0xffffull << i*16);
-                                            ^
+On 14/11/22 13:06, ~axelheider wrote:
+> From: Axel Heider <axel.heider@hensoldt.net>
+> 
+> The first UART always always exists. If the security extensions are
+> enabled, the second UART also always exists. Otherwise, it only exists
+> if a backend is configured explicitly via '-serial <backend>', where
+> 'null' creates a dummy backend. This allows enabling the second UART
+> explicitly on demand and does not interfere with any existing setup
+> that just expect one (or two if security extensions are enabled)
+> UARTs.
+> 
+> Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+> ---
+>   hw/arm/virt-acpi-build.c | 12 ++++-----
+>   hw/arm/virt.c            | 55 ++++++++++++++++++++++++++++++----------
+>   include/hw/arm/virt.h    |  4 +--
+>   3 files changed, 49 insertions(+), 22 deletions(-)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- tcg/s390x/tcg-target.c.inc | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/tcg/s390x/tcg-target.c.inc b/tcg/s390x/tcg-target.c.inc
-index 33becd7694..f1d3907cd8 100644
---- a/tcg/s390x/tcg-target.c.inc
-+++ b/tcg/s390x/tcg-target.c.inc
-@@ -802,9 +802,9 @@ static bool maybe_out_small_movi(TCGContext *s, TCGType type,
-     }
- 
-     for (i = 0; i < 4; i++) {
--        tcg_target_long mask = 0xffffull << i*16;
-+        tcg_target_long mask = 0xffffull << i * 16;
-         if ((uval & mask) == uval) {
--            tcg_out_insn_RI(s, lli_insns[i], ret, uval >> i*16);
-+            tcg_out_insn_RI(s, lli_insns[i], ret, uval >> i * 16);
-             return true;
-         }
-     }
-@@ -1221,9 +1221,9 @@ static void tgen_andi(TCGContext *s, TCGType type, TCGReg dest, uint64_t val)
- 
-     /* Try all 32-bit insns that can perform it in one go.  */
-     for (i = 0; i < 4; i++) {
--        tcg_target_ulong mask = ~(0xffffull << i*16);
-+        tcg_target_ulong mask = ~(0xffffull << i * 16);
-         if (((val | ~valid) & mask) == mask) {
--            tcg_out_insn_RI(s, ni_insns[i], dest, val >> i*16);
-+            tcg_out_insn_RI(s, ni_insns[i], dest, val >> i * 16);
-             return;
-         }
-     }
-@@ -1231,9 +1231,9 @@ static void tgen_andi(TCGContext *s, TCGType type, TCGReg dest, uint64_t val)
-     /* Try all 48-bit insns that can perform it in one go.  */
-     if (HAVE_FACILITY(EXT_IMM)) {
-         for (i = 0; i < 2; i++) {
--            tcg_target_ulong mask = ~(0xffffffffull << i*32);
-+            tcg_target_ulong mask = ~(0xffffffffull << i * 32);
-             if (((val | ~valid) & mask) == mask) {
--                tcg_out_insn_RIL(s, nif_insns[i], dest, val >> i*32);
-+                tcg_out_insn_RIL(s, nif_insns[i], dest, val >> i * 32);
-                 return;
-             }
-         }
-@@ -1279,9 +1279,9 @@ static void tgen_ori(TCGContext *s, TCGType type, TCGReg dest, uint64_t val)
- 
-     /* Try all 32-bit insns that can perform it in one go.  */
-     for (i = 0; i < 4; i++) {
--        tcg_target_ulong mask = (0xffffull << i*16);
-+        tcg_target_ulong mask = (0xffffull << i * 16);
-         if ((val & mask) != 0 && (val & ~mask) == 0) {
--            tcg_out_insn_RI(s, oi_insns[i], dest, val >> i*16);
-+            tcg_out_insn_RI(s, oi_insns[i], dest, val >> i * 16);
-             return;
-         }
-     }
-@@ -1289,9 +1289,9 @@ static void tgen_ori(TCGContext *s, TCGType type, TCGReg dest, uint64_t val)
-     /* Try all 48-bit insns that can perform it in one go.  */
-     if (HAVE_FACILITY(EXT_IMM)) {
-         for (i = 0; i < 2; i++) {
--            tcg_target_ulong mask = (0xffffffffull << i*32);
-+            tcg_target_ulong mask = (0xffffffffull << i * 32);
-             if ((val & mask) != 0 && (val & ~mask) == 0) {
--                tcg_out_insn_RIL(s, oif_insns[i], dest, val >> i*32);
-+                tcg_out_insn_RIL(s, oif_insns[i], dest, val >> i * 32);
-                 return;
-             }
-         }
--- 
-2.38.1
+> @@ -843,6 +843,27 @@ static void create_uart(const VirtMachineState *vms, int uart,
+>                           MemoryRegion *mem, Chardev *chr)
+>   {
+>       char *nodename;
+> +    /*
+> +     * The first UART always always exists. If the security extensions are
+> +     * enabled, the second UART also always exists. Otherwise, it only exists
+> +     * if a backend is configured explicitly via '-serial <backend>', where
+> +     * 'null' creates a dummy backend. This allows enabling the second UART
+> +     * explicitly on demand and does not interfere with any existing setup that
+> +     * just expect one (or two if security extensions are enabled) UARTs.
+> +     */
+> +    switch(uart) {
+> +    case VIRT_UART0:
+> +        break;
+> +    case VIRT_UART1:
 
+Maybe pass a 'is_secure' boolean?
+
+> +        if (!vms->secure && !chr) {
+> +            return;
+> +        }
+> +        break;
+> +    default:
+> +        error_report("unsupported UART ID %d", uart);
+> +        exit(1);
+> +    }
+
+
+> @@ -2222,11 +2248,12 @@ static void machvirt_init(MachineState *machine)
+>   
+>       fdt_add_pmu_nodes(vms);
+>   
+> -    create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
+> +    create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
+> +    create_uart(vms, VIRT_UART1, vms->secure ? secure_sysmem : sysmem,
+> +                serial_hd(1));
+>   
+>       if (vms->secure) {
+>           create_secure_ram(vms, secure_sysmem, secure_tag_sysmem);
+> -        create_uart(vms, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
+
+Correct.
+
+>       }
+>   
+>       if (tag_sysmem) {
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 6ec479ca2b..90563c132b 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -69,7 +69,7 @@ enum {
+>       VIRT_GIC_ITS,
+>       VIRT_GIC_REDIST,
+>       VIRT_SMMU,
+> -    VIRT_UART,
+> +    VIRT_UART0,
+>       VIRT_MMIO,
+>       VIRT_RTC,
+>       VIRT_FW_CFG,
+> @@ -79,7 +79,7 @@ enum {
+>       VIRT_PCIE_ECAM,
+>       VIRT_PLATFORM_BUS,
+>       VIRT_GPIO,
+> -    VIRT_SECURE_UART,
+> +    VIRT_UART1, /* secure UART if vms->secure */
+(I'm not sure changing the name is worth the churn).
+
+Regards,
+
+Phil.

@@ -1,219 +1,56 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1439261ejx;
-        Wed, 30 Nov 2022 10:15:56 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf72izI/M15o07mm1o43av3qd/poaD1w3Figq/h4w4Hs0Yp4ZX2bfflr3wQyWXWVlzW8F4pU
-X-Received: by 2002:a05:620a:672:b0:6fa:3cb1:da73 with SMTP id a18-20020a05620a067200b006fa3cb1da73mr56660978qkh.175.1669832156550;
-        Wed, 30 Nov 2022 10:15:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669832156; cv=none;
-        d=google.com; s=arc-20160816;
-        b=KxqcnxssaTa0jSGt09ffEoCPbnhz2TDfG73Tdj0q2UmwHgzcV4gtMhuLi9vZ6LBi+c
-         8Nkz+R1IH1Tol/MEr8lniPFRKtdG3SEyRqefhUO+8RJP1HWFQF85h/bZ9tyZ1oUkmb6a
-         dfBTjHSeeyEM42XnfJTD54xigTgbSAa0BjynCyT4PmDKqR27T/79t6EJpF6kDMds2s9b
-         q/hKFQtvdZmW0sity8PtLfMpAqYbrl0NlTQeo6kNQHz/nGVg73QntV9gT/CB7Vp1tJ/f
-         dgjqyzdLCGDYhWNhhZSmL0+3qh9mgB7siwoDFXKLR52TEWfYo7kCeCUvVs8in3aiNK0r
-         d49Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=n+w9xat4dBHGB5/WI1ZFcdaTMZn738XokPqqirFMpYU=;
-        b=DnZWiUWxZX6+tJhIguwHuMCMwnQDUrQYmG+XKblYohvrvSbX+htKrUTS1b3AWkpDZ6
-         6Jjg/Zwqqyw/PYkO/N/0mowvgeTyP2U6VNE/NEXEWJXIb6JaY3DcilZOOP1ie7VgRTYX
-         FqFTUWrb9Rj3a7Z/fpFNp9g8E6nqbtNEqlZYPe1Kp5Mcg5+pJ6YcAKjAM/Ej3FREi4ek
-         gVTqVsAS7bp8phCVJlCp/HhwCd1al3M8A/KOoTQz5aZ1A8htnPx0G4ufwU2Z9EpHhxfg
-         +/tpaTvTHTCVAGzLbZbkSRdbkSUcueTIC4eYLf2u04Vt0s1UIYyM9VJXPJcC4nR8cL1I
-         NPPA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bs65Mu4M;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x14-20020a05620a258e00b006cf427bc181si1189079qko.8.2022.11.30.10.15.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Nov 2022 10:15:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bs65Mu4M;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p0RcS-0004fK-H4; Wed, 30 Nov 2022 13:15:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p0RcL-0004dB-6r
- for qemu-devel@nongnu.org; Wed, 30 Nov 2022 13:15:34 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p0RcI-0001DD-SG
- for qemu-devel@nongnu.org; Wed, 30 Nov 2022 13:15:32 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- p13-20020a05600c468d00b003cf8859ed1bso2048559wmo.1
- for <qemu-devel@nongnu.org>; Wed, 30 Nov 2022 10:15:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=n+w9xat4dBHGB5/WI1ZFcdaTMZn738XokPqqirFMpYU=;
- b=bs65Mu4MXqh2HCmt5kiqFEjRpzyBleG7T/CaphkYIhAMZzCzTmaQibtBGdkbV25ZFa
- 3Ar8mxYFWZ9FMlCkSnDx0xnqyXqaD5cVaxueUL+fn7UXVbJZSxCQ9RE8xP88kWNz9ryW
- j+sQb6DNy6IafkjBlS3qRKNR/9FsTByRqM6Gmt9l4wSPObiE8KUWhOhTyctScbyL+/h0
- Ne4AKAmGz9n3WT8NNu9FcmfSrpI4pPZJVGfC2T4T4amt1tugdtiTDDMM9Wi1aSDbSlhx
- UdqsfL40BTzO3d+qdjZti4fMcmlmWZmr3shKU5gURmRmK9W2uWIzdrDGEdKLxv81LnsN
- ytbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=n+w9xat4dBHGB5/WI1ZFcdaTMZn738XokPqqirFMpYU=;
- b=53woBT+OiuBqWl7X7gB2qzCGM/iDFvBFKZ6yS+8MALR1mAoBAWef4pNvYIt3aInJj8
- JLDHroNoSSOHHrEleQH1+Xg9k00H2q2xEPkSphyshgufhGLko5FNuzA0h9eMc+DM3g6q
- ckQ9IgUWIReYes1ZYk3VLKwhfjLGd5Gs2lPvXxP9LpJmlAoplorrrjhwA7oZWbccHrXD
- /syUR62LrbE527d2pxtQNkItVqAFZhvZFsRlsaz8P4abjREG3OQxEmjoQwM5jLgHre1u
- YyxuOF9QJ5g6wPN8ohuvlFxbj5GODq2jGWub96nL0AT2lymhXYOoQT0hk13G3N1WlEA1
- KnNA==
-X-Gm-Message-State: ANoB5pkMGd7sJosr0YVDpd8Ug/tycsomuzD7e8pS4NOj1AOKK8XF0TLS
- DIxwwIGkyEonEDQnTYs/npIjTg==
-X-Received: by 2002:a05:600c:3ac9:b0:3cf:cfc8:9450 with SMTP id
- d9-20020a05600c3ac900b003cfcfc89450mr32482220wms.99.1669832128912; 
- Wed, 30 Nov 2022 10:15:28 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- e25-20020a05600c4b9900b003cf4ec90938sm2510292wmp.21.2022.11.30.10.15.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Nov 2022 10:15:28 -0800 (PST)
-Message-ID: <5af1cbc2-5897-5e69-a727-6f423c5c08a5@linaro.org>
-Date: Wed, 30 Nov 2022 19:15:26 +0100
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id g13-20020a05600c310d00b003a2f2bb72d5sm8149292wmo.45.2022.11.30.11.12.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Nov 2022 11:12:47 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 6C4C21FFB7;
+	Wed, 30 Nov 2022 19:12:46 +0000 (GMT)
+References: <166982763526.10484.9925072056712598801-0@git.sr.ht>
+User-agent: mu4e 1.9.3; emacs 29.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: ~axelheider <axelheider@gmx.de>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ daniel.thompson@linaro.org, ~axelheider <axelheider@git.sr.ht>,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH qemu.git 0/1] hw/arm/virt: make second UART available
+Date: Wed, 30 Nov 2022 19:11:21 +0000
+In-reply-to: <166982763526.10484.9925072056712598801-0@git.sr.ht>
+Message-ID: <87o7socl3l.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.5.0
-Subject: Re: [PATCH qemu.git 1/1] hw/arm/virt: make second UART available
-Content-Language: en-US
-To: ~axelheider <axelheider@gmx.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, daniel.thompson@linaro.org
-References: <166982763526.10484.9925072056712598801-1@git.sr.ht>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <166982763526.10484.9925072056712598801-1@git.sr.ht>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.257,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8qDhIpvvnuU1
-
-Hi Axel,
-
-On 14/11/22 13:06, ~axelheider wrote:
-> From: Axel Heider <axel.heider@hensoldt.net>
-> 
-> The first UART always always exists. If the security extensions are
-> enabled, the second UART also always exists. Otherwise, it only exists
-> if a backend is configured explicitly via '-serial <backend>', where
-> 'null' creates a dummy backend. This allows enabling the second UART
-> explicitly on demand and does not interfere with any existing setup
-> that just expect one (or two if security extensions are enabled)
-> UARTs.
-> 
-> Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
-> ---
->   hw/arm/virt-acpi-build.c | 12 ++++-----
->   hw/arm/virt.c            | 55 ++++++++++++++++++++++++++++++----------
->   include/hw/arm/virt.h    |  4 +--
->   3 files changed, 49 insertions(+), 22 deletions(-)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 5BAkmpVTJaYG
 
 
-> @@ -843,6 +843,27 @@ static void create_uart(const VirtMachineState *vms, int uart,
->                           MemoryRegion *mem, Chardev *chr)
->   {
->       char *nodename;
-> +    /*
-> +     * The first UART always always exists. If the security extensions are
-> +     * enabled, the second UART also always exists. Otherwise, it only exists
-> +     * if a backend is configured explicitly via '-serial <backend>', where
-> +     * 'null' creates a dummy backend. This allows enabling the second UART
-> +     * explicitly on demand and does not interfere with any existing setup that
-> +     * just expect one (or two if security extensions are enabled) UARTs.
-> +     */
-> +    switch(uart) {
-> +    case VIRT_UART0:
-> +        break;
-> +    case VIRT_UART1:
+~axelheider <axelheider@git.sr.ht> writes:
 
-Maybe pass a 'is_secure' boolean?
+> This is a follow-up on older attempts to make a second UART
+> available for the arm-virt machine in normal world. The use case
+> is, that this give a simple I/O channel in addition to stdout, as this
+> simplifies various test scenarios. Especially for non-Linux operating
+> system,s (e.g. seL4) where arm-virt is handy as a generic machine
+> for testing purposes.
+>
+> There are existing discussions about this topic at:
+> - https://lists.gnu.org/archive/html/qemu-arm/2017-12/msg00063.html
+> - https://lists.nongnu.org/archive/html/qemu-
+> discuss/2018-11/msg00001.html
+> - https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg01613.html
+>
+> This patch tries to address the concerns raised there and also
+> avoid breaking compatibility with existing setups.
+>
+> Axel Heider (1):
+>   hw/arm/virt: make second UART available
+>
+>  hw/arm/virt-acpi-build.c | 12 ++++-----
+>  hw/arm/virt.c            | 55 ++++++++++++++++++++++++++++++----------
+>  include/hw/arm/virt.h    |  4 +--
+>  3 files changed, 49 insertions(+), 22 deletions(-)
 
-> +        if (!vms->secure && !chr) {
-> +            return;
-> +        }
-> +        break;
-> +    default:
-> +        error_report("unsupported UART ID %d", uart);
-> +        exit(1);
-> +    }
+It would also be worth updating ./docs/system/arm/virt.rst to document
+this feature.=20
 
-
-> @@ -2222,11 +2248,12 @@ static void machvirt_init(MachineState *machine)
->   
->       fdt_add_pmu_nodes(vms);
->   
-> -    create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
-> +    create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
-> +    create_uart(vms, VIRT_UART1, vms->secure ? secure_sysmem : sysmem,
-> +                serial_hd(1));
->   
->       if (vms->secure) {
->           create_secure_ram(vms, secure_sysmem, secure_tag_sysmem);
-> -        create_uart(vms, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
-
-Correct.
-
->       }
->   
->       if (tag_sysmem) {
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 6ec479ca2b..90563c132b 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -69,7 +69,7 @@ enum {
->       VIRT_GIC_ITS,
->       VIRT_GIC_REDIST,
->       VIRT_SMMU,
-> -    VIRT_UART,
-> +    VIRT_UART0,
->       VIRT_MMIO,
->       VIRT_RTC,
->       VIRT_FW_CFG,
-> @@ -79,7 +79,7 @@ enum {
->       VIRT_PCIE_ECAM,
->       VIRT_PLATFORM_BUS,
->       VIRT_GPIO,
-> -    VIRT_SECURE_UART,
-> +    VIRT_UART1, /* secure UART if vms->secure */
-(I'm not sure changing the name is worth the churn).
-
-Regards,
-
-Phil.
+--=20
+Alex Benn=C3=A9e

@@ -1,114 +1,74 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1459027ejx;
-        Wed, 30 Nov 2022 10:46:25 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6bXxyBBgjEQtHSrn59i6SRBWgwN0qOKSPOD8kFNgkIWIK3Yti0cd+URdBwzcrFAeMYvHc7
-X-Received: by 2002:a05:622a:1aa8:b0:3a5:925a:b346 with SMTP id s40-20020a05622a1aa800b003a5925ab346mr57746818qtc.327.1669833985540;
-        Wed, 30 Nov 2022 10:46:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669833985; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1464656ejx;
+        Wed, 30 Nov 2022 10:56:35 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf53+iWPZxJTY2cbQhmroPT9fREL8cR6MdlmiPtpIu+VlvWQ/UyXs4N2len9j9Q/jAaQ1HLg
+X-Received: by 2002:a37:88c7:0:b0:6ec:537f:3d94 with SMTP id k190-20020a3788c7000000b006ec537f3d94mr39226018qkd.376.1669834595141;
+        Wed, 30 Nov 2022 10:56:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669834595; cv=none;
         d=google.com; s=arc-20160816;
-        b=yiNc1oAxqgU8wxrIZA7/URCCDoikKirf8dwyc1A9PBDPhGTNv65IJGv1gkB/DQfhrh
-         fa/jwkUF+EdMRN3THofr9QpkiusuZYL6uO9C1L9OVQ+ZMG4N3kfkw8DgB4yBfcu6F6w9
-         kDG5zdFA87ZMujNygBWHMlNYyq7rxjsBhdVek3jxn1JMx5rqAQcrhe/IWhtxV45Vi+uD
-         MMK2L8LmyQYZXysvzyuobVdd4VmX0cuhbgl21y6tRXkHMllC0lihS/juwsfyfcj/tF7I
-         Tt3/YIO0HDott56bqF6FORr8yrXWuS/B7g8FcwZdQbXVFL5LkXdZF8zcnIj4k2tQkQ0l
-         itcw==
+        b=L1Q3WfpO1lsV5Z1RRsA0MRMV6Yb2UNCZMtAhlx7q2g7NQD1Mgbvs6ATV5OqtIAII+U
+         vH+RU3F9Nfy8YzzKWGGqBdDahVuFdPB40U3YHoY+Tx+TCl03x/WoNBpdW2iESzezqtPT
+         9IJHAL6WGodOfaYOOoz6Ut12tK94d4d/TrWDjpY3g5NfN2DtjdvKKwB/pI83fraqNtPU
+         9S4qlmB28wIsM9JdwCiqDfpmgM4n2wRF4XLv6L3JIP6JRa5lHmj8/tFlwTC0TLC+HkvF
+         3uMnCzuhMoKNYvO2Nl7N5TX1gEwcz/6osklehikoiLhHv54KyNyibxM8dx3E8jxunRQE
+         NcjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:ui-outboundreport
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=YNuVchso2w7r4t0ROOKUi09ulgf0L1YKz+LEiubRZ0s=;
-        b=jJx7S3RQaMXxWFnBSQye8Z5MSiM55WW2y8D4gye7SY1+etkWCE63/vDj1dHK3nTXt+
-         t9+fHAGfFGfZe04d0jnqCCoEKdu3rqiejutC6cDO939NZzX+9bUAV8Zi6Q3+ksLOfgud
-         CIGIsK2AW6jLVRTqme9sGcVYw54Avb2SvVWL2FSD9ngsfmu/ZVT3ro/n5SiRV4i5tgiJ
-         U7axPQa/4tD+e2Vg5vUqVzn4gVX/RrfCjcFmoK8jB2HD414sFKNxeImd0Hk41FKkqZlH
-         DvTZcjCEIfEHXkskWmTa3h5hY+gV5jOyWSEbwa+jfue8qFMREXAvoA7HgJ+UA9Rqs6t1
-         CGfA==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:cc:to:message-id:mime-version:subject
+         :date:from;
+        bh=NppjKDQZmTZ4QDGux9qEg/iSG43aSkPtzc8Ru0v2Dmo=;
+        b=pFAmv4Tgtibs1NFLNkONzf5Sa23qW2ari5TKm/6ACc68PjFtRPqULtrfUn487YdBFO
+         eQOLzUqLwHhHMn7X1V+y8DMtJB/Xv9Bz4F6iMyT/ggRxSkz+/dGgisKkZD+grhUXwxd1
+         nWJ0MtU//CxmH3sOQZj2KVBvW5XAFJ/a0oT3apJVMdaJB8TgwcuNbjYyZabPWt6aUT4l
+         IrGrk0Em7qP4UMRWxC4c04xcOGqJHdy/mr7T1+/jbYWSRS1tXbpEc/pMAxHXMop8fm2Z
+         vJRPUtZvqOe4VBJOJ2TjlgYBKZv14iVGnDZ8bIDQL0xEHU5WQ0RQ7w2LwaLqNK5zjSF0
+         Sr3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=ovA+i7ov;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 2-20020a0562140dc200b004bb70e44f6dsi1332907qvt.188.2022.11.30.10.46.25
+        by mx.google.com with ESMTPS id c18-20020ac81112000000b003a6881f5221si1096213qtj.379.2022.11.30.10.56.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Nov 2022 10:46:25 -0800 (PST)
+        Wed, 30 Nov 2022 10:56:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=ovA+i7ov;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p0S5v-0005yi-Rb; Wed, 30 Nov 2022 13:46:07 -0500
+	id 1p0SFn-0000m2-UQ; Wed, 30 Nov 2022 13:56:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1p0S5s-0005xo-NS; Wed, 30 Nov 2022 13:46:05 -0500
-Received: from mout.gmx.net ([212.227.17.22])
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1p0SFn-0000lf-Aw; Wed, 30 Nov 2022 13:56:19 -0500
+Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1p0S5p-0007oc-Fi; Wed, 30 Nov 2022 13:46:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
- t=1669833957; bh=YNuVchso2w7r4t0ROOKUi09ulgf0L1YKz+LEiubRZ0s=;
- h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
- b=ovA+i7ovtGk+UE4FlscmVHmhEv+b0QMRWSFwuARJ03FmlSFhV5wRB/5Fhxu0042f/
- U8B2r+OWZDAIkDHM+Dhqh0TuOVHPhf65lDzIEPCNKBBmsvqRiHixtMELgKG92Wms6X
- 6zBs3wSMcOKwL/SjhuMqR91+qRTeaJfu7X1JLVrRVJZMwmfNGIeNSrNmsA62LEqR/H
- fj67KTlhw8i3496mDjaqwvqZSLq1tFgtdyAA4aoKTTZLNs1i7T6sAoq5vm6hDDHW4V
- xCKLwbp0RJi1zNOAhEzgfzXLmodbwIJmYNSkcfzWGLw3srAjKMDUSqrg2La+fpQGCB
- 8TyvZ0gQdmdVg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from localhost ([77.2.55.175]) by mail.gmx.net (mrgmx104
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MBlxM-1pAJyr2Hvg-00CBPl; Wed, 30
- Nov 2022 19:45:57 +0100
-Message-ID: <0b181d4c-9e3a-2605-3ff5-8114830d394d@gmx.de>
-Date: Wed, 30 Nov 2022 19:45:57 +0100
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1p0SFl-0001LP-Jx; Wed, 30 Nov 2022 13:56:18 -0500
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 9702A11F1E5;
+ Wed, 30 Nov 2022 18:56:16 +0000 (UTC)
+From: ~axelheider <axelheider@git.sr.ht>
+Date: Wed, 30 Nov 2022 18:56:16 +0000
+Subject: [PATCH qemu.git 0/1] hw/arm/virt: add 2x sp804 timer
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH qemu.git 1/1] hw/arm/virt: make second UART available
+Message-ID: <166983457648.13115.4940680286975412418-0@git.sr.ht>
+X-Mailer: git.sr.ht
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org,
- daniel.thompson@linaro.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@linaro.org>
-References: <166982763526.10484.9925072056712598801-1@git.sr.ht>
- <5af1cbc2-5897-5e69-a727-6f423c5c08a5@linaro.org>
-Content-Language: de-DE, en-US
-From: Axel Heider <axelheider@gmx.de>
-In-Reply-To: <5af1cbc2-5897-5e69-a727-6f423c5c08a5@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:puVnDqWQOK+y9mm/Jt7mnikFFoZUB4Cb2soQYbm7zDxzHT4xUC7
- k0cp05ufAWaEaY9KT0yffyEuH06tlluZGartSco50E4NuqHKz9+gXgp+vCUXfdERZ5Nvys/
- ZblQqL6qOJCCdssgZyl0AyQq9EMYjifaWjNapDuK6d7k/Wi/tc3EYeeYUEyW7n+F6r/Vekl
- vMbULjCNKqUzdiNiI90FA==
-UI-OutboundReport: notjunk:1;M01:P0:VZwXOIcGFQ4=;wdZdxsyismip8j4L8aoN3pi6EUe
- o/HaN9nhDdoMIWXHyaJmkJdp93CFHzB3Jh1Of06BTp26Doz538EwZ4+9s51tL9loEajywNfZg
- PEwu2QvsUO+GD8Jj5iaP56jzFPZ8BtcoUldtlhPGmBQkBuvv9gLynWXYG1Xy9fUE4AKCZ1vO/
- b+QOKPEvHCCuGp803JG73B61caIC0QBCzLNEBKxcMUC2mBp1DHrMdKHW1sk28gtTyWcFOIIeW
- TmGZGBzUCFNHlroTbVc+o5KMXYjRrdyjdvQOqOb/3DxN1LHby3mom/PLjEfTEshWLKy0aXfIA
- wcefmpGt1lBqEf3e+gYVHOGsx5Ecmg+cFQoapr9p6wdfxLUxU90f3oYd7y+KuT9kSm/r43fcG
- etmMWLZE5HvVV6t3bRkEbx5Y7WsaRldmo76DlalJQieRsxxiHFauN03aBX9UOOPCGG39S4jqA
- 1j7G47acsVdnvG9cU5ZQJdJMhfh7EavZsFgHTHCMiM6VA5VXONaGMsLmfli4tLVe2qgBXTS7z
- cpKk7Q3NSVuHhsHwxq42mWPlE8YQTC/h1RlxRT/p+HFf7Mf8FrS9FMfubkbxTHGXuYAOKSugN
- 2SISG7MzCKybw6eayu4fBnth+w6L/gOzwoOpN1cPeimS4H/eUAzpBDbWlamy74hIr3OCKNd14
- IAR0BlN5Td8flaSGBqf1F85PBmEC2NR5LID1J7ddj/7waqFJd0u9Tv2Pw1y0oNANaX0WBffnO
- mWwCGzf5GniVQyAMo9X6nl2vo96vhjvrbqwKnLZrVqekQh/6xXqfkz+04SHSYeYNyqBMle7vU
- s8+5z6+LJ/lVPT5jl92gGd48EFc14HeymOEKGLa4PjruAfntJtCzMoYQUbOtqU7LWimflUyKz
- O8MMoQcyrUeAgBj0313xkJHKw1TKTDKKLXOFychZ1johQiF3T2s8ABXaY5h/VvaKZVy/x2bjf
- A6ReaA==
-Received-SPF: pass client-ip=212.227.17.22; envelope-from=axelheider@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.257, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: 2
+X-Spam_score: 0.2
+X-Spam_bar: /
+X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_REPLYTO=2.095,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,43 +81,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: ~axelheider <axelheider@gmx.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UBrty8IK+DUq
+X-TUID: LrJdnEuiDdnD
 
-Hi,
+This patch adds timer peripherals to the arm-virt machine. The
+use case is, that this machine is quite useful for testing purposes
+when it comes to non-Linux operating system (seL4 in our case).
+However, is currently lacks a dedicates timer peripheral, so some
+scenarios cannot be tested easily with QEMU. The RTC cannot be
+used, because he resolution is too low. Since the sp804 supposed
+already exists in QEMU, adding these peripherals seems easy and
+it does not appear to break any existing use cases.
 
+Axel Heider (1):
+  hw/arm/virt: add 2x sp804 timer
 
->> +=C2=A0=C2=A0=C2=A0 switch(uart) {
->> +=C2=A0=C2=A0=C2=A0 case VIRT_UART0:
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->> +=C2=A0=C2=A0=C2=A0 case VIRT_UART1:
->>
-> Maybe pass a 'is_secure' boolean?
+ docs/system/arm/virt.rst |  1 +
+ hw/arm/Kconfig           |  1 +
+ hw/arm/virt.c            | 47 ++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h    |  2 ++
+ 4 files changed, 51 insertions(+)
 
-
-I don't think this would really make things easier. I wanted to
-avoid too many changes in this patch. The price is, that there
-are two places where decisions about the configuration are made.
-But these are also two independent decisions: (a) which memory
-this belongs to and (b) if the UART exists at all. I think the
-code is easier to maintain this way, because more UARTs can be
-added with a small patch then. Note also, that a parameter
-'is_secure' would still not avoid mis-usage, as we still need
-the 'mem' parameter for 'secure_sysmem' or 'sysmem', because
-this is no available from the 'vms' object.
-
-
->> -=C2=A0=C2=A0=C2=A0 VIRT_SECURE_UART,
->> +=C2=A0=C2=A0=C2=A0 VIRT_UART1, /* secure UART if vms->secure */
->>
-> (I'm not sure changing the name is worth the churn).
-
-
-After this patch is merged, we have two UARTs, so the naming is
-a bit more consistent. It's no longer a secure UART only. And
-when adding even more UARTs in further customization, it's easier
-to understand the order of the UARTs.
-
-
-Axel
+-- 
+2.34.5

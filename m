@@ -1,180 +1,326 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1340563ejx;
-        Fri, 2 Dec 2022 06:29:03 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6r0NszQAoBWN6zhpjvFHS1qh6LMoasRuaHxVoxjZt9hnyTRZI5rfQNpqcLOYJaTvRCOEXD
-X-Received: by 2002:a05:620a:c9a:b0:6fa:46cc:8d9a with SMTP id q26-20020a05620a0c9a00b006fa46cc8d9amr62837739qki.98.1669991343679;
-        Fri, 02 Dec 2022 06:29:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669991343; cv=none;
-        d=google.com; s=arc-20160816;
-        b=HLAYD6Ryiz1ooDAdVQ4fDlYGYylnUMDEOPidYG1ZMdiqqQGZatT6iopSQeVj0MYVtV
-         XtiKn3wVFBj7rfsw27eLDUldfm+aZdrgdSUnKahuFLxXchS4bYoX2rrnzxF/XTyN1TO9
-         ZY9M2/GnAlAOfkSaJZEzmW3VFe7y0mWOfEAktK8nNaqgVPkmRQ4XRnXQu4rgsC7bDghz
-         l2Dzb4Dr886C+OwIEJSGge6SE1/v8UpV55RsIsLjj4yexxDbzcl3g+u6WfuTQiecFoJI
-         MYSmVGtl+hFHaTPs8C2Ytd/X6M2QypCh1gl97r6/3jqFYuD+Pf98fo39R5OS/TWn5v0C
-         603A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:subject:references:cc:to:from:content-language
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=kg7q4G5EUubQrVZSdA5OSkKWQvbARmEKM47A2qeZPq8=;
-        b=UWF94tYY4fFSCUV2gWiZ4MThH+pRDXHhmQ2pf+/IymP3aiNeFGkvO1xVITlrb3P9ML
-         SrAj69c5uE4w1MdqLBAWwJsFIA8Q+3+wCl99/GpVatwLy6jXjo1PBjxXxkWQx2HNxvKC
-         DaeKBuV2tPI6O999ee/Tbg6X6a2n/QpfKeTOYyHpajV4Dyi/fPvGEyE+njFDrYwnUG+G
-         nfWRHsNqQUlOrVVmoQeYXlJyJk956V52Hmd0yKvbBkTI99E5OUAWXsJKUj/KUUyya2au
-         E0owcu+MyZVWPzF1JBLBqkx1Kyfx/H0oHmzzqgIZ44EV2vnbSrBl7BN+0KaCrmybBYvP
-         xozg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bu9vlC9r;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r4-20020ac867c4000000b003a5f9a090easi3956176qtp.182.2022.12.02.06.29.03
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Dec 2022 06:29:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bu9vlC9r;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p171z-0006XP-1i; Fri, 02 Dec 2022 09:28:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1p171r-0006Wk-2M
- for qemu-devel@nongnu.org; Fri, 02 Dec 2022 09:28:40 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1p171p-0002to-Fu
- for qemu-devel@nongnu.org; Fri, 02 Dec 2022 09:28:38 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1669991314;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kg7q4G5EUubQrVZSdA5OSkKWQvbARmEKM47A2qeZPq8=;
- b=Bu9vlC9rfeStZnps8pm5BU+hCqenu/MDBnNBi/cpSZ0NkwLjQIWqRwZirOZ9eHFjXuciod
- bSGd8nSc2fY4m01/EhB5ZzV6r9v5suI9Gr4LIYyfayVFOpi8PgfMkY+mR7djBhMT3z5gJS
- 92O2KDTjfckJ7XvLES4PdPFtvfcHd9U=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-149-yP5pzaoyN6WwOGW7x0pRog-1; Fri, 02 Dec 2022 09:28:32 -0500
-X-MC-Unique: yP5pzaoyN6WwOGW7x0pRog-1
-Received: by mail-wm1-f72.google.com with SMTP id
- o5-20020a05600c510500b003cfca1a327fso2570856wms.8
- for <qemu-devel@nongnu.org>; Fri, 02 Dec 2022 06:28:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:subject:references:cc:to:from
- :content-language:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kg7q4G5EUubQrVZSdA5OSkKWQvbARmEKM47A2qeZPq8=;
- b=3MVKY2AanoB2koqJHOXhxtnYc5LOwfAm3citJGRNsYz1nyhdKT9P1sgeJ9pvAfUVe+
- CwAAMpxLKFoVskaQumIXKy38FmMFg1spW8N2nhC7LTs/yeF7WKpuD1v72KDPNctLS1ki
- dN0laoeLeCdqmoPKQNoHVaVBLj6iRo1ZXpK1LCf7R9X3K0DaYH/qM3EdBZcMterF83rQ
- 2pjeBjznOQKUeQs6hKHqMCaCk38MvY6RL23EvSEAJY8ZTUFWG6Gm1CrkrVFXar96vQYJ
- iYDzrw8l2uWkwT4i80Lii36R3KLfgI3MKseByFEdUBF+k0oD0ZGHo+mf26PgqXK7XYdB
- n/4w==
-X-Gm-Message-State: ANoB5plv91D9Z/hjsmkawslVmLsx3K2FIEckLlO1fK79Aq7xbZ/8DhSh
- Mlh9DRbg4oMEfKZBqlv+lAm0kuA3XbRBlLJuBQtFtbvn5OhUc7pNfPYYn14Z7qtJok5IgS2bbXN
- /RL2VxSW2gQAZ2Ks=
-X-Received: by 2002:a5d:4a8c:0:b0:242:165e:7a79 with SMTP id
- o12-20020a5d4a8c000000b00242165e7a79mr15414239wrq.343.1669991311809; 
- Fri, 02 Dec 2022 06:28:31 -0800 (PST)
-X-Received: by 2002:a5d:4a8c:0:b0:242:165e:7a79 with SMTP id
- o12-20020a5d4a8c000000b00242165e7a79mr15414229wrq.343.1669991311599; 
- Fri, 02 Dec 2022 06:28:31 -0800 (PST)
-Received: from [192.168.0.5] (ip-109-43-178-86.web.vodafone.de.
- [109.43.178.86]) by smtp.gmail.com with ESMTPSA id
- s17-20020a5d5111000000b0022584c82c80sm7196391wrt.19.2022.12.02.06.28.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Dec 2022 06:28:31 -0800 (PST)
-Message-ID: <5a5031b4-d00f-fcc0-6b47-38413dd6c308@redhat.com>
-Date: Fri, 2 Dec 2022 15:28:29 +0100
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id k15-20020a05600c1c8f00b003c6c3fb3cf6sm9661920wms.18.2022.12.02.06.50.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 02 Dec 2022 06:50:12 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id C0BBC1FFB7;
+	Fri,  2 Dec 2022 14:50:10 +0000 (GMT)
+References: <20221202030003.11441-1-vikram.garhwal@amd.com>
+ <20221202030003.11441-11-vikram.garhwal@amd.com>
+User-agent: mu4e 1.9.3; emacs 29.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Vikram Garhwal <vikram.garhwal@amd.com>
+Cc: qemu-dev@xilinx.com, stefano.stabellini@amd.com,
+ xen-devel@lists.xenproject.org, Peter Maydell <peter.maydell@linaro.org>,
+ Stefano Stabellini <sstabellini@kernel.org>, Anthony Perard
+ <anthony.perard@citrix.com>, Paul  Durrant <paul@xen.org>, "open list:ARM
+ TCG CPUs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Subject: Re: [QEMU][PATCH v2 10/11] hw/arm: introduce xenpv machine
+Date: Fri, 02 Dec 2022 14:45:58 +0000
+In-reply-to: <20221202030003.11441-11-vikram.garhwal@amd.com>
+Message-ID: <875yetc125.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Content-Language: en-US
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20221130111559.52150-1-thuth@redhat.com>
- <CAFEAcA-hneP0SLUTW=_maTztra9gYnKgPeXevDcVu3jZZnDObA@mail.gmail.com>
- <95226bbe-9658-660c-12bb-dbf82b28dbd5@redhat.com>
-Subject: Re: [PATCH for-8.0] hw/misc: Move some arm-related files from
- specific_ss into softmmu_ss
-In-Reply-To: <95226bbe-9658-660c-12bb-dbf82b28dbd5@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.258, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qBkAgXwydfXa
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Vp14/+1i6K2f
 
-On 02/12/2022 13.25, Thomas Huth wrote:
-> On 01/12/2022 12.55, Peter Maydell wrote:
->> On Wed, 30 Nov 2022 at 11:16, Thomas Huth <thuth@redhat.com> wrote:
->>>
->>> By removing #include "kvm-consts.h" from arm-powerctl.h (seems not to
->>> be required there) and adjusting the header includes in some files, we
->>> can move them from specific_ss into softmmu_ss, so that they only need
->>> to be compiled once and not for qemu-system-arm and qemu-system-aarch64
->>> individually.
->>
->>> --- a/target/arm/arm-powerctl.h
->>> +++ b/target/arm/arm-powerctl.h
->>> @@ -11,8 +11,6 @@
->>>   #ifndef QEMU_ARM_POWERCTL_H
->>>   #define QEMU_ARM_POWERCTL_H
->>>
->>> -#include "kvm-consts.h"
->>> -
->>>   #define QEMU_ARM_POWERCTL_RET_SUCCESS QEMU_PSCI_RET_SUCCESS
->>>   #define QEMU_ARM_POWERCTL_INVALID_PARAM QEMU_PSCI_RET_INVALID_PARAMS
->>>   #define QEMU_ARM_POWERCTL_ALREADY_ON QEMU_PSCI_RET_ALREADY_ON
->>
->> kvm-consts.h is where QEMU_PSCI_RET_SUCCESS etc are defined.
->> So while the #include isn't strictly needed for compilation to work
->> because arm-powerctl.h only creates the #define and doesn't use it,
->> it does mean that any source file that uses the QEMU_ARM_POWERCTL_*
->> now needs to include kvm-consts.h somehow itself. (Usually this is
->> going to happen implicitly via target/arm/cpu.h, I think.)
 
-Thinking about this a little bit more (and finally having a look at the 
-contents of kvm-consts.h itself) ... I think there might be an even more 
-elegant solution here: We could maybe apply the "#ifdef NEED_CPU_H" trick in 
-kvm-consts.h (like it is e.g. done in include/sysemu/kvm.h) to avoid to 
-touch the poisoned CONFIG_KVM macro in common code ... I'll give it a try, 
-and if it works, I'll use that method for my v2 of this patch.
+Vikram Garhwal <vikram.garhwal@amd.com> writes:
 
-  Thomas
+> Add a new machine xenpv which creates a IOREQ server to register/connect =
+with
+> Xen Hypervisor.
+>
+> Optional: When CONFIG_TPM is enabled, it also creates a tpm-tis-device, a=
+dds a
+> TPM emulator and connects to swtpm running on host machine via chardev so=
+cket
+> and support TPM functionalities for a guest domain.
+>
+> Extra command line for aarch64 xenpv QEMU to connect to swtpm:
+>     -chardev socket,id=3Dchrtpm,path=3D/tmp/myvtpm2/swtpm-sock \
+>     -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
+>
+> swtpm implements a TPM software emulator(TPM 1.2 & TPM 2) built on libtpm=
+s and
+> provides access to TPM functionality over socket, chardev and CUSE interf=
+ace.
+> Github repo: https://github.com/stefanberger/swtpm
+> Example for starting swtpm on host machine:
+>     mkdir /tmp/vtpm2
+>     swtpm socket --tpmstate dir=3D/tmp/vtpm2 \
+>     --ctrl type=3Dunixio,path=3D/tmp/vtpm2/swtpm-sock &
+>
+> /* Comment about machine name. Will be removed in next version*/
+> Please reply with the machine name you agree. Below are two possible name=
+s:
+> 1. xenpv
+> 2. xenpvh
+>
+> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+> Signed-off-by: Stefano Stabellini <stefano.stabellini@amd.com>
+> ---
+>  hw/arm/meson.build            |   2 +
+>  hw/arm/xen_arm.c              | 175 ++++++++++++++++++++++++++++++++++
+>  include/hw/arm/xen_arch_hvm.h |   9 ++
+>  include/hw/xen/arch_hvm.h     |   2 +
+>  4 files changed, 188 insertions(+)
+>  create mode 100644 hw/arm/xen_arm.c
+>  create mode 100644 include/hw/arm/xen_arch_hvm.h
+>
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index 92f9f6e000..0cae024374 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -62,5 +62,7 @@ arm_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl=
+-imx7.c', 'mcimx7d-sabre.
+>  arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c', 's=
+mmuv3.c'))
+>  arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mc=
+imx6ul-evk.c'))
+>  arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+> +arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
+> +arm_ss.add_all(xen_ss)
+>=20=20
+>  hw_arch +=3D {'arm': arm_ss}
+> diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+> new file mode 100644
+> index 0000000000..bcb8e95f2c
+> --- /dev/null
+> +++ b/hw/arm/xen_arm.c
+> @@ -0,0 +1,175 @@
+> +/*
+> + * QEMU ARM Xen PV Machine
+> + *
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
+> + * of this software and associated documentation files (the "Software"),=
+ to deal
+> + * in the Software without restriction, including without limitation the=
+ rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be includ=
+ed in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+> +#include "qapi/qapi-commands-migration.h"
+> +#include "hw/boards.h"
+> +#include "hw/sysbus.h"
+> +#include "sysemu/block-backend.h"
+> +#include "sysemu/tpm_backend.h"
+> +#include "sysemu/sysemu.h"
+> +#include "hw/xen/xen-legacy-backend.h"
+> +#include "hw/xen/xen-hvm-common.h"
+> +#include "sysemu/tpm.h"
+> +#include "hw/xen/arch_hvm.h"
+> +
+> +#define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpv")
+> +OBJECT_DECLARE_SIMPLE_TYPE(XenArmState, XEN_ARM)
+> +
+> +static MemoryListener xen_memory_listener =3D {
+> +    .region_add =3D xen_region_add,
+> +    .region_del =3D xen_region_del,
+> +    .log_start =3D NULL,
+> +    .log_stop =3D NULL,
+> +    .log_sync =3D NULL,
+> +    .log_global_start =3D NULL,
+> +    .log_global_stop =3D NULL,
+> +    .priority =3D 10,
+> +};
+> +
+> +struct XenArmState {
+> +    /*< private >*/
+> +    MachineState parent;
+> +
+> +    XenIOState *state;
+> +};
+> +
+> +void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+> +{
+> +    hw_error("Invalid ioreq type 0x%x\n", req->type);
+> +
+> +    return;
+> +}
+> +
+> +void arch_xen_set_memory(XenIOState *state, MemoryRegionSection *section,
+> +                         bool add)
+> +{
+> +}
+> +
+> +void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+> +{
+> +}
+> +
+> +void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
+> +{
+> +}
+> +
 
+This function is only used under CONFIG_TPM so without it you get:
+
+  ../../hw/arm/xen_arm.c:78:12: error: =E2=80=98xen_init_ioreq=E2=80=99 def=
+ined but not used [-Werror=3Dunused-function]
+     78 | static int xen_init_ioreq(XenIOState *state, unsigned int max_cpu=
+s)
+        |            ^~~~~~~~~~~~~~
+  cc1: all warnings being treated as errors
+
+I think I reported this on v1 as well.
+
+> +static int xen_init_ioreq(XenIOState *state, unsigned int max_cpus)
+> +{
+> +    xen_dmod =3D xendevicemodel_open(0, 0);
+> +    if (xen_dmod =3D=3D NULL) {
+> +        perror("xen: can't open xen device model interface\n");
+> +        return -1;
+> +    }
+> +
+> +    xen_xc =3D xc_interface_open(0, 0, 0);
+> +    if (xen_xc =3D=3D NULL) {
+> +        perror("xen: can't open xen interface\n");
+> +        return -1;
+> +    }
+> +
+> +    xen_fmem =3D xenforeignmemory_open(0, 0);
+> +    if (xen_fmem =3D=3D NULL) {
+> +        perror("xen: can't open xen fmem interface\n");
+> +        xc_interface_close(xen_xc);
+> +        return -1;
+> +    }
+> +
+> +    xen_register_ioreq(state, max_cpus, xen_memory_listener);
+> +
+> +    xen_register_backend(state);
+> +
+> +    xenstore_record_dm_state(state->xenstore, "running");
+> +
+> +    return 0;
+> +}
+> +
+> +static void xen_enable_tpm(void)
+> +{
+> +/* qemu_find_tpm_be is only available when CONFIG_TPM is enabled. */
+> +#ifdef CONFIG_TPM
+> +    Error *errp =3D NULL;
+> +    DeviceState *dev;
+> +    SysBusDevice *busdev;
+> +
+> +    TPMBackend *be =3D qemu_find_tpm_be("tpm0");
+> +    if (be =3D=3D NULL) {
+> +        DPRINTF("Couldn't fine the backend for tpm0\n");
+> +        return;
+> +    }
+> +    dev =3D qdev_new(TYPE_TPM_TIS_SYSBUS);
+> +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
+> +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
+> +    busdev =3D SYS_BUS_DEVICE(dev);
+> +    sysbus_realize_and_unref(busdev, &error_fatal);
+> +    sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
+> +
+> +    DPRINTF("Connected tpmdev at address 0x%lx\n", GUEST_TPM_BASE);
+> +#endif
+> +}
+> +
+> +static void xen_arm_init(MachineState *machine)
+> +{
+> +    XenArmState *xam =3D XEN_ARM(machine);
+> +
+> +    xam->state =3D  g_new0(XenIOState, 1);
+> +
+> +    /* For now enable IOREQ only for CONFIG_TPM. */
+> +#ifdef CONFIG_TPM
+> +    if (xen_init_ioreq(xam->state, machine->smp.cpus)) {
+> +        return;
+> +    }
+> +#endif
+> +
+> +    xen_enable_tpm();
+
+In fact this just looks weird - you guard the call to init_ioreq with
+ifdefs guarding it but nest those ifdefs in xen_enable_tpm. Surely you
+want the IOREQ server support even if you don't have TPM. Otherwise it
+should be a hard configure requirement.
+
+> +
+> +    return;
+> +}
+> +
+> +static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
+> +{
+> +
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +    mc->desc =3D "Xen Para-virtualized PC";
+> +    mc->init =3D xen_arm_init;
+> +    mc->max_cpus =3D 1;
+> +
+> +#ifdef CONFIG_TPM
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+> +#endif
+> +}
+> +
+> +static const TypeInfo xen_arm_machine_type =3D {
+> +    .name =3D TYPE_XEN_ARM,
+> +    .parent =3D TYPE_MACHINE,
+> +    .class_init =3D xen_arm_machine_class_init,
+> +    .instance_size =3D sizeof(XenArmState),
+> +};
+> +
+> +static void xen_arm_machine_register_types(void)
+> +{
+> +    type_register_static(&xen_arm_machine_type);
+> +}
+> +
+> +type_init(xen_arm_machine_register_types)
+> diff --git a/include/hw/arm/xen_arch_hvm.h b/include/hw/arm/xen_arch_hvm.h
+> new file mode 100644
+> index 0000000000..8fd645e723
+> --- /dev/null
+> +++ b/include/hw/arm/xen_arch_hvm.h
+> @@ -0,0 +1,9 @@
+> +#ifndef HW_XEN_ARCH_ARM_HVM_H
+> +#define HW_XEN_ARCH_ARM_HVM_H
+> +
+> +#include <xen/hvm/ioreq.h>
+> +void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+> +void arch_xen_set_memory(XenIOState *state,
+> +                         MemoryRegionSection *section,
+> +                         bool add);
+> +#endif
+> diff --git a/include/hw/xen/arch_hvm.h b/include/hw/xen/arch_hvm.h
+> index 26674648d8..c7c515220d 100644
+> --- a/include/hw/xen/arch_hvm.h
+> +++ b/include/hw/xen/arch_hvm.h
+> @@ -1,3 +1,5 @@
+>  #if defined(TARGET_I386) || defined(TARGET_X86_64)
+>  #include "hw/i386/xen_arch_hvm.h"
+> +#elif defined(TARGET_ARM) || defined(TARGET_ARM_64)
+> +#include "hw/arm/xen_arch_hvm.h"
+>  #endif
+
+
+--=20
+Alex Benn=C3=A9e

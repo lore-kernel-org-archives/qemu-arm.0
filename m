@@ -1,251 +1,180 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1393427ejx;
-        Fri, 2 Dec 2022 07:40:58 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4PCpD4Nu9xa97nfZrhhuiGeQvUMtIcyDyBTCHrd4lMg0vk4rj99CRpKlVm4tBZxOztBtVM
-X-Received: by 2002:a05:6214:3c87:b0:4c6:5bac:4456 with SMTP id ok7-20020a0562143c8700b004c65bac4456mr55634175qvb.128.1669995658517;
-        Fri, 02 Dec 2022 07:40:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669995658; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1340563ejx;
+        Fri, 2 Dec 2022 06:29:03 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6r0NszQAoBWN6zhpjvFHS1qh6LMoasRuaHxVoxjZt9hnyTRZI5rfQNpqcLOYJaTvRCOEXD
+X-Received: by 2002:a05:620a:c9a:b0:6fa:46cc:8d9a with SMTP id q26-20020a05620a0c9a00b006fa46cc8d9amr62837739qki.98.1669991343679;
+        Fri, 02 Dec 2022 06:29:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669991343; cv=none;
         d=google.com; s=arc-20160816;
-        b=EtK4CRIEASXdo8JWBfYEUnefdgtGDb9FrkRnWfk/fozO4tJtY1BFzc0aYtioxJyKq/
-         4S0Y8dveeFtxj1sx+WmZdqKgraXHEoepRj89oDJ12FbKsON2sIjO5jf+GKSB8q6gaj6p
-         iuko70nJs4A/XWhsSSMaPGYF+nTrYuvAay3FxMBvauBK+5pr8B7WWWD9DZWOr9vCq5wQ
-         Fd4utM8FB99Tq3owHUqkQWaXejkzFuHzZ8caTNnuTaiBSO1m7Xm0Xv67DFY/i/KqxLYp
-         TOgHCwEnTRHTfk1VC/S65tZlVo4O3DgJxoe+aeX4YjwvH+ErlOVC0p6zsw1wlrSSwl6Q
-         TVeQ==
+        b=HLAYD6Ryiz1ooDAdVQ4fDlYGYylnUMDEOPidYG1ZMdiqqQGZatT6iopSQeVj0MYVtV
+         XtiKn3wVFBj7rfsw27eLDUldfm+aZdrgdSUnKahuFLxXchS4bYoX2rrnzxF/XTyN1TO9
+         ZY9M2/GnAlAOfkSaJZEzmW3VFe7y0mWOfEAktK8nNaqgVPkmRQ4XRnXQu4rgsC7bDghz
+         l2Dzb4Dr886C+OwIEJSGge6SE1/v8UpV55RsIsLjj4yexxDbzcl3g+u6WfuTQiecFoJI
+         MYSmVGtl+hFHaTPs8C2Ytd/X6M2QypCh1gl97r6/3jqFYuD+Pf98fo39R5OS/TWn5v0C
+         603A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=k31gxd363+rUh2suHaYSb16ogW0CYQz/oUuU7ri+gT4=;
-        b=Z5RaVCkYgLdT0msXENpWjvBiz/CyKxI1mmyi1Qvg74eCgHwEaCC67K/gcxiNko9iSX
-         tr30+GTaRUk1/qKEuCcnvOpg/AwIdJjrhJDMZTGRUflslR8es0n/hr4M8xhX7B8tLNOT
-         n5jcOR86T6f505KIFmWoz2g9IsTLyshchAx2u+GsdQONSXPz5iZ8tL2QcZgQha5knc2b
-         u38bmrlUf7HnUR/ldHpdN7D2Q+pmIKqbnBTfLLM+HUPJmIpR/sZoTinC3mqlLjoBfjr0
-         Q0BXcgP9EamE3orkRS124USXiDj2/CX1qrZ94kmJMbIEfXHOHC0fPv8pD5kNY2LPgBCG
-         ILDQ==
+         :in-reply-to:subject:references:cc:to:from:content-language
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=kg7q4G5EUubQrVZSdA5OSkKWQvbARmEKM47A2qeZPq8=;
+        b=UWF94tYY4fFSCUV2gWiZ4MThH+pRDXHhmQ2pf+/IymP3aiNeFGkvO1xVITlrb3P9ML
+         SrAj69c5uE4w1MdqLBAWwJsFIA8Q+3+wCl99/GpVatwLy6jXjo1PBjxXxkWQx2HNxvKC
+         DaeKBuV2tPI6O999ee/Tbg6X6a2n/QpfKeTOYyHpajV4Dyi/fPvGEyE+njFDrYwnUG+G
+         nfWRHsNqQUlOrVVmoQeYXlJyJk956V52Hmd0yKvbBkTI99E5OUAWXsJKUj/KUUyya2au
+         E0owcu+MyZVWPzF1JBLBqkx1Kyfx/H0oHmzzqgIZ44EV2vnbSrBl7BN+0KaCrmybBYvP
+         xozg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QavpOHZY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bu9vlC9r;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h10-20020ac8514a000000b00399ae6c0b72si4182555qtn.538.2022.12.02.07.40.58
+        by mx.google.com with ESMTPS id r4-20020ac867c4000000b003a5f9a090easi3956176qtp.182.2022.12.02.06.29.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Dec 2022 07:40:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 Dec 2022 06:29:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QavpOHZY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bu9vlC9r;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p189U-0001RA-Qi; Fri, 02 Dec 2022 10:40:36 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p171z-0006XP-1i; Fri, 02 Dec 2022 09:28:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1p189T-0001Qs-Nw
- for qemu-arm@nongnu.org; Fri, 02 Dec 2022 10:40:35 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1p171r-0006Wk-2M
+ for qemu-devel@nongnu.org; Fri, 02 Dec 2022 09:28:40 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1p189R-000133-H0
- for qemu-arm@nongnu.org; Fri, 02 Dec 2022 10:40:35 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1p171p-0002to-Fu
+ for qemu-devel@nongnu.org; Fri, 02 Dec 2022 09:28:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1669995631;
+ s=mimecast20190719; t=1669991314;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=k31gxd363+rUh2suHaYSb16ogW0CYQz/oUuU7ri+gT4=;
- b=QavpOHZYhZgrzeTBXmw3kcINfVnrudgQEEZccu42TLG4spkOk7DeOP1GV1r8R4w//Hs4w4
- FKOXrPffvRu8ReOXj7sdTwwlRozE9pyvQ3wCER4DlOqpPfpjfKyY3r20Bt4E8/KckvCFey
- zLQqRhtAKXHpNKD4ZWcCWtNM02Ay6Gk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-257-ABQYHRjCPFK9TJH82YeZ_A-1; Fri, 02 Dec 2022 10:40:30 -0500
-X-MC-Unique: ABQYHRjCPFK9TJH82YeZ_A-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AFFD9185A79C;
- Fri,  2 Dec 2022 15:40:29 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.192.254])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C30B0403165;
- Fri,  2 Dec 2022 15:40:27 +0000 (UTC)
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=kg7q4G5EUubQrVZSdA5OSkKWQvbARmEKM47A2qeZPq8=;
+ b=Bu9vlC9rfeStZnps8pm5BU+hCqenu/MDBnNBi/cpSZ0NkwLjQIWqRwZirOZ9eHFjXuciod
+ bSGd8nSc2fY4m01/EhB5ZzV6r9v5suI9Gr4LIYyfayVFOpi8PgfMkY+mR7djBhMT3z5gJS
+ 92O2KDTjfckJ7XvLES4PdPFtvfcHd9U=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-149-yP5pzaoyN6WwOGW7x0pRog-1; Fri, 02 Dec 2022 09:28:32 -0500
+X-MC-Unique: yP5pzaoyN6WwOGW7x0pRog-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ o5-20020a05600c510500b003cfca1a327fso2570856wms.8
+ for <qemu-devel@nongnu.org>; Fri, 02 Dec 2022 06:28:32 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:subject:references:cc:to:from
+ :content-language:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=kg7q4G5EUubQrVZSdA5OSkKWQvbARmEKM47A2qeZPq8=;
+ b=3MVKY2AanoB2koqJHOXhxtnYc5LOwfAm3citJGRNsYz1nyhdKT9P1sgeJ9pvAfUVe+
+ CwAAMpxLKFoVskaQumIXKy38FmMFg1spW8N2nhC7LTs/yeF7WKpuD1v72KDPNctLS1ki
+ dN0laoeLeCdqmoPKQNoHVaVBLj6iRo1ZXpK1LCf7R9X3K0DaYH/qM3EdBZcMterF83rQ
+ 2pjeBjznOQKUeQs6hKHqMCaCk38MvY6RL23EvSEAJY8ZTUFWG6Gm1CrkrVFXar96vQYJ
+ iYDzrw8l2uWkwT4i80Lii36R3KLfgI3MKseByFEdUBF+k0oD0ZGHo+mf26PgqXK7XYdB
+ n/4w==
+X-Gm-Message-State: ANoB5plv91D9Z/hjsmkawslVmLsx3K2FIEckLlO1fK79Aq7xbZ/8DhSh
+ Mlh9DRbg4oMEfKZBqlv+lAm0kuA3XbRBlLJuBQtFtbvn5OhUc7pNfPYYn14Z7qtJok5IgS2bbXN
+ /RL2VxSW2gQAZ2Ks=
+X-Received: by 2002:a5d:4a8c:0:b0:242:165e:7a79 with SMTP id
+ o12-20020a5d4a8c000000b00242165e7a79mr15414239wrq.343.1669991311809; 
+ Fri, 02 Dec 2022 06:28:31 -0800 (PST)
+X-Received: by 2002:a5d:4a8c:0:b0:242:165e:7a79 with SMTP id
+ o12-20020a5d4a8c000000b00242165e7a79mr15414229wrq.343.1669991311599; 
+ Fri, 02 Dec 2022 06:28:31 -0800 (PST)
+Received: from [192.168.0.5] (ip-109-43-178-86.web.vodafone.de.
+ [109.43.178.86]) by smtp.gmail.com with ESMTPSA id
+ s17-20020a5d5111000000b0022584c82c80sm7196391wrt.19.2022.12.02.06.28.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 02 Dec 2022 06:28:31 -0800 (PST)
+Message-ID: <5a5031b4-d00f-fcc0-6b47-38413dd6c308@redhat.com>
+Date: Fri, 2 Dec 2022 15:28:29 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Content-Language: en-US
 From: Thomas Huth <thuth@redhat.com>
-To: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
  Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 for-8.0] hw/misc: Move some arm-related files from
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+References: <20221130111559.52150-1-thuth@redhat.com>
+ <CAFEAcA-hneP0SLUTW=_maTztra9gYnKgPeXevDcVu3jZZnDObA@mail.gmail.com>
+ <95226bbe-9658-660c-12bb-dbf82b28dbd5@redhat.com>
+Subject: Re: [PATCH for-8.0] hw/misc: Move some arm-related files from
  specific_ss into softmmu_ss
-Date: Fri,  2 Dec 2022 16:40:23 +0100
-Message-Id: <20221202154023.293614-1-thuth@redhat.com>
-MIME-Version: 1.0
+In-Reply-To: <95226bbe-9658-660c-12bb-dbf82b28dbd5@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.258, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C5vxDICUMqV7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qBkAgXwydfXa
 
-The header arget/arm/kvm-consts.h checks CONFIG_KVM which is marked as
-poisoned in common code, so the files that include this header have to
-be added to specific_ss and recompiled for each, qemu-system-arm and
-qemu-system-aarch64. However, since the kvm headers are only optionally
-used in kvm-constants.h for some sanity checks, we can additionally
-check the NEED_CPU_H macro first to avoid the poisoned CONFIG_KVM macro,
-so kvm-constants.h can also be used from "common" files (without the
-sanity checks - which should be OK since they are still done from other
-target-specific files instead). This way, and by adjusting some other
-include statements in the related files here and there, we can move some
-files from specific_ss into softmmu_ss, so that they only need to be
-compiled once during the build process.
+On 02/12/2022 13.25, Thomas Huth wrote:
+> On 01/12/2022 12.55, Peter Maydell wrote:
+>> On Wed, 30 Nov 2022 at 11:16, Thomas Huth <thuth@redhat.com> wrote:
+>>>
+>>> By removing #include "kvm-consts.h" from arm-powerctl.h (seems not to
+>>> be required there) and adjusting the header includes in some files, we
+>>> can move them from specific_ss into softmmu_ss, so that they only need
+>>> to be compiled once and not for qemu-system-arm and qemu-system-aarch64
+>>> individually.
+>>
+>>> --- a/target/arm/arm-powerctl.h
+>>> +++ b/target/arm/arm-powerctl.h
+>>> @@ -11,8 +11,6 @@
+>>>   #ifndef QEMU_ARM_POWERCTL_H
+>>>   #define QEMU_ARM_POWERCTL_H
+>>>
+>>> -#include "kvm-consts.h"
+>>> -
+>>>   #define QEMU_ARM_POWERCTL_RET_SUCCESS QEMU_PSCI_RET_SUCCESS
+>>>   #define QEMU_ARM_POWERCTL_INVALID_PARAM QEMU_PSCI_RET_INVALID_PARAMS
+>>>   #define QEMU_ARM_POWERCTL_ALREADY_ON QEMU_PSCI_RET_ALREADY_ON
+>>
+>> kvm-consts.h is where QEMU_PSCI_RET_SUCCESS etc are defined.
+>> So while the #include isn't strictly needed for compilation to work
+>> because arm-powerctl.h only creates the #define and doesn't use it,
+>> it does mean that any source file that uses the QEMU_ARM_POWERCTL_*
+>> now needs to include kvm-consts.h somehow itself. (Usually this is
+>> going to happen implicitly via target/arm/cpu.h, I think.)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: Use NEED_CPU_H wrapper in kvm-consts.h instead of avoiding to include it
+Thinking about this a little bit more (and finally having a look at the 
+contents of kvm-consts.h itself) ... I think there might be an even more 
+elegant solution here: We could maybe apply the "#ifdef NEED_CPU_H" trick in 
+kvm-consts.h (like it is e.g. done in include/sysemu/kvm.h) to avoid to 
+touch the poisoned CONFIG_KVM macro in common code ... I'll give it a try, 
+and if it works, I'll use that method for my v2 of this patch.
 
- include/hw/misc/xlnx-zynqmp-apu-ctrl.h |  2 +-
- target/arm/kvm-consts.h                |  8 ++++----
- hw/misc/imx6_src.c                     |  2 +-
- hw/misc/iotkit-sysctl.c                |  1 -
- hw/misc/meson.build                    | 11 +++++------
- 5 files changed, 11 insertions(+), 13 deletions(-)
-
-diff --git a/include/hw/misc/xlnx-zynqmp-apu-ctrl.h b/include/hw/misc/xlnx-zynqmp-apu-ctrl.h
-index b8ca9434af..c3bf3c1583 100644
---- a/include/hw/misc/xlnx-zynqmp-apu-ctrl.h
-+++ b/include/hw/misc/xlnx-zynqmp-apu-ctrl.h
-@@ -13,7 +13,7 @@
- 
- #include "hw/sysbus.h"
- #include "hw/register.h"
--#include "target/arm/cpu.h"
-+#include "target/arm/cpu-qom.h"
- 
- #define TYPE_XLNX_ZYNQMP_APU_CTRL "xlnx.apu-ctrl"
- OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPAPUCtrl, XLNX_ZYNQMP_APU_CTRL)
-diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
-index faacf96fdc..09967ec5e6 100644
---- a/target/arm/kvm-consts.h
-+++ b/target/arm/kvm-consts.h
-@@ -14,16 +14,16 @@
- #ifndef ARM_KVM_CONSTS_H
- #define ARM_KVM_CONSTS_H
- 
-+#ifdef NEED_CPU_H
- #ifdef CONFIG_KVM
- #include <linux/kvm.h>
- #include <linux/psci.h>
--
- #define MISMATCH_CHECK(X, Y) QEMU_BUILD_BUG_ON(X != Y)
-+#endif
-+#endif
- 
--#else
--
-+#ifndef MISMATCH_CHECK
- #define MISMATCH_CHECK(X, Y) QEMU_BUILD_BUG_ON(0)
--
- #endif
- 
- #define CP_REG_SIZE_SHIFT 52
-diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
-index 7b0e968804..a9c64d06eb 100644
---- a/hw/misc/imx6_src.c
-+++ b/hw/misc/imx6_src.c
-@@ -15,7 +15,7 @@
- #include "qemu/log.h"
- #include "qemu/main-loop.h"
- #include "qemu/module.h"
--#include "arm-powerctl.h"
-+#include "target/arm/arm-powerctl.h"
- #include "hw/core/cpu.h"
- 
- #ifndef DEBUG_IMX6_SRC
-diff --git a/hw/misc/iotkit-sysctl.c b/hw/misc/iotkit-sysctl.c
-index 7147e2f84e..e664215ee6 100644
---- a/hw/misc/iotkit-sysctl.c
-+++ b/hw/misc/iotkit-sysctl.c
-@@ -30,7 +30,6 @@
- #include "hw/qdev-properties.h"
- #include "hw/arm/armsse-version.h"
- #include "target/arm/arm-powerctl.h"
--#include "target/arm/cpu.h"
- 
- REG32(SECDBGSTAT, 0x0)
- REG32(SECDBGSET, 0x4)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 95268eddc0..ed0598dc9e 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -51,6 +51,7 @@ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files(
-   'imx25_ccm.c',
-   'imx31_ccm.c',
-   'imx6_ccm.c',
-+  'imx6_src.c',
-   'imx6ul_ccm.c',
-   'imx7_ccm.c',
-   'imx7_gpr.c',
-@@ -84,8 +85,8 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files(
- ))
- softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
- softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
--specific_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-crf.c'))
--specific_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-apu-ctrl.c'))
-+softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-crf.c'))
-+softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-apu-ctrl.c'))
- specific_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-crl.c'))
- softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
-   'xlnx-versal-xramc.c',
-@@ -101,6 +102,7 @@ softmmu_ss.add(when: 'CONFIG_TZ_MPC', if_true: files('tz-mpc.c'))
- softmmu_ss.add(when: 'CONFIG_TZ_MSC', if_true: files('tz-msc.c'))
- softmmu_ss.add(when: 'CONFIG_TZ_PPC', if_true: files('tz-ppc.c'))
- softmmu_ss.add(when: 'CONFIG_IOTKIT_SECCTL', if_true: files('iotkit-secctl.c'))
-+softmmu_ss.add(when: 'CONFIG_IOTKIT_SYSCTL', if_true: files('iotkit-sysctl.c'))
- softmmu_ss.add(when: 'CONFIG_IOTKIT_SYSINFO', if_true: files('iotkit-sysinfo.c'))
- softmmu_ss.add(when: 'CONFIG_ARMSSE_CPU_PWRCTRL', if_true: files('armsse-cpu-pwrctrl.c'))
- softmmu_ss.add(when: 'CONFIG_ARMSSE_CPUID', if_true: files('armsse-cpuid.c'))
-@@ -126,15 +128,12 @@ softmmu_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_ahb_apb_pnp.c'))
- 
- specific_ss.add(when: 'CONFIG_AVR_POWER', if_true: files('avr_power.c'))
- 
--specific_ss.add(when: 'CONFIG_IMX', if_true: files('imx6_src.c'))
--specific_ss.add(when: 'CONFIG_IOTKIT_SYSCTL', if_true: files('iotkit-sysctl.c'))
--
- specific_ss.add(when: 'CONFIG_MAC_VIA', if_true: files('mac_via.c'))
- 
- specific_ss.add(when: 'CONFIG_MIPS_CPS', if_true: files('mips_cmgcr.c', 'mips_cpc.c'))
- specific_ss.add(when: 'CONFIG_MIPS_ITU', if_true: files('mips_itu.c'))
- 
--specific_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa_ec.c'))
-+softmmu_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa_ec.c'))
- 
- # HPPA devices
- softmmu_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
--- 
-2.31.1
+  Thomas
 

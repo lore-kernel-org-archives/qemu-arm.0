@@ -1,125 +1,160 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id he10-20020a05600c540a00b003b4a699ce8esm11985654wmb.6.2022.12.02.06.58.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Dec 2022 06:58:01 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E05CD1FFB7;
-	Fri,  2 Dec 2022 14:58:00 +0000 (GMT)
-References: <20221202030003.11441-1-vikram.garhwal@amd.com>
- <20221202030003.11441-11-vikram.garhwal@amd.com>
-User-agent: mu4e 1.9.3; emacs 29.0.60
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Vikram Garhwal <vikram.garhwal@amd.com>
-Cc: qemu-dev@xilinx.com, stefano.stabellini@amd.com,
- xen-devel@lists.xenproject.org, Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>, Anthony Perard
- <anthony.perard@citrix.com>, Paul  Durrant <paul@xen.org>, "open list:ARM
- TCG CPUs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Subject: Re: [QEMU][PATCH v2 10/11] hw/arm: introduce xenpv machine
-Date: Fri, 02 Dec 2022 14:52:41 +0000
-In-reply-to: <20221202030003.11441-11-vikram.garhwal@amd.com>
-Message-ID: <871qphc0p3.fsf@linaro.org>
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp1432967ejx;
+        Fri, 2 Dec 2022 08:32:45 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf67IOhiaEPhG+eyI1FhToxoDkKf4isVGynT3hojCQxGN8bw7+P0k5lsEA2hEXaXe+Sz1Tzt
+X-Received: by 2002:a05:620a:146b:b0:6fa:f548:7cfd with SMTP id j11-20020a05620a146b00b006faf5487cfdmr48706439qkl.103.1669998765536;
+        Fri, 02 Dec 2022 08:32:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669998765; cv=none;
+        d=google.com; s=arc-20160816;
+        b=c28sw5bkKfjI37RpjZ3JRd7pgKRO5CWS2jrgS9iDw6/1yH2jq2oNUwqngCkfzr38GA
+         RhQkZ5hQgDxq9fr4yAlwE/1/EKivHpG6d7muQkACOf0EijZh5x2gdEqcernXYipg969t
+         cMccCwqo06wmy04ukOJAXQpEzJnEnzTSR54rL4rjzp1APRRNur4NvBfairyCO7Brw6fc
+         CWp4qqY1b1SHxB2b8/VMV09vCdSWMA6lD2QJxYkgo59fg3mXDsxp7wTvGTnO2b+zKJLJ
+         Z8NzRzSB6RkwQwzU6uhjUhIVRJTfaC5WSsVUh5LP2Rzwh3dKAlBnwUmAENdUWQG82oBQ
+         vYqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=IMcXz2RsnhT9TNrW2EhBFAT2x7c9/rQmHCw+cYOt29E=;
+        b=NisKqcJJnYuB9++aR1OQ0isNDXjHE55WH6kdp82z/ZNJzxMq8UllQLe/ikNLCi+GIs
+         ly96euO3OdMEvADpCZR4xkpgBYs5IyAjaTZXPteXxk2iCopynyG1RUM6WezCg7c+ocBt
+         5Stw4/IxSp4WYGco2gVS4OT1y/MrbjMo8PXNyM5WTwu/hA7Qs7ItEcKI2mPgDlrmN8Z7
+         zM+I0vMV3K1BRPSTrX9f05pScwbAfj0m8jR/AvzijUATDSJ/rjT1Vy1zBxGoHeBW4msS
+         1d6NRszQ6ACgvqcFC3xEg+zkY451NsilsGuhKP5PeF8bzE+gyyVG9rqk5H6kLiUs821O
+         pWIw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nP2XQIgZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f8-20020a05620a280800b006fbf7a09effsi4396550qkp.647.2022.12.02.08.32.45
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 02 Dec 2022 08:32:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nP2XQIgZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p18xf-0002tV-NN; Fri, 02 Dec 2022 11:32:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p18xM-0002ol-Sq
+ for qemu-arm@nongnu.org; Fri, 02 Dec 2022 11:32:11 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p18xK-0000Al-32
+ for qemu-arm@nongnu.org; Fri, 02 Dec 2022 11:32:07 -0500
+Received: by mail-wr1-x434.google.com with SMTP id y16so8619905wrm.2
+ for <qemu-arm@nongnu.org>; Fri, 02 Dec 2022 08:32:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=IMcXz2RsnhT9TNrW2EhBFAT2x7c9/rQmHCw+cYOt29E=;
+ b=nP2XQIgZiBnaasNqExzAUr5bzWIq+Q0kgR9McFT18lYLkZLxpaqBWbot33PZl+wTkK
+ VfpxFJu7y4Gl1NEWKY4WTLKTiIkzY2akVDVOqdOsM4DhtzmDJJqCDbiglXmeGeVVmu8Y
+ DSCkpLk6qj8nvWodMwaStMPWsIaEQhNCINMRccQWNxWX7cfi34ttuVZ9Od5KXMYan3gE
+ 9CaNNKnBTlLicnIN0yoUUh6htOUccAszbF1gkZSqyT+wveigjXss1L/4Kih+uHZidciv
+ dY/B4cFLrj229dE43kSYZmWlVmo1Wwn2XYHNqLdpXR572Gwey4UmphxpXMoWj2f8EUK/
+ dhPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=IMcXz2RsnhT9TNrW2EhBFAT2x7c9/rQmHCw+cYOt29E=;
+ b=10PPD7Q0r2zSN4oS5e9u29/jYNMkr5DUy7WRnM24tR9Z2F7SZ+j4lx+jXXwT9hGQmQ
+ YzLbRAKeC9tO75JK60CHg3IMqPCbFaOs/JAan38vZff58jKUH4KJDnbQOUIf+AVampr4
+ Vd/XMC//E9zyEhlGvzZmoxWOjzv9JMdbyoJ7RghaSs8lpiJ+ORlmnJWdn9zCRuvg1IqL
+ x1gPCHLteoIq7Lfe3wU6OMjTmuSO5vzDThFXPE1H+amHOOSWL1PPITEHR1+gIJaKyX6i
+ 3CYw92LFwW81S99mFpMw3BVSJG+GQR8gADuAW0DA2Avn15+QDbcKRsmuLu6b3nrw+B+0
+ 5ilA==
+X-Gm-Message-State: ANoB5pmOEMf0sKO3nV9tD1LCEVhc0ljCVlQ8n5hhK74JI6PSQ84Wl4kS
+ aoeud2FcfFP4Eq73kNe90RDFhg==
+X-Received: by 2002:adf:fe46:0:b0:242:13dd:c4a1 with SMTP id
+ m6-20020adffe46000000b0024213ddc4a1mr16127867wrs.669.1669998723911; 
+ Fri, 02 Dec 2022 08:32:03 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ e14-20020a05600c4e4e00b003b95ed78275sm9071927wmq.20.2022.12.02.08.32.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 02 Dec 2022 08:32:03 -0800 (PST)
+Message-ID: <7681b7e1-2c03-cf98-3d73-e2b9f3dd0a72@linaro.org>
+Date: Fri, 2 Dec 2022 17:32:01 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 3+vTGw9m91Fh
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.0
+Subject: Re: [PATCH v2 for-8.0] hw/misc: Move some arm-related files from
+ specific_ss into softmmu_ss
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20221202154023.293614-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221202154023.293614-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.258,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HJu/ko03JYmq
 
+On 2/12/22 16:40, Thomas Huth wrote:
+> The header arget/arm/kvm-consts.h checks CONFIG_KVM which is marked as
 
-Vikram Garhwal <vikram.garhwal@amd.com> writes:
+typo "target"
 
-> Add a new machine xenpv which creates a IOREQ server to register/connect =
-with
-> Xen Hypervisor.
->
-> Optional: When CONFIG_TPM is enabled, it also creates a tpm-tis-device, a=
-dds a
-> TPM emulator and connects to swtpm running on host machine via chardev so=
-cket
-> and support TPM functionalities for a guest domain.
->
-> Extra command line for aarch64 xenpv QEMU to connect to swtpm:
->     -chardev socket,id=3Dchrtpm,path=3D/tmp/myvtpm2/swtpm-sock \
->     -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
->
-> swtpm implements a TPM software emulator(TPM 1.2 & TPM 2) built on libtpm=
-s and
-> provides access to TPM functionality over socket, chardev and CUSE interf=
-ace.
-> Github repo: https://github.com/stefanberger/swtpm
-> Example for starting swtpm on host machine:
->     mkdir /tmp/vtpm2
->     swtpm socket --tpmstate dir=3D/tmp/vtpm2 \
->     --ctrl type=3Dunixio,path=3D/tmp/vtpm2/swtpm-sock &
-<snip>
-> +
-> +static void xen_enable_tpm(void)
-> +{
-> +/* qemu_find_tpm_be is only available when CONFIG_TPM is enabled. */
-> +#ifdef CONFIG_TPM
-> +    Error *errp =3D NULL;
-> +    DeviceState *dev;
-> +    SysBusDevice *busdev;
-> +
-> +    TPMBackend *be =3D qemu_find_tpm_be("tpm0");
-> +    if (be =3D=3D NULL) {
-> +        DPRINTF("Couldn't fine the backend for tpm0\n");
-> +        return;
-> +    }
-> +    dev =3D qdev_new(TYPE_TPM_TIS_SYSBUS);
-> +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
-> +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
-> +    busdev =3D SYS_BUS_DEVICE(dev);
-> +    sysbus_realize_and_unref(busdev, &error_fatal);
-> +    sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
+> poisoned in common code, so the files that include this header have to
+> be added to specific_ss and recompiled for each, qemu-system-arm and
+> qemu-system-aarch64. However, since the kvm headers are only optionally
+> used in kvm-constants.h for some sanity checks, we can additionally
+> check the NEED_CPU_H macro first to avoid the poisoned CONFIG_KVM macro,
+> so kvm-constants.h can also be used from "common" files (without the
+> sanity checks - which should be OK since they are still done from other
+> target-specific files instead). This way, and by adjusting some other
+> include statements in the related files here and there, we can move some
+> files from specific_ss into softmmu_ss, so that they only need to be
+> compiled once during the build process.
 
-Still fails on my aarch64 Debian machine:
+Cool!
 
-  FAILED: libqemu-aarch64-softmmu.fa.p/hw_arm_xen_arm.c.o=20
-  cc -Ilibqemu-aarch64-softmmu.fa.p -I. -I../.. -Itarget/arm -I../../target=
-/arm -Iqapi -Itrace -Iui -Iui/shader -I/usr/include/pixman-1 -I/usr/local/i=
-nclude -I/usr/include/capstone -I/usr/include/spice-server -I/usr/include/s=
-pice-1 -I/usr/include/glib-2.0 -I/usr/lib/aarch64-linux-gnu/glib-2.0/includ=
-e -fdiagnostics-color=3Dauto -Wall -Winvalid-pch -Werror -std=3Dgnu11 -O2 -=
-g -isystem /home/alex/lsrc/qemu.git/linux-headers -isystem linux-headers -i=
-quote . -iquote /home/alex/lsrc/qemu.git -iquote /home/alex/lsrc/qemu.git/i=
-nclude -iquote /home/alex/lsrc/qemu.git/tcg/aarch64 -pthread -U_FORTIFY_SOU=
-RCE -D_FORTIFY_SOURCE=3D2 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=3D64 -D_LARGEFI=
-LE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wundef -Wwrite-strings -Wm=
-issing-prototypes -fno-strict-aliasing -fno-common -fwrapv -Wold-style-decl=
-aration -Wold-style-definition -Wtype-limits -Wformat-security -Wformat-y2k=
- -Winit-self -Wignored-qualifiers -Wempty-body -Wnested-externs -Wendif-lab=
-els -Wexpansion-to-defined -Wimplicit-fallthrough=3D2 -Wno-missing-include-=
-dirs -Wno-shift-negative-value -Wno-psabi -fstack-protector-strong -fPIE -i=
-system../../linux-headers -isystemlinux-headers -DNEED_CPU_H '-DCONFIG_TARG=
-ET=3D"aarch64-softmmu-config-target.h"' '-DCONFIG_DEVICES=3D"aarch64-softmm=
-u-config-devices.h"' -MD -MQ libqemu-aarch64-softmmu.fa.p/hw_arm_xen_arm.c.=
-o -MF libqemu-aarch64-softmmu.fa.p/hw_arm_xen_arm.c.o.d -o libqemu-aarch64-=
-softmmu.fa.p/hw_arm_xen_arm.c.o -c ../../hw/arm/xen_arm.c
-  ../../hw/arm/xen_arm.c: In function =E2=80=98xen_enable_tpm=E2=80=99:
-  ../../hw/arm/xen_arm.c:126:32: error: =E2=80=98GUEST_TPM_BASE=E2=80=99 un=
-declared (first use in this function); did you mean =E2=80=98GUEST_RAM_BASE=
-=E2=80=99?
-    126 |     sysbus_mmio_map(busdev, 0, GUEST_TPM_BASE);
-        |                                ^~~~~~~~~~~~~~
-        |                                GUEST_RAM_BASE
-  ../../hw/arm/xen_arm.c:126:32: note: each undeclared identifier is report=
-ed only once for each function it appears in
-  [2082/3246] Compiling C object libqemu-aarch64-softmmu.fa.p/hw_xen_xen-ma=
-pcache.c.o
-  [2083/3246] Compiling C object libqemu-aarch64-softmmu.fa.p/hw_xen_xen-hv=
-m-common.c.o
-  ninja: build stopped: subcommand failed.
-  make: *** [Makefile:165: run-ninja] Error 1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> +
-> +    DPRINTF("Connected tpmdev at address 0x%lx\n", GUEST_TPM_BASE);
-> +#endif
-> +}
-
-If there is a minimum required version for TPM then it needs to be
-picked up by configure.
-
---=20
-Alex Benn=C3=A9e
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   v2: Use NEED_CPU_H wrapper in kvm-consts.h instead of avoiding to include it
+> 
+>   include/hw/misc/xlnx-zynqmp-apu-ctrl.h |  2 +-
+>   target/arm/kvm-consts.h                |  8 ++++----
+>   hw/misc/imx6_src.c                     |  2 +-
+>   hw/misc/iotkit-sysctl.c                |  1 -
+>   hw/misc/meson.build                    | 11 +++++------
+>   5 files changed, 11 insertions(+), 13 deletions(-)

@@ -1,106 +1,106 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2392598ejx;
-        Sat, 3 Dec 2022 15:21:42 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5nHaDzE6zAz//q8cJpsw2jYN7mZqeEjvr4puvy85FEgTkBmnhIBuNRPKSNYW2QdiKszJSt
-X-Received: by 2002:a0c:f353:0:b0:4c6:f9b1:af27 with SMTP id e19-20020a0cf353000000b004c6f9b1af27mr31053825qvm.104.1670109702336;
-        Sat, 03 Dec 2022 15:21:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670109702; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2392634ejx;
+        Sat, 3 Dec 2022 15:21:48 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7LI2Qtb0GOdmHulDXZUXgU6a2g2G498UBPZKtIh2coTi0erHxAJIDRzoO4O+2vw6so7tzP
+X-Received: by 2002:a05:6214:3292:b0:4c6:acc9:ad17 with SMTP id mu18-20020a056214329200b004c6acc9ad17mr57268333qvb.14.1670109708232;
+        Sat, 03 Dec 2022 15:21:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670109708; cv=none;
         d=google.com; s=arc-20160816;
-        b=bSPgrLua/wWAOfGM6eQdRdbze702ROu5ZthzksBA9MypahxvuYRTC0vTA+DWLlKkLQ
-         71l+o0J3P8g89OZ29vHGJOzaBytoD0YGeHwvfHiJKw43O3w6tVwv13jG8UvNxzjkrF3J
-         E+jCKfZYp51l4fJhYMLZ3/QEY+yX9XVGOr2fHMkHSOUauTgA3V0AgvS+kEMfD0jIzME0
-         RqZuuy4eOAgou/O1ZetC1qSj7NO6/EzaDLupuuCXcHs838Ya6VbiMAaAre0ZbbXKGZgk
-         Y6171+Ck+NFOrH41DssigZwT3xu6O2xrFlrvKjs7VtzcQ90HBDDD/EIYW6LUSce2s679
-         lZ4A==
+        b=pYn5aAMQWv+xbq519ZQVuqjXmsq8rFT6mNbj5GpNnT/r29KEUJBb/pK9QYDWX2jLiX
+         0IEx5P1vSKT3z8snclO+bXSHAmarwXhSQ7qzBJRQrId5LSFGdK2bxHYVoZh6esEy52mO
+         NV56K8Jy/VWg66OEfeTrAwYllYCXjaPL7hfb4iZ+UemZ6vgIj641tqr3Tmx7kaJgCaZn
+         IUidiWx2azwLhEwYtc2ugApNWXsVsHCF6jjTdyZUHkDejPVNK1+7zJZMsayRGP8HCIIw
+         AzB6RXI2BVjaytwOPvB5S4fmce/kCofg0dkQbcDLHh+1ML2Had1pL9PL7Byp9FmOd3el
+         ZMUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=OwV0IdsvFUwiwgonjdaaaLXb1o1stWZ7D+ZfqdOotso=;
-        b=UL/ERZnHwu2aYMZ+uzxcyKiQlaw0h8m2jlzThGCt0gnJex1SLLk0VgRIvfQtwvA7Bg
-         ofK2/Sc4188UWIEtDy6VWdGKylBnqFWzHNFl4gUGP8hB5QeJTGaR+uNsW9qptforbc4X
-         LY4K92gX6WXTIKHW0Qq0tgtQEpg6PP5+iXyOxMCcdy1inNNyNKvXEC9WMlk3n0CcjZqx
-         VNIKwVRWk+XD+ls+ZczSKT7r7GHu312Xai1w7JG7T7PA8AYqvQw5UtpoPr711czHzzqj
-         GLEZDlrPjT2EEdQjAQ1Vyz/P+WJG0NZT3hlTZqbgSXF+5nPxNrC2lpqyeyuPIEsZkiKf
-         Qfww==
+        bh=c+WTnTkzMOp5QfdO5KZJCEwH4De8+GSpEvokiWpsWmE=;
+        b=bm4cgEDzs6bTO0FALq9Dmtxa7WMuW6HQ/SOBL0a7EcBNgL7unk1mhdz8HNWkeqvPvC
+         WJHtQSip6x/dBf6SlHXSbbwz5pTuEjefcNwM3hUa3XonWovY29YmkfS+QldpHqD3sfSR
+         qTmPars71Nq7pkG/b+zq5C+zsyh3JLWOBPZRrMk8P3xX1DWvSNP7gP4Gr8lvopKDPIVY
+         ptJRn8R6+RPr/Z8sVPDlEACzK2zUfD98YyioILeIkIsvyGehGI5+mQTxN/J6+33u4yM0
+         Vo543xjpjuhiidpBNM8CmQ+ijL8cwGnL4bhe3MdXnjwS8ZSUSSI97oxYcMegi0U4b9Ww
+         /mWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DfNyQFZD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AIKl+o72;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 128-20020a370c86000000b006ee8fa17e50si5664151qkm.215.2022.12.03.15.21.42
+        by mx.google.com with ESMTPS id v15-20020ac8728f000000b003a542a95a0bsi5693698qto.208.2022.12.03.15.21.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 03 Dec 2022 15:21:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 03 Dec 2022 15:21:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DfNyQFZD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AIKl+o72;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p1bnL-00006l-LY; Sat, 03 Dec 2022 18:19:43 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p1bnM-00007M-90; Sat, 03 Dec 2022 18:19:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p1bnJ-000050-Li; Sat, 03 Dec 2022 18:19:41 -0500
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+ id 1p1bnJ-00005V-SR; Sat, 03 Dec 2022 18:19:41 -0500
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p1bnE-0001Zp-2w; Sat, 03 Dec 2022 18:19:41 -0500
-Received: by mail-lj1-x22e.google.com with SMTP id z24so9415794ljn.4;
- Sat, 03 Dec 2022 15:19:35 -0800 (PST)
+ id 1p1bnD-0001ZZ-Gu; Sat, 03 Dec 2022 18:19:41 -0500
+Received: by mail-lf1-x129.google.com with SMTP id s8so12927467lfc.8;
+ Sat, 03 Dec 2022 15:19:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OwV0IdsvFUwiwgonjdaaaLXb1o1stWZ7D+ZfqdOotso=;
- b=DfNyQFZDAacO/eEk9RCnkYagW3UuKBOK7L+EIdeL1DxIjGPswjub5mXjmW0gDjEwvq
- CQCqpFMXpVktK6I/TzzFRfkYorT5HRHfIjIlCx3P3FZu320fJ8Sy/TprnTfATTCDeY9w
- t6EIx2fAMBd/BVVLJK4fUdtjL7VrbEq6of/IWk+bAZfVERFjIM2tlaYhKbg8X6zJVOco
- O9/Umyd8zfRdUaj7AxMyHtnSZaod9p/NapkFVzhvqYrpdHLpiVFlGPscwW+cg2F7AV0d
- QmKNXK61AShj+CD2nhvxkV5sL8rotYnsGDjm2PLVn4EMC+LaYlIuLTLQTNJ9mv59nS1e
- mXIg==
+ bh=c+WTnTkzMOp5QfdO5KZJCEwH4De8+GSpEvokiWpsWmE=;
+ b=AIKl+o72Z2qhXQTDd+U7228n13QKzY43ow55qWG0xMueeB0+OThbRXKPaKYDzVMcFF
+ 2a17zMTkX/1T9soHtCXuHuI+H288PUqRDJP3GK8/meWPj5dCRpHg2wU1JzL6Sh1Pc/RP
+ 5aG29SfEAxiGlexGFPfMXW2gKqPVNSgjQ+nZPofYHRo313sv/AaQKEmMT39upFt1UeEV
+ ALPXv4aM2teYHFy7azxoKooLk9CrobRWlS7GMxT//1XlH1x6q6r1kX37xIpzYr1g9bIp
+ guHvC8wAzdE9WZLDvi/kFkjf1ck4hFbE7h+YRYd+Be04N2TDfsyk/CCH2AwE8olZsO0W
+ VrKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=OwV0IdsvFUwiwgonjdaaaLXb1o1stWZ7D+ZfqdOotso=;
- b=bb8lakH8V/1qF8D7RlJbA4vJfcOkOheoTCa7ZDx1CFir/W1JJLUH06yONTT2Fi/gwI
- t56NLp7JVkvlusiwFkOhvmDjTl16CDgglIppyldnmT5JMxpDryzgCHRP/cJiqDM5KQ5H
- u8wHnziHvcc8Aa+QTObMejsd4XcIwh5EXJ/UYaYpsgPvnfvftvkoSfVKxrcT8/T+4Kls
- wWarcWatsZ5tAwLcwk2xz5Mi34CIVH7TI4+CD3x9+avJgpDhVYxJJPlL9D/nSl4l5bTR
- bL80nb+DZ5JMIOMrkm3bLIotXfiV0Ef4W1d5WElIi7pVgZBmSiv5YkPI587DLH0F6wGM
- ncHw==
-X-Gm-Message-State: ANoB5pk9d6MfosfzjvLQLXESKPG3gC+eUBAVb0FxHhhNFEi8HYi7uEfL
- RbBZGzZSo710JCp2d7ZjbC8=
-X-Received: by 2002:a2e:6812:0:b0:279:4159:ab79 with SMTP id
- c18-20020a2e6812000000b002794159ab79mr19974345lja.144.1670109574001; 
- Sat, 03 Dec 2022 15:19:34 -0800 (PST)
+ bh=c+WTnTkzMOp5QfdO5KZJCEwH4De8+GSpEvokiWpsWmE=;
+ b=g5CJYPovqfq5IZVcgUichsZndgkNK8PxdFmzsaS7NhRq3XWxZvPqLSEiL6La+EfL6e
+ I/2o8lbCsZinAULOZwggGF/vcWC8b02UAmksGxxnEBduvjnMUc9KaNuvsnyuprMNBB6A
+ rmA8y+y2fFnnpyd7TQEZ+qZ7bt1lP1bYl6YsYGjSzox0LI9uNzdEg85t6Zale5eNILLr
+ JxCgDiElnUzE0GNUP6Yu3MCnk1HAZmp6/QpF1+Gq+ZdQkxn6tvY+CXg0utBLQWqgDh39
+ Kd7FunOoJvTJTbYl/AhDsW5mi/u5Lum2Dl3HzgVRi9Om10Hr985a/Wv6gv+OO46Fx1a0
+ 6F6g==
+X-Gm-Message-State: ANoB5pnkoKlWJ8Fm9b133XL5K6aU7S6kIjvm+if/gsRksXkSlKPB3GuZ
+ 6dLnJcng1/Ckfhs/bSUDtBTHEOZFYJMPf0oq
+X-Received: by 2002:ac2:4288:0:b0:4b4:f950:81e1 with SMTP id
+ m8-20020ac24288000000b004b4f95081e1mr16376583lfh.139.1670109572565; 
+ Sat, 03 Dec 2022 15:19:32 -0800 (PST)
 Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
  [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
- b27-20020a05651c033b00b002770e6c620bsm22623ljp.106.2022.12.03.15.19.33
+ b27-20020a05651c033b00b002770e6c620bsm22623ljp.106.2022.12.03.15.19.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 03 Dec 2022 15:19:33 -0800 (PST)
+ Sat, 03 Dec 2022 15:19:32 -0800 (PST)
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
 X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH 4/6] hw/misc: Allwinner AXP-209 Emulation
-Date: Sun,  4 Dec 2022 00:19:02 +0100
-Message-Id: <20221203231904.25155-5-strahinja.p.jankovic@gmail.com>
+Subject: [PATCH 2/6] hw/misc: Allwinner A10 DRAM Controller Emulation
+Date: Sun,  4 Dec 2022 00:19:00 +0100
+Message-Id: <20221203231904.25155-3-strahinja.p.jankovic@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20221203231904.25155-1-strahinja.p.jankovic@gmail.com>
 References: <20221203231904.25155-1-strahinja.p.jankovic@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22e;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-lj1-x22e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::129;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,341 +109,389 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: k7Ji00A/tgGq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XrY7iVzvuHIQ
 
-This patch adds minimal support for AXP-209 PMU.
-Most important is chip ID since U-Boot SPL expects version 0x1. Besides
-the chip ID register, reset values for two more registers used by A10
-U-Boot SPL are covered.
+During SPL boot several DRAM Controller registers are used. Most
+important registers are those related to DRAM initialization and
+calibration, where SPL initiates process and waits until certain bit is
+set/cleared.
+
+This patch adds these registers, initializes reset values from user's
+guide and updates state of registers as SPL expects it.
 
 Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 ---
- hw/arm/Kconfig              |   1 +
- hw/misc/Kconfig             |   4 +
- hw/misc/allwinner-axp-209.c | 263 ++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build         |   1 +
- 4 files changed, 269 insertions(+)
- create mode 100644 hw/misc/allwinner-axp-209.c
+ hw/arm/Kconfig                        |   1 +
+ hw/arm/allwinner-a10.c                |   7 +
+ hw/misc/Kconfig                       |   3 +
+ hw/misc/allwinner-a10-dramc.c         | 179 ++++++++++++++++++++++++++
+ hw/misc/meson.build                   |   1 +
+ include/hw/arm/allwinner-a10.h        |   2 +
+ include/hw/misc/allwinner-a10-dramc.h |  68 ++++++++++
+ 7 files changed, 261 insertions(+)
+ create mode 100644 hw/misc/allwinner-a10-dramc.c
+ create mode 100644 include/hw/misc/allwinner-a10-dramc.h
 
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index eefe1fd134..67c6e83fe6 100644
+index 14f52b41af..140f142ae5 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -323,6 +323,7 @@ config ALLWINNER_A10
-     select ALLWINNER_A10_DRAMC
+@@ -320,6 +320,7 @@ config ALLWINNER_A10
+     select ALLWINNER_A10_PIT
+     select ALLWINNER_A10_PIC
+     select ALLWINNER_A10_CCM
++    select ALLWINNER_A10_DRAMC
      select ALLWINNER_EMAC
-     select ALLWINNER_I2C
-+    select ALLWINNER_AXP_209
      select SERIAL
      select UNIMP
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index 86baeeeca2..a5f7a36ac9 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -25,6 +25,7 @@
+ #include "hw/boards.h"
+ #include "hw/usb/hcd-ohci.h"
  
++#define AW_A10_DRAMC_BASE       0x01c01000
+ #define AW_A10_MMC0_BASE        0x01c0f000
+ #define AW_A10_CCM_BASE         0x01c20000
+ #define AW_A10_PIC_REG_BASE     0x01c20400
+@@ -49,6 +50,8 @@ static void aw_a10_init(Object *obj)
+ 
+     object_initialize_child(obj, "ccm", &s->ccm, TYPE_AW_A10_CCM);
+ 
++    object_initialize_child(obj, "dramc", &s->dramc, TYPE_AW_A10_DRAMC);
++
+     object_initialize_child(obj, "emac", &s->emac, TYPE_AW_EMAC);
+ 
+     object_initialize_child(obj, "sata", &s->sata, TYPE_ALLWINNER_AHCI);
+@@ -110,6 +113,10 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+     sysbus_realize(SYS_BUS_DEVICE(&s->ccm), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccm), 0, AW_A10_CCM_BASE);
+ 
++    /* DRAM Control Module */
++    sysbus_realize(SYS_BUS_DEVICE(&s->dramc), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 0, AW_A10_DRAMC_BASE);
++
+     /* FIXME use qdev NIC properties instead of nd_table[] */
+     if (nd_table[0].used) {
+         qemu_check_nic_model(&nd_table[0], TYPE_AW_EMAC);
 diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 052fb54310..3855d937fd 100644
+index ed07bf4133..052fb54310 100644
 --- a/hw/misc/Kconfig
 +++ b/hw/misc/Kconfig
-@@ -180,4 +180,8 @@ config ALLWINNER_A10_CCM
- config ALLWINNER_A10_DRAMC
+@@ -177,4 +177,7 @@ config LASI
+ config ALLWINNER_A10_CCM
      bool
  
-+config ALLWINNER_AXP_209
++config ALLWINNER_A10_DRAMC
 +    bool
-+    depends on I2C
 +
  source macio/Kconfig
-diff --git a/hw/misc/allwinner-axp-209.c b/hw/misc/allwinner-axp-209.c
+diff --git a/hw/misc/allwinner-a10-dramc.c b/hw/misc/allwinner-a10-dramc.c
 new file mode 100644
-index 0000000000..229e3961b6
+index 0000000000..e118b0c2fd
 --- /dev/null
-+++ b/hw/misc/allwinner-axp-209.c
-@@ -0,0 +1,263 @@
++++ b/hw/misc/allwinner-a10-dramc.c
+@@ -0,0 +1,179 @@
 +/*
-+ * AXP-209 Emulation
++ * Allwinner A10 DRAM Controller emulation
 + *
-+ * Written by Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
++ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 + *
-+ * Permission is hereby granted, free of charge, to any person obtaining a
-+ * copy of this software and associated documentation files (the "Software"),
-+ * to deal in the Software without restriction, including without limitation
-+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-+ * and/or sell copies of the Software, and to permit persons to whom the
-+ * Software is furnished to do so, subject to the following conditions:
++ *  This file is derived from Allwinner H3 DRAMC,
++ *  by Niek Linnenbank.
 + *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
 + *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-+ * DEALINGS IN THE SOFTWARE.
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/i2c/i2c.h"
++#include "qemu/units.h"
++#include "hw/sysbus.h"
 +#include "migration/vmstate.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "hw/misc/allwinner-a10-dramc.h"
 +
-+#ifndef AXP_209_ERR_DEBUG
-+#define AXP_209_ERR_DEBUG 0
-+#endif
-+
-+#define TYPE_AXP_209 "allwinner.axp209"
-+
-+#define AXP_209(obj) \
-+    OBJECT_CHECK(AXP209I2CState, (obj), TYPE_AXP_209)
-+
-+#define DB_PRINT(fmt, args...) do { \
-+    if (AXP_209_ERR_DEBUG) { \
-+        fprintf(stderr, "%s: " fmt, __func__, ## args); \
-+    } \
-+} while (0)
-+
-+/* registers */
++/* DRAMC register offsets */
 +enum {
-+    REG_POWER_STATUS = 0x0u,
-+    REG_OPERATING_MODE,
-+    REG_OTG_VBUS_STATUS,
-+    REG_CHIP_VERSION,
-+    REG_DATA_CACHE_0,
-+    REG_DATA_CACHE_1,
-+    REG_DATA_CACHE_2,
-+    REG_DATA_CACHE_3,
-+    REG_DATA_CACHE_4,
-+    REG_DATA_CACHE_5,
-+    REG_DATA_CACHE_6,
-+    REG_DATA_CACHE_7,
-+    REG_DATA_CACHE_8,
-+    REG_DATA_CACHE_9,
-+    REG_DATA_CACHE_A,
-+    REG_DATA_CACHE_B,
-+    REG_POWER_OUTPUT_CTRL = 0x12u,
-+    REG_DC_DC2_OUT_V_CTRL = 0x23u,
-+    REG_DC_DC2_DVS_CTRL = 0x25u,
-+    REG_DC_DC3_OUT_V_CTRL = 0x27u,
-+    REG_LDO2_4_OUT_V_CTRL,
-+    REG_LDO3_OUT_V_CTRL,
-+    REG_VBUS_CH_MGMT = 0x30u,
-+    REG_SHUTDOWN_V_CTRL,
-+    REG_SHUTDOWN_CTRL,
-+    REG_CHARGE_CTRL_1,
-+    REG_CHARGE_CTRL_2,
-+    REG_SPARE_CHARGE_CTRL,
-+    REG_PEK_KEY_CTRL,
-+    REG_DC_DC_FREQ_SET,
-+    REG_CHR_TEMP_TH_SET,
-+    REG_CHR_HIGH_TEMP_TH_CTRL,
-+    REG_IPSOUT_WARN_L1,
-+    REG_IPSOUT_WARN_L2,
-+    REG_DISCHR_TEMP_TH_SET,
-+    REG_DISCHR_HIGH_TEMP_TH_CTRL,
-+    REG_IRQ_BANK_1_CTRL = 0x40u,
-+    REG_IRQ_BANK_2_CTRL,
-+    REG_IRQ_BANK_3_CTRL,
-+    REG_IRQ_BANK_4_CTRL,
-+    REG_IRQ_BANK_5_CTRL,
-+    REG_IRQ_BANK_1_STAT = 0x48u,
-+    REG_IRQ_BANK_2_STAT,
-+    REG_IRQ_BANK_3_STAT,
-+    REG_IRQ_BANK_4_STAT,
-+    REG_IRQ_BANK_5_STAT,
-+    REG_ADC_ACIN_V_H = 0x56u,
-+    REG_ADC_ACIN_V_L,
-+    REG_ADC_ACIN_CURR_H,
-+    REG_ADC_ACIN_CURR_L,
-+    REG_ADC_VBUS_V_H,
-+    REG_ADC_VBUS_V_L,
-+    REG_ADC_VBUS_CURR_H,
-+    REG_ADC_VBUS_CURR_L,
-+    REG_ADC_INT_TEMP_H,
-+    REG_ADC_INT_TEMP_L,
-+    REG_ADC_TEMP_SENS_V_H = 0x62u,
-+    REG_ADC_TEMP_SENS_V_L,
-+    REG_ADC_BAT_V_H = 0x78u,
-+    REG_ADC_BAT_V_L,
-+    REG_ADC_BAT_DISCHR_CURR_H,
-+    REG_ADC_BAT_DISCHR_CURR_L,
-+    REG_ADC_BAT_CHR_CURR_H,
-+    REG_ADC_BAT_CHR_CURR_L,
-+    REG_ADC_IPSOUT_V_H,
-+    REG_ADC_IPSOUT_V_L,
-+    REG_DC_DC_MOD_SEL = 0x80u,
-+    REG_ADC_EN_1,
-+    REG_ADC_EN_2,
-+    REG_ADC_SR_CTRL,
-+    REG_ADC_IN_RANGE,
-+    REG_GPIO1_ADC_IRQ_RISING_TH,
-+    REG_GPIO1_ADC_IRQ_FALLING_TH,
-+    REG_TIMER_CTRL = 0x8au,
-+    REG_VBUS_CTRL_MON_SRP,
-+    REG_OVER_TEMP_SHUTDOWN = 0x8fu,
-+    REG_GPIO0_FEAT_SET,
-+    REG_GPIO_OUT_HIGH_SET,
-+    REG_GPIO1_FEAT_SET,
-+    REG_GPIO2_FEAT_SET,
-+    REG_GPIO_SIG_STATE_SET_MON,
-+    REG_GPIO3_SET,
-+    REG_COULOMB_CNTR_CTRL = 0xb8u,
-+    REG_POWER_MEAS_RES,
-+    NR_REGS
++    REG_SDR_CCR = 0x0000,
++    REG_SDR_ZQCR0 = 0x00a8,
++    REG_SDR_ZQSR = 0x00b0
 +};
 +
-+#define AXP_209_CHIP_VERSION_ID             (0x01)
-+#define AXP_209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
-+#define AXP_209_IRQ_BANK_1_CTRL_RESET       (0xd8)
++#define REG_INDEX(offset)    (offset / sizeof(uint32_t))
 +
-+/* A simple I2C slave which returns values of ID or CNT register. */
-+typedef struct AXP209I2CState {
-+    /*< private >*/
-+    I2CSlave i2c;
-+    /*< public >*/
-+    uint8_t regs[NR_REGS];  /* peripheral registers */
-+    uint8_t ptr;            /* current register index */
-+    uint8_t count;          /* counter used for tx/rx */
-+} AXP209I2CState;
++/* DRAMC register flags */
++enum {
++    REG_SDR_CCR_DATA_TRAINING = (1 << 30),
++    REG_SDR_CCR_DRAM_INIT     = (1 << 31),
++};
++enum {
++    REG_SDR_ZQSR_ZCAL         = (1 << 31),
++};
 +
-+/* Reset all counters and load ID register */
-+static void axp_209_reset_enter(Object *obj, ResetType type)
++/* DRAMC register reset values */
++enum {
++    REG_SDR_CCR_RESET   = 0x80020000,
++    REG_SDR_ZQCR0_RESET = 0x07b00000,
++    REG_SDR_ZQSR_RESET  = 0x80000000
++};
++
++static uint64_t allwinner_a10_dramc_read(void *opaque, hwaddr offset,
++                                       unsigned size)
 +{
-+    AXP209I2CState *s = AXP_209(obj);
++    const AwA10DramControllerState *s = AW_A10_DRAMC(opaque);
++    const uint32_t idx = REG_INDEX(offset);
 +
-+    memset(s->regs, 0, NR_REGS);
-+    s->ptr = 0;
-+    s->count = 0;
-+    s->regs[REG_CHIP_VERSION] = AXP_209_CHIP_VERSION_ID;
-+    s->regs[REG_DC_DC2_OUT_V_CTRL] = AXP_209_DC_DC2_OUT_V_CTRL_RESET;
-+    s->regs[REG_IRQ_BANK_1_CTRL] = AXP_209_IRQ_BANK_1_CTRL_RESET;
-+}
-+
-+/* Handle events from master. */
-+static int axp_209_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    AXP209I2CState *s = AXP_209(i2c);
-+
-+    s->count = 0;
-+
-+    return 0;
-+}
-+
-+/* Called when master requests read */
-+static uint8_t axp_209_rx(I2CSlave *i2c)
-+{
-+    AXP209I2CState *s = AXP_209(i2c);
-+    uint8_t ret = 0xff;
-+
-+    if (s->ptr < NR_REGS) {
-+        ret = s->regs[s->ptr++];
++    switch (offset) {
++    case REG_SDR_CCR:
++    case REG_SDR_ZQCR0:
++    case REG_SDR_ZQSR:
++        break;
++    case 0x2e4 ... AW_A10_DRAMC_IOSIZE:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return 0;
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: unimplemented read offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return 0;
 +    }
 +
-+    DB_PRINT("Reading from %d : %d\n", s->ptr - 1, ret);
-+
-+    return ret;
++    return s->regs[idx];
 +}
 +
-+/*
-+ * Called when master sends write.
-+ * Update ptr with byte 0, then perform write with second byte.
-+ */
-+static int axp_209_tx(I2CSlave *i2c, uint8_t data)
++static void allwinner_a10_dramc_write(void *opaque, hwaddr offset,
++                                   uint64_t val, unsigned size)
 +{
-+    AXP209I2CState *s = AXP_209(i2c);
++    AwA10DramControllerState *s = AW_A10_DRAMC(opaque);
++    const uint32_t idx = REG_INDEX(offset);
 +
-+    if (s->count == 0) {
-+        /* Store register address */
-+        s->ptr = data;
-+        s->count++;
-+        DB_PRINT("Register to access %d\n", data);
-+    } else {
-+        DB_PRINT("Writing to register %d : %d\n", s->ptr, data);
-+        if (s->ptr == REG_DC_DC2_OUT_V_CTRL) {
-+            s->regs[s->ptr++] = data;
++    switch (offset) {
++    case REG_SDR_CCR:
++        if (val & REG_SDR_CCR_DRAM_INIT) {
++            /* Clear DRAM_INIT to indicate process is done. */
++            val &= ~REG_SDR_CCR_DRAM_INIT;
 +        }
++        if (val & REG_SDR_CCR_DATA_TRAINING) {
++            /* Clear DATA_TRAINING to indicate process is done. */
++            val &= ~REG_SDR_CCR_DATA_TRAINING;
++        }
++        break;
++    case REG_SDR_ZQCR0:
++        /* Set ZCAL in ZQSR to indicate calibration is done. */
++        s->regs[REG_INDEX(REG_SDR_ZQSR)] |= REG_SDR_ZQSR_ZCAL;
++        break;
++    case 0x2e4 ... AW_A10_DRAMC_IOSIZE:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: unimplemented write offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        break;
 +    }
 +
-+    return 0;
++    s->regs[idx] = (uint32_t) val;
 +}
 +
-+/* Initialization */
-+static void axp_209_init(Object *obj)
++static const MemoryRegionOps allwinner_a10_dramc_ops = {
++    .read = allwinner_a10_dramc_read,
++    .write = allwinner_a10_dramc_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
++
++static void allwinner_a10_dramc_reset_enter(Object *obj, ResetType type)
 +{
-+    AXP209I2CState *s = AXP_209(obj);
++    AwA10DramControllerState *s = AW_A10_DRAMC(obj);
 +
-+    s->count = 0;
-+    s->ptr = 0;
-+    memset(s->regs, 0, NR_REGS);
-+    s->regs[REG_CHIP_VERSION] = AXP_209_CHIP_VERSION_ID;
-+    s->regs[REG_DC_DC2_OUT_V_CTRL] = 0x16;
-+    s->regs[REG_IRQ_BANK_1_CTRL] = 0xd8;
-+
-+    DB_PRINT("INIT AXP209\n");
-+
-+    return;
++    /* Set default values for registers */
++    s->regs[REG_INDEX(REG_SDR_CCR)] = REG_SDR_CCR_RESET;
++    s->regs[REG_INDEX(REG_SDR_ZQCR0)] = REG_SDR_ZQCR0_RESET;
++    s->regs[REG_INDEX(REG_SDR_ZQSR)] = REG_SDR_ZQSR_RESET;
 +}
 +
-+static const VMStateDescription vmstate_axp_209 = {
-+    .name = TYPE_AXP_209,
++static void allwinner_a10_dramc_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    AwA10DramControllerState *s = AW_A10_DRAMC(obj);
++
++    /* Memory mapping */
++    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_a10_dramc_ops, s,
++                          TYPE_AW_A10_DRAMC, AW_A10_DRAMC_IOSIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static const VMStateDescription allwinner_a10_dramc_vmstate = {
++    .name = "allwinner-a10-dramc",
 +    .version_id = 1,
++    .minimum_version_id = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8_ARRAY(regs, AXP209I2CState, NR_REGS),
-+        VMSTATE_UINT8(count, AXP209I2CState),
-+        VMSTATE_UINT8(ptr, AXP209I2CState),
++        VMSTATE_UINT32_ARRAY(regs, AwA10DramControllerState,
++                             AW_A10_DRAMC_REGS_NUM),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static void axp_209_class_init(ObjectClass *oc, void *data)
++static void allwinner_a10_dramc_class_init(ObjectClass *klass, void *data)
 +{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
-+    ResettableClass *rc = RESETTABLE_CLASS(oc);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
 +
-+    rc->phases.enter = axp_209_reset_enter;
-+    dc->vmsd = &vmstate_axp_209;
-+    isc->event = axp_209_event;
-+    isc->recv = axp_209_rx;
-+    isc->send = axp_209_tx;
++    rc->phases.enter = allwinner_a10_dramc_reset_enter;
++    dc->vmsd = &allwinner_a10_dramc_vmstate;
 +}
 +
-+static const TypeInfo axp_209_info = {
-+    .name = TYPE_AXP_209,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(AXP209I2CState),
-+    .instance_init = axp_209_init,
-+    .class_init = axp_209_class_init
++static const TypeInfo allwinner_a10_dramc_info = {
++    .name          = TYPE_AW_A10_DRAMC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_init = allwinner_a10_dramc_init,
++    .instance_size = sizeof(AwA10DramControllerState),
++    .class_init    = allwinner_a10_dramc_class_init,
 +};
 +
-+static void axp_209_register_devices(void)
++static void allwinner_a10_dramc_register(void)
 +{
-+    type_register_static(&axp_209_info);
++    type_register_static(&allwinner_a10_dramc_info);
 +}
 +
-+type_init(axp_209_register_devices);
++type_init(allwinner_a10_dramc_register)
 diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index d7f49f0f81..c85a0127fe 100644
+index ebf216edbc..d7f49f0f81 100644
 --- a/hw/misc/meson.build
 +++ b/hw/misc/meson.build
-@@ -40,6 +40,7 @@ softmmu_ss.add(when: 'CONFIG_IVSHMEM_DEVICE', if_true: files('ivshmem.c'))
+@@ -39,6 +39,7 @@ subdir('macio')
+ softmmu_ss.add(when: 'CONFIG_IVSHMEM_DEVICE', if_true: files('ivshmem.c'))
  
  softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinner-a10-ccm.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_DRAMC', if_true: files('allwinner-a10-dramc.c'))
-+softmmu_ss.add(when: 'CONFIG_ALLWINNER_AXP_209', if_true: files('allwinner-axp-209.c'))
++softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_DRAMC', if_true: files('allwinner-a10-dramc.c'))
  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-ccu.c'))
  specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'))
  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c'))
+diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
+index 45d0fc2f7e..abe4ff7066 100644
+--- a/include/hw/arm/allwinner-a10.h
++++ b/include/hw/arm/allwinner-a10.h
+@@ -13,6 +13,7 @@
+ #include "hw/usb/hcd-ehci.h"
+ #include "hw/rtc/allwinner-rtc.h"
+ #include "hw/misc/allwinner-a10-ccm.h"
++#include "hw/misc/allwinner-a10-dramc.h"
+ 
+ #include "target/arm/cpu.h"
+ #include "qom/object.h"
+@@ -32,6 +33,7 @@ struct AwA10State {
+ 
+     ARMCPU cpu;
+     AwA10ClockCtlState ccm;
++    AwA10DramControllerState dramc;
+     AwA10PITState timer;
+     AwA10PICState intc;
+     AwEmacState emac;
+diff --git a/include/hw/misc/allwinner-a10-dramc.h b/include/hw/misc/allwinner-a10-dramc.h
+new file mode 100644
+index 0000000000..b61fbecbe7
+--- /dev/null
++++ b/include/hw/misc/allwinner-a10-dramc.h
+@@ -0,0 +1,68 @@
++/*
++ * Allwinner A10 DRAM Controller emulation
++ *
++ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
++ *
++ *  This file is derived from Allwinner H3 DRAMC,
++ *  by Niek Linnenbank.
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_MISC_ALLWINNER_A10_DRAMC_H
++#define HW_MISC_ALLWINNER_A10_DRAMC_H
++
++#include "qom/object.h"
++#include "hw/sysbus.h"
++#include "hw/register.h"
++
++/**
++ * @name Constants
++ * @{
++ */
++
++/** Size of register I/O address space used by DRAMC device */
++#define AW_A10_DRAMC_IOSIZE        (0x1000)
++
++/** Total number of known registers */
++#define AW_A10_DRAMC_REGS_NUM      (AW_A10_DRAMC_IOSIZE / sizeof(uint32_t))
++
++/** @} */
++
++/**
++ * @name Object model
++ * @{
++ */
++
++#define TYPE_AW_A10_DRAMC    "allwinner-a10-dramc"
++OBJECT_DECLARE_SIMPLE_TYPE(AwA10DramControllerState, AW_A10_DRAMC)
++
++/** @} */
++
++/**
++ * Allwinner A10 DRAMC object instance state.
++ */
++struct AwA10DramControllerState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
++
++    /** Maps I/O registers in physical memory */
++    MemoryRegion iomem;
++
++    /** Array of hardware registers */
++    uint32_t regs[AW_A10_DRAMC_REGS_NUM];
++};
++
++#endif /* HW_MISC_ALLWINNER_A10_DRAMC_H */
 -- 
 2.30.2
 

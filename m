@@ -1,77 +1,113 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp532517ejx;
-        Thu, 1 Dec 2022 07:44:53 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5nSxrdiaYZ6jkQIllM1ntwqBrOltTpYCMDHU2XlK7a0x/6TykqQxvrBy9z43CPZ82HiD1Z
-X-Received: by 2002:a37:4642:0:b0:6fc:a03e:fcdf with SMTP id t63-20020a374642000000b006fca03efcdfmr5538939qka.139.1669909493503;
-        Thu, 01 Dec 2022 07:44:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1669909493; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp2391805ejx;
+        Sat, 3 Dec 2022 15:19:50 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5DL90Udc0una6IGspmMcK4ICiCPIU9Ab4tCcJy2V6UzGLip7v1TppsAbbOrtcE/fYhDXgA
+X-Received: by 2002:a05:620a:3714:b0:6fa:16fe:93f6 with SMTP id de20-20020a05620a371400b006fa16fe93f6mr66448645qkb.258.1670109590806;
+        Sat, 03 Dec 2022 15:19:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670109590; cv=none;
         d=google.com; s=arc-20160816;
-        b=dKBnL1VA5eQxT7Wu6M2nfRxf3iWf8nQhPJ3X71joKE5lRS05gIn3jwPwmWcX8YaYFA
-         CKNJD/d4DOpzHLO2BXhXH3sNEyzvAuq01+kuDfm3mQLwp9kjYMnu6UvXYlOGuuhJuP3z
-         nvMQyIVFvWGx7Kr+Vv3pmqp1BFcAfR6M02SJae0cGLkobsS5cTrjZwIXEQZGtgcvB6PW
-         yjIjX8gMxxqRu+DKNnWqiCMJSoYQOYddzlDj5VLlGjGnyIqT1hyGbQD7QNdNHkfuFuUc
-         bD2p8xcItdWc2eGPR8wlsk3Bzlqu/9y1QIATfw5ODTtM5JIv/ZptfHG2TNNCcPSFWS0c
-         04oQ==
+        b=hdSuMn4+/L62Q/i/dwIVXKy1DgBk28L3b11ITDHLa6Irl4SU2oFfEErmY2q5lhtQkF
+         jXj0K2FCGmOQIBpCBkCXuudi5Quzk/pJE+XiN4nYLlkB+lKq6XKPu3UKvjstvkyvJ4nl
+         Kaos1ZNzTN9C6ejpia1zhOIuXMkhNmvNukuEwFvXi7CksByoFsk/tN4G1cIK3kydHxc4
+         MIiV0m9ouPBH9Z3cK5kAfIh5UjhpvKefdRJmFXjoe/c8aq7JnmxSBEQuksyet8A84DAD
+         z5nkNhz8v4RO8QqnEOh3B6JTK+YNma+iKq1bEWJTajLQN2jLRbr5KuVE/pqVsVdDE0t4
+         BQ1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
-         :from;
-        bh=z8YAbl31DQPgiBwF0SMoXmcPDwQuag+u/6lvSHYlSVw=;
-        b=Qf9/bKz9jAqM0zlYvJZ37NIX/+6R1aMCjd1ogqgIVs92U1Ha7y3V4YC5uqeGT6rVbZ
-         P43tVwA38MRnYoEn1zSZIRPRe9FDmELcOjb/CtTnN8ehNVw4UnfhfX7pa6uIYt/u+/cm
-         D+vQ0jwJ47AG132cW83VKVnxfzRRYn6Puzhl2MYKT6uMTgy8YwfqqXU3dWVCGuC1thzp
-         h5J8fpDratHGckt87rvo6dpGaNjQdxOhYBdLlk4AZxjlaJP+IkxQDFYtjEznND3wbfYO
-         DoJAPLZxC9LblKzH6Vuoa+Qc94yfXuseQd/YT6WzOzO882qpXHU3ttMxN5WqCtTk6dbR
-         kHzg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=61qnkc3RjxGV9ijuLcoNsoslKp4YOIfKGjRa+fFUZQ4=;
+        b=I9k84oJj0rA/WJ5JyYxsLz5aXpHK1j2vRIavNcU725TGmeqvmSyZmslDAtUpm65YpT
+         ZUnAuRzy8TrZdikHOYaXUm5ekh3oPkDE5UCLhck4UYsPBmHBID95CJaeW736N24Xg5Tm
+         PczCpn+tluP4Q1cwMMWUmSSg29Uyi3BU1RSKmE/4WWg17nJIznCfTxt4QOUS+YXAbVug
+         s+7MmNOC60pL6wcCm9dBSvCuw1yFov7tmSA8pe4QZNxznPCvuFikYtzTtbOD20php00h
+         AROvuGuGpPGaU2IPFZ/LY5XcXIzmij8QgVt48oHlAIWXnx/CNiQ/DlnZ5nxiinE+rXVe
+         MMyg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kWKuJGOn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iy7-20020a0562140f6700b004c6806a602asi2792803qvb.11.2022.12.01.07.44.53
+        by mx.google.com with ESMTPS id s10-20020a05620a0bca00b006fa4afd3003si6233013qki.688.2022.12.03.15.19.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Dec 2022 07:44:53 -0800 (PST)
+        Sat, 03 Dec 2022 15:19:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kWKuJGOn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p0lhW-0005Jm-5w; Thu, 01 Dec 2022 10:42:14 -0500
+	id 1p1bnK-000068-Ob; Sat, 03 Dec 2022 18:19:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1p0lhP-0005Gk-Ha; Thu, 01 Dec 2022 10:42:07 -0500
-Received: from mail-b.sr.ht ([173.195.146.151])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1p0lhM-0004wn-Vx; Thu, 01 Dec 2022 10:42:07 -0500
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id C682A11F9A2;
- Thu,  1 Dec 2022 15:42:01 +0000 (UTC)
-From: ~axelheider <axelheider@git.sr.ht>
-Date: Tue, 25 Oct 2022 12:33:42 +0200
-Subject: [PATCH qemu.git v3 7/8] hw/timer/imx_epit: remove explicit fields cnt
- and freq
-Message-ID: <166990932074.29941.8709118178538288040-7@git.sr.ht>
-X-Mailer: git.sr.ht
-In-Reply-To: <166990932074.29941.8709118178538288040-0@git.sr.ht>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1p1bnJ-0008WE-9J; Sat, 03 Dec 2022 18:19:41 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1p1bnF-0001Zy-4v; Sat, 03 Dec 2022 18:19:41 -0500
+Received: by mail-lf1-x130.google.com with SMTP id c1so12930525lfi.7;
+ Sat, 03 Dec 2022 15:19:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=61qnkc3RjxGV9ijuLcoNsoslKp4YOIfKGjRa+fFUZQ4=;
+ b=kWKuJGOnFe3SNyWIbY/jnrI2xVogtEBQllrtYrFFf1ZcYSjWohye9FGnpBFEJtHcZD
+ v3oMr8voG07txSX35PfhSJax5g802SzdEFmOnubNI/jk9MWNSrEUiaRz8UAeXYO0HOcn
+ D7PuYIB0seb3h1eYG6cA0etQF+w5YLJ51cSbXLcNIznlNf8xl5F6cCyHEQ/ctU4VIJNw
+ lGIHGYExrK0M8hKichEMRl7rEP/FhHemFQI5f80GWxLUbRG7bQdtonxa9AgVJg3ggxNA
+ O4Hz6+PuJUpck37YQeV3GCz392/zKiRQbUOX+Vn23KEuNujWuCD4j3NLt42z0WOMUbj6
+ AXmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=61qnkc3RjxGV9ijuLcoNsoslKp4YOIfKGjRa+fFUZQ4=;
+ b=HDvJuE27t5DYhgbn9n7l0nM6ggc763uSVNoZnoL9QxsXI47nSIEQ3MrvBonesB8h4T
+ sBSa3MzoiP8WyxxupeUWq8gCtTFc8yanFoQWxoaxWYn+2AvAik4bvkSAnlpRk1q/dI8s
+ t2/EcelGb64Sfyl5lEskRTw89YdIvBwIh2QhUaNkKI1WAS1EdFEyjrrQq2xlyKO2fNEx
+ NKm7LbDLceM2N3s3vwwjQiC2K9S984Oe8MHC8ZrI+GIGD5d6VvRvdBAO1MStOQpPTpUt
+ woCzr6miAjQGqTtfDMif9+Yxlqqnlal6GpfD+FQZqOAbGR86sdhREVU2WXs8AyDTeGV8
+ icEg==
+X-Gm-Message-State: ANoB5pmkusGo44Mg2NAI1vAMdw2ZzdKtH9c3kjq9DJ1RiqzQcI/A/qVf
+ 2GcuYfBwvjYWOjI4wZb955s=
+X-Received: by 2002:a05:6512:1285:b0:4a2:26ed:a129 with SMTP id
+ u5-20020a056512128500b004a226eda129mr24084736lfs.616.1670109575289; 
+ Sat, 03 Dec 2022 15:19:35 -0800 (PST)
+Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
+ [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
+ b27-20020a05651c033b00b002770e6c620bsm22623ljp.106.2022.12.03.15.19.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 03 Dec 2022 15:19:35 -0800 (PST)
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Subject: [PATCH 6/6] hw/arm: Allwinner A10 enable SPL load from MMC
+Date: Sun,  4 Dec 2022 00:19:04 +0100
+Message-Id: <20221203231904.25155-7-strahinja.p.jankovic@gmail.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20221203231904.25155-1-strahinja.p.jankovic@gmail.com>
+References: <20221203231904.25155-1-strahinja.p.jankovic@gmail.com>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: 36
-X-Spam_score: 3.6
-X-Spam_bar: +++
-X-Spam_report: (3.6 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
- FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,191 +120,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: ~axelheider <axelheider@gmx.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YlIAnfOYorEF
+X-TUID: Z2oOI54tiW3r
 
-From: Axel Heider <axel.heider@hensoldt.net>
+This patch enables copying of SPL from MMC if `-kernel` parameter is not
+passed when starting QEMU. SPL is copied to SRAM_A.
 
-The CNT register is a read-only register. There is no need to
-store it's value, it can be calculated on demand.
-The calculated frequency is needed temporarily only.
+The approach is reused from Allwinner H3 implementation.
 
-Note that this is a migration compatibility break for all boards
-types that use the EPIT peripheral.
+Tested with Armbian and custom Yocto image.
 
-Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 ---
- hw/timer/imx_epit.c         | 73 ++++++++++++++-----------------------
- include/hw/timer/imx_epit.h |  2 -
- 2 files changed, 28 insertions(+), 47 deletions(-)
+ hw/arm/allwinner-a10.c         | 18 ++++++++++++++++++
+ hw/arm/cubieboard.c            |  5 +++++
+ include/hw/arm/allwinner-a10.h | 21 +++++++++++++++++++++
+ 3 files changed, 44 insertions(+)
 
-diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index e04427542f..cf13496165 100644
---- a/hw/timer/imx_epit.c
-+++ b/hw/timer/imx_epit.c
-@@ -73,27 +73,14 @@ static void imx_epit_update_int(IMXEPITState *s)
-     }
- }
-=20
--/*
-- * Must be called from within a ptimer_transaction_begin/commit block
-- * for both s->timer_cmp and s->timer_reload.
-- */
--static void imx_epit_set_freq(IMXEPITState *s)
-+static uint32_t imx_epit_get_freq(IMXEPITState *s)
- {
--    uint32_t clksrc;
--    uint32_t prescaler;
--
--    clksrc =3D extract32(s->cr, CR_CLKSRC_SHIFT, CR_CLKSRC_BITS);
--    prescaler =3D 1 + extract32(s->cr, CR_PRESCALE_SHIFT, CR_PRESCALE_BITS);
--
--    s->freq =3D imx_ccm_get_clock_frequency(s->ccm,
--                                imx_epit_clocks[clksrc]) / prescaler;
--
--    DPRINTF("Setting ptimer frequency to %u\n", s->freq);
--
--    if (s->freq) {
--        ptimer_set_freq(s->timer_reload, s->freq);
--        ptimer_set_freq(s->timer_cmp, s->freq);
--    }
-+    uint32_t clksrc =3D extract32(s->cr, CR_CLKSRC_SHIFT, CR_CLKSRC_BITS);
-+    uint32_t prescaler =3D 1 + extract32(s->cr, CR_PRESCALE_SHIFT, CR_PRESCA=
-LE_BITS);
-+    uint32_t f_in =3D imx_ccm_get_clock_frequency(s->ccm, imx_epit_clocks[cl=
-ksrc]);
-+    uint32_t freq =3D f_in / prescaler;
-+    DPRINTF("ptimer frequency is %u\n", freq);
-+    return freq;
- }
-=20
- /*
-@@ -110,32 +97,23 @@ static void imx_epit_reset(IMXEPITState *s, bool is_hard=
-_reset)
-     s->sr =3D 0;
-     s->lr =3D EPIT_TIMER_MAX;
-     s->cmp =3D 0;
--    s->cnt =3D 0;
-     ptimer_transaction_begin(s->timer_cmp);
-     ptimer_transaction_begin(s->timer_reload);
--    /* stop both timers */
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index 17e439777e..dc1966ff7a 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -24,7 +24,9 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/boards.h"
+ #include "hw/usb/hcd-ohci.h"
++#include "hw/loader.h"
+ 
++#define AW_A10_SRAM_A_BASE      0x00000000
+ #define AW_A10_DRAMC_BASE       0x01c01000
+ #define AW_A10_MMC0_BASE        0x01c0f000
+ #define AW_A10_CCM_BASE         0x01c20000
+@@ -38,6 +40,22 @@
+ #define AW_A10_RTC_BASE         0x01c20d00
+ #define AW_A10_I2C0_BASE        0x01c2ac00
+ 
++void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk)
++{
++    const int64_t rom_size = 32 * KiB;
++    g_autofree uint8_t *buffer = g_new0(uint8_t, rom_size);
 +
-+    /*
-+     * The reset switches off the input clock, so even if the CR.EN is still
-+     * set, the timers are no longer running.
-+     */
-+    assert(imx_epit_get_freq(s) =3D=3D 0);
-     ptimer_stop(s->timer_cmp);
-     ptimer_stop(s->timer_reload);
--    /* compute new frequency */
--    imx_epit_set_freq(s);
-     /* init both timers to EPIT_TIMER_MAX */
-     ptimer_set_limit(s->timer_cmp, EPIT_TIMER_MAX, 1);
-     ptimer_set_limit(s->timer_reload, EPIT_TIMER_MAX, 1);
--    if (s->freq && (s->cr & CR_EN)) {
--        /* if the timer is still enabled, restart it */
--        ptimer_run(s->timer_reload, 0);
--    }
-     ptimer_transaction_commit(s->timer_cmp);
-     ptimer_transaction_commit(s->timer_reload);
- }
-=20
--static uint32_t imx_epit_update_count(IMXEPITState *s)
--{
--    s->cnt =3D ptimer_get_count(s->timer_reload);
--
--    return s->cnt;
--}
--
- static uint64_t imx_epit_read(void *opaque, hwaddr offset, unsigned size)
++    if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
++        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
++                   __func__);
++        return;
++    }
++
++    rom_add_blob("allwinner-a10.bootrom", buffer, rom_size,
++                  rom_size, AW_A10_SRAM_A_BASE,
++                  NULL, NULL, NULL, NULL, false);
++}
++
+ static void aw_a10_init(Object *obj)
  {
-     IMXEPITState *s =3D IMX_EPIT(opaque);
-@@ -159,8 +137,7 @@ static uint64_t imx_epit_read(void *opaque, hwaddr offset=
-, unsigned size)
-         break;
-=20
-     case 4: /* CNT */
--        imx_epit_update_count(s);
--        reg_value =3D s->cnt;
-+        reg_value =3D ptimer_get_count(s->timer_reload);
-         break;
-=20
-     default:
-@@ -179,7 +156,7 @@ static void imx_epit_reload_compare_timer(IMXEPITState *s)
- {
-     if ((s->cr & (CR_EN | CR_OCIEN)) =3D=3D (CR_EN | CR_OCIEN))  {
-         /* if the compare feature is on and timers are running */
--        uint32_t tmp =3D imx_epit_update_count(s);
-+        uint32_t tmp =3D ptimer_get_count(s->timer_reload);
-         uint64_t next;
-         if (tmp > s->cmp) {
-             /* It'll fire in this round of the timer */
-@@ -193,6 +170,7 @@ static void imx_epit_reload_compare_timer(IMXEPITState *s)
-=20
- static void imx_epit_write_cr(IMXEPITState *s, uint32_t value)
- {
-+    uint32_t freq =3D 0;
-     uint32_t oldcr =3D s->cr;
-=20
-     s->cr =3D value & 0x03ffffff;
-@@ -217,12 +195,19 @@ static void imx_epit_write_cr(IMXEPITState *s, uint32_t=
- value)
-     ptimer_transaction_begin(s->timer_cmp);
-     ptimer_transaction_begin(s->timer_reload);
-=20
--    /* Update the frequency. Has been done already in case of a reset. */
-+    /*
-+     * Update the frequency. In case of a reset the input clock was
-+     * switched off, so this can be skipped.
-+     */
-     if (!(s->cr & CR_SWR)) {
--        imx_epit_set_freq(s);
-+        freq =3D imx_epit_get_freq(s);
-+        if (freq) {
-+            ptimer_set_freq(s->timer_reload, freq);
-+            ptimer_set_freq(s->timer_cmp, freq);
-+        }
-     }
-=20
--    if (s->freq && (s->cr & CR_EN) && !(oldcr & CR_EN)) {
-+    if (freq && (s->cr & CR_EN) && !(oldcr & CR_EN)) {
-         if (s->cr & CR_ENMOD) {
-             if (s->cr & CR_RLD) {
-                 ptimer_set_limit(s->timer_reload, s->lr, 1);
-@@ -356,15 +341,13 @@ static const MemoryRegionOps imx_epit_ops =3D {
-=20
- static const VMStateDescription vmstate_imx_timer_epit =3D {
-     .name =3D TYPE_IMX_EPIT,
--    .version_id =3D 2,
--    .minimum_version_id =3D 2,
-+    .version_id =3D 3,
-+    .minimum_version_id =3D 3,
-     .fields =3D (VMStateField[]) {
-         VMSTATE_UINT32(cr, IMXEPITState),
-         VMSTATE_UINT32(sr, IMXEPITState),
-         VMSTATE_UINT32(lr, IMXEPITState),
-         VMSTATE_UINT32(cmp, IMXEPITState),
--        VMSTATE_UINT32(cnt, IMXEPITState),
--        VMSTATE_UINT32(freq, IMXEPITState),
-         VMSTATE_PTIMER(timer_reload, IMXEPITState),
-         VMSTATE_PTIMER(timer_cmp, IMXEPITState),
-         VMSTATE_END_OF_LIST()
-diff --git a/include/hw/timer/imx_epit.h b/include/hw/timer/imx_epit.h
-index 783eaf0c3a..79aff0cec2 100644
---- a/include/hw/timer/imx_epit.h
-+++ b/include/hw/timer/imx_epit.h
-@@ -74,9 +74,7 @@ struct IMXEPITState {
-     uint32_t sr;
-     uint32_t lr;
-     uint32_t cmp;
--    uint32_t cnt;
-=20
--    uint32_t freq;
-     qemu_irq irq;
+     AwA10State *s = AW_A10(obj);
+diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+index afc7980414..37659c35fd 100644
+--- a/hw/arm/cubieboard.c
++++ b/hw/arm/cubieboard.c
+@@ -99,6 +99,11 @@ static void cubieboard_init(MachineState *machine)
+     memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BASE,
+                                 machine->ram);
+ 
++    /* Load target kernel or start using BootROM */
++    if (!machine->kernel_filename && blk && blk_is_available(blk)) {
++        /* Use Boot ROM to copy data from SD card to SRAM */
++        allwinner_a10_bootrom_setup(a10, blk);
++    }
+     /* TODO create and connect IDE devices for ide_drive_get() */
+ 
+     cubieboard_binfo.ram_size = machine->ram_size;
+diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
+index 763935fca9..b3c9ed24c7 100644
+--- a/include/hw/arm/allwinner-a10.h
++++ b/include/hw/arm/allwinner-a10.h
+@@ -15,6 +15,7 @@
+ #include "hw/misc/allwinner-a10-ccm.h"
+ #include "hw/misc/allwinner-a10-dramc.h"
+ #include "hw/i2c/allwinner-i2c.h"
++#include "sysemu/block-backend.h"
+ 
+ #include "target/arm/cpu.h"
+ #include "qom/object.h"
+@@ -47,4 +48,24 @@ struct AwA10State {
+     OHCISysBusState ohci[AW_A10_NUM_USB];
  };
-=20
---=20
-2.34.5
+ 
++/**
++ * Emulate Boot ROM firmware setup functionality.
++ *
++ * A real Allwinner A10 SoC contains a Boot ROM
++ * which is the first code that runs right after
++ * the SoC is powered on. The Boot ROM is responsible
++ * for loading user code (e.g. a bootloader) from any
++ * of the supported external devices and writing the
++ * downloaded code to internal SRAM. After loading the SoC
++ * begins executing the code written to SRAM.
++ *
++ * This function emulates the Boot ROM by copying 32 KiB
++ * of data from the given block device and writes it to
++ * the start of the first internal SRAM memory.
++ *
++ * @s: Allwinner A10 state object pointer
++ * @blk: Block backend device object pointer
++ */
++void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk);
++
+ #endif
+-- 
+2.30.2
 

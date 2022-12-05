@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3380087ejx;
-        Mon, 5 Dec 2022 01:58:22 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4I0rOYaTraTvYjGiL9C8xQ6YWcJyV/4BWb3I4r03RgaphiKWnKQDyOzRm43os87MxRRL5l
-X-Received: by 2002:ac8:1104:0:b0:3a6:a4cc:8f4 with SMTP id c4-20020ac81104000000b003a6a4cc08f4mr8015268qtj.122.1670234301889;
-        Mon, 05 Dec 2022 01:58:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670234301; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3380132ejx;
+        Mon, 5 Dec 2022 01:58:29 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4J/ij5KiGH8vh+/H6+KEYqIujScr9kqglvqL8oSsd+ukVMN1HNUTh0M2mbunim4bjdCnlh
+X-Received: by 2002:a17:906:b0b:b0:7c1:36:8ffe with SMTP id u11-20020a1709060b0b00b007c100368ffemr1016114ejg.725.1670234309662;
+        Mon, 05 Dec 2022 01:58:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670234309; cv=none;
         d=google.com; s=arc-20160816;
-        b=NChdJBrsXdrdiPuf0JZVNl9Y6S9sut/7PyhYcaaqpMk2T2ZzmDBSDQp+AOZbxWhKGy
-         yicQ2fODFGUxWuSmf4cM3Fn87zwepRlCha7DqO/5D1zyiMOCVJc5tpcDsVrYlsEdEcEC
-         ALl1+2VN0MRrXp+ghT8QQrjMUvKc5uEQ5NA2SoNZ21IVBAl7JXIMxPNIpZ4hjXdWUQsk
-         6NVqbaMqrFHcuhhyyah7p8rrozuVGSDXzqc3RVfCiOpzWxsj6xaeha7mBXgU35OKYiAV
-         7t5iq+EXotOUbeWNKYsLplZV6vgNs8w3ajXo9NGAYpasKtCCqae+eiX0HqVsFLNvzSGo
-         hiSg==
+        b=rbN4ye9EIql7OjJ6NwmIhuKYSabofEjfOz0zQu5UicBSYtrNgAUCn3B1vb9j+4nilw
+         uuF1HIg/VVj7sIRlTHFxBuxMs2to/ynV63srxdXkSw6w+qnxN+Mpd/KqH6/f5UMkLam+
+         SPwQL/1xC+Izj8maRW3UsUuGjgDqybGcisTEmsmfvzuztppZ9uxa1MEOeSvRUl6aH/xZ
+         Wr8l6Gm4sWz8fOyJOGY9vhiWxOYlBa/AXoUMVBUpW2nSJZFS3tkchqVaOvQt44cZfLHx
+         vGKDpJtnOqxB+AoZQKnb3hYpeY13BxFZ1HOM+68Q7c7Zj6RibQaM0cx9+OnmF1xl69FJ
+         fiLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=7icidAgMmKsBG3F4fcNXQX7B0Cy+7eWT7Gq+EOY+DcU=;
-        b=sNza5B0ZrgrIDdWN4wYPi0jMePubAwz1291TJAwl31RSy2fvNaRHAvXqDF1W47mTkc
-         U6dSwhgm4f2hnpl0bN7cFd7nTcuq+POH94tTARiIbrJS3lW5poLsXaA/vFcmnW95tOZ0
-         VtAvWV5iWVBePY6cZwgtKPDbbg9Z6DWahUDJZ2CR/Y8Z/4oN4Ldwq2jBE611r0nB9P9e
-         1ADNYRcLBD3AWbl9urZKF+/7r00fMhfp8ZZhc+7QpwQvtwB9H06qfzKMTJorpF003Njv
-         fDX9RqTlSImnoovUXCSFLRV9vbgSo5nYCHJCHf/4DXXi1ImtemX+4m7ZD8+IfoZKbmV3
-         M8JQ==
+        bh=T/JPm5m9WNX1+QtcngXEAxrLV4M1X8iY9tKJjlFSJj4=;
+        b=KMJPL/5StmLLe82qd6qZbNXt+izTaHlVF9gPISCzW0lonyWButliLzbGUhpvuUFeHy
+         Jxylz+HGaEur8AHDXi/AcgBCr7cv9DcGUZATeiBPiIfkdJAFZ+qpiJl8Civ4jh4CTheP
+         m6kZ3NBlu4G/mIBUY3ta7pmB/AHcf34YB/gKE/UPlSqI+EezuSW2uu2jW7fyb0lKNJth
+         SItkvP5IwEm7WRgBYbpHu2qrPPVwQLA92EOa30q4LOPrgAQkxe8vX82xsfrGZ+ewWmkw
+         e+aavONiXa8Lmpls6NkgGWBCwiLIjgGHdVp2UmNMjk4aAZYyz5OfFAdSgiWRULVEIPcM
+         wUTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bez6M00s;
-       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WikmF780;
+       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <quintela@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id eo8-20020ad45948000000b004acbe62d31fsi7537182qvb.183.2022.12.05.01.58.21
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id wz5-20020a170906fe4500b007c0edcef1f5si816530ejb.658.2022.12.05.01.58.29
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Dec 2022 01:58:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 05 Dec 2022 01:58:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bez6M00s;
-       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WikmF780;
+       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1670234301;
+	s=mimecast20190719; t=1670234308;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=7icidAgMmKsBG3F4fcNXQX7B0Cy+7eWT7Gq+EOY+DcU=;
-	b=Bez6M00sQeepmq6pp7yK0ILRYcViRfKIwsX7iBzyRy9K8RCj/YOiNNsu7F0mDqXCn4003j
-	33lZZIZXWRu0Bs0v5R6EwQmc7juhG0+4/G2FVsuWcFwFnPbgfnKthXD0MBzTfyAVAi9laK
-	TBI0M3WITfGH+JSx2rkrUE9kO+wYWQQ=
+	bh=T/JPm5m9WNX1+QtcngXEAxrLV4M1X8iY9tKJjlFSJj4=;
+	b=WikmF780O2K3IGF1HT5D2Op8LqpAU5F30sEP4aNH88FajMPqhnNaI80ns8Zhb1z9OREtge
+	iyPNhWHYF9AoCUPwVMWP1VvhHS9MCHw3j10NdJbuMOJTUlQ8Ikf1JY4/ulaJRyRkfeaVA9
+	GmvFzA5YjDDRWj6jiVacZbDMPMP71b0=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-399-eahB3lwOMwOYmO_vPt4zMg-1; Mon, 05 Dec 2022 04:58:18 -0500
-X-MC-Unique: eahB3lwOMwOYmO_vPt4zMg-1
+ us-mta-66-3Cx1-7IdMOCZwAvKEwaYDw-1; Mon, 05 Dec 2022 04:58:25 -0500
+X-MC-Unique: 3Cx1-7IdMOCZwAvKEwaYDw-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B7B8A101A5AD;
-	Mon,  5 Dec 2022 09:58:16 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 891CA85A588;
+	Mon,  5 Dec 2022 09:58:24 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4A7A12166B29;
-	Mon,  5 Dec 2022 09:58:09 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 19A942166B29;
+	Mon,  5 Dec 2022 09:58:16 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>,
@@ -104,282 +104,257 @@ Cc: Fam Zheng <fam@euphon.net>,
 	qemu-trivial@nongnu.org,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>
-Subject: [PATCH v2 43/51] migration: Move last_sent_block into PageSearchStatus
-Date: Mon,  5 Dec 2022 10:52:20 +0100
-Message-Id: <20221205095228.1314-44-quintela@redhat.com>
+Subject: [PATCH v2 44/51] migration: Send requested page directly in rp-return thread
+Date: Mon,  5 Dec 2022 10:52:21 +0100
+Message-Id: <20221205095228.1314-45-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-X-TUID: BVTxfQ2DZ6u2
+X-TUID: LPs8Jjo2Ql0P
 
 From: Peter Xu <peterx@redhat.com>
 
-Since we use PageSearchStatus to represent a channel, it makes perfect
-sense to keep last_sent_block (aka, leverage RAM_SAVE_FLAG_CONTINUE) to be
-per-channel rather than global because each channel can be sending
-different pages on ramblocks.
+With all the facilities ready, send the requested page directly in the
+rp-return thread rather than queuing it in the request queue, if and only
+if postcopy preempt is enabled.  It can achieve so because it uses separate
+channel for sending urgent pages.  The only shared data is bitmap and it's
+protected by the bitmap_mutex.
 
-Hence move it from RAMState into PageSearchStatus.
+Note that since we're moving the ownership of the urgent channel from the
+migration thread to rp thread it also means the rp thread is responsible
+for managing the qemufile, e.g. properly close it when pausing migration
+happens.  For this, let migration_release_from_dst_file to cover shutdown
+of the urgent channel too, renaming it as migration_release_dst_files() to
+better show what it does.
 
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 71 ++++++++++++++++++++++++++++---------------------
- 1 file changed, 41 insertions(+), 30 deletions(-)
+ migration/migration.c |  35 +++++++------
+ migration/ram.c       | 112 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 131 insertions(+), 16 deletions(-)
 
-diff --git a/migration/ram.c b/migration/ram.c
-index 3194997738..1233ff53ac 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -89,6 +89,8 @@ XBZRLECacheStats xbzrle_counters;
- struct PageSearchStatus {
-     /* The migration channel used for a specific host page */
-     QEMUFile    *pss_channel;
-+    /* Last block from where we have sent data */
-+    RAMBlock *last_sent_block;
-     /* Current block being searched */
-     RAMBlock    *block;
-     /* Current page to search from */
-@@ -368,8 +370,6 @@ struct RAMState {
-     int uffdio_fd;
-     /* Last block that we have visited searching for dirty pages */
-     RAMBlock *last_seen_block;
--    /* Last block from where we have sent data */
--    RAMBlock *last_sent_block;
-     /* Last dirty target page we have sent */
-     ram_addr_t last_page;
-     /* last ram version we have seen */
-@@ -684,16 +684,17 @@ exit:
-  *
-  * Returns the number of bytes written
-  *
-- * @f: QEMUFile where to send the data
-+ * @pss: current PSS channel status
-  * @block: block that contains the page we want to send
-  * @offset: offset inside the block for the page
-  *          in the lower bits, it contains flags
-  */
--static size_t save_page_header(RAMState *rs, QEMUFile *f,  RAMBlock *block,
-+static size_t save_page_header(PageSearchStatus *pss, RAMBlock *block,
-                                ram_addr_t offset)
- {
-     size_t size, len;
--    bool same_block = (block == rs->last_sent_block);
-+    bool same_block = (block == pss->last_sent_block);
-+    QEMUFile *f = pss->pss_channel;
- 
-     if (same_block) {
-         offset |= RAM_SAVE_FLAG_CONTINUE;
-@@ -706,7 +707,7 @@ static size_t save_page_header(RAMState *rs, QEMUFile *f,  RAMBlock *block,
-         qemu_put_byte(f, len);
-         qemu_put_buffer(f, (uint8_t *)block->idstr, len);
-         size += 1 + len;
--        rs->last_sent_block = block;
-+        pss->last_sent_block = block;
-     }
-     return size;
+diff --git a/migration/migration.c b/migration/migration.c
+index de83c50f51..c1d4d76d0c 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -2848,8 +2848,11 @@ static int migrate_handle_rp_resume_ack(MigrationState *s, uint32_t value)
+     return 0;
  }
-@@ -790,17 +791,19 @@ static void xbzrle_cache_zero_page(RAMState *rs, ram_addr_t current_addr)
-  *          -1 means that xbzrle would be longer than normal
-  *
-  * @rs: current RAM state
-+ * @pss: current PSS channel
-  * @current_data: pointer to the address of the page contents
-  * @current_addr: addr of the page
-  * @block: block that contains the page we want to send
-  * @offset: offset inside the block for the page
-  */
--static int save_xbzrle_page(RAMState *rs, QEMUFile *file,
-+static int save_xbzrle_page(RAMState *rs, PageSearchStatus *pss,
-                             uint8_t **current_data, ram_addr_t current_addr,
-                             RAMBlock *block, ram_addr_t offset)
- {
-     int encoded_len = 0, bytes_xbzrle;
-     uint8_t *prev_cached_page;
-+    QEMUFile *file = pss->pss_channel;
  
-     if (!cache_is_cached(XBZRLE.cache, current_addr,
-                          ram_counters.dirty_sync_count)) {
-@@ -865,7 +868,7 @@ static int save_xbzrle_page(RAMState *rs, QEMUFile *file,
+-/* Release ms->rp_state.from_dst_file in a safe way */
+-static void migration_release_from_dst_file(MigrationState *ms)
++/*
++ * Release ms->rp_state.from_dst_file (and postcopy_qemufile_src if
++ * existed) in a safe way.
++ */
++static void migration_release_dst_files(MigrationState *ms)
+ {
+     QEMUFile *file;
+ 
+@@ -2862,6 +2865,18 @@ static void migration_release_from_dst_file(MigrationState *ms)
+         ms->rp_state.from_dst_file = NULL;
      }
  
-     /* Send XBZRLE based compressed page */
--    bytes_xbzrle = save_page_header(rs, file, block,
-+    bytes_xbzrle = save_page_header(pss, block,
-                                     offset | RAM_SAVE_FLAG_XBZRLE);
-     qemu_put_byte(file, ENCODING_FLAG_XBZRLE);
-     qemu_put_be16(file, encoded_len);
-@@ -1296,19 +1299,19 @@ void ram_release_page(const char *rbname, uint64_t offset)
-  * Returns the size of data written to the file, 0 means the page is not
-  * a zero page
-  *
-- * @rs: current RAM state
-- * @file: the file where the data is saved
-+ * @pss: current PSS channel
-  * @block: block that contains the page we want to send
-  * @offset: offset inside the block for the page
-  */
--static int save_zero_page_to_file(RAMState *rs, QEMUFile *file,
-+static int save_zero_page_to_file(PageSearchStatus *pss,
-                                   RAMBlock *block, ram_addr_t offset)
- {
-     uint8_t *p = block->host + offset;
-+    QEMUFile *file = pss->pss_channel;
-     int len = 0;
- 
-     if (buffer_is_zero(p, TARGET_PAGE_SIZE)) {
--        len += save_page_header(rs, file, block, offset | RAM_SAVE_FLAG_ZERO);
-+        len += save_page_header(pss, block, offset | RAM_SAVE_FLAG_ZERO);
-         qemu_put_byte(file, 0);
-         len += 1;
-         ram_release_page(block->idstr, offset);
-@@ -1321,14 +1324,14 @@ static int save_zero_page_to_file(RAMState *rs, QEMUFile *file,
-  *
-  * Returns the number of pages written.
-  *
-- * @rs: current RAM state
-+ * @pss: current PSS channel
-  * @block: block that contains the page we want to send
-  * @offset: offset inside the block for the page
-  */
--static int save_zero_page(RAMState *rs, QEMUFile *file, RAMBlock *block,
-+static int save_zero_page(PageSearchStatus *pss, RAMBlock *block,
-                           ram_addr_t offset)
- {
--    int len = save_zero_page_to_file(rs, file, block, offset);
-+    int len = save_zero_page_to_file(pss, block, offset);
- 
-     if (len) {
-         stat64_add(&ram_atomic_counters.duplicate, 1);
-@@ -1381,16 +1384,18 @@ static bool control_save_page(PageSearchStatus *pss, RAMBlock *block,
-  *
-  * Returns the number of pages written.
-  *
-- * @rs: current RAM state
-+ * @pss: current PSS channel
-  * @block: block that contains the page we want to send
-  * @offset: offset inside the block for the page
-  * @buf: the page to be sent
-  * @async: send to page asyncly
-  */
--static int save_normal_page(RAMState *rs, QEMUFile *file, RAMBlock *block,
-+static int save_normal_page(PageSearchStatus *pss, RAMBlock *block,
-                             ram_addr_t offset, uint8_t *buf, bool async)
- {
--    ram_transferred_add(save_page_header(rs, file, block,
-+    QEMUFile *file = pss->pss_channel;
-+
-+    ram_transferred_add(save_page_header(pss, block,
-                                          offset | RAM_SAVE_FLAG_PAGE));
-     if (async) {
-         qemu_put_buffer_async(file, buf, TARGET_PAGE_SIZE,
-@@ -1430,7 +1435,7 @@ static int ram_save_page(RAMState *rs, PageSearchStatus *pss)
- 
-     XBZRLE_cache_lock();
-     if (rs->xbzrle_enabled && !migration_in_postcopy()) {
--        pages = save_xbzrle_page(rs, pss->pss_channel, &p, current_addr,
-+        pages = save_xbzrle_page(rs, pss, &p, current_addr,
-                                  block, offset);
-         if (!rs->last_stage) {
-             /* Can't send this cached data async, since the cache page
-@@ -1442,8 +1447,7 @@ static int ram_save_page(RAMState *rs, PageSearchStatus *pss)
- 
-     /* XBZRLE overflow or normal page */
-     if (pages == -1) {
--        pages = save_normal_page(rs, pss->pss_channel, block, offset,
--                                 p, send_async);
-+        pages = save_normal_page(pss, block, offset, p, send_async);
-     }
- 
-     XBZRLE_cache_unlock();
-@@ -1466,14 +1470,15 @@ static bool do_compress_ram_page(QEMUFile *f, z_stream *stream, RAMBlock *block,
-                                  ram_addr_t offset, uint8_t *source_buf)
- {
-     RAMState *rs = ram_state;
-+    PageSearchStatus *pss = &rs->pss[RAM_CHANNEL_PRECOPY];
-     uint8_t *p = block->host + offset;
-     int ret;
- 
--    if (save_zero_page_to_file(rs, f, block, offset)) {
-+    if (save_zero_page_to_file(pss, block, offset)) {
-         return true;
-     }
- 
--    save_page_header(rs, f, block, offset | RAM_SAVE_FLAG_COMPRESS_PAGE);
-+    save_page_header(pss, block, offset | RAM_SAVE_FLAG_COMPRESS_PAGE);
- 
-     /*
-      * copy it to a internal buffer to avoid it being modified by VM
-@@ -2293,7 +2298,8 @@ static bool save_page_use_compression(RAMState *rs)
-  * has been properly handled by compression, otherwise needs other
-  * paths to handle it
-  */
--static bool save_compress_page(RAMState *rs, RAMBlock *block, ram_addr_t offset)
-+static bool save_compress_page(RAMState *rs, PageSearchStatus *pss,
-+                               RAMBlock *block, ram_addr_t offset)
- {
-     if (!save_page_use_compression(rs)) {
-         return false;
-@@ -2309,7 +2315,7 @@ static bool save_compress_page(RAMState *rs, RAMBlock *block, ram_addr_t offset)
-      * We post the fist page as normal page as compression will take
-      * much CPU resource.
-      */
--    if (block != rs->last_sent_block) {
-+    if (block != pss->last_sent_block) {
-         flush_compressed_data(rs);
-         return false;
-     }
-@@ -2340,11 +2346,11 @@ static int ram_save_target_page(RAMState *rs, PageSearchStatus *pss)
-         return res;
-     }
- 
--    if (save_compress_page(rs, block, offset)) {
-+    if (save_compress_page(rs, pss, block, offset)) {
-         return 1;
-     }
- 
--    res = save_zero_page(rs, pss->pss_channel, block, offset);
-+    res = save_zero_page(pss, block, offset);
-     if (res > 0) {
-         /* Must let xbzrle know, otherwise a previous (now 0'd) cached
-          * page would be stale
-@@ -2475,7 +2481,7 @@ static void postcopy_preempt_choose_channel(RAMState *rs, PageSearchStatus *pss)
-          * If channel switched, reset last_sent_block since the old sent block
-          * may not be on the same channel.
-          */
--        rs->last_sent_block = NULL;
-+        pss->last_sent_block = NULL;
- 
-         trace_postcopy_preempt_switch_channel(channel);
-     }
-@@ -2814,8 +2820,13 @@ static void ram_save_cleanup(void *opaque)
- 
- static void ram_state_reset(RAMState *rs)
- {
-+    int i;
-+
-+    for (i = 0; i < RAM_CHANNEL_MAX; i++) {
-+        rs->pss[i].last_sent_block = NULL;
++    /*
++     * Do the same to postcopy fast path socket too if there is.  No
++     * locking needed because this qemufile should only be managed by
++     * return path thread.
++     */
++    if (ms->postcopy_qemufile_src) {
++        migration_ioc_unregister_yank_from_file(ms->postcopy_qemufile_src);
++        qemu_file_shutdown(ms->postcopy_qemufile_src);
++        qemu_fclose(ms->postcopy_qemufile_src);
++        ms->postcopy_qemufile_src = NULL;
 +    }
 +
-     rs->last_seen_block = NULL;
--    rs->last_sent_block = NULL;
-     rs->last_page = 0;
-     rs->last_version = ram_list.version;
-     rs->xbzrle_enabled = false;
-@@ -3009,8 +3020,8 @@ void ram_postcopy_send_discard_bitmap(MigrationState *ms)
-     migration_bitmap_sync(rs);
+     qemu_fclose(file);
+ }
  
-     /* Easiest way to make sure we don't resume in the middle of a host-page */
-+    rs->pss[RAM_CHANNEL_PRECOPY].last_sent_block = NULL;
-     rs->last_seen_block = NULL;
--    rs->last_sent_block = NULL;
-     rs->last_page = 0;
+@@ -3006,7 +3021,7 @@ out:
+              * Maybe there is something we can do: it looks like a
+              * network down issue, and we pause for a recovery.
+              */
+-            migration_release_from_dst_file(ms);
++            migration_release_dst_files(ms);
+             rp = NULL;
+             if (postcopy_pause_return_path_thread(ms)) {
+                 /*
+@@ -3024,7 +3039,7 @@ out:
+     }
  
-     postcopy_each_ram_send_discard(ms);
+     trace_source_return_path_thread_end();
+-    migration_release_from_dst_file(ms);
++    migration_release_dst_files(ms);
+     rcu_unregister_thread();
+     return NULL;
+ }
+@@ -3547,18 +3562,6 @@ static MigThrError postcopy_pause(MigrationState *s)
+         qemu_file_shutdown(file);
+         qemu_fclose(file);
+ 
+-        /*
+-         * Do the same to postcopy fast path socket too if there is.  No
+-         * locking needed because no racer as long as we do this before setting
+-         * status to paused.
+-         */
+-        if (s->postcopy_qemufile_src) {
+-            migration_ioc_unregister_yank_from_file(s->postcopy_qemufile_src);
+-            qemu_file_shutdown(s->postcopy_qemufile_src);
+-            qemu_fclose(s->postcopy_qemufile_src);
+-            s->postcopy_qemufile_src = NULL;
+-        }
+-
+         migrate_set_state(&s->state, s->state,
+                           MIGRATION_STATUS_POSTCOPY_PAUSED);
+ 
+diff --git a/migration/ram.c b/migration/ram.c
+index 1233ff53ac..16ade7cb70 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -546,6 +546,8 @@ static QemuThread *decompress_threads;
+ static QemuMutex decomp_done_lock;
+ static QemuCond decomp_done_cond;
+ 
++static int ram_save_host_page_urgent(PageSearchStatus *pss);
++
+ static bool do_compress_ram_page(QEMUFile *f, z_stream *stream, RAMBlock *block,
+                                  ram_addr_t offset, uint8_t *source_buf);
+ 
+@@ -560,6 +562,16 @@ static void pss_init(PageSearchStatus *pss, RAMBlock *rb, ram_addr_t page)
+     pss->complete_round = false;
+ }
+ 
++/*
++ * Check whether two PSSs are actively sending the same page.  Return true
++ * if it is, false otherwise.
++ */
++static bool pss_overlap(PageSearchStatus *pss1, PageSearchStatus *pss2)
++{
++    return pss1->host_page_sending && pss2->host_page_sending &&
++        (pss1->host_page_start == pss2->host_page_start);
++}
++
+ static void *do_data_compress(void *opaque)
+ {
+     CompressParam *param = opaque;
+@@ -2260,6 +2272,57 @@ int ram_save_queue_pages(const char *rbname, ram_addr_t start, ram_addr_t len)
+         return -1;
+     }
+ 
++    /*
++     * When with postcopy preempt, we send back the page directly in the
++     * rp-return thread.
++     */
++    if (postcopy_preempt_active()) {
++        ram_addr_t page_start = start >> TARGET_PAGE_BITS;
++        size_t page_size = qemu_ram_pagesize(ramblock);
++        PageSearchStatus *pss = &ram_state->pss[RAM_CHANNEL_POSTCOPY];
++        int ret = 0;
++
++        qemu_mutex_lock(&rs->bitmap_mutex);
++
++        pss_init(pss, ramblock, page_start);
++        /*
++         * Always use the preempt channel, and make sure it's there.  It's
++         * safe to access without lock, because when rp-thread is running
++         * we should be the only one who operates on the qemufile
++         */
++        pss->pss_channel = migrate_get_current()->postcopy_qemufile_src;
++        pss->postcopy_requested = true;
++        assert(pss->pss_channel);
++
++        /*
++         * It must be either one or multiple of host page size.  Just
++         * assert; if something wrong we're mostly split brain anyway.
++         */
++        assert(len % page_size == 0);
++        while (len) {
++            if (ram_save_host_page_urgent(pss)) {
++                error_report("%s: ram_save_host_page_urgent() failed: "
++                             "ramblock=%s, start_addr=0x"RAM_ADDR_FMT,
++                             __func__, ramblock->idstr, start);
++                ret = -1;
++                break;
++            }
++            /*
++             * NOTE: after ram_save_host_page_urgent() succeeded, pss->page
++             * will automatically be moved and point to the next host page
++             * we're going to send, so no need to update here.
++             *
++             * Normally QEMU never sends >1 host page in requests, so
++             * logically we don't even need that as the loop should only
++             * run once, but just to be consistent.
++             */
++            len -= page_size;
++        };
++        qemu_mutex_unlock(&rs->bitmap_mutex);
++
++        return ret;
++    }
++
+     struct RAMSrcPageRequest *new_entry =
+         g_new0(struct RAMSrcPageRequest, 1);
+     new_entry->rb = ramblock;
+@@ -2537,6 +2600,55 @@ static void pss_host_page_finish(PageSearchStatus *pss)
+     pss->host_page_start = pss->host_page_end = 0;
+ }
+ 
++/*
++ * Send an urgent host page specified by `pss'.  Need to be called with
++ * bitmap_mutex held.
++ *
++ * Returns 0 if save host page succeeded, false otherwise.
++ */
++static int ram_save_host_page_urgent(PageSearchStatus *pss)
++{
++    bool page_dirty, sent = false;
++    RAMState *rs = ram_state;
++    int ret = 0;
++
++    trace_postcopy_preempt_send_host_page(pss->block->idstr, pss->page);
++    pss_host_page_prepare(pss);
++
++    /*
++     * If precopy is sending the same page, let it be done in precopy, or
++     * we could send the same page in two channels and none of them will
++     * receive the whole page.
++     */
++    if (pss_overlap(pss, &ram_state->pss[RAM_CHANNEL_PRECOPY])) {
++        trace_postcopy_preempt_hit(pss->block->idstr,
++                                   pss->page << TARGET_PAGE_BITS);
++        return 0;
++    }
++
++    do {
++        page_dirty = migration_bitmap_clear_dirty(rs, pss->block, pss->page);
++
++        if (page_dirty) {
++            /* Be strict to return code; it must be 1, or what else? */
++            if (ram_save_target_page(rs, pss) != 1) {
++                error_report_once("%s: ram_save_target_page failed", __func__);
++                ret = -1;
++                goto out;
++            }
++            sent = true;
++        }
++        pss_find_next_dirty(pss);
++    } while (pss_within_range(pss));
++out:
++    pss_host_page_finish(pss);
++    /* For urgent requests, flush immediately if sent */
++    if (sent) {
++        qemu_fflush(pss->pss_channel);
++    }
++    return ret;
++}
++
+ /**
+  * ram_save_host_page: save a whole host page
+  *
 -- 
 2.38.1

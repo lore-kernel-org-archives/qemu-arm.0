@@ -1,302 +1,160 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3410786ejx;
-        Mon, 5 Dec 2022 02:57:25 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7COPlrSfGiOSjHONa79HSNEwaXC/YTZV0QNmI7d9ALjXBro61Vl/dtDbj8zp9pvkz8AJOE
-X-Received: by 2002:ae9:ed05:0:b0:6fe:c318:5041 with SMTP id c5-20020ae9ed05000000b006fec3185041mr2212237qkg.489.1670237845217;
-        Mon, 05 Dec 2022 02:57:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670237845; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3377822ejx;
+        Mon, 5 Dec 2022 01:53:08 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6SLI5DTV5bigfoLCOFiCxU+sjZl7p1pQV9+wzDbM6wTkeu9jYspz+vaJZsC40T0KAXJIKQ
+X-Received: by 2002:a0c:c3cc:0:b0:4c6:a05d:f67e with SMTP id p12-20020a0cc3cc000000b004c6a05df67emr57028020qvi.4.1670233988102;
+        Mon, 05 Dec 2022 01:53:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670233988; cv=none;
         d=google.com; s=arc-20160816;
-        b=nDWhSvERTK0XYozd4Gj7nf484fqi5cqNWlEITKmTGyRZTVbygPRM+poAlFKNbEGQ6h
-         q51/ZjfDrgSsQWqI5v0uKFkKIz3fUuiKlgsODuHSnPPYscIOTBT3Q3a+AkQKb6Cly/XI
-         nsoJWLsLpWQ/T9aO3RosmBfyVDUxi2mIDKixoHOr9AyUKfaugIc3Mt/7MsvgYRHmyQ9J
-         o7B3P3FcJ5LBRG6rxztgsAFGQ9oTQgebFxWXyUQefhgiSomdzd3czEB2SrOsmuY8msrQ
-         J7VVvSy4cx929eGbWn80AytcdKZjHDefxz1xA57LW1f2cheLH+huU8tSgH+jnPdog4tJ
-         kHrg==
+        b=VaUiMWjlU4DNBWAadEED2fvlN6WfaWW64YifEScaogvxWCIGaeP9LW6icz2mofsYgT
+         qHtbEf1zQK3M5k4bp6Jo0NIVVuGP1p7gd06nc4EBkLmu07wuk2HjwJo1iZCBhPzJ5K4T
+         ZW1FaXml4OpFOnx6HYmUDMqE3fM0O8eumvbDr2mKXvUz+QpITVIm0Zz0Uo5sfNHBW4i/
+         JUhueJ8c9Gbf11R1cjjprtod8CricynNAJD6mXksnFCCg30O9mdPArmgLYSzyiOI0+P0
+         kCnXvKdbNd7bDnhvQNK1UOIWCg7gzTTodIJSRl5V2ohxfx0GzsVWzq3Go9LBLuPbUi5W
+         oZYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=iYYRBSUv0KkAOiP7FpDeSrChxitZrhyHQMaWH6zoNkY=;
-        b=LsShnVD3gDhrH4bFMz5z5jPg+lus3Zu5HoXOJLuo6XlZQD38dtpIZW57yQELuaNeKq
-         sAistMa8pTVwhY6miJ0YFNYO1fSWzgG1X7qJVwlfIRO9UAwUt8quv2XO88FXInYDoC1q
-         ik1U0wRRgLP1XyL5dXB/fNs7iLENWlkNYqO/NODMkXGDp/Pk8n3O6BcUFWVlLlroK30I
-         cgWr0jOfuKTqfZ5heieoxQLJbmJfC7dKD9TfSRvScgHzllbCr1Kdc/drK6T5UWT8boHG
-         Y3QF3fyakwwkY3C0ehoWuwKBZqwLAyahbx7+xqanqYgNYNK5yCyIrPu5wQPbbA+RwSQQ
-         jAhQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gM1FzBim53KQXgBVytxLzbWYxEf9vN7NkiErlAjlFr4=;
+        b=v8qCuNKJeQiyhnud54TjCMa0GerM7xWLjw7MlovjxduNB2y3mtQblwfDdlclfzdm42
+         GLiaJuv2vL0nerfaRMYZWPIdwZaypmzbaaDVSPcJ225vQ/n0M9khIcRWDVwC7GOhWWCD
+         Y2LaAeEu0fAhAe3NFAeYLhQSr0B1vYxCEJ89BfMwAWrrHTmKzSnBoNguebWmJxkkMRLO
+         5dcMQsqVyNLG/qrYIaFKDLB5MBBBb5bN7w/m+zyNXZM31DCVLsk/9QQMg0ZCUcrnsHPF
+         cxHp8fg9oWxxlYbitMBpZw9yk25U9vkN+dMLkbfJExGCXuxIEfGwvVqLFQ5bQUcZPbiw
+         0uBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=C7r1YM5l;
-       spf=pass (google.com: domain of qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b16-20020ac85bd0000000b003a7e37f496csi1360956qtb.197.2022.12.05.02.57.24
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GhOLvIcU;
+       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <quintela@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id c6-20020a05620a268600b006fc97875494si8055713qkp.650.2022.12.05.01.53.07
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Dec 2022 02:57:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Dec 2022 01:53:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=C7r1YM5l;
-       spf=pass (google.com: domain of qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-discuss-bounces@nongnu.org>)
-	id 1p299d-0000pT-2f; Mon, 05 Dec 2022 05:56:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ggowri617@gmail.com>)
- id 1p299b-0000p7-9b; Mon, 05 Dec 2022 05:56:55 -0500
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ggowri617@gmail.com>)
- id 1p299Z-0005bE-9V; Mon, 05 Dec 2022 05:56:55 -0500
-Received: by mail-lf1-x132.google.com with SMTP id g7so17937620lfv.5;
- Mon, 05 Dec 2022 02:56:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=iYYRBSUv0KkAOiP7FpDeSrChxitZrhyHQMaWH6zoNkY=;
- b=C7r1YM5lIzqVdBFGqeVMgaDsmAZMUWRRMOz/MzX5bZu3+Nxswxo0YMZzsO4+N745Zn
- BQ5Cc8BrOdDbNKA6jfyQwaAQFaw0cxEcTfhxG7D8ib7/hpjKUSkYmOzHB98vmFartDQM
- x9urT+l6SpFvV9Wg/fUMUpoYCFJ+kaDu7o8iXkr3VKJd/HHct8GUmHxZAQebLQWCCjur
- bfuYhV5tdw7iG6k5Rven3CH6XeRkKGx/cgACcPEdSO5lgWCcR7B5IHTOj433XeIRNKZA
- ZTaKR1kQC9rE1dvDhgKc/83kx9orLMwQCF4zMgYVG6U3olMlTj0SkPXo/TIJXYCHTtiF
- 6MFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iYYRBSUv0KkAOiP7FpDeSrChxitZrhyHQMaWH6zoNkY=;
- b=ka8eR3nbVPijgePKRm/VzZ18BeAf7+HC7EKViB2sOWBBCADNh4OVQarIq347xHYwrf
- lTP6mJ6m30KhJNJerC5jkl7qyNlK/nL9zv8m4ug/q8HwB6/IzpbsWLU3ZWJ0DUMOuYcZ
- xQ0PUE6tnYw2TsJcmPYpdQXx4EiLweRtgO81sW4USe5qY1tJf79aDkYxVRS99QK++dB/
- yamIPlzG80km3gWLH9w70IQvmp2Ro63P+nzNrKITQ/WSnDbO0IDN+Gbl85N/WOQnuCtr
- Da8Ah+49SbK0rS1xVle/AEv4HZv0GW+RCnsillGTL5TNPKD7dBmxTJf6rG+JZzOAXH8M
- LuLw==
-X-Gm-Message-State: ANoB5plsk8n7sS2rNUIw8p9oEZXSvs1wMkch2VR712m3+tCHo07TENet
- wpu3iRkghiEyxQqj7xS4BMnAER4ff0xUSaaP0ek=
-X-Received: by 2002:a05:6512:3b88:b0:4a3:9533:f4c9 with SMTP id
- g8-20020a0565123b8800b004a39533f4c9mr22789670lfv.615.1670237810439; Mon, 05
- Dec 2022 02:56:50 -0800 (PST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GhOLvIcU;
+       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1670233987;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=gM1FzBim53KQXgBVytxLzbWYxEf9vN7NkiErlAjlFr4=;
+	b=GhOLvIcUi6AonoFAP5/3J+q9Yd2uW5obTnFgJuqwAxcqMfecFt8EAHh97Xi56igk3MEZd8
+	VU6EOcqr9X2vrpmFjyx6dToLxnH90a0NykrcaUAZXo3ddkcfURqoffaEMNddBPigpaZC4u
+	TTqJ1MU4vMJz+fidZAHP/6jJYDeXg6g=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-232-y6LLJ39VMn-SjpfmQaPpNg-1; Mon, 05 Dec 2022 04:53:06 -0500
+X-MC-Unique: y6LLJ39VMn-SjpfmQaPpNg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2F4AA1C09B82;
+	Mon,  5 Dec 2022 09:53:05 +0000 (UTC)
+Received: from secure.mitica (unknown [10.39.194.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7BFA32166B29;
+	Mon,  5 Dec 2022 09:52:57 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>,
+	Thomas Huth <huth@tuxfamily.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Eric Blake <eblake@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Raphael Norwitz <raphael.norwitz@nutanix.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
+	virtio-fs@redhat.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	"Gonglei (Arei)" <arei.gonglei@huawei.com>,
+	qemu-block@nongnu.org,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	Thomas Huth <thuth@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Eric Farman <farman@linux.ibm.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	Jason Wang <jasowang@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Song Gao <gaosong@loongson.cn>,
+	qemu-s390x@nongnu.org,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Klaus Jensen <its@irrelevant.dk>,
+	John Snow <jsnow@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Keith Busch <kbusch@kernel.org>,
+	David Hildenbrand <david@redhat.com>,
+	qemu-trivial@nongnu.org,
+	Hanna Reitz <hreitz@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+Subject: [PATCH v2 03/51] replay: Fix declaration of replay_read_next_clock
+Date: Mon,  5 Dec 2022 10:51:40 +0100
+Message-Id: <20221205095228.1314-4-quintela@redhat.com>
+In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
+References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
-References: <CAJWWW5ikmoujzeYw97QEMG0uBCLyR2mypSe_Td4XJXjXHQFnyQ@mail.gmail.com>
- <dec95b7b-ae39-d0fc-c631-fcf550c0c3cb@linaro.org>
- <BN7PR12MB2801E7666C7FD577A7FC22B1E6189@BN7PR12MB2801.namprd12.prod.outlook.com>
-In-Reply-To: <BN7PR12MB2801E7666C7FD577A7FC22B1E6189@BN7PR12MB2801.namprd12.prod.outlook.com>
-From: Gowri Shankar <ggowri617@gmail.com>
-Date: Mon, 5 Dec 2022 16:26:38 +0530
-Message-ID: <CAJWWW5hMxg0jcy_=HnGVEW2akeka+FxPva+fjkcYjPQbbwEYOQ@mail.gmail.com>
-Subject: Re: REG: TTC Timer
-To: "Konrad, Frederic" <Frederic.Konrad@amd.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- "qemu-discuss@nongnu.org" <qemu-discuss@nongnu.org>, 
- "Iglesias, Francisco" <francisco.iglesias@amd.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Content-Type: multipart/alternative; boundary="00000000000061bd4005ef128b5e"
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=ggowri617@gmail.com; helo=mail-lf1-x132.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-discuss@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-discuss.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-discuss>,
- <mailto:qemu-discuss-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-discuss>
-List-Post: <mailto:qemu-discuss@nongnu.org>
-List-Help: <mailto:qemu-discuss-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-discuss>,
- <mailto:qemu-discuss-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-discuss-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /y32BGff3Xx0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+X-TUID: br2NlonKeIC/
 
---00000000000061bd4005ef128b5e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Richard Henderson <richard.henderson@linaro.org>
 
-Hi Konrad,
+Fixes the build with gcc 13:
 
-Thanks for your quick response.
+replay/replay-time.c:34:6: error: conflicting types for  \
+  'replay_read_next_clock' due to enum/integer mismatch; \
+  have 'void(ReplayClockKind)' [-Werror=enum-int-mismatch]
+   34 | void replay_read_next_clock(ReplayClockKind kind)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+In file included from ../qemu/replay/replay-time.c:14:
+replay/replay-internal.h:139:6: note: previous declaration of \
+  'replay_read_next_clock' with type 'void(unsigned int)'
+  139 | void replay_read_next_clock(unsigned int kind);
+      |      ^~~~~~~~~~~~~~~~~~~~~~
 
-Now I want to increment the TTC counter value to enable the system tick.
-How to configure the TTC register to increment it in QEMU.
+Fixes: 8eda206e090 ("replay: recording and replaying clock ticks")
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-Id: <20221129010547.284051-1-richard.henderson@linaro.org>
+---
+ replay/replay-internal.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I found the steps to enable the TTC counter which is below. But not able to
-increment. If possible could you please share the example source code?
-
-  1. Select clock input source, set prescaler value (slcr.MIO_MUX_SEL
-registers, TTC Clock Control register). Ensure TTC is disabled
-(ttc.Counter_Control_x [DIS] =3D 1) before proceeding with this step.
-2. Set interval value (Interval register). This step is optional, for
-interval mode only.
-3. Set match value (Match registers). This step is optional, if matching is
-to be enabled.
-4. Enable interrupt (Interrupt Enable register). This step is optional, if
-interrupt is to be enabled.
-5. Enable/disable waveform output, enable/disable matching, set counting
-direction, set mode, enable counter (TTC Counter Control register). This
-step starts the counter.
-
-Thanks & Regards,
-P.Gowrishankar
-
-On Mon, Dec 5, 2022 at 4:07 PM Konrad, Frederic <Frederic.Konrad@amd.com>
-wrote:
-
-> Hi Philippe,
-> Hi Gowri,
->
-> The zcu102 has a zynqmp soc object (hw/arm/xlnx-zcu102.c:125):
->
-> static void xlnx_zcu102_init(MachineState *machine)
-> {
-> ...
->     object_initialize_child(OBJECT(machine), "soc", &s->soc,
-> TYPE_XLNX_ZYNQMP);
->
-> So the TTCs should work in the ZCU102.
->
-> Best Regards,
-> Fred
->
-> -----Original Message-----
-> From: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Sent: 05 December 2022 09:24
-> To: Gowri Shankar <ggowri617@gmail.com>; QEMU Developers <
-> qemu-devel@nongnu.org>; qemu-arm <qemu-arm@nongnu.org>
-> Cc: qemu-discuss@nongnu.org; Konrad, Frederic <Frederic.Konrad@amd.com>;
-> Iglesias, Francisco <francisco.iglesias@amd.com>; Alistair Francis <
-> alistair.francis@wdc.com>
-> Subject: Re: REG: TTC Timer
->
-> On 22/11/22 12:27, Gowri Shankar wrote:
-> > Hi Team,
-> >
-> > Advance Thanks for Your support.
-> >
-> > Could you please clarify one point here?
-> > I am using a Xilinx ZCU102 machine with QEMU7.1.0.
-> >
-> > I have seen QEMU 7.1.0 release has TTC timers for the Xilinx-zynqmp
-> > SoC model.
-> > url: https://wiki.qemu.org/ChangeLog/7.1
-> > <https://wiki.qemu.org/ChangeLog/7.1>
-> >
-> > In this case, can the ZCU102 machine also use the TTC feature?
-> > If yes and possible, Could you please share the example code snippet?
-> > --
-> > Thanks & Regards,
-> > P. Gowrishankar.
-> > +919944802490
->
-> Cc'ing qemu-arm@ mailing list and Xilinx ZCU102 machine developers.
->
->
-
---=20
-Thanks & Regards,
-P. Gowrishankar.
-+919944802490
-
---00000000000061bd4005ef128b5e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Konrad,<div><br></div><div>Thanks for your quick respon=
-se.</div><div><br></div><div>Now I want to increment the TTC counter value =
-to=C2=A0enable=C2=A0the system tick. How to configure the TTC register to i=
-ncrement it in QEMU.</div><div><br></div><div>I found the steps to enable t=
-he TTC counter which is below. But not able to increment. If possible could=
- you please share the example source code?</div><div><br></div><div>=C2=A0 =
-1. Select clock input source, set prescaler value (slcr.MIO_MUX_SEL registe=
-rs, TTC Clock Control
-register). Ensure TTC is disabled (ttc.Counter_Control_x [DIS] =3D 1) befor=
-e proceeding with this
-step.=C2=A0</div><div>2. Set interval value (Interval register). This step =
-is optional, for interval mode only.=C2=A0</div><div>3. Set match value (Ma=
-tch registers). This step is optional, if matching is to be enabled.=C2=A0<=
-/div><div>4. Enable interrupt (Interrupt Enable register). This step is opt=
-ional, if interrupt is to be enabled.</div><div>5. Enable/disable waveform =
-output, enable/disable matching, set counting direction, set mode,
-enable counter (TTC Counter Control register). This step starts the counter=
-.=C2=A0=C2=A0</div><div><br></div><div><div>Thanks &amp; Regards,<br></div>=
-<div>P.Gowrishankar</div></div></div><br><div class=3D"gmail_quote"><div di=
-r=3D"ltr" class=3D"gmail_attr">On Mon, Dec 5, 2022 at 4:07 PM Konrad, Frede=
-ric &lt;<a href=3D"mailto:Frederic.Konrad@amd.com">Frederic.Konrad@amd.com<=
-/a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
-px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">H=
-i Philippe,<br>
-Hi Gowri,<br>
-<br>
-The zcu102 has a zynqmp soc object (hw/arm/xlnx-zcu102.c:125):<br>
-<br>
-static void xlnx_zcu102_init(MachineState *machine)<br>
-{<br>
-...<br>
-=C2=A0 =C2=A0 object_initialize_child(OBJECT(machine), &quot;soc&quot;, &am=
-p;s-&gt;soc, TYPE_XLNX_ZYNQMP);<br>
-<br>
-So the TTCs should work in the ZCU102.<br>
-<br>
-Best Regards,<br>
-Fred<br>
-<br>
------Original Message-----<br>
-From: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org" =
-target=3D"_blank">philmd@linaro.org</a>&gt; <br>
-Sent: 05 December 2022 09:24<br>
-To: Gowri Shankar &lt;<a href=3D"mailto:ggowri617@gmail.com" target=3D"_bla=
-nk">ggowri617@gmail.com</a>&gt;; QEMU Developers &lt;<a href=3D"mailto:qemu=
--devel@nongnu.org" target=3D"_blank">qemu-devel@nongnu.org</a>&gt;; qemu-ar=
-m &lt;<a href=3D"mailto:qemu-arm@nongnu.org" target=3D"_blank">qemu-arm@non=
-gnu.org</a>&gt;<br>
-Cc: <a href=3D"mailto:qemu-discuss@nongnu.org" target=3D"_blank">qemu-discu=
-ss@nongnu.org</a>; Konrad, Frederic &lt;<a href=3D"mailto:Frederic.Konrad@a=
-md.com" target=3D"_blank">Frederic.Konrad@amd.com</a>&gt;; Iglesias, Franci=
-sco &lt;<a href=3D"mailto:francisco.iglesias@amd.com" target=3D"_blank">fra=
-ncisco.iglesias@amd.com</a>&gt;; Alistair Francis &lt;<a href=3D"mailto:ali=
-stair.francis@wdc.com" target=3D"_blank">alistair.francis@wdc.com</a>&gt;<b=
-r>
-Subject: Re: REG: TTC Timer<br>
-<br>
-On 22/11/22 12:27, Gowri Shankar wrote:<br>
-&gt; Hi Team,<br>
-&gt; <br>
-&gt; Advance Thanks for Your support.<br>
-&gt; <br>
-&gt; Could you please clarify one point here?<br>
-&gt; I am using a Xilinx ZCU102 machine with QEMU7.1.0.<br>
-&gt; <br>
-&gt; I have seen QEMU 7.1.0 release has TTC timers for the Xilinx-zynqmp <b=
-r>
-&gt; SoC model.<br>
-&gt; url: <a href=3D"https://wiki.qemu.org/ChangeLog/7.1" rel=3D"noreferrer=
-" target=3D"_blank">https://wiki.qemu.org/ChangeLog/7.1</a><br>
-&gt; &lt;<a href=3D"https://wiki.qemu.org/ChangeLog/7.1" rel=3D"noreferrer"=
- target=3D"_blank">https://wiki.qemu.org/ChangeLog/7.1</a>&gt;<br>
-&gt; <br>
-&gt; In this case, can the ZCU102 machine also use the TTC feature?<br>
-&gt; If yes and possible, Could you please share the example code snippet?<=
-br>
-&gt; --<br>
-&gt; Thanks &amp; Regards,<br>
-&gt; P. Gowrishankar.<br>
-&gt; +919944802490<br>
-<br>
-Cc&#39;ing qemu-arm@ mailing list and Xilinx ZCU102 machine developers.<br>
-<br>
-</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
- class=3D"gmail_signature"><div dir=3D"ltr">Thanks &amp; Regards,<br>P. Gow=
-rishankar.<br>+919944802490<br><br><br><br></div></div>
-
---00000000000061bd4005ef128b5e--
+diff --git a/replay/replay-internal.h b/replay/replay-internal.h
+index 89e377be90..b6836354ac 100644
+--- a/replay/replay-internal.h
++++ b/replay/replay-internal.h
+@@ -136,7 +136,7 @@ bool replay_next_event_is(int event);
+ /*! Reads next clock value from the file.
+     If clock kind read from the file is different from the parameter,
+     the value is not used. */
+-void replay_read_next_clock(unsigned int kind);
++void replay_read_next_clock(ReplayClockKind kind);
+ 
+ /* Asynchronous events queue */
+ 
+-- 
+2.38.1

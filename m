@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3378721ejx;
-        Mon, 5 Dec 2022 01:55:13 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4w9Sudo/uxDNsAjVWd30va/O3ShAhnUnlseIjQZ6e+ypqP+Z1HvIVHgx64DcmSU5OQxr1D
-X-Received: by 2002:a05:6214:3482:b0:4c6:8cba:470b with SMTP id mr2-20020a056214348200b004c68cba470bmr22201292qvb.26.1670234113550;
-        Mon, 05 Dec 2022 01:55:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670234113; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3378754ejx;
+        Mon, 5 Dec 2022 01:55:19 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4llyhjyS833sw3ar4bWjjZRLrjh2SB/1TMHY+dpR/UGlbUPLnq9SY/mBA09yKmOfu3HYDe
+X-Received: by 2002:a0c:efc8:0:b0:4c7:7a9f:5653 with SMTP id a8-20020a0cefc8000000b004c77a9f5653mr408371qvt.72.1670234119140;
+        Mon, 05 Dec 2022 01:55:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670234119; cv=none;
         d=google.com; s=arc-20160816;
-        b=gorZNzxtEx+OrejBI3pvxhQ4ff9DiiqFZ85xGnQcDK+Wn73wVr6bIomHZkkjz31GIK
-         SkWqxltHyZrfo+wxfSox3zmux1voYfLIXSkiypKL/A+yWtamVENy5OYsM1aLC/GdXYZ9
-         KQplbAkorq+dszn556KtSSLu5LmL5QndsOfwfKAS//Solq6tdAwbJh/4XuDqWnMSB6Yi
-         rDvPsF5IkUtfuaLe/SBikW4CnkfFZ94ASSQU3vX2CvYEvXwWBuC+jJNLnWVxYoDrnDrq
-         JyJzR0WzGL0o+sh6qEwAyCv+abBW0iDVzmEqr3HzGrVyTvcmGAL9GXnLUhpK/ufha5So
-         xZxg==
+        b=Vory9i5n7V9M4Tn4Zi/TEzbDfO6r41MtfXMlFNvHd7X9tXZ6Hw9AGMwyx65ehQL+vg
+         m6/ilgu7fdHD8RWRIZtMmpXAVp/mG0zOBQrxYeoXQpoh07X0WMyuipVfWOwgDzv4ojru
+         tMSQWeWg3cnwMWeDHESLW1myU7Bbzrhl9vyvON5DN6zqcVzMqPMedKF8P2Xa+PMj0w2E
+         A81BFIHxIaB7is+KTlawTZlymwx0kehBtsFIA8Ll8OXYDe3Net75QnFVP+nI9dAY5v5C
+         Plh/tIe379IbCgFzAZ5eNs/3gdLNvc1krNJQC/mBTPnFyhjWMXgHTHLqf01hUOeXaMpo
+         cq6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=NlagijAifTdV86tivIA25I3dGfVhQXxNyB5r7aWw5KE=;
-        b=Gb4CbtlsO5V4ZPeehNxJoTadypHuE+hzCpVpl35wB05EXX3E80I3jJiCJTHcTIhAox
-         WVMIImUpldL8dY7Tgki0bnbS6kuFCpz1b15nU5WfTPTvN5hcenyd8YvD5dhbpyMkccdd
-         cN0wVDcEUBfKz43G8aUTYBAfuNiP4B4+UPN68kc5u0H3qVy/NR8iiiBOw0z8GaCRqjU9
-         rSnWWI64zWG+ypI19bVy4WIZLeDrgbWkcJzW3ICR1ismhtIyXLNlrXYZrSqIJHRHGQK9
-         bu3Gt0xqhxoFHjeyJlO1+581TVE4WBbe+310YGXhLUhwLvwpEcVQW/8b/w82pEv2ugFG
-         INXQ==
+        bh=e3XgTZKxlY8kzFFBQsUmpC/wSN3ufoA5pXR8Z5sxu4s=;
+        b=yJG+7j841/sFSt1EeroCnAaFeFBakHrLIehjWqEzSx/v6fvrsnJ7yIvxOfo7YbGQaB
+         zkzOlFqRlK0IaIgqxSwkpF1slmauliXWC9wC+go+6LSRnXbBgU145rNBBqwO2I1jU+WE
+         g612DviYMnZe6FHmogOKls74jKr0jCXHP9RQ7+mOgl+koft6g899n20UwHD5WKU3D3bT
+         TkSZAqBjr97Wyd0WG4/c66asANf5OtBV/JI0LangBEfykX5NJ29JvXVXoFCVbef0Phfj
+         dMxHApYjF7wFFR50enlKb3HCupL++Y2u5RcljJRXJ+lE0K8978a50CTDxgloZxYsF7FZ
+         ht9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BImkW57N;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AQpBSVMP;
        spf=pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <quintela@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id fw12-20020a05622a4a8c00b003a5270cfbfdsi947526qtb.195.2022.12.05.01.55.13
+        by mx.google.com with ESMTPS id cc9-20020a05622a410900b00397ab5a9b1csi7523218qtb.220.2022.12.05.01.55.18
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Dec 2022 01:55:13 -0800 (PST)
+        Mon, 05 Dec 2022 01:55:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BImkW57N;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AQpBSVMP;
        spf=pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1670234113;
+	s=mimecast20190719; t=1670234118;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=NlagijAifTdV86tivIA25I3dGfVhQXxNyB5r7aWw5KE=;
-	b=BImkW57NS51c2jOa1RiCYw3NF6XfRHxjJrZSucUGk5DQ4h5r9/7FNzdGdnaYcDRmBEZGa1
-	5svGXm4ubdpH6WKc1T7ByG1up832F246LTRQ3wb7AY1gq2ToZSjtRnnoQRsAKaAyXj4DcG
-	bRwGe+UdEaA2YhZ2wwwlMG1jOwi0Sk8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=e3XgTZKxlY8kzFFBQsUmpC/wSN3ufoA5pXR8Z5sxu4s=;
+	b=AQpBSVMPcOBmAfQMz13c+/I3n8bKi1ANNLCKrOiRbJBqNrOBHWEcBGiBZxXu5/KySLI8kb
+	lAxF96dr15z9jjfVeBz3YHQTNmBTtK1TEyWHwXX2fzq9ReByeUbOj2u9QJ2GG1DL/nkCqz
+	7zYZ/Fls0CZ1aS9dkjFHH7uxWuOy//k=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-607-3HH99AajNVmMvwQ0_5_3JA-1; Mon, 05 Dec 2022 04:55:10 -0500
-X-MC-Unique: 3HH99AajNVmMvwQ0_5_3JA-1
+ us-mta-263-EvfnM0ieOlWUXJVVxy2KuA-1; Mon, 05 Dec 2022 04:55:17 -0500
+X-MC-Unique: EvfnM0ieOlWUXJVVxy2KuA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8CA10101A52A;
-	Mon,  5 Dec 2022 09:55:08 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 56D7E1C0014B;
+	Mon,  5 Dec 2022 09:55:16 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 388902166B29;
-	Mon,  5 Dec 2022 09:55:01 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D99072166B29;
+	Mon,  5 Dec 2022 09:55:08 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>,
@@ -104,53 +104,62 @@ Cc: Fam Zheng <fam@euphon.net>,
 	qemu-trivial@nongnu.org,
 	Hanna Reitz <hreitz@redhat.com>,
 	Klaus Jensen <k.jensen@samsung.com>
-Subject: [PATCH v2 19/51] hw/nvme: fix aio cancel in zone reset
-Date: Mon,  5 Dec 2022 10:51:56 +0100
-Message-Id: <20221205095228.1314-20-quintela@redhat.com>
+Subject: [PATCH v2 20/51] hw/nvme: fix aio cancel in dsm
+Date: Mon,  5 Dec 2022 10:51:57 +0100
+Message-Id: <20221205095228.1314-21-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-X-TUID: CoXxNPX0j8Ud
+X-TUID: 70zrNWGexPcB
 
 From: Klaus Jensen <k.jensen@samsung.com>
 
-If the zone reset operation is cancelled but the block unmap operation
-completes normally, the callback will continue resetting the next zone
-since it neglects to check iocb->ret which will have been set to
--ECANCELED. Make sure that this is checked and bail out if an error is
-present.
+When the DSM operation is cancelled asynchronously, we set iocb->ret to
+-ECANCELED. However, the callback function only checks the return value
+of the completed aio, which may have completed succesfully prior to the
+cancellation and thus the callback ends up continuing the dsm operation
+instead of bailing out. Fix this.
 
 Secondly, fix a potential use-after-free by removing the bottom half and
 enqueuing the completion directly.
 
-Fixes: 63d96e4ffd71 ("hw/nvme: reimplement zone reset to allow cancellation")
+Fixes: d7d1474fd85d ("hw/nvme: reimplement dsm to allow cancellation")
 Reviewed-by: Keith Busch <kbusch@kernel.org>
 Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
 ---
- hw/nvme/ctrl.c | 36 +++++++++++-------------------------
- 1 file changed, 11 insertions(+), 25 deletions(-)
+ hw/nvme/ctrl.c | 34 ++++++++--------------------------
+ 1 file changed, 8 insertions(+), 26 deletions(-)
 
 diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index fede5af6af..bf4abf73f7 100644
+index bf4abf73f7..e847b89461 100644
 --- a/hw/nvme/ctrl.c
 +++ b/hw/nvme/ctrl.c
-@@ -3712,7 +3712,6 @@ typedef struct NvmeZoneResetAIOCB {
+@@ -2329,7 +2329,6 @@ typedef struct NvmeDSMAIOCB {
      BlockAIOCB common;
      BlockAIOCB *aiocb;
      NvmeRequest *req;
 -    QEMUBH *bh;
      int ret;
  
-     bool all;
-@@ -3741,17 +3740,6 @@ static const AIOCBInfo nvme_zone_reset_aiocb_info = {
-     .cancel_async = nvme_zone_reset_cancel,
+     NvmeDsmRange *range;
+@@ -2351,7 +2350,7 @@ static void nvme_dsm_cancel(BlockAIOCB *aiocb)
+     } else {
+         /*
+          * We only reach this if nvme_dsm_cancel() has already been called or
+-         * the command ran to completion and nvme_dsm_bh is scheduled to run.
++         * the command ran to completion.
+          */
+         assert(iocb->idx == iocb->nr);
+     }
+@@ -2362,17 +2361,6 @@ static const AIOCBInfo nvme_dsm_aiocb_info = {
+     .cancel_async = nvme_dsm_cancel,
  };
  
--static void nvme_zone_reset_bh(void *opaque)
+-static void nvme_dsm_bh(void *opaque)
 -{
--    NvmeZoneResetAIOCB *iocb = opaque;
+-    NvmeDSMAIOCB *iocb = opaque;
 -
 -    iocb->common.cb(iocb->common.opaque, iocb->ret);
 -
@@ -159,39 +168,48 @@ index fede5af6af..bf4abf73f7 100644
 -    qemu_aio_unref(iocb);
 -}
 -
- static void nvme_zone_reset_cb(void *opaque, int ret);
+ static void nvme_dsm_cb(void *opaque, int ret);
  
- static void nvme_zone_reset_epilogue_cb(void *opaque, int ret)
-@@ -3762,14 +3750,8 @@ static void nvme_zone_reset_epilogue_cb(void *opaque, int ret)
-     int64_t moff;
-     int count;
+ static void nvme_dsm_md_cb(void *opaque, int ret)
+@@ -2384,16 +2372,10 @@ static void nvme_dsm_md_cb(void *opaque, int ret)
+     uint64_t slba;
+     uint32_t nlb;
  
 -    if (ret < 0) {
--        nvme_zone_reset_cb(iocb, ret);
+-        iocb->ret = ret;
++    if (ret < 0 || iocb->ret < 0 || !ns->lbaf.ms) {
+         goto done;
+     }
+ 
+-    if (!ns->lbaf.ms) {
+-        nvme_dsm_cb(iocb, 0);
 -        return;
 -    }
 -
--    if (!ns->lbaf.ms) {
--        nvme_zone_reset_cb(iocb, 0);
--        return;
-+    if (ret < 0 || iocb->ret < 0 || !ns->lbaf.ms) {
-+        goto out;
-     }
+     range = &iocb->range[iocb->idx - 1];
+     slba = le64_to_cpu(range->slba);
+     nlb = le32_to_cpu(range->nlb);
+@@ -2406,7 +2388,6 @@ static void nvme_dsm_md_cb(void *opaque, int ret)
+     ret = nvme_block_status_all(ns, slba, nlb, BDRV_BLOCK_ZERO);
+     if (ret) {
+         if (ret < 0) {
+-            iocb->ret = ret;
+             goto done;
+         }
  
-     moff = nvme_moff(ns, iocb->zone->d.zslba);
-@@ -3779,6 +3761,9 @@ static void nvme_zone_reset_epilogue_cb(void *opaque, int ret)
-                                         BDRV_REQ_MAY_UNMAP,
-                                         nvme_zone_reset_cb, iocb);
+@@ -2420,8 +2401,7 @@ static void nvme_dsm_md_cb(void *opaque, int ret)
      return;
-+
-+out:
-+    nvme_zone_reset_cb(iocb, ret);
+ 
+ done:
+-    iocb->aiocb = NULL;
+-    qemu_bh_schedule(iocb->bh);
++    nvme_dsm_cb(iocb, ret);
  }
  
- static void nvme_zone_reset_cb(void *opaque, int ret)
-@@ -3787,7 +3772,9 @@ static void nvme_zone_reset_cb(void *opaque, int ret)
-     NvmeRequest *req = iocb->req;
-     NvmeNamespace *ns = req->ns;
+ static void nvme_dsm_cb(void *opaque, int ret)
+@@ -2434,7 +2414,9 @@ static void nvme_dsm_cb(void *opaque, int ret)
+     uint64_t slba;
+     uint32_t nlb;
  
 -    if (ret < 0) {
 +    if (iocb->ret < 0) {
@@ -200,26 +218,23 @@ index fede5af6af..bf4abf73f7 100644
          iocb->ret = ret;
          goto done;
      }
-@@ -3835,9 +3822,9 @@ static void nvme_zone_reset_cb(void *opaque, int ret)
+@@ -2468,7 +2450,8 @@ next:
  
  done:
      iocb->aiocb = NULL;
--    if (iocb->bh) {
--        qemu_bh_schedule(iocb->bh);
--    }
-+
+-    qemu_bh_schedule(iocb->bh);
 +    iocb->common.cb(iocb->common.opaque, iocb->ret);
 +    qemu_aio_unref(iocb);
  }
  
- static uint16_t nvme_zone_mgmt_send_zrwa_flush(NvmeCtrl *n, NvmeZone *zone,
-@@ -3942,7 +3929,6 @@ static uint16_t nvme_zone_mgmt_send(NvmeCtrl *n, NvmeRequest *req)
-                            nvme_misc_cb, req);
+ static uint16_t nvme_dsm(NvmeCtrl *n, NvmeRequest *req)
+@@ -2486,7 +2469,6 @@ static uint16_t nvme_dsm(NvmeCtrl *n, NvmeRequest *req)
+                                          nvme_misc_cb, req);
  
          iocb->req = req;
--        iocb->bh = qemu_bh_new(nvme_zone_reset_bh, iocb);
+-        iocb->bh = qemu_bh_new(nvme_dsm_bh, iocb);
          iocb->ret = 0;
-         iocb->all = all;
-         iocb->idx = zone_idx;
+         iocb->range = g_new(NvmeDsmRange, nr);
+         iocb->nr = nr;
 -- 
 2.38.1

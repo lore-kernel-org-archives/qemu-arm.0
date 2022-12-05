@@ -1,106 +1,112 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3678712ejx;
-        Mon, 5 Dec 2022 08:51:06 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5OAkRFGCWGsyo+VFh/EaybjH9/6De05DJV7fF3Fq2eLakq2kxGD3AAvX3s1+Pa0IXvlv6j
-X-Received: by 2002:a05:620a:2e7:b0:6fc:9a48:eddf with SMTP id a7-20020a05620a02e700b006fc9a48eddfmr2001944qko.458.1670259066736;
-        Mon, 05 Dec 2022 08:51:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670259066; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3695350ejx;
+        Mon, 5 Dec 2022 09:10:22 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4v+aJOl593bL9pN92ReSkx13Pg3VrUqJhNAOgOlzMWNrT/EKHLQOUiWlJw3cio3osv+W8t
+X-Received: by 2002:a05:620a:1384:b0:6fa:1e46:291b with SMTP id k4-20020a05620a138400b006fa1e46291bmr62176565qki.494.1670260222293;
+        Mon, 05 Dec 2022 09:10:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670260222; cv=none;
         d=google.com; s=arc-20160816;
-        b=NYnx9AGLbxHOKz2nuHV3JhXRY6ZhYnRryfhfUNcNW2KXMhp1j6Xbfxc8gSTpZMvtaa
-         jkQ5wMYoGmoQl2kUhLD4B1+z3Yv76S2TwUj0JdJ93OJh+DvalngSj6s03Ns8cv9cl6fR
-         yD/MAOUAGoPU6hpIBfGDAU7c0OMtfj8iQ/9faiV44/62m5v/ZqYApFkIhn7nQp1L76II
-         1Ogfu0DR+i042Gqyo8mCBADjewptMrFx0C040ITRXdxjUG48S1drkCfrqwb+pBLTHuSJ
-         h2prMI5RSvDvUpzikQRQ+UwX5h0UQyXBfSb8ziRCA86o0M68RoB9dygnUqJ8Yi7Md8Ij
-         J3Gg==
+        b=yGPAyCKwvGQ2JfiCy0jfaVo1/1ZtzPz9zFh/Nr/gpYa/piJW6o5rtdnBXeyUWPsIeU
+         k3toPsOkUYuZiuvqSeCCKlUa9VbMyFztQ1+d4bcoJE2MbsefeOh84o3+7pVLctmZvlLz
+         asTOgVNDwRMFJJZP2L+jYiWzt00mjGkVC4EIH4zbj9qzmRX6uhr/EoyDT8ZEScx3BImf
+         YE9RJvmv2ap9Mi184zeWMxfR39vSePBiwutmIqALii+JuFFEn/OnYSFbzRiQ2IPEpP6M
+         H4xL8gZmfIbTZhJAnZ66tn3rUEwuc2FxAeYFCP4TX3m/xlfjmYlYbJn7IJ7M7DHxCdFg
+         5k9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Y6C6MAUioop+DtdSfdnLhzwpeD9w+vPUAVhC0ElJtXo=;
-        b=hUg5siUI+ox5VIUtQkaC4yrFls8ezyLNiY6acdNDNX0J+Gf2ZvxCVp1fAib1D8a/ZT
-         IunrRVuK7BG/N28OkFb69XBlBOVWmTiAb4xFdoAkdukrmRgMhGsMPhY48pvnci+8WafC
-         5QcjNLT4qM8+7eht4neb5MSHGUytY6VVr3Vh6j4sTEHidJIWFokN1EK8GQTFhhZSTV+8
-         UkYm3qbvEmBEP8g6dn6VLmMx7RqhfteJom/lQ+3QdhUOtl3rXdqoSs8xojv+Optw5Lmi
-         LNwYK3QPzE4JR9vzjxqN+pF2llqWCzhZggKAlnMKhqdS1DXWG5eC2+LRVXiY4lu8/VGD
-         xtAw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=MwByMuLrmF8YMdq4KZXXjR0AyOvR3boTcNRCXu5Qxyk=;
+        b=cWCPGFDFo4UhVjiKGSKw2koy2V4xDv7L8VG6kn5BMis58hDKuDeYgyVmEjEpjFycsY
+         V53zy3uXyDqTKQOoiAYGymv6/Sz6ME5w1T36md1InIteuhYp3ycT9wWbBVjjor5vfVRH
+         CPtUbnfQ9T/9HGBS67trHIKQx4988zvkbYD2IWBlKyKYlT6ZTHgMrGSFE/C/5jBN8xgH
+         0JT14thT/33DtDnke5fBeO6C/OHmS9z7rA7EzpSRW9iM4B0/SCnVHKALUfwiEdZgdns6
+         Lgcv+LUq1zHgubDxrYFLrTTIWRB9QOEQYpbRdThisF6E7hrBPFh+5M3QOE9fYJsW5DD6
+         SEKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uhRLgoP7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=t7tvGwNf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d9-20020a05620a158900b006ed277c6079si487127qkk.122.2022.12.05.08.51.06
+        by mx.google.com with ESMTPS id f4-20020ac84704000000b0039a8656c815si8118936qtp.426.2022.12.05.09.10.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Dec 2022 08:51:06 -0800 (PST)
+        Mon, 05 Dec 2022 09:10:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uhRLgoP7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=t7tvGwNf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p2Efo-0000YX-E4; Mon, 05 Dec 2022 11:50:32 -0500
+	id 1p2EyO-0005Zx-8Z; Mon, 05 Dec 2022 12:09:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1p2Efn-0000Xq-CI
- for qemu-arm@nongnu.org; Mon, 05 Dec 2022 11:50:31 -0500
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ id 1p2EyM-0005V2-6q
+ for qemu-arm@nongnu.org; Mon, 05 Dec 2022 12:09:42 -0500
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1p2Efl-0000Mr-Q0
- for qemu-arm@nongnu.org; Mon, 05 Dec 2022 11:50:31 -0500
-Received: by mail-pf1-x42e.google.com with SMTP id 124so11992214pfy.0
- for <qemu-arm@nongnu.org>; Mon, 05 Dec 2022 08:50:29 -0800 (PST)
+ id 1p2EyJ-0003aG-Si
+ for qemu-arm@nongnu.org; Mon, 05 Dec 2022 12:09:41 -0500
+Received: by mail-pg1-x533.google.com with SMTP id h193so11015596pgc.10
+ for <qemu-arm@nongnu.org>; Mon, 05 Dec 2022 09:09:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Y6C6MAUioop+DtdSfdnLhzwpeD9w+vPUAVhC0ElJtXo=;
- b=uhRLgoP77qUV+Y0hOxwUTnI9CUdA9o4uL0X+pi8RnLe49s7JJOIhcu+h7OUfMuHtAJ
- oXVp5BtvAT4Vj+mgU44zT34uGEXtpAPQsLA8QhxTKxvOCVj/fCGYhdXPl9aezWleeuQW
- bCRIxtMWJrV58UtL1e7gbE9mBMi8gud/CmYDbQghLcMZwIso/g0JrIKS0p4aAcLJrfpN
- gkUFRfWjqUhvRrTuu74MKD3XV8J0IRR9sRvZuMyWccBYs3+ErE+YPBsdW+81gYZqjZmY
- wAr98MlLeHxL9fNssCeGx0jYbPow+N27lgeH8pGiwqK+HGQ2kd5QQM7QgFWZa0kOYC+/
- RLpQ==
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MwByMuLrmF8YMdq4KZXXjR0AyOvR3boTcNRCXu5Qxyk=;
+ b=t7tvGwNfkj7s5LyQ4qUYdgmC3e6iEDzHOfYII7iMaZSdicvUjmgo5KndaV+3DWSgMO
+ iSJUzb1lM6WlZXI2RtWfM7ry5FyGs+iAkgThBzwumeUSViCDCKzag6/Q3tobwlbLxZRm
+ ROuVIJgIRQ4SSn0N/Qq9FVabPoSw2UG4RVeNDatTx90aJA4clccjMj5ShKCjH92ZKJMi
+ DhaZjtd0t7KQDIzDqxQSMmAhoTEmSsKJb6leoq2FNVk3V8OLeG2KLTyqGcZj9ieePSH/
+ dFZyfgea2PW3PcZz2JFpUNcGVMwm5KfzrTuFmiDWMuplS0nhyE7kFVHDHJVF7elxjybG
+ cjpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Y6C6MAUioop+DtdSfdnLhzwpeD9w+vPUAVhC0ElJtXo=;
- b=euyxHy0Iwn9uwlUTOHCS8forW9H2UoNfAskQi26MfImvV57zusRxwN6SzFlk9WH/6G
- gYW4l/P0hK4XJkH69QQG5oJTT55C+Qw3HmoMww6rdLeBfxnQcNCQJ7dMmfPlX7QqW5Nr
- PTSEYTn8HA+u+sfyq2f7gXUnFaQDVkkqpeaO4m1DyvkGbX5uMjw9hziwCvBvglvzBqoB
- Zyp09/V13hJ0cYHiZjGpK0rF1eKXqSWn443vUsgx5sCIotEZAsbMj6Sa/nZRPbWlLo4y
- gKDHVLHQRKjS3yGlgCTIMzZTR2fxmIffewhwmPVmRaKlvYD6fu7qiQyudJtJ/w4dlWMc
- uUTA==
-X-Gm-Message-State: ANoB5pnjt0aiepsbj7NldfInqUVkyv7r5Bvv4mD+aUcvyrjXxucdOKg4
- pWGcCLlwrLIEQgZ2nsxZ/87qH8R9QZKp/Ku6Bm64IQ==
-X-Received: by 2002:aa7:8502:0:b0:576:9786:94c2 with SMTP id
- v2-20020aa78502000000b00576978694c2mr11807252pfn.26.1670259028234; Mon, 05
- Dec 2022 08:50:28 -0800 (PST)
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=MwByMuLrmF8YMdq4KZXXjR0AyOvR3boTcNRCXu5Qxyk=;
+ b=efFmcZo+C4c5PilXjn40ZzXNrw6xbSTzDLpOih3WdzMWt2N1CisQSwtpOUrjQu6j9H
+ RKQSAMLK4YtQ8RFrt4M1DHhGRAQ89nx8evk4H2FTPTskncyyXAP15ZmX49vahb3yMOV9
+ n8kv7/LDyuo4BYtLhWO5QbgiGIfKyv84GOoSSNB8pNp6FLf20rZjWtOBWv/W45K+KJo3
+ oReg0WSjrQ8rDI6fCQB7Wcz1f0fKG0Umfe8jMjP7h1GBc/zmTX+iYKtYpfPZyhJEOT3r
+ teh+tJClKB+8SHd+NjrIHlHRO7y9xnaAeexCiChtvbulpK5aD9VFdIsmfolEP+Kr3t5M
+ 37nQ==
+X-Gm-Message-State: ANoB5pnC1asTprJUIGC1/DPGRueNbY7ra9iMhFk1d0Z1zdLV+rrPobX1
+ +qPf3doV6ejP201qAEiY48aRYFXF7+1rtwW6Bw2EbBIr9i7uaw==
+X-Received: by 2002:a63:5146:0:b0:477:86c1:640f with SMTP id
+ r6-20020a635146000000b0047786c1640fmr58021632pgl.231.1670260178541; Mon, 05
+ Dec 2022 09:09:38 -0800 (PST)
 MIME-Version: 1.0
-References: <20221024051851.3074715-1-richard.henderson@linaro.org>
- <20221024051851.3074715-15-richard.henderson@linaro.org>
-In-Reply-To: <20221024051851.3074715-15-richard.henderson@linaro.org>
+References: <20221202154023.293614-1-thuth@redhat.com>
+ <7681b7e1-2c03-cf98-3d73-e2b9f3dd0a72@linaro.org>
+In-Reply-To: <7681b7e1-2c03-cf98-3d73-e2b9f3dd0a72@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Dec 2022 16:50:16 +0000
-Message-ID: <CAFEAcA_5P+HgDjNJE6XZ7hN0TcOPOJfxzMANN9HQ8+b7R+34bw@mail.gmail.com>
-Subject: Re: [PATCH v6 14/14] target/arm: Use the max page size in a 2-stage
- ptw
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Marc Zyngier <maz@kernel.org>
+Date: Mon, 5 Dec 2022 17:09:26 +0000
+Message-ID: <CAFEAcA8_Y2bgi-uSzt7z36LYOVjibb-57zGKiW8_2rhSJ70=aw@mail.gmail.com>
+Subject: Re: [PATCH v2 for-8.0] hw/misc: Move some arm-related files from
+ specific_ss into softmmu_ss
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x42e.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,55 +121,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jRNKs1xh3WXQ
+X-TUID: +6siHcyDdGfT
 
-On Mon, 24 Oct 2022 at 06:19, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Fri, 2 Dec 2022 at 16:32, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
 >
-> We had only been reporting the stage2 page size.  This causes
-> problems if stage1 is using a larger page size (16k, 2M, etc),
-> but stage2 is using a smaller page size, because cputlb does
-> not set large_page_{addr,mask} properly.
+> On 2/12/22 16:40, Thomas Huth wrote:
+> > The header arget/arm/kvm-consts.h checks CONFIG_KVM which is marked as
 >
-> Fix by using the max of the two page sizes.
+> typo "target"
 >
-> Reported-by: Marc Zyngier <maz@kernel.org>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-So when I was reviewing the v8R patchset I re-found this
-change in the code, and had some questions about it that
-I wasn't thinking about the first time...
-
-> @@ -2639,6 +2640,14 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
->          return ret;
->      }
+> > poisoned in common code, so the files that include this header have to
+> > be added to specific_ss and recompiled for each, qemu-system-arm and
+> > qemu-system-aarch64. However, since the kvm headers are only optionally
+> > used in kvm-constants.h for some sanity checks, we can additionally
+> > check the NEED_CPU_H macro first to avoid the poisoned CONFIG_KVM macro=
+,
+> > so kvm-constants.h can also be used from "common" files (without the
+> > sanity checks - which should be OK since they are still done from other
+> > target-specific files instead). This way, and by adjusting some other
+> > include statements in the related files here and there, we can move som=
+e
+> > files from specific_ss into softmmu_ss, so that they only need to be
+> > compiled once during the build process.
 >
-> +    /*
-> +     * Use the maximum of the S1 & S2 page size, so that invalidation
-> +     * of pages > TARGET_PAGE_SIZE works correctly.
-> +     */
-> +    if (result->f.lg_page_size < s1_lgpgsz) {
-> +        result->f.lg_page_size = s1_lgpgsz;
-> +    }
-> +
->      /* Combine the S1 and S2 cache attributes. */
->      hcr = arm_hcr_el2_eff_secstate(env, is_secure);
->      if (hcr & HCR_DC) {
+> Cool!
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-Firstly, what if the lg_page_size is < TARGET_PAGE_SIZE ?
-I think this can't happen for VMSA, but for PMSA it will
-when the region (in either S1 or S2) is less than the page size
-(in which case lg_page_size is 0). Presumably in this case we
-want to set the result's lg_page_size to also be 0 to
-preserve the "don't put this in the TLB" effect.
-
-Secondly, how does this work for VMSA? Suppose that stage 1
-is using 4K pages and stage 2 is using 64K pages. We will then
-claim here that the result lg_page_size is 64K, but the
-attributes and mapping in the result are only valid for
-the 4K page that we looked up in stage 1 -- the surrounding
-4K pages could have entirely different permissions/mapping.
+Applied to target-arm-for-8.0 with the commit message
+typo fixed.
 
 thanks
 -- PMM

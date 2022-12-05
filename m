@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3379324ejx;
-        Mon, 5 Dec 2022 01:56:33 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6D755EMWUIk9YUlHV3bhSMraZMf8SkvaCAU8mgmVRC/SvolEvvTFy+acRBrmA+l0NhazyD
-X-Received: by 2002:ad4:420f:0:b0:4c7:1c2e:3584 with SMTP id k15-20020ad4420f000000b004c71c2e3584mr21856546qvp.32.1670234192954;
-        Mon, 05 Dec 2022 01:56:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670234192; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3379399ejx;
+        Mon, 5 Dec 2022 01:56:43 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf53zjc5zmfJ0R06DuxTyazeCyzzJUEwIWY+jQSG0wHUxwY5JYcLo8NC5fcmbJIyJvsqRILh
+X-Received: by 2002:ad4:4686:0:b0:4c7:79c4:91c8 with SMTP id pl6-20020ad44686000000b004c779c491c8mr533532qvb.92.1670234203722;
+        Mon, 05 Dec 2022 01:56:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670234203; cv=none;
         d=google.com; s=arc-20160816;
-        b=euq/FxsWM2gatj8WY9ayFPunvWmyrcGgJIOHQd2Rgz4y1iqL4jP4803Ms7Fd0zLqAU
-         fIwSl5lxU5Qbj023TtWeFfVeZiQH6gEsNAn0jFhbA3axZ5/lvwSYaCCQdc/Z/LnLu/6i
-         8rtA3HnzjFtPmvnw1+E9ZlsVbsdDiIegb/wkhZ+Q85KAdLqvzZtt+KsQoTPFnSDz+gKX
-         ZmruUxpsbbXpiqiEBKEI7fJcaLbQYO/Y6PXZ3bETu7kpV7OrhnUxtPzyjZHj+uroHA/w
-         ScLkj3IlVHTc5ix+9rRS9VyRmumjWQsu+ml+E8YCdfF7tebRUgVaPgbkWlI60TXss2GJ
-         ZDxg==
+        b=iko8WiqemhaWqWYZclLdKDFfknNXDcHaaApNrIayZuviavSzAxt397tVoheqV4uFu5
+         Vk0LXCMHbAdRh0HHNPS6NRqI2YWQ6LScd+uzHkkceU8Ew8Yiyrf/Iqux+7+n5ZwUHmFC
+         tF4kh8pgkuYx5U7KMxt6Bc0LzeCv8sK/QLNf/YPEiNwnHoPtbGPLdHWhDMANciMX08qb
+         xsBNY2aSBFlGPA/Wch/xogfYivfnqp/q0Wns1izXOuVc8S142hiWUl1T5Z4X7wEBYZZa
+         hAp4amL+wSzc9+7GMIo20hpty7jDPJfNvPvA0AfVJConQIOv597HrVNxayNgvoYDDgVy
+         0fag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9tm0aYZytXya9yAOHxEbm0Rd0xivxdFo7KkNO5L47xU=;
-        b=eKiYgGVkILGHBTSQ0rMQdXmLjHmRyC8uTXLVVJ44RPHWqXQF29xyv3cQ8amrpaJjQQ
-         Ve40QySm7coWnIexo3oMuok6oz2HtrnRfbSk2LqvXvW+0XW0/+iYZ7BcSa6kpb13O9g5
-         RhF8CULNqmvThPuit5qa9hy4fMg0BQSGEOh0+QVJRWLe5e8ztJHgk1A6cLmnd+7n0R5w
-         3/jJ+1pdUAZAd+eEfs6O6LPsoyGjvWao9L1QwYPw/dwz1yfIOC1yPQ1qCH1Z8Qonq2a5
-         pF46Ysq1WwSzUcn+Nfd1OoQmC1iqMF5hF61cztNHx9XP0fYWss+GhtjTcyI4hcCiUDec
-         N9wg==
+        bh=wht3cZbEag0AF4cSKduIqGDfC02z0cnt1HmfpmfZWO0=;
+        b=Lvtom0LrUWVt/8LSNezNlwnpOzRZI/Z5BvCZC8jx34bzu0U3yUpdUL7cR2UirEzahV
+         ucT8xkjvu4yUZJKJe+LeBtoopdPGxsEEfCbGYNPe+s7ozj8BChMmYq1flSkv00mXC80X
+         cCJ96PPOh62JkplGb8jmliYBYPD3VO83sxdVLfl/yvYWZZMfwQtZBLp7rk/vgpCMRooi
+         gxTSkvxUIhi0a/0of/R/Nk7ou9Xde2Bl6Db06DtbzsqpCpaiXHPqbCvzV1ITPAo5vKcf
+         zBMzGFkfSZ5/S698cu5igKfeyZWMduJEVBO5b9d2yRExTOwbPERQCklUJsnEPw4/tKw7
+         Q0Bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a0wUH1LH;
-       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hDth05pf;
+       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <quintela@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id gb11-20020a05622a598b00b003a68e6de1a1si7810306qtb.444.2022.12.05.01.56.32
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id r22-20020ac867d6000000b003a51b82f290si7161946qtp.495.2022.12.05.01.56.43
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Dec 2022 01:56:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 05 Dec 2022 01:56:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a0wUH1LH;
-       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hDth05pf;
+       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1670234192;
+	s=mimecast20190719; t=1670234203;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=9tm0aYZytXya9yAOHxEbm0Rd0xivxdFo7KkNO5L47xU=;
-	b=a0wUH1LHSAxMfpnsFGe/RHa+XzfgMzwMUFAlHBruoGIjezcD4cstWUrn+busUs7uWTvb+p
-	OWO6QDcqp7n/fBAqHRS2RQMi7ZEmwfauPXl6eWmDDeWjg+m/Z1QsTpP5BnUTZKLtjSzCnW
-	AI5ZlAXRbee606mUjHuJnJUDzZt/GUE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=wht3cZbEag0AF4cSKduIqGDfC02z0cnt1HmfpmfZWO0=;
+	b=hDth05pfjVQ8ds6aHj0eBd/q/0hQ2TRoO+VTraCfPywbtVwoQuKwOqxA7S8ZmGEcGbuRqq
+	1IOrWarzwz1x+1b33hdX9hX2SE1RQJFX3ec/Eyal/J75kI285AiMsXTVhd6r9n85s4r7O8
+	idEdOKPlL+jIB128e5Ikv+NItze2V3k=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-428-QPlaoyc6PiKol5iUMkrnGg-1; Mon, 05 Dec 2022 04:56:28 -0500
-X-MC-Unique: QPlaoyc6PiKol5iUMkrnGg-1
+ us-mta-589-nHYc-QPBO9eadOh-sy8XhA-1; Mon, 05 Dec 2022 04:56:38 -0500
+X-MC-Unique: nHYc-QPBO9eadOh-sy8XhA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3AD08858282;
-	Mon,  5 Dec 2022 09:56:27 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 43A3D1C07824;
+	Mon,  5 Dec 2022 09:56:35 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7637C2166B29;
-	Mon,  5 Dec 2022 09:56:19 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 910B22166B2A;
+	Mon,  5 Dec 2022 09:56:27 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>,
@@ -103,89 +103,52 @@ Cc: Fam Zheng <fam@euphon.net>,
 	David Hildenbrand <david@redhat.com>,
 	qemu-trivial@nongnu.org,
 	Hanna Reitz <hreitz@redhat.com>,
+	David Edmondson <david.edmondson@oracle.com>,
 	Leonardo Bras <leobras@redhat.com>
-Subject: [PATCH v2 29/51] multifd: Create page_count fields into both MultiFD{Recv,Send}Params
-Date: Mon,  5 Dec 2022 10:52:06 +0100
-Message-Id: <20221205095228.1314-30-quintela@redhat.com>
+Subject: [PATCH v2 30/51] migration: Export ram_transferred_ram()
+Date: Mon,  5 Dec 2022 10:52:07 +0100
+Message-Id: <20221205095228.1314-31-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-X-TUID: PGhY9bI57+XI
-
-We were recalculating it left and right.  We plan to change that
-values on next patches.
+X-TUID: mf2dNaH+tO35
 
 Signed-off-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: David Edmondson <david.edmondson@oracle.com>
 Reviewed-by: Leonardo Bras <leobras@redhat.com>
 ---
- migration/multifd.h | 4 ++++
- migration/multifd.c | 7 ++++---
- 2 files changed, 8 insertions(+), 3 deletions(-)
+ migration/ram.h | 2 ++
+ migration/ram.c | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/migration/multifd.h b/migration/multifd.h
-index 86fb9982b3..e2802a9ce2 100644
---- a/migration/multifd.h
-+++ b/migration/multifd.h
-@@ -82,6 +82,8 @@ typedef struct {
-     uint32_t packet_len;
-     /* guest page size */
-     uint32_t page_size;
-+    /* number of pages in a full packet */
-+    uint32_t page_count;
-     /* multifd flags for sending ram */
-     int write_flags;
+diff --git a/migration/ram.h b/migration/ram.h
+index c7af65ac74..e844966f69 100644
+--- a/migration/ram.h
++++ b/migration/ram.h
+@@ -65,6 +65,8 @@ int ram_load_postcopy(QEMUFile *f, int channel);
  
-@@ -147,6 +149,8 @@ typedef struct {
-     uint32_t packet_len;
-     /* guest page size */
-     uint32_t page_size;
-+    /* number of pages in a full packet */
-+    uint32_t page_count;
+ void ram_handle_compressed(void *host, uint8_t ch, uint64_t size);
  
-     /* syncs main thread and channels */
-     QemuSemaphore sem_sync;
-diff --git a/migration/multifd.c b/migration/multifd.c
-index efffa77a76..b8dc559d24 100644
---- a/migration/multifd.c
-+++ b/migration/multifd.c
-@@ -279,7 +279,6 @@ static void multifd_send_fill_packet(MultiFDSendParams *p)
- static int multifd_recv_unfill_packet(MultiFDRecvParams *p, Error **errp)
++void ram_transferred_add(uint64_t bytes);
++
+ int ramblock_recv_bitmap_test(RAMBlock *rb, void *host_addr);
+ bool ramblock_recv_bitmap_test_byte_offset(RAMBlock *rb, uint64_t byte_offset);
+ void ramblock_recv_bitmap_set(RAMBlock *rb, void *host_addr);
+diff --git a/migration/ram.c b/migration/ram.c
+index 1338e47665..2cbe707bfc 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -422,7 +422,7 @@ uint64_t ram_bytes_remaining(void)
+ 
+ MigrationStats ram_counters;
+ 
+-static void ram_transferred_add(uint64_t bytes)
++void ram_transferred_add(uint64_t bytes)
  {
-     MultiFDPacket_t *packet = p->packet;
--    uint32_t page_count = MULTIFD_PACKET_SIZE / p->page_size;
-     RAMBlock *block;
-     int i;
- 
-@@ -306,10 +305,10 @@ static int multifd_recv_unfill_packet(MultiFDRecvParams *p, Error **errp)
-      * If we received a packet that is 100 times bigger than expected
-      * just stop migration.  It is a magic number.
-      */
--    if (packet->pages_alloc > page_count) {
-+    if (packet->pages_alloc > p->page_count) {
-         error_setg(errp, "multifd: received packet "
-                    "with size %u and expected a size of %u",
--                   packet->pages_alloc, page_count) ;
-+                   packet->pages_alloc, p->page_count) ;
-         return -1;
-     }
- 
-@@ -944,6 +943,7 @@ int multifd_save_setup(Error **errp)
-         p->iov = g_new0(struct iovec, page_count + 1);
-         p->normal = g_new0(ram_addr_t, page_count);
-         p->page_size = qemu_target_page_size();
-+        p->page_count = page_count;
- 
-         if (migrate_use_zero_copy_send()) {
-             p->write_flags = QIO_CHANNEL_WRITE_FLAG_ZERO_COPY;
-@@ -1191,6 +1191,7 @@ int multifd_load_setup(Error **errp)
-         p->name = g_strdup_printf("multifdrecv_%d", i);
-         p->iov = g_new0(struct iovec, page_count);
-         p->normal = g_new0(ram_addr_t, page_count);
-+        p->page_count = page_count;
-         p->page_size = qemu_target_page_size();
-     }
- 
+     if (runstate_is_running()) {
+         ram_counters.precopy_bytes += bytes;
 -- 
 2.38.1

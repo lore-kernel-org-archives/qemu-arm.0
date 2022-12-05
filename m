@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3378859ejx;
-        Mon, 5 Dec 2022 01:55:29 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5OgIlNQR//Welvcuq8xX9COU78eQGciLSQAKZJoJn+Dg25EHsQdizzBhKfOLZ8E4TwLCn+
-X-Received: by 2002:ae9:ee02:0:b0:6fa:3043:8898 with SMTP id i2-20020ae9ee02000000b006fa30438898mr57521947qkg.190.1670234129367;
-        Mon, 05 Dec 2022 01:55:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670234129; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3378919ejx;
+        Mon, 5 Dec 2022 01:55:37 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6sTXvWn1ut9/FtAEWdrh9pVH7jh03ppOUSP5xhC9eAnZq42mZlC2iKD9IIkTvye49NvBUX
+X-Received: by 2002:a37:f516:0:b0:6fa:118:11dd with SMTP id l22-20020a37f516000000b006fa011811ddmr55277050qkk.586.1670234136967;
+        Mon, 05 Dec 2022 01:55:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670234136; cv=none;
         d=google.com; s=arc-20160816;
-        b=nX/BYa9AtYczZ1Sls9lwrT6JHFUGT9fkUXkeYh03Qd/biz0Mj/+GsUelDxfXAZMGrm
-         Vea6cEoskSotXgbD9haSxi1ckLQyVEf4KWx6NgczzXXpuYlr1u0KpttYS21WUR55TI5t
-         8lhYHEpZHxCc4uyXR0eVd2Yma+kfNZh/5ivR4P/DvhcMpBx4Oa+tgxf6GqL7a3gyLUyF
-         glx+MNvUMXCwkEegLHT/ki3zya/38QF3vHCGxkiXfTKMn8I0xzgm6H3jHHORwyexFoFP
-         WSi1y3Oy9oi1mGS1h7VSO3hYsTd4T6qr3oiqgytAGPQsETzEexdfyoWNX7PhQlPb+FYi
-         UgWg==
+        b=NV1dlw+obhqyrX2BL8zfI5AckNysD6R2YEZryTZNchjRC4sZbg93ix6JBrTPp1lo6c
+         E1H3pche4Cqll0eQDZsz/D619+mHHdo41OKwdEUQuO7yd3Fb+/NP4KcidmuHonodMSVo
+         AbO08OwUxY2pI6Twl2h2FCDZ19tMGVqQTR/hu4qYORteXJq3OmOkaq442X5uYMk8Iujx
+         nutMU6GzuEtoglQH1JfQIpL2H2fOGo9vWerzlCagzqPCRkh6F/XOxsMFgOQFlPrMWaN1
+         yps4wlJqshLe6YYeWZVrxKQeubWjxujnmgXlM3yOIdiYGJ6FKxRydqDOHZ9Bj8wN6GoD
+         Wk3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=EFic7YT524egGmw/B509nqdEJnuGBPLVOsqSxAeUT6k=;
-        b=Ev0FRvd4elBuG7VZejR84C1ukHvYcCVoyqf+/TjipHLJsZPkShoqZTrDQy9kVJsPy5
-         YP8uJhFjx26G1jZJ0APBNMlHuNS5Z8Lb51ndgyRo4tTwsshOLUN8DR15OqpiRhKLKB+D
-         bvWfrtQetFs6VSegwiBVpfllPEHu3QvFDHZmHt0ZcSGJ4hIgVOvljCScSQcXL7rlrlyn
-         9PgxMDBPcLS8MLH2aheUqeb2NdWOhlKmNp5zJ7Pt7ITRY4jDqdn34CoHDI/Vwxcab3Wi
-         Ls/lCcU2yL5A7rYdQWIhZwSeVK5jeFcvPmfafcbNcTrzV2lyT9wfIZ5HVbHG6O+sZN0Z
-         /H3Q==
+        bh=aiobRrH5ClQFSfmidcrKrBSPHcQQg1qrQq8dbdWq9lo=;
+        b=MsE7U5lqDBKfSctymA3b751yiW7trUl/XXgyCmhiYzddan0zL1t8v5z6ON7rYWhdUf
+         PIK7w21Q9kb62Ul7hGfApObNHFbeO4+2+iPiSIGLNwXl10RHSvhvkbYPl9vX2slB5Eh1
+         Ib3whdz4wuNvfnBFPVIE9bzteEUQIQDnSpSxqxyZ3dY4q5T+RzvB6y+XTz6vuLGsOWkx
+         i2HX96UqP9+4pQfwRLPNU+pNURHtIrplVYY8vD9JEqYBxkHLzSdRcxcqYUK+K3S0x0dC
+         nH+UP93BMxYW8RSw4IBPVOIn9C9u/3zcIU4qh3sMUf1VJkZe9IyitafdZZu7FatvOpcm
+         9dmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jRIxuHC1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PIbHABTO;
        spf=pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <quintela@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id bw27-20020a05622a099b00b003a4f3f7927bsi8010056qtb.335.2022.12.05.01.55.29
+        by mx.google.com with ESMTPS id s11-20020a05620a29cb00b006f9992da256si8281809qkp.83.2022.12.05.01.55.36
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Dec 2022 01:55:29 -0800 (PST)
+        Mon, 05 Dec 2022 01:55:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jRIxuHC1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PIbHABTO;
        spf=pass (google.com: domain of quintela@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1670234128;
+	s=mimecast20190719; t=1670234136;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=EFic7YT524egGmw/B509nqdEJnuGBPLVOsqSxAeUT6k=;
-	b=jRIxuHC1KZ1l1GPR6jKrb+Z4uOyIa07SO+7QFF9L7FIE60afWAdzknYv3kW4l3HtFTW1fo
-	pmvmsFPluuJXKflreUZXqfXOdStkcFO20q6Ow7VlHM76iVeaNZozSS9LmxyH+8+UuJ8sty
-	Xk+HQ3SHLDnYH9YiAS+6G9oBTXKlmck=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=aiobRrH5ClQFSfmidcrKrBSPHcQQg1qrQq8dbdWq9lo=;
+	b=PIbHABTOXsALpiDEyf/GdSIrOBv875Sk72467+A+DqZzsijTI75ucLgrRSS5xoc+OjXgFd
+	Ul5AtNelNCVTsRLkLbwJetfe0u/fhBeeepU+YnX8Pb4gaRrtQ+blLZVl0wujQRMKBqOvVb
+	DnRfZxuEdi7oTUy0HhKjLXbBnpKxqXI=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-331-WfdBrC-2PRCRTxiVkN3Gxg-1; Mon, 05 Dec 2022 04:55:25 -0500
-X-MC-Unique: WfdBrC-2PRCRTxiVkN3Gxg-1
+ us-mta-423-kTo15hjpPJme7FVTO3yDcQ-1; Mon, 05 Dec 2022 04:55:33 -0500
+X-MC-Unique: kTo15hjpPJme7FVTO3yDcQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1731E86F12A;
-	Mon,  5 Dec 2022 09:55:24 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A589C3C0F66F;
+	Mon,  5 Dec 2022 09:55:31 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id AB3D32166B29;
-	Mon,  5 Dec 2022 09:55:16 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 632442166B2A;
+	Mon,  5 Dec 2022 09:55:24 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>,
@@ -102,204 +102,46 @@ Cc: Fam Zheng <fam@euphon.net>,
 	Keith Busch <kbusch@kernel.org>,
 	David Hildenbrand <david@redhat.com>,
 	qemu-trivial@nongnu.org,
-	Hanna Reitz <hreitz@redhat.com>,
-	Klaus Jensen <k.jensen@samsung.com>
-Subject: [PATCH v2 21/51] hw/nvme: remove copy bh scheduling
-Date: Mon,  5 Dec 2022 10:51:58 +0100
-Message-Id: <20221205095228.1314-22-quintela@redhat.com>
+	Hanna Reitz <hreitz@redhat.com>
+Subject: [PATCH v2 22/51] target/i386: allow MMX instructions with CR4.OSFXSR=0
+Date: Mon,  5 Dec 2022 10:51:59 +0100
+Message-Id: <20221205095228.1314-23-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-X-TUID: 0W9oA5P5Z3Oy
+X-TUID: SsX6lhYlcbOy
 
-From: Klaus Jensen <k.jensen@samsung.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-Fix a potential use-after-free by removing the bottom half and enqueuing
-the completion directly.
+MMX state is saved/restored by FSAVE/FRSTOR so the instructions are
+not illegal opcodes even if CR4.OSFXSR=0.  Make sure that validate_vex
+takes into account the prefix and only checks HF_OSFXSR_MASK in the
+presence of an SSE instruction.
 
-Fixes: 796d20681d9b ("hw/nvme: reimplement the copy command to allow aio cancellation")
-Reviewed-by: Keith Busch <kbusch@kernel.org>
-Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+Fixes: 20581aadec5e ("target/i386: validate VEX prefixes via the instructions' exception classes", 2022-10-18)
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1350
+Reported-by: Helge Konetzka (@hejko on gitlab.com)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- hw/nvme/ctrl.c | 63 +++++++++++---------------------------------------
- 1 file changed, 14 insertions(+), 49 deletions(-)
+ target/i386/tcg/decode-new.c.inc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index e847b89461..e54276dc1d 100644
---- a/hw/nvme/ctrl.c
-+++ b/hw/nvme/ctrl.c
-@@ -2552,7 +2552,6 @@ typedef struct NvmeCopyAIOCB {
-     BlockAIOCB common;
-     BlockAIOCB *aiocb;
-     NvmeRequest *req;
--    QEMUBH *bh;
-     int ret;
- 
-     void *ranges;
-@@ -2590,9 +2589,8 @@ static const AIOCBInfo nvme_copy_aiocb_info = {
-     .cancel_async = nvme_copy_cancel,
- };
- 
--static void nvme_copy_bh(void *opaque)
-+static void nvme_copy_done(NvmeCopyAIOCB *iocb)
- {
--    NvmeCopyAIOCB *iocb = opaque;
-     NvmeRequest *req = iocb->req;
-     NvmeNamespace *ns = req->ns;
-     BlockAcctStats *stats = blk_get_stats(ns->blkconf.blk);
-@@ -2604,9 +2602,6 @@ static void nvme_copy_bh(void *opaque)
-     qemu_iovec_destroy(&iocb->iov);
-     g_free(iocb->bounce);
- 
--    qemu_bh_delete(iocb->bh);
--    iocb->bh = NULL;
--
-     if (iocb->ret < 0) {
-         block_acct_failed(stats, &iocb->acct.read);
-         block_acct_failed(stats, &iocb->acct.write);
-@@ -2619,7 +2614,7 @@ static void nvme_copy_bh(void *opaque)
-     qemu_aio_unref(iocb);
- }
- 
--static void nvme_copy_cb(void *opaque, int ret);
-+static void nvme_do_copy(NvmeCopyAIOCB *iocb);
- 
- static void nvme_copy_source_range_parse_format0(void *ranges, int idx,
-                                                  uint64_t *slba, uint32_t *nlb,
-@@ -2731,7 +2726,7 @@ static void nvme_copy_out_completed_cb(void *opaque, int ret)
-     iocb->idx++;
-     iocb->slba += nlb;
- out:
--    nvme_copy_cb(iocb, iocb->ret);
-+    nvme_do_copy(iocb);
- }
- 
- static void nvme_copy_out_cb(void *opaque, int ret)
-@@ -2743,16 +2738,8 @@ static void nvme_copy_out_cb(void *opaque, int ret)
-     size_t mlen;
-     uint8_t *mbounce;
- 
--    if (ret < 0) {
--        iocb->ret = ret;
-+    if (ret < 0 || iocb->ret < 0 || !ns->lbaf.ms) {
-         goto out;
--    } else if (iocb->ret < 0) {
--        goto out;
--    }
--
--    if (!ns->lbaf.ms) {
--        nvme_copy_out_completed_cb(iocb, 0);
--        return;
-     }
- 
-     nvme_copy_source_range_parse(iocb->ranges, iocb->idx, iocb->format, NULL,
-@@ -2771,7 +2758,7 @@ static void nvme_copy_out_cb(void *opaque, int ret)
-     return;
- 
- out:
--    nvme_copy_cb(iocb, ret);
-+    nvme_copy_out_completed_cb(iocb, ret);
- }
- 
- static void nvme_copy_in_completed_cb(void *opaque, int ret)
-@@ -2865,15 +2852,9 @@ static void nvme_copy_in_completed_cb(void *opaque, int ret)
- 
- invalid:
-     req->status = status;
--    iocb->aiocb = NULL;
--    if (iocb->bh) {
--        qemu_bh_schedule(iocb->bh);
--    }
--
--    return;
--
-+    iocb->ret = -1;
- out:
--    nvme_copy_cb(iocb, ret);
-+    nvme_do_copy(iocb);
- }
- 
- static void nvme_copy_in_cb(void *opaque, int ret)
-@@ -2884,16 +2865,8 @@ static void nvme_copy_in_cb(void *opaque, int ret)
-     uint64_t slba;
-     uint32_t nlb;
- 
--    if (ret < 0) {
--        iocb->ret = ret;
-+    if (ret < 0 || iocb->ret < 0 || !ns->lbaf.ms) {
-         goto out;
--    } else if (iocb->ret < 0) {
--        goto out;
--    }
--
--    if (!ns->lbaf.ms) {
--        nvme_copy_in_completed_cb(iocb, 0);
--        return;
-     }
- 
-     nvme_copy_source_range_parse(iocb->ranges, iocb->idx, iocb->format, &slba,
-@@ -2909,12 +2882,11 @@ static void nvme_copy_in_cb(void *opaque, int ret)
-     return;
- 
- out:
--    nvme_copy_cb(iocb, iocb->ret);
-+    nvme_copy_in_completed_cb(iocb, ret);
- }
- 
--static void nvme_copy_cb(void *opaque, int ret)
-+static void nvme_do_copy(NvmeCopyAIOCB *iocb)
- {
--    NvmeCopyAIOCB *iocb = opaque;
-     NvmeRequest *req = iocb->req;
-     NvmeNamespace *ns = req->ns;
-     uint64_t slba;
-@@ -2922,10 +2894,7 @@ static void nvme_copy_cb(void *opaque, int ret)
-     size_t len;
-     uint16_t status;
- 
--    if (ret < 0) {
--        iocb->ret = ret;
--        goto done;
--    } else if (iocb->ret < 0) {
-+    if (iocb->ret < 0) {
-         goto done;
-     }
- 
-@@ -2972,14 +2941,11 @@ static void nvme_copy_cb(void *opaque, int ret)
- 
- invalid:
-     req->status = status;
-+    iocb->ret = -1;
- done:
--    iocb->aiocb = NULL;
--    if (iocb->bh) {
--        qemu_bh_schedule(iocb->bh);
--    }
-+    nvme_copy_done(iocb);
- }
- 
--
- static uint16_t nvme_copy(NvmeCtrl *n, NvmeRequest *req)
- {
-     NvmeNamespace *ns = req->ns;
-@@ -3049,7 +3015,6 @@ static uint16_t nvme_copy(NvmeCtrl *n, NvmeRequest *req)
-     }
- 
-     iocb->req = req;
--    iocb->bh = qemu_bh_new(nvme_copy_bh, iocb);
-     iocb->ret = 0;
-     iocb->nr = nr;
-     iocb->idx = 0;
-@@ -3066,7 +3031,7 @@ static uint16_t nvme_copy(NvmeCtrl *n, NvmeRequest *req)
-                      BLOCK_ACCT_WRITE);
- 
-     req->aiocb = &iocb->common;
--    nvme_copy_cb(iocb, 0);
-+    nvme_do_copy(iocb);
- 
-     return NVME_NO_COMPLETE;
- 
+diff --git a/target/i386/tcg/decode-new.c.inc b/target/i386/tcg/decode-new.c.inc
+index e4878b967f..80c579164f 100644
+--- a/target/i386/tcg/decode-new.c.inc
++++ b/target/i386/tcg/decode-new.c.inc
+@@ -1488,7 +1488,8 @@ static bool validate_vex(DisasContext *s, X86DecodedInsn *decode)
+             if (!(s->flags & HF_AVX_EN_MASK)) {
+                 goto illegal;
+             }
+-        } else {
++        } else if (e->special != X86_SPECIAL_MMX ||
++                   (s->prefix & (PREFIX_REPZ | PREFIX_REPNZ | PREFIX_DATA))) {
+             if (!(s->flags & HF_OSFXSR_MASK)) {
+                 goto illegal;
+             }
 -- 
 2.38.1

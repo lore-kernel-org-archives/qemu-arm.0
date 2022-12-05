@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3380249ejx;
-        Mon, 5 Dec 2022 01:58:47 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5XnbWQoPBWatgjkjAYmXaTPov05Wzf0erE3v4qbRxoAjVA+kbWgpH38kW7ovMyhpJQd+vm
-X-Received: by 2002:a05:6402:24a0:b0:458:ad54:20d5 with SMTP id q32-20020a05640224a000b00458ad5420d5mr71361777eda.86.1670234327806;
-        Mon, 05 Dec 2022 01:58:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670234327; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3380273ejx;
+        Mon, 5 Dec 2022 01:58:51 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4sfHqUYAqP8AJwZXrMPNLVW8jm3WhmBQ6p8DZWYppLlaKEIldyBGTBVxH265DbIq2/X519
+X-Received: by 2002:a37:f50f:0:b0:6ed:75c5:777b with SMTP id l15-20020a37f50f000000b006ed75c5777bmr58353116qkk.333.1670234331233;
+        Mon, 05 Dec 2022 01:58:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670234331; cv=none;
         d=google.com; s=arc-20160816;
-        b=y2xz3ZeAdnPb0oofzdAyWu35R3JYsQz/BOGgmfZPGMRkMlMtuxwf6Da1SZQIjy2i3s
-         ysYjUuLguBme0q5ihqzzSZ/sZOoCHIxVLdc+VXCsU/URf0rpi0CTB/+ZMeNfjgU5AGdP
-         zj3wf88JoriFq1p7+qiPGCO98p8PXXfwsgVUfTzRRGb4oDo42oUhCRuwr+WuhM8U8ocS
-         E4HLiCE4TejsaScfyt50pO9keDJ0s5/NaOQLU++WFfSsjj6oXwrKTLhPDQpTRtkCd0or
-         W+NP5FCEb/kVABcvrpOMB8iDfHDchgoIeZcfLXbqOziu1Q4UGWSiG1EuDquJvDFiunG9
-         R2GA==
+        b=AgTBV8U6X+hA/B30DncmuK/IM4M/clEjDfUqh+zdmhGWXlwNjy88ifRSe7haVPd1oR
+         CjLme0oDw3w1sDbDP5KA2fhN2gty1o9FOsg+yBxYDznc0Uy8qomufJtmtEBRmyEjhxEu
+         kCfzEsHrdrXq/UvJF6ll9GYWl61xS1BscJIJbxx02yHvwr80K7VxccXNJ6jUBo6rdmZE
+         bVTUzhQ5gnU2kjGemEulXgUrSXPV9PCX/yw8Vj37drduXUea9A0EzM8f3iN8OIFAeJs3
+         8d9nLjCP6XhF3nNiPi/8CJs8xXyJXYZ8e1Rb2/mBP5e2hhjwSP2+wv6QQEjnwRiISajW
+         Tehg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=W+GlhHy1Aw+J2S/PdKkSiWceIYryK6JZft0nwXoxTSo=;
-        b=KQuWhQM0llgS1kCmyBnOr+epD53XXiF6oAr8HintCv2i+DFc7qYPj0yjMfXFRGe7tH
-         ZkutyncoIbaRzSPT4yLMUxarstBfpnlz1fOdP8TdZ97n68oaHN3Ezn08tN4wcHdRxvbC
-         33kh0CSIyMBMy9nsJnp8MY3j7cmnLf1IP59j96o7swC7QJUpwEGOT4uyjuMs1R+7Mdft
-         WAzIxqvj6qGyzGfV59bkwGJz8A3rCfmsIF2Jm13uNM0RsAfDzQrBSywB8uJaNZnUTeZj
-         XhHzWu49H3thjqMcOYyM97VnqvaVolyVkmVapYVWgfBs5zQpSvn4r7mXdej50Y5fikLa
-         6Mbw==
+        bh=C6XWOsHzVK+1xN5Bn4dqmNKOe+moJvckLNMR3xiKGq8=;
+        b=uPmNAXcAJjmdlIWIOifYTYGQ7WBQbUH0QtIxCyuSG9XqbfkzWUqILHjCVDNrYfPRo1
+         gbVKQmeOK1NJPa6+xvDsXR+MThlCNPLrDmkBAK5kzHYDYTVjPK+j0RJV1I+ymHCtxaKN
+         eLjE4j7KwS7cQ/FWXKt6tyNghYfj+nDL+ZWGpU+HjBkoPUqjyeVAoDqDJzpPSKudte2s
+         cA35yRa1szf06aaLcAGKTsaav16HwlVyRW9WVQFuFVWXPmshucQtcPu3HJ62894T7bIr
+         elsnn1Ci2NYky2yQbVq/XgTCWYWpp/l9wrR7AP3c3qJ2fp+ZeXl9NOBFaGmv8mndCJg8
+         icBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E+0cCrxk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KBYnewQ8;
        spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <quintela@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id v11-20020a056402348b00b0046cba96d27asi2263312edc.620.2022.12.05.01.58.47
+        by mx.google.com with ESMTPS id t17-20020a05620a451100b006fb1672db16si8050627qkp.562.2022.12.05.01.58.51
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Dec 2022 01:58:47 -0800 (PST)
+        Mon, 05 Dec 2022 01:58:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E+0cCrxk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KBYnewQ8;
        spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1670234326;
+	s=mimecast20190719; t=1670234330;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=W+GlhHy1Aw+J2S/PdKkSiWceIYryK6JZft0nwXoxTSo=;
-	b=E+0cCrxkzVSPqA/nNqk7ZIKIbrD9SM1LrP2YqQoIdiNp/NPR8XUYv8xS/wHy+Hr00HpaK/
-	VEseVrOT6gnlwph2PhjTNoeSsRkLl0N+7hYO5vbAg+LUONdtdnM3lhJUiuPbp/aababTjs
-	UnbWCox6P5sphchQpFUo678bQtlShH8=
+	bh=C6XWOsHzVK+1xN5Bn4dqmNKOe+moJvckLNMR3xiKGq8=;
+	b=KBYnewQ8I0e89KkErQ7505TbkJ9UOIx9YwXZLE7rIlosx3jDQDfuleor0JNQjFFO7iiKd6
+	d2wmbzJjddX0R71evxGKbF40+klhUS76flnRIwLvmV6XfjviIQnWV62DeTWtCQOCI6LmSR
+	BR7ZCYEGPTb+LDBcju3cAl21dvwiHAs=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-216-LGkLmgsSPPuNhex4gBBa8g-1; Mon, 05 Dec 2022 04:58:41 -0500
-X-MC-Unique: LGkLmgsSPPuNhex4gBBa8g-1
+ us-mta-20-Yx8ZJmEVNZaI263buHngxQ-1; Mon, 05 Dec 2022 04:58:48 -0500
+X-MC-Unique: Yx8ZJmEVNZaI263buHngxQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1D39F811E67;
-	Mon,  5 Dec 2022 09:58:40 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id ADB32800186;
+	Mon,  5 Dec 2022 09:58:47 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A9C242166B29;
-	Mon,  5 Dec 2022 09:58:32 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6B8AF2166B29;
+	Mon,  5 Dec 2022 09:58:40 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>,
@@ -102,95 +102,296 @@ Cc: Fam Zheng <fam@euphon.net>,
 	Keith Busch <kbusch@kernel.org>,
 	David Hildenbrand <david@redhat.com>,
 	qemu-trivial@nongnu.org,
-	Hanna Reitz <hreitz@redhat.com>,
-	Peter Xu <peterx@redhat.com>
-Subject: [PATCH v2 46/51] migration: Drop rs->f
-Date: Mon,  5 Dec 2022 10:52:23 +0100
-Message-Id: <20221205095228.1314-47-quintela@redhat.com>
+	Hanna Reitz <hreitz@redhat.com>
+Subject: [PATCH v2 47/51] migration: Remove res_compatible parameter
+Date: Mon,  5 Dec 2022 10:52:24 +0100
+Message-Id: <20221205095228.1314-48-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-X-TUID: 05gJ0lqqgm2O
+X-TUID: uAJYkPsLBgfk
 
-From: Peter Xu <peterx@redhat.com>
+It was only used for RAM, and in that case, it means that this amount
+of data was sent for memory.  Just delete the field in all callers.
 
-Now with rs->pss we can already cache channels in pss->pss_channels.  That
-pss_channel contains more infromation than rs->f because it's per-channel.
-So rs->f could be replaced by rss->pss[RAM_CHANNEL_PRECOPY].pss_channel,
-while rs->f itself is a bit vague now.
-
-Note that vanilla postcopy still send pages via pss[RAM_CHANNEL_PRECOPY],
-that's slightly confusing but it reflects the reality.
-
-Then, after the replacement we can safely drop rs->f.
-
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ include/migration/register.h   | 20 ++++++++++----------
+ migration/savevm.h             |  4 +---
+ hw/s390x/s390-stattrib.c       |  6 ++----
+ hw/vfio/migration.c            | 10 ++++------
+ migration/block-dirty-bitmap.c |  7 +++----
+ migration/block.c              |  7 +++----
+ migration/migration.c          |  9 ++++-----
+ migration/ram.c                |  8 +++-----
+ migration/savevm.c             | 14 +++++---------
+ hw/vfio/trace-events           |  2 +-
+ migration/trace-events         |  2 +-
+ 11 files changed, 37 insertions(+), 52 deletions(-)
 
+diff --git a/include/migration/register.h b/include/migration/register.h
+index c1dcff0f90..1950fee6a8 100644
+--- a/include/migration/register.h
++++ b/include/migration/register.h
+@@ -48,18 +48,18 @@ typedef struct SaveVMHandlers {
+     int (*save_setup)(QEMUFile *f, void *opaque);
+     void (*save_live_pending)(QEMUFile *f, void *opaque,
+                               uint64_t threshold_size,
+-                              uint64_t *res_precopy_only,
+-                              uint64_t *res_compatible,
+-                              uint64_t *res_postcopy_only);
++                              uint64_t *rest_precopy,
++                              uint64_t *rest_postcopy);
+     /* Note for save_live_pending:
+-     * - res_precopy_only is for data which must be migrated in precopy phase
+-     *     or in stopped state, in other words - before target vm start
+-     * - res_compatible is for data which may be migrated in any phase
+-     * - res_postcopy_only is for data which must be migrated in postcopy phase
+-     *     or in stopped state, in other words - after source vm stop
++     * - res_precopy is for data which must be migrated in precopy
++     *     phase or in stopped state, in other words - before target
++     *     vm start
++     * - res_postcopy is for data which must be migrated in postcopy
++     *     phase or in stopped state, in other words - after source vm
++     *     stop
+      *
+-     * Sum of res_postcopy_only, res_compatible and res_postcopy_only is the
+-     * whole amount of pending data.
++     * Sum of res_precopy and res_postcopy is the whole amount of
++     * pending data.
+      */
+ 
+ 
+diff --git a/migration/savevm.h b/migration/savevm.h
+index 6461342cb4..9bd55c336c 100644
+--- a/migration/savevm.h
++++ b/migration/savevm.h
+@@ -41,9 +41,7 @@ void qemu_savevm_state_complete_postcopy(QEMUFile *f);
+ int qemu_savevm_state_complete_precopy(QEMUFile *f, bool iterable_only,
+                                        bool inactivate_disks);
+ void qemu_savevm_state_pending(QEMUFile *f, uint64_t max_size,
+-                               uint64_t *res_precopy_only,
+-                               uint64_t *res_compatible,
+-                               uint64_t *res_postcopy_only);
++                               uint64_t *res_precopy, uint64_t *res_postcopy);
+ void qemu_savevm_send_ping(QEMUFile *f, uint32_t value);
+ void qemu_savevm_send_open_return_path(QEMUFile *f);
+ int qemu_savevm_send_packaged(QEMUFile *f, const uint8_t *buf, size_t len);
+diff --git a/hw/s390x/s390-stattrib.c b/hw/s390x/s390-stattrib.c
+index 9eda1c3b2a..ee60b53da4 100644
+--- a/hw/s390x/s390-stattrib.c
++++ b/hw/s390x/s390-stattrib.c
+@@ -183,16 +183,14 @@ static int cmma_save_setup(QEMUFile *f, void *opaque)
+ }
+ 
+ static void cmma_save_pending(QEMUFile *f, void *opaque, uint64_t max_size,
+-                              uint64_t *res_precopy_only,
+-                              uint64_t *res_compatible,
+-                              uint64_t *res_postcopy_only)
++                              uint64_t *res_precopy, uint64_t *res_postcopy)
+ {
+     S390StAttribState *sas = S390_STATTRIB(opaque);
+     S390StAttribClass *sac = S390_STATTRIB_GET_CLASS(sas);
+     long long res = sac->get_dirtycount(sas);
+ 
+     if (res >= 0) {
+-        *res_precopy_only += res;
++        *res_precopy += res;
+     }
+ }
+ 
+diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
+index c74453e0b5..d03681678d 100644
+--- a/hw/vfio/migration.c
++++ b/hw/vfio/migration.c
+@@ -458,9 +458,8 @@ static void vfio_save_cleanup(void *opaque)
+ 
+ static void vfio_save_pending(QEMUFile *f, void *opaque,
+                               uint64_t threshold_size,
+-                              uint64_t *res_precopy_only,
+-                              uint64_t *res_compatible,
+-                              uint64_t *res_postcopy_only)
++                              uint64_t *res_precopy,
++                              uint64_t *res_postcopy)
+ {
+     VFIODevice *vbasedev = opaque;
+     VFIOMigration *migration = vbasedev->migration;
+@@ -471,10 +470,9 @@ static void vfio_save_pending(QEMUFile *f, void *opaque,
+         return;
+     }
+ 
+-    *res_precopy_only += migration->pending_bytes;
++    *res_precopy += migration->pending_bytes;
+ 
+-    trace_vfio_save_pending(vbasedev->name, *res_precopy_only,
+-                            *res_postcopy_only, *res_compatible);
++    trace_vfio_save_pending(vbasedev->name, *res_precopy, *res_postcopy);
+ }
+ 
+ static int vfio_save_iterate(QEMUFile *f, void *opaque)
+diff --git a/migration/block-dirty-bitmap.c b/migration/block-dirty-bitmap.c
+index 9aba7d9c22..dfea546330 100644
+--- a/migration/block-dirty-bitmap.c
++++ b/migration/block-dirty-bitmap.c
+@@ -763,9 +763,8 @@ static int dirty_bitmap_save_complete(QEMUFile *f, void *opaque)
+ 
+ static void dirty_bitmap_save_pending(QEMUFile *f, void *opaque,
+                                       uint64_t max_size,
+-                                      uint64_t *res_precopy_only,
+-                                      uint64_t *res_compatible,
+-                                      uint64_t *res_postcopy_only)
++                                      uint64_t *res_precopy,
++                                      uint64_t *res_postcopy)
+ {
+     DBMSaveState *s = &((DBMState *)opaque)->save;
+     SaveBitmapState *dbms;
+@@ -785,7 +784,7 @@ static void dirty_bitmap_save_pending(QEMUFile *f, void *opaque,
+ 
+     trace_dirty_bitmap_save_pending(pending, max_size);
+ 
+-    *res_postcopy_only += pending;
++    *res_postcopy += pending;
+ }
+ 
+ /* First occurrence of this bitmap. It should be created if doesn't exist */
+diff --git a/migration/block.c b/migration/block.c
+index 4347da1526..593754c38c 100644
+--- a/migration/block.c
++++ b/migration/block.c
+@@ -863,9 +863,8 @@ static int block_save_complete(QEMUFile *f, void *opaque)
+ }
+ 
+ static void block_save_pending(QEMUFile *f, void *opaque, uint64_t max_size,
+-                               uint64_t *res_precopy_only,
+-                               uint64_t *res_compatible,
+-                               uint64_t *res_postcopy_only)
++                               uint64_t *res_precopy,
++                               uint64_t *res_postcopy)
+ {
+     /* Estimate pending number of bytes to send */
+     uint64_t pending;
+@@ -886,7 +885,7 @@ static void block_save_pending(QEMUFile *f, void *opaque, uint64_t max_size,
+ 
+     trace_migration_block_save_pending(pending);
+     /* We don't do postcopy */
+-    *res_precopy_only += pending;
++    *res_precopy += pending;
+ }
+ 
+ static int block_load(QEMUFile *f, void *opaque, int version_id)
+diff --git a/migration/migration.c b/migration/migration.c
+index c3490c495d..6b8a6dd74e 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -3756,15 +3756,14 @@ typedef enum {
+  */
+ static MigIterateState migration_iteration_run(MigrationState *s)
+ {
+-    uint64_t pending_size, pend_pre, pend_compat, pend_post;
++    uint64_t pending_size, pend_pre, pend_post;
+     bool in_postcopy = s->state == MIGRATION_STATUS_POSTCOPY_ACTIVE;
+ 
+     qemu_savevm_state_pending(s->to_dst_file, s->threshold_size, &pend_pre,
+-                              &pend_compat, &pend_post);
+-    pending_size = pend_pre + pend_compat + pend_post;
++                              &pend_post);
++    pending_size = pend_pre + pend_post;
+ 
+-    trace_migrate_pending(pending_size, s->threshold_size,
+-                          pend_pre, pend_compat, pend_post);
++    trace_migrate_pending(pending_size, s->threshold_size, pend_pre, pend_post);
+ 
+     if (pending_size && pending_size >= s->threshold_size) {
+         /* Still a significant amount to transfer */
 diff --git a/migration/ram.c b/migration/ram.c
-index 1ae093fb61..334309f1c6 100644
+index 334309f1c6..640839dcee 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -323,8 +323,6 @@ struct RAMSrcPageRequest {
- 
- /* State of RAM for migration */
- struct RAMState {
--    /* QEMUFile used for this migration */
--    QEMUFile *f;
-     /*
-      * PageSearchStatus structures for the channels when send pages.
-      * Protected by the bitmap_mutex.
-@@ -2532,8 +2530,6 @@ static int ram_find_and_save_block(RAMState *rs)
-         }
- 
-         if (found) {
--            /* Cache rs->f in pss_channel (TODO: remove rs->f) */
--            pss->pss_channel = rs->f;
-             pages = ram_save_host_page(rs, pss);
-         }
-     } while (!pages && again);
-@@ -3089,7 +3085,7 @@ static void ram_state_resume_prepare(RAMState *rs, QEMUFile *out)
-     ram_state_reset(rs);
- 
-     /* Update RAMState cache of output QEMUFile */
--    rs->f = out;
-+    rs->pss[RAM_CHANNEL_PRECOPY].pss_channel = out;
- 
-     trace_ram_state_resume_prepare(pages);
+@@ -3393,9 +3393,7 @@ static int ram_save_complete(QEMUFile *f, void *opaque)
  }
-@@ -3180,7 +3176,7 @@ static int ram_save_setup(QEMUFile *f, void *opaque)
-             return -1;
-         }
-     }
--    (*rsp)->f = f;
-+    (*rsp)->pss[RAM_CHANNEL_PRECOPY].pss_channel = f;
  
-     WITH_RCU_READ_LOCK_GUARD() {
-         qemu_put_be64(f, ram_bytes_total_common(true) | RAM_SAVE_FLAG_MEM_SIZE);
-@@ -3315,7 +3311,7 @@ static int ram_save_iterate(QEMUFile *f, void *opaque)
- out:
-     if (ret >= 0
-         && migration_is_setup_or_active(migrate_get_current()->state)) {
--        ret = multifd_send_sync_main(rs->f);
-+        ret = multifd_send_sync_main(rs->pss[RAM_CHANNEL_PRECOPY].pss_channel);
-         if (ret < 0) {
-             return ret;
-         }
-@@ -3385,7 +3381,7 @@ static int ram_save_complete(QEMUFile *f, void *opaque)
-         return ret;
-     }
+ static void ram_save_pending(QEMUFile *f, void *opaque, uint64_t max_size,
+-                             uint64_t *res_precopy_only,
+-                             uint64_t *res_compatible,
+-                             uint64_t *res_postcopy_only)
++                             uint64_t *res_precopy, uint64_t *res_postcopy)
+ {
+     RAMState **temp = opaque;
+     RAMState *rs = *temp;
+@@ -3415,9 +3413,9 @@ static void ram_save_pending(QEMUFile *f, void *opaque, uint64_t max_size,
  
--    ret = multifd_send_sync_main(rs->f);
-+    ret = multifd_send_sync_main(rs->pss[RAM_CHANNEL_PRECOPY].pss_channel);
-     if (ret < 0) {
-         return ret;
+     if (migrate_postcopy_ram()) {
+         /* We can do postcopy, and all the data is postcopiable */
+-        *res_compatible += remaining_size;
++        *res_postcopy += remaining_size;
+     } else {
+-        *res_precopy_only += remaining_size;
++        *res_precopy += remaining_size;
      }
+ }
+ 
+diff --git a/migration/savevm.c b/migration/savevm.c
+index a0cdb714f7..4d02887f25 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -1472,16 +1472,13 @@ flush:
+  * for units that can't do postcopy.
+  */
+ void qemu_savevm_state_pending(QEMUFile *f, uint64_t threshold_size,
+-                               uint64_t *res_precopy_only,
+-                               uint64_t *res_compatible,
+-                               uint64_t *res_postcopy_only)
++                               uint64_t *res_precopy,
++                               uint64_t *res_postcopy)
+ {
+     SaveStateEntry *se;
+ 
+-    *res_precopy_only = 0;
+-    *res_compatible = 0;
+-    *res_postcopy_only = 0;
+-
++    *res_precopy = 0;
++    *res_postcopy = 0;
+ 
+     QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
+         if (!se->ops || !se->ops->save_live_pending) {
+@@ -1493,8 +1490,7 @@ void qemu_savevm_state_pending(QEMUFile *f, uint64_t threshold_size,
+             }
+         }
+         se->ops->save_live_pending(f, se->opaque, threshold_size,
+-                                   res_precopy_only, res_compatible,
+-                                   res_postcopy_only);
++                                   res_precopy, res_postcopy);
+     }
+ }
+ 
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index 73dffe9e00..a21cbd2a56 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -157,7 +157,7 @@ vfio_save_cleanup(const char *name) " (%s)"
+ vfio_save_buffer(const char *name, uint64_t data_offset, uint64_t data_size, uint64_t pending) " (%s) Offset 0x%"PRIx64" size 0x%"PRIx64" pending 0x%"PRIx64
+ vfio_update_pending(const char *name, uint64_t pending) " (%s) pending 0x%"PRIx64
+ vfio_save_device_config_state(const char *name) " (%s)"
+-vfio_save_pending(const char *name, uint64_t precopy, uint64_t postcopy, uint64_t compatible) " (%s) precopy 0x%"PRIx64" postcopy 0x%"PRIx64" compatible 0x%"PRIx64
++vfio_save_pending(const char *name, uint64_t precopy, uint64_t postcopy) " (%s) precopy 0x%"PRIx64" postcopy 0x%"PRIx64
+ vfio_save_iterate(const char *name, int data_size) " (%s) data_size %d"
+ vfio_save_complete_precopy(const char *name) " (%s)"
+ vfio_load_device_config_state(const char *name) " (%s)"
+diff --git a/migration/trace-events b/migration/trace-events
+index 57003edcbd..f2a873fd6c 100644
+--- a/migration/trace-events
++++ b/migration/trace-events
+@@ -150,7 +150,7 @@ migrate_fd_cleanup(void) ""
+ migrate_fd_error(const char *error_desc) "error=%s"
+ migrate_fd_cancel(void) ""
+ migrate_handle_rp_req_pages(const char *rbname, size_t start, size_t len) "in %s at 0x%zx len 0x%zx"
+-migrate_pending(uint64_t size, uint64_t max, uint64_t pre, uint64_t compat, uint64_t post) "pending size %" PRIu64 " max %" PRIu64 " (pre = %" PRIu64 " compat=%" PRIu64 " post=%" PRIu64 ")"
++migrate_pending(uint64_t size, uint64_t max, uint64_t pre, uint64_t post) "pending size %" PRIu64 " max %" PRIu64 " (pre = %" PRIu64 " post=%" PRIu64 ")"
+ migrate_send_rp_message(int msg_type, uint16_t len) "%d: len %d"
+ migrate_send_rp_recv_bitmap(char *name, int64_t size) "block '%s' size 0x%"PRIi64
+ migration_completion_file_err(void) ""
 -- 
 2.38.1

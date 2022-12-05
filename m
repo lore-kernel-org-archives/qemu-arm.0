@@ -1,150 +1,229 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3329730ejx;
-        Mon, 5 Dec 2022 00:23:54 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7Zb7FUIk9h6CdeGvNaNRZDYqArTQ7SS8GBFNppYykdy6ZT9DVjQpihRkHoe2qVevshGGFt
-X-Received: by 2002:ac8:4582:0:b0:3a7:e1db:2fd1 with SMTP id l2-20020ac84582000000b003a7e1db2fd1mr3870804qtn.617.1670228633922;
-        Mon, 05 Dec 2022 00:23:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670228633; cv=none;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp3377691ejx;
+        Mon, 5 Dec 2022 01:52:46 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5Six8i76S8UMYlWYhSli/0UCvnL9IAN6hv4T+HQJweTTxfJgo4/dHxfOgczmdvy8nNpNcG
+X-Received: by 2002:ac8:5796:0:b0:3a6:94f7:abd7 with SMTP id v22-20020ac85796000000b003a694f7abd7mr15231202qta.317.1670233966609;
+        Mon, 05 Dec 2022 01:52:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670233966; cv=none;
         d=google.com; s=arc-20160816;
-        b=MOSpI5R0D99nTunMKBmCP3iZ+wlMt/VoC5JTJnFUdKZudOHPmd+RbhDB6RjGRiXPNj
-         Ecqw7VGO2Urtzcwr+L+lSHF9oBDVfAhBDHjIijCrLOODLlmoWKUQEqogkV+kziZ55WeO
-         Hr1bz9nab7JwO8U3JIhroh55MGOYbLFwvKm0XQS1cAtJA8hzEEymAVfMr3LmC61MHTOQ
-         zKjv7zrENBjIN563Bx36LWeq7IUihk0ypJaQxuiTnQp5l8dqpMWJ+ejUAjGFoI7dIEcw
-         j9Z1zZP54ZrhoDzADi9ImRJTnIAJtpUSrIfbNYvep/jDS/nxnX/WbuoHRTaqoYNmUOIP
-         TSBQ==
+        b=sCewc+JwYTmA3IGUXfaYB9zx+7UOFiKDWb3oOYoEkPIPos4cj/apRD76xBKgASTuLv
+         6FKaPfxdcFyivWu80KnuMtR6ucFIHnMtwUTNoubHPgBlkzgkoy4H+8OFB7Hdto05Jc/g
+         ekC8Lw8/db4CT+9h1e1abW4tMkjF5Iv0WmPX8+zWT4BnrzihJ1NVKzQ3E/DpOhBTalMG
+         E5eREk71sI8fUXJidiN3uaXXUrhU+OrfPlgcpuf4X7WXkOKxYfKQfbkEkmWQ7XZV9HEf
+         Oo+qsHL3+nj88QoeYab7A+1rVudawPgt2efg0NEU92K9gcGjZDnRRB1ELIAzESXdm8tz
+         Z/+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:cc:references:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=dYd9RNJ7dS9Pq4AOyck3yoH+nj3xigwdW4b0I8Qief0=;
-        b=kY5euouFVSjgHfTa9Rv59shnHU9AHN1A8Ob0QWJU8ajrBm0LlqvDLRXNKEA0bRF+rJ
-         jaCreCC36eCJ30IliC+18tmCL9laAVpXSZZTJWah92lwNrbEpOQq3ZcQwdUTQKfhW78+
-         38OC2tE1FQjJvDAYqbXh+DuyCpPzKuq/v779nKF4i93IGkQDwD7STEYXWaLTvAtHDdGg
-         fgeHU6qfwXUra36Z9gNNiFhykMhjftt7igVoadkWBVZeCZX9RBSpwbgXuFiGccD6iuy/
-         QEjo+lEMr+fpK7zshh5OAlG/SAGx5CDVYdlozbNIcAlaaLathg6kuWhJxsfV4b5QqpBf
-         ewBQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=okeonkb2O++Krxrb9t+hNwq8JIpCuDdo2NcbeqlenYE=;
+        b=OkLLgbqDKUrQYLspWYJQnqBrN7vJfE1mzKfo/uebFnVTMIHxgS3FGF4k5jbL0k5CoS
+         fm12mymgr9bKsSxuJVnQDBBpPHlkZsapLHFV6E/Q9M0S/f5zVvlHx4dxlFIqM8hYd4kj
+         3ti0KvsyujgQeztoDP+iSvEOasg7ew1eGE+Kcs5IlPzxZaUwkGu0HGS/WN7GutB4KxQd
+         VTqPQ8IjVh+eKkexVT0S6zGPqH0FuM3hOl8+6eL59VoswDO49NAHDZTxfLn/ywL+aMm7
+         ACbdb61AJG94RnlEmtZDPmhT/tCYuFpsZriPEha1dY4I2gb7VFn2BDoAmbxH2QTGBxzg
+         M7kQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZcAyfWoA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gy8-20020a056214242800b004c760aab60asi2190606qvb.493.2022.12.05.00.23.53
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qjp4N27S;
+       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <quintela@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id fb7-20020a05622a480700b003a496373dacsi4306222qtb.531.2022.12.05.01.52.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Dec 2022 00:23:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Dec 2022 01:52:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZcAyfWoA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p26lT-0008Dn-91; Mon, 05 Dec 2022 03:23:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p26lI-0008Bs-IT
- for qemu-arm@nongnu.org; Mon, 05 Dec 2022 03:23:47 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p26lG-0002OC-U9
- for qemu-arm@nongnu.org; Mon, 05 Dec 2022 03:23:40 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id u12so16420563wrr.11
- for <qemu-arm@nongnu.org>; Mon, 05 Dec 2022 00:23:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=dYd9RNJ7dS9Pq4AOyck3yoH+nj3xigwdW4b0I8Qief0=;
- b=ZcAyfWoAJ9I6BHTS6OpSbW2omQOkLKJozDWMtQr3tYYmKC4kfXEZrzrdcjtna0lqcq
- foyYQuTxqA/mcqkm2huVt1guG+5IOob+MM/TTEaPTZ4Nyc8huBQS+InHzL2h0o7dsyGf
- CC8/9Fg6GsBBsNS8JhWz9H3AI63z+znlmbdGvobMajofPvf6EwR2HJJGbXvCSAkuX2tF
- 1aOMEfp9PKOBcjqtYI/QkxlYQiEi7ok2mP7at6wOOS/zijvBVI2WPmH0HEHw/3gup2pl
- wtu8QbkxSFx2L/KCViCcVc7l+hJST+kWSw81MFoPWHwAm7Z5iiNnX2qBOwpuLpRRSUdO
- rGcA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=dYd9RNJ7dS9Pq4AOyck3yoH+nj3xigwdW4b0I8Qief0=;
- b=5hE1kdqcTqUGzueNTmB8+9vh2teFTNSGgUStXX2Uu2L04Kjg0yQTLM1JC6dnvE/DK4
- jnaq3YS94zAEyo5wKGsUCc+eA747sPY/b4gIVLDosWjutA/GujT7SVFedqdhdwKPCUtq
- P8GjrtxDjTkMBvsmGPjq7uZxJ8fGuYBLV6+woDhFqZaYHMNekQZXYT6pWnrd2iGFZTcp
- GNde9wzx9Y6s1Sd/AfQ7kFUwRu+w1yy7yPqyV9sN8M6wkTF2zLTeJ9XELauqo6q1LMbR
- xmH6H2l/QcjAwnIBEPUt0XaXjHaMDxIVxIZxLOfLLnpFejqOwn1FF+a8PX7ia2orcsMt
- 5N/g==
-X-Gm-Message-State: ANoB5plmTj2ITHA3xHU6njwPel04jjHbpHUgvTt6i1BjViuBwLt4vox6
- Qd5Pl/TVgHeIzyl42620BKP4GA==
-X-Received: by 2002:a5d:60c2:0:b0:242:358a:50b9 with SMTP id
- x2-20020a5d60c2000000b00242358a50b9mr11228498wrt.239.1670228617428; 
- Mon, 05 Dec 2022 00:23:37 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- v6-20020adfe286000000b00241f467f888sm13561477wri.74.2022.12.05.00.23.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Dec 2022 00:23:37 -0800 (PST)
-Message-ID: <dec95b7b-ae39-d0fc-c631-fcf550c0c3cb@linaro.org>
-Date: Mon, 5 Dec 2022 09:23:35 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qjp4N27S;
+       spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1670233966;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=okeonkb2O++Krxrb9t+hNwq8JIpCuDdo2NcbeqlenYE=;
+	b=Qjp4N27SVnYZW7Zxx17IkOG5ShPIw3a9lNKPPUf1JiekF18a2h+QoXSn5gQ0JeeL2CtQrX
+	yr7+VPgHC3f7MnFVYI+Ws9oKtk4SvmiKgBmSnlUwXXvYiIl2XvvaZueniIuX/7CM6tMzzw
+	ZBFhkxfH9fc+3AngUrkLLeUhDw37PAk=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-546-eQ27QNs8O4SFskwS6XkxrQ-1; Mon, 05 Dec 2022 04:52:42 -0500
+X-MC-Unique: eQ27QNs8O4SFskwS6XkxrQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CB43E8339C5;
+	Mon,  5 Dec 2022 09:52:40 +0000 (UTC)
+Received: from secure.mitica (unknown [10.39.194.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4B4F42166B2A;
+	Mon,  5 Dec 2022 09:52:31 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>,
+	Thomas Huth <huth@tuxfamily.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Eric Blake <eblake@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Raphael Norwitz <raphael.norwitz@nutanix.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
+	virtio-fs@redhat.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	"Gonglei (Arei)" <arei.gonglei@huawei.com>,
+	qemu-block@nongnu.org,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	Thomas Huth <thuth@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Eric Farman <farman@linux.ibm.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	Jason Wang <jasowang@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Song Gao <gaosong@loongson.cn>,
+	qemu-s390x@nongnu.org,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Klaus Jensen <its@irrelevant.dk>,
+	John Snow <jsnow@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Keith Busch <kbusch@kernel.org>,
+	David Hildenbrand <david@redhat.com>,
+	qemu-trivial@nongnu.org,
+	Hanna Reitz <hreitz@redhat.com>
+Subject: [PATCH v2 00/51] migration patches for VFIO
+Date: Mon,  5 Dec 2022 10:51:37 +0100
+Message-Id: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.5.1
-Subject: Re: REG: TTC Timer
-Content-Language: en-US
-To: Gowri Shankar <ggowri617@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-References: <CAJWWW5ikmoujzeYw97QEMG0uBCLyR2mypSe_Td4XJXjXHQFnyQ@mail.gmail.com>
-Cc: qemu-discuss@nongnu.org, Frederic Konrad <fkonrad@amd.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Alistair Francis <alistair.francis@wdc.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CAJWWW5ikmoujzeYw97QEMG0uBCLyR2mypSe_Td4XJXjXHQFnyQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.258,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DllwzqsRNKGg
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+X-TUID: Oqx5CtsphjFQ
 
-On 22/11/22 12:27, Gowri Shankar wrote:
-> Hi Team,
-> 
-> Advance Thanks for Your support.
-> 
-> Could you please clarify one point here?
-> I am using a Xilinx ZCU102 machine with QEMU7.1.0.
-> 
-> I have seen QEMU 7.1.0 release has TTC timers for the Xilinx-zynqmp SoC 
-> model.
-> url: https://wiki.qemu.org/ChangeLog/7.1 
-> <https://wiki.qemu.org/ChangeLog/7.1>
-> 
-> In this case, can the ZCU102 machine also use the TTC feature?
-> If yes and possible, Could you please share the example code snippet?
-> -- 
-> Thanks & Regards,
-> P. Gowrishankar.
-> +919944802490
+Hi
 
-Cc'ing qemu-arm@ mailing list and Xilinx ZCU102 machine developers.
+On this v2:
 
+- Remove the stop of the guest to calculate the size
+- Rebase on latest upstream.
+
+Please review.
+
+[v1/RFC]
+VFIO migration has several requirements:
+- the size of the state is only known when the guest is stopped
+- they need to send possible lots of data.
+
+this series only address the 1st set of problems.
+
+What they do:
+- res_compatible parameter was not used anywhere, just add that information to res_postcopy.
+- Remove QEMUFILE parameter from save_live_pending
+- Split save_live_pending into
+  * save_pending_estimate(): the pending state size without trying too hard
+  * save_pending_exact(): the real pending state size, it is called with the guest stopped.
+- Now save_pending_* don't need the threshold parameter
+- HACK a way to stop the guest before moving there.
+
+ToDo:
+- autoconverge test is broken, no real clue why, but it is possible that the test is wrong.
+
+- Make an artifact to be able to send massive amount of data in the save state stage (probably more multifd channels).
+
+- Be able to not having to start the guest between cheking the state pending size and migration_completion().
+
+Please review.
+
+Thanks, Juan.
+
+Alex Bennée (4):
+  tests/qtests: override "force-legacy" for gpio virtio-mmio tests
+  hw/virtio: add started_vu status field to vhost-user-gpio
+  hw/virtio: generalise CHR_EVENT_CLOSED handling
+  include/hw: VM state takes precedence in virtio_device_should_start
+
+Evgeny Ermakov (2):
+  target/arm: Set TCGCPUOps.restore_state_to_opc for v7m
+  hw/display/next-fb: Fix comment typo
+
+Gerd Hoffmann (2):
+  update seabios source from 1.16.0 to 1.16.1
+  update seabios binaries to 1.16.1
+
+Juan Quintela (9):
+  multifd: Create page_size fields into both MultiFD{Recv,Send}Params
+  multifd: Create page_count fields into both MultiFD{Recv,Send}Params
+  migration: Export ram_transferred_ram()
+  migration: Export ram_release_page()
+  migration: Remove res_compatible parameter
+  migration: No save_live_pending() method uses the QEMUFile parameter
+  migration: Split save_live_pending() into state_pending_*
+  migration: Remove unused threshold_size parameter
+  migration: simplify migration_iteration_run()
+
+Klaus Jensen (5):
+  hw/nvme: fix aio cancel in format
+  hw/nvme: fix aio cancel in flush
+  hw/nvme: fix aio cancel in zone reset
+  hw/nvme: fix aio cancel in dsm
+  hw/nvme: remove copy bh scheduling
+
+Paolo Bonzini (1):
+  target/i386: allow MMX instructions with CR4.OSFXSR=0
+
+Peter Xu (15):
+  migration: Take bitmap mutex when completing ram migration
+  migration: Add postcopy_preempt_active()
+  migration: Cleanup xbzrle zero page cache update logic
+  migration: Trivial cleanup save_page_header() on same block check
+  migration: Remove RAMState.f references in compression code
+  migration: Yield bitmap_mutex properly when sending/sleeping
+  migration: Use atomic ops properly for page accountings
+  migration: Teach PSS about host page
+  migration: Introduce pss_channel
+  migration: Add pss_init()
+  migration: Make PageSearchStatus part of RAMState
+  migration: Move last_sent_block into PageSearchStatus
+  migration: Send requested page directly in rp-return thread
+  migration: Remove old preempt code around state maintainance
+  migration: Drop rs->f
+
+Philippe Mathieu-Daudé (5):
+  hw/display/qxl: Have qxl_log_command Return early if no log_cmd
+    handler
+  hw/display/qxl: Document qxl_phys2virt()
+  hw/display/qxl: Pass requested buffer size to qxl_phys2virt()
+  hw/display/qxl: Avoid buffer overrun in qxl_phys2virt (CVE-2022-4144)
+  hw/display/qxl: Assert memory slot fits in preallocated MemoryRegion
+
+Richard Henderson (2):
+  replay: Fix declaration of replay_read_next_clock
+  target/i386: Always completely initialize TranslateFault
+
+Stefan Hajnoczi (2):
+  block-backend: avoid bdrv_unregister_buf() NULL pointer deref
+  Update VERSION for v7.2.0-rc3
+
+Stefano Garzarella (1):
+  vhost: enable vrings in vhost_dev_start() for vhost-user devices
+
+Thomas Huth (2):
+  tests/qtest/migration-test: Fix unlink error and memory leaks
+  target/s390x/tcg: Fix and improve the SACF instruction
+
+Xiaojuan Yang (1):
+  hw/loongarch/virt: Add cfi01 pflash device
+
+-- 
+2.38.1

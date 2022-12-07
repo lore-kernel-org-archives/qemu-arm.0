@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp49422ejx;
-        Tue, 6 Dec 2022 16:09:49 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5VjIFM+qY+KJC3VIu3Jp1QjxVywVK3CjfpnN41Ngp9hnrsmEuqHJoZ/urTu94Xxff3lcc+
-X-Received: by 2002:a0c:9122:0:b0:4bb:5785:5e7e with SMTP id q31-20020a0c9122000000b004bb57855e7emr64084502qvq.60.1670371789160;
-        Tue, 06 Dec 2022 16:09:49 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1670371789; cv=pass;
+Received: by 2002:a17:906:80c3:b0:7ae:d8f:8937 with SMTP id a3csp49433ejx;
+        Tue, 6 Dec 2022 16:09:51 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf50o6EUL4nlhBlennGkvFtIDl2riLz2tHktY4OOddbON5BayutkEOgb/0PMmIYZmMGb+15D
+X-Received: by 2002:a05:620a:488d:b0:6fa:74df:f8de with SMTP id ea13-20020a05620a488d00b006fa74dff8demr78818035qkb.7.1670371790948;
+        Tue, 06 Dec 2022 16:09:50 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1670371790; cv=pass;
         d=google.com; s=arc-20160816;
-        b=DlvjDfKvNC+Yh71Z4LqASsfjD3Vz6LHxeGnGomkG4T4+8sesME7Vrv5S2CTpflmaCB
-         zSuNg/ITa0eJhRpbtDc2x68Qs+gvZquM97/HKGpchkXvnjjoTkCxNx5gYLteln6ijlKb
-         ODxHRHJzbioawloTbMYXuCzxD/Dt7KOQ8ACmBQ3bOwX7j2/CRGmusi2RRkzZnD4jHy8n
-         otOvaV4u6ny/hQuZecud4hJFebn9f96qxSNXpJgX/0JPtcyFVA/xK3ezeVeEQMHSkR9K
-         br1ENOXEi9LYEuPK8d024axaUvN0tSts0BQq9EQU8KmjnEcsy6F+CDpNYOZACTR6sTK8
-         Wnjw==
+        b=Zpb38bmv9WqKtXbENbeqAYBgzv2tQElOjFJXYHnWK68kMOwPtAVky61BjOTgYL+ziS
+         V4KBa2/EwQsiniae3TaKl9W5aXAo6Dsl5LRPk9M8eiUlEfiEpB78uvGRT3tx5A+zc984
+         6wi+jbJcMGEo1BkSkKFI51HTRWv/GjjYZMv4JJdkovYgIG41hkNKoYDXEGy2twEb7qV4
+         X+672dByktBqGoyFdfowdE7MzcCD42oVNJwp2xsJFriTKpIT4rIzDlMDx1bkL/z5pTVD
+         pB2ebSD+O/Y+OZS5n2F73xFaoIXcF8JJOrMWHl6Ob6fmT1E+t3tNkzqUl3PdiEuHwP2O
+         Sf1w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=rD+0ciH7TjjgpwMFM/ZqnTOFSYmEFzGkAum1rmsd560=;
-        b=jsjk8iSVP2wZ1KJfbH23MTUkYUxYXRQV3Sd1hiO2jEtDBWhIn+P6vrkIFxCUQOhfyc
-         Uq/vyCrS1b3KLPg7+L30Zz52JMM579pOkogRPA1io6hW/KINOItQiSaN8ouFc60ODh2S
-         FRv63XDrwSd6ejK4kTaECSaE+FgDyY78Mj+P5AOe8JyESEmEoKE0OoC6xHuizhCMhGCg
-         hBnKsm2GkJiZ+QSHwDyiuVRwduIuiUmkAilk+5YssKYU+yHmUGxr8U8ExOpH1JD4921L
-         lQWhR6GvHqReivCUa5H529d/C8sPq1JL6VMLPCCHXw2kI4xAJdEM8vRRzDQ3E9B20X9/
-         UsHg==
+        bh=zdmrY+wNsYHvcI7dLQdbHmGBXXz7HJVvR1XR7ka+bOc=;
+        b=wU4XSmtnjb64ua0yvIkEUnUZUFM4Ohv/BhDY7p5NpfbtJZBdAnvUr4qHKBoEVF1reG
+         s0AChbn+pZ0szD4UNrnWTgyuQ6wRZ4CpyJ8TqRVogH4smikQTU069hBF6XsQ7uWdWv+Q
+         IkrQYqzLptuwTQgHB+S29m9UC77Do6cI9TrrdhP55SPWhNc9YzRSlqtiroBG2VInQDBi
+         jg3MgIy156dpmJIqdFV2LsMLMVDJCwr9aR4LXaM3NCi6h9P7DX6CS6bl5/YbbNgO9w0N
+         FbQ37v5ygoPKjqU9CbUnsG9PRzG/TQgiQRGXIB3RTIiYxY4DDDo8WRb6JYWvAClOIvY8
+         cGsA==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=NC6YegrT;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=Xp02xFn8;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k14-20020a05620a414e00b006fa57ff8d78si11025310qko.67.2022.12.06.16.09.48
+        by mx.google.com with ESMTPS id s2-20020a0562140ca200b004bbae9d4a0fsi10042556qvs.425.2022.12.06.16.09.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Dec 2022 16:09:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Dec 2022 16:09:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=NC6YegrT;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=Xp02xFn8;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p2hze-0006rh-9f; Tue, 06 Dec 2022 19:08:58 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p2hzd-0006pd-DX; Tue, 06 Dec 2022 19:08:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1p2hzc-0006or-2F; Tue, 06 Dec 2022 19:08:56 -0500
-Received: from mail-mw2nam10on2061d.outbound.protection.outlook.com
- ([2a01:111:f400:7e89::61d]
- helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ id 1p2hzb-0006om-Sl; Tue, 06 Dec 2022 19:08:55 -0500
+Received: from mail-bn8nam12on2062d.outbound.protection.outlook.com
+ ([2a01:111:f400:fe5b::62d]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1p2hzV-00008h-UH; Tue, 06 Dec 2022 19:08:55 -0500
+ id 1p2hzV-00007k-Tr; Tue, 06 Dec 2022 19:08:55 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RTsUdsa2W4mPUZ54HX2AjtoIot7CMq/uIfcHwWmET02IzOKSWqB30mLZ35bpnlT95WGFkJibfZrZ5eKKOwq0sU77E0zW6NjQjPIeBxa7kyICk+r21pz28amUkCFcLqLh+O1vACBrFyzH/tMpennbLqZWzBAvSfxF/N7j7W0AMRBf4xhDd1BsphyPzlE032DgfksHt+OtGAukwfP6f2fTCUaGIASYY6fGHDcRaSEluUb5S5qla/o5jerOqa08xwT4UOBG0KqrYC+A38egGC11IP7fJyHqjpy4I+DGMb7lPh76vEKR2bE45Yvv62oaywpW0+1lvKHmdn1qrqN+arO0UA==
+ b=IY8aZ2TxPH6RukqbgU8VUh7yxNBSoZ0z9rSVmL4mQzSDY+ymu7PyIcWaScIJ9F5KdnL9WJdkJks2zz0uNRWbwI3bfVQkGlaLNPgXoOLemHzqr9cisDbKx/2im/6EHVDWGCHaUDylpWrtWBkA6v4tLNGBvvcW4ciNeUSMUzOd74qjIJ7g2g1rZMK9AtRbd9g6fq2S/GH++tgm9D5r/KUWbom5YlfaNTwZtUJVOa2Q4ahMQZQjtZ5t0JudkynoDybhlNf0SFSYvjSx2DHAetDDbtQiJSBuY4NQK5U4fkfEEQxOGHCpYZEOGZ5CKRE1ScZBIfRtV0KqxXZBof9P7kfsyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rD+0ciH7TjjgpwMFM/ZqnTOFSYmEFzGkAum1rmsd560=;
- b=iVAFyoTgnb3oFAV8Wz/VSUYnTY7vpL3Mq1wCF+Dpsi8zYFJf+Zh8IMfdeY579d2NaLcrbugli0izyJnuD4vYDQjtzy5xOSivP15m4bA31kDf8/hzbMv+D2/Kn1WooNcsaYtRW4rhHfLsVtKpOQ887sJ/uJiTcV2KAjp9hb3o0V/iLvqvI62ZdGvpEGJkE1FAnCGRv3qko86tteb3kCk0/lTNEewukhFVSutvEGfKnt8kknL7vu+FQ6rBqKMXBX2AGcjpThwjUEzndCW007nOFKaSW361aXi5rSKSYQ4Hmz3bwTvfsyETycQ3OwMpIbPAgZxEYQgE6QnemIoRsCtjdw==
+ bh=zdmrY+wNsYHvcI7dLQdbHmGBXXz7HJVvR1XR7ka+bOc=;
+ b=RVJ/BiXSyLz4fhqDxEaiZHwExmReeySOkAWRyo/BvGnBTYcTX8twcQ0elfxLRuUxFdZAbxp+3NlTzSWcVPIdtg2A6CvcpFwxlzcLacY8Y/7JmH30IGRSt9KFtC6wmWAlSnvZkiWNJDmPn4ans0dKDNrQs9HcU3vjlqbyYVHMzdo20i26wwvf7obN23LsiZJPitpsBJ35v+NbMT9RrCrxn7nu57zE+xFozS9M91nDVY0wXZdlRzUNWypxMWgtEn64L8F1+sQN30OyHrjcyTyX2S61JKXsPcqZ5fh8gdN01W7EpbpK6LgBo1Z+FJMX6kah9nZHMgnZr+TdY7qpfc+2fQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=xilinx.com smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rD+0ciH7TjjgpwMFM/ZqnTOFSYmEFzGkAum1rmsd560=;
- b=NC6YegrToG41WZLIKIssn/9lK6eAwfb4wNvVzfBM378HC2m5WBrnhIfc/4onPSxkQ8W9oS81lcgishxWm6GG94cJDhd4M32GtoYse3hHwWZXpjjlOnxyQ7Ksxsjjig72wN7n4AgaXwC95kvVBGkj/mbTZ1Icm7zf2HSJ2Fo8Kyw=
-Received: from BN0PR04CA0187.namprd04.prod.outlook.com (2603:10b6:408:e9::12)
- by DM8PR12MB5413.namprd12.prod.outlook.com (2603:10b6:8:3b::8) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5880.14; Wed, 7 Dec 2022 00:08:45 +0000
-Received: from BN8NAM11FT065.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:e9:cafe::fa) by BN0PR04CA0187.outlook.office365.com
- (2603:10b6:408:e9::12) with Microsoft SMTP Server (version=TLS1_2,
+ bh=zdmrY+wNsYHvcI7dLQdbHmGBXXz7HJVvR1XR7ka+bOc=;
+ b=Xp02xFn8+amR/H0q4kV9iKO1f8AqEdKyEtviZNdadYzP0IeMztzVXhxdBm65EtY6KafkMYOvwBqp19nRD28zQ7Yk3euywDGMlQb2I5CvccCv+FiIFus9eThhVWvHXWoDlX90m3G5ZmK0/64LW6wgph8m6Flvdb1aaj0+bAhaZpQ=
+Received: from BN0PR04CA0076.namprd04.prod.outlook.com (2603:10b6:408:ea::21)
+ by SJ0PR12MB8139.namprd12.prod.outlook.com (2603:10b6:a03:4e8::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.14; Wed, 7 Dec
+ 2022 00:08:43 +0000
+Received: from BN8NAM11FT050.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:ea:cafe::58) by BN0PR04CA0076.outlook.office365.com
+ (2603:10b6:408:ea::21) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.14 via Frontend
- Transport; Wed, 7 Dec 2022 00:08:45 +0000
+ Transport; Wed, 7 Dec 2022 00:08:42 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
@@ -85,20 +85,16 @@ Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
  client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
 Received: from SATLEXMB04.amd.com (165.204.84.17) by
- BN8NAM11FT065.mail.protection.outlook.com (10.13.177.63) with Microsoft SMTP
+ BN8NAM11FT050.mail.protection.outlook.com (10.13.177.5) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.5901.14 via Frontend Transport; Wed, 7 Dec 2022 00:08:45 +0000
-Received: from SATLEXMB05.amd.com (10.181.40.146) by SATLEXMB04.amd.com
+ 15.20.5901.14 via Frontend Transport; Wed, 7 Dec 2022 00:08:42 +0000
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB04.amd.com
  (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Tue, 6 Dec
- 2022 18:08:44 -0600
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB05.amd.com
- (10.181.40.146) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Tue, 6 Dec
- 2022 18:08:44 -0600
+ 2022 18:08:41 -0600
 Received: from xsjfnuv50.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
  (10.181.40.144) with Microsoft SMTP Server id 15.1.2375.34 via Frontend
- Transport; Tue, 6 Dec 2022 18:08:43 -0600
+ Transport; Tue, 6 Dec 2022 18:08:41 -0600
 From: Vikram Garhwal <vikram.garhwal@amd.com>
 To: <qemu-dev@xilinx.com>
 CC: <francisco.iglesias@amd.com>, <peter.maydell@linaro.org>,
@@ -106,10 +102,10 @@ CC: <francisco.iglesias@amd.com>, <peter.maydell@linaro.org>,
  E. Iglesias" <edgar.iglesias@gmail.com>, "open list:Xilinx ZynqMP and..."
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: [QEMU][PATCH v3 3/4] xlnx-zynqmp: Connect Xilinx VERSAL CANFD
+Subject: [QEMU][PATCH v3 3/4] xlnx-versal: Connect Xilinx VERSAL CANFD
  controllers
-Date: Tue, 6 Dec 2022 16:08:24 -0800
-Message-ID: <20221207000825.7303-5-vikram.garhwal@amd.com>
+Date: Tue, 6 Dec 2022 16:08:23 -0800
+Message-ID: <20221207000825.7303-4-vikram.garhwal@amd.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20221207000825.7303-1-vikram.garhwal@amd.com>
 References: <20221207000825.7303-1-vikram.garhwal@amd.com>
@@ -117,50 +113,51 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8NAM11FT065:EE_|DM8PR12MB5413:EE_
-X-MS-Office365-Filtering-Correlation-Id: cf7a2179-a554-4223-b156-08dad7e734f8
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT050:EE_|SJ0PR12MB8139:EE_
+X-MS-Office365-Filtering-Correlation-Id: 20d8636c-1897-43dc-33b1-08dad7e7333e
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: jDcW9KKg5MBFfR7XQ+WO+F1z9yzhCA0qy/MMUvJ4wPcw3I92rW9Bd0qQ6eMSjOdMpt0e4DIPiqj+ODrL97ksLsole3H5q4Jsk+vv/uf/vhhLX0sTbzI/DBQK6iFSN8D2PItcJ/Lw5DGzvxAlGh8gdXf19I7w01PCSzqgfGL+30w0mTmiDwiciR+93uvuAdfPREOIRqYL4UWH1swffsWQKpDO7/AKCHe3qYuZsXR8Er2dOiXobgj1j1wUGZ8OuAOnVaqwBQlXtkoaxutQeOwlk+47FKdc2Ud+smY7XxgMjyss19fQxIyjnXw9ZbcWbOzEll7cXqV62XzyzD12ol79yv9d5i7GiIxuc9IqYmgXYpj2du0AUcwUTj7GRj+FRRQclxAYd8nm+7/IROgVT5alvK2+cgu+HXAoC1JgFr6y3SuTLQ/XUBZLSy4eODYdtEvNvDLLHEH5LHqFwO/scKq37IVDclvpqox69tnDGdXGH9jiFLFmGU6vpPf+plrY2R+RiENdL/+omS1m2y4oV6lLWtgfJVQUiY/ytMssgTCIvapcmNVKWG5W76OJdBLJQNvWrnfgfEygOplC1x77KutmtYEcfWOvKM8PQG7IS6nGHh4IpzR7YvUYdBYpy7jsZvFMTpKTlYqx+FK+SYEyaR/JFrM3+IFOYDPxRwPqmvMe9YQX1bHH+b5G0cdnzTdwN8NXiWY7JlPMY0jujlqfZqU9rkjYptZbGC6t7CuWYpAK6Rc=
+X-Microsoft-Antispam-Message-Info: q8T1rElRDzqGeVTU4mf735hk/Lxvxwdtf4CXo0NeCFfgorJOtTjj+mLL5p6FmCw0SqzSv1hZkaL9XJZhqPAmPbTTg+RWYYL5dhv8GzsUhMLyYbSbCOtw7Z2Q5dm/wGc3D1/QSKbqc+WI3RvPr86qm0Mx9j4u8J2bus6hKPm3ZS1svmZzZlE2OCpC+Xho5Gj3+oxtb3yegdQeWlUzeQc1Ko4z9bW58z/ViQQIneZgWjauQYYJKC9tJuQNIdoViCWg60Yj97r4bBLCjv3T05eTtGNOuKgypTUF5eQo90vTHB43puGRiFaaHR245lDOAAzdhxkQ0O360YSzNCTbP0fpfxePlRrhVTHVI67mea4zyffpfrLXM7jfu3x2iuGl9VA0KmDEdojjz3DOfhZUwWIzhDpd9IukBSw+D6zH1iVdU0RrviJNU1iXmwO9QY+2DSA6VMDlS6DeqvNaGHBqqmgzriu1/GZdMHGH8StMuc32vWy83aTtyyJxYpXXhRHLOFm/dZ/9VxoMqhAbJJN0KImJBtVh1Zmddxk5mkXZNCxPEoJgAWgr0kGD8Wto9Ei1cVdxJGy0vzcn6HqCsygC8oVKRX0I4ghf2hYlq189A8XThwgW4eUBnpYC6GTc545Wri1wKL5m5FxPcFZJ4KUp9jkHz2QtPB2pm9M0pDYaXvbRAFmEnLu13ArCDosJxlW4Rq6tWUz9HreGY9n2CYOALKTsM4rTgG4TqJpKUFmZu7xozlc=
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230022)(4636009)(346002)(376002)(39860400002)(136003)(396003)(451199015)(46966006)(40470700004)(36840700001)(36756003)(54906003)(356005)(86362001)(81166007)(8936002)(41300700001)(2906002)(6862004)(4326008)(40460700003)(44832011)(5660300002)(478600001)(83380400001)(36860700001)(70206006)(316002)(2616005)(70586007)(82740400003)(40480700001)(82310400005)(8676002)(47076005)(1076003)(336012)(426003)(6666004)(26005)(186003)(36900700001);
+ SFS:(13230022)(4636009)(376002)(39860400002)(396003)(346002)(136003)(451199015)(40470700004)(36840700001)(46966006)(86362001)(36756003)(40460700003)(70206006)(186003)(40480700001)(1076003)(41300700001)(70586007)(336012)(44832011)(8676002)(47076005)(4326008)(8936002)(426003)(2616005)(6666004)(5660300002)(6862004)(54906003)(316002)(478600001)(26005)(356005)(81166007)(82740400003)(82310400005)(83380400001)(2906002)(36860700001)(36900700001);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Dec 2022 00:08:45.2008 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: cf7a2179-a554-4223-b156-08dad7e734f8
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Dec 2022 00:08:42.3009 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 20d8636c-1897-43dc-33b1-08dad7e7333e
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
  Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT065.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT050.eop-nam11.prod.protection.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR12MB5413
-Received-SPF: softfail client-ip=2a01:111:f400:7e89::61d;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB8139
+Received-SPF: softfail client-ip=2a01:111:f400:fe5b::62d;
  envelope-from=vikram.garhwal@amd.com;
- helo=NAM10-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_SPF_HELO=1,
+ SPF_HELO_PASS=-0.001, T_SPF_TEMPERROR=0.01,
+ WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: poafGCCINAMe
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: N2lS1I+IVX4g
 
 Connect CANFD0 and CANFD1 on the Versal-virt machine and update xlnx-versal-virt
 document with CANFD command line examples.
@@ -174,7 +171,7 @@ Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
  4 files changed, 128 insertions(+)
 
 diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
-index 92ad10d2da..372e4249f0 100644
+index 92ad10d2da..d2d1b26692 100644
 --- a/docs/system/arm/xlnx-versal-virt.rst
 +++ b/docs/system/arm/xlnx-versal-virt.rst
 @@ -34,6 +34,7 @@ Implemented devices:
@@ -209,9 +206,9 @@ index 92ad10d2da..372e4249f0 100644
 +    -object can-bus,id=canbus0 -object can-bus,id=canbus1 \
 +    -machine canbus0=canbus0 -machine canbus1=canbus1
 +
-+SocketCAN interface can connect to a Physical or a Virtual CAN interfaces on
-+host machine. Please check this document to learn about CAN interface on Linux:
-+docs/system/devices/can.rst
++The SocketCAN interface can connect to a Physical or a Virtual CAN interfaces on
++the host machine. Please check this document to learn about CAN interface on
++Linux: docs/system/devices/can.rst
 +
 +To connect CANFD0 and CANFD1 to host machine's CAN interface can0:
 +
@@ -309,7 +306,7 @@ index 37fc9b919c..963ace861e 100644
  
  static void versal_virt_machine_class_init(ObjectClass *oc, void *data)
 diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-index 57276e1506..44b0eaf0c8 100644
+index 57276e1506..ff76d5ee3c 100644
 --- a/hw/arm/xlnx-versal.c
 +++ b/hw/arm/xlnx-versal.c
 @@ -185,6 +185,38 @@ static void versal_create_uarts(Versal *s, qemu_irq *pic)
@@ -319,10 +316,10 @@ index 57276e1506..44b0eaf0c8 100644
 +static void versal_create_canfds(Versal *s, qemu_irq *pic)
 +{
 +    int i;
++    uint32_t irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0};
++    uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
 +
 +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.canfd); i++) {
-+        static const int irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0};
-+        static const uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
 +        char *name = g_strdup_printf("canfd%d", i);
 +        SysBusDevice *sbd;
 +        MemoryRegion *mr;

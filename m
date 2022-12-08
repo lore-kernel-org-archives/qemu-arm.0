@@ -1,105 +1,108 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp144707ejb;
-        Wed, 7 Dec 2022 14:40:03 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4zH4rcAC8oWgm3SaaBObp8PE3H1F60bBLNToATRmy6IOkSeDi2fPNRa17i3Fj2oE3xBvu4
-X-Received: by 2002:a05:6214:1852:b0:4c7:7a9e:a3b3 with SMTP id d18-20020a056214185200b004c77a9ea3b3mr10216359qvy.3.1670452803347;
-        Wed, 07 Dec 2022 14:40:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670452803; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp35003ejb;
+        Wed, 7 Dec 2022 20:48:52 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf56Ff9RzTyki57pCicohztVx32sg07qfzdApHRmIkNjoNVsPcrNfwi2HPauBQko6bEV7iF4
+X-Received: by 2002:a0c:ea2f:0:b0:4c6:fb4e:fefb with SMTP id t15-20020a0cea2f000000b004c6fb4efefbmr43872765qvp.114.1670474932266;
+        Wed, 07 Dec 2022 20:48:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670474932; cv=none;
         d=google.com; s=arc-20160816;
-        b=gzxjy06vzC2ccZ5f2xG+C1OYZ72RZquK+hFXPaxlO0FwYl7y8TcDfP63bWBYQQKknX
-         ljJ6lf2hcG5mwjAUCQ4qq5Qi+7FogBD5Uozmu6B6vHjO/7oTBhor41Yh2oHcwDrsWYzS
-         EUlOUXrvJUuxbbnZXS8400spLRpQTz9AoFvmsI1/lTMmNTeGs2V9T9vJw+ItFP32yOt6
-         AHv6/Hf/LgnfMESLz+9v+WCcdAEJftEywvkuwaOYtxBubtJE2gWNqUITZ1oKNDdTTwSa
-         VT2Gdaf9SDu+Ou4exnkYztCkJ8dVkFPq+GQJYfVaBKyNdQkH+Xa9aniUtTdcbTtxLdtq
-         WFfA==
+        b=E5dy8pq5mmp4vQ/FN8PeLCCadH7TB9G+mt8bENk4VrIW1unRDAXjo3M71zZdP9/RkY
+         HJm96fTX0j1ecTYRysQbmyecCMBHfErtkuLno6g60qP201PXjdUytLri5O/3hDjFuwiq
+         ekn8PuBP872K5SWSRGiCnjxLN80bcFaaKI0h5annNU187WkzMBtvcrqRmo5NshiE0iPz
+         zHzPZTxClHYvRuxHT6TvW0OO83z4GWx4YmLYdDK0fy6nghFvY51+4D+uEt9yj3QCAdzQ
+         dhnmBJcF+m9vxXXI8X06H+6Xh41lQPxqBm0JV26Zjwlw2Vpk7CTyYI7N6Yu34TBn43FU
+         xPlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=S0lktgq/GBydjp83+0uRokd3kX3/lB74XBdzTqh12+g=;
-        b=vDq28q9DH7bIYDKznuvZBpM+ZZ4jFtAY3PchnYF29efznt8DNN0Xh8TZvt8gG+loWT
-         8ziAmwVfB5m0B5jjRi8c1yUcVFTfFS8rH/WGMvnlnJ627YUFxOXoR1bwG4qpiC5+lEGq
-         5EE8xdDjOBXgm/GIeFKmw4FVezx87gEaRAnGnZbmPwQvbLfgSwRqUcgkt8EcAtwMaokT
-         BGQa1C8V6wxfOcwEidIR3tbKrzz/1ipga/vfhuPf2EvcgoAN0jrGmwngb2/zXDgmlWUh
-         QtodAhfbRtm0JPR/srrWbh+ZlS7WvrUp1/bdF5XzV6PDnkjToxlVPRIbBZDUwi4zrg/3
-         r/Ew==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=o+mFnVtP0vibPn2ujAg03JG+GpLY5sNnaWUKmLrzx9Q=;
+        b=Kz5KhTffrR+YbcRn4cecZI2iyIArfFk4TTHFFQBoNk5NESZ25KYqv+3OQQsa/vYwjY
+         0S4f/z6a3uPYDDOBZP24YAZNCZ52Z/wZhd3xPzMTaCyL12p6s2O/Fwvl087qFuxKgFRp
+         qlWnKrGZAqDRxr0JcDybeF573jOOOGdhyYFByOH4Kkq8gIROqP6EkENz2ZINRYit9RxO
+         e0S6hnhZvcGiT0Ie33nFhwMsFP6wyQdVlgAnyBLivTWIR0FYBWKYETcd8ltjPYIbtLBc
+         bOjw0CITVzvZVX1Af6+p/V/4DuDUk6rqgCyJBhI5GXenYOjmUlZmmOJT3+rAhH0FPjYV
+         tkGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=l3iGLDkX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@oecu.jp header.s=gmail header.b=Vch1ZJ8f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z1-20020ac87ca1000000b003a6a6aa0854si5972568qtv.582.2022.12.07.14.40.03
+        by mx.google.com with ESMTPS id t2-20020ac865c2000000b003a65b9faabasi10496278qto.179.2022.12.07.20.48.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Dec 2022 14:40:03 -0800 (PST)
+        Wed, 07 Dec 2022 20:48:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=l3iGLDkX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@oecu.jp header.s=gmail header.b=Vch1ZJ8f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p334f-0000Lf-9e; Wed, 07 Dec 2022 17:39:33 -0500
+	id 1p38pr-0003xd-VY; Wed, 07 Dec 2022 23:48:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1p334c-0000Kx-Np; Wed, 07 Dec 2022 17:39:31 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1p334a-0003jj-Kz; Wed, 07 Dec 2022 17:39:30 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id u12so29298402wrr.11;
- Wed, 07 Dec 2022 14:39:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=S0lktgq/GBydjp83+0uRokd3kX3/lB74XBdzTqh12+g=;
- b=l3iGLDkXJ8E5HlLj58b9X8pVBdNExU1SOsI7aPQh2JhcVCg55JTetyOjjO+haTDqPN
- kqVO8quBzPLxA6Y/aHIL2toAdG2XpES9AHWaFkuYMemPCNlKpRkBvWEmvLFu4Vn+tVJL
- 4qOOsv6q+6yhlnG7qlHEPLT9cbaRJbJjBFtlSqmU4JIbMWbr3BAzOh7amn0TsM5XKcsp
- vdmX4wPOfvr9a/hw70Cx+A/ssV7TGIw6vLTsqoqQnLKd83q/K1Trx2JhjmdhHvrKxkow
- A1bQ5tAYTWbEml2uScjh7ra7HknJZfV4eOGvmfFr6/Um/y8PldowblIMbVFklHtIopSp
- 0ucg==
+ (Exim 4.90_1) (envelope-from <mt21a003@oecu.jp>) id 1p38pp-0003x2-19
+ for qemu-arm@nongnu.org; Wed, 07 Dec 2022 23:48:37 -0500
+Received: from gmgws.osakac.ac.jp ([202.232.129.24])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <mt21a003@oecu.jp>) id 1p38pm-0004wi-D3
+ for qemu-arm@nongnu.org; Wed, 07 Dec 2022 23:48:36 -0500
+Received: from gmgws.osakac.ac.jp (localhost [127.0.0.1])
+ by gmgws1g.osakac.ac.jp (Postfix) with ESMTP id BCD53C413F5E
+ for <qemu-arm@nongnu.org>; Thu,  8 Dec 2022 13:48:28 +0900 (JST)
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69])
+ by gapp-gmgws1g.osakac.ac.jp (Postfix) with ESMTP id 4CA56C405439
+ for <qemu-arm@nongnu.org>; Thu,  8 Dec 2022 13:48:28 +0900 (JST)
+Received: by mail-wm1-f69.google.com with SMTP id
+ c187-20020a1c35c4000000b003cfee3c91cdso234633wma.6
+ for <qemu-arm@nongnu.org>; Wed, 07 Dec 2022 20:48:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oecu.jp; s=gmail;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=o+mFnVtP0vibPn2ujAg03JG+GpLY5sNnaWUKmLrzx9Q=;
+ b=Vch1ZJ8fCAgoeL8xHvEJ+10R3vNcKSyS9qyRwVAePTjoQhqsJ3JS/fImnY9d43UjH7
+ zpBnTiwlZY+nPtVHAs2WUohegp4VnmxzWwm4c+GqEpzlO8grxKeY4hxcepnDIjE8tRpD
+ /91VIxQhglgJI9UhfoEgKXUlEDqx0dSvjstHXZ3UC4Ft/LQrU1JPq5VE22s2EpV/0VzS
+ s/kU8IpkM7yTAHAqI2o0EdyZ3Ojs7Q9Dz5KUYupoSfX7qQNa20z2CwLT5kgJxtyqB7vG
+ udQ6GAfAU6aspN+aCzNdoQO6RmDJBsp0R6CHcgFqydXjs6fQF3z6Z0iXvjGBJ+sDvDaO
+ /DxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=S0lktgq/GBydjp83+0uRokd3kX3/lB74XBdzTqh12+g=;
- b=UkZA4yo+kQaakrPQ78jGpGWcJteIwpm9fDMeEfq2JVyTjwLjKS/RUrLI21lg6Z4KfN
- M76tZDn2blRu224sr6tfhDf8+26SJY4seikVqmNoZDWWhAz2BbRAhkFVS9iSx1VmtRaI
- yfIELZQmShP/jVjJQUGQFml9WlMh7oY2As5Y566U5tdVoslYJ2qILs+VThLaWrGLTerC
- 0EB+8F2Zq/cvWeTa0tUa+85wW98w0kK0NfEDsrKKzSIlWseWNlUQHxxUztwgAySkvDiA
- t2zMsrFQl2u3RtQ4Yc4uvy+woAX3jU6wqz5BXQaja0jKUKDKV3Iy1q5QZ862yku1Ss3O
- aYow==
-X-Gm-Message-State: ANoB5pkLUB5zwsZDvBM9YYxJebiDswbbzaYMyN8h4KBTbzqV99IEcVUK
- /u/NC1aLFpN2GX9aUy/gnQdz5tAN72cvag+BIWk=
-X-Received: by 2002:a5d:5a12:0:b0:22e:c2a6:d00d with SMTP id
- bq18-20020a5d5a12000000b0022ec2a6d00dmr50240874wrb.29.1670452766331; Wed, 07
- Dec 2022 14:39:26 -0800 (PST)
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=o+mFnVtP0vibPn2ujAg03JG+GpLY5sNnaWUKmLrzx9Q=;
+ b=WKDpXbgDfWjQ5GptgocQILVYApzmf/o5IX1HIQLZNLIvkcmine7YY+qlyyWp0C427Q
+ uRPemLc3oUYi0ukV4X1XuvCnWjtj9ckDWwO7afiLuwc3VzsTibvfh3VBNu6SNqFr7UZd
+ GQJjzXvapMEwjAW+aDbce9oyG4Dl6rWbRaHS/phYdWIn187HH729Bvm/Slcv2YDZ9y8n
+ zL4h04wHMCVFDq4n7w5dHxy8p/jFNoa5UYXlJjcfATlOLTSM0Mn8RoYZdKuU1++eVa4a
+ pwxeSm1HRprdUHTdOFjlasO5YSZ+D35o3vSdjplmNdvgWYGH96sqLtMHQ+L9OsoMmeK8
+ TKlw==
+X-Gm-Message-State: ANoB5pmOY0+UYymBM5oC0sYhezOkZGo5A9QHeJjiBinFqaDQsNSbIHty
+ WYBOL4v33Oa4FCU+uCP+J55tpYNTdgCC4jhCdiPvMxOubrO5BMXMCALx6/+Y4059hSnwBg1Jr3o
+ FhGGSsgv2/bwmcMMvCvmUrYmVjyIg0DW6
+X-Received: by 2002:a05:600c:3acb:b0:3d0:8916:78eb with SMTP id
+ d11-20020a05600c3acb00b003d0891678ebmr17885939wms.68.1670474907291; 
+ Wed, 07 Dec 2022 20:48:27 -0800 (PST)
+X-Received: by 2002:a05:600c:3acb:b0:3d0:8916:78eb with SMTP id
+ d11-20020a05600c3acb00b003d0891678ebmr17885928wms.68.1670474906982; Wed, 07
+ Dec 2022 20:48:26 -0800 (PST)
 MIME-Version: 1.0
-References: <20221203231904.25155-1-strahinja.p.jankovic@gmail.com>
- <20221203231904.25155-7-strahinja.p.jankovic@gmail.com>
-In-Reply-To: <20221203231904.25155-7-strahinja.p.jankovic@gmail.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 7 Dec 2022 23:39:14 +0100
-Message-ID: <CAPan3WpDbNczuHaOpOYQOD5MPZ-SyqyZ2172-U6JQFn7fvHaTg@mail.gmail.com>
-Subject: Re: [PATCH 6/6] hw/arm: Allwinner A10 enable SPL load from MMC
-To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Content-Type: multipart/alternative; boundary="000000000000c05cd405ef4497ae"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-wr1-x42e.google.com
+From: =?UTF-8?B?5rGg5pys5bCa5pqJ?= <mt21a003@oecu.jp>
+Date: Thu, 8 Dec 2022 13:48:15 +0900
+Message-ID: <CADXXVoJZJZgLrP1RFEouT-3UzWJQn8aY_vws1sr-D5ua+gw-AA@mail.gmail.com>
+Subject: About the frequency of the dual timer(SP804) and global timer in
+ vexpress-a9
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000006ff48705ef49bf97"
+Received-SPF: pass client-ip=202.232.129.24; envelope-from=mt21a003@oecu.jp;
+ helo=gmgws.osakac.ac.jp
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,287 +117,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zdwlEpG/rpbZ
+X-TUID: 0fvZJpXl9jBG
 
---000000000000c05cd405ef4497ae
+--0000000000006ff48705ef49bf97
 Content-Type: text/plain; charset="UTF-8"
 
-Hi Strahinja,
+Greeting from Japan.
+I am currently planning to use dual timers to create timer interrupts and
+figure the processing time using global timer.
+However, neither could reveal the frequency.
+Can someone please tell me the frequency of the timer for me?
+
+Below is my development environment.
 
 
-On Sun, Dec 4, 2022 at 12:19 AM Strahinja Jankovic <
-strahinjapjankovic@gmail.com> wrote:
-
-> This patch enables copying of SPL from MMC if `-kernel` parameter is not
-> passed when starting QEMU. SPL is copied to SRAM_A.
->
-> The approach is reused from Allwinner H3 implementation.
->
-> Tested with Armbian and custom Yocto image.
->
-> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-> ---
->  hw/arm/allwinner-a10.c         | 18 ++++++++++++++++++
->  hw/arm/cubieboard.c            |  5 +++++
->  include/hw/arm/allwinner-a10.h | 21 +++++++++++++++++++++
->  3 files changed, 44 insertions(+)
->
-> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-> index 17e439777e..dc1966ff7a 100644
-> --- a/hw/arm/allwinner-a10.c
-> +++ b/hw/arm/allwinner-a10.c
-> @@ -24,7 +24,9 @@
->  #include "sysemu/sysemu.h"
->  #include "hw/boards.h"
->  #include "hw/usb/hcd-ohci.h"
-> +#include "hw/loader.h"
->
-> +#define AW_A10_SRAM_A_BASE      0x00000000
->  #define AW_A10_DRAMC_BASE       0x01c01000
->  #define AW_A10_MMC0_BASE        0x01c0f000
->  #define AW_A10_CCM_BASE         0x01c20000
-> @@ -38,6 +40,22 @@
->  #define AW_A10_RTC_BASE         0x01c20d00
->  #define AW_A10_I2C0_BASE        0x01c2ac00
->
-> +void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk)
-> +{
-> +    const int64_t rom_size = 32 * KiB;
-> +    g_autofree uint8_t *buffer = g_new0(uint8_t, rom_size);
-> +
-> +    if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
-> +        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
-> +                   __func__);
-> +        return;
-> +    }
-> +
-> +    rom_add_blob("allwinner-a10.bootrom", buffer, rom_size,
-> +                  rom_size, AW_A10_SRAM_A_BASE,
-> +                  NULL, NULL, NULL, NULL, false);
-> +}
->
-
-Its probably fine for now to do it in the same way here for the A10 indeed.
-Perhaps in the future, we can try
-to share some overlapping code between the A10 and H3.
-
-So the patch looks fine to me:
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-
-Regards,
-Niek
+   - QEMU emulator version 7.1.0 (v7.1.0-11925-g4ec481870e-dirty) for
+   Windows10 64bit
+   - Vexpress-A9 board emulate(Dual core drive)
 
 
-> +
->  static void aw_a10_init(Object *obj)
->  {
->      AwA10State *s = AW_A10(obj);
-> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-> index afc7980414..37659c35fd 100644
-> --- a/hw/arm/cubieboard.c
-> +++ b/hw/arm/cubieboard.c
-> @@ -99,6 +99,11 @@ static void cubieboard_init(MachineState *machine)
->      memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BASE,
->                                  machine->ram);
->
-> +    /* Load target kernel or start using BootROM */
-> +    if (!machine->kernel_filename && blk && blk_is_available(blk)) {
-> +        /* Use Boot ROM to copy data from SD card to SRAM */
-> +        allwinner_a10_bootrom_setup(a10, blk);
-> +    }
->      /* TODO create and connect IDE devices for ide_drive_get() */
->
->      cubieboard_binfo.ram_size = machine->ram_size;
-> diff --git a/include/hw/arm/allwinner-a10.h
-> b/include/hw/arm/allwinner-a10.h
-> index 763935fca9..b3c9ed24c7 100644
-> --- a/include/hw/arm/allwinner-a10.h
-> +++ b/include/hw/arm/allwinner-a10.h
-> @@ -15,6 +15,7 @@
->  #include "hw/misc/allwinner-a10-ccm.h"
->  #include "hw/misc/allwinner-a10-dramc.h"
->  #include "hw/i2c/allwinner-i2c.h"
-> +#include "sysemu/block-backend.h"
->
->  #include "target/arm/cpu.h"
->  #include "qom/object.h"
-> @@ -47,4 +48,24 @@ struct AwA10State {
->      OHCISysBusState ohci[AW_A10_NUM_USB];
->  };
->
-> +/**
-> + * Emulate Boot ROM firmware setup functionality.
-> + *
-> + * A real Allwinner A10 SoC contains a Boot ROM
-> + * which is the first code that runs right after
-> + * the SoC is powered on. The Boot ROM is responsible
-> + * for loading user code (e.g. a bootloader) from any
-> + * of the supported external devices and writing the
-> + * downloaded code to internal SRAM. After loading the SoC
-> + * begins executing the code written to SRAM.
-> + *
-> + * This function emulates the Boot ROM by copying 32 KiB
-> + * of data from the given block device and writes it to
-> + * the start of the first internal SRAM memory.
-> + *
-> + * @s: Allwinner A10 state object pointer
-> + * @blk: Block backend device object pointer
-> + */
-> +void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk);
-> +
->  #endif
-> --
-> 2.30.2
->
->
+Thank you!
 
--- 
-Niek Linnenbank
+Naoki
 
---000000000000c05cd405ef4497ae
+--
+
+--0000000000006ff48705ef49bf97
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div>Hi Strahinja,</div><div><br></div></=
-div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On=
- Sun, Dec 4, 2022 at 12:19 AM Strahinja Jankovic &lt;<a href=3D"mailto:stra=
-hinjapjankovic@gmail.com">strahinjapjankovic@gmail.com</a>&gt; wrote:<br></=
-div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
-der-left:1px solid rgb(204,204,204);padding-left:1ex">This patch enables co=
-pying of SPL from MMC if `-kernel` parameter is not<br>
-passed when starting QEMU. SPL is copied to SRAM_A.<br>
-<br>
-The approach is reused from Allwinner H3 implementation.<br>
-<br>
-Tested with Armbian and custom Yocto image.<br>
-<br>
-Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.jankovi=
-c@gmail.com" target=3D"_blank">strahinja.p.jankovic@gmail.com</a>&gt;<br>
----<br>
-=C2=A0hw/arm/allwinner-a10.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 18 ++++++++=
-++++++++++<br>
-=C2=A0hw/arm/cubieboard.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =
-5 +++++<br>
-=C2=A0include/hw/arm/allwinner-a10.h | 21 +++++++++++++++++++++<br>
-=C2=A03 files changed, 44 insertions(+)<br>
-<br>
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c<br>
-index 17e439777e..dc1966ff7a 100644<br>
---- a/hw/arm/allwinner-a10.c<br>
-+++ b/hw/arm/allwinner-a10.c<br>
-@@ -24,7 +24,9 @@<br>
-=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
-=C2=A0#include &quot;hw/boards.h&quot;<br>
-=C2=A0#include &quot;hw/usb/hcd-ohci.h&quot;<br>
-+#include &quot;hw/loader.h&quot;<br>
-<br>
-+#define AW_A10_SRAM_A_BASE=C2=A0 =C2=A0 =C2=A0 0x00000000<br>
-=C2=A0#define AW_A10_DRAMC_BASE=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c01000<br>
-=C2=A0#define AW_A10_MMC0_BASE=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c0f000<br>
-=C2=A0#define AW_A10_CCM_BASE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x01c20000<b=
-r>
-@@ -38,6 +40,22 @@<br>
-=C2=A0#define AW_A10_RTC_BASE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x01c20d00<b=
-r>
-=C2=A0#define AW_A10_I2C0_BASE=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c2ac00<br>
-<br>
-+void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk)<br>
-+{<br>
-+=C2=A0 =C2=A0 const int64_t rom_size =3D 32 * KiB;<br>
-+=C2=A0 =C2=A0 g_autofree uint8_t *buffer =3D g_new0(uint8_t, rom_size);<br=
->
-+<br>
-+=C2=A0 =C2=A0 if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) &lt; 0) {<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(&amp;error_fatal, &quot;%s: failed =
-to read BlockBackend data&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0__fun=
-c__);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 rom_add_blob(&quot;allwinner-a10.bootrom&quot;, buffer, rom_=
-size,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rom_size, A=
-W_A10_SRAM_A_BASE,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 NULL, NULL,=
- NULL, NULL, false);<br>
-+}<br></blockquote><div><br></div><div>Its probably fine for now to do it i=
-n the same way here for the A10 indeed. Perhaps in the future, we can try</=
-div><div>to share some overlapping code between the A10 and H3.</div><div><=
-br></div><div>So the patch looks fine to me:</div><div>Reviewed-by: Niek Li=
-nnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gma=
-il.com</a>&gt;</div><div><br></div><div>Regards,</div><div>Niek<br></div><d=
-iv>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
-x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-+<br>
-=C2=A0static void aw_a10_init(Object *obj)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0AwA10State *s =3D AW_A10(obj);<br>
-diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c<br>
-index afc7980414..37659c35fd 100644<br>
---- a/hw/arm/cubieboard.c<br>
-+++ b/hw/arm/cubieboard.c<br>
-@@ -99,6 +99,11 @@ static void cubieboard_init(MachineState *machine)<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_add_subregion(get_system_memory(), AW_A10=
-_SDRAM_BASE,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0machine-&gt;ram);<br>
-<br>
-+=C2=A0 =C2=A0 /* Load target kernel or start using BootROM */<br>
-+=C2=A0 =C2=A0 if (!machine-&gt;kernel_filename &amp;&amp; blk &amp;&amp; b=
-lk_is_available(blk)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Use Boot ROM to copy data from SD card to S=
-RAM */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_bootrom_setup(a10, blk);<br>
-+=C2=A0 =C2=A0 }<br>
-=C2=A0 =C2=A0 =C2=A0/* TODO create and connect IDE devices for ide_drive_ge=
-t() */<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0cubieboard_binfo.ram_size =3D machine-&gt;ram_size;<br>
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.=
-h<br>
-index 763935fca9..b3c9ed24c7 100644<br>
---- a/include/hw/arm/allwinner-a10.h<br>
-+++ b/include/hw/arm/allwinner-a10.h<br>
-@@ -15,6 +15,7 @@<br>
-=C2=A0#include &quot;hw/misc/allwinner-a10-ccm.h&quot;<br>
-=C2=A0#include &quot;hw/misc/allwinner-a10-dramc.h&quot;<br>
-=C2=A0#include &quot;hw/i2c/allwinner-i2c.h&quot;<br>
-+#include &quot;sysemu/block-backend.h&quot;<br>
-<br>
-=C2=A0#include &quot;target/arm/cpu.h&quot;<br>
-=C2=A0#include &quot;qom/object.h&quot;<br>
-@@ -47,4 +48,24 @@ struct AwA10State {<br>
-=C2=A0 =C2=A0 =C2=A0OHCISysBusState ohci[AW_A10_NUM_USB];<br>
-=C2=A0};<br>
-<br>
-+/**<br>
-+ * Emulate Boot ROM firmware setup functionality.<br>
-+ *<br>
-+ * A real Allwinner A10 SoC contains a Boot ROM<br>
-+ * which is the first code that runs right after<br>
-+ * the SoC is powered on. The Boot ROM is responsible<br>
-+ * for loading user code (e.g. a bootloader) from any<br>
-+ * of the supported external devices and writing the<br>
-+ * downloaded code to internal SRAM. After loading the SoC<br>
-+ * begins executing the code written to SRAM.<br>
-+ *<br>
-+ * This function emulates the Boot ROM by copying 32 KiB<br>
-+ * of data from the given block device and writes it to<br>
-+ * the start of the first internal SRAM memory.<br>
-+ *<br>
-+ * @s: Allwinner A10 state object pointer<br>
-+ * @blk: Block backend device object pointer<br>
-+ */<br>
-+void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk);<br>
-+<br>
-=C2=A0#endif<br>
--- <br>
-2.30.2<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+<div dir=3D"ltr">Greeting from Japan.<br>I am currently planning to use dua=
+l timers to create timer interrupts and figure the processing time using gl=
+obal timer.<br>However, neither could reveal the frequency.<br>Can someone =
+please tell me the frequency of the timer for me?<div><br></div><div>Below =
+is my development environment.</div><div><br><ul><li>QEMU emulator version =
+7.1.0 (v7.1.0-11925-g4ec481870e-dirty) for Windows10 64bit<br></li><li>Vexp=
+ress-A9 board emulate(Dual core drive)</li></ul><br>Thank you!</div><div><b=
+r></div><div>Naoki<br><br>--</div></div>
 
---000000000000c05cd405ef4497ae--
+--0000000000006ff48705ef49bf97--

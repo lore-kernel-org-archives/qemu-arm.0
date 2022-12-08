@@ -1,108 +1,124 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp35003ejb;
-        Wed, 7 Dec 2022 20:48:52 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf56Ff9RzTyki57pCicohztVx32sg07qfzdApHRmIkNjoNVsPcrNfwi2HPauBQko6bEV7iF4
-X-Received: by 2002:a0c:ea2f:0:b0:4c6:fb4e:fefb with SMTP id t15-20020a0cea2f000000b004c6fb4efefbmr43872765qvp.114.1670474932266;
-        Wed, 07 Dec 2022 20:48:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670474932; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp399136ejb;
+        Thu, 8 Dec 2022 06:58:34 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5ZIUaUDHxJ7ZvtP0MsmO6i3wVkenxtUKLJmggTUs52JZPzVKHMagYVEToelSxoqZnpMEJZ
+X-Received: by 2002:a05:622a:144:b0:3a5:361f:9819 with SMTP id v4-20020a05622a014400b003a5361f9819mr4822808qtw.18.1670511514343;
+        Thu, 08 Dec 2022 06:58:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670511514; cv=none;
         d=google.com; s=arc-20160816;
-        b=E5dy8pq5mmp4vQ/FN8PeLCCadH7TB9G+mt8bENk4VrIW1unRDAXjo3M71zZdP9/RkY
-         HJm96fTX0j1ecTYRysQbmyecCMBHfErtkuLno6g60qP201PXjdUytLri5O/3hDjFuwiq
-         ekn8PuBP872K5SWSRGiCnjxLN80bcFaaKI0h5annNU187WkzMBtvcrqRmo5NshiE0iPz
-         zHzPZTxClHYvRuxHT6TvW0OO83z4GWx4YmLYdDK0fy6nghFvY51+4D+uEt9yj3QCAdzQ
-         dhnmBJcF+m9vxXXI8X06H+6Xh41lQPxqBm0JV26Zjwlw2Vpk7CTyYI7N6Yu34TBn43FU
-         xPlg==
+        b=Xuas+/SXGpxlf5Ob+sxfzaktr2fcnUKNeg3n046cuTARVTy+k+NQvZlaxaJFA9oNe6
+         B67clSQDjx3gMGPOW0l+9giyrgno9ijQZwEJfp5xS9UkUYVUFazZNDwnHQov7oDrp10X
+         4sIGgXH2HdT4xgfqyuWIiB1okYwipdHb7AssiRyvIU3o93ctf0cmzzo7TfKXPkocehW9
+         pHl4CiEBDbln3I9+0EkI1D47EgGHt/RpHjtuLxMssmoO+9YZP7NR4zHFWD1yQ+qqQdfY
+         WkB6lAPei1FG9p4b67G//iRIrC3IfGoO9hQ6xgouKB3F0llfif2FTj+D8BOwYo8PsCkD
+         1PWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=o+mFnVtP0vibPn2ujAg03JG+GpLY5sNnaWUKmLrzx9Q=;
-        b=Kz5KhTffrR+YbcRn4cecZI2iyIArfFk4TTHFFQBoNk5NESZ25KYqv+3OQQsa/vYwjY
-         0S4f/z6a3uPYDDOBZP24YAZNCZ52Z/wZhd3xPzMTaCyL12p6s2O/Fwvl087qFuxKgFRp
-         qlWnKrGZAqDRxr0JcDybeF573jOOOGdhyYFByOH4Kkq8gIROqP6EkENz2ZINRYit9RxO
-         e0S6hnhZvcGiT0Ie33nFhwMsFP6wyQdVlgAnyBLivTWIR0FYBWKYETcd8ltjPYIbtLBc
-         bOjw0CITVzvZVX1Af6+p/V/4DuDUk6rqgCyJBhI5GXenYOjmUlZmmOJT3+rAhH0FPjYV
-         tkGg==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=4RFPA6eEeHI4Jv4yjfcr8VKG9mhfAMp+FIXSx/wsDxM=;
+        b=IhBKmR8PYHyW9AmTHaPSPwMh2PDrMVQWoKYpQ7dHNQlp/aZtm0NnsmIO2ugfFmsXbl
+         qaxWeYqtlrQ/GocBdX1td8Tmitqw0gigvv19AIDpOWUjrv0OKSpQfkCNFJ4qcK8Rif1x
+         df8n8HArduMPQrfHKEvUj/QdPb8Xbq1Ime20iZ7WhKsyfMRnG28g1S2Etj1fE+wUgu8t
+         51la2+JrLo36Jp4lwWQ2mNvQPOOofh5ceWuipT+D/ebnBKYkeyS3wMs1MAXryfm41pUq
+         ZpUE1ZJAABVNnqM0AYF6FR6QwWsEpkDwLwJVOkJB2GRWX4bOjU6hE4MYqyk2UrTj96Vr
+         3pvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@oecu.jp header.s=gmail header.b=Vch1ZJ8f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VB0Wjf3J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2-20020ac865c2000000b003a65b9faabasi10496278qto.179.2022.12.07.20.48.51
+        by mx.google.com with ESMTPS id dm45-20020a05620a1d6d00b006fec16fe25asi5015005qkb.762.2022.12.08.06.58.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Dec 2022 20:48:52 -0800 (PST)
+        Thu, 08 Dec 2022 06:58:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oecu.jp header.s=gmail header.b=Vch1ZJ8f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VB0Wjf3J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p38pr-0003xd-VY; Wed, 07 Dec 2022 23:48:39 -0500
+	id 1p3IM2-0004rQ-Bs; Thu, 08 Dec 2022 09:58:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mt21a003@oecu.jp>) id 1p38pp-0003x2-19
- for qemu-arm@nongnu.org; Wed, 07 Dec 2022 23:48:37 -0500
-Received: from gmgws.osakac.ac.jp ([202.232.129.24])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mt21a003@oecu.jp>) id 1p38pm-0004wi-D3
- for qemu-arm@nongnu.org; Wed, 07 Dec 2022 23:48:36 -0500
-Received: from gmgws.osakac.ac.jp (localhost [127.0.0.1])
- by gmgws1g.osakac.ac.jp (Postfix) with ESMTP id BCD53C413F5E
- for <qemu-arm@nongnu.org>; Thu,  8 Dec 2022 13:48:28 +0900 (JST)
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
- by gapp-gmgws1g.osakac.ac.jp (Postfix) with ESMTP id 4CA56C405439
- for <qemu-arm@nongnu.org>; Thu,  8 Dec 2022 13:48:28 +0900 (JST)
-Received: by mail-wm1-f69.google.com with SMTP id
- c187-20020a1c35c4000000b003cfee3c91cdso234633wma.6
- for <qemu-arm@nongnu.org>; Wed, 07 Dec 2022 20:48:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oecu.jp; s=gmail;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=o+mFnVtP0vibPn2ujAg03JG+GpLY5sNnaWUKmLrzx9Q=;
- b=Vch1ZJ8fCAgoeL8xHvEJ+10R3vNcKSyS9qyRwVAePTjoQhqsJ3JS/fImnY9d43UjH7
- zpBnTiwlZY+nPtVHAs2WUohegp4VnmxzWwm4c+GqEpzlO8grxKeY4hxcepnDIjE8tRpD
- /91VIxQhglgJI9UhfoEgKXUlEDqx0dSvjstHXZ3UC4Ft/LQrU1JPq5VE22s2EpV/0VzS
- s/kU8IpkM7yTAHAqI2o0EdyZ3Ojs7Q9Dz5KUYupoSfX7qQNa20z2CwLT5kgJxtyqB7vG
- udQ6GAfAU6aspN+aCzNdoQO6RmDJBsp0R6CHcgFqydXjs6fQF3z6Z0iXvjGBJ+sDvDaO
- /DxA==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1p3IM0-0004nr-Pt
+ for qemu-arm@nongnu.org; Thu, 08 Dec 2022 09:58:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1p3ILj-0001QP-P5
+ for qemu-arm@nongnu.org; Thu, 08 Dec 2022 09:58:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1670511490;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=4RFPA6eEeHI4Jv4yjfcr8VKG9mhfAMp+FIXSx/wsDxM=;
+ b=VB0Wjf3J3qr9Nm1LF56FourOboKaHk5vgPSwtYYSFYeI/23YzTOrVCe7ilw5Ak+yx8Be8+
+ j8euw+wPApBM7PfX3vMI/HGeaeOITWEgIoWTfuy2vpkLOq7KcskS/8Crm5OiRQGe1Cfm8k
+ OP5t3UVqw1BfHh8POODf2ubp/NsI0QU=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-572-soOPzw7nPVmUxBnV1ayDHA-1; Thu, 08 Dec 2022 09:58:09 -0500
+X-MC-Unique: soOPzw7nPVmUxBnV1ayDHA-1
+Received: by mail-qv1-f71.google.com with SMTP id
+ 71-20020a0c804d000000b004b2fb260447so1578573qva.10
+ for <qemu-arm@nongnu.org>; Thu, 08 Dec 2022 06:58:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=o+mFnVtP0vibPn2ujAg03JG+GpLY5sNnaWUKmLrzx9Q=;
- b=WKDpXbgDfWjQ5GptgocQILVYApzmf/o5IX1HIQLZNLIvkcmine7YY+qlyyWp0C427Q
- uRPemLc3oUYi0ukV4X1XuvCnWjtj9ckDWwO7afiLuwc3VzsTibvfh3VBNu6SNqFr7UZd
- GQJjzXvapMEwjAW+aDbce9oyG4Dl6rWbRaHS/phYdWIn187HH729Bvm/Slcv2YDZ9y8n
- zL4h04wHMCVFDq4n7w5dHxy8p/jFNoa5UYXlJjcfATlOLTSM0Mn8RoYZdKuU1++eVa4a
- pwxeSm1HRprdUHTdOFjlasO5YSZ+D35o3vSdjplmNdvgWYGH96sqLtMHQ+L9OsoMmeK8
- TKlw==
-X-Gm-Message-State: ANoB5pmOY0+UYymBM5oC0sYhezOkZGo5A9QHeJjiBinFqaDQsNSbIHty
- WYBOL4v33Oa4FCU+uCP+J55tpYNTdgCC4jhCdiPvMxOubrO5BMXMCALx6/+Y4059hSnwBg1Jr3o
- FhGGSsgv2/bwmcMMvCvmUrYmVjyIg0DW6
-X-Received: by 2002:a05:600c:3acb:b0:3d0:8916:78eb with SMTP id
- d11-20020a05600c3acb00b003d0891678ebmr17885939wms.68.1670474907291; 
- Wed, 07 Dec 2022 20:48:27 -0800 (PST)
-X-Received: by 2002:a05:600c:3acb:b0:3d0:8916:78eb with SMTP id
- d11-20020a05600c3acb00b003d0891678ebmr17885928wms.68.1670474906982; Wed, 07
- Dec 2022 20:48:26 -0800 (PST)
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4RFPA6eEeHI4Jv4yjfcr8VKG9mhfAMp+FIXSx/wsDxM=;
+ b=b1U/wqzlKe7MLWdjqJIIuus92T8hlbOUF4uZnwsa5OedULqCT+5JJ6sWN66hbB2a9j
+ rs2G6YzygHPuA17SsKYTx7Skv6cPJaGshfm22BFRe4pBn7RrFjdNZ6w7dM/I0grycJb+
+ fOhRp9j0cijLtN9FHrr7L1M6uTqTpOw6YlIwrBZ9e8tiRCMjdSsD5iK4ffzZYkWyFn1U
+ 5j9J7TI/jtE4CcyQkfbfJmS1hbm9Xlr2a9UOULE7Ag8gi3JtE+A4jFZBFkNGKzZtkmo5
+ CzDqRc9yIyawr2a7buAvyuYOa897d4y6osY4NaNEjPJhUilscNgeMAVMXEDZbYJRpFXk
+ /OZg==
+X-Gm-Message-State: ANoB5pl9ZAJl9zIAst2v/V8Gta0UP7qwkBuA3JMGe25YAPG5T8+YS9l+
+ kkhr3SWnujFl2zFpsjGmvTGGZ3kYBk+QECT9ZfonpAFbGg8/DgwwcLTc+FDW1CqGSO5edGTZGs0
+ 8QHLnJbbf8WMI
+X-Received: by 2002:a05:622a:144:b0:3a5:361f:9819 with SMTP id
+ v4-20020a05622a014400b003a5361f9819mr4820797qtw.18.1670511488736; 
+ Thu, 08 Dec 2022 06:58:08 -0800 (PST)
+X-Received: by 2002:a05:622a:144:b0:3a5:361f:9819 with SMTP id
+ v4-20020a05622a014400b003a5361f9819mr4820769qtw.18.1670511488474; 
+ Thu, 08 Dec 2022 06:58:08 -0800 (PST)
+Received: from x1n (bras-base-aurron9127w-grc-46-70-31-27-79.dsl.bell.ca.
+ [70.31.27.79]) by smtp.gmail.com with ESMTPSA id
+ s190-20020ae9dec7000000b006f7ee901674sm18683355qkf.2.2022.12.08.06.58.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Dec 2022 06:58:07 -0800 (PST)
+Date: Thu, 8 Dec 2022 09:58:06 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, mst@redhat.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, jean-philippe@linaro.org,
+ bharat.bhushan@nxp.com, alex.williamson@redhat.com
+Subject: Re: [PATCH for 8.0 0/2] virtio-iommu: Fix Replay
+Message-ID: <Y5H7fu2ikdXU8b3i@x1n>
+References: <20221207133646.635760-1-eric.auger@redhat.com>
+ <Y5EmmjKBBnjSlvd+@x1n>
+ <a281b12b-d905-4c96-72ce-6e22e41d0cfb@redhat.com>
 MIME-Version: 1.0
-From: =?UTF-8?B?5rGg5pys5bCa5pqJ?= <mt21a003@oecu.jp>
-Date: Thu, 8 Dec 2022 13:48:15 +0900
-Message-ID: <CADXXVoJZJZgLrP1RFEouT-3UzWJQn8aY_vws1sr-D5ua+gw-AA@mail.gmail.com>
-Subject: About the frequency of the dual timer(SP804) and global timer in
- vexpress-a9
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000006ff48705ef49bf97"
-Received-SPF: pass client-ip=202.232.129.24; envelope-from=mt21a003@oecu.jp;
- helo=gmgws.osakac.ac.jp
+In-Reply-To: <a281b12b-d905-4c96-72ce-6e22e41d0cfb@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,42 +133,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0fvZJpXl9jBG
+X-TUID: fWnNDtbGTA8s
 
---0000000000006ff48705ef49bf97
-Content-Type: text/plain; charset="UTF-8"
+On Thu, Dec 08, 2022 at 08:48:09AM +0100, Eric Auger wrote:
+> Hi Peter,
 
-Greeting from Japan.
-I am currently planning to use dual timers to create timer interrupts and
-figure the processing time using global timer.
-However, neither could reveal the frequency.
-Can someone please tell me the frequency of the timer for me?
+Hi, Eric,
 
-Below is my development environment.
+> 
+> On 12/8/22 00:49, Peter Xu wrote:
+> > Hi, Eric,
+> >
+> > On Wed, Dec 07, 2022 at 02:36:44PM +0100, Eric Auger wrote:
+> >> When assigning VFIO devices protected by a virtio-iommu we need to replay
+> >> the mappings when adding a new IOMMU MR and when attaching a device to
+> >> a domain. While we do a "remap" we currently fail to first unmap the
+> >> existing IOVA mapping and just map the new one. With some device/group
+> >> topology this can lead to errors in VFIO when trying to DMA_MAP IOVA
+> >> ranges onto existing ones.
+> > I'm not sure whether virtio-iommu+vfio will suffer from DMA races like when
+> > we were working on the vt-d replay for vfio.  The issue is whether DMA can
+> > happen right after UNMAP but before MAP of the same page if the page was
+> > always mapped.
+> 
+> I don't think it can race because a mutex is hold while doing the
+> virtio_iommu_replay(), and each time a virtio cmd is handled (attach,
+> map, unmap), see virtio_iommu_handle_command.
+> So I think it is safe.
 
+It's not the race in the code, it's the race between modifying host IOMMU
+pgtable with DMA happening in parallel.  The bug triggered with DMA_MAP
+returning -EEXIST means there's existing mapping.
 
-   - QEMU emulator version 7.1.0 (v7.1.0-11925-g4ec481870e-dirty) for
-   Windows10 64bit
-   - Vexpress-A9 board emulate(Dual core drive)
+If during replay there's mapped ranges and the ranges are prone to DMA,
+then IIUC it can happen.
 
+I didn't really check specifically for virtio-iommu and I mostly forget the
+details, just to raise this up.  It's possible for some reason it just
+can't trigger.  VT-d definitely can, in which case we'll see DMA errors on
+the host from the assigned device when the DMA triggers during the "unmap
+and map" window.
 
-Thank you!
+Thanks,
 
-Naoki
+-- 
+Peter Xu
 
---
-
---0000000000006ff48705ef49bf97
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Greeting from Japan.<br>I am currently planning to use dua=
-l timers to create timer interrupts and figure the processing time using gl=
-obal timer.<br>However, neither could reveal the frequency.<br>Can someone =
-please tell me the frequency of the timer for me?<div><br></div><div>Below =
-is my development environment.</div><div><br><ul><li>QEMU emulator version =
-7.1.0 (v7.1.0-11925-g4ec481870e-dirty) for Windows10 64bit<br></li><li>Vexp=
-ress-A9 board emulate(Dual core drive)</li></ul><br>Thank you!</div><div><b=
-r></div><div>Naoki<br><br>--</div></div>
-
---0000000000006ff48705ef49bf97--

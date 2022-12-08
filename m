@@ -1,112 +1,116 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp497329ejb;
-        Thu, 8 Dec 2022 08:59:42 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5MqV1nz6Ogarf7q8utKXVtnMAzhMBsmvDXgg+387FaojWeYsODzBobE4NF6Tm6HcXrObuZ
-X-Received: by 2002:a05:6214:70a:b0:4c6:ef2f:827a with SMTP id c10-20020a056214070a00b004c6ef2f827amr3433810qvz.5.1670518782507;
-        Thu, 08 Dec 2022 08:59:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670518782; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp462248ejb;
+        Thu, 8 Dec 2022 08:12:07 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7p4bG0Q+Z6HqYgnra47KUvK/6DHAsvnXBqWWcUw+gkVOGOEyBMSzOgRp8+8vGgKziKe6lm
+X-Received: by 2002:ac8:1099:0:b0:39c:da20:626 with SMTP id a25-20020ac81099000000b0039cda200626mr3418717qtj.48.1670515927526;
+        Thu, 08 Dec 2022 08:12:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670515927; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gbzzy3QRAMdtkj9F5kqC309Z++ii7aO6pCJyUGq6zxD/gf9Cnsw/HB/UyOaO2iwD1g
-         mmizse3Tp3uRzV25oLlIWh4bhNQc0WSpUR937tbUqI8H7ms0fosCyJEL1suvppPIyDtr
-         SYr3cFsNDaN+6q/eyyAoB9SrlEosOQAEcCG++W4TkbrJ9xA9yE95+h5gTYeg5XRfwwot
-         11TJHBxnb/z6j60s7rdDhEC6ee1G8QNpWvNVBEWVRZaxHqd3wxSkj2GXRrFrcsSygMk1
-         BZfH0sX/m8ym0WZG3E24GFrn9nnuRSpZE7m2cA+SBUClj4qOduBByUNNHiblsnfYkAe9
-         NzgA==
+        b=ACA2hf2e2LN+L3SvpYOFgxURIHy8a4fkdVoVqCvYNZA7gI6YCzx1+aHrzYG6QonRR1
+         //PonLTIXdRJLrMMxvZj69pbbX0nAxnrMcqx+EBIlKbTD85cqTGs2Ta9AFYNGjTlP6p1
+         1X4QU4Vsk0Oej4bdfr0S1eiokYz3aMfq0EfAh7MxL1YaLBBBBjCoZ/rH+CuTQ5TOTKVn
+         cp3oTrN/p/coG611jL4GY99thxoo/4Cwtwq/KR8r1ay+nqXYK0++b2EvitfhrQBk2yOM
+         QpHVXTd9vl7QcbHl1Y3NIcJ4gJ3UOPZYJ169/mgkxCewkNLduBAS0P6IJwd0WlOskIKU
+         4SOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:ui-outboundreport
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=b4PhvBVZ2ecVV3bfocIOudK/lhR2Sm/Hi09/qx6yB8E=;
-        b=HcmZCxaKmygzTmQ9gQ9Xy527MIMsxB56sEMCj/V4KBqiLJ3BWhBm9rDlmKTL3olssJ
-         i7qOBl5BdJyE80z3Tv8fZ6Pa88oz3+1dBW+MpUJESEDEQKq1Nl3QeGeJqgzrmO7TExX9
-         jwpEu3ctnTefnj17P7wYfj6G1NZ5pMlTnIDr8AsWFKO0XsZAUCRNqtN+VcGwsF0Pc4L5
-         R3ClwA2S3nJXfaphQ8S+jOD8KCpD06ULkSrKiSNna8f97sBeGV7Em8fod30hsUSUp3Ru
-         AGq4/jfiY9thXiVnyNBBXAaQdaHovQA98GzMV2UXS2xsBqrvaGIYs4KV9c0qmuOm9qZo
-         Xfag==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=HL8kBAmFQ6Fmcok8n57ZpvLDofuWd2hjqxNjJFRIOYY=;
+        b=Jo9Q2t58t/MDR6tbFbn5VCVhkpwI5V7zeojCFLWudcj0AYwluvSiZSbFLU5NzAZWta
+         9cKmyCMbcBXHt/JXJWip7enHRi9W+/QtWhcNBKaifaWmCcF+Ci1+1f1ktOOqPsMrKP+J
+         j4cJU8yhCkvCB/Xk5M94KJA3NCWlacANmKm7P8FB0Bx/+7IocuB0707qpVu8p97SMj+i
+         ZYlkKAmkxle/Us5AbgQBn9XVzd2BvuXbosUafZiGbHq7u5vAaq6rgrldCUFEStx4dk7e
+         28mldMlk35EzUVRgREIBNHX0bG+PUFTwg8VbFXT4dKvAA+xrFsB1jqHQmcavZD5nep+6
+         KMKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=naTN8ReO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TgKfDERR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fo5-20020ad45f05000000b004a61f930eadsi12353017qvb.427.2022.12.08.08.59.42
+        by mx.google.com with ESMTPS id bt15-20020ac8690f000000b003a57645c04esi12607195qtb.590.2022.12.08.08.12.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Dec 2022 08:59:42 -0800 (PST)
+        Thu, 08 Dec 2022 08:12:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=naTN8ReO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TgKfDERR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p3KF8-0002SU-Q7; Thu, 08 Dec 2022 11:59:30 -0500
+	id 1p3JVA-0006tU-CE; Thu, 08 Dec 2022 11:12:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1p3KF7-0002SI-Ew; Thu, 08 Dec 2022 11:59:29 -0500
-Received: from mout.gmx.net ([212.227.15.15])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1p3KF5-0006C5-8P; Thu, 08 Dec 2022 11:59:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
- t=1670518758; bh=QukUxVqhkej0RqzBcfcoXlCNLMO5GAAlg4VaR29XBfI=;
- h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
- b=naTN8ReON9B/QGBWGd43y92uceBFyX32KJp5LRFWDEGWmJhWPdUd51/gH2D4i1vjo
- Ue4TNBtbnFlu8VuGOeziVqhZpaWwivu/kcEyf85zZpKjHlzb8XdHcYhGRNAUj55wEt
- HAya5sAnM64OrzybZN5Nrz+DuUx1S2GmNLsOCue3uDLLGtLjtW//fnuAPOZH7KbCJo
- zEDy+d2KAqtpMoZ3AlG4ILlPGLJy3wgAqg4F24mvyYXpU+nJb+OHP8Z7WnYU4+oD5f
- ulHEDfiqKZommgboeKSiNJL1fgGiOghrkixQ/l9WBkjBRicpCym/crAe18I98vt11W
- R9cXZeQSYaaSA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from localhost ([92.225.24.60]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MmlT2-1oddr93kOs-00jv8z; Thu, 08
- Dec 2022 17:59:17 +0100
-Message-ID: <c31be243-e380-eabd-f387-0b0923d4f6c1@gmx.de>
-Date: Thu, 8 Dec 2022 17:59:17 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3JV8-0006tF-Ly
+ for qemu-arm@nongnu.org; Thu, 08 Dec 2022 11:11:58 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3JV6-0005Xx-C8
+ for qemu-arm@nongnu.org; Thu, 08 Dec 2022 11:11:58 -0500
+Received: by mail-wr1-x435.google.com with SMTP id w15so2165552wrl.9
+ for <qemu-arm@nongnu.org>; Thu, 08 Dec 2022 08:11:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=HL8kBAmFQ6Fmcok8n57ZpvLDofuWd2hjqxNjJFRIOYY=;
+ b=TgKfDERR5Ruo+uB+jlW0q0XtgDrpt7SdLis8DZxOZWDIET4fS9httCzSUGyLI1muBB
+ wOH+0HuAwkLtQ7403nny6hrYLogzIsDKMqSfgMqidyMZoOCwyziQC/tjwEagtAaRwoM3
+ g0oOg9R5Nllk0LmKybPwVk91dNBco5KEaB56ZFYa/XMCmuR+B370CSraOZTkThQDlV6u
+ lP77C1hi4chBV63Jz/ozW/C+/UnYxKYVHutuWxcWKwwAQL+GYJBNS+gKXaLRuikvty1V
+ CdEUTBmdgS5Xfu6e0KdSv39jmiVgqO3a3cGQlk8aC0b1Xd2oSzEgKsscrudb/+i3O1Kb
+ dJdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=HL8kBAmFQ6Fmcok8n57ZpvLDofuWd2hjqxNjJFRIOYY=;
+ b=FAULz5lH6ea67JI79T87PP0UVj0doHBry47ZKkJI0KKvXQHV6MKHIxLpbPYGa2RF3J
+ fmJVZstA3TVmksCOcRhL8fNO04/RMt6OITz+YSydLzbshBUmCwdxRpQD+3sVhAkZgPcz
+ k2wV1vtm9Q6n5Wb/9T1vqETJcu0xe9C2wmGitdSENamFAVuK9a2ELrzzSK2vhWRLZgrx
+ JQZTdeBxQs4WJw6wEXk6gWci80atx8heRenVDsza3gp6d8GQcimjPVIRzE4Fs6jQG04b
+ CgCGwuFwu+aeV416lzfZDG3eEWT765mYZfj4PjFEjY075jwzoi2vnH45RW/jyoubgmvc
+ Pc2w==
+X-Gm-Message-State: ANoB5pmaRLyN7mzu33hCHfols6liWp4gNoI9LDi1JTaxYFbfpTSpkSLe
+ U8HQztoytMZJmISSF+CbkUBHZQ==
+X-Received: by 2002:adf:fa0c:0:b0:242:1a1e:e074 with SMTP id
+ m12-20020adffa0c000000b002421a1ee074mr1660506wrr.61.1670515914523; 
+ Thu, 08 Dec 2022 08:11:54 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
+ by smtp.gmail.com with ESMTPSA id
+ s13-20020a5d424d000000b002427bfd17b6sm8323960wrr.63.2022.12.08.08.11.53
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 08 Dec 2022 08:11:54 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Eric Auger <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-arm@nongnu.org, Babu Moger <babu.moger@amd.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eric Blake <eblake@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Stefan Weil <sw@weilnetz.de>
+Subject: [RFC PATCH-for-8.0] hw: Avoid using inlined functions with external
+ linkage
+Date: Thu,  8 Dec 2022 17:11:52 +0100
+Message-Id: <20221208161152.28976-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH qemu.git 0/1] hw/arm/virt: add 2x sp804 timer
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <166983457648.13115.4940680286975412418-0@git.sr.ht>
- <CAFEAcA8csAbbdvLoq+202CAQ0PLWdHaBTfADtqx33c=DNU-wSQ@mail.gmail.com>
-Content-Language: de-DE, en-US
-From: Axel Heider <axelheider@gmx.de>
-In-Reply-To: <CAFEAcA8csAbbdvLoq+202CAQ0PLWdHaBTfADtqx33c=DNU-wSQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:0jb2QbDr649fH969MFou2Y+GTxuVjqdz8oJyzfZ2vErDfnKq80n
- ddsBBduM7JM5X7Tvf2697M9q3AdPKDTI67A7RHnoC+0q6YqNnzz49IUNm2UWzBQgvXzyMCl
- M+xc2NYBeL7LTgg2CuA12r3d5LoqoDvTYe4swy2Qs4oEp5k2pqJvYUh3Io0HdhsUE6fNrB8
- v6bPcrHMAvgLBAoj1wnGg==
-UI-OutboundReport: notjunk:1;M01:P0:lrwoESYrS/c=;x4NqSGAJ6N5zzBbE62EAnwrJD3j
- XanDtQQcCCHQNWLEp8qG+T4NZyvxjkEdGkNSUvTMnY3WpPHEWtfgwFxlhXWd5C5i/QHN7EKm0
- EgEH4GHEhmN1Xmm5lFRoTjEhDnkmV6WuFnrDuX2ypeKkYRLXu4f3+THYE7dS1Kg+gQnxzzIjG
- nFsCQeklObuaCf0U7FUkwlcX6NNKupLupIBOL5qcXTThgY4YkK832VvWeAWgKh1CG6JIBAcDE
- 5mgDc9jKGgLDhyQmzMAuHJX2u7VG39VG5T6RYVAokYXl7iQfpAps4bJ3eAVfcKJrbcKvCavAc
- UcP4Yvog/JAY3QhRhTjw80FwypKgA1CGY3dpqcYYhHSC/OdNDxGHyBeJ9eAey7dycqC6yT4ug
- dGiJ4GvXgzwzMeevebQf+QUJ1ZvdRJLDIENGhTCz5r1Y2pnagazxVICd/6TeKPFV35nsxSNv7
- wq5PgZNmAB6nswMBEbSW2FF5B+HOPta7zD/aQ6vsDxOzvbKqlMJaB/s8VXO9pSoDPpzQIGBz6
- ABHFdKJnMVEAU/mZ0bvbnY2cbJ7lWf4y+HgqAeDSiFJ1cgW51lHPxgJQatwklTWUaQ3ohADGj
- L94ujXhFDGPYv+G+YFF1cHO3wUoLgyjttfzoWlKzSM+KdQND0kKKhnCMlysW90K+N1fMuPxeZ
- 4bqRFUS2G/qMIk7BZH6IercGFekyYcw05lx+QEPEIKKOnQcBwJnN0OD1+PukchfiDM1ZavviW
- O2eC8tFnWVLoZ+n2PCMMLyEFIpMJRvKiFLBsOvAsgC/tRb1rqFn1iJ+8pVs5MxyAIUSbVmuE/
- fEwFnqnAUtOGnIYA0xVe3Ib8dDROO8NX1Q3W9jWQR1CgDuAdzur6ZT56lKXYnrI5n2OLlfIGO
- IlL6oOWiqqL45rr4Bg+rP496wnjP74qAcZnFjE7GTSi40PjppEKciLMYTeUYCcAQqMJgzYAX/
- Ul888Fd2pRGRcugU13U6cGToxsM=
-Received-SPF: pass client-ip=212.227.15.15; envelope-from=axelheider@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.266, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,41 +125,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a8WkTPW9KEKy
+X-TUID: Z/dT588bFK3S
 
-Peter,
+When using Clang ("Apple clang version 14.0.0 (clang-1400.0.29.202)")
+and building with -Wall we get:
 
->> This patch adds timer peripherals to the arm-virt machine.>>
-> Is there a reason you can't use the CPU's built-in generic timer
-> device ? That is what typical guest code does on this system.
-> I'm a bit reluctant to add more devices to the virt board
-> because over time it gradually gets increasingly complicated,
-> and every new device model we expose to the guest is another
-> thing that's part of the security attack surface for guest
-> code trying to escape from a KVM VM.
+  hw/arm/smmu-common.c:173:33: warning: static function 'smmu_hash_remove_by_asid_iova' is used in an inline function with external linkage [-Wstatic-in-inline]
+  hw/arm/smmu-common.h:170:1: note: use 'static' to give inline function 'smmu_iotlb_inv_iova' internal linkage
+    void smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova,
+    ^
+    static
 
-For the seL4 specific case, this is currently not possible in
-the standard configuration. It's only exposed for a special
-debug and benchmarking configuration.
+None of our code base require / use inlined functions with external
+linkage. Some places use internal inlining in the hot path. These
+two functions are certainly not in any hot path and don't justify
+any inlining.
 
-The catch we have here is, that the virt machine is a nice
-generic ARM (and RISC-V) machine for OS testing purposes also,
-but it sometimes lacks things (see my other patched for the
-UART). So, I wonder what would be the best option to continue
-here. Should we consider defining another generic machine
-profile that is more suited for the system emulation use case.
-This is what OS developer could use then. Or could the virt
-machine get some config parameters to customize it further.
-So the "Machine-specific options" would  support a "sp804=on"
-that would add two timer peripherals then?
+Reported-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+RFC: Any better justification?
+---
+ hw/arm/smmu-common.c | 10 +++++-----
+ hw/i386/x86.c        |  3 +--
+ 2 files changed, 6 insertions(+), 7 deletions(-)
 
-The really cool customization option would be passing a DTB
-to QEMU that describes exactly what "virt" machine is to be
-emulated. I think the Xlinx fork used to support this feature
-partly. Not sure if there was ever an attempt to mainline this?
-But it would avoid running into a command parameters hell for
-customization options.
-
-Axel
-
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index e09b9c13b7..298e021cd3 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -116,7 +116,7 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new)
+     g_hash_table_insert(bs->iotlb, key, new);
+ }
+ 
+-inline void smmu_iotlb_inv_all(SMMUState *s)
++void smmu_iotlb_inv_all(SMMUState *s)
+ {
+     trace_smmu_iotlb_inv_all();
+     g_hash_table_remove_all(s->iotlb);
+@@ -146,7 +146,7 @@ static gboolean smmu_hash_remove_by_asid_iova(gpointer key, gpointer value,
+            ((entry->iova & ~info->mask) == info->iova);
+ }
+ 
+-inline void
++void
+ smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova,
+                     uint8_t tg, uint64_t num_pages, uint8_t ttl)
+ {
+@@ -174,7 +174,7 @@ smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova,
+                                 &info);
+ }
+ 
+-inline void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
++void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
+ {
+     trace_smmu_iotlb_inv_asid(asid);
+     g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid, &asid);
+@@ -374,7 +374,7 @@ error:
+  *
+  * return 0 on success
+  */
+-inline int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
++int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+                     SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+ {
+     if (!cfg->aa64) {
+@@ -483,7 +483,7 @@ static void smmu_unmap_notifier_range(IOMMUNotifier *n)
+ }
+ 
+ /* Unmap all notifiers attached to @mr */
+-inline void smmu_inv_notifiers_mr(IOMMUMemoryRegion *mr)
++void smmu_inv_notifiers_mr(IOMMUMemoryRegion *mr)
+ {
+     IOMMUNotifier *n;
+ 
+diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+index 78cc131926..9ac1680180 100644
+--- a/hw/i386/x86.c
++++ b/hw/i386/x86.c
+@@ -64,8 +64,7 @@
+ /* Physical Address of PVH entry point read from kernel ELF NOTE */
+ static size_t pvh_start_addr;
+ 
+-inline void init_topo_info(X86CPUTopoInfo *topo_info,
+-                           const X86MachineState *x86ms)
++void init_topo_info(X86CPUTopoInfo *topo_info, const X86MachineState *x86ms)
+ {
+     MachineState *ms = MACHINE(x86ms);
+ 
+-- 
+2.38.1
 

@@ -1,132 +1,111 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp129080ejb;
-        Wed, 7 Dec 2022 23:48:43 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6+lBAQrOtdFs9u1NyHOfimoYhzX+hp6gvEohQdO8VYnX88yuNpENNlL/WT/es5vGkkF8HM
-X-Received: by 2002:ad4:55cd:0:b0:4c7:57af:c44 with SMTP id bt13-20020ad455cd000000b004c757af0c44mr17629280qvb.98.1670485723637;
-        Wed, 07 Dec 2022 23:48:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670485723; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp497329ejb;
+        Thu, 8 Dec 2022 08:59:42 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5MqV1nz6Ogarf7q8utKXVtnMAzhMBsmvDXgg+387FaojWeYsODzBobE4NF6Tm6HcXrObuZ
+X-Received: by 2002:a05:6214:70a:b0:4c6:ef2f:827a with SMTP id c10-20020a056214070a00b004c6ef2f827amr3433810qvz.5.1670518782507;
+        Thu, 08 Dec 2022 08:59:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670518782; cv=none;
         d=google.com; s=arc-20160816;
-        b=zUFYdEdDVBBLMgGlyMLsLVI+bWjAJ6NmAit0XIHIojBhdXMqDP1Ha5Hi6Dl20ft8uk
-         2Md3T+q3sGRVzWVATXGY8OtejOCxzAC57ahSRzFTVm95wexHGWGuuqvxD51y1h6Q6aoM
-         3hmVV3JO16aJeSgLgx8xAkVWxHAg3dOx8NJQp4b23Z3nQTauclqteANbs7ECxJFjRmFs
-         ua4Gu0ewm/+BxiPwOW1SfCqF3NkkmrUgfM465jpM3VwkmtBbOxW5GyMipgewA1JxqdEB
-         4Ti/jYuBwiDW9msxwvyEqbv6GXRHDxibBDf26vzBvZZ80zP8OcNWs2gQVzFdmGqEQX8A
-         wgUw==
+        b=Gbzzy3QRAMdtkj9F5kqC309Z++ii7aO6pCJyUGq6zxD/gf9Cnsw/HB/UyOaO2iwD1g
+         mmizse3Tp3uRzV25oLlIWh4bhNQc0WSpUR937tbUqI8H7ms0fosCyJEL1suvppPIyDtr
+         SYr3cFsNDaN+6q/eyyAoB9SrlEosOQAEcCG++W4TkbrJ9xA9yE95+h5gTYeg5XRfwwot
+         11TJHBxnb/z6j60s7rdDhEC6ee1G8QNpWvNVBEWVRZaxHqd3wxSkj2GXRrFrcsSygMk1
+         BZfH0sX/m8ym0WZG3E24GFrn9nnuRSpZE7m2cA+SBUClj4qOduBByUNNHiblsnfYkAe9
+         NzgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:ui-outboundreport
+         :content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=w735L7rG/1OHFXxc8VQz9XUEVB9DpDTD+RfPH0Wrz7I=;
-        b=IwUla1jxlHkRWquSrdSRt3iAXPXSw5RfBD7C9EQnwyCtbR+Px5EG9Y1GulhT6TEsgj
-         YbUWhfIxC6PKQfcXUR/iJIGgCUM9Dnb7+YH6vgsabSC5O89uZ/xibs+2e5oh2OJNbpWx
-         luEWBsd9Ixh5yZQ1WJbpmISjR0FqO8XJcVskU1rYwjkI+SAhP+enAp6B93TxsQ/44YKq
-         tig3muzicmlHZJKRc8/vkHe1ktcMJR9atQZeAnIzaabav6bA4mYHFnbf2pIC78sZuGMb
-         EXmlk7xcoHP3Jnzf4dAgLgh+jCOFQzcDCOO5w9BRNydHZYP+i8sy7WTl0mVOMB+f158n
-         bZ2w==
+        bh=b4PhvBVZ2ecVV3bfocIOudK/lhR2Sm/Hi09/qx6yB8E=;
+        b=HcmZCxaKmygzTmQ9gQ9Xy527MIMsxB56sEMCj/V4KBqiLJ3BWhBm9rDlmKTL3olssJ
+         i7qOBl5BdJyE80z3Tv8fZ6Pa88oz3+1dBW+MpUJESEDEQKq1Nl3QeGeJqgzrmO7TExX9
+         jwpEu3ctnTefnj17P7wYfj6G1NZ5pMlTnIDr8AsWFKO0XsZAUCRNqtN+VcGwsF0Pc4L5
+         R3ClwA2S3nJXfaphQ8S+jOD8KCpD06ULkSrKiSNna8f97sBeGV7Em8fod30hsUSUp3Ru
+         AGq4/jfiY9thXiVnyNBBXAaQdaHovQA98GzMV2UXS2xsBqrvaGIYs4KV9c0qmuOm9qZo
+         Xfag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cjv5LmT6;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=naTN8ReO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14-20020a05620a124e00b006fec356aa37si4327042qkl.508.2022.12.07.23.48.43
+        by mx.google.com with ESMTPS id fo5-20020ad45f05000000b004a61f930eadsi12353017qvb.427.2022.12.08.08.59.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Dec 2022 23:48:43 -0800 (PST)
+        Thu, 08 Dec 2022 08:59:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cjv5LmT6;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=naTN8ReO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p3Bdq-0003yF-Gi; Thu, 08 Dec 2022 02:48:28 -0500
+	id 1p3KF8-0002SU-Q7; Thu, 08 Dec 2022 11:59:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1p3Bdh-0003wt-Tg
- for qemu-arm@nongnu.org; Thu, 08 Dec 2022 02:48:18 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
+ id 1p3KF7-0002SI-Ew; Thu, 08 Dec 2022 11:59:29 -0500
+Received: from mout.gmx.net ([212.227.15.15])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1p3Bdg-0000ao-0w
- for qemu-arm@nongnu.org; Thu, 08 Dec 2022 02:48:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1670485694;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=w735L7rG/1OHFXxc8VQz9XUEVB9DpDTD+RfPH0Wrz7I=;
- b=Cjv5LmT6kfVRV3CFE+1e06kEduWF/fl7FDLSFIrTwz8HinHrRfzB3fE4HHiCeS2lWOZ4Gt
- wCNrklzOBKyHWHg38VwECb85oCCUknFrMqy3Sb0iBGwYjtNlKvLi7DTnY91Gq8KaMFk0PO
- FPOGhRi6ltgY791qvgM3HcM1t7ENMP8=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-93-6356QEwwM1WwICgyNuOGvg-1; Thu, 08 Dec 2022 02:48:13 -0500
-X-MC-Unique: 6356QEwwM1WwICgyNuOGvg-1
-Received: by mail-qv1-f70.google.com with SMTP id
- w1-20020a056214012100b004c6ecf32001so693249qvs.8
- for <qemu-arm@nongnu.org>; Wed, 07 Dec 2022 23:48:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=w735L7rG/1OHFXxc8VQz9XUEVB9DpDTD+RfPH0Wrz7I=;
- b=Wx5qraBole/AozZUkc9DuX8Nn6L/vKY0ulD4EyVias9+f+DiD/BhuMaM8yVfitlRHC
- ahttSXz+alfVNqC1NQ0OGUuTGbPtaf3bPzAeYlu2OV4pWiZQExFpAumc7afAmFpSwRqy
- /AwAqV1AKYO/k1y6ML9d0/8YIveks3XCrSe6VjpWOFU5Y6yQnjaASUDUr22oz47KErnh
- hCBAqG9ILL90y6xxCifFHe1TT9eV4y8uvNekts6AiHk39p5XLFs1b2pwIBRKnHr8fu2I
- 7XwEwV+pXeg83++9JbACTa+pVBozCP5fvAc4Jz/Tkkl0NwgMIob/OYFoDNo4qVJeT3jx
- nxew==
-X-Gm-Message-State: ANoB5plclhSQ7E1lFAEuHU2UjRPj95E7sybXs7Vunh3O2smTX2UuQbL2
- SWrKcb1p3/T+weaSr5PgtRg+UKczt3pQNlDthGg3Oqsa+/HbTg202ncOAI12qj/NOwjlS/oEe/v
- 063ttkReH9oI3
-X-Received: by 2002:a37:a94a:0:b0:6fe:b1f7:38c9 with SMTP id
- s71-20020a37a94a000000b006feb1f738c9mr13677175qke.250.1670485693197; 
- Wed, 07 Dec 2022 23:48:13 -0800 (PST)
-X-Received: by 2002:a37:a94a:0:b0:6fe:b1f7:38c9 with SMTP id
- s71-20020a37a94a000000b006feb1f738c9mr13677169qke.250.1670485692975; 
- Wed, 07 Dec 2022 23:48:12 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ay9-20020a05620a178900b006faa88ba2b5sm18515674qkb.7.2022.12.07.23.48.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Dec 2022 23:48:12 -0800 (PST)
-Message-ID: <a281b12b-d905-4c96-72ce-6e22e41d0cfb@redhat.com>
-Date: Thu, 8 Dec 2022 08:48:09 +0100
+ (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
+ id 1p3KF5-0006C5-8P; Thu, 08 Dec 2022 11:59:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
+ t=1670518758; bh=QukUxVqhkej0RqzBcfcoXlCNLMO5GAAlg4VaR29XBfI=;
+ h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=naTN8ReON9B/QGBWGd43y92uceBFyX32KJp5LRFWDEGWmJhWPdUd51/gH2D4i1vjo
+ Ue4TNBtbnFlu8VuGOeziVqhZpaWwivu/kcEyf85zZpKjHlzb8XdHcYhGRNAUj55wEt
+ HAya5sAnM64OrzybZN5Nrz+DuUx1S2GmNLsOCue3uDLLGtLjtW//fnuAPOZH7KbCJo
+ zEDy+d2KAqtpMoZ3AlG4ILlPGLJy3wgAqg4F24mvyYXpU+nJb+OHP8Z7WnYU4+oD5f
+ ulHEDfiqKZommgboeKSiNJL1fgGiOghrkixQ/l9WBkjBRicpCym/crAe18I98vt11W
+ R9cXZeQSYaaSA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from localhost ([92.225.24.60]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MmlT2-1oddr93kOs-00jv8z; Thu, 08
+ Dec 2022 17:59:17 +0100
+Message-ID: <c31be243-e380-eabd-f387-0b0923d4f6c1@gmx.de>
+Date: Thu, 8 Dec 2022 17:59:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [PATCH for 8.0 0/2] virtio-iommu: Fix Replay
-To: Peter Xu <peterx@redhat.com>
-Cc: eric.auger.pro@gmail.com, mst@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, jean-philippe@linaro.org, bharat.bhushan@nxp.com,
- alex.williamson@redhat.com
-References: <20221207133646.635760-1-eric.auger@redhat.com>
- <Y5EmmjKBBnjSlvd+@x1n>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <Y5EmmjKBBnjSlvd+@x1n>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+ Thunderbird/102.4.2
+Subject: Re: [PATCH qemu.git 0/1] hw/arm/virt: add 2x sp804 timer
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <166983457648.13115.4940680286975412418-0@git.sr.ht>
+ <CAFEAcA8csAbbdvLoq+202CAQ0PLWdHaBTfADtqx33c=DNU-wSQ@mail.gmail.com>
+Content-Language: de-DE, en-US
+From: Axel Heider <axelheider@gmx.de>
+In-Reply-To: <CAFEAcA8csAbbdvLoq+202CAQ0PLWdHaBTfADtqx33c=DNU-wSQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.262, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+X-Provags-ID: V03:K1:0jb2QbDr649fH969MFou2Y+GTxuVjqdz8oJyzfZ2vErDfnKq80n
+ ddsBBduM7JM5X7Tvf2697M9q3AdPKDTI67A7RHnoC+0q6YqNnzz49IUNm2UWzBQgvXzyMCl
+ M+xc2NYBeL7LTgg2CuA12r3d5LoqoDvTYe4swy2Qs4oEp5k2pqJvYUh3Io0HdhsUE6fNrB8
+ v6bPcrHMAvgLBAoj1wnGg==
+UI-OutboundReport: notjunk:1;M01:P0:lrwoESYrS/c=;x4NqSGAJ6N5zzBbE62EAnwrJD3j
+ XanDtQQcCCHQNWLEp8qG+T4NZyvxjkEdGkNSUvTMnY3WpPHEWtfgwFxlhXWd5C5i/QHN7EKm0
+ EgEH4GHEhmN1Xmm5lFRoTjEhDnkmV6WuFnrDuX2ypeKkYRLXu4f3+THYE7dS1Kg+gQnxzzIjG
+ nFsCQeklObuaCf0U7FUkwlcX6NNKupLupIBOL5qcXTThgY4YkK832VvWeAWgKh1CG6JIBAcDE
+ 5mgDc9jKGgLDhyQmzMAuHJX2u7VG39VG5T6RYVAokYXl7iQfpAps4bJ3eAVfcKJrbcKvCavAc
+ UcP4Yvog/JAY3QhRhTjw80FwypKgA1CGY3dpqcYYhHSC/OdNDxGHyBeJ9eAey7dycqC6yT4ug
+ dGiJ4GvXgzwzMeevebQf+QUJ1ZvdRJLDIENGhTCz5r1Y2pnagazxVICd/6TeKPFV35nsxSNv7
+ wq5PgZNmAB6nswMBEbSW2FF5B+HOPta7zD/aQ6vsDxOzvbKqlMJaB/s8VXO9pSoDPpzQIGBz6
+ ABHFdKJnMVEAU/mZ0bvbnY2cbJ7lWf4y+HgqAeDSiFJ1cgW51lHPxgJQatwklTWUaQ3ohADGj
+ L94ujXhFDGPYv+G+YFF1cHO3wUoLgyjttfzoWlKzSM+KdQND0kKKhnCMlysW90K+N1fMuPxeZ
+ 4bqRFUS2G/qMIk7BZH6IercGFekyYcw05lx+QEPEIKKOnQcBwJnN0OD1+PukchfiDM1ZavviW
+ O2eC8tFnWVLoZ+n2PCMMLyEFIpMJRvKiFLBsOvAsgC/tRb1rqFn1iJ+8pVs5MxyAIUSbVmuE/
+ fEwFnqnAUtOGnIYA0xVe3Ib8dDROO8NX1Q3W9jWQR1CgDuAdzur6ZT56lKXYnrI5n2OLlfIGO
+ IlL6oOWiqqL45rr4Bg+rP496wnjP74qAcZnFjE7GTSi40PjppEKciLMYTeUYCcAQqMJgzYAX/
+ Ul888Fd2pRGRcugU13U6cGToxsM=
+Received-SPF: pass client-ip=212.227.15.15; envelope-from=axelheider@gmx.de;
+ helo=mout.gmx.net
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.266, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -140,41 +119,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HEGD/EY/CRWL
+X-TUID: a8WkTPW9KEKy
 
-Hi Peter,
+Peter,
 
-On 12/8/22 00:49, Peter Xu wrote:
-> Hi, Eric,
->
-> On Wed, Dec 07, 2022 at 02:36:44PM +0100, Eric Auger wrote:
->> When assigning VFIO devices protected by a virtio-iommu we need to replay
->> the mappings when adding a new IOMMU MR and when attaching a device to
->> a domain. While we do a "remap" we currently fail to first unmap the
->> existing IOVA mapping and just map the new one. With some device/group
->> topology this can lead to errors in VFIO when trying to DMA_MAP IOVA
->> ranges onto existing ones.
-> I'm not sure whether virtio-iommu+vfio will suffer from DMA races like when
-> we were working on the vt-d replay for vfio.  The issue is whether DMA can
-> happen right after UNMAP but before MAP of the same page if the page was
-> always mapped.
+>> This patch adds timer peripherals to the arm-virt machine.>>
+> Is there a reason you can't use the CPU's built-in generic timer
+> device ? That is what typical guest code does on this system.
+> I'm a bit reluctant to add more devices to the virt board
+> because over time it gradually gets increasingly complicated,
+> and every new device model we expose to the guest is another
+> thing that's part of the security attack surface for guest
+> code trying to escape from a KVM VM.
 
-I don't think it can race because a mutex is hold while doing the
-virtio_iommu_replay(), and each time a virtio cmd is handled (attach,
-map, unmap), see virtio_iommu_handle_command.
-So I think it is safe.
+For the seL4 specific case, this is currently not possible in
+the standard configuration. It's only exposed for a special
+debug and benchmarking configuration.
 
-Thanks
+The catch we have here is, that the virt machine is a nice
+generic ARM (and RISC-V) machine for OS testing purposes also,
+but it sometimes lacks things (see my other patched for the
+UART). So, I wonder what would be the best option to continue
+here. Should we consider defining another generic machine
+profile that is more suited for the system emulation use case.
+This is what OS developer could use then. Or could the virt
+machine get some config parameters to customize it further.
+So the "Machine-specific options" would  support a "sp804=on"
+that would add two timer peripherals then?
 
-Eric
->
-> The vt-d resolved it by using iova_tree so in a replay vt-d knows the page
-> didn't change, so it avoids unmap+map.  It only notifies newly unmapped or
-> newly mapped.
->
-> Thanks,
->
+The really cool customization option would be passing a DTB
+to QEMU that describes exactly what "virt" machine is to be
+emulated. I think the Xlinx fork used to support this feature
+partly. Not sure if there was ever an attempt to mainline this?
+But it would avoid running into a command parameters hell for
+customization options.
+
+Axel
+
 

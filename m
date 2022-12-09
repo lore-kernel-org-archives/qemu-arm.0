@@ -1,111 +1,110 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1106803ejb;
-        Fri, 9 Dec 2022 03:18:28 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5kp3HNMNjCc+praPzvnQHKIiY8mWPGvVpsB9GD+qmK76AupYB4AFxAonp2e+HaIF+WePYt
-X-Received: by 2002:ad4:4bc2:0:b0:4bb:859f:b217 with SMTP id l2-20020ad44bc2000000b004bb859fb217mr7086627qvw.47.1670584708188;
-        Fri, 09 Dec 2022 03:18:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670584708; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1122967ejb;
+        Fri, 9 Dec 2022 03:43:47 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5u8q9BkQvKePq9F3CMEp4swjrzhj7h2RUFXqOoEGXwSRdq8NigEwKA45bperqPGUqoRat+
+X-Received: by 2002:a05:622a:46:b0:3a6:8f0d:53a6 with SMTP id y6-20020a05622a004600b003a68f0d53a6mr9369814qtw.40.1670586227049;
+        Fri, 09 Dec 2022 03:43:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670586227; cv=none;
         d=google.com; s=arc-20160816;
-        b=NYZ3W6/5VERBCHD5vqzRC/zARVvv6oJR10sLjzDTqrnutwidht/KJl9IqfcsBy5Ocw
-         omilATGYGIBNHHiwbjCDEiVtm5yz3h0FO1ZkQWPZqwWZdMKqD/FgRQwg4kK+0ZVYjmQ4
-         99GCwz/SFsgctWvx7SAB10xYFUZTQrYnfnrfaT2CVbRQPridM0UBmCjjGeeyZptcVid4
-         GwHPvuopotbo9FYrwVYLn7nMNbZZE4bKKmOWr1UGpJ2vSRU5VE5ClErikehz4lZgIPo4
-         eNj0Ri/aCE/uzidQszisMcmj5X/3yodaeGBrHQmNyJ/V/iQ8R6vfZm1IUJ814NOVXkUb
-         k7hA==
+        b=Qy6qUY3nOyX3aW8jD4ZjN3travsE+F8VN7h00ZZcZfXLAw+6ReOuzZmFvQ+SV6xgXX
+         cVmXWrB5oK+iP8Jj9LojzB16MwLMn8U6eWL/HJO7xheeCtvvk31b6KSEfgv9wVLNm8NH
+         7Cd6TMRWytN9fBT/O8doi+thlJpmfvoJarx5GDFPlZ9HL5ER91pA8Jir6YXpabGpnG0z
+         +bbH2IJ0VvRJzNLpL8664SL3wKo3XUHJA7Db7U1cXVTT/vGSx+CY1XPabbf/YhZo/79C
+         nt3EOeS2TKr27h2VH/L6DvUlKtqwb4tW1gbVWhzO1+/5XC3hSHJfZda/XoGPrdnCp2Vy
+         DCEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jfhc3x6jzrxNP376or3RNjR3F8wMtVqE4b+ijWwzKS4=;
-        b=e9N2NAZsCuYIhbowM+0Di9RpIxaIWhRq2rG7v32+JbRAd+uygWodVPd91cyqw61nOh
-         AQKnB6gbmRmZFPfCvvYYUYdphqRuRKI3i6gvi18e/BgIRjlgwQrv7U7fIkFq2zrvZzmj
-         WB7/0gimeu0RqD0oZsiTsYrYvid0YDAAmyO4inRjo+VRUaL+Oev5iMwR6nFBewAcvgsh
-         ny8xdN+4CyPM02ucmkyoZGMvkZraXN2BrTXydaZo2P0mQPJ2CZQ2pbutFw2aOPuDl5Ua
-         mtzxRd/A8dOHIKTDnvdJi8VwnFrw42ieBMZlrdXJyyeqaRDhXGFVIcL3hOmeEydVNuj/
-         br3Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=ex9Fb3dDRS427vhyJTMOPmys/YYJu3WouGuTrBcTKCY=;
+        b=fuNrVZyhJliQWXub4dCZws60Vl/aXx8gM9cQHEvqL9gXkhWAjlXIAS+Nri6s4ZyaBu
+         agNvCXUMsQbQ6Zyc4EnBLAEPpRl+GTxxAIuD0pq7Vyosz7ijmpUFyr57HBShTptyIbR6
+         usTzJa5dSSiVKu0Yy87gXpbbI/aY9/TPFtKY7Cr70JYxf4hzsIDpo6+aiQPIdjgkgIBY
+         NyB8QFbxr//nmZ4Md8r/On/i9hcJC2UJejGc7yabKIWxuWVipfhLA0j/aov1fiKizqgQ
+         O0wp01YE9+B0WD4rjoAPgbr6uyTCEv8lH1UuH8pcq/fSe9GKXIHUSJfVrgIsTUsuTibG
+         qVXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Sbho48j1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gpn11nAo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11-20020a056214062b00b004bbdce26661si625953qvx.149.2022.12.09.03.18.27
+        by mx.google.com with ESMTPS id x28-20020ac84d5c000000b003a7ee3bf4b0si521856qtv.450.2022.12.09.03.43.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Dec 2022 03:18:28 -0800 (PST)
+        Fri, 09 Dec 2022 03:43:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Sbho48j1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gpn11nAo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p3bOO-0002G9-M2; Fri, 09 Dec 2022 06:18:12 -0500
+	id 1p3bXl-0006WB-34; Fri, 09 Dec 2022 06:27:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3bO3-0002Aq-6Q
- for qemu-devel@nongnu.org; Fri, 09 Dec 2022 06:17:57 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p3bWi-0005ZZ-KV
+ for qemu-devel@nongnu.org; Fri, 09 Dec 2022 06:26:56 -0500
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3bNx-0005i5-B4
- for qemu-devel@nongnu.org; Fri, 09 Dec 2022 06:17:49 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id f18so4865271wrj.5
- for <qemu-devel@nongnu.org>; Fri, 09 Dec 2022 03:17:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p3bWZ-0002h1-IX
+ for qemu-devel@nongnu.org; Fri, 09 Dec 2022 06:26:46 -0500
+Received: by mail-pg1-x52c.google.com with SMTP id h193so3322787pgc.10
+ for <qemu-devel@nongnu.org>; Fri, 09 Dec 2022 03:26:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=jfhc3x6jzrxNP376or3RNjR3F8wMtVqE4b+ijWwzKS4=;
- b=Sbho48j1dVf6znqaQO+DdIE02CDpMVgwukhT9Uqq2jd5XrxKK6N9aWxIRCWKwRGXoX
- K8rm7ippF3ejUb+qgMLDlFM4bMCxafW/2+Yl9jTmWR860FZFegE40o5y45FLGA+CVami
- xKX0CVYbxYo4moFpvOuC2gEZGv3iC53balG55Hc3olfUDLBuQIm84gT70WnS5W4Ycv08
- WEvSBVzKxXsgdcSsB7V0lxW4MD10vtiSSVsQoiQ7+ym3FC1WZT/De+AU/MqxOqEmLqmq
- k2yzbDm1/PwsMqJCLZkpL9xzqchS8k/PA7qOyavLZsS94mzLsaWBuq7PtV40kON5V41n
- jWnQ==
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ex9Fb3dDRS427vhyJTMOPmys/YYJu3WouGuTrBcTKCY=;
+ b=Gpn11nAo0PgKYqTKlQy5QdQktCL6P+hhsKBUoLac4V/JIgn2Crj52/Qbu1QmV2crH0
+ FueDIN3ey7GxkgqhjUB2Thkyn5rR5yYmgKZ3IGVnnQhJFObCPPfxaXxcpro3aZUz9wA2
+ fpjpBULCBS+jNT5RHcJ008kh6/d1rM59rB2HYWtBtulRTQ4hpdsfF80Ke7E4fNDBiZC7
+ KHx5iHWHmrJm0Yl36nSSEp4Oag9Gt7LjsnAWV2/UksWZP8+FU+JtXmfczkK50XePNIux
+ aL6OdnajfFZoSdD/xzE68zPYqluQeh3Rn5fPLsuOM5hHRib1xM6TyKuTmTvBld2iGGPB
+ MWcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jfhc3x6jzrxNP376or3RNjR3F8wMtVqE4b+ijWwzKS4=;
- b=3ozdmTqALrmhlVGOWZKjWvUW1jOZcQvNdI8b4Jr+00yBIJqrMdOr+vzFhTjB+n0V+W
- SlVAqOCxXg+qqLcMDkz1M7w+0etxQyVWAnRdyrM6bjYqcz4kS4c0NDtonbK3aSaxD7ax
- pUXnf0chjXkVG/oz52IJHwFDLcNbrW7RxcMA+m6WoD57V4r5Ka2U1OY5WfPvg7mhuI3Q
- sfmJZ+UTplRJkeiuCz62xk5TK66ylHNde2jVsz1ogwdlEBrNSKtmohfYh+Yo5xdODhDQ
- Creb35x/UlmY2p0fGf29w1rOb8J+4Eu9vVcEvLyrmPw5GKpvcn+JUOry2OYaODGYimV9
- 7FZw==
-X-Gm-Message-State: ANoB5plpfd0a5+tyP+JQYnQK5myMG/kuwlhaYDaHLM58QrkH5AOi6nSJ
- UW/4nu7IiCp+Kb2D+jGolDHAhvX/vRqTO6sEkQM=
-X-Received: by 2002:a5d:488f:0:b0:236:74c5:7ec with SMTP id
- g15-20020a5d488f000000b0023674c507ecmr3201769wrq.13.1670584658820; 
- Fri, 09 Dec 2022 03:17:38 -0800 (PST)
-Received: from localhost.localdomain ([81.0.6.76])
- by smtp.gmail.com with ESMTPSA id
- cc19-20020a5d5c13000000b0024165454262sm1169787wrb.11.2022.12.09.03.17.37
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 09 Dec 2022 03:17:38 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Fabiano Rosas <farosas@linux.ibm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH-for-8.0] target/arm: Keep "internals.h" internal to
- target/arm/
-Date: Fri,  9 Dec 2022 12:17:36 +0100
-Message-Id: <20221209111736.59796-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ex9Fb3dDRS427vhyJTMOPmys/YYJu3WouGuTrBcTKCY=;
+ b=AxBZmCHxgHe3oVTai7HlBgOxRQWUwcWjGF2b6rN6fcEwuYhq3udPVYZvmyq8fLBoZE
+ 6uCJPNA3Swp0CLtgGLE+G4dXcXDdqNv6WwvImXwQNeimHm1OQd8pgCuOxet4Ae04b9ct
+ 7cQF/5d+EAwb2qD+YKj15eZSycALIdrbPoHGKN3NK8fRY4mYdPmvr+e5AkN2bLR2k/fj
+ C26FlZm8vtztsmwBcpB9ORD53Mkfu1lEuJ5IDMlhqu5LWo6JZbwbclnozNn/9yWVK+Ba
+ puJ4Sh8W6r0PLaKxP6g33Y+eu+hjOInrwiN1Nf6bAUOIi4OVmFi3hyIYpYqurv/t3wTc
+ SO5Q==
+X-Gm-Message-State: ANoB5pm/xg6lLXca16kSaA6oqbk//S3QAk3ZqXvDUFYgT6GH1HgsAaGh
+ H8H4azPa7KEoRTevYSUJloO0YJCnraIhmxNrIkFtyQ==
+X-Received: by 2002:a63:d20d:0:b0:479:18a:8359 with SMTP id
+ a13-20020a63d20d000000b00479018a8359mr4234471pgg.105.1670585197540; Fri, 09
+ Dec 2022 03:26:37 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+References: <20221209111736.59796-1-philmd@linaro.org>
+In-Reply-To: <20221209111736.59796-1-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 9 Dec 2022 11:26:25 +0000
+Message-ID: <CAFEAcA-OJeuby_E=7FOn7E7CMc6u0uEX4BUunY6ucL1-qQPQiw@mail.gmail.com>
+Subject: Re: [RFC PATCH-for-8.0] target/arm: Keep "internals.h" internal to
+ target/arm/
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Fabiano Rosas <farosas@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,187 +119,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0IkLhtcAUC2j
+X-TUID: DpeZeezuA/ls
 
-"target/arm/internals.h" is supposed to be *internal* to
-target/arm/. hw/arm/virt.c includes it to get arm_pamax()
-declaration. Move this declaration to "cpu.h" which can
-be included out of target/arm/, and move the implementation
-in machine.c which is always built with system emulation.
+On Fri, 9 Dec 2022 at 11:17, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+>
+> "target/arm/internals.h" is supposed to be *internal* to
+> target/arm/. hw/arm/virt.c includes it to get arm_pamax()
+> declaration. Move this declaration to "cpu.h" which can
+> be included out of target/arm/, and move the implementation
+> in machine.c which is always built with system emulation.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
-RFC: Do we need a new pair of c/h for architectural helpers?
+machine.c doesn't seem like the right place for this --
+that file is purely concerned with migration. I don't know
+why we use 'machine.c' as our name for the file where the
+target CPU migration code lives, but that's fairly consistently
+what we name it across all architectures and we don't put
+other stuff in that file. I suppose it would be less confusing
+to rename all those files to migration.c...
 
-ptw.c should be restricted to TCG.
----
- hw/arm/virt.c          |  2 +-
- target/arm/cpu.h       |  9 +++++++++
- target/arm/internals.h |  9 ---------
- target/arm/machine.c   | 39 +++++++++++++++++++++++++++++++++++++++
- target/arm/ptw.c       | 39 ---------------------------------------
- 5 files changed, 49 insertions(+), 49 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b871350856..4528ca8da2 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -70,7 +70,6 @@
- #include "standard-headers/linux/input.h"
- #include "hw/arm/smmuv3.h"
- #include "hw/acpi/acpi.h"
--#include "target/arm/internals.h"
- #include "hw/mem/memory-device.h"
- #include "hw/mem/pc-dimm.h"
- #include "hw/mem/nvdimm.h"
-@@ -79,6 +78,7 @@
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/char/pl011.h"
- #include "qemu/guest-random.h"
-+#include "target/arm/cpu.h"
- 
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9aeed3c848..8cdad4855f 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3444,6 +3444,15 @@ static inline target_ulong cpu_untagged_addr(CPUState *cs, target_ulong x)
- }
- #endif
- 
-+/*
-+ * arm_pamax
-+ * @cpu: ARMCPU
-+ *
-+ * Returns the implementation defined bit-width of physical addresses.
-+ * The ARMv8 reference manuals refer to this as PAMax().
-+ */
-+unsigned int arm_pamax(ARMCPU *cpu);
-+
- /*
-  * Naming convention for isar_feature functions:
-  * Functions which test 32-bit ID registers should have _aa32_ in
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 161e42d50f..5e9546b6a3 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -241,15 +241,6 @@ static inline void update_spsel(CPUARMState *env, uint32_t imm)
-     aarch64_restore_sp(env, cur_el);
- }
- 
--/*
-- * arm_pamax
-- * @cpu: ARMCPU
-- *
-- * Returns the implementation defined bit-width of physical addresses.
-- * The ARMv8 reference manuals refer to this as PAMax().
-- */
--unsigned int arm_pamax(ARMCPU *cpu);
--
- /* Return true if extended addresses are enabled.
-  * This is always the case if our translation regime is 64 bit,
-  * but depends on TTBCR.EAE for 32 bit.
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 54c5c62433..51f84f90f0 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -6,6 +6,45 @@
- #include "internals.h"
- #include "migration/cpu.h"
- 
-+/* This mapping is common between ID_AA64MMFR0.PARANGE and TCR_ELx.{I}PS. */
-+static const uint8_t pamax_map[] = {
-+    [0] = 32,
-+    [1] = 36,
-+    [2] = 40,
-+    [3] = 42,
-+    [4] = 44,
-+    [5] = 48,
-+    [6] = 52,
-+};
-+
-+/* The cpu-specific constant value of PAMax; also used by hw/arm/virt. */
-+unsigned int arm_pamax(ARMCPU *cpu)
-+{
-+    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        unsigned int parange =
-+            FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
-+
-+        /*
-+         * id_aa64mmfr0 is a read-only register so values outside of the
-+         * supported mappings can be considered an implementation error.
-+         */
-+        assert(parange < ARRAY_SIZE(pamax_map));
-+        return pamax_map[parange];
-+    }
-+
-+    /*
-+     * In machvirt_init, we call arm_pamax on a cpu that is not fully
-+     * initialized, so we can't rely on the propagation done in realize.
-+     */
-+    if (arm_feature(&cpu->env, ARM_FEATURE_LPAE) ||
-+        arm_feature(&cpu->env, ARM_FEATURE_V7VE)) {
-+        /* v7 with LPAE */
-+        return 40;
-+    }
-+    /* Anything else */
-+    return 32;
-+}
-+
- static bool vfp_needed(void *opaque)
- {
-     ARMCPU *cpu = opaque;
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index f812734bfb..03703cb107 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -42,45 +42,6 @@ static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
-                                       ARMMMUFaultInfo *fi)
-     __attribute__((nonnull));
- 
--/* This mapping is common between ID_AA64MMFR0.PARANGE and TCR_ELx.{I}PS. */
--static const uint8_t pamax_map[] = {
--    [0] = 32,
--    [1] = 36,
--    [2] = 40,
--    [3] = 42,
--    [4] = 44,
--    [5] = 48,
--    [6] = 52,
--};
--
--/* The cpu-specific constant value of PAMax; also used by hw/arm/virt. */
--unsigned int arm_pamax(ARMCPU *cpu)
--{
--    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
--        unsigned int parange =
--            FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
--
--        /*
--         * id_aa64mmfr0 is a read-only register so values outside of the
--         * supported mappings can be considered an implementation error.
--         */
--        assert(parange < ARRAY_SIZE(pamax_map));
--        return pamax_map[parange];
--    }
--
--    /*
--     * In machvirt_init, we call arm_pamax on a cpu that is not fully
--     * initialized, so we can't rely on the propagation done in realize.
--     */
--    if (arm_feature(&cpu->env, ARM_FEATURE_LPAE) ||
--        arm_feature(&cpu->env, ARM_FEATURE_V7VE)) {
--        /* v7 with LPAE */
--        return 40;
--    }
--    /* Anything else */
--    return 32;
--}
--
- /*
-  * Convert a possible stage1+2 MMU index into the appropriate stage 1 MMU index
-  */
--- 
-2.38.1
-
+thanks
+-- PMM

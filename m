@@ -1,113 +1,123 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1168971ejb;
-        Fri, 9 Dec 2022 04:51:09 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7rKMdcmosIlfeoyUOlkJcoGKcGAjfs3NhpiBoUWqh3nHKnx0FV5hO0jM+ezP6nT3zxLVvH
-X-Received: by 2002:a05:622a:590f:b0:3a5:f9f8:3ec4 with SMTP id ga15-20020a05622a590f00b003a5f9f83ec4mr9022977qtb.30.1670590268861;
-        Fri, 09 Dec 2022 04:51:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670590268; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1291897ejb;
+        Fri, 9 Dec 2022 07:25:53 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6wQsm/7aFZFg0QMb+WOt0jrUVBIy+HvXyThsFvhyFmlSwWTiB8DC4/IRunJyikMKhRA18T
+X-Received: by 2002:a0c:c310:0:b0:4c7:24fe:8237 with SMTP id f16-20020a0cc310000000b004c724fe8237mr8729298qvi.43.1670599553758;
+        Fri, 09 Dec 2022 07:25:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670599553; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rd0xJNLnahP7dkuRZkixvpl0VF/XE83igSlTOP0bAvRQyket+5idhNl2wuWjj8qA3+
-         XaL42LStKygLWTTP9/ukUqC0nGPtlwHYqkltQCM2xG5ZuoNr+glVxwbkOzgY/TqHgq42
-         BEkJClELDH3TkZOnd3oTws6djHmmYeZPDjTTHXdAPgaJ7eEyknHokwFxpX4Fd3zufvH0
-         /FY47x54aFsUvd6pFVzPuPM7ZwTb7m9oUMoV8xdus7YFr+/a6ocVpZ2yeK0uwLtvanfp
-         3Z68cx2kH6WsHNOPupFaAT11wZWTnGlC0WsQ49Cc98tcY4jDg5bstqHMRSiU4U8VN1FQ
-         UmcA==
+        b=N3NW6Azjg2nGBNFcwsJcXQA61dIP8Nyv5Hl9vM6rwsYmnuuPXJ0458qSpnmMwFPIOl
+         UI4cHmWcn1mddPJbhbHQNbhJUhkDBvzH7s6ZIFiPxTh//N/MFizcxv7wocrgNrV4AbYW
+         61yPFv2eFEyFlq5ekiWUaCpMFtoFq1EXd9FsQNTzmFwvcXAPARvMbDQoOjbP33K7XcdE
+         ehKLIl1RouG8QD2j7MrrxtbwRzCGo4OM1UmS9RiJxC5bqIf7BsOJnO647fZWURvFM5ro
+         dunWvs+AEAQtJo7GSOREMNUchxkUTUIT99UixFS35DFA7+mtQGu9HC+2ohGICSaak8o5
+         E9CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=XYGsyV2yK1Ik/jF7wwqYZxCTSkCE9sS/NgvjjPAn0L0=;
-        b=GUaNeczjZL2MQQtCknltf1WIDj1ABbNMZLbwcK3DgM8jL/jQddNsEXq1+pGaw411pV
-         BVzX0sSoVg70ynJiAkELpHcJ/8a7WmMx6fMVNCp33YyrpmvsPc2eqkWL97P2ugtD0Uo3
-         ArwapeV214CpCJMP/KlWW3X6ASfeih/u4z2Ep6XEOMLhjUvsrJ2acJ54k7RZ4X/0c93i
-         0KtiQ+SBzZKmvHiGTFSpxYjOnB39tRWCYXZkMOALFofIwjmnQDF+qVjyCrsSI4tx1Hoq
-         E1HtJiWPkzKPkgU2IoihrA+Y8SZ4bJgxD+4XrAXV0s5CyErWltShPT6zDD+lI8yk/6Gk
-         iNXA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=z8IbNBDnIT+Bgnpg6itOhcBdL6FdrS/3O+gJpywIbPI=;
+        b=kgiMAMD3VRNh94msjdBSWbjFz1AsXeJnLzmvPIq25Hr55jcq4CY1SX0l12Mv0szbg7
+         NusB9mVkwdVlWA7nhvRQMB+Ap+fD02Q9EpWkB1DDn/JM/gSobeF6t2vwwRcRjVoYUaLb
+         vYj3B2utYs4kezwqwKAfiJoXTi0T2V3s/ljqA3bAf5qNpnXwQZj+yyEBmfhBuDDJvyWX
+         95B65LPxhdvVS7e6i+TbN09qLjU/Jnnq67xVvNFiytKiaHhz+OEH65oOmvPa+9mDZ7tO
+         vokkrvx1Tm/pkdIJT5c2I6qca28A6is4rJSOIp5amkSevwUPIZAh1n1/pL94CNEHTAq0
+         W2fA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=0fEfsTy8;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=RSx9jILG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ep0whTAd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fc5-20020a05622a488500b003a5fce03843si671517qtb.559.2022.12.09.04.51.08
+        by mx.google.com with ESMTPS id r9-20020a056214212900b004bb8b904078si963020qvc.453.2022.12.09.07.25.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Dec 2022 04:51:08 -0800 (PST)
+        Fri, 09 Dec 2022 07:25:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=0fEfsTy8;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=RSx9jILG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ep0whTAd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p3cpn-0006T2-6V; Fri, 09 Dec 2022 07:50:35 -0500
+	id 1p3fEt-0002yt-L5; Fri, 09 Dec 2022 10:24:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1p3cpm-0006So-7S; Fri, 09 Dec 2022 07:50:34 -0500
-Received: from smtp-out1.suse.de ([195.135.220.28])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3fEN-0002me-5k
+ for qemu-devel@nongnu.org; Fri, 09 Dec 2022 10:24:08 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1p3cpk-0008LI-Mm; Fri, 09 Dec 2022 07:50:33 -0500
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id F3180337EB;
- Fri,  9 Dec 2022 12:50:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1670590228; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XYGsyV2yK1Ik/jF7wwqYZxCTSkCE9sS/NgvjjPAn0L0=;
- b=0fEfsTy8RtQQ2FXpMsC+ttp1l28nks02YcZ9HRVmUduypZMKPFCgDddyvE479eQePQWsKQ
- 5Yw2gUk6EyVBU1aP7oUWeH8VqeBiZmsvAb7PllY9IXf7Atvo8ej3BMA6pnpI38Cq8+cea+
- nHq7bmyxBisv6aOvmcLzWRV5x7K+mRo=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1670590228;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XYGsyV2yK1Ik/jF7wwqYZxCTSkCE9sS/NgvjjPAn0L0=;
- b=RSx9jILGC/MWNu/r2MWwVW9JUPcpNVgxXdCTD3vX0ndtmyRUEKhKwzgH73M93zjLrmDh+e
- EKke7CXf8WhmjEBQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 79F1613597;
- Fri,  9 Dec 2022 12:50:28 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id VNzMDxQvk2PuWQAAMHmgww
- (envelope-from <farosas@suse.de>); Fri, 09 Dec 2022 12:50:28 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas
- <farosas@linux.ibm.com>, qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu-?=
- =?utf-8?Q?Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH-for-8.0] target/arm: Restrict arm_cpu_exec_interrupt()
- to TCG accelerator
-In-Reply-To: <20221209110823.59495-1-philmd@linaro.org>
-References: <20221209110823.59495-1-philmd@linaro.org>
-Date: Fri, 09 Dec 2022 09:50:25 -0300
-Message-ID: <87wn70bv1q.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3fEL-0001yT-2J
+ for qemu-devel@nongnu.org; Fri, 09 Dec 2022 10:24:06 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ j5-20020a05600c410500b003cfa9c0ea76so63374wmi.3
+ for <qemu-devel@nongnu.org>; Fri, 09 Dec 2022 07:24:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=z8IbNBDnIT+Bgnpg6itOhcBdL6FdrS/3O+gJpywIbPI=;
+ b=Ep0whTAdDda3/d88CQRz0OMgAkNtggEcPyFd846ZGiI+ajvyP5PYX4tFrvCSjGZLNw
+ LB2b4mDal8+0Ih8tWMmVOAsq6vIOcrsQE2AtGTGVi6NQfpK+SxWZEK/ZtmKe7wQaurdG
+ oXLRYCaS+CKLs6QYrYjVp4LwT98L0Jjn5xa8TYkd9v+xWcH7ctKeuIt38XTZWDtEB94X
+ +Cb1oymYjxb0Hx62uGUqXHlXVf0xAiInSTt2zShsd643tE1g9v1NhxwIpo0aTG7MN2aM
+ 4lHsRBHdXTbZe5zikqwO/jovgl2sv05x7VDT+iZjgOiMDKuVFYQIXzfe0efljGfzEDIy
+ B+vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=z8IbNBDnIT+Bgnpg6itOhcBdL6FdrS/3O+gJpywIbPI=;
+ b=Y7sjlkPXUVrRlbnNpgywvI0fZbc7bRJKjXp3eyUD2ddmJtaKIzUZAORPIKxuPyVtSX
+ +aNUoWe/R07k072SkKYn7Ckkz4t+CmPAQR8DZNfONYP5eBIP/Uv1TB29McEMd54Yld6+
+ Z9qJC6coYY6fGSZngj0o4dG9L4n4KtZVW8bPMfN5iCFJ5TpPnZueOaHstvPGNIOEkTGM
+ if56nl0NrbTN4qs8xriHWUOiTAPgKuL8tCcvmRcPFlW0GYoWjkA2IX8Lh4MBVnV2a8vP
+ uFwP7Y2pmHwnLn8cmkaefAxCtwEOYMM9lcN3rY1bv1CP7QcQOiDEIIu08yliIGf/7D9G
+ Mo0Q==
+X-Gm-Message-State: ANoB5pmFeoriwls7sO/Cu9HwXjqYve+6obXdbWNmeCJWkvF4tRbWE3aO
+ UZWFeoVsA+AOUJGjjLEUZXx4Hg==
+X-Received: by 2002:a05:600c:1e86:b0:3cf:81af:8b73 with SMTP id
+ be6-20020a05600c1e8600b003cf81af8b73mr5180123wmb.23.1670599441419; 
+ Fri, 09 Dec 2022 07:24:01 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ p6-20020a1c7406000000b003cf5ec79bf9sm17053wmc.40.2022.12.09.07.24.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 09 Dec 2022 07:24:01 -0800 (PST)
+Message-ID: <17a7d714-8a1e-8a17-f657-2172060d02e5@linaro.org>
+Date: Fri, 9 Dec 2022 16:23:59 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=195.135.220.28; envelope-from=farosas@suse.de;
- helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.1
+Subject: Re: [PATCH v2 0/3] Decouple INTx-to-LNKx routing from south bridges
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: John G Johnson <john.g.johnson@oracle.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Huacai Chen
+ <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20221120150550.63059-1-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221120150550.63059-1-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.288,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -123,21 +133,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yoI2zannT9nE
+X-TUID: jRyHgF8Z1T0X
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+On 20/11/22 16:05, Bernhard Beschow wrote:
+> v1:
+> ===
+> 
+> During my PIIX consolidation work [1] I've noticed that both PIIX models have
+> quite different pci_slot_get_pirq() implementations. These functions seem to
+> map PCI INTx pins to input pins of a programmable interrupt router which is
+> AFAIU board-specific. IOW, board-specific assumptions are baked into the device
+> models which prevent e.g. the whole PIIX4 south bridge to be reusable in the PC
+> machine.
+> 
+> This series first factors out pci_bus_map_irqs() from pci_bus_irqs() which
+> then allowes for moving the two board-specific PIIX pci_slot_get_pirq()
+> funtions into their respective boards. With these changes, the PIIX4 south
+> bridge could eventually become an alternative to the PIIX3-Frankenstein
+> solution in the PC machine.
 
-> When building with --disable-tcg on Darwin we get:
->
->   target/arm/cpu.c:725:16: error: incomplete definition of type 'struct T=
-CGCPUOps'
->     cc->tcg_ops->do_interrupt(cs);
->     ~~~~~~~~~~~^
->
-> Commit 083afd18a9 ("target/arm: Restrict cpu_exec_interrupt()
-> handler to sysemu") limited this block to system emulation,
-> but neglected to also limit it to TCG.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Series:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>

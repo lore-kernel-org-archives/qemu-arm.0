@@ -1,449 +1,152 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp644430ejb;
-        Thu, 8 Dec 2022 12:26:02 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5fPVPEyqJ43hdGBoSegjejZs39q7w9r5R7xmLOY7DiP21xAjwrb9hqJV424ZCCJ2a1JKyR
-X-Received: by 2002:a05:622a:1925:b0:3a6:77f5:b5c with SMTP id w37-20020a05622a192500b003a677f50b5cmr4406099qtc.46.1670531162164;
-        Thu, 08 Dec 2022 12:26:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670531162; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1094515ejb;
+        Fri, 9 Dec 2022 02:59:24 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf40w9FEMiu9qCKcZi2tSn2OM3gFTjQcFAX7aH1vVDrHkARLTUZWxneKdwq3oW3O74PhzQnP
+X-Received: by 2002:a0c:dd01:0:b0:4c6:fb9f:a327 with SMTP id u1-20020a0cdd01000000b004c6fb9fa327mr7182195qvk.29.1670583564734;
+        Fri, 09 Dec 2022 02:59:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670583564; cv=none;
         d=google.com; s=arc-20160816;
-        b=saIQNkdEwjXMzOuofS4YFWg8qjQOWZrN+xexMl93pgjwAvv4OSNSxcdBs6yAFRsi4+
-         sQNLFJUOwJqMXIpVne1QlGPDrpjBzNqAaH1dQlNlKYjCQ3BGGdn5v1zXnDeUjF4xZFxs
-         e39EyoMShMACDe7oSRE2IewIwLVdWQAj/Cc3ZdioYl9aksKzX43Ehb4ek6MzO1Dzqg9l
-         f8D1N4ORUqlukXoGEfnis9KbL2tzb4D+DBeFpBPF9tOQV0hIBbWy6+Y5EJc91i8Ps+p2
-         Lq0w+b6WgYJBeLKVfxNcKab22qv89fsn+iYwq3SlTFbg1V6WfVTkJEf2ZSfwIPt/Yna6
-         /ppQ==
+        b=RmYstrGDiPrgB7E3maM+v/2X3D0gpm9+J6WgCUIqPXxr8uPA/G++xj1dlfaw1esynH
+         Mfbg+twPeuKUYsrBCydMUbo1rEq8swoGKWyGc31B8g7ttVq5hwhUSeKEeIs2D2Fw4G1i
+         u9x6KsThWcnspQEAE+Fpq+OjzvOGQplfESj2WDIdZjsjiMY8g/rbk8GHMBBLBzAL5yfO
+         SwuAZscCSAlJlo3soMj53msZwA9e6+Ph/WHVebH5w77Yr1zQD4k1J/y7NTjyhL44ahBW
+         DYTGkzmqpveQkk8MkurwwjR/BFSm+NKJkpNRQivZEATtsX+A6c6ju3ub114WGTmnOaPd
+         lYeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=DPFVE7wntVsydH3hHjszCEHgZh1P4e51YHkfPvYG+wQ=;
-        b=BE7fkJQQ+rXlfyCGUjTdFDN+qXjjW48lJBg1DZNpfsyVUkdOYQ9Yc0p3HmpnaRzQ2m
-         ucnSa5gRn0pRzcBL1Rk9L0LnuUWT888YqyKrDZRHe9tGeVejoVJoux3kyR6wfbTaiYDu
-         Un/+8oL/8CwSYhWrWDFd68WZFFSvjl6hKPYQKqaYlJ/2/bYg2rIQecp3qgl2Z5gIB3I+
-         bnA8KyXoud7ZG5gAFR75j+rBsnwPxwP1z9RrVfBHGhrfUpKPko2YjTNX645+3e60+H3j
-         x/WOHBV2CDg3Sq76CAlnRcD2Pw62Jz2zqdcNptKzKQJqM+BObonfxLDnXu1nSWmOuaiV
-         t5Mg==
+        bh=eW5FWYNRAGHlbRGDImGhBI2CpPAoEk+OUrnDEdgEO9M=;
+        b=HbfSs2bSBOU1N1idSG6Iz3rApYn2te+5SMwtv/Gtbqnrr3Fue0wE7+H9oSYTtlx5FU
+         NoWB9w3OVgo7mud8vZ3S9gBPM4ZMIqm3gRp+AidNM1FLUZiIRDpIYwcbOLkxSF5gV9zs
+         cfhysDEYedYMDaCo5pCTnBj1ygpgbHgWAkcZumbCq+UWEJBxbFtF/RUyTpIzi6Fgo/ih
+         CVWQSHO6IjcLAE5D1pw7mzxGGRlgPrqTXONCgzsnMlZMOpchNFl1sWIwa9PaAh4BT6xf
+         sRMY3rax7REVJ3r98b97Fc4PGouwCjWjBzioobhMAmcNVr8bvLV9nGfYxwrF7Wk2jRWU
+         iMEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=H+WHq8g5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=dVMB1zo2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13-20020a05622a000d00b003a51c600f39si13707958qtw.405.2022.12.08.12.26.01
+        by mx.google.com with ESMTPS id g5-20020a05620a40c500b006fc67f220b2si585721qko.630.2022.12.09.02.59.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Dec 2022 12:26:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 09 Dec 2022 02:59:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=H+WHq8g5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=dVMB1zo2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p3NSZ-00006M-Jj; Thu, 08 Dec 2022 15:25:35 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p3b5w-0002P1-Fw; Fri, 09 Dec 2022 05:59:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1p3NSY-000067-Mo; Thu, 08 Dec 2022 15:25:34 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p3b5u-0002OE-FJ
+ for qemu-devel@nongnu.org; Fri, 09 Dec 2022 05:59:06 -0500
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1p3NSW-000310-8V; Thu, 08 Dec 2022 15:25:34 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id h7so3069228wrs.6;
- Thu, 08 Dec 2022 12:25:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p3b5s-0003Iw-UL
+ for qemu-devel@nongnu.org; Fri, 09 Dec 2022 05:59:06 -0500
+Received: by mail-pg1-x52c.google.com with SMTP id 6so3292117pgm.6
+ for <qemu-devel@nongnu.org>; Fri, 09 Dec 2022 02:59:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=DPFVE7wntVsydH3hHjszCEHgZh1P4e51YHkfPvYG+wQ=;
- b=H+WHq8g5hRceKx91VjwCRbK/jEukDOSvj7cJNMq0Hf6aesOJhstxSNZpQq2dT6jBqq
- xQVggdO5QGo0vFCNVj3yJq2IAOQsUulpj3RH8EoU6nJA1cVDmI7jXfrzCHmin23sWPB6
- 0+DE02iGnNUpNCHdmEuIzQyHlX0qF/E1NqHwvd/tfjfL6iJxPSsk7zsCR7SCi99kCQfr
- ORAwvE/XUAlio/0IoirNzLA667qZl2VcV0MRHXuYRWdm9aGagHivkWjlF7Wip+LMLoKo
- UzKzM0RpW9A/FqH7nPmz+83EeksneMGJVCaP5cRbZHmbdmFSoq93xS0WOBJzyiMeEXx3
- kqFw==
+ bh=eW5FWYNRAGHlbRGDImGhBI2CpPAoEk+OUrnDEdgEO9M=;
+ b=dVMB1zo2K7Ws9nSq4GXKv1qUxDKaN4+RnYcNX3WG04foWAjJh0K0fOIMCNcw8pq2Qa
+ 0EcqUAmD0gFCRkdC/xqfLWVyq9zoMcHxsLE7fR8SE+Yp2XX/AsFhLMplm9EnzwkL2sLL
+ HWSLNKQ5Sj6mo9abIwltdl/dd/PWi5VIjh+jU2nxiZJa0lrdq75beI3WiDSmIBUoAD0/
+ mQtk5z/jRJJgAIdwLmdsutdseRlkf4KEB+ldDTbBZITeIVnj8AezjnA8UerCQv7zXqkU
+ uOTXgCs0OS0u+EVVj+X+PlH8p6kal6XJCb+HRNl/lt2AB65Rf62y3HfQuHm+wWbvi67+
+ UCXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=DPFVE7wntVsydH3hHjszCEHgZh1P4e51YHkfPvYG+wQ=;
- b=UiNKOvn7AoK9DrwL1NkujaFMLBBYHXxzMPVoSKiNjHCjJUJT76v/M4DnKkJYEhUX8a
- u39d7ErNzxkTCrJU66Sz9iKiKuZNmFPzdUJYneUI/9zL1vkAuQyKsbYHIedB2OQHUgc3
- B6oTkzGy5jWJunwZkZ6EuM2Lb1N/XgXBGdv7ilgfcD/aM72cAGFFfDP8sjfg3OIgJIn5
- 1fX+uVx6syiGwqAg7Wk75V5HQHfF/Ug8O7BKelABuC6UNOio3yYYgzFtTkXB0OZJaaln
- 9GLR+XApxEypgTTQQTX/uoiZ3BtsrcYnNJGjAXU86G1K9jNMyFfiaABiqmNUjjhCUlSw
- 5e9Q==
-X-Gm-Message-State: ANoB5pksyJoRnigAjnx9ebAd7uIf4ubzdm6pea8AokjsURHXFqSQsS2e
- tLMPCSX9ztgrm2NyT7lCBlbBQQmJJ55KJlMYp6s=
-X-Received: by 2002:adf:ea4e:0:b0:242:1d48:e043 with SMTP id
- j14-20020adfea4e000000b002421d48e043mr27563886wrn.498.1670531130099; Thu, 08
- Dec 2022 12:25:30 -0800 (PST)
+ bh=eW5FWYNRAGHlbRGDImGhBI2CpPAoEk+OUrnDEdgEO9M=;
+ b=XBHi63lICWSOyFQ+7Pa72TkVnmHJbuH8O2kmgVJV0E3LSOAW4otLQ2kbgynH6LVtiX
+ slayAUyxM6vAMUj6vnHR+4EMOOu8U9RcR28zy57AuTf28lPqQFXCw4TF/cbdqV7ksX/Z
+ 2Jtap2+jZ2PLsLv20zSGo3mlaN9tlwTZEKkVxUU/6O0Yoky05agthRUmT9HXlGeFdc6+
+ hRDsii243yj14VP1MA4hYK/LKnzr3diZmBBVTthYrFaEJERFCb8+BR7FoG5AxhFuTC2R
+ KFPnhzoEr14oOhefaWJz9MLTUX8oDYgMijimyF8IwfgQL7vIHahv7q5VlwUkS8X9/X0U
+ Lg7g==
+X-Gm-Message-State: ANoB5pnAcGL1ctn5TFHtClF2h0OwweU0dVxuYAVQBnV1PswHjoPFZ4Dn
+ YaO0JwGUuusRdOuHDpWdh9LI0V5EUhAmgj0vHvdyiw==
+X-Received: by 2002:aa7:8502:0:b0:576:9786:94c2 with SMTP id
+ v2-20020aa78502000000b00576978694c2mr24365097pfn.26.1670583542989; Fri, 09
+ Dec 2022 02:59:02 -0800 (PST)
 MIME-Version: 1.0
-References: <20221203231904.25155-1-strahinja.p.jankovic@gmail.com>
- <CAPan3WoHZXTY4+EAkgwcHdYTice62OtRdLyjW7hdn8oQ-Swa-A@mail.gmail.com>
- <CABtshVTVG=YqWemmG56eOAR5UouDXnTHBtp42Tu6N_w4EgDpUA@mail.gmail.com>
-In-Reply-To: <CABtshVTVG=YqWemmG56eOAR5UouDXnTHBtp42Tu6N_w4EgDpUA@mail.gmail.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Thu, 8 Dec 2022 21:25:18 +0100
-Message-ID: <CAPan3WppK=fY1L7k5urN27=tVNSxy9NnSUoZK2W8+Lxm8TTnqg@mail.gmail.com>
-Subject: Re: [PATCH 0/6] Enable Cubieboard A10 boot SPL from SD card
-To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000988d5c05ef56d620"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-wr1-x42b.google.com
+References: <166983457648.13115.4940680286975412418-0@git.sr.ht>
+ <CAFEAcA8csAbbdvLoq+202CAQ0PLWdHaBTfADtqx33c=DNU-wSQ@mail.gmail.com>
+ <c31be243-e380-eabd-f387-0b0923d4f6c1@gmx.de>
+ <CAFEAcA88QfXmos_vCMGnDsmH7L22jtMz+-MRrMimObhDaFrwXA@mail.gmail.com>
+ <2cbdc0b8-ff8e-f6e3-379a-82d25ad43514@gmx.de>
+In-Reply-To: <2cbdc0b8-ff8e-f6e3-379a-82d25ad43514@gmx.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 9 Dec 2022 10:58:51 +0000
+Message-ID: <CAFEAcA9h36KgFh9HHzF-YGmL3LLT3L9S74qhfv85d_8GdOOUUw@mail.gmail.com>
+Subject: Re: [PATCH qemu.git 0/1] hw/arm/virt: add 2x sp804 timer
+To: Axel Heider <axelheider@gmx.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QowsNbAsjYGp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Kq2pGHCWB9AG
 
---000000000000988d5c05ef56d620
-Content-Type: text/plain; charset="UTF-8"
-
-Hi Strahinja,
-
-On Thu, Dec 8, 2022 at 8:24 PM Strahinja Jankovic <
-strahinjapjankovic@gmail.com> wrote:
-
-> Hi Niek,
->
-> On Wed, Dec 7, 2022 at 9:25 PM Niek Linnenbank <nieklinnenbank@gmail.com>
-> wrote:
-> >
-> > Hello Strahinja,
-> >
-> > Thanks for contribution these patches, and also taking the H3 into
-> account :-)
->
-> Thank you for looking into these patches and all of the comments. I
-> will try to submit V2 of this patch set in the following days.
->
-> >
-> > I've ran the avocado based acceptance tests for both boards and got
-> these results:
-> >
-> > $ ARMBIAN_ARTIFACTS_CACHED=yes AVOCADO_ALLOW_LARGE_STORAGE=yes
-> ./build/tests/venv/bin/avocado --show=app,console run -t
-> machine:orangepi-pc tests/avocado/boot_linux_console.py
-> > ...
-> > RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |
-> CANCEL 0
-> > JOB TIME   : 114.24 s
-> >
-> > $ ./build/tests/venv/bin/avocado --show=app,console run -t
-> machine:cubieboard tests/avocado/boot_linux_console.py
-> > ...
-> > RESULTS    : PASS 2 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |
-> CANCEL 0
-> > JOB TIME   : 22.79 s
->
-> I did not think initially about avocado, but maybe I could also add an
-> SPL/SD boot test for the cubieboard, similarly to the way it is run
-> for Orange Pi, for V2 of the patch set?
->
-
-Yeah that would be great. It can help to make testing easier when working
-on your current code, since its all automated.
-And when covering the SPL/SD boot with an acceptance test, it also helps to
-ensure it keeps working with future updates to Qemu code too.
-
-One thing to be aware of is to select an image with an URL that is stable.
-Once a new test is merged, and the image is subsequently deleted
-from the remote server, the test can't run anymore. We've had such a
-problem before with the orangepi-pc tests.
-
-Regards,
-Niek
-
-
->
-> Best regards,
-> Strahinja
->
->
->
-> >
-> > So that shows both machines are still running fine. During startup of
-> the bionic 20.08 image for orangepi-pc it did show this message:
-> >   console: i2c i2c-0: mv64xxx: I2C bus locked, block: 1, time_left: 0
-> >   console: sy8106a: probe of 0-0065 failed with error -110
-> >
-> > The SY8106a appears to be an peripheral attached to the I2C bus on the
-> orangepi-pc, and we don't emulate the SY8106a yet, so that's an error to be
-> expected:
-> >   https://linux-sunxi.org/SY8106A
-> >
-> > So for the series:
-> > Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> >
-> > I'll try to reply to each patch as well.
-> >
-> > Kind regards,
-> > Niek
-> >
-> > On Sun, Dec 4, 2022 at 12:19 AM Strahinja Jankovic <
-> strahinjapjankovic@gmail.com> wrote:
+On Thu, 8 Dec 2022 at 17:25, Axel Heider <axelheider@gmx.de> wrote:
+> >> For the seL4 specific case, this is currently not possible in
+> >> the standard configuration. It's only exposed for a special
+> >> debug and benchmarking configuration.
 > >>
-> >> This patch series adds missing Allwinner A10 modules needed for
-> >> successful SPL boot:
-> >> - Clock controller module
-> >> - DRAM controller
-> >> - I2C0 controller (added also for Allwinner H3 since it is the same)
-> >> - AXP-209 connected to I2C0 bus
-> >>
-> >> It also updates Allwinner A10 emulation so SPL is copied from attached
-> >> SD card if `-kernel` parameter is not passed when starting QEMU
-> >> (approach adapted from Allwinner H3 implementation).
-> >>
-> >> Boot from SD card has been tested with Cubieboard Armbian SD card image
-> and custom
-> >> Yocto image built for Cubieboard.
-> >> Example usage for Armbian image:
-> >> qemu-system-arm -M cubieboard -nographic -sd
-> ~/Armbian_22.11.0-trunk_Cubieboard_kinetic_edge_6.0.7.img
-> >>
-> >>
-> >> Strahinja Jankovic (6):
-> >>   hw/misc: Allwinner-A10 Clock Controller Module Emulation
-> >>   hw/misc: Allwinner A10 DRAM Controller Emulation
-> >>   hw/i2c: Allwinner TWI/I2C Emulation
-> >>   hw/misc: Allwinner AXP-209 Emulation
-> >>   hw/arm: Add AXP-209 to Cubieboard
-> >>   hw/arm: Allwinner A10 enable SPL load from MMC
-> >>
-> >>  hw/arm/Kconfig                        |   5 +
-> >>  hw/arm/allwinner-a10.c                |  40 +++
-> >>  hw/arm/allwinner-h3.c                 |  11 +-
-> >>  hw/arm/cubieboard.c                   |  11 +
-> >>  hw/i2c/Kconfig                        |   4 +
-> >>  hw/i2c/allwinner-i2c.c                | 417 ++++++++++++++++++++++++++
-> >>  hw/i2c/meson.build                    |   1 +
-> >>  hw/misc/Kconfig                       |  10 +
-> >>  hw/misc/allwinner-a10-ccm.c           | 224 ++++++++++++++
-> >>  hw/misc/allwinner-a10-dramc.c         | 179 +++++++++++
-> >>  hw/misc/allwinner-axp-209.c           | 263 ++++++++++++++++
-> >>  hw/misc/meson.build                   |   3 +
-> >>  include/hw/arm/allwinner-a10.h        |  27 ++
-> >>  include/hw/arm/allwinner-h3.h         |   3 +
-> >>  include/hw/i2c/allwinner-i2c.h        | 112 +++++++
-> >>  include/hw/misc/allwinner-a10-ccm.h   |  67 +++++
-> >>  include/hw/misc/allwinner-a10-dramc.h |  68 +++++
-> >>  17 files changed, 1444 insertions(+), 1 deletion(-)
-> >>  create mode 100644 hw/i2c/allwinner-i2c.c
-> >>  create mode 100644 hw/misc/allwinner-a10-ccm.c
-> >>  create mode 100644 hw/misc/allwinner-a10-dramc.c
-> >>  create mode 100644 hw/misc/allwinner-axp-209.c
-> >>  create mode 100644 include/hw/i2c/allwinner-i2c.h
-> >>  create mode 100644 include/hw/misc/allwinner-a10-ccm.h
-> >>  create mode 100644 include/hw/misc/allwinner-a10-dramc.h
-> >>
-> >> --
-> >> 2.30.2
-> >>
-> >
-> >
-> > --
-> > Niek Linnenbank
-> >
+> > It's not clear to me what you mean here -- the generic
+> > timer in the CPU exists in all configurations, so there
+> > should be no obstacle to seL4 using it.
 >
+> Access is not exposed to userland in the standard configuration
+> and the standard kernel API has no no timeouts besides zero and
+> infinite. It's a design thing in the end. Nothing that could not
+> be hacked around or be changed in the design in the long run. But
+> my goal is not to hack around, but have a "proper" machine
+> simulation instead. Which basically falls down to having a generic
+> machine in mainline that has a few more customization options.
 
+So, my take on this is that I'm open to adding things to
+the virt board where we don't provide a feature that's
+useful to guest code. The second UART falls in this category:
+it lets you do things that you otherwise could not do (like
+have one UART for firmware and one for a kernel). On the
+other hand, this case with the sp804 sounds more like QEMU
+is already providing functional timer facilities and the
+problem is on the guest software side. To me the "non-hacky"
+solution sounds like it is "sel4 should provide a better timer
+related API to userland". I don't really want to work around
+guest OS deficiencies in QEMU.
 
--- 
-Niek Linnenbank
-
---000000000000988d5c05ef56d620
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Strahinja,<br></div><br><div class=3D"=
-gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Dec 8, 2022 at 8=
-:24 PM Strahinja Jankovic &lt;<a href=3D"mailto:strahinjapjankovic@gmail.co=
-m">strahinjapjankovic@gmail.com</a>&gt; wrote:<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">Hi Niek,<br>
-<br>
-On Wed, Dec 7, 2022 at 9:25 PM Niek Linnenbank &lt;<a href=3D"mailto:niekli=
-nnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt; wrot=
-e:<br>
-&gt;<br>
-&gt; Hello Strahinja,<br>
-&gt;<br>
-&gt; Thanks for contribution these patches, and also taking the H3 into acc=
-ount :-)<br>
-<br>
-Thank you for looking into these patches and all of the comments. I<br>
-will try to submit V2 of this patch set in the following days.<br>
-<br>
-&gt;<br>
-&gt; I&#39;ve ran the avocado based acceptance tests for both boards and go=
-t these results:<br>
-&gt;<br>
-&gt; $ ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes ./b=
-uild/tests/venv/bin/avocado --show=3Dapp,console run -t machine:orangepi-pc=
- tests/avocado/boot_linux_console.py<br>
-&gt; ...<br>
-&gt; RESULTS=C2=A0 =C2=A0 : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | I=
-NTERRUPT 0 | CANCEL 0<br>
-&gt; JOB TIME=C2=A0 =C2=A0: 114.24 s<br>
-&gt;<br>
-&gt; $ ./build/tests/venv/bin/avocado --show=3Dapp,console run -t machine:c=
-ubieboard tests/avocado/boot_linux_console.py<br>
-&gt; ...<br>
-&gt; RESULTS=C2=A0 =C2=A0 : PASS 2 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | I=
-NTERRUPT 0 | CANCEL 0<br>
-&gt; JOB TIME=C2=A0 =C2=A0: 22.79 s<br>
-<br>
-I did not think initially about avocado, but maybe I could also add an<br>
-SPL/SD boot test for the cubieboard, similarly to the way it is run<br>
-for Orange Pi, for V2 of the patch set?<br></blockquote><div><br></div><div=
->Yeah that would be great. It can help to make testing easier when working =
-on your current code, since its all automated.<br></div><div>And when cover=
-ing the SPL/SD boot with an acceptance test, it also helps to ensure it kee=
-ps working with future updates to Qemu code too.</div><div><br></div><div>O=
-ne thing to be aware of is to select an image with an URL that is stable. O=
-nce a new test is merged, and the image is subsequently deleted</div><div>f=
-rom the remote server, the test can&#39;t run anymore. We&#39;ve had such a=
- problem before with the orangepi-pc tests.</div><div><br></div><div>Regard=
-s,</div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
-;padding-left:1ex">
-<br>
-Best regards,<br>
-Strahinja<br>
-<br>
-<br>
-<br>
-&gt;<br>
-&gt; So that shows both machines are still running fine. During startup of =
-the bionic 20.08 image for orangepi-pc it did show this message:<br>
-&gt;=C2=A0 =C2=A0console: i2c i2c-0: mv64xxx: I2C bus locked, block: 1, tim=
-e_left: 0<br>
-&gt;=C2=A0 =C2=A0console: sy8106a: probe of 0-0065 failed with error -110<b=
-r>
-&gt;<br>
-&gt; The SY8106a appears to be an peripheral attached to the I2C bus on the=
- orangepi-pc, and we don&#39;t emulate the SY8106a yet, so that&#39;s an er=
-ror to be expected:<br>
-&gt;=C2=A0 =C2=A0<a href=3D"https://linux-sunxi.org/SY8106A" rel=3D"norefer=
-rer" target=3D"_blank">https://linux-sunxi.org/SY8106A</a><br>
-&gt;<br>
-&gt; So for the series:<br>
-&gt; Tested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.=
-com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt;<br>
-&gt; I&#39;ll try to reply to each patch as well.<br>
-&gt;<br>
-&gt; Kind regards,<br>
-&gt; Niek<br>
-&gt;<br>
-&gt; On Sun, Dec 4, 2022 at 12:19 AM Strahinja Jankovic &lt;<a href=3D"mail=
-to:strahinjapjankovic@gmail.com" target=3D"_blank">strahinjapjankovic@gmail=
-.com</a>&gt; wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; This patch series adds missing Allwinner A10 modules needed for<br=
->
-&gt;&gt; successful SPL boot:<br>
-&gt;&gt; - Clock controller module<br>
-&gt;&gt; - DRAM controller<br>
-&gt;&gt; - I2C0 controller (added also for Allwinner H3 since it is the sam=
-e)<br>
-&gt;&gt; - AXP-209 connected to I2C0 bus<br>
-&gt;&gt;<br>
-&gt;&gt; It also updates Allwinner A10 emulation so SPL is copied from atta=
-ched<br>
-&gt;&gt; SD card if `-kernel` parameter is not passed when starting QEMU<br=
->
-&gt;&gt; (approach adapted from Allwinner H3 implementation).<br>
-&gt;&gt;<br>
-&gt;&gt; Boot from SD card has been tested with Cubieboard Armbian SD card =
-image and custom<br>
-&gt;&gt; Yocto image built for Cubieboard.<br>
-&gt;&gt; Example usage for Armbian image:<br>
-&gt;&gt; qemu-system-arm -M cubieboard -nographic -sd ~/Armbian_22.11.0-tru=
-nk_Cubieboard_kinetic_edge_6.0.7.img<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; Strahinja Jankovic (6):<br>
-&gt;&gt;=C2=A0 =C2=A0hw/misc: Allwinner-A10 Clock Controller Module Emulati=
-on<br>
-&gt;&gt;=C2=A0 =C2=A0hw/misc: Allwinner A10 DRAM Controller Emulation<br>
-&gt;&gt;=C2=A0 =C2=A0hw/i2c: Allwinner TWI/I2C Emulation<br>
-&gt;&gt;=C2=A0 =C2=A0hw/misc: Allwinner AXP-209 Emulation<br>
-&gt;&gt;=C2=A0 =C2=A0hw/arm: Add AXP-209 to Cubieboard<br>
-&gt;&gt;=C2=A0 =C2=A0hw/arm: Allwinner A10 enable SPL load from MMC<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A05 +<br>
-&gt;&gt;=C2=A0 hw/arm/allwinner-a10.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 |=C2=A0 40 +++<br>
-&gt;&gt;=C2=A0 hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 11 +-<br>
-&gt;&gt;=C2=A0 hw/arm/cubieboard.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 11 +<br>
-&gt;&gt;=C2=A0 hw/i2c/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A04 +<br>
-&gt;&gt;=C2=A0 hw/i2c/allwinner-i2c.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 | 417 ++++++++++++++++++++++++++<br>
-&gt;&gt;=C2=A0 hw/i2c/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-&gt;&gt;=C2=A0 hw/misc/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 10 +<br>
-&gt;&gt;=C2=A0 hw/misc/allwinner-a10-ccm.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0| 224 ++++++++++++++<br>
-&gt;&gt;=C2=A0 hw/misc/allwinner-a10-dramc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0| 179 +++++++++++<br>
-&gt;&gt;=C2=A0 hw/misc/allwinner-axp-209.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0| 263 ++++++++++++++++<br>
-&gt;&gt;=C2=A0 hw/misc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A03 +<br>
-&gt;&gt;=C2=A0 include/hw/arm/allwinner-a10.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
-=C2=A0 27 ++<br>
-&gt;&gt;=C2=A0 include/hw/arm/allwinner-h3.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0|=C2=A0 =C2=A03 +<br>
-&gt;&gt;=C2=A0 include/hw/i2c/allwinner-i2c.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 | =
-112 +++++++<br>
-&gt;&gt;=C2=A0 include/hw/misc/allwinner-a10-ccm.h=C2=A0 =C2=A0|=C2=A0 67 +=
-++++<br>
-&gt;&gt;=C2=A0 include/hw/misc/allwinner-a10-dramc.h |=C2=A0 68 +++++<br>
-&gt;&gt;=C2=A0 17 files changed, 1444 insertions(+), 1 deletion(-)<br>
-&gt;&gt;=C2=A0 create mode 100644 hw/i2c/allwinner-i2c.c<br>
-&gt;&gt;=C2=A0 create mode 100644 hw/misc/allwinner-a10-ccm.c<br>
-&gt;&gt;=C2=A0 create mode 100644 hw/misc/allwinner-a10-dramc.c<br>
-&gt;&gt;=C2=A0 create mode 100644 hw/misc/allwinner-axp-209.c<br>
-&gt;&gt;=C2=A0 create mode 100644 include/hw/i2c/allwinner-i2c.h<br>
-&gt;&gt;=C2=A0 create mode 100644 include/hw/misc/allwinner-a10-ccm.h<br>
-&gt;&gt;=C2=A0 create mode 100644 include/hw/misc/allwinner-a10-dramc.h<br>
-&gt;&gt;<br>
-&gt;&gt; --<br>
-&gt;&gt; 2.30.2<br>
-&gt;&gt;<br>
-&gt;<br>
-&gt;<br>
-&gt; --<br>
-&gt; Niek Linnenbank<br>
-&gt;<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---000000000000988d5c05ef56d620--
+thanks
+-- PMM

@@ -1,79 +1,79 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3418913ejb;
-        Mon, 12 Dec 2022 07:22:52 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf40jlTOdXt01xzlMw/TUEFWt7keLrT/S2nU3EHDBX8TGQslSmrZt02IaBDG+4/jmQFzh4eZ
-X-Received: by 2002:ac8:47da:0:b0:3a8:661:251 with SMTP id d26-20020ac847da000000b003a806610251mr17391441qtr.64.1670858571910;
-        Mon, 12 Dec 2022 07:22:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670858571; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3419930ejb;
+        Mon, 12 Dec 2022 07:24:04 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5QMiGQtYaKGyTrKmVPM+dQXTGc/2ZZvEJz1DEVhYacBkLTsOZkbG/ampHNAxmKcJbI+SmF
+X-Received: by 2002:a05:6214:5d8b:b0:4c7:8ab2:2fe1 with SMTP id mf11-20020a0562145d8b00b004c78ab22fe1mr27489981qvb.19.1670858644101;
+        Mon, 12 Dec 2022 07:24:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670858644; cv=none;
         d=google.com; s=arc-20160816;
-        b=PLD3zn/ehjlZFFyNuah8GlQNDYHqtQX8qM6H+m3sw37+kKbpdaAjlqPPyiw8WalaGs
-         Xy6dbA6Z40nimYadP6yplt+TnieLGPENjYzhokNbNgAkd6hm4zJwI1lVVFnnJIlgkvz9
-         YF+93Zk/dZJUgA4xltysRjLpm/xfwNhYV8ZzD+fKgAxH4dkZB8l7DuWcLm02sNyyTfws
-         fTPxM229pYuZtSZSiepHz2I5iDkmhusY2HfGqbAyJZCRE+fCPvYJLbl3dN/uzbKLwDTs
-         iSIBcEvL1zVLM+inxN+IVGHidCHC2ql9eZ2B0ba73zpexKn2gJphg8wnKGiF11G5XlJC
-         xxIA==
+        b=xfikPhwokQx8rNBLmGn5OBgEdhL2QlxB2m05j5Iz3c36R0fLSXeV2qLmb3qVRlhmPJ
+         o0yaWDsoeX6uYKsu8gVlOwUthqMr431pcSvxsw2VITRlB1VUdzlwRS+Er12/9XCWSSCT
+         7Jm94MxOWVXDqFrHPFdvMfdeuH3/utkve7jmVBHAVLCTOQ666RERAHIWq07mZYmbeMiF
+         YfjCOgRR92VAQ4mmP4v4Z7kPoEFDnoKfLlz/mfopzdjARNW5Te1629BDEIDjpePfUcNO
+         hmJvnlQC4pXQLHADUzm7eOtXDoCv31k1ec+nA5ewpV45x0BIW3TDL4EFwA8T6z/lokn9
+         bOYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=K7LaarmLLOu5FmPKS52J+EHne9sPmkHDrJIWtE74xTA=;
-        b=yxzaieWqOPp76fWZofF+CVHTSov2ryIwk+Hqcm3tClSJXXGyqpbjRRM1GJIFcUt07h
-         ciz+KSgrT1cNmgq395N30Pq5rOYgQ6JBFpyw5fz/I0pHxTsgR6CaITbYhI/o1Oh5+0RU
-         yGQm5OgckggGGtuI5G6nTszOdm5I5ehqHtY9yV0uaFoRxUKaAoUHUhGSpeklgSLt93JT
-         KSEg442h8qzqw9il6Py9S0uQnhvuNlTZxSXi886zNoMqh59F8+BtTnYXUQFMVcyiKuKl
-         7e/l3mq6r5ysxzA9vjEQsjkvU+L4e2lFkm+gLba+ehOUHMWdpFVmPX5blfQ6QBaUR268
-         G/zw==
+        bh=vvzvOyeefYHkoMGe4bZugTKomPztWz7RE3MgNQEVQDQ=;
+        b=RyDRa1ZCLSyCdw8mPKwj3c6s8UPnSAQiOkkIGeZxPS9fD4zKZ95Qgtoelwv+T/dy2n
+         n88lRA8ZMpYIkdys40HwBUXRmkDaZoEU3Oyaqyr2euksg+lpa8NwfJ4A9kNyF7ZufW0O
+         2S+GCkGnntjUpoeZlm+FLc7r16fmtbEfVx+wP0K999678J2mfWw88DV3auGnYiZNMCUs
+         HAvpGNV9W1LBBFvZciZ+hTmk0STx1eiJGAE4oSc8veZ3C65HV5sITCkGgzAL8awB7vcK
+         E1k4Y23NCT7W88AyEUyPdz+DpMTJuO7bUYIHVRBDb54JafJ8lmTNFZAhCPLY9CSj2wuS
+         wo5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HHsn6KLs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JvOYh8Kt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q1-20020ac84501000000b003a6a7a6ac07si5163583qtn.227.2022.12.12.07.22.51
+        by mx.google.com with ESMTPS id jk4-20020ad45d44000000b004afaac2ce69si5495289qvb.302.2022.12.12.07.24.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Dec 2022 07:22:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Dec 2022 07:24:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HHsn6KLs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JvOYh8Kt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p4kdB-00084W-Pw; Mon, 12 Dec 2022 10:22:13 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p4kdA-00083i-5y; Mon, 12 Dec 2022 10:22:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1p4kdA-00083p-M3
- for qemu-devel@nongnu.org; Mon, 12 Dec 2022 10:22:12 -0500
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1p4kd5-00082H-Kf
+ for qemu-arm@nongnu.org; Mon, 12 Dec 2022 10:22:07 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1p4kd7-00072t-JH
- for qemu-devel@nongnu.org; Mon, 12 Dec 2022 10:22:12 -0500
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1p4kd3-00072M-RW
+ for qemu-arm@nongnu.org; Mon, 12 Dec 2022 10:22:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1670858529;
+ s=mimecast20190719; t=1670858525;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=K7LaarmLLOu5FmPKS52J+EHne9sPmkHDrJIWtE74xTA=;
- b=HHsn6KLsBjtTij05OCI1T075mmu3Jhzjb5Bp7V4erIvzG+WaAo+vC/Tvz0LG69IUbQaVCn
- mBJ5+DewRXc6fYGIa6qWlY//uJ1BWFmUnOKO5RazREvgtnK2qDbKjgqMfjKbqjH0/EJm/V
- pMc1Ad4LpsXy5CALSU2SE1U0/YP181w=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=vvzvOyeefYHkoMGe4bZugTKomPztWz7RE3MgNQEVQDQ=;
+ b=JvOYh8KtLUhVu/ZumbbxX1rmWd5yzaDuQDPlHLGcM3RJP728u1uB71sR6SIPHcKWF/TRcp
+ wCgpKJYDIhKB7CfH/p2jkS0Q8O7L9C34lB8F0ru1nJqK4EbQ2CrSOKOSKmI9ujky5dU4lG
+ sBPULYzWmTkdiAxuVxlox0VvRcrMHxk=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-70-M7mD7MRMPFKU7TKPPswlgA-1; Mon, 12 Dec 2022 10:22:03 -0500
-X-MC-Unique: M7mD7MRMPFKU7TKPPswlgA-1
+ us-mta-540-xpQsAyZkOQWvGjiA68jH9g-1; Mon, 12 Dec 2022 10:22:00 -0500
+X-MC-Unique: xpQsAyZkOQWvGjiA68jH9g-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DF88F29ABA09;
- Mon, 12 Dec 2022 15:22:02 +0000 (UTC)
-Received: from gondolin.redhat.com (unknown [10.39.195.67])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 694102026D76;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 29DF2806001;
  Mon, 12 Dec 2022 15:21:59 +0000 (UTC)
+Received: from gondolin.redhat.com (unknown [10.39.195.67])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 994F72026D4B;
+ Mon, 12 Dec 2022 15:21:55 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>,
@@ -91,13 +91,13 @@ To: Peter Maydell <peter.maydell@linaro.org>,
  Eric Farman <farman@linux.ibm.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org, Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH for-8.0 v2 2/2] pc: clean up compat machines
-Date: Mon, 12 Dec 2022 16:21:45 +0100
-Message-Id: <20221212152145.124317-3-cohuck@redhat.com>
+Subject: [PATCH for-8.0 v2 1/2] hw: Add compat machines for 8.0
+Date: Mon, 12 Dec 2022 16:21:44 +0100
+Message-Id: <20221212152145.124317-2-cohuck@redhat.com>
 In-Reply-To: <20221212152145.124317-1-cohuck@redhat.com>
 References: <20221212152145.124317-1-cohuck@redhat.com>
 MIME-Version: 1.0
-Content-type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
@@ -108,293 +108,272 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +JQScGOvmq5K
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6wNWH9jnkAzl
 
-We can move setting default_cpu_version into the base machine options,
-and we need to unset alias and is_default only once.
+Add 8.0 machine types for arm/i440fx/m68k/q35/s390x/spapr.
 
-Suggested-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org> [ppc]
+Reviewed-by: Thomas Huth <thuth@redhat.com> [s390x]
+Reviewed-by: Greg Kurz <groug@kaod.org> [ppc]
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- hw/i386/pc_piix.c | 27 +--------------------------
- hw/i386/pc_q35.c  | 16 +---------------
- 2 files changed, 2 insertions(+), 41 deletions(-)
+ hw/arm/virt.c              |  9 ++++++++-
+ hw/core/machine.c          |  3 +++
+ hw/i386/pc.c               |  3 +++
+ hw/i386/pc_piix.c          | 14 +++++++++++++-
+ hw/i386/pc_q35.c           | 13 ++++++++++++-
+ hw/m68k/virt.c             |  9 ++++++++-
+ hw/ppc/spapr.c             | 15 +++++++++++++--
+ hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+ include/hw/boards.h        |  3 +++
+ include/hw/i386/pc.h       |  3 +++
+ 10 files changed, 79 insertions(+), 7 deletions(-)
 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b87135085610..2a46660980e7 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3096,10 +3096,17 @@ static void machvirt_machine_init(void)
+ }
+ type_init(machvirt_machine_init);
+ 
++static void virt_machine_8_0_options(MachineClass *mc)
++{
++}
++DEFINE_VIRT_MACHINE_AS_LATEST(8, 0)
++
+ static void virt_machine_7_2_options(MachineClass *mc)
+ {
++    virt_machine_8_0_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+ }
+-DEFINE_VIRT_MACHINE_AS_LATEST(7, 2)
++DEFINE_VIRT_MACHINE(7, 2)
+ 
+ static void virt_machine_7_1_options(MachineClass *mc)
+ {
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 8d34caa31dc8..0592ae7e4850 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -40,6 +40,9 @@
+ #include "hw/virtio/virtio-pci.h"
+ #include "qom/object_interfaces.h"
+ 
++GlobalProperty hw_compat_7_2[] = {};
++const size_t hw_compat_7_2_len = G_N_ELEMENTS(hw_compat_7_2);
++
+ GlobalProperty hw_compat_7_1[] = {
+     { "virtio-device", "queue_reset", "false" },
+ };
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 546b703cb42c..9aeff77e9dca 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -107,6 +107,9 @@
+     { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
+     { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
+ 
++GlobalProperty pc_compat_7_2[] = {};
++const size_t pc_compat_7_2_len = G_N_ELEMENTS(pc_compat_7_2);
++
+ GlobalProperty pc_compat_7_1[] = {};
+ const size_t pc_compat_7_1_len = G_N_ELEMENTS(pc_compat_7_1);
+ 
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 1c0a7b83b545..b48047f50caf 100644
+index 0ad0ed160387..1c0a7b83b545 100644
 --- a/hw/i386/pc_piix.c
 +++ b/hw/i386/pc_piix.c
-@@ -426,6 +426,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pcmc->default_nic_model = "e1000";
-     pcmc->pci_root_uid = 0;
-+    pcmc->default_cpu_version = 1;
+@@ -435,7 +435,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+ }
  
-     m->family = "pc_piix";
-     m->desc = "Standard PC (i440FX + PIIX, 1996)";
-@@ -437,11 +438,9 @@ static void pc_i440fx_machine_options(MachineClass *m)
- 
- static void pc_i440fx_8_0_machine_options(MachineClass *m)
+-static void pc_i440fx_7_2_machine_options(MachineClass *m)
++static void pc_i440fx_8_0_machine_options(MachineClass *m)
  {
--    PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
      pc_i440fx_machine_options(m);
-     m->alias = "pc";
-     m->is_default = true;
--    pcmc->default_cpu_version = 1;
+@@ -444,6 +444,18 @@ static void pc_i440fx_7_2_machine_options(MachineClass *m)
+     pcmc->default_cpu_version = 1;
  }
  
- DEFINE_I440FX_MACHINE(v8_0, "pc-i440fx-8.0", NULL,
-@@ -463,8 +462,6 @@ static void pc_i440fx_7_1_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_i440fx_7_2_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     pcmc->legacy_no_rng_seed = true;
-     compat_props_add(m->compat_props, hw_compat_7_1, hw_compat_7_1_len);
-     compat_props_add(m->compat_props, pc_compat_7_1, pc_compat_7_1_len);
-@@ -477,8 +474,6 @@ static void pc_i440fx_7_0_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_i440fx_7_1_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     pcmc->enforce_amd_1tb_hole = false;
-     compat_props_add(m->compat_props, hw_compat_7_0, hw_compat_7_0_len);
-     compat_props_add(m->compat_props, pc_compat_7_0, pc_compat_7_0_len);
-@@ -490,8 +485,6 @@ DEFINE_I440FX_MACHINE(v7_0, "pc-i440fx-7.0", NULL,
- static void pc_i440fx_6_2_machine_options(MachineClass *m)
- {
-     pc_i440fx_7_0_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     compat_props_add(m->compat_props, hw_compat_6_2, hw_compat_6_2_len);
-     compat_props_add(m->compat_props, pc_compat_6_2, pc_compat_6_2_len);
- }
-@@ -502,8 +495,6 @@ DEFINE_I440FX_MACHINE(v6_2, "pc-i440fx-6.2", NULL,
- static void pc_i440fx_6_1_machine_options(MachineClass *m)
- {
-     pc_i440fx_6_2_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     compat_props_add(m->compat_props, hw_compat_6_1, hw_compat_6_1_len);
-     compat_props_add(m->compat_props, pc_compat_6_1, pc_compat_6_1_len);
-     m->smp_props.prefer_sockets = true;
-@@ -515,8 +506,6 @@ DEFINE_I440FX_MACHINE(v6_1, "pc-i440fx-6.1", NULL,
- static void pc_i440fx_6_0_machine_options(MachineClass *m)
- {
-     pc_i440fx_6_1_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     compat_props_add(m->compat_props, hw_compat_6_0, hw_compat_6_0_len);
-     compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
- }
-@@ -527,8 +516,6 @@ DEFINE_I440FX_MACHINE(v6_0, "pc-i440fx-6.0", NULL,
- static void pc_i440fx_5_2_machine_options(MachineClass *m)
- {
-     pc_i440fx_6_0_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     compat_props_add(m->compat_props, hw_compat_5_2, hw_compat_5_2_len);
-     compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
- }
-@@ -541,8 +528,6 @@ static void pc_i440fx_5_1_machine_options(MachineClass *m)
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
++DEFINE_I440FX_MACHINE(v8_0, "pc-i440fx-8.0", NULL,
++                      pc_i440fx_8_0_machine_options);
++
++static void pc_i440fx_7_2_machine_options(MachineClass *m)
++{
++    pc_i440fx_8_0_machine_options(m);
++    m->alias = NULL;
++    m->is_default = false;
++    compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
++    compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
++}
++
+ DEFINE_I440FX_MACHINE(v7_2, "pc-i440fx-7.2", NULL,
+                       pc_i440fx_7_2_machine_options);
  
-     pc_i440fx_5_2_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     compat_props_add(m->compat_props, hw_compat_5_1, hw_compat_5_1_len);
-     compat_props_add(m->compat_props, pc_compat_5_1, pc_compat_5_1_len);
-     pcmc->kvmclock_create_always = false;
-@@ -555,8 +540,6 @@ DEFINE_I440FX_MACHINE(v5_1, "pc-i440fx-5.1", NULL,
- static void pc_i440fx_5_0_machine_options(MachineClass *m)
- {
-     pc_i440fx_5_1_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     m->numa_mem_supported = true;
-     compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
-     compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
-@@ -569,8 +552,6 @@ DEFINE_I440FX_MACHINE(v5_0, "pc-i440fx-5.0", NULL,
- static void pc_i440fx_4_2_machine_options(MachineClass *m)
- {
-     pc_i440fx_5_0_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
-     compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
- }
-@@ -581,8 +562,6 @@ DEFINE_I440FX_MACHINE(v4_2, "pc-i440fx-4.2", NULL,
- static void pc_i440fx_4_1_machine_options(MachineClass *m)
- {
-     pc_i440fx_4_2_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     compat_props_add(m->compat_props, hw_compat_4_1, hw_compat_4_1_len);
-     compat_props_add(m->compat_props, pc_compat_4_1, pc_compat_4_1_len);
- }
-@@ -594,8 +573,6 @@ static void pc_i440fx_4_0_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_i440fx_4_1_machine_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     pcmc->default_cpu_version = CPU_VERSION_LEGACY;
-     compat_props_add(m->compat_props, hw_compat_4_0, hw_compat_4_0_len);
-     compat_props_add(m->compat_props, pc_compat_4_0, pc_compat_4_0_len);
-@@ -609,9 +586,7 @@ static void pc_i440fx_3_1_machine_options(MachineClass *m)
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
- 
-     pc_i440fx_4_0_machine_options(m);
--    m->is_default = false;
-     m->smbus_no_migration_support = true;
--    m->alias = NULL;
-     pcmc->pvh_enabled = false;
-     compat_props_add(m->compat_props, hw_compat_3_1, hw_compat_3_1_len);
-     compat_props_add(m->compat_props, pc_compat_3_1, pc_compat_3_1_len);
 diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 10bb49f679b0..67ceb04bcc2d 100644
+index a496bd6e74f5..10bb49f679b0 100644
 --- a/hw/i386/pc_q35.c
 +++ b/hw/i386/pc_q35.c
-@@ -355,6 +355,7 @@ static void pc_q35_machine_options(MachineClass *m)
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pcmc->default_nic_model = "e1000e";
-     pcmc->pci_root_uid = 0;
-+    pcmc->default_cpu_version = 1;
+@@ -370,7 +370,7 @@ static void pc_q35_machine_options(MachineClass *m)
+     m->max_cpus = 288;
+ }
  
-     m->family = "pc_q35";
-     m->desc = "Standard PC (Q35 + ICH9, 2009)";
-@@ -372,10 +373,8 @@ static void pc_q35_machine_options(MachineClass *m)
- 
- static void pc_q35_8_0_machine_options(MachineClass *m)
+-static void pc_q35_7_2_machine_options(MachineClass *m)
++static void pc_q35_8_0_machine_options(MachineClass *m)
  {
--    PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
      pc_q35_machine_options(m);
-     m->alias = "q35";
--    pcmc->default_cpu_version = 1;
+@@ -378,6 +378,17 @@ static void pc_q35_7_2_machine_options(MachineClass *m)
+     pcmc->default_cpu_version = 1;
  }
  
- DEFINE_Q35_MACHINE(v8_0, "pc-q35-8.0", NULL,
-@@ -396,7 +395,6 @@ static void pc_q35_7_1_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_q35_7_2_machine_options(m);
--    m->alias = NULL;
-     pcmc->legacy_no_rng_seed = true;
-     compat_props_add(m->compat_props, hw_compat_7_1, hw_compat_7_1_len);
-     compat_props_add(m->compat_props, pc_compat_7_1, pc_compat_7_1_len);
-@@ -409,7 +407,6 @@ static void pc_q35_7_0_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_q35_7_1_machine_options(m);
--    m->alias = NULL;
-     pcmc->enforce_amd_1tb_hole = false;
-     compat_props_add(m->compat_props, hw_compat_7_0, hw_compat_7_0_len);
-     compat_props_add(m->compat_props, pc_compat_7_0, pc_compat_7_0_len);
-@@ -421,7 +418,6 @@ DEFINE_Q35_MACHINE(v7_0, "pc-q35-7.0", NULL,
- static void pc_q35_6_2_machine_options(MachineClass *m)
- {
-     pc_q35_7_0_machine_options(m);
--    m->alias = NULL;
-     compat_props_add(m->compat_props, hw_compat_6_2, hw_compat_6_2_len);
-     compat_props_add(m->compat_props, pc_compat_6_2, pc_compat_6_2_len);
- }
-@@ -432,7 +428,6 @@ DEFINE_Q35_MACHINE(v6_2, "pc-q35-6.2", NULL,
- static void pc_q35_6_1_machine_options(MachineClass *m)
- {
-     pc_q35_6_2_machine_options(m);
--    m->alias = NULL;
-     compat_props_add(m->compat_props, hw_compat_6_1, hw_compat_6_1_len);
-     compat_props_add(m->compat_props, pc_compat_6_1, pc_compat_6_1_len);
-     m->smp_props.prefer_sockets = true;
-@@ -444,7 +439,6 @@ DEFINE_Q35_MACHINE(v6_1, "pc-q35-6.1", NULL,
- static void pc_q35_6_0_machine_options(MachineClass *m)
- {
-     pc_q35_6_1_machine_options(m);
--    m->alias = NULL;
-     compat_props_add(m->compat_props, hw_compat_6_0, hw_compat_6_0_len);
-     compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
- }
-@@ -455,7 +449,6 @@ DEFINE_Q35_MACHINE(v6_0, "pc-q35-6.0", NULL,
- static void pc_q35_5_2_machine_options(MachineClass *m)
- {
-     pc_q35_6_0_machine_options(m);
--    m->alias = NULL;
-     compat_props_add(m->compat_props, hw_compat_5_2, hw_compat_5_2_len);
-     compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
- }
-@@ -468,7 +461,6 @@ static void pc_q35_5_1_machine_options(MachineClass *m)
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
++DEFINE_Q35_MACHINE(v8_0, "pc-q35-8.0", NULL,
++                   pc_q35_8_0_machine_options);
++
++static void pc_q35_7_2_machine_options(MachineClass *m)
++{
++    pc_q35_8_0_machine_options(m);
++    m->alias = NULL;
++    compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
++    compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
++}
++
+ DEFINE_Q35_MACHINE(v7_2, "pc-q35-7.2", NULL,
+                    pc_q35_7_2_machine_options);
  
-     pc_q35_5_2_machine_options(m);
--    m->alias = NULL;
-     compat_props_add(m->compat_props, hw_compat_5_1, hw_compat_5_1_len);
-     compat_props_add(m->compat_props, pc_compat_5_1, pc_compat_5_1_len);
-     pcmc->kvmclock_create_always = false;
-@@ -481,7 +473,6 @@ DEFINE_Q35_MACHINE(v5_1, "pc-q35-5.1", NULL,
- static void pc_q35_5_0_machine_options(MachineClass *m)
+diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+index da5eafd2756f..4cb5beef1a0c 100644
+--- a/hw/m68k/virt.c
++++ b/hw/m68k/virt.c
+@@ -346,10 +346,17 @@ type_init(virt_machine_register_types)
+     } \
+     type_init(machvirt_machine_##major##_##minor##_init);
+ 
++static void virt_machine_8_0_options(MachineClass *mc)
++{
++}
++DEFINE_VIRT_MACHINE(8, 0, true)
++
+ static void virt_machine_7_2_options(MachineClass *mc)
  {
-     pc_q35_5_1_machine_options(m);
--    m->alias = NULL;
-     m->numa_mem_supported = true;
-     compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
-     compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
-@@ -494,7 +485,6 @@ DEFINE_Q35_MACHINE(v5_0, "pc-q35-5.0", NULL,
- static void pc_q35_4_2_machine_options(MachineClass *m)
- {
-     pc_q35_5_0_machine_options(m);
--    m->alias = NULL;
-     compat_props_add(m->compat_props, hw_compat_4_2, hw_compat_4_2_len);
-     compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
++    virt_machine_8_0_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
  }
-@@ -505,7 +495,6 @@ DEFINE_Q35_MACHINE(v4_2, "pc-q35-4.2", NULL,
- static void pc_q35_4_1_machine_options(MachineClass *m)
+-DEFINE_VIRT_MACHINE(7, 2, true)
++DEFINE_VIRT_MACHINE(7, 2, false)
+ 
+ static void virt_machine_7_1_options(MachineClass *mc)
  {
-     pc_q35_4_2_machine_options(m);
--    m->alias = NULL;
-     compat_props_add(m->compat_props, hw_compat_4_1, hw_compat_4_1_len);
-     compat_props_add(m->compat_props, pc_compat_4_1, pc_compat_4_1_len);
- }
-@@ -517,7 +506,6 @@ static void pc_q35_4_0_1_machine_options(MachineClass *m)
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 66b414d2e9ba..da9c84c1198f 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -4733,15 +4733,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
+     }                                                                \
+     type_init(spapr_machine_register_##suffix)
+ 
++/*
++ * pseries-8.0
++ */
++static void spapr_machine_8_0_class_options(MachineClass *mc)
++{
++    /* Defaults for the latest behaviour inherited from the base class */
++}
++
++DEFINE_SPAPR_MACHINE(8_0, "8.0", true);
++
+ /*
+  * pseries-7.2
+  */
+ static void spapr_machine_7_2_class_options(MachineClass *mc)
  {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_q35_4_1_machine_options(m);
--    m->alias = NULL;
-     pcmc->default_cpu_version = CPU_VERSION_LEGACY;
-     /*
-      * This is the default machine for the 4.0-stable branch. It is basically
-@@ -535,7 +523,6 @@ static void pc_q35_4_0_machine_options(MachineClass *m)
- {
-     pc_q35_4_0_1_machine_options(m);
-     m->default_kernel_irqchip_split = true;
--    m->alias = NULL;
-     /* Compat props are applied by the 4.0.1 machine */
+-    /* Defaults for the latest behaviour inherited from the base class */
++    spapr_machine_8_0_class_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
  }
  
-@@ -549,7 +536,6 @@ static void pc_q35_3_1_machine_options(MachineClass *m)
-     pc_q35_4_0_machine_options(m);
-     m->default_kernel_irqchip_split = false;
-     m->smbus_no_migration_support = true;
--    m->alias = NULL;
-     pcmc->pvh_enabled = false;
-     compat_props_add(m->compat_props, hw_compat_3_1, hw_compat_3_1_len);
-     compat_props_add(m->compat_props, pc_compat_3_1, pc_compat_3_1_len);
+-DEFINE_SPAPR_MACHINE(7_2, "7.2", true);
++DEFINE_SPAPR_MACHINE(7_2, "7.2", false);
+ 
+ /*
+  * pseries-7.1
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index 2e64ffab45ef..325e0cfa6560 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -823,14 +823,26 @@ bool css_migration_enabled(void)
+     }                                                                         \
+     type_init(ccw_machine_register_##suffix)
+ 
++static void ccw_machine_8_0_instance_options(MachineState *machine)
++{
++}
++
++static void ccw_machine_8_0_class_options(MachineClass *mc)
++{
++}
++DEFINE_CCW_MACHINE(8_0, "8.0", true);
++
+ static void ccw_machine_7_2_instance_options(MachineState *machine)
+ {
++    ccw_machine_8_0_instance_options(machine);
+ }
+ 
+ static void ccw_machine_7_2_class_options(MachineClass *mc)
+ {
++    ccw_machine_8_0_class_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+ }
+-DEFINE_CCW_MACHINE(7_2, "7.2", true);
++DEFINE_CCW_MACHINE(7_2, "7.2", false);
+ 
+ static void ccw_machine_7_1_instance_options(MachineState *machine)
+ {
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 90f1dd3aeb79..d18d6d007335 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -379,6 +379,9 @@ struct MachineState {
+     } \
+     type_init(machine_initfn##_register_types)
+ 
++extern GlobalProperty hw_compat_7_2[];
++extern const size_t hw_compat_7_2_len;
++
+ extern GlobalProperty hw_compat_7_1[];
+ extern const size_t hw_compat_7_1_len;
+ 
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index c95333514ed3..991f905f5d25 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -200,6 +200,9 @@ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+ /* sgx.c */
+ void pc_machine_init_sgx_epc(PCMachineState *pcms);
+ 
++extern GlobalProperty pc_compat_7_2[];
++extern const size_t pc_compat_7_2_len;
++
+ extern GlobalProperty pc_compat_7_1[];
+ extern const size_t pc_compat_7_1_len;
+ 
 -- 
 2.38.1
 

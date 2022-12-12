@@ -1,106 +1,111 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp605461ejb;
-        Thu, 8 Dec 2022 11:23:23 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5yy46U+MCXh4orOb2m/iGRJsevvQrdSiuGq9nYjNc7ooPD4XZjvdOl/n7fBA8JuXwprfx2
-X-Received: by 2002:ac8:4243:0:b0:3a5:6666:96d3 with SMTP id r3-20020ac84243000000b003a5666696d3mr4044830qtm.33.1670527403032;
-        Thu, 08 Dec 2022 11:23:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670527403; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3373136ejb;
+        Mon, 12 Dec 2022 06:27:26 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf52pqglUNepttkqXs8xF1Z0p5Hs7yWqWO7e3f3aLGJY2Z23+X87EhAlzKPh1SnMuQGzeAdT
+X-Received: by 2002:a05:622a:110b:b0:3a7:ef75:62c3 with SMTP id e11-20020a05622a110b00b003a7ef7562c3mr34730837qty.44.1670855246182;
+        Mon, 12 Dec 2022 06:27:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670855246; cv=none;
         d=google.com; s=arc-20160816;
-        b=rOe72pgD/DfJr9I5Q7ZSqMPu2ibIq2KROgSAyWTJUZZDqXDD5vsOSOGVHOrAZholAu
-         EwxHBx4+D8ILhm5R3ViGCeimkp15ancCAT8VDZoEKgAcg4OLRB7qU8PIA2BCU9sqFBgR
-         s3s6MrnYZx9myL7bdWnOnpQ/ANUoLvn9nBwxpF0g+8vxKTUXKS7sbjoNcIEdct0mLefI
-         K67cSLSz2yMJyzkUccUIH+G428My79FA8UxU9fStQw/PIe0lZWDxmpierdkpsyx6dlBw
-         ruRVkPl19G/E9Z6xi1Q9wy01CJb4zt9K817QctMB9loKbD7YcvDJuLhMxHhx1emsNkuq
-         tKew==
+        b=jEnIthKbacIAqIGIDbSCasTDj3bEgilt8zQsJMpMgeUV24sGCJFuz6ln9j6BrRQmhR
+         kYxrZIGcwBj7yp219YzCd4z7rBkHENTAu7+cxJlsZIPDKK7W5wJvVCgYbLQY7uQZbMt/
+         paIU5X2ohrCIFopTSl82rn0BHu1BPVmStsopOpr5bwvRRwqN2IRCdzP9AzZLYbOE/gLS
+         bHny+aLfWud+e2lChWoWJ/DcS4rtRTfYUXR0hQI8kNSOuWMIOVPXTWGiHnI6PD2hZ0eg
+         oWQGBE/gI27QPKN4zp/nKLJXUKxKhfAmbGb/nJnSQzrsw0LBl/FfYmHjywX3E12CHvXj
+         32LQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=OtWgLifnlGex+eW1XyrMDcnB5Lb5dXJ2/LoteYXvh18=;
-        b=rJOgqejo8x6MN43+CdItqiI456o67pnO84ssdXPC2YvpQblsAUoaLMp0gqFgQdUv7s
-         SPlY9Ktoh3ZMhAd+fdmzMaNYBpzrV1JZRErANAh4esEjp330rTlAMzXbiHQqz4mPMVzm
-         zwSniN09RpYdTma3faoaaopR+ZQ9LmGXs0C6OFcTk3c2wARlxWIuSV1OZzy/3PuCoqLh
-         DubmZT21PYL9HraJtoJ5WD6guwHuuG6Aw9gEOqbiU/nRoXlqObZVwawemOsAMJ9DMN0u
-         I2At+2I2uanXjjDgEZTn38bpQfhdrTAgg0V35Qcgw+NNODZK0iPSdTzxMsonVR0MlYy0
-         uWrg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=kt7Ghylf7rGQFKKAbtd2vnJIMc4YhVzESoBE7byDclo=;
+        b=rTE/SEinoJEWw7uJrjdGO8EXHis7gok6pO0P/GsHMego9pslH5vc9By+PUE0xv4y2l
+         juwoBo/nVALPKRJMDbquop9PXkUzCDQDTrnMVACdV2ydGmF4YJIYUyjF76zuZJTrXxP4
+         4fOxEJ08hKqpr0yNlricJuxCPGJRlS8ON3y6yvX8JdZLfSdGIBD7mSVkygCjAdiJgz+2
+         ZmXleo+MHssabCLthQYqjBpQP50DVDHM/+K92R6qmXXAc5mLiTmsOr9okJsyLez1fpDc
+         yrKUPTJgi8p2c3zSA9UHJsX60e7vbjaoaHHcLSQzMAKtcfCZ7tw/Dp6LSFFzjs3Um1HV
+         WfZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CtMFcUiG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PKwbZ6gR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f18-20020a05620a281200b006fa299566afsi11302795qkp.568.2022.12.08.11.23.22
+        by mx.google.com with ESMTPS id k2-20020ac86042000000b003a6861d838dsi5245558qtm.551.2022.12.12.06.27.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Dec 2022 11:23:23 -0800 (PST)
+        Mon, 12 Dec 2022 06:27:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CtMFcUiG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PKwbZ6gR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p3MUE-0000d3-QN; Thu, 08 Dec 2022 14:23:14 -0500
+	id 1p4jm3-0004YC-6P; Mon, 12 Dec 2022 09:27:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p3MUD-0000cY-Q1; Thu, 08 Dec 2022 14:23:13 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p4jlz-0004TX-JA
+ for qemu-arm@nongnu.org; Mon, 12 Dec 2022 09:27:15 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p3MUB-0000M4-OI; Thu, 08 Dec 2022 14:23:13 -0500
-Received: by mail-ej1-x633.google.com with SMTP id x22so6323907ejs.11;
- Thu, 08 Dec 2022 11:23:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=OtWgLifnlGex+eW1XyrMDcnB5Lb5dXJ2/LoteYXvh18=;
- b=CtMFcUiGdYEb49XAzrb5zfmMYP6wE+GkOFEz5JAXQzbhy7Pf2CoJLXw+GjAbApAWUQ
- qLyf6rI53XPfqA4aK6PFxlfwwBjkfQNE2633vfTLGqtfhL7Ewgl9xbNyL2QA0c2c3uLA
- n+0ffkEFev9Ieu5zZm3DTg0gF+YE+hEg+nTOy9BssC1w5f5OEll+uE/J0FvVFRVqW0AK
- 7h3c5XEkTbTAsiLp9p58Pv4f2B/ummidIRUN5FE2uSkLvuTDW0kgtULeCGQD9WtOTrtw
- CqWPDDCLfhO4KK1lSCmYDMqzudmlevnyx/cbEQ63rTUNN3b4Z/9w7jOEjagph8Zq0S19
- zyow==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p4jlw-00063d-GC
+ for qemu-arm@nongnu.org; Mon, 12 Dec 2022 09:27:13 -0500
+Received: by mail-wr1-x431.google.com with SMTP id h16so3307597wrz.12
+ for <qemu-arm@nongnu.org>; Mon, 12 Dec 2022 06:27:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=kt7Ghylf7rGQFKKAbtd2vnJIMc4YhVzESoBE7byDclo=;
+ b=PKwbZ6gRCupbG9MC6qrqbpPaWPFxdOjW5QKnQ1jNc/j/IsAimbus1oXNu5aJMLfDRc
+ 7zYLI5IuMb+/1IBrrB/xio2rjkm3ENG6giK7yIhyvLrtQU6x5luu4bUnBogMmlxfM4je
+ RBhTLBh4yk2GNDkIPYFzXTbJsMBv4PpP4YLN0sWDhhZ8D+l133kgjcTIF4uGJHcy/ybY
+ ok9uSfOBbY534eSQjmpUGsd5xfsKRXkCsdTarSnSWg38zRby6lGKc+oyqDhiY8z4fJSV
+ iP8gVTCy68iNAusu1H92N/IROnimvxAK0lRkXjq4PbXMNopUSRq2fQL2BjIs3+5a0xxo
+ ubqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=OtWgLifnlGex+eW1XyrMDcnB5Lb5dXJ2/LoteYXvh18=;
- b=zh9z9rKUTeSXj5WVL9pXps3ls3H4mtDvb/c2D061NnhkIdYuA6/rlN5gUc0G2y7+/0
- m66fKJjWZExWfxJ/PE+/3HQakxqShxoYFdHL7iu5heLL7xTJaomj61VDErOH0tStyL8h
- 1SMduXqDD9B6m5qcG2ioiDe/0Cf32PyWHcsCfPoNqqleroscA8HcsDdKs0WyzgtpDMB6
- Tv2YaLuZ9y8C8WhxtKx4JNKtc2bzdXvm3Ndp6SAcFWnFWlAJyjs6d3tD1ZCm+W77Skxd
- e9EtzsVayAp3KW3NY2MhVWgz3+6cbTMhHAjyiBY9FamgERncbuXnG89SA7zHtZadbZrk
- Jy3A==
-X-Gm-Message-State: ANoB5pmhyOeAbhCwAfgCLcxm+Zt1WLYe+dbG8mlCl2uGQj/5WKGM6sUX
- 8+YATzCE88V63cf56DdWgDJLygETepTlifdsUHQ=
-X-Received: by 2002:a17:906:60d0:b0:78d:3f87:1725 with SMTP id
- f16-20020a17090660d000b0078d3f871725mr28406696ejk.492.1670527390048; Thu, 08
- Dec 2022 11:23:10 -0800 (PST)
+ bh=kt7Ghylf7rGQFKKAbtd2vnJIMc4YhVzESoBE7byDclo=;
+ b=ziekm1rDcsk8BOPHbCguulo8CQxtIHpkN7S722MYkx+O/aRm8DUR/k6QMbx7SRIoOF
+ uUmya1Ai6s5vX+s9KFJC2kYtJD5qWQJZ/yatcGgSdEWrqpoAKVoUX9pBfwD255iagqIt
+ C/XTHtYKQ6UyeaR+o3d0QmZjKzvx9SOHGQpPGuvFp+15Gi/PPEgWAuSKiOWEK9sQ+Zdy
+ b5OxTWoZCXrCKeTcrBSNHpI9EdiDOTWwobgyl6hIbutFlh8Tr7icOzri6dMdy7ksqDJw
+ S5ND46Is7UI4uocUqkAZy+mtcvlECL2bR8CmYRvah/b43XwNaymi7jxeues9whef8yi4
+ VyQA==
+X-Gm-Message-State: ANoB5pkm+KFoDIFhR/gpyajsxKAc1XfQGMk1NlTd0YPOMyj05d4CuT/i
+ O4bKPF7nkMmemN+Ym904hrcqfzdaOEHIPFJW
+X-Received: by 2002:a5d:690c:0:b0:242:3fa4:8217 with SMTP id
+ t12-20020a5d690c000000b002423fa48217mr9952194wru.50.1670855229958; 
+ Mon, 12 Dec 2022 06:27:09 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ e11-20020a5d500b000000b00241fde8fe04sm9033524wrt.7.2022.12.12.06.27.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Dec 2022 06:27:09 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Tobias=20R=C3=B6hmel?= <tobias.roehmel@rwth-aachen.de>
+Subject: [PATCH] target/arm:Set lg_page_size to 0 if either S1 or S2 asks for
+ it
+Date: Mon, 12 Dec 2022 14:27:08 +0000
+Message-Id: <20221212142708.610090-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20221203231904.25155-1-strahinja.p.jankovic@gmail.com>
- <20221203231904.25155-7-strahinja.p.jankovic@gmail.com>
- <CAPan3WpDbNczuHaOpOYQOD5MPZ-SyqyZ2172-U6JQFn7fvHaTg@mail.gmail.com>
-In-Reply-To: <CAPan3WpDbNczuHaOpOYQOD5MPZ-SyqyZ2172-U6JQFn7fvHaTg@mail.gmail.com>
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Thu, 8 Dec 2022 20:22:59 +0100
-Message-ID: <CABtshVTTsQsgsJsmo=SEbvUNXd7b-OwRPJOgHbG1u=02r2GP4A@mail.gmail.com>
-Subject: Re: [PATCH 6/6] hw/arm: Allwinner A10 enable SPL load from MMC
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ej1-x633.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,146 +120,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MiwzigtS4Nhd
+X-TUID: 6U408LR5ToxD
 
-On Wed, Dec 7, 2022 at 11:39 PM Niek Linnenbank
-<nieklinnenbank@gmail.com> wrote:
->
-> Hi Strahinja,
->
->
-> On Sun, Dec 4, 2022 at 12:19 AM Strahinja Jankovic <strahinjapjankovic@gmail.com> wrote:
->>
->> This patch enables copying of SPL from MMC if `-kernel` parameter is not
->> passed when starting QEMU. SPL is copied to SRAM_A.
->>
->> The approach is reused from Allwinner H3 implementation.
->>
->> Tested with Armbian and custom Yocto image.
->>
->> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
->> ---
->>  hw/arm/allwinner-a10.c         | 18 ++++++++++++++++++
->>  hw/arm/cubieboard.c            |  5 +++++
->>  include/hw/arm/allwinner-a10.h | 21 +++++++++++++++++++++
->>  3 files changed, 44 insertions(+)
->>
->> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
->> index 17e439777e..dc1966ff7a 100644
->> --- a/hw/arm/allwinner-a10.c
->> +++ b/hw/arm/allwinner-a10.c
->> @@ -24,7 +24,9 @@
->>  #include "sysemu/sysemu.h"
->>  #include "hw/boards.h"
->>  #include "hw/usb/hcd-ohci.h"
->> +#include "hw/loader.h"
->>
->> +#define AW_A10_SRAM_A_BASE      0x00000000
->>  #define AW_A10_DRAMC_BASE       0x01c01000
->>  #define AW_A10_MMC0_BASE        0x01c0f000
->>  #define AW_A10_CCM_BASE         0x01c20000
->> @@ -38,6 +40,22 @@
->>  #define AW_A10_RTC_BASE         0x01c20d00
->>  #define AW_A10_I2C0_BASE        0x01c2ac00
->>
->> +void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk)
->> +{
->> +    const int64_t rom_size = 32 * KiB;
->> +    g_autofree uint8_t *buffer = g_new0(uint8_t, rom_size);
->> +
->> +    if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
->> +        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
->> +                   __func__);
->> +        return;
->> +    }
->> +
->> +    rom_add_blob("allwinner-a10.bootrom", buffer, rom_size,
->> +                  rom_size, AW_A10_SRAM_A_BASE,
->> +                  NULL, NULL, NULL, NULL, false);
->> +}
->
->
-> Its probably fine for now to do it in the same way here for the A10 indeed. Perhaps in the future, we can try
-> to share some overlapping code between the A10 and H3.
+In get_phys_addr_twostage() we set the lg_page_size of the result to
+the maximum of the stage 1 and stage 2 page sizes.  This works for
+the case where we do want to create a TLB entry, because we know the
+common TLB code only creates entries of the TARGET_PAGE_SIZE and
+asking for a size larger than that only means that invalidations
+invalidate the whole larger area.  However, if lg_page_size is
+smaller than TARGET_PAGE_SIZE this effectively means "don't create a
+TLB entry"; in this case if either S1 or S2 said "this covers less
+than a page and can't go in a TLB" then the final result also should
+be marked that way.  Set the resulting page size to 0 if either
+stage asked for a less-than-a-page entry, and expand the comment
+to explain what's going on.
 
-That definitely makes sense. I plan on submitting support for A20
-after this patch set, so maybe that would be a good opportunity to
-refactor the Allwinner support in QEMU.
+This has no effect for VMSA because currently the VMSA lookup always
+returns results that cover at least TARGET_PAGE_SIZE; however when we
+add v8R support it will reuse this code path, and for v8R the S1 and
+S2 results can be smaller than TARGET_PAGE_SIZE.
 
-Best regards,
-Strahinja
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Specifically, this avoids bugs for v8R if either S1 or S2
+MPU is set up with region sizes < 1K.
 
+ target/arm/ptw.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
->
-> So the patch looks fine to me:
-> Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
->
-> Regards,
-> Niek
->
->>
->> +
->>  static void aw_a10_init(Object *obj)
->>  {
->>      AwA10State *s = AW_A10(obj);
->> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
->> index afc7980414..37659c35fd 100644
->> --- a/hw/arm/cubieboard.c
->> +++ b/hw/arm/cubieboard.c
->> @@ -99,6 +99,11 @@ static void cubieboard_init(MachineState *machine)
->>      memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BASE,
->>                                  machine->ram);
->>
->> +    /* Load target kernel or start using BootROM */
->> +    if (!machine->kernel_filename && blk && blk_is_available(blk)) {
->> +        /* Use Boot ROM to copy data from SD card to SRAM */
->> +        allwinner_a10_bootrom_setup(a10, blk);
->> +    }
->>      /* TODO create and connect IDE devices for ide_drive_get() */
->>
->>      cubieboard_binfo.ram_size = machine->ram_size;
->> diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
->> index 763935fca9..b3c9ed24c7 100644
->> --- a/include/hw/arm/allwinner-a10.h
->> +++ b/include/hw/arm/allwinner-a10.h
->> @@ -15,6 +15,7 @@
->>  #include "hw/misc/allwinner-a10-ccm.h"
->>  #include "hw/misc/allwinner-a10-dramc.h"
->>  #include "hw/i2c/allwinner-i2c.h"
->> +#include "sysemu/block-backend.h"
->>
->>  #include "target/arm/cpu.h"
->>  #include "qom/object.h"
->> @@ -47,4 +48,24 @@ struct AwA10State {
->>      OHCISysBusState ohci[AW_A10_NUM_USB];
->>  };
->>
->> +/**
->> + * Emulate Boot ROM firmware setup functionality.
->> + *
->> + * A real Allwinner A10 SoC contains a Boot ROM
->> + * which is the first code that runs right after
->> + * the SoC is powered on. The Boot ROM is responsible
->> + * for loading user code (e.g. a bootloader) from any
->> + * of the supported external devices and writing the
->> + * downloaded code to internal SRAM. After loading the SoC
->> + * begins executing the code written to SRAM.
->> + *
->> + * This function emulates the Boot ROM by copying 32 KiB
->> + * of data from the given block device and writes it to
->> + * the start of the first internal SRAM memory.
->> + *
->> + * @s: Allwinner A10 state object pointer
->> + * @blk: Block backend device object pointer
->> + */
->> +void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk);
->> +
->>  #endif
->> --
->> 2.30.2
->>
->
->
-> --
-> Niek Linnenbank
->
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index f812734bfb2..2e7826dc29b 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2655,10 +2655,20 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
+     }
+ 
+     /*
+-     * Use the maximum of the S1 & S2 page size, so that invalidation
+-     * of pages > TARGET_PAGE_SIZE works correctly.
++     * If either S1 or S2 returned a result smaller than TARGET_PAGE_SIZE,
++     * this means "don't put this in the TLB"; in this case, return a
++     * result with lg_page_size == 0 to achieve that. Otherwise,
++     * use the maximum of the S1 & S2 page size, so that invalidation
++     * of pages > TARGET_PAGE_SIZE works correctly. (This works even though
++     * we know the combined result permissions etc only cover the minimum
++     * of the S1 and S2 page size, because we know that the common TLB code
++     * never actually creates TLB entries bigger than TARGET_PAGE_SIZE,
++     * and passing a larger page size value only affects invalidations.)
+      */
+-    if (result->f.lg_page_size < s1_lgpgsz) {
++    if (result->f.lg_page_size < TARGET_PAGE_BITS ||
++        s1_lgpgsz < TARGET_PAGE_BITS) {
++        result->f.lg_page_size = 0;
++    } else if (result->f.lg_page_size < s1_lgpgsz) {
+         result->f.lg_page_size = s1_lgpgsz;
+     }
+ 
+-- 
+2.25.1
+

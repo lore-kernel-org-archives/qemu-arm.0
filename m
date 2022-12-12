@@ -1,107 +1,113 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2402502ejb;
-        Sat, 10 Dec 2022 21:09:03 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7gvdN4O8p1tHo/zUt4pCciRz204+ccBY6v+17NYM1fvJDZNQWYzmydw93jB506DGox/56p
-X-Received: by 2002:a05:622a:1f0d:b0:3a4:fa86:13d4 with SMTP id ca13-20020a05622a1f0d00b003a4fa8613d4mr15831340qtb.33.1670735343685;
-        Sat, 10 Dec 2022 21:09:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670735343; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3038554ejb;
+        Sun, 11 Dec 2022 21:46:55 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5+BH6eO4s1OYgmUXpe5phC0xwkPT858qEVhd3RhiC7mEb0WJIo4rkI5mw6V6wh+TwafpOA
+X-Received: by 2002:a0c:e991:0:b0:4c7:356:9d50 with SMTP id z17-20020a0ce991000000b004c703569d50mr18763127qvn.31.1670824015398;
+        Sun, 11 Dec 2022 21:46:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670824015; cv=none;
         d=google.com; s=arc-20160816;
-        b=E8SIQUuKUtG0lhOoOs+9vc1z/jjKpKVksxF5DndCjffA5cxm25w2TmYLslif0Fz54H
-         FJ0KWQNIYEcHzyTdeHG+/NF4XhF4EIbDk3w/e2+De6q/DWHcWJutZLqQcUtPq2tD9pnn
-         3XbMFuwVa2d/7QZoDo2BSvCeMd5gMaEomYm+sJx2XgbmVavuXRXJd+PyO9OE6WqHKix7
-         z1Im9p6Y8ptvM8zWxb3jdWg+f6zKM1+o5I1wHMXaq7UgqTgskejcpOMIQrB+jGKZ6AUe
-         V1tbc9TNQsJG6yBnPsVyxiNAUSV5A8kjFeeh9pki+jtehkixhW5U53ERdjYyk1Bqas5+
-         u5Sw==
+        b=MhEOuQcwbQ9rbMOP2vIqI1pmdnj8270dYSgXOH16J7NpBWTqdqaqPfLNbq9fXpdIbZ
+         VM+q7ZaQjO23PfrA7GS97sEDSmDcJ+FqYtXtbQpHhaO7D2IoV+V6G4+rTls2eLgUsZ9C
+         /QbS1qHvqU1xUj67f9FaHRlFCbJaPSv82L5hbqs9Ef15ortcPhS6RXwOjP9HFqf0t227
+         /zYJ/oUBz6gSnFBucDwH5QzFxc60oISG7DK2hv2inV9qJ8ac/5DFSfrJhGVe8q2sTgpY
+         +B5qaqvrA6K+Ya1EKLkx0FiEyB54rVdKuh+pQZOzZ4lr8heSW/DSFG2o+KSXlfwdx1uz
+         ryNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date
-         :content-transfer-encoding:mime-version:subject:to:from
-         :dkim-signature;
-        bh=uqb9Izuf5o2WaITYAhcN5kdXMNL1+UPZq9XuSrthWLI=;
-        b=u0iMBY02BbjoWrvwUGKtiWzMwDEybmvAXN/LT7UmNvheLWz1fiZTZG+X8O2hpf469E
-         DGBNPZvg8iXYtFuAlb76U/jjiwhS3ftsHN5TmCeK8TvErWfmAP3mWvdu09vG9c22kCyk
-         jb24wV1H/pAVxnjkr0/5de8ts3sYgJM27cJEgOoxa44ye0zw3+AxCGSaDCoO92A0ejuz
-         sQ9twYXI4/8wPo+nCLio02kBSKlb3OiVDNq7u0K9I4pjDsLq94MwIui/a9o67KqShvUj
-         bXrcmXAXUmgBrQ0zP4EPdiZ8Zs/0azumyZ+5olzr4mARxvHkMVjplTz/Vitrhm7OnsdH
-         p/aw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=XWJsj2XdMtZ0sHSuqqPIhYhdNnh9XgITFjD9tnJmWk0=;
+        b=oIvEY7n0IliDU2Et/on5zojBVdx6R3Ou2tVt65tDOjH8Pe6Imk+L1at14JOSr2bra0
+         a/0M40loG70Na4B6wJLbJ1BZDNliKEOsPy8fKm7bc8q4CYL/3xmzKE9ctQY71HiOS0ds
+         TrnZ6pI9Q6okmcT2fV8sE4OykRA7hd2/7inPqAuJ+8XDMdPuAw9LizzZ7RZiBxC5dk5r
+         6DfhX/oHddCMJhPDoPIoZqDuaO2IIOf3YggkD0BRvkgi+lK4vzgr+26NVI6Upb60Try8
+         zSSCAQMOocsd4bvZC1f+rg6w+BhEPkkYnGXnup8U56NSPYUjnTCd2xEXrLT+CHcuSO7J
+         yEDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@qq.com header.s=s201512 header.b=J7JtLrrV;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=aBlwkwYR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=qq.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bk28-20020a05620a1a1c00b006fef6145bc0si2722768qkb.355.2022.12.10.21.09.03
+        by mx.google.com with ESMTPS id y29-20020a37f61d000000b006ff0211b876si3631693qkj.158.2022.12.11.21.46.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Dec 2022 21:09:03 -0800 (PST)
+        Sun, 11 Dec 2022 21:46:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@qq.com header.s=s201512 header.b=J7JtLrrV;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=aBlwkwYR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=qq.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p4EZw-0000q2-G8; Sun, 11 Dec 2022 00:08:44 -0500
+	id 1p4be3-0006Tx-L9; Mon, 12 Dec 2022 00:46:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1327776831@qq.com>) id 1p4EZu-0000pn-8i
- for qemu-arm@nongnu.org; Sun, 11 Dec 2022 00:08:43 -0500
-Received: from out162-62-57-64.mail.qq.com ([162.62.57.64])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1327776831@qq.com>) id 1p4EZq-0001Em-BB
- for qemu-arm@nongnu.org; Sun, 11 Dec 2022 00:08:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1670735310; bh=uqb9Izuf5o2WaITYAhcN5kdXMNL1+UPZq9XuSrthWLI=;
- h=From:To:Subject:Date;
- b=J7JtLrrVsQ9mqAhav3ePo958FUkBpeRgPDA1s291DcgYH9GdtCy7NX93vRiq0Q1Qe
- VgC7lrCsvd1RxIUJepSXTEAtZlLpXxdGIjU7tEYvhqVUj4YCYKunHVdCK4ekOPsEQw
- SL2vAFHFPoFQzlElyR7iCR+h974EQZsfPH3Vo/IM=
-X-QQ-FEAT: 3C1WcPM5lQ76vPUq4Hjhc0Qm4zUCqJnX
-X-QQ-SSF: 0000000000000010000000000000
-X-QQ-XMAILINFO: MazKs+JD5rz7IZiEs1LnmpUXwIGtHnhbiXw+Ll16SDkbTOpxy0oLXVV0RZHvYC
- HcWi/pLeSFkAwrN9jYhC5FpIl02/7of1j7eCCrb5VcklJNDBN+xcwRk1VXmaUMXBYBwmIJBvy+m6q
- SFqOuO6IY7ff4fYpZXaSIG3SoCwrRIOIzwt4a4tk488L/I7BeqSEzVWJryWhqWYLk/Kd1qJg3JtbE
- K2t355VBP3J3FBTg9qtLoSCG5PspfVVRZsWRdv2w/AtDwSE6q8raeHOeZxcpw+WFiZgeaON8Z10B9
- 5aCfKQPKDPhpXjmS+jJeSgQi0cELYR43g2rO380xeWHcqjkpcr6oJ0snL2JqOTcAytR9rJkXJUfly
- C/rHravTJUz/zqYmSVcgvcnMTsNTj50Nh8Ho3Hwdf6TupCY/pu1fEdxeYI0/iFvJiCzxSs1ph5XsD
- QyqBVYlxVPiNZQUT9t1Qx74JVUeqqvmYkSEO1sYqZM7CSHWwpN/nzmbI3KJjyj5+aw/1DkVimCcDe
- l0BxnNL9Aw0MOrgkV16CcvkmebEcdTTqjP+39j4FEUYuKnPFFsShnWM44gDzz8seB+OAs+0ogCN5C
- PEdR7bEiSOiuVqmMjV5vQauo5ml1H836+3ZLYYrZP9vqDg1TsDIx+Cpd3F2AaYfCbDASvl48t7+0x
- 9OnKiFAvqIpRQjazE0GFMcxl+xwM/yTiW5O30RoV8VFmRN5dkMIUsYwRAQ7j8LVvo8z+FkpNPi+Kq
- gEg64r/jmMngsvitTfFoA+4JB7PQWJ49gh14ZHdTKVzbihEDboJjqPRdCP5aLsoeV6nIOcCbX2thH
- 6O76LsSCazMlz2g4Oy4zVrNmoj+RFmqsWXORhcatDVTeo9jp/sAHWGZmTH10mC9xfinu50V7IZI51
- EiLPO3mS4KBcpQ0lNfdsrKfc68w9LpZ
-X-HAS-ATTACH: no
-X-QQ-BUSINESS-ORIGIN: 2
-X-Originating-IP: 113.200.174.71
-X-QQ-STYLE: 
-X-QQ-mid: webmail818t1670734872t6043799
-From: "=?gb18030?B?c3B1cnM=?=" <1327776831@qq.com>
-To: "=?gb18030?B?cWVtdS1hcm0=?=" <qemu-arm@nongnu.org>
-Subject: How to modify QEMU to support pythium CPU
-Mime-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="----=_NextPart_63956418_11B35B48_54DF45B7"
-Content-Transfer-Encoding: 8Bit
-Date: Sun, 11 Dec 2022 13:01:12 +0800
-X-Priority: 3
-Message-ID: <tencent_5B529B3ADB3D80E98D1FE683A9A2A0A1AD07@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-Received-SPF: pass client-ip=162.62.57.64; envelope-from=1327776831@qq.com;
- helo=out162-62-57-64.mail.qq.com
-X-Spam_score_int: 67
-X-Spam_score: 6.7
-X-Spam_bar: ++++++
-X-Spam_report: (6.7 / 5.0 requ) BAYES_00=-1.9, CHARSET_FARAWAY_HEADER=3.2,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, FROM_EXCESS_BASE64=0.001,
- HELO_DYNAMIC_IPADDR=1.951, HTML_MESSAGE=0.001, MIME_CHARSET_FARAWAY=2.45,
- NO_FM_NAME_IP_HOSTN=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, RDNS_DYNAMIC=0.982, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: reject
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1p4be1-0006SV-3Q; Mon, 12 Dec 2022 00:46:29 -0500
+Received: from mail-vs1-xe32.google.com ([2607:f8b0:4864:20::e32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1p4bdy-0006jr-3o; Mon, 12 Dec 2022 00:46:27 -0500
+Received: by mail-vs1-xe32.google.com with SMTP id h26so10168580vsr.5;
+ Sun, 11 Dec 2022 21:46:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=XWJsj2XdMtZ0sHSuqqPIhYhdNnh9XgITFjD9tnJmWk0=;
+ b=aBlwkwYRcZe+Ztqg20zVSzDGofNvKEtN0YLXY46p53BjhxE9dbf6Vwko8gVLZz6Ucb
+ g/ZtZ0pTUQJuaxJDbtmDre7XKRg46vXdx8kUz2iNJ0OG1ouaK2FlfUvF6aYgCfy7CWKC
+ nzO9ohRIe37n5gZQr8td2aC25+4KP2XXqXTzLYq4IrAvgmgh7ZYseajMiYQX3Sn0Iuuz
+ tlKkZ1Rv1q6XgxDpSQSmbaUZjPzifMnOtXV0W90XN4ezWx1EHN+qXA9317BYtpGIMyu5
+ SuW/BWdKiID4/kWqv4/KEGvq6wsPgaXpvwLfJtGUCEPBrbsa5hmXQ5q3d6w0WjCmI0Me
+ rA0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XWJsj2XdMtZ0sHSuqqPIhYhdNnh9XgITFjD9tnJmWk0=;
+ b=kv3Vt/7XCRUqLRAT+jdfWiwyQ/dzYLvPtw5MIrRfafyL0TRobzS+F5V9uILA8TcnoW
+ qezLVL8NLn7MrW8YlV6D+OTYCAZhQzyzCKF4p9DoS/I/gA8AXsZvBT7Rbj5VqHLVjNpZ
+ eYI0i6aktIvUc6HoWcWUFFns+H/Y/sCY/Y4u+/vEzrQodCx99NjvVO5QzcfNneAKLrEu
+ ngGvfeKRUKx+jzZJ1eMJwABtbYKQC1r6ThLCem1wLWKpQ/Yn+UGmApHTCxr5WYNMYB01
+ Im/41pomB7/S960qP8/hHpRGkFHQJwWqu/Of2wnlxOzTTxufqeA7nYMBj8SPsW/cDUSw
+ DNkQ==
+X-Gm-Message-State: ANoB5pmeXHwTV2hOe6YdlBLS4y1CC5KdO4xujKWdRRHi91H43QGn7ZCQ
+ EqMrXYfgkXStAa2E+tyH5BKS6RmQHIK6F7NM7QlKBTqwnLs=
+X-Received: by 2002:a05:6102:f09:b0:3a6:eec3:b246 with SMTP id
+ v9-20020a0561020f0900b003a6eec3b246mr51493854vss.64.1670823984240; Sun, 11
+ Dec 2022 21:46:24 -0800 (PST)
+MIME-Version: 1.0
+References: <20221210133915.4104305-1-armbru@redhat.com>
+ <20221210133915.4104305-2-armbru@redhat.com>
+In-Reply-To: <20221210133915.4104305-2-armbru@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 12 Dec 2022 15:45:58 +1000
+Message-ID: <CAKmqyKMxg1S=93=nrj9e=CkuKQXW7tOhaw2dpx29ahOX8bB3_Q@mail.gmail.com>
+Subject: Re: [PATCH 1/2] include/hw/virtio: Break inclusion loop
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, mst@redhat.com, imammedo@redhat.com, 
+ ani@anisinha.ca, peter.maydell@linaro.org, laurent@vivier.eu, 
+ edgar.iglesias@gmail.com, Alistair.Francis@wdc.com, bin.meng@windriver.com, 
+ palmer@dabbelt.com, marcel.apfelbaum@gmail.com, yangxiaojuan@loongson.cn, 
+ gaosong@loongson.cn, richard.henderson@linaro.org, deller@gmx.de, 
+ jasowang@redhat.com, vikram.garhwal@amd.com, francisco.iglesias@amd.com, 
+ clg@kaod.org, kraxel@redhat.com, marcandre.lureau@redhat.com, 
+ riku.voipio@iki.fi, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
+ qemu-ppc@nongnu.org, crwulff@gmail.com, marex@denx.de
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e32;
+ envelope-from=alistair23@gmail.com; helo=mail-vs1-xe32.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,35 +121,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4eR/Ic752wRC
+X-TUID: bMaal1Tj/hE5
 
-This is a multi-part message in MIME format.
+On Sat, Dec 10, 2022 at 11:42 PM Markus Armbruster <armbru@redhat.com> wrote:
+>
+> hw/virtio/virtio.h and hw/virtio/vhost.h include each other.  The
+> former doesn't actually need the latter, so drop that inclusion to
+> break the loop.
+>
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
-------=_NextPart_63956418_11B35B48_54DF45B7
-Content-Type: text/plain;
-	charset="gb18030"
-Content-Transfer-Encoding: base64
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-RGVhciByZWFkZXJzOg0KDQoNCiZuYnNwOyAmbmJzcDtJIHdhbnQgdG8gbW9kaWZ5IFFFTVUg
-dG8gc3VwcG9ydCBwaHl0aXVtIENQVS4gTm93IEkgaGF2ZSB0aGUgZGV2ZWxvcG1lbnQgbWFu
-dWFsIG9mIHRoZSBwaHl0aXVtIENQVSwgYnV0IEkgYW0gbm90IGZhbWlsaWFyIHdpdGggUUVN
-VS4gU28gSSB3YW50IHRvIGtub3cgdGhlIGFwcHJveGltYXRlIHN0ZXBzIGFuZCBkb2N1bWVu
-dHMgaW52b2x2ZWQgd2hpY2ggY2FuIGhlbHAgbWUgY29tcGxldGUgdGhlJm5ic3A7IHRhc2su
-IFRoYW5rIHlvdSB2ZXJ5IG11Y2guDQoNCkJsZXNzIHlvdaOh
+Alistair
 
-------=_NextPart_63956418_11B35B48_54DF45B7
-Content-Type: text/html;
-	charset="gb18030"
-Content-Transfer-Encoding: base64
-
-PG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNo
-YXJzZXQ9R0IxODAzMCI+PGRpdj5EZWFyIHJlYWRlcnM6PC9kaXY+PGRpdj48YnI+PC9kaXY+
-Jm5ic3A7ICZuYnNwO0kgd2FudCB0byBtb2RpZnkgUUVNVSB0byBzdXBwb3J0IHBoeXRpdW0g
-Q1BVLiBOb3cgSSBoYXZlIHRoZSBkZXZlbG9wbWVudCBtYW51YWwgb2YgdGhlIHBoeXRpdW0g
-Q1BVLCBidXQgSSBhbSBub3QgZmFtaWxpYXIgd2l0aCBRRU1VLiBTbyBJIHdhbnQgdG8ga25v
-dyB0aGUgYXBwcm94aW1hdGUgc3RlcHMgYW5kIGRvY3VtZW50cyBpbnZvbHZlZCB3aGljaCBj
-YW4gaGVscCBtZSBjb21wbGV0ZSB0aGUmbmJzcDsgdGFzay4gVGhhbmsgeW91IHZlcnkgbXVj
-aC48ZGl2Pjxicj48L2Rpdj48ZGl2PkJsZXNzIHlvdaOhPC9kaXY+
-
-------=_NextPart_63956418_11B35B48_54DF45B7--
-
+> ---
+>  include/hw/virtio/virtio.h | 1 -
+>  hw/virtio/virtio.c         | 1 +
+>  2 files changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/include/hw/virtio/virtio.h b/include/hw/virtio/virtio.h
+> index a973811cbf..8b68b69e00 100644
+> --- a/include/hw/virtio/virtio.h
+> +++ b/include/hw/virtio/virtio.h
+> @@ -22,7 +22,6 @@
+>  #include "standard-headers/linux/virtio_config.h"
+>  #include "standard-headers/linux/virtio_ring.h"
+>  #include "qom/object.h"
+> -#include "hw/virtio/vhost.h"
+>
+>  /*
+>   * A guest should never accept this. It implies negotiation is broken
+> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+> index eb6347ab5d..faedf886da 100644
+> --- a/hw/virtio/virtio.c
+> +++ b/hw/virtio/virtio.c
+> @@ -26,6 +26,7 @@
+>  #include "qemu/module.h"
+>  #include "qom/object_interfaces.h"
+>  #include "hw/virtio/virtio.h"
+> +#include "hw/virtio/vhost.h"
+>  #include "migration/qemu-file-types.h"
+>  #include "qemu/atomic.h"
+>  #include "hw/virtio/virtio-bus.h"
+> --
+> 2.37.3
+>
+>

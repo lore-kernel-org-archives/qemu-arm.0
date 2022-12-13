@@ -1,84 +1,84 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4346553ejb;
-        Tue, 13 Dec 2022 08:00:48 -0800 (PST)
-X-Received: by 2002:a05:6830:2aa6:b0:670:9e78:4b64 with SMTP id s38-20020a0568302aa600b006709e784b64mr3618073otu.5.1670947248424;
-        Tue, 13 Dec 2022 08:00:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670947248; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4356155ejb;
+        Tue, 13 Dec 2022 08:10:31 -0800 (PST)
+X-Received: by 2002:a05:600c:502c:b0:3cf:900c:de6b with SMTP id n44-20020a05600c502c00b003cf900cde6bmr16138666wmr.15.1670947831038;
+        Tue, 13 Dec 2022 08:10:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670947831; cv=none;
         d=google.com; s=arc-20160816;
-        b=DQMym4INEUgcPuYQB1ZiKZXYSZRkKaAuR4hfPmiei+iset6PfKgflxNWWaH0onyssH
-         +lkE3wBN4ZGZ7+c7Zs6w7AyY6zfVK/+dFoRKVIHWqFvT0BGFZ6oB5EvItNJ2QrmrawZW
-         Cm6VA/gEuaKloq+rbq/g4oFcbY7g2ZLEPZnabU+fEAgDXmiq8AqA4ezcbsxx7UERIZRH
-         gQ7ICrJiexFF6dT3fwA+9UYAqAfBGGcLInmwxCDk6ue1BYK/UQoqLHwMlnnDEurFWd8D
-         mG2XdW3V/Jq2vQGrsYhP0xZSDxED/JVjwet9JBFDJq2mQL+VT6uq41NdjKbMiq48tGue
-         iT7A==
+        b=Z2eTrAanbuJe1CtYARbzzigWyL43f6GbczHejnl9xFq0aRqR+V6KCoNWqEuuDRhkLn
+         LSPkZbvhd5PANXu4umZTOQPUVFvPSDanqGxKn7T4nhRIuw2BdmqLKhm9wtQWZQfsHuwk
+         BQAamyrpB9H2jsRIil2vJvyYvvdsIk6mFDycMP+xJ/U9AC/mUPbrHyEQRA0+njB5hlgP
+         HAccHKutd8kqUsEV5nyRvIqYL8vC4GY//5n23OxuWnqa/QYx8kH1b94enJeMzc8Ag0pN
+         uVvLtE1cv66cGSAX+Lhg1vTpdivtmqeTBnQsX6t/2wxzhxv3PrcZMwpUSjRoPs6RvmYM
+         Kdeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=7IOsuMhzoCHld82UpaeRyQHLz3UTagxJq6tw21H1iDg=;
-        b=IviXk7oPRWLiMhFiI/xbWdXXHIKXwDcMABeBSAEkCSIu2IX29QosVwfiIJca+NHu4n
-         ynbukqKE7KU2nEuTcrcUIjmopaL2ng5P9ssBa5rf20kujykaDQbBDqhokP/MLCcd6Fku
-         6vTchElgrwuVCj7fgYqmuWXtWWEdhzWAbVbwt2k3uAUQPK/Pd1B4K00zsKDlPxphb+Sd
-         mDfwEGoDFWyyg4JDV91HPT35KD6S/UKRuuTZS7Aw6Gb5TV7oYzQzq6s3jmmuYC0U38sD
-         fi219SaOFfDGI6IPllHar7f6fJ9Cv8bjFYwY2yJnbtry0YE5WAOckAI4QBo/jVAbNVH0
-         Te6g==
+        bh=5dXN+CD9lhvHiIWiOWgMOkBgxkPBCH5Ovu3I4CfrvzA=;
+        b=KBl/vEOt5ax8nL3RXnXvMKLsB0GETqGmHEMmYMCpB5V6LiM8XAxFpwXX+7rR7d76lE
+         EHzp1+WBDWdU+LFADCmitC+7hEbg1qF5pyzxh0UM0nItZOE7kiAcEk87p5q3klkLbgu7
+         /HElJIm69WEuI5UelVxkndWuiUMuDoA0wgPH8QcTIQOEu4D2x6Mu68totXd5HtWMkIl7
+         a5pT6FkHeHxB0K8ju9nQmwhlJx8t2BWWpDfiF6yD5oi6kW27K242kfaV4YJ+/RVqLoUL
+         FzjswGEKkTzOMm1IKPkdSjQjklLMzjTlXc2JanCr0gbCteL6KjgMtmXDqsH8wG8vbR8Z
+         LQ4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c5CPrq0V;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LHGExF3Z;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o13-20020a9d6d0d000000b0066c64ea7cfbsor541196otp.115.2022.12.13.08.00.48
+        by mx.google.com with SMTPS id q9-20020a7bce89000000b003cf5ec5cd24sor2979816wmj.16.2022.12.13.08.10.30
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 13 Dec 2022 08:00:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Tue, 13 Dec 2022 08:10:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c5CPrq0V;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LHGExF3Z;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=7IOsuMhzoCHld82UpaeRyQHLz3UTagxJq6tw21H1iDg=;
-        b=c5CPrq0VefkMEHAgwwFXimhe7g148saM0ufiMW7+gVlGAFLhbQKVHFYrRGqAeEuzME
-         N7gDwMAJUXMM0t4n3vUOtmPz50B6Tw77bZ4gcffDnMMASNNwWhEOeHNqtJQY96uSZao1
-         b7xMPQEySRr7272mcUWQq4dRMxr4VG/IeZ+dkM0hMAJMqUlpDzlM9A9DuKaawXqtJNS8
-         9m5LDDcXJFWAnGCwvWWVcfSEMu3EGKmfpzNqKsxvTjJBViz5q5zSpXYvM3sXaSxxXAML
-         pAd8aSdKVuqkg8TzY3U/n7BN1kmDtJZKk9FYIRwz2+QP/4V1+rWQDV+YfUvqNzXA7fnL
-         tJYQ==
+        bh=5dXN+CD9lhvHiIWiOWgMOkBgxkPBCH5Ovu3I4CfrvzA=;
+        b=LHGExF3ZGVk6W8rebTBqv4sSEpWTJi+0k2MA1ZMXftD3i0RrkJRFASer8K/VvsW8qZ
+         CxDLbuPDbc+ZnjkhvhyoTrbwcs8ld8QxqERhXyr7FC3ZKZ6cPKXogdQH8FdwZaTkIxJi
+         CNMnSFskiBroDNtTw/BIvQu0pyxVRxS6apfEO6bKxJmcfKAdvRPbZxVg1pHRIQWW5dQO
+         hrYlcNSlWSQlj5t3ka7XZoqd6e1I5aVMKJrUTX3u+WeouLS0JI1e4cPUJx89YTUenbTq
+         scuXh1OrcCIHLu5gJg9SfMv4dq3w7c3I0yeennsNYDHVrV0oYwp3VYQ5WueimrEBFBSP
+         sEsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=7IOsuMhzoCHld82UpaeRyQHLz3UTagxJq6tw21H1iDg=;
-        b=Eks/4c0pzvfPEQWfW9sTJOWc/GJW1r+G85Ur3dELIrKN2TywJ7IW67UGtd6aVTv9Pw
-         655znBVNiqcn09ZkGUGWjeVu4EGpuW2oioH5S7FhnXkVS1vUU6SywzR5kdRzOytCt6zf
-         21mqmzQnPaEOd7LO06Gq/5xMjYdZa7Rh1JBFPf2hl0ISjFeNS72n4NBOxfdzthyF/PN/
-         jvje6wk/CgpVCfZI2BcgK0HXG0UQuwb/dgTT5BcHty18lEoxOXB1JtOlzFZcfpwIAMvg
-         /vEShQe+4YghzWVx3Cx5mQPm/GZDZUsKNggHKzOqHiefcMGp+bU8xqToEtdAMv7QIBJb
-         D4Xg==
-X-Gm-Message-State: ANoB5pnqn2gimxjSRNmd4uds0ffjQNu7t+2c4VaoiUX3x51vH6Cftk/r
-	k4C3zleeey10coSpCisqbsXYtVQP
-X-Google-Smtp-Source: AA0mqf7W4lo/eOQ9HEif1IQ5r7hqHR1tmlqz2PO2eE0ssQ+irHomhXiwe/0jZVSo6ALKBZzU8JmcOA==
-X-Received: by 2002:a9d:730c:0:b0:670:9684:404c with SMTP id e12-20020a9d730c000000b006709684404cmr4243556otk.28.1670947247647;
-        Tue, 13 Dec 2022 08:00:47 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2806:102e:18:2efc:c63:85ed:4256:8ad0? ([2806:102e:18:2efc:c63:85ed:4256:8ad0])
-        by smtp.gmail.com with ESMTPSA id c25-20020a9d6c99000000b006704589eb54sm1292173otr.74.2022.12.13.08.00.45
+        bh=5dXN+CD9lhvHiIWiOWgMOkBgxkPBCH5Ovu3I4CfrvzA=;
+        b=h/rxJ80XKAPRKoHhGbgtzM0msJfIF1x4/pvJg0BxqYR1WrYZEyQPc2et7Fk3uwwh3d
+         PNPrvl19xv65VKEbsXQI0jsM85S2ZpEGAtxXWzwlPnMgdJMD2TFC1R0NQwXa+UMy8TlB
+         cr8nLebZbnbJJEHQLsmBE6S8+6JzDXYA7KJOO8DA+RGSVUwenJ/QSf+38zqsk9OpWrjB
+         AYmnT6EjCiXyPcqoHNODO/YRnfahijEVw9Het/1ExvS7mfV7RciDXaOFi+sFwMvTULzn
+         zFyG51tbGdR/oQ3WFdcHHu6rIy88HsKBZvPvYyBhhT28XvQq9ZR1GO3jZ4GDnGqjjER1
+         JmPA==
+X-Gm-Message-State: ANoB5pkYEVvIRolm0s+p7ivI6BGWw+BLmTd/dTn+TcNSP76SiHTkxxZG
+	pVDNNIGNwEp278+698o0wMD1SFCK
+X-Google-Smtp-Source: AA0mqf5lwiCvJ8yWeCxX6DBFqysh0TogBoDVGoIJdVUNTXaVmpG5DlPodPhR+3eVCgqm/5eNUc/usg==
+X-Received: by 2002:a05:600c:35cd:b0:3cf:973e:c874 with SMTP id r13-20020a05600c35cd00b003cf973ec874mr16008397wmq.14.1670947830764;
+        Tue, 13 Dec 2022 08:10:30 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.30.216] ([81.0.6.76])
+        by smtp.gmail.com with ESMTPSA id iz2-20020a05600c554200b003cf78aafdd7sm13352584wmb.39.2022.12.13.08.10.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Dec 2022 08:00:47 -0800 (PST)
-Message-ID: <8d47b826-2011-3203-c682-aa32a76b8dc2@linaro.org>
-Date: Tue, 13 Dec 2022 10:00:43 -0600
+        Tue, 13 Dec 2022 08:10:30 -0800 (PST)
+Message-ID: <d73fe725-565e-7fcb-e7d3-846189459545@linaro.org>
+Date: Tue, 13 Dec 2022 17:10:28 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.1
 Subject: Re: [RFC PATCH-for-8.0 1/3] hw/ppc: Replace tswap32() by const_le32()
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
 Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
  <alex.bennee@linaro.org>, Alistair Francis <alistair@alistair23.me>,
@@ -88,30 +88,35 @@ Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
 References: <20221213125218.39868-1-philmd@linaro.org>
  <20221213125218.39868-2-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20221213125218.39868-2-philmd@linaro.org>
+ <8d47b826-2011-3203-c682-aa32a76b8dc2@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <8d47b826-2011-3203-c682-aa32a76b8dc2@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: JwRqK4/zn56y
+X-TUID: Bnq9UBNHYycw
 
-On 12/13/22 06:52, Philippe Mathieu-Daudé wrote:
-> Assuming the developers of commits 2c50e26efd ("powerpc: Add
-> a virtex5 ml507 refdesign board") and 4b387f9ee1 ("ppc: Add
-> aCube Sam460ex board") were testing on a little-endian setup,
-> they meant to use const_le32() instead of tswap32() here,
-> since tswap32() depends on the host endianness.
+On 13/12/22 17:00, Richard Henderson wrote:
+> On 12/13/22 06:52, Philippe Mathieu-Daudé wrote:
+>> Assuming the developers of commits 2c50e26efd ("powerpc: Add
+>> a virtex5 ml507 refdesign board") and 4b387f9ee1 ("ppc: Add
+>> aCube Sam460ex board") were testing on a little-endian setup,
+>> they meant to use const_le32() instead of tswap32() here,
+>> since tswap32() depends on the host endianness.
+> 
+> tswap depends on target endianness.
 
-tswap depends on target endianness.
+Yes, it depends on both host/target endianness. What I meant
+is we shouldn't have system code depending on host endianness.
 
+(I'm trying to reduce it to semihosting / user-emulation).
 
-> @@ -255,7 +256,7 @@ static void main_cpu_reset(void *opaque)
->   
->           /* Create a mapping for the kernel.  */
->           mmubooke_create_initial_mapping(env, 0, 0);
-> -        env->gpr[6] = tswap32(EPAPR_MAGIC);
-> +        env->gpr[6] = const_le32(EPAPR_MAGIC);
+>> @@ -255,7 +256,7 @@ static void main_cpu_reset(void *opaque)
+>>           /* Create a mapping for the kernel.  */
+>>           mmubooke_create_initial_mapping(env, 0, 0);
+>> -        env->gpr[6] = tswap32(EPAPR_MAGIC);
+>> +        env->gpr[6] = const_le32(EPAPR_MAGIC);
+> 
+> I think this is probably wrong.
 
-I think this is probably wrong.
-
-
-r~
+Since this is used for the kernel, I'll try to get its endianness
+from the load_kernel() calls.

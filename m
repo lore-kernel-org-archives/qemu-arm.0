@@ -1,164 +1,177 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4265908ejb;
-        Tue, 13 Dec 2022 06:23:43 -0800 (PST)
-X-Received: by 2002:ac2:4bd5:0:b0:4a4:68b7:e74b with SMTP id o21-20020ac24bd5000000b004a468b7e74bmr5568735lfq.53.1670941423714;
-        Tue, 13 Dec 2022 06:23:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1670941423; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4416795ejb;
+        Tue, 13 Dec 2022 09:23:18 -0800 (PST)
+X-Received: by 2002:a17:902:d510:b0:185:441e:90ae with SMTP id b16-20020a170902d51000b00185441e90aemr30156552plg.20.1670952198169;
+        Tue, 13 Dec 2022 09:23:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1670952198; cv=none;
         d=google.com; s=arc-20160816;
-        b=n0r9is4UumchvAW59ACu6yGxW1TITtxlvzcdPORzio6vSgMrPfHPnigZ5J23h9pl/6
-         /eq1pFTSd5U4i3iaZA3AFngaPTvOwmNnf9tm9Nb0oF0Yf8h157rpWBJyUFzPTea+XacO
-         MIClFnlSMAZfQv7sU5dIdxVWflGMasVguwpTFk5oga2zToRu2Z08NH79S07G7KzonwkX
-         HP7iXtkYUSubIBLfMgwQs8hgLEi2uWIxc9vzZN+I3OOKUpBzuji9Ma3xN6tpxj7rJEL5
-         z3IPEJ/aNYUh4wSaPDWmCilf457oBMLL/kt34yCXu0lgfcTYtDB0ojstMRHe3W3AUpBt
-         5Hzg==
+        b=FVUCoxrpCHHISrJ5+ffOyGXB63sRyoHvjTk4oudADXEjZqm1e1MJtae47qsU7j+uLt
+         N8OYyRqaNHjSQil5hs0mY6sj44DnoCeozSWoWGhAmSP7gdHcGwC7YcDmV6scNxDTwXMA
+         wWoXhg5V5NVht8BDT/muZTN2YEyGzISbARC8+Oxvpc8HIB9eqc7q0T18ABMhSvZMa65e
+         WJs7yDU4yjn8fH3RHze7GUiIns43ifVx05i2CI30Dx5zsSNc3XLOw6fwaqqEomAfkIMD
+         ATHMt4KOmO8X9FPE/Z9YHU76v1E3ynloveh2ouI3AQHudqYxJ2T9r1ee8j1bC+mHZoKl
+         5bNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=e5zzLhMCE4m/P0+GnT6JWCNY7dNVF5Jn5ir2faVnvHA=;
-        b=FVhF7PrTqWH0gGghTeDcaHzNztVJjOMSfXmAFn+fK9H2mnF9JmjJqYX732kOwlxYzP
-         5vWyGnbFT7LK31nI9KEQoTKoi/GEV8hSXOdhVrkAD9EpgbvstZfYqUvnSQ7hqna3eGuS
-         xy6PUd1ziWXg+smrdqpAckkbDnMo9QLulYtcWxBXyk5uBgzyQkciYO9XFbCSNwUIDbQL
-         wkeV+7rVkZnuCtGABl441RTyzf9d+qjyeWr/gVkxIOJCW8bgCEbTBcKox2+0s27SxzdO
-         iCLvVTrXSyOFRJPPWi3mVZFkXodbDsuVebpdljHv1SdDmoL5Z8JJacUlr1gLpqAvwb9p
-         wTaA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=r6Zcpq2s8VpF6eJ1dPsGB/2R2qJRfZgfoCzYv+ByQpQ=;
+        b=a8+gURBIAYzVPUUYs9vjRjOXuYr9SpoyJsS6FjMj9CP/CfEmr/PXB7IzqEoAXxNpWh
+         XFgdZ7aiQfiM2MucgRBSx1PBPqQHjzqX9Qj7QuiXfd+pM9yYu3jFcJiUzI7lVdfibH6M
+         3uRP7aqHXL4548jdzQyQz31R2KIUq4G1Y+rC5aPqadsSmdDwlJuIAa26oxjA6KDxeaWs
+         KW5POIdx5a0BqrRNrwcp+TeH9VQxWs7SDRq2XfIzyKCGCcPaUyOhp/xvo3tKFrfNcdt/
+         /S3EXo2fQkKLK1j+oDtKuVP1qcUM5WyKrcNgy3++HlT7UjC66FWeRsMvK5cLzLCX2CGp
+         8Mwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=C5CIlL6P;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <edgar.iglesias@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="qK/5KUG1";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id bj37-20020a2eaaa5000000b0027a05e7b59csor1225165ljb.37.2022.12.13.06.23.43
+        by mx.google.com with SMTPS id m18-20020a170902f21200b00189b97cdfeesor258268plc.13.2022.12.13.09.23.17
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 13 Dec 2022 06:23:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Tue, 13 Dec 2022 09:23:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=C5CIlL6P;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="qK/5KUG1";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=e5zzLhMCE4m/P0+GnT6JWCNY7dNVF5Jn5ir2faVnvHA=;
-        b=C5CIlL6PlBwBjoNhGNPIOzJPBzPa8/yZxWif2z97y+BBpAA5ZZMOnSf9HImTiJ3t7j
-         oX8wDwsru81NRdHJjJxmVA7mmzyKSYEu45CrHuLF6PlDZ6W4SivBCMeXRuPpGgIw9Adv
-         RzE3iU9kHj9Ph+SxxLfrPLctPgYq5rWs+ptFMhfhVOI0ZB3FnwkzYezeqvXKYa9UFTU8
-         5orGV/NrQND88m7cV8PpftyGBGPHL+ImLj744n6Fz8AA9GpnOoLH2wBKuqJ5lXZBFz3w
-         5MRx9QWbtkrPWaVaxGVLuJv+5YeJQgJgEc0sDBbSDFsqlOS//y8Wp6Xr7m/GiLvFl/zO
-         vFig==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=r6Zcpq2s8VpF6eJ1dPsGB/2R2qJRfZgfoCzYv+ByQpQ=;
+        b=qK/5KUG1yHm3L3t36D1EChGRR8/MfDZnQOW8VXN35M6g/9z8crlEpuD8+n08NANL8Z
+         SwK1XRscQBaCs7VijfgCtg6iIybnHcc/d92ieDaDXtj414kzxNl1DLKWKF07kEjDwXMu
+         9tNzi7HbraljOVBTxdv7IiPqewk3myIvGQbTEqx/KUHSTBiofrO0y3AqYwG4MVS3rfT9
+         x+YyjYLmtqHiRwytq1P78yor4A0m5ZXhgnT5GZ6O/1ziWxHMowdjA0H12lLNlXjj5jBW
+         inCFSX/RGJh2d4XPdNRidibOXreJBnxSIqegTfaK4MRBmXg+1wd83ZWLTctKwC8E+XV0
+         CJdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=e5zzLhMCE4m/P0+GnT6JWCNY7dNVF5Jn5ir2faVnvHA=;
-        b=VL40oEeN6huekj4HUI1pWx3jak7JCQ8ZJmendGZOgMK0lEmHRN66S6k6RCc3OI3Tl0
-         Wj63b2N38adGwgPqKlSzllfmHRBg/IQFQjDNiwDB2u/CO5SbXGDL21h2emW0HNbwbkJ0
-         0K2aC6lJ+xgD7b/sSLBjcNpcwsEwvnWrl7f/Rrt2HOJznc5V7ExcGGVwIjNH9XQ5f+53
-         p7zad4ETsJFpDVoWMsblIA4UhEq77WO0x/Jdj406kgQN5nDKn4grTXicKw2Tt6qy6/5M
-         /zPiDGLch33MNkdFlvme6xd7PWToetjFCMkhsjpsbFdG3mNcznxV2SzbQauWnWWLqIWE
-         wIwQ==
-X-Gm-Message-State: ANoB5pn/rN1nxAghFPBM6WfEPbQamH9iTNrVQFLT+PPLpPYLRCqKfi5R
-	/oGLzit7O3eKpMbFYdxdN9cckkiPv4xCCimT
-X-Google-Smtp-Source: AA0mqf6DRawMpdqBftXsHrmtqOkjRPUQyDTzIgj+xswOsw5sa0nA6LGXB/Vr+bKpmBxVVNmqse8y8g==
-X-Received: by 2002:a2e:bd87:0:b0:277:23f:4985 with SMTP id o7-20020a2ebd87000000b00277023f4985mr4825138ljq.3.1670941422826;
-        Tue, 13 Dec 2022 06:23:42 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from gmail.com (81-232-4-135-no39.tbcn.telia.com. [81.232.4.135])
-        by smtp.gmail.com with ESMTPSA id s13-20020a2eb8cd000000b00279f302f652sm278625ljp.111.2022.12.13.06.23.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Dec 2022 06:23:42 -0800 (PST)
-Date: Tue, 13 Dec 2022 15:23:41 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	qemu-devel@nongnu.org,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	BALATON Zoltan <balaton@eik.bme.hu>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Jason Wang <jasowang@redhat.com>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org
-Subject: Re: [RFC PATCH-for-8.0 3/3] hw/net/xilinx_ethlite: Replace tswap32()
- by be32_to_cpu()
-Message-ID: <Y5iK7VFi9B1HwHf/@toto>
-References: <20221213125218.39868-1-philmd@linaro.org>
- <20221213125218.39868-4-philmd@linaro.org>
- <CAFEAcA-iouFJgu_2cG2TapxYVr-_ZK1Uuwa4mqSL5zNKg6Jq+Q@mail.gmail.com>
- <Y5iEL5YexYliX+cG@toto>
- <CAFEAcA8=fePrpR4LOp6qQznz58kNGgy8ZuiZaEE6Dy43hLvH3g@mail.gmail.com>
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=r6Zcpq2s8VpF6eJ1dPsGB/2R2qJRfZgfoCzYv+ByQpQ=;
+        b=OgGWLZiMwErKwdJxDCN7xWsv/q/p4WFGpUefWg3KI7QpMpmNSZuxgBRkqzrcZHb3AH
+         IvPOBeGRB7hHCaEjjC/RQcr/IpdpjJO2fniDFPK37NAwzUBmGRl541AhOj72+UHU2mVV
+         f/FgFodi57EG8AFex3zPYc3NTIR1IpaDvYl1f6JVavxcrDTqkqpAMLXxP1+5OE/Ks4RN
+         slZT03SUaYNi+Sm0NQW77d3H7XHtdKzwe0QaJzG7i3bzWJZEBXnIbq6zMp0DKR7/Wdjz
+         CKWUAyc9DFqVVxzfohu6TLtWhbWBFeaRmqezwD4o3Xxx6R2FiDoN1N0CKh7JhMLaZfOF
+         6QnA==
+X-Gm-Message-State: ANoB5pkKMwfpf4eCuwF95/CUiHS9iheD4VipIywVHxDxNUn6nk2aNsy9
+	hfq52XzN5frfhtzMjTLxHZCL8Xf5yIHyDKZZgFUANURI
+X-Google-Smtp-Source: AA0mqf6quY/yd0EZ3LkHHd+lZKc5MyeFAI2oqpza+bqWkzJTzQB8aSGl9UGFpDZth8cDAaPaKeff2NtdCdykBT6TkUw=
+X-Received: by 2002:a17:90a:7c4d:b0:219:9874:c7d3 with SMTP id
+ e13-20020a17090a7c4d00b002199874c7d3mr462459pjl.221.1670952197532; Tue, 13
+ Dec 2022 09:23:17 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFEAcA8=fePrpR4LOp6qQznz58kNGgy8ZuiZaEE6Dy43hLvH3g@mail.gmail.com>
-X-TUID: StbntMSFbjiR
+References: <20221213125218.39868-1-philmd@linaro.org> <20221213125218.39868-2-philmd@linaro.org>
+ <8d47b826-2011-3203-c682-aa32a76b8dc2@linaro.org> <d73fe725-565e-7fcb-e7d3-846189459545@linaro.org>
+ <a1f4b5a6-0a8a-5a04-8ab6-f3f08b9d36aa@linaro.org> <CAFEAcA_F3Z+UPW-wHs8xedYX3TiV8CRQAom0DhefKLFH_Ejgog@mail.gmail.com>
+ <b46e4c40-257f-8a89-85b8-8c2806f395be@linaro.org> <10186d7a-2df0-2fcf-8eef-8e34bcc2d8cc@kaod.org>
+In-Reply-To: <10186d7a-2df0-2fcf-8eef-8e34bcc2d8cc@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 13 Dec 2022 17:23:06 +0000
+Message-ID: <CAFEAcA8WF6GXaPt6+=KbaLSP5w+r1dps6fcc21+Um3VFAPDp5A@mail.gmail.com>
+Subject: Re: [RFC PATCH-for-8.0 1/3] hw/ppc: Replace tswap32() by const_le32()
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>, 
+	BALATON Zoltan <balaton@eik.bme.hu>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Alistair Francis <alistair@alistair23.me>, David Gibson <david@gibson.dropbear.id.au>, 
+	Jason Wang <jasowang@redhat.com>, Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: A1eJY7m9nbrM
 
-On Tue, Dec 13, 2022 at 02:18:42PM +0000, Peter Maydell wrote:
-> On Tue, 13 Dec 2022 at 14:14, Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
+On Tue, 13 Dec 2022 at 16:53, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> On 12/13/22 17:27, Richard Henderson wrote:
+> > On 12/13/22 10:21, Peter Maydell wrote:
+> >> It does seem odd, though. We have a value in host endianness
+> >> (the EPAPR_MAGIC constant, which is host-endian by virtue of
+> >> being a C constant). But we're storing it to env->gpr[], which
+> >> is to say the CPUPPCState general purpose register array. Isn't
+> >> that array *also* kept in host endianness order?
 > >
-> > On Tue, Dec 13, 2022 at 01:53:15PM +0000, Peter Maydell wrote:
-> > > On Tue, 13 Dec 2022 at 12:52, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
-> > > >
-> > > > This partly revert commit d48751ed4f ("xilinx-ethlite:
-> > > > Simplify byteswapping to/from brams") which states the
-> > > > packet data is stored in big-endian.
-> > > >
-> > > > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> > >
-> > > > @@ -102,8 +102,8 @@ eth_read(void *opaque, hwaddr addr, unsigned int size)
-> > > >              D(qemu_log("%s " TARGET_FMT_plx "=%x\n", __func__, addr * 4, r));
-> > > >              break;
-> > > >
-> > > > -        default:
-> > > > -            r = tswap32(s->regs[addr]);
-> > > > +        default: /* Packet data */
-> > > > +            r = be32_to_cpu(s->regs[addr]);
-> > > >              break;
-> > > >      }
-> > > >      return r;
-> > > > @@ -160,8 +160,8 @@ eth_write(void *opaque, hwaddr addr,
-> > > >              s->regs[addr] = value;
-> > > >              break;
-> > > >
-> > > > -        default:
-> > > > -            s->regs[addr] = tswap32(value);
-> > > > +        default: /* Packet data */
-> > > > +            s->regs[addr] = cpu_to_be32(value);
-> > > >              break;
-> > > >      }
-> > > >  }
-> > >
-> > > This is a change of behaviour for this device in the
-> > > qemu-system-microblazeel petalogix-s3adsp1800 board, because
-> > > previously on that system the bytes of the rx buffer would
-> > > appear in the registers in little-endian order and now they
-> > > will appear in big-endian order.
-> > >
-> > > Edgar, do you know what the real hardware does here ?
-> 
-> > Yeah, I think these tx/rx buffers (the default case with tswap32)
-> > should be modelled as plain RAM's (they are just RAM's on real HW).
-> > Because we're modeling as MMIO regs, I think we get into endianness
-> > trouble when the ethernet output logic treats the content as a blob
-> > (thus the need for byteswaps). Does that make sense?
-> 
-> As a concrete question: if I do a 32-bit load from the buffer
-> register into a CPU register, do I get a different value
-> on the BE microblaze hardware vs LE microblaze ?
+> > Yes indeed.
+> >
+> >> If so, then the right thing here is "don't swap at all",
+> >
+> > So it would seem...
+> >
+> >> i.e. just "env->gpr[6] =3D EPAPR_MAGIC;". But that would imply
+> >> that the current code is setting the wrong value for the GPR
+> >> on little-endian hosts, which seems a bit unlikely...
+> >
+> > ... unless this board has only been tested on matching hosts.
+>
+> But these are register default values. Endianness doesn't apply
+> there. Doesn't it ?
 
-Yes, I beleive so.
+Any time you have a value that's more than 1 byte wide,
+endianness applies in some sense :-) We choose for our
+emulated CPUs typically to keep register values in struct
+fields and variables in the C code in host endianness. This
+is the "obvious" choice given that you want to be able to
+do things like do a simple host add to emulate a guest CPU
+add, but in theory you could store the values the other
+way around if you wanted (then "store register into RAM"
+would be trivial, and "add 1 to register" would require
+extra effort; currently it's the other way round.)
 
-If the CPU stores the value and reads it back, you get the same. But the representation on the RAM's is different between LE/BE.
-But if the Ethernet logic writes Ethernet packet data into the buffer, LE and BE MicroBlazes will read differient values from the buffers. These buffer "registers" are just RAM's I beleive.
+Anyway, I think that in the virtex_ml507 and sam460ex code
+the use of tswap32() should be removed. In hw/ppc/e500.c
+we get this right:
+    env->gpr[6] =3D EPAPR_MAGIC;
 
-Best regards,
-Edgar
+We have a Linux kernel boot test in the avocado tests for
+virtex_ml507 -- we really do set up this magic value wrongly
+afaict, but it seems like the kernel doesn't check it (the
+test passes regardless of whether we swap the value or not).
 
+I think what has happened here is that this bit of code is
+setting up CPU registers for an EPAPR style boot, but the
+test kernel at least doesn't expect that. It boots via the
+code in arch/powerpc/kernel/head_44x.S. That file claims
+in a comment that it expects
+ *   r3 - Board info structure pointer (DRAM, frequency, MAC address, etc.)
+ *   r4 - Starting address of the init RAM disk
+ *   r5 - Ending address of the init RAM disk
+ *   r6 - Start of kernel command line string (e.g. "mem=3D128")
+ *   r7 - End of kernel command line string
 
+but actually it only cares that r3 =3D=3D device-tree-blob.
 
+Documentation/powerpc/booting.rst says the expectation
+(for a non-OpenFirmware boot) is:
+                r3 : physical pointer to the device-tree block
+                (defined in chapter II) in RAM
+
+                r4 : physical pointer to the kernel itself. This is
+                used by the assembly code to properly disable the MMU
+                in case you are entering the kernel with MMU enabled
+                and a non-1:1 mapping.
+
+                r5 : NULL (as to differentiate with method a)
+
+which isn't the same as what the kernel code actually cares about
+or what the kernel's comment says it cares about...
+
+So my guess about what's happening here is that the intention
+was that these boards should be able to boot both kernels built
+to be entered directly in the way booting.rst says, and also
+kernels and other guest programs built to assume boot by
+EPAPR firmware, but this bug means that we're only currently
+supporting the first of these two categories. The reason nobody's
+noticed before is presumably that in practice nobody's trying to
+boot the "built to boot from EPAPR firmware" type binary on
+these two boards.
+
+TLDR: we should drop the "tswap32()" entirely from both files.
+
+thanks
+-- PMM

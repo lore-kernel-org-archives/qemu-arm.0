@@ -1,161 +1,202 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1637423ejb;
-        Fri, 16 Dec 2022 11:11:02 -0800 (PST)
-X-Received: by 2002:a05:6808:4046:b0:35e:cbc9:d960 with SMTP id cz6-20020a056808404600b0035ecbc9d960mr4759004oib.44.1671217861901;
-        Fri, 16 Dec 2022 11:11:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671217861; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1657093ejb;
+        Fri, 16 Dec 2022 11:43:14 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5t4SoNfRN5v+TAzoWpx1BY8iGd6gxLESbk0p5cGuRQAqLoY3cPNA1BAAgTYUxSffkUJWLK
+X-Received: by 2002:ac8:110d:0:b0:3a5:43b0:bf0 with SMTP id c13-20020ac8110d000000b003a543b00bf0mr45517519qtj.8.1671219794118;
+        Fri, 16 Dec 2022 11:43:14 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1671219794; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Yb5bgGeM61v53rBnbD1Q4FeYAZYMMbP6hcPm5GWa7HlLY8ScoHP3/CaduzZMeP62TP
-         5d9A97m7kRSe5dcTbrrG7ifK8hEC9kwOKGu9ydJK8ec7UMRyaDXJ6jtgT21l4BIbqvU8
-         9FrjxHVP0C+C9aOFTRK9guibzqCKqsGxtg9JUoILIjv64sWtVXJXS6/nVXI9D8hj3Tte
-         L9uTMipSoy0Dkb61YC5Zap3F26XU8tVrlhjUt0Bf8DECpAu+MC90Hzw3/JSJl+2AUY3l
-         2wLvuIiFLAPHRymDBjHwfqhn5JJMOjtSoCZgMI9gVGxjzEWl05BJygek1W3afiCWKxsA
-         VQVQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=DGgasZbe+nbeaQD47kDP2TvPiT7vquSS0cydi/6k3dk=;
-        b=ds2jv08V7WVgu7XuISJgqerdabBx3hzAGiHc+tx5IKmdKLZCxJp4BlJyKwh59NBh1j
-         VjlDDxn+adJaIvEyJNtUkxLhjsLjGfpGWCxjwwZnudYRX+8WPlLQuqrzWz8UNRml+CTG
-         PUzS88Mq0AIghlKo/RAkLEsoZkzDrdOKIaaSthGuEaQX+qLcmTAZEMb0RxY/Ly+dha6F
-         7PCYLlJpsHxlZzD4+s8RF/rhzVUaNcApGMymZd8vZjV6hujkJYgd13Q/QtxkhWGaiGqA
-         092NmL9HCJiPiZpPxE9X6p8ShjfC6uvWBr+VVeg7hDpXyf47zwlSTRP31vlQSLwrnIuj
-         a34w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CEb0mzUH;
-       spf=pass (google.com: domain of danielhb413@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=danielhb413@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <danielhb413@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b10-20020acab20a000000b003544a4cd245sor677501oif.99.2022.12.16.11.11.01
-        (Google Transport Security);
-        Fri, 16 Dec 2022 11:11:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of danielhb413@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        b=HoCmImOF6QCD9hG4qmiMjoPTudduMdK+pKXPNLQg0Rwyj2GLLOe37Gficua7YRv5fK
+         SVn6YC4mc7ua/RWmVD6ji2QkwuOMZSef1AA0K8FgFkZeBWiQ7GimiTRZmZ/SIyPpEe5L
+         mmIIM6SqhIycdzsj5LNB/i314B7W+UohPIhLaznQsv1NxYrVpX2DqaSdR72yoSKModTq
+         11ijaIg6O3VBO8VHyGAdCsV7al2uRYh1iF4c90YilFO/0Sz5ljAPpOu27siHm87IB2uw
+         eUuEkifvdDaMSJEoN7GJouTg1W93Iu1/S4FRTgnTWQ1jJzvxK7sqdEkqSPPWNyOvJ+ei
+         kRhg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :in-reply-to:content-disposition:references:message-id:subject:cc:to
+         :from:date:dkim-signature;
+        bh=SNqw1SKwu9HLDw3DRwQet7G+a4HTXvAD1Jdh2nKrXU0=;
+        b=wNNmzlnL5WlI0BUX9IcNgGvYbRLY7VxhRO/lCC+1KQ82X8UJ2FESQrnY5siU9mAQN3
+         U9ObZEg5it6XELFcjgj/fm/auD00cchAGj8qlWukNutUB4QAE0u3VCYgULPbq9h7fMOY
+         LQtXcWOKIZbx9Bn7CUqmatFl1RZqKIb0LQ0jwrOdAa8tG75/rwHpfiiccskqMdsVluRL
+         ZOB5FdnJBS2MmcZlnxFBSUjUSlfcGT3P2pTw0WuEJNKn2pLoKBCMU9Mu/hBrckaXgm/L
+         bu7DEPFEHSpDojsQ5uDr6wCdO3wfbfpClkKbBNmpg0p/pWN3OZ/bOFfNvukA+1cYVRLH
+         35Yg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=vTq3J1Cm;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e23-20020ac86717000000b0039d0a5854a1si1449016qtp.242.2022.12.16.11.43.13
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 16 Dec 2022 11:43:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CEb0mzUH;
-       spf=pass (google.com: domain of danielhb413@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=danielhb413@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=DGgasZbe+nbeaQD47kDP2TvPiT7vquSS0cydi/6k3dk=;
-        b=CEb0mzUH/2bQ8Y75q6FOcnNWAJM9OhO+aFe4CDXgznV8ExxJcY7sUjCsMecR6ZdJuF
-         5RYSBT2PsB3h4ul6FqzTvTHW4sI5QEmZr8NXNlWHK/mBEtSrufIUpCxx1q6q2S6M3tOF
-         +r76qEywHHcX0AmUqmZyvAQgIRf/b1TBqfgpPW9Irv88Vjz3MlYtzGU8nf/KGseLM+e9
-         2w59C18LnBBggrbgutmtW+EMkXNMAI51Hrb4x1gGHc5KQpWyWJnaMAwb1QapKmOFmhMM
-         wexefdZ0ZBwe9xRYXfMg+YyAgbJrzVU+JooBp8+j5QGL0LSVZcLkh3KwT2cu87sYJl1x
-         u+1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DGgasZbe+nbeaQD47kDP2TvPiT7vquSS0cydi/6k3dk=;
-        b=p5K+1zf4y69yXqtsXuOnrqd+kYZZ9AM8ZiyXiK6LMqtpMSPhSnYfzu1m+cGVYcBwqg
-         gjF3qsBumoK6aZleTk450Imqv6EsvwuT2cIS+NjysT6ioFSh+m+K128dABilhovJxmuW
-         8JGIgBWio8rYnxW6Smf4M/OtHRqdEDWRRcMHL3fgcMpetmLK0SvmHuRyyxo8KkZ012Cp
-         Dag5f+qtm17PGUn2mExRSE1TkIERiFpLAtD4mMkmr5IkV8kBGTGQh5d4QMrTCQBIVJMt
-         zIhG+SlpFi016m0VWo1x94YxuWQGFwbMp4ZcX0Fslx8g6HOsJQH2lTEim5oHYkLtIu6s
-         gL+A==
-X-Gm-Message-State: AFqh2kopOGmrLQla7I3psT3LvMEeHfWwwxBJ90hjF3EjycgHoCvkvC3m
-	MqChO5+s1QJS0UVxao1yq21nlc3+iiU=
-X-Google-Smtp-Source: AMrXdXsEMDjqfAfjZXlVP+e5mRFpXAvMtObai32rVXzPpfiJj4DCPZkPAa2UEOMonwr3B7x7BG2B7w==
-X-Received: by 2002:a05:6808:308d:b0:35e:da33:21b with SMTP id bl13-20020a056808308d00b0035eda33021bmr4029469oib.45.1671217861253;
-        Fri, 16 Dec 2022 11:11:01 -0800 (PST)
-Return-Path: <danielhb413@gmail.com>
-Received: from [192.168.68.106] (201-43-103-101.dsl.telesp.net.br. [201.43.103.101])
-        by smtp.gmail.com with ESMTPSA id l24-20020a9d6a98000000b006705e35c4e2sm1187063otq.35.2022.12.16.11.10.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Dec 2022 11:11:00 -0800 (PST)
-Message-ID: <e8c3fdcb-81f1-7067-217c-c49e8748b84a@gmail.com>
-Date: Fri, 16 Dec 2022 16:10:56 -0300
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=vTq3J1Cm;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p6Gbm-0007c3-7c; Fri, 16 Dec 2022 14:43:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
+ id 1p6Gbl-0007ba-6N; Fri, 16 Dec 2022 14:43:01 -0500
+Received: from mail-dm3nam02olkn2032.outbound.protection.outlook.com
+ ([40.92.43.32] helo=NAM02-DM3-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
+ id 1p6Gbi-0006mf-Uo; Fri, 16 Dec 2022 14:43:00 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kJ4zLBBxEHzYBTsgsvDqPYOsq9YZKP9L2CvTeSTfoD9yXwbruHN2qILaftNjitMs/65i3u242b451NZsPT47medd2a7wkc8ob7wIDeuTejGsMjduTYXgtN/OwOFxzr7F285oZ4DoYUgIdJ/hyaliyK+LNy0/69hBrnGFalqK033Gl+jrmtrbtFnynIwy/PN2VTqrno+x561MmjttdkmnOWvW9Mz8KAkTSa2d8ThZs74vn/hGm2g2GDsKPRv0jUNWbn/oWUGrI2o0gKhHQEwSC7nLA2Y7F13qL05IWnfC/2NTRJwYuAogXzGnjWxLsKobK/TYWMxbbFTN2yCDPfel+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=SNqw1SKwu9HLDw3DRwQet7G+a4HTXvAD1Jdh2nKrXU0=;
+ b=AyZ771o+69VtNpLtVq+1OYMY3dlhVX8iB03iYg8rX0QxqWMWff3r8W4jX0Peo9K7s098CEzvqCGs3ZsjORTgXmADzvKezA5d3OIp6zA4aJtt3Gw0iiJIri2AG3KKf93YdC+MrRPu5FQdZE+7UaDjngzIONkQLSEPp8OOCz/Q6cE15kFPkaSHYC05aC/dagsRarjEE9tnKPueA/17ZG8QvhzUWtgCnf+DipXfexl4xk36buahE+KamBZGkY3UdWmWQTIVsA8ri0HhNfdzPjnHWUb2rJIgiicoHCdjVPCCTHMzDKnc0wIvVr7Elqk8N03gl0F8ycNM9pSz1d4Q+LFAkg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SNqw1SKwu9HLDw3DRwQet7G+a4HTXvAD1Jdh2nKrXU0=;
+ b=vTq3J1Cmas5M9ycTFeSS1qhqRiKvL5sCCSAKlk/XZMMW1K15Xgg+/KWAJ6SzMdUfvggC2tLuZKMWYoRQDq1wKK0om9N+wbBKT0v2do4ukOzlOSIE4jtyXKcLYEAI6Zff50DXlRLpc8ndUhe1MJEdrZqVG9+bs8EDc6cG9FonhuQVJ1x8izDOdcY6U5eOfxnjpRVBWW8LvfSapm6IkyObLVhr74Tw65aHBkJmWScGbNaZKEJZTVKigRNmzOvD0QkfmdwR/ct3u7eJxrEWndQqkeXkh+xjswflKt0mJt/aX2hI4lx2TJj9Um0jxFzhKM6DINRS/p2CF16tIB1r1aLPOA==
+Received: from DS7PR12MB6309.namprd12.prod.outlook.com (2603:10b6:8:96::19) by
+ LV2PR12MB5775.namprd12.prod.outlook.com (2603:10b6:408:179::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5924.12; Fri, 16 Dec
+ 2022 19:42:54 +0000
+Received: from DS7PR12MB6309.namprd12.prod.outlook.com
+ ([fe80::6481:82ef:ffb1:4d0a]) by DS7PR12MB6309.namprd12.prod.outlook.com
+ ([fe80::6481:82ef:ffb1:4d0a%8]) with mapi id 15.20.5924.011; Fri, 16 Dec 2022
+ 19:42:54 +0000
+Date: Fri, 16 Dec 2022 11:42:49 -0800
+From: Zhuojia Shen <chaosdefinition@hotmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH v2] target/arm: align exposed ID registers with Linux
+Message-ID: <DS7PR12MB630908ADD6C72B35321673DFACE69@DS7PR12MB6309.namprd12.prod.outlook.com>
+References: <DS7PR12MB6309BC9133877BCC6FC419FEAC0D9@DS7PR12MB6309.namprd12.prod.outlook.com>
+ <CAFEAcA_A45cj8RA03U0jOfawZihSp6WgSoaQ7XbGzxs0hAtkOg@mail.gmail.com>
+ <CAFEAcA-dJA7NSR2jN2wy9JM+znoqigZAsV0w=KpSJ_MPEk1LfQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-dJA7NSR2jN2wy9JM+znoqigZAsV0w=KpSJ_MPEk1LfQ@mail.gmail.com>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-TMN: [Nyx/N3QOkRwRILSpYTTzjufM+4nunHYR]
+X-ClientProxiedBy: BY5PR16CA0035.namprd16.prod.outlook.com
+ (2603:10b6:a03:1a0::48) To DS7PR12MB6309.namprd12.prod.outlook.com
+ (2603:10b6:8:96::19)
+X-Microsoft-Original-Message-ID: <Y5zKOchBntU85Ahj@manjaro-vmryzen>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [RFC PATCH-for-8.0 2/3] hw/ppc/spapr: Replace tswap64(HPTE) by
- cpu_to_be64(HPTE)
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- David Gibson <david@gibson.dropbear.id.au>, Jason Wang
- <jasowang@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
-References: <20221213125218.39868-1-philmd@linaro.org>
- <20221213125218.39868-3-philmd@linaro.org>
- <CAFEAcA96ncqvN9iXybCd2SrVKJ9CKsu5t3_GtdNt1ZEDAkFt0w@mail.gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <CAFEAcA96ncqvN9iXybCd2SrVKJ9CKsu5t3_GtdNt1ZEDAkFt0w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: cf6duoz0yagf
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|LV2PR12MB5775:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6cfb7e56-d9bd-4583-2efb-08dadf9db7df
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: YByJRil7yJdq5oH2n9I+1DXzLt3PEGQZAse9Lz1I6zpZ467p0J2X1GrCmnBUr8aLmVp3zNlSD/2X+10nexOqamFW6zgRbzx/HjIK7FA8i3NMnSp8Ro17W0NS56i2kGiO3nwAtrhGXLah0bIbzomHTEp+5woCKxtrDCSA+JLOuzgotx672OCfjCPvvSvm59YiD5MOmSqdV5X/7iiNKwSI2y7JoS2AK5XKOtcVstScsYtDx08E1mkSHEp1qm4ksZ/JwnZ6O2wndsRDPfvinY9k4mrKOn+MyQofnnw2ex9s0xJzkJl3+E/7uers+jpynjQXrVmiNC4V3kcDe9g1ixoVKGviUzPgZT0BQzQn6f/xbtv2wYPHnLmY0iOefiflJIgtPGoUxbuuUd45J3niwkieTOSXBJR16TXuyoDH6/Gtw/UK+6HuU017OHwczEwTZR3xkrcz+QRm+UHs8LQQ47wcSUQzyTx9tzst0W0YP0C65HiqwHtMgngZbFCx81g12RGsJQq4gX63nUE7Ris5Q/de+zc+eu4eDcW8XJHmXLgCCamA7v8VbrRQTQ6dtOv3uoMFzV6SNcH2vXPqqm5ndUpD86+wQcoSQqlxRwSV8daQIyz+RLTIfEA1EMzgw4laiD87dIYDXIaRrEKFUwysmRqALA==
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OWJvQlQvTWhhMTRHQUpoMXN5SzExRENaY1lPckFxLytBNjQrVTNjWnZQeS9G?=
+ =?utf-8?B?YWZpOFJGQzZxUnFPS0crd0JTLzNiTU1veG5hMUxJaDQ1MjAxVG9jZ1ZMK2xz?=
+ =?utf-8?B?NGhLN25ETnJRTEpMK3R4UjBYUldlUE42dUdta2E3QStYeUNPeGw3Q05uZEox?=
+ =?utf-8?B?dVJxMlE2bXBSN3JFRzNsYTBTTmc0c3MrZVAvNjdrZ2VHN3dDVldBUjR2M1l0?=
+ =?utf-8?B?RkNLQ3lTaVVkOUFGTm9ITW9YcFhjUXo1VkU0MWJjUEYzbWl5cThZdFBHZGo5?=
+ =?utf-8?B?eFA5RElrN0tYWDRXR1c0WGVlc1BET2xzSnE2d3F0SzJpREp0NEV5M3N3Mk16?=
+ =?utf-8?B?QitxWStTcitjd2tGVEVVdUNLckkvNDYrbnUwU2hDbWdzWVM5OXJiVm5Wc2Zq?=
+ =?utf-8?B?eFhzVWFya2VQTzE2RnppOEl2OHdqeWxBdGxOM1NvbnZhR1pjdk1nb2wvNVZK?=
+ =?utf-8?B?TE4xT3U2SEFaeGRob0FzL29lWHFMTHJYemgyZWFFck1XOXQvaGlqQUVtRlR0?=
+ =?utf-8?B?RHptRG1TZENxRXlFeXNVeU1mbU5xdVVwWkZadWN3ZkZtRFZQM3l2MmQxWVRm?=
+ =?utf-8?B?OGZ2OUtwZlN3SzZyakwrMTREWkpTTjFzTjUwK0RnQTBpVktOcUVta3ZtM3Nr?=
+ =?utf-8?B?czJBRFc2aWFvbi84R0R0VExiVnFMMndOcE1waENKa0M3dU55TFNLbDhLTlo1?=
+ =?utf-8?B?NWxVN3NnelRlclRENXNaaFI0ZHVZbkxaYmRUdEhvOElpVVVnUGRETTB3RE1i?=
+ =?utf-8?B?TWl3dmdTZE9FQjhNSG1NdTZsMmxHSy9uOWxkVjRCYWl2ZmNjWTNSVXVhbFll?=
+ =?utf-8?B?eDlDL1phWCs0RmhWZHVXZU9FZ2poWno2VlNOK25kb2s0bmoyeTFGWlp0S2Rl?=
+ =?utf-8?B?bDFNREFreEpxWFltb3NKMlpQaFhYTlREMWVDRlZnZnh2OHQrempFdC9selVV?=
+ =?utf-8?B?YzZ3Uyt4SEVuOGJVdi80cDRsbjgzbjVXM242eG1QdTlTc1gzZ1ZMMUkvOFhz?=
+ =?utf-8?B?WitRK0lyQ2thVWdrTDk5U2FrcGh3QnZ0ZVg2OTZ1bHJXSFRRamV0cEUzYUto?=
+ =?utf-8?B?YTJKNkJoUkJjY1IyQ29IVnpSM3E5UktOcXdJZkFPWTV0cjNlMWVyMk43QXZs?=
+ =?utf-8?B?UDZhVmlJUmU5bm5zNThmNlRuZ2EwUHRMWkV1U2xJSFhIVndrVUUxU3FxWU9w?=
+ =?utf-8?B?ZVExVzAwdEEwTk9ZOG1Bc25aY0daYjBFRlVuOHl4Zzg4YTVVZTJ2eDVFbHJH?=
+ =?utf-8?B?SThjUkhxWkJVUUVnL3g0SnNNWGhFUEpoSlJNSnQ4b3AwUE5qRzg0dmp2UHl1?=
+ =?utf-8?B?dTdhU2lYWlFnNFdhWHBoQ290Q0I2QWwzemFvYlhQYkF1ZmUyNmEyaDh2dFpF?=
+ =?utf-8?B?bVp4S0JHUDNVVGIwN3dKSDROSVFMZkNYUXJHcXlHMGZMT3QzT2xtUHJEa2hs?=
+ =?utf-8?B?dkRlUkNlNWRzN2ZiZDdyU21NYjNhcVVObW9Ca2tNU3dTNlVZQXNhNXNBL3dO?=
+ =?utf-8?B?ZlNZdzYrc2JETEpkMDhTdFpudVFCeE5oUmR5dlhBaXIxczNrTGk0V0diSXpj?=
+ =?utf-8?B?NzFLMVFkMW1ib1ZiMDZsZXVMWDdmV1lGdStJSVo5NW9PTkZnUGFSUkdiWTAy?=
+ =?utf-8?B?NmJYekZxTWVBY0V0ak5TeVpDWEYvOEhYOStTeEpMOWloZVpXNElkbTBMQno0?=
+ =?utf-8?B?WHpVdk91bHc0M3g1akpia1o3VlIyYzd2REt1SWNLVkRPa3R5N2ZRWHVPWnJE?=
+ =?utf-8?Q?Uk+/WkFI42PG1FTods=3D?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-71ea3.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6cfb7e56-d9bd-4583-2efb-08dadf9db7df
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6309.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Dec 2022 19:42:54.4844 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5775
+Received-SPF: pass client-ip=40.92.43.32;
+ envelope-from=chaosdefinition@hotmail.com;
+ helo=NAM02-DM3-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: x5GL5qbbPuVx
 
-
-
-On 12/13/22 10:51, Peter Maydell wrote:
-> On Tue, 13 Dec 2022 at 12:52, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> The tswap64() calls introduced in commit 4be21d561d ("pseries:
->> savevm support for pseries machine") are used to store the HTAB
->> in the migration stream (see savevm_htab_handlers) and are in
->> big-endian format.
+On 12/16/2022 03:41 PM +0000, Peter Maydell wrote:
+> On Thu, 1 Dec 2022 at 16:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > On Tue, 22 Nov 2022 at 23:25, Zhuojia Shen <chaosdefinition@hotmail.com> wrote:
+> > >
+> > > In CPUID registers exposed to userspace, some registers were missing
+> > > and some fields were not exposed.  This patch aligns exposed ID
+> > > registers and their fields with what the upstream kernel currently
+> > > exposes.
+> >
+> > Thanks; I've applied this to the target-arm-for-8.0 branch that
+> > will become target-arm.next when 7.2 is out.
 > 
-> I think they're reading the run-time spapr->htab data structure
-> (some of which is stuck onto the wire as a stream-of-bytes buffer
-> and some of which is not). But either way, it's a target-endian
-> data structure, because the code in hw/ppc/spapr_softmmu.c which
-> reads and writes entries in it is using ldq_p() and stq_p(),
-> and the current in-tree version of these macros is doing a
-> "read host 64-bit and convert to/from target endianness wih tswap64".
+> Hi; unfortunately I had to drop this patch because it causes the
+> 'sysregs' test case in 'make check-tcg' to fail.
 > 
->>   #define HPTE(_table, _i)   (void *)(((uint64_t *)(_table)) + ((_i) * 2))
->> -#define HPTE_VALID(_hpte)  (tswap64(*((uint64_t *)(_hpte))) & HPTE64_V_VALID)
->> -#define HPTE_DIRTY(_hpte)  (tswap64(*((uint64_t *)(_hpte))) & HPTE64_V_HPTE_DIRTY)
->> -#define CLEAN_HPTE(_hpte)  ((*(uint64_t *)(_hpte)) &= tswap64(~HPTE64_V_HPTE_DIRTY))
->> -#define DIRTY_HPTE(_hpte)  ((*(uint64_t *)(_hpte)) |= tswap64(HPTE64_V_HPTE_DIRTY))
->> +#define HPTE_VALID(_hpte)  (be64_to_cpu(*((uint64_t *)(_hpte))) & HPTE64_V_VALID)
->> +#define HPTE_DIRTY(_hpte)  (be64_to_cpu(*((uint64_t *)(_hpte))) & HPTE64_V_HPTE_DIRTY)
->> +#define CLEAN_HPTE(_hpte)  ((*(uint64_t *)(_hpte)) &= cpu_to_be64(~HPTE64_V_HPTE_DIRTY))
->> +#define DIRTY_HPTE(_hpte)  ((*(uint64_t *)(_hpte)) |= cpu_to_be64(HPTE64_V_HPTE_DIRTY))
+> Once you've built the test cases once, you can run the single
+> test with something like:
+>  $ ./build/arm-clang/qemu-aarch64
+> build/arm-clang/tests/tcg/aarch64-linux-user/sysregs
+> which then will give you the output.
 > 
-> This means we now have one file that's accessing this data structure
-> as "this is target-endian", and one file that's accessing it as
-> "this is big-endian". It happens that that ends up meaning the same
-> thing because PPC is always TARGET_BIG_ENDIAN, but it seems a bit
-> inconsistent.
-> 
-> We should decide whether we're thinking of the data structure
-> as target-endian or big-endian and change all the accessors
-> appropriately (or none of them -- currently we're completely
-> consistent about treating it as "target endian", I think).
+> It looks like the test is hard-coded to check that an expected
+> set of fields is exposed, so it should be straightforward to
+> update to match what we now intend to provide to the guest.
+> Would you mind respinning this patch to include the update to
+> the test case tests/tcg/aarch64/sysregs.c ?
 
-Yes, most if not all accesses are being handled as "target endian", even
-though the target is always big endian.
+Thanks for letting me know.  I'll update the test.
 
-IIUC the idea behind Phil's cleanups is exactly to replace uses of
-"target-something" if the endianess of the host is irrelevant, which
-is the case for ppc64. We would then change the semantics of the code
-gradually to make it consistent again.
-
-However, I don't feel comfortable acking this patch alone since 4be21d561d
-is from David and I don't know if there's a great design behind the use of
-tswap64() to manipulate the hpte. David, would you care to comment?
-
-
-
-Daniel
-
-  
-
-> 
-> I also think that "cast a pointer into a byte-array to uint64_t*
-> and then dereference it" is less preferable than using ldq_p()
-> and stq_p(), but that's arguably a separate thing.
-> 
-> thanks
-> -- PMM
+Best,
+Zhuojia

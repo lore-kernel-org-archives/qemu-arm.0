@@ -1,120 +1,120 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1796394ejb;
-        Fri, 16 Dec 2022 15:55:44 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv/+yvVu1LoeyiRwFYMSkGZVRWFdl4Xdu8v6MugI7IVnh/HYDujpk9H6uCbmwiRNTTKEm65
-X-Received: by 2002:a05:622a:1b17:b0:3a7:e1aa:727c with SMTP id bb23-20020a05622a1b1700b003a7e1aa727cmr1977253qtb.17.1671234944438;
-        Fri, 16 Dec 2022 15:55:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671234944; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1796505ejb;
+        Fri, 16 Dec 2022 15:56:00 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5iwdvVx+ylxuNg6QcAf94NOnklUunDtxe0f9RATX/UgyyI63FMmr9CYtfejB3N4jIQwOd0
+X-Received: by 2002:ad4:4e0b:0:b0:4c6:fdd0:df7d with SMTP id dl11-20020ad44e0b000000b004c6fdd0df7dmr44753277qvb.27.1671234960121;
+        Fri, 16 Dec 2022 15:56:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671234960; cv=none;
         d=google.com; s=arc-20160816;
-        b=HI+1QTmrmoDQEssQRceET1hUenGxWhRG1EpIQ69PZC8LBYG7MTZ8A8T7YZ+AAPpDR6
-         wev45MZpo0Hyxes0PPbqodqOW+EDR/nI+7GEOFTcbDA+y6f4BYlAfVur4vzFL5WtvvPy
-         g5QUtNQh5SIzpbiryX2MkVoxShrfDWxseDRwU5xWfzI3LV4RLYqNYZZ0UV4d51EdHNhC
-         owote5XEUwJp239Z5hbeM5jPO3dfqPC9ZLFh1LqrX0qcDAWrNGvj16EbOTyfpy46SYHn
-         3sn+mCTI9uHfD7HkeWv89EwMb0BNZSXnfqrU7nm1gGRp81f4jwTU7R0Om5/zJD0H71lU
-         8sog==
+        b=Q0NNu4WlAHHlzwjcJ7CT+Ge1Q2Ff9p9KULNC5unZ5mRcFqeKr2APvYG8LsJCCwl9ch
+         QEY1NyTfbTYh9jk78yvJmBuI0wZH06h18OTuz7xmWBtUS/3GncfjcuAcvoZNik5obqo2
+         7zW0ExQs0/CnvGntFZDp9d96ocw1WaLyFXEdpjF68NDy1Rybaa9ZLYSog4jrn5VPx2H2
+         e/gGn8rsG1Udtm/zicFsCU2GR64uWlzXTSusF9V34Njd3T6wNjlYadarXwINOrRnj4hw
+         aY7fsOqkfVLazcsWgqjhInYQZZQd1WQM2i7/mTwaBvAO+S8jkNbSWxorXbjYjP5Zpfi3
+         xBog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=7HuX3umh1vhBvWljz78x6kDREymcel4L0smmP2tLTq4=;
-        b=g6w8dcRlV9GF0LG0NJcYaySTContX7eGsh16hBQwGSpulh8dToV3ihigOWAPFO3N83
-         9LNF5ZdOEreeZ9VElr0Z/a9wB08t4D+NlE0OE/8up4Bpey7uEL9Tsu6hRA2GPK66K1iO
-         ReUar9fLaKtcJ0iUYBv4JSB5ppJPVH5Xz7wpWP811OH/Kzk0FNKR4b95vQJFpE8msVPX
-         PFrg+qsY7bgCtiafB1eSOOGshMGvkfJR/TdemITnWZ5j8Z8L/gvRWrHqhQW3COFaVTlu
-         JUQR3pgdV6c5tGaD69BiEJ23b0HZTUIPo4e3Gr0sk+A/tbmw6OF8HuelsxatN6A4Fdz+
-         ZiAA==
+        bh=S0J1Y/JHOekwGdbCkByHa8jzZHwbN5KNH5O0zH+eHo0=;
+        b=DyECd1rD2fvrvTpzwIFX6NM9zAM1xPHMiMh6iQRRVCDpJrIgJjxPZQr6bRqRbCk0QE
+         sPXeKX0nBzIXEaEa+ga9f9PCf3EHUOz6vCln3Kh+PmWr49fB0MI1N1ohX+SNIk6IA9gh
+         DKqtW0eyBN61AQKPMprwqqsKIc0LLw37MrdJXkc5WXKxJmCu42Ob/3512GqhfS7Xrre3
+         4FFE6g26J9wxyxptuCepHogihpIwNwVIGBnDTSuub4N2huiI0ycCcDOxw1KoSc/NCiUQ
+         mBW3ACnD6FL+t8or51GHWy/078YHKloEqomk/YaGiqUeGvrzm4unWm2EbgwQZ0DcpwJy
+         xh2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UjHCp9Hq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pJp7dRGT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12-20020a37ad0c000000b006febf853eb5si1483239qkm.759.2022.12.16.15.55.44
+        by mx.google.com with ESMTPS id kd13-20020a056214400d00b004b70768acb2si1605279qvb.373.2022.12.16.15.55.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Dec 2022 15:55:44 -0800 (PST)
+        Fri, 16 Dec 2022 15:56:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UjHCp9Hq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pJp7dRGT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p6KXy-0004E2-Pa; Fri, 16 Dec 2022 18:55:22 -0500
+	id 1p6KYV-0004bZ-Va; Fri, 16 Dec 2022 18:55:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1p6KXw-0004Cy-Oa
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 18:55:20 -0500
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ id 1p6KYU-0004Tz-2y
+ for qemu-arm@nongnu.org; Fri, 16 Dec 2022 18:55:54 -0500
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1p6KXt-0003mk-Sa
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 18:55:20 -0500
-Received: by mail-pl1-x629.google.com with SMTP id t2so3833599ply.2
- for <qemu-arm@nongnu.org>; Fri, 16 Dec 2022 15:55:07 -0800 (PST)
+ id 1p6KYS-00047c-FQ
+ for qemu-arm@nongnu.org; Fri, 16 Dec 2022 18:55:53 -0500
+Received: by mail-pl1-x636.google.com with SMTP id n4so3838717plp.1
+ for <qemu-arm@nongnu.org>; Fri, 16 Dec 2022 15:55:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=7HuX3umh1vhBvWljz78x6kDREymcel4L0smmP2tLTq4=;
- b=UjHCp9Hqau7UvqHqt6qgyAYFKvgF8JLA+o8he+aBUxdUU5jbElTyxRdbfZ5lSuOODH
- p9iIJuPH5gOQbgfH9CCP5wRm2fDjMsR19QUGmdWQXfC/kD+vTBKtLkspJnyvmRnh/uJL
- eWuJntVY7PxIJ+qATQomvaQ/IqI0HIludzgZKDgIwGOgZrEhihdZ0do9oEJXHXpRUptH
- Q1K22YVIIN3kKLKVlhqjRVmh+dknG0/q0j1qT/r/sJPZHNkTVV7URArjb/dpdooFTbr/
- gTyOmHUbBtykeJq4wcRhiGtevynpAOTjW9C4VUkfsTL+bk8bLQaa1KrrE8J0SPpSBdkZ
- sEeg==
+ bh=S0J1Y/JHOekwGdbCkByHa8jzZHwbN5KNH5O0zH+eHo0=;
+ b=pJp7dRGTP6UU1+2+n++b3U7FgFZOZWQNquXSWH5rFkYErPSWSv92tlm6qFUc2gTh+D
+ BfUthjnvLF5nGNcMU4sIiwSgV3x/BT1X0DSuSBJt60Z7zZ649JhnLaAhBYWXw9z0Yv60
+ H5tyklabc3GZYejdxC4W9g3GLBBJG3KllW64H2TbVU3QiQ+Ygo8JXljcKoicifJ54WtG
+ 7X+75n3UhSdiHWDT7i3UPrSqMbESmqBVRq950Gwo0FyEU5tdLqsoax35fsHWTAi3vBoX
+ K69Y8PGh422gqfe/zyBC+HT5Af7hHTDxUeV176INdU6aVarty1Vj2sLXx/N4Znowegmu
+ Qxtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7HuX3umh1vhBvWljz78x6kDREymcel4L0smmP2tLTq4=;
- b=MrHVlVxIiW0P0ydPpm2GsQ6srd7dfwKp5CDKqmBFKu8BWEfOqDa2/XLb4j4zsxUQv1
- OpunVufgQ4vsMAsXfH5Tsq+XL3FMiRbZJL+3gHDLHN3pXnqhAOL9JL2BXzZ1RNv0JDFo
- Ax5PHBFiURudAJPkMlGkwD51/ImBzv/1cqHStItRJJCZLpndlCyTbBZlFwWHBIl/7etL
- TtBRTyWK6Jtzr9D1x9nHPx80BFKLASipJYzW2jKDTj73Cm3k0rMB553xtaAG2E1iUvPb
- Pj1qJMBo49+pJ3C+AizQ27D3nLUPtUE2TFF9y2ZvN5js8CnRWanpiopigENJH8IJ6uuL
- bRLA==
-X-Gm-Message-State: AFqh2kq42Hq9K00BdrWI391cnD8Bwm+vt4Ed+7YXhhhClmiCT5HyT9bs
- uqRc9qQikBMC53N9pUY+7THWjw==
-X-Received: by 2002:a17:902:7d93:b0:189:b4d0:aee with SMTP id
- a19-20020a1709027d9300b00189b4d00aeemr183082plm.67.1671234906434; 
- Fri, 16 Dec 2022 15:55:06 -0800 (PST)
+ bh=S0J1Y/JHOekwGdbCkByHa8jzZHwbN5KNH5O0zH+eHo0=;
+ b=mzyOx1dsSYBjvPRwfOBgqqluE703MwbpoD3SyFr2UbiaQQRC6YqwXKUY/pmOVLnp4w
+ 47Qic5TnYnI5u66fis4cAbI0RBgd4gCA/AMk4Pq1rTmtoCH4LnlhPeI6UIyvCaOwFNzp
+ 8ZUqHLhVjXRFpm1SPOrXxBAWMiO/Qi5Jag0aCsgi/U8VZmAWv/LrPQ1Swi5EG0eBlFyG
+ 67omfoo2jtG82HVKYOXIKoffhYohnfBQWDPxH1fV2VaHr81Ce6Qs5EGsLV23wrpEXOab
+ u1c877h5udHk6EpGMgTT+NAFBlKHsaPtipZAAHo51KUqTzDEJUpanpcnm2Kj//JKYYok
+ 9hmA==
+X-Gm-Message-State: AFqh2krhVb+4ybNO3wl9Hy5gUlYl11EfJLr1GYSh7HujAPEJZXC6CBNA
+ bfh76AJK08bCGgND3egBtYELAg==
+X-Received: by 2002:a05:6a21:398b:b0:af:e129:cc1 with SMTP id
+ ad11-20020a056a21398b00b000afe1290cc1mr3198894pzc.27.1671234950921; 
+ Fri, 16 Dec 2022 15:55:50 -0800 (PST)
 Received: from ?IPV6:2602:47:d48c:8101:c606:9489:98df:6a3b?
  ([2602:47:d48c:8101:c606:9489:98df:6a3b])
  by smtp.gmail.com with ESMTPSA id
- ik30-20020a170902ab1e00b001897d30143asm2132311plb.289.2022.12.16.15.55.05
+ ix22-20020a170902f81600b00186cf82717fsm2171495plb.165.2022.12.16.15.55.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Dec 2022 15:55:05 -0800 (PST)
-Message-ID: <cd66ec49-c095-98c7-0239-48db53364c86@linaro.org>
-Date: Fri, 16 Dec 2022 15:55:04 -0800
+ Fri, 16 Dec 2022 15:55:50 -0800 (PST)
+Message-ID: <19adeed5-ca5a-b282-2be1-eec67f757dfa@linaro.org>
+Date: Fri, 16 Dec 2022 15:55:48 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v2 1/2] hw/arm/smmu-common: Reduce smmu_inv_notifiers_mr()
- scope
+Subject: Re: [PATCH v2 2/2] hw/arm/smmu-common: Avoid using inlined functions
+ with external linkage
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Stefan Weil <sw@weilnetz.de>,
  Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eric.auger@redhat.com>
 References: <20221216214924.4711-1-philmd@linaro.org>
- <20221216214924.4711-2-philmd@linaro.org>
+ <20221216214924.4711-3-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20221216214924.4711-2-philmd@linaro.org>
+In-Reply-To: <20221216214924.4711-3-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,14 +129,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vbuLCP85uRBe
+X-TUID: rrw7sqwDllsY
 
 On 12/16/22 13:49, Philippe Mathieu-Daudé wrote:
-> This function is not used anywhere outside this file,
-> so we can make the function "static void".
+> When using Clang ("Apple clang version 14.0.0 (clang-1400.0.29.202)")
+> and building with -Wall we get:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>    hw/arm/smmu-common.c:173:33: warning: static function 'smmu_hash_remove_by_asid_iova' is used in an inline function with external linkage [-Wstatic-in-inline]
+>    hw/arm/smmu-common.h:170:1: note: use 'static' to give inline function 'smmu_iotlb_inv_iova' internal linkage
+>      void smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova,
+>      ^
+>      static
+> 
+> None of our code base require / use inlined functions with external
+> linkage. Some places use internal inlining in the hot path. These
+> two functions are certainly not in any hot path and don't justify
+> any inlining, so these are likely oversights rather than intentional.
+> 
+> Reported-by: Stefan Weil<sw@weilnetz.de>
+> Reviewed-by: Peter Maydell<peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+>   hw/arm/smmu-common.c | 13 ++++++-------
+>   1 file changed, 6 insertions(+), 7 deletions(-)
+
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
 
 r~

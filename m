@@ -1,188 +1,188 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1286091ejb;
-        Fri, 16 Dec 2022 03:06:38 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvfojc2w8H109D4Hrunxf/FOAz7Ci+ixkt17K+bjDG5/jio3vae3xUzA/XrZWEG49b4x/ee
-X-Received: by 2002:a05:6122:128:b0:3cc:110e:b81e with SMTP id a8-20020a056122012800b003cc110eb81emr236078vko.8.1671188798002;
-        Fri, 16 Dec 2022 03:06:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671188797; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1291114ejb;
+        Fri, 16 Dec 2022 03:14:50 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf41G7TIm0+8Kpoif74MzZtOAMZYoHnjeE30R2ml4U5ifREag6SkGGKJbVta7u9u5GUaRxHi
+X-Received: by 2002:a05:6214:930:b0:4c7:2804:d697 with SMTP id dk16-20020a056214093000b004c72804d697mr40137795qvb.19.1671189290497;
+        Fri, 16 Dec 2022 03:14:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671189290; cv=none;
         d=google.com; s=arc-20160816;
-        b=goVQL17PHgRYyB9YrVtZNr4hCMsqMe34eJAKkuBKTthQNj4q2eUoBYkNB3SWj61S77
-         i/gztEgvXarNJc7yNsGjcEjsrQnv83XrRcHNw5CcJKqAHTHc/so+rWjAFbEPCz7+jqhi
-         961Ma0/BHE77hsBaC4XvbqTCTu4Sle/AoSAwyfljWKWB/ungBfRoYbSMZ4PW7l+oWwKA
-         U4gQWQbmaz58KmDpHhG21tj2S8rUP5lb2Vne/gSrFm9bzAGWRebZC4LGWOLX8ALn5DoM
-         lxvHaPzWn29vWyPs4n1cCqzN5GVH7EvRUeFtTTJ8SFJrerInjWjou/2+vW2Agtduktdn
-         wUtw==
+        b=HDxQB6LbYdfFd1xd4i7CLs1Xvp0o6skH6gN3kg7o5FLpa9RNDcUzTOrRSSfMvCoI3F
+         Xju4lT48uyHwKUP8Qpvqo9sHLiG62ohByNa/ZzOZl3++5EVU+lY/2g0iUr4lTLmxFErN
+         2syHfBpJjNWroKhXdlBBDtzadNTE/emzCJ8gUArIQI6k06Ix++2dP8SD72+lT6IekRsW
+         ieM9Pb0ixJWkoR3cYz6GAZVZC9/JKC+OCXHDi1TPO5+s0XGdPKue7RVJcbZjCyfJoGmd
+         rP31HPy2PvPruNsQq/YoyaYg/VQyzXkbBqs6I9DI95JQXlIIlz4ilZ9acy+hjiFJ7+fD
+         HjuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=TNN1Lwj9oUu+SRPkrk8oHxVGSEWLKpNEs9hevHnxj7o=;
-        b=ILRN+3N+RhxsWki2GuG46xEg+dd8MNTRtjWcflRcUjUzaCqjykhn0wn16Qe8Vut0aR
-         48Q24YYV5TbR8X6lEw+lR/CI4ZkZd05cwAREsWUMkmiXy7gf3k6pBumWRUvz+yT8svI7
-         YUcTSIEr1OQYKVWTmQrUemNCZ2uLqfNE3+s2JDwfkbDAnQ1F23xU1HpeW5i7Q8MzN/zW
-         gTuo2lqqXTiZPTZYwKfo9ryVsFFt+K9UI79HO3Vp9aAaDDhTHkbqn4W/JclNlm7xVHx/
-         oOX/qhfeKHTyZ2jIvhpV/qNJwkXf6UjMWpfF/2HwJExK1/yRIEmzwHwApobk6xq8LLeO
-         XkkA==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=RbTOovQUdfGt9U9QZ4ZgQdSPz1KkfxzdXiNrkIEZJ18=;
+        b=ojHyK6TkxouGNxGhIXgG+Q1RTR4uQvNH8vwkvG9AKdwxqVAH1ZfgO2bC+BFWDKucfg
+         Wu2HvO6uAd2OOWfZx4ZFHlMJRgHmuEG2NqZ6XGt+0IqByVH130rudQezs3lZBS80n5Wp
+         +5zwWCnJDch/JFaV/tBC4VuUnbnSQ6cxdtDlERGFbDTMivXZYsSikIP67dRBrnl3ysuZ
+         Em2BJ3DZbkDBAIG5GoHYqPQIKdtXkyyhjPrxSn3SxA3Ye/xnPa+Z//iH4Z9ppP7QvjND
+         NH+VQDDXoYp5u5oJEEhijNeOAkoLS+JSqdhaOVunPdbtXEJMTyxekYTvwXUAtda7z5Xs
+         QoHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y4viZyI7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UK7uBU3u;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14-20020a37ab0e000000b006c9b99b444dsi816413qke.599.2022.12.16.03.06.37
+        by mx.google.com with ESMTPS id m11-20020a0562141bcb00b004b90fe5f7a3si993501qvc.489.2022.12.16.03.14.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Dec 2022 03:06:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Dec 2022 03:14:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y4viZyI7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UK7uBU3u;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p68XU-0003jh-2q; Fri, 16 Dec 2022 06:06:04 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p68f5-0007jv-4f; Fri, 16 Dec 2022 06:13:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1p68XS-0003jN-Ik
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 06:06:02 -0500
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1p68XR-0001qp-0B
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 06:06:02 -0500
-Received: by mail-pl1-x632.google.com with SMTP id x2so1921809plb.13
- for <qemu-arm@nongnu.org>; Fri, 16 Dec 2022 03:05:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=TNN1Lwj9oUu+SRPkrk8oHxVGSEWLKpNEs9hevHnxj7o=;
- b=Y4viZyI7R3weTKutbIsm5AbIDGieJdaxQei98ZfMvnUk463SJYj8t/wJqYLpAwsCPj
- Iq17ITYehvtaS5Q10Sdy4Lz9jaZIM993rkxPr7rH0SGXsZWKx29/AmuNv/fruNhJ9Bs5
- 4wpy3/iDo3Y9/CLah6Qptb/JHo/LHZJjoYZSYW74FDQAkx2kycfU5+05p7IqTKytlSmI
- RYKsnE3OdF7xLpd9I1uKmuIZJ2StA1AJRAunDk0B6EGOeQ745zsG1FKfQOSKYnf4eV4/
- cMKKEPAaU56mM2R24/pxggofDKsvk2ckz+do8yPGKg6ujLiTgCpFq2R6649voY0Xg6d6
- vC+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=TNN1Lwj9oUu+SRPkrk8oHxVGSEWLKpNEs9hevHnxj7o=;
- b=6/QA6hK29Y3QqQXpRFPi8mvH+MG2sBHj4LjDDfM6hCctjujigYROXWqmw5TkI/dhxS
- mbxzvVa7e7Vj36H/0dBz2iz54hHLhY4E1Dl7UPB0aiHx8Afr77rB0ukaJH86c6GpddU2
- svStcJYR8zMCfESBo+7rlJkasGpvkzisrYhNkhbkAIETUJfR+r1hr+53xmEfo7blWbzO
- gIy7EPCyvcWV/tMH8QbiP5Rr5pthU+I2MjFU7ljHo9Rg906QHaYpBwLOMURhAY386ioO
- QY+SVxuxWrK2KlG4vCGWGxiG4+2ZpgxtUkO23khVZ2Z+rDRSJA7gvyF92LFCdEMhxQX+
- 4RIA==
-X-Gm-Message-State: ANoB5plqOayAzicX5SiONI46Fn5Lt8UGs6GkALZE8IDM1t8VYyKWmyle
- UPpJEQdfQznuv9xdmMIODDonMsnPNehFJfT+fYHOaQ==
-X-Received: by 2002:a17:902:70c5:b0:189:b0a3:cf4a with SMTP id
- l5-20020a17090270c500b00189b0a3cf4amr36592323plt.60.1671188758418; Fri, 16
- Dec 2022 03:05:58 -0800 (PST)
-MIME-Version: 1.0
-References: <20221216101234.2202009-1-kraxel@redhat.com>
- <20221216101234.2202009-2-kraxel@redhat.com>
-In-Reply-To: <20221216101234.2202009-2-kraxel@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Dec 2022 11:05:46 +0000
-Message-ID: <CAFEAcA8Sfft6hB2hRyht9vRg3xYq3kTWjqd4s2GreYZqH3O3=Q@mail.gmail.com>
-Subject: Re: [PATCH 1/2] hw/arm: allow flash images being smaller than the
- available space
+ (Exim 4.90_1) (envelope-from <kchamart@redhat.com>)
+ id 1p68f3-0007jl-Ub
+ for qemu-devel@nongnu.org; Fri, 16 Dec 2022 06:13:53 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kchamart@redhat.com>)
+ id 1p68f2-0003Hi-DO
+ for qemu-devel@nongnu.org; Fri, 16 Dec 2022 06:13:53 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1671189230;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RbTOovQUdfGt9U9QZ4ZgQdSPz1KkfxzdXiNrkIEZJ18=;
+ b=UK7uBU3u8BQfSmO9H+xIlYhXaKOBl1YBBT4ELJEdlTnlgp7EIktDeGpotQ7VDFtTGcDgZV
+ 3fLz0slhZTsUFaZXQZIslLDY8Psgy33ojTJLT3FksdSQun6bN6YxSzAZ0XG8o/TpuH/4Uy
+ SbAqDW3IFIqEFoVlBRfEgsiYZn24vmI=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-161-rMcfay-AOuSG6T-_dFt6_g-1; Fri, 16 Dec 2022 06:13:49 -0500
+X-MC-Unique: rMcfay-AOuSG6T-_dFt6_g-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 04C5780D101;
+ Fri, 16 Dec 2022 11:13:49 +0000 (UTC)
+Received: from pinwheel (unknown [10.39.194.166])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D1DBD2026D35;
+ Fri, 16 Dec 2022 11:13:47 +0000 (UTC)
+Date: Fri, 16 Dec 2022 12:13:45 +0100
+From: Kashyap Chamarthy <kchamart@redhat.com>
 To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, Kashyap Chamarthy <kchamart@redhat.com>,
- qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x632.google.com
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 2/2] docs: add no-padding firmware feature
+Message-ID: <Y5xS6TaZGnOCiRag@pinwheel>
+References: <20221216101234.2202009-1-kraxel@redhat.com>
+ <20221216101234.2202009-3-kraxel@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20221216101234.2202009-3-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kchamart@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +VdUtEwvdmPF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +3Kh0I+4hSNM
 
-On Fri, 16 Dec 2022 at 10:12, Gerd Hoffmann <kraxel@redhat.com> wrote:
->
-> Query block device backing flash for size and use that instead of
-> requiring the block device being exactly 64M in size.  This allows
-> to use edk2 firmware builds without padding, i.e. use QEMU_EFI.fd
-> (which is /way/ smaller than 64M) as-is.
->
-> -rw-r--r--. 1 root root 67108864 Dec 12 23:45 QEMU_EFI-pflash.raw
-> -rw-r--r--. 1 root root  2097152 Dec 12 23:45 QEMU_EFI.fd
->
+On Fri, Dec 16, 2022 at 11:12:34AM +0100, Gerd Hoffmann wrote:
+
+Hi,
+
 > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 > ---
->  hw/arm/virt.c | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index b87135085610..c71ae2cd73f7 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -43,6 +43,7 @@
->  #include "hw/vfio/vfio-amd-xgbe.h"
->  #include "hw/display/ramfb.h"
->  #include "net/net.h"
-> +#include "sysemu/block-backend.h"
->  #include "sysemu/device_tree.h"
->  #include "sysemu/numa.h"
->  #include "sysemu/runstate.h"
-> @@ -1134,6 +1135,21 @@ static void virt_flash_map1(PFlashCFI01 *flash,
->                              MemoryRegion *sysmem)
->  {
->      DeviceState *dev = DEVICE(flash);
-> +    BlockBackend *blk;
-> +
-> +    blk = pflash_cfi01_get_blk(flash);
-> +    if (blk) {
-> +        hwaddr blksize = blk_getlength(blk);
-> +
-> +        if (blksize == 0 || blksize > size ||
-> +            !QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE)) {
-> +            error_report("system firmware block device %s"
-> +                         " has invalid size %" PRId64,
-> +                         blk_name(blk), size);
-> +            exit(1);
-> +        }
-> +        size = blksize;
-> +    }
->
->      assert(QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE));
->      assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
-> --
+>  docs/interop/firmware.json | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/docs/interop/firmware.json b/docs/interop/firmware.json
+> index 56814f02b3c0..74f404d745b0 100644
+> --- a/docs/interop/firmware.json
+> +++ b/docs/interop/firmware.json
+> @@ -191,6 +191,8 @@
+>  #                  PL011 UART. @verbose-static is mutually exclusive
+>  #                  with @verbose-dynamic.
+>  #
+> +# @no-padding: The (arm/aarch64) firmware images are not padded to 64M.
+> +#
+>  # Since: 3.0
+>  ##
+>  { 'enum' : 'FirmwareFeature',
+> @@ -198,7 +200,8 @@
+>               'amd-sev', 'amd-sev-es', 'amd-sev-snp',
+>               'intel-tdx',
+>               'enrolled-keys', 'requires-smm', 'secure-boot',
+> -             'verbose-dynamic', 'verbose-static' ] }
+> +             'verbose-dynamic', 'verbose-static',
+> +             'no-padding' ] }
+
+If you're re-spinning, please consider adding a sentence or two (for
+those of us who're not familiar) a bit more about the "no-padding"
+feature to the commit message.
+
+IIUC, I found the use of the padding feature reading an old email
+response[1] from Dan Berrangé:
+
+(quote)
+    ...
+    If there's a risk that newer firmware will be larger than old firmware
+    there's only really two options:
+    
+      - Keep all firmware images forever, each with a unique versioned
+        filename. This ensures target QEMU will always load the original
+        smaller firmware
+    
+      - Add padding to the firmware images. IOW, if the firmware is 2 MB,
+        add zero-padding to the end of the image to round it upto 4 MB
+        (whatever you anticipate the largest size wil be in future).
+    ...
+(/quote)
+
+
+[1] https://edk2.groups.io/g/devel/message/54758
+
+Regardless:
+
+Reviewed-by: Kashyap Chamarthy <kchamart@redhat.com>
+
+>  ##
+>  # @FirmwareFlashFile:
+> -- 
 > 2.38.1
+> 
 
-We've had at least three threads about this already, attempting
-various approaches. Please read up on them and the discussions
-that ensued from those patches before having another go at it.
+-- 
+/kashyap
 
-The problem with this idea is that the size of the flash device
-exposed to the guest should not depend on the size of the backing
-file the user provides -- it's a fact about the machine and
-also if it varies it's easy for the user to back themselves into
-a corner where they can't migrate to a destination where the
-backing file is larger, or they can't add new variables to the
-EFI store because the backing file is too small.
-
-thanks
--- PMM

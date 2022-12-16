@@ -1,113 +1,104 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1274937ejb;
-        Fri, 16 Dec 2022 02:46:54 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf69byA3FxryXZOEczTxxMbxU7IO1esPN0dBMQ2Sw1jZfqWrJ2NwnRld4Sy1EoQNvaXiCSi3
-X-Received: by 2002:a0c:f4c9:0:b0:4c6:e395:b6f7 with SMTP id o9-20020a0cf4c9000000b004c6e395b6f7mr42751540qvm.30.1671187614132;
-        Fri, 16 Dec 2022 02:46:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671187614; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1258385ejb;
+        Fri, 16 Dec 2022 02:13:32 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5sJHQGOlgYgVk9I9czhS0WlUyU+sgHlYU2BJHTjmBq2eyisSS5Anr5Gwepy2abKFnHDlot
+X-Received: by 2002:a05:6214:2b97:b0:4c7:734a:9047 with SMTP id kr23-20020a0562142b9700b004c7734a9047mr46735852qvb.50.1671185611906;
+        Fri, 16 Dec 2022 02:13:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671185611; cv=none;
         d=google.com; s=arc-20160816;
-        b=qVArFTfK3yqqzAV72a0yiWGXpjDAXsJaiTbEX2GMthv+sGS4/1E4GvGzBupqejOz6S
-         3P4bzNYRFr0omfQ2rAFGIEe00vttlzGe0+43Gz7s4IZIF5/qyaE7GVUBvSTxSlwR5gM3
-         89K92kSRCR7ZchtpGaR0uO0gIDOxRiKjZ4+b1r9/kdCOcktTlouEYReLeeLjXmiWm3OH
-         OezKmcehkWBIVzRo/A4S98KLGbkCVPJWFlBQNrXse7jz0l15irX6O9o/CobBq0fakkTj
-         SxzqMDOfur+jLz5Ps4tjiR54aOW76oTBm4hnbD+NsfaFB4HcjHeKEDVNp9jc8KSBgfRT
-         6OlQ==
+        b=iBNNtSxwOX82hvsg58q1RC/8fUTp7Cj1zuPFzgf1dneyBB9qT6aiNmT4MbrFK/GTnB
+         OAUdV+i4FmKDRRehS+BkQRAaNROHX/2CbhxHxESBneBe1t9Mbn1cLv0/+41uxDVxg4CK
+         qfOl2ONLd03875cZMp+gc3AZllobbCVxtTtK/o3z3LZvK+1w/+NCPU062EnZWfkB/yKG
+         h9P3dsDgoidA+v4ZeH9ZN7hNWcZFFN81o4kf/lhoJxfmd5DJhv5pHfY8fuQm+J2SDIjJ
+         5P/d/txOqM8dxRpFkqFq5rsuf2je9UkwA8fs58FoCWuYK/JHlS8opOwI3uIWNyyD88Mj
+         xgJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=I7qpe/CGMn45Y8TAHmmha9tWCsTujnH/2UYttoi8M9E=;
-        b=q3RoHJxwKUcirnbpfUjI3kJnGE8ekYGDiSTxFpJVlktwQZ+7lm88j8Qy9XBwembeCJ
-         A9txVQx3G1KO8Nlr+D9F+1LetyaAGsA9DRw+04AESqnPXjOZ19UlJXczy0bNajetaM9N
-         AQO8/Rtqbxx869esosElli/Q+VHubvIpjkVW5hqjD8n3jEA3VR2Eua3vtUeMOpZsLNWL
-         jCSgd+dC/DzNyJYlg3kDSKwfFeDBi4ycx5ZS/6iL7m2GYSPxCXI+9n/RLBbjKPFklwBx
-         1BNZ1CJAbRFZZFB8slKtgiDeYDnSfEKzdSe+AWr2/p29+Di4nhtFdvsVXmd+gqrDBCqW
-         tDXQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=LEl9gsuHlzpldUb2Z6yWcZInakI5OdtYZvcj2nrA2DA=;
+        b=HLETk3hf9jZxMUSfydkKtoP1W810ZpnYEJvYB4VWqSSPaOA9QFGaLh2xzSazylMm0o
+         sVe53wrYYnpuqkgNnC0+Sf4CqyB+5/yXA/Ne5gjdtFwN/mvYJfBPioYuX5arqi2CnzYQ
+         5LQqthd1sqpESv0sDsVqzEz87OyBo1TQHmCmzoFhgvc/GLHXVcixUh0Y59iAmJYICYb9
+         MYOTVQIGxyL1vg+htFZ2+hnDhnHnWXwtAADJFsCACzH9y6xuxac+PRg349QyWM2/Kr8j
+         i7DpNYrYD3fFf0ztIZb8Q/51VJ7YEU4dOFynVY+MVpu4Pq3NzqHQyB8UFdpP4etPc8Bw
+         ldAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nF+Nmx9h;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K7TWvD9t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fo6-20020ad45f06000000b004c702e879b1si914339qvb.436.2022.12.16.02.46.53
+        by mx.google.com with ESMTPS id m8-20020ad45dc8000000b004c6a46ffda4si932160qvh.44.2022.12.16.02.13.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Dec 2022 02:46:54 -0800 (PST)
+        Fri, 16 Dec 2022 02:13:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nF+Nmx9h;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K7TWvD9t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p68EX-0008EY-Ll; Fri, 16 Dec 2022 05:46:29 -0500
+	id 1p67hq-0006PR-VA; Fri, 16 Dec 2022 05:12:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p68ED-0008Bc-Kp
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 05:46:17 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p68EB-0004J7-3Q
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 05:46:09 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- p13-20020a05600c468d00b003cf8859ed1bso1448040wmo.1
- for <qemu-arm@nongnu.org>; Fri, 16 Dec 2022 02:46:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=I7qpe/CGMn45Y8TAHmmha9tWCsTujnH/2UYttoi8M9E=;
- b=nF+Nmx9hqKdkkIbZg8HmI6Cz/YPafZifjOHi+zqUa/JEyg+pd49NkWBymZhZDQ8Syu
- X9tW0BsWoQgjKyzmLPvEDAjHtwzSbW/9xvdYal1HzgKDewICBjr7HYaucQwKM9C6g83w
- 0CjjzrpuPCkK1pz8bhGQcKcLlhPrgpoAT16Q9HKFLZ1NkPwebgFw50bhb32MLJlmJuaI
- pJjf2isfimSuPikXwqI4wmgr5zHxKkSmxVt1fmAkzQEN+x2fMB//AnmyoO8TBHuzzyeG
- Vg2L935SStJzYg0GvdM7w03mhoa+m4Nrg3V2UP94yJ2YSITxjcCJNl9/cEEwnUCVGV3j
- pvWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=I7qpe/CGMn45Y8TAHmmha9tWCsTujnH/2UYttoi8M9E=;
- b=GksQC9trkwk/PjaJ3XS+a0Lqwf/11ej3Q/099lym1XjLl+d6O2x864nTwgkXs2dxhc
- LNpgJKSQnVrcH3pg/3BLsf/m/KHzEpCHafcPSpC8aIJkROwli0j2vzPwQc6iyKMhdft/
- C6HDdMvi9RzQZS+XmxlKO2GrU9WXtvqfS5CwFzsn7sYcgYfIDFI4FZamL6ezvj+PG+nJ
- i9wP9tEJoEj48CllOPjyzQyXYzYqll80IWgvyGaVGeNeMXAKSYMjbXlwyxeXEa7tLlbD
- mHN5KAsYTupGW9zTP8c7bzB/c0WLCW1vdYuLch7HnCjOe2e66jUCSf1jpf5BFcsmIOms
- wSTg==
-X-Gm-Message-State: ANoB5plGu+0OCQ8SnBNI0fWlK3M8WmDl2pyCJsBTRPTrNsvP89H5EGog
- 22jyEEC2NixDM77mD+RA7pupKw==
-X-Received: by 2002:a05:600c:1da9:b0:3c7:a5:610e with SMTP id
- p41-20020a05600c1da900b003c700a5610emr25538424wms.27.1671187564752; 
- Fri, 16 Dec 2022 02:46:04 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- m17-20020a7bce11000000b003d2157627a8sm9557669wmc.47.2022.12.16.02.46.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Dec 2022 02:46:04 -0800 (PST)
-Message-ID: <fb070b3a-6b05-a0fb-09b9-c6c9d872e901@linaro.org>
-Date: Fri, 16 Dec 2022 11:46:03 +0100
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1p67hp-0006P9-Fg
+ for qemu-arm@nongnu.org; Fri, 16 Dec 2022 05:12:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1p67ho-0003CX-4k
+ for qemu-arm@nongnu.org; Fri, 16 Dec 2022 05:12:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1671185558;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LEl9gsuHlzpldUb2Z6yWcZInakI5OdtYZvcj2nrA2DA=;
+ b=K7TWvD9txHEf663H23ti60+IX47kLex4yBtJfYz+n6NJAReO6/wcZtzn49Dt/RyylPGOSF
+ ip2evwnK3NlcZ4OdfGVYAwF2bYgNSA1KV+RZCquh/0K+0+XegUt/RgI2ZhCG829wiK//0d
+ 1FnTG+r+g19Nk1wdlnuCmqpgHMcIj+U=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-207-U2KxhMZJOx-5eCoonTnJ7w-1; Fri, 16 Dec 2022 05:12:36 -0500
+X-MC-Unique: U2KxhMZJOx-5eCoonTnJ7w-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5502E85A588;
+ Fri, 16 Dec 2022 10:12:36 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.83])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1489E51EF;
+ Fri, 16 Dec 2022 10:12:36 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id D9AE81801B2C; Fri, 16 Dec 2022 11:12:34 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Kashyap Chamarthy <kchamart@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH 1/2] hw/arm: allow flash images being smaller than the
+ available space
+Date: Fri, 16 Dec 2022 11:12:33 +0100
+Message-Id: <20221216101234.2202009-2-kraxel@redhat.com>
+In-Reply-To: <20221216101234.2202009-1-kraxel@redhat.com>
+References: <20221216101234.2202009-1-kraxel@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.5.1
-Subject: Re: [PATCH] docs: do not talk about past removal as happening in the
- future
-Content-Language: en-US
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm <qemu-arm@nongnu.org>
-References: <20221216101506.524217-1-pbonzini@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221216101506.524217-1-pbonzini@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,33 +114,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gLdemKnIQ/rI
+X-TUID: /Z3KMiw5+CHI
 
-On 16/12/22 11:15, Paolo Bonzini wrote:
-> KVM guest support on 32-bit Arm hosts *has* been removed, so rephrase
-> the sentence describing it.
-> 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->   docs/about/removed-features.rst | 5 ++---
->   1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-> index 63df9848fda2..7e12145c120d 100644
-> --- a/docs/about/removed-features.rst
-> +++ b/docs/about/removed-features.rst
-> @@ -565,9 +565,8 @@ KVM guest support on 32-bit Arm hosts (removed in 5.2)
->   ''''''''''''''''''''''''''''''''''''''''''''''''''''''
->   
->   The Linux kernel has dropped support for allowing 32-bit Arm systems
-> -to host KVM guests as of the 5.7 kernel. Accordingly, QEMU is deprecating
-> -its support for this configuration and will remove it in a future version.
-> -Running 32-bit guests on a 64-bit Arm host remains supported.
-> +to host KVM guests as of the 5.7 kernel, and was thus removed from QEMU
-> +as well.  Running 32-bit guests on a 64-bit Arm host remains supported.
->   
->   RISC-V ISA Specific CPUs (removed in 5.1)
->   '''''''''''''''''''''''''''''''''''''''''
+Query block device backing flash for size and use that instead of
+requiring the block device being exactly 64M in size.  This allows
+to use edk2 firmware builds without padding, i.e. use QEMU_EFI.fd
+(which is /way/ smaller than 64M) as-is.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+-rw-r--r--. 1 root root 67108864 Dec 12 23:45 QEMU_EFI-pflash.raw
+-rw-r--r--. 1 root root  2097152 Dec 12 23:45 QEMU_EFI.fd
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/arm/virt.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b87135085610..c71ae2cd73f7 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -43,6 +43,7 @@
+ #include "hw/vfio/vfio-amd-xgbe.h"
+ #include "hw/display/ramfb.h"
+ #include "net/net.h"
++#include "sysemu/block-backend.h"
+ #include "sysemu/device_tree.h"
+ #include "sysemu/numa.h"
+ #include "sysemu/runstate.h"
+@@ -1134,6 +1135,21 @@ static void virt_flash_map1(PFlashCFI01 *flash,
+                             MemoryRegion *sysmem)
+ {
+     DeviceState *dev = DEVICE(flash);
++    BlockBackend *blk;
++
++    blk = pflash_cfi01_get_blk(flash);
++    if (blk) {
++        hwaddr blksize = blk_getlength(blk);
++
++        if (blksize == 0 || blksize > size ||
++            !QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE)) {
++            error_report("system firmware block device %s"
++                         " has invalid size %" PRId64,
++                         blk_name(blk), size);
++            exit(1);
++        }
++        size = blksize;
++    }
+ 
+     assert(QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE));
+     assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
+-- 
+2.38.1
 

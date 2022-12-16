@@ -1,110 +1,106 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1470315ejb;
-        Fri, 16 Dec 2022 07:24:59 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4qnud8h/+InAtGRU3T3YQq2IGheT9TzLY5RI4bzl17TnUswpCSxBFrMGRXBoXiroglMcNm
-X-Received: by 2002:a0c:fbd1:0:b0:4c7:61a9:ab5c with SMTP id n17-20020a0cfbd1000000b004c761a9ab5cmr43406346qvp.25.1671204298540;
-        Fri, 16 Dec 2022 07:24:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671204298; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1484073ejb;
+        Fri, 16 Dec 2022 07:42:20 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5YgNaWDUQf7p1KDc8l+WB+9qKt8VBFNJVdaRORuwrH3YOqyiqFCVZpzSr5iHzDKxeh/qL1
+X-Received: by 2002:a05:6102:34f2:b0:3b1:6079:9bb7 with SMTP id bi18-20020a05610234f200b003b160799bb7mr20553786vsb.11.1671205340076;
+        Fri, 16 Dec 2022 07:42:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671205340; cv=none;
         d=google.com; s=arc-20160816;
-        b=EZjPNtoN4zExDt3n8PN8Sdq1O6REP3+8N3tSaQvVgJD91Y23dtCErJiEYv5fr4zW30
-         dr0MD6h17tvhcd87bMoXUhHAAASmXLe5mBveVtLXK1Djelx3s8ngHSEQjwvovhC6VAcI
-         kOThT2/SBvs66kJcE81ej0HUoMwvWupC5lQOyIKLCkII8iEEo0C9FRnOUv8IXzprZdSm
-         mlmjP2NOTfK3JP4Es+lV5IDYCXUxF886b9c7ckDS1Xvd4L8ZA+E/qzE7XpPFA76x3Iya
-         4JFbbYnXW69hzIxsSQ8u2PQQ1xJLaFUV2WCXopBDDsBzkfeWvlmzYYWC+X2aRYIahGoh
-         oxnQ==
+        b=jvJ59/iIwRp2PH6/7SpzhiTMZP5EIBqX/X72yjuGmC6FD/P42WEdZBuk8d73AhHiXL
+         jwIA5OYY7acUKU5PPylhdOf996iLxWzlpPigvr8rAVAd33rSgCIBQ6nWszx2iP3+p+J1
+         oxo+bgcWNW5/2wbAJYG9OtTkmRXasgrM9QdGycaWB2BQKABtMbZKedjeAkDKfkCt+9lx
+         dS9l2vX2Xx4nlPC7fmpv9UKqMxkhDGAZxgBZiBu+BE9PEpEuvE+b4mTwcxjbEhN4FXHh
+         kZ4tHWakDF0iaZsNFhSuhvnrU/Q8T+buz3JSnsH3zPB9rGtkY/JZaG7WnM64n2QGECVL
+         S0uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WafTAAJogOWdkFpTF0q8FAoLgjZ785o76HD8t7NlFkQ=;
-        b=U5Z6Fp0tuv3w0h6Al50LuICfDrVaCTe8X8bcMBUlvXFQxnE+1CpAq4DvhmfcSW0GY/
-         kYrBeNfNObEwpJ1Ytc2b2ZxtEGnyOhibBE/4LWnalg8ILDkMF8vExhzxQZAY48UNyqgq
-         Ooi48ni3cx3zay0Cg1blVJISW+oW+x/XLm73895XSLFMfkHVAQHD+dJ/Z6GDRC2eQM/R
-         zHRDmdyE1FPfXIpA/j1hs6Y1/AX6CQMtTDpzQ23hEXVhg2AJbferApHEtYORsXjB6fkl
-         StF6fVX+fczpGWINCZMKhPZ/hNJRJvV0IJsvH4+3mPuC6VTRuVAC2hRGBAb2vLhlGWJe
-         Xz0g==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=5PhRlO7aTerKKYnPH7f7hzlS2UXHz8ikzoKeblr1SPM=;
+        b=UXW5T9J5OHc9qfW2VWPhEC4+l6af6yd56VCwy7+bHHJ4Vy5h94xA0WymG2wwtMLA8e
+         JYrxUArRIRQivSBR8A9TbqTjFzP6WLq/W/SU6BMZgA2CYxF0LLj4BlgUO9wWJ7BLXX1O
+         CYwXTQkcqktoZdhBHB9XBnmjaT0BX4989HypnEvvT96KLuK5NKYsPe8I86jOGqHApZgx
+         Uq7ckuaMFFpIL4JFiygVa8iytLzfxphp/bMe96X8xY7Np34uv4c7kQ5bVWulqA4fFj/t
+         SJ60JlQxZC+sWKtgWg0HH2C10UQYfyyrjokcOdPFslQCMV047+f6hKe7tuTp/M56oubG
+         VIJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bYNOhOQ9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=by5U7k9d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iu7-20020ad45cc7000000b004caaa358043si1264026qvb.1.2022.12.16.07.24.58
+        by mx.google.com with ESMTPS id w7-20020a05620a444700b006fcacb3c10bsi1186120qkp.613.2022.12.16.07.42.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Dec 2022 07:24:58 -0800 (PST)
+        Fri, 16 Dec 2022 07:42:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bYNOhOQ9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=by5U7k9d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p6CZR-0002Hh-Ns; Fri, 16 Dec 2022 10:24:21 -0500
+	id 1p6Cqe-0003lv-QT; Fri, 16 Dec 2022 10:42:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1p6CZO-0002H8-Mf
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 10:24:18 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ id 1p6Cqc-0003lW-NC
+ for qemu-arm@nongnu.org; Fri, 16 Dec 2022 10:42:06 -0500
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1p6CZK-0000wn-R9
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 10:24:17 -0500
-Received: by mail-wr1-x429.google.com with SMTP id h12so2813086wrv.10
- for <qemu-arm@nongnu.org>; Fri, 16 Dec 2022 07:24:14 -0800 (PST)
+ id 1p6Cqb-0006O2-3J
+ for qemu-arm@nongnu.org; Fri, 16 Dec 2022 10:42:06 -0500
+Received: by mail-pj1-x1033.google.com with SMTP id o12so2846046pjo.4
+ for <qemu-arm@nongnu.org>; Fri, 16 Dec 2022 07:42:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=WafTAAJogOWdkFpTF0q8FAoLgjZ785o76HD8t7NlFkQ=;
- b=bYNOhOQ9WX5/NSbIURI8/FBgWbyuHdV+lCOkcvP1UocLdMnVlBn2hcMPtZOp4YIcDn
- 7Df5JhrtYkyZ2112TNcDWhVQIpqFydN/rMv9wHWHUJYGG3Sgp2gdb+MZSJRTqH4F4HBl
- /QCkcz17ZPMJIsXwKSh1+YyUnpRLbLpcEKyAvjaECbevdAYmjJXdlpT2gFdHp7h88sHr
- 4G/uBmBV0s84NfJ3wRUllF+Cajqu6cf+rWpvkD6whdmCBA+DMsv6Iy7Fc4vwm6yEwMrA
- C//wm2Uw+d0GrvjkOcMZlYHRVY0cRsC3CHb77AitcthajzHvSYOacGYwzSB1anO3L6vj
- MQdw==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=5PhRlO7aTerKKYnPH7f7hzlS2UXHz8ikzoKeblr1SPM=;
+ b=by5U7k9d6Ojfo5Nz40j7eBk5t/6HaLBWvEYw6uFAJ5xZBtQx5NMTg9K9QEdhY80ye7
+ 29k1eFgi6R6EF0H39rwGBEvLn290pa4uDlM9yUEyyBcQN1ShQ6vfUWEJ/gmMxmrWgEAT
+ XlYOt9jXhzACETr/H8QGP3lQ6NMiCsRKPz/x3Lk6bo1a0/gFuN2HDx8K0IKqhsZzilrm
+ /MKvDj/NCBCpEKFIB6zahYavVrfWfxIW46pov6kTL+AEpkV2snBYJQ3gJmfk8aXl3/Aq
+ nwSPf5iO9fwe0SCEqCysjpJD8n3nd8yIrslKWTliUOPrKz/893bum3lFfON5KrFZjteZ
+ FkzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=WafTAAJogOWdkFpTF0q8FAoLgjZ785o76HD8t7NlFkQ=;
- b=xT7bwSWOAiZ2mCzg6gCMbILLSni4dH4lwmN8JmqloC2/Y6G/CCmYjuDGeLW0JiNYLH
- 6mDmWwu2/LaoMUnkpHtVyRXl2dWKSW8NPkGF91hlJFIPyrjAIZgBaXuKW0zCoQqrubED
- GJ/iKFXBBj2jv2CDKMU+NZtkFb9GzjGUUjJ1M6rvbyGRe2K3yFGyCZHb2ryAxIvvO30t
- KoHSRc1a7WeZMVCjvIxkd4jxqwXOlBAv0MoBxbNZH8FtfGa4XoXLUiUzcQrJ0ZPMlgm9
- CYoE/FQyu5YPHaLl9xOgoCrGPE6JeVHqg4SV17q2/ZQI5jgLDBmpgv0ENc5iWydpap38
- +5Hw==
-X-Gm-Message-State: ANoB5plzLO+ON2Hx0TZ28iTWfuqE+ueqeZ6TIIEWl/X2x3n5VrnCVy1E
- IkChD51hRy4f+zb0fWcRa2f1LBw8JA9Bq4+F
-X-Received: by 2002:a05:6000:170f:b0:253:62af:8025 with SMTP id
- n15-20020a056000170f00b0025362af8025mr12350917wrc.61.1671204252745; 
- Fri, 16 Dec 2022 07:24:12 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- s13-20020a5d510d000000b00241e5b917d0sm2953008wrt.36.2022.12.16.07.24.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Dec 2022 07:24:12 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Igor Kotrasinski <i.kotrasinsk@samsung.com>
-Subject: [PATCH] target/arm: Don't set EXC_RETURN.ES if Security Extension not
- present
-Date: Fri, 16 Dec 2022 15:24:10 +0000
-Message-Id: <20221216152410.1185369-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ bh=5PhRlO7aTerKKYnPH7f7hzlS2UXHz8ikzoKeblr1SPM=;
+ b=a1dvPKhBMQDV7a1QoEjNS3BsA07d6NsJmH4xeC5iN3g8gcVL58iC6CQhWx85+tvNuT
+ Rvu7a3lYksLpae9Q1XpTt7G528IrXSMuIkJ1uKmtVhKFMzS2AuONZM2l3+Os2GKBJdpk
+ 2tol527fhdsTsKUdtnx0L3KCS/ljlu6ef1JOZy2yU6YRysF5U5KpRO8iXK/vZ4mAFQwn
+ xCIfhdc0IBcgmOXyyzOQbrQM5F24xppEPRV6xHBcnY8eiWILBoc/zxtSZDXQOR4tsD1J
+ 0yiZ70QXtTNxJPdmvcpYk8jM3cnfw4xoXz9GKQtqQ9WB/jsl95P4SerI32GRdgpbvKxa
+ Urnw==
+X-Gm-Message-State: ANoB5pluYh4g2MYd2B2LldXPXy5GDM94f4wfPJbe4QF9m1wTrdWqrJm9
+ Q+1zCWHYkUAhAlv2bFAqrNktfesRZjfR6Z328YOolA==
+X-Received: by 2002:a17:903:2053:b0:189:cdc8:7261 with SMTP id
+ q19-20020a170903205300b00189cdc87261mr23714045pla.168.1671205323533; Fri, 16
+ Dec 2022 07:42:03 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+References: <DS7PR12MB6309BC9133877BCC6FC419FEAC0D9@DS7PR12MB6309.namprd12.prod.outlook.com>
+ <CAFEAcA_A45cj8RA03U0jOfawZihSp6WgSoaQ7XbGzxs0hAtkOg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_A45cj8RA03U0jOfawZihSp6WgSoaQ7XbGzxs0hAtkOg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 16 Dec 2022 15:41:52 +0000
+Message-ID: <CAFEAcA-dJA7NSR2jN2wy9JM+znoqigZAsV0w=KpSJ_MPEk1LfQ@mail.gmail.com>
+Subject: Re: [PATCH v2] target/arm: align exposed ID registers with Linux
+To: Zhuojia Shen <chaosdefinition@hotmail.com>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,41 +115,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9NIaZO0plFXN
+X-TUID: kXW/DszeOgjs
 
-In v7m_exception_taken(), for v8M we set the EXC_RETURN.ES bit if
-either the exception targets Secure or if the CPU doesn't implement
-the Security Extension.  This is incorrect: the v8M Arm ARM specifies
-that the ES bit should be RES0 if the Security Extension is not
-implemented, and the pseudocode agrees.
+On Thu, 1 Dec 2022 at 16:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Tue, 22 Nov 2022 at 23:25, Zhuojia Shen <chaosdefinition@hotmail.com> wrote:
+> >
+> > In CPUID registers exposed to userspace, some registers were missing
+> > and some fields were not exposed.  This patch aligns exposed ID
+> > registers and their fields with what the upstream kernel currently
+> > exposes.
+>
+> Thanks; I've applied this to the target-arm-for-8.0 branch that
+> will become target-arm.next when 7.2 is out.
 
-Remove the incorrect condition, so that we leave the ES bit 0
-if the Security Extension isn't implemented.
+Hi; unfortunately I had to drop this patch because it causes the
+'sysregs' test case in 'make check-tcg' to fail.
 
-This doesn't have any guest-visible effects for our current set of
-emulated CPUs, because all our v8M CPUs implement the Security
-Extension; but it's worth fixing in case we add a v8M CPU without
-the extension in future.
+Once you've built the test cases once, you can run the single
+test with something like:
+ $ ./build/arm-clang/qemu-aarch64
+build/arm-clang/tests/tcg/aarch64-linux-user/sysregs
+which then will give you the output.
 
-Reported-by: Igor Kotrasinski <i.kotrasinsk@samsung.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/m_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+It looks like the test is hard-coded to check that an expected
+set of fields is exposed, so it should be straightforward to
+update to match what we now intend to provide to the guest.
+Would you mind respinning this patch to include the update to
+the test case tests/tcg/aarch64/sysregs.c ?
 
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 355cd4d60a7..2b55e90ea9d 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -895,7 +895,7 @@ static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr, bool dotailchain,
-         }
- 
-         lr &= ~R_V7M_EXCRET_ES_MASK;
--        if (targets_secure || !arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+        if (targets_secure) {
-             lr |= R_V7M_EXCRET_ES_MASK;
-         }
-         lr &= ~R_V7M_EXCRET_SPSEL_MASK;
--- 
-2.25.1
+Checking Counter registers
+ctr_el0             : 0x0000000080038003
+cntvct_el0          : 0x0173150270b0beff
+cntfrq_el0          : 0x0000000003b9aca0
+Checking CPUID registers
+id_aa64isar0_el1    : 0x1021111110212120
+  !!extra bits!!    : 0x1000000000000000
+id_aa64isar1_el1    : 0x0011101101211012
+  !!extra bits!!    : 0x0011100100000000
+id_aa64mmfr0_el1    : 0xffffffffff000000
+  !!extra bits!!    : 0xffffffff00000000
+id_aa64pfr0_el1     : 0x0001000100110011
+id_aa64pfr1_el1     : 0x0000000001000321
+  !!extra bits!!    : 0x0000000001000301
+id_aa64dfr0_el1     : 0x0000000000000006
+id_aa64zfr0_el1     : 0x0110110100110021 (not RAZ!)
+midr_el1            : 0x00000000000f0510
+mpidr_el1           : 0x0000000080000000
+Remaining registers should fail
+id_mmfr0_el1        : 0x00000000deadbeef
+id_mmfr1_el1        : 0x00000000deadbeef
+id_mmfr2_el1        : 0x00000000deadbeef
+id_mmfr3_el1        : 0x00000000deadbeef
+mvfr0_el1           : 0x00000000deadbeef
+mvfr1_el1           : 0x00000000deadbeef
+Extra information leaked to user-space!
 
+thanks
+-- PMM

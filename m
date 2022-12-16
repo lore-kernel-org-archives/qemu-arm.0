@@ -1,168 +1,102 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1258385ejb;
-        Fri, 16 Dec 2022 02:13:32 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5sJHQGOlgYgVk9I9czhS0WlUyU+sgHlYU2BJHTjmBq2eyisSS5Anr5Gwepy2abKFnHDlot
-X-Received: by 2002:a05:6214:2b97:b0:4c7:734a:9047 with SMTP id kr23-20020a0562142b9700b004c7734a9047mr46735852qvb.50.1671185611906;
-        Fri, 16 Dec 2022 02:13:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671185611; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1735272ejb;
+        Fri, 16 Dec 2022 13:59:51 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7L2GT0z1FGL87/8wB0fTRlBAgLGI2gEA8H+IJXus7mLIWWc5xoVgwBouJ1zcdBO3oGY6DI
+X-Received: by 2002:a5d:4e4b:0:b0:242:67f2:9d68 with SMTP id r11-20020a5d4e4b000000b0024267f29d68mr21721816wrt.34.1671227991213;
+        Fri, 16 Dec 2022 13:59:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671227991; cv=none;
         d=google.com; s=arc-20160816;
-        b=iBNNtSxwOX82hvsg58q1RC/8fUTp7Cj1zuPFzgf1dneyBB9qT6aiNmT4MbrFK/GTnB
-         OAUdV+i4FmKDRRehS+BkQRAaNROHX/2CbhxHxESBneBe1t9Mbn1cLv0/+41uxDVxg4CK
-         qfOl2ONLd03875cZMp+gc3AZllobbCVxtTtK/o3z3LZvK+1w/+NCPU062EnZWfkB/yKG
-         h9P3dsDgoidA+v4ZeH9ZN7hNWcZFFN81o4kf/lhoJxfmd5DJhv5pHfY8fuQm+J2SDIjJ
-         5P/d/txOqM8dxRpFkqFq5rsuf2je9UkwA8fs58FoCWuYK/JHlS8opOwI3uIWNyyD88Mj
-         xgJg==
+        b=deuZ2J9f6PL2lV4eaRJYmtW0Dn8Wy5vf5qZMS749f4MvimcFR8McC4NeatokmKwyyR
+         SyYyFen0h6Z+8JJQ7uSk7+kiyGk0N/tAjAFqm65+Tg4pufFTMDnoHPAf/N1KMOg+q2EF
+         jI7cCPubt3AIOnjKX1C1p+ZZ+Cd7Y0zAZtqwyr7oS8eJIvI8sWHhDVNGzMOo3iy2FbnJ
+         68BtgyZGEyQNVrpOIvcu7uLQhGlztazMI6tzxYgV8kwM5jU4gr4giSyVvuni02MPmyaK
+         vXdTOsGK/7DoTfX7aYymXuCJOtLeNrqCOKI005YF4CH4YroSd4cMrZjGNsSxwuK5O+hy
+         jlxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=LEl9gsuHlzpldUb2Z6yWcZInakI5OdtYZvcj2nrA2DA=;
-        b=HLETk3hf9jZxMUSfydkKtoP1W810ZpnYEJvYB4VWqSSPaOA9QFGaLh2xzSazylMm0o
-         sVe53wrYYnpuqkgNnC0+Sf4CqyB+5/yXA/Ne5gjdtFwN/mvYJfBPioYuX5arqi2CnzYQ
-         5LQqthd1sqpESv0sDsVqzEz87OyBo1TQHmCmzoFhgvc/GLHXVcixUh0Y59iAmJYICYb9
-         MYOTVQIGxyL1vg+htFZ2+hnDhnHnWXwtAADJFsCACzH9y6xuxac+PRg349QyWM2/Kr8j
-         i7DpNYrYD3fFf0ztIZb8Q/51VJ7YEU4dOFynVY+MVpu4Pq3NzqHQyB8UFdpP4etPc8Bw
-         ldAg==
+        h=to:in-reply-to:cc:references:message-id:date:subject:mime-version
+         :from:content-transfer-encoding;
+        bh=QXHJSGD3/HMjX2UHZHxyq6WUQy8yzcy36QQ17XuzmLs=;
+        b=G6AN0zr32sqREspkxKrbl0iheD9uhDV3oBAxe36SiSKDB9KREY4EDNkVituxJouuZo
+         7BvJ6Q1AgYI0gCa18GXUUEGHI1SJmN9QSWxMMxSfdeanRwt5QeLfqf9lLTRTedcuaJH2
+         M8Jv3LMCHHWLkNGY8slFpWswgtW5XWCRPaSYzVswgRNeyfbkK2KBB+NrQZvAnK1vbS0X
+         5AwItPp6BSMwSDK3AflbUIgnorMkRJDtFHhjyulbRvlf4gV4czaD81L8A9GKFneG0+dC
+         QWDjmDZu+Z94peI5DtPBrsNImnsqeKRLTzlDEC05FnuExK1bm3d8UKmZY4dAyLtNotHA
+         7Vdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K7TWvD9t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m8-20020ad45dc8000000b004c6a46ffda4si932160qvh.44.2022.12.16.02.13.31
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Dec 2022 02:13:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
+Return-Path: <agraf@csgraf.de>
+Received: from zulu616.server4you.de (mail.csgraf.de. [85.25.223.15])
+        by mx.google.com with ESMTP id cl6-20020a5d5f06000000b0024214e6e6d3si2368280wrb.265.2022.12.16.13.59.50;
+        Fri, 16 Dec 2022 13:59:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) client-ip=85.25.223.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K7TWvD9t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p67hq-0006PR-VA; Fri, 16 Dec 2022 05:12:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1p67hp-0006P9-Fg
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 05:12:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1p67ho-0003CX-4k
- for qemu-arm@nongnu.org; Fri, 16 Dec 2022 05:12:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1671185558;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LEl9gsuHlzpldUb2Z6yWcZInakI5OdtYZvcj2nrA2DA=;
- b=K7TWvD9txHEf663H23ti60+IX47kLex4yBtJfYz+n6NJAReO6/wcZtzn49Dt/RyylPGOSF
- ip2evwnK3NlcZ4OdfGVYAwF2bYgNSA1KV+RZCquh/0K+0+XegUt/RgI2ZhCG829wiK//0d
- 1FnTG+r+g19Nk1wdlnuCmqpgHMcIj+U=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-207-U2KxhMZJOx-5eCoonTnJ7w-1; Fri, 16 Dec 2022 05:12:36 -0500
-X-MC-Unique: U2KxhMZJOx-5eCoonTnJ7w-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5502E85A588;
- Fri, 16 Dec 2022 10:12:36 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.83])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1489E51EF;
- Fri, 16 Dec 2022 10:12:36 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id D9AE81801B2C; Fri, 16 Dec 2022 11:12:34 +0100 (CET)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Kashyap Chamarthy <kchamart@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 1/2] hw/arm: allow flash images being smaller than the
- available space
-Date: Fri, 16 Dec 2022 11:12:33 +0100
-Message-Id: <20221216101234.2202009-2-kraxel@redhat.com>
-In-Reply-To: <20221216101234.2202009-1-kraxel@redhat.com>
-References: <20221216101234.2202009-1-kraxel@redhat.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /Z3KMiw5+CHI
+       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
+Received: from smtpclient.apple (dynamic-077-009-092-114.77.9.pool.telefonica.de [77.9.92.114])
+	by csgraf.de (Postfix) with ESMTPSA id 539B26080182;
+	Fri, 16 Dec 2022 22:59:50 +0100 (CET)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+From: Alexander Graf <agraf@csgraf.de>
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH 1/5] target/arm: only build psci for TCG
+Date: Fri, 16 Dec 2022 22:59:39 +0100
+Message-Id: <459E39B4-44F5-41B2-A595-1B0DB5AD80F3@csgraf.de>
+References: <20221216212944.28229-2-farosas@suse.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>
+In-Reply-To: <20221216212944.28229-2-farosas@suse.de>
+To: Fabiano Rosas <farosas@suse.de>
+X-Mailer: iPhone Mail (20C65)
+X-TUID: e9ioGw1SjeTs
 
-Query block device backing flash for size and use that instead of
-requiring the block device being exactly 64M in size.  This allows
-to use edk2 firmware builds without padding, i.e. use QEMU_EFI.fd
-(which is /way/ smaller than 64M) as-is.
+Hi Claudio,
 
--rw-r--r--. 1 root root 67108864 Dec 12 23:45 QEMU_EFI-pflash.raw
--rw-r--r--. 1 root root  2097152 Dec 12 23:45 QEMU_EFI.fd
+If the PSCI implementation becomes TCG only, can we also move to a tcg accel=
+ directory? It slowly gets super confusing to keep track of which files are s=
+upposed to be generic target code and which ones TCG specific.
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
----
- hw/arm/virt.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+Alex
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b87135085610..c71ae2cd73f7 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -43,6 +43,7 @@
- #include "hw/vfio/vfio-amd-xgbe.h"
- #include "hw/display/ramfb.h"
- #include "net/net.h"
-+#include "sysemu/block-backend.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/numa.h"
- #include "sysemu/runstate.h"
-@@ -1134,6 +1135,21 @@ static void virt_flash_map1(PFlashCFI01 *flash,
-                             MemoryRegion *sysmem)
- {
-     DeviceState *dev = DEVICE(flash);
-+    BlockBackend *blk;
-+
-+    blk = pflash_cfi01_get_blk(flash);
-+    if (blk) {
-+        hwaddr blksize = blk_getlength(blk);
-+
-+        if (blksize == 0 || blksize > size ||
-+            !QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE)) {
-+            error_report("system firmware block device %s"
-+                         " has invalid size %" PRId64,
-+                         blk_name(blk), size);
-+            exit(1);
-+        }
-+        size = blksize;
-+    }
- 
-     assert(QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE));
-     assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
--- 
-2.38.1
-
+> Am 16.12.2022 um 22:37 schrieb Fabiano Rosas <farosas@suse.de>:
+>=20
+> =EF=BB=BFFrom: Claudio Fontana <cfontana@suse.de>
+>=20
+> Signed-off-by: Claudio Fontana <cfontana@suse.de>
+> Cc: Alexander Graf <agraf@csgraf.de>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+> Originally from:
+> [RFC v14 09/80] target/arm: only build psci for TCG
+> https://lore.kernel.org/r/20210416162824.25131-10-cfontana@suse.de
+> ---
+> target/arm/meson.build | 5 ++++-
+> 1 file changed, 4 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/target/arm/meson.build b/target/arm/meson.build
+> index 87e911b27f..26e425418f 100644
+> --- a/target/arm/meson.build
+> +++ b/target/arm/meson.build
+> @@ -61,10 +61,13 @@ arm_softmmu_ss.add(files(
+>   'arm-powerctl.c',
+>   'machine.c',
+>   'monitor.c',
+> -  'psci.c',
+>   'ptw.c',
+> ))
+>=20
+> +arm_softmmu_ss.add(when: 'CONFIG_TCG', if_true: files(
+> +  'psci.c',
+> +))
+> +
+> subdir('hvf')
+>=20
+> target_arch +=3D {'arm': arm_ss}
+> --=20
+> 2.35.3
+>=20

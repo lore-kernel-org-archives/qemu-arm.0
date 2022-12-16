@@ -1,361 +1,152 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1721380ejb;
-        Fri, 16 Dec 2022 13:32:05 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5jz9eD3P6aH3m28k+rpGXFk8LHqtmV4yTKtmcVtmCG1XjgD8ehyZYZtgB/gu0pzTpNRBGl
-X-Received: by 2002:adf:e544:0:b0:242:5469:55dd with SMTP id z4-20020adfe544000000b00242546955ddmr21282781wrm.36.1671226325350;
-        Fri, 16 Dec 2022 13:32:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671226325; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1725245ejb;
+        Fri, 16 Dec 2022 13:39:32 -0800 (PST)
+X-Received: by 2002:a17:90b:2681:b0:219:f1a2:b665 with SMTP id pl1-20020a17090b268100b00219f1a2b665mr35698099pjb.5.1671226772547;
+        Fri, 16 Dec 2022 13:39:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671226772; cv=none;
         d=google.com; s=arc-20160816;
-        b=O6LRxE7uLWmqdrEOda9vVD+nV3mKX77+9vmrT5K5W/BCBCsYDja4Sf88lh3Ci0/a3S
-         uC4Cr4Z1U0C7Yd+tIesRLGRvnXvFCGmoLcX7kUU5V24MozmU6/OajoGrh9/SU1bZSxoV
-         CfZkni2SVoeQJi6Zi2dziK4fSu+CPVwSh4C7JQVKD9ev4NJgzF+fcdMkv3gWpqi3gkms
-         3CKENMgyi2yQkIu0n01JTnUfWJ2ft+YSoj4gUumafCht9KvVJAdOYTAMM3reDIQIqZY7
-         nesIIhkaOHZsHE1sEEs1UQebs7Ew94JRsUcxOfa25x1wiIuz2hMTNhwO2tBMHA6lJWkg
-         F5Ug==
+        b=MF1ZGVjdK0kWyEOSf0914U9V1+gcg8aTCInzaG18/HCk7AzKI7B3TUlIH0fajmZsKD
+         Ewnq2/rs5oHn4+ddMmlN3ikrVYoir4pWdva4hy1vIUUk+RUoOWRyHHzWFeCJ73YZwV3q
+         jJSihpsziZF7ha65nmQl7Qz2VYRfSV4WrjTnlunwHzYXCzyVsgrXHTKOmjRwiQ55Zpw+
+         68+YM1rX25iI7t5oZcboN+G53Hr7HMfk9PZsxRlX+oJ5I9tPHmOW5AmlXPHkBH9m1JBq
+         XHQRIr5nw8SCrXin3x2WaSV4iu3ll5acqRy0OPzlKDRqm58CgXYbZVHKpxqqyCfgkJG4
+         k6lA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=oaMji3BzjI1LDTZ9j5iQcgfYvZl5G6sjaUFCXl3i2g8=;
-        b=s8iR4+0VyQKpKTjTb/Rp+vl7AH+Prljjz0tLJ3Kvg8N06CZuP4Ufcfp/LMJOmM90pX
-         sq0a6pE8R+5DlPxAQYQUxuum1wJyHGeVRDobP6Ft2v9Maf4KwTMkozxtQJPT9f3faJTA
-         oTKvRbC3TKEGnfm7QOZc26UdTk2Zd2vyk3YwgMn5nNds7sLdmiZt+eLDzz8AhEpFfz5u
-         /gxDmoYU2jgpdWMTjp1d8zX737wWYgYLRCpEFhNtDpf+RQrNeuYWf3Ln2n5Ke+tGdwW0
-         HDprW6YuVA6IJszMI5Km7IqOqMVLdUcSqu4sU8iORKfKKJHfN6I8uDCn+SCcO39zBd+X
-         xJ5g==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=M34ulhpWVhreOtEad3y2TK+SkftUd/2KIT68iSexyiU=;
+        b=t+Vdo78BsrYkVqP0cRpnQDlMM8dCq5yOksdS+t/EyJ6W2QEbhBtKUtoWNiCboXcwZ7
+         vzUBROoWUHYU+xr9S9AvWWGB3XKmRO/CPmNGo4nFjdfKwF0tEox7+T3tR3Z9o9HBVbje
+         dHdcrRIkxi28K00e4iC31Pk88YAASZv4TqTt8dnOSXAcWb0RiSfxjn1rIuTkiyEBL7FJ
+         CaNuZJ7L+7ibYqv9BAjPGza90FT041RReTDxPd3NA867DqULJDdrVMdkCLLcFoP4EAba
+         mspsg+lFouiFa1tIbD181/SVINkthHTXGq2C4+g905iZ8kZ1GB8MDPCouKVhY8tV/Oaz
+         099Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=cDzgkl87;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id bv10-20020a0560001f0a00b0022e4c5d0004si3256891wrb.435.2022.12.16.13.32.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Dec 2022 13:32:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Pn0+n1uX;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 10-20020a17090a1a0a00b00219767f1816sor1503051pjk.12.2022.12.16.13.39.32
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 16 Dec 2022 13:39:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=cDzgkl87;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id DD4DB5D972;
-	Fri, 16 Dec 2022 21:32:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1671226324; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=oaMji3BzjI1LDTZ9j5iQcgfYvZl5G6sjaUFCXl3i2g8=;
-	b=cDzgkl87KhpljZie7uTde9BEePAMjXe8dxXZt0/Ya6gGHiOWUewVp4oVnWRt4USXFrFJ8N
-	ESEaGvyeVBubnwNyJ5Li/aWgdWqkJbleVF+TBl6p3nYEf2Bv881+bxuMHclAZkDnRutlO2
-	WVphC5t9AmEM0yxHW01C1ihIHE6/SbY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1671226324;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=oaMji3BzjI1LDTZ9j5iQcgfYvZl5G6sjaUFCXl3i2g8=;
-	b=KUPx8av4bI86SHzKDjoTLf0AX0T7KguYqPKHs0Yt9hePJvEq1DFF2xiP24907OMAIspdMB
-	Ps6cPGYTbA4onrBw==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 4E027138FD;
-	Fri, 16 Dec 2022 21:32:02 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 4AVRBdLjnGPAHwAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 16 Dec 2022 21:32:02 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH 5/5] target/arm: only perform TCG cpu and machine inits if TCG enabled
-Date: Fri, 16 Dec 2022 18:29:44 -0300
-Message-Id: <20221216212944.28229-6-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20221216212944.28229-1-farosas@suse.de>
-References: <20221216212944.28229-1-farosas@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Pn0+n1uX;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=M34ulhpWVhreOtEad3y2TK+SkftUd/2KIT68iSexyiU=;
+        b=Pn0+n1uXfjCz5NS6D1Lb/13zr2B3LdcwpAAApikElI2af17avnbXKz5x3gTVCUPWYC
+         Z85um+sam7ozaAoCQBe8hsXbgx5L2l76Bd4IeuIejQmAPZb818jud2/A7XdG7XxByRdh
+         tyd+Qf/krAw2NiO5aTSDSJx3cWMmRZRG+a5HgoThuE/l5+n1kwTCW0CKBCzc7HweZkZF
+         kadoxsH5Psa5dWULyu0Se7aCH6e0hJcYet0WEcXwwWl8IMP0YJ9Etvf2Vpx94NmTGHnS
+         Z5CPpQYS5KeSytFFoakFag5X4e4eUS2HuCcLRVT3PJARavkuxFCT9ciyQgxi9fYM+Ck9
+         cfUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=M34ulhpWVhreOtEad3y2TK+SkftUd/2KIT68iSexyiU=;
+        b=paVRiTXkcAw3oLmdNEwPUIPNQeWsbr3k1hZ2mH15Wnp2nYqQ9OV4iL5Ps5MiSseRYP
+         iiyI/H3oZKzBeeFNbZoMq44A4IEob2dpbBLQxPXj/hq+5wcC5ChSu9VtbRtXAsrgTv8a
+         b1Kpw3EAWitppvk/1m+fdvA9S+akxO1oVIijElAYAzIs6uVN/NnsWe+a+ynNaQfHuAR2
+         kcjK2uJ/HdO5XU339w+yS87RYyL+Dd66xA1wiI2pw3us62hrcI2FW2gY3LUJxWzROge6
+         C01SeYnVkGSMvJgtmUWdWVkkmxobbbUnlhWO554ldB81mRgMRSsQ6cDPgIc1FHdzrtd2
+         FkYg==
+X-Gm-Message-State: AFqh2kqS0kMhLZj43WrqdubAQSCvVmCNmsDnhKqHuHT1hka2kuYV3XG1
+	IWpxVMdW1CdWbpkspM4aO2nR3+eZurwuvjrofsxhcEwuK7+IVwNJ
+X-Google-Smtp-Source: AMrXdXs16EIwuDAEJFTHeQ2mGaO1GBnsvtbM5ouPgkShXqaL6DLGMZMvS16X3wCTFt+HSy0E17jqVXlF+Nr4RABK6yU=
+X-Received: by 2002:a17:90b:354c:b0:219:e2f1:81ad with SMTP id
+ lt12-20020a17090b354c00b00219e2f181admr1223544pjb.19.1671226772055; Fri, 16
+ Dec 2022 13:39:32 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: PfK9TDLOn25k
+References: <20221213125218.39868-1-philmd@linaro.org> <20221213125218.39868-3-philmd@linaro.org>
+ <CAFEAcA96ncqvN9iXybCd2SrVKJ9CKsu5t3_GtdNt1ZEDAkFt0w@mail.gmail.com> <e8c3fdcb-81f1-7067-217c-c49e8748b84a@gmail.com>
+In-Reply-To: <e8c3fdcb-81f1-7067-217c-c49e8748b84a@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 16 Dec 2022 21:39:19 +0000
+Message-ID: <CAFEAcA_jH3Zn1cFfnvsd_GhiBj1bNKscs7S7cwFa+FnTC9QC=g@mail.gmail.com>
+Subject: Re: [RFC PATCH-for-8.0 2/3] hw/ppc/spapr: Replace tswap64(HPTE) by cpu_to_be64(HPTE)
+To: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Alistair Francis <alistair@alistair23.me>, David Gibson <david@gibson.dropbear.id.au>, 
+	Jason Wang <jasowang@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: BxdDLsDTxgU1
 
-From: Claudio Fontana <cfontana@suse.de>
+On Fri, 16 Dec 2022 at 19:11, Daniel Henrique Barboza
+<danielhb413@gmail.com> wrote:
+>
+>
+>
+> On 12/13/22 10:51, Peter Maydell wrote:
+> > On Tue, 13 Dec 2022 at 12:52, Philippe Mathieu-Daud=C3=A9 <philmd@linar=
+o.org> wrote:
+> >>
+> >> The tswap64() calls introduced in commit 4be21d561d ("pseries:
+> >> savevm support for pseries machine") are used to store the HTAB
+> >> in the migration stream (see savevm_htab_handlers) and are in
+> >> big-endian format.
+> >
+> > I think they're reading the run-time spapr->htab data structure
+> > (some of which is stuck onto the wire as a stream-of-bytes buffer
+> > and some of which is not). But either way, it's a target-endian
+> > data structure, because the code in hw/ppc/spapr_softmmu.c which
+> > reads and writes entries in it is using ldq_p() and stq_p(),
+> > and the current in-tree version of these macros is doing a
+> > "read host 64-bit and convert to/from target endianness wih tswap64".
+> >
+> >>   #define HPTE(_table, _i)   (void *)(((uint64_t *)(_table)) + ((_i) *=
+ 2))
+> >> -#define HPTE_VALID(_hpte)  (tswap64(*((uint64_t *)(_hpte))) & HPTE64_=
+V_VALID)
+> >> -#define HPTE_DIRTY(_hpte)  (tswap64(*((uint64_t *)(_hpte))) & HPTE64_=
+V_HPTE_DIRTY)
+> >> -#define CLEAN_HPTE(_hpte)  ((*(uint64_t *)(_hpte)) &=3D tswap64(~HPTE=
+64_V_HPTE_DIRTY))
+> >> -#define DIRTY_HPTE(_hpte)  ((*(uint64_t *)(_hpte)) |=3D tswap64(HPTE6=
+4_V_HPTE_DIRTY))
+> >> +#define HPTE_VALID(_hpte)  (be64_to_cpu(*((uint64_t *)(_hpte))) & HPT=
+E64_V_VALID)
+> >> +#define HPTE_DIRTY(_hpte)  (be64_to_cpu(*((uint64_t *)(_hpte))) & HPT=
+E64_V_HPTE_DIRTY)
+> >> +#define CLEAN_HPTE(_hpte)  ((*(uint64_t *)(_hpte)) &=3D cpu_to_be64(~=
+HPTE64_V_HPTE_DIRTY))
+> >> +#define DIRTY_HPTE(_hpte)  ((*(uint64_t *)(_hpte)) |=3D cpu_to_be64(H=
+PTE64_V_HPTE_DIRTY))
+> >
+> > This means we now have one file that's accessing this data structure
+> > as "this is target-endian", and one file that's accessing it as
+> > "this is big-endian". It happens that that ends up meaning the same
+> > thing because PPC is always TARGET_BIG_ENDIAN, but it seems a bit
+> > inconsistent.
+> >
+> > We should decide whether we're thinking of the data structure
+> > as target-endian or big-endian and change all the accessors
+> > appropriately (or none of them -- currently we're completely
+> > consistent about treating it as "target endian", I think).
+>
+> Yes, most if not all accesses are being handled as "target endian", even
+> though the target is always big endian.
+>
+> IIUC the idea behind Phil's cleanups is exactly to replace uses of
+> "target-something" if the endianess of the host is irrelevant, which
+> is the case for ppc64. We would then change the semantics of the code
+> gradually to make it consistent again.
 
-of note, cpreg lists were previously initialized by TCG first,
-and then thrown away and replaced with the data coming from KVM.
+I would be happier if we just did all the functions that read and
+write this byte array at once -- there are not many of them.
 
-Now we just initialize once, either for TCG or for KVM.
-
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
-[moved arm_cpu_register_gdb_regs_for_features out of tcg_enabled]
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
-We still need to tell GDB about the register sets even when running
-with KVM.
-
-Originally from:
-[RFC v14 16/80] target/arm: only perform TCG cpu and machine inits if
-TCG enabled
-https://lore.kernel.org/r/20210416162824.25131-17-cfontana@suse.de
----
- target/arm/cpu.c     | 31 ++++++++++++----------
- target/arm/kvm.c     | 18 ++++++-------
- target/arm/kvm_arm.h |  3 +--
- target/arm/machine.c | 61 ++++++++++++++++++++++++--------------------
- 4 files changed, 62 insertions(+), 51 deletions(-)
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 38d066c294..a0c77ba153 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -523,9 +523,11 @@ static void arm_cpu_reset(DeviceState *dev)
-     }
- #endif
- 
--    hw_breakpoint_update_all(cpu);
--    hw_watchpoint_update_all(cpu);
--    arm_rebuild_hflags(env);
-+    if (tcg_enabled()) {
-+        hw_breakpoint_update_all(cpu);
-+        hw_watchpoint_update_all(cpu);
-+        arm_rebuild_hflags(env);
-+    }
- }
- 
- #ifndef CONFIG_USER_ONLY
-@@ -1597,6 +1599,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         }
-     }
- 
-+#ifdef CONFIG_TCG
-     {
-         uint64_t scale;
- 
-@@ -1622,7 +1625,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         cpu->gt_timer[GTIMER_HYPVIRT] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-                                                   arm_gt_hvtimer_cb, cpu);
-     }
--#endif
-+#endif /* CONFIG_TCG */
-+#endif /* !CONFIG_USER_ONLY */
- 
-     cpu_exec_realizefn(cs, &local_err);
-     if (local_err != NULL) {
-@@ -1940,17 +1944,16 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         unset_feature(env, ARM_FEATURE_PMU);
-     }
-     if (arm_feature(env, ARM_FEATURE_PMU)) {
--        pmu_init(cpu);
--
--        if (!kvm_enabled()) {
-+        if (tcg_enabled()) {
-+            pmu_init(cpu);
-             arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
-             arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
--        }
- 
- #ifndef CONFIG_USER_ONLY
--        cpu->pmu_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, arm_pmu_timer_cb,
--                cpu);
-+            cpu->pmu_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, arm_pmu_timer_cb,
-+                                          cpu);
- #endif
-+        }
-     } else {
-         cpu->isar.id_aa64dfr0 =
-             FIELD_DP64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, PMUVER, 0);
-@@ -2046,10 +2049,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         set_feature(env, ARM_FEATURE_VBAR);
-     }
- 
--    register_cp_regs_for_features(cpu);
--    arm_cpu_register_gdb_regs_for_features(cpu);
-+    if (tcg_enabled()) {
-+        register_cp_regs_for_features(cpu);
-+        init_cpreg_list(cpu);
-+    }
- 
--    init_cpreg_list(cpu);
-+    arm_cpu_register_gdb_regs_for_features(cpu);
- 
- #ifndef CONFIG_USER_ONLY
-     MachineState *ms = MACHINE(qdev_get_machine());
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index f022c644d2..2f01c26f54 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -438,9 +438,11 @@ static uint64_t *kvm_arm_get_cpreg_ptr(ARMCPU *cpu, uint64_t regidx)
-     return &cpu->cpreg_values[res - cpu->cpreg_indexes];
- }
- 
--/* Initialize the ARMCPU cpreg list according to the kernel's
-- * definition of what CPU registers it knows about (and throw away
-- * the previous TCG-created cpreg list).
-+/*
-+ * Initialize the ARMCPU cpreg list according to the kernel's
-+ * definition of what CPU registers it knows about.
-+ *
-+ * The parallel for TCG is init_cpreg_list()
-  */
- int kvm_arm_init_cpreg_list(ARMCPU *cpu)
- {
-@@ -482,12 +484,10 @@ int kvm_arm_init_cpreg_list(ARMCPU *cpu)
-         arraylen++;
-     }
- 
--    cpu->cpreg_indexes = g_renew(uint64_t, cpu->cpreg_indexes, arraylen);
--    cpu->cpreg_values = g_renew(uint64_t, cpu->cpreg_values, arraylen);
--    cpu->cpreg_vmstate_indexes = g_renew(uint64_t, cpu->cpreg_vmstate_indexes,
--                                         arraylen);
--    cpu->cpreg_vmstate_values = g_renew(uint64_t, cpu->cpreg_vmstate_values,
--                                        arraylen);
-+    cpu->cpreg_indexes = g_new(uint64_t, arraylen);
-+    cpu->cpreg_values = g_new(uint64_t, arraylen);
-+    cpu->cpreg_vmstate_indexes = g_new(uint64_t, arraylen);
-+    cpu->cpreg_vmstate_values = g_new(uint64_t, arraylen);
-     cpu->cpreg_array_len = arraylen;
-     cpu->cpreg_vmstate_array_len = arraylen;
- 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 99017b635c..41de2a7cf1 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -70,8 +70,7 @@ void kvm_arm_register_device(MemoryRegion *mr, uint64_t devid, uint64_t group,
-  * @cpu: ARMCPU
-  *
-  * Initialize the ARMCPU cpreg list according to the kernel's
-- * definition of what CPU registers it knows about (and throw away
-- * the previous TCG-created cpreg list).
-+ * definition of what CPU registers it knows about.
-  *
-  * Returns: 0 if success, else < 0 error code
-  */
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 54c5c62433..4cc4468d3e 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -2,6 +2,7 @@
- #include "cpu.h"
- #include "qemu/error-report.h"
- #include "sysemu/kvm.h"
-+#include "sysemu/tcg.h"
- #include "kvm_arm.h"
- #include "internals.h"
- #include "migration/cpu.h"
-@@ -687,7 +688,7 @@ static int cpu_pre_save(void *opaque)
- {
-     ARMCPU *cpu = opaque;
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled()) {
-         pmu_op_start(&cpu->env);
-     }
- 
-@@ -722,7 +723,7 @@ static int cpu_post_save(void *opaque)
- {
-     ARMCPU *cpu = opaque;
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled()) {
-         pmu_op_finish(&cpu->env);
-     }
- 
-@@ -741,7 +742,7 @@ static int cpu_pre_load(void *opaque)
-      */
-     env->irq_line_state = UINT32_MAX;
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled()) {
-         pmu_op_start(&cpu->env);
-     }
- 
-@@ -811,36 +812,37 @@ static int cpu_post_load(void *opaque, int version_id)
-         }
-     }
- 
--    hw_breakpoint_update_all(cpu);
--    hw_watchpoint_update_all(cpu);
-+    if (tcg_enabled()) {
-+        hw_breakpoint_update_all(cpu);
-+        hw_watchpoint_update_all(cpu);
- 
--    /*
--     * TCG gen_update_fp_context() relies on the invariant that
--     * FPDSCR.LTPSIZE is constant 4 for M-profile with the LOB extension;
--     * forbid bogus incoming data with some other value.
--     */
--    if (arm_feature(env, ARM_FEATURE_M) && cpu_isar_feature(aa32_lob, cpu)) {
--        if (extract32(env->v7m.fpdscr[M_REG_NS],
--                      FPCR_LTPSIZE_SHIFT, FPCR_LTPSIZE_LENGTH) != 4 ||
--            extract32(env->v7m.fpdscr[M_REG_S],
--                      FPCR_LTPSIZE_SHIFT, FPCR_LTPSIZE_LENGTH) != 4) {
--            return -1;
-+        /*
-+         * TCG gen_update_fp_context() relies on the invariant that
-+         * FPDSCR.LTPSIZE is constant 4 for M-profile with the LOB extension;
-+         * forbid bogus incoming data with some other value.
-+         */
-+        if (arm_feature(env, ARM_FEATURE_M) &&
-+            cpu_isar_feature(aa32_lob, cpu)) {
-+            if (extract32(env->v7m.fpdscr[M_REG_NS],
-+                          FPCR_LTPSIZE_SHIFT, FPCR_LTPSIZE_LENGTH) != 4 ||
-+                extract32(env->v7m.fpdscr[M_REG_S],
-+                          FPCR_LTPSIZE_SHIFT, FPCR_LTPSIZE_LENGTH) != 4) {
-+                return -1;
-+            }
-         }
--    }
- 
--    /*
--     * Misaligned thumb pc is architecturally impossible.
--     * We have an assert in thumb_tr_translate_insn to verify this.
--     * Fail an incoming migrate to avoid this assert.
--     */
--    if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
--        return -1;
--    }
-+        /*
-+         * Misaligned thumb pc is architecturally impossible.
-+         * We have an assert in thumb_tr_translate_insn to verify this.
-+         * Fail an incoming migrate to avoid this assert.
-+         */
-+        if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
-+            return -1;
-+        }
- 
--    if (!kvm_enabled()) {
-         pmu_op_finish(&cpu->env);
-+        arm_rebuild_hflags(&cpu->env);
-     }
--    arm_rebuild_hflags(&cpu->env);
- 
-     return 0;
- }
-@@ -890,8 +892,13 @@ const VMStateDescription vmstate_arm_cpu = {
-         VMSTATE_UINT32(env.exception.syndrome, ARMCPU),
-         VMSTATE_UINT32(env.exception.fsr, ARMCPU),
-         VMSTATE_UINT64(env.exception.vaddress, ARMCPU),
-+#ifdef CONFIG_TCG
-         VMSTATE_TIMER_PTR(gt_timer[GTIMER_PHYS], ARMCPU),
-         VMSTATE_TIMER_PTR(gt_timer[GTIMER_VIRT], ARMCPU),
-+#else
-+        VMSTATE_UNUSED(sizeof(QEMUTimer *)),
-+        VMSTATE_UNUSED(sizeof(QEMUTimer *)),
-+#endif /* CONFIG_TCG */
-         {
-             .name = "power_state",
-             .version_id = 0,
--- 
-2.35.3
+thanks
+-- PMM

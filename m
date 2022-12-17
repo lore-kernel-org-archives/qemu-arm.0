@@ -1,110 +1,128 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2175142ejb;
-        Sat, 17 Dec 2022 06:17:43 -0800 (PST)
-X-Received: by 2002:a05:6a00:1a53:b0:56c:a62f:b9da with SMTP id h19-20020a056a001a5300b0056ca62fb9damr44124244pfv.27.1671286663625;
-        Sat, 17 Dec 2022 06:17:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671286663; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2214985ejb;
+        Sat, 17 Dec 2022 07:26:32 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4MhMInVuNrK8Y3KcqnALBYvbGXPshRysePfGhoU4ap0EZzYZWEYjNLhChwrWT3V92qpkAH
+X-Received: by 2002:a25:df89:0:b0:706:c69c:29b7 with SMTP id w131-20020a25df89000000b00706c69c29b7mr33937641ybg.36.1671290791958;
+        Sat, 17 Dec 2022 07:26:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671290791; cv=none;
         d=google.com; s=arc-20160816;
-        b=SPVe4T/lg5HSCB3aLnguNW7pLYy064jFh9Kxvz+oqTBQd2nhQpwYQhCAU+pgD1i/5X
-         7Xq5xE1vn/t/2dzeNUJOAz2Az1o0HXScGGsyGiYuGobXyLQf6hgrGJ4kh9XwOfm1dLPX
-         9ioYG7cv3EllPxqwseO/9V+FKpNhIXOBAb/hO7fniT7stEZiEvG5tx+YxZF9bpIC5Tm8
-         O+7lOEfDu3P61tGCGXm9N8qRdu7OK72KA5xXZkd0o26Iu9zqMTZq7Ydf0ULttj8VekIt
-         RZVPeTTlHO/MQ3WRg0/Y3i3TnO61tux9DAjcQ8hGnFg7Cpl+05tq0CMwD2kiT+aSwzeh
-         0O0Q==
+        b=aAbL1sl84DRE0H3GjNvQYnXcn/WxXr9kh1Lp8zPFDPuTGT4uRVje1eGNAk8nrJwSUu
+         Ut5XLrqA/xrWlOlmc3AQQx326DSbaQ/T9pSCSR8F3N40+8GhniD1OjQUtQ4vJid8aKEQ
+         BIHIZ74rFIclqO9N+qC0d69nU/X8vljTQyfE9ZYM8RrX58rdq5P89PpRb1uLiXlGNq1M
+         lZ0FTjuya3FCVswj8qLXIEUdTV9AS2pZ2X2O/iJNcG+KpMipRANx5G9PpG9zIMSpNr/l
+         1naQHtRlWV4aMt7DbKwGgK3/ETggpU5sCsWPvby5C+vASvYCYQIVxjq4Xxx5p6DZp3E+
+         RhGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=xNfEddRIOphyC/U4i6KaIOkajJ1qtFPwVhN65+71iv4=;
-        b=pqG4yWwEXzQ+Be8eO9g2FrDjfdulPm83M04oYkzb1mg4l+FenmCDBeSvrdTbM9EydJ
-         +aMmgK7qdVWbfauJdc/hxUKyT8KLHs0vJCb4Enhk83kwB+lfM5HQ/zjEDsmzS1YR+h0Y
-         aYEsjHwqStI8hXoPxagsZGrlWzhwyhUnezydoWIplBtOUfyGFyh2Qv/8MklqIrJAkL62
-         T2W1CLZbMJfxU0J8hup10CLlrW3TVI07K6OCaUUK2XYB23F9iRKp806FgalKPztCMIGA
-         JOW8gvS+Xw1NpH0Lsa2TPzV33/5PWJDFPvbhsqDGRFLfxBT6TNpHHynWKqsxbniCk9vd
-         TOyg==
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=pmPoEEycSInrIphKy1irRiK7vbaRkCFjmE5wIu5XwFM=;
+        b=GriM6p8YdcJZwCJ8uXTCd0Chyy46fcZIVCCkPaiAnrmrsI+/50unNJh4mBzksRfufd
+         QwF6dHVmqLzsJCo8/3Xda239bTADLXyz88RpijdfGdzLM2s660nkjXHVZ7VpydVtiFM8
+         /yY8whS7lNW3layk/CxqDtMcif3rRALx0qLwHlEcE/Qq2gRFBDSqQl3VtHKxYmK4aIo1
+         s7v79Bp0WCc7xIp3n/Vvs25qP5OSZknHQ18qu/pDtWZamckhd03avk6X3amsm1IUfKt7
+         JhPlJintIiHHXIkiF4g25K9cra+CR//lhtl6oaG7CbBLgeC2DXMQ2sMOcv54m+fMO2fN
+         7P6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HTaeci6Q;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 190-20020a6219c7000000b005742da023besor2057179pfz.102.2022.12.17.06.17.43
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 17 Dec 2022 06:17:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@xen.org header.s=20200302mail header.b=j4O7wqMW;
+       spf=pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) smtp.mailfrom=julien@xen.org
+Return-Path: <julien@xen.org>
+Received: from mail.xenproject.org (mail.xenproject.org. [104.130.215.37])
+        by mx.google.com with ESMTPS id c199-20020a25c0d0000000b006f1cb1afdc0si5570009ybf.321.2022.12.17.07.26.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 17 Dec 2022 07:26:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) client-ip=104.130.215.37;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HTaeci6Q;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xNfEddRIOphyC/U4i6KaIOkajJ1qtFPwVhN65+71iv4=;
-        b=HTaeci6QMzAYrKlkHCibDPNesH6NQaFsq3gt8qsDvuoU81500fdPGn4uv1HcSnY3X5
-         CARiaImyTb5o8SkSU+BQl+NzF0t+Yf5o5BHTKAm+WvI7SSD7dotyo4YyIuXvxquAOj4J
-         Y20FmGSTG6duP2gemACPkmKXhHtGeVQtXwZ5cmnSnGLRh0UXR6oh/IB1faWQWGLWoSFP
-         e9DGkYZOgDvWwgAY0UMXi0XTY9AcpmZZ7xyVezzEFSQNXjx0vFTJbz1C81kB/QNzTYNa
-         4xCisy5PiI6ZCMqLfnA8IsVA+12hZj3RqdK6yVrDXzHa7KSd0qTH17/bHLIrOnHcLQ62
-         nwew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xNfEddRIOphyC/U4i6KaIOkajJ1qtFPwVhN65+71iv4=;
-        b=caxpqbQTL8PnxYLknmSxYjwUK6AV/0PXGduQ+JonlTJ/J5pahGt+/24p1t1BZyry64
-         5U4VXiNTqF7Q1TKjPsc/IhRCAxbE9rPGCQ2RUyUaRBy1ESnsQaGtVwlJHkj3sk2H9eiz
-         HGVHEckC08TCfekaH2O6V00mIBers9rwCPQ7lHeLJY3sGlZQlQOsk0ij/IexK7XQo+UX
-         pMkUZYGec6oZKMRB1EOTFW3p1VjiIrBc1pj+eBWoEKVTtsWDA0cUNan6E5QyYvHHvvie
-         4d1OabxSF/mPKT1JrSZXVujYZggmgqJ+oCuAVuohM8T9BSUdL2bUNuL8QJcRcIEnOkUU
-         Kr6Q==
-X-Gm-Message-State: ANoB5pmdDa4JiCYsMbFUm6MT5s/iTpqfE7HCmogFWEtR0IMK59paG+kZ
-	oC1HoA1WyiX4l6HfdGssA6pD0kuW8dJ5zbSLKWguVxUK
-X-Google-Smtp-Source: AA0mqf4sJTQzxVAyuyfPndN+cFfXCetE5MzcyHYxSEjRglGqnXHR5+VpVD1/DTblX0u9sfsC1TWJzqUEUB+Gxw/fd3Q=
-X-Received: by 2002:a62:b501:0:b0:573:1959:c356 with SMTP id
- y1-20020a62b501000000b005731959c356mr80489363pfe.51.1671286663082; Sat, 17
- Dec 2022 06:17:43 -0800 (PST)
+       dkim=pass header.i=@xen.org header.s=20200302mail header.b=j4O7wqMW;
+       spf=pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) smtp.mailfrom=julien@xen.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=xen.org;
+	s=20200302mail; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:Subject:
+	From:References:Cc:To:MIME-Version:Date:Message-ID;
+	bh=pmPoEEycSInrIphKy1irRiK7vbaRkCFjmE5wIu5XwFM=; b=j4O7wqMWqAt2Ch36xr/Y2tGP25
+	gxU9rGKFvWYpkc5GEXJjnPlXqx6ikVlMOUxHktUcy3oDataYPfKB44iCqkKxq/W9L6VGBdIflg8fe
+	jMmaXgV7nWcGu3CmHmyY4bjWo/1YOBaOYrcYh4vHDjxFBjOjMksigJXMg3G8ATdFc+10=;
+Received: from xenbits.xenproject.org ([104.239.192.120])
+	by mail.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <julien@xen.org>)
+	id 1p6Z53-0008Qd-AF; Sat, 17 Dec 2022 15:26:29 +0000
+Received: from gw1.octic.net ([88.97.20.152] helo=[10.0.1.102])
+	by xenbits.xenproject.org with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.92)
+	(envelope-from <julien@xen.org>)
+	id 1p6Z53-0000vI-42; Sat, 17 Dec 2022 15:26:29 +0000
+Message-ID: <d87025d8-b653-d80e-22c0-05f052447706@xen.org>
+Date: Sat, 17 Dec 2022 15:26:26 +0000
 MIME-Version: 1.0
-References: <20221216220951.7597-1-philmd@linaro.org>
-In-Reply-To: <20221216220951.7597-1-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 17 Dec 2022 14:17:31 +0000
-Message-ID: <CAFEAcA_Foy+k80r=vjXx2JO1T=2qFT-_7uvPhAuoSz-=XDanBQ@mail.gmail.com>
-Subject: Re: [PATCH] exec: Rename NEED_CPU_H -> CONFIG_TARGET
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, haxm-team@intel.com, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Eduardo Habkost <eduardo@habkost.net>, kvm@vger.kernel.org, 
-	Wenchao Wang <wenchao.wang@intel.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org, 
-	Cameron Esfahani <dirty@apple.com>, Kamil Rytarowski <kamil@netbsd.org>, Paul Durrant <paul@xen.org>, 
-	Reinoud Zandijk <reinoud@netbsd.org>, Yanan Wang <wangyanan55@huawei.com>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Stefano Stabellini <sstabellini@kernel.org>, 
-	Sunil Muthuswamy <sunilmut@microsoft.com>, Peter Xu <peterx@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: obYhVaNrRGOf
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.0
+To: Stefano Stabellini <sstabellini@kernel.org>,
+ Vikram Garhwal <vikram.garhwal@amd.com>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-dev@xilinx.com, stefano.stabellini@amd.com,
+ xen-devel@lists.xenproject.org, Peter Maydell <peter.maydell@linaro.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20221202030003.11441-1-vikram.garhwal@amd.com>
+ <20221202030003.11441-11-vikram.garhwal@amd.com> <871qphc0p3.fsf@linaro.org>
+ <ade61d47-f8c0-09cc-1a44-faaaff87d76a@amd.com>
+ <alpine.DEB.2.22.394.2212021429220.4039@ubuntu-linux-20-04-desktop>
+From: Julien Grall <julien@xen.org>
+Subject: Re: [QEMU][PATCH v2 10/11] hw/arm: introduce xenpv machine
+In-Reply-To: <alpine.DEB.2.22.394.2212021429220.4039@ubuntu-linux-20-04-desktop>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: ePNbQl1/lYMc
 
-On Fri, 16 Dec 2022 at 22:09, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> 'NEED_CPU_H' guard target-specific code; it is defined by meson
-> altogether with the 'CONFIG_TARGET' definition. Since the latter
-> name is more meaningful, directly use it.
->
-> Inspired-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Hi,
 
-This feels to me like it's overloading the meaning of CONFIG_TARGET,
-which at the moment is "the string which names the header file
-with target-specific config definitions". I think I'd rather
-we just renamed NEED_CPU_H to something a bit clearer, like
-perhaps COMPILING_PER_TARGET (better suggestions welcome).
+On 02/12/2022 22:36, Stefano Stabellini wrote:
+>> Do you know what Xen version your build env has?
+> 
+> I think Alex is just building against upstream Xen. GUEST_TPM_BASE is
+> not defined there yet. I think we would need to introduce in
+> xen_common.h something like:
+> 
+> #ifndef GUEST_TPM_BASE
+> #define GUEST_TPM_BASE 0x0c000000
+> #endif
 
-thanks
--- PMM
+I think this would be a big mistake to add the two lines above in QEMU.
+
+Libxl is responsible for creating the domain and generating the firwmare 
+tables. Any mismatch of values will be a real pain to debug.
+
+Even if...
+
+> 
+> We already have similar code in xen_common.h for other things.  Also, it
+> would be best to get GUEST_TPM_BASE defined upstream in Xen first.
+
+... we introduce upstream first, the guest layout is not part of the 
+stable ABI and therefore could change from release to release.
+
+> 
+> 
+>> Another way to fix this(as Julien suggested) is by setting this GUEST_TPM_BASE
+>> value via a property or something and user can set it via command line.
+>>
+>> @sstabellini@kernel.org, do you think of any other fix?
+> 
+> Setting the TPM address from the command line is nice and preferable to
+> hardcoding the value in xen_common.h. It comes with the challenge that
+> it is not very scalable (imagine we have a dozen emulated devices) but
+> for now it is fine and a good way to start if you can arrange it.
+
+It is not clear which one you think is not scalable. If this is the 
+command line option approach, then I think this is unrealistic to ask 
+every user to rebuild there QEMU just because the guest layout has changed.
+
+Today the rebuild may only be necessary when switching to a new release. 
+But in the future we may imagine a per-domain layout (e.g. for legacy 
+purpose). So you will now need to request the user to have one QEMU 
+built per domain.
+
+How is that scalable?
+
+Cheers,
+
+-- 
+Julien Grall

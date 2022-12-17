@@ -1,122 +1,110 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1810338ejb;
-        Fri, 16 Dec 2022 16:20:12 -0800 (PST)
-X-Received: by 2002:a17:90a:f598:b0:218:f15f:4b41 with SMTP id ct24-20020a17090af59800b00218f15f4b41mr35173203pjb.27.1671236412099;
-        Fri, 16 Dec 2022 16:20:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671236412; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2175142ejb;
+        Sat, 17 Dec 2022 06:17:43 -0800 (PST)
+X-Received: by 2002:a05:6a00:1a53:b0:56c:a62f:b9da with SMTP id h19-20020a056a001a5300b0056ca62fb9damr44124244pfv.27.1671286663625;
+        Sat, 17 Dec 2022 06:17:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671286663; cv=none;
         d=google.com; s=arc-20160816;
-        b=a//k3b066k/NGgbEDfvLYanqkEPI5UknfhJE8j7I748kjfjKJ+RA8cClNpJOkT5wjA
-         JbhKZZM1nPd/gt+X4rNao0r1NwyGiHCmtN7sb45g01oNjp/gSVJfWWwntcy8CYKxWbNp
-         NNiIULlipWHlohSSvi5hfmwUgFsevjCubqLD60O0sACjYp97mlU3JY12TjLiA7f28Kvw
-         QvUHUPCXwHrE6XDcOISbnqB1E2qdzmAGfK7PQ7sdvm8VH/XlNgzQA2HUXA+qwNPyyyZY
-         WWHe64c7j3XaTggaNr7QdVmJ1u0pGF0IXIqPwTWhY5KS29mrTfi8YuRSrDfLF2LQkpMU
-         QD/g==
+        b=SPVe4T/lg5HSCB3aLnguNW7pLYy064jFh9Kxvz+oqTBQd2nhQpwYQhCAU+pgD1i/5X
+         7Xq5xE1vn/t/2dzeNUJOAz2Az1o0HXScGGsyGiYuGobXyLQf6hgrGJ4kh9XwOfm1dLPX
+         9ioYG7cv3EllPxqwseO/9V+FKpNhIXOBAb/hO7fniT7stEZiEvG5tx+YxZF9bpIC5Tm8
+         O+7lOEfDu3P61tGCGXm9N8qRdu7OK72KA5xXZkd0o26Iu9zqMTZq7Ydf0ULttj8VekIt
+         RZVPeTTlHO/MQ3WRg0/Y3i3TnO61tux9DAjcQ8hGnFg7Cpl+05tq0CMwD2kiT+aSwzeh
+         0O0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=w4v6UAzNL7fLzZHUFzW0vIVYiaqNZJRG4q5yNQ0pM+I=;
-        b=Wf/PZOTX5cmrt4XhaUYUiC6c7l/1pXWwyfqsL7jOxwJwYSnKmFsXpMI1sWjAaEyQs0
-         d6j0KHNULt9TX/AOw6vrgL0NqCgyT3z8qXZfwdK8VtNNZLhv7NcdVHaw5z6v5hSVlAM4
-         lSpNl7Jurg2M/ukGOPiDvLqng+0CDKiOorR7l4nXRiZe+lgvuM+pPRsr6Bdy1u3ATghl
-         XM1eHuu3/K95YroAD2/eZX2WSJoZFPpXRhZeRXbWM3Cgx41s5cq1uV/H9UD5xj8yT5fv
-         OPwl1Ox75N5UAWRNXPwgFPjYQnqp1N3K/oXOe05Jsu7q4NvIVoT+sOGBfA65dZmMMoLj
-         Y6PQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=xNfEddRIOphyC/U4i6KaIOkajJ1qtFPwVhN65+71iv4=;
+        b=pqG4yWwEXzQ+Be8eO9g2FrDjfdulPm83M04oYkzb1mg4l+FenmCDBeSvrdTbM9EydJ
+         +aMmgK7qdVWbfauJdc/hxUKyT8KLHs0vJCb4Enhk83kwB+lfM5HQ/zjEDsmzS1YR+h0Y
+         aYEsjHwqStI8hXoPxagsZGrlWzhwyhUnezydoWIplBtOUfyGFyh2Qv/8MklqIrJAkL62
+         T2W1CLZbMJfxU0J8hup10CLlrW3TVI07K6OCaUUK2XYB23F9iRKp806FgalKPztCMIGA
+         JOW8gvS+Xw1NpH0Lsa2TPzV33/5PWJDFPvbhsqDGRFLfxBT6TNpHHynWKqsxbniCk9vd
+         TOyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Q/c2aXvh";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HTaeci6Q;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g7-20020a17090a300700b00219440ce278sor1555979pjb.15.2022.12.16.16.20.11
+        by mx.google.com with SMTPS id 190-20020a6219c7000000b005742da023besor2057179pfz.102.2022.12.17.06.17.43
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 16 Dec 2022 16:20:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sat, 17 Dec 2022 06:17:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Q/c2aXvh";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HTaeci6Q;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=w4v6UAzNL7fLzZHUFzW0vIVYiaqNZJRG4q5yNQ0pM+I=;
-        b=Q/c2aXvh6xVtHFXVzoyTAz/MOEKf+w0kq2tDJyb+7qgjyhYdMHZ4MfPOynJ0BXYVh8
-         lHOK31U9EA/zxeKBIZQNZhkGjt35abIZ+yCRGXSGQ6Dp7Lg5qPMJV5lowBQ4Dt9T2/I5
-         jkXKgTd+9E/NG/XnpbI5n14dXHX73Ms67HLT5jSki0nCYFQUVs0IQrbbSkWyno9Jbvfs
-         qQz1IlK6phWyT57pUxmLaZDPShHaUZITEs1EuZupcINggKNaFksVGXVuPxOAEFzwnJCB
-         X45slcRbx2+X/xPQsEWAhOlvk5eG3PABPZeNfadx48NPjPG0TvV+5sO45geYkBqOAcph
-         lQaQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xNfEddRIOphyC/U4i6KaIOkajJ1qtFPwVhN65+71iv4=;
+        b=HTaeci6QMzAYrKlkHCibDPNesH6NQaFsq3gt8qsDvuoU81500fdPGn4uv1HcSnY3X5
+         CARiaImyTb5o8SkSU+BQl+NzF0t+Yf5o5BHTKAm+WvI7SSD7dotyo4YyIuXvxquAOj4J
+         Y20FmGSTG6duP2gemACPkmKXhHtGeVQtXwZ5cmnSnGLRh0UXR6oh/IB1faWQWGLWoSFP
+         e9DGkYZOgDvWwgAY0UMXi0XTY9AcpmZZ7xyVezzEFSQNXjx0vFTJbz1C81kB/QNzTYNa
+         4xCisy5PiI6ZCMqLfnA8IsVA+12hZj3RqdK6yVrDXzHa7KSd0qTH17/bHLIrOnHcLQ62
+         nwew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=w4v6UAzNL7fLzZHUFzW0vIVYiaqNZJRG4q5yNQ0pM+I=;
-        b=zJgs/BUfHFeOHD8JoSjQZsQzs1DKnLzXNU+J+xphY5xUmGlNQSJpfN8jVeTeFd2HdQ
-         aVyHp4y5hZ7XInfE7QYR5y0IjGwOssL3ju7fBnRwROFNeqxPLLt+UnNT1UPgNrNfBkdT
-         deZ7cpgy48CAeDYUwFaWGZJIhD7uow0wJ/NzTmkTnNhnC2Lz7QuRdsFupl9B8ELYoQtM
-         iP9kw9wgso+lfPkPxXYfzyD3itsFclZze5Szgasbv/wJwnarvuFUzp+cLlRJF55wgZre
-         YxqMk6nrimFCdDkBduEJfR3TXqsdUXFOYBb73pTJXEt54fFaUl0Bhqp9jukVB8/M2jfp
-         x4VA==
-X-Gm-Message-State: ANoB5pmWg0yGQx/0hIc0QOvSBY0d4R4gjBXY8HFeDVQP/fY6MKfbNWhw
-	TclGAF5Z2l0bekrdn6nIS3CQc0Tm
-X-Google-Smtp-Source: AA0mqf5ShgSuD9po5MbdLX0IkXQc+2BFv3/C1Y/ewrtY0Zr41J3QZe+CqgrbNUUoBPGFuWp6Udw3Zg==
-X-Received: by 2002:a17:90a:9b0b:b0:219:28b7:c580 with SMTP id f11-20020a17090a9b0b00b0021928b7c580mr34584859pjp.22.1671236411531;
-        Fri, 16 Dec 2022 16:20:11 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2602:47:d48c:8101:c606:9489:98df:6a3b? ([2602:47:d48c:8101:c606:9489:98df:6a3b])
-        by smtp.gmail.com with ESMTPSA id f61-20020a17090a704300b00218fb211778sm5339354pjk.41.2022.12.16.16.20.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Dec 2022 16:20:10 -0800 (PST)
-Message-ID: <42c455aa-c93f-9167-59ef-ddf2b46ca2e4@linaro.org>
-Date: Fri, 16 Dec 2022 16:20:09 -0800
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xNfEddRIOphyC/U4i6KaIOkajJ1qtFPwVhN65+71iv4=;
+        b=caxpqbQTL8PnxYLknmSxYjwUK6AV/0PXGduQ+JonlTJ/J5pahGt+/24p1t1BZyry64
+         5U4VXiNTqF7Q1TKjPsc/IhRCAxbE9rPGCQ2RUyUaRBy1ESnsQaGtVwlJHkj3sk2H9eiz
+         HGVHEckC08TCfekaH2O6V00mIBers9rwCPQ7lHeLJY3sGlZQlQOsk0ij/IexK7XQo+UX
+         pMkUZYGec6oZKMRB1EOTFW3p1VjiIrBc1pj+eBWoEKVTtsWDA0cUNan6E5QyYvHHvvie
+         4d1OabxSF/mPKT1JrSZXVujYZggmgqJ+oCuAVuohM8T9BSUdL2bUNuL8QJcRcIEnOkUU
+         Kr6Q==
+X-Gm-Message-State: ANoB5pmdDa4JiCYsMbFUm6MT5s/iTpqfE7HCmogFWEtR0IMK59paG+kZ
+	oC1HoA1WyiX4l6HfdGssA6pD0kuW8dJ5zbSLKWguVxUK
+X-Google-Smtp-Source: AA0mqf4sJTQzxVAyuyfPndN+cFfXCetE5MzcyHYxSEjRglGqnXHR5+VpVD1/DTblX0u9sfsC1TWJzqUEUB+Gxw/fd3Q=
+X-Received: by 2002:a62:b501:0:b0:573:1959:c356 with SMTP id
+ y1-20020a62b501000000b005731959c356mr80489363pfe.51.1671286663082; Sat, 17
+ Dec 2022 06:17:43 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 5/5] target/arm: only perform TCG cpu and machine inits if
- TCG enabled
-Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>
-References: <20221216212944.28229-1-farosas@suse.de>
- <20221216212944.28229-6-farosas@suse.de>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20221216212944.28229-6-farosas@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: Zh/mw01Xif1Z
+References: <20221216220951.7597-1-philmd@linaro.org>
+In-Reply-To: <20221216220951.7597-1-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 17 Dec 2022 14:17:31 +0000
+Message-ID: <CAFEAcA_Foy+k80r=vjXx2JO1T=2qFT-_7uvPhAuoSz-=XDanBQ@mail.gmail.com>
+Subject: Re: [PATCH] exec: Rename NEED_CPU_H -> CONFIG_TARGET
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, haxm-team@intel.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Eduardo Habkost <eduardo@habkost.net>, kvm@vger.kernel.org, 
+	Wenchao Wang <wenchao.wang@intel.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org, 
+	Cameron Esfahani <dirty@apple.com>, Kamil Rytarowski <kamil@netbsd.org>, Paul Durrant <paul@xen.org>, 
+	Reinoud Zandijk <reinoud@netbsd.org>, Yanan Wang <wangyanan55@huawei.com>, 
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Stefano Stabellini <sstabellini@kernel.org>, 
+	Sunil Muthuswamy <sunilmut@microsoft.com>, Peter Xu <peterx@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: obYhVaNrRGOf
 
-On 12/16/22 13:29, Fabiano Rosas wrote:
-> -    /*
-> -     * Misaligned thumb pc is architecturally impossible.
-> -     * We have an assert in thumb_tr_translate_insn to verify this.
-> -     * Fail an incoming migrate to avoid this assert.
-> -     */
-> -    if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
-> -        return -1;
-> -    }
-> +        /*
-> +         * Misaligned thumb pc is architecturally impossible.
-> +         * We have an assert in thumb_tr_translate_insn to verify this.
-> +         * Fail an incoming migrate to avoid this assert.
-> +         */
-> +        if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
-> +            return -1;
-> +        }
+On Fri, 16 Dec 2022 at 22:09, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> 'NEED_CPU_H' guard target-specific code; it is defined by meson
+> altogether with the 'CONFIG_TARGET' definition. Since the latter
+> name is more meaningful, directly use it.
+>
+> Inspired-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-This is a sanity check rejecting malformed vmsave.  While hw virt won't have the same 
-assert as mentioned in the comment, it won't be happy and will raise some sort of cpu 
-exception later.  I think it's better to reject the bad vmload early.  I suppose we could 
-expand the comment to that effect, so that it doesn't appear to be wholly tcg inspired.
+This feels to me like it's overloading the meaning of CONFIG_TARGET,
+which at the moment is "the string which names the header file
+with target-specific config definitions". I think I'd rather
+we just renamed NEED_CPU_H to something a bit clearer, like
+perhaps COMPILING_PER_TARGET (better suggestions welcome).
 
-Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+thanks
+-- PMM

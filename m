@@ -1,106 +1,102 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3013949ejb;
-        Sun, 18 Dec 2022 13:22:40 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf56BWQ1Ds0E7v0lNX40G1syzm2RM2EgNIpMcdOpUPxcushkCK+agX302q3ybYDMELVG6UXy
-X-Received: by 2002:a0c:f8cb:0:b0:4c7:539d:1992 with SMTP id h11-20020a0cf8cb000000b004c7539d1992mr52781702qvo.27.1671398560448;
-        Sun, 18 Dec 2022 13:22:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671398560; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3016701ejb;
+        Sun, 18 Dec 2022 13:29:38 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvjkEwl36zhUJllA8G+RXGR8Cmqum1Ncygvg80I1uOPGN0SRg1YlCoikbfzDpqcHkaoncCW
+X-Received: by 2002:a05:622a:1a8c:b0:3a7:eb77:fdfa with SMTP id s12-20020a05622a1a8c00b003a7eb77fdfamr11970299qtc.63.1671398978461;
+        Sun, 18 Dec 2022 13:29:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671398978; cv=none;
         d=google.com; s=arc-20160816;
-        b=c/TnAZv8REdjDPK4/odFKytYyUdyyYM4Q4VBciEPQHGnU16MypFA8LVCy+kxH366Xi
-         LNMx3olKC95CsyCIkxiMl3dkldV8RcsuAqnYxG2p0RXE6JAx4p5TMQtrIv/gMBfn+eg+
-         GJVutKYPpEvd2Ynb10Mk/i5O83zswcJD70CTKqhvAsJAPClo5tZ5lNyzebllYvPU4Pg1
-         +aEXfnojNG6Q8ZKPDqciopRCm6ML2lV4qp/pF1r80m10XWNwsbdEi2iOk5LFKw66nA00
-         9KiN/eoCqPW4ClNZAi/Zfi1GfzVFPSrtumKyp1auXNufWQ422Y7DwDU8Z1zYwguDUIYI
-         CZxw==
+        b=aKBM7sXC4ueYki2ftikpkjohDQhZpdZQB1lMMZtnEqF2Ft4vkfXj/r0byDV18mZQwO
+         ftx4ErC4PNKX5/SVgvxZrK/QylDoOvpMW+ZlT+z+niOGr4CJngFdfJy+PfQm5v7bbO+R
+         vWCO5B0y8IQ2JQ26Ue4N+PXhkH4Z7eiyv4ifsL3ybXFpldJCxrF6I0CVGfJSWxXbdqwt
+         GNcbaeQPDaty4zUeqI/GsPG2Pfznn3wFZFse/qss43rd5VF+zmlTtbsDJIAJJtGZqkB8
+         chneemldM4QXHMVyogSMywVgYD3LVTG1Qq8BzmZ5FkYBmF++DGXOKlSJp14MVtC5VarZ
+         mhNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=0WR80a9kd83QzVZqp5sz4z3lr8i2vKKDJnEjFIjOvcE=;
-        b=lv0ReeuoVhEF9/+LinS23sdSFU83WP5PQSMhBgjvvCRH/oYg7xTvCCjEIJMTrxsY1P
-         ukK2AO2TV5xuBA9f+67HxcML0v/beoDeX1cK7kIqpnfTlTK9zrcd3tQV12MQnJewoqw1
-         UNPZgDikIWiK74q9TJNq5q+jUrjdhGMO5d9K7zzrllRZmUNBWU/qI79cryvGYMZKWuQ1
-         OzpZGXxImDQnEurBsxDV3pzgUKdnkpS83pSXjgpsKGQl9KbWoeFV52YpqPVlc9vToPVR
-         WdOHHq3XbUUmNJXDk7yefwy6w9fkxruCbpcxC7nXTpjJRI3diVNBiDYXvSXmvJ+kZECj
-         Fm+A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=pR7CKCWdYvviAXpcjvekZj42UjXATm/fcHKvkFAaJdU=;
+        b=wn7yjRkEtg+/bsdnKoEWswpGSwQdg5JLFIjMSk+2Bt3I4jMgua/sgmtTxiK/V1g1lE
+         z414oqT0CsZSRGXDBLaI6bCfgfLzFpOSMG/EzXBkJzNZu2+famdu8QiwinrXKyXtO3UY
+         S7Cem99nLOz/EAKM57T4GpvTaZi1iL2auyf4CgYPZs6b8AohjrPEt+mT9w3XBW1lISZb
+         QYBoTvcpEy95adAL9Sfjc6it4cGhuIuqaBSQmXOEvkEB+uPDClggclt+L8kqd7H5F3Ej
+         fIjLFABcE5q0YfDKfui4ajMBkB1ui1hmJesSVgZjxwSBbpuQfvmefGsdXKiXfzyrkZdp
+         HBkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=daYDwfa2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GF+SE8TL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g9-20020a0562140ac900b004c79462a11esi3572927qvi.312.2022.12.18.13.22.40
+        by mx.google.com with ESMTPS id t4-20020ae9df04000000b006f925e59c6fsi3204774qkf.514.2022.12.18.13.29.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Dec 2022 13:22:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 18 Dec 2022 13:29:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=daYDwfa2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GF+SE8TL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p714j-0001DT-8d; Sun, 18 Dec 2022 16:20:01 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p71Dc-0001wH-3R; Sun, 18 Dec 2022 16:29:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p714E-00012k-E6; Sun, 18 Dec 2022 16:19:30 -0500
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ id 1p71Da-0001ve-1Z; Sun, 18 Dec 2022 16:29:10 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p714C-0001xe-2c; Sun, 18 Dec 2022 16:19:30 -0500
-Received: by mail-lf1-x12b.google.com with SMTP id bf43so11093585lfb.6;
- Sun, 18 Dec 2022 13:19:26 -0800 (PST)
+ id 1p71DX-0004lt-RQ; Sun, 18 Dec 2022 16:29:09 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id x22so17429870ejs.11;
+ Sun, 18 Dec 2022 13:29:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=0WR80a9kd83QzVZqp5sz4z3lr8i2vKKDJnEjFIjOvcE=;
- b=daYDwfa2meezU6UbRzuLgV8pqghPXBwWw5g6K+1aXmP2G7RY0uO9DN43jUIWCb3N2I
- BHpg35aNPMH7iMR/G+Aw+9UMTySzWsyeN8IJ2cArrzPXLFBTLhzU3WPNwQvr9jSp5DAp
- uP0Z9/EtQMFgZ2eRHvF+E2S2mQvNDy/L79A5NYvOEIgp+CfKv24Vq50vphIGqaLSkS7p
- xEcdUv0oxjHkF3tv7Xec5eHzD700bzqOPix9BEBNLDGs4wkfN1GXDOOMDIjkv8il04VH
- HAFgmklnujnFxa0gb/Z6mByLnaz9Feae2lqM5AkeUJkpGw7BNrRHRdhiXiMUu1A+QmrP
- 9ttA==
+ bh=pR7CKCWdYvviAXpcjvekZj42UjXATm/fcHKvkFAaJdU=;
+ b=GF+SE8TLfcIfmCL1QTot0FlGrPQjUx1l0C/H23SZUk4gcjIdJ+mdguZ6FW5iM6I3L0
+ ElRTcZ3j5uRb41G2opTjgfNJ4nmPCiDHSH1dd5jlBgNHzRtGTPATjAxGINX3r1gyKAA8
+ JfZRKAWELwSC4wqlljSZW90dA4pNm96oTJ36bIT/w055fxayunu/pLvSPeQeIORGJjUh
+ 9NbgFYI62QJWdIPsPj0igYQKEvfN7HOcuXgfEJQu32ktK7GIZQugNTYgbvfSlXy5tHHU
+ mSIEty/cFtvWsmnofnciB4ey9rlH51kvtJR+fLAbixzg4SGJPQKhLh1/NIXlKqNwYXun
+ kWOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=0WR80a9kd83QzVZqp5sz4z3lr8i2vKKDJnEjFIjOvcE=;
- b=QkFkJ89MKGn03W8U0oaxinzidH+csR6+VfHSSchjQtggXiknlSxDpapICXTZv910LI
- qpV67CyTTsH+LaQD/3cdRn5nH/NW65rsBDP574bxpxvD3ku/HiWPOgWWT2TxqHMG/tlG
- JJTFM3xX6IEjINDmNRYT0T5pL7XWCeAN1MTefOrFqkSES1gIHfcWtQrtGmHcw3O+fumY
- qQ6+lfK3Ue4+sQBZdM9p6LkSOCXe9qOTajfz9M9LlMfSHFkyPIJC3B651wE5ZOHVQgtK
- Z+ZTXzeLEK8Par1EaMFE42SWd1fBzS9lG0XjhyP1g7+DmPShb46eM17R1+VH9wnSdxve
- S3vw==
-X-Gm-Message-State: ANoB5pk+b8QJ8GsfXGCp7tLv/R/QMUE95JixWFJ153t2jfUYJppSAMjE
- B1WIlVH8rd8xpxM8HXbs5fiw0QT1/JYxUvF6
-X-Received: by 2002:a05:6512:304b:b0:4b5:892:3987 with SMTP id
- b11-20020a056512304b00b004b508923987mr22607876lfb.9.1671398365342; 
- Sun, 18 Dec 2022 13:19:25 -0800 (PST)
-Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
- [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
- w7-20020a05651234c700b0049464d89e40sm902620lfr.72.2022.12.18.13.19.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Dec 2022 13:19:25 -0800 (PST)
+ bh=pR7CKCWdYvviAXpcjvekZj42UjXATm/fcHKvkFAaJdU=;
+ b=T3VPHr83dVK9hODfSQ7tE/kkn4ek7lK+iwK87/vx3431gjL7lEOPZuehp506jQ6Yu+
+ 93LgxMo23yrGBlkgOOeZyCrXQ7M8qDp6C8QKO0FZt+4dnei0XT2zYCT4hSeOKRYYytD7
+ qAKxHVomIDrpDaFEy/P4g+2NBUuc1sUKQLOchc+TCUHrUZTykiNnS7w9ybl5cHyXHnXj
+ VDoB2BlURzmdWbVLIn8Lip700P+aXud2q3alwNlwejTeA7+xQnvhcq8V5YtFyH8tAi88
+ AvNSVRx+EuixzDVy6q5247Sl8vIGiBNeU/O7sNw+zqkq9ejAvp5P0xjeAUpTI3R2w6Ct
+ TgRg==
+X-Gm-Message-State: ANoB5pl+Gbqt59p1l0eYq7599HUhdNthELEwxgBH771Gkj+3yQgKzVj7
+ C8DB+90qxgQJJ/VzboYEYdwkZgqZ6o0RvQskUJ7PpdCl+XmZcnms
+X-Received: by 2002:a17:906:b34c:b0:7c0:a6d8:6a6b with SMTP id
+ cd12-20020a170906b34c00b007c0a6d86a6bmr31343817ejb.194.1671398945754; Sun, 18
+ Dec 2022 13:29:05 -0800 (PST)
+MIME-Version: 1.0
+References: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
+ <20221218211918.3592-5-strahinja.p.jankovic@gmail.com>
+In-Reply-To: <20221218211918.3592-5-strahinja.p.jankovic@gmail.com>
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Date: Sun, 18 Dec 2022 22:28:55 +0100
+Message-ID: <CABtshVQkzuuu8i_CjATtLO7OWrZrGyxANsrf=eYyVbrE3yE_yA@mail.gmail.com>
+Subject: Re: [PATCH v2 4/7] hw/misc: Allwinner AXP-209 Emulation
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH v2 4/7] hw/misc: Allwinner AXP-209 Emulation
-Date: Sun, 18 Dec 2022 22:19:15 +0100
-Message-Id: <20221218211918.3592-5-strahinja.p.jankovic@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
-References: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x12b.google.com
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,332 +105,363 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7xsc/hYECMx4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: a0Htx0cvxEJL
 
-This patch adds minimal support for AXP-209 PMU.
-Most important is chip ID since U-Boot SPL expects version 0x1. Besides
-the chip ID register, reset values for two more registers used by A10
-U-Boot SPL are covered.
+I forgot to add Philippe Mathieu-Daud=C3=A9 in CC for this patch, so I'm
+fixing it now.
 
-Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
----
- hw/arm/Kconfig              |   1 +
- hw/misc/Kconfig             |   4 +
- hw/misc/allwinner-axp-209.c | 238 ++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build         |   1 +
- hw/misc/trace-events        |   5 +
- 5 files changed, 249 insertions(+)
- create mode 100644 hw/misc/allwinner-axp-209.c
+Best regards,
+Strahinja Jankovic
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index eefe1fd134..67c6e83fe6 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -323,6 +323,7 @@ config ALLWINNER_A10
-     select ALLWINNER_A10_DRAMC
-     select ALLWINNER_EMAC
-     select ALLWINNER_I2C
-+    select ALLWINNER_AXP_209
-     select SERIAL
-     select UNIMP
- 
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 052fb54310..3855d937fd 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -180,4 +180,8 @@ config ALLWINNER_A10_CCM
- config ALLWINNER_A10_DRAMC
-     bool
- 
-+config ALLWINNER_AXP_209
-+    bool
-+    depends on I2C
-+
- source macio/Kconfig
-diff --git a/hw/misc/allwinner-axp-209.c b/hw/misc/allwinner-axp-209.c
-new file mode 100644
-index 0000000000..cf79175034
---- /dev/null
-+++ b/hw/misc/allwinner-axp-209.c
-@@ -0,0 +1,238 @@
-+/*
-+ * AXP-209 Emulation
-+ *
-+ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a
-+ * copy of this software and associated documentation files (the "Software"),
-+ * to deal in the Software without restriction, including without limitation
-+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-+ * and/or sell copies of the Software, and to permit persons to whom the
-+ * Software is furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-+ * DEALINGS IN THE SOFTWARE.
-+ *
-+ * SPDX-License-Identifier: MIT
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "trace.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
-+
-+#define TYPE_AXP_209 "allwinner.axp209"
-+
-+#define AXP_209(obj) \
-+    OBJECT_CHECK(AXP209I2CState, (obj), TYPE_AXP_209)
-+
-+/* registers */
-+enum {
-+    REG_POWER_STATUS = 0x0u,
-+    REG_OPERATING_MODE,
-+    REG_OTG_VBUS_STATUS,
-+    REG_CHIP_VERSION,
-+    REG_DATA_CACHE_0,
-+    REG_DATA_CACHE_1,
-+    REG_DATA_CACHE_2,
-+    REG_DATA_CACHE_3,
-+    REG_DATA_CACHE_4,
-+    REG_DATA_CACHE_5,
-+    REG_DATA_CACHE_6,
-+    REG_DATA_CACHE_7,
-+    REG_DATA_CACHE_8,
-+    REG_DATA_CACHE_9,
-+    REG_DATA_CACHE_A,
-+    REG_DATA_CACHE_B,
-+    REG_POWER_OUTPUT_CTRL = 0x12u,
-+    REG_DC_DC2_OUT_V_CTRL = 0x23u,
-+    REG_DC_DC2_DVS_CTRL = 0x25u,
-+    REG_DC_DC3_OUT_V_CTRL = 0x27u,
-+    REG_LDO2_4_OUT_V_CTRL,
-+    REG_LDO3_OUT_V_CTRL,
-+    REG_VBUS_CH_MGMT = 0x30u,
-+    REG_SHUTDOWN_V_CTRL,
-+    REG_SHUTDOWN_CTRL,
-+    REG_CHARGE_CTRL_1,
-+    REG_CHARGE_CTRL_2,
-+    REG_SPARE_CHARGE_CTRL,
-+    REG_PEK_KEY_CTRL,
-+    REG_DC_DC_FREQ_SET,
-+    REG_CHR_TEMP_TH_SET,
-+    REG_CHR_HIGH_TEMP_TH_CTRL,
-+    REG_IPSOUT_WARN_L1,
-+    REG_IPSOUT_WARN_L2,
-+    REG_DISCHR_TEMP_TH_SET,
-+    REG_DISCHR_HIGH_TEMP_TH_CTRL,
-+    REG_IRQ_BANK_1_CTRL = 0x40u,
-+    REG_IRQ_BANK_2_CTRL,
-+    REG_IRQ_BANK_3_CTRL,
-+    REG_IRQ_BANK_4_CTRL,
-+    REG_IRQ_BANK_5_CTRL,
-+    REG_IRQ_BANK_1_STAT = 0x48u,
-+    REG_IRQ_BANK_2_STAT,
-+    REG_IRQ_BANK_3_STAT,
-+    REG_IRQ_BANK_4_STAT,
-+    REG_IRQ_BANK_5_STAT,
-+    REG_ADC_ACIN_V_H = 0x56u,
-+    REG_ADC_ACIN_V_L,
-+    REG_ADC_ACIN_CURR_H,
-+    REG_ADC_ACIN_CURR_L,
-+    REG_ADC_VBUS_V_H,
-+    REG_ADC_VBUS_V_L,
-+    REG_ADC_VBUS_CURR_H,
-+    REG_ADC_VBUS_CURR_L,
-+    REG_ADC_INT_TEMP_H,
-+    REG_ADC_INT_TEMP_L,
-+    REG_ADC_TEMP_SENS_V_H = 0x62u,
-+    REG_ADC_TEMP_SENS_V_L,
-+    REG_ADC_BAT_V_H = 0x78u,
-+    REG_ADC_BAT_V_L,
-+    REG_ADC_BAT_DISCHR_CURR_H,
-+    REG_ADC_BAT_DISCHR_CURR_L,
-+    REG_ADC_BAT_CHR_CURR_H,
-+    REG_ADC_BAT_CHR_CURR_L,
-+    REG_ADC_IPSOUT_V_H,
-+    REG_ADC_IPSOUT_V_L,
-+    REG_DC_DC_MOD_SEL = 0x80u,
-+    REG_ADC_EN_1,
-+    REG_ADC_EN_2,
-+    REG_ADC_SR_CTRL,
-+    REG_ADC_IN_RANGE,
-+    REG_GPIO1_ADC_IRQ_RISING_TH,
-+    REG_GPIO1_ADC_IRQ_FALLING_TH,
-+    REG_TIMER_CTRL = 0x8au,
-+    REG_VBUS_CTRL_MON_SRP,
-+    REG_OVER_TEMP_SHUTDOWN = 0x8fu,
-+    REG_GPIO0_FEAT_SET,
-+    REG_GPIO_OUT_HIGH_SET,
-+    REG_GPIO1_FEAT_SET,
-+    REG_GPIO2_FEAT_SET,
-+    REG_GPIO_SIG_STATE_SET_MON,
-+    REG_GPIO3_SET,
-+    REG_COULOMB_CNTR_CTRL = 0xb8u,
-+    REG_POWER_MEAS_RES,
-+    NR_REGS
-+};
-+
-+#define AXP_209_CHIP_VERSION_ID             (0x01)
-+#define AXP_209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
-+#define AXP_209_IRQ_BANK_1_CTRL_RESET       (0xd8)
-+
-+/* A simple I2C slave which returns values of ID or CNT register. */
-+typedef struct AXP209I2CState {
-+    /*< private >*/
-+    I2CSlave i2c;
-+    /*< public >*/
-+    uint8_t regs[NR_REGS];  /* peripheral registers */
-+    uint8_t ptr;            /* current register index */
-+    uint8_t count;          /* counter used for tx/rx */
-+} AXP209I2CState;
-+
-+/* Reset all counters and load ID register */
-+static void axp_209_reset_enter(Object *obj, ResetType type)
-+{
-+    AXP209I2CState *s = AXP_209(obj);
-+
-+    memset(s->regs, 0, NR_REGS);
-+    s->ptr = 0;
-+    s->count = 0;
-+    s->regs[REG_CHIP_VERSION] = AXP_209_CHIP_VERSION_ID;
-+    s->regs[REG_DC_DC2_OUT_V_CTRL] = AXP_209_DC_DC2_OUT_V_CTRL_RESET;
-+    s->regs[REG_IRQ_BANK_1_CTRL] = AXP_209_IRQ_BANK_1_CTRL_RESET;
-+}
-+
-+/* Handle events from master. */
-+static int axp_209_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    AXP209I2CState *s = AXP_209(i2c);
-+
-+    s->count = 0;
-+
-+    return 0;
-+}
-+
-+/* Called when master requests read */
-+static uint8_t axp_209_rx(I2CSlave *i2c)
-+{
-+    AXP209I2CState *s = AXP_209(i2c);
-+    uint8_t ret = 0xff;
-+
-+    if (s->ptr < NR_REGS) {
-+        ret = s->regs[s->ptr++];
-+    }
-+
-+    trace_allwinner_axp_209_rx(s->ptr - 1, ret);
-+
-+    return ret;
-+}
-+
-+/*
-+ * Called when master sends write.
-+ * Update ptr with byte 0, then perform write with second byte.
-+ */
-+static int axp_209_tx(I2CSlave *i2c, uint8_t data)
-+{
-+    AXP209I2CState *s = AXP_209(i2c);
-+
-+    if (s->count == 0) {
-+        /* Store register address */
-+        s->ptr = data;
-+        s->count++;
-+        trace_allwinner_axp_209_select(data);
-+    } else {
-+        trace_allwinner_axp_209_tx(s->ptr, data);
-+        if (s->ptr == REG_DC_DC2_OUT_V_CTRL) {
-+            s->regs[s->ptr++] = data;
-+        }
-+    }
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_axp_209 = {
-+    .name = TYPE_AXP_209,
-+    .version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8_ARRAY(regs, AXP209I2CState, NR_REGS),
-+        VMSTATE_UINT8(count, AXP209I2CState),
-+        VMSTATE_UINT8(ptr, AXP209I2CState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void axp_209_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
-+    ResettableClass *rc = RESETTABLE_CLASS(oc);
-+
-+    rc->phases.enter = axp_209_reset_enter;
-+    dc->vmsd = &vmstate_axp_209;
-+    isc->event = axp_209_event;
-+    isc->recv = axp_209_rx;
-+    isc->send = axp_209_tx;
-+}
-+
-+static const TypeInfo axp_209_info = {
-+    .name = TYPE_AXP_209,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(AXP209I2CState),
-+    .class_init = axp_209_class_init
-+};
-+
-+static void axp_209_register_devices(void)
-+{
-+    type_register_static(&axp_209_info);
-+}
-+
-+type_init(axp_209_register_devices);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 9eaa0750b5..7d332851cb 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -40,6 +40,7 @@ softmmu_ss.add(when: 'CONFIG_IVSHMEM_DEVICE', if_true: files('ivshmem.c'))
- 
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinner-a10-ccm.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_DRAMC', if_true: files('allwinner-a10-dramc.c'))
-+softmmu_ss.add(when: 'CONFIG_ALLWINNER_AXP_209', if_true: files('allwinner-axp-209.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-ccu.c'))
- specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index c18bc0605e..f6a7a6901f 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -1,5 +1,10 @@
- # See docs/devel/tracing.rst for syntax documentation.
- 
-+# allwinner-axp209.c
-+allwinner_axp_209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
-+allwinner_axp_209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
-+allwinner_axp_209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
-+
- # allwinner-cpucfg.c
- allwinner_cpucfg_cpu_reset(uint8_t cpu_id, uint32_t reset_addr) "id %u, reset_addr 0x%" PRIx32
- allwinner_cpucfg_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
--- 
-2.30.2
-
+On Sun, Dec 18, 2022 at 10:19 PM Strahinja Jankovic
+<strahinjapjankovic@gmail.com> wrote:
+>
+> This patch adds minimal support for AXP-209 PMU.
+> Most important is chip ID since U-Boot SPL expects version 0x1. Besides
+> the chip ID register, reset values for two more registers used by A10
+> U-Boot SPL are covered.
+>
+> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+> ---
+>  hw/arm/Kconfig              |   1 +
+>  hw/misc/Kconfig             |   4 +
+>  hw/misc/allwinner-axp-209.c | 238 ++++++++++++++++++++++++++++++++++++
+>  hw/misc/meson.build         |   1 +
+>  hw/misc/trace-events        |   5 +
+>  5 files changed, 249 insertions(+)
+>  create mode 100644 hw/misc/allwinner-axp-209.c
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index eefe1fd134..67c6e83fe6 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -323,6 +323,7 @@ config ALLWINNER_A10
+>      select ALLWINNER_A10_DRAMC
+>      select ALLWINNER_EMAC
+>      select ALLWINNER_I2C
+> +    select ALLWINNER_AXP_209
+>      select SERIAL
+>      select UNIMP
+>
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index 052fb54310..3855d937fd 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -180,4 +180,8 @@ config ALLWINNER_A10_CCM
+>  config ALLWINNER_A10_DRAMC
+>      bool
+>
+> +config ALLWINNER_AXP_209
+> +    bool
+> +    depends on I2C
+> +
+>  source macio/Kconfig
+> diff --git a/hw/misc/allwinner-axp-209.c b/hw/misc/allwinner-axp-209.c
+> new file mode 100644
+> index 0000000000..cf79175034
+> --- /dev/null
+> +++ b/hw/misc/allwinner-axp-209.c
+> @@ -0,0 +1,238 @@
+> +/*
+> + * AXP-209 Emulation
+> + *
+> + * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com=
+>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining=
+ a
+> + * copy of this software and associated documentation files (the "Softwa=
+re"),
+> + * to deal in the Software without restriction, including without limita=
+tion
+> + * the rights to use, copy, modify, merge, publish, distribute, sublicen=
+se,
+> + * and/or sell copies of the Software, and to permit persons to whom the
+> + * Software is furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be includ=
+ed in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL THE
+> + * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHE=
+R
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG
+> + * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+> + * DEALINGS IN THE SOFTWARE.
+> + *
+> + * SPDX-License-Identifier: MIT
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "trace.h"
+> +#include "hw/i2c/i2c.h"
+> +#include "migration/vmstate.h"
+> +
+> +#define TYPE_AXP_209 "allwinner.axp209"
+> +
+> +#define AXP_209(obj) \
+> +    OBJECT_CHECK(AXP209I2CState, (obj), TYPE_AXP_209)
+> +
+> +/* registers */
+> +enum {
+> +    REG_POWER_STATUS =3D 0x0u,
+> +    REG_OPERATING_MODE,
+> +    REG_OTG_VBUS_STATUS,
+> +    REG_CHIP_VERSION,
+> +    REG_DATA_CACHE_0,
+> +    REG_DATA_CACHE_1,
+> +    REG_DATA_CACHE_2,
+> +    REG_DATA_CACHE_3,
+> +    REG_DATA_CACHE_4,
+> +    REG_DATA_CACHE_5,
+> +    REG_DATA_CACHE_6,
+> +    REG_DATA_CACHE_7,
+> +    REG_DATA_CACHE_8,
+> +    REG_DATA_CACHE_9,
+> +    REG_DATA_CACHE_A,
+> +    REG_DATA_CACHE_B,
+> +    REG_POWER_OUTPUT_CTRL =3D 0x12u,
+> +    REG_DC_DC2_OUT_V_CTRL =3D 0x23u,
+> +    REG_DC_DC2_DVS_CTRL =3D 0x25u,
+> +    REG_DC_DC3_OUT_V_CTRL =3D 0x27u,
+> +    REG_LDO2_4_OUT_V_CTRL,
+> +    REG_LDO3_OUT_V_CTRL,
+> +    REG_VBUS_CH_MGMT =3D 0x30u,
+> +    REG_SHUTDOWN_V_CTRL,
+> +    REG_SHUTDOWN_CTRL,
+> +    REG_CHARGE_CTRL_1,
+> +    REG_CHARGE_CTRL_2,
+> +    REG_SPARE_CHARGE_CTRL,
+> +    REG_PEK_KEY_CTRL,
+> +    REG_DC_DC_FREQ_SET,
+> +    REG_CHR_TEMP_TH_SET,
+> +    REG_CHR_HIGH_TEMP_TH_CTRL,
+> +    REG_IPSOUT_WARN_L1,
+> +    REG_IPSOUT_WARN_L2,
+> +    REG_DISCHR_TEMP_TH_SET,
+> +    REG_DISCHR_HIGH_TEMP_TH_CTRL,
+> +    REG_IRQ_BANK_1_CTRL =3D 0x40u,
+> +    REG_IRQ_BANK_2_CTRL,
+> +    REG_IRQ_BANK_3_CTRL,
+> +    REG_IRQ_BANK_4_CTRL,
+> +    REG_IRQ_BANK_5_CTRL,
+> +    REG_IRQ_BANK_1_STAT =3D 0x48u,
+> +    REG_IRQ_BANK_2_STAT,
+> +    REG_IRQ_BANK_3_STAT,
+> +    REG_IRQ_BANK_4_STAT,
+> +    REG_IRQ_BANK_5_STAT,
+> +    REG_ADC_ACIN_V_H =3D 0x56u,
+> +    REG_ADC_ACIN_V_L,
+> +    REG_ADC_ACIN_CURR_H,
+> +    REG_ADC_ACIN_CURR_L,
+> +    REG_ADC_VBUS_V_H,
+> +    REG_ADC_VBUS_V_L,
+> +    REG_ADC_VBUS_CURR_H,
+> +    REG_ADC_VBUS_CURR_L,
+> +    REG_ADC_INT_TEMP_H,
+> +    REG_ADC_INT_TEMP_L,
+> +    REG_ADC_TEMP_SENS_V_H =3D 0x62u,
+> +    REG_ADC_TEMP_SENS_V_L,
+> +    REG_ADC_BAT_V_H =3D 0x78u,
+> +    REG_ADC_BAT_V_L,
+> +    REG_ADC_BAT_DISCHR_CURR_H,
+> +    REG_ADC_BAT_DISCHR_CURR_L,
+> +    REG_ADC_BAT_CHR_CURR_H,
+> +    REG_ADC_BAT_CHR_CURR_L,
+> +    REG_ADC_IPSOUT_V_H,
+> +    REG_ADC_IPSOUT_V_L,
+> +    REG_DC_DC_MOD_SEL =3D 0x80u,
+> +    REG_ADC_EN_1,
+> +    REG_ADC_EN_2,
+> +    REG_ADC_SR_CTRL,
+> +    REG_ADC_IN_RANGE,
+> +    REG_GPIO1_ADC_IRQ_RISING_TH,
+> +    REG_GPIO1_ADC_IRQ_FALLING_TH,
+> +    REG_TIMER_CTRL =3D 0x8au,
+> +    REG_VBUS_CTRL_MON_SRP,
+> +    REG_OVER_TEMP_SHUTDOWN =3D 0x8fu,
+> +    REG_GPIO0_FEAT_SET,
+> +    REG_GPIO_OUT_HIGH_SET,
+> +    REG_GPIO1_FEAT_SET,
+> +    REG_GPIO2_FEAT_SET,
+> +    REG_GPIO_SIG_STATE_SET_MON,
+> +    REG_GPIO3_SET,
+> +    REG_COULOMB_CNTR_CTRL =3D 0xb8u,
+> +    REG_POWER_MEAS_RES,
+> +    NR_REGS
+> +};
+> +
+> +#define AXP_209_CHIP_VERSION_ID             (0x01)
+> +#define AXP_209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
+> +#define AXP_209_IRQ_BANK_1_CTRL_RESET       (0xd8)
+> +
+> +/* A simple I2C slave which returns values of ID or CNT register. */
+> +typedef struct AXP209I2CState {
+> +    /*< private >*/
+> +    I2CSlave i2c;
+> +    /*< public >*/
+> +    uint8_t regs[NR_REGS];  /* peripheral registers */
+> +    uint8_t ptr;            /* current register index */
+> +    uint8_t count;          /* counter used for tx/rx */
+> +} AXP209I2CState;
+> +
+> +/* Reset all counters and load ID register */
+> +static void axp_209_reset_enter(Object *obj, ResetType type)
+> +{
+> +    AXP209I2CState *s =3D AXP_209(obj);
+> +
+> +    memset(s->regs, 0, NR_REGS);
+> +    s->ptr =3D 0;
+> +    s->count =3D 0;
+> +    s->regs[REG_CHIP_VERSION] =3D AXP_209_CHIP_VERSION_ID;
+> +    s->regs[REG_DC_DC2_OUT_V_CTRL] =3D AXP_209_DC_DC2_OUT_V_CTRL_RESET;
+> +    s->regs[REG_IRQ_BANK_1_CTRL] =3D AXP_209_IRQ_BANK_1_CTRL_RESET;
+> +}
+> +
+> +/* Handle events from master. */
+> +static int axp_209_event(I2CSlave *i2c, enum i2c_event event)
+> +{
+> +    AXP209I2CState *s =3D AXP_209(i2c);
+> +
+> +    s->count =3D 0;
+> +
+> +    return 0;
+> +}
+> +
+> +/* Called when master requests read */
+> +static uint8_t axp_209_rx(I2CSlave *i2c)
+> +{
+> +    AXP209I2CState *s =3D AXP_209(i2c);
+> +    uint8_t ret =3D 0xff;
+> +
+> +    if (s->ptr < NR_REGS) {
+> +        ret =3D s->regs[s->ptr++];
+> +    }
+> +
+> +    trace_allwinner_axp_209_rx(s->ptr - 1, ret);
+> +
+> +    return ret;
+> +}
+> +
+> +/*
+> + * Called when master sends write.
+> + * Update ptr with byte 0, then perform write with second byte.
+> + */
+> +static int axp_209_tx(I2CSlave *i2c, uint8_t data)
+> +{
+> +    AXP209I2CState *s =3D AXP_209(i2c);
+> +
+> +    if (s->count =3D=3D 0) {
+> +        /* Store register address */
+> +        s->ptr =3D data;
+> +        s->count++;
+> +        trace_allwinner_axp_209_select(data);
+> +    } else {
+> +        trace_allwinner_axp_209_tx(s->ptr, data);
+> +        if (s->ptr =3D=3D REG_DC_DC2_OUT_V_CTRL) {
+> +            s->regs[s->ptr++] =3D data;
+> +        }
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static const VMStateDescription vmstate_axp_209 =3D {
+> +    .name =3D TYPE_AXP_209,
+> +    .version_id =3D 1,
+> +    .fields =3D (VMStateField[]) {
+> +        VMSTATE_UINT8_ARRAY(regs, AXP209I2CState, NR_REGS),
+> +        VMSTATE_UINT8(count, AXP209I2CState),
+> +        VMSTATE_UINT8(ptr, AXP209I2CState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void axp_209_class_init(ObjectClass *oc, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(oc);
+> +    I2CSlaveClass *isc =3D I2C_SLAVE_CLASS(oc);
+> +    ResettableClass *rc =3D RESETTABLE_CLASS(oc);
+> +
+> +    rc->phases.enter =3D axp_209_reset_enter;
+> +    dc->vmsd =3D &vmstate_axp_209;
+> +    isc->event =3D axp_209_event;
+> +    isc->recv =3D axp_209_rx;
+> +    isc->send =3D axp_209_tx;
+> +}
+> +
+> +static const TypeInfo axp_209_info =3D {
+> +    .name =3D TYPE_AXP_209,
+> +    .parent =3D TYPE_I2C_SLAVE,
+> +    .instance_size =3D sizeof(AXP209I2CState),
+> +    .class_init =3D axp_209_class_init
+> +};
+> +
+> +static void axp_209_register_devices(void)
+> +{
+> +    type_register_static(&axp_209_info);
+> +}
+> +
+> +type_init(axp_209_register_devices);
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 9eaa0750b5..7d332851cb 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -40,6 +40,7 @@ softmmu_ss.add(when: 'CONFIG_IVSHMEM_DEVICE', if_true: =
+files('ivshmem.c'))
+>
+>  softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinn=
+er-a10-ccm.c'))
+>  softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_DRAMC', if_true: files('allwi=
+nner-a10-dramc.c'))
+> +softmmu_ss.add(when: 'CONFIG_ALLWINNER_AXP_209', if_true: files('allwinn=
+er-axp-209.c'))
+>  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3=
+-ccu.c'))
+>  specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-c=
+pucfg.c'))
+>  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3=
+-dramc.c'))
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index c18bc0605e..f6a7a6901f 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -1,5 +1,10 @@
+>  # See docs/devel/tracing.rst for syntax documentation.
+>
+> +# allwinner-axp209.c
+> +allwinner_axp_209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " :=
+ 0x%" PRIx8
+> +allwinner_axp_209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
+> +allwinner_axp_209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " =
+: 0x%" PRIx8
+> +
+>  # allwinner-cpucfg.c
+>  allwinner_cpucfg_cpu_reset(uint8_t cpu_id, uint32_t reset_addr) "id %u, =
+reset_addr 0x%" PRIx32
+>  allwinner_cpucfg_read(uint64_t offset, uint64_t data, unsigned size) "of=
+fset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+> --
+> 2.30.2
+>

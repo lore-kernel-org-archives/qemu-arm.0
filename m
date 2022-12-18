@@ -1,106 +1,106 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3013253ejb;
-        Sun, 18 Dec 2022 13:21:09 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7RmVyvb6O1lHoQxO7LLEPDcOPzJGn1qeUSqZg87HjRCtDhLtY1JHatxn0ssePNC1re/VPN
-X-Received: by 2002:a05:622a:91:b0:3a8:133a:9686 with SMTP id o17-20020a05622a009100b003a8133a9686mr57003359qtw.12.1671398469489;
-        Sun, 18 Dec 2022 13:21:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671398469; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3013298ejb;
+        Sun, 18 Dec 2022 13:21:16 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6GQS9zoJkj1K2gitBXCad52vYfBYbgBP2SMag23pw7iAg1P2NJBGLevObZ28p7cFnjV70r
+X-Received: by 2002:ac8:534b:0:b0:3a6:a292:286c with SMTP id d11-20020ac8534b000000b003a6a292286cmr52426442qto.18.1671398476309;
+        Sun, 18 Dec 2022 13:21:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671398476; cv=none;
         d=google.com; s=arc-20160816;
-        b=hTXidO6Yd/RzeN8HJf+9y1UGZFsSMZf9p2JfTQOg5egcxrJYWkqetiYcNRfuaLx2t5
-         OW4mN3xClTwNwg2OWdVs0M8XcLkXCFfchQKw+dfdD+45z5js1g7MHyih96qVmmDXj14z
-         NjP9O5KstOFzv9Qzfrib7nWuQanKvhIC3LVqUfBBqhbSMNM41lc1pNRXrXUyMoDy0HSl
-         owCgCjW/a5x4ULQZewFQWFk+mNPu4gRVy62v6Kb52N5tOtKbzeAdDIdZJv1av05bRXi7
-         B4ZJkStZ8kOefbXhMd6FtB2Yncvgw3gwcWU9dDk0fMAWGgK/d85mmOyxQZ9WgSLz1mfQ
-         715w==
+        b=vlECYxXzjPvdmWq6Pt0r4du2C+7O2s5U3nkh2x4xP/HjKQb9WDKvyclzlCX+HRuPa5
+         a7CxDMKPBHSUKx8A3H9jBvtoHNh4F5xfVhH3MD22x6AJEjrwDFkK9vnaBe41RIP31Vqz
+         U2jer6CwNPlDVZEkwc3HIkg7ctq2GLMJWJXP1QVWNo3jkk3A8Wpmz5n5gmZEwTUrsA/x
+         odxwGCz5U85+b6dzH5TcSJ0lSF/B7NzGwwWEhrY4IgV5WaiRfZW02b8N20phcZTppofv
+         cdSFe4aNN3t0EGi++2CawAfOA4THRFmwhFF0Zn9mVq0cufJFWuNKjLHvaqlr9iYrnNq8
+         im/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=IA9DLwdDIWXg6Vm5V2G0ugLwqd09BSX4sLQfHIli23s=;
-        b=vKRUM1ETiGfdeiMwvB1IYdwdmjGF2K33yG0+86wViftpXefzSH6knHktfJYQ+IZd1i
-         Qoxrany6Xx+l9Vxnizz1vWLYzjfphN8pYQ9LnOKx3S1rVE8l816p2qpKUdK/4JWug1gj
-         G2HRq/GGpzNOerJykqNFfFAt8lXXI3s3mzIATds2Lz4J5KEebpKrHCs6Rf2cQtsDYbCz
-         blyJq+5WPwpJnX7jtOcbXHe62m8xuL9QbXEbjlSQCdfkOH1x7U1GIU98Wx86USqELaCs
-         go4+UWKccBn7J2C++dm0mokFrom1gwLoHMAtBAsGiR/nkYjnlomaIgq5UGLBcU62hq3w
-         rVSQ==
+        bh=c08hVl9D9/u/T28Fz+sqopcOehEP0Ikwgs0RHn7FUE4=;
+        b=TlfwpEGtOq1GUzAPWza6qRYQojFKFGIFlIkczIefl6Me0vT0mbQxHp8BQT09Jn/x/A
+         W5aMQQr3Usb+Vgh2mtidOZVI2J885M1ZKFPFQqHdk7Ime56ARiN8r2OoKEsXJP4WHDXx
+         fnNTBQJmF7FRphZwNUEIS8JTbZA92sO6uzcPJP4zWoasO0gEgvgdpomRiw/sjATuamGW
+         iG++jfOnKvHTSulIJwpL9fkP7lD3yy/kEXI9tYalTOMXmdd8mi4JgXKx4pqCV0WtyNFR
+         KRYmgth1/emvwYiWe8h6m7H+5GAAUL/A93xHyrpcDzML5ftkT1YcQYs9OSerXz0uvYJw
+         3TTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Hvef4si2;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=i2att2n0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl10-20020a05622a244a00b003a8114f107fsi3552930qtb.207.2022.12.18.13.21.09
+        by mx.google.com with ESMTPS id z12-20020a05622a124c00b003a35753365dsi3547201qtx.77.2022.12.18.13.21.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Dec 2022 13:21:09 -0800 (PST)
+        Sun, 18 Dec 2022 13:21:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Hvef4si2;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=i2att2n0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p714X-000130-2W; Sun, 18 Dec 2022 16:19:51 -0500
+	id 1p714u-0001F5-QS; Sun, 18 Dec 2022 16:20:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p714E-00012Y-0B; Sun, 18 Dec 2022 16:19:30 -0500
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+ id 1p714F-000132-Qy; Sun, 18 Dec 2022 16:19:45 -0500
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p714A-0001xM-2h; Sun, 18 Dec 2022 16:19:29 -0500
-Received: by mail-lj1-x235.google.com with SMTP id a19so7389802ljk.0;
- Sun, 18 Dec 2022 13:19:25 -0800 (PST)
+ id 1p714C-0001xu-QC; Sun, 18 Dec 2022 16:19:31 -0500
+Received: by mail-lf1-x135.google.com with SMTP id cf42so11132339lfb.1;
+ Sun, 18 Dec 2022 13:19:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IA9DLwdDIWXg6Vm5V2G0ugLwqd09BSX4sLQfHIli23s=;
- b=Hvef4si2oX8zCE4SAuQcMLHm1aCVqCzNwidOSa7augyVgE1yRxedTaKdLYS/F9+fEI
- DLCiknfavCDX8/wjNfxjMFeckYIyN7L5PWTrIoIuRvOYNZQPggONsFExDtdc6vhU2I8a
- VdqRhtmJnUxVK2ZEWZhihQczRZ0MJv6lpttjXJSWqAmrpMhLtn+LkkwZaf22lQi6HHvs
- x5mO3TIOYtps6Epw4A95stFQPTFGAB/Y8hSf5oP0FrBjpfA6odu7iRZoP53sE2JrpsxJ
- fLb3HuS6LqbxaWrJON5lK5LPz1MFZp7BfznjBgfYXadh0zEUvx9CRPsEINNe5766k1PR
- wfdA==
+ bh=c08hVl9D9/u/T28Fz+sqopcOehEP0Ikwgs0RHn7FUE4=;
+ b=i2att2n0VwJ/3bKuHh8FH1yazM93JCE0oN6KSYqmvj6Cz9Gj611BMt8spLu3Y12KXF
+ cPp/S/v/NOL6jXJI8ruawtnYPdTXUXyenZUo1g4x6TAKHgUyEUdHn7f2b6Mc+tqN3HbU
+ LU0d3aLUVvR8n7jiscE36RCBbvZxNtK/vfcf0I1321iJG0XtFUAuoUdYjexMt1/qL83/
+ FOd/HEhIGy9YsBZOtXzMP8OzLADMKgOOxSfCW/kW8mWDrfgAqHtUGeJ7OcyieFJRDPsh
+ MqsaeUFjYHhkNTmZtUUfkWmI5rQKbheH9S+dIIFc6hDQkq/R1K5zKYvAs6YTNl+A4J1P
+ 9dNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=IA9DLwdDIWXg6Vm5V2G0ugLwqd09BSX4sLQfHIli23s=;
- b=mkXeTYfSRMfpPvt/OlRCYpp9NQ5j9DCJIOkjKya9JHA1W8CrwVca3PecE/sx0IdLMa
- 5uXNxtbXCD/DmNfzTXowWF62RlbY+QNXqkb87cURqdewV5Pfy2GB8zsITLsqvrTjpg4J
- sMrD6tOqW8cG2JDfLTOmsbB4sCtD2qZfCJEZ7dh+KHr9upM62J0VZ7sV1X61AoXUeFEL
- rHvN21nmopCopvsdkYeGKGHnvDdYlIgyhZap5q7LTKiMfT6r8qkTHzrlL6QpoK2o91Lj
- Q3SvmPiUxYm+tS8+U/UuS+G2jtYnRxqZK9cHKVxGFcwSuLt79pC2u1kRgCzOV0IWOMsN
- DKLA==
-X-Gm-Message-State: AFqh2krUMBygfbVbhPstaJOY/G8pZgvHIAdbJuuzy3IAsVVlO+z7NQn8
- 7tL/TYZN7vufosbhbycUpIE=
-X-Received: by 2002:a2e:a725:0:b0:27f:795c:ed95 with SMTP id
- s37-20020a2ea725000000b0027f795ced95mr1376326lje.42.1671398363978; 
- Sun, 18 Dec 2022 13:19:23 -0800 (PST)
+ bh=c08hVl9D9/u/T28Fz+sqopcOehEP0Ikwgs0RHn7FUE4=;
+ b=QA6UNfs0Oz7oSW+CEWBzrWFRPgJ1tOfgFwTLPww/lcQJmHuUzFjXQcIfVoN7lJI+cG
+ K03iM+FOyiL2YvusPltSv1GzfsP1CLBuO/4HjSGE9JDybdi3/HgJwjQ0NdlHIpmLd1HW
+ /QjaC2oliL8Sctzdh8mtdnx+LNcMWiUW+9Foa27mT4zRY5/wexuBGqOLXYzf4WIBLiuM
+ ydgDvCNxMVFO3tolRZXSfl/QVe/l7RM0FHUdTYqIBWuR6soMThrEMnGlbdprONywPAMH
+ ggADAeNOEojboM3L25caGsUPeq0TOS8FH1bbcsm6Zfc6IoIDRsT4MhXXLhFKulYateII
+ WiKw==
+X-Gm-Message-State: ANoB5pnCfJfyIu771Yh/VPn1tfXzCMO4wQPn0XcehFAH7JGXXJZosjL2
+ g/faCWPwJE92wQfu2ZP3A6wIN126Uw3qZA08
+X-Received: by 2002:a05:6512:de:b0:4b5:2ef3:fd2a with SMTP id
+ c30-20020a05651200de00b004b52ef3fd2amr16845051lfp.47.1671398366785; 
+ Sun, 18 Dec 2022 13:19:26 -0800 (PST)
 Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
  [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
- w7-20020a05651234c700b0049464d89e40sm902620lfr.72.2022.12.18.13.19.23
+ w7-20020a05651234c700b0049464d89e40sm902620lfr.72.2022.12.18.13.19.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Dec 2022 13:19:23 -0800 (PST)
+ Sun, 18 Dec 2022 13:19:26 -0800 (PST)
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
 X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH v2 2/7] hw/misc: Allwinner A10 DRAM Controller Emulation
-Date: Sun, 18 Dec 2022 22:19:13 +0100
-Message-Id: <20221218211918.3592-3-strahinja.p.jankovic@gmail.com>
+Subject: [PATCH v2 6/7] hw/arm: Allwinner A10 enable SPL load from MMC
+Date: Sun, 18 Dec 2022 22:19:17 +0100
+Message-Id: <20221218211918.3592-7-strahinja.p.jankovic@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
 References: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::235;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-lj1-x235.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,378 +122,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jgpBrGeQC3nu
+X-TUID: oNxNAdBxUBDQ
 
-During SPL boot several DRAM Controller registers are used. Most
-important registers are those related to DRAM initialization and
-calibration, where SPL initiates process and waits until certain bit is
-set/cleared.
+This patch enables copying of SPL from MMC if `-kernel` parameter is not
+passed when starting QEMU. SPL is copied to SRAM_A.
 
-This patch adds these registers, initializes reset values from user's
-guide and updates state of registers as SPL expects it.
+The approach is reused from Allwinner H3 implementation.
+
+Tested with Armbian and custom Yocto image.
 
 Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 
 Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 ---
- hw/arm/Kconfig                        |   1 +
- hw/arm/allwinner-a10.c                |   7 +
- hw/misc/Kconfig                       |   3 +
- hw/misc/allwinner-a10-dramc.c         | 179 ++++++++++++++++++++++++++
- hw/misc/meson.build                   |   1 +
- include/hw/arm/allwinner-a10.h        |   2 +
- include/hw/misc/allwinner-a10-dramc.h |  68 ++++++++++
- 7 files changed, 261 insertions(+)
- create mode 100644 hw/misc/allwinner-a10-dramc.c
- create mode 100644 include/hw/misc/allwinner-a10-dramc.h
+ hw/arm/allwinner-a10.c         | 18 ++++++++++++++++++
+ hw/arm/cubieboard.c            |  5 +++++
+ include/hw/arm/allwinner-a10.h | 21 +++++++++++++++++++++
+ 3 files changed, 44 insertions(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 14f52b41af..140f142ae5 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -320,6 +320,7 @@ config ALLWINNER_A10
-     select ALLWINNER_A10_PIT
-     select ALLWINNER_A10_PIC
-     select ALLWINNER_A10_CCM
-+    select ALLWINNER_A10_DRAMC
-     select ALLWINNER_EMAC
-     select SERIAL
-     select UNIMP
 diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index 86baeeeca2..a5f7a36ac9 100644
+index 17e439777e..dc1966ff7a 100644
 --- a/hw/arm/allwinner-a10.c
 +++ b/hw/arm/allwinner-a10.c
-@@ -25,6 +25,7 @@
+@@ -24,7 +24,9 @@
+ #include "sysemu/sysemu.h"
  #include "hw/boards.h"
  #include "hw/usb/hcd-ohci.h"
++#include "hw/loader.h"
  
-+#define AW_A10_DRAMC_BASE       0x01c01000
++#define AW_A10_SRAM_A_BASE      0x00000000
+ #define AW_A10_DRAMC_BASE       0x01c01000
  #define AW_A10_MMC0_BASE        0x01c0f000
  #define AW_A10_CCM_BASE         0x01c20000
- #define AW_A10_PIC_REG_BASE     0x01c20400
-@@ -49,6 +50,8 @@ static void aw_a10_init(Object *obj)
+@@ -38,6 +40,22 @@
+ #define AW_A10_RTC_BASE         0x01c20d00
+ #define AW_A10_I2C0_BASE        0x01c2ac00
  
-     object_initialize_child(obj, "ccm", &s->ccm, TYPE_AW_A10_CCM);
- 
-+    object_initialize_child(obj, "dramc", &s->dramc, TYPE_AW_A10_DRAMC);
-+
-     object_initialize_child(obj, "emac", &s->emac, TYPE_AW_EMAC);
- 
-     object_initialize_child(obj, "sata", &s->sata, TYPE_ALLWINNER_AHCI);
-@@ -110,6 +113,10 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->ccm), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccm), 0, AW_A10_CCM_BASE);
- 
-+    /* DRAM Control Module */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->dramc), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 0, AW_A10_DRAMC_BASE);
-+
-     /* FIXME use qdev NIC properties instead of nd_table[] */
-     if (nd_table[0].used) {
-         qemu_check_nic_model(&nd_table[0], TYPE_AW_EMAC);
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index ed07bf4133..052fb54310 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -177,4 +177,7 @@ config LASI
- config ALLWINNER_A10_CCM
-     bool
- 
-+config ALLWINNER_A10_DRAMC
-+    bool
-+
- source macio/Kconfig
-diff --git a/hw/misc/allwinner-a10-dramc.c b/hw/misc/allwinner-a10-dramc.c
-new file mode 100644
-index 0000000000..e118b0c2fd
---- /dev/null
-+++ b/hw/misc/allwinner-a10-dramc.c
-@@ -0,0 +1,179 @@
-+/*
-+ * Allwinner A10 DRAM Controller emulation
-+ *
-+ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-+ *
-+ *  This file is derived from Allwinner H3 DRAMC,
-+ *  by Niek Linnenbank.
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "hw/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/misc/allwinner-a10-dramc.h"
-+
-+/* DRAMC register offsets */
-+enum {
-+    REG_SDR_CCR = 0x0000,
-+    REG_SDR_ZQCR0 = 0x00a8,
-+    REG_SDR_ZQSR = 0x00b0
-+};
-+
-+#define REG_INDEX(offset)    (offset / sizeof(uint32_t))
-+
-+/* DRAMC register flags */
-+enum {
-+    REG_SDR_CCR_DATA_TRAINING = (1 << 30),
-+    REG_SDR_CCR_DRAM_INIT     = (1 << 31),
-+};
-+enum {
-+    REG_SDR_ZQSR_ZCAL         = (1 << 31),
-+};
-+
-+/* DRAMC register reset values */
-+enum {
-+    REG_SDR_CCR_RESET   = 0x80020000,
-+    REG_SDR_ZQCR0_RESET = 0x07b00000,
-+    REG_SDR_ZQSR_RESET  = 0x80000000
-+};
-+
-+static uint64_t allwinner_a10_dramc_read(void *opaque, hwaddr offset,
-+                                       unsigned size)
++void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk)
 +{
-+    const AwA10DramControllerState *s = AW_A10_DRAMC(opaque);
-+    const uint32_t idx = REG_INDEX(offset);
++    const int64_t rom_size = 32 * KiB;
++    g_autofree uint8_t *buffer = g_new0(uint8_t, rom_size);
 +
-+    switch (offset) {
-+    case REG_SDR_CCR:
-+    case REG_SDR_ZQCR0:
-+    case REG_SDR_ZQSR:
-+        break;
-+    case 0x2e4 ... AW_A10_DRAMC_IOSIZE:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        return 0;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: unimplemented read offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        return 0;
++    if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
++        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
++                   __func__);
++        return;
 +    }
 +
-+    return s->regs[idx];
++    rom_add_blob("allwinner-a10.bootrom", buffer, rom_size,
++                  rom_size, AW_A10_SRAM_A_BASE,
++                  NULL, NULL, NULL, NULL, false);
 +}
 +
-+static void allwinner_a10_dramc_write(void *opaque, hwaddr offset,
-+                                   uint64_t val, unsigned size)
-+{
-+    AwA10DramControllerState *s = AW_A10_DRAMC(opaque);
-+    const uint32_t idx = REG_INDEX(offset);
-+
-+    switch (offset) {
-+    case REG_SDR_CCR:
-+        if (val & REG_SDR_CCR_DRAM_INIT) {
-+            /* Clear DRAM_INIT to indicate process is done. */
-+            val &= ~REG_SDR_CCR_DRAM_INIT;
-+        }
-+        if (val & REG_SDR_CCR_DATA_TRAINING) {
-+            /* Clear DATA_TRAINING to indicate process is done. */
-+            val &= ~REG_SDR_CCR_DATA_TRAINING;
-+        }
-+        break;
-+    case REG_SDR_ZQCR0:
-+        /* Set ZCAL in ZQSR to indicate calibration is done. */
-+        s->regs[REG_INDEX(REG_SDR_ZQSR)] |= REG_SDR_ZQSR_ZCAL;
-+        break;
-+    case 0x2e4 ... AW_A10_DRAMC_IOSIZE:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: unimplemented write offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        break;
-+    }
-+
-+    s->regs[idx] = (uint32_t) val;
-+}
-+
-+static const MemoryRegionOps allwinner_a10_dramc_ops = {
-+    .read = allwinner_a10_dramc_read,
-+    .write = allwinner_a10_dramc_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .impl.min_access_size = 4,
-+};
-+
-+static void allwinner_a10_dramc_reset_enter(Object *obj, ResetType type)
-+{
-+    AwA10DramControllerState *s = AW_A10_DRAMC(obj);
-+
-+    /* Set default values for registers */
-+    s->regs[REG_INDEX(REG_SDR_CCR)] = REG_SDR_CCR_RESET;
-+    s->regs[REG_INDEX(REG_SDR_ZQCR0)] = REG_SDR_ZQCR0_RESET;
-+    s->regs[REG_INDEX(REG_SDR_ZQSR)] = REG_SDR_ZQSR_RESET;
-+}
-+
-+static void allwinner_a10_dramc_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwA10DramControllerState *s = AW_A10_DRAMC(obj);
-+
-+    /* Memory mapping */
-+    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_a10_dramc_ops, s,
-+                          TYPE_AW_A10_DRAMC, AW_A10_DRAMC_IOSIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription allwinner_a10_dramc_vmstate = {
-+    .name = "allwinner-a10-dramc",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AwA10DramControllerState,
-+                             AW_A10_DRAMC_REGS_NUM),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void allwinner_a10_dramc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    rc->phases.enter = allwinner_a10_dramc_reset_enter;
-+    dc->vmsd = &allwinner_a10_dramc_vmstate;
-+}
-+
-+static const TypeInfo allwinner_a10_dramc_info = {
-+    .name          = TYPE_AW_A10_DRAMC,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = allwinner_a10_dramc_init,
-+    .instance_size = sizeof(AwA10DramControllerState),
-+    .class_init    = allwinner_a10_dramc_class_init,
-+};
-+
-+static void allwinner_a10_dramc_register(void)
-+{
-+    type_register_static(&allwinner_a10_dramc_info);
-+}
-+
-+type_init(allwinner_a10_dramc_register)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index c828dbeb26..9eaa0750b5 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -39,6 +39,7 @@ subdir('macio')
- softmmu_ss.add(when: 'CONFIG_IVSHMEM_DEVICE', if_true: files('ivshmem.c'))
+ static void aw_a10_init(Object *obj)
+ {
+     AwA10State *s = AW_A10(obj);
+diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+index afc7980414..37659c35fd 100644
+--- a/hw/arm/cubieboard.c
++++ b/hw/arm/cubieboard.c
+@@ -99,6 +99,11 @@ static void cubieboard_init(MachineState *machine)
+     memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BASE,
+                                 machine->ram);
  
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinner-a10-ccm.c'))
-+softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_DRAMC', if_true: files('allwinner-a10-dramc.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-ccu.c'))
- specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c'))
++    /* Load target kernel or start using BootROM */
++    if (!machine->kernel_filename && blk && blk_is_available(blk)) {
++        /* Use Boot ROM to copy data from SD card to SRAM */
++        allwinner_a10_bootrom_setup(a10, blk);
++    }
+     /* TODO create and connect IDE devices for ide_drive_get() */
+ 
+     cubieboard_binfo.ram_size = machine->ram_size;
 diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index 45d0fc2f7e..abe4ff7066 100644
+index 763935fca9..b3c9ed24c7 100644
 --- a/include/hw/arm/allwinner-a10.h
 +++ b/include/hw/arm/allwinner-a10.h
-@@ -13,6 +13,7 @@
- #include "hw/usb/hcd-ehci.h"
- #include "hw/rtc/allwinner-rtc.h"
+@@ -15,6 +15,7 @@
  #include "hw/misc/allwinner-a10-ccm.h"
-+#include "hw/misc/allwinner-a10-dramc.h"
+ #include "hw/misc/allwinner-a10-dramc.h"
+ #include "hw/i2c/allwinner-i2c.h"
++#include "sysemu/block-backend.h"
  
  #include "target/arm/cpu.h"
  #include "qom/object.h"
-@@ -32,6 +33,7 @@ struct AwA10State {
+@@ -47,4 +48,24 @@ struct AwA10State {
+     OHCISysBusState ohci[AW_A10_NUM_USB];
+ };
  
-     ARMCPU cpu;
-     AwA10ClockCtlState ccm;
-+    AwA10DramControllerState dramc;
-     AwA10PITState timer;
-     AwA10PICState intc;
-     AwEmacState emac;
-diff --git a/include/hw/misc/allwinner-a10-dramc.h b/include/hw/misc/allwinner-a10-dramc.h
-new file mode 100644
-index 0000000000..b61fbecbe7
---- /dev/null
-+++ b/include/hw/misc/allwinner-a10-dramc.h
-@@ -0,0 +1,68 @@
-+/*
-+ * Allwinner A10 DRAM Controller emulation
-+ *
-+ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-+ *
-+ *  This file is derived from Allwinner H3 DRAMC,
-+ *  by Niek Linnenbank.
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_MISC_ALLWINNER_A10_DRAMC_H
-+#define HW_MISC_ALLWINNER_A10_DRAMC_H
-+
-+#include "qom/object.h"
-+#include "hw/sysbus.h"
-+#include "hw/register.h"
-+
 +/**
-+ * @name Constants
-+ * @{
++ * Emulate Boot ROM firmware setup functionality.
++ *
++ * A real Allwinner A10 SoC contains a Boot ROM
++ * which is the first code that runs right after
++ * the SoC is powered on. The Boot ROM is responsible
++ * for loading user code (e.g. a bootloader) from any
++ * of the supported external devices and writing the
++ * downloaded code to internal SRAM. After loading the SoC
++ * begins executing the code written to SRAM.
++ *
++ * This function emulates the Boot ROM by copying 32 KiB
++ * of data from the given block device and writes it to
++ * the start of the first internal SRAM memory.
++ *
++ * @s: Allwinner A10 state object pointer
++ * @blk: Block backend device object pointer
 + */
++void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk);
 +
-+/** Size of register I/O address space used by DRAMC device */
-+#define AW_A10_DRAMC_IOSIZE        (0x1000)
-+
-+/** Total number of known registers */
-+#define AW_A10_DRAMC_REGS_NUM      (AW_A10_DRAMC_IOSIZE / sizeof(uint32_t))
-+
-+/** @} */
-+
-+/**
-+ * @name Object model
-+ * @{
-+ */
-+
-+#define TYPE_AW_A10_DRAMC    "allwinner-a10-dramc"
-+OBJECT_DECLARE_SIMPLE_TYPE(AwA10DramControllerState, AW_A10_DRAMC)
-+
-+/** @} */
-+
-+/**
-+ * Allwinner A10 DRAMC object instance state.
-+ */
-+struct AwA10DramControllerState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    /** Maps I/O registers in physical memory */
-+    MemoryRegion iomem;
-+
-+    /** Array of hardware registers */
-+    uint32_t regs[AW_A10_DRAMC_REGS_NUM];
-+};
-+
-+#endif /* HW_MISC_ALLWINNER_A10_DRAMC_H */
+ #endif
 -- 
 2.30.2
 

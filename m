@@ -1,110 +1,116 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3037007ejb;
-        Sun, 18 Dec 2022 14:16:29 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6hlMFeVP6WNrx3kGbMvAWMytj4H/3aKu/fkIRk56l2TXG4E91loXJsU+AlN4lilFfyos+W
-X-Received: by 2002:ac8:1417:0:b0:3a8:1617:bdac with SMTP id k23-20020ac81417000000b003a81617bdacmr35943121qtj.5.1671401789587;
-        Sun, 18 Dec 2022 14:16:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671401789; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3037365ejb;
+        Sun, 18 Dec 2022 14:17:25 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvX+/lqboe99Dk04biWAe6or3mAToEDxlg4YJ/Sc7Kn9ctjnune3k6Y/He/UZfkgojKrwZ0
+X-Received: by 2002:ad4:5223:0:b0:4c6:2229:1c9c with SMTP id r3-20020ad45223000000b004c622291c9cmr7845011qvq.25.1671401845413;
+        Sun, 18 Dec 2022 14:17:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671401845; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bug7Agsr8SvQZQ5jOyRxqBJA21HsdeTMlVTeL0/Xwi+jdYE4ZqkTobH4b+RaIjxFiJ
-         nujtMkjuTIW0NzA6nDVr+VlxmFbTpG9VAsGp4sMT5ZMdikIlDK2sDwzG0JtpPDY3s2d3
-         OOFYiJ0PfZulSKkKJAVQu/zkWti9GIPs0PC4DZDJfBoWXECKJ/O95mOfcfOdKbVZD3dz
-         Gx2W1+Aj/IHafOOAXF+t6Bu+LeZ/Nh852Nf9XUIxLLgXO9l2hPYs4xC3lyWCb+HLg3DO
-         h+NUU4znkioQgClGVTwJasmk/oBNA1tUzM9CdZUGfGf5sYKL2ZM00zpQoXQwbV6J2iR7
-         UwWw==
+        b=P2LHm3LIrhjVxdopUZQQ1Tsr95BOTkPji/fvuK5ozqz/mTnxKyY3y6tIV1Hg04Ae8o
+         9rDh5YCB1hKFCHJxYjy2IOpPsrcvg5VnIb77VTy9PTR+HaP/APG16E/GUYc+R6HUUhAS
+         NS+Ngp7emS5SwPl8Bt7QL/82Qjf0RsvLHar5vuNWMgV4E+YiCrxmeUlbII0tjiyJZTLE
+         JEob18oVKvSWLa+6aq5FH4b5pOROBjdcqe0Ca10X9FS6u81bjejitlVrwbmZHcBbyUTY
+         G6SogT/XH6qyf0fKrIIHR+uH9tgJ9/9cd9TNzZNEyCbIjayX8X600Rka5FmeNxtnqe9m
+         udSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=6XxgKvnm9MYMKXv09WPFrvePMPgXJ+NRRTmF8+TAj58=;
-        b=GcgrXpdTtJnRKMvUIuRMWRhYuCwqO6Xk38fG0Dv9eHQcg1M/lQF7bXCz/lg0Zk+aBO
-         /CdqfHtdYvLlBAYWf43k6C/6qVnam7+2H9df124wtTI8qsbxrIrTTZ4KQkUkZpQpessz
-         RjkfbqVN2VtunC1MFZq8fmewUmRdTFp8l7HcqXqlNXM2k6hwniKtGws4N93Ae6Op/isy
-         BZiVaer9hflMGc6FjIyBFxsVlWxwxQA1AAWlt7EpE0jH5mvaztd20iJdcluHqz5RhOUM
-         r7HR+TJoGogENgdRdCeSonp+nHPjMAgZEMrOgMHtdNq7PkhSmJ/Fvl9Sd20kAMaOfmfJ
-         FCaQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=yXC/bojD9LagN/eSMC9Tc3MJNDDf499kG/6ZuuneINY=;
+        b=hmSJxeIuSQuGnU0Gp+WPEj4EcsqsLJu19xghXIjMGEzoiEJ8PcQ1VGJPNHUAJRDpkU
+         t2vacE4l4zf1T2UiW7BSTaL9QNfKy5SKSSsnQe6VcIP9xEGJKue508mAgz6g6pNtoCPU
+         HzeW0aoRaFP7PZo7CrjNR4PFCEXxbYcO9f05OvpRA0Zw2xTzYK3BMs03WhS+RrqCDSku
+         p36ELz32riWPIlK6vLhPGs43FdYI5A7rAJoxXQNl7jPf+2Ogszv7GkzjRAIq3/geeIME
+         2Sg/DfFdvG2Hz9vHJMzDfr97pTPTq14eUZiXoT00ZrAhyBrv/RdBOdKLy3JX7ptON/cd
+         LArg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="q6nut/rd";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BSkX4RlB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id br12-20020a05620a460c00b006fc98aedbf2si1631941qkb.393.2022.12.18.14.16.29
+        by mx.google.com with ESMTPS id t11-20020a37ea0b000000b006fed8cfac9bsi3261635qkj.452.2022.12.18.14.17.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Dec 2022 14:16:29 -0800 (PST)
+        Sun, 18 Dec 2022 14:17:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="q6nut/rd";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BSkX4RlB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p71xF-0000gl-ID; Sun, 18 Dec 2022 17:16:21 -0500
+	id 1p71yB-0001Mt-DX; Sun, 18 Dec 2022 17:17:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p71xA-0000gU-ND; Sun, 18 Dec 2022 17:16:19 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p71y9-0001Ky-TA
+ for qemu-arm@nongnu.org; Sun, 18 Dec 2022 17:17:18 -0500
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p71x7-0005OW-W7; Sun, 18 Dec 2022 17:16:15 -0500
-Received: by mail-ej1-x633.google.com with SMTP id u19so17600805ejm.8;
- Sun, 18 Dec 2022 14:16:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=6XxgKvnm9MYMKXv09WPFrvePMPgXJ+NRRTmF8+TAj58=;
- b=q6nut/rdZujBnM4at/W0/Ia5rE7n6OdPQoBubPmNUUWrivDgNY3LGVIfms8MCnIepW
- iSvIv06CSwMFD1ekwt9h6sC69xSkEIM9g5CZ9UgsUl1i57cXKC0jJRvtC2aBUa8Siatu
- mMPDxTLuacqojTpycca63zr4jbHraRLd0kRcg491t4ZJ1GnNW6oCHoeBeklqHGMdiFdk
- AnxfQ7h6LFIqgVc9a5f7+Mlpg4zkMq0wbsPtSPUMlI73SMOaJZ3DXpCvJcapAAnKCFr0
- 2A23NydxCm3kVZSwq33h8kMLu9DD2LMwl1x8FdiWzO00Jd80iTucalGVk8a+Q4G1Q2II
- chKw==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p71y8-0005Xi-BI
+ for qemu-arm@nongnu.org; Sun, 18 Dec 2022 17:17:17 -0500
+Received: by mail-ed1-x532.google.com with SMTP id m21so114520edc.3
+ for <qemu-arm@nongnu.org>; Sun, 18 Dec 2022 14:17:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=yXC/bojD9LagN/eSMC9Tc3MJNDDf499kG/6ZuuneINY=;
+ b=BSkX4RlBzXWqSzL8Pxr/oiqte6yHl29wqeGVF85FxyxASsQu8gq9LBdv9xNTw8fsm3
+ iWDJTgtN6xUNXfHz5sSUErMpdr6Xh4ZDCkmkxFTMgZrnCQ59qI6aKs6eVlYspAfIYtEW
+ nUeUQjSoW5tq4pFv2bT9w0klm+CZOUA2J4a/oVuzplRKE+Ldo7hj8ek3THEeJTkTQpvK
+ PnzC7LEimNbFL2RpjAOMjSOU3lY3OhKda3unD8Z2hVG0OHed8hvjjvF4GWhDZ1QZUQkr
+ GmhEr76rLMMN60KGgiDc3P/uzfdyTewxYEjzACqd8lbkL3YwCb5y50FrOZ35bx/ofbnN
+ GTcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=6XxgKvnm9MYMKXv09WPFrvePMPgXJ+NRRTmF8+TAj58=;
- b=QEIPBr0HbCOc0uEX+VCKP99NtWt+RhjCiN9rixOjCQeKPsE0WkHoM7bz8LDnfdmp+U
- EUreYegTvNnhQ3Y/FaEv7ehmYszaM7Utxz5LuNw/G0ylpJZyjQxBVO6xUvR18Uq/s2IY
- Bg/SxyikPoNV2YUkvCQi4ClQr5MWGjIFnwUb45abQ3RJEo0j8t6Ykm/TOP2iJPtcbY5T
- xyuQCBsHBDeetvOLjK7jkqmUEFbGhYWq2rLHTyFayrWw1lY3hQN4GHdPzKPsalvjeyUZ
- GPuczC7giWAhRCATN5az0nz4/7bFYmjs2+M00PtZslpMPckmf/+o2Z0zgxkyw09oQZlJ
- CAgg==
-X-Gm-Message-State: ANoB5pnX9q/ut2qmRF5mn4TxqQG5EX5fW/23l0gpG3BLko/3OYUAkSQd
- KzdZhXBg2YEmpvcUugQwJJsgIF5T5Z6I16GMCQA=
-X-Received: by 2002:a17:906:b34c:b0:7c0:a6d8:6a6b with SMTP id
- cd12-20020a170906b34c00b007c0a6d86a6bmr31349370ejb.194.1671401771941; Sun, 18
- Dec 2022 14:16:11 -0800 (PST)
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=yXC/bojD9LagN/eSMC9Tc3MJNDDf499kG/6ZuuneINY=;
+ b=CoLtOWiSOP4T10mDqijSh//JfGPgJF/ZkxcDEwKXwW+SFBo6IJAZ76Nfz1OgcC8qBF
+ n80KhdH1+6+nmUDWofF3RxYEe2qpM13zd2/W1WHjUVDBedkiFVcrW2fAxeBB8FHfiWl3
+ 0uyeySaE/anrgtNy0XCWvEko/Po0nVk+yO9NAS0RIk5Arr+fA+bXS0ojaSfvXahW4WZM
+ XDv9awCkWUYpOEqI4ZDEuCNUL+aEzKco1/4tqUy1uKmszrRNs0QRrO3SvsLR+9SOjble
+ IG41HC6b/QzY9R5ikt41rNO0v8RtBNB+x91NqY9LUWjwJjIFBqbOtP8fOAZC040AtG0N
+ VIKg==
+X-Gm-Message-State: ANoB5pkbK/U61JoV7zMNN9hOcNUKkR0n4BADaZwoKQ7S17OxvDKufVlV
+ KmLqGlpSqHM+e8E3cxFTk3DD3g==
+X-Received: by 2002:a05:6402:289c:b0:461:bf47:ba43 with SMTP id
+ eg28-20020a056402289c00b00461bf47ba43mr47567922edb.28.1671401832961; 
+ Sun, 18 Dec 2022 14:17:12 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ u10-20020aa7db8a000000b0046bc2f432dasm3571862edt.22.2022.12.18.14.17.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 18 Dec 2022 14:17:12 -0800 (PST)
+Message-ID: <e05afcc8-8d86-b942-6702-8ba4887c44db@linaro.org>
+Date: Sun, 18 Dec 2022 23:17:11 +0100
 MIME-Version: 1.0
-References: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
- <20221218211918.3592-7-strahinja.p.jankovic@gmail.com>
- <5bfa53e5-210f-bca4-20bf-e7f39862fbef@linaro.org>
-In-Reply-To: <5bfa53e5-210f-bca4-20bf-e7f39862fbef@linaro.org>
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Sun, 18 Dec 2022 23:16:00 +0100
-Message-ID: <CABtshVSFN91kaBGu0RqiyLrOmO+aV_=UjWxGkyy2jaL8kE8r-g@mail.gmail.com>
-Subject: Re: [PATCH v2 6/7] hw/arm: Allwinner A10 enable SPL load from MMC
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, 
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.1
+Subject: Re: [PATCH v2 0/7] Enable Cubieboard A10 boot SPL from SD card
+Content-Language: en-US
+To: Strahinja Jankovic <strahinjapjankovic@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ej1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+References: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,132 +125,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I/JBno/1XxYb
+X-TUID: ZmzjTsx2JlLo
 
-Hi,
+On 18/12/22 22:19, Strahinja Jankovic wrote:
+> This patch series adds missing Allwinner A10 modules needed for
+> successful SPL boot:
+> - Clock controller module
+> - DRAM controller
+> - I2C0 controller (added also for Allwinner H3 since it is the same)
+> - AXP-209 connected to I2C0 bus
+> 
+> It also updates Allwinner A10 emulation so SPL is copied from attached
+> SD card if `-kernel` parameter is not passed when starting QEMU
+> (approach adapted from Allwinner H3 implementation).
+> 
+> Boot from SD card has been tested with Cubieboard Armbian SD card image and custom
+> Yocto image built for Cubieboard.
+> Example usage for Armbian image:
+> qemu-system-arm -M cubieboard -nographic -sd ~/Armbian_22.11.0-trunk_Cubieboard_kinetic_edge_6.0.7.img
 
-On Sun, Dec 18, 2022 at 10:59 PM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> On 18/12/22 22:19, Strahinja Jankovic wrote:
-> > This patch enables copying of SPL from MMC if `-kernel` parameter is no=
-t
-> > passed when starting QEMU. SPL is copied to SRAM_A.
-> >
-> > The approach is reused from Allwinner H3 implementation.
-> >
-> > Tested with Armbian and custom Yocto image.
-> >
-> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-> >
-> > Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > ---
-> >   hw/arm/allwinner-a10.c         | 18 ++++++++++++++++++
-> >   hw/arm/cubieboard.c            |  5 +++++
-> >   include/hw/arm/allwinner-a10.h | 21 +++++++++++++++++++++
-> >   3 files changed, 44 insertions(+)
-> >
-> > diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-> > index 17e439777e..dc1966ff7a 100644
-> > --- a/hw/arm/allwinner-a10.c
-> > +++ b/hw/arm/allwinner-a10.c
-> > @@ -24,7 +24,9 @@
-> >   #include "sysemu/sysemu.h"
-> >   #include "hw/boards.h"
-> >   #include "hw/usb/hcd-ohci.h"
-> > +#include "hw/loader.h"
-> >
-> > +#define AW_A10_SRAM_A_BASE      0x00000000
-> >   #define AW_A10_DRAMC_BASE       0x01c01000
-> >   #define AW_A10_MMC0_BASE        0x01c0f000
-> >   #define AW_A10_CCM_BASE         0x01c20000
-> > @@ -38,6 +40,22 @@
-> >   #define AW_A10_RTC_BASE         0x01c20d00
-> >   #define AW_A10_I2C0_BASE        0x01c2ac00
-> >
-> > +void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk)
-> > +{
-> > +    const int64_t rom_size =3D 32 * KiB;
-> > +    g_autofree uint8_t *buffer =3D g_new0(uint8_t, rom_size);
-> > +
-> > +    if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
-> > +        error_setg(&error_fatal, "%s: failed to read BlockBackend data=
-",
-> > +                   __func__);
-> > +        return;
-> > +    }
-> > +
-> > +    rom_add_blob("allwinner-a10.bootrom", buffer, rom_size,
-> > +                  rom_size, AW_A10_SRAM_A_BASE,
-> > +                  NULL, NULL, NULL, NULL, false);
-> > +}
-> > +
-> >   static void aw_a10_init(Object *obj)
-> >   {
-> >       AwA10State *s =3D AW_A10(obj);
-> > diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-> > index afc7980414..37659c35fd 100644
-> > --- a/hw/arm/cubieboard.c
-> > +++ b/hw/arm/cubieboard.c
-> > @@ -99,6 +99,11 @@ static void cubieboard_init(MachineState *machine)
-> >       memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BAS=
-E,
-> >                                   machine->ram);
-> >
-> > +    /* Load target kernel or start using BootROM */
-> > +    if (!machine->kernel_filename && blk && blk_is_available(blk)) {
-> > +        /* Use Boot ROM to copy data from SD card to SRAM */
-> > +        allwinner_a10_bootrom_setup(a10, blk);
-> > +    }
-> >       /* TODO create and connect IDE devices for ide_drive_get() */
-> >
-> >       cubieboard_binfo.ram_size =3D machine->ram_size;
-> > diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-=
-a10.h
-> > index 763935fca9..b3c9ed24c7 100644
-> > --- a/include/hw/arm/allwinner-a10.h
-> > +++ b/include/hw/arm/allwinner-a10.h
-> > @@ -15,6 +15,7 @@
-> >   #include "hw/misc/allwinner-a10-ccm.h"
-> >   #include "hw/misc/allwinner-a10-dramc.h"
-> >   #include "hw/i2c/allwinner-i2c.h"
-> > +#include "sysemu/block-backend.h"
-> >
-> >   #include "target/arm/cpu.h"
-> >   #include "qom/object.h"
-> > @@ -47,4 +48,24 @@ struct AwA10State {
-> >       OHCISysBusState ohci[AW_A10_NUM_USB];
-> >   };
-> >
-> > +/**
-> > + * Emulate Boot ROM firmware setup functionality.
-> > + *
-> > + * A real Allwinner A10 SoC contains a Boot ROM
-> > + * which is the first code that runs right after
-> > + * the SoC is powered on. The Boot ROM is responsible
-> > + * for loading user code (e.g. a bootloader) from any
-> > + * of the supported external devices and writing the
-> > + * downloaded code to internal SRAM. After loading the SoC
-> > + * begins executing the code written to SRAM.
-> > + *
-> > + * This function emulates the Boot ROM by copying 32 KiB
-> > + * of data
->
-> "at offset 8 KiB" ?
+As a follow-up, could you add a test similar to
+test_arm_orangepi_bionic_20_08() in tests/avocado/boot_linux_console.py?
 
-Yes, that is correct. I will update the function description.
-
-Best regards,
-Strahinja
-
->
-> > from the given block device and writes it to
-> > + * the start of the first internal SRAM memory.
-> > + *
-> > + * @s: Allwinner A10 state object pointer
-> > + * @blk: Block backend device object pointer
-> > + */
-> > +void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk);
-> > +
-> >   #endif
->
+This test could be refactored as do_test_arm_allwinner_armbian(), called
+for orangepi and cubieboard with the corresponding url / hash.

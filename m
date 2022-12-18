@@ -1,103 +1,102 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3035681ejb;
-        Sun, 18 Dec 2022 14:13:39 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6ryKixtdugn0TrrFMH6aRHkCV5YMuDNTJtNeCPNSlh0xnQlykBtnW2QJw5KC5W1a5MN7lT
-X-Received: by 2002:ac8:5a84:0:b0:3a7:e91e:60fd with SMTP id c4-20020ac85a84000000b003a7e91e60fdmr75828672qtc.62.1671401619584;
-        Sun, 18 Dec 2022 14:13:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671401619; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3012722ejb;
+        Sun, 18 Dec 2022 13:19:44 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6u/mBd3sTy966AmrOO6PEFKsTw3RiqEXgNr66UCODbbWYrcJLth3iwOQS8GfJ/hRnveMkP
+X-Received: by 2002:a05:6214:246a:b0:4c7:7c7e:35af with SMTP id im10-20020a056214246a00b004c77c7e35afmr70821216qvb.1.1671398384518;
+        Sun, 18 Dec 2022 13:19:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671398384; cv=none;
         d=google.com; s=arc-20160816;
-        b=BWk6unRH6qbiB7rEWBfJNmmZp2PtSv/P3D3VZ1pk/2GjHTyeYJ7RDIZjxgaC3OGJii
-         5a5z/Bg2hERrOGpzey/B5cgDONbndadVHNMCLCBk80C+y0i+JCYoCELaPfZ1PglCdLXi
-         zyGfCG7/H6+0M/G6T89fpqhMS7v429MulZi4ww2HDHshgZYqGbqp5kv3X6Hi3qXH4Zw7
-         5UCIvfOMJdydhfRxcOwmiWrVNCHCdTZUOA0VVK9ZD5tbDXBBg7mf8dUbnQ8fUmIvlort
-         H+bqZe0ftgmO9WfkuznXRYlECRU6qT71qRmZAvbd84/nN7baAlZ2Wvi1RWc6YAgXQTDg
-         l57w==
+        b=V6b4/cYA5fH0enPVUplI6bjCh/e1BFT3H9JVu/w7dnzdhzizUwrxtdcoM4zBUtzBtF
+         7lxV0pqCFrMZv/fb+Ww3WuLWFogUMBO/H/PwVc3lnvxFTNQcQGXeHudI7XcKbQ07ymIb
+         qCRH3+NG5thYci1Bu2rEAhporzODL2uhbBlgspUFjlicBqqlCIccTDelf/4iwMIdAR6r
+         EbSmxaN+cOIAOi6u8qeuaQbGxLVIk006MCKV8mHmhH3B4a4Cs4MjTGYRAVgVIabSHK/B
+         6dJOogP+abXtKLlPIqwd3PJGvfuhEcKdo1AEeba+zyYTdK9+ZAcs9rds3ZyUzgsN4X7O
+         Xhdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=eCQzFaovzNNP2qLepa01OuCTmhCdk8bQPYYhxVLygK0=;
-        b=NlBObeoELl+SVXw4ZWLebLg82CB1NEJ9lM0oK0xOXa8cFmO6aXJggk81LVUEi88B3S
-         zDYg3siU36PUDjvS/10lpTywL8FYQEpTMCX8y9Zi2bn4VDkAFX1pmIhStwk7/rYeNmD4
-         y9qRF0EBt+97CkzyImPSFHFzS/1lV9bXR8B6caSu1oDS3Z5AaddR+qdWKlj41f0Tt/ut
-         dpPXE7ysiRlfUPHrklSZCKV5gNFFKNzxuun0OAJii7aLhBianvmCZaG57AMCC4h1I082
-         5AsewUkjQJVNDpXYkqkTy/jxcIXR9tenI0IzvgxE2w5Tv2FBCGfOufGs0PNx5W7fopc/
-         pz6w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=UaMyemjWHVtb8P4kKE1NTumKJ4QAyCc74gpnVxBlue4=;
+        b=OytNkVbqZzWttEFNknbvGfx/Bq1hxA23OxEEXw2lv7FQyGD55Ogaw+EHuU0/e/uNB9
+         ZPAFLPd3jJbxhyp8hX99mBjo9SBU4rmNH0DdUqUMADNAucxBjEhVPJqCmSiRct70BpNY
+         3qoOu6amg2gt4JZpyg1Muji/zWjD4dPC12XlUYg2ZjzlPTiJvFUN3McQXaVLNHQdYBE1
+         80Xufnpb6ph1aDTzhojYt/9tcQr23XE4m/AT+zh8fUdjiTFCO1yjB1Kw3PgKTuj9ZF26
+         OHvoAO3v8ijOKoURNa7wl+2kJQUaFAdrKM6tnXRrr5BM2X7qxCYIlDvOT2u19wE1TapI
+         hcSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=YJBmG4BX;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lbkbssfR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fy24-20020a05622a5a1800b003a96bffaf32si3503149qtb.774.2022.12.18.14.13.39
+        by mx.google.com with ESMTPS id v5-20020a05620a440500b006fcc0d4983dsi3593288qkp.539.2022.12.18.13.19.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Dec 2022 14:13:39 -0800 (PST)
+        Sun, 18 Dec 2022 13:19:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=YJBmG4BX;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lbkbssfR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p71u3-00086i-UV; Sun, 18 Dec 2022 17:13:03 -0500
+	id 1p714C-00011j-Km; Sun, 18 Dec 2022 16:19:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p71u1-00085A-6x; Sun, 18 Dec 2022 17:13:01 -0500
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ id 1p714B-00011H-Tl; Sun, 18 Dec 2022 16:19:27 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p71tz-0004mj-Gn; Sun, 18 Dec 2022 17:13:00 -0500
-Received: by mail-ej1-x635.google.com with SMTP id m18so17624820eji.5;
- Sun, 18 Dec 2022 14:12:58 -0800 (PST)
+ id 1p7149-0001ww-2P; Sun, 18 Dec 2022 16:19:26 -0500
+Received: by mail-lf1-x130.google.com with SMTP id b3so11130749lfv.2;
+ Sun, 18 Dec 2022 13:19:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eCQzFaovzNNP2qLepa01OuCTmhCdk8bQPYYhxVLygK0=;
- b=YJBmG4BX770jW91gxoXp4KjflhCm1UMgK/vUpx5RonB4tYuaqOG8JjKqkEg3jcRUXV
- PqMyGLqnw5UO7oew9AcUyhAro1Jfgd5WF6EMuSfbygfEZDHxDkGHDhQYtMAoGmJ+x4z+
- 8V4FLQvuX24gCSS5mMfd5mUPMQMBv8lg0G/oxZWcrJbE9Fs9IBdfeQSQGfExkXObOBa6
- r/zRoVfgukW0tlY3wUAAF4514QTp+D5UcXe9v7zHiL8Cyb/j8meHd6H6wSUtWgwownDK
- d59RsRITUslE8O8osIuc0YNO4/bLibFrHjYOcvxFWliKb3kR83qkx1tWJTNicy8xAGcA
- 0H7w==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=UaMyemjWHVtb8P4kKE1NTumKJ4QAyCc74gpnVxBlue4=;
+ b=lbkbssfRRUVA+bWSgbhzHqTjJeFJ9LArk9YS9rhYJ2bXmIYrto6gRR84NxJeyNMGkl
+ ALe1iW50kGjHqWeLP1Thf58SR7RnXnXVnpxte3u+qGEgKd6JHd56yu4talA/eoCr4h03
+ T0jMdzm+mmtX24s1LSKphZ2JOuj+Mp2grMTk8AO0kghsGhFrLK0yFxqHjxqWSoSitL4p
+ UjmCYfGH0yOETiU9I4O3YQyzW6ZKaUZHhCZiSqntRDMd9F/WfP1sMRvfpLEz0d1WGIwL
+ CMi6bv/2Ux4NfTJ33NziHDEFce4YYR/B98RPutexfYXUkKRKdQiZacC32mUf//AQkuR8
+ mq7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=eCQzFaovzNNP2qLepa01OuCTmhCdk8bQPYYhxVLygK0=;
- b=dq9NjqUCw4teRfIJH+QXLou7zGWhEDQTFzs/dL2oLDkPh04ecvOqIVyt1RR7DbZxoI
- 6lqIZ6rvT01sF+yFswrjoZ7bZRGVGRCEosKWkhUuv0opYW6hL/a7thvRTAvVR/QKMGxz
- GVY3AjdvBQC08Bdwl+Gmkq3uOeJYbyR+Lw1peg5c3XgA055R9yMSiHEoX5L800OliUeR
- 9zedpb/RNqgz40SUk2mEFmTiVP8z2QbStAnUdFjjDU6cPp2+pvA9vjngPfiIM+1N/W8X
- oIDhcAQqjea5++I0iEhXcvzi0m6MxWWut809HC61tECdojGwXqySxkNPO3F46RonnsZQ
- OUog==
-X-Gm-Message-State: ANoB5pn1Wa21dwFp16BFHzLQDiLEaLMMqwR/CbeBRh3qWtG+p5nKbYFW
- kx8310ODu1kEGAU7q424KwlwvASzPFtO0g4XlkI=
-X-Received: by 2002:a17:907:c281:b0:7c1:8a0b:f915 with SMTP id
- tk1-20020a170907c28100b007c18a0bf915mr1807307ejc.42.1671401577485; Sun, 18
- Dec 2022 14:12:57 -0800 (PST)
-MIME-Version: 1.0
-References: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
- <20221218211918.3592-5-strahinja.p.jankovic@gmail.com>
- <df665471-7426-f313-aece-75b8638e0da4@linaro.org>
-In-Reply-To: <df665471-7426-f313-aece-75b8638e0da4@linaro.org>
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UaMyemjWHVtb8P4kKE1NTumKJ4QAyCc74gpnVxBlue4=;
+ b=QXrxf9ATwO6LDeljLdAb0hkYo1B7SXqXZDlQSVfdaS7Nv5DAkS5zqCnGxj7lPsl8AL
+ 90eH9d/NA3BQwtQosJLipaeog5oYxg3OJ9JdmJIaGoY+HF6b/k0f27r6VSAAlRLGfuba
+ fnToDcAkFz4sm0rJSOyfmsRBxMAXspd6jWCkR/i9dpCfquKmSOkheZ6Wnbezw8wFP+rM
+ TNzhsw3D3c1Ia5qsnvLUo318iwGHTZVuNYOkve6WqGxItYkl9SQ+5/bCo844VBe/NtCp
+ ZGGCuZP9OW3qr9WrV/V23PmhhbfBPKNoKRfNr79axI27O4CkFP95mtb4wHIx0WMKzsUY
+ hRTA==
+X-Gm-Message-State: ANoB5plJdEMsc6QaBKSor2FBM+m1V17RWgS2WuCRYhA2ujU0u2TXcyaW
+ 4F7MzFbciyk4RDxRaTjD/TA=
+X-Received: by 2002:a05:6512:3055:b0:4b6:edee:5873 with SMTP id
+ b21-20020a056512305500b004b6edee5873mr10089428lfb.32.1671398362548; 
+ Sun, 18 Dec 2022 13:19:22 -0800 (PST)
+Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
+ [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
+ w7-20020a05651234c700b0049464d89e40sm902620lfr.72.2022.12.18.13.19.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 18 Dec 2022 13:19:22 -0800 (PST)
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Sun, 18 Dec 2022 23:12:46 +0100
-Message-ID: <CABtshVQNAseuzxHS7htyxEtoZDEGVG0fdf0ERdAZJgcxe=znQQ@mail.gmail.com>
-Subject: Re: [PATCH v2 4/7] hw/misc: Allwinner AXP-209 Emulation
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, 
+X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ej1-x635.google.com
+ qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Subject: [PATCH v2 0/7] Enable Cubieboard A10 boot SPL from SD card
+Date: Sun, 18 Dec 2022 22:19:11 +0100
+Message-Id: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
+X-Mailer: git-send-email 2.30.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,64 +118,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +yvDiVchDHX3
+X-TUID: uKvEzgsR7UDI
 
-Hi,
+This patch series adds missing Allwinner A10 modules needed for
+successful SPL boot:
+- Clock controller module
+- DRAM controller
+- I2C0 controller (added also for Allwinner H3 since it is the same)
+- AXP-209 connected to I2C0 bus
 
-On Sun, Dec 18, 2022 at 11:07 PM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> On 18/12/22 22:19, Strahinja Jankovic wrote:
-> > This patch adds minimal support for AXP-209 PMU.
-> > Most important is chip ID since U-Boot SPL expects version 0x1. Besides
-> > the chip ID register, reset values for two more registers used by A10
-> > U-Boot SPL are covered.
-> >
-> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-> > ---
-> >   hw/arm/Kconfig              |   1 +
-> >   hw/misc/Kconfig             |   4 +
-> >   hw/misc/allwinner-axp-209.c | 238 +++++++++++++++++++++++++++++++++++=
-+
-> >   hw/misc/meson.build         |   1 +
-> >   hw/misc/trace-events        |   5 +
-> >   5 files changed, 249 insertions(+)
-> >   create mode 100644 hw/misc/allwinner-axp-209.c
->
->
-> > diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-> > index 052fb54310..3855d937fd 100644
-> > --- a/hw/misc/Kconfig
-> > +++ b/hw/misc/Kconfig
-> > @@ -180,4 +180,8 @@ config ALLWINNER_A10_CCM
-> >   config ALLWINNER_A10_DRAMC
-> >       bool
-> >
-> > +config ALLWINNER_AXP_209
->
-> This controller is not specific to AllWinner. It can be plugged on any
-> i2c bus. Please rename it AXP209_PMU. Otherwise LGTM!
+It also updates Allwinner A10 emulation so SPL is copied from attached
+SD card if `-kernel` parameter is not passed when starting QEMU
+(approach adapted from Allwinner H3 implementation).
 
-Do you mean only in Kconfig, or everywhere (file name, function names,
-etc.)? Thanks.
+Boot from SD card has been tested with Cubieboard Armbian SD card image and custom
+Yocto image built for Cubieboard.
+Example usage for Armbian image:
+qemu-system-arm -M cubieboard -nographic -sd ~/Armbian_22.11.0-trunk_Cubieboard_kinetic_edge_6.0.7.img
 
-Best regards,
-Strahinja
+v2 from v1:
+* replaced DB_PRINTF with tracing functions
+* removed .init function in AXP209 since .reset covers functionality
+* moved defines to allwinner_i2c.c from header file
+* updated docs with information about TWI
+* minor code style fixes
 
+Strahinja Jankovic (7):
+  hw/misc: Allwinner-A10 Clock Controller Module Emulation
+  hw/misc: Allwinner A10 DRAM Controller Emulation
+  hw/i2c: Allwinner TWI/I2C Emulation
+  hw/misc: Allwinner AXP-209 Emulation
+  hw/arm: Add AXP-209 to Cubieboard
+  hw/arm: Allwinner A10 enable SPL load from MMC
+  docs/system/arm: Update Allwinner with TWI (I2C)
 
->
-> > +    bool
-> > +    depends on I2C
-> > +
-> >   source macio/Kconfig
-> > diff --git a/hw/misc/allwinner-axp-209.c b/hw/misc/allwinner-axp-209.c
-> > new file mode 100644
-> > index 0000000000..cf79175034
-> > --- /dev/null
-> > +++ b/hw/misc/allwinner-axp-209.c
-> > @@ -0,0 +1,238 @@
-> > +/*
-> > + * AXP-209 Emulation
-> > + *
-> > + * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.c=
-om>
+ docs/system/arm/cubieboard.rst        |   1 +
+ docs/system/arm/orangepi.rst          |   1 +
+ hw/arm/Kconfig                        |   5 +
+ hw/arm/allwinner-a10.c                |  40 +++
+ hw/arm/allwinner-h3.c                 |  11 +-
+ hw/arm/cubieboard.c                   |  11 +
+ hw/i2c/Kconfig                        |   4 +
+ hw/i2c/allwinner-i2c.c                | 459 ++++++++++++++++++++++++++
+ hw/i2c/meson.build                    |   1 +
+ hw/i2c/trace-events                   |   5 +
+ hw/misc/Kconfig                       |  10 +
+ hw/misc/allwinner-a10-ccm.c           | 224 +++++++++++++
+ hw/misc/allwinner-a10-dramc.c         | 179 ++++++++++
+ hw/misc/allwinner-axp-209.c           | 238 +++++++++++++
+ hw/misc/meson.build                   |   3 +
+ hw/misc/trace-events                  |   5 +
+ include/hw/arm/allwinner-a10.h        |  27 ++
+ include/hw/arm/allwinner-h3.h         |   3 +
+ include/hw/i2c/allwinner-i2c.h        |  55 +++
+ include/hw/misc/allwinner-a10-ccm.h   |  67 ++++
+ include/hw/misc/allwinner-a10-dramc.h |  68 ++++
+ 21 files changed, 1416 insertions(+), 1 deletion(-)
+ create mode 100644 hw/i2c/allwinner-i2c.c
+ create mode 100644 hw/misc/allwinner-a10-ccm.c
+ create mode 100644 hw/misc/allwinner-a10-dramc.c
+ create mode 100644 hw/misc/allwinner-axp-209.c
+ create mode 100644 include/hw/i2c/allwinner-i2c.h
+ create mode 100644 include/hw/misc/allwinner-a10-ccm.h
+ create mode 100644 include/hw/misc/allwinner-a10-dramc.h
+
+-- 
+2.30.2
+

@@ -1,86 +1,86 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2844476ejb;
-        Sun, 18 Dec 2022 07:24:17 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvVv5BLzZqyLZPVscsy7Ysyw4Bpp+DWVCbODlhd3SQXeM8ya1GFGWRx8Umg0SLBesvUWD6U
-X-Received: by 2002:a05:6214:448b:b0:4bb:a323:600b with SMTP id on11-20020a056214448b00b004bba323600bmr8502290qvb.6.1671377056944;
-        Sun, 18 Dec 2022 07:24:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671377056; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2844844ejb;
+        Sun, 18 Dec 2022 07:25:00 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtWb7GC4snNCIsJlgFAXZx49z67EX2JNZvTCKzs023MGUOAgFua3stL+tXjT9nzUqJ1Ul4g
+X-Received: by 2002:ac8:6696:0:b0:3a8:270:c0b8 with SMTP id d22-20020ac86696000000b003a80270c0b8mr8736447qtp.15.1671377099901;
+        Sun, 18 Dec 2022 07:24:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671377099; cv=none;
         d=google.com; s=arc-20160816;
-        b=szYep6ytHejpB0ErLAj3uaUYNIEKd1I4IOwoDMgHmLoppSzIi1ysj9HovjEPL1UEeD
-         D24FPoyBf+B6IJLhAXxx9iizDiViKdIs5N/CVQNF8RUAU3gQVIXtHeA/1mDPstE3vim+
-         Y3B+EgmW3h3yE/YxzFlSD6Pklw880dG3ILmQNTfivr2mgcO8ZChZaNJZ3yHKJx4ucw/x
-         ndwaX2NeU5Se1jhBiJSJ9wycHX0iiA37BKA2MDNk+DD3dAZOgq0ffbSWkrpKP/CnvJEF
-         D93C068f1XKpXAHGvHL0F2rDLwhHBR25MnjgEqry68KDISjC9OB7EXz52tgd7PZ22XBU
-         5G/w==
+        b=U2UDttqV929diPbwTFXjbhNUU+94wmkMPb2XS2PBjwqOB0TpTA96FQmw4Wd7Dq1sBJ
+         dsXT4GB39rVgI7WfLbdhcpiT3NxVFcSfSyq8vkoxZ/B4Kgx/tNAxnet9p19uSUAhaOps
+         i8EXOXmEc6ttN+jUQzFKu1jr0pdcV0mmGwKEWrCs6PcCgw9KHZ+CcjDPHx0cOgMKTHHV
+         f5fNn981tqjsenkO2swOuiHNBO3pyCWsGqEOFPG0JBfZ3l82xHG3ZYDVVqxmhiNkAs70
+         XatDhZHNO+r8wZUrzmBjzau4TNXN2Iw4jbXYbXCWct/fNCy3k9w0xF67rZR0aPRvDVhS
+         QNQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hcvEgX17Zsvo6JOaqqf3agGgGY7EyKmilb8OeV6ogUU=;
-        b=i3csY+HaX89YwvkgbZk6v9R1avL6/VQ+su7yVGoMCi5IUlz5tHnjS97Zn+8GQcQqso
-         W0RJk+8dwrZ9c9JDFnVvXyMZfxn/Q/5JSVZJWPws6tueBip4dtXTHd6bm+4p0MHMoRoy
-         BFrBESB93Vrq3v0MTxvJp4FPCQWDwMTbdx2A2LozfynZJsgXvl1S7jtBGmrqzhuNIZiR
-         k3Y+Ug3w2arW6CLlsZhR8/E8/soHMq8mCph9A3nYXtMxI2cFRZ8jGJj9fT+kDqrILxNt
-         NoX27mJq5Y+Xr3oGA0QOBNQ9GViqyKNFH8UDLrdEG2pnM1w0EyZSSrRknwq/4Lq/IsOX
-         LVHA==
+        bh=jcPcFuQB3g4LBFHs4VW6JVyzeuBMiJkbkX6djGLmEc8=;
+        b=nycynbhnRgBgInJe040I5vJVQi/DGiXk/Eo+qEiPzpqX9dKKTfvAkZRQwivr9BLMnb
+         eZtikg6sj0GSnGEb44/op0gOf3hvVtaFsZtRp4QMoTJRNBNnYok9NoRPMi5WT9egea+a
+         w9o5ogHLbbY/KBb/BCcoOHNaYipQ0PaQk2qS1a4l0PLnA+AbXpoJJlPt5+6UdmHlbzS/
+         ZyLstJnIxZmkx9emnarmB4PQgdt7ByhZzcfD102c7cOW1bNtNCok209ViPsUxFceI68v
+         4GGI53IkrOLKMNV1foDw3rNqGFikP+sOn/mRCZWl0bGAGOUWHx+tHr1E0ZLYQtjuZf0P
+         WLdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=MAmzqduX;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jaWt2JyE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fq6-20020a056214258600b004e32bc22f2asi3295687qvb.400.2022.12.18.07.24.16
+        by mx.google.com with ESMTPS id m9-20020ac86889000000b003a69c77eb09si3098490qtq.706.2022.12.18.07.24.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Dec 2022 07:24:16 -0800 (PST)
+        Sun, 18 Dec 2022 07:24:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=MAmzqduX;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jaWt2JyE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p6vVa-0005HI-5x; Sun, 18 Dec 2022 10:23:22 -0500
+	id 1p6vVa-0005HM-Cn; Sun, 18 Dec 2022 10:23:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balbi@kernel.org>)
- id 1p6nqp-0008BW-C6; Sun, 18 Dec 2022 02:12:47 -0500
-Received: from dfw.source.kernel.org ([139.178.84.217])
+ id 1p6nqp-0008Bp-Q4; Sun, 18 Dec 2022 02:12:47 -0500
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balbi@kernel.org>)
- id 1p6nqn-0000lQ-MH; Sun, 18 Dec 2022 02:12:47 -0500
+ id 1p6nqn-0000le-6E; Sun, 18 Dec 2022 02:12:47 -0500
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id CC40160CF6;
+ by ams.source.kernel.org (Postfix) with ESMTPS id 70BFEB80B45;
+ Sun, 18 Dec 2022 07:12:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B38BAC433F2;
  Sun, 18 Dec 2022 07:12:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1255C433EF;
- Sun, 18 Dec 2022 07:12:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1671347557;
- bh=b3d9vk3zLGZG4IIuROtpmXxmwdL8U1GX7bE+FZvVm0Q=;
+ s=k20201202; t=1671347559;
+ bh=yGe1sQrHHWksNESJwDTSM2bZGmCWGZPCXGrx3AJlxDg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MAmzqduXM8ukzRDLKxBcnf7K0nW9a5pfKiRsnuhDGyYIYfqoLzkPpSogMCFn7HVTv
- kir8+VtkedJYnTZrDGaytV+LG81vSFabTN47fSAloR7s/YlA7yyuQF+sIwtM7Oer1q
- SRirKqcQJ4T/fvUWWV1P7+8JSb1nfH0TvNELPWNTD6GQZW46+I1HgpIl0l3eANNHVV
- HQSJnto1qD3ylEShsITl27iifq8SrUy8PML/F/Tv/B9wYB1nWmWByK9ritnbXeuATd
- /TLjAIFN0UHRunY4Dm5/Hx1ef7zJkVuTh6k2Lewp43vpA4rm5GGnK3tsFk3mEtgP4G
- ZaXY6FA+fMmcw==
+ b=jaWt2JyEgbgFIbxtfHzRUgQ7OKhj0L4xhbEGI0u/yPGkAMYFpG5UB2Rjr9WCuGZ8L
+ Xlg4GXexmfD3UYM3zT49mi2j+7J5OlyLz2xW6oWlwLx3Wh+gbBXmFdxfigXYVlHk/c
+ IagCJGiinJy/w2vWez6GRiF7eOwjQlKbaOC9Me0Nctf/AxV5fd4rDEdGmt7UJu/Li8
+ ZnBVV6sH+Qj/U6Y1fhUW8FYy15CzVj7xGrRFLKz6AfMoyWEXDgGEV0O//BEFICxRwd
+ dbuwqbzs/eFraKyYyflz6m4tgrhSYCJVvNQ/4p8p4JBubmUFu2sYOeqs7dXDQIwh5U
+ svxHYKtSXeebQ==
 From: Felipe Balbi <balbi@kernel.org>
 To: Alistair Francis <alistair@alistair23.me>,
  Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Felipe Balbi <balbi@kernel.org>
-Subject: [PATCH 1/2] hw/arm/stm32f405: correctly describe the memory layout
-Date: Sun, 18 Dec 2022 09:12:28 +0200
-Message-Id: <20221218071229.484944-2-balbi@kernel.org>
+Subject: [PATCH 2/2] hw/arm: Add Olimex H405
+Date: Sun, 18 Dec 2022 09:12:29 +0200
+Message-Id: <20221218071229.484944-3-balbi@kernel.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221218071229.484944-1-balbi@kernel.org>
 References: <20221218071229.484944-1-balbi@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=139.178.84.217; envelope-from=balbi@kernel.org;
- helo=dfw.source.kernel.org
+Received-SPF: pass client-ip=2604:1380:4601:e00::1;
+ envelope-from=balbi@kernel.org; helo=ams.source.kernel.org
 X-Spam_score_int: -70
 X-Spam_score: -7.1
 X-Spam_bar: -------
@@ -103,60 +103,150 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LuWcuJRoZpjw
+X-TUID: yY0w40X/8GBI
 
-STM32F405 has 128K of SRAM and another 64K of CCM (Core-coupled
-Memory) at a different base address. Correctly describe the memory
-layout to give existing FW images have a chance to run unmodified.
+Olimex makes a series of low-cost STM32 boards. This commit introduces
+the minimum setup to support SMT32-H405. See [1] for details
+
+[1] https://www.olimex.com/Products/ARM/ST/STM32-H405/
 
 Signed-off-by: Felipe Balbi <balbi@kernel.org>
 ---
- hw/arm/stm32f405_soc.c         | 8 ++++++++
- include/hw/arm/stm32f405_soc.h | 5 ++++-
- 2 files changed, 12 insertions(+), 1 deletion(-)
+ MAINTAINERS                             |  6 +++
+ configs/devices/arm-softmmu/default.mak |  1 +
+ hw/arm/Kconfig                          |  4 ++
+ hw/arm/meson.build                      |  1 +
+ hw/arm/olimex-stm32-h405.c              | 65 +++++++++++++++++++++++++
+ 5 files changed, 77 insertions(+)
+ create mode 100644 hw/arm/olimex-stm32-h405.c
 
-diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
-index c07947d9f8b1..cef23d7ee41a 100644
---- a/hw/arm/stm32f405_soc.c
-+++ b/hw/arm/stm32f405_soc.c
-@@ -139,6 +139,14 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
-     }
-     memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3bd433b65a55..e37846df0071 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1026,6 +1026,12 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/netduinoplus2.c
  
-+    memory_region_init_ram(&s->ccm, NULL, "STM32F405.ccm", CCM_SIZE,
-+                           &err);
-+    if (err != NULL) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    memory_region_add_subregion(system_memory, CCM_BASE_ADDRESS, &s->ccm);
++Olimex STM32 H405
++M: Felipe Balbi <balbi@kernel.org>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/arm/olimex-stm32-h405.c
 +
-     armv7m = DEVICE(&s->armv7m);
-     qdev_prop_set_uint32(armv7m, "num-irq", 96);
-     qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
-diff --git a/include/hw/arm/stm32f405_soc.h b/include/hw/arm/stm32f405_soc.h
-index 5bb0c8d56979..249ab5434ec7 100644
---- a/include/hw/arm/stm32f405_soc.h
-+++ b/include/hw/arm/stm32f405_soc.h
-@@ -46,7 +46,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(STM32F405State, STM32F405_SOC)
- #define FLASH_BASE_ADDRESS 0x08000000
- #define FLASH_SIZE (1024 * 1024)
- #define SRAM_BASE_ADDRESS 0x20000000
--#define SRAM_SIZE (192 * 1024)
-+#define SRAM_SIZE (128 * 1024)
-+#define CCM_BASE_ADDRESS 0x10000000
-+#define CCM_SIZE (64 * 1024)
+ SmartFusion2
+ M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
+index 6985a25377a0..1b49a7830c7e 100644
+--- a/configs/devices/arm-softmmu/default.mak
++++ b/configs/devices/arm-softmmu/default.mak
+@@ -30,6 +30,7 @@ CONFIG_COLLIE=y
+ CONFIG_ASPEED_SOC=y
+ CONFIG_NETDUINO2=y
+ CONFIG_NETDUINOPLUS2=y
++CONFIG_OLIMEX_STM32_H405=y
+ CONFIG_MPS2=y
+ CONFIG_RASPI=y
+ CONFIG_DIGIC=y
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 17fcde8e1ccc..9143533ef792 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -119,6 +119,10 @@ config NETDUINOPLUS2
+     bool
+     select STM32F405_SOC
  
- struct STM32F405State {
-     /*< private >*/
-@@ -65,6 +67,7 @@ struct STM32F405State {
-     STM32F2XXADCState adc[STM_NUM_ADCS];
-     STM32F2XXSPIState spi[STM_NUM_SPIS];
- 
-+    MemoryRegion ccm;
-     MemoryRegion sram;
-     MemoryRegion flash;
-     MemoryRegion flash_alias;
++config OLIMEX_STM32_H405
++    bool
++    select STM32F405_SOC
++
+ config NSERIES
+     bool
+     select OMAP
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 92f9f6e000ea..76d4d650e42e 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -12,6 +12,7 @@ arm_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
+ arm_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
+ arm_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
+ arm_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'))
++arm_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
+ arm_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
+ arm_ss.add(when: 'CONFIG_NSERIES', if_true: files('nseries.c'))
+ arm_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
+diff --git a/hw/arm/olimex-stm32-h405.c b/hw/arm/olimex-stm32-h405.c
+new file mode 100644
+index 000000000000..5171a66074bb
+--- /dev/null
++++ b/hw/arm/olimex-stm32-h405.c
+@@ -0,0 +1,65 @@
++/*
++ * ST STM32VLDISCOVERY machine
++ * Olimex STM32-H405 machine
++ *
++ * Copyright (c) 2022 Felipe Balbi <balbi@kernel.org>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/boards.h"
++#include "hw/qdev-properties.h"
++#include "hw/qdev-clock.h"
++#include "qemu/error-report.h"
++#include "hw/arm/stm32f405_soc.h"
++#include "hw/arm/boot.h"
++
++/* olimex-stm32-h405 implementation is derived from netduinoplus2 */
++
++/* Main SYSCLK frequency in Hz (168MHz) */
++#define SYSCLK_FRQ 168000000ULL
++
++static void olimex_stm32_h405_init(MachineState *machine)
++{
++    DeviceState *dev;
++    Clock *sysclk;
++
++    /* This clock doesn't need migration because it is fixed-frequency */
++    sysclk = clock_new(OBJECT(machine), "SYSCLK");
++    clock_set_hz(sysclk, SYSCLK_FRQ);
++
++    dev = qdev_new(TYPE_STM32F405_SOC);
++    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
++    qdev_connect_clock_in(dev, "sysclk", sysclk);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++
++    armv7m_load_kernel(ARM_CPU(first_cpu),
++                       machine->kernel_filename,
++                       0, FLASH_SIZE);
++}
++
++static void olimex_stm32_h405_machine_init(MachineClass *mc)
++{
++    mc->desc = "Olimex STM32-H405 (Cortex-M4)";
++    mc->init = olimex_stm32_h405_init;
++}
++
++DEFINE_MACHINE("olimex-stm32-h405", olimex_stm32_h405_machine_init)
 -- 
 2.38.1
 

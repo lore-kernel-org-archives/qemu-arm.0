@@ -1,182 +1,171 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3039909ejb;
-        Sun, 18 Dec 2022 14:23:24 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsXeyDYMxK+9M3B0QcbDN4aPQUlL29cUapQvWeqn75LqKhWu8+TDxSdU7XnSYSY5lchL9if
-X-Received: by 2002:a05:622a:4290:b0:3a5:758d:8f5e with SMTP id cr16-20020a05622a429000b003a5758d8f5emr9107280qtb.19.1671402204239;
-        Sun, 18 Dec 2022 14:23:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671402204; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3044934ejb;
+        Sun, 18 Dec 2022 14:35:07 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuun/UUtC9g+euwjkhXn90uQjElpyZ/xTY9CdqEziuHESN9yDZGeY2CDK5M6VrpCgotrSqy
+X-Received: by 2002:ac8:5509:0:b0:3a9:87ed:ec66 with SMTP id j9-20020ac85509000000b003a987edec66mr2835413qtq.37.1671402907117;
+        Sun, 18 Dec 2022 14:35:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671402907; cv=none;
         d=google.com; s=arc-20160816;
-        b=lt9VG1J5O1YYc2RyTwaKDY5TxmWEH2WExAEPELyskR+rLGOeEACO8459wZF/YRzyVR
-         fhWX+pSIO9IsIvxy2JsyuL60wRRLSQU9TOvs9ElKSA/wbHU7s87+sTkU2sfR8GZh0PAR
-         Q7lJl79XyLSg056vpC1x3/uZNQ+BUFFW0QEknQUD7U+J2Ewoc5Qhua70V9YlCkphri42
-         WZOWoFU6Ph8u0+M/+X9kkbMEh/tBoa2BiRVrzMb5vdGTdP9ZACYUHF1yRDMgezibFNFu
-         zzNzrMguirEk5poxAIrOsWh6Ya02nFsAlqGaWHfDAmpx/31r+uUAzPs1KE278RG4bfGG
-         1XQA==
+        b=sEMmXR0NJLyCN1Ny52TozY+/7+QMdCh7XFXbq0WqN2w0V3csZrxlrYO5ACokk0y+6r
+         jfP7Jjiv2ldyy4JhXDnOl94itBjJWUK7pPZEhLteGLauIweuNyi4zept9utlhT5eCX8U
+         0Z60pqlgXow4wtkucRapY8dU9juRQutciSusopzxX++TjY0NWZen/oNW0uG5rF6QboDh
+         7dBdurAz9tzgDiE1s2OeVtv1fuhbWgdeaMCK+XIBnS3h2TwyZRn8cacYjFrmH5I6yF/q
+         DQ/NtYCXQ57nQLTWdJEYd/e55kszew4rmdV7EtqszN/bjmiDYAFLCFTbDz+E8PliCkPL
+         RY0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=oU1vIsXfzsQ8HZcqwzN7T/MAXsE1HSu+cMUHvbTZ7TM=;
-        b=RWHgAWXaC5+y2WOvMst/Xv15B/CE4oBkPGVNr5n1aZJKKQw2Z/gFXYVcMQpFV1OzX2
-         Fw/MmGwmsLgk+u7sb5aqKSYSXgwkS2TJLwYjbgWuhtOJ4J/Y3jg4t1P4d5Sze9gK95fs
-         hWv2faKS9VeJa/m20OXe42B0okh+TAJoLwbTOmbPIMODeJG5E7pj1HkRMU/vQagyspgu
-         PMq5uVHnKfvsd+81vJoEgU51tw/JeTG4U8c3lrdYHZ33BkshW+G4Z41mpsODV2lRFO9k
-         NZAXIH7taZaUXd/x2FUaP/V+s0kBrYKd63e6QNNgZZr3jsM//kl1obi1sTH2WqggaqCO
-         xwcg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=N1OyHl9iOgErcjqtGG7/GzdFNtJtKnhb3MWGf1ArNr8=;
+        b=wFlIiYZuGDyKeWLylleQwE7EX08pHjxyoil6tiVIGigMdoIDOWfpaQYfSWn7WdNnwp
+         Vb/rjSTZsqsGfEGlhFoQZMGUnEqM9RBC7hDmwrnfxzAYx5PLK/hsfN38DScPxM9DcnDl
+         bFNwPyEadKnxUN6kN3Ax5OnYTJHe7xDkhi7thgK5rFkeGjL103Jy2eYjRFKgX5t916lg
+         z4tVxkNpxtCg95f74RKQEOiPFcfGhTv4igHb/rBr8IoroGZiwfSZZrH6fDnkMtaUqtCQ
+         X8TIXQ25rMNittXHySoW26cP8C2wDcsPr0Jittbw3/UxKvNxNqheX9GfdfLbYU+sISTC
+         IweQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ujBFWKn7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cwFEQqzK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h12-20020ac8744c000000b003a4feedd996si3392971qtr.555.2022.12.18.14.23.24
+        by mx.google.com with ESMTPS id v23-20020ac87497000000b00399a6c4c4cesi3432554qtq.134.2022.12.18.14.35.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Dec 2022 14:23:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 18 Dec 2022 14:35:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ujBFWKn7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cwFEQqzK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p723s-0002f4-U0; Sun, 18 Dec 2022 17:23:12 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p72Ep-0005Vk-5k; Sun, 18 Dec 2022 17:34:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p723r-0002eC-39
- for qemu-arm@nongnu.org; Sun, 18 Dec 2022 17:23:11 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1p72Eo-0005Uv-7z; Sun, 18 Dec 2022 17:34:30 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p723p-0006LU-Fn
- for qemu-arm@nongnu.org; Sun, 18 Dec 2022 17:23:10 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id bj12so17542108ejb.13
- for <qemu-arm@nongnu.org>; Sun, 18 Dec 2022 14:23:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oU1vIsXfzsQ8HZcqwzN7T/MAXsE1HSu+cMUHvbTZ7TM=;
- b=ujBFWKn7HAh7fMF4KxKCydBEEwGAgs0VK6utmSn3Oy5ZIXs9Li2xWF6tSCZA1zfi7f
- Cp7TllXkvQD/Yt2ltV/xny0K/gTf28WWWktW/3NGakGwmfQEIEos4HRbkYDmt5lyX9tG
- GyEWcCZQUC0W+Ogm2cwu8TK6p4QLP/kjAsIFRKY3qqONQ0tFdNaOS5o/7bE5+X/1WzQ6
- pcsUVJtvBi0pDKuhre1Jhp4bAHAfC7e/CVyKxFZa4DLKOBYLvd7Um0/ahon4/ipN/RxS
- TicQnYcZT34FpMccFltEbsqWEO8tfzN1tvFuOI+5gVCU0D8gMiWlxJ7YMFAQp+4mWFqH
- 9OZQ==
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1p72El-00081K-TI; Sun, 18 Dec 2022 17:34:29 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id b69so10617162edf.6;
+ Sun, 18 Dec 2022 14:34:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=N1OyHl9iOgErcjqtGG7/GzdFNtJtKnhb3MWGf1ArNr8=;
+ b=cwFEQqzKDDU+okmc/vnoOmxj78Xs8Lq7p8K2z/lZLZ89W5dqtGEhQ+1tXFyeHSTHMP
+ 0JWOHErBuWot5P+7uk2mFRy/boqr6AxEjxUzZoTooDcut/PYKHk/I+PHDfGDAHgTVwdh
+ Egny3uUEEHGs/oPqdK9JKKAnEa2g6vRUdIXu13Y4tuNamZ4kiLc/1TGh5yCdEGYyNbbA
+ L8Xx5ubyPdQoTqFlaOL6d+aKJVfJJy5t4wKnE82VRMMTus9imAJWCr1/LNzQSvIY7w3N
+ dKO/89/8WZ6oh3dXlHanAJa5jb/jfuhrpPNKODwtaIOnle2FftsP2U6mOrs4ETKSuLmD
+ lgCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oU1vIsXfzsQ8HZcqwzN7T/MAXsE1HSu+cMUHvbTZ7TM=;
- b=nBopjerJOeQW2rTfnRLgSwaA11crywsEXLHM2ksUhKI+Tj9W3Y1PQ30qbTmHZWW/dn
- BgEKBPFNvHq4vhgFP36SJW4R80kW2sjsKLEMmlcmDY9eeFSlPeZkDZABppwiSYVIsvxJ
- 51CWLHUx2xjxHdM3yIYCkNmSv9SFV3FXbrUpVHbQZ9HIFhGTq6IdOctOQ0r0VKyqExYS
- 9h/+57c/AYgdde4fPaKasFC8qG1SEJV5/MEaV/Wsmys+DSQnef9bJsCKtPBIemUhGcDb
- Yj1hOUX0oEG0uf0uAbNrWhwmT9xjn0lut5O+eBSZLPwmOn7ch864rt+TtJNK7Vr1SgsK
- rOeQ==
-X-Gm-Message-State: AFqh2krFGFNcWaaQ4NLQNfJV0wn5YK+BIt33+m5AC25J+K90rAZtocm/
- KZGr9c0kfzXDXaTUZC+e+j/wNA==
-X-Received: by 2002:a17:907:a705:b0:7c1:6b46:a722 with SMTP id
- vw5-20020a170907a70500b007c16b46a722mr3726665ejc.56.1671402187543; 
- Sun, 18 Dec 2022 14:23:07 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- sb25-20020a170906edd900b007ad2da5668csm3588489ejb.112.2022.12.18.14.23.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 18 Dec 2022 14:23:07 -0800 (PST)
-Message-ID: <de6f6dfd-e6e1-39fd-1c4f-d30249451cd1@linaro.org>
-Date: Sun, 18 Dec 2022 23:23:05 +0100
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=N1OyHl9iOgErcjqtGG7/GzdFNtJtKnhb3MWGf1ArNr8=;
+ b=ULwuMWdfJ1T5pk0/t/SZZUxABVVqR5EaMGAPrbEZdIE83Uc+BkNcImEzmgzgvoD+/3
+ tjZzzCPYasua6h52VfwgrB3lfQ53Mik4KgjLl+QEhJjK43P0VxPBT59uw+0e4YylA5pa
+ sro3mp9SDmvu+hw/OwFdK7YYgnXo9Oj6oVXumXk0pFZr3c418trVm1GfVcZk4OuRhIVx
+ ZSOSMBXqnmj/8cPs/CmNe8N5ztGqaFGR7YpLdMvN0RBB3PpSzwTjdEYdw4Ad2UUYhRiA
+ +bDoKFlQwTONCU23kBBM6K6LbOuev61cITSJ2j+fhwS4DHZzIEbSWjw/6hEqDZ6kxTKF
+ r7hg==
+X-Gm-Message-State: ANoB5pklpVIMzfWgfRdUEWOrDs9CQLofO5rx59nmxjxZ4msJNBIwG8bt
+ kMf8Ux3DjAcHoxzL2A2fhs6Ucbxck+spuZiRiIM=
+X-Received: by 2002:a05:6402:f13:b0:46c:e627:13bb with SMTP id
+ i19-20020a0564020f1300b0046ce62713bbmr7081267eda.204.1671402865739; Sun, 18
+ Dec 2022 14:34:25 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.5.1
-Subject: Re: [PATCH v2 4/7] hw/misc: Allwinner AXP-209 Emulation
-Content-Language: en-US
-To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+References: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
+ <e05afcc8-8d86-b942-6702-8ba4887c44db@linaro.org>
+In-Reply-To: <e05afcc8-8d86-b942-6702-8ba4887c44db@linaro.org>
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Date: Sun, 18 Dec 2022 23:34:14 +0100
+Message-ID: <CABtshVRUevNjOucUwtKW-sccUAADRe-9JBbYHd8UMGf0YPJXSw@mail.gmail.com>
+Subject: Re: [PATCH v2 0/7] Enable Cubieboard A10 boot SPL from SD card
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, 
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-References: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
- <20221218211918.3592-5-strahinja.p.jankovic@gmail.com>
- <df665471-7426-f313-aece-75b8638e0da4@linaro.org>
- <CABtshVQNAseuzxHS7htyxEtoZDEGVG0fdf0ERdAZJgcxe=znQQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CABtshVQNAseuzxHS7htyxEtoZDEGVG0fdf0ERdAZJgcxe=znQQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Wzu3BoZjkYwt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UUeKKqsJZNYW
 
-On 18/12/22 23:12, Strahinja Jankovic wrote:
-> Hi,
-> 
-> On Sun, Dec 18, 2022 at 11:07 PM Philippe Mathieu-Daudé
-> <philmd@linaro.org> wrote:
->>
->> On 18/12/22 22:19, Strahinja Jankovic wrote:
->>> This patch adds minimal support for AXP-209 PMU.
->>> Most important is chip ID since U-Boot SPL expects version 0x1. Besides
->>> the chip ID register, reset values for two more registers used by A10
->>> U-Boot SPL are covered.
->>>
->>> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
->>> ---
->>>    hw/arm/Kconfig              |   1 +
->>>    hw/misc/Kconfig             |   4 +
->>>    hw/misc/allwinner-axp-209.c | 238 ++++++++++++++++++++++++++++++++++++
->>>    hw/misc/meson.build         |   1 +
->>>    hw/misc/trace-events        |   5 +
->>>    5 files changed, 249 insertions(+)
->>>    create mode 100644 hw/misc/allwinner-axp-209.c
->>
->>
->>> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
->>> index 052fb54310..3855d937fd 100644
->>> --- a/hw/misc/Kconfig
->>> +++ b/hw/misc/Kconfig
->>> @@ -180,4 +180,8 @@ config ALLWINNER_A10_CCM
->>>    config ALLWINNER_A10_DRAMC
->>>        bool
->>>
->>> +config ALLWINNER_AXP_209
->>
->> This controller is not specific to AllWinner. It can be plugged on any
->> i2c bus. Please rename it AXP209_PMU. Otherwise LGTM!
-> 
-> Do you mean only in Kconfig, or everywhere (file name, function names,
-> etc.)? Thanks.
+Hi,
 
-Keeping the file / functions names with 'allwinner' would give the false
-idea this is AllWinner specific; rather confusing isn't it? Besides it
-is not part of the SoC, this is an external component sitting on the
-bus. So "everywhere".
 
-Also, the "select ALLWINNER_AXP_209/AXP209_PMU" line in hw/arm/Kconfig
-belongs to the next patch "hw/arm: Add AXP-209 to Cubieboard".
+On Sun, Dec 18, 2022 at 11:17 PM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> On 18/12/22 22:19, Strahinja Jankovic wrote:
+> > This patch series adds missing Allwinner A10 modules needed for
+> > successful SPL boot:
+> > - Clock controller module
+> > - DRAM controller
+> > - I2C0 controller (added also for Allwinner H3 since it is the same)
+> > - AXP-209 connected to I2C0 bus
+> >
+> > It also updates Allwinner A10 emulation so SPL is copied from attached
+> > SD card if `-kernel` parameter is not passed when starting QEMU
+> > (approach adapted from Allwinner H3 implementation).
+> >
+> > Boot from SD card has been tested with Cubieboard Armbian SD card image=
+ and custom
+> > Yocto image built for Cubieboard.
+> > Example usage for Armbian image:
+> > qemu-system-arm -M cubieboard -nographic -sd ~/Armbian_22.11.0-trunk_Cu=
+bieboard_kinetic_edge_6.0.7.img
+>
+> As a follow-up, could you add a test similar to
+> test_arm_orangepi_bionic_20_08() in tests/avocado/boot_linux_console.py?
+>
+> This test could be refactored as do_test_arm_allwinner_armbian(), called
+> for orangepi and cubieboard with the corresponding url / hash.
 
-Regards,
+I was planning to do it (I already have a patch for cubieboard), but
+there is a problem with finding a stable-enough image for cubieboard
+for automated testing.
+Unfortunately, Cubieboard does not have supported Armbian images as
+OrangePi-PC has (it only has weekly builds). From the images that can
+be found on archive.armbian.com, there is only one bionic image
+(21.02) and it won't boot because it hangs due to the musb issue (I
+tried both with my patches and without, by extracting
+kernel/dtb/initrd). Other images are focal, but for some reason, in
+those images it is impossible to interrupt U-Boot (tested with 21.08),
+so I could not append to bootcmd to make boot process more verbose and
+easier to monitor for automated testing.
 
-Phil.
+That is why, for now, I would suggest not updating the SPL/SD boot
+test for Cubieboard.
+
+Best regards,
+Strahinja

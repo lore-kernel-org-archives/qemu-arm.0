@@ -1,147 +1,133 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1849110ejb;
-        Fri, 16 Dec 2022 17:49:28 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7blruK9kIW3fAkRTrhlvwVsAHT3SItZjmgQW59NpvMc0gC5IvS485uswv2oUBD8U3G6+1+
-X-Received: by 2002:a05:6214:590d:b0:4e2:e61e:4862 with SMTP id lp13-20020a056214590d00b004e2e61e4862mr28195107qvb.4.1671241768724;
-        Fri, 16 Dec 2022 17:49:28 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1671241768; cv=pass;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2768657ejb;
+        Sun, 18 Dec 2022 05:06:23 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtREV73YXBjem63b1xTn8SSNFs8zDJmzkkH++9PK96RFkcEKpSYaxktcJLYMzro13RmcLCD
+X-Received: by 2002:ac8:70d2:0:b0:3a9:75b9:4b7b with SMTP id g18-20020ac870d2000000b003a975b94b7bmr10937529qtp.39.1671368783171;
+        Sun, 18 Dec 2022 05:06:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671368783; cv=none;
         d=google.com; s=arc-20160816;
-        b=TBJKijm3qoOCSzhLA9XUVKAQaG3xec4BIhl6BNvTjbONIHDOSIx29XIzyhGz1Cswss
-         dt33adkoWqIv+GAY9sfAZpHAS6x+Le7wu8DJhC6batjpDR4lSixmwSCAXHPjhOMzmfWZ
-         gxqa4Hc1FnhopoKLf9FL3MPpplkP3DgUBFY0B+k5xFNNEjKXuD+KC1mtq0jJ1JIdSNNo
-         ZaH4SdIYw8u2tJj7pLhR0LOFIo9GVunFCscUyoXFDYElOjxfpaLQ/m1nySja2DO3KZ3u
-         AReLdz4JP5mndqOVpguvHaBwRu/RIvm06SIgQKh1fQjEqfxcXw0IjQyqSXTGy9951n9q
-         MRtw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=MA71trrfArWKJ/q6YkBUjL2gWYD3LOFLsSlICBKCsz562SUBN54lOYdc0UJzBp36K/
+         IBGP/SlwgePF2ZJM0qitEhsO33M5VqYZqL7ZZ8Hau4JFxQeWKrD5ulCrfl3k0PYvAxP4
+         52/w42Ouv8BPTPHq6EfQvVqTPdvOQldFUmakFYyZPOuI0dJ1g8OPnbW9znsdEeBke16g
+         cEGHP5rJuuiGMYENUcehnfuVrND17lt+UdW41NaLfLqkkruq0ic6S7mqQUgSwB0P/9VT
+         JhAlePoqXDdS0ofibSu1AVPvvxwzvL0yOG9xKau8B7GYh97a5Dkc8U7P5ZdoQrBoGxqG
+         JE+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=TEUA4Sc05IVyQdjj4yVvuRyzuqaN2l/0LgETzE2ty4Q=;
-        b=mF9sow28vEoqT5JRxdMwCiWcWrhU0jWR9H1WLHQamfbY4U7IYc6g4g3ujKC0z1vbX5
-         fhdpSD0kIxEkVX9NkfTpbtpNKd0P2To+fG9h3d2ueSpd3q8xW/7OAyNwmsidsUvQZQWK
-         U9qdr9JGwO2ZWsRQxvQkTm/UMhpWm5VfzZVd4j2AstBdNs3sQO/ZawzPs6v3mkOosAsE
-         f8KK7rQMW2c6hAYfB8+uCDVBLLJciIQwvuAonDFZVylXJICvlZDVgPFSZ0ShTxTd2KmF
-         mx9xnLne/vlhp4xCvFkLK26xf22qwb31aCtxXjTfvW1Y79GCuhlkxL2Sho67yMVgfTEZ
-         FP4w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=VBwfzYZD;
-       arc=pass (i=1);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=5MmwUpEzu2jQZv0ay5Cgna1CDK+fw4siq1KaKp8eo3w=;
+        b=k3djZbAWZgMGfBJK0KhyQHNLzHzS5xJLddmcNkhPepomKsm5d+HhhCnOiaC5IrlEwc
+         L/zNzxl4yOgOOtoQ/LNEheU2cGCvE+uJ4/dpY+illokfdc63DbhLZ9QME+/A0e5g74Sj
+         ORWwueW/bkqrXztBcuUGqbKaLum1Eow7cwvX5aq46PTww04vnKZKQKQzrEp8cPYpONbD
+         Kqwkja7WstWcX0jBm2fKdI11ckUYlY0BNpqAPn3ye0KCyvfvoi5s2a+x5oFunlgU1+qG
+         E7/M70rpuQT2cnorDhxNXF2MOothW+n5lFcv1u1RUFBGk5HhX4z5lgDhRCK+tan3jX/L
+         Mb8g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YnCEnkHj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u3-20020ae9c003000000b006ef03f74203si1602176qkk.394.2022.12.16.17.49.28
+        by mx.google.com with ESMTPS id fb15-20020a05622a480f00b003a97c56d020si1909190qtb.364.2022.12.18.05.06.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Dec 2022 17:49:28 -0800 (PST)
+        Sun, 18 Dec 2022 05:06:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=VBwfzYZD;
-       arc=pass (i=1);
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YnCEnkHj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p6MKF-0007Na-GK; Fri, 16 Dec 2022 20:49:19 -0500
+	id 1p6tMD-0002WC-9S; Sun, 18 Dec 2022 08:05:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1p6MKD-0007NH-A6; Fri, 16 Dec 2022 20:49:18 -0500
-Received: from mail-dm6nam10olkn2030.outbound.protection.outlook.com
- ([40.92.41.30] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1p6tMA-0002Ur-PE
+ for qemu-arm@nongnu.org; Sun, 18 Dec 2022 08:05:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1p6MKA-00026Q-RX; Fri, 16 Dec 2022 20:49:17 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TKs9/zSgvYFPNmnKhiwGd/Y4OHljb9LsmxgkdE4+bZdDrHq2qyz8cTdEulu3OqOriyC+ibJ5iIHPsHEUnmsjHl6CW0sFXRJCl5O34DnkW59Ats8OuTzbk6OpZqoyjTwqo+iNLAo6zNo5ExoE4CIdXaFF0++ksgqdzTCDoLuooF70CvP2GTwD6WJq/Vvmf2BaKakJYNLaTOuCpJ6rRWQU7P6R0ONZWL8eBIA1C8N381WEPvUoKwvmC201R6qJX46wKMY1FiE5pGJa5RJrUb/225MAGm26ha+nGKYqXgshIo//b7NStpEJPq+uF2zPTuBprBhPsLrdMdtJ7wrVQEYGhw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TEUA4Sc05IVyQdjj4yVvuRyzuqaN2l/0LgETzE2ty4Q=;
- b=NxF6wcAXv8r7TEqcxmCpZj+Z/aOj/lcZDSS0xeYUrupZBWXoy4/7DFRCzQvmIe7I0B9/7ue0fqX7NOmttivHvOnV2h2q/DZIGjV7bTrUCbSvfLXDrXUZgWTzqnefZjhxfr/vJYkGGkjgIpLPrqOHfCbmLsZDiCAKRND5r1wfOlYC96oH3Tf1LBYzGp0+VZZKvjJ13cyEz27FQNbUxki338ylI7uvEfJqCKopoTlZHhOAj7phQbpl0yM2ioaXlfn515blbPcVrtoiVT7AZG+JuEMb5ehnymdgYaICrTmW3Vq6EmgZXj2a4nxfLEFvCVP6hV+lGufOUDc0w2ARj9PdMA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TEUA4Sc05IVyQdjj4yVvuRyzuqaN2l/0LgETzE2ty4Q=;
- b=VBwfzYZDObIU8/iyBch9Aq8DXuX1wykYK/9NAR3KW+c40ZiGy+3vu13zgrHkUner2X9Vdlx40G6TVonN+R3WSbqr4crUgcn3WzGCHFpme3MRfbS08lPzmn1EXaf5nXqvjUYKGvLt11tdWq/UxPNJBPJ2DWoqSSvzCNAJl2W3cICRR/mY809fJBfZiFWQfcd+eTcYC9kPjyOGHvvQ8ZsZ3gBt8x853hINZWIzl/HWrcJyx44RvAtA7pUvRpDvxgwnbGYPR3kKQmsaRcHGaFHgDt2Sua2cCJIBq4w92ycFgUQ9JSkiUbwtSCjmScVKAPvnjxw71vPJ2NeZGmOcmgplww==
-Received: from DS7PR12MB6309.namprd12.prod.outlook.com (2603:10b6:8:96::19) by
- IA1PR12MB7736.namprd12.prod.outlook.com (2603:10b6:208:420::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.19; Sat, 17 Dec
- 2022 01:49:08 +0000
-Received: from DS7PR12MB6309.namprd12.prod.outlook.com
- ([fe80::6481:82ef:ffb1:4d0a]) by DS7PR12MB6309.namprd12.prod.outlook.com
- ([fe80::6481:82ef:ffb1:4d0a%8]) with mapi id 15.20.5924.011; Sat, 17 Dec 2022
- 01:49:08 +0000
-From: Zhuojia Shen <chaosdefinition@hotmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Zhuojia Shen <chaosdefinition@hotmail.com>
-Subject: [PATCH v3] target/arm: align exposed ID registers with Linux
-Date: Fri, 16 Dec 2022 17:01:26 -0800
-Message-ID: <DS7PR12MB6309FB585E10772928F14271ACE79@DS7PR12MB6309.namprd12.prod.outlook.com>
-X-Mailer: git-send-email 2.38.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TMN: [sQ7K/pCpTFSj/SDax3l93hP6SfuFoAOF]
-X-ClientProxiedBy: SJ0PR03CA0023.namprd03.prod.outlook.com
- (2603:10b6:a03:33a::28) To DS7PR12MB6309.namprd12.prod.outlook.com
- (2603:10b6:8:96::19)
-X-Microsoft-Original-Message-ID: <20221217010124.302184-1-chaosdefinition@hotmail.com>
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1p6tM9-0007k3-5j
+ for qemu-arm@nongnu.org; Sun, 18 Dec 2022 08:05:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1671368727;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5MmwUpEzu2jQZv0ay5Cgna1CDK+fw4siq1KaKp8eo3w=;
+ b=YnCEnkHj+wmkYnR4F310gB929WKGs2a2SMSda6Fk9oBHQrdHhdkX9p+2VQj0L7Z33Ch4Ia
+ AD7ixt8qJwG/kKYnivFu4QlW85jKh4WDdPH4RbqhXScUBV9ytWaZctxynDMcP8y8WYQv5S
+ 2Zq9P/KOQGCW8E1TLMlBqDkeX9RdA7s=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-175-Ir_RUVpHOHSkqUX7F9xa9A-1; Sun, 18 Dec 2022 08:05:26 -0500
+X-MC-Unique: Ir_RUVpHOHSkqUX7F9xa9A-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ o5-20020a05600c510500b003cfca1a327fso3805717wms.8
+ for <qemu-arm@nongnu.org>; Sun, 18 Dec 2022 05:05:26 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=5MmwUpEzu2jQZv0ay5Cgna1CDK+fw4siq1KaKp8eo3w=;
+ b=fGleUN9P56dYHlMwEDgyyTJxZizN2BrcBfp3bVWebQwxxCFBeZfvSjwn0nQJWAkyC9
+ 9RGUMhpxipNndTFX8Vx1s5qfIO3XzJOyWpA4AxBSzdTb11EUr0VBM8L+Sz4tQJtnQgf5
+ 1JuMhDDEmzsgkKO007wPJFgATpN9fVPVXALI2R+z6/DHMNTUv4MT5BXz6K2Cg/CUoHIb
+ soVHxf4jZ4w6qORvhNFLztBZ08uCm0swG4kB0DoHmbqb15IpruU6dGIm/JS96rxXUl9t
+ m/iqfoTEWpw1WXCMcGHH2zTJzubsOIA9d3rB7Jn1KwDWDP8PSKE3Q0fSIttFnIeKQrxs
+ lWxw==
+X-Gm-Message-State: ANoB5pnffDFjZXTrB0HDX+bf5ZrJxkZy099bNXKLSkxrzbwhkguvMolX
+ p9ekb4tCMXwQRwnBsA78fnpal8sz4qQtWlG7zy1kRz3hgJWyVZxFSBreuQFB1N2q2t5FdpWiq/z
+ HX8/L+y3xFiRM
+X-Received: by 2002:a05:6000:1b04:b0:242:5023:46c7 with SMTP id
+ f4-20020a0560001b0400b00242502346c7mr24512687wrz.57.1671368725307; 
+ Sun, 18 Dec 2022 05:05:25 -0800 (PST)
+X-Received: by 2002:a05:6000:1b04:b0:242:5023:46c7 with SMTP id
+ f4-20020a0560001b0400b00242502346c7mr24512661wrz.57.1671368724975; 
+ Sun, 18 Dec 2022 05:05:24 -0800 (PST)
+Received: from redhat.com ([2.52.25.20]) by smtp.gmail.com with ESMTPSA id
+ c3-20020a5d5283000000b0024206ed539fsm7293990wrv.66.2022.12.18.05.05.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 18 Dec 2022 05:05:23 -0800 (PST)
+Date: Sun, 18 Dec 2022 08:05:19 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, John G Johnson <john.g.johnson@oracle.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-ppc@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 0/3] Decouple INTx-to-LNKx routing from south bridges
+Message-ID: <20221218080511-mutt-send-email-mst@kernel.org>
+References: <20221120150550.63059-1-shentey@gmail.com>
+ <17a7d714-8a1e-8a17-f657-2172060d02e5@linaro.org>
+ <3F5A5F52-5815-4CB2-9DE8-894D59B0EB8C@gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|IA1PR12MB7736:EE_
-X-MS-Office365-Filtering-Correlation-Id: 289352d0-d9d8-4014-1590-08dadfd0e30b
-X-MS-Exchange-SLBlob-MailProps: znQPCv1HvwUiiHyDbt2zU7zcdMLK3o4WS9IAWdkFOgOD3LTTp9zjDXQmStVBHTzP0+3UYpWXfdhIDN5Sx0B0FyfwGeZY3A0jMIglW+joWUJEAY6QkUi/KSEjNNzHMszX6luZ7AZFbR+z+kaJ+sDWkDcQbzxk1qdAreNvN1ljewq7yPUIy9y+SBrR5GUY4GfQ1L+++EEFK3FPBl+EQd9LeqC0vUyxlOthb8Gbb5tRk/wgjMA5Ye9hP9zYI03TU/3bUCtTcdCWk+zwotq67Y6yAr1AGZOd+BkX+nvxRqW5ZltrMzlB2yQ+p3oVq/3O5FUrwn3WsvemRijX42ScKAtZZs5B5voSXtXMtxR/ZARgMs6MsePA9QoilwvdRYerM/jQ9zIEe5IWcm42opCHcl8A1XlixtGBoAbLqOm8hhdKqJy7G5NeOTK3KaIP7n+GH2vaXgOjZghwzZJWRsPkYjgm7BpHZEbGL7Vz/kfPvgLLInGW0Xdn0LY079n7jhED6DjMbJui58ClO0Zzqlx57kN0OjNUWgmmtzT5xan3rfE8eAvNqJpucljMh46cGlAIDBFFstwHIjttfNinPVeoaUUR8GMSrn32jhEIm8qdVYEufVGcY+l5qmW5pzFIeZ5kVyVOcySNTXsrgfJT6/HUPBe6JIh6tc1FJG/jwknMRWweFcqg94ei9GZ4C0nZq6T59wK3+nAWoMKxmiBVXD+crTrgEZW5dy0yv2gFHtTXgC2vYrboyyh0ePmd1WSKIDb/XGhf+g97oWkeIxs=
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: dglTgZZvftsdADb8l00vI5wh8CQ3VMRBPcHmu1HRPcOvA0ssuZ7xf/RXoLwTYXIAOplfx0vE9ko8e+LxTd1aib8bXnIJEXYW+B1o0GIvKBcvznBKXlIciR/czik5pp7fnJNhAYw6SYvcISXxLiwz4uDhH+GjBRcld2OJNmHjCn1oRIm5c63Conz5xHMYMUjby8CYHeOgM1IAyo+LYFkgvh3YGUzdHnEkBab/nERCykdCcnverXnJS1i5gDOm6eLRn8CXKWotNYilAaJ7Oc+RWDCwuxUcD3/gnCvdXAn71F2DfLzgTbAR6dNkBLz/art7Cs4GawRkU1Gv68GSp2wy/oXUQOCWqVRyLdLfozO9aujc/KCPZoQzNfwS6dktXKUZxh2L/l2Zwmib4hFKdMvwd1wFCMNrfSLglS1jHwxyYcdEo9QOMwjjeqTVOxeqBw7RQsxUMZjWgnKzZtPGLZknOl7ZoPczVOHpfYJuguwiztFYRBhy01xeAaQMUNJGjOBlf5NRm1M9wH7OJPgnm2QCUDmCBAMbgNUfiUpD3XUaM3NwP2/c2qmItelkRC48LyiQKwJEGH/tJ3+qC+UOsryzU4RT+3oCfFb17P0dWeB0u6MxKMpQZjNOQsF4BOtPLrsjXkouGOwMAGSiZFvh0/5Agw==
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?SHIYH4QeRvhvOtNTgTTMUECWeHMIxS5lsSoFS8g2AVNTc2mV9+gfzH2IuoLv?=
- =?us-ascii?Q?/49nSafiqXD2dcwLx4ciPUgAon4KU2zsTk7uLJQwHXxLJmvKISxZ6+Fj8Qrn?=
- =?us-ascii?Q?VWlRXtMYMp3ERGrKdWVevSY2bQcx8LNnA8b8LEvLxF4oRlh9Z88oCdnPgkxk?=
- =?us-ascii?Q?IYBiTtusv7JTAzT8JLPxSVsBLtBmORnmD1QkEe6kClKLXd0OYn+nDzBCNW/f?=
- =?us-ascii?Q?StbNSSDBlrEku+bEu9PZQsnX7z8f8cID5wxlxD8imS5aa5nbGHElPQvjtuC3?=
- =?us-ascii?Q?vHWfk/zgtTGT5ir4QL/0l0k1hq3W5kDqo/LBVU8Hb0IQ77lixHeeG+aS1o3+?=
- =?us-ascii?Q?sQoFkOZVNi8yh7AzUiqQE96tMNanZ1LdzE0QcT0nDF87g17nD8QJ9uRdLbz5?=
- =?us-ascii?Q?Frrlsx+CJGqadzEBjqdy0rfTq/SgF09kZN8Mng9U+CLgaAzQXG2Y2ROEgfvI?=
- =?us-ascii?Q?/GB6X5S+f3ikBdZWWUulLk3lbCLBJJbWT4Y/87eP9WDuWW3N9+jldwetQ73t?=
- =?us-ascii?Q?eqddjNz7M/om3b9INWKGfv65M/o2m6G/e1fSBL/lQIw8pis+ZWDE5WylLPwl?=
- =?us-ascii?Q?SXySWmwnpGfY9Uonk2MPNLFoqou6ElBciwBnv2QEmwucWfVhme4Wtt0ErPnY?=
- =?us-ascii?Q?MKEhrAccALa5HV+ptGB/kzkqLKlR3JdGvXqZ5PZWb+/SU9H+FQpF80J6Qlsm?=
- =?us-ascii?Q?GZESWQ5A6kU2HEevuPSTeAwcOfn78FDhbIABO1JzvyzO8h3IbrCvrV9g230F?=
- =?us-ascii?Q?/v9mJmkMlnA7e76bcuSW3zt+8s9oK3QlEqsW0D6IXWJBxVst+2q+8nrrIiSc?=
- =?us-ascii?Q?EvMd2zZFSBEKYxQWa5JQ18ML+PQW9X7QiCNWsqIdXGaN1/4wWE8RJOCpNUoU?=
- =?us-ascii?Q?4y6Q671zFH+L24ugIriBRu/oUzzFtUgPsOeXSBmmF3tc/5dq4qkOhtSWxPvg?=
- =?us-ascii?Q?FD0AuAyAOEA7wRfZansBWls/roASpVQE7DEJsxtdVyAK9Y69JFPuQlkAggIJ?=
- =?us-ascii?Q?ivV5P9QheFTzaHlgN99PNqZW4F/tnaNYXMbMj4hnvmUVpkpc+WPmdEWN3cCi?=
- =?us-ascii?Q?plvA989asKjTla1BfPzRTFbAr1n3MQ9GxZXRyR8aQ7LqqotJi4F+9ZPu0HnS?=
- =?us-ascii?Q?+Cqy7UlvOnKNCnCNhd9XLj0frIi61ELWIzZ7ZIi0qQZSxuVrhhsOrO0yvVtO?=
- =?us-ascii?Q?wj629Yy6wgpR7mPw6nD8CTEuCA1AAd/YLkIpP6mlIGQbqtttv1JKH0s5jvi5?=
- =?us-ascii?Q?9TXz0hTtmOYQhxee6FzuYdgdsVOHPgBfEMEVgYzfvi66uMvpel975z+Bb5bD?=
- =?us-ascii?Q?Fbw=3D?=
-X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-71ea3.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: 289352d0-d9d8-4014-1590-08dadfd0e30b
-X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6309.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Dec 2022 01:49:08.5441 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB7736
-Received-SPF: pass client-ip=40.92.41.30;
- envelope-from=chaosdefinition@hotmail.com;
- helo=NAM10-DM6-obe.outbound.protection.outlook.com
+In-Reply-To: <3F5A5F52-5815-4CB2-9DE8-894D59B0EB8C@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -157,260 +143,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cwe3E/iQ8Vpy
+X-TUID: ktLMQaeyFiBL
 
-In CPUID registers exposed to userspace, some registers were missing
-and some fields were not exposed.  This patch aligns exposed ID
-registers and their fields with what the upstream kernel currently
-exposes.
+On Sun, Dec 18, 2022 at 10:21:49AM +0000, Bernhard Beschow wrote:
+> 
+> 
+> Am 9. Dezember 2022 15:23:59 UTC schrieb "Philippe Mathieu-Daudé" <philmd@linaro.org>:
+> >On 20/11/22 16:05, Bernhard Beschow wrote:
+> >> v1:
+> >> ===
+> >> 
+> >> During my PIIX consolidation work [1] I've noticed that both PIIX models have
+> >> quite different pci_slot_get_pirq() implementations. These functions seem to
+> >> map PCI INTx pins to input pins of a programmable interrupt router which is
+> >> AFAIU board-specific. IOW, board-specific assumptions are baked into the device
+> >> models which prevent e.g. the whole PIIX4 south bridge to be reusable in the PC
+> >> machine.
+> >> 
+> >> This series first factors out pci_bus_map_irqs() from pci_bus_irqs() which
+> >> then allowes for moving the two board-specific PIIX pci_slot_get_pirq()
+> >> funtions into their respective boards. With these changes, the PIIX4 south
+> >> bridge could eventually become an alternative to the PIIX3-Frankenstein
+> >> solution in the PC machine.
+> >
+> >Series:
+> >Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> 
+> Ping
+> 
+> Who will pull this?
 
-Specifically, the following new ID registers/fields are exposed to
-userspace:
-
-ID_AA64PFR1_EL1.BT:       bits 3-0
-ID_AA64PFR1_EL1.MTE:      bits 11-8
-ID_AA64PFR1_EL1.SME:      bits 27-24
-
-ID_AA64ZFR0_EL1.SVEver:   bits 3-0
-ID_AA64ZFR0_EL1.AES:      bits 7-4
-ID_AA64ZFR0_EL1.BitPerm:  bits 19-16
-ID_AA64ZFR0_EL1.BF16:     bits 23-20
-ID_AA64ZFR0_EL1.SHA3:     bits 35-32
-ID_AA64ZFR0_EL1.SM4:      bits 43-40
-ID_AA64ZFR0_EL1.I8MM:     bits 47-44
-ID_AA64ZFR0_EL1.F32MM:    bits 55-52
-ID_AA64ZFR0_EL1.F64MM:    bits 59-56
-
-ID_AA64SMFR0_EL1.F32F32:  bit 32
-ID_AA64SMFR0_EL1.B16F32:  bit 34
-ID_AA64SMFR0_EL1.F16F32:  bit 35
-ID_AA64SMFR0_EL1.I8I32:   bits 39-36
-ID_AA64SMFR0_EL1.F64F64:  bit 48
-ID_AA64SMFR0_EL1.I16I64:  bits 55-52
-ID_AA64SMFR0_EL1.FA64:    bit 63
-
-ID_AA64MMFR0_EL1.ECV:     bits 63-60
-
-ID_AA64MMFR1_EL1.AFP:     bits 47-44
-
-ID_AA64MMFR2_EL1.AT:      bits 35-32
-
-ID_AA64ISAR0_EL1.RNDR:    bits 63-60
-
-ID_AA64ISAR1_EL1.FRINTTS: bits 35-32
-ID_AA64ISAR1_EL1.BF16:    bits 47-44
-ID_AA64ISAR1_EL1.DGH:     bits 51-48
-ID_AA64ISAR1_EL1.I8MM:    bits 55-52
-
-ID_AA64ISAR2_EL1.WFxT:    bits 3-0
-ID_AA64ISAR2_EL1.RPRES:   bits 7-4
-ID_AA64ISAR2_EL1.GPA3:    bits 11-8
-ID_AA64ISAR2_EL1.APA3:    bits 15-12
-
-The code is also refactored to use symbolic names for ID register fields
-for better readability and maintainability.
-
-The test case in tests/tcg/aarch64/sysregs.c is also updated to match
-the intended behavior.
-
-Signed-off-by: Zhuojia Shen <chaosdefinition@hotmail.com>
----
-This incorporates updates to a test case in tests/tcg/aarch64/sysregs.c
-and to the Makefile that builds the test (it requires a more recent
--march flag to test id_aa64smfr0_el1), as well as a fix to a bug that
-mistakenly exposed some fields in id_aa64mmfr0_el1 which should not be
-exposed otherwise, thanks to Peter Maydell <peter.maydell@linaro.org>
-for running the test and spotting the error.
-
- target/arm/helper.c               | 96 +++++++++++++++++++++++++------
- tests/tcg/aarch64/Makefile.target |  7 ++-
- tests/tcg/aarch64/sysregs.c       | 17 ++++--
- 3 files changed, 96 insertions(+), 24 deletions(-)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index bac2ea62c4..9feb8789e8 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7864,31 +7864,89 @@ void register_cp_regs_for_features(ARMCPU *cpu)
- #ifdef CONFIG_USER_ONLY
-         static const ARMCPRegUserSpaceInfo v8_user_idregs[] = {
-             { .name = "ID_AA64PFR0_EL1",
--              .exported_bits = 0x000f000f00ff0000,
--              .fixed_bits    = 0x0000000000000011 },
-+              .exported_bits = R_ID_AA64PFR0_FP_MASK |
-+                               R_ID_AA64PFR0_ADVSIMD_MASK |
-+                               R_ID_AA64PFR0_SVE_MASK |
-+                               R_ID_AA64PFR0_DIT_MASK,
-+              .fixed_bits = (0x1u << R_ID_AA64PFR0_EL0_SHIFT) |
-+                            (0x1u << R_ID_AA64PFR0_EL1_SHIFT) },
-             { .name = "ID_AA64PFR1_EL1",
--              .exported_bits = 0x00000000000000f0 },
-+              .exported_bits = R_ID_AA64PFR1_BT_MASK |
-+                               R_ID_AA64PFR1_SSBS_MASK |
-+                               R_ID_AA64PFR1_MTE_MASK |
-+                               R_ID_AA64PFR1_SME_MASK },
-             { .name = "ID_AA64PFR*_EL1_RESERVED",
--              .is_glob = true                     },
--            { .name = "ID_AA64ZFR0_EL1"           },
-+              .is_glob = true },
-+            { .name = "ID_AA64ZFR0_EL1",
-+              .exported_bits = R_ID_AA64ZFR0_SVEVER_MASK |
-+                               R_ID_AA64ZFR0_AES_MASK |
-+                               R_ID_AA64ZFR0_BITPERM_MASK |
-+                               R_ID_AA64ZFR0_BFLOAT16_MASK |
-+                               R_ID_AA64ZFR0_SHA3_MASK |
-+                               R_ID_AA64ZFR0_SM4_MASK |
-+                               R_ID_AA64ZFR0_I8MM_MASK |
-+                               R_ID_AA64ZFR0_F32MM_MASK |
-+                               R_ID_AA64ZFR0_F64MM_MASK },
-+            { .name = "ID_AA64SMFR0_EL1",
-+              .exported_bits = R_ID_AA64SMFR0_F32F32_MASK |
-+                               R_ID_AA64SMFR0_B16F32_MASK |
-+                               R_ID_AA64SMFR0_F16F32_MASK |
-+                               R_ID_AA64SMFR0_I8I32_MASK |
-+                               R_ID_AA64SMFR0_F64F64_MASK |
-+                               R_ID_AA64SMFR0_I16I64_MASK |
-+                               R_ID_AA64SMFR0_FA64_MASK },
-             { .name = "ID_AA64MMFR0_EL1",
--              .fixed_bits    = 0x00000000ff000000 },
--            { .name = "ID_AA64MMFR1_EL1"          },
-+              .exported_bits = R_ID_AA64MMFR0_ECV_MASK,
-+              .fixed_bits = (0xfu << R_ID_AA64MMFR0_TGRAN64_SHIFT) |
-+                            (0xfu << R_ID_AA64MMFR0_TGRAN4_SHIFT) },
-+            { .name = "ID_AA64MMFR1_EL1",
-+              .exported_bits = R_ID_AA64MMFR1_AFP_MASK },
-+            { .name = "ID_AA64MMFR2_EL1",
-+              .exported_bits = R_ID_AA64MMFR2_AT_MASK },
-             { .name = "ID_AA64MMFR*_EL1_RESERVED",
--              .is_glob = true                     },
-+              .is_glob = true },
-             { .name = "ID_AA64DFR0_EL1",
--              .fixed_bits    = 0x0000000000000006 },
--            { .name = "ID_AA64DFR1_EL1"           },
-+              .fixed_bits = (0x6u << R_ID_AA64DFR0_DEBUGVER_SHIFT) },
-+            { .name = "ID_AA64DFR1_EL1" },
-             { .name = "ID_AA64DFR*_EL1_RESERVED",
--              .is_glob = true                     },
-+              .is_glob = true },
-             { .name = "ID_AA64AFR*",
--              .is_glob = true                     },
-+              .is_glob = true },
-             { .name = "ID_AA64ISAR0_EL1",
--              .exported_bits = 0x00fffffff0fffff0 },
-+              .exported_bits = R_ID_AA64ISAR0_AES_MASK |
-+                               R_ID_AA64ISAR0_SHA1_MASK |
-+                               R_ID_AA64ISAR0_SHA2_MASK |
-+                               R_ID_AA64ISAR0_CRC32_MASK |
-+                               R_ID_AA64ISAR0_ATOMIC_MASK |
-+                               R_ID_AA64ISAR0_RDM_MASK |
-+                               R_ID_AA64ISAR0_SHA3_MASK |
-+                               R_ID_AA64ISAR0_SM3_MASK |
-+                               R_ID_AA64ISAR0_SM4_MASK |
-+                               R_ID_AA64ISAR0_DP_MASK |
-+                               R_ID_AA64ISAR0_FHM_MASK |
-+                               R_ID_AA64ISAR0_TS_MASK |
-+                               R_ID_AA64ISAR0_RNDR_MASK },
-             { .name = "ID_AA64ISAR1_EL1",
--              .exported_bits = 0x000000f0ffffffff },
-+              .exported_bits = R_ID_AA64ISAR1_DPB_MASK |
-+                               R_ID_AA64ISAR1_APA_MASK |
-+                               R_ID_AA64ISAR1_API_MASK |
-+                               R_ID_AA64ISAR1_JSCVT_MASK |
-+                               R_ID_AA64ISAR1_FCMA_MASK |
-+                               R_ID_AA64ISAR1_LRCPC_MASK |
-+                               R_ID_AA64ISAR1_GPA_MASK |
-+                               R_ID_AA64ISAR1_GPI_MASK |
-+                               R_ID_AA64ISAR1_FRINTTS_MASK |
-+                               R_ID_AA64ISAR1_SB_MASK |
-+                               R_ID_AA64ISAR1_BF16_MASK |
-+                               R_ID_AA64ISAR1_DGH_MASK |
-+                               R_ID_AA64ISAR1_I8MM_MASK },
-+            { .name = "ID_AA64ISAR2_EL1",
-+              .exported_bits = R_ID_AA64ISAR2_WFXT_MASK |
-+                               R_ID_AA64ISAR2_RPRES_MASK |
-+                               R_ID_AA64ISAR2_GPA3_MASK |
-+                               R_ID_AA64ISAR2_APA3_MASK },
-             { .name = "ID_AA64ISAR*_EL1_RESERVED",
--              .is_glob = true                     },
-+              .is_glob = true },
-         };
-         modify_arm_cp_regs(v8_idregs, v8_user_idregs);
- #endif
-@@ -8206,8 +8264,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
- #ifdef CONFIG_USER_ONLY
-         static const ARMCPRegUserSpaceInfo id_v8_user_midr_cp_reginfo[] = {
-             { .name = "MIDR_EL1",
--              .exported_bits = 0x00000000ffffffff },
--            { .name = "REVIDR_EL1"                },
-+              .exported_bits = R_MIDR_EL1_REVISION_MASK |
-+                               R_MIDR_EL1_PARTNUM_MASK |
-+                               R_MIDR_EL1_ARCHITECTURE_MASK |
-+                               R_MIDR_EL1_VARIANT_MASK |
-+                               R_MIDR_EL1_IMPLEMENTER_MASK },
-+            { .name = "REVIDR_EL1" },
-         };
-         modify_arm_cp_regs(id_v8_midr_cp_reginfo, id_v8_user_midr_cp_reginfo);
- #endif
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index fc8d90ed69..db122ab4ff 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -23,7 +23,8 @@ config-cc.mak: Makefile
- 	    $(call cc-option,-march=armv8.1-a+sve2,         CROSS_CC_HAS_SVE2); \
- 	    $(call cc-option,-march=armv8.3-a,              CROSS_CC_HAS_ARMV8_3); \
- 	    $(call cc-option,-mbranch-protection=standard,  CROSS_CC_HAS_ARMV8_BTI); \
--	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE)) 3> config-cc.mak
-+	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE); \
-+	    $(call cc-option,-march=armv9-a+sme,            CROSS_CC_HAS_ARMV9_SME)) 3> config-cc.mak
- -include config-cc.mak
- 
- # Pauth Tests
-@@ -53,7 +54,11 @@ endif
- ifneq ($(CROSS_CC_HAS_SVE),)
- # System Registers Tests
- AARCH64_TESTS += sysregs
-+ifneq ($(CROSS_CC_HAS_ARMV9_SME),)
-+sysregs: CFLAGS+=-march=armv9-a+sme -DHAS_ARMV9_SME
-+else
- sysregs: CFLAGS+=-march=armv8.1-a+sve
-+endif
- 
- # SVE ioctl test
- AARCH64_TESTS += sve-ioctls
-diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
-index 40cf8d2877..7d9b0168da 100644
---- a/tests/tcg/aarch64/sysregs.c
-+++ b/tests/tcg/aarch64/sysregs.c
-@@ -112,18 +112,23 @@ int main(void)
-      * minimum valid fields - for the purposes of this check allowed
-      * to have non-zero values.
-      */
--    get_cpu_reg_check_mask(id_aa64isar0_el1, _m(00ff,ffff,f0ff,fff0));
--    get_cpu_reg_check_mask(id_aa64isar1_el1, _m(0000,00f0,ffff,ffff));
-+    get_cpu_reg_check_mask(id_aa64isar0_el1, _m(f0ff,ffff,f0ff,fff0));
-+    get_cpu_reg_check_mask(id_aa64isar1_el1, _m(00ff,f0ff,ffff,ffff));
-+    get_cpu_reg_check_mask(id_aa64isar2_el1, _m(0000,0000,0000,ffff));
-     /* TGran4 & TGran64 as pegged to -1 */
--    get_cpu_reg_check_mask(id_aa64mmfr0_el1, _m(0000,0000,ff00,0000));
--    get_cpu_reg_check_zero(id_aa64mmfr1_el1);
-+    get_cpu_reg_check_mask(id_aa64mmfr0_el1, _m(f000,0000,ff00,0000));
-+    get_cpu_reg_check_mask(id_aa64mmfr1_el1, _m(0000,f000,0000,0000));
-+    get_cpu_reg_check_mask(id_aa64mmfr2_el1, _m(0000,000f,0000,0000));
-     /* EL1/EL0 reported as AA64 only */
-     get_cpu_reg_check_mask(id_aa64pfr0_el1,  _m(000f,000f,00ff,0011));
--    get_cpu_reg_check_mask(id_aa64pfr1_el1,  _m(0000,0000,0000,00f0));
-+    get_cpu_reg_check_mask(id_aa64pfr1_el1,  _m(0000,0000,0f00,0fff));
-     /* all hidden, DebugVer fixed to 0x6 (ARMv8 debug architecture) */
-     get_cpu_reg_check_mask(id_aa64dfr0_el1,  _m(0000,0000,0000,0006));
-     get_cpu_reg_check_zero(id_aa64dfr1_el1);
--    get_cpu_reg_check_zero(id_aa64zfr0_el1);
-+    get_cpu_reg_check_mask(id_aa64zfr0_el1,  _m(0ff0,ff0f,00ff,00ff));
-+#ifdef HAS_ARMV9_SME
-+    get_cpu_reg_check_mask(id_aa64smfr0_el1, _m(80f1,00fd,0000,0000));
-+#endif
- 
-     get_cpu_reg_check_zero(id_aa64afr0_el1);
-     get_cpu_reg_check_zero(id_aa64afr1_el1);
--- 
-2.38.1
+I'll merge this, thanks!
 

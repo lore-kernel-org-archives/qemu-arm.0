@@ -1,120 +1,112 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3510856ejb;
-        Mon, 19 Dec 2022 06:10:13 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuKotF65pGeQI1DhCMZK97KFk/s0zwqmvBwGlqp6nqizgivForuOyQUfOCcdeESRYVtMOfW
-X-Received: by 2002:a05:6a20:b723:b0:af:8e92:3eeb with SMTP id fg35-20020a056a20b72300b000af8e923eebmr17073107pzb.9.1671459012898;
-        Mon, 19 Dec 2022 06:10:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671459012; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3514265ejb;
+        Mon, 19 Dec 2022 06:13:54 -0800 (PST)
+X-Received: by 2002:a05:6000:1082:b0:25c:bb30:600f with SMTP id y2-20020a056000108200b0025cbb30600fmr6339419wrw.7.1671459234799;
+        Mon, 19 Dec 2022 06:13:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671459234; cv=none;
         d=google.com; s=arc-20160816;
-        b=sTc0S+EoG3hzA0UKuPJV1ZZAfTJrQcFOkyyhU0RU95WZmmUmivywqRd+1t5I//zmrk
-         qKOTu4U7cqGNBFbsCCf5BfLdErGNdEC+sMwn+Oz7s9pzIZTBQBVc7c4Y2Fo6de3RMc19
-         Sh+0t0slW1cbJDtJeqfPhZVgoCSndsM9360pQ/yeDgycg/jGmIfKhddecrvV7yTMiAUy
-         8oxYRZJS46dlOYmtByf92L1voCMzQjN7ou0/onGulxwrbAm2QT3+AyyxY6sCTbCbg4Qr
-         1A0gYbGyxMBzPh/kfntrd1BxkQzd8MJKeTXuT9bZZqq4m01i/ymO81nygwkUpfpYS3Ia
-         +2Gg==
+        b=Z5QNFSNvdBhFebgved1B8JFkV/7f2Ftva/nOozJcZXiN7N6kjnEnSX4jRI+YddWQ5w
+         /M4OvBvoXO23Ktqxj2+82o0IOd+E9DyN3EEkd6D+uJAcMeRFO0nwrREZTsXQWxHaE7Tg
+         VCkQtIGr4tdV63YGc3oUa9mNna2PpAwV9nOdKcr5YwOMdS7p5a/2rcB6pGyl8hzz/wLS
+         Xp4Bu/r/bioMET7SiscftaIYJReetkc7SW19dHlIDg4OiRV5V1t45S7t2NhiEfrbbjYj
+         5JEJQhXm3neyVhNoWZEojP6MOEOjdNWZQZiNIK0tfXT7CbTeVZkmTmVYRfN8XDAGkN1L
+         xyIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :ironport-hdrordr:ironport-data:dkim-signature;
-        bh=lGGfYliuBO5iuGtYyjNs7KqVA+hKeECPqJ/GasuP+is=;
-        b=mOiaDSRLejEAUcwvxYvMjjjv6LjX+2V9e8E23Sr0vAh8z3yh3xNgNbbwQB/vCThu/N
-         qtKYFAX5zg0+XND+VNOJmai4deucwQA6V1b9NUkpZwJ+2GOEdU5oHTzfVtFF9byaqQY3
-         C9ndcIHSJ+t+y1SoshvwM0c/xfxfCtwoiGWnWzBYwBt1SFk4/Oj2+aselCWJ+S+Zy+2T
-         THEqznQs7wnMdpoKEIzdY3Ms8Lw2E/dIyha9kqLPVBNCdipgDVn6RWMdkby7KKqQanYd
-         F+zU456zAocrNEWowKW/6wPPQOpvViMqqPzGbdWavsnRi+1oUaw9IHpg/ROyWKjwy/lV
-         Yyow==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Nl4BGj1PyLBerZrWWS1NwXWllkrPCT7tq7b1VOTopDg=;
+        b=IjQ+2GYPK/QQ9mSxP05pJVbbMqHq/nwfFKf08bXbe5eQ30hOPPS2RVtfVdpL0v77kv
+         /zRXNsqtvsx6VOQiFxckELXY/5VMbNNVLGIyZdHwW1isDsJCeuixeCFaON9W6UHL1LO8
+         gTrS/3hxN9JNlE3dIBmBrLGbRb2mMbVeeoYsRkxOMkBt3IgG7HevdK43Dax0EeqzgYLq
+         9djd3wfJFc74Ox0tXO+IbblC34RFm5mOucZsy2xNxuHPnPHaRvSHEbmfWm1FZRNR4An0
+         r7iuc30doAAQHHxzANQLfkFVPHNKAM/ntHZ0assUBZRj7i/j1RKkEe6xCiBYt7KoBpgO
+         ioIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@citrix.com header.s=securemail header.b=courl6+X;
-       spf=pass (google.com: domain of prvs=3454adc0d=anthony.perard@citrix.com designates 216.71.145.155 as permitted sender) smtp.mailfrom="prvs=3454adc0d=anthony.perard@citrix.com";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=citrix.com
-Return-Path: <prvs=3454adc0d=anthony.perard@citrix.com>
-Received: from esa3.hc3370-68.iphmx.com (esa3.hc3370-68.iphmx.com. [216.71.145.155])
-        by mx.google.com with ESMTPS id u11-20020a6540cb000000b0046e9da9ac40si10049281pgp.556.2022.12.19.06.10.12
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Dec 2022 06:10:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of prvs=3454adc0d=anthony.perard@citrix.com designates 216.71.145.155 as permitted sender) client-ip=216.71.145.155;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Qoq1oc3W;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e6-20020adfa746000000b0023196a37fa6sor3497368wrd.36.2022.12.19.06.13.54
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 19 Dec 2022 06:13:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@citrix.com header.s=securemail header.b=courl6+X;
-       spf=pass (google.com: domain of prvs=3454adc0d=anthony.perard@citrix.com designates 216.71.145.155 as permitted sender) smtp.mailfrom="prvs=3454adc0d=anthony.perard@citrix.com";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=citrix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-  d=citrix.com; s=securemail; t=1671459012;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=bkhL5i1Zpu2u0dNJ8rDflE68+bM9GeYGaMZ8cE7WyBg=;
-  b=courl6+Xv7T1/vDKOTdvRSG+FuJoQ9FkeKPrZYgVcJn8j49zdpMBUaxD
-   dC0vEMBfrxZzpMS9hu9wmpoTB67ESl7dGEWnB9mSNTKhhqdtmuJD6MC0I
-   +YYsPYlqFddWTA/bP9M4MgmrN6qEOzk5TDLTo7p3+jihi+HraCc6KYW/F
-   c=;
-Authentication-Results: esa3.hc3370-68.iphmx.com; dkim=none (message not signed) header.i=none
-X-SBRS: 4.0
-X-MesageID: 89102970
-X-Ironport-Server: esa3.hc3370-68.iphmx.com
-X-Remote-IP: 162.221.156.83
-X-Policy: $RELAYED
-IronPort-Data: A9a23:REAz26uKIQm+B1lLID8TiCsKKOfnVB9YMUV32f8akzHdYApBsoF/q
- tZmKWyCaPrcMWunf98laIri9UhUuJTdmt4yTQRqpCgzF3sR+JbJXdiXEBz9bniYRiHhoOCLz
- O1FM4Wdc5pkJpP4jk3wWlQ0hSAkjclkfpKlVKiffHg0HVU/IMsYoUoLs/YjhYJ1isSODQqIu
- Nfjy+XSI1bg0DNvWo4uw/vrRChH4bKj5lv0gnRkPaoR5QWHxiFMZH4iDfrZw0XQE9E88tGSH
- 44v/JnhlkvF8hEkDM+Sk7qTWiXmlZaLYGBiIlIPM0STqkAqSh4ai87XB9JFAatjsB2bnsgZ9
- Tl4ncfYpTHFnEH7sL91vxFwS0mSNEDdkVPNCSDXXce7lyUqf5ZwqhnH4Y5f0YAwo45K7W9yG
- fMwdhMTYyCOgfiNmr+pcrB8n4MBBcSzFdZK0p1g5Wmx4fcORJnCR+PB5MNC3Sd2jcdLdRrcT
- 5NHM3w1Nk2GOkARfAdMYH49tL7Aan3XejtEqFWTtOwv7nLa1gBZ27nxKtvFPNeNQK25m27I9
- zuepTWmWnn2MvSi0Dq77SOutNaWsiP1ZrATTIKe17l11Qj7Kms7V0RNCArTTeOCokK3XdNSL
- 0wepnN1hac3/U2vCNL6WnWQqWSBtAQBc8BdH+0z9EeGza+8ywKHB3YFQyRpctEqtMYqAzct0
- zehltfkFXplvbuTRH+18raSpCm1fy8PIgcqYC4PTQII55/5p50zphvKQpBoF6vdpsP0Ay3xx
- HWEtwAkirkThNJN3KK+lXjejjex45TEUAMxzgPQWG2j80V+foHNT4Oy7kXUxfVJK4rfSUOO1
- FAYm9WC7MgUAJ2NnTDLS+IIdJm56vDAPDDCjFpHG5g66y/r63OlZZpX4jx1OAFuKMlsUSbkZ
- VKWoRtazJlUOnSscOlweY3ZI8glzKzqGM75furZYtpHft56cwrv1DlkYkiC3mbsuFIhnaE2J
- dGQdsPEJW0GBKpuyjq/b/0Q3b8i2mY1wma7bZLgyRO4+aCTaH6cVfEON17mRuo09rmNpgrY2
- 8xSO8uD11NUV+iWSirN+J4eKXgQIHQ7DIywoMtSHsaYORZvEmwlD/7XwJsidpZjkqATkf3Hl
- lmkV0pFjVPlgFXBLgOFbG0lb6ngNb5noG42J2opNEek1nwnSYKu6q4FcN0wZ7ZP3PVuyOMxR
- f0CcMaoBPNJRTLavTMHYvHVp4htXBeigg7IODCqCBAzdoBhSyTG+9X/eQ2p+DMJFiC6vNF4o
- rHm3x6zaYIKWgBKHMvQLvW1wDuMUWM1wbwoGRGSe58KJRuqoNMCxzHNYuEffeISJCXOwCGhj
- QuEOU4IvK7vioJt2Yyc7UyblLuBH+x7F0tcOmDU67eqKCXXllaeLZ98vPWgJm6ECj6tkEm2T
- aAMlqynbqVb9Lpfm9Ake4uH257S8DcGS1Vy6g1/VEvGYF2wYl+LCinXhJIf3kGhK1IwhOdXZ
- q5t0oMBUVlqEJm/eLL0GObCRrrr6B3ssmOOhcnZ2W2jjMONwJKJUF9JIz6HgzFHIb1+PesNm
- Ll+4ZVGu1fh1Ep7Y75qaxy4EEzVchQ9v1gP7MlGUOcHdCJwor29XXAsInCvu8zeAzm9GkIrP
- iWVlML/ulio/WKbKyBbPSGUjYJgaWEm5EgiIKkqew7YxbIoR5YfgHVszNjAZl8On0gYjb4uZ
- zAD2o8cDfzmwgqETfNrBwiEczytzjXDkqAt4zPlTFHkcnQ=
-IronPort-HdrOrdr: A9a23:UTs5kqCJzyLV3uflHemA55DYdb4zR+YMi2TDgXoBLiC9Ffb1qy
- nOppsmPHrP4wr5N0tPpTntAsi9qBHnhP1ICPgqXYtKNTOO0AHEEGgF1/qG/9SKIVydygcy79
- YZT0FWMqyVMXFKyer8/QmkA5IB7bC8gduVbD7lvhFQpNdRGthd0zs=
-X-IronPort-AV: E=Sophos;i="5.96,255,1665460800"; 
-   d="scan'208";a="89102970"
-Date: Mon, 19 Dec 2022 14:10:04 +0000
-From: Anthony PERARD <anthony.perard@citrix.com>
-To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
-CC: <qemu-devel@nongnu.org>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	<qemu-ppc@nongnu.org>, <xen-devel@lists.xenproject.org>, Laurent Vivier
-	<lvivier@redhat.com>, Markus Armbruster <armbru@redhat.com>, "Daniel Henrique
- Barboza" <danielhb413@gmail.com>, <virtio-fs@redhat.com>, Michael Roth
-	<michael.roth@amd.com>, Alex =?iso-8859-1?Q?Benn=E9e?=
-	<alex.bennee@linaro.org>, <qemu-block@nongnu.org>, Peter Maydell
-	<peter.maydell@linaro.org>, <qemu-arm@nongnu.org>, Paul Durrant
-	<paul@xen.org>, David Gibson <david@gibson.dropbear.id.au>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, John Snow
-	<jsnow@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini
-	<pbonzini@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>, "Gerd
- Hoffmann" <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>, Thomas Huth
-	<thuth@redhat.com>
-Subject: Re: [PATCH 2/6] hw/xen: use G_GNUC_PRINTF/SCANF for various functions
-Message-ID: <Y6BwvATqB0ka7qys@perard.uk.xensource.com>
-References: <20221219130205.687815-1-berrange@redhat.com>
- <20221219130205.687815-3-berrange@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Qoq1oc3W;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Nl4BGj1PyLBerZrWWS1NwXWllkrPCT7tq7b1VOTopDg=;
+        b=Qoq1oc3WR/h+dr5nNxVF0P7U/ZkhFAEPkpf+fYnizATJ+5xL7j35kQRZlFPbDPYY6c
+         xJ87qjQrF4tMPIewqjhAqQrO83nQpxuUaIk8jNhy/p3QqhwSRIlWhzki+GNhGPPoG5C0
+         CNYt5ZkwEwcQIgYOHRqOtrZ+AXFqI9J/6J5r+RJ4DODPoxNNmlTVzRYWOtbR3RO7h6dH
+         arAMC6XqWrhiNElK5I5Y8veR6sltuaZK3dnQXQHLIaG+vT7nPYnivs1S3YALat+eBHQf
+         ZANg1H+/TYJ3rRMn24mhTyfWr76k9AvneEMnhGGVK7lIH9aqaGPda+t73IjSWL2d4qQa
+         eNqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Nl4BGj1PyLBerZrWWS1NwXWllkrPCT7tq7b1VOTopDg=;
+        b=5/FV/Q1RnyCvJx7sXRtBFBSmi4K5ET7QN3xQVQQ526ELEyBBzPvA0QRrrTw/jQhwtD
+         OU50oJgcRYNEKh6smjBsvtxcDSymL1v45VbDZB2LooDYoM4iC8PDYCc2OMivy/7/XE6S
+         yCHmZRqWRLxMaNNXdQwGYkJ3T0hPeauN2XbEAJ8I5zOlMPtWck7E8hH9jrz3LYaOgkQE
+         lhINeySpFYsBH5nCqVYwZLCfLhQTC1VXzzkJxxoyCW10QxfDuZHAM9UaDSLAzxmPOZsp
+         x8vQ+5JUpJ/msKycKHq5k92z6wWXlTA0igbFom/adhqS+qDl0IqZsiEEIQA2QXKCbBZg
+         PLEw==
+X-Gm-Message-State: ANoB5plfbc0P7WBZq/U8Q8l3hMZGhGz3E+kANNeD6ejz6S49g4QlbnBC
+	THsr8yUWuxnQNMoUWdCJE8ctyxt8
+X-Google-Smtp-Source: AA0mqf5JZ3r27fj5zYU0NkvBmgVgehhQjiBRs8UlsMH+e7JchlrgCR43+KyfXv8Tqx1/1uR9NmQ+jw==
+X-Received: by 2002:adf:e992:0:b0:242:4035:622 with SMTP id h18-20020adfe992000000b0024240350622mr28575482wrm.31.1671459234482;
+        Mon, 19 Dec 2022 06:13:54 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.30.216] ([81.0.6.76])
+        by smtp.gmail.com with ESMTPSA id u18-20020adfeb52000000b002423dc3b1a9sm10072017wrn.52.2022.12.19.06.13.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Dec 2022 06:13:54 -0800 (PST)
+Message-ID: <542d86b6-3ca7-a1c4-51b1-af73d5434f57@linaro.org>
+Date: Mon, 19 Dec 2022 15:13:51 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.1
+Subject: Re: [PATCH 4/6] util/error: add G_GNUC_PRINTF for various functions
+Content-Language: en-US
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-ppc@nongnu.org,
+ xen-devel@lists.xenproject.org, Laurent Vivier <lvivier@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, virtio-fs@redhat.com,
+ Michael Roth <michael.roth@amd.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paul Durrant <paul@xen.org>, Anthony Perard <anthony.perard@citrix.com>,
+ David Gibson <david@gibson.dropbear.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Thomas Huth <thuth@redhat.com>
+References: <20221219130205.687815-1-berrange@redhat.com>
+ <20221219130205.687815-5-berrange@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221219130205.687815-5-berrange@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221219130205.687815-3-berrange@redhat.com>
-Return-Path: anthony.perard@citrix.com
-X-TUID: RKQpRL29BDso
+X-TUID: 0bbHwBjcMBnR
 
-On Mon, Dec 19, 2022 at 08:02:01AM -0500, Daniel P. BerrangÈ wrote:
-> Signed-off-by: Daniel P. BerrangÈ <berrange@redhat.com>
+On 19/12/22 14:02, Daniel P. Berrang√© wrote:
+> Signed-off-by: Daniel P. Berrang√© <berrange@redhat.com>
+> ---
+>   util/error-report.c | 1 +
+>   util/error.c        | 1 +
+>   2 files changed, 2 insertions(+)
 
-Acked-by: Anthony PERARD <anthony.perard@citrix.com>
+Reviewed-by: Philippe Mathieu-Daud√© <philmd@linaro.org>
 
-Thanks,
-
--- 
-Anthony PERARD

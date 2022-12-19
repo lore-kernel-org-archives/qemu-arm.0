@@ -1,132 +1,155 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3369754ejb;
-        Mon, 19 Dec 2022 02:39:52 -0800 (PST)
-X-Received: by 2002:a17:90a:304b:b0:218:f8a6:7bda with SMTP id q11-20020a17090a304b00b00218f8a67bdamr42617701pjl.48.1671446391794;
-        Mon, 19 Dec 2022 02:39:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671446391; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3406693ejb;
+        Mon, 19 Dec 2022 03:42:16 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4z34E1zFE3kCz94bp46ZfsOYzcOClFHA1gP2UGp19lQ9CRGNFPXAX3zGOAkPBCwWjnULPo
+X-Received: by 2002:a7b:c8c5:0:b0:3d2:3ec4:7eed with SMTP id f5-20020a7bc8c5000000b003d23ec47eedmr12957069wml.10.1671450136813;
+        Mon, 19 Dec 2022 03:42:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671450136; cv=none;
         d=google.com; s=arc-20160816;
-        b=hJ8LcLR5B9PmadyCSMVgc0t2xBO7Sck7zmWp6v38gITy83yMAJoM3az8V9n6lYXROj
-         2pa4xb3AeUA2GohxZvnm2mivQPiBNghDIhRZMmxYaVWNWqgsWRapScsxZf55eX2pWcUM
-         994bOiNFj6wZksXRjAXS32SzJldfRy4YOEqdbnXixEBxrSYOo6o504zMf3DZ+kqd2aBR
-         eLhUEv0XpXeAQQSARC9yEMjKWHQj8N34Dm1uEJUp/eHHYy2lnJBGKexKEbm3RAlCQDUp
-         /UUjS+S4TAK4SvZtil2dWmWQXd70quFiXJl4+bLKepFFj0YmbyQHUcwCIfDNJoPMetaK
-         1ETQ==
+        b=a/FO9+2r3J+AkpjUhRAeTHFDrcDNXiAICNXQUVpgBpTTl07S8wry071w1XLyDs7kJZ
+         tcLhjzeBeKXTA29X1tTOXHw1++ymnxzNo7uxBbiekHFMrhtT0xbc98XYmxVAg3e0I2ev
+         VrNfvi6hCSPHc8NTLLS6BVFsBjoTZhrsRi7O8wWUfs4h/Bi430mC/J+iigKU8Swj75Jp
+         TKE7i1UhVOAb4uttOunaBvPjMVjkKq2gQZfiBZxq1ZK8mxq3BX3v68/jrhtSqPW5LH5M
+         ylqrVfzB36TlXnF/3p5lerjOkofZkQFP37qXZlC1cpVyyf/s2ZAlFrmlmWCVPdYV6EPo
+         gtmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=u7KeSU+NIGRMiKUqkPJtZFR1KIYWRCK8Ds6T77hTh3w=;
-        b=Un40BUbYWJ7PWV+aCB7ZQSwWhM5YC2XqgS6Q/uIrWlsYE0EAmt1PsV8k9M84AjoB99
-         n3LwzPIZ+cZvlp2UrAK5oa49HplCtCP2JLqUx2e98cceUbMWgEFXR6r7ai9pMaTX6jKb
-         4KKp1onfMYL979HdqE/Z70db+WAzM83pg1cq0whByRp0wdlndHc//9YEc/Rh0dphKWby
-         WXzzWcWgwNSrInkrFSMTLq+U6CDcCkWSn/HYskEwbTQW8VAADZzX+rmm9ZJuxXT39vlt
-         TKxajgXCthmc1vxdcSFjbnhzs1obkC5pLIu37dgk7onfjfcVN23PfsT+XJYkEYHy0xDj
-         WZtw==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=1Ch9cu30zdymbS4/mu8gbBsWUq8wgD46ogCiJ5XmHdE=;
+        b=O+vRsYQ+qvMi4vhfQbldTg9/NP7BED/z0l/pOmvUe2AjQRfsp9d7QDdM9aTVKqnx9D
+         0bOXMZVRB1hPbVTPi5/FcHsunY9odZLdClI+M3fYC2VPHN6HjFKJNs2nrbfympv6xfO2
+         RQpwqnrV3Dt/0tZTcnNSy0Oyu5wr3/AO7T5UGb0PPeLZjrdBnjpRosUbP0lv53bwdt5j
+         EY+eyYqtzbCIcNGJ5NHyrc/SkSluz0bf3tGnVjfsmneF4sHa2fpR8K8HlkdM8Jl2IcdV
+         VrUNGNUdtn6Lif867lk9wKLbfjOFbx1bjSBz4O1f905KfSH9XV/hIxSvnJDw1QCxsN+z
+         vbNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uSptm9k0;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o13-20020a17090a55cd00b0021918731871sor6279843pjm.8.2022.12.19.02.39.51
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 19 Dec 2022 02:39:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="I/75ryd5";
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
+        by mx.google.com with ESMTPS id ba8-20020a0560001c0800b0025ecfece1e8si2732910wrb.448.2022.12.19.03.42.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Dec 2022 03:42:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uSptm9k0;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=u7KeSU+NIGRMiKUqkPJtZFR1KIYWRCK8Ds6T77hTh3w=;
-        b=uSptm9k0w65crp6lqNvmpCwAuG8sw4+YYo8YL+jJKAgdAISgjEFkoMJyHxncVFY0Ur
-         7FrJpM1vq7PiSGGI1FxBK6nXxl2/PESX8HIsLKuEgjl2I2XJ+lbJvVJkIPP/nSHZyebw
-         en2/IIu7lBIW/HnYYqbko3E5mj+0TVk7XXBjxNGyw5z0mqnSqAxT8rX7ngvBXdOCs7aH
-         vH1v4pl2GKo0dwF2PiKP3eQXrh3qVLbFCmXmqvPqhksd4A7EckRVy7zkygGHdcan+o7c
-         EQRmVTp98B6imAinzwShgSZYw5swi+DVYBXCPqG8K5X/aJPUg0vZR8ddGe1dCNLJ4VIr
-         Fihg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=u7KeSU+NIGRMiKUqkPJtZFR1KIYWRCK8Ds6T77hTh3w=;
-        b=gRmo5FA/RHFISwar1/pnw+wvlrTm05lDBH+CalGRnFWjFoTyIpN7n8wwACLE/Kb6P2
-         xvFBuMSbgPR7DaeP1Io2Hj+XcAOGKwDyStRhzlnhLX5I/XUMvsolCsMhQg1s4wJm1gvd
-         kIaGDIWzFQ2/SldSDYetyibc5B2Y+hYPtzXGlPHf5F7Nzd9GNhjl+CcjrNMqHocQ/o8d
-         HEfbfzSUnwiFyrpSDkhENF3Fe8AbHdccM6Xu61vvcI/gXDgIP7OxAcSvt/2ZeUQqdNqS
-         oW4l9e2gXZB4bA+36iUdhyQRfV9Psz1yX0E1qk/FexVve8WeoNu34XroYuL0LvktVWmA
-         xGLw==
-X-Gm-Message-State: AFqh2koNUYwwfR4i6lSGTsavMo3ojYcd+R+s3FQan1XEIZutqefInXDx
-	Y4p609HchwmnHsFYspmOZJ5Vyul4SlSUWY5PKvX6JPzt
-X-Google-Smtp-Source: AMrXdXu8V+vWKNuuqzeYNpv8VSmTKPBB3zpbc1mjYmM/d4GUigUrVJyYdaGEPXMQaoDCgL1to3ucV4WZRN5C9CEotFU=
-X-Received: by 2002:a17:90b:354c:b0:219:e2f1:81ad with SMTP id
- lt12-20020a17090b354c00b00219e2f181admr1914058pjb.19.1671446391242; Mon, 19
- Dec 2022 02:39:51 -0800 (PST)
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="I/75ryd5";
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 31E64606EA;
+	Mon, 19 Dec 2022 11:42:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1671450136; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1Ch9cu30zdymbS4/mu8gbBsWUq8wgD46ogCiJ5XmHdE=;
+	b=I/75ryd5gGKvQ3d+qIXOqYPQdaKXxdKMV+3oSSb5GWCd6hvKOT+Aykfl4xq8cIAiO0hVgV
+	iJ24YV1ULmzMOkUSaddw+AvG0u4MzgKsM1CZWNambDOHfZIgFB2F6QDrrfhP2Ib5d5DjEm
+	bLrJRa9S6D98AW2IC08r/Dz8R/SfcRg=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1671450136;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1Ch9cu30zdymbS4/mu8gbBsWUq8wgD46ogCiJ5XmHdE=;
+	b=ZCSGGGJquF1Io6vrmyHyZfOedD40Fsf5m32bkCJWUoCPpB40iYq7kUSsXmL7UQBQSe2GLG
+	rFmUh+eq5Q4j+JDg==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id AB87913910;
+	Mon, 19 Dec 2022 11:42:15 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id GaH0GxdOoGNaYQAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 19 Dec 2022 11:42:15 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Claudio Fontana <cfontana@suse.de>, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu?=
+ =?utf-8?Q?-Daud=C3=A9?=
+ <philmd@linaro.org>, Richard Henderson <richard.henderson@linaro.org>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: [PATCH 1/5] target/arm: only build psci for TCG
+In-Reply-To: <ced115e9-6bdb-fdb6-818d-b77e27b9ecb1@suse.de>
+References: <20221216212944.28229-2-farosas@suse.de>
+ <459E39B4-44F5-41B2-A595-1B0DB5AD80F3@csgraf.de>
+ <3355a215-dd7a-e80a-ca53-b0d65eb435b5@suse.de>
+ <76c8912f-4fb7-118a-2105-efe08f343f77@csgraf.de>
+ <ced115e9-6bdb-fdb6-818d-b77e27b9ecb1@suse.de>
+Date: Mon, 19 Dec 2022 08:42:13 -0300
+Message-ID: <87r0wv8vsa.fsf@suse.de>
 MIME-Version: 1.0
-References: <20221213125218.39868-1-philmd@linaro.org> <20221213125218.39868-3-philmd@linaro.org>
- <CAFEAcA96ncqvN9iXybCd2SrVKJ9CKsu5t3_GtdNt1ZEDAkFt0w@mail.gmail.com>
- <e8c3fdcb-81f1-7067-217c-c49e8748b84a@gmail.com> <CAFEAcA_jH3Zn1cFfnvsd_GhiBj1bNKscs7S7cwFa+FnTC9QC=g@mail.gmail.com>
- <Y6AFLpDEkpS+muSJ@yekko>
-In-Reply-To: <Y6AFLpDEkpS+muSJ@yekko>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Dec 2022 10:39:40 +0000
-Message-ID: <CAFEAcA9CUtdLXKPOqC0uRCyA0xQFZ_SrJ62SSDvPKESaxL3X2A@mail.gmail.com>
-Subject: Re: [RFC PATCH-for-8.0 2/3] hw/ppc/spapr: Replace tswap64(HPTE) by cpu_to_be64(HPTE)
-To: David Gibson <david@gibson.dropbear.id.au>
-Cc: Daniel Henrique Barboza <danielhb413@gmail.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>, 
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Greg Kurz <groug@kaod.org>, 
-	qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: y+iihGo+Qooy
+Content-Type: text/plain
+X-TUID: uCfRXx45oINs
 
-On Mon, 19 Dec 2022 at 06:35, David Gibson <david@gibson.dropbear.id.au> wrote:
+Claudio Fontana <cfontana@suse.de> writes:
+
+> Ciao Alex,
 >
-> On Fri, Dec 16, 2022 at 09:39:19PM +0000, Peter Maydell wrote:
-> > On Fri, 16 Dec 2022 at 19:11, Daniel Henrique Barboza
-> > <danielhb413@gmail.com> wrote:
-> > >
-> > >
-> > >
-> > > On 12/13/22 10:51, Peter Maydell wrote:
-> > > Yes, most if not all accesses are being handled as "target endian", even
-> > > though the target is always big endian.
+> On 12/19/22 11:47, Alexander Graf wrote:
+>> Hey Claudio,
+>> 
+>> On 19.12.22 09:37, Claudio Fontana wrote:
+>>>
+>>> On 12/16/22 22:59, Alexander Graf wrote:
+>>>> Hi Claudio,
+>>>>
+>>>> If the PSCI implementation becomes TCG only, can we also move to a tcg accel directory? It slowly gets super confusing to keep track of which files are supposed to be generic target code and which ones TCG specific>
+>>>> Alex
+>>> Hi Alex, Fabiano, Peter and all,
+>>>
+>>> that was the plan but at the time of:
+>>>
+>>> https://lore.kernel.org/all/20210416162824.25131-1-cfontana@suse.de/
+>>>
+>>> Peter mentioned that HVF AArch64 might use that code too:
+>>>
+>>> https://lists.gnu.org/archive/html/qemu-devel/2021-03/msg00509.html
+>>>
+>>> so from v2 to v3 the series changed to not move the code under tcg/ , expecting HVF to be reusing that code "soon".
+>>>
+>>> I see that your hvf code in hvf/ implements psci, is there some plan to reuse pieces from the tcg implementation now?
+>> 
+>> I originally reused the PSCI code in earlier versions of my hvf patch 
+>> set, but then we realized that some functions like remote CPU reset are 
+>> wired in a TCG specific view of the world with full target CPU register 
+>> ownership. So if we want to actually share it, we'll need to abstract it 
+>> up a level.
+>> 
+>> Hence I'd suggest to move it to a TCG directory for now and then later 
+>> move it back into a generic helper if we want / need to. The code just 
+>> simply isn't generic yet.
+>> 
+>> Or alternatively, you create a patch (set) to actually merge the 2 
+>> implementations into a generic one again which then can live at a 
+>> generic place :)
+>> 
+>> 
+>> Alex
 >
-> So "target is always big endian" is pretty misleading for POWER.  We
-> always define "TARGET_BIG_ENDIAN" in qemu, but for at least 10 years
-> the CPUs have been capable of running in either big endian or little
-> endian mode (selected at runtime).  Some variants can choose
-> endianness on a per-page basis.  Since the creation of the ISA it's
-> had "byte reversed" load and store instructions that let it use little
-> endian for specific memory accesses.
+> Thanks for the clarification, I'll leave the choice up to Fabiano now, since he is working on the series currently :-)
+>
+> Ciao,
+>
+> Claudio
 
-Yeah, this is like Arm (and for the purposes of this thread
-I meant essentially "TARGET_BIG_ENDIAN is always defined").
+Hello, thank you all for the comments.
 
-> Really the whole notion of an ISA having an "endianness" doesn't make
-> a lot of sense - it's an individual load or store to memory that has
-> an endianness which can depend on a bunch of factors.  When these
-> macros were created, an ISA nearly always used the same endianness,
-> but that's not really true any more - not just for POWER, but for a
-> bunch of targets.  So from that point of view, I think getting rid of
-> tswap() - particularly one that has compile time semantics, rather
-> than behaviour which can depend on cpu mode/state is a good idea.
+I like the idea of merging the two implementations. However, I won't get
+to it anytime soon. There's still ~70 patches in the original series
+that I need to understand, rebase and test, including the introduction
+of the tcg directory.
 
-I tend to think of the TARGET_BIG_ENDIAN/not setting as being
-something like "CPU bus endianness". At least for Arm, when you
-put the CPU into BE mode it pretty much means "the CPU byteswaps
-the data when it comes in/out", AIUI.
-
-> I believe that even when running in little-endian mode, the hash page
-> tables are encoded in big-endian, so I think the proposed change makes
-> sense.
-
-OK. I still think we should consistently change all the places that are
-accessing this data structure, though, not just half of them.
-
-thanks
--- PMM
+I'd say we merge this as is now, since this patch has no
+dependencies. Later when I introduce the tcg directory I can move the
+code there along with the other tcg-only files. I'll take note to come
+back to the PSCI code as well.

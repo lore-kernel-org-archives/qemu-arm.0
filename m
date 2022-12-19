@@ -1,63 +1,64 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3459264ejb;
-        Mon, 19 Dec 2022 05:02:17 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtAhjDxexJlAbAGBeCAlyXgiZ4YJGaAZGMgpojJBYuidac7IJUM8Ki0R+b45+osZC401SvK
-X-Received: by 2002:a05:6808:1ab2:b0:355:1de9:3914 with SMTP id bm50-20020a0568081ab200b003551de93914mr3668872oib.26.1671454936569;
-        Mon, 19 Dec 2022 05:02:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671454936; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3459298ejb;
+        Mon, 19 Dec 2022 05:02:19 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf4q+KiuPxRzrCXtmqH8izXV5CzYwD2dvN6fu3Uk3eN139+j7FKQGe1ly3iQKMIAq+ybQSg9
+X-Received: by 2002:a05:6871:4481:b0:148:4e20:c531 with SMTP id ne1-20020a056871448100b001484e20c531mr12587631oab.28.1671454939587;
+        Mon, 19 Dec 2022 05:02:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671454939; cv=none;
         d=google.com; s=arc-20160816;
-        b=PjRHowkVa/M+770Kn+gnGUTiCbns/Z3NzeTZLxQ+4Mmv3a3bgy7u9AA4z4Xp6W0jE8
-         utYMZnmFRtc6+YoNyq5NJjM3SXuYz1Le929ydT61EPHjItUoXZBtbyQlXewcYYtDHYO7
-         Gx7FT3cH1/q9SvuembBlP5A276CoVAiaJt0RMAGXAcbzFbmJRfXK30hqnJoeuKlRKPqw
-         121LHqws7gUm7R2eXwWV9Sq1PEBiOvUqlCa//O3HZa6tnkXdnc4J2cTKiYo1MVc3inAP
-         Gez7TOH571wQCH8i8DUUOwS1/p/c2XHSQHwgRQRyI9VBr17EwWNeNEBY/TnW7vEJ2v4l
-         tMmA==
+        b=P18Y62r19VRU8kPGKcQkyfvHV8EnfVJtdOuU2jMZQrJHlas/8Ux0RbB4ZiGpDrCWDX
+         7rbUBLHiXp4jPjH9sEKXgDD2MKKhimIOWJXJiQlWAmlENhteG8WZC2Fm2JlGVQBZXeZ9
+         ZrvVTBCteZMZusbN57MK4Fb2dyXmtS6psPKcFcEh36/5WgyX5IF4RViLN9DAr7ESuxmR
+         H1NUMv/bjZgVsYIz7MqKx/QGmnt3bJii9mRzxW3ouQE8ly+CGGMCXipbPkqLTEq7tqEs
+         nNOOgg+fwCAruOCu2bMFJevx4rH4hueKfdUdZJMsrgwbcSbngxWClbFKwwtKureKRYsc
+         /zrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=QVqSB9wB2qrALRQPMZT6ihrQ0/2mf+IxHI35zGJFZFg=;
-        b=YrgvZn40HK6DinZLL/jsny3OAvvdsA8vr71kGxAWROEHOUxJZOFbgb3IekEPSdQTbQ
-         J6qsN3/RtTTxRJ56Eg0AfJbu2r52GZi3l10QU5R0F33o569H2BSDGpT/zNpvPUgilLct
-         DtDu0nH7tjtxUNJztY6Qwc9dWvsx1ZBQj9mMLEPyoxj/dtk8sEiR3yFUISq8/jjg9WPM
-         U7qhPW0DilBpXUriT/wRy4R+DnuZm9Bs3AEx0qkBMkBcikmdJgnvMMj6pE//Dx+MMTUQ
-         pc3wIcc0GGRlct/jefSeLF3F/Be3TySNXd/J942460xyPRgCarJl4IMoG9bmJWc8zjXt
-         E9Sw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=lZcczZS+N+vA1eZ+A79wIe+fnTT7PirYzB1gzQ8wivc=;
+        b=nBEq1KJ6MRPZsKcfIuti6iH5P3zaxZi7hNS7jxrnyD/8fUXrse9SX/4tRIyL/acMHK
+         lzBH4CQggSYf7e6wnGve8fw8xVwK+aQk3TOq/GrqkbDhXLxWFmGhMOn7aVYihqndquLu
+         LwsjsfoxGTCr93dIHOyXPZ4iU4GVPnKRogdLthDyXTiKpfvxg783Azffnkxzw1qblsgr
+         mrAHJnTQm8GB4RLANSOcUJvqZ7jvAFk6XDj3YlTcFOi9FoHBTkY4lPbgj+yeB8Z0RDAw
+         ToaqxY2CxDZMQnPBBCgNihmpTaBnYSqkuICMVVISw5VVPSMhQeGPmzhri1NhJ2z0/mau
+         1jMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T4ruOhgm;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EmIPUKtQ;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 62-20020a370741000000b006fa190bdc52si3928621qkh.64.2022.12.19.05.02.16
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id l18-20020ac848d2000000b003a4f294f6a9si3713585qtr.745.2022.12.19.05.02.19
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Dec 2022 05:02:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 19 Dec 2022 05:02:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T4ruOhgm;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EmIPUKtQ;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1671454936;
+	s=mimecast20190719; t=1671454939;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=QVqSB9wB2qrALRQPMZT6ihrQ0/2mf+IxHI35zGJFZFg=;
-	b=T4ruOhgmikspA6fNzhRnGuC6m3y/3IPffjK92bu1TItOIjEru7MjIp7hn5v9LDeFdbKxFJ
-	tMlATZDVGs+uLlCXnusqS7OI2GdNNbdIs/HPfhkm+w6kKGD68gF6Qh7AM4EFpbEVq8zYuQ
-	IDVINJBQz4YLMnepnzIHpM0tT7DAyGc=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=lZcczZS+N+vA1eZ+A79wIe+fnTT7PirYzB1gzQ8wivc=;
+	b=EmIPUKtQ1X9UBU/D2vPuZ3nL5SqEZ0ZG6DPWvl1a41d4/QkBg5Z5FSG1RKpj1qbjSeEexh
+	cj4rlntDUIMyqtQ3UGhSTfurDlW/COyMXAMwMKOwo9I4Mwm3KsLQRpN9c2MhHHALUqqv/G
+	xxr6bFI2TP6RVk/n2x5ucFSFFZ8Zl9c=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-395-8JV0muoNMwyA4rcqg3b1mQ-1; Mon, 19 Dec 2022 08:02:07 -0500
-X-MC-Unique: 8JV0muoNMwyA4rcqg3b1mQ-1
+ us-mta-486-Nb6M1rL5PvikIs1MYPlhQQ-1; Mon, 19 Dec 2022 08:02:15 -0500
+X-MC-Unique: Nb6M1rL5PvikIs1MYPlhQQ-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F26F7810BD2;
-	Mon, 19 Dec 2022 13:02:06 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A806780D0F2;
+	Mon, 19 Dec 2022 13:02:07 +0000 (UTC)
 Received: from virtlab420.virt.lab.eng.bos.redhat.com (virtlab420.virt.lab.eng.bos.redhat.com [10.19.152.148])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1FEE114152F6;
-	Mon, 19 Dec 2022 13:02:06 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 098F214171B7;
+	Mon, 19 Dec 2022 13:02:07 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
@@ -84,69 +85,33 @@ Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	Greg Kurz <groug@kaod.org>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 0/6] enforce use of G_GNUC_PRINTF annotations
-Date: Mon, 19 Dec 2022 08:01:59 -0500
-Message-Id: <20221219130205.687815-1-berrange@redhat.com>
+Subject: [PATCH 1/6] disas: add G_GNUC_PRINTF to gstring_printf
+Date: Mon, 19 Dec 2022 08:02:00 -0500
+Message-Id: <20221219130205.687815-2-berrange@redhat.com>
+In-Reply-To: <20221219130205.687815-1-berrange@redhat.com>
+References: <20221219130205.687815-1-berrange@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-X-TUID: WDz1u6G4KaZm
+X-TUID: mixCyruaQzKx
 
-We've been very gradually adding G_GNUC_PRINTF annotations
-to functions over years. This has been useful in detecting
-certain malformed printf strings, or cases where we pass
-user data as the printf format which is a potential security
-flaw.
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ disas.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Given the inherant memory corruption danger in use of format
-strings vs mis-matched variadic arguments, it is worth applying
-G_GNUC_PRINTF to all functions using printf, even if we know
-they are safe.
-
-The compilers can reasonably reliably identify such places
-with the -Wsuggest-attribute=format / -Wmissing-format-attribute
-flags.
-
-This series adds G_GNUC_PRINTF / G_GNUC_SCANF to allow the code
-locations that the compilers highlight. Then it adds the above
-warning flags to the build flags, to catch any future additions
-of functions that take printf/scanf format strings.
-
-Daniel P. Berrangé (6):
-  disas: add G_GNUC_PRINTF to gstring_printf
-  hw/xen: use G_GNUC_PRINTF/SCANF for various functions
-  tools/virtiofsd: add G_GNUC_PRINTF for logging functions
-  util/error: add G_GNUC_PRINTF for various functions
-  tests: add G_GNUC_PRINTF for various functions
-  enforce use of G_GNUC_PRINTF attributes
-
- configure                         |  2 ++
- disas.c                           |  1 +
- hw/xen/xen-bus.c                  |  1 +
- hw/xen/xen_pvdev.c                |  1 +
- include/hw/xen/xen-bus-helper.h   |  6 ++++--
- include/hw/xen/xen-bus.h          |  3 ++-
- tests/qtest/ahci-test.c           |  3 +++
- tests/qtest/arm-cpu-features.c    |  1 +
- tests/qtest/erst-test.c           |  2 +-
- tests/qtest/ide-test.c            |  3 ++-
- tests/qtest/ivshmem-test.c        |  4 ++--
- tests/qtest/libqmp.c              |  2 +-
- tests/qtest/libqos/libqos-pc.h    |  6 ++++--
- tests/qtest/libqos/libqos-spapr.h |  6 ++++--
- tests/qtest/libqos/libqos.h       |  6 ++++--
- tests/qtest/libqos/virtio-9p.c    |  1 +
- tests/qtest/migration-helpers.h   |  1 +
- tests/qtest/rtas-test.c           |  2 +-
- tests/qtest/usb-hcd-uhci-test.c   |  4 ++--
- tests/unit/test-qmp-cmds.c        | 13 +++++++++----
- tools/virtiofsd/fuse_log.c        |  1 +
- tools/virtiofsd/fuse_log.h        |  6 ++++--
- tools/virtiofsd/passthrough_ll.c  |  1 +
- util/error-report.c               |  1 +
- util/error.c                      |  1 +
- 25 files changed, 55 insertions(+), 23 deletions(-)
-
+diff --git a/disas.c b/disas.c
+index 94d3b45042..31df8f5b89 100644
+--- a/disas.c
++++ b/disas.c
+@@ -239,6 +239,7 @@ void target_disas(FILE *out, CPUState *cpu, target_ulong code,
+     }
+ }
+ 
++G_GNUC_PRINTF(2, 3)
+ static int gstring_printf(FILE *stream, const char *fmt, ...)
+ {
+     /* We abuse the FILE parameter to pass a GString. */
 -- 
 2.38.1

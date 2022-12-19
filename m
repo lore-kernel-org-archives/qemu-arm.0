@@ -1,255 +1,339 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3796520ejb;
-        Mon, 19 Dec 2022 12:43:52 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5Ic1tkf62wnhI4PEAoIrAYjbxYjxNk0sJCs08ZdQwueOuP2BnMe0LpOccLM298ptIaTM4x
-X-Received: by 2002:a5d:4a0b:0:b0:242:10aa:202f with SMTP id m11-20020a5d4a0b000000b0024210aa202fmr24613533wrq.57.1671482632684;
-        Mon, 19 Dec 2022 12:43:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671482632; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3844432ejb;
+        Mon, 19 Dec 2022 14:08:57 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7QtC+XcduXnuF/czAdUkhMEuN9X5eQ5pQVKm5hjhB8T4iSWfdfY893oNFhdjyDR//7px82
+X-Received: by 2002:ac8:534b:0:b0:3a6:a292:286c with SMTP id d11-20020ac8534b000000b003a6a292286cmr57077446qto.18.1671487737176;
+        Mon, 19 Dec 2022 14:08:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671487737; cv=none;
         d=google.com; s=arc-20160816;
-        b=pkEpZLs15sezjDMUFpI/4W7L6TPA6QCXVdAFBa4ELR2WZAIXWMVdmkt3/ygrc0JnDp
-         Z36eyb9Djv/dDJpo7ZCujU3LjFUSUb5OiQN7xq2FTgQQOaruhsj/jZROt2vrgbhVGuiH
-         lbKH9gM1QO6KeURHLvy6eXT4XO2Vw7wvQP3eIZG0JKigGNBQdHjIp4/7d8+Bp1+q+B+J
-         R+tHDi9+RemvqXZ+CTGHiShKr2VyVmglucQ9OlvSgNOB6EpJvuN9CGEcaUb0L8gwkhI8
-         /9AB5X/NkBdYcIwAUOYsUXtTz9qlk/vg8M3NIbUnEsZVvj99keN3QgnV5VB1uhz0c0Cy
-         A1+Q==
+        b=wlEuouVR80xP6cJg1KSfjZBujnohE9Iz7ktjrX4VBHXH6WBP23i9BVQ49sJkC1K9NG
+         AfdnCoDCkQmYZtQmfGOb9UAORCm4qTaSzGWEvN3JN2iXx1byMp1Qn/rCeWwLsyHBbAwD
+         2OoeKU7BoP3hB6WeEZ8a3dvsESOLaranR3mqoHARozDu3R8R+p9S2ZiHkWWDg5VovQMi
+         ygf4EyUzsh5l3QU0LOTF34HTYw1V2D6G2ZAPvwL4ZU9RNQuXU2QiDeCbkI/JyOk3MrhG
+         G39RUUn9fCCsYpUNCmixkvcl9RJJ8akaQFEoTUyUiRTgQ8SAgwpIzS1AQrev3fFjDeVQ
+         4tHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
-         :date:message-id;
-        bh=O0PQccC2KdPhAyTUZdlGjKJM4E880g1BRQJRoowzh34=;
-        b=TpYINa160oa+rlYqgAwovM7H68XLxjDWWxb0uIO4esA1kTc6tZp9Mle6/RQRZimv3H
-         qB83ynlv/lYXGDn/7loag1a203/eM1iQFa9cWA9H+RTdshLosiD78NYszBBhqStCxT2p
-         vIaotLYPCTULIkMPigj7fdBNNQwh/tfPZ2Emb93FWRJydwIo9O6fi88ZNNkNdoLkY/P2
-         S0RHvnPpwyr1La8E3YZxO3kkmIFz7CDyYMiSIvNqWCtcExVE7z/Wud/sEuQiJU/huGTT
-         OeU5UTRxMmwZvtDIdRqtEw4CuGqkXTB66DbTkkRS46Ouu7DnUF+wFo0qUbQjraoFbPdr
-         skTQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=l2wY+Y5lbm5B6iIbnu04lxZnMoCqGVOWUed9XIrIC1U=;
+        b=aUjPe6113JijRGbScwQ93BM7b3UfiY+9hICAjECAfrD2jP/29M2Bmz4/Ci+cAP16Wb
+         PhIYaSiCVKpAa3aK3DlCgVTITyWMkyJu9G/8YSjMuC3kE0wLxtt+BUnfNDekiho3yFRK
+         elM3qreIKyZUckcftsHJKkC4l/hk16Y2F/omrumNevuHjLG/H+StzWfD1vJ/4YC+NxdQ
+         8WY9eotmQaVb6YciiIlv1P/UNIl+lWBquRNBMbEPqhZFzQzm2Cnf6kJUvGVoqW8hSvu4
+         wdjhia23orAN4+9oEmlLNpnCSVfbV/y+0qs6fpKGL+o16VL9soipeC3AR9Phx8Df5gnL
+         Rtvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of sw@weilnetz.de designates 37.120.169.71 as permitted sender) smtp.mailfrom=sw@weilnetz.de
-Return-Path: <sw@weilnetz.de>
-Received: from mail.v2201612906741603.powersrv.de (mail.weilnetz.de. [37.120.169.71])
-        by mx.google.com with ESMTPS id o11-20020a5d47cb000000b002421b66e44bsi7871026wrc.22.2022.12.19.12.43.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Dec 2022 12:43:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of sw@weilnetz.de designates 37.120.169.71 as permitted sender) client-ip=37.120.169.71;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u4-20020ac80504000000b003a6a5866c2esi4409019qtg.171.2022.12.19.14.08.57
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 19 Dec 2022 14:08:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of sw@weilnetz.de designates 37.120.169.71 as permitted sender) smtp.mailfrom=sw@weilnetz.de
-Received: from [192.168.178.59] (p57b42763.dip0.t-ipconnect.de [87.180.39.99])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 90164DA0553;
-	Mon, 19 Dec 2022 21:43:51 +0100 (CET)
-Message-ID: <2d829bf0-7804-8c67-61a4-4ae8f7ddd9ca@weilnetz.de>
-Date: Mon, 19 Dec 2022 21:43:50 +0100
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p7OJ4-0007hs-BA; Mon, 19 Dec 2022 17:08:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1p7OIz-0007hY-J0; Mon, 19 Dec 2022 17:08:20 -0500
+Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1p7OIv-0003o3-7R; Mon, 19 Dec 2022 17:08:15 -0500
+Received: from localhost.localdomain
+ (dynamic-077-002-090-134.77.2.pool.telefonica.de [77.2.90.134])
+ by csgraf.de (Postfix) with ESMTPSA id D1CBF60806FC;
+ Mon, 19 Dec 2022 23:08:09 +0100 (CET)
+From: Alexander Graf <agraf@csgraf.de>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [PATCH] hvf: arm: Add support for GICv3
+Date: Mon, 19 Dec 2022 23:08:08 +0100
+Message-Id: <20221219220808.26392-1-agraf@csgraf.de>
+X-Mailer: git-send-email 2.37.1 (Apple Git-137.1)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.0
-Subject: Re: [PATCH 1/6] disas: add G_GNUC_PRINTF to gstring_printf
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-ppc@nongnu.org,
- xen-devel@lists.xenproject.org, Laurent Vivier <lvivier@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, virtio-fs@redhat.com,
- Michael Roth <michael.roth@amd.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, qemu-block@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Paul Durrant <paul@xen.org>, Anthony Perard <anthony.perard@citrix.com>,
- David Gibson <david@gibson.dropbear.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
- Thomas Huth <thuth@redhat.com>
-References: <20221219130205.687815-1-berrange@redhat.com>
- <20221219130205.687815-2-berrange@redhat.com>
-From: Stefan Weil <sw@weilnetz.de>
-In-Reply-To: <20221219130205.687815-2-berrange@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------0b04BHHYMlAgxOL9rhUtBaN9"
-X-TUID: VEbV0+LSKAsY
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Llm+1Gu4iSkp
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------0b04BHHYMlAgxOL9rhUtBaN9
-Content-Type: multipart/mixed; boundary="------------yTpA0PFAROE5nCpoBfE6sOO7";
- protected-headers="v1"
-From: Stefan Weil <sw@weilnetz.de>
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-ppc@nongnu.org,
- xen-devel@lists.xenproject.org, Laurent Vivier <lvivier@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, virtio-fs@redhat.com,
- Michael Roth <michael.roth@amd.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, qemu-block@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Paul Durrant <paul@xen.org>, Anthony Perard <anthony.perard@citrix.com>,
- David Gibson <david@gibson.dropbear.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
- Thomas Huth <thuth@redhat.com>
-Message-ID: <2d829bf0-7804-8c67-61a4-4ae8f7ddd9ca@weilnetz.de>
-Subject: Re: [PATCH 1/6] disas: add G_GNUC_PRINTF to gstring_printf
-References: <20221219130205.687815-1-berrange@redhat.com>
- <20221219130205.687815-2-berrange@redhat.com>
-In-Reply-To: <20221219130205.687815-2-berrange@redhat.com>
+We currently only support GICv2 emulation. To also support GICv3, we will
+need to pass a few system registers into their respective handler functions.
 
---------------yTpA0PFAROE5nCpoBfE6sOO7
-Content-Type: multipart/mixed; boundary="------------AequN11irnsmEWddWGWlHvb9"
+This patch adds support for HVF to call into the TCG callbacks for GICv3
+system register handlers. This is safe because the GICv3 TCG code is generic
+as long as we limit ourselves to EL0 and EL1 - which are the only modes
+supported by HVF.
 
---------------AequN11irnsmEWddWGWlHvb9
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+To make sure nobody trips over that, we also annotate callbacks that don't
+work in HVF mode, such as EL state change hooks.
 
-QW0gMTkuMTIuMjIgdW0gMTQ6MDIgc2NocmllYiBEYW5pZWwgUC4gQmVycmFuZ8OpOg0KPiBT
-aWduZWQtb2ZmLWJ5OiBEYW5pZWwgUC4gQmVycmFuZ8OpIDxiZXJyYW5nZUByZWRoYXQuY29t
-Pg0KPiAtLS0NCj4gICBkaXNhcy5jIHwgMSArDQo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5z
-ZXJ0aW9uKCspDQo+IA0KPiBkaWZmIC0tZ2l0IGEvZGlzYXMuYyBiL2Rpc2FzLmMNCj4gaW5k
-ZXggOTRkM2I0NTA0Mi4uMzFkZjhmNWI4OSAxMDA2NDQNCj4gLS0tIGEvZGlzYXMuYw0KPiAr
-KysgYi9kaXNhcy5jDQo+IEBAIC0yMzksNiArMjM5LDcgQEAgdm9pZCB0YXJnZXRfZGlzYXMo
-RklMRSAqb3V0LCBDUFVTdGF0ZSAqY3B1LCB0YXJnZXRfdWxvbmcgY29kZSwNCj4gICAgICAg
-fQ0KPiAgIH0NCj4gICANCj4gK0dfR05VQ19QUklOVEYoMiwgMykNCj4gICBzdGF0aWMgaW50
-IGdzdHJpbmdfcHJpbnRmKEZJTEUgKnN0cmVhbSwgY29uc3QgY2hhciAqZm10LCAuLi4pDQo+
-ICAgew0KPiAgICAgICAvKiBXZSBhYnVzZSB0aGUgRklMRSBwYXJhbWV0ZXIgdG8gcGFzcyBh
-IEdTdHJpbmcuICovDQoNClRoZSBjdXJyZW50IGNvZGUgdXNlcyBhIGRpZmZlcmVudCBwYXR0
-ZXJuOg0KDQpzdGF0aWMgUkVUVVJOX1RZUEUgR19HTlVDX1BSSU5URigyLCAzKSBmdW5jdGlv
-bihhcmd1bWVudCBsaXN0KQ0KDQpTbyBJIHdvdWxkIGhhdmUgZXhwZWN0ZWQNCg0Kc3RhdGlj
-IGludCBHX0dOVUNfUFJJTlRGKDIsIDMpDQpnc3RyaW5nX3ByaW50ZihGSUxFICpzdHJlYW0s
-IGNvbnN0IGNoYXIgKmZtdCwgLi4uKQ0KDQpEb2VzIHRoYXQgbWF0dGVyPyBEbyB3ZSBjYXJl
-IGZvciBkaWZmZXJlbnQgcGF0dGVybnM/DQoNClN0ZWZhbg0K
---------------AequN11irnsmEWddWGWlHvb9
-Content-Type: application/pgp-keys; name="OpenPGP_0xE08C21D5677450AD.asc"
-Content-Disposition: attachment; filename="OpenPGP_0xE08C21D5677450AD.asc"
-Content-Description: OpenPGP public key
-Content-Transfer-Encoding: quoted-printable
+With GICv3 support in place, we can run with more than 8 vCPUs.
 
------BEGIN PGP PUBLIC KEY BLOCK-----
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
+---
+ hw/intc/arm_gicv3_cpuif.c   |   8 +-
+ target/arm/hvf/hvf.c        | 151 ++++++++++++++++++++++++++++++++++++
+ target/arm/hvf/trace-events |   2 +
+ 3 files changed, 160 insertions(+), 1 deletion(-)
 
-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
-T7uiC0aTwAsniiln1XFlGBISNLB1HL/gUc9FJj8qmYgvUBZIzUjmm56up6er8ca9
-2tARdBylQF3E9MJ/E4dVrmTyvOlddAb/MG1Ge425mjt0dRfOx8Qc7Pxs+d3UNVSu
-Bm+WtuSgk+JNIT08c+WSXec8mE4hVdrKbAvCo9dcT5Gal2r6FSvRVY5kba3t280x
-utLSp470k3+DO+AgVigbHr3scXlJXZe1m4luqBSkEBDNH2sAQoBrNVwVaCZqZRTN
-TFN0ZWZhbiBXZWlsIChVbml2ZXJzaXTDpHRzYmlibGlvdGhlayBNYW5uaGVpbSkg
-PHN0ZWZhbi53ZWlsQHVuaS1tYW5uaGVpbS5kZT7CwY4EEwEIADgWIQRJI2/qdcld
-aY7Ct4rgjCHVZ3RQrQUCYlMdZAIbAwULCQgHAwUVCgkICwUWAgMBAAIeBQIXgAAK
-CRDgjCHVZ3RQrRo6D/9MSqnSGOjWrcsiXbUsQmNKzI1JZOuabam3P9V/rILU7K4/
-b9E6Bk5Vjo/6A4xMtC9y6L244Upn4MTdUofkBdd9dMG8eZ2oofsMGIeEmr4EFfKb
-/LoZtIUJaNfiwvd3YakEmaAfd+AWIEAVYlVSxWHeCMowTNYxbSW+/M0ExGw1BErt
-oFiz3Ti8iYNfgz2l9cwrKhQEnzZlHUq06AIbzch/nXFFcc3EBDz+J6x//DCclb6Y
-8oLJRerrOJqpcpTYrwr+UDbh8JOqiUWUQ1BrbIZb+J5rU+DghBmNAWpd6yTbxX0T
-I7g2Hu7gPdzhrLLRO+rQsDK3T+JdVQ9xyoWugFIw4YepAad5uo/2e+q38a+h57EK
-Vsy4xfAEV/Mr4hl9KCY2hkiQYMKHvN1EZp72crAiPgDZxh6wTJZ979RHY2apq8XM
-Y41uP5mwdHxFA1Al/5+syajNlTzsNdYB5Ucx5TwNU0TifM13exHw8lQZOaWbDZS4
-QYwzeFWuEFse9ESmCQX5Pggw+ABFXOtPeqEfIO8v3QbT1vFlJ57iFBUiem967/JV
-a0RQyEvAKj0T5124N8Hi1oa8TPk5oSe8id5jSgGD9twbS0HX2KcmwAF/A5MgP7hx
-0X4EfhsJtDxFDy5PnoC8ADE2wcKDsTgqfDS/EQc6OeQCKceR45wyOT0Y3kbEa87B
-TQRV3J49ARAAt9nArtjFnqmRHL0oY5KCrF5ONph6xm3rof74lZ/CTkG0zu9OhmbW
-s6MMNsHgM7lRGIcKou7vUQE8/TEXh3+0eRdCiEYXP9jYTTXosU/+y/hOY33x9Sw/
-tCEHXiz6M+rp74O1P+zqXSlmx8zzNy33dDdXUT+bF1C6Y7WEChIIjlOfLHOBeazN
-dCqDxRDM/CKeI/UWx/wm0z1DNEuD8crUXIgdxY3dBAm1bBK041+3GXP8gYLN4qew
-T1VoG35Ya3PrrTC/zMAumagjiF3/1NCAmH6eSOzw21EloDBR76K1noDGCfRM2dp0
-78rS/BO+QtlN4+UWQLkB+crHxqXWk0u+gka2A7ZBHFYky/oUVIK1/ar6swnTRHj2
-0Ga+rukzcdxQRJ2kwGeRrqLH1JO8p72ptvswMyzVPhk8sE2S9llPrbznj6fc9f5m
-y5x9i5Fh4Mt2z7u+wBSdck2wV5eThEPz7UziXgtbq74Hja7tuoQxUhcpOIBXKl8b
-MLtjxlO7VmH312VzfiBYqQku9fHg3E/Hi+uon2fJaifFbuViZqfZq9bKT/UWG0+0
-cKc2d4os+3uwGcjraUjCFSXmGU27YqiW8jeM7pIa03QoAhWIH9ApAOVBqWF6drFz
-6/oFcSl9qbY/4IneJ/eb0eyjHllegydGEuIShrXYZLiQqSX4yj/3vE8AEQEAAcLB
-XwQYAQgACQUCVdyePQIbDAAKCRDgjCHVZ3RQrWEaEACTrt0WUxL1AT6BarJ3fOPV
-ZjiioO+3LPhw98ci7afeScEK84cGv+KLgxawvOo7dbwEX6VceQvJ0LTZ1oYPuYeZ
-MjiG7Qdf9uwgk3VwHf4S9pNxsqyVxHPotN9RPWwqoH9ihmO/ml7uC3gH0SFiU/RR
-lc3c9X/u+6SbkSEUZrUrPFQKJ3dpfjnA3RCPTI3fTKr8jycA5A5A77Daba3L+MXj
-c71/tn6MZCZmK7unSfpXq4rbGrIgMWnFKMBgeRONUWRFIOm5lReEjLHiABCli8t4
-Txr2ATswA4atmC4JzP8J/WPWe2xDMvsOXu+bGgW5BSO053MQz1JyJf1ExClNTkYu
-Vlm712JFE7Xzc2cg9P796KI3CKGbytTpaTrVx3ZajqHY1xfZy3vHolR8pfGZ8xcY
-XhFtkD71/BSyqpkrPVvbGkLZOm4b/SzWCGCDYx9xBB//m25lfpZ+Du2u91pvC97Z
-6Qty5nRp9kZvAeidmSunItU0Q4jKQlFnn6ZyLhPk4mwuVSUec8dGIdda8cQRaG/J
-lpLUZi2cnhKAnGaAaLGycQ/NEMVjtN8z6ZHCe3eAa1bEPwSZAbRHuCZ+Iqh6gPzn
-K88LhGUr/vzHYKKn25QWYQ7rJi2H1cu8BQ3lQpRunkCIithJ5gwoS0ZFSEM25FdI
-hvjSVVSRyxiu/zrDuO/s6g=3D=3D
-=3DumGL
------END PGP PUBLIC KEY BLOCK-----
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index b17b29288c..b4e387268c 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -21,6 +21,7 @@
+ #include "hw/irq.h"
+ #include "cpu.h"
+ #include "target/arm/cpregs.h"
++#include "sysemu/tcg.h"
+ 
+ /*
+  * Special case return value from hppvi_index(); must be larger than
+@@ -2810,6 +2811,8 @@ void gicv3_init_cpuif(GICv3State *s)
+          * which case we'd get the wrong value.
+          * So instead we define the regs with no ri->opaque info, and
+          * get back to the GICv3CPUState from the CPUARMState.
++         *
++         * These CP regs callbacks can be called from either TCG or HVF code.
+          */
+         define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
+ 
+@@ -2905,6 +2908,9 @@ void gicv3_init_cpuif(GICv3State *s)
+                 define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
+             }
+         }
+-        arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
++        if (tcg_enabled()) {
++            /* We can only trap EL changes with TCG for now */
++            arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
++        }
+     }
+ }
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 060aa0ccf4..8ea4be5f30 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -80,6 +80,33 @@
+ #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
+ #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
+ 
++#define SYSREG_ICC_AP0R0_EL1     SYSREG(3, 0, 12, 8, 4)
++#define SYSREG_ICC_AP0R1_EL1     SYSREG(3, 0, 12, 8, 5)
++#define SYSREG_ICC_AP0R2_EL1     SYSREG(3, 0, 12, 8, 6)
++#define SYSREG_ICC_AP0R3_EL1     SYSREG(3, 0, 12, 8, 7)
++#define SYSREG_ICC_AP1R0_EL1     SYSREG(3, 0, 12, 9, 0)
++#define SYSREG_ICC_AP1R1_EL1     SYSREG(3, 0, 12, 9, 1)
++#define SYSREG_ICC_AP1R2_EL1     SYSREG(3, 0, 12, 9, 2)
++#define SYSREG_ICC_AP1R3_EL1     SYSREG(3, 0, 12, 9, 3)
++#define SYSREG_ICC_ASGI1R_EL1    SYSREG(3, 0, 12, 11, 6)
++#define SYSREG_ICC_BPR0_EL1      SYSREG(3, 0, 12, 8, 3)
++#define SYSREG_ICC_BPR1_EL1      SYSREG(3, 0, 12, 12, 3)
++#define SYSREG_ICC_CTLR_EL1      SYSREG(3, 0, 12, 12, 4)
++#define SYSREG_ICC_DIR_EL1       SYSREG(3, 0, 12, 11, 1)
++#define SYSREG_ICC_EOIR0_EL1     SYSREG(3, 0, 12, 8, 1)
++#define SYSREG_ICC_EOIR1_EL1     SYSREG(3, 0, 12, 12, 1)
++#define SYSREG_ICC_HPPIR0_EL1    SYSREG(3, 0, 12, 8, 2)
++#define SYSREG_ICC_HPPIR1_EL1    SYSREG(3, 0, 12, 12, 2)
++#define SYSREG_ICC_IAR0_EL1      SYSREG(3, 0, 12, 8, 0)
++#define SYSREG_ICC_IAR1_EL1      SYSREG(3, 0, 12, 12, 0)
++#define SYSREG_ICC_IGRPEN0_EL1   SYSREG(3, 0, 12, 12, 6)
++#define SYSREG_ICC_IGRPEN1_EL1   SYSREG(3, 0, 12, 12, 7)
++#define SYSREG_ICC_PMR_EL1       SYSREG(3, 0, 4, 6, 0)
++#define SYSREG_ICC_RPR_EL1       SYSREG(3, 0, 12, 11, 3)
++#define SYSREG_ICC_SGI0R_EL1     SYSREG(3, 0, 12, 11, 7)
++#define SYSREG_ICC_SGI1R_EL1     SYSREG(3, 0, 12, 11, 5)
++#define SYSREG_ICC_SRE_EL1       SYSREG(3, 0, 12, 12, 5)
++
+ #define WFX_IS_WFE (1 << 0)
+ 
+ #define TMR_CTL_ENABLE  (1 << 0)
+@@ -788,6 +815,43 @@ static bool is_id_sysreg(uint32_t reg)
+            SYSREG_CRM(reg) < 8;
+ }
+ 
++static uint32_t hvf_reg2cp_reg(uint32_t reg)
++{
++    return ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
++                              (reg >> 10) & 0xf,
++                              (reg >> 1) & 0xf,
++                              (reg >> 20) & 0x3,
++                              (reg >> 14) & 0x7,
++                              (reg >> 17) & 0x7);
++}
++
++static bool hvf_sysreg_read_cp(CPUState *cpu, uint32_t reg, uint64_t *val)
++{
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++    const ARMCPRegInfo *ri;
++
++    ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
++    if (ri) {
++        if (ri->accessfn) {
++            if (ri->accessfn(env, ri, true) != CP_ACCESS_OK) {
++                return false;
++            }
++        }
++        if (ri->type & ARM_CP_CONST) {
++            *val = ri->resetvalue;
++        } else if (ri->readfn) {
++            *val = ri->readfn(env, ri);
++        } else {
++            *val = CPREG_FIELD64(env, ri);
++        }
++        trace_hvf_vgic_read(ri->name, *val);
++        return true;
++    }
++
++    return false;
++}
++
+ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
+ {
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+@@ -839,6 +903,36 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         break;
++    case SYSREG_ICC_AP0R0_EL1:
++    case SYSREG_ICC_AP0R1_EL1:
++    case SYSREG_ICC_AP0R2_EL1:
++    case SYSREG_ICC_AP0R3_EL1:
++    case SYSREG_ICC_AP1R0_EL1:
++    case SYSREG_ICC_AP1R1_EL1:
++    case SYSREG_ICC_AP1R2_EL1:
++    case SYSREG_ICC_AP1R3_EL1:
++    case SYSREG_ICC_ASGI1R_EL1:
++    case SYSREG_ICC_BPR0_EL1:
++    case SYSREG_ICC_BPR1_EL1:
++    case SYSREG_ICC_DIR_EL1:
++    case SYSREG_ICC_EOIR0_EL1:
++    case SYSREG_ICC_EOIR1_EL1:
++    case SYSREG_ICC_HPPIR0_EL1:
++    case SYSREG_ICC_HPPIR1_EL1:
++    case SYSREG_ICC_IAR0_EL1:
++    case SYSREG_ICC_IAR1_EL1:
++    case SYSREG_ICC_IGRPEN0_EL1:
++    case SYSREG_ICC_IGRPEN1_EL1:
++    case SYSREG_ICC_PMR_EL1:
++    case SYSREG_ICC_SGI0R_EL1:
++    case SYSREG_ICC_SGI1R_EL1:
++    case SYSREG_ICC_SRE_EL1:
++    case SYSREG_ICC_CTLR_EL1:
++        /* Call the TCG sysreg handler. This is only safe for GICv3 regs. */
++        if (!hvf_sysreg_read_cp(cpu, reg, &val)) {
++            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
++        }
++        break;
+     default:
+         if (is_id_sysreg(reg)) {
+             /* ID system registers read as RES0 */
+@@ -944,6 +1038,33 @@ static void pmswinc_write(CPUARMState *env, uint64_t value)
+     }
+ }
+ 
++static bool hvf_sysreg_write_cp(CPUState *cpu, uint32_t reg, uint64_t val)
++{
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++    const ARMCPRegInfo *ri;
++
++    ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
++
++    if (ri) {
++        if (ri->accessfn) {
++            if (ri->accessfn(env, ri, false) != CP_ACCESS_OK) {
++                return false;
++            }
++        }
++        if (ri->writefn) {
++            ri->writefn(env, ri, val);
++        } else {
++            CPREG_FIELD64(env, ri) = val;
++        }
++
++        trace_hvf_vgic_write(ri->name, val);
++        return true;
++    }
++
++    return false;
++}
++
+ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+ {
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+@@ -1021,6 +1142,36 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         break;
++    case SYSREG_ICC_AP0R0_EL1:
++    case SYSREG_ICC_AP0R1_EL1:
++    case SYSREG_ICC_AP0R2_EL1:
++    case SYSREG_ICC_AP0R3_EL1:
++    case SYSREG_ICC_AP1R0_EL1:
++    case SYSREG_ICC_AP1R1_EL1:
++    case SYSREG_ICC_AP1R2_EL1:
++    case SYSREG_ICC_AP1R3_EL1:
++    case SYSREG_ICC_ASGI1R_EL1:
++    case SYSREG_ICC_BPR0_EL1:
++    case SYSREG_ICC_BPR1_EL1:
++    case SYSREG_ICC_CTLR_EL1:
++    case SYSREG_ICC_DIR_EL1:
++    case SYSREG_ICC_EOIR0_EL1:
++    case SYSREG_ICC_EOIR1_EL1:
++    case SYSREG_ICC_HPPIR0_EL1:
++    case SYSREG_ICC_HPPIR1_EL1:
++    case SYSREG_ICC_IAR0_EL1:
++    case SYSREG_ICC_IAR1_EL1:
++    case SYSREG_ICC_IGRPEN0_EL1:
++    case SYSREG_ICC_IGRPEN1_EL1:
++    case SYSREG_ICC_PMR_EL1:
++    case SYSREG_ICC_SGI0R_EL1:
++    case SYSREG_ICC_SGI1R_EL1:
++    case SYSREG_ICC_SRE_EL1:
++        /* Call the TCG sysreg handler. This is only safe for GICv3 regs. */
++        if (!hvf_sysreg_write_cp(cpu, reg, val)) {
++            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
++        }
++        break;
+     default:
+         cpu_synchronize_state(cpu);
+         trace_hvf_unhandled_sysreg_write(env->pc, reg,
+diff --git a/target/arm/hvf/trace-events b/target/arm/hvf/trace-events
+index 820e8e0297..4fbbe4b45e 100644
+--- a/target/arm/hvf/trace-events
++++ b/target/arm/hvf/trace-events
+@@ -9,3 +9,5 @@ hvf_unknown_hvc(uint64_t x0) "unknown HVC! 0x%016"PRIx64
+ hvf_unknown_smc(uint64_t x0) "unknown SMC! 0x%016"PRIx64
+ hvf_exit(uint64_t syndrome, uint32_t ec, uint64_t pc) "exit: 0x%"PRIx64" [ec=0x%x pc=0x%"PRIx64"]"
+ hvf_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid) "PSCI Call x0=0x%016"PRIx64" x1=0x%016"PRIx64" x2=0x%016"PRIx64" x3=0x%016"PRIx64" cpu=0x%x"
++hvf_vgic_write(const char *name, uint64_t val) "vgic write to %s [val=0x%016"PRIx64"]"
++hvf_vgic_read(const char *name, uint64_t val) "vgic read from %s [val=0x%016"PRIx64"]"
+-- 
+2.37.1 (Apple Git-137.1)
 
---------------AequN11irnsmEWddWGWlHvb9--
-
---------------yTpA0PFAROE5nCpoBfE6sOO7--
-
---------------0b04BHHYMlAgxOL9rhUtBaN9
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEESSNv6nXJXWmOwreK4Iwh1Wd0UK0FAmOgzQcFAwAAAAAACgkQ4Iwh1Wd0UK2P
-Uw//RNyFVXLdC39KN7OaIzrQncTJkdpko0HYjw0AEhwDHlK5979OQh9Z7FfgiXb0u+C9J9IXXgSM
-4pFg1snv6G8o/QxI9/J9TU0FKZ+sOHK/I8mLSOXwDsHtV9kVc7yudPUur0r5Py+/5cB3P0S9fqf2
-jHT9e3mA6Mo9/9bLu4nhbMbn99Ct+nKldwr3+707k9JCeLh43+vQsz01JYOshlbUa7uKfhjrjjwD
-MbmOaDjsp9jBcIXXsvTnEUwCcrI+ZaZ4nfWxKg0foBFwelLrR+EQb2j5/UfMe00ItfNaqTMw4Enw
-PZ2Cf7AD4T3kzZcEfdMsGuR4bmAPsiSZQeasOAzDTtYOs3cTVS8NCIOLl2I5sOfJqxldDbXab3BK
-ziPJWo/mXtGfttLoJgrl9RWnWqmcg7UJd3/Ui3vcJi6jeG0z/ELgpX4Kaec7XsDGbdsP38GjZ6tZ
-9w00miHVq3JPfE2/9Hrjh/nyBrb11FoEOv4VIYsumN5rMYl1MYNelZwGT7YaVS8PEtEXlhJjJYHa
-wStt22NLJkzUvjOUQwxwQYnQvi1dm3kx4Y44/1BePHfBP4OGqypMTxd30FOzetizeEpzMEy/qDfm
-V+DkUhxNHLd3B39kYxcFhsUmPktLkxA3ixdHDEdhWH3PsF0rAjnxbkJ6x0B1mI7B7ZawRdV0Vpwh
-xC8=
-=cSlU
------END PGP SIGNATURE-----
-
---------------0b04BHHYMlAgxOL9rhUtBaN9--

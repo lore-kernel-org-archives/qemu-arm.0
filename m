@@ -1,122 +1,255 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3563948ejb;
-        Mon, 19 Dec 2022 07:16:13 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6wdeQV6FYDbtik1VRCHaRPMGmrcRMfEIppszX9Fz17y0UzmnqQ/bg9q44+It66B+Fss1nu
-X-Received: by 2002:a5d:6186:0:b0:242:1238:91d2 with SMTP id j6-20020a5d6186000000b00242123891d2mr26796046wru.17.1671462973124;
-        Mon, 19 Dec 2022 07:16:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671462973; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3796520ejb;
+        Mon, 19 Dec 2022 12:43:52 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5Ic1tkf62wnhI4PEAoIrAYjbxYjxNk0sJCs08ZdQwueOuP2BnMe0LpOccLM298ptIaTM4x
+X-Received: by 2002:a5d:4a0b:0:b0:242:10aa:202f with SMTP id m11-20020a5d4a0b000000b0024210aa202fmr24613533wrq.57.1671482632684;
+        Mon, 19 Dec 2022 12:43:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671482632; cv=none;
         d=google.com; s=arc-20160816;
-        b=EHZtKG4glwQOvFzdgWneCVuLjgH+Y0OBwHGosFquBtU6mef8b8vtloUJhhJG+kwmIY
-         4aDNRzl7mZhJXuLm5ZJSJTRXeF2ZUypOKXfNY+qWD3o7/cBaucD0rMCEYVDQETX4oUzu
-         3RAxDHnYNREYgz73hVeIqYQOE8MjH2cuPLgS/mX3wQToh8eG5r6w3OFIxRspZxOiCGu2
-         6Zh82q5tR+pxoD0/9Ygyk+jmfiqPG22gAeOshzVWIub78ps8ZD7otGiVxUdD/ZCfF7Ib
-         QW8suIVGNXORytOYM8vv8SGzh+Vfd8gldY41uJVUOYsQmLTFKwBXNg4JhAPDQvuMZnfq
-         Hbiw==
+        b=pkEpZLs15sezjDMUFpI/4W7L6TPA6QCXVdAFBa4ELR2WZAIXWMVdmkt3/ygrc0JnDp
+         Z36eyb9Djv/dDJpo7ZCujU3LjFUSUb5OiQN7xq2FTgQQOaruhsj/jZROt2vrgbhVGuiH
+         lbKH9gM1QO6KeURHLvy6eXT4XO2Vw7wvQP3eIZG0JKigGNBQdHjIp4/7d8+Bp1+q+B+J
+         R+tHDi9+RemvqXZ+CTGHiShKr2VyVmglucQ9OlvSgNOB6EpJvuN9CGEcaUb0L8gwkhI8
+         /9AB5X/NkBdYcIwAUOYsUXtTz9qlk/vg8M3NIbUnEsZVvj99keN3QgnV5VB1uhz0c0Cy
+         A1+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=DoKVAwB8Or20QMd90+mS/yKcsYPxnzunqseZ2wR63pM=;
-        b=Zg2rw3iSxvRXFNDyrY5shF1/fHro/gQuO5aGFbY2eHa6/hxze503uUQ5Rtcg9qYwP2
-         CvhievoRGu0jePAtasCT+f51SsE92gbJHBL0GF1FV2l4gDF+PKksSy6EDbVvs6xmyypg
-         476z+sX5J1LDcj2G5/Ks8JNbMp8hhnyhaY57bg5ad82j8nG4QsuKOQIxammlmS7urPQA
-         K5WkyWls0VV71oK+P1N/Al/rA6NQ2sNeRo22hLfHjK9MRHH9MieX/H703ZfNC9e8yLJM
-         v105fzmqDoB2lrzayAI595c4ialaArptt+YCTNxZkQAhEtVenjqaycim8tTdyBnQVUR8
-         NAMw==
+        h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
+         :date:message-id;
+        bh=O0PQccC2KdPhAyTUZdlGjKJM4E880g1BRQJRoowzh34=;
+        b=TpYINa160oa+rlYqgAwovM7H68XLxjDWWxb0uIO4esA1kTc6tZp9Mle6/RQRZimv3H
+         qB83ynlv/lYXGDn/7loag1a203/eM1iQFa9cWA9H+RTdshLosiD78NYszBBhqStCxT2p
+         vIaotLYPCTULIkMPigj7fdBNNQwh/tfPZ2Emb93FWRJydwIo9O6fi88ZNNkNdoLkY/P2
+         S0RHvnPpwyr1La8E3YZxO3kkmIFz7CDyYMiSIvNqWCtcExVE7z/Wud/sEuQiJU/huGTT
+         OeU5UTRxMmwZvtDIdRqtEw4CuGqkXTB66DbTkkRS46Ouu7DnUF+wFo0qUbQjraoFbPdr
+         skTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=K2vTes51;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=kygEKdhN;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id e9-20020adfef09000000b002421ad7e701si5858155wro.93.2022.12.19.07.16.12
+       spf=pass (google.com: domain of sw@weilnetz.de designates 37.120.169.71 as permitted sender) smtp.mailfrom=sw@weilnetz.de
+Return-Path: <sw@weilnetz.de>
+Received: from mail.v2201612906741603.powersrv.de (mail.weilnetz.de. [37.120.169.71])
+        by mx.google.com with ESMTPS id o11-20020a5d47cb000000b002421b66e44bsi7871026wrc.22.2022.12.19.12.43.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Dec 2022 07:16:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Mon, 19 Dec 2022 12:43:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of sw@weilnetz.de designates 37.120.169.71 as permitted sender) client-ip=37.120.169.71;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=K2vTes51;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=kygEKdhN;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+       spf=pass (google.com: domain of sw@weilnetz.de designates 37.120.169.71 as permitted sender) smtp.mailfrom=sw@weilnetz.de
+Received: from [192.168.178.59] (p57b42763.dip0.t-ipconnect.de [87.180.39.99])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 7252160ECC;
-	Mon, 19 Dec 2022 15:16:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1671462972; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DoKVAwB8Or20QMd90+mS/yKcsYPxnzunqseZ2wR63pM=;
-	b=K2vTes51N2USub2tXvt6TYEmhaCjtYmPoYmND/AZd0dnBSreR35csvRubrVQ8Cr43UoAlC
-	BzWZ5+3fuqjxwmv/qTGDaTtveMT7LkOQG2tqebSGBjbjNpv5XSkjUU1MEAWzpnvgp59aMu
-	dSngDG/pL9wS83x3S+ch3DHPDz6hoio=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1671462972;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DoKVAwB8Or20QMd90+mS/yKcsYPxnzunqseZ2wR63pM=;
-	b=kygEKdhNKEIOU0qXIwvfuGMxPgLcGcEdAL+cIPeb1fCKpemI7mz31VxJWEeafVc6r9c9E+
-	EpmTZWqVoSNfniAA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id F310813498;
-	Mon, 19 Dec 2022 15:16:11 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id heg1LTuAoGMpVAAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 19 Dec 2022 15:16:11 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alex =?utf-8?Q?Benn?=
- =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [PATCH 5/5] target/arm: only perform TCG cpu and machine inits
- if TCG enabled
-In-Reply-To: <42c455aa-c93f-9167-59ef-ddf2b46ca2e4@linaro.org>
-References: <20221216212944.28229-1-farosas@suse.de>
- <20221216212944.28229-6-farosas@suse.de>
- <42c455aa-c93f-9167-59ef-ddf2b46ca2e4@linaro.org>
-Date: Mon, 19 Dec 2022 12:16:09 -0300
-Message-ID: <87len38lvq.fsf@suse.de>
+	by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 90164DA0553;
+	Mon, 19 Dec 2022 21:43:51 +0100 (CET)
+Message-ID: <2d829bf0-7804-8c67-61a4-4ae8f7ddd9ca@weilnetz.de>
+Date: Mon, 19 Dec 2022 21:43:50 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: R85NV2HOXzpX
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.0
+Subject: Re: [PATCH 1/6] disas: add G_GNUC_PRINTF to gstring_printf
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-ppc@nongnu.org,
+ xen-devel@lists.xenproject.org, Laurent Vivier <lvivier@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, virtio-fs@redhat.com,
+ Michael Roth <michael.roth@amd.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paul Durrant <paul@xen.org>, Anthony Perard <anthony.perard@citrix.com>,
+ David Gibson <david@gibson.dropbear.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Thomas Huth <thuth@redhat.com>
+References: <20221219130205.687815-1-berrange@redhat.com>
+ <20221219130205.687815-2-berrange@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
+In-Reply-To: <20221219130205.687815-2-berrange@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------0b04BHHYMlAgxOL9rhUtBaN9"
+X-TUID: VEbV0+LSKAsY
 
-Richard Henderson <richard.henderson@linaro.org> writes:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------0b04BHHYMlAgxOL9rhUtBaN9
+Content-Type: multipart/mixed; boundary="------------yTpA0PFAROE5nCpoBfE6sOO7";
+ protected-headers="v1"
+From: Stefan Weil <sw@weilnetz.de>
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-ppc@nongnu.org,
+ xen-devel@lists.xenproject.org, Laurent Vivier <lvivier@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, virtio-fs@redhat.com,
+ Michael Roth <michael.roth@amd.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paul Durrant <paul@xen.org>, Anthony Perard <anthony.perard@citrix.com>,
+ David Gibson <david@gibson.dropbear.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Thomas Huth <thuth@redhat.com>
+Message-ID: <2d829bf0-7804-8c67-61a4-4ae8f7ddd9ca@weilnetz.de>
+Subject: Re: [PATCH 1/6] disas: add G_GNUC_PRINTF to gstring_printf
+References: <20221219130205.687815-1-berrange@redhat.com>
+ <20221219130205.687815-2-berrange@redhat.com>
+In-Reply-To: <20221219130205.687815-2-berrange@redhat.com>
 
-> On 12/16/22 13:29, Fabiano Rosas wrote:
->> -    /*
->> -     * Misaligned thumb pc is architecturally impossible.
->> -     * We have an assert in thumb_tr_translate_insn to verify this.
->> -     * Fail an incoming migrate to avoid this assert.
->> -     */
->> -    if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
->> -        return -1;
->> -    }
->> +        /*
->> +         * Misaligned thumb pc is architecturally impossible.
->> +         * We have an assert in thumb_tr_translate_insn to verify this.
->> +         * Fail an incoming migrate to avoid this assert.
->> +         */
->> +        if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
->> +            return -1;
->> +        }
->
-> This is a sanity check rejecting malformed vmsave.  While hw virt won't have the same 
-> assert as mentioned in the comment, it won't be happy and will raise some sort of cpu 
-> exception later.  I think it's better to reject the bad vmload early.  I suppose we could 
-> expand the comment to that effect, so that it doesn't appear to be wholly tcg inspired.
+--------------yTpA0PFAROE5nCpoBfE6sOO7
+Content-Type: multipart/mixed; boundary="------------AequN11irnsmEWddWGWlHvb9"
 
-I see, I'll leave it out of tcg_enabled() and update the comment.
+--------------AequN11irnsmEWddWGWlHvb9
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-> Otherwise,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->
->
-> r~
+QW0gMTkuMTIuMjIgdW0gMTQ6MDIgc2NocmllYiBEYW5pZWwgUC4gQmVycmFuZ8OpOg0KPiBT
+aWduZWQtb2ZmLWJ5OiBEYW5pZWwgUC4gQmVycmFuZ8OpIDxiZXJyYW5nZUByZWRoYXQuY29t
+Pg0KPiAtLS0NCj4gICBkaXNhcy5jIHwgMSArDQo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5z
+ZXJ0aW9uKCspDQo+IA0KPiBkaWZmIC0tZ2l0IGEvZGlzYXMuYyBiL2Rpc2FzLmMNCj4gaW5k
+ZXggOTRkM2I0NTA0Mi4uMzFkZjhmNWI4OSAxMDA2NDQNCj4gLS0tIGEvZGlzYXMuYw0KPiAr
+KysgYi9kaXNhcy5jDQo+IEBAIC0yMzksNiArMjM5LDcgQEAgdm9pZCB0YXJnZXRfZGlzYXMo
+RklMRSAqb3V0LCBDUFVTdGF0ZSAqY3B1LCB0YXJnZXRfdWxvbmcgY29kZSwNCj4gICAgICAg
+fQ0KPiAgIH0NCj4gICANCj4gK0dfR05VQ19QUklOVEYoMiwgMykNCj4gICBzdGF0aWMgaW50
+IGdzdHJpbmdfcHJpbnRmKEZJTEUgKnN0cmVhbSwgY29uc3QgY2hhciAqZm10LCAuLi4pDQo+
+ICAgew0KPiAgICAgICAvKiBXZSBhYnVzZSB0aGUgRklMRSBwYXJhbWV0ZXIgdG8gcGFzcyBh
+IEdTdHJpbmcuICovDQoNClRoZSBjdXJyZW50IGNvZGUgdXNlcyBhIGRpZmZlcmVudCBwYXR0
+ZXJuOg0KDQpzdGF0aWMgUkVUVVJOX1RZUEUgR19HTlVDX1BSSU5URigyLCAzKSBmdW5jdGlv
+bihhcmd1bWVudCBsaXN0KQ0KDQpTbyBJIHdvdWxkIGhhdmUgZXhwZWN0ZWQNCg0Kc3RhdGlj
+IGludCBHX0dOVUNfUFJJTlRGKDIsIDMpDQpnc3RyaW5nX3ByaW50ZihGSUxFICpzdHJlYW0s
+IGNvbnN0IGNoYXIgKmZtdCwgLi4uKQ0KDQpEb2VzIHRoYXQgbWF0dGVyPyBEbyB3ZSBjYXJl
+IGZvciBkaWZmZXJlbnQgcGF0dGVybnM/DQoNClN0ZWZhbg0K
+--------------AequN11irnsmEWddWGWlHvb9
+Content-Type: application/pgp-keys; name="OpenPGP_0xE08C21D5677450AD.asc"
+Content-Disposition: attachment; filename="OpenPGP_0xE08C21D5677450AD.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+T7uiC0aTwAsniiln1XFlGBISNLB1HL/gUc9FJj8qmYgvUBZIzUjmm56up6er8ca9
+2tARdBylQF3E9MJ/E4dVrmTyvOlddAb/MG1Ge425mjt0dRfOx8Qc7Pxs+d3UNVSu
+Bm+WtuSgk+JNIT08c+WSXec8mE4hVdrKbAvCo9dcT5Gal2r6FSvRVY5kba3t280x
+utLSp470k3+DO+AgVigbHr3scXlJXZe1m4luqBSkEBDNH2sAQoBrNVwVaCZqZRTN
+TFN0ZWZhbiBXZWlsIChVbml2ZXJzaXTDpHRzYmlibGlvdGhlayBNYW5uaGVpbSkg
+PHN0ZWZhbi53ZWlsQHVuaS1tYW5uaGVpbS5kZT7CwY4EEwEIADgWIQRJI2/qdcld
+aY7Ct4rgjCHVZ3RQrQUCYlMdZAIbAwULCQgHAwUVCgkICwUWAgMBAAIeBQIXgAAK
+CRDgjCHVZ3RQrRo6D/9MSqnSGOjWrcsiXbUsQmNKzI1JZOuabam3P9V/rILU7K4/
+b9E6Bk5Vjo/6A4xMtC9y6L244Upn4MTdUofkBdd9dMG8eZ2oofsMGIeEmr4EFfKb
+/LoZtIUJaNfiwvd3YakEmaAfd+AWIEAVYlVSxWHeCMowTNYxbSW+/M0ExGw1BErt
+oFiz3Ti8iYNfgz2l9cwrKhQEnzZlHUq06AIbzch/nXFFcc3EBDz+J6x//DCclb6Y
+8oLJRerrOJqpcpTYrwr+UDbh8JOqiUWUQ1BrbIZb+J5rU+DghBmNAWpd6yTbxX0T
+I7g2Hu7gPdzhrLLRO+rQsDK3T+JdVQ9xyoWugFIw4YepAad5uo/2e+q38a+h57EK
+Vsy4xfAEV/Mr4hl9KCY2hkiQYMKHvN1EZp72crAiPgDZxh6wTJZ979RHY2apq8XM
+Y41uP5mwdHxFA1Al/5+syajNlTzsNdYB5Ucx5TwNU0TifM13exHw8lQZOaWbDZS4
+QYwzeFWuEFse9ESmCQX5Pggw+ABFXOtPeqEfIO8v3QbT1vFlJ57iFBUiem967/JV
+a0RQyEvAKj0T5124N8Hi1oa8TPk5oSe8id5jSgGD9twbS0HX2KcmwAF/A5MgP7hx
+0X4EfhsJtDxFDy5PnoC8ADE2wcKDsTgqfDS/EQc6OeQCKceR45wyOT0Y3kbEa87B
+TQRV3J49ARAAt9nArtjFnqmRHL0oY5KCrF5ONph6xm3rof74lZ/CTkG0zu9OhmbW
+s6MMNsHgM7lRGIcKou7vUQE8/TEXh3+0eRdCiEYXP9jYTTXosU/+y/hOY33x9Sw/
+tCEHXiz6M+rp74O1P+zqXSlmx8zzNy33dDdXUT+bF1C6Y7WEChIIjlOfLHOBeazN
+dCqDxRDM/CKeI/UWx/wm0z1DNEuD8crUXIgdxY3dBAm1bBK041+3GXP8gYLN4qew
+T1VoG35Ya3PrrTC/zMAumagjiF3/1NCAmH6eSOzw21EloDBR76K1noDGCfRM2dp0
+78rS/BO+QtlN4+UWQLkB+crHxqXWk0u+gka2A7ZBHFYky/oUVIK1/ar6swnTRHj2
+0Ga+rukzcdxQRJ2kwGeRrqLH1JO8p72ptvswMyzVPhk8sE2S9llPrbznj6fc9f5m
+y5x9i5Fh4Mt2z7u+wBSdck2wV5eThEPz7UziXgtbq74Hja7tuoQxUhcpOIBXKl8b
+MLtjxlO7VmH312VzfiBYqQku9fHg3E/Hi+uon2fJaifFbuViZqfZq9bKT/UWG0+0
+cKc2d4os+3uwGcjraUjCFSXmGU27YqiW8jeM7pIa03QoAhWIH9ApAOVBqWF6drFz
+6/oFcSl9qbY/4IneJ/eb0eyjHllegydGEuIShrXYZLiQqSX4yj/3vE8AEQEAAcLB
+XwQYAQgACQUCVdyePQIbDAAKCRDgjCHVZ3RQrWEaEACTrt0WUxL1AT6BarJ3fOPV
+ZjiioO+3LPhw98ci7afeScEK84cGv+KLgxawvOo7dbwEX6VceQvJ0LTZ1oYPuYeZ
+MjiG7Qdf9uwgk3VwHf4S9pNxsqyVxHPotN9RPWwqoH9ihmO/ml7uC3gH0SFiU/RR
+lc3c9X/u+6SbkSEUZrUrPFQKJ3dpfjnA3RCPTI3fTKr8jycA5A5A77Daba3L+MXj
+c71/tn6MZCZmK7unSfpXq4rbGrIgMWnFKMBgeRONUWRFIOm5lReEjLHiABCli8t4
+Txr2ATswA4atmC4JzP8J/WPWe2xDMvsOXu+bGgW5BSO053MQz1JyJf1ExClNTkYu
+Vlm712JFE7Xzc2cg9P796KI3CKGbytTpaTrVx3ZajqHY1xfZy3vHolR8pfGZ8xcY
+XhFtkD71/BSyqpkrPVvbGkLZOm4b/SzWCGCDYx9xBB//m25lfpZ+Du2u91pvC97Z
+6Qty5nRp9kZvAeidmSunItU0Q4jKQlFnn6ZyLhPk4mwuVSUec8dGIdda8cQRaG/J
+lpLUZi2cnhKAnGaAaLGycQ/NEMVjtN8z6ZHCe3eAa1bEPwSZAbRHuCZ+Iqh6gPzn
+K88LhGUr/vzHYKKn25QWYQ7rJi2H1cu8BQ3lQpRunkCIithJ5gwoS0ZFSEM25FdI
+hvjSVVSRyxiu/zrDuO/s6g=3D=3D
+=3DumGL
+-----END PGP PUBLIC KEY BLOCK-----
+
+--------------AequN11irnsmEWddWGWlHvb9--
+
+--------------yTpA0PFAROE5nCpoBfE6sOO7--
+
+--------------0b04BHHYMlAgxOL9rhUtBaN9
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEESSNv6nXJXWmOwreK4Iwh1Wd0UK0FAmOgzQcFAwAAAAAACgkQ4Iwh1Wd0UK2P
+Uw//RNyFVXLdC39KN7OaIzrQncTJkdpko0HYjw0AEhwDHlK5979OQh9Z7FfgiXb0u+C9J9IXXgSM
+4pFg1snv6G8o/QxI9/J9TU0FKZ+sOHK/I8mLSOXwDsHtV9kVc7yudPUur0r5Py+/5cB3P0S9fqf2
+jHT9e3mA6Mo9/9bLu4nhbMbn99Ct+nKldwr3+707k9JCeLh43+vQsz01JYOshlbUa7uKfhjrjjwD
+MbmOaDjsp9jBcIXXsvTnEUwCcrI+ZaZ4nfWxKg0foBFwelLrR+EQb2j5/UfMe00ItfNaqTMw4Enw
+PZ2Cf7AD4T3kzZcEfdMsGuR4bmAPsiSZQeasOAzDTtYOs3cTVS8NCIOLl2I5sOfJqxldDbXab3BK
+ziPJWo/mXtGfttLoJgrl9RWnWqmcg7UJd3/Ui3vcJi6jeG0z/ELgpX4Kaec7XsDGbdsP38GjZ6tZ
+9w00miHVq3JPfE2/9Hrjh/nyBrb11FoEOv4VIYsumN5rMYl1MYNelZwGT7YaVS8PEtEXlhJjJYHa
+wStt22NLJkzUvjOUQwxwQYnQvi1dm3kx4Y44/1BePHfBP4OGqypMTxd30FOzetizeEpzMEy/qDfm
+V+DkUhxNHLd3B39kYxcFhsUmPktLkxA3ixdHDEdhWH3PsF0rAjnxbkJ6x0B1mI7B7ZawRdV0Vpwh
+xC8=
+=cSlU
+-----END PGP SIGNATURE-----
+
+--------------0b04BHHYMlAgxOL9rhUtBaN9--

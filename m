@@ -1,88 +1,90 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3812714ejb;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3812728ejb;
+        Mon, 19 Dec 2022 13:11:46 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXu2UqmArRgr7KgOH1l7je+Hh2s8R1G0Jvg3TEiezj1B/KtM05mkTxXCqbfjtujCzThrBLva
+X-Received: by 2002:a05:622a:250e:b0:3a9:8b48:f8f with SMTP id cm14-20020a05622a250e00b003a98b480f8fmr6621550qtb.67.1671484305872;
         Mon, 19 Dec 2022 13:11:45 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvN9jyT3vnEKfbmUcCnMNgFN4SzgLlzOXJEFNPvt6svEwvKhcUa/ws09hrb+OQyafJYuKbS
-X-Received: by 2002:a05:622a:1786:b0:3a6:9318:9c90 with SMTP id s6-20020a05622a178600b003a693189c90mr16371534qtk.66.1671484304847;
-        Mon, 19 Dec 2022 13:11:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671484304; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1671484305; cv=none;
         d=google.com; s=arc-20160816;
-        b=dK0HCgNGYI/i1fhoKUGTlGNPerv7n4hZ2T9euC7VKKRByY/i29iRJLaZFvT35OFsLb
-         qjWBRoCBYHETJls+9I+CAjTO7/LNckixO6YAqZMKtYZ+I96eVbH6PI3f4h9h/kRhc0NJ
-         qD7Hvo00FyvhuTZFehTVGae/mbM4KlU9aHlozql/Gik67vFQH9pRR33BwJXDCpymSNNc
-         Ez+/0sBOZgePVFEKmNGvTufq4Gr5vcL/iiI5+kICrsSOL6SGgd4AVn5lnFJJlY8jAvTq
-         rdso+iAlhgp+jx2KhNaKtp5XNtOoGf42Xn55Zc0fX2geqTSiHTPfQbu4DeVHMLTmOAOx
-         AkKA==
+        b=pRGqc1X2IPvHN2piuXar0jvBWCHzVmcXY4ax/vj2o6Bhnh4kKonoqUTsZMYFgT6cmW
+         /veBh54Jnu+kTQOeV/xw5fSu+yntMVL6We184q9TqbSWTuxU7z1jBmOo3GEJ6JoXm6xX
+         ySzRFcpcVTITCs4XhGqpPH8m4aHvD1LWra2vknwmQ3/aCAbBZIJqqOCY7ZuCzJSD/w+m
+         JGkIiw3pTYxvBEFr/hx8mKYwinZZMxLY8WR0V2bk5rkcSE6XlZ9OAAk/wY5citF+9xLI
+         f0ecmWgQOSs2SOFR1js++zyj2CO7HZ3a3Z4j+1I6Y8HFc+MrA71v+5x0p6sJkke+ncwr
+         LSew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zh2BhjGyR+505UTOkbHhlLSYmk781PI1Kr+7wOMQdrY=;
-        b=yJB2vGQQNMWFEfhXaz2KGJpluuij0iUEk8rjyKv+3WcWV66IwxTHSviHhvHT9FSy80
-         P6vShSTJ9KyP3LTmO9zi95TNF362yPMzsiQ/jESnPMJSfshdIIlqTNiLWZXrGKqO91PY
-         bY7lHDSK15CtL6k5actFUkbgxiXxl9NWQO5LANBWX0TZ1nPeO2noS5zMp7bw/c7aBnhQ
-         LJUB/lyit59EglCxixbaVZsY9LtqOFtNWlnNZ6Wwf5dfojHINfkGFmAoU1SnqsjjMCqI
-         cItVsj2NlzjWJB4RPDP+gl0ibPDJBP8IOFATmKdzluMQKeuDgtgTuEOPe1UHpjQ61yEK
-         XoOw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=NPkoqq4yf4wnku5ZZhretEonRdVE00oWaMYivRhv1Lc=;
+        b=loH+jl7Up0PQO/BPPQG3FCUNoz3LYykMYid6zzd1wWHgBBgdHpIXjVvasoNk4Udyr/
+         FVajGsuYZ+CNDh5/PJbApMsXpwS1bh/kOBX/hhywTtcoLymZsv72POx7uKwyDBGesFsD
+         088DpMCf2VwXF20PCAg7rbkdzy1Ane5agH7Ri9lvS4hb9Eivlp7FN4x6yvHW3GDYaQm+
+         Uk6OYkN7A2k61u832Wq/+T8ed99fsz+VMyQvU0MTfHVXNnkWik7TZJugaYjbvHjurFA3
+         j9/a6pqYBj501i4wYZFDxb4VPwSqYnLvHSeg332KdtW5cpcEyBIy/IDO0A2hLxTeT+eP
+         HNIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h2QSNvj4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=cl1IRxf2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u3-20020ae9c003000000b006bbbdefd8a1si4136089qkk.727.2022.12.19.13.11.44
+        by mx.google.com with ESMTPS id ga17-20020a05622a591100b0039cca19804asi2256688qtb.18.2022.12.19.13.11.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Dec 2022 13:11:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Dec 2022 13:11:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h2QSNvj4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=cl1IRxf2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p7NPG-0002ri-Hw; Mon, 19 Dec 2022 16:10:42 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p7NPT-0002yn-DQ; Mon, 19 Dec 2022 16:10:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7NPE-0002rA-U6
- for qemu-arm@nongnu.org; Mon, 19 Dec 2022 16:10:40 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7NPS-0002y7-D3
+ for qemu-devel@nongnu.org; Mon, 19 Dec 2022 16:10:54 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7NPD-0003sY-9Q
- for qemu-arm@nongnu.org; Mon, 19 Dec 2022 16:10:40 -0500
-Received: by mail-ed1-x534.google.com with SMTP id a16so14737730edb.9
- for <qemu-arm@nongnu.org>; Mon, 19 Dec 2022 13:10:38 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7NPP-0003y0-II
+ for qemu-devel@nongnu.org; Mon, 19 Dec 2022 16:10:54 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id t17so24691002eju.1
+ for <qemu-devel@nongnu.org>; Mon, 19 Dec 2022 13:10:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=zh2BhjGyR+505UTOkbHhlLSYmk781PI1Kr+7wOMQdrY=;
- b=h2QSNvj4t9GE6VAVfl5inolgOCKTDTHJcUCqJvm54c8j0JFgzZG+GIBeIMPLYdhsdG
- j9jzPlHosAgwlFwAyqNSDsIKc/FDUfE7kUcWnvcYQD5lxQheHi6NgV/w5hIjbEShcrd3
- +uQVIdCEkBMq95h4ctj6GoHS39ppeoYRi40ncl6bHXC0GMdXdD1h12LFdq6ADv8Awk67
- WxW/1DOcN4yxrXTb12LjcuDt/3JF7VzbeTQ8Htd0LI2F5aCcU6Q3bsVTL2EH85nAnEsW
- nPiEX10O+9fc9uW0Acl+ZFfjAYo5IdWUCmqqRyqX/Jsxn+z//w9Ant6vc4GW8CgePFIs
- dRXA==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=NPkoqq4yf4wnku5ZZhretEonRdVE00oWaMYivRhv1Lc=;
+ b=cl1IRxf2aZNF6cSKl6kq2ornlqku0N+On0HaoV6gdYdhBG4WCgbbSx1FQj6i8vXIr0
+ Fx23Mu+0qCXaaoHP9Xto80h523UKT+UJToSeqtqoCzH+fHdIvh5OWBSvB02z9cQSiRo4
+ OhS9ESIgDVVWGmq10qzuRRzWvX3VCJYY5dFrMO+yyWIKdQzZHrx0pFJj6cPUxfKg5SgR
+ fJa+CsSlqprRs2QLfnLLuWBzVwxWl7D3zaipfE199FA8BKTXu56d+eLGn7fslWh/VkDb
+ kyboVZxijyCbgAoD0cCTBZcsJflgUBntGEP56fe5YHY+BjLT0sCmCBGoGMR+ZtgoRXIp
+ bq4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zh2BhjGyR+505UTOkbHhlLSYmk781PI1Kr+7wOMQdrY=;
- b=fHmEclLxzqD814F6f9Kv928sOM5/DFfmsJSMiMEPD+fnU3JEhOb2mTgUGUXxYrNAii
- uJMLP+n0e6TQ6kki5BHKbB7lOIn7EuMU91wMsbqR1epSoiCOPoJzOxAmxzE0TfzEaSdC
- 4l7MvVpDQ89O3G191scYH8WVqtfvnhbshYq8/JeUfMEWAOb5t2cnZ3JrGoSg3xwqNVl3
- aBfb8LBJT8u7+a1LuB2rHdlhW9y3vbe31oelcGJJrZGmEwWC5TErgqTKA+5n74FIkc0s
- cCMfXoekKGEqzP62mmYeZl5d9UEMRnUABAu0xnILwbDFLo2EhhfezwcoVN70SHXL2rb6
- OK8g==
-X-Gm-Message-State: ANoB5pnwips0seDoRNG1Asy5kBND4Sb9wI8jNdfEqNZ7GGXBsIMP1WeD
- MPsMi/iPynJ7EPVgFxJUeGQS/w==
-X-Received: by 2002:aa7:d403:0:b0:470:31fb:cdcc with SMTP id
- z3-20020aa7d403000000b0047031fbcdccmr24958380edq.6.1671484237462; 
- Mon, 19 Dec 2022 13:10:37 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=NPkoqq4yf4wnku5ZZhretEonRdVE00oWaMYivRhv1Lc=;
+ b=5Sbqn91CJUpp9RKemhW1AuM+7ZnzRcdw12Yiirj6hra2EhS2N0K/sJ0sQkro8zINJp
+ Wy8zDCHOgW1TwZIUUvnpxJKLYukKvFIRtjbMZ0HW/WneKYIYV/yzh69j11SV3jRQ4Tus
+ 42sV8zwXAyVPKt+zR/+7JiP6MoHbKTHF++8TgVto5Yp4pnGWtYcNkwPJN18i3/nsoY3M
+ 7HptgU32nja+yF7X98f1V5GXFeM0Ya/emTZ6i9qtd/3/aJrPdzr03B21zKSqBhJGOMeY
+ WYiq3NWJGlBCZBcTwmgVxtZmV4PD8SkV8v8QaFdp2gUvi5xCtw4IY3/sRxN/2CoaTxtj
+ DLEQ==
+X-Gm-Message-State: AFqh2kqAaTz+AiHDY3YVfD4WVdNe17DiXQhFMJQnZihTjmxrwdtV094R
+ 9v7XwBEpi/p4dTyJ8SrM+GiTbHr21wXzFGa7Kp8=
+X-Received: by 2002:a17:906:49d2:b0:7b9:f9d8:9554 with SMTP id
+ w18-20020a17090649d200b007b9f9d89554mr13333669ejv.40.1671484249785; 
+ Mon, 19 Dec 2022 13:10:49 -0800 (PST)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- eg53-20020a05640228b500b0044dbecdcd29sm4843803edb.12.2022.12.19.13.10.35
+ 3-20020a170906318300b00782ee6b34f2sm4816535ejy.183.2022.12.19.13.10.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 19 Dec 2022 13:10:37 -0800 (PST)
+ Mon, 19 Dec 2022 13:10:49 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
@@ -96,66 +98,154 @@ Cc: Markus Armbruster <armbru@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Greg Kurz <groug@kaod.org>,
  Song Gao <gaosong@loongson.cn>
-Subject: [PATCH 0/4] target: Restrict 'qapi-commands-machine.h' to system
- emulation
-Date: Mon, 19 Dec 2022 22:10:30 +0100
-Message-Id: <20221219211034.70491-1-philmd@linaro.org>
+Subject: [PATCH 2/4] target/loongarch: Restrict 'qapi-commands-machine.h' to
+ system emulation
+Date: Mon, 19 Dec 2022 22:10:32 +0100
+Message-Id: <20221219211034.70491-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221219211034.70491-1-philmd@linaro.org>
+References: <20221219211034.70491-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dYClrFcqVSup
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xeo/8TUary1y
 
-The "qapi-commands-machine.h" header is not generated in user-only
-emulation. This series removes its use in user-emu code by moving
-the QMP code depending on this header into a separate sysemu unit.
+Since commit a0e61807a3 ("qapi: Remove QMP events and commands from
+user-mode builds") we don't generate the "qapi-commands-machine.h"
+header in a user-emulation-only build.
 
-Philippe Mathieu-Daudé (4):
-  target/arm: Restrict 'qapi-commands-machine.h' to system emulation
-  target/loongarch: Restrict 'qapi-commands-machine.h' to system
-    emulation
-  target/mips: Restrict 'qapi-commands-machine.h' to system emulation
-  target/ppc: Restrict 'qapi-commands-machine.h' to system emulation
+Extract the QMP functions from cpu.c (which is always compiled) to
+the new 'cpu-monitor.c' unit (which is only compiled when system
+emulation is selected).
 
- target/arm/helper.c            | 29 --------------------
- target/arm/m_helper.c          |  1 -
- target/arm/monitor.c           | 28 +++++++++++++++++++
- target/loongarch/cpu-monitor.c | 37 +++++++++++++++++++++++++
- target/loongarch/cpu.c         | 27 ------------------
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/loongarch/cpu-monitor.c | 37 ++++++++++++++++++++++++++++++++++
+ target/loongarch/cpu.c         | 27 -------------------------
  target/loongarch/meson.build   |  1 +
- target/mips/cpu.c              | 29 --------------------
- target/mips/sysemu/meson.build |  1 +
- target/mips/sysemu/monitor.c   | 39 ++++++++++++++++++++++++++
- target/ppc/cpu-qom.h           |  2 ++
- target/ppc/cpu_init.c          | 48 +-------------------------------
- target/ppc/monitor.c           | 50 +++++++++++++++++++++++++++++++++-
- 12 files changed, 158 insertions(+), 134 deletions(-)
+ 3 files changed, 38 insertions(+), 27 deletions(-)
  create mode 100644 target/loongarch/cpu-monitor.c
- create mode 100644 target/mips/sysemu/monitor.c
 
+diff --git a/target/loongarch/cpu-monitor.c b/target/loongarch/cpu-monitor.c
+new file mode 100644
+index 0000000000..6c25957881
+--- /dev/null
++++ b/target/loongarch/cpu-monitor.c
+@@ -0,0 +1,37 @@
++/*
++ * QEMU LoongArch CPU (monitor definitions)
++ *
++ * SPDX-FileCopyrightText: 2021 Loongson Technology Corporation Limited
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/qapi-commands-machine-target.h"
++#include "cpu.h"
++
++static void loongarch_cpu_add_definition(gpointer data, gpointer user_data)
++{
++    ObjectClass *oc = data;
++    CpuDefinitionInfoList **cpu_list = user_data;
++    CpuDefinitionInfo *info = g_new0(CpuDefinitionInfo, 1);
++    const char *typename = object_class_get_name(oc);
++
++    info->name = g_strndup(typename,
++                           strlen(typename) - strlen("-" TYPE_LOONGARCH_CPU));
++    info->q_typename = g_strdup(typename);
++
++    QAPI_LIST_PREPEND(*cpu_list, info);
++}
++
++CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
++{
++    CpuDefinitionInfoList *cpu_list = NULL;
++    GSList *list;
++
++    list = object_class_get_list(TYPE_LOONGARCH_CPU, false);
++    g_slist_foreach(list, loongarch_cpu_add_definition, &cpu_list);
++    g_slist_free(list);
++
++    return cpu_list;
++}
+diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+index e7b0e12be6..0fb853d915 100644
+--- a/target/loongarch/cpu.c
++++ b/target/loongarch/cpu.c
+@@ -12,7 +12,6 @@
+ #include "qemu/module.h"
+ #include "sysemu/qtest.h"
+ #include "exec/exec-all.h"
+-#include "qapi/qapi-commands-machine-target.h"
+ #include "cpu.h"
+ #include "internals.h"
+ #include "fpu/softfloat-helpers.h"
+@@ -744,29 +743,3 @@ static const TypeInfo loongarch_cpu_type_infos[] = {
+ };
+ 
+ DEFINE_TYPES(loongarch_cpu_type_infos)
+-
+-static void loongarch_cpu_add_definition(gpointer data, gpointer user_data)
+-{
+-    ObjectClass *oc = data;
+-    CpuDefinitionInfoList **cpu_list = user_data;
+-    CpuDefinitionInfo *info = g_new0(CpuDefinitionInfo, 1);
+-    const char *typename = object_class_get_name(oc);
+-
+-    info->name = g_strndup(typename,
+-                           strlen(typename) - strlen("-" TYPE_LOONGARCH_CPU));
+-    info->q_typename = g_strdup(typename);
+-
+-    QAPI_LIST_PREPEND(*cpu_list, info);
+-}
+-
+-CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+-{
+-    CpuDefinitionInfoList *cpu_list = NULL;
+-    GSList *list;
+-
+-    list = object_class_get_list(TYPE_LOONGARCH_CPU, false);
+-    g_slist_foreach(list, loongarch_cpu_add_definition, &cpu_list);
+-    g_slist_free(list);
+-
+-    return cpu_list;
+-}
+diff --git a/target/loongarch/meson.build b/target/loongarch/meson.build
+index 6376f9e84b..dfd65ae742 100644
+--- a/target/loongarch/meson.build
++++ b/target/loongarch/meson.build
+@@ -17,6 +17,7 @@ loongarch_tcg_ss.add(zlib)
+ 
+ loongarch_softmmu_ss = ss.source_set()
+ loongarch_softmmu_ss.add(files(
++  'cpu-monitor.c',
+   'machine.c',
+   'tlb_helper.c',
+   'constant_timer.c',
 -- 
 2.38.1
 

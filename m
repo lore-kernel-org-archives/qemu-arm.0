@@ -1,392 +1,686 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3459486ejb;
-        Mon, 19 Dec 2022 05:02:28 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6cE6w+2pys7p7qtfi9yH0ncfx//ESz5T7/vGStttmtuN7qbgj8x2AjSns7cHfJfxrP9KGZ
-X-Received: by 2002:a05:6870:4510:b0:148:3341:5249 with SMTP id e16-20020a056870451000b0014833415249mr15014638oao.22.1671454948515;
-        Mon, 19 Dec 2022 05:02:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671454948; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3608714ejb;
+        Mon, 19 Dec 2022 08:12:05 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5oS70+ByRm5GakEbxHH4RsFXgMkbYO/xzweuHjFPrHe65N4zHDOxy+kSkQSZ/mRGzKN7UF
+X-Received: by 2002:ad4:524c:0:b0:4c7:8122:b4c1 with SMTP id s12-20020ad4524c000000b004c78122b4c1mr52903928qvq.49.1671466325198;
+        Mon, 19 Dec 2022 08:12:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671466325; cv=none;
         d=google.com; s=arc-20160816;
-        b=vMD83mqMNsmIfRBkV2Z7U9AAljl8U0ProeYH+PRCKGft5pSA079ojsP70DfUr5x65j
-         YlKtBNVLOEqjXapRPrl/0ya60RMVgXtV3aa4CJFYCdv9EUtcjGp9GVITVzxvTSwqwOON
-         kkE/hdd4UV9ctR1bCdMdho7W1BpKn68wksSrT5mXB/2iXmtoTWsZ6AVwx2dvg9ESXfqy
-         lwEYyJOx3Vrp+4iDi3/NXO97vHs74SdrqCHjpVJL95I+X3PE88HzlgCTve0778mdokwL
-         3pvbSyiTjCpu0ZG+hZHxDP95gkvouq0Al6d7CL38XyNjrIIF9ZsHcn94aBhDe4itGlOF
-         bbBw==
+        b=Uvz5toNIetp+JzGmkq14c49mw5F9DHQfyq5OUFgs0IpUWBnuj+sieiFsp0polau+NO
+         HF8wwxvyKFDgF6uGnm5dExm4H2uMYEpzXZ+tXFA0DXlxvwed/i2PHkFQUl66450PqG3u
+         fBdq27XvCjmyBN3e/1YnYqouvZ/PE2+7uHqDES0id3z70/9M8R6cJuo8TUzSkXqvmHXX
+         YKdLlq0VhT25Q9/1mLd2KDflKyJvSlD2te14Ixj2McKBp0q17BtiFsyElcBIYcBikLzf
+         L/HnZHoA5dBsCy6TEA5Gs73lK8ysF1qmFKBz/lTs8Dmg/mC7eywXEkxAohkZVcLT+Reg
+         vnPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Xw+ckm/z8iJE0gLdoGtXCV/KPvsOLIutcQtOkVGM3AI=;
-        b=tPrncgf0XyTqEwWFBRHMpk0Oq/SluBn3vsdY5VIGq2Iza/EEob6wPZzBAVNSRKZRt+
-         u2rhiu36aYPtvkxf5iEepX7gjaXHpqfIKV2gavOEZdO2kj4o0x4AoVHXmrPNz+DxU24g
-         25HbQ7Z2SVuaGYodLKutbdUqdzvURs57t53Yf3I24gAPtlSoL+TmKELHOmDW350ZDREw
-         0w9DGL4+Jbhd2DrmYPXnapH335A+9ZLk8aXAAW3iTaFLjPh2WnXCvdMuXjwWNL5GDwqT
-         NdPxQHy2nE/CUVMrQORzfotQf047nmKpA75mV53hJeifT+JCKvAwbqC8iV3SJA8GM16c
-         zT0w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=RnvsVgfC/alcGV8Ew7+KD7ZFV/Td7VS0f0luHX+ubsw=;
+        b=X52tXbb47n65QCYWamJbDwVT5reT+sZxTNwwg2mc/g93Rnbsu+iZJwB1D0tELeOXgq
+         aO8C2s5xCm1AmKFoKNiloT/8iVbHq1WRH8Z4/X3z7YklVFL2oa13wUUX83QOCrRv8eND
+         SoGmqlf9IG2AhQlRlIB057dUAyXPmelrv6+hp2gX/B1EsO7p1gAmMxj7L+qB4UEA4mBx
+         p6tF71QgtgxnrdSMhTw3tpWXs/sqCAqWogrQ7KhIyUNvSuyXlbuTKfu+BfgVbv9VBwMp
+         WJuxAb7j7OB0OM6OfBvCrnFDZYlS89wi+vraQfC9Qs+8alMtLAKrKTEOtYJOD9TZOLxL
+         O1Iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KEqh1on4;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id fb15-20020a05622a480f00b003a97c56d020si2818013qtb.364.2022.12.19.05.02.28
+       dkim=pass header.i=@linaro.org header.s=google header.b=biVt9I2f;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 4-20020a05621420a400b004c70b991dffsi4085730qvd.91.2022.12.19.08.12.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Dec 2022 05:02:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 19 Dec 2022 08:12:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KEqh1on4;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1671454948;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Xw+ckm/z8iJE0gLdoGtXCV/KPvsOLIutcQtOkVGM3AI=;
-	b=KEqh1on4pcp0jLoyK9C0THlgm334upuxZMy0J8Vi/m4ayL0KxRlsg+isZpLk5y20rOSUWl
-	mjyt0EajS7QFJyEdlU85/6sTq7P40BkcRNw05wTWW4yNMLw+3F23qqtN5flSw14sQU01Ly
-	PqTrRS1SvYAGwiq2B2cLpbCLDmmx0vY=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-549-_H72VPWrOC2TXqiPzts5tA-1; Mon, 19 Dec 2022 08:02:24 -0500
-X-MC-Unique: _H72VPWrOC2TXqiPzts5tA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6D95C2806078;
-	Mon, 19 Dec 2022 13:02:10 +0000 (UTC)
-Received: from virtlab420.virt.lab.eng.bos.redhat.com (virtlab420.virt.lab.eng.bos.redhat.com [10.19.152.148])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C551E14171BA;
-	Mon, 19 Dec 2022 13:02:09 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-ppc@nongnu.org,
-	xen-devel@lists.xenproject.org,
-	Laurent Vivier <lvivier@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	virtio-fs@redhat.com,
-	Michael Roth <michael.roth@amd.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-block@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org,
-	Paul Durrant <paul@xen.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	John Snow <jsnow@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Greg Kurz <groug@kaod.org>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 5/6] tests: add G_GNUC_PRINTF for various functions
-Date: Mon, 19 Dec 2022 08:02:04 -0500
-Message-Id: <20221219130205.687815-6-berrange@redhat.com>
-In-Reply-To: <20221219130205.687815-1-berrange@redhat.com>
-References: <20221219130205.687815-1-berrange@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=biVt9I2f;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p7IkB-0001xs-28; Mon, 19 Dec 2022 11:11:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p7Ik9-0001vU-Pg
+ for qemu-devel@nongnu.org; Mon, 19 Dec 2022 11:11:57 -0500
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p7Ik6-0004wF-Qv
+ for qemu-devel@nongnu.org; Mon, 19 Dec 2022 11:11:57 -0500
+Received: by mail-pf1-x42a.google.com with SMTP id 130so6579954pfu.8
+ for <qemu-devel@nongnu.org>; Mon, 19 Dec 2022 08:11:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=RnvsVgfC/alcGV8Ew7+KD7ZFV/Td7VS0f0luHX+ubsw=;
+ b=biVt9I2fXBWFaMBiTQaD7ZbG8L3INzaJmCxH1HVe9WzNEXfPWxH4veBWK4bNZMrDy1
+ DzRepkg7C5J6/nFuNPua77i6mkohIFTTtVbgJY3awj26slzxQzsUXaolgePWFxWBH5Lh
+ WaEGG8s1P6GewPPbGClfRfu+8KeQlvtMEfADYUPJvNfV9ut0/23o08MZCaolu2WaDB9Q
+ WFynFPUHLWnLwG2BG4SJ7afkyftbmwBct0XGtZ+QQ9O2hvqJtuYVvRpCRbzWAfcxYQSm
+ eiNGA3Lj5fGxFu61UbhKJACjL29aSyR5r5uT+nEPmMOA1rMzBPOx3O2AQ2glTNJblYeO
+ JAvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=RnvsVgfC/alcGV8Ew7+KD7ZFV/Td7VS0f0luHX+ubsw=;
+ b=GuUX7h5PWYazL21IcDTKeAQm3YD/EVtH7whhqGGp+jPDBa1n0IQAKtLAphWf4wZa83
+ tjCkbMLFmG9gNRDRgBKdgHSoz3Dcbitksz0BtyIhckp9UKNJoqztv4C9SP9JmdkhLhoV
+ QfJtEe0p3V/IVyeBZ1S/w94+5oGH5snnKTvpIUpznLTPE7YjXfG8JOQqBfQ+TInl4GTD
+ SAzF9QijcAr+foKwuzPT9VEwJGXpJNge875D22QUS/7zAycM8J5kOd+QvsS9zWDPKsYh
+ Vb7mxmYOv1ZUKQ1PucjLCBTl4eeFT/hypZsYbjvy/W/5KRZAir6TBuYwT7JgOOTOqoVk
+ 2ApQ==
+X-Gm-Message-State: ANoB5pl885ofbDzlAjTrY2vWVDDMGjX3ESCqPRqbCRlfykppQ9Gq3Yej
+ kqDS9pU2kSDc1NS2JMmgkNOmDtIAqVp2cW+ZjCYGbA==
+X-Received: by 2002:a63:c149:0:b0:477:86c1:640f with SMTP id
+ p9-20020a63c149000000b0047786c1640fmr2165014pgi.231.1671466312891; Mon, 19
+ Dec 2022 08:11:52 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-X-TUID: Gg57thV8J0/g
+References: <20221207021322.16165-1-vikram.garhwal@amd.com>
+ <20221207021322.16165-3-vikram.garhwal@amd.com>
+In-Reply-To: <20221207021322.16165-3-vikram.garhwal@amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 19 Dec 2022 16:11:41 +0000
+Message-ID: <CAFEAcA_9DX24u4-C_5RcL4ZqHpdCDg3Spd4Ksp9vJQHXSqBRcw@mail.gmail.com>
+Subject: Re: [QEMU][PATCH v3 2/4] hw/net/can: Introduce Xilinx Versal CANFD
+ controller
+To: Vikram Garhwal <vikram.garhwal@amd.com>
+Cc: qemu-devel@nongnu.org, francisco.iglesias@amd.com, 
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>, Vikram Garhwal <fnu.vikram@xilinx.com>, 
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nACSZE95ju0S
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
----
- tests/qtest/ahci-test.c           |  3 +++
- tests/qtest/arm-cpu-features.c    |  1 +
- tests/qtest/erst-test.c           |  2 +-
- tests/qtest/ide-test.c            |  3 ++-
- tests/qtest/ivshmem-test.c        |  4 ++--
- tests/qtest/libqmp.c              |  2 +-
- tests/qtest/libqos/libqos-pc.h    |  6 ++++--
- tests/qtest/libqos/libqos-spapr.h |  6 ++++--
- tests/qtest/libqos/libqos.h       |  6 ++++--
- tests/qtest/libqos/virtio-9p.c    |  1 +
- tests/qtest/migration-helpers.h   |  1 +
- tests/qtest/rtas-test.c           |  2 +-
- tests/qtest/usb-hcd-uhci-test.c   |  4 ++--
- tests/unit/test-qmp-cmds.c        | 13 +++++++++----
- 14 files changed, 36 insertions(+), 18 deletions(-)
+On Wed, 7 Dec 2022 at 02:13, Vikram Garhwal <vikram.garhwal@amd.com> wrote:
+>
+> The Xilinx Versal CANFD controller is developed based on SocketCAN, QEMU CAN bus
+> implementation. Bus connection and socketCAN connection for each CAN module
+> can be set through command lines.
+>
+> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+> ---
+>  hw/net/can/meson.build             |    1 +
+>  hw/net/can/trace-events            |    7 +
+>  hw/net/can/xlnx-versal-canfd.c     | 2121 ++++++++++++++++++++++++++++
+>  include/hw/net/xlnx-versal-canfd.h |   90 ++
+>  4 files changed, 2219 insertions(+)
+>  create mode 100644 hw/net/can/xlnx-versal-canfd.c
+>  create mode 100644 include/hw/net/xlnx-versal-canfd.h
+>
 
-diff --git a/tests/qtest/ahci-test.c b/tests/qtest/ahci-test.c
-index 66652fed04..1967cd5898 100644
---- a/tests/qtest/ahci-test.c
-+++ b/tests/qtest/ahci-test.c
-@@ -154,6 +154,7 @@ static void ahci_migrate(AHCIQState *from, AHCIQState *to, const char *uri)
- /**
-  * Start a Q35 machine and bookmark a handle to the AHCI device.
-  */
-+G_GNUC_PRINTF(1, 0)
- static AHCIQState *ahci_vboot(const char *cli, va_list ap)
- {
-     AHCIQState *s;
-@@ -171,6 +172,7 @@ static AHCIQState *ahci_vboot(const char *cli, va_list ap)
- /**
-  * Start a Q35 machine and bookmark a handle to the AHCI device.
-  */
-+G_GNUC_PRINTF(1, 2)
- static AHCIQState *ahci_boot(const char *cli, ...)
- {
-     AHCIQState *s;
-@@ -209,6 +211,7 @@ static void ahci_shutdown(AHCIQState *ahci)
-  * Boot and fully enable the HBA device.
-  * @see ahci_boot, ahci_pci_enable and ahci_hba_enable.
-  */
-+G_GNUC_PRINTF(1, 2)
- static AHCIQState *ahci_boot_and_enable(const char *cli, ...)
- {
-     AHCIQState *ahci;
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index 5a14527386..8691802950 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -32,6 +32,7 @@ static QDict *do_query_no_props(QTestState *qts, const char *cpu_type)
-                           QUERY_TAIL, cpu_type);
- }
- 
-+G_GNUC_PRINTF(3, 4)
- static QDict *do_query(QTestState *qts, const char *cpu_type,
-                        const char *fmt, ...)
- {
-diff --git a/tests/qtest/erst-test.c b/tests/qtest/erst-test.c
-index 974e8bcfe5..c45bee7f05 100644
---- a/tests/qtest/erst-test.c
-+++ b/tests/qtest/erst-test.c
-@@ -98,7 +98,7 @@ static void setup_vm_cmd(ERSTState *s, const char *cmd)
-     const char *arch = qtest_get_arch();
- 
-     if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
--        s->qs = qtest_pc_boot(cmd);
-+        s->qs = qtest_pc_boot("%s", cmd);
-     } else {
-         g_printerr("erst-test tests are only available on x86\n");
-         exit(EXIT_FAILURE);
-diff --git a/tests/qtest/ide-test.c b/tests/qtest/ide-test.c
-index dbe1563b23..dcb050bf9b 100644
---- a/tests/qtest/ide-test.c
-+++ b/tests/qtest/ide-test.c
-@@ -125,6 +125,7 @@ static QGuestAllocator guest_malloc;
- static char *tmp_path[2];
- static char *debug_path;
- 
-+G_GNUC_PRINTF(1, 2)
- static QTestState *ide_test_start(const char *cmdline_fmt, ...)
- {
-     QTestState *qts;
-@@ -788,7 +789,7 @@ static void test_flush_nodev(void)
-     QPCIDevice *dev;
-     QPCIBar bmdma_bar, ide_bar;
- 
--    qts = ide_test_start("");
-+    qts = ide_test_start("%s", "");
- 
-     dev = get_pci_device(qts, &bmdma_bar, &ide_bar);
- 
-diff --git a/tests/qtest/ivshmem-test.c b/tests/qtest/ivshmem-test.c
-index cd550c8935..9bf8e78df6 100644
---- a/tests/qtest/ivshmem-test.c
-+++ b/tests/qtest/ivshmem-test.c
-@@ -109,9 +109,9 @@ static void setup_vm_cmd(IVState *s, const char *cmd, bool msix)
-     const char *arch = qtest_get_arch();
- 
-     if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
--        s->qs = qtest_pc_boot(cmd);
-+        s->qs = qtest_pc_boot("%s", cmd);
-     } else if (strcmp(arch, "ppc64") == 0) {
--        s->qs = qtest_spapr_boot(cmd);
-+        s->qs = qtest_spapr_boot("%s", cmd);
-     } else {
-         g_printerr("ivshmem-test tests are only available on x86 or ppc64\n");
-         exit(EXIT_FAILURE);
-diff --git a/tests/qtest/libqmp.c b/tests/qtest/libqmp.c
-index 2b08382e5d..a89cab03c3 100644
---- a/tests/qtest/libqmp.c
-+++ b/tests/qtest/libqmp.c
-@@ -134,7 +134,7 @@ static void socket_send_fds(int socket_fd, int *fds, size_t fds_num,
-  * in the case that they choose to discard all replies up until
-  * a particular EVENT is received.
-  */
--static void
-+static G_GNUC_PRINTF(4, 0) void
- _qmp_fd_vsend_fds(int fd, int *fds, size_t fds_num,
-                   const char *fmt, va_list ap)
- {
-diff --git a/tests/qtest/libqos/libqos-pc.h b/tests/qtest/libqos/libqos-pc.h
-index 1a9923ead4..a2e4209a49 100644
---- a/tests/qtest/libqos/libqos-pc.h
-+++ b/tests/qtest/libqos/libqos-pc.h
-@@ -3,8 +3,10 @@
- 
- #include "libqos.h"
- 
--QOSState *qtest_pc_vboot(const char *cmdline_fmt, va_list ap);
--QOSState *qtest_pc_boot(const char *cmdline_fmt, ...);
-+QOSState *qtest_pc_vboot(const char *cmdline_fmt, va_list ap)
-+    G_GNUC_PRINTF(1, 0);
-+QOSState *qtest_pc_boot(const char *cmdline_fmt, ...)
-+    G_GNUC_PRINTF(1, 2);
- void qtest_pc_shutdown(QOSState *qs);
- 
- #endif
-diff --git a/tests/qtest/libqos/libqos-spapr.h b/tests/qtest/libqos/libqos-spapr.h
-index c61338917a..e4483c14f8 100644
---- a/tests/qtest/libqos/libqos-spapr.h
-+++ b/tests/qtest/libqos/libqos-spapr.h
-@@ -3,8 +3,10 @@
- 
- #include "libqos.h"
- 
--QOSState *qtest_spapr_vboot(const char *cmdline_fmt, va_list ap);
--QOSState *qtest_spapr_boot(const char *cmdline_fmt, ...);
-+QOSState *qtest_spapr_vboot(const char *cmdline_fmt, va_list ap)
-+    G_GNUC_PRINTF(1, 0);
-+QOSState *qtest_spapr_boot(const char *cmdline_fmt, ...)
-+    G_GNUC_PRINTF(1, 2);
- void qtest_spapr_shutdown(QOSState *qs);
- 
- /* List of capabilities needed to silence warnings with TCG */
-diff --git a/tests/qtest/libqos/libqos.h b/tests/qtest/libqos/libqos.h
-index 9b4dd509f0..12d05b2365 100644
---- a/tests/qtest/libqos/libqos.h
-+++ b/tests/qtest/libqos/libqos.h
-@@ -21,8 +21,10 @@ struct QOSState {
-     QOSOps *ops;
- };
- 
--QOSState *qtest_vboot(QOSOps *ops, const char *cmdline_fmt, va_list ap);
--QOSState *qtest_boot(QOSOps *ops, const char *cmdline_fmt, ...);
-+QOSState *qtest_vboot(QOSOps *ops, const char *cmdline_fmt, va_list ap)
-+    G_GNUC_PRINTF(2, 0);
-+QOSState *qtest_boot(QOSOps *ops, const char *cmdline_fmt, ...)
-+    G_GNUC_PRINTF(2, 3);
- void qtest_common_shutdown(QOSState *qs);
- void qtest_shutdown(QOSState *qs);
- bool have_qemu_img(void);
-diff --git a/tests/qtest/libqos/virtio-9p.c b/tests/qtest/libqos/virtio-9p.c
-index 7f21028256..186fcc1141 100644
---- a/tests/qtest/libqos/virtio-9p.c
-+++ b/tests/qtest/libqos/virtio-9p.c
-@@ -211,6 +211,7 @@ static void *virtio_9p_pci_create(void *pci_bus, QGuestAllocator *t_alloc,
-  *                      variable arguments of this function to this
-  *                      replacement string
-  */
-+G_GNUC_PRINTF(3, 4)
- static void regex_replace(GString *haystack, const char *pattern,
-                           const char *replace_fmt, ...)
- {
-diff --git a/tests/qtest/migration-helpers.h b/tests/qtest/migration-helpers.h
-index db0684de48..a188b62787 100644
---- a/tests/qtest/migration-helpers.h
-+++ b/tests/qtest/migration-helpers.h
-@@ -25,6 +25,7 @@ QDict *wait_command_fd(QTestState *who, int fd, const char *command, ...);
- G_GNUC_PRINTF(2, 3)
- QDict *wait_command(QTestState *who, const char *command, ...);
- 
-+G_GNUC_PRINTF(2, 3)
- QDict *qmp_command(QTestState *who, const char *command, ...);
- 
- G_GNUC_PRINTF(3, 4)
-diff --git a/tests/qtest/rtas-test.c b/tests/qtest/rtas-test.c
-index 50df60e5b2..1ba42b37d2 100644
---- a/tests/qtest/rtas-test.c
-+++ b/tests/qtest/rtas-test.c
-@@ -13,7 +13,7 @@ static void run_test_rtas_get_time_of_day(const char *machine)
-     uint64_t ret;
-     time_t t1, t2;
- 
--    qs = qtest_spapr_boot(machine);
-+    qs = qtest_spapr_boot("%s", machine);
- 
-     t1 = time(NULL);
-     ret = qrtas_get_time_of_day(qs->qts, &qs->alloc, &tm, &ns);
-diff --git a/tests/qtest/usb-hcd-uhci-test.c b/tests/qtest/usb-hcd-uhci-test.c
-index 7a117b64d9..f264d2bf73 100644
---- a/tests/qtest/usb-hcd-uhci-test.c
-+++ b/tests/qtest/usb-hcd-uhci-test.c
-@@ -72,9 +72,9 @@ int main(int argc, char **argv)
-     qtest_add_func("/uhci/pci/hotplug/usb-storage", test_usb_storage_hotplug);
- 
-     if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
--        qs = qtest_pc_boot(cmd);
-+        qs = qtest_pc_boot("%s", cmd);
-     } else if (strcmp(arch, "ppc64") == 0) {
--        qs = qtest_spapr_boot(cmd);
-+        qs = qtest_spapr_boot("%s", cmd);
-     } else {
-         g_printerr("usb-hcd-uhci-test tests are only "
-                    "available on x86 or ppc64\n");
-diff --git a/tests/unit/test-qmp-cmds.c b/tests/unit/test-qmp-cmds.c
-index 2373cd64cb..6d52b4e5d8 100644
---- a/tests/unit/test-qmp-cmds.c
-+++ b/tests/unit/test-qmp-cmds.c
-@@ -138,6 +138,7 @@ void qmp___org_qemu_x_command(__org_qemu_x_EnumList *a,
- }
- 
- 
-+G_GNUC_PRINTF(2, 3)
- static QObject *do_qmp_dispatch(bool allow_oob, const char *template, ...)
- {
-     va_list ap;
-@@ -160,6 +161,7 @@ static QObject *do_qmp_dispatch(bool allow_oob, const char *template, ...)
-     return ret;
- }
- 
-+G_GNUC_PRINTF(3, 4)
- static void do_qmp_dispatch_error(bool allow_oob, ErrorClass cls,
-                                   const char *template, ...)
- {
-@@ -269,7 +271,7 @@ static void test_dispatch_cmd_io(void)
- 
- static void test_dispatch_cmd_deprecated(void)
- {
--    const char *cmd = "{ 'execute': 'test-command-features1' }";
-+    #define cmd "{ 'execute': 'test-command-features1' }"
-     QDict *ret;
- 
-     memset(&compat_policy, 0, sizeof(compat_policy));
-@@ -287,12 +289,13 @@ static void test_dispatch_cmd_deprecated(void)
- 
-     compat_policy.deprecated_input = COMPAT_POLICY_INPUT_REJECT;
-     do_qmp_dispatch_error(false, ERROR_CLASS_COMMAND_NOT_FOUND, cmd);
-+    #undef cmd
- }
- 
- static void test_dispatch_cmd_arg_deprecated(void)
- {
--    const char *cmd = "{ 'execute': 'test-features0',"
--        " 'arguments': { 'fs1': { 'foo': 42 } } }";
-+    #define cmd "{ 'execute': 'test-features0'," \
-+        " 'arguments': { 'fs1': { 'foo': 42 } } }"
-     QDict *ret;
- 
-     memset(&compat_policy, 0, sizeof(compat_policy));
-@@ -310,11 +313,12 @@ static void test_dispatch_cmd_arg_deprecated(void)
- 
-     compat_policy.deprecated_input = COMPAT_POLICY_INPUT_REJECT;
-     do_qmp_dispatch_error(false, ERROR_CLASS_GENERIC_ERROR, cmd);
-+    #undef cmd
- }
- 
- static void test_dispatch_cmd_ret_deprecated(void)
- {
--    const char *cmd = "{ 'execute': 'test-features0' }";
-+    #define cmd "{ 'execute': 'test-features0' }"
-     QDict *ret;
- 
-     memset(&compat_policy, 0, sizeof(compat_policy));
-@@ -334,6 +338,7 @@ static void test_dispatch_cmd_ret_deprecated(void)
-     ret = qobject_to(QDict, do_qmp_dispatch(false, cmd));
-     assert(ret && qdict_size(ret) == 0);
-     qobject_unref(ret);
-+    #undef cmd
- }
- 
- /* test generated dealloc functions for generated types */
--- 
-2.38.1
+
+
+
+> @@ -0,0 +1,2121 @@
+> +/*
+> + * QEMU model of the Xilinx Versal CANFD device.
+> + *
+> + * This implementation is based on the following datasheet:
+> + * https://docs.xilinx.com/v/u/2.0-English/pg223-canfd
+> + *
+> + * Copyright (c) 2022 AMD Inc.
+> + *
+> + * Written-by: Vikram Garhwal<vikram.garhwal@amd.com>
+
+Missing space before '<'.
+
+> +static void canfd_config_reset(XlnxVersalCANFDState *s)
+> +{
+> +
+> +    unsigned int i;
+> +
+> +    /* Reset all the configuration register. */
+
+"registers"
+
+> +    for (i = 0; i < R_RX_FIFO_WATERMARK_REGISTER; ++i) {
+> +        register_reset(&s->reg_info[i]);
+> +    }
+> +
+> +    canfd_update_irq(s);
+> +}
+
+
+
+> +static void store_rx_sequential(XlnxVersalCANFDState *s,
+> +                                const qemu_can_frame *frame,
+> +                                uint32_t fill_level, uint32_t read_index,
+> +                                uint32_t store_location, uint8_t rx_fifo,
+> +                                bool rx_fifo_id, uint8_t filter_index)
+> +{
+> +    int i;
+> +    bool is_canfd_frame;
+> +    uint8_t dlc = frame->can_dlc;
+> +    uint32_t dlc_reg_val = 0;
+> +    uint32_t data_reg_val = 0;
+> +
+> +    /* Getting RX0/1 fill level */
+> +    if ((fill_level) > rx_fifo - 1) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: RX%d Buffer is full. Discarding the"
+> +                      " message\n", path, rx_fifo_id);
+> +
+> +        /* Set the corresponding RF buffer overflow interrupt. */
+> +        if (rx_fifo_id == 0) {
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFOFLW, 1);
+> +        } else {
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFOFLW_1, 1);
+> +        }
+> +    } else {
+> +        uint16_t rx_timestamp = CANFD_TIMER_MAX -
+> +                                    ptimer_get_count(s->canfd_timer);
+> +
+> +        if (rx_timestamp == 0xFFFF) {
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TSCNT_OFLW, 1);
+> +        } else {
+> +            ARRAY_FIELD_DP32(s->regs, TIMESTAMP_REGISTER, TIMESTAMP_CNT,
+> +                             rx_timestamp);
+> +        }
+> +
+> +        if (rx_fifo_id == 0) {
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, FL,
+> +                             fill_level + 1);
+> +            assert(store_location <=
+> +                              R_RB_ID_REGISTER + (s->cfg.rx0_fifo *
+> +                                                  NUM_REGS_PER_MSG_SPACE));
+> +        } else {
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, FL_1,
+> +                             fill_level + 1);
+> +            assert(store_location <=
+> +                              R_RB_ID_REGISTER_1 + (s->cfg.rx1_fifo *
+> +                                                    NUM_REGS_PER_MSG_SPACE));
+> +        }
+> +
+> +        s->regs[store_location] = frame->can_id;
+> +
+> +        if (frame->flags == QEMU_CAN_FRMF_TYPE_FD) {
+> +            is_canfd_frame = true;
+> +
+> +            for (i = 0; i < ARRAY_SIZE(canfd_dlc_array); i++) {
+> +                if (canfd_dlc_array[i] == frame->can_dlc) {
+> +                    dlc = 8 + i;
+> +                }
+> +
+> +            dlc_reg_val = FIELD_DP32(0, RB_DLC_REGISTER, DLC, dlc);
+> +            }
+> +        } else {
+> +            is_canfd_frame = false;
+> +            if (frame->can_dlc > 8) {
+> +                dlc = 8;
+> +            }
+> +
+> +            dlc_reg_val = FIELD_DP32(0, RB_DLC_REGISTER, DLC, frame->can_dlc);
+> +        }
+> +
+> +        dlc_reg_val |= FIELD_DP32(0, RB_DLC_REGISTER, FDF, is_canfd_frame);
+> +        dlc_reg_val |= FIELD_DP32(0, RB_DLC_REGISTER, TIMESTAMP, rx_timestamp);
+> +        dlc_reg_val |= FIELD_DP32(0, RB_DLC_REGISTER, MATCHED_FILTER_INDEX,
+> +                                  filter_index);
+> +        s->regs[store_location + 1] = dlc_reg_val;
+> +
+> +        for (i = 0; i <= dlc; i++) {
+> +            data_reg_val = FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES3,
+> +                                      frame->data[4 * i]);
+> +            data_reg_val |= FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES2,
+> +                                       frame->data[4 * i + 1]);
+> +            data_reg_val |= FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES1,
+> +                                       frame->data[4 * i + 2]);
+> +            data_reg_val |= FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES0,
+> +                                       frame->data[4 * i + 3]);
+> +            s->regs[store_location + i + 2] = data_reg_val;
+> +        }
+
+This loop will read more than dlc bytes of data out of the frame
+if dlc happens not to be a multiple of 4.
+
+> +        /* set the interrupt as RXOK. */
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOK, 1);
+> +    }
+> +}
+
+
+
+> +static gint g_cmp_ids(gconstpointer data1, gconstpointer data2)
+> +{
+> +    tx_ready_reg_info *tx_reg_1 = (tx_ready_reg_info *) data1;
+> +    tx_ready_reg_info *tx_reg_2 = (tx_ready_reg_info *) data2;
+> +
+> +    return tx_reg_1->can_id - tx_reg_2->can_id;
+> +}
+> +
+> +static void free_list(GSList *list)
+> +{
+> +    GSList *iterator = NULL;
+> +
+> +    for (iterator = list; iterator != NULL; iterator = iterator->next) {
+> +        g_free((tx_ready_reg_info *)iterator->data);
+> +    }
+> +
+> +    g_slist_free(list);
+> +
+> +    return;
+> +}
+> +
+> +static GSList *prepare_tx_data(XlnxVersalCANFDState *s)
+> +{
+> +    uint8_t i = 0;
+> +    GSList *list = NULL;
+> +    uint32_t reg_num = 0;
+> +    uint32_t reg_ready = s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER];
+> +
+> +    /* First find the messages which are ready for transaction. */
+> +    for (i = 0; i < s->cfg.tx_fifo; i++) {
+> +        if (reg_ready) {
+> +            reg_num = R_TB_ID_REGISTER + (NUM_REGS_PER_MSG_SPACE * i);
+> +            tx_ready_reg_info *temp = g_new(tx_ready_reg_info, 1);
+> +            if (temp == NULL) {
+
+g_new always succeeds, so you never need to check its return value.
+
+> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: Couldn't allocate memory\n",
+> +                               __func__);
+> +                free_list(list);
+> +                return NULL;
+> +            }
+> +
+> +            temp->can_id = s->regs[reg_num];
+> +            temp->reg_num = reg_num;
+> +            list = g_slist_append(list, temp);
+
+The glib documentation points out that g_slist_append() has to traverse
+the whole list in order to put an element on the end, which makes
+this algorithm accidentally quadratic. If you need to use append,
+use a different data structure than a singly linked list.
+Since we're sorting the list anyway, you could use g_slist_prepend()
+instead, which is fast because it doesn't need to walk the list.
+
+Overall, though, looking at what we do here (create the list of
+tx_ready_reg_info structs, sort it, walk through it processing them,
+free the list) I think this would be better done with a GArray.
+That provides all the operations we need here, and it will make
+much better use of memory because it just allocates (and re-allocates
+as necessary) one block of memory for the array, rather than two
+separate allocations for each list element and pointer-walking.
+
+> +        }
+> +
+> +        list = g_slist_sort(list, g_cmp_ids);
+> +        reg_ready >>= 1;
+> +        s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER] &= ~(1 << i);
+> +        s->regs[R_TX_BUFFER_CANCEL_REQUEST_REGISTER] &= ~(1 << i);
+> +    }
+> +
+> +    return list;
+> +}
+> +
+> +static void transfer_data(XlnxVersalCANFDState *s)
+> +{
+> +    bool canfd_tx = tx_ready_check(s);
+> +    GSList *list, *iterator = NULL;
+> +
+> +    if (canfd_tx) {
+> +        qemu_can_frame frame;
+> +
+> +        list = prepare_tx_data(s);
+> +        if (list == NULL) {
+> +            return;
+> +        }
+> +
+> +        for (iterator = list; iterator != NULL; iterator = iterator->next) {
+> +            regs2frame(s, &frame,
+> +                       ((tx_ready_reg_info *)iterator->data)->reg_num);
+> +
+> +            if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, LBACK)) {
+> +                update_rx_sequential(s, &frame);
+> +                tx_fifo_stamp(s,
+> +                              ((tx_ready_reg_info *)iterator->data)->reg_num);
+> +
+> +                ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOK, 1);
+> +            } else {
+> +                g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +                trace_xlnx_canfd_tx_data(path, frame.can_id, frame.can_dlc,
+> +                                         frame.flags);
+> +                can_bus_client_send(&s->bus_client, &frame, 1);
+> +                tx_fifo_stamp(s,
+> +                              ((tx_ready_reg_info *)iterator->data)->reg_num);
+> +
+> +                ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXRRS, 1);
+> +
+> +                if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP)) {
+> +                    canfd_exit_sleep_mode(s);
+> +                }
+> +            }
+> +        }
+> +
+> +        s->tx_busy_bit = 0;
+> +
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXOK, 1);
+> +        free_list(list);
+> +    } else {
+> +          g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +          qemu_log_mask(LOG_GUEST_ERROR, "%s: Controller not enabled for"
+> +                        " data transfer\n", path);
+> +    }
+
+This sort of code reads more easily if you structure it as
+  if (early-exit-condition) {
+      error handling;
+      return;
+  }
+  big lump of code that does the work;
+
+rather than
+  if (!early-exit-condition) {
+      big lump of code that does the work;
+  } else {
+      error handling;
+  }
+
+> +
+> +    canfd_update_irq(s);
+> +}
+
+> +static ssize_t canfd_xilinx_receive(CanBusClientState *client,
+> +                                    const qemu_can_frame *buf,
+> +                                    size_t buf_size)
+> +{
+> +    XlnxVersalCANFDState *s = container_of(client, XlnxVersalCANFDState,
+> +                                           bus_client);
+> +    const qemu_can_frame *frame = buf;
+> +
+> +    /* Update the status register that we are receiving message. */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, BBSY, 1);
+> +
+> +    if (buf_size <= 0) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Error in the data received.\n",
+> +                      path);
+
+This isn't a guest error; this function is called by other parts of
+QEMU. Also, buf_size is an unsigned type, so it can never be less
+than zero. Either the CanBusClientInfo::can_receive API says that you
+might be passed zero, in which case you have to handle it; or else
+it doesn't, in which case it would be an error in the caller, and
+you can assert if you like.
+
+> +        return 0;
+> +    }
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, LBACK)) {
+> +        /*
+> +         * XlnxVersalCANFDState will not participate in normal bus communication
+> +         * and does not receive any messages transmitted by other CAN nodes.
+> +         */
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Controller  is in loopback mode."
+> +                      " It will not receive data.\n", path);
+
+This doesn't seem like an error ?
+
+> +    } else if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SNOOP)) {
+> +        /* Snoop Mode: Just keep the data. no response back. */
+> +        update_rx_sequential(s, frame);
+> +    } else {
+> +        if ((ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP))) {
+> +            /*
+> +             * XlnxVersalCANFDState is in sleep mode. Any data on bus will bring
+> +             * it to the wake up state.
+> +             */
+> +            canfd_exit_sleep_mode(s);
+> +        }
+> +
+> +        update_rx_sequential(s, frame);
+> +    }
+> +
+> +    /* Message processing done. Update the status back to !busy */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, BBSY, 0);
+> +    return 1;
+> +}
+> +
+> +static CanBusClientInfo canfd_xilinx_bus_client_info = {
+> +    .can_receive = can_xilinx_canfd_receive,
+> +    .receive = canfd_xilinx_receive,
+> +};
+> +
+> +static int xlnx_canfd_connect_to_bus(XlnxVersalCANFDState *s,
+> +                                     CanBusState *bus)
+> +{
+> +    s->bus_client.info = &canfd_xilinx_bus_client_info;
+> +
+> +    if (can_bus_insert_client(bus, &s->bus_client) < 0) {
+> +        return -1;
+> +    }
+> +    return 0;
+
+We call this only once and that callsite only cares about
+"< 0 means error", so you could make this simply
+
+    return can_bus_insert_client(bus, &s->bus_client);
+
+
+> +}
+> +
+> +#define NUM_REG_PER_AF      ARRAY_SIZE(canfd_af_regs)
+> +#define NUM_AF              32
+> +#define NUM_REG_PER_TXE     ARRAY_SIZE(canfd_txe_regs)
+> +#define NUM_TXE             32
+> +
+> +static int canfd_populate_regarray(XlnxVersalCANFDState *s,
+> +                                  RegisterInfoArray *r_array, int pos,
+> +                                  const RegisterAccessInfo *rae,
+> +                                  int num_rae)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < num_rae; i++) {
+> +        int index = rae[i].addr / 4;
+> +        RegisterInfo *r = &s->reg_info[index];
+> +
+> +        object_initialize((void *)r, sizeof(*r), TYPE_REGISTER);
+
+You don't need to cast r to void*, because object_initialize()
+already takes a void* and that cast is implicit. But calling
+object_initialize() directly looks weird -- almost no other
+device needs to do that, and nobody else is creating TYPE_REGISTER
+objects directly. What's going on here ?
+
+> +
+> +        *r = (RegisterInfo) {
+> +            .data = &s->regs[index],
+> +            .data_size = sizeof(uint32_t),
+> +            .access = &rae[i],
+> +            .opaque = OBJECT(s),
+> +        };
+> +
+> +        r_array->r[i + pos] = r;
+> +    }
+> +    return i + pos;
+> +}
+> +
+> +static void canfd_create_rai(RegisterAccessInfo *rai_array,
+> +                                const RegisterAccessInfo *canfd_regs,
+> +                                int template_rai_array_sz,
+> +                                int num_template_to_copy)
+> +{
+> +    int i;
+> +    int reg_num;
+> +
+> +    for (reg_num = 0; reg_num < num_template_to_copy; reg_num++) {
+> +        int pos = reg_num * template_rai_array_sz;
+> +
+> +        memcpy(rai_array + pos, canfd_regs,
+> +               template_rai_array_sz * sizeof(RegisterAccessInfo));
+> +
+> +        for (i = 0; i < template_rai_array_sz; i++) {
+> +            const char *name = canfd_regs[i].name;
+> +            uint64_t addr = canfd_regs[i].addr;
+> +            rai_array[i + pos].name = g_strdup_printf("%s%d", name, reg_num);
+> +            rai_array[i + pos].addr = addr + pos * 4;
+> +        }
+> +    }
+> +}
+> +
+> +static void canfd_finalize(Object *obj)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(obj);
+> +    g_free(s->tx_regs);
+> +    g_free(s->rx0_regs);
+> +    g_free(s->af_regs);
+> +    g_free(s->txe_regs);
+> +    g_free(s->rx1_regs);
+
+instance_finalize is the opposite of instance_init, so you only
+need to clean up things you allocated there (which in this device
+is nothing, because memory regions are refcounted). All these
+arrays are only allocated in realize. (The opposite of realize
+is unrealize, but we don't need to try to implement it for
+this device, because this device will be created once and
+exist for the lifetime of the simulation; unrealize only really
+matters for hot-unpluggable devices.)
+
+> +}
+
+> +static void canfd_realize(DeviceState *dev, Error **errp)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(dev);
+> +    RegisterInfoArray *reg_array;
+> +
+> +    reg_array = canfd_create_regarray(s);
+> +    memory_region_add_subregion(&s->iomem, 0x00, &reg_array->mem);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+> +    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq_canfd_int);
+> +
+> +    if (s->canfdbus) {
+> +        if (xlnx_canfd_connect_to_bus(s, s->canfdbus) < 0) {
+> +            g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +            error_setg(errp, "%s: xlnx_canfd_connect_to_bus failed", path);
+> +            return;
+> +        }
+> +
+> +    } else {
+> +        /* If no bus is set. */
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: canfdbus property not set\n", path);
+
+This can't be a guest error, because it's the board/SoC that's
+responsible for wiring up the device properties. Either
+ * not setting the bus is an OK config, in which case we should
+   just accept it and create the device
+ * or it's an error not to set the property, in which case we
+   should return an error and not realize the device
+
+> +    }
+> +
+> +    /* Allocate a new timer. */
+> +    s->canfd_timer = ptimer_init(xlnx_versal_canfd_ptimer_cb, s,
+> +                                 PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD |
+> +                                 PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT |
+> +                                 PTIMER_POLICY_NO_IMMEDIATE_RELOAD);
+> +
+> +    ptimer_transaction_begin(s->canfd_timer);
+> +
+> +    ptimer_set_freq(s->canfd_timer, s->cfg.ext_clk_freq);
+> +    ptimer_set_limit(s->canfd_timer, CANFD_TIMER_MAX, 1);
+> +    ptimer_run(s->canfd_timer, 0);
+> +    ptimer_transaction_commit(s->canfd_timer);
+> +}
+> +
+
+> +    SysBusDevice            parent_obj;
+> +    MemoryRegion            iomem;
+> +
+> +    qemu_irq                irq_canfd_int;
+> +    qemu_irq                irq_addr_err;
+> +
+> +    RegisterInfo            reg_info[XLNX_VERSAL_CANFD_R_MAX];
+> +    RegisterAccessInfo      *tx_regs;
+> +    RegisterAccessInfo      *rx0_regs;
+> +    RegisterAccessInfo      *rx1_regs;
+> +    RegisterAccessInfo      *af_regs;
+> +    RegisterAccessInfo      *txe_regs;
+> +    RegisterAccessInfo      *rx_mailbox_regs;
+> +    RegisterAccessInfo      *af_mask_regs_mailbox;
+> +
+> +    uint32_t                regs[XLNX_VERSAL_CANFD_R_MAX];
+> +    uint8_t                 tx_busy_bit;
+
+tx_busy_bit is only touched once, to clear it; it
+is never set. Is there some missing code, or can it
+simply be deleted? (If there's real state here, it needs
+to go in the vmstate.)
+
+> +    uint8_t                 modes;
+
+This field seems to never be used.
+
+> +    ptimer_state            *canfd_timer;
+> +
+> +    CanBusClientState       bus_client;
+> +    CanBusState             *canfdbus;
+> +
+> +    struct {
+> +        uint8_t             ctrl_idx;
+
+ctrl_idx seems to be unused.
+
+> +        uint8_t             rx0_fifo;
+> +        uint8_t             rx1_fifo;
+> +        uint8_t             tx_fifo;
+> +        bool                enable_rx_fifo1;
+> +        uint32_t            ext_clk_freq;
+
+Ideally this would use a Clock, rather than an integer property.
+But updating the SoC model to use Clocks is probably best
+done as a separate patchset.
+
+> +   } cfg;
+> +
+> +} XlnxVersalCANFDState;
+> +
+> +typedef struct tx_ready_reg_info {
+> +    uint32_t can_id;
+> +    uint32_t reg_num;
+> +} tx_ready_reg_info;
+> +
+> +#endif
+> --
+
+thanks
+-- PMM

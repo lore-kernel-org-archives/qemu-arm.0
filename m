@@ -1,128 +1,110 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3905569ejb;
-        Mon, 19 Dec 2022 15:58:16 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvRebrNx2RzC+QuYmz0U/7ebsJPaaElrZdC13Ca/EFwXGISBTlWwkADeG7yF9bKQsVVvXFw
-X-Received: by 2002:a05:6214:4242:b0:4c7:4a14:79f5 with SMTP id ne2-20020a056214424200b004c74a1479f5mr15634418qvb.40.1671494296068;
-        Mon, 19 Dec 2022 15:58:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671494296; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3841331ejb;
+        Mon, 19 Dec 2022 14:04:26 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXstuxJ4Fx4+09VnMfxOjrfpS0H8VoBz+CgbnpxMnvg1JnPbuWIWpKZnR+7FY34TUh0/u6WF
+X-Received: by 2002:ad4:5290:0:b0:4c6:f83c:473e with SMTP id v16-20020ad45290000000b004c6f83c473emr11517666qvr.23.1671487465917;
+        Mon, 19 Dec 2022 14:04:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671487465; cv=none;
         d=google.com; s=arc-20160816;
-        b=PFY78uawKBzDM07nYU84HPaJXXd2tJAuXGrCs9dwPGOLV/369aEdUs2a5rT5gSbshk
-         EWLOdnIB72ZBia5ae+/d8qpQC97KjurE5Zfti8MTKJgz5V48TxnfoUEKyBUw5iVSqtiz
-         O1GaGbp7USW/UJyrX/nl6uMBpl50KfhBb5inpe7RY5o3DsaT7SSENeeVjCQWcFk5MX+I
-         1W0ncuNqHIQtjsoX/nQIOxqesjcZJZXdSdj79hL/BLssiG7ZC201nh4Mh4HbVMQy2o75
-         Mr2Xe1lQefgGrhzzgSROZoN53nsNtbpkSa7oSFAqi+U0nFrf+yi+c9ZBb0KYG/MfCNn1
-         vi2A==
+        b=DNTzglLyzCh0jhGXso1YEPkq6jtwapPgmGRYUpd7IqS2IXFW8Y2xMWXlaB5XRhD14d
+         7VUPT73BbfMBYZqzPUlN7FF+9Y/6ZxyVsV2DwPTSeaQEZ0GgdLV2TA6ERA9qLg53b+f/
+         45JztHA+TcUIxNXifuDjX9nuUfsDE2rCT7jpHXbrSWBGRgCrxDDH3cMGl6saooaj9vCA
+         gnoBVnt0pioM7YWLn+CDWCVBiRuWWlq8es6YQQP9MN7bf1Bf9x6S+s8wxpr2WDyyasPq
+         fnxkqh8/s3bpsurnjjcsboHidM6IT0CDwBXFc8to0m+rJydhI8OH9hxTMRXCBl2kpqZh
+         z4xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=5xEN+/cHPXM3dmSajuhSA3EX2xSXPvzRgub6iQeKrbQ=;
-        b=qSSF31KzxK986NSFWLQ9TzwPAPwzitiBRzj0GJXID09jtba8rKZ9o6wY39GwAbQ1Ua
-         +tXMpBBd4zPfTiTUMK0bAjdxItRsudtwe9c9dG+EpcGHjqjaFqb7uPuZe4xkH5gRNJ+V
-         GGjmOCVrOEnz1Dzwcb+0G6AHDNYOa+eZRTYRejt0MWnmq4X3j81Lk0QDWGitTyL5rxQW
-         qIMav3YzfSpUUgI465xrWQTANYKwkHlPQoVGVBB2ueH41hfmCMrSWH6bmG746b4E/y1o
-         yXIeeR7G+8nR+kSmiLTYnb7Q49oyVrufLsXTo5i1fGo6mWELmK7lFuHFHO7zEk4hAshI
-         JobQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=oDd2pV9RxAbkQqb3MwkVHArSjm0z788FK43lTqN2cPM=;
+        b=TTLkFSZKiWdkVejYDtkmE4RQtARihXM6VrvuUHrodafMh46dK3fp7vTXsSxb8PtxoJ
+         x6RrWCzwQIGqcAeJu7uilRsQNi5DdmbKUGVpCXGgmSIjsrX4Kq+alGGpwzGdLEIAJWTs
+         ePsVc3efquORCNgESW7wD7XsTM4m3pX5tA4oNMDQtookUkqN/OC0LLh3sySGA5E8fmXf
+         HyxLOm2SwBm2X4h3IETmR6JgXU6nuyonkGdx2ZfrFXqFV45b4FmyFC2sY4nGv0eubnD0
+         noZjpP3BMJOaQHQLOO2p0kZh+VC0cSsKPzgGn41J3ywvIURfgnl2F9WNvfYUfvhnLEha
+         6/wA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nVsZTf+V;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=UYPhaxEG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f5-20020a056214076500b004c70a196fefsi4541816qvz.580.2022.12.19.15.58.15
+        by mx.google.com with ESMTPS id fn12-20020ad45d6c000000b004c76393fc01si4489138qvb.108.2022.12.19.14.04.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Dec 2022 15:58:16 -0800 (PST)
+        Mon, 19 Dec 2022 14:04:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nVsZTf+V;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=UYPhaxEG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p7Q1I-00013U-HW; Mon, 19 Dec 2022 18:58:08 -0500
+	id 1p7OF2-00059c-RL; Mon, 19 Dec 2022 17:04:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1p7Q1H-00012z-7A
- for qemu-arm@nongnu.org; Mon, 19 Dec 2022 18:58:07 -0500
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1p7OEv-00058s-OC; Mon, 19 Dec 2022 17:04:06 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1p7Q1F-0004BM-3a
- for qemu-arm@nongnu.org; Mon, 19 Dec 2022 18:58:06 -0500
-Received: by mail-pj1-x1030.google.com with SMTP id
- z8-20020a17090abd8800b00219ed30ce47so14773980pjr.3
- for <qemu-arm@nongnu.org>; Mon, 19 Dec 2022 15:58:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=5xEN+/cHPXM3dmSajuhSA3EX2xSXPvzRgub6iQeKrbQ=;
- b=nVsZTf+VzorwY0KwX+fStO8mXF0bOxMT/JEleVEby/fTDy68JrjQKo2GvB9RRd+pSJ
- pwPrnHr6nEVszd/ckOaBG1HK2cuydydrkViu0RnsMfY5SK1lJvcX/v1UZoZ+AZ2bLRJi
- DgY2f3LQ7iTQPSck2U1aogY2qzmgyUncndbDnDsabxWyb4ZqptfpA89V8xP7AQI+SOwC
- xAvzf6H8As54XSMoYKPgO0lIYxBPtjAvDUTHZXo4PmzflNawZNsqKlPFNWtf34n0r3QI
- 9VkqvQa0fPBHIUtzCHrc2dQBXHy28eo9mxcDMG9VtJTQ7AHB/HhG1mzX2i0U9QwCH9dd
- KaAQ==
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1p7OEt-0002rt-WA; Mon, 19 Dec 2022 17:04:05 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id n20so25041536ejh.0;
+ Mon, 19 Dec 2022 14:04:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=oDd2pV9RxAbkQqb3MwkVHArSjm0z788FK43lTqN2cPM=;
+ b=UYPhaxEGu9rNfoNYnEg9LbPJnmPgW7HAKoJir7gk08NjdMvfvGoiXPaRgRz5zVkoC6
+ OxbgGF/8+xB9wQybm+wfef9cuxxSSkonw8xfA1p/wE/rS3o/Z4ykMufM95DeE0IohOxw
+ vS7snLHvS0NjU3WG+CHssjMX3SFAuTNIumilx9yrhvBFwX8TxaCpoM6Cyfe0EM7mgsBQ
+ /xWg4HvjJ8zzv1wINXoprVoYFNdNkfQFeWh2SpXJimzVQQvhVqSyt+Tmf9nFAbSldLgS
+ IjAtBfQJgUOEXK6M3JorkdAPyDmT11iukihIaT6VjFN/fyLaBQh89ryRKDOHRXPZ1J4R
+ y/5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=5xEN+/cHPXM3dmSajuhSA3EX2xSXPvzRgub6iQeKrbQ=;
- b=F0KEv15H5/qYsyMteqwgnkATDtpqUMr138KhkjytCiE8L4pVGP0PympcL/M2KIvdio
- lHyA01citfp31qCo7X0V8gwX2C/NXRJtLWnw0UGHssih7L9mh4DkAEsl969n0Eho8Jet
- VhPZ2b6JD/ezhSQjT16ehGzB3ukQdyFElfxEYd5rUV9mgZ3y+4owc1w6hFuhmwwx8u3Z
- nvTSZQqIQDQJ4Y+NeqOLZUg1fnXnZlD286Lrwe54c/jBZxWUhWhyDrMa6qA9cEDBqDe6
- dbmi18219PG8GjESbHKSs5oU+foSory0+tKD0zi+cYqWm/xECsTLX5oe8Q9fSSjryu3I
- NH4A==
-X-Gm-Message-State: AFqh2krQl+F3NjMYCRRcBh2zehYVpbm9XEC1XWoyBNUi07yOBgfItwcU
- WxEROkqDUAKfD4uwL4yaS7bmwA==
-X-Received: by 2002:a17:902:848e:b0:189:66dc:4af5 with SMTP id
- c14-20020a170902848e00b0018966dc4af5mr12284839plo.13.1671494283676; 
- Mon, 19 Dec 2022 15:58:03 -0800 (PST)
-Received: from ?IPV6:2602:47:d48c:8101:b343:d344:137b:e318?
- ([2602:47:d48c:8101:b343:d344:137b:e318])
- by smtp.gmail.com with ESMTPSA id
- z4-20020a1709027e8400b00178aaf6247bsm7763922pla.21.2022.12.19.15.58.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Dec 2022 15:58:03 -0800 (PST)
-Message-ID: <e1f13a16-e6a5-a484-8e6d-722b60dbaefb@linaro.org>
-Date: Mon, 19 Dec 2022 15:58:01 -0800
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=oDd2pV9RxAbkQqb3MwkVHArSjm0z788FK43lTqN2cPM=;
+ b=CeyjnrLYC8aE58G7d7CMBaoj8tdNznme8C1HtPYVZL5gBw4vyYqqm4tO2FwXz0m7/q
+ jWgwWbN5fsxKuMcy/6Ust2LjoVyzG1QVFkSheFyTfWTbN4nvLwXKWqzR2EzoJK6gK8+L
+ j9DYsbnZB6mQo43r06EDu8EACv0X49sgSfc8yCtu6NMyfLTRpBt/x+/3Iec2eMaVTIJS
+ 8FAJ/TA9pmq30qzAdkuWMykZ8TyfExvSjUYiO/IaC5rnRbZ98APrtLf+AuNPUCWt6Svo
+ aiT/YCZgWkzrc+Hnw1jo/FdbcBzvf7yXzBphbElOVYT+EKzBbmi1pO8HlvG5c6aPp/xg
+ owKw==
+X-Gm-Message-State: ANoB5plERVbhTrQnyyCizIUP1juCUsuOHtJRNomwd5R2IDFNDI3cO/Bk
+ Fquti2z9nzXyuWt3OVhXbY2bwZLAHNPV0VOxroY=
+X-Received: by 2002:a17:907:c281:b0:7c1:8a0b:f915 with SMTP id
+ tk1-20020a170907c28100b007c18a0bf915mr2104391ejc.42.1671487441052; Mon, 19
+ Dec 2022 14:04:01 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 2/4] target/loongarch: Restrict 'qapi-commands-machine.h'
- to system emulation
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+References: <20221218211918.3592-1-strahinja.p.jankovic@gmail.com>
+ <e05afcc8-8d86-b942-6702-8ba4887c44db@linaro.org>
+ <CABtshVRUevNjOucUwtKW-sccUAADRe-9JBbYHd8UMGf0YPJXSw@mail.gmail.com>
+ <CABtshVSY+UxMEfh_=NCw9ws0VrEnjkgzoMspg4wfG9Jr_ZZc=w@mail.gmail.com>
+ <11d8c4e0-c516-ed28-2df3-d613111ad53c@linaro.org>
+In-Reply-To: <11d8c4e0-c516-ed28-2df3-d613111ad53c@linaro.org>
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Date: Mon, 19 Dec 2022 23:03:49 +0100
+Message-ID: <CABtshVRyAJjgbBD9Non0Tm=SsQtJejYm-3C5m4ACK5jtd8Rmcg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/7] Enable Cubieboard A10 boot SPL from SD card
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, 
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, Huacai Chen
- <chenhuacai@kernel.org>, qemu-arm@nongnu.org,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Greg Kurz <groug@kaod.org>,
- Song Gao <gaosong@loongson.cn>
-References: <20221219211034.70491-1-philmd@linaro.org>
- <20221219211034.70491-3-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20221219211034.70491-3-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.149,
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -139,29 +121,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xK7Ax5t9qUpy
+X-TUID: huaMK+WoRyLk
 
-On 12/19/22 13:10, Philippe Mathieu-Daudé wrote:
-> Since commit a0e61807a3 ("qapi: Remove QMP events and commands from
-> user-mode builds") we don't generate the "qapi-commands-machine.h"
-> header in a user-emulation-only build.
-> 
-> Extract the QMP functions from cpu.c (which is always compiled) to
-> the new 'cpu-monitor.c' unit (which is only compiled when system
-> emulation is selected).
-> 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   target/loongarch/cpu-monitor.c | 37 ++++++++++++++++++++++++++++++++++
->   target/loongarch/cpu.c         | 27 -------------------------
->   target/loongarch/meson.build   |  1 +
->   3 files changed, 38 insertions(+), 27 deletions(-)
->   create mode 100644 target/loongarch/cpu-monitor.c
+Hi,
 
-Why cpu-monitor.c and not monitor.c like for target/arm/?
+On Mon, Dec 19, 2022 at 8:11 AM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> On 18/12/22 23:57, Strahinja Jankovic wrote:
+> > Hi,
+> >
+> > I just looked around a bit more. Would OpenWrt image be acceptable?
+>
+> Sure.
+>
+> > It looks like there are releases for cubieboard that are kept for a
+> > longer time, and I just checked that they work properly, so I could
+> > add them to the acceptance test.
+> >
+> > Best regards,
+> > Strahinja
+> >
+> > On Sun, Dec 18, 2022 at 11:34 PM Strahinja Jankovic
+> > <strahinjapjankovic@gmail.com> wrote:
+> >>
+> >> Hi,
+> >>
+> >>
+> >> On Sun, Dec 18, 2022 at 11:17 PM Philippe Mathieu-Daud=C3=A9
+> >> <philmd@linaro.org> wrote:
+> >>>
+> >>> On 18/12/22 22:19, Strahinja Jankovic wrote:
+> >>>> This patch series adds missing Allwinner A10 modules needed for
+> >>>> successful SPL boot:
+> >>>> - Clock controller module
+> >>>> - DRAM controller
+> >>>> - I2C0 controller (added also for Allwinner H3 since it is the same)
+> >>>> - AXP-209 connected to I2C0 bus
+> >>>>
+> >>>> It also updates Allwinner A10 emulation so SPL is copied from attach=
+ed
+> >>>> SD card if `-kernel` parameter is not passed when starting QEMU
+> >>>> (approach adapted from Allwinner H3 implementation).
+> >>>>
+> >>>> Boot from SD card has been tested with Cubieboard Armbian SD card im=
+age and custom
+> >>>> Yocto image built for Cubieboard.
+> >>>> Example usage for Armbian image:
+> >>>> qemu-system-arm -M cubieboard -nographic -sd ~/Armbian_22.11.0-trunk=
+_Cubieboard_kinetic_edge_6.0.7.img
+> >>>
+> >>> As a follow-up, could you add a test similar to
+> >>> test_arm_orangepi_bionic_20_08() in tests/avocado/boot_linux_console.=
+py?
+> >>>
+> >>> This test could be refactored as do_test_arm_allwinner_armbian(), cal=
+led
+> >>> for orangepi and cubieboard with the corresponding url / hash.
+> >>
+> >> I was planning to do it (I already have a patch for cubieboard), but
+> >> there is a problem with finding a stable-enough image for cubieboard
+> >> for automated testing.
+> >> Unfortunately, Cubieboard does not have supported Armbian images as
+> >> OrangePi-PC has (it only has weekly builds).
+>
+> Developers shouldn't worry about that but focus on the testing. The
+> QEMU project doesn't have dedicated sysadmin / storage, but if it had
+> it should be their problem, not yours. Meanwhile such a test is still
+> useful. Artifacts come with their hash, so can be uploaded elsewhere
+> later.
+>
+> >> From the images that can
+> >> be found on archive.armbian.com, there is only one bionic image
+> >> (21.02) and it won't boot because it hangs due to the musb issue (I
+> >> tried both with my patches and without, by extracting
+> >> kernel/dtb/initrd).
+>
+> Similar approach:
+> https://lore.kernel.org/qemu-devel/20201018205551.1537927-4-f4bug@amsat.o=
+rg/
+>
+> >> Other images are focal, but for some reason, in
+> >> those images it is impossible to interrupt U-Boot (tested with 21.08),
+> >> so I could not append to bootcmd to make boot process more verbose and
+> >> easier to monitor for automated testing.
+> >>
+> >> That is why, for now, I would suggest not updating the SPL/SD boot
+> >> test for Cubieboard.
+>
+> Niek can tell how many times his tests catched regressions for his
+> OrangePi machine; I remember at least 3 occasions :)
 
-Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Thanks for the suggestions, I will add the SPL boot test and use
+OpenWrt image for it.
 
+Best regards,
+Strahinja
 
-r~
+>
+> Regards,
+>
+> Phil.

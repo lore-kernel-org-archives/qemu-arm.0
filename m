@@ -1,132 +1,137 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4215976ejb;
-        Tue, 20 Dec 2022 02:45:04 -0800 (PST)
-X-Received: by 2002:aca:4543:0:b0:355:1e71:768 with SMTP id s64-20020aca4543000000b003551e710768mr16317238oia.39.1671533104280;
-        Tue, 20 Dec 2022 02:45:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671533104; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4298673ejb;
+        Tue, 20 Dec 2022 05:01:48 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvXlsjLqndR3xBOAC1q281X6CSxm2E1rOOKhgRhk/vYoT59AiQG9D2eHY/BAzkeHMPX8wT8
+X-Received: by 2002:a05:6402:1057:b0:474:a583:2e25 with SMTP id e23-20020a056402105700b00474a5832e25mr18318497edu.5.1671541308739;
+        Tue, 20 Dec 2022 05:01:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671541308; cv=none;
         d=google.com; s=arc-20160816;
-        b=0kneRnLEx+Z7Y+eRrEAofPO30+I/fgUqMyO75zLd3HMou7mCqgI5DpBmt8a9Ub7Ier
-         +Wrz8COzaphVefl78loHDnZmO3J3sTfgPjH7OIHBM54waoCSD8SuhJBvyG1gGN0pUFHW
-         bBhh6ND6MSVQ3L+EORcCzhC+XUCrC2iqFfDuDVQ2nqt1iAYbdLzTVAE7vSdBZRbDyEn+
-         sKWet1oSxTxyt2ahOxplYMmycWpD9H28+u68AyBxfuWIfEam3Nz0jBHxdhui8ks+vb6M
-         545tINH6N1v1+Kq/4NNFMnqpU6GJjkKOvqy/XYmW94bIRRFH+8PvUYb5R0JCU9xT6P+2
-         8Ipg==
+        b=JQfH9hDmUCwwIddlQoonuzwP0K1XXNR6nMy1m6DIWdb6DHelUjYyjl9xqRZLLSapo+
+         XCO3sfDCjvMvDLTH+Cppnv/C7WCQCbh+ExlVtlAa96MrtnpMP+sovFl4IDZBp9ITyOnt
+         j0LCuB5mnanNu9sm+EX3jCWFlaxvThHOORMujSnoVYqFSwTyucBAHDumlErA2jTltMSB
+         SSiEcWVvQEb76ZyFGLJf+SnnvMKc3svo4I40LXqu39VgnenU6/Tj6VZC2i8moWNjJ1p2
+         iLwXSay5u3McOFZ7q4/q5CDPlxktI4xH+w4hjc3O5Jkr4eAQCM138HLXNv8GuccElWPr
+         ewAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=list-id:precedence:mime-version:message-id:date:user-agent
+         :references:organization:in-reply-to:subject:cc:to:from
          :dkim-signature;
-        bh=XlLK/9t77OaCz0UGM/J8urYM3bBBnlqtd9YmBawRQfs=;
-        b=lw5Ev0rJ/p8y4MIaHhvXEe3uPb89Jj6FKNCoufQ7s++r5EfqqWT9x+SZ/JFIRczErL
-         foRw8n/mpdI8CkoNo7tquW4EryrfS63Pzi8nlmGIiLcl+mcI1j0LiWf+Qw6iQI2BKo0q
-         T1RL4EZDdFdiJTDwnBLRUndAigWrOL5mHTmZZ1+vRmqww+Q1HkMkHzMzFHDXqiqRwhCG
-         2mKniErVVsm14rrymtQQOTjTpxhaIEr2CCI+MW2TzPcbXUqu3/SoTIMu6Er6lcCwwWoT
-         dVGT354fXiXx9g32QsYncmmmRLg4ojRhptpmw95Hv125MuVF/zIj0W1FBvlS8H1CIIlB
-         lgTg==
+        bh=H2t8W77PSTr4Llxbj7tYL3QF8gC1sNMoCFvARbmtY94=;
+        b=wQaoe/lxLC4dQlceHStW+aCzHT8P+7FE5KSNj5R2l+Q2gdhGc4mfvbnoKaWvbHRK2b
+         ue2W1VoAcO31RPz8pI3cpT/aEhbnaLHVX1ov3oU/gQQhR8GYCkBNIsld15+rTRgG+Nbs
+         JtEMhDSoCN4j4MpbspbP880OwakJjy7hjC8ntugbzMH9ZaMseY0ig8YIuHMqScR3qNCf
+         sqRmP0JAt7yq4sEb4tfJGCHuUMKI/DNdn82mZ9rjC1OGNqd3asKgi4dMQMZiaGGQPmF4
+         uTGT41RqRqkaZkH3WbxnLk/3yALzwovlfBCqBEDB1m/2XvR+2k2arw+N3Vt61Ef8tgUN
+         T9rQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VZQVqUyf;
-       spf=pass (google.com: domain of danielhb413@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=danielhb413@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <danielhb413@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o130-20020aca5a88000000b0035bdb23bb25sor2649521oib.53.2022.12.20.02.45.04
-        (Google Transport Security);
-        Tue, 20 Dec 2022 02:45:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of danielhb413@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NxhKlYK+;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id dz10-20020a0564021d4a00b0045cfb63a033si2036948edb.551.2022.12.20.05.01.48;
+        Tue, 20 Dec 2022 05:01:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VZQVqUyf;
-       spf=pass (google.com: domain of danielhb413@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=danielhb413@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=XlLK/9t77OaCz0UGM/J8urYM3bBBnlqtd9YmBawRQfs=;
-        b=VZQVqUyfm+SzD4hUok+TQ3m/aULWBHMuCvEbySofZ7AlqnMdTsBLZaI07suorsSjtv
-         fe/mnNdO+x5Nyh4McN2S1iP8uLWiehdanPgWngG0vsp7HAFmT+liWyQAyUAGnOfb/saC
-         91ynBTrXxHn0zpiO5IoFBLtQGf9Xj7Eq+aVdBBlcPSEApaBll4n1O4cHv/D/CjgO3b69
-         EyPb+x4jFkJynEhVkvQVyl1Ne75ux7sCCj6gflUlEIHDXp20EiV4vosXzP32utRaBg+u
-         GlumX4I9cssgCKSVY0F31fNZbRNniYm44IhQ/bojX60FD7i3IRMxVhPxOyac884xBk1h
-         4cDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XlLK/9t77OaCz0UGM/J8urYM3bBBnlqtd9YmBawRQfs=;
-        b=jYM48ieVu53tIGx2caz62rg7MhaLKuGkUib8dusZ1KZcw8SzmPMmScNV5QYq86UBug
-         8KOFM4cA7k1Q/uBRxVdYJybozShxSd0Dwqz45cne3LrT3rWTQq2s9hfJWctElS43aaAC
-         w3kZU0TJpnObliLnX09PxlnaftY5plPybPUGbrbqKwnBFNnoc+EH4K8NUgq7Q+Dsf+CG
-         BS6+feAm0tBe6eX/D9m0Z1PkDEU/S2Cp0+muTh2GuqJLd5rGRcUtAhBzbUmlm0QwZovJ
-         QCQpkqRG46iVIFwgTfwJOcbCr4NR8ZTpooNwBfHYboJbSv3G+c7qyId38uDt836apUoT
-         hevw==
-X-Gm-Message-State: ANoB5pkGV42BC3qh3STKZ81o7D4+jbWlqY1xO3UNpCvE4MhwGFD5SoOe
-	pgKC+howZFM4YsLqWsusU3o2RhnFCig=
-X-Google-Smtp-Source: AA0mqf5IhyhoFAFTIOpBSp8ETqrVHUgTAA+/7jM945BelQAHiivdjpQPQFharevJcEcrmsphwDZy5A==
-X-Received: by 2002:a05:6808:30b:b0:35e:57ef:51f8 with SMTP id i11-20020a056808030b00b0035e57ef51f8mr17517142oie.52.1671533103732;
-        Tue, 20 Dec 2022 02:45:03 -0800 (PST)
-Return-Path: <danielhb413@gmail.com>
-Received: from [192.168.68.106] (201-43-103-101.dsl.telesp.net.br. [201.43.103.101])
-        by smtp.gmail.com with ESMTPSA id j2-20020a056808034200b0035e461d9b1bsm5291043oie.50.2022.12.20.02.44.56
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Dec 2022 02:45:03 -0800 (PST)
-Message-ID: <5d727e59-fa21-ea08-112c-3b74db7e4577@gmail.com>
-Date: Tue, 20 Dec 2022 07:44:54 -0300
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NxhKlYK+;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S233561AbiLTNBq (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 3 others); Tue, 20 Dec 2022 08:01:46 -0500
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:35254 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S233249AbiLTNBn (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 20 Dec 2022 08:01:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id E4A91239
+        for <kvm@vger.kernel.org>; Tue, 20 Dec 2022 05:00:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1671541256;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references;
+        bh=H2t8W77PSTr4Llxbj7tYL3QF8gC1sNMoCFvARbmtY94=;
+        b=NxhKlYK+NfzxiulAQtdfhcJt99MYCZCFOa+6tjoShSUZaypgbqQrdxFSKVQmGqq4lTTx4J
+        JLTPczzXcTOl19RlOxBo17uZ5ayIhW2dA2XZL/LjxQNHKT0+5MqB8IyuoZCbEG1H5749at
+        +h5piqQ0pjx5FevbQAUpgmDVx5Ix41s=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-642-gegjNKZEN5OA-g0pkCielw-1; Tue, 20 Dec 2022 08:00:52 -0500
+X-MC-Unique: gegjNKZEN5OA-g0pkCielw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 53E6687A9E2;
+        Tue, 20 Dec 2022 13:00:52 +0000 (UTC)
+Received: from localhost (unknown [10.39.193.93])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id EB8EF2166B26;
+        Tue, 20 Dec 2022 13:00:51 +0000 (UTC)
+From:   Cornelia Huck <cohuck@redhat.com>
+To:     Peter Maydell <peter.maydell@linaro.org>,
+        Thomas Huth <thuth@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>
+Cc:     qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        Eric Auger <eauger@redhat.com>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        Juan Quintela <quintela@redhat.com>,
+        Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH v3 0/2] arm: enable MTE for QEMU + kvm
+In-Reply-To: <20221026160511.37162-1-cohuck@redhat.com>
+Organization: Red Hat GmbH
+References: <20221026160511.37162-1-cohuck@redhat.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date:   Tue, 20 Dec 2022 14:00:49 +0100
+Message-ID: <87h6xqz0u6.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v3 1/5] dump: Include missing "cpu.h" header for
- tswap32/tswap64() declarations
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Greg Kurz <groug@kaod.org>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Yanan Wang <wangyanan55@huawei.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Marek Vasut <marex@denx.de>,
- Bin Meng <bin.meng@windriver.com>, Eduardo Habkost <eduardo@habkost.net>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, qemu-riscv@nongnu.org, kvm@vger.kernel.org,
- Stafford Horne <shorne@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
- Chris Wulff <crwulff@gmail.com>
-References: <20221216215519.5522-1-philmd@linaro.org>
- <20221216215519.5522-2-philmd@linaro.org>
-Content-Language: en-US
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20221216215519.5522-2-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: gpco+SEJ0Vet
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        RCVD_IN_MSPIKE_H2,SPF_HELO_NONE,SPF_NONE autolearn=ham
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: XabVRWE1v6u9
 
+On Wed, Oct 26 2022, Cornelia Huck <cohuck@redhat.com> wrote:
 
+> After wayyy too long (last version was sent in *July*), a respin of my
+> kvm/mte series. Still no migration support. I've been hacking around on
+> a device for transferring tags while stopped, but don't really have anything
+> to show, probably because I get distra- <ohh, what's that?>
+>
+> ...I guess you get the point :(
+>
+> Anyway, I wanted to post this as non-RFC; likely too late for 7.2, but maybe
+> for 8.0 (and I'd get a chance to make at least pre-copy migration work; I'm open
+> to suggestions for that. Support for post-copy needs kernel-side changes.) Tested
+> on the FVP models; qtests only on a non-MTE KVM host.
+>
+> Changes v2->v3:
+> - rebase to current master
+> - drop some parts of the qtests that didn't actually work
+> - really minor stuff
+> - drop RFC
+>
+> Cornelia Huck (2):
+>   arm/kvm: add support for MTE
+>   qtests/arm: add some mte tests
+>
+>  docs/system/arm/cpu-features.rst |  21 +++++
+>  target/arm/cpu.c                 |  18 ++---
+>  target/arm/cpu.h                 |   1 +
+>  target/arm/cpu64.c               | 133 +++++++++++++++++++++++++++++++
+>  target/arm/internals.h           |   1 +
+>  target/arm/kvm64.c               |   5 ++
+>  target/arm/kvm_arm.h             |  12 +++
+>  target/arm/monitor.c             |   1 +
+>  tests/qtest/arm-cpu-features.c   |  76 ++++++++++++++++++
+>  9 files changed, 256 insertions(+), 12 deletions(-)
+>
 
-On 12/16/22 18:55, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-
-
-Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-
-
->   dump/dump.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/dump/dump.c b/dump/dump.c
-> index 279b07f09b..c62dc94213 100644
-> --- a/dump/dump.c
-> +++ b/dump/dump.c
-> @@ -29,6 +29,7 @@
->   #include "qemu/main-loop.h"
->   #include "hw/misc/vmcoreinfo.h"
->   #include "migration/blocker.h"
-> +#include "cpu.h"
->   
->   #ifdef TARGET_X86_64
->   #include "win_dump.h"
+Friendly ping, as 7.2 has been released now... this should still apply
+without problems AFAICS. I can also respin, if needed.

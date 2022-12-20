@@ -1,180 +1,199 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4419698ejb;
-        Tue, 20 Dec 2022 07:33:12 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7DIIXUVcZjfU4V7DWIpdEhXnP4zAUsTOTO22+9YcBdsAIvpFlueOaiP9vqnRLVD3154Pnd
-X-Received: by 2002:a05:7508:658d:b0:47:1fe8:d743 with SMTP id dn13-20020a057508658d00b000471fe8d743mr4084844gbb.3.1671550391984;
-        Tue, 20 Dec 2022 07:33:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671550391; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4491139ejb;
+        Tue, 20 Dec 2022 09:04:26 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5c0FgbvzasHNwjkPVMncftBwHsvfidrXkA1GsvRdHCxSCyNluGf+hZpPDToV2Z8a+OI7u+
+X-Received: by 2002:a05:6000:d:b0:242:5dd7:8115 with SMTP id h13-20020a056000000d00b002425dd78115mr28218232wrx.64.1671555865935;
+        Tue, 20 Dec 2022 09:04:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671555865; cv=none;
         d=google.com; s=arc-20160816;
-        b=WqqhkptERhkC5a4uRz6EiIlxNFUPEprxyc3GueRAnORJ4VXA4Jfy3P+0ysNUYAmEas
-         nrRas4DFeIfi47hXh3JwHo/sojIfbvsQ32cOqbxnUfxeyx9kVXBGwDDIoZBjxgmycLvO
-         vSNmmC6TCVLdcD+e/lXJ3iqBIkNR35XFRm3tKyEVz/myf3ybi9M6f+pmFpRrGSI3qWJ5
-         C6y4edyTaN7tyO4D7/mBhl+dPLxHlSnoxCGa5fYpvGuPgfrhrvG6sVKlx4WAF1hTPMJs
-         IV0h/3AoyyLvc27AQYQ7Ror+JWuKt52y/EUFqIUBloO8tzavkfutztKva6zrXHiIzdVX
-         MK9Q==
+        b=Xt7ZcAHiHfRogXY0+kgyZthskYctlZ0i1RBsSSUm7dkxhwM5gsQLSW76XXvaH2q2uR
+         v1QlAP3iOFs/+uWRc03H/TKV2H9zU390XL3A4jFgZjaQapldYXX1LoYa8IhIW0AkBcFm
+         AHzTfMN5hbko0gqXynqFkPGkL2cxuMaQV0j8LvNGUFXOTcWSBbbqmOK6s1nxWVDCMwyg
+         9hMsQuzzTL7j76BvMs6CSymKWBldOKZ1XBHvpTyj6Qsb7FVa08NdtcebT17dZaWdRXOb
+         YUkeHI++QTqcMKwfMubabEm/+5ltuNQZLnHoTdaHKMSITYdXIv+eZWMdmESTKeXZdwx3
+         csIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=ffmddQe9ricgigDQOWAY39BHz2JFTyJ3/5Imi4NJ2u0=;
-        b=QFt96tY3ML/HjbDJYhUKbf3du3HXV+E1pFsMNFOseSbaBweVBOAZ1ZKiO/DR+hRje/
-         kHW528LMZ9FFjG6WC3wEuWrvlabG+8W4R6nKafbhAzGAiWebAQOyGlM6PUsR23I0yrQy
-         2EejY4U5/rn5wIh8rv+K2K8fTCYHd6qm8YULGLvCfjM5gZg3J4jkFEY9oUmq2UCZoCJU
-         Ej8QB0Adv3wujv0FwbjS7TN84yU4PQLvc9iN5Cxi5nLSt+zaEQwSkpBIQXst6xsDCLTi
-         JQnAtYTkJIjalpw0K98BhMkD0s3FrEIHHE7fV57dMaFEUtmryFHvmin2MVjYCjU4KyLV
-         itaw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=r3eJb2z71QFEx2OmuBiN3JM5Y0ciZXKOdBS/oBXrbcY=;
+        b=i/s/cIRkZLE/qjklaR86XkdiIPMOxWP6eBB8s173nS+XbjaHmWLgN+J6jGMUolT0Zr
+         sJZA01URiT8968Q6D820GeQudqToN/HqaALzYQOhVtIX2MbCid6qqGYUajax59ovMNT3
+         EJHUWFJn1eXasoiAg5QHba+zwr/aLuot5mGVO+Y8L9EwDoIBWxY63mqWFyHpHUbUuFU5
+         k+vkYqu5G9Ho/5FwLiHZ68CzoGaxnxNFOERwCCp6kOWTebyKouFfU+7yBe+uNG5gpoMX
+         SKiACeuk0bi+0mnn3xf4OzLs7h+9d7cxdLZ7FshbGX+xcbVvyQ9KMzArYLIJy0p5+5rs
+         7emg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QdjgZD5L;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kraxel@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id j15-20020ac806cf000000b003a4f4c192e4si5022220qth.648.2022.12.20.07.33.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Dec 2022 07:33:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
+Return-Path: <agraf@csgraf.de>
+Received: from zulu616.server4you.de (mail.csgraf.de. [85.25.223.15])
+        by mx.google.com with ESMTP id bs19-20020a056000071300b00241c0dcec4fsi9023874wrb.462.2022.12.20.09.04.25;
+        Tue, 20 Dec 2022 09:04:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) client-ip=85.25.223.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QdjgZD5L;
-       spf=pass (google.com: domain of kraxel@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1671550391;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ffmddQe9ricgigDQOWAY39BHz2JFTyJ3/5Imi4NJ2u0=;
-	b=QdjgZD5LjQ/1khaKGCiAJho+NwAYFm9sSAcq83wQZdAb4fhqRnIiEOKzENiEipVROcMjOc
-	B1D91txP7sotdrS7lOnT161rHjVvxhaXycPzxdcTxEskxgfeRvWJ/4XkI3i3einUFESLos
-	tYFFvW2Z49eNRiF3Iwf2VW3yU8NQI5s=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-486-9otbTpZuMS2yZQmV1FEnVQ-1; Tue, 20 Dec 2022 10:33:05 -0500
-X-MC-Unique: 9otbTpZuMS2yZQmV1FEnVQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 43DFE1C09B69;
-	Tue, 20 Dec 2022 15:33:04 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.110])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DD6112026D4B;
-	Tue, 20 Dec 2022 15:33:02 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 54DFF18000B3; Tue, 20 Dec 2022 16:33:01 +0100 (CET)
-Date: Tue, 20 Dec 2022 16:33:01 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
-	Kevin Wolf <kwolf@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Hanna Reitz <hreitz@redhat.com>,
-	Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	Kashyap Chamarthy <kchamart@redhat.com>,
-	Xiang Zheng <zhengxiang9@huawei.com>,
-	David Edmondson <david.edmondson@oracle.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Sunil V L <sunilvl@ventanamicro.com>,
-	Andrew Jones <ajones@ventanamicro.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-	Song Gao <gaosong@loongson.cn>, Huacai Chen <chenhuacai@kernel.org>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Ard Biesheuvel <ardb@kernel.org>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Leif Lindholm <quic_llindhol@quicinc.com>
-Subject: Re: [PATCH v2] pflash: Only read non-zero parts of backend image
-Message-ID: <20221220153301.ku3zxwglhxepet6i@sirius.home.kraxel.org>
-References: <20221220084246.1984871-1-kraxel@redhat.com>
- <a31967f6-6de5-bed2-8a1a-68a909850dd5@linaro.org>
+       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
+Received: from [192.168.106.127] (dynamic-095-114-015-034.95.114.pool.telefonica.de [95.114.15.34])
+	by csgraf.de (Postfix) with ESMTPSA id DA0256080220;
+	Tue, 20 Dec 2022 18:04:24 +0100 (CET)
+Message-ID: <601ba0ac-cbcd-50d4-c295-5cde4a4d6e97@csgraf.de>
+Date: Tue, 20 Dec 2022 18:04:24 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <a31967f6-6de5-bed2-8a1a-68a909850dd5@linaro.org>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-X-TUID: Tio+rmSWyG1f
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.0
+Subject: Re: [PATCH 1/5] target/arm: only build psci for TCG
+Content-Language: en-US
+To: Fabiano Rosas <farosas@suse.de>, Claudio Fontana <cfontana@suse.de>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+References: <20221216212944.28229-2-farosas@suse.de>
+ <459E39B4-44F5-41B2-A595-1B0DB5AD80F3@csgraf.de>
+ <3355a215-dd7a-e80a-ca53-b0d65eb435b5@suse.de>
+ <76c8912f-4fb7-118a-2105-efe08f343f77@csgraf.de>
+ <ced115e9-6bdb-fdb6-818d-b77e27b9ecb1@suse.de> <87r0wv8vsa.fsf@suse.de>
+ <92da4de4-b00b-096a-8dd9-f4f2f9696598@csgraf.de> <875ye6rxk7.fsf@suse.de>
+From: Alexander Graf <agraf@csgraf.de>
+In-Reply-To: <875ye6rxk7.fsf@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: MsBvD+xPKIgW
 
-On Tue, Dec 20, 2022 at 10:30:43AM +0100, Philippe Mathieu-Daudé wrote:
-> [Extending to people using UEFI VARStore on Virt machines]
-> 
-> On 20/12/22 09:42, Gerd Hoffmann wrote:
-> > From: Xiang Zheng <zhengxiang9@huawei.com>
-> > 
-> > Currently we fill the VIRT_FLASH memory space with two 64MB NOR images
-> > when using persistent UEFI variables on virt board. Actually we only use
-> > a very small(non-zero) part of the memory while the rest significant
-> > large(zero) part of memory is wasted.
-> > 
-> > So this patch checks the block status and only writes the non-zero part
-> > into memory. This requires pflash devices to use sparse files for
-> > backends.
-> 
-> I like the idea, but I'm not sure how to relate with NOR flash devices.
-> 
-> From the block layer, we get BDRV_BLOCK_ZERO when a block is fully
-> filled by zeroes ('\0').
-> 
-> We don't want to waste host memory, I get it.
-> 
-> Now what "sees" the guest? Is the UEFI VARStore filled with zeroes?
 
-The varstore is filled with 0xff.  It's 768k in size.  The padding
-following (63M plus a bit) is 0x00.  To be exact:
+On 20.12.22 14:53, Fabiano Rosas wrote:
+> Alexander Graf <agraf@csgraf.de> writes:
+>
+>> Hey Fabiano,
+>>
+>> On 19.12.22 12:42, Fabiano Rosas wrote:
+>>> Claudio Fontana <cfontana@suse.de> writes:
+>>>
+>>>> Ciao Alex,
+>>>>
+>>>> On 12/19/22 11:47, Alexander Graf wrote:
+>>>>> Hey Claudio,
+>>>>>
+>>>>> On 19.12.22 09:37, Claudio Fontana wrote:
+>>>>>> On 12/16/22 22:59, Alexander Graf wrote:
+>>>>>>> Hi Claudio,
+>>>>>>>
+>>>>>>> If the PSCI implementation becomes TCG only, can we also move to a tcg accel directory? It slowly gets super confusing to keep track of which files are supposed to be generic target code and which ones TCG specific>
+>>>>>>> Alex
+>>>>>> Hi Alex, Fabiano, Peter and all,
+>>>>>>
+>>>>>> that was the plan but at the time of:
+>>>>>>
+>>>>>> https://lore.kernel.org/all/20210416162824.25131-1-cfontana@suse.de/
+>>>>>>
+>>>>>> Peter mentioned that HVF AArch64 might use that code too:
+>>>>>>
+>>>>>> https://lists.gnu.org/archive/html/qemu-devel/2021-03/msg00509.html
+>>>>>>
+>>>>>> so from v2 to v3 the series changed to not move the code under tcg/ , expecting HVF to be reusing that code "soon".
+>>>>>>
+>>>>>> I see that your hvf code in hvf/ implements psci, is there some plan to reuse pieces from the tcg implementation now?
+>>>>> I originally reused the PSCI code in earlier versions of my hvf patch
+>>>>> set, but then we realized that some functions like remote CPU reset are
+>>>>> wired in a TCG specific view of the world with full target CPU register
+>>>>> ownership. So if we want to actually share it, we'll need to abstract it
+>>>>> up a level.
+>>>>>
+>>>>> Hence I'd suggest to move it to a TCG directory for now and then later
+>>>>> move it back into a generic helper if we want / need to. The code just
+>>>>> simply isn't generic yet.
+>>>>>
+>>>>> Or alternatively, you create a patch (set) to actually merge the 2
+>>>>> implementations into a generic one again which then can live at a
+>>>>> generic place :)
+>>>>>
+>>>>>
+>>>>> Alex
+>>>> Thanks for the clarification, I'll leave the choice up to Fabiano now, since he is working on the series currently :-)
+>>>>
+>>>> Ciao,
+>>>>
+>>>> Claudio
+>>> Hello, thank you all for the comments.
+>>>
+>>> I like the idea of merging the two implementations. However, I won't get
+>>> to it anytime soon. There's still ~70 patches in the original series
+>>> that I need to understand, rebase and test, including the introduction
+>>> of the tcg directory.
+>>
+>> Sure, I am definitely fine with leaving them separate for now as well :).
+>>
+>>
+>>> I'd say we merge this as is now, since this patch has no
+>>> dependencies. Later when I introduce the tcg directory I can move the
+>>> code there along with the other tcg-only files. I'll take note to come
+>>> back to the PSCI code as well.
+>> I'm confused about the patch ordering :). Why is it easier to move the
+>> psci.c compilation target from generic to an if(CONFIG_TCG) only to
+>> later move it into a tcg/ directory?
+> It's a simple patch, so the overhead didn't cross my mind. But you are
+> right, this could go directly into tcg/ without having to put it under
+> CONFIG_TCG first.
 
-kraxel@sirius ~# hex /usr/share/edk2/aarch64/vars-template-pflash.raw 
-00000000  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ................
-00000010  8d 2b f1 ff  96 76 8b 4c  a9 85 27 47  07 5b 4f 50  .+...v.L..'G.[OP
-00000020  00 00 0c 00  00 00 00 00  5f 46 56 48  ff fe 04 00  ........_FVH....
-00000030  48 00 28 09  00 00 00 02  03 00 00 00  00 00 04 00  H.(.............
-00000040  00 00 00 00  00 00 00 00  78 2c f3 aa  7b 94 9a 43  ........x,..{..C
-00000050  a1 80 2e 14  4e c3 77 92  b8 ff 03 00  5a fe 00 00  ....N.w.....Z...
-00000060  00 00 00 00  ff ff ff ff  ff ff ff ff  ff ff ff ff  ................
-00000070  ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff  ................
-*
-00040000  2b 29 58 9e  68 7c 7d 49  a0 ce 65 00  fd 9f 1b 95  +)X.h|}I..e.....
-00040010  5b e7 c6 86  fe ff ff ff  e0 ff 03 00  00 00 00 00  [...............
-00040020  ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff  ................
-*
-000c0000  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ................
-*
 
-> If so, is it a EDK2 specific case for all virt machines?  This would
-> be a virtualization optimization and in that case, this patch would
-> work.
+I'm sure more like this will follow, and it will be a lot easier on 
+everyone if the pattern is going to be "move tcg specific code to tcg/ 
+and leave generic code in the main directory".
 
-vars-template-pflash.raw (padded image) is simply QEMU_VARS.fd (unpadded
-image) with 'truncate --size 64M' applied.
 
-Yes, that's a pure virtual machine thing.  On physical hardware you
-would probably just flash the first 768k and leave the remaining flash
-capacity untouched.
+>
+>> Wouldn't it be easier to create a
+>> tcg/ directory from the start and just put it there?
+> I don't know about "from the start". At this point we cannot have a
+> single commit moving everything into the tcg/ directory because some
+> files still contain tcg + non-tcg code.
 
-> * or you are trying to optimize paravirtualized guests.
 
-This.  Ideally without putting everything upside-down.
+Yes, the only thing the initial commit at the start would do is create 
+the directory and ninja config, pretty much nothing else. All follow-on 
+commits then split the currently entangled code into tcg/ once code is 
+clearly separate :).
 
->   In that case why insist with emulated NOR devices? Why not have EDK2
->   directly use a paravirtualized block driver which we can optimize /
->   tune without interfering with emulated models?
 
-While that probably would work for the variable store (I think we could
-very well do with variable store not being mapped and requiring explicit
-read/write requests) that idea is not going to work very well for the
-firmware code which must be mapped into the address space.  pflash is
-almost the only device we have which serves that need.  The only other
-option I can see would be a rom (the code is usually mapped r/o anyway),
-but that has pretty much the same problem space.  We would likewise want
-a big enough fixed size ROM, to avoid life migration problems and all
-that, and we want the unused space not waste memory.
+I believe this was also the approach Claudio took in his patch set last 
+year, and I find it very reasonable. It allows you to stop at any point 
+mid-way.
 
-> Keeping insisting on optimizing guests using the QEMU pflash device
-> seems wrong to me. I'm pretty sure we can do better optimizing clouds
-> payloads.
 
-Moving away from pflash for efi variable storage would cause alot of
-churn through the whole stack.  firmware, qemu, libvirt, upper
-management, all affected.  Is that worth the trouble?  Using pflash
-isn't that much of a problem IMHO.
+> We would end up with several
+> commits moving files into tcg/ along the history, which I think results
+> in a poor experience when inspecting the log later on (git blame and so
+> on). So my idea was to split as much as I can upfront and only later
+> move everything into the directory.
+
+
+Quite the opposite: Please make sure to move everything slowly at a 
+digestible pace. There is no way you will get 100 patches in at once. 
+Make sure you can cut off at any point in between.
+
+What you basically want is to move from "target/arm is tcg+generic code" 
+to "target/arm is generic, target/arm/tcg is tcg code". You will be in a 
+transitional phase along the way whatever you do, so just make it 
+"target/arm is tcg+generic code, target/arm/tcg is tcg code" while 
+things are in flight and have a final commit that indicates the 
+conversion is done.
+
+
+> I'm also rebasing this series [1] from 2021, which means I'd rather have
+> small chunks of code moved under CONFIG_TCG that I can build-test with
+> --disable-tcg (even though the build doesn't finish, I can see the
+> number of errors going down), than to move non-tcg code into tcg/ and
+> then pull it out later like in the original series.
+
+
+I think we're saying the same thing. Please don't move non-tcg code into 
+tcg/. Just move files that are absolutely clearly TCG into tcg/ right 
+from the start. The psci.c is a good example for that. translate*.c and 
+op-helper.c would be another.
+
+
+Alex
+
+
+> 1- https://lore.kernel.org/r/20210416162824.25131-1-cfontana@suse.de
+>
+> But hey, that's just my reasoning, no strong feelings about it.

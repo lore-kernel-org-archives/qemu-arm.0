@@ -1,92 +1,135 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4114631ejb;
-        Mon, 19 Dec 2022 23:22:47 -0800 (PST)
-X-Received: by 2002:a25:2e02:0:b0:6fa:23d4:fa6 with SMTP id u2-20020a252e02000000b006fa23d40fa6mr13387341ybu.59.1671520966951;
-        Mon, 19 Dec 2022 23:22:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671520966; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4118665ejb;
+        Mon, 19 Dec 2022 23:31:50 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7TG3Q0zGMLgETL2zLB+u13OWOGH+FhGrjqWGVZCH3vODaIuTqDU3uCCyyE4LIOsdD9Zfuq
+X-Received: by 2002:adf:ff8b:0:b0:24f:869a:6c13 with SMTP id j11-20020adfff8b000000b0024f869a6c13mr22122739wrr.2.1671521510733;
+        Mon, 19 Dec 2022 23:31:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671521510; cv=none;
         d=google.com; s=arc-20160816;
-        b=qBNqCAbZFFkQ9jeNA77EvAXCtfFuhNKYMu7BAl7Mzuu7IQAibQo3zXSKOXRwz3ZCQn
-         ldVmGps7OLR6R4maPMnBqOI0ikL9PJkZQU1z0lfCXVkXmub3vjcuDW2yu2RKmU/33CSx
-         6P7+RVkkdzRfGNU0GdwLXelUHPJ1pt8bOcyB6tGqWzjDPgT76XX/u4U6EGNWvK0P0uQS
-         M6a9rf6ae2QcQTkqLjbBQhQcECrObidQwjOsk8eXVpIF50HfD3VLchbwDWX/jIb5B/Ng
-         TOW8mY2RnI/xqsBCTXa6Ozm/l+azpWDy3+235BQIVatGvmLTwYZdEV0Be0+UG9FVntKA
-         8qfg==
+        b=jfz4AstD3O2khlJiQ2yUG+zxjK8UHJtkYdTl+yC6SiHkPkcVlDttwI5DwxQVpglFj5
+         C/Rs/fDZSO1H/M1JC9d6PcVcYi7SbbfFJmE+WarUfTRNyZTQRfiZZJ8NTBW096xN7BAG
+         C9J1bJRro/r/tmRW0YJNUEmA15/3dhHAR37vhvd/eoPBtOcUWCbnc/s/FM/IGg+AB7ln
+         GZ66P4kbf8Q+oD78ohHljXGCEQPkE7gENMpPwGwp00yb2w0ZS2T+GcVcC5jHh+8WPgSi
+         NhvWKmFPsRlHKYiZrkGhhb2Y/NpMpY+0A8eQfRUppHU5nCF5X/2q0c2cKYG/moie0gt3
+         poTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kTl/c7jd147RrMZ+SpyWCWHk88Cx9RugkP7Mui/M280=;
-        b=PC9t2NCQdoEg/tENzaQEj1/BFhIQI0oAf9o1qFXrNsx+ulE1tP5BwqI6TgbLkTYazh
-         iITdSQ7tK83Jatb/vh8qRf+nGiexxkf2oo/1UPY4RZMJCuaFP3erKEp3lP7eGBG0scNa
-         UtoxEey7c0mitikXNebO1JnyudKNtUdiHOh7DYEOwuWxXZvnB62X7SWOZHk9tNVDtkPy
-         gsb0eor3MhQW/WftqwOim8zDc2T0URTUMguHv3dXQYWsu+Q7tldJeT4oPbv2uiMuvvvq
-         xBacPlnPflTVyNi2pjbmKFiG2N/YNQX6LVjw/QkQorLdaCcVeqR/tI8UIBfmJuVFqxbe
-         WiNQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=XVqC1pyGLp8EtzZzKgV8GtpOP7U4QZiA9tUuUugd3FU=;
+        b=xF1dbakLZGx59pxWHabYfCkvcxEhkuRSjenpB9WffnxLS3xrxgxJ8srl+4jtZB1GCa
+         ZL1moUjjdrEUjiz8gZhdLM7OYBmRw40DT4Iud2kQetyyi0tB1/wBrcireADxrkc3rb8j
+         c5MQNAvNCHZRMxc7xsmaRodLGOfT7LCHFHJ5aONCJWooKrQgbPydi9vFQx24MbIsN/Be
+         r5KzxVeXPBLtGJNrmkMiDKezJGpCBafVFuWPfTPBAcAl1G79sesPrHp2FndE7gjkD9sg
+         6BGIiPeb2wgsY88orXiqtib53n9iSY8go55twzVgwb8CyYsayoLKEDldXIL9VgO4nuhy
+         YWqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fcod5+qG;
-       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <francesco.cagnin@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 68-20020a250447000000b006df13176873sor4818852ybe.132.2022.12.19.23.22.46
-        (Google Transport Security);
-        Mon, 19 Dec 2022 23:22:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
+Return-Path: <agraf@csgraf.de>
+Received: from zulu616.server4you.de (mail.csgraf.de. [85.25.223.15])
+        by mx.google.com with ESMTP id o10-20020adfcf0a000000b00236db57e3d6si6789977wrj.68.2022.12.19.23.31.50;
+        Mon, 19 Dec 2022 23:31:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) client-ip=85.25.223.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fcod5+qG;
-       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kTl/c7jd147RrMZ+SpyWCWHk88Cx9RugkP7Mui/M280=;
-        b=fcod5+qGNkyv/TBfu6q7x8bKrlXpU/85Zxs+G8qZapmF9bwaEzmlHvwPmNLrjqgxtF
-         pd9Uyk4uWYO4cNNyDgLgheSV+3LJA77fwnco0OLw8EYzBwhxOxYO7DZkE+8d26fU2tln
-         d9hoSSVgJ08KXDvOUclxkdxgZwQEL17boC1cs0oilUcA/Q1L+Ox+7CQ5KN2wIhcjRn2R
-         gZ9iwRTyFn2ese7XzYQAhgXPjcKxWV7eNqlsn53D+gT4jGbonyIx2s+9UEzxiENz8smf
-         2TLpsdl4C0xsPyAf5QFKIzfm1YP+ZgK7m9y+HpuBFdg+sKL4vDxAWVWRFsstCxdE2dN7
-         YsWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kTl/c7jd147RrMZ+SpyWCWHk88Cx9RugkP7Mui/M280=;
-        b=Aawh+FUgh2j1PlIYppHLfYK4RuDHRnrpdVJ2Jt5QW5iOfQrTRg8tQU0TGNnm/J+nBW
-         exdjc7VGhzsIXiza+/3b8H8xm/wcjpk3DJpONmlWoD5f5SViGyjv4ushHzTw33aNiuJr
-         WD6Dk5L8GcwtG1bMaka+vSUamVu+Ia0XYpj1Amgg6LDbjlYmbWLzskhLBEQaEzEso0+T
-         cM454+GHnB7I6v7it0MtFiv0HquqSMeqtknm2wdfRVroTPqLN5HT30SnQO239hSBrTNu
-         pbRIU88RtM7g3rteYQrtZQhDd93iWMtxQbThTv+LzvfXTNNj7L3b9jclyY8op6JpuaUP
-         Gokg==
-X-Gm-Message-State: ANoB5pkSfILVmlsRauxduZ3uSNvM4YPplQYy19XAozxCIWRUcO6DIPFT
-	lZ58iVVgGilqYyYj08Vppt8fCdLYqXaCtvES0EGCAZmYfpFsag2i
-X-Google-Smtp-Source: AA0mqf6wLM3pB/HWQDMB5lHzGuhQ7IQKDNgVKphT/RwTNwM3ObkSX8Y5YS/y2CbYIZYbCnW80xMXa4PDgZKjtWuWNLY=
-X-Received: by 2002:a5b:8cf:0:b0:6f8:92de:92e3 with SMTP id
- w15-20020a5b08cf000000b006f892de92e3mr44395217ybq.105.1671520966559; Mon, 19
- Dec 2022 23:22:46 -0800 (PST)
+       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
+Received: from [192.168.106.118] (dynamic-095-114-015-034.95.114.pool.telefonica.de [95.114.15.34])
+	by csgraf.de (Postfix) with ESMTPSA id 816C06080366;
+	Tue, 20 Dec 2022 08:31:49 +0100 (CET)
+Message-ID: <92da4de4-b00b-096a-8dd9-f4f2f9696598@csgraf.de>
+Date: Tue, 20 Dec 2022 08:31:46 +0100
 MIME-Version: 1.0
-References: <20221116174749.65175-1-fcagnin@quarkslab.com> <20221116174749.65175-3-fcagnin@quarkslab.com>
- <CAFEAcA_QvfancWKj2hL3KxbyLm8FxkteSbgxvkF8QO119H7SNA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_QvfancWKj2hL3KxbyLm8FxkteSbgxvkF8QO119H7SNA@mail.gmail.com>
-From: Francesco Cagnin <francesco.cagnin@gmail.com>
-Date: Tue, 20 Dec 2022 08:22:35 +0100
-Message-ID: <CAF8_6KkPDwe8-twtJEM3_HDuRVmxn25gJGDQVhRJF=DuA+fm3w@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] hvf: implement guest debugging on Apple Silicon hosts
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, mads@ynddal.dk, dirty@apple.com, 
-	qemu-arm@nongnu.org, agraf@csgraf.de, pbonzini@redhat.com, 
-	alex.bennee@linaro.org, Francesco Cagnin <fcagnin@quarkslab.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: zDdiSutMZXvN
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.0
+Subject: Re: [PATCH 1/5] target/arm: only build psci for TCG
+Content-Language: en-US
+To: Fabiano Rosas <farosas@suse.de>, Claudio Fontana <cfontana@suse.de>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+References: <20221216212944.28229-2-farosas@suse.de>
+ <459E39B4-44F5-41B2-A595-1B0DB5AD80F3@csgraf.de>
+ <3355a215-dd7a-e80a-ca53-b0d65eb435b5@suse.de>
+ <76c8912f-4fb7-118a-2105-efe08f343f77@csgraf.de>
+ <ced115e9-6bdb-fdb6-818d-b77e27b9ecb1@suse.de> <87r0wv8vsa.fsf@suse.de>
+From: Alexander Graf <agraf@csgraf.de>
+In-Reply-To: <87r0wv8vsa.fsf@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 33xbaSl6WElC
 
-Hi,
-indeed, the patch doesn't keep separate copies of debug registers and
-just directly sets cp15.* values, as I was not aware of the issue=E2=80=94t=
-hanks
-for the detailed explanation.
+Hey Fabiano,
 
-I remain available to implement the required fixes, but I'd need
-some guidance on how to proceed. Thanks,
---=20
-Francesco
+On 19.12.22 12:42, Fabiano Rosas wrote:
+> Claudio Fontana <cfontana@suse.de> writes:
+>
+>> Ciao Alex,
+>>
+>> On 12/19/22 11:47, Alexander Graf wrote:
+>>> Hey Claudio,
+>>>
+>>> On 19.12.22 09:37, Claudio Fontana wrote:
+>>>> On 12/16/22 22:59, Alexander Graf wrote:
+>>>>> Hi Claudio,
+>>>>>
+>>>>> If the PSCI implementation becomes TCG only, can we also move to a tcg accel directory? It slowly gets super confusing to keep track of which files are supposed to be generic target code and which ones TCG specific>
+>>>>> Alex
+>>>> Hi Alex, Fabiano, Peter and all,
+>>>>
+>>>> that was the plan but at the time of:
+>>>>
+>>>> https://lore.kernel.org/all/20210416162824.25131-1-cfontana@suse.de/
+>>>>
+>>>> Peter mentioned that HVF AArch64 might use that code too:
+>>>>
+>>>> https://lists.gnu.org/archive/html/qemu-devel/2021-03/msg00509.html
+>>>>
+>>>> so from v2 to v3 the series changed to not move the code under tcg/ , expecting HVF to be reusing that code "soon".
+>>>>
+>>>> I see that your hvf code in hvf/ implements psci, is there some plan to reuse pieces from the tcg implementation now?
+>>> I originally reused the PSCI code in earlier versions of my hvf patch
+>>> set, but then we realized that some functions like remote CPU reset are
+>>> wired in a TCG specific view of the world with full target CPU register
+>>> ownership. So if we want to actually share it, we'll need to abstract it
+>>> up a level.
+>>>
+>>> Hence I'd suggest to move it to a TCG directory for now and then later
+>>> move it back into a generic helper if we want / need to. The code just
+>>> simply isn't generic yet.
+>>>
+>>> Or alternatively, you create a patch (set) to actually merge the 2
+>>> implementations into a generic one again which then can live at a
+>>> generic place :)
+>>>
+>>>
+>>> Alex
+>> Thanks for the clarification, I'll leave the choice up to Fabiano now, since he is working on the series currently :-)
+>>
+>> Ciao,
+>>
+>> Claudio
+> Hello, thank you all for the comments.
+>
+> I like the idea of merging the two implementations. However, I won't get
+> to it anytime soon. There's still ~70 patches in the original series
+> that I need to understand, rebase and test, including the introduction
+> of the tcg directory.
+
+
+Sure, I am definitely fine with leaving them separate for now as well :).
+
+
+> I'd say we merge this as is now, since this patch has no
+> dependencies. Later when I introduce the tcg directory I can move the
+> code there along with the other tcg-only files. I'll take note to come
+> back to the PSCI code as well.
+
+I'm confused about the patch ordering :). Why is it easier to move the 
+psci.c compilation target from generic to an if(CONFIG_TCG) only to 
+later move it into a tcg/ directory? Wouldn't it be easier to create a 
+tcg/ directory from the start and just put it there?
+
+The current approach just looks like duplicate effort to me.
+
+
+Alex

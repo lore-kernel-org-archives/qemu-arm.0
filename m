@@ -1,209 +1,108 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4178049ejb;
-        Tue, 20 Dec 2022 01:30:46 -0800 (PST)
-X-Received: by 2002:a05:600c:354d:b0:3d0:85b5:33d3 with SMTP id i13-20020a05600c354d00b003d085b533d3mr33862141wmq.16.1671528646698;
-        Tue, 20 Dec 2022 01:30:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671528646; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4111023ejb;
+        Mon, 19 Dec 2022 23:15:04 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuvLJbhB8HPo85V63hxMjsHdP+GHOKOQO8Kl2Lkf/As9nBVtrP3m1UU0BsS4ntzteixT6Q0
+X-Received: by 2002:a05:622a:5c17:b0:3a8:2dba:751e with SMTP id gd23-20020a05622a5c1700b003a82dba751emr2154088qtb.26.1671520504046;
+        Mon, 19 Dec 2022 23:15:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671520504; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z8JvTuyZoy9FRmZQTFZY0nZ+L0Q2oNoeioUYgwRJYtgZRE0BdhxCNARBvZFi/dx2IY
-         OIWCShS8QQtrpqMwcC7h0n57d2z//MUzVe2pi/taR7mQTafIuFJQfkVlXuQjagceFUh7
-         BWEua0J91SvHGyg7Shk0SdnrjZPUBqDtYaJOpC8MHVcfdcwRtjwjq/IV+1eoATMxYj6+
-         kmu5GTXBAndJB3QFMUgol55vi5S1NT7M8NmcM8l0UX1Ggchml6xzcpKCzUsaH6QalqGL
-         Rv3DaOaIgw+pFTyt0zMSdOAH/PRtwKSuEDVKZdnFShmQt0XHU61fUvHrASNp389j5XXK
-         1l4g==
+        b=BNpy86T4uwn0o5S3rXF6fEp2PMUXKYSHBRNMlns0AhoKg/UQsar2zGx8y12ORtPdS3
+         swKGaFpAqAN60gcUfdID660khMpMYPRkx0x/aY6/5OzPyDhPUDNjXhxmP+gtJ6zPd7Ho
+         3oppOtO3pP5rThdZCjsnF9B0lbrY6cpX8ygvmoidWClazJsEPIZeCujRY2fH6b91pHv8
+         ZB/n07/WNAuf8Mpuelx6JrroYTHVwxhFS6kiIBy8o8KVR6vwP0DmdpFXjOAYr9FQguJ5
+         YfYNj5Zi9qzSahdnhN9ZsDV6qrnVItf6nidsLnuc3Nt+NfT3JlW4xDP1PTRbmUIpyVOo
+         pRPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=G/dpNMhDj0dkK+eMZPgPDIDAPr8OUqu+urZOVvb2p+I=;
-        b=T+dHrY7KUAassjt/lYezdvmm7El3A1sUjw39U8yigvilfJKORNTBMGkI66riSb21BQ
-         7jqB+OhTxs1kFjxx56vExX1H9xr4Xiu9IlbdYmO6rRbpUPfHCA27NnokYxUvCB15uvjc
-         vojnxVcpGrOI4t+0py9b0pDCjlVVZHOG2d+Jw4dt+o0B0TN+ug/EqRQka0rx5A9ac6zB
-         RGh2TLMcNH9VvDpwVYIY1CEHvO2RuU6GcxTPVmhjv0EgbCTKRdrDOLJNQt0o8DhOsUTo
-         n6MQ4uM1t/MhtGwSsdZMHyCH3bjsYStIeZPf9tn8uBCk06NYOy4uxcs+6FhRz3DHtiCY
-         mdhQ==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:cc:to:subject;
+        bh=lAVng4p9xo6yfyPaOWO1XRZEYyAfzs7QKlNsaqGFH/c=;
+        b=lHBKerWt2sCvJ/SPVVAhKynyHqHqJouylDqSrNb6S3cKBzIs/pIWAeTp1wJAhCm3P4
+         UamQKhqUZpNN/GzyFm+dzkLli44Wf81FjcNGxEin3ih6/qmWGFSKQBNXCR9gx6CYHZVO
+         juqp9gOalFiwU1zwvCDTi+vZwfnxNVe9HJHkG0lSRYYi7f0alhgD16ik1PAFSc22uhdy
+         gvs7hsoWaaaGCQjrYfCYmI1YGFc2+e0JIxSb8tEkuhAllPH93bb8DS+0xTm5osChjfnx
+         PH//Ss2iAkMBwooCh5pNO8yLSmAI138ggOKs6fRqItCkjCuuZjj7OjNhee11WXOCMJKg
+         KDJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="TIPc8/bk";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k18-20020a05600c409200b003d0047d1b63sor334951wmh.42.2022.12.20.01.30.46
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id he8-20020a05622a600800b003a7f3ea9b98si4729621qtb.680.2022.12.19.23.15.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 20 Dec 2022 01:30:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 19 Dec 2022 23:15:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="TIPc8/bk";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=G/dpNMhDj0dkK+eMZPgPDIDAPr8OUqu+urZOVvb2p+I=;
-        b=TIPc8/bkp4vKHyyFcA6Ze8WAO0+2twZqpkg0qJLA/JtnqPq5QKAfXtLnt7uygs/PvU
-         c0FUlK17MOrA3k+6tyAeKgtCMBQjSfGFXagLxQpFPP5m8+duaquJ6SaR9751N3Zxt3/5
-         FdTbZUxS0pXC/6SUeJmg2S04KNLhI4lAA2h1KCTcQ+Tpmd5W28c1hBs3bxne2rA1cXiG
-         greNiWzZnhdF/nAWaKnT1WxDWBuhtjhfntbagp6aipCeCL9Znxtqfderttp852E16nkR
-         W2W9vvLVgst5dWHdUw6D7WHbsjtf5mUEQUk/CtJ1SzvEXoxWwVoDWIVhsr0n1aqKIkaD
-         865w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=G/dpNMhDj0dkK+eMZPgPDIDAPr8OUqu+urZOVvb2p+I=;
-        b=1BMKuoZPSdxA9p2N8a/08HqkrKzcxMC2GcoYt7TKac5hTe4I5xb/7R0feUBRH8CDwv
-         Ih2YOjoBYUdGpZjQGlamRMb0Ogq7Dd2E/7b10U/wLor9Z7yA2+81WPmM/RI6ThF3x3gm
-         SsTtYygQ55aJqMG9gxFyqbY32aTmes5blv8NBjXIFNOCobhEMGhnHA6mVWy6mV1Zv20x
-         EigYX9hz4QshIYZsG1L4oXMcBX9mUKmzoVIM9XkWcd2teXTFPLm80MEWYCqFRIK6X3vD
-         yxM++RwXX9SnrecMKUZFkgVmDiDNE15IGKBIf2qQ2lCC2TR8xKVt4mMmtL91u7884jau
-         Mt3g==
-X-Gm-Message-State: ANoB5plYNjiurA5ChwXK3vcgmPSzqcZiXQQK6e9vaz4WCqwZucm6fG3N
-	NqE2VgOckt+/78XTMt2I0LfUaF8T
-X-Google-Smtp-Source: AA0mqf4BdBL8CIhMzighDePROI6hCYevyeTaUcUKIkeVkWeVFVDCLEqqVwYkNIK5gGTtdx9ZrYLmMw==
-X-Received: by 2002:a7b:c30e:0:b0:3c6:f7ff:6f87 with SMTP id k14-20020a7bc30e000000b003c6f7ff6f87mr33905266wmj.11.1671528646445;
-        Tue, 20 Dec 2022 01:30:46 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id n15-20020a1c720f000000b003cf4ec90938sm14986672wmc.21.2022.12.20.01.30.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Dec 2022 01:30:45 -0800 (PST)
-Message-ID: <a31967f6-6de5-bed2-8a1a-68a909850dd5@linaro.org>
-Date: Tue, 20 Dec 2022 10:30:43 +0100
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p7Wpg-0002fj-Q5; Tue, 20 Dec 2022 02:14:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1p7Wpa-0002d7-Ru; Tue, 20 Dec 2022 02:14:31 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1p7WpY-00042f-0A; Tue, 20 Dec 2022 02:14:30 -0500
+Received: from kwepemm600007.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Nbnpv5R5szJqRQ;
+ Tue, 20 Dec 2022 15:13:11 +0800 (CST)
+Received: from [10.174.185.179] (10.174.185.179) by
+ kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.34; Tue, 20 Dec 2022 15:14:10 +0800
+Subject: Re: [PATCH] hvf: arm: Add support for GICv3
+To: Alexander Graf <agraf@csgraf.de>
+CC: <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
+ <qemu-arm@nongnu.org>
+References: <20221219220808.26392-1-agraf@csgraf.de>
+Message-ID: <d848e536-94ba-7f2e-ad40-026449fa63fd@huawei.com>
+Date: Tue, 20 Dec 2022 15:14:09 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.5.1
-Subject: Re: [PATCH v2] pflash: Only read non-zero parts of backend image
+In-Reply-To: <20221219220808.26392-1-agraf@csgraf.de>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
-To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Hanna Reitz <hreitz@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, John Snow <jsnow@redhat.com>,
- Kashyap Chamarthy <kchamart@redhat.com>, Xiang Zheng
- <zhengxiang9@huawei.com>, David Edmondson <david.edmondson@oracle.com>,
- Markus Armbruster <armbru@redhat.com>, Sunil V L <sunilvl@ventanamicro.com>,
- Andrew Jones <ajones@ventanamicro.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Ard Biesheuvel <ardb@kernel.org>, Radoslaw Biernacki <rad@semihalf.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>
-References: <20221220084246.1984871-1-kraxel@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221220084246.1984871-1-kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: blrey98x0bpM
+X-Originating-IP: [10.174.185.179]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemm600007.china.huawei.com (7.193.23.208)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188; envelope-from=yuzenghui@huawei.com;
+ helo=szxga02-in.huawei.com
+X-Spam_score_int: -52
+X-Spam_score: -5.3
+X-Spam_bar: -----
+X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.149,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Zenghui Yu <yuzenghui@huawei.com>
+From:  Zenghui Yu via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tEIdj9X9U7oI
 
-[Extending to people using UEFI VARStore on Virt machines]
+On 2022/12/20 6:08, Alexander Graf wrote:
+> We currently only support GICv2 emulation.
 
-On 20/12/22 09:42, Gerd Hoffmann wrote:
-> From: Xiang Zheng <zhengxiang9@huawei.com>
-> 
-> Currently we fill the VIRT_FLASH memory space with two 64MB NOR images
-> when using persistent UEFI variables on virt board. Actually we only use
-> a very small(non-zero) part of the memory while the rest significant
-> large(zero) part of memory is wasted.
-> 
-> So this patch checks the block status and only writes the non-zero part
-> into memory. This requires pflash devices to use sparse files for
-> backends.
-
-I like the idea, but I'm not sure how to relate with NOR flash devices.
-
- From the block layer, we get BDRV_BLOCK_ZERO when a block is fully
-filled by zeroes ('\0').
-
-We don't want to waste host memory, I get it.
-
-Now what "sees" the guest? Is the UEFI VARStore filled with zeroes?
-If so, is it a EDK2 specific case for all virt machines? This would
-be a virtualization optimization and in that case, this patch would
-work.
-
-On hardware the NOR flash "erased state" is filled of '\xff'. If
-EDK2 requires a 64MiB VARStore on NOR flash, I'd expect the non-used
-area to be filled with \xff, at least up to the sector size. Otherwise
-it is sub-optimal use of persistent storage on hardware.
-
-But instead of keeping insisting on that, I'd like to step back a little
-and discuss. What is the use case?
-
-* Either you want to test UEFI on real hardware and a NOR flash makes
-   sense,
-
-* or you are trying to optimize paravirtualized guests. In that case
-   why insist with emulated NOR devices? Why not have EDK2 directly
-   use a paravirtualized block driver which we can optimize / tune
-   without interfering with emulated models?
-
-Keeping insisting on optimizing guests using the QEMU pflash device
-seems wrong to me. I'm pretty sure we can do better optimizing clouds
-payloads.
-
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> 
-> [ kraxel: rebased to latest master ]
-> 
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->   hw/block/block.c | 36 +++++++++++++++++++++++++++++++++++-
->   1 file changed, 35 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/block/block.c b/hw/block/block.c
-> index f9c4fe67673b..142ebe4267e4 100644
-> --- a/hw/block/block.c
-> +++ b/hw/block/block.c
-> @@ -14,6 +14,40 @@
->   #include "qapi/error.h"
->   #include "qapi/qapi-types-block.h"
->   
-> +/*
-> + * Read the non-zeroes parts of @blk into @buf
-> + * Reading all of the @blk is expensive if the zeroes parts of @blk
-> + * is large enough. Therefore check the block status and only write
-> + * the non-zeroes block into @buf.
-> + *
-> + * Return 0 on success, non-zero on error.
-> + */
-> +static int blk_pread_nonzeroes(BlockBackend *blk, hwaddr size, void *buf)
-> +{
-> +    int ret;
-> +    int64_t bytes, offset = 0;
-> +    BlockDriverState *bs = blk_bs(blk);
-> +
-> +    for (;;) {
-> +        bytes = MIN(size - offset, BDRV_REQUEST_MAX_SECTORS);
-> +        if (bytes <= 0) {
-> +            return 0;
-> +        }
-> +        ret = bdrv_block_status(bs, offset, bytes, &bytes, NULL, NULL);
-> +        if (ret < 0) {
-> +            return ret;
-> +        }
-> +        if (!(ret & BDRV_BLOCK_ZERO)) {
-> +            ret = bdrv_pread(bs->file, offset, bytes,
-> +                             (uint8_t *) buf + offset, 0);
-> +            if (ret < 0) {
-> +                return ret;
-> +            }
-> +        }
-> +        offset += bytes;
-> +    }
-> +}
-> +
->   /*
->    * Read the entire contents of @blk into @buf.
->    * @blk's contents must be @size bytes, and @size must be at most
-> @@ -53,7 +87,7 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
->        * block device and read only on demand.
->        */
->       assert(size <= BDRV_REQUEST_MAX_BYTES);
-> -    ret = blk_pread(blk, 0, size, buf, 0);
-> +    ret = blk_pread_nonzeroes(blk, size, buf);
->       if (ret < 0) {
->           error_setg_errno(errp, -ret, "can't read block backend");
->           return false;
+Before looking into it, I think it's worth finalizing the GIC version in
+the hvf case - only v2 is allowed and fail early if user selects the
+unsupported versions. Currently finalize_gic_version() does not deal
+with hvf at all.

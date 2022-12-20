@@ -1,193 +1,132 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4153287ejb;
-        Tue, 20 Dec 2022 00:43:36 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5kLiZHTUrt9XC2ht1tOsSg3omUrUEW+UdObryxAyAcZofX/IGIOnwgmehZJ/Bcb1Yt4nFm
-X-Received: by 2002:a05:6214:459c:b0:4e2:1484:8150 with SMTP id op28-20020a056214459c00b004e214848150mr48003247qvb.19.1671525816575;
-        Tue, 20 Dec 2022 00:43:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671525816; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4215976ejb;
+        Tue, 20 Dec 2022 02:45:04 -0800 (PST)
+X-Received: by 2002:aca:4543:0:b0:355:1e71:768 with SMTP id s64-20020aca4543000000b003551e710768mr16317238oia.39.1671533104280;
+        Tue, 20 Dec 2022 02:45:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671533104; cv=none;
         d=google.com; s=arc-20160816;
-        b=fgLnYqNYzRDj15J6416XlkevOdzKOMPTlWdwoOaRGybQfVen7LknBe9Jb/NwM+BSQY
-         7GGTTr3qZ1hyqBd7q1G8KsMsIxpnkCH5LbPUmO/KEEqF+qM2ftK7Tzu0RWUEh2dNM+UN
-         VOzE448ktIRPEDDziKtlTUjL1LhFNEbg33o3HLyl9cYnlJ69qHV9cLoxTYq3RNjfWZ4G
-         N29nSrxPcZ5BzdJ59MCNL/EUMmzmmahmcJ3m2UPqKH7/mGBb37wVYs+aj7t9QL6NVn1+
-         X2ueI5aojD2R3gDji3VoHbc7Gw4yH5TakhblEgPzJI+SYzjatU2bIJoIpYvJMifwcC7o
-         CrkA==
+        b=0kneRnLEx+Z7Y+eRrEAofPO30+I/fgUqMyO75zLd3HMou7mCqgI5DpBmt8a9Ub7Ier
+         +Wrz8COzaphVefl78loHDnZmO3J3sTfgPjH7OIHBM54waoCSD8SuhJBvyG1gGN0pUFHW
+         bBhh6ND6MSVQ3L+EORcCzhC+XUCrC2iqFfDuDVQ2nqt1iAYbdLzTVAE7vSdBZRbDyEn+
+         sKWet1oSxTxyt2ahOxplYMmycWpD9H28+u68AyBxfuWIfEam3Nz0jBHxdhui8ks+vb6M
+         545tINH6N1v1+Kq/4NNFMnqpU6GJjkKOvqy/XYmW94bIRRFH+8PvUYb5R0JCU9xT6P+2
+         8Ipg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=IQTYlT7DKteIN7LPObgobrwFgEFxgjatjVEatFARAE0=;
-        b=qm+uFhiKDZqXO35sXUGtVjE+Yvksb+DuaaardNovP32j1hRj7uOVVLoWjmJISj/Shn
-         GQQOZIZu6lOdeAwrmmiR4Q7BRbWEEs7v5mcPcUg8ZYxY99VyyENfg9nt0MXc8n9xOFpM
-         owTCWCgiKJaC78meSO6ucYsJPu87xEvvht6+VryMTf7lRSKxPWVqiSEItcD9ls9CFnHg
-         c4UK0Y3NvYSuJG00q3Gew34d9A4+FGGdPE0suOHEhbt8rxeo2J/snWlsEaxO9hxqYseW
-         qPmcyf6Rmr6fBXUt60w2MzxLLJKw//y4s33s0UiiePT6ye9/2EGK2Kn0vYRmlLzrQuyN
-         RnZA==
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=XlLK/9t77OaCz0UGM/J8urYM3bBBnlqtd9YmBawRQfs=;
+        b=lw5Ev0rJ/p8y4MIaHhvXEe3uPb89Jj6FKNCoufQ7s++r5EfqqWT9x+SZ/JFIRczErL
+         foRw8n/mpdI8CkoNo7tquW4EryrfS63Pzi8nlmGIiLcl+mcI1j0LiWf+Qw6iQI2BKo0q
+         T1RL4EZDdFdiJTDwnBLRUndAigWrOL5mHTmZZ1+vRmqww+Q1HkMkHzMzFHDXqiqRwhCG
+         2mKniErVVsm14rrymtQQOTjTpxhaIEr2CCI+MW2TzPcbXUqu3/SoTIMu6Er6lcCwwWoT
+         dVGT354fXiXx9g32QsYncmmmRLg4ojRhptpmw95Hv125MuVF/zIj0W1FBvlS8H1CIIlB
+         lgTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LvgHJCue;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r12-20020ad4576c000000b004c6e387d48dsi5023078qvx.190.2022.12.20.00.43.36
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Dec 2022 00:43:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VZQVqUyf;
+       spf=pass (google.com: domain of danielhb413@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=danielhb413@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <danielhb413@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o130-20020aca5a88000000b0035bdb23bb25sor2649521oib.53.2022.12.20.02.45.04
+        (Google Transport Security);
+        Tue, 20 Dec 2022 02:45:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of danielhb413@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LvgHJCue;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p7YDF-0003JW-Ku; Tue, 20 Dec 2022 03:43:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1p7YDA-0003IU-04
- for qemu-devel@nongnu.org; Tue, 20 Dec 2022 03:42:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1p7YD8-0000du-8E
- for qemu-devel@nongnu.org; Tue, 20 Dec 2022 03:42:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1671525772;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=IQTYlT7DKteIN7LPObgobrwFgEFxgjatjVEatFARAE0=;
- b=LvgHJCueFHfsfsFheDdQslHhJGafD9Furx+tQF9bfrhv+/G0wZNL6edACJEM9HdW3OxTKL
- OL5Z9XOiiveJdoYuU6z0h58MvBqaeHQksRi9boPleFB1QmmTFlHlWf3dhLwPYytpco+Z9e
- itP1J5pnu8tgHTrG+UzR/g2ki54eQJw=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-668-l6acZj49OqqQwbBFeq3E4w-1; Tue, 20 Dec 2022 03:42:49 -0500
-X-MC-Unique: l6acZj49OqqQwbBFeq3E4w-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C129B1C08970;
- Tue, 20 Dec 2022 08:42:48 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.110])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7B8E839D6D;
- Tue, 20 Dec 2022 08:42:48 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id C719C18000B3; Tue, 20 Dec 2022 09:42:46 +0100 (CET)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Hanna Reitz <hreitz@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- John Snow <jsnow@redhat.com>, Kashyap Chamarthy <kchamart@redhat.com>,
- Xiang Zheng <zhengxiang9@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH v2] pflash: Only read non-zero parts of backend image
-Date: Tue, 20 Dec 2022 09:42:46 +0100
-Message-Id: <20221220084246.1984871-1-kraxel@redhat.com>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VZQVqUyf;
+       spf=pass (google.com: domain of danielhb413@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=danielhb413@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XlLK/9t77OaCz0UGM/J8urYM3bBBnlqtd9YmBawRQfs=;
+        b=VZQVqUyfm+SzD4hUok+TQ3m/aULWBHMuCvEbySofZ7AlqnMdTsBLZaI07suorsSjtv
+         fe/mnNdO+x5Nyh4McN2S1iP8uLWiehdanPgWngG0vsp7HAFmT+liWyQAyUAGnOfb/saC
+         91ynBTrXxHn0zpiO5IoFBLtQGf9Xj7Eq+aVdBBlcPSEApaBll4n1O4cHv/D/CjgO3b69
+         EyPb+x4jFkJynEhVkvQVyl1Ne75ux7sCCj6gflUlEIHDXp20EiV4vosXzP32utRaBg+u
+         GlumX4I9cssgCKSVY0F31fNZbRNniYm44IhQ/bojX60FD7i3IRMxVhPxOyac884xBk1h
+         4cDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XlLK/9t77OaCz0UGM/J8urYM3bBBnlqtd9YmBawRQfs=;
+        b=jYM48ieVu53tIGx2caz62rg7MhaLKuGkUib8dusZ1KZcw8SzmPMmScNV5QYq86UBug
+         8KOFM4cA7k1Q/uBRxVdYJybozShxSd0Dwqz45cne3LrT3rWTQq2s9hfJWctElS43aaAC
+         w3kZU0TJpnObliLnX09PxlnaftY5plPybPUGbrbqKwnBFNnoc+EH4K8NUgq7Q+Dsf+CG
+         BS6+feAm0tBe6eX/D9m0Z1PkDEU/S2Cp0+muTh2GuqJLd5rGRcUtAhBzbUmlm0QwZovJ
+         QCQpkqRG46iVIFwgTfwJOcbCr4NR8ZTpooNwBfHYboJbSv3G+c7qyId38uDt836apUoT
+         hevw==
+X-Gm-Message-State: ANoB5pkGV42BC3qh3STKZ81o7D4+jbWlqY1xO3UNpCvE4MhwGFD5SoOe
+	pgKC+howZFM4YsLqWsusU3o2RhnFCig=
+X-Google-Smtp-Source: AA0mqf5IhyhoFAFTIOpBSp8ETqrVHUgTAA+/7jM945BelQAHiivdjpQPQFharevJcEcrmsphwDZy5A==
+X-Received: by 2002:a05:6808:30b:b0:35e:57ef:51f8 with SMTP id i11-20020a056808030b00b0035e57ef51f8mr17517142oie.52.1671533103732;
+        Tue, 20 Dec 2022 02:45:03 -0800 (PST)
+Return-Path: <danielhb413@gmail.com>
+Received: from [192.168.68.106] (201-43-103-101.dsl.telesp.net.br. [201.43.103.101])
+        by smtp.gmail.com with ESMTPSA id j2-20020a056808034200b0035e461d9b1bsm5291043oie.50.2022.12.20.02.44.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Dec 2022 02:45:03 -0800 (PST)
+Message-ID: <5d727e59-fa21-ea08-112c-3b74db7e4577@gmail.com>
+Date: Tue, 20 Dec 2022 07:44:54 -0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v3 1/5] dump: Include missing "cpu.h" header for
+ tswap32/tswap64() declarations
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Greg Kurz <groug@kaod.org>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Marek Vasut <marex@denx.de>,
+ Bin Meng <bin.meng@windriver.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, qemu-riscv@nongnu.org, kvm@vger.kernel.org,
+ Stafford Horne <shorne@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Chris Wulff <crwulff@gmail.com>
+References: <20221216215519.5522-1-philmd@linaro.org>
+ <20221216215519.5522-2-philmd@linaro.org>
+Content-Language: en-US
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20221216215519.5522-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YlCCr1kgkPoH
+X-TUID: gpco+SEJ0Vet
 
-From: Xiang Zheng <zhengxiang9@huawei.com>
 
-Currently we fill the VIRT_FLASH memory space with two 64MB NOR images
-when using persistent UEFI variables on virt board. Actually we only use
-a very small(non-zero) part of the memory while the rest significant
-large(zero) part of memory is wasted.
 
-So this patch checks the block status and only writes the non-zero part
-into memory. This requires pflash devices to use sparse files for
-backends.
+On 12/16/22 18:55, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
 
-Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 
-[ kraxel: rebased to latest master ]
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
----
- hw/block/block.c | 36 +++++++++++++++++++++++++++++++++++-
- 1 file changed, 35 insertions(+), 1 deletion(-)
 
-diff --git a/hw/block/block.c b/hw/block/block.c
-index f9c4fe67673b..142ebe4267e4 100644
---- a/hw/block/block.c
-+++ b/hw/block/block.c
-@@ -14,6 +14,40 @@
- #include "qapi/error.h"
- #include "qapi/qapi-types-block.h"
- 
-+/*
-+ * Read the non-zeroes parts of @blk into @buf
-+ * Reading all of the @blk is expensive if the zeroes parts of @blk
-+ * is large enough. Therefore check the block status and only write
-+ * the non-zeroes block into @buf.
-+ *
-+ * Return 0 on success, non-zero on error.
-+ */
-+static int blk_pread_nonzeroes(BlockBackend *blk, hwaddr size, void *buf)
-+{
-+    int ret;
-+    int64_t bytes, offset = 0;
-+    BlockDriverState *bs = blk_bs(blk);
-+
-+    for (;;) {
-+        bytes = MIN(size - offset, BDRV_REQUEST_MAX_SECTORS);
-+        if (bytes <= 0) {
-+            return 0;
-+        }
-+        ret = bdrv_block_status(bs, offset, bytes, &bytes, NULL, NULL);
-+        if (ret < 0) {
-+            return ret;
-+        }
-+        if (!(ret & BDRV_BLOCK_ZERO)) {
-+            ret = bdrv_pread(bs->file, offset, bytes,
-+                             (uint8_t *) buf + offset, 0);
-+            if (ret < 0) {
-+                return ret;
-+            }
-+        }
-+        offset += bytes;
-+    }
-+}
-+
- /*
-  * Read the entire contents of @blk into @buf.
-  * @blk's contents must be @size bytes, and @size must be at most
-@@ -53,7 +87,7 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
-      * block device and read only on demand.
-      */
-     assert(size <= BDRV_REQUEST_MAX_BYTES);
--    ret = blk_pread(blk, 0, size, buf, 0);
-+    ret = blk_pread_nonzeroes(blk, size, buf);
-     if (ret < 0) {
-         error_setg_errno(errp, -ret, "can't read block backend");
-         return false;
--- 
-2.38.1
-
+>   dump/dump.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/dump/dump.c b/dump/dump.c
+> index 279b07f09b..c62dc94213 100644
+> --- a/dump/dump.c
+> +++ b/dump/dump.c
+> @@ -29,6 +29,7 @@
+>   #include "qemu/main-loop.h"
+>   #include "hw/misc/vmcoreinfo.h"
+>   #include "migration/blocker.h"
+> +#include "cpu.h"
+>   
+>   #ifdef TARGET_X86_64
+>   #include "win_dump.h"

@@ -1,107 +1,101 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4362300ejb;
-        Tue, 20 Dec 2022 06:26:09 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtEvK4cpRuNHsVl0hzzq9Sxz/lMQjOK1B0oWoEdWFJzlAVavQFX4YwvBOAtF+M/yasOW2Te
-X-Received: by 2002:ac8:67ce:0:b0:3a7:e91f:d23 with SMTP id r14-20020ac867ce000000b003a7e91f0d23mr3317152qtp.67.1671546369471;
-        Tue, 20 Dec 2022 06:26:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671546369; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4362563ejb;
+        Tue, 20 Dec 2022 06:26:29 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXs/oNaF3219E2DkVR8NqvoDEtQqIsOb2SKITc2/wrORtT+mWStsAfoQ8pQ0DiFdVb/ojEzP
+X-Received: by 2002:a05:690c:2:b0:364:1ba1:d792 with SMTP id bc2-20020a05690c000200b003641ba1d792mr15933984ywb.28.1671546389190;
+        Tue, 20 Dec 2022 06:26:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671546389; cv=none;
         d=google.com; s=arc-20160816;
-        b=XD5AZLj1Awm/c9/WF4b2ORhl/TThMBsyNcbmMYX8vKi2npYcVwi55PVKFtzu0mJReX
-         wC2lPwiVq5TceRLN45cBzA8E6mhSTcxkj5xWbaqsXZu7X17pTARGZPTo+MxVpzF9LCaQ
-         NXZt69BsReNIVD2UTOUeKoPLCwgzXc3YIhFI8VyPqLUVdAeRNGYOQgUpL78WcqoWTUA1
-         Nrhhkbnm/xUodu8/NhtY3bHO3qVX97V6sZ8S73AV4TWOOmSy8pmuKoxpstYmzyY1QQhG
-         9uyNewIeEmz2YVMhQwq8/dHsB/q3ZVjgwK736ZrHhaG1m/ts+XfUHbYdQjV3YjCDlsXw
-         v0NQ==
+        b=QwYUBmGZ+as8hxGxQkOUntb8/khMaTSX3LX45+PUyakezGGVwAfo8IknVpym94ercQ
+         wrIGa+7TQWi1en55HoldAXWFvs5iHGzGWh+DVux+NlXlJPk/kiWJkdf5msddKBm4ACkI
+         h4/Nej6LS55nNyC22yiN+9VMfbMdRyMV05p/vHV9hV+td28znL/3dL8oab+sfspGpKXh
+         sduq9ljUiHPk7ZcNg+68BUBEXvNRBJexzKf594yKIXKQGirRRV8+ygwfoNUuEUlSzdgI
+         1b6chv9VtowfcAAl4ocFuOUUDXLzM3xp8h6kZb5ev8xqlW5MyvxB7SvSg/SQRWAe1PBR
+         Pp9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=YZacuc6hkXuywYHHFZgq2CU0UxEHNQQJhCq+mOWh6sc=;
-        b=QbQYLOrMm+//5vdE3BwDaQAFZVRH66YnW2OW6CnNgLZHXMotbWFIA1R0/4Lmt6WAaB
-         phzRXiQ6o0yAqGgoxUf73b817a1SmTebZTneEeYSF/rzKsM1BC1iRNnK0uBcIMwzxNnm
-         Xp5FYR1Eot0y0QwFikSTArHDe/w6RFPLVUrBlpg5U6ysvgrAaP5UNr9lwcrrfUtcFbiL
-         DMZ1dwAJ7uWrUvWP39DfJ8iR0TxtpQR32ltJQGEwcpim7uUX/zAOK1koetvcqRuytlu2
-         zxvKvPWYwlZ2yCs5mLxggFmCT5SzSO9uJcXb/mSrBVu5CEi0usdbkr7oBXGvfvuju3zy
-         UJ5w==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=SRfQXt0cpRTOP0e5a6mN6QzhWZi0GjW4YvHNsYLxYhI=;
+        b=s/2x9FTbv9XQ5wJzf/I0l+lpjYKlkrkqHYaQcFnIheeNK1JVF3RrRaZw/gyVGzaSGk
+         Z2cuNZVtUgu7QavUgTcL3qBPWCW3dUInR7Jfu9Y78wTtPAEIhkjxrRRg7z5PqqoZRj88
+         xYjPkBlN2Q+go1deJwgvKDbvq2lYa+9lPw/PFg+TXSDIgfrP1rega/wVDeKNYh6Q78YH
+         ZIEJUb+KXNFetv1tJoLiY/8kCmgfDginwi1ssaDnpzNECl9GZxuWVybY/lkj2z+XXzAN
+         2CuCPLxip8nM5EvN+bubcw88wT0UyjhrP+Df8Y3f8dP9xg9iRvLXcRUJ5US1lKJ5smiq
+         xYNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oK90c5EM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MsCKeFeU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e20-20020ac845d4000000b003a6a7728c2fsi784524qto.753.2022.12.20.06.26.09
+        by mx.google.com with ESMTPS id w20-20020a05620a095400b006feda799d24si4911952qkw.296.2022.12.20.06.26.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Dec 2022 06:26:09 -0800 (PST)
+        Tue, 20 Dec 2022 06:26:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oK90c5EM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MsCKeFeU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p7dZ2-0002yK-BZ; Tue, 20 Dec 2022 09:25:52 -0500
+	id 1p7dYm-0002kG-R8; Tue, 20 Dec 2022 09:25:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7dYh-0002jO-UV
- for qemu-arm@nongnu.org; Tue, 20 Dec 2022 09:25:36 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7dYd-0002fP-Eu
+ for qemu-arm@nongnu.org; Tue, 20 Dec 2022 09:25:28 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7dYg-00076o-C7
- for qemu-arm@nongnu.org; Tue, 20 Dec 2022 09:25:31 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- ay2-20020a05600c1e0200b003d22e3e796dso8970256wmb.0
- for <qemu-arm@nongnu.org>; Tue, 20 Dec 2022 06:25:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7dYb-00073e-PL
+ for qemu-arm@nongnu.org; Tue, 20 Dec 2022 09:25:26 -0500
+Received: by mail-wr1-x430.google.com with SMTP id f18so11903345wrj.5
+ for <qemu-arm@nongnu.org>; Tue, 20 Dec 2022 06:25:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YZacuc6hkXuywYHHFZgq2CU0UxEHNQQJhCq+mOWh6sc=;
- b=oK90c5EMFqv9gleN3CJ9GTFswxADLz1WoH7MV9oKWkECdkw9D3mfmpSY/zKO28OsZW
- LJpqB/Oq5owlBGdje5kthNYVHwRi6Wc3zQCUjQRlgUPB3Xa0uH3csLCS9h9rnOpPCezt
- 1F9IS30DxtaMELeod4B7k5Ysf7rPHuy7JJo8yl7jYkZDMaFbt+hjVAco/rcTEKbvyy5F
- UQhhatKoDxMXzzDooP2pi55ASEjpB5NmE0/tisFbFw57tVrsyQIvybpKH72QXCmpzbgw
- iKvCdttEqtry7gZVahF64ADPde2hNITkyvWeozSEDLDTCBA8YTT3msRrZkPqod43Fi9r
- QQkw==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=SRfQXt0cpRTOP0e5a6mN6QzhWZi0GjW4YvHNsYLxYhI=;
+ b=MsCKeFeUB215xQ0Idjul67RCk8ITzj0rPWoUjbneLjjlNjKDgNLWg6u8ZDeyfXvYzA
+ zMWjC2Egf75hYcFsfy5itih33Vrusctz1eHUvbD2OZxAIZX8DbsZ92ZFRf2DTqBUAjSb
+ /q1i5YnbVriFmbIPt+XMB747XYiHI9XyZ+mEzV2v5zS1mjF3lmKft+rhkOnu6t+etgaR
+ Mv3oKQDpW/D3Zk3OC+VHXZePluy/36WaOh1T/f2KfGbmJ/lAf4e4I8KwAPl9gl85+RZE
+ OzRKBI4SvSaOsMyuAVrUZBJ8uD4KEIVO+kIE4OsPZwfaYYzshGgUZWuM/SjRCD+EdZwN
+ RMvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=YZacuc6hkXuywYHHFZgq2CU0UxEHNQQJhCq+mOWh6sc=;
- b=RtsI+SH85R5d6V+mW134Y53bw1CSfFQpluHjUHWJ4862tT73XJX5ZelazI21kVm87x
- aDrV6nN2YIi6AH+uDK9MsVbwujqRgUkzn8nA4a01xi12Wx8tBnwDnX2D3Apr6GKd7qkW
- zUkBno7Df4OtM3xbJf5tGxBA8jTvRtR7f9sh0K7yxaTaai92+ThOcPGyNxGbFqAguNGx
- rU+q8G3Ak57XS6By1OjK33rq1K4GJLfwi3optxfNlzAXvA9057j6fkHCRiTgMtwIn7O3
- c0C0+9qXI96G+HAgMhKstVVUCKRwBNJF/bFj8AGEAMoSt7CodxhRAcfvz0pZiVIldCOj
- Y7vQ==
-X-Gm-Message-State: ANoB5pkrZXExT9B/9FTVBK/So41ja7gs/13+acsnMf+hCKBaZoLmQVrV
- RUEy+1pq5SyfF6CzvukemxaLAw==
-X-Received: by 2002:a7b:ca45:0:b0:3d2:fbab:3609 with SMTP id
- m5-20020a7bca45000000b003d2fbab3609mr14806088wml.27.1671546328774; 
- Tue, 20 Dec 2022 06:25:28 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=SRfQXt0cpRTOP0e5a6mN6QzhWZi0GjW4YvHNsYLxYhI=;
+ b=cUEuuF1Xo7ql9O2MvX2BBGB4Dc857xYDjvWgAC3rbEXWUs5iku10gZW7wCWqtGYgnp
+ mKMxEvqlbrk5X24Awdjdqyi2YO4kJ22YzJu24ebTkru53wVgvJUkQbQ+VsjNIboD5YSE
+ oRGYGURW6cuvsFPBk9F2FJyx44m0h8kn68vyL9YRVEFU5SzYkrjjtZ18J3Tgjl41iVNz
+ 5+yu2O86cO/t5+zCSLZUrMyN7z+TVONtc7bFRRPsJFkAKZYAXQn/RPpv7+/yJv5JG2et
+ rbh2+thzXk7wsJAzGkUZwN+0GD8+T1IEa2UkC7vbi18WtSwYW8NPSMmS172w03djomMJ
+ MfyQ==
+X-Gm-Message-State: ANoB5pnu3EcNh+KoJSR4GIpikGQW9+AK30tc6MfOtSPuELh0hVwyMOuJ
+ ejAG7XGB1vBppdTM9xS6kO9LLA==
+X-Received: by 2002:adf:a44f:0:b0:242:63e5:2449 with SMTP id
+ e15-20020adfa44f000000b0024263e52449mr31951432wra.69.1671546323543; 
+ Tue, 20 Dec 2022 06:25:23 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- 189-20020a1c02c6000000b003cfd58409desm23303881wmc.13.2022.12.20.06.25.27
+ c18-20020adfa312000000b00228dbf15072sm13322372wrb.62.2022.12.20.06.25.22
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 20 Dec 2022 06:25:27 -0800 (PST)
+ Tue, 20 Dec 2022 06:25:22 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/3] hw/input/tsc2xxx: Constify set_transform()'s
- MouseTransformInfo arg
-Date: Tue, 20 Dec 2022 15:25:18 +0100
-Message-Id: <20221220142520.24094-2-philmd@linaro.org>
+Subject: [PATCH 0/3] hw/arm/nseries: Minor housekeeping
+Date: Tue, 20 Dec 2022 15:25:17 +0100
+Message-Id: <20221220142520.24094-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221220142520.24094-1-philmd@linaro.org>
-References: <20221220142520.24094-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,63 +117,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WiMQWxOHw/VD
+X-TUID: fAODDH8tPTbh
 
-The pointed MouseTransformInfo structure is accessed read-only.
+Constify read-only arrays and remove some -Wextra warnings.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/input/tsc2005.c         | 2 +-
- hw/input/tsc210x.c         | 3 +--
- include/hw/input/tsc2xxx.h | 4 ++--
- 3 files changed, 4 insertions(+), 5 deletions(-)
+Philippe Mathieu-Daudé (3):
+  hw/input/tsc2xxx: Constify set_transform()'s MouseTransformInfo arg
+  hw/arm/nseries: Constify various read-only arrays
+  hw/arm/nseries: Silent -Wmissing-field-initializers warning
 
-diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
-index 14698ce109..555b677173 100644
---- a/hw/input/tsc2005.c
-+++ b/hw/input/tsc2005.c
-@@ -523,7 +523,7 @@ void *tsc2005_init(qemu_irq pintdav)
-  * from the touchscreen.  Assuming 12-bit precision was used during
-  * tslib calibration.
-  */
--void tsc2005_set_transform(void *opaque, MouseTransformInfo *info)
-+void tsc2005_set_transform(void *opaque, const MouseTransformInfo *info)
- {
-     TSC2005State *s = (TSC2005State *) opaque;
- 
-diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
-index df7313db5d..fdd5ff87d9 100644
---- a/hw/input/tsc210x.c
-+++ b/hw/input/tsc210x.c
-@@ -1176,8 +1176,7 @@ I2SCodec *tsc210x_codec(uWireSlave *chip)
-  * from the touchscreen.  Assuming 12-bit precision was used during
-  * tslib calibration.
-  */
--void tsc210x_set_transform(uWireSlave *chip,
--                MouseTransformInfo *info)
-+void tsc210x_set_transform(uWireSlave *chip, const MouseTransformInfo *info)
- {
-     TSC210xState *s = (TSC210xState *) chip->opaque;
- #if 0
-diff --git a/include/hw/input/tsc2xxx.h b/include/hw/input/tsc2xxx.h
-index 5b76ebc177..00eca17674 100644
---- a/include/hw/input/tsc2xxx.h
-+++ b/include/hw/input/tsc2xxx.h
-@@ -30,12 +30,12 @@ uWireSlave *tsc2102_init(qemu_irq pint);
- uWireSlave *tsc2301_init(qemu_irq penirq, qemu_irq kbirq, qemu_irq dav);
- I2SCodec *tsc210x_codec(uWireSlave *chip);
- uint32_t tsc210x_txrx(void *opaque, uint32_t value, int len);
--void tsc210x_set_transform(uWireSlave *chip, MouseTransformInfo *info);
-+void tsc210x_set_transform(uWireSlave *chip, const MouseTransformInfo *info);
- void tsc210x_key_event(uWireSlave *chip, int key, int down);
- 
- /* tsc2005.c */
- void *tsc2005_init(qemu_irq pintdav);
- uint32_t tsc2005_txrx(void *opaque, uint32_t value, int len);
--void tsc2005_set_transform(void *opaque, MouseTransformInfo *info);
-+void tsc2005_set_transform(void *opaque, const MouseTransformInfo *info);
- 
- #endif
+ hw/arm/nseries.c           | 28 +++++++++++++---------------
+ hw/input/tsc2005.c         |  2 +-
+ hw/input/tsc210x.c         |  3 +--
+ include/hw/input/tsc2xxx.h |  4 ++--
+ 4 files changed, 17 insertions(+), 20 deletions(-)
+
 -- 
 2.38.1
 

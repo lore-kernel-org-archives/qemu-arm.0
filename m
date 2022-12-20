@@ -1,339 +1,209 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3844432ejb;
-        Mon, 19 Dec 2022 14:08:57 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7QtC+XcduXnuF/czAdUkhMEuN9X5eQ5pQVKm5hjhB8T4iSWfdfY893oNFhdjyDR//7px82
-X-Received: by 2002:ac8:534b:0:b0:3a6:a292:286c with SMTP id d11-20020ac8534b000000b003a6a292286cmr57077446qto.18.1671487737176;
-        Mon, 19 Dec 2022 14:08:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671487737; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4178049ejb;
+        Tue, 20 Dec 2022 01:30:46 -0800 (PST)
+X-Received: by 2002:a05:600c:354d:b0:3d0:85b5:33d3 with SMTP id i13-20020a05600c354d00b003d085b533d3mr33862141wmq.16.1671528646698;
+        Tue, 20 Dec 2022 01:30:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671528646; cv=none;
         d=google.com; s=arc-20160816;
-        b=wlEuouVR80xP6cJg1KSfjZBujnohE9Iz7ktjrX4VBHXH6WBP23i9BVQ49sJkC1K9NG
-         AfdnCoDCkQmYZtQmfGOb9UAORCm4qTaSzGWEvN3JN2iXx1byMp1Qn/rCeWwLsyHBbAwD
-         2OoeKU7BoP3hB6WeEZ8a3dvsESOLaranR3mqoHARozDu3R8R+p9S2ZiHkWWDg5VovQMi
-         ygf4EyUzsh5l3QU0LOTF34HTYw1V2D6G2ZAPvwL4ZU9RNQuXU2QiDeCbkI/JyOk3MrhG
-         G39RUUn9fCCsYpUNCmixkvcl9RJJ8akaQFEoTUyUiRTgQ8SAgwpIzS1AQrev3fFjDeVQ
-         4tHg==
+        b=Z8JvTuyZoy9FRmZQTFZY0nZ+L0Q2oNoeioUYgwRJYtgZRE0BdhxCNARBvZFi/dx2IY
+         OIWCShS8QQtrpqMwcC7h0n57d2z//MUzVe2pi/taR7mQTafIuFJQfkVlXuQjagceFUh7
+         BWEua0J91SvHGyg7Shk0SdnrjZPUBqDtYaJOpC8MHVcfdcwRtjwjq/IV+1eoATMxYj6+
+         kmu5GTXBAndJB3QFMUgol55vi5S1NT7M8NmcM8l0UX1Ggchml6xzcpKCzUsaH6QalqGL
+         Rv3DaOaIgw+pFTyt0zMSdOAH/PRtwKSuEDVKZdnFShmQt0XHU61fUvHrASNp389j5XXK
+         1l4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=l2wY+Y5lbm5B6iIbnu04lxZnMoCqGVOWUed9XIrIC1U=;
-        b=aUjPe6113JijRGbScwQ93BM7b3UfiY+9hICAjECAfrD2jP/29M2Bmz4/Ci+cAP16Wb
-         PhIYaSiCVKpAa3aK3DlCgVTITyWMkyJu9G/8YSjMuC3kE0wLxtt+BUnfNDekiho3yFRK
-         elM3qreIKyZUckcftsHJKkC4l/hk16Y2F/omrumNevuHjLG/H+StzWfD1vJ/4YC+NxdQ
-         8WY9eotmQaVb6YciiIlv1P/UNIl+lWBquRNBMbEPqhZFzQzm2Cnf6kJUvGVoqW8hSvu4
-         wdjhia23orAN4+9oEmlLNpnCSVfbV/y+0qs6fpKGL+o16VL9soipeC3AR9Phx8Df5gnL
-         Rtvg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=G/dpNMhDj0dkK+eMZPgPDIDAPr8OUqu+urZOVvb2p+I=;
+        b=T+dHrY7KUAassjt/lYezdvmm7El3A1sUjw39U8yigvilfJKORNTBMGkI66riSb21BQ
+         7jqB+OhTxs1kFjxx56vExX1H9xr4Xiu9IlbdYmO6rRbpUPfHCA27NnokYxUvCB15uvjc
+         vojnxVcpGrOI4t+0py9b0pDCjlVVZHOG2d+Jw4dt+o0B0TN+ug/EqRQka0rx5A9ac6zB
+         RGh2TLMcNH9VvDpwVYIY1CEHvO2RuU6GcxTPVmhjv0EgbCTKRdrDOLJNQt0o8DhOsUTo
+         n6MQ4uM1t/MhtGwSsdZMHyCH3bjsYStIeZPf9tn8uBCk06NYOy4uxcs+6FhRz3DHtiCY
+         mdhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u4-20020ac80504000000b003a6a5866c2esi4409019qtg.171.2022.12.19.14.08.57
+       dkim=pass header.i=@linaro.org header.s=google header.b="TIPc8/bk";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k18-20020a05600c409200b003d0047d1b63sor334951wmh.42.2022.12.20.01.30.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Dec 2022 14:08:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 20 Dec 2022 01:30:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p7OJ4-0007hs-BA; Mon, 19 Dec 2022 17:08:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1p7OIz-0007hY-J0; Mon, 19 Dec 2022 17:08:20 -0500
-Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1p7OIv-0003o3-7R; Mon, 19 Dec 2022 17:08:15 -0500
-Received: from localhost.localdomain
- (dynamic-077-002-090-134.77.2.pool.telefonica.de [77.2.90.134])
- by csgraf.de (Postfix) with ESMTPSA id D1CBF60806FC;
- Mon, 19 Dec 2022 23:08:09 +0100 (CET)
-From: Alexander Graf <agraf@csgraf.de>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Subject: [PATCH] hvf: arm: Add support for GICv3
-Date: Mon, 19 Dec 2022 23:08:08 +0100
-Message-Id: <20221219220808.26392-1-agraf@csgraf.de>
-X-Mailer: git-send-email 2.37.1 (Apple Git-137.1)
+       dkim=pass header.i=@linaro.org header.s=google header.b="TIPc8/bk";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=G/dpNMhDj0dkK+eMZPgPDIDAPr8OUqu+urZOVvb2p+I=;
+        b=TIPc8/bkp4vKHyyFcA6Ze8WAO0+2twZqpkg0qJLA/JtnqPq5QKAfXtLnt7uygs/PvU
+         c0FUlK17MOrA3k+6tyAeKgtCMBQjSfGFXagLxQpFPP5m8+duaquJ6SaR9751N3Zxt3/5
+         FdTbZUxS0pXC/6SUeJmg2S04KNLhI4lAA2h1KCTcQ+Tpmd5W28c1hBs3bxne2rA1cXiG
+         greNiWzZnhdF/nAWaKnT1WxDWBuhtjhfntbagp6aipCeCL9Znxtqfderttp852E16nkR
+         W2W9vvLVgst5dWHdUw6D7WHbsjtf5mUEQUk/CtJ1SzvEXoxWwVoDWIVhsr0n1aqKIkaD
+         865w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=G/dpNMhDj0dkK+eMZPgPDIDAPr8OUqu+urZOVvb2p+I=;
+        b=1BMKuoZPSdxA9p2N8a/08HqkrKzcxMC2GcoYt7TKac5hTe4I5xb/7R0feUBRH8CDwv
+         Ih2YOjoBYUdGpZjQGlamRMb0Ogq7Dd2E/7b10U/wLor9Z7yA2+81WPmM/RI6ThF3x3gm
+         SsTtYygQ55aJqMG9gxFyqbY32aTmes5blv8NBjXIFNOCobhEMGhnHA6mVWy6mV1Zv20x
+         EigYX9hz4QshIYZsG1L4oXMcBX9mUKmzoVIM9XkWcd2teXTFPLm80MEWYCqFRIK6X3vD
+         yxM++RwXX9SnrecMKUZFkgVmDiDNE15IGKBIf2qQ2lCC2TR8xKVt4mMmtL91u7884jau
+         Mt3g==
+X-Gm-Message-State: ANoB5plYNjiurA5ChwXK3vcgmPSzqcZiXQQK6e9vaz4WCqwZucm6fG3N
+	NqE2VgOckt+/78XTMt2I0LfUaF8T
+X-Google-Smtp-Source: AA0mqf4BdBL8CIhMzighDePROI6hCYevyeTaUcUKIkeVkWeVFVDCLEqqVwYkNIK5gGTtdx9ZrYLmMw==
+X-Received: by 2002:a7b:c30e:0:b0:3c6:f7ff:6f87 with SMTP id k14-20020a7bc30e000000b003c6f7ff6f87mr33905266wmj.11.1671528646445;
+        Tue, 20 Dec 2022 01:30:46 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.30.216] ([81.0.6.76])
+        by smtp.gmail.com with ESMTPSA id n15-20020a1c720f000000b003cf4ec90938sm14986672wmc.21.2022.12.20.01.30.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Dec 2022 01:30:45 -0800 (PST)
+Message-ID: <a31967f6-6de5-bed2-8a1a-68a909850dd5@linaro.org>
+Date: Tue, 20 Dec 2022 10:30:43 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Llm+1Gu4iSkp
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.1
+Subject: Re: [PATCH v2] pflash: Only read non-zero parts of backend image
+Content-Language: en-US
+To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Hanna Reitz <hreitz@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, John Snow <jsnow@redhat.com>,
+ Kashyap Chamarthy <kchamart@redhat.com>, Xiang Zheng
+ <zhengxiang9@huawei.com>, David Edmondson <david.edmondson@oracle.com>,
+ Markus Armbruster <armbru@redhat.com>, Sunil V L <sunilvl@ventanamicro.com>,
+ Andrew Jones <ajones@ventanamicro.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Ard Biesheuvel <ardb@kernel.org>, Radoslaw Biernacki <rad@semihalf.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>
+References: <20221220084246.1984871-1-kraxel@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221220084246.1984871-1-kraxel@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: blrey98x0bpM
 
-We currently only support GICv2 emulation. To also support GICv3, we will
-need to pass a few system registers into their respective handler functions.
+[Extending to people using UEFI VARStore on Virt machines]
 
-This patch adds support for HVF to call into the TCG callbacks for GICv3
-system register handlers. This is safe because the GICv3 TCG code is generic
-as long as we limit ourselves to EL0 and EL1 - which are the only modes
-supported by HVF.
+On 20/12/22 09:42, Gerd Hoffmann wrote:
+> From: Xiang Zheng <zhengxiang9@huawei.com>
+> 
+> Currently we fill the VIRT_FLASH memory space with two 64MB NOR images
+> when using persistent UEFI variables on virt board. Actually we only use
+> a very small(non-zero) part of the memory while the rest significant
+> large(zero) part of memory is wasted.
+> 
+> So this patch checks the block status and only writes the non-zero part
+> into memory. This requires pflash devices to use sparse files for
+> backends.
 
-To make sure nobody trips over that, we also annotate callbacks that don't
-work in HVF mode, such as EL state change hooks.
+I like the idea, but I'm not sure how to relate with NOR flash devices.
 
-With GICv3 support in place, we can run with more than 8 vCPUs.
+ From the block layer, we get BDRV_BLOCK_ZERO when a block is fully
+filled by zeroes ('\0').
 
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
----
- hw/intc/arm_gicv3_cpuif.c   |   8 +-
- target/arm/hvf/hvf.c        | 151 ++++++++++++++++++++++++++++++++++++
- target/arm/hvf/trace-events |   2 +
- 3 files changed, 160 insertions(+), 1 deletion(-)
+We don't want to waste host memory, I get it.
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index b17b29288c..b4e387268c 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -21,6 +21,7 @@
- #include "hw/irq.h"
- #include "cpu.h"
- #include "target/arm/cpregs.h"
-+#include "sysemu/tcg.h"
- 
- /*
-  * Special case return value from hppvi_index(); must be larger than
-@@ -2810,6 +2811,8 @@ void gicv3_init_cpuif(GICv3State *s)
-          * which case we'd get the wrong value.
-          * So instead we define the regs with no ri->opaque info, and
-          * get back to the GICv3CPUState from the CPUARMState.
-+         *
-+         * These CP regs callbacks can be called from either TCG or HVF code.
-          */
-         define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
- 
-@@ -2905,6 +2908,9 @@ void gicv3_init_cpuif(GICv3State *s)
-                 define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
-             }
-         }
--        arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
-+        if (tcg_enabled()) {
-+            /* We can only trap EL changes with TCG for now */
-+            arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
-+        }
-     }
- }
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 060aa0ccf4..8ea4be5f30 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -80,6 +80,33 @@
- #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
- #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
- 
-+#define SYSREG_ICC_AP0R0_EL1     SYSREG(3, 0, 12, 8, 4)
-+#define SYSREG_ICC_AP0R1_EL1     SYSREG(3, 0, 12, 8, 5)
-+#define SYSREG_ICC_AP0R2_EL1     SYSREG(3, 0, 12, 8, 6)
-+#define SYSREG_ICC_AP0R3_EL1     SYSREG(3, 0, 12, 8, 7)
-+#define SYSREG_ICC_AP1R0_EL1     SYSREG(3, 0, 12, 9, 0)
-+#define SYSREG_ICC_AP1R1_EL1     SYSREG(3, 0, 12, 9, 1)
-+#define SYSREG_ICC_AP1R2_EL1     SYSREG(3, 0, 12, 9, 2)
-+#define SYSREG_ICC_AP1R3_EL1     SYSREG(3, 0, 12, 9, 3)
-+#define SYSREG_ICC_ASGI1R_EL1    SYSREG(3, 0, 12, 11, 6)
-+#define SYSREG_ICC_BPR0_EL1      SYSREG(3, 0, 12, 8, 3)
-+#define SYSREG_ICC_BPR1_EL1      SYSREG(3, 0, 12, 12, 3)
-+#define SYSREG_ICC_CTLR_EL1      SYSREG(3, 0, 12, 12, 4)
-+#define SYSREG_ICC_DIR_EL1       SYSREG(3, 0, 12, 11, 1)
-+#define SYSREG_ICC_EOIR0_EL1     SYSREG(3, 0, 12, 8, 1)
-+#define SYSREG_ICC_EOIR1_EL1     SYSREG(3, 0, 12, 12, 1)
-+#define SYSREG_ICC_HPPIR0_EL1    SYSREG(3, 0, 12, 8, 2)
-+#define SYSREG_ICC_HPPIR1_EL1    SYSREG(3, 0, 12, 12, 2)
-+#define SYSREG_ICC_IAR0_EL1      SYSREG(3, 0, 12, 8, 0)
-+#define SYSREG_ICC_IAR1_EL1      SYSREG(3, 0, 12, 12, 0)
-+#define SYSREG_ICC_IGRPEN0_EL1   SYSREG(3, 0, 12, 12, 6)
-+#define SYSREG_ICC_IGRPEN1_EL1   SYSREG(3, 0, 12, 12, 7)
-+#define SYSREG_ICC_PMR_EL1       SYSREG(3, 0, 4, 6, 0)
-+#define SYSREG_ICC_RPR_EL1       SYSREG(3, 0, 12, 11, 3)
-+#define SYSREG_ICC_SGI0R_EL1     SYSREG(3, 0, 12, 11, 7)
-+#define SYSREG_ICC_SGI1R_EL1     SYSREG(3, 0, 12, 11, 5)
-+#define SYSREG_ICC_SRE_EL1       SYSREG(3, 0, 12, 12, 5)
-+
- #define WFX_IS_WFE (1 << 0)
- 
- #define TMR_CTL_ENABLE  (1 << 0)
-@@ -788,6 +815,43 @@ static bool is_id_sysreg(uint32_t reg)
-            SYSREG_CRM(reg) < 8;
- }
- 
-+static uint32_t hvf_reg2cp_reg(uint32_t reg)
-+{
-+    return ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
-+                              (reg >> 10) & 0xf,
-+                              (reg >> 1) & 0xf,
-+                              (reg >> 20) & 0x3,
-+                              (reg >> 14) & 0x7,
-+                              (reg >> 17) & 0x7);
-+}
-+
-+static bool hvf_sysreg_read_cp(CPUState *cpu, uint32_t reg, uint64_t *val)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    const ARMCPRegInfo *ri;
-+
-+    ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
-+    if (ri) {
-+        if (ri->accessfn) {
-+            if (ri->accessfn(env, ri, true) != CP_ACCESS_OK) {
-+                return false;
-+            }
-+        }
-+        if (ri->type & ARM_CP_CONST) {
-+            *val = ri->resetvalue;
-+        } else if (ri->readfn) {
-+            *val = ri->readfn(env, ri);
-+        } else {
-+            *val = CPREG_FIELD64(env, ri);
-+        }
-+        trace_hvf_vgic_read(ri->name, *val);
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
- static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -839,6 +903,36 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         break;
-+    case SYSREG_ICC_AP0R0_EL1:
-+    case SYSREG_ICC_AP0R1_EL1:
-+    case SYSREG_ICC_AP0R2_EL1:
-+    case SYSREG_ICC_AP0R3_EL1:
-+    case SYSREG_ICC_AP1R0_EL1:
-+    case SYSREG_ICC_AP1R1_EL1:
-+    case SYSREG_ICC_AP1R2_EL1:
-+    case SYSREG_ICC_AP1R3_EL1:
-+    case SYSREG_ICC_ASGI1R_EL1:
-+    case SYSREG_ICC_BPR0_EL1:
-+    case SYSREG_ICC_BPR1_EL1:
-+    case SYSREG_ICC_DIR_EL1:
-+    case SYSREG_ICC_EOIR0_EL1:
-+    case SYSREG_ICC_EOIR1_EL1:
-+    case SYSREG_ICC_HPPIR0_EL1:
-+    case SYSREG_ICC_HPPIR1_EL1:
-+    case SYSREG_ICC_IAR0_EL1:
-+    case SYSREG_ICC_IAR1_EL1:
-+    case SYSREG_ICC_IGRPEN0_EL1:
-+    case SYSREG_ICC_IGRPEN1_EL1:
-+    case SYSREG_ICC_PMR_EL1:
-+    case SYSREG_ICC_SGI0R_EL1:
-+    case SYSREG_ICC_SGI1R_EL1:
-+    case SYSREG_ICC_SRE_EL1:
-+    case SYSREG_ICC_CTLR_EL1:
-+        /* Call the TCG sysreg handler. This is only safe for GICv3 regs. */
-+        if (!hvf_sysreg_read_cp(cpu, reg, &val)) {
-+            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-+        }
-+        break;
-     default:
-         if (is_id_sysreg(reg)) {
-             /* ID system registers read as RES0 */
-@@ -944,6 +1038,33 @@ static void pmswinc_write(CPUARMState *env, uint64_t value)
-     }
- }
- 
-+static bool hvf_sysreg_write_cp(CPUState *cpu, uint32_t reg, uint64_t val)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    const ARMCPRegInfo *ri;
-+
-+    ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
-+
-+    if (ri) {
-+        if (ri->accessfn) {
-+            if (ri->accessfn(env, ri, false) != CP_ACCESS_OK) {
-+                return false;
-+            }
-+        }
-+        if (ri->writefn) {
-+            ri->writefn(env, ri, val);
-+        } else {
-+            CPREG_FIELD64(env, ri) = val;
-+        }
-+
-+        trace_hvf_vgic_write(ri->name, val);
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
- static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -1021,6 +1142,36 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         break;
-+    case SYSREG_ICC_AP0R0_EL1:
-+    case SYSREG_ICC_AP0R1_EL1:
-+    case SYSREG_ICC_AP0R2_EL1:
-+    case SYSREG_ICC_AP0R3_EL1:
-+    case SYSREG_ICC_AP1R0_EL1:
-+    case SYSREG_ICC_AP1R1_EL1:
-+    case SYSREG_ICC_AP1R2_EL1:
-+    case SYSREG_ICC_AP1R3_EL1:
-+    case SYSREG_ICC_ASGI1R_EL1:
-+    case SYSREG_ICC_BPR0_EL1:
-+    case SYSREG_ICC_BPR1_EL1:
-+    case SYSREG_ICC_CTLR_EL1:
-+    case SYSREG_ICC_DIR_EL1:
-+    case SYSREG_ICC_EOIR0_EL1:
-+    case SYSREG_ICC_EOIR1_EL1:
-+    case SYSREG_ICC_HPPIR0_EL1:
-+    case SYSREG_ICC_HPPIR1_EL1:
-+    case SYSREG_ICC_IAR0_EL1:
-+    case SYSREG_ICC_IAR1_EL1:
-+    case SYSREG_ICC_IGRPEN0_EL1:
-+    case SYSREG_ICC_IGRPEN1_EL1:
-+    case SYSREG_ICC_PMR_EL1:
-+    case SYSREG_ICC_SGI0R_EL1:
-+    case SYSREG_ICC_SGI1R_EL1:
-+    case SYSREG_ICC_SRE_EL1:
-+        /* Call the TCG sysreg handler. This is only safe for GICv3 regs. */
-+        if (!hvf_sysreg_write_cp(cpu, reg, val)) {
-+            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-+        }
-+        break;
-     default:
-         cpu_synchronize_state(cpu);
-         trace_hvf_unhandled_sysreg_write(env->pc, reg,
-diff --git a/target/arm/hvf/trace-events b/target/arm/hvf/trace-events
-index 820e8e0297..4fbbe4b45e 100644
---- a/target/arm/hvf/trace-events
-+++ b/target/arm/hvf/trace-events
-@@ -9,3 +9,5 @@ hvf_unknown_hvc(uint64_t x0) "unknown HVC! 0x%016"PRIx64
- hvf_unknown_smc(uint64_t x0) "unknown SMC! 0x%016"PRIx64
- hvf_exit(uint64_t syndrome, uint32_t ec, uint64_t pc) "exit: 0x%"PRIx64" [ec=0x%x pc=0x%"PRIx64"]"
- hvf_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid) "PSCI Call x0=0x%016"PRIx64" x1=0x%016"PRIx64" x2=0x%016"PRIx64" x3=0x%016"PRIx64" cpu=0x%x"
-+hvf_vgic_write(const char *name, uint64_t val) "vgic write to %s [val=0x%016"PRIx64"]"
-+hvf_vgic_read(const char *name, uint64_t val) "vgic read from %s [val=0x%016"PRIx64"]"
--- 
-2.37.1 (Apple Git-137.1)
+Now what "sees" the guest? Is the UEFI VARStore filled with zeroes?
+If so, is it a EDK2 specific case for all virt machines? This would
+be a virtualization optimization and in that case, this patch would
+work.
 
+On hardware the NOR flash "erased state" is filled of '\xff'. If
+EDK2 requires a 64MiB VARStore on NOR flash, I'd expect the non-used
+area to be filled with \xff, at least up to the sector size. Otherwise
+it is sub-optimal use of persistent storage on hardware.
+
+But instead of keeping insisting on that, I'd like to step back a little
+and discuss. What is the use case?
+
+* Either you want to test UEFI on real hardware and a NOR flash makes
+   sense,
+
+* or you are trying to optimize paravirtualized guests. In that case
+   why insist with emulated NOR devices? Why not have EDK2 directly
+   use a paravirtualized block driver which we can optimize / tune
+   without interfering with emulated models?
+
+Keeping insisting on optimizing guests using the QEMU pflash device
+seems wrong to me. I'm pretty sure we can do better optimizing clouds
+payloads.
+
+> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> 
+> [ kraxel: rebased to latest master ]
+> 
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> ---
+>   hw/block/block.c | 36 +++++++++++++++++++++++++++++++++++-
+>   1 file changed, 35 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/block/block.c b/hw/block/block.c
+> index f9c4fe67673b..142ebe4267e4 100644
+> --- a/hw/block/block.c
+> +++ b/hw/block/block.c
+> @@ -14,6 +14,40 @@
+>   #include "qapi/error.h"
+>   #include "qapi/qapi-types-block.h"
+>   
+> +/*
+> + * Read the non-zeroes parts of @blk into @buf
+> + * Reading all of the @blk is expensive if the zeroes parts of @blk
+> + * is large enough. Therefore check the block status and only write
+> + * the non-zeroes block into @buf.
+> + *
+> + * Return 0 on success, non-zero on error.
+> + */
+> +static int blk_pread_nonzeroes(BlockBackend *blk, hwaddr size, void *buf)
+> +{
+> +    int ret;
+> +    int64_t bytes, offset = 0;
+> +    BlockDriverState *bs = blk_bs(blk);
+> +
+> +    for (;;) {
+> +        bytes = MIN(size - offset, BDRV_REQUEST_MAX_SECTORS);
+> +        if (bytes <= 0) {
+> +            return 0;
+> +        }
+> +        ret = bdrv_block_status(bs, offset, bytes, &bytes, NULL, NULL);
+> +        if (ret < 0) {
+> +            return ret;
+> +        }
+> +        if (!(ret & BDRV_BLOCK_ZERO)) {
+> +            ret = bdrv_pread(bs->file, offset, bytes,
+> +                             (uint8_t *) buf + offset, 0);
+> +            if (ret < 0) {
+> +                return ret;
+> +            }
+> +        }
+> +        offset += bytes;
+> +    }
+> +}
+> +
+>   /*
+>    * Read the entire contents of @blk into @buf.
+>    * @blk's contents must be @size bytes, and @size must be at most
+> @@ -53,7 +87,7 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
+>        * block device and read only on demand.
+>        */
+>       assert(size <= BDRV_REQUEST_MAX_BYTES);
+> -    ret = blk_pread(blk, 0, size, buf, 0);
+> +    ret = blk_pread_nonzeroes(blk, size, buf);
+>       if (ret < 0) {
+>           error_setg_errno(errp, -ret, "can't read block backend");
+>           return false;

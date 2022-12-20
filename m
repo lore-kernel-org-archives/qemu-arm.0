@@ -1,199 +1,136 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4491139ejb;
-        Tue, 20 Dec 2022 09:04:26 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5c0FgbvzasHNwjkPVMncftBwHsvfidrXkA1GsvRdHCxSCyNluGf+hZpPDToV2Z8a+OI7u+
-X-Received: by 2002:a05:6000:d:b0:242:5dd7:8115 with SMTP id h13-20020a056000000d00b002425dd78115mr28218232wrx.64.1671555865935;
-        Tue, 20 Dec 2022 09:04:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671555865; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4678530ejb;
+        Tue, 20 Dec 2022 14:06:35 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvpn3woc0c6FbzyVTKhs0H5xlw/ohYZEs4+veLivs+1TVwfYeZG59xfG1LM46fUL03c5drs
+X-Received: by 2002:a05:600c:3b88:b0:3d3:5841:e8b4 with SMTP id n8-20020a05600c3b8800b003d35841e8b4mr6811496wms.35.1671573995619;
+        Tue, 20 Dec 2022 14:06:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671573995; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xt7ZcAHiHfRogXY0+kgyZthskYctlZ0i1RBsSSUm7dkxhwM5gsQLSW76XXvaH2q2uR
-         v1QlAP3iOFs/+uWRc03H/TKV2H9zU390XL3A4jFgZjaQapldYXX1LoYa8IhIW0AkBcFm
-         AHzTfMN5hbko0gqXynqFkPGkL2cxuMaQV0j8LvNGUFXOTcWSBbbqmOK6s1nxWVDCMwyg
-         9hMsQuzzTL7j76BvMs6CSymKWBldOKZ1XBHvpTyj6Qsb7FVa08NdtcebT17dZaWdRXOb
-         YUkeHI++QTqcMKwfMubabEm/+5ltuNQZLnHoTdaHKMSITYdXIv+eZWMdmESTKeXZdwx3
-         csIA==
+        b=AGLi7i0KaZjy6SkIBh3eB3nbIkCBdfJAmhCcnCgGlGzfcupzv1qk4MrCJlsQFW6OFG
+         mWzlCd3SwJBODcQZCt6lyO7drZl0Sx4aubQsrad12RImxu0xVN6ozKdENAfVGy3VQm3d
+         /H4IknlHm5RP93Rk6uu1eKc64GjBHFgN9naVUgbv8yEYY1tLUUQMiqWwNPC/8XYfFFRx
+         KvPMjk8YNtrmeDvN9dVeD8/IyqGPk43q3YXz2y82JLpF7juPiO4nBqQgbAKxxTOSshQH
+         G0veJq+rgKg8uRNhtvZpgzPMJF/JEl9n63EqkBEDWvgNcrIxKD2LQFGIyEnmPGDM6Z6a
+         OY+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=r3eJb2z71QFEx2OmuBiN3JM5Y0ciZXKOdBS/oBXrbcY=;
-        b=i/s/cIRkZLE/qjklaR86XkdiIPMOxWP6eBB8s173nS+XbjaHmWLgN+J6jGMUolT0Zr
-         sJZA01URiT8968Q6D820GeQudqToN/HqaALzYQOhVtIX2MbCid6qqGYUajax59ovMNT3
-         EJHUWFJn1eXasoiAg5QHba+zwr/aLuot5mGVO+Y8L9EwDoIBWxY63mqWFyHpHUbUuFU5
-         k+vkYqu5G9Ho/5FwLiHZ68CzoGaxnxNFOERwCCp6kOWTebyKouFfU+7yBe+uNG5gpoMX
-         SKiACeuk0bi+0mnn3xf4OzLs7h+9d7cxdLZ7FshbGX+xcbVvyQ9KMzArYLIJy0p5+5rs
-         7emg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=JEbhiLQ2GQcRGDL18XkLMZphLvwc1KZfcAacZO5hMYQ=;
+        b=uf9jPk8+fIOThFOrmO2xqWiWvMExO8HpeRn94wJCnqn8Iom/xTKNbF+WgqHn+gda4U
+         DN3UXF0QHscKwIyYhU7xcvmUssK8ASOBqVy0OTpaI6NxGxW/F2DT/2tqIrppueDYbZp7
+         5b/wtsE7ywSBwB3kEsXHd0m20xJ6BN1G9/mYD1ZCn08TsEMhluGvu9I1/5MUPvHGdLTn
+         L1DkoCXVPVKWPb3HyIDfFv/i0RzelzlFVusuq/Ej6lfV6G68VC3dTUwtDxeoW566Prsv
+         wXpLSthfYMCsPTXzY70YcLPMZi7FMbUoz5bwf/TMRRthZoXhs/jA803eLDo/IeYo+YsG
+         629g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
-Return-Path: <agraf@csgraf.de>
-Received: from zulu616.server4you.de (mail.csgraf.de. [85.25.223.15])
-        by mx.google.com with ESMTP id bs19-20020a056000071300b00241c0dcec4fsi9023874wrb.462.2022.12.20.09.04.25;
-        Tue, 20 Dec 2022 09:04:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) client-ip=85.25.223.15;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=eWoq0rrF;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id y5-20020a05600015c500b00241c5ec0d13si10513690wry.870.2022.12.20.14.06.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Dec 2022 14:06:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
-Received: from [192.168.106.127] (dynamic-095-114-015-034.95.114.pool.telefonica.de [95.114.15.34])
-	by csgraf.de (Postfix) with ESMTPSA id DA0256080220;
-	Tue, 20 Dec 2022 18:04:24 +0100 (CET)
-Message-ID: <601ba0ac-cbcd-50d4-c295-5cde4a4d6e97@csgraf.de>
-Date: Tue, 20 Dec 2022 18:04:24 +0100
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=eWoq0rrF;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 2051B4DC6B;
+	Tue, 20 Dec 2022 22:06:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1671573995; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=JEbhiLQ2GQcRGDL18XkLMZphLvwc1KZfcAacZO5hMYQ=;
+	b=eWoq0rrFocW378BztHhZ9/36aRCgrm02mucDkys7s9Z+TGoenXNkIBKf3RpOGbcvkhttb+
+	aX5CI/z0k66PzfsoVQYLboSb31JvuuqnJHXU33XxXXti3N90sOmr2pKfCdhwI3CaRSRPIJ
+	ngPk0x3UBR+4Z2mXX2SOazSeSPV/2EQ=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1671573995;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=JEbhiLQ2GQcRGDL18XkLMZphLvwc1KZfcAacZO5hMYQ=;
+	b=cHtnGp8bfaU4T+aiuafhnlg3kmaaDRvzjVStDKU5LcrQbabRj0QVsbgBSt70oEjWm/0+Bk
+	bspqNfZ5fwv7uGCQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 3D50813254;
+	Tue, 20 Dec 2022 22:06:32 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id iN7tAOgxomPwfAAAMHmgww
+	(envelope-from <farosas@suse.de>); Tue, 20 Dec 2022 22:06:32 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>
+Subject: [PATCH v2 1/5] target/arm: rename handle_semihosting to tcg_handle_semihosting
+Date: Tue, 20 Dec 2022 19:04:22 -0300
+Message-Id: <20221220220426.8827-2-farosas@suse.de>
+X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20221220220426.8827-1-farosas@suse.de>
+References: <20221220220426.8827-1-farosas@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.0
-Subject: Re: [PATCH 1/5] target/arm: only build psci for TCG
-Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, Claudio Fontana <cfontana@suse.de>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-References: <20221216212944.28229-2-farosas@suse.de>
- <459E39B4-44F5-41B2-A595-1B0DB5AD80F3@csgraf.de>
- <3355a215-dd7a-e80a-ca53-b0d65eb435b5@suse.de>
- <76c8912f-4fb7-118a-2105-efe08f343f77@csgraf.de>
- <ced115e9-6bdb-fdb6-818d-b77e27b9ecb1@suse.de> <87r0wv8vsa.fsf@suse.de>
- <92da4de4-b00b-096a-8dd9-f4f2f9696598@csgraf.de> <875ye6rxk7.fsf@suse.de>
-From: Alexander Graf <agraf@csgraf.de>
-In-Reply-To: <875ye6rxk7.fsf@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: MsBvD+xPKIgW
+Content-Transfer-Encoding: 8bit
+X-TUID: 1zfzBQqyhCIP
 
+From: Claudio Fontana <cfontana@suse.de>
 
-On 20.12.22 14:53, Fabiano Rosas wrote:
-> Alexander Graf <agraf@csgraf.de> writes:
->
->> Hey Fabiano,
->>
->> On 19.12.22 12:42, Fabiano Rosas wrote:
->>> Claudio Fontana <cfontana@suse.de> writes:
->>>
->>>> Ciao Alex,
->>>>
->>>> On 12/19/22 11:47, Alexander Graf wrote:
->>>>> Hey Claudio,
->>>>>
->>>>> On 19.12.22 09:37, Claudio Fontana wrote:
->>>>>> On 12/16/22 22:59, Alexander Graf wrote:
->>>>>>> Hi Claudio,
->>>>>>>
->>>>>>> If the PSCI implementation becomes TCG only, can we also move to a tcg accel directory? It slowly gets super confusing to keep track of which files are supposed to be generic target code and which ones TCG specific>
->>>>>>> Alex
->>>>>> Hi Alex, Fabiano, Peter and all,
->>>>>>
->>>>>> that was the plan but at the time of:
->>>>>>
->>>>>> https://lore.kernel.org/all/20210416162824.25131-1-cfontana@suse.de/
->>>>>>
->>>>>> Peter mentioned that HVF AArch64 might use that code too:
->>>>>>
->>>>>> https://lists.gnu.org/archive/html/qemu-devel/2021-03/msg00509.html
->>>>>>
->>>>>> so from v2 to v3 the series changed to not move the code under tcg/ , expecting HVF to be reusing that code "soon".
->>>>>>
->>>>>> I see that your hvf code in hvf/ implements psci, is there some plan to reuse pieces from the tcg implementation now?
->>>>> I originally reused the PSCI code in earlier versions of my hvf patch
->>>>> set, but then we realized that some functions like remote CPU reset are
->>>>> wired in a TCG specific view of the world with full target CPU register
->>>>> ownership. So if we want to actually share it, we'll need to abstract it
->>>>> up a level.
->>>>>
->>>>> Hence I'd suggest to move it to a TCG directory for now and then later
->>>>> move it back into a generic helper if we want / need to. The code just
->>>>> simply isn't generic yet.
->>>>>
->>>>> Or alternatively, you create a patch (set) to actually merge the 2
->>>>> implementations into a generic one again which then can live at a
->>>>> generic place :)
->>>>>
->>>>>
->>>>> Alex
->>>> Thanks for the clarification, I'll leave the choice up to Fabiano now, since he is working on the series currently :-)
->>>>
->>>> Ciao,
->>>>
->>>> Claudio
->>> Hello, thank you all for the comments.
->>>
->>> I like the idea of merging the two implementations. However, I won't get
->>> to it anytime soon. There's still ~70 patches in the original series
->>> that I need to understand, rebase and test, including the introduction
->>> of the tcg directory.
->>
->> Sure, I am definitely fine with leaving them separate for now as well :).
->>
->>
->>> I'd say we merge this as is now, since this patch has no
->>> dependencies. Later when I introduce the tcg directory I can move the
->>> code there along with the other tcg-only files. I'll take note to come
->>> back to the PSCI code as well.
->> I'm confused about the patch ordering :). Why is it easier to move the
->> psci.c compilation target from generic to an if(CONFIG_TCG) only to
->> later move it into a tcg/ directory?
-> It's a simple patch, so the overhead didn't cross my mind. But you are
-> right, this could go directly into tcg/ without having to put it under
-> CONFIG_TCG first.
+make it clearer from the name that this is a tcg-only function.
 
+Signed-off-by: Claudio Fontana <cfontana@suse.de>
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+This function moves elsewhere in the original series, but the name
+change doesn't need to wait.
 
-I'm sure more like this will follow, and it will be a lot easier on 
-everyone if the pattern is going to be "move tcg specific code to tcg/ 
-and leave generic code in the main directory".
+Originally from:
+[RFC v14 38/80] target/arm: rename handle_semihosting to tcg_handle_semihosting
+https://lore.kernel.org/r/20210416162824.25131-39-cfontana@suse.de
+---
+ target/arm/helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-
->
->> Wouldn't it be easier to create a
->> tcg/ directory from the start and just put it there?
-> I don't know about "from the start". At this point we cannot have a
-> single commit moving everything into the tcg/ directory because some
-> files still contain tcg + non-tcg code.
-
-
-Yes, the only thing the initial commit at the start would do is create 
-the directory and ninja config, pretty much nothing else. All follow-on 
-commits then split the currently entangled code into tcg/ once code is 
-clearly separate :).
-
-
-I believe this was also the approach Claudio took in his patch set last 
-year, and I find it very reasonable. It allows you to stop at any point 
-mid-way.
-
-
-> We would end up with several
-> commits moving files into tcg/ along the history, which I think results
-> in a poor experience when inspecting the log later on (git blame and so
-> on). So my idea was to split as much as I can upfront and only later
-> move everything into the directory.
-
-
-Quite the opposite: Please make sure to move everything slowly at a 
-digestible pace. There is no way you will get 100 patches in at once. 
-Make sure you can cut off at any point in between.
-
-What you basically want is to move from "target/arm is tcg+generic code" 
-to "target/arm is generic, target/arm/tcg is tcg code". You will be in a 
-transitional phase along the way whatever you do, so just make it 
-"target/arm is tcg+generic code, target/arm/tcg is tcg code" while 
-things are in flight and have a final commit that indicates the 
-conversion is done.
-
-
-> I'm also rebasing this series [1] from 2021, which means I'd rather have
-> small chunks of code moved under CONFIG_TCG that I can build-test with
-> --disable-tcg (even though the build doesn't finish, I can see the
-> number of errors going down), than to move non-tcg code into tcg/ and
-> then pull it out later like in the original series.
-
-
-I think we're saying the same thing. Please don't move non-tcg code into 
-tcg/. Just move files that are absolutely clearly TCG into tcg/ right 
-from the start. The psci.c is a good example for that. translate*.c and 
-op-helper.c would be another.
-
-
-Alex
-
-
-> 1- https://lore.kernel.org/r/20210416162824.25131-1-cfontana@suse.de
->
-> But hey, that's just my reasoning, no strong feelings about it.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index bac2ea62c4..fa741d5175 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10293,7 +10293,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+  * trapped to the hypervisor in KVM.
+  */
+ #ifdef CONFIG_TCG
+-static void handle_semihosting(CPUState *cs)
++static void tcg_handle_semihosting(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+@@ -10354,7 +10354,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+      */
+ #ifdef CONFIG_TCG
+     if (cs->exception_index == EXCP_SEMIHOST) {
+-        handle_semihosting(cs);
++        tcg_handle_semihosting(cs);
+         return;
+     }
+ #endif
+-- 
+2.35.3

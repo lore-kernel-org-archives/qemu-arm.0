@@ -1,73 +1,193 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id n13-20020a5d400d000000b00242269c8b8esm12286080wrp.25.2022.12.20.00.42.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Dec 2022 00:42:23 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id AD85A1FFB7;
-	Tue, 20 Dec 2022 08:42:22 +0000 (GMT)
-References: <20221116174749.65175-1-fcagnin@quarkslab.com>
- <20221116174749.65175-3-fcagnin@quarkslab.com>
- <CAFEAcA_QvfancWKj2hL3KxbyLm8FxkteSbgxvkF8QO119H7SNA@mail.gmail.com>
- <CAF8_6KkPDwe8-twtJEM3_HDuRVmxn25gJGDQVhRJF=DuA+fm3w@mail.gmail.com>
-User-agent: mu4e 1.9.7; emacs 29.0.60
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Francesco Cagnin <francesco.cagnin@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- mads@ynddal.dk, dirty@apple.com, qemu-arm@nongnu.org, agraf@csgraf.de,
- pbonzini@redhat.com, Francesco Cagnin <fcagnin@quarkslab.com>
-Subject: Re: [PATCH v2 2/3] hvf: implement guest debugging on Apple Silicon
- hosts
-Date: Tue, 20 Dec 2022 08:31:25 +0000
-In-reply-to: <CAF8_6KkPDwe8-twtJEM3_HDuRVmxn25gJGDQVhRJF=DuA+fm3w@mail.gmail.com>
-Message-ID: <871qouihzl.fsf@linaro.org>
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4153287ejb;
+        Tue, 20 Dec 2022 00:43:36 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5kLiZHTUrt9XC2ht1tOsSg3omUrUEW+UdObryxAyAcZofX/IGIOnwgmehZJ/Bcb1Yt4nFm
+X-Received: by 2002:a05:6214:459c:b0:4e2:1484:8150 with SMTP id op28-20020a056214459c00b004e214848150mr48003247qvb.19.1671525816575;
+        Tue, 20 Dec 2022 00:43:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671525816; cv=none;
+        d=google.com; s=arc-20160816;
+        b=fgLnYqNYzRDj15J6416XlkevOdzKOMPTlWdwoOaRGybQfVen7LknBe9Jb/NwM+BSQY
+         7GGTTr3qZ1hyqBd7q1G8KsMsIxpnkCH5LbPUmO/KEEqF+qM2ftK7Tzu0RWUEh2dNM+UN
+         VOzE448ktIRPEDDziKtlTUjL1LhFNEbg33o3HLyl9cYnlJ69qHV9cLoxTYq3RNjfWZ4G
+         N29nSrxPcZ5BzdJ59MCNL/EUMmzmmahmcJ3m2UPqKH7/mGBb37wVYs+aj7t9QL6NVn1+
+         X2ueI5aojD2R3gDji3VoHbc7Gw4yH5TakhblEgPzJI+SYzjatU2bIJoIpYvJMifwcC7o
+         CrkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=IQTYlT7DKteIN7LPObgobrwFgEFxgjatjVEatFARAE0=;
+        b=qm+uFhiKDZqXO35sXUGtVjE+Yvksb+DuaaardNovP32j1hRj7uOVVLoWjmJISj/Shn
+         GQQOZIZu6lOdeAwrmmiR4Q7BRbWEEs7v5mcPcUg8ZYxY99VyyENfg9nt0MXc8n9xOFpM
+         owTCWCgiKJaC78meSO6ucYsJPu87xEvvht6+VryMTf7lRSKxPWVqiSEItcD9ls9CFnHg
+         c4UK0Y3NvYSuJG00q3Gew34d9A4+FGGdPE0suOHEhbt8rxeo2J/snWlsEaxO9hxqYseW
+         qPmcyf6Rmr6fBXUt60w2MzxLLJKw//y4s33s0UiiePT6ye9/2EGK2Kn0vYRmlLzrQuyN
+         RnZA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LvgHJCue;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r12-20020ad4576c000000b004c6e387d48dsi5023078qvx.190.2022.12.20.00.43.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 20 Dec 2022 00:43:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LvgHJCue;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p7YDF-0003JW-Ku; Tue, 20 Dec 2022 03:43:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1p7YDA-0003IU-04
+ for qemu-devel@nongnu.org; Tue, 20 Dec 2022 03:42:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1p7YD8-0000du-8E
+ for qemu-devel@nongnu.org; Tue, 20 Dec 2022 03:42:55 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1671525772;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=IQTYlT7DKteIN7LPObgobrwFgEFxgjatjVEatFARAE0=;
+ b=LvgHJCueFHfsfsFheDdQslHhJGafD9Furx+tQF9bfrhv+/G0wZNL6edACJEM9HdW3OxTKL
+ OL5Z9XOiiveJdoYuU6z0h58MvBqaeHQksRi9boPleFB1QmmTFlHlWf3dhLwPYytpco+Z9e
+ itP1J5pnu8tgHTrG+UzR/g2ki54eQJw=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-668-l6acZj49OqqQwbBFeq3E4w-1; Tue, 20 Dec 2022 03:42:49 -0500
+X-MC-Unique: l6acZj49OqqQwbBFeq3E4w-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C129B1C08970;
+ Tue, 20 Dec 2022 08:42:48 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.110])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7B8E839D6D;
+ Tue, 20 Dec 2022 08:42:48 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id C719C18000B3; Tue, 20 Dec 2022 09:42:46 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Hanna Reitz <hreitz@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ John Snow <jsnow@redhat.com>, Kashyap Chamarthy <kchamart@redhat.com>,
+ Xiang Zheng <zhengxiang9@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH v2] pflash: Only read non-zero parts of backend image
+Date: Tue, 20 Dec 2022 09:42:46 +0100
+Message-Id: <20221220084246.1984871-1-kraxel@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: CXzgQ6U+62tj
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YlCCr1kgkPoH
 
+From: Xiang Zheng <zhengxiang9@huawei.com>
 
-Francesco Cagnin <francesco.cagnin@gmail.com> writes:
+Currently we fill the VIRT_FLASH memory space with two 64MB NOR images
+when using persistent UEFI variables on virt board. Actually we only use
+a very small(non-zero) part of the memory while the rest significant
+large(zero) part of memory is wasted.
 
-> Hi,
-> indeed, the patch doesn't keep separate copies of debug registers and
-> just directly sets cp15.* values, as I was not aware of the issue=E2=80=
-=94thanks
-> for the detailed explanation.
->
-> I remain available to implement the required fixes, but I'd need
-> some guidance on how to proceed. Thanks,
+So this patch checks the block status and only writes the non-zero part
+into memory. This requires pflash devices to use sparse files for
+backends.
 
-In the KVM world we put of the final setting of the registers until
-right before the context switch. I guess the equivalent in HVF would be
-to modify hvf_put_registers() and make the decision about if to use the
-QEMU supplied debug registers or the env values there.
+Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 
-Something like:
+[ kraxel: rebased to latest master ]
 
-    for (i =3D 0; i < ARRAY_SIZE(hvf_sreg_match); i++) {
-        if (hvf_sreg_match[i].cp_idx =3D=3D -1) {
-            continue;
-        }
-        if (hvf_sref_match[i].can_override && should_override) {
-            val =3D get_from_debug(...)=20=20=20=20=20=20=20=20
-        } else {
-            val =3D arm_cpu->cpreg_values[hvf_sreg_match[i].cp_idx];
-        }
-        ret =3D hv_vcpu_set_sys_reg(cpu->hvf->fd, hvf_sreg_match[i].reg, va=
-l);
-        assert_hvf_ok(ret);
-    }
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/block/block.c | 36 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 35 insertions(+), 1 deletion(-)
 
-You will of course have to ensure the get_registers doesn't
-inadvertently splat the env values with what we have just written here.
+diff --git a/hw/block/block.c b/hw/block/block.c
+index f9c4fe67673b..142ebe4267e4 100644
+--- a/hw/block/block.c
++++ b/hw/block/block.c
+@@ -14,6 +14,40 @@
+ #include "qapi/error.h"
+ #include "qapi/qapi-types-block.h"
+ 
++/*
++ * Read the non-zeroes parts of @blk into @buf
++ * Reading all of the @blk is expensive if the zeroes parts of @blk
++ * is large enough. Therefore check the block status and only write
++ * the non-zeroes block into @buf.
++ *
++ * Return 0 on success, non-zero on error.
++ */
++static int blk_pread_nonzeroes(BlockBackend *blk, hwaddr size, void *buf)
++{
++    int ret;
++    int64_t bytes, offset = 0;
++    BlockDriverState *bs = blk_bs(blk);
++
++    for (;;) {
++        bytes = MIN(size - offset, BDRV_REQUEST_MAX_SECTORS);
++        if (bytes <= 0) {
++            return 0;
++        }
++        ret = bdrv_block_status(bs, offset, bytes, &bytes, NULL, NULL);
++        if (ret < 0) {
++            return ret;
++        }
++        if (!(ret & BDRV_BLOCK_ZERO)) {
++            ret = bdrv_pread(bs->file, offset, bytes,
++                             (uint8_t *) buf + offset, 0);
++            if (ret < 0) {
++                return ret;
++            }
++        }
++        offset += bytes;
++    }
++}
++
+ /*
+  * Read the entire contents of @blk into @buf.
+  * @blk's contents must be @size bytes, and @size must be at most
+@@ -53,7 +87,7 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
+      * block device and read only on demand.
+      */
+     assert(size <= BDRV_REQUEST_MAX_BYTES);
+-    ret = blk_pread(blk, 0, size, buf, 0);
++    ret = blk_pread_nonzeroes(blk, size, buf);
+     if (ret < 0) {
+         error_setg_errno(errp, -ret, "can't read block backend");
+         return false;
+-- 
+2.38.1
 
-I'm not super familiar with the HVF architecture but maybe its possible
-to do directly call hv_vcpu_set_sys_reg steps in your current
-update_guest_debug function instead of copying to env and then and just
-skip setting/getting them again in the final put registers just before
-you exec.
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro

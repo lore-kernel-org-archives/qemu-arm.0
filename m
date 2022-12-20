@@ -1,129 +1,119 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3906341ejb;
-        Mon, 19 Dec 2022 15:59:59 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf4XXvpEYt33l8OjToA9QtP3kamRALdOGcOeNHRXAehnjThxJjCa+SuvsRCkAhoug8ulDw0t
-X-Received: by 2002:a05:6214:1872:b0:4c7:cf4:f424 with SMTP id eh18-20020a056214187200b004c70cf4f424mr49110611qvb.35.1671494399004;
-        Mon, 19 Dec 2022 15:59:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671494398; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4226126ejb;
+        Tue, 20 Dec 2022 03:03:58 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuGZJ0BIZ++HMRoNEwtHXT2AhUA1U2QsqHqdxR0pC8LwM2FPofL7twkaviivGP+UdwNFHjy
+X-Received: by 2002:a67:eb89:0:b0:3ba:cda:ca14 with SMTP id e9-20020a67eb89000000b003ba0cdaca14mr5940102vso.10.1671534238519;
+        Tue, 20 Dec 2022 03:03:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671534238; cv=none;
         d=google.com; s=arc-20160816;
-        b=x7x3N8BP1sbYD85gdA2wygWKtIpBiSqYHbDDhmKtUuL2PvNR8sYHPqRShhICtInnS3
-         acZgLD8NUCd5+GC/JwL2KxIlLgXuk/8eg4XL79gOgm+cttKorqMi+qXMLevXba89vzvZ
-         M2hiBzTZgFVPT+NLUD/MZCEvL3TuXWSwGKoB5KulMvJz8eLVuICVn5k++IlszO47ZKsJ
-         OV5VcNUYZo6wiXq5r7fsOI/+D5sAeFn47SGxz23PYG6APIo0GmyyKgjNr09QibKc4K+W
-         2QYISJ42/qPFKQ9v2G+B332yFOnbaGmeCvJnw0f3ybbG4rjPmhMLeQZ+6zMylfg2SKK5
-         AJPA==
+        b=lS0M4jQPd572ZiW9sL7KeHx6nnvcQiCaZHUYLv4j3iSCuoIwFXOuS0kYZjPY00I9eh
+         lbPSzvPSP9zucCGitegV5eAXjrUGlDj+ymE+ywh7XkoHRGFZy8BPEQQ8GpQ6E3mn4Ttt
+         cZ17MnjhQ8EeAKKChZoST1QX6Ncsr3fE1eGTK3IVEAuq7qtx5ny8iQSB3DT4TcFXb7Mn
+         CeViuxhewRaJW8d1DxqNFbqMiPTzNSOlFGgGpfvJrbfxpy+H6e+nCekMgAZrAN6DvE/i
+         HblLpj1lEE/vn+SKBc+wOzSLENWIAqea2pGpGnGVMHlT4YMdYtLC4Wa30TtX1Lu6csXg
+         q6zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=p12dna6la/ZrjbjsGV+3pNrOH4aMS2qAiukyG+mK6Es=;
-        b=obu0tbei3DuQ+m0KEf2sYYFEJhG5Blx40uWTyMZyJntuCtEupdwB/iReFU0E03AMTw
-         36gAeSnMAEFEwW5KHN39mkQuMK+gUQMzhsgebqZaLtqhaTypq4asJUgKSQe0DNDHZVsC
-         MrtHTDGchD9g/9kKzVP1qk8EW1VefJTYGrqbrXFNO18+khfaNspo/vLXWQT6IUlJ9BaJ
-         7/qzRwDENUs04dPcah19zqeNozcuor9RUaOrD8+1y5X/x8T9M6dq3WsUThXe9pWTDD8e
-         aGit6GX24WrHEmwrBB6Dt2pqfMdHpQguseyCQau5qNO1Z4k3wsVKt+zKmtytGy0fwcIq
-         X25g==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=fPmO79giYZzgVoPI/GK7FFkiLhjSBTX80hRxj5reGpE=;
+        b=b4T01VqHJSMVnXCXBgCz3KU8snZcM5MhYhuZ7TOvNxBbZIQ6f882RO8alALrCAjXjc
+         sHlpoROk5h3A/ybDnM6PFFvlrc2yGkuqIW1U0aivIDi/JhI4EFa33mPujgxYj98G3L0f
+         NG6z/8LBZiKdWh74VLRVxeN5/qioUdnGkS0FpX7hP25kuZaG9J6ufPUARi1uCyrnfuck
+         rb6ZeLB/Cg6JRtZDe6KhbNWI+2+OWETj8HosSnObA1ESfMLxXN9lqgKFnDz3UPVLQ4I7
+         vBUlZDx+h7mTbNXxbiXl7siP0Fe8k6uqA7ozipGzpibzbTAH41ZUa426Oyu2Z7rSC0jO
+         xK7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LI0wQAa2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JtQt8o0U;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id if10-20020a0562141c4a00b004bba84b68f0si4572465qvb.131.2022.12.19.15.59.58
+        by mx.google.com with ESMTPS id f10-20020a05620a408a00b006cfa81f5df9si4013983qko.103.2022.12.20.03.03.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Dec 2022 15:59:58 -0800 (PST)
+        Tue, 20 Dec 2022 03:03:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LI0wQAa2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JtQt8o0U;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p7Q2o-0002di-K6; Mon, 19 Dec 2022 18:59:42 -0500
+	id 1p7aPB-0000ds-3q; Tue, 20 Dec 2022 06:03:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1p7Q2n-0002cs-5R
- for qemu-arm@nongnu.org; Mon, 19 Dec 2022 18:59:41 -0500
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7aP0-0000Yw-AL
+ for qemu-arm@nongnu.org; Tue, 20 Dec 2022 06:03:19 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1p7Q2l-0004Ir-JW
- for qemu-arm@nongnu.org; Mon, 19 Dec 2022 18:59:40 -0500
-Received: by mail-pj1-x102d.google.com with SMTP id fy4so10759216pjb.0
- for <qemu-arm@nongnu.org>; Mon, 19 Dec 2022 15:59:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7aOx-0002Fa-JA
+ for qemu-arm@nongnu.org; Tue, 20 Dec 2022 06:03:17 -0500
+Received: by mail-wr1-x430.google.com with SMTP id a17so10204097wrt.11
+ for <qemu-arm@nongnu.org>; Tue, 20 Dec 2022 03:03:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=p12dna6la/ZrjbjsGV+3pNrOH4aMS2qAiukyG+mK6Es=;
- b=LI0wQAa2CB5cxZxTFcikKBnwumbK0QqfILI2RV6LHnNz73Pqzx4Vis4EFWWJpxYknG
- W+gDCqSi84Ij9ymmr+npnrD/Pm5/jytJiQC9nWhxMPaLVe85vtmQRU19MvxAipVif5QQ
- QLMnV+GILpqpvTPUXjllAYIZomXn8tsDWS/hZRXrXAYWovewkS0US93jc5dO8ZHT03zK
- XUT6Tcf25Bt7sZVP96R+KeWZlSUeGktqWwccH3jdYTJGA3WhpHE2KcrCuVSCJRS/U6c6
- b765OOOk5Y4Fxw7HyMT00g38GgqrA7Ea7u/MlQEg7xvfGDNCzJfC8KhGl6nQd9Qd8g2R
- gCBA==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=fPmO79giYZzgVoPI/GK7FFkiLhjSBTX80hRxj5reGpE=;
+ b=JtQt8o0Uvfl+5a8lKDZ0G5urocXjf7pdOmapsI+uQjX20JwkQQNDHpTQKbBUVvSBVL
+ y+0g2aA61s98h3zN2o4k+iE5QlxSWSDTTcgJlwu9z8DymYWYT6goGlMVTGxCu7QFCahp
+ SQ2ci0Ml0Snldje5/ePa7bwaJuLajKE8LsNkIgbbqSh5pXGwjFhUjQZYjvPZ3CgN/whl
+ 7iPuQlpvz2dWZOOBJFsGQEGGAzhs9oqCBtMmF9rkBulnsbPA7TB+ZxSTR9vICVdF1eJT
+ VoOMDpK5fsV4RHIR9TiD2760UIGY8Ef6lYHGTZpflXZaKIaBHtOHjHVo8FQFBbSVXusF
+ YRDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=p12dna6la/ZrjbjsGV+3pNrOH4aMS2qAiukyG+mK6Es=;
- b=C4tKNw6z4GMVPeKasM4MfUUFCTipS363v1LYB90v5aWVaudOY6DHyG+nDS28coC9iG
- 43joBai0brtPdTYUTgMqOIRhpnT+BgunUHOWfGtDFarwnCNLPSPujd8k9o61veyATvZm
- kEXFStTxVqSkeV+zyUnON5ImKcxmZw1Dm8T5qTiwMXBA5p8CquoM7u0x2NXoVq4i2+xL
- bTqKJQyAWfBT5F9vz6Rihlngy5B+ClFMf+NQe/rto/qH/pIDp253m41CWx4WdB52digO
- aHpVMBv3s1eflqopKv7K9WUyzt4WSlpLHvL9LzNYxiecNv6uXYbh2lJfr1nBnoV+PVK3
- csRw==
-X-Gm-Message-State: AFqh2kqZj2xbU1ENyN31S9ODPBC6VYxaLn1JccdplaGUacvZxyYbiuMZ
- 5XZbPjwT9VfYowlG+iaW/9e8rw==
-X-Received: by 2002:a17:902:b781:b0:191:117e:25d with SMTP id
- e1-20020a170902b78100b00191117e025dmr10322071pls.19.1671494377843; 
- Mon, 19 Dec 2022 15:59:37 -0800 (PST)
-Received: from ?IPV6:2602:47:d48c:8101:b343:d344:137b:e318?
- ([2602:47:d48c:8101:b343:d344:137b:e318])
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=fPmO79giYZzgVoPI/GK7FFkiLhjSBTX80hRxj5reGpE=;
+ b=MDrnn+OKDTHnfGjx1pV1OOcL+PL5Uzew19akQ4IXZwHJD2856lN9WLaDeQNH5kOLyY
+ WhucL47lnSYV4WvRvGkZ94/yW3bFNMRrIlQPhuRFgtNBb6NYI+wMhnxX7reclMvnbzi5
+ 3igTMEzFJYC40Auo5jS0iAIXxsVKwOsw12wRzj/Fp1k5zXD+Rz2kWD1goqk89CQcq3Nb
+ vogAF64Fc2D8L5kF0f/rx79iJrgfIyLsrLA/SNHatpFCh61TpYTDOnvHd6+zflzMbk75
+ hMHrObaPkeZwodlSxAZMUh1Qe7jLZ7rz7t/+8CRvogt9929kqTt/sIxAUFIHsfJbU0DV
+ VE8w==
+X-Gm-Message-State: ANoB5pl/qrsU48gXk1EqpEai3heyoxyfy40WutL0V9NAyBwr2IhXC81g
+ n1gPM/rpIIwCxGVtRqGeY+qZMg==
+X-Received: by 2002:a05:6000:15cb:b0:242:fa3:3825 with SMTP id
+ y11-20020a05600015cb00b002420fa33825mr35987048wry.37.1671534193513; 
+ Tue, 20 Dec 2022 03:03:13 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- ix6-20020a170902f80600b00190cabbe35fsm7760135plb.98.2022.12.19.15.59.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Dec 2022 15:59:37 -0800 (PST)
-Message-ID: <b1a814ff-c3d8-51f2-d0d0-d67dc53ac415@linaro.org>
-Date: Mon, 19 Dec 2022 15:59:35 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 4/4] target/ppc: Restrict 'qapi-commands-machine.h' to
- system emulation
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, Huacai Chen
- <chenhuacai@kernel.org>, qemu-arm@nongnu.org,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ f2-20020a5d50c2000000b002362f6fcaf5sm12315814wrt.48.2022.12.20.03.03.11
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 20 Dec 2022 03:03:12 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Xiaojuan Yang <yangxiaojuan@loongson.cn>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Greg Kurz <groug@kaod.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Greg Kurz <groug@kaod.org>,
- Song Gao <gaosong@loongson.cn>
-References: <20221219211034.70491-1-philmd@linaro.org>
- <20221219211034.70491-5-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20221219211034.70491-5-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ Aurelien Jarno <aurelien@aurel32.net>, Song Gao <gaosong@loongson.cn>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-arm@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH v2 0/5] target: Restrict 'qapi-commands-machine.h' to system
+ emulation
+Date: Tue, 20 Dec 2022 12:03:05 +0100
+Message-Id: <20221220110310.8656-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.149,
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,25 +128,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nA9Uux/aq77I
+X-TUID: nrYPCz3CIX1A
 
-On 12/19/22 13:10, Philippe Mathieu-Daudé wrote:
-> Since commit a0e61807a3 ("qapi: Remove QMP events and commands from
-> user-mode builds") we don't generate the "qapi-commands-machine.h"
-> header in a user-emulation-only build.
-> 
-> Move the QMP functions from cpu_init.c (which is always compiled) to
-> monitor.c (which is only compiled when system-emulation is selected).
-> Note ppc_cpu_class_by_name() is used by both file units, so we expose
-> its prototype in "cpu-qom.h".
-> 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   target/ppc/cpu-qom.h  |  2 ++
->   target/ppc/cpu_init.c | 48 +----------------------------------------
->   target/ppc/monitor.c  | 50 ++++++++++++++++++++++++++++++++++++++++++-
->   3 files changed, 52 insertions(+), 48 deletions(-)
+All series reviewed, can patches be picked by corresponding
+maintainers?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+The "qapi-commands-machine.h" header is not generated in user-only
+emulation. This series removes its use in user-emu code by moving
+the QMP code depending on this header into a separate sysemu unit.
 
-r~
+Since v1:
+- renamed cpu-monitor.c -> monitor.c on loongarch
+
+Philippe Mathieu-Daude (1):
+  target/i386: Restrict 'qapi-commands-machine.h' to system emulation
+
+Philippe Mathieu-Daudé (4):
+  target/arm: Restrict 'qapi-commands-machine.h' to system emulation
+  target/loongarch: Restrict 'qapi-commands-machine.h' to system
+    emulation
+  target/mips: Restrict 'qapi-commands-machine.h' to system emulation
+  target/ppc: Restrict 'qapi-commands-machine.h' to system emulation
+
+ target/arm/helper.c            | 29 -------------
+ target/arm/m_helper.c          |  1 -
+ target/arm/monitor.c           | 28 +++++++++++++
+ target/i386/cpu.c              | 74 ++++++++++++++++++----------------
+ target/loongarch/cpu.c         | 27 -------------
+ target/loongarch/meson.build   |  1 +
+ target/loongarch/monitor.c     | 37 +++++++++++++++++
+ target/mips/cpu.c              | 29 -------------
+ target/mips/sysemu/meson.build |  1 +
+ target/mips/sysemu/monitor.c   | 39 ++++++++++++++++++
+ target/ppc/cpu-qom.h           |  2 +
+ target/ppc/cpu_init.c          | 48 +---------------------
+ target/ppc/monitor.c           | 50 ++++++++++++++++++++++-
+ 13 files changed, 197 insertions(+), 169 deletions(-)
+ create mode 100644 target/loongarch/monitor.c
+ create mode 100644 target/mips/sysemu/monitor.c
+
+-- 
+2.38.1
+

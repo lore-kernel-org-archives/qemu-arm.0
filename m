@@ -1,200 +1,125 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4555429ejb;
-        Tue, 20 Dec 2022 10:33:33 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsAaWyswEUXGqqWMLohTT85tycDmNRmikHSMPfTSRQpaTfK4f8rY0nMdrdW0TngDZMv4+A/
-X-Received: by 2002:a05:6214:3787:b0:4f3:7d92:13a9 with SMTP id ni7-20020a056214378700b004f37d9213a9mr27670553qvb.15.1671561212873;
-        Tue, 20 Dec 2022 10:33:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671561212; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4678489ejb;
+        Tue, 20 Dec 2022 14:06:32 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXs7FqwEBY3QpuDa5uIwsV+sMT4F+D28kktIIExnjINiPqGxnFUpAVFJdNft14aw7TLT+U8Z
+X-Received: by 2002:adf:ef09:0:b0:242:7eb8:37bf with SMTP id e9-20020adfef09000000b002427eb837bfmr2391831wro.32.1671573992483;
+        Tue, 20 Dec 2022 14:06:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671573992; cv=none;
         d=google.com; s=arc-20160816;
-        b=qx6d6uUZb4ntx+RvvL13YtSvOwdGjp1b82ovCKcPwRHbqLirzSJoqcGexGsQjW6u9v
-         HU4Kn458hlmuGDeBe11vr046sHfq+uKgqUaLTw0nB+cu8uSC5wZd0/G8WE95G7CIykAY
-         g11QndZ8eOW7ZKpsf01wuvtEk0i4llxv0WFswb93x34eOHA4Xoq9muKlzZkXtUDz6Y0Q
-         BR6Kao5jG1WG0YomZgQBRt1q2vdDT7zLX1zruKQ0F33CW+VK8fpXyakYdb1VkA+7szxD
-         gtZP7jkAeTLXAUXk5RlxCDuTAqXhsT1klyigBMjlOD68QP3UU8EbFH0qBqoLF59V8wpL
-         vRpA==
+        b=BLpk9VurmnvL/AHC3pi5/Khj6a+FkPy42S9MGxktWD4X1+fedXYgdX4WSvFmhKPx9q
+         Lpbh+RKAsKB0cIWdJNKIq+7lDboNg+HzfVKARWesHkBjgWvQYWPJEvAbdlTSpGNQmqu4
+         Py1FtiwhUzIBbD8KmnVtMVIjFeW6o3MP7gxc0HcjuTj2SGH91Vniyn6dyjioIiSnD9tL
+         WVyilwQmjODhlheCj4MGDMgg4N6K+FTcLIXs0SOPdp913RL/pPgG/p2fiLv3BQlsg/zV
+         J1RMLXj+VPHpnNrCt3elKrkcEcobtdMBUxhhOQMwRSSCXC9VwIk1c6M5pdWsaL6aTzk2
+         F5+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=mysGEuWDZ/+HJ99Xg+GAHX/L7Ka3JyO+DGFpjgaPyU4=;
-        b=Xstg9Rl1RrBzvyegCByBVDRbdZCEuZDQHxPKG/37oNFTnD6rLwe+OMY+RDdhAEyT4W
-         fS93IWMD9JFR6cEjHa9WnsJXczJ53+1DNkrBSlh8y03ohIczgLp+q7LS+QvOnNQ5mNkJ
-         FNkAbVFTfqYyBiZxHlwOe84PpB01BgR33ayaTT4ciPobKj/n7/c981CcpaGnkKSa4nUU
-         ZtPfr3MF5edPb4H880dthW3L+dAnBxh0HCUqY17WRBCtzg7m0+MV1UPfM9MrDEEiCogN
-         hPxm03z80a/dfk2paOf5ggw5AkxJNKlBrfebOM416jG9ZNyZSUEfFa3KTyMQx76JlCYt
-         lxaQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature:dkim-signature;
+        bh=7OdQM/8eRsSAwXEtAVdCRrBz0+E30cH0z5yS4phLJTE=;
+        b=ADUELhU28THycunsjHCyGlrxZ1ZehCLUk9VeNPliHCTMLIiw+OmIivAgXacW7cH5k7
+         0axHYwfsCFZSpBWfrLW/GGQGV+uDHb5dyh+xA7FXmyl5BW3Ac1jG4Njf5olKk3TcD/XV
+         91+Ne2sei7GouRC95VLwETvFMgVIfCZMsSS1UKCF8G3izKHzcgMks6aTSbUDBbIbrQuj
+         nTsZD/AkO1+QhV0CP2IoiubKpuyYTHShipTxwsiej7SweF0Mw+dWxg0urwQymfXGQ3Mr
+         P+g+Vv1YXCAvoN6SyvcWHxoCS1zkOqvtFRglMwG2aG74uN76nhv/58yCZBaQ9hLOtFDf
+         ZWUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jp11-20020ad45f8b000000b004c71609b11esi5482092qvb.137.2022.12.20.10.33.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Dec 2022 10:33:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=pD0XT3FB;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=p4F1qhb0;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id b14-20020adfd1ce000000b00242743e1e16si8992911wrd.694.2022.12.20.14.06.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Dec 2022 14:06:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p7gPG-0001Mi-US; Tue, 20 Dec 2022 12:27:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1p7gPA-0001LD-FR; Tue, 20 Dec 2022 12:27:52 -0500
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1p7gP7-00057f-9y; Tue, 20 Dec 2022 12:27:52 -0500
-Received: (Authenticated sender: jcd@tribudubois.net)
- by mail.gandi.net (Postfix) with ESMTPSA id 38767E0005;
- Tue, 20 Dec 2022 17:27:45 +0000 (UTC)
-From: Jean-Christophe Dubois <jcd@tribudubois.net>
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=pD0XT3FB;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=p4F1qhb0;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id C220476A43;
+	Tue, 20 Dec 2022 22:06:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1671573991; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:  content-transfer-encoding:content-transfer-encoding;
+	bh=7OdQM/8eRsSAwXEtAVdCRrBz0+E30cH0z5yS4phLJTE=;
+	b=pD0XT3FBoobifDtYiu7iu9XtyqQz40T95IsZi+hHTa5zy9eVmw1JWD6hCQFG3ZVftET4Tu
+	YaXIPHi/zmAzf9MfVS3fpx8l0lAKTRuB+E63vR6EEwKVU1jhC256/9kbh4yk9eznFEHHRc
+	fCYtZFmmvAbLgMy8f+XM2OF463is5Go=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1671573991;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:  content-transfer-encoding:content-transfer-encoding;
+	bh=7OdQM/8eRsSAwXEtAVdCRrBz0+E30cH0z5yS4phLJTE=;
+	b=p4F1qhb0sWkiWNr576P6IaGybZsIyzvr5fB18LqwMHHaq0Hksn8SoH5kMT8i3Eek5mzW9g
+	Jjnq9VrdOMIBJ6CQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id DC98C13254;
+	Tue, 20 Dec 2022 22:06:28 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id 75yLJ+QxomPwfAAAMHmgww
+	(envelope-from <farosas@suse.de>); Tue, 20 Dec 2022 22:06:28 +0000
+From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
-	qemu-arm@nongnu.org
-Subject: [PATCH] i.MX6UL: Add a specific GPT timer instance for the i.MX6UL
-Date: Tue, 20 Dec 2022 18:27:43 +0100
-Message-ID: <0f5e2f5b92a72c2d96212d09c7d96f84d855e12c.1671548388.git.jcd@tribudubois.net>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1671548388.git.jcd@tribudubois.net>
-References: <cover.1671548388.git.jcd@tribudubois.net>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>
+Subject: [PATCH v2 0/5] target/arm: Some CONFIG_TCG code movement
+Date: Tue, 20 Dec 2022 19:04:21 -0300
+Message-Id: <20221220220426.8827-1-farosas@suse.de>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=217.70.183.196; envelope-from=jcd@tribudubois.net;
- helo=relay4-d.mail.gandi.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FcoDHoIJCV9M
-Message-ID: <20221220172743.tnreolUf1FeC6nzSZSCOgoo3jaS7HoQUvN7L6ynkPJM@z>
+X-TUID: 0wuRllTBgojL
 
-The i.MX6UL doesn't support CLK_HIGH ou CLK_HIGH_DIV clock source.
+since v1:
+- patch 1: dropped. I will include it in the next series;
 
-Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
----
- hw/arm/fsl-imx6ul.c        |  2 +-
- hw/misc/imx6ul_ccm.c       |  6 ------
- hw/timer/imx_gpt.c         | 25 +++++++++++++++++++++++++
- include/hw/timer/imx_gpt.h |  1 +
- 4 files changed, 27 insertions(+), 7 deletions(-)
+- patch 3: tcg_handle_semihosting does not need tcg_enabled, only
+  CONFIG_TCG;
 
-diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-index f189712329..d88d6cc1c5 100644
---- a/hw/arm/fsl-imx6ul.c
-+++ b/hw/arm/fsl-imx6ul.c
-@@ -81,7 +81,7 @@ static void fsl_imx6ul_init(Object *obj)
-      */
-     for (i = 0; i < FSL_IMX6UL_NUM_GPTS; i++) {
-         snprintf(name, NAME_SIZE, "gpt%d", i);
--        object_initialize_child(obj, name, &s->gpt[i], TYPE_IMX7_GPT);
-+        object_initialize_child(obj, name, &s->gpt[i], TYPE_IMX6UL_GPT);
-     }
- 
-     /*
-diff --git a/hw/misc/imx6ul_ccm.c b/hw/misc/imx6ul_ccm.c
-index a65d031455..e01bb68ac7 100644
---- a/hw/misc/imx6ul_ccm.c
-+++ b/hw/misc/imx6ul_ccm.c
-@@ -522,12 +522,6 @@ static uint32_t imx6ul_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
-     case CLK_32k:
-         freq = CKIL_FREQ;
-         break;
--    case CLK_HIGH:
--        freq = CKIH_FREQ;
--        break;
--    case CLK_HIGH_DIV:
--        freq = CKIH_FREQ / 8;
--        break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: unsupported clock %d\n",
-                       TYPE_IMX6UL_CCM, __func__, clock);
-diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
-index 80b8302639..7222b1b387 100644
---- a/hw/timer/imx_gpt.c
-+++ b/hw/timer/imx_gpt.c
-@@ -115,6 +115,17 @@ static const IMXClk imx6_gpt_clocks[] = {
-     CLK_HIGH,      /* 111 reference clock */
- };
- 
-+static const IMXClk imx6ul_gpt_clocks[] = {
-+    CLK_NONE,      /* 000 No clock source */
-+    CLK_IPG,       /* 001 ipg_clk, 532MHz*/
-+    CLK_IPG_HIGH,  /* 010 ipg_clk_highfreq */
-+    CLK_EXT,       /* 011 External clock */
-+    CLK_32k,       /* 100 ipg_clk_32k */
-+    CLK_NONE,      /* 101 not defined */
-+    CLK_NONE,      /* 110 not defined */
-+    CLK_NONE,      /* 111 not defined */
-+};
-+
- static const IMXClk imx7_gpt_clocks[] = {
-     CLK_NONE,      /* 000 No clock source */
-     CLK_IPG,       /* 001 ipg_clk, 532MHz*/
-@@ -539,6 +550,13 @@ static void imx6_gpt_init(Object *obj)
-     s->clocks = imx6_gpt_clocks;
- }
- 
-+static void imx6ul_gpt_init(Object *obj)
-+{
-+    IMXGPTState *s = IMX_GPT(obj);
-+
-+    s->clocks = imx6ul_gpt_clocks;
-+}
-+
- static void imx7_gpt_init(Object *obj)
- {
-     IMXGPTState *s = IMX_GPT(obj);
-@@ -566,6 +584,12 @@ static const TypeInfo imx6_gpt_info = {
-     .instance_init = imx6_gpt_init,
- };
- 
-+static const TypeInfo imx6ul_gpt_info = {
-+    .name = TYPE_IMX6UL_GPT,
-+    .parent = TYPE_IMX25_GPT,
-+    .instance_init = imx6ul_gpt_init,
-+};
-+
- static const TypeInfo imx7_gpt_info = {
-     .name = TYPE_IMX7_GPT,
-     .parent = TYPE_IMX25_GPT,
-@@ -577,6 +601,7 @@ static void imx_gpt_register_types(void)
-     type_register_static(&imx25_gpt_info);
-     type_register_static(&imx31_gpt_info);
-     type_register_static(&imx6_gpt_info);
-+    type_register_static(&imx6ul_gpt_info);
-     type_register_static(&imx7_gpt_info);
- }
- 
-diff --git a/include/hw/timer/imx_gpt.h b/include/hw/timer/imx_gpt.h
-index ff5c8a351a..5a1230da35 100644
---- a/include/hw/timer/imx_gpt.h
-+++ b/include/hw/timer/imx_gpt.h
-@@ -78,6 +78,7 @@
- #define TYPE_IMX25_GPT "imx25.gpt"
- #define TYPE_IMX31_GPT "imx31.gpt"
- #define TYPE_IMX6_GPT "imx6.gpt"
-+#define TYPE_IMX6UL_GPT "imx6ul.gpt"
- #define TYPE_IMX7_GPT "imx7.gpt"
- 
- #define TYPE_IMX_GPT TYPE_IMX25_GPT
+- patch 4 (new): moved alignment check and updated comment.
+
+v1:
+https://lore.kernel.org/r/20221216212944.28229-1-farosas@suse.de
+
+Hi,
+
+This is the second round of rebasing the patches from:
+https://lore.kernel.org/r/20210416162824.25131-1-cfontana@suse.de
+
+These are the simpler ones that move code under
+CONFIG_TCG/tcg_enabled. No new directories or files.
+
+Claudio Fontana (4):
+  target/arm: rename handle_semihosting to tcg_handle_semihosting
+  target/arm: wrap psci call with tcg_enabled
+  target/arm: wrap call to aarch64_sve_change_el in tcg_enabled()
+  target/arm: only perform TCG cpu and machine inits if TCG enabled
+
+Fabiano Rosas (1):
+  target/arm: Move PC alignment check
+
+ target/arm/cpu.c     | 31 ++++++++++++++----------
+ target/arm/helper.c  | 19 ++++++++-------
+ target/arm/kvm.c     | 18 +++++++-------
+ target/arm/kvm_arm.h |  3 +--
+ target/arm/machine.c | 57 +++++++++++++++++++++++++-------------------
+ 5 files changed, 71 insertions(+), 57 deletions(-)
+
 -- 
-2.34.1
-
+2.35.3

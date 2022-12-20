@@ -1,75 +1,73 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4552444ejb;
-        Tue, 20 Dec 2022 10:29:25 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf5Hnd/apyzqncWpzWUGjPR0A6Iz02WnhjKqqWJZaIveQo9SsnPrUoeenK6lqU13W6k37b7H
-X-Received: by 2002:a05:6214:3c9b:b0:4c6:e22d:1329 with SMTP id ok27-20020a0562143c9b00b004c6e22d1329mr74358339qvb.52.1671560965012;
-        Tue, 20 Dec 2022 10:29:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671560964; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4552992ejb;
+        Tue, 20 Dec 2022 10:30:15 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6x/j1xWAgvZVFYeiDXeTHTEo7tA3DwxoUX552J1OgwVl0cDE1ZfVT+f8iNM3QnPvqYu3GS
+X-Received: by 2002:a0c:e9c6:0:b0:4c7:6938:4514 with SMTP id q6-20020a0ce9c6000000b004c769384514mr61891226qvo.0.1671561015222;
+        Tue, 20 Dec 2022 10:30:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671561015; cv=none;
         d=google.com; s=arc-20160816;
-        b=xxXZa8vyZBhR/HbD1czuBWQFzVpbtsgcPuPplPfgd6Fxop+UsRgNj8B5h1cLqaojmx
-         6VttCR+vPhvW+VYaceI+hMYmBOjNZHQ2hBSGB5uRCFUZzsGgKTpvLgKPMgwfSF+PZu7/
-         WF+m/z6hzDF/o1D7fqSxAGnkMFWKQD8hggwRgj/J8gokG0SZB+ugDOu9qdViIxt22waC
-         keTja1MAsmVn+sVhj2OR8Aeic/IKHz1gjYvTBO06VY39XMKFAa8Fx5R/bxEP4dhBAel2
-         j1CFVcuyFk7eIkrfsdEU0lOEv6LCtNd9seEkYv8KTyTfTPbj+zVy+dVvQMtLjrUN0kxH
-         a3dg==
+        b=HA78moW7Dvx0EOFn9OU0beKbrkMJtHo4PRu4exQ9FPRMf/OBUYSfzbkuy9QrX0T6Py
+         QY0EDbfTZl8RWDbed/MBwy/0aQKo+0TVelG8Mg5tlihOPG4aAWZiV0xEA4D7ADwAy0oT
+         IpoHzl2hYgg/XHQqsW+1mujl7wWzVle2zBMHRks7a7onNaqQFpRDjD2t1np64rr9eb1K
+         zyVmJjcfpxLjVTLOnVbDgGbeR6EmHJmbyhBG7pIEVGlKU6ONXYzL12SPpMfENkPmy+HA
+         8ypfnmJyXXulUoWFeaFrL9hjUCokD7YKSdVqP9Ftzlz/e8VXC/7yEyH1cGD2n56eUd7H
+         8egQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=v9trR9vbrPQPoZORLPiccWNfYpM7YuhpISCWKHG0hlo=;
-        b=qJKdXwdquRrQlwc25EgKSL8ZOTzM2pgU/rVb+jN045l1YhC3uBZjI4uWYrUdjtYHIm
-         RFB7cXPTe1ni5SqxJezGFm1pCFKOrEdfPjrku92Ts1vNhDny6vZcM2m4FpqSL4xFJoj4
-         YmLh9n7EJC4w80RTdicghUk3XDddpvubYyI1t7pEQUbrQsFeCDY7s//IRKJnfPbuQnvq
-         Mi4woeK733hSmBSSH1A7AHmqoxtxzwGJMZE7AMQpyaEqKKMSf22A5fD8m3iQyocbaOOr
-         HzD2OnLSyaDfxJLgB7CFLGH9LpeTaneTl1dIXdQGJZQnW/qRb7FhWFsHxl/aP8OMynue
-         s9ww==
+        bh=OhYTU1aJZb39lmftLIYLDD1VOLE6G+xxYeYH0iJptug=;
+        b=KPo/pLiJl7uxq4tBrMSJNAgcH5qTGYEIif3YV/jw9mhlEsnUsyTc+Y3YP04OYTEsw6
+         Yns5ppiLII8qs81qWy88IO1pZeevX8/ECFzQGWHHmnaql3kMMw9j47poNGg8UUJiCSyL
+         cuUTFqkUoFn8XN3MJHxupbXM0QSz//Xal3sH3SJd1XyvqRO7ae2BZuWv06tKf6UfOb/N
+         EEQJ+p7sBildf4T7yxIRCaGMHznPSz4jPhqM1sMUStNu1eETVfoJ0vk81lg5h2z6LpcN
+         J9YWSyVThyluRyKgAfvB2oT3rIiJoiw78VpOzBziZkg7YE2cXhAKzSosXnXkaCC7hp1F
+         MpHg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f6-20020a0562141d2600b004f59f424bd4si5574587qvd.472.2022.12.20.10.29.24
+        by mx.google.com with ESMTPS id fo5-20020ad45f05000000b0051f40149c5fsi552869qvb.266.2022.12.20.10.30.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Dec 2022 10:29:24 -0800 (PST)
+        Tue, 20 Dec 2022 10:30:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p7gPJ-0001N5-EY; Tue, 20 Dec 2022 12:28:01 -0500
+	id 1p7gPG-0001Mh-Ua; Tue, 20 Dec 2022 12:27:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1p7gPA-0001LC-DE; Tue, 20 Dec 2022 12:27:52 -0500
-Received: from relay3-d.mail.gandi.net ([217.70.183.195])
+ id 1p7gPA-0001LB-B3; Tue, 20 Dec 2022 12:27:52 -0500
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1p7gP6-00057S-7P; Tue, 20 Dec 2022 12:27:52 -0500
+ id 1p7gP6-000575-6H; Tue, 20 Dec 2022 12:27:52 -0500
 Received: (Authenticated sender: jcd@tribudubois.net)
- by mail.gandi.net (Postfix) with ESMTPSA id C8BD56000A;
- Tue, 20 Dec 2022 17:27:41 +0000 (UTC)
+ by mail.gandi.net (Postfix) with ESMTPSA id 6B0CFC0008;
+ Tue, 20 Dec 2022 17:27:35 +0000 (UTC)
 From: Jean-Christophe Dubois <jcd@tribudubois.net>
 To: qemu-devel@nongnu.org
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
 	qemu-arm@nongnu.org
-Subject: [PATCH] i.MX7D: Compute clock frequency for the fixed frequency
- clocks.
-Date: Tue, 20 Dec 2022 18:27:39 +0100
-Message-ID: <b39c13bd71adaa91559d3436e724d90280e81c63.1671548388.git.jcd@tribudubois.net>
+Subject: [PATCH] i.MX7D: Connect GPT timers to IRQ
+Date: Tue, 20 Dec 2022 18:27:30 +0100
+Message-ID: <63a81cac41c769989e23caebb476dc078e83731d.1671548388.git.jcd@tribudubois.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <cover.1671548388.git.jcd@tribudubois.net>
 References: <cover.1671548388.git.jcd@tribudubois.net>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=217.70.183.195; envelope-from=jcd@tribudubois.net;
- helo=relay3-d.mail.gandi.net
+Received-SPF: pass client-ip=217.70.183.198; envelope-from=jcd@tribudubois.net;
+ helo=relay6-d.mail.gandi.net
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,84 +82,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KCRQ0r8+yems
-Message-ID: <20221220172739.t53_xhsGlpOiIO-06JQq51oWZI5ssx0lFA7SQwBXtRk@z>
+X-TUID: vZUXic4FkpqI
+Message-ID: <20221220172730.tKZGVtkzlDiGDTmlUth2_xMNgK4yZQqao4Bt5u2D-tA@z>
 
-CCM derived clocks will have to be added later.
+So far the GPT timers were unable to raise IRQs to the processor.
 
 Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
 ---
- hw/misc/imx7_ccm.c | 49 +++++++++++++++++++++++++++++++++++++---------
- 1 file changed, 40 insertions(+), 9 deletions(-)
+ hw/arm/fsl-imx7.c         | 10 ++++++++++
+ include/hw/arm/fsl-imx7.h |  5 +++++
+ 2 files changed, 15 insertions(+)
 
-diff --git a/hw/misc/imx7_ccm.c b/hw/misc/imx7_ccm.c
-index 075159e497..f135ec7b7e 100644
---- a/hw/misc/imx7_ccm.c
-+++ b/hw/misc/imx7_ccm.c
-@@ -16,6 +16,10 @@
- #include "hw/misc/imx7_ccm.h"
- #include "migration/vmstate.h"
+diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+index cc6fdb9373..146bb559bb 100644
+--- a/hw/arm/fsl-imx7.c
++++ b/hw/arm/fsl-imx7.c
+@@ -219,9 +219,19 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+             FSL_IMX7_GPT4_ADDR,
+         };
  
-+#include "trace.h"
++        static const int FSL_IMX7_GPTn_IRQ[FSL_IMX7_NUM_GPTS] = {
++            FSL_IMX7_GPT1_IRQ,
++            FSL_IMX7_GPT2_IRQ,
++            FSL_IMX7_GPT3_IRQ,
++            FSL_IMX7_GPT4_IRQ,
++        };
 +
-+#define CKIH_FREQ 24000000 /* 24MHz crystal input */
-+
- static void imx7_analog_reset(DeviceState *dev)
- {
-     IMX7AnalogState *s = IMX7_ANALOG(dev);
-@@ -219,16 +223,43 @@ static const VMStateDescription vmstate_imx7_ccm = {
- static uint32_t imx7_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
- {
-     /*
--     * This function is "consumed" by GPT emulation code, however on
--     * i.MX7 each GPT block can have their own clock root. This means
--     * that this functions needs somehow to know requester's identity
--     * and the way to pass it: be it via additional IMXClk constants
--     * or by adding another argument to this method needs to be
--     * figured out
-+     * This function is "consumed" by GPT emulation code. Some clocks
-+     * have fixed frequencies and we can provide requested frequency
-+     * easily. However for CCM provided clocks (like IPG) each GPT
-+     * timer can have its own clock root.
-+     * This means we need additionnal information when calling this
-+     * function to know the requester's identity.
-      */
--    qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Not implemented\n",
--                  TYPE_IMX7_CCM, __func__);
--    return 0;
-+    uint32_t freq = 0;
-+
-+    switch (clock) {
-+    case CLK_NONE:
-+        break;
-+    case CLK_32k:
-+        freq = CKIL_FREQ;
-+        break;
-+    case CLK_HIGH:
-+        freq = CKIH_FREQ;
-+        break;
-+    case CLK_IPG:
-+    case CLK_IPG_HIGH:
-+        /*
-+         * For now we don't have a way to figure out the device this
-+         * function is called for. Until then the IPG derived clocks
-+         * are left unimplemented.
-+         */
-+        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Clock %d Not implemented\n",
-+                      TYPE_IMX7_CCM, __func__, clock);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: unsupported clock %d\n",
-+                      TYPE_IMX7_CCM, __func__, clock);
-+        break;
-+    }
-+
-+    trace_ccm_clock_freq(clock, freq);
-+
-+    return freq;
- }
+         s->gpt[i].ccm = IMX_CCM(&s->ccm);
+         sysbus_realize(SYS_BUS_DEVICE(&s->gpt[i]), &error_abort);
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpt[i]), 0, FSL_IMX7_GPTn_ADDR[i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpt[i]), 0,
++                           qdev_get_gpio_in(DEVICE(&s->a7mpcore),
++                                            FSL_IMX7_GPTn_IRQ[i]));
+     }
  
- static void imx7_ccm_class_init(ObjectClass *klass, void *data)
+     for (i = 0; i < FSL_IMX7_NUM_GPIOS; i++) {
+diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
+index 1c5fa6fd67..50f19d8db0 100644
+--- a/include/hw/arm/fsl-imx7.h
++++ b/include/hw/arm/fsl-imx7.h
+@@ -235,6 +235,11 @@ enum FslIMX7IRQs {
+     FSL_IMX7_USB2_IRQ     = 42,
+     FSL_IMX7_USB3_IRQ     = 40,
+ 
++    FSL_IMX7_GPT1_IRQ     = 55,
++    FSL_IMX7_GPT2_IRQ     = 54,
++    FSL_IMX7_GPT3_IRQ     = 53,
++    FSL_IMX7_GPT4_IRQ     = 52,
++
+     FSL_IMX7_WDOG1_IRQ    = 78,
+     FSL_IMX7_WDOG2_IRQ    = 79,
+     FSL_IMX7_WDOG3_IRQ    = 10,
 -- 
 2.34.1
 

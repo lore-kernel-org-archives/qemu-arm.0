@@ -1,110 +1,109 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp5351812ejb;
-        Wed, 21 Dec 2022 09:58:36 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXviTWwmCpmCkeeLyQzLxf8R5tCNJuuz3SXhmQkwQA8/zNUm5pX/Xphkd4MwSryYOmHFrHzW
-X-Received: by 2002:ad4:46cc:0:b0:4c7:8094:ecaa with SMTP id pm12-20020ad446cc000000b004c78094ecaamr3240997qvb.44.1671645516703;
-        Wed, 21 Dec 2022 09:58:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671645516; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp5375791ejb;
+        Wed, 21 Dec 2022 10:32:29 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtlU4bt3R4kvLDhYNg/FDHYxsnSnunQflRDsRpCzB1iXenv18FRSJ8DwQRwJ23GBQL4T0qJ
+X-Received: by 2002:a05:6214:3d9b:b0:4c7:830:c6d8 with SMTP id om27-20020a0562143d9b00b004c70830c6d8mr3404834qvb.0.1671647549081;
+        Wed, 21 Dec 2022 10:32:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671647549; cv=none;
         d=google.com; s=arc-20160816;
-        b=DjYsWQKuWsAIzEVJaGCryLDU5OnxIROz+Ir3a+dbuT86u52JbJNwWo16D+k+lXws5k
-         xX1siHH3HbtAJzx1DwoAmMnIgPvFedVnmQUYo776PivCHRq3L9LdatEE3Cic4fLKHkbZ
-         +j4adIBNFSFtNL2LQ10j3BS0EzPtMw5sEc5Clcf8+Iqy0jX8NSwPQxozTzhaTGxSbdYA
-         VfeZGGWDFdr8Rbo07A9AWRef4nBWHm89hgX1kevSdujDS1AppbzVNSv+ZYRiHaFlKrZ/
-         pIEuN6XjbwJtvHxWg3mR9kOJeAz1LIHidyh7ZLqTEHIsCiEV7LA0vpPsKu1XI1NZOKFD
-         +cag==
+        b=RyG0hyhA2xj0IYxn+ZEZspV2ky2IvmnF4AhEZVS38Txm1kzYtOio+hAtgsiEQYpZNP
+         KTCfAKdGvzjmoNO1Y1p7WwlA4PVFpDC8rGMWW20OEBNDNhLwKZkBp9AYZR02KrR9QEL0
+         DaUWoIDBgMhq14yUBEC4069XszsDXhJnXXIWOgD5kO3cVrPSPkk/RwrP32nO+VA3FaML
+         D3m9IE3ypbHUvL9NeCsT+aAafOrvr4jQHijPdyB2VFiUk5gKmwZHFqr+Qyt/2bQrF6oO
+         UACP0qnnFO1q5wlwCNik1i1Hv9hiojx60/8CuYJk/Y8GRJquKJib32OBr1PB7oJOZsAf
+         MEFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=cIB7bOqRoV+jCCK+MjlbRhBtB8ep4WaqUIq92CXaplY=;
-        b=ejizgfyiUPiS+bTG1D1EFbfDTqScyq8dUq6UOojVbdi6mHLEdfLkwIfJr7FDZkIFkx
-         r/JC6zwmqOwxPj1VoFBAc96e2VO5tpwk3XD/Ock9lCCQPP3jMInT63ZtQGYO4JdJAq6Q
-         J6JKEf7O1cDZK3tGUyVsWST+se4ntUdJG1KQjk+xdesF9VINeckHZd24isD4WD/15RRf
-         LYqtLIAO+0MxBpO5CO2NA//DQw2LhhviU8jAFbyo13xUGOUbbJGTxlKB+RMB0Ng8CS40
-         tRj6GDUJcEZFA2kbx9LHE6uc1xHKQKlcpgEc7yLfg93YT0W81HHF8nnVh598nRpvJc5E
-         BfGQ==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=7B07ofpcA7tRmi2XyukXiykSOBgmFs9jsO808EFWmoc=;
+        b=hpE6G5FAC3zDFtEb3qzE+1Iwy9lCpsK10lK2/0PBlzY7BF35ni5BVpsZZ7e0Pf+zYN
+         4N2rK/rs1x3/zVMm7rqyGkSI4lo5UprqLmICEExUJqQGWyBPeKtjCSyXNqMp1dKFPjqa
+         zXhfBQpyHOmFuT03bgsRjKq/IiMHwh+ou3eTpyVHz7O1Chuhy8qe2/RdMV99b6CNt7KT
+         aDek+IUKUIWz9Z57hhdNUY3qi0MXQxFpxKHGOo2R4RDCJ86g4+CJa8JBvNvAb/c509gY
+         LJ1RHMEtAK5LIvmQNuSDTqR6FKlz0Gkl2K2ieFdYKVuZj6/q7Jt3x4qmUfgtjH20gzI2
+         gU2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=DmPM7GwX;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=HffvBwOz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jq11-20020ad45fcb000000b004b3f32aea24si6880261qvb.395.2022.12.21.09.58.36
+        by mx.google.com with ESMTPS id o7-20020a0562140e4700b004bba3652dccsi6337101qvc.106.2022.12.21.10.32.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Dec 2022 09:58:36 -0800 (PST)
+        Wed, 21 Dec 2022 10:32:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=DmPM7GwX;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=HffvBwOz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p83MC-0006aV-5p; Wed, 21 Dec 2022 12:58:20 -0500
+	id 1p83t1-0002d5-VZ; Wed, 21 Dec 2022 13:32:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slongfield@google.com>)
- id 1p83MA-0006a7-VF
- for qemu-arm@nongnu.org; Wed, 21 Dec 2022 12:58:18 -0500
-Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
+ (Exim 4.90_1) (envelope-from
+ <3JFGjYwoKCHcngjibadZgYbjjbgZ.XjhlZhp-Vmhijibip.jmb@flex--slongfield.bounces.google.com>)
+ id 1p83sy-0002cX-Uu
+ for qemu-arm@nongnu.org; Wed, 21 Dec 2022 13:32:14 -0500
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <slongfield@google.com>)
- id 1p83M9-0003aT-Fu
- for qemu-arm@nongnu.org; Wed, 21 Dec 2022 12:58:18 -0500
-Received: by mail-vs1-xe2d.google.com with SMTP id 128so15440590vsz.12
- for <qemu-arm@nongnu.org>; Wed, 21 Dec 2022 09:58:16 -0800 (PST)
+ (Exim 4.90_1) (envelope-from
+ <3JFGjYwoKCHcngjibadZgYbjjbgZ.XjhlZhp-Vmhijibip.jmb@flex--slongfield.bounces.google.com>)
+ id 1p83st-0001CY-6U
+ for qemu-arm@nongnu.org; Wed, 21 Dec 2022 13:32:09 -0500
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ k7-20020a256f07000000b006cbcc030bc8so18493599ybc.18
+ for <qemu-arm@nongnu.org>; Wed, 21 Dec 2022 10:32:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=cIB7bOqRoV+jCCK+MjlbRhBtB8ep4WaqUIq92CXaplY=;
- b=DmPM7GwXuOQXzj2OP7hHEvqsiL+muOptG+jl9/1Wkq2icM6phYzvX4WOCI56O0A8Lf
- M06blPrsosxktclr25S166NcyM/jx+sVw/SiDfLEoaDWd6bWOKFzUGermjaeR3d+Dk8x
- nVYqkppsZI6RqsxIBpZd9aH8nFAuxcXQ8+OqjvL++3ZBu7cikgVYStt/PZZfxHv04ULN
- z9i0lSxd+2eVSPmorzDsf8PKwxoXPJTBBd3EQyKI0oqftv9xyLH9QAs4crDSaKaksDZS
- Unv46jVI3JL5C3eo8tchDdO0liOsHJH7Zb3No2oSkmgaHyiEoszs7TCBbfPLSZMIItOd
- gIvA==
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=7B07ofpcA7tRmi2XyukXiykSOBgmFs9jsO808EFWmoc=;
+ b=HffvBwOzn9pt2EFwA3DAnXUC0M+MJA9E7lUI6pFdhnkk01HmcWxFkZwhiJcBiOWF4b
+ zQWt++wQW7yiVfKESw+MfCbGaqMtV+yFmdIkhKFo76Iazoq2FQipKjv/BsZKrnoehTJl
+ oXJTigD0vjMbGi8qvLHgY5jLTrIhflGVkBiAvebsgZ+GLLOpi0njif3IF5/Phy86DIAW
+ RctxcTNGepROHrx1+w/fCVrEYgt6fdW0OdO7GTDXaVnmrDya1/08OjOlZ2+ch8aHp2hn
+ rh2BseiLtWBNk7cdls1+1r7BwWskMs5D4VASZD51iNrjbrDP6dsNyZ2ixb0jOFtTSuiF
+ nXQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cIB7bOqRoV+jCCK+MjlbRhBtB8ep4WaqUIq92CXaplY=;
- b=TOLhwH6UjjqyRj+7HDLoBg+VLGdwh5JUHqnUbtuB0Jz8l1cQAQEIZnYBDJXwJbYuLi
- HoM7gWPeKdH9nzDmocPe1Y84zKyXb5a8Qe0TGg69NrCPPcYJmCepRpRrKZa+WwCNTdB5
- AfzAE/aHSTj5xfExDCwIzGDPWnTjNEGmequUd4Ulh2PcpBaugFV17jEfcQQAGAkVSILV
- DWUHVzE9lLEdd58GWnMihCjperQWMvxB++eddwFbq/9HqkgkHs/JOEiaV7fnlP8P0KM1
- wJkznodCgi3b+R7GUXqSm5dNd3jKKFfilPNm+Oipdw3IVtDgYkX0c225DlSGGVMvDQLO
- dWCA==
-X-Gm-Message-State: AFqh2kpQHbFN9CQUUEalVnFtI/JuGlMEdaQBeGx4LDtKiWcrY/b4Iu2x
- VZmnzBoazHy5YUUIfd2m3RPylI6CieEkojeb+Gp+0Q==
-X-Received: by 2002:a05:6102:7a2:b0:3b2:e40d:1d9b with SMTP id
- x2-20020a05610207a200b003b2e40d1d9bmr323660vsg.51.1671645495712; Wed, 21 Dec
- 2022 09:58:15 -0800 (PST)
-MIME-Version: 1.0
-References: <20221220221437.3303721-1-slongfield@google.com>
- <587d650e-fba3-ba44-793e-919dd6f75a90@kaod.org>
-In-Reply-To: <587d650e-fba3-ba44-793e-919dd6f75a90@kaod.org>
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=7B07ofpcA7tRmi2XyukXiykSOBgmFs9jsO808EFWmoc=;
+ b=qr0lOnkx+DYJNnfzyseVJITMdEJZIiLTsDxBk+bqM67w3HW/9JTTx6CG9rjfBUcDAo
+ N90JcswamwXh3hBizeksd3mbVLw1kXr49yzQ7xjqL9v9qjjsjlxeghNAh+0TEfzOGVKV
+ gdftTh8ap0WEcnD/Ni7mMUOMRyfhi4FrhDs+O4gqcmV4oTtts2rYuNhlUF8D5DgAZfJT
+ nOVZVU2CctJd5X+Z33NUpVqScUDasCtX1pK+qa5fY5aVbjcSQjDWll4u37K2zMdluddx
+ W0QKPoqdogpdglbv9IRSw+xjnpfjZuPlrjivj/3RJaVI8U7881cLYur7z/sHdXlb6FLr
+ 2KUQ==
+X-Gm-Message-State: AFqh2kpud2YE58KhKiR5oPmh2BvR1w1trKmQ4Rv1dIkqJAUlU0lVUNKw
+ VxcIC+QQtw/rZRzL3mpeXcUaV+qu2EUzYCPh
+X-Received: from vonneumann.svl.corp.google.com
+ ([2620:15c:2a3:201:82df:1739:d438:9992])
+ (user=slongfield job=sendgmr) by 2002:a25:d88e:0:b0:701:a966:d3f9 with SMTP
+ id p136-20020a25d88e000000b00701a966d3f9mr272924ybg.262.1671647524759; Wed,
+ 21 Dec 2022 10:32:04 -0800 (PST)
+Date: Wed, 21 Dec 2022 10:32:02 -0800
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
+Message-ID: <20221221183202.3788132-1-slongfield@google.com>
+Subject: [PATCH] hw/net: Fix read of uninitialized memory in imx_fec.
 From: Stephen Longfield <slongfield@google.com>
-Date: Wed, 21 Dec 2022 09:58:04 -0800
-Message-ID: <CAK_0=FLEiWQMWqzkM_EZ4VCzwRYeTbN9djuFgDR1EwVAZ1oALA@mail.gmail.com>
-Subject: Re: [PATCH] hw/net: Fix read of uninitialized memory in ftgmac100
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- andrew@aj.id.au, joel@jms.id.au, venture@google.com, wuhaotsh@google.com
+To: clg@kaod.org, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com, 
+ wuhaotsh@google.com, Stephen Longfield <slongfield@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e2d;
- envelope-from=slongfield@google.com; helo=mail-vs1-xe2d.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3JFGjYwoKCHcngjibadZgYbjjbgZ.XjhlZhp-Vmhijibip.jmb@flex--slongfield.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,66 +118,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bNI7pzfcXEd0
+X-TUID: W9GOJ7D2mRxj
 
-On Tue, Dec 20, 2022 at 11:30 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote=
-:
->
-> On 12/20/22 23:14, Stephen Longfield wrote:
-> > With the `size +=3D 4` before the call to `crc32`, the CRC calculation
-> > would overrun the buffer. Size is used in the while loop starting on
-> > line 1009 to determine how much data to write back, with the last
-> > four bytes coming from `crc_ptr`, so do need to increase it, but should
-> > do this after the computation.
-> >
-> > I'm unsure why this use of uninitialized memory in the CRC doesn't
-> > result in CRC errors, but it seems clear to me that it should not be
-> > included in the calculation.
-> >
-> > Signed-off-by: Stephen Longfield <slongfield@google.com>
-> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
->
->
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
->
-> I think imx_fec.c is impacted also.
->
-> Thanks,
->
-> C.
->
+Size is used at lines 1088/1188 for the loop, which reads the last 4
+bytes from the crc_ptr so it does need to get increased, however it
+shouldn't be increased before the buffer is passed to CRC computation,
+or the crc32 function will access uninitialized memory.
 
-Thanks for pointing that out, looks to be exactly the same. I'll send
-out a separate patch that fixes the issue in that file.
+This was pointed out to me by clg@kaod.org during the code review of
+a similar patch to hw/net/ftgmac100.c
 
-Best,
+Change-Id: Ib0464303b191af1e28abeb2f5105eb25aadb5e9b
+Signed-off-by: Stephen Longfield <slongfield@google.com>
+Reviewed-by: Patrick Venture <venture@google.com>
+---
+ hw/net/imx_fec.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
---Stephen
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 8c11b237de..c862d96593 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -1068,9 +1068,9 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+         return 0;
+     }
 
->
-> > ---
-> >   hw/net/ftgmac100.c | 4 ++--
-> >   1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-> > index 83ef0a783e..d3bf14be53 100644
-> > --- a/hw/net/ftgmac100.c
-> > +++ b/hw/net/ftgmac100.c
-> > @@ -980,9 +980,9 @@ static ssize_t ftgmac100_receive(NetClientState *nc=
-, const uint8_t *buf,
-> >           return size;
-> >       }
-> >
-> > -    /* 4 bytes for the CRC.  */
-> > -    size +=3D 4;
-> >       crc =3D cpu_to_be32(crc32(~0, buf, size));
-> > +    /* Increase size by 4, loop below reads the last 4 bytes from crc_=
-ptr. */
-> > +    size +=3D 4;
-> >       crc_ptr =3D (uint8_t *) &crc;
-> >
-> >       /* Huge frames are truncated.  */
-> > --
-> > 2.39.0.314.g84b9a713c41-goog
-> >
->
+-    /* 4 bytes for the CRC.  */
+-    size += 4;
+     crc = cpu_to_be32(crc32(~0, buf, size));
++    /* Increase size by 4, loop below reads the last 4 bytes from crc_ptr. */
++    size += 4;
+     crc_ptr = (uint8_t *) &crc;
+
+     /* Huge frames are truncated.  */
+@@ -1164,9 +1164,9 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+         return 0;
+     }
+
+-    /* 4 bytes for the CRC.  */
+-    size += 4;
+     crc = cpu_to_be32(crc32(~0, buf, size));
++    /* Increase size by 4, loop below reads the last 4 bytes from crc_ptr. */
++    size += 4;
+     crc_ptr = (uint8_t *) &crc;
+
+     if (shift16) {
+--
+2.39.0.314.g84b9a713c41-goog
+

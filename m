@@ -1,343 +1,145 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4678713ejb;
-        Tue, 20 Dec 2022 14:06:49 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvRAKZ1dtUwwnqbzPHCW9CDeW+qLalQOcCAcbE9qY3rICRCXVx1vgxAbvc0CIQl4E8V3MZC
-X-Received: by 2002:a05:600c:3d11:b0:3d3:4aa6:4fd0 with SMTP id bh17-20020a05600c3d1100b003d34aa64fd0mr11931505wmb.6.1671574008847;
-        Tue, 20 Dec 2022 14:06:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671574008; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4771333ejb;
+        Tue, 20 Dec 2022 17:00:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtzweUn/JMWjTi8v/uSffeMdai+FQFbA1/J3h9jseXd3FeFOJk5rQzohzxaCq3VQYdOsOh7
+X-Received: by 2002:a05:6214:3788:b0:4c6:d77b:8b4a with SMTP id ni8-20020a056214378800b004c6d77b8b4amr81821qvb.33.1671584453103;
+        Tue, 20 Dec 2022 17:00:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671584453; cv=none;
         d=google.com; s=arc-20160816;
-        b=c3JH6aCQgMDTLvaEgFtG5GdnvWs1oFIqd9uEpyU8GphufYkFFm89vpwdOwOSHQR7ZC
-         01Rw6W2ut0/O3ayJAr4BUAc0RvUYQoZD9ExkPWwc0TUOvXrP2+3PeGQQAFHebrvpo4W3
-         JX0hMx2IUsO+r4ssSI3i4eTQUgtBZBrh56JjQzkIu8y4CRW7REb46+WoVRO10u7X6IYc
-         6/1wiEd2dpABihjaHvXWPIoT60eGE6eRJ60cx4EsVwbH9+NRlOoh4CloKdqNJQeC74oi
-         EpQ/sIanMKvh6miKIgxIbM+3zrzWupoDMFLOVDOW8uHeXiGKmmUFJG7kUwKod7R0mEj2
-         XgbA==
+        b=gGPbE75pSmINaHdDgLRTdwEUV5s7rSbRfzJW4zBi68+Md5Cfm7MydsrjyZj0IkB4q6
+         GbLpHEAihUYUmo1nFHkOfrxL4KmEAxMYxHyhq5d/2w1tPEtZyesZ114nEnqio+dfs8Mf
+         ircidUj7txfq5Xltwodvrr4pNaP7kmjvmTPf63f9Gsw/5Fxv3wkxobNUCWGnQhyOOdiD
+         JFoNWZriGorgHm9npz7azaXKpP7V69su064eHhn5Kt/Rwg4Ohlel8A8PSy76N4PDwsaO
+         HZnFPHmOKzEHwdVFzAXLIcpTsAcjz+Zr5ooIHsJcDAnQS+no8rfs2P87QH80URIl87RR
+         od6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=uNooRhtg57jwueZDg2HkPFfIvQcQ1FUxw6N+xDzNzjc=;
-        b=bro9d48ZedOKVtH7oyw8Kcg+fqfaHgOeYuBKemzaYAc/fBDF+LtHDk4jE/az26fLLL
-         fKa/i3xkm7cEWa+yzqZIVOUa+/LHlmwGhRvzShWY0Gw58H9OMJTTjBrCuwUlMja71V4+
-         Bc4Enhq3dtNm3qQJL69f/PKcsyBGYZslfZaaOZVDuqJ34fbYwbq+8ulCX47IyDFInuW1
-         tPR5i8yujgQkkp8TEgyvuZwdjlNcoP1oNg9/wPbyLJWlPPGg64XJRD+YiVWSNI8oYKyq
-         Muw94HTzWAFjhpqF/J7zU7x/7V1W27YS13GPc4kHlE2c5uohgcwFDBZhhMO01jvpFHR+
-         u9aA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=WyekTRW+97ltxUXOINXM2jx9fnDKNYTKA/E4fwTFN+Y=;
+        b=Jm/5NCJlNkPoLvIVx/4LuIXxcoIavj1xhjJWIfoUgmIQy+z+i/M98ILTmi7aI0CTQj
+         cLsLMedUYm9v9drqGussjN+nZa4KdY3GxYYMjAVd3jKCFyAAH53YwqrPSvrcUmD2PyCe
+         mCMJnqK3cJqyGXCA5v3pkO7ZA5rbUGLI+yiYuNzwGUVmOlgrD811yFy7PjVuuuaycui/
+         KTh5kXYjgY1DptZEoa74xE05VRF0mLzql9ydLZBhitXObb2fY9LNEuLnHTsXpQldV0H+
+         sQrnd5JpL/ABfKi167W2WRJb7P0A887VLkUa3AUcUG2l/f793wXTEKMlPhk60aneZYBK
+         TfyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ZjFyKStg;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id m25-20020a05600c3b1900b003c0e4cafb8csi48012wms.161.2022.12.20.14.06.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Dec 2022 14:06:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=o91XmJU8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bs20-20020a05620a471400b006fc2b6729e6si5912234qkb.567.2022.12.20.17.00.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 20 Dec 2022 17:00:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ZjFyKStg;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 6B18D76A4A;
-	Tue, 20 Dec 2022 22:06:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1671574008; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uNooRhtg57jwueZDg2HkPFfIvQcQ1FUxw6N+xDzNzjc=;
-	b=ZjFyKStgZIG4w5VtecSY3HY3t9sRva9i42R+iLExDXf5Ge541G4aYWgDPUZ+Ica3gIkwO3
-	ANNN9WB69k5CjVd+12IXJVUoRwO29FMSLVgqtrtjSGMfh28NPVFwACHsbwZ1CGsaWPRcZ+
-	VkQV1yMFpfHVof420vQ6tSdTkmQXN0U=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1671574008;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uNooRhtg57jwueZDg2HkPFfIvQcQ1FUxw6N+xDzNzjc=;
-	b=TuAuMyq4RMxDU16RnMD4lEl3MXZ/wY2Bf/g1rc5eZD43TkTx4JbRGya1qPGdmLK8PCjAlX
-	HJx48XYDxxFnwoAQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 847BB13254;
-	Tue, 20 Dec 2022 22:06:45 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id IKAtEvUxomPwfAAAMHmgww
-	(envelope-from <farosas@suse.de>); Tue, 20 Dec 2022 22:06:45 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>
-Subject: [PATCH v2 5/5] target/arm: only perform TCG cpu and machine inits if TCG enabled
-Date: Tue, 20 Dec 2022 19:04:26 -0300
-Message-Id: <20221220220426.8827-6-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20221220220426.8827-1-farosas@suse.de>
-References: <20221220220426.8827-1-farosas@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=o91XmJU8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p7nTK-0000CP-4i; Tue, 20 Dec 2022 20:00:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1p7nTI-0000C0-Sl
+ for qemu-arm@nongnu.org; Tue, 20 Dec 2022 20:00:36 -0500
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1p7nTG-00036i-Hg
+ for qemu-arm@nongnu.org; Tue, 20 Dec 2022 20:00:36 -0500
+Received: by mail-pl1-x62e.google.com with SMTP id l10so13994121plb.8
+ for <qemu-arm@nongnu.org>; Tue, 20 Dec 2022 17:00:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=WyekTRW+97ltxUXOINXM2jx9fnDKNYTKA/E4fwTFN+Y=;
+ b=o91XmJU8U1B+QMX/D6mOem543OTrZVUnlUuM3eN/vxfdgcaEuziETw+Qz1uE8zWzqI
+ ir0tDE2YZfHOEqyDr2ku98ZQpwVH9liu84IpI0de6WiLnJzPhwuOUjCZWTi5xfW+fKEh
+ 1gVph+LJmhRvtR46wNNOTiA3nGv2WzFzZnos8Xd8cbtWBiJT76ft4MtNXF0AS0vdfpqU
+ JU/lvgNTilAOMMPX8Z8VM0zHElKA3z96gmhn1bzxPX+4mbw83EfUo8Q/EmlYnKlhnFxp
+ p2cGsz5NjHhTb+eKNPIqV9qozmYv4XqFA9OYKCQU9P+CFtLjVbX+0O77jOcG9EjRgJNb
+ DfBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=WyekTRW+97ltxUXOINXM2jx9fnDKNYTKA/E4fwTFN+Y=;
+ b=gMx4Q96mjFRtQdaxTlt8U8QsYJU14deqcUIHF+e2gcvID/9ALh96mcIxnSz2piSiD0
+ UaYUKmAVBbmADze0e+YR71MdYHLBazAtmNkC8SYJxsbqcgMpDv+3XBiCTg7T/SpU9boA
+ NofaQ9ZxzkBNrFvWM0rk/OoNfScpjP85MWDHCnwfIJ17TUv6GU9dyF9dOq4rC7LOp5h3
+ gmmE0d7+QJfG9rF+x3kwP+21Vaf4tiKnJLY1NcJDt0s/tJuBNJwJZHXnUeiHN2gnOyxy
+ bBvqpXvIOxrPTkiRHUf9XLVqsG3J/YRPdA/10sAByt+Z+vjmsaVNDwqWiKK+bExYUCiy
+ C3vw==
+X-Gm-Message-State: AFqh2kpyl7P9xHOVFaNm1H3gwm9bJhA0jfKNn8Fn9V4Pcy+RzznZmIgN
+ UQzhjNy8ppV26GO5mkPC8gMxvQ==
+X-Received: by 2002:a17:902:c401:b0:189:ba1f:b168 with SMTP id
+ k1-20020a170902c40100b00189ba1fb168mr176284plk.1.1671584432519; 
+ Tue, 20 Dec 2022 17:00:32 -0800 (PST)
+Received: from ?IPV6:2602:47:d48c:8101:3efa:624c:5fb:32c0?
+ ([2602:47:d48c:8101:3efa:624c:5fb:32c0])
+ by smtp.gmail.com with ESMTPSA id
+ l4-20020a656804000000b004792b557b1csm9013133pgt.87.2022.12.20.17.00.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Dec 2022 17:00:31 -0800 (PST)
+Message-ID: <ca7c39b0-c3d1-2993-b1cc-b4550c674440@linaro.org>
+Date: Tue, 20 Dec 2022 17:00:30 -0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 1/3] hw/input/tsc2xxx: Constify set_transform()'s
+ MouseTransformInfo arg
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20221220142520.24094-1-philmd@linaro.org>
+ <20221220142520.24094-2-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20221220142520.24094-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: cczhqltTWICl
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.161,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hl5hPvphM53b
 
-From: Claudio Fontana <cfontana@suse.de>
+On 12/20/22 06:25, Philippe Mathieu-Daudé wrote:
+> The pointed MouseTransformInfo structure is accessed read-only.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+>   hw/input/tsc2005.c         | 2 +-
+>   hw/input/tsc210x.c         | 3 +--
+>   include/hw/input/tsc2xxx.h | 4 ++--
+>   3 files changed, 4 insertions(+), 5 deletions(-)
 
-of note, cpreg lists were previously initialized by TCG first,
-and then thrown away and replaced with the data coming from KVM.
-
-Now we just initialize once, either for TCG or for KVM.
-
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
-[moved arm_cpu_register_gdb_regs_for_features out of tcg_enabled]
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
-Originally from:
-[RFC v14 16/80] target/arm: only perform TCG cpu and machine inits if
-TCG enabled
-https://lore.kernel.org/r/20210416162824.25131-17-cfontana@suse.de
----
- target/arm/cpu.c     | 31 +++++++++++++++++-------------
- target/arm/kvm.c     | 18 +++++++++---------
- target/arm/kvm_arm.h |  3 +--
- target/arm/machine.c | 45 +++++++++++++++++++++++++-------------------
- 4 files changed, 54 insertions(+), 43 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2fa022f62b..fdf30e7268 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -525,9 +525,11 @@ static void arm_cpu_reset_hold(Object *obj)
-     }
- #endif
- 
--    hw_breakpoint_update_all(cpu);
--    hw_watchpoint_update_all(cpu);
--    arm_rebuild_hflags(env);
-+    if (tcg_enabled()) {
-+        hw_breakpoint_update_all(cpu);
-+        hw_watchpoint_update_all(cpu);
-+        arm_rebuild_hflags(env);
-+    }
- }
- 
- #if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
-@@ -1600,6 +1602,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         }
-     }
- 
-+#ifdef CONFIG_TCG
-     {
-         uint64_t scale;
- 
-@@ -1625,7 +1628,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         cpu->gt_timer[GTIMER_HYPVIRT] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-                                                   arm_gt_hvtimer_cb, cpu);
-     }
--#endif
-+#endif /* CONFIG_TCG */
-+#endif /* !CONFIG_USER_ONLY */
- 
-     cpu_exec_realizefn(cs, &local_err);
-     if (local_err != NULL) {
-@@ -1943,17 +1947,16 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         unset_feature(env, ARM_FEATURE_PMU);
-     }
-     if (arm_feature(env, ARM_FEATURE_PMU)) {
--        pmu_init(cpu);
--
--        if (!kvm_enabled()) {
-+        if (tcg_enabled()) {
-+            pmu_init(cpu);
-             arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
-             arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
--        }
- 
- #ifndef CONFIG_USER_ONLY
--        cpu->pmu_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, arm_pmu_timer_cb,
--                cpu);
-+            cpu->pmu_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, arm_pmu_timer_cb,
-+                                          cpu);
- #endif
-+        }
-     } else {
-         cpu->isar.id_aa64dfr0 =
-             FIELD_DP64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, PMUVER, 0);
-@@ -2049,10 +2052,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         set_feature(env, ARM_FEATURE_VBAR);
-     }
- 
--    register_cp_regs_for_features(cpu);
--    arm_cpu_register_gdb_regs_for_features(cpu);
-+    if (tcg_enabled()) {
-+        register_cp_regs_for_features(cpu);
-+        init_cpreg_list(cpu);
-+    }
- 
--    init_cpreg_list(cpu);
-+    arm_cpu_register_gdb_regs_for_features(cpu);
- 
- #ifndef CONFIG_USER_ONLY
-     MachineState *ms = MACHINE(qdev_get_machine());
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index f022c644d2..2f01c26f54 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -438,9 +438,11 @@ static uint64_t *kvm_arm_get_cpreg_ptr(ARMCPU *cpu, uint64_t regidx)
-     return &cpu->cpreg_values[res - cpu->cpreg_indexes];
- }
- 
--/* Initialize the ARMCPU cpreg list according to the kernel's
-- * definition of what CPU registers it knows about (and throw away
-- * the previous TCG-created cpreg list).
-+/*
-+ * Initialize the ARMCPU cpreg list according to the kernel's
-+ * definition of what CPU registers it knows about.
-+ *
-+ * The parallel for TCG is init_cpreg_list()
-  */
- int kvm_arm_init_cpreg_list(ARMCPU *cpu)
- {
-@@ -482,12 +484,10 @@ int kvm_arm_init_cpreg_list(ARMCPU *cpu)
-         arraylen++;
-     }
- 
--    cpu->cpreg_indexes = g_renew(uint64_t, cpu->cpreg_indexes, arraylen);
--    cpu->cpreg_values = g_renew(uint64_t, cpu->cpreg_values, arraylen);
--    cpu->cpreg_vmstate_indexes = g_renew(uint64_t, cpu->cpreg_vmstate_indexes,
--                                         arraylen);
--    cpu->cpreg_vmstate_values = g_renew(uint64_t, cpu->cpreg_vmstate_values,
--                                        arraylen);
-+    cpu->cpreg_indexes = g_new(uint64_t, arraylen);
-+    cpu->cpreg_values = g_new(uint64_t, arraylen);
-+    cpu->cpreg_vmstate_indexes = g_new(uint64_t, arraylen);
-+    cpu->cpreg_vmstate_values = g_new(uint64_t, arraylen);
-     cpu->cpreg_array_len = arraylen;
-     cpu->cpreg_vmstate_array_len = arraylen;
- 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 99017b635c..41de2a7cf1 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -70,8 +70,7 @@ void kvm_arm_register_device(MemoryRegion *mr, uint64_t devid, uint64_t group,
-  * @cpu: ARMCPU
-  *
-  * Initialize the ARMCPU cpreg list according to the kernel's
-- * definition of what CPU registers it knows about (and throw away
-- * the previous TCG-created cpreg list).
-+ * definition of what CPU registers it knows about.
-  *
-  * Returns: 0 if success, else < 0 error code
-  */
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index a186787d2b..5ac1e6173a 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -2,6 +2,7 @@
- #include "cpu.h"
- #include "qemu/error-report.h"
- #include "sysemu/kvm.h"
-+#include "sysemu/tcg.h"
- #include "kvm_arm.h"
- #include "internals.h"
- #include "migration/cpu.h"
-@@ -687,7 +688,7 @@ static int cpu_pre_save(void *opaque)
- {
-     ARMCPU *cpu = opaque;
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled()) {
-         pmu_op_start(&cpu->env);
-     }
- 
-@@ -722,7 +723,7 @@ static int cpu_post_save(void *opaque)
- {
-     ARMCPU *cpu = opaque;
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled()) {
-         pmu_op_finish(&cpu->env);
-     }
- 
-@@ -741,7 +742,7 @@ static int cpu_pre_load(void *opaque)
-      */
-     env->irq_line_state = UINT32_MAX;
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled()) {
-         pmu_op_start(&cpu->env);
-     }
- 
-@@ -820,27 +821,28 @@ static int cpu_post_load(void *opaque, int version_id)
-         return -1;
-     }
- 
--    hw_breakpoint_update_all(cpu);
--    hw_watchpoint_update_all(cpu);
-+    if (tcg_enabled()) {
-+        hw_breakpoint_update_all(cpu);
-+        hw_watchpoint_update_all(cpu);
- 
--    /*
--     * TCG gen_update_fp_context() relies on the invariant that
--     * FPDSCR.LTPSIZE is constant 4 for M-profile with the LOB extension;
--     * forbid bogus incoming data with some other value.
--     */
--    if (arm_feature(env, ARM_FEATURE_M) && cpu_isar_feature(aa32_lob, cpu)) {
--        if (extract32(env->v7m.fpdscr[M_REG_NS],
--                      FPCR_LTPSIZE_SHIFT, FPCR_LTPSIZE_LENGTH) != 4 ||
--            extract32(env->v7m.fpdscr[M_REG_S],
--                      FPCR_LTPSIZE_SHIFT, FPCR_LTPSIZE_LENGTH) != 4) {
--            return -1;
-+        /*
-+         * TCG gen_update_fp_context() relies on the invariant that
-+         * FPDSCR.LTPSIZE is constant 4 for M-profile with the LOB extension;
-+         * forbid bogus incoming data with some other value.
-+         */
-+        if (arm_feature(env, ARM_FEATURE_M) &&
-+            cpu_isar_feature(aa32_lob, cpu)) {
-+            if (extract32(env->v7m.fpdscr[M_REG_NS],
-+                          FPCR_LTPSIZE_SHIFT, FPCR_LTPSIZE_LENGTH) != 4 ||
-+                extract32(env->v7m.fpdscr[M_REG_S],
-+                          FPCR_LTPSIZE_SHIFT, FPCR_LTPSIZE_LENGTH) != 4) {
-+                return -1;
-+            }
-         }
--    }
- 
--    if (!kvm_enabled()) {
-         pmu_op_finish(&cpu->env);
-+        arm_rebuild_hflags(&cpu->env);
-     }
--    arm_rebuild_hflags(&cpu->env);
- 
-     return 0;
- }
-@@ -890,8 +892,13 @@ const VMStateDescription vmstate_arm_cpu = {
-         VMSTATE_UINT32(env.exception.syndrome, ARMCPU),
-         VMSTATE_UINT32(env.exception.fsr, ARMCPU),
-         VMSTATE_UINT64(env.exception.vaddress, ARMCPU),
-+#ifdef CONFIG_TCG
-         VMSTATE_TIMER_PTR(gt_timer[GTIMER_PHYS], ARMCPU),
-         VMSTATE_TIMER_PTR(gt_timer[GTIMER_VIRT], ARMCPU),
-+#else
-+        VMSTATE_UNUSED(sizeof(QEMUTimer *)),
-+        VMSTATE_UNUSED(sizeof(QEMUTimer *)),
-+#endif /* CONFIG_TCG */
-         {
-             .name = "power_state",
-             .version_id = 0,
--- 
-2.35.3
+r~

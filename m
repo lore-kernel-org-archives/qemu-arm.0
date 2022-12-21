@@ -1,121 +1,165 @@
-Received: by 2002:a05:7022:6b88:b0:48:25f4:1512 with SMTP id dm8csp1144515dlb;
-        Tue, 20 Dec 2022 17:23:35 -0800 (PST)
-X-Received: by 2002:a05:6a00:72a:b0:57d:56f1:6ae7 with SMTP id 10-20020a056a00072a00b0057d56f16ae7mr341689pfm.33.1671585815294;
-        Tue, 20 Dec 2022 17:23:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671585815; cv=none;
+Received: by 2002:a05:7022:6b88:b0:48:25f4:1512 with SMTP id dm8csp1149508dlb;
+        Tue, 20 Dec 2022 17:35:55 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsZ/AYvieu9tKKlkedKYGFL5aaQx04Y3lKo6dntsElZvp1M2wf65q74r2wh948rOpMKRurp
+X-Received: by 2002:a05:6a21:2d8e:b0:af:c871:bf4a with SMTP id ty14-20020a056a212d8e00b000afc871bf4amr417992pzb.44.1671586555410;
+        Tue, 20 Dec 2022 17:35:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671586555; cv=none;
         d=google.com; s=arc-20160816;
-        b=fQAdfiPSUD7VQXmrDMCIqOFfKhCTq3mk/u6yvCthhnDv5OVulxu+zv992boLZktVVv
-         XPP1bBeGb8x9W96rCtAdkfDedFnfGJsg+aIPPLOfZ7IvNgQufrILxenlxmejMwiqGRiU
-         8s6r9nY3EFs1w/9zk0CmM4sIZjBo/lmTVZSKr8hThjlLDYjnHl1mQ3iS9TEQrgToTqBo
-         OJ1Q/KYb7UY8bApIescsKYUu396zNjraqtmRVrHPKLBr7yfKTBqxCnXYJMnVYmNnk5jj
-         ueCoZ0H7DLqIyeZ9m/5/2FxHaDj9muioQfYiu/r4W5l6xJVuWWWH1wa7wJjkT6y+Swjp
-         vP8Q==
+        b=vHKOtfUdUIwpGCWXxrTm8KNn7N4+K1Oo3pNcj71Txdi1iVzBQOWjN/ihdNmtqGTrBn
+         FreFU4/CER0ziWKNzbbySUYbNfZi6qXqUxhVJzygBEwzkLgrRduHx8M+C/qoVLaDQJV6
+         giRIN2A0IaT2QSuOZXq3ldzuklpGpOR7tCfgZ2T+eACc+vriEpOi2CkBGggIwuwDInKF
+         PeVwC/eNwEeYif8KF78Ryui4ENm6R6D/pzVakYlAjnE1g18y+yEosM9Eedq0RcbVQdPA
+         ZBAEuv5KXwU93ad9En90Trr/evueLhAoKsEnO0ndbpumTJnHlbmE+J2uMlZPxFJGUqqi
+         Y2XQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=uCkp37zRSFjLG/vM79nxx1drROk+Rt3/OhdwamPp7PA=;
-        b=PFAz8yCxJy6W/H8tllk/OEspkVXEcUo2axGkUYn1fWvyNaxzmO3LYnuUIE2ZxS42Um
-         zjfKnqila88JKHvYgQ78nmq+tRGde0gx5OhBZbSfgqofWIUVtzCy/7b5LjcQluzl8kQE
-         bH74xO6C+2xW8+Wrtt0NAvdKra6Xqgm8TZYo+CHaJBy3RAV4JQ3XK7HgMeEKBtFbW3VP
-         KGvCRNa6NhUdRSw4N9cud0O52J+KKKs5gf1g437NItUdTqZAhQZhSK0kTm8PoxsFirWo
-         cyQ9jsV3LgGBiLTvpKi1Wz1jZxNh0VbzDb5XQrosk0+Qf88JfWd3UhIsd6FyAIs0UfEm
-         7qDQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=hc/MkNbRs6HXfOsHgP/4CBoGgqRbaZEm2xDfRWEe8vY=;
+        b=Ha63MbwyS0To9LWsN86MluwYkm7067/vFIAH8P82arkvEAdHM+M7lGqG1CH3Z2lyUm
+         ZjpgUoupl/X9PfHIpDbPaZ2XgfqEcrgiDdCH8ud6fb46VojJRkWYwyyR7/AI0Jdbcs0s
+         G561PdP1PpCCs4vw+FwXcO1xRofc+0KkFCOXPxabo8B4Fnad9fKcYmvHaYsr5dKC5+Ts
+         EjESpa2pQl0G9i21aZjoHf+N6OAWp9/H+Dt3fPmvAbAW2tWFrRZQAmuQRUc4Gbsdtt0u
+         qygdFXcxoQxnqPfyk5Xr7y2caACgM+WS5Ba4dCph8XRecbyS0MMOPZOxL0piQaazFWcJ
+         fD2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jmNA+hwn;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g20-20020aa796b4000000b0056ddd2b6069sor6097334pfk.60.2022.12.20.17.23.35
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 20 Dec 2022 17:23:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=OQ0GOFne;
+       spf=pass (google.com: domain of dgibson@gandalf.ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom=dgibson@gandalf.ozlabs.org
+Return-Path: <dgibson@gandalf.ozlabs.org>
+Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
+        by mx.google.com with ESMTPS id j11-20020a636e0b000000b00477bbd92cfdsi15677465pgc.592.2022.12.20.17.35.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Dec 2022 17:35:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of dgibson@gandalf.ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jmNA+hwn;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=OQ0GOFne;
+       spf=pass (google.com: domain of dgibson@gandalf.ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom=dgibson@gandalf.ozlabs.org
+Received: by gandalf.ozlabs.org (Postfix, from userid 1007)
+	id 4NcGHC3Qhwz4xND; Wed, 21 Dec 2022 12:35:51 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=uCkp37zRSFjLG/vM79nxx1drROk+Rt3/OhdwamPp7PA=;
-        b=jmNA+hwn9beXvoFWUk/HALWv8RqFRBUvi7mLM5zL80VLQtBuR3cezbZA5Nea4wEqp/
-         wSbEfSObTnjRXjuycAbX6Hk6RzzSHlwe6VEt5d97qyPetx69b3+FOfsaqurHWsZs+QnB
-         rSZCWSFy/aLA4y2oxUhiakN0V58v+rx//Wo1rEEhyNrdCcW+lbVEREMnToLIL7JpPBWE
-         SBr7N4yU+qPt5JD7fY/wDXc9k9O5WDrx8VbnwQeW3T5/BqWUFUbDtqmRESPBE8PuitZq
-         50P0WcdCGPDRy9duOGY0mec3lYfEfa2bFmRQVUMyhF6vk1HTCpexwwVVdJoktJu2i1Rl
-         LF5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uCkp37zRSFjLG/vM79nxx1drROk+Rt3/OhdwamPp7PA=;
-        b=f4jSppq1oZlBtArZNG77bQ2oSqqwYcQI6gmgtt70g7oJg7bIwLFwzLVXIH5Rrb+sdN
-         dS0jz0MLOvJHEVJEmqcSJ6MofSbBLmiKIYTWHHNTYsldQy5hOQ7lIIiPeL+pXDpUYIxW
-         JGOAutuKmaAJC3xvmkWv21bNQUxBzjMRXttMeMyr3mxi9Wmm2L6e4mQ2hos1k9VYe4pw
-         7ti3M8mmSGEBJB9mSeaqpiFqme9b2y1rLceserloy0zVW/GumS3zF8NCCLi+5VaCpVl7
-         1z1FGEF55NEkgmKk8tVwz1qFxXw9Pt4LUMKB2BoY2mdvushjYqlc8Ju5R9sy5dVTF78f
-         ICWw==
-X-Gm-Message-State: AFqh2kr71HXm2FkWSUd3AofD+CEJ2TbKScpv5f+kEuM/v3/d7GQzAgeA
-	Z4ntibWt+REyAj/QB2ih3ThWRB9k
-X-Google-Smtp-Source: AMrXdXv+N5BHgswNINYH9uD+4vvDGjvja4pjkh/93gMxAisQHx929xoRpECQp2bh0T+RNyJ3bSBwmQ==
-X-Received: by 2002:aa7:943a:0:b0:578:202d:a33e with SMTP id y26-20020aa7943a000000b00578202da33emr539348pfo.20.1671585814943;
-        Tue, 20 Dec 2022 17:23:34 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2602:47:d48c:8101:3efa:624c:5fb:32c0? ([2602:47:d48c:8101:3efa:624c:5fb:32c0])
-        by smtp.gmail.com with ESMTPSA id w7-20020aa79a07000000b0056c2e497b02sm9536409pfj.173.2022.12.20.17.23.34
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Dec 2022 17:23:34 -0800 (PST)
-Message-ID: <767c0371-50d1-424d-96d0-9ea47c2bbd6b@linaro.org>
-Date: Tue, 20 Dec 2022 17:23:32 -0800
+	d=gibson.dropbear.id.au; s=201602; t=1671586551;
+	bh=hc/MkNbRs6HXfOsHgP/4CBoGgqRbaZEm2xDfRWEe8vY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OQ0GOFne/xbNyB6x1iZteJCfD1GFLXawsqQiFYP2XBPszL8AqlZ9DAjxCmOk6VCtH
+	 6w0wyPawi4n7AUMwR3ZcvJRxvJfkGhatGG+bRPZgED54B8cckyCbHtcp4do6vk3fh9
+	 AgLzKpMXB6mfq5GPi13m9VEJPwhqy/QlNQdhAd7A=
+Date: Wed, 21 Dec 2022 12:16:12 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	Jason Wang <jasowang@redhat.com>,
+	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
+Subject: Re: [RFC PATCH-for-8.0 2/3] hw/ppc/spapr: Replace tswap64(HPTE) by
+ cpu_to_be64(HPTE)
+Message-ID: <Y6JeXJn1qCkeIzuz@yekko>
+References: <20221213125218.39868-1-philmd@linaro.org>
+ <20221213125218.39868-3-philmd@linaro.org>
+ <CAFEAcA96ncqvN9iXybCd2SrVKJ9CKsu5t3_GtdNt1ZEDAkFt0w@mail.gmail.com>
+ <e8c3fdcb-81f1-7067-217c-c49e8748b84a@gmail.com>
+ <CAFEAcA_jH3Zn1cFfnvsd_GhiBj1bNKscs7S7cwFa+FnTC9QC=g@mail.gmail.com>
+ <Y6AFLpDEkpS+muSJ@yekko>
+ <CAFEAcA9CUtdLXKPOqC0uRCyA0xQFZ_SrJ62SSDvPKESaxL3X2A@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2 5/5] target/arm: only perform TCG cpu and machine inits
- if TCG enabled
-Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
-References: <20221220220426.8827-1-farosas@suse.de>
- <20221220220426.8827-6-farosas@suse.de>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20221220220426.8827-6-farosas@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: r9bR/2xgEoPp
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="6LrPJVJFL2btEcHt"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9CUtdLXKPOqC0uRCyA0xQFZ_SrJ62SSDvPKESaxL3X2A@mail.gmail.com>
+X-TUID: 74F4vsquLEdE
 
-On 12/20/22 14:04, Fabiano Rosas wrote:
-> From: Claudio Fontana<cfontana@suse.de>
-> 
-> of note, cpreg lists were previously initialized by TCG first,
-> and then thrown away and replaced with the data coming from KVM.
-> 
-> Now we just initialize once, either for TCG or for KVM.
-> 
-> Signed-off-by: Claudio Fontana<cfontana@suse.de>
-> [moved arm_cpu_register_gdb_regs_for_features out of tcg_enabled]
-> Signed-off-by: Fabiano Rosas<farosas@suse.de>
-> Reviewed-by: Richard Henderson<richard.henderson@linaro.org>
-> ---
-> Originally from:
-> [RFC v14 16/80] target/arm: only perform TCG cpu and machine inits if
-> TCG enabled
-> https://lore.kernel.org/r/20210416162824.25131-17-cfontana@suse.de
-> ---
->   target/arm/cpu.c     | 31 +++++++++++++++++-------------
->   target/arm/kvm.c     | 18 +++++++++---------
->   target/arm/kvm_arm.h |  3 +--
->   target/arm/machine.c | 45 +++++++++++++++++++++++++-------------------
->   4 files changed, 54 insertions(+), 43 deletions(-)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+--6LrPJVJFL2btEcHt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-r~
+On Mon, Dec 19, 2022 at 10:39:40AM +0000, Peter Maydell wrote:
+> On Mon, 19 Dec 2022 at 06:35, David Gibson <david@gibson.dropbear.id.au> =
+wrote:
+> >
+> > On Fri, Dec 16, 2022 at 09:39:19PM +0000, Peter Maydell wrote:
+> > > On Fri, 16 Dec 2022 at 19:11, Daniel Henrique Barboza
+> > > <danielhb413@gmail.com> wrote:
+> > > >
+> > > >
+> > > >
+> > > > On 12/13/22 10:51, Peter Maydell wrote:
+> > > > Yes, most if not all accesses are being handled as "target endian",=
+ even
+> > > > though the target is always big endian.
+> >
+> > So "target is always big endian" is pretty misleading for POWER.  We
+> > always define "TARGET_BIG_ENDIAN" in qemu, but for at least 10 years
+> > the CPUs have been capable of running in either big endian or little
+> > endian mode (selected at runtime).  Some variants can choose
+> > endianness on a per-page basis.  Since the creation of the ISA it's
+> > had "byte reversed" load and store instructions that let it use little
+> > endian for specific memory accesses.
+>=20
+> Yeah, this is like Arm (and for the purposes of this thread
+> I meant essentially "TARGET_BIG_ENDIAN is always defined").
+
+Ok.
+
+> > Really the whole notion of an ISA having an "endianness" doesn't make
+> > a lot of sense - it's an individual load or store to memory that has
+> > an endianness which can depend on a bunch of factors.  When these
+> > macros were created, an ISA nearly always used the same endianness,
+> > but that's not really true any more - not just for POWER, but for a
+> > bunch of targets.  So from that point of view, I think getting rid of
+> > tswap() - particularly one that has compile time semantics, rather
+> > than behaviour which can depend on cpu mode/state is a good idea.
+>=20
+> I tend to think of the TARGET_BIG_ENDIAN/not setting as being
+> something like "CPU bus endianness". At least for Arm, when you
+> put the CPU into BE mode it pretty much means "the CPU byteswaps
+> the data when it comes in/out", AIUI.
+
+Hmm, I guess.  We're not really modelling down to the level of bus
+byte lanes, though, so I'm not really convinced that's a meaningful
+definition in the context of qemu.
+
+> > I believe that even when running in little-endian mode, the hash page
+> > tables are encoded in big-endian, so I think the proposed change makes
+> > sense.
+>=20
+> OK. I still think we should consistently change all the places that are
+> accessing this data structure, though, not just half of them.
+
+Yes, that makes sense.  Although what exactly constitutes "this data
+structure" is a bit complex here.  If we mean just the spapr specific
+"external HPT", then there are only a few more references to it.  If
+we mean all instances of a powerpc hashed page table, then there are a
+bunch more in the cpu target code.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--6LrPJVJFL2btEcHt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEoULxWu4/Ws0dB+XtgypY4gEwYSIFAmOiXkIACgkQgypY4gEw
+YSIbTxAAtUxo8q8Ho8bHkxd+V4KhOskxNx22PrNJ47p+k6gErIgGpoV+XVrsFXGW
+vD4Oy8F8ZZXxE/aPXKhVceFkZe/U+VRrd6+7Ki9R8Wp6z2bdwQ8APdk9tUDFdKuG
+Qpu1Hkh/K0CcK3XuX2nBRSAVOn+x6cNCD8ZSFw8qYYbGvxYDfg3tv34y7uipZ12o
+Rr8w/zxXWBCdrvT312s40vjQphzzbgHYfey3zHdrXfxGL2whS3FtSzpkQvk97DM2
+XltzVWz5Dq5DT5cv2uSCagwuEvhH3lhHQ+QxaJm78ogCrido2hvIwxR8JW4ebF0Y
+oK7Qz/EWDcKDDelOD/4frq6k7j7KsV0AiHTpqngP4TXixcUrv3CUQSfBr7+lM0uP
+Ao8wp7INosKX8AANRHyyCp3Ecr8SOG/lfGjj3cYCJVn9I1XhObgHAkpeSsvk/PmX
++WXiRSz/TwM9NH0gb+4ylFxz0CijtSLrS+p+AuArxUnoQE1VAZkHCVH9pI93yjT8
+1i/uOJIEsMKWxEZTYKNEaCRqMGn9acwNaSofdoaCNFsZYL1Wie4OtVwbmcsN1peH
+S8nqJURDs+iB4JZFNq1lIQD2TmYf+vHriBTujN57yVx1oliAFo4mJ6MF787PJZHw
+NgE3jHW5oA11vKRbey7fbUKN2/eczbNyE9RMaxzlP3bUVsxV6Pg=
+=TJ9j
+-----END PGP SIGNATURE-----
+
+--6LrPJVJFL2btEcHt--

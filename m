@@ -1,155 +1,156 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4957216ejb;
-        Tue, 20 Dec 2022 23:31:23 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtCsfhwn3hTlsD+OAET2HGqvYENGSJbjkugT35821A9VGCnOWuDbxKxH5xwXMR+GnKyi2iO
-X-Received: by 2002:a05:622a:4acd:b0:3a6:9cfa:d6c with SMTP id fx13-20020a05622a4acd00b003a69cfa0d6cmr502699qtb.39.1671607883534;
-        Tue, 20 Dec 2022 23:31:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671607883; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4987042ejb;
+        Wed, 21 Dec 2022 00:30:58 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuCwffZJ3jgsKgk24qUF50Fzi7Q4JCoJqBq2Y5soUiVC8pK2X6N7jzFeLq53yKa2zTkXYca
+X-Received: by 2002:a05:622a:30d:b0:3a7:e783:7b6 with SMTP id q13-20020a05622a030d00b003a7e78307b6mr1458011qtw.5.1671611458723;
+        Wed, 21 Dec 2022 00:30:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671611458; cv=none;
         d=google.com; s=arc-20160816;
-        b=WE/ugLQN4o+1G40ufSkTo+eINKIsyqFUUZTtB7gY9rWknAbeXOTuE2Ghue6Zivbu4P
-         TXpB7WsKaiYiWJhLajdR0/et/QgdWDMWsxsQVq+L3Bz+/VesvSUppyD0Um6vNidoWj2d
-         654mTiifVFaCr+t3LDN9/dl1KRl1qziZ+NO8rISM/l0A/EJ8RIz43kBXenyJSxuzFVdf
-         P6+BLEOccFONQciPPtKz1bN2gfWZcfUE7q/X0FPqBb3IFNk3mLws5W46VV4p9vcOt97W
-         Mhfo7gI8XGGJZbdBYP95oV3+Kqlh7iDYJi65UcNnRmcGmq4/JCb7dYirAXJuXhK7ifUx
-         qGdQ==
+        b=Pk4Ra9PB7i8ksNMAz2/spiXVCnBuuWIpnixBfauATMt8wtRYmTF7GlGXr9Dx8MPqqT
+         68I7zgzSg1K1F62OkH9DU/fDdvT/WBE2aGC+H4E30YkZdTACNG1Hd9Qn/ORMZ26ROwZP
+         SdAgvHrpZAFQxbePH1mgDzUdYv2oHCMFlCq+B9UP1XhS1amoMOpgq/3lbTMQpB2C8e62
+         9lizPPgtncfAv3KGGPV686mL6v4Vn6WkRZtSJo60J1iM0mYBjrZXnc4v+bpwjp4Ldvlv
+         bflX2+b3RmUU1bzGCve0c+FHPjLFWTWzVKRu0Aewfr3EFQdbWDBLgG5HjKS9S5GvK2OO
+         XBVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=17uFPmlsuNP4biJqgI9Rgy41GwdTmXrbERk19Pohl48=;
-        b=v5QJexWm/aU2C8OXVRjc0XwS1S9haF9WZERyY7du2Nm+Ef1hIbYqFXSRamkzhUknW4
-         B0LZ1MGj2xBiWlFiX2DjFfaahtiz7uSLJLVE7qkaY27kWPx0peavLQyLrGp2FnzLRa2Z
-         5ScaGlPsU/0B8YakDW/KvN1EmgCmMkB0hdDaMMcUmSkgajs1clc+QW1W5KFPzG1ifZfY
-         6E/A2tpa+liqvGROgipxqyEskygYozAs7ZWAIIcuYpURjxOZvpREgtBFc2kHgqTnb+nX
-         aaguvVVBVowETQP5WjKUXXrbfshPuvI0IDJ6SPGVcskPvjnWHGcQBFFMCTNyNQEfwfzh
-         K0hg==
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=R5FbyI85fxgrsaiqnHT8JMoFIX5KBJ728RJfaMNeJ90=;
+        b=kKXLTlntT5PdpuYjATtMjbl9ZanRITbt8+L64vyAx8XIPoI0PtyxdWpku0wQgIBrIJ
+         PrFz5sZMtOKQzajzo4206DhHQe2+4vAW4hsv8tUkTHGP5be8AGN8Np9T484pmkjHaeS9
+         qDX5l6muJF+SzL92QbB5UkwlG3K1hYSGgu0vG4uJpx2tp31biTcZNJa22WfF0QGwk6Ii
+         a6KkuKVD5P85dgbH1L/IHamwCh7NFozsV5PB9Ch5xOQBWQ5Q+q5ISy9GsLhyeKFD1I7+
+         iP1tzwQ26YmKy4AwHdyW/UFgsqoCWH+hcwUXjwUcNifvxbh3zkt6F2y9dvZgp5fkRMRG
+         3yKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=vnN+Ahnr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o11-20020a05620a110b00b006ff0df1e003si5716178qkk.295.2022.12.20.23.31.23
+        by mx.google.com with ESMTPS id fa11-20020a05622a4ccb00b003a51d524221si6315860qtb.300.2022.12.21.00.30.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Dec 2022 23:31:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Dec 2022 00:30:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=vnN+Ahnr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p7tZL-0003KR-7I; Wed, 21 Dec 2022 02:31:15 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p7uUq-0004Pi-90; Wed, 21 Dec 2022 03:30:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1p7tZF-0003K2-Uz; Wed, 21 Dec 2022 02:31:10 -0500
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1p7tZB-0002Bg-Ec; Wed, 21 Dec 2022 02:31:09 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.6])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id D59E014DDFCE1;
- Wed, 21 Dec 2022 08:30:51 +0100 (CET)
-Received: from kaod.org (37.59.142.95) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Wed, 21 Dec
- 2022 08:30:51 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-95G001e166cd06-0651-458d-ad0e-072c57ec8b66,
- 78B451B26E434E63100236457A08FF51A4610C03) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <587d650e-fba3-ba44-793e-919dd6f75a90@kaod.org>
-Date: Wed, 21 Dec 2022 08:30:50 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7uUo-0004PI-5N
+ for qemu-devel@nongnu.org; Wed, 21 Dec 2022 03:30:38 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7uUl-0003PD-Ci
+ for qemu-devel@nongnu.org; Wed, 21 Dec 2022 03:30:37 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ c65-20020a1c3544000000b003cfffd00fc0so957997wma.1
+ for <qemu-devel@nongnu.org>; Wed, 21 Dec 2022 00:30:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=R5FbyI85fxgrsaiqnHT8JMoFIX5KBJ728RJfaMNeJ90=;
+ b=vnN+AhnrRrsJz8/UW+STsRPIvUptQtRZFbTHthA2mknFIpi4cchRUrW3bhSe5GjxtU
+ cFv355hO+KD5f6zUBi4GJ26mLGKCg/ioXYg0bf8ANFOVv1NXnBwyyLFjoNKsZU8QYN/v
+ LI3G1X+3T+v7CaglLnvOHdD6Ge+TuoVHBpHshO+WWxKEw6UwGiYWJze6eNc7bVMIqFZW
+ 0sTpv50+cIY6siWPzOkZNs+sI4+0+Il3HTNbZ+zQfDanhfETqgGSgb2uQc9OzyB9TGxl
+ tepN6D9qGOBfl59+hpDADvAveTAbmtPbGFByXvK7IKyH6aOqeft7x9TY9K6+BW3CEA93
+ 3nLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=R5FbyI85fxgrsaiqnHT8JMoFIX5KBJ728RJfaMNeJ90=;
+ b=XYL8AYoLvf8YdFeYpJ1Wkr6kiPDhNE8D1YfgH3/j1VyBTEKMMr52nH661Gr32laHih
+ uOJmrA4feCd89QLAemeCrdfM064qt6yJYZOqm1vedgfboImGo5GLZHFXxaBzsSmXIoag
+ sRJjrRqFMQxVmpghHpBn4YRZ06xhr+4iqIjlOqhZI1fBE46GWQebTaTXaXY6Io1oeeJ1
+ HkMecMr6XuuYahFLN97Y2CqBtfhaEXELZ0Odp34KlGbFPl/tVG3SVGIhgF0pP5fxCB0a
+ YWiwYdMZGzZ/CvQ3C2JHbcSZBAbc97XYb9CJlp4yK9CAmLAfU1tVtChTNanEpHoawdXg
+ NaYg==
+X-Gm-Message-State: AFqh2krr7CN+uyZLl7p6dbxlSK/CBiopDz7azAkNCcWg2i+DLcFjhexG
+ sp3vMIy+MJwcUAbjMRiZljWnmwoqcncYBc06plw=
+X-Received: by 2002:a05:600c:1e10:b0:3d3:404a:8a1b with SMTP id
+ ay16-20020a05600c1e1000b003d3404a8a1bmr1008320wmb.8.1671611433662; 
+ Wed, 21 Dec 2022 00:30:33 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ o15-20020a05600c4fcf00b003c6f3f6675bsm1510381wmq.26.2022.12.21.00.30.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 21 Dec 2022 00:30:33 -0800 (PST)
+Message-ID: <ef04d0f5-4128-4db4-b243-d5ad42f65216@linaro.org>
+Date: Wed, 21 Dec 2022 09:30:31 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH] hw/net: Fix read of uninitialized memory in ftgmac100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.0
+Subject: Re: [PATCH RESEND v2 4/5] target/mips: Restrict
+ 'qapi-commands-machine.h' to system emulation
 Content-Language: en-US
-To: Stephen Longfield <slongfield@google.com>, <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <andrew@aj.id.au>,
- <joel@jms.id.au>, <venture@google.com>, <wuhaotsh@google.com>
-References: <20221220221437.3303721-1-slongfield@google.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20221220221437.3303721-1-slongfield@google.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Greg Kurz <groug@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Aurelien Jarno <aurelien@aurel32.net>, Huacai Chen <chenhuacai@kernel.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-arm@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Markus Armbruster
+ <armbru@redhat.com>, Song Gao <gaosong@loongson.cn>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20221220111122.8966-1-philmd@linaro.org>
+ <20221220111122.8966-5-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221220111122.8966-5-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.95]
-X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 3a82dd69-581e-40ef-aa0e-ba3c9310e22c
-X-Ovh-Tracer-Id: 13126585542082399084
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrgeejgdduuddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffudefleeiudejfeffhfejffeigffhhffhvdekieejheelvdeufffhjedtheeggeenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddrleehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehslhhonhhgfhhivghlugesghhoohhglhgvrdgtohhmpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdprghnughrvgifsegrjhdrihgurdgruhdpjhhovghlsehjmhhsrdhiugdrrghupdhvvghnthhurhgvsehgohhoghhlvgdrtghomhdpfihuhhgrohhtshhhsehgohhoghhlvgdrtghomhdpoffvtefjohhsthepmhhohedvledpmhhouggvpehsmhhtph
- houhht
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
-X-Spam_score_int: -30
-X-Spam_score: -3.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
 X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.161,
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.161,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 55NFvN8gUPWL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JIa3m9xGeN2F
 
-On 12/20/22 23:14, Stephen Longfield wrote:
-> With the `size += 4` before the call to `crc32`, the CRC calculation
-> would overrun the buffer. Size is used in the while loop starting on
-> line 1009 to determine how much data to write back, with the last
-> four bytes coming from `crc_ptr`, so do need to increase it, but should
-> do this after the computation.
+On 20/12/22 12:11, Philippe Mathieu-Daudé wrote:
+> Since commit a0e61807a3 ("qapi: Remove QMP events and commands from
+> user-mode builds") we don't generate the "qapi-commands-machine.h"
+> header in a user-emulation-only build.
 > 
-> I'm unsure why this use of uninitialized memory in the CRC doesn't
-> result in CRC errors, but it seems clear to me that it should not be
-> included in the calculation.
+> Extract the QMP functions from cpu.c (which is always compiled) to
+> the new 'sysemu/monitor.c' unit (which is only compiled when system
+> emulation is selected).
 > 
-> Signed-off-by: Stephen Longfield <slongfield@google.com>
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
-
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-I think imx_fec.c is impacted also.
-
-Thanks,
-
-C.
-
-
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   hw/net/ftgmac100.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-> index 83ef0a783e..d3bf14be53 100644
-> --- a/hw/net/ftgmac100.c
-> +++ b/hw/net/ftgmac100.c
-> @@ -980,9 +980,9 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
->           return size;
->       }
-> 
-> -    /* 4 bytes for the CRC.  */
-> -    size += 4;
->       crc = cpu_to_be32(crc32(~0, buf, size));
-> +    /* Increase size by 4, loop below reads the last 4 bytes from crc_ptr. */
-> +    size += 4;
->       crc_ptr = (uint8_t *) &crc;
-> 
->       /* Huge frames are truncated.  */
-> --
-> 2.39.0.314.g84b9a713c41-goog
-> 
+>   target/mips/cpu.c              | 29 -------------------------
+>   target/mips/sysemu/meson.build |  1 +
+>   target/mips/sysemu/monitor.c   | 39 ++++++++++++++++++++++++++++++++++
+>   3 files changed, 40 insertions(+), 29 deletions(-)
+>   create mode 100644 target/mips/sysemu/monitor.c
 
+Patch queued to mips-next.

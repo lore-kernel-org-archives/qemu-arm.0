@@ -1,380 +1,148 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp5018489ejb;
-        Wed, 21 Dec 2022 01:29:52 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvgchcXxyWiBFg2+VKf/szK+aJoeHCDbMF8U3wVShy3BAABwe4Iv9EM7iiKvk5TW3pwFnl5
-X-Received: by 2002:ad4:4a0d:0:b0:4c7:595c:9940 with SMTP id m13-20020ad44a0d000000b004c7595c9940mr1374124qvz.51.1671614992463;
-        Wed, 21 Dec 2022 01:29:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671614992; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp5024804ejb;
+        Wed, 21 Dec 2022 01:44:01 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvzPQu3TJ73UVbJZpHiUGZqhsKEWCgNzpjDaQlDvLk8YMaTVXDLxovFCqbCJUqPjIsk/08Z
+X-Received: by 2002:a05:622a:230e:b0:3a4:e849:a235 with SMTP id ck14-20020a05622a230e00b003a4e849a235mr1363322qtb.34.1671615841427;
+        Wed, 21 Dec 2022 01:44:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671615841; cv=none;
         d=google.com; s=arc-20160816;
-        b=n5CP4i7UFwXr/HCIWioTHohKzlqCpNKotoeXTu8ebZYdqQ392kzt6q9m1A0SoRyzBJ
-         SS+hKKI2UwWX3f7uJ+A2zDLOCSs+L5iFLMelOQYj4BeddAV7HFf3A13bwhTSOq3FicUY
-         NbztetX44/wJbdvVzGVPAdP7mBouzxXJOVOfOw/06ZP/3Apa1JrabFdFomBvWxj62z/D
-         VGoL1eABBBt//GUMyvKGcKOK69mmu9LY44Zi/2/Q+pi/gJZqNbNitG4i3nbWcEXEJY/X
-         FmchKVXF52xpf0SHm5yjfAascfn59omcboSlW/+RRvzdJcG76f2hZRv5Z4FfuyhIx/x4
-         4hhg==
+        b=qi89cO6+tQ4g5ErINLZ7A3PxzgyPwEFOE7ui854YC8b8GxEc6qsUQ/kebwsPZm+9yt
+         hNeeB6fPqsPpbrhqe1h0Q5JV8LvttoXbwQB0o34crupaj66rc98/O5e+jqJ3dAQP3VbA
+         cI+5N4hNfj/lTnki5kaygCAmM4aOZnvwnRPusZO/M1TjJJ0KNOYoIVudaJvR6hiq9qM8
+         tsb34vN6knCcFtmHng1MxoKhwV+AeD7/T4/fOGY+gHebS+YWJi656pG5dwwF3ruNmLNx
+         edUu+eocOlXPJVPp1kHY3vIaV7VpzhhbskidMGT9QQVN6jDnC+07kRfDhyiaunGPDg3Z
+         HF1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=iPRoYXaja06B9PlGybQ9NK2t6zih+GCtUa/jyKYNfmM=;
-        b=qIbKXuCocaiqO5XqMCv7+BTpxPq9YOOAcdGb506XZxuK3ZlfhJh6eZHgGGtRYuI66h
-         f5wdtEm7zPgkneQkyMstsFZE2ZbSOyXUZitxVy/yeFVBdpvI23wPa4mY7R0alrYp8udJ
-         WzTI7ZKOWwRIpUJBXblxSdGRFdL5gW33XH1zn/ZTEZDrkZVRFhC/l7yHNZ4KWK0bE8az
-         fmkslILP4rcBal0yytIv2lW2mPzU+nHe1m3T5hcBiyTctbPSF6+D36j1khpr4B1B2RZ5
-         5LRdwKTlCLQbrT9IZurvG1iqHZig4QIov3SI6WmQbmNG4rToiDIRvgf5uPjoJh2BQSn0
-         E3zg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=l5O7H77fbEf5a3v3V32B4qSp90L7UIUagCASyC3Wou0=;
+        b=Uy4bMs35II4/mIOcQ1nVY/7Z3FhCG3jtKYCnhqoaURW45Vdo0eKqGLhye3Y4osOWnH
+         mVVP/9Q8Lh9kQ63B8kdz/MGeZsXxcabXpWW9cUGeEDtfdmudtBhRzWW9ljog1mUIMUWj
+         3Y+CyTsYjCJDXOyfQQ3yCyhsf0TRAHlDddrol5j6MZT2c+i62g7EsarQjET12SQnHOSR
+         uEQ5GNS1oEgceki0GdyRNL6OhLKjOoPj1PCMYRcAi9yIgeVbJl/4kqgr1zc31vNSIB1d
+         F1g07S1lfe7q2Pc0UaKWOj8HAOemipSjqed/7K4RQch5HNSWFta7blE6l4O8Q8NLHvgo
+         Rt8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=l3VlODuX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w22-20020a05620a445600b006fed5747979si6531405qkp.334.2022.12.21.01.29.52
+        by mx.google.com with ESMTPS id q28-20020a37f71c000000b006ffd497f056si5886485qkj.7.2022.12.21.01.44.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Dec 2022 01:29:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Dec 2022 01:44:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=l3VlODuX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p7vPF-0005hG-3c; Wed, 21 Dec 2022 04:28:57 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p7vdf-0006pN-GG; Wed, 21 Dec 2022 04:43:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1p7vPD-0005g7-GQ; Wed, 21 Dec 2022 04:28:55 -0500
-Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1p7vPB-0004fv-95; Wed, 21 Dec 2022 04:28:55 -0500
-Received: from localhost.localdomain
- (dynamic-095-117-119-107.95.117.pool.telefonica.de [95.117.119.107])
- by csgraf.de (Postfix) with ESMTPSA id A91016080695;
- Wed, 21 Dec 2022 10:28:51 +0100 (CET)
-From: Alexander Graf <agraf@csgraf.de>
-To: qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7vdY-0006lf-7r
+ for qemu-arm@nongnu.org; Wed, 21 Dec 2022 04:43:45 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p7vdW-0000Xy-L6
+ for qemu-arm@nongnu.org; Wed, 21 Dec 2022 04:43:43 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ c65-20020a1c3544000000b003cfffd00fc0so1089428wma.1
+ for <qemu-arm@nongnu.org>; Wed, 21 Dec 2022 01:43:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=l5O7H77fbEf5a3v3V32B4qSp90L7UIUagCASyC3Wou0=;
+ b=l3VlODuXRLqPZJnxhCIiLdVs4UhRgO7qe1sf6+LNPHcUn8rLqggUUWM2+MpS7qSMM1
+ 2Bk7iMtQ3g8/TQ10GsFLd/hR3sroUNrK7kYbT5PXos8O7D9XzRLqTmBHR2ldcFgyZJR0
+ kDGeWyWahZ80U5vGD/h+m1RxUexxZ1jSbxou4ArA13J11akibEYP6lAmYSfdrjImOg6D
+ txHAqBSiHSa/oEawpfvKvCwesw4GAU9eHHxQxdz4s5dH2LRyw5pDr+sCWBfALnMPq97s
+ C/PjJNL3lWLSA9kNe2yCnoyc21tAXsP6Sf+60i6BP1iVFhlMKYjgmh8UfikBZ7h9kSd9
+ 8TcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=l5O7H77fbEf5a3v3V32B4qSp90L7UIUagCASyC3Wou0=;
+ b=o1rOhzGPpae5q9zdP9cXohS+AFybczpeBDH9A3ljo5OqUq/kTIABuBCaN3PLAkYjOJ
+ R2cFFKqQKls2rb19C3q7IXvhu6xLW8XpLUv8aFCDImY8pqnZdbL2m7OmQy4Fu8iywnow
+ USHQ4EjaMaCc2MjlQt85LMkMab3dhUf4xq66eTOG8OTMguSe1eR2cP3quYvwUmUEoEKZ
+ Ps5s+qqH8lmmKls9oWfc5YdRK/v2iDJNl+a+aAJFZ4smQA4AoE6Fuhqo5jOK/oSa0EoB
+ MljN9ern5zuxg7BfLtyv8tdO2JH7V4558oJFu1xmko6uHeoKa9rELAdEWSaSeiL5s8zf
+ ycLA==
+X-Gm-Message-State: AFqh2kq/cWbjVNXrUd1DZ2TofoFILWxcyKN8o2XXOAGnTSdw1uP/yGdi
+ GwNhf60VPyxbx4leI9MiyYy3NA==
+X-Received: by 2002:a05:600c:48a8:b0:3cf:7197:e68a with SMTP id
+ j40-20020a05600c48a800b003cf7197e68amr825021wmp.18.1671615821025; 
+ Wed, 21 Dec 2022 01:43:41 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ k31-20020a05600c1c9f00b003d22528decesm1743716wms.43.2022.12.21.01.43.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 21 Dec 2022 01:43:40 -0800 (PST)
+Message-ID: <886e896f-a111-d820-defa-198f05b8fba5@linaro.org>
+Date: Wed, 21 Dec 2022 10:43:39 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.0
+Subject: Re: [PATCH v2 2/2] hw/arm/virt: Make accels in GIC finalize logic
+ explicit
+Content-Language: en-US
+To: Alexander Graf <agraf@csgraf.de>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Zenghui Yu <yuzenghui@huawei.com>, Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v2 1/2] hw/arm/virt: Consolidate GIC finalize logic
-Date: Wed, 21 Dec 2022 10:28:49 +0100
-Message-Id: <20221221092850.61332-2-agraf@csgraf.de>
-X-Mailer: git-send-email 2.37.1 (Apple Git-137.1)
-In-Reply-To: <20221221092850.61332-1-agraf@csgraf.de>
 References: <20221221092850.61332-1-agraf@csgraf.de>
-MIME-Version: 1.0
+ <20221221092850.61332-3-agraf@csgraf.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221221092850.61332-3-agraf@csgraf.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.161,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I4Bgm3qCMFH2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eE3jovZrdBgy
 
-Up to now, the finalize_gic_version() code open coded what is essentially
-a support bitmap match between host/emulation environment and desired
-target GIC type.
+On 21/12/22 10:28, Alexander Graf wrote:
+> Let's explicitly list out all accelerators that we support when trying to
+> determine the supported set of GIC versions. KVM was already separate, so
+> the only missing one is HVF which simply reuses all of TCG's emulation
+> code and thus has the same compatibility matrix.
+> 
+> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> 
+> ---
+> 
+> v1 -> v2:
+> 
+>    - Include TCG header for tcg_enabled()
+> ---
+>   hw/arm/virt.c | 6 +++++-
+>   1 file changed, 5 insertions(+), 1 deletion(-)
 
-This open coding leads to undesirable side effects. For example, a VM with
-KVM and -smp 10 will automatically choose GICv3 while the same command
-line with TCG will stay on GICv2 and fail the launch.
-
-This patch combines the TCG and KVM matching code paths by making
-everything a 2 pass process. First, we determine which GIC versions the
-current environment is able to support, then we go through a single
-state machine to determine which target GIC mode that means for us.
-
-After this patch, the only user noticable changes should be consolidated
-error messages as well as TCG -M virt supporting -smp > 8 automatically.
-
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
-
----
-
-v1 -> v2:
-
-  - leave VIRT_GIC_VERSION defines intact, we need them for MADT generation
----
- hw/arm/virt.c         | 199 ++++++++++++++++++++++--------------------
- include/hw/arm/virt.h |  15 ++--
- 2 files changed, 113 insertions(+), 101 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 04eb6c201d..7b54387958 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1820,6 +1820,85 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
-     }
- }
- 
-+static VirtGICType finalize_gic_version_do(const char *accel_name,
-+                                           VirtGICType gic_version,
-+                                           int gics_supported,
-+                                           unsigned int max_cpus)
-+{
-+    /* Convert host/max/nosel to GIC version number */
-+    switch (gic_version) {
-+    case VIRT_GIC_VERSION_HOST:
-+        if (kvm_enabled()) {
-+            /* For KVM, -cpu host means -cpu max */
-+            return finalize_gic_version_do(accel_name, VIRT_GIC_VERSION_MAX,
-+                                           gics_supported, max_cpus);
-+        }
-+
-+        error_report("gic-version=host requires KVM");
-+        exit(1);
-+        break;
-+    case VIRT_GIC_VERSION_MAX:
-+        if (gics_supported & VIRT_GIC_VERSION_4_MASK) {
-+            gic_version = VIRT_GIC_VERSION_4;
-+        } else if (gics_supported & VIRT_GIC_VERSION_3_MASK) {
-+            gic_version = VIRT_GIC_VERSION_3;
-+        } else {
-+            gic_version = VIRT_GIC_VERSION_2;
-+        }
-+        break;
-+    case VIRT_GIC_VERSION_NOSEL:
-+        if ((gics_supported & VIRT_GIC_VERSION_2_MASK) &&
-+            max_cpus <= GIC_NCPU) {
-+            gic_version = VIRT_GIC_VERSION_2;
-+        } else if (gics_supported & VIRT_GIC_VERSION_3_MASK) {
-+            /*
-+             * in case the host does not support v2 emulation or
-+             * the end-user requested more than 8 VCPUs we now default
-+             * to v3. In any case defaulting to v2 would be broken.
-+             */
-+            gic_version = VIRT_GIC_VERSION_3;
-+        } else if (max_cpus > GIC_NCPU) {
-+            error_report("%s only supports GICv2 emulation but more than 8 "
-+                         "vcpus are requested", accel_name);
-+            exit(1);
-+        }
-+        break;
-+    case VIRT_GIC_VERSION_2:
-+    case VIRT_GIC_VERSION_3:
-+    case VIRT_GIC_VERSION_4:
-+        break;
-+    }
-+
-+    /* Check chosen version is effectively supported */
-+    switch (gic_version) {
-+    case VIRT_GIC_VERSION_2:
-+        if (!(gics_supported & VIRT_GIC_VERSION_2_MASK)) {
-+            error_report("%s does not support GICv2 emulation", accel_name);
-+            exit(1);
-+        }
-+        break;
-+    case VIRT_GIC_VERSION_3:
-+        if (!(gics_supported & VIRT_GIC_VERSION_3_MASK)) {
-+            error_report("%s does not support GICv3 emulation", accel_name);
-+            exit(1);
-+        }
-+        break;
-+    case VIRT_GIC_VERSION_4:
-+        if (!(gics_supported & VIRT_GIC_VERSION_4_MASK)) {
-+            error_report("%s does not support GICv4 emulation, is virtualization=on?",
-+                         accel_name);
-+            exit(1);
-+        }
-+        break;
-+    default:
-+        error_report("logic error in finalize_gic_version");
-+        exit(1);
-+        break;
-+    }
-+
-+    return gic_version;
-+}
-+
- /*
-  * finalize_gic_version - Determines the final gic_version
-  * according to the gic-version property
-@@ -1828,118 +1907,46 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
-  */
- static void finalize_gic_version(VirtMachineState *vms)
- {
-+    const char *accel_name = current_accel_name();
-     unsigned int max_cpus = MACHINE(vms)->smp.max_cpus;
-+    int gics_supported = 0;
- 
--    if (kvm_enabled()) {
--        int probe_bitmap;
--
--        if (!kvm_irqchip_in_kernel()) {
--            switch (vms->gic_version) {
--            case VIRT_GIC_VERSION_HOST:
--                warn_report(
--                    "gic-version=host not relevant with kernel-irqchip=off "
--                     "as only userspace GICv2 is supported. Using v2 ...");
--                return;
--            case VIRT_GIC_VERSION_MAX:
--            case VIRT_GIC_VERSION_NOSEL:
--                vms->gic_version = VIRT_GIC_VERSION_2;
--                return;
--            case VIRT_GIC_VERSION_2:
--                return;
--            case VIRT_GIC_VERSION_3:
--                error_report(
--                    "gic-version=3 is not supported with kernel-irqchip=off");
--                exit(1);
--            case VIRT_GIC_VERSION_4:
--                error_report(
--                    "gic-version=4 is not supported with kernel-irqchip=off");
--                exit(1);
--            }
--        }
-+    /* Determine which GIC versions the current environment supports */
-+    if (kvm_enabled() && kvm_irqchip_in_kernel()) {
-+        int probe_bitmap = kvm_arm_vgic_probe();
- 
--        probe_bitmap = kvm_arm_vgic_probe();
-         if (!probe_bitmap) {
-             error_report("Unable to determine GIC version supported by host");
-             exit(1);
-         }
- 
--        switch (vms->gic_version) {
--        case VIRT_GIC_VERSION_HOST:
--        case VIRT_GIC_VERSION_MAX:
--            if (probe_bitmap & KVM_ARM_VGIC_V3) {
--                vms->gic_version = VIRT_GIC_VERSION_3;
--            } else {
--                vms->gic_version = VIRT_GIC_VERSION_2;
--            }
--            return;
--        case VIRT_GIC_VERSION_NOSEL:
--            if ((probe_bitmap & KVM_ARM_VGIC_V2) && max_cpus <= GIC_NCPU) {
--                vms->gic_version = VIRT_GIC_VERSION_2;
--            } else if (probe_bitmap & KVM_ARM_VGIC_V3) {
--                /*
--                 * in case the host does not support v2 in-kernel emulation or
--                 * the end-user requested more than 8 VCPUs we now default
--                 * to v3. In any case defaulting to v2 would be broken.
--                 */
--                vms->gic_version = VIRT_GIC_VERSION_3;
--            } else if (max_cpus > GIC_NCPU) {
--                error_report("host only supports in-kernel GICv2 emulation "
--                             "but more than 8 vcpus are requested");
--                exit(1);
--            }
--            break;
--        case VIRT_GIC_VERSION_2:
--        case VIRT_GIC_VERSION_3:
--            break;
--        case VIRT_GIC_VERSION_4:
--            error_report("gic-version=4 is not supported with KVM");
--            exit(1);
-+        if (probe_bitmap & KVM_ARM_VGIC_V2) {
-+            gics_supported |= VIRT_GIC_VERSION_2_MASK;
-         }
--
--        /* Check chosen version is effectively supported by the host */
--        if (vms->gic_version == VIRT_GIC_VERSION_2 &&
--            !(probe_bitmap & KVM_ARM_VGIC_V2)) {
--            error_report("host does not support in-kernel GICv2 emulation");
--            exit(1);
--        } else if (vms->gic_version == VIRT_GIC_VERSION_3 &&
--                   !(probe_bitmap & KVM_ARM_VGIC_V3)) {
--            error_report("host does not support in-kernel GICv3 emulation");
--            exit(1);
-+        if (probe_bitmap & KVM_ARM_VGIC_V3) {
-+            gics_supported |= VIRT_GIC_VERSION_3_MASK;
-         }
--        return;
--    }
--
--    /* TCG mode */
--    switch (vms->gic_version) {
--    case VIRT_GIC_VERSION_NOSEL:
--        vms->gic_version = VIRT_GIC_VERSION_2;
--        break;
--    case VIRT_GIC_VERSION_MAX:
-+    } else if (kvm_enabled() && !kvm_irqchip_in_kernel()) {
-+        /* KVM w/o kernel irqchip can only deal with GICv2 */
-+        gics_supported |= VIRT_GIC_VERSION_2_MASK;
-+        accel_name = "KVM with kernel-irqchip=off";
-+    } else {
-+        gics_supported |= VIRT_GIC_VERSION_2_MASK;
-         if (module_object_class_by_name("arm-gicv3")) {
--            /* CONFIG_ARM_GICV3_TCG was set */
-+            gics_supported |= VIRT_GIC_VERSION_3_MASK;
-             if (vms->virt) {
-                 /* GICv4 only makes sense if CPU has EL2 */
--                vms->gic_version = VIRT_GIC_VERSION_4;
--            } else {
--                vms->gic_version = VIRT_GIC_VERSION_3;
-+                gics_supported |= VIRT_GIC_VERSION_4_MASK;
-             }
--        } else {
--            vms->gic_version = VIRT_GIC_VERSION_2;
-         }
--        break;
--    case VIRT_GIC_VERSION_HOST:
--        error_report("gic-version=host requires KVM");
--        exit(1);
--    case VIRT_GIC_VERSION_4:
--        if (!vms->virt) {
--            error_report("gic-version=4 requires virtualization enabled");
--            exit(1);
--        }
--        break;
--    case VIRT_GIC_VERSION_2:
--    case VIRT_GIC_VERSION_3:
--        break;
-     }
-+
-+    /*
-+     * Then convert helpers like host/max to concrete GIC versions and ensure
-+     * the desired version is supported
-+     */
-+    vms->gic_version = finalize_gic_version_do(accel_name, vms->gic_version,
-+                                               gics_supported, max_cpus);
- }
- 
- /*
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index c7dd59d7f1..e1ddbea96b 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -109,14 +109,19 @@ typedef enum VirtMSIControllerType {
- } VirtMSIControllerType;
- 
- typedef enum VirtGICType {
--    VIRT_GIC_VERSION_MAX,
--    VIRT_GIC_VERSION_HOST,
--    VIRT_GIC_VERSION_2,
--    VIRT_GIC_VERSION_3,
--    VIRT_GIC_VERSION_4,
-+    VIRT_GIC_VERSION_MAX = 0,
-+    VIRT_GIC_VERSION_HOST = 1,
-+    /* The concrete GIC values have to match the GIC version number */
-+    VIRT_GIC_VERSION_2 = 2,
-+    VIRT_GIC_VERSION_3 = 3,
-+    VIRT_GIC_VERSION_4 = 4,
-     VIRT_GIC_VERSION_NOSEL,
- } VirtGICType;
- 
-+#define VIRT_GIC_VERSION_2_MASK BIT(VIRT_GIC_VERSION_2)
-+#define VIRT_GIC_VERSION_3_MASK BIT(VIRT_GIC_VERSION_3)
-+#define VIRT_GIC_VERSION_4_MASK BIT(VIRT_GIC_VERSION_4)
-+
- struct VirtMachineClass {
-     MachineClass parent;
-     bool disallow_affinity_adjustment;
--- 
-2.37.1 (Apple Git-137.1)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

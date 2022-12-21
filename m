@@ -1,103 +1,211 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp5119590ejb;
-        Wed, 21 Dec 2022 04:33:51 -0800 (PST)
-X-Received: by 2002:a05:6a00:27a0:b0:56c:7803:1ab0 with SMTP id bd32-20020a056a0027a000b0056c78031ab0mr2669773pfb.29.1671626031143;
-        Wed, 21 Dec 2022 04:33:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671626031; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp5241704ejb;
+        Wed, 21 Dec 2022 07:26:00 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvlZ/TS1tsdeM8TOqHdiGXTu2piiVyrhPnNv+cDK0Nyhk/v/f1gocjDGJSZ5MGTBWz5wbFu
+X-Received: by 2002:ac8:546:0:b0:3a9:9218:e110 with SMTP id c6-20020ac80546000000b003a99218e110mr2624178qth.37.1671636360684;
+        Wed, 21 Dec 2022 07:26:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671636360; cv=none;
         d=google.com; s=arc-20160816;
-        b=ollGK1NvxmswxNj9skLCuccVjrGd79wnk1v5DlHLRoTrUU5QGb2eeMMsMhn5FZCUyP
-         i1ZdK0IiV3wYNvGdZtZ3T4WUONfqmDXFPPFBWG+JpHeVPyf9lCIlUXqXl2BlhovLu/IB
-         DL7ci1sMmBgmDsHvpYnOBEVCzVXqnNjyXQo23JF7ddxjf8D1ChEU/NFRVfb4dwjHFxK6
-         xX8cQ4cMt7J3DGx56I99NYEVknSNRVlmJ/xJITeURzPL4mJL8UX3RdAk+e1Vg6f+lS1t
-         FueSMNOxGQEDQG4gSSTPAYT76xG115ofiKfR2YHgxoygGNH92Lc//4haK/M0KnIVhtac
-         sQnw==
+        b=vORLnTVppXWotiKW6tetsttA51RPze4cknL6dsm2g1wAp+dVYjydMMfNKYlhFZdN4H
+         73FFZXef/flWSeVQbtRKpfZ5S08ZRbV+Lssg3XZrbjeyZf4dKlnnWCAdZGKliQv7aPyC
+         yqdKhko7eadUs1FwssIaLxXAhNXPgpOKM1pLhtHqebrxAAT2AUr/rudw0ZdZc5CtihZu
+         0PoJHaYqoQ1UXNnRfy7igLXNccKovXv4kmLbPoIMUl5huP3nEkJjJj6rHN2NBjoDFV+H
+         t9/j63d24oI0+2CObxnlOkSJiY3bONaSuuGUZJqMsVoEzpHn8P9NEiXtlLKChIuR8pTQ
+         M5Sg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=2gUepqRJ7JuPnGa6uYh1XSbS16AVlek0FK2REpxb6AA=;
-        b=w1KNi0Cak6uxB9t4YyJSYSqC0hca+MufLgm2MyVCYbRLmDtgEuBHIZivrD314wVLj7
-         FF10nxJ9TEeHk1lZjAXIATBFwYKrVaSIKEDbtmzC0No9POo5Z3Uf5RgxlzBPcVWdvN9r
-         R+DdKGDwaGVGcd21DbWxA4ppC0np8NZqf8RDeF8auoVBe9cOrZYc3xKmxKPjiSpZ2WJw
-         h2H0WNtdkY/+QDpx3nIGo4HP48zHOmUk2qAjpSWrf8gp/VcDDNtj1SMVp2eujZpYjySL
-         VCjI8f8RYXpmeLCFwfm6aUShbxghOmw0vNm9itIrpqtezzQ6ZsGN/Dhjx0nPre0GcWxK
-         xc2g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=FKLQ4CL2Fnag1jLCS7V20VA6ivmCcPLGba3CUbYo2QE=;
+        b=gvTuLVJeQrQvApCP6oRACwJUS2pqTlr6B2XvPW1EO09R4pGV5oBYqCJz7hH4iUTQUy
+         XqiQrzYREXXEIbvEiOV3d8PY4XLCobSvN+VjhjpeUKkdPqs51J+Vow2jY8yWsorqBh8n
+         RkjocaeAb8K4ElB77qKDLbXUA0OImkByYh8dwaAjol2h5d7AKWcV9ap9YZMUQLO3MNyK
+         iwM6cdaVk7IdBhJ40JWxTgiimJO+Tz5n75Whn7gOZ8gEQIockDvYJ8mlvLW9ft9c6mco
+         Lal6/s71ByTTOcdyzaa6t3NgTbF4/y+FbEhhnrpua2tDz4a/7ie8xSHk3t5qgDQRsg/v
+         R6jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jJG0EVh9;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e15-20020a62aa0f000000b0057a9b1468d5sor6586947pff.43.2022.12.21.04.33.50
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VPsDVvDl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id do54-20020a05620a2b3600b006eee7be528esi6349996qkb.561.2022.12.21.07.26.00
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 21 Dec 2022 04:33:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 21 Dec 2022 07:26:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jJG0EVh9;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=2gUepqRJ7JuPnGa6uYh1XSbS16AVlek0FK2REpxb6AA=;
-        b=jJG0EVh9zw6L1d9Pn6k0cCNhXTrHPYVTq8iOY6mOGMUpRC3CD55h/je4laY8Fv1H1M
-         7HQ1Vj1tnGiaq4gBwHLfr4hWjqJYwglvx/2xxpDgszY0xCZVix239HBtL4yidQfY14Vr
-         +iTdGYWT4m5lr2JGDrJPN/LZqCn3Dz3nyrDzgE7bdjLUF+IsfZ1h6VK4l4Sos2QUXNaH
-         28HOkvdQm+hhhGlZz/EDKshRrEu1q45AGoF8adXG4gB0QITj9joWw1TQGVsClXj68esR
-         t+zQX5f887gF69AJHmc2ZQGocnD8NNVRM66iP1gcL1wfz3Fh/f1ItGrQa4+DnPC5L4GK
-         ezwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2gUepqRJ7JuPnGa6uYh1XSbS16AVlek0FK2REpxb6AA=;
-        b=oXOHV8hb24etl8Q69OSpm2/i58NBA4IQFe/O4Y8eNXui3AGMWTpdOTZKNavsFgF5ax
-         69iDyP1rIPh8aRLyoDK9L8yLRvA2VMxc96wfZ9MrXgCMF9pOgP5rfVSpFJQm62+zi3Pa
-         mpJ9tzRmjMYeYqpaK/4uwK9EcMhaVpddUovH6zNVQw9AqALgxaEBHj5jMYNoan7QG4li
-         9ACUrH0TssX3GqZW32T24BClBSKf/UnlI40cmonOV0TN/VvetD+4ya6ANAReuWvP6G1E
-         i8/LpAbzy6IjqtCwSe/E5tqCdoPSq1aPjB6p80DCKsp8I/JuE6GzB3TxLhJH4jnFcGon
-         YhiA==
-X-Gm-Message-State: AFqh2kppPhWBc24N6mMsrGaHu/GTgmLz5Cm4QgfEY6gcgmhdFfpoBIi9
-	xW3c3scJXTZaigxQ2UpuGXsC+v6nJhRt/C/WXtXS/f/I445yPx50
-X-Google-Smtp-Source: AMrXdXsh83HjF9RGLEdXJCc+AKRUwIGHGh3J17Ll9HJqw+jo4kbjV/ormeZ6Trl7Ug8aqxWK9HUcA5UybqBQg5Q1TZA=
-X-Received: by 2002:a63:3d4:0:b0:492:50dc:da4d with SMTP id
- 203-20020a6303d4000000b0049250dcda4dmr53017pgd.192.1671626030627; Wed, 21 Dec
- 2022 04:33:50 -0800 (PST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VPsDVvDl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p80yd-0005OQ-Gz; Wed, 21 Dec 2022 10:25:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1p80yc-0005OC-8a
+ for qemu-arm@nongnu.org; Wed, 21 Dec 2022 10:25:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1p80ya-00073F-Hw
+ for qemu-arm@nongnu.org; Wed, 21 Dec 2022 10:25:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1671636347;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=FKLQ4CL2Fnag1jLCS7V20VA6ivmCcPLGba3CUbYo2QE=;
+ b=VPsDVvDlg/L5fr9UNJ1Heabjb7s19p1sEHIggXPaay4vcKYPdlQR80bOqn75yKjkrXswv4
+ aQRRhWvwGoYz1VIkLcIT9gnA1i3oI/Mq8T04pNMd0VYE+/ploMPj6B8dJZ+0z0nQGtQJcI
+ Ii1fVpbrHJXPMtwE2MfPwDsMecC8vP8=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-480-xXCP9yv2NmGgggGoLqaIkw-1; Wed, 21 Dec 2022 10:25:42 -0500
+X-MC-Unique: xXCP9yv2NmGgggGoLqaIkw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 13E0118A64E0;
+ Wed, 21 Dec 2022 15:25:42 +0000 (UTC)
+Received: from localhost (unknown [10.22.32.189])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A01E8400D79E;
+ Wed, 21 Dec 2022 15:25:41 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Alexander Graf <agraf@csgraf.de>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, Zenghui
+ Yu <yuzenghui@huawei.com>, Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v2 1/2] hw/arm/virt: Consolidate GIC finalize logic
+In-Reply-To: <20221221092850.61332-2-agraf@csgraf.de>
+Organization: Red Hat GmbH
+References: <20221221092850.61332-1-agraf@csgraf.de>
+ <20221221092850.61332-2-agraf@csgraf.de>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Wed, 21 Dec 2022 16:25:39 +0100
+Message-ID: <87o7rw6aoc.fsf@redhat.com>
 MIME-Version: 1.0
-References: <20221213125218.39868-1-philmd@linaro.org> <20221213125218.39868-3-philmd@linaro.org>
- <CAFEAcA96ncqvN9iXybCd2SrVKJ9CKsu5t3_GtdNt1ZEDAkFt0w@mail.gmail.com>
- <e8c3fdcb-81f1-7067-217c-c49e8748b84a@gmail.com> <CAFEAcA_jH3Zn1cFfnvsd_GhiBj1bNKscs7S7cwFa+FnTC9QC=g@mail.gmail.com>
- <Y6AFLpDEkpS+muSJ@yekko> <CAFEAcA9CUtdLXKPOqC0uRCyA0xQFZ_SrJ62SSDvPKESaxL3X2A@mail.gmail.com>
- <Y6JeXJn1qCkeIzuz@yekko>
-In-Reply-To: <Y6JeXJn1qCkeIzuz@yekko>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 21 Dec 2022 12:33:39 +0000
-Message-ID: <CAFEAcA96faOvyo9cqpTZm+U1iMpRphnxvXfUuqStonzGGcMTLQ@mail.gmail.com>
-Subject: Re: [RFC PATCH-for-8.0 2/3] hw/ppc/spapr: Replace tswap64(HPTE) by cpu_to_be64(HPTE)
-To: David Gibson <david@gibson.dropbear.id.au>
-Cc: Daniel Henrique Barboza <danielhb413@gmail.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>, 
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Greg Kurz <groug@kaod.org>, 
-	qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: O+uHx3q2wVas
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UzqMdUk+SwRV
 
-On Wed, 21 Dec 2022 at 01:35, David Gibson <david@gibson.dropbear.id.au> wrote:
-> On Mon, Dec 19, 2022 at 10:39:40AM +0000, Peter Maydell wrote:
-> > OK. I still think we should consistently change all the places that are
-> > accessing this data structure, though, not just half of them.
+On Wed, Dec 21 2022, Alexander Graf <agraf@csgraf.de> wrote:
+
+> Up to now, the finalize_gic_version() code open coded what is essentially
+> a support bitmap match between host/emulation environment and desired
+> target GIC type.
 >
-> Yes, that makes sense.  Although what exactly constitutes "this data
-> structure" is a bit complex here.  If we mean just the spapr specific
-> "external HPT", then there are only a few more references to it.  If
-> we mean all instances of a powerpc hashed page table, then there are a
-> bunch more in the cpu target code.
+> This open coding leads to undesirable side effects. For example, a VM with
+> KVM and -smp 10 will automatically choose GICv3 while the same command
+> line with TCG will stay on GICv2 and fail the launch.
+>
+> This patch combines the TCG and KVM matching code paths by making
+> everything a 2 pass process. First, we determine which GIC versions the
+> current environment is able to support, then we go through a single
+> state machine to determine which target GIC mode that means for us.
+>
+> After this patch, the only user noticable changes should be consolidated
+> error messages as well as TCG -M virt supporting -smp > 8 automatically.
+>
+> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>
+> ---
+>
+> v1 -> v2:
+>
+>   - leave VIRT_GIC_VERSION defines intact, we need them for MADT generation
+> ---
+>  hw/arm/virt.c         | 199 ++++++++++++++++++++++--------------------
+>  include/hw/arm/virt.h |  15 ++--
+>  2 files changed, 113 insertions(+), 101 deletions(-)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 04eb6c201d..7b54387958 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1820,6 +1820,85 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+>      }
+>  }
+>  
+> +static VirtGICType finalize_gic_version_do(const char *accel_name,
+> +                                           VirtGICType gic_version,
+> +                                           int gics_supported,
+> +                                           unsigned int max_cpus)
+> +{
+> +    /* Convert host/max/nosel to GIC version number */
+> +    switch (gic_version) {
+> +    case VIRT_GIC_VERSION_HOST:
+> +        if (kvm_enabled()) {
+> +            /* For KVM, -cpu host means -cpu max */
 
-I had in mind "places where we write this specific array of bytes
-spapr->htab".
+That should rather be "gic-version" instead of "cpu", I guess?
 
-thanks
--- PMM
+> +            return finalize_gic_version_do(accel_name, VIRT_GIC_VERSION_MAX,
+> +                                           gics_supported, max_cpus);
+> +        }
+> +
+> +        error_report("gic-version=host requires KVM");
+> +        exit(1);
+> +        break;
+
+I wonder whether reporting an error for !kvm_enabled() and falling
+through would be more readable.
+
+...although all of this is already more readable than before :)
+
+> +    case VIRT_GIC_VERSION_MAX:
+> +        if (gics_supported & VIRT_GIC_VERSION_4_MASK) {
+> +            gic_version = VIRT_GIC_VERSION_4;
+> +        } else if (gics_supported & VIRT_GIC_VERSION_3_MASK) {
+> +            gic_version = VIRT_GIC_VERSION_3;
+> +        } else {
+> +            gic_version = VIRT_GIC_VERSION_2;
+> +        }
+> +        break;
+> +    case VIRT_GIC_VERSION_NOSEL:
+> +        if ((gics_supported & VIRT_GIC_VERSION_2_MASK) &&
+> +            max_cpus <= GIC_NCPU) {
+> +            gic_version = VIRT_GIC_VERSION_2;
+> +        } else if (gics_supported & VIRT_GIC_VERSION_3_MASK) {
+> +            /*
+> +             * in case the host does not support v2 emulation or
+> +             * the end-user requested more than 8 VCPUs we now default
+> +             * to v3. In any case defaulting to v2 would be broken.
+> +             */
+> +            gic_version = VIRT_GIC_VERSION_3;
+> +        } else if (max_cpus > GIC_NCPU) {
+> +            error_report("%s only supports GICv2 emulation but more than 8 "
+> +                         "vcpus are requested", accel_name);
+> +            exit(1);
+> +        }
+> +        break;
+> +    case VIRT_GIC_VERSION_2:
+> +    case VIRT_GIC_VERSION_3:
+> +    case VIRT_GIC_VERSION_4:
+> +        break;
+> +    }
+

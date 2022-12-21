@@ -1,79 +1,103 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp5018457ejb;
-        Wed, 21 Dec 2022 01:29:48 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuCNy9IiQ3/7OE4Am5DeiGsUeV2otdLndzdSDavLRyzJ+RixVK4/mWbYoa2JTVCtQCOLY7w
-X-Received: by 2002:a05:6214:350d:b0:4c6:90c6:b427 with SMTP id nk13-20020a056214350d00b004c690c6b427mr1570124qvb.39.1671614988711;
-        Wed, 21 Dec 2022 01:29:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671614988; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp5046376ejb;
+        Wed, 21 Dec 2022 02:23:56 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtwBnYVMs/mAPIW3FyTSLBZ3q6SrUy2t00RkVzTQBeebfSDyQ3p4dSNdIGUWhWSeNmX6G2M
+X-Received: by 2002:a05:6214:418c:b0:4bb:60c4:d48 with SMTP id ld12-20020a056214418c00b004bb60c40d48mr1624865qvb.43.1671618236037;
+        Wed, 21 Dec 2022 02:23:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671618236; cv=none;
         d=google.com; s=arc-20160816;
-        b=CjXzpwNpgrUXwdC/QOaPiZua0mBzxacZM6hnDxetLvZ9yCWBJ1WDEiq61jTwXTYtMh
-         uPsRaN8g8KqYmtyfzXuLZfuOsRxrME0aa8EafcLNjo3ldgBAnSLtkYjOfG8U1LZ6p0dY
-         cKHn8UfcFmKZT43w047yx9iqJsUmm5yYYF20ID3dtaMJKwaVnQO7PHRh7CnEmose1CHL
-         P8kGYso7WAZdx8EqhRcoh7QX4+QoS9+iCd1EErWnncUxqOKPPtzIoPp6sU27rkxLA7oz
-         CqufZyQrnkYB9KOORnzH6frQURJv7mzawUfChMEno1ackMxbcEvqstkNQZGQEOQT4dzy
-         /77Q==
+        b=w6uTmFm5Iz6bCS2Gzg+GXFWoa2MZUPm07n24pTZaVEgHH+PaJSOrGqqhe+gYXO2OMg
+         m56+7k4T2kWysvflAPqyFj7E3OxUTaCHLv3aUU2nj5bPNSWZOPACaCsI7O8ecY52Zpw4
+         5yipqmJGY48yC5aFMbfYrpXuiEucv9FYrBTpdQXEVH7IIyzCt3nhrslvy2kcufeWfalw
+         K6ey1i9lQ/k5Tw9AVN+DFAH8iCuBBBkBgNFPzroYBa6ysiK/94owHKytPAYJAwaN0A/D
+         GryNWs1GHwbkHaGimU6C6/FgdwufsEmlW10EDBVKUxjXEqk7Ce1a9U0StnGxYJws7/Uc
+         +Aew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=/GZIEgrf017t3B5J/cERFEmDNW4PTYPwabnJi7uTGqU=;
-        b=Mm4De3T0mhK9QBPlNAoPyj126RGq0HaWaJvSzNYsdSm23nREiHOgxiat/svXNcMM5X
-         8W4JGSOUVtUWVoBwSjGWGRKw7TSNRIxtAp2ugT+mflJLIsojePGDchKP1TqvjPbCPYkh
-         ZKnKSYytR4QsXbh9FKRVyqysgRqny6Y+fLS3GYgbh9H/FYfz/u80CW1KpDdgboUq/wW3
-         zp2MFQzDTPyUyoVJq2lgkrvOsoQFxEijN+Tn40B83MTGA9bR/4xCpmqqkYiYKk7uZQLL
-         QSyZSz3BmClHNQBmfEBpT67YX7pV2c6oj/Bm1JgOL/TCIzXBmQKieG9FlV06XAQNQV9w
-         l6LA==
+        bh=jhdWXdzUPajXXLUf7w8EgFTrawha12vH67vo8ojCPjo=;
+        b=boAaVAAriyi0kqaeHBxFmXjt/bLzDHeUcItmVmdTESslJKLCLJxhUATE2xqC/J5EI8
+         WLvhIFdqPsZWFnVwEnazTATc3EZsKnJOtcJymWNpe7GVlgf6GBgDur/euTwDDD8mpFmN
+         KYFKvlr3TXAttLeaILA484cyUc0irqGHBrCwSR6qZpGf4qXVMjkqwq+beTl3FmZSb2nB
+         Hysw20pFXrxia8+ZCNvofHYENFrus5vLxX3pOBx9nQQW3IFQmvQa0/HtOgH9Vn8SooLl
+         e7TURTa+6lIkfJ1hCqIjS/yw8dX9zvymmOB/ZYUFHoaTCwdL1n8XGxwPU4pDEwrbQkDY
+         kBHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z16-20020a056214041000b004b18caf88bbsi6306777qvx.360.2022.12.21.01.29.48
+        by mx.google.com with ESMTPS id im15-20020a056214246f00b004c6d6f39b2fsi6358649qvb.12.2022.12.21.02.23.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Dec 2022 01:29:48 -0800 (PST)
+        Wed, 21 Dec 2022 02:23:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p7vP6-0005fO-Pa; Wed, 21 Dec 2022 04:28:48 -0500
+	id 1p7wFe-0002D3-IV; Wed, 21 Dec 2022 05:23:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1p7vP4-0005en-B0; Wed, 21 Dec 2022 04:28:46 -0500
-Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1p7vP1-0004df-Fx; Wed, 21 Dec 2022 04:28:45 -0500
-Received: from [192.168.106.127]
- (dynamic-095-117-119-107.95.117.pool.telefonica.de [95.117.119.107])
- by csgraf.de (Postfix) with ESMTPSA id 44B2760802DD;
- Wed, 21 Dec 2022 10:28:40 +0100 (CET)
-Message-ID: <50590ff2-3135-62a4-580e-72c53574f8cb@csgraf.de>
-Date: Wed, 21 Dec 2022 10:28:39 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1p7wFc-0002Bx-6L
+ for qemu-arm@nongnu.org; Wed, 21 Dec 2022 05:23:04 -0500
+Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1p7wFZ-00015H-Vx
+ for qemu-arm@nongnu.org; Wed, 21 Dec 2022 05:23:03 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.132])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 57D4F20B7E;
+ Wed, 21 Dec 2022 10:22:57 +0000 (UTC)
+Received: from kaod.org (37.59.142.96) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Wed, 21 Dec
+ 2022 11:22:56 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R0015332f8f8-ac9b-4c15-bd05-5bfab4c91e29,
+ 78B451B26E434E63100236457A08FF51A4610C03) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <ea5ee3dc-b59e-6497-048e-dc991e38d2b7@kaod.org>
+Date: Wed, 21 Dec 2022 11:22:50 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.0
-Subject: Re: [PATCH 1/2] hw/arm/virt: Consolidate GIC finalize logic
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.1
+Subject: Re: [PATCH RESEND v2 5/5] target/ppc: Restrict
+ 'qapi-commands-machine.h' to system emulation
 Content-Language: en-US
-To: Zenghui Yu <yuzenghui@huawei.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-References: <20221220230414.47876-1-agraf@csgraf.de>
- <20221220230414.47876-2-agraf@csgraf.de>
- <2e2a7246-5b79-637d-cbfe-65bc686d523e@huawei.com>
-From: Alexander Graf <agraf@csgraf.de>
-In-Reply-To: <2e2a7246-5b79-637d-cbfe-65bc686d523e@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ <qemu-devel@nongnu.org>
+CC: <qemu-ppc@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, Greg Kurz
+ <groug@kaod.org>, Daniel Henrique Barboza <danielhb413@gmail.com>, Xiaojuan
+ Yang <yangxiaojuan@loongson.cn>, Aurelien Jarno <aurelien@aurel32.net>,
+ Huacai Chen <chenhuacai@kernel.org>, Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>, <qemu-arm@nongnu.org>, David Gibson
+ <david@gibson.dropbear.id.au>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Markus
+ Armbruster <armbru@redhat.com>, Song Gao <gaosong@loongson.cn>, Richard
+ Henderson <richard.henderson@linaro.org>
+References: <20221220111122.8966-1-philmd@linaro.org>
+ <20221220111122.8966-6-philmd@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20221220111122.8966-6-philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 3951a8fa-c09e-4349-b441-da1f147c16d8
+X-Ovh-Tracer-Id: 16033096148728056708
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrgeekgdduhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffdufeeliedujeeffffhjeffiefghffhhfdvkeeijeehledvueffhfejtdehgeegnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphhhihhlmhgusehlihhnrghrohdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpqhgvmhhuqdhpphgtsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdgurghnihgvlhhhsgegudefsehgmhgrihhlrdgtohhmpdihrghnghigihgrohhjuhgrnheslhhoohhnghhsohhnrdgtnhdprghurhgvlhhivghnsegruhhrvghlfedvrdhnvghtpdgthhgvnhhhuhgrtggriheskhgvrhhnvghlrdhorhhgpdgrlhgvkhhsrghnug
+ grrhdrrhhikhgrlhhosehshihrmhhirgdrtghomhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpuggrvhhiugesghhisghsohhnrdgurhhophgsvggrrhdrihgurdgruhdpjhhirgiguhhnrdihrghnghesfhhlhihgohgrthdrtghomhdprghrmhgsrhhusehrvgguhhgrthdrtghomhdpghgrohhsohhngheslhhoohhnghhsohhnrdgtnhdprhhitghhrghrugdrhhgvnhguvghrshhonheslhhinhgrrhhordhorhhgpdhgrhhouhhgsehkrghougdrohhrghdpoffvtefjohhsthepmhhoheegkedpmhhouggvpehsmhhtphhouhht
+Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
+ helo=3.mo548.mail-out.ovh.net
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.161,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,44 +112,187 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jdfQEC4My81x
+X-TUID: 8cULtuaVZXmg
 
-Hey Zengui,
+On 12/20/22 12:11, Philippe Mathieu-Daudé wrote:
+> Since commit a0e61807a3 ("qapi: Remove QMP events and commands from
+> user-mode builds") we don't generate the "qapi-commands-machine.h"
+> header in a user-emulation-only build.
+> 
+> Move the QMP functions from cpu_init.c (which is always compiled) to
+> monitor.c (which is only compiled when system-emulation is selected).
+> Note ppc_cpu_class_by_name() is used by both file units, so we expose
+> its prototype in "cpu-qom.h".
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-On 21.12.22 04:35, Zenghui Yu wrote:
-> On 2022/12/21 7:04, Alexander Graf wrote:
->> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->> index c7dd59d7f1..365d19f7a3 100644
->> --- a/include/hw/arm/virt.h
->> +++ b/include/hw/arm/virt.h
->> @@ -109,12 +109,12 @@ typedef enum VirtMSIControllerType {
->>  } VirtMSIControllerType;
->>
->>  typedef enum VirtGICType {
->> -    VIRT_GIC_VERSION_MAX,
->> -    VIRT_GIC_VERSION_HOST,
->> -    VIRT_GIC_VERSION_2,
->> -    VIRT_GIC_VERSION_3,
->> -    VIRT_GIC_VERSION_4,
->> -    VIRT_GIC_VERSION_NOSEL,
->> +    VIRT_GIC_VERSION_MAX = 0,
->> +    VIRT_GIC_VERSION_HOST = 1,
->> +    VIRT_GIC_VERSION_NOSEL = 2,
->> +    VIRT_GIC_VERSION_2 = (1 << 2),
->> +    VIRT_GIC_VERSION_3 = (1 << 3),
->> +    VIRT_GIC_VERSION_4 = (1 << 4),
->
-> This would break the ACPI case. When building the MADT, we currently
-> write the raw vms->gic_version value into "GIC version" field of the
-> GICD structure. This happens to work because VIRT_GIC_VERSION_x == x (by
-> luck, I think). We may need to fix build_madt() before this change.
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
+Thanks,
 
-Ouch, thanks a lot for the catch! I don't think it's by luck - the 
-versions are put very deliberately at a place where they equal the gic 
-number. But I agree that it's missing a comment - I'll add one for 
-clarification and make sure the defines looks explicit in v2.
+C.
 
-
-Alex
+> ---
+>   target/ppc/cpu-qom.h  |  2 ++
+>   target/ppc/cpu_init.c | 48 +----------------------------------------
+>   target/ppc/monitor.c  | 50 ++++++++++++++++++++++++++++++++++++++++++-
+>   3 files changed, 52 insertions(+), 48 deletions(-)
+> 
+> diff --git a/target/ppc/cpu-qom.h b/target/ppc/cpu-qom.h
+> index 89ff88f28c..6431c520c8 100644
+> --- a/target/ppc/cpu-qom.h
+> +++ b/target/ppc/cpu-qom.h
+> @@ -31,6 +31,8 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(PowerPCCPU, PowerPCCPUClass, POWERPC_CPU)
+>   
+> +ObjectClass *ppc_cpu_class_by_name(const char *name);
+> +
+>   typedef struct CPUArchState CPUPPCState;
+>   typedef struct ppc_tb_t ppc_tb_t;
+>   typedef struct ppc_dcr_t ppc_dcr_t;
+> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+> index cbf0081374..7858cc4c6c 100644
+> --- a/target/ppc/cpu_init.c
+> +++ b/target/ppc/cpu_init.c
+> @@ -40,7 +40,6 @@
+>   #include "qemu/cutils.h"
+>   #include "disas/capstone.h"
+>   #include "fpu/softfloat.h"
+> -#include "qapi/qapi-commands-machine-target.h"
+>   
+>   #include "helper_regs.h"
+>   #include "internal.h"
+> @@ -6816,7 +6815,7 @@ static const char *ppc_cpu_lookup_alias(const char *alias)
+>       return NULL;
+>   }
+>   
+> -static ObjectClass *ppc_cpu_class_by_name(const char *name)
+> +ObjectClass *ppc_cpu_class_by_name(const char *name)
+>   {
+>       char *cpu_model, *typename;
+>       ObjectClass *oc;
+> @@ -6956,51 +6955,6 @@ void ppc_cpu_list(void)
+>   #endif
+>   }
+>   
+> -static void ppc_cpu_defs_entry(gpointer data, gpointer user_data)
+> -{
+> -    ObjectClass *oc = data;
+> -    CpuDefinitionInfoList **first = user_data;
+> -    const char *typename;
+> -    CpuDefinitionInfo *info;
+> -
+> -    typename = object_class_get_name(oc);
+> -    info = g_malloc0(sizeof(*info));
+> -    info->name = g_strndup(typename,
+> -                           strlen(typename) - strlen(POWERPC_CPU_TYPE_SUFFIX));
+> -
+> -    QAPI_LIST_PREPEND(*first, info);
+> -}
+> -
+> -CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+> -{
+> -    CpuDefinitionInfoList *cpu_list = NULL;
+> -    GSList *list;
+> -    int i;
+> -
+> -    list = object_class_get_list(TYPE_POWERPC_CPU, false);
+> -    g_slist_foreach(list, ppc_cpu_defs_entry, &cpu_list);
+> -    g_slist_free(list);
+> -
+> -    for (i = 0; ppc_cpu_aliases[i].alias != NULL; i++) {
+> -        PowerPCCPUAlias *alias = &ppc_cpu_aliases[i];
+> -        ObjectClass *oc;
+> -        CpuDefinitionInfo *info;
+> -
+> -        oc = ppc_cpu_class_by_name(alias->model);
+> -        if (oc == NULL) {
+> -            continue;
+> -        }
+> -
+> -        info = g_malloc0(sizeof(*info));
+> -        info->name = g_strdup(alias->alias);
+> -        info->q_typename = g_strdup(object_class_get_name(oc));
+> -
+> -        QAPI_LIST_PREPEND(cpu_list, info);
+> -    }
+> -
+> -    return cpu_list;
+> -}
+> -
+>   static void ppc_cpu_set_pc(CPUState *cs, vaddr value)
+>   {
+>       PowerPCCPU *cpu = POWERPC_CPU(cs);
+> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
+> index 8250b1304e..36e5b5eff8 100644
+> --- a/target/ppc/monitor.c
+> +++ b/target/ppc/monitor.c
+> @@ -1,5 +1,5 @@
+>   /*
+> - * QEMU monitor
+> + * QEMU PPC (monitor definitions)
+>    *
+>    * Copyright (c) 2003-2004 Fabrice Bellard
+>    *
+> @@ -28,6 +28,9 @@
+>   #include "qemu/ctype.h"
+>   #include "monitor/hmp-target.h"
+>   #include "monitor/hmp.h"
+> +#include "qapi/qapi-commands-machine-target.h"
+> +#include "cpu-models.h"
+> +#include "cpu-qom.h"
+>   
+>   static target_long monitor_get_ccr(Monitor *mon, const struct MonitorDef *md,
+>                                      int val)
+> @@ -172,3 +175,48 @@ int target_get_monitor_def(CPUState *cs, const char *name, uint64_t *pval)
+>   
+>       return -EINVAL;
+>   }
+> +
+> +static void ppc_cpu_defs_entry(gpointer data, gpointer user_data)
+> +{
+> +    ObjectClass *oc = data;
+> +    CpuDefinitionInfoList **first = user_data;
+> +    const char *typename;
+> +    CpuDefinitionInfo *info;
+> +
+> +    typename = object_class_get_name(oc);
+> +    info = g_malloc0(sizeof(*info));
+> +    info->name = g_strndup(typename,
+> +                           strlen(typename) - strlen(POWERPC_CPU_TYPE_SUFFIX));
+> +
+> +    QAPI_LIST_PREPEND(*first, info);
+> +}
+> +
+> +CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+> +{
+> +    CpuDefinitionInfoList *cpu_list = NULL;
+> +    GSList *list;
+> +    int i;
+> +
+> +    list = object_class_get_list(TYPE_POWERPC_CPU, false);
+> +    g_slist_foreach(list, ppc_cpu_defs_entry, &cpu_list);
+> +    g_slist_free(list);
+> +
+> +    for (i = 0; ppc_cpu_aliases[i].alias != NULL; i++) {
+> +        PowerPCCPUAlias *alias = &ppc_cpu_aliases[i];
+> +        ObjectClass *oc;
+> +        CpuDefinitionInfo *info;
+> +
+> +        oc = ppc_cpu_class_by_name(alias->model);
+> +        if (oc == NULL) {
+> +            continue;
+> +        }
+> +
+> +        info = g_malloc0(sizeof(*info));
+> +        info->name = g_strdup(alias->alias);
+> +        info->q_typename = g_strdup(object_class_get_name(oc));
+> +
+> +        QAPI_LIST_PREPEND(cpu_list, info);
+> +    }
+> +
+> +    return cpu_list;
+> +}
 

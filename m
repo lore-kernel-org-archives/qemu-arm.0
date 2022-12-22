@@ -1,88 +1,90 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp286501ejb;
-        Thu, 22 Dec 2022 13:56:35 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs1TN4hlh5lRE4ab06zDEV1xqCxTzlXL7erooKzybngSvsuw70MMK4LJvxCaxn/U+n0CpCR
-X-Received: by 2002:a05:6214:3b12:b0:4c7:121:d684 with SMTP id nm18-20020a0562143b1200b004c70121d684mr9765017qvb.7.1671746195706;
-        Thu, 22 Dec 2022 13:56:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671746195; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp286710ejb;
+        Thu, 22 Dec 2022 13:57:01 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuX1k+uEm7iqnyh6Qvm9aNEKKlifZGPMnR6x+jOUEGwmCsIPVWk1nvPVzSTTeB4cF15G9Bx
+X-Received: by 2002:ac8:5499:0:b0:3a8:104c:11cd with SMTP id h25-20020ac85499000000b003a8104c11cdmr9009702qtq.35.1671746221235;
+        Thu, 22 Dec 2022 13:57:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671746221; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ii29LrQXB6YC45cRc23QvCG7rxNp4ZMdqEJXS4LY1BQh0KGHY4ktS7xuP4hZcusV8O
-         dByn/qJ2Xnt10Vv0L8xe0j8V50T3gWz9iYGMYBrC/L2dWykDpYpwKUgmT6yjed9xrDnp
-         0JfhpNCbkEPCGk9EWnPF/vYWOhmceX4h5RYgBLOgrqpI6vyGYdYsk4vcr6XlyI+QF6/9
-         W1On/pIrjZZ8aLeDQZDf5EpHuDBFfrnJN3kNLrdV/0s8gUwL14Y5olPpZGmIerYxfqms
-         EXGXrXeW6ZNF5UhGBExaBMwVM23CqG4vKdS0YuZm+X0vfku90JhMbVKw+mbj8laEq+rx
-         b7XQ==
+        b=J23v+An4hUqa/uPP/A/CRa2FxeFV1S6ZRjYwhfgINqfuoRHljdvzFVHbuZoolmadRc
+         6pCM49A9CLeZ69yxP5LbJXGXHMbYa5M60tasbnRZKrvVGzLK/9DV1GTwe+PvBldi5DJY
+         VLCEFjuRT5WMiZqlKEnBx/LmsZ6TGlZHsS5Gbyj1F6Wb7CAD6AAQEulR0RXXrfVzpIz1
+         J2hSTnKaxjECRrw5Hi/bqHNJIvwcrV5rXjmtMIyD07y2QuAmsFWaCUBJ8WLZ6TjBJ5N8
+         9LI+lrRZLDQoLvgnyRzHj+vvadUv9m9RfeoeAACgsmatF61gGh1D0R/OX0wkWHmOf2Ov
+         0E+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=U6OB+osXLSH5rsjdTEcuOpIx3EZfV0y8ZIYPN7oPYLs=;
-        b=SYiuFhFHi4bwzMajdBwM5iVpiYi4HFdhq4hMgDHgzH3ZwyVTbY5XUdU8QI7NnGdQ0Y
-         krjg975QoltaOoea/sT//dCozwr365p22AVYDG5dj4F5ynftGSyP2mqIwtn3mkRs2bg9
-         3E3K0fk7sMA7MXRa/Q9dmNDSxpCL5PV7zbDT1Z/SJHvDYFL+fq3Zn23Wj75GuydJRp77
-         m+T7DzphX8Dc7mhqMEnKH0Sft/L+1YBWInq7QXU1N0+cM20HP9iOVlUTsihvVoY1Vnwn
-         +XhgOODrZTQkybn+zWpmsIDpVNwgNJHXE+H2TpCjz6UYBuz00HxDk16QsMDybZWjkKuv
-         1LeQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=eJ7KNsaeAIcuwibRTmPK9N9xgsftdW4nEKhohT2Tqnw=;
+        b=DTht4qYo5GAxQfI3kr7DPv17Z64H54oBU0obBxi26YIrHNgTPmjhCCrhP9qh7vL4eR
+         kT922rB/SjbnE1rlvZdlwlakoYgyVIttRT3Cvg5l3X42kHGlQs5oK/H4JTtpYw4XeVMB
+         H9dgcYA55bgiE/gB8M5pNcM+NCNqkfxicl3WTpHcNcNtTqAhyKlAbc8bUGBNuSHbe7Ps
+         zpJJN48uSGGG1qLAIvyemv9SXzR2ftndSdhFPbFZyxn2B6+bEvYnjQBrtShFq50l7iS9
+         rv2Bv7CzdKnMoGaIT1qLp8wbRbQOHlLe5oWvJqsm0fl+2XA/6244TMj4X/jvVcNNpWW0
+         0iDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eaeT8tDS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iEJLpHzx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k12-20020a05620a414c00b006feb5642b82si590481qko.242.2022.12.22.13.56.35
+        by mx.google.com with ESMTPS id l16-20020a05620a28d000b006feb9d4e1efsi579605qkp.254.2022.12.22.13.57.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Dec 2022 13:56:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Dec 2022 13:57:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eaeT8tDS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iEJLpHzx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p8TXp-0005z2-4G; Thu, 22 Dec 2022 16:56:05 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p8TYc-0006Np-7f; Thu, 22 Dec 2022 16:56:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8TXl-0005yh-6z
- for qemu-devel@nongnu.org; Thu, 22 Dec 2022 16:56:02 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8TYZ-0006JU-PB
+ for qemu-arm@nongnu.org; Thu, 22 Dec 2022 16:56:51 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8TXj-00078l-Lg
- for qemu-devel@nongnu.org; Thu, 22 Dec 2022 16:56:00 -0500
-Received: by mail-ej1-x633.google.com with SMTP id bj12so7882865ejb.13
- for <qemu-devel@nongnu.org>; Thu, 22 Dec 2022 13:55:58 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8TYX-0007Dd-CZ
+ for qemu-arm@nongnu.org; Thu, 22 Dec 2022 16:56:51 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id vm8so1115506ejc.2
+ for <qemu-arm@nongnu.org>; Thu, 22 Dec 2022 13:56:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=U6OB+osXLSH5rsjdTEcuOpIx3EZfV0y8ZIYPN7oPYLs=;
- b=eaeT8tDS+rX486vZ7f3STK14HEPWH473aA+yQ6v64ROApXywLkMdephJuFtzYeMOil
- 73uNmukHZ07xyH8ihzU4vEVudZI7IqjGCS8p+soaXE3tDj6SwZeiR1KEkbl3bBA48QgC
- DtKZsvmZknHiE8Zjsqt+LzETRhsQO5LNVpinMF98Ecuttdm3gkMZy/KKpRUveEc5XLhJ
- TjTjwbrevMhKBy9ZzRkRb/U01o9mixi2t8uCVVn5E0VrSSBVV/bw3crFkS9+AHPH27dN
- ATICZKtfHoTjTD/G/Am+2Gu+kb2tAWdB9xTdFvBvVqrO+tq9u+zSycKpLdY+b51emBLT
- UEng==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eJ7KNsaeAIcuwibRTmPK9N9xgsftdW4nEKhohT2Tqnw=;
+ b=iEJLpHzxwaMTP58pZ88b0id+U1wBqsANL8xy71bWCVFNFM5kcDG3ZdVXfazrcPtyX/
+ ixcgwz+TC0oP0uRW97t/ytQ+1XJdlDOFCwuC/hjbSiIu/IMX9NUMtXef0b+/rjzN6iaG
+ wsFz61/5/GT/yfanAI+qySmtDVLSMasDNPux5GBjDmQ3RamY1zvRJ5gDjKuoEN8BaIGg
+ /hqnFlGpvU+xN5E/MOOZj0aavFIXbWtp9CcjTT5txDXZp+mVNxK/cIYN0FXI4s3UDx6s
+ lX32iIwQD3rrfo/yVo0IAAOTWfhwD8XXnC5Rc1ZGXNyIEFKN+xvaZwWcLT4b85wIxC/F
+ cJkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=U6OB+osXLSH5rsjdTEcuOpIx3EZfV0y8ZIYPN7oPYLs=;
- b=XkaSwX7/I2NcaoNQRwrxTKTDnelwCBC3Uz96fNhYEbB72MCprsKrdou41+2nV6qX3q
- mKFfT6mpEoUwi4AkTHHdUA4tL+cJ+OyVP7csUk+MWofD9QJBVhwwc4OdkC0xCxmMNt6W
- imTO8o/XwIxey12jVu3i2fjxPCVmd9Ht07HAQLbJwfaR3kdEi8m5dncNpR6ws4vwL6sZ
- 9QRc7bXl1n8ac7CVL3uV9GV9wGARGXpPwBTnUsgmVX0JQcVnAF4DH6hkFv/2NwAv3yJO
- dbxdF+I+PFdg5TcXY4aMvLCnFrTYuyBxnJQu/+sdXsilBduBgDFS4RHEuYmkgiO4k70v
- jq1w==
-X-Gm-Message-State: AFqh2kpGO7cx/0HRQ+4Daaa2tpWAGBE8Mm9ilMK2lrQN9/suQz18z00I
- LazG0jHfZwtraQA33S8zeqXF/wagW8T/tyIPFKw=
-X-Received: by 2002:a17:907:d045:b0:7c1:5464:3360 with SMTP id
- vb5-20020a170907d04500b007c154643360mr7931510ejc.65.1671746157387; 
- Thu, 22 Dec 2022 13:55:57 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=eJ7KNsaeAIcuwibRTmPK9N9xgsftdW4nEKhohT2Tqnw=;
+ b=k8zuh4E31K5Uc59AsAxmYEDsdcyoNa25Z7IvPj/boXrQmV6poHVlBav5O3VALexakH
+ 0YUQqChjOrwdk1LzVTyrIRBcuY4T18ROfVpD7/qWh8tBLti9pSS7fhvP1QRfbnxyxMOj
+ XPYqwKI4s8R+P53c/ncCbyEhQRJ1y7pq83xmZAHY23Q7b1lpgln83DbSQ6ZyoaIzI1yP
+ s3cDyauf0ywyUglWK+LfybHXGxRhodPIdGeczlz/I5GlU7ZqpQgVOvaLTAc8MyTf0eCf
+ x9MgbW/QNF7irzRXYcLAv8x2UlkNF/xADFvxBtotVTOQM/Khy6ED42WF7DRmOMQSSfOf
+ Yy4A==
+X-Gm-Message-State: AFqh2krurCXceKCD1cYOsNpONSMOMRajNzSPqEzeXHBLSpDcTlMYMS4K
+ nuXEyA5YGygcc7vMnDoyYCpq+A==
+X-Received: by 2002:a17:907:c28f:b0:7c1:eb:b2a7 with SMTP id
+ tk15-20020a170907c28f00b007c100ebb2a7mr9430560ejc.13.1671746208107; 
+ Thu, 22 Dec 2022 13:56:48 -0800 (PST)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- e15-20020a170906314f00b007c07909eb9asm677945eje.1.2022.12.22.13.55.53
+ s22-20020aa7cb16000000b00457b5ba968csm788692edt.27.2022.12.22.13.56.45
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 22 Dec 2022 13:55:56 -0800 (PST)
+ Thu, 22 Dec 2022 13:56:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Andrew Jeffery <andrew@aj.id.au>,
@@ -94,16 +96,18 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  Tyrone Ting <kfting@nuvoton.com>
-Subject: [PATCH 0/6] hw/arm: Fix smpboot[] on big-endian hosts and remove
- tswap32()
-Date: Thu, 22 Dec 2022 22:55:43 +0100
-Message-Id: <20221222215549.86872-1-philmd@linaro.org>
+Subject: [PATCH 5/6] hw/arm/xilinx_zynq: Remove tswap32() calls and constify
+ smpboot[]
+Date: Thu, 22 Dec 2022 22:55:48 +0100
+Message-Id: <20221222215549.86872-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221222215549.86872-1-philmd@linaro.org>
+References: <20221222215549.86872-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,20 +116,20 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pEU19xRbFn7+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jGCNCFQbMZwA
 
 ARM CPUs fetch instructions in little-endian.
 
@@ -151,26 +155,64 @@ We can simplify by using const_le32() to always store the
 instructions in the array in little-endian, removing the need
 for the dubious tswap().
 
-Two boards which weren't swapping (aspeed and raspi) are fixed.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/xilinx_zynq.c | 27 ++++++++++++---------------
+ 1 file changed, 12 insertions(+), 15 deletions(-)
 
-Tested running ARM avocado tests on x86_64 and s390x.
-
-Philippe Mathieu-Daudé (6):
-  hw/arm/aspeed: Fix smpboot[] on big-endian hosts
-  hw/arm/raspi: Fix smpboot[] on big-endian hosts
-  hw/arm/exynos4210: Remove tswap32() calls and constify smpboot[]
-  hw/arm/npcm7xx: Remove tswap32() calls and constify smpboot[]
-  hw/arm/xilinx_zynq: Remove tswap32() calls and constify smpboot[]
-  hw/arm/boot: Remove tswap32() calls and constify board_setup_blob[]
-
- hw/arm/aspeed.c      | 28 ++++++++++++------------
- hw/arm/boot.c        | 52 +++++++++++++++++++-------------------------
- hw/arm/exynos4210.c  | 48 ++++++++++++++++++----------------------
- hw/arm/npcm7xx.c     | 49 +++++++++++++++++------------------------
- hw/arm/raspi.c       | 46 +++++++++++++++++++--------------------
- hw/arm/xilinx_zynq.c | 27 ++++++++++-------------
- 6 files changed, 112 insertions(+), 138 deletions(-)
-
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index 3190cc0b8d..4316143b71 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -71,6 +71,11 @@ static const int dma_irqs[8] = {
+ 
+ #define ZYNQ_SDHCI_CAPABILITIES 0x69ec0080  /* Datasheet: UG585 (v1.12.1) */
+ 
++struct ZynqMachineState {
++    MachineState parent;
++    Clock *ps_clk;
++};
++
+ #define ARMV7_IMM16(x) (extract32((x),  0, 12) | \
+                         extract32((x), 12,  4) << 16)
+ 
+@@ -79,29 +84,21 @@ static const int dma_irqs[8] = {
+  */
+ 
+ #define SLCR_WRITE(addr, val) \
+-    0xe3001000 + ARMV7_IMM16(extract32((val),  0, 16)), /* movw r1 ... */ \
+-    0xe3401000 + ARMV7_IMM16(extract32((val), 16, 16)), /* movt r1 ... */ \
+-    0xe5801000 + (addr)
+-
+-struct ZynqMachineState {
+-    MachineState parent;
+-    Clock *ps_clk;
+-};
++    cpu_to_le32(0xe3001000 + ARMV7_IMM16(extract32((val),  0, 16))), /* movw r1 ... */ \
++    cpu_to_le32(0xe3401000 + ARMV7_IMM16(extract32((val), 16, 16))), /* movt r1 ... */ \
++    const_le32(0xe5801000 + (addr))
+ 
+ static void zynq_write_board_setup(ARMCPU *cpu,
+                                    const struct arm_boot_info *info)
+ {
+-    int n;
+-    uint32_t board_setup_blob[] = {
+-        0xe3a004f8, /* mov r0, #0xf8000000 */
++    const uint32_t board_setup_blob[] = {
++        const_le32(0xe3a004f8),         /* mov r0, #0xf8000000 */
+         SLCR_WRITE(SLCR_UNLOCK_OFFSET, SLCR_XILINX_UNLOCK_KEY),
+         SLCR_WRITE(SLCR_ARM_PLL_OFFSET, 0x00014008),
+         SLCR_WRITE(SLCR_LOCK_OFFSET, SLCR_XILINX_LOCK_KEY),
+-        0xe12fff1e, /* bx lr */
++        const_le32(0xe12fff1e)          /* bx lr */
+     };
+-    for (n = 0; n < ARRAY_SIZE(board_setup_blob); n++) {
+-        board_setup_blob[n] = tswap32(board_setup_blob[n]);
+-    }
++
+     rom_add_blob_fixed("board-setup", board_setup_blob,
+                        sizeof(board_setup_blob), BOARD_SETUP_ADDR);
+ }
 -- 
 2.38.1
 

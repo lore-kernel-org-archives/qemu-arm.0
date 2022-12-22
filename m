@@ -1,97 +1,102 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp311193ejb;
-        Thu, 22 Dec 2022 04:10:10 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv7WnIUKmPiEofF8dpOmYmUUudltQqaFmrKEcD4Ks+btA/rWDsQtPkOASG5KdRdqatDBrU4
-X-Received: by 2002:a05:690c:806:b0:3b4:8bcc:1ced with SMTP id bx6-20020a05690c080600b003b48bcc1cedmr4520385ywb.16.1671711010369;
-        Thu, 22 Dec 2022 04:10:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671711010; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp311918ejb;
+        Thu, 22 Dec 2022 04:11:03 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtrPC22acqGjIVIsPVB1Ufhd2C2mI52i1ZbaaYlJc4w71w8aqSJXtI7hHvtVLstTf/q9ypW
+X-Received: by 2002:a05:6214:1bcd:b0:4c7:50b7:8d73 with SMTP id m13-20020a0562141bcd00b004c750b78d73mr9954064qvc.4.1671711063347;
+        Thu, 22 Dec 2022 04:11:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671711063; cv=none;
         d=google.com; s=arc-20160816;
-        b=GYuY6vrl6GSp8SHhGy+dFQaope2LSi1mMybRakX0WpSjalwW6n0yQfQSMhvfWSakhw
-         zUHIwyCic7UUxZ2rDkU73rU5/iTILZaOx668biKOq4aPJFAsZSdxXn5nyPpTEcyIHe8q
-         FLC7/LiRuDa1c5MDCfT0hr6NYhf1PFGkSPQHL/S01KYfs/AATZ+3tmf5qDHPgzHdLXNw
-         6zl8l7arUoMxbkOgDLnYAoQiI9d6fcxQfOgaBtNrGpHw8eNA6LEs7NI+xc9lfesGouYQ
-         7qvkNjYS5CoWAyp96YbdC1VyfbcdBM3SYVf/lPHJVcw4I4zYLRP/g5+0KHUppD6wAeFj
-         J0zg==
+        b=mns/UydcFWL9dBOMXsXRZrZyj8x7/jK3dLJe/mRbirQ7uhxJ33t5ZnUPLeObnIhtCL
+         cKKwiICRFjNuwazfkLJ+zKc8vc7iBgAc8uyUKA1peAKw6OaY4c4SA3jrjhmYgk4/Z0hB
+         kmjdXvXCES0ikWFv8OTR10BDxNw/AuEX0s9JXyZNISDZLLip/bK/WgvwY3OqP5K82cQh
+         zVRAImFOF1dleEkGkyei2qmvmkK6OER5XhTp+M5BnzSXSkrNSS/6nyJQhO31J61EzI+n
+         rG/9OSzNT8brN6O2VF6fy7otO9cLAwDcW5SDoP/KsRaeUe+qt6Mcx0zc+LBb558uNuI4
+         1QAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=gjeiJttH+vwYIQ8Nfs2pa0kvunxv+IJ2EZusCO+jQYI=;
-        b=0DArBErf0eJJ4wn8Fkuc0UUyNQi+1/ObpjUelSAlnUQKMfZLA9/xW/MpjBIo7uucCh
-         6jGzyHTn/zMzzBoxTJzJAdfcNQaZrUHBOcDNCY5jesZ+R2UmFQ1rfLofr1oqTqx0uX0S
-         pLCBE/qWcaP/CbEcDzdyPVUflMEq1gdZBv+VhvRh8oOW7zGDyOVYemlDJ3sWMkwaoCxA
-         zZrncE73OIskXfs15F8nbcKNMaA/6FgHAzChS3p8UdIL/GFJrbM14/JVD1azsSXHaYcG
-         If8b8U1m0JKzCXNGLWwcQtAriZxTRuNwz6oRrCuQNZxX0/Dq+wgXO2FoVNh7jZ9oUT6q
-         cSHQ==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:cc:to:from
+         :dkim-signature;
+        bh=SmuOKcmhc5P8kB9mxDdXSAF3BAiFiDucFWG7ceOtKqM=;
+        b=DAdCqSwKCiV1WWFHFryupkN4spEyhbCJjRY0oSu2jmqM5Sokhb24TtM9R+HsJt7vxs
+         wRtlnhwZF+N1QR4sdQNvXwZW3zLnBPgpVAi9D/rZPgBsU9gUMMS7Qxob63jXQ5eAFsF8
+         TeTSNhOgPAHtHp2oK+IxitALIU+pXPeKOLAi6Zsl6v+D5UoOiOC75mloNREi1GXYCZQv
+         6wJtvOujKIepS+4fnTaT7kHEfy4+p8cU7IWOb06GKJy4jLZSKgcsuPqIv95TMi3kbqbE
+         JCaSr8rJF/q1Yp7NmQkA3oqjmxMgSEXSzRyQ33vAeRlAvOtGJUqyQ3T237jAX0eywXpI
+         +uzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JzgWpL9+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MOmpzW/s";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17-20020a05620a241100b006fa452aa63bsi112779qkn.470.2022.12.22.04.10.10
+        by mx.google.com with ESMTPS id gu9-20020a056214260900b004c690ad6e72si166605qvb.411.2022.12.22.04.11.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Dec 2022 04:10:10 -0800 (PST)
+        Thu, 22 Dec 2022 04:11:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JzgWpL9+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MOmpzW/s";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p8KN9-0007S9-QL; Thu, 22 Dec 2022 07:08:27 -0500
+	id 1p8KOz-000897-2a; Thu, 22 Dec 2022 07:10:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1p8KN5-0007Pw-62
- for qemu-devel@nongnu.org; Thu, 22 Dec 2022 07:08:24 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1p8KOv-000887-Gj
+ for qemu-devel@nongnu.org; Thu, 22 Dec 2022 07:10:18 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1p8KN3-0004Yn-6b
- for qemu-devel@nongnu.org; Thu, 22 Dec 2022 07:08:22 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1p8KOu-0004wh-1B
+ for qemu-devel@nongnu.org; Thu, 22 Dec 2022 07:10:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1671710899;
+ s=mimecast20190719; t=1671711015;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=gjeiJttH+vwYIQ8Nfs2pa0kvunxv+IJ2EZusCO+jQYI=;
- b=JzgWpL9+lOSai1GW0nKAfsL0jZUDfLc4mjdU2qWIDTB+B5/DYfOB7IC+yXpX75CNns+Bd7
- x8EsQpQKAIMzeu59Mz1+FweDX9+sHzcg9cwS82Tu8ND7clDrSyJFK6RyIFGkJRf71t1pYU
- IRptkndfS3ReWtemaFAbCXCVeLkdrj8=
+ in-reply-to:in-reply-to:references:references;
+ bh=SmuOKcmhc5P8kB9mxDdXSAF3BAiFiDucFWG7ceOtKqM=;
+ b=MOmpzW/sPNe7f6Pp05q/XUHsL7A8jdxWe0dr5ro+KrSX/ixZaLZ3BVELXmQO8kb77FHD1F
+ pV16x0aLOROTQKPVJi2/JDWWfzEIrllCqejRimZCT89YVYNSj/h98iabQHCTYSsalZbBgQ
+ ehWsjzTNtGtWTSfnj232mzQuyXouy5o=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-418-CFaqWwT9PrmiNMmy0Q1tKw-1; Thu, 22 Dec 2022 07:08:16 -0500
-X-MC-Unique: CFaqWwT9PrmiNMmy0Q1tKw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
+ us-mta-656-KAq2bMT9MyuSYtgLgzcndg-1; Thu, 22 Dec 2022 07:10:10 -0500
+X-MC-Unique: KAq2bMT9MyuSYtgLgzcndg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9A9A6100F901;
- Thu, 22 Dec 2022 12:08:15 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4651B85C1A4;
+ Thu, 22 Dec 2022 12:10:09 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.195.91])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 672272026D4B;
- Thu, 22 Dec 2022 12:08:14 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C35534014EB9;
+ Thu, 22 Dec 2022 12:10:08 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 40F6621E691D; Thu, 22 Dec 2022 13:08:13 +0100 (CET)
+ id 9FEA821E691D; Thu, 22 Dec 2022 13:10:07 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
- peter.maydell@linaro.org, laurent@vivier.eu, edgar.iglesias@gmail.com,
- Alistair.Francis@wdc.com, bin.meng@windriver.com, palmer@dabbelt.com,
- marcel.apfelbaum@gmail.com, yangxiaojuan@loongson.cn, gaosong@loongson.cn,
- richard.henderson@linaro.org, deller@gmx.de, jasowang@redhat.com,
- vikram.garhwal@amd.com, francisco.iglesias@amd.com, clg@kaod.org,
- kraxel@redhat.com, marcandre.lureau@redhat.com, riku.voipio@iki.fi,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- crwulff@gmail.com, marex@denx.de
-Subject: [PATCH v2 0/4] Clean up includes
-Date: Thu, 22 Dec 2022 13:08:09 +0100
-Message-Id: <20221222120813.727830-1-armbru@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org,  imammedo@redhat.com,  ani@anisinha.ca,
+ peter.maydell@linaro.org,  laurent@vivier.eu,  edgar.iglesias@gmail.com,
+ Alistair.Francis@wdc.com,  bin.meng@windriver.com,  palmer@dabbelt.com,
+ marcel.apfelbaum@gmail.com,  yangxiaojuan@loongson.cn,
+ gaosong@loongson.cn,  richard.henderson@linaro.org,  deller@gmx.de,
+ jasowang@redhat.com,  vikram.garhwal@amd.com,
+ francisco.iglesias@amd.com,  clg@kaod.org,  kraxel@redhat.com,
+ marcandre.lureau@redhat.com,  riku.voipio@iki.fi,  qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org,  qemu-ppc@nongnu.org,  crwulff@gmail.com,
+ marex@denx.de
+Subject: Re: [PATCH v2 0/4] Clean up includes
+References: <20221222120813.727830-1-armbru@redhat.com>
+Date: Thu, 22 Dec 2022 13:10:07 +0100
+In-Reply-To: <20221222120813.727830-1-armbru@redhat.com> (Markus Armbruster's
+ message of "Thu, 22 Dec 2022 13:08:09 +0100")
+Message-ID: <871qorej1c.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -100,7 +105,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,118 +120,8 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d+hg14dKXN0C
+X-TUID: sf57K8cTi5Xd
 
-Back in 2016, we discussed[1] rules for headers, and these were
-generally liked:
-
-1. Have a carefully curated header that's included everywhere first.  We
-   got that already thanks to Peter: osdep.h.
-
-2. Headers should normally include everything they need beyond osdep.h.
-   If exceptions are needed for some reason, they must be documented in
-   the header.  If all that's needed from a header is typedefs, put
-   those into qemu/typedefs.h instead of including the header.
-
-3. Cyclic inclusion is forbidden.
-
-This series fixes a number of rule violations.
-
-It is based on
-
-    [PATCH v2 0/4] hw/ppc: Clean up includes
-    [PATCH v2 0/7] include/hw/pci include/hw/cxl: Clean up includes
-    [PATCH v2 0/3] block: Clean up includes
-    [PATCH v3 0/5] coroutine: Clean up includes
-
-With all of these applied, just three inclusion loops remain reachable
-from include/:
-
-    target/microblaze/cpu.h target/microblaze/mmu.h
-
-    target/nios2/cpu.h target/nios2/mmu.h
-
-    target/riscv/cpu.h target/riscv/pmp.h
-
-Breaking them would be nice, but I'm out of steam.
-
-v2:
-* Rebased
-* PATCH 3: v1 posted separately
-* PATCH 4: New
-
-[1] Message-ID: <87h9g8j57d.fsf@blackfin.pond.sub.org>
-    https://lists.nongnu.org/archive/html/qemu-devel/2016-03/msg03345.html
-
-Based-on: <20221222104628.659681-1-armbru@redhat.com>
-
-Markus Armbruster (4):
-  include/hw/virtio: Break inclusion loop
-  include: Include headers where needed
-  include: Don't include qemu/osdep.h
-  docs/devel: Rules on #include in headers
-
- docs/devel/style.rst                        | 7 +++++++
- bsd-user/qemu.h                             | 1 -
- crypto/block-luks-priv.h                    | 1 -
- include/exec/plugin-gen.h                   | 1 +
- include/hw/acpi/erst.h                      | 3 +++
- include/hw/char/cmsdk-apb-uart.h            | 1 +
- include/hw/char/goldfish_tty.h              | 1 +
- include/hw/char/xilinx_uartlite.h           | 1 +
- include/hw/cris/etraxfs.h                   | 1 +
- include/hw/cxl/cxl_host.h                   | 1 -
- include/hw/display/macfb.h                  | 3 ++-
- include/hw/dma/sifive_pdma.h                | 2 ++
- include/hw/i386/ioapic_internal.h           | 1 +
- include/hw/i386/sgx-epc.h                   | 1 +
- include/hw/input/pl050.h                    | 1 -
- include/hw/intc/goldfish_pic.h              | 2 ++
- include/hw/intc/loongarch_pch_msi.h         | 2 ++
- include/hw/intc/loongarch_pch_pic.h         | 2 ++
- include/hw/intc/nios2_vic.h                 | 2 ++
- include/hw/misc/mchp_pfsoc_dmc.h            | 2 ++
- include/hw/misc/mchp_pfsoc_ioscb.h          | 2 ++
- include/hw/misc/mchp_pfsoc_sysreg.h         | 2 ++
- include/hw/misc/pvpanic.h                   | 1 +
- include/hw/misc/sifive_e_prci.h             | 3 ++-
- include/hw/misc/sifive_u_otp.h              | 3 ++-
- include/hw/misc/sifive_u_prci.h             | 3 ++-
- include/hw/misc/virt_ctrl.h                 | 2 ++
- include/hw/misc/xlnx-versal-pmc-iou-slcr.h  | 1 +
- include/hw/net/lasi_82596.h                 | 2 +-
- include/hw/net/xlnx-zynqmp-can.h            | 1 +
- include/hw/ppc/pnv_psi.h                    | 2 +-
- include/hw/riscv/boot_opensbi.h             | 2 ++
- include/hw/riscv/microchip_pfsoc.h          | 3 +++
- include/hw/riscv/numa.h                     | 1 +
- include/hw/riscv/sifive_u.h                 | 2 ++
- include/hw/riscv/spike.h                    | 2 +-
- include/hw/riscv/virt.h                     | 2 +-
- include/hw/ssi/sifive_spi.h                 | 3 +++
- include/hw/timer/sse-timer.h                | 1 +
- include/hw/tricore/triboard.h               | 1 -
- include/hw/usb/hcd-dwc3.h                   | 1 +
- include/hw/usb/hcd-musb.h                   | 2 ++
- include/hw/usb/xlnx-usb-subsystem.h         | 2 ++
- include/hw/usb/xlnx-versal-usb2-ctrl-regs.h | 3 +++
- include/hw/virtio/virtio-mmio.h             | 2 +-
- include/hw/virtio/virtio.h                  | 1 -
- include/qemu/plugin-memory.h                | 3 +++
- include/qemu/userfaultfd.h                  | 1 -
- include/sysemu/dirtyrate.h                  | 2 ++
- include/sysemu/dump.h                       | 1 +
- include/user/syscall-trace.h                | 1 +
- net/vmnet_int.h                             | 1 -
- qga/cutils.h                                | 1 -
- target/hexagon/hex_arch_types.h             | 1 -
- target/hexagon/mmvec/macros.h               | 1 -
- target/riscv/pmu.h                          | 1 -
- hw/virtio/virtio-qmp.c                      | 1 +
- hw/virtio/virtio.c                          | 1 +
- qga/cutils.c                                | 3 ++-
- 59 files changed, 82 insertions(+), 22 deletions(-)
-
--- 
-2.38.1
+Michael, I forgot to add your R-bys.  I'll fix that in the next
+revision if I need one, else in the pull request.
 

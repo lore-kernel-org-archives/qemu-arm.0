@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp286524ejb;
-        Thu, 22 Dec 2022 13:56:39 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuQHz+QGfwLrTfGXfhl6KD9PrtV0IGMt6b9bM7WZZXgfGKhaHE67fKt0jw0lJBBJlX01ES7
-X-Received: by 2002:a05:6214:3b86:b0:4c7:1a90:2291 with SMTP id nf6-20020a0562143b8600b004c71a902291mr10420144qvb.34.1671746198772;
-        Thu, 22 Dec 2022 13:56:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671746198; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp286590ejb;
+        Thu, 22 Dec 2022 13:56:47 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXusBSrH3OVqTdnZENuuIxmmv3DcFbqgR6ZdEwzHahORDq6L/vdXUbAsPLWKmYTCbqbVQMZg
+X-Received: by 2002:a0c:c3d2:0:b0:4c7:3c7c:4d1e with SMTP id p18-20020a0cc3d2000000b004c73c7c4d1emr7015922qvi.15.1671746207760;
+        Thu, 22 Dec 2022 13:56:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671746207; cv=none;
         d=google.com; s=arc-20160816;
-        b=xuHoLLd3BHJMcZQwd/jB9QBdjAgycvACnWPS93MmicnjxV25DUTdQooCZcO2RF03sl
-         XGHczdaQfNW+6CqkHuSoBR+yYlpeiH27XwcqJMUCIfyF5PCWyFzfjGhB/6LaTTCq7fZo
-         8WswsjvlagfreGreSAKC6UURm+ZUhAEgvD1zd+KWumWf1OluxmbIf3s9w14qPxtbm24s
-         Ynl51g002hiLpaMYMA1bnpnzWqNp9PXbr3iPexNk3Kd0SBSr6DdlKKqwq5XSuDhSC0CY
-         3M4LuU+B95m6lNmS4T/6Lx0kmGoaGsBeBzI1YJ42FirrRpFH38MG7PAE16U+zN868HYR
-         7OyQ==
+        b=rtjJXoAS3988PMC134vqb5eFb6JTe+8FXbTPwuxBCU57dIJysLVyJmENLrUGAA193r
+         xF3zqrs/rhBJxhrDdLIVD9oHOgaPgDn15/ytrqIzmts/yI4sjgDhoukG/7Ky/K+xRKBN
+         r609TmAR6xwwAu+i/5vn33npZBw9mH8A/B9w87qst87V7lYcQ98h35dLHjbky+vsPCFa
+         fU/IGXGTixdk68ObYb8SNPeh3ucmZVL45dCu99TMiSdvSoTV4kCh/AAAkTedKPip67JQ
+         zs01S+OQNBODMTlLFXfePTWd85VY1u+7nz2HaPAmRMiDcVn4ndDtQpiHalg2zBmc412z
+         w8/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=XrBY8xhhloPHHStYYTzLZIUBphfWCL1Sr3LvXL9Y2+E=;
-        b=zpNdVEQgJyAdzk/+WBwwNdv5aZUY9ydovrXoxPgvcqdU3l7f02784DocNae+F31cRi
-         toG74xumz0KCIsX/J0qD2k2rST4u71rjx+2v373QzgdHwQh6bvjmi8hIoMF1OurfM4u1
-         ReNq4hMg3vRR+oCpaYAVSKAHVpKCF87qCM6tb793Gl0XcCxcDSB0rJOggSHQS3qilQdl
-         jpX7+kqH3zTLNoS972objZuXw/TM4uUiffy/VfSeKg54M21Lm9OqhBvDmygY+nwgJZVK
-         uZFzINPWV5vqdFoTqleQXot3euiSfIZNeiivPWVK9e33Bp6JgTxB8WWTUyERcw2eWNEa
-         sX6Q==
+        bh=tY6SKki/uWVAIv0MsBbw55az0oWSvt0PY3G9FmsSaas=;
+        b=UxZRX7Weyy25kYRwcWmcp+61bvJrnvGdvDQl8y636IerX7mZUz3ECN0qAWDNg6CHOT
+         BuXJV0cg4rFVxmQ5bbrQ983vreNEFlh1YBeodjPzjCoRM/MLLUrphepc2kAvYtmmW6uK
+         PTdlmUGt5P9dDY3gxWQA6p6GkylYpnvvdIeMn62yqmeqkLt0lqxr9pA6sQX5WeT+wsAq
+         AqdyMCarSsndZqWHLNt3DkPIUraeRs8wDGe8N1lGnQ4EVql641bLY+Utv09DIkz+Z2At
+         /xqUy+/FpDg1zBnO2DN3G/sDT5RRpMbbhGb4sm9E4owgPLxowTn6syx/yl43nN0RiLNk
+         h20g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vZZzVd2G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dL2p6foo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hu5-20020a056214234500b00520e4e227a6si608574qvb.54.2022.12.22.13.56.38
+        by mx.google.com with ESMTPS id pn6-20020a056214130600b004c791803422si657410qvb.5.2022.12.22.13.56.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Dec 2022 13:56:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Dec 2022 13:56:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vZZzVd2G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dL2p6foo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p8TYB-00063b-4V; Thu, 22 Dec 2022 16:56:27 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p8TYP-0006GA-Mp; Thu, 22 Dec 2022 16:56:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8TY9-00062T-HU
- for qemu-devel@nongnu.org; Thu, 22 Dec 2022 16:56:25 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8TYO-0006Er-MA
+ for qemu-arm@nongnu.org; Thu, 22 Dec 2022 16:56:40 -0500
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8TY7-0007AX-Tb
- for qemu-devel@nongnu.org; Thu, 22 Dec 2022 16:56:25 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id d14so4727089edj.11
- for <qemu-devel@nongnu.org>; Thu, 22 Dec 2022 13:56:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8TYM-0007BX-UO
+ for qemu-arm@nongnu.org; Thu, 22 Dec 2022 16:56:40 -0500
+Received: by mail-ej1-x62e.google.com with SMTP id kw15so7911994ejc.10
+ for <qemu-arm@nongnu.org>; Thu, 22 Dec 2022 13:56:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XrBY8xhhloPHHStYYTzLZIUBphfWCL1Sr3LvXL9Y2+E=;
- b=vZZzVd2GmPjInNPlJIQ7HLDrLVkDwzvBoAawnQ3s64Se3LU/32AzmhOvbDfL/oUoQG
- jrzmdjznaxldhfv2Eiv60h3JKNPCkLEivxWEpFR3eUj+3+0IFgc6c1qWveXW51sqJIf6
- muL5K9YYLzKof4V+nUeLeqGRYmPGS9unr70lZLWPbKmiQQ1FNWVeUF8xrMLukjz4s3wG
- lM4RxS/ydo+esz3Se40mIhj0g+hI9HomJbp0X5ewuY8dDcsAJQfBfv3Kmd19cgnEnDaq
- 8XhqdDlRYuR+rQ5LzRSTbDMhJmOFCPiC1axyOXliDhH9jNX5cq3FYtQklxrH2nXkfjV8
- ARVA==
+ bh=tY6SKki/uWVAIv0MsBbw55az0oWSvt0PY3G9FmsSaas=;
+ b=dL2p6foofY2Hh8ZXBKcxBNbv/lgbNEFe5cLgSUrKSUL+jWtf1wanV1AMKwCRFciuJa
+ xIooGOS3YkjLkhuit47Mn5MbWS5t3Gducg7evlcKxWBkrhN76QWacmDIZmIlLXYvm7qx
+ SyxOTaumiunB9eCKnaAkO+jHD5r7UQRRkrmFxgpDS3cBCebveK5sjIgtkk7iJtW3roKl
+ T2J5nZh9xPTzhnyW/q2vQfs/lqb4A91T00B/8JIRDmVo8Ya365bwU/dN4Zt5lO8hlUMj
+ 0dM3DrIkHCTqCds2lywM8cCGc50ct5xYEz2qOCErERNvUR4Z8YAW/UIIhwl7QMSskyM8
+ thCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XrBY8xhhloPHHStYYTzLZIUBphfWCL1Sr3LvXL9Y2+E=;
- b=J+o9USfXg5waRPVYdARA7Lt8oIi/GIk7Vo/Kdox3jKf9CyBsXM1xVxTxDQvELhebAC
- WkWj9XB71fZZHAEuBiJZ4x8J6Q76Ufc1mmVlsq4WkYKy1c//xw6Pg3sySmN6KlFaTFdX
- yPdAu26L6O+rEagCGBqO6Yfcj8RgLn5PMX+/pqaP9x+FUdxdNtnHP4uxzutZU9Uz1unH
- Tmmttf6ObkkHPccTwZwtTWXvs0XZvug2OSWIogq8EMG1gd4FyOcrVGUgOjObTe1D7V/v
- fVVVMaL7Zr+nao9kxERnNYvwnNQvsybrcrtLei0HUUmIrwxwwKgtK6iRTcbiHD/84EvP
- d2MA==
-X-Gm-Message-State: AFqh2koA7pCiYGmFiQSf6++47+6Lrbsj6s6x/PScNnmt75uEhINwKe24
- tcdyI+72KjKFjXOzw2iqAYpDFFHInsfDn3zCr80=
-X-Received: by 2002:a05:6402:1cce:b0:472:1b3b:35f1 with SMTP id
- ds14-20020a0564021cce00b004721b3b35f1mr7556762edb.21.1671746182342; 
- Thu, 22 Dec 2022 13:56:22 -0800 (PST)
+ bh=tY6SKki/uWVAIv0MsBbw55az0oWSvt0PY3G9FmsSaas=;
+ b=REGVYSZgKl2hPGctABHfg8cAEC/oaDoWcz1m8C6noSzFvqmUJjLk9tIbV8sjwGUR3m
+ K3yQcF/ClD6ebZAHN0U9+6clPD6awSmLmjMT7yRt+i4WYkaWJ6gS0oomgvXaAqhALNzv
+ 1E0wyiFHOME5CnTXpxOnUuAglvhcQlEMJx0bfe2GQaZBWiFDyTrqf8NrzLA8tv+JoVj9
+ 8ktIZMh0qZq8Zp7eSkvPJiN/5+I8cQV2BqlRRNNIIAKsJzF4C0kc+Zs8A3RFhAjtdVrF
+ 6Tl3BZRVZoiN3LnNgqniNE5Zrx2IRyjpwr/u3s5SajY5Lj+7u0lnB3+iCm1e/E8kAyJ5
+ MlHg==
+X-Gm-Message-State: AFqh2kqtJOJOqS0cpcY9TFMqD0T02o1DPU0EISIFAnYElV9xA2Z0bl6x
+ kkmYy9w2gfIWd/e9PnJ7pSog+A==
+X-Received: by 2002:a17:907:9a98:b0:7c1:d4c:f08c with SMTP id
+ km24-20020a1709079a9800b007c10d4cf08cmr5506851ejc.4.1671746197418; 
+ Thu, 22 Dec 2022 13:56:37 -0800 (PST)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- k6-20020aa7d2c6000000b00467c3cbab6fsm791917edr.77.2022.12.22.13.56.19
+ v6-20020a1709062f0600b007933047f923sm646867eji.118.2022.12.22.13.56.31
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 22 Dec 2022 13:56:21 -0800 (PST)
+ Thu, 22 Dec 2022 13:56:37 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Andrew Jeffery <andrew@aj.id.au>,
@@ -96,40 +96,40 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  Tyrone Ting <kfting@nuvoton.com>
-Subject: [PATCH 3/6] hw/arm/exynos4210: Remove tswap32() calls and constify
+Subject: [PATCH 4/6] hw/arm/npcm7xx: Remove tswap32() calls and constify
  smpboot[]
-Date: Thu, 22 Dec 2022 22:55:46 +0100
-Message-Id: <20221222215549.86872-4-philmd@linaro.org>
+Date: Thu, 22 Dec 2022 22:55:47 +0100
+Message-Id: <20221222215549.86872-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221222215549.86872-1-philmd@linaro.org>
 References: <20221222215549.86872-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: x/vIZ7duOvJe
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TvNQCEZ1u0Tr
 
 ARM CPUs fetch instructions in little-endian.
 
@@ -157,70 +157,81 @@ for the dubious tswap().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/exynos4210.c | 48 ++++++++++++++++++++-------------------------
- 1 file changed, 21 insertions(+), 27 deletions(-)
+Note there is still a tswap() call in npcm7xx_init_fuses()
+---
+ hw/arm/npcm7xx.c | 49 ++++++++++++++++++++----------------------------
+ 1 file changed, 20 insertions(+), 29 deletions(-)
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 8dafa2215b..89ee83456d 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -468,35 +468,29 @@ static const MemoryRegionOps exynos4210_chipid_and_omr_ops = {
-     }
- };
- 
--void exynos4210_write_secondary(ARMCPU *cpu,
--        const struct arm_boot_info *info)
-+void exynos4210_write_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index d85cc02765..2976192731 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -291,22 +291,18 @@ static const struct {
+ static void npcm7xx_write_board_setup(ARMCPU *cpu,
+                                       const struct arm_boot_info *info)
  {
--    int n;
--    uint32_t smpboot[] = {
--        0xe59f3034, /* ldr r3, External gic_cpu_if */
--        0xe59f2034, /* ldr r2, Internal gic_cpu_if */
--        0xe59f0034, /* ldr r0, startaddr */
--        0xe3a01001, /* mov r1, #1 */
--        0xe5821000, /* str r1, [r2] */
--        0xe5831000, /* str r1, [r3] */
--        0xe3a010ff, /* mov r1, #0xff */
--        0xe5821004, /* str r1, [r2, #4] */
--        0xe5831004, /* str r1, [r3, #4] */
--        0xf57ff04f, /* dsb */
--        0xe320f003, /* wfi */
--        0xe5901000, /* ldr     r1, [r0] */
--        0xe1110001, /* tst     r1, r1 */
--        0x0afffffb, /* beq     <wfi> */
--        0xe12fff11, /* bx      r1 */
--        EXYNOS4210_EXT_GIC_CPU_BASE_ADDR,
--        0,          /* gic_cpu_if: base address of Internal GIC CPU interface */
--        0           /* bootreg: Boot register address is held here */
-+    const uint32_t smpboot[] = {
-+        const_le32(0xe59f3034),     /* ldr r3, External gic_cpu_if */
-+        const_le32(0xe59f2034),     /* ldr r2, Internal gic_cpu_if */
-+        const_le32(0xe59f0034),     /* ldr r0, startaddr */
-+        const_le32(0xe3a01001),     /* mov r1, #1 */
-+        const_le32(0xe5821000),     /* str r1, [r2] */
-+        const_le32(0xe5831000),     /* str r1, [r3] */
-+        const_le32(0xe3a010ff),     /* mov r1, #0xff */
-+        const_le32(0xe5821004),     /* str r1, [r2, #4] */
-+        const_le32(0xe5831004),     /* str r1, [r3, #4] */
-+        const_le32(0xf57ff04f),     /* dsb */
-+        const_le32(0xe320f003),     /* wfi */
-+        const_le32(0xe5901000),     /* ldr     r1, [r0] */
-+        const_le32(0xe1110001),     /* tst     r1, r1 */
-+        const_le32(0x0afffffb),     /* beq     <wfi> */
-+        const_le32(0xe12fff11),     /* bx      r1 */
-+        const_le32(EXYNOS4210_EXT_GIC_CPU_BASE_ADDR),
-+        cpu_to_le32(info->gic_cpu_if_addr), /* base address of Internal GIC CPU interface */
-+        cpu_to_le32(info->smp_bootreg_addr) /* Boot register address is held here */
+-    uint32_t board_setup[] = {
+-        0xe59f0010,     /* ldr r0, clk_base_addr */
+-        0xe59f1010,     /* ldr r1, pllcon1_value */
+-        0xe5801010,     /* str r1, [r0, #16] */
+-        0xe59f100c,     /* ldr r1, clksel_value */
+-        0xe5801004,     /* str r1, [r0, #4] */
+-        0xe12fff1e,     /* bx lr */
+-        NPCM7XX_CLK_BA,
+-        NPCM7XX_PLLCON1_FIXUP_VAL,
+-        NPCM7XX_CLKSEL_FIXUP_VAL,
++    static const uint32_t board_setup[] = {
++        const_le32(0xe59f0010),     /* ldr r0, clk_base_addr */
++        const_le32(0xe59f1010),     /* ldr r1, pllcon1_value */
++        const_le32(0xe5801010),     /* str r1, [r0, #16] */
++        const_le32(0xe59f100c),     /* ldr r1, clksel_value */
++        const_le32(0xe5801004),     /* str r1, [r0, #4] */
++        const_le32(0xe12fff1e),     /* bx lr */
++        const_le32(NPCM7XX_CLK_BA),
++        const_le32(NPCM7XX_PLLCON1_FIXUP_VAL),
++        const_le32(NPCM7XX_CLKSEL_FIXUP_VAL),
      };
--    smpboot[ARRAY_SIZE(smpboot) - 1] = info->smp_bootreg_addr;
--    smpboot[ARRAY_SIZE(smpboot) - 2] = info->gic_cpu_if_addr;
--    for (n = 0; n < ARRAY_SIZE(smpboot); n++) {
--        smpboot[n] = tswap32(smpboot[n]);
+-    int i;
+ 
+-    for (i = 0; i < ARRAY_SIZE(board_setup); i++) {
+-        board_setup[i] = tswap32(board_setup[i]);
 -    }
-+
-     rom_add_blob_fixed("smpboot", smpboot, sizeof(smpboot),
-                        info->smp_loader_start);
+     rom_add_blob_fixed("board-setup", board_setup, sizeof(board_setup),
+                        info->board_setup_addr);
  }
+@@ -321,22 +317,17 @@ static void npcm7xx_write_secondary_boot(ARMCPU *cpu,
+      * we need to provide our own smpboot stub that can not use 'wfi', it has
+      * to spin the secondary CPU until the first CPU writes to the SCRPAD reg.
+      */
+-    uint32_t smpboot[] = {
+-        0xe59f2018,     /* ldr r2, bootreg_addr */
+-        0xe3a00000,     /* mov r0, #0 */
+-        0xe5820000,     /* str r0, [r2] */
+-        0xe320f002,     /* wfe */
+-        0xe5921000,     /* ldr r1, [r2] */
+-        0xe1110001,     /* tst r1, r1 */
+-        0x0afffffb,     /* beq <wfe> */
+-        0xe12fff11,     /* bx r1 */
+-        NPCM7XX_SMP_BOOTREG_ADDR,
++    static const uint32_t smpboot[] = {
++        const_le32(0xe59f2018),             /* ldr r2, bootreg_addr */
++        const_le32(0xe3a00000),             /* mov r0, #0 */
++        const_le32(0xe5820000),             /* str r0, [r2] */
++        const_le32(0xe320f002),             /* wfe */
++        const_le32(0xe5921000),             /* ldr r1, [r2] */
++        const_le32(0xe1110001),             /* tst r1, r1 */
++        const_le32(0x0afffffb),             /* beq <wfe> */
++        const_le32(0xe12fff11),             /* bx r1 */
++        const_le32(NPCM7XX_SMP_BOOTREG_ADDR),
+     };
+-    int i;
+-
+-    for (i = 0; i < ARRAY_SIZE(smpboot); i++) {
+-        smpboot[i] = tswap32(smpboot[i]);
+-    }
+ 
+     rom_add_blob_fixed("smpboot", smpboot, sizeof(smpboot),
+                        NPCM7XX_SMP_LOADER_START);
 -- 
 2.38.1
 

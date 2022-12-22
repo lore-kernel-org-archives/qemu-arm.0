@@ -1,153 +1,209 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp31074ejb;
-        Wed, 21 Dec 2022 18:43:11 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv3upDpUOgjljrF5A3sBLHU5QGCCFyVaaWWWoQ+DZA5+yi9L3qUOUAsux2HCuA+2vi7UyKW
-X-Received: by 2002:a05:6a20:c199:b0:a7:9c6a:4a64 with SMTP id bg25-20020a056a20c19900b000a79c6a4a64mr5338759pzb.8.1671676991167;
-        Wed, 21 Dec 2022 18:43:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671676991; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp18036ejb;
+        Thu, 22 Dec 2022 07:04:43 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtSN/EPOXnu5eVwR9ro9mQHw/mYqfEtMmCAV0QhkJ5DZo3JwefxdejvfnLEL8rhEcZe+GBP
+X-Received: by 2002:ad4:5003:0:b0:4b4:a3d5:7bbb with SMTP id s3-20020ad45003000000b004b4a3d57bbbmr8285696qvo.10.1671721483555;
+        Thu, 22 Dec 2022 07:04:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671721483; cv=none;
         d=google.com; s=arc-20160816;
-        b=hqUeApjSH3mx90xklZtIj8OFrLB2Pn4M0NqlWtQCkkbgw2QFbGCYWprAbkGjHUGOBV
-         vDSXneB9b3QKzm9Q7PE+GenHVwfSlCabZ+0WyDTR/y26vrwWya0W/j5B+wxX1kl3UZTS
-         /APl+QmidEANybEZEoYo58HpKuzHx7fvd1jOtHYh2+3bP9XcLTTXGZ+69rz9nIvZfq74
-         +jDNv29bB/XuHoH2oG1m2JhHMDOpVjQYxEJU3O4vIJMhpNiHWPWLgbHQFspYwmHyUKX+
-         aBLNcKvHF+CYuMHDBR47CKVKHh9WUq/l6O3u2QaOiz4uMvAFbXrZOtLcwlNJu70Sue4U
-         fUCg==
+        b=xllWV6USgQQY8rGipjlGYW74/L51ZYxFGfvXuPeas/NzdTGGRa1eQLJjamoaGGFLJD
+         dT3X7BCWvoEMb6ZSeDz9qncWJ2D9XaXIBYAlCJN1bg8U476weva2QusyPABK46XgCJom
+         37IId3Z+Xe1ZcWWs2e2j2MwkzbRaZBj5XziW0Bynsi5suqJRgfCDr/Ifq+r1cCAkdlq/
+         ZBvJS8RJq4wajgf8dl0Lo8yFBGbLGTm1lrV3nTnDOmV/pniKTIo25L/52pzNWnJ7KfH6
+         xB3wv2wvyIN5LMWxe+/hKrw1rLdVR1Z8cbbih3rorrHzftNi8cGluNfpE65mdo7xG46c
+         Nsuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=wBsLh2SS/yZsLo3AS6Fn+RwFBFddM5BW2o/7gRYqkNU=;
-        b=t0319ixqrDC1jpEmdSprUHqlvr8iaP/f598x+bmv45WahIdkfkxvYf7pdgM9km+lfr
-         x4jyPWvFPZnRLegVLI1wutPbzPAhR4LY476Ioa6Tm1Dw9Yqk6cICwU7pIpRGqBtgzPz7
-         +aqsjJI8DYymSOYrzd62Ht1jR/rKy/i2Q9uhWbyDbk5LQWJ2ilP6uSRgYPjSwftRl8Nc
-         5ymV8ALz7PcHn3pS00FlcXTU7kr65MuJeDQLklFfKmg5TwBnlKAfuyGJWkELbNFTB+Ar
-         LFbsS55UlGVjUVrUlBsHQyiJpzmOfcq/uzPPioVgRYhsrAagY1kYthsNi6GTpxIaWCcs
-         m2jQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=bYB27TogxpwypzUmCcWbKBZhi+QrbE+jluz3XJ8G/CQ=;
+        b=EOwzw/TlBwyB8XEJX7MGMxryMVd7Ri5yKQNhC1tFBf1ktIQE0PLD29WndCAc/ynWlH
+         4tuMyhAU30K2iYUcVBXnZeZtcJkiEtaRKTakMmZNveNCZ/RmCzoUmksRkB4UZijYwO0Z
+         8O4iV3ftCPlRZmLekZL5gRqVDmRvH2lHcpmkdj8hs61Nwez6OYpDOWXW0vqm0r6RkxyT
+         buzBfxJST3F1OWw/w5ptIjfHVNlAylfJRyWqG7eJQaXt1IgbRRX+MUcnRn20NsXTFRWT
+         ay9gDx3zRIpr7QQ1IwbJAbuOn4ebQHgVA115nkBcSPjrml3suM3O2dyVe/+DNrgNaggd
+         hmvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=iCfuQVft;
-       spf=pass (google.com: domain of dgibson@gandalf.ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom=dgibson@gandalf.ozlabs.org
-Return-Path: <dgibson@gandalf.ozlabs.org>
-Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
-        by mx.google.com with ESMTPS id h71-20020a63834a000000b004573e877892si18429741pge.769.2022.12.21.18.43.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Dec 2022 18:43:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of dgibson@gandalf.ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wSWzPYpC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jo6-20020a056214500600b0052a241c6846si321465qvb.81.2022.12.22.07.04.43
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 22 Dec 2022 07:04:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=iCfuQVft;
-       spf=pass (google.com: domain of dgibson@gandalf.ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom=dgibson@gandalf.ozlabs.org
-Received: by gandalf.ozlabs.org (Postfix, from userid 1007)
-	id 4NcvkM28FPz4xwl; Thu, 22 Dec 2022 13:43:07 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=gibson.dropbear.id.au; s=201602; t=1671676987;
-	bh=wBsLh2SS/yZsLo3AS6Fn+RwFBFddM5BW2o/7gRYqkNU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iCfuQVftC4HDGlbeTJyba7POo0eZvn1Zr9MxQr6iPcnStX+B8oRvhmwl+qMn0gCPp
-	 NuEht1eMR7FsqKMduGPjmFfz+XmtEFrLutZiyVYkIC/mOD0WTSkvwcSLaK/gYZEvHa
-	 QFMQXy2BBmElGRVKqPYb/tey69rq4wzwDIWfjIvA=
-Date: Thu, 22 Dec 2022 12:56:56 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	Jason Wang <jasowang@redhat.com>, Greg Kurz <groug@kaod.org>,
-	qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	qemu-ppc@nongnu.org
-Subject: Re: [RFC PATCH-for-8.0 2/3] hw/ppc/spapr: Replace tswap64(HPTE) by
- cpu_to_be64(HPTE)
-Message-ID: <Y6O5aAUgGVytRHRj@yekko>
-References: <20221213125218.39868-3-philmd@linaro.org>
- <CAFEAcA96ncqvN9iXybCd2SrVKJ9CKsu5t3_GtdNt1ZEDAkFt0w@mail.gmail.com>
- <e8c3fdcb-81f1-7067-217c-c49e8748b84a@gmail.com>
- <CAFEAcA_jH3Zn1cFfnvsd_GhiBj1bNKscs7S7cwFa+FnTC9QC=g@mail.gmail.com>
- <Y6AFLpDEkpS+muSJ@yekko>
- <CAFEAcA9CUtdLXKPOqC0uRCyA0xQFZ_SrJ62SSDvPKESaxL3X2A@mail.gmail.com>
- <Y6JeXJn1qCkeIzuz@yekko>
- <CAFEAcA96faOvyo9cqpTZm+U1iMpRphnxvXfUuqStonzGGcMTLQ@mail.gmail.com>
- <7ababaf9-9c00-37e8-a2d0-565b8de57010@kaod.org>
- <CAFEAcA_yh95V-szcDaX1p490FvWi_VwRz9FJVokGwiw3zqqi8w@mail.gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=wSWzPYpC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p8N6i-0008N1-Us; Thu, 22 Dec 2022 10:03:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8N6b-0008JO-Oz
+ for qemu-arm@nongnu.org; Thu, 22 Dec 2022 10:03:35 -0500
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p8N6Z-00056t-EC
+ for qemu-arm@nongnu.org; Thu, 22 Dec 2022 10:03:32 -0500
+Received: by mail-lf1-x132.google.com with SMTP id bp15so3074874lfb.13
+ for <qemu-arm@nongnu.org>; Thu, 22 Dec 2022 07:03:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=bYB27TogxpwypzUmCcWbKBZhi+QrbE+jluz3XJ8G/CQ=;
+ b=wSWzPYpCQdcvu2vwBweUT4f1zTEwe8wwcqatn5vIImRhR+ilfjzUzjFDmA75AKS2N4
+ LktXOumICSZO5s7WZLiaZ0HwVFwfihpgaRE6w1bhOaLK+rIpSx/w4LZMVvfgeH0SBPxA
+ 1NRaNe91pBDig5PMV/9uNSXr04L5DlbvdIf988rWdywP9vTFGSygRLeA0HTecVuLiQ59
+ uZHh7dd2SK9d8lympwsbpTX2RLtHhAXbU+7QuacynQ/u5nVRQ4znCAMOQFmjZrZeM3vF
+ kVzWMaf+0+XusiCSvRi/gG7vdPrVrVG9+C/fTXKl+eRazt01huNz2/RR6yrohsbw/qJq
+ Db7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=bYB27TogxpwypzUmCcWbKBZhi+QrbE+jluz3XJ8G/CQ=;
+ b=jPJ5uUnnCcPVaFD190eZ9ljemAgbk3UB6N2Pbv7/a/o+h9nuJeCC+Fcc11/6u9pcfv
+ Ly9K4dKEeaWSBnpLmpADY0BnlIsE0+0qnA7lcoh+J5bju/F4fb+oocMMDQdANOyGBk1h
+ uSgr3ssxN05UhP1jRvNl1heLB4rXpldSJxHJoyAi9RCmLFPCfL2jmaXMFRrtfheWp1OQ
+ 3TDDlyP+lQ1+Q0Z+tsPnEdtuJllR3UXY5N3lcojWjEE6PxRZtRnnXE3HrSO7KxQrJX0i
+ z/VlxBO4SqMfrCbFs8FlhsyBYKAl7lz3HuhuCKXmufV6qAJhu6G1fZEFCiRICfKdvBZg
+ LdQw==
+X-Gm-Message-State: AFqh2kokU6i+oaOFqCUSYnL6bQkDtEETp7I8431VKvgezQYKhTTJpvCG
+ +XrcekGt4dNWg+nfz73sXggOPw==
+X-Received: by 2002:a05:6512:79:b0:4b5:43ef:a555 with SMTP id
+ i25-20020a056512007900b004b543efa555mr1686710lfo.69.1671721409272; 
+ Thu, 22 Dec 2022 07:03:29 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ o2-20020a5d58c2000000b0026a4bb75477sm759539wrf.28.2022.12.22.07.03.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 22 Dec 2022 07:03:28 -0800 (PST)
+Message-ID: <6ccd925d-b965-4da0-13f2-365bd75abe88@linaro.org>
+Date: Thu, 22 Dec 2022 16:03:26 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="TG4up/prbh2+xsTc"
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_yh95V-szcDaX1p490FvWi_VwRz9FJVokGwiw3zqqi8w@mail.gmail.com>
-X-TUID: az4ntcKPJKKH
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.0
+Subject: Re: [PATCH v9 08/14] hw/nvram: NPCM7xx OTP device model
+Content-Language: en-US
+To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com,
+ kfting@nuvoton.com, Alexander Bulekov <alxndr@bu.edu>,
+ Shengtan Mao <stmao@google.com>, Hao Wu <wuhaotsh@google.com>,
+ Chris Rauer <crauer@google.com>, Tyrone Ting <kfting@nuvoton.com>
+References: <20200911052101.2602693-1-hskinnemoen@google.com>
+ <20200911052101.2602693-9-hskinnemoen@google.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20200911052101.2602693-9-hskinnemoen@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x132.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2YA1rofJWS82
 
+Hi,
 
---TG4up/prbh2+xsTc
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+(old patch)
 
-On Wed, Dec 21, 2022 at 10:15:28PM +0000, Peter Maydell wrote:
-> On Wed, 21 Dec 2022 at 16:03, C=E9dric Le Goater <clg@kaod.org> wrote:
-> >
-> > On 12/21/22 13:33, Peter Maydell wrote:
-> > > On Wed, 21 Dec 2022 at 01:35, David Gibson <david@gibson.dropbear.id.=
-au> wrote:
-> > >> On Mon, Dec 19, 2022 at 10:39:40AM +0000, Peter Maydell wrote:
-> > >>> OK. I still think we should consistently change all the places that=
- are
-> > >>> accessing this data structure, though, not just half of them.
-> > >>
-> > >> Yes, that makes sense.  Although what exactly constitutes "this data
-> > >> structure" is a bit complex here.  If we mean just the spapr specific
-> > >> "external HPT", then there are only a few more references to it.  If
-> > >> we mean all instances of a powerpc hashed page table, then there are=
- a
-> > >> bunch more in the cpu target code.
-> > >
-> > > I had in mind "places where we write this specific array of bytes
-> > > spapr->htab".
+On 11/9/20 07:20, Havard Skinnemoen wrote:
+> This supports reading and writing OTP fuses and keys. Only fuse reading
+> has been tested. Protection is not implemented.
+> 
+> Reviewed-by: Avi Fishman <avi.fishman@nuvoton.com>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Tested-by: Alexander Bulekov <alxndr@bu.edu>
+> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+> ---
+>   include/hw/arm/npcm7xx.h       |   3 +
+>   include/hw/nvram/npcm7xx_otp.h |  79 ++++++
+>   hw/arm/npcm7xx.c               |  29 +++
+>   hw/nvram/npcm7xx_otp.c         | 440 +++++++++++++++++++++++++++++++++
+>   hw/nvram/meson.build           |   1 +
+>   5 files changed, 552 insertions(+)
+>   create mode 100644 include/hw/nvram/npcm7xx_otp.h
+>   create mode 100644 hw/nvram/npcm7xx_otp.c
 
-Seems a reasonable amount to tackle for now.
+> +/**
+> + * npcm7xx_otp_array_write - ECC encode and write data to OTP array.
+> + * @s: OTP module.
+> + * @data: Data to be encoded and written.
+> + * @offset: Offset of first byte to be written in the OTP array.
+> + * @len: Number of bytes before ECC encoding.
+> + *
+> + * Each nibble of data is encoded into a byte, so the number of bytes written
+> + * to the array will be @len * 2.
+> + */
+> +extern void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void *data,
+> +                                    unsigned int offset, unsigned int len);
 
-> > spapr_store_hpte() seems to be the most annoying part. It is used
-> > by hcalls h_enter, h_remove, h_protect. Reworking the interface
-> > to present pte0/pte1 as BE variables means reworking the whole
-> > hw/ppc/spapr_softmmu.c file. That's feasible but not a small task
-> > since the changes will root down in the target hash mmu code which
-> > is shared by all platforms ... :/
->=20
-> Don't you just need to change spapr_store_hpte() to use stq_be_p()
-> instead of stq_p() ?
+> +static void npcm7xx_init_fuses(NPCM7xxState *s)
+> +{
+> +    NPCM7xxClass *nc = NPCM7XX_GET_CLASS(s);
+> +    uint32_t value;
+> +
+> +    /*
+> +     * The initial mask of disabled modules indicates the chip derivative (e.g.
+> +     * NPCM750 or NPCM730).
+> +     */
+> +    value = tswap32(nc->disabled_modules);
 
-I think Peter is right.  The values passed to the function are "host
-endian" (really, they don't have an endianness since they'll be in
-registers).
+In which endianness do you want this 32-bit fuse value to be written?
 
-> > spapr_hpte_set_c() are spapr_hpte_set_r() are of a different kind.
->=20
-> That code seems to suggest we already implicitly assume that
-> spapr->htab fields have a given endianness...
+I suppose you used a little-endian host, so we want it big-endian in
+the OTP? In that case it would be better to use cpu_to_be32(), to
+be able to use the OTP on a big-endian host such s390x.
 
-Yes, we absolutely do.  We rely on the HPTE always being big-endian.
+> +    npcm7xx_otp_array_write(&s->fuse_array, &value, NPCM7XX_FUSE_DERIVATIVE,
+> +                            sizeof(value));
+> +}
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+For completeness:
 
---TG4up/prbh2+xsTc
-Content-Type: application/pgp-signature; name="signature.asc"
+ > +static void npcm730_class_init(ObjectClass *oc, void *data)
+ > +{
+ > +    NPCM7xxClass *nc = NPCM7XX_CLASS(oc);
+ > +
+ > +    /* NPCM730 is optimized for data center use, so no graphics, etc. */
+ > +    nc->disabled_modules = 0x00300395;
+ > +    nc->num_cpus = 2;
+ > +}
+ > +
+ > +static void npcm750_class_init(ObjectClass *oc, void *data)
+ > +{
+ > +    NPCM7xxClass *nc = NPCM7XX_CLASS(oc);
+ > +
+ > +    /* NPCM750 has 2 cores and a full set of peripherals */
+ > +    nc->disabled_modules = 0x00000000;
+ > +    nc->num_cpus = 2;
+ > +}
 
------BEGIN PGP SIGNATURE-----
+Thanks,
 
-iQIzBAEBCAAdFiEEoULxWu4/Ws0dB+XtgypY4gEwYSIFAmOjuUwACgkQgypY4gEw
-YSKigxAA1zOcqxQAZARsA5p2zZhtmjsgjFuppOW5Nu/DrYhKO5vDGR7bo+8meQVe
-nHVRByHmCx1TlBe6nQ1/hF7aeNmELO3Nvg9LVmt9VY+8M4gqsJPsqaF8qUx1Pey2
-EUkHy0OnOhEnSiqXrYEfhac96mfsOFLTO2WCiKbF295nD6yd3ok2T9QWaHk8JN/g
-qmXVFndzMtOgbLhl7tg1Gblu5J3Fdgl8wGeORpJqfbB57H+SQmVwRQ5nNDoKtgy3
-lU5dKOvbSe98ixe/COwGB3IDx+vxQRgtnbmUc9TMpNq78uaTXNkKSCG3ledfTY2+
-adzTIZRZAnq9FzHGYuIaEXqfzkNUWNluP2RiJluZOaflWyGDn0nBsiMUo1yymMRj
-bnI6gglldvF6Uk6C7KOBspsetUb/aBjJxGr+8RNfYlXWyiBioBi/xb9mBh2+QfTJ
-q3zbafVHDNC0ltTtEgvgI8rDLImDm92tJKc03Gs9x1uQ7RfS6kCV5aJUGbRR7FDw
-nt4WQ+OXR7zw3Yx4PYmImkp5GDWbsQ6oH7gVKlBXkMqSXeXaSgaNh78d8P5jIO83
-h9O5Rs6OxsPrjMUKjm6yD0Sy4HctKmHyLVgx+nWU2GNrj459z7/vMBxk6EL5r0Rn
-RelPUvD8RDbpPaZNSL7Anr8TNa4UrwU8FAbueCvcJ2quYjDoBcI=
-=p6T7
------END PGP SIGNATURE-----
-
---TG4up/prbh2+xsTc--
+Phil.

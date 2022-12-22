@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp310898ejb;
-        Thu, 22 Dec 2022 04:09:45 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXt6zEj8TGK0waTyfXyjJUs9G5/WtgtAnmdH2I1dajSQG9PyjsLQo2gO6T7NNTGXuLZ0YW6B
-X-Received: by 2002:ac8:5211:0:b0:3a7:e384:92b6 with SMTP id r17-20020ac85211000000b003a7e38492b6mr7070166qtn.19.1671710985681;
-        Thu, 22 Dec 2022 04:09:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671710985; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp311154ejb;
+        Thu, 22 Dec 2022 04:10:06 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvZpWdAGFICMPud+igiRKRz0H384iaxh2yeWjIQ0n9efpUZagqID+RWj4EUKcI1kyjKz1k5
+X-Received: by 2002:ac8:7ca6:0:b0:3a8:30f8:bc13 with SMTP id z6-20020ac87ca6000000b003a830f8bc13mr6375561qtv.44.1671711006471;
+        Thu, 22 Dec 2022 04:10:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671711006; cv=none;
         d=google.com; s=arc-20160816;
-        b=UAXjAtC8o0yjsq78WcAwqalzP65y22wKHykNqgmrWS1ZQH5QkiI3hb0n1IAIxAFlIi
-         eo0MrO4ox8bJ7EcZQ8xH/YY7TKf6EEnAnUPX4A302gjYCqWvxRoUENMcYz37sDhcibze
-         GwYmJ1mg6WI9VTNSTveO8vTrj9S/sORLxV4cgD+R1zuLaX5C7CCAH0cIYFqosWcRBFWR
-         gmoOQfUaGzyS1+ANfWn6r4GloRHVWK7WXvcrf+4GVWIXKFI5MWuPDxPAuTo+Y4evlNTw
-         U1Ign55gjdhrmGQJOcjg06lwMRRXR7XF54/IgzHhJuJ6CHYmpB2ddgVx0Vd1wLQKACno
-         k9vg==
+        b=hMDntT9RSqhSlXDt4XVwyt4Oki/HE7npVokXCgQqu2Ll9GGXHzXtcMm1X3ElqRAqIn
+         uehBmnY+a1lxShbbS0Nfub/vPDklI4zqYgmX61gehnHbzSG1hG7hK6tR3gPYFDDL0jj3
+         XgSTVrrNaUt+tYvACIQTo2ZTQLkARiovJP4V0xaCJtULiCiou8zBsThqY4ut1n+re7Oq
+         FBoHgLWcqQ0Chy1Qd6KDZEVbxtW1zlFwbB6cXMgu4KMKkLBfCzZQMyuGuwgH8Sf755ZP
+         lxThwMFuEB3YKFY62Bm68qOqDggcCTZCgnvIN/f7JGxAi7sQ9DSoKJZ4XywSIyKVGDdo
+         Pqww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=j3uM8RpKhBaSx4HGrEkRlS0tuMuWREecwrjQoZcx4/Y=;
-        b=KpHOxMVrMO0qHTIB40ZKK0eOS8TQfEyfl29VdEmP1sbN9cvW+SkzziDhKlNOBOHZkl
-         Wm7VGd/sQ7S1jrrHlbsPDs9Crtb590DgbhTKAyA2xGRWLDkVbMVc2g+dUdwlu4Tz/jfN
-         jLiNf4YbQE5f8weklfHnTyol3BMqXdn/8e/+e7etYpsohgmhl0A5IvZlTNVhHI2VebXB
-         ogr7+KU3xd0HePxA/OY9OOvKkDY+NlfhKg5lJZBe7gDpGMWzDv6R7MpVj5qwDEvKTFd7
-         v5blgsh3MWp6/Ai2DcNaljwBBSRkv5YhPSVW5wPmbiE8bN6v9eog45I0bdtbyNbtwNi6
-         ka4Q==
+        bh=RErbQRiZj7SjEFMHKWcyDDNYB15/ot3oxi8HRVs5C0U=;
+        b=pY6cXeydjRdbIDlRxBjYakyKIwdWg3Hgac+PehsbPmB8XSnTy//qDapLtPW4IV6+ci
+         M6cYdm6Au3i+F00ZcDEoYx82VXHZoPpbuRy4slMwq5Q/QX6ISSJOJ51ssPT6FW8k4gBP
+         LL1ehniVrC2r9CnftA4CVLs+j490mkcxWAkMrbQZ9Tqa7VNkWCrMqndcVl2MRi6z5zrE
+         6ebKLCJYMqpkZsKXCA9tess2Yhk4aMUeZyRtOWFH7Ame7DEUcJHVpcONj6t7vRmlvTdL
+         xIhsSfJR6MUCBbPAFAYyRosdJay+ZxIjulegqtd/6NIP4383BBuZ21VgHg1PaLm8bYgf
+         Ukfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="i2/MN3wy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dVtEPiVt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bx13-20020a05622a090d00b003a4f4d64147si220188qtb.128.2022.12.22.04.09.45
+        by mx.google.com with ESMTPS id j14-20020ac874ce000000b003946863ff63si191433qtr.536.2022.12.22.04.10.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Dec 2022 04:09:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Dec 2022 04:10:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="i2/MN3wy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dVtEPiVt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p8KNB-0007Td-4n; Thu, 22 Dec 2022 07:08:29 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p8KNC-0007Ub-0H; Thu, 22 Dec 2022 07:08:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1p8KN9-0007SI-Fp
- for qemu-arm@nongnu.org; Thu, 22 Dec 2022 07:08:27 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1p8KN8-0007Qk-7y
+ for qemu-devel@nongnu.org; Thu, 22 Dec 2022 07:08:26 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1p8KN3-0004Yk-7E
- for qemu-arm@nongnu.org; Thu, 22 Dec 2022 07:08:27 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1p8KN3-0004Z2-9I
+ for qemu-devel@nongnu.org; Thu, 22 Dec 2022 07:08:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1671710899;
+ s=mimecast20190719; t=1671710900;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=j3uM8RpKhBaSx4HGrEkRlS0tuMuWREecwrjQoZcx4/Y=;
- b=i2/MN3wycOxuqMnfHaqQdBuprT3Zqs5JQSSM+GLu+YiYJHDvtY2vPjStAy6rqW1myCDAmU
- HyInu36uu+q+EyUwAGuvpsnCrax1/SzMG0TzqSx1eZSsHRGu/PcJ3oOHl1cJELWWneKUZc
- 0ssC1j1TE1zBH239UGFZwxdjWQyPi/8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=RErbQRiZj7SjEFMHKWcyDDNYB15/ot3oxi8HRVs5C0U=;
+ b=dVtEPiVtgJg94nuFR4I5uAQsLbbMpNQ5ybymogjIj8mwcBBCd98skc7BN9FjL6TTBrZ3PR
+ B9+26ZuAexvPQhnodeqwbdlLw3YxaPaBpPJS+YEARCE1wbszE7RPsH8zSB2NyLvFIwQ6Zo
+ Vpq8rQwSk2K+Ep8Ob+vuC+URWJk7LvM=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-418-hzmqdjV5OFa1ocu-HF7Fyw-1; Thu, 22 Dec 2022 07:08:16 -0500
-X-MC-Unique: hzmqdjV5OFa1ocu-HF7Fyw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
+ us-mta-569-upUW-ju9PUyymhDOw-ABTg-1; Thu, 22 Dec 2022 07:08:16 -0500
+X-MC-Unique: upUW-ju9PUyymhDOw-ABTg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7D53485C064;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7DBFB1C09B72;
  Thu, 22 Dec 2022 12:08:15 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.195.91])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 67CA3C16029;
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6706B4014EB9;
  Thu, 22 Dec 2022 12:08:14 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 4E5B821E6935; Thu, 22 Dec 2022 13:08:13 +0100 (CET)
+ id 4B27221E6931; Thu, 22 Dec 2022 13:08:13 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
@@ -86,17 +86,20 @@ Cc: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
  vikram.garhwal@amd.com, francisco.iglesias@amd.com, clg@kaod.org,
  kraxel@redhat.com, marcandre.lureau@redhat.com, riku.voipio@iki.fi,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- crwulff@gmail.com, marex@denx.de, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 4/4] docs/devel: Rules on #include in headers
-Date: Thu, 22 Dec 2022 13:08:13 +0100
-Message-Id: <20221222120813.727830-5-armbru@redhat.com>
+ crwulff@gmail.com, marex@denx.de,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Bin Meng <bmeng.cn@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: [PATCH v2 3/4] include: Don't include qemu/osdep.h
+Date: Thu, 22 Dec 2022 13:08:12 +0100
+Message-Id: <20221222120813.727830-4-armbru@redhat.com>
 In-Reply-To: <20221222120813.727830-1-armbru@redhat.com>
 References: <20221222120813.727830-1-armbru@redhat.com>
 MIME-Version: 1.0
-Content-type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -106,52 +109,200 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E11WZQVuUM0N
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IpEXwK6aeor1
 
-Rules for headers were proposed a long time ago, and generally liked:
+docs/devel/style.rst mandates:
 
-    Message-ID: <87h9g8j57d.fsf@blackfin.pond.sub.org>
-    https://lists.nongnu.org/archive/html/qemu-devel/2016-03/msg03345.html
+    The "qemu/osdep.h" header contains preprocessor macros that affect
+    the behavior of core system headers like <stdint.h>.  It must be
+    the first include so that core system headers included by external
+    libraries get the preprocessor macros that QEMU depends on.
 
-Wortk them into docs/devel/style.rst.
+    Do not include "qemu/osdep.h" from header files since the .c file
+    will have already included it.
 
-Suggested-by: Bernhard Beschow <shentey@gmail.com>
+A few violations have crept in.  Fix them.
+
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Reviewed-by: Taylor Simpson <tsimpson@quicinc.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- docs/devel/style.rst | 7 +++++++
- 1 file changed, 7 insertions(+)
+ bsd-user/qemu.h                 | 1 -
+ crypto/block-luks-priv.h        | 1 -
+ include/hw/cxl/cxl_host.h       | 1 -
+ include/hw/input/pl050.h        | 1 -
+ include/hw/tricore/triboard.h   | 1 -
+ include/qemu/userfaultfd.h      | 1 -
+ net/vmnet_int.h                 | 1 -
+ qga/cutils.h                    | 1 -
+ target/hexagon/hex_arch_types.h | 1 -
+ target/hexagon/mmvec/macros.h   | 1 -
+ target/riscv/pmu.h              | 1 -
+ qga/cutils.c                    | 3 ++-
+ 12 files changed, 2 insertions(+), 12 deletions(-)
 
-diff --git a/docs/devel/style.rst b/docs/devel/style.rst
-index 7ddd42b6c2..68aa776930 100644
---- a/docs/devel/style.rst
-+++ b/docs/devel/style.rst
-@@ -293,6 +293,13 @@ that QEMU depends on.
- Do not include "qemu/osdep.h" from header files since the .c file will have
- already included it.
+diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
+index be6105385e..0ceecfb6df 100644
+--- a/bsd-user/qemu.h
++++ b/bsd-user/qemu.h
+@@ -17,7 +17,6 @@
+ #ifndef QEMU_H
+ #define QEMU_H
  
-+Headers should normally include everything they need beyond osdep.h.
-+If exceptions are needed for some reason, they must be documented in
-+the header.  If all that's needed from a header is typedefs, consider
-+putting those into qemu/typedefs.h instead of including the header.
-+
-+Cyclic inclusion is forbidden.
-+
- C types
- =======
+-#include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "qemu/units.h"
+ #include "exec/cpu_ldst.h"
+diff --git a/crypto/block-luks-priv.h b/crypto/block-luks-priv.h
+index dc2dd14e52..8fc967afcb 100644
+--- a/crypto/block-luks-priv.h
++++ b/crypto/block-luks-priv.h
+@@ -18,7 +18,6 @@
+  *
+  */
  
+-#include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/bswap.h"
+ 
+diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
+index a1b662ce40..c9bc9c7c50 100644
+--- a/include/hw/cxl/cxl_host.h
++++ b/include/hw/cxl/cxl_host.h
+@@ -7,7 +7,6 @@
+  * COPYING file in the top-level directory.
+  */
+ 
+-#include "qemu/osdep.h"
+ #include "hw/cxl/cxl.h"
+ #include "hw/boards.h"
+ 
+diff --git a/include/hw/input/pl050.h b/include/hw/input/pl050.h
+index 89ec4fafc9..4cb8985f31 100644
+--- a/include/hw/input/pl050.h
++++ b/include/hw/input/pl050.h
+@@ -10,7 +10,6 @@
+ #ifndef HW_PL050_H
+ #define HW_PL050_H
+ 
+-#include "qemu/osdep.h"
+ #include "hw/sysbus.h"
+ #include "migration/vmstate.h"
+ #include "hw/input/ps2.h"
+diff --git a/include/hw/tricore/triboard.h b/include/hw/tricore/triboard.h
+index 094c8bd563..4fdd2d7d97 100644
+--- a/include/hw/tricore/triboard.h
++++ b/include/hw/tricore/triboard.h
+@@ -18,7 +18,6 @@
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "hw/boards.h"
+ #include "sysemu/sysemu.h"
+diff --git a/include/qemu/userfaultfd.h b/include/qemu/userfaultfd.h
+index 6b74f92792..55c95998e8 100644
+--- a/include/qemu/userfaultfd.h
++++ b/include/qemu/userfaultfd.h
+@@ -13,7 +13,6 @@
+ #ifndef USERFAULTFD_H
+ #define USERFAULTFD_H
+ 
+-#include "qemu/osdep.h"
+ #include "exec/hwaddr.h"
+ #include <linux/userfaultfd.h>
+ 
+diff --git a/net/vmnet_int.h b/net/vmnet_int.h
+index adf6e8c20d..d0b90594f2 100644
+--- a/net/vmnet_int.h
++++ b/net/vmnet_int.h
+@@ -10,7 +10,6 @@
+ #ifndef VMNET_INT_H
+ #define VMNET_INT_H
+ 
+-#include "qemu/osdep.h"
+ #include "vmnet_int.h"
+ #include "clients.h"
+ 
+diff --git a/qga/cutils.h b/qga/cutils.h
+index f0f30a7d28..2bfaf554a8 100644
+--- a/qga/cutils.h
++++ b/qga/cutils.h
+@@ -1,7 +1,6 @@
+ #ifndef CUTILS_H_
+ #define CUTILS_H_
+ 
+-#include "qemu/osdep.h"
+ 
+ int qga_open_cloexec(const char *name, int flags, mode_t mode);
+ 
+diff --git a/target/hexagon/hex_arch_types.h b/target/hexagon/hex_arch_types.h
+index 885f68f760..52a7f2b2f3 100644
+--- a/target/hexagon/hex_arch_types.h
++++ b/target/hexagon/hex_arch_types.h
+@@ -18,7 +18,6 @@
+ #ifndef HEXAGON_HEX_ARCH_TYPES_H
+ #define HEXAGON_HEX_ARCH_TYPES_H
+ 
+-#include "qemu/osdep.h"
+ #include "mmvec/mmvec.h"
+ #include "qemu/int128.h"
+ 
+diff --git a/target/hexagon/mmvec/macros.h b/target/hexagon/mmvec/macros.h
+index 8c864e8c68..1201d778d0 100644
+--- a/target/hexagon/mmvec/macros.h
++++ b/target/hexagon/mmvec/macros.h
+@@ -18,7 +18,6 @@
+ #ifndef HEXAGON_MMVEC_MACROS_H
+ #define HEXAGON_MMVEC_MACROS_H
+ 
+-#include "qemu/osdep.h"
+ #include "qemu/host-utils.h"
+ #include "arch.h"
+ #include "mmvec/system_ext_mmvec.h"
+diff --git a/target/riscv/pmu.h b/target/riscv/pmu.h
+index 3004ce37b6..0c819ca983 100644
+--- a/target/riscv/pmu.h
++++ b/target/riscv/pmu.h
+@@ -16,7 +16,6 @@
+  * this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "cpu.h"
+ #include "qemu/main-loop.h"
+diff --git a/qga/cutils.c b/qga/cutils.c
+index b8e142ef64..b21bcf3683 100644
+--- a/qga/cutils.c
++++ b/qga/cutils.c
+@@ -2,8 +2,9 @@
+  * This work is licensed under the terms of the GNU GPL, version 2 or later.
+  * See the COPYING file in the top-level directory.
+  */
+-#include "cutils.h"
+ 
++#include "qemu/osdep.h"
++#include "cutils.h"
+ #include "qapi/error.h"
+ 
+ /**
 -- 
 2.38.1
 

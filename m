@@ -1,127 +1,120 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp5495242ejb;
-        Wed, 21 Dec 2022 14:15:40 -0800 (PST)
-X-Received: by 2002:a05:6a21:99a4:b0:a4:cb41:2910 with SMTP id ve36-20020a056a2199a400b000a4cb412910mr28439971pzb.36.1671660940402;
-        Wed, 21 Dec 2022 14:15:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671660940; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp195263ejb;
+        Thu, 22 Dec 2022 00:31:27 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXu37EmHgpz6Wf77M+DIjpUwO5OC0nahKi/odE+I6RZlePv4FXvvHHANF4tgyDgf7pIGsGRT
+X-Received: by 2002:ac8:6686:0:b0:3a9:80b6:4c9b with SMTP id d6-20020ac86686000000b003a980b64c9bmr5990269qtp.62.1671697887559;
+        Thu, 22 Dec 2022 00:31:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671697887; cv=none;
         d=google.com; s=arc-20160816;
-        b=cu/3gckZUeevtkwhdSYbvLPC5438dvR9xSmUoYdMnUobcLiCVVDfEAoOm+X/Gy3q5f
-         AYcrrKvYQk8na9PpigvdGiccYhWzN5K7Kks3oyBJzlrgDWrdJE3vkbhBLXy6GsPQsG6W
-         4jtig/TMcRjGM+dsyaX7hIr4UcFeJ1BIXqYI3fAih6I9xvfwWKFa2Tvpdyu8utGOQjwd
-         hkcxlKeMr3GSAtMD7PkYKxLUeJlJPYO5l/Q5pWQrgudyZWd/0kKTUuN4bY0ftpjtOtfS
-         ayTTg13CZrDd0SQsNW7BLipVbqsc3tFlLPbl7kqTBa7BpVu62QMTXYGzm3ClLp4B7It0
-         /KAA==
+        b=SoY2FZjP5L9sNQIMhvJGtEJOOiUG09oDNNUUu4Wlwm2GR0WuwzNlWOrhG8lmdBtaNP
+         2y9HwDNCPoZQE2XMpYp8EDucx+yrTTKERDDTMWUcshpLuxNXqDC+P/2PT8JtvPYcGEhC
+         6qBxWpL3HAevC7D1ZNTHsqgM/1QP+/EPbgTDCm5w2u3BqcPGCQTMo0z3DhmGAodYrc0H
+         zRYRjTQjX7d7EbhCcfXF8/j7WLK8rvu60c4l7hhwiQH6j8CgymRyPeNmrXVg+H/V4tCd
+         n+E7n4KHnD3ZmBb5v3QyLCgF0faVitTC3Vqbzqz9dg5IbihoJ5vNQdhv7DNUQIoXDWz0
+         8WxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=y8KyXpN2Tcof4jRsBvQILYb+rqKrJ697w4WJ0wu6Rm4=;
-        b=d7O+I1n7gwK99Lapp9ZNWY191Mzz69yYjT8q7kggAfOufBdWVcSDLbw5NrVUEtRpSq
-         DRAIH9hRLfb6EFj5CDpB4ERqB+BF1RWtkUWIbaB5TkU6mJuvtLR68rASQLqa1ZbrZ93t
-         HKPYKyRRN/0RBErrgkZbMpDMdOUEydrczSNaUJwKpKdZk/I4Ure339EOQEu1dPTTRaaE
-         jVYJDvkDjzOvdhcwdX6HZQeISXtOB6cB/1sOxEIyRKzoVSDGzxR/GSQqbXiqLfI+VcVX
-         c2Brtbcquf1JzcAtqlk6eCwQpmJbFsAnD2CvXMD0ORFewvUraQYsFuaTNwH3coVvir/N
-         3W1Q==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
+        b=hBntXpQKiHmyRRY/EvZRrXzwxIfYGLT31T7/6K1MQqCfzHlTdZKwhlqP9V5ep/OjFI
+         bhI1m5P/P9CqJeIWAKXXUdkmF54dsy66KNzdd2J9NNVr972HW9Wj4GeiudfDSS8Yk1kn
+         eJrp2vWZlCYxml5OBjB96+r1i7fjOpKJz6OBKP7IcwdY1N6MSPuITQig36omhgIgxYM6
+         PcBbeTAsSyKPQFekmjpmTOvTKVhBk0KZlIduKAXVPkKbIyu8ZlZG4ECgt6moURpBmNvP
+         FxwRA4vCP4/fhURGqH5ccx3hDM8DI8r4yNgj/QUxCNT5oGN/29CHDayg+e7mdIQsr35x
+         vkfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x8gtQ8x3;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q128-20020a632a86000000b004772edb91cesor7152799pgq.74.2022.12.21.14.15.40
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EcEt2V9I;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id bw13-20020a05622a098d00b003a6a5866c2esi41119qtb.171.2022.12.22.00.31.27
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 21 Dec 2022 14:15:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 22 Dec 2022 00:31:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x8gtQ8x3;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=y8KyXpN2Tcof4jRsBvQILYb+rqKrJ697w4WJ0wu6Rm4=;
-        b=x8gtQ8x3a1IiJ+yy/4EvDfVewmabiFa+nJIDzKg1ynesd1+3aPP8tk0hHqzvc+Mz/u
-         T0RE7a0Woaj6OTHCoj+rxEeg79LPQuObDhvp47fM96SVfw6P+1rTNZJAhLknoxIip6eA
-         FRwb9ELTrGS5oE57bEILm9rE0K8HEKe4ly87PlGLq/FMYJ2WJtsOkSiVQH6QJhvBK76X
-         vn8T2qpVgpbLR+mwN9OlWxuv788OjGOpWCC/xswuJW4UB523A/jaxk56EeVFbyYmySsu
-         4YM5gYEyemRWWv2uNjW0fgzNrhx7SpskpC7EobnejmRJPonPZYPbYNpPF/64aRU6zF8d
-         r9ZQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EcEt2V9I;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1671697887;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
+	b=EcEt2V9IWqSW9KWazMP9lfKxhHWsPxnjnM4gGoADnwBaSaCQ2cX3NfI4wuIVOae+KL9UbL
+	BrKnCoVQkqdcDBIUovWQXxk6vuHv2XY9KBjigIjuefW4JIY3pMeM/V5rvWuW9eLohIvvrQ
+	biRCBMTSKXMZs1oA9HDFa7sG2IJg/r4=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-575-wz_5vN78PPCAa19lxuhlZA-1; Thu, 22 Dec 2022 03:31:23 -0500
+X-MC-Unique: wz_5vN78PPCAa19lxuhlZA-1
+Received: by mail-ej1-f71.google.com with SMTP id hr34-20020a1709073fa200b0083a60c1d7abso986321ejc.13
+        for <alex.bennee@linaro.org>; Thu, 22 Dec 2022 00:31:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=y8KyXpN2Tcof4jRsBvQILYb+rqKrJ697w4WJ0wu6Rm4=;
-        b=x9vYQ0E9RMdq1Yve1biEYAeH+fUTxvmrkD4E50OuFVOr1Rq/1e4EjpK2YxceT58W4i
-         mleNyWMxHQC6jt7YX9FRPplXNr0Z9vQNBlTYXhlnllHqqvv35MUCthColsuvyiVxjI1t
-         fDEEJEmxNGxyJB2pPUbARuJjPRZA2XgBEkp8rZTSU38pIBHYui404ULrIlbwkdUYcMu5
-         nemnu2I5+r/f32xvuo5TV434diZvYbwD+PESxpDsIL3wAm45btDuctcUSCk+mfXnl/zv
-         W9zrqwMDOJkhJCibfc7cXYdZRaBPUONZgfUS1qik2DeA+TTBsV3q7czo4wrcr8XzfK2U
-         UN6g==
-X-Gm-Message-State: AFqh2kof+QsvjKU6TuOiwPzC4IbYI8utlOgf9j6vdWk9Hgh0MWEgHCLe
-	Q/ocQUtxj5YNtQdEaIQX+sDTkGa58vsKARSgLM6Yecmt
-X-Google-Smtp-Source: AMrXdXu2xkYmsTnTuq2VjmVee6HdNeYgYRy/TPo5uuTVbrcJ2ZMLZxMTPFZchVBNwmtpYC7763LytEX23jVwvU/xa5s=
-X-Received: by 2002:a63:e20b:0:b0:479:18a:8359 with SMTP id
- q11-20020a63e20b000000b00479018a8359mr203134pgh.105.1671660939380; Wed, 21
- Dec 2022 14:15:39 -0800 (PST)
+        bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
+        b=kP1us9AZ448oeCojWkCKrbp7+4XRbWicw03MdrVAF9c/e0kB/uOs09LC7ly3e9Iy3D
+         kEC42S6xDQXQe/jvWlQ6WejJgd9ndR76mPXV6Jjl6C21TBpsuIH7r1fkvdIxxJV2Vew0
+         MbNRww2+sJkopwSLho96pJpTywvJtTh5R/wiS44sTKqNIKxBQ/z5RsMNC0E9LegzI5b4
+         LlQMzd5ZHHMrTz7XKVFcrC1GC3AOnPWrDI65HbSfhHy8bKOprvNH58G6gwCMQGFNCEAU
+         h1kLftWJgBut9WOmcjyrWFyVfZUCaqTn4zAg8A/BsyGuBQzC6MWTANucGbhr8D7wJVXm
+         Mq9g==
+X-Gm-Message-State: AFqh2krWf19elIU69MJMD1blSsEDBu+AeMl1kyEGCk+C+/BiHY6YKny1
+	Ns9dI1LlJRRLw/oQXLWbPi4hMswqfCWST90GULRI9FIymNajBFCERSi47PcnJiJ/ejZSgBlvvA2
+	jUktwl845CavuK8nH
+X-Received: by 2002:a05:6402:1592:b0:462:7b87:c6d with SMTP id c18-20020a056402159200b004627b870c6dmr4000364edv.2.1671697882819;
+        Thu, 22 Dec 2022 00:31:22 -0800 (PST)
+X-Received: by 2002:a05:6402:1592:b0:462:7b87:c6d with SMTP id c18-20020a056402159200b004627b870c6dmr4000340edv.2.1671697882646;
+        Thu, 22 Dec 2022 00:31:22 -0800 (PST)
+Return-Path: <pbonzini@redhat.com>
+Received: from avogadro.local ([2001:b07:6468:f312:5e2c:eb9a:a8b6:fd3e])
+        by smtp.gmail.com with ESMTPSA id a1-20020a170906244100b007b2a58e31dasm8256467ejb.145.2022.12.22.00.31.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 22 Dec 2022 00:31:22 -0800 (PST)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org,
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+	qemu-ppc@nongnu.org,
+	xen-devel@lists.xenproject.org,
+	Laurent Vivier <lvivier@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	virtio-fs@redhat.com,
+	Michael Roth <michael.roth@amd.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-block@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	Paul Durrant <paul@xen.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	John Snow <jsnow@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Greg Kurz <groug@kaod.org>,
+	Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH 0/6] enforce use of G_GNUC_PRINTF annotations
+Date: Thu, 22 Dec 2022 09:31:19 +0100
+Message-Id: <20221222083119.860606-1-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221219130205.687815-1-berrange@redhat.com>
+References: 
 MIME-Version: 1.0
-References: <20221213125218.39868-1-philmd@linaro.org> <20221213125218.39868-3-philmd@linaro.org>
- <CAFEAcA96ncqvN9iXybCd2SrVKJ9CKsu5t3_GtdNt1ZEDAkFt0w@mail.gmail.com>
- <e8c3fdcb-81f1-7067-217c-c49e8748b84a@gmail.com> <CAFEAcA_jH3Zn1cFfnvsd_GhiBj1bNKscs7S7cwFa+FnTC9QC=g@mail.gmail.com>
- <Y6AFLpDEkpS+muSJ@yekko> <CAFEAcA9CUtdLXKPOqC0uRCyA0xQFZ_SrJ62SSDvPKESaxL3X2A@mail.gmail.com>
- <Y6JeXJn1qCkeIzuz@yekko> <CAFEAcA96faOvyo9cqpTZm+U1iMpRphnxvXfUuqStonzGGcMTLQ@mail.gmail.com>
- <7ababaf9-9c00-37e8-a2d0-565b8de57010@kaod.org>
-In-Reply-To: <7ababaf9-9c00-37e8-a2d0-565b8de57010@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 21 Dec 2022 22:15:28 +0000
-Message-ID: <CAFEAcA_yh95V-szcDaX1p490FvWi_VwRz9FJVokGwiw3zqqi8w@mail.gmail.com>
-Subject: Re: [RFC PATCH-for-8.0 2/3] hw/ppc/spapr: Replace tswap64(HPTE) by cpu_to_be64(HPTE)
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: David Gibson <david@gibson.dropbear.id.au>, 
-	Daniel Henrique Barboza <danielhb413@gmail.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>, Greg Kurz <groug@kaod.org>, 
-	qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: yv3CvIziaZpJ
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"; x-default=true
+X-TUID: ysRMEe+xP1hp
 
-On Wed, 21 Dec 2022 at 16:03, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> On 12/21/22 13:33, Peter Maydell wrote:
-> > On Wed, 21 Dec 2022 at 01:35, David Gibson <david@gibson.dropbear.id.au=
-> wrote:
-> >> On Mon, Dec 19, 2022 at 10:39:40AM +0000, Peter Maydell wrote:
-> >>> OK. I still think we should consistently change all the places that a=
-re
-> >>> accessing this data structure, though, not just half of them.
-> >>
-> >> Yes, that makes sense.  Although what exactly constitutes "this data
-> >> structure" is a bit complex here.  If we mean just the spapr specific
-> >> "external HPT", then there are only a few more references to it.  If
-> >> we mean all instances of a powerpc hashed page table, then there are a
-> >> bunch more in the cpu target code.
-> >
-> > I had in mind "places where we write this specific array of bytes
-> > spapr->htab".
->
->
-> spapr_store_hpte() seems to be the most annoying part. It is used
-> by hcalls h_enter, h_remove, h_protect. Reworking the interface
-> to present pte0/pte1 as BE variables means reworking the whole
-> hw/ppc/spapr_softmmu.c file. That's feasible but not a small task
-> since the changes will root down in the target hash mmu code which
-> is shared by all platforms ... :/
+Queued, thanks.
 
-Don't you just need to change spapr_store_hpte() to use stq_be_p()
-instead of stq_p() ?
-
-> spapr_hpte_set_c() are spapr_hpte_set_r() are of a different kind.
-
-That code seems to suggest we already implicitly assume that
-spapr->htab fields have a given endianness...
-
-thanks
--- PMM
+Paolo

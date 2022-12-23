@@ -1,71 +1,64 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp247488ejb;
-        Fri, 23 Dec 2022 00:51:39 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv0gjPDnqD6wq95Ot2us3bcCaUTfJ24cXMef4w+9YT3UL/6V7/JNNtl4lKEBS7aA6C62f63
-X-Received: by 2002:a05:6214:1bcd:b0:4c7:50b7:8d73 with SMTP id m13-20020a0562141bcd00b004c750b78d73mr16217842qvc.4.1671785499767;
-        Fri, 23 Dec 2022 00:51:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671785499; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp252240ejb;
+        Fri, 23 Dec 2022 01:01:25 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtfWtE3PZYj7MhKsu8S2zRxRpdpGJ4bYz3OscmdAZRsqaSUZZI6uE7qg56LJ+FAT68rvb4C
+X-Received: by 2002:ac8:541a:0:b0:3a7:e809:1fe3 with SMTP id b26-20020ac8541a000000b003a7e8091fe3mr11230497qtq.49.1671786084870;
+        Fri, 23 Dec 2022 01:01:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671786084; cv=none;
         d=google.com; s=arc-20160816;
-        b=R6YhoJISWsE11f/VaRh4nnIlvxAZpUWJmGC8889LrdMsHjJhrRSi/LevrcGEufOKpT
-         e5DfH86V5bmlP8sDOvQyOX3cASf2FAYMcPchZye8EJxj/WsEMKY9Ab0lm/XRvMZbZ10o
-         /sfcqkk+6fiqBUcgK/pkdezrMJh+8UAxKRwKCR9mRBrwKbqPBKLlSHrjGwGuONvBNS9d
-         rrAJwsiCsb66aEnCVFlqQdgRu9mbuqNU4SBH54SKpTcDCw4uyJn6QqXRx7G77X6wU0jn
-         jskYciT6OeNhwb4t3RT2uZchhuMO/8/ub2q75sb0lZLQ+rShcszoZc8AqRN2+TbvCnsw
-         Z9cA==
+        b=w9BpW0skq9UjzhPOMvMadNtdlgMkJ/2OX1Jp6mtOee/vqjTeU03XdYLh27oc0dsswE
+         jnnIPzk9FdJd8K4g9TWMTPNQLJ+LxjIxIN+kWCTiVOTkcDbcilqvEVJH2FnJtg2pP3/N
+         puM786r8C4gij5HPOjkVCZ+xPz0KCSwj52sN+YA4hZc0wT4Uh+D5kvxAufi/G5OsueW7
+         Hh0ibVg1/YSxJtsllTVEu7NN/HNFXr56W7RzMEmGOTeVXiflsdWEZy8ArtXQor8+dmHh
+         URtBFZquWdCMKjuxKNJPPkrJmlAajUxjoB7b63jlysX1J7YD77fcvYSp36zTBGf9YG0W
+         wcmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=MdMNp/kfWcBcDqh0pgOqArh+YhQrTM/HMQsbWRRG1QM=;
-        b=px1P0DLEict66dbjChKIQInZs0NXejJ1zNr2DVC4N14AXM8KahIRCmwRNB9l11FCgR
-         iTabyKAFksXUblFCMi/+JQ13F8cfFTs7B0Zw33UXw/3kUr4kzzj3PrJnYh6C1XHXXua5
-         1Mx4amLccI3Gn6NGCzl4bCGY0BgqjupE32Qm7/2VyZRW6wSU7UKUZVxUKdVveWukzsf1
-         s799zLtK0YuBYbSxXxknaRUzX/HfLHZLL1SzOWIE9IPDiNzy1YgMb/aRLeRt3PYE+Zv/
-         M9v6B8KuN93/UfdCEmkbd7LR9KVfaFqc6x+84WCXiDnpuyUSLsvzge9OOh7UJ0EgXaVw
-         C7cQ==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=BZqJ0vbYgXnuHElKqHIYgLQvb6GBzf9ySfqPZm3wxow=;
+        b=FwsxGEnDnHkHwFxI5Z9mrlR/jfPEPU5aUTUGTv6XELBt9PR2xzb0VIp+zQM7kwqSFt
+         5D1GWTDImb49Tx+XqPh8NwXXOQ6u4QZPI8lvqJuu+prCK8hSJwlhhKSxXRZq2w7TH19F
+         0O8gazo5U2Y+EHqPZNdkfGeFgVusGldzApEigtyJ4F5YMadreQ0xuU8Acx2Ck+cNk2JI
+         W23gymggS/JGhVfrT9Qc2p/uzG5sTvNftwnDzyackaUEUGrvEyjl7o9n7C5OdW5eyLTk
+         Y7ndMFLswwh/3S3c9ti6h+PPQCw3DzPMrPa75Qp13XuuEUy/X0yr5u7f0HNt7l0JYrQk
+         leQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7-20020a0562140b2700b004c7399a21a9si923653qvj.177.2022.12.23.00.51.39
+        by mx.google.com with ESMTPS id bb9-20020a05622a1b0900b003a51c7c0403si1055651qtb.526.2022.12.23.01.01.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Dec 2022 00:51:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 23 Dec 2022 01:01:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p8dlq-0007Qq-3N; Fri, 23 Dec 2022 03:51:15 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1p8dvX-0002S5-PY; Fri, 23 Dec 2022 04:01:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1p8dlb-0007K8-Ti; Fri, 23 Dec 2022 03:51:00 -0500
+ id 1p8dvU-0002R6-Ml; Fri, 23 Dec 2022 04:01:12 -0500
 Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1p8dlZ-00046m-Nu; Fri, 23 Dec 2022 03:50:59 -0500
+ id 1p8dvS-0001Ou-ME; Fri, 23 Dec 2022 04:01:12 -0500
 Received: from localhost.localdomain
  (dynamic-095-118-065-151.95.118.pool.telefonica.de [95.118.65.151])
- by csgraf.de (Postfix) with ESMTPSA id 0231260804D4;
- Fri, 23 Dec 2022 09:50:48 +0100 (CET)
+ by csgraf.de (Postfix) with ESMTPSA id CFD6E608042C;
+ Fri, 23 Dec 2022 10:01:07 +0100 (CET)
 From: Alexander Graf <agraf@csgraf.de>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Yanan Wang <wangyanan55@huawei.com>,
+ Zenghui Yu <yuzenghui@huawei.com>, Eric Auger <eric.auger@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Shashi Mallela <shashi.mallela@linaro.org>,
- Eric Auger <eric.auger@redhat.com>,
- Neil Armstrong <narmstrong@baylibre.com>
-Subject: [PATCH 1/2] hw/intc/arm_gicv3: Make ITT entry size configurable
-Date: Fri, 23 Dec 2022 09:50:46 +0100
-Message-Id: <20221223085047.94832-2-agraf@csgraf.de>
+ Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v3 0/2] hw/arm/virt: Handle HVF in finalize_gic_version()
+Date: Fri, 23 Dec 2022 10:01:05 +0100
+Message-Id: <20221223090107.98888-1-agraf@csgraf.de>
 X-Mailer: git-send-email 2.37.1 (Apple Git-137.1)
-In-Reply-To: <20221223085047.94832-1-agraf@csgraf.de>
-References: <20221223085047.94832-1-agraf@csgraf.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
@@ -76,116 +69,52 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gbZuiJl36p0/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8/aH16gI3kMt
 
-An ITT entry is opaque to the OS. The only thing it does get told by HW is
-its size. In theory, that size can be any byte aligned number, in practice
-HW will always use power of 2s to simplify offset calculation. We currently
-expose the size as 12, which is not a power of 2.
+The finalize_gic_version() function tries to determine which GIC version
+the current accelerator / host combination supports. During the initial
+HVF porting efforts, I didn't realize that I also had to touch this
+function. Then Zenghui brought up this function as reply to my HVF GICv3
+enablement patch - and boy it is a mess.
 
-To prepare for a future where we expose power of 2 sized entry sizes, let's
-make the size itself configurable. We only need to watch out that we don't
-have an entry be smaller than the fields we want to access inside. Bigger
-is always fine.
+This patch set cleans up all of the GIC finalization so that we can
+easily plug HVF in and also hopefully will have a better time extending
+it in the future. As second step, it explicitly adds HVF support and
+fails loudly for any unsupported accelerators.
 
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
----
- hw/intc/arm_gicv3_its.c                | 14 +++++++++++---
- hw/intc/gicv3_internal.h               |  2 +-
- include/hw/intc/arm_gicv3_its_common.h |  1 +
- 3 files changed, 13 insertions(+), 4 deletions(-)
+Alex
 
-diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index 57c79da5c5..e7cabeb46c 100644
---- a/hw/intc/arm_gicv3_its.c
-+++ b/hw/intc/arm_gicv3_its.c
-@@ -215,7 +215,7 @@ static bool update_ite(GICv3ITSState *s, uint32_t eventid, const DTEntry *dte,
- {
-     AddressSpace *as = &s->gicv3->dma_as;
-     MemTxResult res = MEMTX_OK;
--    hwaddr iteaddr = dte->ittaddr + eventid * ITS_ITT_ENTRY_SIZE;
-+    hwaddr iteaddr = dte->ittaddr + eventid * s->itt_entry_size;
-     uint64_t itel = 0;
-     uint32_t iteh = 0;
- 
-@@ -253,7 +253,7 @@ static MemTxResult get_ite(GICv3ITSState *s, uint32_t eventid,
-     MemTxResult res = MEMTX_OK;
-     uint64_t itel;
-     uint32_t iteh;
--    hwaddr iteaddr = dte->ittaddr + eventid * ITS_ITT_ENTRY_SIZE;
-+    hwaddr iteaddr = dte->ittaddr + eventid * s->itt_entry_size;
- 
-     itel = address_space_ldq_le(as, iteaddr, MEMTXATTRS_UNSPECIFIED, &res);
-     if (res != MEMTX_OK) {
-@@ -1934,6 +1934,12 @@ static void gicv3_arm_its_realize(DeviceState *dev, Error **errp)
-         }
-     }
- 
-+    if (s->itt_entry_size < MIN_ITS_ITT_ENTRY_SIZE) {
-+        error_setg(errp, "ITT entry size must be at least %d",
-+                   MIN_ITS_ITT_ENTRY_SIZE);
-+        return;
-+    }
-+
-     gicv3_add_its(s->gicv3, dev);
- 
-     gicv3_its_init_mmio(s, &gicv3_its_control_ops, &gicv3_its_translation_ops);
-@@ -1941,7 +1947,7 @@ static void gicv3_arm_its_realize(DeviceState *dev, Error **errp)
-     /* set the ITS default features supported */
-     s->typer = FIELD_DP64(s->typer, GITS_TYPER, PHYSICAL, 1);
-     s->typer = FIELD_DP64(s->typer, GITS_TYPER, ITT_ENTRY_SIZE,
--                          ITS_ITT_ENTRY_SIZE - 1);
-+                          s->itt_entry_size - 1);
-     s->typer = FIELD_DP64(s->typer, GITS_TYPER, IDBITS, ITS_IDBITS);
-     s->typer = FIELD_DP64(s->typer, GITS_TYPER, DEVBITS, ITS_DEVBITS);
-     s->typer = FIELD_DP64(s->typer, GITS_TYPER, CIL, 1);
-@@ -2008,6 +2014,8 @@ static void gicv3_its_post_load(GICv3ITSState *s)
- static Property gicv3_its_props[] = {
-     DEFINE_PROP_LINK("parent-gicv3", GICv3ITSState, gicv3, "arm-gicv3",
-                      GICv3State *),
-+    DEFINE_PROP_UINT8("itt-entry-size", GICv3ITSState, itt_entry_size,
-+                      MIN_ITS_ITT_ENTRY_SIZE),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index 29d5cdc1b6..2aca1ba095 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -450,7 +450,7 @@ FIELD(VINVALL_1, VPEID, 32, 16)
-  * the value of that field in memory cannot be relied upon -- older
-  * versions of QEMU did not correctly write to that memory.)
-  */
--#define ITS_ITT_ENTRY_SIZE            0xC
-+#define MIN_ITS_ITT_ENTRY_SIZE            0xC
- 
- FIELD(ITE_L, VALID, 0, 1)
- FIELD(ITE_L, INTTYPE, 1, 1)
-diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
-index a11a0f6654..e730a5482c 100644
---- a/include/hw/intc/arm_gicv3_its_common.h
-+++ b/include/hw/intc/arm_gicv3_its_common.h
-@@ -66,6 +66,7 @@ struct GICv3ITSState {
-     int dev_fd; /* kvm device fd if backed by kvm vgic support */
-     uint64_t gits_translater_gpa;
-     bool translater_gpa_known;
-+    uint8_t itt_entry_size;
- 
-     /* Registers */
-     uint32_t ctlr;
+v1 -> v2:
+
+  - Leave VIRT_GIC_VERSION defines intact, we need them for MADT generation
+  - Include TCG header for tcg_enabled()
+
+v2 -> v3:
+
+  - Fix comment
+  - Flip kvm-enabled logic for host around
+
+Alexander Graf (2):
+  hw/arm/virt: Consolidate GIC finalize logic
+  hw/arm/virt: Make accels in GIC finalize logic explicit
+
+ hw/arm/virt.c         | 200 ++++++++++++++++++++++--------------------
+ include/hw/arm/virt.h |  15 ++--
+ 2 files changed, 115 insertions(+), 100 deletions(-)
+
 -- 
 2.37.1 (Apple Git-137.1)
 

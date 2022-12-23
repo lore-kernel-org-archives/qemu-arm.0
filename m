@@ -1,180 +1,197 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp309827ejb;
-        Fri, 23 Dec 2022 02:48:20 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXti4MIWiME1lMTEtEiSjguJUy2mMTerqvnsp8sx1L8N4efoM3DOxMfPKukiKQBuIHBUB6IZ
-X-Received: by 2002:a05:622a:1f10:b0:3a9:82a1:fb16 with SMTP id ca16-20020a05622a1f1000b003a982a1fb16mr11522149qtb.20.1671792500539;
-        Fri, 23 Dec 2022 02:48:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671792500; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp462869ejb;
+        Fri, 23 Dec 2022 06:33:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuIAJTnIQ1IevditUQrykbjDeYOo69v8nEwuDUWqnZTB8OC8Cgzqiu2Ro4xTDKQy58TDXER
+X-Received: by 2002:a05:6402:174c:b0:467:8dd2:b42 with SMTP id v12-20020a056402174c00b004678dd20b42mr7496391edx.10.1671806033484;
+        Fri, 23 Dec 2022 06:33:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671806033; cv=none;
         d=google.com; s=arc-20160816;
-        b=SthDhC+sNl2F72Fl6sQg6Q664G/ucrkPbigv/wBztUzXd5ncS0QW54cmKiyOXER2ic
-         OxYaJ5IJO71u6bYBq7lyMGCGc9vicUQaN7x5/tjxgyTrTQTMA0qXG8axqEZaNAV+t+Ea
-         /oKUVs5I/V/R6kYUiZ3TmGEfw/NakDSl48SRwH0gaiBxC+O8Gt3C/tNUXAoFEdxj1GaL
-         nu2r1HXkeY4RrDqCWTdKM9EIEStp8vK1z6Fw1qOtE5hfjIKnY2d6a9UEq70ibnCJ6sZX
-         JtYrJOsuHy4pebxXnTxbDqYybhupnUbu4wUFqRKwiobNJ4hWFF+nu5QoQMK4U046EqtE
-         sMOA==
+        b=QG36nE3oxKcAAkI2cAnnY6H7MD9Po39EaWomydEFREh1svQdu9yjgTZqBlfhwPKf+r
+         /gwprhyOYgc25qtTEeJWObNBxqS1/Mbnb6JQgxFTZpUFY6njtHZaub5RwI6JclZ5C0J8
+         yqlDZPLB8aGebE8KiVqyAhKKUHGfhR9vHodkxuTRSTTryE3epbmV5WnwzkguI7WbC0yf
+         b8rgKDgRMjbWKxc2YTL4ZD4owFYShSnFAhKY9YbHO6Xu2MeFOlKncbNvVfVMl2Out34V
+         gFR0GcB9KvAPxQWwJkyjkJWjr8AiD9ZeP659eBOptT0+4M3Mhv2UgxeMXFwB7k0evlXo
+         OTdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=VaPdoLhBE0KvIEW39PuY41HCBksEZwCL4O6dMha7OaA=;
-        b=t2XGRwDRgQg0WZeLLNm0F/lsVuynobusID610EiPh3gKnw1AgYITZdtMZLFtGM/etr
-         HUCEZzcc0EAj0om13M5OZtgFY9SjNA+Q96PHWxSoAaj+hPJR0ds2vF26y5bWaPYrC6Zz
-         GywQbBFr+T1pY4k2IEiWH53/RlkSurbZEKMFULfhfU63Kqj8LKX7wC42Gr/CXVH0/PIN
-         +4OoI9UOOIA9G6yUMdKRrfSm5JBov/PPdEUAuGc2PYx9Lh9pvElrVohNY2o4X5DqxgZF
-         pQ+dgv2G4wBpL4vsbYcUcenMkUh0IQyXX3r+5ns4j+lmy4aB0qNAFrGw1PzXrwNVhAnI
-         HmfQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=+qhzig9Rf8n2wQ3+/kfSA5MvTzzqQTGQpJ7teNRINNo=;
+        b=z7nxRrDMaf6LqG7P7D1CvMS2sc7ygkXXTO+wZMhqRzPKQSo1IDSLos/ManZcJdm6Vm
+         wZUldcJkwHiFlyxruDVAvEkP95fPHVo/6fsBzz8prAumbzgNDzm0naf7sLjJO2SgNNLQ
+         9f9AVHXJbTRy4aayLubTUyccao7o7wViR+MpBSocOdvEJVeWjEdrE1VBIxKLE8JoQLI/
+         juygJv39QlLyjX/cM+ipYlZiV3fJeMlhFMMCTv6F2vvzAhgbtALe2zwz/IqVmRszYLyq
+         PaGL1+04N/zp0I22Sp/aeOBIzP1vqQ4+riR2m3O5R4L6iEcoGQnLdnQPPe4WOviAGwXJ
+         WBbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HRD2bqfZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t194-20020a3746cb000000b006fef6145bc0si973377qka.355.2022.12.23.02.48.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Dec 2022 02:48:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=WrqcTD8h;
+       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4601:e00::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <ardb@kernel.org>
+Received: from ams.source.kernel.org (ams.source.kernel.org. [2604:1380:4601:e00::1])
+        by mx.google.com with ESMTPS id q17-20020a056402519100b00462848f0cdbsi3217315edd.299.2022.12.23.06.33.53
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 23 Dec 2022 06:33:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of ardb@kernel.org designates 2604:1380:4601:e00::1 as permitted sender) client-ip=2604:1380:4601:e00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HRD2bqfZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1p8faf-0007Zq-OJ; Fri, 23 Dec 2022 05:47:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p8fae-0007ZP-Qi; Fri, 23 Dec 2022 05:47:48 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p8fac-0001kv-Qr; Fri, 23 Dec 2022 05:47:48 -0500
-Received: by mail-ej1-x630.google.com with SMTP id ud5so11230690ejc.4;
- Fri, 23 Dec 2022 02:47:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=VaPdoLhBE0KvIEW39PuY41HCBksEZwCL4O6dMha7OaA=;
- b=HRD2bqfZVRg0HOdlcH8mwgLXCHiWBngpnZnNZApNszkHlSF8pyRfvRikmd5alBUMmh
- FpJmCXHzzqFyJwY0xqOkJwG3QRz+obJJEHaThfxWFtcfjz16thqpHpOempPkx9Q3N6f5
- 6tpqknV7bQKLhPhfYspulCgpNTaFa0aiEl0Uu8jEcXN7QSSFvwMye4OVt0ygQLY8jpis
- mO3TA3k+yrT1wlf2CNUUgGzl7tJGHpQdD/VH0cexrS0JaMD3de+7UhQfgVv+hDozJMBq
- 4DxVf+mXQyklrEaWs3FiAsKFhggvSUPzamIB8mLwxleqFTtLQpg5Mxdxl7GKO23iMAry
- RcHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=VaPdoLhBE0KvIEW39PuY41HCBksEZwCL4O6dMha7OaA=;
- b=g58tGgCKn4YQYesrbFm5gawznkOP/XmAtzAKkNw8c3/jMs7ee1p3SorgeUkAJgAc/q
- IPQV0L+GPQsml63xYWQYSOocngdiZk97x2vC5XpcrPDYJiPHkr33ROiu2684pm2izWGR
- 4BlUa4W/8+nndTTR/OSI8/djezsHoWj7oMKrDGF1TXKKxMeds+c+ubYuPZGpD82a5npJ
- mgaTp7//zOFOxzoJ4U2JUQ6ggfgDDQfZKuE0BClbPD7OaUHv/Tz+J55E+4OuPlIKR35j
- PAJFOLLz6VYttaMJs1VE5zJGenKLzWrUi0I9yWB5s9MRU3JlaLlyzfdRq6u2K7tiKWFe
- 5abg==
-X-Gm-Message-State: AFqh2kqUD35uA/PVm1X4FXAeyuJbz/3tXMPjV0P2l+vDSqgofmDFGdV7
- ehkMGz1igboKovhXPVsB6Ro=
-X-Received: by 2002:a17:907:7e83:b0:7c0:e6d8:7770 with SMTP id
- qb3-20020a1709077e8300b007c0e6d87770mr8448852ejc.74.1671792464492; 
- Fri, 23 Dec 2022 02:47:44 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-089-014-080-075.89.14.pool.telefonica.de.
- [89.14.80.75]) by smtp.gmail.com with ESMTPSA id
- j8-20020aa7de88000000b0046856c307d0sm1364391edv.5.2022.12.23.02.47.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Dec 2022 02:47:44 -0800 (PST)
-Date: Fri, 23 Dec 2022 10:47:39 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-CC: mst@redhat.com, imammedo@redhat.com, ani@anisinha.ca,
- peter.maydell@linaro.org, laurent@vivier.eu, edgar.iglesias@gmail.com,
- Alistair.Francis@wdc.com, bin.meng@windriver.com, palmer@dabbelt.com,
- marcel.apfelbaum@gmail.com, yangxiaojuan@loongson.cn, gaosong@loongson.cn,
- richard.henderson@linaro.org, deller@gmx.de, jasowang@redhat.com,
- vikram.garhwal@amd.com, francisco.iglesias@amd.com, clg@kaod.org,
- kraxel@redhat.com, marcandre.lureau@redhat.com, riku.voipio@iki.fi,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- crwulff@gmail.com, marex@denx.de
-Subject: Re: [PATCH v2 4/4] docs/devel: Rules on #include in headers
-In-Reply-To: <20221222120813.727830-5-armbru@redhat.com>
-References: <20221222120813.727830-1-armbru@redhat.com>
- <20221222120813.727830-5-armbru@redhat.com>
-Message-ID: <3400786A-51BD-43D6-A6E4-4EE0A91D1C4E@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=WrqcTD8h;
+       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4601:e00::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 09E2BB8207B;
+	Fri, 23 Dec 2022 14:33:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE0CFC43392;
+	Fri, 23 Dec 2022 14:33:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1671806031;
+	bh=i78MCQ30G80ajVIBVA2UX7jOa9KC4fgE6A8ei9cQdCw=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=WrqcTD8hzfKcLUHfQhaOjQi+ynOM+ERhDLMyZh6rwxH2IPkLw62LlWXfdh26t6VPk
+	 FNwQCdd5HaPmKMeDq9BydbgOo4Vt2CUav+0xCa6C66U5vwxTaXgFbT7K/kgZHkfmlP
+	 LLlxR7tB/hhSqFeoCt6dQTY74hOqnGbL1d0aBgEoCHOAInuIZjAPgJ7ykKXZpzwdLm
+	 dY7Hqspe5IjqW5Vu9WCanLgQbeLJnasqG2Zvn0j+QO0tQaqqOORGngyjtzE9xx/6MK
+	 U9Y9p1Jmhejy0x7rqeEH1tZ6bKWOQYCCd8gy32ex7anBvqaTe4BQj2UvKPdeRnQWEc
+	 fz45JSIlQp4kA==
+Received: by mail-lf1-f47.google.com with SMTP id x11so7362542lfn.0;
+        Fri, 23 Dec 2022 06:33:51 -0800 (PST)
+X-Gm-Message-State: AFqh2kqGP9sxXVK0gdJVpSWG06hsR6NcI1QP5rj8HvucnjN3+Fo5uXDj
+	9cLJgFqeuuRaZQUI/fnX3h+cQefV4b6CJP4fcSc=
+X-Received: by 2002:a05:6512:15a3:b0:4bc:bdf5:f163 with SMTP id
+ bp35-20020a05651215a300b004bcbdf5f163mr520074lfb.583.1671806029642; Fri, 23
+ Dec 2022 06:33:49 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+References: <20221220084246.1984871-1-kraxel@redhat.com> <a31967f6-6de5-bed2-8a1a-68a909850dd5@linaro.org>
+ <20221220153301.ku3zxwglhxepet6i@sirius.home.kraxel.org>
+In-Reply-To: <20221220153301.ku3zxwglhxepet6i@sirius.home.kraxel.org>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Fri, 23 Dec 2022 15:33:38 +0100
+X-Gmail-Original-Message-ID: <CAMj1kXF=SNeK6fSgo0821XF+dgs-i__bEoUwvJsDRCtpixsTsg@mail.gmail.com>
+Message-ID: <CAMj1kXF=SNeK6fSgo0821XF+dgs-i__bEoUwvJsDRCtpixsTsg@mail.gmail.com>
+Subject: Re: [PATCH v2] pflash: Only read non-zero parts of backend image
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org, qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>, 
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+	Hanna Reitz <hreitz@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	John Snow <jsnow@redhat.com>, Kashyap Chamarthy <kchamart@redhat.com>, 
+	Xiang Zheng <zhengxiang9@huawei.com>, David Edmondson <david.edmondson@oracle.com>, 
+	Markus Armbruster <armbru@redhat.com>, Sunil V L <sunilvl@ventanamicro.com>, 
+	Andrew Jones <ajones@ventanamicro.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	"Michael S. Tsirkin" <mst@redhat.com>, Xiaojuan Yang <yangxiaojuan@loongson.cn>, 
+	Song Gao <gaosong@loongson.cn>, Huacai Chen <chenhuacai@kernel.org>, 
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Radoslaw Biernacki <rad@semihalf.com>, 
+	Leif Lindholm <quic_llindhol@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rMcUysHQ/6W3
+X-TUID: QmzJRGGzOrfE
 
-
-
-Am 22=2E Dezember 2022 12:08:13 UTC schrieb Markus Armbruster <armbru@redh=
-at=2Ecom>:
->Rules for headers were proposed a long time ago, and generally liked:
+On Tue, 20 Dec 2022 at 16:33, Gerd Hoffmann <kraxel@redhat.com> wrote:
 >
->    Message-ID: <87h9g8j57d=2Efsf@blackfin=2Epond=2Esub=2Eorg>
->    https://lists=2Enongnu=2Eorg/archive/html/qemu-devel/2016-03/msg03345=
-=2Ehtml
+> On Tue, Dec 20, 2022 at 10:30:43AM +0100, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> > [Extending to people using UEFI VARStore on Virt machines]
+> >
+> > On 20/12/22 09:42, Gerd Hoffmann wrote:
+> > > From: Xiang Zheng <zhengxiang9@huawei.com>
+> > >
+> > > Currently we fill the VIRT_FLASH memory space with two 64MB NOR image=
+s
+> > > when using persistent UEFI variables on virt board. Actually we only =
+use
+> > > a very small(non-zero) part of the memory while the rest significant
+> > > large(zero) part of memory is wasted.
+> > >
+> > > So this patch checks the block status and only writes the non-zero pa=
+rt
+> > > into memory. This requires pflash devices to use sparse files for
+> > > backends.
+> >
+> > I like the idea, but I'm not sure how to relate with NOR flash devices.
+> >
+> > From the block layer, we get BDRV_BLOCK_ZERO when a block is fully
+> > filled by zeroes ('\0').
+> >
+> > We don't want to waste host memory, I get it.
+> >
+> > Now what "sees" the guest? Is the UEFI VARStore filled with zeroes?
 >
->Wortk them into docs/devel/style=2Erst=2E
+> The varstore is filled with 0xff.  It's 768k in size.  The padding
+> following (63M plus a bit) is 0x00.  To be exact:
 >
->Suggested-by: Bernhard Beschow <shentey@gmail=2Ecom>
->Signed-off-by: Markus Armbruster <armbru@redhat=2Ecom>
->---
-> docs/devel/style=2Erst | 7 +++++++
-> 1 file changed, 7 insertions(+)
+> kraxel@sirius ~# hex /usr/share/edk2/aarch64/vars-template-pflash.raw
+> 00000000  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ...........=
+.....
+> 00000010  8d 2b f1 ff  96 76 8b 4c  a9 85 27 47  07 5b 4f 50  .+...v.L..'=
+G.[OP
+> 00000020  00 00 0c 00  00 00 00 00  5f 46 56 48  ff fe 04 00  ........_FV=
+H....
+> 00000030  48 00 28 09  00 00 00 02  03 00 00 00  00 00 04 00  H.(........=
+.....
+> 00000040  00 00 00 00  00 00 00 00  78 2c f3 aa  7b 94 9a 43  ........x,.=
+.{..C
+> 00000050  a1 80 2e 14  4e c3 77 92  b8 ff 03 00  5a fe 00 00  ....N.w....=
+.Z...
+> 00000060  00 00 00 00  ff ff ff ff  ff ff ff ff  ff ff ff ff  ...........=
+.....
+> 00000070  ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff  ...........=
+.....
+> *
+> 00040000  2b 29 58 9e  68 7c 7d 49  a0 ce 65 00  fd 9f 1b 95  +)X.h|}I..e=
+.....
+> 00040010  5b e7 c6 86  fe ff ff ff  e0 ff 03 00  00 00 00 00  [..........=
+.....
+> 00040020  ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff  ...........=
+.....
+> *
+> 000c0000  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ...........=
+.....
+> *
 >
->diff --git a/docs/devel/style=2Erst b/docs/devel/style=2Erst
->index 7ddd42b6c2=2E=2E68aa776930 100644
->--- a/docs/devel/style=2Erst
->+++ b/docs/devel/style=2Erst
->@@ -293,6 +293,13 @@ that QEMU depends on=2E
-> Do not include "qemu/osdep=2Eh" from header files since the =2Ec file wi=
-ll have
-> already included it=2E
->=20
->+Headers should normally include everything they need beyond osdep=2Eh=2E
->+If exceptions are needed for some reason, they must be documented in
->+the header=2E  If all that's needed from a header is typedefs, consider
->+putting those into qemu/typedefs=2Eh instead of including the header=2E
->+
->+Cyclic inclusion is forbidden=2E
->+
+> > If so, is it a EDK2 specific case for all virt machines?  This would
+> > be a virtualization optimization and in that case, this patch would
+> > work.
+>
+> vars-template-pflash.raw (padded image) is simply QEMU_VARS.fd (unpadded
+> image) with 'truncate --size 64M' applied.
+>
+> Yes, that's a pure virtual machine thing.  On physical hardware you
+> would probably just flash the first 768k and leave the remaining flash
+> capacity untouched.
+>
+> > * or you are trying to optimize paravirtualized guests.
+>
+> This.  Ideally without putting everything upside-down.
+>
+> >   In that case why insist with emulated NOR devices? Why not have EDK2
+> >   directly use a paravirtualized block driver which we can optimize /
+> >   tune without interfering with emulated models?
+>
+> While that probably would work for the variable store (I think we could
+> very well do with variable store not being mapped and requiring explicit
+> read/write requests) that idea is not going to work very well for the
+> firmware code which must be mapped into the address space.  pflash is
+> almost the only device we have which serves that need.  The only other
+> option I can see would be a rom (the code is usually mapped r/o anyway),
+> but that has pretty much the same problem space.  We would likewise want
+> a big enough fixed size ROM, to avoid life migration problems and all
+> that, and we want the unused space not waste memory.
+>
+> > Keeping insisting on optimizing guests using the QEMU pflash device
+> > seems wrong to me. I'm pretty sure we can do better optimizing clouds
+> > payloads.
+>
+> Moving away from pflash for efi variable storage would cause alot of
+> churn through the whole stack.  firmware, qemu, libvirt, upper
+> management, all affected.  Is that worth the trouble?  Using pflash
+> isn't that much of a problem IMHO.
+>
 
-Nice!
+Agreed. pflash is a bit clunky but not a huge problem atm (although
+setting up and tearing down the r/o memslot for every read resp. write
+results in some performance issues under kvm/arm64)
 
-I wonder if these should be bullet points like in your mail from 2016=2E I=
- found them crystal clear since they looked like a todo list for review=2E
-
-Feel free to respin=2E Either way:
-
-Reviewed-by: Bernhard Beschow <shentey@gmail=2Ecom>
-
-> C types
-> =3D=3D=3D=3D=3D=3D=3D
->=20
+*If* we decide to replace it, I would suggest an emulated ROM for the
+executable image (without any emulated programming facility
+whatsoever) and a paravirtualized get/setvariable interface which can
+be used in a sane way to virtualize secure boot without having to
+emulate SMM or other secure world firmware interfaces.

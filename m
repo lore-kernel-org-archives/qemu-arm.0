@@ -1,79 +1,118 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp548558ejb;
-        Fri, 23 Dec 2022 08:38:56 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvm3lUhOsVkNprX1k1P3h4e12Lsy6Z8sTF7tXPjN7okjaKbXvD/3J/1ZJJmudUvfWfirwj+
-X-Received: by 2002:a05:6214:28b:b0:52e:c439:c3dc with SMTP id l11-20020a056214028b00b0052ec439c3dcmr3821952qvv.5.1671813535903;
-        Fri, 23 Dec 2022 08:38:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1671813535; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp1382845ejb;
+        Sat, 24 Dec 2022 15:38:57 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtz4giPUi3WMSZoi1dC/1wMEYZ83WAuHizo2Ageeza17BCvNzxUoez7VSyHwLk9JgY1e66N
+X-Received: by 2002:a05:622a:1e17:b0:3a8:21cb:11d2 with SMTP id br23-20020a05622a1e1700b003a821cb11d2mr17903847qtb.1.1671925137153;
+        Sat, 24 Dec 2022 15:38:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671925137; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nlrv2FJgx4rBq8w3PHnaF8PMHiZfMN1Mg8/lKJpF4LtmPPLwuo4MoSAuTaqNbVIsJe
-         Oga2DyQos/MwrkPKR+8YNk8mgIZMZTtbwXjtMQ7Nsdp+PchNz/Rg+XcisYuanz8zayFo
-         h21xSeKW3uXtLEnCtoFbNAoYzM1xc0lXBsw8BHNwF7/ibBJrRCKNQqYTEW5AYYzSe+qJ
-         fKwqu1/jOxVmfm/5pgoOTDWIl79NQ75JSG8nNEl6LfF6151DrTN8nxyga5dMt3Yivbup
-         iYTC1bQFrvCc1oqfdAvhwf8pQrb6pe1xwFXWbrAu4YiGcc8RchcEwIksCfBEXZ/wmCFo
-         9mXg==
+        b=HxAfJNvx4DP/f9CJYUJHo5RsXx7br2Ec3kB9Q3rO7cAvx2g6pNPC5S+PPDGyjtVrGD
+         IXSg2JhTvndJ3cbJEESc+Gf12Fq7XptmkhL2kytgGKEZjQl4eH3lSc870VNnZslcm/28
+         regJysBx1sewtL89YpNOxzplgnJsPgvkaIORjd5/mqvzyNUcSPHhRc2SQKEJdd66y2WT
+         gKRq1pIt/eiJ8H/FCheOTGvSY2X7bF3bL+wmrOW5KWmEXLTyuBF2nXfygmXLxHxIsnnm
+         vrLc9SupSEhjWiXL6tgSHFPq+lLRNcjcVN/7CNeJ1fmQ0coKvvf1Gto9KQU34pLes4c7
+         DvGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=Uhg6aTdNMA8S4RpoahMJcLmPdTR01zFJ/TM3P6I8Mak=;
-        b=0gSTXzGGO3uWZwIARkzI79kplDun1Az9WJildD7EuhtgoWZNmDcB0pG5B8r8eS7haq
-         63meMUEk1dyiDurJg2IPXKf8k9nrnXgqkzEX1p17g9ddhaAFWFJK5/JiaDV5fWbpE9xs
-         fuEYGK/IE7NZYnTd9EH69hUOc8DG9RsQ3P27ail2uSrM9UZ6oS3ID7lIlt5BJyywoVrc
-         BrHyvyPh4e+FENY6MwieMrCXlgYKz99Z86HJGmdTht6z6kV7mpil2NmDWxVF99NlDFv9
-         X1VBh7kUwzuAtAiXebyK4RnV9XnYbBeMKeosiep6ZXidKWSKwLcq6ra5dxj7wJV+FovD
-         QrCA==
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=2p/wIHMt5QkVq4c2GBCeHoBMkVJIOYm8sUddhj7sHUI=;
+        b=S6g6ft52+9GJ+GAlhuc+vczWrwaTezFw6TNG6pj3TkndFRcZ4DCcqll1JZ3O26jzv1
+         947Cv89MSPdm1wIzNiRNmKKqowss9li/N7MAKiZgp55aPn4T20TVexV63YqcgeYuFmah
+         3wP9iwoBhkqnZYJz4EHNVWmutcmnNz21qOa2McnQUmFffbGeAbMoTZhpCXZOvP3BpQ+D
+         vB837anM5/ed6fUQFUvANsOOTVZk3JrjyyAXDhUC/plW26cFjZuAnRRldGEQzLGM0b+Z
+         A6SLOPUFjW2lYmJzJLYH45BI1+gQ20Apbq05T5LiafwTXbupRsUi/zfJDRtKelnQsgju
+         YT2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=akpNQo8F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jf6-20020a0562142a4600b004b17ac12d33si1344663qvb.247.2022.12.23.08.38.55
+        by mx.google.com with ESMTPS id y12-20020ac8524c000000b003a6a7728c2fsi2468432qtn.753.2022.12.24.15.38.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Dec 2022 08:38:55 -0800 (PST)
+        Sat, 24 Dec 2022 15:38:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=akpNQo8F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p8l3P-0005D0-4q; Fri, 23 Dec 2022 11:37:51 -0500
+	id 1p9E6K-0007or-Og; Sat, 24 Dec 2022 18:38:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1p8l3N-0005Cn-T8; Fri, 23 Dec 2022 11:37:50 -0500
-Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1p8l3L-0004Xk-PQ; Fri, 23 Dec 2022 11:37:49 -0500
-Received: from [192.168.106.118]
- (dynamic-095-118-065-151.95.118.pool.telefonica.de [95.118.65.151])
- by csgraf.de (Postfix) with ESMTPSA id B196E6080584;
- Fri, 23 Dec 2022 17:37:44 +0100 (CET)
-Message-ID: <94c1de49-c028-3368-f980-a6908049dca9@csgraf.de>
-Date: Fri, 23 Dec 2022 17:37:43 +0100
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1p9E6J-0007oZ-HF
+ for qemu-arm@nongnu.org; Sat, 24 Dec 2022 18:38:47 -0500
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1p9E6H-0005M4-QJ
+ for qemu-arm@nongnu.org; Sat, 24 Dec 2022 18:38:47 -0500
+Received: by mail-pj1-x1034.google.com with SMTP id p4so7957157pjk.2
+ for <qemu-arm@nongnu.org>; Sat, 24 Dec 2022 15:38:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=2p/wIHMt5QkVq4c2GBCeHoBMkVJIOYm8sUddhj7sHUI=;
+ b=akpNQo8FdNjzOrI+hcw2DCihnBbDfz07lwVnaM4WObap8ql17RBEktTOeTvBfXES5g
+ YNWp7eBPkWM/hzRrM36z3X2PmxCUNw7+N5V+tZO564MXqui2PiP5gMNst01mgWYMRKMb
+ 65IjdCohoLTmEO/gvYFAfB/SuBlylp7zrndcBz0Fk6WzO7HRg4Gw5MGAp24bPOUEXJ9a
+ R0vHJNUCigRmrV6xBvgPMSvngTMbjeN4Ti0TtQaIgrxXz04l7cTEGJsvzpI5J6i5uKQY
+ x0ZtxIICZNMwCmmhHWkyRqsXvCwmsn0eJp/WuyigDg4g4wKyqxriE7CNDTM34DDIgm3D
+ JAUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2p/wIHMt5QkVq4c2GBCeHoBMkVJIOYm8sUddhj7sHUI=;
+ b=5AAsVLOj0SBoaVg++jqN458aBVOLD+OYKGxP2NTyB7d+cXAG2zhza5vz++ovf+kpmP
+ 9cnodqZ9q6osBTE79QuSc61EhT/pchfIEEsv3Hyn9i1kKpJ19g1EqwF5qcuXQTLC9me8
+ P2rMSBb66d9B2JMSBngVG+V2pvwV8i67uOIMoPZQKFbRy8F3hJCsMkHpVjo9SxYw784J
+ 5z9P2OYzeQDSaziLRfNME/Dm1A2KadUicH3ORRFEoffEQdxcPZHMXxSOxOgAEyYfmjmE
+ 1nugHqgLgrub23BH49VOsc2zUnwkXsX+b9K/+utWC6kcmtsecZEm81EDGJyzn5cc+cob
+ Go4A==
+X-Gm-Message-State: AFqh2koIvG1pRJTm9UvYKAW1Z17qsrrJmY8yGeXGysdYPKLAMZsuyQRw
+ ePRuq/QSaLfR3ETk8cE9ULfcxQ==
+X-Received: by 2002:a17:902:7b94:b0:191:3ebd:c3a5 with SMTP id
+ w20-20020a1709027b9400b001913ebdc3a5mr14059728pll.17.1671925124132; 
+ Sat, 24 Dec 2022 15:38:44 -0800 (PST)
+Received: from [172.16.2.110] (76-14-210-194.or.wavecable.com. [76.14.210.194])
+ by smtp.gmail.com with ESMTPSA id
+ l2-20020a170902f68200b00177faf558b5sm4487183plg.250.2022.12.24.15.38.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 24 Dec 2022 15:38:43 -0800 (PST)
+Message-ID: <0849f5d5-5f6c-f9f4-da05-361bcf914ec9@linaro.org>
+Date: Sat, 24 Dec 2022 15:38:41 -0800
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.0
-Subject: Re: [PATCH v3 1/2] hw/arm/virt: Consolidate GIC finalize logic
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v3 0/2] hw/arm/virt: Handle HVF in finalize_gic_version()
 Content-Language: en-US
-To: Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org
+To: Alexander Graf <agraf@csgraf.de>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Zenghui Yu <yuzenghui@huawei.com>, Eric Auger <eric.auger@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Cornelia Huck <cohuck@redhat.com>
 References: <20221223090107.98888-1-agraf@csgraf.de>
- <20221223090107.98888-2-agraf@csgraf.de> <87mt7expy4.fsf@redhat.com>
-From: Alexander Graf <agraf@csgraf.de>
-In-Reply-To: <87mt7expy4.fsf@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20221223090107.98888-1-agraf@csgraf.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -29
-X-Spam_score: -3.0
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.148,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.147,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,95 +127,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XhO8FCU5neh1
+X-TUID: HtQF75T9VtG+
 
-Hey Cornelia,
+On 12/23/22 01:01, Alexander Graf wrote:
+> The finalize_gic_version() function tries to determine which GIC version
+> the current accelerator / host combination supports. During the initial
+> HVF porting efforts, I didn't realize that I also had to touch this
+> function. Then Zenghui brought up this function as reply to my HVF GICv3
+> enablement patch - and boy it is a mess.
+> 
+> This patch set cleans up all of the GIC finalization so that we can
+> easily plug HVF in and also hopefully will have a better time extending
+> it in the future. As second step, it explicitly adds HVF support and
+> fails loudly for any unsupported accelerators.
+> 
+> Alex
+> 
+> v1 -> v2:
+> 
+>    - Leave VIRT_GIC_VERSION defines intact, we need them for MADT generation
+>    - Include TCG header for tcg_enabled()
+> 
+> v2 -> v3:
+> 
+>    - Fix comment
+>    - Flip kvm-enabled logic for host around
+> 
+> Alexander Graf (2):
+>    hw/arm/virt: Consolidate GIC finalize logic
+>    hw/arm/virt: Make accels in GIC finalize logic explicit
 
-On 23.12.22 13:30, Cornelia Huck wrote:
-> On Fri, Dec 23 2022, Alexander Graf <agraf@csgraf.de> wrote:
->
->> Up to now, the finalize_gic_version() code open coded what is essentially
->> a support bitmap match between host/emulation environment and desired
->> target GIC type.
->>
->> This open coding leads to undesirable side effects. For example, a VM with
->> KVM and -smp 10 will automatically choose GICv3 while the same command
->> line with TCG will stay on GICv2 and fail the launch.
->>
->> This patch combines the TCG and KVM matching code paths by making
->> everything a 2 pass process. First, we determine which GIC versions the
->> current environment is able to support, then we go through a single
->> state machine to determine which target GIC mode that means for us.
->>
->> After this patch, the only user noticable changes should be consolidated
->> error messages as well as TCG -M virt supporting -smp > 8 automatically.
->>
->> Signed-off-by: Alexander Graf <agraf@csgraf.de>
->>
->> ---
->>
->> v1 -> v2:
->>
->>    - Leave VIRT_GIC_VERSION defines intact, we need them for MADT generation
->>
->> v2 -> v3:
->>
->>    - Fix comment
->>    - Flip kvm-enabled logic for host around
->> ---
->>   hw/arm/virt.c         | 198 ++++++++++++++++++++++--------------------
->>   include/hw/arm/virt.h |  15 ++--
->>   2 files changed, 112 insertions(+), 101 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index ea2413a0ba..6d27f044fe 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -1820,6 +1820,84 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->>       }
->>   }
->>   
->> +static VirtGICType finalize_gic_version_do(const char *accel_name,
->> +                                           VirtGICType gic_version,
->> +                                           int gics_supported,
->> +                                           unsigned int max_cpus)
->> +{
->> +    /* Convert host/max/nosel to GIC version number */
->> +    switch (gic_version) {
->> +    case VIRT_GIC_VERSION_HOST:
->> +        if (!kvm_enabled()) {
->> +            error_report("gic-version=host requires KVM");
->> +            exit(1);
->> +        }
->> +
->> +        /* For KVM, gic-version=host means gic-version=max */
->> +        return finalize_gic_version_do(accel_name, VIRT_GIC_VERSION_MAX,
->> +                                       gics_supported, max_cpus);
-> I think I'd still rather use /* fallthrough */ here, but let's leave
-> that decision to the maintainers.
+Series:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-
-I originally had a fallthrough here, then looked at the code and 
-concluded for myself that I dislike fallthroughs :). They make more 
-complicated code flows insanely complicated and are super error prone.
-
-> In any case,
->
-> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
->
-> [As an aside, we have a QEMU_FALLTHROUGH #define that maps to
-> __attribute__((fallthrough)) if available, but unlike the Linux kernel,
-> we didn't bother to convert everything to use it in QEMU. Should we?
-> Would using the attribute give us some extra benefits?]
-
-
-IMHO we're be better off just refactoring code in ways that don't 
-require fall-throughs. Modern compilers inline functions pretty well, so 
-I think there's very little reason for them anymore.
-
-Thanks a lot for the reviews!
-
-
-Alex
-
+r~
 

@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2496690ejb;
-        Mon, 26 Dec 2022 14:03:43 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuwlIhKKPwQ/14PklqGoc7M/aDRYycrng4lK9IcFBTt6t9OeBZzdMdAv8N6f/GrsVnWn7xz
-X-Received: by 2002:ac8:4a93:0:b0:3a7:ec9b:e00b with SMTP id l19-20020ac84a93000000b003a7ec9be00bmr24228659qtq.68.1672092223431;
-        Mon, 26 Dec 2022 14:03:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672092223; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2496696ejb;
+        Mon, 26 Dec 2022 14:03:44 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvPLWl5pdi6BtZgPpxNno1WC+K+YAXBnrSL5J2F8Py2va60M+VTjD3mOAo1Eu90cBWE4wwL
+X-Received: by 2002:ac8:4b6c:0:b0:3a8:119f:c0e1 with SMTP id g12-20020ac84b6c000000b003a8119fc0e1mr24981441qts.36.1672092224151;
+        Mon, 26 Dec 2022 14:03:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672092224; cv=none;
         d=google.com; s=arc-20160816;
-        b=QtYEPnNfH7P18VwClDXpUKSDiQWCcNSb/GVQD6zaZzNaJbtvT3HiouvWdQRgv5nts4
-         HNq35iUykB+8wxnclophT14819e7Ag4ONmP4HmP2QV9nPkjiJ3RQhw3Ys2UHB47XgLDY
-         eMnX4CBDTM7Zokdc0mJ1jMTGBQcNNxzuY9J5lNLclOC6IUG84X40GrhPymLBY9R1e8io
-         QmfRnjpXgP2oUxYxunoaqsxbssSOfOWj+lae+C4fHVSMeXBMUt7LuRm2kGYQmep3dpo6
-         MvKIBtYd80E92ovDDK+SnrPcPVSW7aCbjpcmFtvVSHTwJSo2ENtT3LXi2npuO8J7qiLI
-         Y9ig==
+        b=qNNx92y0R/JWxhM9JZAxiUxK4uDI1d0tBzNfg1w4ae9ZiUucLr6nfLO1fD7ObUmLz0
+         7vwT/He2JOYZvc3AxWKmzxxxkKQmfzv3gsYI24N+3Mw3Pk3rh6OblsCB6oafw8VTsQbC
+         62664fpamWXz98IUtTR4YlqM+YkAL2eMmRJYkzUzphH8eqp5+j+jFAvvz5XpwQraZTe1
+         CpzltbF+CpWm8wVc3uUYfozLr2t7wW/21WlC+4M5g77BEVsrGTYYspSEUwd4hGqR/8R+
+         ZpCSeVUu/d9kg/pnlNpv22Amo5bjPDedwQRqeMIQL+xwqADhqz0Rr1CSp3K55fFPzT0u
+         VGDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=0iC1DLdK7rM2+2JgfrCCzhIOuJpyhzdQ5lAlF2+ubgA=;
-        b=T09wjBUsE2y6DF+Zpob7skVpaONffLKH9T+Ck1POKt6am9IrJDIpo8REFeAtQBwv6g
-         88AFGMBjmeu4Hi3hoBYXuvoGYsh8e4OBkGsyfFWUAUDdGalCpIXNH9VSfbsSYaqfWu5y
-         1nhKxGCApdWWJquEM32oukrXArUQw5ctO1Na2wuXb31dmDuKESV6GsfhrItdqCITY5+j
-         dvPwKlHybBaRyxo20ON1j/VlxfFEy+h6s+67L3U6KpYQj7At2PI+rrRuLte/ax+EnAJC
-         BeLYvMDCAEVX+3G+J0V7pnzKX3cxr1tyY3WblWXR8GAoTBfIYc7lMoazQytC6Nb62quH
-         tsBA==
+        bh=TYI62dQf9gn0f4gFAtfVXUEo9pYy6Fucsvct1OnfuTc=;
+        b=PVNSKVLHv/gIFgzyxmTi+fJcPPOW3ML4a/dxME+l1Il5uIRRJ0UJfMuLlEIiHasOeW
+         dkCdm12brdYOmz8iIt7Pa7DCoFr+SvY46VTPX+EfYVqnX2QEPEoOqW4pLukR+CSbLO4v
+         IqShfVOB2BW1x0b2S66AKErARfO1i6IpJW8KFTSA/WEEbsbJvstE1tg0BL0ezeQNv3ZY
+         eblb3jH6vhYqxwQdfu2/ifmus+oGSn1UiujSohLrvRfmRhLnsxrqyN4ZmfNgKNO4Zxuk
+         6VBpj+u1mfMCRvy5ueY92c2fgWIXJRnnebWLnrqMVdnmhoxMJuE8jrHRmSCxHOnciIFC
+         mqBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fYxBFnpp;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bk88Xr9f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c2-20020ac86e82000000b003a8199d3a57si4317141qtv.189.2022.12.26.14.03.43
+        by mx.google.com with ESMTPS id m21-20020a05620a24d500b00704ddf807b8si2803763qkn.415.2022.12.26.14.03.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Dec 2022 14:03:43 -0800 (PST)
+        Mon, 26 Dec 2022 14:03:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fYxBFnpp;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bk88Xr9f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p9vZG-0004op-Nw; Mon, 26 Dec 2022 17:03:34 -0500
+	id 1p9vZH-0004p1-KD; Mon, 26 Dec 2022 17:03:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p9vZ5-0004l2-MS; Mon, 26 Dec 2022 17:03:24 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1p9vZ7-0004lY-5z; Mon, 26 Dec 2022 17:03:25 -0500
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p9vZ2-0003X7-Sj; Mon, 26 Dec 2022 17:03:23 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id c34so10279155edf.0;
- Mon, 26 Dec 2022 14:03:19 -0800 (PST)
+ id 1p9vZ5-0003Xk-M9; Mon, 26 Dec 2022 17:03:24 -0500
+Received: by mail-ed1-x52a.google.com with SMTP id s5so16834605edc.12;
+ Mon, 26 Dec 2022 14:03:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=0iC1DLdK7rM2+2JgfrCCzhIOuJpyhzdQ5lAlF2+ubgA=;
- b=fYxBFnppCy6dXLvOA5a9VTW27Kei6VeNXWcr9WZytxhL/St56QdXFlcGU2D6M9TNAc
- xz7P49YNWA7UAWlS1wLq9DgS9L7FXZPfQnRfZNs7LqbCNVM4Kx/qzAvZx8YwgA4923x5
- 4whY3GdfX413kMGQfR9e2yC/wpRlLvVwGDdJYo3ZPgvx3fMm8v/libj2MbsTjv+a+ak5
- rAeW4ZpfE8W0c2IgiNSDi+ZKRCUFnUEOZWcnKrFGiUKgFlBkBBj4d+F1+9ZM/PTX+lBl
- fnY/QAPAT0jUVEoI3Z+wYBzDm21u/i6IUnpwN13M5rDRlLYtCcrD74BCdzW/EXwzMvlx
- fIXA==
+ bh=TYI62dQf9gn0f4gFAtfVXUEo9pYy6Fucsvct1OnfuTc=;
+ b=bk88Xr9fTVl9PQX5obcmZzFU9vnDki9yIH/ycPwhg9JtaDy/pu47pPLVMQGlX4cZVM
+ R0cuSRiYF85+xEatKACoM60C2VrgFtdOsBnAjS8e4lcJdn4+1G+RZbDN6OW/hblAPZMU
+ brwtA2V9d/flXcEt2E3RrUfnpRMY16KOguHkl1u401NtEcYRYaRmliKWnV6Duh7NE+hm
+ uquqNLNmVSxAaNQSZ0sZgAapN4LnXpkPI8ycsI7LqYJRQMoaH1OAJSCktQa0D76pGEVU
+ ChtWU/Yrehhj8e541RKMCbM187WvJ14CkpxO0QRu3K3acnSIyHuRYgwVVvACy6C1T4r9
+ GAVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=0iC1DLdK7rM2+2JgfrCCzhIOuJpyhzdQ5lAlF2+ubgA=;
- b=5ijhKz3t+aJe5g2jdti8drlRw5EGldmClWQ8wpPvi/7wNMdPubDO/OZv4+vQqe0olR
- Rxk1UqVuZG40JdD7ePbypw1ILo+cGLaED10jQzFnGAwY92nKal2dJWxdI6/+/q82cu6p
- 8thfjquXOU9E4fZsefVd+zdpcehJW0kSrKYciXYkNcxL6ncu+yk3iITXc7gRYBvjq51N
- CGKNXIDfdieJo+tQ38ELPKdncKmM2Ch6hcQgCw+vQrPl8zxqRA2Yc81thavg6H1WlX7m
- b4a2zOpBbz7TuaaKXncSbovJV5yBX7O2Mmmgtq9xqNtmN0Aa1QM/OYm5c+35wsfFvpl/
- b2iA==
-X-Gm-Message-State: AFqh2kp7Ckw+IRE3nEaP9o0QsydF9uJrmhVZde8hEo9uqEdzzZGEuobH
- O1J1aOgSb5Y7eY9ob8KwKAw=
-X-Received: by 2002:a50:eac6:0:b0:461:d042:80db with SMTP id
- u6-20020a50eac6000000b00461d04280dbmr16756241edp.0.1672092198151; 
- Mon, 26 Dec 2022 14:03:18 -0800 (PST)
+ bh=TYI62dQf9gn0f4gFAtfVXUEo9pYy6Fucsvct1OnfuTc=;
+ b=Nj8QJ+srNLTynXRXuwONAy4zINK4nai9rsaZkYMMmcCMpLnaJeAOYsFZ9Ezuto6VmX
+ pcNXDYhwtgGa+megybizaBX4PpDqgGM54lpG2tiH8U+vRx9P6gAR63sETrb3FzF4QvRx
+ eQeejzE2Yv59RedI8wciVlO1Awb1jiTE6g2RyqnIz8RX76W8DhJCfeDVErzcHUcrpJiJ
+ /18wefYe8JLl8CH+n38FIQ+j5eHKLIGkj4N5aUXsNvbMnJmqjmQq6S2YVZs6K8lLBqSE
+ g+LtKD99L6EHxJZJjAm+sFv0HpSaWK8SgpEc1qD3f+pSz7v0NI8fQJtyeg0swXI0Aikq
+ O7Hw==
+X-Gm-Message-State: AFqh2kq0/l9oA9OXMjTlKGtdzcR/B5GzGwPCzNZaBKFNGTYkrwjvxeYg
+ tyv+g6jNWjFXqQDCPhM6gqw=
+X-Received: by 2002:a05:6402:1217:b0:461:e5d1:73c5 with SMTP id
+ c23-20020a056402121700b00461e5d173c5mr14762064edw.32.1672092201825; 
+ Mon, 26 Dec 2022 14:03:21 -0800 (PST)
 Received: from penguin.lxd ([87.116.176.120])
  by smtp.googlemail.com with ESMTPSA id
- u1-20020aa7d541000000b0046951b43e84sm5111467edr.55.2022.12.26.14.03.17
+ u1-20020aa7d541000000b0046951b43e84sm5111467edr.55.2022.12.26.14.03.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Dec 2022 14:03:17 -0800 (PST)
+ Mon, 26 Dec 2022 14:03:21 -0800 (PST)
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
 X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
@@ -92,17 +92,17 @@ Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, philmd@linaro.org,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH v3 1/7] hw/misc: Allwinner-A10 Clock Controller Module
- Emulation
-Date: Mon, 26 Dec 2022 23:02:57 +0100
-Message-Id: <20221226220303.14420-2-strahinja.p.jankovic@gmail.com>
+Subject: [PATCH v3 5/7] hw/arm: Add AXP209 to Cubieboard
+Date: Mon, 26 Dec 2022 23:03:01 +0100
+Message-Id: <20221226220303.14420-6-strahinja.p.jankovic@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20221226220303.14420-1-strahinja.p.jankovic@gmail.com>
 References: <20221226220303.14420-1-strahinja.p.jankovic@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,420 +124,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FFMvoAxcIW9c
+X-TUID: uaiRwytF0soZ
 
-During SPL boot several Clock Controller Module (CCM) registers are
-read, most important are PLL and Tuning, as well as divisor registers.
-
-This patch adds these registers and initializes reset values from user's
-guide.
+SPL Boot for Cubieboard expects AXP209 connected to I2C0 bus.
 
 Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/Kconfig                      |   1 +
- hw/arm/allwinner-a10.c              |   7 +
- hw/misc/Kconfig                     |   3 +
- hw/misc/allwinner-a10-ccm.c         | 224 ++++++++++++++++++++++++++++
- hw/misc/meson.build                 |   1 +
- include/hw/arm/allwinner-a10.h      |   2 +
- include/hw/misc/allwinner-a10-ccm.h |  67 +++++++++
- 7 files changed, 305 insertions(+)
- create mode 100644 hw/misc/allwinner-a10-ccm.c
- create mode 100644 include/hw/misc/allwinner-a10-ccm.h
+ hw/arm/Kconfig      | 1 +
+ hw/arm/cubieboard.c | 6 ++++++
+ 2 files changed, 7 insertions(+)
 
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 17fcde8e1c..14f52b41af 100644
+index eefe1fd134..da6741f112 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -319,6 +319,7 @@ config ALLWINNER_A10
-     select AHCI
-     select ALLWINNER_A10_PIT
-     select ALLWINNER_A10_PIC
-+    select ALLWINNER_A10_CCM
+@@ -323,6 +323,7 @@ config ALLWINNER_A10
+     select ALLWINNER_A10_DRAMC
      select ALLWINNER_EMAC
+     select ALLWINNER_I2C
++    select AXP209_PMU
      select SERIAL
      select UNIMP
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index 79082289ea..86baeeeca2 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -26,6 +26,7 @@
- #include "hw/usb/hcd-ohci.h"
  
- #define AW_A10_MMC0_BASE        0x01c0f000
-+#define AW_A10_CCM_BASE         0x01c20000
- #define AW_A10_PIC_REG_BASE     0x01c20400
- #define AW_A10_PIT_REG_BASE     0x01c20c00
- #define AW_A10_UART0_REG_BASE   0x01c28000
-@@ -46,6 +47,8 @@ static void aw_a10_init(Object *obj)
+diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+index 5e3372a3c7..dca257620d 100644
+--- a/hw/arm/cubieboard.c
++++ b/hw/arm/cubieboard.c
+@@ -20,6 +20,7 @@
+ #include "hw/boards.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/arm/allwinner-a10.h"
++#include "hw/i2c/i2c.h"
  
-     object_initialize_child(obj, "timer", &s->timer, TYPE_AW_A10_PIT);
+ static struct arm_boot_info cubieboard_binfo = {
+     .loader_start = AW_A10_SDRAM_BASE,
+@@ -34,6 +35,7 @@ static void cubieboard_init(MachineState *machine)
+     BlockBackend *blk;
+     BusState *bus;
+     DeviceState *carddev;
++    I2CBus *i2c;
  
-+    object_initialize_child(obj, "ccm", &s->ccm, TYPE_AW_A10_CCM);
-+
-     object_initialize_child(obj, "emac", &s->emac, TYPE_AW_EMAC);
+     /* BIOS is not supported by this board */
+     if (machine->firmware) {
+@@ -80,6 +82,10 @@ static void cubieboard_init(MachineState *machine)
+         exit(1);
+     }
  
-     object_initialize_child(obj, "sata", &s->sata, TYPE_ALLWINNER_AHCI);
-@@ -103,6 +106,10 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion(get_system_memory(), 0x00000000, &s->sram_a);
-     create_unimplemented_device("a10-sram-ctrl", 0x01c00000, 4 * KiB);
- 
-+    /* Clock Control Module */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->ccm), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccm), 0, AW_A10_CCM_BASE);
++    /* Connect AXP 209 */
++    i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&a10->i2c0), "i2c"));
++    i2c_slave_create_simple(i2c, "axp209_pmu", 0x34);
 +
-     /* FIXME use qdev NIC properties instead of nd_table[] */
-     if (nd_table[0].used) {
-         qemu_check_nic_model(&nd_table[0], TYPE_AW_EMAC);
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index cbabe9f78c..ed07bf4133 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -174,4 +174,7 @@ config VIRT_CTRL
- config LASI
-     bool
- 
-+config ALLWINNER_A10_CCM
-+    bool
-+
- source macio/Kconfig
-diff --git a/hw/misc/allwinner-a10-ccm.c b/hw/misc/allwinner-a10-ccm.c
-new file mode 100644
-index 0000000000..68146ee340
---- /dev/null
-+++ b/hw/misc/allwinner-a10-ccm.c
-@@ -0,0 +1,224 @@
-+/*
-+ * Allwinner A10 Clock Control Module emulation
-+ *
-+ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-+ *
-+ *  This file is derived from Allwinner H3 CCU,
-+ *  by Niek Linnenbank.
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "hw/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/misc/allwinner-a10-ccm.h"
-+
-+/* CCM register offsets */
-+enum {
-+    REG_PLL1_CFG             = 0x0000, /* PLL1 Control */
-+    REG_PLL1_TUN             = 0x0004, /* PLL1 Tuning */
-+    REG_PLL2_CFG             = 0x0008, /* PLL2 Control */
-+    REG_PLL2_TUN             = 0x000C, /* PLL2 Tuning */
-+    REG_PLL3_CFG             = 0x0010, /* PLL3 Control */
-+    REG_PLL4_CFG             = 0x0018, /* PLL4 Control */
-+    REG_PLL5_CFG             = 0x0020, /* PLL5 Control */
-+    REG_PLL5_TUN             = 0x0024, /* PLL5 Tuning */
-+    REG_PLL6_CFG             = 0x0028, /* PLL6 Control */
-+    REG_PLL6_TUN             = 0x002C, /* PLL6 Tuning */
-+    REG_PLL7_CFG             = 0x0030, /* PLL7 Control */
-+    REG_PLL1_TUN2            = 0x0038, /* PLL1 Tuning2 */
-+    REG_PLL5_TUN2            = 0x003C, /* PLL5 Tuning2 */
-+    REG_PLL8_CFG             = 0x0040, /* PLL8 Control */
-+    REG_OSC24M_CFG           = 0x0050, /* OSC24M Control */
-+    REG_CPU_AHB_APB0_CFG     = 0x0054, /* CPU, AHB and APB0 Divide Ratio */
-+};
-+
-+#define REG_INDEX(offset)    (offset / sizeof(uint32_t))
-+
-+/* CCM register reset values */
-+enum {
-+    REG_PLL1_CFG_RST         = 0x21005000,
-+    REG_PLL1_TUN_RST         = 0x0A101000,
-+    REG_PLL2_CFG_RST         = 0x08100010,
-+    REG_PLL2_TUN_RST         = 0x00000000,
-+    REG_PLL3_CFG_RST         = 0x0010D063,
-+    REG_PLL4_CFG_RST         = 0x21009911,
-+    REG_PLL5_CFG_RST         = 0x11049280,
-+    REG_PLL5_TUN_RST         = 0x14888000,
-+    REG_PLL6_CFG_RST         = 0x21009911,
-+    REG_PLL6_TUN_RST         = 0x00000000,
-+    REG_PLL7_CFG_RST         = 0x0010D063,
-+    REG_PLL1_TUN2_RST        = 0x00000000,
-+    REG_PLL5_TUN2_RST        = 0x00000000,
-+    REG_PLL8_CFG_RST         = 0x21009911,
-+    REG_OSC24M_CFG_RST       = 0x00138013,
-+    REG_CPU_AHB_APB0_CFG_RST = 0x00010010,
-+};
-+
-+static uint64_t allwinner_a10_ccm_read(void *opaque, hwaddr offset,
-+                                       unsigned size)
-+{
-+    const AwA10ClockCtlState *s = AW_A10_CCM(opaque);
-+    const uint32_t idx = REG_INDEX(offset);
-+
-+    switch (offset) {
-+    case REG_PLL1_CFG:
-+    case REG_PLL1_TUN:
-+    case REG_PLL2_CFG:
-+    case REG_PLL2_TUN:
-+    case REG_PLL3_CFG:
-+    case REG_PLL4_CFG:
-+    case REG_PLL5_CFG:
-+    case REG_PLL5_TUN:
-+    case REG_PLL6_CFG:
-+    case REG_PLL6_TUN:
-+    case REG_PLL7_CFG:
-+    case REG_PLL1_TUN2:
-+    case REG_PLL5_TUN2:
-+    case REG_PLL8_CFG:
-+    case REG_OSC24M_CFG:
-+    case REG_CPU_AHB_APB0_CFG:
-+        break;
-+    case 0x158 ... AW_A10_CCM_IOSIZE:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        return 0;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: unimplemented read offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        return 0;
-+    }
-+
-+    return s->regs[idx];
-+}
-+
-+static void allwinner_a10_ccm_write(void *opaque, hwaddr offset,
-+                                   uint64_t val, unsigned size)
-+{
-+    AwA10ClockCtlState *s = AW_A10_CCM(opaque);
-+    const uint32_t idx = REG_INDEX(offset);
-+
-+    switch (offset) {
-+    case REG_PLL1_CFG:
-+    case REG_PLL1_TUN:
-+    case REG_PLL2_CFG:
-+    case REG_PLL2_TUN:
-+    case REG_PLL3_CFG:
-+    case REG_PLL4_CFG:
-+    case REG_PLL5_CFG:
-+    case REG_PLL5_TUN:
-+    case REG_PLL6_CFG:
-+    case REG_PLL6_TUN:
-+    case REG_PLL7_CFG:
-+    case REG_PLL1_TUN2:
-+    case REG_PLL5_TUN2:
-+    case REG_PLL8_CFG:
-+    case REG_OSC24M_CFG:
-+    case REG_CPU_AHB_APB0_CFG:
-+        break;
-+    case 0x158 ... AW_A10_CCM_IOSIZE:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: unimplemented write offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        break;
-+    }
-+
-+    s->regs[idx] = (uint32_t) val;
-+}
-+
-+static const MemoryRegionOps allwinner_a10_ccm_ops = {
-+    .read = allwinner_a10_ccm_read,
-+    .write = allwinner_a10_ccm_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .impl.min_access_size = 4,
-+};
-+
-+static void allwinner_a10_ccm_reset_enter(Object *obj, ResetType type)
-+{
-+    AwA10ClockCtlState *s = AW_A10_CCM(obj);
-+
-+    /* Set default values for registers */
-+    s->regs[REG_INDEX(REG_PLL1_CFG)] = REG_PLL1_CFG_RST;
-+    s->regs[REG_INDEX(REG_PLL1_TUN)] = REG_PLL1_TUN_RST;
-+    s->regs[REG_INDEX(REG_PLL2_CFG)] = REG_PLL2_CFG_RST;
-+    s->regs[REG_INDEX(REG_PLL2_TUN)] = REG_PLL2_TUN_RST;
-+    s->regs[REG_INDEX(REG_PLL3_CFG)] = REG_PLL3_CFG_RST;
-+    s->regs[REG_INDEX(REG_PLL4_CFG)] = REG_PLL4_CFG_RST;
-+    s->regs[REG_INDEX(REG_PLL5_CFG)] = REG_PLL5_CFG_RST;
-+    s->regs[REG_INDEX(REG_PLL5_TUN)] = REG_PLL5_TUN_RST;
-+    s->regs[REG_INDEX(REG_PLL6_CFG)] = REG_PLL6_CFG_RST;
-+    s->regs[REG_INDEX(REG_PLL6_TUN)] = REG_PLL6_TUN_RST;
-+    s->regs[REG_INDEX(REG_PLL7_CFG)] = REG_PLL7_CFG_RST;
-+    s->regs[REG_INDEX(REG_PLL1_TUN2)] = REG_PLL1_TUN2_RST;
-+    s->regs[REG_INDEX(REG_PLL5_TUN2)] = REG_PLL5_TUN2_RST;
-+    s->regs[REG_INDEX(REG_PLL8_CFG)] = REG_PLL8_CFG_RST;
-+    s->regs[REG_INDEX(REG_OSC24M_CFG)] = REG_OSC24M_CFG_RST;
-+    s->regs[REG_INDEX(REG_CPU_AHB_APB0_CFG)] = REG_CPU_AHB_APB0_CFG_RST;
-+}
-+
-+static void allwinner_a10_ccm_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwA10ClockCtlState *s = AW_A10_CCM(obj);
-+
-+    /* Memory mapping */
-+    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_a10_ccm_ops, s,
-+                          TYPE_AW_A10_CCM, AW_A10_CCM_IOSIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription allwinner_a10_ccm_vmstate = {
-+    .name = "allwinner-a10-ccm",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AwA10ClockCtlState, AW_A10_CCM_REGS_NUM),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void allwinner_a10_ccm_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    rc->phases.enter = allwinner_a10_ccm_reset_enter;
-+    dc->vmsd = &allwinner_a10_ccm_vmstate;
-+}
-+
-+static const TypeInfo allwinner_a10_ccm_info = {
-+    .name          = TYPE_AW_A10_CCM,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = allwinner_a10_ccm_init,
-+    .instance_size = sizeof(AwA10ClockCtlState),
-+    .class_init    = allwinner_a10_ccm_class_init,
-+};
-+
-+static void allwinner_a10_ccm_register(void)
-+{
-+    type_register_static(&allwinner_a10_ccm_info);
-+}
-+
-+type_init(allwinner_a10_ccm_register)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index ed0598dc9e..c828dbeb26 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -38,6 +38,7 @@ subdir('macio')
- 
- softmmu_ss.add(when: 'CONFIG_IVSHMEM_DEVICE', if_true: files('ivshmem.c'))
- 
-+softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinner-a10-ccm.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-ccu.c'))
- specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c'))
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index a76dc7b84d..45d0fc2f7e 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -12,6 +12,7 @@
- #include "hw/usb/hcd-ohci.h"
- #include "hw/usb/hcd-ehci.h"
- #include "hw/rtc/allwinner-rtc.h"
-+#include "hw/misc/allwinner-a10-ccm.h"
- 
- #include "target/arm/cpu.h"
- #include "qom/object.h"
-@@ -30,6 +31,7 @@ struct AwA10State {
-     /*< public >*/
- 
-     ARMCPU cpu;
-+    AwA10ClockCtlState ccm;
-     AwA10PITState timer;
-     AwA10PICState intc;
-     AwEmacState emac;
-diff --git a/include/hw/misc/allwinner-a10-ccm.h b/include/hw/misc/allwinner-a10-ccm.h
-new file mode 100644
-index 0000000000..7f22532efa
---- /dev/null
-+++ b/include/hw/misc/allwinner-a10-ccm.h
-@@ -0,0 +1,67 @@
-+/*
-+ * Allwinner A10 Clock Control Module emulation
-+ *
-+ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-+ *
-+ *  This file is derived from Allwinner H3 CCU,
-+ *  by Niek Linnenbank.
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_MISC_ALLWINNER_A10_CCM_H
-+#define HW_MISC_ALLWINNER_A10_CCM_H
-+
-+#include "qom/object.h"
-+#include "hw/sysbus.h"
-+
-+/**
-+ * @name Constants
-+ * @{
-+ */
-+
-+/** Size of register I/O address space used by CCM device */
-+#define AW_A10_CCM_IOSIZE        (0x400)
-+
-+/** Total number of known registers */
-+#define AW_A10_CCM_REGS_NUM      (AW_A10_CCM_IOSIZE / sizeof(uint32_t))
-+
-+/** @} */
-+
-+/**
-+ * @name Object model
-+ * @{
-+ */
-+
-+#define TYPE_AW_A10_CCM    "allwinner-a10-ccm"
-+OBJECT_DECLARE_SIMPLE_TYPE(AwA10ClockCtlState, AW_A10_CCM)
-+
-+/** @} */
-+
-+/**
-+ * Allwinner A10 CCM object instance state.
-+ */
-+struct AwA10ClockCtlState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    /** Maps I/O registers in physical memory */
-+    MemoryRegion iomem;
-+
-+    /** Array of hardware registers */
-+    uint32_t regs[AW_A10_CCM_REGS_NUM];
-+};
-+
-+#endif /* HW_MISC_ALLWINNER_H3_CCU_H */
+     /* Retrieve SD bus */
+     di = drive_get(IF_SD, 0, 0);
+     blk = di ? blk_by_legacy_dinfo(di) : NULL;
 -- 
 2.30.2
 

@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2496705ejb;
-        Mon, 26 Dec 2022 14:03:45 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvBNwYcbCHdQ+cARuKnyR610yqPLkQ7MpDbSh5gdzYvpkY7yZXjJgahwYUGfuBIb/hqOoe8
-X-Received: by 2002:a0c:ef03:0:b0:530:e35d:8e82 with SMTP id t3-20020a0cef03000000b00530e35d8e82mr13501320qvr.9.1672092225689;
-        Mon, 26 Dec 2022 14:03:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672092225; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp2496898ejb;
+        Mon, 26 Dec 2022 14:04:09 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXs+krrAiYFrgh6bwIJnYuC1AYhESWJCe/aCit5/ghhUjlyaePSzdccrFxMLnEldBs7OPJ0Q
+X-Received: by 2002:ac8:4717:0:b0:3a6:8da6:65bc with SMTP id f23-20020ac84717000000b003a68da665bcmr27382522qtp.13.1672092249652;
+        Mon, 26 Dec 2022 14:04:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672092249; cv=none;
         d=google.com; s=arc-20160816;
-        b=DQ+v5SetiCmEIyYGAlDhnoj93Nzyf10/Lndu10za1XwLamuFjXrMJ5/M8z8lHxpZdz
-         Cq/lPiGFKF3MfVsya0YJ3IjFoeNTMpDicCCXxPcUGVlnIgdQeVAUqIVCFRverqtYhxdw
-         siRzmqT9HpabNGFFAUivvg03BFhi6gBZC3kmLHFFDaIBPBQlK+jnKunnaR+YiXxOD+3N
-         I7n28kHk/2dYEcSgzTiCM7KL9YSpMehwt1RuUrHgpFa37PZZhFs1c62oE/MX5a+m07Xd
-         KXD2LKCE90gxKEaqYXdGCbtGXS3iFZiqe9Hel+wj/TcMaviPSSE2KpZN8q/2G7gMf96z
-         LulQ==
+        b=G++tGix1W/BwW5iai4r3dUi53pRnlRM5oo6WxOT0orQmLXa3DkAXBSKRtBfZhvivsE
+         bILwTcLGox3uiVznXnW0gDmaCAKsLuy21w94ZE1HZIS4BdvdhfUD8SKrYNsJgFkcJYM7
+         KIiRlD83TBVpo0H1/sQP/1yW/zIKSvqukf+9T8CoQH6NTxg6Wp9BQGxCCGb6yeZn2zfQ
+         /cjebebhF3A6gLwnYJpfUFdGVQIyPydiAN92G8GgUcwTpcLuyjxW1cjAMKIhelZyf10A
+         x6lKMUC27mfxwI5PL5W5sCVy0V+SFucoJZkgnSQP2mla/hAURenwE5lnPR4Mdtf1vzTC
+         DVFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=aKnc58k0ZanDuaW5DMWuEx42gXkp9LxDYyM8CKqt4s8=;
-        b=ibIUc+1y9597yLbo9YHBPHs17py7A+l/k8j+3HXmXzvKW/H0OeBhUIRkzsDkh2qLHW
-         xpQAasIvK1NE699WffnDaCU7B3jtY1p5LOx5i+08+Zc3W2o3rv3iENf6A65RYMeW7qrM
-         rqhl1vcdzXfVkqxA8FCZpCyzTlc/6jz5BmcGEbadAL87fLwZthE2EDZAlva1f0+ylnSk
-         uZjqZL0pzW1+VX3NDr7HF3M+1AZI+znrOTeJGj//66KLaLCobpCOOH6HCaB1ac5IwiPl
-         eAwTwhgP3NAOhsZhTGxMEgeiw9MuKQJESYtr2uyiBO/kCbvZNSZj852spJMKCj28jTyN
-         bpFA==
+        bh=JWN1aEv28Joh2/ZLVeS7ANU8mdC3qcchN8nXt3z+4VY=;
+        b=SYfGRewbnL9JpJHT/6nU/w+/9iXi4npwjEVOQI1eyCQ8g1DoGSsMIcuZ0FQn2/spRt
+         RzhbdZUtr7CFw83W+rrCDfqKd848JUvWWUIbMdohHAkxN90cs88mSkLd2MUhBZFBt8Bs
+         y9DtBa7TpUtn7q3BV1kRuGJNgciH4FhTbHcYYMet6iRXdk2Nw3TG/Cl9dldDzLm3tfkv
+         gAO4/8YM4bFsY2irQZtfboWerhjyLGAMndfMTX9v24m6K/xcr6l/YEK+N12hKonROxRR
+         rZN9vaNm1DXpyuxlB7uFAKALlhPaolh7URnY7MwC4cgDJiUjX1OJEvOPN/r6xCHPKHqx
+         8ZXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="D8bdWx/m";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dYwpNCzv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2-20020ad45c62000000b004ac97d89c6esi4564642qvh.349.2022.12.26.14.03.45
+        by mx.google.com with ESMTPS id ow5-20020a05620a820500b006ff0b402704si4189994qkn.341.2022.12.26.14.04.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Dec 2022 14:03:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 26 Dec 2022 14:04:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="D8bdWx/m";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dYwpNCzv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1p9vZJ-0004sx-GB; Mon, 26 Dec 2022 17:03:37 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1p9vZJ-0004uL-VJ; Mon, 26 Dec 2022 17:03:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p9vZ6-0004lS-TP; Mon, 26 Dec 2022 17:03:25 -0500
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ id 1p9vZ8-0004lh-LY; Mon, 26 Dec 2022 17:03:26 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1p9vZ4-0003XX-K8; Mon, 26 Dec 2022 17:03:24 -0500
-Received: by mail-ed1-x532.google.com with SMTP id i9so16855591edj.4;
- Mon, 26 Dec 2022 14:03:21 -0800 (PST)
+ id 1p9vZ6-0003Yh-TT; Mon, 26 Dec 2022 17:03:26 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id s5so16834668edc.12;
+ Mon, 26 Dec 2022 14:03:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=aKnc58k0ZanDuaW5DMWuEx42gXkp9LxDYyM8CKqt4s8=;
- b=D8bdWx/mYebXIxzKIdxPUWVgZUWj2xiC8ITP1pjyacotjUqPVDsIurPI/VhylP8kwz
- C+qXQFdfkwW/s2f/+zp3MMB7zHXuTzcVUP/ns+J7gHHTQ+lgcVpSs+qqqvPCCgM9Vusb
- xWCMLkHgpiMzLBSKluyosjDiiSJqSfYxHY/cAzJ+8KDtQjDyLc/rdTH+7y4CjCJi7KQb
- DzxYilsoJjuWDPPPSGCRKfn9LbPeSBZ1qTXSyibYIaxQtNvUQMA+xMD2C6FG1ZSrmecf
- 0P5aeoNcN4jauZToH1ZpvrAzo2JoNnJAxX0KeGyBXvlr8Ed+LV87hn4ZG5c1BjfRGcXi
- 7Zow==
+ bh=JWN1aEv28Joh2/ZLVeS7ANU8mdC3qcchN8nXt3z+4VY=;
+ b=dYwpNCzvVKZCI8Xm3ii4afLZlEeS5envIDmcaeKPnfrnSPqcNRLf9ob/CGNpKUmWh5
+ wR18qWwV/7baUdvwXjFfIUkH50wGDJqU7OY/LGXNZtkDF6CoVPYZ0FB4RXGk7VBD+Xch
+ 0psIW/pfT0LGIW1tR4tPLr0pRQVbuY/UMlW+1ZK3T0/PljXi48XpDzxg9no68RZonzJY
+ PtU/jR7Q+fg9DRjLHroA9i9+Z2ZxaQb6G4dkd4TKJQRd3K0yhw0vRpSNSLmO5aByryA4
+ 8v/Kd1qEBzR+ncesJp6P86GZyLiTrNzuCc+vMu0A52ijiO9mNg1HtGXjAJLFGSDFU0GG
+ Uq8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=aKnc58k0ZanDuaW5DMWuEx42gXkp9LxDYyM8CKqt4s8=;
- b=wwtXyQb3lZPSz5nVOOcDpY/wv40Pe2gpVelDDzlG1Q6EV8ioOd6aXI0MJjZHPyeWLy
- N281ZsHxJrzgXTJ1zVHrQzGLuy/kevTCS+aF9HW7nTjF1IYmEgRkGMmMm3WMmRfetKN0
- otZBHUl5h8SjUiKWJ6bRMIBPBdVdPYtEfwwgVzueAiq4b2WosOB23Mf7DnS3EVNPtjye
- B1mKcMuKS0qAkrsw+eWJgKlcapqFQXhBQ85hPPRRjTHaK4Iwm69qWfF8FqqvsqHFhjWe
- NFIJT/OTte9y4wpFhQJKZuJx6dsPvRDNLWktPh2QdPeLo+s+qFZ5GpuD0Z9BmXXrukpo
- AuAw==
-X-Gm-Message-State: AFqh2krRlPoCVongokztj5cppqfi8s81OaQcugKjDLdrKXSOD+rl+C9E
- IuBYeanA/oCYnUlCq4fDwSqf7Vzje5b0XQ==
-X-Received: by 2002:a05:6402:1f09:b0:478:8375:5dd5 with SMTP id
- b9-20020a0564021f0900b0047883755dd5mr16250531edb.24.1672092200937; 
- Mon, 26 Dec 2022 14:03:20 -0800 (PST)
+ bh=JWN1aEv28Joh2/ZLVeS7ANU8mdC3qcchN8nXt3z+4VY=;
+ b=CV53wX6CK/6GORSx6P+uviUfkceTpMpEcSb1P3FbE3Vl8jNUynF8aH05m+AtgxRdns
+ CwLsJIzh20du9LllIe8m6MhT2jEBKXe5ib7XqFO3aOQCyH4muh1PagShv5tUVvQLQ/Do
+ zweFF0BGDLs1h/ZhFB+uPgpHT39wY1hr3WnOglrDbPb61gJyIrVFVD+/6FOmH6UIIQtv
+ si2eG6X3Vrl9Hu4+BYXinAf+iQfu24DbYjoEHucpYDQEbhIDtFBWe0GZwfNvFpSecgrf
+ a2wl/GSOwMwq3qcRh04fgBzkbh6WM5KUGvJpiw87wat+xFyRSxRBUYrN9SH1FBErzZX+
+ f9TA==
+X-Gm-Message-State: AFqh2konTFkR1kypZW8qyZiXy6p2CO2PqjICYN1h1sdRNGu2keZyGPVP
+ DFw34G0m99pMM+WUEJG7LtzEP9FnnkMp7Q==
+X-Received: by 2002:a05:6402:13c4:b0:46a:be66:c0e2 with SMTP id
+ a4-20020a05640213c400b0046abe66c0e2mr16955326edx.28.1672092203329; 
+ Mon, 26 Dec 2022 14:03:23 -0800 (PST)
 Received: from penguin.lxd ([87.116.176.120])
  by smtp.googlemail.com with ESMTPSA id
- u1-20020aa7d541000000b0046951b43e84sm5111467edr.55.2022.12.26.14.03.20
+ u1-20020aa7d541000000b0046951b43e84sm5111467edr.55.2022.12.26.14.03.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Dec 2022 14:03:20 -0800 (PST)
+ Mon, 26 Dec 2022 14:03:23 -0800 (PST)
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
 X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
@@ -92,16 +92,16 @@ Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, philmd@linaro.org,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH v3 4/7] hw/misc: AXP209 PMU Emulation
-Date: Mon, 26 Dec 2022 23:03:00 +0100
-Message-Id: <20221226220303.14420-5-strahinja.p.jankovic@gmail.com>
+Subject: [PATCH v3 7/7] tests/avocado: Add SD boot test to Cubieboard
+Date: Mon, 26 Dec 2022 23:03:03 +0100
+Message-Id: <20221226220303.14420-8-strahinja.p.jankovic@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20221226220303.14420-1-strahinja.p.jankovic@gmail.com>
 References: <20221226220303.14420-1-strahinja.p.jankovic@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x532.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,340 +110,87 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vW2OxkmXPnxT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: m3b9haQE6F0q
 
-This patch adds minimal support for AXP-209 PMU.
-Most important is chip ID since U-Boot SPL expects version 0x1. Besides
-the chip ID register, reset values for two more registers used by A10
-U-Boot SPL are covered.
+Cubieboard now can boot directly from SD card, without the need to pass
+`-kernel` parameter. Update Avocado tests to cover this functionality.
 
 Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 ---
- MAINTAINERS          |   2 +
- hw/misc/Kconfig      |   4 +
- hw/misc/axp209.c     | 238 +++++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build  |   1 +
- hw/misc/trace-events |   5 +
- 5 files changed, 250 insertions(+)
- create mode 100644 hw/misc/axp209.c
+ tests/avocado/boot_linux_console.py | 47 +++++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index b270eb8e5b..354da68249 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -576,12 +576,14 @@ ARM Machines
- Allwinner-a10
- M: Beniamino Galvani <b.galvani@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
-+R: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: hw/*/allwinner*
- F: include/hw/*/allwinner*
- F: hw/arm/cubieboard.c
- F: docs/system/arm/cubieboard.rst
-+F: hw/misc/axp209.c
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index ec07c64291..8c1d981586 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -620,6 +620,53 @@ def test_arm_cubieboard_sata(self):
+                                                 'sda')
+         # cubieboard's reboot is not functioning; omit reboot test.
  
- Allwinner-h3
- M: Niek Linnenbank <nieklinnenbank@gmail.com>
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 052fb54310..eaeddca277 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -180,4 +180,8 @@ config ALLWINNER_A10_CCM
- config ALLWINNER_A10_DRAMC
-     bool
- 
-+config AXP209_PMU
-+    bool
-+    depends on I2C
++    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
++    def test_arm_cubieboard_openwrt_22_03_2(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:cubieboard
++        :avocado: tags=device:sd
++        """
 +
- source macio/Kconfig
-diff --git a/hw/misc/axp209.c b/hw/misc/axp209.c
-new file mode 100644
-index 0000000000..2908ed99a6
---- /dev/null
-+++ b/hw/misc/axp209.c
-@@ -0,0 +1,238 @@
-+/*
-+ * AXP-209 PMU Emulation
-+ *
-+ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a
-+ * copy of this software and associated documentation files (the "Software"),
-+ * to deal in the Software without restriction, including without limitation
-+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-+ * and/or sell copies of the Software, and to permit persons to whom the
-+ * Software is furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-+ * DEALINGS IN THE SOFTWARE.
-+ *
-+ * SPDX-License-Identifier: MIT
-+ */
++        # This test download a 7.5 MiB compressed image and expand it
++        # to 126 MiB.
++        image_url = ('https://downloads.openwrt.org/releases/22.03.2/targets/'
++                     'sunxi/cortexa8/openwrt-22.03.2-sunxi-cortexa8-'
++                     'cubietech_a10-cubieboard-ext4-sdcard.img.gz')
++        image_hash = ('94b5ecbfbc0b3b56276e5146b899eafa'
++                      '2ac5dc2d08733d6705af9f144f39f554')
++        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash,
++                                         algorithm='sha256')
++        image_path = archive.extract(image_path_gz, self.workdir)
++        image_pow2ceil_expand(image_path)
 +
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "trace.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image_path + ',if=sd,format=raw',
++                         '-nic', 'user',
++                         '-no-reboot')
++        self.vm.launch()
 +
-+#define TYPE_AXP209_PMU "axp209_pmu"
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'usbcore.nousb '
++                               'noreboot')
 +
-+#define AXP209(obj) \
-+    OBJECT_CHECK(AXP209I2CState, (obj), TYPE_AXP209_PMU)
++        self.wait_for_console_pattern('U-Boot SPL')
 +
-+/* registers */
-+enum {
-+    REG_POWER_STATUS = 0x0u,
-+    REG_OPERATING_MODE,
-+    REG_OTG_VBUS_STATUS,
-+    REG_CHIP_VERSION,
-+    REG_DATA_CACHE_0,
-+    REG_DATA_CACHE_1,
-+    REG_DATA_CACHE_2,
-+    REG_DATA_CACHE_3,
-+    REG_DATA_CACHE_4,
-+    REG_DATA_CACHE_5,
-+    REG_DATA_CACHE_6,
-+    REG_DATA_CACHE_7,
-+    REG_DATA_CACHE_8,
-+    REG_DATA_CACHE_9,
-+    REG_DATA_CACHE_A,
-+    REG_DATA_CACHE_B,
-+    REG_POWER_OUTPUT_CTRL = 0x12u,
-+    REG_DC_DC2_OUT_V_CTRL = 0x23u,
-+    REG_DC_DC2_DVS_CTRL = 0x25u,
-+    REG_DC_DC3_OUT_V_CTRL = 0x27u,
-+    REG_LDO2_4_OUT_V_CTRL,
-+    REG_LDO3_OUT_V_CTRL,
-+    REG_VBUS_CH_MGMT = 0x30u,
-+    REG_SHUTDOWN_V_CTRL,
-+    REG_SHUTDOWN_CTRL,
-+    REG_CHARGE_CTRL_1,
-+    REG_CHARGE_CTRL_2,
-+    REG_SPARE_CHARGE_CTRL,
-+    REG_PEK_KEY_CTRL,
-+    REG_DC_DC_FREQ_SET,
-+    REG_CHR_TEMP_TH_SET,
-+    REG_CHR_HIGH_TEMP_TH_CTRL,
-+    REG_IPSOUT_WARN_L1,
-+    REG_IPSOUT_WARN_L2,
-+    REG_DISCHR_TEMP_TH_SET,
-+    REG_DISCHR_HIGH_TEMP_TH_CTRL,
-+    REG_IRQ_BANK_1_CTRL = 0x40u,
-+    REG_IRQ_BANK_2_CTRL,
-+    REG_IRQ_BANK_3_CTRL,
-+    REG_IRQ_BANK_4_CTRL,
-+    REG_IRQ_BANK_5_CTRL,
-+    REG_IRQ_BANK_1_STAT = 0x48u,
-+    REG_IRQ_BANK_2_STAT,
-+    REG_IRQ_BANK_3_STAT,
-+    REG_IRQ_BANK_4_STAT,
-+    REG_IRQ_BANK_5_STAT,
-+    REG_ADC_ACIN_V_H = 0x56u,
-+    REG_ADC_ACIN_V_L,
-+    REG_ADC_ACIN_CURR_H,
-+    REG_ADC_ACIN_CURR_L,
-+    REG_ADC_VBUS_V_H,
-+    REG_ADC_VBUS_V_L,
-+    REG_ADC_VBUS_CURR_H,
-+    REG_ADC_VBUS_CURR_L,
-+    REG_ADC_INT_TEMP_H,
-+    REG_ADC_INT_TEMP_L,
-+    REG_ADC_TEMP_SENS_V_H = 0x62u,
-+    REG_ADC_TEMP_SENS_V_L,
-+    REG_ADC_BAT_V_H = 0x78u,
-+    REG_ADC_BAT_V_L,
-+    REG_ADC_BAT_DISCHR_CURR_H,
-+    REG_ADC_BAT_DISCHR_CURR_L,
-+    REG_ADC_BAT_CHR_CURR_H,
-+    REG_ADC_BAT_CHR_CURR_L,
-+    REG_ADC_IPSOUT_V_H,
-+    REG_ADC_IPSOUT_V_L,
-+    REG_DC_DC_MOD_SEL = 0x80u,
-+    REG_ADC_EN_1,
-+    REG_ADC_EN_2,
-+    REG_ADC_SR_CTRL,
-+    REG_ADC_IN_RANGE,
-+    REG_GPIO1_ADC_IRQ_RISING_TH,
-+    REG_GPIO1_ADC_IRQ_FALLING_TH,
-+    REG_TIMER_CTRL = 0x8au,
-+    REG_VBUS_CTRL_MON_SRP,
-+    REG_OVER_TEMP_SHUTDOWN = 0x8fu,
-+    REG_GPIO0_FEAT_SET,
-+    REG_GPIO_OUT_HIGH_SET,
-+    REG_GPIO1_FEAT_SET,
-+    REG_GPIO2_FEAT_SET,
-+    REG_GPIO_SIG_STATE_SET_MON,
-+    REG_GPIO3_SET,
-+    REG_COULOMB_CNTR_CTRL = 0xb8u,
-+    REG_POWER_MEAS_RES,
-+    NR_REGS
-+};
++        interrupt_interactive_console_until_pattern(
++                self, 'Hit any key to stop autoboot:', '=>')
++        exec_command_and_wait_for_pattern(self, "setenv extraargs '" +
++                                                kernel_command_line + "'", '=>')
++        exec_command_and_wait_for_pattern(self, 'boot', 'Starting kernel ...');
 +
-+#define AXP209_CHIP_VERSION_ID             (0x01)
-+#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
-+#define AXP209_IRQ_BANK_1_CTRL_RESET       (0xd8)
++        self.wait_for_console_pattern(
++            'Please press Enter to activate this console.')
 +
-+/* A simple I2C slave which returns values of ID or CNT register. */
-+typedef struct AXP209I2CState {
-+    /*< private >*/
-+    I2CSlave i2c;
-+    /*< public >*/
-+    uint8_t regs[NR_REGS];  /* peripheral registers */
-+    uint8_t ptr;            /* current register index */
-+    uint8_t count;          /* counter used for tx/rx */
-+} AXP209I2CState;
++        exec_command_and_wait_for_pattern(self, ' ', 'root@')
 +
-+/* Reset all counters and load ID register */
-+static void axp209_reset_enter(Object *obj, ResetType type)
-+{
-+    AXP209I2CState *s = AXP209(obj);
++        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
++                                                'Allwinner sun4i/sun5i')
++        # cubieboard's reboot is not functioning; omit reboot test.
 +
-+    memset(s->regs, 0, NR_REGS);
-+    s->ptr = 0;
-+    s->count = 0;
-+    s->regs[REG_CHIP_VERSION] = AXP209_CHIP_VERSION_ID;
-+    s->regs[REG_DC_DC2_OUT_V_CTRL] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
-+    s->regs[REG_IRQ_BANK_1_CTRL] = AXP209_IRQ_BANK_1_CTRL_RESET;
-+}
-+
-+/* Handle events from master. */
-+static int axp209_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    AXP209I2CState *s = AXP209(i2c);
-+
-+    s->count = 0;
-+
-+    return 0;
-+}
-+
-+/* Called when master requests read */
-+static uint8_t axp209_rx(I2CSlave *i2c)
-+{
-+    AXP209I2CState *s = AXP209(i2c);
-+    uint8_t ret = 0xff;
-+
-+    if (s->ptr < NR_REGS) {
-+        ret = s->regs[s->ptr++];
-+    }
-+
-+    trace_axp209_rx(s->ptr - 1, ret);
-+
-+    return ret;
-+}
-+
-+/*
-+ * Called when master sends write.
-+ * Update ptr with byte 0, then perform write with second byte.
-+ */
-+static int axp209_tx(I2CSlave *i2c, uint8_t data)
-+{
-+    AXP209I2CState *s = AXP209(i2c);
-+
-+    if (s->count == 0) {
-+        /* Store register address */
-+        s->ptr = data;
-+        s->count++;
-+        trace_axp209_select(data);
-+    } else {
-+        trace_axp209_tx(s->ptr, data);
-+        if (s->ptr == REG_DC_DC2_OUT_V_CTRL) {
-+            s->regs[s->ptr++] = data;
-+        }
-+    }
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_axp209 = {
-+    .name = TYPE_AXP209_PMU,
-+    .version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8_ARRAY(regs, AXP209I2CState, NR_REGS),
-+        VMSTATE_UINT8(count, AXP209I2CState),
-+        VMSTATE_UINT8(ptr, AXP209I2CState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void axp209_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
-+    ResettableClass *rc = RESETTABLE_CLASS(oc);
-+
-+    rc->phases.enter = axp209_reset_enter;
-+    dc->vmsd = &vmstate_axp209;
-+    isc->event = axp209_event;
-+    isc->recv = axp209_rx;
-+    isc->send = axp209_tx;
-+}
-+
-+static const TypeInfo axp209_info = {
-+    .name = TYPE_AXP209_PMU,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(AXP209I2CState),
-+    .class_init = axp209_class_init
-+};
-+
-+static void axp209_register_devices(void)
-+{
-+    type_register_static(&axp209_info);
-+}
-+
-+type_init(axp209_register_devices);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 9eaa0750b5..448e14b531 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -45,6 +45,7 @@ specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
-+softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
- softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
- softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
- softmmu_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index c18bc0605e..c47876a902 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -23,6 +23,11 @@ allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%"
- avr_power_read(uint8_t value) "power_reduc read value:%u"
- avr_power_write(uint8_t value) "power_reduc write value:%u"
- 
-+# axp209.c
-+axp209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
-+axp209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
-+axp209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
-+
- # eccmemctl.c
- ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
- ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
+     @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+     def test_arm_quanta_gsj(self):
+         """
 -- 
 2.30.2
 

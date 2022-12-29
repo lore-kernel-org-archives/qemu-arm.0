@@ -1,372 +1,145 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp3825345ejb;
-        Wed, 28 Dec 2022 12:42:50 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv4qioeQq5IOt95oSIwrIxyxwy5iu+UMDGsr50sUmm5Lq4eNje8aA5hkoQSM7aWerNs3YZq
-X-Received: by 2002:ac8:4657:0:b0:3a6:a8fb:245c with SMTP id f23-20020ac84657000000b003a6a8fb245cmr39696543qto.41.1672260169966;
-        Wed, 28 Dec 2022 12:42:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672260169; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4139672ejb;
+        Thu, 29 Dec 2022 01:29:08 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtkxrwdUGj62wST8eqZ03O3PqkZ0zpFxXAuU9fGdzsGc5DM6hz709MNTy0eIJt7Kvxwoevr
+X-Received: by 2002:a05:622a:1e08:b0:3ab:80d2:1a71 with SMTP id br8-20020a05622a1e0800b003ab80d21a71mr20885016qtb.28.1672306148562;
+        Thu, 29 Dec 2022 01:29:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672306148; cv=none;
         d=google.com; s=arc-20160816;
-        b=LJAnLRqyFK0Q0oHnRmx4nGR94nv3QPiRHhr4I0uMvXPAr4d1dhNm3mvf1SDGOE8jJK
-         h94xBetvwKX/T2fNk9OP0Aly3fVq0/JJQOj68KpRmLjSA35aAtbWPdwEWFIbf9I+OV01
-         QUbpkJTgfSogZp7mqX1o+Tq0rHImThqzsycfEDE+w+f+Q2pO2SaWbP1L+8BX8hk+aN82
-         4LhHqz2kioGIBRpc+LsyiwMs3BZi/rTjqxr/86yWwD+kEO2ZYTsett5+ZIVU2m+gYuPi
-         smOVKd0ywPBhCkIbi8xj1VHuADjkMGzgMAem/V6ieYOWtS2fVkQZpVrZO0Bx5TYXESpG
-         nWjw==
+        b=IsATh6LZ8btRV6ew7haelDkFLpvXjwylBMx8Qru7bkJYt94lCG5pU0e7mGPr79AY+q
+         HSUOxFlOIEr//fpNkcGBLEMhM1t0soEr2lbalStSL74p/J17dFM2og4Ctz+xBUMJRpab
+         BYpMlyViwzbSGnwDRZjXDmad3eXQU2wsjz8AVDeSmaSpLTUugu3Tfer9ezB7cNOmPZy6
+         Xem6kjx9a27gvfd/8k53i7HNIxIIbT7n5Ego8wqRQEtwbYeK034P6p6KDLUNEKELP0EM
+         qGfLOuYm4clpeJPC6mQRLuK7Vqo9Y2qk7wuqn9MCZcxT7Nh/f/4NMood5+OM1ZbIcLrk
+         lJpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=wyT1y8MzFuYNPjaJ3WwbYkVyX7G467X8O7pcp6P7Mvg=;
-        b=I/4HCRfCQLICzTIlpE5TM8jQ6G4sp/8F+Ygby6+sYLSuCBLCFgCkhXoHCX89JCsj1u
-         qiHRSk/dFH7fctIM7hmdztHuGHJ6idW2z+0/I19xgqctZu28V4XNc/7PvjiCMJNzNwCo
-         2n1Pw0z2Zk6B1Lf+1d6aCPUoY+LPUgyWq88TLYjQXmstX48T2dXCehb0QXNmOAYHHItX
-         8TuXqYXwl7Yfvj1ogEYUJW4EbIDXQnLLaNbvHYxQcsjq2agS8y1V+MxryS8lYTkhNoJ2
-         wg71Q8FsYRvCpMhWSjx0syPXt02tzTw3bXqlkzJrBvB5DKNbrkJqpHwj92Z8g/J0QOpY
-         68gw==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=b2G2HBi7RmxjXnaOAY9mntq61IebxaL6Lb+V6cYPCWk=;
+        b=byjVzDyWqiZ1AYkBeO9fsvbDJmhXxxMm0IevzxzhSFIXZQ6v1+jFNb74a50vZwYX+A
+         WJTasthU8sttKJClDDcYVLCWXYMEwteMoQd4j+pEeIUXXAYJjynMhtamlISPQ2ZSr1ae
+         zxwDdLXvjprmOo+j1DANvteWQE6G+gmmNH2UkaLFWaEKFY0l09b6fWtwDclwyWAupwT2
+         iYoXyS9lmP+3lLGyKeNqh4PTcS8ci409NEWmYc42ogjwwXaBZib7Qe3Ro6/kDVdkUYkD
+         Xl7M3oPvSIm9fV1NsnaFZ4pnvbCuhRO4yjpvnJiugTbTHIIFapH0gsKSAU7DZrQUiKOB
+         nesw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hqUuvw2R;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s1-20020a05620a0bc100b006fb63d2759esi7450914qki.270.2022.12.28.12.42.49
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1i3Vo9i;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id bx6-20020a05622a090600b003a7d4650006si8172978qtb.131.2022.12.29.01.29.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Dec 2022 12:42:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 29 Dec 2022 01:29:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hqUuvw2R;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pAdG5-0003bE-3u; Wed, 28 Dec 2022 15:42:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1pAdG2-0003b1-9t; Wed, 28 Dec 2022 15:42:38 -0500
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1pAdFy-0005i1-VC; Wed, 28 Dec 2022 15:42:36 -0500
-Received: by mail-yb1-xb30.google.com with SMTP id g4so18584121ybg.7;
- Wed, 28 Dec 2022 12:42:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=wyT1y8MzFuYNPjaJ3WwbYkVyX7G467X8O7pcp6P7Mvg=;
- b=hqUuvw2RdM2KtnJvAcOv+Rx1sKuU+4gKKf0vttV7ehM2jdda0+NfbxQJ94XkascNSn
- cteqthxb8e6Et0DUGbOXBcTPJd0sgYPKjoqM21aNDnRjx3s4vsd08NbBPjjt0LzwK/Rj
- EHpC16IJEgfYw2VcUD8qkfI9X1XbzrholOJJO7A27YgRR9+3y3VbZjgOAr9TdPxWuzwV
- myX1LyQU35dK4pm21UuF54Diwj641kQj7tBCMvFYL60mCXYm//I5LTHzo+lyV48PjvJy
- hViV/lDj0DU03bKc65KUAJL57VZb4gCNhV5ezoU87kU7fRgKOms6abMGvR+VS6z1GrxY
- kfhQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1i3Vo9i;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1672306148;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=b2G2HBi7RmxjXnaOAY9mntq61IebxaL6Lb+V6cYPCWk=;
+	b=K1i3Vo9i5iV/jhIyDuf3NdqUI8neXkPaIl+JOebG/kqdlS1bCgzKHpuy7tiw/FIlAU1wqa
+	pqgoVj9POAy1lpaXPtoV+PSx+/ltrIJ7+4p7M2wJRZrI5kTiZo0fiECrAGB2pUMiijJSP8
+	VGDOcIH4otSYAsOAnqL3wFr08YheQdQ=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-612-tpp8AOA3OtmuESf6ZOohOw-1; Thu, 29 Dec 2022 04:29:06 -0500
+X-MC-Unique: tpp8AOA3OtmuESf6ZOohOw-1
+Received: by mail-wm1-f69.google.com with SMTP id c7-20020a1c3507000000b003d355c13ba8so9475284wma.6
+        for <alex.bennee@linaro.org>; Thu, 29 Dec 2022 01:29:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=wyT1y8MzFuYNPjaJ3WwbYkVyX7G467X8O7pcp6P7Mvg=;
- b=WskaXu1qrTnUNJKOtoBVjiqbfX7hPrBsg5tn8LDlMrQvT4Zohx6oS/JkTBCeQt3YAx
- BwdyYbTxbTeokB8CX0aSeSaAhnw2cfO4WNGQ/a0HaOmK2dxSdZR4ky8xDWZS3h9e7db5
- myEiTdUKAaXTUK5gdVkYbR8uEk7tZ2i4KWS6S6E75k+f/aBHnlf+5XA8ZCKeGmBvkKwg
- iyLXyGWmDQxhd7Nt7pRjjne39ZrxNXUFgopJ+tQ0O7BXIBMos5Pq6FDblGDga7NItqTQ
- epU3JF7dkdyGKd14K2rgNaNUBz5Xsf5DyGZWeyppEWVOpM88jIXeCNZLpM00NA60MiM1
- B+cQ==
-X-Gm-Message-State: AFqh2koKLb5k9k4f2hOn97XRIi46RtIERpZ6cT3uTYm6DD+7Xptrbm+Z
- ns1EZmOyYuAtiM9/t9o00rcofVIz4Lma9MXA41Y=
-X-Received: by 2002:a25:b78b:0:b0:703:657f:9c91 with SMTP id
- n11-20020a25b78b000000b00703657f9c91mr2189857ybh.387.1672260153671; Wed, 28
- Dec 2022 12:42:33 -0800 (PST)
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=b2G2HBi7RmxjXnaOAY9mntq61IebxaL6Lb+V6cYPCWk=;
+        b=xZbNNSZGL9m/3E3l1S0Ao/H+8/RiJaSu2/T9RHA3uoUcN1uKUugrKQF3Ld8iFR3K7x
+         BbzYDHXp+rDPJhm0LiBBNJ6/EK41uJ1LK/PX4WidrlJhkEwxHZ/7AclV6joiXGA3sKAO
+         nFmFDxgE9wBkx7FmfxwZytoEjAu8rOUz6pW1KEvjnhwgZpUtx2IVICljlm9HcbCNu+LK
+         YauZCqJFN0FJOc33tKJ4LrdqjCGAHosmeLHyJlwLOaKH0a5SQGPVTN5/fXrnwdWD8I3e
+         FXDBglRdqqO2ft4d8kGpoVqhMTy2kphju+ZctqCNNGx0JYHd+U1CQj9zdbvt4k0U2y1s
+         x3Pw==
+X-Gm-Message-State: AFqh2kpl17ASpaD6Yq23bZbXI9gVolZuTEk5Hw1kJFI0J8rlAPLET08u
+	sNrXCzVUAz5oO++2HSNO/wHOqtQea5z2fJxulOS8270LkDatiCX70/Zpk42LIxSvrwLAAGgQz/0
+	0zAC9Cet3CesDqGw9
+X-Received: by 2002:a5d:46c3:0:b0:242:7676:689d with SMTP id g3-20020a5d46c3000000b002427676689dmr16793791wrs.19.1672306145925;
+        Thu, 29 Dec 2022 01:29:05 -0800 (PST)
+X-Received: by 2002:a5d:46c3:0:b0:242:7676:689d with SMTP id g3-20020a5d46c3000000b002427676689dmr16793782wrs.19.1672306145747;
+        Thu, 29 Dec 2022 01:29:05 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.5] (ip-109-42-113-203.web.vodafone.de. [109.42.113.203])
+        by smtp.gmail.com with ESMTPSA id f8-20020adff8c8000000b00282194eaf7bsm7531081wrq.71.2022.12.29.01.29.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 29 Dec 2022 01:29:04 -0800 (PST)
+Message-ID: <20f8ff01-8240-5c53-99ad-c75d37f6639c@redhat.com>
+Date: Thu, 29 Dec 2022 10:29:02 +0100
 MIME-Version: 1.0
-References: <20221226220303.14420-1-strahinja.p.jankovic@gmail.com>
- <20221226220303.14420-8-strahinja.p.jankovic@gmail.com>
-In-Reply-To: <20221226220303.14420-8-strahinja.p.jankovic@gmail.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 28 Dec 2022 21:42:22 +0100
-Message-ID: <CAPan3Wriw0+zRf3+FbYpjDKBbsQSgozxEEcX8yR9F_6P-zdqzw@mail.gmail.com>
-Subject: Re: [PATCH v3 7/7] tests/avocado: Add SD boot test to Cubieboard
-To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, philmd@linaro.org, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Content-Type: multipart/alternative; boundary="0000000000006e838c05f0e9681b"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-yb1-xb30.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ocygPlYFC6nq
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 4/6] util/error: add G_GNUC_PRINTF for various functions
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-ppc@nongnu.org,
+ xen-devel@lists.xenproject.org, Laurent Vivier <lvivier@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, virtio-fs@redhat.com,
+ Michael Roth <michael.roth@amd.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paul Durrant <paul@xen.org>, Anthony Perard <anthony.perard@citrix.com>,
+ David Gibson <david@gibson.dropbear.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>
+References: <20221219130205.687815-1-berrange@redhat.com>
+ <20221219130205.687815-5-berrange@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20221219130205.687815-5-berrange@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: /8cAxp9kYEcb
 
---0000000000006e838c05f0e9681b
-Content-Type: text/plain; charset="UTF-8"
-
-On Mon, Dec 26, 2022 at 11:03 PM Strahinja Jankovic <
-strahinjapjankovic@gmail.com> wrote:
-
-> Cubieboard now can boot directly from SD card, without the need to pass
-> `-kernel` parameter. Update Avocado tests to cover this functionality.
->
-> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
->
-
-Test looks fine to me, and is also working well with:
-
-$ AVOCADO_ALLOW_LARGE_STORAGE=yes ./build/tests/venv/bin/avocado
---show=app,console run -t machine:cubieboard
-tests/avocado/boot_linux_console.py
-...
- (3/3)
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_openwrt_22_03_2:
- console: U-Boot SPL 2020.04-OpenWrt-r19803-9a599fee93 (Oct 14 2022 -
-22:44:41 +0000)
-console: DRAM: 1024 MiB
-console: CPU: 1008000000Hz, AXI/AHB/APB: 3/2/2
-...
-console: Hardware : Allwinner sun4i/sun5i Families
-PASS (13.98 s)
-RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |
-CANCEL 0
-JOB TIME   : 36.82 s
-
-So for me:
-
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-
+On 19/12/2022 14.02, Daniel P. Berrangé wrote:
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 > ---
->  tests/avocado/boot_linux_console.py | 47 +++++++++++++++++++++++++++++
->  1 file changed, 47 insertions(+)
->
-> diff --git a/tests/avocado/boot_linux_console.py
-> b/tests/avocado/boot_linux_console.py
-> index ec07c64291..8c1d981586 100644
-> --- a/tests/avocado/boot_linux_console.py
-> +++ b/tests/avocado/boot_linux_console.py
-> @@ -620,6 +620,53 @@ def test_arm_cubieboard_sata(self):
->                                                  'sda')
->          # cubieboard's reboot is not functioning; omit reboot test.
->
-> +    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage
-> limited')
-> +    def test_arm_cubieboard_openwrt_22_03_2(self):
-> +        """
-> +        :avocado: tags=arch:arm
-> +        :avocado: tags=machine:cubieboard
-> +        :avocado: tags=device:sd
-> +        """
-> +
-> +        # This test download a 7.5 MiB compressed image and expand it
-> +        # to 126 MiB.
-> +        image_url = ('
-> https://downloads.openwrt.org/releases/22.03.2/targets/'
-> +                     'sunxi/cortexa8/openwrt-22.03.2-sunxi-cortexa8-'
-> +                     'cubietech_a10-cubieboard-ext4-sdcard.img.gz')
-> +        image_hash = ('94b5ecbfbc0b3b56276e5146b899eafa'
-> +                      '2ac5dc2d08733d6705af9f144f39f554')
-> +        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash,
-> +                                         algorithm='sha256')
-> +        image_path = archive.extract(image_path_gz, self.workdir)
-> +        image_pow2ceil_expand(image_path)
-> +
-> +        self.vm.set_console()
-> +        self.vm.add_args('-drive', 'file=' + image_path +
-> ',if=sd,format=raw',
-> +                         '-nic', 'user',
-> +                         '-no-reboot')
-> +        self.vm.launch()
-> +
-> +        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-> +                               'usbcore.nousb '
-> +                               'noreboot')
-> +
-> +        self.wait_for_console_pattern('U-Boot SPL')
-> +
-> +        interrupt_interactive_console_until_pattern(
-> +                self, 'Hit any key to stop autoboot:', '=>')
-> +        exec_command_and_wait_for_pattern(self, "setenv extraargs '" +
-> +                                                kernel_command_line +
-> "'", '=>')
-> +        exec_command_and_wait_for_pattern(self, 'boot', 'Starting kernel
-> ...');
-> +
-> +        self.wait_for_console_pattern(
-> +            'Please press Enter to activate this console.')
-> +
-> +        exec_command_and_wait_for_pattern(self, ' ', 'root@')
-> +
-> +        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-> +                                                'Allwinner sun4i/sun5i')
-> +        # cubieboard's reboot is not functioning; omit reboot test.
-> +
->      @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might
-> timeout')
->      def test_arm_quanta_gsj(self):
->          """
-> --
-> 2.30.2
->
->
+>   util/error-report.c | 1 +
+>   util/error.c        | 1 +
+>   2 files changed, 2 insertions(+)
+> 
+> diff --git a/util/error-report.c b/util/error-report.c
+> index 5edb2e6040..6e44a55732 100644
+> --- a/util/error-report.c
+> +++ b/util/error-report.c
+> @@ -193,6 +193,7 @@ real_time_iso8601(void)
+>    * a single phrase, with no newline or trailing punctuation.
+>    * Prepend the current location and append a newline.
+>    */
+> +G_GNUC_PRINTF(2, 0)
+>   static void vreport(report_type type, const char *fmt, va_list ap)
+>   {
+>       gchar *timestr;
+> diff --git a/util/error.c b/util/error.c
+> index b6c89d1412..1e7af665b8 100644
+> --- a/util/error.c
+> +++ b/util/error.c
+> @@ -45,6 +45,7 @@ static void error_handle_fatal(Error **errp, Error *err)
+>       }
+>   }
+>   
+> +G_GNUC_PRINTF(6, 0)
+>   static void error_setv(Error **errp,
+>                          const char *src, int line, const char *func,
+>                          ErrorClass err_class, const char *fmt, va_list ap,
 
--- 
-Niek Linnenbank
-
---0000000000006e838c05f0e9681b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Dec 26, 2022 at 11:03 PM Stra=
-hinja Jankovic &lt;<a href=3D"mailto:strahinjapjankovic@gmail.com">strahinj=
-apjankovic@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
-);padding-left:1ex">Cubieboard now can boot directly from SD card, without =
-the need to pass<br>
-`-kernel` parameter. Update Avocado tests to cover this functionality.<br>
-<br>
-Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.jankovi=
-c@gmail.com" target=3D"_blank">strahinja.p.jankovic@gmail.com</a>&gt;<br></=
-blockquote><div><br></div><div>Test looks fine to me, and is also working w=
-ell with:</div><div><br></div><div>$ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes ./bu=
-ild/tests/venv/bin/avocado --show=3Dapp,console run -t machine:cubieboard t=
-ests/avocado/boot_linux_console.py</div><div>...</div><div>=C2=A0(3/3) test=
-s/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_openwr=
-t_22_03_2: =C2=A0console: U-Boot SPL 2020.04-OpenWrt-r19803-9a599fee93 (Oct=
- 14 2022 - 22:44:41 +0000)<br>console: DRAM: 1024 MiB<br>console: CPU: 1008=
-000000Hz, AXI/AHB/APB: 3/2/2</div><div>...</div><div>console: Hardware	: Al=
-lwinner sun4i/sun5i Families<br>PASS (13.98 s)<br>RESULTS =C2=A0 =C2=A0: PA=
-SS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0<br>JOB T=
-IME =C2=A0 : 36.82 s<br></div><div><br></div><div>So for me:<br></div><div>=
-<br></div><div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinne=
-nbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div><div>Tested-by: Niek=
- Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@=
-gmail.com</a>&gt; <br></div><blockquote class=3D"gmail_quote" style=3D"marg=
-in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
-x">
----<br>
-=C2=A0tests/avocado/boot_linux_console.py | 47 ++++++++++++++++++++++++++++=
-+<br>
-=C2=A01 file changed, 47 insertions(+)<br>
-<br>
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux=
-_console.py<br>
-index ec07c64291..8c1d981586 100644<br>
---- a/tests/avocado/boot_linux_console.py<br>
-+++ b/tests/avocado/boot_linux_console.py<br>
-@@ -620,6 +620,53 @@ def test_arm_cubieboard_sata(self):<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;sda&#39;)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0# cubieboard&#39;s reboot is not function=
-ing; omit reboot test.<br>
-<br>
-+=C2=A0 =C2=A0 @skipUnless(os.getenv(&#39;AVOCADO_ALLOW_LARGE_STORAGE&#39;)=
-, &#39;storage limited&#39;)<br>
-+=C2=A0 =C2=A0 def test_arm_cubieboard_openwrt_22_03_2(self):<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Darch:arm<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:cubieboard<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Ddevice:sd<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 # This test download a 7.5 MiB compressed imag=
-e and expand it<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 # to 126 MiB.<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_url =3D (&#39;<a href=3D"https://downloa=
-ds.openwrt.org/releases/22.03.2/targets/" rel=3D"noreferrer" target=3D"_bla=
-nk">https://downloads.openwrt.org/releases/22.03.2/targets/</a>&#39;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0&#39;sunxi/cortexa8/openwrt-22.03.2-sunxi-cortexa8-&#39;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0&#39;cubietech_a10-cubieboard-ext4-sdcard.img.gz&#39;)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_hash =3D (&#39;94b5ecbfbc0b3b56276e5146b=
-899eafa&#39;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 &#39;2ac5dc2d08733d6705af9f144f39f554&#39;)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_path_gz =3D self.fetch_asset(image_url, =
-asset_hash=3Dimage_hash,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0al=
-gorithm=3D&#39;sha256&#39;)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_path =3D archive.extract(image_path_gz, =
-self.workdir)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_pow2ceil_expand(image_path)<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_console()<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.add_args(&#39;-drive&#39;, &#39;file=
-=3D&#39; + image_path + &#39;,if=3Dsd,format=3Draw&#39;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0&#39;-nic&#39;, &#39;user&#39;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0&#39;-no-reboot&#39;)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.launch()<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_command_line =3D (self.KERNEL_COMMON_CO=
-MMAND_LINE +<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;usbcore.nousb &#39;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;noreboot&#39;)<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(&#39;U-Boot SPL&=
-#39;)<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 interrupt_interactive_console_until_pattern(<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self, &#39;Hit any=
- key to stop autoboot:&#39;, &#39;=3D&gt;&#39;)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &quot;=
-setenv extraargs &#39;&quot; +<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 kernel_command_line + &quot;&#39;&quot;, &#39;=3D&gt;&=
-#39;)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &#39;b=
-oot&#39;, &#39;Starting kernel ...&#39;);<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;Please press Enter to activ=
-ate this console.&#39;)<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &#39; =
-&#39;, &#39;root@&#39;)<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &#39;c=
-at /proc/cpuinfo&#39;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 &#39;Allwinner sun4i/sun5i&#39;)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 # cubieboard&#39;s reboot is not functioning; =
-omit reboot test.<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0@skipUnless(os.getenv(&#39;AVOCADO_TIMEOUT_EXPECTED&#39=
-;), &#39;Test might timeout&#39;)<br>
-=C2=A0 =C2=A0 =C2=A0def test_arm_quanta_gsj(self):<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot;<br>
--- <br>
-2.30.2<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---0000000000006e838c05f0e9681b--
+Reviewed-by: Thomas Huth <thuth@redhat.com>

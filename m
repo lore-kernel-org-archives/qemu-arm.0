@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4327628ejb;
-        Thu, 29 Dec 2022 07:26:07 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvLpu5aiD1Yy7a811DRPNOR/6FEu2khdoZNGhBe1M0f9vE1ka59aF3t/hIXFVmr1nHOgaIv
-X-Received: by 2002:ac8:5ec5:0:b0:3a7:e7e7:566 with SMTP id s5-20020ac85ec5000000b003a7e7e70566mr39035119qtx.66.1672327567487;
-        Thu, 29 Dec 2022 07:26:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672327567; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4327714ejb;
+        Thu, 29 Dec 2022 07:26:14 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtvIeITbz2hynlIZFcv8fwJ09XapG9VbLJ9zxrn3wkTq+TFsd3RnmOzwOrzp6++scMlBVD7
+X-Received: by 2002:ac8:6e88:0:b0:3a6:9318:9c90 with SMTP id c8-20020ac86e88000000b003a693189c90mr37980581qtv.66.1672327574219;
+        Thu, 29 Dec 2022 07:26:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672327574; cv=none;
         d=google.com; s=arc-20160816;
-        b=NhQfVbNyMqcxqj02HNYtm/zEU69kkEvJV7hxSVCAtwvGnL4OHcD6jLN9KGWYfNzuV1
-         Izr/rQyeIC2VGTGJar75lCcnMWPDNWTpiVSScP3lCU6cJ3wM3BQvZizSAes6hRnJnT15
-         e1fQpzKHvUuVp5Q80/ieggyok5ASiJ4ea64TbGUmKrEw1Mg47Q5fVDvpv7NG0SgTVj/h
-         bk0cBN1ILdKM355P45YQPMsx/Vg/ra4HitmFWaAmvV8HxISJd26A4R9JHCz5uxbcOvBZ
-         qTMhdFqdBXl8rhNvaa3wBy7WM9adBgrK6oeaLxG4wwrr2WOX0ltyXcBxSJ0rDzxNpx7r
-         af4g==
+        b=W7QihTBwaxDvId1/Qn/orI7K9m1VerHz5tuXsC+0pm+LIiZhVSLLmzi3NcOtNLy7Ta
+         DPRCIWVPfgcURJp8hV9zE3183IWcwnhDXdZ0colimJmYCtnceFQvSH382vxVYwPF6jDd
+         np8RG1rKjpj72BEked5ASZPYdImfds1+a8bNH+H2W+hQyWbpohEca4cbw28Ppd6Kz5vD
+         8Za/m+0fV7GtR6ufnXOWH9FoEhlbSz2GvTIv7GHhaRY0K+PMdYD+I46G5jNUaIfYyy1s
+         axNbs3xBDCqShedMYobdUhY7MbfsTxtB3WYeHNQ9Az4swkNgT7AFOVkJLlqp1Cd2HYWM
+         xk5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vLkW5z989xZITlNC/reQ2vNDxNMW6GRxo4ZpBBEIA6U=;
-        b=nj0NXwDHGmWoJfLb7WRRPpM9VsfCLNHasloqnf4dWQq9t/B210ICPbM3zuT5HughkN
-         /qAMi9DlmPW87Scrw/d4tD8Rm97s4MHzh/vlaucseqjsgqObOr219IadKSejlD3a3QZa
-         n6O4Bd6us4QP8h3DSe5T1EH7m9QSmRBmwMqrqRk5ye2BP2aERyfsZb2r9ET7M1HidHg2
-         PFcbXkOKB1PKGE0W2WFHUiLZt6ik/IyVcwQqo7SwvdiWHp2AHoDu9OvpFWdz1KVlp4kS
-         MqNEfOxuSw46fi5gZ+FLTWHOivT3NSQOYRgY3AERxiWoKKH1QPWWGlVWBA7NnNiyB21L
-         Gu0A==
+        bh=QdQ1jhSiAeTlE9odBywW4XFvZU5ijZarJfBTLLFf7vU=;
+        b=tNejTeg4qkt0lFPX81pwCwt1eTvbjT8cm0xVdGr6HGJRDOQcq8ufEkxov9hCegICJ3
+         uIRKYp0RkiVOilehYO9zy2wOzzqSJab/b86QuErc2D6ZYXsnkJfZTTvXk79lh1D6FJ+6
+         GdZqs+gaNSgS+w9xfb6xBXkiUI3l0iDDP6VYnBZnXAvn9eLlj0foPZzvVzGHynAliOva
+         jRtq4ly3W6gXBZfy7N2EBBEYeRWHdY/0uwMGw2coY1PCLNX2BH8XqGcr/vgPns8VziC5
+         fejjRsHnV0hUPVGxxKnpqFjIYB7RhtCpp7LHrrsdWMxi+5K9rpZlZ71UFsTVdrhWoJ5S
+         OUSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S8CqrhcW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HXSpfGpy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s2-20020ac87582000000b003a4bf6d3dbdsi8059361qtq.667.2022.12.29.07.26.07
+        by mx.google.com with ESMTPS id z22-20020a05620a101600b006fa0e97be42si7811132qkj.742.2022.12.29.07.26.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Dec 2022 07:26:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Dec 2022 07:26:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S8CqrhcW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HXSpfGpy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pAulG-0001Iq-LY; Thu, 29 Dec 2022 10:24:02 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pAukx-0001E3-N4; Thu, 29 Dec 2022 10:23:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pAulD-0001IM-JB
- for qemu-devel@nongnu.org; Thu, 29 Dec 2022 10:24:00 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pAukw-0001Dn-MD
+ for qemu-arm@nongnu.org; Thu, 29 Dec 2022 10:23:42 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pAulB-0007vO-PI
- for qemu-devel@nongnu.org; Thu, 29 Dec 2022 10:23:59 -0500
-Received: by mail-wm1-x334.google.com with SMTP id o15so13336416wmr.4
- for <qemu-devel@nongnu.org>; Thu, 29 Dec 2022 07:23:57 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pAuku-0007qn-Vc
+ for qemu-arm@nongnu.org; Thu, 29 Dec 2022 10:23:42 -0500
+Received: by mail-wr1-x436.google.com with SMTP id bs20so15568477wrb.3
+ for <qemu-arm@nongnu.org>; Thu, 29 Dec 2022 07:23:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vLkW5z989xZITlNC/reQ2vNDxNMW6GRxo4ZpBBEIA6U=;
- b=S8CqrhcWVBY0vqiquboZ8VYLsrSGMWChLVJEOrxOgmkClJGz30BOmnBRjLsv80Zd0E
- DhaHjfIZte7uQgjFBH09/Us48C9OJUEIm8bAvO+WNOdIbx11DS3u3lfNjoN3ih7o5JI2
- 8FxESzg1nOBTJEZTGbIwEYPV5F50Y9Gwsc2TCFNPqg5Qo5YTnVdy9HULKlNbu9H02VIh
- rs1zcFmFHQAzEuyGbzrOAqNBg1Fw0x+G7CDj2FCEHWk/9piUaqwWZXFWDvri5fB61tus
- WOBAqjUlv/k0FRlbtLZSVWes9nuwBC6m8QCMfDJdIs4ruPXQcm5Z870MUJcp07ujo+pT
- X+oA==
+ bh=QdQ1jhSiAeTlE9odBywW4XFvZU5ijZarJfBTLLFf7vU=;
+ b=HXSpfGpy1aFSVbilt9b4Olo6JiuHd8pS9IuiqUDKHj8nlHDfOwPiASwRCSWFlS3AIF
+ Dp/eF5Six5956/LAi++jBk418gD3mSHnxdpj0SVGp6pW1q/44+Th9bgDyizN9mAllFur
+ bAnkGBhUXs4npphtYW+nzfqipE9YW6yXjqdMmTI3mxqBjzqpvKaQF6b9yhsUceqZpC5/
+ AfoXU/4P9kW/5ZdfizBM1XGZYJuaw68/owlHWESEynidHipNYjrF7E1Z+hPsvxzkZtIu
+ JVbbvIk7j0CkxP1xYxtsoIRzLRuOfng+vuwizLlXNTckLs0+sQ4OFiRG02+p+12u+QsT
+ 73cA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vLkW5z989xZITlNC/reQ2vNDxNMW6GRxo4ZpBBEIA6U=;
- b=4cmVpB3dkw567j2XCcmFCp/yc7oP+En555ZySfT3WZN1wXM8WXiovWLZefHbEungbG
- Gl8rIDy2N7gXCRGOZXnaMngbsKQV/d1r8NLoLH7dg5A+jyBacBOEnEIBK93UYRkGfBsZ
- Vf6abUuGRhKsZYGlw2PdwT6OW/XP1aG29S3Eg34v/c7VcoWrI5Q23H4wPA5Ucig1I2Wm
- gkptXJq9xPuSbLTmVsmxcTb/AzT8CRij1TdDTGSmVH65qdzfGE+SG1tfo96DOexShM+A
- TfY0ktvdF2fuzlJrDQnzjwVUNHK/5Ph+4OWTcVkCQ/1DJozyFj79q9lnqUKVHVkG2aG6
- F/lw==
-X-Gm-Message-State: AFqh2kriIBkv3hNaycM3pZzE8rd3kOO5T6vX1uSiOCwLbplUQtnzDOlr
- UMuTCGHU/s+1eMZ7PXt93UksBlW9pxqaYbzk
-X-Received: by 2002:a05:600c:41c2:b0:3d3:5565:3617 with SMTP id
- t2-20020a05600c41c200b003d355653617mr23744544wmh.24.1672327436235; 
- Thu, 29 Dec 2022 07:23:56 -0800 (PST)
+ bh=QdQ1jhSiAeTlE9odBywW4XFvZU5ijZarJfBTLLFf7vU=;
+ b=XX9UTTOeA3qNppbbTSBleREKhIlzcFh7MG1TMam2W9EtP8CqIuaYdYRlTD9Nqqt6j+
+ Yc6eDWy1HpxwyjxnaqboeM4EuU5oAwndjtyzQKFhLaOCflYY0HIBvW9qLIaRV1w/99c5
+ vrOdQJKeFmcGCBmooxltucCt/9MuEGLzsnbLRpwWjUAam9fRqQrlNkugPMTQy+ITupiX
+ 2johUrrvPUOrvxMdhYe4d4gAQIxyJxsiJXmooUTu4q5/FSInLtwj9bV7aRGTFtBo+bx6
+ iMu7hceOePuOrACMWGXuhq5Ysp3fcPfWBAq85an4pCAuswPdyacQTyPH2Zlm3W7TTbT9
+ r+Gw==
+X-Gm-Message-State: AFqh2kpIaeqVpIa/nJtZbGy1p5MqzA7DvC2vVJrpq9KApeCPRuLdypca
+ 0Ka2QPxsxe+bBmQ95CbfCvCiBA==
+X-Received: by 2002:a5d:4008:0:b0:242:17d3:a9fc with SMTP id
+ n8-20020a5d4008000000b0024217d3a9fcmr17708689wrp.30.1672327419544; 
+ Thu, 29 Dec 2022 07:23:39 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- d22-20020a1c7316000000b003d9862ec435sm11936642wmb.20.2022.12.29.07.23.54
+ l17-20020a056000023100b00241fab5a296sm18123222wrz.40.2022.12.29.07.23.38
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 29 Dec 2022 07:23:55 -0800 (PST)
+ Thu, 29 Dec 2022 07:23:39 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Steven Lee <steven_lee@aspeedtech.com>, Peter Delevoryas <peter@pjd.dev>,
@@ -98,139 +98,113 @@ Cc: Steven Lee <steven_lee@aspeedtech.com>, Peter Delevoryas <peter@pjd.dev>,
  Peter Delevoryas <pdel@fb.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jamin Lin <jamin_lin@aspeedtech.com>
-Subject: [PATCH 5/9] hw/arm/aspeed_ast10x0: Map the secure SRAM
-Date: Thu, 29 Dec 2022 16:23:21 +0100
-Message-Id: <20221229152325.32041-6-philmd@linaro.org>
+Subject: [PATCH 2/9] hw/arm/aspeed: Use the IEC binary prefix definitions
+Date: Thu, 29 Dec 2022 16:23:18 +0100
+Message-Id: <20221229152325.32041-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221229152325.32041-1-philmd@linaro.org>
 References: <20221229152325.32041-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M4rWDOlYRrQG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9R8oav9SjxFY
 
-Some SRAM appears to be used by the Secure Boot unit and
-crypto accelerators. Name it 'secure sram'.
-
-Note, the SRAM base address was already present but unused
-(the 'SBC' index is used for the MMIO peripheral).
-
-Interestingly using CFLAGS=-Winitializer-overrides reports:
-
-  ../hw/arm/aspeed_ast10x0.c:32:30: warning: initializer overrides prior initialization of this subobject [-Winitializer-overrides]
-    [ASPEED_DEV_SBC]       = 0x7E6F2000,
-                             ^~~~~~~~~~
-  ../hw/arm/aspeed_ast10x0.c:24:30: note: previous initialization is here
-    [ASPEED_DEV_SBC]       = 0x79000000,
-                             ^~~~~~~~~~
-This fixes with Zephyr:
-
-  uart:~$ rsa test
-  rsa test vector[0]:
-  [00:00:26.156,000] <err> os: ***** BUS FAULT *****
-  [00:00:26.157,000] <err> os:   Precise data bus error
-  [00:00:26.157,000] <err> os:   BFAR Address: 0x79000000
-  [00:00:26.158,000] <err> os: r0/a1:  0x79000000  r1/a2:  0x00000000  r2/a3:  0x00001800
-  [00:00:26.158,000] <err> os: r3/a4:  0x79001800 r12/ip:  0x00000800 r14/lr:  0x0001098d
-  [00:00:26.158,000] <err> os:  xpsr:  0x81000000
-  [00:00:26.158,000] <err> os: Faulting instruction address (r15/pc): 0x0001e1bc
-  [00:00:26.158,000] <err> os: >>> ZEPHYR FATAL ERROR 0: CPU exception on CPU 0
-  [00:00:26.158,000] <err> os: Current thread: 0x38248 (shell_uart)
-  [00:00:26.165,000] <err> os: Halting system
+IEC binary prefixes ease code review: the unit is explicit.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/aspeed_ast10x0.c     | 11 ++++++++++-
- include/hw/arm/aspeed_soc.h |  3 +++
- 2 files changed, 13 insertions(+), 1 deletion(-)
+ hw/arm/aspeed_ast10x0.c | 3 ++-
+ hw/arm/aspeed_ast2600.c | 3 ++-
+ hw/arm/aspeed_soc.c     | 4 ++--
+ 3 files changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 53ea6d471f..21a2e62345 100644
+index 122b3fd3f3..3500294df7 100644
 --- a/hw/arm/aspeed_ast10x0.c
 +++ b/hw/arm/aspeed_ast10x0.c
-@@ -22,7 +22,7 @@
+@@ -10,6 +10,7 @@
+  */
  
- static const hwaddr aspeed_soc_ast1030_memmap[] = {
-     [ASPEED_DEV_SRAM]      = 0x00000000,
--    [ASPEED_DEV_SBC]       = 0x79000000,
-+    [ASPEED_DEV_SECSRAM]   = 0x79000000,
-     [ASPEED_DEV_IOMEM]     = 0x7E600000,
-     [ASPEED_DEV_PWM]       = 0x7E610000,
-     [ASPEED_DEV_FMC]       = 0x7E620000,
-@@ -222,6 +222,14 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     memory_region_add_subregion(s->memory,
-                                 sc->memmap[ASPEED_DEV_SRAM],
-                                 &s->sram);
-+    memory_region_init_ram(&s->secsram, OBJECT(s), "sec.sram",
-+                           sc->secsram_size, &err);
-+    if (err != NULL) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SECSRAM],
-+                                &s->secsram);
- 
-     /* SCU */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
-@@ -401,6 +409,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/sysemu.h"
+@@ -348,7 +349,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
+     sc->name = "ast1030-a1";
      sc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
      sc->silicon_rev = AST1030_A1_SILICON_REV;
-     sc->sram_size = 768 * KiB;
-+    sc->secsram_size = 9 * KiB;
+-    sc->sram_size = 0xc0000;
++    sc->sram_size = 768 * KiB;
      sc->spis_num = 2;
      sc->ehcis_num = 0;
      sc->wdts_num = 4;
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 9a5e3c0bac..bd1e03e78a 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -71,6 +71,7 @@ struct AspeedSoCState {
-     AspeedSMCState spi[ASPEED_SPIS_NUM];
-     EHCISysBusState ehci[ASPEED_EHCIS_NUM];
-     AspeedSBCState sbc;
-+    MemoryRegion secsram;
-     UnimplementedDeviceState sbc_unimplemented;
-     AspeedSDMCState sdmc;
-     AspeedWDTState wdt[ASPEED_WDTS_NUM];
-@@ -105,6 +106,7 @@ struct AspeedSoCClass {
-     const char *cpu_type;
-     uint32_t silicon_rev;
-     uint64_t sram_size;
-+    uint64_t secsram_size;
-     int spis_num;
-     int ehcis_num;
-     int wdts_num;
-@@ -143,6 +145,7 @@ enum {
-     ASPEED_DEV_SCU,
-     ASPEED_DEV_ADC,
-     ASPEED_DEV_SBC,
-+    ASPEED_DEV_SECSRAM,
-     ASPEED_DEV_EMMC_BC,
-     ASPEED_DEV_VIDEO,
-     ASPEED_DEV_SRAM,
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index a79e05ddbd..72df72a540 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -8,6 +8,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/arm/aspeed_soc.h"
+@@ -619,7 +620,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+     sc->name         = "ast2600-a3";
+     sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
+     sc->silicon_rev  = AST2600_A3_SILICON_REV;
+-    sc->sram_size    = 0x16400;
++    sc->sram_size    = 89 * KiB;
+     sc->spis_num     = 2;
+     sc->ehcis_num    = 2;
+     sc->wdts_num     = 4;
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 2c0924d311..677342c9ed 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -517,7 +517,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
+     sc->name         = "ast2400-a1";
+     sc->cpu_type     = ARM_CPU_TYPE_NAME("arm926");
+     sc->silicon_rev  = AST2400_A1_SILICON_REV;
+-    sc->sram_size    = 0x8000;
++    sc->sram_size    = 32 * KiB;
+     sc->spis_num     = 1;
+     sc->ehcis_num    = 1;
+     sc->wdts_num     = 2;
+@@ -544,7 +544,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
+     sc->name         = "ast2500-a1";
+     sc->cpu_type     = ARM_CPU_TYPE_NAME("arm1176");
+     sc->silicon_rev  = AST2500_A1_SILICON_REV;
+-    sc->sram_size    = 0x9000;
++    sc->sram_size    = 36 * KiB;
+     sc->spis_num     = 2;
+     sc->ehcis_num    = 2;
+     sc->wdts_num     = 3;
 -- 
 2.38.1
 

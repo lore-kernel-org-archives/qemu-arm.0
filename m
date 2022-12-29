@@ -1,89 +1,89 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4139672ejb;
-        Thu, 29 Dec 2022 01:29:08 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtkxrwdUGj62wST8eqZ03O3PqkZ0zpFxXAuU9fGdzsGc5DM6hz709MNTy0eIJt7Kvxwoevr
-X-Received: by 2002:a05:622a:1e08:b0:3ab:80d2:1a71 with SMTP id br8-20020a05622a1e0800b003ab80d21a71mr20885016qtb.28.1672306148562;
-        Thu, 29 Dec 2022 01:29:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672306148; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4142092ejb;
+        Thu, 29 Dec 2022 01:35:01 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXu/j/ZumIlqD0EE4OgEcNCdlqIzkN24Un8qbA6B7ia+1fTKeWM0ILZ8SJ0ss1Y5DymNyjAE
+X-Received: by 2002:a0c:fe42:0:b0:509:9799:16bb with SMTP id u2-20020a0cfe42000000b00509979916bbmr51526541qvs.27.1672306501111;
+        Thu, 29 Dec 2022 01:35:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672306501; cv=none;
         d=google.com; s=arc-20160816;
-        b=IsATh6LZ8btRV6ew7haelDkFLpvXjwylBMx8Qru7bkJYt94lCG5pU0e7mGPr79AY+q
-         HSUOxFlOIEr//fpNkcGBLEMhM1t0soEr2lbalStSL74p/J17dFM2og4Ctz+xBUMJRpab
-         BYpMlyViwzbSGnwDRZjXDmad3eXQU2wsjz8AVDeSmaSpLTUugu3Tfer9ezB7cNOmPZy6
-         Xem6kjx9a27gvfd/8k53i7HNIxIIbT7n5Ego8wqRQEtwbYeK034P6p6KDLUNEKELP0EM
-         qGfLOuYm4clpeJPC6mQRLuK7Vqo9Y2qk7wuqn9MCZcxT7Nh/f/4NMood5+OM1ZbIcLrk
-         lJpQ==
+        b=LooP05CyHnCCqs5C9Klsq1ABNR951YFowNA5BOljNUvsfJzq5KgS5rFUBNaeRYtZT9
+         /DbiWKOeydxu7Lg8l1/Wr9uiGkV0UR0FzfhWV5BdedA7PE9JL9w20hDFCthM1UFtuG9k
+         dOAg/thfqugWL5xbauQcCZ8+tV2lVvXftyUlf6WN/PoGpMGDx0EznU/DAVfEsVXdphHw
+         YqDpxyyFLwrjYUJsVsVFMqC9Q5Yn/9oLjAe0Oq3PKY3NsZeGnMJhz1YkptGCpMq/JvMN
+         /bafk1PflRzEwUDy5xqbE10njuDkinFQaibe/zKCz18akvda+kt0ohR0+OKzXKRBD9Wa
+         WnPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=b2G2HBi7RmxjXnaOAY9mntq61IebxaL6Lb+V6cYPCWk=;
-        b=byjVzDyWqiZ1AYkBeO9fsvbDJmhXxxMm0IevzxzhSFIXZQ6v1+jFNb74a50vZwYX+A
-         WJTasthU8sttKJClDDcYVLCWXYMEwteMoQd4j+pEeIUXXAYJjynMhtamlISPQ2ZSr1ae
-         zxwDdLXvjprmOo+j1DANvteWQE6G+gmmNH2UkaLFWaEKFY0l09b6fWtwDclwyWAupwT2
-         iYoXyS9lmP+3lLGyKeNqh4PTcS8ci409NEWmYc42ogjwwXaBZib7Qe3Ro6/kDVdkUYkD
-         Xl7M3oPvSIm9fV1NsnaFZ4pnvbCuhRO4yjpvnJiugTbTHIIFapH0gsKSAU7DZrQUiKOB
-         nesw==
+        bh=GcdrvCqNGjGHU9f/3dmKHzhrW9q3ylvLAkxtIJNUh5k=;
+        b=KZ3TNOul8CBurnbSrcpgPyxX3zGV5x0h6HCMunwqNwOmouXotSR17SDr7grnUHAFVl
+         /KamVtLU/pALQ9KmbjblXGWc7EPa5xquVBRvEQ8nwd0dJeriUFlSLvxirlJzzv8tcjfi
+         MeHWreAPJT/iKr5Mg0qzaAgH5QNRIdAT3QAjDe9jax31U4X7m1iPHKxoDop5gKkQd8R0
+         NxvZoW8/96EaMG1/dOav2BzpBuDPBYL/16ks1S2Rtd5Ku+rMBhzcsZGcgR033uElBRC+
+         yVe/I7LutpFIv43dMtlpHyoLnBHQhPQ9fyDkl+oYyeQQsJafHdoWFlcAJqZuJEI4kv9O
+         rTmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1i3Vo9i;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FD1UutTf;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id bx6-20020a05622a090600b003a7d4650006si8172978qtb.131.2022.12.29.01.29.08
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id c3-20020a056214224300b00530303b4083si7532344qvc.9.2022.12.29.01.35.00
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Dec 2022 01:29:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Thu, 29 Dec 2022 01:35:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1i3Vo9i;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FD1UutTf;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1672306148;
+	s=mimecast20190719; t=1672306500;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=b2G2HBi7RmxjXnaOAY9mntq61IebxaL6Lb+V6cYPCWk=;
-	b=K1i3Vo9i5iV/jhIyDuf3NdqUI8neXkPaIl+JOebG/kqdlS1bCgzKHpuy7tiw/FIlAU1wqa
-	pqgoVj9POAy1lpaXPtoV+PSx+/ltrIJ7+4p7M2wJRZrI5kTiZo0fiECrAGB2pUMiijJSP8
-	VGDOcIH4otSYAsOAnqL3wFr08YheQdQ=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=GcdrvCqNGjGHU9f/3dmKHzhrW9q3ylvLAkxtIJNUh5k=;
+	b=FD1UutTfUwx/dg4BHcjGWseevYcHzo1WmR2/IyamOQ2OvGw4eU2g/RBOQJlMQqoRdmmyNK
+	odWTG0bkNTMPYdBza0u3YB0CocIbRv5FjzfUepgB/5/nBVNp6xQacuFKv+CHnotdEf0DTt
+	0BnluI4MZ4IRoIgdhSU/Uoi6npRjh/A=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-612-tpp8AOA3OtmuESf6ZOohOw-1; Thu, 29 Dec 2022 04:29:06 -0500
-X-MC-Unique: tpp8AOA3OtmuESf6ZOohOw-1
-Received: by mail-wm1-f69.google.com with SMTP id c7-20020a1c3507000000b003d355c13ba8so9475284wma.6
-        for <alex.bennee@linaro.org>; Thu, 29 Dec 2022 01:29:06 -0800 (PST)
+ us-mta-127-j_-ya8VvOHyMx1Az6Cdjcw-1; Thu, 29 Dec 2022 04:34:59 -0500
+X-MC-Unique: j_-ya8VvOHyMx1Az6Cdjcw-1
+Received: by mail-wm1-f71.google.com with SMTP id bg10-20020a05600c3c8a00b003d9717d882eso8834297wmb.2
+        for <alex.bennee@linaro.org>; Thu, 29 Dec 2022 01:34:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=b2G2HBi7RmxjXnaOAY9mntq61IebxaL6Lb+V6cYPCWk=;
-        b=xZbNNSZGL9m/3E3l1S0Ao/H+8/RiJaSu2/T9RHA3uoUcN1uKUugrKQF3Ld8iFR3K7x
-         BbzYDHXp+rDPJhm0LiBBNJ6/EK41uJ1LK/PX4WidrlJhkEwxHZ/7AclV6joiXGA3sKAO
-         nFmFDxgE9wBkx7FmfxwZytoEjAu8rOUz6pW1KEvjnhwgZpUtx2IVICljlm9HcbCNu+LK
-         YauZCqJFN0FJOc33tKJ4LrdqjCGAHosmeLHyJlwLOaKH0a5SQGPVTN5/fXrnwdWD8I3e
-         FXDBglRdqqO2ft4d8kGpoVqhMTy2kphju+ZctqCNNGx0JYHd+U1CQj9zdbvt4k0U2y1s
-         x3Pw==
-X-Gm-Message-State: AFqh2kpl17ASpaD6Yq23bZbXI9gVolZuTEk5Hw1kJFI0J8rlAPLET08u
-	sNrXCzVUAz5oO++2HSNO/wHOqtQea5z2fJxulOS8270LkDatiCX70/Zpk42LIxSvrwLAAGgQz/0
-	0zAC9Cet3CesDqGw9
-X-Received: by 2002:a5d:46c3:0:b0:242:7676:689d with SMTP id g3-20020a5d46c3000000b002427676689dmr16793791wrs.19.1672306145925;
-        Thu, 29 Dec 2022 01:29:05 -0800 (PST)
-X-Received: by 2002:a5d:46c3:0:b0:242:7676:689d with SMTP id g3-20020a5d46c3000000b002427676689dmr16793782wrs.19.1672306145747;
-        Thu, 29 Dec 2022 01:29:05 -0800 (PST)
+        bh=GcdrvCqNGjGHU9f/3dmKHzhrW9q3ylvLAkxtIJNUh5k=;
+        b=oLHEDF7Vs4WjtUwj6/HcDVZj61uV8czLoz2Yoeow297lpM2jUFATNGlucwlz0fZ/Ua
+         ukc0uqbPcyP+Qk1GMmNYp3Ga2YojdLtRSbMcWN5A8w0HpNjv7EQW/S37TB6ZRw5+aVbJ
+         O6K89bR4GcBzCLwHqUQB5zGs4VEtQah2DSiQLW38BTQ91m/1H7LwbimcWjvNhAsQHU93
+         eCxeJhmRg6xjK/LUdb2YXUkNgOfH4jH05pGApNK4tal7eINhxPjIf+Kj3gPVENVNuU+V
+         0y3z8RdcfMmlNMM45Dn10xKPzKntnf4LCei4R3fDVJRjk7VY85V4QN9GzwmnDplrbgNY
+         uuag==
+X-Gm-Message-State: AFqh2kqvXdreR3Q2d5M4wsm/E3CYdFF0+YII/vHxPgckNp290gI3F4TS
+	ph2xR4LBxfuihQiFUSoad5EOrzGBExUnGJA2gcnt6CE7155mVzgoUtcfO3MTAxt1gcuXjwOdCI7
+	NdBT8CAZzTFglJu79
+X-Received: by 2002:a05:600c:41d1:b0:3d2:3d7b:6118 with SMTP id t17-20020a05600c41d100b003d23d7b6118mr19542859wmh.24.1672306498380;
+        Thu, 29 Dec 2022 01:34:58 -0800 (PST)
+X-Received: by 2002:a05:600c:41d1:b0:3d2:3d7b:6118 with SMTP id t17-20020a05600c41d100b003d23d7b6118mr19542844wmh.24.1672306498196;
+        Thu, 29 Dec 2022 01:34:58 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.5] (ip-109-42-113-203.web.vodafone.de. [109.42.113.203])
-        by smtp.gmail.com with ESMTPSA id f8-20020adff8c8000000b00282194eaf7bsm7531081wrq.71.2022.12.29.01.29.03
+        by smtp.gmail.com with ESMTPSA id m185-20020a1c26c2000000b003c6f1732f65sm28144375wmm.38.2022.12.29.01.34.56
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Dec 2022 01:29:04 -0800 (PST)
-Message-ID: <20f8ff01-8240-5c53-99ad-c75d37f6639c@redhat.com>
-Date: Thu, 29 Dec 2022 10:29:02 +0100
+        Thu, 29 Dec 2022 01:34:57 -0800 (PST)
+Message-ID: <27da4d93-38e6-1c40-4a60-92f3343f380f@redhat.com>
+Date: Thu, 29 Dec 2022 10:34:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
-Subject: Re: [PATCH 4/6] util/error: add G_GNUC_PRINTF for various functions
+Subject: Re: [PATCH 5/6] tests: add G_GNUC_PRINTF for various functions
 To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
 Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-ppc@nongnu.org,
@@ -100,46 +100,63 @@ Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-ppc@nongnu.org,
  Stefano Stabellini <sstabellini@kernel.org>,
  Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>
 References: <20221219130205.687815-1-berrange@redhat.com>
- <20221219130205.687815-5-berrange@redhat.com>
+ <20221219130205.687815-6-berrange@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20221219130205.687815-5-berrange@redhat.com>
+In-Reply-To: <20221219130205.687815-6-berrange@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: /8cAxp9kYEcb
+X-TUID: 6QYYN/ubJ0qh
 
 On 19/12/2022 14.02, Daniel P. Berrangé wrote:
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 > ---
->   util/error-report.c | 1 +
->   util/error.c        | 1 +
->   2 files changed, 2 insertions(+)
-> 
-> diff --git a/util/error-report.c b/util/error-report.c
-> index 5edb2e6040..6e44a55732 100644
-> --- a/util/error-report.c
-> +++ b/util/error-report.c
-> @@ -193,6 +193,7 @@ real_time_iso8601(void)
->    * a single phrase, with no newline or trailing punctuation.
->    * Prepend the current location and append a newline.
->    */
-> +G_GNUC_PRINTF(2, 0)
->   static void vreport(report_type type, const char *fmt, va_list ap)
->   {
->       gchar *timestr;
-> diff --git a/util/error.c b/util/error.c
-> index b6c89d1412..1e7af665b8 100644
-> --- a/util/error.c
-> +++ b/util/error.c
-> @@ -45,6 +45,7 @@ static void error_handle_fatal(Error **errp, Error *err)
->       }
+>   tests/qtest/ahci-test.c           |  3 +++
+>   tests/qtest/arm-cpu-features.c    |  1 +
+>   tests/qtest/erst-test.c           |  2 +-
+>   tests/qtest/ide-test.c            |  3 ++-
+>   tests/qtest/ivshmem-test.c        |  4 ++--
+>   tests/qtest/libqmp.c              |  2 +-
+>   tests/qtest/libqos/libqos-pc.h    |  6 ++++--
+>   tests/qtest/libqos/libqos-spapr.h |  6 ++++--
+>   tests/qtest/libqos/libqos.h       |  6 ++++--
+>   tests/qtest/libqos/virtio-9p.c    |  1 +
+>   tests/qtest/migration-helpers.h   |  1 +
+>   tests/qtest/rtas-test.c           |  2 +-
+>   tests/qtest/usb-hcd-uhci-test.c   |  4 ++--
+>   tests/unit/test-qmp-cmds.c        | 13 +++++++++----
+>   14 files changed, 36 insertions(+), 18 deletions(-)
+...
+> diff --git a/tests/unit/test-qmp-cmds.c b/tests/unit/test-qmp-cmds.c
+> index 2373cd64cb..6d52b4e5d8 100644
+> --- a/tests/unit/test-qmp-cmds.c
+> +++ b/tests/unit/test-qmp-cmds.c
+> @@ -138,6 +138,7 @@ void qmp___org_qemu_x_command(__org_qemu_x_EnumList *a,
 >   }
 >   
-> +G_GNUC_PRINTF(6, 0)
->   static void error_setv(Error **errp,
->                          const char *src, int line, const char *func,
->                          ErrorClass err_class, const char *fmt, va_list ap,
+>   
+> +G_GNUC_PRINTF(2, 3)
+>   static QObject *do_qmp_dispatch(bool allow_oob, const char *template, ...)
+>   {
+>       va_list ap;
+> @@ -160,6 +161,7 @@ static QObject *do_qmp_dispatch(bool allow_oob, const char *template, ...)
+>       return ret;
+>   }
+>   
+> +G_GNUC_PRINTF(3, 4)
+>   static void do_qmp_dispatch_error(bool allow_oob, ErrorClass cls,
+>                                     const char *template, ...)
+>   {
+> @@ -269,7 +271,7 @@ static void test_dispatch_cmd_io(void)
+>   
+>   static void test_dispatch_cmd_deprecated(void)
+>   {
+> -    const char *cmd = "{ 'execute': 'test-command-features1' }";
+> +    #define cmd "{ 'execute': 'test-command-features1' }"
+>       QDict *ret;
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+That looks weird, why is this required?
+
+  Thomas

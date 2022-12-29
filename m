@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4502946ejb;
-        Thu, 29 Dec 2022 12:54:23 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuJ7N3RjFmX70Ho7Wj+MvBlGEFOCJzkrsUIRVM8XW1py1T2dXyKlpVtgVXimk2gTRLicb+v
-X-Received: by 2002:a05:622a:244e:b0:3a5:17f0:e718 with SMTP id bl14-20020a05622a244e00b003a517f0e718mr38873666qtb.14.1672347263335;
-        Thu, 29 Dec 2022 12:54:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672347263; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4504019ejb;
+        Thu, 29 Dec 2022 12:56:26 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvfSloOuuUZ2pEV2CVzENFfDVPpCD9fHX3DtVhWq3o/M4zQ+I+NRxHjfMZsgzqfbBXcGnSA
+X-Received: by 2002:a05:622a:5092:b0:3a7:e9db:731 with SMTP id fp18-20020a05622a509200b003a7e9db0731mr34163300qtb.60.1672347386350;
+        Thu, 29 Dec 2022 12:56:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672347386; cv=none;
         d=google.com; s=arc-20160816;
-        b=wAGNWOKZ92HmJZ2i3wXIsSmSk23BJjFofSmMKADq/Z06Tb+wJhtwrZU/7I+Kiiv22R
-         CJd+DqxeeHekgkIfDKrZr/xVouLtUMD8KHsvyaGTOo4xAZ2pEiUR+tcpYf9AsSAPiYFV
-         Xq6djY1eIALzkm4Ql9Wos+z2hzh1yzggyCYftWKmOPfLMJ8knckZ16cnf6F4lQS/576W
-         rbn0VwuStw501CP9l0sP3EOtjrEfoxXZuYu/QGnXsFNeY/kKmpulc/JPA8Hi/Xqe0IDl
-         Map7sVr1vTI3jYDsplDtgFeYpBCZ9uojLhPRsFSmkDRqOq8KdpNMX4mAEEh1XC6zoKw7
-         Z1nA==
+        b=RKNCAWBs8c2ft9inCg1+o/YZS5LI+9sDEJrVSCDwr/NWX6g7cqGRK+gS/73WX3t/jT
+         8Ps19rZ1MjOvACothelwONUW9xNMZewkzqJqinAlUFPHDWOYwor14NFTzeJoyVIBZ4ws
+         xOFXhvWg8wS67Qn2O5CDPL3bbSCK5B1ApdyZ5cfXKZJHzpih58RCJcqNBxZHoEbgZSVq
+         MTSx72s9Bd4Hi4jaBflavsyXKbxY+7AgM8xG4Mu8toPQ2qW+7mFaFB6V/1thADY1VOqg
+         BMvZLc6PP8KWVyw203X16Ze3zcpj/7nsflOLYqeSw2hoUuXUHwxxXI64lH+sYjzEccbY
+         s9JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:feedback-id
          :dkim-signature:dkim-signature;
-        bh=E6EvTKgna5YgMRU4bsiePeAxjabvHCd7y7yJUegz5zE=;
-        b=DATcRKTzwMj+VanZLktHc8H8HUiloEwH1Zb4MovJE3xV3/NzBZVgT6Lw1UoSCr8EZj
-         kh7CAN8ArzLMI7FZUORUiloyic2g68dmltFVvIUFeTfGA8IdHVOlYN/cSPg1ZsiIcOBU
-         cLQzcLnWVG/BPy5u/sgr7moOWdm8QLkdN8tAvfQmgZkPVIjufwfJnHki1GMAUvIsZ1wK
-         XqdP9ZbA/JWAOZowAwp4I152aFNvy5FCXrUAWLnDIGiCOZAd0xlV6QOYxe3jxASEoqDu
-         FYSUZlVc5l4WiF2hzqAG1YAyRNn+WBqVL1Z8AbezFYTkArwsxZY2M+uFBX36okrZskDm
-         FLUQ==
+        bh=l0sRPdlIPICshHyYVoraM+a4KCoNN/bNwhbzJRQ5fcs=;
+        b=Nnr6ZPNDgAEk7vKwxtdUfd16K1gFZd/MqGYhjfBOUlsxAqux2YEsQE1Xg4W6rvpVv0
+         2VQOhvDD6q4Fg3lHoAQen6Qhgn+yXtKQupTBhwkuVRSWIukDi+LBRU2F1nNF1z9XF4Bl
+         NnjeR3Fzacy9vRN21pEFAPzfJYaZfsRfNM0p97txWuumLeqLS2Y9DjPtul3K3NFL5qDU
+         waWd0NJ+25XfHJHhbH9B64JlxmMw2rXzMdw0DnR5v84XI9qDlDa1l2JswQpVYU4kknci
+         Bi2X3iAluZpxuGpk71CKpb9/CyP+GPAPacuX8yAFO4ARjD8AX6wVz1O745RvWl1FR/5H
+         aBlg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm3 header.b=gF4BIWee;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=kbG+gVx+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@pjd.dev header.s=fm3 header.b=vYUraVCP;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b="wcZvH/q1";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v9-20020ac87489000000b003a7e99d036asi9115127qtq.249.2022.12.29.12.54.23
+        by mx.google.com with ESMTPS id fe14-20020a05622a4d4e00b003a4f1c2aee1si9212370qtb.142.2022.12.29.12.56.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Dec 2022 12:54:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Dec 2022 12:56:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm3 header.b=gF4BIWee;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=kbG+gVx+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@pjd.dev header.s=fm3 header.b=vYUraVCP;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b="wcZvH/q1";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pAztE-00068s-H7; Thu, 29 Dec 2022 15:52:36 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pAzvT-00078n-TK; Thu, 29 Dec 2022 15:54:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pAztB-00067e-1I; Thu, 29 Dec 2022 15:52:35 -0500
+ id 1pAzvH-000733-8m; Thu, 29 Dec 2022 15:54:44 -0500
 Received: from out5-smtp.messagingengine.com ([66.111.4.29])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pAzt8-0005vi-Py; Thu, 29 Dec 2022 15:52:32 -0500
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailout.nyi.internal (Postfix) with ESMTP id E861D5C0090;
- Thu, 29 Dec 2022 15:52:29 -0500 (EST)
+ id 1pAzvF-0007Np-Dj; Thu, 29 Dec 2022 15:54:42 -0500
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.nyi.internal (Postfix) with ESMTP id A7B9A5C0092;
+ Thu, 29 Dec 2022 15:54:40 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Thu, 29 Dec 2022 15:52:29 -0500
+ by compute5.internal (MEProxy); Thu, 29 Dec 2022 15:54:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
  :content-transfer-encoding:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm3; t=1672347149; x=
- 1672433549; bh=E6EvTKgna5YgMRU4bsiePeAxjabvHCd7y7yJUegz5zE=; b=g
- F4BIWee5FXeNeF6qiHf3AvNd7YtXj1gvJXdGr7/qUHTYr0jy30MUIRYB4DWHyuSm
- nKA9JAyxI3BGuYhBPo+YiAP5DZk5vjq/17GRX+U0ARgdBsa/A1EnKziTew6+3lfq
- rpG0J2Y02GdByfc7DHnEIc3ZLigurMKK7C0HX51LVuqdViGLqS4B8CNTh14PN6zO
- eZG4f9/Gsp1U21wvp8nHe9LZhm/hMiOZgGiulPpz2p9TGr78Bq7g7kZ3DGXqNBPN
- M68OfpTkqXPM7O4c/8ctsnjCDOVdSl+mQjKoLRdkMAkXiGhhWSejFv373+l216Ny
- eztcjAmNHVG2EfKXbGPnw==
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1672347280; x=
+ 1672433680; bh=l0sRPdlIPICshHyYVoraM+a4KCoNN/bNwhbzJRQ5fcs=; b=v
+ YUraVCPqbkILSQiwTPPzaOGF47w805SA1GVvqFzNEDzQHd/hTqXZcHFF9HJqg4eI
+ ttJJl1zTF1yBtmX5yTEkDP2ULMUBiIrViItz/dHkspwC+vNHaZ7QBfxBqeQDCY4B
+ YmWMFlmwrMtfnl/NtHNBpwkr8XuDeLCo4FFF8VMXsKddetP2Ox/8jzBh70OOAOGH
+ tdA8u2V9N0LxjhuYeVCS4FModyqdCIM8QDtwGn3A0cD0VpQW+NYNAepgjyQBEBZW
+ fpfwRrQwDKcdOdM6ughYVk8eFv+4ZPvLLXCgn7sK3/PB1S9Jdn8xDuANz8wMOQDe
+ 8ueiwpeGDR0x76TKPVUsg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1672347149; x=
- 1672433549; bh=E6EvTKgna5YgMRU4bsiePeAxjabvHCd7y7yJUegz5zE=; b=k
- bG+gVx+xow+858Rlnywc6HOPWe+G1MAPHHVS0mzJyphRDDO55eCCBxxwI+XCm2Kw
- Y60KufQJoUIZFKNKSLl30CO4SKEnnkT6vX708JevCOX0dOA7B8ZYUiEcwzqeXTlQ
- TDxHvWvmYGnFG3cDngCAWDHYXhZwEz1Wgbp3hC4z4JcrPQv0lES7Wxla3zdig7XU
- kRJU9uTQ5sY5JS+xIG91ygZZzRODJbpvSqbUMs/maCGMJFOKMBDio9Ef7AxUAwjP
- g96SQvOEWsGjXheojmgHrhc/evuroy7/pTm3JsjvEGGVBQddfin9/k8xk1RbpmJJ
- nkGZSajg3ZyJDYCdoFb9A==
-X-ME-Sender: <xms:Df6tY0FA2IcNYPrcMBmo37TmRIFYD0UO8E-0t3qqNBXCWTkCS6YK2w>
- <xme:Df6tY9XdrwKaU7Oh7cnrmZ_qLaCRIFyrbqKCo9K83DR7pCWeVKA3CGEE_GSgbS3nU
- 7EfIXjl1Mkxb8YDQLE>
-X-ME-Received: <xmr:Df6tY-Ip61M-WbSL05QX9t54gjkJ8Jqo85cpViZnP90v2oID4N5CDBZMD6kjxBUBOmuQmpHxQgyoCt_wK1ijow>
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1672347280; x=
+ 1672433680; bh=l0sRPdlIPICshHyYVoraM+a4KCoNN/bNwhbzJRQ5fcs=; b=w
+ cZvH/q1cIrPMQDNdQU9irrdGZK6mWFGm1XCKPt/gU36cR4oL2fZAWHPiAmSLfPXJ
+ GU879UsatKvcfaBLwgG04R9lrmNt5NHWqh7RXJHRg9VRDetoeeM2q9roV1VLcFUB
+ ypUXWYUQaR8Js2mEaXHMSEEzEbita9G61SXS3XqJGJf88gpGtW4GFKUyv8A2iPkh
+ X2AdU7MOPVx/Rzq58hPHdbde4ySJr5yBJcq56BRLwzPm/XScPwUHS/hRom4BtUHa
+ XWWahGq5dmrXkbnRzS/821RZUkOvDK/qK9PGdWKqAtGxj+B0r8InGNOgmMadvvos
+ PfteCVTUpzDbnZrVoh4fw==
+X-ME-Sender: <xms:kP6tY5tqnRHgQbzlY9crYGJguPGtZFMpF_3RGztkqrw_tEKkcdz5YQ>
+ <xme:kP6tYyfCp-aMRaXoEQa16Xk4KTH2Vlq-U2frJU-_uCjjDAHFNb4lbDMFpDshBy7lq
+ xrWafDrH1Wp5wsWo5s>
+X-ME-Received: <xmr:kP6tY8wMMbMLtvxSzbjJeHQi7KICgFY1wX9hxUHFHtPq1Yd-nKA2FTz3HsHAqsCO3iyeiE-JuSQo-G1Amt-tPA>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrieeggddugeefucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefrvght
  vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
- htthgvrhhnpefgueekffdtueetgfehteffledtueehgfehgeelfedujeefhfffteekvddt
- feetteenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihiivg
- eptdenucfrrghrrghmpehmrghilhhfrhhomhepphgvthgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:Df6tY2FN_d8oW6qFAAS1iPUDB7dS0RKHFAD3uoTZRVs1yfG82FcCww>
- <xmx:Df6tY6XcDqIIA_uWdWDVrjjMcLl3j329TqR90yVRiMNBt3CKNDrGMQ>
- <xmx:Df6tY5PMkll-WhHGWsr0A3IEJik8FV7k670zfThLEiT3vLN4DOSJdg>
- <xmx:Df6tYzXg32CoLwDfm_kvd86KCGd5ZuFC41ekSsKyqe0l7OoFAkml3A>
+ htthgvrhhnpefhgeffvedufeevteegkeetieejhffhudeujedvgedvheffheejveethffh
+ ffefueenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hpvghtvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:kP6tYwMnVVYXOzFetxBxkY5rL4Cdp8Cgo0df-OBGpzWRXbcmSgkYqg>
+ <xmx:kP6tY58SVhBveNWCLDAfv4L-SX0yUGdayzFeimozwNSu3qJgzZPp2g>
+ <xmx:kP6tYwVk29YFNw-ftfS369pZdODgdnkzZTYVpgUDTKp_7rJSr8EgCQ>
+ <xmx:kP6tY3dmgBVyNrwf_4Mq9-WsjAXdR0L813w9gT81kR1KBVUSYmIt5g>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 29 Dec 2022 15:52:27 -0500 (EST)
-Date: Thu, 29 Dec 2022 12:52:26 -0800
+ 29 Dec 2022 15:54:38 -0500 (EST)
+Date: Thu, 29 Dec 2022 12:54:36 -0800
 From: Peter Delevoryas <peter@pjd.dev>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
@@ -111,15 +111,16 @@ Cc: qemu-devel@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
  Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
  =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
  Peter Delevoryas <pdel@fb.com>, Jamin Lin <jamin_lin@aspeedtech.com>
-Subject: Re: [PATCH 6/9] hw/arm/aspeed_ast10x0: Map HACE peripheral
-Message-ID: <Y63+CpM1zG9lNEPX@pdel-mbp.dhcp.thefacebook.com>
+Subject: Re: [PATCH 7/9] hw/misc/aspeed_hace: Do not crash if
+ address_space_map() failed
+Message-ID: <Y63+jFP3oNOfR7Px@pdel-mbp.dhcp.thefacebook.com>
 References: <20221229152325.32041-1-philmd@linaro.org>
- <20221229152325.32041-7-philmd@linaro.org>
+ <20221229152325.32041-8-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221229152325.32041-7-philmd@linaro.org>
+In-Reply-To: <20221229152325.32041-8-philmd@linaro.org>
 Received-SPF: pass client-ip=66.111.4.29; envelope-from=peter@pjd.dev;
  helo=out5-smtp.messagingengine.com
 X-Spam_score_int: -27
@@ -130,137 +131,116 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MZL/olcnf+KI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vYpW9FtN7yPC
 
-On Thu, Dec 29, 2022 at 04:23:22PM +0100, Philippe Mathieu-Daudé wrote:
-> Since I don't have access to the datasheet, the relevant
-> values were found in:
-> https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/dts/arm/aspeed/ast10x0.dtsi
+On Thu, Dec 29, 2022 at 04:23:23PM +0100, Philippe Mathieu-Daudé wrote:
+> address_space_map() can fail:
 > 
-> Before on Zephyr:
+>   uart:~$ hash test
+>   sha256_test
+>   tv[0]:
+>   Segmentation fault: 11
+>   Thread 3 "qemu-system-arm" received signal SIGSEGV, Segmentation fault.
+>   gen_acc_mode_iov (req_len=0x7ffff18b7778, id=<optimized out>, iov=0x7ffff18b7780, s=0x555556ce0bd0)
+>       at ../hw/misc/aspeed_hace.c:171
+>   171         if (has_padding(s, &iov[id], *req_len, &total_msg_len, &pad_offset)) {
+>   (gdb) bt
+>   #0  gen_acc_mode_iov (req_len=0x7ffff18b7778, id=<optimized out>, iov=0x7ffff18b7780, s=0x555556ce0bd0)
+>       at ../hw/misc/aspeed_hace.c:171
+>   #1  do_hash_operation (s=s@entry=0x555556ce0bd0, algo=3, sg_mode=sg_mode@entry=true, acc_mode=acc_mode@entry=true)
+>       at ../hw/misc/aspeed_hace.c:224
+>   #2  0x00005555559bdbb8 in aspeed_hace_write (opaque=<optimized out>, addr=12, data=262488, size=<optimized out>)
+>       at ../hw/misc/aspeed_hace.c:358
 > 
->   uart:~$ crypto aes256_cbc_vault
->   aes256_cbc vault key 1
->   [00:00:06.699,000] <inf> hace_global: aspeed_crypto_session_setup
->   [00:00:06.699,000] <inf> hace_global: data->cmd: 1c2098
->   [00:00:06.699,000] <inf> hace_global: crypto_data_src: 93340
->   [00:00:06.699,000] <inf> hace_global: crypto_data_dst: 93348
->   [00:00:06.699,000] <inf> hace_global: crypto_ctx_base: 93300
->   [00:00:06.699,000] <inf> hace_global: crypto_data_len: 80000040
->   [00:00:06.699,000] <inf> hace_global: crypto_cmd_reg:  11c2098
->   [00:00:09.743,000] <inf> hace_global: HACE_STS: 0
->   [00:00:09.743,000] <err> hace_global: HACE poll timeout
->   [00:00:09.743,000] <err> crypto: CBC mode ENCRYPT - Failed
->   [00:00:09.743,000] <inf> hace_global: aspeed_crypto_session_free
->   uart:~$
+> This change doesn't fix much, but at least the guest
+> can't crash QEMU anymore. Instead it is still usable:
 > 
-> After:
-> 
->   uart:~$ crypto aes256_cbc_vault
->   aes256_cbc vault key 1
->   Was waiting for:
->   6b c1 be e2 2e 40 9f 96 e9 3d 7e 11 73 93 17 2a
->   ae 2d 8a 57 1e 03 ac 9c 9e b7 6f ac 45 af 8e 51
->   30 c8 1c 46 a3 5c e4 11 e5 fb c1 19 1a 0a 52 ef
->   f6 9f 24 45 df 4f 9b 17 ad 2b 41 7b e6 6c 37 10
-> 
->    But got:
->   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-> 
->   [00:00:05.771,000] <inf> hace_global: aspeed_crypto_session_setup
->   [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2098
->   [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
->   [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
->   [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
->   [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
->   [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2098
->   [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
->   [00:00:05.772,000] <inf> crypto: Output length (encryption): 80
->   [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_free
->   [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_setup
->   [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2018
->   [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
->   [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
->   [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
->   [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
->   [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2018
->   [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
->   [00:00:05.772,000] <inf> crypto: Output length (decryption): 64
->   [00:00:05.772,000] <err> crypto: CBC mode DECRYPT - Mismatch between plaintext and decrypted cipher text
->   [00:00:05.774,000] <inf> hace_global: aspeed_crypto_session_free
+>   uart:~$ hash test
+>   sha256_test
+>   tv[0]:hash_final error
+>   sha384_test
+>   tv[0]:hash_final error
+>   sha512_test
+>   tv[0]:hash_final error
+>   [00:00:06.278,000] <err> hace_global: HACE poll timeout
+>   [00:00:09.324,000] <err> hace_global: HACE poll timeout
+>   [00:00:12.261,000] <err> hace_global: HACE poll timeout
 >   uart:~$
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Awesome!
+Good catch,
 
 Reviewed-by: Peter Delevoryas <peter@pjd.dev>
 
-> ---
-> Should we rename HACE 'dram' as 'secram' / 'secure-ram'?
+Maybe include this tag?
 
-Sure, sounds good to me.
+Fixes: c5475b3f9a ("hw: Model ASPEED's Hash and Crypto Engine")
 
 > ---
->  hw/arm/aspeed_ast10x0.c | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
+>  hw/misc/aspeed_hace.c | 21 +++++++++++++++------
+>  1 file changed, 15 insertions(+), 6 deletions(-)
 > 
-> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> index 21a2e62345..02636705b6 100644
-> --- a/hw/arm/aspeed_ast10x0.c
-> +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -29,6 +29,7 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
->      [ASPEED_DEV_SPI1]      = 0x7E630000,
->      [ASPEED_DEV_SPI2]      = 0x7E640000,
->      [ASPEED_DEV_UDC]       = 0x7E6A2000,
-> +    [ASPEED_DEV_HACE]      = 0x7E6D0000,
->      [ASPEED_DEV_SCU]       = 0x7E6E2000,
->      [ASPEED_DEV_JTAG0]     = 0x7E6E4000,
->      [ASPEED_DEV_JTAG1]     = 0x7E6E4100,
-> @@ -166,6 +167,9 @@ static void aspeed_soc_ast1030_init(Object *obj)
->      snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
->      object_initialize_child(obj, "gpio", &s->gpio, typename);
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index ac21be306c..12a761f1f5 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -193,6 +193,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>      size_t digest_len = 0;
+>      int niov = 0;
+>      int i;
+> +    void *haddr;
 >  
-> +    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-> +    object_initialize_child(obj, "hace", &s->hace, typename);
-> +
->      object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
->      object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemented,
->                              TYPE_UNIMPLEMENTED_DEVICE);
-> @@ -359,6 +363,17 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->      }
->      aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
+>      if (sg_mode) {
+>          uint32_t len = 0;
+> @@ -217,9 +218,13 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>              addr &= SG_LIST_ADDR_MASK;
 >  
-> +    /* HACE */
-> +    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(&s->secsram),
-> +                             &error_abort);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->hace), 0,
-> +                    sc->memmap[ASPEED_DEV_HACE]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-> +                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
-> +
->      /* Watch dog */
->      for (i = 0; i < sc->wdts_num; i++) {
->          AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
+>              plen = len & SG_LIST_LEN_MASK;
+> -            iov[i].iov_base = address_space_map(&s->dram_as, addr, &plen, false,
+> -                                                MEMTXATTRS_UNSPECIFIED);
+> -
+> +            haddr = address_space_map(&s->dram_as, addr, &plen, false,
+> +                                      MEMTXATTRS_UNSPECIFIED);
+> +            if (haddr == NULL) {
+> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
+> +                return;
+> +            }
+> +            iov[i].iov_base = haddr;
+>              if (acc_mode) {
+>                  niov = gen_acc_mode_iov(s, iov, i, &plen);
+>  
+> @@ -230,10 +235,14 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>      } else {
+>          hwaddr len = s->regs[R_HASH_SRC_LEN];
+>  
+> +        haddr = address_space_map(&s->dram_as, s->regs[R_HASH_SRC],
+> +                                  &len, false, MEMTXATTRS_UNSPECIFIED);
+> +        if (haddr == NULL) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
+> +            return;
+> +        }
+> +        iov[0].iov_base = haddr;
+>          iov[0].iov_len = len;
+> -        iov[0].iov_base = address_space_map(&s->dram_as, s->regs[R_HASH_SRC],
+> -                                            &len, false,
+> -                                            MEMTXATTRS_UNSPECIFIED);
+>          i = 1;
+>  
+>          if (s->iov_count) {
 > -- 
 > 2.38.1
 > 

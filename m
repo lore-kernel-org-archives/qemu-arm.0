@@ -1,89 +1,91 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4839129ejb;
-        Fri, 30 Dec 2022 03:35:56 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv4/g9KVCpQfctHRaMLeV9AH0sg2ulKZwvqujRctX83xgwzvrmPQLhQP10ADGtz7kWB5Kmg
-X-Received: by 2002:ad4:5503:0:b0:531:8d5d:5005 with SMTP id pz3-20020ad45503000000b005318d5d5005mr18459933qvb.24.1672400156385;
-        Fri, 30 Dec 2022 03:35:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672400156; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4839202ejb;
+        Fri, 30 Dec 2022 03:36:05 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuEzGDiAw89s2iHrDw6lVFqNPM96xiHCp3G07vlSOvtsQ03lUC5OSxDARC0Fc/85xpzlO9n
+X-Received: by 2002:a05:6214:842:b0:520:e57b:191d with SMTP id dg2-20020a056214084200b00520e57b191dmr40041040qvb.15.1672400165519;
+        Fri, 30 Dec 2022 03:36:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672400165; cv=none;
         d=google.com; s=arc-20160816;
-        b=tQ6n62pwqhOKX4iqTI71nCCI1F8/G+C/agILQR6eytAVGHSVEgkm+R5+9ePgMOWwwG
-         svTw99xUuyLx+IdzIHEOxGhIccAkBcaF3DW7BNyeo7h70yz6nqdUwILT5k+a3XeBJIQb
-         E8Qh924tGnX2X5H8pSSeJKJYLQRICi4teXSLTlPMnBr+D/hEKIVNL/2UEl7ZXirnWcAl
-         KzjHx9nKJmX64EjwpL+RfUiV/u+UeGQzA7gL1LtTV2ov013bKFMxBSdyZiSNoujrpx2R
-         B1I4qDjtvzxBPQ+t8qmw3n32FoxsYStCgtoo5wFpxZh+sDv/nyYtdqAUIXdkfnTA8sr6
-         ev8w==
+        b=zx4Q7gL6hScfPc/J7yOhUyIP3tVm1ka41woY72idG90AicF5gevKKe6NvzZTaMxw/L
+         v+rJpx2Cn708+ABgQj/XcM4OYmaBth8WKJC6jnp7bmkfizdSEGBcBQf651/ZjOEsvXhS
+         KE0Rah2frkT47ZFrfC7Qe+sPVTjJIE0O74dGWoqMQYJw1gAB4CRQ5PWDMQWWZcOF9bsE
+         vZACdkG25R6PzpF5DNJ8ZS0Uf2arqO47oXjljrhmHXFNpyWhC646nrYg5xLhdoARHTps
+         V4hl27u/i9PInG+vLCt03MBhXA3eWpx7fQCPNrcjEON0tGUXO62Poj0sf4LErcEUuXPu
+         s4MA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=NA/uioDCXzu43BeOx2mahIgOlYK6aPYVtQ1C36Sxbew=;
-        b=FQDANYSz0EgNYC3xEhLz0XaS85xaSFDUEi0rr38EVKB2aJH7KXNSaKQYYCfMeLikRv
-         kJZnIKOfAKWmxhxJ+GD2dtISLxKFO0mDQv3oOEuTiZJ94HzaSfVmqtzcSWYknscqVBxN
-         Z59inboGMuj/KMMRCG8lMAAv44KKtqDNaKQRFqIqD5DxUW0VAhY5YWfeEfhr5QbNB+T1
-         6fRTuecT3Ct/iI71cyrOoPRx/zuuOC+sm1oknTb7s2liKwKMnqQCS4h7FQB7i+q55OgY
-         uORaPXUh15/V2rh/jsfMlBMIr5NKU4adww8dZMfAyrTygJF+vvECOvna0Eu0XhtY32b4
-         k9RA==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Plah9DX/B8cMIAreIJs9xue2YE22a54QEeEtYXjwY1s=;
+        b=ocU8pKMPEK7Omr2UnGg653qGQEDaM2lhSDDHUspjwijwZ/aCaNyAd6Viue9VDOpzoT
+         hq7Fr6w11HlK6+LKiicpis5MTdcYojPFx4u+ldLwWj95Tqxcj+l6gtOX4zlu2h8oqFuh
+         0MtSu31WhBYMMVKO7BOHdr+kiwuR/7qGOaW3MMjmk5pBqvUjpv+pikaR0R7dAG8h8YXt
+         uXpKx73DGAI4wWi7Sxjax2XANWDixgKlN7QJBQfdlkEZO/ro79rZwTLVRt6Bv3QnpG97
+         24f6lYWECZW7C/c/9KLZV8Un53KJk1J8rEDBHSKrV2TVZ8iavdJB2TNvUHTb/1NxkWoi
+         becg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O5kAA7pj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HY9kUyV1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c23-20020a05620a0cf700b007025aa916afsi9243252qkj.704.2022.12.30.03.35.56
+        by mx.google.com with ESMTPS id bm33-20020a05620a19a100b006fbcb691aabsi10286952qkb.425.2022.12.30.03.36.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Dec 2022 03:35:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Dec 2022 03:36:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O5kAA7pj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HY9kUyV1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pBDfN-0006DU-44; Fri, 30 Dec 2022 06:35:13 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pBDfu-0006Sa-6l; Fri, 30 Dec 2022 06:35:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBDfL-0006BQ-Hd
- for qemu-devel@nongnu.org; Fri, 30 Dec 2022 06:35:11 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBDfs-0006S5-0h
+ for qemu-arm@nongnu.org; Fri, 30 Dec 2022 06:35:44 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBDfJ-0003p5-Od
- for qemu-devel@nongnu.org; Fri, 30 Dec 2022 06:35:11 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- m26-20020a05600c3b1a00b003d9811fcaafso8482706wms.5
- for <qemu-devel@nongnu.org>; Fri, 30 Dec 2022 03:35:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBDfp-0003t5-M9
+ for qemu-arm@nongnu.org; Fri, 30 Dec 2022 06:35:43 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ i17-20020a05600c355100b003d99434b1cfso4818670wmq.1
+ for <qemu-arm@nongnu.org>; Fri, 30 Dec 2022 03:35:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=NA/uioDCXzu43BeOx2mahIgOlYK6aPYVtQ1C36Sxbew=;
- b=O5kAA7pjg2hunz7nv1eGONF5Jv0Pc3xZuvQI71yGgmQ0g82+hg/RQyGZ9xzej2GYRY
- YkkFKcD4+BVNWiSmF0XCaTL+ofhInxlt73pzDBRmYLLZacewL92865m0L/Lcqul5nxK2
- gKYHdsPNXfZlaosPbKQj+mtqEoeuy3DviFLpTcg6pi2CeVT2v6/RFVJxgNWXd8HDCuuT
- PN08ihN/zS21FXlAM3A2643s4nqZA5QBfMj4sj2B0h7n5857dDTXyo0ohFc7LTgQHbXr
- ZC1HUbOfyrag+H2QN2ksF0fLDSKdRlyNSd+/NPCdRh5C25rvj3olm1J8q9FbgdUTifoa
- gpzg==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Plah9DX/B8cMIAreIJs9xue2YE22a54QEeEtYXjwY1s=;
+ b=HY9kUyV1pQ9F9J3Uv7zWdXf6mRyiWSjyvT3VCUueQZ7Ne24g2rPBX+DUSY+NE7IZhX
+ cssekRoG1M+sllF4CEO5XLE6ruvzthR2ejzkZ0Aq/OnpfFIi4vjZTIKoW8jDdhjaE4H0
+ 9xugYNXbqdP4BQ2iggAzF9F+3ISLiyPWfeBIioNaDjfMu4/OFc8QhrZWvXSCvGnxuj3J
+ I1SBMKFO3pWMWQ3U/4tfIWZY9PPXaZAz4jriiUfPFFfr3yXuJUzwVw4N35G1u5CYBCP8
+ F2KvFsN2eN30zD/rwMHFrWMitcFGv2UutJIq6EcKRv1aCOcuH7yNp5n3hukihoklpTGk
+ pTIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=NA/uioDCXzu43BeOx2mahIgOlYK6aPYVtQ1C36Sxbew=;
- b=2g8gA4wzUsq11cAICrOVrPYGQYiv0kryL7o6tU+Fh1ys5RPH8bb5u1+Lt/NgSD9bcl
- 1mEZi3+qKmh9ynk92pw0+HClYJysFD2n8XSguSD3EjW3L4+8txsH7o83Jqt+tZLL4Q3R
- CqQH5YnFCT6oQqT8vPQSBbOQmefAQyD+jub1VbzAXjOQawQ5B5T91e/nrzjLIDHsPK++
- YyBaB+blP6DZU0PYVMxr/6BJO2BcWg5YxbqyGdTUJg1EBkcFI/kwm+oWxcxKQQZhR0sA
- gSdOHTqhw7UlAOPzJ7+is6Fm/5DyWKdC3ZxSnHI9zStDTzklOe0Zx2hRyKYA7uQ0+RmD
- okMg==
-X-Gm-Message-State: AFqh2kqrRF5IQIZP88JSsn358un3McoBellGfnEzQQzDinJ1N2l2X2Wa
- ZwzbqLwYxZllqS6yfLlknr5WH+r7fuAIE75r
-X-Received: by 2002:a05:600c:4fcf:b0:3d1:d396:1ade with SMTP id
- o15-20020a05600c4fcf00b003d1d3961ademr22305552wmq.9.1672400107810; 
- Fri, 30 Dec 2022 03:35:07 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Plah9DX/B8cMIAreIJs9xue2YE22a54QEeEtYXjwY1s=;
+ b=nGGh3rruCyTBMnkZ+Oyd5T1HfiqoDtYFYnw25jiGMDvPbMF1MwuejZfB/K9BcVLrgx
+ YlrTy5gJAQbCY+z7t/J0T65/ldXAfEIr6NQUuk1jWz4cdsra4IkIBowSsO/82QnCCvXl
+ +Txo4GTGosjhPZ8X8zV9ucK9saQpbaEWGaJwYuyAjxzv1E0sBYaMisdgP3mF++3lcgPn
+ kPD6aVX7qq+os5Nf3pLYC/5vxl0qFb57B5hPzqbk40hYOzpPErxlMnPlX74mWFhk+kPq
+ 9+nt4q/IUH5pZ9Aj8Rb1WdBRCi7EgQ7XGrD81XT8Wpcsq3THnYcLkizFEShk95C+OzB8
+ 41PQ==
+X-Gm-Message-State: AFqh2kppXwa0FvBEs/lsAbMgoBze2EwjZ9i49v6NogxAQcmG96mD3m56
+ kr40jPH8tYYPsXhnuLQ931KynA==
+X-Received: by 2002:a7b:c7ca:0:b0:3d3:4cbf:3a51 with SMTP id
+ z10-20020a7bc7ca000000b003d34cbf3a51mr22154088wmk.14.1672400139802; 
+ Fri, 30 Dec 2022 03:35:39 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- k1-20020a5d5181000000b0024207478de3sm20190488wrv.93.2022.12.30.03.35.05
+ m1-20020a7bca41000000b003d1de805de5sm27350750wml.16.2022.12.30.03.35.38
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 30 Dec 2022 03:35:07 -0800 (PST)
+ Fri, 30 Dec 2022 03:35:39 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Joel Stanley <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>,
@@ -97,16 +99,18 @@ Cc: Joel Stanley <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>,
  Peter Delevoryas <pdel@meta.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Cleber Rosa <crosa@redhat.com>
-Subject: [PATCH v2 00/11] hw/arm/aspeed_ast10x0: Map more peripherals & few
- more fixes
-Date: Fri, 30 Dec 2022 12:34:53 +0100
-Message-Id: <20221230113504.37032-1-philmd@linaro.org>
+Subject: [PATCH v2 06/11] hw/arm/aspeed_ast10x0: Add various unimplemented
+ peripherals
+Date: Fri, 30 Dec 2022 12:34:59 +0100
+Message-Id: <20221230113504.37032-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221230113504.37032-1-philmd@linaro.org>
+References: <20221230113504.37032-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,113 +119,147 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EfW5F55phQ0A
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KtmG2b0diLFA
 
-Missing review: #3
+Based on booting Zephyr demo from [1] running QEMU with
+'-d unimp' and checking missing devices in [2].
 
-Since v1:
-- Fixed typo (Peter)
-- Link HACE with sram insted of secsram
-- Split patch #2 in 2, reworded it
-- Cover more WDT registers (new patch)
+[1] https://github.com/AspeedTech-BMC/zephyr/releases/tag/v00.01.07
+[2] https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/dts/arm/aspeed/ast10x0.dtsi
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Delevoryas <peter@pjd.dev>
 ---
+ hw/arm/aspeed_ast10x0.c     | 35 +++++++++++++++++++++++++++++++++++
+ include/hw/arm/aspeed_soc.h | 11 +++++++++++
+ 2 files changed, 46 insertions(+)
 
-Trying to fix some bugs triggered running Zephyr.
-
-Still 2 bugs:
-
-1/
-uart:~$ sensor get SYSCLK
-[00:00:23.592,000] <err> os: ***** USAGE FAULT *****
-[00:00:23.593,000] <err> os:   Illegal use of the EPSR
-[00:00:23.593,000] <err> os: r0/a1:  0x00033448  r1/a2:  0x00000000  r2/a3:  0x00047f50
-[00:00:23.593,000] <err> os: r3/a4:  0x00000000 r12/ip:  0x00000000 r14/lr:  0x00000fbd
-[00:00:23.593,000] <err> os:  xpsr:  0x60000000
-[00:00:23.593,000] <err> os: Faulting instruction address (r15/pc): 0x00000000
-[00:00:23.593,000] <err> os: >>> ZEPHYR FATAL ERROR 0: CPU exception on CPU 0
-[00:00:23.594,000] <err> os: Current thread: 0x38248 (shell_uart)
-[00:00:23.601,000] <err> os: Halting system
-
-2/
-uart:~$ mcuboot
-[00:01:04.990,000] <err> os: ***** BUS FAULT *****
-[00:01:04.990,000] <err> os:   Instruction bus error
-[00:01:04.991,000] <err> os: r0/a1:  0x00000000  r1/a2:  0x000ffff0  r2/a3:  0x00047ef0
-[00:01:04.991,000] <err> os: r3/a4:  0x00000010 r12/ip:  0x6df7ecb5 r14/lr:  0x000188ed
-[00:01:04.991,000] <err> os:  xpsr:  0x61000000
-[00:01:04.991,000] <err> os: Faulting instruction address (r15/pc): 0x6df7ecb4
-[00:01:04.991,000] <err> os: >>> ZEPHYR FATAL ERROR 0: CPU exception on CPU 0
-[00:01:04.991,000] <err> os: Current thread: 0x38248 (shell_uart)
-[00:01:04.994,000] <err> os: Halting system
-
-----------------
-IN:
-PMSA MPU lookup for reading at 0x0001d400 mmu_idx 65 -> Hit (prot rwx)
-0x0001d5a2:  6869       ldr      r1, [r5, #4]
-0x0001d5a4:  4421       add      r1, r4
-0x0001d5a6:  6883       ldr      r3, [r0, #8]
-0x0001d5a8:  681c       ldr      r4, [r3]
-0x0001d5aa:  463a       mov      r2, r7
-0x0001d5ac:  4633       mov      r3, r6
-0x0001d5ae:  46a4       mov      ip, r4
-0x0001d5b0:  e8bd 41f0  pop.w    {r4, r5, r6, r7, r8, lr}
-0x0001d5b4:  4760       bx       ip
-
-PMSA MPU lookup for reading at 0x00000008 mmu_idx 65 -> Hit (prot rwx)
-PMSA MPU lookup for execute at 0x6df7ecb4 mmu_idx 65 -> Hit (prot rwx)
-Taking exception 3 [Prefetch Abort] on CPU 0
-...at fault address 0x6df7ecb4
-...with CFSR.IBUSERR
-PMSA MPU lookup for writing at 0x00047ec8 mmu_idx 65 -> Hit (prot rwx)
-PMSA MPU lookup for writing at 0x00047ecc mmu_idx 65 -> Hit (prot rwx)
-PMSA MPU lookup for writing at 0x00047ed0 mmu_idx 65 -> Hit (prot rwx)
-PMSA MPU lookup for writing at 0x00047ed4 mmu_idx 65 -> Hit (prot rwx)
-PMSA MPU lookup for writing at 0x00047ed8 mmu_idx 65 -> Hit (prot rwx)
-PMSA MPU lookup for writing at 0x00047edc mmu_idx 65 -> Hit (prot rwx)
-PMSA MPU lookup for writing at 0x00047ee0 mmu_idx 65 -> Hit (prot rwx)
-PMSA MPU lookup for writing at 0x00047ee4 mmu_idx 65 -> Hit (prot rwx)
-...taking pending nonsecure exception 5
-...loading from element 5 of non-secure vector table at 0x14
-...loaded new PC 0xa0cd
-----------------
-
-Philippe Mathieu-Daudé (11):
-  hw/watchdog/wdt_aspeed: Rename MMIO region size as 'iosize'
-  hw/watchdog/wdt_aspeed: Extend MMIO range to cover more registers
-  hw/watchdog/wdt_aspeed: Log unimplemented registers as UNIMP level
-  hw/arm/aspeed: Use the IEC binary prefix definitions
-  hw/misc/aspeed_hace: Do not crash if address_space_map() failed
-  hw/arm/aspeed_ast10x0: Add various unimplemented peripherals
-  hw/arm/aspeed_ast10x0: Map I3C peripheral
-  hw/arm/aspeed_ast10x0: Map the secure SRAM
-  hw/arm/aspeed_ast10x0: Map HACE peripheral
-  hw/arm/aspeed_ast10x0: Add TODO comment to use Cortex-M4F
-  tests/avocado: Test Aspeed Zephyr SDK v00.01.08 on AST1030 board
-
- hw/arm/aspeed_ast10x0.c          | 84 ++++++++++++++++++++++++++++++--
- hw/arm/aspeed_ast2600.c          |  5 +-
- hw/arm/aspeed_soc.c              |  6 +--
- hw/misc/aspeed_hace.c            | 21 +++++---
- hw/watchdog/wdt_aspeed.c         | 24 +++++++--
- include/hw/arm/aspeed_soc.h      | 14 ++++++
- include/hw/watchdog/wdt_aspeed.h |  4 +-
- tests/avocado/machine_aspeed.py  | 41 +++++++++++++++-
- 8 files changed, 176 insertions(+), 23 deletions(-)
-
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 3500294df7..d7dbc1a801 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -28,10 +28,15 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
+     [ASPEED_DEV_FMC]       = 0x7E620000,
+     [ASPEED_DEV_SPI1]      = 0x7E630000,
+     [ASPEED_DEV_SPI2]      = 0x7E640000,
++    [ASPEED_DEV_UDC]       = 0x7E6A2000,
+     [ASPEED_DEV_SCU]       = 0x7E6E2000,
++    [ASPEED_DEV_JTAG0]     = 0x7E6E4000,
++    [ASPEED_DEV_JTAG1]     = 0x7E6E4100,
+     [ASPEED_DEV_ADC]       = 0x7E6E9000,
++    [ASPEED_DEV_ESPI]      = 0x7E6EE000,
+     [ASPEED_DEV_SBC]       = 0x7E6F2000,
+     [ASPEED_DEV_GPIO]      = 0x7E780000,
++    [ASPEED_DEV_SGPIOM]    = 0x7E780500,
+     [ASPEED_DEV_TIMER1]    = 0x7E782000,
+     [ASPEED_DEV_UART1]     = 0x7E783000,
+     [ASPEED_DEV_UART2]     = 0x7E78D000,
+@@ -79,12 +84,17 @@ static const int aspeed_soc_ast1030_irqmap[] = {
+     [ASPEED_DEV_LPC]       = 35,
+     [ASPEED_DEV_PECI]      = 38,
+     [ASPEED_DEV_FMC]       = 39,
++    [ASPEED_DEV_ESPI]      = 42,
+     [ASPEED_DEV_PWM]       = 44,
+     [ASPEED_DEV_ADC]       = 46,
+     [ASPEED_DEV_SPI1]      = 65,
+     [ASPEED_DEV_SPI2]      = 66,
+     [ASPEED_DEV_I2C]       = 110, /* 110 ~ 123 */
+     [ASPEED_DEV_KCS]       = 138, /* 138 -> 142 */
++    [ASPEED_DEV_UDC]       = 9,
++    [ASPEED_DEV_SGPIOM]    = 51,
++    [ASPEED_DEV_JTAG0]     = 27,
++    [ASPEED_DEV_JTAG1]     = 53,
+ };
+ 
+ static qemu_irq aspeed_soc_ast1030_get_irq(AspeedSoCState *s, int dev)
+@@ -155,6 +165,15 @@ static void aspeed_soc_ast1030_init(Object *obj)
+     object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemented,
+                             TYPE_UNIMPLEMENTED_DEVICE);
++    object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
++    object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
++    object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE);
++    object_initialize_child(obj, "sgpiom", &s->sgpiom,
++                            TYPE_UNIMPLEMENTED_DEVICE);
++    object_initialize_child(obj, "jtag[0]", &s->jtag[0],
++                            TYPE_UNIMPLEMENTED_DEVICE);
++    object_initialize_child(obj, "jtag[1]", &s->jtag[1],
++                            TYPE_UNIMPLEMENTED_DEVICE);
+ }
+ 
+ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+@@ -337,6 +356,22 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+                     sc->memmap[ASPEED_DEV_GPIO]);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
++
++    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->pwm), "aspeed.pwm",
++                                  sc->memmap[ASPEED_DEV_PWM], 0x100);
++
++    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->espi), "aspeed.espi",
++                                  sc->memmap[ASPEED_DEV_ESPI], 0x800);
++
++    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->udc), "aspeed.udc",
++                                  sc->memmap[ASPEED_DEV_UDC], 0x1000);
++    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->sgpiom), "aspeed.sgpiom",
++                                  sc->memmap[ASPEED_DEV_SGPIOM], 0x100);
++
++    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->jtag[0]), "aspeed.jtag",
++                                  sc->memmap[ASPEED_DEV_JTAG0], 0x20);
++    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->jtag[1]), "aspeed.jtag",
++                                  sc->memmap[ASPEED_DEV_JTAG1], 0x20);
+ }
+ 
+ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 8389200b2d..9a5e3c0bac 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -44,6 +44,7 @@
+ #define ASPEED_CPUS_NUM  2
+ #define ASPEED_MACS_NUM  4
+ #define ASPEED_UARTS_NUM 13
++#define ASPEED_JTAG_NUM  2
+ 
+ struct AspeedSoCState {
+     /*< private >*/
+@@ -87,6 +88,11 @@ struct AspeedSoCState {
+     UnimplementedDeviceState video;
+     UnimplementedDeviceState emmc_boot_controller;
+     UnimplementedDeviceState dpmcu;
++    UnimplementedDeviceState pwm;
++    UnimplementedDeviceState espi;
++    UnimplementedDeviceState udc;
++    UnimplementedDeviceState sgpiom;
++    UnimplementedDeviceState jtag[ASPEED_JTAG_NUM];
+ };
+ 
+ #define TYPE_ASPEED_SOC "aspeed-soc"
+@@ -174,6 +180,11 @@ enum {
+     ASPEED_DEV_DPMCU,
+     ASPEED_DEV_DP,
+     ASPEED_DEV_I3C,
++    ASPEED_DEV_ESPI,
++    ASPEED_DEV_UDC,
++    ASPEED_DEV_SGPIOM,
++    ASPEED_DEV_JTAG0,
++    ASPEED_DEV_JTAG1,
+ };
+ 
+ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
 -- 
 2.38.1
 

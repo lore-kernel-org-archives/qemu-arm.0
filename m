@@ -1,96 +1,96 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4744759ejb;
-        Thu, 29 Dec 2022 23:33:04 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuVx0i9k4bRIxoM5ULNyW1nIro32T5TYPAnDGjHeKffO/Po3D1N2CN3Svu/YTEEBu1dFc/7
-X-Received: by 2002:ad4:4d86:0:b0:4c7:59b5:d950 with SMTP id cv6-20020ad44d86000000b004c759b5d950mr44616439qvb.2.1672385584053;
-        Thu, 29 Dec 2022 23:33:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672385584; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4758337ejb;
+        Fri, 30 Dec 2022 00:14:12 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuDXrP6acoG4oqC2XmsdaFwU2yVpBk+ce1n4ckOW8JP4dybblMrLku1KWpBjsqqalMyuN/D
+X-Received: by 2002:a05:622a:30d:b0:3a7:ed2f:adfd with SMTP id q13-20020a05622a030d00b003a7ed2fadfdmr58065317qtw.8.1672388052320;
+        Fri, 30 Dec 2022 00:14:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672388052; cv=none;
         d=google.com; s=arc-20160816;
-        b=aKqHdWMImNmXoQVepoRBqW7liphxKvsvDvutuaikLkPp6BjERn06hj8izltwNlhil2
-         3Chy07iNWyyUWzVqJwr4jvYJy2BwXo+/xk5RcNmVyaE6GlRvAykYyDjBEcrb63YFa4Bl
-         i5bLRS+rj+/cfBXeDC+BLKARWmHrLueh8OqtAzgaZpUr4VQR82WF0Ekq7cb9vISNq3l2
-         My6ZagczZZqnPFkKnYw6xAyhluXdDk6ApqXfGJ2/piNW/A5LuJ/j9d7MsH5P8XNGoXSm
-         dezqac5QnPvxzCgoz6wqkN7JNBrDDTkXxosljWh6vGkoJYYSXcsisvKU2xqKqW+UOmUR
-         3LSw==
+        b=WWJHk8C8ppXIJCevn5ZgEX0qoJ6hgjqLQUANpgprY1gUfJjXHm26Yo6yF0LYydN8GF
+         3ibb+Sa8Ac6NoxweK3MlAIdiZXcMouR2kym6R0U1dDsD5cey9b+Mj2HFFkQS9aO+1Wu6
+         VaNKsGTPUXy2rW7mqi584CEjJ9lq0cpgzUPjXTLoH/7KWDeE0XhWGtTrhE1pwg3k3eaL
+         MMzWDtqnfjyIx9BT1s9XFt3K8d8BJcr4rOpDHwdJ/5a0+Mozd4ozaLqwC0wnRp+eCw+z
+         PLDNyw9lB3lNBjkf4K4/e8pvJc/9orXS9yTGwoMdO3qQ0UeqX7zMV9n2bEn2aTv5U62J
+         h78w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=XnzO3TBJoJn3HA39CYqEdMaFkpfkwjLYTxBh9vk6FwM=;
-        b=zSn7j8shY08PllFyBhVEeEQbJd2grBcSzVjEwrtqToo20FHkVGCZeLmqoCL67PUdQI
-         WYQYkLcdGwAljSFFCGnApKHhQZAq4daZlTwB57V1rq3sqCfEUo1ThTBfiv1D2kWG7lUH
-         s1IO0G9F5fqd5ViqeCg7gSsiFQcGJICK73Rkm1E1wG6jQCBOKnecU+DcT6lXN2SwRvG0
-         sSKGRJPsVfyqSgatOzYeoLhxirM63Mnr1wpPC8hIz3ipKLcYkbAH6eGA+uFK9ExKLMNN
-         ieBVAyBYWK6RPYsVgcsY7gkistHl7T2AZnOb2RLpgT1ciA0U4J+Yz5tz94aVVaRfyfGK
-         GVtg==
+        bh=VqIpR35eFpA4JQpC/0diDoIimutJFFO0AEkeUu0rUaM=;
+        b=QtuM2TtAcRfYO3QCKiZvq2eixawf9KAnTxUO47SZ7BGIanuImGQ12BdBz+yc352xhg
+         g4+MWGY+qMjR089Ah11Te25NYf3qQS5DhXwhwO5I0SfrDCyGvfz48oXwrxYhEOu+3jE6
+         OOd2fHB03/gMb2/SkykrWfnWuht2fmdlh0TREs7F3PRNGXrakmdISmqG2FregUb3nJrD
+         APmKLDzYr54IIcM+mcytRgDqi87jQF5/NrJ6hM0Fp2BC6wj1PtnP+sippnhaN2ivb68J
+         Q2dVbLL1k6qxgh09SFP1JUYbn9Yr/EH8yvG9R/6HDVH+N2Qwc/vyMwHM9TlcvqOzd9h+
+         Iw4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bsfz0jY6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oVBdbEa8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a74-20020ae9e84d000000b006feff66a187si9099276qkg.105.2022.12.29.23.33.03
+        by mx.google.com with ESMTPS id e16-20020ac86710000000b003a496373dacsi9321162qtp.531.2022.12.30.00.14.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Dec 2022 23:33:04 -0800 (PST)
+        Fri, 30 Dec 2022 00:14:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bsfz0jY6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oVBdbEa8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pB9sI-00058n-5O; Fri, 30 Dec 2022 02:32:18 -0500
+	id 1pBAWI-0005NL-Cp; Fri, 30 Dec 2022 03:13:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pB9sG-00058C-1m
- for qemu-arm@nongnu.org; Fri, 30 Dec 2022 02:32:16 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBAWG-0005Mz-K5
+ for qemu-arm@nongnu.org; Fri, 30 Dec 2022 03:13:36 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pB9sD-00051F-SI
- for qemu-arm@nongnu.org; Fri, 30 Dec 2022 02:32:15 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- p1-20020a05600c1d8100b003d8c9b191e0so14668473wms.4
- for <qemu-arm@nongnu.org>; Thu, 29 Dec 2022 23:32:12 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBAWE-00061V-Kt
+ for qemu-arm@nongnu.org; Fri, 30 Dec 2022 03:13:36 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ m8-20020a05600c3b0800b003d96f801c48so12514457wms.0
+ for <qemu-arm@nongnu.org>; Fri, 30 Dec 2022 00:13:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=XnzO3TBJoJn3HA39CYqEdMaFkpfkwjLYTxBh9vk6FwM=;
- b=Bsfz0jY6G/yPb8tl7GCIUHXt63+4bGAhOw7vHSZD7pJwEEFTUkPzWs3xLwQ5LUYUfW
- r4T37yI957xyNV5XzySuNEWhtwsqTsU25OLNz5h5wAWSKb9BvS+KXGZx6OaEwN5e65hN
- R84f//zs74p9DfCGtP6ir4R1EWjmWH3/gsXrwrj3HRwqn9/K8ZHu2Ei+EhJJ67431XgN
- SOVUxImlPdCrcBWxJjdA9qKDjPSvANXa8VVSp4Zsl2eYXxpjup54/U4/yHWBHxNv4HTj
- 0YNxSz0i0tfrvz1Vf0FfLqL7jOe/IIKQP7A2NPyVyQBlXn44gfMcKe5x03Foqy7bEupI
- /qYA==
+ bh=VqIpR35eFpA4JQpC/0diDoIimutJFFO0AEkeUu0rUaM=;
+ b=oVBdbEa8aaIaB3KJAwAiyqaJ/wOk3hKNOq8JPwvjq6xe+Gj63Ijef4zy07AdL9usOI
+ OufsQKtRIKAoRSaU/wmAsGAbBvQhad+GLsa1rmIivVoIdkQ3Wp5kriOt0IVEHl5TmNNF
+ 0vhU+cYwr0cM82ZamYrhyAqh1g1GDz40qDqY4WYEvkpgPD3KbV4p9r3PIKlhCnpyPixC
+ GqpQcDsBkS/Gwp7zFIzJcFWCaCkRR5dO/EKr5mRgi528vbOhfKc7jbvC2RcaLPFaT9s2
+ PT60B3EnW9E45VuMGrQw0fJgTUL4NuLwMXJ3z+BX4SiEXb3UqZt0yszro2ndKZEbtSZU
+ kMfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=XnzO3TBJoJn3HA39CYqEdMaFkpfkwjLYTxBh9vk6FwM=;
- b=a7p47tDYQVAC8sUrwJHmVc5M/e67LeuxviJXVHwQJFl2LNxyMcHkLesjmCWuafAINi
- 3W/HHHqklzpYZRpTkMZ2wAbMd8/mgAXWlcaFUW/mpMilKZFA6Wb1m3czVwnFkZQeir8a
- iJOffjq4um2iFnuei+z1ZacQMp+8ElPKmW0aJI289tsmycYAplxpnSe4WguyVUw2RG/x
- oi0oKwZEe8v9MqwXGJ5Qlm6UdQzpfmcwA9+m2ayc62GXDAgFyumYrJ4fti2xJQWFbb0t
- zVdM0+wLWS2XV6Psb36Ywg58GUqw+W31PvsKwhx2ag6Wt3zTS3bbKvofZS8/k9GmEPpL
- OjNA==
-X-Gm-Message-State: AFqh2kq9gcgVpAbv63xWHBW6HKDhhH3j75RLcrM0wZb5rj57wvlJc6AV
- QrIeoNJwuEeuZvCxVk8Jpu7WBg==
-X-Received: by 2002:a1c:770b:0:b0:3cf:a18d:399c with SMTP id
- t11-20020a1c770b000000b003cfa18d399cmr22829053wmi.1.1672385531041; 
- Thu, 29 Dec 2022 23:32:11 -0800 (PST)
+ bh=VqIpR35eFpA4JQpC/0diDoIimutJFFO0AEkeUu0rUaM=;
+ b=09Iw+Fhz9+UtuSeD4+WU/8Ger4xjzk02E5vEbUOpwTrHaO/yAeYm/2QMGeaHRyYXnf
+ U/ftDFRuwwWyhi7Vb2c+2evUbtYVKWHJJUddpNz9vLZ3hfuQSALqWjIH7jzMNdyjMCXT
+ 4PZUpFIgV6sADG1nnwdfzGY0gfIMxq1UGnk0G2mfUsUp4ytwlhtIFAY1VZsNyhM7FUQB
+ cXuGoX9kmPLRYNE/FIHho0iLVfViFI+s6WrG7keBe1COf3Mw9MWdesQDr9JM1GSz2jB0
+ Y/BDzaZIX/mWx9SCFkzIlDMcdJfOaHa3DacwbxfP8xWUPKZK3NFbHHxNWg43Awx/kI0d
+ SKCA==
+X-Gm-Message-State: AFqh2kr5fsEMwNfgmuoq0FLO2Qlx0qNdYk+j4dGoKXWz3RVWJwMymJU0
+ RQuRtdOHrpe8P/4L8H/QeK2uHA==
+X-Received: by 2002:a05:600c:3d1b:b0:3d0:6a57:66a5 with SMTP id
+ bh27-20020a05600c3d1b00b003d06a5766a5mr21537295wmb.0.1672388012973; 
+ Fri, 30 Dec 2022 00:13:32 -0800 (PST)
 Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- k5-20020a05600c080500b003d208eb17ecsm25477712wmp.26.2022.12.29.23.32.09
+ p13-20020a05600c358d00b003d1f2c3e571sm35556168wmq.33.2022.12.30.00.13.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Dec 2022 23:32:10 -0800 (PST)
-Message-ID: <fcb05260-8723-690a-52c8-db72c7372f65@linaro.org>
-Date: Fri, 30 Dec 2022 08:32:08 +0100
+ Fri, 30 Dec 2022 00:13:31 -0800 (PST)
+Message-ID: <9de13ab3-beb6-a86e-5eb3-b4606b0f5b9b@linaro.org>
+Date: Fri, 30 Dec 2022 09:13:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH 1/9] hw/watchdog/wdt_aspeed: Map the whole MMIO range
+Subject: Re: [PATCH 6/9] hw/arm/aspeed_ast10x0: Map HACE peripheral
 Content-Language: en-US
 To: Peter Delevoryas <peter@pjd.dev>
 Cc: qemu-devel@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
@@ -101,24 +101,23 @@ Cc: qemu-devel@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
  Troy Lee <troy_lee@aspeedtech.com>, Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
  <clg@kaod.org>, Peter Delevoryas <pdel@fb.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
+ Jamin Lin <jamin_lin@aspeedtech.com>
 References: <20221229152325.32041-1-philmd@linaro.org>
- <20221229152325.32041-2-philmd@linaro.org>
- <Y637mlYosU4ULh9b@pdel-mbp.dhcp.thefacebook.com>
+ <20221229152325.32041-7-philmd@linaro.org>
+ <Y63+CpM1zG9lNEPX@pdel-mbp.dhcp.thefacebook.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <Y637mlYosU4ULh9b@pdel-mbp.dhcp.thefacebook.com>
+In-Reply-To: <Y63+CpM1zG9lNEPX@pdel-mbp.dhcp.thefacebook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.149,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,146 +132,140 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3uik/GcBWujL
+X-TUID: YNdtf6AQh9BJ
 
-On 29/12/22 21:42, Peter Delevoryas wrote:
-> On Thu, Dec 29, 2022 at 04:23:17PM +0100, Philippe Mathieu-Daudé wrote:
->> Avoid confusing two different things:
->> - the WDT I/O region size ('iosize')
->> - at which offset the SoC map the WDT ('offset')
->> While it is often the same, we can map smaller region sizes at
->> larger offsets.
+On 29/12/22 21:52, Peter Delevoryas wrote:
+> On Thu, Dec 29, 2022 at 04:23:22PM +0100, Philippe Mathieu-Daudé wrote:
+>> Since I don't have access to the datasheet, the relevant
+>> values were found in:
+>> https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/dts/arm/aspeed/ast10x0.dtsi
 >>
->> Here we are interested in the I/O region size. Rename as 'iosize'
->> and map the whole range, not only the first implemented registers.
->> Unimplemented registers accesses are already logged as guest-errors.
+>> Before on Zephyr:
 >>
->> Otherwise when booting the demo in [*] we get:
+>>    uart:~$ crypto aes256_cbc_vault
+>>    aes256_cbc vault key 1
+>>    [00:00:06.699,000] <inf> hace_global: aspeed_crypto_session_setup
+>>    [00:00:06.699,000] <inf> hace_global: data->cmd: 1c2098
+>>    [00:00:06.699,000] <inf> hace_global: crypto_data_src: 93340
+>>    [00:00:06.699,000] <inf> hace_global: crypto_data_dst: 93348
+>>    [00:00:06.699,000] <inf> hace_global: crypto_ctx_base: 93300
+>>    [00:00:06.699,000] <inf> hace_global: crypto_data_len: 80000040
+>>    [00:00:06.699,000] <inf> hace_global: crypto_cmd_reg:  11c2098
+>>    [00:00:09.743,000] <inf> hace_global: HACE_STS: 0
+>>    [00:00:09.743,000] <err> hace_global: HACE poll timeout
+>>    [00:00:09.743,000] <err> crypto: CBC mode ENCRYPT - Failed
+>>    [00:00:09.743,000] <inf> hace_global: aspeed_crypto_session_free
+>>    uart:~$
 >>
->>    aspeed.io: unimplemented device write (size 4, offset 0x1851a8, value 0x030f1ff1)
->>    aspeed.io: unimplemented device write (size 4, offset 0x1851ac, value 0x03fffff1)
->>    aspeed.io: unimplemented device write (size 4, offset 0x185128, value 0x030f1ff1)
->>    aspeed.io: unimplemented device write (size 4, offset 0x18512c, value 0x03fffff1)
+>> After:
 >>
->> [*] https://github.com/AspeedTech-BMC/zephyr/releases/tag/v00.01.07
+>>    uart:~$ crypto aes256_cbc_vault
+>>    aes256_cbc vault key 1
+>>    Was waiting for:
+>>    6b c1 be e2 2e 40 9f 96 e9 3d 7e 11 73 93 17 2a
+>>    ae 2d 8a 57 1e 03 ac 9c 9e b7 6f ac 45 af 8e 51
+>>    30 c8 1c 46 a3 5c e4 11 e5 fb c1 19 1a 0a 52 ef
+>>    f6 9f 24 45 df 4f 9b 17 ad 2b 41 7b e6 6c 37 10
+>>
+>>     But got:
+>>    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>>    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>>    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>>    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>>
+>>    [00:00:05.771,000] <inf> hace_global: aspeed_crypto_session_setup
+>>    [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2098
+>>    [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
+>>    [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
+>>    [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
+>>    [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
+>>    [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2098
+>>    [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
+>>    [00:00:05.772,000] <inf> crypto: Output length (encryption): 80
+>>    [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_free
+>>    [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_setup
+>>    [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2018
+>>    [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
+>>    [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
+>>    [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
+>>    [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
+>>    [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2018
+>>    [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
+>>    [00:00:05.772,000] <inf> crypto: Output length (decryption): 64
+>>    [00:00:05.772,000] <err> crypto: CBC mode DECRYPT - Mismatch between plaintext and decrypted cipher text
+>>    [00:00:05.774,000] <inf> hace_global: aspeed_crypto_session_free
+>>    uart:~$
 >>
 >> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/arm/aspeed_ast10x0.c          |  2 +-
->>   hw/arm/aspeed_ast2600.c          |  2 +-
->>   hw/arm/aspeed_soc.c              |  2 +-
->>   hw/watchdog/wdt_aspeed.c         | 12 +++++++-----
->>   include/hw/watchdog/wdt_aspeed.h |  2 +-
->>   5 files changed, 11 insertions(+), 9 deletions(-)
-
-
->> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
->> index d753693a2e..c1311ce74c 100644
->> --- a/hw/watchdog/wdt_aspeed.c
->> +++ b/hw/watchdog/wdt_aspeed.c
->> @@ -260,6 +260,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
->>   {
->>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->>       AspeedWDTState *s = ASPEED_WDT(dev);
->> +    AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(dev);
->>   
->>       assert(s->scu);
->>   
->> @@ -270,8 +271,9 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
->>        */
->>       s->pclk_freq = PCLK_HZ;
->>   
->> +    assert(awc->iosize >= ASPEED_WDT_REGS_MAX * 4);
->>       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
->> -                          TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
->> +                          TYPE_ASPEED_WDT, awc->iosize);
 > 
-> Does this fix the unimplemented thing you referred to in the commit message?
-
-Yes, I'll reword the description to be clearer.
-
-> I'm not sure which part of this diff actually removes the unimplemented traces.
-
-Having:
-
-   #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
-
-Before this patch, we map regions of 0x20 ...
-
->> @@ -392,7 +394,7 @@ static void aspeed_1030_wdt_class_init(ObjectClass *klass, void *data)
->>       AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
->>   
->>       dc->desc = "ASPEED 1030 Watchdog Controller";
->> -    awc->offset = 0x80;
->> +    awc->iosize = 0x80;
-
-... every span of 0x80, so there is a gap of 0x60, apparently accessed
-by the Zephyr WDT driver (address 0x28 - register #10 - is accessed in
-the traces).
-
- From the driver source we can see [1] added in [2]:
-
-     #define WDT_RELOAD_VAL_REG          0x0004
-     #define WDT_RESTART_REG             0x0008
-     #define WDT_CTRL_REG                0x000C
-     #define WDT_TIMEOUT_STATUS_REG      0x0010
-     #define WDT_TIMEOUT_STATUS_CLR_REG  0x0014
-     #define WDT_RESET_MASK1_REG         0x001C
-     #define WDT_RESET_MASK2_REG         0x0020
-     #define WDT_SW_RESET_MASK1_REG      0x0028   <------
-     #define WDT_SW_RESET_MASK2_REG      0x002C
-     #define WDT_SW_RESET_CTRL_REG       0x0024
-
-So the traces likely correspond to this code:
-
-   static int aspeed_wdt_init(const struct device *dev)
-   {
-     const struct aspeed_wdt_config *config = dev->config;
-     struct aspeed_wdt_data *const data = dev->data;
-     uint32_t reg_val;
-
-     /* disable WDT by default */
-     reg_val = sys_read32(config->ctrl_base + WDT_CTRL_REG);
-     reg_val &= ~WDT_CTRL_ENABLE;
-     sys_write32(reg_val, config->ctrl_base + WDT_CTRL_REG);
-
-     sys_write32(data->rst_mask1,
-                 config->ctrl_base + WDT_SW_RESET_MASK1_REG);
-     sys_write32(data->rst_mask2,
-                 config->ctrl_base + WDT_SW_RESET_MASK2_REG);
-
-     return 0;
-   }
-
-After this patch, we map (in this case) a MMIO region of 0x80.
-Accesses to address 0x28 hits this device model but is handled
-as 'WDT register not covered'.
-
-Better would be to extend the Aspeed WDT model in QEMU, or at
-least report the valid-but-unimplemented registers as UNIMP instead
-of GUEST_ERRORS.
-
-[1] 
-https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/drivers/watchdog/wdt_aspeed.c#L31
-[2] https://github.com/AspeedTech-BMC/zephyr/commit/2e99f10ac27b
-
->> diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
->> index dfa5dfa424..db91ee6b51 100644
->> --- a/include/hw/watchdog/wdt_aspeed.h
->> +++ b/include/hw/watchdog/wdt_aspeed.h
->> @@ -40,7 +40,7 @@ struct AspeedWDTState {
->>   struct AspeedWDTClass {
->>       SysBusDeviceClass parent_class;
->>   
->> -    uint32_t offset;
->> +    uint32_t iosize;
-> 
-> Oh yeah, iosize is a way better name for this. +1. But to be honest, I don't
-> understand how this is changing the unimplemented traces?
+> Awesome!
 > 
 > Reviewed-by: Peter Delevoryas <peter@pjd.dev>
+> 
+>> ---
+>> Should we rename HACE 'dram' as 'secram' / 'secure-ram'?
+> 
+> Sure, sounds good to me.
+> 
+>> ---
+>>   hw/arm/aspeed_ast10x0.c | 15 +++++++++++++++
+>>   1 file changed, 15 insertions(+)
+>>
+>> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+>> index 21a2e62345..02636705b6 100644
+>> --- a/hw/arm/aspeed_ast10x0.c
+>> +++ b/hw/arm/aspeed_ast10x0.c
+>> @@ -29,6 +29,7 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
+>>       [ASPEED_DEV_SPI1]      = 0x7E630000,
+>>       [ASPEED_DEV_SPI2]      = 0x7E640000,
+>>       [ASPEED_DEV_UDC]       = 0x7E6A2000,
+>> +    [ASPEED_DEV_HACE]      = 0x7E6D0000,
+>>       [ASPEED_DEV_SCU]       = 0x7E6E2000,
+>>       [ASPEED_DEV_JTAG0]     = 0x7E6E4000,
+>>       [ASPEED_DEV_JTAG1]     = 0x7E6E4100,
+>> @@ -166,6 +167,9 @@ static void aspeed_soc_ast1030_init(Object *obj)
+>>       snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+>>       object_initialize_child(obj, "gpio", &s->gpio, typename);
+>>   
+>> +    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
+>> +    object_initialize_child(obj, "hace", &s->hace, typename);
+>> +
+>>       object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+>>       object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemented,
+>>                               TYPE_UNIMPLEMENTED_DEVICE);
+>> @@ -359,6 +363,17 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+>>       }
+>>       aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
+>>   
+>> +    /* HACE */
+>> +    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(&s->secsram),
 
-Thanks!
+We need to link the SRAM here, not the sec-SRAM.
 
-Phil.
+Doing so the hash test works:
+
+uart:~$ hash test
+sha256_test
+tv[0]:PASS
+tv[1]:PASS
+tv[2]:PASS
+tv[3]:PASS
+tv[4]:PASS
+sha384_test
+tv[0]:PASS
+tv[1]:PASS
+tv[2]:PASS
+tv[3]:PASS
+tv[4]:PASS
+tv[5]:PASS
+sha512_test
+tv[0]:PASS
+tv[1]:PASS
+tv[2]:PASS
+tv[3]:PASS
+tv[4]:PASS
+tv[5]:PASS
+uart:~$
+
+rsa / aes256_cbc tests still fail.
 

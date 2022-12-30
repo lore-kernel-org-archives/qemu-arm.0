@@ -1,122 +1,92 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4871333ejb;
-        Fri, 30 Dec 2022 04:44:09 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuUdVV5Vr9eNaDTgD6cY0RLFIQpvcz0l5IAP2d+5wWx3ovsXKMdjtSn1Ox+f/qUIILKZajs
-X-Received: by 2002:ad4:5c44:0:b0:4c7:75d:c352 with SMTP id a4-20020ad45c44000000b004c7075dc352mr67376387qva.0.1672404249621;
-        Fri, 30 Dec 2022 04:44:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672404249; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4948636ejb;
+        Fri, 30 Dec 2022 06:59:01 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtCpy2QAZtWhgHV3AFaqI1YfnEFxqlUmM5YCyQFOAg4nJG0ydWjCBWhhM4ld73TcsopJAVQ
+X-Received: by 2002:a05:6214:3507:b0:4c7:7370:3c07 with SMTP id nk7-20020a056214350700b004c773703c07mr67471089qvb.13.1672412341373;
+        Fri, 30 Dec 2022 06:59:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672412341; cv=none;
         d=google.com; s=arc-20160816;
-        b=vrkA0MzvKQHbsStCqeiL7IDW48L+iNvmQdZCLQsqEzHoT0dLPYOO9V7sG8v+6F2QEs
-         no59PM9NnWCEjLKF5ATmC6ajlhABhoEnzTJjQ4hyXFb8iQkT8Ic+xVeqbbxDh0c8yMjO
-         5AlqRuQGlZo3y+3K/ryS9ldV/uXpifB+XlrwVlTBrbh9vr/zDcvwhJ91PHvAEX27MyyW
-         Ejxk9QEPbEPmD/2PI3JnynljUvWlmxtYT8rODV9mernNcEy+WxlR67AmmPHoRaKtJ5QB
-         HXYk3zmU3+RU6rpz1JEtUWFjgh6xZEFjDB8MHwdk8cQU7ToagGCJ8Eu531nzI76nknAE
-         tOWA==
+        b=djZvAjCdesqxGQltoMASq4hJht83j6g27krb7SliuY84egZcWzQJQzxlRrP7C5tKHr
+         6qEcTWIz1D+oynWzxNEDNV4ic84ow43jlnuX/1cSZZ4alzBPCT71eqz6WnXG0nAXF5Dy
+         eTfHrkbVGyaCrJuJo+TblzHVp/hJTP4udutAmJYCAKz4J3agCNcPZFHn9xtEmLNCXvWL
+         IO2+EpEI+Q7GcHxXzzAphfp7bQH03cW2jT06r4M1uUia4k24kaZ9o0WB9RSkS+7ENdtV
+         SgLV7KYlHK8GJX9pXk9Am9OfOF1LdVnDzCDyOXx1yZgXXMceWXQBU2myRjccF2FpL3T/
+         1meQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=oJzcBFzg7pIOQa/da8s6FCBWPV6la6FFq85YAwtjEko=;
-        b=XUrH2JkDtApEG2EHMYdrkuiJwaI959gOOV99qo6QfdVQ1xcsDldVhnmuUnuAvz4sIo
-         P8UT5Sbvkk3y8PSxIes95oUQHkw5VWUyaSeJBog8hTjTsCkFhv7rw5f2qsw/m1dkS4Q7
-         FCiL0fLPyNKG0YX0f9F1h0gD9Ac+Uo6V7HhH8ITYsMYGSLDD34tQPIm455dtymE8TtyZ
-         pMuK593yDI9CIx3VLn2Pkp1+fpZWQ5xoSx6RsnTsKUVyyW1bWVwKXdKhJ7VY4pxKcQzc
-         c1jcG3jm3tiZxZnigvIspD5Eg779hnNbw9kQBfNiwGD7Yy1ajoAQ3nIxaVLUGjxrh9xE
-         S09g==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=iEd3eL+4m8ejz8U5TPHg82yUGGKwxGRJZ7d//uQuNiY=;
+        b=YR6ko0Hh/jtCF1xQ8boy5ADzRVLZsIdOVsBduOoOb7kebN0+biAwjdGqHQdXNtPuls
+         He6VR3R1apHhvP9f/qfQiI5tfTKdS18ShKvYRaJe29Fqo4wgLq87ihZuUvykvJSzaY0B
+         Ip3MICDwmhZHqSk6viWbb1UQAd/5n9fM71uJgubZfOwkWAAXkBAKQM0ml6HI4K/K8pOh
+         0S9nTml1y25WFG+MKiYID00T+CdcsuzmNpbR+RM7hoyT6pfo1a+tYPZm6cn98zKNffMz
+         wjs2kQVTA4J0nnRqiB7y0DxdVD2+0ksf/tv7zOWajnDIAWDTUTMyCrwviZULI3DBcrn0
+         YpAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Rkdy2g/t";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="H/YDJs/0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u22-20020a05620a455600b006fa452a9a61si10215665qkp.191.2022.12.30.04.44.09
+        by mx.google.com with ESMTPS id j8-20020a05620a146800b006eede8718besi9333733qkl.82.2022.12.30.06.59.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Dec 2022 04:44:09 -0800 (PST)
+        Fri, 30 Dec 2022 06:59:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Rkdy2g/t";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="H/YDJs/0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pBEY8-0004lc-61; Fri, 30 Dec 2022 07:31:48 -0500
+	id 1pBGpY-00006O-N7; Fri, 30 Dec 2022 09:57:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBEY2-0004jW-Eu
- for qemu-arm@nongnu.org; Fri, 30 Dec 2022 07:31:44 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBEY0-0001MU-4M
- for qemu-arm@nongnu.org; Fri, 30 Dec 2022 07:31:41 -0500
-Received: by mail-wr1-x431.google.com with SMTP id bk16so6587791wrb.11
- for <qemu-arm@nongnu.org>; Fri, 30 Dec 2022 04:31:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oJzcBFzg7pIOQa/da8s6FCBWPV6la6FFq85YAwtjEko=;
- b=Rkdy2g/t19ardE78uL2TaNMWOUNABfhpBxF+atSH8Y1Fkcaf6zsEUQW8ufdGBnq5Ky
- zp6aRtBdZ+gkuImGv5w7q9lc8tisgvKzzNZPyqwMlBfgTPBEgWprKSoYhmi7urdjDOHr
- omz0pyqhhYRhNkrTqZppOhoxOopcZb9vxGrCT5sXGonFwBU4i3O4H9qnHhZJFKiy/wCD
- /UV7MuWPTJh3SQGFQkuzXvIPGb/BucSzwovcoGikB24afLz3bjcTRAyOG+qqMZjhqEiY
- dlHX6G/ZVtTaFRGH6fFOXpW397gZGAs+lp7twH2u4W+PUTo12KnhO3DOyFwC6dmG27pd
- R8CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oJzcBFzg7pIOQa/da8s6FCBWPV6la6FFq85YAwtjEko=;
- b=J/NKwoocaSjke4yWH+p3gv0wRO/yZnznvufnVKj6agLMdRDXhdYpGAr4CHR8h4WVZ5
- wSM0suESIjQvJiIRqXt99Xj1awo5jFeyUmpo16c8WiGbrABfEvde/q0HkIP7QjC/bhwD
- PRXXebcnZoK8lTbDiQ5Sh29exGDBni86PQj+a8tDVbNA4twyRWL8MGXPNmqdW4WErWni
- 9dQj7xZFNtJDDduRIIihZHjVtk6FuSzNEHmKG0YMoXFmXryXNthTz4at6mCfXxHHMJPU
- csQJNNR9hYY2YqgtnueDs3QQ1q5uqDlIe10UOhqgi+AShxIAU6/PhlQ5e0oxLpY8Kj4X
- Dq7g==
-X-Gm-Message-State: AFqh2kq8UtGzogNGEw3mmwUW/oc1R8DICJ/+ZGwOxnny4cIMyWfZ7D+S
- jbvAFssEWmD++BP1vNSPxz3oaQ==
-X-Received: by 2002:a5d:6b87:0:b0:26f:8bfc:98ff with SMTP id
- n7-20020a5d6b87000000b0026f8bfc98ffmr17077342wrx.38.1672403498306; 
- Fri, 30 Dec 2022 04:31:38 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- ay19-20020a5d6f13000000b0022cdeba3f83sm1251568wrb.84.2022.12.30.04.31.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 30 Dec 2022 04:31:37 -0800 (PST)
-Message-ID: <90de6d57-25e1-d20f-15e3-069e06ef2f00@linaro.org>
-Date: Fri, 30 Dec 2022 13:31:35 +0100
+ (Exim 4.90_1) (envelope-from <balbi@kernel.org>)
+ id 1pBGpX-00005Y-9B; Fri, 30 Dec 2022 09:57:55 -0500
+Received: from dfw.source.kernel.org ([139.178.84.217])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balbi@kernel.org>)
+ id 1pBGpV-0000VQ-91; Fri, 30 Dec 2022 09:57:54 -0500
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 0322761229;
+ Fri, 30 Dec 2022 14:57:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C574EC433D2;
+ Fri, 30 Dec 2022 14:57:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1672412264;
+ bh=tS1h+RoInBuflihKgL7AEisEZQke6048q0BOPbzTk28=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=H/YDJs/0tRksxxgYWrx6CSptYarZGcHcbg+yglZpSMpRGuBnK5zVBS7pNIEUWb7Of
+ 1JQflovmgm8BEalWcic5+cC5YqN4RP89mE6/umc9J9UfDIyTG+753mptA7/6pyxaKv
+ N4ytSqr6TQ3QSLzDDZVF2KHv5nEIAdU1LJpiar2no9aUbDNznQlpYoCCwOGAOOyw/3
+ jkRN48PklCHk9FDT/dg0SGAe3m2kx4PbtrjhKo59OEIAnXzehqTeJVJ3VpDFBC8r3a
+ qCf3RCBSbWTXJTPmaRvRxbPioJ2hu11wf0zBKonHGDlsHFsLzgWgUcyYKYmXXpRIoY
+ 7CVP6dCLjnjnw==
+From: Felipe Balbi <balbi@kernel.org>
+To: Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Felipe Balbi <balbi@kernel.org>
+Subject: [PATCH v2 2/2] hw/arm: Add Olimex H405
+Date: Fri, 30 Dec 2022 16:57:33 +0200
+Message-Id: <20221230145733.200496-3-balbi@kernel.org>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20221230145733.200496-1-balbi@kernel.org>
+References: <20221230145733.200496-1-balbi@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v2 02/11] hw/watchdog/wdt_aspeed: Extend MMIO range to
- cover more registers
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>,
- Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
- Peter Delevoryas <peter@pjd.dev>, Steven Lee <steven_lee@aspeedtech.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Peter Delevoryas <pdel@fb.com>,
- Peter Delevoryas <pdel@meta.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Cleber Rosa <crosa@redhat.com>
-References: <20221230113504.37032-1-philmd@linaro.org>
- <20221230113504.37032-3-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221230113504.37032-3-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.146,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=139.178.84.217; envelope-from=balbi@kernel.org;
+ helo=dfw.source.kernel.org
+X-Spam_score_int: -70
+X-Spam_score: -7.1
+X-Spam_bar: -------
+X-Spam_report: (-7.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,119 +102,173 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P7A1UJytKVgZ
+X-TUID: y9cJbEjY8omC
 
-On 30/12/22 12:34, Philippe Mathieu-Daudé wrote:
-> When booting the Zephyr demo in [1] we get:
-> 
->    aspeed.io: unimplemented device write (size 4, offset 0x185128, value 0x030f1ff1) <--
->    aspeed.io: unimplemented device write (size 4, offset 0x18512c, value 0x03fffff1)
-> 
-> This corresponds to this Zephyr code [2]:
-> 
->    static int aspeed_wdt_init(const struct device *dev)
->    {
->      const struct aspeed_wdt_config *config = dev->config;
->      struct aspeed_wdt_data *const data = dev->data;
->      uint32_t reg_val;
-> 
->      /* disable WDT by default */
->      reg_val = sys_read32(config->ctrl_base + WDT_CTRL_REG);
->      reg_val &= ~WDT_CTRL_ENABLE;
->      sys_write32(reg_val, config->ctrl_base + WDT_CTRL_REG);
-> 
->      sys_write32(data->rst_mask1,
->                  config->ctrl_base + WDT_SW_RESET_MASK1_REG);   <------
->      sys_write32(data->rst_mask2,
->                  config->ctrl_base + WDT_SW_RESET_MASK2_REG);
-> 
->      return 0;
->    }
-> 
-> The register definitions are [3]:
-> 
->    #define WDT_RELOAD_VAL_REG          0x0004
->    #define WDT_RESTART_REG             0x0008
->    #define WDT_CTRL_REG                0x000C
->    #define WDT_TIMEOUT_STATUS_REG      0x0010
->    #define WDT_TIMEOUT_STATUS_CLR_REG  0x0014
->    #define WDT_RESET_MASK1_REG         0x001C
->    #define WDT_RESET_MASK2_REG         0x0020
->    #define WDT_SW_RESET_MASK1_REG      0x0028   <------
->    #define WDT_SW_RESET_MASK2_REG      0x002C
->    #define WDT_SW_RESET_CTRL_REG       0x0024
-> 
-> Currently QEMU only cover a MMIO region of size 0x20:
-> 
->    #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
-> 
-> Change to map the whole 'iosize' which might be bigger, covering
-> the other registers. The MemoryRegionOps read/write handlers will
-> report the accesses as out-of-bounds guest-errors, but the next
-> commit will report them as unimplemented.
+Olimex makes a series of low-cost STM32 boards. This commit introduces
+the minimum setup to support SMT32-H405. See [1] for details
 
-I'll amend here for clarity:
+[1] https://www.olimex.com/Products/ARM/ST/STM32-H405/
 
+Signed-off-by: Felipe Balbi <balbi@kernel.org>
 ---
 
-Memory layout before this change:
+Changes since v1:
+	- Add a note in stm32.rst
+	- Initialize default_cpu_type to cortex-m4
+	- 0-initialize default_ram_size
 
-   (qemu) info mtree -f
-     ...
-     000000007e785000-000000007e78501f (prio 0, i/o): aspeed.wdt
-     000000007e785020-000000007e78507f (prio -1000, i/o): aspeed.io 
-@0000000000185020
-     000000007e785080-000000007e78509f (prio 0, i/o): aspeed.wdt
-     000000007e7850a0-000000007e7850ff (prio -1000, i/o): aspeed.io 
-@00000000001850a0
-     000000007e785100-000000007e78511f (prio 0, i/o): aspeed.wdt
-     000000007e785120-000000007e78517f (prio -1000, i/o): aspeed.io 
-@0000000000185120
-     000000007e785180-000000007e78519f (prio 0, i/o): aspeed.wdt
-     000000007e7851a0-000000007e788fff (prio -1000, i/o): aspeed.io 
-@00000000001851a0
+ MAINTAINERS                             |  6 +++
+ configs/devices/arm-softmmu/default.mak |  1 +
+ docs/system/arm/stm32.rst               |  1 +
+ hw/arm/Kconfig                          |  4 ++
+ hw/arm/meson.build                      |  1 +
+ hw/arm/olimex-stm32-h405.c              | 69 +++++++++++++++++++++++++
+ 6 files changed, 82 insertions(+)
+ create mode 100644 hw/arm/olimex-stm32-h405.c
 
-After:
-
-   (qemu) info mtree -f
-     ...
-     000000007e785000-000000007e78507f (prio 0, i/o): aspeed.wdt
-     000000007e785080-000000007e7850ff (prio 0, i/o): aspeed.wdt
-     000000007e785100-000000007e78517f (prio 0, i/o): aspeed.wdt
-     000000007e785180-000000007e7851ff (prio 0, i/o): aspeed.wdt
-     000000007e785200-000000007e788fff (prio -1000, i/o): aspeed.io 
-@0000000000185200
----
-
-> [1] https://github.com/AspeedTech-BMC/zephyr/releases/tag/v00.01.07
-> [2] https://github.com/AspeedTech-BMC/zephyr/commit/2e99f10ac27b
-> [3] https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/drivers/watchdog/wdt_aspeed.c#L31
-> 
-> Reviewed-by: Peter Delevoryas <peter@pjd.dev>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/watchdog/wdt_aspeed.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index 958725a1b5..eefca31ae4 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -260,6 +260,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
->   {
->       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->       AspeedWDTState *s = ASPEED_WDT(dev);
-> +    AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(dev);
->   
->       assert(s->scu);
->   
-> @@ -271,7 +272,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
->       s->pclk_freq = PCLK_HZ;
->   
->       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
-> -                          TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
-> +                          TYPE_ASPEED_WDT, awc->iosize);
->       sysbus_init_mmio(sbd, &s->iomem);
->   }
->   
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3bd433b65a55..e37846df0071 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1026,6 +1026,12 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/netduinoplus2.c
+ 
++Olimex STM32 H405
++M: Felipe Balbi <balbi@kernel.org>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/arm/olimex-stm32-h405.c
++
+ SmartFusion2
+ M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
+index 6985a25377a0..1b49a7830c7e 100644
+--- a/configs/devices/arm-softmmu/default.mak
++++ b/configs/devices/arm-softmmu/default.mak
+@@ -30,6 +30,7 @@ CONFIG_COLLIE=y
+ CONFIG_ASPEED_SOC=y
+ CONFIG_NETDUINO2=y
+ CONFIG_NETDUINOPLUS2=y
++CONFIG_OLIMEX_STM32_H405=y
+ CONFIG_MPS2=y
+ CONFIG_RASPI=y
+ CONFIG_DIGIC=y
+diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
+index 508b92cf862b..d7265b763d47 100644
+--- a/docs/system/arm/stm32.rst
++++ b/docs/system/arm/stm32.rst
+@@ -20,6 +20,7 @@ The STM32F4 series is based on ARM Cortex-M4F core. This series is pin-to-pin
+ compatible with STM32F2 series. The following machines are based on this chip :
+ 
+ - ``netduinoplus2``     Netduino Plus 2 board with STM32F405RGT6 microcontroller
++- ``olimex-stm32-h405`` Olimex STM32 H405 board with STM32F405RGT6 microcontroller
+ 
+ There are many other STM32 series that are currently not supported by QEMU.
+ 
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 17fcde8e1ccc..9143533ef792 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -119,6 +119,10 @@ config NETDUINOPLUS2
+     bool
+     select STM32F405_SOC
+ 
++config OLIMEX_STM32_H405
++    bool
++    select STM32F405_SOC
++
+ config NSERIES
+     bool
+     select OMAP
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 92f9f6e000ea..76d4d650e42e 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -12,6 +12,7 @@ arm_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
+ arm_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
+ arm_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
+ arm_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'))
++arm_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
+ arm_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
+ arm_ss.add(when: 'CONFIG_NSERIES', if_true: files('nseries.c'))
+ arm_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
+diff --git a/hw/arm/olimex-stm32-h405.c b/hw/arm/olimex-stm32-h405.c
+new file mode 100644
+index 000000000000..3aa61c91b759
+--- /dev/null
++++ b/hw/arm/olimex-stm32-h405.c
+@@ -0,0 +1,69 @@
++/*
++ * ST STM32VLDISCOVERY machine
++ * Olimex STM32-H405 machine
++ *
++ * Copyright (c) 2022 Felipe Balbi <balbi@kernel.org>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/boards.h"
++#include "hw/qdev-properties.h"
++#include "hw/qdev-clock.h"
++#include "qemu/error-report.h"
++#include "hw/arm/stm32f405_soc.h"
++#include "hw/arm/boot.h"
++
++/* olimex-stm32-h405 implementation is derived from netduinoplus2 */
++
++/* Main SYSCLK frequency in Hz (168MHz) */
++#define SYSCLK_FRQ 168000000ULL
++
++static void olimex_stm32_h405_init(MachineState *machine)
++{
++    DeviceState *dev;
++    Clock *sysclk;
++
++    /* This clock doesn't need migration because it is fixed-frequency */
++    sysclk = clock_new(OBJECT(machine), "SYSCLK");
++    clock_set_hz(sysclk, SYSCLK_FRQ);
++
++    dev = qdev_new(TYPE_STM32F405_SOC);
++    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
++    qdev_connect_clock_in(dev, "sysclk", sysclk);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++
++    armv7m_load_kernel(ARM_CPU(first_cpu),
++                       machine->kernel_filename,
++                       0, FLASH_SIZE);
++}
++
++static void olimex_stm32_h405_machine_init(MachineClass *mc)
++{
++    mc->desc = "Olimex STM32-H405 (Cortex-M4)";
++    mc->init = olimex_stm32_h405_init;
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
++
++    /* SRAM pre-allocated as part of the SoC instantiation */
++    mc->default_ram_size = 0;
++}
++
++DEFINE_MACHINE("olimex-stm32-h405", olimex_stm32_h405_machine_init)
+-- 
+2.39.0
 

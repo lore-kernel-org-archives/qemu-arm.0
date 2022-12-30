@@ -1,90 +1,89 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4839128ejb;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp4839129ejb;
         Fri, 30 Dec 2022 03:35:56 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtLU47lwcbykVBFIMMcnUWqxpCMs/wvmVPpqOCY0naVXcrOTHV3EBuj6SYixh2yix9cr5L6
-X-Received: by 2002:ac8:5393:0:b0:3a9:7e3e:adff with SMTP id x19-20020ac85393000000b003a97e3eadffmr41166374qtp.41.1672400156340;
+X-Google-Smtp-Source: AMrXdXv4/g9KVCpQfctHRaMLeV9AH0sg2ulKZwvqujRctX83xgwzvrmPQLhQP10ADGtz7kWB5Kmg
+X-Received: by 2002:ad4:5503:0:b0:531:8d5d:5005 with SMTP id pz3-20020ad45503000000b005318d5d5005mr18459933qvb.24.1672400156385;
         Fri, 30 Dec 2022 03:35:56 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1672400156; cv=none;
         d=google.com; s=arc-20160816;
-        b=vnRwL/wzTbDtL3kP8mUMtJqNwS3xpU3tyELSxURCT8ROl58gTOJnaTW8+/E7UhSlSu
-         Ie2FUi2R3qryIp8hj3Sy6C9jGYy6MwDLV4k854WZ7MQC68CGKoupcgockaGj3714sSxk
-         Hnm/77m1Ec5gVrGPbVUibwUvgtyqEVu3lUzdiuO+vQfdg/alfROVdl2lJOsprwRCexir
-         +4ORXTwNmCKaA7lC80V+qgnqJZAx68NUW6x+jLizL4BKZhYmGBkwKSCj7Pn8URFcmpaN
-         eNSKLC80Zm+VZqoeGFPydPwsWD6UYdnFfB8vv7+IOAB8wSJb8wyBD3Y9wvz/ACXoMZNw
-         Er5w==
+        b=tQ6n62pwqhOKX4iqTI71nCCI1F8/G+C/agILQR6eytAVGHSVEgkm+R5+9ePgMOWwwG
+         svTw99xUuyLx+IdzIHEOxGhIccAkBcaF3DW7BNyeo7h70yz6nqdUwILT5k+a3XeBJIQb
+         E8Qh924tGnX2X5H8pSSeJKJYLQRICi4teXSLTlPMnBr+D/hEKIVNL/2UEl7ZXirnWcAl
+         KzjHx9nKJmX64EjwpL+RfUiV/u+UeGQzA7gL1LtTV2ov013bKFMxBSdyZiSNoujrpx2R
+         B1I4qDjtvzxBPQ+t8qmw3n32FoxsYStCgtoo5wFpxZh+sDv/nyYtdqAUIXdkfnTA8sr6
+         ev8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=5cgaMd8Bs8Se35Vg/9IyfGZxyIX4IGlPHw4/V3um8/Y=;
-        b=UjznGNx1z7bAnN9TgABvmJ/IEv4iAJI50LTOpyLu4aA77OU/N9AjWQUEoK9VLiQbVf
-         TWwHSTs54oJriDey6kfbdvRO871dvrH/81e5tr8ew0f119n1tA2DwGHb1j5PhCTcDFNk
-         2G1iMFSGw3hk1AkAuRrygDYnWN9bqfjkV4qsN0eUTBb56SsfdmdqaCw2qBrvcseu6QQj
-         RIJzmIWK1+pNx4/0/KZYRE+GJ9bpp/zgXBPsPBqonMP26dt6zgC0iHsYySNMqW4796a2
-         O4KsKETvlMSDs/uzhb2G6rI7E1UFAyzxPnFHayKR20HZtOiHmGEYVFpZFA9Fe07oYbq9
-         FKbw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=NA/uioDCXzu43BeOx2mahIgOlYK6aPYVtQ1C36Sxbew=;
+        b=FQDANYSz0EgNYC3xEhLz0XaS85xaSFDUEi0rr38EVKB2aJH7KXNSaKQYYCfMeLikRv
+         kJZnIKOfAKWmxhxJ+GD2dtISLxKFO0mDQv3oOEuTiZJ94HzaSfVmqtzcSWYknscqVBxN
+         Z59inboGMuj/KMMRCG8lMAAv44KKtqDNaKQRFqIqD5DxUW0VAhY5YWfeEfhr5QbNB+T1
+         6fRTuecT3Ct/iI71cyrOoPRx/zuuOC+sm1oknTb7s2liKwKMnqQCS4h7FQB7i+q55OgY
+         uORaPXUh15/V2rh/jsfMlBMIr5NKU4adww8dZMfAyrTygJF+vvECOvna0Eu0XhtY32b4
+         k9RA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qfnQ+3qj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O5kAA7pj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w6-20020a05620a444600b006fc2e249c1esi10352471qkp.462.2022.12.30.03.35.56
+        by mx.google.com with ESMTPS id c23-20020a05620a0cf700b007025aa916afsi9243252qkj.704.2022.12.30.03.35.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 30 Dec 2022 03:35:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qfnQ+3qj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O5kAA7pj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pBDfY-0006FA-QU; Fri, 30 Dec 2022 06:35:24 -0500
+	id 1pBDfN-0006DU-44; Fri, 30 Dec 2022 06:35:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBDfX-0006Ey-6z
- for qemu-devel@nongnu.org; Fri, 30 Dec 2022 06:35:23 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBDfL-0006BQ-Hd
+ for qemu-devel@nongnu.org; Fri, 30 Dec 2022 06:35:11 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBDfU-0003rD-MX
- for qemu-devel@nongnu.org; Fri, 30 Dec 2022 06:35:22 -0500
-Received: by mail-wr1-x429.google.com with SMTP id j17so14310378wrr.7
- for <qemu-devel@nongnu.org>; Fri, 30 Dec 2022 03:35:20 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pBDfJ-0003p5-Od
+ for qemu-devel@nongnu.org; Fri, 30 Dec 2022 06:35:11 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ m26-20020a05600c3b1a00b003d9811fcaafso8482706wms.5
+ for <qemu-devel@nongnu.org>; Fri, 30 Dec 2022 03:35:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=5cgaMd8Bs8Se35Vg/9IyfGZxyIX4IGlPHw4/V3um8/Y=;
- b=qfnQ+3qj5R+06jV6SKRtuuysMitctw0HW7gFQNLHFxOSwQ/ZC7o6oxcUfT3ZsXP3Yf
- REHYZbHCuPxSoGpSGsNdYZUnmJCNsqj5BG/ZP6WiWC6esYiYfbHOAywMUmSY9ELgfrdv
- Jzh3z4uMOL8rfRnJmibxK8jBP1pRQILTQJG1oEy10XmIeR8iguohpl7pF+wYJowNc07U
- Bco9XPmuIZNtBHGaxImtPX5y9xwbTRLoJCUXRRMHHr9y9z4UPHOUIRTxPp98J9xYLzaw
- jyoO4c1ljCJygz3hYZ/yZ5Nf+HWW5ovH1aWtqjeQxn+Sx8OG4Maz74gbLNZmINvSoaEG
- RVsA==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=NA/uioDCXzu43BeOx2mahIgOlYK6aPYVtQ1C36Sxbew=;
+ b=O5kAA7pjg2hunz7nv1eGONF5Jv0Pc3xZuvQI71yGgmQ0g82+hg/RQyGZ9xzej2GYRY
+ YkkFKcD4+BVNWiSmF0XCaTL+ofhInxlt73pzDBRmYLLZacewL92865m0L/Lcqul5nxK2
+ gKYHdsPNXfZlaosPbKQj+mtqEoeuy3DviFLpTcg6pi2CeVT2v6/RFVJxgNWXd8HDCuuT
+ PN08ihN/zS21FXlAM3A2643s4nqZA5QBfMj4sj2B0h7n5857dDTXyo0ohFc7LTgQHbXr
+ ZC1HUbOfyrag+H2QN2ksF0fLDSKdRlyNSd+/NPCdRh5C25rvj3olm1J8q9FbgdUTifoa
+ gpzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=5cgaMd8Bs8Se35Vg/9IyfGZxyIX4IGlPHw4/V3um8/Y=;
- b=s4brnUhpcpbjR4vn7g/k3hKbh532NqKEkb0Bd/0Uwi+fnM8uPOmbQLYyy2RafHMcuM
- Cshi3BUpcFqDg/Tomprf9QdKDV7q/3gfQJN4/ELrarq4Jgl6+hhULan57MFx0Mhaw6io
- a+t4REjboK40txFu13GA9dcItD4MFFvrtqf4R1GofzcfdvM+amxRMJXrltgwDT7iD5JH
- XFDVdqkwdM+BwLsp2BXqlGL7SxoEG+BFvTTvkSAAO3yQyNF5+QJaiGc41rR6tvmqwN1K
- R6V9CxaXM6N8rhS+pcCPPkc5ylBUobZQB1NX09woLWPDDMxngoUch6ly/4sFhXmFGcZJ
- yE9A==
-X-Gm-Message-State: AFqh2krSXAsIxOiUVHC2OYlaCJUbJGiPdQ5rnfnQo5I9r6a4L7UYAz6z
- XEdbQHxYJKdc7oX8Xe3ezNbM8nNIqPN+JpJg
-X-Received: by 2002:adf:e2d2:0:b0:242:4cf5:f385 with SMTP id
- d18-20020adfe2d2000000b002424cf5f385mr19636019wrj.34.1672400118807; 
- Fri, 30 Dec 2022 03:35:18 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=NA/uioDCXzu43BeOx2mahIgOlYK6aPYVtQ1C36Sxbew=;
+ b=2g8gA4wzUsq11cAICrOVrPYGQYiv0kryL7o6tU+Fh1ys5RPH8bb5u1+Lt/NgSD9bcl
+ 1mEZi3+qKmh9ynk92pw0+HClYJysFD2n8XSguSD3EjW3L4+8txsH7o83Jqt+tZLL4Q3R
+ CqQH5YnFCT6oQqT8vPQSBbOQmefAQyD+jub1VbzAXjOQawQ5B5T91e/nrzjLIDHsPK++
+ YyBaB+blP6DZU0PYVMxr/6BJO2BcWg5YxbqyGdTUJg1EBkcFI/kwm+oWxcxKQQZhR0sA
+ gSdOHTqhw7UlAOPzJ7+is6Fm/5DyWKdC3ZxSnHI9zStDTzklOe0Zx2hRyKYA7uQ0+RmD
+ okMg==
+X-Gm-Message-State: AFqh2kqrRF5IQIZP88JSsn358un3McoBellGfnEzQQzDinJ1N2l2X2Wa
+ ZwzbqLwYxZllqS6yfLlknr5WH+r7fuAIE75r
+X-Received: by 2002:a05:600c:4fcf:b0:3d1:d396:1ade with SMTP id
+ o15-20020a05600c4fcf00b003d1d3961ademr22305552wmq.9.1672400107810; 
+ Fri, 30 Dec 2022 03:35:07 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- p14-20020adfe60e000000b0022584c82c80sm20446740wrm.19.2022.12.30.03.35.17
+ k1-20020a5d5181000000b0024207478de3sm20190488wrv.93.2022.12.30.03.35.05
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 30 Dec 2022 03:35:18 -0800 (PST)
+ Fri, 30 Dec 2022 03:35:07 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Joel Stanley <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>,
@@ -98,18 +97,16 @@ Cc: Joel Stanley <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>,
  Peter Delevoryas <pdel@meta.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Cleber Rosa <crosa@redhat.com>
-Subject: [PATCH v2 02/11] hw/watchdog/wdt_aspeed: Extend MMIO range to cover
- more registers
-Date: Fri, 30 Dec 2022 12:34:55 +0100
-Message-Id: <20221230113504.37032-3-philmd@linaro.org>
+Subject: [PATCH v2 00/11] hw/arm/aspeed_ast10x0: Map more peripherals & few
+ more fixes
+Date: Fri, 30 Dec 2022 12:34:53 +0100
+Message-Id: <20221230113504.37032-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221230113504.37032-1-philmd@linaro.org>
-References: <20221230113504.37032-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,87 +128,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wqRG13j9L+7I
+X-TUID: EfW5F55phQ0A
 
-When booting the Zephyr demo in [1] we get:
+Missing review: #3
 
-  aspeed.io: unimplemented device write (size 4, offset 0x185128, value 0x030f1ff1) <--
-  aspeed.io: unimplemented device write (size 4, offset 0x18512c, value 0x03fffff1)
+Since v1:
+- Fixed typo (Peter)
+- Link HACE with sram insted of secsram
+- Split patch #2 in 2, reworded it
+- Cover more WDT registers (new patch)
 
-This corresponds to this Zephyr code [2]:
-
-  static int aspeed_wdt_init(const struct device *dev)
-  {
-    const struct aspeed_wdt_config *config = dev->config;
-    struct aspeed_wdt_data *const data = dev->data;
-    uint32_t reg_val;
-
-    /* disable WDT by default */
-    reg_val = sys_read32(config->ctrl_base + WDT_CTRL_REG);
-    reg_val &= ~WDT_CTRL_ENABLE;
-    sys_write32(reg_val, config->ctrl_base + WDT_CTRL_REG);
-
-    sys_write32(data->rst_mask1,
-                config->ctrl_base + WDT_SW_RESET_MASK1_REG);   <------
-    sys_write32(data->rst_mask2,
-                config->ctrl_base + WDT_SW_RESET_MASK2_REG);
-
-    return 0;
-  }
-
-The register definitions are [3]:
-
-  #define WDT_RELOAD_VAL_REG          0x0004
-  #define WDT_RESTART_REG             0x0008
-  #define WDT_CTRL_REG                0x000C
-  #define WDT_TIMEOUT_STATUS_REG      0x0010
-  #define WDT_TIMEOUT_STATUS_CLR_REG  0x0014
-  #define WDT_RESET_MASK1_REG         0x001C
-  #define WDT_RESET_MASK2_REG         0x0020
-  #define WDT_SW_RESET_MASK1_REG      0x0028   <------
-  #define WDT_SW_RESET_MASK2_REG      0x002C
-  #define WDT_SW_RESET_CTRL_REG       0x0024
-
-Currently QEMU only cover a MMIO region of size 0x20:
-
-  #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
-
-Change to map the whole 'iosize' which might be bigger, covering
-the other registers. The MemoryRegionOps read/write handlers will
-report the accesses as out-of-bounds guest-errors, but the next
-commit will report them as unimplemented.
-
-[1] https://github.com/AspeedTech-BMC/zephyr/releases/tag/v00.01.07
-[2] https://github.com/AspeedTech-BMC/zephyr/commit/2e99f10ac27b
-[3] https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/drivers/watchdog/wdt_aspeed.c#L31
-
-Reviewed-by: Peter Delevoryas <peter@pjd.dev>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/watchdog/wdt_aspeed.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 958725a1b5..eefca31ae4 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -260,6 +260,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
- {
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     AspeedWDTState *s = ASPEED_WDT(dev);
-+    AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(dev);
- 
-     assert(s->scu);
- 
-@@ -271,7 +272,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
-     s->pclk_freq = PCLK_HZ;
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
--                          TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
-+                          TYPE_ASPEED_WDT, awc->iosize);
-     sysbus_init_mmio(sbd, &s->iomem);
- }
- 
+Trying to fix some bugs triggered running Zephyr.
+
+Still 2 bugs:
+
+1/
+uart:~$ sensor get SYSCLK
+[00:00:23.592,000] <err> os: ***** USAGE FAULT *****
+[00:00:23.593,000] <err> os:   Illegal use of the EPSR
+[00:00:23.593,000] <err> os: r0/a1:  0x00033448  r1/a2:  0x00000000  r2/a3:  0x00047f50
+[00:00:23.593,000] <err> os: r3/a4:  0x00000000 r12/ip:  0x00000000 r14/lr:  0x00000fbd
+[00:00:23.593,000] <err> os:  xpsr:  0x60000000
+[00:00:23.593,000] <err> os: Faulting instruction address (r15/pc): 0x00000000
+[00:00:23.593,000] <err> os: >>> ZEPHYR FATAL ERROR 0: CPU exception on CPU 0
+[00:00:23.594,000] <err> os: Current thread: 0x38248 (shell_uart)
+[00:00:23.601,000] <err> os: Halting system
+
+2/
+uart:~$ mcuboot
+[00:01:04.990,000] <err> os: ***** BUS FAULT *****
+[00:01:04.990,000] <err> os:   Instruction bus error
+[00:01:04.991,000] <err> os: r0/a1:  0x00000000  r1/a2:  0x000ffff0  r2/a3:  0x00047ef0
+[00:01:04.991,000] <err> os: r3/a4:  0x00000010 r12/ip:  0x6df7ecb5 r14/lr:  0x000188ed
+[00:01:04.991,000] <err> os:  xpsr:  0x61000000
+[00:01:04.991,000] <err> os: Faulting instruction address (r15/pc): 0x6df7ecb4
+[00:01:04.991,000] <err> os: >>> ZEPHYR FATAL ERROR 0: CPU exception on CPU 0
+[00:01:04.991,000] <err> os: Current thread: 0x38248 (shell_uart)
+[00:01:04.994,000] <err> os: Halting system
+
+----------------
+IN:
+PMSA MPU lookup for reading at 0x0001d400 mmu_idx 65 -> Hit (prot rwx)
+0x0001d5a2:  6869       ldr      r1, [r5, #4]
+0x0001d5a4:  4421       add      r1, r4
+0x0001d5a6:  6883       ldr      r3, [r0, #8]
+0x0001d5a8:  681c       ldr      r4, [r3]
+0x0001d5aa:  463a       mov      r2, r7
+0x0001d5ac:  4633       mov      r3, r6
+0x0001d5ae:  46a4       mov      ip, r4
+0x0001d5b0:  e8bd 41f0  pop.w    {r4, r5, r6, r7, r8, lr}
+0x0001d5b4:  4760       bx       ip
+
+PMSA MPU lookup for reading at 0x00000008 mmu_idx 65 -> Hit (prot rwx)
+PMSA MPU lookup for execute at 0x6df7ecb4 mmu_idx 65 -> Hit (prot rwx)
+Taking exception 3 [Prefetch Abort] on CPU 0
+...at fault address 0x6df7ecb4
+...with CFSR.IBUSERR
+PMSA MPU lookup for writing at 0x00047ec8 mmu_idx 65 -> Hit (prot rwx)
+PMSA MPU lookup for writing at 0x00047ecc mmu_idx 65 -> Hit (prot rwx)
+PMSA MPU lookup for writing at 0x00047ed0 mmu_idx 65 -> Hit (prot rwx)
+PMSA MPU lookup for writing at 0x00047ed4 mmu_idx 65 -> Hit (prot rwx)
+PMSA MPU lookup for writing at 0x00047ed8 mmu_idx 65 -> Hit (prot rwx)
+PMSA MPU lookup for writing at 0x00047edc mmu_idx 65 -> Hit (prot rwx)
+PMSA MPU lookup for writing at 0x00047ee0 mmu_idx 65 -> Hit (prot rwx)
+PMSA MPU lookup for writing at 0x00047ee4 mmu_idx 65 -> Hit (prot rwx)
+...taking pending nonsecure exception 5
+...loading from element 5 of non-secure vector table at 0x14
+...loaded new PC 0xa0cd
+----------------
+
+Philippe Mathieu-Daudé (11):
+  hw/watchdog/wdt_aspeed: Rename MMIO region size as 'iosize'
+  hw/watchdog/wdt_aspeed: Extend MMIO range to cover more registers
+  hw/watchdog/wdt_aspeed: Log unimplemented registers as UNIMP level
+  hw/arm/aspeed: Use the IEC binary prefix definitions
+  hw/misc/aspeed_hace: Do not crash if address_space_map() failed
+  hw/arm/aspeed_ast10x0: Add various unimplemented peripherals
+  hw/arm/aspeed_ast10x0: Map I3C peripheral
+  hw/arm/aspeed_ast10x0: Map the secure SRAM
+  hw/arm/aspeed_ast10x0: Map HACE peripheral
+  hw/arm/aspeed_ast10x0: Add TODO comment to use Cortex-M4F
+  tests/avocado: Test Aspeed Zephyr SDK v00.01.08 on AST1030 board
+
+ hw/arm/aspeed_ast10x0.c          | 84 ++++++++++++++++++++++++++++++--
+ hw/arm/aspeed_ast2600.c          |  5 +-
+ hw/arm/aspeed_soc.c              |  6 +--
+ hw/misc/aspeed_hace.c            | 21 +++++---
+ hw/watchdog/wdt_aspeed.c         | 24 +++++++--
+ include/hw/arm/aspeed_soc.h      | 14 ++++++
+ include/hw/watchdog/wdt_aspeed.h |  4 +-
+ tests/avocado/machine_aspeed.py  | 41 +++++++++++++++-
+ 8 files changed, 176 insertions(+), 23 deletions(-)
+
 -- 
 2.38.1
 

@@ -1,160 +1,178 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp6782959ejb;
-        Mon, 2 Jan 2023 07:47:56 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsJicVuWB1NKBb5OVnqDmllxYYjiiTQPHFGq2bzcL1AZsX+EhVVoisxRJrHfyFdhAfXvX9i
-X-Received: by 2002:a05:6214:1547:b0:4b4:94d8:513e with SMTP id t7-20020a056214154700b004b494d8513emr63292227qvw.0.1672674476736;
-        Mon, 02 Jan 2023 07:47:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672674476; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp6846184ejb;
+        Mon, 2 Jan 2023 09:53:52 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXukw9HsFxvplGMdKvVWxNqPKpRXHl8Mvdqk2lbynDyRzXh+w9F7lB3cb/2VRnN4OjRHZrjL
+X-Received: by 2002:ac8:74cc:0:b0:3a5:306f:b124 with SMTP id j12-20020ac874cc000000b003a5306fb124mr57266311qtr.10.1672682032743;
+        Mon, 02 Jan 2023 09:53:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672682032; cv=none;
         d=google.com; s=arc-20160816;
-        b=cw7HPxiO5hjXkh0uERpRmJVBKwmAXf2GRScEuZYM83j/Z76ZrOxI5u5+dhmwVg3kwf
-         WWvvbg7hmts2XuSnesCNZ6gY44ZQV5V8BCMHon9r5EWpIYSSoUqUCJazAjvd5KWY08M4
-         3/x/Fr3YOEPqM2OqfK/Etb9gsrwxbOb3XH43HEOysv4/gauKHvcNamIhq80q6NgMWTfi
-         yrFf4/9xuhTXfd8+jFsPWKXK4JYs4rQHGx9i2VneRNKCMlPXZ/wVWCbbxIqvycPnImRn
-         yZiId/n2+Q5S/O7ms1lMPp8912Ck/ePaYuM5wSp4N2q0gzhKHTKFKIoRZtuijm3jdpyc
-         m5CQ==
+        b=gDyCUhQHEObAn4sElCA2fb/9YDUb/7GKmoZsJMgRpWI5r04UM74Lo9UruOxheycHP/
+         Vg93Bj/qbbA+NrASerjH1uNfho/0mMMWPBmrCr23TXiWwxYek0AxdN04ZonXbSAkKOLf
+         MH6z989AP9rytR95At7YzI8r3t7gM+8Hvc1G/72Yvott1DdGGExyHqOf1+HXl5ue6PbF
+         fkfvGg6PikXIItTkEz87ZQuNQdFn0Ri/X4mRWocm/tYqloldSUSUBKBjnMIsRqSYGLuA
+         cCMENk2I3Qs1XFg3NhL+J0IbPwebIFnKGlkCK3YqjN/7HcblFi/nHN0PruMfC8Q/SrSL
+         uUkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ebvt78D1dGQUeu3mnmAAaKecMikfFtZ9TiYMlfLwta0=;
-        b=MDvw6ss1GSNVHI1oBbnoTgkvDbeC+f4OMe+K9T2AB4Ii6ZU6ppUpxI6PUasg4HwG1E
-         V0KP4cDkVjhSP5MbXDKd87eidnwhLkGsrFZLD7r0AXNfFu710BlfSF73tULunT1aBzEc
-         fjooLEWi56/zTP08JISjmMVDns9lLubPwpbt7EH3Ro1dYoIWStXGERrIbmGHHMRA47am
-         98T6Fb+bci+jwd3IrRDORGCXxjL+/uSo6mTeRyG9kCNly+hTOwQ0++PexTWizNP2DAES
-         lyfbvJ4+QfunSUQgQN6kS6hmPW5+L7dyPxj/Jbfx7HhK6CLKoXAJNXBZX7PCriCN4osf
-         CXuw==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=Gfkhfj04KQE26RJX4KrV4f/7WWmoW2rKlsO4pJG9W3A=;
+        b=I5pxlVor3d0yF+dvfrz55+IU88viXDmOwsAIj6nZICHXK3EP03SNflZH/7KMnkEIQR
+         csootCnG3m2K6gdWFbEvE68Po6t8UV1iOXUBq5e8jA2vYcj1y6yiYf3EjSYktwNVB5S7
+         WqE0cj28wqHRW/eu8tVfGHoJpBL9s5hRcz+8KTQQwmcwAAxvegy8poKDXCWGIN3zLsOK
+         mkMZbj8TwM5xCWrkwZAvxhUkt7b/5M5GFYJsDiozsTPQGL9H0Am2I179Eahlwy0eMMPB
+         qrC4rL9eiKakfbhrXCx0a1tlq8m3mylKDV7+mAegx0Ssbx73PwhvCBe+bDOh9fYsOOop
+         EH7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=ICWS0LE3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 11-20020a056214202b00b00531aecc05c9si5620696qvf.201.2023.01.02.07.47.56
+        by mx.google.com with ESMTPS id g10-20020ac84b6a000000b003a803633c22si14366394qts.369.2023.01.02.09.53.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Jan 2023 07:47:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 02 Jan 2023 09:53:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=ICWS0LE3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pCN24-0001MI-Fh; Mon, 02 Jan 2023 10:47:25 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pCP00-0000fY-67; Mon, 02 Jan 2023 12:53:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_rcran@quicinc.com>)
- id 1pCN1c-0001K3-5S; Mon, 02 Jan 2023 10:47:20 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <SRS0=vkp6=47=kaod.org=clg@ozlabs.org>)
+ id 1pCOzq-0000f1-TI; Mon, 02 Jan 2023 12:53:16 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_rcran@quicinc.com>)
- id 1pCN1Z-00034k-UJ; Mon, 02 Jan 2023 10:46:55 -0500
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 302FQ8UL017118; Mon, 2 Jan 2023 15:46:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=from : to : cc :
- subject : date : message-id : mime-version : content-transfer-encoding :
- content-type; s=qcppdkim1;
- bh=Ebvt78D1dGQUeu3mnmAAaKecMikfFtZ9TiYMlfLwta0=;
- b=ICWS0LE3otuFiDOkQRHw92ubVdKseRGuPQQSSBVYxKSlTmi36lpqfmu14ZmZRmNT7DWU
- nBWDOCJoElFXzyJyoDrK5wh1UTJER0GHcyMTQ4I+TeXv6V9ZolVeQunsdRWZ+mp+Hlsn
- TgCJfJroSRYyKBpe2hhZFriDldXD+Q4wcHegjVwHxm/BrtHdjYRkXi7lOmpmJ949ZSFB
- sQwRpd7tjLOYUI7K83B/3MYu0lPGFaZr3P5Zj3Z+igfVWjWvHC9KLGCAr3AFRFFxzS4K
- IvdSWJMBPiJtP90QDH9oQyA2ij+3KIV0tt6r76tEdDE6ofQRcOS9v3uBS/UOBZI+xUM4 9w== 
-Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com
- [129.46.96.20])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3mtaewbcpv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 02 Jan 2023 15:46:50 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com
- [10.47.209.196])
- by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 302Fkn06017835
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 2 Jan 2023 15:46:49 GMT
-Received: from linbox.qualcomm.com (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Mon, 2 Jan 2023
- 07:46:48 -0800
-From: Rebecca Cran <rebecca@quicinc.com>
-To: Radoslaw Biernacki <rad@semihalf.com>, Peter Maydell
- <peter.maydell@linaro.org>, Leif Lindholm <quic_llindhol@quicinc.com>
-CC: Rebecca Cran <rebecca@quicinc.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-Subject: [PATCH 1/1] hw/arm/sbsa-ref.c: Start APs powered off
-Date: Mon, 2 Jan 2023 08:46:30 -0700
-Message-ID: <20230102154630.211785-1-rebecca@quicinc.com>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <SRS0=vkp6=47=kaod.org=clg@ozlabs.org>)
+ id 1pCOzo-0005ra-IU; Mon, 02 Jan 2023 12:53:14 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Nm3P34rBFz4xP3;
+ Tue,  3 Jan 2023 04:52:55 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Nm3P20rVHz4xGM;
+ Tue,  3 Jan 2023 04:52:53 +1100 (AEDT)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH] target/arm: Allow users to set the number of VFP registers
+Date: Mon,  2 Jan 2023 18:52:45 +0100
+Message-Id: <20230102175245.1895037-1-clg@kaod.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-ORIG-GUID: hbke2dw5Xglef_WOG4fqb_ZojJuwkxUH
-X-Proofpoint-GUID: hbke2dw5Xglef_WOG4fqb_ZojJuwkxUH
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.923,Hydra:6.0.545,FMLib:17.11.122.1
- definitions=2023-01-02_10,2022-12-30_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1011 suspectscore=0
- phishscore=0 priorityscore=1501 malwarescore=0 mlxscore=0 bulkscore=0
- impostorscore=0 mlxlogscore=687 lowpriorityscore=0 adultscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2301020142
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=quic_rcran@quicinc.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=vkp6=47=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +8i/mIBRFVLq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4NRFGhmpMRtS
 
-For the SBSA-REF machine start all APs in the powered-off state.
-This reduces host CPU usage until PSCI_CPU_ON is called when the APs
-are needed.
+Cortex A7 CPUs with an FPU implementing VFPv4 without NEON support
+have 16 64-bit FPU registers and not 32 registers. Let users set the
+number of VFP registers with a CPU property.
 
-Signed-off-by: Rebecca Cran <rebecca@quicinc.com>
+The primary use case of this property is for the Cortex A7 of the
+Aspeed AST2600 SoC.
+
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/sbsa-ref.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ target/arm/cpu.h        |  2 ++
+ hw/arm/aspeed_ast2600.c |  2 ++
+ target/arm/cpu.c        | 14 ++++++++++++++
+ 3 files changed, 18 insertions(+)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 4bb444684f40..cf0af35c7807 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -753,6 +753,12 @@ static void sbsa_ref_init(MachineState *machine)
-                                     &error_abort);
-         }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 2b4bd20f9d..55e2e9a584 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -897,6 +897,8 @@ struct ArchCPU {
+     bool has_pmu;
+     /* CPU has VFP */
+     bool has_vfp;
++    /* CPU has 32 VFP registers */
++    bool has_vfp_d32;
+     /* CPU has Neon */
+     bool has_neon;
+     /* CPU has M-profile DSP extension */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index cd75465c2b..37f43b4165 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -309,6 +309,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+                                 &error_abort);
+         object_property_set_bool(OBJECT(&s->cpu[i]), "neon", false,
+                                 &error_abort);
++        object_property_set_bool(OBJECT(&s->cpu[i]), "vfp-d32", false,
++                                &error_abort);
+         object_property_set_link(OBJECT(&s->cpu[i]), "memory",
+                                  OBJECT(s->memory), &error_abort);
  
-+        /* Configure all APs to be powered off at start */
-+        if (n != 0 && object_property_find(cpuobj, "start-powered-off")) {
-+            object_property_set_bool(cpuobj, "start-powered-off",
-+                                     true, &error_abort);
-+        }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 2fa022f62b..27af57ea9a 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1258,6 +1258,9 @@ static Property arm_cpu_cfgend_property =
+ static Property arm_cpu_has_vfp_property =
+             DEFINE_PROP_BOOL("vfp", ARMCPU, has_vfp, true);
+ 
++static Property arm_cpu_has_vfp_d32_property =
++            DEFINE_PROP_BOOL("vfp-d32", ARMCPU, has_vfp_d32, true);
 +
-         object_property_set_link(cpuobj, "memory", OBJECT(sysmem),
-                                  &error_abort);
+ static Property arm_cpu_has_neon_property =
+             DEFINE_PROP_BOOL("neon", ARMCPU, has_neon, true);
  
+@@ -1384,8 +1387,11 @@ void arm_cpu_post_init(Object *obj)
+         ? cpu_isar_feature(aa64_fp_simd, cpu)
+         : cpu_isar_feature(aa32_vfp, cpu)) {
+         cpu->has_vfp = true;
++        cpu->has_vfp_d32 = true;
+         if (!kvm_enabled()) {
+             qdev_property_add_static(DEVICE(obj), &arm_cpu_has_vfp_property);
++            qdev_property_add_static(DEVICE(obj),
++                                     &arm_cpu_has_vfp_d32_property);
+         }
+     }
+ 
+@@ -1650,6 +1656,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    if (!cpu->has_vfp_d32) {
++        uint32_t u;
++
++        u = cpu->isar.mvfr0;
++        u = FIELD_DP32(u, MVFR0, SIMDREG, 1); /* 16 registers */
++        cpu->isar.mvfr0 = u;
++    }
++
+     if (!cpu->has_vfp) {
+         uint64_t t;
+         uint32_t u;
 -- 
-2.30.2
+2.38.1
 

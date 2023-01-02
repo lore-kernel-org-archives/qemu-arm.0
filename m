@@ -1,103 +1,101 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp6611468ejb;
-        Mon, 2 Jan 2023 02:35:00 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtMD6c9cBPNXWnfUAm2zpWdUj6bPspTE7/5C5FpOs/ARaf+yGfJtprfhUJfrluxRBUVZ8vY
-X-Received: by 2002:ac8:776f:0:b0:3a7:f3f0:483 with SMTP id h15-20020ac8776f000000b003a7f3f00483mr50385291qtu.60.1672655700117;
-        Mon, 02 Jan 2023 02:35:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672655700; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp6621702ejb;
+        Mon, 2 Jan 2023 02:56:08 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvV6YoHWpW3eHxH9eP0aMUvlmtsGVIh96QGYMEOniqcPCU50ivPpfx5fBAdoagiQUw8s/KT
+X-Received: by 2002:ac8:51cc:0:b0:3a5:977e:d05d with SMTP id d12-20020ac851cc000000b003a5977ed05dmr55220666qtn.52.1672656968165;
+        Mon, 02 Jan 2023 02:56:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672656968; cv=none;
         d=google.com; s=arc-20160816;
-        b=XwW5363pAjMxsq5tuNFsCXbXIoWa8r6HDV5FnjmTOIy1IEn3iq1ASBiCC+fH4OeLWo
-         Mq56ARl3Hh56vdm25VEAygc/i2A+OmpTDIgdV0buDzOQ2AOvRTnhwskSyeD79lzRfDiZ
-         23fCEk8xfrSjpsydn5m1ojgiQreE0Zo2MYDMjyiKO1Ng4D996DKofCZojaEOW2Kn9kmX
-         9x/u+SbquW8NBjHdyKdJSKBTBkLdgLoP69Dg+3OPkjGJ3m2eIYzKMmCC8OUO7N7ZYXkF
-         YWwsIFYPtD0adyg3NaZ7Th5F0X4d64B6pyFtUtgoDGmKTliDLp82mJ66DIS9BPKdMlbO
-         amhg==
+        b=T9lG3utw7+BJAwtsB7Jdj/OEWzSD46/9zqMqYS52fifcYd7cCc8S7jISZcWqj9w5N3
+         cqd+OYZ/DBhFBU3sS2YerqyHS5ZMSxddhX8gVNwXxkjBH3Vg9DQ1PL2JAoAoD1oqq0XO
+         JzILlWpNpcrJEcq8XXU4AJVAECyynZ9Y8UgoaVIPddj4fDBlKmF2OL1Va0oW1fvQusSR
+         609/TtbE5Tit4HJ3uSMnNHjl2TBa/M8roTm8YK8ANLkYCnjdIVbTBB0sNI7ReXBur6SV
+         nPuNGb5vh0TPEiGhexoSKVuKvtty78EFmJPmZN02fXog+EI1GGRYyL3mKOO838UP/RD5
+         z+9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=VXPGyOs4F5e5lxycP9wQWiMScaIouXWNFhWA1IWBoLk=;
-        b=IHayjSNalRDpcSHpckMX8Z5IdPTJAJEEAT6frg0PwS7gi4ryypTvg0yC4faT1sZJPg
-         ZYthuNTNjZlV9hLQhRJaR00tnoj5FZ9abiX/BH8CFwFe3YgDe4wjDkSL9iw0NK9EMLXV
-         K0541J0uqyOmzpKgMRN/zHFGv0V5rV1xYwVxJoDAlnDwvwxSFOPzZlqOkdFJGYNWNtj6
-         26woSX0dhEYAu/qt1M52HaJodqn3m9gFqQxNRLt7Kxsg+cYd1OyWwv10kzShlk0fK+x5
-         Oo9Cmy2uMF3HWjy9+WFwyBqmR5cXQnfq0E7aHHoMGC2kzPi+8hwirJ513aafoBtfGNfk
-         V9kA==
+        bh=lrUaoHpnXJ61B8aCLBk//MqjqoaPY8x+U+s8Bq7+3V4=;
+        b=AePlN6e2bx1FF1At94OQTS6oeeOAH05Jr5UCwTYCCd+csDvLdRnOmO+0nCYBxJYmTO
+         DCiKIv2a1bjEjY8Y43oS+ONBJTLZ/Ey5NbWjCBYArQs122qx96245PxlFIxCP8Xb/jb/
+         q1SFzeUrtobv0+b+3vagWHj3S7DTTW3Vpx4PgS647x9nKtKJRMiNRrkI2148403RRXk3
+         jCWmnifcl92FKdSxdhofNaR+6ID2scby8NQnuTswVHKH2yZjPnbk30gEIcg2FqDuiNQf
+         ExAXz6mfQPmAkrTVLXw2eUGqSD1pO/hrIoca/CDs9ESLjR0rb0jAy7vzolX85LuNtBMT
+         Yp6A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ey8-20020a05622a4c0800b003a7e4ede9b6si14678401qtb.428.2023.01.02.02.34.59
+        by mx.google.com with ESMTPS id b24-20020ac86798000000b003a68d103cd5si13381722qtp.575.2023.01.02.02.56.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Jan 2023 02:35:00 -0800 (PST)
+        Mon, 02 Jan 2023 02:56:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pCI9J-0002wV-4w; Mon, 02 Jan 2023 05:34:33 -0500
+	id 1pCITl-00087o-Un; Mon, 02 Jan 2023 05:55:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCI9I-0002wB-25
- for qemu-arm@nongnu.org; Mon, 02 Jan 2023 05:34:32 -0500
-Received: from 2.mo552.mail-out.ovh.net ([178.33.105.233])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCITg-00086w-Iv
+ for qemu-arm@nongnu.org; Mon, 02 Jan 2023 05:55:36 -0500
+Received: from 7.mo548.mail-out.ovh.net ([46.105.33.25])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCI9F-00086A-V4
- for qemu-arm@nongnu.org; Mon, 02 Jan 2023 05:34:31 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.55])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id E33412ABDD;
- Mon,  2 Jan 2023 10:34:24 +0000 (UTC)
-Received: from kaod.org (37.59.142.102) by DAG4EX2.mxp5.local (172.16.2.32)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCITb-00031P-FU
+ for qemu-arm@nongnu.org; Mon, 02 Jan 2023 05:55:34 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.180])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 2936A226A4;
+ Mon,  2 Jan 2023 10:55:25 +0000 (UTC)
+Received: from kaod.org (37.59.142.95) by DAG4EX2.mxp5.local (172.16.2.32)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Mon, 2 Jan
- 2023 11:34:24 +0100
+ 2023 11:55:24 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004a026ae99-87a7-4cc3-864a-c4509f776d68,
+ (GARM-95G001321a1e2b-7ee1-4754-b4b9-dbed5726f8e6,
  EB6D15DD045C308F841A27F8E66F545441276E15) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <573321b6-7083-0996-675d-73245fcb178c@kaod.org>
-Date: Mon, 2 Jan 2023 11:34:23 +0100
+Message-ID: <8407bb7d-2297-058f-4ef3-d490ba85f985@kaod.org>
+Date: Mon, 2 Jan 2023 11:55:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH 1/9] hw/watchdog/wdt_aspeed: Map the whole MMIO range
+Subject: Re: [PATCH 0/9] hw/arm/aspeed_ast10x0: Map more peripherals & few
+ more fixes
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>, Peter
- Delevoryas <peter@pjd.dev>
-CC: <qemu-devel@nongnu.org>, Steven Lee <steven_lee@aspeedtech.com>, Peter
- Delevoryas <pdel@meta.com>, <qemu-arm@nongnu.org>, Cleber Rosa
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ <qemu-devel@nongnu.org>
+CC: Steven Lee <steven_lee@aspeedtech.com>, Peter Delevoryas <peter@pjd.dev>, 
+ Peter Delevoryas <pdel@meta.com>, <qemu-arm@nongnu.org>, Cleber Rosa
  <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Beraldo Leal
  <bleal@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Troy
  Lee <troy_lee@aspeedtech.com>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
  <joel@jms.id.au>, Peter Delevoryas <pdel@fb.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
+ <jamin_lin@aspeedtech.com>
 References: <20221229152325.32041-1-philmd@linaro.org>
- <20221229152325.32041-2-philmd@linaro.org>
- <Y637mlYosU4ULh9b@pdel-mbp.dhcp.thefacebook.com>
- <fcb05260-8723-690a-52c8-db72c7372f65@linaro.org>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <fcb05260-8723-690a-52c8-db72c7372f65@linaro.org>
+In-Reply-To: <20221229152325.32041-1-philmd@linaro.org>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX2.mxp5.local
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX2.mxp5.local
  (172.16.2.32)
-X-Ovh-Tracer-GUID: 7615b261-fee9-41f8-a8a5-06cb1ec02b21
-X-Ovh-Tracer-Id: 12911820135396510596
+X-Ovh-Tracer-GUID: 83c2233d-2ca0-48d9-ba57-f60e5705adda
+X-Ovh-Tracer-Id: 13266760081395911553
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrjedvgddujecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfefgkeetkeegleehueejgefhteekteelieduueffkeetgfekheeuffehveevkeejnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphhhihhlmhgusehlihhnrghrohdrohhrghdpphgvthgvrhesphhjugdruggvvhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpshhtvghvvghnpghlvggvsegrshhpvggvughtvggthhdrtghomhdpphguvghlsehmvghtrgdrtghomhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdptghrohhsrgesrhgvughhrghtrdgtohhmpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpsghlvggrlhesrh
- gvughhrghtrdgtohhmpdifrghinhgvrhhsmhesrhgvughhrghtrdgtohhmpdhtrhhohigplhgvvgesrghsphgvvgguthgvtghhrdgtohhmpdgrnhgurhgvfiesrghjrdhiugdrrghupdhjohgvlhesjhhmshdrihgurdgruhdpphguvghlsehfsgdrtghomhdpjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhmpdgthhhinhdqthhinhhgpghkuhhosegrshhpvggvughtvggthhdrtghomhdpoffvtefjohhsthepmhhoheehvddpmhhouggvpehsmhhtphhouhht
-Received-SPF: pass client-ip=178.33.105.233; envelope-from=clg@kaod.org;
- helo=2.mo552.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrjedvgddvudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepleehhfdufeeuveejteduleeitdegvdekfedtffegkeekkedvteegudehtdejgfdtnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpghhithhhuhgsrdgtohhmnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdelheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphhhihhlmhgusehlihhnrghrohdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpshhtvghvvghnpghlvggvsegrshhpvggvughtvggthhdrtghomhdpphgvthgvrhesphhjugdruggvvhdpphguvghlsehmvghtrgdrtghomhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdptghrohhsrgesrhgvughhrghtrdgtohhmpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdroh
+ hrghdpsghlvggrlhesrhgvughhrghtrdgtohhmpdifrghinhgvrhhsmhesrhgvughhrghtrdgtohhmpdhtrhhohigplhgvvgesrghsphgvvgguthgvtghhrdgtohhmpdgrnhgurhgvfiesrghjrdhiugdrrghupdhjohgvlhesjhhmshdrihgurdgruhdpphguvghlsehfsgdrtghomhdpjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhmpdfovfetjfhoshhtpehmohehgeekpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=46.105.33.25; envelope-from=clg@kaod.org;
+ helo=7.mo548.mail-out.ovh.net
 X-Spam_score_int: -46
 X-Spam_score: -4.7
 X-Spam_bar: ----
 X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.802,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,154 +110,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /Y42hojD9XBi
+X-TUID: ZZg74cZkBISn
 
-On 12/30/22 08:32, Philippe Mathieu-Daudé wrote:
-> On 29/12/22 21:42, Peter Delevoryas wrote:
->> On Thu, Dec 29, 2022 at 04:23:17PM +0100, Philippe Mathieu-Daudé wrote:
->>> Avoid confusing two different things:
->>> - the WDT I/O region size ('iosize')
->>> - at which offset the SoC map the WDT ('offset')
->>> While it is often the same, we can map smaller region sizes at
->>> larger offsets.
->>>
->>> Here we are interested in the I/O region size. Rename as 'iosize'
->>> and map the whole range, not only the first implemented registers.
->>> Unimplemented registers accesses are already logged as guest-errors.
->>>
->>> Otherwise when booting the demo in [*] we get:
->>>
->>>    aspeed.io: unimplemented device write (size 4, offset 0x1851a8, value 0x030f1ff1)
->>>    aspeed.io: unimplemented device write (size 4, offset 0x1851ac, value 0x03fffff1)
->>>    aspeed.io: unimplemented device write (size 4, offset 0x185128, value 0x030f1ff1)
->>>    aspeed.io: unimplemented device write (size 4, offset 0x18512c, value 0x03fffff1)
->>>
->>> [*] https://github.com/AspeedTech-BMC/zephyr/releases/tag/v00.01.07
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>>   hw/arm/aspeed_ast10x0.c          |  2 +-
->>>   hw/arm/aspeed_ast2600.c          |  2 +-
->>>   hw/arm/aspeed_soc.c              |  2 +-
->>>   hw/watchdog/wdt_aspeed.c         | 12 +++++++-----
->>>   include/hw/watchdog/wdt_aspeed.h |  2 +-
->>>   5 files changed, 11 insertions(+), 9 deletions(-)
+On 12/29/22 16:23, Philippe Mathieu-Daudé wrote:
+> Trying to fix some bugs triggered running Zephyr.
 > 
+> Still 2 bugs:
 > 
->>> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
->>> index d753693a2e..c1311ce74c 100644
->>> --- a/hw/watchdog/wdt_aspeed.c
->>> +++ b/hw/watchdog/wdt_aspeed.c
->>> @@ -260,6 +260,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
->>>   {
->>>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->>>       AspeedWDTState *s = ASPEED_WDT(dev);
->>> +    AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(dev);
->>>       assert(s->scu);
->>> @@ -270,8 +271,9 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
->>>        */
->>>       s->pclk_freq = PCLK_HZ;
->>> +    assert(awc->iosize >= ASPEED_WDT_REGS_MAX * 4);
->>>       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
->>> -                          TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
->>> +                          TYPE_ASPEED_WDT, awc->iosize);
->>
->> Does this fix the unimplemented thing you referred to in the commit message?
+> 1/
+> uart:~$ sensor get SYSCLK
+> [00:00:23.592,000] <err> os: ***** USAGE FAULT *****
+> [00:00:23.593,000] <err> os:   Illegal use of the EPSR
+> [00:00:23.593,000] <err> os: r0/a1:  0x00033448  r1/a2:  0x00000000  r2/a3:  0x00047f50
+> [00:00:23.593,000] <err> os: r3/a4:  0x00000000 r12/ip:  0x00000000 r14/lr:  0x00000fbd
+> [00:00:23.593,000] <err> os:  xpsr:  0x60000000
+> [00:00:23.593,000] <err> os: Faulting instruction address (r15/pc): 0x00000000
+> [00:00:23.593,000] <err> os: >>> ZEPHYR FATAL ERROR 0: CPU exception on CPU 0
+> [00:00:23.594,000] <err> os: Current thread: 0x38248 (shell_uart)
+> [00:00:23.601,000] <err> os: Halting system
 > 
-> Yes, I'll reword the description to be clearer.
+> 2/
+> uart:~$ mcuboot
+> [00:01:04.990,000] <err> os: ***** BUS FAULT *****
+> [00:01:04.990,000] <err> os:   Instruction bus error
+> [00:01:04.991,000] <err> os: r0/a1:  0x00000000  r1/a2:  0x000ffff0  r2/a3:  0x00047ef0
+> [00:01:04.991,000] <err> os: r3/a4:  0x00000010 r12/ip:  0x6df7ecb5 r14/lr:  0x000188ed
+> [00:01:04.991,000] <err> os:  xpsr:  0x61000000
+> [00:01:04.991,000] <err> os: Faulting instruction address (r15/pc): 0x6df7ecb4
+> [00:01:04.991,000] <err> os: >>> ZEPHYR FATAL ERROR 0: CPU exception on CPU 0
+> [00:01:04.991,000] <err> os: Current thread: 0x38248 (shell_uart)
+> [00:01:04.994,000] <err> os: Halting system
 > 
->> I'm not sure which part of this diff actually removes the unimplemented traces.
+> ----------------
+> IN:
+> PMSA MPU lookup for reading at 0x0001d400 mmu_idx 65 -> Hit (prot rwx)
+> 0x0001d5a2:  6869       ldr      r1, [r5, #4]
+> 0x0001d5a4:  4421       add      r1, r4
+> 0x0001d5a6:  6883       ldr      r3, [r0, #8]
+> 0x0001d5a8:  681c       ldr      r4, [r3]
+> 0x0001d5aa:  463a       mov      r2, r7
+> 0x0001d5ac:  4633       mov      r3, r6
+> 0x0001d5ae:  46a4       mov      ip, r4
+> 0x0001d5b0:  e8bd 41f0  pop.w    {r4, r5, r6, r7, r8, lr}
+> 0x0001d5b4:  4760       bx       ip
 > 
-> Having:
+> PMSA MPU lookup for reading at 0x00000008 mmu_idx 65 -> Hit (prot rwx)
+> PMSA MPU lookup for execute at 0x6df7ecb4 mmu_idx 65 -> Hit (prot rwx)
+> Taking exception 3 [Prefetch Abort] on CPU 0
+> ...at fault address 0x6df7ecb4
+> ...with CFSR.IBUSERR
+> PMSA MPU lookup for writing at 0x00047ec8 mmu_idx 65 -> Hit (prot rwx)
+> PMSA MPU lookup for writing at 0x00047ecc mmu_idx 65 -> Hit (prot rwx)
+> PMSA MPU lookup for writing at 0x00047ed0 mmu_idx 65 -> Hit (prot rwx)
+> PMSA MPU lookup for writing at 0x00047ed4 mmu_idx 65 -> Hit (prot rwx)
+> PMSA MPU lookup for writing at 0x00047ed8 mmu_idx 65 -> Hit (prot rwx)
+> PMSA MPU lookup for writing at 0x00047edc mmu_idx 65 -> Hit (prot rwx)
+> PMSA MPU lookup for writing at 0x00047ee0 mmu_idx 65 -> Hit (prot rwx)
+> PMSA MPU lookup for writing at 0x00047ee4 mmu_idx 65 -> Hit (prot rwx)
+> ...taking pending nonsecure exception 5
+> ...loading from element 5 of non-secure vector table at 0x14
+> ...loaded new PC 0xa0cd
+> ----------------
 > 
->    #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
-> 
-> Before this patch, we map regions of 0x20 ...
-> 
->>> @@ -392,7 +394,7 @@ static void aspeed_1030_wdt_class_init(ObjectClass *klass, void *data)
->>>       AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
->>>       dc->desc = "ASPEED 1030 Watchdog Controller";
->>> -    awc->offset = 0x80;
->>> +    awc->iosize = 0x80;
-> 
-> ... every span of 0x80, so there is a gap of 0x60, apparently accessed
-> by the Zephyr WDT driver (address 0x28 - register #10 - is accessed in
-> the traces).
-> 
->  From the driver source we can see [1] added in [2]:
-> 
->      #define WDT_RELOAD_VAL_REG          0x0004
->      #define WDT_RESTART_REG             0x0008
->      #define WDT_CTRL_REG                0x000C
->      #define WDT_TIMEOUT_STATUS_REG      0x0010
->      #define WDT_TIMEOUT_STATUS_CLR_REG  0x0014
->      #define WDT_RESET_MASK1_REG         0x001C
->      #define WDT_RESET_MASK2_REG         0x0020
->      #define WDT_SW_RESET_MASK1_REG      0x0028   <------
->      #define WDT_SW_RESET_MASK2_REG      0x002C
->      #define WDT_SW_RESET_CTRL_REG       0x0024
-> 
-> So the traces likely correspond to this code:
-> 
->    static int aspeed_wdt_init(const struct device *dev)
->    {
->      const struct aspeed_wdt_config *config = dev->config;
->      struct aspeed_wdt_data *const data = dev->data;
->      uint32_t reg_val;
-> 
->      /* disable WDT by default */
->      reg_val = sys_read32(config->ctrl_base + WDT_CTRL_REG);
->      reg_val &= ~WDT_CTRL_ENABLE;
->      sys_write32(reg_val, config->ctrl_base + WDT_CTRL_REG);
-> 
->      sys_write32(data->rst_mask1,
->                  config->ctrl_base + WDT_SW_RESET_MASK1_REG);
->      sys_write32(data->rst_mask2,
->                  config->ctrl_base + WDT_SW_RESET_MASK2_REG);
-> 
->      return 0;
->    }
+> HACE isn't really functional there. I probably screwed smth while wiring
+> the peripheral. Not obvious without access to the datasheet.
 
-Yes. These registers have been on the TODO list for 3/4 years :/
+The HACE logic is quite complex and the model might be a bit fragile for some
+modes. I think accumulation still has some problems.
 
-> After this patch, we map (in this case) a MMIO region of 0x80.
-> Accesses to address 0x28 hits this device model but is handled
-> as 'WDT register not covered'.
+Here are drivers for it :
 
-If we are to change things, adding the definitions of the software mode
-reset regs in the WDT model would be cleaner. All accesses to these regs
-could generate an UNIMP log saying that "support for software mode reset"
-is not implemented.
+   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/crypto/aspeed
+   https://github.com/openbmc/u-boot/blob/v2019.04-aspeed-openbmc/drivers/crypto/aspeed_hace_v1.c
+   https://github.com/openbmc/u-boot/blob/v2019.04-aspeed-openbmc/drivers/crypto/aspeed_hace.c
 
 Thanks,
 
 C.
-  
+
 > 
-> Better would be to extend the Aspeed WDT model in QEMU, or at
-> least report the valid-but-unimplemented registers as UNIMP instead
-> of GUEST_ERRORS.
+> Philippe Mathieu-Daudé (9):
+>    hw/watchdog/wdt_aspeed: Map the whole MMIO range
+>    hw/arm/aspeed: Use the IEC binary prefix definitions
+>    hw/arm/aspeed_ast10x0: Add various unimplemented peripherals
+>    hw/arm/aspeed_ast10x0: Map I3C peripheral
+>    hw/arm/aspeed_ast10x0: Map the secure SRAM
+>    hw/arm/aspeed_ast10x0: Map HACE peripheral
+>    hw/misc/aspeed_hace: Do not crash if address_space_map() failed
+>    hw/arm/aspeed_ast10x0: Add TODO comment to use Cortex-M4F
+>    tests/avocado: Test Aspeed Zephyr SDK v00.01.08 on AST1030 board
 > 
-> [1] https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/drivers/watchdog/wdt_aspeed.c#L31
-> [2] https://github.com/AspeedTech-BMC/zephyr/commit/2e99f10ac27b
-> 
->>> diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
->>> index dfa5dfa424..db91ee6b51 100644
->>> --- a/include/hw/watchdog/wdt_aspeed.h
->>> +++ b/include/hw/watchdog/wdt_aspeed.h
->>> @@ -40,7 +40,7 @@ struct AspeedWDTState {
->>>   struct AspeedWDTClass {
->>>       SysBusDeviceClass parent_class;
->>> -    uint32_t offset;
->>> +    uint32_t iosize;
->>
->> Oh yeah, iosize is a way better name for this. +1. But to be honest, I don't
->> understand how this is changing the unimplemented traces?
->>
->> Reviewed-by: Peter Delevoryas <peter@pjd.dev>
-> 
-> Thanks!
-> 
-> Phil.
+>   hw/arm/aspeed_ast10x0.c          | 84 ++++++++++++++++++++++++++++++--
+>   hw/arm/aspeed_ast2600.c          |  5 +-
+>   hw/arm/aspeed_soc.c              |  6 +--
+>   hw/misc/aspeed_hace.c            | 21 +++++---
+>   hw/watchdog/wdt_aspeed.c         | 12 +++--
+>   include/hw/arm/aspeed_soc.h      | 14 ++++++
+>   include/hw/watchdog/wdt_aspeed.h |  2 +-
+>   tests/avocado/machine_aspeed.py  | 41 +++++++++++++++-
+>   8 files changed, 163 insertions(+), 22 deletions(-)
 > 
 

@@ -1,102 +1,105 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp6726858ejb;
-        Mon, 2 Jan 2023 06:08:18 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuJDvlSq1a9o+v853YsOammW0vsZ9TmfPLKsNbnB2wCU/YkSenLRtYWZe75HR4g4OuOyaGf
-X-Received: by 2002:a05:622a:d:b0:3a8:1eb6:ee34 with SMTP id x13-20020a05622a000d00b003a81eb6ee34mr76477661qtw.50.1672668497842;
-        Mon, 02 Jan 2023 06:08:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672668497; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp6904214ejb;
+        Mon, 2 Jan 2023 12:06:44 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsDSMY8YGi2gKbmjwnRsVLdmZFv1E7KAZ4mFIbBJlcAeP11tsVuvvZ8fdgQbJUuk8YtyhVE
+X-Received: by 2002:a05:6102:5090:b0:3b1:383a:d463 with SMTP id bl16-20020a056102509000b003b1383ad463mr22786264vsb.1.1672690003872;
+        Mon, 02 Jan 2023 12:06:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672690003; cv=none;
         d=google.com; s=arc-20160816;
-        b=DUOP6BYlWX3znEqzjaTlpsQcq52z4IdrCrzUKmK2wk+sIBrhbideLtlUuZX85kJEbm
-         NWD2Xk2grM2YLKL/idRJIghXrJ83pZ/SUfigd2ZC2xNNo27at4I+FAIr9GHEmK126Ae5
-         yYJ70Vt6RSel3foSKK4HpvzSiTbcbQznmjBs0uaQg0vxHNoBzz8vBF7M1LpZjVf0S8zc
-         hfBYEdz7NUZj1E5egryMV8FT2QJBomflm9sMO68VJvd59oB8NZKGcO7laorz8okdEUlj
-         2e4FVPN5F/sei3gbPXAJeV8ei9sZCPItRp/LkB7CeZkIUaY6bsg1FLTGFGZT3cos1NrV
-         HaiQ==
+        b=vV+3ivs4+pWKc2TBmvAyjX590JbFoPgX2AA2NoNlCluCELVldyYlfbfQrBmcOvsPRu
+         VYjXlImERoEuexiPyKVZtWKo97PmRjY1I62li4nUBSl1EwKUy/6Md/WCVvcxqkisr5C9
+         +mNXqc0fSLbgBstr9TsGIAEPwkrzpmuALSYeAVDb0eAa8cFLJQ5mqGnWP2BAN8PBI4fG
+         gaGkMNlFuX+TaMTYp7UHL5WvYj1CUOZClxnmL8I53r1TwT6Nj7a5KvogCfTShcvn93DA
+         xeQOv5JD6Ce4cGJdJftU1lpixudOzoXL19VdlK8DggtKeM3+N891nJ4Lzy+xEXuYMwec
+         mx+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=KI2xEYP40HNDAxAzPHMb+XbR63OkjohgyDtgc3bG0N8=;
-        b=NICntSJPz0SjfYpfzGJqmKUaRUL/6lhERR+QktBzlbNkHhuvX3aYC1O9G8DRB75d0v
-         O7joEz3H7SVcuoNc49paBHHKv9wv5dxw17TnYR/zgvIspJ9+yCHjuYWp+0bKp9EvH09r
-         C4WS6aCJsmy0b5ZuPLc8HbUWni43rMdB7m3ZuGg10R7uMLmXMjSOfIxoUs6atDq2g2Xm
-         /S9JYOeVbmf3UpfOb1/B987CDzqsqNjCIMiGnoY+y2ig0hK/nJ6wVmtRZy/ioQdZSyWu
-         K72PmP8en+IJRdVFgIir1veq/K4Fe1N8Dx0opt7ZHKI9cI+Ohrq2jlvPqn+zk46TJMUn
-         uMJQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=BCPIcWG68XPjFacQ10B7UHokkM7cxPf4Vp+CZIjaXaE=;
+        b=J23S7szyP4iLUwdVHODvFNjXjpe77UgDa2/aSEfungxRcM8gQlbsqVwRWbZROM5UFj
+         sJ49ifdfMvf79T2sai4VF5PcyP8ZAMqaAxbgKGAJoqm8nOrjzRpsWcngSMhtWUTXUOMd
+         r1OAA3rW9+qVVLv1dDx/Tghv32P6yeFDaIakR0JZ6hEsBJ25RKjzLt9YAPqTOFK4Yyob
+         2Z0oX5QwWic2kpXl0irGt1KtKTBntff7iDjT8A6qGdw9WRvyKYSIhRQcy99KbWiRT63B
+         OQbfyFvHsf+8fCDRZkTCUCgXt27Syh1RJrVEdWTva4m/YnG98N7MLKMjPt6msXJPRQ+n
+         6vLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=h1qmWV2u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f11-20020ac86ecb000000b003a5c3164ea8si14036620qtv.558.2023.01.02.06.08.17
+        by mx.google.com with ESMTPS id o4-20020a05620a2a0400b006f9fee8e4acsi16381085qkp.399.2023.01.02.12.06.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Jan 2023 06:08:17 -0800 (PST)
+        Mon, 02 Jan 2023 12:06:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=h1qmWV2u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pCLU0-0003LR-FH; Mon, 02 Jan 2023 09:08:08 -0500
+	id 1pCR4c-0001hb-Sg; Mon, 02 Jan 2023 15:06:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCLTy-0003L5-Rq
- for qemu-arm@nongnu.org; Mon, 02 Jan 2023 09:08:06 -0500
-Received: from 4.mo548.mail-out.ovh.net ([188.165.42.229])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCLTw-0003wq-5B
- for qemu-arm@nongnu.org; Mon, 02 Jan 2023 09:08:06 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.170])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id CE1272054B;
- Mon,  2 Jan 2023 14:08:00 +0000 (UTC)
-Received: from kaod.org (37.59.142.102) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Mon, 2 Jan
- 2023 15:08:00 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-102R0047daa91a4-7661-4660-b80a-1a15cbe774d9,
- EB6D15DD045C308F841A27F8E66F545441276E15) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <4a7c4d8d-ce68-9aae-a1be-9ea33313bbde@kaod.org>
-Date: Mon, 2 Jan 2023 15:07:54 +0100
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1pCR4b-0001hA-T8; Mon, 02 Jan 2023 15:06:17 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1pCR4Z-0000xq-MR; Mon, 02 Jan 2023 15:06:17 -0500
+Received: by mail-ed1-x533.google.com with SMTP id i9so41161227edj.4;
+ Mon, 02 Jan 2023 12:06:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=BCPIcWG68XPjFacQ10B7UHokkM7cxPf4Vp+CZIjaXaE=;
+ b=h1qmWV2uWPVPLGQSV1LFr0Cui3/xSb70ksZkOZVymfemLD63idrEmne043PZ9UK1km
+ CvnTV17IkVr3TUaWhWEGHvoclWgkOGQ5XwZWH2jlwuGeCjKo4UB1TeuApZlKFoNHJmJG
+ Q9v6D2pjaSLA57DL8W2Flb1HBH4hyIvt3SZZgPWg6+N5bKAOTDhT85mEDc6sTFqwMb0a
+ MaOQ36SkMEDdB69eknyvccC5s1AvPzW4VQjkL+FDPx6VRkhBPOinoK1k/cT/xtZXWNlm
+ LxK+cHJ1OGyURat+YU8rg5o+vjkZA9eLWD8d97Rf6uj3XiNX+J/C0rVb3j1WSxKDF3Jq
+ K+5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=BCPIcWG68XPjFacQ10B7UHokkM7cxPf4Vp+CZIjaXaE=;
+ b=mWfUtGSb0FyEojeVHG1ZE3dw3oN2QrSr72tk/bAYaw2/pU7QhdTLYl2RrUh1loJLWt
+ FB9BMEgg/ouSsTuSOjTw6Dnc2Q5YS6GtyY0kRnAWp3rPJgavxdb0O9KZnSkep0I2gNtO
+ 45NMa0ytk0JbJiNYMqMERkFRP6xqEIkq1JTYJJ4srRbyDkZ+asfnmFV9Vn7v45mu1EGg
+ gEJfL4B8gbZFhF70tM6aAxvcbmtRAEVJUDxXZRVchsdy1yJFXpG/ajkoFvmhfeUWejVb
+ aVXfIRyJM4cgFfKPHnFCxQrw+ce5wvmgS4WU9urqX7WFkmfyOmKD0Q01eS/YLv0t5rqh
+ xHrA==
+X-Gm-Message-State: AFqh2kqvpeLNUk1ZcFp4KZGxQg94wJHcDnwoVWzCGm97SO6PsJ4qQb4t
+ n0CbehwlxnaspBN+IL9A+TVAd1UJXEIF5Pzj9Vs=
+X-Received: by 2002:a05:6402:2915:b0:483:39e2:bc82 with SMTP id
+ ee21-20020a056402291500b0048339e2bc82mr4006221edb.252.1672689973118; Mon, 02
+ Jan 2023 12:06:13 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2 09/11] hw/arm/aspeed_ast10x0: Map HACE peripheral
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- <qemu-devel@nongnu.org>
-CC: Joel Stanley <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>, Beraldo
- Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Wainer dos
- Santos Moschetta <wainersm@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, Peter Delevoryas
- <peter@pjd.dev>, Steven Lee <steven_lee@aspeedtech.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Peter Delevoryas <pdel@fb.com>, Peter Delevoryas
- <pdel@meta.com>, <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>
-References: <20221230113504.37032-1-philmd@linaro.org>
- <20221230113504.37032-10-philmd@linaro.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20221230113504.37032-10-philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 45e1f2e7-a116-4550-b896-0f863c17557a
-X-Ovh-Tracer-Id: 16519203434175433604
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrjedvgdeiudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfefgkeetkeegleehueejgefhteekteelieduueffkeetgfekheeuffehveevkeejnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphhhihhlmhgusehlihhnrghrohdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpjhhovghlsehjmhhsrdhiugdrrghupdhtrhhohigplhgvvgesrghsphgvvgguthgvtghhrdgtohhmpdgslhgvrghlsehrvgguhhgrthdrtghomhdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdifrghinhgvrhhsmhesrhgvughhrghtrdgtohhmpdgrnhgurhgvfiesrghjrdhiugdrrghupdgthhhinhdqth
- hinhhgpghkuhhosegrshhpvggvughtvggthhdrtghomhdpphgvthgvrhesphhjugdruggvvhdpshhtvghvvghnpghlvggvsegrshhpvggvughtvggthhdrtghomhdpjhgrmhhinhgplhhinhesrghsphgvvgguthgvtghhrdgtohhmpdhpuggvlhesfhgsrdgtohhmpdhpuggvlhesmhgvthgrrdgtohhmpdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdgtrhhoshgrsehrvgguhhgrthdrtghomhdpoffvtefjohhsthepmhhoheegkedpmhhouggvpehsmhhtphhouhht
-Received-SPF: pass client-ip=188.165.42.229; envelope-from=clg@kaod.org;
- helo=4.mo548.mail-out.ovh.net
-X-Spam_score_int: -49
-X-Spam_score: -5.0
-X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.142,
+References: <20221226220303.14420-1-strahinja.p.jankovic@gmail.com>
+ <20221226220303.14420-5-strahinja.p.jankovic@gmail.com>
+In-Reply-To: <20221226220303.14420-5-strahinja.p.jankovic@gmail.com>
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Date: Mon, 2 Jan 2023 21:06:01 +0100
+Message-ID: <CABtshVSjVn4EqYA50ehFZSCUb5CTcft8HQt5ULZ8bBq9_kvTbg@mail.gmail.com>
+Subject: Re: [PATCH v3 4/7] hw/misc: AXP209 PMU Emulation
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, philmd@linaro.org, 
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,157 +114,337 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qQ5rOskbxz1N
+X-TUID: wobrJ4dKdULm
 
-On 12/30/22 12:35, Philippe Mathieu-Daudé wrote:
-> Since I don't have access to the datasheet, the relevant
-> values were found in:
-> https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/dts/arm/aspeed/ast10x0.dtsi
-> 
-> Before on Zephyr:
-> 
->    uart:~$ hash test
->    sha256_test
->    tv[0]:hash_final error
->    sha384_test
->    tv[0]:hash_final error
->    sha512_test
->    tv[0]:hash_final error
->    [00:00:06.278,000] <err> hace_global: HACE poll timeout
->    [00:00:09.324,000] <err> hace_global: HACE poll timeout
->    [00:00:12.261,000] <err> hace_global: HACE poll timeout
-> 
->    uart:~$ crypto aes256_cbc_vault
->    aes256_cbc vault key 1
->    [00:00:06.699,000] <inf> hace_global: aspeed_crypto_session_setup
->    [00:00:06.699,000] <inf> hace_global: data->cmd: 1c2098
->    [00:00:06.699,000] <inf> hace_global: crypto_data_src: 93340
->    [00:00:06.699,000] <inf> hace_global: crypto_data_dst: 93348
->    [00:00:06.699,000] <inf> hace_global: crypto_ctx_base: 93300
->    [00:00:06.699,000] <inf> hace_global: crypto_data_len: 80000040
->    [00:00:06.699,000] <inf> hace_global: crypto_cmd_reg:  11c2098
->    [00:00:09.743,000] <inf> hace_global: HACE_STS: 0
->    [00:00:09.743,000] <err> hace_global: HACE poll timeout
->    [00:00:09.743,000] <err> crypto: CBC mode ENCRYPT - Failed
->    [00:00:09.743,000] <inf> hace_global: aspeed_crypto_session_free
->    uart:~$
-> 
-> After:
-> 
->    uart:~$ hash test
->    sha256_test
->    tv[0]:PASS
->    tv[1]:PASS
->    tv[2]:PASS
->    tv[3]:PASS
->    tv[4]:PASS
->    sha384_test
->    tv[0]:PASS
->    tv[1]:PASS
->    tv[2]:PASS
->    tv[3]:PASS
->    tv[4]:PASS
->    tv[5]:PASS
->    sha512_test
->    tv[0]:PASS
->    tv[1]:PASS
->    tv[2]:PASS
->    tv[3]:PASS
->    tv[4]:PASS
->    tv[5]:PASS
-> 
->    uart:~$ crypto aes256_cbc_vault
->    aes256_cbc vault key 1
->    Was waiting for:
->    6b c1 be e2 2e 40 9f 96 e9 3d 7e 11 73 93 17 2a
->    ae 2d 8a 57 1e 03 ac 9c 9e b7 6f ac 45 af 8e 51
->    30 c8 1c 46 a3 5c e4 11 e5 fb c1 19 1a 0a 52 ef
->    f6 9f 24 45 df 4f 9b 17 ad 2b 41 7b e6 6c 37 10
-> 
->     But got:
->    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Ping
 
-I think the HACE model only supports hash for now.
+This is the only remaining patch from the series waiting for review. Thanks!
 
+Best regards,
+Strahinja
 
-> 
->    [00:00:05.771,000] <inf> hace_global: aspeed_crypto_session_setup
->    [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2098
->    [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
->    [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
->    [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
->    [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
->    [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2098
->    [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
->    [00:00:05.772,000] <inf> crypto: Output length (encryption): 80
->    [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_free
->    [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_setup
->    [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2018
->    [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
->    [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
->    [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
->    [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
->    [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2018
->    [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
->    [00:00:05.772,000] <inf> crypto: Output length (decryption): 64
->    [00:00:05.772,000] <err> crypto: CBC mode DECRYPT - Mismatch between plaintext and decrypted cipher text
->    [00:00:05.774,000] <inf> hace_global: aspeed_crypto_session_free
->    uart:~$
-> 
-> Reviewed-by: Peter Delevoryas <peter@pjd.dev>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
+On Mon, Dec 26, 2022 at 11:03 PM Strahinja Jankovic
+<strahinjapjankovic@gmail.com> wrote:
+>
+> This patch adds minimal support for AXP-209 PMU.
+> Most important is chip ID since U-Boot SPL expects version 0x1. Besides
+> the chip ID register, reset values for two more registers used by A10
+> U-Boot SPL are covered.
+>
+> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 > ---
->   hw/arm/aspeed_ast10x0.c | 15 +++++++++++++++
->   1 file changed, 15 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> index e74e2660ce..7a7443a95b 100644
-> --- a/hw/arm/aspeed_ast10x0.c
-> +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -29,6 +29,7 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
->       [ASPEED_DEV_SPI1]      = 0x7E630000,
->       [ASPEED_DEV_SPI2]      = 0x7E640000,
->       [ASPEED_DEV_UDC]       = 0x7E6A2000,
-> +    [ASPEED_DEV_HACE]      = 0x7E6D0000,
->       [ASPEED_DEV_SCU]       = 0x7E6E2000,
->       [ASPEED_DEV_JTAG0]     = 0x7E6E4000,
->       [ASPEED_DEV_JTAG1]     = 0x7E6E4100,
-> @@ -166,6 +167,9 @@ static void aspeed_soc_ast1030_init(Object *obj)
->       snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
->       object_initialize_child(obj, "gpio", &s->gpio, typename);
->   
-> +    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-> +    object_initialize_child(obj, "hace", &s->hace, typename);
+>  MAINTAINERS          |   2 +
+>  hw/misc/Kconfig      |   4 +
+>  hw/misc/axp209.c     | 238 +++++++++++++++++++++++++++++++++++++++++++
+>  hw/misc/meson.build  |   1 +
+>  hw/misc/trace-events |   5 +
+>  5 files changed, 250 insertions(+)
+>  create mode 100644 hw/misc/axp209.c
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index b270eb8e5b..354da68249 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -576,12 +576,14 @@ ARM Machines
+>  Allwinner-a10
+>  M: Beniamino Galvani <b.galvani@gmail.com>
+>  M: Peter Maydell <peter.maydell@linaro.org>
+> +R: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+>  L: qemu-arm@nongnu.org
+>  S: Odd Fixes
+>  F: hw/*/allwinner*
+>  F: include/hw/*/allwinner*
+>  F: hw/arm/cubieboard.c
+>  F: docs/system/arm/cubieboard.rst
+> +F: hw/misc/axp209.c
+>
+>  Allwinner-h3
+>  M: Niek Linnenbank <nieklinnenbank@gmail.com>
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index 052fb54310..eaeddca277 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -180,4 +180,8 @@ config ALLWINNER_A10_CCM
+>  config ALLWINNER_A10_DRAMC
+>      bool
+>
+> +config AXP209_PMU
+> +    bool
+> +    depends on I2C
 > +
->       object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
->       object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemented,
->                               TYPE_UNIMPLEMENTED_DEVICE);
-> @@ -359,6 +363,17 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->       }
->       aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
->   
-> +    /* HACE */
-> +    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(&s->sram),
-> +                             &error_abort);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
-> +        return;
+>  source macio/Kconfig
+> diff --git a/hw/misc/axp209.c b/hw/misc/axp209.c
+> new file mode 100644
+> index 0000000000..2908ed99a6
+> --- /dev/null
+> +++ b/hw/misc/axp209.c
+> @@ -0,0 +1,238 @@
+> +/*
+> + * AXP-209 PMU Emulation
+> + *
+> + * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a
+> + * copy of this software and associated documentation files (the "Software"),
+> + * to deal in the Software without restriction, including without limitation
+> + * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+> + * and/or sell copies of the Software, and to permit persons to whom the
+> + * Software is furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+> + * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> + * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+> + * DEALINGS IN THE SOFTWARE.
+> + *
+> + * SPDX-License-Identifier: MIT
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "trace.h"
+> +#include "hw/i2c/i2c.h"
+> +#include "migration/vmstate.h"
+> +
+> +#define TYPE_AXP209_PMU "axp209_pmu"
+> +
+> +#define AXP209(obj) \
+> +    OBJECT_CHECK(AXP209I2CState, (obj), TYPE_AXP209_PMU)
+> +
+> +/* registers */
+> +enum {
+> +    REG_POWER_STATUS = 0x0u,
+> +    REG_OPERATING_MODE,
+> +    REG_OTG_VBUS_STATUS,
+> +    REG_CHIP_VERSION,
+> +    REG_DATA_CACHE_0,
+> +    REG_DATA_CACHE_1,
+> +    REG_DATA_CACHE_2,
+> +    REG_DATA_CACHE_3,
+> +    REG_DATA_CACHE_4,
+> +    REG_DATA_CACHE_5,
+> +    REG_DATA_CACHE_6,
+> +    REG_DATA_CACHE_7,
+> +    REG_DATA_CACHE_8,
+> +    REG_DATA_CACHE_9,
+> +    REG_DATA_CACHE_A,
+> +    REG_DATA_CACHE_B,
+> +    REG_POWER_OUTPUT_CTRL = 0x12u,
+> +    REG_DC_DC2_OUT_V_CTRL = 0x23u,
+> +    REG_DC_DC2_DVS_CTRL = 0x25u,
+> +    REG_DC_DC3_OUT_V_CTRL = 0x27u,
+> +    REG_LDO2_4_OUT_V_CTRL,
+> +    REG_LDO3_OUT_V_CTRL,
+> +    REG_VBUS_CH_MGMT = 0x30u,
+> +    REG_SHUTDOWN_V_CTRL,
+> +    REG_SHUTDOWN_CTRL,
+> +    REG_CHARGE_CTRL_1,
+> +    REG_CHARGE_CTRL_2,
+> +    REG_SPARE_CHARGE_CTRL,
+> +    REG_PEK_KEY_CTRL,
+> +    REG_DC_DC_FREQ_SET,
+> +    REG_CHR_TEMP_TH_SET,
+> +    REG_CHR_HIGH_TEMP_TH_CTRL,
+> +    REG_IPSOUT_WARN_L1,
+> +    REG_IPSOUT_WARN_L2,
+> +    REG_DISCHR_TEMP_TH_SET,
+> +    REG_DISCHR_HIGH_TEMP_TH_CTRL,
+> +    REG_IRQ_BANK_1_CTRL = 0x40u,
+> +    REG_IRQ_BANK_2_CTRL,
+> +    REG_IRQ_BANK_3_CTRL,
+> +    REG_IRQ_BANK_4_CTRL,
+> +    REG_IRQ_BANK_5_CTRL,
+> +    REG_IRQ_BANK_1_STAT = 0x48u,
+> +    REG_IRQ_BANK_2_STAT,
+> +    REG_IRQ_BANK_3_STAT,
+> +    REG_IRQ_BANK_4_STAT,
+> +    REG_IRQ_BANK_5_STAT,
+> +    REG_ADC_ACIN_V_H = 0x56u,
+> +    REG_ADC_ACIN_V_L,
+> +    REG_ADC_ACIN_CURR_H,
+> +    REG_ADC_ACIN_CURR_L,
+> +    REG_ADC_VBUS_V_H,
+> +    REG_ADC_VBUS_V_L,
+> +    REG_ADC_VBUS_CURR_H,
+> +    REG_ADC_VBUS_CURR_L,
+> +    REG_ADC_INT_TEMP_H,
+> +    REG_ADC_INT_TEMP_L,
+> +    REG_ADC_TEMP_SENS_V_H = 0x62u,
+> +    REG_ADC_TEMP_SENS_V_L,
+> +    REG_ADC_BAT_V_H = 0x78u,
+> +    REG_ADC_BAT_V_L,
+> +    REG_ADC_BAT_DISCHR_CURR_H,
+> +    REG_ADC_BAT_DISCHR_CURR_L,
+> +    REG_ADC_BAT_CHR_CURR_H,
+> +    REG_ADC_BAT_CHR_CURR_L,
+> +    REG_ADC_IPSOUT_V_H,
+> +    REG_ADC_IPSOUT_V_L,
+> +    REG_DC_DC_MOD_SEL = 0x80u,
+> +    REG_ADC_EN_1,
+> +    REG_ADC_EN_2,
+> +    REG_ADC_SR_CTRL,
+> +    REG_ADC_IN_RANGE,
+> +    REG_GPIO1_ADC_IRQ_RISING_TH,
+> +    REG_GPIO1_ADC_IRQ_FALLING_TH,
+> +    REG_TIMER_CTRL = 0x8au,
+> +    REG_VBUS_CTRL_MON_SRP,
+> +    REG_OVER_TEMP_SHUTDOWN = 0x8fu,
+> +    REG_GPIO0_FEAT_SET,
+> +    REG_GPIO_OUT_HIGH_SET,
+> +    REG_GPIO1_FEAT_SET,
+> +    REG_GPIO2_FEAT_SET,
+> +    REG_GPIO_SIG_STATE_SET_MON,
+> +    REG_GPIO3_SET,
+> +    REG_COULOMB_CNTR_CTRL = 0xb8u,
+> +    REG_POWER_MEAS_RES,
+> +    NR_REGS
+> +};
+> +
+> +#define AXP209_CHIP_VERSION_ID             (0x01)
+> +#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
+> +#define AXP209_IRQ_BANK_1_CTRL_RESET       (0xd8)
+> +
+> +/* A simple I2C slave which returns values of ID or CNT register. */
+> +typedef struct AXP209I2CState {
+> +    /*< private >*/
+> +    I2CSlave i2c;
+> +    /*< public >*/
+> +    uint8_t regs[NR_REGS];  /* peripheral registers */
+> +    uint8_t ptr;            /* current register index */
+> +    uint8_t count;          /* counter used for tx/rx */
+> +} AXP209I2CState;
+> +
+> +/* Reset all counters and load ID register */
+> +static void axp209_reset_enter(Object *obj, ResetType type)
+> +{
+> +    AXP209I2CState *s = AXP209(obj);
+> +
+> +    memset(s->regs, 0, NR_REGS);
+> +    s->ptr = 0;
+> +    s->count = 0;
+> +    s->regs[REG_CHIP_VERSION] = AXP209_CHIP_VERSION_ID;
+> +    s->regs[REG_DC_DC2_OUT_V_CTRL] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
+> +    s->regs[REG_IRQ_BANK_1_CTRL] = AXP209_IRQ_BANK_1_CTRL_RESET;
+> +}
+> +
+> +/* Handle events from master. */
+> +static int axp209_event(I2CSlave *i2c, enum i2c_event event)
+> +{
+> +    AXP209I2CState *s = AXP209(i2c);
+> +
+> +    s->count = 0;
+> +
+> +    return 0;
+> +}
+> +
+> +/* Called when master requests read */
+> +static uint8_t axp209_rx(I2CSlave *i2c)
+> +{
+> +    AXP209I2CState *s = AXP209(i2c);
+> +    uint8_t ret = 0xff;
+> +
+> +    if (s->ptr < NR_REGS) {
+> +        ret = s->regs[s->ptr++];
 > +    }
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->hace), 0,
-> +                    sc->memmap[ASPEED_DEV_HACE]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-> +                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
 > +
->       /* Watch dog */
->       for (i = 0; i < sc->wdts_num; i++) {
->           AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
-
+> +    trace_axp209_rx(s->ptr - 1, ret);
+> +
+> +    return ret;
+> +}
+> +
+> +/*
+> + * Called when master sends write.
+> + * Update ptr with byte 0, then perform write with second byte.
+> + */
+> +static int axp209_tx(I2CSlave *i2c, uint8_t data)
+> +{
+> +    AXP209I2CState *s = AXP209(i2c);
+> +
+> +    if (s->count == 0) {
+> +        /* Store register address */
+> +        s->ptr = data;
+> +        s->count++;
+> +        trace_axp209_select(data);
+> +    } else {
+> +        trace_axp209_tx(s->ptr, data);
+> +        if (s->ptr == REG_DC_DC2_OUT_V_CTRL) {
+> +            s->regs[s->ptr++] = data;
+> +        }
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static const VMStateDescription vmstate_axp209 = {
+> +    .name = TYPE_AXP209_PMU,
+> +    .version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT8_ARRAY(regs, AXP209I2CState, NR_REGS),
+> +        VMSTATE_UINT8(count, AXP209I2CState),
+> +        VMSTATE_UINT8(ptr, AXP209I2CState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void axp209_class_init(ObjectClass *oc, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(oc);
+> +    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
+> +    ResettableClass *rc = RESETTABLE_CLASS(oc);
+> +
+> +    rc->phases.enter = axp209_reset_enter;
+> +    dc->vmsd = &vmstate_axp209;
+> +    isc->event = axp209_event;
+> +    isc->recv = axp209_rx;
+> +    isc->send = axp209_tx;
+> +}
+> +
+> +static const TypeInfo axp209_info = {
+> +    .name = TYPE_AXP209_PMU,
+> +    .parent = TYPE_I2C_SLAVE,
+> +    .instance_size = sizeof(AXP209I2CState),
+> +    .class_init = axp209_class_init
+> +};
+> +
+> +static void axp209_register_devices(void)
+> +{
+> +    type_register_static(&axp209_info);
+> +}
+> +
+> +type_init(axp209_register_devices);
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 9eaa0750b5..448e14b531 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -45,6 +45,7 @@ specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'
+>  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c'))
+>  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl.c'))
+>  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
+> +softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
+>  softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
+>  softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
+>  softmmu_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index c18bc0605e..c47876a902 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -23,6 +23,11 @@ allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%"
+>  avr_power_read(uint8_t value) "power_reduc read value:%u"
+>  avr_power_write(uint8_t value) "power_reduc write value:%u"
+>
+> +# axp209.c
+> +axp209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
+> +axp209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
+> +axp209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
+> +
+>  # eccmemctl.c
+>  ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
+>  ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
+> --
+> 2.30.2
+>

@@ -1,139 +1,106 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp7404488ejb;
-        Tue, 3 Jan 2023 07:32:22 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsMiIuCE6e0eIQh4vE+DkePNltltyasHrKT0+0ALWcT5qh4t0HjsBb4AdYjDzqkG7FE07vC
-X-Received: by 2002:a0c:df94:0:b0:4c7:662:c7be with SMTP id w20-20020a0cdf94000000b004c70662c7bemr68469092qvl.1.1672759942315;
-        Tue, 03 Jan 2023 07:32:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672759942; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp7413550ejb;
+        Tue, 3 Jan 2023 07:48:51 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsyIlt+X0IDLkVZzK/yrua4RS8gaepD1jAhQcNlO4GQkslI0BbF31OP9SfQFVXIjGOVLIzr
+X-Received: by 2002:ac8:4e16:0:b0:3a9:8c90:dcec with SMTP id c22-20020ac84e16000000b003a98c90dcecmr52558777qtw.68.1672760931591;
+        Tue, 03 Jan 2023 07:48:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672760931; cv=none;
         d=google.com; s=arc-20160816;
-        b=cZtLbwlQmlf0O/eT6tlPXBo+s9J36f5bHuTzjeDgIYdPo/sCBvd+v9LyztTG7qBwhn
-         8mAOy10FHdtkK+QDAKjt1+75gGmxb9l02L4b++tEOfxu+Qis3uAw/S/dIYoFOBVGRTaQ
-         y+v1TVgP4jQZR9CYxA4hW4eqzVmpeg43IjZ5ioQSN//4xAqJlhEIvKP2N1xCeJebWtzK
-         joBT2pSk3AEScvoXI0ePFdZ9626vkdffznwXuBNIebaWjuV/UHhIHsd+fiBZJ1GlQFjL
-         TdRtdok+MWy3180A2jJaag5xAexgWMnn9FUSG42xSt2ZYpESqf7q05xb7mF1ne11fF4K
-         Ot4g==
+        b=rKOPGCYrx46Ws+o7UyXkvb+UBU8qvxjUk1+OT1SBYg6Vz+wgQwrws640EYZQidh/cj
+         SDFEdGyEGfRVOxKx9Sty9FYcEdAERPfH/DV2TGcrVI+4EeLMC2+aPWCi21xGf+aTcamt
+         T2WxVhvvfntKZy1rfCc5s87Xnfx0AKoMV4oib8AP6ArOabfoJ916yZgjoUZPd6DgW2DF
+         ka86wU7Frli/kUJP04k2aT2Zke6FlUGQNr+F5JpmzIsWXwlh9pLhEsZ8Q9f3OW7SZ3rO
+         E5rsF1rQ7iDg0ejtN346dA/l2d5aAkiyV8Q+GAL3jbWlQKKFgExo/lUMlmfC8edDRhcP
+         srqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=6R2nIJpW3gdD/b6WbcvikoTabmrLMmnlDW2fdfIv0J8=;
-        b=p346oOav2uUoN/eYOotXhxsIvHVAe/gw6/9dF1ybou9I2hCfyRnaHmisRlw/W+uyHm
-         WM9uSOSG9U/5KjsLJiepvDHw+rnAa8leTSt6roweG7oXcmPa0i/kJ1O5NPvOJ4NY3osw
-         Jkc7LkGhZnbJwDvW6svJYhljUae4ymlMffEzPe1jntB7fjvnFbGQrBmYsU8vyaBn3nMM
-         9vhmsh/n9cNT9N+SGsrxuDjEtwEKQJue4zMnmuBAsCmWtfY4BGFsV5xA23v95KxlUJZ8
-         TdnZaVt2T/SElPPExWcGxp44Dw0mRRU8ewpD7QEwbN2KXqWEWBc/+URILnYNw5XxVCjy
-         uldw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=Fu+qopn+c3Ce/Nou9JtRl3rd2ORCRKQsy69dK08138A=;
+        b=D1L/PhriSs2ywksAs27GCCQhvldrDXa3u7Ixcc5tJHcEmrXWdiDkqgeI0sps8RAKze
+         u+TzVDUqe3B87b9HxFtl6mdpKF0RzKVWKT+vpKELtjQ5f62ZMvy5cADXRoZQ0EkMmZub
+         epzBb6FpcRhF9C+vQoAURebflnxdUwXVQaAzfqGoqQmhqYkSoaCXaXpfRk28d4JDhCl6
+         WkVuXUorgPk3jWP/8xSwcY5/IIeAsl5JnAehCxhUGVKe43kLsWkoUnS/gDI6pEPUWC0L
+         v9IZtttXa7xbMr9ODFdriV4lSPdvs+Dr/MHX+A1i1HccFqHNP7cHJcqRdPnGy6REvclR
+         1tfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=dBF696sP;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=J2u7j2bV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fo15-20020ad45f0f000000b004c779c2d39asi16433515qvb.585.2023.01.03.07.32.22
+        by mx.google.com with ESMTPS id x16-20020ac84a10000000b003a81551fa60si15740199qtq.181.2023.01.03.07.48.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Jan 2023 07:32:22 -0800 (PST)
+        Tue, 03 Jan 2023 07:48:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=dBF696sP;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=J2u7j2bV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pCjGa-0002TZ-OI; Tue, 03 Jan 2023 10:31:52 -0500
+	id 1pCjWk-00066o-TL; Tue, 03 Jan 2023 10:48:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pCjGY-0002T8-MY; Tue, 03 Jan 2023 10:31:50 -0500
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCjWj-00066U-9Z
+ for qemu-arm@nongnu.org; Tue, 03 Jan 2023 10:48:33 -0500
+Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pCjGW-0002Hp-Gz; Tue, 03 Jan 2023 10:31:50 -0500
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.west.internal (Postfix) with ESMTP id 06DDB3200906;
- Tue,  3 Jan 2023 10:31:44 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute5.internal (MEProxy); Tue, 03 Jan 2023 10:31:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1672759904; x=
- 1672846304; bh=6R2nIJpW3gdD/b6WbcvikoTabmrLMmnlDW2fdfIv0J8=; b=d
- BF696sPycwf3Hbma1dz41JOD9aUSdUZ4f8a8WvSW1o5eEjiik0E3dROp1aJH22hZ
- pLCiSyGmcMVCmh+6vO93gmpAQQzSXwEmNTJlz036dgDyigIMC+gGlZhGQBp5q60Z
- 7Rlg/xHQksDrzzc9mAq+YiBSnvLMecacYumw6jT05UVv2fifeEr4yJJ1vusUrBdl
- y2pJn37ASnQSYKQPi3F5EsHs2KqtTG96KAFBJ0t634k4djqyid/vwb+ISe24+0bg
- cyRgIadI5326G4GW8ifnToiuv6fhougQ7JxOVf2JDgShv3uvqSIKPDh+k4XNZtGT
- TbX9kVp56sRvml6uzco+A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1672759904; x=
- 1672846304; bh=6R2nIJpW3gdD/b6WbcvikoTabmrLMmnlDW2fdfIv0J8=; b=J
- 2u7j2bVwr8lGAg1uP8ZtVWxn96MGwiY2pYc1CFr5amcqh5Jnv5JXXdQHJe1Ll33C
- aNTvBR28Dqj4lILTjS+CUsAA+WytBGKHj07tTfPGhtTlVtZuXIrqQucLgJAmWuj9
- FpudHzigpgDAl7MDvPQukisy4zBdQOHIiPAMXqQg2nVqjsJ1sjJGBhqpWAQB0qc3
- OyClYZr3nrdKc54EolkjHXFL8xOrMDXTdKjoSOa4Wj9S7aZI8AP2ooj0Y4bVQyL+
- kBT7Sd94fOiGRCSGEIuSmn1oy6Of1umNnyoIxQz/OR7Gp38hr303BYhsKQXOLPiP
- HrQDwfJS6d4oCto6q2LMA==
-X-ME-Sender: <xms:X0q0Y9nL_HUd6lWjtGzG_752BZr2RY_wm_0CvBEJxAp7klxOb_ocyQ>
- <xme:X0q0Y43dyb0I1tkLVwMVKsS8a5frXUiTaAREM3cakw02iXU2et1AyKSTBxwR_KWe4
- -Zt76hSHsD8N64-DDM>
-X-ME-Received: <xmr:X0q0YzpbXKdXyvVWkcaxmMXBgY-0lDwIsWlEuk-INdc2tGoz4DxLPsHzgTC0jNpmRmTzzaAGCOnIXKxD-gR7LA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrjeeggdejiecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvvefukfhfgggtugfgjgesthekredttddtudenucfhrhhomheprfgvthgv
- rhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrfgrth
- htvghrnhepgfeukefftdeutefgheetffeltdeuhefgheegleefudejfefhffetkedvtdef
- teetnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucevlhhushhtvghrufhiiigvpe
- dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:X0q0Y9lfpOa_FV1ZcC2Z_seTBqEG5H_NC6TS08cfLHutwTf3dB9ahQ>
- <xmx:X0q0Y72Jaag8WCDk_kT3H75AWVcCNG_bc6-k21UDOwjL6E54Jdol4g>
- <xmx:X0q0Y8sP0uc7C9R3QEseuACwu3SQgQysnm36FCWqAtpR6zYeQdGM0w>
- <xmx:YEq0Yy0p8uEGMx9RPbQ1UUGSY5q3qG5aDQK7n_GO8crt-K1fofdqYg>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 3 Jan 2023 10:31:41 -0500 (EST)
-Date: Tue, 3 Jan 2023 07:31:39 -0800
-From: Peter Delevoryas <peter@pjd.dev>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Cc: "Dong, Eddie" <eddie.dong@intel.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>,
- Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Delevoryas <pdel@fb.com>, Peter Delevoryas <pdel@meta.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCjWg-0004hL-Cq
+ for qemu-arm@nongnu.org; Tue, 03 Jan 2023 10:48:32 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.186])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 1E5BB209EB;
+ Tue,  3 Jan 2023 15:48:16 +0000 (UTC)
+Received: from kaod.org (37.59.142.108) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Tue, 3 Jan
+ 2023 16:48:15 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-108S00283f3649f-d7bc-413f-b504-a33e57367adb,
+ C8392438280775708828C369967C337A3112A2AF) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <96ac1ff1-7876-655a-d92e-9ec8870137a1@kaod.org>
+Date: Tue, 3 Jan 2023 16:48:14 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
 Subject: Re: [PATCH v2 02/11] hw/watchdog/wdt_aspeed: Extend MMIO range to
  cover more registers
-Message-ID: <Y7RKWym8vuDKvUIr@pdel-mbp.dhcp.thefacebook.com>
+Content-Language: en-US
+To: Peter Delevoryas <peter@pjd.dev>
+CC: "Dong, Eddie" <eddie.dong@intel.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Joel Stanley
+ <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>, Beraldo Leal
+ <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Wainer dos
+ Santos Moschetta <wainersm@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, Steven Lee
+ <steven_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Peter
+ Delevoryas <pdel@fb.com>, Peter Delevoryas <pdel@meta.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>
 References: <20221230113504.37032-1-philmd@linaro.org>
  <20221230113504.37032-3-philmd@linaro.org>
  <BL0PR11MB30427F00C5A2058197E9B6488AF19@BL0PR11MB3042.namprd11.prod.outlook.com>
  <19cb9a03-c98e-cdff-1474-2db0c55ae971@kaod.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+ <Y7RKWym8vuDKvUIr@pdel-mbp.dhcp.thefacebook.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <Y7RKWym8vuDKvUIr@pdel-mbp.dhcp.thefacebook.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <19cb9a03-c98e-cdff-1474-2db0c55ae971@kaod.org>
-Received-SPF: pass client-ip=64.147.123.24; envelope-from=peter@pjd.dev;
- helo=wout1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+X-Originating-IP: [37.59.142.108]
+X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: a9f281e6-7c98-4a47-9b42-8d8779faf5dd
+X-Ovh-Tracer-Id: 5638506737528113991
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrjeeggdektdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffdufeeliedujeeffffhjeffiefghffhhfdvkeeijeehledvueffhfejtdehgeegnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrddutdeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehpvghtvghrsehpjhgurdguvghvpdhpuggvlhesmhgvthgrrdgtohhmpdhpuggvlhesfhgsrdgtohhmpdhjrghmihhnpghlihhnsegrshhpvggvughtvggthhdrtghomhdpshhtvghvvghnpghlvggvsegrshhpvggvughtvggthhdrtghomhdptghhihhnqdhtihhnghgpkhhuohesrghsphgvvgguthgvtghhrdgtohhmpdgrnhgurhgvfiesrghjrdhiugdrrghupdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdifrghinhgvrhhsmhesrhgvughhrghtrdgtohhmpdgslhgvrghlse
+ hrvgguhhgrthdrtghomhdpthhrohihpghlvggvsegrshhpvggvughtvggthhdrtghomhdpjhhovghlsehjmhhsrdhiugdrrghupdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhphhhilhhmugeslhhinhgrrhhordhorhhgpdgvugguihgvrdguohhnghesihhnthgvlhdrtghomhdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdgtrhhoshgrsehrvgguhhgrthdrtghomhdpoffvtefjohhsthepmhhoheegkedpmhhouggvpehsmhhtphhouhht
+Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
+ helo=5.mo548.mail-out.ovh.net
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.103,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -149,132 +116,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6OjprNCOPm+s
+X-TUID: /NTTR1RETMTT
 
-On Mon, Jan 02, 2023 at 02:31:31PM +0100, Cédric Le Goater wrote:
-> On 12/31/22 23:52, Dong, Eddie wrote:
-> > > When booting the Zephyr demo in [1] we get:
-> > > 
-> > >    aspeed.io: unimplemented device write (size 4, offset 0x185128, value
-> > > 0x030f1ff1) <--
-> > >    aspeed.io: unimplemented device write (size 4, offset 0x18512c, value
-> > > 0x03fffff1)
-> > > 
-> > > This corresponds to this Zephyr code [2]:
-> > > 
-> > >    static int aspeed_wdt_init(const struct device *dev)
-> > >    {
-> > >      const struct aspeed_wdt_config *config = dev->config;
-> > >      struct aspeed_wdt_data *const data = dev->data;
-> > >      uint32_t reg_val;
-> > > 
-> > >      /* disable WDT by default */
-> > >      reg_val = sys_read32(config->ctrl_base + WDT_CTRL_REG);
-> > >      reg_val &= ~WDT_CTRL_ENABLE;
-> > >      sys_write32(reg_val, config->ctrl_base + WDT_CTRL_REG);
-> > > 
-> > >      sys_write32(data->rst_mask1,
-> > >                  config->ctrl_base + WDT_SW_RESET_MASK1_REG);   <------
-> > >      sys_write32(data->rst_mask2,
-> > >                  config->ctrl_base + WDT_SW_RESET_MASK2_REG);
-> > > 
-> > >      return 0;
-> > >    }
-> > > 
-> > > The register definitions are [3]:
-> > > 
-> > >    #define WDT_RELOAD_VAL_REG          0x0004
-> > >    #define WDT_RESTART_REG             0x0008
-> > >    #define WDT_CTRL_REG                0x000C
-> > >    #define WDT_TIMEOUT_STATUS_REG      0x0010
-> > >    #define WDT_TIMEOUT_STATUS_CLR_REG  0x0014
-> > >    #define WDT_RESET_MASK1_REG         0x001C
-> > >    #define WDT_RESET_MASK2_REG         0x0020
-> > >    #define WDT_SW_RESET_MASK1_REG      0x0028   <------
-> > >    #define WDT_SW_RESET_MASK2_REG      0x002C
-> > >    #define WDT_SW_RESET_CTRL_REG       0x0024
-> > > 
-> > > Currently QEMU only cover a MMIO region of size 0x20:
-> > > 
-> > >    #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
-> > > 
-> > > Change to map the whole 'iosize' which might be bigger, covering the other
-> > 
-> > The root cause is that ASPEED_WDT_REGS_MAX is too small, right?
-> > Probably the Qemu is emulating an old version of the hardware.
-> > 
-> > Given the meaning of ASPEED_WDT_REGS_MAX, it should be larger than iosize, not?
-> > Probably ASPEED_WDT_REGS_MAX should be per device type (aspeed_2400/2500),
+On 1/3/23 16:31, Peter Delevoryas wrote:
+> On Mon, Jan 02, 2023 at 02:31:31PM +0100, CÃ©dric Le Goater wrote:
+>> On 12/31/22 23:52, Dong, Eddie wrote:
+>>>> When booting the Zephyr demo in [1] we get:
+>>>>
+>>>>     aspeed.io: unimplemented device write (size 4, offset 0x185128, value
+>>>> 0x030f1ff1) <--
+>>>>     aspeed.io: unimplemented device write (size 4, offset 0x18512c, value
+>>>> 0x03fffff1)
+>>>>
+>>>> This corresponds to this Zephyr code [2]:
+>>>>
+>>>>     static int aspeed_wdt_init(const struct device *dev)
+>>>>     {
+>>>>       const struct aspeed_wdt_config *config = dev->config;
+>>>>       struct aspeed_wdt_data *const data = dev->data;
+>>>>       uint32_t reg_val;
+>>>>
+>>>>       /* disable WDT by default */
+>>>>       reg_val = sys_read32(config->ctrl_base + WDT_CTRL_REG);
+>>>>       reg_val &= ~WDT_CTRL_ENABLE;
+>>>>       sys_write32(reg_val, config->ctrl_base + WDT_CTRL_REG);
+>>>>
+>>>>       sys_write32(data->rst_mask1,
+>>>>                   config->ctrl_base + WDT_SW_RESET_MASK1_REG);   <------
+>>>>       sys_write32(data->rst_mask2,
+>>>>                   config->ctrl_base + WDT_SW_RESET_MASK2_REG);
+>>>>
+>>>>       return 0;
+>>>>     }
+>>>>
+>>>> The register definitions are [3]:
+>>>>
+>>>>     #define WDT_RELOAD_VAL_REG          0x0004
+>>>>     #define WDT_RESTART_REG             0x0008
+>>>>     #define WDT_CTRL_REG                0x000C
+>>>>     #define WDT_TIMEOUT_STATUS_REG      0x0010
+>>>>     #define WDT_TIMEOUT_STATUS_CLR_REG  0x0014
+>>>>     #define WDT_RESET_MASK1_REG         0x001C
+>>>>     #define WDT_RESET_MASK2_REG         0x0020
+>>>>     #define WDT_SW_RESET_MASK1_REG      0x0028   <------
+>>>>     #define WDT_SW_RESET_MASK2_REG      0x002C
+>>>>     #define WDT_SW_RESET_CTRL_REG       0x0024
+>>>>
+>>>> Currently QEMU only cover a MMIO region of size 0x20:
+>>>>
+>>>>     #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
+>>>>
+>>>> Change to map the whole 'iosize' which might be bigger, covering the other
+>>>
+>>> The root cause is that ASPEED_WDT_REGS_MAX is too small, right?
+>>> Probably the Qemu is emulating an old version of the hardware.
+>>>
+>>> Given the meaning of ASPEED_WDT_REGS_MAX, it should be larger than iosize, not?
+>>> Probably ASPEED_WDT_REGS_MAX should be per device type (aspeed_2400/2500),
+>>
+>> yes. We would need a new class attribute for it. Please use these values, they
+>> should be correct.
+>>
+>>             #regs    iosize
+>>
+>> AST2400   0x18/4      0x20
+>> AST2500   0x20/4      0x20
 > 
-> yes. We would need a new class attribute for it. Please use these values, they
-> should be correct.
-> 
->            #regs    iosize
-> 
-> AST2400   0x18/4      0x20
-> AST2500   0x20/4      0x20
+> I think only one additional register was added in the AST2500, bringing it to 0x1C.
 
-I think only one additional register was added in the AST2500, bringing it to 0x1C.
-
-> AST2600   0x30/4      0x40
-> AST1030   0x4C/4      0x80
-
-I know the Zephyr driver for the AST1030 directly from Aspeed is claiming that
-the iosize is 0x80, but the datasheet I have says it's only 0x40. And, that the
-#regs would still just be 0x30/4. Afaik the AST2600 and AST1030 should have the
-exact same peripheral.
-
-Peter
+yes.
 
 > 
+>> AST2600   0x30/4      0x40
+>> AST1030   0x4C/4      0x80
 > 
-> AFAICT, the WDT logic was changed in a compatible way with the previous generation.
-> 
-> Thanks
-> 
-> C.
-> 
-> > while iosize is for all devices, and its initial value comes from the per device type REGS_MAX.
-> > 
-> > > registers. The MemoryRegionOps read/write handlers will report the accesses
-> > > as out-of-bounds guest-errors, but the next commit will report them as
-> > > unimplemented.
-> > > 
-> > > [1] https://github.com/AspeedTech-BMC/zephyr/releases/tag/v00.01.07
-> > > [2] https://github.com/AspeedTech-BMC/zephyr/commit/2e99f10ac27b
-> > > [3] https://github.com/AspeedTech-
-> > > BMC/zephyr/blob/v00.01.08/drivers/watchdog/wdt_aspeed.c#L31
-> > > 
-> > > Reviewed-by: Peter Delevoryas <peter@pjd.dev>
-> > > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> > > ---
-> > >   hw/watchdog/wdt_aspeed.c | 3 ++-
-> > >   1 file changed, 2 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c index
-> > > 958725a1b5..eefca31ae4 100644
-> > > --- a/hw/watchdog/wdt_aspeed.c
-> > > +++ b/hw/watchdog/wdt_aspeed.c
-> > > @@ -260,6 +260,7 @@ static void aspeed_wdt_realize(DeviceState *dev,
-> > > Error **errp)  {
-> > >       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> > >       AspeedWDTState *s = ASPEED_WDT(dev);
-> > > +    AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(dev);
-> > > 
-> > >       assert(s->scu);
-> > > 
-> > > @@ -271,7 +272,7 @@ static void aspeed_wdt_realize(DeviceState *dev,
-> > > Error **errp)
-> > >       s->pclk_freq = PCLK_HZ;
-> > > 
-> > >       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
-> > > -                          TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
-> > > +                          TYPE_ASPEED_WDT, awc->iosize);
-> > >       sysbus_init_mmio(sbd, &s->iomem);
-> > >   }
-> > > 
-> > > --
-> > > 2.38.1
-> > > 
-> > 
-> 
+> I know the Zephyr driver for the AST1030 directly from Aspeed is claiming that
+> the iosize is 0x80, but the datasheet I have says it's only 0x40. And, that the
+> #regs would still just be 0x30/4. Afaik the AST2600 and AST1030 should have the
+> exact same peripheral.
+
+Hmm, I see 5 extra registers in the AST1030 SoC compared to the AST2600 SoC. All
+related to write protection.
+
+C.
+

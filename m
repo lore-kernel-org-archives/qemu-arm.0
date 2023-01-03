@@ -1,178 +1,193 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp6846184ejb;
-        Mon, 2 Jan 2023 09:53:52 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXukw9HsFxvplGMdKvVWxNqPKpRXHl8Mvdqk2lbynDyRzXh+w9F7lB3cb/2VRnN4OjRHZrjL
-X-Received: by 2002:ac8:74cc:0:b0:3a5:306f:b124 with SMTP id j12-20020ac874cc000000b003a5306fb124mr57266311qtr.10.1672682032743;
-        Mon, 02 Jan 2023 09:53:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672682032; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp7476936ejb;
+        Tue, 3 Jan 2023 09:34:35 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtNlD1EwqkiqqCzAJ+U+fJ1W9wr90IiyGn+0fvKoXMLXjn0A7zobeeMPyjxOORtzXeRvWtw
+X-Received: by 2002:a05:6102:822:b0:3ce:a0b3:2c5e with SMTP id k2-20020a056102082200b003cea0b32c5emr1758653vsb.1.1672767275014;
+        Tue, 03 Jan 2023 09:34:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672767274; cv=none;
         d=google.com; s=arc-20160816;
-        b=gDyCUhQHEObAn4sElCA2fb/9YDUb/7GKmoZsJMgRpWI5r04UM74Lo9UruOxheycHP/
-         Vg93Bj/qbbA+NrASerjH1uNfho/0mMMWPBmrCr23TXiWwxYek0AxdN04ZonXbSAkKOLf
-         MH6z989AP9rytR95At7YzI8r3t7gM+8Hvc1G/72Yvott1DdGGExyHqOf1+HXl5ue6PbF
-         fkfvGg6PikXIItTkEz87ZQuNQdFn0Ri/X4mRWocm/tYqloldSUSUBKBjnMIsRqSYGLuA
-         cCMENk2I3Qs1XFg3NhL+J0IbPwebIFnKGlkCK3YqjN/7HcblFi/nHN0PruMfC8Q/SrSL
-         uUkg==
+        b=KPIN6PjjDIiuiHeu9a1v7FO/TtwxjxfktdnbbYJcFzmyInEiaeuH1laSK1p5exhDFX
+         +rMrTk97/wya4sxiqeX+oD0Dmv35ibwepigMkJToCkbHahHsi6YFZiO0jYm/w8lbA3SL
+         vvpKtco5hyae14lrHIqEcem76CFOGJIwn3+bfAf3yHhu5nsiOEHLNrsvO+NioVpiLR65
+         JhWw/Zv2pG/aFHNi3GE02sgHRljuJ/5DkjVeOk65Zq7u9iPyuQHLxiM4alJQGlNcnU0U
+         VnU1zbwXHODbhRXwgUf489G5YSJ9GeffTGhYQOKOWP+rH5yCAQE5HQeC4ZnI3ppLQVpK
+         DYNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=Gfkhfj04KQE26RJX4KrV4f/7WWmoW2rKlsO4pJG9W3A=;
-        b=I5pxlVor3d0yF+dvfrz55+IU88viXDmOwsAIj6nZICHXK3EP03SNflZH/7KMnkEIQR
-         csootCnG3m2K6gdWFbEvE68Po6t8UV1iOXUBq5e8jA2vYcj1y6yiYf3EjSYktwNVB5S7
-         WqE0cj28wqHRW/eu8tVfGHoJpBL9s5hRcz+8KTQQwmcwAAxvegy8poKDXCWGIN3zLsOK
-         mkMZbj8TwM5xCWrkwZAvxhUkt7b/5M5GFYJsDiozsTPQGL9H0Am2I179Eahlwy0eMMPB
-         qrC4rL9eiKakfbhrXCx0a1tlq8m3mylKDV7+mAegx0Ssbx73PwhvCBe+bDOh9fYsOOop
-         EH7g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=RxpRNt958yOhVoSX6hTSrvyOd2YHsZeL1+SzAP5GcSI=;
+        b=jiHfjMB3q9gvg7ifVl//h4zIGCu9v0UjosOyK70QtZAyAljw0nXzPfibMBmgZ5akmQ
+         S91t65XhI0WBIZsqBrB2wjRNiaWIOzTxmU7k3Ainv5UzWQO54WMJ6HktWIReS8JvURxf
+         iJl6u32njNjGNWCmw7rocCnzIKrpybva7i8O9Ql9R+q4hdtlYlILcTCes0j6Tev8kzeX
+         mIl7f/tBNUrSoLKAk66qrTpnngibYfRzvSIExj5Qgw8cFpM4zlAXW0QwRvqFkHUgjgh4
+         EEgNkoaVmUrBP7x8brWuslDemT1QJ/PHBVZKEyW05/DWXm+kkpxlA6DH/G5rQx7Wa8YU
+         y0+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=aNs5EM4r;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g10-20020ac84b6a000000b003a803633c22si14366394qts.369.2023.01.02.09.53.52
+        by mx.google.com with ESMTPS id k66-20020a378845000000b006fb7e073f63si14837955qkd.731.2023.01.03.09.34.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Jan 2023 09:53:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Jan 2023 09:34:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=aNs5EM4r;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pCP00-0000fY-67; Mon, 02 Jan 2023 12:53:24 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pClB1-0001Vf-SY; Tue, 03 Jan 2023 12:34:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=vkp6=47=kaod.org=clg@ozlabs.org>)
- id 1pCOzq-0000f1-TI; Mon, 02 Jan 2023 12:53:16 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=vkp6=47=kaod.org=clg@ozlabs.org>)
- id 1pCOzo-0005ra-IU; Mon, 02 Jan 2023 12:53:14 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Nm3P34rBFz4xP3;
- Tue,  3 Jan 2023 04:52:55 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Nm3P20rVHz4xGM;
- Tue,  3 Jan 2023 04:52:53 +1100 (AEDT)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH] target/arm: Allow users to set the number of VFP registers
-Date: Mon,  2 Jan 2023 18:52:45 +0100
-Message-Id: <20230102175245.1895037-1-clg@kaod.org>
-X-Mailer: git-send-email 2.38.1
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pClAx-0001TV-3i
+ for qemu-devel@nongnu.org; Tue, 03 Jan 2023 12:34:14 -0500
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pClAv-0006DM-B0
+ for qemu-devel@nongnu.org; Tue, 03 Jan 2023 12:34:10 -0500
+Received: by mail-pj1-x102c.google.com with SMTP id
+ h7-20020a17090aa88700b00225f3e4c992so23885609pjq.1
+ for <qemu-devel@nongnu.org>; Tue, 03 Jan 2023 09:34:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=RxpRNt958yOhVoSX6hTSrvyOd2YHsZeL1+SzAP5GcSI=;
+ b=aNs5EM4rs/NxU+9ZN/Ty2sDjq2ku95dYa7GAkB+pH/fzUEnEpa7nOETKxzJM8pwD0s
+ bV22MCufo5Inp8ex5ex6ZHz5IJDVNVrdPJi1v1aDWyZFEt9x9RWi0nsUQrxl0MjWYKWf
+ aPx14irOk+Rak3vSdVPt5lSg2M8yldGhvogocrgr/ZKh50IfCg6ZC6EJjP3N+6OYWM8Y
+ mULIIGKfYUYncFEMO0QD9g2p0iBlOj0QojC1G4wV0H809+WSM4MQN7czBWEW/vVKvOAN
+ 0bNodmPt0mlzuJfuBfP39GiOp9dmkTxxNOFjrTbux6xK6T6RqeaTDTuZXi7q7nhNIUBr
+ EaAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=RxpRNt958yOhVoSX6hTSrvyOd2YHsZeL1+SzAP5GcSI=;
+ b=JYLydJPCm9+kFp0ai1VI/BNzH1ByjRHbFWVbtgx4XW+YVnntu4uhrrr8m6vnNrgYH5
+ GYol3ocfqjnnOgq6089AJTBbLbadHgzi2euDDZMV9KDRGxd6a1e6RiVvPFnMn0uARDxA
+ 5NtLj6NQnlblfp7yF5TIYOwtOMUY6ObXKKyPBIdC6enzPp2nWPonCiXfAioTxb6TrwKr
+ Zt9u5mhKbkxR/qkrxp0/ttC4KalSB/0Rt5pKe2agD5YTTz5JQzGMs3ekUnI3s7bjEnI8
+ 2HPeYj4UqgsQY7ebzYMC5AVRdCrubPuWZy7m9v9a2aM0Xg5YJZ6TzF8QN+7mxKS0PCJi
+ l86w==
+X-Gm-Message-State: AFqh2kq0ayCWgEN8vJlwM/o0Plq3121zk2UmRtxAiAfz/I3BB3ChVQMI
+ xFOXKLw+SV+aMKeyCyMuRmdFRUhl1OGsiMV/PRejsg==
+X-Received: by 2002:a17:90a:77c7:b0:219:e2f1:81ad with SMTP id
+ e7-20020a17090a77c700b00219e2f181admr3575491pjs.19.1672767247916; Tue, 03 Jan
+ 2023 09:34:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=vkp6=47=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20221222215549.86872-1-philmd@linaro.org>
+ <20221222215549.86872-2-philmd@linaro.org>
+In-Reply-To: <20221222215549.86872-2-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Jan 2023 17:33:56 +0000
+Message-ID: <CAFEAcA9KD8WwPTKVQQUfAZxaqA=ASweZtJ=sAV0Vd8TkpqDBOw@mail.gmail.com>
+Subject: Re: [PATCH 1/6] hw/arm/aspeed: Fix smpboot[] on big-endian hosts
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Andrew Jeffery <andrew@aj.id.au>, 
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Joel Stanley <joel@jms.id.au>, 
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org, 
+ Tyrone Ting <kfting@nuvoton.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4NRFGhmpMRtS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vfjPWPInNrll
 
-Cortex A7 CPUs with an FPU implementing VFPv4 without NEON support
-have 16 64-bit FPU registers and not 32 registers. Let users set the
-number of VFP registers with a CPU property.
+On Thu, 22 Dec 2022 at 21:56, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> ARM CPUs fetch instructions in little-endian.
+>
+> smpboot[] encoded instructions are written in little-endian.
+> This is fine on little-endian host, but on big-endian ones
+> the smpboot[] array ends swapped. Use the const_le32()
+> macro so the instructions are always in little-endian in the
+> smpboot[] array.
+>
+> Fixes: 9bb6d14081 ("aspeed: Add boot stub for smp booting")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/arm/aspeed.c | 28 ++++++++++++++--------------
+>  1 file changed, 14 insertions(+), 14 deletions(-)
+>
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 55f114ef72..adff9a0d73 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -194,22 +194,22 @@ static void aspeed_write_smpboot(ARMCPU *cpu,
+>           * r1 =3D AST_SMP_MBOX_FIELD_ENTRY
+>           * r0 =3D AST_SMP_MBOX_FIELD_GOSIGN
+>           */
+> -        0xee100fb0,  /* mrc     p15, 0, r0, c0, c0, 5 */
+> -        0xe21000ff,  /* ands    r0, r0, #255          */
+> -        0xe59f201c,  /* ldr     r2, [pc, #28]         */
+> -        0xe1822000,  /* orr     r2, r2, r0            */
+> +        const_le32(0xee100fb0),     /* mrc     p15, 0, r0, c0, c0, 5 */
+> +        const_le32(0xe21000ff),     /* ands    r0, r0, #255          */
+> +        const_le32(0xe59f201c),     /* ldr     r2, [pc, #28]         */
+> +        const_le32(0xe1822000),     /* orr     r2, r2, r0            */
+>
+> -        0xe59f1018,  /* ldr     r1, [pc, #24]         */
+> -        0xe59f0018,  /* ldr     r0, [pc, #24]         */
+> +        const_le32(0xe59f1018),     /* ldr     r1, [pc, #24]         */
+> +        const_le32(0xe59f0018),     /* ldr     r0, [pc, #24]         */
+>
+> -        0xe320f002,  /* wfe                           */
+> -        0xe5904000,  /* ldr     r4, [r0]              */
+> -        0xe1520004,  /* cmp     r2, r4                */
+> -        0x1afffffb,  /* bne     <wfe>                 */
+> -        0xe591f000,  /* ldr     pc, [r1]              */
+> -        AST_SMP_MBOX_GOSIGN,
+> -        AST_SMP_MBOX_FIELD_ENTRY,
+> -        AST_SMP_MBOX_FIELD_GOSIGN,
+> +        const_le32(0xe320f002),     /* wfe                           */
+> +        const_le32(0xe5904000),     /* ldr     r4, [r0]              */
+> +        const_le32(0xe1520004),     /* cmp     r2, r4                */
+> +        const_le32(0x1afffffb),     /* bne     <wfe>                 */
+> +        const_le32(0xe591f000),     /* ldr     pc, [r1]              */
+> +        const_le32(AST_SMP_MBOX_GOSIGN),
+> +        const_le32(AST_SMP_MBOX_FIELD_ENTRY),
+> +        const_le32(AST_SMP_MBOX_FIELD_GOSIGN)
+>      };
+>
+>      rom_add_blob_fixed("aspeed.smpboot", poll_mailbox_ready,
 
-The primary use case of this property is for the Cortex A7 of the
-Aspeed AST2600 SoC.
+Can we use the write_bootloader() function, which handles the
+endianness question correctly and is how other boards do the
+"put a little lump of code into the guest" job ?
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- target/arm/cpu.h        |  2 ++
- hw/arm/aspeed_ast2600.c |  2 ++
- target/arm/cpu.c        | 14 ++++++++++++++
- 3 files changed, 18 insertions(+)
-
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 2b4bd20f9d..55e2e9a584 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -897,6 +897,8 @@ struct ArchCPU {
-     bool has_pmu;
-     /* CPU has VFP */
-     bool has_vfp;
-+    /* CPU has 32 VFP registers */
-+    bool has_vfp_d32;
-     /* CPU has Neon */
-     bool has_neon;
-     /* CPU has M-profile DSP extension */
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index cd75465c2b..37f43b4165 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -309,6 +309,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-                                 &error_abort);
-         object_property_set_bool(OBJECT(&s->cpu[i]), "neon", false,
-                                 &error_abort);
-+        object_property_set_bool(OBJECT(&s->cpu[i]), "vfp-d32", false,
-+                                &error_abort);
-         object_property_set_link(OBJECT(&s->cpu[i]), "memory",
-                                  OBJECT(s->memory), &error_abort);
- 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2fa022f62b..27af57ea9a 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1258,6 +1258,9 @@ static Property arm_cpu_cfgend_property =
- static Property arm_cpu_has_vfp_property =
-             DEFINE_PROP_BOOL("vfp", ARMCPU, has_vfp, true);
- 
-+static Property arm_cpu_has_vfp_d32_property =
-+            DEFINE_PROP_BOOL("vfp-d32", ARMCPU, has_vfp_d32, true);
-+
- static Property arm_cpu_has_neon_property =
-             DEFINE_PROP_BOOL("neon", ARMCPU, has_neon, true);
- 
-@@ -1384,8 +1387,11 @@ void arm_cpu_post_init(Object *obj)
-         ? cpu_isar_feature(aa64_fp_simd, cpu)
-         : cpu_isar_feature(aa32_vfp, cpu)) {
-         cpu->has_vfp = true;
-+        cpu->has_vfp_d32 = true;
-         if (!kvm_enabled()) {
-             qdev_property_add_static(DEVICE(obj), &arm_cpu_has_vfp_property);
-+            qdev_property_add_static(DEVICE(obj),
-+                                     &arm_cpu_has_vfp_d32_property);
-         }
-     }
- 
-@@ -1650,6 +1656,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    if (!cpu->has_vfp_d32) {
-+        uint32_t u;
-+
-+        u = cpu->isar.mvfr0;
-+        u = FIELD_DP32(u, MVFR0, SIMDREG, 1); /* 16 registers */
-+        cpu->isar.mvfr0 = u;
-+    }
-+
-     if (!cpu->has_vfp) {
-         uint64_t t;
-         uint32_t u;
--- 
-2.38.1
-
+thanks
+-- PMM

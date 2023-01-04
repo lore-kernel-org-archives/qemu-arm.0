@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8324492ejb;
-        Wed, 4 Jan 2023 14:38:07 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv8Ah5F/DG4mWd9SZggoBp51D9OswV3Jjsj1epnczG52mnvtYRkKSxeYqQjfOnUyxPJGIUL
-X-Received: by 2002:a0c:fe67:0:b0:4c7:60f:7060 with SMTP id b7-20020a0cfe67000000b004c7060f7060mr79266837qvv.8.1672871887193;
-        Wed, 04 Jan 2023 14:38:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672871887; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8326452ejb;
+        Wed, 4 Jan 2023 14:42:33 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsHlsRWcZkef9HXw32owknzRXQXen/+lk821w+5icHZ7ngAoFYTAW4Dmka072avGKHOSJzd
+X-Received: by 2002:a05:6214:4947:b0:52e:6f33:ec2 with SMTP id pe7-20020a056214494700b0052e6f330ec2mr60116374qvb.31.1672872153648;
+        Wed, 04 Jan 2023 14:42:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672872153; cv=none;
         d=google.com; s=arc-20160816;
-        b=pst+qhNhTiS15eKKtOzPeKXEno8c8kNcZJtNOIGOkyFYNJCtZNZeyPhe5YRLL5khdj
-         Zx27UQy9kUvOwDtwpeiDLIFOXpyY/6MGZkm+2tw8NTypXvx/0q7AkyQa+IToMo7SIHCu
-         KAj7NSKUWkAKaOs4M/p9yqGBdMqldNfuuMT06ULJnBKnFBLfnaK/k0sWubBPjSJ7c7CJ
-         CVDgQHt9u9y1QxR4IG05U7MLDuSOWKOOGI4Du5sw4Z2sM7DD5qNUQ9NlwaPPJhNlHe4P
-         DlidVAMB0rbD3ZkbIzE1qYpayaGRU1CvQP5l5+pk9oFsLLtV/8PEqES87Ax4rUbNe7yi
-         29XA==
+        b=X3CS6S7wOxohqlq4JBBhZQki8evNgbZd3QPRQ1EwYVAuDBP81tmbT0Wip9HGZ11nF5
+         W93Uwg1hxL9Zm+W7r9fRvOcEHgHRWkBWl7lKgn4B957oo0SjhcEqE2bqB88KFZ6MpHLp
+         1LBfeZ/1p+nSqV4+LQ/Fe92FFB1du8JZ+jlRcXA1ABKo75HretuhWwk+Lof1JIa/WGKf
+         6wmgEYwt3meUDFozhwLhKUu6fDl/3fo7VU18QVWeCPh2tqq3CqFlgy1Y6QzoYL/2DTnr
+         xtz4UBwBXSfYKDn9JlqT0CcDskvORBFMCYxE58cTk5aSxVyS/jU6ZqAST/KC523z78Ix
+         hiaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=eRH2/Q6+taaY1C0mf1jUv5OrxulMB7iM/Sfo6HL2IVQ=;
-        b=wDwvr7QXHQAdkLY2ipr8ogYdWwtiJkNYuQp/rNSF1TGoNUrr0CclSApYX+eER1g0gG
-         kkLIkcQiTZMGquAOCYh3MpvgH9hZk76Rlbj8bPZKR5MdbPOqQpIZA1baKfx4ricYaw63
-         /FxDjYEWXVR2Iu6cNGr2+4Jf+h2iDw+ONDV0rRyx6TtdiswQxwJH0H5evHsSc2jbp4wI
-         YKHgCTWAw1A9ueypWc15TJUeiBKSSME2JQo4tTlMhySMDDOWxt11kD3/fWt4IDgC2IyQ
-         9vXVwYVKru8abJDRzaWbduDCXhF9Sc4IpfoR9w64e6wpgctTrvHjkrXE7oUsKH2BnJL9
-         19vg==
+        bh=HGtrWT3unMzGntIEiVbM1rKZ5m/rzhrczSjLQVOtSwU=;
+        b=GjB+xAui6HIQgX9QckNbs7SId375DtTgw0gtz96wNKJGuD2PmTIqifIJ1WZjMi3i13
+         pn1vJsSghsUYJEZNem4I/LYXqyWDOTHywogoeH4SxFI7wBIEQ30SeiGjLrBH1JXJpMLo
+         NhGi4HrQf2eFdrrr/g+6KB+H8G+VgMfBC0AhpKknd+TJk+i/1J6N2U86wNo0cJ3GLwAK
+         xqsOu0fivx6ty05uWQ7mYcmg7DGtBbjBHJOqt4xFjsRJ3p43vYSa2c8aPQIecg6sr1gT
+         +L9tXLjC/GC01njf4KpB1R8GE5qNnTWjmfysBj1hHa6klClG+0dGPjk1ce9rLbPx2X1o
+         rIQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nEDbMFtY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=L8VYetCI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ke26-20020a056214301a00b00531c1357232si6727723qvb.245.2023.01.04.14.38.07
+        by mx.google.com with ESMTPS id b10-20020a05620a270a00b00704c1f4e776si18740501qkp.660.2023.01.04.14.42.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Jan 2023 14:38:07 -0800 (PST)
+        Wed, 04 Jan 2023 14:42:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nEDbMFtY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=L8VYetCI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pDBu6-0001J5-4m; Wed, 04 Jan 2023 17:06:34 -0500
+	id 1pDBvb-0002N0-Pq; Wed, 04 Jan 2023 17:08:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBu4-0001FL-AR
- for qemu-devel@nongnu.org; Wed, 04 Jan 2023 17:06:32 -0500
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBut-00023q-D7
+ for qemu-devel@nongnu.org; Wed, 04 Jan 2023 17:07:31 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBtz-0005cY-Du
- for qemu-devel@nongnu.org; Wed, 04 Jan 2023 17:06:29 -0500
-Received: by mail-ej1-x62d.google.com with SMTP id tz12so85983103ejc.9
- for <qemu-devel@nongnu.org>; Wed, 04 Jan 2023 14:06:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBuq-0000Gs-V8
+ for qemu-devel@nongnu.org; Wed, 04 Jan 2023 17:07:23 -0500
+Received: by mail-ed1-x536.google.com with SMTP id c17so50463935edj.13
+ for <qemu-devel@nongnu.org>; Wed, 04 Jan 2023 14:07:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=eRH2/Q6+taaY1C0mf1jUv5OrxulMB7iM/Sfo6HL2IVQ=;
- b=nEDbMFtYiuO1tEPpkdBXhy5oQT831LiUY2iJK+y3FXzANhPxIRXugZteugbGJtczIU
- wxk9hW2bT12/v8IrT5Z65Xkhd+ABeve3HRZ6aQeaw++II7ljORjep1OVHv6bURhYyF6U
- 2ljIr4BXQitZtVzV2B6tgLnF+lIAB1yCgrbobDTMZRoWQhDu1muauHwZg3ZVnMr78rAd
- t+GJa9IMINib8sQFgtLZBscBE/cKQxRSq5/+pueGDxdF8P8qIDcq3NZtYGgMJeqUzQbr
- QrThF7plmTpACKFaVtYnIhTP06J/IbOkPLPzOkG35qCT27eMLrHgoadrp6Vm0jFjKFx+
- 2CMQ==
+ bh=HGtrWT3unMzGntIEiVbM1rKZ5m/rzhrczSjLQVOtSwU=;
+ b=L8VYetCIidIpU/fp3MEWcHl7I1novORjIpl4CrXZ6tYviaBK4F95OwPJUnovX7s/cQ
+ PM4jjnE9ZgBPJX0E0Hjhaunoldy74xxEVGsqlinc210RI/Q/TRS3rl43oe/c1L7b4uAF
+ CNUpji0DFrN9eZewo1tHOzGlPfeDGnjjFQBo63HRb/9LZlcaSBQ/+6mjAEaW7LQDKhKO
+ lmFDFvmb6sSYfed4mPCgvue5s0dcbDShs1RUbw7W1qxMWXvHIDqW6sY8h3pGdGe9ISGq
+ 2ll1WEDup5OxmQgbwOmDyY6Fab00CS1tgtosPIkNsTuotUv22SQJDKxsUG6A3zzqcMT5
+ m0yA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=eRH2/Q6+taaY1C0mf1jUv5OrxulMB7iM/Sfo6HL2IVQ=;
- b=GW5CrhhkN3SzxhP/jppvc7+B71VAdTXvkOKIY2BpC7tr2yLtZBW5FKH/PwKpPRog5E
- psSH0jsVThOJGoU11g3nvnQ+9T5a0Q6rd+CYm8MioSRWs9K/4Ju+2lQNh6A7EJQga8du
- m+a57j3kOQUB9bOPr2bpTTu4Qj/TjwV6AphFMeyNZJJNddFq6cQigV6FncBRpe2K1F12
- kbRYYfXtBEFwiAdwOQpRFTwVgq8YxkA0/ngNBc0nWLt+C2Y1PWjjyV4VpAEssd0GwRt6
- 6eeworWIRfNGngi414oMdQeggHL68Q+LqSwrWO1sN7N+Jr97kSpnAvPiJQU0/cUTAEMu
- Vylw==
-X-Gm-Message-State: AFqh2ko5cirxU1cKvPEUYk1JulZYLc1u+caMvlAKXurXaun7iMMm6gVk
- ufUHo7yJd0unYCQ5ZEQys2pgzS/UD5Oss4HY
-X-Received: by 2002:a17:907:3f9d:b0:7c1:1c4:5eaf with SMTP id
- hr29-20020a1709073f9d00b007c101c45eafmr60776998ejc.49.1672869986450; 
- Wed, 04 Jan 2023 14:06:26 -0800 (PST)
+ bh=HGtrWT3unMzGntIEiVbM1rKZ5m/rzhrczSjLQVOtSwU=;
+ b=VTP4SeadqGXKpX/YXgKuQOtYajyPpX1KH4xRxVpae18d0quOsH2PvRmbXoguCWvGih
+ CFBsqpbOUO/uCMo2Xv/TFQfKYdSuxpn5Ymj39vWQ9yQZhgLrSQhbCwW1m+wKAHMwsRPy
+ t76v4x2Zy2W/rWkXCW5mTyBNT71x2gjCFgVtQEUgu1PkWF5AzuK2ldWnFxfkoZ3hMNnC
+ CV9NJAQuuvNuxsXKRO1An61hpvQBcy/DYBsZgmIhilZtuNIXbvK6qjjkxqVTPlltDTBK
+ MgeSR9vdRcIVKog00QzYjDHwofJeZ6cCaZP7qtWq4D2hYojPi86Esu8sMZmZ9TLXs49M
+ UCyg==
+X-Gm-Message-State: AFqh2krm2+NgfqMMXiZ0qQxf06hK7G5RncQqCcWLatuApLs/pSr4AFZk
+ Dw5hu1x7/SFZI86vz3paDrlcf4HkY9umyaGQ
+X-Received: by 2002:a05:6402:2488:b0:46b:34a:3945 with SMTP id
+ q8-20020a056402248800b0046b034a3945mr50941348eda.31.1672870039232; 
+ Wed, 04 Jan 2023 14:07:19 -0800 (PST)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- 10-20020a170906218a00b0073d796a1043sm15640103eju.123.2023.01.04.14.06.23
+ fj12-20020a0564022b8c00b004722d7e8c7csm15042914edb.14.2023.01.04.14.07.14
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Jan 2023 14:06:26 -0800 (PST)
+ Wed, 04 Jan 2023 14:07:18 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Song Gao <gaosong@loongson.cn>, Antony Pavlov <antonynpavlov@gmail.com>,
@@ -109,17 +109,17 @@ Cc: Song Gao <gaosong@loongson.cn>, Antony Pavlov <antonynpavlov@gmail.com>,
  qemu-riscv@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  Leif Lindholm <quic_llindhol@quicinc.com>, Kevin Wolf <kwolf@redhat.com>
-Subject: [PATCH 11/20] hw/microblaze: Open-code pflash_cfi01_register()
-Date: Wed,  4 Jan 2023 23:04:40 +0100
-Message-Id: <20230104220449.41337-12-philmd@linaro.org>
+Subject: [PATCH 17/20] hw/arm: Open-code pflash_cfi02_register()
+Date: Wed,  4 Jan 2023 23:04:46 +0100
+Message-Id: <20230104220449.41337-18-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230104220449.41337-1-philmd@linaro.org>
 References: <20230104220449.41337-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,59 +141,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yJRZgujtuFkT
+X-TUID: BI5FQtor4lp1
 
-pflash_cfi01_register() hides an implicit sysbus mapping of
+pflash_cfi02_register() hides an implicit sysbus mapping of
 MMIO region #0. This is not practical in a heterogeneous world
 where multiple cores use different address spaces. In order to
-remove to remove pflash_cfi01_register() from the pflash API,
+remove to remove pflash_cfi02_register() from the pflash API,
 open-code it as a qdev creation call followed by an explicit
 sysbus mapping.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/microblaze/petalogix_ml605_mmu.c      | 8 ++++----
- hw/microblaze/petalogix_s3adsp1800_mmu.c | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ hw/arm/digic_boards.c | 14 ++++++++------
+ hw/arm/musicpal.c     | 13 +++++++------
+ hw/arm/xilinx_zynq.c  | 10 +++++-----
+ 3 files changed, 20 insertions(+), 17 deletions(-)
 
-diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
-index a24fadddca..d5ff71218d 100644
---- a/hw/microblaze/petalogix_ml605_mmu.c
-+++ b/hw/microblaze/petalogix_ml605_mmu.c
-@@ -105,10 +105,10 @@ petalogix_ml605_init(MachineState *machine)
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-     /* 5th parameter 2 means bank-width
-      * 10th paremeter 0 means little-endian */
--    pflash_cfi01_register(FLASH_BASEADDR, "petalogix_ml605.flash", FLASH_SIZE,
+diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
+index 4093af09cb..98b0002d16 100644
+--- a/hw/arm/digic_boards.c
++++ b/hw/arm/digic_boards.c
+@@ -115,13 +115,15 @@ static void digic4_add_k8p3215uqb_rom(DigicState *s, hwaddr addr,
+ {
+ #define FLASH_K8P3215UQB_SIZE (4 * 1024 * 1024)
+ #define FLASH_K8P3215UQB_SECTOR_SIZE (64 * 1024)
++    DeviceState *dev;
+ 
+-    pflash_cfi02_register(addr, "pflash", FLASH_K8P3215UQB_SIZE,
+-                          NULL, FLASH_K8P3215UQB_SECTOR_SIZE,
+-                          DIGIC4_ROM_MAX_SIZE / FLASH_K8P3215UQB_SIZE,
+-                          4,
+-                          0x00EC, 0x007E, 0x0003, 0x0001,
+-                          0x0555, 0x2aa, 0);
++    dev = pflash_cfi02_create("pflash", FLASH_K8P3215UQB_SIZE,
++                              NULL, FLASH_K8P3215UQB_SECTOR_SIZE,
++                              DIGIC4_ROM_MAX_SIZE / FLASH_K8P3215UQB_SIZE,
++                              4,
++                              0x00EC, 0x007E, 0x0003, 0x0001,
++                              0x0555, 0x2aa, 0);
++    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, addr);
+ 
+     digic_load_rom(s, addr, FLASH_K8P3215UQB_SIZE, filename);
+ }
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index b65c020115..9f75d69b7f 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1275,12 +1275,13 @@ static void musicpal_init(MachineState *machine)
+          * 0xFF800000 (if there is 8 MB flash). So remap flash access if the
+          * image is smaller than 32 MB.
+          */
+-        pflash_cfi02_register(0x100000000ULL - MP_FLASH_SIZE_MAX,
+-                              "musicpal.flash", flash_size,
+-                              blk, 0x10000,
+-                              MP_FLASH_SIZE_MAX / flash_size,
+-                              2, 0x00BF, 0x236D, 0x0000, 0x0000,
+-                              0x5555, 0x2AAA, 0);
++        dev = pflash_cfi02_create("musicpal.flash", flash_size,
++                                  blk, 0x10000,
++                                  MP_FLASH_SIZE_MAX / flash_size,
++                                  2, 0x00BF, 0x236D, 0x0000, 0x0000,
++                                  0x5555, 0x2AAA, 0);
++        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0,
++                        0x100000000ULL - MP_FLASH_SIZE_MAX);
+     }
+     sysbus_create_simple(TYPE_MV88W8618_FLASHCFG, MP_FLASHCFG_BASE, NULL);
+ 
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index 3190cc0b8d..e55aff5532 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -218,11 +218,11 @@ static void zynq_init(MachineState *machine)
+     DriveInfo *dinfo = drive_get(IF_PFLASH, 0, 0);
+ 
+     /* AMD */
+-    pflash_cfi02_register(0xe2000000, "zynq.pflash", FLASH_SIZE,
 -                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          64 * KiB, 2, 0x89, 0x18, 0x0000, 0x0, 0);
--
-+    dev = pflash_cfi01_create("petalogix_ml605.flash", FLASH_SIZE,
+-                          FLASH_SECTOR_SIZE, 1,
+-                          1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
+-                          0);
++    dev = pflash_cfi02_create("zynq.pflash", FLASH_SIZE,
 +                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                              64 * KiB, 2, 0x89, 0x18, 0x0000, 0x0, 0);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, FLASH_BASEADDR);
++                              FLASH_SECTOR_SIZE, 1, 1,
++                              0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa, 0);
++    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xe2000000);
  
-     dev = qdev_new("xlnx.xps-intc");
-     qdev_prop_set_uint32(dev, "kind-of-intr", 1 << TIMER_IRQ);
-diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-index 9d959d1ad8..426ff1de93 100644
---- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-+++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-@@ -84,10 +84,10 @@ petalogix_s3adsp1800_init(MachineState *machine)
-     memory_region_add_subregion(sysmem, ddr_base, phys_ram);
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash_cfi01_register(FLASH_BASEADDR,
--                          "petalogix_s3adsp1800.flash", FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
-+    dev = pflash_cfi01_create("petalogix_s3adsp1800.flash", FLASH_SIZE,
-+                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                              64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, FLASH_BASEADDR);
- 
-     dev = qdev_new("xlnx.xps-intc");
-     qdev_prop_set_uint32(dev, "kind-of-intr",
+     /* Create the main clock source, and feed slcr with it */
+     zynq_machine->ps_clk = CLOCK(object_new(TYPE_CLOCK));
 -- 
 2.38.1
 

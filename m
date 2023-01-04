@@ -1,366 +1,263 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp7861080ejb;
-        Wed, 4 Jan 2023 00:43:39 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvMv/Bb6w455HU3r55yi29KhhYcOTa7nBCn46wp9TMPwcFm9cjEo0nzRnFh5OL0OginZlEo
-X-Received: by 2002:a05:6214:350d:b0:4bb:6b72:3c3b with SMTP id nk13-20020a056214350d00b004bb6b723c3bmr72007066qvb.38.1672821819090;
-        Wed, 04 Jan 2023 00:43:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672821819; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp7975313ejb;
+        Wed, 4 Jan 2023 04:29:25 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsrZS0ISkhJfOR77hhOU1a5S3PXFC25lURfxTydRWoNbYdwin+fnvhgbExJWrC9HqzGxM1t
+X-Received: by 2002:a05:6102:22d0:b0:3cd:7615:160e with SMTP id a16-20020a05610222d000b003cd7615160emr6260178vsh.22.1672835365417;
+        Wed, 04 Jan 2023 04:29:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672835365; cv=none;
         d=google.com; s=arc-20160816;
-        b=OgPVxLw+th5x2XRsKIKvWRAs98WlSUVc/ATHT2oKGxnzySSvqsTjU66J9lPb8eZB22
-         fv6rgHOnRBQF/u3kEVXu+wMMvEj+yv3/cZbkblmwp+D8Y7+TzCG2vXfKEbvyg6FENhnC
-         nYryzw/2Nmg/rUdohFtoXS1/IwItb9PlF1O6fq7m19C0hU8eZuQdZR1rDHsov2fps6cp
-         lNGgZPDby/ChiJdLerrmIKfYVcDyL/LlPBtT8vtghZ5uVt8t86HZviTO/90/dLJt/LOs
-         eISt5suzaHzD8f/ODkGYErmAqvJfy7dZwMHkfGHKTnBOXUvZZz4vOxe0txL9Pdt33REn
-         Sc6w==
+        b=cQJbXKnWLRWCxMjWf68sTWL9JSQRX+i7Z7bTkyS6pBsjYl+ef7YHZNhGiyIaNZTKn6
+         64EuopTzikgFDNOjynQUYytJSgb1pRviwdxFcoRPhgpGmL/HvUI2yuNH9eErDwkJIMIM
+         /hjR/vuOvoOD+l8w1Z0ORGf/U9EorLc8FkWGnKS+R+VZxyJgqjQj8BHGo8bDC/FJ2OVK
+         Sl0+So10PMTSVjyM8yzA18I2w4voe0G78JS4RWfVS/kQooME1lKL+fbzfRID01tXmd9k
+         DwY2NC5nTrahh6jj8Qm20xwhHQq9+JIrDCd0S8xkOSA6auCdew1lWLdJUgsH8X69VydO
+         wgdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=6jnKPjLk7kUkdCVK6T/4jM29/W7nFdyF+AADiUY0Gcw=;
-        b=Z70zooS73Hpy9tU3/hxQ+oYZR9XziG055857o6Pppm1n5L0Pgsd3XLyWJ2gSC6v9A4
-         BF2XQ88M2iu5TU84Q4h5qfCFIntc3UW+m6U2Gtmp7DbTcJzVqNxp8RIuNjNQRwW/6Cgs
-         A/p7/5E1+ziNv1Cp4xMa7aSygQ4t/O9CkLa8U335Fz5kldjuVUMC08T3bOjCdQNNSM3p
-         bn2EwC167ONd5+cTEz6OAV8sCKsZwnjZEAODjfeffOISyQ8NJnGYb32198lh++Xgwynl
-         vY1uo2glmAXXohzxsJeBwafXDGQk/ukv81bIJu2oYq1sFBs9QLBwMv47YIWeJyZfGhzh
-         n0Hg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=oz4Z0GianJo8e5hN+RgPZ5WTzImFj0aP/gupTzPHLpY=;
+        b=UCIBfZtNPE/1b4evAKwxdsJ0dVxTyJWBdvYiYTwiQtUagKiFv+5nWmOlV8W+LZui7n
+         Z40EBfQrdy8JoXSfEmO5vKb/FRHKE18UxHX8jzQXXndSXvbTax6rFaxDjldWK2bn+2gX
+         w13JLVGK++0HX5/vO++62BgrSzbWRCjZ+ns26usP/O7hjFI2n+Hf+o20umtZ2T3KU8aW
+         vvT+t7rp093hjwk4A9Mv9bh8IiFqtCMR37E/ODENhtkiV2znVggOAkvfbAy26jUE1wot
+         y16zjEhtRBYJQrm0V4AF16lYWJgPOjR306xStKYMjqSi9jje+46Em31zc+MvkFobSZPA
+         v4Ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=jsIx9UWq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s12-20020a05620a0bcc00b006fb2365e923si8851433qki.291.2023.01.04.00.43.38
+        by mx.google.com with ESMTPS id az16-20020a05620a171000b006ff7b2f1985si17974893qkb.575.2023.01.04.04.29.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Jan 2023 00:43:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Jan 2023 04:29:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=jsIx9UWq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pCzMo-0005ij-N7; Wed, 04 Jan 2023 03:43:22 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pD2tQ-00088u-TY; Wed, 04 Jan 2023 07:29:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCzMi-0005gz-Pj
- for qemu-arm@nongnu.org; Wed, 04 Jan 2023 03:43:16 -0500
-Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pCzMe-00070h-Uq
- for qemu-arm@nongnu.org; Wed, 04 Jan 2023 03:43:16 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.114])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 3F74F2C571;
- Wed,  4 Jan 2023 08:43:05 +0000 (UTC)
-Received: from kaod.org (37.59.142.102) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Wed, 4 Jan
- 2023 09:43:04 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004fa5bfd41-2a41-48e3-a63a-2f8c20832989,
- D3BA3AA4B26B30A68CB1784D167544CB159DE1DE) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <8fa1d7b7-babc-eca8-bbd9-4707ada2f49f@kaod.org>
-Date: Wed, 4 Jan 2023 09:43:03 +0100
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1pD2tP-00088X-LL
+ for qemu-devel@nongnu.org; Wed, 04 Jan 2023 07:29:15 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1pD2tN-00048S-Qs
+ for qemu-devel@nongnu.org; Wed, 04 Jan 2023 07:29:15 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id z16so16292026wrw.1
+ for <qemu-devel@nongnu.org>; Wed, 04 Jan 2023 04:29:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=oz4Z0GianJo8e5hN+RgPZ5WTzImFj0aP/gupTzPHLpY=;
+ b=jsIx9UWqWfi2+JJ42KOb7TtjNQSLFhCgJ2GjJHJZ2b35Lfj1/EouUJL3PshSmrUlpU
+ /hXZ14OVNaCjjRThlh6MTXzyL3gTLR7SlyRVrVOCrGiDcSr5GuKi7DhePL8ii2mhFZCu
+ rReFMM5rj1BSSvvJp+QFbIC3OCC/0u1gblSc5lCrF9J5Xfwg0MVRFedHvmSol06C8qNq
+ YoNXqup6HNnUGKVcvZa3GJr21Fz/ToFtHIqVYeh2kOTSKNdtSlv/aEiDsh2/zx6K1Rzt
+ OdrF/PRX8Zp2LR6aJZEm1j9bjLeEfwEjNDJHjkqUnxWRsTPLzB8Lb8nNIqN7SqCzgfrI
+ VnGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=oz4Z0GianJo8e5hN+RgPZ5WTzImFj0aP/gupTzPHLpY=;
+ b=jaQwf4/SFpqvLsD9GalmvR+3JwNm6IQtAQ1hfigkcwQUaL2j4DacTz6YPv549IdPKH
+ ggRCpY4M2WJYKAxxrUUnWj6QBJKPJOg7OT0HDHggTemQz0e/8Q0KMnkPAPOOXWy0wcuw
+ Or+ulj8ez/6q0TnnztF8B2kqrujrkjEOimf7vRC6RYHNpRKxJA24KyM1l04saMIPf22j
+ ZLaZeYjUtaZDay3TX+OOFv3kLMSqB+b0OqhBun7RIg91T4AWA9jIcx/vhS02QlUqAV3n
+ +CaKD5YtzG93POWReqwvrxib9N3Vd9hxr3GfiNMeCz/xy5jT53wDgYCiheVWPc/yzzEe
+ rhtg==
+X-Gm-Message-State: AFqh2kqLzZY9Oti7EU4uDSAwQqzQDuSkkmO4QAN68LpIS1vHG2qoMu+U
+ +ZZMuKQ+k1Yn0z+P5cQDLmhSzg==
+X-Received: by 2002:a5d:4e83:0:b0:29f:b589:157c with SMTP id
+ e3-20020a5d4e83000000b0029fb589157cmr3347883wru.5.1672835351865; 
+ Wed, 04 Jan 2023 04:29:11 -0800 (PST)
+Received: from myrica (054592b0.skybroadband.com. [5.69.146.176])
+ by smtp.gmail.com with ESMTPSA id
+ d17-20020adffd91000000b002882600e8a0sm19431617wrr.12.2023.01.04.04.29.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Jan 2023 04:29:11 -0800 (PST)
+Date: Wed, 4 Jan 2023 12:29:10 +0000
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Mostafa Saleh <smostafa@google.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH] hw/arm/smmuv3: Add GBPA register
+Message-ID: <Y7VxFpoTjwNaolTG@myrica>
+References: <20221219125720.1369027-1-smostafa@google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH 1/6] hw/arm/aspeed: Fix smpboot[] on big-endian hosts
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-CC: <qemu-devel@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>, Igor Mitsyanko
- <i.mitsyanko@gmail.com>, Joel Stanley <joel@jms.id.au>, Havard Skinnemoen
- <hskinnemoen@google.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Alistair Francis <alistair@alistair23.me>, <qemu-arm@nongnu.org>,
- Tyrone Ting <kfting@nuvoton.com>
-References: <20221222215549.86872-1-philmd@linaro.org>
- <20221222215549.86872-2-philmd@linaro.org>
- <CAFEAcA9KD8WwPTKVQQUfAZxaqA=ASweZtJ=sAV0Vd8TkpqDBOw@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAFEAcA9KD8WwPTKVQQUfAZxaqA=ASweZtJ=sAV0Vd8TkpqDBOw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 882cf067-d16a-45a0-b033-600a4e247b0b
-X-Ovh-Tracer-Id: 4330211044971744245
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrjeehgdduvdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffudefleeiudejfeffhfejffeigffhhffhvdekieejheelvdeufffhjedtheeggeenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhphhhilhhmugeslhhinhgrrhhordhorhhgpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdgrnhgurhgvfiesrghjrdhiugdrrghupdhirdhmihhtshihrghnkhhosehgmhgrihhlrdgtohhmpdhjohgvlhesjhhmshdrihgurdgruhdphhhskhhinhhnvghmohgvnhesghhoohhglhgvrdgtohhmpdgvughgrghrrdhighhlvghsihgrshesghhmrghilhdrtghomhdprghlihhsthgrihhrsegrlhhishhtrg
- hirhdvfedrmhgvpdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhkfhhtihhnghesnhhuvhhothhonhdrtghomhdpoffvtefjohhsthepmhhoheehvddpmhhouggvpehsmhhtphhouhht
-Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
- helo=6.mo552.mail-out.ovh.net
-X-Spam_score_int: -49
-X-Spam_score: -5.0
-X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.103,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221219125720.1369027-1-smostafa@google.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PVPJy+E4QJ5P
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gj4NVBpgCWlh
 
-On 1/3/23 18:33, Peter Maydell wrote:
-> On Thu, 22 Dec 2022 at 21:56, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> ARM CPUs fetch instructions in little-endian.
->>
->> smpboot[] encoded instructions are written in little-endian.
->> This is fine on little-endian host, but on big-endian ones
->> the smpboot[] array ends swapped. Use the const_le32()
->> macro so the instructions are always in little-endian in the
->> smpboot[] array.
->>
->> Fixes: 9bb6d14081 ("aspeed: Add boot stub for smp booting")
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/arm/aspeed.c | 28 ++++++++++++++--------------
->>   1 file changed, 14 insertions(+), 14 deletions(-)
->>
->> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->> index 55f114ef72..adff9a0d73 100644
->> --- a/hw/arm/aspeed.c
->> +++ b/hw/arm/aspeed.c
->> @@ -194,22 +194,22 @@ static void aspeed_write_smpboot(ARMCPU *cpu,
->>            * r1 = AST_SMP_MBOX_FIELD_ENTRY
->>            * r0 = AST_SMP_MBOX_FIELD_GOSIGN
->>            */
->> -        0xee100fb0,  /* mrc     p15, 0, r0, c0, c0, 5 */
->> -        0xe21000ff,  /* ands    r0, r0, #255          */
->> -        0xe59f201c,  /* ldr     r2, [pc, #28]         */
->> -        0xe1822000,  /* orr     r2, r2, r0            */
->> +        const_le32(0xee100fb0),     /* mrc     p15, 0, r0, c0, c0, 5 */
->> +        const_le32(0xe21000ff),     /* ands    r0, r0, #255          */
->> +        const_le32(0xe59f201c),     /* ldr     r2, [pc, #28]         */
->> +        const_le32(0xe1822000),     /* orr     r2, r2, r0            */
->>
->> -        0xe59f1018,  /* ldr     r1, [pc, #24]         */
->> -        0xe59f0018,  /* ldr     r0, [pc, #24]         */
->> +        const_le32(0xe59f1018),     /* ldr     r1, [pc, #24]         */
->> +        const_le32(0xe59f0018),     /* ldr     r0, [pc, #24]         */
->>
->> -        0xe320f002,  /* wfe                           */
->> -        0xe5904000,  /* ldr     r4, [r0]              */
->> -        0xe1520004,  /* cmp     r2, r4                */
->> -        0x1afffffb,  /* bne     <wfe>                 */
->> -        0xe591f000,  /* ldr     pc, [r1]              */
->> -        AST_SMP_MBOX_GOSIGN,
->> -        AST_SMP_MBOX_FIELD_ENTRY,
->> -        AST_SMP_MBOX_FIELD_GOSIGN,
->> +        const_le32(0xe320f002),     /* wfe                           */
->> +        const_le32(0xe5904000),     /* ldr     r4, [r0]              */
->> +        const_le32(0xe1520004),     /* cmp     r2, r4                */
->> +        const_le32(0x1afffffb),     /* bne     <wfe>                 */
->> +        const_le32(0xe591f000),     /* ldr     pc, [r1]              */
->> +        const_le32(AST_SMP_MBOX_GOSIGN),
->> +        const_le32(AST_SMP_MBOX_FIELD_ENTRY),
->> +        const_le32(AST_SMP_MBOX_FIELD_GOSIGN)
->>       };
->>
->>       rom_add_blob_fixed("aspeed.smpboot", poll_mailbox_ready,
+Hi Mostafa,
+
+On Mon, Dec 19, 2022 at 12:57:20PM +0000, Mostafa Saleh wrote:
+> GBPA register can be used to globally abort all
+> transactions.
 > 
-> Can we use the write_bootloader() function, which handles the
-> endianness question correctly and is how other boards do the
-> "put a little lump of code into the guest" job ?
+> Only UPDATE and ABORT bits are considered in this patch.
 
-Yes. See below.
+That's fair, although it effectively implements all bits since
+smmuv3_translate() ignores memory attributes anyway
 
-May be we could change write_bootloader a little to handle an empty
-fixupcontext.
+> 
+> It is described in the SMMU manual in "6.3.14 SMMU_GBPA".
+> ABORT reset value is IMPLEMENTATION DEFINED, it is chosen to
+> be zero(Do not abort incoming transactions).
+> 
+> Signed-off-by: Mostafa Saleh <smostafa@google.com>
+> ---
+>  hw/arm/smmuv3-internal.h |  4 ++++
+>  hw/arm/smmuv3.c          | 14 ++++++++++++++
+>  include/hw/arm/smmuv3.h  |  1 +
+>  3 files changed, 19 insertions(+)
+> 
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index bce161870f..71f70141e8 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -79,6 +79,10 @@ REG32(CR0ACK,              0x24)
+>  REG32(CR1,                 0x28)
+>  REG32(CR2,                 0x2c)
+>  REG32(STATUSR,             0x40)
+> +REG32(GBPA,                0x44)
+> +    FIELD(GBPA, ABORT,        20, 1)
+> +    FIELD(GBPA, UPDATE,       31, 1)
+> +
+>  REG32(IRQ_CTRL,            0x50)
+>      FIELD(IRQ_CTRL, GERROR_IRQEN,        0, 1)
+>      FIELD(IRQ_CTRL, PRI_IRQEN,           1, 1)
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 955b89c8d5..2843bc3da9 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -285,6 +285,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
+>      s->gerror = 0;
+>      s->gerrorn = 0;
+>      s->statusr = 0;
+> +    s->gbpa = 0;
+>  }
+>  
+>  static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
+> @@ -663,6 +664,11 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>          goto epilogue;
+>      }
+>  
+> +    if (FIELD_EX32(s->gbpa, GBPA, ABORT)) {
+> +        status = SMMU_TRANS_ABORT;
+> +        goto epilogue;
+> +    }
+> +
+
+GBPA is only taken into account when SMMU_CR0.SMMUEN is 0 (6.3.9.6 SMMUEN)
+
+>      cfg = smmuv3_get_config(sdev, &event);
+>      if (!cfg) {
+>          status = SMMU_TRANS_ERROR;
+> @@ -1170,6 +1176,10 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+>      case A_GERROR_IRQ_CFG2:
+>          s->gerror_irq_cfg2 = data;
+>          return MEMTX_OK;
+> +    case A_GBPA:
+> +        /* Ignore update bit as write is synchronous. */
+
+We could also ignore a write that has Update=0, since that's required for
+SMMUv3.2+ implementations (6.3.14.1 Update procedure)
+
+> +        s->gbpa = data & ~R_GBPA_UPDATE_MASK;
+
+Do we need to synchronize with concurrent transactions here?
+I couldn't find if QEMU already serializes MMIO writes and IOMMU
+translation.
+
+"Transactions arriving at the SMMU after completion of a GPBA update are
+guaranteed to take the new attributes written." The guest tests completion
+by reading the Update bit:
+
+	vCPU (host CPU 0)		Device thread (host CPU 1)
+
+	(a) read GBPA.abort = 1
+	(b) write GBPA.{update,abort} = {1,0}
+	(c) read GBPA.update = 0
+	(d) launch DMA			(e) execute DMA
+					(f) translation must read GBPA.abort = 0
+
+I guess memory barriers after (b) and before (f) would ensure that. But I
+wonder if SMMUEN also needs additional synchronization, and in that case a
+rwlock would probably be simpler.
 
 Thanks,
+Jean
 
-C.
-
- From 671d43faa7e14b896855403feb0afd777350cb0a Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Date: Wed, 4 Jan 2023 09:30:28 +0100
-Subject: [PATCH] hw/arm/boot: Export write_bootloader for Aspeed machines
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-AST2600 Aspeed machines have an home made boot loader for secondaries.
-Instead, use the internal ARM boot loader.
-
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
-  include/hw/arm/boot.h | 24 ++++++++++++++++++++++++
-  hw/arm/aspeed.c       | 42 ++++++++++++++++++++++--------------------
-  hw/arm/boot.c         | 34 +++++++---------------------------
-  3 files changed, 53 insertions(+), 47 deletions(-)
-
-diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
-index f18cc3064f..23edd0d31b 100644
---- a/include/hw/arm/boot.h
-+++ b/include/hw/arm/boot.h
-@@ -183,4 +183,28 @@ void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
-                                              const struct arm_boot_info *info,
-                                              hwaddr mvbar_addr);
-  
-+typedef enum {
-+    FIXUP_NONE = 0,     /* do nothing */
-+    FIXUP_TERMINATOR,   /* end of insns */
-+    FIXUP_BOARDID,      /* overwrite with board ID number */
-+    FIXUP_BOARD_SETUP,  /* overwrite with board specific setup code address */
-+    FIXUP_ARGPTR_LO,    /* overwrite with pointer to kernel args */
-+    FIXUP_ARGPTR_HI,    /* overwrite with pointer to kernel args (high half) */
-+    FIXUP_ENTRYPOINT_LO, /* overwrite with kernel entry point */
-+    FIXUP_ENTRYPOINT_HI, /* overwrite with kernel entry point (high half) */
-+    FIXUP_GIC_CPU_IF,   /* overwrite with GIC CPU interface address */
-+    FIXUP_BOOTREG,      /* overwrite with boot register address */
-+    FIXUP_DSB,          /* overwrite with correct DSB insn for cpu */
-+    FIXUP_MAX,
-+} FixupType;
-+
-+typedef struct ARMInsnFixup {
-+    uint32_t insn;
-+    FixupType fixup;
-+} ARMInsnFixup;
-+
-+void arm_write_bootloader(const char *name, hwaddr addr,
-+                          const ARMInsnFixup *insns, uint32_t *fixupcontext,
-+                          AddressSpace *as);
-+
-  #endif /* HW_ARM_BOOT_H */
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 9c60575cb8..311c0091ca 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -201,33 +201,35 @@ struct AspeedMachineState {
-  static void aspeed_write_smpboot(ARMCPU *cpu,
-                                   const struct arm_boot_info *info)
-  {
--    static const uint32_t poll_mailbox_ready[] = {
-+    AddressSpace *as = arm_boot_address_space(cpu, info);
-+    static const ARMInsnFixup poll_mailbox_ready[] = {
-          /*
-           * r2 = per-cpu go sign value
-           * r1 = AST_SMP_MBOX_FIELD_ENTRY
-           * r0 = AST_SMP_MBOX_FIELD_GOSIGN
-           */
--        0xee100fb0,  /* mrc     p15, 0, r0, c0, c0, 5 */
--        0xe21000ff,  /* ands    r0, r0, #255          */
--        0xe59f201c,  /* ldr     r2, [pc, #28]         */
--        0xe1822000,  /* orr     r2, r2, r0            */
--
--        0xe59f1018,  /* ldr     r1, [pc, #24]         */
--        0xe59f0018,  /* ldr     r0, [pc, #24]         */
--
--        0xe320f002,  /* wfe                           */
--        0xe5904000,  /* ldr     r4, [r0]              */
--        0xe1520004,  /* cmp     r2, r4                */
--        0x1afffffb,  /* bne     <wfe>                 */
--        0xe591f000,  /* ldr     pc, [r1]              */
--        AST_SMP_MBOX_GOSIGN,
--        AST_SMP_MBOX_FIELD_ENTRY,
--        AST_SMP_MBOX_FIELD_GOSIGN,
-+        { 0xee100fb0 },  /* mrc     p15, 0, r0, c0, c0, 5 */
-+        { 0xe21000ff },  /* ands    r0, r0, #255          */
-+        { 0xe59f201c },  /* ldr     r2, [pc, #28]         */
-+        { 0xe1822000 },  /* orr     r2, r2, r0            */
-+
-+        { 0xe59f1018 },  /* ldr     r1, [pc, #24]         */
-+        { 0xe59f0018 },  /* ldr     r0, [pc, #24]         */
-+
-+        { 0xe320f002 },  /* wfe                           */
-+        { 0xe5904000 },  /* ldr     r4, [r0]              */
-+        { 0xe1520004 },  /* cmp     r2, r4                */
-+        { 0x1afffffb },  /* bne     <wfe>                 */
-+        { 0xe591f000 },  /* ldr     pc, [r1]              */
-+        { AST_SMP_MBOX_GOSIGN },
-+        { AST_SMP_MBOX_FIELD_ENTRY },
-+        { AST_SMP_MBOX_FIELD_GOSIGN },
-+        { 0, FIXUP_TERMINATOR }
-      };
-+    uint32_t fixupcontext[FIXUP_MAX] = { 0 };
-  
--    rom_add_blob_fixed("aspeed.smpboot", poll_mailbox_ready,
--                       sizeof(poll_mailbox_ready),
--                       info->smp_loader_start);
-+    arm_write_bootloader("aspeed.smpboot", info->smp_loader_start,
-+                         poll_mailbox_ready, fixupcontext, as);
-  }
-  
-  static void aspeed_reset_secondary(ARMCPU *cpu,
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 3d7d11f782..ed6fd7c77f 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -59,26 +59,6 @@ AddressSpace *arm_boot_address_space(ARMCPU *cpu,
-      return cpu_get_address_space(cs, asidx);
-  }
-  
--typedef enum {
--    FIXUP_NONE = 0,     /* do nothing */
--    FIXUP_TERMINATOR,   /* end of insns */
--    FIXUP_BOARDID,      /* overwrite with board ID number */
--    FIXUP_BOARD_SETUP,  /* overwrite with board specific setup code address */
--    FIXUP_ARGPTR_LO,    /* overwrite with pointer to kernel args */
--    FIXUP_ARGPTR_HI,    /* overwrite with pointer to kernel args (high half) */
--    FIXUP_ENTRYPOINT_LO, /* overwrite with kernel entry point */
--    FIXUP_ENTRYPOINT_HI, /* overwrite with kernel entry point (high half) */
--    FIXUP_GIC_CPU_IF,   /* overwrite with GIC CPU interface address */
--    FIXUP_BOOTREG,      /* overwrite with boot register address */
--    FIXUP_DSB,          /* overwrite with correct DSB insn for cpu */
--    FIXUP_MAX,
--} FixupType;
--
--typedef struct ARMInsnFixup {
--    uint32_t insn;
--    FixupType fixup;
--} ARMInsnFixup;
--
-  static const ARMInsnFixup bootloader_aarch64[] = {
-      { 0x580000c0 }, /* ldr x0, arg ; Load the lower 32-bits of DTB */
-      { 0xaa1f03e1 }, /* mov x1, xzr */
-@@ -149,9 +129,9 @@ static const ARMInsnFixup smpboot[] = {
-      { 0, FIXUP_TERMINATOR }
-  };
-  
--static void write_bootloader(const char *name, hwaddr addr,
--                             const ARMInsnFixup *insns, uint32_t *fixupcontext,
--                             AddressSpace *as)
-+void arm_write_bootloader(const char *name, hwaddr addr,
-+                          const ARMInsnFixup *insns, uint32_t *fixupcontext,
-+                          AddressSpace *as)
-  {
-      /* Fix up the specified bootloader fragment and write it into
-       * guest memory using rom_add_blob_fixed(). fixupcontext is
-@@ -213,8 +193,8 @@ static void default_write_secondary(ARMCPU *cpu,
-          fixupcontext[FIXUP_DSB] = CP15_DSB_INSN;
-      }
-  
--    write_bootloader("smpboot", info->smp_loader_start,
--                     smpboot, fixupcontext, as);
-+    arm_write_bootloader("smpboot", info->smp_loader_start,
-+                         smpboot, fixupcontext, as);
-  }
-  
-  void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
-@@ -1173,8 +1153,8 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
-          fixupcontext[FIXUP_ENTRYPOINT_LO] = entry;
-          fixupcontext[FIXUP_ENTRYPOINT_HI] = entry >> 32;
-  
--        write_bootloader("bootloader", info->loader_start,
--                         primary_loader, fixupcontext, as);
-+        arm_write_bootloader("bootloader", info->loader_start,
-+                             primary_loader, fixupcontext, as);
-  
-          if (info->write_board_setup) {
-              info->write_board_setup(cpu, info);
--- 
-2.38.1
-
-
+> +        return MEMTX_OK;
+>      case A_STRTAB_BASE: /* 64b */
+>          s->strtab_base = deposit64(s->strtab_base, 0, 32, data);
+>          return MEMTX_OK;
+> @@ -1318,6 +1328,9 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
+>      case A_STATUSR:
+>          *data = s->statusr;
+>          return MEMTX_OK;
+> +    case A_GBPA:
+> +        *data = s->gbpa;
+> +        return MEMTX_OK;
+>      case A_IRQ_CTRL:
+>      case A_IRQ_CTRL_ACK:
+>          *data = s->irq_ctrl;
+> @@ -1495,6 +1508,7 @@ static const VMStateDescription vmstate_smmuv3 = {
+>          VMSTATE_UINT32_ARRAY(cr, SMMUv3State, 3),
+>          VMSTATE_UINT32(cr0ack, SMMUv3State),
+>          VMSTATE_UINT32(statusr, SMMUv3State),
+> +        VMSTATE_UINT32(gbpa, SMMUv3State),
+>          VMSTATE_UINT32(irq_ctrl, SMMUv3State),
+>          VMSTATE_UINT32(gerror, SMMUv3State),
+>          VMSTATE_UINT32(gerrorn, SMMUv3State),
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index f1921fdf9e..9899fa1860 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -46,6 +46,7 @@ struct SMMUv3State {
+>      uint32_t cr[3];
+>      uint32_t cr0ack;
+>      uint32_t statusr;
+> +    uint32_t gbpa;
+>      uint32_t irq_ctrl;
+>      uint32_t gerror;
+>      uint32_t gerrorn;
+> -- 
+> 2.39.0.314.g84b9a713c41-goog
+> 
+> 

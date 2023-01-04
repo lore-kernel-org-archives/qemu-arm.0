@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8306252ejb;
-        Wed, 4 Jan 2023 14:01:59 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXt60w1tzwR0RoTrovJ9ULzDai1rGwfYq9OZAMI3BlrDtZRm6IlWK5mdoI4Y+9Vd1chmwjm1
-X-Received: by 2002:a05:600c:1d18:b0:3d9:73fe:9744 with SMTP id l24-20020a05600c1d1800b003d973fe9744mr26447819wms.26.1672869719531;
-        Wed, 04 Jan 2023 14:01:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672869719; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8306300ejb;
+        Wed, 4 Jan 2023 14:02:03 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXt/9xM7DndCVJqlxZGEXmJq9OlEUeNHKvNC1nmtS2LQmiB+xcG9cU3LAni11h7SaVUSJD7T
+X-Received: by 2002:a5d:6511:0:b0:2aa:be49:5963 with SMTP id x17-20020a5d6511000000b002aabe495963mr1284087wru.46.1672869723334;
+        Wed, 04 Jan 2023 14:02:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672869723; cv=none;
         d=google.com; s=arc-20160816;
-        b=AC2i+sMg8TKxNN43IbOu2JICI2G8B0h08yc91hTjLQf9LoIUBUKm4VXXF7q7MUAPRI
-         UEHBKMZoqi0Ix/TJXgFozfZOgpVdX1juuXjO30gEW0G1TeFlLHUEOqr34zbeFcMMo5QL
-         vfhtguQe3Lw91kBr38yPQHqPeaTQjyyUlNDQLgWZphvi5QLoV3XvmJ9jkU2In8+9wKHM
-         lz1GSQ218YRQdQsy1sEANjuRIbAOSkJ/dSQlpuWhQZQTGSrdomvjAFyQclp6XNR9qXqI
-         J5STGsLFyCoO2EZCipO4wocx4ltY2E2kdAKQI6/yztMDtRyzmOssD36ADsBCwJes3BrU
-         Bspg==
+        b=05x6KDPXOjNqRsDbCvJSbXx3K90Fb/41kgqwCpCEjZvCiXdrCLvn1AI5Wyk1tRpG7c
+         H/YN7qpyDprqNSWMiN9uUAbts/VpCNVUCZfr6nUj6PHIw0QdawhJVkrCthRDCBzyNwqt
+         DGYzKdM9Cxb2diQ8Ni8oH3Dq3YnZKssUbrnvr1bVHBMEDhrCkHP1xX42QtIPncNG9REP
+         f55Oth+Cl8aAhSoOHs8zdPUD+25nE8PTFX5MUqW55WlfX+/HI6rbFHMgZ5KJT+OhKjsw
+         vg7fX0va/n4z4pRawtPPA+yc5iBzSEHNlrTPQ7vP1fDYTnkmT0cuP7VjdeOS3pyhdaNJ
+         5SjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=dDe5vfmZ31EwcRxKz3+oipci4tDkatYe8l7lx/XZLg4=;
-        b=UQLXEIrN01ICikwiryizNXaAKltVsZD9nYYi/o13ZPHhNRa8iQ6x8sGnqBbg7Pg5jT
-         9ToNyYoqa947Q5A/PcKX9b/qSxwnd0P7cyhxpy4vjHQBioTidScRtaDxl7cP97TrNliN
-         Gc5siTRkI7W+8Vwd/CFjgIdMaz2zLC+Zl2RffAI+A7GVKV0nYUZoqmQ5sFB2nT1JpvP5
-         jBxmBSG3iDbAPXLg9Hwz96nKUDuUV9TdtXVsdNvsj4RhUNvqF8miArT3q7yvZW+wlh+H
-         gxca9QDxuKoHJo1PT3IPdI04KBNjLkVx4Mh9c403BvEHlxUsgh/E1sAywAabx85JbfOG
-         EajA==
+        bh=Z0zsUVLNnlB8or8gHrZOqCwKbl6RppYxTr0hODbbSNU=;
+        b=FiyiPvVIj7BZGWjMRr8555uHDS9jH7fitUorwx5p97x11rtnp1CaamdCJsiw/opZrU
+         NPLlukN4PF3v2S84UEZx7hfel/97+TQZQHEIdJexAC4deUb1O64JTdNXDwLu5/xNgUiT
+         XapZ+5lSnobmgVQTVuYEL0AO5UxPWHl/2RWSZCW/zFcRuWvJvw8oTqE+GepCOi5bS9LJ
+         sLPUjwv50Tjoj58S6vnp4MdrcjQpKjtnnxlvE9opJKGe0Hlgg9Qp9+ALyZ3jIB4XIL2T
+         UK0Ab825R3qUeZkvqjaja4dSZBhbw7odgVmpPvsJbDxVsBYS/odRKfiydMfWNzHjZBh9
+         8ERw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=cpS6XJ8N;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=gCljilCn;
        dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id f8-20020a05600c154800b003c712be1c5csi93351wmg.132.2023.01.04.14.01.59
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id f11-20020a056000128b00b0026e5776fbb5si21187138wrx.187.2023.01.04.14.02.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Jan 2023 14:01:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Wed, 04 Jan 2023 14:02:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=cpS6XJ8N;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=gCljilCn;
        dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 1F89D3F16C;
-	Wed,  4 Jan 2023 22:01:59 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id A97073F17A;
+	Wed,  4 Jan 2023 22:02:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1672869719; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
+	t=1672869722; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dDe5vfmZ31EwcRxKz3+oipci4tDkatYe8l7lx/XZLg4=;
-	b=cpS6XJ8N7//rox2is1FPdNyuYWdObzrRveiyKpN8i2bBzKRmUS5KMZkIpMfwSIfomVb4NM
-	9zmlFcmudtMkJkdQe6B/Wi7Y6i3kzTddbtbqmfEoAUjkuxsJYwi8crYkz3oEQ3QAZ3ccUi
-	nNGSlSRejhZZ4nGQYkGhD5ppwG0BAt4=
+	bh=Z0zsUVLNnlB8or8gHrZOqCwKbl6RppYxTr0hODbbSNU=;
+	b=gCljilCnnj99P4fzrDxwcyX3/qg9PYnLZZy+HirV1Y5DpE7NQesnoW4w6y/V7Y6vonN49y
+	iqCKLEvfLkOIemHvwOUVYcvA4Erc9ynIJIdrEnq2S/eMrMiA6iEBcrTpTuoCyfITZkhCm0
+	nMiM2ugL+sXXmNbVzueTYjqkxFH5s64=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1672869719;
+	s=susede2_ed25519; t=1672869722;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
+	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dDe5vfmZ31EwcRxKz3+oipci4tDkatYe8l7lx/XZLg4=;
-	b=qp4BGwudRro49PNDmElJ8qlLMZQTJcU9dxHmVA0waJwKbBC/qU5BpLWtSUCteFgoGqSZ8e
-	VID+af3RtoaXTsCA==
+	bh=Z0zsUVLNnlB8or8gHrZOqCwKbl6RppYxTr0hODbbSNU=;
+	b=MB/bTdWNZBQXazEv3/MRrqbX/cYQ6l5E106lg76WqfLT9mWqHN7EaV6p8/xMq2Lr6BURl+
+	7c2H8LYgKOssITCQ==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id F3AB51342C;
-	Wed,  4 Jan 2023 22:01:55 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 889D61342C;
+	Wed,  4 Jan 2023 22:01:59 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id WNVELlP3tWPwJAAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 04 Jan 2023 22:01:55 +0000
+	id 6KMUFFf3tWPwJAAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 04 Jan 2023 22:01:59 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -84,65 +84,87 @@ Cc: qemu-arm@nongnu.org,
 	Alexander Graf <agraf@csgraf.de>,
 	Thomas Huth <thuth@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [RFC PATCH 24/27] tests: do not run qom-test on all machines for ARM KVM-only
-Date: Wed,  4 Jan 2023 18:58:32 -0300
-Message-Id: <20230104215835.24692-25-farosas@suse.de>
+Subject: [RFC PATCH 25/27] tests: device-introspect-test: cope with ARM TCG-only devices
+Date: Wed,  4 Jan 2023 18:58:33 -0300
+Message-Id: <20230104215835.24692-26-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230104215835.24692-1-farosas@suse.de>
 References: <20230104215835.24692-1-farosas@suse.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: pqEUn7Bq58wj
+X-TUID: QM4tvrHCRzvh
 
 From: Claudio Fontana <cfontana@suse.de>
 
-on ARM we currently list and build all machines, even when
-building KVM-only, without TCG.
+Skip the test_device_intro_concrete for now for ARM KVM-only build,
+as on ARM we currently build devices for ARM that are not
+compatible with a KVM-only build.
 
-Until we fix this (and we only list and build machines that are
-compatible with KVM), only test specifically using the "virt"
-machine in this case.
+We can remove this workaround when we fix this in KConfig etc,
+and we only list and build machines that are compatible with KVM
+for KVM-only builds.
 
+Alternative implementation provided by Alex.
+
+Suggested-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Cc: Thomas Huth <thuth@redhat.com>
 Cc: Laurent Vivier <lvivier@redhat.com>
 ---
- tests/qtest/qom-test.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ tests/qtest/device-introspect-test.c | 32 +++++++++++++++++++++++-----
+ 1 file changed, 27 insertions(+), 5 deletions(-)
 
-diff --git a/tests/qtest/qom-test.c b/tests/qtest/qom-test.c
-index 13510bc349..aea969ef60 100644
---- a/tests/qtest/qom-test.c
-+++ b/tests/qtest/qom-test.c
-@@ -105,7 +105,28 @@ int main(int argc, char **argv)
- {
-     g_test_init(&argc, &argv, NULL);
+diff --git a/tests/qtest/device-introspect-test.c b/tests/qtest/device-introspect-test.c
+index 5b0ffe43f5..f89df87f74 100644
+--- a/tests/qtest/device-introspect-test.c
++++ b/tests/qtest/device-introspect-test.c
+@@ -304,6 +304,24 @@ static void test_abstract_interfaces(void)
+     qtest_quit(qts);
+ }
  
-+    /*
-+     * XXX currently we build also boards for ARM that are
-+     * incompatible with KVM.  We therefore need to check this
-+     * explicitly, and only test virt for kvm-only arm builds. After
-+     * we do the work of Kconfig etc to ensure that only
-+     * KVM-compatible boards are built for the kvm-only build, we
-+     * could remove this.
-+     */
++/*
++ * XXX currently we build also boards for ARM that are incompatible with KVM.
++ * We therefore need to check this explicitly, and only test virt for kvm-only
++ * arm builds.
++ * After we do the work of Kconfig etc to ensure that only KVM-compatible boards
++ * are built for the kvm-only build, we could remove this.
++ */
++static bool skip_machine_tests(void)
++{
 +#ifndef CONFIG_TCG
-+    {
-+        const char *arch = qtest_get_arch();
-+
-+        if (strcmp(arch, "arm") == 0 || strcmp(arch, "aarch64") == 0) {
-+            add_machine_test_case("virt");
-+            goto add_machine_test_done;
-+        }
++    const char *arch = qtest_get_arch();
++    if (strcmp(arch, "arm") == 0 || strcmp(arch, "aarch64") == 0) {
++        return true;
 +    }
 +#endif /* !CONFIG_TCG */
++    return false;
++}
 +
-     qtest_cb_for_every_machine(add_machine_test_case, g_test_quick());
-+    goto add_machine_test_done;
+ static void add_machine_test_case(const char *mname)
+ {
+     char *path, *args;
+@@ -328,11 +346,15 @@ int main(int argc, char **argv)
+     qtest_add_func("device/introspect/none", test_device_intro_none);
+     qtest_add_func("device/introspect/abstract", test_device_intro_abstract);
+     qtest_add_func("device/introspect/abstract-interfaces", test_abstract_interfaces);
+-    if (g_test_quick()) {
+-        qtest_add_data_func("device/introspect/concrete/defaults/none",
+-                            g_strdup(common_args), test_device_intro_concrete);
+-    } else {
+-        qtest_cb_for_every_machine(add_machine_test_case, true);
++
++    if (!skip_machine_tests()) {
++        if (g_test_quick()) {
++            qtest_add_data_func("device/introspect/concrete/defaults/none",
++                                g_strdup(common_args),
++                                test_device_intro_concrete);
++        } else {
++            qtest_cb_for_every_machine(add_machine_test_case, true);
++        }
+     }
  
-+ add_machine_test_done:
      return g_test_run();
- }
 -- 
 2.35.3

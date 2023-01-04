@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8305979ejb;
-        Wed, 4 Jan 2023 14:01:39 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvjlVMo/z3LZErBbnh0JAkNkUexwVDwdX/n8cFT9UMZAZUmRbz2+2qhmecVxAITudZJWBpo
-X-Received: by 2002:a05:600c:a0f:b0:3cf:7704:50ce with SMTP id z15-20020a05600c0a0f00b003cf770450cemr35603220wmp.38.1672869699280;
-        Wed, 04 Jan 2023 14:01:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672869699; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8306051ejb;
+        Wed, 4 Jan 2023 14:01:43 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtBp3Z5Q3itSZMWkgjAiSVUlYUtfV1GlZn7uu1c29pY28wLxHLN9O2n4Agg3WMMIWUO8tDk
+X-Received: by 2002:a05:600c:1e24:b0:3d3:5075:7526 with SMTP id ay36-20020a05600c1e2400b003d350757526mr35953647wmb.31.1672869703218;
+        Wed, 04 Jan 2023 14:01:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672869703; cv=none;
         d=google.com; s=arc-20160816;
-        b=aYwNb+oc5uuNgsROLnxVCI/ynPkxJkyw6hhQho6sjlnUuHYCBXcJTRwwCcZ2u2Lp1F
-         3zi2C/WVmMfT5lwwEBi3VAx732cpBY3S3Vo58XWDo4Kbm6mGUcTwm9oeuRribkZRS61g
-         5bFjH+eEvrrO+Ug+KbXIC2+RnSUYwRbOejb01UJiRRQ/thQeCr3sP6HC5BBSzsiMkVt2
-         qqctFAEB39/OLykjkIkrFjDAaMqrmJD4cz3Fpy+lqelJt/Ox6ALZTwc9OP4FlyACFGh7
-         ScYSAqRzKOCU9UeCGG54PQuVpSGLlWMGNq8E5OQq1SsUGfdARV9TYo+Lp01P6Jp37gBl
-         0sMw==
+        b=EqJqLKwoYBOfIe57pZZkVaeUsg+FN1hwjHUekH7yrKRx/AGFO0VNG0UrWWTdA44uNX
+         Y7Fp4ac12LGojmjDDyi0xg8Dt7CGxXpHgEZ0PzOc9Ng4IH8kf+gzWeKHkrrOCOcuN9VF
+         hgJlj8nczy4HPJxaHi/GVojq3YWdEu1IZVZPLq05e/lezW9wl9iMxyhHIlzTu95Mcsqb
+         LQ6eqZCDuxJNmL4VDJ8QW/GOi1+Czt74FgmAnjnaG1J9K1M8ZOiH+7TO4atuVeGzD5oc
+         TGkrnTbifC6S0aSyW6xGWVJ6sgRYBe1DZ0yeHdvLu5dbm3ZRsTy+t5xwPWHWZv1+QQJr
+         v1fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=p5ojC4527eRIiRmqJh5H1iXH5vAsoQ4LQ1DA1TKEVLM=;
-        b=Br/YypTofnuVq7p1oPqq/6Y+9Kl83Pavw/jz74oq7BhK8RY7OP1A1YXkbZ7GzbanWs
-         qDnnb8VnXn+tmMWBmiYkdICkzoUW+siOQ96NggEiqVKyO8YEoE9D/7sy7k/pT3OAzQgP
-         vRBSawphBs2kFf2GzkfWWQQW8lyfCr6bewG35nNj+51hfR0BEfOsfv8KHqqqCmK3VxUI
-         wgKwqVOn2jalltc8oI8B/kaVsc7tczh92jXbcNT7weOX1UO9OH9woTKs9yNGY+d4kFSp
-         SHBzkf/3OUNn+/U1aV5vCldWqxyO9wVuTEfNwfuJKA3G4Doq9oYAMPqVET4YqZF0SYjn
-         6uYw==
+        bh=hHEIeKZaQq4OJbb6IsXxTPKI+LrZ99PZllKk6+IwdkQ=;
+        b=lbpJiBQpxB34NXiPO6MxbpCBXK6NxsVL492B0GdqC6Co78cISOL0bdzuZfEkB8vJKQ
+         mhg6ukIS6NtBJ81G7kAMZcYMp3Ce8o9wJJu/pM9KQugINSaqu6x65nMZMpMvrdo7DXtt
+         27Jcj6qx3TSqV+YG38uE1HG/mOvQmVo2zP8gDcfEQHbPdYql27XtpUye9K4CFYR/N1kC
+         IkuqROzFV9+iWSV9R/JOyIWCrHQhicNwsGTBhCcaD5vq9KYtcTe3rhvhzQw9gRFxyH5p
+         B+osZMVzDjR4M0M6RfrwLqN8Je13L5IAPWERYRks8Cj8W1MIyeOs12i2RE/BncwybKIj
+         BiFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=mMnW82wq;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=HwsnwH6O;
        dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id s8-20020a05600c384800b003cf6acc4835si78489wmr.150.2023.01.04.14.01.39
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id o1-20020a05600c4fc100b003d9a1451854si145793wmq.0.2023.01.04.14.01.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Jan 2023 14:01:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Wed, 04 Jan 2023 14:01:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=mMnW82wq;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=HwsnwH6O;
        dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id CD4392027B;
-	Wed,  4 Jan 2023 22:01:38 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id EF70C3F0C7;
+	Wed,  4 Jan 2023 22:01:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1672869698; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1672869701; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=p5ojC4527eRIiRmqJh5H1iXH5vAsoQ4LQ1DA1TKEVLM=;
-	b=mMnW82wqsPXaKA9pyy+Zv7ASFsQ3eNaLLLkVDhDouzFrQ2tADhnXuW8663y4ckB1L+68m8
-	RIdkai1PRXiq2JqF8SJzFZsnUIdOAJbos8P0u/GpajYW/bEfmR4DWK0iKzOKuWNtQsLHdk
-	giZbsvgNi9COJCcAfdIZHigXh92+7Tc=
+	bh=hHEIeKZaQq4OJbb6IsXxTPKI+LrZ99PZllKk6+IwdkQ=;
+	b=HwsnwH6OWNUaXECkFSeltQ7FmPkOwdyQwu70JXVtTJMuSApCh+QzdoOkLSo2iz2sDzMNbs
+	4+ICxdFhYWTl5xV/9fl6LaxgZNF2sSWQ/VDZe0PjKh+ND4xUeqpjK9IUU1+o38t9o8vQmm
+	C/vcxGfZQPdBLgD+CsATVpbBJsxa+0c=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1672869698;
+	s=susede2_ed25519; t=1672869701;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=p5ojC4527eRIiRmqJh5H1iXH5vAsoQ4LQ1DA1TKEVLM=;
-	b=Z0Lc2b5nGtCtHh/lFRuX50x9FCAYSm7uH2YsVMDrV1UcF5s3geyIi/HLtzhLD36T03vsvF
-	wWqmrH25VkkMcpDg==
+	bh=hHEIeKZaQq4OJbb6IsXxTPKI+LrZ99PZllKk6+IwdkQ=;
+	b=YVFiDuvcHTmnFQ7vS4FrKMoNDm9VglO1bCciLnt3yUkBNezrvNePp7zqwmFf4fGTEDkqZf
+	OFIAC3X3QQpv+NDg==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 2300E1342C;
-	Wed,  4 Jan 2023 22:01:35 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 42E011342C;
+	Wed,  4 Jan 2023 22:01:39 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id gE3sNj/3tWPwJAAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 04 Jan 2023 22:01:35 +0000
+	id sC4ZA0P3tWPwJAAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 04 Jan 2023 22:01:39 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,18 +82,15 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>
-Subject: [RFC PATCH 18/27] target/arm: Move cpregs code out of cpu.h
-Date: Wed,  4 Jan 2023 18:58:26 -0300
-Message-Id: <20230104215835.24692-19-farosas@suse.de>
+Subject: [RFC PATCH 19/27] target/arm: Move common cpregs code into a separate file
+Date: Wed,  4 Jan 2023 18:58:27 -0300
+Message-Id: <20230104215835.24692-20-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230104215835.24692-1-farosas@suse.de>
 References: <20230104215835.24692-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: j5WhFiYuValD
-
-Since commit cf7c6d1004 ("target/arm: Split out cpregs.h") we now have
-a cpregs.h header which is more suitable for this code.
+X-TUID: TWWUbL1+YG7L
 
 Code moved verbatim.
 
@@ -103,220 +100,1000 @@ Extracted from:
 https://lore.kernel.org/r/20210416162824.25131-15-cfontana@suse.de
 [RFC v14 14/80] target/arm: split cpregs from tcg/helper.c
 ---
- target/arm/cpregs.h | 98 +++++++++++++++++++++++++++++++++++++++++++++
- target/arm/cpu.h    | 91 -----------------------------------------
- 2 files changed, 98 insertions(+), 91 deletions(-)
+ target/arm/cpregs.c    | 482 +++++++++++++++++++++++++++++++++++++++++
+ target/arm/helper.c    | 472 ----------------------------------------
+ target/arm/meson.build |   1 +
+ 3 files changed, 483 insertions(+), 472 deletions(-)
+ create mode 100644 target/arm/cpregs.c
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 1c35574102..9e43ea6c3c 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -120,6 +120,104 @@ enum {
-     ARM_CP_SME                   = 1 << 19,
- };
- 
+diff --git a/target/arm/cpregs.c b/target/arm/cpregs.c
+new file mode 100644
+index 0000000000..f275d9f065
+--- /dev/null
++++ b/target/arm/cpregs.c
+@@ -0,0 +1,482 @@
 +/*
-+ * Interface for defining coprocessor registers.
-+ * Registers are defined in tables of arm_cp_reginfo structs
-+ * which are passed to define_arm_cp_regs().
++ * ARM CP registers - common functionality
++ *
++ * This code is licensed under the GNU GPL v2 or later.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
-+/*
-+ * When looking up a coprocessor register we look for it
-+ * via an integer which encodes all of:
-+ *  coprocessor number
-+ *  Crn, Crm, opc1, opc2 fields
-+ *  32 or 64 bit register (ie is it accessed via MRC/MCR
-+ *    or via MRRC/MCRR?)
-+ *  non-secure/secure bank (AArch32 only)
-+ * We allow 4 bits for opc1 because MRRC/MCRR have a 4 bit field.
-+ * (In this case crn and opc2 should be zero.)
-+ * For AArch64, there is no 32/64 bit size distinction;
-+ * instead all registers have a 2 bit op0, 3 bit op1 and op2,
-+ * and 4 bit CRn and CRm. The encoding patterns are chosen
-+ * to be easy to convert to and from the KVM encodings, and also
-+ * so that the hashtable can contain both AArch32 and AArch64
-+ * registers (to allow for interprocessing where we might run
-+ * 32 bit code on a 64 bit core).
-+ */
-+/*
-+ * This bit is private to our hashtable cpreg; in KVM register
-+ * IDs the AArch64/32 distinction is the KVM_REG_ARM/ARM64
-+ * in the upper bits of the 64 bit ID.
-+ */
-+#define CP_REG_AA64_SHIFT 28
-+#define CP_REG_AA64_MASK (1 << CP_REG_AA64_SHIFT)
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "cpregs.h"
 +
-+/*
-+ * To enable banking of coprocessor registers depending on ns-bit we
-+ * add a bit to distinguish between secure and non-secure cpregs in the
-+ * hashtable.
-+ */
-+#define CP_REG_NS_SHIFT 29
-+#define CP_REG_NS_MASK (1 << CP_REG_NS_SHIFT)
-+
-+#define ENCODE_CP_REG(cp, is64, ns, crn, crm, opc1, opc2)   \
-+    ((ns) << CP_REG_NS_SHIFT | ((cp) << 16) | ((is64) << 15) |   \
-+     ((crn) << 11) | ((crm) << 7) | ((opc1) << 3) | (opc2))
-+
-+#define ENCODE_AA64_CP_REG(cp, crn, crm, op0, op1, op2) \
-+    (CP_REG_AA64_MASK |                                 \
-+     ((cp) << CP_REG_ARM_COPROC_SHIFT) |                \
-+     ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
-+     ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
-+     ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
-+     ((crm) << CP_REG_ARM64_SYSREG_CRM_SHIFT) |         \
-+     ((op2) << CP_REG_ARM64_SYSREG_OP2_SHIFT))
-+
-+/*
-+ * Convert a full 64 bit KVM register ID to the truncated 32 bit
-+ * version used as a key for the coprocessor register hashtable
-+ */
-+static inline uint32_t kvm_to_cpreg_id(uint64_t kvmid)
++static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
 +{
-+    uint32_t cpregid = kvmid;
-+    if ((kvmid & CP_REG_ARCH_MASK) == CP_REG_ARM64) {
-+        cpregid |= CP_REG_AA64_MASK;
-+    } else {
-+        if ((kvmid & CP_REG_SIZE_MASK) == CP_REG_SIZE_U64) {
-+            cpregid |= (1 << 15);
-+        }
++   /*
++    * Return true if the regdef would cause an assertion if you called
++    * read_raw_cp_reg() or write_raw_cp_reg() on it (ie if it is a
++    * program bug for it not to have the NO_RAW flag).
++    * NB that returning false here doesn't necessarily mean that calling
++    * read/write_raw_cp_reg() is safe, because we can't distinguish "has
++    * read/write access functions which are safe for raw use" from "has
++    * read/write access functions which have side effects but has forgotten
++    * to provide raw access functions".
++    * The tests here line up with the conditions in read/write_raw_cp_reg()
++    * and assertions in raw_read()/raw_write().
++    */
++    if ((ri->type & ARM_CP_CONST) ||
++        ri->fieldoffset ||
++        ((ri->raw_writefn || ri->writefn) && (ri->raw_readfn || ri->readfn))) {
++        return false;
++    }
++    return true;
++}
 +
++/*
++ * Private utility function for define_one_arm_cp_reg_with_opaque():
++ * add a single reginfo struct to the hash table.
++ */
++static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
++                                   void *opaque, CPState state,
++                                   CPSecureState secstate,
++                                   int crm, int opc1, int opc2,
++                                   const char *name)
++{
++    CPUARMState *env = &cpu->env;
++    uint32_t key;
++    ARMCPRegInfo *r2;
++    bool is64 = r->type & ARM_CP_64BIT;
++    bool ns = secstate & ARM_CP_SECSTATE_NS;
++    int cp = r->cp;
++    size_t name_len;
++    bool make_const;
++
++    switch (state) {
++    case ARM_CP_STATE_AA32:
++        /* We assume it is a cp15 register if the .cp field is left unset. */
++        if (cp == 0 && r->state == ARM_CP_STATE_BOTH) {
++            cp = 15;
++        }
++        key = ENCODE_CP_REG(cp, is64, ns, r->crn, crm, opc1, opc2);
++        break;
++    case ARM_CP_STATE_AA64:
 +        /*
-+         * KVM is always non-secure so add the NS flag on AArch32 register
-+         * entries.
++         * To allow abbreviation of ARMCPRegInfo definitions, we treat
++         * cp == 0 as equivalent to the value for "standard guest-visible
++         * sysreg".  STATE_BOTH definitions are also always "standard sysreg"
++         * in their AArch64 view (the .cp value may be non-zero for the
++         * benefit of the AArch32 view).
 +         */
-+         cpregid |= 1 << CP_REG_NS_SHIFT;
++        if (cp == 0 || r->state == ARM_CP_STATE_BOTH) {
++            cp = CP_REG_ARM64_SYSREG_CP;
++        }
++        key = ENCODE_AA64_CP_REG(cp, r->crn, crm, r->opc0, opc1, opc2);
++        break;
++    default:
++        g_assert_not_reached();
 +    }
-+    return cpregid;
++
++    /* Overriding of an existing definition must be explicitly requested. */
++    if (!(r->type & ARM_CP_OVERRIDE)) {
++        const ARMCPRegInfo *oldreg = get_arm_cp_reginfo(cpu->cp_regs, key);
++        if (oldreg) {
++            assert(oldreg->type & ARM_CP_OVERRIDE);
++        }
++    }
++
++    /*
++     * Eliminate registers that are not present because the EL is missing.
++     * Doing this here makes it easier to put all registers for a given
++     * feature into the same ARMCPRegInfo array and define them all at once.
++     */
++    make_const = false;
++    if (arm_feature(env, ARM_FEATURE_EL3)) {
++        /*
++         * An EL2 register without EL2 but with EL3 is (usually) RES0.
++         * See rule RJFFP in section D1.1.3 of DDI0487H.a.
++         */
++        int min_el = ctz32(r->access) / 2;
++        if (min_el == 2 && !arm_feature(env, ARM_FEATURE_EL2)) {
++            if (r->type & ARM_CP_EL3_NO_EL2_UNDEF) {
++                return;
++            }
++            make_const = !(r->type & ARM_CP_EL3_NO_EL2_KEEP);
++        }
++    } else {
++        CPAccessRights max_el = (arm_feature(env, ARM_FEATURE_EL2)
++                                 ? PL2_RW : PL1_RW);
++        if ((r->access & max_el) == 0) {
++            return;
++        }
++    }
++
++    /* Combine cpreg and name into one allocation. */
++    name_len = strlen(name) + 1;
++    r2 = g_malloc(sizeof(*r2) + name_len);
++    *r2 = *r;
++    r2->name = memcpy(r2 + 1, name, name_len);
++
++    /*
++     * Update fields to match the instantiation, overwiting wildcards
++     * such as CP_ANY, ARM_CP_STATE_BOTH, or ARM_CP_SECSTATE_BOTH.
++     */
++    r2->cp = cp;
++    r2->crm = crm;
++    r2->opc1 = opc1;
++    r2->opc2 = opc2;
++    r2->state = state;
++    r2->secure = secstate;
++    if (opaque) {
++        r2->opaque = opaque;
++    }
++
++    if (make_const) {
++        /* This should not have been a very special register to begin. */
++        int old_special = r2->type & ARM_CP_SPECIAL_MASK;
++        assert(old_special == 0 || old_special == ARM_CP_NOP);
++        /*
++         * Set the special function to CONST, retaining the other flags.
++         * This is important for e.g. ARM_CP_SVE so that we still
++         * take the SVE trap if CPTR_EL3.EZ == 0.
++         */
++        r2->type = (r2->type & ~ARM_CP_SPECIAL_MASK) | ARM_CP_CONST;
++        /*
++         * Usually, these registers become RES0, but there are a few
++         * special cases like VPIDR_EL2 which have a constant non-zero
++         * value with writes ignored.
++         */
++        if (!(r->type & ARM_CP_EL3_NO_EL2_C_NZ)) {
++            r2->resetvalue = 0;
++        }
++        /*
++         * ARM_CP_CONST has precedence, so removing the callbacks and
++         * offsets are not strictly necessary, but it is potentially
++         * less confusing to debug later.
++         */
++        r2->readfn = NULL;
++        r2->writefn = NULL;
++        r2->raw_readfn = NULL;
++        r2->raw_writefn = NULL;
++        r2->resetfn = NULL;
++        r2->fieldoffset = 0;
++        r2->bank_fieldoffsets[0] = 0;
++        r2->bank_fieldoffsets[1] = 0;
++    } else {
++        bool isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
++
++        if (isbanked) {
++            /*
++             * Register is banked (using both entries in array).
++             * Overwriting fieldoffset as the array is only used to define
++             * banked registers but later only fieldoffset is used.
++             */
++            r2->fieldoffset = r->bank_fieldoffsets[ns];
++        }
++        if (state == ARM_CP_STATE_AA32) {
++            if (isbanked) {
++                /*
++                 * If the register is banked then we don't need to migrate or
++                 * reset the 32-bit instance in certain cases:
++                 *
++                 * 1) If the register has both 32-bit and 64-bit instances
++                 *    then we can count on the 64-bit instance taking care
++                 *    of the non-secure bank.
++                 * 2) If ARMv8 is enabled then we can count on a 64-bit
++                 *    version taking care of the secure bank.  This requires
++                 *    that separate 32 and 64-bit definitions are provided.
++                 */
++                if ((r->state == ARM_CP_STATE_BOTH && ns) ||
++                    (arm_feature(env, ARM_FEATURE_V8) && !ns)) {
++                    r2->type |= ARM_CP_ALIAS;
++                }
++            } else if ((secstate != r->secure) && !ns) {
++                /*
++                 * The register is not banked so we only want to allow
++                 * migration of the non-secure instance.
++                 */
++                r2->type |= ARM_CP_ALIAS;
++            }
++
++            if (HOST_BIG_ENDIAN &&
++                r->state == ARM_CP_STATE_BOTH && r2->fieldoffset) {
++                r2->fieldoffset += sizeof(uint32_t);
++            }
++        }
++    }
++
++    /*
++     * By convention, for wildcarded registers only the first
++     * entry is used for migration; the others are marked as
++     * ALIAS so we don't try to transfer the register
++     * multiple times. Special registers (ie NOP/WFI) are
++     * never migratable and not even raw-accessible.
++     */
++    if (r2->type & ARM_CP_SPECIAL_MASK) {
++        r2->type |= ARM_CP_NO_RAW;
++    }
++    if (((r->crm == CP_ANY) && crm != 0) ||
++        ((r->opc1 == CP_ANY) && opc1 != 0) ||
++        ((r->opc2 == CP_ANY) && opc2 != 0)) {
++        r2->type |= ARM_CP_ALIAS | ARM_CP_NO_GDB;
++    }
++
++    /*
++     * Check that raw accesses are either forbidden or handled. Note that
++     * we can't assert this earlier because the setup of fieldoffset for
++     * banked registers has to be done first.
++     */
++    if (!(r2->type & ARM_CP_NO_RAW)) {
++        assert(!raw_accessors_invalid(r2));
++    }
++
++    g_hash_table_insert(cpu->cp_regs, (gpointer)(uintptr_t)key, r2);
++}
++
++void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
++                                       const ARMCPRegInfo *r, void *opaque)
++{
++    /*
++     * Define implementations of coprocessor registers.
++     * We store these in a hashtable because typically
++     * there are less than 150 registers in a space which
++     * is 16*16*16*8*8 = 262144 in size.
++     * Wildcarding is supported for the crm, opc1 and opc2 fields.
++     * If a register is defined twice then the second definition is
++     * used, so this can be used to define some generic registers and
++     * then override them with implementation specific variations.
++     * At least one of the original and the second definition should
++     * include ARM_CP_OVERRIDE in its type bits -- this is just a guard
++     * against accidental use.
++     *
++     * The state field defines whether the register is to be
++     * visible in the AArch32 or AArch64 execution state. If the
++     * state is set to ARM_CP_STATE_BOTH then we synthesise a
++     * reginfo structure for the AArch32 view, which sees the lower
++     * 32 bits of the 64 bit register.
++     *
++     * Only registers visible in AArch64 may set r->opc0; opc0 cannot
++     * be wildcarded. AArch64 registers are always considered to be 64
++     * bits; the ARM_CP_64BIT* flag applies only to the AArch32 view of
++     * the register, if any.
++     */
++    int crm, opc1, opc2;
++    int crmmin = (r->crm == CP_ANY) ? 0 : r->crm;
++    int crmmax = (r->crm == CP_ANY) ? 15 : r->crm;
++    int opc1min = (r->opc1 == CP_ANY) ? 0 : r->opc1;
++    int opc1max = (r->opc1 == CP_ANY) ? 7 : r->opc1;
++    int opc2min = (r->opc2 == CP_ANY) ? 0 : r->opc2;
++    int opc2max = (r->opc2 == CP_ANY) ? 7 : r->opc2;
++    CPState state;
++
++    /* 64 bit registers have only CRm and Opc1 fields */
++    assert(!((r->type & ARM_CP_64BIT) && (r->opc2 || r->crn)));
++    /* op0 only exists in the AArch64 encodings */
++    assert((r->state != ARM_CP_STATE_AA32) || (r->opc0 == 0));
++    /* AArch64 regs are all 64 bit so ARM_CP_64BIT is meaningless */
++    assert((r->state != ARM_CP_STATE_AA64) || !(r->type & ARM_CP_64BIT));
++    /*
++     * This API is only for Arm's system coprocessors (14 and 15) or
++     * (M-profile or v7A-and-earlier only) for implementation defined
++     * coprocessors in the range 0..7.  Our decode assumes this, since
++     * 8..13 can be used for other insns including VFP and Neon. See
++     * valid_cp() in translate.c.  Assert here that we haven't tried
++     * to use an invalid coprocessor number.
++     */
++    switch (r->state) {
++    case ARM_CP_STATE_BOTH:
++        /* 0 has a special meaning, but otherwise the same rules as AA32. */
++        if (r->cp == 0) {
++            break;
++        }
++        /* fall through */
++    case ARM_CP_STATE_AA32:
++        if (arm_feature(&cpu->env, ARM_FEATURE_V8) &&
++            !arm_feature(&cpu->env, ARM_FEATURE_M)) {
++            assert(r->cp >= 14 && r->cp <= 15);
++        } else {
++            assert(r->cp < 8 || (r->cp >= 14 && r->cp <= 15));
++        }
++        break;
++    case ARM_CP_STATE_AA64:
++        assert(r->cp == 0 || r->cp == CP_REG_ARM64_SYSREG_CP);
++        break;
++    default:
++        g_assert_not_reached();
++    }
++    /*
++     * The AArch64 pseudocode CheckSystemAccess() specifies that op1
++     * encodes a minimum access level for the register. We roll this
++     * runtime check into our general permission check code, so check
++     * here that the reginfo's specified permissions are strict enough
++     * to encompass the generic architectural permission check.
++     */
++    if (r->state != ARM_CP_STATE_AA32) {
++        CPAccessRights mask;
++        switch (r->opc1) {
++        case 0:
++            /* min_EL EL1, but some accessible to EL0 via kernel ABI */
++            mask = PL0U_R | PL1_RW;
++            break;
++        case 1: case 2:
++            /* min_EL EL1 */
++            mask = PL1_RW;
++            break;
++        case 3:
++            /* min_EL EL0 */
++            mask = PL0_RW;
++            break;
++        case 4:
++        case 5:
++            /* min_EL EL2 */
++            mask = PL2_RW;
++            break;
++        case 6:
++            /* min_EL EL3 */
++            mask = PL3_RW;
++            break;
++        case 7:
++            /* min_EL EL1, secure mode only (we don't check the latter) */
++            mask = PL1_RW;
++            break;
++        default:
++            /* broken reginfo with out-of-range opc1 */
++            g_assert_not_reached();
++        }
++        /* assert our permissions are not too lax (stricter is fine) */
++        assert((r->access & ~mask) == 0);
++    }
++
++    /*
++     * Check that the register definition has enough info to handle
++     * reads and writes if they are permitted.
++     */
++    if (!(r->type & (ARM_CP_SPECIAL_MASK | ARM_CP_CONST))) {
++        if (r->access & PL3_R) {
++            assert((r->fieldoffset ||
++                   (r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1])) ||
++                   r->readfn);
++        }
++        if (r->access & PL3_W) {
++            assert((r->fieldoffset ||
++                   (r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1])) ||
++                   r->writefn);
++        }
++    }
++
++    for (crm = crmmin; crm <= crmmax; crm++) {
++        for (opc1 = opc1min; opc1 <= opc1max; opc1++) {
++            for (opc2 = opc2min; opc2 <= opc2max; opc2++) {
++                for (state = ARM_CP_STATE_AA32;
++                     state <= ARM_CP_STATE_AA64; state++) {
++                    if (r->state != state && r->state != ARM_CP_STATE_BOTH) {
++                        continue;
++                    }
++                    if (state == ARM_CP_STATE_AA32) {
++                        /*
++                         * Under AArch32 CP registers can be common
++                         * (same for secure and non-secure world) or banked.
++                         */
++                        char *name;
++
++                        switch (r->secure) {
++                        case ARM_CP_SECSTATE_S:
++                        case ARM_CP_SECSTATE_NS:
++                            add_cpreg_to_hashtable(cpu, r, opaque, state,
++                                                   r->secure, crm, opc1, opc2,
++                                                   r->name);
++                            break;
++                        case ARM_CP_SECSTATE_BOTH:
++                            name = g_strdup_printf("%s_S", r->name);
++                            add_cpreg_to_hashtable(cpu, r, opaque, state,
++                                                   ARM_CP_SECSTATE_S,
++                                                   crm, opc1, opc2, name);
++                            g_free(name);
++                            add_cpreg_to_hashtable(cpu, r, opaque, state,
++                                                   ARM_CP_SECSTATE_NS,
++                                                   crm, opc1, opc2, r->name);
++                            break;
++                        default:
++                            g_assert_not_reached();
++                        }
++                    } else {
++                        /*
++                         * AArch64 registers get mapped to non-secure instance
++                         * of AArch32
++                         */
++                        add_cpreg_to_hashtable(cpu, r, opaque, state,
++                                               ARM_CP_SECSTATE_NS,
++                                               crm, opc1, opc2, r->name);
++                    }
++                }
++            }
++        }
++    }
++}
++
++/* Define a whole list of registers */
++void define_arm_cp_regs_with_opaque_len(ARMCPU *cpu, const ARMCPRegInfo *regs,
++                                        void *opaque, size_t len)
++{
++    size_t i;
++    for (i = 0; i < len; ++i) {
++        define_one_arm_cp_reg_with_opaque(cpu, regs + i, opaque);
++    }
 +}
 +
 +/*
-+ * Convert a truncated 32 bit hashtable key into the full
-+ * 64 bit KVM register ID.
++ * Modify ARMCPRegInfo for access from userspace.
++ *
++ * This is a data driven modification directed by
++ * ARMCPRegUserSpaceInfo. All registers become ARM_CP_CONST as
++ * user-space cannot alter any values and dynamic values pertaining to
++ * execution state are hidden from user space view anyway.
 + */
-+static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
++void modify_arm_cp_regs_with_len(ARMCPRegInfo *regs, size_t regs_len,
++                                 const ARMCPRegUserSpaceInfo *mods,
++                                 size_t mods_len)
 +{
-+    uint64_t kvmid;
++    for (size_t mi = 0; mi < mods_len; ++mi) {
++        const ARMCPRegUserSpaceInfo *m = mods + mi;
++        GPatternSpec *pat = NULL;
 +
-+    if (cpregid & CP_REG_AA64_MASK) {
-+        kvmid = cpregid & ~CP_REG_AA64_MASK;
-+        kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM64;
-+    } else {
-+        kvmid = cpregid & ~(1 << 15);
-+        if (cpregid & (1 << 15)) {
-+            kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM;
-+        } else {
-+            kvmid |= CP_REG_SIZE_U32 | CP_REG_ARM;
++        if (m->is_glob) {
++            pat = g_pattern_spec_new(m->name);
++        }
++        for (size_t ri = 0; ri < regs_len; ++ri) {
++            ARMCPRegInfo *r = regs + ri;
++
++            if (pat && g_pattern_match_string(pat, r->name)) {
++                r->type = ARM_CP_CONST;
++                r->access = PL0U_R;
++                r->resetvalue = 0;
++                /* continue */
++            } else if (strcmp(r->name, m->name) == 0) {
++                r->type = ARM_CP_CONST;
++                r->access = PL0U_R;
++                r->resetvalue &= m->exported_bits;
++                r->resetvalue |= m->fixed_bits;
++                break;
++            }
++        }
++        if (pat) {
++            g_pattern_spec_free(pat);
 +        }
 +    }
-+    return kvmid;
 +}
 +
- /*
-  * Valid values for ARMCPRegInfo state field, indicating which of
-  * the AArch32 and AArch64 execution states this register is visible in.
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 2b4bd20f9d..20fa29d119 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2663,97 +2663,6 @@ static inline bool armv7m_nvic_neg_prio_requested(void *opaque, bool secure)
++void arm_cp_write_ignore(CPUARMState *env, const ARMCPRegInfo *ri,
++                         uint64_t value)
++{
++    /* Helper coprocessor write function for write-ignore registers */
++}
++
++uint64_t arm_cp_read_zero(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    /* Helper coprocessor write function for read-as-zero registers */
++    return 0;
++}
++
++void arm_cp_reset_ignore(CPUARMState *env, const ARMCPRegInfo *opaque)
++{
++    /* Helper coprocessor reset function for do-nothing-on-reset registers */
++}
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8361c57d4c..e512aca9de 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -40,28 +40,6 @@ static void *raw_ptr(CPUARMState *env, const ARMCPRegInfo *ri)
+     return (char *)env + ri->fieldoffset;
  }
- #endif
  
--/* Interface for defining coprocessor registers.
-- * Registers are defined in tables of arm_cp_reginfo structs
-- * which are passed to define_arm_cp_regs().
-- */
--
--/* When looking up a coprocessor register we look for it
-- * via an integer which encodes all of:
-- *  coprocessor number
-- *  Crn, Crm, opc1, opc2 fields
-- *  32 or 64 bit register (ie is it accessed via MRC/MCR
-- *    or via MRRC/MCRR?)
-- *  non-secure/secure bank (AArch32 only)
-- * We allow 4 bits for opc1 because MRRC/MCRR have a 4 bit field.
-- * (In this case crn and opc2 should be zero.)
-- * For AArch64, there is no 32/64 bit size distinction;
-- * instead all registers have a 2 bit op0, 3 bit op1 and op2,
-- * and 4 bit CRn and CRm. The encoding patterns are chosen
-- * to be easy to convert to and from the KVM encodings, and also
-- * so that the hashtable can contain both AArch32 and AArch64
-- * registers (to allow for interprocessing where we might run
-- * 32 bit code on a 64 bit core).
-- */
--/* This bit is private to our hashtable cpreg; in KVM register
-- * IDs the AArch64/32 distinction is the KVM_REG_ARM/ARM64
-- * in the upper bits of the 64 bit ID.
-- */
--#define CP_REG_AA64_SHIFT 28
--#define CP_REG_AA64_MASK (1 << CP_REG_AA64_SHIFT)
--
--/* To enable banking of coprocessor registers depending on ns-bit we
-- * add a bit to distinguish between secure and non-secure cpregs in the
-- * hashtable.
-- */
--#define CP_REG_NS_SHIFT 29
--#define CP_REG_NS_MASK (1 << CP_REG_NS_SHIFT)
--
--#define ENCODE_CP_REG(cp, is64, ns, crn, crm, opc1, opc2)   \
--    ((ns) << CP_REG_NS_SHIFT | ((cp) << 16) | ((is64) << 15) |   \
--     ((crn) << 11) | ((crm) << 7) | ((opc1) << 3) | (opc2))
--
--#define ENCODE_AA64_CP_REG(cp, crn, crm, op0, op1, op2) \
--    (CP_REG_AA64_MASK |                                 \
--     ((cp) << CP_REG_ARM_COPROC_SHIFT) |                \
--     ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
--     ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
--     ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
--     ((crm) << CP_REG_ARM64_SYSREG_CRM_SHIFT) |         \
--     ((op2) << CP_REG_ARM64_SYSREG_OP2_SHIFT))
--
--/* Convert a full 64 bit KVM register ID to the truncated 32 bit
-- * version used as a key for the coprocessor register hashtable
-- */
--static inline uint32_t kvm_to_cpreg_id(uint64_t kvmid)
+-static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
 -{
--    uint32_t cpregid = kvmid;
--    if ((kvmid & CP_REG_ARCH_MASK) == CP_REG_ARM64) {
--        cpregid |= CP_REG_AA64_MASK;
--    } else {
--        if ((kvmid & CP_REG_SIZE_MASK) == CP_REG_SIZE_U64) {
--            cpregid |= (1 << 15);
--        }
--
--        /* KVM is always non-secure so add the NS flag on AArch32 register
--         * entries.
--         */
--         cpregid |= 1 << CP_REG_NS_SHIFT;
+-   /*
+-    * Return true if the regdef would cause an assertion if you called
+-    * read_raw_cp_reg() or write_raw_cp_reg() on it (ie if it is a
+-    * program bug for it not to have the NO_RAW flag).
+-    * NB that returning false here doesn't necessarily mean that calling
+-    * read/write_raw_cp_reg() is safe, because we can't distinguish "has
+-    * read/write access functions which are safe for raw use" from "has
+-    * read/write access functions which have side effects but has forgotten
+-    * to provide raw access functions".
+-    * The tests here line up with the conditions in read/write_raw_cp_reg()
+-    * and assertions in raw_read()/raw_write().
+-    */
+-    if ((ri->type & ARM_CP_CONST) ||
+-        ri->fieldoffset ||
+-        ((ri->raw_writefn || ri->writefn) && (ri->raw_readfn || ri->readfn))) {
+-        return false;
 -    }
--    return cpregid;
+-    return true;
 -}
 -
--/* Convert a truncated 32 bit hashtable key into the full
-- * 64 bit KVM register ID.
-- */
--static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
--{
--    uint64_t kvmid;
--
--    if (cpregid & CP_REG_AA64_MASK) {
--        kvmid = cpregid & ~CP_REG_AA64_MASK;
--        kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM64;
--    } else {
--        kvmid = cpregid & ~(1 << 15);
--        if (cpregid & (1 << 15)) {
--            kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM;
--        } else {
--            kvmid |= CP_REG_SIZE_U32 | CP_REG_ARM;
--        }
--    }
--    return kvmid;
--}
--
- /* Return the highest implemented Exception Level */
- static inline int arm_highest_el(CPUARMState *env)
+ static void add_cpreg_to_list(gpointer key, gpointer opaque)
  {
+     ARMCPU *cpu = opaque;
+@@ -8484,456 +8462,6 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+     return cpu_list;
+ }
+ 
+-/*
+- * Private utility function for define_one_arm_cp_reg_with_opaque():
+- * add a single reginfo struct to the hash table.
+- */
+-static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+-                                   void *opaque, CPState state,
+-                                   CPSecureState secstate,
+-                                   int crm, int opc1, int opc2,
+-                                   const char *name)
+-{
+-    CPUARMState *env = &cpu->env;
+-    uint32_t key;
+-    ARMCPRegInfo *r2;
+-    bool is64 = r->type & ARM_CP_64BIT;
+-    bool ns = secstate & ARM_CP_SECSTATE_NS;
+-    int cp = r->cp;
+-    size_t name_len;
+-    bool make_const;
+-
+-    switch (state) {
+-    case ARM_CP_STATE_AA32:
+-        /* We assume it is a cp15 register if the .cp field is left unset. */
+-        if (cp == 0 && r->state == ARM_CP_STATE_BOTH) {
+-            cp = 15;
+-        }
+-        key = ENCODE_CP_REG(cp, is64, ns, r->crn, crm, opc1, opc2);
+-        break;
+-    case ARM_CP_STATE_AA64:
+-        /*
+-         * To allow abbreviation of ARMCPRegInfo definitions, we treat
+-         * cp == 0 as equivalent to the value for "standard guest-visible
+-         * sysreg".  STATE_BOTH definitions are also always "standard sysreg"
+-         * in their AArch64 view (the .cp value may be non-zero for the
+-         * benefit of the AArch32 view).
+-         */
+-        if (cp == 0 || r->state == ARM_CP_STATE_BOTH) {
+-            cp = CP_REG_ARM64_SYSREG_CP;
+-        }
+-        key = ENCODE_AA64_CP_REG(cp, r->crn, crm, r->opc0, opc1, opc2);
+-        break;
+-    default:
+-        g_assert_not_reached();
+-    }
+-
+-    /* Overriding of an existing definition must be explicitly requested. */
+-    if (!(r->type & ARM_CP_OVERRIDE)) {
+-        const ARMCPRegInfo *oldreg = get_arm_cp_reginfo(cpu->cp_regs, key);
+-        if (oldreg) {
+-            assert(oldreg->type & ARM_CP_OVERRIDE);
+-        }
+-    }
+-
+-    /*
+-     * Eliminate registers that are not present because the EL is missing.
+-     * Doing this here makes it easier to put all registers for a given
+-     * feature into the same ARMCPRegInfo array and define them all at once.
+-     */
+-    make_const = false;
+-    if (arm_feature(env, ARM_FEATURE_EL3)) {
+-        /*
+-         * An EL2 register without EL2 but with EL3 is (usually) RES0.
+-         * See rule RJFFP in section D1.1.3 of DDI0487H.a.
+-         */
+-        int min_el = ctz32(r->access) / 2;
+-        if (min_el == 2 && !arm_feature(env, ARM_FEATURE_EL2)) {
+-            if (r->type & ARM_CP_EL3_NO_EL2_UNDEF) {
+-                return;
+-            }
+-            make_const = !(r->type & ARM_CP_EL3_NO_EL2_KEEP);
+-        }
+-    } else {
+-        CPAccessRights max_el = (arm_feature(env, ARM_FEATURE_EL2)
+-                                 ? PL2_RW : PL1_RW);
+-        if ((r->access & max_el) == 0) {
+-            return;
+-        }
+-    }
+-
+-    /* Combine cpreg and name into one allocation. */
+-    name_len = strlen(name) + 1;
+-    r2 = g_malloc(sizeof(*r2) + name_len);
+-    *r2 = *r;
+-    r2->name = memcpy(r2 + 1, name, name_len);
+-
+-    /*
+-     * Update fields to match the instantiation, overwiting wildcards
+-     * such as CP_ANY, ARM_CP_STATE_BOTH, or ARM_CP_SECSTATE_BOTH.
+-     */
+-    r2->cp = cp;
+-    r2->crm = crm;
+-    r2->opc1 = opc1;
+-    r2->opc2 = opc2;
+-    r2->state = state;
+-    r2->secure = secstate;
+-    if (opaque) {
+-        r2->opaque = opaque;
+-    }
+-
+-    if (make_const) {
+-        /* This should not have been a very special register to begin. */
+-        int old_special = r2->type & ARM_CP_SPECIAL_MASK;
+-        assert(old_special == 0 || old_special == ARM_CP_NOP);
+-        /*
+-         * Set the special function to CONST, retaining the other flags.
+-         * This is important for e.g. ARM_CP_SVE so that we still
+-         * take the SVE trap if CPTR_EL3.EZ == 0.
+-         */
+-        r2->type = (r2->type & ~ARM_CP_SPECIAL_MASK) | ARM_CP_CONST;
+-        /*
+-         * Usually, these registers become RES0, but there are a few
+-         * special cases like VPIDR_EL2 which have a constant non-zero
+-         * value with writes ignored.
+-         */
+-        if (!(r->type & ARM_CP_EL3_NO_EL2_C_NZ)) {
+-            r2->resetvalue = 0;
+-        }
+-        /*
+-         * ARM_CP_CONST has precedence, so removing the callbacks and
+-         * offsets are not strictly necessary, but it is potentially
+-         * less confusing to debug later.
+-         */
+-        r2->readfn = NULL;
+-        r2->writefn = NULL;
+-        r2->raw_readfn = NULL;
+-        r2->raw_writefn = NULL;
+-        r2->resetfn = NULL;
+-        r2->fieldoffset = 0;
+-        r2->bank_fieldoffsets[0] = 0;
+-        r2->bank_fieldoffsets[1] = 0;
+-    } else {
+-        bool isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
+-
+-        if (isbanked) {
+-            /*
+-             * Register is banked (using both entries in array).
+-             * Overwriting fieldoffset as the array is only used to define
+-             * banked registers but later only fieldoffset is used.
+-             */
+-            r2->fieldoffset = r->bank_fieldoffsets[ns];
+-        }
+-        if (state == ARM_CP_STATE_AA32) {
+-            if (isbanked) {
+-                /*
+-                 * If the register is banked then we don't need to migrate or
+-                 * reset the 32-bit instance in certain cases:
+-                 *
+-                 * 1) If the register has both 32-bit and 64-bit instances
+-                 *    then we can count on the 64-bit instance taking care
+-                 *    of the non-secure bank.
+-                 * 2) If ARMv8 is enabled then we can count on a 64-bit
+-                 *    version taking care of the secure bank.  This requires
+-                 *    that separate 32 and 64-bit definitions are provided.
+-                 */
+-                if ((r->state == ARM_CP_STATE_BOTH && ns) ||
+-                    (arm_feature(env, ARM_FEATURE_V8) && !ns)) {
+-                    r2->type |= ARM_CP_ALIAS;
+-                }
+-            } else if ((secstate != r->secure) && !ns) {
+-                /*
+-                 * The register is not banked so we only want to allow
+-                 * migration of the non-secure instance.
+-                 */
+-                r2->type |= ARM_CP_ALIAS;
+-            }
+-
+-            if (HOST_BIG_ENDIAN &&
+-                r->state == ARM_CP_STATE_BOTH && r2->fieldoffset) {
+-                r2->fieldoffset += sizeof(uint32_t);
+-            }
+-        }
+-    }
+-
+-    /*
+-     * By convention, for wildcarded registers only the first
+-     * entry is used for migration; the others are marked as
+-     * ALIAS so we don't try to transfer the register
+-     * multiple times. Special registers (ie NOP/WFI) are
+-     * never migratable and not even raw-accessible.
+-     */
+-    if (r2->type & ARM_CP_SPECIAL_MASK) {
+-        r2->type |= ARM_CP_NO_RAW;
+-    }
+-    if (((r->crm == CP_ANY) && crm != 0) ||
+-        ((r->opc1 == CP_ANY) && opc1 != 0) ||
+-        ((r->opc2 == CP_ANY) && opc2 != 0)) {
+-        r2->type |= ARM_CP_ALIAS | ARM_CP_NO_GDB;
+-    }
+-
+-    /*
+-     * Check that raw accesses are either forbidden or handled. Note that
+-     * we can't assert this earlier because the setup of fieldoffset for
+-     * banked registers has to be done first.
+-     */
+-    if (!(r2->type & ARM_CP_NO_RAW)) {
+-        assert(!raw_accessors_invalid(r2));
+-    }
+-
+-    g_hash_table_insert(cpu->cp_regs, (gpointer)(uintptr_t)key, r2);
+-}
+-
+-
+-void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
+-                                       const ARMCPRegInfo *r, void *opaque)
+-{
+-    /*
+-     * Define implementations of coprocessor registers.
+-     * We store these in a hashtable because typically
+-     * there are less than 150 registers in a space which
+-     * is 16*16*16*8*8 = 262144 in size.
+-     * Wildcarding is supported for the crm, opc1 and opc2 fields.
+-     * If a register is defined twice then the second definition is
+-     * used, so this can be used to define some generic registers and
+-     * then override them with implementation specific variations.
+-     * At least one of the original and the second definition should
+-     * include ARM_CP_OVERRIDE in its type bits -- this is just a guard
+-     * against accidental use.
+-     *
+-     * The state field defines whether the register is to be
+-     * visible in the AArch32 or AArch64 execution state. If the
+-     * state is set to ARM_CP_STATE_BOTH then we synthesise a
+-     * reginfo structure for the AArch32 view, which sees the lower
+-     * 32 bits of the 64 bit register.
+-     *
+-     * Only registers visible in AArch64 may set r->opc0; opc0 cannot
+-     * be wildcarded. AArch64 registers are always considered to be 64
+-     * bits; the ARM_CP_64BIT* flag applies only to the AArch32 view of
+-     * the register, if any.
+-     */
+-    int crm, opc1, opc2;
+-    int crmmin = (r->crm == CP_ANY) ? 0 : r->crm;
+-    int crmmax = (r->crm == CP_ANY) ? 15 : r->crm;
+-    int opc1min = (r->opc1 == CP_ANY) ? 0 : r->opc1;
+-    int opc1max = (r->opc1 == CP_ANY) ? 7 : r->opc1;
+-    int opc2min = (r->opc2 == CP_ANY) ? 0 : r->opc2;
+-    int opc2max = (r->opc2 == CP_ANY) ? 7 : r->opc2;
+-    CPState state;
+-
+-    /* 64 bit registers have only CRm and Opc1 fields */
+-    assert(!((r->type & ARM_CP_64BIT) && (r->opc2 || r->crn)));
+-    /* op0 only exists in the AArch64 encodings */
+-    assert((r->state != ARM_CP_STATE_AA32) || (r->opc0 == 0));
+-    /* AArch64 regs are all 64 bit so ARM_CP_64BIT is meaningless */
+-    assert((r->state != ARM_CP_STATE_AA64) || !(r->type & ARM_CP_64BIT));
+-    /*
+-     * This API is only for Arm's system coprocessors (14 and 15) or
+-     * (M-profile or v7A-and-earlier only) for implementation defined
+-     * coprocessors in the range 0..7.  Our decode assumes this, since
+-     * 8..13 can be used for other insns including VFP and Neon. See
+-     * valid_cp() in translate.c.  Assert here that we haven't tried
+-     * to use an invalid coprocessor number.
+-     */
+-    switch (r->state) {
+-    case ARM_CP_STATE_BOTH:
+-        /* 0 has a special meaning, but otherwise the same rules as AA32. */
+-        if (r->cp == 0) {
+-            break;
+-        }
+-        /* fall through */
+-    case ARM_CP_STATE_AA32:
+-        if (arm_feature(&cpu->env, ARM_FEATURE_V8) &&
+-            !arm_feature(&cpu->env, ARM_FEATURE_M)) {
+-            assert(r->cp >= 14 && r->cp <= 15);
+-        } else {
+-            assert(r->cp < 8 || (r->cp >= 14 && r->cp <= 15));
+-        }
+-        break;
+-    case ARM_CP_STATE_AA64:
+-        assert(r->cp == 0 || r->cp == CP_REG_ARM64_SYSREG_CP);
+-        break;
+-    default:
+-        g_assert_not_reached();
+-    }
+-    /*
+-     * The AArch64 pseudocode CheckSystemAccess() specifies that op1
+-     * encodes a minimum access level for the register. We roll this
+-     * runtime check into our general permission check code, so check
+-     * here that the reginfo's specified permissions are strict enough
+-     * to encompass the generic architectural permission check.
+-     */
+-    if (r->state != ARM_CP_STATE_AA32) {
+-        CPAccessRights mask;
+-        switch (r->opc1) {
+-        case 0:
+-            /* min_EL EL1, but some accessible to EL0 via kernel ABI */
+-            mask = PL0U_R | PL1_RW;
+-            break;
+-        case 1: case 2:
+-            /* min_EL EL1 */
+-            mask = PL1_RW;
+-            break;
+-        case 3:
+-            /* min_EL EL0 */
+-            mask = PL0_RW;
+-            break;
+-        case 4:
+-        case 5:
+-            /* min_EL EL2 */
+-            mask = PL2_RW;
+-            break;
+-        case 6:
+-            /* min_EL EL3 */
+-            mask = PL3_RW;
+-            break;
+-        case 7:
+-            /* min_EL EL1, secure mode only (we don't check the latter) */
+-            mask = PL1_RW;
+-            break;
+-        default:
+-            /* broken reginfo with out-of-range opc1 */
+-            g_assert_not_reached();
+-        }
+-        /* assert our permissions are not too lax (stricter is fine) */
+-        assert((r->access & ~mask) == 0);
+-    }
+-
+-    /*
+-     * Check that the register definition has enough info to handle
+-     * reads and writes if they are permitted.
+-     */
+-    if (!(r->type & (ARM_CP_SPECIAL_MASK | ARM_CP_CONST))) {
+-        if (r->access & PL3_R) {
+-            assert((r->fieldoffset ||
+-                   (r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1])) ||
+-                   r->readfn);
+-        }
+-        if (r->access & PL3_W) {
+-            assert((r->fieldoffset ||
+-                   (r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1])) ||
+-                   r->writefn);
+-        }
+-    }
+-
+-    for (crm = crmmin; crm <= crmmax; crm++) {
+-        for (opc1 = opc1min; opc1 <= opc1max; opc1++) {
+-            for (opc2 = opc2min; opc2 <= opc2max; opc2++) {
+-                for (state = ARM_CP_STATE_AA32;
+-                     state <= ARM_CP_STATE_AA64; state++) {
+-                    if (r->state != state && r->state != ARM_CP_STATE_BOTH) {
+-                        continue;
+-                    }
+-                    if (state == ARM_CP_STATE_AA32) {
+-                        /*
+-                         * Under AArch32 CP registers can be common
+-                         * (same for secure and non-secure world) or banked.
+-                         */
+-                        char *name;
+-
+-                        switch (r->secure) {
+-                        case ARM_CP_SECSTATE_S:
+-                        case ARM_CP_SECSTATE_NS:
+-                            add_cpreg_to_hashtable(cpu, r, opaque, state,
+-                                                   r->secure, crm, opc1, opc2,
+-                                                   r->name);
+-                            break;
+-                        case ARM_CP_SECSTATE_BOTH:
+-                            name = g_strdup_printf("%s_S", r->name);
+-                            add_cpreg_to_hashtable(cpu, r, opaque, state,
+-                                                   ARM_CP_SECSTATE_S,
+-                                                   crm, opc1, opc2, name);
+-                            g_free(name);
+-                            add_cpreg_to_hashtable(cpu, r, opaque, state,
+-                                                   ARM_CP_SECSTATE_NS,
+-                                                   crm, opc1, opc2, r->name);
+-                            break;
+-                        default:
+-                            g_assert_not_reached();
+-                        }
+-                    } else {
+-                        /*
+-                         * AArch64 registers get mapped to non-secure instance
+-                         * of AArch32
+-                         */
+-                        add_cpreg_to_hashtable(cpu, r, opaque, state,
+-                                               ARM_CP_SECSTATE_NS,
+-                                               crm, opc1, opc2, r->name);
+-                    }
+-                }
+-            }
+-        }
+-    }
+-}
+-
+-/* Define a whole list of registers */
+-void define_arm_cp_regs_with_opaque_len(ARMCPU *cpu, const ARMCPRegInfo *regs,
+-                                        void *opaque, size_t len)
+-{
+-    size_t i;
+-    for (i = 0; i < len; ++i) {
+-        define_one_arm_cp_reg_with_opaque(cpu, regs + i, opaque);
+-    }
+-}
+-
+-/*
+- * Modify ARMCPRegInfo for access from userspace.
+- *
+- * This is a data driven modification directed by
+- * ARMCPRegUserSpaceInfo. All registers become ARM_CP_CONST as
+- * user-space cannot alter any values and dynamic values pertaining to
+- * execution state are hidden from user space view anyway.
+- */
+-void modify_arm_cp_regs_with_len(ARMCPRegInfo *regs, size_t regs_len,
+-                                 const ARMCPRegUserSpaceInfo *mods,
+-                                 size_t mods_len)
+-{
+-    for (size_t mi = 0; mi < mods_len; ++mi) {
+-        const ARMCPRegUserSpaceInfo *m = mods + mi;
+-        GPatternSpec *pat = NULL;
+-
+-        if (m->is_glob) {
+-            pat = g_pattern_spec_new(m->name);
+-        }
+-        for (size_t ri = 0; ri < regs_len; ++ri) {
+-            ARMCPRegInfo *r = regs + ri;
+-
+-            if (pat && g_pattern_match_string(pat, r->name)) {
+-                r->type = ARM_CP_CONST;
+-                r->access = PL0U_R;
+-                r->resetvalue = 0;
+-                /* continue */
+-            } else if (strcmp(r->name, m->name) == 0) {
+-                r->type = ARM_CP_CONST;
+-                r->access = PL0U_R;
+-                r->resetvalue &= m->exported_bits;
+-                r->resetvalue |= m->fixed_bits;
+-                break;
+-            }
+-        }
+-        if (pat) {
+-            g_pattern_spec_free(pat);
+-        }
+-    }
+-}
+-
+-void arm_cp_write_ignore(CPUARMState *env, const ARMCPRegInfo *ri,
+-                         uint64_t value)
+-{
+-    /* Helper coprocessor write function for write-ignore registers */
+-}
+-
+-uint64_t arm_cp_read_zero(CPUARMState *env, const ARMCPRegInfo *ri)
+-{
+-    /* Helper coprocessor write function for read-as-zero registers */
+-    return 0;
+-}
+-
+-void arm_cp_reset_ignore(CPUARMState *env, const ARMCPRegInfo *opaque)
+-{
+-    /* Helper coprocessor reset function for do-nothing-on-reset registers */
+-}
+-
+ static int bad_mode_switch(CPUARMState *env, int mode, CPSRWriteType write_type)
+ {
+     /*
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index a42970fab8..ccff559a12 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -1,5 +1,6 @@
+ arm_ss = ss.source_set()
+ arm_ss.add(files(
++  'cpregs.c',
+   'cpu.c',
+   'cpustate-list.c',
+   'gdbstub.c',
 -- 
 2.35.3

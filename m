@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8321102ejb;
-        Wed, 4 Jan 2023 14:30:52 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvP33UHkL20L25LrDLfvmsS9A3p5mltoMx2Uuo/9lGvNG4A4Ko+J7KSTlHHHdslHH2EDOu+
-X-Received: by 2002:a05:6214:2f07:b0:531:c964:481b with SMTP id od7-20020a0562142f0700b00531c964481bmr18164035qvb.9.1672871452092;
-        Wed, 04 Jan 2023 14:30:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672871452; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8324130ejb;
+        Wed, 4 Jan 2023 14:37:13 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXusIrXYCFhIL8w4TCzO3daa5JjnMpz7N89u+I2pT4IiAQWy6y0AM7SY8Iz07DEYIAPWDUbN
+X-Received: by 2002:ac8:1382:0:b0:3a9:8b48:f8f with SMTP id h2-20020ac81382000000b003a98b480f8fmr69716150qtj.67.1672871833425;
+        Wed, 04 Jan 2023 14:37:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672871833; cv=none;
         d=google.com; s=arc-20160816;
-        b=tCVl4G4rKywqYBWAhAXBa6/2sKmOeu8xzPnyFAYO4CblZzcM9IvUypv0yOxlkWxh6w
-         ujWpJ+djHkBPMphLJLGNzC0oyUo91b/5supFhDrEhGXXZsb/+g8RKL/USqf37zycmHVa
-         9UzeIDqUwjURW7mA9aJo2Ed3zfv0bz+pwE7E9bfPkbnPgxOFwLDCA5FfSoIciHyzx8GO
-         GDKnDevz/GroE4RJFCtEwd/M9lmxtjfZvWndacX7Ql/iDS9Yq8yoW5vNVuFRNHo60bWh
-         s3gg1urIvEYiDo5hW94Y8NVJ755lP/M2etgdXR8MoX2iljCzj3URgGqCiwKk7+D4pmsy
-         pOOQ==
+        b=BKisMH/cMu+SSQ6KEr5lK7DpyrXXIGgMdBs/GI+AoPI6X5ZAalCpUqRWWLqyUR00M4
+         YGtYx1y9KoACJGcB77zuOR5421u5CZvTQhzc2Owia4iz/on9I0zqw3a8taqlKNFotAhU
+         Lao7p0KWUx9atctIQ3QIazmO69s9EM6N/fltP6XV4H9QDP97+3d0xqceg/LqBjnRMKBH
+         NS4p+nDd3ujdOxYLn3sIFU1ggjTO1l6Dzi1ktlscZty8HgxK2PNqwZ9u3g3iOS1h0iFD
+         8M1eDDtf+hMmZcMzqcP0+YRQ6F0nrSmcwK3+njqaA+YlxDdcdxLpvCFurVJWE96uQFqV
+         mwVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/hYs50GwFMyuZfrImrAOFNvNLwGPKhd/4T6LtSg8+5M=;
-        b=JktepkdNm0+qC3cE5QOiepLBHvUpwSZ2KOsM0MV3c5aPedqppONnpwBFka1JtekkNK
-         k2XUVfeLtUhz2eBVNLXtE0RNrn2YqPWb6e8rFXFogDusQr6OknVzMztwk5fgHUIc7z3L
-         yHR0zxXfZVZSf+AZXUoQukgZ/7quXkSPGT7Vwkm8o6DSluHCefJ17S/eAThqBFhD7QbE
-         70lpN2sPQcyepi2Kt9QqbqpcySj8AoVnz2OSnqy+WPVP3D3NN3VpbYAi2RsRo2ELZcih
-         jXhpX/8p4BnosScO9MKqYdrp95ujBRsTUUAJtHxCJdNGfpJczgfwCAhNw0Hlf9Bgt+Bn
-         EwjA==
+        bh=ostFdFduA8VJQbdYun/a8v7V9oLZ2nQ4qLyqomH/nUo=;
+        b=JAjnNCRCmYvBH3IqNM1mkLqAz/VpgrhT8TIGTe7VZ3/z3VtDue76Wpe/cZ6ZZ0QztY
+         s16FVdnIrhlgZuK+JTtyo9q7putJqgG0FMmmkuqpV43JLAQ20Ci9DoeIfOW5wuLgu3gr
+         2XRjvZHhearuBa8n+ixQQL8f0fLzvFvyMdrOYllhjKjox54IPZEKorIUim2K1l2RHmpN
+         S/2sJ2sN2mXZR9hWkLNsH5JKUWBvNSu+/9XhwoJjm8hBZ+/0k+tsZlkb+1ppy+gGXg6S
+         aypocZ/vOqCQjA4av9h8GxUUHXIMepMhVU7oNOInOs9xO9ULgOHIEy9dNDTor+pRWECr
+         nuWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qz7J1Aaz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cZ1cbmjQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u1-20020ae9d801000000b006b941547704si17220282qkf.292.2023.01.04.14.30.51
+        by mx.google.com with ESMTPS id 79-20020a370b52000000b006ec63269d49si16999271qkl.754.2023.01.04.14.37.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Jan 2023 14:30:52 -0800 (PST)
+        Wed, 04 Jan 2023 14:37:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qz7J1Aaz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cZ1cbmjQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pDBvY-0002GQ-HE; Wed, 04 Jan 2023 17:08:05 -0500
+	id 1pDBtc-0000ey-E5; Wed, 04 Jan 2023 17:06:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBuU-0001u6-85
- for qemu-arm@nongnu.org; Wed, 04 Jan 2023 17:07:08 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBtM-0000cx-9d
+ for qemu-arm@nongnu.org; Wed, 04 Jan 2023 17:05:48 -0500
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBuP-0006vH-UN
- for qemu-arm@nongnu.org; Wed, 04 Jan 2023 17:06:56 -0500
-Received: by mail-ej1-x636.google.com with SMTP id gh17so86065508ejb.6
- for <qemu-arm@nongnu.org>; Wed, 04 Jan 2023 14:06:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBtK-0005Ct-9e
+ for qemu-arm@nongnu.org; Wed, 04 Jan 2023 17:05:48 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id gh17so86059798ejb.6
+ for <qemu-arm@nongnu.org>; Wed, 04 Jan 2023 14:05:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/hYs50GwFMyuZfrImrAOFNvNLwGPKhd/4T6LtSg8+5M=;
- b=Qz7J1AazlyA7TkFmTghpBG/6vJrDSWHKbTwtiuGnzqK7ApC9+o8bNw/7/IJHgXWR3i
- YCLat9y+G6p6U4z1Kpg2pjsXWAofMcNf3VPViZbRDRonu5xtJoH7vehTtKxZ0iysg2TV
- 51nDPAhZ369/CvCFhA1wrvQLQfHE9hyi5sctpKzmJYmKPNY96QunXQUKqfNlp57ltjBX
- 04W3bCtp83zOPi5x/zPahdwrU1muZojnmnjz7kMhBE1Hlc9YWFGeqdUQcSxcY8J47jdI
- nJRQ55pvpqcBB3BqRDsxXwLv5GE5q6uWw1t37TvG/snnGG2Wc7Z7otNQf7Em3zPKfU+D
- xp9w==
+ bh=ostFdFduA8VJQbdYun/a8v7V9oLZ2nQ4qLyqomH/nUo=;
+ b=cZ1cbmjQ9ajzsj/qRRfezodu3WDXPkdUOzcyfLhMAGZk/ZZsnQX8L58azDOnW26nY2
+ d77GDNdgpJpNRgzpyqOvYsPjXCT9i/J5aoH5EdSbqseARnUzFrWVm2GA9VYtWyislI8P
+ +d9MHiwMsAtUNES2ptR/KpU1jEI7ykv/SxgED3znEp8cuE4lbh+0NIqCIlRqN6hOsVHc
+ NBUKvTYJgFphynebyrrdNuPY2rAx1ixETvE84bufagH96rg/QteKoQNu25PnT8ao0Itk
+ iFYhlmoXrwxKIGXX0gElKp+LoXToMt7F4Ms+lSflR+x3iy+PLgU/r1payraLhASTbpaN
+ rtxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/hYs50GwFMyuZfrImrAOFNvNLwGPKhd/4T6LtSg8+5M=;
- b=nVc7vGDKsnpd8g/tCtIdO8r0Kb3qPAfM8/KmicvTD0a1r+8P+zpC3vILwcAHEwAtVI
- mBbnne8wKs/KI/+bNXPD0fKTqd0c1SPOiSDUzniAP+5UFV/NpRAwPQaB0rIr5pVhKmb9
- abRrNT51p8AxiA0L0zHSR+xaLXo3o9ev1Hb1F9d9zqppBSevzSClYnaNzNFIRjlLqgLd
- z/GjQH1ETDc4pyUwzqgCsAgsseE4K8MPzBZWzEWKKfDU+0ldlNUueXyIBKREYmqonEgd
- VcapMdAiM4eIF3ZfvehY+rTWMkt3EnIyRhrTmRssn55XiNQIvbEpXjjA1g85Bqs/0Jm0
- El6A==
-X-Gm-Message-State: AFqh2kpHg51RGjgtVbiqSzuqtoQYomMAk/mLIt9JijLTIUUgnKmWTL+f
- WGX3E+ohzXvFJkpyB/HLig2bwQ==
-X-Received: by 2002:a17:907:908b:b0:846:cdd9:d28 with SMTP id
- ge11-20020a170907908b00b00846cdd90d28mr32353056ejb.30.1672870011907; 
- Wed, 04 Jan 2023 14:06:51 -0800 (PST)
+ bh=ostFdFduA8VJQbdYun/a8v7V9oLZ2nQ4qLyqomH/nUo=;
+ b=7EcrQi1RqxRNNImAvmygCj8DNpjAZJ4dSBnTodpH+pXxz3ru/Kog3LjHLmisnyxO/h
+ 4O1NLtkllQkBbfHMwKix0H2gZStgj/nkL8oLyWLSlmYDFbIX9pWnkUAtnvZiDWqaFscK
+ 90v/nK1EkrXIM9cIxgV0Lh7vNKscabVk/6Ol8OjgTgrJVrDe+XqWVWkqOLInjtCh2h/N
+ /kVJbYOz9edb1BIDc87RAwMePHHeIS3CnBABaiHGeJl+K5D+4RTYb6yLhR1SfjuaGLrQ
+ 4rt22ozX6dCOfhw+nPThi5OV/JSV4ZnonA39KeTr6VQ4MHpkUWCFg9nT7mLSP2o1Vd0C
+ NAvA==
+X-Gm-Message-State: AFqh2krbPRU4SHgzb6FGZehCwghFsUj2bk8RUoeXtqlA/BgBa7ERNVRw
+ nK3KuYcMclN9o42ssZZU1OO26Q==
+X-Received: by 2002:a17:906:5012:b0:7c1:2e19:ba3f with SMTP id
+ s18-20020a170906501200b007c12e19ba3fmr47063708ejj.57.1672869944488; 
+ Wed, 04 Jan 2023 14:05:44 -0800 (PST)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- hb1-20020a170906b88100b0078d9b967962sm15694423ejb.65.2023.01.04.14.06.48
+ b10-20020a1709063caa00b007bd28b50305sm15541696ejh.200.2023.01.04.14.05.40
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Jan 2023 14:06:51 -0800 (PST)
+ Wed, 04 Jan 2023 14:05:44 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Song Gao <gaosong@loongson.cn>, Antony Pavlov <antonynpavlov@gmail.com>,
@@ -109,17 +109,17 @@ Cc: Song Gao <gaosong@loongson.cn>, Antony Pavlov <antonynpavlov@gmail.com>,
  qemu-riscv@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  Leif Lindholm <quic_llindhol@quicinc.com>, Kevin Wolf <kwolf@redhat.com>
-Subject: [PATCH 14/20] hw/block: Remove unused pflash_cfi01_register()
-Date: Wed,  4 Jan 2023 23:04:43 +0100
-Message-Id: <20230104220449.41337-15-philmd@linaro.org>
+Subject: [PATCH 06/20] hw/riscv: Use generic DeviceState instead of PFlashCFI01
+Date: Wed,  4 Jan 2023 23:04:35 +0100
+Message-Id: <20230104220449.41337-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230104220449.41337-1-philmd@linaro.org>
 References: <20230104220449.41337-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,68 +141,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pLEErSBAHjct
+X-TUID: ahxIeuRZd+mv
 
-We converted all caller of pflash_cfi01_register() by open
-coding a call to pflash_cfi01_create() followed by an explicit
-call to sysbus_mmio_map(); we can now remove it.
+Nothing here requires access to PFlashCFI01 internal fields:
+use the inherited generic DeviceState.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/block/pflash_cfi01.c  | 19 -------------------
- include/hw/block/flash.h |  9 ---------
- 2 files changed, 28 deletions(-)
+ hw/riscv/virt.c         | 9 +++++----
+ include/hw/riscv/virt.h | 3 +--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index 6a8f9e6319..9df79b102b 100644
---- a/hw/block/pflash_cfi01.c
-+++ b/hw/block/pflash_cfi01.c
-@@ -981,25 +981,6 @@ DeviceState *pflash_cfi01_create(const char *name,
-     return dev;
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 400bd9329f..b421a9dc12 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -46,6 +46,7 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
+ #include "sysemu/tpm.h"
++#include "hw/block/flash.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci-host/gpex.h"
+ #include "hw/display/ramfb.h"
+@@ -106,7 +107,7 @@ static MemMapEntry virt_high_pcie_memmap;
+ 
+ #define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
+ 
+-static PFlashCFI01 *virt_flash_create1(RISCVVirtState *s,
++static DeviceState *virt_flash_create1(RISCVVirtState *s,
+                                        const char *name,
+                                        const char *alias_prop_name)
+ {
+@@ -130,7 +131,7 @@ static PFlashCFI01 *virt_flash_create1(RISCVVirtState *s,
+     object_property_add_alias(OBJECT(s), alias_prop_name,
+                               OBJECT(dev), "drive");
+ 
+-    return PFLASH_CFI01(dev);
++    return dev;
  }
  
--PFlashCFI01 *pflash_cfi01_register(hwaddr base,
--                                   const char *name,
--                                   hwaddr size,
--                                   BlockBackend *blk,
--                                   uint32_t sector_len,
--                                   int bank_width,
--                                   uint16_t id0, uint16_t id1,
--                                   uint16_t id2, uint16_t id3,
--                                   int be)
--{
--    DeviceState *dev;
--
--    dev = pflash_cfi01_create(name, size, blk, sector_len, bank_width,
--                              id0, id1, id2, id3, be);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
--
--    return PFLASH_CFI01(dev);
--}
--
- BlockBackend *pflash_cfi01_get_blk(DeviceState *dev)
+ static void virt_flash_create(RISCVVirtState *s)
+@@ -139,7 +140,7 @@ static void virt_flash_create(RISCVVirtState *s)
+     s->flash[1] = virt_flash_create1(s, "virt.flash1", "pflash1");
+ }
+ 
+-static void virt_flash_map1(PFlashCFI01 *flash,
++static void virt_flash_map1(DeviceState *flash,
+                             hwaddr base, hwaddr size,
+                             MemoryRegion *sysmem)
  {
-     PFlashCFI01 *fl = PFLASH_CFI01(dev);
-diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
-index 40ba857f69..858c0a1b6e 100644
---- a/include/hw/block/flash.h
-+++ b/include/hw/block/flash.h
-@@ -24,15 +24,6 @@ DeviceState *pflash_cfi01_create(const char *name,
-                                  uint16_t id0, uint16_t id1,
-                                  uint16_t id2, uint16_t id3,
-                                  int be);
--PFlashCFI01 *pflash_cfi01_register(hwaddr base,
--                                   const char *name,
--                                   hwaddr size,
--                                   BlockBackend *blk,
--                                   uint32_t sector_len,
--                                   int width,
--                                   uint16_t id0, uint16_t id1,
--                                   uint16_t id2, uint16_t id3,
--                                   int be);
- BlockBackend *pflash_cfi01_get_blk(DeviceState *dev);
- MemoryRegion *pflash_cfi01_get_memory(DeviceState *dev);
- void pflash_cfi01_legacy_drive(DeviceState *dev, DriveInfo *dinfo);
+@@ -1517,7 +1518,7 @@ static void virt_machine_init(MachineState *machine)
+ 
+     for (i = 0; i < ARRAY_SIZE(s->flash); i++) {
+         /* Map legacy -drive if=pflash to machine properties */
+-        pflash_cfi01_legacy_drive(DEVICE(s->flash[i]),
++        pflash_cfi01_legacy_drive(s->flash[i],
+                                   drive_get(IF_PFLASH, 0, i));
+     }
+     virt_flash_map(s, system_memory);
+diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
+index be4ab8fe7f..b700a46763 100644
+--- a/include/hw/riscv/virt.h
++++ b/include/hw/riscv/virt.h
+@@ -21,7 +21,6 @@
+ 
+ #include "hw/riscv/riscv_hart.h"
+ #include "hw/sysbus.h"
+-#include "hw/block/flash.h"
+ #include "qom/object.h"
+ 
+ #define VIRT_CPUS_MAX_BITS             9
+@@ -49,7 +48,7 @@ struct RISCVVirtState {
+     DeviceState *platform_bus_dev;
+     RISCVHartArrayState soc[VIRT_SOCKETS_MAX];
+     DeviceState *irqchip[VIRT_SOCKETS_MAX];
+-    PFlashCFI01 *flash[2];
++    DeviceState *flash[2];
+     FWCfgState *fw_cfg;
+ 
+     int fdt_size;
 -- 
 2.38.1
 

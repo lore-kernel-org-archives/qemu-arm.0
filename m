@@ -1,170 +1,190 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8306300ejb;
-        Wed, 4 Jan 2023 14:02:03 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXt/9xM7DndCVJqlxZGEXmJq9OlEUeNHKvNC1nmtS2LQmiB+xcG9cU3LAni11h7SaVUSJD7T
-X-Received: by 2002:a5d:6511:0:b0:2aa:be49:5963 with SMTP id x17-20020a5d6511000000b002aabe495963mr1284087wru.46.1672869723334;
-        Wed, 04 Jan 2023 14:02:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672869723; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8309284ejb;
+        Wed, 4 Jan 2023 14:06:55 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsjcnwIxpSFrzvET+G0DBiY7V3aMz77SX9m1LTGdHH360DUJlkk6CigZtzR0zwVG17BSkbe
+X-Received: by 2002:ac8:43c9:0:b0:3a6:a35f:caa with SMTP id w9-20020ac843c9000000b003a6a35f0caamr67188451qtn.18.1672870015017;
+        Wed, 04 Jan 2023 14:06:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672870015; cv=none;
         d=google.com; s=arc-20160816;
-        b=05x6KDPXOjNqRsDbCvJSbXx3K90Fb/41kgqwCpCEjZvCiXdrCLvn1AI5Wyk1tRpG7c
-         H/YN7qpyDprqNSWMiN9uUAbts/VpCNVUCZfr6nUj6PHIw0QdawhJVkrCthRDCBzyNwqt
-         DGYzKdM9Cxb2diQ8Ni8oH3Dq3YnZKssUbrnvr1bVHBMEDhrCkHP1xX42QtIPncNG9REP
-         f55Oth+Cl8aAhSoOHs8zdPUD+25nE8PTFX5MUqW55WlfX+/HI6rbFHMgZ5KJT+OhKjsw
-         vg7fX0va/n4z4pRawtPPA+yc5iBzSEHNlrTPQ7vP1fDYTnkmT0cuP7VjdeOS3pyhdaNJ
-         5SjA==
+        b=G0eJUms/cIoR9pNYm9Xo5wAc8gzSZ5VkxQT8rcnVrn2p7bImXwLJFDjaQsTTI1tl7g
+         JEcPI0X6OCCPZMrcJpNH1AzmdIAoId5yO32BWyhRHDPD0rL6kJCUKroYGnK2SXkjYXAh
+         MwnWS57Y9qFvH+AG53QOhn5c4ZptwjHUYn/94sVoCaq8BisFV17sLkzavXlEUMDFYp+R
+         xlFv18jswPBSGzCnWlNs6iVugZ82C22fNHYxfq0I5kdFW2o4zYopYAUrrPnaRorSJLtU
+         Oxg0hyGJvybn1fiMVcJq3qZw/BG5xw/tL5bm9ab0V2QBzCp/J6F7Ge+X1GIzBfnbDr4m
+         bLkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=Z0zsUVLNnlB8or8gHrZOqCwKbl6RppYxTr0hODbbSNU=;
-        b=FiyiPvVIj7BZGWjMRr8555uHDS9jH7fitUorwx5p97x11rtnp1CaamdCJsiw/opZrU
-         NPLlukN4PF3v2S84UEZx7hfel/97+TQZQHEIdJexAC4deUb1O64JTdNXDwLu5/xNgUiT
-         XapZ+5lSnobmgVQTVuYEL0AO5UxPWHl/2RWSZCW/zFcRuWvJvw8oTqE+GepCOi5bS9LJ
-         sLPUjwv50Tjoj58S6vnp4MdrcjQpKjtnnxlvE9opJKGe0Hlgg9Qp9+ALyZ3jIB4XIL2T
-         UK0Ab825R3qUeZkvqjaja4dSZBhbw7odgVmpPvsJbDxVsBYS/odRKfiydMfWNzHjZBh9
-         8ERw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=KN4KqLlugVC+0veh/qHwh2dos/FPn9LDhOhs/UvtQDw=;
+        b=haf7cGq7nGiArvYywKt+z2PR4ubDVjI2cuNHu1Si2qIqWM0wPDus+BIKbooedfPaqn
+         e8PX0epbLjvfdg1Js94NzQTxKCHBfVIqXPXT96YBwqt/hpcbfSqvoxDjrmx3hxezDbzr
+         hWE3/twlb3hDXKJPtr9rtneyodC9CEwnnsTljI4JYnQ3uf63BRpLgSbjxXbb1J0HCEhf
+         J5otWcj7gxPyD8zqKBJG8A+oaGlSANbZyycps+Pl8TI0NkzefXvU+1+XehI+OYGvKl5d
+         yQ4r4pAKXWXTb32JDsLBMh93Iq5R1NYyKwe68/GcM2gu5nbrOygZVFCls15fE0T7NOkr
+         GC+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=gCljilCn;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id f11-20020a056000128b00b0026e5776fbb5si21187138wrx.187.2023.01.04.14.02.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Jan 2023 14:02:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+       dkim=pass header.i=@linaro.org header.s=google header.b=z1BU4aoI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y7-20020ac85247000000b0035bab05e960si17951660qtn.154.2023.01.04.14.06.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Jan 2023 14:06:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=gCljilCn;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id A97073F17A;
-	Wed,  4 Jan 2023 22:02:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1672869722; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Z0zsUVLNnlB8or8gHrZOqCwKbl6RppYxTr0hODbbSNU=;
-	b=gCljilCnnj99P4fzrDxwcyX3/qg9PYnLZZy+HirV1Y5DpE7NQesnoW4w6y/V7Y6vonN49y
-	iqCKLEvfLkOIemHvwOUVYcvA4Erc9ynIJIdrEnq2S/eMrMiA6iEBcrTpTuoCyfITZkhCm0
-	nMiM2ugL+sXXmNbVzueTYjqkxFH5s64=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1672869722;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Z0zsUVLNnlB8or8gHrZOqCwKbl6RppYxTr0hODbbSNU=;
-	b=MB/bTdWNZBQXazEv3/MRrqbX/cYQ6l5E106lg76WqfLT9mWqHN7EaV6p8/xMq2Lr6BURl+
-	7c2H8LYgKOssITCQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 889D61342C;
-	Wed,  4 Jan 2023 22:01:59 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 6KMUFFf3tWPwJAAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 04 Jan 2023 22:01:59 +0000
-From: Fabiano Rosas <farosas@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=z1BU4aoI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pDBuB-0001VX-Ks; Wed, 04 Jan 2023 17:06:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBu9-0001Rq-QP
+ for qemu-arm@nongnu.org; Wed, 04 Jan 2023 17:06:37 -0500
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBu8-0005cZ-4M
+ for qemu-arm@nongnu.org; Wed, 04 Jan 2023 17:06:37 -0500
+Received: by mail-ej1-x634.google.com with SMTP id fy8so21960741ejc.13
+ for <qemu-arm@nongnu.org>; Wed, 04 Jan 2023 14:06:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=KN4KqLlugVC+0veh/qHwh2dos/FPn9LDhOhs/UvtQDw=;
+ b=z1BU4aoIPYdDRqTnlx0V3zv0CD9t+NMAhobtS9j6dghWzkl+GBC3imIxlMpvEMyTyU
+ lH9DINmyyjI0M06yICDcJ0uuJfyxGMn6C6buPS+HRN243d7qRriWbRLUs8VQGni7kkJ4
+ jsmxMl+qeS9DoEuv+rX6n/5MX7uVBrdRy33dmARiikb6K+I2xUVS44eVKFStxOZn7XQ4
+ 4AWA5tW0P5HYeFms0rGALBKAVKOI4O/Hyvtl5b3KCEfAsaJB/O3NTHvs/bH5U18E1E7a
+ TLhTQ95AueMkRyXyfe82e94wv8pwaHGl30G0WfbMv71x1G5BHTcLXi5SWwnRZOeDA9rh
+ WpJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=KN4KqLlugVC+0veh/qHwh2dos/FPn9LDhOhs/UvtQDw=;
+ b=LAucqE4P9msUPYuB0Ql1egaUrVaRwrDMlj1vll2yaSbtBYcg9u+JcQENPbjHDsLwqX
+ JRj/NkW9Ex4gpwKOuG7nKzQ0rEJTczPTPEgWyC3jEnIQARkoSiozbecrVPZ8TNkLxbXc
+ Yyr0yvh14w2E5zoWcTFupti52VAmph5ePiVyKsndbjhc86F/nAkQSENZIxnDOEvzifcY
+ djzRimN2tbNIZjs+rJkvlfZMutUnytC3DAKqfpZ0/vtq1hgggtw9wChSW0suqyzzhDHE
+ viOGMCb4KAIsM6LRkG4xsU7X4vfJ9Wezqb0KkvYS+Mh3uiEr3JRmg/yo02Zm4UaPPzqs
+ 0iHA==
+X-Gm-Message-State: AFqh2krmLX4HDLTXS67rCVBunAG6kBkwSLnYnr9mCsBIJz6iQ4Qc2SjF
+ W4+jEt3yvksPx7OC/EUCKerdjA==
+X-Received: by 2002:a17:907:d387:b0:7c1:6fd3:1ef3 with SMTP id
+ vh7-20020a170907d38700b007c16fd31ef3mr41602526ejc.33.1672869995411; 
+ Wed, 04 Jan 2023 14:06:35 -0800 (PST)
+Received: from localhost.localdomain ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ co5-20020a0564020c0500b00483dd234ac6sm12958847edb.96.2023.01.04.14.06.31
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 04 Jan 2023 14:06:35 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>
-Subject: [RFC PATCH 25/27] tests: device-introspect-test: cope with ARM TCG-only devices
-Date: Wed,  4 Jan 2023 18:58:33 -0300
-Message-Id: <20230104215835.24692-26-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230104215835.24692-1-farosas@suse.de>
-References: <20230104215835.24692-1-farosas@suse.de>
+Cc: Song Gao <gaosong@loongson.cn>, Antony Pavlov <antonynpavlov@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Hanna Reitz <hreitz@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+ Mark Burton <mburton@qti.qualcomm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Magnus Damm <magnus.damm@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Eduardo Habkost <eduardo@habkost.net>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ qemu-riscv@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ Leif Lindholm <quic_llindhol@quicinc.com>, Kevin Wolf <kwolf@redhat.com>
+Subject: [PATCH 12/20] hw/mips: Open-code pflash_cfi01_register()
+Date: Wed,  4 Jan 2023 23:04:41 +0100
+Message-Id: <20230104220449.41337-13-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230104220449.41337-1-philmd@linaro.org>
+References: <20230104220449.41337-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: QM4tvrHCRzvh
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NUKxxkwssSPv
 
-From: Claudio Fontana <cfontana@suse.de>
+pflash_cfi01_register() hides an implicit sysbus mapping of
+MMIO region #0. This is not practical in a heterogeneous world
+where multiple cores use different address spaces. In order to
+remove to remove pflash_cfi01_register() from the pflash API,
+open-code it as a qdev creation call followed by an explicit
+sysbus mapping.
 
-Skip the test_device_intro_concrete for now for ARM KVM-only build,
-as on ARM we currently build devices for ARM that are not
-compatible with a KVM-only build.
-
-We can remove this workaround when we fix this in KConfig etc,
-and we only list and build machines that are compatible with KVM
-for KVM-only builds.
-
-Alternative implementation provided by Alex.
-
-Suggested-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Cc: Thomas Huth <thuth@redhat.com>
-Cc: Laurent Vivier <lvivier@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/qtest/device-introspect-test.c | 32 +++++++++++++++++++++++-----
- 1 file changed, 27 insertions(+), 5 deletions(-)
+ hw/mips/malta.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/tests/qtest/device-introspect-test.c b/tests/qtest/device-introspect-test.c
-index 5b0ffe43f5..f89df87f74 100644
---- a/tests/qtest/device-introspect-test.c
-+++ b/tests/qtest/device-introspect-test.c
-@@ -304,6 +304,24 @@ static void test_abstract_interfaces(void)
-     qtest_quit(qts);
- }
+diff --git a/hw/mips/malta.c b/hw/mips/malta.c
+index 43fbb97799..e690f13bdb 100644
+--- a/hw/mips/malta.c
++++ b/hw/mips/malta.c
+@@ -1222,7 +1222,6 @@ void mips_malta_init(MachineState *machine)
+     const char *kernel_cmdline = machine->kernel_cmdline;
+     const char *initrd_filename = machine->initrd_filename;
+     char *filename;
+-    PFlashCFI01 *fl;
+     MemoryRegion *system_memory = get_system_memory();
+     MemoryRegion *ram_low_preio = g_new(MemoryRegion, 1);
+     MemoryRegion *ram_low_postio;
+@@ -1286,12 +1285,11 @@ void mips_malta_init(MachineState *machine)
  
-+/*
-+ * XXX currently we build also boards for ARM that are incompatible with KVM.
-+ * We therefore need to check this explicitly, and only test virt for kvm-only
-+ * arm builds.
-+ * After we do the work of Kconfig etc to ensure that only KVM-compatible boards
-+ * are built for the kvm-only build, we could remove this.
-+ */
-+static bool skip_machine_tests(void)
-+{
-+#ifndef CONFIG_TCG
-+    const char *arch = qtest_get_arch();
-+    if (strcmp(arch, "arm") == 0 || strcmp(arch, "aarch64") == 0) {
-+        return true;
-+    }
-+#endif /* !CONFIG_TCG */
-+    return false;
-+}
-+
- static void add_machine_test_case(const char *mname)
- {
-     char *path, *args;
-@@ -328,11 +346,15 @@ int main(int argc, char **argv)
-     qtest_add_func("device/introspect/none", test_device_intro_none);
-     qtest_add_func("device/introspect/abstract", test_device_intro_abstract);
-     qtest_add_func("device/introspect/abstract-interfaces", test_abstract_interfaces);
--    if (g_test_quick()) {
--        qtest_add_data_func("device/introspect/concrete/defaults/none",
--                            g_strdup(common_args), test_device_intro_concrete);
--    } else {
--        qtest_cb_for_every_machine(add_machine_test_case, true);
-+
-+    if (!skip_machine_tests()) {
-+        if (g_test_quick()) {
-+            qtest_add_data_func("device/introspect/concrete/defaults/none",
-+                                g_strdup(common_args),
-+                                test_device_intro_concrete);
-+        } else {
-+            qtest_cb_for_every_machine(add_machine_test_case, true);
-+        }
-     }
- 
-     return g_test_run();
+     /* Load firmware in flash / BIOS. */
+     dinfo = drive_get(IF_PFLASH, 0, fl_idx);
+-    fl = pflash_cfi01_register(FLASH_ADDRESS, "mips_malta.bios",
+-                               FLASH_SIZE,
+-                               dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+-                               65536,
+-                               4, 0x0000, 0x0000, 0x0000, 0x0000, be);
+-    dev = DEVICE(fl);
++    dev = pflash_cfi01_create("mips_malta.bios", FLASH_SIZE,
++                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
++                              65536, 4,
++                              0x0000, 0x0000, 0x0000, 0x0000, be);
++    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, FLASH_ADDRESS);
+     bios = pflash_cfi01_get_memory(dev);
+     fl_idx++;
+     if (kernel_filename) {
 -- 
-2.35.3
+2.38.1
+

@@ -1,88 +1,90 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8328544ejb;
-        Wed, 4 Jan 2023 14:48:00 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvK1DLDpoP9VLKXiLlruvDhaC2+JzGEAfLYSv+PIZ8YxfYWr4cFe9XQ50dTGCyRnLE0G2rK
-X-Received: by 2002:a05:622a:4007:b0:3a7:f2ae:d1df with SMTP id cf7-20020a05622a400700b003a7f2aed1dfmr65295869qtb.23.1672872480615;
-        Wed, 04 Jan 2023 14:48:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672872480; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8329748ejb;
+        Wed, 4 Jan 2023 14:50:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsmxBSHhpctBeJ7cvtqefYyAGoUsDNVhK9lXY00t5VBFPRbJQbaN8y8CX2PFQoQuAt/PKbM
+X-Received: by 2002:ac8:4657:0:b0:3a9:2478:2d70 with SMTP id f23-20020ac84657000000b003a924782d70mr76664362qto.24.1672872653651;
+        Wed, 04 Jan 2023 14:50:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672872653; cv=none;
         d=google.com; s=arc-20160816;
-        b=cPmA0LguMvlFezN97gMdqjQLaGub6aYI8wTdlqldtkHpGDY+u9/K7ZDTFcTWL0BP+e
-         46y+1FCMYC0OsA6s/OBBcjAQeMhP56sXw+OCx6BqwLFtKkZ4p0exFMwbnDyl3Xwt478x
-         PYw3K+iVv3ZZ4jGa77u23QqCd/4/a+BrNLeXG9wsNIYa8gonwtFeYrhNhdPjDiFEhndP
-         bAvNEq5wp7RGR5yPNHXkzg7rwPjpxneHtVuD/dMY4nkT1xmt/t9Y+nKuBuJ3+jp/jZwT
-         ygcLd65K3HL7Y/UyIWnES7CCuaC1U0nVvPcWAayQs3SmiUvG4/x5T4pXZ5i34YQonUaZ
-         HauQ==
+        b=i3MFTrmBg5tvy3S5MnAA5lazMvnqVOXF2BdBnTl7RGC/o/CDaN76eSX5X1FzJwmbQ9
+         BlF6fO+6n5qNYQpW9jT3aM9H+Yt5LRWHXEYR4cx59TlxBtmhxQvd12JCwzaBlunv6bsj
+         BdUwt/rwsLlqL+J43T/O+00V04Z+j5V04+3heHnAMffra1YcXe8DtHRYdxlR8Hx+nr9k
+         vERT86u12L5MaOPdSeeNFvIYEiA+rXIGAc7XOEbYHNCTpzy+JNRNjNNRBNLtpUFWDukB
+         kTQ/t8Chp/MiSgvD0b8Z9LaKiu1b2yCQ2C+ePyfUhg+ADETwk3kC54HZ+CAt51yyGXlO
+         CSUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=TFfnwjftSBTQtlrSBz3RLCltb8prEkxU+BRsjCrCgtQ=;
-        b=L9J/MyHlJ2f3l6mH4ntgy/zTqWacEwL5AtFHq8Mm5b0RvqdqVyX4IQkY3BvqENvpG8
-         U8jYPq+q13kEzTsSh5k/RPFMlEdg/+B0SvTswYs3nPVew53/oVP52Ciq+dBukvQ9Et40
-         fF/W5xh2+7y4AKjnuslYyxjcHOsVNMDypAykhuhxxOp82oULqdFJPBVKoZ0kIomENan3
-         n9O0aehE8dOB7r9eYVXBW1NE94eP2XsEz68zWSbqaAvlEHXIp90gS5tJDV5lPhZIZ5aM
-         MD2j9kk+yIBhjdvVrVQ7UFgi+S1LSEpaxLWYP9JWTcYzNm9T3yB6J55tSeOVvw9ZsmId
-         8rFQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=c0SPEwXyflkiw42kdbQzUDTcTHzybkAd3cMquverKqA=;
+        b=RTlAYZfBtu9wnApjqNlA+z3arRdgz7A3Gb2OOr6OhJb2wQWNMYB2jtNQLhgq/IRKpA
+         whb7M8ewTjuVhbi4GV+W16nz022nOhtYk0eitaGfUJzn3MPUivMgRqvoTfSCpZCEVW+M
+         gM6zE75Kia+5EYgAbv3YP83WbhCPvuNK8nStmgegGdKAFRvteANeGWJV0tO4ICUabFo/
+         MjEhIMcTRYzM9x7R9ZrpEFEimpMDRGg+laqHFQLiNK2QblBO24X/U2odOs5gWS5jyrQC
+         S5GpeSMB4rrwACtEPoefAr2ctQDJ0aFsuL5Cy0ePDomY3bjeznKATvi/KBKIsv0T5O+x
+         CxOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pCKy3Vgc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iQ8Bfh7y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bv26-20020a05622a0a1a00b003a69d10ad7asi19553182qtb.705.2023.01.04.14.48.00
+        by mx.google.com with ESMTPS id t10-20020ac8530a000000b003ab69a78e51si18113763qtn.593.2023.01.04.14.50.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Jan 2023 14:48:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Jan 2023 14:50:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pCKy3Vgc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iQ8Bfh7y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pDBsm-0008GA-TE; Wed, 04 Jan 2023 17:05:14 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pDBva-0002L9-Cf; Wed, 04 Jan 2023 17:08:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBsY-0008Ae-Cl
- for qemu-arm@nongnu.org; Wed, 04 Jan 2023 17:04:58 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBuq-00021x-Tb
+ for qemu-devel@nongnu.org; Wed, 04 Jan 2023 17:07:21 -0500
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBsW-0004zY-Gd
- for qemu-arm@nongnu.org; Wed, 04 Jan 2023 17:04:58 -0500
-Received: by mail-ej1-x630.google.com with SMTP id t17so85831705eju.1
- for <qemu-arm@nongnu.org>; Wed, 04 Jan 2023 14:04:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBun-0005am-JX
+ for qemu-devel@nongnu.org; Wed, 04 Jan 2023 17:07:20 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id fc4so85883676ejc.12
+ for <qemu-devel@nongnu.org>; Wed, 04 Jan 2023 14:07:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=TFfnwjftSBTQtlrSBz3RLCltb8prEkxU+BRsjCrCgtQ=;
- b=pCKy3Vgcn9frgL1Z6PKfnlIn4yF3aXjidG7SLKuNXzFpa3mU8tY2cNUadw4pji+k0F
- jvpcI50AwZiG3VGGcq9ma6u2qDa7eHF+2i8kQFHVey8/mdD64bhVe9IxFoIN7pJgyEf9
- 2c7BWfk0pHq4Ja3VgwFKR6baxop3v5zgBfBmdwkLjZCalagvZxady8XUc2k0Biwihz8s
- CEJEEa6hlHhcbuSTswJ32VaW4KbPzupRCjO94mOhv0UuY/HIlezodfZJvRsu2ij2a1NM
- oKjxWkEjZPwRP+CDs82l4DPEDA57dMMt1e/I0mPPx/wMggcz0N8AyNqo2FMG0IOfNmG3
- hv2A==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=c0SPEwXyflkiw42kdbQzUDTcTHzybkAd3cMquverKqA=;
+ b=iQ8Bfh7ypySwtQudVdpmBFo9jAOECouo6v0Mm2PY8M8ncwvAFnh0Z64MiQzv8j3lfd
+ InWICNpqEmN/un1I+jJEL4aBPj9w/WhIYmJcvSi5Jszhlvl6oINXPlhD6JFWwiT1uawz
+ aDTiXb3hxPztUbUMNZ8MGoUdL3Y2s5jQ8VsOsguUkxqpqe5x64z2jkrYimbuNQee1iuT
+ HiqJueIznICGSdND3aEIK7vgz3jFjolaThFq8Lspo5tcviRDOvTVDaCGgSvL/LaOLFiz
+ 3D2LZliMP+FpUTdTrBgiUO8J5TBHgRnCNTlOkaNcwFWaWY4aH15pg4fIBVsgZ/tgnNRC
+ Th2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=TFfnwjftSBTQtlrSBz3RLCltb8prEkxU+BRsjCrCgtQ=;
- b=rfQBNghpaSLONlED2Y/amo1NS8yfDSoEeMLQjgzH7gYui1nVl+3YCGL9gUaz/t4SDZ
- p5PLKCrDAk/MreaD5zpyL8pbbreEWY0jbVnx/qWyQbweaX60V3gmN6g5W8PGtPvWbcxf
- S7iLxYHE8zDzxLq53nLoS20zJGvoCk5JW7JCwlr7x3iUIJc3e7x1CxuO1rLn+z40DxPq
- 4JHVOSO3NOnM32nMcFQZdgKJXQrcQfCr93eN1ssa5PPzGfg/ogvoIRHD3Op6Fydd1ejx
- oEhIIeBk4fhpJ2jln5uP5LpKNsnPMqHCjMWT5zPkANd6AtqzpVsZtcFJ6E5fKlPAFQsu
- yA7w==
-X-Gm-Message-State: AFqh2kpAkcvws8c4nTDaaQUBiIjIcxneSpSFrqnspToiacXietbJW86X
- eJDsXvXY0dvQsnnarUyiJmAhdA==
-X-Received: by 2002:a17:907:c48d:b0:7c0:fe60:be12 with SMTP id
- tp13-20020a170907c48d00b007c0fe60be12mr38960273ejc.25.1672869894693; 
- Wed, 04 Jan 2023 14:04:54 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=c0SPEwXyflkiw42kdbQzUDTcTHzybkAd3cMquverKqA=;
+ b=qndkMUZEkYmYQBH+h1eZ3LlW9AcZCqu5zdgmIy1rEvcjn966V/Tc2BkCRJM+QwOlL0
+ Wq/EoZ66CKW4VQZ471204Ick/TzjnxV9YUPkvrNchmlna+fV/kCrYDTiiyscZ5EE7lHu
+ SQiSW2I5tfLx0OUo7U+nLLd48Lt0SY3kgqZmn9Z7WSlsXIre2d9JW10Cb1Jr/LlJtJlP
+ lPR3lLgrvbPn1+QpPwSWrEQ0WKy24OBFJvGqtMrkAANBNRksmvlMHdmHDF+JJsttqAte
+ XvpJotj0JMlvtKwuXQCKsroC21+UX2oXwO0WNpu+y5MkybbQaW5gjFW5YBIxH/RFpfNs
+ J8HA==
+X-Gm-Message-State: AFqh2kqWgoyUhOhfwC0zyrjT79V1FHmwzxwBap5Pbr+fKK2hp6uGIgFR
+ y2G2USVu1kTbXaTqOU1CfMlDAzFr5AKu2V3m
+X-Received: by 2002:a17:907:86a6:b0:7c0:fd1a:79f0 with SMTP id
+ qa38-20020a17090786a600b007c0fd1a79f0mr59298049ejc.21.1672870030224; 
+ Wed, 04 Jan 2023 14:07:10 -0800 (PST)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- i16-20020a170906115000b008373f9ea148sm15784340eja.71.2023.01.04.14.04.50
+ h14-20020a1709063c0e00b00780b1979adesm15773759ejg.218.2023.01.04.14.07.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Jan 2023 14:04:54 -0800 (PST)
+ Wed, 04 Jan 2023 14:07:09 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Song Gao <gaosong@loongson.cn>, Antony Pavlov <antonynpavlov@gmail.com>,
@@ -107,126 +109,169 @@ Cc: Song Gao <gaosong@loongson.cn>, Antony Pavlov <antonynpavlov@gmail.com>,
  qemu-riscv@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  Leif Lindholm <quic_llindhol@quicinc.com>, Kevin Wolf <kwolf@redhat.com>
-Subject: [PATCH 00/20] hw: Remove implicit sysbus_mmio_map() from pflash APIs
-Date: Wed,  4 Jan 2023 23:04:29 +0100
-Message-Id: <20230104220449.41337-1-philmd@linaro.org>
+Subject: [PATCH 16/20] hw/block: Factor pflash_cfi02_create() out of
+ pflash_cfi02_register()
+Date: Wed,  4 Jan 2023 23:04:45 +0100
+Message-Id: <20230104220449.41337-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230104220449.41337-1-philmd@linaro.org>
+References: <20230104220449.41337-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cSmd3r8cLJTS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jYPwLX2j5hB8
 
-Paving the road toward heterogeneous QEMU, the limitations of
-having a single machine sysbus become more apparent.
+Currently pflash_cfi02_register():
 
-The sysbus_mmio_map() API forces the caller to map a sysbus
-device to an address on the system bus (system bus here is
-the root MemoryRegion returned by get_system_memory() ).
+ 1/ creates a TYPE_PFLASH_CFI02 qdev instance
+ 2/ maps the first MMIO region to the system bus
 
-This is not practical when each core has its own address
-space and group of cores have access to a part of the
-peripherals.
+The first minor issue is the implicit sysbus mapping is not
+obvious (the function name could mention it), and the function
+is not documented.
 
-Experimenting with the PFLASH devices. Here the fix is
-quite easy, we split the pflash_cfi_register() -- which
-does the implicit sysbus mapping -- into an explicit qdev
-pflash_cfi_create() followed by the sysbus_mmio_map() call.
+Another issue is we are forced to map on sysbus, thus code
+wanting to simply instantiate this device are forced to open
+code the qdev creation.
 
-Since we were touching the PFLASH API, we restricted the
-PFlashCFI0X structures to their models. The API now deals
-with a generic qdev pointer (DeviceState*).
+This is a problem in a heterogeneous system where not all cores
+has access to the sysbus, or if we want to map the pflash on
+different address spaces.
 
-First 15 patches deal with the CFI type 1 model, then the
-last 5 with the type 2.
+To clarify this API, extract the qdev creation in a new helper
+named pflash_cfi02_create().
 
-The patch logic is mostly:
+We don't document pflash_cfi02_register() because we are going
+to remove it in a pair of commits.
 
-- extract pflash_cfi_create() from pflash_cfi_register()
-- open-code pflash_cfi_register() for each hw/${ARCH}/
-- remove unused pflash_cfi_register()
-- reduce PFlashCFI0x structure scope
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/block/pflash_cfi02.c  | 55 ++++++++++++++++++++++++++--------------
+ include/hw/block/flash.h | 14 +++++++++-
+ 2 files changed, 49 insertions(+), 20 deletions(-)
 
-Please review,
-
-Phil.
-
-Philippe Mathieu-Daudé (20):
-  hw/block: Pass DeviceState to pflash_cfi01_get_blk()
-  hw/block: Use pflash_cfi01_get_blk() in pflash_cfi01_legacy_drive()
-  hw/block: Pass DeviceState to pflash_cfi01_get_memory()
-  hw/arm: Use generic DeviceState instead of PFlashCFI01
-  hw/loongarch: Use generic DeviceState instead of PFlashCFI01
-  hw/riscv: Use generic DeviceState instead of PFlashCFI01
-  hw/i386: Use generic DeviceState instead of PFlashCFI01
-  hw/xtensa: Use generic DeviceState instead of PFlashCFI01
-  hw/block: Factor pflash_cfi01_create() out of pflash_cfi01_register()
-  hw/arm: Open-code pflash_cfi01_register()
-  hw/microblaze: Open-code pflash_cfi01_register()
-  hw/mips: Open-code pflash_cfi01_register()
-  hw/ppc: Open-code pflash_cfi01_register()
-  hw/block: Remove unused pflash_cfi01_register()
-  hw/block: Make PFlashCFI01 QOM declaration internal
-  hw/block: Factor pflash_cfi02_create() out of pflash_cfi02_register()
-  hw/arm: Open-code pflash_cfi02_register()
-  hw/sh4: Open-code pflash_cfi02_register()
-  hw/block: Remove unused pflash_cfi02_register()
-  hw/block: Make PFlashCFI02 QOM declaration internal
-
- hw/arm/collie.c                          | 15 ++++---
- hw/arm/digic_boards.c                    | 14 +++---
- hw/arm/gumstix.c                         | 19 +++++---
- hw/arm/mainstone.c                       | 13 +++---
- hw/arm/musicpal.c                        | 13 +++---
- hw/arm/omap_sx1.c                        | 22 +++++----
- hw/arm/sbsa-ref.c                        |  8 ++--
- hw/arm/versatilepb.c                     | 13 +++---
- hw/arm/vexpress.c                        | 12 +++--
- hw/arm/virt.c                            |  6 +--
- hw/arm/xilinx_zynq.c                     | 10 ++---
- hw/arm/z2.c                              | 10 +++--
- hw/block/pflash_cfi01.c                  | 35 ++++++++-------
- hw/block/pflash_cfi02.c                  | 25 +++++------
- hw/i386/pc_sysfw.c                       |  6 +--
- hw/loongarch/virt.c                      |  9 ++--
- hw/microblaze/petalogix_ml605_mmu.c      |  8 ++--
- hw/microblaze/petalogix_s3adsp1800_mmu.c |  8 ++--
- hw/mips/malta.c                          | 13 +++---
- hw/ppc/e500.c                            |  2 +-
- hw/ppc/sam460ex.c                        | 12 +++--
- hw/ppc/virtex_ml507.c                    |  7 +--
- hw/riscv/virt.c                          |  7 +--
- hw/sh4/r2d.c                             |  9 ++--
- hw/xtensa/xtfpga.c                       |  6 +--
- include/hw/arm/virt.h                    |  3 +-
- include/hw/block/flash.h                 | 57 ++++++++++++------------
- include/hw/i386/pc.h                     |  3 +-
- include/hw/loongarch/virt.h              |  3 +-
- include/hw/riscv/virt.h                  |  3 +-
- 30 files changed, 200 insertions(+), 171 deletions(-)
-
+diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+index 2a99b286b0..176f93b512 100644
+--- a/hw/block/pflash_cfi02.c
++++ b/hw/block/pflash_cfi02.c
+@@ -994,6 +994,37 @@ static void pflash_cfi02_register_types(void)
+ 
+ type_init(pflash_cfi02_register_types)
+ 
++DeviceState *pflash_cfi02_create(const char *name, hwaddr size,
++                                 BlockBackend *blk, uint32_t sector_len,
++                                 int nb_mappings, int bank_width,
++                                 uint16_t id0, uint16_t id1,
++                                 uint16_t id2, uint16_t id3,
++                                 uint16_t unlock_addr0, uint16_t unlock_addr1,
++                                 int be)
++{
++    DeviceState *dev = qdev_new(TYPE_PFLASH_CFI02);
++
++    if (blk) {
++        qdev_prop_set_drive(dev, "drive", blk);
++    }
++    assert(QEMU_IS_ALIGNED(size, sector_len));
++    qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
++    qdev_prop_set_uint32(dev, "sector-length", sector_len);
++    qdev_prop_set_uint8(dev, "width", bank_width);
++    qdev_prop_set_uint8(dev, "mappings", nb_mappings);
++    qdev_prop_set_uint8(dev, "big-endian", !!be);
++    qdev_prop_set_uint16(dev, "id0", id0);
++    qdev_prop_set_uint16(dev, "id1", id1);
++    qdev_prop_set_uint16(dev, "id2", id2);
++    qdev_prop_set_uint16(dev, "id3", id3);
++    qdev_prop_set_uint16(dev, "unlock-addr0", unlock_addr0);
++    qdev_prop_set_uint16(dev, "unlock-addr1", unlock_addr1);
++    qdev_prop_set_string(dev, "name", name);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++
++    return dev;
++}
++
+ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
+                                    const char *name,
+                                    hwaddr size,
+@@ -1006,26 +1037,12 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
+                                    uint16_t unlock_addr1,
+                                    int be)
+ {
+-    DeviceState *dev = qdev_new(TYPE_PFLASH_CFI02);
+-
+-    if (blk) {
+-        qdev_prop_set_drive(dev, "drive", blk);
+-    }
+-    assert(QEMU_IS_ALIGNED(size, sector_len));
+-    qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
+-    qdev_prop_set_uint32(dev, "sector-length", sector_len);
+-    qdev_prop_set_uint8(dev, "width", width);
+-    qdev_prop_set_uint8(dev, "mappings", nb_mappings);
+-    qdev_prop_set_uint8(dev, "big-endian", !!be);
+-    qdev_prop_set_uint16(dev, "id0", id0);
+-    qdev_prop_set_uint16(dev, "id1", id1);
+-    qdev_prop_set_uint16(dev, "id2", id2);
+-    qdev_prop_set_uint16(dev, "id3", id3);
+-    qdev_prop_set_uint16(dev, "unlock-addr0", unlock_addr0);
+-    qdev_prop_set_uint16(dev, "unlock-addr1", unlock_addr1);
+-    qdev_prop_set_string(dev, "name", name);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    DeviceState *dev;
+ 
++    dev = pflash_cfi02_create(name, size, blk, sector_len,
++                              nb_mappings, width, id0, id1, id2, id3,
++                              unlock_addr0, unlock_addr1, be);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
++
+     return PFLASH_CFI02(dev);
+ }
+diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
+index 321aede8ef..78b078955e 100644
+--- a/include/hw/block/flash.h
++++ b/include/hw/block/flash.h
+@@ -32,7 +32,19 @@ void pflash_cfi01_legacy_drive(DeviceState *dev, DriveInfo *dinfo);
+ #define TYPE_PFLASH_CFI02 "cfi.pflash02"
+ OBJECT_DECLARE_SIMPLE_TYPE(PFlashCFI02, PFLASH_CFI02)
+ 
+-
++/**
++ * Create and realize a parallel NOR flash (CFI type 2) on the heap.
++ *
++ * Create the device state structure, initialize it, and drop the
++ * reference to it (the device is realized).
++ */
++DeviceState *pflash_cfi02_create(const char *name, hwaddr size,
++                                 BlockBackend *blk, uint32_t sector_len,
++                                 int nb_mappings, int bank_width,
++                                 uint16_t id0, uint16_t id1,
++                                 uint16_t id2, uint16_t id3,
++                                 uint16_t unlock_addr0, uint16_t unlock_addr1,
++                                 int be);
+ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
+                                    const char *name,
+                                    hwaddr size,
 -- 
 2.38.1
 

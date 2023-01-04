@@ -1,133 +1,160 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8306362ejb;
-        Wed, 4 Jan 2023 14:02:09 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXu+phBHj37VNc1GToK7Lp2oR78amfdGzFbV0GTdj6CEyMdF2yCMC4/TTqTBwIeGoBD0a62N
-X-Received: by 2002:a5d:4a47:0:b0:268:170b:56fd with SMTP id v7-20020a5d4a47000000b00268170b56fdmr33217759wrs.0.1672869729386;
-        Wed, 04 Jan 2023 14:02:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672869729; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8317782ejb;
+        Wed, 4 Jan 2023 14:24:18 -0800 (PST)
+X-Received: by 2002:a17:906:6402:b0:7c1:962e:cf24 with SMTP id d2-20020a170906640200b007c1962ecf24mr40763646ejm.50.1672871058091;
+        Wed, 04 Jan 2023 14:24:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672871058; cv=none;
         d=google.com; s=arc-20160816;
-        b=j/7nEl7v6bFWUHRWRlWzXY0iNeLg1dhhMJKQDo8E2EaHpZbkU6H2V8MJtLIKYC+FLy
-         uDP1EBnJGuY+nD5zILmvmLmgl9AOQLnxOMnjX4/hRPG6JFZSy0fUDONDw0F+cPYmJY/O
-         jhUt4+IxtiOB+vgPkZzRwtD4bR90xC0eSDgmtvmGugSONRUWf9Tnd6khBkXY6+3/ICk8
-         A066gDF8vB6aKDininSRFXRGXusi48ryPQ7Gp5oU+dnojSw1JB25iE2gPu6s2v85CcD7
-         Y/TRwe2IYgoKSvIALsmgXLjV3azk/6WknSlAM/lf/SVTMmZhuc2dsicRebCQVznUO3mv
-         6h/Q==
+        b=cuLzfEbJj9NzP5bUY/8Qc6Jni81/qOxn3d7UArk/k+njBhVBow3rPfEhdVxF1k/t0I
+         yigQo8YE5Ku8uKEgD2fzSlkq2D3B6ABUzc4I4zaJeKsFD0siNK23aozTqOui8R5oqn+n
+         Y1HALofZilvDVyP+8ZXsSVssi3Zg7Yp5pDRDCzxSdZz26CnN2a8Getz+a57SgrU+cgd0
+         Ushf8P89jeaLBZd6xrRlPprA/2sr45Dt/s4uHqAJ+p7Cw6HZvLHGXlRGTEbhquAXueu6
+         5gBlNIvQUju1Uzvx7IGc5DaaTigntbXBs9GNZivaWhjxL8TiBgj0w/QOV4fHkiresayu
+         c6WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=QnVis98vx60sXf8bSnXtdNnFjg5jfGQ5kovfBx5P2qA=;
-        b=glS8Zl987QADmRJ39mHubEFgGQ6B8bcReBIAwnG6G11OWOyj9tz612i31mgLE7mxC/
-         IQ4xDlS8+gVa+En9qWspmJ6rhb9aJb9XeOwazzRgz7vxvG5YtySKvNa03j4EUylTpnKe
-         1HAO4pgD0A2hX2YYgMN8kC1Hnf8aX5ntddca9YF1SgYKu5wYY1CbUOM6L5ZzAiNZaXrL
-         ki+SAWunczF/dfCJrrtvxNaxNRbYyR1o2BcLN1w5+tLKZvg6HRkRDqKYP+PIdZdWxl4W
-         nXUfZJYhAlvRrC5I+agBJtESubUU+T/+c6IjRBOab7smo3hrASz88ts428bA/xXotyWb
-         Y+lQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=kdJK7hKhTxXNAjCVewSU4FCPOPdb8xkIvabuXsiLWtw=;
+        b=ZDpDXpLeDhTJM2WqeEBAEpB7ffsJOTEMNsO95wSPfJMir/HjIohin0X459j4J2H4/k
+         wPtuAbQ3vU92xqfHNemqtaLbFAQhzBd8BjfWga/9kK/TwosN+StQAfjnyAnQh9L5MbKO
+         iETe1XTYgOPWbNObNgrEnPs4PF/jUaEsGNlhXKD18V/h6p1PotVS0kEM3NPGMGAP86yd
+         NVX+jHy56VQFhlN0IQyAAI4QjtAmgtf9y/p/7hFCU99lEH2AVbwFBdtO4B0JAEiN46qf
+         Wh/uoD7ldDNOcCszuRSjhCcOzqLd+2l60XLCXvwkQRtOYqRmKV1zgo6feAduWjUgdo0C
+         q58Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="f7a/RMB4";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id m2-20020adfe942000000b0023671484b9fsi20201159wrn.223.2023.01.04.14.02.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Jan 2023 14:02:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CkvqpzPQ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id st14-20020a170907c08e00b007c1031b0224sor15693554ejc.31.2023.01.04.14.24.18
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 04 Jan 2023 14:24:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="f7a/RMB4";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id E8C5D3F182;
-	Wed,  4 Jan 2023 22:02:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1672869728; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=QnVis98vx60sXf8bSnXtdNnFjg5jfGQ5kovfBx5P2qA=;
-	b=f7a/RMB4UH+uYmriYchitGJGABHYto+sQPGUMgB9We3JlETJFfC8J8sdE2B35eFlIuyaUk
-	TrMriFSwJgYRvQodfYX/zMyuFrSi4ynLRhLFZYCQ7i0yg8azjA0E1IJnP4GUEP58lyQwWW
-	jKlE0ewHP1ALS5masFZVoi7Ghenm7Ho=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1672869728;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=QnVis98vx60sXf8bSnXtdNnFjg5jfGQ5kovfBx5P2qA=;
-	b=OG2t9rcegXBHKiciTxdre2Iat3aPGRkeGpAgIoqPRXJT+1O8+ZiAsmnpTQy9zZlg0o8+ir
-	gerlrOChOLEj6SDw==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 3CF9C1342C;
-	Wed,  4 Jan 2023 22:02:06 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id yPqpAV73tWPwJAAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 04 Jan 2023 22:02:06 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>
-Subject: [RFC PATCH 27/27] target/arm: don't access TCG code when debugging with KVM
-Date: Wed,  4 Jan 2023 18:58:35 -0300
-Message-Id: <20230104215835.24692-28-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230104215835.24692-1-farosas@suse.de>
-References: <20230104215835.24692-1-farosas@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=CkvqpzPQ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kdJK7hKhTxXNAjCVewSU4FCPOPdb8xkIvabuXsiLWtw=;
+        b=CkvqpzPQ3FaSqpRI4Tas2VvKPAZtJdwd13Eiy8L2CneL/u5tzug3cMd2bL73FAaoNU
+         svfMWQaBW+8C43zuEhJaVYhtpim1/7a9Fragv4jCyg3c8jLKlUYiolauCgFq1hbEa0kk
+         q4f0TqxS0wsuXaKrwNz88rZqpkcKpF4sklOA3nQiernVB2z/wxpeuflgj4b5oGbgO0eR
+         51gSQZksnvDaXS2tgFJFuCUk5fwQ2lH2puOt/CRltHixLrIdEtJOHIwdTl61XRmIW/eL
+         gYluP+7QudzoN2qTN9OYHbZTbWu4xOhHy8x6wvcSASxifj/+zpeJqrj2m1mCbLsFPTTV
+         Inyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kdJK7hKhTxXNAjCVewSU4FCPOPdb8xkIvabuXsiLWtw=;
+        b=j5Dv3gLMNbKcwls5EWVePlI/fm+6nxHxSQB6QgBuWU03Xfl0PoRi4+m5PMhyHsg9CW
+         vW6VbwIKSICE6fdmLmGYOf5LOAVgKxwOuukHJlFDDInkCqnjzEUOgdTV+H4eNgxawLzi
+         a/SSZXVZAc5evp9bLxCUv0hHIhfjuSwmO0NPSFCqSIudP+utwdkreyZ1mqGANpeyC889
+         KRAE+VGeFOGz60poXkU4VV4oGFaUgNrXMAvJWtFMOolP64UgMS2KjPVYpjXMNvKsunNp
+         ME2VArBSmymiRk/vkYWWgQaKaxYE2atUzeUUICnzXFg+y7A71geH+EMlwoAwTWEtzr6c
+         GM3g==
+X-Gm-Message-State: AFqh2krppA3nQvtbBLTgZmsVw166W6ulOM9Fyxz0Gb+g0Xr9I7EUxJb3
+	1XBClj91IOIgiDoJyiCHncyrCLAb
+X-Google-Smtp-Source: AMrXdXs3CUGU5yg/n77GCtilLwu1wiI8vhqe9Mpp5uILUgm3oKkw+kCF8Xj9E/s+HFldzXBsGDAODQ==
+X-Received: by 2002:a17:906:5786:b0:78d:f455:3105 with SMTP id k6-20020a170906578600b0078df4553105mr40686622ejq.45.1672871057841;
+        Wed, 04 Jan 2023 14:24:17 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.1.115] ([185.126.107.38])
+        by smtp.gmail.com with ESMTPSA id ky14-20020a170907778e00b007c4f8bc322asm15658779ejc.196.2023.01.04.14.24.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 04 Jan 2023 14:24:17 -0800 (PST)
+Message-ID: <820138bd-1971-17f3-c5a0-37fc6c4422dc@linaro.org>
+Date: Wed, 4 Jan 2023 23:24:15 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [RFC PATCH 13/27] target/arm: move translate modules to tcg/
+Content-Language: en-US
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
+References: <20230104215835.24692-1-farosas@suse.de>
+ <20230104215835.24692-14-farosas@suse.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230104215835.24692-14-farosas@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: HL5Z4kdhkthm
+X-TUID: Xm0c9E77Ppke
 
-When TCG is disabled this part of the code should not be reachable, so
-wrap it with an ifdef for now.
+On 4/1/23 22:58, Fabiano Rosas wrote:
+> From: Claudio Fontana <cfontana@suse.de>
+> 
+> Signed-off-by: Claudio Fontana <cfontana@suse.de>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+> I also moved translate-{m-nocp,mve,neon,vfp,sme}.c
+> 
+> Originally from:
+> https://lore.kernel.org/r/20210416162824.25131-2-cfontana@suse.de
+> [RFC v14 01/80] target/arm: move translate modules to tcg/
+> ---
+>   target/arm/meson.build                  | 26 --------------------
+>   target/arm/{ => tcg}/a32-uncond.decode  |  0
+>   target/arm/{ => tcg}/a32.decode         |  0
+>   target/arm/{ => tcg}/m-nocp.decode      |  0
+>   target/arm/tcg/meson.build              | 32 +++++++++++++++++++++++++
+>   target/arm/{ => tcg}/mve.decode         |  0
+>   target/arm/{ => tcg}/neon-dp.decode     |  0
+>   target/arm/{ => tcg}/neon-ls.decode     |  0
+>   target/arm/{ => tcg}/neon-shared.decode |  0
+>   target/arm/{ => tcg}/sme-fa64.decode    |  0
+>   target/arm/{ => tcg}/sme.decode         |  0
+>   target/arm/{ => tcg}/sve.decode         |  0
+>   target/arm/{ => tcg}/t16.decode         |  0
+>   target/arm/{ => tcg}/t32.decode         |  0
+>   target/arm/{ => tcg}/translate-a64.c    |  0
+>   target/arm/{ => tcg}/translate-a64.h    |  0
+>   target/arm/{ => tcg}/translate-m-nocp.c |  0
+>   target/arm/{ => tcg}/translate-mve.c    |  0
+>   target/arm/{ => tcg}/translate-neon.c   |  0
+>   target/arm/{ => tcg}/translate-sme.c    |  0
+>   target/arm/{ => tcg}/translate-sve.c    |  0
+>   target/arm/{ => tcg}/translate-vfp.c    |  0
+>   target/arm/{ => tcg}/translate.c        |  0
+>   target/arm/{ => tcg}/translate.h        |  0
+>   target/arm/{ => tcg}/vfp-uncond.decode  |  0
+>   target/arm/{ => tcg}/vfp.decode         |  0
+>   26 files changed, 32 insertions(+), 26 deletions(-)
+>   rename target/arm/{ => tcg}/a32-uncond.decode (100%)
+>   rename target/arm/{ => tcg}/a32.decode (100%)
+>   rename target/arm/{ => tcg}/m-nocp.decode (100%)
+>   rename target/arm/{ => tcg}/mve.decode (100%)
+>   rename target/arm/{ => tcg}/neon-dp.decode (100%)
+>   rename target/arm/{ => tcg}/neon-ls.decode (100%)
+>   rename target/arm/{ => tcg}/neon-shared.decode (100%)
+>   rename target/arm/{ => tcg}/sme-fa64.decode (100%)
+>   rename target/arm/{ => tcg}/sme.decode (100%)
+>   rename target/arm/{ => tcg}/sve.decode (100%)
+>   rename target/arm/{ => tcg}/t16.decode (100%)
+>   rename target/arm/{ => tcg}/t32.decode (100%)
+>   rename target/arm/{ => tcg}/translate-a64.c (100%)
+>   rename target/arm/{ => tcg}/translate-a64.h (100%)
+>   rename target/arm/{ => tcg}/translate-m-nocp.c (100%)
+>   rename target/arm/{ => tcg}/translate-mve.c (100%)
+>   rename target/arm/{ => tcg}/translate-neon.c (100%)
+>   rename target/arm/{ => tcg}/translate-sme.c (100%)
+>   rename target/arm/{ => tcg}/translate-sve.c (100%)
+>   rename target/arm/{ => tcg}/translate-vfp.c (100%)
+>   rename target/arm/{ => tcg}/translate.c (100%)
+>   rename target/arm/{ => tcg}/translate.h (100%)
+>   rename target/arm/{ => tcg}/vfp-uncond.decode (100%)
+>   rename target/arm/{ => tcg}/vfp.decode (100%)
 
-This allows us to start using CONFIG_TCG=n (--disable-tcg in the
-configure line).
-
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
-As I understand it, only a small part of the ptw routines should be
-necessary for use with KVM+gdbstub. But I don't know enough about arm
-MMU yet to make that distinction.
----
- target/arm/ptw.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index f812734bfb..a85eba101f 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -254,6 +254,7 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-         ptw->out_host = NULL;
-         ptw->out_rw = false;
-     } else {
-+#ifdef CONFIG_TCG
-         CPUTLBEntryFull *full;
-         int flags;
- 
-@@ -270,6 +271,9 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-         ptw->out_rw = full->prot & PAGE_WRITE;
-         pte_attrs = full->pte_attrs;
-         pte_secure = full->attrs.secure;
-+#else
-+        g_assert_not_reached();
-+#endif
-     }
- 
-     if (regime_is_stage2(s2_mmu_idx)) {
--- 
-2.35.3
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

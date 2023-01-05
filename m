@@ -1,39 +1,39 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp473242ejb;
-        Thu, 5 Jan 2023 09:26:42 -0800 (PST)
-X-Received: by 2002:a7b:ca4f:0:b0:3c6:edc0:5170 with SMTP id m15-20020a7bca4f000000b003c6edc05170mr36028701wml.25.1672939602284;
-        Thu, 05 Jan 2023 09:26:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672939602; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp474213ejb;
+        Thu, 5 Jan 2023 09:28:39 -0800 (PST)
+X-Received: by 2002:a05:600c:3506:b0:3cf:803b:d7cc with SMTP id h6-20020a05600c350600b003cf803bd7ccmr40052530wmq.33.1672939719764;
+        Thu, 05 Jan 2023 09:28:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672939719; cv=none;
         d=google.com; s=arc-20160816;
-        b=RJHuDuWIiyVzd8MYHEVJsaWwfrqPUOM+5LYy/dw+furaf8PmnfUkeI5vkO4SBuBy9Q
-         q572A4lnaq243fKwmVaj6U31Eyo+Z9YUq8wfc+yN/aHP7fMtrLiStLlOWmSz/PiQbUPb
-         Zm5haZKhpOLO0vqWNow5s9IYyi5tt2hc7M1GZ6jTFuTX9eCGKD6KJX4iW3/v3VdLD1vV
-         HfgY+RWYETjgLLwQEChPfM8Qj1u7i3af6O/+SR9zQVtr2oMRSVGj/JAuhwg82OQwBS92
-         AZ7qYv4VnWR2/BTDMfBbkDkjenUUzycqLqg4VaESELU4x33HT48k4QrBUeOOU2MybjUM
-         VUZA==
+        b=k2pmfxYLQ2s2pdCB0eTsnP+Uo1f3LjhYvfWF6H8xqUV8JN9VHEqzMDalORoUGtNbjI
+         o+fLkpJW/9NNgIf6i4yeIfAzmUPZ0i6liyHVlqJQxMBvlmAdcGWkYCsIexjEi5zHER9S
+         B89/VWTfP45l5x0dDF6Ntz2/74VLp/ZDaQKMthU/rRsT1fhl5RNhGWraS7ltpQzGYqb7
+         Ymfa2fZB7hQUuBChP1nzh5yQCPdVt1r9uG9be6kcO7+/6ubhbVxD+C4iJvWpZqrM3FtX
+         xD3MBxVdB0rTJa61MyZxo5etYMyb2zanv8ykvQY7IHrS1+73f6480YwMqqBxpGNNF4Bq
+         IRUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=YJ9R9RXtjscsZqJEnjO20+62buuIfhCqeryuH+omc1U=;
-        b=Kbkh2oMRVsbgycuqoLlT2AV81gM/0Kalz/QL+ITb1hMWaa1NNV53On+JdebiA7/vz+
-         ctqohbUcvIn1Xq1z6GJHf3EDkuY5dUZGeyBjAn7N/IC3JoNGB2ti2SRgPZwYQgtxqV4p
-         noK640TCcIBAy3DyEU5IJumQjfwLimOjBx7giFA+BLDbVKrbcLN36p9WiEb0NtAyIagB
-         CcZEBhwAqMD9sqCks10IrBoO757Rd9Yxw6/wL9saKyPvwwThhHcyQOGXaE3XhSm2CR53
-         pb7EmQ3gzoge7pqHTXa8SHR3bmtfaBSJHRImZsZwHMizGoHLPHvpVHRsflkp6haB5IYW
-         mscQ==
+        bh=xLc3h8yqPnvvcE3JzSjb8mPuQCKVOGDC88RCNMEdEBI=;
+        b=BBOTb03xHGGZh4028jvp93r5oZ5oqWuj0ltqsBQT7Wdld6lHmYrcVRCpF3+ghvFKjA
+         Km+bRMhthVER7liJNbnvE76gDtfBohpAzZETRWqjbXSjKcEwosEjZRURAifC8hPkrm4U
+         LQcnoklGbXlC8CiDMiEkghClgt8NXecbXCrzyrlY+ieH6x/8E/XGhlVvouZg6F1oyVn2
+         MT6SGB0rY+Q5qkhFdZLur1fV83D3+5dt9babbEe7PScIPz4kGj+nAohqIdmxI+bdZCq4
+         kXkOYwD320r1R2Quke3kKJ8OsD2UvRcgrGsT8aVQD8BqQc44AGAr5Ykf3bG3VgG3rheN
+         TXaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x2O4i4Yv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KwSIzupn;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k31-20020a05600c1c9f00b003cf684bef83sor2107572wms.1.2023.01.05.09.26.42
+        by mx.google.com with SMTPS id n1-20020a05600c294100b003cfad59841bsor853721wmd.21.2023.01.05.09.28.39
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 05 Jan 2023 09:26:42 -0800 (PST)
+        Thu, 05 Jan 2023 09:28:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x2O4i4Yv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KwSIzupn;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -41,41 +41,42 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=YJ9R9RXtjscsZqJEnjO20+62buuIfhCqeryuH+omc1U=;
-        b=x2O4i4Yvt+VOEEhJTeqBAX2ZZH9HOGHi9BCYO2B50iDwu9plmEH/dXFX7RX+6DkTQZ
-         LG/Rc2Zh7NiQ67BpEaQLXVD/0HqDo0LN/+1tuXesvbunNeSDxpZgWqziHbRUpAYw1Zbp
-         7BxZYB2X1PrHDUnPCTvLWG4B+R/AcJDXcectJ4H7LlEqKsn8SScgsjr11E8F/dGwtA1y
-         YfwiKIVHokOgU2rIdBnkExAT7D9hLv0+73nBMzwJItqTHF6qHApQgIqxszEBFWL8tYZ/
-         YPWxlQNSmnmgUMtu9hcJm80mt/FbwQYL0hT0cPRf4nhnPJiPw1fHxud3TLtCz3S84qYQ
-         6Y8w==
+        bh=xLc3h8yqPnvvcE3JzSjb8mPuQCKVOGDC88RCNMEdEBI=;
+        b=KwSIzupnOaRjU7pDIFTrJ/Gs8FzxZk9o6Ayv+7BqF+1P7MKPtPAaTjFNO+O7KncIRt
+         wpSiNyWy5ibCAdKlsoxsvUsuocAhA1Ilz4m+xGOpeMNNw08vhqNjj5CN7GdyEb03PE5F
+         tfZHnRGb/F6JGUuO1yo45zPTrcR2vRsa/T7+h7O+aWvqgCsTjPR/BP/T+mHO+mbIyJeG
+         I5nxi4zOEeYJZz47k1CHN998L56TY0Ajc1dM68Dg8B9KFF3dh0RY3KaTQEdWKyX0P8IF
+         FnAbNVkJxYC65weSWL9xpVKqBxRTg2eM7nkjv/T9WFuQ5eUNrk6xhY+bmQ88SKqjwRPo
+         njsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YJ9R9RXtjscsZqJEnjO20+62buuIfhCqeryuH+omc1U=;
-        b=tzyciO+CDBjYOoz1dkA5SFH9QF8U9tNtKIO7kmQfAvszMivgSm9vxPNRapGgScwZzr
-         zHeDPSYgoAef5vgV/xkPGS87L6RXH+/bmqFc/s+eeb4XSQJOJNkrGdINpiFzjSa6W68+
-         VzoOV/F1ytsKswBNwGviQxmzEtoheZOvY9QM3n42hDlk6A+RE4vC2H0GhI9slY1ouuLQ
-         sylLzNBWWfY+Y5mN8Jm76n0UjENEHm6Vl1s1wHT5mFHaMiom7Ymvnn/v62DPb6JKsQK7
-         yk975YVc42eyENojhWvLJ1f16msjFtBUKc6/ukVyHMglk3idOA59vXn96wqsDH1f2xB+
-         2knw==
-X-Gm-Message-State: AFqh2kqAsiVMYZQvSVCzozK2Jj7VBUGiOcRYsX5jMcdW2MelqkqMm8US
-	Wm2MDrEFfbtcZiiJDb6SNVwd9Qc7EHcRLOztPRg=
-X-Google-Smtp-Source: AMrXdXt4tXUQ+WgtBP8T0TQkuq3QEoOCebVqsYx3qjzPi4ZeiOLcHp/FfaFFQkJQIJhddq/US5ii7g==
-X-Received: by 2002:a05:600c:d1:b0:3d3:4d21:704d with SMTP id u17-20020a05600c00d100b003d34d21704dmr37046020wmm.14.1672939601883;
-        Thu, 05 Jan 2023 09:26:41 -0800 (PST)
+        bh=xLc3h8yqPnvvcE3JzSjb8mPuQCKVOGDC88RCNMEdEBI=;
+        b=LUBHqbuiD/GP2Etoec8XSZAN0x6Ws5PrC/1DCvbvY8Us3xo4GsqUsJvDMQOVtKkO3Y
+         XEzgQjGmuqCiIla5W+RDw9DXjuekOKi8ynuNJI7bQiCOMfm/x84/91Tau9sRlOESAST7
+         capLI7HjZMSaQ2PfK2XZM+cXW4w9IKnENZyPkKSUHvPo+E4/CEs82gBbu2eaKOFhMvEn
+         4lBaF48VHiLkug7vKYXP5wNd5wkQrIGj0ohwBWXJd5dmHEFKyTieZ/XJljRfuDtc5hsW
+         fPS3qLlDbAWWV9KZxAGiqKInW24Rvsekz2QmLD8RSKhtuJW8gyT23dbvLvBs/TbG8d6p
+         FZ/Q==
+X-Gm-Message-State: AFqh2krgcuqh1NZmARHC9rouOvOMzkAvGs43kkKGgqpOGWZEHUFnnJ14
+	qUnoRSPhblPUw26juV3YhV63n2M70+JIfQ25yys=
+X-Google-Smtp-Source: AMrXdXsF0Bc9tPrumh0aEI/VQiagz31RjL4K54DzQvbwkaUt8OmYanPtii91U7p06dGyCd8PCxDItg==
+X-Received: by 2002:a05:600c:3b93:b0:3d3:43ae:4d10 with SMTP id n19-20020a05600c3b9300b003d343ae4d10mr39659064wms.11.1672939719323;
+        Thu, 05 Jan 2023 09:28:39 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id h10-20020a05600c2caa00b003cfd58409desm3158151wmc.13.2023.01.05.09.26.38
+        by smtp.gmail.com with ESMTPSA id h15-20020a05600c314f00b003d99469ece1sm3410678wmo.24.2023.01.05.09.28.36
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Jan 2023 09:26:41 -0800 (PST)
-Message-ID: <bdb3339f-e753-7911-6767-98b1279d311a@linaro.org>
-Date: Thu, 5 Jan 2023 18:26:38 +0100
+        Thu, 05 Jan 2023 09:28:38 -0800 (PST)
+Message-ID: <7d8fc0af-93ba-c79f-4c53-0cb52db40fa5@linaro.org>
+Date: Thu, 5 Jan 2023 18:28:35 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v2 17/21] gdbstub: fix address type of gdb_set_cpu_pc
+Subject: Re: [PATCH v2 18/21] gdbstub: don't use target_ulong while handling
+ registers
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org, alex.bennee@gmail.com
@@ -107,24 +108,52 @@ Cc: David Hildenbrand <david@redhat.com>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  Xiaojuan Yang <yangxiaojuan@loongson.cn>, qemu-arm@nongnu.org
 References: <20230105164320.2164095-1-alex.bennee@linaro.org>
- <20230105164320.2164095-18-alex.bennee@linaro.org>
+ <20230105164320.2164095-19-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230105164320.2164095-18-alex.bennee@linaro.org>
+In-Reply-To: <20230105164320.2164095-19-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: iovlKn/4GUQk
+X-TUID: Yu2kuDElexAU
 
 On 5/1/23 17:43, Alex Bennée wrote:
-> The underlying call uses vaddr and the comms API uses unsigned long
-> long which will always fit. We don't need to deal in target_ulong
-> here.
+> This is a hangover from the original code. addr is misleading as it is
+> only a really a register id. While len will never exceed
+
+"a really"?
+
+> MAX_PACKET_LENGTH I've used size_t as that is what strlen returns.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   gdbstub/gdbstub.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   gdbstub/gdbstub.c | 17 ++++++++++-------
+>   1 file changed, 10 insertions(+), 7 deletions(-)
+> 
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index 4547ca3367..c50c2f8e0f 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -1192,7 +1192,8 @@ static void handle_read_mem(GArray *params, void *user_ctx)
+>   
+>   static void handle_write_all_regs(GArray *params, void *user_ctx)
+>   {
+> -    target_ulong addr, len;
+> +    int reg_id;
 
-Yay \o/
+'unsigned'?
 
+> +    size_t len;
+>       uint8_t *registers;
+>       int reg_size;
+>   
+> @@ -1204,9 +1205,10 @@ static void handle_write_all_regs(GArray *params, void *user_ctx)
+>       len = strlen(get_param(params, 0)->data) / 2;
+>       gdb_hextomem(gdbserver_state.mem_buf, get_param(params, 0)->data, len);
+>       registers = gdbserver_state.mem_buf->data;
+> -    for (addr = 0; addr < gdbserver_state.g_cpu->gdb_num_g_regs && len > 0;
+> -         addr++) {
+> -        reg_size = gdb_write_register(gdbserver_state.g_cpu, registers, addr);
+> +    for (reg_id = 0;
+> +         reg_id < gdbserver_state.g_cpu->gdb_num_g_regs && len > 0;
+> +         reg_id++) {
+Regardless:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-

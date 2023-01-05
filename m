@@ -1,277 +1,171 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp8329748ejb;
-        Wed, 4 Jan 2023 14:50:53 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsmxBSHhpctBeJ7cvtqefYyAGoUsDNVhK9lXY00t5VBFPRbJQbaN8y8CX2PFQoQuAt/PKbM
-X-Received: by 2002:ac8:4657:0:b0:3a9:2478:2d70 with SMTP id f23-20020ac84657000000b003a924782d70mr76664362qto.24.1672872653651;
-        Wed, 04 Jan 2023 14:50:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672872653; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp53489ejb;
+        Wed, 4 Jan 2023 20:48:26 -0800 (PST)
+X-Received: by 2002:a17:902:c94f:b0:189:9e91:762e with SMTP id i15-20020a170902c94f00b001899e91762emr79942720pla.57.1672894106247;
+        Wed, 04 Jan 2023 20:48:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672894106; cv=none;
         d=google.com; s=arc-20160816;
-        b=i3MFTrmBg5tvy3S5MnAA5lazMvnqVOXF2BdBnTl7RGC/o/CDaN76eSX5X1FzJwmbQ9
-         BlF6fO+6n5qNYQpW9jT3aM9H+Yt5LRWHXEYR4cx59TlxBtmhxQvd12JCwzaBlunv6bsj
-         BdUwt/rwsLlqL+J43T/O+00V04Z+j5V04+3heHnAMffra1YcXe8DtHRYdxlR8Hx+nr9k
-         vERT86u12L5MaOPdSeeNFvIYEiA+rXIGAc7XOEbYHNCTpzy+JNRNjNNRBNLtpUFWDukB
-         kTQ/t8Chp/MiSgvD0b8Z9LaKiu1b2yCQ2C+ePyfUhg+ADETwk3kC54HZ+CAt51yyGXlO
-         CSUw==
+        b=HWEGrBuGBTHi5ijDlAbwPX0YI6a4gFbDa9EZ5jpghs4eDk52d8d8yVNy1Tq4U7X7Xs
+         bhySXaVhuVa6yipgFVjgjaT8/3YepHO0RlVnmA/WRjRlk1HodSX4E1mwtKc8Ahqa0hBV
+         6Qr2XV1sN/MpQMfY0m3cWzC2GD+KQ8FMzn1pIR8FpWjl/2kWsLAe+ccxu9DXY1iMb5a7
+         PF8apkYzAN06yVdIR/8aqpODkA8zuR2kqSZPDwPfwd4n+gZuZg7/doWJZN+7nPbfxthc
+         Kp3g7xc3S8fAHse7bm0ea/EjgjIapIWETIVJ6G05GCq0TB3TvWy7pO5v2CXS5yT8YsEr
+         iMkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=c0SPEwXyflkiw42kdbQzUDTcTHzybkAd3cMquverKqA=;
-        b=RTlAYZfBtu9wnApjqNlA+z3arRdgz7A3Gb2OOr6OhJb2wQWNMYB2jtNQLhgq/IRKpA
-         whb7M8ewTjuVhbi4GV+W16nz022nOhtYk0eitaGfUJzn3MPUivMgRqvoTfSCpZCEVW+M
-         gM6zE75Kia+5EYgAbv3YP83WbhCPvuNK8nStmgegGdKAFRvteANeGWJV0tO4ICUabFo/
-         MjEhIMcTRYzM9x7R9ZrpEFEimpMDRGg+laqHFQLiNK2QblBO24X/U2odOs5gWS5jyrQC
-         S5GpeSMB4rrwACtEPoefAr2ctQDJ0aFsuL5Cy0ePDomY3bjeznKATvi/KBKIsv0T5O+x
-         CxOQ==
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=4GkHCC8QXORuxqNY5GWhT87y4llPRmtW3jLLrQeoqDM=;
+        b=eHm0pyt+oT354bdYoJgAQnKZNaadMtraAmBmHLBgHlkaGinthDCH5dEl3Ozy/oGLup
+         fDGqSgk4J28DR+lks6eyA3t0FZ5e62EX0IOHquX6nWkv6xnR9gTDciAgaUZ/mGK/VmSQ
+         9Xsj0B9mclV4WwBm76wMSJvLIajW8PEZA9wSmefZm6cXm8K3cyIvgt4oeIr90KPWDI/J
+         PR62QfzPfFr7Ub3K2O6Wnrrl/BjRSNqJcX1lNr4608nnnD+8SzJq0Q5PUUsGPGKhMziO
+         wwGbeg1QNINi1SdsU0+g3BJZMOCrSHRb3is3m567SXevBkecGSZmxDRKcpi+owOkvn3f
+         O2PQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iQ8Bfh7y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=E484vPTI;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10-20020ac8530a000000b003ab69a78e51si18113763qtn.593.2023.01.04.14.50.53
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i16-20020a170902cf1000b0018973a19152sor14379031plg.52.2023.01.04.20.48.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Jan 2023 14:50:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 04 Jan 2023 20:48:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iQ8Bfh7y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=E484vPTI;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pDBva-0002L9-Cf; Wed, 04 Jan 2023 17:08:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBuq-00021x-Tb
- for qemu-devel@nongnu.org; Wed, 04 Jan 2023 17:07:21 -0500
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDBun-0005am-JX
- for qemu-devel@nongnu.org; Wed, 04 Jan 2023 17:07:20 -0500
-Received: by mail-ej1-x62f.google.com with SMTP id fc4so85883676ejc.12
- for <qemu-devel@nongnu.org>; Wed, 04 Jan 2023 14:07:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=c0SPEwXyflkiw42kdbQzUDTcTHzybkAd3cMquverKqA=;
- b=iQ8Bfh7ypySwtQudVdpmBFo9jAOECouo6v0Mm2PY8M8ncwvAFnh0Z64MiQzv8j3lfd
- InWICNpqEmN/un1I+jJEL4aBPj9w/WhIYmJcvSi5Jszhlvl6oINXPlhD6JFWwiT1uawz
- aDTiXb3hxPztUbUMNZ8MGoUdL3Y2s5jQ8VsOsguUkxqpqe5x64z2jkrYimbuNQee1iuT
- HiqJueIznICGSdND3aEIK7vgz3jFjolaThFq8Lspo5tcviRDOvTVDaCGgSvL/LaOLFiz
- 3D2LZliMP+FpUTdTrBgiUO8J5TBHgRnCNTlOkaNcwFWaWY4aH15pg4fIBVsgZ/tgnNRC
- Th2A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=4GkHCC8QXORuxqNY5GWhT87y4llPRmtW3jLLrQeoqDM=;
+        b=E484vPTIeJGpmSxqJvhRhtaacPR1WQYv2zE5/8eiimfPIqgZjux5fXYBQMjwziyEfa
+         Cy/X82DGuvw9aZTQYOU6fZSMnYroOLb8T5wU8Hid4l25xIRrqG1m/CNY1V5I9ey2z+MY
+         yf4mnIh4d5QmcaeBktSNHIly7KFB4H/sVznEu17VRMmWouUEVUpwWV5XWXXt3y0tUEDt
+         DYrSQpcRAsMdJtc5LD224v44qMiWmh3Jjd8I1NTuxgmR/YXbJwzhZLv5k+RVC3fEXPGm
+         8osBJpHRow3E2oxvEcv4dT64G85Bo/0b/qpZmmHE7Ie5ipA84+cmzUpFyvKyG/n3hjH2
+         rz1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=c0SPEwXyflkiw42kdbQzUDTcTHzybkAd3cMquverKqA=;
- b=qndkMUZEkYmYQBH+h1eZ3LlW9AcZCqu5zdgmIy1rEvcjn966V/Tc2BkCRJM+QwOlL0
- Wq/EoZ66CKW4VQZ471204Ick/TzjnxV9YUPkvrNchmlna+fV/kCrYDTiiyscZ5EE7lHu
- SQiSW2I5tfLx0OUo7U+nLLd48Lt0SY3kgqZmn9Z7WSlsXIre2d9JW10Cb1Jr/LlJtJlP
- lPR3lLgrvbPn1+QpPwSWrEQ0WKy24OBFJvGqtMrkAANBNRksmvlMHdmHDF+JJsttqAte
- XvpJotj0JMlvtKwuXQCKsroC21+UX2oXwO0WNpu+y5MkybbQaW5gjFW5YBIxH/RFpfNs
- J8HA==
-X-Gm-Message-State: AFqh2kqWgoyUhOhfwC0zyrjT79V1FHmwzxwBap5Pbr+fKK2hp6uGIgFR
- y2G2USVu1kTbXaTqOU1CfMlDAzFr5AKu2V3m
-X-Received: by 2002:a17:907:86a6:b0:7c0:fd1a:79f0 with SMTP id
- qa38-20020a17090786a600b007c0fd1a79f0mr59298049ejc.21.1672870030224; 
- Wed, 04 Jan 2023 14:07:10 -0800 (PST)
-Received: from localhost.localdomain ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- h14-20020a1709063c0e00b00780b1979adesm15773759ejg.218.2023.01.04.14.07.06
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Jan 2023 14:07:09 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Song Gao <gaosong@loongson.cn>, Antony Pavlov <antonynpavlov@gmail.com>,
- Jan Kiszka <jan.kiszka@web.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Hanna Reitz <hreitz@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
- Mark Burton <mburton@qti.qualcomm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Magnus Damm <magnus.damm@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Bin Meng <bin.meng@windriver.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Eduardo Habkost <eduardo@habkost.net>, Palmer Dabbelt <palmer@dabbelt.com>,
- Radoslaw Biernacki <rad@semihalf.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- Leif Lindholm <quic_llindhol@quicinc.com>, Kevin Wolf <kwolf@redhat.com>
-Subject: [PATCH 16/20] hw/block: Factor pflash_cfi02_create() out of
- pflash_cfi02_register()
-Date: Wed,  4 Jan 2023 23:04:45 +0100
-Message-Id: <20230104220449.41337-17-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230104220449.41337-1-philmd@linaro.org>
-References: <20230104220449.41337-1-philmd@linaro.org>
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=4GkHCC8QXORuxqNY5GWhT87y4llPRmtW3jLLrQeoqDM=;
+        b=FYAe6S9vlW6f8buE4Ih+WF2TFNJ9kSWfyqo6Ll6Zy5tjWo5VpbNTPomLuqqJdUmmyW
+         M3dqsd7+yGPn5Eq9cLxow0eWbYegPlSDNg5Mx48A5imA0W1kI2bTNnA5ntkqKQbfyL8i
+         KjJVjxitHvI/8X8BkxOIQs+Mu0iRE3heydWgcPYAci/Y2jwzkJIL6SR1FIz6GCJZR+pw
+         p8X6mEZl56qG8sBPuo4BIgg0+oXXAPxK4hAanQrQt23urBQcQ0z8PhvFr4TnScG2g/hG
+         T9RVId/Qe7LWmJi0v9NJ701WuS0cJZzgvpWcNZUVkQsJNT88fY1vWnKJT9Je/Yvk7uxZ
+         U85g==
+X-Gm-Message-State: AFqh2koDmb9DG9dG/Jq63xMEA7Wblx6sUpNFfNe6g12ZevxQTFLj5pcW
+	uX4rpml7DydFPZ4TtpmENMRRZ5u3w621OjHXgLQ=
+X-Google-Smtp-Source: AMrXdXsLYgPAOVwkOs285ugRYbi5XdDJOGRNQh0bQDT6SGJzOug6y3swbMcqstS4Vz73EKMGem/9dw==
+X-Received: by 2002:a17:902:bd0a:b0:192:fe0a:11c8 with SMTP id p10-20020a170902bd0a00b00192fe0a11c8mr648874pls.46.1672894105677;
+        Wed, 04 Jan 2023 20:48:25 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2602:47:d48c:8101:5a62:efe5:94a2:1dee? ([2602:47:d48c:8101:5a62:efe5:94a2:1dee])
+        by smtp.gmail.com with ESMTPSA id i18-20020a17090332d200b001897a8b537asm25139962plr.221.2023.01.04.20.48.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 04 Jan 2023 20:48:25 -0800 (PST)
+Message-ID: <97f2e3db-79f2-c4a2-f48c-70b4617b7e4d@linaro.org>
+Date: Wed, 4 Jan 2023 20:48:23 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jYPwLX2j5hB8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [RFC PATCH 14/27] target/arm: Move regime_using_lpae_format into
+ internal.h
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
+References: <20230104215835.24692-1-farosas@suse.de>
+ <20230104215835.24692-15-farosas@suse.de>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230104215835.24692-15-farosas@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: M+2hfIFZSVST
 
-Currently pflash_cfi02_register():
+On 1/4/23 13:58, Fabiano Rosas wrote:
+> This function is needed by common code (ptw.c), so move it along with
+> the other regime_* functions in internal.h. When we enable the build
+> without TCG, the tlb_helper.c file will not be present.
 
- 1/ creates a TYPE_PFLASH_CFI02 qdev instance
- 2/ maps the first MMIO region to the system bus
+Maybe better to just move to ptw.c?
 
-The first minor issue is the implicit sysbus mapping is not
-obvious (the function name could mention it), and the function
-is not documented.
 
-Another issue is we are forced to map on sysbus, thus code
-wanting to simply instantiate this device are forced to open
-code the qdev creation.
+r~
 
-This is a problem in a heterogeneous system where not all cores
-has access to the sysbus, or if we want to map the pflash on
-different address spaces.
-
-To clarify this API, extract the qdev creation in a new helper
-named pflash_cfi02_create().
-
-We don't document pflash_cfi02_register() because we are going
-to remove it in a pair of commits.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/block/pflash_cfi02.c  | 55 ++++++++++++++++++++++++++--------------
- include/hw/block/flash.h | 14 +++++++++-
- 2 files changed, 49 insertions(+), 20 deletions(-)
-
-diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index 2a99b286b0..176f93b512 100644
---- a/hw/block/pflash_cfi02.c
-+++ b/hw/block/pflash_cfi02.c
-@@ -994,6 +994,37 @@ static void pflash_cfi02_register_types(void)
- 
- type_init(pflash_cfi02_register_types)
- 
-+DeviceState *pflash_cfi02_create(const char *name, hwaddr size,
-+                                 BlockBackend *blk, uint32_t sector_len,
-+                                 int nb_mappings, int bank_width,
-+                                 uint16_t id0, uint16_t id1,
-+                                 uint16_t id2, uint16_t id3,
-+                                 uint16_t unlock_addr0, uint16_t unlock_addr1,
-+                                 int be)
-+{
-+    DeviceState *dev = qdev_new(TYPE_PFLASH_CFI02);
-+
-+    if (blk) {
-+        qdev_prop_set_drive(dev, "drive", blk);
-+    }
-+    assert(QEMU_IS_ALIGNED(size, sector_len));
-+    qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
-+    qdev_prop_set_uint32(dev, "sector-length", sector_len);
-+    qdev_prop_set_uint8(dev, "width", bank_width);
-+    qdev_prop_set_uint8(dev, "mappings", nb_mappings);
-+    qdev_prop_set_uint8(dev, "big-endian", !!be);
-+    qdev_prop_set_uint16(dev, "id0", id0);
-+    qdev_prop_set_uint16(dev, "id1", id1);
-+    qdev_prop_set_uint16(dev, "id2", id2);
-+    qdev_prop_set_uint16(dev, "id3", id3);
-+    qdev_prop_set_uint16(dev, "unlock-addr0", unlock_addr0);
-+    qdev_prop_set_uint16(dev, "unlock-addr1", unlock_addr1);
-+    qdev_prop_set_string(dev, "name", name);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+
-+    return dev;
-+}
-+
- PFlashCFI02 *pflash_cfi02_register(hwaddr base,
-                                    const char *name,
-                                    hwaddr size,
-@@ -1006,26 +1037,12 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
-                                    uint16_t unlock_addr1,
-                                    int be)
- {
--    DeviceState *dev = qdev_new(TYPE_PFLASH_CFI02);
--
--    if (blk) {
--        qdev_prop_set_drive(dev, "drive", blk);
--    }
--    assert(QEMU_IS_ALIGNED(size, sector_len));
--    qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
--    qdev_prop_set_uint32(dev, "sector-length", sector_len);
--    qdev_prop_set_uint8(dev, "width", width);
--    qdev_prop_set_uint8(dev, "mappings", nb_mappings);
--    qdev_prop_set_uint8(dev, "big-endian", !!be);
--    qdev_prop_set_uint16(dev, "id0", id0);
--    qdev_prop_set_uint16(dev, "id1", id1);
--    qdev_prop_set_uint16(dev, "id2", id2);
--    qdev_prop_set_uint16(dev, "id3", id3);
--    qdev_prop_set_uint16(dev, "unlock-addr0", unlock_addr0);
--    qdev_prop_set_uint16(dev, "unlock-addr1", unlock_addr1);
--    qdev_prop_set_string(dev, "name", name);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    DeviceState *dev;
- 
-+    dev = pflash_cfi02_create(name, size, blk, sector_len,
-+                              nb_mappings, width, id0, id1, id2, id3,
-+                              unlock_addr0, unlock_addr1, be);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-+
-     return PFLASH_CFI02(dev);
- }
-diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
-index 321aede8ef..78b078955e 100644
---- a/include/hw/block/flash.h
-+++ b/include/hw/block/flash.h
-@@ -32,7 +32,19 @@ void pflash_cfi01_legacy_drive(DeviceState *dev, DriveInfo *dinfo);
- #define TYPE_PFLASH_CFI02 "cfi.pflash02"
- OBJECT_DECLARE_SIMPLE_TYPE(PFlashCFI02, PFLASH_CFI02)
- 
--
-+/**
-+ * Create and realize a parallel NOR flash (CFI type 2) on the heap.
-+ *
-+ * Create the device state structure, initialize it, and drop the
-+ * reference to it (the device is realized).
-+ */
-+DeviceState *pflash_cfi02_create(const char *name, hwaddr size,
-+                                 BlockBackend *blk, uint32_t sector_len,
-+                                 int nb_mappings, int bank_width,
-+                                 uint16_t id0, uint16_t id1,
-+                                 uint16_t id2, uint16_t id3,
-+                                 uint16_t unlock_addr0, uint16_t unlock_addr1,
-+                                 int be);
- PFlashCFI02 *pflash_cfi02_register(hwaddr base,
-                                    const char *name,
-                                    hwaddr size,
--- 
-2.38.1
-
+> 
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+>   target/arm/internals.h  | 17 ++++++++++++++---
+>   target/arm/tlb_helper.c | 14 --------------
+>   2 files changed, 14 insertions(+), 17 deletions(-)
+> 
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 161e42d50f..3493b5cc88 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -610,9 +610,6 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(CPUARMState *env,
+>   /* Return the MMU index for a v7M CPU in the specified security state */
+>   ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate);
+>   
+> -/* Return true if the translation regime is using LPAE format page tables */
+> -bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
+> -
+>   /*
+>    * Return true if the stage 1 translation regime is using LPAE
+>    * format page tables
+> @@ -777,6 +774,20 @@ static inline uint64_t regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
+>       return env->cp15.tcr_el[regime_el(env, mmu_idx)];
+>   }
+>   
+> +/* Return true if the translation regime is using LPAE format page tables */
+> +static inline bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
+> +{
+> +    int el = regime_el(env, mmu_idx);
+> +    if (el == 2 || arm_el_is_aa64(env, el)) {
+> +        return true;
+> +    }
+> +    if (arm_feature(env, ARM_FEATURE_LPAE)
+> +        && (regime_tcr(env, mmu_idx) & TTBCR_EAE)) {
+> +        return true;
+> +    }
+> +    return false;
+> +}
+> +
+>   /**
+>    * arm_num_brps: Return number of implemented breakpoints.
+>    * Note that the ID register BRPS field is "number of bps - 1",
+> diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+> index 0f4f4fc809..31eb77f7df 100644
+> --- a/target/arm/tlb_helper.c
+> +++ b/target/arm/tlb_helper.c
+> @@ -12,20 +12,6 @@
+>   #include "exec/helper-proto.h"
+>   
+>   
+> -/* Return true if the translation regime is using LPAE format page tables */
+> -bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
+> -{
+> -    int el = regime_el(env, mmu_idx);
+> -    if (el == 2 || arm_el_is_aa64(env, el)) {
+> -        return true;
+> -    }
+> -    if (arm_feature(env, ARM_FEATURE_LPAE)
+> -        && (regime_tcr(env, mmu_idx) & TTBCR_EAE)) {
+> -        return true;
+> -    }
+> -    return false;
+> -}
+> -
+>   /*
+>    * Returns true if the stage 1 translation regime is using LPAE format page
+>    * tables. Used when raising alignment exceptions, whose FSR changes depending

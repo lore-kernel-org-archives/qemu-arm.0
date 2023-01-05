@@ -1,121 +1,123 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp286561ejb;
-        Thu, 5 Jan 2023 04:58:27 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXt5/4WtJzRA+pW7FPUDDqIC0NjTxn2aI3POQKcp7HBjat8Bv/HKh5V1JpDAajDkA2Qpc0aM
-X-Received: by 2002:ac8:7758:0:b0:39c:da21:f1a2 with SMTP id g24-20020ac87758000000b0039cda21f1a2mr72286305qtu.3.1672923506906;
-        Thu, 05 Jan 2023 04:58:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672923506; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp297960ejb;
+        Thu, 5 Jan 2023 05:12:38 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsSpvqz0Oeux0gr/8zq9p5rTLqr7KyfMV/psJfRtpE3O/W3eTdeuJtsCkd6ZQpUJYzxC2Bz
+X-Received: by 2002:adf:f944:0:b0:2a2:6b1f:6105 with SMTP id q4-20020adff944000000b002a26b1f6105mr3675233wrr.37.1672924357997;
+        Thu, 05 Jan 2023 05:12:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672924357; cv=none;
         d=google.com; s=arc-20160816;
-        b=IQVu3Ebf7AmaXtrLixp4enQKtpNhA9W/3ioyTmniqiXakqgMIVTJ3kgPlfVNoK3sIl
-         Wc8g5vnCP3GtsbPAZEDruwYybk2cW4U0YD0JP1eon6zHIBKN/PfVBzWDMAJ3l+iRZnO5
-         XBJ2ltY0MW8e9fu8BQmUbcmg4xGuVO88FzpstEkkabABFcv395ER2GRdYY5vbT/9zCPC
-         n6SCZHfz2xkb5b57Vm1DJnrwCiKeCNERvYP3dFXbqyE+jgBO10u9DEB7RiVwlpi8ZTCI
-         moEdxLwoyxb+oby1N9mJ25qJW1+JM8OoLe0p2TxsplnftaY+7oYcDGyGBXKHM/A9Ma3b
-         Z15Q==
+        b=uikIfBF6cNb6O+gxHzs5MC4bq2oE93nisxfUiNpG2e3UWUSQT/O8woD5azURihRm09
+         XLFIjpaSURk4a4WbtB1gOiQTKIHrDrIxhIKSCa7ZxJ7GMOF77rZLgDgApuI2+q3i6reP
+         I3BIT9Stnrl5efVnQht1wAIMrijofpY5d4GcBSvVtlOGmqakHBwznuQEdID2C5fJP+aC
+         Rq6xTrWXMAZ+S7A1WUOkQO+RebcklEdtMNWtJeJk2MLM/E7gbZ9L/wq2uC8OmvQDFXLq
+         zkA3wkUfcyZjNHsBezK6TcMyAHeV/dw4+Kl8b9mwYqPTULzTgk+mjQqjGmum4iQ1vX9C
+         7W6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=3TEscsyf7BJ2rmEXmJBzuxDPV1Tbcy9I5OpaojVQ4BQ=;
-        b=hxBW2CRyORu1XACDnxMh+K8YCMiayk8gfzEbnPdWN7yA24fA1AoC7byCIv7GwQb9cq
-         0T2F0QJxMYyiSvnUB1MyJBUw0HlvrSHK0jytWE0zLemw1ATYjfVgAuFSbA4iWHmFf4cE
-         PT+8ia9qPU5JHQ4Myos1Ep8Z/S5yqPFcI3OFLktqelaGrxqXKr9L7PekYcse6vSJNZy/
-         6S+a71gmLbRSApSYwBvX//rq9KSa2f/gJUH9/fl40heCRjihYFgLlIfghnNmq5N6ggVG
-         CD4xzyFrMn0twwyrLX2dU6c+4MfGu1/9JYojU09HNfWaaipfoZAwOqssLSvISP0y+gkR
-         ANiw==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=WzghHjmiibt/gZgn8wRCdDuc7ZDiIi5G54b+NyRvHes=;
+        b=QEJVa6SOPZfAsewqWaBUWs46+DxvTE8J+Vba4F9uI6EX07//DOC8cYuqW2F2FGdoEv
+         RJn3xfrn5zKovyyjykTeAgkhhImxj0prifMHwQki9pfrXAZia2H7HF+cr4GimF97flie
+         uJUlUstJg7B/rnrKeL3yKfQo6UNVeOcV+TDyG0EcVFj61RGNZ7z82yNnure0iPlwWyd+
+         98xxc2AzEIxLhc12BZhYffNbGQ72wIrSBDww+sJmQ94uKNveIX3gjGT+ffWqd0o03xum
+         KCiF5ul+ZBp7bGy3TOxnx576sQ66/h+/iDvWXhziM+ExJYCyiLj5omfNtEy1bv+dqOZZ
+         bfbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j2-20020ac874c2000000b003a81bb6a1c4si19144246qtr.406.2023.01.05.04.58.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jan 2023 04:58:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zUTpVZOE;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=uvuxLFo0;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id i7-20020a5d5847000000b0027246a79c6esi25868833wrf.460.2023.01.05.05.12.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Jan 2023 05:12:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pDPoh-0008BU-0y; Thu, 05 Jan 2023 07:57:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1pDPod-0008B0-CU; Thu, 05 Jan 2023 07:57:51 -0500
-Received: from [125.120.148.222] (helo=liuqiang-OptiPlex-7060)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1pDPo7-00055E-Oz; Thu, 05 Jan 2023 07:57:51 -0500
-Received: from localhost (liuqiang-OptiPlex-7060 [local])
- by liuqiang-OptiPlex-7060 (OpenSMTPD) with ESMTPA id 85a66881;
- Thu, 5 Jan 2023 12:57:16 +0000 (UTC)
-From: Qiang Liu <cyruscyliu@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Qiang Liu <cyruscyliu@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:Xilinx ZynqMP and...)
-Subject: [PATCH] hw/display/xlnx_dp: fix overflow in xlnx_dp_aux_push_rx_fifo()
-Date: Thu,  5 Jan 2023 20:57:12 +0800
-Message-Id: <20230105125713.450275-1-cyruscyliu@gmail.com>
-X-Mailer: git-send-email 2.25.1
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zUTpVZOE;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=uvuxLFo0;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 52B1234695;
+	Thu,  5 Jan 2023 13:12:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1672924357; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=WzghHjmiibt/gZgn8wRCdDuc7ZDiIi5G54b+NyRvHes=;
+	b=zUTpVZOEMCpgOGwhWUPnyFNQ1iL7BobQmc0xc6Bm8IE3z+I5Q1k5Fjnd32xWQHsz1eWnFo
+	pm0YWwdjyIQiYH8eduVJWCNkQyu1YtYwdVzDf9JKR5eiXpCom7cHU79U/IyiCC2Y0+exTu
+	oK3peQWLZYdvsi3Kp3CrAE+TikbIEgA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1672924357;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=WzghHjmiibt/gZgn8wRCdDuc7ZDiIi5G54b+NyRvHes=;
+	b=uvuxLFo0o3ubrld30GMm1GmbB3Dsl7UPDVTPDQMnREZwAzM3iNOpoC4zsxbTlqrG52pdaT
+	DyVjdmi3KKrO1qDw==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id CF501138DF;
+	Thu,  5 Jan 2023 13:12:36 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id KIU2JcTMtmOfZAAAMHmgww
+	(envelope-from <farosas@suse.de>); Thu, 05 Jan 2023 13:12:36 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alex =?utf-8?Q?Benn?=
+ =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
+Subject: Re: [RFC PATCH 19/27] target/arm: Move common cpregs code into a
+ separate file
+In-Reply-To: <2b66b91d-aae1-a94a-053b-05af0d5d59a7@linaro.org>
+References: <20230104215835.24692-1-farosas@suse.de>
+ <20230104215835.24692-20-farosas@suse.de>
+ <2b66b91d-aae1-a94a-053b-05af0d5d59a7@linaro.org>
+Date: Thu, 05 Jan 2023 10:12:34 -0300
+Message-ID: <87mt6xnn0d.fsf@suse.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 125.120.148.222 (failed)
-Received-SPF: softfail client-ip=125.120.148.222;
- envelope-from=cyruscyliu@gmail.com; helo=liuqiang-OptiPlex-7060
-X-Spam_score_int: 48
-X-Spam_score: 4.8
-X-Spam_bar: ++++
-X-Spam_report: (4.8 / 5.0 requ) BAYES_00=-1.9, DKIM_ADSP_CUSTOM_MED=0.001,
- FORGED_GMAIL_RCVD=1, FREEMAIL_FROM=0.001, FSL_HELO_NON_FQDN_1=0.001,
- HELO_NO_DOMAIN=0.001, NML_ADSP_CUSTOM_MED=0.9, RCVD_IN_PBL=3.335,
- RDNS_NONE=0.793, SPF_SOFTFAIL=0.665, SPOOFED_FREEMAIL=0.001,
- SPOOFED_FREEMAIL_NO_RDNS=0.001, SPOOF_GMAIL_MID=0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7jE7Qvcejl4L
+Content-Type: text/plain
+X-TUID: U/ZpxHxOok/J
 
-Check s->rx_fifo before pushing data into it.
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-Fixes: 58ac482a66de ("introduce xlnx-dp")
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1419
-Reported-by: Qiang Liu <cyruscyliu@gmail.com>
-Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
----
- hw/display/xlnx_dp.c | 4 ++++
- 1 file changed, 4 insertions(+)
+> On 1/4/23 13:58, Fabiano Rosas wrote:
+>> Code moved verbatim.
+>> 
+>> Signed-off-by: Fabiano Rosas<farosas@suse.de>
+>> ---
+>> Extracted from:
+>> https://lore.kernel.org/r/20210416162824.25131-15-cfontana@suse.de
+>> [RFC v14 14/80] target/arm: split cpregs from tcg/helper.c
+>> ---
+>>   target/arm/cpregs.c    | 482 +++++++++++++++++++++++++++++++++++++++++
+>>   target/arm/helper.c    | 472 ----------------------------------------
+>>   target/arm/meson.build |   1 +
+>>   3 files changed, 483 insertions(+), 472 deletions(-)
+>>   create mode 100644 target/arm/cpregs.c
+>
+> Ok, now I'd like to know what the intended difference between cpregs.c and 
+> cpustate-list.c.  If it were only write_cpustate_to_list and write_list_to_cpustate in the 
+> latter file, that might be one thing.  But get_arm_cp_reginfo definitely belongs in cpregs.c.
 
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index 322e2faadd..972473d94f 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -508,6 +508,10 @@ static void xlnx_dp_aux_set_command(XlnxDPState *s, uint32_t value)
-     case READ_AUX:
-     case READ_I2C:
-     case READ_I2C_MOT:
-+        if (nbytes > fifo8_num_free(&s->rx_fifo)) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "xlnx_dp: RX length > available fifo data length");
-+            nbytes = fifo8_num_free(&s->rx_fifo);
-+        }
-         s->core_registers[DP_AUX_REPLY_CODE] = aux_request(s->aux_bus, cmd,
-                                                xlnx_dp_aux_get_address(s),
-                                                nbytes, buf);
--- 
-2.25.1
+Well, to be honest, this came from a reviewed patch from the original
+series, so I assumed it had already been discussed and didn't put much
+thought into it.
 
+I'll have to rethink this split a little bit due to your comment in
+patch 20 anyway, so I might just drop this new file.
+
+Thanks
+
+>
+>
+> r~

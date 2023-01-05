@@ -1,779 +1,101 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp183234ejb;
-        Thu, 5 Jan 2023 01:43:00 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsmQeoFaAuhrJ4SR3gxr81ySxOOrWfA+Gdej8OjbLDCH8qjvI/AFxcbPHICp8leJb7t7FdM
-X-Received: by 2002:a05:622a:4d8a:b0:39c:da20:5f8 with SMTP id ff10-20020a05622a4d8a00b0039cda2005f8mr92689387qtb.2.1672911780402;
-        Thu, 05 Jan 2023 01:43:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672911780; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp244362ejb;
+        Thu, 5 Jan 2023 03:51:53 -0800 (PST)
+X-Received: by 2002:a05:6a00:84c:b0:581:1ee0:75a with SMTP id q12-20020a056a00084c00b005811ee0075amr44882033pfk.32.1672919513752;
+        Thu, 05 Jan 2023 03:51:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672919513; cv=none;
         d=google.com; s=arc-20160816;
-        b=UMBiN85i2n9QhhRvRKb/PtzwYU/s3vffa4CA0dK2qZLvGHDDwLTNId4aKaVAOBmudP
-         HCaLh7r/OOtPkn9drfQaPsrYrKKh0JcAAZY/bOG/k5STLBQ1BhnSaoJ5Ppsf0lIbxaCR
-         kJLNb9RInxCRvlQcZQPY1K2mgjMzvZB6ZUkof3HORATAxYR0HlwQFN4G2ZAzIUnxDzEZ
-         z1af8LRtbOc5LHOtW7zzZNXqqr16zuWosvAAPhXnKT8pX2tvvFQGqGOT4lXrNxBn8H+O
-         quL1uuAQ0mERVuRCNkGlTw9SrZq1yB5bxc4fqB1R2RhchvMKBjAmYhG9ZVRjEK+6Bdlv
-         Zatw==
+        b=tnL2bk42AAoWP4Aw9UavwhGY3JovJxcGgCauqJCZKFZPZY9oDtQvLWEkwWKWCPVEjJ
+         WJzH3KYpAo5BmnT6cZqRzS/WQQxLy6oXDkRVbN0jHVyux+t43bwH7kDdyjArAYpkCfnN
+         HPka2fVsH8ISfA0lUZ812hv9X2iT7bfpmpet9WI05a+vOGVulmwq5EctQWjbt/luTnI0
+         7+/HvKj3uKJEetYLCxc/1ieN1wFUDmRR/VN4svKGKl/+TGLI/Rv61DlqzOBMN0Bs3HCb
+         02p2QyAqlCK+U/jNOMDk59TX0zyCZ/YaITRUizuaZnSKaWxmW01n094ii/yAKMRRA5LG
+         UynA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=/0N4TSirezEiP+2u39la0JId1koBdL1SxU+ZL2aIvnI=;
-        b=WFYDTdyT17F05avnJHwT+ssbszFAtDOCKn9TUOZ9/P6A2h+lsE+CQCDxqeT+G8wGn6
-         1mrK3csT8XIfbUzXDdNF6cv5D0LdNM5FOxXs2UICJ9iPfoUm4VZ21AlcuoEuze+lvgrB
-         nl2j8SZ9aFo16++wV0rLC9MXivXOaKP55vXo6RnCtsTTqJyNqDyDK+FSnSJj8KVqOkQQ
-         ql74HzThbBQZmWZTqg04juHRccwkLLi73lRZFlT6N2WjDP8U0XwEGtGN5eSQDGRgUCim
-         6O4V/kDr6gge1YA2R6i3FrQa/vPUOvkG4lDj6Ptsvg7Px87ZGxMEKpiitiB8ylziq5lw
-         nfMA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=kENL7zooPtJIi9NIEvIqTLkqmG0cHOnsRINd6CTofig=;
+        b=ZUg3mBBpSwpZCVrA8HrY7ObHhxQwUqT3nCKS4yoTvttcNQan9zSg1GwjzbthksmQKU
+         sydh0PD3kICnmbJ9Fht/7RfVt9M/xUVd4OZ2REpmNvMbtk0/bbo+BHVSurvfQd02M4wD
+         m26rKwiLdg65BtWwXahvtKbacRuTGf4QrmPutDYGkt8Gd0OJ+dmb//6Zh8ntWNFR0JhO
+         RqrWE6eHTgZGNCB9t+jU+1mf4fD7n21/75o/VBZG3gfFur0Jfm7UimFX+SNASirIgQBh
+         WS54dN9IkHrzCa9tFf3YO5FP7vUR7RON3ypLZ/ozDaAlfGqp+R81I68k0UQ+GMlnhAPn
+         dORw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gm2FvA4v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u4-20020a05620a0c4400b006ff8c5e810fsi13610785qki.428.2023.01.05.01.43.00
+       dkim=pass header.i=@linaro.org header.s=google header.b=RkHXpkT6;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m123-20020a625881000000b0053b9ec925efsor15049840pfb.50.2023.01.05.03.51.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jan 2023 01:43:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 05 Jan 2023 03:51:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gm2FvA4v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pDMMN-0003Jy-H6; Thu, 05 Jan 2023 04:16:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pDMML-0003EQ-Dw
- for qemu-arm@nongnu.org; Thu, 05 Jan 2023 04:16:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pDMMI-0007b7-R8
- for qemu-arm@nongnu.org; Thu, 05 Jan 2023 04:16:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1672910182;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/0N4TSirezEiP+2u39la0JId1koBdL1SxU+ZL2aIvnI=;
- b=Gm2FvA4v+/VaCFsv4+CT7yQ2d1tYP1D8XeFrAc9p0mhR0lR+Ljqi5PC5Dm70pinafRAlHh
- B5q9Cp6P7vFSIhSr31Dyoq7qJzEH96LFZqsiUggiPewMuiBYDmVVwppFl3/9JO0n/9oIol
- T/7qeeF8+JbO+JwPdumhInA/xYE7dgw=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-10-RwwNUORRNFW0CToNgDL0Eg-1; Thu, 05 Jan 2023 04:16:20 -0500
-X-MC-Unique: RwwNUORRNFW0CToNgDL0Eg-1
-Received: by mail-wm1-f71.google.com with SMTP id
- c7-20020a1c3507000000b003d355c13ba8so19438548wma.6
- for <qemu-arm@nongnu.org>; Thu, 05 Jan 2023 01:16:20 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=RkHXpkT6;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kENL7zooPtJIi9NIEvIqTLkqmG0cHOnsRINd6CTofig=;
+        b=RkHXpkT6M1X8ZY9qVZ4JVhOms43+E/7dypmYxBJS0t6QHfWazeN26s/Tvt3kUjpGiH
+         sQcTo33DvK93dSZZEiQZzax7qKdx1vLzS0eGuAxHHhK0hoiROasdjQ7o69W+A5f7jI6O
+         TWZoVLn4hI87hyJzCyUOjagNha7ZFfuLke7zMl7JMuz65HHlNxAmiYw+JdgltBdIxzid
+         A2JLcksMfRXcouZAjg0cImovl2dFGL/Q9yN89N5AlxfnEXmzSi9am/b0yEiGxKb6gEnJ
+         6jmYvsDOlW57+9Iqs906TEXEekOM6dN5+aEVFQ//jCO8uF+dpTsP5WC/00DGtqTEByE3
+         4oPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/0N4TSirezEiP+2u39la0JId1koBdL1SxU+ZL2aIvnI=;
- b=NxckkyZVfUJOJhi5aQw8jMx4vC8lQoxMEWa4GpNcbhW8l21x5CciNfE9Dki0RylVcl
- iajGSF4fGEwJ1P1L4TzvVXKX6NFTnSqotOs6YoZzl47YcYZmmElroTqYmqF776lgRly1
- 7r0v+VJ+8KOt+AxjQ2JeOXdldAtFKnYNPE1dyC4qa90VGgHb91P3KYW4YlyKAiLUE36L
- 7i6WHjd/IWL9mSFUGOT/2jkV0Cf+8dvNYXS7OOS15w0NLxt1WXnOoOS029ef4ZYhJx0Y
- BCXpjdA09ec5BoCM4Bb+JaccWdzvZoOiRL2WcSCyC8HPk0DAqOG0wg1eVvvTQApg9WLB
- SVxg==
-X-Gm-Message-State: AFqh2krHyLGc6WPzj8xdO5RmAOyEFN+ZdtRKSH/MqoCJWNZJEy77dpGl
- rFCexF4qfcwrNBfoiZYihq1KkcQSorHhLjWAK3hmAiNg9V0+vwJMdnNjsHiK4qVDbJJ2ileDhsp
- B/5zywtlOFj1n
-X-Received: by 2002:adf:fbc1:0:b0:242:1415:ab02 with SMTP id
- d1-20020adffbc1000000b002421415ab02mr28221435wrs.9.1672910179031; 
- Thu, 05 Jan 2023 01:16:19 -0800 (PST)
-X-Received: by 2002:adf:fbc1:0:b0:242:1415:ab02 with SMTP id
- d1-20020adffbc1000000b002421415ab02mr28221420wrs.9.1672910178677; 
- Thu, 05 Jan 2023 01:16:18 -0800 (PST)
-Received: from redhat.com ([2.52.151.85]) by smtp.gmail.com with ESMTPSA id
- o6-20020adfa106000000b002423620d356sm36638572wro.35.2023.01.05.01.16.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Jan 2023 01:16:18 -0800 (PST)
-Date: Thu, 5 Jan 2023 04:16:13 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Laurent Vivier <laurent@vivier.eu>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Bin Meng <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>, Jason Wang <jasowang@redhat.com>,
- Vikram Garhwal <vikram.garhwal@amd.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Riku Voipio <riku.voipio@iki.fi>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, qemu-ppc@nongnu.org
-Subject: [PULL 35/51] include: Include headers where needed
-Message-ID: <20230105091310.263867-36-mst@redhat.com>
-References: <20230105091310.263867-1-mst@redhat.com>
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kENL7zooPtJIi9NIEvIqTLkqmG0cHOnsRINd6CTofig=;
+        b=3Z+ezY4WvmQ37zq910wVLdGj3mL3UwDBn9g1anrOTc8KlwoinUp2RLpevhwZngc3hI
+         X9si1miTfSJYiqUFmdp5nlIV06dgg95jPByx2bcuT0o2qW+cnLSrgYH0/x61GzJZn061
+         /E5hkW3ekO2ioWymAAbmSrDyN86DbiMOLmhRwoXdoGEFXnSITogLiIYLohduZfUjbFa/
+         SdJoHqGHIV3qXnW/dymkYvWV9vdh9t3GhU+90H5Z5Gond5jG4S90BZF068RucNC9kP81
+         1rN9x1zeqzx0ot3x6sQTp97+ktTNbMVG+wi6ZJA6WCcEjG2jvGdZ9SeyJWkPrSm2eU8g
+         rdGQ==
+X-Gm-Message-State: AFqh2kqXzSJgLirOODC4CWZ03ekZYJWzENmcC5j/Fc4gujMJSh5VcDoD
+	daNOpdxjUMF+SMiyyIjhAYWcsokwNlCsVW1I3nN2S9xnFq0OLvys
+X-Google-Smtp-Source: AMrXdXsbw16T7OID38zisWL29wwgq0gX7Z7LBa+Y4mGOna3DVTDUdetGwhZAGVA9iUdx8GkNI85kxJ745MOS6pBq7SM=
+X-Received: by 2002:a63:3d4:0:b0:492:50dc:da4d with SMTP id
+ 203-20020a6303d4000000b0049250dcda4dmr2310726pgd.192.1672919513208; Thu, 05
+ Jan 2023 03:51:53 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20230105091310.263867-1-mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Oq2RlirTzLxy
+References: <20230105114304.2017493-1-alex.bennee@linaro.org>
+In-Reply-To: <20230105114304.2017493-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Jan 2023 11:51:41 +0000
+Message-ID: <CAFEAcA-iBM9qnkJ4hm3vmboyZY=+9ErWENwbi=zHZ1YJ9DNDFw@mail.gmail.com>
+Subject: Re: [RFC PATCH] target/arm: fix handling of HLT semihosting in system mode
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	qemu-stable <qemu-stable@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: gd+6/7LKsdDI
 
-From: Markus Armbruster <armbru@redhat.com>
+On Thu, 5 Jan 2023 at 11:43, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+>
+> The check semihosting_enabled() wants to know if the guest is
+> currently in user mode. Unlike the other cases the test was inverted
+> causing us to block semihosting calls in non-EL0 modes.
+>
+> Fixes: 19b26317e9 (target/arm: Honour -semihosting-config userspace=3Don)
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-A number of headers neglect to include everything they need.  They
-compile only if the headers they need are already included from
-elsewhere.  Fix that.
+Whoops. I guess I must have only tested SVC AA32 semihosting
+or something. We should
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20221222120813.727830-3-armbru@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- include/exec/plugin-gen.h                   | 1 +
- include/hw/acpi/erst.h                      | 3 +++
- include/hw/char/cmsdk-apb-uart.h            | 1 +
- include/hw/char/goldfish_tty.h              | 1 +
- include/hw/char/xilinx_uartlite.h           | 1 +
- include/hw/cris/etraxfs.h                   | 1 +
- include/hw/display/macfb.h                  | 3 ++-
- include/hw/dma/sifive_pdma.h                | 2 ++
- include/hw/i386/ioapic_internal.h           | 1 +
- include/hw/i386/sgx-epc.h                   | 1 +
- include/hw/intc/goldfish_pic.h              | 2 ++
- include/hw/intc/loongarch_pch_msi.h         | 2 ++
- include/hw/intc/loongarch_pch_pic.h         | 2 ++
- include/hw/intc/nios2_vic.h                 | 2 ++
- include/hw/misc/mchp_pfsoc_dmc.h            | 2 ++
- include/hw/misc/mchp_pfsoc_ioscb.h          | 2 ++
- include/hw/misc/mchp_pfsoc_sysreg.h         | 2 ++
- include/hw/misc/pvpanic.h                   | 1 +
- include/hw/misc/sifive_e_prci.h             | 3 ++-
- include/hw/misc/sifive_u_otp.h              | 3 ++-
- include/hw/misc/sifive_u_prci.h             | 3 ++-
- include/hw/misc/virt_ctrl.h                 | 2 ++
- include/hw/misc/xlnx-versal-pmc-iou-slcr.h  | 1 +
- include/hw/net/lasi_82596.h                 | 2 +-
- include/hw/net/xlnx-zynqmp-can.h            | 1 +
- include/hw/ppc/pnv_psi.h                    | 2 +-
- include/hw/riscv/boot_opensbi.h             | 2 ++
- include/hw/riscv/microchip_pfsoc.h          | 3 +++
- include/hw/riscv/numa.h                     | 1 +
- include/hw/riscv/sifive_u.h                 | 2 ++
- include/hw/riscv/spike.h                    | 2 +-
- include/hw/riscv/virt.h                     | 2 +-
- include/hw/ssi/sifive_spi.h                 | 3 +++
- include/hw/timer/sse-timer.h                | 1 +
- include/hw/usb/hcd-dwc3.h                   | 1 +
- include/hw/usb/hcd-musb.h                   | 2 ++
- include/hw/usb/xlnx-usb-subsystem.h         | 2 ++
- include/hw/usb/xlnx-versal-usb2-ctrl-regs.h | 3 +++
- include/hw/virtio/virtio-mmio.h             | 2 +-
- include/qemu/plugin-memory.h                | 3 +++
- include/sysemu/dirtyrate.h                  | 2 ++
- include/sysemu/dump.h                       | 1 +
- include/user/syscall-trace.h                | 1 +
- 43 files changed, 71 insertions(+), 9 deletions(-)
+Cc: qemu-stable@nongnu.org
 
-diff --git a/include/exec/plugin-gen.h b/include/exec/plugin-gen.h
-index 5004728c61..5f5506f1cc 100644
---- a/include/exec/plugin-gen.h
-+++ b/include/exec/plugin-gen.h
-@@ -12,6 +12,7 @@
- #ifndef QEMU_PLUGIN_GEN_H
- #define QEMU_PLUGIN_GEN_H
- 
-+#include "exec/cpu_ldst.h"
- #include "qemu/plugin.h"
- #include "tcg/tcg.h"
- 
-diff --git a/include/hw/acpi/erst.h b/include/hw/acpi/erst.h
-index b747fe7739..b2ff663ddc 100644
---- a/include/hw/acpi/erst.h
-+++ b/include/hw/acpi/erst.h
-@@ -11,6 +11,9 @@
- #ifndef HW_ACPI_ERST_H
- #define HW_ACPI_ERST_H
- 
-+#include "hw/acpi/bios-linker-loader.h"
-+#include "qom/object.h"
-+
- void build_erst(GArray *table_data, BIOSLinker *linker, Object *erst_dev,
-                 const char *oem_id, const char *oem_table_id);
- 
-diff --git a/include/hw/char/cmsdk-apb-uart.h b/include/hw/char/cmsdk-apb-uart.h
-index 9daff0eeee..64b0a3d534 100644
---- a/include/hw/char/cmsdk-apb-uart.h
-+++ b/include/hw/char/cmsdk-apb-uart.h
-@@ -15,6 +15,7 @@
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
- #include "chardev/char-fe.h"
-+#include "qapi/error.h"
- #include "qom/object.h"
- 
- #define TYPE_CMSDK_APB_UART "cmsdk-apb-uart"
-diff --git a/include/hw/char/goldfish_tty.h b/include/hw/char/goldfish_tty.h
-index 7503d2fa1e..d59733e5ae 100644
---- a/include/hw/char/goldfish_tty.h
-+++ b/include/hw/char/goldfish_tty.h
-@@ -12,6 +12,7 @@
- 
- #include "qemu/fifo8.h"
- #include "chardev/char-fe.h"
-+#include "hw/sysbus.h"
- 
- #define TYPE_GOLDFISH_TTY "goldfish_tty"
- OBJECT_DECLARE_SIMPLE_TYPE(GoldfishTTYState, GOLDFISH_TTY)
-diff --git a/include/hw/char/xilinx_uartlite.h b/include/hw/char/xilinx_uartlite.h
-index bb32d0fcb3..dd09c06801 100644
---- a/include/hw/char/xilinx_uartlite.h
-+++ b/include/hw/char/xilinx_uartlite.h
-@@ -17,6 +17,7 @@
- 
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
-+#include "qapi/error.h"
- 
- static inline DeviceState *xilinx_uartlite_create(hwaddr addr,
-                                         qemu_irq irq,
-diff --git a/include/hw/cris/etraxfs.h b/include/hw/cris/etraxfs.h
-index 8b01ed67d3..467b529dc0 100644
---- a/include/hw/cris/etraxfs.h
-+++ b/include/hw/cris/etraxfs.h
-@@ -29,6 +29,7 @@
- #include "hw/cris/etraxfs_dma.h"
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
-+#include "qapi/error.h"
- 
- DeviceState *etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
-                               struct etraxfs_dma_client *dma_out,
-diff --git a/include/hw/display/macfb.h b/include/hw/display/macfb.h
-index 55a50d3fb0..27cebefc9e 100644
---- a/include/hw/display/macfb.h
-+++ b/include/hw/display/macfb.h
-@@ -15,9 +15,10 @@
- 
- #include "exec/memory.h"
- #include "hw/irq.h"
-+#include "hw/nubus/nubus.h"
-+#include "hw/sysbus.h"
- #include "ui/console.h"
- #include "qemu/timer.h"
--#include "qom/object.h"
- 
- typedef enum  {
-     MACFB_DISPLAY_APPLE_21_COLOR = 0,
-diff --git a/include/hw/dma/sifive_pdma.h b/include/hw/dma/sifive_pdma.h
-index e319bbd6c4..8c6cfa7f32 100644
---- a/include/hw/dma/sifive_pdma.h
-+++ b/include/hw/dma/sifive_pdma.h
-@@ -23,6 +23,8 @@
- #ifndef SIFIVE_PDMA_H
- #define SIFIVE_PDMA_H
- 
-+#include "hw/sysbus.h"
-+
- struct sifive_pdma_chan {
-     uint32_t control;
-     uint32_t next_config;
-diff --git a/include/hw/i386/ioapic_internal.h b/include/hw/i386/ioapic_internal.h
-index 9880443cc7..e8ff338d7f 100644
---- a/include/hw/i386/ioapic_internal.h
-+++ b/include/hw/i386/ioapic_internal.h
-@@ -23,6 +23,7 @@
- #define QEMU_IOAPIC_INTERNAL_H
- 
- #include "exec/memory.h"
-+#include "hw/i386/ioapic.h"
- #include "hw/sysbus.h"
- #include "qemu/notify.h"
- #include "qom/object.h"
-diff --git a/include/hw/i386/sgx-epc.h b/include/hw/i386/sgx-epc.h
-index 581fac389a..3e00efd870 100644
---- a/include/hw/i386/sgx-epc.h
-+++ b/include/hw/i386/sgx-epc.h
-@@ -12,6 +12,7 @@
- #ifndef QEMU_SGX_EPC_H
- #define QEMU_SGX_EPC_H
- 
-+#include "hw/qdev-core.h"
- #include "hw/i386/hostmem-epc.h"
- 
- #define TYPE_SGX_EPC "sgx-epc"
-diff --git a/include/hw/intc/goldfish_pic.h b/include/hw/intc/goldfish_pic.h
-index e9d552f796..3e79580367 100644
---- a/include/hw/intc/goldfish_pic.h
-+++ b/include/hw/intc/goldfish_pic.h
-@@ -10,6 +10,8 @@
- #ifndef HW_INTC_GOLDFISH_PIC_H
- #define HW_INTC_GOLDFISH_PIC_H
- 
-+#include "hw/sysbus.h"
-+
- #define TYPE_GOLDFISH_PIC "goldfish_pic"
- OBJECT_DECLARE_SIMPLE_TYPE(GoldfishPICState, GOLDFISH_PIC)
- 
-diff --git a/include/hw/intc/loongarch_pch_msi.h b/include/hw/intc/loongarch_pch_msi.h
-index 6d67560dea..2810665ef7 100644
---- a/include/hw/intc/loongarch_pch_msi.h
-+++ b/include/hw/intc/loongarch_pch_msi.h
-@@ -5,6 +5,8 @@
-  * Copyright (C) 2021 Loongson Technology Corporation Limited
-  */
- 
-+#include "hw/sysbus.h"
-+
- #define TYPE_LOONGARCH_PCH_MSI "loongarch_pch_msi"
- OBJECT_DECLARE_SIMPLE_TYPE(LoongArchPCHMSI, LOONGARCH_PCH_MSI)
- 
-diff --git a/include/hw/intc/loongarch_pch_pic.h b/include/hw/intc/loongarch_pch_pic.h
-index 2d4aa9ed6f..5d5dee9280 100644
---- a/include/hw/intc/loongarch_pch_pic.h
-+++ b/include/hw/intc/loongarch_pch_pic.h
-@@ -5,6 +5,8 @@
-  * Copyright (c) 2021 Loongson Technology Corporation Limited
-  */
- 
-+#include "hw/sysbus.h"
-+
- #define TYPE_LOONGARCH_PCH_PIC "loongarch_pch_pic"
- #define PCH_PIC_NAME(name) TYPE_LOONGARCH_PCH_PIC#name
- OBJECT_DECLARE_SIMPLE_TYPE(LoongArchPCHPIC, LOONGARCH_PCH_PIC)
-diff --git a/include/hw/intc/nios2_vic.h b/include/hw/intc/nios2_vic.h
-index ac507b9d74..5c975a2ac4 100644
---- a/include/hw/intc/nios2_vic.h
-+++ b/include/hw/intc/nios2_vic.h
-@@ -35,6 +35,8 @@
- #ifndef HW_INTC_NIOS2_VIC_H
- #define HW_INTC_NIOS2_VIC_H
- 
-+#include "hw/sysbus.h"
-+
- #define TYPE_NIOS2_VIC "nios2-vic"
- OBJECT_DECLARE_SIMPLE_TYPE(Nios2VIC, NIOS2_VIC)
- 
-diff --git a/include/hw/misc/mchp_pfsoc_dmc.h b/include/hw/misc/mchp_pfsoc_dmc.h
-index 2baa1413b0..3bc1581e0f 100644
---- a/include/hw/misc/mchp_pfsoc_dmc.h
-+++ b/include/hw/misc/mchp_pfsoc_dmc.h
-@@ -23,6 +23,8 @@
- #ifndef MCHP_PFSOC_DMC_H
- #define MCHP_PFSOC_DMC_H
- 
-+#include "hw/sysbus.h"
-+
- /* DDR SGMII PHY module */
- 
- #define MCHP_PFSOC_DDR_SGMII_PHY_REG_SIZE   0x1000
-diff --git a/include/hw/misc/mchp_pfsoc_ioscb.h b/include/hw/misc/mchp_pfsoc_ioscb.h
-index 9235523e33..bab83a96a6 100644
---- a/include/hw/misc/mchp_pfsoc_ioscb.h
-+++ b/include/hw/misc/mchp_pfsoc_ioscb.h
-@@ -23,6 +23,8 @@
- #ifndef MCHP_PFSOC_IOSCB_H
- #define MCHP_PFSOC_IOSCB_H
- 
-+#include "hw/sysbus.h"
-+
- typedef struct MchpPfSoCIoscbState {
-     SysBusDevice parent;
-     MemoryRegion container;
-diff --git a/include/hw/misc/mchp_pfsoc_sysreg.h b/include/hw/misc/mchp_pfsoc_sysreg.h
-index 546ba68f6a..a2fd1c9f07 100644
---- a/include/hw/misc/mchp_pfsoc_sysreg.h
-+++ b/include/hw/misc/mchp_pfsoc_sysreg.h
-@@ -23,6 +23,8 @@
- #ifndef MCHP_PFSOC_SYSREG_H
- #define MCHP_PFSOC_SYSREG_H
- 
-+#include "hw/sysbus.h"
-+
- #define MCHP_PFSOC_SYSREG_REG_SIZE  0x2000
- 
- typedef struct MchpPfSoCSysregState {
-diff --git a/include/hw/misc/pvpanic.h b/include/hw/misc/pvpanic.h
-index e520566ab0..fab94165d0 100644
---- a/include/hw/misc/pvpanic.h
-+++ b/include/hw/misc/pvpanic.h
-@@ -15,6 +15,7 @@
- #ifndef HW_MISC_PVPANIC_H
- #define HW_MISC_PVPANIC_H
- 
-+#include "exec/memory.h"
- #include "qom/object.h"
- 
- #define TYPE_PVPANIC_ISA_DEVICE "pvpanic"
-diff --git a/include/hw/misc/sifive_e_prci.h b/include/hw/misc/sifive_e_prci.h
-index 262ca16181..6aa949e910 100644
---- a/include/hw/misc/sifive_e_prci.h
-+++ b/include/hw/misc/sifive_e_prci.h
-@@ -18,7 +18,8 @@
- 
- #ifndef HW_SIFIVE_E_PRCI_H
- #define HW_SIFIVE_E_PRCI_H
--#include "qom/object.h"
-+
-+#include "hw/sysbus.h"
- 
- enum {
-     SIFIVE_E_PRCI_HFROSCCFG = 0x0,
-diff --git a/include/hw/misc/sifive_u_otp.h b/include/hw/misc/sifive_u_otp.h
-index 5d0d7df455..170d2148f2 100644
---- a/include/hw/misc/sifive_u_otp.h
-+++ b/include/hw/misc/sifive_u_otp.h
-@@ -18,7 +18,8 @@
- 
- #ifndef HW_SIFIVE_U_OTP_H
- #define HW_SIFIVE_U_OTP_H
--#include "qom/object.h"
-+
-+#include "hw/sysbus.h"
- 
- #define SIFIVE_U_OTP_PA         0x00
- #define SIFIVE_U_OTP_PAIO       0x04
-diff --git a/include/hw/misc/sifive_u_prci.h b/include/hw/misc/sifive_u_prci.h
-index d9ebf40b7f..4d2491ad46 100644
---- a/include/hw/misc/sifive_u_prci.h
-+++ b/include/hw/misc/sifive_u_prci.h
-@@ -18,7 +18,8 @@
- 
- #ifndef HW_SIFIVE_U_PRCI_H
- #define HW_SIFIVE_U_PRCI_H
--#include "qom/object.h"
-+
-+#include "hw/sysbus.h"
- 
- #define SIFIVE_U_PRCI_HFXOSCCFG     0x00
- #define SIFIVE_U_PRCI_COREPLLCFG0   0x04
-diff --git a/include/hw/misc/virt_ctrl.h b/include/hw/misc/virt_ctrl.h
-index 25a237e518..81346cf017 100644
---- a/include/hw/misc/virt_ctrl.h
-+++ b/include/hw/misc/virt_ctrl.h
-@@ -7,6 +7,8 @@
- #ifndef VIRT_CTRL_H
- #define VIRT_CTRL_H
- 
-+#include "hw/sysbus.h"
-+
- #define TYPE_VIRT_CTRL "virt-ctrl"
- OBJECT_DECLARE_SIMPLE_TYPE(VirtCtrlState, VIRT_CTRL)
- 
-diff --git a/include/hw/misc/xlnx-versal-pmc-iou-slcr.h b/include/hw/misc/xlnx-versal-pmc-iou-slcr.h
-index 2170420f01..f7d24c93c4 100644
---- a/include/hw/misc/xlnx-versal-pmc-iou-slcr.h
-+++ b/include/hw/misc/xlnx-versal-pmc-iou-slcr.h
-@@ -54,6 +54,7 @@
- #ifndef XLNX_VERSAL_PMC_IOU_SLCR_H
- #define XLNX_VERSAL_PMC_IOU_SLCR_H
- 
-+#include "hw/sysbus.h"
- #include "hw/register.h"
- 
- #define TYPE_XILINX_VERSAL_PMC_IOU_SLCR "xlnx.versal-pmc-iou-slcr"
-diff --git a/include/hw/net/lasi_82596.h b/include/hw/net/lasi_82596.h
-index 7b62b04833..3ef2f47ba2 100644
---- a/include/hw/net/lasi_82596.h
-+++ b/include/hw/net/lasi_82596.h
-@@ -10,7 +10,7 @@
- 
- #include "net/net.h"
- #include "hw/net/i82596.h"
--#include "qom/object.h"
-+#include "hw/sysbus.h"
- 
- #define TYPE_LASI_82596 "lasi_82596"
- typedef struct SysBusI82596State SysBusI82596State;
-diff --git a/include/hw/net/xlnx-zynqmp-can.h b/include/hw/net/xlnx-zynqmp-can.h
-index eb1558708b..fd2aa77760 100644
---- a/include/hw/net/xlnx-zynqmp-can.h
-+++ b/include/hw/net/xlnx-zynqmp-can.h
-@@ -30,6 +30,7 @@
- #ifndef XLNX_ZYNQMP_CAN_H
- #define XLNX_ZYNQMP_CAN_H
- 
-+#include "hw/sysbus.h"
- #include "hw/register.h"
- #include "net/can_emu.h"
- #include "net/can_host.h"
-diff --git a/include/hw/ppc/pnv_psi.h b/include/hw/ppc/pnv_psi.h
-index 8253469b8f..2a6f715350 100644
---- a/include/hw/ppc/pnv_psi.h
-+++ b/include/hw/ppc/pnv_psi.h
-@@ -23,7 +23,7 @@
- #include "hw/sysbus.h"
- #include "hw/ppc/xics.h"
- #include "hw/ppc/xive.h"
--#include "qom/object.h"
-+#include "hw/qdev-core.h"
- 
- #define TYPE_PNV_PSI "pnv-psi"
- OBJECT_DECLARE_TYPE(PnvPsi, PnvPsiClass,
-diff --git a/include/hw/riscv/boot_opensbi.h b/include/hw/riscv/boot_opensbi.h
-index c19cad4818..1b749663dc 100644
---- a/include/hw/riscv/boot_opensbi.h
-+++ b/include/hw/riscv/boot_opensbi.h
-@@ -8,6 +8,8 @@
- #ifndef RISCV_BOOT_OPENSBI_H
- #define RISCV_BOOT_OPENSBI_H
- 
-+#include "exec/cpu-defs.h"
-+
- /** Expected value of info magic ('OSBI' ascii string in hex) */
- #define FW_DYNAMIC_INFO_MAGIC_VALUE     0x4942534f
- 
-diff --git a/include/hw/riscv/microchip_pfsoc.h b/include/hw/riscv/microchip_pfsoc.h
-index a757b240e0..9e806b09b1 100644
---- a/include/hw/riscv/microchip_pfsoc.h
-+++ b/include/hw/riscv/microchip_pfsoc.h
-@@ -22,13 +22,16 @@
- #ifndef HW_MICROCHIP_PFSOC_H
- #define HW_MICROCHIP_PFSOC_H
- 
-+#include "hw/boards.h"
- #include "hw/char/mchp_pfsoc_mmuart.h"
-+#include "hw/cpu/cluster.h"
- #include "hw/dma/sifive_pdma.h"
- #include "hw/misc/mchp_pfsoc_dmc.h"
- #include "hw/misc/mchp_pfsoc_ioscb.h"
- #include "hw/misc/mchp_pfsoc_sysreg.h"
- #include "hw/net/cadence_gem.h"
- #include "hw/sd/cadence_sdhci.h"
-+#include "hw/riscv/riscv_hart.h"
- 
- typedef struct MicrochipPFSoCState {
-     /*< private >*/
-diff --git a/include/hw/riscv/numa.h b/include/hw/riscv/numa.h
-index fcce942cee..1a9cce3344 100644
---- a/include/hw/riscv/numa.h
-+++ b/include/hw/riscv/numa.h
-@@ -19,6 +19,7 @@
- #ifndef RISCV_NUMA_H
- #define RISCV_NUMA_H
- 
-+#include "hw/boards.h"
- #include "hw/sysbus.h"
- #include "sysemu/numa.h"
- 
-diff --git a/include/hw/riscv/sifive_u.h b/include/hw/riscv/sifive_u.h
-index 8f63a183c4..a43304292c 100644
---- a/include/hw/riscv/sifive_u.h
-+++ b/include/hw/riscv/sifive_u.h
-@@ -19,6 +19,8 @@
- #ifndef HW_SIFIVE_U_H
- #define HW_SIFIVE_U_H
- 
-+#include "hw/boards.h"
-+#include "hw/cpu/cluster.h"
- #include "hw/dma/sifive_pdma.h"
- #include "hw/net/cadence_gem.h"
- #include "hw/riscv/riscv_hart.h"
-diff --git a/include/hw/riscv/spike.h b/include/hw/riscv/spike.h
-index 73d69234de..73bf2a9aad 100644
---- a/include/hw/riscv/spike.h
-+++ b/include/hw/riscv/spike.h
-@@ -19,9 +19,9 @@
- #ifndef HW_RISCV_SPIKE_H
- #define HW_RISCV_SPIKE_H
- 
-+#include "hw/boards.h"
- #include "hw/riscv/riscv_hart.h"
- #include "hw/sysbus.h"
--#include "qom/object.h"
- 
- #define SPIKE_CPUS_MAX 8
- #define SPIKE_SOCKETS_MAX 8
-diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
-index be4ab8fe7f..3007bb3646 100644
---- a/include/hw/riscv/virt.h
-+++ b/include/hw/riscv/virt.h
-@@ -19,10 +19,10 @@
- #ifndef HW_RISCV_VIRT_H
- #define HW_RISCV_VIRT_H
- 
-+#include "hw/boards.h"
- #include "hw/riscv/riscv_hart.h"
- #include "hw/sysbus.h"
- #include "hw/block/flash.h"
--#include "qom/object.h"
- 
- #define VIRT_CPUS_MAX_BITS             9
- #define VIRT_CPUS_MAX                  (1 << VIRT_CPUS_MAX_BITS)
-diff --git a/include/hw/ssi/sifive_spi.h b/include/hw/ssi/sifive_spi.h
-index 47d0d6a47c..d0c40cdb11 100644
---- a/include/hw/ssi/sifive_spi.h
-+++ b/include/hw/ssi/sifive_spi.h
-@@ -22,6 +22,9 @@
- #ifndef HW_SIFIVE_SPI_H
- #define HW_SIFIVE_SPI_H
- 
-+#include "qemu/fifo8.h"
-+#include "hw/sysbus.h"
-+
- #define SIFIVE_SPI_REG_NUM  (0x78 / 4)
- 
- #define TYPE_SIFIVE_SPI "sifive.spi"
-diff --git a/include/hw/timer/sse-timer.h b/include/hw/timer/sse-timer.h
-index b4ee8e7f6c..265ad32400 100644
---- a/include/hw/timer/sse-timer.h
-+++ b/include/hw/timer/sse-timer.h
-@@ -25,6 +25,7 @@
- #define SSE_TIMER_H
- 
- #include "hw/sysbus.h"
-+#include "qemu/timer.h"
- #include "qom/object.h"
- #include "hw/timer/sse-counter.h"
- 
-diff --git a/include/hw/usb/hcd-dwc3.h b/include/hw/usb/hcd-dwc3.h
-index 7c804d536d..f752a27e94 100644
---- a/include/hw/usb/hcd-dwc3.h
-+++ b/include/hw/usb/hcd-dwc3.h
-@@ -26,6 +26,7 @@
- #ifndef HCD_DWC3_H
- #define HCD_DWC3_H
- 
-+#include "hw/register.h"
- #include "hw/usb/hcd-xhci.h"
- #include "hw/usb/hcd-xhci-sysbus.h"
- 
-diff --git a/include/hw/usb/hcd-musb.h b/include/hw/usb/hcd-musb.h
-index f30a26f7f4..4d4b1ec0fc 100644
---- a/include/hw/usb/hcd-musb.h
-+++ b/include/hw/usb/hcd-musb.h
-@@ -13,6 +13,8 @@
- #ifndef HW_USB_HCD_MUSB_H
- #define HW_USB_HCD_MUSB_H
- 
-+#include "exec/hwaddr.h"
-+
- enum musb_irq_source_e {
-     musb_irq_suspend = 0,
-     musb_irq_resume,
-diff --git a/include/hw/usb/xlnx-usb-subsystem.h b/include/hw/usb/xlnx-usb-subsystem.h
-index 5b730abd84..40f9e97e09 100644
---- a/include/hw/usb/xlnx-usb-subsystem.h
-+++ b/include/hw/usb/xlnx-usb-subsystem.h
-@@ -25,6 +25,8 @@
- #ifndef XLNX_USB_SUBSYSTEM_H
- #define XLNX_USB_SUBSYSTEM_H
- 
-+#include "hw/register.h"
-+#include "hw/sysbus.h"
- #include "hw/usb/xlnx-versal-usb2-ctrl-regs.h"
- #include "hw/usb/hcd-dwc3.h"
- 
-diff --git a/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h b/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h
-index 633bf3013a..6a502006b0 100644
---- a/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h
-+++ b/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h
-@@ -26,6 +26,9 @@
- #ifndef XLNX_VERSAL_USB2_CTRL_REGS_H
- #define XLNX_VERSAL_USB2_CTRL_REGS_H
- 
-+#include "hw/register.h"
-+#include "hw/sysbus.h"
-+
- #define TYPE_XILINX_VERSAL_USB2_CTRL_REGS "xlnx.versal-usb2-ctrl-regs"
- 
- #define XILINX_VERSAL_USB2_CTRL_REGS(obj) \
-diff --git a/include/hw/virtio/virtio-mmio.h b/include/hw/virtio/virtio-mmio.h
-index 090f7730e7..aa49262022 100644
---- a/include/hw/virtio/virtio-mmio.h
-+++ b/include/hw/virtio/virtio-mmio.h
-@@ -22,8 +22,8 @@
- #ifndef HW_VIRTIO_MMIO_H
- #define HW_VIRTIO_MMIO_H
- 
-+#include "hw/sysbus.h"
- #include "hw/virtio/virtio-bus.h"
--#include "qom/object.h"
- 
- /* QOM macros */
- /* virtio-mmio-bus */
-diff --git a/include/qemu/plugin-memory.h b/include/qemu/plugin-memory.h
-index 8ad13c110c..6fd539022a 100644
---- a/include/qemu/plugin-memory.h
-+++ b/include/qemu/plugin-memory.h
-@@ -9,6 +9,9 @@
- #ifndef PLUGIN_MEMORY_H
- #define PLUGIN_MEMORY_H
- 
-+#include "exec/cpu-defs.h"
-+#include "exec/hwaddr.h"
-+
- struct qemu_plugin_hwaddr {
-     bool is_io;
-     bool is_store;
-diff --git a/include/sysemu/dirtyrate.h b/include/sysemu/dirtyrate.h
-index 4d3b9a4902..20813f303f 100644
---- a/include/sysemu/dirtyrate.h
-+++ b/include/sysemu/dirtyrate.h
-@@ -13,6 +13,8 @@
- #ifndef QEMU_DIRTYRATE_H
- #define QEMU_DIRTYRATE_H
- 
-+#include "qapi/qapi-types-migration.h"
-+
- typedef struct VcpuStat {
-     int nvcpu; /* number of vcpu */
-     DirtyRateVcpu *rates; /* array of dirty rate for each vcpu */
-diff --git a/include/sysemu/dump.h b/include/sysemu/dump.h
-index 4ffed0b659..7008d43d04 100644
---- a/include/sysemu/dump.h
-+++ b/include/sysemu/dump.h
-@@ -15,6 +15,7 @@
- #define DUMP_H
- 
- #include "qapi/qapi-types-dump.h"
-+#include "qemu/thread.h"
- 
- #define MAKEDUMPFILE_SIGNATURE      "makedumpfile"
- #define MAX_SIZE_MDF_HEADER         (4096) /* max size of makedumpfile_header */
-diff --git a/include/user/syscall-trace.h b/include/user/syscall-trace.h
-index b4e53d3870..c5a220da34 100644
---- a/include/user/syscall-trace.h
-+++ b/include/user/syscall-trace.h
-@@ -10,6 +10,7 @@
- #ifndef SYSCALL_TRACE_H
- #define SYSCALL_TRACE_H
- 
-+#include "exec/user/abitypes.h"
- #include "trace/trace-root.h"
- 
- /*
--- 
-MST
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+and applied to target-arm.next.
+
+-- PMM

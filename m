@@ -1,99 +1,99 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp252627ejb;
-        Thu, 5 Jan 2023 04:05:21 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv5md1bWSpiG9/yrnihs8yPT++5t/baIIx1lvycBZLivBd7je/4eleJ2nsnYsF0T98uEKtG
-X-Received: by 2002:a05:7508:4295:b0:47:ffe:bd07 with SMTP id g21-20020a057508429500b000470ffebd07mr2179818gbg.2.1672920321071;
-        Thu, 05 Jan 2023 04:05:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672920321; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp255857ejb;
+        Thu, 5 Jan 2023 04:09:25 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXu9G7BIw1s+v9V73P8/9O1VbqC/UqcBCIKhn3hWCq6fhFAvLACWKalugthzqd53qAk55pmH
+X-Received: by 2002:a0c:fdc9:0:b0:531:b7b1:c31e with SMTP id g9-20020a0cfdc9000000b00531b7b1c31emr26041097qvs.38.1672920565082;
+        Thu, 05 Jan 2023 04:09:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672920565; cv=none;
         d=google.com; s=arc-20160816;
-        b=v2lKgD5MykQWNrKadjRH+biB5Lu+/BBNfMkhmtHTR/uD+Zz+yYTHIwmUIF+5Npfw8k
-         MPQavn9X4tn9d9C9GAEZ2dy9hXmDKI7w8Gx9uHTsQxwWT183nujZS4ZP/Q2yq5ogN3CZ
-         +lCPSbxSyMZcsmmiVNeE7IiP5gHDGVgF9eccwkDYo5v6cUZ2CCF94yQEM6s0101OVfhd
-         Z3GHC304y+ZSffkUpM6nzDyj3QWDFmQEoK1SQ1CT3nkrpPN0/RQmyAaa1X/6Uhbyd1/2
-         xdo2LAoJ79i8DlGO1g9/+sc5PFEH0nJ9OLx+31u/vOVyOw+aM09qne68jHrJLbOKS+E7
-         +ivw==
+        b=fpYVRiQAGhNnWyI0drOPVO6ybpMHr3zBn1pWuKYbabNDhMlMpBy7adtR/5QKY31LZ0
+         17e1P79CiPOQlK/WDDYXJQqLRlPl9dbTONVobfnurhbZJg4VdrMfvPv3WIYzoKdKlp52
+         3i+Ll+WI75xhTykCUPn5Y7lOSjYG+xwgRghS5D7CAN0jp+D2oYdq42qAmKeczkFSDp1/
+         RoQ8atpckKVYl5MroIUr45YpuIyevi2wuZZzKROgMA4aUwCa3oHQtZeWvnvHc6NDMQbr
+         cXLA6G2D/KM6MwjQWsnYgl/SlmSBuFJ6jCOAW1L9kAO9pIRbkm02uO1/or3wElqjRe73
+         W4ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=oFYvXyd2SWmjUBDOxsVyjRGoQwPiLrpWkNxKegS2YAA=;
-        b=rYBKP9uramZ1giG2HNWdlpa2Zxy8U0vVG66bSVu/XszJyAs6ky0nLYuAN4pqRn5by/
-         e3l/f53FINN2XnSFYrw+SuwCr5swZcl99E/U8lGC5qFmEL8kUebM+wAxfeJHuBoWJYQi
-         L8gqIII5PKf7SLm/3Mfig5yKflpyrA+p0DCbnjMJDQGDgHSmer9RY3VYlMmEEP4AsH9f
-         Rq8WvoiXyb2Z2XyAQDxp6xaLw7ALfir326WvJJSVEla/lVx3MXWTXX2DUzcLZgJFyqMD
-         nQOeV5n040bt+RbGiIaz79qS1DclbQjF/TN71eUfpPZWtg2GyuSQxShxLABdRBAWjYsQ
-         YVeQ==
+        bh=4zUYZNjpnzAONC6x1VSQ74oyRwP63RRosniNkdwYtz0=;
+        b=S0X/i5IRkVl2GDZ068LJ2fnJ3/YoLeG+y+zrj6OX68x2qpnQYHiq/04uAbkMHhpfHn
+         iOolskGUO8xi2Lk0TY13GLClgAbjJhqQhgYo0vUGMJEL87fTAAcNpuAdCge2Km+0Lk9Y
+         S+5Udw5T7hJ6goWs0XUOajRN7gEwUAoxn6XsmGL766PqKKpIR5PG10ZqzfDbaCzxbvNr
+         CU8ZB46ss92GiVrKEOqQgfRKSiJDrx1XKnrDjDjdBgdeg59X8rpsgQ9KjnaVw8dWR3NJ
+         pDLtzN/s0hD9o+SFpjttasJQPFpKm+4uuAcgood5u2i68UCybxifnsQEk6jQHJjWl/Ig
+         tr/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="L/6pXTRK";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QisTFh6w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fe3-20020a05622a4d4300b0039cbf9402cfsi20235482qtb.363.2023.01.05.04.05.20
+        by mx.google.com with ESMTPS id jo27-20020a056214501b00b004796ba3f0cbsi18764814qvb.136.2023.01.05.04.09.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jan 2023 04:05:21 -0800 (PST)
+        Thu, 05 Jan 2023 04:09:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="L/6pXTRK";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QisTFh6w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pDOzj-0003Hc-0Q; Thu, 05 Jan 2023 07:05:15 -0500
+	id 1pDP3e-0006TF-IU; Thu, 05 Jan 2023 07:09:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pDOzf-0003D9-Mj
- for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:05:11 -0500
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1pDP3Y-0006RA-FC
+ for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:09:12 -0500
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pDOzd-00031I-TJ
- for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:05:11 -0500
-Received: by mail-pf1-x435.google.com with SMTP id w203so8525298pfc.12
- for <qemu-arm@nongnu.org>; Thu, 05 Jan 2023 04:05:09 -0800 (PST)
+ id 1pDP3W-0004R1-TR
+ for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:09:12 -0500
+Received: by mail-pf1-x430.google.com with SMTP id a30so9544299pfr.6
+ for <qemu-arm@nongnu.org>; Thu, 05 Jan 2023 04:09:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=oFYvXyd2SWmjUBDOxsVyjRGoQwPiLrpWkNxKegS2YAA=;
- b=L/6pXTRKX0408/qwuMTJxivI2W74CQVIjcZP0o5wxedCMDFYt3xj6/aWNE4UDoksRD
- AiCydc+9LGI6L2oT4mPmlwLucynn8tAeAKnjJq+Ih6bFC1KUNhg2A3mRdiA6Lpgwx0Mc
- kF5kJBfgdNWm4cv8/TOdGHySKFtja5s6ljk4Fk179Ib4inSk2bzMaBOWwnrcMjlAJ9Fm
- UHT9Gtl/44sDzkYuppLVDp5ItOdAGuZ0SG7UJBobII3uJlqi0vSQY6QbIrUI8Xs14aH6
- lIYLxdWBv072gDXa44sg7xEhhY0/4+p9GrV8xBlPKXYjBBIz2hknhIwSEOGgU7TxIpW2
- JMZg==
+ bh=4zUYZNjpnzAONC6x1VSQ74oyRwP63RRosniNkdwYtz0=;
+ b=QisTFh6wtlifhj3tvsxbPi2AXPz+gw2f897VkpAdv6FrBTdIydopkGIbLrxXwx9r46
+ AwKV4KFbJckqLZg1UtiTZZVrjzc/c3TfmS43ztrioYk8NTOIKiDDsJzNgoCzCdYSgkki
+ w+rSLWsCt0D6oe0PdjJooOurm6r+RMSjeY71KlKjgh80Jv/3LIjbCaFM1hhgYTNXOWG1
+ juJcjNnGj5IwlztspKfkItorD2H7qepDRmDSiwOPFekY+yC68PB+knttgVUz0sCPtatq
+ ucb0sMWgcakrCiPXIECc40Xra1qpVVhqr6ZmaChWPjJzAPmnMVbYIO1STA6BIJupk+Aq
+ 55jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=oFYvXyd2SWmjUBDOxsVyjRGoQwPiLrpWkNxKegS2YAA=;
- b=eivhg0MPONHSGqcUoxkCCPOCHvbRlfAB5xSHMZsvsL2WWUnvQXjIMjZCSpJ3y/vUU4
- ZgpKS1t1wJnIGRINuOYqo6M5DW+Ifi/zhLxaiCKbpzTMvFpGwI8FTb+tclzrl7/8A39N
- QTi72oXbPyMvXB7oxdZfxzXKBvXB8sIGVYxmmtMXhm9NEtDHqtxkG8E6CqNaQ5bflNLL
- XnArJXDaBFVJKHapGbdi7A0R9QhPKbv8d0MEhhl9RWKSiRkxCOHkG5+kCBN4o6rhcFQz
- lfwcVye0s4SM0f3xLqCIf2IObuyhfLYlZu5S0AvQi9T2RwOWI3/VU6ijCEyGlmuaBJa0
- kAdw==
-X-Gm-Message-State: AFqh2koIIzDMJIMCnTxXoEMBWI+wX3P3dWtk1+YD1R7/1kF05f7xLgmZ
- fOU/rmckBnhEOWyryRcf9Wh1LUUGanAdXdlshEZXKQ==
+ bh=4zUYZNjpnzAONC6x1VSQ74oyRwP63RRosniNkdwYtz0=;
+ b=1gmgK39+/tu74EWmDVYYhsCnfs5O6RgYS3SvuLxuEx1SzMPkvF8DN0en06zWxPg6Et
+ 2cBHvl/3PHjr3n12/P06xEGr9ltSho8c4Fdwwb5t3ed9HuLPjK2A4bj+5ZVQJkLJuROp
+ HpuXNCku7GTM0NFSY0ZdQzeBOde86ZXIUPe6KM6BoxxFrGMf/x3pNt6x0tT+2lAqImJB
+ IMkDZLbCrgqsjyJrVz+JyLanEYAyA5H8ihYTTc5AzH+IV2ALDLWKikXL47Z5c5fOhMr1
+ 86fen1Hvdadr4IJ8nRgGFuy4zG6cdgCvN0K12z98dadd6eULxHerQHFLMT5guUidXhhn
+ tVtw==
+X-Gm-Message-State: AFqh2kq+384pB8xNJnm7IxOpb87LzstRb4px2/sUUAzfdDXRPM7UovTy
+ qVgMBGrKD+y95uEUwI7iHbdrTTTrPBcTiEI933I2+A==
 X-Received: by 2002:a63:3d4:0:b0:492:50dc:da4d with SMTP id
- 203-20020a6303d4000000b0049250dcda4dmr2312564pgd.192.1672920308185; Thu, 05
- Jan 2023 04:05:08 -0800 (PST)
+ 203-20020a6303d4000000b0049250dcda4dmr2313145pgd.192.1672920548737; Thu, 05
+ Jan 2023 04:09:08 -0800 (PST)
 MIME-Version: 1.0
 References: <166990932074.29941.8709118178538288040-0@git.sr.ht>
- <166990932074.29941.8709118178538288040-6@git.sr.ht>
-In-Reply-To: <166990932074.29941.8709118178538288040-6@git.sr.ht>
+ <166990932074.29941.8709118178538288040-7@git.sr.ht>
+In-Reply-To: <166990932074.29941.8709118178538288040-7@git.sr.ht>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Jan 2023 12:04:57 +0000
-Message-ID: <CAFEAcA96141q+bPn879FxWPbPe6XZWWhtuHhHfXGCCi0ALpWgg@mail.gmail.com>
-Subject: Re: [PATCH qemu.git v3 6/8] hw/timer/imx_epit: factor out register
- write handlers
+Date: Thu, 5 Jan 2023 12:08:57 +0000
+Message-ID: <CAFEAcA_bXUFZi1hBO22pC7vxHHoPiKS-aTheJxBQu=-+nctSXA@mail.gmail.com>
+Subject: Re: [PATCH qemu.git v3 7/8] hw/timer/imx_epit: remove explicit fields
+ cnt and freq
 To: "~axelheider" <axelheider@gmx.de>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,13 +115,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4ersaP1EvDBF
+X-TUID: 1cyWpWUp/nWp
 
 On Thu, 1 Dec 2022 at 15:42, ~axelheider <axelheider@git.sr.ht> wrote:
 >
 > From: Axel Heider <axel.heider@hensoldt.net>
 >
-> Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+> The CNT register is a read-only register. There is no need to
+> store it's value, it can be calculated on demand.
+> The calculated frequency is needed temporarily only.
+>
+> Note that this is a migration compatibility break for all boards
+> types that use the EPIT peripheral.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

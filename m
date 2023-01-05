@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id j1-20020a05600c1c0100b003cfaae07f68sm3447341wms.17.2023.01.05.08.51.55
+        by smtp.gmail.com with ESMTPSA id g41-20020a05600c4ca900b003cfd0bd8c0asm2675127wmp.30.2023.01.05.08.43.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Jan 2023 08:51:55 -0800 (PST)
+        Thu, 05 Jan 2023 08:43:20 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6CF4E1FFC7;
-	Thu,  5 Jan 2023 16:43:21 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 7C1F31FFBA;
+	Thu,  5 Jan 2023 16:43:20 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org,
 	alex.bennee@gmail.com
@@ -51,109 +51,39 @@ Cc: David Hildenbrand <david@redhat.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 16/21] gdbstub: specialise stub_can_reverse
-Date: Thu,  5 Jan 2023 16:43:15 +0000
-Message-Id: <20230105164320.2164095-17-alex.bennee@linaro.org>
+Subject: [PATCH v2 02/21] target/arm: fix handling of HLT semihosting in system mode
+Date: Thu,  5 Jan 2023 16:43:01 +0000
+Message-Id: <20230105164320.2164095-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230105164320.2164095-1-alex.bennee@linaro.org>
 References: <20230105164320.2164095-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: F/sl57LfApnR
+X-TUID: c/CFUNoI21EY
 
-Currently we only support replay for softmmu mode so it is a constant
-false for user-mode.
+The check semihosting_enabled() wants to know if the guest is
+currently in user mode. Unlike the other cases the test was inverted
+causing us to block semihosting calls in non-EL0 modes.
 
+Fixes: 19b26317e9 (target/arm: Honour -semihosting-config userspace=on)
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/internals.h |  1 +
- gdbstub/gdbstub.c   | 13 ++-----------
- gdbstub/softmmu.c   |  5 +++++
- gdbstub/user.c      |  5 +++++
- 4 files changed, 13 insertions(+), 11 deletions(-)
+ target/arm/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index a371373c1d..1def9dfc9c 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -126,6 +126,7 @@ CPUState *gdb_first_attached_cpu(void);
- void gdb_append_thread_id(CPUState *cpu, GString *buf);
- int gdb_get_cpu_index(CPUState *cpu);
- unsigned int gdb_get_max_cpus(void); /* both */
-+bool gdb_stub_can_reverse(void); /* softmmu, stub for user */
- 
- void gdb_create_default_process(GDBState *s);
- 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index f9950200b8..c293b8e43c 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -113,15 +113,6 @@ int use_gdb_syscalls(void)
-     return gdb_syscall_mode == GDB_SYS_ENABLED;
- }
- 
--static bool stub_can_reverse(void)
--{
--#ifdef CONFIG_USER_ONLY
--    return false;
--#else
--    return replay_mode == REPLAY_MODE_PLAY;
--#endif
--}
--
- /* writes 2*len+1 bytes in buf */
- void gdb_memtohex(GString *buf, const uint8_t *mem, int len)
- {
-@@ -1307,7 +1298,7 @@ static void handle_step(GArray *params, void *user_ctx)
- 
- static void handle_backward(GArray *params, void *user_ctx)
- {
--    if (!stub_can_reverse()) {
-+    if (!gdb_stub_can_reverse()) {
-         gdb_put_packet("E22");
-     }
-     if (params->len == 1) {
-@@ -1558,7 +1549,7 @@ static void handle_query_supported(GArray *params, void *user_ctx)
-         g_string_append(gdbserver_state.str_buf, ";qXfer:features:read+");
-     }
- 
--    if (stub_can_reverse()) {
-+    if (gdb_stub_can_reverse()) {
-         g_string_append(gdbserver_state.str_buf,
-             ";ReverseStep+;ReverseContinue+");
-     }
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index 015848358a..ff18611ce7 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -446,6 +446,11 @@ unsigned int gdb_get_max_cpus(void)
-     return ms->smp.max_cpus;
- }
- 
-+bool gdb_stub_can_reverse(void)
-+{
-+    return replay_mode == REPLAY_MODE_PLAY;
-+}
-+
- /*
-  * Softmmu specific command helpers
-  */
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 9556a272d7..ccc73683de 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -407,6 +407,11 @@ unsigned int gdb_get_max_cpus(void)
-     return max_cpus;
- }
- 
-+/* replay not supported for user-mode */
-+bool gdb_stub_can_reverse(void)
-+{
-+    return false;
-+}
- 
- /*
-  * Break/Watch point helpers
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 74a903072f..1dcaefb8e7 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -1184,7 +1184,7 @@ static inline void gen_hlt(DisasContext *s, int imm)
+      * semihosting, to provide some semblance of security
+      * (and for consistency with our 32-bit semihosting).
+      */
+-    if (semihosting_enabled(s->current_el != 0) &&
++    if (semihosting_enabled(s->current_el == 0) &&
+         (imm == (s->thumb ? 0x3c : 0xf000))) {
+         gen_exception_internal_insn(s, EXCP_SEMIHOST);
+         return;
 -- 
 2.34.1

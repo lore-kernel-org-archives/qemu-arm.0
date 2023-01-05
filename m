@@ -1,121 +1,94 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp358897ejb;
-        Thu, 5 Jan 2023 06:46:43 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuaLbLnGzoLutgUM4udqlOBDP2oBoZPpF6yyzkWwsDB2jFwZ/vRVuoNqclWVtDWhN70Lgxu
-X-Received: by 2002:adf:a497:0:b0:2b2:35:e0a4 with SMTP id g23-20020adfa497000000b002b20035e0a4mr1799303wrb.15.1672930003469;
-        Thu, 05 Jan 2023 06:46:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672930003; cv=none;
-        d=google.com; s=arc-20160816;
-        b=0860uxC5RRAhoFdne3Ehz3YiuUXEfe3Z1fAu0b/IA7yWFB2Lfeq7FBjLsJ9YNPv0g5
-         AkU0gC6mIjGQfYRByX5Ue/mJau/8/z17gLQ5sCxqAmZ4NbGvg7TXUuADEgD/Yyk7Sb3u
-         DdGLaHlpmmYi9y3NXLfDzXUM/0N35feXtItzkqg/1t37cV6yvbjCLAh3JfWAz5dGE4TA
-         /Kp8BWbFHtgGE7wXewglxQedz9QaqbMu1w+0hkPmyLhc292uVozRe1iSKA/qRMv2bFNJ
-         5zjvmP6oC4TWpF0bAUO8wQCygpGvpysvu2lpijdX43sQBUxMTPIU+yCzA32Oyn6VQkI0
-         B4Ww==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from;
-        bh=uHaag+qhfS5NUCpRORGiD9GGCfkd6sEub44OebbNXG8=;
-        b=dtoffsWI6zi9PcZLx+hKsUTiZBos5/V14bHlK0pVYReh0IIb7+fyf2+r3ZhGepRVCD
-         c7s+qSvQwHhxc1/GU3Y1KpEpxJebMI3rA0tTS+f3cHaWJH51D4b0o4Cl9Jva3kL9zME4
-         aZdNRy1KHc0wXgn0ijyj+ODo1QCPJpid/Jv9sx4Z55np4DI0NcncSo5MYkG5GF4MYekw
-         K2hmvtgaVGlI6aZMWhc7kxbjZBBAEEqw1nrKe5CoeMKg55U3XVIS1GlWOOI/wdCtsetL
-         +vE24WK6tgjW5V7dPgfvjzCjLwTNdMSKDKIHMOFDCI8FEKP8Bs/M0XiMjvgP8b1y0ewI
-         7qbQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id d11-20020adfe2cb000000b00236dc2b6001si22248004wrj.167.2023.01.05.06.46.43
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id j1-20020a05600c1c0100b003cfaae07f68sm3417832wms.17.2023.01.05.08.43.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Jan 2023 06:46:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id AFAB575B03;
-	Thu,  5 Jan 2023 14:46:38 +0000 (UTC)
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 3733B138DF;
-	Thu,  5 Jan 2023 14:46:37 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id C/FpO83itmOuFQAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 05 Jan 2023 14:46:37 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Richard Henderson
- <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
-Subject: Re: [PATCH v2 0/5] target/arm: Some CONFIG_TCG code movement
-In-Reply-To: <20221220220426.8827-1-farosas@suse.de>
-References: <20221220220426.8827-1-farosas@suse.de>
-Date: Thu, 05 Jan 2023 11:46:35 -0300
-Message-ID: <87pmbtdook.fsf@suse.de>
+        Thu, 05 Jan 2023 08:43:20 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 6C4301FFB8;
+	Thu,  5 Jan 2023 16:43:20 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org,
+	alex.bennee@gmail.com
+Cc: David Hildenbrand <david@redhat.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Greg Kurz <groug@kaod.org>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>,
+	qemu-ppc@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Marek Vasut <marex@denx.de>,
+	Stafford Horne <shorne@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Taylor Simpson <tsimpson@quicinc.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Chris Wulff <crwulff@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Song Gao <gaosong@loongson.cn>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-riscv@nongnu.org,
+	qemu-s390x@nongnu.org,
+	Alistair Francis <alistair.francis@wdc.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Bin Meng <bin.meng@windriver.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2 01/21] gdbstub/internals.h: clean up include guard
+Date: Thu,  5 Jan 2023 16:43:00 +0000
+Message-Id: <20230105164320.2164095-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230105164320.2164095-1-alex.bennee@linaro.org>
+References: <20230105164320.2164095-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-Authentication-Results: smtp-out2.suse.de;
-	none
-X-Spam-Level: 
-X-Spam-Score: -0.10
-X-Spamd-Result: default: False [-0.10 / 50.00];
-	 ARC_NA(0.00)[];
-	 RCVD_VIA_SMTP_AUTH(0.00)[];
-	 RCPT_COUNT_SEVEN(0.00)[10];
-	 FROM_HAS_DN(0.00)[];
-	 TO_DN_SOME(0.00)[];
-	 TO_MATCH_ENVRCPT_ALL(0.00)[];
-	 MIME_GOOD(-0.10)[text/plain];
-	 FROM_EQ_ENVFROM(0.00)[];
-	 MIME_TRACE(0.00)[0:+];
-	 RCVD_COUNT_TWO(0.00)[2];
-	 RCVD_TLS_ALL(0.00)[];
-	 MID_RHS_MATCH_FROM(0.00)[]
-X-Spam-Flag: NO
-X-TUID: qem0L3+XDukt
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: T+1OxAMXcXwa
 
-Fabiano Rosas <farosas@suse.de> writes:
+Use something more specific to avoid name clashes.
 
-> since v1:
-> - patch 1: dropped. I will include it in the next series;
->
-> - patch 3: tcg_handle_semihosting does not need tcg_enabled, only
->   CONFIG_TCG;
->
-> - patch 4 (new): moved alignment check and updated comment.
->
-> v1:
-> https://lore.kernel.org/r/20221216212944.28229-1-farosas@suse.de
->
-> Hi,
->
-> This is the second round of rebasing the patches from:
-> https://lore.kernel.org/r/20210416162824.25131-1-cfontana@suse.de
->
-> These are the simpler ones that move code under
-> CONFIG_TCG/tcg_enabled. No new directories or files.
->
-> Claudio Fontana (4):
->   target/arm: rename handle_semihosting to tcg_handle_semihosting
->   target/arm: wrap psci call with tcg_enabled
->   target/arm: wrap call to aarch64_sve_change_el in tcg_enabled()
->   target/arm: only perform TCG cpu and machine inits if TCG enabled
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ gdbstub/internals.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Peter,
-
-let's drop this series please. I need to double check patch 5.
-
-I'll resend it later on all along with the v2 of my latest RFC:
-
-  [RFC PATCH 00/27] target/arm: Allow CONFIG_TCG=n builds
-  https://lore.kernel.org/r/20230104215835.24692-1-farosas@suse.de
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index eabb0341d1..b444f24ef5 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -6,12 +6,12 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+-#ifndef _INTERNALS_H_
+-#define _INTERNALS_H_
++#ifndef GDBSTUB_INTERNALS_H
++#define GDBSTUB_INTERNALS_H
+ 
+ bool gdb_supports_guest_debug(void);
+ int gdb_breakpoint_insert(CPUState *cs, int type, hwaddr addr, hwaddr len);
+ int gdb_breakpoint_remove(CPUState *cs, int type, hwaddr addr, hwaddr len);
+ void gdb_breakpoint_remove_all(CPUState *cs);
+ 
+-#endif /* _INTERNALS_H_ */
++#endif /* GDBSTUB_INTERNALS_H */
+-- 
+2.34.1

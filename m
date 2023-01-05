@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05600c1d8700b003d973d4fb28sm3071619wms.4.2023.01.05.08.43.24
+        by smtp.gmail.com with ESMTPSA id az28-20020a05600c601c00b003cf57329221sm3052269wmb.14.2023.01.05.08.51.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Jan 2023 08:43:27 -0800 (PST)
+        Thu, 05 Jan 2023 08:51:55 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B7CBF1FFCB;
+	by zen.linaroharston (Postfix) with ESMTP id 5E0131FFC6;
 	Thu,  5 Jan 2023 16:43:21 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org,
@@ -51,107 +51,109 @@ Cc: David Hildenbrand <david@redhat.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 21/21] gdbstub: only compile gdbstub twice for whole build
-Date: Thu,  5 Jan 2023 16:43:20 +0000
-Message-Id: <20230105164320.2164095-22-alex.bennee@linaro.org>
+Subject: [PATCH v2 15/21] gdbstub: introduce gdb_get_max_cpus
+Date: Thu,  5 Jan 2023 16:43:14 +0000
+Message-Id: <20230105164320.2164095-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230105164320.2164095-1-alex.bennee@linaro.org>
 References: <20230105164320.2164095-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7PRtaD9mxHzF
+X-TUID: HdOJIn2jSPmP
 
-Now we have removed any target specific bits from the core gdbstub
-code we only need to build it twice. We have to jump a few meson hoops
-to manually define the CONFIG_USER_ONLY symbol but it seems to work.
+This is needed for handling vcont packets as the way of calculating
+max cpus vhanges between user and softmmu mode.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/gdbstub.c     |  3 +--
- gdbstub/user-target.c |  2 +-
- gdbstub/meson.build   | 32 ++++++++++++++++++++++++++++----
- 3 files changed, 30 insertions(+), 7 deletions(-)
+ gdbstub/internals.h |  1 +
+ gdbstub/gdbstub.c   | 11 +----------
+ gdbstub/softmmu.c   |  9 +++++++++
+ gdbstub/user.c      | 17 +++++++++++++++++
+ 4 files changed, 28 insertions(+), 10 deletions(-)
 
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 55f3d820aa..a371373c1d 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -125,6 +125,7 @@ bool gdb_got_immediate_ack(void);
+ CPUState *gdb_first_attached_cpu(void);
+ void gdb_append_thread_id(CPUState *cpu, GString *buf);
+ int gdb_get_cpu_index(CPUState *cpu);
++unsigned int gdb_get_max_cpus(void); /* both */
+ 
+ void gdb_create_default_process(GDBState *s);
+ 
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 57bbda3505..0dbb9f5338 100644
+index 91021859a1..f9950200b8 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -39,7 +39,6 @@
+@@ -624,16 +624,7 @@ static int gdb_handle_vcont(const char *p)
+     GDBProcess *process;
+     CPUState *cpu;
+     GDBThreadIdKind kind;
+-#ifdef CONFIG_USER_ONLY
+-    int max_cpus = 1; /* global variable max_cpus exists only in system mode */
+-
+-    CPU_FOREACH(cpu) {
+-        max_cpus = max_cpus <= cpu->cpu_index ? cpu->cpu_index + 1 : max_cpus;
+-    }
+-#else
+-    MachineState *ms = MACHINE(qdev_get_machine());
+-    unsigned int max_cpus = ms->smp.max_cpus;
+-#endif
++    unsigned int max_cpus = gdb_get_max_cpus();
+     /* uninitialised CPUs stay 0 */
+     newstates = g_new0(char, max_cpus);
  
- #include "sysemu/hw_accel.h"
- #include "sysemu/runstate.h"
--#include "exec/exec-all.h"
- #include "exec/tb-flush.h"
- #include "exec/hwaddr.h"
- #include "sysemu/replay.h"
-@@ -1611,7 +1610,7 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
-         .cmd_startswith = 1,
-         .schema = "s:l,l0"
-     },
--#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX_USER)
-+#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
-     {
-         .handler = gdb_handle_query_xfer_auxv,
-         .cmd = "Xfer:auxv:read::",
-diff --git a/gdbstub/user-target.c b/gdbstub/user-target.c
-index 83e04e1c23..46f5729999 100644
---- a/gdbstub/user-target.c
-+++ b/gdbstub/user-target.c
-@@ -235,7 +235,7 @@ static inline int target_memory_rw_debug(CPUState *cpu, target_ulong addr,
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index c42230acca..015848358a 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -436,6 +436,15 @@ int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
+     return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
  }
  
++/*
++ * cpu helpers
++ */
++
++unsigned int gdb_get_max_cpus(void)
++{
++    MachineState *ms = MACHINE(qdev_get_machine());
++    return ms->smp.max_cpus;
++}
  
--#if defined(CONFIG_LINUX_USER)
-+#if defined(CONFIG_LINUX)
- void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx)
- {
-     TaskState *ts;
-diff --git a/gdbstub/meson.build b/gdbstub/meson.build
-index 56c40c25ef..193c20203d 100644
---- a/gdbstub/meson.build
-+++ b/gdbstub/meson.build
-@@ -4,13 +4,37 @@
- # types such as hwaddr.
- #
+ /*
+  * Softmmu specific command helpers
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index 74f541223c..9556a272d7 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -391,6 +391,23 @@ int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
+     return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
+ }
  
--specific_ss.add(files('gdbstub.c'))
-+# We need to build the core gdb code via a library to be able to tweak
-+# cflags so:
- 
--# These have to built to the target ABI
--specific_ss.add(files('syscalls.c'))
-+gdb_user_ss = ss.source_set()
-+gdb_softmmu_ss = ss.source_set()
- 
--softmmu_ss.add(files('softmmu.c'))
-+# We build two versions of gdbstub, one for each mode
-+gdb_user_ss.add(files('gdbstub.c'))
-+gdb_softmmu_ss.add(files('gdbstub.c'))
++/*
++ * cpu helpers
++ */
 +
-+gdb_user_ss = gdb_user_ss.apply(config_host, strict: false)
-+gdb_softmmu_ss = gdb_softmmu_ss.apply(config_host, strict: false)
++unsigned int gdb_get_max_cpus(void)
++{
++    CPUState *cpu;
++    unsigned int max_cpus = 1; /* global variable max_cpus exists only in system mode */
 +
-+libgdb_user = static_library('gdb_user', gdb_user_ss.sources(),
-+                             name_suffix: 'fa',
-+                             c_args: '-DCONFIG_USER_ONLY')
++    CPU_FOREACH(cpu) {
++        max_cpus = max_cpus <= cpu->cpu_index ? cpu->cpu_index + 1 : max_cpus;
++    }
 +
-+libgdb_softmmu = static_library('gdb_softmmu', gdb_softmmu_ss.sources(),
-+                                name_suffix: 'fa')
++    return max_cpus;
++}
 +
-+gdb_user = declare_dependency(link_whole: libgdb_user)
-+user_ss.add(gdb_user)
-+gdb_softmmu = declare_dependency(link_whole: libgdb_softmmu)
-+softmmu_ss.add(gdb_softmmu)
 +
-+# The rest of the mode specific code can be added directly
- user_ss.add(files('user.c'))
-+softmmu_ss.add(files('softmmu.c'))
-+
-+# These have to built to the target ABI
-+specific_ss.add(files('syscalls.c'))
- 
- # and BSD?
- specific_ss.add(when: 'CONFIG_LINUX_USER', if_true: files('user-target.c'))
+ /*
+  * Break/Watch point helpers
+  */
 -- 
 2.34.1

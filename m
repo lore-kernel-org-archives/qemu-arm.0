@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id g41-20020a05600c4ca900b003cfd0bd8c0asm2675127wmp.30.2023.01.05.08.43.20
+        by smtp.gmail.com with ESMTPSA id o15-20020a5d684f000000b00286ad197346sm23886826wrw.70.2023.01.05.08.43.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Jan 2023 08:43:20 -0800 (PST)
+        Thu, 05 Jan 2023 08:43:22 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 7C1F31FFBA;
+	by zen.linaroharston (Postfix) with ESMTP id 8B29A1FFBB;
 	Thu,  5 Jan 2023 16:43:20 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org,
@@ -51,39 +51,60 @@ Cc: David Hildenbrand <david@redhat.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 02/21] target/arm: fix handling of HLT semihosting in system mode
-Date: Thu,  5 Jan 2023 16:43:01 +0000
-Message-Id: <20230105164320.2164095-3-alex.bennee@linaro.org>
+Subject: [PATCH v2 03/21] gdbstub: fix-up copyright and license files
+Date: Thu,  5 Jan 2023 16:43:02 +0000
+Message-Id: <20230105164320.2164095-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230105164320.2164095-1-alex.bennee@linaro.org>
 References: <20230105164320.2164095-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: c/CFUNoI21EY
+X-TUID: LlvEZi7bHmng
 
-The check semihosting_enabled() wants to know if the guest is
-currently in user mode. Unlike the other cases the test was inverted
-causing us to block semihosting calls in non-EL0 modes.
+When I started splitting gdbstub apart I was a little too boilerplate
+with my file headers. Fix up to carry over Fabrice's copyright and the
+LGPL license header.
 
-Fixes: 19b26317e9 (target/arm: Honour -semihosting-config userspace=on)
+Fixes: ae7467b1ac (gdbstub: move breakpoint logic to accel ops)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/translate.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ gdbstub/softmmu.c | 3 ++-
+ gdbstub/user.c    | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 74a903072f..1dcaefb8e7 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -1184,7 +1184,7 @@ static inline void gen_hlt(DisasContext *s, int imm)
-      * semihosting, to provide some semblance of security
-      * (and for consistency with our 32-bit semihosting).
-      */
--    if (semihosting_enabled(s->current_el != 0) &&
-+    if (semihosting_enabled(s->current_el == 0) &&
-         (imm == (s->thumb ? 0x3c : 0xf000))) {
-         gen_exception_internal_insn(s, EXCP_SEMIHOST);
-         return;
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index f208c6cf15..183dfb40e4 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -4,9 +4,10 @@
+  * Debug integration depends on support from the individual
+  * accelerators so most of this involves calling the ops helpers.
+  *
++ * Copyright (c) 2003-2005 Fabrice Bellard
+  * Copyright (c) 2022 Linaro Ltd
+  *
+- * SPDX-License-Identifier: GPL-2.0-or-later
++ * SPDX-License-Identifier: LGPL-2.0+
+  */
+ 
+ #include "qemu/osdep.h"
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index 033e5fdd71..a5f370bcf9 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -3,9 +3,10 @@
+  *
+  * We know for user-mode we are using TCG so we can call stuff directly.
+  *
++ * Copyright (c) 2003-2005 Fabrice Bellard
+  * Copyright (c) 2022 Linaro Ltd
+  *
+- * SPDX-License-Identifier: GPL-2.0-or-later
++ * SPDX-License-Identifier: LGPL-2.0+
+  */
+ 
+ #include "qemu/osdep.h"
 -- 
 2.34.1

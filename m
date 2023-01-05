@@ -1,99 +1,98 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp265146ejb;
-        Thu, 5 Jan 2023 04:22:18 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs72wRM+MxWsPpUesXyUoJgf28X15R2+dEdG4B8kxX7ZkvZe+ZemesePdl3TelA7ctQijOu
-X-Received: by 2002:a05:6102:1501:b0:3ce:967e:1243 with SMTP id f1-20020a056102150100b003ce967e1243mr6480589vsv.21.1672921338094;
-        Thu, 05 Jan 2023 04:22:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672921338; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp266351ejb;
+        Thu, 5 Jan 2023 04:24:38 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvBDAqbT6Q0IZSNGnVOj5d4o8wCInb03c6CdqWqFVyAi26r6NIU1VMKF7tQoD7aCSo5akGy
+X-Received: by 2002:ac8:520c:0:b0:3a8:1079:b844 with SMTP id r12-20020ac8520c000000b003a81079b844mr66973553qtn.46.1672921478105;
+        Thu, 05 Jan 2023 04:24:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672921478; cv=none;
         d=google.com; s=arc-20160816;
-        b=EgH6//ns/61TlfA4IxkSDY2vb3y+HT9F5xzAwBZoWoZHoc10zBAnAueeMZLcNAKIgI
-         sTIZ8Ts/SiAVxAyYGbnokULkZU8nST/hriYuxUk9vsiW6uAUQN1I2Eq5eQzmUwxyVfMt
-         e0TmsmXhsBlOO+fpTpne/j88iPl1B/xeEbvDFsSXEe6dXU6c7Rmj5EfWAN+/N9LpE2Pm
-         CKthnRRp9dAF+y09N+QNYzfz1aw/q/WevGSfrQwA4fPudTGgQoy66fuq9FFdVx6wT+3N
-         tSonRhIecFFqkqwoHN2/utBYraMwkm/XQtp8cgq6x6JncxVVfsX2W/3+PJDG1xqYy1nh
-         5Xlw==
+        b=DFN06a2ujV505Tcr2eCGIxm+7xF3uvKUrF16wrsrT5c7re1e5EZhPeCBugOIp9ITHl
+         hlYnYXEyyOTalp+5CmsMlepBPPcGD4jij5fb6Vy1Rl0gvZHXjzlFxzcqeJDY1XzIySag
+         cwCwRtt7ApN3jmCErd2oUv0+/CuWIznjT72UhATBuvWedQvHdBS4eWwd9QCx4BKEXxaf
+         Per+efdw+LtILGQ6UiAaDkSh5wr3OkRylPYmnLjTLJTE/lpyHNEeeBvhNVoZulLnZAJd
+         Pe+hG3kd3tChNluI+UAIFYVxgvy4sVqxCcuPXSjAf1BAy3PrjVf32wfT/pMr2PQjzG6q
+         1bXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=wSbohjQFOFcZIW8WgzeUD31/UXv5Ig2v5luEIJLWhr0=;
-        b=V9GHjik6mPIWGQyeX2kgJVu1Ozq9JOwWJA1l013sPZAqLVmrswudaWq++e/Sf8idHz
-         3seTCAEBdkC0HMYgZmVnt972ngpUXA+zX9ZzDyFhMa9UZDu+rRRtu0gdw9yxWK+1lkTQ
-         YX1ga1zyA0hQSgxnhj7nhXoOoDcWYGpcjmaji4HC43kMdlhDl3/ZCTvwv5ZQDZjwl1sj
-         YWq1QkPTyK7UxMxBtIvsEpFNhzwlR4cMEc7voFIkYUJUAgl8IfKAdE9jq26ozwoOpuCO
-         U6rtWyAxebQV2EQZ06iRWffQ38lDoOQs9UhdcdawJUcf46VconCrB8XUbyKt7263d/0e
-         FP0Q==
+        bh=BudTyNHSL/cxLA+L2U5eO2Ls8z9m7jsXk1TD1P9Ewpk=;
+        b=jzAT5m6HDhOTM/WfiU7M34w5G+B1iIMU8i9SQlI1DWo92iV0o2fXq9bOMG3wQ/8P2g
+         cbjvPMgsn8TQQdkVQ76zhMY7sslwkKNDNfAhrXixjEy7anLNWP8edgq0agcHN7g7rzCF
+         aUq6uD24Q6EKMvedeeZnLrb+3zzeXieH0S8tDVss1aSWuTj50Sb52fSsVd1y50p0EbFb
+         oDrA7n/HG5T35lhJdtsRFydfXm+2c/IJt1UeGh1oir1EUdffKB+UpMxXhb/7Q2SJnkC0
+         SHpGcdx8o4AA9vdDuTHqaLQg1/s/Bq8Lk4F4j6I7Z7lJ54XkYtaQjMoFSzEXTM0seblC
+         qH8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GhFZentP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OnSzvRV1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f8-20020a05620a280800b006fcc01875c9si11746208qkp.201.2023.01.05.04.22.17
+        by mx.google.com with ESMTPS id d22-20020ac851d6000000b003a8158a4322si17486091qtn.259.2023.01.05.04.24.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jan 2023 04:22:18 -0800 (PST)
+        Thu, 05 Jan 2023 04:24:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GhFZentP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OnSzvRV1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pDPFn-0001xO-7B; Thu, 05 Jan 2023 07:21:51 -0500
+	id 1pDPI6-00039P-KW; Thu, 05 Jan 2023 07:24:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pDPFk-0001v8-5R
- for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:21:48 -0500
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1pDPI4-00035l-AQ
+ for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:24:12 -0500
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pDPFi-0004pD-Am
- for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:21:47 -0500
-Received: by mail-pl1-x62e.google.com with SMTP id d15so39181330pls.6
- for <qemu-arm@nongnu.org>; Thu, 05 Jan 2023 04:21:45 -0800 (PST)
+ id 1pDPI2-0007U7-PI
+ for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:24:12 -0500
+Received: by mail-pf1-x42f.google.com with SMTP id y5so150499pfe.2
+ for <qemu-arm@nongnu.org>; Thu, 05 Jan 2023 04:24:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=wSbohjQFOFcZIW8WgzeUD31/UXv5Ig2v5luEIJLWhr0=;
- b=GhFZentPZIggZxK/p0xAg+7hdvpqBeudsXWz04dUJPDJ29eARcUZ6Oql88BP+OYGcJ
- aExI9HmlAfkwmVJGMtrLDbNNW7KXCcVWk4IlO2bAXg+DlSepp9vG6nvoqo+AOHQ/9I2y
- +P3MtjJijtuSp96pPX3IN/KdtsmQPtqH9mvBq2EnbF6aW97d0QpodkQZWzeMH7RNjCxr
- bO505itQQWGk9cgG/4nNL1gJs1UnU//H4A4wX5fy7jD7KVYke0iSWsMBhKCLG+wAEI4f
- CevS/7cNtM4dD6gNZcsS+MKu2oTD1T+FSRzIM7r0IiyZY5dPUKm32Y7agaVmmc9PvkU4
- ZahQ==
+ bh=BudTyNHSL/cxLA+L2U5eO2Ls8z9m7jsXk1TD1P9Ewpk=;
+ b=OnSzvRV1R9ZpndfzRUHCmBnoh+fgqgqeknYtSzXAv9F48b/IAkLdXeuJqJeWmMCzwd
+ u8Mu4b/vM4p35NqmeH28CxlRx5Yu+JJw1EfZQ1QYq8tTze01OI8wyyvbKMA7qCvdC03L
+ Sx6ICQHCZgaIXkfEjMg4jaZmcJTORYyGGEyhnk3pghf3yIgMGF2qAoKAzwub36eVd2CS
+ etrJQa5S6mQ7G6b2bdP4HILpmvSyaFK2Ux2vil8FjxFhbovMwvIzEI6wfN8vjF+2EHPk
+ LtdnKW950YWPkMcstDVYCHNbjiLlxPtYvYoew5Ke7IUuI2qxczSDhyu4rAUqw4t5mgQ/
+ H02A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=wSbohjQFOFcZIW8WgzeUD31/UXv5Ig2v5luEIJLWhr0=;
- b=sobYljcJSbIaLwz6HVCUXeF2RqnkOW5XUkHkoldwKaKmvrN7nYBJlXHMvcfvPakMN1
- aBZvqWMNxnZCvzjQvawTzxdNlKadvU7/ZSDFqRoYdP3+FvLAkovI16jAoEdOJncAm0b0
- m3VtrUaQs2m8inKgTXM5vu8CB9I3ZGl5t38f5F2tTjd7q+YYKHLmhTCYawtV5hpjx2Cg
- Yx4b3a09qMQg6qsJYMyQILtHX21NwyRgn2pmGlzwz5wFfX6q8XY3KrtJWwNEaaGeV8bI
- 1eOgFdhnz69GULUPNB54JzocmIzqkWQjnIx23WMZDggPqOXe67LLYM9cqpTzWW0EhvtR
- mxTA==
-X-Gm-Message-State: AFqh2ko+mhW/WhaAJgnItQKqgu/LGRJiCGh9mx6Hpceh9wadxanvzOhP
- Ytpk82XbEO4yiQ6ybdy52DOm/OWNhYzfC7ChtGg2gA==
-X-Received: by 2002:a17:903:2653:b0:189:cdc8:7261 with SMTP id
- je19-20020a170903265300b00189cdc87261mr3436441plb.168.1672921304388; Thu, 05
- Jan 2023 04:21:44 -0800 (PST)
+ bh=BudTyNHSL/cxLA+L2U5eO2Ls8z9m7jsXk1TD1P9Ewpk=;
+ b=cSp/OHjpkmUfR4FjRYD+sLLyLQK4kKFnH0rxhrfmWVCLu7aPteF7tFvglAP+cWogBK
+ fi55rHInYpkC00Y6il3WthcEgatXQvUy2hPR69x46TFIt7jgkFr9/mzLGuenMTHLaXXh
+ nA7kWaCheMGYwr+tTUdoxMC1JlKLaPIDJsfboCtagz/PDV1vY1GlViTMxrLVqqb0dJUw
+ fn8n381HYHX2YwsVk3ledz3Tg6LQyAmCWzdxNkbrybYLReeHVQeeoxN9QQtZo7lo5umi
+ UBkAJxI7Ycgn/miEhpXb+fQfpoLofaXwdaEMvUDsg5Eo+tzAPVKgiS3l88w87TfCaFaC
+ FGBg==
+X-Gm-Message-State: AFqh2koIiWAHhzFLqEvdJVihV/vkX4Skl6HWP08sQoGfCpDp/K/jYaeh
+ Pp5c2wxEngY1EDx/dtZVvVkJDbHP8zItSH/Pg144qg==
+X-Received: by 2002:a65:694b:0:b0:477:86c1:640f with SMTP id
+ w11-20020a65694b000000b0047786c1640fmr3350916pgq.231.1672921448561; Thu, 05
+ Jan 2023 04:24:08 -0800 (PST)
 MIME-Version: 1.0
 References: <166990932074.29941.8709118178538288040-0@git.sr.ht>
- <166990932074.29941.8709118178538288040-8@git.sr.ht>
-In-Reply-To: <166990932074.29941.8709118178538288040-8@git.sr.ht>
+In-Reply-To: <166990932074.29941.8709118178538288040-0@git.sr.ht>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Jan 2023 12:21:32 +0000
-Message-ID: <CAFEAcA8u-RdHJGw61tN=qkWwwLsDgm0o=BZsEhBKA__cnmw9yw@mail.gmail.com>
-Subject: Re: [PATCH qemu.git v3 8/8] hw/timer/imx_epit: fix compare timer
- handling
+Date: Thu, 5 Jan 2023 12:23:57 +0000
+Message-ID: <CAFEAcA-pyZ+GENR-X4C19LoL4MTTV1PcY7Gs26_DzTaFX0g56g@mail.gmail.com>
+Subject: Re: [PATCH qemu.git v3 0/8] hw/timer/imx_epit: improve and fix EPIT
+ compare timer
 To: "~axelheider" <axelheider@gmx.de>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,77 +114,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T34NyVDofAay
+X-TUID: SYwcEedmKhyk
 
 On Thu, 1 Dec 2022 at 15:42, ~axelheider <axelheider@git.sr.ht> wrote:
 >
-> From: Axel Heider <axel.heider@hensoldt.net>
+> This patch set improves the i.MX EPIT emulation:
+> - fix #1263 for writes to CR
+> - ensure SR_OCIF is set properly even if CR_OCIEN is off
+> - hardware reset initialized CR to 0
+> - interrupt state update on CR writes (e.g. software reset)
+> - remove explicit fields cnt and freq (they are redundant)
+> - general code and documentation improvements
 >
-> - fix #1263 for CR writes
-> - rework compare time handling
->   - The compare timer has to run even if CR.OCIEN is not set,
->     as SR.OCIF must be updated.
->   - The compare timer fires exactly once when the
->     compare value is less than the current value, but the
->     reload values is less than the compare value.
->   - The compare timer will never fire if the reload value is
->     less than the compare value. Disable it in this case.
->
-> Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+> v3 addresses the comments from the previous iterations, but still keeps
+> the scope of this patchset limited to addressing the obvious bugs in the
+> behavior. It does not try to improve the timer accuracy, thus the
+> following remarks remain to be fixed in a future patch after this one is
+> merged:
+> - don't use PTIMER_POLICY_LEGACY. Fine tuning this requires more
+>   time and currently this is not a major concern, because the timer is
+>   working reasonably well.
+> - replace the modestly harmful sequence
+>         counter = ptimer_get_count(s->timer_reload);
+>         ...
+>         ptimer_set_count(s->timer_cmp, counter);
+>   by something better that does not lose or gain time. The current
+>   patchset does not introduce this sequence, it has been there
+>   before already. Again,  the current lack of accuracy here is not a
+>   major concern because the timer is working reasonably well.
 
-There's a couple of minor code-style issues here (block comment
-format, variable declarations in the middle of a block); rather
-than asking you to re-roll the series I'll just squash in the
-fixes for those:
+Applied to target-arm.next, thanks. Sorry it took me so long to
+get to this.
 
-diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index 663907f9cf9..f63d3a20830 100644
---- a/hw/timer/imx_epit.c
-+++ b/hw/timer/imx_epit.c
-@@ -161,7 +161,8 @@ static void imx_epit_update_compare_timer(IMXEPITState *s)
- {
-     uint64_t counter = 0;
-     bool is_oneshot = false;
--    /* The compare timer only has to run if the timer peripheral is active
-+    /*
-+     * The compare timer only has to run if the timer peripheral is active
-      * and there is an input clock, Otherwise it can be switched off.
-      */
-     bool is_active = (s->cr & CR_EN) && imx_epit_get_freq(s);
-@@ -233,19 +234,22 @@ static void imx_epit_write_cr(IMXEPITState *s,
-uint32_t value)
-          */
-         imx_epit_reset(s, false);
-     } else {
--        ptimer_transaction_begin(s->timer_cmp);
--        ptimer_transaction_begin(s->timer_reload);
--        uint32_t freq = imx_epit_get_freq(s);
--        if (freq) {
--            ptimer_set_freq(s->timer_reload, freq);
--            ptimer_set_freq(s->timer_cmp, freq);
--        }
-+        uint32_t freq;
-         uint32_t toggled_cr_bits = oldcr ^ s->cr;
-         /* re-initialize the limits if CR.RLD has changed */
-         bool set_limit = toggled_cr_bits & CR_RLD;
-         /* set the counter if the timer got just enabled and CR.ENMOD is set */
-         bool is_switched_on = (toggled_cr_bits & s->cr) & CR_EN;
-         bool set_counter = is_switched_on && (s->cr & CR_ENMOD);
-+
-+        ptimer_transaction_begin(s->timer_cmp);
-+        ptimer_transaction_begin(s->timer_reload);
-+        freq = imx_epit_get_freq(s);
-+        if (freq) {
-+            ptimer_set_freq(s->timer_reload, freq);
-+            ptimer_set_freq(s->timer_cmp, freq);
-+        }
-+
-         if (set_limit || set_counter) {
-             uint64_t limit = (s->cr & CR_RLD) ? s->lr : EPIT_TIMER_MAX;
-             ptimer_set_limit(s->timer_reload, limit, set_counter ? 1 : 0);
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
 -- PMM

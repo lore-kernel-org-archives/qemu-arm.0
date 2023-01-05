@@ -1,105 +1,80 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp266351ejb;
-        Thu, 5 Jan 2023 04:24:38 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvBDAqbT6Q0IZSNGnVOj5d4o8wCInb03c6CdqWqFVyAi26r6NIU1VMKF7tQoD7aCSo5akGy
-X-Received: by 2002:ac8:520c:0:b0:3a8:1079:b844 with SMTP id r12-20020ac8520c000000b003a81079b844mr66973553qtn.46.1672921478105;
-        Thu, 05 Jan 2023 04:24:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672921478; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp285391ejb;
+        Thu, 5 Jan 2023 04:56:45 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsjVFYTtqk0c6Jo2ZfV6ihhw+mfD56GJqnifZnTu3uU6+FbJtfsNB5k3oObq252KF6aY2go
+X-Received: by 2002:ad4:4e8a:0:b0:4c6:f5bd:2cb9 with SMTP id dy10-20020ad44e8a000000b004c6f5bd2cb9mr78461656qvb.33.1672923405305;
+        Thu, 05 Jan 2023 04:56:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672923405; cv=none;
         d=google.com; s=arc-20160816;
-        b=DFN06a2ujV505Tcr2eCGIxm+7xF3uvKUrF16wrsrT5c7re1e5EZhPeCBugOIp9ITHl
-         hlYnYXEyyOTalp+5CmsMlepBPPcGD4jij5fb6Vy1Rl0gvZHXjzlFxzcqeJDY1XzIySag
-         cwCwRtt7ApN3jmCErd2oUv0+/CuWIznjT72UhATBuvWedQvHdBS4eWwd9QCx4BKEXxaf
-         Per+efdw+LtILGQ6UiAaDkSh5wr3OkRylPYmnLjTLJTE/lpyHNEeeBvhNVoZulLnZAJd
-         Pe+hG3kd3tChNluI+UAIFYVxgvy4sVqxCcuPXSjAf1BAy3PrjVf32wfT/pMr2PQjzG6q
-         1bXA==
+        b=eOAbLjvgfSxwcbrC0kqNnspSh1EjPVivoE7y6faLyeZOh66b23SI1BRH5AO97u/oN2
+         LWGQ6QAwhrQOldLh4/ilwikvKXb4ubtiqACSv5/8BdY9KXSGAlQjub/aoZf3+ABD3k60
+         sdK/wOUymfypaR4H/wGph88DArkGMSFBbo8VKZT/3C0gBI7EeFnIOyHKiZd0ZRaHRHsS
+         bL70c+1kPF+s0/5kQEsyLJit5iB2PU1uNhGDak3gWXooQ+1ZS7vD/eNCjP8q1Zg68zni
+         FsvYylo8f0r5voPBnka7f0OAIhI/OO7urrO+Ef8dBUA5a6/c4eJx6qYzt1HAIhVtraAO
+         2V7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=BudTyNHSL/cxLA+L2U5eO2Ls8z9m7jsXk1TD1P9Ewpk=;
-        b=jzAT5m6HDhOTM/WfiU7M34w5G+B1iIMU8i9SQlI1DWo92iV0o2fXq9bOMG3wQ/8P2g
-         cbjvPMgsn8TQQdkVQ76zhMY7sslwkKNDNfAhrXixjEy7anLNWP8edgq0agcHN7g7rzCF
-         aUq6uD24Q6EKMvedeeZnLrb+3zzeXieH0S8tDVss1aSWuTj50Sb52fSsVd1y50p0EbFb
-         oDrA7n/HG5T35lhJdtsRFydfXm+2c/IJt1UeGh1oir1EUdffKB+UpMxXhb/7Q2SJnkC0
-         SHpGcdx8o4AA9vdDuTHqaLQg1/s/Bq8Lk4F4j6I7Z7lJ54XkYtaQjMoFSzEXTM0seblC
-         qH8A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=wU4RBYwyLpo6wFhvdqwG3YX7ndgaL0/IE1IGa8yRpaw=;
+        b=Y5YM2IIwadWfzcyOT5IRWlVHbbn8/SbkvmIEmGBBzbnHqkP7Au04izt0k7kiEmnnlU
+         oKkDODEyKRZTAUAFcYFRZRRLYn4MSRg1XwZVvQRh9sRp6l4IVrayzKcuNvdMSCmJCucD
+         q33qhNNnFnZnO/IlwZyEI43k/vSsWFLuKexizc7tSZgQ/mDBmT7vDbNhSs1XdZZuDud5
+         DMLdWO/CMQ+WCRqRK2BnhrDfDJpM9NsOLVreVOzlVPJygitCodv2n5N1tz2H8duTKRar
+         3q41oAGN6y5FO8UnyG5rE/buhc4oq+kSgoLkktlrdYmJu+12162bnZ1zs2+IE6d/pksj
+         k5NA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OnSzvRV1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d22-20020ac851d6000000b003a8158a4322si17486091qtn.259.2023.01.05.04.24.37
+        by mx.google.com with ESMTPS id t18-20020a05620a451200b006fa509fd0besi21408375qkp.634.2023.01.05.04.56.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jan 2023 04:24:38 -0800 (PST)
+        Thu, 05 Jan 2023 04:56:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OnSzvRV1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pDPI6-00039P-KW; Thu, 05 Jan 2023 07:24:14 -0500
+	id 1pDPnM-00073G-O3; Thu, 05 Jan 2023 07:56:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pDPI4-00035l-AQ
- for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:24:12 -0500
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pDPI2-0007U7-PI
- for qemu-arm@nongnu.org; Thu, 05 Jan 2023 07:24:12 -0500
-Received: by mail-pf1-x42f.google.com with SMTP id y5so150499pfe.2
- for <qemu-arm@nongnu.org>; Thu, 05 Jan 2023 04:24:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=BudTyNHSL/cxLA+L2U5eO2Ls8z9m7jsXk1TD1P9Ewpk=;
- b=OnSzvRV1R9ZpndfzRUHCmBnoh+fgqgqeknYtSzXAv9F48b/IAkLdXeuJqJeWmMCzwd
- u8Mu4b/vM4p35NqmeH28CxlRx5Yu+JJw1EfZQ1QYq8tTze01OI8wyyvbKMA7qCvdC03L
- Sx6ICQHCZgaIXkfEjMg4jaZmcJTORYyGGEyhnk3pghf3yIgMGF2qAoKAzwub36eVd2CS
- etrJQa5S6mQ7G6b2bdP4HILpmvSyaFK2Ux2vil8FjxFhbovMwvIzEI6wfN8vjF+2EHPk
- LtdnKW950YWPkMcstDVYCHNbjiLlxPtYvYoew5Ke7IUuI2qxczSDhyu4rAUqw4t5mgQ/
- H02A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BudTyNHSL/cxLA+L2U5eO2Ls8z9m7jsXk1TD1P9Ewpk=;
- b=cSp/OHjpkmUfR4FjRYD+sLLyLQK4kKFnH0rxhrfmWVCLu7aPteF7tFvglAP+cWogBK
- fi55rHInYpkC00Y6il3WthcEgatXQvUy2hPR69x46TFIt7jgkFr9/mzLGuenMTHLaXXh
- nA7kWaCheMGYwr+tTUdoxMC1JlKLaPIDJsfboCtagz/PDV1vY1GlViTMxrLVqqb0dJUw
- fn8n381HYHX2YwsVk3ledz3Tg6LQyAmCWzdxNkbrybYLReeHVQeeoxN9QQtZo7lo5umi
- UBkAJxI7Ycgn/miEhpXb+fQfpoLofaXwdaEMvUDsg5Eo+tzAPVKgiS3l88w87TfCaFaC
- FGBg==
-X-Gm-Message-State: AFqh2koIiWAHhzFLqEvdJVihV/vkX4Skl6HWP08sQoGfCpDp/K/jYaeh
- Pp5c2wxEngY1EDx/dtZVvVkJDbHP8zItSH/Pg144qg==
-X-Received: by 2002:a65:694b:0:b0:477:86c1:640f with SMTP id
- w11-20020a65694b000000b0047786c1640fmr3350916pgq.231.1672921448561; Thu, 05
- Jan 2023 04:24:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
+ id 1pDPnK-00072i-Jb; Thu, 05 Jan 2023 07:56:30 -0500
+Received: from [125.120.148.222] (helo=liuqiang-OptiPlex-7060)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
+ id 1pDPnI-0004la-Iv; Thu, 05 Jan 2023 07:56:30 -0500
+Received: from localhost (liuqiang-OptiPlex-7060 [local])
+ by liuqiang-OptiPlex-7060 (OpenSMTPD) with ESMTPA id 4bfde3b5;
+ Thu, 5 Jan 2023 11:09:41 +0000 (UTC)
+From: Qiang Liu <cyruscyliu@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Qiang Liu <cyruscyliu@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:Xilinx ZynqMP and...)
+Subject: [PATCH] hw/display/xlnx_dp: fix abort in xlnx_dp_change_graphic_fmt()
+Date: Thu,  5 Jan 2023 19:09:37 +0800
+Message-Id: <20230105110937.436585-1-cyruscyliu@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <166990932074.29941.8709118178538288040-0@git.sr.ht>
-In-Reply-To: <166990932074.29941.8709118178538288040-0@git.sr.ht>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Jan 2023 12:23:57 +0000
-Message-ID: <CAFEAcA-pyZ+GENR-X4C19LoL4MTTV1PcY7Gs26_DzTaFX0g56g@mail.gmail.com>
-Subject: Re: [PATCH qemu.git v3 0/8] hw/timer/imx_epit: improve and fix EPIT
- compare timer
-To: "~axelheider" <axelheider@gmx.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 125.120.148.222 (failed)
+Received-SPF: softfail client-ip=125.120.148.222;
+ envelope-from=cyruscyliu@gmail.com; helo=liuqiang-OptiPlex-7060
+X-Spam_score_int: 48
+X-Spam_score: 4.8
+X-Spam_bar: ++++
+X-Spam_report: (4.8 / 5.0 requ) BAYES_00=-1.9, DKIM_ADSP_CUSTOM_MED=0.001,
+ FORGED_GMAIL_RCVD=1, FREEMAIL_FROM=0.001, FSL_HELO_NON_FQDN_1=0.001,
+ HELO_NO_DOMAIN=0.001, NML_ADSP_CUSTOM_MED=0.9, RCVD_IN_PBL=3.335,
+ RDNS_NONE=0.793, SPF_SOFTFAIL=0.665, SPOOFED_FREEMAIL=0.001,
+ SPOOFED_FREEMAIL_NO_RDNS=0.001, SPOOF_GMAIL_MID=0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,36 +89,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SYwcEedmKhyk
+X-TUID: 8+RuCOBOnwKf
 
-On Thu, 1 Dec 2022 at 15:42, ~axelheider <axelheider@git.sr.ht> wrote:
->
-> This patch set improves the i.MX EPIT emulation:
-> - fix #1263 for writes to CR
-> - ensure SR_OCIF is set properly even if CR_OCIEN is off
-> - hardware reset initialized CR to 0
-> - interrupt state update on CR writes (e.g. software reset)
-> - remove explicit fields cnt and freq (they are redundant)
-> - general code and documentation improvements
->
-> v3 addresses the comments from the previous iterations, but still keeps
-> the scope of this patchset limited to addressing the obvious bugs in the
-> behavior. It does not try to improve the timer accuracy, thus the
-> following remarks remain to be fixed in a future patch after this one is
-> merged:
-> - don't use PTIMER_POLICY_LEGACY. Fine tuning this requires more
->   time and currently this is not a major concern, because the timer is
->   working reasonably well.
-> - replace the modestly harmful sequence
->         counter = ptimer_get_count(s->timer_reload);
->         ...
->         ptimer_set_count(s->timer_cmp, counter);
->   by something better that does not lose or gain time. The current
->   patchset does not introduce this sequence, it has been there
->   before already. Again,  the current lack of accuracy here is not a
->   major concern because the timer is working reasonably well.
+xlnx_dp_change_graphic_fmt() will directly abort if either graphic
+format or the video format is not supported.
 
-Applied to target-arm.next, thanks. Sorry it took me so long to
-get to this.
+This patch directly let xlnx_dp_change_graphic_fmt() return if the
+formats are not supported.
 
--- PMM
+xlnx_dp_change_graphic_fmt() has two callsites in xlnx_dp_avbufm_write()
+and xlnx_dp_reset(). I think it may be OK to drop the abort in
+xlnx_dp_change_graphic_fmt() because the error information will be
+printed.
+
+Fixes: 58ac482a66de ("introduce xlnx-dp")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1415
+Reported-by: Qiang Liu <cyruscyliu@gmail.com>
+Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
+---
+ hw/display/xlnx_dp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+index b0828d65aa..407518c870 100644
+--- a/hw/display/xlnx_dp.c
++++ b/hw/display/xlnx_dp.c
+@@ -641,7 +641,7 @@ static void xlnx_dp_change_graphic_fmt(XlnxDPState *s)
+     default:
+         error_report("%s: unsupported graphic format %u", __func__,
+                      s->avbufm_registers[AV_BUF_FORMAT] & DP_GRAPHIC_MASK);
+-        abort();
++        return;
+     }
+ 
+     switch (s->avbufm_registers[AV_BUF_FORMAT] & DP_NL_VID_FMT_MASK) {
+@@ -657,7 +657,7 @@ static void xlnx_dp_change_graphic_fmt(XlnxDPState *s)
+     default:
+         error_report("%s: unsupported video format %u", __func__,
+                      s->avbufm_registers[AV_BUF_FORMAT] & DP_NL_VID_FMT_MASK);
+-        abort();
++        return;
+     }
+ 
+     xlnx_dp_recreate_surface(s);
+-- 
+2.25.1
+

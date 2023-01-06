@@ -1,73 +1,74 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp447051ejc;
-        Fri, 6 Jan 2023 09:29:51 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtpqEVJSiwN9pjSEcb3+eimauZlHRgx7Npjr3UQwIWnMUMs58a8T+NOG8fkgN5o1/QQa7Ym
-X-Received: by 2002:ac8:7770:0:b0:3a5:4f6f:da0b with SMTP id h16-20020ac87770000000b003a54f6fda0bmr80734660qtu.29.1673026191117;
-        Fri, 06 Jan 2023 09:29:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673026191; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp447124ejc;
+        Fri, 6 Jan 2023 09:29:59 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuiGPD5HJgVCtDwgrEb0geVR8RB1YbLu5CNwNiP7bNx9CY1yVBl282DbUnM30Gm+Xk0Obnd
+X-Received: by 2002:a05:622a:1c06:b0:39c:da20:f7af with SMTP id bq6-20020a05622a1c0600b0039cda20f7afmr75493091qtb.12.1673026199271;
+        Fri, 06 Jan 2023 09:29:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673026199; cv=none;
         d=google.com; s=arc-20160816;
-        b=DVMTWNSwujzVggsXJbbME6z/LTlJ4X+H0O+iag67p+lXKJvTsRqO+eH7aDj/mej7/X
-         a47GLzqfZWd6NgfPJ6SVuwtE/93OTkoZKCuyoeobCr+W2sgerSZI7shSVDf04KAN5r5i
-         P2QF6fvtSKOa3pVllCu9R/er3eZWnDubwy3HlKnK0Td6ottqDSZ5BZ9s+Z98yKvkgOa7
-         UxLtQ9pq8+R4GmA8nnGldF68cYCNyyB1uhS217kfuWQzG4E6wSMzjnhONehEY3MKy50S
-         Jj7sH7kr36QfSKJkpmG+7k7ipo1ANudnriJUk+5rxFsvLzWNxP8k+lKUBpMKi4Je1hqq
-         qRtQ==
+        b=DmE1YfJ57An7BdpPZpFaSBhYGbkS30g6Bjs7Fj2Mc2v+U1BGiZAXnsX9eTsm8mu6JP
+         AX+VBou43z4LUTwb4uiVVmBEFIxuA+DqyZEFo33ky7wq8yPWhfVaqAve9HXFKAKauXyh
+         1lZYUHCCVi1WhQaDDFFXxoNJ+4sME75F8KIOTYEZp86xFqn/CFPshf2AmCee/D0w3tnK
+         6BvMQNcpANThxsIb0vxj9LklVf5tR1UDXttdBeUKK2tZdsZMvRXU20kTcI2Tbf6HEl6W
+         ZXt3yfo9qI958qx1NyjHSdLwW49om3z1uoXD1c2LmohVeXGQuvsZUgiVuREg/ASYA8Mj
+         3B8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
-        bh=fD2O4oH0Dmzzf9G/fxXOTB0KtH4/XlayZhdCdYqGvhQ=;
-        b=bqnNJlTbWafWfeYl3FnR8P0+Eqz1Sy/nRvWGWo0wsyCQJirNW9VVhaueIy2h/p1Boz
-         gPG2UtINQwHT3L/rt8t+TwNruu7CykVSAirot49h03N1o7iTdgRzmg5tLBdR/uno0xvx
-         Ab7243tI6EX642OwLMjJEpwMdj8GmkIQ6r2a7xPMnKSerIoODrH1ZyVXZhpVhie799aQ
-         wLA7Pnz9wO84g1hkDWaX40/KzRa+s9Z+WkdiNKhLSzHMyn5n0lj4C+df6QdPBXzM7Q3e
-         vVw7Cgil67fG7wu7tTjmmZffBV+69C6LGUYTS1hw+W1mppInmKDBFhIjY3ZI2QYGMt0E
-         LcaQ==
+        bh=RNl0RohGyGYaN8i6oHuZhCcSkYfrH1wD8BSvwo4RLCY=;
+        b=jxu/VUuCHvGn7WphL5u88hPyhIrkyEKyGYfFzBTUku8r2Z3CPQChWuCJuhA6uPyZsK
+         FfnnlH6WDBaa1BiNFgDyNJvAS/73d2TTW8e5jf1hV55EZLBAjjVZaD5j5C/7T52ZAv1y
+         LidNGwWu6XyU3opYQSIMOq3ztyTxACrrqi8lvBUxwo7KWIb7yhzxh1j5VhivSPJaroaQ
+         y8Ktezhut+l0K/s0skBoDb6vBCtl2eqzi7XR0naTOl3NDNO7ZwjQMdv1dY2YajHwhYjL
+         WhWrxDKu+j25YEKSFgPD/QbS/DEq8BbZJK+a3OKPRL7MCP8aBEuFUqmv3JqztaGFp5Eo
+         wyEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=MBT+QwsH;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=IR11832L;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ff19-20020a05622a4d9300b003a622111f91si1165219qtb.26.2023.01.06.09.29.50
+        by mx.google.com with ESMTPS id c21-20020ac81115000000b003a9837063c9si1067378qtj.642.2023.01.06.09.29.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Jan 2023 09:29:51 -0800 (PST)
+        Fri, 06 Jan 2023 09:29:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=MBT+QwsH;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=IR11832L;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pDqWg-0004S9-ID; Fri, 06 Jan 2023 12:29:06 -0500
+	id 1pDqWs-0004WC-B2; Fri, 06 Jan 2023 12:29:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pDqWc-0004Pw-3b; Fri, 06 Jan 2023 12:29:02 -0500
+ id 1pDqWd-0004RV-6j; Fri, 06 Jan 2023 12:29:04 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pDqWa-0004VB-C9; Fri, 06 Jan 2023 12:29:01 -0500
+ id 1pDqWb-0004bn-KU; Fri, 06 Jan 2023 12:29:02 -0500
 Received: from localhost.localdomain (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id C424620B92AC;
- Fri,  6 Jan 2023 09:28:57 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com C424620B92AC
+ by linux.microsoft.com (Postfix) with ESMTPSA id 6055A20B92AE;
+ Fri,  6 Jan 2023 09:28:59 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 6055A20B92AE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1673026139;
- bh=fD2O4oH0Dmzzf9G/fxXOTB0KtH4/XlayZhdCdYqGvhQ=;
+ s=default; t=1673026140;
+ bh=RNl0RohGyGYaN8i6oHuZhCcSkYfrH1wD8BSvwo4RLCY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MBT+QwsH2NSK1PbRq0f1N5RD/AgAWeD8Jp2LCJU+yeJY0cYJHjGzZN2Rrn9d208pk
- y50JGLxmjH+J3xbj++kPx/+5P3QuSE0jOyVVTG4v+lVh1/yIr1I1CIQvnXRfg8n3B2
- gHeurOG1udYIr6iOuzxPAS/zqijBFozzb+gUQ698=
+ b=IR11832L5qPu01VVESf/DM7MzzqP4FArqP2xn1fqcxjm1vVwfrSLpZI8Vc6J0Wqsq
+ 3xIAlg5+5bMFgAZFJpgPKaz/KITItnofRyys/jetlNDZcFSIkQOdqpBM0TSO99DXfy
+ PO2RYZp5A93ZgvLcUWSHeFx4MExwHaVL/LvKjXyg=
 From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, marcandre.lureau@redhat.com, pbonzini@redhat.com,
  peter.maydell@linaro.org
-Subject: [PATCH 1/2] hw/char/pl011: better handling of FIFO flags on LCR reset
-Date: Fri,  6 Jan 2023 18:28:50 +0100
-Message-Id: <20230106172851.2430-2-eiakovlev@linux.microsoft.com>
+Subject: [PATCH 2/2] hw/char/pl011: check if UART is enabled before RX or TX
+ operation
+Date: Fri,  6 Jan 2023 18:28:51 +0100
+Message-Id: <20230106172851.2430-3-eiakovlev@linux.microsoft.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230106172851.2430-1-eiakovlev@linux.microsoft.com>
 References: <20230106172851.2430-1-eiakovlev@linux.microsoft.com>
@@ -97,140 +98,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YwGtkQe0ft9K
+X-TUID: A5nEY9dTVg8e
 
-Current FIFO handling code does not reset RXFE/RXFF flags when guest
-resets FIFO by writing to UARTLCR register, although internal FIFO state
-is reset to 0 read count. Actual flag update will happen only on next
-read or write to UART. As a result of that any guest that expects RXFE
-flag to be set (and RXFF to be cleared) after resetting FIFO will just
-hang.
+UART should be enabled in general and have RX enabled specifically to be
+able to receive data from peripheral device. Same goes for transmitting
+data to peripheral device and a TXE flag.
 
-Correctly reset FIFO flags on FIFO reset. Also, clean up some FIFO
-depth handling code based on current FIFO mode.
+Check if UART CR register has EN and RXE or TXE bits enabled before
+trying to receive or transmit data.
 
 Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 ---
- hw/char/pl011.c         | 35 +++++++++++++++++++++--------------
- include/hw/char/pl011.h |  5 ++++-
- 2 files changed, 25 insertions(+), 15 deletions(-)
+ hw/char/pl011.c | 22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
 
 diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index c076813423..9108ed2be9 100644
+index 9108ed2be9..fcc2600944 100644
 --- a/hw/char/pl011.c
 +++ b/hw/char/pl011.c
-@@ -81,6 +81,18 @@ static void pl011_update(PL011State *s)
-     }
+@@ -54,6 +54,11 @@
+ #define INT_E (INT_OE | INT_BE | INT_PE | INT_FE)
+ #define INT_MS (INT_RI | INT_DSR | INT_DCD | INT_CTS)
+ 
++/* UARTCR bits */
++#define PL011_CR_UARTEN (1 << 0)
++#define PL011_CR_TXE    (1 << 8)
++#define PL011_CR_RXE    (1 << 9)
++
+ static const unsigned char pl011_id_arm[8] =
+   { 0x11, 0x10, 0x14, 0x00, 0x0d, 0xf0, 0x05, 0xb1 };
+ static const unsigned char pl011_id_luminary[8] =
+@@ -203,6 +208,11 @@ static void pl011_trace_baudrate_change(const PL011State *s)
+                                 s->ibrd, s->fbrd);
  }
  
-+static inline unsigned pl011_get_fifo_depth(PL011State *s)
++static inline bool pl011_can_transmit(PL011State *s)
 +{
-+    return s->lcr & 0x10 ? PL011_FIFO_DEPTH : 1;
++    return s->cr & PL011_CR_UARTEN && s->cr & PL011_CR_TXE;
 +}
 +
-+static inline void pl011_reset_pipe(PL011State *s)
-+{
-+    s->read_count = 0;
-+    s->read_pos = 0;
-+    s->flags = PL011_FLAG_RXFE | PL011_FLAG_TXFE;
-+}
-+
- static uint64_t pl011_read(void *opaque, hwaddr offset,
-                            unsigned size)
+ static void pl011_write(void *opaque, hwaddr offset,
+                         uint64_t value, unsigned size)
  {
-@@ -94,7 +106,7 @@ static uint64_t pl011_read(void *opaque, hwaddr offset,
-         c = s->read_fifo[s->read_pos];
-         if (s->read_count > 0) {
-             s->read_count--;
--            if (++s->read_pos == 16)
-+            if (++s->read_pos == PL011_FIFO_DEPTH)
-                 s->read_pos = 0;
-         }
-         if (s->read_count == 0) {
-@@ -229,8 +241,7 @@ static void pl011_write(void *opaque, hwaddr offset,
-     case 11: /* UARTLCR_H */
-         /* Reset the FIFO state on FIFO enable or disable */
-         if ((s->lcr ^ value) & 0x10) {
--            s->read_count = 0;
--            s->read_pos = 0;
-+            pl011_reset_pipe(s);
-         }
-         if ((s->lcr ^ value) & 0x1) {
-             int break_enable = value & 0x1;
-@@ -273,11 +284,7 @@ static int pl011_can_receive(void *opaque)
+@@ -213,7 +223,9 @@ static void pl011_write(void *opaque, hwaddr offset,
+ 
+     switch (offset >> 2) {
+     case 0: /* UARTDR */
+-        /* ??? Check if transmitter is enabled.  */
++        if (!pl011_can_transmit(s)) {
++            break;
++        }
+         ch = value;
+         /* XXX this blocks entire thread. Rewrite to use
+          * qemu_chr_fe_write and background I/O callbacks */
+@@ -284,7 +296,11 @@ static int pl011_can_receive(void *opaque)
      PL011State *s = (PL011State *)opaque;
      int r;
  
--    if (s->lcr & 0x10) {
--        r = s->read_count < 16;
--    } else {
--        r = s->read_count < 1;
--    }
-+    r = s->read_count < pl011_get_fifo_depth(s);
+-    r = s->read_count < pl011_get_fifo_depth(s);
++    if (!(s->cr & PL011_CR_UARTEN) || !(s->cr & PL011_CR_RXE)) {
++        r = 0;
++    } else {
++        r = s->read_count < pl011_get_fifo_depth(s);
++    }
      trace_pl011_can_receive(s->lcr, s->read_count, r);
      return r;
  }
-@@ -286,15 +293,15 @@ static void pl011_put_fifo(void *opaque, uint32_t value)
- {
-     PL011State *s = (PL011State *)opaque;
-     int slot;
-+    unsigned pipe_depth;
+@@ -405,7 +421,7 @@ static void pl011_init(Object *obj)
  
--    slot = s->read_pos + s->read_count;
--    if (slot >= 16)
--        slot -= 16;
-+    pipe_depth = pl011_get_fifo_depth(s);
-+    slot = (s->read_pos + s->read_count) % pipe_depth;
-     s->read_fifo[slot] = value;
-     s->read_count++;
-     s->flags &= ~PL011_FLAG_RXFE;
-     trace_pl011_put_fifo(value, s->read_count);
--    if (!(s->lcr & 0x10) || s->read_count == 16) {
-+    if (s->read_count == pipe_depth) {
-         trace_pl011_put_fifo_full();
-         s->flags |= PL011_FLAG_RXFF;
-     }
-@@ -359,7 +366,7 @@ static const VMStateDescription vmstate_pl011 = {
-         VMSTATE_UINT32(dmacr, PL011State),
-         VMSTATE_UINT32(int_enabled, PL011State),
-         VMSTATE_UINT32(int_level, PL011State),
--        VMSTATE_UINT32_ARRAY(read_fifo, PL011State, 16),
-+        VMSTATE_UINT32_ARRAY(read_fifo, PL011State, PL011_FIFO_DEPTH),
-         VMSTATE_UINT32(ilpr, PL011State),
-         VMSTATE_UINT32(ibrd, PL011State),
-         VMSTATE_UINT32(fbrd, PL011State),
-@@ -399,7 +406,7 @@ static void pl011_init(Object *obj)
      s->read_trigger = 1;
      s->ifl = 0x12;
-     s->cr = 0x300;
--    s->flags = 0x90;
-+    pl011_reset_pipe(s);
+-    s->cr = 0x300;
++    s->cr = PL011_CR_RXE | PL011_CR_TXE;
+     pl011_reset_pipe(s);
  
      s->id = pl011_id_arm;
- }
-diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
-index dc2c90eedc..926322e242 100644
---- a/include/hw/char/pl011.h
-+++ b/include/hw/char/pl011.h
-@@ -27,6 +27,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(PL011State, PL011)
- /* This shares the same struct (and cast macro) as the base pl011 device */
- #define TYPE_PL011_LUMINARY "pl011_luminary"
- 
-+/* Depth of UART FIFO in bytes, when FIFO mode is enabled (else depth == 1) */
-+#define PL011_FIFO_DEPTH 16
-+
- struct PL011State {
-     SysBusDevice parent_obj;
- 
-@@ -39,7 +42,7 @@ struct PL011State {
-     uint32_t dmacr;
-     uint32_t int_enabled;
-     uint32_t int_level;
--    uint32_t read_fifo[16];
-+    uint32_t read_fifo[PL011_FIFO_DEPTH];
-     uint32_t ilpr;
-     uint32_t ibrd;
-     uint32_t fbrd;
 -- 
 2.34.1
 

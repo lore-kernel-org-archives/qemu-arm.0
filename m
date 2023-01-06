@@ -1,74 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp446670ejc;
-        Fri, 6 Jan 2023 09:29:12 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtJc8PG/rGkXjxb5bwLiD0+x79eiOdS7KE16JUE8fzD2dUFsDCWShnW+xL5yzcAeQEVGRUl
-X-Received: by 2002:ac8:7655:0:b0:3a7:ea5c:f453 with SMTP id i21-20020ac87655000000b003a7ea5cf453mr72288216qtr.9.1673026152284;
-        Fri, 06 Jan 2023 09:29:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673026152; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp447051ejc;
+        Fri, 6 Jan 2023 09:29:51 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtpqEVJSiwN9pjSEcb3+eimauZlHRgx7Npjr3UQwIWnMUMs58a8T+NOG8fkgN5o1/QQa7Ym
+X-Received: by 2002:ac8:7770:0:b0:3a5:4f6f:da0b with SMTP id h16-20020ac87770000000b003a54f6fda0bmr80734660qtu.29.1673026191117;
+        Fri, 06 Jan 2023 09:29:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673026191; cv=none;
         d=google.com; s=arc-20160816;
-        b=YgtrQ1h2uAz/TN+5Er9lFY45ByqHioe6yYRo5xhJgDp9uh70m9WCOEWuACGHDl/TPQ
-         E9Uundekxt1B9i1jbtr8B3RyeYYYzMVKQT0P/Ho19o+Yb6e47XiUVMJb71dLNMa9Akup
-         G2bGlEkWKzsjZI8vSEjxeXztLoL8GRIyEt3UY/1/CbOyqdrgswhlUQFG/rSoT4845Dpg
-         ebqaswZSNjdYbh3gt9SgHETKmWfJ+uaYUeRHi/swwKMPFD12ifVJxf8INlfSQh38zhCN
-         Fq4KNiHwokOCZy58ZReWKBdBydjk0E3Q1cITQPtQTdj5b9PeVfMrCJ88K8POm6RjNAPD
-         t2zg==
+        b=DVMTWNSwujzVggsXJbbME6z/LTlJ4X+H0O+iag67p+lXKJvTsRqO+eH7aDj/mej7/X
+         a47GLzqfZWd6NgfPJ6SVuwtE/93OTkoZKCuyoeobCr+W2sgerSZI7shSVDf04KAN5r5i
+         P2QF6fvtSKOa3pVllCu9R/er3eZWnDubwy3HlKnK0Td6ottqDSZ5BZ9s+Z98yKvkgOa7
+         UxLtQ9pq8+R4GmA8nnGldF68cYCNyyB1uhS217kfuWQzG4E6wSMzjnhONehEY3MKy50S
+         Jj7sH7kr36QfSKJkpmG+7k7ipo1ANudnriJUk+5rxFsvLzWNxP8k+lKUBpMKi4Je1hqq
+         qRtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
-         :dkim-filter;
-        bh=P7KG7W2xk0l0+mElEeVX1hNHOHzvVAM/573gniUSkoE=;
-        b=NDRuo2J4NXrgTjQ1DVTio6oEnCUyOb73ZjO0Yx+89TEKtHuvDdVT4yM/EVdMRDxIoV
-         ftB+dgxUMxa4eqPmNdcegPNanGpjK68NP6nR1DRfGHE0QFSFC2Y0nh1W3bwIWVyjctzE
-         8fV4//C+Rm4GVoK7rCfcgzGRsGtDaH26k0qz5IdQKs8DUi0A2PP6uNCsxtMxDQDvFt2Z
-         ZOzsgsPqAH1ngcLGM4N2dXlBzneO+Np8+dEg3MxmIlzMEmmKxoIeAXRjg0DAOXJAG8Yf
-         3WRY93cdZYu7VWwnO75XzyN+MpRXEOAe3Ra+Hd/NcqB3qonQBMgHjqqzFG8mUHkTv4ZR
-         BQsQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=fD2O4oH0Dmzzf9G/fxXOTB0KtH4/XlayZhdCdYqGvhQ=;
+        b=bqnNJlTbWafWfeYl3FnR8P0+Eqz1Sy/nRvWGWo0wsyCQJirNW9VVhaueIy2h/p1Boz
+         gPG2UtINQwHT3L/rt8t+TwNruu7CykVSAirot49h03N1o7iTdgRzmg5tLBdR/uno0xvx
+         Ab7243tI6EX642OwLMjJEpwMdj8GmkIQ6r2a7xPMnKSerIoODrH1ZyVXZhpVhie799aQ
+         wLA7Pnz9wO84g1hkDWaX40/KzRa+s9Z+WkdiNKhLSzHMyn5n0lj4C+df6QdPBXzM7Q3e
+         vVw7Cgil67fG7wu7tTjmmZffBV+69C6LGUYTS1hw+W1mppInmKDBFhIjY3ZI2QYGMt0E
+         LcaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=LHLN+S0u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=MBT+QwsH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k15-20020ac8474f000000b003a7f5484791si1048632qtp.487.2023.01.06.09.29.12
+        by mx.google.com with ESMTPS id ff19-20020a05622a4d9300b003a622111f91si1165219qtb.26.2023.01.06.09.29.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Jan 2023 09:29:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 Jan 2023 09:29:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=LHLN+S0u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=MBT+QwsH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pDqWe-0004RI-Fz; Fri, 06 Jan 2023 12:29:04 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pDqWg-0004S9-ID; Fri, 06 Jan 2023 12:29:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pDqWb-0004Pu-75; Fri, 06 Jan 2023 12:29:02 -0500
+ id 1pDqWc-0004Pw-3b; Fri, 06 Jan 2023 12:29:02 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pDqWZ-0004R3-2x; Fri, 06 Jan 2023 12:29:00 -0500
+ id 1pDqWa-0004VB-C9; Fri, 06 Jan 2023 12:29:01 -0500
 Received: from localhost.localdomain (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id 2C1BE20B92AA;
- Fri,  6 Jan 2023 09:28:56 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 2C1BE20B92AA
+ by linux.microsoft.com (Postfix) with ESMTPSA id C424620B92AC;
+ Fri,  6 Jan 2023 09:28:57 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com C424620B92AC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1673026137;
- bh=P7KG7W2xk0l0+mElEeVX1hNHOHzvVAM/573gniUSkoE=;
- h=From:To:Cc:Subject:Date:From;
- b=LHLN+S0uNy2OBxkW8kKqjB4NrCYL/xrB6Td15NZ+w8wo6X4xqidCA8axKoO0prMqU
- gsyJDD0I5Td7R8o9pW3Cl4Y11KbpMZjTFJa31ChVWWNd5773mbmHqkjkvG0TzbFEq8
- 5pXRUIoVQyMtD0jcGiiRlJtwSk2/hX5C8dVl7SaY=
+ s=default; t=1673026139;
+ bh=fD2O4oH0Dmzzf9G/fxXOTB0KtH4/XlayZhdCdYqGvhQ=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=MBT+QwsH2NSK1PbRq0f1N5RD/AgAWeD8Jp2LCJU+yeJY0cYJHjGzZN2Rrn9d208pk
+ y50JGLxmjH+J3xbj++kPx/+5P3QuSE0jOyVVTG4v+lVh1/yIr1I1CIQvnXRfg8n3B2
+ gHeurOG1udYIr6iOuzxPAS/zqijBFozzb+gUQ698=
 From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, marcandre.lureau@redhat.com, pbonzini@redhat.com,
  peter.maydell@linaro.org
-Subject: [PATCH 0/2] Series of fixes for PL011 char device
-Date: Fri,  6 Jan 2023 18:28:49 +0100
-Message-Id: <20230106172851.2430-1-eiakovlev@linux.microsoft.com>
+Subject: [PATCH 1/2] hw/char/pl011: better handling of FIFO flags on LCR reset
+Date: Fri,  6 Jan 2023 18:28:50 +0100
+Message-Id: <20230106172851.2430-2-eiakovlev@linux.microsoft.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230106172851.2430-1-eiakovlev@linux.microsoft.com>
+References: <20230106172851.2430-1-eiakovlev@linux.microsoft.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=13.77.154.182;
@@ -82,29 +84,153 @@ X-Spam_report: (-19.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  USER_IN_DEF_DKIM_WL=-7.5,
  USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OkAbNM+0T6U+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YwGtkQe0ft9K
 
-Evgeny Iakovlev (2):
-  hw/char/pl011: better handling of FIFO flags on LCR reset
-  hw/char/pl011: check if UART is enabled before RX or TX operation
+Current FIFO handling code does not reset RXFE/RXFF flags when guest
+resets FIFO by writing to UARTLCR register, although internal FIFO state
+is reset to 0 read count. Actual flag update will happen only on next
+read or write to UART. As a result of that any guest that expects RXFE
+flag to be set (and RXFF to be cleared) after resetting FIFO will just
+hang.
 
- hw/char/pl011.c         | 51 ++++++++++++++++++++++++++++++-----------
- include/hw/char/pl011.h |  5 +++-
- 2 files changed, 41 insertions(+), 15 deletions(-)
+Correctly reset FIFO flags on FIFO reset. Also, clean up some FIFO
+depth handling code based on current FIFO mode.
 
+Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
+---
+ hw/char/pl011.c         | 35 +++++++++++++++++++++--------------
+ include/hw/char/pl011.h |  5 ++++-
+ 2 files changed, 25 insertions(+), 15 deletions(-)
+
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index c076813423..9108ed2be9 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -81,6 +81,18 @@ static void pl011_update(PL011State *s)
+     }
+ }
+ 
++static inline unsigned pl011_get_fifo_depth(PL011State *s)
++{
++    return s->lcr & 0x10 ? PL011_FIFO_DEPTH : 1;
++}
++
++static inline void pl011_reset_pipe(PL011State *s)
++{
++    s->read_count = 0;
++    s->read_pos = 0;
++    s->flags = PL011_FLAG_RXFE | PL011_FLAG_TXFE;
++}
++
+ static uint64_t pl011_read(void *opaque, hwaddr offset,
+                            unsigned size)
+ {
+@@ -94,7 +106,7 @@ static uint64_t pl011_read(void *opaque, hwaddr offset,
+         c = s->read_fifo[s->read_pos];
+         if (s->read_count > 0) {
+             s->read_count--;
+-            if (++s->read_pos == 16)
++            if (++s->read_pos == PL011_FIFO_DEPTH)
+                 s->read_pos = 0;
+         }
+         if (s->read_count == 0) {
+@@ -229,8 +241,7 @@ static void pl011_write(void *opaque, hwaddr offset,
+     case 11: /* UARTLCR_H */
+         /* Reset the FIFO state on FIFO enable or disable */
+         if ((s->lcr ^ value) & 0x10) {
+-            s->read_count = 0;
+-            s->read_pos = 0;
++            pl011_reset_pipe(s);
+         }
+         if ((s->lcr ^ value) & 0x1) {
+             int break_enable = value & 0x1;
+@@ -273,11 +284,7 @@ static int pl011_can_receive(void *opaque)
+     PL011State *s = (PL011State *)opaque;
+     int r;
+ 
+-    if (s->lcr & 0x10) {
+-        r = s->read_count < 16;
+-    } else {
+-        r = s->read_count < 1;
+-    }
++    r = s->read_count < pl011_get_fifo_depth(s);
+     trace_pl011_can_receive(s->lcr, s->read_count, r);
+     return r;
+ }
+@@ -286,15 +293,15 @@ static void pl011_put_fifo(void *opaque, uint32_t value)
+ {
+     PL011State *s = (PL011State *)opaque;
+     int slot;
++    unsigned pipe_depth;
+ 
+-    slot = s->read_pos + s->read_count;
+-    if (slot >= 16)
+-        slot -= 16;
++    pipe_depth = pl011_get_fifo_depth(s);
++    slot = (s->read_pos + s->read_count) % pipe_depth;
+     s->read_fifo[slot] = value;
+     s->read_count++;
+     s->flags &= ~PL011_FLAG_RXFE;
+     trace_pl011_put_fifo(value, s->read_count);
+-    if (!(s->lcr & 0x10) || s->read_count == 16) {
++    if (s->read_count == pipe_depth) {
+         trace_pl011_put_fifo_full();
+         s->flags |= PL011_FLAG_RXFF;
+     }
+@@ -359,7 +366,7 @@ static const VMStateDescription vmstate_pl011 = {
+         VMSTATE_UINT32(dmacr, PL011State),
+         VMSTATE_UINT32(int_enabled, PL011State),
+         VMSTATE_UINT32(int_level, PL011State),
+-        VMSTATE_UINT32_ARRAY(read_fifo, PL011State, 16),
++        VMSTATE_UINT32_ARRAY(read_fifo, PL011State, PL011_FIFO_DEPTH),
+         VMSTATE_UINT32(ilpr, PL011State),
+         VMSTATE_UINT32(ibrd, PL011State),
+         VMSTATE_UINT32(fbrd, PL011State),
+@@ -399,7 +406,7 @@ static void pl011_init(Object *obj)
+     s->read_trigger = 1;
+     s->ifl = 0x12;
+     s->cr = 0x300;
+-    s->flags = 0x90;
++    pl011_reset_pipe(s);
+ 
+     s->id = pl011_id_arm;
+ }
+diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
+index dc2c90eedc..926322e242 100644
+--- a/include/hw/char/pl011.h
++++ b/include/hw/char/pl011.h
+@@ -27,6 +27,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(PL011State, PL011)
+ /* This shares the same struct (and cast macro) as the base pl011 device */
+ #define TYPE_PL011_LUMINARY "pl011_luminary"
+ 
++/* Depth of UART FIFO in bytes, when FIFO mode is enabled (else depth == 1) */
++#define PL011_FIFO_DEPTH 16
++
+ struct PL011State {
+     SysBusDevice parent_obj;
+ 
+@@ -39,7 +42,7 @@ struct PL011State {
+     uint32_t dmacr;
+     uint32_t int_enabled;
+     uint32_t int_level;
+-    uint32_t read_fifo[16];
++    uint32_t read_fifo[PL011_FIFO_DEPTH];
+     uint32_t ilpr;
+     uint32_t ibrd;
+     uint32_t fbrd;
 -- 
 2.34.1
 

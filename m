@@ -1,119 +1,106 @@
-Received: by 2002:a8a:1193:0:0:0:0:0 with SMTP id m19csp876894ocs;
-        Thu, 29 Sep 2022 02:27:14 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4v4Tg+CmFqIZxfNnaD/j4BOrIcTyHwl6GA2blHGgxOaVyMAS+AbD6oDjFjY4u9S4Yy1Oqx
-X-Received: by 2002:ac8:7f03:0:b0:35c:e89b:f972 with SMTP id f3-20020ac87f03000000b0035ce89bf972mr1512748qtk.679.1664443634538;
-        Thu, 29 Sep 2022 02:27:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1664443634; cv=none;
+Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp691414ejb;
+        Thu, 5 Jan 2023 16:47:13 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsxWrZsG83zDkrNpneLw6hBJr+AzU76hQkx9A9ahF05XRXTGBKDmmfGKeXFo12e+56hdPIW
+X-Received: by 2002:a0c:f792:0:b0:531:801d:8ef2 with SMTP id s18-20020a0cf792000000b00531801d8ef2mr54457633qvn.29.1672966033016;
+        Thu, 05 Jan 2023 16:47:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1672966033; cv=none;
         d=google.com; s=arc-20160816;
-        b=xk6rz0TLJZU3+WoWZaSlqWpFPX6mZtQk/UQ7+Pz0kIj+H6F+FYOJdelNHRRUlaONFf
-         sK3QjayGXBE66/7I6B1dqFZunb2NFV+nPTnwTbnKD8kCNK8NaY+vHHvgzYyjXowh9Y9n
-         cUSB5d9NmRKG/2UX5vv+O40GrVnhmLZcCHXexVkSrWHUiQDRUPrKF474gKMYP/aTZdfa
-         7ndrAS6iHi9R2rBVSY3JGTcPhbIlVrMZ1227td98Rl+IcMDgjKccD/l88U0FjVELCTAg
-         OGAzZzmqvnJSmpHdFiw+Juv+KX4ai3uA79lfQ+2akOAZZ8W2NGDDQ8YdKrtxGYHM7LpF
-         cYyA==
+        b=Z8ZWmDjkY/B0FsDSmhS5q7RtkLK+nCGlhpJQBQdP7OYFgxSc7Ce92CMdRklk7lAD39
+         v5Kmdw7M3mzb6yU1Q6fjj+UpWJY9NSjrTOlofy3p/sziWufV/KmmFRmcB68N2CPEsGHc
+         hoqEFNvRrTinJ0k5IUhjWqxe6jYVyHNq577MQfwFGgHjgtVrTPxBeOGL39yBUUnV5/rF
+         P64rVTBpi1kyO4MSV4of9kibSfkzbIDMtFoLDqDMu66YI5nOnne1l7nUXPUcTGM5JPSj
+         gggGFgoAKz4SKHemqvu/K7cFpj8y9/SGJHeuKYOLjEeAGx3lFTmW3PXsAZNLv+/JG7yC
+         nGQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=A3Oy43Qdq+TsIWtVdEhsHV1+HzXdLgornpIO4q3Bbb0=;
-        b=stiV1HR/bdu8DHWdaL8rw7N4degTJ5vJRhedkkudhxzvpDkwPv7h8mqbij4sgMXkbR
-         bzsoqwTr0GHnwOR5PzQRPqtz219rv86QT/41RnUGP1XowJvsuB3Prkm+lPvkImy+Le5T
-         635Jx7oqQGTEsf0WjawP7ZiJqXakZ2trDsJ2bxeH2liwcrzWTneICwjavbpE1CvU65PB
-         YMehEa8rm02JYaVrvPeecYc+1vwpSKULeSFPyvlGdOr53QAB/s6RRneDBxv3nPDVLDaK
-         6n9kApfGLhFSZtYMHySsqUTCQLwdyebj/mjuhMMdie9vzBOXwhPkWTQl15whVE+7Sqpw
-         Oj6A==
+        bh=0l41fp31veQi/wynlTsSf5TodSUaRGNpBOlsPbWp4fI=;
+        b=0mi22emF88Oe97t3Z67if2Aw0J5M40z0c1k9NxNzJCYBaycY91cbJ2QVflqK/wNrdZ
+         mYzDrPUBQ4/gH/OErj0IvdqrlaxfnUVIT32IoG3ZuooxOGFOarYhSNv/ZIXNjsGGYWQx
+         seiEfoJ2yTSr8R3PI7A/M4JqR/6umwX88APsZe4Kh6sUf8391Xj6tlQionsh/yf6JYY9
+         EOyWZXFyNisB8W9z1+yfbz1iAOJfRfQEFkVwKIvDJfoc1N3CbmMYFVSFfjGa02q2HkkB
+         HbNRohElbwVJhIrCKWL5gHFdASXRC3hh5dcz50vQ3Fur5LjKXvqX93oWmRskpFH8J/Kn
+         LcTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=bZx6yqf2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=USCz2Mof;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u125-20020a376083000000b006ce3f38956csi965226qkb.282.2022.09.29.02.27.14
+        by mx.google.com with ESMTPS id 12-20020a0562140d0c00b005271a37a448si5957075qvh.61.2023.01.05.16.47.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Sep 2022 02:27:14 -0700 (PDT)
+        Thu, 05 Jan 2023 16:47:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=bZx6yqf2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41112 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=USCz2Mof;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1odpp4-0004YP-2k
-	for alex.bennee@linaro.org; Thu, 29 Sep 2022 05:27:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55090)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pDasv-0005Jl-6j; Thu, 05 Jan 2023 19:47:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1odpnm-0004WW-PV
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 05:25:54 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:37763)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1pDast-0005JS-9K; Thu, 05 Jan 2023 19:46:59 -0500
+Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1odpnk-0000MW-Kd
- for qemu-arm@nongnu.org; Thu, 29 Sep 2022 05:25:54 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id a41so1149258edf.4
- for <qemu-arm@nongnu.org>; Thu, 29 Sep 2022 02:25:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20210112.gappssmtp.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1pDasr-0008L0-2L; Thu, 05 Jan 2023 19:46:58 -0500
+Received: by mail-ua1-x929.google.com with SMTP id d14so7210968uak.12;
+ Thu, 05 Jan 2023 16:46:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=A3Oy43Qdq+TsIWtVdEhsHV1+HzXdLgornpIO4q3Bbb0=;
- b=bZx6yqf2518J3YzVWR1gTWml4DAkGI6qA9LnSneNXe6/4NFGZnKPXCov2XJVvg8cNT
- DPLnvJcZ4lSfE32V/0Ylz/LG4cJeMWoW98N3EKWa2vWurLFPaghB3tLltaYJlUNUExxq
- /bwj1FcKqcoBIx2IVECJZiibWfcLMSS1x4sceB4Enw6LCUVzSpZi6z1f2uapCP24AR7B
- KPOdmJ8lu1W4fuLjeVWqUKvgxFDbsuvUGSca5Lsg4mME5DNviUAtShekrm1832UYXJHd
- f1hS2KlhM9FZ4WUFaC6RcFGlrQli9ExJnvraLZgcaKzVk6MoXDocFul6A7SQ/FW2sQC5
- ffig==
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=0l41fp31veQi/wynlTsSf5TodSUaRGNpBOlsPbWp4fI=;
+ b=USCz2MofJgwYIqn+bYZu61PN2T7R/Y44nyuAoHWiFOlzbejoVENj1/N2LuN9r1GMRo
+ 2iBbx+QztNWpSZGbTeUfhNQLu628jD+zbgjOe1P99s+oTbrObGqbI/emgzCkmOdj9lnI
+ h05t503Q5XaPrqWSdZJ+XCNvcoIiJNThxS/uBymLYTo4zTwagrQieYbQJwKd5LmIGFUW
+ niwzjxTZneX3n2PEHuYhuUO0nDFHlqCvhjPw6vnrSZFg+zsGYFZrp0iErI8sL/VNihYy
+ 3mfeDxli/JAqevpAdgb+GdjXMZcNqQ3NS+xgCdx4paul6/kaxYQG1ehOKYOMAFBn+te3
+ fP4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=A3Oy43Qdq+TsIWtVdEhsHV1+HzXdLgornpIO4q3Bbb0=;
- b=rqVv6rajf8le5FZeDuXTKH3IOrlAv+wtvbkhCl0oHNQMcA8DEIgcpbgLCoG4SGQDe1
- ZQ6ByTxPSsd3+VGb65i1B96US9JFhNthfhMarH/w8r5qpVa5zr3jato0xlMtk3C4zE+F
- 8hPCV5Et8LxVOA9VQn+zVSI6nqsLGRDLN42pIrXuvOuHeGlRmexhomeE1imGR9kf7xqa
- fP/Su/U12UHKlT2EWZvL4MzEc6oAk79b5NKocd/R+MzU35ErX9Qgjk5iOvLbo6Tx43gw
- bfd9oG6fpDeUAykGWNF3YIYGFfEwO7Glo/0Igcus7IAvqoe/r4l1rDm6gqsMwYXQcMRz
- 0ouQ==
-X-Gm-Message-State: ACrzQf3W/N9as0OMCH3WZ9J+8Mvb51u7STsoWLCEJzbQ7+uxBqC/yqlj
- DLecsA44OpsmcGNo0ri2AhnTtAQFxTyovhd6ZJZxDw==
-X-Received: by 2002:a05:6402:400e:b0:458:29c3:ba34 with SMTP id
- d14-20020a056402400e00b0045829c3ba34mr1563901eda.294.1664443550596; Thu, 29
- Sep 2022 02:25:50 -0700 (PDT)
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=0l41fp31veQi/wynlTsSf5TodSUaRGNpBOlsPbWp4fI=;
+ b=X0ntePxBWP1fmn4eZ+2j6wMS9a5WHAgl3r+SAk2dJW5vLcGLR9sBW9MAu7js64PdyP
+ ZHYZ2jkEA9cgNOuRlMmQvCe1q8cHbVI9CXixIrYlMFMY6a3/NG38GXdwQAQy6qUY24dZ
+ uY50doUC+rjJQSPAA1dAsP9L1+HvxnqLZAaoJqY9mDjobWq3CQT0MouLk4UrsvnH4ZII
+ dTIM1c36dF7+ZOyC9H3yaxPi0iuo1jitX+ugGKvwwqRVDYO5RuMP94Pzi9mSWkrCKMnT
+ x1+DdT9j9yVPN6wouHi7EC65jJyD4HWF02dmq0SJzSQkEsm5fKr0pWEqf7nV7+gKuXxC
+ 5Uxg==
+X-Gm-Message-State: AFqh2kpk3YYVy6nZKVz37RM2FOmiF6u+MAf2+/Sg3goQhjCRRPRUE8Mb
+ x0zpnHtG9g3734dcjSaTMIU0wPvLWxPGpjQhJEc=
+X-Received: by 2002:ab0:1547:0:b0:418:f948:259f with SMTP id
+ p7-20020ab01547000000b00418f948259fmr4800321uae.38.1672966015122; Thu, 05 Jan
+ 2023 16:46:55 -0800 (PST)
 MIME-Version: 1.0
-References: <20220831013236.32937-1-akihiko.odaki@daynix.com>
- <87tu5qulay.fsf@pond.sub.org>
- <CAE=JJXdg=Miisek8WeqQ12NqL8obzmuyzD0mbv1SfiJTyVBLuw@mail.gmail.com>
- <875yi2mat1.fsf@pond.sub.org>
- <CAE=JJXcRH-0TuM7WgbM35Nb=Ud94K-LUcdzjoyJDMEuK9o=uFw@mail.gmail.com>
-In-Reply-To: <CAE=JJXcRH-0TuM7WgbM35Nb=Ud94K-LUcdzjoyJDMEuK9o=uFw@mail.gmail.com>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Thu, 29 Sep 2022 18:25:39 +0900
-Message-ID: <CAE=JJXcsPkQyfPY0SAam6uCu3CQze6rOr3kWuo8pk1qiMr_7VA@mail.gmail.com>
-Subject: Re: [PATCH v2] pci: Assert that capabilities never overlap
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
- Alex Williamson <alex.williamson@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>, 
- Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason Wang <jasowang@redhat.com>, 
- Stefan Weil <sw@weilnetz.de>, Keith Busch <kbusch@kernel.org>,
- Klaus Jensen <its@irrelevant.dk>, 
- Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, 
- Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+References: <20221230145733.200496-1-balbi@kernel.org>
+ <20221230145733.200496-3-balbi@kernel.org>
+In-Reply-To: <20221230145733.200496-3-balbi@kernel.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 6 Jan 2023 10:46:29 +1000
+Message-ID: <CAKmqyKPx5ed-uvT3VQ5k=DL3KWd0cYDie_fJzhPFb5pW-U5Y2Q@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] hw/arm: Add Olimex H405
+To: Felipe Balbi <balbi@kernel.org>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: none client-ip=2a00:1450:4864:20::52a;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2607:f8b0:4864:20::929;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x929.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,78 +114,182 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GGhmlUGgDSL+
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lnfRMojQ2VKT
 
-On Mon, Sep 5, 2022 at 7:11 PM Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+On Sat, Dec 31, 2022 at 1:01 AM Felipe Balbi <balbi@kernel.org> wrote:
 >
-> On Mon, Sep 5, 2022 at 6:26 PM Markus Armbruster <armbru@redhat.com> wrote:
-> >
-> > Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> >
-> > > On Fri, Sep 2, 2022 at 7:23 PM Markus Armbruster <armbru@redhat.com> wrote:
-> > >>
-> > >> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> > >>
-> > >> > pci_add_capability appears most PCI devices. Its error handling required
-> > >> > lots of code, and led to inconsistent behaviors such as:
-> > >> > - passing error_abort
-> > >> > - passing error_fatal
-> > >> > - asserting the returned value
-> > >> > - propagating the error to the caller
-> > >> > - skipping the rest of the function
-> > >> > - just ignoring
-> > >> >
-> > >> > The code generating errors in pci_add_capability had a comment which
-> > >> > says:
-> > >> >> Verify that capabilities don't overlap.  Note: device assignment
-> > >> >> depends on this check to verify that the device is not broken.
-> > >> >> Should never trigger for emulated devices, but it's helpful for
-> > >> >> debugging these.
-> > >> >
-> > >> > Indeed vfio has some code that passes capability offsets and sizes from
-> > >> > a physical device, but it explicitly pays attention so that the
-> > >> > capabilities never overlap.
-> > >>
-> > >> I can't see that at a glance.  Can you give me a clue?
-> > >>
-> > >> >                             Therefore, we can always assert that
-> > >> > capabilities never overlap when pci_add_capability is called, resolving
-> > >> > these inconsistencies.
-> > >> >
-> > >> > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> > >>
-> > >
-> > > Looking at vfio_add_std_cap(), and vfio_add_ext_cap() it seems that
-> > > they are clipping the size of capabilities so that they do not
-> > > overlap, if I read it correctly.
-> >
-> > If we want to deal gracefully with buggy physical devices, we need to
-> > treat pdev->config[] as untrusted input.
-> >
-> > As far as I can tell:
-> >
-> > * vfio_add_capabilities() replicates the physical device's capabilities
-> >   (starting at pdev->config[PCI_CAPABILITY_LIST]) in the virtual device.
-> >
-> > * vfio_add_std_cap() is a helper to add the tail starting at
-> >   pdev->config[pos].
-> >
-> > Could the physical device's capabilities overlap?  If yes, what would
-> > happen before and after your series?
-> >
+> Olimex makes a series of low-cost STM32 boards. This commit introduces
+> the minimum setup to support SMT32-H405. See [1] for details
 >
-> When the capabilities overlap, vfio_std_cap_max_size() and
-> vfio_ext_cap_max_size(), called by vfio_add_std_cap(),
-> vfio_add_ext_cap() should clip the size of capabilities. Comments in
-> vfio_add_std_cap() and vfio_add_ext_cap() say: "Since QEMU doesn't
-> actually handle many of the config accesses, exact size doesn't seem
-> worthwhile."
+> [1] https://www.olimex.com/Products/ARM/ST/STM32-H405/
 >
-> Regards,
-> Akihiko Odaki
+> Signed-off-by: Felipe Balbi <balbi@kernel.org>
 
-Hi, please check the last reply I have sent if you have not yet.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Regards,
-Akihiko Odaki
+Alistair
+
+> ---
+>
+> Changes since v1:
+>         - Add a note in stm32.rst
+>         - Initialize default_cpu_type to cortex-m4
+>         - 0-initialize default_ram_size
+>
+>  MAINTAINERS                             |  6 +++
+>  configs/devices/arm-softmmu/default.mak |  1 +
+>  docs/system/arm/stm32.rst               |  1 +
+>  hw/arm/Kconfig                          |  4 ++
+>  hw/arm/meson.build                      |  1 +
+>  hw/arm/olimex-stm32-h405.c              | 69 +++++++++++++++++++++++++
+>  6 files changed, 82 insertions(+)
+>  create mode 100644 hw/arm/olimex-stm32-h405.c
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 3bd433b65a55..e37846df0071 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1026,6 +1026,12 @@ L: qemu-arm@nongnu.org
+>  S: Maintained
+>  F: hw/arm/netduinoplus2.c
+>
+> +Olimex STM32 H405
+> +M: Felipe Balbi <balbi@kernel.org>
+> +L: qemu-arm@nongnu.org
+> +S: Maintained
+> +F: hw/arm/olimex-stm32-h405.c
+> +
+>  SmartFusion2
+>  M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>  M: Peter Maydell <peter.maydell@linaro.org>
+> diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
+> index 6985a25377a0..1b49a7830c7e 100644
+> --- a/configs/devices/arm-softmmu/default.mak
+> +++ b/configs/devices/arm-softmmu/default.mak
+> @@ -30,6 +30,7 @@ CONFIG_COLLIE=y
+>  CONFIG_ASPEED_SOC=y
+>  CONFIG_NETDUINO2=y
+>  CONFIG_NETDUINOPLUS2=y
+> +CONFIG_OLIMEX_STM32_H405=y
+>  CONFIG_MPS2=y
+>  CONFIG_RASPI=y
+>  CONFIG_DIGIC=y
+> diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
+> index 508b92cf862b..d7265b763d47 100644
+> --- a/docs/system/arm/stm32.rst
+> +++ b/docs/system/arm/stm32.rst
+> @@ -20,6 +20,7 @@ The STM32F4 series is based on ARM Cortex-M4F core. This series is pin-to-pin
+>  compatible with STM32F2 series. The following machines are based on this chip :
+>
+>  - ``netduinoplus2``     Netduino Plus 2 board with STM32F405RGT6 microcontroller
+> +- ``olimex-stm32-h405`` Olimex STM32 H405 board with STM32F405RGT6 microcontroller
+>
+>  There are many other STM32 series that are currently not supported by QEMU.
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 17fcde8e1ccc..9143533ef792 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -119,6 +119,10 @@ config NETDUINOPLUS2
+>      bool
+>      select STM32F405_SOC
+>
+> +config OLIMEX_STM32_H405
+> +    bool
+> +    select STM32F405_SOC
+> +
+>  config NSERIES
+>      bool
+>      select OMAP
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index 92f9f6e000ea..76d4d650e42e 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -12,6 +12,7 @@ arm_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
+>  arm_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
+>  arm_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
+>  arm_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'))
+> +arm_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
+>  arm_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
+>  arm_ss.add(when: 'CONFIG_NSERIES', if_true: files('nseries.c'))
+>  arm_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
+> diff --git a/hw/arm/olimex-stm32-h405.c b/hw/arm/olimex-stm32-h405.c
+> new file mode 100644
+> index 000000000000..3aa61c91b759
+> --- /dev/null
+> +++ b/hw/arm/olimex-stm32-h405.c
+> @@ -0,0 +1,69 @@
+> +/*
+> + * ST STM32VLDISCOVERY machine
+> + * Olimex STM32-H405 machine
+> + *
+> + * Copyright (c) 2022 Felipe Balbi <balbi@kernel.org>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "hw/boards.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/qdev-clock.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/arm/stm32f405_soc.h"
+> +#include "hw/arm/boot.h"
+> +
+> +/* olimex-stm32-h405 implementation is derived from netduinoplus2 */
+> +
+> +/* Main SYSCLK frequency in Hz (168MHz) */
+> +#define SYSCLK_FRQ 168000000ULL
+> +
+> +static void olimex_stm32_h405_init(MachineState *machine)
+> +{
+> +    DeviceState *dev;
+> +    Clock *sysclk;
+> +
+> +    /* This clock doesn't need migration because it is fixed-frequency */
+> +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
+> +    clock_set_hz(sysclk, SYSCLK_FRQ);
+> +
+> +    dev = qdev_new(TYPE_STM32F405_SOC);
+> +    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
+> +    qdev_connect_clock_in(dev, "sysclk", sysclk);
+> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> +
+> +    armv7m_load_kernel(ARM_CPU(first_cpu),
+> +                       machine->kernel_filename,
+> +                       0, FLASH_SIZE);
+> +}
+> +
+> +static void olimex_stm32_h405_machine_init(MachineClass *mc)
+> +{
+> +    mc->desc = "Olimex STM32-H405 (Cortex-M4)";
+> +    mc->init = olimex_stm32_h405_init;
+> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
+> +
+> +    /* SRAM pre-allocated as part of the SoC instantiation */
+> +    mc->default_ram_size = 0;
+> +}
+> +
+> +DEFINE_MACHINE("olimex-stm32-h405", olimex_stm32_h405_machine_init)
+> --
+> 2.39.0
+>
+>

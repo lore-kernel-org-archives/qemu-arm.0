@@ -1,106 +1,104 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1325438ejc;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1325440ejc;
         Sat, 7 Jan 2023 18:38:09 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuZB2uqeM0y+/JAYBuLG/KWH8+hoT0gOmvQhcp1SSD06NS+w+zIK0gK7TTVoA723JYSL+4G
-X-Received: by 2002:a05:6214:5e04:b0:4bb:7a71:c35f with SMTP id li4-20020a0562145e0400b004bb7a71c35fmr84427814qvb.46.1673145489232;
+X-Google-Smtp-Source: AMrXdXuB5Z99Hh9mEZD0kznkYHv+PaqJ0GDhZRwjX5NI+rNENYAeRGxR/fW2tsGdbbSCtyho6Zrz
+X-Received: by 2002:ac8:6786:0:b0:3a3:e79:e4cb with SMTP id b6-20020ac86786000000b003a30e79e4cbmr88356337qtp.49.1673145489257;
         Sat, 07 Jan 2023 18:38:09 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1673145489; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gj+HDcri7L7KhlLtHaw0y4dfaqj44WEnY254dK6OX0VmoCmGBwWkDqTgR+QhiQ5Av3
-         +uXV8wNuA089mWKta79haRwfwJ9176LBOOzBuw0jEw/ca4R/naCDzSnor/FVoRlSRoOs
-         obTaYTXy5R6RXAFuYNG1zEWeyOZ/FNp0L5XC9t7rD2RxpyCuE1d1fZYIwitZ/dX41bJZ
-         F8E7GE0dGL3FLk6FamrLjddSxl05NnkOHfxbeVQJotBju4j6iCgrizyMLA7VoE+b7VUU
-         OOSvGScxAsyrF6VM3DoqkQzyOhA30cwXeNBgaBQUpOEq2lz4l/VR0OYtRp5EmtAQITqO
-         54jg==
+        b=rRl1t0CkJN34XbxM3joMp136WCIcQNsgtOZCIuMQ+BxJq3jFVUlkHzF2xSQSPdBQAo
+         HdmjiUq72YOOxu/sbriv2zHRtrnjjkAPZwmJ6v3x4Y7qgeZpzdhAQ2Bp6OlGT8mAYO86
+         sIHcjWqzOEA/Y/fZ78nWcUdkhIQGzZs291B3uaJKAwfn4d0Fv9cb0JfyvZTcHvj2S2LK
+         4w/fO6cPjkTuXD/2oUg0oiYi5EdJz/XTPeeUg1JaHCufkOrtovhWDuQ+FIs6BfAl1B9E
+         sy/fnxcpN45YVi4L1WWcXjfEmdxZunKWnrC7AnB6L9fxRynOCR8Nwnc6O4C5Zr5L5l1c
+         G4/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=1lsxB0Q3bC5RA9mVuczL9+THSacM775KBH8YOyPIxoI=;
-        b=Spl6i17tKEiimqNM+hYJvf/4fQBkOt9y9sKv1wSZkT5GywTqFxOEMn6nQeV30dCR3l
-         hEZpiFFeThGgp8kmkX7orgUBx6FvdigcuxwuCPa4aAbK5WW9Dqprm177aihXvoVoMVx4
-         +ZYXBiqMzGEMMbhQqX5EDxnnXXvapokbvcz1O7G2Lv3eCb1vl50+fs9s0bSht6PiGnLK
-         Qt6QxoI5AFK2oWxlcw7qXLd3anEETLgirGslTVRHlpZGcfYimPuT1t/T+g9AI0VdAuuo
-         Vdt30Rp+1bTX2psDAviHUIu9VIz+5euRStn807IRBvcc4D5S0Sk4830sSTcfFJczhBs4
-         3AFg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=kmNsSCZyNhPWOKz/+C6kbOmdqXe8QlrZ2Yagkc9eIrk=;
+        b=c/648zn9nJqPborf6aBVFE4bLs8CeXkn+jzVcLFI+vMwfYFwGuV0yzZuWX3rpoUhx7
+         020HqZwGvkDsF4t1KKfpLdsgYqTDOI7HR0/ClNv7yHT5t+qg7K2KuyOMZkxTWCtN2EH6
+         g+iCau7+Z5fbHZ7d+veylDXy6LfrqbG4jc8LeQpp+Lzb6TXMHAklyz+8PsjKmvi5nTmY
+         s+xl50PICONVsJcWGxGqiwy+xpaaDdCxKk8pFj4bbWQ1CVQiVvEUIh1lkRtrjNdcDUTF
+         WIDlosqg4iFgL+M732ZLAfiaaUK7RjDb5i6iY/hXoF1NMTze5BBydTahEwc8FrBoElaA
+         mfUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ENvIh9xN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G0TJbcbp;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bi1-20020a05620a318100b006cfa81f5df9si2817778qkb.103.2023.01.07.18.38.09
+        by mx.google.com with ESMTPS id x20-20020ac85394000000b003994612e2casi2785675qtp.723.2023.01.07.18.38.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sat, 07 Jan 2023 18:38:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ENvIh9xN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G0TJbcbp;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pELZ9-0004lE-NS; Sat, 07 Jan 2023 21:37:43 -0500
+	id 1pELYw-0004aD-6y; Sat, 07 Jan 2023 21:37:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELZ8-0004kO-Gh
- for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:42 -0500
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ id 1pELYu-0004ZF-M7
+ for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:28 -0500
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELYu-0004Wk-Im
- for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:42 -0500
-Received: by mail-pl1-x62b.google.com with SMTP id jl4so5863669plb.8
- for <qemu-devel@nongnu.org>; Sat, 07 Jan 2023 18:37:28 -0800 (PST)
+ id 1pELYq-0004UV-8W
+ for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:28 -0500
+Received: by mail-pj1-x102e.google.com with SMTP id
+ m7-20020a17090a730700b00225ebb9cd01so9263159pjk.3
+ for <qemu-devel@nongnu.org>; Sat, 07 Jan 2023 18:37:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1lsxB0Q3bC5RA9mVuczL9+THSacM775KBH8YOyPIxoI=;
- b=ENvIh9xN742A5aZ45VE/p5kFr/9irKWtvvspMUP5BRbgcNPHSnxkAXSyRqtP3PQZWs
- N0KZscRbZRr73VpRkTaps2vo2tCxMeuNh1a0ScOMG9WA6KzlgR7WcWRAQy6LlGXEKoaG
- flFWdtvQUqheArBdgTaQwMn9jgvdgdqmSLrlFfeFdYW//yLtcA1O6jJcZiBLEhW+eG08
- rjmr5dx3aVyMSJHF87Z3hY9oKvQ+MWjtf+g/BrTNScgMRe03zHx/HkZiDZNduq1IS34Q
- +guz8XFXGkIK2FOKPWwNw2u1ntvn1fxuF1pE0cNyErf+HM94cC3c8c1MoatQ8JvhgncM
- zLOw==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=kmNsSCZyNhPWOKz/+C6kbOmdqXe8QlrZ2Yagkc9eIrk=;
+ b=G0TJbcbp896XB1hmQghCV6JnjPG815eSE2wnYNqueTp4Q+nE7KV+MrKxzsoPp0OcbS
+ B3VCVvKx8IPReky4Yjs+98eehCsF92f4wHdltavpwT++8TeKPBQdQRf2FO0GMUW8MPTK
+ By5lUyhXXWoeLIXhMixSsq/lG/f+r43xFb0Og3MtBdEF1GRDbEMTocFzDFDqb5SsvHnI
+ V48uDsoH5lfINU69I4cVk4nfaH9xJ2X3KXJSXI0yvBWyUY2AKulRAm8K3GCBSs0oa7Oa
+ VflazEyZJmnpY0ZHep8TYiUPXGigGGmYBs+gcpKZuABYcPLWaNBV0fNtaqe2EVa6BD+R
+ MF2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=1lsxB0Q3bC5RA9mVuczL9+THSacM775KBH8YOyPIxoI=;
- b=Ud599SRXLMucpLTSZ/cr8pSzbfnZt0P4ls8zFjF8Yo7rB7ONk6rvMHp9M0reKDuUsi
- 0RmxPWTGRD6SJlhiZfwhpLHThGdfvrgzzAkgp5ZUeYrDkgsACjtT1tOzAkHpw84wzmVS
- RHi1uE93OBDb2dqjfD5rwp2yvDwoIn3twbqyaJQ80q+5K7sE2pedE601+lnCLip/5ePw
- iWRnSje3/E9oxkbKKUqRqUrCZFFrgTdGIImZbkRuyxYvFgf5HP10bgVF7E8T6rxy3QcA
- S1uq0pVBuGqXpCJOlujvVcFehC3xPe00O0kURa2Ak0Rkoyz763NbglMvDHhatWSvUF8B
- futg==
-X-Gm-Message-State: AFqh2kou1WtzTRpCIoalVvPvOSGZh4R4LIODfqkLDtTkUJoUzixC67Uq
- In3qpMA7VLl8oWvaf7RIhUws5vAclk+APXVV
-X-Received: by 2002:a17:902:a98a:b0:189:cef2:88e3 with SMTP id
- bh10-20020a170902a98a00b00189cef288e3mr62240851plb.57.1673145446963; 
- Sat, 07 Jan 2023 18:37:26 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=kmNsSCZyNhPWOKz/+C6kbOmdqXe8QlrZ2Yagkc9eIrk=;
+ b=7wJIJbPR5oxcltmHNSPjnkZ9/xFHLbW0cfCwRAO6vzfYlvNXkeIKM3ou1/icqf2f+o
+ RH/bt5yvQFYwiMHNkQtRz12PM+wGCNvkvVRy0TBvfX0u5T6x4pqEj0iy/bceksgFLseC
+ rlAZLNi360+XLPOFyDV0fUGMYSFGS7LSBv09R0Whg/G/Fo3h1/rHtLwJUf1bSkFXJvA4
+ uKi35lp39xF5ZdEW3N20hY20d21vdjYtnvLvRXuKkEB5FapmGsRqqc7bUWuZcoNY0/cu
+ r/QbkbVyqJ/i2Swb6F1bkqzbCQ5klr9s8ygt5oCYB1dFAsIArqiUInWSv0vrtOaKV4rd
+ 2+kQ==
+X-Gm-Message-State: AFqh2kruu7//0KEvgdZOs684/ySdLfnv9Fk/UZrhzJSCdf4+kUtGBapP
+ YbsoFh057SF2g/+SJmeKkL2gpagkoHF3r9G2
+X-Received: by 2002:a17:902:6a85:b0:191:420e:e6b1 with SMTP id
+ n5-20020a1709026a8500b00191420ee6b1mr61043782plk.32.1673145441574; 
+ Sat, 07 Jan 2023 18:37:21 -0800 (PST)
 Received: from stoup.. ([2602:47:d48c:8101:8a2d:2011:f402:6f82])
  by smtp.gmail.com with ESMTPSA id
- o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.26
+ o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Jan 2023 18:37:26 -0800 (PST)
+ Sat, 07 Jan 2023 18:37:20 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
  qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net
-Subject: [PATCH v4 05/36] tcg: Add TCG_CALL_{RET,ARG}_BY_REF
-Date: Sat,  7 Jan 2023 18:36:48 -0800
-Message-Id: <20230108023719.2466341-6-richard.henderson@linaro.org>
+Subject: [PATCH v4 00/36] tcg: Support for Int128 with helpers
+Date: Sat,  7 Jan 2023 18:36:43 -0800
+Message-Id: <20230108023719.2466341-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230108023719.2466341-1-richard.henderson@linaro.org>
-References: <20230108023719.2466341-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,247 +120,138 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ACXy5/Ut1pVv
+X-TUID: GcdM9WfhEPAU
 
-These will be used by some hosts, both 32 and 64-bit, to pass and
-return i128.  Not yet used, because allocation is not yet enabled.
+Changes for v4:
+  * About half of the v3 series has been merged,
+  * AArch64 host requires even argument register.
+  * target/{arm,ppc,s390x,i386} uses included here.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- tcg/tcg-internal.h |   3 +
- tcg/tcg.c          | 135 ++++++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 135 insertions(+), 3 deletions(-)
+Patches requiring review:
+  01-tcg-Define-TCG_TYPE_I128-and-related-helper-macro.patch
+  02-tcg-Handle-dh_typecode_i128-with-TCG_CALL_-RET-AR.patch
+  03-tcg-Allocate-objects-contiguously-in-temp_allocat.patch
+  05-tcg-Add-TCG_CALL_-RET-ARG-_BY_REF.patch
+  07-tcg-Add-TCG_CALL_RET_BY_VEC.patch
+  08-include-qemu-int128-Use-Int128-structure-for-TCI.patch
+  09-tcg-i386-Add-TCG_TARGET_CALL_-RET-ARG-_I128.patch
+  10-tcg-tci-Fix-big-endian-return-register-ordering.patch
+  11-tcg-tci-Add-TCG_TARGET_CALL_-RET-ARG-_I128.patch
+  13-tcg-Add-temp-allocation-for-TCGv_i128.patch
+  14-tcg-Add-basic-data-movement-for-TCGv_i128.patch
+  15-tcg-Add-guest-load-store-primitives-for-TCGv_i128.patch
+  16-tcg-Add-tcg_gen_-non-atomic_cmpxchg_i128.patch
+  17-tcg-Split-out-tcg_gen_nonatomic_cmpxchg_i-32-64.patch
+  24-target-s390x-Use-a-single-return-for-helper_divs3.patch
+  31-target-s390x-Use-Int128-for-passing-float128.patch
+  32-target-s390x-Use-tcg_gen_atomic_cmpxchg_i128-for-.patch
+  33-target-s390x-Implement-CC_OP_NZ-in-gen_op_calc_cc.patch
+  34-target-i386-Split-out-gen_cmpxchg8b-gen_cmpxchg16.patch
+  35-target-i386-Inline-cmpxchg8b.patch
+  36-target-i386-Inline-cmpxchg16b.patch
 
-diff --git a/tcg/tcg-internal.h b/tcg/tcg-internal.h
-index 6e50aeba3a..2ec1ea01df 100644
---- a/tcg/tcg-internal.h
-+++ b/tcg/tcg-internal.h
-@@ -36,6 +36,7 @@
-  */
- typedef enum {
-     TCG_CALL_RET_NORMAL,         /* by registers */
-+    TCG_CALL_RET_BY_REF,         /* for i128, by reference */
- } TCGCallReturnKind;
- 
- typedef enum {
-@@ -44,6 +45,8 @@ typedef enum {
-     TCG_CALL_ARG_EXTEND,         /* for i32, as a sign/zero-extended i64 */
-     TCG_CALL_ARG_EXTEND_U,       /*      ... as a zero-extended i64 */
-     TCG_CALL_ARG_EXTEND_S,       /*      ... as a sign-extended i64 */
-+    TCG_CALL_ARG_BY_REF,         /* for i128, by reference, first */
-+    TCG_CALL_ARG_BY_REF_N,       /*       ... by reference, subsequent */
- } TCGCallArgumentKind;
- 
- typedef struct TCGCallArgumentLoc {
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index a6c2783285..93d1331f93 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -103,8 +103,7 @@ static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1,
- static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg);
- static void tcg_out_movi(TCGContext *s, TCGType type,
-                          TCGReg ret, tcg_target_long arg);
--static void tcg_out_addi_ptr(TCGContext *s, TCGReg, TCGReg, tcg_target_long)
--    __attribute__((unused));
-+static void tcg_out_addi_ptr(TCGContext *s, TCGReg, TCGReg, tcg_target_long);
- static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-                        const TCGArg args[TCG_MAX_OP_ARGS],
-                        const int const_args[TCG_MAX_OP_ARGS]);
-@@ -662,6 +661,38 @@ static void layout_arg_normal_n(TCGCumulativeArgs *cum,
-     cum->arg_slot += n;
- }
- 
-+static void layout_arg_by_ref(TCGCumulativeArgs *cum, TCGHelperInfo *info)
-+{
-+    TCGCallArgumentLoc *loc = &info->in[cum->info_in_idx];
-+    int n = 128 / TCG_TARGET_REG_BITS;
-+
-+    /* The first subindex carries the pointer. */
-+    layout_arg_1(cum, info, TCG_CALL_ARG_BY_REF);
-+
-+    /*
-+     * The callee is allowed to clobber memory associated with
-+     * structure pass by-reference.  Therefore we must make copies.
-+     * Allocate space from "ref_slot", which will be adjusted to
-+     * follow the parameters on the stack.
-+     */
-+    loc[0].ref_slot = cum->ref_slot;
-+
-+    /*
-+     * Subsequent words also go into the reference slot, but
-+     * do not accumulate into the regular arguments.
-+     */
-+    for (int i = 1; i < n; ++i) {
-+        loc[i] = (TCGCallArgumentLoc){
-+            .kind = TCG_CALL_ARG_BY_REF_N,
-+            .arg_idx = cum->arg_idx,
-+            .tmp_subindex = i,
-+            .ref_slot = cum->ref_slot + i,
-+        };
-+    }
-+    cum->info_in_idx += n;
-+    cum->ref_slot += n;
-+}
-+
- static void init_call_layout(TCGHelperInfo *info)
- {
-     int max_reg_slots = ARRAY_SIZE(tcg_target_call_iarg_regs);
-@@ -697,6 +728,14 @@ static void init_call_layout(TCGHelperInfo *info)
-         case TCG_CALL_RET_NORMAL:
-             assert(info->nr_out <= ARRAY_SIZE(tcg_target_call_oarg_regs));
-             break;
-+        case TCG_CALL_RET_BY_REF:
-+            /*
-+             * Allocate the first argument to the output.
-+             * We don't need to store this anywhere, just make it
-+             * unavailable for use in the input loop below.
-+             */
-+            cum.arg_slot = 1;
-+            break;
-         default:
-             qemu_build_not_reached();
-         }
-@@ -775,6 +814,9 @@ static void init_call_layout(TCGHelperInfo *info)
-             case TCG_CALL_ARG_NORMAL:
-                 layout_arg_normal_n(&cum, info, 128 / TCG_TARGET_REG_BITS);
-                 break;
-+            case TCG_CALL_ARG_BY_REF:
-+                layout_arg_by_ref(&cum, info);
-+                break;
-             default:
-                 qemu_build_not_reached();
-             }
-@@ -790,7 +832,39 @@ static void init_call_layout(TCGHelperInfo *info)
-     assert(cum.info_in_idx <= ARRAY_SIZE(info->in));
-     /* Validate the backend has enough argument space. */
-     assert(cum.arg_slot <= max_reg_slots + max_stk_slots);
--    assert(cum.ref_slot <= max_stk_slots);
-+
-+    /*
-+     * Relocate the "ref_slot" area to the end of the parameters.
-+     * Minimizing this stack offset helps code size for x86,
-+     * which has a signed 8-bit offset encoding.
-+     */
-+    if (cum.ref_slot != 0) {
-+        int ref_base = 0;
-+
-+        if (cum.arg_slot > max_reg_slots) {
-+            int align = __alignof(Int128) / sizeof(tcg_target_long);
-+
-+            ref_base = cum.arg_slot - max_reg_slots;
-+            if (align > 1) {
-+                ref_base = ROUND_UP(ref_base, align);
-+            }
-+        }
-+        assert(ref_base + cum.ref_slot <= max_stk_slots);
-+
-+        if (ref_base != 0) {
-+            for (int i = cum.info_in_idx - 1; i >= 0; --i) {
-+                TCGCallArgumentLoc *loc = &info->in[i];
-+                switch (loc->kind) {
-+                case TCG_CALL_ARG_BY_REF:
-+                case TCG_CALL_ARG_BY_REF_N:
-+                    loc->ref_slot += ref_base;
-+                    break;
-+                default:
-+                    break;
-+                }
-+            }
-+        }
-+    }
- }
- 
- static int indirect_reg_alloc_order[ARRAY_SIZE(tcg_target_reg_alloc_order)];
-@@ -1716,6 +1790,8 @@ void tcg_gen_callN(void *func, TCGTemp *ret, int nargs, TCGTemp **args)
- 
-         switch (loc->kind) {
-         case TCG_CALL_ARG_NORMAL:
-+        case TCG_CALL_ARG_BY_REF:
-+        case TCG_CALL_ARG_BY_REF_N:
-             op->args[pi++] = temp_arg(ts);
-             break;
- 
-@@ -4382,6 +4458,27 @@ static void load_arg_normal(TCGContext *s, const TCGCallArgumentLoc *l,
-     }
- }
- 
-+static void load_arg_ref(TCGContext *s, int arg_slot, TCGReg ref_base,
-+                         intptr_t ref_off, TCGRegSet *allocated_regs)
-+{
-+    TCGReg reg;
-+    int stk_slot = arg_slot - ARRAY_SIZE(tcg_target_call_iarg_regs);
-+
-+    if (stk_slot < 0) {
-+        reg = tcg_target_call_iarg_regs[arg_slot];
-+        tcg_reg_free(s, reg, *allocated_regs);
-+        tcg_out_addi_ptr(s, reg, ref_base, ref_off);
-+        tcg_regset_set_reg(*allocated_regs, reg);
-+    } else {
-+        reg = tcg_reg_alloc(s, tcg_target_available_regs[TCG_TYPE_PTR],
-+                            *allocated_regs, 0, false);
-+        tcg_out_addi_ptr(s, reg, ref_base, ref_off);
-+        tcg_out_st(s, TCG_TYPE_PTR, reg, TCG_REG_CALL_STACK,
-+                   TCG_TARGET_CALL_STACK_OFFSET
-+                   + stk_slot * sizeof(tcg_target_long));
-+    }
-+}
-+
- static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
- {
-     const int nb_oargs = TCGOP_CALLO(op);
-@@ -4405,6 +4502,16 @@ static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
-         case TCG_CALL_ARG_EXTEND_S:
-             load_arg_normal(s, loc, ts, &allocated_regs);
-             break;
-+        case TCG_CALL_ARG_BY_REF:
-+            load_arg_stk(s, loc->ref_slot, ts, allocated_regs);
-+            load_arg_ref(s, loc->arg_slot, TCG_REG_CALL_STACK,
-+                         TCG_TARGET_CALL_STACK_OFFSET
-+                         + loc->ref_slot * sizeof(tcg_target_long),
-+                         &allocated_regs);
-+            break;
-+        case TCG_CALL_ARG_BY_REF_N:
-+            load_arg_stk(s, loc->ref_slot, ts, allocated_regs);
-+            break;
-         default:
-             g_assert_not_reached();
-         }
-@@ -4436,6 +4543,19 @@ static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
-         save_globals(s, allocated_regs);
-     }
- 
-+    /*
-+     * If the ABI passes a pointer to the returned struct as the first
-+     * argument, load that now.  Pass a pointer to the output home slot.
-+     */
-+    if (info->out_kind == TCG_CALL_RET_BY_REF) {
-+        TCGTemp *ts = arg_temp(op->args[0]);
-+
-+        if (!ts->mem_allocated) {
-+            temp_allocate_frame(s, ts);
-+        }
-+        load_arg_ref(s, 0, ts->mem_base->reg, ts->mem_offset, &allocated_regs);
-+    }
-+
-     tcg_out_call(s, tcg_call_func(op), info);
- 
-     /* Assign output registers and emit moves if needed.  */
-@@ -4452,6 +4572,15 @@ static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
-             ts->mem_coherent = 0;
-         }
-         break;
-+
-+    case TCG_CALL_RET_BY_REF:
-+        /* The callee has performed a write through the reference. */
-+        for (i = 0; i < nb_oargs; i++) {
-+            TCGTemp *ts = arg_temp(op->args[i]);
-+            ts->val_type = TEMP_VAL_MEM;
-+        }
-+        break;
-+
-     default:
-         g_assert_not_reached();
-     }
+
+r~
+
+
+Ilya Leoshkevich (2):
+  tests/tcg/s390x: Add div.c
+  tests/tcg/s390x: Add clst.c
+
+Richard Henderson (34):
+  tcg: Define TCG_TYPE_I128 and related helper macros
+  tcg: Handle dh_typecode_i128 with TCG_CALL_{RET,ARG}_NORMAL
+  tcg: Allocate objects contiguously in temp_allocate_frame
+  tcg: Introduce tcg_out_addi_ptr
+  tcg: Add TCG_CALL_{RET,ARG}_BY_REF
+  tcg: Introduce tcg_target_call_oarg_reg
+  tcg: Add TCG_CALL_RET_BY_VEC
+  include/qemu/int128: Use Int128 structure for TCI
+  tcg/i386: Add TCG_TARGET_CALL_{RET,ARG}_I128
+  tcg/tci: Fix big-endian return register ordering
+  tcg/tci: Add TCG_TARGET_CALL_{RET,ARG}_I128
+  tcg: Add TCG_TARGET_CALL_{RET,ARG}_I128
+  tcg: Add temp allocation for TCGv_i128
+  tcg: Add basic data movement for TCGv_i128
+  tcg: Add guest load/store primitives for TCGv_i128
+  tcg: Add tcg_gen_{non}atomic_cmpxchg_i128
+  tcg: Split out tcg_gen_nonatomic_cmpxchg_i{32,64}
+  target/arm: Use tcg_gen_atomic_cmpxchg_i128 for STXP
+  target/arm: Use tcg_gen_atomic_cmpxchg_i128 for CASP
+  target/ppc: Use tcg_gen_atomic_cmpxchg_i128 for STQCX
+  tests/tcg/s390x: Add long-double.c
+  target/s390x: Use a single return for helper_divs32/u32
+  target/s390x: Use a single return for helper_divs64/u64
+  target/s390x: Use Int128 for return from CLST
+  target/s390x: Use Int128 for return from CKSM
+  target/s390x: Use Int128 for return from TRE
+  target/s390x: Copy wout_x1 to wout_x1_P
+  target/s390x: Use Int128 for returning float128
+  target/s390x: Use Int128 for passing float128
+  target/s390x: Use tcg_gen_atomic_cmpxchg_i128 for CDSG
+  target/s390x: Implement CC_OP_NZ in gen_op_calc_cc
+  target/i386: Split out gen_cmpxchg8b, gen_cmpxchg16b
+  target/i386: Inline cmpxchg8b
+  target/i386: Inline cmpxchg16b
+
+ accel/tcg/tcg-runtime.h          |  11 +
+ include/exec/cpu_ldst.h          |  10 +
+ include/exec/helper-head.h       |   7 +
+ include/qemu/atomic128.h         |  29 ++-
+ include/qemu/int128.h            |  25 +-
+ include/tcg/tcg-op.h             |  15 ++
+ include/tcg/tcg.h                |  49 +++-
+ target/arm/helper-a64.h          |   8 -
+ target/i386/helper.h             |   6 -
+ target/ppc/helper.h              |   2 -
+ target/s390x/helper.h            |  54 ++---
+ tcg/aarch64/tcg-target.h         |   2 +
+ tcg/arm/tcg-target.h             |   2 +
+ tcg/i386/tcg-target.h            |  10 +
+ tcg/loongarch64/tcg-target.h     |   2 +
+ tcg/mips/tcg-target.h            |   2 +
+ tcg/riscv/tcg-target.h           |   3 +
+ tcg/s390x/tcg-target.h           |   2 +
+ tcg/sparc64/tcg-target.h         |   2 +
+ tcg/tcg-internal.h               |  17 ++
+ tcg/tci/tcg-target.h             |   3 +
+ target/s390x/tcg/insn-data.h.inc |  60 ++---
+ accel/tcg/cputlb.c               | 112 +++++++++
+ accel/tcg/user-exec.c            |  66 ++++++
+ target/arm/helper-a64.c          | 147 ------------
+ target/arm/translate-a64.c       | 121 +++++-----
+ target/i386/tcg/mem_helper.c     | 126 ----------
+ target/i386/tcg/translate.c      | 126 ++++++++--
+ target/ppc/mem_helper.c          |  44 ----
+ target/ppc/translate.c           | 102 ++++----
+ target/s390x/tcg/fpu_helper.c    | 103 ++++----
+ target/s390x/tcg/int_helper.c    |  64 ++---
+ target/s390x/tcg/mem_helper.c    |  77 +-----
+ target/s390x/tcg/translate.c     | 217 +++++++++++------
+ tcg/tcg-op.c                     | 393 ++++++++++++++++++++++++++-----
+ tcg/tcg.c                        | 303 +++++++++++++++++++++---
+ tcg/tci.c                        |  65 ++---
+ tests/tcg/s390x/clst.c           |  82 +++++++
+ tests/tcg/s390x/div.c            |  75 ++++++
+ tests/tcg/s390x/long-double.c    |  24 ++
+ util/int128.c                    |  42 ++++
+ accel/tcg/atomic_common.c.inc    |  45 ++++
+ tcg/aarch64/tcg-target.c.inc     |  17 +-
+ tcg/arm/tcg-target.c.inc         |  30 ++-
+ tcg/i386/tcg-target.c.inc        |  52 +++-
+ tcg/loongarch64/tcg-target.c.inc |  17 +-
+ tcg/mips/tcg-target.c.inc        |  17 +-
+ tcg/ppc/tcg-target.c.inc         |  20 +-
+ tcg/riscv/tcg-target.c.inc       |  17 +-
+ tcg/s390x/tcg-target.c.inc       |  16 +-
+ tcg/sparc64/tcg-target.c.inc     |  19 +-
+ tcg/tci/tcg-target.c.inc         |  27 ++-
+ tests/tcg/s390x/Makefile.target  |   3 +
+ 53 files changed, 1936 insertions(+), 954 deletions(-)
+ create mode 100644 tests/tcg/s390x/clst.c
+ create mode 100644 tests/tcg/s390x/div.c
+ create mode 100644 tests/tcg/s390x/long-double.c
+
 -- 
 2.34.1
 

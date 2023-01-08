@@ -1,104 +1,106 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1325440ejc;
-        Sat, 7 Jan 2023 18:38:09 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuB5Z99Hh9mEZD0kznkYHv+PaqJ0GDhZRwjX5NI+rNENYAeRGxR/fW2tsGdbbSCtyho6Zrz
-X-Received: by 2002:ac8:6786:0:b0:3a3:e79:e4cb with SMTP id b6-20020ac86786000000b003a30e79e4cbmr88356337qtp.49.1673145489257;
-        Sat, 07 Jan 2023 18:38:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673145489; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1325742ejc;
+        Sat, 7 Jan 2023 18:39:02 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtzwfScdplquMlccwggKDe55LjZ+DAn/ZcwlF8Qlx4SRo2A6P3f2mNq7hCSWdOPNkOksWBm
+X-Received: by 2002:a05:622a:1e99:b0:3a5:ff6e:d43e with SMTP id bz25-20020a05622a1e9900b003a5ff6ed43emr90768330qtb.2.1673145542711;
+        Sat, 07 Jan 2023 18:39:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673145542; cv=none;
         d=google.com; s=arc-20160816;
-        b=rRl1t0CkJN34XbxM3joMp136WCIcQNsgtOZCIuMQ+BxJq3jFVUlkHzF2xSQSPdBQAo
-         HdmjiUq72YOOxu/sbriv2zHRtrnjjkAPZwmJ6v3x4Y7qgeZpzdhAQ2Bp6OlGT8mAYO86
-         sIHcjWqzOEA/Y/fZ78nWcUdkhIQGzZs291B3uaJKAwfn4d0Fv9cb0JfyvZTcHvj2S2LK
-         4w/fO6cPjkTuXD/2oUg0oiYi5EdJz/XTPeeUg1JaHCufkOrtovhWDuQ+FIs6BfAl1B9E
-         sy/fnxcpN45YVi4L1WWcXjfEmdxZunKWnrC7AnB6L9fxRynOCR8Nwnc6O4C5Zr5L5l1c
-         G4/w==
+        b=I4UgAzKINh6IGy/4/UelNIGZB7Um2uTp2+ZI2IBgWekiBPw/kVVNPGs9J+tKWspv/S
+         mpbyl/M1BjOuJbryhLykcYVL4HqoqzBlwXA1ieSxHn9/fg0X/3KeV4z77jcOxtqjieCm
+         FnryCC4lmeRYH8BGemlvVFOAdKjeVrh+Zf5obgtajb12HunTbLWoNWRuhca6b8JvW41S
+         Nu/GijICW7GQieVomMogXdiNEhZIQAR5Mzy+6hBtdsD9aY6c2iDyvBkt5CfLx6QnGWqY
+         F9Gt2DK5oCsWuP2+H+n22t/oDd6gZhVt22tLURJT8roT+P19qctDCvuvn8/KO/op3iY+
+         fDDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=kmNsSCZyNhPWOKz/+C6kbOmdqXe8QlrZ2Yagkc9eIrk=;
-        b=c/648zn9nJqPborf6aBVFE4bLs8CeXkn+jzVcLFI+vMwfYFwGuV0yzZuWX3rpoUhx7
-         020HqZwGvkDsF4t1KKfpLdsgYqTDOI7HR0/ClNv7yHT5t+qg7K2KuyOMZkxTWCtN2EH6
-         g+iCau7+Z5fbHZ7d+veylDXy6LfrqbG4jc8LeQpp+Lzb6TXMHAklyz+8PsjKmvi5nTmY
-         s+xl50PICONVsJcWGxGqiwy+xpaaDdCxKk8pFj4bbWQ1CVQiVvEUIh1lkRtrjNdcDUTF
-         WIDlosqg4iFgL+M732ZLAfiaaUK7RjDb5i6iY/hXoF1NMTze5BBydTahEwc8FrBoElaA
-         mfUA==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=WRIZMZP9j9SPp1EX0fHgPhfmFfX9VpYNwtU5BnkhtFg=;
+        b=la+noRuMqXmQxZEte+BDq0wpWt+DJGMTTotIqW/IXhWpBL60p8JiJWJAuYLbsw8i1X
+         8SyIBYXzYPWzLswU58079BvTNnn96gIFfjt9qR6wm/o40xmtRA2GFl6pvi5w7fGOHxaI
+         fQOknb92BOdW8G58Q57J7SPnDPKi2esTnspY7XIR/k/UkI28Q19eozea6K6q3gKDopRP
+         u49Gl4JbYTQ/G2M3iX45e12CS3ObDvG6aP6yWH0Xk5wKDTXqHr1wnzzDevgR1XtgTpbd
+         9ZHD+ayaRTe8giqyvzix6jisDrfSiJ+/0bGQcO63/L/TT+G2Zfj8iNHPFkIXpQ0tST7U
+         RUuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G0TJbcbp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dzEegWKN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x20-20020ac85394000000b003994612e2casi2785675qtp.723.2023.01.07.18.38.09
+        by mx.google.com with ESMTPS id k13-20020ac8140d000000b003a6955a6213si2678426qtj.427.2023.01.07.18.39.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 07 Jan 2023 18:38:09 -0800 (PST)
+        Sat, 07 Jan 2023 18:39:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G0TJbcbp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dzEegWKN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pELYw-0004aD-6y; Sat, 07 Jan 2023 21:37:30 -0500
+	id 1pELZf-0005Dg-LF; Sat, 07 Jan 2023 21:38:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELYu-0004ZF-M7
- for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:28 -0500
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ id 1pELZa-00058e-Qr
+ for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:38:11 -0500
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELYq-0004UV-8W
- for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:28 -0500
-Received: by mail-pj1-x102e.google.com with SMTP id
- m7-20020a17090a730700b00225ebb9cd01so9263159pjk.3
- for <qemu-devel@nongnu.org>; Sat, 07 Jan 2023 18:37:22 -0800 (PST)
+ id 1pELZ3-0004VH-4E
+ for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:38:10 -0500
+Received: by mail-pj1-x1031.google.com with SMTP id bj3so2175260pjb.0
+ for <qemu-devel@nongnu.org>; Sat, 07 Jan 2023 18:37:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=kmNsSCZyNhPWOKz/+C6kbOmdqXe8QlrZ2Yagkc9eIrk=;
- b=G0TJbcbp896XB1hmQghCV6JnjPG815eSE2wnYNqueTp4Q+nE7KV+MrKxzsoPp0OcbS
- B3VCVvKx8IPReky4Yjs+98eehCsF92f4wHdltavpwT++8TeKPBQdQRf2FO0GMUW8MPTK
- By5lUyhXXWoeLIXhMixSsq/lG/f+r43xFb0Og3MtBdEF1GRDbEMTocFzDFDqb5SsvHnI
- V48uDsoH5lfINU69I4cVk4nfaH9xJ2X3KXJSXI0yvBWyUY2AKulRAm8K3GCBSs0oa7Oa
- VflazEyZJmnpY0ZHep8TYiUPXGigGGmYBs+gcpKZuABYcPLWaNBV0fNtaqe2EVa6BD+R
- MF2A==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=WRIZMZP9j9SPp1EX0fHgPhfmFfX9VpYNwtU5BnkhtFg=;
+ b=dzEegWKN0lhR9o3FqsyRlrHUM6H3fJWmbhFz+W0s89m2HANADWVdmESrbC33slMYwR
+ t06DIMmIR0SbKjPcG9DV2roWlaUOjEANTxHHF+kIjY7b+3RfUXudmMRcsWeG7B4hShxa
+ 9TQBlZnxsTxQnGosARi0Y4eOZELSZ+XR51zr2wZz0uIEYYjeer8rhPxIz2gk1KQXB5g2
+ ozclQCH+zdkH10a9bS5qAxsclLmBZK+dBk2OO3pdbq6WLjwgyBO1RwzZQ8U9W5wZpblt
+ EqIfi6jUlrr46AwWz34lmWNE5nTBJwYdbs+0JdV8aEXnHBC27DUCkVxtly37ZwKoO0dv
+ wEDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=kmNsSCZyNhPWOKz/+C6kbOmdqXe8QlrZ2Yagkc9eIrk=;
- b=7wJIJbPR5oxcltmHNSPjnkZ9/xFHLbW0cfCwRAO6vzfYlvNXkeIKM3ou1/icqf2f+o
- RH/bt5yvQFYwiMHNkQtRz12PM+wGCNvkvVRy0TBvfX0u5T6x4pqEj0iy/bceksgFLseC
- rlAZLNi360+XLPOFyDV0fUGMYSFGS7LSBv09R0Whg/G/Fo3h1/rHtLwJUf1bSkFXJvA4
- uKi35lp39xF5ZdEW3N20hY20d21vdjYtnvLvRXuKkEB5FapmGsRqqc7bUWuZcoNY0/cu
- r/QbkbVyqJ/i2Swb6F1bkqzbCQ5klr9s8ygt5oCYB1dFAsIArqiUInWSv0vrtOaKV4rd
- 2+kQ==
-X-Gm-Message-State: AFqh2kruu7//0KEvgdZOs684/ySdLfnv9Fk/UZrhzJSCdf4+kUtGBapP
- YbsoFh057SF2g/+SJmeKkL2gpagkoHF3r9G2
-X-Received: by 2002:a17:902:6a85:b0:191:420e:e6b1 with SMTP id
- n5-20020a1709026a8500b00191420ee6b1mr61043782plk.32.1673145441574; 
- Sat, 07 Jan 2023 18:37:21 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=WRIZMZP9j9SPp1EX0fHgPhfmFfX9VpYNwtU5BnkhtFg=;
+ b=R6WEYr3W86ab9n/WTxBdhocwuTLLbZIZiGoh3Dh4IPssrzUk7hcAIBX0F+4gQWMllE
+ Cg7hQY36G4zxp6YAE5JWGbLxAuYLQ9IgleFXn1fVSanJILtAYp7nDLNX9Ol/ZnO3G7nC
+ 1Ko0ZeKx32pQwycW1i/9Ryak9o1DIkvXp0wcdeUBfI/SZbwDiNnF6/+5AjLTartby7Gs
+ SUPOAN3P9BLMmFKtyczm8TtGCsf81rzvornnusFwiTeI+6Jpea5GwnwlskCeDQa1vsMw
+ paNBIJlnDdrMui/QDQpClTmVvY1+S8Orwi1X5ZfFZaPgzoTQPDcSmkSUy51aEuAYxWNW
+ Galw==
+X-Gm-Message-State: AFqh2kqBIINFiT9OPiApcKREcSQZYtUZ0RKvoqL4R3I1kGZyBpZ1H68h
+ 3nVuajNXB5o0lUPkdm0ponhjUF/WNTRFepZN
+X-Received: by 2002:a17:902:f80d:b0:192:f6d0:6029 with SMTP id
+ ix13-20020a170902f80d00b00192f6d06029mr14720846plb.15.1673145456385; 
+ Sat, 07 Jan 2023 18:37:36 -0800 (PST)
 Received: from stoup.. ([2602:47:d48c:8101:8a2d:2011:f402:6f82])
  by smtp.gmail.com with ESMTPSA id
- o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.20
+ o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Jan 2023 18:37:20 -0800 (PST)
+ Sat, 07 Jan 2023 18:37:35 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
  qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net
-Subject: [PATCH v4 00/36] tcg: Support for Int128 with helpers
-Date: Sat,  7 Jan 2023 18:36:43 -0800
-Message-Id: <20230108023719.2466341-1-richard.henderson@linaro.org>
+Subject: [PATCH v4 14/36] tcg: Add basic data movement for TCGv_i128
+Date: Sat,  7 Jan 2023 18:36:57 -0800
+Message-Id: <20230108023719.2466341-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230108023719.2466341-1-richard.henderson@linaro.org>
+References: <20230108023719.2466341-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,138 +122,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GcdM9WfhEPAU
+X-TUID: Ov/Pow4pDV+5
 
-Changes for v4:
-  * About half of the v3 series has been merged,
-  * AArch64 host requires even argument register.
-  * target/{arm,ppc,s390x,i386} uses included here.
+Add code generation functions for data movement between
+TCGv_i128 (mov) and to/from TCGv_i64 (concat, extract).
 
-Patches requiring review:
-  01-tcg-Define-TCG_TYPE_I128-and-related-helper-macro.patch
-  02-tcg-Handle-dh_typecode_i128-with-TCG_CALL_-RET-AR.patch
-  03-tcg-Allocate-objects-contiguously-in-temp_allocat.patch
-  05-tcg-Add-TCG_CALL_-RET-ARG-_BY_REF.patch
-  07-tcg-Add-TCG_CALL_RET_BY_VEC.patch
-  08-include-qemu-int128-Use-Int128-structure-for-TCI.patch
-  09-tcg-i386-Add-TCG_TARGET_CALL_-RET-ARG-_I128.patch
-  10-tcg-tci-Fix-big-endian-return-register-ordering.patch
-  11-tcg-tci-Add-TCG_TARGET_CALL_-RET-ARG-_I128.patch
-  13-tcg-Add-temp-allocation-for-TCGv_i128.patch
-  14-tcg-Add-basic-data-movement-for-TCGv_i128.patch
-  15-tcg-Add-guest-load-store-primitives-for-TCGv_i128.patch
-  16-tcg-Add-tcg_gen_-non-atomic_cmpxchg_i128.patch
-  17-tcg-Split-out-tcg_gen_nonatomic_cmpxchg_i-32-64.patch
-  24-target-s390x-Use-a-single-return-for-helper_divs3.patch
-  31-target-s390x-Use-Int128-for-passing-float128.patch
-  32-target-s390x-Use-tcg_gen_atomic_cmpxchg_i128-for-.patch
-  33-target-s390x-Implement-CC_OP_NZ-in-gen_op_calc_cc.patch
-  34-target-i386-Split-out-gen_cmpxchg8b-gen_cmpxchg16.patch
-  35-target-i386-Inline-cmpxchg8b.patch
-  36-target-i386-Inline-cmpxchg16b.patch
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/tcg/tcg-op.h |  4 ++++
+ tcg/tcg-internal.h   | 13 +++++++++++++
+ tcg/tcg-op.c         | 20 ++++++++++++++++++++
+ 3 files changed, 37 insertions(+)
 
-
-r~
-
-
-Ilya Leoshkevich (2):
-  tests/tcg/s390x: Add div.c
-  tests/tcg/s390x: Add clst.c
-
-Richard Henderson (34):
-  tcg: Define TCG_TYPE_I128 and related helper macros
-  tcg: Handle dh_typecode_i128 with TCG_CALL_{RET,ARG}_NORMAL
-  tcg: Allocate objects contiguously in temp_allocate_frame
-  tcg: Introduce tcg_out_addi_ptr
-  tcg: Add TCG_CALL_{RET,ARG}_BY_REF
-  tcg: Introduce tcg_target_call_oarg_reg
-  tcg: Add TCG_CALL_RET_BY_VEC
-  include/qemu/int128: Use Int128 structure for TCI
-  tcg/i386: Add TCG_TARGET_CALL_{RET,ARG}_I128
-  tcg/tci: Fix big-endian return register ordering
-  tcg/tci: Add TCG_TARGET_CALL_{RET,ARG}_I128
-  tcg: Add TCG_TARGET_CALL_{RET,ARG}_I128
-  tcg: Add temp allocation for TCGv_i128
-  tcg: Add basic data movement for TCGv_i128
-  tcg: Add guest load/store primitives for TCGv_i128
-  tcg: Add tcg_gen_{non}atomic_cmpxchg_i128
-  tcg: Split out tcg_gen_nonatomic_cmpxchg_i{32,64}
-  target/arm: Use tcg_gen_atomic_cmpxchg_i128 for STXP
-  target/arm: Use tcg_gen_atomic_cmpxchg_i128 for CASP
-  target/ppc: Use tcg_gen_atomic_cmpxchg_i128 for STQCX
-  tests/tcg/s390x: Add long-double.c
-  target/s390x: Use a single return for helper_divs32/u32
-  target/s390x: Use a single return for helper_divs64/u64
-  target/s390x: Use Int128 for return from CLST
-  target/s390x: Use Int128 for return from CKSM
-  target/s390x: Use Int128 for return from TRE
-  target/s390x: Copy wout_x1 to wout_x1_P
-  target/s390x: Use Int128 for returning float128
-  target/s390x: Use Int128 for passing float128
-  target/s390x: Use tcg_gen_atomic_cmpxchg_i128 for CDSG
-  target/s390x: Implement CC_OP_NZ in gen_op_calc_cc
-  target/i386: Split out gen_cmpxchg8b, gen_cmpxchg16b
-  target/i386: Inline cmpxchg8b
-  target/i386: Inline cmpxchg16b
-
- accel/tcg/tcg-runtime.h          |  11 +
- include/exec/cpu_ldst.h          |  10 +
- include/exec/helper-head.h       |   7 +
- include/qemu/atomic128.h         |  29 ++-
- include/qemu/int128.h            |  25 +-
- include/tcg/tcg-op.h             |  15 ++
- include/tcg/tcg.h                |  49 +++-
- target/arm/helper-a64.h          |   8 -
- target/i386/helper.h             |   6 -
- target/ppc/helper.h              |   2 -
- target/s390x/helper.h            |  54 ++---
- tcg/aarch64/tcg-target.h         |   2 +
- tcg/arm/tcg-target.h             |   2 +
- tcg/i386/tcg-target.h            |  10 +
- tcg/loongarch64/tcg-target.h     |   2 +
- tcg/mips/tcg-target.h            |   2 +
- tcg/riscv/tcg-target.h           |   3 +
- tcg/s390x/tcg-target.h           |   2 +
- tcg/sparc64/tcg-target.h         |   2 +
- tcg/tcg-internal.h               |  17 ++
- tcg/tci/tcg-target.h             |   3 +
- target/s390x/tcg/insn-data.h.inc |  60 ++---
- accel/tcg/cputlb.c               | 112 +++++++++
- accel/tcg/user-exec.c            |  66 ++++++
- target/arm/helper-a64.c          | 147 ------------
- target/arm/translate-a64.c       | 121 +++++-----
- target/i386/tcg/mem_helper.c     | 126 ----------
- target/i386/tcg/translate.c      | 126 ++++++++--
- target/ppc/mem_helper.c          |  44 ----
- target/ppc/translate.c           | 102 ++++----
- target/s390x/tcg/fpu_helper.c    | 103 ++++----
- target/s390x/tcg/int_helper.c    |  64 ++---
- target/s390x/tcg/mem_helper.c    |  77 +-----
- target/s390x/tcg/translate.c     | 217 +++++++++++------
- tcg/tcg-op.c                     | 393 ++++++++++++++++++++++++++-----
- tcg/tcg.c                        | 303 +++++++++++++++++++++---
- tcg/tci.c                        |  65 ++---
- tests/tcg/s390x/clst.c           |  82 +++++++
- tests/tcg/s390x/div.c            |  75 ++++++
- tests/tcg/s390x/long-double.c    |  24 ++
- util/int128.c                    |  42 ++++
- accel/tcg/atomic_common.c.inc    |  45 ++++
- tcg/aarch64/tcg-target.c.inc     |  17 +-
- tcg/arm/tcg-target.c.inc         |  30 ++-
- tcg/i386/tcg-target.c.inc        |  52 +++-
- tcg/loongarch64/tcg-target.c.inc |  17 +-
- tcg/mips/tcg-target.c.inc        |  17 +-
- tcg/ppc/tcg-target.c.inc         |  20 +-
- tcg/riscv/tcg-target.c.inc       |  17 +-
- tcg/s390x/tcg-target.c.inc       |  16 +-
- tcg/sparc64/tcg-target.c.inc     |  19 +-
- tcg/tci/tcg-target.c.inc         |  27 ++-
- tests/tcg/s390x/Makefile.target  |   3 +
- 53 files changed, 1936 insertions(+), 954 deletions(-)
- create mode 100644 tests/tcg/s390x/clst.c
- create mode 100644 tests/tcg/s390x/div.c
- create mode 100644 tests/tcg/s390x/long-double.c
-
+diff --git a/include/tcg/tcg-op.h b/include/tcg/tcg-op.h
+index 79b1cf786f..c4276767d1 100644
+--- a/include/tcg/tcg-op.h
++++ b/include/tcg/tcg-op.h
+@@ -712,6 +712,10 @@ void tcg_gen_extrh_i64_i32(TCGv_i32 ret, TCGv_i64 arg);
+ void tcg_gen_extr_i64_i32(TCGv_i32 lo, TCGv_i32 hi, TCGv_i64 arg);
+ void tcg_gen_extr32_i64(TCGv_i64 lo, TCGv_i64 hi, TCGv_i64 arg);
+ 
++void tcg_gen_mov_i128(TCGv_i128 dst, TCGv_i128 src);
++void tcg_gen_extr_i128_i64(TCGv_i64 lo, TCGv_i64 hi, TCGv_i128 arg);
++void tcg_gen_concat_i64_i128(TCGv_i128 ret, TCGv_i64 lo, TCGv_i64 hi);
++
+ static inline void tcg_gen_concat32_i64(TCGv_i64 ret, TCGv_i64 lo, TCGv_i64 hi)
+ {
+     tcg_gen_deposit_i64(ret, lo, hi, 32, 32);
+diff --git a/tcg/tcg-internal.h b/tcg/tcg-internal.h
+index 33f1d8b411..e542a4e9b7 100644
+--- a/tcg/tcg-internal.h
++++ b/tcg/tcg-internal.h
+@@ -117,4 +117,17 @@ extern TCGv_i32 TCGV_LOW(TCGv_i64) QEMU_ERROR("32-bit code path is reachable");
+ extern TCGv_i32 TCGV_HIGH(TCGv_i64) QEMU_ERROR("32-bit code path is reachable");
+ #endif
+ 
++static inline TCGv_i64 TCGV128_LOW(TCGv_i128 t)
++{
++    /* For 32-bit, offset by 2, which may then have TCGV_{LOW,HIGH} applied. */
++    int o = HOST_BIG_ENDIAN ? 64 / TCG_TARGET_REG_BITS : 0;
++    return temp_tcgv_i64(tcgv_i128_temp(t) + o);
++}
++
++static inline TCGv_i64 TCGV128_HIGH(TCGv_i128 t)
++{
++    int o = HOST_BIG_ENDIAN ? 0 : 64 / TCG_TARGET_REG_BITS;
++    return temp_tcgv_i64(tcgv_i128_temp(t) + o);
++}
++
+ #endif /* TCG_INTERNAL_H */
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index cd1cd4e736..658cee7d6c 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -2745,6 +2745,26 @@ void tcg_gen_extr32_i64(TCGv_i64 lo, TCGv_i64 hi, TCGv_i64 arg)
+     tcg_gen_shri_i64(hi, arg, 32);
+ }
+ 
++void tcg_gen_extr_i128_i64(TCGv_i64 lo, TCGv_i64 hi, TCGv_i128 arg)
++{
++    tcg_gen_mov_i64(lo, TCGV128_LOW(arg));
++    tcg_gen_mov_i64(hi, TCGV128_HIGH(arg));
++}
++
++void tcg_gen_concat_i64_i128(TCGv_i128 ret, TCGv_i64 lo, TCGv_i64 hi)
++{
++    tcg_gen_mov_i64(TCGV128_LOW(ret), lo);
++    tcg_gen_mov_i64(TCGV128_HIGH(ret), hi);
++}
++
++void tcg_gen_mov_i128(TCGv_i128 dst, TCGv_i128 src)
++{
++    if (dst != src) {
++        tcg_gen_mov_i64(TCGV128_LOW(dst), TCGV128_LOW(src));
++        tcg_gen_mov_i64(TCGV128_HIGH(dst), TCGV128_HIGH(src));
++    }
++}
++
+ /* QEMU specific operations.  */
+ 
+ void tcg_gen_exit_tb(const TranslationBlock *tb, unsigned idx)
 -- 
 2.34.1
 

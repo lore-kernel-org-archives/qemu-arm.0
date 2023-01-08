@@ -1,108 +1,107 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1328229ejc;
-        Sat, 7 Jan 2023 18:47:28 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtZZ9js2pLgGQ5Q6EweAyaNCMRbSY6vREn69EQxU+FERFhDrLUH2749P4gLN/i+FewEDfzd
-X-Received: by 2002:a05:622a:1e99:b0:3a5:ff6e:d43e with SMTP id bz25-20020a05622a1e9900b003a5ff6ed43emr90787528qtb.2.1673146048378;
-        Sat, 07 Jan 2023 18:47:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673146048; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1328248ejc;
+        Sat, 7 Jan 2023 18:47:33 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvEq6j9EN7WptyRIq+cbWqlBHg5KEzO0a9rBTijzFCTD7TdHpNJaQbzhkeSozsD3c5w9Odh
+X-Received: by 2002:ac8:7348:0:b0:3a6:89ac:caac with SMTP id q8-20020ac87348000000b003a689accaacmr77663898qtp.61.1673146053171;
+        Sat, 07 Jan 2023 18:47:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673146053; cv=none;
         d=google.com; s=arc-20160816;
-        b=xW+OVlIQizDNXOySMHqhI+WCOUZ0nbgTHAZB72a47pvN8UjU7uWqvoFARdlDX6K5Yh
-         EeAAg2vmfN2FsuY7XGq6gxVICCG/FvTo3qUyOIDsyRGLBGzl2Vcz6Z9b1GCWIQK2WNwB
-         XKZLmS/Zsbf7p6zj+zFSO8bNEVAo0ztsG3AMw9HN7LlSfCx08eJPJ8heDnihWIMEZoMA
-         rUCzLVE6QyItIFnJeU9NbGqUXn1fuwGmUNGG2vMD3bDAp5mZJWw/1TlQsOLkr/unY7vZ
-         QNY1YJ/rDGAas6kqzDDduel+cbazjrj5h2Ec+8rGZAvey6o5Fbp+yLrvLapTSvfThPL6
-         s9+Q==
+        b=uAUgbCvwbnBYrdpq1tV2eZVyODjufWsS3kzmpl7WXbnSYZDAPmgE2falojka3dF+0G
+         p8MpP6+JWvJfYry1jmQEemSlxD1BIofhDfz3RLGDUheev2wyb4FIOaZevGf+lOlnBfZr
+         q5PC1zlrj3pPCgsME760tqz20lmHnRAsf3z2DiK/t0VwUPvuA0WCyU0pkGpfLmCdBgQX
+         /4mEsj4E+bFCAaSQqaBnwlqsdIibmDAV0XUn2AFUpc2RXS6YtXztImvMfyjkT+8+08Dn
+         NSRL2VPsLjiitRvry52p+DpgOaPGEuc4/3ppTtQ8FbdZXVwTx/UiFzYUq8q7fwUcBYZr
+         oW8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Iw1GTzPrVvn59mPWnuRvy8T9DaruvJAHmYtWuyTanAI=;
-        b=MA6cvqGKvF5Kr2dREMS5FTWSsw9RmNd0iqnS/Gace+l4c6Y6k3YmJDlz1QSFzrNQiA
-         VIxpAIFFwBEVEeaTC5EaMzTFfoYeYUhWD6c2ZtZkWQDgLTr65ZjWz8ju2igjZhzZ9JMB
-         uz88a9ioMrAuvWIIFY0RCYmd3JLM5T0+bYyYeB8DAGgXTpnk5tqyR7UamxHemuHrYRzp
-         sDXAtqpaMsEbS+vuxSMgcyUTvrzAe8GBELJPrxz7IbOVAHJZHgWYCQd0N0GCmeUvPJHU
-         bPd7QJHfZ7gIuN7YrsRF5VdFymaQH0OKEDTR6JmVNmRx3iHsNr95xxaVED/jitESU3IU
-         JDww==
+        bh=Mhr3QIUQO1GxMkIggU7JbqoOmehoWj07MLx7q6K4qDk=;
+        b=l3KDBt7Ys/UQebXb3ei/I2AFjFI0ewEDMM5UwYVZcabacVI2h/bADAqyBQzoGD3yb9
+         lzFgPZ/BG0S+U+A0xYI2oBdy8ZUVy8A6KezmYsk+pKvCxzJBMorP9DVZdjfsYffu1iET
+         veh+bzpvLu7bVuX8II/SlOZ7YNYgfl2oumWObVKbFtiC9iXXNSnKq4S1YS5B0MBSshOY
+         W9q0trQTPC2TUWbpMx+beHqSpynOP6pmHiVbGyO9vDt13HDQanWrxXMOLiidKXGzF4Mu
+         g36z8nO0X83cfmx9edtdHwygrVX2tCUnGakq/FdBga89bHdnN3jpoXGAjb76yfmQ1N5p
+         v8sg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S217sE7Y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hYrKynyZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r23-20020ae9d617000000b00705b5a77153si15348qkk.55.2023.01.07.18.47.28
+        by mx.google.com with ESMTPS id w24-20020ac87198000000b003a3f04f2d32si2713294qto.668.2023.01.07.18.47.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 07 Jan 2023 18:47:28 -0800 (PST)
+        Sat, 07 Jan 2023 18:47:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S217sE7Y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hYrKynyZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pELaX-0006bP-MB; Sat, 07 Jan 2023 21:39:11 -0500
+	id 1pELal-0006v3-G3; Sat, 07 Jan 2023 21:39:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELaN-0006Ou-3N
- for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:38:59 -0500
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+ id 1pELab-0006hx-09
+ for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:39:13 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELZN-0004mg-J5
- for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:38:58 -0500
-Received: by mail-pj1-x102d.google.com with SMTP id
- z9-20020a17090a468900b00226b6e7aeeaso5837573pjf.1
- for <qemu-arm@nongnu.org>; Sat, 07 Jan 2023 18:37:57 -0800 (PST)
+ id 1pELZS-0004p7-Ap
+ for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:39:10 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id
+ z9-20020a17090a468900b00226b6e7aeeaso5837667pjf.1
+ for <qemu-arm@nongnu.org>; Sat, 07 Jan 2023 18:38:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Iw1GTzPrVvn59mPWnuRvy8T9DaruvJAHmYtWuyTanAI=;
- b=S217sE7Y+/y4CtlZX96z+2JTOW/h7JoMC05WgbNGObWRAwRBw4wB6XB4OzaeX/+oNw
- vsHQVNHQA0snoQWVG8dpXn71tUiwd8GH8EyydiHfAPn15Cf4seuyGQE1ErspMmJHAQ1B
- Eiv+ql6iuzVe/d5RvTWD0YXEGUz/amzb+/lFcUFd5PP1JU4N9BektTmpKeAAeW7WctDL
- bi9xnq9wy2i83wEa5mHtd/gg74mk++JvlZwhPMXLY1sK/xQnfH6VAtgQ6cNiZ2HK73Sy
- A0nrCHvJsdzKwHo5aRKjx+Ly2WcncqIIF1mQYTN/fWhHW0mNWudvb5GYw/pFrtOJ0PS5
- Bshw==
+ bh=Mhr3QIUQO1GxMkIggU7JbqoOmehoWj07MLx7q6K4qDk=;
+ b=hYrKynyZZDUSofsJs+xXcMB7/0fMnugQQY67q1cmym7W3997wg5VycoQ2RkOmRpSZt
+ QdSdaHQDlpuna7ZYoyiqCBVAfxxxttbloqn8SXWa9g8Q4BgJTRs5gmdyPwgbwLFtQesM
+ uL5f2e49JZVqm3/o2RRsPLPyXWR0xKVL3uk1bk1vJFaxquAGmD36KprD3yZn/BkzLGU5
+ DtwkqDeAdyMQOZDO7lwqhG1GahbRhVh6B0LZ44P2eRiDWtmVEHDAfBZj3qRTSwxY0GYC
+ olI4A6VwTXVt/n4SXwwwHhFHZ882snHmHDJP38qXKstVeLZEzweh96+KYL5Igdb7wd83
+ 1a6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Iw1GTzPrVvn59mPWnuRvy8T9DaruvJAHmYtWuyTanAI=;
- b=dLq4ET7ya5lm3YnKO1W95ROikK7ique17HfAQnesUVgvXjOY0SoZEiYFCW7LXmvyRV
- HfIYvo2HqxoKNYs0MRid5BNRcaYyrOntkFttDbzasOC+PMjVXKrki+w5ORas39pSiUkK
- 003gBtnR9nS99aRY60+yVGOk8LQHurPsNIB7MneVcAzNczOQY5IWOSFEr3knPLy1RBdX
- CpWAeLZtmurLwU0WPV6DxX6qJH0r8tWsclUItaf3h8jtRz7IgrNfpe8LL46vltTnPshg
- ooFvIOuGaO/Mu4yNjh6TftG/G2puZHxK5VR6KuMHp+PqInyQXDCtewQ0WMD/qSbtTxH1
- jWWA==
-X-Gm-Message-State: AFqh2krkFRhcy4wFcj+Kvu7gkrMWzp6GwotwBuUx72IuUHsPKUGkFNPa
- +MtbOs++ZS5YcXbpNhXLasyySw==
-X-Received: by 2002:a17:902:c401:b0:189:ba1f:b168 with SMTP id
- k1-20020a170902c40100b00189ba1fb168mr94065311plk.1.1673145476356; 
- Sat, 07 Jan 2023 18:37:56 -0800 (PST)
+ bh=Mhr3QIUQO1GxMkIggU7JbqoOmehoWj07MLx7q6K4qDk=;
+ b=yJaZDDNnyu1DoAs/vdVFhB+i8lQukCAWJRMvkac5cJfcgcnvhdwCGLV6/Hnr7sAl8i
+ X1jdQ4P9KoGiBXVBFPCjymLosfRscs9QET23iyAUKOBL0d9cynrfC4oDEJ7T6bTyO2Fx
+ ut6P+U5Y48ne4KPc7gBnTE78xaeggfxAqxF80y13XwEydJF16WE8Kb+g4OAEpWIeVfRj
+ 9ZwWLhsp8/otRmlCOCfUnnnhTxKgMAk9p6P3WHy1U30+fi5HqldlcV0v0BDxlMjNFOZ5
+ HusysT4IyQRPkAfOeS6PTR6CadqhgYVkse3Zg7tPObENN2Dhg8GaKmR83p9NU7qjbIs8
+ Bw3Q==
+X-Gm-Message-State: AFqh2krSSdH5k7Dq6nfYjt10/uXFF6WbjFGlYcLGguTfeVblqItAUnTy
+ Yq5HNrJCJULDp0xU0vBbSYa41g==
+X-Received: by 2002:a17:903:2312:b0:192:8c7f:2654 with SMTP id
+ d18-20020a170903231200b001928c7f2654mr53462869plh.0.1673145481048; 
+ Sat, 07 Jan 2023 18:38:01 -0800 (PST)
 Received: from stoup.. ([2602:47:d48c:8101:8a2d:2011:f402:6f82])
  by smtp.gmail.com with ESMTPSA id
- o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.55
+ o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.38.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Jan 2023 18:37:55 -0800 (PST)
+ Sat, 07 Jan 2023 18:38:00 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
  qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net
-Subject: [PATCH v4 32/36] target/s390x: Use tcg_gen_atomic_cmpxchg_i128 for
- CDSG
-Date: Sat,  7 Jan 2023 18:37:15 -0800
-Message-Id: <20230108023719.2466341-33-richard.henderson@linaro.org>
+Subject: [PATCH v4 36/36] target/i386: Inline cmpxchg16b
+Date: Sat,  7 Jan 2023 18:37:19 -0800
+Message-Id: <20230108023719.2466341-37-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230108023719.2466341-1-richard.henderson@linaro.org>
 References: <20230108023719.2466341-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,199 +123,172 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 10EeCfwRzYZf
+X-TUID: 0XVYTOg8NzEJ
+
+Use tcg_gen_atomic_cmpxchg_i128 for the atomic case,
+and tcg_gen_qemu_ld/st_i128 otherwise.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/s390x/helper.h            |  2 --
- target/s390x/tcg/insn-data.h.inc |  2 +-
- target/s390x/tcg/mem_helper.c    | 52 ---------------------------
- target/s390x/tcg/translate.c     | 60 ++++++++++++++++++++------------
- 4 files changed, 38 insertions(+), 78 deletions(-)
+ target/i386/helper.h         |  4 ---
+ target/i386/tcg/mem_helper.c | 69 ------------------------------------
+ target/i386/tcg/translate.c  | 44 ++++++++++++++++++++---
+ 3 files changed, 39 insertions(+), 78 deletions(-)
 
-diff --git a/target/s390x/helper.h b/target/s390x/helper.h
-index bccd3bfca6..341bc51ec2 100644
---- a/target/s390x/helper.h
-+++ b/target/s390x/helper.h
-@@ -35,8 +35,6 @@ DEF_HELPER_3(cxgb, i128, env, s64, i32)
- DEF_HELPER_3(celgb, i64, env, i64, i32)
- DEF_HELPER_3(cdlgb, i64, env, i64, i32)
- DEF_HELPER_3(cxlgb, i128, env, i64, i32)
--DEF_HELPER_4(cdsg, void, env, i64, i32, i32)
--DEF_HELPER_4(cdsg_parallel, void, env, i64, i32, i32)
- DEF_HELPER_4(csst, i32, env, i32, i64, i64)
- DEF_HELPER_4(csst_parallel, i32, env, i32, i64, i64)
- DEF_HELPER_FLAGS_3(aeb, TCG_CALL_NO_WG, i64, env, i64, i64)
-diff --git a/target/s390x/tcg/insn-data.h.inc b/target/s390x/tcg/insn-data.h.inc
-index 893f4b48db..ea34b4a277 100644
---- a/target/s390x/tcg/insn-data.h.inc
-+++ b/target/s390x/tcg/insn-data.h.inc
-@@ -276,7 +276,7 @@
- /* COMPARE DOUBLE AND SWAP */
-     D(0xbb00, CDS,     RS_a,  Z,   r3_D32, r1_D32, new, r1_D32, cs, 0, MO_TEUQ)
-     D(0xeb31, CDSY,    RSY_a, LD,  r3_D32, r1_D32, new, r1_D32, cs, 0, MO_TEUQ)
--    C(0xeb3e, CDSG,    RSY_a, Z,   0, 0, 0, 0, cdsg, 0)
-+    C(0xeb3e, CDSG,    RSY_a, Z,   la2, r3_D64, r1_D64, r1_D64, cdsg, 0)
- /* COMPARE AND SWAP AND STORE */
-     C(0xc802, CSST,    SSF,   CASS, la1, a2, 0, 0, csst, 0)
+diff --git a/target/i386/helper.h b/target/i386/helper.h
+index 2df8049f91..e627a93107 100644
+--- a/target/i386/helper.h
++++ b/target/i386/helper.h
+@@ -66,10 +66,6 @@ DEF_HELPER_1(rsm, void, env)
+ #endif /* !CONFIG_USER_ONLY */
  
-diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
-index 49969abda7..d6725fd18c 100644
---- a/target/s390x/tcg/mem_helper.c
-+++ b/target/s390x/tcg/mem_helper.c
-@@ -1771,58 +1771,6 @@ uint32_t HELPER(trXX)(CPUS390XState *env, uint32_t r1, uint32_t r2,
-     return cc;
- }
+ DEF_HELPER_2(into, void, env, int)
+-#ifdef TARGET_X86_64
+-DEF_HELPER_2(cmpxchg16b_unlocked, void, env, tl)
+-DEF_HELPER_2(cmpxchg16b, void, env, tl)
+-#endif
+ DEF_HELPER_FLAGS_1(single_step, TCG_CALL_NO_WG, noreturn, env)
+ DEF_HELPER_1(rechecking_single_step, void, env)
+ DEF_HELPER_1(cpuid, void, env)
+diff --git a/target/i386/tcg/mem_helper.c b/target/i386/tcg/mem_helper.c
+index 814786bb87..3ef84e90d9 100644
+--- a/target/i386/tcg/mem_helper.c
++++ b/target/i386/tcg/mem_helper.c
+@@ -27,75 +27,6 @@
+ #include "tcg/tcg.h"
+ #include "helper-tcg.h"
  
--void HELPER(cdsg)(CPUS390XState *env, uint64_t addr,
--                  uint32_t r1, uint32_t r3)
+-#ifdef TARGET_X86_64
+-void helper_cmpxchg16b_unlocked(CPUX86State *env, target_ulong a0)
 -{
 -    uintptr_t ra = GETPC();
--    Int128 cmpv = int128_make128(env->regs[r1 + 1], env->regs[r1]);
--    Int128 newv = int128_make128(env->regs[r3 + 1], env->regs[r3]);
--    Int128 oldv;
--    uint64_t oldh, oldl;
--    bool fail;
+-    Int128 oldv, cmpv, newv;
+-    uint64_t o0, o1;
+-    int eflags;
+-    bool success;
 -
--    check_alignment(env, addr, 16, ra);
+-    if ((a0 & 0xf) != 0) {
+-        raise_exception_ra(env, EXCP0D_GPF, GETPC());
+-    }
+-    eflags = cpu_cc_compute_all(env, CC_OP);
 -
--    oldh = cpu_ldq_data_ra(env, addr + 0, ra);
--    oldl = cpu_ldq_data_ra(env, addr + 8, ra);
+-    cmpv = int128_make128(env->regs[R_EAX], env->regs[R_EDX]);
+-    newv = int128_make128(env->regs[R_EBX], env->regs[R_ECX]);
 -
--    oldv = int128_make128(oldl, oldh);
--    fail = !int128_eq(oldv, cmpv);
--    if (fail) {
+-    o0 = cpu_ldq_data_ra(env, a0 + 0, ra);
+-    o1 = cpu_ldq_data_ra(env, a0 + 8, ra);
+-
+-    oldv = int128_make128(o0, o1);
+-    success = int128_eq(oldv, cmpv);
+-    if (!success) {
 -        newv = oldv;
 -    }
 -
--    cpu_stq_data_ra(env, addr + 0, int128_gethi(newv), ra);
--    cpu_stq_data_ra(env, addr + 8, int128_getlo(newv), ra);
+-    cpu_stq_data_ra(env, a0 + 0, int128_getlo(newv), ra);
+-    cpu_stq_data_ra(env, a0 + 8, int128_gethi(newv), ra);
 -
--    env->cc_op = fail;
--    env->regs[r1] = int128_gethi(oldv);
--    env->regs[r1 + 1] = int128_getlo(oldv);
+-    if (success) {
+-        eflags |= CC_Z;
+-    } else {
+-        env->regs[R_EAX] = int128_getlo(oldv);
+-        env->regs[R_EDX] = int128_gethi(oldv);
+-        eflags &= ~CC_Z;
+-    }
+-    CC_SRC = eflags;
 -}
 -
--void HELPER(cdsg_parallel)(CPUS390XState *env, uint64_t addr,
--                           uint32_t r1, uint32_t r3)
+-void helper_cmpxchg16b(CPUX86State *env, target_ulong a0)
 -{
 -    uintptr_t ra = GETPC();
--    Int128 cmpv = int128_make128(env->regs[r1 + 1], env->regs[r1]);
--    Int128 newv = int128_make128(env->regs[r3 + 1], env->regs[r3]);
--    int mem_idx;
--    MemOpIdx oi;
--    Int128 oldv;
--    bool fail;
 -
--    assert(HAVE_CMPXCHG128);
--
--    mem_idx = cpu_mmu_index(env, false);
--    oi = make_memop_idx(MO_TE | MO_128 | MO_ALIGN, mem_idx);
--    oldv = cpu_atomic_cmpxchgo_be_mmu(env, addr, cmpv, newv, oi, ra);
--    fail = !int128_eq(oldv, cmpv);
--
--    env->cc_op = fail;
--    env->regs[r1] = int128_gethi(oldv);
--    env->regs[r1 + 1] = int128_getlo(oldv);
--}
--
- static uint32_t do_csst(CPUS390XState *env, uint32_t r3, uint64_t a1,
-                         uint64_t a2, bool parallel)
- {
-diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
-index d422a1e62b..0dafa27dab 100644
---- a/target/s390x/tcg/translate.c
-+++ b/target/s390x/tcg/translate.c
-@@ -2224,31 +2224,22 @@ static DisasJumpType op_cs(DisasContext *s, DisasOps *o)
- static DisasJumpType op_cdsg(DisasContext *s, DisasOps *o)
- {
-     int r1 = get_field(s, r1);
--    int r3 = get_field(s, r3);
--    int d2 = get_field(s, d2);
--    int b2 = get_field(s, b2);
--    DisasJumpType ret = DISAS_NEXT;
--    TCGv_i64 addr;
--    TCGv_i32 t_r1, t_r3;
- 
--    /* Note that R1:R1+1 = expected value and R3:R3+1 = new value.  */
--    addr = get_address(s, 0, b2, d2);
--    t_r1 = tcg_const_i32(r1);
--    t_r3 = tcg_const_i32(r3);
--    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
--        gen_helper_cdsg(cpu_env, addr, t_r1, t_r3);
+-    if ((a0 & 0xf) != 0) {
+-        raise_exception_ra(env, EXCP0D_GPF, ra);
 -    } else if (HAVE_CMPXCHG128) {
--        gen_helper_cdsg_parallel(cpu_env, addr, t_r1, t_r3);
+-        int eflags = cpu_cc_compute_all(env, CC_OP);
+-
+-        Int128 cmpv = int128_make128(env->regs[R_EAX], env->regs[R_EDX]);
+-        Int128 newv = int128_make128(env->regs[R_EBX], env->regs[R_ECX]);
+-
+-        int mem_idx = cpu_mmu_index(env, false);
+-        MemOpIdx oi = make_memop_idx(MO_TE | MO_128 | MO_ALIGN, mem_idx);
+-        Int128 oldv = cpu_atomic_cmpxchgo_le_mmu(env, a0, cmpv, newv, oi, ra);
+-
+-        if (int128_eq(oldv, cmpv)) {
+-            eflags |= CC_Z;
+-        } else {
+-            env->regs[R_EAX] = int128_getlo(oldv);
+-            env->regs[R_EDX] = int128_gethi(oldv);
+-            eflags &= ~CC_Z;
+-        }
+-        CC_SRC = eflags;
 -    } else {
--        gen_helper_exit_atomic(cpu_env);
--        ret = DISAS_NORETURN;
+-        cpu_loop_exit_atomic(env_cpu(env), ra);
 -    }
--    tcg_temp_free_i64(addr);
--    tcg_temp_free_i32(t_r1);
--    tcg_temp_free_i32(t_r3);
-+    /* Note out (R1:R1+1) = expected value and in2 (R3:R3+1) = new value.  */
-+    tcg_gen_atomic_cmpxchg_i128(o->out_128, o->addr1, o->out_128, o->in2_128,
-+                                get_mem_index(s), MO_BE | MO_128 | MO_ALIGN);
+-}
+-#endif
+-
+ void helper_boundw(CPUX86State *env, target_ulong a0, int v)
+ {
+     int low, high;
+diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
+index b542b084a6..9d9392b009 100644
+--- a/target/i386/tcg/translate.c
++++ b/target/i386/tcg/translate.c
+@@ -3053,15 +3053,49 @@ static void gen_cmpxchg8b(DisasContext *s, CPUX86State *env, int modrm)
+ #ifdef TARGET_X86_64
+ static void gen_cmpxchg16b(DisasContext *s, CPUX86State *env, int modrm)
+ {
++    MemOp mop = MO_TE | MO_128 | MO_ALIGN;
++    TCGv_i64 t0, t1;
++    TCGv_i128 cmp, val;
++
+     gen_lea_modrm(env, s, modrm);
  
--    set_cc_static(s);
--    return ret;
+-    if ((s->prefix & PREFIX_LOCK) &&
+-        (tb_cflags(s->base.tb) & CF_PARALLEL)) {
+-        gen_helper_cmpxchg16b(cpu_env, s->A0);
++    cmp = tcg_temp_new_i128();
++    val = tcg_temp_new_i128();
++    tcg_gen_concat_i64_i128(cmp, cpu_regs[R_EAX], cpu_regs[R_EDX]);
++    tcg_gen_concat_i64_i128(val, cpu_regs[R_EBX], cpu_regs[R_ECX]);
++
++    /* Only require atomic with LOCK; non-parallel handled in generator. */
++    if (s->prefix & PREFIX_LOCK) {
++        tcg_gen_atomic_cmpxchg_i128(val, s->A0, cmp, val, s->mem_index, mop);
+     } else {
+-        gen_helper_cmpxchg16b_unlocked(cpu_env, s->A0);
++        tcg_gen_nonatomic_cmpxchg_i128(val, s->A0, cmp, val, s->mem_index, mop);
+     }
+-    set_cc_op(s, CC_OP_EFLAGS);
++
++    tcg_gen_extr_i128_i64(s->T0, s->T1, val);
++    tcg_temp_free_i128(cmp);
++    tcg_temp_free_i128(val);
++
++    /* Determine success after the fact. */
++    t0 = tcg_temp_new_i64();
++    t1 = tcg_temp_new_i64();
++    tcg_gen_xor_i64(t0, s->T0, cpu_regs[R_EAX]);
++    tcg_gen_xor_i64(t1, s->T1, cpu_regs[R_EDX]);
++    tcg_gen_or_i64(t0, t0, t1);
++    tcg_temp_free_i64(t1);
++
++    /* Update Z. */
++    gen_compute_eflags(s);
++    tcg_gen_setcondi_i64(TCG_COND_EQ, t0, t0, 0);
++    tcg_gen_deposit_tl(cpu_cc_src, cpu_cc_src, t0, ctz32(CC_Z), 1);
++    tcg_temp_free_i64(t0);
++
 +    /*
-+     * Extract result into cc_dst:cc_src, compare vs the expected value
-+     * in the as yet unmodified input registers, then update CC_OP.
++     * Extract the result values for the register pair.  We may do this
++     * unconditionally, because on success (Z=1), the old value matches
++     * the previous value in RDX:RAX.
 +     */
-+    tcg_gen_extr_i128_i64(cc_src, cc_dst, o->out_128);
-+    tcg_gen_xor_i64(cc_dst, cc_dst, regs[r1]);
-+    tcg_gen_xor_i64(cc_src, cc_src, regs[r1 + 1]);
-+    tcg_gen_or_i64(cc_dst, cc_dst, cc_src);
-+    set_cc_nz_u64(s, cc_dst);
-+
-+    return DISAS_NEXT;
++    tcg_gen_mov_i64(cpu_regs[R_EAX], s->T0);
++    tcg_gen_mov_i64(cpu_regs[R_EDX], s->T1);
  }
+ #endif
  
- static DisasJumpType op_csst(DisasContext *s, DisasOps *o)
-@@ -5419,6 +5410,14 @@ static void prep_r1_P(DisasContext *s, DisasOps *o)
- }
- #define SPEC_prep_r1_P SPEC_r1_even
- 
-+static void prep_r1_D64(DisasContext *s, DisasOps *o)
-+{
-+    int r1 = get_field(s, r1);
-+    o->out_128 = tcg_temp_new_i128();
-+    tcg_gen_concat_i64_i128(o->out_128, regs[r1 + 1], regs[r1]);
-+}
-+#define SPEC_prep_r1_D64 SPEC_r1_even
-+
- static void prep_x1(DisasContext *s, DisasOps *o)
- {
-     o->out_128 = load_freg_128(get_field(s, r1));
-@@ -5488,6 +5487,13 @@ static void wout_r1_D32(DisasContext *s, DisasOps *o)
- }
- #define SPEC_wout_r1_D32 SPEC_r1_even
- 
-+static void wout_r1_D64(DisasContext *s, DisasOps *o)
-+{
-+    int r1 = get_field(s, r1);
-+    tcg_gen_extr_i128_i64(regs[r1 + 1], regs[r1], o->out_128);
-+}
-+#define SPEC_wout_r1_D64 SPEC_r1_even
-+
- static void wout_r3_P32(DisasContext *s, DisasOps *o)
- {
-     int r3 = get_field(s, r3);
-@@ -5935,6 +5941,14 @@ static void in2_r3(DisasContext *s, DisasOps *o)
- }
- #define SPEC_in2_r3 0
- 
-+static void in2_r3_D64(DisasContext *s, DisasOps *o)
-+{
-+    int r3 = get_field(s, r3);
-+    o->in2_128 = tcg_temp_new_i128();
-+    tcg_gen_concat_i64_i128(o->in2_128, regs[r3 + 1], regs[r3]);
-+}
-+#define SPEC_in2_r3_D64 SPEC_r3_even
-+
- static void in2_r3_sr32(DisasContext *s, DisasOps *o)
- {
-     o->in2 = tcg_temp_new_i64();
 -- 
 2.34.1
 

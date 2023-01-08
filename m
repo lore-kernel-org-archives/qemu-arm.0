@@ -1,104 +1,368 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp554977ejc;
-        Fri, 6 Jan 2023 12:39:33 -0800 (PST)
-X-Received: by 2002:a17:902:eb53:b0:193:1aa7:c7d2 with SMTP id i19-20020a170902eb5300b001931aa7c7d2mr474121pli.17.1673037572966;
-        Fri, 06 Jan 2023 12:39:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673037572; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1325438ejc;
+        Sat, 7 Jan 2023 18:38:09 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuZB2uqeM0y+/JAYBuLG/KWH8+hoT0gOmvQhcp1SSD06NS+w+zIK0gK7TTVoA723JYSL+4G
+X-Received: by 2002:a05:6214:5e04:b0:4bb:7a71:c35f with SMTP id li4-20020a0562145e0400b004bb7a71c35fmr84427814qvb.46.1673145489232;
+        Sat, 07 Jan 2023 18:38:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673145489; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYZ1m8RnaiJBdY2UEzFJa2TTvKo7M7PH5PupvR2FoMr2E7skEjoDK+Yh33TtFRLcR8
-         mnnOoyi3HHV2e7vgN0XMdsymnq7P1FtMlsvCecmH0GTmyLBbv0DBqQ2jegFCDeE6kJXi
-         3f09s5BMXe1ULyMo3Hvfx7Fmvj3i4hSDVEEbQQSQXUIOYHDpEq8utBSnsrDLNyeFWy1i
-         h/FH9jQGywU+4TCz5vlep9vdpEESy4Jg7gDiOU8VtYog2WrAZALHPNU1ghVJE3NMH7YY
-         mAOl6JoNaSMB/ITKWRAFhiLpwm1IPERQ4d9cXfHWK/b03tmTEKeQxUIIObMJ8IFEvSRb
-         mlJA==
+        b=Gj+HDcri7L7KhlLtHaw0y4dfaqj44WEnY254dK6OX0VmoCmGBwWkDqTgR+QhiQ5Av3
+         +uXV8wNuA089mWKta79haRwfwJ9176LBOOzBuw0jEw/ca4R/naCDzSnor/FVoRlSRoOs
+         obTaYTXy5R6RXAFuYNG1zEWeyOZ/FNp0L5XC9t7rD2RxpyCuE1d1fZYIwitZ/dX41bJZ
+         F8E7GE0dGL3FLk6FamrLjddSxl05NnkOHfxbeVQJotBju4j6iCgrizyMLA7VoE+b7VUU
+         OOSvGScxAsyrF6VM3DoqkQzyOhA30cwXeNBgaBQUpOEq2lz4l/VR0OYtRp5EmtAQITqO
+         54jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=6+voQvns6oeouTZyhNJXTaf1ms9oOZAS7BFJe7KDG+0=;
-        b=TeFyfneBBRzVF4vPo58j8Z27HlT/fitJSpC9liGUmiRidDO31f/e9HX2W1dgwvk8QR
-         wx8C1Uzbz26Wkfoh7sI1bSEMJVDEJeMbg1OF+aQQiIxnkwPYbzy4p/biKsH9Oo4jCa+F
-         mc/qeAkYnTildGaPASqZYoPUBc5fH6XYEmFGcXSB9zFF0RN+479ALAofXFAoclHbMEFY
-         purcAI79lkqmB1M6a+CJ7psMLogzlo7WvpHizGLoM1JUPWzTcEjnilXlHC7A03FDo2u7
-         LmuU2ixOP1TF5UXsP/cBQlUqd9a8fmOpK1bedVrhNy4oDec+y62YUmu6QNhkuLMTU7wl
-         JhjQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=1lsxB0Q3bC5RA9mVuczL9+THSacM775KBH8YOyPIxoI=;
+        b=Spl6i17tKEiimqNM+hYJvf/4fQBkOt9y9sKv1wSZkT5GywTqFxOEMn6nQeV30dCR3l
+         hEZpiFFeThGgp8kmkX7orgUBx6FvdigcuxwuCPa4aAbK5WW9Dqprm177aihXvoVoMVx4
+         +ZYXBiqMzGEMMbhQqX5EDxnnXXvapokbvcz1O7G2Lv3eCb1vl50+fs9s0bSht6PiGnLK
+         Qt6QxoI5AFK2oWxlcw7qXLd3anEETLgirGslTVRHlpZGcfYimPuT1t/T+g9AI0VdAuuo
+         Vdt30Rp+1bTX2psDAviHUIu9VIz+5euRStn807IRBvcc4D5S0Sk4830sSTcfFJczhBs4
+         3AFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EJCh+On0;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ENvIh9xN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id w6-20020a170902d70600b00190f17f7464sor806514ply.177.2023.01.06.12.39.32
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bi1-20020a05620a318100b006cfa81f5df9si2817778qkb.103.2023.01.07.18.38.09
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 06 Jan 2023 12:39:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 07 Jan 2023 18:38:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EJCh+On0;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ENvIh9xN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6+voQvns6oeouTZyhNJXTaf1ms9oOZAS7BFJe7KDG+0=;
-        b=EJCh+On0HMHCSilu6O0zQfvVXlCijIQaYI5PqhlDHbPnUqWn9fdQ8BdoavHM4oOoc4
-         rOdP7JvBzjQDko9BcOWlLX8lGCJz7LfKSvurbO58DM585c5CuYyj6PoZHLpCD67rIoDS
-         yTaRAhOHomkxG2Voe6MGTVHbgiPf9iiM4eLKA7iUBr6ldmAWHGou5vXCKTD1inz5XcaW
-         2B4Ov6YapZYFFS0HBRyhRU3HN1GMaG+/vSIH40RWnVZ7Bb9kV07rCNXpZCMdb0wogLKh
-         bddtXNCXtMvSUz318cLlPo5S1V2XWWmpUNXac2lO4b6ANSAYFP9GfyS+muYmvM7DS9BS
-         iWVg==
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pELZ9-0004lE-NS; Sat, 07 Jan 2023 21:37:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pELZ8-0004kO-Gh
+ for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:42 -0500
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pELYu-0004Wk-Im
+ for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:42 -0500
+Received: by mail-pl1-x62b.google.com with SMTP id jl4so5863669plb.8
+ for <qemu-devel@nongnu.org>; Sat, 07 Jan 2023 18:37:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1lsxB0Q3bC5RA9mVuczL9+THSacM775KBH8YOyPIxoI=;
+ b=ENvIh9xN742A5aZ45VE/p5kFr/9irKWtvvspMUP5BRbgcNPHSnxkAXSyRqtP3PQZWs
+ N0KZscRbZRr73VpRkTaps2vo2tCxMeuNh1a0ScOMG9WA6KzlgR7WcWRAQy6LlGXEKoaG
+ flFWdtvQUqheArBdgTaQwMn9jgvdgdqmSLrlFfeFdYW//yLtcA1O6jJcZiBLEhW+eG08
+ rjmr5dx3aVyMSJHF87Z3hY9oKvQ+MWjtf+g/BrTNScgMRe03zHx/HkZiDZNduq1IS34Q
+ +guz8XFXGkIK2FOKPWwNw2u1ntvn1fxuF1pE0cNyErf+HM94cC3c8c1MoatQ8JvhgncM
+ zLOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6+voQvns6oeouTZyhNJXTaf1ms9oOZAS7BFJe7KDG+0=;
-        b=bmhiXoCWLuoXuCTzZ9+1XcRfr/yEoc2UCU7juIofd8ZO8LPu5IWHY7Q0hwLJEdWkJu
-         ANQG1dxJMrsPPydC5jg+Oj4gOTQ29sT3jKve+NjyP3spJ8W+2spBfH9smKCLNsQU9+H+
-         o04R+Z/5b6GBobVKWmtAVaOcnaYIFaKo77cYmQJl17mLUns8qr/6NsGg9nZiaV+MHyHh
-         12XtVGTbFEfyRqTILOk7GTCrgYZHLaWKmA5P9keLT0CjzDEyp2s/4tgf/FkfdMZy0vG6
-         K7tyFLMN7BFw4Oxmf2JwzKJPltLyFS8URN7YhiykF3IYHm2biC1x4PBv+xML5Wh5URUR
-         UWRg==
-X-Gm-Message-State: AFqh2koLW7I7PXW24kc8W6HJ23YcWKIjPaxDjUNktAp5oRbXLqpyBWZj
-	Ov8ACVCLqSPCi5De57Kl6f5T4s8SHF5CJofgOTI=
-X-Google-Smtp-Source: AMrXdXvonP2GKbd2280IKM3iIRmBZzfypH3CAK2UyKx4Q/mlPVmpr5vcgzlTDyUkNCX3LF8Eyr5O6A==
-X-Received: by 2002:a05:6a20:4995:b0:ad:9646:b9b with SMTP id fs21-20020a056a20499500b000ad96460b9bmr63894081pzb.49.1673037572469;
-        Fri, 06 Jan 2023 12:39:32 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2602:47:d48c:8101:9d81:5b04:51d7:acae? ([2602:47:d48c:8101:9d81:5b04:51d7:acae])
-        by smtp.gmail.com with ESMTPSA id d16-20020a63ed10000000b00476799699e4sm1283554pgi.30.2023.01.06.12.39.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 06 Jan 2023 12:39:31 -0800 (PST)
-Message-ID: <fd27912b-53ac-e22e-3d0f-d6dbd12e1c48@linaro.org>
-Date: Fri, 6 Jan 2023 12:39:30 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2 05/21] gdbstub: define separate user/system structures
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20230105164320.2164095-1-alex.bennee@linaro.org>
- <20230105164320.2164095-6-alex.bennee@linaro.org>
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=1lsxB0Q3bC5RA9mVuczL9+THSacM775KBH8YOyPIxoI=;
+ b=Ud599SRXLMucpLTSZ/cr8pSzbfnZt0P4ls8zFjF8Yo7rB7ONk6rvMHp9M0reKDuUsi
+ 0RmxPWTGRD6SJlhiZfwhpLHThGdfvrgzzAkgp5ZUeYrDkgsACjtT1tOzAkHpw84wzmVS
+ RHi1uE93OBDb2dqjfD5rwp2yvDwoIn3twbqyaJQ80q+5K7sE2pedE601+lnCLip/5ePw
+ iWRnSje3/E9oxkbKKUqRqUrCZFFrgTdGIImZbkRuyxYvFgf5HP10bgVF7E8T6rxy3QcA
+ S1uq0pVBuGqXpCJOlujvVcFehC3xPe00O0kURa2Ak0Rkoyz763NbglMvDHhatWSvUF8B
+ futg==
+X-Gm-Message-State: AFqh2kou1WtzTRpCIoalVvPvOSGZh4R4LIODfqkLDtTkUJoUzixC67Uq
+ In3qpMA7VLl8oWvaf7RIhUws5vAclk+APXVV
+X-Received: by 2002:a17:902:a98a:b0:189:cef2:88e3 with SMTP id
+ bh10-20020a170902a98a00b00189cef288e3mr62240851plb.57.1673145446963; 
+ Sat, 07 Jan 2023 18:37:26 -0800 (PST)
+Received: from stoup.. ([2602:47:d48c:8101:8a2d:2011:f402:6f82])
+ by smtp.gmail.com with ESMTPSA id
+ o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 07 Jan 2023 18:37:26 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230105164320.2164095-6-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net
+Subject: [PATCH v4 05/36] tcg: Add TCG_CALL_{RET,ARG}_BY_REF
+Date: Sat,  7 Jan 2023 18:36:48 -0800
+Message-Id: <20230108023719.2466341-6-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230108023719.2466341-1-richard.henderson@linaro.org>
+References: <20230108023719.2466341-1-richard.henderson@linaro.org>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: tOsrsU/5XdEO
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ACXy5/Ut1pVv
 
-On 1/5/23 08:43, Alex Bennée wrote:
-> In preparation for moving user/softmmu specific bits from the main
-> gdbstub file we need to separate the connection details into a
-> user/softmmu state. These will eventually be defined in their own
-> files.
-> 
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
-> ---
->   gdbstub/gdbstub.c | 91 +++++++++++++++++++++++++++--------------------
->   1 file changed, 53 insertions(+), 38 deletions(-)
+These will be used by some hosts, both 32 and 64-bit, to pass and
+return i128.  Not yet used, because allocation is not yet enabled.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tcg/tcg-internal.h |   3 +
+ tcg/tcg.c          | 135 ++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 135 insertions(+), 3 deletions(-)
 
-r~
+diff --git a/tcg/tcg-internal.h b/tcg/tcg-internal.h
+index 6e50aeba3a..2ec1ea01df 100644
+--- a/tcg/tcg-internal.h
++++ b/tcg/tcg-internal.h
+@@ -36,6 +36,7 @@
+  */
+ typedef enum {
+     TCG_CALL_RET_NORMAL,         /* by registers */
++    TCG_CALL_RET_BY_REF,         /* for i128, by reference */
+ } TCGCallReturnKind;
+ 
+ typedef enum {
+@@ -44,6 +45,8 @@ typedef enum {
+     TCG_CALL_ARG_EXTEND,         /* for i32, as a sign/zero-extended i64 */
+     TCG_CALL_ARG_EXTEND_U,       /*      ... as a zero-extended i64 */
+     TCG_CALL_ARG_EXTEND_S,       /*      ... as a sign-extended i64 */
++    TCG_CALL_ARG_BY_REF,         /* for i128, by reference, first */
++    TCG_CALL_ARG_BY_REF_N,       /*       ... by reference, subsequent */
+ } TCGCallArgumentKind;
+ 
+ typedef struct TCGCallArgumentLoc {
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index a6c2783285..93d1331f93 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -103,8 +103,7 @@ static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1,
+ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg);
+ static void tcg_out_movi(TCGContext *s, TCGType type,
+                          TCGReg ret, tcg_target_long arg);
+-static void tcg_out_addi_ptr(TCGContext *s, TCGReg, TCGReg, tcg_target_long)
+-    __attribute__((unused));
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg, TCGReg, tcg_target_long);
+ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
+                        const TCGArg args[TCG_MAX_OP_ARGS],
+                        const int const_args[TCG_MAX_OP_ARGS]);
+@@ -662,6 +661,38 @@ static void layout_arg_normal_n(TCGCumulativeArgs *cum,
+     cum->arg_slot += n;
+ }
+ 
++static void layout_arg_by_ref(TCGCumulativeArgs *cum, TCGHelperInfo *info)
++{
++    TCGCallArgumentLoc *loc = &info->in[cum->info_in_idx];
++    int n = 128 / TCG_TARGET_REG_BITS;
++
++    /* The first subindex carries the pointer. */
++    layout_arg_1(cum, info, TCG_CALL_ARG_BY_REF);
++
++    /*
++     * The callee is allowed to clobber memory associated with
++     * structure pass by-reference.  Therefore we must make copies.
++     * Allocate space from "ref_slot", which will be adjusted to
++     * follow the parameters on the stack.
++     */
++    loc[0].ref_slot = cum->ref_slot;
++
++    /*
++     * Subsequent words also go into the reference slot, but
++     * do not accumulate into the regular arguments.
++     */
++    for (int i = 1; i < n; ++i) {
++        loc[i] = (TCGCallArgumentLoc){
++            .kind = TCG_CALL_ARG_BY_REF_N,
++            .arg_idx = cum->arg_idx,
++            .tmp_subindex = i,
++            .ref_slot = cum->ref_slot + i,
++        };
++    }
++    cum->info_in_idx += n;
++    cum->ref_slot += n;
++}
++
+ static void init_call_layout(TCGHelperInfo *info)
+ {
+     int max_reg_slots = ARRAY_SIZE(tcg_target_call_iarg_regs);
+@@ -697,6 +728,14 @@ static void init_call_layout(TCGHelperInfo *info)
+         case TCG_CALL_RET_NORMAL:
+             assert(info->nr_out <= ARRAY_SIZE(tcg_target_call_oarg_regs));
+             break;
++        case TCG_CALL_RET_BY_REF:
++            /*
++             * Allocate the first argument to the output.
++             * We don't need to store this anywhere, just make it
++             * unavailable for use in the input loop below.
++             */
++            cum.arg_slot = 1;
++            break;
+         default:
+             qemu_build_not_reached();
+         }
+@@ -775,6 +814,9 @@ static void init_call_layout(TCGHelperInfo *info)
+             case TCG_CALL_ARG_NORMAL:
+                 layout_arg_normal_n(&cum, info, 128 / TCG_TARGET_REG_BITS);
+                 break;
++            case TCG_CALL_ARG_BY_REF:
++                layout_arg_by_ref(&cum, info);
++                break;
+             default:
+                 qemu_build_not_reached();
+             }
+@@ -790,7 +832,39 @@ static void init_call_layout(TCGHelperInfo *info)
+     assert(cum.info_in_idx <= ARRAY_SIZE(info->in));
+     /* Validate the backend has enough argument space. */
+     assert(cum.arg_slot <= max_reg_slots + max_stk_slots);
+-    assert(cum.ref_slot <= max_stk_slots);
++
++    /*
++     * Relocate the "ref_slot" area to the end of the parameters.
++     * Minimizing this stack offset helps code size for x86,
++     * which has a signed 8-bit offset encoding.
++     */
++    if (cum.ref_slot != 0) {
++        int ref_base = 0;
++
++        if (cum.arg_slot > max_reg_slots) {
++            int align = __alignof(Int128) / sizeof(tcg_target_long);
++
++            ref_base = cum.arg_slot - max_reg_slots;
++            if (align > 1) {
++                ref_base = ROUND_UP(ref_base, align);
++            }
++        }
++        assert(ref_base + cum.ref_slot <= max_stk_slots);
++
++        if (ref_base != 0) {
++            for (int i = cum.info_in_idx - 1; i >= 0; --i) {
++                TCGCallArgumentLoc *loc = &info->in[i];
++                switch (loc->kind) {
++                case TCG_CALL_ARG_BY_REF:
++                case TCG_CALL_ARG_BY_REF_N:
++                    loc->ref_slot += ref_base;
++                    break;
++                default:
++                    break;
++                }
++            }
++        }
++    }
+ }
+ 
+ static int indirect_reg_alloc_order[ARRAY_SIZE(tcg_target_reg_alloc_order)];
+@@ -1716,6 +1790,8 @@ void tcg_gen_callN(void *func, TCGTemp *ret, int nargs, TCGTemp **args)
+ 
+         switch (loc->kind) {
+         case TCG_CALL_ARG_NORMAL:
++        case TCG_CALL_ARG_BY_REF:
++        case TCG_CALL_ARG_BY_REF_N:
+             op->args[pi++] = temp_arg(ts);
+             break;
+ 
+@@ -4382,6 +4458,27 @@ static void load_arg_normal(TCGContext *s, const TCGCallArgumentLoc *l,
+     }
+ }
+ 
++static void load_arg_ref(TCGContext *s, int arg_slot, TCGReg ref_base,
++                         intptr_t ref_off, TCGRegSet *allocated_regs)
++{
++    TCGReg reg;
++    int stk_slot = arg_slot - ARRAY_SIZE(tcg_target_call_iarg_regs);
++
++    if (stk_slot < 0) {
++        reg = tcg_target_call_iarg_regs[arg_slot];
++        tcg_reg_free(s, reg, *allocated_regs);
++        tcg_out_addi_ptr(s, reg, ref_base, ref_off);
++        tcg_regset_set_reg(*allocated_regs, reg);
++    } else {
++        reg = tcg_reg_alloc(s, tcg_target_available_regs[TCG_TYPE_PTR],
++                            *allocated_regs, 0, false);
++        tcg_out_addi_ptr(s, reg, ref_base, ref_off);
++        tcg_out_st(s, TCG_TYPE_PTR, reg, TCG_REG_CALL_STACK,
++                   TCG_TARGET_CALL_STACK_OFFSET
++                   + stk_slot * sizeof(tcg_target_long));
++    }
++}
++
+ static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
+ {
+     const int nb_oargs = TCGOP_CALLO(op);
+@@ -4405,6 +4502,16 @@ static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
+         case TCG_CALL_ARG_EXTEND_S:
+             load_arg_normal(s, loc, ts, &allocated_regs);
+             break;
++        case TCG_CALL_ARG_BY_REF:
++            load_arg_stk(s, loc->ref_slot, ts, allocated_regs);
++            load_arg_ref(s, loc->arg_slot, TCG_REG_CALL_STACK,
++                         TCG_TARGET_CALL_STACK_OFFSET
++                         + loc->ref_slot * sizeof(tcg_target_long),
++                         &allocated_regs);
++            break;
++        case TCG_CALL_ARG_BY_REF_N:
++            load_arg_stk(s, loc->ref_slot, ts, allocated_regs);
++            break;
+         default:
+             g_assert_not_reached();
+         }
+@@ -4436,6 +4543,19 @@ static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
+         save_globals(s, allocated_regs);
+     }
+ 
++    /*
++     * If the ABI passes a pointer to the returned struct as the first
++     * argument, load that now.  Pass a pointer to the output home slot.
++     */
++    if (info->out_kind == TCG_CALL_RET_BY_REF) {
++        TCGTemp *ts = arg_temp(op->args[0]);
++
++        if (!ts->mem_allocated) {
++            temp_allocate_frame(s, ts);
++        }
++        load_arg_ref(s, 0, ts->mem_base->reg, ts->mem_offset, &allocated_regs);
++    }
++
+     tcg_out_call(s, tcg_call_func(op), info);
+ 
+     /* Assign output registers and emit moves if needed.  */
+@@ -4452,6 +4572,15 @@ static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
+             ts->mem_coherent = 0;
+         }
+         break;
++
++    case TCG_CALL_RET_BY_REF:
++        /* The callee has performed a write through the reference. */
++        for (i = 0; i < nb_oargs; i++) {
++            TCGTemp *ts = arg_temp(op->args[i]);
++            ts->val_type = TEMP_VAL_MEM;
++        }
++        break;
++
+     default:
+         g_assert_not_reached();
+     }
+-- 
+2.34.1
+

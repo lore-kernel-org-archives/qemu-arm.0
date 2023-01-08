@@ -1,106 +1,108 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1326132ejc;
-        Sat, 7 Jan 2023 18:40:23 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXspINJFtzF+SO0USSEdn/71ja2g03IoAsm2+/XkRVS7A+pBl4sqmP7gCyud/1Jh0iYAybvo
-X-Received: by 2002:ac8:74d6:0:b0:3a5:2644:bcd2 with SMTP id j22-20020ac874d6000000b003a52644bcd2mr85971610qtr.8.1673145622783;
-        Sat, 07 Jan 2023 18:40:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673145622; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1326194ejc;
+        Sat, 7 Jan 2023 18:40:33 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsl3+7QL4DEG7jjCVRK31Ex+iatEHFNJCCvKmMVSQEXzbrc9iasNBWKAQrGS128bMZz0Ur2
+X-Received: by 2002:ac8:424e:0:b0:3a9:8984:10fc with SMTP id r14-20020ac8424e000000b003a9898410fcmr73925228qtm.33.1673145633001;
+        Sat, 07 Jan 2023 18:40:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673145632; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fk9T0rXovDzbif+l4EONlXSz1TZi0goqcz7xqGI2yA7SMkr7AFr2ubBN2E7gS2TTi+
-         DPSmOWBqaLqEJXo2iyavR7+BkHBLfbibZKVshOvd9bUHUZxWkNUXWgne70+M+Bry1XHe
-         ztpEbh0TsvzeTJ6Kk5XgQsmDX8TLs7kmqZVWmiGUZDSYdgbKYMfn6SE6UDAdpdL0HU6Q
-         VctSjRfoD6fnqWVCzvogiwxpni1LszfpFbs31GLA6yzbLVCfyl2qQ1qLfzNkORSXp+b5
-         R13PqYLLDXYrU243ThfF9UZDkPFqSsPfJvFkrXVloDi4kenVQQpZE93VpQfGlHh3JIcO
-         aTXw==
+        b=dQshW4ZPsGatpJWExw7QmJHzdZrZnyP+CTzMKaa8pUiJ8TQFhx/7IWcXvTkKM51Mu/
+         T/0O2MPswMEikyPbrfrfjY1QN+oAlXnO42h97bpY7pIBZ7e+lkkevXgmRTyP9fT12DYe
+         z6Py5i27tb5epXZSGHJCytaVZML51CXzXVcftOQrpUgEKvV7B7llz7OnyiSWqBtfD1Ff
+         Cuf8Mq+KfP1Bah9B2HJxxBkJBJ2wXkIPkIK0NxCxT0XaTajLHTLfOFjGI6XXBASExzYG
+         rdcbUJMZaK7JqdW/VbGTXREWUYbElDIpsu2RrxTPFWz7I/5SDBY9vBfaV+qPWZtYI6kQ
+         1a4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=tmU0MjgiKsSxPUHRGzRVInhdiWEFNbDXapXPwryhCsg=;
-        b=c/C9ZU42Bwd+zdI2RPgYR/dKZvCMEt/H/8N3d4qRGMGC8MNBbIdJPnmvHJLvM6OCAA
-         iuFFWa1qJNzLmt7XXK2fRXorvr6W2yYbw+pNm5ocx4VLIafpFDS9l64ZfrhUEmgk33xm
-         fmCticaz2TFWks3SqCK+7YSWE7cRaGfdTtonL72NOqetYrbKmbL8IH3WUMA0M0Htjsqy
-         /o2R2gZLRMu6/Srtil7zSND7LAb3q8MLOh5OBerzSEgJsMsMnauEOKANAo1uInMAVHEk
-         DBi9d60JsrUTPSWK3WG5mN49STJLth5sxOwieMdgTdzRKQ3KK87aQeVu0LeNJ8ulfNZp
-         I7ng==
+        bh=fBe81AYf+h+ZBpFhnMwhRAiDvhJXmvmqR7+o6P3dQKY=;
+        b=HUeNDZ5tBkjeg5qovGRkFkZBVjVHpd/lkvfCzL0hcDhYsmkgsuVndlf3oEoBmvA9f/
+         zfC9Z7WwWhqNmvrulYLTqsa6NxE4VsSEIX+QVNkjREx3HqlsSLW4tD4cGnO7sMoyAgdL
+         1siOT2vPz8P+e5cTkCe0YfsjPybi9D3o2Dk374LsW8qDIE8EQL8BhVfRetvGtcemL+uQ
+         sScSz3RmtVV7kDJRi83c2eTOh+W4XgzAYgKm7VtonC+RWB0PWXHAPntbd0L2cjyq2zOh
+         rMe8bQR1fdTyGTNCv2d+1nlJRfQZVb/yt/nk6QdbESDPPKJDFB0P9WED1ZU7vmx+0t/a
+         ZJow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dVPjSWSV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HqXY6QIZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i23-20020a05620a075700b006fb3a1d1ebdsi2759645qki.202.2023.01.07.18.40.22
+        by mx.google.com with ESMTPS id r24-20020ac87ef8000000b003a5820904absi2835849qtc.385.2023.01.07.18.40.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 07 Jan 2023 18:40:22 -0800 (PST)
+        Sat, 07 Jan 2023 18:40:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dVPjSWSV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HqXY6QIZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pELZr-0005Pc-5X; Sat, 07 Jan 2023 21:38:27 -0500
+	id 1pELZr-0005QF-LV; Sat, 07 Jan 2023 21:38:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELZg-0005G2-Lv
- for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:38:16 -0500
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ id 1pELZm-0005Iu-SO
+ for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:38:23 -0500
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELZ5-0004d2-LM
- for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:38:16 -0500
-Received: by mail-pj1-x1031.google.com with SMTP id o13so1885460pjg.2
- for <qemu-arm@nongnu.org>; Sat, 07 Jan 2023 18:37:39 -0800 (PST)
+ id 1pELZ8-0004eS-2K
+ for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:38:22 -0500
+Received: by mail-pj1-x1034.google.com with SMTP id
+ o1-20020a17090a678100b00219cf69e5f0so9292405pjj.2
+ for <qemu-arm@nongnu.org>; Sat, 07 Jan 2023 18:37:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=tmU0MjgiKsSxPUHRGzRVInhdiWEFNbDXapXPwryhCsg=;
- b=dVPjSWSVfw3dl+K0WrjZQUtWVtasW1reVIEELlM9F/TvOFEnsRyHTV7neQKKF0yDq0
- zWZ7VC8avBIbay8SO1uxz1pN7XNarj00p0ljqQio0+igPCW075mN1y3Kk+BVFZ/TVkl1
- H14q04qgtIopeXhtxBT82aELAfULRloENIut2Uk/8piyu4a+jMIvsLkCTj06VNuJOcGA
- vQtUBveoUTqvGYhZkytToXTi/1sweQfKDUV4TOGHFkFbI7Ddby6iIhVB6fkmJLJV8EsH
- 2Q05RxM9udcCSC493hceEzCq3fyyQWSKrpPuAgOZ7a6VATnDEo+9zDl6MbsEeJwfpb2W
- 1z/g==
+ bh=fBe81AYf+h+ZBpFhnMwhRAiDvhJXmvmqR7+o6P3dQKY=;
+ b=HqXY6QIZgmvawjIMl3xMJ+aoWYtOfrLlUlA0s5tRnenWNZLVzfkHXGy7jwBYQUN6++
+ Ed6Tm901X5LaW/9Y3Hdq/hgXD2gyAlBRaGe0LPwU5aQVpBBdM70dqGH4sXoEIOGHIVZ+
+ ruR8vQl+ahTo0jdu62U5XjA+ks5UjaPSZXEeAP4NcpIZdurGIfyJcb6jfdyMblM+7vMG
+ uRcU+cWFX245qQLmY4ASYJalf/Ludn4UBjOfmhFP8uyxppxy0qQ0ymbOiZpTQoYgfbBD
+ 0op5yO6l1U6/k7sk62SxzevKl66RzUSrYRInOhfxwHhpQZ+Ux3CzqO50NJjThU4q4SfQ
+ 3JvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=tmU0MjgiKsSxPUHRGzRVInhdiWEFNbDXapXPwryhCsg=;
- b=hvt/MfHGx0X+m1aY6cQ/8tH2NdwzdtX1tzzIExJy47dSlomUKZZ0XzPPzkmxwuGdtG
- cyXw5qxbUJtdo8HjF2G3pRtRiwXhPz9Pm6ZaDgp+GNLnQbfpiNpIf95SKWW9mjFveV8b
- u6Q2+Eq5NSnLTQC5I3Lz4a6YZIQtZAfLZ6tnbMAFaB4//ef8qP70wF12UpIRM2cKHGgM
- brguBRfqeWEDrRlxC8KuPzqvmdgpPlGg8j83AnnAKyhgLGUeIDPs+uGtfG2YIPG+hOK6
- rggfLpY02mf1n2W0gOh0OpMQM2zII/oou+oC48gEd7ErQ1ldKOozBsiapVLhGJkDAd/J
- 6XhA==
-X-Gm-Message-State: AFqh2kqKlKqb/cP87GAYMwHDBjO3QvKAkCNs8x7TDqC6X0O9d3l6SsIq
- tqcAN+XOrgYIKnk0JDCYBjRU1A==
-X-Received: by 2002:a17:902:8e86:b0:192:b43e:272 with SMTP id
- bg6-20020a1709028e8600b00192b43e0272mr28292109plb.53.1673145458376; 
- Sat, 07 Jan 2023 18:37:38 -0800 (PST)
+ bh=fBe81AYf+h+ZBpFhnMwhRAiDvhJXmvmqR7+o6P3dQKY=;
+ b=TrBMMaQTusSowHH1Ns/6OyHmgr1OksBZqZO6ZOC4Reh6z3fBnT9ocfo6cuA4busTde
+ hK/hafhiYSrqM7nTNzSHe8DzZSBxJsqqpoUePRea2eJfnwGFz42oMDw0G4AxRd31sNqg
+ 75ZIo0TmE0gS/maAh/IuuGT/tJ7tlLbloK7Nse6Js2ay32ySXAxV9YSk3O+yVQwXZH2u
+ oEXB0v4tJeWReaengiJwUTPQbSPbbMlv+VMMfxBxUvvvGiULEbDCEBSM8xMyCZ3FoJ1Q
+ 7/WWdSORVzvUiheMWjcIc/jkYSBTiVW3W/QeFu5wjYuAeeyNXmW3ut4YJopVhDWZRlVM
+ /geA==
+X-Gm-Message-State: AFqh2krRfP8d/zbbESv1VhxzLpXrjlq/MbAeFdkBlHAHYmHCqGxhCuHI
+ TzrHrmZG25wi7JoLMw8Nr2RIyHD3z6Q1rQvn
+X-Received: by 2002:a17:902:f80c:b0:185:441e:90dd with SMTP id
+ ix12-20020a170902f80c00b00185441e90ddmr67708680plb.67.1673145460792; 
+ Sat, 07 Jan 2023 18:37:40 -0800 (PST)
 Received: from stoup.. ([2602:47:d48c:8101:8a2d:2011:f402:6f82])
  by smtp.gmail.com with ESMTPSA id
- o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.37
+ o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Jan 2023 18:37:37 -0800 (PST)
+ Sat, 07 Jan 2023 18:37:40 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net
-Subject: [PATCH v4 16/36] tcg: Add tcg_gen_{non}atomic_cmpxchg_i128
-Date: Sat,  7 Jan 2023 18:36:59 -0800
-Message-Id: <20230108023719.2466341-17-richard.henderson@linaro.org>
+ qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v4 18/36] target/arm: Use tcg_gen_atomic_cmpxchg_i128 for STXP
+Date: Sat,  7 Jan 2023 18:37:01 -0800
+Message-Id: <20230108023719.2466341-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230108023719.2466341-1-richard.henderson@linaro.org>
 References: <20230108023719.2466341-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,231 +124,221 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8sZV82QwNIrT
-
-This will allow targets to avoid rolling their own.
+X-TUID: b3JrMMlPK5WO
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20221112042555.2622152-2-richard.henderson@linaro.org>
 ---
- accel/tcg/tcg-runtime.h       | 11 +++++
- include/tcg/tcg-op.h          |  5 +++
- tcg/tcg-op.c                  | 85 +++++++++++++++++++++++++++++++++++
- accel/tcg/atomic_common.c.inc | 45 +++++++++++++++++++
- 4 files changed, 146 insertions(+)
+ target/arm/helper-a64.h    |   6 ---
+ target/arm/helper-a64.c    | 104 -------------------------------------
+ target/arm/translate-a64.c |  60 ++++++++++++---------
+ 3 files changed, 35 insertions(+), 135 deletions(-)
 
-diff --git a/accel/tcg/tcg-runtime.h b/accel/tcg/tcg-runtime.h
-index 37cbd722bf..e141a6ab24 100644
---- a/accel/tcg/tcg-runtime.h
-+++ b/accel/tcg/tcg-runtime.h
-@@ -55,6 +55,17 @@ DEF_HELPER_FLAGS_5(atomic_cmpxchgq_be, TCG_CALL_NO_WG,
- DEF_HELPER_FLAGS_5(atomic_cmpxchgq_le, TCG_CALL_NO_WG,
-                    i64, env, tl, i64, i64, i32)
- #endif
-+#ifdef CONFIG_CMPXCHG128
-+DEF_HELPER_FLAGS_5(atomic_cmpxchgo_be, TCG_CALL_NO_WG,
-+                   i128, env, tl, i128, i128, i32)
-+DEF_HELPER_FLAGS_5(atomic_cmpxchgo_le, TCG_CALL_NO_WG,
-+                   i128, env, tl, i128, i128, i32)
-+#endif
-+
-+DEF_HELPER_FLAGS_5(nonatomic_cmpxchgo_be, TCG_CALL_NO_WG,
-+                   i128, env, tl, i128, i128, i32)
-+DEF_HELPER_FLAGS_5(nonatomic_cmpxchgo_le, TCG_CALL_NO_WG,
-+                   i128, env, tl, i128, i128, i32)
- 
- #ifdef CONFIG_ATOMIC64
- #define GEN_ATOMIC_HELPERS(NAME)                                  \
-diff --git a/include/tcg/tcg-op.h b/include/tcg/tcg-op.h
-index e5f5b63c37..31bf3d287e 100644
---- a/include/tcg/tcg-op.h
-+++ b/include/tcg/tcg-op.h
-@@ -907,6 +907,11 @@ void tcg_gen_atomic_cmpxchg_i32(TCGv_i32, TCGv, TCGv_i32, TCGv_i32,
-                                 TCGArg, MemOp);
- void tcg_gen_atomic_cmpxchg_i64(TCGv_i64, TCGv, TCGv_i64, TCGv_i64,
-                                 TCGArg, MemOp);
-+void tcg_gen_atomic_cmpxchg_i128(TCGv_i128, TCGv, TCGv_i128, TCGv_i128,
-+                                 TCGArg, MemOp);
-+
-+void tcg_gen_nonatomic_cmpxchg_i128(TCGv_i128, TCGv, TCGv_i128, TCGv_i128,
-+                                    TCGArg, MemOp);
- 
- void tcg_gen_atomic_xchg_i32(TCGv_i32, TCGv, TCGv_i32, TCGArg, MemOp);
- void tcg_gen_atomic_xchg_i64(TCGv_i64, TCGv, TCGv_i64, TCGArg, MemOp);
-diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
-index 55ecedb66f..66f9c894ad 100644
---- a/tcg/tcg-op.c
-+++ b/tcg/tcg-op.c
-@@ -3293,6 +3293,8 @@ typedef void (*gen_atomic_cx_i32)(TCGv_i32, TCGv_env, TCGv,
-                                   TCGv_i32, TCGv_i32, TCGv_i32);
- typedef void (*gen_atomic_cx_i64)(TCGv_i64, TCGv_env, TCGv,
-                                   TCGv_i64, TCGv_i64, TCGv_i32);
-+typedef void (*gen_atomic_cx_i128)(TCGv_i128, TCGv_env, TCGv,
-+                                   TCGv_i128, TCGv_i128, TCGv_i32);
- typedef void (*gen_atomic_op_i32)(TCGv_i32, TCGv_env, TCGv,
-                                   TCGv_i32, TCGv_i32);
- typedef void (*gen_atomic_op_i64)(TCGv_i64, TCGv_env, TCGv,
-@@ -3303,6 +3305,11 @@ typedef void (*gen_atomic_op_i64)(TCGv_i64, TCGv_env, TCGv,
- #else
- # define WITH_ATOMIC64(X)
- #endif
-+#ifdef CONFIG_CMPXCHG128
-+# define WITH_ATOMIC128(X) X,
-+#else
-+# define WITH_ATOMIC128(X)
-+#endif
- 
- static void * const table_cmpxchg[(MO_SIZE | MO_BSWAP) + 1] = {
-     [MO_8] = gen_helper_atomic_cmpxchgb,
-@@ -3312,6 +3319,8 @@ static void * const table_cmpxchg[(MO_SIZE | MO_BSWAP) + 1] = {
-     [MO_32 | MO_BE] = gen_helper_atomic_cmpxchgl_be,
-     WITH_ATOMIC64([MO_64 | MO_LE] = gen_helper_atomic_cmpxchgq_le)
-     WITH_ATOMIC64([MO_64 | MO_BE] = gen_helper_atomic_cmpxchgq_be)
-+    WITH_ATOMIC128([MO_128 | MO_LE] = gen_helper_atomic_cmpxchgo_le)
-+    WITH_ATOMIC128([MO_128 | MO_BE] = gen_helper_atomic_cmpxchgo_be)
- };
- 
- void tcg_gen_atomic_cmpxchg_i32(TCGv_i32 retv, TCGv addr, TCGv_i32 cmpv,
-@@ -3410,6 +3419,82 @@ void tcg_gen_atomic_cmpxchg_i64(TCGv_i64 retv, TCGv addr, TCGv_i64 cmpv,
-     }
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 7b706571bb..94065d1917 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -50,12 +50,6 @@ DEF_HELPER_FLAGS_2(frecpx_f16, TCG_CALL_NO_RWG, f16, f16, ptr)
+ DEF_HELPER_FLAGS_2(fcvtx_f64_to_f32, TCG_CALL_NO_RWG, f32, f64, env)
+ DEF_HELPER_FLAGS_3(crc32_64, TCG_CALL_NO_RWG_SE, i64, i64, i64, i32)
+ DEF_HELPER_FLAGS_3(crc32c_64, TCG_CALL_NO_RWG_SE, i64, i64, i64, i32)
+-DEF_HELPER_FLAGS_4(paired_cmpxchg64_le, TCG_CALL_NO_WG, i64, env, i64, i64, i64)
+-DEF_HELPER_FLAGS_4(paired_cmpxchg64_le_parallel, TCG_CALL_NO_WG,
+-                   i64, env, i64, i64, i64)
+-DEF_HELPER_FLAGS_4(paired_cmpxchg64_be, TCG_CALL_NO_WG, i64, env, i64, i64, i64)
+-DEF_HELPER_FLAGS_4(paired_cmpxchg64_be_parallel, TCG_CALL_NO_WG,
+-                   i64, env, i64, i64, i64)
+ DEF_HELPER_5(casp_le_parallel, void, env, i32, i64, i64, i64)
+ DEF_HELPER_5(casp_be_parallel, void, env, i32, i64, i64, i64)
+ DEF_HELPER_FLAGS_3(advsimd_maxh, TCG_CALL_NO_RWG, f16, f16, f16, ptr)
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index 77a8502b6b..7dbdb2c233 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -505,110 +505,6 @@ uint64_t HELPER(crc32c_64)(uint64_t acc, uint64_t val, uint32_t bytes)
+     return crc32c(acc, buf, bytes) ^ 0xffffffff;
  }
  
-+void tcg_gen_nonatomic_cmpxchg_i128(TCGv_i128 retv, TCGv addr, TCGv_i128 cmpv,
-+                                    TCGv_i128 newv, TCGArg idx, MemOp memop)
-+{
-+    if (TCG_TARGET_REG_BITS == 32) {
-+        /* Inline expansion below is simply too large for 32-bit hosts. */
-+        gen_atomic_cx_i128 gen = ((memop & MO_BSWAP) == MO_LE
-+                                  ? gen_helper_nonatomic_cmpxchgo_le 
-+                                  : gen_helper_nonatomic_cmpxchgo_be);
-+        MemOpIdx oi = make_memop_idx(memop, idx);
+-uint64_t HELPER(paired_cmpxchg64_le)(CPUARMState *env, uint64_t addr,
+-                                     uint64_t new_lo, uint64_t new_hi)
+-{
+-    Int128 cmpv = int128_make128(env->exclusive_val, env->exclusive_high);
+-    Int128 newv = int128_make128(new_lo, new_hi);
+-    Int128 oldv;
+-    uintptr_t ra = GETPC();
+-    uint64_t o0, o1;
+-    bool success;
+-    int mem_idx = cpu_mmu_index(env, false);
+-    MemOpIdx oi0 = make_memop_idx(MO_LEUQ | MO_ALIGN_16, mem_idx);
+-    MemOpIdx oi1 = make_memop_idx(MO_LEUQ, mem_idx);
+-
+-    o0 = cpu_ldq_le_mmu(env, addr + 0, oi0, ra);
+-    o1 = cpu_ldq_le_mmu(env, addr + 8, oi1, ra);
+-    oldv = int128_make128(o0, o1);
+-
+-    success = int128_eq(oldv, cmpv);
+-    if (success) {
+-        cpu_stq_le_mmu(env, addr + 0, int128_getlo(newv), oi1, ra);
+-        cpu_stq_le_mmu(env, addr + 8, int128_gethi(newv), oi1, ra);
+-    }
+-
+-    return !success;
+-}
+-
+-uint64_t HELPER(paired_cmpxchg64_le_parallel)(CPUARMState *env, uint64_t addr,
+-                                              uint64_t new_lo, uint64_t new_hi)
+-{
+-    Int128 oldv, cmpv, newv;
+-    uintptr_t ra = GETPC();
+-    bool success;
+-    int mem_idx;
+-    MemOpIdx oi;
+-
+-    assert(HAVE_CMPXCHG128);
+-
+-    mem_idx = cpu_mmu_index(env, false);
+-    oi = make_memop_idx(MO_LE | MO_128 | MO_ALIGN, mem_idx);
+-
+-    cmpv = int128_make128(env->exclusive_val, env->exclusive_high);
+-    newv = int128_make128(new_lo, new_hi);
+-    oldv = cpu_atomic_cmpxchgo_le_mmu(env, addr, cmpv, newv, oi, ra);
+-
+-    success = int128_eq(oldv, cmpv);
+-    return !success;
+-}
+-
+-uint64_t HELPER(paired_cmpxchg64_be)(CPUARMState *env, uint64_t addr,
+-                                     uint64_t new_lo, uint64_t new_hi)
+-{
+-    /*
+-     * High and low need to be switched here because this is not actually a
+-     * 128bit store but two doublewords stored consecutively
+-     */
+-    Int128 cmpv = int128_make128(env->exclusive_high, env->exclusive_val);
+-    Int128 newv = int128_make128(new_hi, new_lo);
+-    Int128 oldv;
+-    uintptr_t ra = GETPC();
+-    uint64_t o0, o1;
+-    bool success;
+-    int mem_idx = cpu_mmu_index(env, false);
+-    MemOpIdx oi0 = make_memop_idx(MO_BEUQ | MO_ALIGN_16, mem_idx);
+-    MemOpIdx oi1 = make_memop_idx(MO_BEUQ, mem_idx);
+-
+-    o1 = cpu_ldq_be_mmu(env, addr + 0, oi0, ra);
+-    o0 = cpu_ldq_be_mmu(env, addr + 8, oi1, ra);
+-    oldv = int128_make128(o0, o1);
+-
+-    success = int128_eq(oldv, cmpv);
+-    if (success) {
+-        cpu_stq_be_mmu(env, addr + 0, int128_gethi(newv), oi1, ra);
+-        cpu_stq_be_mmu(env, addr + 8, int128_getlo(newv), oi1, ra);
+-    }
+-
+-    return !success;
+-}
+-
+-uint64_t HELPER(paired_cmpxchg64_be_parallel)(CPUARMState *env, uint64_t addr,
+-                                              uint64_t new_lo, uint64_t new_hi)
+-{
+-    Int128 oldv, cmpv, newv;
+-    uintptr_t ra = GETPC();
+-    bool success;
+-    int mem_idx;
+-    MemOpIdx oi;
+-
+-    assert(HAVE_CMPXCHG128);
+-
+-    mem_idx = cpu_mmu_index(env, false);
+-    oi = make_memop_idx(MO_BE | MO_128 | MO_ALIGN, mem_idx);
+-
+-    /*
+-     * High and low need to be switched here because this is not actually a
+-     * 128bit store but two doublewords stored consecutively
+-     */
+-    cmpv = int128_make128(env->exclusive_high, env->exclusive_val);
+-    newv = int128_make128(new_hi, new_lo);
+-    oldv = cpu_atomic_cmpxchgo_be_mmu(env, addr, cmpv, newv, oi, ra);
+-
+-    success = int128_eq(oldv, cmpv);
+-    return !success;
+-}
+-
+ /* Writes back the old data into Rs.  */
+ void HELPER(casp_le_parallel)(CPUARMState *env, uint32_t rs, uint64_t addr,
+                               uint64_t new_lo, uint64_t new_hi)
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 2ee171f249..dffd7ee737 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -2580,32 +2580,42 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+                                        get_mem_index(s),
+                                        MO_64 | MO_ALIGN | s->be_data);
+             tcg_gen_setcond_i64(TCG_COND_NE, tmp, tmp, cpu_exclusive_val);
+-        } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
+-            if (!HAVE_CMPXCHG128) {
+-                gen_helper_exit_atomic(cpu_env);
+-                /*
+-                 * Produce a result so we have a well-formed opcode
+-                 * stream when the following (dead) code uses 'tmp'.
+-                 * TCG will remove the dead ops for us.
+-                 */
+-                tcg_gen_movi_i64(tmp, 0);
+-            } else if (s->be_data == MO_LE) {
+-                gen_helper_paired_cmpxchg64_le_parallel(tmp, cpu_env,
+-                                                        cpu_exclusive_addr,
+-                                                        cpu_reg(s, rt),
+-                                                        cpu_reg(s, rt2));
+-            } else {
+-                gen_helper_paired_cmpxchg64_be_parallel(tmp, cpu_env,
+-                                                        cpu_exclusive_addr,
+-                                                        cpu_reg(s, rt),
+-                                                        cpu_reg(s, rt2));
+-            }
+-        } else if (s->be_data == MO_LE) {
+-            gen_helper_paired_cmpxchg64_le(tmp, cpu_env, cpu_exclusive_addr,
+-                                           cpu_reg(s, rt), cpu_reg(s, rt2));
+         } else {
+-            gen_helper_paired_cmpxchg64_be(tmp, cpu_env, cpu_exclusive_addr,
+-                                           cpu_reg(s, rt), cpu_reg(s, rt2));
++            TCGv_i128 t16 = tcg_temp_new_i128();
++            TCGv_i128 c16 = tcg_temp_new_i128();
++            TCGv_i64 a, b;
 +
-+        tcg_debug_assert((memop & MO_SIZE) == MO_128);
-+        tcg_debug_assert((memop & MO_SIGN) == 0);
++            if (s->be_data == MO_LE) {
++                tcg_gen_concat_i64_i128(t16, cpu_reg(s, rt), cpu_reg(s, rt2));
++                tcg_gen_concat_i64_i128(c16, cpu_exclusive_val,
++                                        cpu_exclusive_high);
++            } else {
++                tcg_gen_concat_i64_i128(t16, cpu_reg(s, rt2), cpu_reg(s, rt));
++                tcg_gen_concat_i64_i128(c16, cpu_exclusive_high,
++                                        cpu_exclusive_val);
++            }
 +
-+        gen(retv, cpu_env, addr, cmpv, newv, tcg_constant_i32(oi));
-+    } else {
-+        TCGv_i128 oldv = tcg_temp_new_i128();
-+        TCGv_i128 tmpv = tcg_temp_new_i128();
-+        TCGv_i64 t0 = tcg_temp_new_i64();
-+        TCGv_i64 t1 = tcg_temp_new_i64();
-+        TCGv_i64 z = tcg_constant_i64(0);
++            tcg_gen_atomic_cmpxchg_i128(t16, cpu_exclusive_addr, c16, t16,
++                                        get_mem_index(s),
++                                        MO_128 | MO_ALIGN | s->be_data);
++            tcg_temp_free_i128(c16);
 +
-+        tcg_gen_qemu_ld_i128(oldv, addr, idx, memop);
++            a = tcg_temp_new_i64();
++            b = tcg_temp_new_i64();
++            if (s->be_data == MO_LE) {
++                tcg_gen_extr_i128_i64(a, b, t16);
++            } else {
++                tcg_gen_extr_i128_i64(b, a, t16);
++            }
 +
-+        /* Compare i128 */
-+        tcg_gen_xor_i64(t0, TCGV128_LOW(oldv), TCGV128_LOW(cmpv));
-+        tcg_gen_xor_i64(t1, TCGV128_HIGH(oldv), TCGV128_HIGH(cmpv));
-+        tcg_gen_or_i64(t0, t0, t1);
++            tcg_gen_xor_i64(a, a, cpu_exclusive_val);
++            tcg_gen_xor_i64(b, b, cpu_exclusive_high);
++            tcg_gen_or_i64(tmp, a, b);
++            tcg_temp_free_i64(a);
++            tcg_temp_free_i64(b);
++            tcg_temp_free_i128(t16);
 +
-+        /* tmpv = equal ? newv : oldv */
-+        tcg_gen_movcond_i64(TCG_COND_EQ, TCGV128_LOW(tmpv), t0, z,
-+                            TCGV128_LOW(newv), TCGV128_LOW(oldv));
-+        tcg_gen_movcond_i64(TCG_COND_EQ, TCGV128_HIGH(tmpv), t0, z,
-+                            TCGV128_HIGH(newv), TCGV128_HIGH(oldv));
-+
-+        /* Unconditional writeback. */
-+        tcg_gen_qemu_st_i128(tmpv, addr, idx, memop);
-+        tcg_gen_mov_i128(retv, oldv);
-+
-+        tcg_temp_free_i64(t0);
-+        tcg_temp_free_i64(t1);
-+        tcg_temp_free_i128(tmpv);
-+        tcg_temp_free_i128(oldv);
-+    }
-+}
-+
-+void tcg_gen_atomic_cmpxchg_i128(TCGv_i128 retv, TCGv addr, TCGv_i128 cmpv,
-+                                 TCGv_i128 newv, TCGArg idx, MemOp memop)
-+{
-+    gen_atomic_cx_i128 gen;
-+
-+    if (!(tcg_ctx->tb_cflags & CF_PARALLEL)) {
-+        tcg_gen_nonatomic_cmpxchg_i128(retv, addr, cmpv, newv, idx, memop);
-+        return;
-+    }
-+
-+    tcg_debug_assert((memop & MO_SIZE) == MO_128);
-+    tcg_debug_assert((memop & MO_SIGN) == 0);
-+    gen = table_cmpxchg[memop & (MO_SIZE | MO_BSWAP)];
-+
-+    if (gen) {
-+        MemOpIdx oi = make_memop_idx(memop, idx);
-+        gen(retv, cpu_env, addr, cmpv, newv, tcg_constant_i32(oi));
-+        return;
-+    }
-+
-+    gen_helper_exit_atomic(cpu_env);
-+
-+    /*
-+     * Produce a result for a well-formed opcode stream.  This satisfies
-+     * liveness for set before used, which happens before this dead code
-+     * is removed.
-+     */
-+    tcg_gen_movi_i64(TCGV128_LOW(retv), 0);
-+    tcg_gen_movi_i64(TCGV128_HIGH(retv), 0);
-+}
-+
- static void do_nonatomic_op_i32(TCGv_i32 ret, TCGv addr, TCGv_i32 val,
-                                 TCGArg idx, MemOp memop, bool new_val,
-                                 void (*gen)(TCGv_i32, TCGv_i32, TCGv_i32))
-diff --git a/accel/tcg/atomic_common.c.inc b/accel/tcg/atomic_common.c.inc
-index 6602d7689f..8f2ce43ee6 100644
---- a/accel/tcg/atomic_common.c.inc
-+++ b/accel/tcg/atomic_common.c.inc
-@@ -55,8 +55,53 @@ CMPXCHG_HELPER(cmpxchgq_be, uint64_t)
- CMPXCHG_HELPER(cmpxchgq_le, uint64_t)
- #endif
- 
-+#ifdef CONFIG_CMPXCHG128
-+CMPXCHG_HELPER(cmpxchgo_be, Int128)
-+CMPXCHG_HELPER(cmpxchgo_le, Int128)
-+#endif
-+
- #undef CMPXCHG_HELPER
- 
-+Int128 HELPER(nonatomic_cmpxchgo_be)(CPUArchState *env, target_ulong addr,
-+                                     Int128 cmpv, Int128 newv, uint32_t oi)
-+{
-+#if TCG_TARGET_REG_BITS == 32
-+    uintptr_t ra = GETPC();
-+    Int128 oldv;
-+
-+    oldv = cpu_ld16_be_mmu(env, addr, oi, ra);
-+    if (int128_eq(oldv, cmpv)) {
-+        cpu_st16_be_mmu(env, addr, newv, oi, ra);
-+    } else {
-+        /* Even with comparison failure, still need a write cycle. */
-+        probe_write(env, addr, 16, get_mmuidx(oi), ra);
-+    }
-+    return oldv;
-+#else
-+    g_assert_not_reached();
-+#endif
-+}
-+
-+Int128 HELPER(nonatomic_cmpxchgo_le)(CPUArchState *env, target_ulong addr,
-+                                     Int128 cmpv, Int128 newv, uint32_t oi)
-+{
-+#if TCG_TARGET_REG_BITS == 32
-+    uintptr_t ra = GETPC();
-+    Int128 oldv;
-+
-+    oldv = cpu_ld16_le_mmu(env, addr, oi, ra);
-+    if (int128_eq(oldv, cmpv)) {
-+        cpu_st16_le_mmu(env, addr, newv, oi, ra);
-+    } else {
-+        /* Even with comparison failure, still need a write cycle. */
-+        probe_write(env, addr, 16, get_mmuidx(oi), ra);
-+    }
-+    return oldv;
-+#else
-+    g_assert_not_reached();
-+#endif
-+}
-+
- #define ATOMIC_HELPER(OP, TYPE) \
-     TYPE HELPER(glue(atomic_,OP))(CPUArchState *env, target_ulong addr,  \
-                                   TYPE val, uint32_t oi)                 \
++            tcg_gen_setcondi_i64(TCG_COND_NE, tmp, tmp, 0);
+         }
+     } else {
+         tcg_gen_atomic_cmpxchg_i64(tmp, cpu_exclusive_addr, cpu_exclusive_val,
 -- 
 2.34.1
 

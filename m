@@ -1,245 +1,357 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1326158ejc;
-        Sat, 7 Jan 2023 18:40:26 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuHyR7xSN6yDUCxyh82pSYRZCNx6cpu93To8QKHU0vlhQ5471Q41MguptOOOO4clgTpaHep
-X-Received: by 2002:a0c:f7c1:0:b0:532:1018:2b22 with SMTP id f1-20020a0cf7c1000000b0053210182b22mr15864006qvo.2.1673145626515;
-        Sat, 07 Jan 2023 18:40:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673145626; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1326675ejc;
+        Sat, 7 Jan 2023 18:42:01 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuw82KqhFpMH+FuPlkcETILgafXEuQvLgFwYr4oWqL/5nZp+j7+VGAPdOUdmCpBdN5K6AUq
+X-Received: by 2002:a05:622a:124b:b0:3ab:7bb3:4707 with SMTP id z11-20020a05622a124b00b003ab7bb34707mr67628919qtx.64.1673145721474;
+        Sat, 07 Jan 2023 18:42:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673145721; cv=none;
         d=google.com; s=arc-20160816;
-        b=tl1PjszV2q2V03PjFlQwc1ia/9U60kRFzIZosLWpsKwKxnIcDGIqVGxvWPsU869sV6
-         LjVhVaep5DFhbFAg2ZNK3LeDCLCQOghyJaPineM4PPnYJ8h6cf0A4EVKKgCY91JM1wR1
-         V8W5ZMrU7+g1ayWTEg9LTBQmVYNljFbqEzyJZ2vsCzGxoqQJ6qH0qj5f/seFaK85Hi7k
-         9byjvDp/kCGlewGUI32UBCGBmxxIm97sO4aysdSd12VJjFyGokaIbuX4o5fvInwAZ5vK
-         ng0wgNgLj/CbTB8GhnSX+5Z1cf/zKP0FeftWlbCqT1OEj1IqxjjL1W0NwRdk2pNMBsL7
-         B0yg==
+        b=FJW6wT0Bx0g+eE0vTMVGqyo5aGtXbzvU0iiSlfJse98UdjIa3dSGCXZ+Qbo1L9EufY
+         TYsMTJ/1hBvM+xOirMpzedJk1t/cLC4fn774SqWe+54C6vZNFhgw5/3kwE/LYS96b73x
+         oh/+KgL3nRNbElpBHrknnju7lYOz8R659iS9qsby1XtrWLvJo2glFtXZtjd3retegoC/
+         aGUry3XHSiC/ImKZ7c4dMXnaqF0qwJBMJkIiBSfAhZlz0KKkDDFkYrwhL9kS8KwBeICN
+         KZP/ynjObwC5FQZPQ8qjGiB698F2Fw0rteGWtoWz4pdKyb14eSDVmMXpqdV3GRPU7GeZ
+         YvGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=AYWDMTmY+SCzbBTfhDbUxfPgw9Xf88DejLV4GZrSQBc=;
-        b=bKjQIojq4+EjhqWUCTjjCPbGS9/2poz81IalhGRjVxkSKQuSP80E1MVZhSGr7Icxbd
-         GsgTbuT/nLwiXCGdW60yP6mkt0zIhrG4dmZCGuStJYj0cvXsQAiNl1sBCrUDPjAdb1M1
-         PNl2NlmpC0ZUszYdRbarWB0wS/+fak7oGi4C1JFMf/xA5ipisP7TmBjdQ5o7gKAkA+lH
-         yrRt4e/ChpwNoDEsJcK0gFxgTm6Sd6lOKnaDChzrcyYmpVzfyj9VPSs29kphpSEyTXnn
-         Jd5tNA08dqZQFU8Nx6+2nAyDXBwLm9dBU8MrMcTeuNgtynubP06LnniiwC864TdbCvQJ
-         KNhw==
+        bh=9Rv856N+OWstGUl7U1vP59WucQCWPrxG6fVCW7RDz4k=;
+        b=Pb4B3dN9Lc98hFORnemgaE3OrJ6syiPZfdf8ccdo1Y6P3J1GTXTXg2MEs3e6azh72b
+         bII3SZBSBpiPGEFGG0cdrzbVKe30ydLB1YFamUkuYNdZ3uqzDPIJFzDCuY8pX5Or38DP
+         vK1Wuu38nuwUrzeu+IpTGSx9VyRMJnF2tuDffshxi0hrdUVdf+qz6dVIcQKFtTv7WhSR
+         ECgQjzJ9uotM1gUmwlYfVhCKtPVnzaYzVCREz0ODG68bmVZ6mtZY2nfpy4SihwToL39Z
+         32/cLHb2pJ2PCNMEreVmfTinal6rSagoy8ZF3Qbv3/9IshoLwvgs7VVg/t0wMh9z0grf
+         77aw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pLPuT5WY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fwnqtv2j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jl15-20020ad45e8f000000b005318b97105asi2939469qvb.320.2023.01.07.18.40.26
+        by mx.google.com with ESMTPS id v5-20020a05620a0f0500b006fed4a76023si3017812qkl.466.2023.01.07.18.42.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 07 Jan 2023 18:40:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 07 Jan 2023 18:42:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pLPuT5WY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fwnqtv2j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pELYy-0004bg-GP; Sat, 07 Jan 2023 21:37:32 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pELZ6-0004hm-J9; Sat, 07 Jan 2023 21:37:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELYw-0004ab-RL
- for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:30 -0500
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ id 1pELZ5-0004gb-2j
+ for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:37:39 -0500
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pELYq-0004Ur-VE
- for qemu-devel@nongnu.org; Sat, 07 Jan 2023 21:37:30 -0500
-Received: by mail-pj1-x1030.google.com with SMTP id
- z9-20020a17090a468900b00226b6e7aeeaso5836961pjf.1
- for <qemu-devel@nongnu.org>; Sat, 07 Jan 2023 18:37:24 -0800 (PST)
+ id 1pELYt-0004WJ-Bu
+ for qemu-arm@nongnu.org; Sat, 07 Jan 2023 21:37:38 -0500
+Received: by mail-pj1-x1035.google.com with SMTP id
+ h7-20020a17090aa88700b00225f3e4c992so9303501pjq.1
+ for <qemu-arm@nongnu.org>; Sat, 07 Jan 2023 18:37:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AYWDMTmY+SCzbBTfhDbUxfPgw9Xf88DejLV4GZrSQBc=;
- b=pLPuT5WYnfYC0HZG4mjD8WIko7UQ+srtvnZ/EiccQdvk17ChX1JQy1w72AdEHmv5QX
- gV1V3W7e4CV/xqypyVex8Faxl64GJNgPwdA5Ac3fpFDz/MN6434G5HmD+GVmNsikKyln
- r+5NZgYD7Nr90c8vN24QisRcP3Ky+7M2XR3e3mv50xX6VvivWiXauoVAPssseDpbXmuD
- /ktI4UsIWqvz2uErK1oOczcMImYGMOkKkGZe7yUJJgBupI6s/jstMRklaRLW1kwxQKMT
- 9rTdTHHwZ5qiPFHMH+FT3W8/2DiL6OZiIfMNWFOIV6BLawi7NzbN7S3fCZVmSqZWUHx2
- 0aNA==
+ bh=9Rv856N+OWstGUl7U1vP59WucQCWPrxG6fVCW7RDz4k=;
+ b=fwnqtv2jC1ESO6lC5Y/IX69fD2uiohbh2dlaBhqIJbRImITXE5f0gRRB53LvD4+qGu
+ eb2v1+Y6NM8MKVEFWYxwb+tUCD7RhgA2Iy/qxjlqNUxMTgIX4tPkOnz0BnrDLNMKgx1z
+ YucwxKi04pkBHZaeCjtaFjgw6NOZO0m1GUijODP5btf5r5+H/+0sPcqhY4pBy6TUSZ5Z
+ rW3lYxxsxu97umMu+3Jm+LxaGkpgeFtsK4+z/R5MeDfKuWaN9bZE+uXnm+iH141I3+kJ
+ dcg17m1mguxXmpTaBR6I0gzQJ0WCZW2LsTzGfAhWFR8TGe/tUunOpdah7qQBCfyDTuej
+ 3wCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AYWDMTmY+SCzbBTfhDbUxfPgw9Xf88DejLV4GZrSQBc=;
- b=m5whsSmcnvmFmfSMgaOIMNypaXQahNehWIO+1XVsiH2yBleJIbIxFfhWlFNhz9sE8I
- cYI3TNJZqXG+b5/3PjlEn3Em8ZMA8lBuCf9MkRqRwxMqCIWCZi3xwgmTlK/JRjEFbl44
- kXHgtOqmHRvZAptEqtUIivaPzJTTRdudv+3nO2YVhyTV1Y87CudrCBeepz8sMTolwBBe
- bu67J8uTp8yev3vmqAs4kgQrVVJ378RmLUbkoF88b/vzR+K1JuzUF1X7sEsmGC3ziN6i
- bTk/sRAOJXyNLhDqIaIS0tlrdm33JRnJMydoGjZZEcMfp9vfEj6dy4g/lmLb9tAaTds5
- Wv+Q==
-X-Gm-Message-State: AFqh2kosC9flmRzms8LPFHfPvPpWAnYoPR8lBIVaP5NtA+bqD4DaFZRa
- y8rj+61+xBBTaA0N8t+yiPyV+EGJgQrS0t/X
-X-Received: by 2002:a17:903:186:b0:188:d2b3:26c1 with SMTP id
- z6-20020a170903018600b00188d2b326c1mr81236833plg.10.1673145442678; 
- Sat, 07 Jan 2023 18:37:22 -0800 (PST)
+ bh=9Rv856N+OWstGUl7U1vP59WucQCWPrxG6fVCW7RDz4k=;
+ b=xxKZCVGXRjNpDQy6sEEz4xjInzRSfg1/9EHENgQ1J7iZyqZS9KWOsa87s8qFa7MnaR
+ MUXzPI65rPBSKK32id9BTmsyS1XqDXRiIk0gaKgtDU9xVw82F3p/JsfeED/C1Q0tFI2U
+ 8uW1mfRN1bIzI5LA+m/i/QN8XwnGVXQjvrmV5QmlnwcC6FINRXtUwQyWKi5+jYKMP9tO
+ lOdfEY0+JeuGRauexgL9e0sWPlhmR+s1m59b7mD4cF+w7wZzbzYzTAMIKwesAG/w5A45
+ PbMPorEVj9uqaFOQDwyzsX3Rpf3dUDrFBinPKe0w9gCCxzAmYaxdt+nny2bfBEWrQByh
+ h+6g==
+X-Gm-Message-State: AFqh2krq55h9vV7qzGqWK84Aryt7OAG9puOuIQrfmZyQF8LjwC0V/GBx
+ X7LcClDaY8JyvNLv0wx1XmKxGg==
+X-Received: by 2002:a17:902:ccc4:b0:186:e434:6265 with SMTP id
+ z4-20020a170902ccc400b00186e4346265mr73347806ple.2.1673145445962; 
+ Sat, 07 Jan 2023 18:37:25 -0800 (PST)
 Received: from stoup.. ([2602:47:d48c:8101:8a2d:2011:f402:6f82])
  by smtp.gmail.com with ESMTPSA id
- o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.21
+ o17-20020a170902d4d100b00189d4c666c8sm3394775plg.153.2023.01.07.18.37.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Jan 2023 18:37:22 -0800 (PST)
+ Sat, 07 Jan 2023 18:37:25 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net
-Subject: [PATCH v4 01/36] tcg: Define TCG_TYPE_I128 and related helper macros
-Date: Sat,  7 Jan 2023 18:36:44 -0800
-Message-Id: <20230108023719.2466341-2-richard.henderson@linaro.org>
+ qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net,
+ Daniel Henrique Barboza <danielhb413@gmail.com>
+Subject: [PATCH v4 04/36] tcg: Introduce tcg_out_addi_ptr
+Date: Sat,  7 Jan 2023 18:36:47 -0800
+Message-Id: <20230108023719.2466341-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230108023719.2466341-1-richard.henderson@linaro.org>
 References: <20230108023719.2466341-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WkrwtDB+W0tM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: blVByXTgeM94
 
-Begin staging in support for TCGv_i128 with Int128.
-Define the type enumerator, the typedef, and the
-helper-head.h macros.
+Implement the function for arm, i386, and s390x, which will use it.
+Add stubs for all other backends.
 
-This cannot yet be used, because you can't allocate
-temporaries of this new type.
-
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/helper-head.h |  7 +++++++
- include/tcg/tcg.h          | 17 ++++++++++-------
- 2 files changed, 17 insertions(+), 7 deletions(-)
+ tcg/tcg.c                        |  2 ++
+ tcg/aarch64/tcg-target.c.inc     |  7 +++++++
+ tcg/arm/tcg-target.c.inc         | 20 ++++++++++++++++++++
+ tcg/i386/tcg-target.c.inc        |  8 ++++++++
+ tcg/loongarch64/tcg-target.c.inc |  7 +++++++
+ tcg/mips/tcg-target.c.inc        |  7 +++++++
+ tcg/ppc/tcg-target.c.inc         |  7 +++++++
+ tcg/riscv/tcg-target.c.inc       |  7 +++++++
+ tcg/s390x/tcg-target.c.inc       |  7 +++++++
+ tcg/sparc64/tcg-target.c.inc     |  7 +++++++
+ tcg/tci/tcg-target.c.inc         |  7 +++++++
+ 11 files changed, 86 insertions(+)
 
-diff --git a/include/exec/helper-head.h b/include/exec/helper-head.h
-index bc6698b19f..b8d1140dc7 100644
---- a/include/exec/helper-head.h
-+++ b/include/exec/helper-head.h
-@@ -26,6 +26,7 @@
- #define dh_alias_int i32
- #define dh_alias_i64 i64
- #define dh_alias_s64 i64
-+#define dh_alias_i128 i128
- #define dh_alias_f16 i32
- #define dh_alias_f32 i32
- #define dh_alias_f64 i64
-@@ -40,6 +41,7 @@
- #define dh_ctype_int int
- #define dh_ctype_i64 uint64_t
- #define dh_ctype_s64 int64_t
-+#define dh_ctype_i128 Int128
- #define dh_ctype_f16 uint32_t
- #define dh_ctype_f32 float32
- #define dh_ctype_f64 float64
-@@ -71,6 +73,7 @@
- #define dh_retvar_decl0_noreturn void
- #define dh_retvar_decl0_i32 TCGv_i32 retval
- #define dh_retvar_decl0_i64 TCGv_i64 retval
-+#define dh_retval_decl0_i128 TCGv_i128 retval
- #define dh_retvar_decl0_ptr TCGv_ptr retval
- #define dh_retvar_decl0(t) glue(dh_retvar_decl0_, dh_alias(t))
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 7e69e2c9fd..a6c2783285 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -103,6 +103,8 @@ static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1,
+ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg);
+ static void tcg_out_movi(TCGContext *s, TCGType type,
+                          TCGReg ret, tcg_target_long arg);
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg, TCGReg, tcg_target_long)
++    __attribute__((unused));
+ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
+                        const TCGArg args[TCG_MAX_OP_ARGS],
+                        const int const_args[TCG_MAX_OP_ARGS]);
+diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
+index ad1816e32d..2279a14c11 100644
+--- a/tcg/aarch64/tcg-target.c.inc
++++ b/tcg/aarch64/tcg-target.c.inc
+@@ -1102,6 +1102,13 @@ static void tcg_out_movi(TCGContext *s, TCGType type, TCGReg rd,
+     tcg_out_insn(s, 3305, LDR, 0, rd);
+ }
  
-@@ -78,6 +81,7 @@
- #define dh_retvar_decl_noreturn
- #define dh_retvar_decl_i32 TCGv_i32 retval,
- #define dh_retvar_decl_i64 TCGv_i64 retval,
-+#define dh_retvar_decl_i128 TCGv_i128 retval,
- #define dh_retvar_decl_ptr TCGv_ptr retval,
- #define dh_retvar_decl(t) glue(dh_retvar_decl_, dh_alias(t))
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    /* This function is only used for passing structs by reference. */
++    g_assert_not_reached();
++}
++
+ /* Define something more legible for general use.  */
+ #define tcg_out_ldst_r  tcg_out_insn_3310
  
-@@ -85,6 +89,7 @@
- #define dh_retvar_noreturn NULL
- #define dh_retvar_i32 tcgv_i32_temp(retval)
- #define dh_retvar_i64 tcgv_i64_temp(retval)
-+#define dh_retvar_i128 tcgv_i128_temp(retval)
- #define dh_retvar_ptr tcgv_ptr_temp(retval)
- #define dh_retvar(t) glue(dh_retvar_, dh_alias(t))
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index 9245ea86d0..8b24481d8c 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -2540,6 +2540,26 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
+     tcg_out_movi32(s, COND_AL, ret, arg);
+ }
  
-@@ -95,6 +100,7 @@
- #define dh_typecode_i64 4
- #define dh_typecode_s64 5
- #define dh_typecode_ptr 6
-+#define dh_typecode_i128 7
- #define dh_typecode_int dh_typecode_s32
- #define dh_typecode_f16 dh_typecode_i32
- #define dh_typecode_f32 dh_typecode_i32
-@@ -104,6 +110,7 @@
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    int enc, opc = ARITH_ADD;
++
++    /* All of the easiest immediates to encode are positive. */
++    if (imm < 0) {
++        imm = -imm;
++        opc = ARITH_SUB;
++    }
++    enc = encode_imm(imm);
++    if (enc >= 0) {
++        tcg_out_dat_imm(s, COND_AL, opc, rd, rs, enc);
++    } else {
++        tcg_out_movi32(s, COND_AL, TCG_REG_TMP, imm);
++        tcg_out_dat_reg(s, COND_AL, opc, rd, rs,
++                        TCG_REG_TMP, SHIFT_IMM_LSL(0));
++    }
++}
++
+ /* Type is always V128, with I64 elements.  */
+ static void tcg_out_dup2_vec(TCGContext *s, TCGReg rd, TCGReg rl, TCGReg rh)
+ {
+diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
+index 58bd5873f5..6a021dda8b 100644
+--- a/tcg/i386/tcg-target.c.inc
++++ b/tcg/i386/tcg-target.c.inc
+@@ -1069,6 +1069,14 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
+     }
+ }
  
- #define dh_callflag_i32  0
- #define dh_callflag_i64  0
-+#define dh_callflag_i128 0
- #define dh_callflag_ptr  0
- #define dh_callflag_void 0
- #define dh_callflag_noreturn TCG_CALL_NO_RETURN
-diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
-index b949d75fdd..7d346192ca 100644
---- a/include/tcg/tcg.h
-+++ b/include/tcg/tcg.h
-@@ -277,6 +277,7 @@ typedef struct TCGPool {
- typedef enum TCGType {
-     TCG_TYPE_I32,
-     TCG_TYPE_I64,
-+    TCG_TYPE_I128,
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    /* This function is only used for passing structs by reference. */
++    tcg_debug_assert(TCG_TARGET_REG_BITS == 32);
++    tcg_out_modrm_offset(s, OPC_LEA, rd, rs, imm);
++}
++
+ static inline void tcg_out_pushi(TCGContext *s, tcg_target_long val)
+ {
+     if (val == (int8_t)val) {
+diff --git a/tcg/loongarch64/tcg-target.c.inc b/tcg/loongarch64/tcg-target.c.inc
+index c9e99e8ec3..54b1dcd911 100644
+--- a/tcg/loongarch64/tcg-target.c.inc
++++ b/tcg/loongarch64/tcg-target.c.inc
+@@ -389,6 +389,13 @@ static void tcg_out_movi(TCGContext *s, TCGType type, TCGReg rd,
+     }
+ }
  
-     TCG_TYPE_V64,
-     TCG_TYPE_V128,
-@@ -358,13 +359,14 @@ typedef tcg_target_ulong TCGArg;
-    in tcg/README. Target CPU front-end code uses these types to deal
-    with TCG variables as it emits TCG code via the tcg_gen_* functions.
-    They come in several flavours:
--    * TCGv_i32 : 32 bit integer type
--    * TCGv_i64 : 64 bit integer type
--    * TCGv_ptr : a host pointer type
--    * TCGv_vec : a host vector type; the exact size is not exposed
--                 to the CPU front-end code.
--    * TCGv : an integer type the same size as target_ulong
--             (an alias for either TCGv_i32 or TCGv_i64)
-+    * TCGv_i32  : 32 bit integer type
-+    * TCGv_i64  : 64 bit integer type
-+    * TCGv_i128 : 128 bit integer type
-+    * TCGv_ptr  : a host pointer type
-+    * TCGv_vec  : a host vector type; the exact size is not exposed
-+                  to the CPU front-end code.
-+    * TCGv      : an integer type the same size as target_ulong
-+                  (an alias for either TCGv_i32 or TCGv_i64)
-    The compiler's type checking will complain if you mix them
-    up and pass the wrong sized TCGv to a function.
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    /* This function is only used for passing structs by reference. */
++    g_assert_not_reached();
++}
++
+ static void tcg_out_ext8u(TCGContext *s, TCGReg ret, TCGReg arg)
+ {
+     tcg_out_opc_andi(s, ret, arg, 0xff);
+diff --git a/tcg/mips/tcg-target.c.inc b/tcg/mips/tcg-target.c.inc
+index 292e490b5c..22b5463f0f 100644
+--- a/tcg/mips/tcg-target.c.inc
++++ b/tcg/mips/tcg-target.c.inc
+@@ -550,6 +550,13 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
+     }
+ }
  
-@@ -384,6 +386,7 @@ typedef tcg_target_ulong TCGArg;
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    /* This function is only used for passing structs by reference. */
++    g_assert_not_reached();
++}
++
+ static void tcg_out_bswap16(TCGContext *s, TCGReg ret, TCGReg arg, int flags)
+ {
+     /* ret and arg can't be register tmp0 */
+diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
+index e0621463f6..bf3812eb8d 100644
+--- a/tcg/ppc/tcg-target.c.inc
++++ b/tcg/ppc/tcg-target.c.inc
+@@ -1125,6 +1125,13 @@ static void tcg_out_movi(TCGContext *s, TCGType type, TCGReg ret,
+     }
+ }
  
- typedef struct TCGv_i32_d *TCGv_i32;
- typedef struct TCGv_i64_d *TCGv_i64;
-+typedef struct TCGv_i128_d *TCGv_i128;
- typedef struct TCGv_ptr_d *TCGv_ptr;
- typedef struct TCGv_vec_d *TCGv_vec;
- typedef TCGv_ptr TCGv_env;
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    /* This function is only used for passing structs by reference. */
++    g_assert_not_reached();
++}
++
+ static bool mask_operand(uint32_t c, int *mb, int *me)
+ {
+     uint32_t lsb, test;
+diff --git a/tcg/riscv/tcg-target.c.inc b/tcg/riscv/tcg-target.c.inc
+index f741e0582d..b961972b9f 100644
+--- a/tcg/riscv/tcg-target.c.inc
++++ b/tcg/riscv/tcg-target.c.inc
+@@ -558,6 +558,13 @@ static void tcg_out_movi(TCGContext *s, TCGType type, TCGReg rd,
+     tcg_out_opc_imm(s, OPC_LD, rd, rd, 0);
+ }
+ 
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    /* This function is only used for passing structs by reference. */
++    g_assert_not_reached();
++}
++
+ static void tcg_out_ext8u(TCGContext *s, TCGReg ret, TCGReg arg)
+ {
+     tcg_out_opc_imm(s, OPC_ANDI, ret, arg, 0xff);
+diff --git a/tcg/s390x/tcg-target.c.inc b/tcg/s390x/tcg-target.c.inc
+index b9ba7b605e..d65cd79899 100644
+--- a/tcg/s390x/tcg-target.c.inc
++++ b/tcg/s390x/tcg-target.c.inc
+@@ -1020,6 +1020,13 @@ static inline bool tcg_out_sti(TCGContext *s, TCGType type, TCGArg val,
+     return false;
+ }
+ 
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    /* This function is only used for passing structs by reference. */
++    tcg_out_mem(s, RX_LA, RXY_LAY, rd, rs, TCG_REG_NONE, imm);
++}
++
+ /* load data from an absolute host address */
+ static void tcg_out_ld_abs(TCGContext *s, TCGType type,
+                            TCGReg dest, const void *abs)
+diff --git a/tcg/sparc64/tcg-target.c.inc b/tcg/sparc64/tcg-target.c.inc
+index eb913f33c8..f6a8a8e605 100644
+--- a/tcg/sparc64/tcg-target.c.inc
++++ b/tcg/sparc64/tcg-target.c.inc
+@@ -497,6 +497,13 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
+     tcg_out_movi_int(s, type, ret, arg, false, TCG_REG_T2);
+ }
+ 
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    /* This function is only used for passing structs by reference. */
++    g_assert_not_reached();
++}
++
+ static void tcg_out_ldst_rr(TCGContext *s, TCGReg data, TCGReg a1,
+                             TCGReg a2, int op)
+ {
+diff --git a/tcg/tci/tcg-target.c.inc b/tcg/tci/tcg-target.c.inc
+index d36a7ebdd1..633345d74b 100644
+--- a/tcg/tci/tcg-target.c.inc
++++ b/tcg/tci/tcg-target.c.inc
+@@ -557,6 +557,13 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
+     }
+ }
+ 
++static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
++                             tcg_target_long imm)
++{
++    /* This function is only used for passing structs by reference. */
++    g_assert_not_reached();
++}
++
+ static void tcg_out_call(TCGContext *s, const tcg_insn_unit *func,
+                          const TCGHelperInfo *info)
+ {
 -- 
 2.34.1
 

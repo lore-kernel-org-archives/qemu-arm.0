@@ -1,90 +1,91 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2317328ejc;
-        Mon, 9 Jan 2023 06:58:24 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvA/9ciku/TvZTRJHrgLLQQNqPebPBoJGZtJ5FdPmjiWJWjfZMU20RQy+39Xx/WEZ5uHsUk
-X-Received: by 2002:a05:622a:4d98:b0:3a5:24ac:a175 with SMTP id ff24-20020a05622a4d9800b003a524aca175mr97577938qtb.56.1673276303873;
-        Mon, 09 Jan 2023 06:58:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673276303; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2324327ejc;
+        Mon, 9 Jan 2023 07:06:05 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsMh0GQ5THmPcFOvx/InqHg3bL9LcN1pn9ttv+UFvgVWv/YCLN0J7eqOGhRIMVj+9ZPv2jB
+X-Received: by 2002:a05:622a:802e:b0:3ad:c789:bace with SMTP id jr46-20020a05622a802e00b003adc789bacemr3271301qtb.15.1673276765014;
+        Mon, 09 Jan 2023 07:06:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673276764; cv=none;
         d=google.com; s=arc-20160816;
-        b=wlhKjWe61e9l1lQHmb/Z5mwhqpIcpgtuknc63ibE74UOb4UygUs6GG+zSfRBa9ueQI
-         LRSOof22Bf2sxgtdTNW6PbdJXUnjrV0TT06QTPeI1xud0ln/cHZVR72UzeTg8zjiQaM5
-         tQAANK/2u/jjtukPaaN+3j+RICH45s63eHfOovdEBSP2Hq43Oysk30n7wzjpHnnw5tiX
-         /rTUl3HlVPlxHPZpK6P40TE3ALPqMnOUnirwfCZmZ5YmQhuxwwreB4TlCU39SOr7Tk56
-         /MH9bUFLBJyMODori1IXLTT3K6OsQUNJ/XvRiM9DD8QO3j7y3Yqv4WtnSqnxLjh0MMmj
-         ZjZg==
+        b=L0y2AYvWDxdz4JwdewMJXspqsLzUvzrysA0sw1cT4UzwNfGVJrOUjBQmMP9BCHX5AF
+         5Svf7HY/J37cVx9upl1LoXyRvNBoD81MQT+dnzqOeEVbE/7jFnE5vkBA84vRHLjGpbeH
+         rDoguFI5OeT9vhQ93N7S4BjBxVTSYkilgS1hMR5uicOTsbyYnBb4Eced8w9UO8urawE1
+         Q1Lch5f+dNXxN1aynDK+fVuAV8FlH+d4h6OPp0Geg3TORByAxBVEAgEEU8RwXqVEgHck
+         oUK2wcIntT1ZqS/04BZ7fgTNR8YGXDlo7Q9iYsV7SrXETZ5dSZu3UD5hTtRPB5liQsRp
+         C5ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=kmxG628TWZ0nrw6bA+Re1tjxcTyz6IlDL5hx2BveKgI=;
-        b=LlQf4VXt87N/oElJUvloZh+dwjs5CsBcNwIhC0878KrOSd41cWD80EKvQMpkf5amXt
-         wKtYdYSd2k9Q+qXKodBXQVTftQOgX3OsbSNJQwaSZhrxF06jguFA3Tmmu/+o8siNe9J4
-         oCLIf5+RlwekxmKXgHf+g2nckKZcuOB7IKqagUZqQdEIfgEweUlU6FwhoVNrGAXPRNGT
-         LftS+v0XJ/MzqYcu0QDB4OmpgkRTspfaWMrbARd0DJmYkM6N9KOllYXoWRDIKHTSS9bR
-         heWa+q3G/ieE/Zt5uW4X7gpHyZkjQ8CNFKviFIbu8z+RvkudHLiOJZC3qBHR6o6yNLUW
-         Q4Bg==
+        bh=WrR1GDMObTllDPwJtD3Of+jW/9BkqqN5WyyEeN1uJKY=;
+        b=pdRpKNslAUJBX9cyy+LGKCXWMeDTRcT7HBuVB7sDb984R9jJD9I8l+77w4f3tRl9df
+         V6a/jVjS7g1mNknBIqUhOv8tJadCSJtVXjDYNrtjTDcMWXtwKTQb82d8ziI63bh/kfOA
+         SWAjt0BEtPXAZZq8zlFhv2rJuscG6gwJ6YOQqHUE8bDTqbzUPoulv3RePQgJzDISezGE
+         SEMQB57mS96i64i5FrhWobC3+Mmgg+ZqJw5HpWxCiyNryk1Z4gYjF+sdOFgtNvsgAKAs
+         WeM6FBYmq9osWR3xs0A4LPpmO3ru6mdrmIxfGSliQGU/OS7Oc6XMaxXC3lMdqT2677/t
+         yinA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zXJoS5bb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iOZ+uxN5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t14-20020ac865ce000000b003a699e9d6b4si4564104qto.704.2023.01.09.06.58.23
+        by mx.google.com with ESMTPS id e12-20020ac8670c000000b003a7e9f35822si4389170qtp.722.2023.01.09.07.06.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 06:58:23 -0800 (PST)
+        Mon, 09 Jan 2023 07:06:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zXJoS5bb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iOZ+uxN5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pEskU-0001aj-Bg; Mon, 09 Jan 2023 09:03:38 -0500
+	id 1pEslQ-0001z1-87; Mon, 09 Jan 2023 09:04:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskT-0001Zj-6C
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:37 -0500
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEslC-0001sT-GQ
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:04:22 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskR-0006Rs-8q
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:36 -0500
-Received: by mail-lj1-x22a.google.com with SMTP id s25so8962569lji.2
- for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 06:03:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEslA-0007Ft-MF
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:04:22 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ g19-20020a05600c4ed300b003d9eb1dbc0aso3886896wmq.3
+ for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 06:04:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kmxG628TWZ0nrw6bA+Re1tjxcTyz6IlDL5hx2BveKgI=;
- b=zXJoS5bb9QdrB9PViEuE64yPBo4QFiUZvtjwHgNd3qvsoUCIgAySlRfJzAvdVnBll5
- 4mRTSHEYHGLkKFSS2602pPE1iluJ594Cl0AsqDVvRlnIC/Wu87QS7o9c932AUmrMDAOp
- ABAXcpM2uLEJj6D93yr+pBO34CGTm/NpX2fLuPH4NMWjwf6GIHIulOd/V9IjmeYPb0ev
- pSKrUrNbgtHhTvxN+KOgtBrDqs/1Gt1UiZLQq+YorRCaozM4xuAJ3xFZpoX05v+m/ZI/
- /pqa+NkrT7uucGnBO48nh1ol8HoF5HmOMcXfeJPfRs/IylPlwY8iplGcBBh9P0RcHXq4
- mxkA==
+ bh=WrR1GDMObTllDPwJtD3Of+jW/9BkqqN5WyyEeN1uJKY=;
+ b=iOZ+uxN5jCKG7I/DUWcF6QaCuPpV14kq9LNDH7pB/h2nPr8ZNwh5h9M9a2USyhvQiI
+ q+nGXUiUKan1D7a/RatyCvAlAPp4zH8fuhUt3g9R1vVGC+cWCIIG363Ja6YFd9fzBzgJ
+ xJJN3Ef5A6K45/R79amUCbOkD4wlWUrFd/tjz2+iLAkdxccpNsHWVjL1oWCH/b1WaYxH
+ 6ZCYlxq6bftJvSO8TV5fCnVMRczNcueSoZM+MauthPn5d7siI0Fe+grXiXf9bfrUEW9J
+ wsXvi8NsTdpPyTrGOYhdp/HqBXtyD05EycNT6gX+lITCzXC4ejnLUSOhciazLYEbvqNo
+ iKEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kmxG628TWZ0nrw6bA+Re1tjxcTyz6IlDL5hx2BveKgI=;
- b=CodwvWd5CPnBQODXLSQngFgJlhZMn3kb1/6B/WVg2WYz3DxzrsIHTK6HhdlqJZ5nyp
- e+n5WXS52Q6HeNIoQb2iA43T2OVZShEcbdHV78HRVvqA0p1+m7OgyImm8zjITBv/dh2Y
- K+tFPOuNVor3nosAUc0XSMUt6mpdEO9eFNNUYQ3DT/ZefjNwGq0xIek6pzEcx2xUfxKn
- BiKFyvrO+LjMUIIJb6dy2h5Pc9uD1JHJgEEgI1yofD9XKyAjzsz0n+FhaVvvCTLaKd0W
- DDwCovAvl3Tx6g5ztl8RxkFdxiM/nJm8Tk856zd+wHuLimtNkDYK86WSyNk4fMoMeiaq
- l+9g==
-X-Gm-Message-State: AFqh2ko1JzKqCsV6qEoffVLQzilIz0Li+KhD7DrXXEQHdv1NduOtGIhK
- z5D2nnroIR/yeMO//t2y/kwHvw==
-X-Received: by 2002:a2e:b0da:0:b0:27f:dca1:8587 with SMTP id
- g26-20020a2eb0da000000b0027fdca18587mr9225729ljl.36.1673273013584; 
- Mon, 09 Jan 2023 06:03:33 -0800 (PST)
+ bh=WrR1GDMObTllDPwJtD3Of+jW/9BkqqN5WyyEeN1uJKY=;
+ b=Hn8fk2Kje7MALiGvje9HricJTgv4iOCe07Sh97qDsB+4W8e1IJQur/R+R6ygGwoV3o
+ rX7iB2NNiwtstRDbC0A6LKhCh+IU7y7XFzTVlLbuy5LDwywrChKalhISRXYzLAvuwnaJ
+ vVIqERPD3BeIEd8oFLXdu6rmw9leT1t9BquEDs/vwfZ9eOWkz/rCEIAP0XaYSZrO8DZO
+ rCWDmYnK1E0r1TovKcDjz+OC4mz+ikKcWqUVeQoD+FVZ1271Jscv4wP84CIJy9mePIhV
+ mVMKZxlBGWeW/AJCRa1qq2aMImD47ToS9cxCr0r9ZX9UH+XoQ4mTe1nn8hqa0x0KVGpj
+ lbAg==
+X-Gm-Message-State: AFqh2ko5XMK99fiW85Vtf1zg9ap2B0UxE+cY+VzOnGtHSH0R2t5sRTgl
+ KE+2YLY2yFTOxH7hNERxv/xwAw==
+X-Received: by 2002:a05:600c:348b:b0:3d2:2a72:2577 with SMTP id
+ a11-20020a05600c348b00b003d22a722577mr45551835wmq.27.1673273058111; 
+ Mon, 09 Jan 2023 06:04:18 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- x7-20020a05600c188700b003c701c12a17sm15363599wmp.12.2023.01.09.06.03.32
+ o19-20020a05600c339300b003cff309807esm15064539wmp.23.2023.01.09.06.04.17
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 09 Jan 2023 06:03:33 -0800 (PST)
+ Mon, 09 Jan 2023 06:04:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Havard Skinnemoen <hskinnemoen@google.com>,
@@ -93,18 +94,18 @@ Cc: qemu-arm@nongnu.org, Havard Skinnemoen <hskinnemoen@google.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>, Tyrone Ting <kfting@nuvoton.com>
-Subject: [PATCH 05/14] hw/gpio/omap_gpio: Use CamelCase for TYPE_OMAP2_GPIO
- type name
-Date: Mon,  9 Jan 2023 15:02:57 +0100
-Message-Id: <20230109140306.23161-6-philmd@linaro.org>
+Subject: [PATCH 14/14] hw/timer/xilinx_timer: Use XpsTimerState instead of
+ 'struct timerblock'
+Date: Mon,  9 Jan 2023 15:03:06 +0100
+Message-Id: <20230109140306.23161-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230109140306.23161-1-philmd@linaro.org>
 References: <20230109140306.23161-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,133 +127,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LpeuZQsJLz9o
+X-TUID: jxBBZCJwuQP9
 
-Following docs/devel/style.rst guidelines, rename omap2_gpif_s ->
-Omap2GpioState. This also remove a use of 'struct' in the
-DECLARE_INSTANCE_CHECKER() macro call.
+This remove a use of 'struct' in the DECLARE_INSTANCE_CHECKER()
+macro call, to avoid after a QOM refactor:
+
+  hw/timer/xilinx_timer.c:65:1: error: declaration of anonymous struct must be a definition
+  DECLARE_INSTANCE_CHECKER(struct timerblock, XILINX_TIMER,
+                           ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/gpio/omap_gpio.c   | 20 ++++++++++----------
- include/hw/arm/omap.h |  9 ++++-----
- 2 files changed, 14 insertions(+), 15 deletions(-)
+ hw/timer/xilinx_timer.c | 27 +++++++++++++--------------
+ 1 file changed, 13 insertions(+), 14 deletions(-)
 
-diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-index 23502315ea..a3341d70f1 100644
---- a/hw/gpio/omap_gpio.c
-+++ b/hw/gpio/omap_gpio.c
-@@ -210,7 +210,7 @@ struct omap2_gpio_s {
-     uint8_t delay;
+diff --git a/hw/timer/xilinx_timer.c b/hw/timer/xilinx_timer.c
+index c7f17cd646..32a9df69e0 100644
+--- a/hw/timer/xilinx_timer.c
++++ b/hw/timer/xilinx_timer.c
+@@ -62,10 +62,10 @@ struct xlx_timer
  };
  
--struct omap2_gpif_s {
-+struct Omap2GpioState {
+ #define TYPE_XILINX_TIMER "xlnx.xps-timer"
+-DECLARE_INSTANCE_CHECKER(struct timerblock, XILINX_TIMER,
+-                         TYPE_XILINX_TIMER)
++typedef struct XpsTimerState XpsTimerState;
++DECLARE_INSTANCE_CHECKER(XpsTimerState, XILINX_TIMER, TYPE_XILINX_TIMER)
+ 
+-struct timerblock
++struct XpsTimerState
+ {
      SysBusDevice parent_obj;
  
-     MemoryRegion iomem;
-@@ -274,7 +274,7 @@ static inline void omap2_gpio_module_int(struct omap2_gpio_s *s, int line)
- 
- static void omap2_gpio_set(void *opaque, int line, int level)
- {
--    struct omap2_gpif_s *p = opaque;
-+    Omap2GpioState *p = opaque;
-     struct omap2_gpio_s *s = &p->modules[line >> 5];
- 
-     line &= 31;
-@@ -601,7 +601,7 @@ static void omap_gpif_reset(DeviceState *dev)
- 
- static void omap2_gpif_reset(DeviceState *dev)
- {
--    struct omap2_gpif_s *s = OMAP2_GPIO(dev);
-+    Omap2GpioState *s = OMAP2_GPIO(dev);
-     int i;
- 
-     for (i = 0; i < s->modulecount; i++) {
-@@ -613,7 +613,7 @@ static void omap2_gpif_reset(DeviceState *dev)
- 
- static uint64_t omap2_gpif_top_read(void *opaque, hwaddr addr, unsigned size)
- {
--    struct omap2_gpif_s *s = opaque;
-+    Omap2GpioState *s = opaque;
- 
-     switch (addr) {
-     case 0x00:	/* IPGENERICOCPSPL_REVISION */
-@@ -642,7 +642,7 @@ static uint64_t omap2_gpif_top_read(void *opaque, hwaddr addr, unsigned size)
- static void omap2_gpif_top_write(void *opaque, hwaddr addr,
-                                  uint64_t value, unsigned size)
- {
--    struct omap2_gpif_s *s = opaque;
-+    Omap2GpioState *s = opaque;
- 
-     switch (addr) {
-     case 0x00:	/* IPGENERICOCPSPL_REVISION */
-@@ -699,7 +699,7 @@ static void omap_gpio_realize(DeviceState *dev, Error **errp)
- 
- static void omap2_gpio_realize(DeviceState *dev, Error **errp)
- {
--    struct omap2_gpif_s *s = OMAP2_GPIO(dev);
-+    Omap2GpioState *s = OMAP2_GPIO(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     int i;
- 
-@@ -771,19 +771,19 @@ static const TypeInfo omap_gpio_info = {
-     .class_init    = omap_gpio_class_init,
+@@ -76,7 +76,7 @@ struct timerblock
+     struct xlx_timer *timers;
  };
  
--void omap2_gpio_set_iclk(omap2_gpif *gpio, omap_clk clk)
-+void omap2_gpio_set_iclk(Omap2GpioState *gpio, omap_clk clk)
+-static inline unsigned int num_timers(struct timerblock *t)
++static inline unsigned int num_timers(XpsTimerState *t)
  {
-     gpio->iclk = clk;
+     return 2 - t->one_timer_only;
+ }
+@@ -87,7 +87,7 @@ static inline unsigned int timer_from_addr(hwaddr addr)
+     return addr >> 2;
  }
  
--void omap2_gpio_set_fclk(omap2_gpif *gpio, uint8_t i, omap_clk clk)
-+void omap2_gpio_set_fclk(Omap2GpioState *gpio, uint8_t i, omap_clk clk)
+-static void timer_update_irq(struct timerblock *t)
++static void timer_update_irq(XpsTimerState *t)
  {
-     assert(i <= 5);
-     gpio->fclk[i] = clk;
+     unsigned int i, irq = 0;
+     uint32_t csr;
+@@ -104,7 +104,7 @@ static void timer_update_irq(struct timerblock *t)
+ static uint64_t
+ timer_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+-    struct timerblock *t = opaque;
++    XpsTimerState *t = opaque;
+     struct xlx_timer *xt;
+     uint32_t r = 0;
+     unsigned int timer;
+@@ -155,7 +155,7 @@ static void
+ timer_write(void *opaque, hwaddr addr,
+             uint64_t val64, unsigned int size)
+ {
+-    struct timerblock *t = opaque;
++    XpsTimerState *t = opaque;
+     struct xlx_timer *xt;
+     unsigned int timer;
+     uint32_t value = val64;
+@@ -202,7 +202,7 @@ static const MemoryRegionOps timer_ops = {
+ static void timer_hit(void *opaque)
+ {
+     struct xlx_timer *xt = opaque;
+-    struct timerblock *t = xt->parent;
++    XpsTimerState *t = xt->parent;
+     D(fprintf(stderr, "%s %d\n", __func__, xt->nr));
+     xt->regs[R_TCSR] |= TCSR_TINT;
+ 
+@@ -213,7 +213,7 @@ static void timer_hit(void *opaque)
+ 
+ static void xilinx_timer_realize(DeviceState *dev, Error **errp)
+ {
+-    struct timerblock *t = XILINX_TIMER(dev);
++    XpsTimerState *t = XILINX_TIMER(dev);
+     unsigned int i;
+ 
+     /* Init all the ptimers.  */
+@@ -236,16 +236,15 @@ static void xilinx_timer_realize(DeviceState *dev, Error **errp)
+ 
+ static void xilinx_timer_init(Object *obj)
+ {
+-    struct timerblock *t = XILINX_TIMER(obj);
++    XpsTimerState *t = XILINX_TIMER(obj);
+ 
+     /* All timers share a single irq line.  */
+     sysbus_init_irq(SYS_BUS_DEVICE(obj), &t->irq);
  }
  
- static Property omap2_gpio_properties[] = {
--    DEFINE_PROP_INT32("mpu_model", struct omap2_gpif_s, mpu_model, 0),
-+    DEFINE_PROP_INT32("mpu_model", Omap2GpioState, mpu_model, 0),
+ static Property xilinx_timer_properties[] = {
+-    DEFINE_PROP_UINT32("clock-frequency", struct timerblock, freq_hz,
+-                                                                62 * 1000000),
+-    DEFINE_PROP_UINT8("one-timer-only", struct timerblock, one_timer_only, 0),
++    DEFINE_PROP_UINT32("clock-frequency", XpsTimerState, freq_hz, 62 * 1000000),
++    DEFINE_PROP_UINT8("one-timer-only", XpsTimerState, one_timer_only, 0),
      DEFINE_PROP_END_OF_LIST(),
  };
  
-@@ -801,7 +801,7 @@ static void omap2_gpio_class_init(ObjectClass *klass, void *data)
- static const TypeInfo omap2_gpio_info = {
-     .name          = TYPE_OMAP2_GPIO,
+@@ -260,7 +259,7 @@ static void xilinx_timer_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo xilinx_timer_info = {
+     .name          = TYPE_XILINX_TIMER,
      .parent        = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(struct omap2_gpif_s),
-+    .instance_size = sizeof(Omap2GpioState),
-     .class_init    = omap2_gpio_class_init,
+-    .instance_size = sizeof(struct timerblock),
++    .instance_size = sizeof(XpsTimerState),
+     .instance_init = xilinx_timer_init,
+     .class_init    = xilinx_timer_class_init,
  };
- 
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 29d2ed7e3b..9e30ba7ba2 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -108,16 +108,15 @@ DECLARE_INSTANCE_CHECKER(Omap1GpioState, OMAP1_GPIO,
-                          TYPE_OMAP1_GPIO)
- 
- #define TYPE_OMAP2_GPIO "omap2-gpio"
--DECLARE_INSTANCE_CHECKER(struct omap2_gpif_s, OMAP2_GPIO,
-+typedef struct Omap2GpioState Omap2GpioState;
-+DECLARE_INSTANCE_CHECKER(Omap2GpioState, OMAP2_GPIO,
-                          TYPE_OMAP2_GPIO)
- 
--typedef struct omap2_gpif_s omap2_gpif;
--
- /* TODO: clock framework (see above) */
- void omap_gpio_set_clk(Omap1GpioState *gpio, omap_clk clk);
- 
--void omap2_gpio_set_iclk(omap2_gpif *gpio, omap_clk clk);
--void omap2_gpio_set_fclk(omap2_gpif *gpio, uint8_t i, omap_clk clk);
-+void omap2_gpio_set_iclk(Omap2GpioState *gpio, omap_clk clk);
-+void omap2_gpio_set_fclk(Omap2GpioState *gpio, uint8_t i, omap_clk clk);
- 
- /* OMAP2 l4 Interconnect */
- struct omap_l4_s;
 -- 
 2.38.1
 

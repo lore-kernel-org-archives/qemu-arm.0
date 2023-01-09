@@ -1,144 +1,142 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2357496ejc;
-        Mon, 9 Jan 2023 07:42:44 -0800 (PST)
-X-Received: by 2002:a05:600c:5116:b0:3d9:f296:1adc with SMTP id o22-20020a05600c511600b003d9f2961adcmr1918996wms.33.1673278964566;
-        Mon, 09 Jan 2023 07:42:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673278964; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2377714ejc;
+        Mon, 9 Jan 2023 08:05:51 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXs+d+LyWB1Qz4wpnEXLmoMVLdRwQE//auw2F9ei/0io6fsTDIxriqf5Pfg+I5MPlMOjgmOT
+X-Received: by 2002:a05:7500:398e:b0:ef:d262:f6b6 with SMTP id lu14-20020a057500398e00b000efd262f6b6mr2150681gab.30.1673280350979;
+        Mon, 09 Jan 2023 08:05:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673280350; cv=none;
         d=google.com; s=arc-20160816;
-        b=pB+D5/FEeRa6QlbNl8z7lHOabCUqXE8cjexpfVorLKUIdtOS5Bm/GecYlNDpHZkmwp
-         LmAiI1Ny1d59AhQ/b9c4pJMDg17i8WYn9wE2lWd64h5W6p7vsfLyzV8tNCnUWoTqF03Y
-         bhU9EWGJHtBZgLUqIXkukWFLbhFKpEl9c4obvTvOFi4HHM2QFTwUzwqrwD3PR97VzhDY
-         3je+5QNpRmB9SYM6tZ/UqsCn+8jfzy43G2anFFu0jZbW3VHiO5QWLSxn+M6qI1+tyQFa
-         zvaVjeMqG7PZZFNFKz9mRxWOfhFVz3cSMQzr3l3RE22dlacjmpz9O6kF94e7DHXGYPCM
-         /0Tg==
+        b=T6z2rwA9lOdHTCBWbW2daeZoR97foYgMD/5kG8D7/zN107DE563/JKyyCqKRy7126I
+         ckHvLdMPItRqE93/m5Z7Lm4dntuXa6H0MHrvW7rIjOH6w0hbnf00pFUXaGKQJYbfcwld
+         5lyN77wC76KmYit6mXyjyhpZSMTryn/5m5+1UKdLiN+2Vt67h2pWMPJOnWPXCn4Mt/0h
+         XtG6NiThOAWmBVBb69E5MkVvQkP7uo38JIeqjRW1oQKcUjiidmgISArC9kZP3H6IMqBQ
+         lANSaNx8ScHR2KBq/P9P3I4jqEmOdA33RJlyoLbTqCzhGaMOUchNoD08MYEHM8f0jsl0
+         CPRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=fcjt8GRqrhxCOLryltN0KqgWw+coxdZhL65SUIiCpTM=;
-        b=PoSZuUDl4I9mOIwPuTfX347LmZ59Js83gfKAPtPCmOEdMmgackatBDJG7J/9pvWM3v
-         ICYF2ux6/W4cVmEXrW9o6CIHWPnY40RY8JHPcbLb3kAIhzL8Z6OY8frU4Vg7JwCWdWBJ
-         IdP2HlSLdG6Rfyk97GizvMc7dG0aoIwi4UjqII1xAMLglUrgFOSPbGAQLZI0h1dCtRPY
-         yixO8AuJ7sgalgPx10CW4hDFPwDc4kmp/H0kcW7XFJQ0Ys86OnZryl2/6B+NWD+A9I5P
-         1+GXAQD+8Q5NkKcndNUAKRxpJX617L+jKe14K5S7feqq5pHk8p3ce21YTJDDFV5LVFNX
-         ianA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ZzhIWrFISrEHyoYy31oAz9jlFFWkhL62f7bSBQwvXlM=;
+        b=XQfFCpI1Ww/AIAr1zB7IyXKZcvsT+ITiCJNc6qEaj/3Jr8d1VyxTuyDh+dG+19Jzav
+         XZldMYtEYEnrDzji27valGBLHWMGeEJJ3hGnJK+/mqbcPzuCCRezDtZzN5ONVvAIfP9n
+         O2nKYbVCzhsuNsEODZDjDNd11rnRatDdRCwHVbgm36bQJzkutjPygqEUmSyPacu3a2Zi
+         owEXSIG3QNduy53nUjG/eTW6G5xdVnqntGwMxTrry4pNp2CmwJWUiHL7ejdn7vIJrnM0
+         M8B6gtZ6Xn1AN7DimDPcrjzCYFnioQJXi28zncp9xSKYIYHthscldHdwU6v8YmrQRL61
+         uDow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OGatsdms;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LN+PGwuw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p13-20020a05600c1d8d00b003d9ef8a598asor1308940wms.0.2023.01.09.07.42.44
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v21-20020a05620a441500b006eeb3165564si4475228qkp.34.2023.01.09.08.05.50
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 09 Jan 2023 07:42:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Jan 2023 08:05:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OGatsdms;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LN+PGwuw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=fcjt8GRqrhxCOLryltN0KqgWw+coxdZhL65SUIiCpTM=;
-        b=OGatsdms3DoVwczZHLZWLXesCj/uT3sd9fdHbKL2VMJmZ+nTNX7UZtESkJXyX46kdx
-         pzKzcrTJqW4D6vsVYShyaSTnYmStMm+n72p0FxSaqcfxRPLzQCFXq5ifMwEKMFw+a3qe
-         cI6wj6RydMG/tKZ8tqSIuRymmIvil9tNnYimeYt5M9Gc1D3IRxnuvS2MV7W+jMAyecvA
-         mwO6szafw2eo1NI6PnyZPwKzEZkkxht+Y8Xj9QKCTsbpRFZ4OTNyV8Ql+XltLxAcObSI
-         qb5mseQILnHq3rbEgpsGr3IhjdbM2SMJrlCcrnWYJvfYIKA/ZTb/yirHuNEbUZUgTg+4
-         RhrQ==
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pEuec-0007sq-EP; Mon, 09 Jan 2023 11:05:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pEuea-0007qI-Fd
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 11:05:40 -0500
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pEueY-0007xn-La
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 11:05:40 -0500
+Received: by mail-pg1-x52d.google.com with SMTP id 78so6174006pgb.8
+ for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 08:05:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ZzhIWrFISrEHyoYy31oAz9jlFFWkhL62f7bSBQwvXlM=;
+ b=LN+PGwuwBQmwQ3Ub4Ru/HlrWZDcFFrTgBKuWgdKsEXudsSp9Tgbkc2MtxGnCyh2sDe
+ JFq9utN+BmwHjCKOaZ1U//0J9BWjAdggMFv7JW7rw48XMWXRofnstNr7HiocWNt/Esas
+ XgjyhOIFEZ0fJkz3GTC/n9q/SjgSGPZWLWo6lNv8MIPgAFgBj2H0cH3ieqwVAf7dZmU0
+ 7svnR5U0i93wI7UAxSvAVv2cj3bvtk9kNOwgdArKJkjULUCiqEESQME0AiUdV6QSzSiX
+ CUvPYyPAU8FQ0WvnymPeRnmUjsru08agw1XJurU9+46eLCeaES8Hk4s3PBgz1v6oLO/F
+ C1wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fcjt8GRqrhxCOLryltN0KqgWw+coxdZhL65SUIiCpTM=;
-        b=a9NNZnmKrH9JQ8uOTqHBsqeqNooo6CRIuNX5LTSkZ3CDBqUw/L+1yKScM9vvpvUpqV
-         RFZ4waCYzrnFMysdO3Gcy697K8Y1FBWkG4ROjcRLNMk6xg5Dzsg0wYlHeNx9l+jDks9Q
-         7Us6dX+moteJKczjSOhGA6md9KS9rLebhZUuS6oT8+2e6h6FypEYsrdL7ICF2pdoLu0C
-         H2aMuIWFsJg7aWuu/WpXKgRMIuHCVCIYj9qi6ixQ3rxfNn5IbX3/Hxay4gN+Is0e+5uP
-         tXL327kqyjAjQnZhCpRipPW1R7NlWbqWlZ7xt6PFsU76Z9547MTE+TjF1DmdqxJswntE
-         AEoA==
-X-Gm-Message-State: AFqh2krOEkYNqwbP4MVM4RWxc1w1GyT8Oxxs2vZVdqNpyAWr1oyC9O5F
-	ldxJaSGEfXyKVY4KP3UnnkMr2qL8
-X-Google-Smtp-Source: AMrXdXuI7MdGERFuzvq+xL6DKSivwjYprEYi0PtD0l//qkh3ehodzS8UMsn0377vf2z28daKrp0n/w==
-X-Received: by 2002:a05:600c:35d0:b0:3d2:3f55:f757 with SMTP id r16-20020a05600c35d000b003d23f55f757mr46209153wmq.20.1673278964337;
-        Mon, 09 Jan 2023 07:42:44 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id t8-20020a1c7708000000b003d9f00c8f07sm3799458wmi.21.2023.01.09.07.42.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Jan 2023 07:42:43 -0800 (PST)
-Message-ID: <2a1d1243-2675-8be8-c35f-8c072065645e@linaro.org>
-Date: Mon, 9 Jan 2023 16:42:42 +0100
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZzhIWrFISrEHyoYy31oAz9jlFFWkhL62f7bSBQwvXlM=;
+ b=hms6BoQzisgIGXcU705FeCapwLNlSi5fmh5kh6DDpiA+LZUlGsmYLijAjJZMBDubUZ
+ ZT23Fy/N+0WkfQ3eFOiVIj++wJzTlIfCXZLQhf5wfujSdBMgB8w/lmErQx4tTOATNwQJ
+ 4It5E9ulTwqJ+vnjhsWZiqOSkKoRUaPaz0/Uhgy2ZWCDoOfgoNnzzr7Zge5QWRQwSZn3
+ fhSlOFhP2MMZbqf/ybLJ2yx93mOZa8GHOmCjORL6sNeTbNy78prH6oaD1HyoaHUC4mz1
+ sfAKOa6eyfsxXQ0xPDuB47xPRJeHucohh5QlghdjDP1T4xos0vh8MWXBzELt0Kjttoaj
+ 3czw==
+X-Gm-Message-State: AFqh2kquisqCLbdpKFD7w2nVJnShx+p2YFHUldSPwqGNfrre5hmecHlK
+ keZP5uqFUqk8Yd/xUGVXJIzesA==
+X-Received: by 2002:a05:6a00:21ce:b0:581:26c2:aa0a with SMTP id
+ t14-20020a056a0021ce00b0058126c2aa0amr66671593pfj.30.1673280336229; 
+ Mon, 09 Jan 2023 08:05:36 -0800 (PST)
+Received: from ?IPV6:2602:47:d48c:8101:a909:891c:953d:a6b0?
+ ([2602:47:d48c:8101:a909:891c:953d:a6b0])
+ by smtp.gmail.com with ESMTPSA id
+ i24-20020a056a00225800b00583698ba91dsm6264799pfu.40.2023.01.09.08.05.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Jan 2023 08:05:35 -0800 (PST)
+Message-ID: <5072666e-928c-1aae-3dde-7c4f3a440b23@linaro.org>
+Date: Mon, 9 Jan 2023 08:05:33 -0800
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH] tests/avocado: add machine:none tag to version.py
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 2/5] hw/i2c/bitbang_i2c: Remove unused dummy MemoryRegion
 Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>
-References: <20221215224725.3236-1-farosas@suse.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221215224725.3236-1-farosas@suse.de>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>
+References: <20230109084121.72138-1-philmd@linaro.org>
+ <20230109084121.72138-3-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230109084121.72138-3-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: ewV0gtY5whTm
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /edQiywFpNm6
 
-On 15/12/22 23:47, Fabiano Rosas wrote:
-> This test currently fails when run on a host for which the QEMU target
-> has no default machine set:
-> 
-> ERROR| Output: qemu-system-aarch64: No machine specified, and there is
-> no default
-> 
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+On 1/9/23 00:41, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
 > ---
->   tests/avocado/version.py | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/tests/avocado/version.py b/tests/avocado/version.py
-> index ded7f039c1..dd775955eb 100644
-> --- a/tests/avocado/version.py
-> +++ b/tests/avocado/version.py
-> @@ -15,6 +15,7 @@
->   class Version(QemuSystemTest):
->       """
->       :avocado: tags=quick
-> +    :avocado: tags=machine:none
->       """
->       def test_qmp_human_info_version(self):
->           self.vm.add_args('-nodefaults')
+>   hw/i2c/bitbang_i2c.c | 7 ++-----
+>   1 file changed, 2 insertions(+), 5 deletions(-)
 
-Looking at previous attempt in 
-https://lore.kernel.org/qemu-devel/20220104122104.849084-1-alex.bennee@linaro.org/
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-* tests/avocado/empty_cpu_model.py
-
-   Forced via vm.add_args('-machine', 'none')
-
-   tags=machine:none would be cleaner.
-
-* tests/avocado/info_usernet.py and
-* tests/avocado/vnc.py
-
-   -> Fixed by 5104b73824 ("tests/avocado: set -machine none
-   for userfwd and vnc tests")
-
-* tests/avocado/version.py
-
-   -> This patch
-
-* tests/avocado/migration.py
-
-   => Missing
-
-Maybe we can squash to this patch?
-
-Meanwhile:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+r~

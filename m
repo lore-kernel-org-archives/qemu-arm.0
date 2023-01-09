@@ -1,90 +1,91 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2291642ejc;
-        Mon, 9 Jan 2023 06:19:59 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXu6IVRkZfFUK4FL68UQRb8O+E11ii350XCNl/0zCnbIahoMYt9G/cP1vg+/PSKW7rXUCe9B
-X-Received: by 2002:a1f:27c6:0:b0:3d5:c84f:765c with SMTP id n189-20020a1f27c6000000b003d5c84f765cmr14817172vkn.4.1673273999033;
-        Mon, 09 Jan 2023 06:19:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673273999; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2291859ejc;
+        Mon, 9 Jan 2023 06:20:17 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuT7xoHTdLIOrAQnVkdlqp5TKEO63Fkrigv5cWbO3yCFLmAc1OOKF2w28n6W719zMI1grey
+X-Received: by 2002:a67:de83:0:b0:3ca:a9ef:43ee with SMTP id r3-20020a67de83000000b003caa9ef43eemr23317622vsk.5.1673274017087;
+        Mon, 09 Jan 2023 06:20:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673274017; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rhiq228chZtoITJZ0EU744oZiIOrYWhTSLQeaa0d+/uZA1IqYjqYigtpUtHQBKa4a8
-         pjsybPNl80xtoUwTxvEpAfy+h5xvno4FUJHzaBWOjP5zeiLVBjKBvnU8bxOpKTvnaVkp
-         jlmfy1AMawV2tzf54uG4vYBKB2P43cp1V0TFiXWpcJ3TYhSrOienNqs0W5u3Uw+DBNSW
-         01bsDh/qD3GfwPDSvwUoMDFjPAFC7zchZXdr/oGNW8nZ85Yx5+lXu2mXtzefEIkRpbPW
-         SDGZpbPFVMc624JgIb4rHpiW2agvbpmTPvGyLqIPnwl+qJpVyhgeztsVY2yQY9mAm/80
-         UmzQ==
+        b=tVdTBrjghcGIQ3CfulrBgbSgCS+padJrLRNYBDZO9sr8SJt2ZeanMVXIVMb4aziV8z
+         20z57X3XIB8Yz0VYaFv5jUslYUqnH8S/N36pEBTMYZrGAFm6/xyX9Til2B5pGx2byYzq
+         8fUEfI+6eyImS2pDtL+8p8HbERlbRVdRPJtQcc6zDtb6KqD42RNzTH5DQWAL4zhrkxOH
+         YD/EqQ4USFfdKD3qP8953+3LcXYTKrvcMgOpqTxv4BTh2jezfzlswoVXx7INf+CEYQ86
+         UCP/bZm0N/lkQhD3fy0ru56SkOsQ60G0uel+jdZQqbOKgXQMh73Hlp4eXZkw6n5XX+q8
+         VlDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jRUzznDEJ6kakLGhAZbOD3VcgJyHcfc9OyelkV2R1Lo=;
-        b=RYmtXB4t+kTrFBLUGtknk8QnnmL9RR3mWKd2wmn9CdI+KOcydQ5VO3ft/AFMSZ+J9W
-         hD460NTmKiAHe54ZXpQ6yy8ch6JL9IHjS2/w1l/TJy4K2gxwyo+dSm1RVuwGrD/nl+2b
-         8wgx2WFK3I+4NovirTOU1r8/SLHOd9UlVeYPtPNDDK3dYFh8jCLGRWW/Uu0e2k2HGX63
-         CvAGIx6t5AfsqYuVhyKH9D47xQcXbRw1oNnomrM6D3MZ4KMlIzqMfyszAtoNZQVwoTnU
-         rHxLGneLqQNS/BE124mX+j1FeWSGm5NoksbTzAQt+/CNezNdh86nBLf3ubWO7APeRSIo
-         Dhng==
+        bh=at2rPrXos7OhXzrKy6FKQhkvRO9+YPfQmyazxY/f4vY=;
+        b=CiozvndlGF1/gUuFcPzETI73ZpuUpkuzWaF9jTw/dHRrKhhOKt71jxCZ54zuHKajHh
+         nYeKBOxlku6GYSmna3jZjW9OUPpWp8CvTgmGbwR6hv3vFh4dF5NEKCaSF2twNQLpn+kb
+         yRieKKlviEbgitSSTtlmGGYDCJhrcPeu+HLJ+GtKNS/l+ElXgSgILpyzgwWC9LS0rWCC
+         ukMM2Z1tChRhP6nmGn/pFL7D4aToUb8PZmp4ITiRb2FZ6svk6Mht8Kvcl0TTN+8ar+/B
+         nbq0JF5ShakK8zLUFsRhSxFJb3RvuWlTJk/1KLP/TgC+mjgBuhoyJt/4U43D9IjrM+f9
+         a97Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=btg5pIBA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=YbMvkcbz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de14-20020a05620a370e00b006fc3ee1375dsi4680142qkb.172.2023.01.09.06.19.58
+        by mx.google.com with ESMTPS id l12-20020a37f90c000000b006fc2a75986csi4570147qkj.583.2023.01.09.06.20.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 06:19:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Jan 2023 06:20:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=btg5pIBA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=YbMvkcbz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pEsl3-0001n5-RX; Mon, 09 Jan 2023 09:04:13 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pEskm-0001iF-N8; Mon, 09 Jan 2023 09:03:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskt-0001kp-7E
- for qemu-devel@nongnu.org; Mon, 09 Jan 2023 09:04:03 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskh-0001hL-Ls
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:55 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskq-0006hz-5Y
- for qemu-devel@nongnu.org; Mon, 09 Jan 2023 09:04:02 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id r2so8260436wrv.7
- for <qemu-devel@nongnu.org>; Mon, 09 Jan 2023 06:03:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskf-0006Uu-Qd
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:51 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ k26-20020a05600c1c9a00b003d972646a7dso9089812wms.5
+ for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 06:03:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jRUzznDEJ6kakLGhAZbOD3VcgJyHcfc9OyelkV2R1Lo=;
- b=btg5pIBALEQkmXYpw+Da8lJr1eqx6tfYB483fUP1sWx6tDNgT6PQYsbvF45VBe5Uxb
- M+6VWwqOt2OlEFv+Ex70/SG7a1EcwXexXH6UCEtV9UDoBW3/9W0t4IRXvAvqakkCW1nS
- fC1e3EitWwSWiksNyy1HSvg5a3x2btKolUaJrskyvOcmaTFwQrKVVq3x3MUaGjvMmci+
- M5/+wFUCVkJj2/+rgC1D+m0bovO6W2dQ9e40tqNclSKi/uEMzUS8BN4HpOHLWp23PL97
- rP32aEEjUaxfR8h4Ckd0pmlvVu1YJZ4zkiMNygmNr4Mg7/96Or5xOjPB/Mqy4W3spx+a
- Wt0w==
+ bh=at2rPrXos7OhXzrKy6FKQhkvRO9+YPfQmyazxY/f4vY=;
+ b=YbMvkcbzDvBLuVCKjauNTN6m4KvgJHiESOqYR/LwgEt1KCh/FbhXTzJVGg83WuQ7U5
+ CHGHbflZu7s4OgUis42rH2C2G/W/+Bv3KYw2tmV1qQHWIVL2bhSIIo1kwPshVGBi0GHq
+ Y98Mhh0LOSzYjsWQrloHQxKV9WAQ0gR8wfQbGw2xVREbfGXSOpmF5poSnduLEtipSCCx
+ xvpZcpAdZXMPW8HUgRgs0ahNsjnBFAh16pSXiPDojDjuFaHe/frGgw1Bzh1sulDnM6jf
+ O6QARHLXgrBITxcXR02xTW6Qry/3uFyF4zhpGwsGGf/XwU2dSGEHUGm+x3POXZMkI0rb
+ gOBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jRUzznDEJ6kakLGhAZbOD3VcgJyHcfc9OyelkV2R1Lo=;
- b=quOyASP+1R8Y4DcASoa1gqR1EJ/mCjjFd6qC13vzwzgWXaZNe8pbiX3qzSLGRddNai
- EqzFh25ESks1J0U0WXnVscqJcLxKOOflT3BN4VtPqvgCWwJacuYzTr3Ugt9ONgPa6q5G
- zF02HlQ47NenayRSP+JjvWMB1ODfB7KxisY64Nob49gi8NSaVILSNMD81FfwsYMh/IfM
- A/iwZVx8I9GnLzhvKl5z6A6HtyfAekIkmQdahF+o/lpBrcAHImROmyafybWTvLMHHl34
- qTo5Zm6Wf9qIeCs2TTyeQQICWwdExlkeWn6bNrUusVop+H8tdmDCCtS1l0GaUYT1B8AX
- j8QQ==
-X-Gm-Message-State: AFqh2kqpeKpyoHGHv4VhUELcFs9U7q+ieSkr2YpfV0rIQsrmbFpG52S9
- iYKh4iNT2diuqRgGpMDpQL+ndGZR1YXctHOJ
-X-Received: by 2002:a05:6000:4087:b0:2bb:db44:7994 with SMTP id
- da7-20020a056000408700b002bbdb447994mr5279890wrb.28.1673273038349; 
- Mon, 09 Jan 2023 06:03:58 -0800 (PST)
+ bh=at2rPrXos7OhXzrKy6FKQhkvRO9+YPfQmyazxY/f4vY=;
+ b=XOn0eLeyqwsTPLfPhc6K+8X8MW9bmrb8lp+B3e6bHl+Y4Q8YeW71BjK5RdjkFN2oXi
+ s4qAKUge3fNjy1El3D2sTlklGFF49yGUhhg4bWvkqM68yp+DzDeRNoS8Dz5gz9I238B+
+ u8orAGtLL9c03oTIeDMJL4vJFkcx02Q8NCEGLocaTfimWwOaSu5rhcqVOgv5mf/yz48k
+ 7REeeg9zsiBX0FXMl61rcRxNZHkWnIL5d2NYXYr0sSk32C2rXF5ngxDTT/VFS712zfRp
+ 0LT0RUF3YsnzZgeWl7Y0pLEDshZSgUB0KCx975lV8XzNi+6O9tOxw//ZQzFmpebst3tf
+ usmA==
+X-Gm-Message-State: AFqh2kobCx0MTLl/jYSCV7RjoAoCv+X1DbsWQffKGIcJmg0QOldecYPT
+ LBymmk2ywIlpQin8rrDTbzV10Q==
+X-Received: by 2002:a05:600c:34ce:b0:3cf:614e:b587 with SMTP id
+ d14-20020a05600c34ce00b003cf614eb587mr49711410wmq.26.1673273028431; 
+ Mon, 09 Jan 2023 06:03:48 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- k2-20020a5d5182000000b00236545edc91sm8761504wrv.76.2023.01.09.06.03.57
+ q6-20020a05600c46c600b003cfd4e6400csm12332793wmo.19.2023.01.09.06.03.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 09 Jan 2023 06:03:58 -0800 (PST)
+ Mon, 09 Jan 2023 06:03:48 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Havard Skinnemoen <hskinnemoen@google.com>,
@@ -93,310 +94,204 @@ Cc: qemu-arm@nongnu.org, Havard Skinnemoen <hskinnemoen@google.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>, Tyrone Ting <kfting@nuvoton.com>
-Subject: [PATCH 10/14] hw/arm/npcm7xx: Declare QOM macros using
- OBJECT_DECLARE_SIMPLE_TYPE()
-Date: Mon,  9 Jan 2023 15:03:02 +0100
-Message-Id: <20230109140306.23161-11-philmd@linaro.org>
+Subject: [PATCH 08/14] hw/arm/stellaris: Use CamelCase for STELLARIS_ADC type
+ name
+Date: Mon,  9 Jan 2023 15:03:00 +0100
+Message-Id: <20230109140306.23161-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230109140306.23161-1-philmd@linaro.org>
 References: <20230109140306.23161-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fC4XGV5ydI4c
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yqq37fDy0WT/
 
-NPCM7XX models have been commited after the conversion from
-commit 8063396bf3 ("Use OBJECT_DECLARE_SIMPLE_TYPE when possible").
-Manually convert them.
+Following docs/devel/style.rst guidelines, rename
+stellaris_adc_state -> StellarisADCState. This also remove a
+use of 'struct' in the DECLARE_INSTANCE_CHECKER() macro call.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/adc/npcm7xx_adc.h   |  7 +++----
- include/hw/arm/npcm7xx.h       | 18 ++++++------------
- include/hw/i2c/npcm7xx_smbus.h |  7 +++----
- include/hw/misc/npcm7xx_clk.h  |  2 +-
- include/hw/misc/npcm7xx_gcr.h  |  6 +++---
- include/hw/misc/npcm7xx_mft.h  |  7 +++----
- include/hw/misc/npcm7xx_pwm.h  |  3 +--
- include/hw/misc/npcm7xx_rng.h  |  6 +++---
- include/hw/net/npcm7xx_emc.h   |  5 +----
- include/hw/sd/npcm7xx_sdhci.h  |  4 ++--
- 10 files changed, 26 insertions(+), 39 deletions(-)
+ hw/arm/stellaris.c | 73 +++++++++++++++++++++++-----------------------
+ 1 file changed, 36 insertions(+), 37 deletions(-)
 
-diff --git a/include/hw/adc/npcm7xx_adc.h b/include/hw/adc/npcm7xx_adc.h
-index 7d8442107a..93330a408d 100644
---- a/include/hw/adc/npcm7xx_adc.h
-+++ b/include/hw/adc/npcm7xx_adc.h
-@@ -42,7 +42,7 @@
-  * @iref: The internal reference voltage, initialized at launch time.
-  * @rv: The calibrated output values of 0.5V and 1.5V for the ADC.
-  */
--typedef struct {
-+struct NPCM7xxADCState {
-     SysBusDevice parent;
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index 051c242e9d..67a2293d35 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -674,9 +674,8 @@ static void stellaris_i2c_init(Object *obj)
+ #define STELLARIS_ADC_FIFO_FULL     0x1000
  
-     MemoryRegion iomem;
-@@ -60,10 +60,9 @@ typedef struct {
-     uint32_t     iref;
+ #define TYPE_STELLARIS_ADC "stellaris-adc"
+-typedef struct StellarisADCState stellaris_adc_state;
+-DECLARE_INSTANCE_CHECKER(stellaris_adc_state, STELLARIS_ADC,
+-                         TYPE_STELLARIS_ADC)
++typedef struct StellarisADCState StellarisADCState;
++DECLARE_INSTANCE_CHECKER(StellarisADCState, STELLARIS_ADC, TYPE_STELLARIS_ADC)
  
-     uint16_t     calibration_r_values[NPCM7XX_ADC_NUM_CALIB];
--} NPCM7xxADCState;
-+};
- 
- #define TYPE_NPCM7XX_ADC "npcm7xx-adc"
--#define NPCM7XX_ADC(obj) \
--    OBJECT_CHECK(NPCM7xxADCState, (obj), TYPE_NPCM7XX_ADC)
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxADCState, NPCM7XX_ADC)
- 
- #endif /* NPCM7XX_ADC_H */
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index ce593235d9..f1b7e4a48d 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -52,7 +52,7 @@
- 
- #define NPCM7XX_NR_PWM_MODULES 2
- 
--typedef struct NPCM7xxMachine {
-+struct NPCM7xxMachine {
-     MachineState        parent;
-     /*
-      * PWM fan splitter. each splitter connects to one PWM output and
-@@ -60,11 +60,10 @@ typedef struct NPCM7xxMachine {
-      */
-     SplitIRQ            fan_splitter[NPCM7XX_NR_PWM_MODULES *
-                                      NPCM7XX_PWM_PER_MODULE];
--} NPCM7xxMachine;
-+};
- 
- #define TYPE_NPCM7XX_MACHINE MACHINE_TYPE_NAME("npcm7xx")
--#define NPCM7XX_MACHINE(obj)                                            \
--    OBJECT_CHECK(NPCM7xxMachine, (obj), TYPE_NPCM7XX_MACHINE)
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxMachine, NPCM7XX_MACHINE)
- 
- typedef struct NPCM7xxMachineClass {
-     MachineClass        parent;
-@@ -77,7 +76,7 @@ typedef struct NPCM7xxMachineClass {
- #define NPCM7XX_MACHINE_GET_CLASS(obj)                                  \
-     OBJECT_GET_CLASS(NPCM7xxMachineClass, (obj), TYPE_NPCM7XX_MACHINE)
- 
--typedef struct NPCM7xxState {
-+struct NPCM7xxState {
-     DeviceState         parent;
- 
-     ARMCPU              cpu[NPCM7XX_MAX_NUM_CPUS];
-@@ -105,10 +104,10 @@ typedef struct NPCM7xxState {
-     NPCM7xxFIUState     fiu[2];
-     NPCM7xxEMCState     emc[2];
-     NPCM7xxSDHCIState   mmc;
--} NPCM7xxState;
-+};
- 
- #define TYPE_NPCM7XX    "npcm7xx"
--#define NPCM7XX(obj)    OBJECT_CHECK(NPCM7xxState, (obj), TYPE_NPCM7XX)
-+OBJECT_DECLARE_TYPE(NPCM7xxState, NPCM7xxClass, NPCM7XX)
- 
- #define TYPE_NPCM730    "npcm730"
- #define TYPE_NPCM750    "npcm750"
-@@ -122,11 +121,6 @@ typedef struct NPCM7xxClass {
-     uint32_t            num_cpus;
- } NPCM7xxClass;
- 
--#define NPCM7XX_CLASS(klass)                                            \
--    OBJECT_CLASS_CHECK(NPCM7xxClass, (klass), TYPE_NPCM7XX)
--#define NPCM7XX_GET_CLASS(obj)                                          \
--    OBJECT_GET_CLASS(NPCM7xxClass, (obj), TYPE_NPCM7XX)
--
- /**
-  * npcm7xx_load_kernel - Loads memory with everything needed to boot
-  * @machine - The machine containing the SoC to be booted.
-diff --git a/include/hw/i2c/npcm7xx_smbus.h b/include/hw/i2c/npcm7xx_smbus.h
-index 7d59ee917e..3555e6836f 100644
---- a/include/hw/i2c/npcm7xx_smbus.h
-+++ b/include/hw/i2c/npcm7xx_smbus.h
-@@ -68,7 +68,7 @@ typedef enum NPCM7xxSMBusStatus {
-  * @rx_cur: The current position of rx_fifo.
-  * @status: The current status of the SMBus.
-  */
--typedef struct NPCM7xxSMBusState {
-+struct NPCM7xxSMBusState {
-     SysBusDevice parent;
- 
-     MemoryRegion iomem;
-@@ -104,10 +104,9 @@ typedef struct NPCM7xxSMBusState {
-     uint8_t      rx_cur;
- 
-     NPCM7xxSMBusStatus status;
--} NPCM7xxSMBusState;
-+};
- 
- #define TYPE_NPCM7XX_SMBUS "npcm7xx-smbus"
--#define NPCM7XX_SMBUS(obj) OBJECT_CHECK(NPCM7xxSMBusState, (obj), \
--                                        TYPE_NPCM7XX_SMBUS)
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxSMBusState, NPCM7XX_SMBUS)
- 
- #endif /* NPCM7XX_SMBUS_H */
-diff --git a/include/hw/misc/npcm7xx_clk.h b/include/hw/misc/npcm7xx_clk.h
-index d5c8d16ca4..5ed4a4672b 100644
---- a/include/hw/misc/npcm7xx_clk.h
-+++ b/include/hw/misc/npcm7xx_clk.h
-@@ -175,6 +175,6 @@ struct NPCM7xxCLKState {
+ struct StellarisADCState {
+     SysBusDevice parent_obj;
+@@ -700,7 +699,7 @@ struct StellarisADCState {
+     qemu_irq irq[4];
  };
  
- #define TYPE_NPCM7XX_CLK "npcm7xx-clk"
--#define NPCM7XX_CLK(obj) OBJECT_CHECK(NPCM7xxCLKState, (obj), TYPE_NPCM7XX_CLK)
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxCLKState, NPCM7XX_CLK)
+-static uint32_t stellaris_adc_fifo_read(stellaris_adc_state *s, int n)
++static uint32_t stellaris_adc_fifo_read(StellarisADCState *s, int n)
+ {
+     int tail;
  
- #endif /* NPCM7XX_CLK_H */
-diff --git a/include/hw/misc/npcm7xx_gcr.h b/include/hw/misc/npcm7xx_gcr.h
-index 9419e0a7d2..c0bbdda77e 100644
---- a/include/hw/misc/npcm7xx_gcr.h
-+++ b/include/hw/misc/npcm7xx_gcr.h
-@@ -55,7 +55,7 @@
-  */
- #define NPCM7XX_GCR_NR_REGS (0x148 / sizeof(uint32_t))
+@@ -716,7 +715,7 @@ static uint32_t stellaris_adc_fifo_read(stellaris_adc_state *s, int n)
+     return s->fifo[n].data[tail];
+ }
  
--typedef struct NPCM7xxGCRState {
-+struct NPCM7xxGCRState {
-     SysBusDevice parent;
+-static void stellaris_adc_fifo_write(stellaris_adc_state *s, int n,
++static void stellaris_adc_fifo_write(StellarisADCState *s, int n,
+                                      uint32_t value)
+ {
+     int head;
+@@ -736,7 +735,7 @@ static void stellaris_adc_fifo_write(stellaris_adc_state *s, int n,
+         s->fifo[n].state |= STELLARIS_ADC_FIFO_FULL;
+ }
  
-     MemoryRegion iomem;
-@@ -65,9 +65,9 @@ typedef struct NPCM7xxGCRState {
-     uint32_t reset_pwron;
-     uint32_t reset_mdlr;
-     uint32_t reset_intcr3;
--} NPCM7xxGCRState;
-+};
+-static void stellaris_adc_update(stellaris_adc_state *s)
++static void stellaris_adc_update(StellarisADCState *s)
+ {
+     int level;
+     int n;
+@@ -749,7 +748,7 @@ static void stellaris_adc_update(stellaris_adc_state *s)
  
- #define TYPE_NPCM7XX_GCR "npcm7xx-gcr"
--#define NPCM7XX_GCR(obj) OBJECT_CHECK(NPCM7xxGCRState, (obj), TYPE_NPCM7XX_GCR)
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxGCRState, NPCM7XX_GCR)
+ static void stellaris_adc_trigger(void *opaque, int irq, int level)
+ {
+-    stellaris_adc_state *s = opaque;
++    StellarisADCState *s = opaque;
+     int n;
  
- #endif /* NPCM7XX_GCR_H */
-diff --git a/include/hw/misc/npcm7xx_mft.h b/include/hw/misc/npcm7xx_mft.h
-index 36785e3ba8..d6384382ce 100644
---- a/include/hw/misc/npcm7xx_mft.h
-+++ b/include/hw/misc/npcm7xx_mft.h
-@@ -49,7 +49,7 @@
-  * @max_rpm: The maximum rpm for fans. Order: A0, B0, A1, B1.
-  * @duty: The duty cycles for fans, relative to NPCM7XX_PWM_MAX_DUTY.
-  */
--typedef struct NPCM7xxMFTState {
-+struct NPCM7xxMFTState {
-     SysBusDevice parent;
+     for (n = 0; n < 4; n++) {
+@@ -771,7 +770,7 @@ static void stellaris_adc_trigger(void *opaque, int irq, int level)
+     }
+ }
  
-     MemoryRegion iomem;
-@@ -61,10 +61,9 @@ typedef struct NPCM7xxMFTState {
+-static void stellaris_adc_reset(stellaris_adc_state *s)
++static void stellaris_adc_reset(StellarisADCState *s)
+ {
+     int n;
  
-     uint32_t    max_rpm[NPCM7XX_MFT_FANIN_COUNT];
-     uint32_t    duty[NPCM7XX_MFT_FANIN_COUNT];
--} NPCM7xxMFTState;
-+};
+@@ -785,7 +784,7 @@ static void stellaris_adc_reset(stellaris_adc_state *s)
+ static uint64_t stellaris_adc_read(void *opaque, hwaddr offset,
+                                    unsigned size)
+ {
+-    stellaris_adc_state *s = opaque;
++    StellarisADCState *s = opaque;
  
- #define TYPE_NPCM7XX_MFT "npcm7xx-mft"
--#define NPCM7XX_MFT(obj) \
--    OBJECT_CHECK(NPCM7xxMFTState, (obj), TYPE_NPCM7XX_MFT)
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxMFTState, NPCM7XX_MFT)
+     /* TODO: Implement this.  */
+     if (offset >= 0x40 && offset < 0xc0) {
+@@ -833,7 +832,7 @@ static uint64_t stellaris_adc_read(void *opaque, hwaddr offset,
+ static void stellaris_adc_write(void *opaque, hwaddr offset,
+                                 uint64_t value, unsigned size)
+ {
+-    stellaris_adc_state *s = opaque;
++    StellarisADCState *s = opaque;
  
- #endif /* NPCM7XX_MFT_H */
-diff --git a/include/hw/misc/npcm7xx_pwm.h b/include/hw/misc/npcm7xx_pwm.h
-index 7ad632a93a..bf953440ac 100644
---- a/include/hw/misc/npcm7xx_pwm.h
-+++ b/include/hw/misc/npcm7xx_pwm.h
-@@ -101,7 +101,6 @@ struct NPCM7xxPWMState {
+     /* TODO: Implement this.  */
+     if (offset >= 0x40 && offset < 0xc0) {
+@@ -901,31 +900,31 @@ static const VMStateDescription vmstate_stellaris_adc = {
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .fields = (VMStateField[]) {
+-        VMSTATE_UINT32(actss, stellaris_adc_state),
+-        VMSTATE_UINT32(ris, stellaris_adc_state),
+-        VMSTATE_UINT32(im, stellaris_adc_state),
+-        VMSTATE_UINT32(emux, stellaris_adc_state),
+-        VMSTATE_UINT32(ostat, stellaris_adc_state),
+-        VMSTATE_UINT32(ustat, stellaris_adc_state),
+-        VMSTATE_UINT32(sspri, stellaris_adc_state),
+-        VMSTATE_UINT32(sac, stellaris_adc_state),
+-        VMSTATE_UINT32(fifo[0].state, stellaris_adc_state),
+-        VMSTATE_UINT32_ARRAY(fifo[0].data, stellaris_adc_state, 16),
+-        VMSTATE_UINT32(ssmux[0], stellaris_adc_state),
+-        VMSTATE_UINT32(ssctl[0], stellaris_adc_state),
+-        VMSTATE_UINT32(fifo[1].state, stellaris_adc_state),
+-        VMSTATE_UINT32_ARRAY(fifo[1].data, stellaris_adc_state, 16),
+-        VMSTATE_UINT32(ssmux[1], stellaris_adc_state),
+-        VMSTATE_UINT32(ssctl[1], stellaris_adc_state),
+-        VMSTATE_UINT32(fifo[2].state, stellaris_adc_state),
+-        VMSTATE_UINT32_ARRAY(fifo[2].data, stellaris_adc_state, 16),
+-        VMSTATE_UINT32(ssmux[2], stellaris_adc_state),
+-        VMSTATE_UINT32(ssctl[2], stellaris_adc_state),
+-        VMSTATE_UINT32(fifo[3].state, stellaris_adc_state),
+-        VMSTATE_UINT32_ARRAY(fifo[3].data, stellaris_adc_state, 16),
+-        VMSTATE_UINT32(ssmux[3], stellaris_adc_state),
+-        VMSTATE_UINT32(ssctl[3], stellaris_adc_state),
+-        VMSTATE_UINT32(noise, stellaris_adc_state),
++        VMSTATE_UINT32(actss, StellarisADCState),
++        VMSTATE_UINT32(ris, StellarisADCState),
++        VMSTATE_UINT32(im, StellarisADCState),
++        VMSTATE_UINT32(emux, StellarisADCState),
++        VMSTATE_UINT32(ostat, StellarisADCState),
++        VMSTATE_UINT32(ustat, StellarisADCState),
++        VMSTATE_UINT32(sspri, StellarisADCState),
++        VMSTATE_UINT32(sac, StellarisADCState),
++        VMSTATE_UINT32(fifo[0].state, StellarisADCState),
++        VMSTATE_UINT32_ARRAY(fifo[0].data, StellarisADCState, 16),
++        VMSTATE_UINT32(ssmux[0], StellarisADCState),
++        VMSTATE_UINT32(ssctl[0], StellarisADCState),
++        VMSTATE_UINT32(fifo[1].state, StellarisADCState),
++        VMSTATE_UINT32_ARRAY(fifo[1].data, StellarisADCState, 16),
++        VMSTATE_UINT32(ssmux[1], StellarisADCState),
++        VMSTATE_UINT32(ssctl[1], StellarisADCState),
++        VMSTATE_UINT32(fifo[2].state, StellarisADCState),
++        VMSTATE_UINT32_ARRAY(fifo[2].data, StellarisADCState, 16),
++        VMSTATE_UINT32(ssmux[2], StellarisADCState),
++        VMSTATE_UINT32(ssctl[2], StellarisADCState),
++        VMSTATE_UINT32(fifo[3].state, StellarisADCState),
++        VMSTATE_UINT32_ARRAY(fifo[3].data, StellarisADCState, 16),
++        VMSTATE_UINT32(ssmux[3], StellarisADCState),
++        VMSTATE_UINT32(ssctl[3], StellarisADCState),
++        VMSTATE_UINT32(noise, StellarisADCState),
+         VMSTATE_END_OF_LIST()
+     }
  };
+@@ -933,7 +932,7 @@ static const VMStateDescription vmstate_stellaris_adc = {
+ static void stellaris_adc_init(Object *obj)
+ {
+     DeviceState *dev = DEVICE(obj);
+-    stellaris_adc_state *s = STELLARIS_ADC(obj);
++    StellarisADCState *s = STELLARIS_ADC(obj);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+     int n;
  
- #define TYPE_NPCM7XX_PWM "npcm7xx-pwm"
--#define NPCM7XX_PWM(obj) \
--    OBJECT_CHECK(NPCM7xxPWMState, (obj), TYPE_NPCM7XX_PWM)
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxPWMState, NPCM7XX_PWM)
- 
- #endif /* NPCM7XX_PWM_H */
-diff --git a/include/hw/misc/npcm7xx_rng.h b/include/hw/misc/npcm7xx_rng.h
-index 5e85fd439d..650375dc2c 100644
---- a/include/hw/misc/npcm7xx_rng.h
-+++ b/include/hw/misc/npcm7xx_rng.h
-@@ -18,7 +18,7 @@
- 
- #include "hw/sysbus.h"
- 
--typedef struct NPCM7xxRNGState {
-+struct NPCM7xxRNGState {
-     SysBusDevice parent;
- 
-     MemoryRegion iomem;
-@@ -26,9 +26,9 @@ typedef struct NPCM7xxRNGState {
-     uint8_t rngcs;
-     uint8_t rngd;
-     uint8_t rngmode;
--} NPCM7xxRNGState;
-+};
- 
- #define TYPE_NPCM7XX_RNG "npcm7xx-rng"
--#define NPCM7XX_RNG(obj) OBJECT_CHECK(NPCM7xxRNGState, (obj), TYPE_NPCM7XX_RNG)
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxRNGState, NPCM7XX_RNG)
- 
- #endif /* NPCM7XX_RNG_H */
-diff --git a/include/hw/net/npcm7xx_emc.h b/include/hw/net/npcm7xx_emc.h
-index eac7f29816..b789007160 100644
---- a/include/hw/net/npcm7xx_emc.h
-+++ b/include/hw/net/npcm7xx_emc.h
-@@ -277,10 +277,7 @@ struct NPCM7xxEMCState {
-     bool rx_active;
+@@ -1381,7 +1380,7 @@ static void stellaris_adc_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo stellaris_adc_info = {
+     .name          = TYPE_STELLARIS_ADC,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(stellaris_adc_state),
++    .instance_size = sizeof(StellarisADCState),
+     .instance_init = stellaris_adc_init,
+     .class_init    = stellaris_adc_class_init,
  };
- 
--typedef struct NPCM7xxEMCState NPCM7xxEMCState;
--
- #define TYPE_NPCM7XX_EMC "npcm7xx-emc"
--#define NPCM7XX_EMC(obj) \
--    OBJECT_CHECK(NPCM7xxEMCState, (obj), TYPE_NPCM7XX_EMC)
-+OBJECT_DECLARE_SIMPLE_TYPE(NPCM7xxEMCState, NPCM7XX_EMC)
- 
- #endif /* NPCM7XX_EMC_H */
-diff --git a/include/hw/sd/npcm7xx_sdhci.h b/include/hw/sd/npcm7xx_sdhci.h
-index d728f0a40d..ad8002f766 100644
---- a/include/hw/sd/npcm7xx_sdhci.h
-+++ b/include/hw/sd/npcm7xx_sdhci.h
-@@ -51,7 +51,7 @@ typedef struct NPCM7xxRegs {
-     uint32_t boottoctrl;
- } NPCM7xxRegisters;
- 
--typedef struct NPCM7xxSDHCIState {
-+struct NPCM7xxSDHCIState {
-     SysBusDevice parent;
- 
-     MemoryRegion container;
-@@ -60,6 +60,6 @@ typedef struct NPCM7xxSDHCIState {
-     NPCM7xxRegisters regs;
- 
-     SDHCIState sdhci;
--} NPCM7xxSDHCIState;
-+};
- 
- #endif /* NPCM7XX_SDHCI_H */
 -- 
 2.38.1
 

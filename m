@@ -1,92 +1,92 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2455678ejc;
-        Mon, 9 Jan 2023 09:36:58 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsIStcBGIXxlyWSSL/vv414a3+z6bjuvk/5RjJEs3xb/rRDFFGUD2RdKWqqnPqBe9UsYCIN
-X-Received: by 2002:a05:6214:5702:b0:531:8c45:57e2 with SMTP id lt2-20020a056214570200b005318c4557e2mr76401555qvb.21.1673285818094;
-        Mon, 09 Jan 2023 09:36:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673285818; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2457308ejc;
+        Mon, 9 Jan 2023 09:39:18 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvQDXk6DvCilFYbJel/QLjo2k067R27o3xie3cSpXyYhRA/k3pU3ygTdQUYyszALseM+Mf4
+X-Received: by 2002:a0c:f792:0:b0:531:801d:8ef2 with SMTP id s18-20020a0cf792000000b00531801d8ef2mr71305328qvn.29.1673285958262;
+        Mon, 09 Jan 2023 09:39:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673285958; cv=none;
         d=google.com; s=arc-20160816;
-        b=rnAxm9P19s3+9704hcto+rNd5c3hVpr5sp4jAsaBYk1RMY22lE/JKXv5exin+Il+Qw
-         4tQQV1PzxEFlFpc9tdKBD5xtGhuT/SFU5Abkfg+xLUKsmQG/AGeGXhz3fV32hoZxLIIh
-         AIFnYoHl/3LcK/85c1XyXYeSJRkZYQyUsUeFq1wbMtYNJoWB/l1v+lfiA2SCNSysPJWb
-         UKXBmKc/selTs0jzV0t2H4nVY77XpiipG8b1G+atjWr6s3h+UZziV3XijWD85UwhZO66
-         NDMB+XVC37n5tkaeG+3KvaA0lMcHFpZfTsIM5ykN3Se7pHn1NP70/QSaBBY1YcwBFhAy
-         VFuA==
+        b=SyyN5pkUfsBofDh4H9gJhPQZAU6t6UsFf8olcx2MOrrgT5w+Vbnogw1CRo7WM+9rUC
+         rB9V7D3S2dtf+KS6nYytdIwxirtiw2pMaqoeuQyS77RGQ4BU6Zilh093vg1LO8gR+TPN
+         sGlCs5JAIEUC1T1HzEVJe8bh8tOfF+lXER2ucpeXfGUypSZSf6/y6pe+FdBHgHThicBO
+         i6aJEe7hvp4iW8Gw4dLt26UGv66zhVh4+cqb1ytVN1nPP8K7HV9OsGwqnj8pdSVisjB4
+         qin0POCnn2lsR26z2MgqaDmR8ebxqEThBWbStD1GbFiVstXV8WE/163/JW1hRrydfEty
+         IanQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=mgtdEHCrqZkKeHSwNr7rmdJndX3/1+NtuZOqm1NlxBM=;
-        b=NpggeCwWqa8Lg414sRHQHZlm38+gIo2W1iRBi1PdWBHedmpxVPLRPaKzO0AgfuNBCZ
-         47Rd6ryUXr2g8b7Vkm3SQ9LvVt24afXpoXxTj9kHnEEuhvnvnmuAczutgkd90Iq8Qiv3
-         g4MAcGAqg/ReNWXiqG+KhWEzdor3lrzzodFL/V7HLMZodKcNcYvY8DeNhoZm9c0b31Gn
-         ng7/iTcY7olIprzbG8LiHjHLIO6YFQZFEwxddd5K6NitgNRJrwQpFXK4eTFkZFXWGpLu
-         W6ljAH+uu894sx5oUnmWcDhekNnUoCf7/aD39vI4T3e2ZNUZ+dmD7ndem5ArMrVrhxQn
-         FVHg==
+        bh=ZTrYIrNaAOJ10ynaGMpgu6wEYURWdVAhdTXgUormHxM=;
+        b=eqRRRPjJ7BMbDhB1szGnpHEOwOJR0O++51zJjUMfCsslOPoP8cmrRDgDCsX82BO7b6
+         JsNJ+6086lDFdtmGHjpL2hGz1Cbn6iSk4faogYohFz/+rOZ7L63EcUwWpBV1whEcQplY
+         7xd8kECSaNtbzWuWAOwb1G+wiqX3j4YsK5N0BX8sjRQm/BRLb/iAwmghKdQqCsczGch+
+         wtNBMH2oS0OUM1R6mTVoP8cKtz7WilFUff2KSO2fatCLRX/qbC/d3tOK2uXLM+GZBQrL
+         m2hOKa/AhBk1IJCpfX6HROkfz3k3q1ngfqh1KOmJFObfYhMr3oIMqrmFPaTQQ//Ywwxv
+         /fag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="edWXly4/";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=F2w+EGwX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kk14-20020a056214508e00b004c77e38207dsi4783204qvb.105.2023.01.09.09.36.57
+        by mx.google.com with ESMTPS id 3-20020a05621420e300b004b3f40d26e2si4363934qvk.288.2023.01.09.09.39.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 09:36:58 -0800 (PST)
+        Mon, 09 Jan 2023 09:39:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="edWXly4/";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=F2w+EGwX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pEvtW-0002dX-RQ; Mon, 09 Jan 2023 12:25:10 -0500
+	id 1pEvuH-0003Fr-4T; Mon, 09 Jan 2023 12:25:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvtU-0002aO-B6; Mon, 09 Jan 2023 12:25:08 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ id 1pEvtf-0002jI-C3; Mon, 09 Jan 2023 12:25:19 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvtS-00018g-Dx; Mon, 09 Jan 2023 12:25:08 -0500
-Received: by mail-ej1-x636.google.com with SMTP id tz12so21912191ejc.9;
- Mon, 09 Jan 2023 09:25:04 -0800 (PST)
+ id 1pEvtd-0001Jo-Gc; Mon, 09 Jan 2023 12:25:19 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id fc4so21870599ejc.12;
+ Mon, 09 Jan 2023 09:25:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mgtdEHCrqZkKeHSwNr7rmdJndX3/1+NtuZOqm1NlxBM=;
- b=edWXly4/xlZUFJQS3XM2sjm+nkuogrWXzLJyJVv7bxCRTz8rH44ScwLV3NAX7m+XtD
- N1fEHOXosf5kPhd9mG02yyVBzsAhTC+HvPOBs211O7Tk4vzwT1VEGCEVcPRHb7U92VCo
- pyXCKVN2yzxei7wB9McFAi+C5UuDI+Z54+GWZdYl4I8ciFiLpApzdQBNNYuBUbYzzkBn
- NnhDMtzE9MRbNO62a60yiNRD73deyW7z6hX6hkxFR303AeWZWLAdFN3GegJI3I4nX50N
- 0juiWDwIuyN9a0xowe8ER9WBF2JQg8bqZ1FSwCBnurQCOc2BDDo2rMoz1nQjAP8Gz9Fk
- XbJA==
+ bh=ZTrYIrNaAOJ10ynaGMpgu6wEYURWdVAhdTXgUormHxM=;
+ b=F2w+EGwXYQ45OIwOUGI2u5LAvfmAEHP9OH8wl0l6qDh+vxZq3aMNTGRhYoxL5XXVvZ
+ Z4w0x9ODsMqpugnpsBfGlIk7xzqjm/wyCDxugyRGrgFXva8onRkCpkdyxkDHHFVOqxoo
+ g8tzUd6vgVFjONYxgM1QSRdDuS2XVCva4owkTzlwP7Zpm7a2zo3ntndaolAa/ldbBU4p
+ 5xm49fF8gLVsYfJKylSuh5r3DjI8zcv/shiOejeYRNvwb/ztOKrpkFEdtoTfMCaRnszZ
+ 3izyIgI+SJR+JKWxGtcZoXTLfzwob5Z6hgYTsYtEC+QuRJ1In7S5wgIcsRQ29oY2tSj9
+ KZSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=mgtdEHCrqZkKeHSwNr7rmdJndX3/1+NtuZOqm1NlxBM=;
- b=ke1Wqjs+mrbNBLj9Z8S6FSJ0wT6LnNlKvSXsohZr1+yjU1MuLJk6wCRrkttdZkwM73
- VPZ6r5BQD3ORGM0dJvkE10YiHDqRxuTkmauepW1C3BSlCTUYeA6O9dBLZfNSQwvwSAJG
- YlYJs9DK3SdOvHwp4WzxGjcTnzpJKCsUixyh3iY850OuQy4ER0sS3NQuesBo6OmCIsJH
- w/6hi0Bb19Xiq9FG+kifzJBSG483pBF01QXYkveON3mlcSffF2OiqI0bgCl5kCu52QUK
- 0mtJc9JVE+Js7f6whKpO/PCO5JnKNmOXuwh3FIvS4seQgk3oTXROMhXxGtODp8JaEpic
- bH9A==
-X-Gm-Message-State: AFqh2kqVkfqKCQcN7rVWZAsrgxgK3D21uQVRdmvKNsm/jK6mNgiJe/Wu
- MlY3oSFdrVSHy6k4fLuxU+/WcTE9nokWRQ==
-X-Received: by 2002:a17:907:d50d:b0:801:d6f2:754 with SMTP id
- wb13-20020a170907d50d00b00801d6f20754mr57240208ejc.52.1673285103344; 
- Mon, 09 Jan 2023 09:25:03 -0800 (PST)
+ bh=ZTrYIrNaAOJ10ynaGMpgu6wEYURWdVAhdTXgUormHxM=;
+ b=pUd4h0aEkiYkKZB67Uk7VUMWNHOj/XM8zqxjxPtnxbSlL+Q17atc1vJTv5QOB8HvjW
+ zCva0s4BNo4ITTq1Xf5c/elmpTxGfRfdVYf2BtAn94qjkvGlmun6I5quGN2Luk4OkIoZ
+ /8cdIMd4fv+muGZZtCH5kKhntty5qypMkeQ+u8WphaIigUs9mVmJ6n9MHb4mdRfMlkft
+ +8tWJlDxwlW5xNzV9SzdAMrwE2gR7pRyZS/hvzEi5kE7VN32NxUxXVm5nEuWWWeWlnKj
+ qin8hjx8B32MipMUb3utAFFWEI7zuTrKDGhV3IftpWSx2YU0cWM2q0z/ocJKsUJRgO9y
+ fcgQ==
+X-Gm-Message-State: AFqh2kpGy6Duu9ZcQ9d6M+GlJ1A3f1zjp7c6+iK3/ElI9pkRT9LvMOT/
+ VfvR+5PZDq3IJS0NXZ4/BXj7AIy8ps6uHQ==
+X-Received: by 2002:a17:907:9b06:b0:83f:8e58:6427 with SMTP id
+ kn6-20020a1709079b0600b0083f8e586427mr55035587ejc.63.1673285114390; 
+ Mon, 09 Jan 2023 09:25:14 -0800 (PST)
 Received: from osoxes.fritz.box
  (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
  [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
  by smtp.gmail.com with ESMTPSA id
- 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.25.02
+ 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.25.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jan 2023 09:25:02 -0800 (PST)
+ Mon, 09 Jan 2023 09:25:14 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: John G Johnson <john.g.johnson@oracle.com>,
@@ -103,18 +103,17 @@ Cc: John G Johnson <john.g.johnson@oracle.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Bernhard Beschow <shentey@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v6 10/33] hw/intc/i8259: Introduce i8259 proxy TYPE_ISA_PIC
-Date: Mon,  9 Jan 2023 18:23:23 +0100
-Message-Id: <20230109172347.1830-11-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v6 19/33] hw/isa/piix3: Resolve redundant PIIX_NUM_PIC_IRQS
+Date: Mon,  9 Jan 2023 18:23:32 +0100
+Message-Id: <20230109172347.1830-20-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230109172347.1830-1-shentey@gmail.com>
 References: <20230109172347.1830-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,96 +135,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TuN9DMyWE2IW
+X-TUID: 1jPGyZaAzD3F
 
-Having an i8259 proxy allows for ISA PICs to be created and wired up in
-southbridges. This is especially interesting for PIIX3 for two reasons:
-First, the southbridge doesn't need to care about the virtualization
-technology used (KVM, TCG, Xen) due to in-IRQs (where devices get
-attached) and out-IRQs (which will trigger the IRQs of the respective
-virtualization technology) are separated. Second, since the in-IRQs are
-populated with fully initialized qemu_irq's, they can already be wired
-up inside PIIX3.
+PIIX_NUM_PIC_IRQS is assumed to be the same as ISA_NUM_IRQS, otherwise
+inconsistencies can occur.
 
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-Id: <20221022150508.26830-21-shentey@gmail.com>
 ---
- include/hw/intc/i8259.h | 18 ++++++++++++++++++
- hw/intc/i8259.c         | 27 +++++++++++++++++++++++++++
- 2 files changed, 45 insertions(+)
+ include/hw/southbridge/piix.h | 5 ++---
+ hw/isa/piix3.c                | 8 ++++----
+ 2 files changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/intc/i8259.h b/include/hw/intc/i8259.h
-index a0e34dd990..7fb403971c 100644
---- a/include/hw/intc/i8259.h
-+++ b/include/hw/intc/i8259.h
-@@ -1,6 +1,24 @@
- #ifndef HW_I8259_H
- #define HW_I8259_H
+diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
+index e3c35ca16f..f48cfd7936 100644
+--- a/include/hw/southbridge/piix.h
++++ b/include/hw/southbridge/piix.h
+@@ -32,7 +32,6 @@
+  */
+ #define PIIX_RCR_IOPORT 0xcf9
  
-+#include "qom/object.h"
-+#include "hw/isa/isa.h"
-+#include "qemu/typedefs.h"
-+
-+#define TYPE_ISA_PIC "isa-pic"
-+OBJECT_DECLARE_SIMPLE_TYPE(ISAPICState, ISA_PIC)
-+
-+/*
-+ * TYPE_ISA_PIC is currently a PIC proxy which allows for interrupt wiring in
-+ * a virtualization technology agnostic way.
-+ */
-+struct ISAPICState {
-+    DeviceState parent_obj;
-+
-+    qemu_irq in_irqs[ISA_NUM_IRQS];
-+    qemu_irq out_irqs[ISA_NUM_IRQS];
-+};
-+
- /* i8259.c */
+-#define PIIX_NUM_PIC_IRQS       16      /* i8259 * 2 */
+ #define PIIX_NUM_PIRQS          4ULL    /* PIRQ[A-D] */
  
- extern PICCommonState *isa_pic;
-diff --git a/hw/intc/i8259.c b/hw/intc/i8259.c
-index 0261f087b2..e99d02136d 100644
---- a/hw/intc/i8259.c
-+++ b/hw/intc/i8259.c
-@@ -455,9 +455,36 @@ static const TypeInfo i8259_info = {
-     .class_size = sizeof(PICClass),
- };
+ struct PIIXState {
+@@ -44,10 +43,10 @@ struct PIIXState {
+      * So one PIC level is tracked by PIIX_NUM_PIRQS bits.
+      *
+      * PIRQ is mapped to PIC pins, we track it by
+-     * PIIX_NUM_PIRQS * PIIX_NUM_PIC_IRQS = 64 bits with
++     * PIIX_NUM_PIRQS * ISA_NUM_IRQS = 64 bits with
+      * pic_irq * PIIX_NUM_PIRQS + pirq
+      */
+-#if PIIX_NUM_PIC_IRQS * PIIX_NUM_PIRQS > 64
++#if ISA_NUM_IRQS * PIIX_NUM_PIRQS > 64
+ #error "unable to encode pic state in 64bit in pic_levels."
+ #endif
+     uint64_t pic_levels;
+diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
+index 6d2ffd449c..e813e20639 100644
+--- a/hw/isa/piix3.c
++++ b/hw/isa/piix3.c
+@@ -52,7 +52,7 @@ static void piix3_set_irq_level_internal(PIIX3State *piix3, int pirq, int level)
+     uint64_t mask;
  
-+static void isapic_set_irq(void *opaque, int irq, int level)
-+{
-+    ISAPICState *s = opaque;
-+
-+    qemu_set_irq(s->out_irqs[irq], level);
-+}
-+
-+static void isapic_init(Object *obj)
-+{
-+    ISAPICState *s = ISA_PIC(obj);
-+
-+    qdev_init_gpio_in(DEVICE(s), isapic_set_irq, ISA_NUM_IRQS);
-+    qdev_init_gpio_out(DEVICE(s), s->out_irqs, ISA_NUM_IRQS);
-+
-+    for (int i = 0; i < ISA_NUM_IRQS; ++i) {
-+        s->in_irqs[i] = qdev_get_gpio_in(DEVICE(s), i);
-+    }
-+}
-+
-+static const TypeInfo isapic_info = {
-+    .name          = TYPE_ISA_PIC,
-+    .parent        = TYPE_DEVICE,
-+    .instance_size = sizeof(ISAPICState),
-+    .instance_init = isapic_init,
-+};
-+
- static void pic_register_types(void)
- {
-     type_register_static(&i8259_info);
-+    type_register_static(&isapic_info);
- }
+     pic_irq = piix3->dev.config[PIIX_PIRQCA + pirq];
+-    if (pic_irq >= PIIX_NUM_PIC_IRQS) {
++    if (pic_irq >= ISA_NUM_IRQS) {
+         return;
+     }
  
- type_init(pic_register_types)
+@@ -66,7 +66,7 @@ static void piix3_set_irq_level(PIIX3State *piix3, int pirq, int level)
+     int pic_irq;
+ 
+     pic_irq = piix3->dev.config[PIIX_PIRQCA + pirq];
+-    if (pic_irq >= PIIX_NUM_PIC_IRQS) {
++    if (pic_irq >= ISA_NUM_IRQS) {
+         return;
+     }
+ 
+@@ -87,7 +87,7 @@ static PCIINTxRoute piix3_route_intx_pin_to_irq(void *opaque, int pin)
+     int irq = piix3->dev.config[PIIX_PIRQCA + pin];
+     PCIINTxRoute route;
+ 
+-    if (irq < PIIX_NUM_PIC_IRQS) {
++    if (irq < ISA_NUM_IRQS) {
+         route.mode = PCI_INTX_ENABLED;
+         route.irq = irq;
+     } else {
+@@ -119,7 +119,7 @@ static void piix3_write_config(PCIDevice *dev,
+ 
+         pci_bus_fire_intx_routing_notifier(pci_get_bus(&piix3->dev));
+         piix3_update_irq_levels(piix3);
+-        for (pic_irq = 0; pic_irq < PIIX_NUM_PIC_IRQS; pic_irq++) {
++        for (pic_irq = 0; pic_irq < ISA_NUM_IRQS; pic_irq++) {
+             piix3_set_irq_pic(piix3, pic_irq);
+         }
+     }
 -- 
 2.39.0
 

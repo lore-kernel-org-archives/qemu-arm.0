@@ -1,34 +1,34 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2698413ejc;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2698412ejc;
         Tue, 17 Jan 2023 11:44:42 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtpcamICMbcgAcOsxkzn/cO4r0j5TMf7AvWJkpHeB+qn6nQRF5smY3ZrQfeFURDCxrqxxTZ
-X-Received: by 2002:ac8:7c8b:0:b0:3a5:4fa8:141c with SMTP id y11-20020ac87c8b000000b003a54fa8141cmr37486122qtv.23.1673984682213;
+X-Google-Smtp-Source: AMrXdXvxZQacozFjKkdYVWbQhc0lkGZQP7V0G9tRJ//6gEAe5piYJ8mr0kJWI1Qe+ypi9Pb/fh+O
+X-Received: by 2002:a05:6214:5d11:b0:531:bfaf:cf8d with SMTP id me17-20020a0562145d1100b00531bfafcf8dmr6563994qvb.3.1673984682226;
         Tue, 17 Jan 2023 11:44:42 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1673984682; cv=none;
         d=google.com; s=arc-20160816;
-        b=h4C6pl4VAxfPHPcnR/szMDQZQzwc9l+xG59AAJEtpkmZRnXXEhKTygWAMqRPkK81+H
-         zwZmiEKJQDOtmI/tIoCaEjolGAA+s1aBDTrGqKfk/tmU5zWlkfUrqIBNN5peEeJskuS+
-         H4TAcHVANVC38Wc8Nr077ZBJ1iF9j7yvaz3JaqyQwAwwqzDqIBbU2aKIN+dtvWqL4zWN
-         BNlDjQjdASU1ROsrbz6uNubaklflnDRsog+IJYV9iGTZMyHKSlYywxdiNp3vmh//Mwbw
-         mYkLmu1KBMOERP4zSgCDZxueEXKdTwGexpJ5Yn1LSUKULuIEbgDi7VIPEWZdQ6cpeFwy
-         7ioQ==
+        b=KSUuUHjgF2iDPrUD9A8E7z15DBxmNAuqxjQJJGDlt1bBvcaVRhWbVqNO5sHcC9ns5d
+         ZjQ8njcLyHet0VZpLZLkouF5cToywQ3Svo49dkj6eq2dCLh8SUsqVrcn0Tvv8fY594eb
+         Xsh9pXynvnAUgq7KH/CJtXjgawJw8KKzqX8CzOY3oDuMUYs3GBiUGtSUtX6OUW1cNe64
+         tfu4S7Y4KitBCE50Swv9/FM3fv5daneRgNH02TvTMsFbTv2lukYMuVzV1C4z3BqWxNsf
+         XMccwz87N5GLSdjq8iHs8WEIvIbU1YsV1v0eGWUb1nHkjRQkHyHPceH3VNyvBDESmYJd
+         qTKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:message-id:mime-version:subject
-         :date:from;
-        bh=qCiF5Q0yknkNfuaBzsYIqP85siUCf14jM2iocXU8LxY=;
-        b=gOvm/X1jlpC1Uj0xczYi/EJ407lu21G6FAP9esRAmC8GTOgum+dXuLLk5Fv2AL42lP
-         hqh0Ly0N5Qk7tK3rPQoaTNNYVmWD7RychYAZNB07GmQc4lt7+3YzqTTxbIbklVTLUqfT
-         eYE2EAHfVzf8JXqwv8ofVl+/VpUx2DWqMmoYms9Q4rEqyzzDSXoGXEiOl9ZHcatDL0c8
-         Yk7V2hHqRo76tYv0HiuXBJhMl23EUHNc7sT/GQrxIYEM+1dP9SRGsh0nhaq7Lk+kpi+C
-         xQmhHOGgBgPt7vzaXjeTqimkZsr33ZBnzzHFlcBbkwICPJeAIQoasj3agO7WH1i6M9n+
-         aHxg==
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
+         :from;
+        bh=/C5wpNW71Ehd6FAud7hCJKvCLyXaIhcSjXXxZvfDQ7g=;
+        b=ELAG4Z569UeHi3Zu6w3Fgy/TwghcPt9NuJdV0aRSSzSp32j4iVzdpkKj7dv/0S+1Vc
+         /dQ2LNYtl/wr3PDc9/cpi6yD8mbykdKvYnFQYFGjxrOZEI+vt2lFIPI5ci8hfq5HSg6B
+         rFrh7b7bAcJykSRuLv2nIObHF5O5h+VzTcKyZN8htOBHcK+bSCO0eYXgBeERgMK4FQZi
+         253AEovoy0yZnFosYjRErjDLwrXJpAJTb/4HXW5TovZFBm0mm4cgwd3TiVboufmoNO4O
+         V3mS1RFZtPIgERA/xKaql94Df31ab4EVBBboDG0lSMw6wU1kY9AUyXEP5nvJi5Mn1WCr
+         spqA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j21-20020ac85515000000b003afdfd9ea38si12445940qtq.75.2023.01.17.11.44.42
+        by mx.google.com with ESMTPS id gw12-20020a0562140f0c00b00531965729fbsi19450568qvb.546.2023.01.17.11.44.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 17 Jan 2023 11:44:42 -0800 (PST)
@@ -39,37 +39,38 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pHrsQ-0000CQ-PT; Tue, 17 Jan 2023 14:44:10 -0500
+	id 1pHrsS-0000Dj-GG; Tue, 17 Jan 2023 14:44:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pHrsO-0000Bf-V1; Tue, 17 Jan 2023 14:44:08 -0500
+ id 1pHrsQ-0000Ch-Qp; Tue, 17 Jan 2023 14:44:10 -0500
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pHrsN-0001HA-FX; Tue, 17 Jan 2023 14:44:08 -0500
+ id 1pHrsN-0001HN-Rc; Tue, 17 Jan 2023 14:44:10 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 2594F11EF48;
+ by mail-b.sr.ht (Postfix) with ESMTPSA id C2A7E11EFCD;
  Tue, 17 Jan 2023 19:44:06 +0000 (UTC)
 From: ~dreiss-meta <dreiss-meta@git.sr.ht>
-Date: Tue, 17 Jan 2023 19:44:05 +0000
-Subject: [PATCH qemu v2 0/3] ARM: Add support for V8M special registers in GDB
- stub
-MIME-Version: 1.0
-Message-ID: <167398464577.10345.18365355650640365165-0@git.sr.ht>
+Date: Mon, 09 Jan 2023 15:05:24 -0800
+Subject: [PATCH qemu v2 3/3] target/arm/gdbstub: Support reading M security
+ extension registers from GDB
+Message-ID: <167398464577.10345.18365355650640365165-3@git.sr.ht>
 X-Mailer: git.sr.ht
+In-Reply-To: <167398464577.10345.18365355650640365165-0@git.sr.ht>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
 Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
  helo=mail-b.sr.ht
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 15
+X-Spam_score: 1.5
+X-Spam_bar: +
+X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,24 +86,279 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Reply-To: ~dreiss-meta <dreiss@meta.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8Ha3OieLAsH6
+X-TUID: bZsnTorC6tmV
 
-Patch 1/3 was already accepted, but it seems is not in master yet.
+From: David Reiss <dreiss@meta.com>
 
-Comments addressed in patches 2 and 3.
-Let me know if you'd like me to split out a separate commit
-for renaming arm_v7m_get_sp_ptr.
+Follows a fairly similar pattern to the existing special register debug
+support.  Only reading is implemented, but it should be possible to
+implement writes.
 
-David Reiss (3):
-  target/arm: Unify checking for M Main Extension in MRS/MSR
-  target/arm/gdbstub: Support reading M system registers from GDB
-  target/arm/gdbstub: Support reading M security extension registers
-    from GDB
+Signed-off-by: David Reiss <dreiss@meta.com>
+---
+ target/arm/cpu.h      |  15 +++++-
+ target/arm/gdbstub.c  | 116 ++++++++++++++++++++++++++++++++++++++++++
+ target/arm/m_helper.c |  23 ++++-----
+ 3 files changed, 139 insertions(+), 15 deletions(-)
 
- target/arm/cpu.h      |  25 ++++-
- target/arm/gdbstub.c  | 241 ++++++++++++++++++++++++++++++++++++++++++
- target/arm/m_helper.c |  51 +++++----
- 3 files changed, 296 insertions(+), 21 deletions(-)
-
--- 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index fdbb0d9107..661ca832bf 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -857,6 +857,7 @@ struct ArchCPU {
+     DynamicGDBXMLInfo dyn_sysreg_xml;
+     DynamicGDBXMLInfo dyn_svereg_xml;
+     DynamicGDBXMLInfo dyn_m_systemreg_xml;
++    DynamicGDBXMLInfo dyn_m_securereg_xml;
+=20
+     /* Timers used by the generic (architected) timer */
+     QEMUTimer *gt_timer[NUM_GTIMERS];
+@@ -1102,12 +1103,13 @@ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t=
+ *buf, int reg);
+=20
+ /*
+  * Helpers to dynamically generate XML descriptions of the sysregs,
+- * SVE registers, and M-profile system registers.
++ * SVE registers, M-profile system, and M-profile secure extension registers.
+  * Returns the number of registers in each set.
+  */
+ int arm_gen_dynamic_sysreg_xml(CPUState *cpu, int base_reg);
+ int arm_gen_dynamic_svereg_xml(CPUState *cpu, int base_reg);
+ int arm_gen_dynamic_m_systemreg_xml(CPUState *cpu, int base_reg);
++int arm_gen_dynamic_m_securereg_xml(CPUState *cpu, int base_reg);
+=20
+ /* Returns the dynamically generated XML for the gdb stub.
+  * Returns a pointer to the XML contents for the specified XML file or NULL
+@@ -1607,6 +1609,17 @@ static inline void xpsr_write(CPUARMState *env, uint32=
+_t val, uint32_t mask)
+ #endif
+ }
+=20
++/*
++ * Return a pointer to the location where we currently store the
++ * stack pointer for the requested security state and thread mode.
++ * This pointer will become invalid if the CPU state is updated
++ * such that the stack pointers are switched around (eg changing
++ * the SPSEL control bit).
++ */
++uint32_t *arm_v7m_get_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
++                             bool spsel);
++
++
+ #define HCR_VM        (1ULL << 0)
+ #define HCR_SWIO      (1ULL << 1)
+ #define HCR_PTW       (1ULL << 2)
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index ae7fe2c800..cbccd4aa2c 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -437,6 +437,110 @@ int arm_gen_dynamic_m_systemreg_xml(CPUState *cs, int b=
+ase_reg)
+     return info->num;
+ }
+=20
++static int arm_gdb_get_m_secextreg(CPUARMState *env, GByteArray *buf, int re=
+g)
++{
++    switch (reg) {
++    case  0:  /* MSP_S */
++        return gdb_get_reg32(buf, *arm_v7m_get_sp_ptr(env, true, false, true=
+));
++    case  1:  /* PSP_S */
++        return gdb_get_reg32(buf, *arm_v7m_get_sp_ptr(env, true, true, true)=
+);
++    case  2:  /* MSPLIM_S */
++        return gdb_get_reg32(buf, env->v7m.msplim[M_REG_S]);
++    case  3:  /* PSPLIM_S */
++        return gdb_get_reg32(buf, env->v7m.psplim[M_REG_S]);
++    case  4:  /* PRIMASK_S */
++        return gdb_get_reg32(buf, env->v7m.primask[M_REG_S]);
++    case  5:  /* BASEPRI_S */
++        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
++            return 0;
++        }
++        return gdb_get_reg32(buf, env->v7m.basepri[M_REG_S]);
++    case  6:  /* FAULTMASK_S */
++        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
++            return 0;
++        }
++        return gdb_get_reg32(buf, env->v7m.faultmask[M_REG_S]);
++    case  7:  /* CONTROL_S */
++        return gdb_get_reg32(buf, env->v7m.control[M_REG_S]);
++    case  8:  /* MSP_NS */
++        return gdb_get_reg32(buf, *arm_v7m_get_sp_ptr(env, false, false, tru=
+e));
++    case  9:  /* PSP_NS */
++        return gdb_get_reg32(buf, *arm_v7m_get_sp_ptr(env, false, true, true=
+));
++    case 10:  /* MSPLIM_NS */
++        return gdb_get_reg32(buf, env->v7m.msplim[M_REG_NS]);
++    case 11:  /* PSPLIM_NS */
++        return gdb_get_reg32(buf, env->v7m.psplim[M_REG_NS]);
++    case 12:  /* PRIMASK_NS */
++        return gdb_get_reg32(buf, env->v7m.primask[M_REG_NS]);
++    case 13:  /* BASEPRI_NS */
++        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
++            return 0;
++        }
++        return gdb_get_reg32(buf, env->v7m.basepri[M_REG_NS]);
++    case 14:  /* FAULTMASK_NS */
++        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
++            return 0;
++        }
++        return gdb_get_reg32(buf, env->v7m.faultmask[M_REG_NS]);
++    case 15:  /* CONTROL_NS */
++        return gdb_get_reg32(buf, env->v7m.control[M_REG_NS]);
++    }
++
++    return 0;
++}
++
++static int arm_gdb_set_m_secextreg(CPUARMState *env, uint8_t *buf, int reg)
++{
++    /* TODO: Implement. */
++    return 0;
++}
++
++int arm_gen_dynamic_m_securereg_xml(CPUState *cs, int base_reg)
++{
++    ARMCPU *cpu =3D ARM_CPU(cs);
++    CPUARMState *env =3D &cpu->env;
++    GString *s =3D g_string_new(NULL);
++    DynamicGDBXMLInfo *info =3D &cpu->dyn_m_securereg_xml;
++    bool is_main =3D arm_feature(env, ARM_FEATURE_M_MAIN);
++
++    g_string_printf(s, "<?xml version=3D\"1.0\"?>");
++    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
++    g_string_append_printf(s, "<feature name=3D\"org.gnu.gdb.arm.secext\">\n=
+");
++
++    g_autoptr(GArray) regs =3D g_array_new(false, true, sizeof(const char *)=
+);
++    /*  0 */ g_array_append_str_literal(regs, "msp_s");
++    /*  1 */ g_array_append_str_literal(regs, "psp_s");
++    /*  2 */ g_array_append_str_literal(regs, "msplim_s");
++    /*  3 */ g_array_append_str_literal(regs, "psplim_s");
++    /*  4 */ g_array_append_str_literal(regs, "primask_s");
++    /*  5 */ g_array_append_str_literal(regs, is_main ? "basepri_s" : "");
++    /*  6 */ g_array_append_str_literal(regs, is_main ? "faultmask_s" : "");
++    /*  7 */ g_array_append_str_literal(regs, "control_s");
++    /*  8 */ g_array_append_str_literal(regs, "msp_ns");
++    /*  9 */ g_array_append_str_literal(regs, "psp_ns");
++    /* 10 */ g_array_append_str_literal(regs, "msplim_ns");
++    /* 11 */ g_array_append_str_literal(regs, "psplim_ns");
++    /* 12 */ g_array_append_str_literal(regs, "primask_ns");
++    /* 13 */ g_array_append_str_literal(regs, is_main ? "basepri_ns" : "");
++    /* 14 */ g_array_append_str_literal(regs, is_main ? "faultmask_ns" : "");
++    /* 15 */ g_array_append_str_literal(regs, "control_ns");
++
++    for (int idx =3D 0; idx < regs->len; idx++) {
++        const char *name =3D g_array_index(regs, const char *, idx);
++        if (*name !=3D '\0') {
++            g_string_append_printf(s,
++                        "<reg name=3D\"%s\" bitsize=3D\"32\" regnum=3D\"%d\"=
+/>\n",
++                        name, base_reg);
++        }
++        base_reg++;
++    }
++    info->num =3D regs->len;
++
++    g_string_append_printf(s, "</feature>");
++    info->desc =3D g_string_free(s, false);
++    return info->num;
++}
++
+ struct TypeSize {
+     const char *gdb_type;
+     int  size;
+@@ -567,6 +671,8 @@ const char *arm_gdb_get_dynamic_xml(CPUState *cs, const c=
+har *xmlname)
+         return cpu->dyn_svereg_xml.desc;
+     } else if (strcmp(xmlname, "arm-m-system.xml") =3D=3D 0) {
+         return cpu->dyn_m_systemreg_xml.desc;
++    } else if (strcmp(xmlname, "arm-m-secext.xml") =3D=3D 0) {
++        return cpu->dyn_m_securereg_xml.desc;
+     }
+     return NULL;
+ }
+@@ -618,6 +724,16 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+                                      arm_gen_dynamic_m_systemreg_xml(
+                                          cs, cs->gdb_num_regs),
+                                      "arm-m-system.xml", 0);
++            if (arm_feature(env, ARM_FEATURE_V8) &&
++                    arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++                gdb_register_coprocessor(cs,
++                                         arm_gdb_get_m_secextreg,
++                                         arm_gdb_set_m_secextreg,
++                                         arm_gen_dynamic_m_securereg_xml(
++                                             cs, cs->gdb_num_regs),
++                                         "arm-m-secext.xml", 0);
++
++            }
+         }
+     }
+     if (cpu_isar_feature(aa32_mve, cpu)) {
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index e8fbe1599a..a9b27ad060 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -605,15 +605,10 @@ void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
+     arm_rebuild_hflags(env);
+ }
+=20
+-static uint32_t *get_v7m_sp_ptr(CPUARMState *env, bool secure, bool threadmo=
+de,
+-                                bool spsel)
++uint32_t *arm_v7m_get_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
++                             bool spsel)
+ {
+     /*
+-     * Return a pointer to the location where we currently store the
+-     * stack pointer for the requested security state and thread mode.
+-     * This pointer will become invalid if the CPU state is updated
+-     * such that the stack pointers are switched around (eg changing
+-     * the SPSEL control bit).
+      * Compare the v8M ARM ARM pseudocode LookUpSP_with_security_mode().
+      * Unlike that pseudocode, we require the caller to pass us in the
+      * SPSEL control bit value; this is because we also use this
+@@ -765,8 +760,8 @@ static bool v7m_push_callee_stack(ARMCPU *cpu, uint32_t l=
+r, bool dotailchain,
+             !mode;
+=20
+         mmu_idx =3D arm_v7m_mmu_idx_for_secstate_and_priv(env, M_REG_S, priv=
+);
+-        frame_sp_p =3D get_v7m_sp_ptr(env, M_REG_S, mode,
+-                                    lr & R_V7M_EXCRET_SPSEL_MASK);
++        frame_sp_p =3D arm_v7m_get_sp_ptr(env, M_REG_S, mode,
++                                        lr & R_V7M_EXCRET_SPSEL_MASK);
+         want_psp =3D mode && (lr & R_V7M_EXCRET_SPSEL_MASK);
+         if (want_psp) {
+             limit =3D env->v7m.psplim[M_REG_S];
+@@ -1611,10 +1606,10 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+          * use 'frame_sp_p' after we do something that makes it invalid.
+          */
+         bool spsel =3D env->v7m.control[return_to_secure] & R_V7M_CONTROL_SP=
+SEL_MASK;
+-        uint32_t *frame_sp_p =3D get_v7m_sp_ptr(env,
+-                                              return_to_secure,
+-                                              !return_to_handler,
+-                                              spsel);
++        uint32_t *frame_sp_p =3D arm_v7m_get_sp_ptr(env,
++                                                  return_to_secure,
++                                                  !return_to_handler,
++                                                  spsel);
+         uint32_t frameptr =3D *frame_sp_p;
+         bool pop_ok =3D true;
+         ARMMMUIdx mmu_idx;
+@@ -1920,7 +1915,7 @@ static bool do_v7m_function_return(ARMCPU *cpu)
+         threadmode =3D !arm_v7m_is_handler_mode(env);
+         spsel =3D env->v7m.control[M_REG_S] & R_V7M_CONTROL_SPSEL_MASK;
+=20
+-        frame_sp_p =3D get_v7m_sp_ptr(env, true, threadmode, spsel);
++        frame_sp_p =3D arm_v7m_get_sp_ptr(env, true, threadmode, spsel);
+         frameptr =3D *frame_sp_p;
+=20
+         /*
+--=20
 2.34.5

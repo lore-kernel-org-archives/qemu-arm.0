@@ -1,159 +1,170 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2186294ejc;
-        Mon, 9 Jan 2023 03:55:24 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXskbXXsZ1Nm1436BsgsUOhKQY3zdrBFkfk7EMFRz4ixkLqLXs/d7rLIxbc+n5CHp38mpd0Z
-X-Received: by 2002:ac8:7eeb:0:b0:3a9:7faf:d635 with SMTP id r11-20020ac87eeb000000b003a97fafd635mr81887025qtc.1.1673265324353;
-        Mon, 09 Jan 2023 03:55:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673265324; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2192048ejc;
+        Mon, 9 Jan 2023 04:04:23 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXudZKTis4sqyQSbKPathXYS3RsgB836C9b1nm4n4z8YQioI9H7JA1EClPleeDIjJmRpODyu
+X-Received: by 2002:ac8:4a88:0:b0:3a8:15e2:a068 with SMTP id l8-20020ac84a88000000b003a815e2a068mr88735501qtq.4.1673265862854;
+        Mon, 09 Jan 2023 04:04:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673265862; cv=none;
         d=google.com; s=arc-20160816;
-        b=pwKeQmPx3cmx+gMD/hq8vF+6/FxPGs09EdJOhOp7ETzCEWrWlXIsrLpB9RVWJaqHd0
-         Ghiq8030ZP6JQa4j92Shel9zWDeluajZVez2Tg8kQBcx6Wn0a6DqbL+1MUr9Omu+aXp+
-         6CalhlkThUzTTMMza3235dDKHKRZeafh6E0laIgFqKSFgSYFqo4CEuw3nmEgJywRgQtr
-         W2kOf/le33T+hc159hQwHFeQHRSrpWr8Dtq77n4H0H+JJn3GisP1uPGUp1O0UnY3+S8L
-         pDPr/O3PSXMshZtNOEYDDFZ3HbXk1Ej2Gr8DulbdeAQ0q512gVgEANgcUvg5QWlt8T0s
-         mk+A==
+        b=ZLAdgZjbqtnDrIjG+O2qV8HYMPtxMdw8eflMBgwP/1Fc3oQtDZ9WMUDN3xizPwQq+3
+         1MO0G03mfd6J9a0tbL8Nbd3HZHfJ2dVTEnYflYt0N3x1VaFhiHSgo7IOQW83zA17/Dwh
+         c8015bBliXvLgM2ob4OYoMPhLsHYs9plpXK9aZDvcSQ4XANqQiL4jOqeUKXRtnouMtTX
+         9GG814CBPSlJGo92gHLdJtPAQB+m7U0LXD/crImyJs6XhCGrrwjCpckTU4Eht69jE4na
+         pnrizhppZiXdrsICC06j6fmmcWWU4eFyBz9lyVXP/JS8jDQ9Y5DDEOlXgfwJiB/qjdJt
+         1sTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=2Bax02BSkvxaOEt2CRhklLybKGV/xR8mYNLZmlYBdyg=;
-        b=l/QUE0/fJCBohx0gI7+zUPpogkSBK+ZPZD6UKbTJQylRsjJQ1CETKAAd/UAKGeTTDZ
-         CFCj9pRRJ71M7TI5M9Pbtz/6C2KS9nKUFPCdB53lQEmk+OvY0ypruFc/UhKkPiSPO89E
-         TPLIcgMGm+ZF8S9/u4uVYj+OCjaIjiKXPbWyQW66qLdj9CKe72ofvcu+OZ3ysWBX3BLk
-         ynM1dFvwdHyNCnz/G7haW42hiUAprb7jZ3OiwzDZKnqxxA0HIIrFnVxwx1eDm4F8XFJ6
-         /SytJ82RW7vboApFhnzFR17E570j4DiWjsYiAYmFGo0UNVf/dJOVNTkkQKM/XhazNpc+
-         QtCg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=FDVaRNcO9+ny7tdAgMwhPc41lYorsN/VnELvXWwWtQM=;
+        b=j7s02lUlS3lGg90gcIomynhtxSpEeRshX0S75RAA0YAiv0ix68Yn/SMllr+YmZ9d1H
+         BzGZPKMKpHvvGZz3kBG5bXQI9itujEfIhva5f/cd+sAV7dcuv4L9BzseaHh75nmX2pq7
+         7ZsPxUE6SneJls9GHH0jFJ6ZbNEBC4GP+jGjsXHzCG6hqDq+iqq1sMtLTVe/t6rTf4O3
+         3zCYNAJ5keR+03ps/o/fcW8kt1EBhCSEZj2ez3sYIvwNitNWhA5MQoFA0/UmcjLq/tbg
+         NiHZ2RYmPW8hCxdfx6ZkTb3xEgbB17KzaSXN9fX5/qKTkn4QxKMYgB4u/CK8xus4iM/n
+         SA9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QS77c2cz;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id u13-20020ac8750d000000b003ab73b7bb06si4287597qtq.488.2023.01.09.03.55.24
+       dkim=pass header.i=@linaro.org header.s=google header.b=O2xUZEX5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v5-20020ac87285000000b003445b710d98si4332700qto.350.2023.01.09.04.04.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Jan 2023 03:55:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Jan 2023 04:04:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QS77c2cz;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1673265323;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2Bax02BSkvxaOEt2CRhklLybKGV/xR8mYNLZmlYBdyg=;
-	b=QS77c2czxIRSQ9wBE/h6QW+Pjbo38CNjNogufnQ08TKMcuCjbcLWA66zhk9szUXTSsGZ0S
-	0wvlWGDHVWtKV1vadfA6dSJqQhndNfSIcMZmVW7vl2iou0oYngw660XEFsOgUb69Ci/4sI
-	deNLChVTqVzJjuJNzr1kzE612P2nWBg=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-496-1tSs-3KtOzSxT7itYk1Mjw-1; Mon, 09 Jan 2023 06:55:20 -0500
-X-MC-Unique: 1tSs-3KtOzSxT7itYk1Mjw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E5B4C858F0E;
-	Mon,  9 Jan 2023 11:55:19 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.37.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 51B4D2026D4B;
-	Mon,  9 Jan 2023 11:55:07 +0000 (UTC)
-Date: Mon, 9 Jan 2023 11:55:00 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-ppc@nongnu.org, xen-devel@lists.xenproject.org,
-	Laurent Vivier <lvivier@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	virtio-fs@redhat.com, Michael Roth <michael.roth@amd.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	John Snow <jsnow@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>
-Subject: Re: [PATCH 5/6] tests: add G_GNUC_PRINTF for various functions
-Message-ID: <Y7wAlHEIafbNzsdf@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20221219130205.687815-1-berrange@redhat.com>
- <20221219130205.687815-6-berrange@redhat.com>
- <27da4d93-38e6-1c40-4a60-92f3343f380f@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=O2xUZEX5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pEqjL-0003ME-LG; Mon, 09 Jan 2023 06:54:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEqjK-0003LZ-Ab
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 06:54:18 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEqjI-00085p-P8
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 06:54:18 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ g19-20020a05600c4ed300b003d9eb1dbc0aso3510248wmq.3
+ for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 03:54:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FDVaRNcO9+ny7tdAgMwhPc41lYorsN/VnELvXWwWtQM=;
+ b=O2xUZEX5hwRpCQ3t3VFkygUGb2Tt5aept/9DhS661DHH0Zr5tiQt9VzVxmWQTJQIC5
+ rsKgfFO9kAY5W0VpjyIucaFalJziGQ4ZX0SvL+KfAt8pu14H9VRRCLgVGQQHJili1+Sr
+ TgkePgcCvgxIbUXNpW/lnjOlxJMo9HqwdY4IRTMHjCwj/qYvwIN/xd6vxCk5ExpyoJYZ
+ bxvm6JZzxeqOrDeia6VeRQCmGYfGaSgVg1uODZViTwHO0eDk8n7wRpinYNHeXLQP0PsC
+ bxB7ow8c019+eOqs2hplaHHnDI/9XXGyhMJmUp+gVHEib+POerWmcP7VR++vMr0xFQou
+ MygA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=FDVaRNcO9+ny7tdAgMwhPc41lYorsN/VnELvXWwWtQM=;
+ b=YXZ80ngDeZ45pNBSwutaZWby7CwVeN5gFBxAq8ObAe0USQmkdyyz79YD8lqaDMCI+n
+ eJ6TMXxRS3XuMFucwraQNVzDW3LNHols7glu3uEDLUcS/ZqM0cWElaxa1TS6YFokdILV
+ 15jIoenfTK/1Tr0EF7l7tu1nWvSbn6V3wjQ0c2gC+I1mUlRLSoJayjWAcelQ/6naW7EX
+ 3IBwMEG7BN5jIb6DujoV/dhJDjXT+5c5hiLlSh0rdYGE9x1SFd9lhg7bAq7VcH7pTj71
+ jWbtNswS3ZLltc2dkvoUUWZXmN4ryAmU+YzmwFa67rTyMes2G4vANEIiFoQRBSsCXVSR
+ UeWA==
+X-Gm-Message-State: AFqh2kq0Q87lSaKMlMbBHniAOEuXWNnDnuK1LgV/oXeGFJv2jwvj8SXl
+ cYj+Rmz/wHV3QuEl168AMvNhKQ==
+X-Received: by 2002:a05:600c:3845:b0:3d1:caf1:3f56 with SMTP id
+ s5-20020a05600c384500b003d1caf13f56mr50679684wmr.9.1673265256106; 
+ Mon, 09 Jan 2023 03:54:16 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
+ by smtp.gmail.com with ESMTPSA id
+ m25-20020a05600c3b1900b003d9ed49ee2bsm5158895wms.1.2023.01.09.03.54.15
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 09 Jan 2023 03:54:15 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 12/13] hw/arm/vexpress: Remove dead code in
+ vexpress_common_init()
+Date: Mon,  9 Jan 2023 12:53:15 +0100
+Message-Id: <20230109115316.2235-13-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230109115316.2235-1-philmd@linaro.org>
+References: <20230109115316.2235-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <27da4d93-38e6-1c40-4a60-92f3343f380f@redhat.com>
-User-Agent: Mutt/2.2.7 (2022-08-07)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-X-TUID: KqTMipgrNKL3
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mpXWgSpV2uk8
 
-On Thu, Dec 29, 2022 at 10:34:55AM +0100, Thomas Huth wrote:
-> On 19/12/2022 14.02, Daniel P. Berrangé wrote:
-> > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > ---
-> >   tests/qtest/ahci-test.c           |  3 +++
-> >   tests/qtest/arm-cpu-features.c    |  1 +
-> >   tests/qtest/erst-test.c           |  2 +-
-> >   tests/qtest/ide-test.c            |  3 ++-
-> >   tests/qtest/ivshmem-test.c        |  4 ++--
-> >   tests/qtest/libqmp.c              |  2 +-
-> >   tests/qtest/libqos/libqos-pc.h    |  6 ++++--
-> >   tests/qtest/libqos/libqos-spapr.h |  6 ++++--
-> >   tests/qtest/libqos/libqos.h       |  6 ++++--
-> >   tests/qtest/libqos/virtio-9p.c    |  1 +
-> >   tests/qtest/migration-helpers.h   |  1 +
-> >   tests/qtest/rtas-test.c           |  2 +-
-> >   tests/qtest/usb-hcd-uhci-test.c   |  4 ++--
-> >   tests/unit/test-qmp-cmds.c        | 13 +++++++++----
-> >   14 files changed, 36 insertions(+), 18 deletions(-)
-> ...
-> > diff --git a/tests/unit/test-qmp-cmds.c b/tests/unit/test-qmp-cmds.c
-> > index 2373cd64cb..6d52b4e5d8 100644
-> > --- a/tests/unit/test-qmp-cmds.c
-> > +++ b/tests/unit/test-qmp-cmds.c
-> > @@ -138,6 +138,7 @@ void qmp___org_qemu_x_command(__org_qemu_x_EnumList *a,
-> >   }
-> > +G_GNUC_PRINTF(2, 3)
-> >   static QObject *do_qmp_dispatch(bool allow_oob, const char *template, ...)
-> >   {
-> >       va_list ap;
-> > @@ -160,6 +161,7 @@ static QObject *do_qmp_dispatch(bool allow_oob, const char *template, ...)
-> >       return ret;
-> >   }
-> > +G_GNUC_PRINTF(3, 4)
-> >   static void do_qmp_dispatch_error(bool allow_oob, ErrorClass cls,
-> >                                     const char *template, ...)
-> >   {
-> > @@ -269,7 +271,7 @@ static void test_dispatch_cmd_io(void)
-> >   static void test_dispatch_cmd_deprecated(void)
-> >   {
-> > -    const char *cmd = "{ 'execute': 'test-command-features1' }";
-> > +    #define cmd "{ 'execute': 'test-command-features1' }"
-> >       QDict *ret;
-> 
-> That looks weird, why is this required?
+Upon introduction in commit b8433303fb ("Set proper device-width
+for vexpress flash"), ve_pflash_cfi01_register() was calling
+qdev_init_nofail() which can not fail. This call was later
+converted with a script to use &error_fatal, still unable to
+fail. Remove the unreachable code.
 
-This means that the compiler can see we're passing a constant string
-into the API call a few lines lower. Without it, the compiler can't
-see that 'cmd' doesn't contain any printf format specifiers, and thus
-it would force us to use  func('%s', cmd)... except that's not actually
-possible since our crazy json printf formatter doesn't allow arbitrary
-'%s', the '%s' can only occur at well defined points in the JSON doc.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/vexpress.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
 
-Using a constant string via #define was the easiest way to give the
-compiler visibility of the safety.
-
-With regards,
-Daniel
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index e1d1983ae6..757236767b 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -659,10 +659,6 @@ static void vexpress_common_init(MachineState *machine)
+     dinfo = drive_get(IF_PFLASH, 0, 0);
+     pflash0 = ve_pflash_cfi01_register(map[VE_NORFLASH0], "vexpress.flash0",
+                                        dinfo);
+-    if (!pflash0) {
+-        error_report("vexpress: error registering flash 0");
+-        exit(1);
+-    }
+ 
+     if (map[VE_NORFLASHALIAS] != -1) {
+         /* Map flash 0 as an alias into low memory */
+@@ -673,11 +669,7 @@ static void vexpress_common_init(MachineState *machine)
+     }
+ 
+     dinfo = drive_get(IF_PFLASH, 0, 1);
+-    if (!ve_pflash_cfi01_register(map[VE_NORFLASH1], "vexpress.flash1",
+-                                  dinfo)) {
+-        error_report("vexpress: error registering flash 1");
+-        exit(1);
+-    }
++    ve_pflash_cfi01_register(map[VE_NORFLASH1], "vexpress.flash1", dinfo);
+ 
+     sram_size = 0x2000000;
+     memory_region_init_ram(sram, NULL, "vexpress.sram", sram_size,
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.38.1
+

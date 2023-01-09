@@ -1,90 +1,90 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2288507ejc;
-        Mon, 9 Jan 2023 06:15:49 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv7Uze/Gxo1W8RWg9duQYq/N4lRDb7bD644Jf9cC4y8HPu2wWzHEc85f+44nEhutxMyFy1D
-X-Received: by 2002:a05:6214:c6c:b0:50e:48cc:a95a with SMTP id t12-20020a0562140c6c00b0050e48cca95amr120124080qvj.43.1673273748877;
-        Mon, 09 Jan 2023 06:15:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673273748; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2290065ejc;
+        Mon, 9 Jan 2023 06:17:47 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvqZYJaqRHYKwN2UDiJgppkHTLoLsyLEeZWVTS4mCQbARp8iziss/GS6rD4QMbG+I2g6GQr
+X-Received: by 2002:a0c:f906:0:b0:531:be1a:89af with SMTP id v6-20020a0cf906000000b00531be1a89afmr44462370qvn.6.1673273867342;
+        Mon, 09 Jan 2023 06:17:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673273867; cv=none;
         d=google.com; s=arc-20160816;
-        b=ADYoOWNKpykvW36exDG2h6Zh4WhDbbdxHFgTjXi3tvrc3EI+Vm+l8N6aAmK7pmngyr
-         mq2XctA3lYNkHzmk0O4HE+RA34jLtHmP/Fr6fQtBSIkS2/UwLSdK4qhSclHJ8vmnYmTd
-         /GMeMEiOCvWsViLgBnDFDzrN0AcRprbNeeq+LlifNuKzY7AofEPq1c/OT5KpsQ/7zGFd
-         HNcECnum5TH4aGdtTSe4Dr39TW1QXQDxEv2cu9mmlHXPZMomy5UJ1ai85gyvriLV7cug
-         VhNP6SabzJ1Ny9mmfp3zJxmoYGaWmVaeYNJqQIS5AfbZr4Ls3Ji8L1MN9oESFajwIbP7
-         ev2w==
+        b=rQOYa63z63wZZw/h3XHRsIo6fg4MyPZV9mWGstTy4bby6IgOkV+/zVpooFP9NGjMuD
+         R5BX1CE83kY1kt+CDh+uhTon/e5JoxbHwZllbj2AhgmjvRXpT/0U9a96bD6g7d0ynPic
+         9XW6lo6W0zBg9RmeVFukAp6jsMrrlym7+C90Rcx/FB5IA5hPvW0SA+qHtmZfxH7ScfTp
+         r+xO3gYGS9Rdc6BhGYEPIRQ2/GN/0Uqsp0l+qzxZbGlPSwemk9DyY8iaKQIhIkgmyth0
+         90ykrw3QzeNHXRS5TzqOzBCkHXMMsg6BL75mzgOUKS43OwSeYFKu/eA1VeXCxKDlSh8r
+         dA2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=bwgSmpYYfKNOJH9VNo91pDyRjQC6uHyPY7rBYpr5GJw=;
-        b=M6IRsEZq6rfQKg0HlllCVZFQg8AA8EcP8SzhoNFvZtrjkWdVl7MpvWhrWD9DPbsB3d
-         GGjdupiWWljWGKzJ2oiesuN1fpe/5FzALkpjVXVtfj9oys4pjI6UZ486hdHk4PLyXGGB
-         MCaPVHo4VvzHb0xtU+bd2TmuN80NQ3ZFbW8o/V4xhVQqp2T4ROYlOuQCx87kO6VK7DTw
-         hVLTZXrQ+nUEAXoOPg0v16eIWMoM9V3gKGX9gG5FgpwxWPqunzKT/qEeRz4deiU6YPeh
-         N89hgfxetMAUdx9pH3S885R7TA1zceF6DQwSRUO+k1cZMWkkxNBQVX827Wc+HQ5tSaSs
-         HPIw==
+        bh=aIhg+s5O4aJ/tYVo4sVxeOk6SdlJhgUlESHjMAxmSzc=;
+        b=gbNX9Onh1jBZhPf9uWu/penTGTdrzgVddOOjjK9QwycH8Ul5ehdR/9N0wXBi9DCz87
+         wfOUJxt6xbmf2OnQDxNZC5PlFOQ+Z5ZsHRqTvHcJIhCPoddbZRe6TeieA1xUlljYWSvx
+         LAt4IfZpMmfmmdz4OXSbhPPzmpXqEl69oP5eB7FC2dAjnPHBb/AyUj2n4g2mqt2jQ7lv
+         w6Vd4ormLZYBIwgXbX3Ukjgn9Zxg4iJPsNlFTwL/Fe9Nn8P9IlKkB8H5EgMOql5+bLWM
+         tDhGeo12lXl3uZXzhQKpvN8JcZs6qjD+3jLeGAn0rEI9lPy5XWAkCGPUwzCwx6hAUnUn
+         HKmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n5l0+iz3;
+       dkim=pass header.i=@linaro.org header.s=google header.b="l/zKM0Pw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g8-20020a0562140ac800b004ad365ed00esi4041277qvi.577.2023.01.09.06.15.48
+        by mx.google.com with ESMTPS id gm8-20020a056214268800b004bbb0cf46b3si4566346qvb.325.2023.01.09.06.17.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 06:15:48 -0800 (PST)
+        Mon, 09 Jan 2023 06:17:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n5l0+iz3;
+       dkim=pass header.i=@linaro.org header.s=google header.b="l/zKM0Pw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pEskL-0001Wa-Lm; Mon, 09 Jan 2023 09:03:29 -0500
+	id 1pEskp-0001jl-0J; Mon, 09 Jan 2023 09:03:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskE-0001Ur-8j
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:22 -0500
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskm-0001iW-T9
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:56 -0500
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskC-0006PD-Mp
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:21 -0500
-Received: by mail-lj1-x22b.google.com with SMTP id p25so2760487ljn.12
- for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 06:03:20 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskl-0006WD-7U
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:56 -0500
+Received: by mail-lf1-x12b.google.com with SMTP id j17so13117376lfr.3
+ for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 06:03:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=bwgSmpYYfKNOJH9VNo91pDyRjQC6uHyPY7rBYpr5GJw=;
- b=n5l0+iz3gjBqrKMaIv4+T2CnMxiqzpa1hiMPKWzCyUfaTtojUJTY4jj5noYtmix0PU
- WS+D4c+1/EkUT4KFu+mj6Xyn9iJ3AruoKivNMKkPV4Ay4HFppmY85TjPqPkZdlUWZ6vP
- hnVu5URMcS4CxhN32ApAlobFr7VBiX81tgtQ8IXZYaYxsZFp6mMmA/gZQu3yAmr8Z9tN
- Bh/LbpRBx+vWNau7Q24i2UBR3ipVIv+dkh39gH9fwMvER3FVriZ8gV5dHX+xQSCC8Zd+
- CX1JTGRTmuEePqgLJLphOq2M68TEql69VtuudYcS8/cM3kuslBZL3JDP7+qhuZtnt05s
- FHJA==
+ bh=aIhg+s5O4aJ/tYVo4sVxeOk6SdlJhgUlESHjMAxmSzc=;
+ b=l/zKM0Pwa3jr7rVU6rO+nxm/qCoem0rZvh7poReOaAkzYthjRHOpuu/B42U4qeB1+v
+ SwYaZDJhIFOHmuudbm972z6H9/ZiQbG7TWwPdKBsxmKi3DAMT548CjVL4Po1FDnPqapK
+ 7F/CSZqETYtTAsU1GYQO+VTisp3vbRbP2vppDQUB4DqWhlHNbptLt7e0OfyTkl9MHTSN
+ Bk4QzNBRJTPyVQiKe3eJlvY4ZgzSbDTOOUDKZD6gM59HZp6a1tmIupboXOmiyI6Io1sS
+ 9h0eta11kF93GBR0MZ6gsygPQvAfe8d+CyLtl9WUG93ooluBqJFeeqRDiAaT5icOYcAs
+ Fu7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=bwgSmpYYfKNOJH9VNo91pDyRjQC6uHyPY7rBYpr5GJw=;
- b=EFKYdV8Mol3Hv/7s0QXjuQ7gbAcEr/Modat11/ANVhmpUBUd2cB08i7UcxZHHo3kMr
- 2J32Xv6z3eYPThmD0KMgXVA3vGDhkdjznea6yyMMOzg3VWX5bWjgur56kIX9D5NU8oiq
- VWleUaUhHcAB25KT5IO1x+sInDL4Hr7pu0zVTFWw6k0lTkdqq7QJGS4Y8dJhJdy5g5uh
- KYj7t2/oOu/KcLE4uATMeA9Bpzhjud2gw0KUaY5e35YVuROmKVEKFsKOERoTW353qDmV
- QfNTIy5ckbfcoDcwlcMzvHLr77V5VptPa8+ndhLOhmBx6wLkVsbQWYDfckCT4FYEgSCW
- nf5Q==
-X-Gm-Message-State: AFqh2ko4bFeVdJlfHXHBa00c5WNthT9leXwxGsAPfTpT916GdqixbcTM
- kP0O3tJ4kb8KYWwRhqGR5tTQyQ==
-X-Received: by 2002:a2e:9e57:0:b0:281:789:7ee5 with SMTP id
- g23-20020a2e9e57000000b0028107897ee5mr4320882ljk.6.1673272998739; 
- Mon, 09 Jan 2023 06:03:18 -0800 (PST)
+ bh=aIhg+s5O4aJ/tYVo4sVxeOk6SdlJhgUlESHjMAxmSzc=;
+ b=KCbMzpInYZIJvg1oWKPHbnRuU52xixqfbCtVmlcdz6/RwQ7pw3DsfnO2oPWcal8uth
+ JGnL+5L8yn6Y01Dicv4o9r2VD8jnUTub+gIUiyE6gEDF5Z+pzZFz8jNANCDiR6gGEyjb
+ NAB3AyghFD8oY3UEDTY0OjPbqN4mHAvfYKmwwpxu9WPgja9bV/pSHvCwlWg26b+EAhwa
+ 5/W30mm8G2ygGIT5XULG1ATwGPRrUepw7uHNF43lEXZHSSTnqqeHwd0JPqEn09JW1GOB
+ DSygCJWKHzm78aoCqWi1WAu9Hpb5IU+ov3KtyCM7EoscKU6NfiedOjqSm7c9m7ogMOMo
+ QCrQ==
+X-Gm-Message-State: AFqh2kpl7N3xTkagZjO0rXXvKWbV7Tn26xeL5SqpsyHuXJH1+lKGuaQV
+ qo38grdjJwpfm1ZhgygifN7g7Q==
+X-Received: by 2002:a05:6512:3d2a:b0:4ae:7974:7d32 with SMTP id
+ d42-20020a0565123d2a00b004ae79747d32mr165993lfv.29.1673273033496; 
+ Mon, 09 Jan 2023 06:03:53 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- g14-20020a05600c4ece00b003d9ea176d54sm8462614wmq.27.2023.01.09.06.03.17
+ k4-20020a05600c1c8400b003d22528decesm18480217wms.43.2023.01.09.06.03.52
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 09 Jan 2023 06:03:18 -0800 (PST)
+ Mon, 09 Jan 2023 06:03:53 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Havard Skinnemoen <hskinnemoen@google.com>,
@@ -93,18 +93,18 @@ Cc: qemu-arm@nongnu.org, Havard Skinnemoen <hskinnemoen@google.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>, Tyrone Ting <kfting@nuvoton.com>
-Subject: [PATCH 02/14] hw/gpio/omap_gpio: Add local variable to avoid embedded
- cast
-Date: Mon,  9 Jan 2023 15:02:54 +0100
-Message-Id: <20230109140306.23161-3-philmd@linaro.org>
+Subject: [PATCH 09/14] hw/arm/bcm2836: Remove definitions generated by
+ OBJECT_DECLARE_TYPE()
+Date: Mon,  9 Jan 2023 15:03:01 +0100
+Message-Id: <20230109140306.23161-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230109140306.23161-1-philmd@linaro.org>
 References: <20230109140306.23161-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,30 +126,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NMXqk9pQWnsj
+X-TUID: E3UBTXPBus3C
 
-Add a local 'struct omap_gpif_s *' variable to improve readability.
-(This also eases next commit conversion).
+The typedef and definitions are generated by the OBJECT_DECLARE_TYPE
+macro in "hw/arm/bcm2836.h":
+
+ 20    #define TYPE_BCM283X "bcm283x"
+ 21    OBJECT_DECLARE_TYPE(BCM283XState, BCM283XClass, BCM283X)
+
+The script ran in commit a489d1951c ("Use OBJECT_DECLARE_TYPE when
+possible") missed them because they are declared in a different
+file unit. Remove them.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/gpio/omap_gpio.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/arm/bcm2836.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-index bd0841d57f..12ec16d1b0 100644
---- a/hw/gpio/omap_gpio.c
-+++ b/hw/gpio/omap_gpio.c
-@@ -53,7 +53,8 @@ struct omap_gpif_s {
- /* General-Purpose I/O of OMAP1 */
- static void omap_gpio_set(void *opaque, int line, int level)
- {
--    struct omap_gpio_s *s = &((struct omap_gpif_s *) opaque)->omap1;
-+    struct omap_gpif_s *p = opaque;
-+    struct omap_gpio_s *s = &p->omap1;
-     uint16_t prev = s->inputs;
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index 24354338ca..f894338fc6 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -16,7 +16,7 @@
+ #include "hw/arm/raspi_platform.h"
+ #include "hw/sysbus.h"
  
-     if (level)
+-typedef struct BCM283XClass {
++struct BCM283XClass {
+     /*< private >*/
+     DeviceClass parent_class;
+     /*< public >*/
+@@ -26,12 +26,7 @@ typedef struct BCM283XClass {
+     hwaddr peri_base; /* Peripheral base address seen by the CPU */
+     hwaddr ctrl_base; /* Interrupt controller and mailboxes etc. */
+     int clusterid;
+-} BCM283XClass;
+-
+-#define BCM283X_CLASS(klass) \
+-    OBJECT_CLASS_CHECK(BCM283XClass, (klass), TYPE_BCM283X)
+-#define BCM283X_GET_CLASS(obj) \
+-    OBJECT_GET_CLASS(BCM283XClass, (obj), TYPE_BCM283X)
++};
+ 
+ static Property bcm2836_enabled_cores_property =
+     DEFINE_PROP_UINT32("enabled-cpus", BCM283XState, enabled_cpus, 0);
 -- 
 2.38.1
 

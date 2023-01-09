@@ -1,92 +1,92 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2450560ejc;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2450563ejc;
         Mon, 9 Jan 2023 09:30:12 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtaM84iOtyGPzCb23XHetKv8jZkgLWTzVyygfiUw0RMndb67Jv9KNq1/BCU+fnsW0gbeX+G
-X-Received: by 2002:a05:622a:801b:b0:3ac:77ed:3995 with SMTP id jr27-20020a05622a801b00b003ac77ed3995mr9150331qtb.26.1673285412261;
+X-Google-Smtp-Source: AMrXdXupwlhe0cnf6Ad09Uo2wHx0B226ZJiVBGY9LBk+mQtobJuQxTnKFXeNaYm94oHpJExUOcrE
+X-Received: by 2002:a05:6214:4186:b0:531:47f7:7bf0 with SMTP id ld6-20020a056214418600b0053147f77bf0mr79014405qvb.12.1673285412338;
         Mon, 09 Jan 2023 09:30:12 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1673285412; cv=none;
         d=google.com; s=arc-20160816;
-        b=0TzLuJfcnqcXMsq0rPfPhEDkpEmi5liiubp2D0EYfn3TKwRIznJR51gYMUIXhCUuIR
-         5aRsTK0kdBc1IhU+OltlUjf/PYwpJ/7tN+KlznXDWRnz2HSJf5Z6Vy5Nc+ZEA5TEqSg3
-         gRzD44rFl0IhrNuCRb+hl1JGfrrROeZsT9u2WbU2RbjfzHrwwWICQp/88jtCY+fLnlOQ
-         ckgXsAQSwtglkKZ6cAIm3I32eyBXbvd43FDMC1bRV4KR1WPHK275ScMs4Kw+b9MDokR8
-         TR3uufYFmkfcIaXGGdW38GStTvw6ltUZfmk+71/UHZjsq4yW3ajr8sJIcWCIdUiEOc1I
-         h9yQ==
+        b=D11bMeblAtYctFw3m3AcZUnW+uJ5gMHW2G5RcIgRaK1U0zyhl+72EZs89N7jkFHdgF
+         ar/zBkpi0lt2SuMFwUSUs+zGXKtmD6ZWmgsp5jJlO8M4fVQxm5+v/TkdIXxWxbyQmx3D
+         yBWyqf+99RbPDWxwupA6tg5guPXyHuRaLxr+R3DQ56WhxrGqM2aAd2qBM55HSuGZ7vq9
+         WGuOpZChMhyo02zjpSn5a5D3MnYGp+znkySkiK6BmEF9fN7apAahRSXmtigT0iQABDlF
+         GCoI2BTRCKdUd+hS8vwmShupFZrhDeYl1wMUmGqpfOnWyxRw0EYkhNE2juJNiPl6NG57
+         bwTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=IMdn1pWnXwwaTdih9emYCZADk1B97e7zAw/7nMQYL5E=;
-        b=YwzGJ4/0snUZmTcQ/Jp/FMU3m6c5LR768Yw7RI/p7AeNWQxlWcweDz8Ehvbi23tevg
-         RjwjqLB6NIq0z4lzdijUcd69W80wD+wl9ykcSpJ9FZMaVA7+t4cuM/sJp9VNflY7ownm
-         Vn/I/AG4nfFdZx9aZ1Yqaq0WCjCGFA/fpc1Ze6Y5zwHjt8JGNw5pA0kVmL0PVBskak+/
-         vYh08KyctLEVPzRu+wiS8lF3XyuZZZzwxboiEAtQI2aD1gz2Lpco/ApjgVO8lVrdAwDo
-         ResduiCA5hiUySOWbJG6AQcI6stXZr5MxOMcX2ApAZ0KLhlWXRAgUWn7Q4ji2jros9VP
-         RqjQ==
+        bh=I3VPNcWT0IkTBlW+dRFbpN8NmE5WBffC1A4qiIMiSXg=;
+        b=qg/QIar6Ygz46a/OHPPu6t+azL3oa4Zy+E5IrGRJwOGk3Sy2qJjFx8dw3eu73DMlRM
+         B945VhfJnGB1+QUkxJqU8f9vs8ObBc+ni8BSNQ0wioQyue7Hb6ji79Bd6INE1K6k4A9x
+         P1btWbbHDEU8oXNZR2pbV19g630TIOKUNZfpV94nmMq444y+o8l9wmkDmTVyldHft7dq
+         +gmdMs5N0SqMShnbQgnQXRZGKEh8y4gVo07MiWeFNa/sTcEStYzNL3+obe+2SIq3yrDS
+         6uVCZ/6sk/UnWn2RknTHUnauMsjkBCFWyDuzz46Zv+9IA8LtHa7a9iC6q+m56Ev8v0Iv
+         f9KQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RSRPwX1s;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Qnz1Hf2l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fb21-20020a05622a481500b003a9861da69esi5036267qtb.239.2023.01.09.09.30.12
+        by mx.google.com with ESMTPS id p15-20020a05621421ef00b0053220e4336csi4063861qvj.559.2023.01.09.09.30.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 09 Jan 2023 09:30:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RSRPwX1s;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Qnz1Hf2l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pEvuG-0003FS-SY; Mon, 09 Jan 2023 12:25:56 -0500
+	id 1pEvtY-0002f6-6p; Mon, 09 Jan 2023 12:25:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvtn-0002mk-5u; Mon, 09 Jan 2023 12:25:27 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ id 1pEvtT-0002YZ-9u; Mon, 09 Jan 2023 12:25:07 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvtj-0000yV-UY; Mon, 09 Jan 2023 12:25:25 -0500
-Received: by mail-ej1-x630.google.com with SMTP id ud5so21943913ejc.4;
- Mon, 09 Jan 2023 09:25:22 -0800 (PST)
+ id 1pEvtR-000131-EN; Mon, 09 Jan 2023 12:25:06 -0500
+Received: by mail-ej1-x635.google.com with SMTP id u19so21850666ejm.8;
+ Mon, 09 Jan 2023 09:25:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IMdn1pWnXwwaTdih9emYCZADk1B97e7zAw/7nMQYL5E=;
- b=RSRPwX1sAgWcXr8fKGZHpY5BnMO7NdW5CR7eZHLX7HT1BxsbQf2j6r1obCUK2RzIuG
- Rr734INhE4fqwibDAH+XpffWN3sNdQRvyfrGDLKZ7CT6Zl8rJONF+ZkYIigK465e+821
- FjaV9Sg+wMzY+Os5tVJoabJy9OynchUBzqQ8zhjZy8T+ysY24s0gsCMcsp6YpgG9K24S
- q4LUVyFrK7GEOa9LEt3HKopOFErdSugWr0KFINj1zcnVgp9IdOFvhkXwEiaucjWIAqvM
- OpuO3K4F5mMjPJk8MLCUNENk5rO86yqgo0MP3ACerBaMS4H7Xw/QDGYrVAOuFqnh+Rql
- VYDg==
+ bh=I3VPNcWT0IkTBlW+dRFbpN8NmE5WBffC1A4qiIMiSXg=;
+ b=Qnz1Hf2lM7TonokV8eyMb9YtNvEozK1vHItNnPm5u7tIUA2IGAlC7rCNZ4kKqcMrgM
+ 7ddjkghgaWnwz5uFzEk7tyl3JKmFcf2NPCIV82Fz2fXa1nB1aoiex0Z4r3g9OPfYVo3f
+ Q2RvNitQ5iFDtQ5pcILObsD5yqJ84Lu+mrXTwVCOdfDhup4k//whGVIlDPdiAGmUC0n5
+ YZHdD42/5bdzzogOd8bgRQb9aAQ1yVPcVqTHHV4un82sXnS0BfedYkH+JSvW890lW8le
+ fQ35YnKayn0NNwpXMCTUxP6+BjQSWwUBZIK3Y3i/JrlaBTmbuIGT0Qc8Hr7la3pZOHFo
+ H/1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=IMdn1pWnXwwaTdih9emYCZADk1B97e7zAw/7nMQYL5E=;
- b=hrs52ueJEIDbGk4Om1FRwN0jUHxxErnq5DPJWBUm46qN8OBJeA0SNGF7m1CKXw4fXF
- z+yLUjqMTNccMpmCVjnOEzfP8XPFcGA0e7QbtzI6AhlGTDtwIAKK+eOMH9P1rM6pBito
- tJFvuGpPg0RVW7Se6/FN45bGzt/FancFzf2rBVO74T8ANCopThzqMYFd+pT9Lxwkehd5
- newQFgAA8Gx9s6kEq0o3yAr4rNZSstwMBrgOWmTrKL8X9IQVnB4YTMbaOw0dlypBIx0i
- QtjC4OT+NaNQvF4yLqm8bWA7JQIImGCL992K0Ns5Jeiis7HeGavKA2gO/UyyulAI0A3Q
- zp1Q==
-X-Gm-Message-State: AFqh2koUZFAkHX05cx48hcPFUyhs9vmxeHC15F5zNGU6dQkkYVH3hjlb
- 2omWBG4b3nByce0recqXDcUvQ9s02Bffzw==
-X-Received: by 2002:a17:906:30c9:b0:78d:f457:1052 with SMTP id
- b9-20020a17090630c900b0078df4571052mr53566286ejb.15.1673285121595; 
- Mon, 09 Jan 2023 09:25:21 -0800 (PST)
+ bh=I3VPNcWT0IkTBlW+dRFbpN8NmE5WBffC1A4qiIMiSXg=;
+ b=LoK2eLJfz8nMNE/X9Wt4DpW1MU1cZGAjfXjZfYmof9HQI92qI2PE05ZA9XeKnT1OXH
+ TrGERoJUzWtDTr5j/oCO6hkLbKYmNTNAAn4nMEqz0/m+MeBzn1gJFlTfulrZpwGaR6i+
+ KAvipMVrxKXmi937WxtvM7PCsCkFPG+K0h0fSiiZxs3dDXHS+2l4Dhtt2s+MKJ9P2uxa
+ KZor33jhO8QxzFPOQ5+y/wZ8f+rarP3tfBy9la5o5YmGRHj03J82OyYD80HASuB05LPb
+ ezwEGeXUgQcAq1Vl87OkSZJ9kNVUkUTsgCAGNT3Q2XF/H8GaWa/XngMjuIkS6LEFKm28
+ WLXg==
+X-Gm-Message-State: AFqh2koYd8suWBIScRS/CawI0qEuuPwOg25ZmlmbrK+85SA+/ACDvDoi
+ 7s5KCEi+gJo0vqpr3wdepA/xy4Ai8VMdQA==
+X-Received: by 2002:a17:907:8b90:b0:84d:207d:c00c with SMTP id
+ tb16-20020a1709078b9000b0084d207dc00cmr11800179ejc.25.1673285102212; 
+ Mon, 09 Jan 2023 09:25:02 -0800 (PST)
 Received: from osoxes.fritz.box
  (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
  [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
  by smtp.gmail.com with ESMTPSA id
- 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.25.20
+ 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.25.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jan 2023 09:25:21 -0800 (PST)
+ Mon, 09 Jan 2023 09:25:01 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: John G Johnson <john.g.johnson@oracle.com>,
@@ -103,17 +103,19 @@ Cc: John G Johnson <john.g.johnson@oracle.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v6 25/33] hw/isa/piix4: Use TYPE_ISA_PIC device
-Date: Mon,  9 Jan 2023 18:23:38 +0100
-Message-Id: <20230109172347.1830-26-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH v6 09/33] hw/intc/i8259: Make using the isa_pic singleton more
+ type-safe
+Date: Mon,  9 Jan 2023 18:23:22 +0100
+Message-Id: <20230109172347.1830-10-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230109172347.1830-1-shentey@gmail.com>
 References: <20230109172347.1830-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -135,167 +137,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U/tFsqiw/N7K
+X-TUID: JkQCWTK/K6Bo
 
-Aligns the code with PIIX3 such that PIIXState can be used in PIIX4,
-too.
+This even spares some casts in hot code paths along the way.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20221022150508.26830-33-shentey@gmail.com>
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 ---
- hw/isa/piix4.c  | 28 ++++++++++------------------
- hw/mips/malta.c | 11 +++++++++--
- hw/mips/Kconfig |  1 +
- 3 files changed, 20 insertions(+), 20 deletions(-)
+Note: The next patch will introduce a class "isa-pic", which is
+shall not be confused with the isa_pic singleton.
+---
+ include/hw/intc/i8259.h |  6 +++---
+ include/qemu/typedefs.h |  1 +
+ hw/intc/i8259.c         | 11 ++++-------
+ 3 files changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-index 9edaa5de3e..eae4db0182 100644
---- a/hw/isa/piix4.c
-+++ b/hw/isa/piix4.c
-@@ -44,9 +44,8 @@
+diff --git a/include/hw/intc/i8259.h b/include/hw/intc/i8259.h
+index e2b1e8c59a..a0e34dd990 100644
+--- a/include/hw/intc/i8259.h
++++ b/include/hw/intc/i8259.h
+@@ -3,10 +3,10 @@
  
- struct PIIX4State {
-     PCIDevice dev;
--    qemu_irq cpu_intr;
--    qemu_irq *isa;
+ /* i8259.c */
  
-+    ISAPICState pic;
-     RTCState rtc;
-     PCIIDEState ide;
-     UHCIState uhci;
-@@ -82,7 +81,7 @@ static void piix4_set_irq(void *opaque, int irq_num, int level)
-                 pic_level |= pci_bus_get_irq_level(bus, i);
-             }
-         }
--        qemu_set_irq(s->isa[pic_irq], pic_level);
-+        qemu_set_irq(s->pic.in_irqs[pic_irq], pic_level);
-     }
+-extern DeviceState *isa_pic;
++extern PICCommonState *isa_pic;
+ qemu_irq *i8259_init(ISABus *bus, qemu_irq parent_irq);
+ qemu_irq *kvm_i8259_init(ISABus *bus);
+-int pic_get_output(DeviceState *d);
+-int pic_read_irq(DeviceState *d);
++int pic_get_output(PICCommonState *s);
++int pic_read_irq(PICCommonState *s);
+ 
+ #endif
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index 073abab998..fba04875c2 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -99,6 +99,7 @@ typedef struct PCIExpressDevice PCIExpressDevice;
+ typedef struct PCIExpressHost PCIExpressHost;
+ typedef struct PCIHostDeviceAddress PCIHostDeviceAddress;
+ typedef struct PCIHostState PCIHostState;
++typedef struct PICCommonState PICCommonState;
+ typedef struct PostcopyDiscardState PostcopyDiscardState;
+ typedef struct Property Property;
+ typedef struct PropertyInfo PropertyInfo;
+diff --git a/hw/intc/i8259.c b/hw/intc/i8259.c
+index cc4e21ffec..0261f087b2 100644
+--- a/hw/intc/i8259.c
++++ b/hw/intc/i8259.c
+@@ -55,7 +55,7 @@ struct PICClass {
+ #ifdef DEBUG_IRQ_LATENCY
+ static int64_t irq_time[16];
+ #endif
+-DeviceState *isa_pic;
++PICCommonState *isa_pic;
+ static PICCommonState *slave_pic;
+ 
+ /* return the highest priority found in mask (highest = smallest
+@@ -173,9 +173,8 @@ static void pic_intack(PICCommonState *s, int irq)
+     pic_update_irq(s);
  }
  
-@@ -149,12 +148,6 @@ static const VMStateDescription vmstate_piix4 = {
-     }
- };
- 
--static void piix4_request_i8259_irq(void *opaque, int irq, int level)
--{
--    PIIX4State *s = opaque;
--    qemu_set_irq(s->cpu_intr, level);
--}
--
- static void piix4_rcr_write(void *opaque, hwaddr addr, uint64_t val,
-                             unsigned int len)
+-int pic_read_irq(DeviceState *d)
++int pic_read_irq(PICCommonState *s)
  {
-@@ -190,7 +183,6 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
-     PIIX4State *s = PIIX4_PCI_DEVICE(dev);
-     PCIBus *pci_bus = pci_get_bus(dev);
-     ISABus *isa_bus;
--    qemu_irq *i8259_out_irq;
+-    PICCommonState *s = PIC_COMMON(d);
+     int irq, intno;
  
-     isa_bus = isa_bus_new(DEVICE(dev), pci_address_space(dev),
-                           pci_address_space_io(dev), errp);
-@@ -198,20 +190,18 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
-         return;
-     }
- 
--    qdev_init_gpio_out_named(DEVICE(dev), &s->cpu_intr,
--                             "intr", 1);
--
-     memory_region_init_io(&s->rcr_mem, OBJECT(dev), &piix4_rcr_ops, s,
-                           "reset-control", 1);
-     memory_region_add_subregion_overlap(pci_address_space_io(dev),
-                                         PIIX_RCR_IOPORT, &s->rcr_mem, 1);
- 
-     /* initialize i8259 pic */
--    i8259_out_irq = qemu_allocate_irqs(piix4_request_i8259_irq, s, 1);
--    s->isa = i8259_init(isa_bus, *i8259_out_irq);
-+    if (!qdev_realize(DEVICE(&s->pic), NULL, errp)) {
-+        return;
-+    }
- 
-     /* initialize ISA irqs */
--    isa_bus_irqs(isa_bus, s->isa);
-+    isa_bus_irqs(isa_bus, s->pic.in_irqs);
- 
-     /* initialize pit */
-     i8254_pit_init(isa_bus, 0x40, 0, NULL);
-@@ -224,7 +214,7 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
-     if (!qdev_realize(DEVICE(&s->rtc), BUS(isa_bus), errp)) {
-         return;
-     }
--    s->rtc.irq = isa_get_irq(ISA_DEVICE(&s->rtc), s->rtc.isairq);
-+    s->rtc.irq = qdev_get_gpio_in(DEVICE(&s->pic), s->rtc.isairq);
- 
-     /* IDE */
-     qdev_prop_set_int32(DEVICE(&s->ide), "addr", dev->devfn + 1);
-@@ -251,7 +241,8 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
-         if (!qdev_realize(DEVICE(&s->pm), BUS(pci_bus), errp)) {
-             return;
-         }
--        qdev_connect_gpio_out(DEVICE(&s->pm), 0, s->isa[9]);
-+        qdev_connect_gpio_out(DEVICE(&s->pm), 0,
-+                              qdev_get_gpio_in(DEVICE(&s->pic), 9));
-     }
- 
-     pci_bus_irqs(pci_bus, piix4_set_irq, s, PIIX_NUM_PIRQS);
-@@ -261,6 +252,7 @@ static void piix4_init(Object *obj)
- {
-     PIIX4State *s = PIIX4_PCI_DEVICE(obj);
- 
-+    object_initialize_child(obj, "pic", &s->pic, TYPE_ISA_PIC);
-     object_initialize_child(obj, "rtc", &s->rtc, TYPE_MC146818_RTC);
-     object_initialize_child(obj, "ide", &s->ide, TYPE_PIIX4_IDE);
+     irq = pic_get_irq(s);
+@@ -354,10 +353,8 @@ static uint64_t pic_ioport_read(void *opaque, hwaddr addr,
+     return ret;
  }
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index 4a2e0edd98..55f3e0c54a 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -29,6 +29,7 @@
- #include "qemu/guest-random.h"
- #include "hw/clock.h"
- #include "hw/southbridge/piix.h"
-+#include "hw/intc/i8259.h"
- #include "hw/isa/superio.h"
- #include "hw/char/serial.h"
- #include "net/net.h"
-@@ -1280,10 +1281,11 @@ void mips_malta_init(MachineState *machine)
-     PCIBus *pci_bus;
-     ISABus *isa_bus;
-     qemu_irq cbus_irq, i8259_irq;
-+    qemu_irq *i8259;
-     I2CBus *smbus;
-     DriveInfo *dinfo;
-     int fl_idx = 0;
--    int be;
-+    int be, i;
-     MaltaState *s;
-     PCIDevice *piix4;
-     DeviceState *dev;
-@@ -1459,7 +1461,12 @@ void mips_malta_init(MachineState *machine)
-     pci_ide_create_devs(PCI_DEVICE(dev));
  
-     /* Interrupt controller */
--    qdev_connect_gpio_out_named(DEVICE(piix4), "intr", 0, i8259_irq);
-+    dev = DEVICE(object_resolve_path_component(OBJECT(piix4), "pic"));
-+    i8259 = i8259_init(isa_bus, i8259_irq);
-+    for (i = 0; i < ISA_NUM_IRQS; i++) {
-+        qdev_connect_gpio_out(dev, i, i8259[i]);
-+    }
-+    g_free(i8259);
+-int pic_get_output(DeviceState *d)
++int pic_get_output(PICCommonState *s)
+ {
+-    PICCommonState *s = PIC_COMMON(d);
+-
+     return (pic_get_irq(s) >= 0);
+ }
  
-     /* generate SPD EEPROM data */
-     dev = DEVICE(object_resolve_path_component(OBJECT(piix4), "pm"));
-diff --git a/hw/mips/Kconfig b/hw/mips/Kconfig
-index 4e7042f03d..d156de812c 100644
---- a/hw/mips/Kconfig
-+++ b/hw/mips/Kconfig
-@@ -1,5 +1,6 @@
- config MALTA
-     bool
-+    select I8259
-     select ISA_SUPERIO
-     select PIIX4
+@@ -426,7 +423,7 @@ qemu_irq *i8259_init(ISABus *bus, qemu_irq parent_irq)
+         irq_set[i] = qdev_get_gpio_in(dev, i);
+     }
  
+-    isa_pic = dev;
++    isa_pic = PIC_COMMON(dev);
+ 
+     isadev = i8259_init_chip(TYPE_I8259, bus, false);
+     dev = DEVICE(isadev);
 -- 
 2.39.0
 

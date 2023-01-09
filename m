@@ -1,190 +1,340 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2234788ejc;
-        Mon, 9 Jan 2023 05:03:07 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsjrfzIQqFyN8Ea4I3aFYGYQUTOpKaBTWHeAnSEnNfJV8zFRtT0n/M8OTdcgRRFhQY1CUSN
-X-Received: by 2002:a05:6870:4c8d:b0:150:329c:84e2 with SMTP id pi13-20020a0568704c8d00b00150329c84e2mr18929498oab.35.1673269387070;
-        Mon, 09 Jan 2023 05:03:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673269387; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2278576ejc;
+        Mon, 9 Jan 2023 06:04:14 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvPMHrvH7c7NrvT4XvjG7aMiuPjBlqrt/IqfHr1WPqht+xIJluj1jqDRxjxYWkEXwpnjByl
+X-Received: by 2002:a05:6870:4349:b0:144:efca:99f3 with SMTP id x9-20020a056870434900b00144efca99f3mr30217251oah.3.1673273053892;
+        Mon, 09 Jan 2023 06:04:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673273053; cv=none;
         d=google.com; s=arc-20160816;
-        b=RHbCnAwXJkA2KkkVOzLH37NQjqji82A5Jx1m0coGNG3OcvoNn+36Lg3PTD+zPVuSGY
-         kZ4FLs8pbKXr/PxfY66yEcyCOhxjqhoGkz/7N/2PB22BY559d+ktYpOuELNPOmTnnQoR
-         RMDQEm9RgKxNftA1u840aFZYCDRDqD8cT0NkfymrqZSY1tBYQ7nzccqrfnZCU/I792RB
-         FDFwFuusRG5cwtqo4K12aRyeThhP/txwZiKxg+pHmKeGPs9HBjKyriRm/wnK4pbJbItg
-         cCU/FB7elmyzmTSEp5aDBhGRuWoSEDuEqsbiQN4l//bghsq0jpsoPrjRtuDIhISpiSFS
-         p9cA==
+        b=oyYnvp98MEmAgbGumfjNe+6+QkdIHYqUiRkl9mixZdNdSFqIoaR/LRKAl8F/MKFRKl
+         8D7PVi2XO7IYkbccnIZ0bS6+jBsb3NedUPJEnQb9Je1qi5lGro4i374eT+qimvem4RdN
+         smuUl+sVdaP1Hows11CwGdwCgci3VLBz8crrq71/Kbq+I5bh3AH/BlPTuoYJh9rXAR7f
+         igzUkBWLdmU5akf1Kkw4O+jULKTg6xUsYsLcRwPZ5hWVO0CsLPRhnrVXweDUWHHJOBF1
+         Sy/FknMILAHlVO7NM47VQuvLfH+m4GgcvWU4mekawOoO76B/OUcdE+cHJowG8wIwla3p
+         0KAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:cc:references:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=oOa558W65nN+mwNWf4ehs5ixKO9EILkwd73Dl1/KY5o=;
-        b=j30z6EHfYC2MpR9f9EIJNudgn1BhKBdl2ebKbgugWIPUzhvcIycbpzAgdB8ONuBL2q
-         FXC9UB8+X50MNsh2ITkttbzDK3z0Cjc4uq7bWMOQwptdsXU8VZo5d0w+KDZ325jI9sRc
-         FpJwQ305ifvPEk5qg8OskquW+mPJHd8aCpTRvdTDt1ocEtq0HwK0umTJ9owPMj+K0CZ1
-         7jo80W2pZ3pOYH9XVAF5v+1Fda38aoQfKEUtqdb4CODtAzTyWfO7f3xLUHZUqs5aa/m0
-         cnXqAPUGufF64upwA4zJAWwn0iD3gqtyQaPrThAY1Z0NPiUo4+dZl6WQsDI1t9jnawPp
-         Gv1A==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=XKcKRZWMYZ518k8vvIHwR+oXnEWBYEx606aR+Fxgswo=;
+        b=pbbnlU44PHcL0J3FOYhu0bVDxGyhcrYGCTyBLSOKtqBdBEPtVaD4PhEHixt/ZCtDS6
+         yvINT0ySmfklr4JNhfMIx/19VAR/dLpgWwn2WNHwBH1QqPuGV/b6IyNH8SmjMVoTW/ul
+         Ycd0jLEi5d7ss6biYBkQAe/GWvxG1ukr2Ngz03sclEhwqhG4oGdYYKpWn9e3C1bsN2Qw
+         6CRXhn6Vm/Mox+Ex1T7WYkCUaLwGg9gZdhU8RG2RSlA8XS3nTWL82dkX4FGNouNgSbS5
+         UdULmREZAZ8VKFZSJxSUrZvVZz99roJYxLtOz6efiHy/GMWoNd1bhN+QAdCtPPKDOmD+
+         NlLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PuQuI74c;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iyXgNVNM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12-20020a05620a140c00b006fa0187fd4asi4093982qkj.326.2023.01.09.05.03.06
+        by mx.google.com with ESMTPS id y140-20020a376492000000b006f9faedd088si4370144qkb.384.2023.01.09.06.04.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 05:03:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Jan 2023 06:04:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PuQuI74c;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iyXgNVNM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pEr1t-0002FQ-6H; Mon, 09 Jan 2023 07:13:29 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pEskc-0001fA-TK; Mon, 09 Jan 2023 09:03:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEr1r-00029T-5k
- for qemu-devel@nongnu.org; Mon, 09 Jan 2023 07:13:27 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskb-0001e3-5p
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:45 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEr1o-0007sF-0a
- for qemu-devel@nongnu.org; Mon, 09 Jan 2023 07:13:26 -0500
-Received: by mail-wr1-x431.google.com with SMTP id bk16so7923932wrb.11
- for <qemu-devel@nongnu.org>; Mon, 09 Jan 2023 04:13:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEskZ-0006LE-8M
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 09:03:44 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ c4-20020a1c3504000000b003d9e2f72093so4276135wma.1
+ for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 06:03:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oOa558W65nN+mwNWf4ehs5ixKO9EILkwd73Dl1/KY5o=;
- b=PuQuI74czYjUtr2rm0hjfOH1AslxKCn6g1PF6QqtoswM1Sk6U2qcMQ5B/4pTULuZeg
- oDWjOvVp/oUVD4wST9ssqo09Q/KRtsYWCtLIeQ5y4RD5jsok+vnMHmQXBp7GjaFa9aDc
- 6JJXy6V9M/8H01dXogYeEaj+tXrBqmEM3pH5BInqskRGLPU2331GjkKAr7tDUZpsGOma
- NDfXpHPa+4g4Nv2fhsklrcV7hPfSlZe5Kw9x4kxAL3Rf/Q05pnQCxGdEqUqws6RZeuWq
- QTHaj/CobfOXIMCiV5absvugbdGvXmc7dLpv0xZBD/K04LoYSP5roTZjaZdfWu7VrP6f
- 7gaA==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XKcKRZWMYZ518k8vvIHwR+oXnEWBYEx606aR+Fxgswo=;
+ b=iyXgNVNMV9yy1qppPecBlR5t9gHB6ya4fXUxu/1mCjTTv/vh71qhUp8eX5FbLB2eyx
+ dJOsVto2ylsU0H8PnbpTY6wyXTb+JAid+32ekzeLuW1Vhd5wA+EPavLlGLGF4HUSTM6U
+ toKnHzNCthivWSHd6wZwgxBHwOiuKBb46qZ4N4vXJNg99HQXtQw+YUqckYZvQvItZuu4
+ XiKHwJgxX50n5vozPF9fL+8DWd4Tz8vVcW3nmmNA8LI//H3Up+FGGxPJVxETZuJ6G7aZ
+ BP4GWMnxadC8awdCks/ip04chdlEuXzWd5PMCilpxbZ84Fz43dsz7j6in20YFntj7fuq
+ lHfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oOa558W65nN+mwNWf4ehs5ixKO9EILkwd73Dl1/KY5o=;
- b=3aqzsoSi57A6MuEgGYcpoTZnsHEU+Iw5C6M+MRPF8jGYvi8KidfnDY0uy+K7jwzdAJ
- wN6VT7C4EgprCkqNp+7fblIC+5mcyzycmjWH5SMNbeJswu3cliOcf9aQ522oDlOZ2nwx
- +JuEnYh1w4A+JcZ1O2JdKMWRL00SIKpUUbLBKJw9MlolN2fYGOXMlMALwcUX9hExakYO
- jlr6Y2aU2Ye/ecxRD8v0Piy9v3Xg86zAG9WqOPzURh9CJFObcwU+2T7syJnc9wLk8F4L
- p7Q+Gl2jJoo2bNVtO9AH5o1FTbZHlzP+4LXYesW8LIgxg5UlliqGfwCX2baPJwyCkrDA
- W0zQ==
-X-Gm-Message-State: AFqh2koydp5Z+IxVRZ49IHYqHuo+VpoUJj1apbRNgVEY+g8yszWmfTnz
- j05aftHmloUzxigTaTcO+eYcShH5mmsQOR2t
-X-Received: by 2002:a05:6000:1f1b:b0:2b8:27df:d43f with SMTP id
- bv27-20020a0560001f1b00b002b827dfd43fmr12843832wrb.24.1673266402512; 
- Mon, 09 Jan 2023 04:13:22 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- k18-20020adfb352000000b00241fab5a296sm8637861wrd.40.2023.01.09.04.13.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Jan 2023 04:13:21 -0800 (PST)
-Message-ID: <0e0f31fd-4d10-7bfe-af6d-3bee3cee1073@linaro.org>
-Date: Mon, 9 Jan 2023 13:13:20 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v2 00/21] hw: Remove implicit sysbus_mmio_map() from
- pflash APIs
-Content-Language: en-US
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=XKcKRZWMYZ518k8vvIHwR+oXnEWBYEx606aR+Fxgswo=;
+ b=r7F7B5yHcVyYCJLlOPpuyVYrzHPYl1U6VvIhcWG6nlgC97fcvhP9F9xhAu99I8U5rN
+ S61JtVv0UNvlNKqOiQZt6uP/BZMALK9ywSTjU6iPD73mtNIr3/5lFQq1DGost1J4XHO6
+ +tvLIwU6ABE2Q8e5w91VI7sKlxsyFxfCuvwmErFy3AsDmVmE/P0BwN+Cnl9HpvlwtiKs
+ HkC5CRiboScWF2MybkKG+6q35Eyjlf8m+sAje9jaMYjitXQMurO2IOZPR60fbzYb0I2a
+ +CZqJp0DXSFpQzZLXs+4nvogEZJGh13U1mf/eYDZamPY1jOhv+Kb6vE8uF/jy+hEk2qf
+ qdDA==
+X-Gm-Message-State: AFqh2kpcNt2HLDwduphLxF/j0wLoUjOpDhRY27mImxTRyDs4SeqANclx
+ j8lnG4k6LY79uUyFsW9Npf13+yRyzYpTZ+1f
+X-Received: by 2002:a05:600c:4e09:b0:3d4:5741:af9b with SMTP id
+ b9-20020a05600c4e0900b003d45741af9bmr50151639wmq.0.1673273018544; 
+ Mon, 09 Jan 2023 06:03:38 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
+ by smtp.gmail.com with ESMTPSA id
+ p9-20020a05600c1d8900b003d9d23ab449sm11965679wms.29.2023.01.09.06.03.37
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 09 Jan 2023 06:03:38 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-References: <20230109120833.3330-1-philmd@linaro.org>
-Cc: qemu-ppc@nongnu.org, qemu-arm <qemu-arm@nongnu.org>,
- "open list:SiFive Machines" <qemu-riscv@nongnu.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+Cc: qemu-arm@nongnu.org, Havard Skinnemoen <hskinnemoen@google.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Song Gao <gaosong@loongson.cn>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230109120833.3330-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Tyrone Ting <kfting@nuvoton.com>
+Subject: [PATCH 06/14] hw/intc/omap_intc: Use CamelCase for TYPE_OMAP_INTC
+ type name
+Date: Mon,  9 Jan 2023 15:02:58 +0100
+Message-Id: <20230109140306.23161-7-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230109140306.23161-1-philmd@linaro.org>
+References: <20230109140306.23161-1-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PxCATisXExFM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kKruVFrmuYwk
 
-On 9/1/23 13:08, Philippe Mathieu-Daudé wrote:
-> Since v1:
-> - Do not introduce pflash_cfi_create(), directly
->    open-code pflash_cfi_register() before removing it (Peter)
-> - Added R-b tags
+Following docs/devel/style.rst guidelines, rename
+omap_intr_handler_s -> OMAPIntcState. This also remove a
+use of 'struct' in the DECLARE_INSTANCE_CHECKER() macro call.
 
-Sigh, my sendemail.cccmd command didn't work, so Cc'ing manually the cover.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/intc/omap_intc.c   | 38 +++++++++++++++++++-------------------
+ include/hw/arm/omap.h |  9 ++++-----
+ 2 files changed, 23 insertions(+), 24 deletions(-)
 
-> Paving the road toward heterogeneous QEMU, the limitations of
-> having a single machine sysbus become more apparent.
-> 
-> The sysbus_mmio_map() API forces the caller to map a sysbus
-> device to an address on the system bus (system bus here is
-> the root MemoryRegion returned by get_system_memory() ).
-> 
-> This is not practical when each core has its own address
-> space and group of cores have access to a part of the
-> peripherals.
-> 
-> Experimenting with the PFLASH devices. Here the fix is
-> quite easy: open-code the pflash_cfi_register() functions.
-> 
-> Since we were touching the PFLASH API, we restricted the
-> PFlashCFI0X structures to their models. The API now deals
-> with a generic qdev pointer (DeviceState*).
-> 
-> Please review,
-> 
-> Phil.
-> 
-> Based-on: <20230109115316.2235-1-philmd@linaro.org>
->            "hw/arm: Cleanups before pflash refactor"
-> Based-on: <20230109120154.2868-1-philmd@linaro.org>
->            "hw/misc: Cleanups around PFLASH use"
-> 
-> Philippe Mathieu-Daudé (21):
->    hw/block: Rename TYPE_PFLASH_CFI02 'width' property as 'device-width'
->    hw/block: Pass DeviceState to pflash_cfi01_get_blk()
->    hw/block: Use pflash_cfi01_get_blk() in pflash_cfi01_legacy_drive()
->    hw/block: Pass DeviceState to pflash_cfi01_get_memory()
->    hw/arm: Use generic DeviceState instead of PFlashCFI01
->    hw/loongarch: Use generic DeviceState instead of PFlashCFI01
->    hw/riscv: Use generic DeviceState instead of PFlashCFI01
->    hw/i386: Use generic DeviceState instead of PFlashCFI01
->    hw/xtensa: Use generic DeviceState instead of PFlashCFI01
->    hw/sh4: Open-code pflash_cfi02_register()
->    hw/arm/digic: Open-code pflash_cfi02_register()
->    hw/arm/musicpal: Open-code pflash_cfi02_register()
->    hw/arm/xilinx_zynq: Open-code pflash_cfi02_register()
->    hw/block: Remove unused pflash_cfi02_register()
->    hw/block: Make PFlashCFI02 QOM declaration internal
->    hw/arm: Open-code pflash_cfi01_register()
->    hw/microblaze: Open-code pflash_cfi01_register()
->    hw/mips: Open-code pflash_cfi01_register()
->    hw/ppc: Open-code pflash_cfi01_register()
->    hw/block: Remove unused pflash_cfi01_register()
->    hw/block: Make PFlashCFI01 QOM declaration internal
+diff --git a/hw/intc/omap_intc.c b/hw/intc/omap_intc.c
+index 9f6a71ce30..647bf324a8 100644
+--- a/hw/intc/omap_intc.c
++++ b/hw/intc/omap_intc.c
+@@ -38,7 +38,7 @@ struct omap_intr_handler_bank_s {
+     unsigned char priority[32];
+ };
+ 
+-struct omap_intr_handler_s {
++struct OMAPIntcState {
+     SysBusDevice parent_obj;
+ 
+     qemu_irq *pins;
+@@ -60,7 +60,7 @@ struct omap_intr_handler_s {
+     struct omap_intr_handler_bank_s bank[3];
+ };
+ 
+-static void omap_inth_sir_update(struct omap_intr_handler_s *s, int is_fiq)
++static void omap_inth_sir_update(OMAPIntcState *s, int is_fiq)
+ {
+     int i, j, sir_intr, p_intr, p;
+     uint32_t level;
+@@ -88,7 +88,7 @@ static void omap_inth_sir_update(struct omap_intr_handler_s *s, int is_fiq)
+     s->sir_intr[is_fiq] = sir_intr;
+ }
+ 
+-static inline void omap_inth_update(struct omap_intr_handler_s *s, int is_fiq)
++static inline void omap_inth_update(OMAPIntcState *s, int is_fiq)
+ {
+     int i;
+     uint32_t has_intr = 0;
+@@ -109,7 +109,7 @@ static inline void omap_inth_update(struct omap_intr_handler_s *s, int is_fiq)
+ 
+ static void omap_set_intr(void *opaque, int irq, int req)
+ {
+-    struct omap_intr_handler_s *ih = opaque;
++    OMAPIntcState *ih = opaque;
+     uint32_t rise;
+ 
+     struct omap_intr_handler_bank_s *bank = &ih->bank[irq >> 5];
+@@ -136,7 +136,7 @@ static void omap_set_intr(void *opaque, int irq, int req)
+ /* Simplified version with no edge detection */
+ static void omap_set_intr_noedge(void *opaque, int irq, int req)
+ {
+-    struct omap_intr_handler_s *ih = opaque;
++    OMAPIntcState *ih = opaque;
+     uint32_t rise;
+ 
+     struct omap_intr_handler_bank_s *bank = &ih->bank[irq >> 5];
+@@ -156,7 +156,7 @@ static void omap_set_intr_noedge(void *opaque, int irq, int req)
+ static uint64_t omap_inth_read(void *opaque, hwaddr addr,
+                                unsigned size)
+ {
+-    struct omap_intr_handler_s *s = opaque;
++    OMAPIntcState *s = opaque;
+     int i, offset = addr;
+     int bank_no = offset >> 8;
+     int line_no;
+@@ -234,7 +234,7 @@ static uint64_t omap_inth_read(void *opaque, hwaddr addr,
+ static void omap_inth_write(void *opaque, hwaddr addr,
+                             uint64_t value, unsigned size)
+ {
+-    struct omap_intr_handler_s *s = opaque;
++    OMAPIntcState *s = opaque;
+     int i, offset = addr;
+     int bank_no = offset >> 8;
+     struct omap_intr_handler_bank_s *bank = &s->bank[bank_no];
+@@ -336,7 +336,7 @@ static const MemoryRegionOps omap_inth_mem_ops = {
+ 
+ static void omap_inth_reset(DeviceState *dev)
+ {
+-    struct omap_intr_handler_s *s = OMAP_INTC(dev);
++    OMAPIntcState *s = OMAP_INTC(dev);
+     int i;
+ 
+     for (i = 0; i < s->nbanks; ++i){
+@@ -366,7 +366,7 @@ static void omap_inth_reset(DeviceState *dev)
+ static void omap_intc_init(Object *obj)
+ {
+     DeviceState *dev = DEVICE(obj);
+-    struct omap_intr_handler_s *s = OMAP_INTC(obj);
++    OMAPIntcState *s = OMAP_INTC(obj);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+ 
+     s->nbanks = 1;
+@@ -380,25 +380,25 @@ static void omap_intc_init(Object *obj)
+ 
+ static void omap_intc_realize(DeviceState *dev, Error **errp)
+ {
+-    struct omap_intr_handler_s *s = OMAP_INTC(dev);
++    OMAPIntcState *s = OMAP_INTC(dev);
+ 
+     if (!s->iclk) {
+         error_setg(errp, "omap-intc: clk not connected");
+     }
+ }
+ 
+-void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk)
++void omap_intc_set_iclk(OMAPIntcState *intc, omap_clk clk)
+ {
+     intc->iclk = clk;
+ }
+ 
+-void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk)
++void omap_intc_set_fclk(OMAPIntcState *intc, omap_clk clk)
+ {
+     intc->fclk = clk;
+ }
+ 
+ static Property omap_intc_properties[] = {
+-    DEFINE_PROP_UINT32("size", struct omap_intr_handler_s, size, 0x100),
++    DEFINE_PROP_UINT32("size", OMAPIntcState, size, 0x100),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -423,7 +423,7 @@ static const TypeInfo omap_intc_info = {
+ static uint64_t omap2_inth_read(void *opaque, hwaddr addr,
+                                 unsigned size)
+ {
+-    struct omap_intr_handler_s *s = opaque;
++    OMAPIntcState *s = opaque;
+     int offset = addr;
+     int bank_no, line_no;
+     struct omap_intr_handler_bank_s *bank = NULL;
+@@ -504,7 +504,7 @@ static uint64_t omap2_inth_read(void *opaque, hwaddr addr,
+ static void omap2_inth_write(void *opaque, hwaddr addr,
+                              uint64_t value, unsigned size)
+ {
+-    struct omap_intr_handler_s *s = opaque;
++    OMAPIntcState *s = opaque;
+     int offset = addr;
+     int bank_no, line_no;
+     struct omap_intr_handler_bank_s *bank = NULL;
+@@ -622,7 +622,7 @@ static const MemoryRegionOps omap2_inth_mem_ops = {
+ static void omap2_intc_init(Object *obj)
+ {
+     DeviceState *dev = DEVICE(obj);
+-    struct omap_intr_handler_s *s = OMAP_INTC(obj);
++    OMAPIntcState *s = OMAP_INTC(obj);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+ 
+     s->level_only = 1;
+@@ -637,7 +637,7 @@ static void omap2_intc_init(Object *obj)
+ 
+ static void omap2_intc_realize(DeviceState *dev, Error **errp)
+ {
+-    struct omap_intr_handler_s *s = OMAP_INTC(dev);
++    OMAPIntcState *s = OMAP_INTC(dev);
+ 
+     if (!s->iclk) {
+         error_setg(errp, "omap2-intc: iclk not connected");
+@@ -650,7 +650,7 @@ static void omap2_intc_realize(DeviceState *dev, Error **errp)
+ }
+ 
+ static Property omap2_intc_properties[] = {
+-    DEFINE_PROP_UINT8("revision", struct omap_intr_handler_s,
++    DEFINE_PROP_UINT8("revision", OMAPIntcState,
+     revision, 0x21),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+@@ -676,7 +676,7 @@ static const TypeInfo omap2_intc_info = {
+ static const TypeInfo omap_intc_type_info = {
+     .name          = TYPE_OMAP_INTC,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(omap_intr_handler),
++    .instance_size = sizeof(OMAPIntcState),
+     .abstract      = true,
+ };
+ 
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index 9e30ba7ba2..c275d9b681 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -70,9 +70,8 @@ void omap_clk_reparent(omap_clk clk, omap_clk parent);
+ 
+ /* omap_intc.c */
+ #define TYPE_OMAP_INTC "common-omap-intc"
+-typedef struct omap_intr_handler_s omap_intr_handler;
+-DECLARE_INSTANCE_CHECKER(omap_intr_handler, OMAP_INTC,
+-                         TYPE_OMAP_INTC)
++typedef struct OMAPIntcState OMAPIntcState;
++DECLARE_INSTANCE_CHECKER(OMAPIntcState, OMAP_INTC, TYPE_OMAP_INTC)
+ 
+ 
+ /*
+@@ -89,8 +88,8 @@ DECLARE_INSTANCE_CHECKER(omap_intr_handler, OMAP_INTC,
+  * (ie the struct omap_mpu_state_s*) to do the clockname to pointer
+  * translation.)
+  */
+-void omap_intc_set_iclk(omap_intr_handler *intc, omap_clk clk);
+-void omap_intc_set_fclk(omap_intr_handler *intc, omap_clk clk);
++void omap_intc_set_iclk(OMAPIntcState *intc, omap_clk clk);
++void omap_intc_set_fclk(OMAPIntcState *intc, omap_clk clk);
+ 
+ /* omap_i2c.c */
+ #define TYPE_OMAP_I2C "omap_i2c"
+-- 
+2.38.1
 

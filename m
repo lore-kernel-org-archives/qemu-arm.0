@@ -1,385 +1,151 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id l1-20020adfe9c1000000b00289bdda07b7sm8837321wrn.92.2023.01.09.09.03.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Jan 2023 09:03:39 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 8D9101FFB7;
-	Mon,  9 Jan 2023 17:03:38 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-	Jagannathan Raman <jag.raman@oracle.com>,
-	John G Johnson <john.g.johnson@oracle.com>
-Subject: [RFC PATCH] docs: add a proper feature overview in "About QEMU"
-Date: Mon,  9 Jan 2023 17:03:23 +0000
-Message-Id: <20230109170323.3796306-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.34.1
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2460746ejc;
+        Mon, 9 Jan 2023 09:44:32 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXudx+U+lOnKrEPbycerR9PpAsf2SHDyEdh2tTEmbUXUfU8fLx0pjL0guOKUbZfyq5D7iqfp
+X-Received: by 2002:a67:c585:0:b0:3ce:e535:d6dc with SMTP id h5-20020a67c585000000b003cee535d6dcmr7055691vsk.5.1673286272498;
+        Mon, 09 Jan 2023 09:44:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673286272; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FdHBxWo8u8NwLI8/njLwpOnOLgWK4H433soM2XPY9o9KumMAvmo2SZd19PdE3fwpjh
+         xWI2wz0fSfevWbRsly1K21F6ycoF2otpHYtRBAuMzMXY8IwHmWdWjJdXXb+pr3GrkIXB
+         EhRSkuKwtpKpDWnPYTCok9sG4yxDxzuah4Ah1QAXcR8lQwdwT/47nIw3LaeW8/NtYpCV
+         v+bh1EfbGQd+XChG+wdtJLF8QveUwdnDB1FuHoK/7ht07AA3NWBhlEWi7F3beNQeLCdG
+         eEKV6LUlSwfCm+qrzsKAgWgQQME0X4M9jHkxMX6wo14LvovELQP8oSu1fhcenxVptnlT
+         xhdQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=tXWhE1XisfJ6nzvcUpo2PoJy/dKFyeRVIIfvt8sSBUo=;
+        b=bru7/eRX48RER+QCZCKNwmlkJq1DSa7Cwi1KaMsv+c3H65lzaDGIxaAS3Wa+RB4RYY
+         c88WveyW5Vp4Dwa94DcTZJ6YCPlXs+EczmIrwGpBn5hMRVZGosuQloqFUJpN9UApOJ32
+         8a50rwluo8OYlMh+/KDIOS8RicEofeqVPFTRvovFMB0jdD2YbcKAqNBJPlqAi2zHtfx4
+         DihRWocrujs9SubHIok1CKtVq3Q+7l6l6LiZGE8vrIG8UwbDixE1riTLeGicXWWpe/rU
+         Wl9l4lPE/kq0L9QC1bE9C+RUY+IJyRsJhgZY6stm8saut8/2uHRscW1Rmxk00jYHHfVz
+         Vq6g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H0Fx1w89;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o1-20020a05620a2a0100b006ff8ac76381si5102395qkp.98.2023.01.09.09.44.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Jan 2023 09:44:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H0Fx1w89;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pEw8l-0005K3-ND; Mon, 09 Jan 2023 12:40:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pEw8h-0005FG-3u
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 12:40:51 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pEw8e-0006lN-SS
+ for qemu-arm@nongnu.org; Mon, 09 Jan 2023 12:40:50 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id
+ v13-20020a17090a6b0d00b00219c3be9830so10432854pjj.4
+ for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 09:40:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=tXWhE1XisfJ6nzvcUpo2PoJy/dKFyeRVIIfvt8sSBUo=;
+ b=H0Fx1w892mswWkJQWeCtqSKpC2Jjmo//J42Q5qL3EghCwA0UVswrXC6d8V6u7vj41x
+ VB+kCHQ3UqyA8G9xUyVKMuoppqFOJCRVDC4x5j33u19j9Ilw1BEyUDlpVeOokpdsYDse
+ N1Vzf1tlyq7yC+CjSKCHk0o4kz5Zm1nI2pOfj0W6RzRTzmhgQ8Swj56cKPc/vwAeRHGv
+ YDlb5+4N+aZJU+tF7JBvRo36WGTWrZGq4kZavmir0RnFNZ+wAfN77o94OfT3Ssz2BR+i
+ uEcEqXelwOTTv3QzdbkB41TKwM9FCwLyW7Ek/bNgXwf5JnqXz6o78jsG6isAaZGCbfh/
+ 97Sg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=tXWhE1XisfJ6nzvcUpo2PoJy/dKFyeRVIIfvt8sSBUo=;
+ b=JRNechPPQHKy0H5astXXCY9EIKW22OGOxc9Fu8WGqmrEWbA2BRikPLF9QFo29ORS7o
+ 3g+zlYgYzfjUvYe3d5R4XUZyxkhJ9xyMgn9qCZSs6//TbY0dXFJpJSrrT8ZJ6nNJTFbv
+ IgjX13SfAOE5GqR7+s0woAxFENBYTZbELDCgcjTXazv/1iC0uWpyxthafJCa+QDdC0GX
+ yA0Aa9Gn83ATYqbWhXtMJQ6xl83EJhw5xl9HiVkKYOBCxnyOJIHJdGD1J6/N6B+PXSvJ
+ X/Kk2f4Fglujxk3hfzV5Yj25KynNQ66BzmrIZSqgH6dUGYK+PurxVaDVbZ9/RSjzDgsh
+ 0+Zg==
+X-Gm-Message-State: AFqh2kpD5E3y28yoAqCjxAKreDy5/lCBaImWiVRrPmrqJrhrAVf6G3BM
+ PavM+VHiX4nxHqdHGkqpmlkaaA==
+X-Received: by 2002:a05:6a20:d39a:b0:b0:2b4f:a9d9 with SMTP id
+ iq26-20020a056a20d39a00b000b02b4fa9d9mr90288754pzb.5.1673286047313; 
+ Mon, 09 Jan 2023 09:40:47 -0800 (PST)
+Received: from ?IPV6:2602:47:d48c:8101:a909:891c:953d:a6b0?
+ ([2602:47:d48c:8101:a909:891c:953d:a6b0])
+ by smtp.gmail.com with ESMTPSA id
+ 17-20020a630211000000b0049f77341db3sm5511554pgc.42.2023.01.09.09.40.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Jan 2023 09:40:46 -0800 (PST)
+Message-ID: <5bcc36c3-ec86-9cd3-f62f-f27392eca69f@linaro.org>
+Date: Mon, 9 Jan 2023 09:40:44 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 00/13] hw/arm: Cleanups before pflash refactor
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>
+References: <20230109115316.2235-1-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230109115316.2235-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: pVoM5iCPTTxa
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nvnJ6NhpQcGK
 
-I decide to do this because I was looking for the best place to add a
-reference to a document on semihosting and there didn't seem to be
-an obvious place to do this. To do this I took the original pre-amble
-to the about index and moved it to its own section, expanding the
-description and giving a quick high level overview of some of the key
-feature of QEMU.
+On 1/9/23 03:53, Philippe Mathieu-Daudé wrote:
+> Philippe Mathieu-Daudé (13):
+>    hw/arm/pxa2xx: Simplify pxa255_init()
+>    hw/arm/pxa2xx: Simplify pxa270_init()
+>    hw/arm/collie: Use the IEC binary prefix definitions
+>    hw/arm/collie: Simplify flash creation using for() loop
+>    hw/arm/gumstix: Improve documentation
+>    hw/arm/gumstix: Use the IEC binary prefix definitions
+>    hw/arm/mainstone: Use the IEC binary prefix definitions
+>    hw/arm/musicpal: Use the IEC binary prefix definitions
+>    hw/arm/omap_sx1: Remove unused 'total_ram' definitions
+>    hw/arm/omap_sx1: Use the IEC binary prefix definitions
+>    hw/arm/z2: Use the IEC binary prefix definitions
+>    hw/arm/vexpress: Remove dead code in vexpress_common_init()
+>    hw/arm: Remove unreachable code calling pflash_cfi01_register()
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- docs/about/features.rst       | 236 ++++++++++++++++++++++++++++++++++
- docs/about/index.rst          |  16 +--
- docs/devel/tcg-plugins.rst    |   2 +
- docs/system/arm/emulation.rst |   2 +
- docs/system/index.rst         |   2 +
- docs/system/multi-process.rst |   2 +
- docs/tools/index.rst          |   2 +
- docs/user/index.rst           |   2 +
- 8 files changed, 249 insertions(+), 15 deletions(-)
- create mode 100644 docs/about/features.rst
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/docs/about/features.rst b/docs/about/features.rst
-new file mode 100644
-index 0000000000..037234c10a
---- /dev/null
-+++ b/docs/about/features.rst
-@@ -0,0 +1,236 @@
-+Features
-+========
-+
-+Virtualisation
-+--------------
-+
-+The most common use case for QEMU is to provide a virtual model of a
-+machine (CPU, memory and emulated devices) to run a guest OS. It
-+supports a number of hypervisors (known as accelerators) as well as a
-+dynamic JIT known as the Tiny Code Generator (TCG) capable of
-+emulating many CPUs.
-+
-+.. list-table:: Supported Accelerators
-+  :header-rows: 1
-+
-+  * - Accelerator
-+    - Host OS
-+    - Host Architectures
-+  * - KVM
-+    - Linux
-+    - Arm (64 bit only), MIPS, PPC, RISC-V, s390x, x86
-+  * - Xen
-+    - Linux (as dom0)
-+    - Arm, x86
-+  * - Intel HAXM (hax)
-+    - Linux, Windows
-+    - x86
-+  * - Hypervisor Framework (hvf)
-+    - MacOS
-+    - x86 (64 bit only), Arm (64 bit only)
-+  * - Windows Hypervisor Platform (wphx)
-+    - Windows
-+    - x86
-+  * - NetBSD Virtual Machine Monitor (nvmm)
-+    - NetBSD
-+    - x86
-+  * - Tiny Code Generator (tcg)
-+    - Linux, other POSIX, Windows, MacOS
-+    - Arm, x86, Loongarch64, MIPS, PPC, s390x, Sparc64, TCI [#tci]_
-+
-+.. [#tci] The Tiny Code Interpreter (TCI) can be used where there is no
-+          explicit support for a processor backend. It will be even
-+          slower than normal TCG guests.
-+
-+Related features
-+~~~~~~~~~~~~~~~~
-+
-+System emulation provides a wide range of device models to emulate
-+various hardware components you may want to add to your machine. This
-+includes a wide number of VirtIO devices which are specifically tuned
-+for efficient operation under virtualisation. Some of the device
-+emulation can be offloaded from the main QEMU process using either
-+vhost-user (for VirtIO) or :ref:`Multi-process QEMU`. If the platform
-+supports it QEMU also supports directly passing devices through to
-+guest VMs to eliminate the device emulation overhead. See
-+:ref:`device-emulation` for more details.
-+
-+There is a full featured block layer allows for construction of
-+complex storage typologies which can be stacked across multiple layers
-+supporting redirection, networking, snapshots and migration support.
-+
-+The flexible ``chardev`` system allows for handling IO from character
-+like devices using stdio, files, unix sockets and TCP networking.
-+
-+QEMU provides a number of management interfaces including a line based
-+Human Monitor Protocol (HMP) that allows you to dynamically add and
-+remove devices as well as introspect the system state. The QEMU
-+Monitor Protocol (QMP) is a well defined, versioned, machine usable
-+API that presents a rich interface to other tools to create, control
-+and manage Virtual Machines. This is the interface used by higher
-+level tools interfaces such as `Virt Manager
-+<https://virt-manager.org/>`_ using the `libvirt framework
-+<https://libvirt.org>`_. Using some sort of management layer to
-+configure complex QEMU setups is recommended.
-+
-+For the common accelerators QEMU supported debugging with its
-+:ref:`gdbstub<GDB usage>` which allows users to connect GDB and debug
-+system software images.
-+
-+See the :ref:`System Emulation` section of the manual for full details
-+of how to run QEMU as a VMM.
-+
-+Emulation
-+---------
-+
-+As alluded to above QEMU's Tiny Code Generator (TCG) also has the
-+ability to emulate a number of CPU architectures on any supported
-+platform. This can either be using full system emulation or using its
-+"user mode emulation" support to run user space processes compiled for
-+one CPU on another CPU.
-+
-+See `User Mode Emulation` for more details on running in this mode.
-+
-+.. list-table:: Supported Guest Architectures for Emulation
-+  :widths: 30 10 10 50
-+  :header-rows: 1
-+
-+  * - Architecture (qemu name)
-+    - System
-+    - User-mode
-+    - Notes
-+  * - Alpha
-+    - Yes
-+    - Yes
-+    - Legacy 64 bit RISC ISA developed by DEC
-+  * - Arm (arm, aarch64)
-+    - Yes
-+    - Yes
-+    - Wide range of features, see :ref:`Arm Emulation` for details
-+  * - AVR
-+    - Yes
-+    - No
-+    - 8 bit micro controller, often used in maker projects
-+  * - Cris
-+    - Yes
-+    - Yes
-+    - Embedded RISC chip developed by AXIS
-+  * - Hexagon
-+    - No
-+    - Yes
-+    - Family of DSPs by Qualcomm
-+  * - PA-RISC (hppa)
-+    - Yes
-+    - Yes
-+    - A legacy RISC system used in HPs old minicomputers
-+  * - x86 (i386, x86_64)
-+    - Yes
-+    - Yes
-+    - The ubiquitous desktop PC CPU architecture, 32 and 64 bit.
-+  * - Loongarch
-+    - Yes
-+    - Yes
-+    - A MIPs-like 64bit RISC architecture developed in China
-+  * - m68k
-+    - Yes
-+    - Yes
-+    - Motorola 68000 variants and ColdFire
-+  * - Microblaze
-+    - Yes
-+    - Yes
-+    - RISC based soft-core by Xilinx
-+  * - MIPS (mips, mipsel, mips64, mips64el)
-+    - Yes
-+    - Yes
-+    - Venerable RISC architecture originally out of Stanford University
-+  * - Nios2
-+    - Yes
-+    - Yes
-+    - 32 bit embedded soft-core by Altera
-+  * - OpenRISC
-+    - Yes
-+    - Yes
-+    - Open source RISC architecture developed by the OpenRISC community
-+  * - Power (ppc, ppc64)
-+    - Yes
-+    - Yes
-+    - A general purpose RISC architecture now managed by IBM
-+  * - RISC-V
-+    - Yes
-+    - Yes
-+    - An open standard RISC ISA maintained by RISC-V International
-+  * - RX
-+    - Yes
-+    - No
-+    - A 32 bit micro controller developed by Renesas
-+  * - s390x
-+    - Yes
-+    - Yes
-+    - A 64 bit CPU found in IBM's System Z mainframes
-+  * - sh4
-+    - Yes
-+    - Yes
-+    - A 32 bit RISC embedded CPU developed by Hitachi
-+  * - SPARC (sparc, sparc64)
-+    - Yes
-+    - Yes
-+    - A RISC ISA originally developed by Sun Microsystems
-+  * - Tricore
-+    - Yes
-+    - No
-+    - A 32 bit RISC/uController/DSP developed by Infineon
-+  * - Xtensa
-+    - Yes
-+    - Yes
-+    - A configurable 32 bit soft core now owned by Cadence
-+
-+Semi-hosting
-+~~~~~~~~~~~~
-+
-+A number of guest architecture support semi-hosting which provides a
-+way for guest programs to access the host system though a POSIX-like
-+system call layer. This has applications for early software bring-up
-+making it easy for a guest to dump data or read configuration files
-+before a full operating system is implemented.
-+
-+Some of those guest architectures also support semi-hosting in
-+user-mode making the testing of "bare-metal" micro-controller code
-+easy in a user-mode environment that doesn't have a full libc port.
-+
-+Deterministic Execution with Record/Replay
-+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+
-+For system emulation QEMU offers a execution mode called ``icount``
-+which allows for guest time to be purely a function of the number of
-+instructions executed. Combined with snapshots and a logging of HW
-+events a deterministic execution can be recorded and played back at
-+will.
-+
-+gdbstub
-+~~~~~~~
-+
-+Under emulation the :ref:`gdbstub<GDB usage>` is fully supported and
-+takes advantage of the implementation to support unlimited breakpoints
-+in the guest code. For system emulation we also support an unlimited
-+number of memory based watchpoints as well as integration with
-+record/replay to support reverse debugging.
-+
-+
-+TCG Plugins
-+~~~~~~~~~~~
-+
-+In any emulation execution mode you can write :ref:`TCG Plugins` which
-+can instrument the guest code as it executes to a per-instruction
-+granularity. This is useful for writing tools to analyse the real
-+world execution behaviour of your programs.
-+
-+Tools
-+-----
-+
-+QEMU also provides a number of standalone commandline utilities, such
-+as the ``qemu-img`` disk image utility that allows you to create,
-+convert and modify disk images. While most are expected to be used in
-+conjunction with QEMU itself some can also be used with other VMMs
-+that support the same interfaces.
-+
-+See :ref:`Tools` for more details.
-diff --git a/docs/about/index.rst b/docs/about/index.rst
-index 5bea653c07..6949e6dc93 100644
---- a/docs/about/index.rst
-+++ b/docs/about/index.rst
-@@ -4,24 +4,10 @@ About QEMU
- 
- QEMU is a generic and open source machine emulator and virtualizer.
- 
--QEMU can be used in several different ways. The most common is for
--"system emulation", where it provides a virtual model of an
--entire machine (CPU, memory and emulated devices) to run a guest OS.
--In this mode the CPU may be fully emulated, or it may work with
--a hypervisor such as KVM, Xen, Hax or Hypervisor.Framework to
--allow the guest to run directly on the host CPU.
--
--The second supported way to use QEMU is "user mode emulation",
--where QEMU can launch processes compiled for one CPU on another CPU.
--In this mode the CPU is always emulated.
--
--QEMU also provides a number of standalone commandline utilities,
--such as the ``qemu-img`` disk image utility that allows you to create,
--convert and modify disk images.
--
- .. toctree::
-    :maxdepth: 2
- 
-+   features
-    build-platforms
-    deprecated
-    removed-features
-diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
-index 9740a70406..81dcd43a61 100644
---- a/docs/devel/tcg-plugins.rst
-+++ b/docs/devel/tcg-plugins.rst
-@@ -3,6 +3,8 @@
-    Copyright (c) 2019, Linaro Limited
-    Written by Emilio Cota and Alex Bennée
- 
-+.. _TCG Plugins:
-+
- QEMU TCG Plugins
- ================
- 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index b33d7c28dc..b87e064d9d 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -1,3 +1,5 @@
-+.. _Arm Emulation:
-+
- A-profile CPU architecture support
- ==================================
- 
-diff --git a/docs/system/index.rst b/docs/system/index.rst
-index e3695649c5..282b6ffb56 100644
---- a/docs/system/index.rst
-+++ b/docs/system/index.rst
-@@ -1,3 +1,5 @@
-+.. _System Emulation:
-+
- ----------------
- System Emulation
- ----------------
-diff --git a/docs/system/multi-process.rst b/docs/system/multi-process.rst
-index 210531ee17..16f0352416 100644
---- a/docs/system/multi-process.rst
-+++ b/docs/system/multi-process.rst
-@@ -1,3 +1,5 @@
-+.. _Multi-process QEMU:
-+
- Multi-process QEMU
- ==================
- 
-diff --git a/docs/tools/index.rst b/docs/tools/index.rst
-index 1edd5a8054..2151adcf78 100644
---- a/docs/tools/index.rst
-+++ b/docs/tools/index.rst
-@@ -1,3 +1,5 @@
-+.. _Tools:
-+
- -----
- Tools
- -----
-diff --git a/docs/user/index.rst b/docs/user/index.rst
-index 2c4e29f3db..782d27cda2 100644
---- a/docs/user/index.rst
-+++ b/docs/user/index.rst
-@@ -1,3 +1,5 @@
-+.. _User Mode Emulation:
-+
- -------------------
- User Mode Emulation
- -------------------
--- 
-2.34.1
+r~

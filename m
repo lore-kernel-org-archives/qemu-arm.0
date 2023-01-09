@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2663811ejc;
-        Mon, 9 Jan 2023 14:43:25 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvMvAK5SJU4Q8LzLT8xJMwn6PWmpqJigJkIAvtDVPXETLlZbW1sNP+FowAGfSPlS8QWEB69
-X-Received: by 2002:a5d:5a19:0:b0:242:2088:1546 with SMTP id bq25-20020a5d5a19000000b0024220881546mr55744585wrb.61.1673304205764;
-        Mon, 09 Jan 2023 14:43:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673304205; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2663841ejc;
+        Mon, 9 Jan 2023 14:43:29 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsDDz3j4IefDuJxq17DOFvk4hFilUmNtsAY2Jz3ztPBPWBrxDPG9aF+qB761eKsUoeAN8PJ
+X-Received: by 2002:a05:6000:4088:b0:2bb:e896:5a09 with SMTP id da8-20020a056000408800b002bbe8965a09mr5046772wrb.66.1673304209288;
+        Mon, 09 Jan 2023 14:43:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673304209; cv=none;
         d=google.com; s=arc-20160816;
-        b=pQZi76Z7UqhllewsZavuVQooxb73HJGrfY29DG6DC8h9VAO3yyuN+2mqzhAnPev9UT
-         w5mYTQQ1rx72h+kjOMpG1Zjam3qSG0RAgJtQuT0v66Xud1Pv1pBCuZQzecQEPEgDJ94q
-         TckBDgYPmMdLW+fFsWdBuPiq6QhrJ3/e08OXhS6E2t1lHSDAD2ANQLqGHs9yflThud03
-         FRcyf+5vdjzF7iePVt5CrhUaomPW7I70TND0PQ2sAfK9gnv4Oa1L5hHWs5f5dau5DxRX
-         BPcEm9oGVrgl+ALSJLPW/LetUJvbdbXCBK2dXmMG0Gvcs7Mwb0kG5G6c6Ej2NpCCzNzN
-         gveA==
+        b=l2tCmDiO3fgWrCl13KPcxQL+7BtgLJorIx4IRTXdVzQzuWY0GbVNS2I2wYq7r6aHZU
+         Vnv7KxEovKfHn0QGHUEV35PpPXhscJh5TYfgKVVpWQnVnhn+xLYh/C0h4khUNIntcopU
+         8JhtHtBA8Kz2nFs/0aFAKuWCpDgkG2qmwl6Hde7yEbhL2SJ/nvv/TAIzX2KVkCzHiE80
+         ZW2XREE1hCfs/Nn4T67ifDVyhZaLU9jQWEqnH43BeBUCoe0mzMLGa8ICTVa+ejB0lAr9
+         PwdXq7DhrgWWp/xXjQKGkMQInIL9btE3d5jy97RJk0l2oo4gz2auFVXLTzR5Dq9P+4bR
+         onxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=Z0zsUVLNnlB8or8gHrZOqCwKbl6RppYxTr0hODbbSNU=;
-        b=Ttu3ULpl7wGJ630R+JJH0Pwa85KuMo413B9NOh909ANoOwBFLg/ASoaDTEXjd1dmjD
-         iYlvWXF+PKnD4y+mI4yM/xJyt77V7UUfIpiWnMOC2pdGv3QeknvBEV2ruBvYRwQQ+tFW
-         Erw0+GwYSWIx8I+0Lhv50VBexxJjvIu86xYwhuDmYb41MiorvkIBwfLXzVFSzlntydec
-         9mR1UPAflwt1a7VcGA5yy2hP6MDN9Q2ovD9lEmn+Qcs6ifRSvE+wwFuzBjFX7IctLqRB
-         Hy8/BCgqPpwxnMqfbCGgW70iBSHPu+ERPD04g82GdBIX8uxvAQBqdI9kxllfg24DdTnC
-         0Tww==
+        bh=HGJ4/+qQUdyPODxPG2cP+HJYVboRrZ3kGN9lq/KT9Qo=;
+        b=CWOk6vWoBbyNJqBfC2AXM6W5Bs/V7MBDH9vUW6zqHG2cvS/66gR3Yw+3opET+99RR2
+         QvJS/v2KQ7+eDhkZTGXImvhYfkzfJGh9+C0OnrAdWEpJ7P9ZyvCU0Ir9/sehf7Pfwr7F
+         HFbrMQtrs5wuG7Zasu9j1kzmrJHoB/DUAauCZUcZ7HkMwgWydsXl53WKYZLtSiVD1vdL
+         q/Jrx6JE8xtnLPqRSsQkE9a9ChORNNvzFycoq5boTu5gS7ouWhH86dnHA6V17vSTIzFq
+         y83vsHHtGE6pvCd2ksgPvn+ycPYJJFnAFua91tUo0HLbiZZIDpI9bb3HPcCKYqgahMqN
+         2Obw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=QN11WXbe;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=i4yiXorH;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=S7nXKTaF;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id t15-20020adfe10f000000b00250779a7396si7246338wrz.231.2023.01.09.14.43.25
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
+        by mx.google.com with ESMTPS id j20-20020a5d4534000000b002bc81220414si1165898wra.128.2023.01.09.14.43.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Jan 2023 14:43:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+        Mon, 09 Jan 2023 14:43:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=QN11WXbe;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=i4yiXorH;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=S7nXKTaF;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 337A84D34C;
-	Mon,  9 Jan 2023 22:43:25 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 6D1375CDE2;
+	Mon,  9 Jan 2023 22:43:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673304205; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	t=1673304208; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Z0zsUVLNnlB8or8gHrZOqCwKbl6RppYxTr0hODbbSNU=;
-	b=QN11WXbehq8DvzbITK6TE43f10xs0AaqUwKIgQtV4/Wf4TXJoHJYIvJMO3f/644st/ilG0
-	af/JHdlhuC2zhZEuMLcP7HGfH9zZsn22lVgX1M+Yq93fD00+m6du+PtFWOsTcyhx9TEpTv
-	WGBQ9jmKn+tF+Hb6GjHJE3wXQuB2OpM=
+	bh=HGJ4/+qQUdyPODxPG2cP+HJYVboRrZ3kGN9lq/KT9Qo=;
+	b=S7nXKTaFaN3znEDGqEPHwKAb/JqzLtAVrypyG0xrUNmzB+CIrovmqFV1ByLZw4s9oWaUni
+	JxSYxK9vmhCcFcKGjtce8NR73F2LWoYOn1GXWfrT4Zl5yX/WROppysdMzqfUpwPVdMfsjS
+	1yu5KVhT1jdgWJf0P15LLd5eZPjSpJ4=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673304205;
+	s=susede2_ed25519; t=1673304208;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Z0zsUVLNnlB8or8gHrZOqCwKbl6RppYxTr0hODbbSNU=;
-	b=i4yiXorHjL+9WdfuVS78ueF6TGVDIlbVmQzGRgKUpjrWv6RU7xMPs7pDa+nXeCeTtTu17n
-	hxrIbCTuI1zPmYCA==
+	bh=HGJ4/+qQUdyPODxPG2cP+HJYVboRrZ3kGN9lq/KT9Qo=;
+	b=d4/BtsdUbOVzEXmAn5WN/t3joprzEv2y6kRHIFFA/l43/wZ5HWODxT2hxKdMp2J3sjnnJ8
+	+FjaWOqiRvbj1lCg==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 2AE8513583;
-	Mon,  9 Jan 2023 22:43:21 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 988D613583;
+	Mon,  9 Jan 2023 22:43:25 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 0OdPOYmYvGMdIQAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 09 Jan 2023 22:43:21 +0000
+	id UHV3GI2YvGMdIQAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 09 Jan 2023 22:43:25 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,89 +82,79 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>
-Subject: [RFC PATCH v2 15/19] tests: device-introspect-test: cope with ARM TCG-only devices
-Date: Mon,  9 Jan 2023 19:42:28 -0300
-Message-Id: <20230109224232.11661-16-farosas@suse.de>
+	Thomas Huth <thuth@redhat.com>
+Subject: [RFC PATCH v2 16/19] tests/tcg: Do not build/run TCG tests if TCG is disabled
+Date: Mon,  9 Jan 2023 19:42:29 -0300
+Message-Id: <20230109224232.11661-17-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230109224232.11661-1-farosas@suse.de>
 References: <20230109224232.11661-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: VeRIVjLeebWF
+X-TUID: o72ogAwkGISq
 
-From: Claudio Fontana <cfontana@suse.de>
+The tests under tests/tcg depend on the TCG accelerator. Do not build
+them if --disable-tcg was given in the configure line.
 
-Skip the test_device_intro_concrete for now for ARM KVM-only build,
-as on ARM we currently build devices for ARM that are not
-compatible with a KVM-only build.
+Test against CONFIG_TCG='' instead of CONFIG_TCG=y to account for
+CONFIG_TCG=m.
 
-We can remove this workaround when we fix this in KConfig etc,
-and we only list and build machines that are compatible with KVM
-for KVM-only builds.
+sample output:
 
-Alternative implementation provided by Alex.
+$ make check-tcg
+  GIT     ui/keycodemapdb meson dtc
+  SKIPPED x86_64-softmmu guest-tests because TCG is disabled in this build
 
-Suggested-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Cc: Thomas Huth <thuth@redhat.com>
-Cc: Laurent Vivier <lvivier@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- tests/qtest/device-introspect-test.c | 32 +++++++++++++++++++++++-----
- 1 file changed, 27 insertions(+), 5 deletions(-)
+ configure              |  4 ++++
+ tests/Makefile.include | 10 ++++++++++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/tests/qtest/device-introspect-test.c b/tests/qtest/device-introspect-test.c
-index 5b0ffe43f5..f89df87f74 100644
---- a/tests/qtest/device-introspect-test.c
-+++ b/tests/qtest/device-introspect-test.c
-@@ -304,6 +304,24 @@ static void test_abstract_interfaces(void)
-     qtest_quit(qts);
- }
+diff --git a/configure b/configure
+index 2281892657..ad25a3b5f5 100755
+--- a/configure
++++ b/configure
+@@ -2351,6 +2351,10 @@ if test "$plugins" = "yes" ; then
+     echo "CONFIG_PLUGIN=y" >> $config_host_mak
+ fi
  
-+/*
-+ * XXX currently we build also boards for ARM that are incompatible with KVM.
-+ * We therefore need to check this explicitly, and only test virt for kvm-only
-+ * arm builds.
-+ * After we do the work of Kconfig etc to ensure that only KVM-compatible boards
-+ * are built for the kvm-only build, we could remove this.
-+ */
-+static bool skip_machine_tests(void)
-+{
-+#ifndef CONFIG_TCG
-+    const char *arch = qtest_get_arch();
-+    if (strcmp(arch, "arm") == 0 || strcmp(arch, "aarch64") == 0) {
-+        return true;
-+    }
-+#endif /* !CONFIG_TCG */
-+    return false;
-+}
++if test "$tcg" = "enabled" ; then
++    echo "CONFIG_TCG=y" >> $config_host_mak
++fi
 +
- static void add_machine_test_case(const char *mname)
- {
-     char *path, *args;
-@@ -328,11 +346,15 @@ int main(int argc, char **argv)
-     qtest_add_func("device/introspect/none", test_device_intro_none);
-     qtest_add_func("device/introspect/abstract", test_device_intro_abstract);
-     qtest_add_func("device/introspect/abstract-interfaces", test_abstract_interfaces);
--    if (g_test_quick()) {
--        qtest_add_data_func("device/introspect/concrete/defaults/none",
--                            g_strdup(common_args), test_device_intro_concrete);
--    } else {
--        qtest_cb_for_every_machine(add_machine_test_case, true);
-+
-+    if (!skip_machine_tests()) {
-+        if (g_test_quick()) {
-+            qtest_add_data_func("device/introspect/concrete/defaults/none",
-+                                g_strdup(common_args),
-+                                test_device_intro_concrete);
-+        } else {
-+            qtest_cb_for_every_machine(add_machine_test_case, true);
-+        }
-     }
+ if test -n "$gdb_bin"; then
+     gdb_version=$($gdb_bin --version | head -n 1)
+     if version_ge ${gdb_version##* } 9.1; then
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 9422ddaece..aa0e610cf2 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -45,6 +45,7 @@ RUN_TCG_TARGET_RULES=$(patsubst %,run-tcg-tests-%, $(TCG_TESTS_TARGETS))
+ $(foreach TARGET,$(TCG_TESTS_TARGETS), \
+         $(eval $(BUILD_DIR)/tests/tcg/config-$(TARGET).mak: config-host.mak))
  
-     return g_test_run();
++ifneq ($(CONFIG_TCG),)
+ .PHONY: $(TCG_TESTS_TARGETS:%=build-tcg-tests-%)
+ $(TCG_TESTS_TARGETS:%=build-tcg-tests-%): build-tcg-tests-%: $(BUILD_DIR)/tests/tcg/config-%.mak
+ 	$(call quiet-command, \
+@@ -56,6 +57,15 @@ $(TCG_TESTS_TARGETS:%=run-tcg-tests-%): run-tcg-tests-%: build-tcg-tests-%
+ 	$(call quiet-command, \
+            $(MAKE) -C tests/tcg/$* $(SUBDIR_MAKEFLAGS) SPEED=$(SPEED) run, \
+         "RUN", "$* guest-tests")
++else
++.PHONY: $(TCG_TESTS_TARGETS:%=build-tcg-tests-%)
++$(TCG_TESTS_TARGETS:%=build-tcg-tests-%):
++	@echo "  SKIPPED $(subst build-tcg-tests-,,$@) guest-tests because TCG is disabled in this build"
++
++.PHONY: $(TCG_TESTS_TARGETS:%=run-tcg-tests-%)
++$(TCG_TESTS_TARGETS:%=run-tcg-tests-%):
++	@echo "  SKIPPED $(subst run-tcg-tests-,,$@) guest-tests because TCG is disabled in this build"
++endif
+ 
+ .PHONY: $(TCG_TESTS_TARGETS:%=clean-tcg-tests-%)
+ $(TCG_TESTS_TARGETS:%=clean-tcg-tests-%): clean-tcg-tests-%:
 -- 
 2.35.3

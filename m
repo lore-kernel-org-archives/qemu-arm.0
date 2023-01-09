@@ -1,155 +1,385 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2411470ejc;
-        Mon, 9 Jan 2023 08:42:43 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXskxLYjijgW+LvL0C2Xrmgn+ZAyMESVc21Jis90ilcLzcMtq+If8RGtpmXtKr3g7NXPqMoB
-X-Received: by 2002:adf:dc0f:0:b0:242:4f41:4dae with SMTP id t15-20020adfdc0f000000b002424f414daemr40565138wri.71.1673282563288;
-        Mon, 09 Jan 2023 08:42:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673282563; cv=none;
-        d=google.com; s=arc-20160816;
-        b=wj40C5hQjHWOwgRtEkUhvWSGb8cL8RuVw7XegtLJ9UDg2CdoLnItAFpbN99/zekoN3
-         ZLoXXxtDWF/P5E1V74Wcv34dvqGVbDQngOVkNS8lE9YCxWcatKv7LzhlxqZiJVJ63Uv8
-         9pfMpnvHfa5gPVXWBtN5QndTlqq2mzbleL7D3sUrU6hNY9NtxngxNSCTVGAxt26yAS2w
-         e5Fc8WX+ygSUdDBZXIT+ij4G5njNYHcrp1MQIWp+uHS1mWXhYusqTHoSFmsAxeYjp6bM
-         hZd6mdnpMCbBXSJQCaHNZ0toqEWNN278/2XG4FYKDGFYIpETjq0IyxMTQMq4JxzCbXX9
-         jjLg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=VdI81UaCvhNm3g/O2k1hG7XmGPh04uIBAka7+j2jxQE=;
-        b=jO44OteyOVYBCJi+lkgZU0ub45qAotvNKcnm1WPTN+wD9aaXRT09NUHgHMaY0kVsO9
-         zF9j6q1O7EvpwNehznHxhi+6YfK0HexAmgigJBG29kqHfPRXqQZ0QxJULQrfGn7vWKPu
-         KKvOxM6hTwTyiY8FngDobhMp4deshRPpnGtokl8Crt1p12dhXLRkSO1dStZsqw4hT6yp
-         drZqjcPr7pAl7SgwHbZ4s4g2tECsVOIbXws6bq2/fGCKVQq1zLKmV6QDxUYv8xkkFLvZ
-         V9mQyDZ6xwiP0PK6NtmK8k5BvTeQFPG0vOdfOQ6BJjiKW/5AGOtWXocCU678EKwZcWp7
-         XL3Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=KBGjQCnv;
-       dkim=neutral (no key) header.i=@suse.de header.b=q+fVyjd8;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id i10-20020a0560001aca00b00268ca155067si8480518wry.418.2023.01.09.08.42.42
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([185.81.254.11])
+        by smtp.gmail.com with ESMTPSA id l1-20020adfe9c1000000b00289bdda07b7sm8837321wrn.92.2023.01.09.09.03.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Jan 2023 08:42:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=KBGjQCnv;
-       dkim=neutral (no key) header.i=@suse.de header.b=q+fVyjd8;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 1E3181FD93;
-	Mon,  9 Jan 2023 16:42:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673282562; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=VdI81UaCvhNm3g/O2k1hG7XmGPh04uIBAka7+j2jxQE=;
-	b=KBGjQCnvnGx0hKJLsijAG7sthUuoDST4Imx/DxoNrBvF+qXcmSGM/OYinJtkHpJPUowZ2T
-	kSRNXyqbRcMHpeRxOZ2R5MQajVPvfIFq/BRhi4va1RHak+zAJXDslVd7WWF5d/MrH4430Y
-	vYYs2yrEoZnE5RMPs73/m/HAqufP3Jk=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673282562;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=VdI81UaCvhNm3g/O2k1hG7XmGPh04uIBAka7+j2jxQE=;
-	b=q+fVyjd8cMevDxmAY+ycn+Sd/CS9cHgI0eIrDrP9ofPgwE8UiN/ervzGlCIO6FI5ObK4FW
-	yXNcvVRqKlB8iTDA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 8EEFF13583;
-	Mon,  9 Jan 2023 16:42:41 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id XovWFAFEvGPMewAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 09 Jan 2023 16:42:41 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Alex
- =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Cleber Rosa
- <crosa@redhat.com>, Wainer
- dos Santos Moschetta <wainersm@redhat.com>, Beraldo Leal
- <bleal@redhat.com>
-Subject: Re: [PATCH] tests/avocado: add machine:none tag to version.py
-In-Reply-To: <2a1d1243-2675-8be8-c35f-8c072065645e@linaro.org>
-References: <20221215224725.3236-1-farosas@suse.de>
- <2a1d1243-2675-8be8-c35f-8c072065645e@linaro.org>
-Date: Mon, 09 Jan 2023 13:42:38 -0300
-Message-ID: <87pmbnpsld.fsf@suse.de>
+        Mon, 09 Jan 2023 09:03:39 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 8D9101FFB7;
+	Mon,  9 Jan 2023 17:03:38 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+	Jagannathan Raman <jag.raman@oracle.com>,
+	John G Johnson <john.g.johnson@oracle.com>
+Subject: [RFC PATCH] docs: add a proper feature overview in "About QEMU"
+Date: Mon,  9 Jan 2023 17:03:23 +0000
+Message-Id: <20230109170323.3796306-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: OIwGgaOBmFse
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: pVoM5iCPTTxa
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+I decide to do this because I was looking for the best place to add a
+reference to a document on semihosting and there didn't seem to be
+an obvious place to do this. To do this I took the original pre-amble
+to the about index and moved it to its own section, expanding the
+description and giving a quick high level overview of some of the key
+feature of QEMU.
 
-> On 15/12/22 23:47, Fabiano Rosas wrote:
->> This test currently fails when run on a host for which the QEMU target
->> has no default machine set:
->>=20
->> ERROR| Output: qemu-system-aarch64: No machine specified, and there is
->> no default
->>=20
->> Signed-off-by: Fabiano Rosas <farosas@suse.de>
->> ---
->>   tests/avocado/version.py | 1 +
->>   1 file changed, 1 insertion(+)
->>=20
->> diff --git a/tests/avocado/version.py b/tests/avocado/version.py
->> index ded7f039c1..dd775955eb 100644
->> --- a/tests/avocado/version.py
->> +++ b/tests/avocado/version.py
->> @@ -15,6 +15,7 @@
->>   class Version(QemuSystemTest):
->>       """
->>       :avocado: tags=3Dquick
->> +    :avocado: tags=3Dmachine:none
->>       """
->>       def test_qmp_human_info_version(self):
->>           self.vm.add_args('-nodefaults')
->
-> Looking at previous attempt in=20
-> https://lore.kernel.org/qemu-devel/20220104122104.849084-1-alex.bennee@li=
-naro.org/
->
-> * tests/avocado/empty_cpu_model.py
->
->    Forced via vm.add_args('-machine', 'none')
->
->    tags=3Dmachine:none would be cleaner.
->
-> * tests/avocado/info_usernet.py and
-> * tests/avocado/vnc.py
->
->    -> Fixed by 5104b73824 ("tests/avocado: set -machine none
->    for userfwd and vnc tests")
->
-> * tests/avocado/version.py
->
->    -> This patch
->
-> * tests/avocado/migration.py
->
->    =3D> Missing
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ docs/about/features.rst       | 236 ++++++++++++++++++++++++++++++++++
+ docs/about/index.rst          |  16 +--
+ docs/devel/tcg-plugins.rst    |   2 +
+ docs/system/arm/emulation.rst |   2 +
+ docs/system/index.rst         |   2 +
+ docs/system/multi-process.rst |   2 +
+ docs/tools/index.rst          |   2 +
+ docs/user/index.rst           |   2 +
+ 8 files changed, 249 insertions(+), 15 deletions(-)
+ create mode 100644 docs/about/features.rst
 
-I think the migration test is a bit harder because the machine type
-would probably influnce the test. We would have to find a way to
-specificy the different -machine options for each architecture. Or a way
-of saying "use default machine, except for arm".
-
->
-> Maybe we can squash to this patch?
->
-> Meanwhile:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-
-Thanks
+diff --git a/docs/about/features.rst b/docs/about/features.rst
+new file mode 100644
+index 0000000000..037234c10a
+--- /dev/null
++++ b/docs/about/features.rst
+@@ -0,0 +1,236 @@
++Features
++========
++
++Virtualisation
++--------------
++
++The most common use case for QEMU is to provide a virtual model of a
++machine (CPU, memory and emulated devices) to run a guest OS. It
++supports a number of hypervisors (known as accelerators) as well as a
++dynamic JIT known as the Tiny Code Generator (TCG) capable of
++emulating many CPUs.
++
++.. list-table:: Supported Accelerators
++  :header-rows: 1
++
++  * - Accelerator
++    - Host OS
++    - Host Architectures
++  * - KVM
++    - Linux
++    - Arm (64 bit only), MIPS, PPC, RISC-V, s390x, x86
++  * - Xen
++    - Linux (as dom0)
++    - Arm, x86
++  * - Intel HAXM (hax)
++    - Linux, Windows
++    - x86
++  * - Hypervisor Framework (hvf)
++    - MacOS
++    - x86 (64 bit only), Arm (64 bit only)
++  * - Windows Hypervisor Platform (wphx)
++    - Windows
++    - x86
++  * - NetBSD Virtual Machine Monitor (nvmm)
++    - NetBSD
++    - x86
++  * - Tiny Code Generator (tcg)
++    - Linux, other POSIX, Windows, MacOS
++    - Arm, x86, Loongarch64, MIPS, PPC, s390x, Sparc64, TCI [#tci]_
++
++.. [#tci] The Tiny Code Interpreter (TCI) can be used where there is no
++          explicit support for a processor backend. It will be even
++          slower than normal TCG guests.
++
++Related features
++~~~~~~~~~~~~~~~~
++
++System emulation provides a wide range of device models to emulate
++various hardware components you may want to add to your machine. This
++includes a wide number of VirtIO devices which are specifically tuned
++for efficient operation under virtualisation. Some of the device
++emulation can be offloaded from the main QEMU process using either
++vhost-user (for VirtIO) or :ref:`Multi-process QEMU`. If the platform
++supports it QEMU also supports directly passing devices through to
++guest VMs to eliminate the device emulation overhead. See
++:ref:`device-emulation` for more details.
++
++There is a full featured block layer allows for construction of
++complex storage typologies which can be stacked across multiple layers
++supporting redirection, networking, snapshots and migration support.
++
++The flexible ``chardev`` system allows for handling IO from character
++like devices using stdio, files, unix sockets and TCP networking.
++
++QEMU provides a number of management interfaces including a line based
++Human Monitor Protocol (HMP) that allows you to dynamically add and
++remove devices as well as introspect the system state. The QEMU
++Monitor Protocol (QMP) is a well defined, versioned, machine usable
++API that presents a rich interface to other tools to create, control
++and manage Virtual Machines. This is the interface used by higher
++level tools interfaces such as `Virt Manager
++<https://virt-manager.org/>`_ using the `libvirt framework
++<https://libvirt.org>`_. Using some sort of management layer to
++configure complex QEMU setups is recommended.
++
++For the common accelerators QEMU supported debugging with its
++:ref:`gdbstub<GDB usage>` which allows users to connect GDB and debug
++system software images.
++
++See the :ref:`System Emulation` section of the manual for full details
++of how to run QEMU as a VMM.
++
++Emulation
++---------
++
++As alluded to above QEMU's Tiny Code Generator (TCG) also has the
++ability to emulate a number of CPU architectures on any supported
++platform. This can either be using full system emulation or using its
++"user mode emulation" support to run user space processes compiled for
++one CPU on another CPU.
++
++See `User Mode Emulation` for more details on running in this mode.
++
++.. list-table:: Supported Guest Architectures for Emulation
++  :widths: 30 10 10 50
++  :header-rows: 1
++
++  * - Architecture (qemu name)
++    - System
++    - User-mode
++    - Notes
++  * - Alpha
++    - Yes
++    - Yes
++    - Legacy 64 bit RISC ISA developed by DEC
++  * - Arm (arm, aarch64)
++    - Yes
++    - Yes
++    - Wide range of features, see :ref:`Arm Emulation` for details
++  * - AVR
++    - Yes
++    - No
++    - 8 bit micro controller, often used in maker projects
++  * - Cris
++    - Yes
++    - Yes
++    - Embedded RISC chip developed by AXIS
++  * - Hexagon
++    - No
++    - Yes
++    - Family of DSPs by Qualcomm
++  * - PA-RISC (hppa)
++    - Yes
++    - Yes
++    - A legacy RISC system used in HPs old minicomputers
++  * - x86 (i386, x86_64)
++    - Yes
++    - Yes
++    - The ubiquitous desktop PC CPU architecture, 32 and 64 bit.
++  * - Loongarch
++    - Yes
++    - Yes
++    - A MIPs-like 64bit RISC architecture developed in China
++  * - m68k
++    - Yes
++    - Yes
++    - Motorola 68000 variants and ColdFire
++  * - Microblaze
++    - Yes
++    - Yes
++    - RISC based soft-core by Xilinx
++  * - MIPS (mips, mipsel, mips64, mips64el)
++    - Yes
++    - Yes
++    - Venerable RISC architecture originally out of Stanford University
++  * - Nios2
++    - Yes
++    - Yes
++    - 32 bit embedded soft-core by Altera
++  * - OpenRISC
++    - Yes
++    - Yes
++    - Open source RISC architecture developed by the OpenRISC community
++  * - Power (ppc, ppc64)
++    - Yes
++    - Yes
++    - A general purpose RISC architecture now managed by IBM
++  * - RISC-V
++    - Yes
++    - Yes
++    - An open standard RISC ISA maintained by RISC-V International
++  * - RX
++    - Yes
++    - No
++    - A 32 bit micro controller developed by Renesas
++  * - s390x
++    - Yes
++    - Yes
++    - A 64 bit CPU found in IBM's System Z mainframes
++  * - sh4
++    - Yes
++    - Yes
++    - A 32 bit RISC embedded CPU developed by Hitachi
++  * - SPARC (sparc, sparc64)
++    - Yes
++    - Yes
++    - A RISC ISA originally developed by Sun Microsystems
++  * - Tricore
++    - Yes
++    - No
++    - A 32 bit RISC/uController/DSP developed by Infineon
++  * - Xtensa
++    - Yes
++    - Yes
++    - A configurable 32 bit soft core now owned by Cadence
++
++Semi-hosting
++~~~~~~~~~~~~
++
++A number of guest architecture support semi-hosting which provides a
++way for guest programs to access the host system though a POSIX-like
++system call layer. This has applications for early software bring-up
++making it easy for a guest to dump data or read configuration files
++before a full operating system is implemented.
++
++Some of those guest architectures also support semi-hosting in
++user-mode making the testing of "bare-metal" micro-controller code
++easy in a user-mode environment that doesn't have a full libc port.
++
++Deterministic Execution with Record/Replay
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++
++For system emulation QEMU offers a execution mode called ``icount``
++which allows for guest time to be purely a function of the number of
++instructions executed. Combined with snapshots and a logging of HW
++events a deterministic execution can be recorded and played back at
++will.
++
++gdbstub
++~~~~~~~
++
++Under emulation the :ref:`gdbstub<GDB usage>` is fully supported and
++takes advantage of the implementation to support unlimited breakpoints
++in the guest code. For system emulation we also support an unlimited
++number of memory based watchpoints as well as integration with
++record/replay to support reverse debugging.
++
++
++TCG Plugins
++~~~~~~~~~~~
++
++In any emulation execution mode you can write :ref:`TCG Plugins` which
++can instrument the guest code as it executes to a per-instruction
++granularity. This is useful for writing tools to analyse the real
++world execution behaviour of your programs.
++
++Tools
++-----
++
++QEMU also provides a number of standalone commandline utilities, such
++as the ``qemu-img`` disk image utility that allows you to create,
++convert and modify disk images. While most are expected to be used in
++conjunction with QEMU itself some can also be used with other VMMs
++that support the same interfaces.
++
++See :ref:`Tools` for more details.
+diff --git a/docs/about/index.rst b/docs/about/index.rst
+index 5bea653c07..6949e6dc93 100644
+--- a/docs/about/index.rst
++++ b/docs/about/index.rst
+@@ -4,24 +4,10 @@ About QEMU
+ 
+ QEMU is a generic and open source machine emulator and virtualizer.
+ 
+-QEMU can be used in several different ways. The most common is for
+-"system emulation", where it provides a virtual model of an
+-entire machine (CPU, memory and emulated devices) to run a guest OS.
+-In this mode the CPU may be fully emulated, or it may work with
+-a hypervisor such as KVM, Xen, Hax or Hypervisor.Framework to
+-allow the guest to run directly on the host CPU.
+-
+-The second supported way to use QEMU is "user mode emulation",
+-where QEMU can launch processes compiled for one CPU on another CPU.
+-In this mode the CPU is always emulated.
+-
+-QEMU also provides a number of standalone commandline utilities,
+-such as the ``qemu-img`` disk image utility that allows you to create,
+-convert and modify disk images.
+-
+ .. toctree::
+    :maxdepth: 2
+ 
++   features
+    build-platforms
+    deprecated
+    removed-features
+diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+index 9740a70406..81dcd43a61 100644
+--- a/docs/devel/tcg-plugins.rst
++++ b/docs/devel/tcg-plugins.rst
+@@ -3,6 +3,8 @@
+    Copyright (c) 2019, Linaro Limited
+    Written by Emilio Cota and Alex Bennée
+ 
++.. _TCG Plugins:
++
+ QEMU TCG Plugins
+ ================
+ 
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index b33d7c28dc..b87e064d9d 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -1,3 +1,5 @@
++.. _Arm Emulation:
++
+ A-profile CPU architecture support
+ ==================================
+ 
+diff --git a/docs/system/index.rst b/docs/system/index.rst
+index e3695649c5..282b6ffb56 100644
+--- a/docs/system/index.rst
++++ b/docs/system/index.rst
+@@ -1,3 +1,5 @@
++.. _System Emulation:
++
+ ----------------
+ System Emulation
+ ----------------
+diff --git a/docs/system/multi-process.rst b/docs/system/multi-process.rst
+index 210531ee17..16f0352416 100644
+--- a/docs/system/multi-process.rst
++++ b/docs/system/multi-process.rst
+@@ -1,3 +1,5 @@
++.. _Multi-process QEMU:
++
+ Multi-process QEMU
+ ==================
+ 
+diff --git a/docs/tools/index.rst b/docs/tools/index.rst
+index 1edd5a8054..2151adcf78 100644
+--- a/docs/tools/index.rst
++++ b/docs/tools/index.rst
+@@ -1,3 +1,5 @@
++.. _Tools:
++
+ -----
+ Tools
+ -----
+diff --git a/docs/user/index.rst b/docs/user/index.rst
+index 2c4e29f3db..782d27cda2 100644
+--- a/docs/user/index.rst
++++ b/docs/user/index.rst
+@@ -1,3 +1,5 @@
++.. _User Mode Emulation:
++
+ -------------------
+ User Mode Emulation
+ -------------------
+-- 
+2.34.1

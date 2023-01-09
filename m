@@ -1,202 +1,366 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1746479ejb;
-        Fri, 3 Feb 2023 12:40:32 -0800 (PST)
-X-Google-Smtp-Source: AK7set8dNedjzVuVK/tqox3F4ERhoY3P0zzdi7WtOouz//NhpRSOy4XtqpiiP1ql6wb3odcnDcu3
-X-Received: by 2002:a62:b519:0:b0:58e:151c:f7fe with SMTP id y25-20020a62b519000000b0058e151cf7femr8816984pfe.4.1675456831789;
-        Fri, 03 Feb 2023 12:40:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675456831; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1897477ejb;
+        Fri, 3 Feb 2023 16:34:29 -0800 (PST)
+X-Google-Smtp-Source: AK7set/yCYVDxFiQ+zaCEKEOMPlJlIu1NQX4S3tmFSGBmQc+QxUdPgjXGMoIFQNXaErVJhf9vywk
+X-Received: by 2002:ac8:7d14:0:b0:3b8:6ae9:b108 with SMTP id g20-20020ac87d14000000b003b86ae9b108mr21390734qtb.27.1675470869248;
+        Fri, 03 Feb 2023 16:34:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675470869; cv=none;
         d=google.com; s=arc-20160816;
-        b=xnrBef44Y+RjS5TK3Sibfvfi7kO9dYiUhp3ny7wiosxCRDGoDJQoo9upHjTZrIOvsM
-         vWzDMkB4ADiYbNx0+eyg1sW4dpvCyYow7X9E8U5U+jFsZsrGcFJPzJFObvrLCGpL6Amw
-         6zRglagYATcPLfSO2/gzqWFzgJVYLBE438NJ9aDnLUg3rzy9HcxY/RkqtOHaaS0LBcxA
-         tEYlb5/JHttbMqWJ1lNwnH8nbg7vqup2hmZiBdoUvricgnUtXMx7JyhlkpxtHtDrez0s
-         3y5uujnAJX2SuEtvbwllwO0FVk7N2YurTMjvwBGJJklx0agnhfrTUgDYeIP8cb1nWtEq
-         1wPA==
+        b=IYxBbuNXmXFP1w/kuVu5zZ4ZHMBT52DgL/kRrrh2zLV6hrdET8SE6Am2XxHuRyEnfG
+         Wf00UX9YkYEE90EFC9BxzFvLKI9+tNvW589BiVRNH0GCqo1R6p/cT3DUUGX1pIwK/82E
+         5DKxfYSIVsBv1l6TP7Wi9VwmkK7PEgMU1ZId74APGiAap5ejo6byR3UZ815urqIlCRlF
+         Ip5qa5qKC89x+CD0x6V8xny2VR3MTqhy0XcfQXiNKsMYftOgN0LiLYmeIJPLuEQQHiyY
+         +cCXACgAHinq1UpTqxZ4ofvUj0acsyfc9RVhS9EDmTbRZcPQANH8YEp5Dr6O0GLmepVM
+         Pu6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=iFvsZqbjjVzhb8kzRNmM+lxgUxdxU/8TitpFjwGLNtE=;
-        b=KGvhAaDluF+nIpphNBiKoIAnRjbkZbebMJf0ca+OnNELz8DR72skr9BSIQhaxd8VS+
-         dxAMnBILqPQDUQldWR1mjZ+p3EqYA2/rZEeq5sv8luCAhuYXKUSXGukZKkxBe+6ZdlX1
-         POyezqz5aRfu57VnkUM11dC46joZw9b47sAfie6LDjQLj2fqLJ7rv1ZQsrNQu8OBYr88
-         Z6Itvkyi9AmKQ3lkPXq9cGOj56HSG5IaAWDc45K1Q+6T6EdEpMrpeQxLG2t2q+2yVQuO
-         lUK+gQxiGrm+e+dhzGcTHCW2Vi7obXsV5ovO8cRpGtMNDj3hWQr/0n4omhS3luMDnj3e
-         b5KA==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
+         :from;
+        bh=92d+keAkOpdrw97rXed3J2oK62t7GfA9klgz5PUoI3c=;
+        b=g/k9LH5s8vuH63tIxDnbPt7oF4nFdT4PksCIVphxbrVzjJpkEaYk/ByvdbWMbxFcVz
+         j0buqylSF5QtE1oQhVRPK+OE80AFi7FU1/NKVbZnLS02BvwEwo6ZZCF6EayrDt2q84B+
+         NWEmgyOV4R7D9BRtTDdyMNmpaXWpL+PJc1Ub25HVL0vVVuh4nfwR/NmPuLbdqufXh/8P
+         9PzMQibIvo9jB/NZYSJrLYp0tdCvF5kMM7/F8t2wtr0S+6EPeQArDWTdmcua2G5Yg2Ch
+         ctQQ0LYn6wYdCyjCr8UPZYCxaX8nhfbV2+GaoCdX22P77poIQ8DiNSu/oB6rv/7WueDZ
+         Lpng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KYuj2w8C;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id x13-20020aa793ad000000b005934a047686si3294029pff.196.2023.02.03.12.40.31;
-        Fri, 03 Feb 2023 12:40:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 8-20020ac84e88000000b0039d03667938si2924010qtp.436.2023.02.03.16.34.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 03 Feb 2023 16:34:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KYuj2w8C;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S232372AbjBCUka (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 3 others); Fri, 3 Feb 2023 15:40:30 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:38084 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S230042AbjBCUk3 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 3 Feb 2023 15:40:29 -0500
-Received: from mail-pg1-x52d.google.com (mail-pg1-x52d.google.com [IPv6:2607:f8b0:4864:20::52d])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id C3B2F9A81A
-        for <kvm@vger.kernel.org>; Fri,  3 Feb 2023 12:40:27 -0800 (PST)
-Received: by mail-pg1-x52d.google.com with SMTP id 141so4492136pgc.0
-        for <kvm@vger.kernel.org>; Fri, 03 Feb 2023 12:40:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=iFvsZqbjjVzhb8kzRNmM+lxgUxdxU/8TitpFjwGLNtE=;
-        b=KYuj2w8CKAesNyc7VyMnGHaBm+iR+aSX+oHeoOaBBbXpN9qKlOMAsAbvCzi9t8mD92
-         G4hwpk4PLuIOlxL6FL2/JcEiAYVxbYj5Cj8wqyifcW2S1S1lLS3PNbiuL0NpFS1gNw34
-         4NmjfwNRymhgc9beWyeXQooQp62xEkzv3xrFfSGjtQNPrb2zSZ+o0f01qAn71vw/QE9D
-         auN3BzEdrN5pkYVCdILnH7wTueURHZsvbCZLLVXESHJQiM50r9JT8Tty5Eik+pQbcXOD
-         tXMlC98ou7N9EhDfqSH5RQMA9DCDfaQQJ29+KiixsHWHhQ84CYKZQPlfUTYiP5HsvVh8
-         3ykQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iFvsZqbjjVzhb8kzRNmM+lxgUxdxU/8TitpFjwGLNtE=;
-        b=edTIzMOdGn+vip2pje30gK22E668xbHaiRL1hyXYRGhPaRM6XKPfbi5ee9Xk3qyk2n
-         ZqJdpZ3ADj5XgMRslfT1IKGhSqDHYU5MP4eyzOMYzXLzJPFdhOMeQfj+mQs019buMyEM
-         IWoqot0h4k+Nlv5Djx4CQhPnMkupSxIQH8KKSOWNFMN0UKDFXdFGI+xtajxP+DXhH1p6
-         PtQ7Vvlm1WpxsXYtKmuqP4JEoBRWagkFV0tgVN3ms9hRZXzIMQB3kqh2iFgD7Bszvpct
-         h00hO40j8cSDLqs3QYHpeKfJcyOL4aZILQFV3hPO1qzNavu9Hj11TdUOdROHnA0+l73L
-         2FWQ==
-X-Gm-Message-State: AO0yUKW6irWyxVzYdzKUtkERROWc75x5Jlnwrt1gwgk/nFAf8Z16ztO1
-        MaTHr95Pa9QNKD5+MmhQqqhh+A==
-X-Received: by 2002:a62:e509:0:b0:583:2971:df8b with SMTP id n9-20020a62e509000000b005832971df8bmr10291206pff.20.1675456827094;
-        Fri, 03 Feb 2023 12:40:27 -0800 (PST)
-Received: from [192.168.50.177] (rrcs-173-197-98-118.west.biz.rr.com. [173.197.98.118])
-        by smtp.gmail.com with ESMTPSA id s25-20020aa78bd9000000b00581d62be96dsm2227683pfd.197.2023.02.03.12.40.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Feb 2023 12:40:26 -0800 (PST)
-Message-ID: <da118de5-adcd-ec0c-9870-454c3741a4ab@linaro.org>
-Date:   Fri, 3 Feb 2023 10:40:20 -1000
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pO6Vd-0005b5-FI; Fri, 03 Feb 2023 19:34:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1pO6Vb-0005Yv-6X; Fri, 03 Feb 2023 19:34:24 -0500
+Received: from mail-b.sr.ht ([173.195.146.151])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1pO6VY-0003rK-V7; Fri, 03 Feb 2023 19:34:22 -0500
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id E61E711F058;
+ Sat,  4 Feb 2023 00:34:17 +0000 (UTC)
+From: ~dreiss-meta <dreiss-meta@git.sr.ht>
+Date: Mon, 09 Jan 2023 15:05:24 -0800
+Subject: [PATCH qemu v3 2/2] target/arm/gdbstub: Support reading M security
+ extension registers from GDB
+Message-ID: <167547085745.18032.9674021893886143814-2@git.sr.ht>
+X-Mailer: git.sr.ht
+In-Reply-To: <167547085745.18032.9674021893886143814-0@git.sr.ht>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v5 2/3] arm/kvm: add support for MTE
-Content-Language: en-US
-To:     Cornelia Huck <cohuck@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Thomas Huth <thuth@redhat.com>,
-        Laurent Vivier <lvivier@redhat.com>
-Cc:     qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
-        Eric Auger <eauger@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Juan Quintela <quintela@redhat.com>,
-        Gavin Shan <gshan@redhat.com>,
-        =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20230203134433.31513-1-cohuck@redhat.com>
- <20230203134433.31513-3-cohuck@redhat.com>
-From:   Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230203134433.31513-3-cohuck@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ys+YoUD2+CIc
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: 15
+X-Spam_score: 1.5
+X-Spam_bar: +
+X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: ~dreiss-meta <dreiss@meta.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /Geg3Rwv6DKm
 
-On 2/3/23 03:44, Cornelia Huck wrote:
-> +static void aarch64_cpu_get_mte(Object *obj, Visitor *v, const char *name,
-> +                                void *opaque, Error **errp)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    OnOffAuto mte = cpu->prop_mte;
-> +
-> +    visit_type_OnOffAuto(v, name, &mte, errp);
-> +}
+From: David Reiss <dreiss@meta.com>
 
-You don't need to copy to a local variable here.
+Follows a fairly similar pattern to the existing special register debug
+support.  Only reading is implemented, but it should be possible to
+implement writes.
 
-> +
-> +static void aarch64_cpu_set_mte(Object *obj, Visitor *v, const char *name,
-> +                                void *opaque, Error **errp)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    visit_type_OnOffAuto(v, name, &cpu->prop_mte, errp);
-> +}
+Signed-off-by: David Reiss <dreiss@meta.com>
+---
+ target/arm/cpu.h      |  15 +++++-
+ target/arm/gdbstub.c  | 116 ++++++++++++++++++++++++++++++++++++++++++
+ target/arm/m_helper.c |  23 ++++-----
+ 3 files changed, 139 insertions(+), 15 deletions(-)
 
-... which makes get and set functions identical.
-No need for both.
-
-> +static inline bool arm_machine_has_tag_memory(void)
-> +{
-> +#ifndef CONFIG_USER_ONLY
-> +    Object *obj = object_dynamic_cast(qdev_get_machine(), TYPE_VIRT_MACHINE);
-> +
-> +    /* so far, only the virt machine has support for tag memory */
-> +    if (obj) {
-> +        VirtMachineState *vms = VIRT_MACHINE(obj);
-
-VIRT_MACHINE() does object_dynamic_cast_assert, and we've just done that.
-
-As this is startup, it's not the speed that matters.  But it does look unfortunate.  Not 
-for this patch set, but perhaps we ought to add TRY_OBJ_NAME to DECLARE_INSTANCE_CHECKER?
-
-> +void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp)
-> +{
-> +    bool enable_mte;
-> +
-> +    switch (cpu->prop_mte) {
-> +    case ON_OFF_AUTO_OFF:
-> +        enable_mte = false;
-> +        break;
-> +    case ON_OFF_AUTO_ON:
-> +        if (tcg_enabled()) {
-> +            if (cpu_isar_feature(aa64_mte, cpu)) {
-> +                if (!arm_machine_has_tag_memory()) {
-> +                    error_setg(errp, "mte=on requires tag memory");
-> +                    return;
-> +                }
-> +            } else {
-> +                error_setg(errp, "mte not supported by this CPU type");
-> +                return;
-> +            }
-> +        }
-> +        if (kvm_enabled() && !kvm_arm_mte_supported()) {
-> +            error_setg(errp, "mte not supported by kvm");
-> +            return;
-> +        }
-> +        enable_mte = true;
-> +        break;
-
-What's here is not wrong, but maybe better structured as
-
-	enable_mte = true;
-         if (qtest_enabled()) {
-             break;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 2ba64811a0..788eb31286 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -868,6 +868,7 @@ struct ArchCPU {
+     DynamicGDBXMLInfo dyn_sysreg_xml;
+     DynamicGDBXMLInfo dyn_svereg_xml;
+     DynamicGDBXMLInfo dyn_m_systemreg_xml;
++    DynamicGDBXMLInfo dyn_m_securereg_xml;
+=20
+     /* Timers used by the generic (architected) timer */
+     QEMUTimer *gt_timer[NUM_GTIMERS];
+@@ -1113,12 +1114,13 @@ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t=
+ *buf, int reg);
+=20
+ /*
+  * Helpers to dynamically generate XML descriptions of the sysregs,
+- * SVE registers, and M-profile system registers.
++ * SVE registers, M-profile system, and M-profile secure extension registers.
+  * Returns the number of registers in each set.
+  */
+ int arm_gen_dynamic_sysreg_xml(CPUState *cpu, int base_reg);
+ int arm_gen_dynamic_svereg_xml(CPUState *cpu, int base_reg);
+ int arm_gen_dynamic_m_systemreg_xml(CPUState *cpu, int base_reg);
++int arm_gen_dynamic_m_securereg_xml(CPUState *cpu, int base_reg);
+=20
+ /* Returns the dynamically generated XML for the gdb stub.
+  * Returns a pointer to the XML contents for the specified XML file or NULL
+@@ -1618,6 +1620,17 @@ static inline void xpsr_write(CPUARMState *env, uint32=
+_t val, uint32_t mask)
+ #endif
+ }
+=20
++/*
++ * Return a pointer to the location where we currently store the
++ * stack pointer for the requested security state and thread mode.
++ * This pointer will become invalid if the CPU state is updated
++ * such that the stack pointers are switched around (eg changing
++ * the SPSEL control bit).
++ */
++uint32_t *arm_v7m_get_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
++                             bool spsel);
++
++
+ #define HCR_VM        (1ULL << 0)
+ #define HCR_SWIO      (1ULL << 1)
+ #define HCR_PTW       (1ULL << 2)
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 2780a089ec..3d4ca8a008 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -437,6 +437,110 @@ int arm_gen_dynamic_m_systemreg_xml(CPUState *cs, int b=
+ase_reg)
+     return info->num;
+ }
+=20
++static int arm_gdb_get_m_secextreg(CPUARMState *env, GByteArray *buf, int re=
+g)
++{
++    switch (reg) {
++    case  0:  /* MSP_S */
++        return gdb_get_reg32(buf, *arm_v7m_get_sp_ptr(env, true, false, true=
+));
++    case  1:  /* PSP_S */
++        return gdb_get_reg32(buf, *arm_v7m_get_sp_ptr(env, true, true, true)=
+);
++    case  2:  /* MSPLIM_S */
++        return gdb_get_reg32(buf, env->v7m.msplim[M_REG_S]);
++    case  3:  /* PSPLIM_S */
++        return gdb_get_reg32(buf, env->v7m.psplim[M_REG_S]);
++    case  4:  /* PRIMASK_S */
++        return gdb_get_reg32(buf, env->v7m.primask[M_REG_S]);
++    case  5:  /* BASEPRI_S */
++        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
++            return 0;
++        }
++        return gdb_get_reg32(buf, env->v7m.basepri[M_REG_S]);
++    case  6:  /* FAULTMASK_S */
++        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
++            return 0;
++        }
++        return gdb_get_reg32(buf, env->v7m.faultmask[M_REG_S]);
++    case  7:  /* CONTROL_S */
++        return gdb_get_reg32(buf, env->v7m.control[M_REG_S]);
++    case  8:  /* MSP_NS */
++        return gdb_get_reg32(buf, *arm_v7m_get_sp_ptr(env, false, false, tru=
+e));
++    case  9:  /* PSP_NS */
++        return gdb_get_reg32(buf, *arm_v7m_get_sp_ptr(env, false, true, true=
+));
++    case 10:  /* MSPLIM_NS */
++        return gdb_get_reg32(buf, env->v7m.msplim[M_REG_NS]);
++    case 11:  /* PSPLIM_NS */
++        return gdb_get_reg32(buf, env->v7m.psplim[M_REG_NS]);
++    case 12:  /* PRIMASK_NS */
++        return gdb_get_reg32(buf, env->v7m.primask[M_REG_NS]);
++    case 13:  /* BASEPRI_NS */
++        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
++            return 0;
++        }
++        return gdb_get_reg32(buf, env->v7m.basepri[M_REG_NS]);
++    case 14:  /* FAULTMASK_NS */
++        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
++            return 0;
++        }
++        return gdb_get_reg32(buf, env->v7m.faultmask[M_REG_NS]);
++    case 15:  /* CONTROL_NS */
++        return gdb_get_reg32(buf, env->v7m.control[M_REG_NS]);
++    }
++
++    return 0;
++}
++
++static int arm_gdb_set_m_secextreg(CPUARMState *env, uint8_t *buf, int reg)
++{
++    /* TODO: Implement. */
++    return 0;
++}
++
++int arm_gen_dynamic_m_securereg_xml(CPUState *cs, int base_reg)
++{
++    ARMCPU *cpu =3D ARM_CPU(cs);
++    CPUARMState *env =3D &cpu->env;
++    GString *s =3D g_string_new(NULL);
++    DynamicGDBXMLInfo *info =3D &cpu->dyn_m_securereg_xml;
++    bool is_main =3D arm_feature(env, ARM_FEATURE_M_MAIN);
++
++    g_string_printf(s, "<?xml version=3D\"1.0\"?>");
++    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
++    g_string_append_printf(s, "<feature name=3D\"org.gnu.gdb.arm.secext\">\n=
+");
++
++    g_autoptr(GArray) regs =3D g_array_new(false, true, sizeof(const char *)=
+);
++    /*  0 */ g_array_append_str_literal(regs, "msp_s");
++    /*  1 */ g_array_append_str_literal(regs, "psp_s");
++    /*  2 */ g_array_append_str_literal(regs, "msplim_s");
++    /*  3 */ g_array_append_str_literal(regs, "psplim_s");
++    /*  4 */ g_array_append_str_literal(regs, "primask_s");
++    /*  5 */ g_array_append_str_literal(regs, is_main ? "basepri_s" : NULL);
++    /*  6 */ g_array_append_str_literal(regs, is_main ? "faultmask_s" : NULL=
+);
++    /*  7 */ g_array_append_str_literal(regs, "control_s");
++    /*  8 */ g_array_append_str_literal(regs, "msp_ns");
++    /*  9 */ g_array_append_str_literal(regs, "psp_ns");
++    /* 10 */ g_array_append_str_literal(regs, "msplim_ns");
++    /* 11 */ g_array_append_str_literal(regs, "psplim_ns");
++    /* 12 */ g_array_append_str_literal(regs, "primask_ns");
++    /* 13 */ g_array_append_str_literal(regs, is_main ? "basepri_ns" : NULL);
++    /* 14 */ g_array_append_str_literal(regs, is_main ? "faultmask_ns" : NUL=
+L);
++    /* 15 */ g_array_append_str_literal(regs, "control_ns");
++
++    for (int idx =3D 0; idx < regs->len; idx++) {
++        const char *name =3D g_array_index(regs, const char *, idx);
++        if (name) {
++            g_string_append_printf(s,
++                        "<reg name=3D\"%s\" bitsize=3D\"32\" regnum=3D\"%d\"=
+/>\n",
++                        name, base_reg);
++        }
++        base_reg++;
++    }
++    info->num =3D regs->len;
++
++    g_string_append_printf(s, "</feature>");
++    info->desc =3D g_string_free(s, false);
++    return info->num;
++}
++
+ struct TypeSize {
+     const char *gdb_type;
+     int  size;
+@@ -567,6 +671,8 @@ const char *arm_gdb_get_dynamic_xml(CPUState *cs, const c=
+har *xmlname)
+         return cpu->dyn_svereg_xml.desc;
+     } else if (strcmp(xmlname, "arm-m-system.xml") =3D=3D 0) {
+         return cpu->dyn_m_systemreg_xml.desc;
++    } else if (strcmp(xmlname, "arm-m-secext.xml") =3D=3D 0) {
++        return cpu->dyn_m_securereg_xml.desc;
+     }
+     return NULL;
+ }
+@@ -618,6 +724,16 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+                                      arm_gen_dynamic_m_systemreg_xml(
+                                          cs, cs->gdb_num_regs),
+                                      "arm-m-system.xml", 0);
++            if (arm_feature(env, ARM_FEATURE_V8) &&
++                    arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++                gdb_register_coprocessor(cs,
++                                         arm_gdb_get_m_secextreg,
++                                         arm_gdb_set_m_secextreg,
++                                         arm_gen_dynamic_m_securereg_xml(
++                                             cs, cs->gdb_num_regs),
++                                         "arm-m-secext.xml", 0);
++
++            }
          }
-         if (tcg_enabled()) {
-             if (arm_machine_tag_mem) {
-                 break;
-             }
-             error;
-             return;
-         }
-         if (kvm_enabled() && kvm_arm_mte_supported) {
-             break;
-         }
-         error("mte not supported by %s", current_accel_type());
-         return;
-
-We only add the property for tcg via -cpu max, so the isar check is redundant.
-
-
-r~
+     }
+     if (cpu_isar_feature(aa32_mve, cpu)) {
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index c20bcac977..b5218f3027 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -605,15 +605,10 @@ void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
+     arm_rebuild_hflags(env);
+ }
+=20
+-static uint32_t *get_v7m_sp_ptr(CPUARMState *env, bool secure, bool threadmo=
+de,
+-                                bool spsel)
++uint32_t *arm_v7m_get_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
++                             bool spsel)
+ {
+     /*
+-     * Return a pointer to the location where we currently store the
+-     * stack pointer for the requested security state and thread mode.
+-     * This pointer will become invalid if the CPU state is updated
+-     * such that the stack pointers are switched around (eg changing
+-     * the SPSEL control bit).
+      * Compare the v8M ARM ARM pseudocode LookUpSP_with_security_mode().
+      * Unlike that pseudocode, we require the caller to pass us in the
+      * SPSEL control bit value; this is because we also use this
+@@ -765,8 +760,8 @@ static bool v7m_push_callee_stack(ARMCPU *cpu, uint32_t l=
+r, bool dotailchain,
+             !mode;
+=20
+         mmu_idx =3D arm_v7m_mmu_idx_for_secstate_and_priv(env, M_REG_S, priv=
+);
+-        frame_sp_p =3D get_v7m_sp_ptr(env, M_REG_S, mode,
+-                                    lr & R_V7M_EXCRET_SPSEL_MASK);
++        frame_sp_p =3D arm_v7m_get_sp_ptr(env, M_REG_S, mode,
++                                        lr & R_V7M_EXCRET_SPSEL_MASK);
+         want_psp =3D mode && (lr & R_V7M_EXCRET_SPSEL_MASK);
+         if (want_psp) {
+             limit =3D env->v7m.psplim[M_REG_S];
+@@ -1611,10 +1606,10 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+          * use 'frame_sp_p' after we do something that makes it invalid.
+          */
+         bool spsel =3D env->v7m.control[return_to_secure] & R_V7M_CONTROL_SP=
+SEL_MASK;
+-        uint32_t *frame_sp_p =3D get_v7m_sp_ptr(env,
+-                                              return_to_secure,
+-                                              !return_to_handler,
+-                                              spsel);
++        uint32_t *frame_sp_p =3D arm_v7m_get_sp_ptr(env,
++                                                  return_to_secure,
++                                                  !return_to_handler,
++                                                  spsel);
+         uint32_t frameptr =3D *frame_sp_p;
+         bool pop_ok =3D true;
+         ARMMMUIdx mmu_idx;
+@@ -1920,7 +1915,7 @@ static bool do_v7m_function_return(ARMCPU *cpu)
+         threadmode =3D !arm_v7m_is_handler_mode(env);
+         spsel =3D env->v7m.control[M_REG_S] & R_V7M_CONTROL_SPSEL_MASK;
+=20
+-        frame_sp_p =3D get_v7m_sp_ptr(env, true, threadmode, spsel);
++        frame_sp_p =3D arm_v7m_get_sp_ptr(env, true, threadmode, spsel);
+         frameptr =3D *frame_sp_p;
+=20
+         /*
+--=20
+2.34.5

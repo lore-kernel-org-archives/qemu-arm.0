@@ -1,92 +1,92 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2454373ejc;
-        Mon, 9 Jan 2023 09:35:04 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvI8wP/pvkr0+0sKe75nlaOX4TuTFDuWcNpX5rMjLQlK/08GRaN/VB6wVXqrarl9WoSkhBw
-X-Received: by 2002:a05:6102:1346:b0:3c7:15e7:71af with SMTP id j6-20020a056102134600b003c715e771afmr26776525vsl.31.1673285704673;
-        Mon, 09 Jan 2023 09:35:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673285704; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2455279ejc;
+        Mon, 9 Jan 2023 09:36:21 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuAkbc68/nDA5hcQh/rE8lKeVTHSd73IoUMwVvZraWQbtPCanLmm4oPGMrfdD+/CVI5NGPl
+X-Received: by 2002:ad4:4442:0:b0:532:20e5:6032 with SMTP id l2-20020ad44442000000b0053220e56032mr18113896qvt.27.1673285781771;
+        Mon, 09 Jan 2023 09:36:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673285781; cv=none;
         d=google.com; s=arc-20160816;
-        b=WZvA/AMgaSToZ1VJ5FY8TNSwVEoHpdVEn6UkkVbQ3LDApdn8NjIlYr2hTU/CRRsOLI
-         8PjiKmiVW0wqLeYMZ7WXjW+kiVNeOF+TJwsRp8gc/LNkFjBmy7oWkUQP59CpKgGmcO0q
-         d+NY+wzJri0cMQ8b1xts8qDy3uuiDwB1oTtdQJkVL5LURY1Yxb/97sPzp7synihQOWAQ
-         3UAIkohMTddSgsfM66xucxpKxA1ZqUw2XAVI2fqUT0oCg/G0GQJZTlktk4Dpr3aBl2bq
-         S+IkJa2DP3p/cEHhYD5EfaCNeDQAZzy5cuHevr1GGOw7bQ0iGyP/TAhFEOfWmpipIGI+
-         5h+w==
+        b=r9uK+XfG7gXzTxzkH1/S21J3Yham3KMtSf6tRdtbd/6Z2VF/cCmQEA0dTfOy1WWXqL
+         fwIxSc4A7n6T5YcFRvsRxKNGs77qGaW3CMQKNd2ppYnnC1Ia/uFpz2LdHctzdlcyEV7Z
+         3z9v5Z5n+PlL10Y/r8/bKQaPU1TSNMf3PiEMoiHkEJDfXbPEQ/UxIJs8Qt+2aS4xBelS
+         r++0Jmw5SY73YslANaUSEnQEmQlFPQLKatiAS8VYrtSmFS+lH5ASL1mjQqqW5Sms2t3o
+         +PhOUQWk1Ga7y1zzE8LzlzCcK0RRzCjh/FDK8U+KMNrmDRo5Nxu3yBu/MpfVpnZlteJt
+         6AFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=nl9YHfs8H5C/I/vJkfFSixEY1FD1I5X9ikT4zscR/sc=;
-        b=m3B0WoOPHlio/7MLYSnIpfQPMV8CTjJlojFMlq4YNEnHw5SXikUo6DiZRoosxQvPUv
-         U38djQWukLQca4th3CLgKWtMyhPS/WrSzBizvOL5efYr8zPO8mILTZI52WtjOv1uijGV
-         b0Jl7pJNpZ85dzDbedbLII5igjP0dHIZrTZprISxJVMK2+brxs9tB4/HkI4s21a1NnOh
-         5nbgiThynRREvj+DKQLDW1IpF1ZNF049FfY7kxOr6iCdkhJ+akHx4RKjX77qH23p/l18
-         /zo3y1Zan2vWsAYJy4aQG06V79sM/RqwU1sVVnMV9ejuKREHGHA/sZaEV+FC4DvZM1yu
-         Czjw==
+        bh=PbEEYbX4NaIwLmsFYjtNVSJvUS1kjPfAvN1bwZmGWzk=;
+        b=Ec3P58Q+Px4+WisnCEjsim+PjWf+SNKVaIgxubfqQFEpVJ58yV6WPnPfXx2WHMj1or
+         Q+duR3sZrfW/eqUtJE7VA6mFCcLiWu4h5JO7q+5KbnGj/wc4s6LovDS/YmPU5Ci0d2nb
+         mv1x0Kg2/KPNKDPVhT8UpRVE8trlh74+2CKsalBnOVbkkitBY0mpDvtU4sAFtKm3lFbK
+         kWcjIV7uNbrzVJl3Fia5Ih2Ze7k6B/LhpHDlUIi7Gp7Fz3gKt0toKXPQyg2i7YdD8Kp0
+         6XhnXfjc1l2uCMR90e/AnaMvOBGo0MNJhiKBLD5cn7n8fXjWNrvfO5Oczfwj5rHpTzyi
+         rw2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HUzg5cKK;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DQgFdlZC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i4-20020a375404000000b006fca4d072a0si4451442qkb.719.2023.01.09.09.35.04
+        by mx.google.com with ESMTPS id gi6-20020a056214248600b004bba3652dccsi4603599qvb.106.2023.01.09.09.36.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 09:35:04 -0800 (PST)
+        Mon, 09 Jan 2023 09:36:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HUzg5cKK;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DQgFdlZC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pEvuO-0003dE-KB; Mon, 09 Jan 2023 12:26:04 -0500
+	id 1pEvtW-0002cL-7u; Mon, 09 Jan 2023 12:25:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvtk-0002lf-3r; Mon, 09 Jan 2023 12:25:24 -0500
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ id 1pEvtS-0002XC-6m; Mon, 09 Jan 2023 12:25:06 -0500
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvti-0001Nt-7l; Mon, 09 Jan 2023 12:25:23 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id az20so2854588ejc.1;
- Mon, 09 Jan 2023 09:25:20 -0800 (PST)
+ id 1pEvtP-00012N-RD; Mon, 09 Jan 2023 12:25:05 -0500
+Received: by mail-ej1-x630.google.com with SMTP id cf18so15589680ejb.5;
+ Mon, 09 Jan 2023 09:25:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nl9YHfs8H5C/I/vJkfFSixEY1FD1I5X9ikT4zscR/sc=;
- b=HUzg5cKKoiKxVsaGFwhM3KHd7XI38m9h6yjJkAmOkSngEaT/1TEOXWCKXCfrDKwPMy
- 9aXhgPrbkinRIoRcUlA0+Y/l8dc/o6BRm260XJkJErrO0xJYUaCv6nn+mtKejRKo8C5Y
- 8a1DJdixrwMsL11FBI2aNC0VkQ+8KnukKdbdmy0kMz4xU/2lFeKgORq0sY2p0IJvwmd1
- 9V9phY/d6mKu0qNZbuVdCIuIWcj4+u1zn4T6wPOD/hFaOBd6E9b0b0uCiOGLBzEzCc+X
- uoN/xuTI/i7KF/913NRlK+eGs9YB7fjuB9LOxxb/4ahFeD+FHUF80sBmCqfE/1Hg9tss
- HxPQ==
+ bh=PbEEYbX4NaIwLmsFYjtNVSJvUS1kjPfAvN1bwZmGWzk=;
+ b=DQgFdlZCuRIHi+V33qMNIGwRixcbhabzrTkKUhhEQeIlxArEaCMkY0k/gC+tojBDJN
+ WJCUfpjl34GYZaHgb6TiE0yLzn6aY+iBP72quOh3vzzEWuOcGHaBPxb8rLoBX88p4tPr
+ 6Z+9ik34VHM5x5UQxV6A4QPq57CWf3SLC3NimDncZVV5a3QOLMbrLgrH41LNpyBXcrHA
+ w+nyvDSoxiyJiRU6rf1BlrJxV39CDrGDLb2z7X2jjXm80Ha2U2ilc1fK//P297J6vwh1
+ d5EJ0bvqHwAzWdYv/KSb81djrIcMLodJ61eatUepxjkzTTFAfPC30m/fzPdS3ZtOx+8M
+ lsow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=nl9YHfs8H5C/I/vJkfFSixEY1FD1I5X9ikT4zscR/sc=;
- b=yo6KWt14LeTemSIBS12UGM+1mH6IEsmQHgF9a+yXIjwf9KzXwfDt5jF6NGPnlSvV10
- GkVEhlhEiTIKjuRGoYWbyAMSElGHLFHtT3gDzNms6jrXDkRTsHlajtw4yuXedX058jnD
- hCc4rUU+Jvsc03qvYdSxSlvrh3uELua4fU4sMZjCZBxsME5Dkc13t/xmeeim2u7C1UXG
- Zq8PcVVqjmqiuDygXSIyX+hIOlVXpfe1CXKSWCCrpckqXNfIodJQ6USi/ffbK3nDH3GB
- P6ATIeE+45Hg+ye+eM0uM54u41OWMmCw/WI0V07rga4ZTfONZ9n++VFx/igpDMHfSziL
- 4TWg==
-X-Gm-Message-State: AFqh2krFzYo7FKdlUipmGI8PxiLOBLHPjxEOd9f/lfBDWL2mq0MkZzIT
- 4UWkeLfehYqU/5U2zliuOSgTXzwtrxAT5w==
-X-Received: by 2002:a17:906:d9c7:b0:84d:4923:366d with SMTP id
- qk7-20020a170906d9c700b0084d4923366dmr3397102ejb.44.1673285119081; 
- Mon, 09 Jan 2023 09:25:19 -0800 (PST)
+ bh=PbEEYbX4NaIwLmsFYjtNVSJvUS1kjPfAvN1bwZmGWzk=;
+ b=3nqafOpN2GDi/ciELUCH8kaFKxOxJhxN6BuS/nx5KzxYe66rsZl6wqmwruLP63bePr
+ uWQ0hI++Sje2kHVvllbKcysCk2kgkVU7rVblJBYUtWuganjF2MjAHslLOi3w0d5LO2fO
+ 2nKqoBxwNUGDBwDaIpCAefb7on1ErYUtpJMDdyXoYZvjoUJPS8k8NRZ2fJelNoA/5Y/+
+ 3rArdKWHftjkx5PMQP2OqQbdBTcHIAa5g/wWnRA7SgLPc57bnxm2ah91w7KkcL64SLtl
+ 2I/k95Xl0FVAdlBK7s/95O16ZfB/uhqLGwXO5VigIbLLef4xoiBdJ0U1Jsov5ranyQ51
+ 8b8g==
+X-Gm-Message-State: AFqh2krbAq0bJ8hXyryKSjc0vognbCZVzjVDHy/+oTC0oyJ8YwjvWYi4
+ 1aYYNnzbgPvtWIkWD7n7xAjwB3YHeWqueA==
+X-Received: by 2002:a17:907:c786:b0:7ad:a797:5bb9 with SMTP id
+ tz6-20020a170907c78600b007ada7975bb9mr78631589ejc.29.1673285101032; 
+ Mon, 09 Jan 2023 09:25:01 -0800 (PST)
 Received: from osoxes.fritz.box
  (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
  [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
  by smtp.gmail.com with ESMTPSA id
- 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.25.18
+ 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.24.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jan 2023 09:25:18 -0800 (PST)
+ Mon, 09 Jan 2023 09:25:00 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: John G Johnson <john.g.johnson@oracle.com>,
@@ -103,18 +103,20 @@ Cc: John G Johnson <john.g.johnson@oracle.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v6 23/33] hw/isa/piix4: Make PIIX4's ACPI and USB functions
- optional
-Date: Mon,  9 Jan 2023 18:23:36 +0100
-Message-Id: <20230109172347.1830-24-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH v6 08/33] hw/usb/hcd-uhci: Introduce TYPE_ defines for device
+ models
+Date: Mon,  9 Jan 2023 18:23:21 +0100
+Message-Id: <20230109172347.1830-9-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230109172347.1830-1-shentey@gmail.com>
 References: <20230109172347.1830-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,120 +138,171 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4HLHr5T9YfZj
+X-TUID: p57+82JnQnj4
 
-This aligns PIIX4 with PIIX3.
-
+Suggested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20221022150508.26830-30-shentey@gmail.com>
+Message-Id: <20221022150508.26830-10-shentey@gmail.com>
 ---
- hw/isa/piix4.c  | 44 ++++++++++++++++++++++++++++++++------------
- hw/mips/malta.c |  6 ++++--
- 2 files changed, 36 insertions(+), 14 deletions(-)
+ hw/usb/hcd-uhci.h |  4 ++++
+ hw/i386/pc_piix.c |  3 ++-
+ hw/i386/pc_q35.c  | 13 +++++++------
+ hw/isa/piix4.c    |  2 +-
+ hw/usb/hcd-uhci.c | 16 ++++++++--------
+ 5 files changed, 22 insertions(+), 16 deletions(-)
 
-diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-index de60ceef73..de4133f573 100644
---- a/hw/isa/piix4.c
-+++ b/hw/isa/piix4.c
-@@ -51,9 +51,16 @@ struct PIIX4State {
-     PCIIDEState ide;
-     UHCIState uhci;
-     PIIX4PMState pm;
+diff --git a/hw/usb/hcd-uhci.h b/hw/usb/hcd-uhci.h
+index 5843af504a..e0fdb98ef1 100644
+--- a/hw/usb/hcd-uhci.h
++++ b/hw/usb/hcd-uhci.h
+@@ -91,4 +91,8 @@ typedef struct UHCIInfo {
+ void uhci_data_class_init(ObjectClass *klass, void *data);
+ void usb_uhci_common_realize(PCIDevice *dev, Error **errp);
+ 
++#define TYPE_PIIX3_USB_UHCI "piix3-usb-uhci"
++#define TYPE_PIIX4_USB_UHCI "piix4-usb-uhci"
++#define TYPE_ICH9_USB_UHCI(fn) "ich9-usb-uhci" #fn
 +
-+    uint32_t smb_io_base;
-+
-     /* Reset Control Register */
-     MemoryRegion rcr_mem;
-     uint8_t rcr;
-+
-+    bool has_acpi;
-+    bool has_usb;
-+    bool smm_enabled;
+ #endif
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index bb3b10557f..df64dd8dcc 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -51,6 +51,7 @@
+ #include "exec/memory.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/piix4.h"
++#include "hw/usb/hcd-uhci.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/xen.h"
+@@ -305,7 +306,7 @@ static void pc_init1(MachineState *machine,
+ #endif
+ 
+     if (pcmc->pci_enabled && machine_usb(machine)) {
+-        pci_create_simple(pci_bus, piix3_devfn + 2, "piix3-usb-uhci");
++        pci_create_simple(pci_bus, piix3_devfn + 2, TYPE_PIIX3_USB_UHCI);
+     }
+ 
+     if (pcmc->pci_enabled && x86_machine_is_acpi_enabled(X86_MACHINE(pcms))) {
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 65ea226211..83c57c6eb1 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -48,6 +48,7 @@
+ #include "hw/ide/pci.h"
+ #include "hw/ide/ahci.h"
+ #include "hw/usb.h"
++#include "hw/usb/hcd-uhci.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/numa.h"
+@@ -65,15 +66,15 @@ struct ehci_companions {
  };
  
- OBJECT_DECLARE_SIMPLE_TYPE(PIIX4State, PIIX4_PCI_DEVICE)
-@@ -234,17 +241,26 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
-     }
+ static const struct ehci_companions ich9_1d[] = {
+-    { .name = "ich9-usb-uhci1", .func = 0, .port = 0 },
+-    { .name = "ich9-usb-uhci2", .func = 1, .port = 2 },
+-    { .name = "ich9-usb-uhci3", .func = 2, .port = 4 },
++    { .name = TYPE_ICH9_USB_UHCI(1), .func = 0, .port = 0 },
++    { .name = TYPE_ICH9_USB_UHCI(2), .func = 1, .port = 2 },
++    { .name = TYPE_ICH9_USB_UHCI(3), .func = 2, .port = 4 },
+ };
  
-     /* USB */
--    qdev_prop_set_int32(DEVICE(&s->uhci), "addr", dev->devfn + 2);
--    if (!qdev_realize(DEVICE(&s->uhci), BUS(pci_bus), errp)) {
--        return;
-+    if (s->has_usb) {
-+        object_initialize_child(OBJECT(dev), "uhci", &s->uhci,
-+                                TYPE_PIIX4_USB_UHCI);
-+        qdev_prop_set_int32(DEVICE(&s->uhci), "addr", dev->devfn + 2);
-+        if (!qdev_realize(DEVICE(&s->uhci), BUS(pci_bus), errp)) {
-+            return;
-+        }
-     }
+ static const struct ehci_companions ich9_1a[] = {
+-    { .name = "ich9-usb-uhci4", .func = 0, .port = 0 },
+-    { .name = "ich9-usb-uhci5", .func = 1, .port = 2 },
+-    { .name = "ich9-usb-uhci6", .func = 2, .port = 4 },
++    { .name = TYPE_ICH9_USB_UHCI(4), .func = 0, .port = 0 },
++    { .name = TYPE_ICH9_USB_UHCI(5), .func = 1, .port = 2 },
++    { .name = TYPE_ICH9_USB_UHCI(6), .func = 2, .port = 4 },
+ };
  
-     /* ACPI controller */
--    qdev_prop_set_int32(DEVICE(&s->pm), "addr", dev->devfn + 3);
--    if (!qdev_realize(DEVICE(&s->pm), BUS(pci_bus), errp)) {
--        return;
-+    if (s->has_acpi) {
-+        object_initialize_child(OBJECT(s), "pm", &s->pm, TYPE_PIIX4_PM);
-+        qdev_prop_set_int32(DEVICE(&s->pm), "addr", dev->devfn + 3);
-+        qdev_prop_set_uint32(DEVICE(&s->pm), "smb_io_base", s->smb_io_base);
-+        qdev_prop_set_bit(DEVICE(&s->pm), "smm-enabled", s->smm_enabled);
-+        if (!qdev_realize(DEVICE(&s->pm), BUS(pci_bus), errp)) {
-+            return;
-+        }
-+        qdev_connect_gpio_out(DEVICE(&s->pm), 0, s->isa[9]);
-     }
--    qdev_connect_gpio_out(DEVICE(&s->pm), 0, s->isa[9]);
- 
-     pci_bus_irqs(pci_bus, piix4_set_irq, s, PIIX_NUM_PIRQS);
- }
-@@ -255,13 +271,16 @@ static void piix4_init(Object *obj)
+ static int ehci_create_ich9_with_companions(PCIBus *bus, int slot)
+diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
+index 6e9434129d..de60ceef73 100644
+--- a/hw/isa/piix4.c
++++ b/hw/isa/piix4.c
+@@ -255,7 +255,7 @@ static void piix4_init(Object *obj)
  
      object_initialize_child(obj, "rtc", &s->rtc, TYPE_MC146818_RTC);
      object_initialize_child(obj, "ide", &s->ide, TYPE_PIIX4_IDE);
--    object_initialize_child(obj, "uhci", &s->uhci, TYPE_PIIX4_USB_UHCI);
--
--    object_initialize_child(obj, "pm", &s->pm, TYPE_PIIX4_PM);
--    qdev_prop_set_uint32(DEVICE(&s->pm), "smb_io_base", 0x1100);
--    qdev_prop_set_bit(DEVICE(&s->pm), "smm-enabled", 0);
- }
+-    object_initialize_child(obj, "uhci", &s->uhci, "piix4-usb-uhci");
++    object_initialize_child(obj, "uhci", &s->uhci, TYPE_PIIX4_USB_UHCI);
  
-+static Property piix4_props[] = {
-+    DEFINE_PROP_UINT32("smb_io_base", PIIX4State, smb_io_base, 0),
-+    DEFINE_PROP_BOOL("has-acpi", PIIX4State, has_acpi, true),
-+    DEFINE_PROP_BOOL("has-usb", PIIX4State, has_usb, true),
-+    DEFINE_PROP_BOOL("smm-enabled", PIIX4State, smm_enabled, false),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void piix4_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -280,6 +299,7 @@ static void piix4_class_init(ObjectClass *klass, void *data)
-      */
-     dc->user_creatable = false;
-     dc->hotpluggable = false;
-+    device_class_set_props(dc, piix4_props);
- }
+     object_initialize_child(obj, "pm", &s->pm, TYPE_PIIX4_PM);
+     qdev_prop_set_uint32(DEVICE(&s->pm), "smb_io_base", 0x1100);
+diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+index d1b5657d72..30ae0104bb 100644
+--- a/hw/usb/hcd-uhci.c
++++ b/hw/usb/hcd-uhci.c
+@@ -1292,56 +1292,56 @@ void uhci_data_class_init(ObjectClass *klass, void *data)
  
- static const TypeInfo piix4_info = {
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index 94d4c49bf5..4a2e0edd98 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -1449,8 +1449,10 @@ void mips_malta_init(MachineState *machine)
-     empty_slot_init("GT64120", 0, 0x20000000);
- 
-     /* Southbridge */
--    piix4 = pci_create_simple_multifunction(pci_bus, PIIX4_PCI_DEVFN, true,
--                                            TYPE_PIIX4_PCI_DEVICE);
-+    piix4 = pci_new_multifunction(PIIX4_PCI_DEVFN, true,
-+                                  TYPE_PIIX4_PCI_DEVICE);
-+    qdev_prop_set_uint32(DEVICE(piix4), "smb_io_base", 0x1100);
-+    pci_realize_and_unref(piix4, pci_bus, &error_fatal);
-     isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix4), "isa.0"));
- 
-     dev = DEVICE(object_resolve_path_component(OBJECT(piix4), "ide"));
+ static UHCIInfo uhci_info[] = {
+     {
+-        .name       = "piix3-usb-uhci",
++        .name      = TYPE_PIIX3_USB_UHCI,
+         .vendor_id = PCI_VENDOR_ID_INTEL,
+         .device_id = PCI_DEVICE_ID_INTEL_82371SB_2,
+         .revision  = 0x01,
+         .irq_pin   = 3,
+         .unplug    = true,
+     },{
+-        .name      = "piix4-usb-uhci",
++        .name      = TYPE_PIIX4_USB_UHCI,
+         .vendor_id = PCI_VENDOR_ID_INTEL,
+         .device_id = PCI_DEVICE_ID_INTEL_82371AB_2,
+         .revision  = 0x01,
+         .irq_pin   = 3,
+         .unplug    = true,
+     },{
+-        .name      = "ich9-usb-uhci1", /* 00:1d.0 */
++        .name      = TYPE_ICH9_USB_UHCI(1), /* 00:1d.0 */
+         .vendor_id = PCI_VENDOR_ID_INTEL,
+         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI1,
+         .revision  = 0x03,
+         .irq_pin   = 0,
+         .unplug    = false,
+     },{
+-        .name      = "ich9-usb-uhci2", /* 00:1d.1 */
++        .name      = TYPE_ICH9_USB_UHCI(2), /* 00:1d.1 */
+         .vendor_id = PCI_VENDOR_ID_INTEL,
+         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI2,
+         .revision  = 0x03,
+         .irq_pin   = 1,
+         .unplug    = false,
+     },{
+-        .name      = "ich9-usb-uhci3", /* 00:1d.2 */
++        .name      = TYPE_ICH9_USB_UHCI(3), /* 00:1d.2 */
+         .vendor_id = PCI_VENDOR_ID_INTEL,
+         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI3,
+         .revision  = 0x03,
+         .irq_pin   = 2,
+         .unplug    = false,
+     },{
+-        .name      = "ich9-usb-uhci4", /* 00:1a.0 */
++        .name      = TYPE_ICH9_USB_UHCI(4), /* 00:1a.0 */
+         .vendor_id = PCI_VENDOR_ID_INTEL,
+         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI4,
+         .revision  = 0x03,
+         .irq_pin   = 0,
+         .unplug    = false,
+     },{
+-        .name      = "ich9-usb-uhci5", /* 00:1a.1 */
++        .name      = TYPE_ICH9_USB_UHCI(5), /* 00:1a.1 */
+         .vendor_id = PCI_VENDOR_ID_INTEL,
+         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI5,
+         .revision  = 0x03,
+         .irq_pin   = 1,
+         .unplug    = false,
+     },{
+-        .name      = "ich9-usb-uhci6", /* 00:1a.2 */
++        .name      = TYPE_ICH9_USB_UHCI(6), /* 00:1a.2 */
+         .vendor_id = PCI_VENDOR_ID_INTEL,
+         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI6,
+         .revision  = 0x03,
 -- 
 2.39.0
 

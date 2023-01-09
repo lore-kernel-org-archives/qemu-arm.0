@@ -1,160 +1,273 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2185191ejc;
-        Mon, 9 Jan 2023 03:53:27 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvuJbNaq3k09xY+j9agyNMHavRM+OHBofUaXx0WH7VCWYG2BRYMn6/f43fXe90IxuJVq3du
-X-Received: by 2002:a05:622a:5a92:b0:3a9:6cf8:9b4e with SMTP id fz18-20020a05622a5a9200b003a96cf89b4emr92418678qtb.35.1673265207657;
-        Mon, 09 Jan 2023 03:53:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673265207; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2185670ejc;
+        Mon, 9 Jan 2023 03:54:18 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsSRWbd+bAI6DjCLW7XaEXTGzvTEuBqTNsGV7kgKeUPzLmveUYe0LQTm+kQrlcawGV3dGb1
+X-Received: by 2002:ac8:5fcd:0:b0:3ae:64e0:58ef with SMTP id k13-20020ac85fcd000000b003ae64e058efmr1337557qta.13.1673265257880;
+        Mon, 09 Jan 2023 03:54:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673265257; cv=none;
         d=google.com; s=arc-20160816;
-        b=xBQ17WUYt9CfTUFw+miAGQt5zOgby47Dn1XWUqOsT88+zOj+go6+5ZXvpixkXTsHOW
-         w/Jpo1kysAvOgP+G1hDKAg5kjg0ng70ZMQF6gHBNNBD39QGz9ISUYmMK8KDq1oxgTMY3
-         h/sREV7i0Gj3f0HTHmnD94SioexLnozar5htdcXNi2apZOgzzqHhkzNoQpF+tUq1zjDn
-         UvgqAUpeKIqXVbhBPlvJzsOPlAk+KNqnH4+Rddm/M6XvcVSWpwzC8sQoA3GGJd5MrQm5
-         4m/TjQz5dO67ZC9vsFNUFRgqzky6MqVCJyrqXCgVRrG7nn5kssWgQ6nfJexauO32+P+e
-         g9Xg==
+        b=hN9+mThmdNxOP3KK1xJea9yPaMNvoOOsSG1xnunGQwuMGt3F97LTcwXtvV3p2m52aE
+         q8rqTb9Udll4D6cVyURy6/RiyIDei9jVBkZ6Fp4oCi4rXLJdvDJmg18f7nP4SbgI8zR2
+         edGHVsUd1Df7z9Y/l5rTO8ZHbfIMN/3pGIEe5Y5qFjTRNZUE4Hsl32IzCopW1mWNy28j
+         mV4uMlqRmkEA6tw8ZrOeYnNDyUowL8IFA3jp+wMeEiATgxnPfO1d9rWYHuZBgGmp8Qw4
+         OZmCTVLFsYd4D5nIvaFhF7O87evbWxupb5zW34izRCzC5191MbczETuDWcE2Y6x3nfpC
+         jsEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=En2ECShv0kRWnzSOnm7XMPCMXkKsPEIuZqm6vHr6CKI=;
-        b=dNwsJtz/Cdv0PvA8aHFnbl+Ue+IVQlNa+y8M1WNRE9e4glsf28OqG2E0coNkLynzsu
-         8L72wR/tbzpPuMtaqVRaX79l77waqNCEJIjVcVcpCUsCMB2uj47/E2MpyPOI3j9577ur
-         cfZHp0N/TMXhFINDawH+qeqqjpQUeKwWgqdmEYnrK8WZMT48iPNEj9umVZwFrVhopeGS
-         At5k1+cBH81k0x3l2zQOiqvBJH38qRs7SlQjJiZBCR5G2K7Hnh+2b4Eg0Ot/SOf/jcvn
-         kqd4behVcNbnBIhmc3MYSuRPl3PAV1lx7QauJoKg5MiQauw8GmfPT8xg012xndfyxojP
-         NEtg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=f5egngPnKd3eXowoe9rSvuOk/WYn87jONK9fpMWE9oo=;
+        b=rD4UwfYFHm85U428OQhhiAK43VPgrdENq0dVtoI5j84wWJFFnXuWHJNSZrhemZQAwi
+         57eOelXTW5uHwWQef9pL74oOs5zEp9s8G/t9nq0s1j7ihZd12J01mNjriUDNDL5irtph
+         iLIlRNz/K7GiHWAuH8gayVjntnySt1hehkizmQthrw4pL/elhyjNNsedrwTrKOHpRimC
+         LoizGM7olhwib2kD0Zp7LwcClfGTzsb3cRX3jN8507Z28t1Vk8qLZk0WSLUtIpCuj7BY
+         Rr6+i3L0CaqbcHIKz+xT8WKt4NpMBDVHDvylm7wEuG8Nu+q2H25DbkSYaGmvzzeWlktf
+         pyyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u8KMncHg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nq0LEoq9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p14-20020ac8740e000000b003970f9f8769si4273666qtq.560.2023.01.09.03.53.27
+        by mx.google.com with ESMTPS id bm42-20020a05620a19aa00b00704cf5d76f2si4432701qkb.564.2023.01.09.03.54.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 03:53:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Jan 2023 03:54:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u8KMncHg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nq0LEoq9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pEqiR-0002mA-Nv; Mon, 09 Jan 2023 06:53:23 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pEqib-0002pB-33; Mon, 09 Jan 2023 06:53:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEqiP-0002lQ-MY
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 06:53:21 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEqiZ-0002od-9x
+ for qemu-devel@nongnu.org; Mon, 09 Jan 2023 06:53:31 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEqiN-0007tA-Uf
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 06:53:21 -0500
-Received: by mail-wr1-x431.google.com with SMTP id r2so7878704wrv.7
- for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 03:53:19 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEqiX-00081k-EU
+ for qemu-devel@nongnu.org; Mon, 09 Jan 2023 06:53:31 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id m3so6086048wmq.0
+ for <qemu-devel@nongnu.org>; Mon, 09 Jan 2023 03:53:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=En2ECShv0kRWnzSOnm7XMPCMXkKsPEIuZqm6vHr6CKI=;
- b=u8KMncHg76duqBCs6KrKvA+tOa4W8vEunpceL24mhz3ZpBXxQ1NOZG9tIzCT8QQ+BI
- 83dDTtMaAaI2FfRybaUAlQQNvNOPEsXQFiCC2jJa7WOcbxbWeBKhA0/GVEeBsack0e7D
- LH692XhsVf1HZLIiCHYVo5y9urFrYkUNZFmOttsX7aPyVf35zmp0s/CHBtUnFR4Y2NAt
- X6rizteHEmIm9HIESHvdMl/cjO3aXe1CvSriQ15LKwvUYgnDJheW4g8sTKlaB/sXq4s7
- b44ftJx61aFs5yQa/Qrvj/IBeGYTzqL5JEHroelaLewbFGe25f3WwqzJK1i+HrAZvIH+
- OFhQ==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=f5egngPnKd3eXowoe9rSvuOk/WYn87jONK9fpMWE9oo=;
+ b=nq0LEoq9wNXmRpFMh9EiF5b22JVd2yATmMcp9kR7Tv24lPBvOe3UT+LOJ4QWALohbi
+ y3H7PM64pnp6BLlCkauBQL5o1DPnfsZNK2EAOl7FPMBNGKqwJ5jeWQ1qHq7D6cVsjm6d
+ SMVzSltoxU2KxC6m959HITQoIKXhzrNJIA+EKu3T3TVLyO0ex7+mpHswTVSGPyApPExk
+ 4hHji9kPKlFMOB12nYj3oDTFIZqHCZtkiC2aDBGQR0/ihJDLjELMiFhGKNeehsEcmqfk
+ 4RjX0z96Hg0QXP+H3jHguNfJo76O0a3o+UuvxvpE+zxZlNGzor7qmQz/RTfgDPBG08LZ
+ BUiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=En2ECShv0kRWnzSOnm7XMPCMXkKsPEIuZqm6vHr6CKI=;
- b=rq11M76OpCbt00CuWkk4zz25G+WzQOYIlkCMKmhKYTBSW5gXVlHUvWlKfUtQAZEqm9
- 2Jx5vz8sHo9X0VA+FMk2TH1EOpg/PSa5+oO2mRqOL9JsxvEhiQI47bM0y0TMYFU/0dEA
- YzSyqvDRsLWtLkexCPBpcRO8jXK30BJrvlUJh4m/8BhoWgovHxlxjgN8vB6YxdhJSvnc
- /V5KNWkyjQe1xRzjAbcZL7qxtxkCwivb3YpZzFHy9A3n+DlYdGbWJtbV5DjpGnDT+rbC
- 9qdCHU6rFE1sMXC5bXaDkeedTS8Yz4PXfgDtG+3vVQyfd1J3UR8YLftwXoKBld8HW8WU
- IVGw==
-X-Gm-Message-State: AFqh2krLRpI3C30zRAxReNaZbcnEkGWOBJQVo2uHZ2svjrcjgQ4GDy4m
- tDv8869G8KYwdckq1bArgKHX/w==
-X-Received: by 2002:a5d:6e0c:0:b0:27d:a1ea:dcfa with SMTP id
- h12-20020a5d6e0c000000b0027da1eadcfamr30774572wrz.19.1673265198291; 
- Mon, 09 Jan 2023 03:53:18 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=f5egngPnKd3eXowoe9rSvuOk/WYn87jONK9fpMWE9oo=;
+ b=NGQI6oYlVYCmZ72MrBu7gW0sMTP1yiwMnBA7xwRM+fyj7f0xt14Fjae7YazB0U6LMQ
+ RmM+tliMYaMNgl6jNWj7M6flswH83pIkSpPMr90TgatkCuoxqn1+pUQ0pZrqX9gID6T1
+ 07s0Ui1xqRd+7JgpS5+1wuB+f6GNosdLbx57P85sgSRL1Bq8ZEXbCxb9iUjOPzigi0YP
+ u+NGSTBCrrkRgnmAYvyo27EP0oY6eNi+EJpO8gFhZmioBopujBbDulVQcg07/sBszCyI
+ OmN6Et3kSZsySkOw5UU0Jo37DxzEviOcegQxikRawfvxpU6OhWvEBnRdXbDwkPtYlAwg
+ q0yQ==
+X-Gm-Message-State: AFqh2kpGLukgrV1fTa1anGoaRJePNhhmmeU+SzbGEoDWvV2KqK594ukP
+ TGiOQwZ+6YeUlGOIi6LBEbvhg76+mMV5joKj
+X-Received: by 2002:a05:600c:4690:b0:3d9:f42c:56c5 with SMTP id
+ p16-20020a05600c469000b003d9f42c56c5mr1086470wmo.4.1673265207803; 
+ Mon, 09 Jan 2023 03:53:27 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- k2-20020a5d5182000000b00236545edc91sm8475609wrv.76.2023.01.09.03.53.17
+ l3-20020a05600c4f0300b003a6125562e1sm11840678wmq.46.2023.01.09.03.53.26
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 09 Jan 2023 03:53:17 -0800 (PST)
+ Mon, 09 Jan 2023 03:53:27 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Jan Kiszka <jan.kiszka@web.de>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 00/13] hw/arm: Cleanups before pflash refactor
-Date: Mon,  9 Jan 2023 12:53:03 +0100
-Message-Id: <20230109115316.2235-1-philmd@linaro.org>
+Subject: [PATCH 02/13] hw/arm/pxa2xx: Simplify pxa270_init()
+Date: Mon,  9 Jan 2023 12:53:05 +0100
+Message-Id: <20230109115316.2235-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230109115316.2235-1-philmd@linaro.org>
+References: <20230109115316.2235-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9td1bM4i9YoW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: b7iM7ZTltzW5
 
-Various trivial cleanups:
-- Remove unnecessary sysmem argument from pxa2xx_init()
-- Use IEC binary prefix definitions
-- Remove unreachable code calling pflash_cfi01_register()
-  (another use in PPC sam460ex will be removed separately).
+Since pxa270_init() must map the device in the system memory,
+there is no point in passing get_system_memory() by argument.
 
-Philippe Mathieu-Daudé (13):
-  hw/arm/pxa2xx: Simplify pxa255_init()
-  hw/arm/pxa2xx: Simplify pxa270_init()
-  hw/arm/collie: Use the IEC binary prefix definitions
-  hw/arm/collie: Simplify flash creation using for() loop
-  hw/arm/gumstix: Improve documentation
-  hw/arm/gumstix: Use the IEC binary prefix definitions
-  hw/arm/mainstone: Use the IEC binary prefix definitions
-  hw/arm/musicpal: Use the IEC binary prefix definitions
-  hw/arm/omap_sx1: Remove unused 'total_ram' definitions
-  hw/arm/omap_sx1: Use the IEC binary prefix definitions
-  hw/arm/z2: Use the IEC binary prefix definitions
-  hw/arm/vexpress: Remove dead code in vexpress_common_init()
-  hw/arm: Remove unreachable code calling pflash_cfi01_register()
-
- hw/arm/collie.c      | 25 +++++++++++-----------
- hw/arm/gumstix.c     | 45 +++++++++++++++++---------------------
- hw/arm/mainstone.c   | 37 +++++++++++++++-----------------
- hw/arm/musicpal.c    |  9 +++++---
- hw/arm/omap_sx1.c    | 51 +++++++++++++++++++-------------------------
- hw/arm/pxa2xx.c      |  8 ++++---
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/gumstix.c     |  3 +--
+ hw/arm/mainstone.c   | 10 ++++------
+ hw/arm/pxa2xx.c      |  4 ++--
  hw/arm/spitz.c       |  6 ++----
- hw/arm/tosa.c        |  2 +-
- hw/arm/versatilepb.c |  6 ++----
- hw/arm/vexpress.c    | 10 +--------
- hw/arm/z2.c          | 16 ++++++--------
- include/hw/arm/pxa.h |  5 ++---
- 12 files changed, 98 insertions(+), 122 deletions(-)
+ hw/arm/z2.c          |  3 +--
+ include/hw/arm/pxa.h |  3 +--
+ 6 files changed, 11 insertions(+), 18 deletions(-)
 
+diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
+index c167518a46..ab9b0182f6 100644
+--- a/hw/arm/gumstix.c
++++ b/hw/arm/gumstix.c
+@@ -80,12 +80,11 @@ static void verdex_init(MachineState *machine)
+ {
+     PXA2xxState *cpu;
+     DriveInfo *dinfo;
+-    MemoryRegion *address_space_mem = get_system_memory();
+ 
+     uint32_t verdex_rom = 0x02000000;
+     uint32_t verdex_ram = 0x10000000;
+ 
+-    cpu = pxa270_init(address_space_mem, verdex_ram, machine->cpu_type);
++    cpu = pxa270_init(verdex_ram, machine->cpu_type);
+ 
+     dinfo = drive_get(IF_PFLASH, 0, 0);
+     if (!dinfo && !qtest_enabled()) {
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index 8454b65458..f6293c6c13 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -108,8 +108,7 @@ static struct arm_boot_info mainstone_binfo = {
+     .ram_size = 0x04000000,
+ };
+ 
+-static void mainstone_common_init(MemoryRegion *address_space_mem,
+-                                  MachineState *machine,
++static void mainstone_common_init(MachineState *machine,
+                                   enum mainstone_model_e model, int arm_id)
+ {
+     uint32_t sector_len = 256 * 1024;
+@@ -121,11 +120,10 @@ static void mainstone_common_init(MemoryRegion *address_space_mem,
+     MemoryRegion *rom = g_new(MemoryRegion, 1);
+ 
+     /* Setup CPU & memory */
+-    mpu = pxa270_init(address_space_mem, mainstone_binfo.ram_size,
+-                      machine->cpu_type);
++    mpu = pxa270_init(mainstone_binfo.ram_size, machine->cpu_type);
+     memory_region_init_rom(rom, NULL, "mainstone.rom", MAINSTONE_ROM,
+                            &error_fatal);
+-    memory_region_add_subregion(address_space_mem, 0, rom);
++    memory_region_add_subregion(get_system_memory(), 0x00000000, rom);
+ 
+     /* There are two 32MiB flash devices on the board */
+     for (i = 0; i < 2; i ++) {
+@@ -165,7 +163,7 @@ static void mainstone_common_init(MemoryRegion *address_space_mem,
+ 
+ static void mainstone_init(MachineState *machine)
+ {
+-    mainstone_common_init(get_system_memory(), machine, mainstone, 0x196);
++    mainstone_common_init(machine, mainstone, 0x196);
+ }
+ 
+ static void mainstone2_machine_init(MachineClass *mc)
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index 8b8845fc63..07d5dd8691 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -2092,9 +2092,9 @@ static void pxa2xx_reset(void *opaque, int line, int level)
+ }
+ 
+ /* Initialise a PXA270 integrated chip (ARM based core).  */
+-PXA2xxState *pxa270_init(MemoryRegion *address_space,
+-                         unsigned int sdram_size, const char *cpu_type)
++PXA2xxState *pxa270_init(unsigned int sdram_size, const char *cpu_type)
+ {
++    MemoryRegion *address_space = get_system_memory();
+     PXA2xxState *s;
+     int i;
+     DriveInfo *dinfo;
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index 5aab0b8565..f732fe0acf 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -986,18 +986,16 @@ static void spitz_common_init(MachineState *machine)
+     SpitzMachineState *sms = SPITZ_MACHINE(machine);
+     enum spitz_model_e model = smc->model;
+     PXA2xxState *mpu;
+-    MemoryRegion *address_space_mem = get_system_memory();
+     MemoryRegion *rom = g_new(MemoryRegion, 1);
+ 
+     /* Setup CPU & memory */
+-    mpu = pxa270_init(address_space_mem, spitz_binfo.ram_size,
+-                      machine->cpu_type);
++    mpu = pxa270_init(spitz_binfo.ram_size, machine->cpu_type);
+     sms->mpu = mpu;
+ 
+     sl_flash_register(mpu, (model == spitz) ? FLASH_128M : FLASH_1024M);
+ 
+     memory_region_init_rom(rom, NULL, "spitz.rom", SPITZ_ROM, &error_fatal);
+-    memory_region_add_subregion(address_space_mem, 0, rom);
++    memory_region_add_subregion(get_system_memory(), 0, rom);
+ 
+     /* Setup peripherals */
+     spitz_keyboard_register(mpu);
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index 9c1e876207..8eb6f495bc 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -299,7 +299,6 @@ static const TypeInfo aer915_info = {
+ 
+ static void z2_init(MachineState *machine)
+ {
+-    MemoryRegion *address_space_mem = get_system_memory();
+     uint32_t sector_len = 0x10000;
+     PXA2xxState *mpu;
+     DriveInfo *dinfo;
+@@ -308,7 +307,7 @@ static void z2_init(MachineState *machine)
+     DeviceState *wm;
+ 
+     /* Setup CPU & memory */
+-    mpu = pxa270_init(address_space_mem, z2_binfo.ram_size, machine->cpu_type);
++    mpu = pxa270_init(z2_binfo.ram_size, machine->cpu_type);
+ 
+     dinfo = drive_get(IF_PFLASH, 0, 0);
+     if (!pflash_cfi01_register(Z2_FLASH_BASE, "z2.flash0", Z2_FLASH_SIZE,
+diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
+index c26007e57f..ba8f49e48e 100644
+--- a/include/hw/arm/pxa.h
++++ b/include/hw/arm/pxa.h
+@@ -193,8 +193,7 @@ struct PXA2xxI2SState {
+ 
+ # define PA_FMT			"0x%08lx"
+ 
+-PXA2xxState *pxa270_init(MemoryRegion *address_space, unsigned int sdram_size,
+-                         const char *revision);
++PXA2xxState *pxa270_init(unsigned int sdram_size, const char *revision);
+ PXA2xxState *pxa255_init(unsigned int sdram_size);
+ 
+ #endif /* PXA_H */
 -- 
 2.38.1
 

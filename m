@@ -1,92 +1,92 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2447716ejc;
-        Mon, 9 Jan 2023 09:26:22 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvGteTpTl9DrdaoLxxz0vfGY8Ve6SOFFLXFMUhUtlsXmG76b/vBalfZUCYV6pgBMQcLX0wf
-X-Received: by 2002:a0c:fb44:0:b0:532:21bf:bb41 with SMTP id b4-20020a0cfb44000000b0053221bfbb41mr13944750qvq.18.1673285182266;
-        Mon, 09 Jan 2023 09:26:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673285182; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2447816ejc;
+        Mon, 9 Jan 2023 09:26:28 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtFtfgzi5LZq+r+h6//Es4+I1DoorT2i16h+SvkbjA3D+En/E9BP5TK2FqbWSpMoa1wklt5
+X-Received: by 2002:ac8:720b:0:b0:3a8:5d1:aacb with SMTP id a11-20020ac8720b000000b003a805d1aacbmr89271300qtp.26.1673285188707;
+        Mon, 09 Jan 2023 09:26:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673285188; cv=none;
         d=google.com; s=arc-20160816;
-        b=hgU3/d5FDLTzukXFMXR5IgDawOyahvYFVu8D8XxSpXoxTP2c1NJF/3HTB96BiDfwNn
-         p5BkkZn3p0fO4DQ0bypwioNIB3VkoRK/t+Q9E2uuM8SPLyTLqDtFsliD84uHXBrBXlsS
-         1v/6a4N2bY0+NxMOIpKb+SZD6A7/OgAxak7LsrDaDpN961Ja5wEe/8SZi4YJkgXT0+s5
-         XcOzjRY4Z1IXnHfzuOLMOFrjgWOpc0qOum1KK6x3L/TXNmL2B2zw5/jOD1A/CFNnD2Ru
-         MB8SvrDxvxaDVUebZ0w2cgVNM7SDBpMUig6uQKWqyg/kn1AD0OnxRFP9Zolb1SxBhqGE
-         7rFw==
+        b=Zd7/Liqb8ZK+SeqFvvat5MoT4ZvaoUUIsKdZPOQtpWkB9VUHNsbXQ5jbcuGzvWKcR6
+         gDhAOaXtF0/EDCTe5fiwLPJD57RU6reKz7FgPecYVqoMEBkVT6QmmhKAfYqz0XzUNgiS
+         m+KawC6kbm8s79OgiSfJdr1oo4c2qs+u0O2Vp8AQKfckfGxopFoYdlnLp22YjuCIioDt
+         6PMqcPhrxEjwFd0MxEuoxfH3TeiCHw6RPwplkrjcp1+IKA4AzF7FerfXaniyCWBXm7br
+         kyHfS9vShk59uMNXIGHBwc+97l5NkoBfal9zdwL6lKjIRTSTELWewdijkZyVcCglWzlc
+         dbbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3Pl/wFqXsxf2uFw4ai98hrMAmQzRQuED9tRgIiN3ino=;
-        b=NcsWRQTRLgzvXsTXrislSU+Fbimx75DqfViuA8tf9bxnRBIJ/8x1hlsbtvrJBoYdOr
-         8Z5ODpdu1FDX8A0ThbCScLPT27ReM7bMpcQ2gHFsqErkLAJVItHzyrcFzWJEovOtfODO
-         EJzR43kCGJ3jUOS8p+mr6KY64tLTZJLa8sJpltCThPuPQskuilSA4STiSPYtIvwH501z
-         ksr/4oyj2S2Rg+jvrUCV49n4fjJLB6U0LIK8ikleTkWdzZFMUQtv5gpQtHNxfR19Bf7n
-         3xc/ZyVB8FM582EKl2gzHtyLrVnZ/WZFQZwsB+PYsEzk4Q09orkC4D9ZDOO7D1vMUqZ5
-         Y87w==
+        bh=5p7sgEdtKfggSOTX5nCZYcfDZwg+qbuLkjdlk4PFRss=;
+        b=Nd1DcIoYUJJGoBNy17sg12lnNbHSaJ8Wi029Z7B1wW3QOV6Aup17BRn2qfYMp39XXR
+         uz6BI1L9ZlWRkTt0kKJbz3qEkmQaMCwlO8MGDG/pvKFmt10ODEjkF8j5oxklrc0GUws7
+         UzkkakYRX6yH1i68hie2XYLqGdRKmL4NwZ4CEFAm3eSbiGmtYU4JhG4K4yAJU7Zn1X+R
+         BjuDsa583/8SF4DQlBs8+sgad0dZk2PxpZToooBhCQJMsPoJCmCRy1Ao7nqWuVYDnG2i
+         V6zAxz3hhdSeE8Vn4VpiIegvEs/MU/9uV5PWJTgz6pWNX8QtrNj7uYcXnFh3dtoObxeG
+         DSuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=jqbNalvt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="F/2EI0dK";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r7-20020a056214124700b00531b69b9d50si4786575qvv.519.2023.01.09.09.26.22
+        by mx.google.com with ESMTPS id s22-20020ac85ed6000000b003a8273b59bfsi4711134qtx.213.2023.01.09.09.26.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 09:26:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Jan 2023 09:26:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=jqbNalvt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="F/2EI0dK";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pEvuJ-0003NL-6t; Mon, 09 Jan 2023 12:25:59 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pEvuB-0002xA-9l; Mon, 09 Jan 2023 12:25:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvtb-0002ga-D0; Mon, 09 Jan 2023 12:25:17 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ id 1pEvtW-0002cT-2d; Mon, 09 Jan 2023 12:25:10 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvtY-0001Hf-Jk; Mon, 09 Jan 2023 12:25:14 -0500
-Received: by mail-ej1-x630.google.com with SMTP id qk9so21946370ejc.3;
- Mon, 09 Jan 2023 09:25:10 -0800 (PST)
+ id 1pEvtT-0001Ey-H5; Mon, 09 Jan 2023 12:25:09 -0500
+Received: by mail-ej1-x631.google.com with SMTP id tz12so21912361ejc.9;
+ Mon, 09 Jan 2023 09:25:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3Pl/wFqXsxf2uFw4ai98hrMAmQzRQuED9tRgIiN3ino=;
- b=jqbNalvtqVKEwAjh6bkCWVbIo/X6wfwCGfW98T8s8SZy9fKnqBwcx9SB/zhpkHt0A1
- rbv4jN3jgIvQ4+FPIA7dZ4RcwJgA/HAWbm/dWDyCBhBQw0xvz3CQd8Zr3vw5JFCGRSwI
- Js2l2LLNUAnt/AipfpjddW6k7zAKeREw27gU23dXbGM+KM4alzpORm0lwz7x4qNUCpsN
- WHoHk0dyWrql7wKAFFhDjR22nOiIG2omfGNJAL66ml8kcMOgxmXDyIovile8S5bJ9Sd9
- hy+/glmrF5ZBqAMcPa15MD0Yk2BoWZaYKnDSkOEZnhW/bWXckJZu+a0c7Edto5t1a7Ei
- Aseg==
+ bh=5p7sgEdtKfggSOTX5nCZYcfDZwg+qbuLkjdlk4PFRss=;
+ b=F/2EI0dKmicyDegQcc38XDJWR9FTNxRyGOYIWBboWQG1Vpm2gZBzHyD+Gw0Qdy2/rE
+ C12Y88L5DE32ed9fc2VTa+X4UBeeRknzAQ0Hmn+18GtJisSokACdRYzG6I91M8NqDCGn
+ DSrHReRmH9vTYcPTFdMe1400fPnSqOFQY/X3ghKF5yIja4wwv/TcO4h7DNM+Op6eusaD
+ 8S95dPXBhKq83TGSecepcipjB3alc6szxTsf6eV+zhooyMT0WlvI6yljOagzZn5g2g5i
+ T3Led9qM5LhbsAqqE0gkV+1ybnxxG946GiJnSzBVgStEyA93DR8j4/MrR0AOv3Mybj6C
+ Aczw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3Pl/wFqXsxf2uFw4ai98hrMAmQzRQuED9tRgIiN3ino=;
- b=7z7QbwHIicw6aGCktWDNE66eNPKiUDjFcD3+nHQru5iSQM7mtnARWmNoq1iDxYOH7J
- lR5SKvVmGbxHiMH6RI2RdT0WraNZinKCo7k+6VYgIZFS5plKEIggqiQIvKnGrCzGJiaT
- TRrcfvDuph6OmmKqujJCC/ntSa7phOwKUgTTmrKsa9+NH39g9v9nxuq0ZizZDFrIjAsz
- UZCVV4dw40MB5pETRSt8uUJsRw5wYEveog0S4TlDPsACLqPwpeFhOVzglUuq9FsLfNz2
- fa6qYIMvGERYfb70H2lefx8+dmuh90v4jMq3e8QRjijii1uETfcONnRp05GX7uxV1AWQ
- ijRg==
-X-Gm-Message-State: AFqh2koJveC0LEh0Pho/HqrSPh+6krqDW3JAes8arakk37yuCKNmm96K
- vICQE9QBXs4r7/HqLTst410QHqzt1fDXcQ==
-X-Received: by 2002:a17:907:a28c:b0:7c1:6794:1623 with SMTP id
- rd12-20020a170907a28c00b007c167941623mr68542513ejc.58.1673285109529; 
- Mon, 09 Jan 2023 09:25:09 -0800 (PST)
+ bh=5p7sgEdtKfggSOTX5nCZYcfDZwg+qbuLkjdlk4PFRss=;
+ b=AmZUmRzG0kVC4YICoZuKz0gRHuZ+Jnq8gxNxqbWkTnoo6+6qUxH7UGXbfrd4dWM/bZ
+ cuAu/UiIoG8WJgrJO5qBc4MKQ+3oOxznq7vYTS2O1KJys5q80WVA3Sn2m/SwicnnfvvW
+ EP9af+99oNv0B99YvNAz8PqYnjT0JVyBARyUVBAu7YAiX75t/tepNoM7qQv6ugEt7YWs
+ 6sBscTkUCh13/DongxbzkLiuaWjnuZXTwRQCaU9Q/YaLWu3sSm5Q4QLbXeuMYJH4vzBL
+ 1PSUiG22ROyMKsHEZsP5n2vyEjLHzVGKQkvszV4nchaUm7uabO1x/EHlP+A0uv02tUqI
+ UmZw==
+X-Gm-Message-State: AFqh2kpH9QRyQiN9IMc4+u/pTPp1l+m3QMMcfDiJosWOB36L83/Q6fSG
+ 79b7Pe0eZrck+YsYPUpXuAKG92JXzwEXWA==
+X-Received: by 2002:a17:907:a782:b0:7c1:6430:e5d0 with SMTP id
+ vx2-20020a170907a78200b007c16430e5d0mr58253269ejc.4.1673285104523; 
+ Mon, 09 Jan 2023 09:25:04 -0800 (PST)
 Received: from osoxes.fritz.box
  (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
  [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
  by smtp.gmail.com with ESMTPSA id
- 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.25.08
+ 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.25.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jan 2023 09:25:09 -0800 (PST)
+ Mon, 09 Jan 2023 09:25:04 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: John G Johnson <john.g.johnson@oracle.com>,
@@ -103,18 +103,17 @@ Cc: John G Johnson <john.g.johnson@oracle.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v6 15/33] hw/isa/piix3: Create power management controller in
- host device
-Date: Mon,  9 Jan 2023 18:23:28 +0100
-Message-Id: <20230109172347.1830-16-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>, Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v6 11/33] hw/i386/pc: Create RTC controllers in south bridges
+Date: Mon,  9 Jan 2023 18:23:24 +0100
+Message-Id: <20230109172347.1830-12-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230109172347.1830-1-shentey@gmail.com>
 References: <20230109172347.1830-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,192 +122,236 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fypKAr/jbglC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NRPq4bJZVMTO
 
-The power management controller is an integral part of PIIX3 (function
-3). So create it as part of the south bridge.
-
-Note that the ACPI function is optional in QEMU. This is why it gets
-object_initialize_child()'ed in realize rather than in instance_init.
+Just like in the real hardware (and in PIIX4), create the RTC
+controllers in the south bridges.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20221022150508.26830-14-shentey@gmail.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20221022150508.26830-11-shentey@gmail.com>
 ---
- include/hw/southbridge/piix.h |  6 ++++++
- hw/i386/pc_piix.c             | 24 ++++++++++++++----------
- hw/isa/piix3.c                | 14 ++++++++++++++
- hw/isa/Kconfig                |  1 +
- 4 files changed, 35 insertions(+), 10 deletions(-)
+ include/hw/i386/ich9.h        |  2 ++
+ include/hw/southbridge/piix.h |  4 ++++
+ hw/i386/pc.c                  | 12 +++++++++++-
+ hw/i386/pc_piix.c             |  8 ++++++++
+ hw/i386/pc_q35.c              |  1 +
+ hw/isa/lpc_ich9.c             |  8 ++++++++
+ hw/isa/piix3.c                | 15 +++++++++++++++
+ hw/isa/Kconfig                |  2 ++
+ 8 files changed, 51 insertions(+), 1 deletion(-)
 
+diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
+index 222781e8b9..dab309d5e3 100644
+--- a/include/hw/i386/ich9.h
++++ b/include/hw/i386/ich9.h
+@@ -7,6 +7,7 @@
+ #include "hw/isa/apm.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/ich9.h"
++#include "hw/rtc/mc146818rtc.h"
+ #include "qom/object.h"
+ 
+ void ich9_lpc_set_irq(void *opaque, int irq_num, int level);
+@@ -35,6 +36,7 @@ struct ICH9LPCState {
+     */
+     uint8_t irr[PCI_SLOT_MAX][PCI_NUM_PINS];
+ 
++    RTCState rtc;
+     APMState apm;
+     ICH9LPCPMRegs pm;
+     uint32_t sci_level; /* track sci level */
 diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
-index 762709f2fd..b1eaab1d95 100644
+index 0bf48e936d..b06d26fa11 100644
 --- a/include/hw/southbridge/piix.h
 +++ b/include/hw/southbridge/piix.h
-@@ -14,6 +14,7 @@
+@@ -13,6 +13,8 @@
+ #define HW_SOUTHBRIDGE_PIIX_H
  
  #include "hw/pci/pci_device.h"
- #include "qom/object.h"
-+#include "hw/acpi/piix4.h"
- #include "hw/rtc/mc146818rtc.h"
- #include "hw/usb/hcd-uhci.h"
++#include "qom/object.h"
++#include "hw/rtc/mc146818rtc.h"
  
-@@ -56,6 +57,9 @@ struct PIIXState {
+ /* PIRQRC[A:D]: PIRQx Route Control Registers */
+ #define PIIX_PIRQCA 0x60
+@@ -51,6 +53,8 @@ struct PIIXState {
+     /* This member isn't used. Just for save/load compatibility */
+     int32_t pci_irq_levels_vmstate[PIIX_NUM_PIRQS];
  
-     RTCState rtc;
-     UHCIState uhci;
-+    PIIX4PMState pm;
++    RTCState rtc;
 +
-+    uint32_t smb_io_base;
- 
      /* Reset Control Register contents */
      uint8_t rcr;
-@@ -63,7 +67,9 @@ struct PIIXState {
-     /* IO memory region for Reset Control Register (PIIX_RCR_IOPORT) */
-     MemoryRegion rcr_mem;
  
-+    bool has_acpi;
-     bool has_usb;
-+    bool smm_enabled;
- };
- typedef struct PIIXState PIIX3State;
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index d489ecc0d1..448557333b 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1304,7 +1304,17 @@ void pc_basic_device_init(struct PCMachineState *pcms,
+         pit_alt_irq = qdev_get_gpio_in(hpet, HPET_LEGACY_PIT_INT);
+         rtc_irq = qdev_get_gpio_in(hpet, HPET_LEGACY_RTC_INT);
+     }
+-    *rtc_state = mc146818_rtc_init(isa_bus, 2000, rtc_irq);
++
++    if (rtc_irq) {
++        qdev_connect_gpio_out(DEVICE(*rtc_state), 0, rtc_irq);
++    } else {
++        uint32_t irq = object_property_get_uint(OBJECT(*rtc_state),
++                                                "irq",
++                                                &error_fatal);
++        isa_connect_gpio_out(*rtc_state, 0, irq);
++    }
++    object_property_add_alias(OBJECT(pcms), "rtc-time", OBJECT(*rtc_state),
++                              "date");
+ 
+     qemu_register_boot_set(pc_boot_set, *rtc_state);
  
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 61d8152078..5ea8d4a585 100644
+index df64dd8dcc..8f894714e5 100644
 --- a/hw/i386/pc_piix.c
 +++ b/hw/i386/pc_piix.c
-@@ -46,12 +46,12 @@
- #include "sysemu/kvm.h"
- #include "hw/kvm/clock.h"
- #include "hw/sysbus.h"
-+#include "hw/i2c/i2c.h"
- #include "hw/i2c/smbus_eeprom.h"
- #include "hw/xen/xen-x86.h"
- #include "hw/xen/xen.h"
- #include "exec/memory.h"
- #include "hw/acpi/acpi.h"
--#include "hw/acpi/piix4.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "sysemu/xen.h"
-@@ -97,6 +97,7 @@ static void pc_init1(MachineState *machine,
-     MemoryRegion *system_io = get_system_io();
-     PCIBus *pci_bus;
-     ISABus *isa_bus;
-+    Object *piix4_pm;
-     int piix3_devfn = -1;
-     qemu_irq smi_irq;
-     GSIState *gsi_state;
-@@ -237,15 +238,25 @@ static void pc_init1(MachineState *machine,
-         pci_dev = pci_new_multifunction(-1, true, type);
-         object_property_set_bool(OBJECT(pci_dev), "has-usb",
-                                  machine_usb(machine), &error_abort);
-+        object_property_set_bool(OBJECT(pci_dev), "has-acpi",
-+                                 x86_machine_is_acpi_enabled(x86ms),
-+                                 &error_abort);
-+        qdev_prop_set_uint32(DEVICE(pci_dev), "smb_io_base", 0xb100);
-+        object_property_set_bool(OBJECT(pci_dev), "smm-enabled",
-+                                 x86_machine_is_smm_enabled(x86ms),
-+                                 &error_abort);
-         pci_realize_and_unref(pci_dev, pci_bus, &error_fatal);
-+
-         piix3 = PIIX3_PCI_DEVICE(pci_dev);
+@@ -32,6 +32,7 @@
+ #include "hw/i386/pc.h"
+ #include "hw/i386/apic.h"
+ #include "hw/pci-host/i440fx.h"
++#include "hw/rtc/mc146818rtc.h"
+ #include "hw/southbridge/piix.h"
+ #include "hw/display/ramfb.h"
+ #include "hw/firmware/smbios.h"
+@@ -239,10 +240,17 @@ static void pc_init1(MachineState *machine,
          piix3->pic = x86ms->gsi;
          piix3_devfn = piix3->dev.devfn;
          isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix3), "isa.0"));
-         rtc_state = ISA_DEVICE(object_resolve_path_component(OBJECT(pci_dev),
-                                                              "rtc"));
-+        piix4_pm = object_resolve_path_component(OBJECT(pci_dev), "pm");
++        rtc_state = ISA_DEVICE(object_resolve_path_component(OBJECT(pci_dev),
++                                                             "rtc"));
      } else {
          pci_bus = NULL;
-+        piix4_pm = NULL;
          isa_bus = isa_bus_new(NULL, get_system_memory(), system_io,
                                &error_abort);
- 
-@@ -315,15 +326,8 @@ static void pc_init1(MachineState *machine,
++
++        rtc_state = isa_new(TYPE_MC146818_RTC);
++        qdev_prop_set_int32(DEVICE(rtc_state), "base_year", 2000);
++        isa_realize_and_unref(rtc_state, isa_bus, &error_fatal);
++
+         i8257_dma_init(isa_bus, 0);
+         pcms->hpet_enabled = false;
      }
- #endif
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 83c57c6eb1..da97df69f7 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -239,6 +239,7 @@ static void pc_q35_init(MachineState *machine)
+     lpc = pci_create_simple_multifunction(host_bus, PCI_DEVFN(ICH9_LPC_DEV,
+                                           ICH9_LPC_FUNC), true,
+                                           TYPE_ICH9_LPC_DEVICE);
++    rtc_state = ISA_DEVICE(object_resolve_path_component(OBJECT(lpc), "rtc"));
  
--    if (pcmc->pci_enabled && x86_machine_is_acpi_enabled(X86_MACHINE(pcms))) {
--        PCIDevice *piix4_pm;
--
-+    if (piix4_pm) {
-         smi_irq = qemu_allocate_irq(pc_acpi_smi_interrupt, first_cpu, 0);
--        piix4_pm = pci_new(piix3_devfn + 3, TYPE_PIIX4_PM);
--        qdev_prop_set_uint32(DEVICE(piix4_pm), "smb_io_base", 0xb100);
--        qdev_prop_set_bit(DEVICE(piix4_pm), "smm-enabled",
--                          x86_machine_is_smm_enabled(x86ms));
--        pci_realize_and_unref(piix4_pm, pci_bus, &error_fatal);
+     object_property_add_link(OBJECT(machine), PC_MACHINE_ACPI_DEVICE_PROP,
+                              TYPE_HOTPLUG_HANDLER,
+diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+index 8d541e2b54..498175c1cc 100644
+--- a/hw/isa/lpc_ich9.c
++++ b/hw/isa/lpc_ich9.c
+@@ -663,6 +663,8 @@ static void ich9_lpc_initfn(Object *obj)
+     static const uint8_t acpi_enable_cmd = ICH9_APM_ACPI_ENABLE;
+     static const uint8_t acpi_disable_cmd = ICH9_APM_ACPI_DISABLE;
  
-         qdev_connect_gpio_out(DEVICE(piix4_pm), 0, x86ms->gsi[9]);
-         qdev_connect_gpio_out_named(DEVICE(piix4_pm), "smi-irq", 0, smi_irq);
-@@ -337,7 +341,7 @@ static void pc_init1(MachineState *machine,
-                                  object_property_allow_set_link,
-                                  OBJ_PROP_LINK_STRONG);
-         object_property_set_link(OBJECT(machine), PC_MACHINE_ACPI_DEVICE_PROP,
--                                 OBJECT(piix4_pm), &error_abort);
-+                                 piix4_pm, &error_abort);
-     }
++    object_initialize_child(obj, "rtc", &lpc->rtc, TYPE_MC146818_RTC);
++
+     object_property_add_uint8_ptr(obj, ACPI_PM_PROP_SCI_INT,
+                                   &lpc->sci_gsi, OBJ_PROP_FLAG_READ);
+     object_property_add_uint8_ptr(OBJECT(lpc), ACPI_PM_PROP_ACPI_ENABLE_CMD,
+@@ -728,6 +730,12 @@ static void ich9_lpc_realize(PCIDevice *d, Error **errp)
+     isa_bus_irqs(isa_bus, lpc->gsi);
  
-     if (machine->nvdimms_state->is_enabled) {
+     i8257_dma_init(isa_bus, 0);
++
++    /* RTC */
++    qdev_prop_set_int32(DEVICE(&lpc->rtc), "base_year", 2000);
++    if (!qdev_realize(DEVICE(&lpc->rtc), BUS(isa_bus), errp)) {
++        return;
++    }
+ }
+ 
+ static bool ich9_rst_cnt_needed(void *opaque)
 diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
-index 45c20dea17..ed7d58bc98 100644
+index 283b971ec4..e8ddb6a602 100644
 --- a/hw/isa/piix3.c
 +++ b/hw/isa/piix3.c
-@@ -319,6 +319,17 @@ static void pci_piix3_realize(PCIDevice *dev, Error **errp)
-             return;
-         }
-     }
+@@ -28,6 +28,7 @@
+ #include "hw/dma/i8257.h"
+ #include "hw/southbridge/piix.h"
+ #include "hw/irq.h"
++#include "hw/qdev-properties.h"
+ #include "hw/isa/isa.h"
+ #include "hw/xen/xen.h"
+ #include "sysemu/runstate.h"
+@@ -301,6 +302,12 @@ static void pci_piix3_realize(PCIDevice *dev, Error **errp)
+                                         PIIX_RCR_IOPORT, &d->rcr_mem, 1);
+ 
+     i8257_dma_init(isa_bus, 0);
 +
-+    /* Power Management */
-+    if (d->has_acpi) {
-+        object_initialize_child(OBJECT(d), "pm", &d->pm, TYPE_PIIX4_PM);
-+        qdev_prop_set_int32(DEVICE(&d->pm), "addr", dev->devfn + 3);
-+        qdev_prop_set_uint32(DEVICE(&d->pm), "smb_io_base", d->smb_io_base);
-+        qdev_prop_set_bit(DEVICE(&d->pm), "smm-enabled", d->smm_enabled);
-+        if (!qdev_realize(DEVICE(&d->pm), BUS(pci_bus), errp)) {
-+            return;
-+        }
++    /* RTC */
++    qdev_prop_set_int32(DEVICE(&d->rtc), "base_year", 2000);
++    if (!qdev_realize(DEVICE(&d->rtc), BUS(isa_bus), errp)) {
++        return;
 +    }
  }
  
  static void build_pci_isa_aml(AcpiDevAmlIf *adev, Aml *scope)
-@@ -353,7 +364,10 @@ static void pci_piix3_init(Object *obj)
+@@ -327,6 +334,13 @@ static void build_pci_isa_aml(AcpiDevAmlIf *adev, Aml *scope)
+     }
  }
  
- static Property pci_piix3_props[] = {
-+    DEFINE_PROP_UINT32("smb_io_base", PIIX3State, smb_io_base, 0),
-+    DEFINE_PROP_BOOL("has-acpi", PIIX3State, has_acpi, true),
-     DEFINE_PROP_BOOL("has-usb", PIIX3State, has_usb, true),
-+    DEFINE_PROP_BOOL("smm-enabled", PIIX3State, smm_enabled, false),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
++static void pci_piix3_init(Object *obj)
++{
++    PIIX3State *d = PIIX3_PCI_DEVICE(obj);
++
++    object_initialize_child(obj, "rtc", &d->rtc, TYPE_MC146818_RTC);
++}
++
+ static void pci_piix3_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -353,6 +367,7 @@ static const TypeInfo piix3_pci_type_info = {
+     .name = TYPE_PIIX3_PCI_DEVICE,
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PIIX3State),
++    .instance_init = pci_piix3_init,
+     .abstract = true,
+     .class_init = pci_piix3_class_init,
+     .interfaces = (InterfaceInfo[]) {
 diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
-index f01bc0dff3..cf79580384 100644
+index 0156a66889..c10cbc5fc1 100644
 --- a/hw/isa/Kconfig
 +++ b/hw/isa/Kconfig
-@@ -33,6 +33,7 @@ config PC87312
- 
- config PIIX3
+@@ -35,6 +35,7 @@ config PIIX3
      bool
-+    select ACPI_PIIX4
      select I8257
      select ISA_BUS
-     select MC146818RTC
++    select MC146818RTC
+ 
+ config PIIX4
+     bool
+@@ -79,3 +80,4 @@ config LPC_ICH9
+     select I8257
+     select ISA_BUS
+     select ACPI_ICH9
++    select MC146818RTC
 -- 
 2.39.0
 

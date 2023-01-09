@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2663744ejc;
-        Mon, 9 Jan 2023 14:43:18 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsMDAaCZmURP6eExIMweJ8A2v0Yxu3gPk0sEGbKvpQyhr9Osl6wutqW9TfG2fGdXXviIOMa
-X-Received: by 2002:adf:e383:0:b0:242:69f4:cb6f with SMTP id e3-20020adfe383000000b0024269f4cb6fmr41535771wrm.32.1673304198745;
-        Mon, 09 Jan 2023 14:43:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673304198; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2663861ejc;
+        Mon, 9 Jan 2023 14:43:32 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtdCl6YNj0ANHoQ5DbQaX/5PYVSy+yP31ijLr3OU9T4IGMxjf8OlBmyl1HCljbvBtWJ5CXJ
+X-Received: by 2002:a05:600c:3d8a:b0:3d3:4406:8a37 with SMTP id bi10-20020a05600c3d8a00b003d344068a37mr47634888wmb.41.1673304211865;
+        Mon, 09 Jan 2023 14:43:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673304211; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZlYn07z3Osp22xkDYT19PGpl5xIAPBSqMm2YNkOZEfOndrhYeN7is7N274irRBy/45
-         EysqCFJYVHpidnB7zsFc6DF/8dxEVVw5WlAxi265GdcxFZ/vGD4sHbSv8PJG/9qxPwTE
-         h39p40HuMxoghWCiKs2oNkZ9TiDJknAdeF+/S/s9Q/6c0vKJEjiZl+Ms9M6vRWZM+DPz
-         8rI+5uj8HyN6DFi2yVlTN205lCQx7JL5clTiG8TcxIZG/cNWpTNa7P0D+LAnF9H6EIR2
-         F+xMUXWRxjJM8wQtHV9rG8ItkHRTxqGgXBosz0mKQFnq3x7PZHjYfi9Ht4OrkkttCqwr
-         8G9A==
+        b=0tIB0ePGXrJ2WICWdllYr3KOD536Wz3LP2k+01/nOba2AlRnuI+SuGbSggYUeakRlK
+         lk02eZRd7h9k6O2bS6OjkTq+Ku4cNC75rgygNFFSXBStBZr+3Ron/0LoXR1VK3+tZ7GH
+         DOwkncxg8qkCZaqreM9/ZQu42nyLNXLO3A2BBaNZP53UmbEHjC0v121x5+p18W2ti9FF
+         9YTT0BWUqCqeg3fJtYS24nFVITHXj2CAsMGbrWbk4vfQXW8zI5sEQ1JSrzUWfnQwrVmw
+         xFN3kaLmjE5RMnE0TvFN2aySsNZ4wMgn4dFGlawl8xT+dk24qQCaLVUVgdMNUkUhWE9y
+         q+Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=1TOeNshkMsKn2Y3CsqOHq9PQkcZYQvOcN/VHQdwTADc=;
-        b=lRFomcgE9EOHZDPOZFV8rQ2j/eCEPFmF0AGHOF4ROuIKZQYiPgdqZhTrhk0V3RoiwI
-         a/o+1v9VymQ/kxalSoJQErY2RUPQofuFXSSNZPiLnZQBxTFEUR2UAst5/WP9aWns3H5m
-         qsp5/TSk/sP9XDR7g1QwtzBRHqJquM7qsak+hAwd3pr6kBHr9QBW9wWgK/JrjnIQnalR
-         WyCwLblX6c/qNme4eXMilUdPXRnmoH7zOusZ/sz9gCAimrKikScbSOl1YyFeeE+MkqHW
-         MudDKu6rMIZ8t/wUCqAMZWsjGyK5+0T5MnV3JU7rABO8bKaPcldlNxcrtEnI40dRoVbc
-         I0eA==
+        bh=/8HcNTklXSC35TOyNK0U8zsTJeBdHzQ/ZioX1yIWwcE=;
+        b=o6z7ewtcg0XxHu9qq4ip25rj8eIQvfPIT1vzzSGieIoCrWPY6a7dKImH/PVxLdJTPI
+         Kn+97DCRhEuNDwqI+oEiu0zo5YCsDCuycQv854s6iTYNpuHsqy0tkBoDntVRU4n5jM3y
+         ejgemYuimsjJ9vwRTDXwc0Sw2lgYCV5MOAO/4272qfYyPVMv4RzIO/14uMs0mtuHmzCo
+         UZHNqDbZITrbOPC/hmhs6i8r+vFe9hNwTIu7XGue7MVnfwg1hftSYWBstmHQ5LXcq80C
+         0i1O6LSIIP3faxBeF3ME46XcAsPGuEI4dqkEcjpAjvPe814Z8jyGmOlpru6RcontvopQ
+         Kr6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Y5mJLlJU;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OknEBO+J;
        dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id 6-20020a056000154600b002b945cc6e5csi9245061wry.877.2023.01.09.14.43.18
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id e6-20020a05600c4e4600b003d004b1b2cbsi7931726wmq.98.2023.01.09.14.43.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Jan 2023 14:43:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+        Mon, 09 Jan 2023 14:43:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Y5mJLlJU;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OknEBO+J;
        dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 459053F8AB;
-	Mon,  9 Jan 2023 22:43:18 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 7197F3FF55;
+	Mon,  9 Jan 2023 22:43:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673304198; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1673304211; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=1TOeNshkMsKn2Y3CsqOHq9PQkcZYQvOcN/VHQdwTADc=;
-	b=Y5mJLlJU7jn+plUG6zJNlfKJxcqtf+AauJMcOcvYiqKWOtAllU1C/pBlh1R5TB1iBJ+K71
-	Rw54NziHeG/qXubVsGHpjYJU+amU7LTTxHyfA2fOA4WC4RWvI6wGOe9mZphh1p0loZkigQ
-	5/AcAcPLhoen364OsiF157lvChfI+Ok=
+	bh=/8HcNTklXSC35TOyNK0U8zsTJeBdHzQ/ZioX1yIWwcE=;
+	b=OknEBO+JdjYSu5/aHnatsN3rfHuKJvvmOuTPmZVBOOUTNj26UJ3uoIr8Cb59r6xH1dxCFy
+	QwX+GnPL62uAYo/79UMFg7+LnrKCTdE7+68uRuzDxXBSWaAy24OGd019z7UmuxhMDWqS6E
+	8n0j6+AnCLRaG9zmWe8eoYeAwOtmjB0=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673304198;
+	s=susede2_ed25519; t=1673304211;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=1TOeNshkMsKn2Y3CsqOHq9PQkcZYQvOcN/VHQdwTADc=;
-	b=ZEr9t76sBPGskZ9LDMLm5p269z52td372NzYsVh7HOyiZXUtyFhIEhE2JYhUzpAPxz5oJm
-	1sMjkr5XMemRENBQ==
+	bh=/8HcNTklXSC35TOyNK0U8zsTJeBdHzQ/ZioX1yIWwcE=;
+	b=o2S5ur1A4aYsI4OqTvVcwMKTxn01p/jWdzqga0w+DcZhiRnwm74WS3mtqnN62YdBYZGWsr
+	Er/GIoyLvxsMtACA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 05C9F13583;
-	Mon,  9 Jan 2023 22:43:14 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D1B9013583;
+	Mon,  9 Jan 2023 22:43:28 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 4Gs4MIKYvGMdIQAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 09 Jan 2023 22:43:14 +0000
+	id GFowJpCYvGMdIQAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 09 Jan 2023 22:43:28 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -81,71 +81,96 @@ Cc: qemu-arm@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Subject: [RFC PATCH v2 13/19] tests: do not run test-hmp on all machines for ARM KVM-only
-Date: Mon,  9 Jan 2023 19:42:26 -0300
-Message-Id: <20230109224232.11661-14-farosas@suse.de>
+	Alexander Graf <agraf@csgraf.de>
+Subject: [RFC PATCH v2 17/19] target/arm: Move regime_using_lpae_format into internal.h
+Date: Mon,  9 Jan 2023 19:42:30 -0300
+Message-Id: <20230109224232.11661-18-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230109224232.11661-1-farosas@suse.de>
 References: <20230109224232.11661-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: vB+tpOGz6fGW
+X-TUID: ki+iYCbE/ddh
 
-From: Claudio Fontana <cfontana@suse.de>
+This function is needed by common code (ptw.c), so move it along with
+the other regime_* functions in internal.h. When we enable the build
+without TCG, the tlb_helper.c file will not be present.
 
-on ARM we currently list and build all machines, even when
-building KVM-only, without TCG.
-
-Until we fix this (and we only list and build machines that are
-compatible with KVM), only test specifically using the "virt"
-machine in this case.
-
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Cc: Thomas Huth <thuth@redhat.com>
-cc: Laurent Vivier <lvivier@redhat.com>
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 ---
- tests/qtest/test-hmp.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+Richard: this cannot into ptw.c because that file is softmmu only
+---
+ target/arm/internals.h      | 21 ++++++++++++++++++---
+ target/arm/tcg/tlb_helper.c | 18 ------------------
+ 2 files changed, 18 insertions(+), 21 deletions(-)
 
-diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
-index f8b22abe4c..daa1e76a06 100644
---- a/tests/qtest/test-hmp.c
-+++ b/tests/qtest/test-hmp.c
-@@ -157,8 +157,29 @@ int main(int argc, char **argv)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 865b9e8104..b1fccf13a3 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -614,9 +614,6 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(CPUARMState *env,
+ /* Return the MMU index for a v7M CPU in the specified security state */
+ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate);
  
-     g_test_init(&argc, &argv, NULL);
+-/* Return true if the translation regime is using LPAE format page tables */
+-bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
+-
+ /*
+  * Return true if the stage 1 translation regime is using LPAE
+  * format page tables
+@@ -781,6 +778,24 @@ static inline uint64_t regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
+     return env->cp15.tcr_el[regime_el(env, mmu_idx)];
+ }
  
-+    /*
-+     * XXX currently we build also boards for ARM that are
-+     * incompatible with KVM.  We therefore need to check this
-+     * explicitly, and only test virt for kvm-only arm builds. After
-+     * we do the work of Kconfig etc to ensure that only
-+     * KVM-compatible boards are built for the kvm-only build, we
-+     * could remove this.
-+     */
-+#ifndef CONFIG_TCG
-+    {
-+        const char *arch = qtest_get_arch();
-+
-+        if (strcmp(arch, "arm") == 0 || strcmp(arch, "aarch64") == 0) {
-+            add_machine_test_case("virt");
-+            goto add_machine_test_done;
-+        }
++/* Return true if the translation regime is using LPAE format page tables */
++static inline bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
++{
++    int el = regime_el(env, mmu_idx);
++    if (el == 2 || arm_el_is_aa64(env, el)) {
++        return true;
 +    }
-+#endif /* !CONFIG_TCG */
++    if (arm_feature(env, ARM_FEATURE_PMSA) &&
++        arm_feature(env, ARM_FEATURE_V8)) {
++        return true;
++    }
++    if (arm_feature(env, ARM_FEATURE_LPAE)
++        && (regime_tcr(env, mmu_idx) & TTBCR_EAE)) {
++        return true;
++    }
++    return false;
++}
 +
-     qtest_cb_for_every_machine(add_machine_test_case, g_test_quick());
-+    goto add_machine_test_done;
+ /**
+  * arm_num_brps: Return number of implemented breakpoints.
+  * Note that the ID register BRPS field is "number of bps - 1",
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index 60abcbebe6..31eb77f7df 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -12,24 +12,6 @@
+ #include "exec/helper-proto.h"
  
-+ add_machine_test_done:
-     /* as none machine has no memory by default, add a test case with memory */
-     qtest_add_data_func("hmp/none+2MB", g_strdup("none -m 2"), test_machine);
  
+-/* Return true if the translation regime is using LPAE format page tables */
+-bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
+-{
+-    int el = regime_el(env, mmu_idx);
+-    if (el == 2 || arm_el_is_aa64(env, el)) {
+-        return true;
+-    }
+-    if (arm_feature(env, ARM_FEATURE_PMSA) &&
+-        arm_feature(env, ARM_FEATURE_V8)) {
+-        return true;
+-    }
+-    if (arm_feature(env, ARM_FEATURE_LPAE)
+-        && (regime_tcr(env, mmu_idx) & TTBCR_EAE)) {
+-        return true;
+-    }
+-    return false;
+-}
+-
+ /*
+  * Returns true if the stage 1 translation regime is using LPAE format page
+  * tables. Used when raising alignment exceptions, whose FSR changes depending
 -- 
 2.35.3

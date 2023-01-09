@@ -1,151 +1,971 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2460746ejc;
-        Mon, 9 Jan 2023 09:44:32 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXudx+U+lOnKrEPbycerR9PpAsf2SHDyEdh2tTEmbUXUfU8fLx0pjL0guOKUbZfyq5D7iqfp
-X-Received: by 2002:a67:c585:0:b0:3ce:e535:d6dc with SMTP id h5-20020a67c585000000b003cee535d6dcmr7055691vsk.5.1673286272498;
-        Mon, 09 Jan 2023 09:44:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673286272; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2663527ejc;
+        Mon, 9 Jan 2023 14:42:57 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsSS6D7NtSaxQ6mxizsXXfGDL6lmfMBIYfKS1XDX8z0G5T1JWSos2FglpwjxH6doemjr72f
+X-Received: by 2002:adf:ef52:0:b0:27a:ef62:1a44 with SMTP id c18-20020adfef52000000b0027aef621a44mr32568731wrp.9.1673304177133;
+        Mon, 09 Jan 2023 14:42:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673304177; cv=none;
         d=google.com; s=arc-20160816;
-        b=FdHBxWo8u8NwLI8/njLwpOnOLgWK4H433soM2XPY9o9KumMAvmo2SZd19PdE3fwpjh
-         xWI2wz0fSfevWbRsly1K21F6ycoF2otpHYtRBAuMzMXY8IwHmWdWjJdXXb+pr3GrkIXB
-         EhRSkuKwtpKpDWnPYTCok9sG4yxDxzuah4Ah1QAXcR8lQwdwT/47nIw3LaeW8/NtYpCV
-         v+bh1EfbGQd+XChG+wdtJLF8QveUwdnDB1FuHoK/7ht07AA3NWBhlEWi7F3beNQeLCdG
-         eEKV6LUlSwfCm+qrzsKAgWgQQME0X4M9jHkxMX6wo14LvovELQP8oSu1fhcenxVptnlT
-         xhdQ==
+        b=tdo+1hRsk4dRfZXh/SF6ag7YS0s3q4DiQ0C1bz1dETCc/52Dbws1vtWIRMfE3j1T7t
+         KTSG+YOp16wpxj7f7jsjQ22+n4XRd0kmlfo8yYUzR/9RiexqXZI4mx/kNPNAZ0A1SA1p
+         HYvBLBhTu7am7niqMBkKFvvWnE6n6uQIqgnA1SNW+9J0utaXcdj+T5Ef0Ha5NthT5oDP
+         F7aRQ7o3yNkyeU2wbqBATHCKExx1RC7UNyApeYndkga54F5AvBm068H5REAn2j3qwLWe
+         RrdR3txpcSXLJ2Zuws/k91WwkslLMXs2d8idHvryuUu5Bs7c9/ClWB/EbIc0D3rQDr5Y
+         Q7iA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=tXWhE1XisfJ6nzvcUpo2PoJy/dKFyeRVIIfvt8sSBUo=;
-        b=bru7/eRX48RER+QCZCKNwmlkJq1DSa7Cwi1KaMsv+c3H65lzaDGIxaAS3Wa+RB4RYY
-         c88WveyW5Vp4Dwa94DcTZJ6YCPlXs+EczmIrwGpBn5hMRVZGosuQloqFUJpN9UApOJ32
-         8a50rwluo8OYlMh+/KDIOS8RicEofeqVPFTRvovFMB0jdD2YbcKAqNBJPlqAi2zHtfx4
-         DihRWocrujs9SubHIok1CKtVq3Q+7l6l6LiZGE8vrIG8UwbDixE1riTLeGicXWWpe/rU
-         Wl9l4lPE/kq0L9QC1bE9C+RUY+IJyRsJhgZY6stm8saut8/2uHRscW1Rmxk00jYHHfVz
-         Vq6g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=1HXOsnzP2Srqui3XDrDervO1BIRKgPR9CM+PyhvAr60=;
+        b=HWjU6tm8i0PwhyBjeG3EdToS5XhOXvkoQFl5yUtRJPOw2xyutCm8kVId1vtCzDaPQ2
+         M6Zb93X04O8SHQw76eCxes8VqX+Tgjc6bWHBRLNlCjW1zObwilSfw8FtswTxIUC3Z7p3
+         Znp/N9Xp9Z+sT3rxHHFZBiaVVNx5Filxv+RGI9FPd69JZAQm4ox9jKulh/QpI9mZocbW
+         R2u1CngZMIhMs+grKRcifG9ZPUaIVFepJzVnk/utKMmZagVTOqiBiUpBBDGShKieX2f6
+         TYQJQq/7ycGEvLCOOFDKzlS5bsPestH5dnecFSxKl5hGiyi8HFC7DGfcqTJBP7+4sH5t
+         8/Mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H0Fx1w89;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o1-20020a05620a2a0100b006ff8ac76381si5102395qkp.98.2023.01.09.09.44.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 09:44:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=U2VXMQLD;
+       dkim=neutral (no key) header.i=@suse.de header.b="EAH4M/iG";
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id w15-20020adfcd0f000000b002422a195ae4si8151247wrm.760.2023.01.09.14.42.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Jan 2023 14:42:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H0Fx1w89;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pEw8l-0005K3-ND; Mon, 09 Jan 2023 12:40:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pEw8h-0005FG-3u
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 12:40:51 -0500
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pEw8e-0006lN-SS
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 12:40:50 -0500
-Received: by mail-pj1-x1030.google.com with SMTP id
- v13-20020a17090a6b0d00b00219c3be9830so10432854pjj.4
- for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 09:40:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tXWhE1XisfJ6nzvcUpo2PoJy/dKFyeRVIIfvt8sSBUo=;
- b=H0Fx1w892mswWkJQWeCtqSKpC2Jjmo//J42Q5qL3EghCwA0UVswrXC6d8V6u7vj41x
- VB+kCHQ3UqyA8G9xUyVKMuoppqFOJCRVDC4x5j33u19j9Ilw1BEyUDlpVeOokpdsYDse
- N1Vzf1tlyq7yC+CjSKCHk0o4kz5Zm1nI2pOfj0W6RzRTzmhgQ8Swj56cKPc/vwAeRHGv
- YDlb5+4N+aZJU+tF7JBvRo36WGTWrZGq4kZavmir0RnFNZ+wAfN77o94OfT3Ssz2BR+i
- uEcEqXelwOTTv3QzdbkB41TKwM9FCwLyW7Ek/bNgXwf5JnqXz6o78jsG6isAaZGCbfh/
- 97Sg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tXWhE1XisfJ6nzvcUpo2PoJy/dKFyeRVIIfvt8sSBUo=;
- b=JRNechPPQHKy0H5astXXCY9EIKW22OGOxc9Fu8WGqmrEWbA2BRikPLF9QFo29ORS7o
- 3g+zlYgYzfjUvYe3d5R4XUZyxkhJ9xyMgn9qCZSs6//TbY0dXFJpJSrrT8ZJ6nNJTFbv
- IgjX13SfAOE5GqR7+s0woAxFENBYTZbELDCgcjTXazv/1iC0uWpyxthafJCa+QDdC0GX
- yA0Aa9Gn83ATYqbWhXtMJQ6xl83EJhw5xl9HiVkKYOBCxnyOJIHJdGD1J6/N6B+PXSvJ
- X/Kk2f4Fglujxk3hfzV5Yj25KynNQ66BzmrIZSqgH6dUGYK+PurxVaDVbZ9/RSjzDgsh
- 0+Zg==
-X-Gm-Message-State: AFqh2kpD5E3y28yoAqCjxAKreDy5/lCBaImWiVRrPmrqJrhrAVf6G3BM
- PavM+VHiX4nxHqdHGkqpmlkaaA==
-X-Received: by 2002:a05:6a20:d39a:b0:b0:2b4f:a9d9 with SMTP id
- iq26-20020a056a20d39a00b000b02b4fa9d9mr90288754pzb.5.1673286047313; 
- Mon, 09 Jan 2023 09:40:47 -0800 (PST)
-Received: from ?IPV6:2602:47:d48c:8101:a909:891c:953d:a6b0?
- ([2602:47:d48c:8101:a909:891c:953d:a6b0])
- by smtp.gmail.com with ESMTPSA id
- 17-20020a630211000000b0049f77341db3sm5511554pgc.42.2023.01.09.09.40.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Jan 2023 09:40:46 -0800 (PST)
-Message-ID: <5bcc36c3-ec86-9cd3-f62f-f27392eca69f@linaro.org>
-Date: Mon, 9 Jan 2023 09:40:44 -0800
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=U2VXMQLD;
+       dkim=neutral (no key) header.i=@suse.de header.b="EAH4M/iG";
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 8A1825CDD9;
+	Mon,  9 Jan 2023 22:42:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1673304176; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1HXOsnzP2Srqui3XDrDervO1BIRKgPR9CM+PyhvAr60=;
+	b=U2VXMQLDVYKormHm+lYPn+wysGHroPYxOsKEPtj3OSR9DgX4hQGOvXPOZFn+kQ2dxTa7kD
+	jDGTaqfoG++p0EhzsxiXHN2+++PuOZAjHzUq1yJMgOJCADDLqO9cYX6Rv0PVUSJERCj7/J
+	6wlngBfz7V/HNvn/YVPGy+fBlXHL5nc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1673304176;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1HXOsnzP2Srqui3XDrDervO1BIRKgPR9CM+PyhvAr60=;
+	b=EAH4M/iG6ED2aqb0UuG6M5XDjGtHMcG3ck45qG6SESAgMZRijWOFIZdefoZZUfpwwV/pF7
+	My8d7lNm4U3tCbCg==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id ED9F413583;
+	Mon,  9 Jan 2023 22:42:53 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id QAQvLW2YvGMdIQAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 09 Jan 2023 22:42:53 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>
+Subject: [RFC PATCH v2 06/19] target/arm: Move define_debug_regs() to cpregs.c
+Date: Mon,  9 Jan 2023 19:42:19 -0300
+Message-Id: <20230109224232.11661-7-farosas@suse.de>
+X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20230109224232.11661-1-farosas@suse.de>
+References: <20230109224232.11661-1-farosas@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 00/13] hw/arm: Cleanups before pflash refactor
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Jan Kiszka <jan.kiszka@web.de>
-References: <20230109115316.2235-1-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230109115316.2235-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nvnJ6NhpQcGK
+X-TUID: TRLbbf9ON4R4
 
-On 1/9/23 03:53, Philippe Mathieu-Daudé wrote:
-> Philippe Mathieu-Daudé (13):
->    hw/arm/pxa2xx: Simplify pxa255_init()
->    hw/arm/pxa2xx: Simplify pxa270_init()
->    hw/arm/collie: Use the IEC binary prefix definitions
->    hw/arm/collie: Simplify flash creation using for() loop
->    hw/arm/gumstix: Improve documentation
->    hw/arm/gumstix: Use the IEC binary prefix definitions
->    hw/arm/mainstone: Use the IEC binary prefix definitions
->    hw/arm/musicpal: Use the IEC binary prefix definitions
->    hw/arm/omap_sx1: Remove unused 'total_ram' definitions
->    hw/arm/omap_sx1: Use the IEC binary prefix definitions
->    hw/arm/z2: Use the IEC binary prefix definitions
->    hw/arm/vexpress: Remove dead code in vexpress_common_init()
->    hw/arm: Remove unreachable code calling pflash_cfi01_register()
+The debug_helper.c file will move into a tcg-specific directory, so
+take the cpregs code out of it. That code needs to be present in KVM
+builds as well.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
+---
+ target/arm/cpregs.c       | 383 ++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.c          |   7 +-
+ target/arm/debug_helper.c | 367 ------------------------------------
+ target/arm/internals.h    |   9 -
+ target/arm/machine.c      |   6 +-
+ 5 files changed, 392 insertions(+), 380 deletions(-)
 
-r~
+diff --git a/target/arm/cpregs.c b/target/arm/cpregs.c
+index 9f15337b68..88d71dbe70 100644
+--- a/target/arm/cpregs.c
++++ b/target/arm/cpregs.c
+@@ -287,6 +287,74 @@ static CPAccessResult access_trap_aa32s_el1(CPUARMState *env,
+     return CP_ACCESS_TRAP_UNCATEGORIZED;
+ }
+ 
++static uint64_t arm_mdcr_el2_eff(CPUARMState *env)
++{
++    return arm_is_el2_enabled(env) ? env->cp15.mdcr_el2 : 0;
++}
++
++/*
++ * Check for traps to "powerdown debug" registers, which are controlled
++ * by MDCR.TDOSA
++ */
++static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
++                                   bool isread)
++{
++    int el = arm_current_el(env);
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    bool mdcr_el2_tdosa = (mdcr_el2 & MDCR_TDOSA) || (mdcr_el2 & MDCR_TDE) ||
++        (arm_hcr_el2_eff(env) & HCR_TGE);
++
++    if (el < 2 && mdcr_el2_tdosa) {
++        return CP_ACCESS_TRAP_EL2;
++    }
++    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDOSA)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++    return CP_ACCESS_OK;
++}
++
++/*
++ * Check for traps to "debug ROM" registers, which are controlled
++ * by MDCR_EL2.TDRA for EL2 but by the more general MDCR_EL3.TDA for EL3.
++ */
++static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
++                                  bool isread)
++{
++    int el = arm_current_el(env);
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    bool mdcr_el2_tdra = (mdcr_el2 & MDCR_TDRA) || (mdcr_el2 & MDCR_TDE) ||
++        (arm_hcr_el2_eff(env) & HCR_TGE);
++
++    if (el < 2 && mdcr_el2_tdra) {
++        return CP_ACCESS_TRAP_EL2;
++    }
++    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++    return CP_ACCESS_OK;
++}
++
++/*
++ * Check for traps to general debug registers, which are controlled
++ * by MDCR_EL2.TDA for EL2 and MDCR_EL3.TDA for EL3.
++ */
++static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
++                                  bool isread)
++{
++    int el = arm_current_el(env);
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    bool mdcr_el2_tda = (mdcr_el2 & MDCR_TDA) || (mdcr_el2 & MDCR_TDE) ||
++        (arm_hcr_el2_eff(env) & HCR_TGE);
++
++    if (el < 2 && mdcr_el2_tda) {
++        return CP_ACCESS_TRAP_EL2;
++    }
++    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++    return CP_ACCESS_OK;
++}
++
+ /*
+  * Check for traps to performance monitor registers, which are controlled
+  * by MDCR_EL2.TPM for EL2 and MDCR_EL3.TPM for EL3.
+@@ -6286,6 +6354,132 @@ static CPAccessResult ctr_el0_access(CPUARMState *env, const ARMCPRegInfo *ri,
+     return CP_ACCESS_OK;
+ }
+ 
++static void oslar_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                        uint64_t value)
++{
++    /*
++     * Writes to OSLAR_EL1 may update the OS lock status, which can be
++     * read via a bit in OSLSR_EL1.
++     */
++    int oslock;
++
++    if (ri->state == ARM_CP_STATE_AA32) {
++        oslock = (value == 0xC5ACCE55);
++    } else {
++        oslock = value & 1;
++    }
++
++    env->cp15.oslsr_el1 = deposit32(env->cp15.oslsr_el1, 1, 1, oslock);
++}
++
++static void osdlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                        uint64_t value)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    /*
++     * Only defined bit is bit 0 (DLK); if Feat_DoubleLock is not
++     * implemented this is RAZ/WI.
++     */
++    if (arm_feature(env, ARM_FEATURE_AARCH64)
++       ? cpu_isar_feature(aa64_doublelock, cpu)
++       : cpu_isar_feature(aa32_doublelock, cpu)) {
++        env->cp15.osdlr_el1 = value & 1;
++    }
++}
++
++static const ARMCPRegInfo debug_cp_reginfo[] = {
++    /*
++     * DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
++     * debug components. The AArch64 version of DBGDRAR is named MDRAR_EL1;
++     * unlike DBGDRAR it is never accessible from EL0.
++     * DBGDSAR is deprecated and must RAZ from v8 anyway, so it has no AArch64
++     * accessor.
++     */
++    { .name = "DBGDRAR", .cp = 14, .crn = 1, .crm = 0, .opc1 = 0, .opc2 = 0,
++      .access = PL0_R, .accessfn = access_tdra,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "MDRAR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 0,
++      .access = PL1_R, .accessfn = access_tdra,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "DBGDSAR", .cp = 14, .crn = 2, .crm = 0, .opc1 = 0, .opc2 = 0,
++      .access = PL0_R, .accessfn = access_tdra,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
++    /* Monitor debug system control register; the 32-bit alias is DBGDSCRext. */
++    { .name = "MDSCR_EL1", .state = ARM_CP_STATE_BOTH,
++      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 2,
++      .access = PL1_RW, .accessfn = access_tda,
++      .fieldoffset = offsetof(CPUARMState, cp15.mdscr_el1),
++      .resetvalue = 0 },
++    /*
++     * MDCCSR_EL0[30:29] map to EDSCR[30:29].  Simply RAZ as the external
++     * Debug Communication Channel is not implemented.
++     */
++    { .name = "MDCCSR_EL0", .state = ARM_CP_STATE_AA64,
++      .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 1, .opc2 = 0,
++      .access = PL0_R, .accessfn = access_tda,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
++    /*
++     * DBGDSCRint[15,12,5:2] map to MDSCR_EL1[15,12,5:2].  Map all bits as
++     * it is unlikely a guest will care.
++     * We don't implement the configurable EL0 access.
++     */
++    { .name = "DBGDSCRint", .state = ARM_CP_STATE_AA32,
++      .cp = 14, .opc1 = 0, .crn = 0, .crm = 1, .opc2 = 0,
++      .type = ARM_CP_ALIAS,
++      .access = PL1_R, .accessfn = access_tda,
++      .fieldoffset = offsetof(CPUARMState, cp15.mdscr_el1), },
++    { .name = "OSLAR_EL1", .state = ARM_CP_STATE_BOTH,
++      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 4,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .accessfn = access_tdosa,
++      .writefn = oslar_write },
++    { .name = "OSLSR_EL1", .state = ARM_CP_STATE_BOTH,
++      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 4,
++      .access = PL1_R, .resetvalue = 10,
++      .accessfn = access_tdosa,
++      .fieldoffset = offsetof(CPUARMState, cp15.oslsr_el1) },
++    /* Dummy OSDLR_EL1: 32-bit Linux will read this */
++    { .name = "OSDLR_EL1", .state = ARM_CP_STATE_BOTH,
++      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 3, .opc2 = 4,
++      .access = PL1_RW, .accessfn = access_tdosa,
++      .writefn = osdlr_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.osdlr_el1) },
++    /*
++     * Dummy DBGVCR: Linux wants to clear this on startup, but we don't
++     * implement vector catch debug events yet.
++     */
++    { .name = "DBGVCR",
++      .cp = 14, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 0,
++      .access = PL1_RW, .accessfn = access_tda,
++      .type = ARM_CP_NOP },
++    /*
++     * Dummy DBGVCR32_EL2 (which is only for a 64-bit hypervisor
++     * to save and restore a 32-bit guest's DBGVCR)
++     */
++    { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
++      .access = PL2_RW, .accessfn = access_tda,
++      .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
++    /*
++     * Dummy MDCCINT_EL1, since we don't implement the Debug Communications
++     * Channel but Linux may try to access this register. The 32-bit
++     * alias is DBGDCCINT.
++     */
++    { .name = "MDCCINT_EL1", .state = ARM_CP_STATE_BOTH,
++      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 0,
++      .access = PL1_RW, .accessfn = access_tda,
++      .type = ARM_CP_NOP },
++};
++
++static const ARMCPRegInfo debug_lpae_cp_reginfo[] = {
++    /* 64 bit access versions of the (dummy) debug registers */
++    { .name = "DBGDRAR", .cp = 14, .crm = 1, .opc1 = 0,
++      .access = PL0_R, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
++    { .name = "DBGDSAR", .cp = 14, .crm = 2, .opc1 = 0,
++      .access = PL0_R, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
++};
++
+ /*
+  * Check for traps to RAS registers, which are controlled
+  * by HCR_EL2.TERR and SCR_EL3.TERR.
+@@ -6520,6 +6714,195 @@ static const ARMCPRegInfo sme_reginfo[] = {
+ };
+ #endif /* TARGET_AARCH64 */
+ 
++static void dbgwvr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                         uint64_t value)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    int i = ri->crm;
++
++    /*
++     * Bits [1:0] are RES0.
++     *
++     * It is IMPLEMENTATION DEFINED whether [63:49] ([63:53] with FEAT_LVA)
++     * are hardwired to the value of bit [48] ([52] with FEAT_LVA), or if
++     * they contain the value written.  It is CONSTRAINED UNPREDICTABLE
++     * whether the RESS bits are ignored when comparing an address.
++     *
++     * Therefore we are allowed to compare the entire register, which lets
++     * us avoid considering whether or not FEAT_LVA is actually enabled.
++     */
++    value &= ~3ULL;
++
++    raw_write(env, ri, value);
++
++    if (tcg_enabled()) {
++        hw_watchpoint_update(cpu, i);
++    }
++}
++
++static void dbgwcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                         uint64_t value)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    int i = ri->crm;
++
++    raw_write(env, ri, value);
++
++    if (tcg_enabled()) {
++        hw_watchpoint_update(cpu, i);
++    }
++}
++
++static void dbgbvr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                         uint64_t value)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    int i = ri->crm;
++
++    raw_write(env, ri, value);
++
++    if (tcg_enabled()) {
++        hw_breakpoint_update(cpu, i);
++    }
++}
++
++static void dbgbcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                         uint64_t value)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    int i = ri->crm;
++
++    /*
++     * BAS[3] is a read-only copy of BAS[2], and BAS[1] a read-only
++     * copy of BAS[0].
++     */
++    value = deposit64(value, 6, 1, extract64(value, 5, 1));
++    value = deposit64(value, 8, 1, extract64(value, 7, 1));
++
++    raw_write(env, ri, value);
++
++    if (tcg_enabled()) {
++        hw_breakpoint_update(cpu, i);
++    }
++}
++
++static void define_debug_regs(ARMCPU *cpu)
++{
++    /*
++     * Define v7 and v8 architectural debug registers.
++     * These are just dummy implementations for now.
++     */
++    int i;
++    int wrps, brps, ctx_cmps;
++
++    /*
++     * The Arm ARM says DBGDIDR is optional and deprecated if EL1 cannot
++     * use AArch32.  Given that bit 15 is RES1, if the value is 0 then
++     * the register must not exist for this cpu.
++     */
++    if (cpu->isar.dbgdidr != 0) {
++        ARMCPRegInfo dbgdidr = {
++            .name = "DBGDIDR", .cp = 14, .crn = 0, .crm = 0,
++            .opc1 = 0, .opc2 = 0,
++            .access = PL0_R, .accessfn = access_tda,
++            .type = ARM_CP_CONST, .resetvalue = cpu->isar.dbgdidr,
++        };
++        define_one_arm_cp_reg(cpu, &dbgdidr);
++    }
++
++    /*
++     * DBGDEVID is present in the v7 debug architecture if
++     * DBGDIDR.DEVID_imp is 1 (bit 15); from v7.1 and on it is
++     * mandatory (and bit 15 is RES1). DBGDEVID1 and DBGDEVID2 exist
++     * from v7.1 of the debug architecture. Because no fields have yet
++     * been defined in DBGDEVID2 (and quite possibly none will ever
++     * be) we don't define an ARMISARegisters field for it.
++     * These registers exist only if EL1 can use AArch32, but that
++     * happens naturally because they are only PL1 accessible anyway.
++     */
++    if (extract32(cpu->isar.dbgdidr, 15, 1)) {
++        ARMCPRegInfo dbgdevid = {
++            .name = "DBGDEVID",
++            .cp = 14, .opc1 = 0, .crn = 7, .opc2 = 2, .crn = 7,
++            .access = PL1_R, .accessfn = access_tda,
++            .type = ARM_CP_CONST, .resetvalue = cpu->isar.dbgdevid,
++        };
++        define_one_arm_cp_reg(cpu, &dbgdevid);
++    }
++    if (cpu_isar_feature(aa32_debugv7p1, cpu)) {
++        ARMCPRegInfo dbgdevid12[] = {
++            {
++                .name = "DBGDEVID1",
++                .cp = 14, .opc1 = 0, .crn = 7, .opc2 = 1, .crn = 7,
++                .access = PL1_R, .accessfn = access_tda,
++                .type = ARM_CP_CONST, .resetvalue = cpu->isar.dbgdevid1,
++            }, {
++                .name = "DBGDEVID2",
++                .cp = 14, .opc1 = 0, .crn = 7, .opc2 = 0, .crn = 7,
++                .access = PL1_R, .accessfn = access_tda,
++                .type = ARM_CP_CONST, .resetvalue = 0,
++            },
++        };
++        define_arm_cp_regs(cpu, dbgdevid12);
++    }
++
++    brps = arm_num_brps(cpu);
++    wrps = arm_num_wrps(cpu);
++    ctx_cmps = arm_num_ctx_cmps(cpu);
++
++    assert(ctx_cmps <= brps);
++
++    define_arm_cp_regs(cpu, debug_cp_reginfo);
++
++    if (arm_feature(&cpu->env, ARM_FEATURE_LPAE)) {
++        define_arm_cp_regs(cpu, debug_lpae_cp_reginfo);
++    }
++
++    for (i = 0; i < brps; i++) {
++        char *dbgbvr_el1_name = g_strdup_printf("DBGBVR%d_EL1", i);
++        char *dbgbcr_el1_name = g_strdup_printf("DBGBCR%d_EL1", i);
++        ARMCPRegInfo dbgregs[] = {
++            { .name = dbgbvr_el1_name, .state = ARM_CP_STATE_BOTH,
++              .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 4,
++              .access = PL1_RW, .accessfn = access_tda,
++              .fieldoffset = offsetof(CPUARMState, cp15.dbgbvr[i]),
++              .writefn = dbgbvr_write, .raw_writefn = raw_write
++            },
++            { .name = dbgbcr_el1_name, .state = ARM_CP_STATE_BOTH,
++              .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 5,
++              .access = PL1_RW, .accessfn = access_tda,
++              .fieldoffset = offsetof(CPUARMState, cp15.dbgbcr[i]),
++              .writefn = dbgbcr_write, .raw_writefn = raw_write
++            },
++        };
++        define_arm_cp_regs(cpu, dbgregs);
++        g_free(dbgbvr_el1_name);
++        g_free(dbgbcr_el1_name);
++    }
++
++    for (i = 0; i < wrps; i++) {
++        char *dbgwvr_el1_name = g_strdup_printf("DBGWVR%d_EL1", i);
++        char *dbgwcr_el1_name = g_strdup_printf("DBGWCR%d_EL1", i);
++        ARMCPRegInfo dbgregs[] = {
++            { .name = dbgwvr_el1_name, .state = ARM_CP_STATE_BOTH,
++              .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 6,
++              .access = PL1_RW, .accessfn = access_tda,
++              .fieldoffset = offsetof(CPUARMState, cp15.dbgwvr[i]),
++              .writefn = dbgwvr_write, .raw_writefn = raw_write
++            },
++            { .name = dbgwcr_el1_name, .state = ARM_CP_STATE_BOTH,
++              .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 7,
++              .access = PL1_RW, .accessfn = access_tda,
++              .fieldoffset = offsetof(CPUARMState, cp15.dbgwcr[i]),
++              .writefn = dbgwcr_write, .raw_writefn = raw_write
++            },
++        };
++        define_arm_cp_regs(cpu, dbgregs);
++        g_free(dbgwvr_el1_name);
++        g_free(dbgwcr_el1_name);
++    }
++}
++
+ static void define_pmu_regs(ARMCPU *cpu)
+ {
+     /*
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index fd337e1788..4cb524a102 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -537,8 +537,11 @@ static void arm_cpu_reset_hold(Object *obj)
+     }
+ #endif
+ 
+-    hw_breakpoint_update_all(cpu);
+-    hw_watchpoint_update_all(cpu);
++    if (tcg_enabled()) {
++        hw_breakpoint_update_all(cpu);
++        hw_watchpoint_update_all(cpu);
++    }
++
+     arm_rebuild_hflags(env);
+ }
+ 
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 2f6ddc0da5..eaee9f7731 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -9,7 +9,6 @@
+ #include "qemu/log.h"
+ #include "cpu.h"
+ #include "internals.h"
+-#include "cpregs.h"
+ #include "exec/exec-all.h"
+ #include "exec/helper-proto.h"
+ 
+@@ -536,195 +535,6 @@ void HELPER(exception_swstep)(CPUARMState *env, uint32_t syndrome)
+     raise_exception_debug(env, EXCP_UDEF, syndrome);
+ }
+ 
+-/*
+- * Check for traps to "powerdown debug" registers, which are controlled
+- * by MDCR.TDOSA
+- */
+-static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
+-                                   bool isread)
+-{
+-    int el = arm_current_el(env);
+-    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
+-    bool mdcr_el2_tdosa = (mdcr_el2 & MDCR_TDOSA) || (mdcr_el2 & MDCR_TDE) ||
+-        (arm_hcr_el2_eff(env) & HCR_TGE);
+-
+-    if (el < 2 && mdcr_el2_tdosa) {
+-        return CP_ACCESS_TRAP_EL2;
+-    }
+-    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDOSA)) {
+-        return CP_ACCESS_TRAP_EL3;
+-    }
+-    return CP_ACCESS_OK;
+-}
+-
+-/*
+- * Check for traps to "debug ROM" registers, which are controlled
+- * by MDCR_EL2.TDRA for EL2 but by the more general MDCR_EL3.TDA for EL3.
+- */
+-static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
+-                                  bool isread)
+-{
+-    int el = arm_current_el(env);
+-    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
+-    bool mdcr_el2_tdra = (mdcr_el2 & MDCR_TDRA) || (mdcr_el2 & MDCR_TDE) ||
+-        (arm_hcr_el2_eff(env) & HCR_TGE);
+-
+-    if (el < 2 && mdcr_el2_tdra) {
+-        return CP_ACCESS_TRAP_EL2;
+-    }
+-    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
+-        return CP_ACCESS_TRAP_EL3;
+-    }
+-    return CP_ACCESS_OK;
+-}
+-
+-/*
+- * Check for traps to general debug registers, which are controlled
+- * by MDCR_EL2.TDA for EL2 and MDCR_EL3.TDA for EL3.
+- */
+-static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
+-                                  bool isread)
+-{
+-    int el = arm_current_el(env);
+-    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
+-    bool mdcr_el2_tda = (mdcr_el2 & MDCR_TDA) || (mdcr_el2 & MDCR_TDE) ||
+-        (arm_hcr_el2_eff(env) & HCR_TGE);
+-
+-    if (el < 2 && mdcr_el2_tda) {
+-        return CP_ACCESS_TRAP_EL2;
+-    }
+-    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
+-        return CP_ACCESS_TRAP_EL3;
+-    }
+-    return CP_ACCESS_OK;
+-}
+-
+-static void oslar_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                        uint64_t value)
+-{
+-    /*
+-     * Writes to OSLAR_EL1 may update the OS lock status, which can be
+-     * read via a bit in OSLSR_EL1.
+-     */
+-    int oslock;
+-
+-    if (ri->state == ARM_CP_STATE_AA32) {
+-        oslock = (value == 0xC5ACCE55);
+-    } else {
+-        oslock = value & 1;
+-    }
+-
+-    env->cp15.oslsr_el1 = deposit32(env->cp15.oslsr_el1, 1, 1, oslock);
+-}
+-
+-static void osdlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                        uint64_t value)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-    /*
+-     * Only defined bit is bit 0 (DLK); if Feat_DoubleLock is not
+-     * implemented this is RAZ/WI.
+-     */
+-    if(arm_feature(env, ARM_FEATURE_AARCH64)
+-       ? cpu_isar_feature(aa64_doublelock, cpu)
+-       : cpu_isar_feature(aa32_doublelock, cpu)) {
+-        env->cp15.osdlr_el1 = value & 1;
+-    }
+-}
+-
+-static const ARMCPRegInfo debug_cp_reginfo[] = {
+-    /*
+-     * DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
+-     * debug components. The AArch64 version of DBGDRAR is named MDRAR_EL1;
+-     * unlike DBGDRAR it is never accessible from EL0.
+-     * DBGDSAR is deprecated and must RAZ from v8 anyway, so it has no AArch64
+-     * accessor.
+-     */
+-    { .name = "DBGDRAR", .cp = 14, .crn = 1, .crm = 0, .opc1 = 0, .opc2 = 0,
+-      .access = PL0_R, .accessfn = access_tdra,
+-      .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "MDRAR_EL1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 0,
+-      .access = PL1_R, .accessfn = access_tdra,
+-      .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "DBGDSAR", .cp = 14, .crn = 2, .crm = 0, .opc1 = 0, .opc2 = 0,
+-      .access = PL0_R, .accessfn = access_tdra,
+-      .type = ARM_CP_CONST, .resetvalue = 0 },
+-    /* Monitor debug system control register; the 32-bit alias is DBGDSCRext. */
+-    { .name = "MDSCR_EL1", .state = ARM_CP_STATE_BOTH,
+-      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 2,
+-      .access = PL1_RW, .accessfn = access_tda,
+-      .fieldoffset = offsetof(CPUARMState, cp15.mdscr_el1),
+-      .resetvalue = 0 },
+-    /*
+-     * MDCCSR_EL0[30:29] map to EDSCR[30:29].  Simply RAZ as the external
+-     * Debug Communication Channel is not implemented.
+-     */
+-    { .name = "MDCCSR_EL0", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 1, .opc2 = 0,
+-      .access = PL0_R, .accessfn = access_tda,
+-      .type = ARM_CP_CONST, .resetvalue = 0 },
+-    /*
+-     * DBGDSCRint[15,12,5:2] map to MDSCR_EL1[15,12,5:2].  Map all bits as
+-     * it is unlikely a guest will care.
+-     * We don't implement the configurable EL0 access.
+-     */
+-    { .name = "DBGDSCRint", .state = ARM_CP_STATE_AA32,
+-      .cp = 14, .opc1 = 0, .crn = 0, .crm = 1, .opc2 = 0,
+-      .type = ARM_CP_ALIAS,
+-      .access = PL1_R, .accessfn = access_tda,
+-      .fieldoffset = offsetof(CPUARMState, cp15.mdscr_el1), },
+-    { .name = "OSLAR_EL1", .state = ARM_CP_STATE_BOTH,
+-      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 4,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW,
+-      .accessfn = access_tdosa,
+-      .writefn = oslar_write },
+-    { .name = "OSLSR_EL1", .state = ARM_CP_STATE_BOTH,
+-      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 4,
+-      .access = PL1_R, .resetvalue = 10,
+-      .accessfn = access_tdosa,
+-      .fieldoffset = offsetof(CPUARMState, cp15.oslsr_el1) },
+-    /* Dummy OSDLR_EL1: 32-bit Linux will read this */
+-    { .name = "OSDLR_EL1", .state = ARM_CP_STATE_BOTH,
+-      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 1, .crm = 3, .opc2 = 4,
+-      .access = PL1_RW, .accessfn = access_tdosa,
+-      .writefn = osdlr_write,
+-      .fieldoffset = offsetof(CPUARMState, cp15.osdlr_el1) },
+-    /*
+-     * Dummy DBGVCR: Linux wants to clear this on startup, but we don't
+-     * implement vector catch debug events yet.
+-     */
+-    { .name = "DBGVCR",
+-      .cp = 14, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 0,
+-      .access = PL1_RW, .accessfn = access_tda,
+-      .type = ARM_CP_NOP },
+-    /*
+-     * Dummy DBGVCR32_EL2 (which is only for a 64-bit hypervisor
+-     * to save and restore a 32-bit guest's DBGVCR)
+-     */
+-    { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
+-      .access = PL2_RW, .accessfn = access_tda,
+-      .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
+-    /*
+-     * Dummy MDCCINT_EL1, since we don't implement the Debug Communications
+-     * Channel but Linux may try to access this register. The 32-bit
+-     * alias is DBGDCCINT.
+-     */
+-    { .name = "MDCCINT_EL1", .state = ARM_CP_STATE_BOTH,
+-      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 0,
+-      .access = PL1_RW, .accessfn = access_tda,
+-      .type = ARM_CP_NOP },
+-};
+-
+-static const ARMCPRegInfo debug_lpae_cp_reginfo[] = {
+-    /* 64 bit access versions of the (dummy) debug registers */
+-    { .name = "DBGDRAR", .cp = 14, .crm = 1, .opc1 = 0,
+-      .access = PL0_R, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
+-    { .name = "DBGDSAR", .cp = 14, .crm = 2, .opc1 = 0,
+-      .access = PL0_R, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
+-};
+-
+ void hw_watchpoint_update(ARMCPU *cpu, int n)
+ {
+     CPUARMState *env = &cpu->env;
+@@ -831,39 +641,6 @@ void hw_watchpoint_update_all(ARMCPU *cpu)
+     }
+ }
+ 
+-static void dbgwvr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                         uint64_t value)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-    int i = ri->crm;
+-
+-    /*
+-     * Bits [1:0] are RES0.
+-     *
+-     * It is IMPLEMENTATION DEFINED whether [63:49] ([63:53] with FEAT_LVA)
+-     * are hardwired to the value of bit [48] ([52] with FEAT_LVA), or if
+-     * they contain the value written.  It is CONSTRAINED UNPREDICTABLE
+-     * whether the RESS bits are ignored when comparing an address.
+-     *
+-     * Therefore we are allowed to compare the entire register, which lets
+-     * us avoid considering whether or not FEAT_LVA is actually enabled.
+-     */
+-    value &= ~3ULL;
+-
+-    raw_write(env, ri, value);
+-    hw_watchpoint_update(cpu, i);
+-}
+-
+-static void dbgwcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                         uint64_t value)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-    int i = ri->crm;
+-
+-    raw_write(env, ri, value);
+-    hw_watchpoint_update(cpu, i);
+-}
+-
+ void hw_breakpoint_update(ARMCPU *cpu, int n)
+ {
+     CPUARMState *env = &cpu->env;
+@@ -967,150 +744,6 @@ void hw_breakpoint_update_all(ARMCPU *cpu)
+     }
+ }
+ 
+-static void dbgbvr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                         uint64_t value)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-    int i = ri->crm;
+-
+-    raw_write(env, ri, value);
+-    hw_breakpoint_update(cpu, i);
+-}
+-
+-static void dbgbcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                         uint64_t value)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-    int i = ri->crm;
+-
+-    /*
+-     * BAS[3] is a read-only copy of BAS[2], and BAS[1] a read-only
+-     * copy of BAS[0].
+-     */
+-    value = deposit64(value, 6, 1, extract64(value, 5, 1));
+-    value = deposit64(value, 8, 1, extract64(value, 7, 1));
+-
+-    raw_write(env, ri, value);
+-    hw_breakpoint_update(cpu, i);
+-}
+-
+-void define_debug_regs(ARMCPU *cpu)
+-{
+-    /*
+-     * Define v7 and v8 architectural debug registers.
+-     * These are just dummy implementations for now.
+-     */
+-    int i;
+-    int wrps, brps, ctx_cmps;
+-
+-    /*
+-     * The Arm ARM says DBGDIDR is optional and deprecated if EL1 cannot
+-     * use AArch32.  Given that bit 15 is RES1, if the value is 0 then
+-     * the register must not exist for this cpu.
+-     */
+-    if (cpu->isar.dbgdidr != 0) {
+-        ARMCPRegInfo dbgdidr = {
+-            .name = "DBGDIDR", .cp = 14, .crn = 0, .crm = 0,
+-            .opc1 = 0, .opc2 = 0,
+-            .access = PL0_R, .accessfn = access_tda,
+-            .type = ARM_CP_CONST, .resetvalue = cpu->isar.dbgdidr,
+-        };
+-        define_one_arm_cp_reg(cpu, &dbgdidr);
+-    }
+-
+-    /*
+-     * DBGDEVID is present in the v7 debug architecture if
+-     * DBGDIDR.DEVID_imp is 1 (bit 15); from v7.1 and on it is
+-     * mandatory (and bit 15 is RES1). DBGDEVID1 and DBGDEVID2 exist
+-     * from v7.1 of the debug architecture. Because no fields have yet
+-     * been defined in DBGDEVID2 (and quite possibly none will ever
+-     * be) we don't define an ARMISARegisters field for it.
+-     * These registers exist only if EL1 can use AArch32, but that
+-     * happens naturally because they are only PL1 accessible anyway.
+-     */
+-    if (extract32(cpu->isar.dbgdidr, 15, 1)) {
+-        ARMCPRegInfo dbgdevid = {
+-            .name = "DBGDEVID",
+-            .cp = 14, .opc1 = 0, .crn = 7, .opc2 = 2, .crn = 7,
+-            .access = PL1_R, .accessfn = access_tda,
+-            .type = ARM_CP_CONST, .resetvalue = cpu->isar.dbgdevid,
+-        };
+-        define_one_arm_cp_reg(cpu, &dbgdevid);
+-    }
+-    if (cpu_isar_feature(aa32_debugv7p1, cpu)) {
+-        ARMCPRegInfo dbgdevid12[] = {
+-            {
+-                .name = "DBGDEVID1",
+-                .cp = 14, .opc1 = 0, .crn = 7, .opc2 = 1, .crn = 7,
+-                .access = PL1_R, .accessfn = access_tda,
+-                .type = ARM_CP_CONST, .resetvalue = cpu->isar.dbgdevid1,
+-            }, {
+-                .name = "DBGDEVID2",
+-                .cp = 14, .opc1 = 0, .crn = 7, .opc2 = 0, .crn = 7,
+-                .access = PL1_R, .accessfn = access_tda,
+-                .type = ARM_CP_CONST, .resetvalue = 0,
+-            },
+-        };
+-        define_arm_cp_regs(cpu, dbgdevid12);
+-    }
+-
+-    brps = arm_num_brps(cpu);
+-    wrps = arm_num_wrps(cpu);
+-    ctx_cmps = arm_num_ctx_cmps(cpu);
+-
+-    assert(ctx_cmps <= brps);
+-
+-    define_arm_cp_regs(cpu, debug_cp_reginfo);
+-
+-    if (arm_feature(&cpu->env, ARM_FEATURE_LPAE)) {
+-        define_arm_cp_regs(cpu, debug_lpae_cp_reginfo);
+-    }
+-
+-    for (i = 0; i < brps; i++) {
+-        char *dbgbvr_el1_name = g_strdup_printf("DBGBVR%d_EL1", i);
+-        char *dbgbcr_el1_name = g_strdup_printf("DBGBCR%d_EL1", i);
+-        ARMCPRegInfo dbgregs[] = {
+-            { .name = dbgbvr_el1_name, .state = ARM_CP_STATE_BOTH,
+-              .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 4,
+-              .access = PL1_RW, .accessfn = access_tda,
+-              .fieldoffset = offsetof(CPUARMState, cp15.dbgbvr[i]),
+-              .writefn = dbgbvr_write, .raw_writefn = raw_write
+-            },
+-            { .name = dbgbcr_el1_name, .state = ARM_CP_STATE_BOTH,
+-              .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 5,
+-              .access = PL1_RW, .accessfn = access_tda,
+-              .fieldoffset = offsetof(CPUARMState, cp15.dbgbcr[i]),
+-              .writefn = dbgbcr_write, .raw_writefn = raw_write
+-            },
+-        };
+-        define_arm_cp_regs(cpu, dbgregs);
+-        g_free(dbgbvr_el1_name);
+-        g_free(dbgbcr_el1_name);
+-    }
+-
+-    for (i = 0; i < wrps; i++) {
+-        char *dbgwvr_el1_name = g_strdup_printf("DBGWVR%d_EL1", i);
+-        char *dbgwcr_el1_name = g_strdup_printf("DBGWCR%d_EL1", i);
+-        ARMCPRegInfo dbgregs[] = {
+-            { .name = dbgwvr_el1_name, .state = ARM_CP_STATE_BOTH,
+-              .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 6,
+-              .access = PL1_RW, .accessfn = access_tda,
+-              .fieldoffset = offsetof(CPUARMState, cp15.dbgwvr[i]),
+-              .writefn = dbgwvr_write, .raw_writefn = raw_write
+-            },
+-            { .name = dbgwcr_el1_name, .state = ARM_CP_STATE_BOTH,
+-              .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 7,
+-              .access = PL1_RW, .accessfn = access_tda,
+-              .fieldoffset = offsetof(CPUARMState, cp15.dbgwcr[i]),
+-              .writefn = dbgwcr_write, .raw_writefn = raw_write
+-            },
+-        };
+-        define_arm_cp_regs(cpu, dbgregs);
+-        g_free(dbgwvr_el1_name);
+-        g_free(dbgwcr_el1_name);
+-    }
+-}
+-
+ #if !defined(CONFIG_USER_ONLY)
+ 
+ vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index d9555309df..0983e65300 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1363,15 +1363,6 @@ int exception_target_el(CPUARMState *env);
+ bool arm_singlestep_active(CPUARMState *env);
+ bool arm_generate_debug_exceptions(CPUARMState *env);
+ 
+-/* Add the cpreg definitions for debug related system registers */
+-void define_debug_regs(ARMCPU *cpu);
+-
+-/* Effective value of MDCR_EL2 */
+-static inline uint64_t arm_mdcr_el2_eff(CPUARMState *env)
+-{
+-    return arm_is_el2_enabled(env) ? env->cp15.mdcr_el2 : 0;
+-}
+-
+ /* Powers of 2 for sve_vq_map et al. */
+ #define SVE_VQ_POW2_MAP                                 \
+     ((1 << (1 - 1)) | (1 << (2 - 1)) |                  \
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index d5dd6825b9..b83b073da4 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -849,8 +849,10 @@ static int cpu_post_load(void *opaque, int version_id)
+         return -1;
+     }
+ 
+-    hw_breakpoint_update_all(cpu);
+-    hw_watchpoint_update_all(cpu);
++    if (tcg_enabled()) {
++        hw_breakpoint_update_all(cpu);
++        hw_watchpoint_update_all(cpu);
++    }
+ 
+     /*
+      * TCG gen_update_fp_context() relies on the invariant that
+-- 
+2.35.3

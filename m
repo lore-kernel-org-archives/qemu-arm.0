@@ -1,90 +1,92 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2447069ejc;
-        Mon, 9 Jan 2023 09:25:29 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuf743JQpkgHxKrVFpyavmNaCnZaOWilZIRdpNYGPkd8m32TENz/G2F06Ls6a/nYQVWePit
-X-Received: by 2002:a05:6214:37c6:b0:4c7:8122:b4be with SMTP id nj6-20020a05621437c600b004c78122b4bemr92504564qvb.16.1673285129168;
-        Mon, 09 Jan 2023 09:25:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673285129; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2447370ejc;
+        Mon, 9 Jan 2023 09:25:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsdMmNfceDc4MUcSgJnIESq9FXL5hhrUUXUMNML5oQoWEOqpcANpJGb1srb5Onlya9Sf5cw
+X-Received: by 2002:a05:6102:185:b0:3b5:1edd:79fe with SMTP id r5-20020a056102018500b003b51edd79femr30362932vsq.21.1673285153319;
+        Mon, 09 Jan 2023 09:25:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673285153; cv=none;
         d=google.com; s=arc-20160816;
-        b=dv06WB412Io8kmo5PPxKfHMy8j9GwP3315+eClNIThh3zwhrkURWaDc4Ri1ulSk2Ww
-         dqWwo5RY5zW3ESnJ0U4NipAFdcOYFx6pFHGwvCzH0vMkI2gBgamlvnHJDp+OdeL6dEEg
-         AvSFXIV/g1pG90RqARpWgAcC1mBDKsOeiePWb3JLdWB7w8AtskDHmt/5IhVoH4aPzXpf
-         lMKmSbybPZXeCtZ317tqyeFEi/+9a1492QKchgqp3Mv6JFjdtKGFbZ9zJ5kEpaHDlIar
-         d3OOEgqHJ003dO0VFtKiaCjxbwigQ845p32ekMF23vEU1Ur7iiOgMCqUXiRydm8wu082
-         fnGw==
+        b=u+IfvICjIEk6R9fvw8MqTutMuh2vWptVM+zXBUCUGsZPNK2Cc9bhCeGUWmEKQHtjMu
+         e6iyq8LEe1fkulbQ1mepIFtevjrAMj6iLoKgOEH9qaF2024qGYkqjmZHzaYM729RwC3O
+         YeuDd0XtTUpBRnfhCTFlpDJnM6M3CvQ45ZSwM5mXQoeacp1e/0ZXKctArMyrlCPNuZ7K
+         rARGvzaNfwIu/z1zBTzgI6c65yZUDtLXfWUJ3GQ50uF/eYSm/HBAsrGKy4sEYngNZycx
+         n8YFeCcKi3yxcvfxrHGtHei+pC17ej4TaOTdukfopSR2lsjoZok2EyaxlzvurB4ETurg
+         dQfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=p+y3YvOwEdr28YAjEaekiYYBCoJD3NcqH/Akwzddnnc=;
-        b=rNOlCu4Gy2n6fCVy77oaUKCSDxzD9umAx0DI885ZcQzDKIZX42h+5KrPrC/C15aLms
-         NyEwuqhDLncHapa2ZFrdqg4eDyyi7r4Rw6EMdqUhB0Ttzfx7LOo4tNyKjjjP9Z9BV6IU
-         yOlLYQXZVHqXYNw7tizGWqXYSrIKe/WHh9AOgIrkkIG3Dxn9jeHo7GMS53WTk/PlhFqh
-         XNfhJ4ggJX7cdD8uhzFWB/7O/Cm9dOW1EO36Jd92F5j1t2W57zDWhYlAPbTZFCVhKTW3
-         ct2/viIgTiGg2x5favUddPeAbs7IsoLnKdssTdaWS9WrXOKow1EpLiMne1h6ijhy+him
-         EENw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=KdSAwJSzEqA+I9v6UkRG9aJr/cFnqZhXxsUKNpwRs1s=;
+        b=XIXFcN8n0rhCyti5V7dQ9SVtgkVCbxiHKxrU3UrkGQZX4zA3MPEJaHdlZOLC+nwwIO
+         BzS0rnDd8K17336TJLS37uO8DWpnEOLQRBK969jeYWB7h4SkUa4mYWFtny181krwYO7E
+         qHdYuWzDInGf3RUaIC0DYMLFw4iL0SeXLc2/5dAbn/3ZbaDFU3CmcEguSbXvxXZVX5L8
+         dEZo9SMG0m0n4Y4RMDXflKs+lh/+4RqVXCK9Ep5O8DSWje74zukCmb4xtp59LCZj/2y5
+         PV77iogW3jFg3as4RMgSfBKErVWXMpr5eHp3vbiQCByMOfDaM7LPc6ZPPEbt53N0XsqR
+         GN3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ZHBkvMDE;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=R+VnQQ6L;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gi4-20020a056214248400b004c6d8021478si4767592qvb.571.2023.01.09.09.25.29
+        by mx.google.com with ESMTPS id y23-20020a05620a0e1700b006f41f08600dsi4742073qkm.670.2023.01.09.09.25.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 09:25:29 -0800 (PST)
+        Mon, 09 Jan 2023 09:25:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ZHBkvMDE;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=R+VnQQ6L;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pEvtK-0002Ob-Is; Mon, 09 Jan 2023 12:24:58 -0500
+	id 1pEvtT-0002Y0-4t; Mon, 09 Jan 2023 12:25:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvtI-0002O7-LY; Mon, 09 Jan 2023 12:24:56 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ id 1pEvtQ-0002V4-IH; Mon, 09 Jan 2023 12:25:04 -0500
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pEvtG-0000yV-9z; Mon, 09 Jan 2023 12:24:56 -0500
-Received: by mail-ej1-x630.google.com with SMTP id ud5so21940203ejc.4;
- Mon, 09 Jan 2023 09:24:52 -0800 (PST)
+ id 1pEvtL-00010R-Un; Mon, 09 Jan 2023 12:25:03 -0500
+Received: by mail-ej1-x634.google.com with SMTP id cf18so15589255ejb.5;
+ Mon, 09 Jan 2023 09:24:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=p+y3YvOwEdr28YAjEaekiYYBCoJD3NcqH/Akwzddnnc=;
- b=ZHBkvMDEdcsM0vKkgrBWsjdleI3fsezF75HP4eB+ywYwHMeM+NVG5RxZ0+CYRWSxct
- r15cMf5oaom++cZy/yFTsjuRn814aGAc4puoC6aaks8AzEAa5YZw1rwujUjew/28EYxA
- 7Hc7JB8nGYiK/Oga2dlN0Qhjkml/CrhT9vWJw0xaNGRFNGPImyx18XpgnOEgFQQKbAzl
- F4GXxy9+m3ZOx8KTRyyhbYBkoeOvwoPiFOtecy1SbdredbZP9FglyCb9OWLcMTqDvqnG
- vqKbzVQL+ztqEiiOGOiyjzvu9fIvDB9YKmMIo6paE24jYZBFNm0uz0xeZx4/Qiai60io
- 8CiA==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=KdSAwJSzEqA+I9v6UkRG9aJr/cFnqZhXxsUKNpwRs1s=;
+ b=R+VnQQ6LUC+pO4dLmxA3NqVLJS5HBrGbqhdTvfXXOlQn5/6LcIX5N9RBFya7gIX7Oq
+ JY5ULQRoySzHrZqOIJ3v2Aiz4tZmZ+7tcvaZHZ5h3tsKW6YEN2xgMMR/0U6gxJqRfoFy
+ woEJA5RW01iv/R/+MAo2gCDFE39+UMQ7Eudl6WjL7IhmRM7YDTV0BcYRNhpTx8wYfO1/
+ /y456Q6U7ESNaUyTMUJPIQF+Ldm4UK+MvpOH0+63bGvtgfHvIISpc3CqOBT3OaSradoW
+ 0HeKrrV2Xj0Xo/L2now4YBEQPmOh0zXWcvjtGbcPBgYF/EpHj0qKF2H+kqbtX2os+bPG
+ V9rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=p+y3YvOwEdr28YAjEaekiYYBCoJD3NcqH/Akwzddnnc=;
- b=VjzxqZyFzf3WrNbfCtWS2XNmy3AWMcGgJA8GzyE4tYTwv5/KG+Aq9nt0xwz0VnWaWL
- 7ry3E6CSwakmKcXlLFOOs6T2UrvvRbfNnTcWCn8QqcXvpNb73vJTi7RiAj8rTRnE3Qau
- E0+FDy5Ap1he8xCD9KZFoRpFsUZYiKnmRrpCuciIzo8j+PGcpaURmncXVRFerEJB1ra/
- WnKi8plMgE9/syVy4gFXnCaWWTlSPKSxmoEHotsT7bNw8pUxz11rXKViM6k/JRxQCehB
- LA5HDSLyjngboeWTVj7n0qgA8ngH5yd5MA16QE0FIVg9cM3Kr+gPRUZ3WTzBgmB4jYCB
- xs8A==
-X-Gm-Message-State: AFqh2koP4SFIzTWTTGzzh7NkT7aSx3ZWGqK2v6p6ymwWzTjMriw98Pwc
- R9B4gut3QMeVkk4QGPPhVpL8DW31T2kIxA==
-X-Received: by 2002:a17:907:6f09:b0:7c1:277:cb00 with SMTP id
- sy9-20020a1709076f0900b007c10277cb00mr56814654ejc.23.1673285091415; 
- Mon, 09 Jan 2023 09:24:51 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=KdSAwJSzEqA+I9v6UkRG9aJr/cFnqZhXxsUKNpwRs1s=;
+ b=KvIL8Up+zHArphPCJe68Qp2sed1Aw2ZviDmfYVogQYlR68WfkSAFhm8nlJNiIIt4r6
+ gYsCND0jJMEKkltlkgx7xOPwf1RmLgt8Ly9dfa3hQOsZSjgypncw18b0aC1kE8Im/Av5
+ mDCamCq13nPQvGnPmITg9VHXfiCuJR5x7Ybqn3HBLwtkfZTfaE2Tr+aZDuf+B3TPmWWp
+ u7tBe2wj4kLfIvi6NKUhdpsS+1lI30A4lnJbVFaUqEbxVmBawqL2FEGFNtw0CuwTNbjQ
+ 6Fow+EnPG+NgZwFFcHeUZZrQuIDVp4jL2KgQTLPBShAN5U59ZWbgbN8JbtFM/zKlWgTR
+ P/lA==
+X-Gm-Message-State: AFqh2krFCbA19e7iSd7M4gvveeUz5RaQ2NboXDLcwqwmTgnLV/E/A2AT
+ p3XPfCYnteBsz4Upm9gFzY0vu+iAV2f8Sg==
+X-Received: by 2002:a17:907:a488:b0:84d:2171:d79 with SMTP id
+ vp8-20020a170907a48800b0084d21710d79mr11353631ejc.54.1673285097362; 
+ Mon, 09 Jan 2023 09:24:57 -0800 (PST)
 Received: from osoxes.fritz.box
  (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
  [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
  by smtp.gmail.com with ESMTPSA id
- 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.24.50
+ 18-20020a170906201200b00846734faa9asm3925625ejo.164.2023.01.09.09.24.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jan 2023 09:24:50 -0800 (PST)
+ Mon, 09 Jan 2023 09:24:57 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: John G Johnson <john.g.johnson@oracle.com>,
@@ -102,15 +104,18 @@ Cc: John G Johnson <john.g.johnson@oracle.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v6 00/33] Consolidate PIIX south bridges
-Date: Mon,  9 Jan 2023 18:23:13 +0100
-Message-Id: <20230109172347.1830-1-shentey@gmail.com>
+Subject: [PATCH v6 05/33] hw/isa/piix3: Decouple INTx-to-LNKx routing which is
+ board-specific
+Date: Mon,  9 Jan 2023 18:23:18 +0100
+Message-Id: <20230109172347.1830-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230109172347.1830-1-shentey@gmail.com>
+References: <20230109172347.1830-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,241 +137,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q8C2gUpgWsHE
+X-TUID: LKpAh//JiHak
 
-This series consolidates the implementations of the PIIX3 and PIIX4 south=0D
-bridges and is an extended version of [1]. The motivation is to share as mu=
-ch=0D
-code as possible and to bring both device models to feature parity such tha=
-t=0D
-perhaps PIIX4 can become a drop-in-replacement for PIIX3 in the pc machine.=
- This=0D
-could resolve the "Frankenstein" PIIX4-PM problem in PIIX3 discussed on thi=
-s=0D
-list before.=0D
-=0D
-The series is structured as follows:=0D
-=0D
-These patches are included for compatibility, please ignore:=0D
-* hw/mips/malta: Introduce PIIX4_PCI_DEVFN definition=0D
-* hw/mips/malta: Set PIIX4 IRQ routes in embedded bootloader=0D
-* hw/isa/piix4: Correct IRQRC[A:D] reset values=0D
-=0D
-'Decouple INTx-to-LNKx routing from south bridges', see [2]:=0D
-* hw/pci/pci: Factor out pci_bus_map_irqs() from pci_bus_irqs()=0D
-* hw/isa/piix3: Decouple INTx-to-LNKx routing which is board-specific=0D
-* hw/isa/piix4: Decouple INTx-to-LNKx routing which is board-specific=0D
-=0D
-* hw/mips/Kconfig: Track Malta's PIIX dependencies via Kconfig=0D
-* hw/usb/hcd-uhci: Introduce TYPE_ defines for device models=0D
-=0D
-Allow for making both PIIX south bridges agnostic about the virtualization=
-=0D
-technology used by allowing to shift the virtualization policies into board=
-=0D
-code:=0D
-* hw/intc/i8259: Make using the isa_pic singleton more type-safe=0D
-* hw/intc/i8259: Introduce i8259 proxy TYPE_ISA_PIC=0D
-=0D
-Move sub devices into the PIIX3 south bridge, like PIIX4 does already:=0D
-* hw/i386/pc: Create RTC controllers in south bridges=0D
-* hw/i386/pc: No need for rtc_state to be an out-parameter=0D
-* hw/i386/pc_piix: Allow for setting properties before realizing PIIX3 sout=
-h bridge=0D
-* hw/isa/piix3: Create USB controller in host device=0D
-* hw/isa/piix3: Create power management controller in host device=0D
-* hw/isa/piix3: Create TYPE_ISA_PIC in host device=0D
-* hw/isa/piix3: Create IDE controller in host device=0D
-* hw/isa/piix3: Wire up ACPI interrupt internally=0D
-=0D
-Make PIIX3 and PIIX4 south bridges more similar:=0D
-* hw/isa/piix3: Resolve redundant PIIX_NUM_PIC_IRQS=0D
-* hw/isa/piix3: Rename pci_piix3_props for sharing with PIIX4=0D
-* hw/isa/piix3: Rename piix3_reset() for sharing with PIIX4=0D
-* hw/isa/piix3: Drop the "3" from PIIX base class=0D
-* hw/isa/piix4: Make PIIX4's ACPI and USB functions optional=0D
-* hw/isa/piix4: Remove unused inbound ISA interrupt lines=0D
-* hw/isa/piix4: Use TYPE_ISA_PIC device=0D
-* hw/isa/piix4: Reuse struct PIIXState from PIIX3=0D
-* hw/isa/piix4: Rename reset control operations to match PIIX3=0D
-=0D
-This patch achieves the main goal of the series:=0D
-* hw/isa/piix3: Merge hw/isa/piix4.c=0D
-=0D
-Perform some further consolidations which were easier to do after the merge=
-:=0D
-* hw/isa/piix: Harmonize names of reset control memory regions=0D
-* hw/isa/piix: Reuse PIIX3 base class' realize method in PIIX4=0D
-* hw/isa/piix: Rename functions to be shared for interrupt triggering=0D
-* hw/isa/piix: Consolidate IRQ triggering=0D
-* hw/isa/piix: Share PIIX3's base class with PIIX4=0D
-=0D
-One particular challenge in this series was that the PIC of PIIX3 used to b=
-e=0D
-instantiated outside of the south bridge while some sub functions require a=
- PIC=0D
-with populated qemu_irqs. This has been solved by introducing a proxy PIC w=
-hich=0D
-furthermore allows PIIX3 to be agnostic towards the virtualization technolo=
-gy=0D
-used (KVM, TCG, Xen). Due to consolidation PIIX4 gained the proxy PIC as we=
-ll.=0D
-=0D
-Another challenge was dealing with optional devices where Peter already gav=
-e=0D
-advice in [1] which this series implements.=0D
-=0D
-Last but not least there might be some opportunity to consolidate VM state=
-=0D
-handling, probably by reusing the one from PIIX3. Since I'm not very famili=
-ar=0D
-with the requirements I didn't touch it so far.=0D
-=0D
-v6:=0D
-- Fix some comments about TYPE_ISA_PIC (Mark) ... and use it consistently=0D
-  within the patch series.=0D
-- Incorporate series "[PATCH v2 0/3] Decouple INTx-to-LNKx routing from sou=
-th=0D
-  bridges" [2] for maintainer convenience.=0D
-- Merge v5's 'hw/i386/pc_piix: Associate pci_map_irq_fn as soon as PCI bus =
-is=0D
-  created' into=0D
-  https://lists.nongnu.org/archive/html/qemu-devel/2022-11/msg03312.html . =
-Do=0D
-  similar for Malta.=0D
-- Rebase onto latest master (d6271b657286 "Merge tag 'for_upstream' of=0D
-  https://git.kernel.org/pub/scm/virt/kvm/mst/qemu into staging")=0D
-=0D
-Testing done:=0D
-* make check=0D
-* Boot live CD:=0D
-  * `qemu-system-x86_64 -M pc -m 2G -accel kvm -cpu host -cdrom manjaro-kde=
--21.3.2-220704-linux515.iso`=0D
-  * `qemu-system-x86_64 -M q35 -m 2G -accel kvm -cpu host -cdrom manjaro-kd=
-e-21.3.2-220704-linux515.iso`=0D
-* 'qemu-system-mips64el -M malta -kernel vmlinux-3.2.0-4-5kc-malta -hda deb=
-ian_wheezy_mipsel_standard.qcow2 -append "root=3D/dev/sda1 console=3DttyS0"=
-`=0D
-=0D
-v5:=0D
-- Pick up Reviewed-by tags from https://lists.nongnu.org/archive/html/qemu-=
-devel/2023-01/msg00116.html=0D
-- Add patch to make usage of the isa_pic global more type-safe=0D
-- Re-introduce isa-pic as PIC specific proxy (Mark)=0D
-=0D
-v4:=0D
-- Rebase onto "[PATCH v2 0/3] Decouple INTx-to-LNKx routing from south brid=
-ges"=0D
-  since it is already queued via mips-next. This eliminates patches=0D
-  'hw/isa/piix3: Prefix pci_slot_get_pirq() with "piix3_"' and 'hw/isa/piix=
-4:=0D
-  Prefix pci_slot_get_pirq() with "piix4_"'.=0D
-- Squash 'hw/isa/piix: Drop the "3" from the PIIX base class' into=0D
-  'hw/isa/piix3: Rename typedef PIIX3State to PIIXState'. I originally only=
-=0D
-  split these patches since I wasn't sure whether renaming a type was allow=
-ed.=0D
-- Add new patch 'hw/i386/pc_piix: Associate pci_map_irq_fn as soon as PCI b=
-us is=0D
-  created' for forther cleanup of INTx-to-LNKx route decoupling.=0D
-=0D
-v3:=0D
-- Introduce one TYPE_ICH9_USB_UHCI(fn) rather than several TYPE_ICH9_USB_UH=
-CIx=0D
-  (Philippe)=0D
-- Make proxy PIC generic (Philippe)=0D
-- Track Malta's PIIX dependencies through KConfig=0D
-- Rebase onto Philippe's 'hw/isa/piix4: Remove MIPS Malta specific bits' se=
-ries [3]=0D
-- Also rebase onto latest master to resolve merge conflicts. This required=
-=0D
-  copying Philippe's series as first three patches - please ignore.=0D
-=0D
-v2:=0D
-- Introduce TYPE_ defines for IDE and USB device models (Mark)=0D
-- Omit unexporting of PIIXState (Mark)=0D
-- Improve commit message of patch 5 to mention reset triggering through PCI=
-=0D
-  configuration space (Mark)=0D
-- Move reviewed patches w/o dependencies to the bottom of the series for ea=
-rly=0D
-  upstreaming=0D
-=0D
-[1] https://lists.nongnu.org/archive/html/qemu-devel/2022-07/msg02348.html=
-=0D
-[2] https://lists.nongnu.org/archive/html/qemu-devel/2022-11/msg03310.html=
-=0D
-[3] https://lists.nongnu.org/archive/html/qemu-devel/2022-10/msg05367.html=
-=0D
-=0D
-Bernhard Beschow (30):=0D
-  hw/pci/pci: Factor out pci_bus_map_irqs() from pci_bus_irqs()=0D
-  hw/isa/piix3: Decouple INTx-to-LNKx routing which is board-specific=0D
-  hw/isa/piix4: Decouple INTx-to-LNKx routing which is board-specific=0D
-  hw/mips/Kconfig: Track Malta's PIIX dependencies via Kconfig=0D
-  hw/usb/hcd-uhci: Introduce TYPE_ defines for device models=0D
-  hw/intc/i8259: Make using the isa_pic singleton more type-safe=0D
-  hw/intc/i8259: Introduce i8259 proxy TYPE_ISA_PIC=0D
-  hw/i386/pc: Create RTC controllers in south bridges=0D
-  hw/i386/pc: No need for rtc_state to be an out-parameter=0D
-  hw/i386/pc_piix: Allow for setting properties before realizing PIIX3=0D
-    south bridge=0D
-  hw/isa/piix3: Create USB controller in host device=0D
-  hw/isa/piix3: Create power management controller in host device=0D
-  hw/isa/piix3: Create TYPE_ISA_PIC in host device=0D
-  hw/isa/piix3: Create IDE controller in host device=0D
-  hw/isa/piix3: Wire up ACPI interrupt internally=0D
-  hw/isa/piix3: Resolve redundant PIIX_NUM_PIC_IRQS=0D
-  hw/isa/piix3: Rename pci_piix3_props for sharing with PIIX4=0D
-  hw/isa/piix3: Rename piix3_reset() for sharing with PIIX4=0D
-  hw/isa/piix3: Drop the "3" from PIIX base class=0D
-  hw/isa/piix4: Make PIIX4's ACPI and USB functions optional=0D
-  hw/isa/piix4: Remove unused inbound ISA interrupt lines=0D
-  hw/isa/piix4: Use TYPE_ISA_PIC device=0D
-  hw/isa/piix4: Reuse struct PIIXState from PIIX3=0D
-  hw/isa/piix4: Rename reset control operations to match PIIX3=0D
-  hw/isa/piix3: Merge hw/isa/piix4.c=0D
-  hw/isa/piix: Harmonize names of reset control memory regions=0D
-  hw/isa/piix: Reuse PIIX3 base class' realize method in PIIX4=0D
-  hw/isa/piix: Rename functions to be shared for interrupt triggering=0D
-  hw/isa/piix: Consolidate IRQ triggering=0D
-  hw/isa/piix: Share PIIX3's base class with PIIX4=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (3):=0D
-  hw/mips/malta: Introduce PIIX4_PCI_DEVFN definition=0D
-  hw/mips/malta: Set PIIX4 IRQ routes in embedded bootloader=0D
-  hw/isa/piix4: Correct IRQRC[A:D] reset values=0D
-=0D
- configs/devices/mips-softmmu/common.mak |   2 -=0D
- hw/usb/hcd-uhci.h                       |   4 +=0D
- include/hw/i386/ich9.h                  |   2 +=0D
- include/hw/i386/pc.h                    |   2 +-=0D
- include/hw/intc/i8259.h                 |  24 +-=0D
- include/hw/pci/pci.h                    |   3 +-=0D
- include/hw/southbridge/piix.h           |  31 ++-=0D
- include/qemu/typedefs.h                 |   1 +=0D
- hw/i386/pc.c                            |  16 +-=0D
- hw/i386/pc_piix.c                       |  87 ++++---=0D
- hw/i386/pc_q35.c                        |  20 +-=0D
- hw/intc/i8259.c                         |  38 ++-=0D
- hw/isa/lpc_ich9.c                       |   8 +=0D
- hw/isa/{piix3.c =3D> piix.c}              | 289 +++++++++++++++------=0D
- hw/isa/piix4.c                          | 327 ------------------------=0D
- hw/mips/malta.c                         |  65 ++++-=0D
- hw/pci-host/raven.c                     |   3 +-=0D
- hw/pci-host/versatile.c                 |   3 +-=0D
- hw/pci/pci.c                            |  12 +-=0D
- hw/remote/machine.c                     |   3 +-=0D
- hw/usb/hcd-uhci.c                       |  16 +-=0D
- MAINTAINERS                             |   6 +-=0D
- hw/i386/Kconfig                         |   4 +-=0D
- hw/isa/Kconfig                          |   8 +-=0D
- hw/isa/meson.build                      |   3 +-=0D
- hw/mips/Kconfig                         |   2 +=0D
- 26 files changed, 479 insertions(+), 500 deletions(-)=0D
- rename hw/isa/{piix3.c =3D> piix.c} (57%)=0D
- delete mode 100644 hw/isa/piix4.c=0D
-=0D
--- =0D
-2.39.0=0D
-=0D
+pci_map_irq_fn's in general seem to be board-specific. So move PIIX3's
+pci_slot_get_pirq() to board code to not have PIIX3 make assuptions
+about its board.
+
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/i386/pc_piix.c | 15 +++++++++++++++
+ hw/isa/piix3.c    | 13 -------------
+ 2 files changed, 15 insertions(+), 13 deletions(-)
+
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index b48047f50c..bb3b10557f 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -47,6 +47,7 @@
+ #include "hw/sysbus.h"
+ #include "hw/i2c/smbus_eeprom.h"
+ #include "hw/xen/xen-x86.h"
++#include "hw/xen/xen.h"
+ #include "exec/memory.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/piix4.h"
+@@ -73,6 +74,17 @@ static const int ide_iobase2[MAX_IDE_BUS] = { 0x3f6, 0x376 };
+ static const int ide_irq[MAX_IDE_BUS] = { 14, 15 };
+ #endif
+ 
++/*
++ * Return the global irq number corresponding to a given device irq
++ * pin. We could also use the bus number to have a more precise mapping.
++ */
++static int pc_pci_slot_get_pirq(PCIDevice *pci_dev, int pci_intx)
++{
++    int slot_addend;
++    slot_addend = PCI_SLOT(pci_dev->devfn) - 1;
++    return (pci_intx + slot_addend) & 3;
++}
++
+ /* PC hardware initialisation */
+ static void pc_init1(MachineState *machine,
+                      const char *host_type, const char *pci_type)
+@@ -216,6 +228,9 @@ static void pc_init1(MachineState *machine,
+                               x86ms->below_4g_mem_size,
+                               x86ms->above_4g_mem_size,
+                               pci_memory, ram_memory);
++        pci_bus_map_irqs(pci_bus,
++                         xen_enabled() ? xen_pci_slot_get_pirq
++                                       : pc_pci_slot_get_pirq);
+         pcms->bus = pci_bus;
+ 
+         pci_dev = pci_create_simple_multifunction(pci_bus, -1, true, type);
+diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
+index 666e794f77..283b971ec4 100644
+--- a/hw/isa/piix3.c
++++ b/hw/isa/piix3.c
+@@ -79,17 +79,6 @@ static void piix3_set_irq(void *opaque, int pirq, int level)
+     piix3_set_irq_level(piix3, pirq, level);
+ }
+ 
+-/*
+- * Return the global irq number corresponding to a given device irq
+- * pin. We could also use the bus number to have a more precise mapping.
+- */
+-static int pci_slot_get_pirq(PCIDevice *pci_dev, int pci_intx)
+-{
+-    int slot_addend;
+-    slot_addend = PCI_SLOT(pci_dev->devfn) - 1;
+-    return (pci_intx + slot_addend) & 3;
+-}
+-
+ static PCIINTxRoute piix3_route_intx_pin_to_irq(void *opaque, int pin)
+ {
+     PIIX3State *piix3 = opaque;
+@@ -385,7 +374,6 @@ static void piix3_realize(PCIDevice *dev, Error **errp)
+     }
+ 
+     pci_bus_irqs(pci_bus, piix3_set_irq, piix3, PIIX_NUM_PIRQS);
+-    pci_bus_map_irqs(pci_bus, pci_slot_get_pirq);
+     pci_bus_set_route_irq_fn(pci_bus, piix3_route_intx_pin_to_irq);
+ }
+ 
+@@ -421,7 +409,6 @@ static void piix3_xen_realize(PCIDevice *dev, Error **errp)
+      * These additional routes can be discovered through ACPI.
+      */
+     pci_bus_irqs(pci_bus, xen_piix3_set_irq, piix3, XEN_PIIX_NUM_PIRQS);
+-    pci_bus_map_irqs(pci_bus, xen_pci_slot_get_pirq);
+ }
+ 
+ static void piix3_xen_class_init(ObjectClass *klass, void *data)
+-- 
+2.39.0
+

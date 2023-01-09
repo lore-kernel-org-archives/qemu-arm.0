@@ -1,91 +1,90 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2111913ejc;
-        Mon, 9 Jan 2023 01:28:39 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvOeESHkSuChRtV+8is5N7eiXP8fwkZwpSkzgaUIBVtXpj9b69CkZpmqxdrkGOlIR6fqm70
-X-Received: by 2002:ac8:44d4:0:b0:3a8:11ab:cacc with SMTP id b20-20020ac844d4000000b003a811abcaccmr84470211qto.17.1673256519195;
-        Mon, 09 Jan 2023 01:28:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673256519; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2112081ejc;
+        Mon, 9 Jan 2023 01:29:02 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXu1ty0qDjVz9aa7xyOgpcdTqOsUTWVCK6ktFZOAVux/D1S4KpWoI1o4SgsEe95j48jsvEI0
+X-Received: by 2002:a0c:d602:0:b0:52d:937c:cd7b with SMTP id c2-20020a0cd602000000b0052d937ccd7bmr88423520qvj.21.1673256542557;
+        Mon, 09 Jan 2023 01:29:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673256542; cv=none;
         d=google.com; s=arc-20160816;
-        b=qWg1hyzyE3+9bORDGolWR2iSKWGNZsyt1/JiVfpC/kaKpLwC28BRQgTXd13W5/uj1/
-         IFnDMZYquAk0DyQgAmtVYxMsgJb8SkEvp3b071Hfr88K9dZfiwQ67AuUVwih1Y/oXKuD
-         tIZuN1Ihdl6KBB4z2ELt3czLLAUDsFZgCDNy5Zl3cXRwZ+vjHCz0a03fBcr3gHuAsPJX
-         VGgkH7VER9x6oxcNU9eYavl9dk53si9PuZvSrmZt6EN5OHVBkzGfTD/BvNYqzRhKfLYS
-         TrI2LDczoVPzIpVfipm/ZlT9huVDfsvLUFYce3Eu061xDLH0UidQj1pa1sUaRAOA/Tz8
-         3IFA==
+        b=pqvQQHbEx5ptsZcBrmEu4TVOEJExvG2JsZkdOVCJ0FvBn/2HptbEBmAV0TJwqodKGD
+         fO4CdiOgkBatkbcZwgvcwqkplszc7YekS9QL0Dezd5ZBVkwLX+LWvCip8R+W1UxHG11H
+         W5UZzMP9lrGBNp4ZAdB24W43jioP+3rDUCsZG7/z4r0al3M20lZcczt8rxjr8SafcFrv
+         YggI4UXEVc/EWbXcc2NZECBtpeAbdsLSCXe2aXJKKAS5nic2BEwVRAezdsa/qWOQIkzw
+         nk1VJoKxitdb2eowmueyioQ+YKOfT7IwaIC7p1pqn7NVnwT8fdSjKJpxnjAk5UJazMKp
+         5PkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=lSI1q8Pr7ikyNEHE0ptbDijcSvsZa7X5vhrpcvBH7wI=;
-        b=dgbdiOVqA9pxydgpj1tbD36bnVVfv7eBMlkIaU1Qy4+jjbj36gt6Vh02nCYt6KiDev
-         dHsn3X8WAds8XhjR4TsPQFCVKqIlCbt8OvuwhKUunLR1Af+dW0kV08aeSZBh5JFFtb1K
-         Q7m8ZMdGgcR32BrbPiV9N4xDa9M/kc80/lXJjzsm7SFliy4w7mdXvAdXEqCF9JXYrS8d
-         SIRMnyNycXRlzDpFwkOOynZZA3UTJR+PgTHNLh4+M80ioBJZCNCR+NmNz+JeJ5uZIoG4
-         8BgbtPBPLWLs6T7c1Frtilbjj4I3UvxWNJgc4XyANjdeHFLQpWvLdmKzEQyPyhtT7nWn
-         78ug==
+        bh=thih3YlnrvTRPUHmxOTOW7cdH3C9pCnefCYP23Vc8Uc=;
+        b=lqKMchEYIOczM+vmqONRIMoLpo8Yw3kWB61D2xUk9rr/TX1Ji7BchazywL8Usb2r8k
+         2qZiAlSj0icA1smceY3aUVp3Yy1Vr12SwdkM1OsEGmfxSv/tIBMLiHRsTVBzPbpeiCVa
+         A+fuPXUvwTOR47U941HAoksHPy8xaEAHH/21HXvrpa2NV9pChT/4svcEB4u8p8Fyg8uE
+         ZYrEGFv6cnFNm7JW3VYnM/9Yw2dL2z+B6ayGCn6uxzvJ+NDtpktKC419sRuH3eL+1sSp
+         8FvO2JlFbLzqTlzrXmaPvOd+GVoKKEm8mucuRlcLviFXHfWu1u1kY4CEXkSfwU5pC852
+         y4Vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PupitDtL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RMEr4rgO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7-20020a05620a424700b007023a700d33si4259302qko.617.2023.01.09.01.28.39
+        by mx.google.com with ESMTPS id gv2-20020a056214262200b004bbdce26669si4276989qvb.144.2023.01.09.01.29.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Jan 2023 01:28:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Jan 2023 01:29:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PupitDtL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RMEr4rgO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pEoQw-00048A-3z; Mon, 09 Jan 2023 04:27:10 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pEoQP-0003vE-0e; Mon, 09 Jan 2023 04:26:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEoQu-00047e-65
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 04:27:08 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEoQL-0003uL-ER
+ for qemu-devel@nongnu.org; Mon, 09 Jan 2023 04:26:33 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEoQs-0005Zz-GC
- for qemu-arm@nongnu.org; Mon, 09 Jan 2023 04:27:07 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- g19-20020a05600c4ed300b003d9eb1dbc0aso3140826wmq.3
- for <qemu-arm@nongnu.org>; Mon, 09 Jan 2023 01:27:06 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEoQJ-0005RX-J4
+ for qemu-devel@nongnu.org; Mon, 09 Jan 2023 04:26:32 -0500
+Received: by mail-wm1-x333.google.com with SMTP id l26so5778077wme.5
+ for <qemu-devel@nongnu.org>; Mon, 09 Jan 2023 01:26:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=lSI1q8Pr7ikyNEHE0ptbDijcSvsZa7X5vhrpcvBH7wI=;
- b=PupitDtLY7UghG6gW4N1I7E1STzB5G8pOzgskfDpFcRYuZwfJe8ZKSUTyleOJrXxUC
- 26x+hvdXdg4GUermlxOi+IbsxnL+REoNdkcETJ+XzA5NuqwheVrAd/QJ54m25LoxFmvQ
- X0UeQDajIOU75/tK/D7e6s+PmgAMpoVinxtPmI04UeYh0VjXTMhdUIzvQid1Aoe+QPCe
- hpU0DEqefpi2wP0r9bq/RrvTmZYvjgQdF9AWfUkh9+99o5NrqrQWYeYTY4lJAGCJsS16
- ygg/+niSmnveo3hvClsBNEyzLOX1opS3Xt2s9qGXu3mC1y46k9cGrfUxvaSG/s7mrSgd
- M7Lg==
+ bh=thih3YlnrvTRPUHmxOTOW7cdH3C9pCnefCYP23Vc8Uc=;
+ b=RMEr4rgOWLh7fYPLKzNnTIOx9LwcKhfpBIel65eStKXZeXz7TIOhVLwCHNkel0WYOS
+ lOGrUznS/LY8QTrGhCuootpuC+JlwK20nm8DQHdgxLgYXuqNfam2D+tFTRAeZWRou44L
+ YXA8iVdcQHv/pJi0ic77c1TX7wOz5Vkd3wf3p7gInjDSHzkQ0BI156FOIGRY5vHdvhak
+ 94iRLUh8ebbpNCdvbMv9ygFuDmPgoNnGbKXq64Hfz7NJ4OMhDHWvsFow22t9gMrRBZAd
+ AjuJFnkHD72/5vIJyn4owFfHHw0lU5K0QxAjQ/xoddoCsOqENaIxzaDDq4R44D/h7AgX
+ GMNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=lSI1q8Pr7ikyNEHE0ptbDijcSvsZa7X5vhrpcvBH7wI=;
- b=Mky4V5k5VFySwVnYthDxtdIDLdvatTts/IOnqxS7RCF5rsPkV9/rlQX6mLq16Fdaps
- Jxo6N7BIqNkzUeIe9YastNECnBU9n3Ioc4YXR+9eis9TF7XRVCokPSKgd2j0ob4BhOlY
- 9D4FF0hutNbgyku9gyXq+p40zIlAcpwCdPMQOyOHF8Ad9tvxUNz0DcYN6xNfEcSFpQau
- PMLYc1RAWcTbMtqM2BcvqEt9OPKKFGAkits0uhPegIDhwIYn25dKnmNHRHtXXtkuWfGu
- 2ddlYcfQ7QUIwDFRLji0ScRyOBEZu4t15udRFOhXh9LXQiGyT6LGTM3uIPEhVe9y/sZb
- pLyA==
-X-Gm-Message-State: AFqh2krg4Rr7/UwY7R0ky6BnMbkudCycescp4UKVXTQh6WomurGCDVUd
- 4EU1X2ejSWNB92Jyg8XwjBWTHQ==
-X-Received: by 2002:a05:600c:1f12:b0:3cf:8155:2adc with SMTP id
- bd18-20020a05600c1f1200b003cf81552adcmr46860643wmb.33.1673256425207; 
- Mon, 09 Jan 2023 01:27:05 -0800 (PST)
+ bh=thih3YlnrvTRPUHmxOTOW7cdH3C9pCnefCYP23Vc8Uc=;
+ b=03ex+ss1CxunxWFi7dNPRsOsvzSmUVnPjisGt09ToDyflvwrVeOSpH0NVOXEjGmfMx
+ MVq5ONYFtlWxv7n5doZfq7K5sW/0L8682/37ygMAnOiBN6J8eR+r12xExV5XyiPjzUVo
+ qxQdMZQXPNVXzcefz2Y1crTTjo4dAZri/dFIO+dVOCfLfdiQKue3ZEvjIk0rbGWt31qu
+ /h7GBYeC3Yvn4AJxQd1uM0BzFLbpoX4rE1npgmypFGK0wOtiN4aVe/cSfyPhfnUe4nyr
+ wIqMTicztlFvQGgPZk4jn3bGHfD2mopNWhLAe1smSAb9iac9dwXuQTY56mMkCFSaJN6L
+ urhg==
+X-Gm-Message-State: AFqh2kpxnM6/qUM9X+Lu6HZN9CoaeiN0iVmIFTk+5uo1SPHZkFApMt1/
+ Dd991Fr8juafB6i0peUI1nnYRFCjNmIuZt3J
+X-Received: by 2002:a05:600c:48a1:b0:3d1:f270:a81e with SMTP id
+ j33-20020a05600c48a100b003d1f270a81emr45866631wmp.17.1673256389785; 
+ Mon, 09 Jan 2023 01:26:29 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- i3-20020a1c5403000000b003d35c09d4b9sm15151704wmb.40.2023.01.09.01.27.04
+ p7-20020a05600c1d8700b003d973d4fb28sm15573644wms.4.2023.01.09.01.26.28
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 09 Jan 2023 01:27:04 -0800 (PST)
+ Mon, 09 Jan 2023 01:26:29 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Jan Kiszka <jan.kiszka@web.de>,
@@ -98,17 +97,17 @@ Cc: Jan Kiszka <jan.kiszka@web.de>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 9/9] hw/i386/kvm: Convert TYPE_KVM_CLOCK from SysBus to QDev
-Date: Mon,  9 Jan 2023 10:26:17 +0100
-Message-Id: <20230109092617.80224-10-philmd@linaro.org>
+Subject: [PATCH 2/9] qdev: Add qdev_create_simple() helper
+Date: Mon,  9 Jan 2023 10:26:10 +0100
+Message-Id: <20230109092617.80224-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230109092617.80224-1-philmd@linaro.org>
 References: <20230109092617.80224-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,60 +116,71 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zgp/TEe83WY/
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Hc6oqlE7DUOx
 
-Nothing in TYPE_KVM_CLOCK access the SysBus API,
-convert it to a plain QDev.
+Add a helper to easily create a qdev with no (or default) property.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/i386/kvm/clock.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/core/qdev.c         |  9 +++++++++
+ include/hw/qdev-core.h | 11 +++++++++++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/hw/i386/kvm/clock.c b/hw/i386/kvm/clock.c
-index df70b4a033..da0984b5a0 100644
---- a/hw/i386/kvm/clock.c
-+++ b/hw/i386/kvm/clock.c
-@@ -35,7 +35,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(KVMClockState, KVM_CLOCK)
- 
- struct KVMClockState {
-     /*< private >*/
--    SysBusDevice busdev;
-+    DeviceState busdev;
-     /*< public >*/
- 
-     uint64_t clock;
-@@ -322,7 +322,7 @@ static void kvmclock_class_init(ObjectClass *klass, void *data)
- 
- static const TypeInfo kvmclock_info = {
-     .name          = TYPE_KVM_CLOCK,
--    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .parent        = TYPE_DEVICE,
-     .instance_size = sizeof(KVMClockState),
-     .class_init    = kvmclock_class_init,
- };
-@@ -338,7 +338,7 @@ void kvmclock_create(bool create_always)
-     if (create_always ||
-         cpu->env.features[FEAT_KVM] & ((1ULL << KVM_FEATURE_CLOCKSOURCE) |
-                                        (1ULL << KVM_FEATURE_CLOCKSOURCE2))) {
--        sysbus_create_simple(TYPE_KVM_CLOCK, -1, NULL);
-+        qdev_realize(qdev_new(TYPE_KVM_CLOCK), NULL, &error_fatal));
-     }
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index d759c4602c..4afed2a24c 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -174,6 +174,15 @@ DeviceState *qdev_try_new(const char *name)
+     return DEVICE(object_new(name));
  }
  
++DeviceState *qdev_create_simple(const char *name, Error **errp)
++{
++    DeviceState *dev = qdev_new(name);
++
++    qdev_realize_and_unref(dev, NULL, errp);
++
++    return dev;
++}
++
+ static QTAILQ_HEAD(, DeviceListener) device_listeners
+     = QTAILQ_HEAD_INITIALIZER(device_listeners);
+ 
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index 35fddb19a6..ca6b2b8458 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -397,6 +397,17 @@ bool qdev_realize_and_unref(DeviceState *dev, BusState *bus, Error **errp);
+  * the life of the simulation and should not be unrealized and freed.
+  */
+ void qdev_unrealize(DeviceState *dev);
++
++/**
++ * Create and realize a device on the heap.
++ * @name: device type to create (we assert() that this type exists)
++ * @errp: pointer to error object
++ *
++ * Create the device state structure, initialize it, and drop the
++ * reference to it (the device is realized).
++ */
++DeviceState *qdev_create_simple(const char *name, Error **errp);
++
+ void qdev_set_legacy_instance_id(DeviceState *dev, int alias_id,
+                                  int required_for_version);
+ HotplugHandler *qdev_get_bus_hotplug_handler(DeviceState *dev);
 -- 
 2.38.1
 

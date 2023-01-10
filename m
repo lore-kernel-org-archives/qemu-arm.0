@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id y15-20020adffa4f000000b002bbec19c8acsm6490444wrr.64.2023.01.10.09.39.32
+        by smtp.gmail.com with ESMTPSA id v14-20020adff68e000000b002365730eae8sm11744722wrp.55.2023.01.10.09.39.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 10 Jan 2023 09:39:32 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 7D2D01FFC4;
+	by zen.linaroharston (Postfix) with ESMTP id 32A091FFC3;
 	Tue, 10 Jan 2023 17:39:24 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -33,314 +33,325 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	John G Johnson <john.g.johnson@oracle.com>
-Subject: [PATCH 12/26] lcitool: drop texinfo from QEMU project/dependencies
-Date: Tue, 10 Jan 2023 17:39:08 +0000
-Message-Id: <20230110173922.265055-13-alex.bennee@linaro.org>
+Subject: [PATCH 11/26] lcitool: drop perl from QEMU project/dependencies
+Date: Tue, 10 Jan 2023 17:39:07 +0000
+Message-Id: <20230110173922.265055-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230110173922.265055-1-alex.bennee@linaro.org>
 References: <20230110173922.265055-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: AA4zt+LBICIU
+X-TUID: DIcm0KeMR67y
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20230110132700.833690-9-marcandre.lureau@redhat.com>
+Message-Id: <20230110132700.833690-8-marcandre.lureau@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
  .gitlab-ci.d/cirrus/freebsd-12.vars                   | 2 +-
  .gitlab-ci.d/cirrus/freebsd-13.vars                   | 2 +-
  .gitlab-ci.d/cirrus/macos-12.vars                     | 2 +-
+ scripts/ci/setup/build-environment.yml                | 1 -
  tests/docker/dockerfiles/alpine.docker                | 1 -
  tests/docker/dockerfiles/centos8.docker               | 1 -
- tests/docker/dockerfiles/debian-amd64-cross.docker    | 3 +--
+ tests/docker/dockerfiles/debian-amd64-cross.docker    | 1 -
  tests/docker/dockerfiles/debian-amd64.docker          | 1 -
- tests/docker/dockerfiles/debian-arm64-cross.docker    | 3 +--
- tests/docker/dockerfiles/debian-armel-cross.docker    | 3 +--
- tests/docker/dockerfiles/debian-armhf-cross.docker    | 3 +--
- tests/docker/dockerfiles/debian-mips64el-cross.docker | 3 +--
- tests/docker/dockerfiles/debian-mipsel-cross.docker   | 3 +--
- tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 3 +--
- tests/docker/dockerfiles/debian-s390x-cross.docker    | 3 +--
- tests/docker/dockerfiles/debian-toolchain.docker      | 1 -
+ tests/docker/dockerfiles/debian-arm64-cross.docker    | 1 -
+ tests/docker/dockerfiles/debian-armel-cross.docker    | 1 -
+ tests/docker/dockerfiles/debian-armhf-cross.docker    | 1 -
+ tests/docker/dockerfiles/debian-mips64el-cross.docker | 1 -
+ tests/docker/dockerfiles/debian-mipsel-cross.docker   | 1 -
+ tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 1 -
+ tests/docker/dockerfiles/debian-s390x-cross.docker    | 1 -
+ tests/docker/dockerfiles/debian-tricore-cross.docker  | 1 -
  tests/docker/dockerfiles/fedora-win32-cross.docker    | 1 -
  tests/docker/dockerfiles/fedora-win64-cross.docker    | 1 -
  tests/docker/dockerfiles/fedora.docker                | 1 -
  tests/docker/dockerfiles/opensuse-leap.docker         | 1 -
  tests/docker/dockerfiles/ubuntu2004.docker            | 1 -
  tests/lcitool/projects/qemu.yml                       | 1 -
- 21 files changed, 11 insertions(+), 29 deletions(-)
+ tests/vm/centos.aarch64                               | 2 +-
+ 23 files changed, 4 insertions(+), 23 deletions(-)
 
 diff --git a/.gitlab-ci.d/cirrus/freebsd-12.vars b/.gitlab-ci.d/cirrus/freebsd-12.vars
-index f32f01a954..8934e5d57f 100644
+index e3fc3235b9..f32f01a954 100644
 --- a/.gitlab-ci.d/cirrus/freebsd-12.vars
 +++ b/.gitlab-ci.d/cirrus/freebsd-12.vars
 @@ -11,6 +11,6 @@ MAKE='/usr/local/bin/gmake'
  NINJA='/usr/local/bin/ninja'
  PACKAGING_COMMAND='pkg'
  PIP3='/usr/local/bin/pip-3.8'
--PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract texinfo usbredir virglrenderer vte3 zstd'
-+PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract usbredir virglrenderer vte3 zstd'
+-PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv perl5 pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract texinfo usbredir virglrenderer vte3 zstd'
++PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract texinfo usbredir virglrenderer vte3 zstd'
  PYPI_PKGS=''
  PYTHON='/usr/local/bin/python3'
 diff --git a/.gitlab-ci.d/cirrus/freebsd-13.vars b/.gitlab-ci.d/cirrus/freebsd-13.vars
-index 813c051616..65ce456c48 100644
+index 9f56babd9c..813c051616 100644
 --- a/.gitlab-ci.d/cirrus/freebsd-13.vars
 +++ b/.gitlab-ci.d/cirrus/freebsd-13.vars
 @@ -11,6 +11,6 @@ MAKE='/usr/local/bin/gmake'
  NINJA='/usr/local/bin/ninja'
  PACKAGING_COMMAND='pkg'
  PIP3='/usr/local/bin/pip-3.8'
--PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract texinfo usbredir virglrenderer vte3 zstd'
-+PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract usbredir virglrenderer vte3 zstd'
+-PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv perl5 pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract texinfo usbredir virglrenderer vte3 zstd'
++PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract texinfo usbredir virglrenderer vte3 zstd'
  PYPI_PKGS=''
  PYTHON='/usr/local/bin/python3'
 diff --git a/.gitlab-ci.d/cirrus/macos-12.vars b/.gitlab-ci.d/cirrus/macos-12.vars
-index 33bb4e1040..65b78fa08f 100644
+index ef9e14b373..33bb4e1040 100644
 --- a/.gitlab-ci.d/cirrus/macos-12.vars
 +++ b/.gitlab-ci.d/cirrus/macos-12.vars
 @@ -11,6 +11,6 @@ MAKE='/opt/homebrew/bin/gmake'
  NINJA='/opt/homebrew/bin/ninja'
  PACKAGING_COMMAND='brew'
  PIP3='/opt/homebrew/bin/pip3'
--PKGS='bash bc bison bzip2 capstone ccache cmocka ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 jemalloc jpeg-turbo json-c libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson ncurses nettle ninja pixman pkg-config python3 rpm2cpio sdl2 sdl2_image snappy sparse spice-protocol tesseract texinfo usbredir vde vte3 zlib zstd'
-+PKGS='bash bc bison bzip2 capstone ccache cmocka ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 jemalloc jpeg-turbo json-c libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson ncurses nettle ninja pixman pkg-config python3 rpm2cpio sdl2 sdl2_image snappy sparse spice-protocol tesseract usbredir vde vte3 zlib zstd'
+-PKGS='bash bc bison bzip2 capstone ccache cmocka ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 jemalloc jpeg-turbo json-c libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson ncurses nettle ninja perl pixman pkg-config python3 rpm2cpio sdl2 sdl2_image snappy sparse spice-protocol tesseract texinfo usbredir vde vte3 zlib zstd'
++PKGS='bash bc bison bzip2 capstone ccache cmocka ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 jemalloc jpeg-turbo json-c libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson ncurses nettle ninja pixman pkg-config python3 rpm2cpio sdl2 sdl2_image snappy sparse spice-protocol tesseract texinfo usbredir vde vte3 zlib zstd'
  PYPI_PKGS='PyYAML numpy pillow sphinx sphinx-rtd-theme'
  PYTHON='/opt/homebrew/bin/python3'
+diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/build-environment.yml
+index b04c2b7cee..58438008ee 100644
+--- a/scripts/ci/setup/build-environment.yml
++++ b/scripts/ci/setup/build-environment.yml
+@@ -155,7 +155,6 @@
+           - nettle-devel
+           - ninja-build
+           - nmap-ncat
+-          - perl-Test-Harness
+           - pixman-devel
+           - python36
+           - rdma-core-devel
 diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
-index 3293c790c9..4a569d82f6 100644
+index 094f66f4eb..3293c790c9 100644
 --- a/tests/docker/dockerfiles/alpine.docker
 +++ b/tests/docker/dockerfiles/alpine.docker
-@@ -99,7 +99,6 @@ RUN apk update && \
-         spice-protocol \
-         tar \
-         tesseract-ocr \
--        texinfo \
-         usbredir-dev \
-         util-linux \
-         vde2-dev \
+@@ -77,7 +77,6 @@ RUN apk update && \
+         numactl-dev \
+         openssh-client \
+         pcre-dev \
+-        perl \
+         pixman-dev \
+         pkgconf \
+         pulseaudio-dev \
 diff --git a/tests/docker/dockerfiles/centos8.docker b/tests/docker/dockerfiles/centos8.docker
-index f13745e6cc..fbc953c6dc 100644
+index 1f70d41aeb..f13745e6cc 100644
 --- a/tests/docker/dockerfiles/centos8.docker
 +++ b/tests/docker/dockerfiles/centos8.docker
-@@ -110,7 +110,6 @@ RUN dnf distro-sync -y && \
-         systemd-devel \
-         systemtap-sdt-devel \
-         tar \
--        texinfo \
-         usbredir-devel \
-         util-linux \
-         virglrenderer-devel \
+@@ -91,7 +91,6 @@ RUN dnf distro-sync -y && \
+         openssh-clients \
+         pam-devel \
+         pcre-static \
+-        perl \
+         pixman-devel \
+         pkgconfig \
+         pulseaudio-libs-devel \
 diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
-index d0ace6d0f7..5175095a85 100644
+index 5e57309361..d0ace6d0f7 100644
 --- a/tests/docker/dockerfiles/debian-amd64-cross.docker
 +++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
-@@ -55,8 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
--                      tesseract-ocr-eng \
--                      texinfo && \
-+                      tesseract-ocr-eng && \
-     eatmydata apt-get autoremove -y && \
-     eatmydata apt-get autoclean -y && \
-     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
+@@ -40,7 +40,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       ncat \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
 diff --git a/tests/docker/dockerfiles/debian-amd64.docker b/tests/docker/dockerfiles/debian-amd64.docker
-index 0517c4c315..b61f664ea2 100644
+index bfeab01ee3..0517c4c315 100644
 --- a/tests/docker/dockerfiles/debian-amd64.docker
 +++ b/tests/docker/dockerfiles/debian-amd64.docker
-@@ -125,7 +125,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       tar \
-                       tesseract-ocr \
-                       tesseract-ocr-eng \
--                      texinfo \
-                       xfslibs-dev \
-                       zlib1g-dev && \
-     eatmydata apt-get autoremove -y && \
+@@ -108,7 +108,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       nettle-dev \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
 diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
-index 9ac1c1ba3f..b69958c69f 100644
+index 98885bd0ee..9ac1c1ba3f 100644
 --- a/tests/docker/dockerfiles/debian-arm64-cross.docker
 +++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
-@@ -55,8 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
--                      tesseract-ocr-eng \
--                      texinfo && \
-+                      tesseract-ocr-eng && \
-     eatmydata apt-get autoremove -y && \
-     eatmydata apt-get autoclean -y && \
-     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
+@@ -40,7 +40,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       ncat \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
 diff --git a/tests/docker/dockerfiles/debian-armel-cross.docker b/tests/docker/dockerfiles/debian-armel-cross.docker
-index 8be492f4ad..96b524fab6 100644
+index d5c08714e4..8be492f4ad 100644
 --- a/tests/docker/dockerfiles/debian-armel-cross.docker
 +++ b/tests/docker/dockerfiles/debian-armel-cross.docker
-@@ -55,8 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
--                      tesseract-ocr-eng \
--                      texinfo && \
-+                      tesseract-ocr-eng && \
-     eatmydata apt-get autoremove -y && \
-     eatmydata apt-get autoclean -y && \
-     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
+@@ -40,7 +40,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       ncat \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
 diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index da789e04af..08a75cebdb 100644
+index 471444fcf4..da789e04af 100644
 --- a/tests/docker/dockerfiles/debian-armhf-cross.docker
 +++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
-@@ -55,8 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
--                      tesseract-ocr-eng \
--                      texinfo && \
-+                      tesseract-ocr-eng && \
-     eatmydata apt-get autoremove -y && \
-     eatmydata apt-get autoclean -y && \
-     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
+@@ -40,7 +40,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       ncat \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
 diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-index 8b7c59c4f9..5930e6fa5d 100644
+index 15b0224b76..8b7c59c4f9 100644
 --- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
 +++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-@@ -55,8 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
--                      tesseract-ocr-eng \
--                      texinfo && \
-+                      tesseract-ocr-eng && \
-     eatmydata apt-get autoremove -y && \
-     eatmydata apt-get autoclean -y && \
-     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
+@@ -40,7 +40,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       ncat \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
 diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-index f9f1ed5fd2..c65d9830e7 100644
+index a5d3ca6e2f..f9f1ed5fd2 100644
 --- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
 +++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-@@ -55,8 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
--                      tesseract-ocr-eng \
--                      texinfo && \
-+                      tesseract-ocr-eng && \
-     eatmydata apt-get autoremove -y && \
-     eatmydata apt-get autoclean -y && \
-     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
+@@ -40,7 +40,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       ncat \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
 diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-index e423d88c2d..2ae56c978e 100644
+index d2954e61f6..e423d88c2d 100644
 --- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
 +++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-@@ -55,8 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
--                      tesseract-ocr-eng \
--                      texinfo && \
-+                      tesseract-ocr-eng && \
-     eatmydata apt-get autoremove -y && \
-     eatmydata apt-get autoclean -y && \
-     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
+@@ -40,7 +40,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       ncat \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
 diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
-index c1134f4cec..0db86a0fcd 100644
+index d43ce16317..c1134f4cec 100644
 --- a/tests/docker/dockerfiles/debian-s390x-cross.docker
 +++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
-@@ -55,8 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
--                      tesseract-ocr-eng \
--                      texinfo && \
-+                      tesseract-ocr-eng && \
-     eatmydata apt-get autoremove -y && \
-     eatmydata apt-get autoclean -y && \
-     sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
-diff --git a/tests/docker/dockerfiles/debian-toolchain.docker b/tests/docker/dockerfiles/debian-toolchain.docker
-index d3d4d3344e..6c73408b34 100644
---- a/tests/docker/dockerfiles/debian-toolchain.docker
-+++ b/tests/docker/dockerfiles/debian-toolchain.docker
-@@ -21,7 +21,6 @@ RUN apt update && \
-         libmpc-dev \
-         libmpfr-dev \
-         rsync \
--        texinfo \
-         wget && \
-     DEBIAN_FRONTEND=noninteractive eatmydata \
-     apt build-dep -yy --arch-only gcc glibc
+@@ -40,7 +40,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       ncat \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
+diff --git a/tests/docker/dockerfiles/debian-tricore-cross.docker b/tests/docker/dockerfiles/debian-tricore-cross.docker
+index b573b9ded2..34b2cea4e3 100644
+--- a/tests/docker/dockerfiles/debian-tricore-cross.docker
++++ b/tests/docker/dockerfiles/debian-tricore-cross.docker
+@@ -28,7 +28,6 @@ RUN apt update && \
+        locales \
+        make \
+        ninja-build \
+-       perl-base \
+        pkgconf \
+        python3-pip \
+        python3-setuptools \
 diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
-index de811b332b..b659c0b8a8 100644
+index cc5d1ac4be..de811b332b 100644
 --- a/tests/docker/dockerfiles/fedora-win32-cross.docker
 +++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
-@@ -57,7 +57,6 @@ exec "$@"' > /usr/bin/nosync && \
-                tar \
-                tesseract \
-                tesseract-langpack-eng \
--               texinfo \
-                util-linux \
-                which && \
-     nosync dnf autoremove -y && \
+@@ -42,7 +42,6 @@ exec "$@"' > /usr/bin/nosync && \
+                nmap-ncat \
+                openssh-clients \
+                pcre-static \
+-               perl-base \
+                python3 \
+                python3-PyYAML \
+                python3-numpy \
 diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
-index 71681d6f92..0a404c15bf 100644
+index cabbf4edfc..71681d6f92 100644
 --- a/tests/docker/dockerfiles/fedora-win64-cross.docker
 +++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
-@@ -57,7 +57,6 @@ exec "$@"' > /usr/bin/nosync && \
-                tar \
-                tesseract \
-                tesseract-langpack-eng \
--               texinfo \
-                util-linux \
-                which && \
-     nosync dnf autoremove -y && \
+@@ -42,7 +42,6 @@ exec "$@"' > /usr/bin/nosync && \
+                nmap-ncat \
+                openssh-clients \
+                pcre-static \
+-               perl-base \
+                python3 \
+                python3-PyYAML \
+                python3-numpy \
 diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
-index ca3793b04b..5d60a96141 100644
+index f44b005000..ca3793b04b 100644
 --- a/tests/docker/dockerfiles/fedora.docker
 +++ b/tests/docker/dockerfiles/fedora.docker
-@@ -121,7 +121,6 @@ exec "$@"' > /usr/bin/nosync && \
-                tar \
-                tesseract \
-                tesseract-langpack-eng \
--               texinfo \
-                usbredir-devel \
-                util-linux \
-                virglrenderer-devel \
+@@ -98,7 +98,6 @@ exec "$@"' > /usr/bin/nosync && \
+                openssh-clients \
+                pam-devel \
+                pcre-static \
+-               perl-base \
+                pixman-devel \
+                pkgconfig \
+                pulseaudio-libs-devel \
 diff --git a/tests/docker/dockerfiles/opensuse-leap.docker b/tests/docker/dockerfiles/opensuse-leap.docker
-index 680f49e7dc..4b2c02d6ab 100644
+index 4361b01464..680f49e7dc 100644
 --- a/tests/docker/dockerfiles/opensuse-leap.docker
 +++ b/tests/docker/dockerfiles/opensuse-leap.docker
-@@ -111,7 +111,6 @@ RUN zypper update -y && \
-            tar \
-            tesseract-ocr \
-            tesseract-ocr-traineddata-english \
--           texinfo \
-            usbredir-devel \
-            util-linux \
-            virglrenderer-devel \
+@@ -88,7 +88,6 @@ RUN zypper update -y && \
+            openssh \
+            pam-devel \
+            pcre-devel-static \
+-           perl-base \
+            pkgconfig \
+            python3-Pillow \
+            python3-PyYAML \
 diff --git a/tests/docker/dockerfiles/ubuntu2004.docker b/tests/docker/dockerfiles/ubuntu2004.docker
-index 6594bba338..13ab0b6887 100644
+index 9417bca2fa..6594bba338 100644
 --- a/tests/docker/dockerfiles/ubuntu2004.docker
 +++ b/tests/docker/dockerfiles/ubuntu2004.docker
-@@ -124,7 +124,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       tar \
-                       tesseract-ocr \
-                       tesseract-ocr-eng \
--                      texinfo \
-                       xfslibs-dev \
-                       zlib1g-dev && \
-     eatmydata apt-get autoremove -y && \
+@@ -105,7 +105,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       nettle-dev \
+                       ninja-build \
+                       openssh-client \
+-                      perl-base \
+                       pkgconf \
+                       python3 \
+                       python3-numpy \
 diff --git a/tests/lcitool/projects/qemu.yml b/tests/lcitool/projects/qemu.yml
-index c2af92348a..6467bcf08a 100644
+index c62dbc00f9..c2af92348a 100644
 --- a/tests/lcitool/projects/qemu.yml
 +++ b/tests/lcitool/projects/qemu.yml
-@@ -109,7 +109,6 @@ packages:
-  - tar
-  - tesseract
-  - tesseract-eng
-- - texinfo
-  - usbredir
-  - virglrenderer
-  - vte
+@@ -83,7 +83,6 @@ packages:
+  - ncursesw
+  - pam
+  - pcre-static
+- - perl
+  - pixman
+  - pkg-config
+  - pulseaudio
+diff --git a/tests/vm/centos.aarch64 b/tests/vm/centos.aarch64
+index 2de7ef6992..3f58de1e64 100755
+--- a/tests/vm/centos.aarch64
++++ b/tests/vm/centos.aarch64
+@@ -28,7 +28,7 @@ DEFAULT_CONFIG = {
+         "dnf config-manager --set-enabled powertools, "
+         "dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo, "
+         "dnf install -y make ninja-build git python38 gcc gcc-c++ flex bison "\
+-            "glib2-devel perl pixman-devel zlib-devel docker-ce.aarch64, "
++            "glib2-devel pixman-devel zlib-devel docker-ce.aarch64, "
+         "systemctl enable docker, "
+     ),
+     # We increase beyond the default time since during boot
 -- 
 2.34.1

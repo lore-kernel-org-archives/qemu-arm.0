@@ -1,145 +1,242 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3030338ejc;
-        Tue, 10 Jan 2023 01:40:59 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtmACsaUkUawM+3qbfaU2r28RvGRIRcWarfZwnSnhx+snLVKUR5Fh4SA0Wm4j6mIoyQvX4T
-X-Received: by 2002:a0c:e950:0:b0:532:24d8:22bc with SMTP id n16-20020a0ce950000000b0053224d822bcmr15328321qvo.3.1673343658894;
-        Tue, 10 Jan 2023 01:40:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673343658; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3106008ejc;
+        Tue, 10 Jan 2023 04:01:12 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXv8i0LfBH+LzIbcNQ13pcbFdvsbhdS4085Lu8wXBsmichqJ1g0KtdN/f+BUy2FsU/DejqLa
+X-Received: by 2002:a0c:8067:0:b0:4c6:f5e2:f13a with SMTP id 94-20020a0c8067000000b004c6f5e2f13amr95163409qva.37.1673352072392;
+        Tue, 10 Jan 2023 04:01:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673352072; cv=none;
         d=google.com; s=arc-20160816;
-        b=YDMIL9wEWabiqf2oN3VQvMjl6R3K5AMbnGcEueD62TgDbHzd+z2yrPJKGEpfUKcudv
-         VKUuu6Uc+eSLl9QNeqOfgEacVFPhQ8OiOzjUX6swVqEoCM71RymCRhWNTQpJx2nzRi6y
-         mRQvZZCheHYej7rGG9elSYfksKKj00DXT0kmQa86PvS+iEqi0JCWO1+ePJYMxlY+vaA5
-         Se/9X3X/uy0sD53t05cPyBlwR/VlMM7RjLB9bV5QhS+Ft4VfcFlyxnyLhHTadLF3uvX0
-         nVJbvhTtBycaJ1q69dTcWHAFzZe1xXMN9r72wXnk9KqQwtfynlEdVEAQdb29PGISoXB9
-         2OKg==
+        b=U5kDLua7O1HYAE+Si723uMKaM7MHO57WaJfjko3thnUfvrJzny1Pzsx0i6i1bqX6nM
+         rTFzif0EGaamX7e+onjINCt9uj4eIOEqxqywZCc8PUIHaI5n64TaWZhIpwDzLMF1pXrf
+         jiRYxonmqJoagiORb9CBespJavPjo0kopZ8UgQTfUCFmji95mUfjIWDYNBpo8nNBt0Qt
+         CDKrvjw2VNF0kwF+CRKli/bHGXxHh+2GroVbOmWLUHUkpmBBcXQI/ELCVlQUBysaAj5o
+         ag/p2bCHXCtdqJ6UVP2i2TvqNVkSp6oCAsIMK4D5Xk7jegz7G7OUJE3K2jDx2KgFGrZH
+         g63g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=CH4/JUFRuN1OZ3VEbfdDXHEUg2sOsswoI97hy4Nbam8=;
-        b=UBbgAPP8wv4G0eLqFOrq3vMUTZrG0rcfnpCwpRRBKkzNF1H+vm+BAnfux+N893yElk
-         E5ihG+xbI2RkqhdO8kvO1GQKFbaTEhRAXCg4UmZV2fMYALxJ1gO1zt7B5W+xaqAV1d1j
-         F8ZqvYOXz+zo9VMrTMGOFTUu4YBZdjhc5k6pM2qxLtK2caIQ4O6qnpbCOSsAriJGufjd
-         Tro1Jkm+pze7+jkIvzSUiyLDQmKDiZTFWX+b5/xFv0qI8LowUpUOiIFr6DX+LX6z51fk
-         ADDk7lSmnslnF1YnhT+0M2jmlyQATIr/go+bb3MTZKFqMS0nhxMeJLhp+JqArhZg5C/L
-         PsPQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Enphj4QWUBr4Y3uiQc+tSq3HSn6+RSZVOvkBSMD3ATc=;
+        b=lf/E49kHMXBA1/sNxoFJK+cYWClflVcj6tFe4Qd5SwBIUNTJvEVWv2x1hsGWM56QmC
+         uIl8mBCAJ11zj+55BrsHRwo7WycpUgVnHvU6x3Gl4q6NRV0LtknqA2CP/S+M4cgJ971G
+         d9PqTAd+8GgKOc01x2ShhN5m6OLYnxVxI529LkcXU4BRouElIa9U2lwGtKPCE0QX7siK
+         F7I5zo6YHeyMOwWCukPEtv2uCOerJjXSBSEoPb11M+S63ChFJijj9+aLTWblV30cCfB7
+         gF5pcrd4c6XCxycx97AleunqhygaEbLiukiOtBJ1vBjMAgevCKToQHzMLJa1YKlwzRvm
+         5PBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gCLNBsMo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ALptHkMS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q14-20020ad45cae000000b004c624ad2f5dsi6194700qvh.322.2023.01.10.01.40.58
+        by mx.google.com with ESMTPS id e14-20020a0562140d8e00b004acd6af5b16si6048468qve.435.2023.01.10.04.01.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Jan 2023 01:40:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Jan 2023 04:01:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gCLNBsMo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ALptHkMS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pF9xq-0005uv-8r; Tue, 10 Jan 2023 03:26:34 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pFDII-0008LO-Tj; Tue, 10 Jan 2023 06:59:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pF9xp-0005u3-5N
- for qemu-arm@nongnu.org; Tue, 10 Jan 2023 03:26:33 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1pFDIH-0008L1-5L; Tue, 10 Jan 2023 06:59:53 -0500
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pF9xm-0005Vc-W5
- for qemu-arm@nongnu.org; Tue, 10 Jan 2023 03:26:32 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- k22-20020a05600c1c9600b003d1ee3a6289so9196352wms.2
- for <qemu-arm@nongnu.org>; Tue, 10 Jan 2023 00:26:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=CH4/JUFRuN1OZ3VEbfdDXHEUg2sOsswoI97hy4Nbam8=;
- b=gCLNBsMohpDEMSDfSrukag26or3zZMCVX7DxgrYt/tz4kk8KLhK75fLg+D0weoqnlA
- 0ok5n8UHczy5mUi5ZX4LpX2ALriV7SufTMVyWKhu06oc72d7FuLEXh5TSgfM6DZe50ZF
- w6gHvSVY0RLh8N4j//I7SyNTHwuvJZPnncjuNVrZtpUgXBG4842mlVuLYkxwNgIWasBG
- xUVK3Uk/Pa6SYrkgworYH9hI+w9nWMoy3mWDClXi5JpsxoBGJdsJkgySScn9ASs3ryng
- 7TXTzDZLdBVkUvLB2AKZiR8xe6DTe66G3BxTTB/U9fDXj+cwS1ijlAjceXa9rnGJ4xK9
- cb6A==
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1pFDIF-0000ko-JF; Tue, 10 Jan 2023 06:59:52 -0500
+Received: by mail-lf1-x12e.google.com with SMTP id bf43so18043899lfb.6;
+ Tue, 10 Jan 2023 03:59:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=Enphj4QWUBr4Y3uiQc+tSq3HSn6+RSZVOvkBSMD3ATc=;
+ b=ALptHkMS/9xBVwFy8PnDAX7wWpKFyEnkWaUq2eQZljrJqJT4XoaNX+0UBNjkTSPKkT
+ dzCTXZtL6DbxNe7pJcKM8mPkMyYb+lBn+yUshDgYxsyRAWUUcyevR5bZbbTTLQ5CN+bI
+ Q6Lga43AB8bFVPQkBDhDuz8ryCY39lOq5ZShP4BuCsOloyfFe54RlAbyp6cswe2078vH
+ txnYszUKtzadlJgGWAEciQy2xBIPTuLZHfOqGJn4JZ9cTXnebY167ELgHslyX6O1sbEr
+ cVtlCRVF5t3fKveP1bShrcTQrxBrLNYZka6s+FjL5dVdbtWQvs32nDoRCa/VPT7+jWTr
+ v2vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CH4/JUFRuN1OZ3VEbfdDXHEUg2sOsswoI97hy4Nbam8=;
- b=c2W8Yj4/Xc9xLUU6w5eY2k3DofMYDmt9Yv25igjUc4RyPQumzDLPU0MUlrsLbtCp8g
- aP+K+LREbXFDxj9TzaI6C6F/o8uA5DvCCmyu/KKZFHiJQ5VlevNFxuBwVw8n+AnBoVIG
- 1u1Eif1Rfg1J4qkMveLJ7YbiJC0MB1V1980JTVvGB2tG3QSU0/1ZnjR3XLeY61femj83
- hkm32cI9hHDUv/SIUuCk1VDNI/GHEf5lgHe1R66s8w7POaxdfRvrsw14M5TS7M/56Zug
- 8MynJm6B1A3U/rvwRtEy4l9P5JjkxdKP14XXCAwHP1tofRYzYPGiSoIPkJk2wiBj35np
- mhfw==
-X-Gm-Message-State: AFqh2kpEHhdffK52hCzUEu4uKYPNtQaecpYBp3cPLOiTSEa5gA7g7qpZ
- 9hCVzywx2b+nVDkPqhlGmqsadg==
-X-Received: by 2002:a05:600c:4920:b0:3d3:39a9:e659 with SMTP id
- f32-20020a05600c492000b003d339a9e659mr51506349wmp.21.1673339189237; 
- Tue, 10 Jan 2023 00:26:29 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- r5-20020a05600c35c500b003d98f92692fsm15395102wmq.17.2023.01.10.00.26.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Jan 2023 00:26:28 -0800 (PST)
-Message-ID: <dd03766f-e4f0-03f6-de16-0d4f9ed8b0ed@linaro.org>
-Date: Tue, 10 Jan 2023 09:26:27 +0100
+ bh=Enphj4QWUBr4Y3uiQc+tSq3HSn6+RSZVOvkBSMD3ATc=;
+ b=cRxqBkMmDKc8+Gjj2zg2HUjOlVGhp6xYmLhFEbRIuuAe20Vtjbvbd4KZXQyyOQKfOl
+ ImGym/nuBanMsQYbarKK6fVzCWhfSYLHJPnY/jbzbHu86ap/u/zaWh64XqrGXnd6aNFs
+ mAYDU4hjXBGOnvJ1+We0fHjSMorPRrTctFqo6R/roMLdFXb9r7UVCTXLAaTn+K0+//Ib
+ K4MWLtw7J+ig6l3AMpduTaMDUCjMJ6uQoYQXNCNr1SmqB7hpjqDgjZOXdOQ1uMA0t2zv
+ ZzBF0wukl7AY/p1OyrGxBTDT9cFjvtYVjo+VQPxuEpyIab3J66cRkJX1T204X1lS8so+
+ rH7w==
+X-Gm-Message-State: AFqh2kp3CNUkiXnrbn5Zk63wT7Ek1NRS6o1WIbs2eKzS5gYOpH168YmY
+ UcyvdgKt/tpexsoDdIrZEEo=
+X-Received: by 2002:a05:6512:3a91:b0:4b5:799b:6c8b with SMTP id
+ q17-20020a0565123a9100b004b5799b6c8bmr20557843lfu.56.1673351989016; 
+ Tue, 10 Jan 2023 03:59:49 -0800 (PST)
+Received: from gmail.com (81-232-4-135-no39.tbcn.telia.com. [81.232.4.135])
+ by smtp.gmail.com with ESMTPSA id
+ j11-20020a056512344b00b004cafd4cc1fdsm2137675lfr.5.2023.01.10.03.59.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Jan 2023 03:59:48 -0800 (PST)
+Date: Tue, 10 Jan 2023 12:59:48 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Tyrone Ting <kfting@nuvoton.com>
+Subject: Re: [PATCH 13/14] hw/intc/xilinx_intc: Use 'XpsIntc' typedef instead
+ of 'struct xlx_pic'
+Message-ID: <Y71TNMLD9Q/pxLQO@toto>
+References: <20230109140306.23161-1-philmd@linaro.org>
+ <20230109140306.23161-14-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH 4/5] hw/i2c/bitbang_i2c: Trace state changes
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Jan Kiszka <jan.kiszka@web.de>
-References: <20230109084121.72138-1-philmd@linaro.org>
- <20230109084121.72138-5-philmd@linaro.org>
- <55413dee-6141-2f36-ed8f-964df43aa578@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <55413dee-6141-2f36-ed8f-964df43aa578@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+In-Reply-To: <20230109140306.23161-14-philmd@linaro.org>
+Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PHnwZBG3RBB4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GTmGPkfFxX9C
 
-On 9/1/23 17:07, Richard Henderson wrote:
-> On 1/9/23 00:41, Philippe Mathieu-Daudé wrote:
->> +    NAME(WAITING_FOR_ACK),
->> +    [RECEIVING_BIT7] = "RECEIVING_BIT7 (ACK)",
->> +    NAME(RECEIVING_BIT7),
+On Mon, Jan 09, 2023 at 03:03:05PM +0100, Philippe Mathieu-Daud� wrote:
+> This remove a use of 'struct' in the DECLARE_INSTANCE_CHECKER()
+> macro call, to avoid after a QOM refactor:
 > 
-> You've overwritten your special case.
+>   hw/intc/xilinx_intc.c:45:1: error: declaration of anonymous struct must be a definition
+>   DECLARE_INSTANCE_CHECKER(struct xlx_pic, XILINX_INTC,
 
-Oops good catch.
 
-> Otherwise,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Edgar E. Iglesias <edgar@zeroasic.com>
 
-Thanks!
 
+>                            ^
+> 
+> Signed-off-by: Philippe Mathieu-Daud� <philmd@linaro.org>
+> ---
+>  hw/intc/xilinx_intc.c | 28 +++++++++++++---------------
+>  1 file changed, 13 insertions(+), 15 deletions(-)
+> 
+> diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
+> index 4c4397b3d2..6e5012e66e 100644
+> --- a/hw/intc/xilinx_intc.c
+> +++ b/hw/intc/xilinx_intc.c
+> @@ -42,10 +42,10 @@
+>  #define R_MAX       8
+>  
+>  #define TYPE_XILINX_INTC "xlnx.xps-intc"
+> -DECLARE_INSTANCE_CHECKER(struct xlx_pic, XILINX_INTC,
+> -                         TYPE_XILINX_INTC)
+> +typedef struct XpsIntc XpsIntc;
+> +DECLARE_INSTANCE_CHECKER(XpsIntc, XILINX_INTC, TYPE_XILINX_INTC)
+>  
+> -struct xlx_pic
+> +struct XpsIntc
+>  {
+>      SysBusDevice parent_obj;
+>  
+> @@ -62,7 +62,7 @@ struct xlx_pic
+>      uint32_t irq_pin_state;
+>  };
+>  
+> -static void update_irq(struct xlx_pic *p)
+> +static void update_irq(XpsIntc *p)
+>  {
+>      uint32_t i;
+>  
+> @@ -87,10 +87,9 @@ static void update_irq(struct xlx_pic *p)
+>      qemu_set_irq(p->parent_irq, (p->regs[R_MER] & 1) && p->regs[R_IPR]);
+>  }
+>  
+> -static uint64_t
+> -pic_read(void *opaque, hwaddr addr, unsigned int size)
+> +static uint64_t pic_read(void *opaque, hwaddr addr, unsigned int size)
+>  {
+> -    struct xlx_pic *p = opaque;
+> +    XpsIntc *p = opaque;
+>      uint32_t r = 0;
+>  
+>      addr >>= 2;
+> @@ -106,11 +105,10 @@ pic_read(void *opaque, hwaddr addr, unsigned int size)
+>      return r;
+>  }
+>  
+> -static void
+> -pic_write(void *opaque, hwaddr addr,
+> -          uint64_t val64, unsigned int size)
+> +static void pic_write(void *opaque, hwaddr addr,
+> +                      uint64_t val64, unsigned int size)
+>  {
+> -    struct xlx_pic *p = opaque;
+> +    XpsIntc *p = opaque;
+>      uint32_t value = val64;
+>  
+>      addr >>= 2;
+> @@ -154,7 +152,7 @@ static const MemoryRegionOps pic_ops = {
+>  
+>  static void irq_handler(void *opaque, int irq, int level)
+>  {
+> -    struct xlx_pic *p = opaque;
+> +    XpsIntc *p = opaque;
+>  
+>      /* edge triggered interrupt */
+>      if (p->c_kind_of_intr & (1 << irq) && p->regs[R_MER] & 2) {
+> @@ -168,7 +166,7 @@ static void irq_handler(void *opaque, int irq, int level)
+>  
+>  static void xilinx_intc_init(Object *obj)
+>  {
+> -    struct xlx_pic *p = XILINX_INTC(obj);
+> +    XpsIntc *p = XILINX_INTC(obj);
+>  
+>      qdev_init_gpio_in(DEVICE(obj), irq_handler, 32);
+>      sysbus_init_irq(SYS_BUS_DEVICE(obj), &p->parent_irq);
+> @@ -179,7 +177,7 @@ static void xilinx_intc_init(Object *obj)
+>  }
+>  
+>  static Property xilinx_intc_properties[] = {
+> -    DEFINE_PROP_UINT32("kind-of-intr", struct xlx_pic, c_kind_of_intr, 0),
+> +    DEFINE_PROP_UINT32("kind-of-intr", XpsIntc, c_kind_of_intr, 0),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>  
+> @@ -193,7 +191,7 @@ static void xilinx_intc_class_init(ObjectClass *klass, void *data)
+>  static const TypeInfo xilinx_intc_info = {
+>      .name          = TYPE_XILINX_INTC,
+>      .parent        = TYPE_SYS_BUS_DEVICE,
+> -    .instance_size = sizeof(struct xlx_pic),
+> +    .instance_size = sizeof(XpsIntc),
+>      .instance_init = xilinx_intc_init,
+>      .class_init    = xilinx_intc_class_init,
+>  };
+> -- 
+> 2.38.1
+> 

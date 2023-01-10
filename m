@@ -1,81 +1,83 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2890272ejc;
-        Mon, 9 Jan 2023 21:37:36 -0800 (PST)
-X-Received: by 2002:a17:902:7e8f:b0:192:ef83:7976 with SMTP id z15-20020a1709027e8f00b00192ef837976mr20646501pla.46.1673329056159;
-        Mon, 09 Jan 2023 21:37:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673329056; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2892090ejc;
+        Mon, 9 Jan 2023 21:41:18 -0800 (PST)
+X-Received: by 2002:a17:902:e30c:b0:193:30bc:ed86 with SMTP id q12-20020a170902e30c00b0019330bced86mr5763694plc.48.1673329277898;
+        Mon, 09 Jan 2023 21:41:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673329277; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ci6RNBIYfkXh3Y0oNUywSWE4IQVTsZ5QhdEqlM+hhbZE5/Ww3X2xo8dalT73TViZov
-         V4WZaz4NC3iSar5J3L8vx3s8hwTB8WI5aNRbaYd/d53+Xx+h3yzZOoPNU8rWL3j8d/QU
-         wm+p8qVdT/sPU56j2z4Q1/eJzodQpaTTi5LzJxNKobp6AidbcrQN+vyVUsMAgNpwTdEH
-         09uHSDetXMNbcA8GCQoXWcsSLHEVZOxSSxPwsXuUQ0DdYS/W18xQ5no0cO43mP+o0ucQ
-         bbnSCt1rvzGO6gcph6V4p7YuiSIIMjvHRCtzBnP5GPXkIyVrZGOTFp5kuE1LG0vLQO07
-         iliQ==
+        b=rKIx7NwonRWNlwJ/+JWkOZugPKXlF+/gAR72ZOTSlzFSRIZSpAcPdr8C9+A0st7p5t
+         Rpcj/XBlGOVW+uzY6ysoec/Y9RodiME95iLkJ5GdVfJ4mVc82wwnVPD93g9QfAQH7lhD
+         EZZQYXOrY3mVwyyEPFhZiiuLUdJE6+Ewl3S6uXN5JpOIKR8EOG5sV53Y8loWh9ibeuSs
+         mYg01AJtIlrmMklC8jfSDgeN0DahEbMctTR8Gkq+YHEgzLE6ld1du9PJ1V0ctvfgNsFE
+         urB7GvjsXqMXDN+vFFqi1Om8Luvy4zY5XwoQggwLEPndQ9fuhiDwtXHGq9VTGiKHHaHt
+         2ylw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=Z4M+M7Q4vK+c/tLWBjrETXUl0PEhAhKao/mOyAJMqvI=;
-        b=hC/mg/1wrLEstp0fsJ408SXe3W/Z9OtocXB7rrhsPP8ATkbPk8WEPHLNzM+jtDdmgq
-         Xfa2t4nUFXYLARRHfoslKHqxvojG0AvDGio3I3Bno7Fa9rFL4yg4wX8u3/tQVjXGBwR1
-         gvXqnzSGm6FD0t7g3+C9qc2Cm5URQLcyoqFhBMLhq6ilDx3eeTwjdwK3yI9VBao6lhyB
-         6xRlMiMGeSps/M1t6Dlh6TXk+jANIeFzJhf0wj+hYfkp/6MFOaim5YfrM0SsMS/y/lyx
-         Lar9zFVWgYX7pLOPfG+zcwsHZ4yrCfk99uJhGYX9ydLyccUh4xGEDkSMnrBdac1Nw2VN
-         X0OA==
+        bh=CMcsgO4s+upnfvngtEhHPVefgeFSugrU4khaEdbHlnc=;
+        b=eprcuKbEjuSga8cF1sDTTC9HEH6HUQeZv24ZRLIpvbQaCph6nYLICsMUzluVRPPnEg
+         VXy6tyTBNFrwdzgEAkRyQq2tCTPAlHxMdmOVgKPh08xQzmJ3jf7Lw96L6t8cFkAsDuuF
+         Gbs3fuOIfym/ox57DeO1xmcXZhFf98D36IX4YjlkcQ94ky6FNXLbi0YtFW5dzwy2KFYl
+         CJl2g837X/jD6f/RvJw+B2KbDcwaXDI+GMlKuUmKJOTkeqMxrHxCnqf9+E2udmjcuUIV
+         qLeURN3VDLKw6RoMa3gbCJcqrB1f1zIoGLNvymEPLwaOlFqEdARP1EStWZOkEZ+RJBTA
+         kDRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Itdzru01;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yQHZ+czk;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u7-20020a170902bf4700b0019309dc5befsor4894973pls.133.2023.01.09.21.37.35
+        by mx.google.com with SMTPS id a9-20020a170902ee8900b001925284c1f1sor5148205pld.156.2023.01.09.21.41.17
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 09 Jan 2023 21:37:36 -0800 (PST)
+        Mon, 09 Jan 2023 21:41:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Itdzru01;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yQHZ+czk;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Z4M+M7Q4vK+c/tLWBjrETXUl0PEhAhKao/mOyAJMqvI=;
-        b=Itdzru01jrOIjqxlTSTA6eCEFg0q9BDavME4TsSrR2HErJTPy/a4Qwzp+nWO3UgD8N
-         2YO+DJtDMD3sQW2emI3PHAr7pdeSqKAluTH8o8o2W/WOJXcFOnfjlfUE0BMF0DcCueX8
-         RKVnU+jnQF9NmJoekWxjUPI3dcTvUWOtrtg/3to/nU+zjfJLkDMjQzrPMJep7SnGHeW/
-         FrWcJNag2U+i2zTP1Ex78aLerQEfllZRDh4/AVEsrfZfUIRGziebWqxvxk8t4l8O/mLt
-         YAsHUlLcHSUzSko/PYVaLfdkC7GO8syDl1/7h8hFB636olB2xzmb5kV1Z5VAec1re4iU
-         2HqA==
+        bh=CMcsgO4s+upnfvngtEhHPVefgeFSugrU4khaEdbHlnc=;
+        b=yQHZ+czk58zJJGchc5mLwAEWKKhsGwPReAMdEB3g2peL6Msf7vEz5l651EdlKLfqiN
+         dh5j3cdddo4rI/3P6AieaV7AYJUmXHrTmuHQZFrVbIqYhCBlvf0G/IWZqgzucIB6gYCO
+         n0TXYWIqkoUPfXirKfHuJNkb9j/zaO1mn2Q9CAqborOLKwJG7mrrWtbBVQBs2ouFv8Ta
+         IN1xbnzQg24S3RvXooCUf+55CDa2hDx/g83b4SxJABCq+yA+5QAaZEdWG6/cVyg84Y75
+         ocxhzd6kT95ScBom3j+tLr3dLCF5zmK91pSVDirJv1OXWGSqQly5U9KfFkDVDe2wBfxe
+         Tvww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Z4M+M7Q4vK+c/tLWBjrETXUl0PEhAhKao/mOyAJMqvI=;
-        b=2OC6PwfrWw/aziR38DSzo+JXBs2Db8WGj9lW1MIokC7xNatvjSDQrCEoCCWocv48qk
-         XC9erbWNVDAR9TnshzgcOq2YddCzxhV5L2+MmZIlM0Xr42A+aUBLuSVldRyoouUgSxSw
-         +UxQJJGmyGGM+wofuZBBqDaejK61HL/Q7ISsfFoR24tumKcxUl3uzHPWK/jDOhadqtgK
-         Y4LYBtxdmE/jsbc2qmMcskbpoDiOYabTNaIvk6PWeeW5qPdu5rN9pWZnAyl8mhEtE0YK
-         vSZGT1LgeF+ap6A7723S8bveKTr1WUGq9asXn/5Wkj9nTvNgvB9J+3gTUjSd4V3G28PR
-         z34g==
-X-Gm-Message-State: AFqh2kqu4ABSngtHEcz8rvYL5YIPbDXvlhrSiX/YyycBMixKr4+FlRkH
-	7T5PCUGNGu1cxmNPcHy9+Ucp1Bqnp5CopHXfMPM=
-X-Google-Smtp-Source: AMrXdXtSvOLUpa4OYQtf6gSdt2AEM0xmwq6I4OQNvfMQoNJNBk4GQObF3dfkH7hLtM+vc/uy2etS3A==
-X-Received: by 2002:a05:6a20:b91c:b0:af:9dda:b033 with SMTP id fe28-20020a056a20b91c00b000af9ddab033mr68113368pzb.37.1673329055614;
-        Mon, 09 Jan 2023 21:37:35 -0800 (PST)
+        bh=CMcsgO4s+upnfvngtEhHPVefgeFSugrU4khaEdbHlnc=;
+        b=zSn2XxRnd6riDwe/Y3N9I+t9dW3tZh6mLqEj3dMPYEPxtzcqlAY+5XFIAJOQ/KqmS6
+         2uR8ON3934K2jX4qUaGky0TeMmFw4zMoLrBLYGByCZ0bDtE3pZ5b4f1z8A7K72F+48ZM
+         sGvkw85PGp79pukU/Qqf3TsMO034n5TfHI1HopxKaNaUAOr1h51oyUOZm9vzWwF1QBW9
+         VnpTEXQiLzotZEHzIzmTRtg3UovkrB0R4FBKXg+GJIwF777aDwXrYKPgGOznTyHGJ3v7
+         KmAG7MBRFk7MaryjWChZFWdiiXEoI7gS6S26aeNyFNDfSu/eB3QniAYE4ZjvaxptJDD+
+         2uEw==
+X-Gm-Message-State: AFqh2kp1MWdSy9RYdiML6VELEU/mRJ6tMd3kKgpzIaqHRFPRe0kX8Oxu
+	p/C7NDuXY10xs9mdC1xhUDjHcVUj
+X-Google-Smtp-Source: AMrXdXt2AHtBPOJpDiZyY+Bob8LdzQH6gsfMJFzZhaNVymZCbb9yt5WDlGUKbyex8eiNpm0l4o2Zdg==
+X-Received: by 2002:a17:902:d491:b0:192:ad82:dc98 with SMTP id c17-20020a170902d49100b00192ad82dc98mr52769018plg.34.1673329277425;
+        Mon, 09 Jan 2023 21:41:17 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from ?IPV6:2602:47:d48c:8101:fbd5:d294:fb18:71f9? ([2602:47:d48c:8101:fbd5:d294:fb18:71f9])
-        by smtp.gmail.com with ESMTPSA id l13-20020a654c4d000000b00496317241f9sm6018758pgr.51.2023.01.09.21.37.34
+        by smtp.gmail.com with ESMTPSA id n14-20020a170902d2ce00b00189c26719cdsm7033852plc.272.2023.01.09.21.41.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Jan 2023 21:37:35 -0800 (PST)
-Message-ID: <5ba2a9d6-936a-e3fc-511e-af9866a001dd@linaro.org>
-Date: Mon, 9 Jan 2023 21:37:32 -0800
+        Mon, 09 Jan 2023 21:41:16 -0800 (PST)
+Message-ID: <4e758b11-9de7-ab44-d400-8457a3f51262@linaro.org>
+Date: Mon, 9 Jan 2023 21:41:14 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [RFC PATCH v2 05/19] target/arm: Move cpregs code into cpregs.c
+Subject: Re: [RFC PATCH v2 06/19] target/arm: Move define_debug_regs() to
+ cpregs.c
+Content-Language: en-US
 To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
@@ -83,23 +85,23 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
  Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
 References: <20230109224232.11661-1-farosas@suse.de>
- <20230109224232.11661-6-farosas@suse.de>
-Content-Language: en-US
+ <20230109224232.11661-7-farosas@suse.de>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230109224232.11661-6-farosas@suse.de>
+In-Reply-To: <20230109224232.11661-7-farosas@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: 0i+cHJpzJgBs
+X-TUID: l0SzoylC1qLC
 
 On 1/9/23 14:42, Fabiano Rosas wrote:
->   target/arm/cpu.c           |    1 +
->   target/arm/machine.c       |    1 +
->   target/arm/meson.build     |    1 +
->   target/arm/op_helper.c     |    1 +
->   target/arm/translate-a64.c |    1 +
->   target/arm/translate.c     |    1 +
+> -    hw_breakpoint_update_all(cpu);
+> -    hw_watchpoint_update_all(cpu);
+> +    if (tcg_enabled()) {
+> +        hw_breakpoint_update_all(cpu);
+> +        hw_watchpoint_update_all(cpu);
+> +    }
+>   
 
-These additions of #include "cpregs.h" are unrelated to the code movement.
+This and the other tcg_enabled() addition don't belong with code movement.
 
 Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>

@@ -1,38 +1,38 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3316561ejc;
-        Tue, 10 Jan 2023 08:44:21 -0800 (PST)
-X-Received: by 2002:a5d:6dc4:0:b0:2b4:e5e:1e16 with SMTP id d4-20020a5d6dc4000000b002b40e5e1e16mr12485375wrz.35.1673369061380;
-        Tue, 10 Jan 2023 08:44:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673369061; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3316638ejc;
+        Tue, 10 Jan 2023 08:44:26 -0800 (PST)
+X-Received: by 2002:a05:600c:1c97:b0:3d1:c8e3:2452 with SMTP id k23-20020a05600c1c9700b003d1c8e32452mr52102681wms.30.1673369066883;
+        Tue, 10 Jan 2023 08:44:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673369066; cv=none;
         d=google.com; s=arc-20160816;
-        b=B/K6jjo7wuQcBbqfafAHeY1MGYcb8uDboDEZL5oih8RyRIWgViPezTI9RwGf5+UeDt
-         nVQtJhu5HexWbClKG6Qzb1UjqTjfJruSffUtU2nHFuWh7VlfCpbodaL/FqPNWlb5JOL9
-         f2Vpt/9UtkwWiHXGnpBAcDnsFczYg3ANAh4aa/aQqMeSDCRJA1EjsZSA9/TXDbGAvjeA
-         TkJvVnOViMthvP0JgUIwYTJJekNoRArIHYrXW/SyRiu3HBYrxHOrP15cial06Axsmftu
-         fg/ahyRru79oPX0lIrwLwnFrrZmZIeGQlxWC+/VTk/HaBqkC/PxqDUanc3cbvWFPbZP/
-         RT/A==
+        b=xtw0ZZ8/wWkY1BTwMYW2+HhWbEIQpD+Zyj8ceH3oi+Uw1rIJ+Kv0vnAkjfmZ/uIss0
+         FYVRJesvfblJQ0GgQaj4Q7yqcqjiSdAXsu+tqqknGdCLHMU0JpO9/hLDCOTmfXZSmBlx
+         koVS/QHKSOVkAqHCI/AsfbfASxacL82pI8oYv53FMaUXv+G19Ask8ODAU0Udc+aD4TSk
+         28rwa22p9HXfZnrN5FBDVQ/KmjjioLb9HADuxGMcpTisSBJQdA2zjiCiBnXQM/FMbgbt
+         ovK2LOyJ6v5WJ+i+gNFuXbFW7QSUJvGa9aF993ztr+JiDkD50djQxQwsmHsR0He7useC
+         ieDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=RJ8wFlbkCuBgTPhkpS02wBqGPirVNf3PYtskAr/LCCE=;
-        b=ciIF07q5FyQqcqq4GD80e634Nq4AgrcukVO7zz4lKk9axcyFvtUqdFOHpPhE46P6Ja
-         BWsFFVaPGHSCp7ID+6gJCusKChbRhcBNv5LnhjeDIoUVzgYVZ5139ydD3A/dG3kd2vyd
-         CmIian4ZBIkpuNrrtpxW2krPvEEOPfP+HNd1AETFOevEPp73WFU9QsIDY7XM17f62Q7H
-         kEKrOZD6SJKLwB+R56WI/j27x2SDp2MAg0zvWd/35t0dzORnVRX8/GpFV866ZpiAuq0e
-         rUnvAfo1b+hye353VAQ9oMFNf6gA3cXKyNDy7BnM+17kIbonLG/tZ/hEV0a8GUTNv25u
-         xKrw==
+        bh=mv6b5BVX+E5dEjhJ+rRg+doFrBJfje2G5RxYlkiYMSQ=;
+        b=ukxXjuBmQ26GonKqZQrbTN9csfVZaxkYulu9QRJMS0l/XfESVb2pzxL2dLKaXSdrao
+         CHgVX4vRoa7kq5enBIZlOWDTQPBFQVqrl11kSuz+9TWQzarMDHs9sr92KiVpNjcYLaSB
+         xAgBvvd3T1+iYIOtmgKx0Y8oklojSrTSLQZUHj+D2I15iLJCujGeDgQlPQA+4nt9ztA0
+         HRcoiWnyeAgStCGwE6XJ+/Czx3NZr/A+iJMcZp86vZAtK0m7obuAWt7mHudXmbxUs7Uv
+         feRpc8ANSCuMfSuCMpVAgVpl/u+v44GkefeTgxtNqkzEbB739mJ6Ej9rFiRdKRdIXK9x
+         gZgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mRg3DM3p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EGwEFMa5;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id bo26-20020a056000069a00b0024200000824sor4449524wrb.16.2023.01.10.08.44.21
+        by mx.google.com with SMTPS id h17-20020a05600c2cb100b003d99a390c37sor3840197wmc.45.2023.01.10.08.44.26
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 10 Jan 2023 08:44:21 -0800 (PST)
+        Tue, 10 Jan 2023 08:44:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mRg3DM3p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EGwEFMa5;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,35 +40,35 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RJ8wFlbkCuBgTPhkpS02wBqGPirVNf3PYtskAr/LCCE=;
-        b=mRg3DM3pKklnsH/FYEFsfhVVICQlHUW70TjETQcvRMf14l/KNMtX+nvCCf8J7eVgyq
-         hxDRPbdw587WEfdC5vU7DgooInRUJqkQNgJKCswMo6AFclMrjuTzCE9AnnFoTvyQsyxn
-         RXSLszesIfnWOVSmXXu+qSARorP8wOcYs84JrrTmtvTGQonQgnXkKOoLPhRKpjpy2cSY
-         sqhs3VWtPV9VNTlF63bapAv/ilt3KxELMgEJz1rWAvcPshNn91vJV5W0BkH/BWQO7OsL
-         LKPAqSdMSz6IH6tjz45ioRRPWe0YfI0qiCqFNavBPxe+ZYCM62CKWhrPfcuZb7gjipYU
-         DmcQ==
+        bh=mv6b5BVX+E5dEjhJ+rRg+doFrBJfje2G5RxYlkiYMSQ=;
+        b=EGwEFMa5ohJrcCLO3bm4qK8JpoFkCAfd7aeQrdHSR7jEMKA0GhQWFpV7m9oded5D8v
+         iSQOUOsKG2aE9Zu4cJWon2NmJoi4w+Cy/CWeTqAGQ3rC/tzcMms0e0yVRtQHXlHdreEo
+         2hhGYpFtA5Ts4i4hBH7dEdXFipfbDDlM93SJNU5IVcvXZIvW39TgA8BFfqXboS/Ogu9I
+         vjNQ1SiwD/lyek7RT1sQH0Ev13fPrDVFZVc+nc4znQsHd9N2nWuhSSvdXihDbxZnUxcn
+         E0+Swo0iH1YjXRTLziHWQhPVSMetOfDX1lULv6mopRgd7Yg2GRAWv0qq0ggk6j153c9q
+         8bTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=RJ8wFlbkCuBgTPhkpS02wBqGPirVNf3PYtskAr/LCCE=;
-        b=s/DKJNC+P7erNIASgmqnHZlLWxjjJx/+TW8ARAE+blJvIzVtHACUurvLkGdWPtG3J4
-         GXe2HdHiJi2JMKKZhUjM4gqUvMYefHnQ/FPR+5lnwRg6h8MJWTPbHlGb4r9v4RRiy8VL
-         ByGpcHAPmVW1aA2UJH6zRNh73WlRJ2VyKCKkcJNtZ0er1EIiy9794Ir8mw5KaSENxpbV
-         r12i4xOif7jHaxN1qcFuALYWYUg8AWaV9H5YMLErlCfZQTTgZ6a54P+6WujccOXZdL3l
-         +EsdGaKjn1mgvEwLg72CS90JGdero9Ju/aIkrcIaGWhUMNRs/x7X7S6ncy1FvSWPL5uZ
-         dbFw==
-X-Gm-Message-State: AFqh2korzWo1i1TT+k9H76mVthsSd4WRh0GssdQkzrcYmiM+3BZNeo86
-	eunUOfQ3VXRbkkRCwxq1iD3UBvek
-X-Google-Smtp-Source: AMrXdXsGhVoyxyt0kHlysxuBEsNqCPC8+G7cvksF6WPcgMowSJCh3kzFKBqfAf9irt5iIn1sDNPS7Q==
-X-Received: by 2002:a5d:4b45:0:b0:2bb:ebc4:2f5c with SMTP id w5-20020a5d4b45000000b002bbebc42f5cmr6001855wrs.43.1673369061208;
-        Tue, 10 Jan 2023 08:44:21 -0800 (PST)
+        bh=mv6b5BVX+E5dEjhJ+rRg+doFrBJfje2G5RxYlkiYMSQ=;
+        b=elmhQxxH1eCBLXRth0O0KVOf5c9RG+KcRaJPerH778Zva9LZqzCUfr8OrJW33VY9CV
+         Wfz7AQxKYhaqYjAU5iKKzSHOxdKZefAEmsz1u9pHCNsYG7ufJguyqT0n1fSmnuWLe7Bs
+         0nxEZ31YhfAkoSx5G7q9SuK+zKDosohm32yGVCrdrFMPFGiq7Z/kJxgjA7WLNT6+6DB+
+         lazLRV5OuDDaeUplPtaxO0OrCLcyLLmuibqOLiAAJqlvm8pBFLNN3U623rbyETT+U3mP
+         mT9pWWo+FxvgX+1cDVSXPJmjvkzVj2nkfqNOLh08a5qVdEjlbLWskvC6avwAst5o1lU0
+         1feQ==
+X-Gm-Message-State: AFqh2koJPqYvMV5SGCK7aqApDYw4QAX5U6olWX144hUhljuyppnKhvGL
+	XiLg7mwCI3WXwO1uhwVYWQ19TA3Q
+X-Google-Smtp-Source: AMrXdXvoNff2pdMsQLp8LwxhYT0eToJUKvKyvOP7gjM0ylrtULNkfWY2aeJe2dLduSKZt24Z3pw+Kg==
+X-Received: by 2002:a05:600c:c07:b0:3d9:73fe:96f8 with SMTP id fm7-20020a05600c0c0700b003d973fe96f8mr43396466wmb.32.1673369066705;
+        Tue, 10 Jan 2023 08:44:26 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id e10-20020adfe38a000000b002bc7fcf08ddsm4280686wrm.103.2023.01.10.08.44.19
+        by smtp.gmail.com with ESMTPSA id k4-20020a05600c1c8400b003d22528decesm23390981wms.43.2023.01.10.08.44.25
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 10 Jan 2023 08:44:20 -0800 (PST)
+        Tue, 10 Jan 2023 08:44:26 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: ale@rev.ng,
@@ -85,41 +85,42 @@ Cc: ale@rev.ng,
 	Antony Pavlov <antonynpavlov@gmail.com>,
 	Jan Kiszka <jan.kiszka@web.de>,
 	Beniamino Galvani <b.galvani@gmail.com>
-Subject: [PATCH 02/18] hw/arm/boot: Include missing 'exec/cpu-all.h' header
-Date: Tue, 10 Jan 2023 17:43:50 +0100
-Message-Id: <20230110164406.94366-3-philmd@linaro.org>
+Subject: [PATCH 03/18] target/arm/cpregs: Include missing 'target/arm/cpu.h' header
+Date: Tue, 10 Jan 2023 17:43:51 +0100
+Message-Id: <20230110164406.94366-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230110164406.94366-1-philmd@linaro.org>
 References: <20230110164406.94366-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: XiXiiHzDiyrY
+X-TUID: OsqTQ/qOcez8
 
-default_reset_secondary() uses address_space_stl_notdirty(),
-itself declared in "exec/cpu-all.h". Include this header in
-order to avoid when refactoring headers:
+CPReadFn type definitions use the CPUARMState type, itself
+declared in "target/arm/cpu.h". Include this file in order
+to avoid when refactoring headers:
 
-  ../hw/arm/boot.c:281:5: error: implicit declaration of function 'address_space_stl_notdirty' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-    address_space_stl_notdirty(as, info->smp_bootreg_addr,
-    ^
+  ../target/arm/cpregs.h:241:27: error: unknown type name 'CPUARMState'
+  typedef uint64_t CPReadFn(CPUARMState *env, const ARMCPRegInfo *opaque);
+                            ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/boot.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/arm/cpregs.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 3d7d11f782..f5bfb922b1 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -25,6 +25,7 @@
- #include "qemu/config-file.h"
- #include "qemu/option.h"
- #include "qemu/units.h"
-+#include "exec/cpu-all.h"
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 7e78c2c05c..63b645907e 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -21,6 +21,8 @@
+ #ifndef TARGET_ARM_CPREGS_H
+ #define TARGET_ARM_CPREGS_H
  
- /* Kernel boot protocol is specified in the kernel docs
-  * Documentation/arm/Booting and Documentation/arm64/booting.txt
++#include "target/arm/cpu.h"
++
+ /*
+  * ARMCPRegInfo type field bits:
+  */
 -- 
 2.38.1

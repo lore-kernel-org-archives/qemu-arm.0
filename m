@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id l36-20020a05600c1d2400b003d9fb59c16fsm2455833wms.11.2023.01.10.09.39.24
+        by smtp.gmail.com with ESMTPSA id n23-20020a05600c3b9700b003cf71b1f66csm18055801wms.0.2023.01.10.09.39.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 10 Jan 2023 09:39:24 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id EE1101FFBA;
-	Tue, 10 Jan 2023 17:39:22 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 131CB1FFBB;
+	Tue, 10 Jan 2023 17:39:23 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -32,42 +32,38 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	John G Johnson <john.g.johnson@oracle.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH 02/26] gitlab: add FF_SCRIPT_SECTIONS for timings
-Date: Tue, 10 Jan 2023 17:38:58 +0000
-Message-Id: <20230110173922.265055-3-alex.bennee@linaro.org>
+	John G Johnson <john.g.johnson@oracle.com>
+Subject: [PATCH 03/26] gitlab: just use plain --cc=clang for custom runner build
+Date: Tue, 10 Jan 2023 17:38:59 +0000
+Message-Id: <20230110173922.265055-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230110173922.265055-1-alex.bennee@linaro.org>
 References: <20230110173922.265055-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: UlcJqAS5AZM6
+X-TUID: BQOTVLfd9xN6
 
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+I think this was because older Ubuntu's didn't alias clang to whatever
+the latest version was. They do now so lets use that and not break.
 
-Suggested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/base.yml | 5 +++++
- 1 file changed, 5 insertions(+)
+ .gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.gitlab-ci.d/base.yml b/.gitlab-ci.d/base.yml
-index 69b36c148a..50fb59e147 100644
---- a/.gitlab-ci.d/base.yml
-+++ b/.gitlab-ci.d/base.yml
-@@ -6,6 +6,11 @@
- # most restrictive to least restrictive
- #
- .base_job_template:
-+  variables:
-+    # Each script line from will be in a collapsible section in the job output
-+    # and show the duration of each line.
-+    FF_SCRIPT_SECTIONS: 1
-+
-   rules:
-     #############################################################
-     # Stage 1: exclude scenarios where we definitely don't
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
+index abeb33eaff..725ca8ffea 100644
+--- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
++++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
+@@ -81,7 +81,7 @@ ubuntu-22.04-aarch64-clang:
+  script:
+  - mkdir build
+  - cd build
+- - ../configure --disable-libssh --cc=clang-10 --cxx=clang++-10 --enable-sanitizers
++ - ../configure --disable-libssh --cc=clang --cxx=clang++ --enable-sanitizers
+    || { cat config.log meson-logs/meson-log.txt; exit 1; }
+  - make --output-sync -j`nproc --ignore=40`
+  - make --output-sync -j`nproc --ignore=40` check
 -- 
 2.34.1

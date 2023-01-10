@@ -1,176 +1,108 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2663861ejc;
-        Mon, 9 Jan 2023 14:43:32 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtdCl6YNj0ANHoQ5DbQaX/5PYVSy+yP31ijLr3OU9T4IGMxjf8OlBmyl1HCljbvBtWJ5CXJ
-X-Received: by 2002:a05:600c:3d8a:b0:3d3:4406:8a37 with SMTP id bi10-20020a05600c3d8a00b003d344068a37mr47634888wmb.41.1673304211865;
-        Mon, 09 Jan 2023 14:43:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673304211; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2890272ejc;
+        Mon, 9 Jan 2023 21:37:36 -0800 (PST)
+X-Received: by 2002:a17:902:7e8f:b0:192:ef83:7976 with SMTP id z15-20020a1709027e8f00b00192ef837976mr20646501pla.46.1673329056159;
+        Mon, 09 Jan 2023 21:37:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673329056; cv=none;
         d=google.com; s=arc-20160816;
-        b=0tIB0ePGXrJ2WICWdllYr3KOD536Wz3LP2k+01/nOba2AlRnuI+SuGbSggYUeakRlK
-         lk02eZRd7h9k6O2bS6OjkTq+Ku4cNC75rgygNFFSXBStBZr+3Ron/0LoXR1VK3+tZ7GH
-         DOwkncxg8qkCZaqreM9/ZQu42nyLNXLO3A2BBaNZP53UmbEHjC0v121x5+p18W2ti9FF
-         9YTT0BWUqCqeg3fJtYS24nFVITHXj2CAsMGbrWbk4vfQXW8zI5sEQ1JSrzUWfnQwrVmw
-         xFN3kaLmjE5RMnE0TvFN2aySsNZ4wMgn4dFGlawl8xT+dk24qQCaLVUVgdMNUkUhWE9y
-         q+Hg==
+        b=Ci6RNBIYfkXh3Y0oNUywSWE4IQVTsZ5QhdEqlM+hhbZE5/Ww3X2xo8dalT73TViZov
+         V4WZaz4NC3iSar5J3L8vx3s8hwTB8WI5aNRbaYd/d53+Xx+h3yzZOoPNU8rWL3j8d/QU
+         wm+p8qVdT/sPU56j2z4Q1/eJzodQpaTTi5LzJxNKobp6AidbcrQN+vyVUsMAgNpwTdEH
+         09uHSDetXMNbcA8GCQoXWcsSLHEVZOxSSxPwsXuUQ0DdYS/W18xQ5no0cO43mP+o0ucQ
+         bbnSCt1rvzGO6gcph6V4p7YuiSIIMjvHRCtzBnP5GPXkIyVrZGOTFp5kuE1LG0vLQO07
+         iliQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=/8HcNTklXSC35TOyNK0U8zsTJeBdHzQ/ZioX1yIWwcE=;
-        b=o6z7ewtcg0XxHu9qq4ip25rj8eIQvfPIT1vzzSGieIoCrWPY6a7dKImH/PVxLdJTPI
-         Kn+97DCRhEuNDwqI+oEiu0zo5YCsDCuycQv854s6iTYNpuHsqy0tkBoDntVRU4n5jM3y
-         ejgemYuimsjJ9vwRTDXwc0Sw2lgYCV5MOAO/4272qfYyPVMv4RzIO/14uMs0mtuHmzCo
-         UZHNqDbZITrbOPC/hmhs6i8r+vFe9hNwTIu7XGue7MVnfwg1hftSYWBstmHQ5LXcq80C
-         0i1O6LSIIP3faxBeF3ME46XcAsPGuEI4dqkEcjpAjvPe814Z8jyGmOlpru6RcontvopQ
-         Kr6A==
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Z4M+M7Q4vK+c/tLWBjrETXUl0PEhAhKao/mOyAJMqvI=;
+        b=hC/mg/1wrLEstp0fsJ408SXe3W/Z9OtocXB7rrhsPP8ATkbPk8WEPHLNzM+jtDdmgq
+         Xfa2t4nUFXYLARRHfoslKHqxvojG0AvDGio3I3Bno7Fa9rFL4yg4wX8u3/tQVjXGBwR1
+         gvXqnzSGm6FD0t7g3+C9qc2Cm5URQLcyoqFhBMLhq6ilDx3eeTwjdwK3yI9VBao6lhyB
+         6xRlMiMGeSps/M1t6Dlh6TXk+jANIeFzJhf0wj+hYfkp/6MFOaim5YfrM0SsMS/y/lyx
+         Lar9zFVWgYX7pLOPfG+zcwsHZ4yrCfk99uJhGYX9ydLyccUh4xGEDkSMnrBdac1Nw2VN
+         X0OA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OknEBO+J;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id e6-20020a05600c4e4600b003d004b1b2cbsi7931726wmq.98.2023.01.09.14.43.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Jan 2023 14:43:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Itdzru01;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u7-20020a170902bf4700b0019309dc5befsor4894973pls.133.2023.01.09.21.37.35
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 09 Jan 2023 21:37:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OknEBO+J;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 7197F3FF55;
-	Mon,  9 Jan 2023 22:43:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673304211; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/8HcNTklXSC35TOyNK0U8zsTJeBdHzQ/ZioX1yIWwcE=;
-	b=OknEBO+JdjYSu5/aHnatsN3rfHuKJvvmOuTPmZVBOOUTNj26UJ3uoIr8Cb59r6xH1dxCFy
-	QwX+GnPL62uAYo/79UMFg7+LnrKCTdE7+68uRuzDxXBSWaAy24OGd019z7UmuxhMDWqS6E
-	8n0j6+AnCLRaG9zmWe8eoYeAwOtmjB0=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673304211;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/8HcNTklXSC35TOyNK0U8zsTJeBdHzQ/ZioX1yIWwcE=;
-	b=o2S5ur1A4aYsI4OqTvVcwMKTxn01p/jWdzqga0w+DcZhiRnwm74WS3mtqnN62YdBYZGWsr
-	Er/GIoyLvxsMtACA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D1B9013583;
-	Mon,  9 Jan 2023 22:43:28 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id GFowJpCYvGMdIQAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 09 Jan 2023 22:43:28 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>
-Subject: [RFC PATCH v2 17/19] target/arm: Move regime_using_lpae_format into internal.h
-Date: Mon,  9 Jan 2023 19:42:30 -0300
-Message-Id: <20230109224232.11661-18-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230109224232.11661-1-farosas@suse.de>
-References: <20230109224232.11661-1-farosas@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Itdzru01;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Z4M+M7Q4vK+c/tLWBjrETXUl0PEhAhKao/mOyAJMqvI=;
+        b=Itdzru01jrOIjqxlTSTA6eCEFg0q9BDavME4TsSrR2HErJTPy/a4Qwzp+nWO3UgD8N
+         2YO+DJtDMD3sQW2emI3PHAr7pdeSqKAluTH8o8o2W/WOJXcFOnfjlfUE0BMF0DcCueX8
+         RKVnU+jnQF9NmJoekWxjUPI3dcTvUWOtrtg/3to/nU+zjfJLkDMjQzrPMJep7SnGHeW/
+         FrWcJNag2U+i2zTP1Ex78aLerQEfllZRDh4/AVEsrfZfUIRGziebWqxvxk8t4l8O/mLt
+         YAsHUlLcHSUzSko/PYVaLfdkC7GO8syDl1/7h8hFB636olB2xzmb5kV1Z5VAec1re4iU
+         2HqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Z4M+M7Q4vK+c/tLWBjrETXUl0PEhAhKao/mOyAJMqvI=;
+        b=2OC6PwfrWw/aziR38DSzo+JXBs2Db8WGj9lW1MIokC7xNatvjSDQrCEoCCWocv48qk
+         XC9erbWNVDAR9TnshzgcOq2YddCzxhV5L2+MmZIlM0Xr42A+aUBLuSVldRyoouUgSxSw
+         +UxQJJGmyGGM+wofuZBBqDaejK61HL/Q7ISsfFoR24tumKcxUl3uzHPWK/jDOhadqtgK
+         Y4LYBtxdmE/jsbc2qmMcskbpoDiOYabTNaIvk6PWeeW5qPdu5rN9pWZnAyl8mhEtE0YK
+         vSZGT1LgeF+ap6A7723S8bveKTr1WUGq9asXn/5Wkj9nTvNgvB9J+3gTUjSd4V3G28PR
+         z34g==
+X-Gm-Message-State: AFqh2kqu4ABSngtHEcz8rvYL5YIPbDXvlhrSiX/YyycBMixKr4+FlRkH
+	7T5PCUGNGu1cxmNPcHy9+Ucp1Bqnp5CopHXfMPM=
+X-Google-Smtp-Source: AMrXdXtSvOLUpa4OYQtf6gSdt2AEM0xmwq6I4OQNvfMQoNJNBk4GQObF3dfkH7hLtM+vc/uy2etS3A==
+X-Received: by 2002:a05:6a20:b91c:b0:af:9dda:b033 with SMTP id fe28-20020a056a20b91c00b000af9ddab033mr68113368pzb.37.1673329055614;
+        Mon, 09 Jan 2023 21:37:35 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2602:47:d48c:8101:fbd5:d294:fb18:71f9? ([2602:47:d48c:8101:fbd5:d294:fb18:71f9])
+        by smtp.gmail.com with ESMTPSA id l13-20020a654c4d000000b00496317241f9sm6018758pgr.51.2023.01.09.21.37.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Jan 2023 21:37:35 -0800 (PST)
+Message-ID: <5ba2a9d6-936a-e3fc-511e-af9866a001dd@linaro.org>
+Date: Mon, 9 Jan 2023 21:37:32 -0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: ki+iYCbE/ddh
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [RFC PATCH v2 05/19] target/arm: Move cpregs code into cpregs.c
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
+References: <20230109224232.11661-1-farosas@suse.de>
+ <20230109224232.11661-6-farosas@suse.de>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230109224232.11661-6-farosas@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 0i+cHJpzJgBs
 
-This function is needed by common code (ptw.c), so move it along with
-the other regime_* functions in internal.h. When we enable the build
-without TCG, the tlb_helper.c file will not be present.
+On 1/9/23 14:42, Fabiano Rosas wrote:
+>   target/arm/cpu.c           |    1 +
+>   target/arm/machine.c       |    1 +
+>   target/arm/meson.build     |    1 +
+>   target/arm/op_helper.c     |    1 +
+>   target/arm/translate-a64.c |    1 +
+>   target/arm/translate.c     |    1 +
 
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
-Richard: this cannot into ptw.c because that file is softmmu only
----
- target/arm/internals.h      | 21 ++++++++++++++++++---
- target/arm/tcg/tlb_helper.c | 18 ------------------
- 2 files changed, 18 insertions(+), 21 deletions(-)
+These additions of #include "cpregs.h" are unrelated to the code movement.
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 865b9e8104..b1fccf13a3 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -614,9 +614,6 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(CPUARMState *env,
- /* Return the MMU index for a v7M CPU in the specified security state */
- ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate);
- 
--/* Return true if the translation regime is using LPAE format page tables */
--bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
--
- /*
-  * Return true if the stage 1 translation regime is using LPAE
-  * format page tables
-@@ -781,6 +778,24 @@ static inline uint64_t regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
-     return env->cp15.tcr_el[regime_el(env, mmu_idx)];
- }
- 
-+/* Return true if the translation regime is using LPAE format page tables */
-+static inline bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
-+{
-+    int el = regime_el(env, mmu_idx);
-+    if (el == 2 || arm_el_is_aa64(env, el)) {
-+        return true;
-+    }
-+    if (arm_feature(env, ARM_FEATURE_PMSA) &&
-+        arm_feature(env, ARM_FEATURE_V8)) {
-+        return true;
-+    }
-+    if (arm_feature(env, ARM_FEATURE_LPAE)
-+        && (regime_tcr(env, mmu_idx) & TTBCR_EAE)) {
-+        return true;
-+    }
-+    return false;
-+}
-+
- /**
-  * arm_num_brps: Return number of implemented breakpoints.
-  * Note that the ID register BRPS field is "number of bps - 1",
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index 60abcbebe6..31eb77f7df 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -12,24 +12,6 @@
- #include "exec/helper-proto.h"
- 
- 
--/* Return true if the translation regime is using LPAE format page tables */
--bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
--{
--    int el = regime_el(env, mmu_idx);
--    if (el == 2 || arm_el_is_aa64(env, el)) {
--        return true;
--    }
--    if (arm_feature(env, ARM_FEATURE_PMSA) &&
--        arm_feature(env, ARM_FEATURE_V8)) {
--        return true;
--    }
--    if (arm_feature(env, ARM_FEATURE_LPAE)
--        && (regime_tcr(env, mmu_idx) & TTBCR_EAE)) {
--        return true;
--    }
--    return false;
--}
--
- /*
-  * Returns true if the stage 1 translation regime is using LPAE format page
-  * tables. Used when raising alignment exceptions, whose FSR changes depending
--- 
-2.35.3
+Otherwise,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

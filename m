@@ -1,38 +1,38 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3316768ejc;
-        Tue, 10 Jan 2023 08:44:38 -0800 (PST)
-X-Received: by 2002:a05:600c:3b0a:b0:3d9:91cb:bbff with SMTP id m10-20020a05600c3b0a00b003d991cbbbffmr35019314wms.26.1673369077904;
-        Tue, 10 Jan 2023 08:44:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673369077; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3316844ejc;
+        Tue, 10 Jan 2023 08:44:43 -0800 (PST)
+X-Received: by 2002:a05:600c:3b95:b0:3d9:baf2:315b with SMTP id n21-20020a05600c3b9500b003d9baf2315bmr22057068wms.11.1673369083294;
+        Tue, 10 Jan 2023 08:44:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673369083; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gj9tvEa4Qm+3bbWEPA565Ci9ZzN1z6n2atjhe74k86W7pAapwDfFP7BKCpAcSqfssE
-         3ZzbdPqFO68kLj7LWfZrK2TZacptX3JbqGbRfhPJpkSM1DASp8yR5/osvDwtNPcRjc2h
-         BuJ3kEpRYE4M0XOok4lF/VJOWCljbxml1XozmqLFgDsah3SmAHQTMpnzQk1Yf3bwSnae
-         bjIpcuAAm8/ujboX8ZUaoWc2qJ5JWegsml3EtS83o0Asl6M7A+GE30w8ek1msZKBrPzs
-         DPpn4kgicbG4pvyxVx68mC7IzEVLEuTcmi7OKRuug9P6fjTcpfRRsxtpYzsSOUt1bUxM
-         YMuw==
+        b=A6CXzrHcdox6Yvyaml0tZxaWiQuIVq+bIYGB+e78mYKUdwP4Y97l0OYpVVsR/Dt8YT
+         Z8B+UlQqTJiuo/vJ+4mmU7vDO9e3mfAfpZEYcSlHmxEy9YBckXEE7HGFeSHNvI6gEZo4
+         LpHVmwGIhl0IsltWI5EoPi5K9oEcy6zyF2IVo5FbYv3sRp1cGzjEvfRzqBV1zHPS1wvI
+         UoYK17ldv7nZJS1ZttuwVrrEFshbPupb3ainp21wgnctqvIw0dD/tMdxivwDjF6tALWf
+         SXbmYUwur4CjHDxt6/O2ewDWoi1ppDG/8lv++9mni5HNkUAgFlqnXTdnOYVHJUNkG1mN
+         0lmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=KPo282/uew3iuzImHfNxHuSGZYMfkFiyRCBHN2R+reg=;
-        b=SSq1GtQPj1HDb9K5JXnmhV5QJL7C6ymUOkjTE2miIZ7IX6IgG3GYNzl5+yyKA+0r99
-         zIdnCfw/YCv9XPrU9S3oipLsR60bZTT65NTYNkdTgOQeParj4GqC2WpdRXYTIqVGlDcv
-         7t1LBQn67zjPAuaCCZeXqHlZzlHhNxBOnNsQKJF4TRdJJt8r9MDX5CmV0QJsPPn/Bo7b
-         SnFj0zCS9Z67Bo48+Dlj5VGCwrNdQm03rAzru0ca1AwYDmnlomCcCM0o8V5oFOOrAPm5
-         3kSZAbaY22W/FyLnDXCnXDEugm6tVARP8pzocSbextsYwo/J7+CSm1M8KMcaRWmGSrsH
-         HcRA==
+        bh=QOYDxSc6OXbzkAgjy4QYJseOLob50f8TeLldg9E4I/c=;
+        b=BeLNSliSYlMcJKvUX5vESGPpiJBJdFuZU2AFCVHrUXvXFwoXMFyRsvmvFZ+2pw+WNd
+         jJ/f8kIgNKt1M2+/tWBRLvRl6b3mFYHKL7Eb5ruS/TAbrUNKt9GVyPrarh9eiuHa4H2u
+         2WzSGnuhEtEkyqo/0P+CCEFKPSElSkN8xuNCeExAmGR8iIz9EXsnh4PLlwal9AY4XrPQ
+         Kx7QhFK4ieBqNgmvr3CceJPaHuJ0vh0uNBEo14PCS3VFYe7Iemmmsb5UXY3CgUu2tW5P
+         pYOkHnflPb+NEgF5D62uzuiZD3n6XXhaeMf0t4I1Dkc+yABNx5zw1vMpqRBcxyJ3KUaJ
+         OxcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qrhy6Iw7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KmsiWHbe;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p22-20020a05600c359600b003d9e06412d7sor3156042wmq.39.2023.01.10.08.44.37
+        by mx.google.com with SMTPS id z17-20020a05600c221100b003da01357357sor141501wml.25.2023.01.10.08.44.43
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 10 Jan 2023 08:44:37 -0800 (PST)
+        Tue, 10 Jan 2023 08:44:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qrhy6Iw7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KmsiWHbe;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,35 +40,35 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KPo282/uew3iuzImHfNxHuSGZYMfkFiyRCBHN2R+reg=;
-        b=qrhy6Iw759H6bZICrx9tRM8mKmb8jMMnw3X84KMracRcoxgvKt+z+wJpSbexd1bLqU
-         pLPDnLcFB93U4GKltHY5i2okbajMQhHKW1p3HrfHeyy87gl0zpI/TTn9NNHqZP/9DqgO
-         Pul9nhnEEps5gNTZ34JSVxeo6q4Tas6hazG9DPuNGSAwQ5l0FnYsd8UTqg8exB6E4qzR
-         KZxrX1nKP3jJS5mnI5oB1PiW27r7/h0KY61vneSxKMdR6QjOzcHmIN2sOe7FkTeRfvkX
-         QVQm/hFCbEa+PoUBPXrZe3DJD06aMslLARl1dDIRCyPOgMRHEulXla+0PpQs4XgcwxR0
-         y7+Q==
+        bh=QOYDxSc6OXbzkAgjy4QYJseOLob50f8TeLldg9E4I/c=;
+        b=KmsiWHbeYo5WOPbJFMJP76T1tNWPGlZ4g1u5VBJ5+WJzyF+11Kam075gcfhp8+kjy6
+         Z+ypXL8JuBBJWANd+TEay96n4x4on/bo8wo/z2PqGB2ko0+DqWmpIOiIDHSpOk/uEUlv
+         uIWBdVci61nIhC5Cxc0jeuwKV9fUFNC7qDm1uAS5bk+6WEy2+QBKdtU5P3HM0sLDWNtL
+         XG5hVc3aODiZazXjqsmkKSE9ZapAqws+2PMerBdlmxrN5iAmJh5JahFofYd8gU7Mzd1W
+         bb08n47gOplHEYsfyUyPdykU4piOnW534o8kz/hEQR+0xmkdEX3BGLsFz3opZlPxQerd
+         ZJcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=KPo282/uew3iuzImHfNxHuSGZYMfkFiyRCBHN2R+reg=;
-        b=gr6LCrU3+pJt4SZdUFX2fFovHXx6YsB/Tdke558ipwbvCuJe3gtcP/PF7o5RcFdXOm
-         4+L89pm2bGQtRp9ESk9hYsB6pZluMXVU8OknTNgZYzUgSZ0JTkS3EYiSzs4S5bPCQlYd
-         qBEkl2bURki9U3zS9aU/XNNPOnQ/c1E2A/DlDiLxngj+6ae87KZllFSPwlpyzQOa60RZ
-         WgcEaGKWgEmBs0++MbLgzGV+DWIQPg8uB24EXRrN4dJFjAs+GeYScFRAs7VK6SlkUUuN
-         JWRPRBvmhcBatvUSb/kTpbGjyjb2tZMiq+ORwB+8ZBiny5I8wYcSOQ9av8UySVT0EnOI
-         FW0g==
-X-Gm-Message-State: AFqh2kpTfFBrK0dBD0eC4fxVhRWYpq3K9YGBlEGXDblgSdY0sjdlAZtu
-	tJDTsF+gtjxkRwTXFz4bDEX+1bn6
-X-Google-Smtp-Source: AMrXdXt8S3GJKiZmzYyQyopJp1IgN21n6HZEifW+v2c7deRR5IBMdGg9bQebV+JCGVDr3lEV1HWbYg==
-X-Received: by 2002:a05:600c:1f11:b0:3d0:57ea:319c with SMTP id bd17-20020a05600c1f1100b003d057ea319cmr49741887wmb.13.1673369077657;
-        Tue, 10 Jan 2023 08:44:37 -0800 (PST)
+        bh=QOYDxSc6OXbzkAgjy4QYJseOLob50f8TeLldg9E4I/c=;
+        b=dv42KcB3Z576QU3BI4/+XcNT/Z09/b5T+jOocmeo2KUq0ONAtxPxqMaFyDC1eZI38y
+         iWCK0bBkzql+RvvvkfKLg6PWjKq0OWxF3jvbzmmy/wypdGjEIYzF41Hi4GxAbmRxhTvm
+         uix/mlmaR9hBx7SIpckroBo8CwJEzANbvMmEtHCp2MW0MEPnBMu9lt+/BPIEIdQdKNU5
+         tFNvV3IdxuDrr584DyCRm7WxnlAYykST6QYOHvCBghmXOVQtrBeunhQXBwlUHoaIgE2F
+         xaw/sYs71Nyf0JGZqCYY3AIdbeqeeQpVsCV/8muvHcgQcWP3s89yLaFM8DUaxwaDeZmK
+         JrgQ==
+X-Gm-Message-State: AFqh2kqMyt53lmocmoRNm8DY1nROvHNBcQTlXGuVaJCLUcHbE2+0T7UI
+	gjtIZBF8h4eif5svc5B0XZWsnukf
+X-Google-Smtp-Source: AMrXdXtYMrNcBbh3J2bgiIa2fBytAr2H6aM05PHZEjqii8DZA8K6iWRff02yTT7Cxi2LWHNaGkvIeg==
+X-Received: by 2002:a05:600c:4f08:b0:3d9:efd1:214d with SMTP id l8-20020a05600c4f0800b003d9efd1214dmr6194442wmq.25.1673369083044;
+        Tue, 10 Jan 2023 08:44:43 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id m18-20020a05600c4f5200b003c71358a42dsm26960870wmq.18.2023.01.10.08.44.36
+        by smtp.gmail.com with ESMTPSA id h10-20020a05600c2caa00b003cfd58409desm20873245wmc.13.2023.01.10.08.44.41
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 10 Jan 2023 08:44:37 -0800 (PST)
+        Tue, 10 Jan 2023 08:44:42 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: ale@rev.ng,
@@ -85,16 +85,16 @@ Cc: ale@rev.ng,
 	Antony Pavlov <antonynpavlov@gmail.com>,
 	Jan Kiszka <jan.kiszka@web.de>,
 	Beniamino Galvani <b.galvani@gmail.com>
-Subject: [PATCH 05/18] target/arm: Move CPU QOM type definitions to "hw/arm/cpu.h"
-Date: Tue, 10 Jan 2023 17:43:53 +0100
-Message-Id: <20230110164406.94366-6-philmd@linaro.org>
+Subject: [PATCH 06/18] target/arm: Move CPU definitions consumed by HW model to "hw/arm/cpu.h"
+Date: Tue, 10 Jan 2023 17:43:54 +0100
+Message-Id: <20230110164406.94366-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230110164406.94366-1-philmd@linaro.org>
 References: <20230110164406.94366-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: uDsRKmH5tAiP
+X-TUID: DLZ4Mt8QfY+c
 
 Units including "target/arm/cpu.h" can't be built once via meson's
 softmmu_ss[] source set. Since this header depends on specific
@@ -103,122 +103,163 @@ must go to the per-target arm_ss[].
 
 We want to expose few architectural definitions to hardware models.
 
-Start by exposing the ARM CPU QOM types to files under hw/
-via the new "hw/arm/cpu.h" header. Doing so, less HW models
-will require access to "target/arm/cpu.h".
+Expose the ARM architectural definitions used by hardware models,
+in order to reduce the inclusion of "target/arm/cpu.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/arm/cpu.h | 28 ++++++++++++++++++++++++++++
- target/arm/cpu-qom.h | 13 +------------
- target/arm/cpu.h     |  8 ++++----
- 3 files changed, 33 insertions(+), 16 deletions(-)
- create mode 100644 include/hw/arm/cpu.h
+ include/hw/arm/cpu.h | 49 ++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu-qom.h | 15 --------------
+ target/arm/cpu.h     | 34 ------------------------------
+ 3 files changed, 49 insertions(+), 49 deletions(-)
 
 diff --git a/include/hw/arm/cpu.h b/include/hw/arm/cpu.h
-new file mode 100644
-index 0000000000..0c5d6ca2a8
---- /dev/null
+index 0c5d6ca2a8..6758bffe34 100644
+--- a/include/hw/arm/cpu.h
 +++ b/include/hw/arm/cpu.h
-@@ -0,0 +1,28 @@
-+/*
-+ * ARM / Aarch64 CPU definitions
-+ *
-+ * This file contains architectural definitions consumed by hardware models
-+ * implementations (files under hw/).
-+ * Definitions not required to be exposed to hardware has to go in the
-+ * architecture specific "target/arm/cpu.h" header.
-+ *
-+ * Copyright (c) 2003 Fabrice Bellard
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
+@@ -25,4 +25,53 @@ DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU, TYPE_AARCH64_CPU)
+ #define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
+ #define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
+ 
++enum QemuPsciConduit {
++    QEMU_PSCI_CONDUIT_DISABLED = 0,
++    QEMU_PSCI_CONDUIT_SMC = 1,
++    QEMU_PSCI_CONDUIT_HVC = 2,
++};
++
++/* Meanings of the ARMCPU object's four inbound GPIO lines */
++#define ARM_CPU_IRQ 0
++#define ARM_CPU_FIQ 1
++#define ARM_CPU_VIRQ 2
++#define ARM_CPU_VFIQ 3
++
++#define GTIMER_PHYS     0
++#define GTIMER_VIRT     1
++#define GTIMER_HYP      2
++#define GTIMER_SEC      3
++#define GTIMER_HYPVIRT  4
++#define NUM_GTIMERS     5
++
++/* For M profile, some registers are banked secure vs non-secure;
++ * these are represented as a 2-element array where the first element
++ * is the non-secure copy and the second is the secure copy.
++ * When the CPU does not have implement the security extension then
++ * only the first element is used.
++ * This means that the copy for the current security state can be
++ * accessed via env->registerfield[env->v7m.secure] (whether the security
++ * extension is implemented or not).
 + */
-+#ifndef HW_ARM_CPU_H
-+#define HW_ARM_CPU_H
++enum {
++    M_REG_NS = 0,
++    M_REG_S = 1,
++    M_REG_NUM_BANKS = 2,
++};
 +
-+#include "hw/core/cpu.h"
++#define ARM_AFF0_SHIFT 0
++#define ARM_AFF0_MASK  (0xFFULL << ARM_AFF0_SHIFT)
++#define ARM_AFF1_SHIFT 8
++#define ARM_AFF1_MASK  (0xFFULL << ARM_AFF1_SHIFT)
++#define ARM_AFF2_SHIFT 16
++#define ARM_AFF2_MASK  (0xFFULL << ARM_AFF2_SHIFT)
++#define ARM_AFF3_SHIFT 32
++#define ARM_AFF3_MASK  (0xFFULL << ARM_AFF3_SHIFT)
++#define ARM_DEFAULT_CPUS_PER_CLUSTER 8
 +
-+#define TYPE_ARM_CPU "arm-cpu"
-+OBJECT_DECLARE_CPU_TYPE(ARMCPU, ARMCPUClass, ARM_CPU)
++#define ARM32_AFFINITY_MASK (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK)
++#define ARM64_AFFINITY_MASK \
++    (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK|ARM_AFF3_MASK)
++#define ARM64_AFFINITY_INVALID (~ARM64_AFFINITY_MASK)
 +
-+#define TYPE_AARCH64_CPU "aarch64-cpu"
-+typedef struct AArch64CPUClass AArch64CPUClass;
-+DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU, TYPE_AARCH64_CPU)
-+
-+#define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
-+#define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
-+
-+#endif
+ #endif
 diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
-index 514c22ced9..b98904b6bc 100644
+index b98904b6bc..d37037e214 100644
 --- a/target/arm/cpu-qom.h
 +++ b/target/arm/cpu-qom.h
-@@ -21,16 +21,11 @@
- #define QEMU_ARM_CPU_QOM_H
+@@ -68,19 +68,4 @@ void arm_gt_htimer_cb(void *opaque);
+ void arm_gt_stimer_cb(void *opaque);
+ void arm_gt_hvtimer_cb(void *opaque);
  
- #include "hw/core/cpu.h"
-+#include "hw/arm/cpu.h"
- #include "qom/object.h"
- 
- struct arm_boot_info;
- 
--#define TYPE_ARM_CPU "arm-cpu"
+-#define ARM_AFF0_SHIFT 0
+-#define ARM_AFF0_MASK  (0xFFULL << ARM_AFF0_SHIFT)
+-#define ARM_AFF1_SHIFT 8
+-#define ARM_AFF1_MASK  (0xFFULL << ARM_AFF1_SHIFT)
+-#define ARM_AFF2_SHIFT 16
+-#define ARM_AFF2_MASK  (0xFFULL << ARM_AFF2_SHIFT)
+-#define ARM_AFF3_SHIFT 32
+-#define ARM_AFF3_MASK  (0xFFULL << ARM_AFF3_SHIFT)
+-#define ARM_DEFAULT_CPUS_PER_CLUSTER 8
 -
--OBJECT_DECLARE_CPU_TYPE(ARMCPU, ARMCPUClass, ARM_CPU)
+-#define ARM32_AFFINITY_MASK (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK)
+-#define ARM64_AFFINITY_MASK \
+-    (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK|ARM_AFF3_MASK)
+-#define ARM64_AFFINITY_INVALID (~ARM64_AFFINITY_MASK)
 -
--#define TYPE_ARM_MAX_CPU "max-" TYPE_ARM_CPU
--
- typedef struct ARMCPUInfo {
-     const char *name;
-     void (*initfn)(Object *obj);
-@@ -57,12 +52,6 @@ struct ARMCPUClass {
-     ResettablePhases parent_phases;
- };
- 
--
--#define TYPE_AARCH64_CPU "aarch64-cpu"
--typedef struct AArch64CPUClass AArch64CPUClass;
--DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
--                       TYPE_AARCH64_CPU)
--
- struct AArch64CPUClass {
-     /*< private >*/
-     ARMCPUClass parent_class;
+ #endif
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index bf2bce046d..52ac99cad3 100644
+index 52ac99cad3..ab6fdecf48 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -17,8 +17,8 @@
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-  */
+@@ -72,21 +72,6 @@
+ #define ARMV7M_EXCP_PENDSV  14
+ #define ARMV7M_EXCP_SYSTICK 15
  
--#ifndef ARM_CPU_H
--#define ARM_CPU_H
-+#ifndef TARGET_ARM_CPU_H
-+#define TARGET_ARM_CPU_H
+-/* For M profile, some registers are banked secure vs non-secure;
+- * these are represented as a 2-element array where the first element
+- * is the non-secure copy and the second is the secure copy.
+- * When the CPU does not have implement the security extension then
+- * only the first element is used.
+- * This means that the copy for the current security state can be
+- * accessed via env->registerfield[env->v7m.secure] (whether the security
+- * extension is implemented or not).
+- */
+-enum {
+-    M_REG_NS = 0,
+-    M_REG_S = 1,
+-    M_REG_NUM_BANKS = 2,
+-};
+-
+ /* ARM-specific interrupt pending bits.  */
+ #define CPU_INTERRUPT_FIQ   CPU_INTERRUPT_TGT_EXT_1
+ #define CPU_INTERRUPT_VIRQ  CPU_INTERRUPT_TGT_EXT_2
+@@ -107,12 +92,6 @@ enum {
+ #define offsetofhigh32(S, M) (offsetof(S, M) + sizeof(uint32_t))
+ #endif
  
- #include "kvm-consts.h"
- #include "qemu/cpu-float.h"
-@@ -26,6 +26,7 @@
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
- #include "qapi/qapi-types-common.h"
-+#include "hw/arm/cpu.h"
+-/* Meanings of the ARMCPU object's four inbound GPIO lines */
+-#define ARM_CPU_IRQ 0
+-#define ARM_CPU_FIQ 1
+-#define ARM_CPU_VIRQ 2
+-#define ARM_CPU_VFIQ 3
+-
+ /* ARM-specific extra insn start words:
+  * 1: Conditional execution bits
+  * 2: Partial exception syndrome for data aborts
+@@ -160,13 +139,6 @@ typedef struct ARMGenericTimer {
+     uint64_t ctl; /* Timer Control register */
+ } ARMGenericTimer;
  
- /* ARM processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
-@@ -2853,11 +2854,10 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
- #define ARM_CPUID_TI915T      0x54029152
- #define ARM_CPUID_TI925T      0x54029252
+-#define GTIMER_PHYS     0
+-#define GTIMER_VIRT     1
+-#define GTIMER_HYP      2
+-#define GTIMER_SEC      3
+-#define GTIMER_HYPVIRT  4
+-#define NUM_GTIMERS     5
+-
+ #define VTCR_NSW (1u << 29)
+ #define VTCR_NSA (1u << 30)
+ #define VSTCR_SW VTCR_NSW
+@@ -3323,12 +3295,6 @@ static inline bool arm_cpu_bswap_data(CPUARMState *env)
+ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
+                           target_ulong *cs_base, uint32_t *flags);
  
--#define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
--#define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_ARM_CPU
- 
- #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
-+#define TYPE_ARM_MAX_CPU "max-" TYPE_ARM_CPU
- 
- #define cpu_list arm_cpu_list
- 
+-enum {
+-    QEMU_PSCI_CONDUIT_DISABLED = 0,
+-    QEMU_PSCI_CONDUIT_SMC = 1,
+-    QEMU_PSCI_CONDUIT_HVC = 2,
+-};
+-
+ #ifndef CONFIG_USER_ONLY
+ /* Return the address space index to use for a memory access */
+ static inline int arm_asidx_from_attrs(CPUState *cs, MemTxAttrs attrs)
 -- 
 2.38.1

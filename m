@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id n1-20020a5d67c1000000b002bc7f64efa3sm4617103wrw.29.2023.01.10.09.39.32
+        by smtp.gmail.com with ESMTPSA id i8-20020a1c5408000000b003da065105c9sm13487wmb.40.2023.01.10.09.39.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Jan 2023 09:39:33 -0800 (PST)
+        Tue, 10 Jan 2023 09:39:36 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 0AC211FFC7;
+	by zen.linaroharston (Postfix) with ESMTP id C82001FFB8;
 	Tue, 10 Jan 2023 17:39:25 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -32,195 +32,152 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	John G Johnson <john.g.johnson@oracle.com>
-Subject: [PATCH 16/26] semihosting: add semihosting section to the docs
-Date: Tue, 10 Jan 2023 17:39:12 +0000
-Message-Id: <20230110173922.265055-17-alex.bennee@linaro.org>
+	John G Johnson <john.g.johnson@oracle.com>,
+	Emilio Cota <cota@braap.org>
+Subject: [PATCH 23/26] plugins: fix optimization in plugin_gen_disable_mem_helpers
+Date: Tue, 10 Jan 2023 17:39:19 +0000
+Message-Id: <20230110173922.265055-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230110173922.265055-1-alex.bennee@linaro.org>
 References: <20230110173922.265055-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: fm3H/Do5+J6p
+X-TUID: cleAXP5jbisp
 
-The main reason to do this is to document our O_BINARY implementation
-decision somewhere. However I've also moved some of the implementation
-details out of qemu-options and added links between the two. As a
-bonus I've highlighted the scary warnings about host access with the
-appropriate RST tags.
+From: Emilio Cota <cota@braap.org>
 
+We were mistakenly checking tcg_ctx->plugin_insn as a canary to know
+whether the TB had emitted helpers that might have accessed memory.
+
+The problem is that tcg_ctx->plugin_insn gets updated on every
+instruction in the TB, which results in us wrongly performing the
+optimization (i.e. not clearing cpu->plugin_mem_cbs) way too often,
+since it's not rare that the last instruction in the TB doesn't
+use helpers.
+
+Fix it by tracking a per-TB canary.
+
+While at it, expand documentation.
+
+Related: #1381
+
+Signed-off-by: Emilio Cota <cota@braap.org>
+Message-Id: <20230108164731.61469-2-cota@braap.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/about/features.rst    | 10 ++---
- docs/specs/index.rst       |  1 +
- docs/specs/semihosting.rst | 79 ++++++++++++++++++++++++++++++++++++++
- qemu-options.hx            | 27 +++++--------
- 4 files changed, 95 insertions(+), 22 deletions(-)
- create mode 100644 docs/specs/semihosting.rst
+ include/qemu/plugin.h  |  7 +++++++
+ accel/tcg/plugin-gen.c | 26 ++++++++++++++++++--------
+ 2 files changed, 25 insertions(+), 8 deletions(-)
 
-diff --git a/docs/about/features.rst b/docs/about/features.rst
-index 0808c35a4a..aed0f9b9a2 100644
---- a/docs/about/features.rst
-+++ b/docs/about/features.rst
-@@ -187,11 +187,11 @@ See `User Mode Emulation` for more details on running in this mode.
- Semihosting
- ~~~~~~~~~~~~
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index a772e14193..e0ebedef84 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -118,7 +118,10 @@ struct qemu_plugin_insn {
+     void *haddr;
+     GArray *cbs[PLUGIN_N_CB_TYPES][PLUGIN_N_CB_SUBTYPES];
+     bool calls_helpers;
++
++    /* if set, the instruction calls helpers that might access guest memory */
+     bool mem_helper;
++
+     bool mem_only;
+ };
  
--A number of guest architecture support semihosting which provides a
--way for guest programs to access the host system though a POSIX-like
--system call layer. This has applications for early software bring-up
--making it easy for a guest to dump data or read configuration files
--before a full operating system is implemented.
-+A number of guest architecture support :ref:`Semihosting` which
-+provides a way for guest programs to access the host system though a
-+POSIX-like system call layer. This has applications for early software
-+bring-up making it easy for a guest to dump data or read configuration
-+files before a full operating system is implemented.
+@@ -158,6 +161,10 @@ struct qemu_plugin_tb {
+     void *haddr1;
+     void *haddr2;
+     bool mem_only;
++
++    /* if set, the TB calls helpers that might access guest memory */
++    bool mem_helper;
++
+     GArray *cbs[PLUGIN_N_CB_SUBTYPES];
+ };
  
- Some of those guest architectures also support semihosting in
- user-mode making the testing of "bare-metal" micro-controller code
-diff --git a/docs/specs/index.rst b/docs/specs/index.rst
-index a58d9311cb..b46a16b2c8 100644
---- a/docs/specs/index.rst
-+++ b/docs/specs/index.rst
-@@ -21,3 +21,4 @@ guest hardware that is specific to QEMU.
-    acpi_erst
-    sev-guest-firmware
-    fw_cfg
-+   semihosting
-diff --git a/docs/specs/semihosting.rst b/docs/specs/semihosting.rst
-new file mode 100644
-index 0000000000..343eb4bbb3
---- /dev/null
-+++ b/docs/specs/semihosting.rst
-@@ -0,0 +1,79 @@
-+.. _Semihosting:
-+
-+Semihosting
-+-----------
-+
-+Semihosting is a feature provided by a number of guests that allow the
-+program running on the target to interact with the host system. On
-+real hardware this is usually provided by a debugger hooked directly
-+to the system.
-+
-+Generally semihosting makes it easier to bring up low level code before a
-+more fully functional operating system has been enabled. On QEMU it
-+also allows for embedded micro-controller code which typically doesn't
-+have a full libc to be run as "bare-metal" code under QEMU's user-mode
-+emulation. It is also useful for writing test cases and indeed a
-+number of compiler suites as well as QEMU itself use semihosting calls
-+to exit test code while reporting the success state.
-+
-+Semihosting is only available using TCG emulation. This is because the
-+instructions to trigger a semihosting call are typically reserved
-+causing most hypervisors to trap and fault on them.
-+
-+.. warning::
-+   Semihosting inherently bypasses any isolation there may be between
-+   the guest and the host. As a result a program using semihosting can
-+   happily trash your host system. You should only ever run trusted
-+   code with semihosting enabled.
-+
-+Redirection
-+~~~~~~~~~~~
-+
-+Semihosting calls can be re-directed to a (potentially remote) gdb
-+during debugging via the :ref:`gdbstub<GDB usage>`. Output to the
-+semihosting console is configured as a ``chardev`` so can be
-+redirected to a file, pipe or socket like any other ``chardev``
-+device.
-+
-+See :ref:`Semihosting Options<Semihosting Options>` for details.
-+
-+Supported Targets
-+~~~~~~~~~~~~~~~~~
-+
-+Most targets offer a similar semihosting implementations with some
-+minor changes to define the appropriate instruction to encode the
-+semihosting call and which registers hold the parameters. They tend to
-+presents a simple POSIX-like API which allows your program to read and
-+write files, access the console and some other basic interactions.
-+
-+.. note::
-+   QEMU makes an implementation decision to implement all file access
-+   in ``O_BINARY`` mode regardless of the host operating system. This
-+   is because gdb semihosting support doesn't make the distinction
-+   between the modes and magically processing line endings can be confusing.
-+
-+.. list-table:: Guest Architectures supporting Semihosting
-+  :widths: 10 10 80
-+  :header-rows: 1
-+
-+  * - Architecture
-+    - Modes
-+    - Specification
-+  * - Arm
-+    - System and User-mode
-+    - https://github.com/ARM-software/abi-aa/blob/main/semihosting/semihosting.rst
-+  * - m68k
-+    - System
-+    - https://sourceware.org/git/?p=newlib-cygwin.git;a=blob;f=libgloss/m68k/m68k-semi.txt;hb=HEAD
-+  * - mips
-+    - System
-+    - Unified Hosting Interface (MD01069)
-+  * - Nios II
-+    - System
-+    - https://sourceware.org/git/gitweb.cgi?p=newlib-cygwin.git;a=blob;f=libgloss/nios2/nios2-semi.txt;hb=HEAD
-+  * - RISC-V
-+    - System and User-mode
-+    - https://github.com/riscv/riscv-semihosting-spec/blob/main/riscv-semihosting-spec.adoc
-+  * - Xtensa
-+    - System
-+    - Tensilica ISS SIMCALL
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 3aa3a2f5a3..de3a368f58 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4633,10 +4633,13 @@ DEF("semihosting", 0, QEMU_OPTION_semihosting,
-     QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2 | QEMU_ARCH_RISCV)
- SRST
- ``-semihosting``
--    Enable semihosting mode (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V only).
-+    Enable :ref:`Semihosting` mode (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V only).
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index c7d6514840..17a686bd9e 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -579,7 +579,8 @@ static void inject_mem_helper(TCGOp *begin_op, GArray *arr)
+  * is possible that the code we generate after the instruction is
+  * dead, we also add checks before generating tb_exit etc.
+  */
+-static void inject_mem_enable_helper(struct qemu_plugin_insn *plugin_insn,
++static void inject_mem_enable_helper(struct qemu_plugin_tb *ptb,
++                                     struct qemu_plugin_insn *plugin_insn,
+                                      TCGOp *begin_op)
+ {
+     GArray *cbs[2];
+@@ -599,6 +600,7 @@ static void inject_mem_enable_helper(struct qemu_plugin_insn *plugin_insn,
+         rm_ops(begin_op);
+         return;
+     }
++    ptb->mem_helper = true;
  
--    Note that this allows guest direct access to the host filesystem, so
--    should only be used with a trusted guest OS.
-+    .. warning::
-+      Note that this allows guest direct access to the host filesystem, so
-+      should only be used with a trusted guest OS.
-+
-+    .. _Semihosting Options:
+     arr = g_array_sized_new(false, false,
+                             sizeof(struct qemu_plugin_dyn_cb), n_cbs);
+@@ -626,15 +628,22 @@ void plugin_gen_disable_mem_helpers(void)
+ {
+     TCGv_ptr ptr;
  
-     See the -semihosting-config option documentation for further
-     information about the facilities this enables.
-@@ -4648,22 +4651,12 @@ QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA |
- QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2 | QEMU_ARCH_RISCV)
- SRST
- ``-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]``
--    Enable and configure semihosting (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V
-+    Enable and configure :ref:`Semihosting` (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V
-     only).
+-    if (likely(tcg_ctx->plugin_insn == NULL ||
+-               !tcg_ctx->plugin_insn->mem_helper)) {
++    /*
++     * We could emit the clearing unconditionally and be done. However, this can
++     * be wasteful if for instance plugins don't track memory accesses, or if
++     * most TBs don't use helpers. Instead, emit the clearing iff the TB calls
++     * helpers that might access guest memory.
++     *
++     * Note: we do not reset plugin_tb->mem_helper here; a TB might have several
++     * exit points, and we want to emit the clearing from all of them.
++     */
++    if (!tcg_ctx->plugin_tb->mem_helper) {
+         return;
+     }
+     ptr = tcg_const_ptr(NULL);
+     tcg_gen_st_ptr(ptr, cpu_env, offsetof(CPUState, plugin_mem_cbs) -
+                                  offsetof(ArchCPU, env));
+     tcg_temp_free_ptr(ptr);
+-    tcg_ctx->plugin_insn->mem_helper = false;
+ }
  
--    Note that this allows guest direct access to the host filesystem, so
--    should only be used with a trusted guest OS.
--
--    On Arm this implements the standard semihosting API, version 2.0.
--
--    On M68K this implements the "ColdFire GDB" interface used by
--    libgloss.
--
--    Xtensa semihosting provides basic file IO calls, such as
--    open/read/write/seek/select. Tensilica baremetal libc for ISS and
--    linux platform "sim" use this interface.
--
--    On RISC-V this implements the standard semihosting API, version 0.2.
-+    .. warning::
-+      Note that this allows guest direct access to the host filesystem, so
-+      should only be used with a trusted guest OS.
+ static void plugin_gen_tb_udata(const struct qemu_plugin_tb *ptb,
+@@ -682,14 +691,14 @@ static void plugin_gen_mem_inline(const struct qemu_plugin_tb *ptb,
+     inject_inline_cb(cbs, begin_op, op_rw);
+ }
  
-     ``target=native|gdb|auto``
-         Defines where the semihosting calls will be addressed, to QEMU
+-static void plugin_gen_enable_mem_helper(const struct qemu_plugin_tb *ptb,
++static void plugin_gen_enable_mem_helper(struct qemu_plugin_tb *ptb,
+                                          TCGOp *begin_op, int insn_idx)
+ {
+     struct qemu_plugin_insn *insn = g_ptr_array_index(ptb->insns, insn_idx);
+-    inject_mem_enable_helper(insn, begin_op);
++    inject_mem_enable_helper(ptb, insn, begin_op);
+ }
+ 
+-static void plugin_gen_disable_mem_helper(const struct qemu_plugin_tb *ptb,
++static void plugin_gen_disable_mem_helper(struct qemu_plugin_tb *ptb,
+                                           TCGOp *begin_op, int insn_idx)
+ {
+     struct qemu_plugin_insn *insn = g_ptr_array_index(ptb->insns, insn_idx);
+@@ -750,7 +759,7 @@ static void pr_ops(void)
+ #endif
+ }
+ 
+-static void plugin_gen_inject(const struct qemu_plugin_tb *plugin_tb)
++static void plugin_gen_inject(struct qemu_plugin_tb *plugin_tb)
+ {
+     TCGOp *op;
+     int insn_idx = -1;
+@@ -870,6 +879,7 @@ bool plugin_gen_tb_start(CPUState *cpu, const DisasContextBase *db,
+         ptb->haddr1 = db->host_addr[0];
+         ptb->haddr2 = NULL;
+         ptb->mem_only = mem_only;
++        ptb->mem_helper = false;
+ 
+         plugin_gen_empty_callback(PLUGIN_GEN_FROM_TB);
+     }
 -- 
 2.34.1

@@ -1,124 +1,144 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3193410ejc;
-        Tue, 10 Jan 2023 06:02:30 -0800 (PST)
-X-Received: by 2002:a05:6a00:1d10:b0:582:ba01:a3c4 with SMTP id a16-20020a056a001d1000b00582ba01a3c4mr23856810pfx.21.1673359350617;
-        Tue, 10 Jan 2023 06:02:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673359350; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3241389ejc;
+        Tue, 10 Jan 2023 07:06:56 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvOa/ycw7F3jFs+Mgcw0U4cjRGBTgyFcO901X00fs1/dr/kE4WwBaNnR5oh5eYkOMhVlGP1
+X-Received: by 2002:a05:6214:4383:b0:4c7:7e73:464d with SMTP id oh3-20020a056214438300b004c77e73464dmr40012045qvb.20.1673363216248;
+        Tue, 10 Jan 2023 07:06:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673363216; cv=none;
         d=google.com; s=arc-20160816;
-        b=mJOw8FFQGYTiINHgLv0uyJMzyhDCi41gDBgwLs1vonXglptzvK/s20iMeH/y1oC9S8
-         vJeEdzdFuYZhTsJmXEI06IqI1fuXF6enDQ1UsA7Rx8wtriTJoHhlcAr9ImEYZEfOgonQ
-         sNUTGaYFaYWAp38/FA0gAvfuNyKxT9dnuzqsyrdTguUN9/jjH35rvA2oeme1tTMyWngU
-         h5u7/1aNHSGsyPOqHCn6p8MLte4iV371VposPo9vOw4TpEBMNK6dmRP7AJ3tDhYtBJhY
-         MbIpFlVwK2Cw/XpYDPz8dN3hM1lNOoWtOwQrXCUiMOjJMtHdqYcq86b2NegvUixXJHAW
-         emFA==
+        b=vC4zkNpkK0f7Iti8n03QfcoQvXw8K2RRc0X71vn1pk8P+9a4LcuUFfbX0xEGlZ/Dzh
+         hwPlvfZ2Mehj7ixxIsZWTY/uDMaIF1FRIhp4Q2FcnWlU5G4/VqFS5ubogs7zGpsl4TY/
+         0FMpbNilstkaCCSeu33HXDMohOKBYbIqVcRHJQqBaENGQClwQdeY5V3vExCPh1bTq5pR
+         DDQJMxMekZcwuAXwkFtawK4grkC2JEnYqClbmqK35yyuU7jWhnnzOXKfUCE5xtV1w4RT
+         DIhAYRyNhMdf3h7z6k8UaPCon0cNPea/CE8nhhpa40Cs7XwlSSfZQfAcUh+SLJNH9VJi
+         kv3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=9WC4K7zYh2oZ5YAoZKDUxrgzMbH3Ps3fi5GbO0fyXOo=;
-        b=VeXnOZDBPA+DKHT1TLm3H1bwjWFiU++Es5/Mju4KbUuUSyptEHtjPR52qVoflyyABm
-         SuN0XavvrI5nkjY3u2aS3v8NzZqWPKlDceS4neG+nEXXabxJdBOuRVp9amFCr8KYVkyn
-         XQPOkiGARO2F9pd7XnvNAKSZeqGXyL5nCUqgNES14fPQ/TkVIhame9Ayqy1pxZK+wykR
-         x7yGPOmNGpnZU4x7pefAuf2bYy8zOsCvuyRx3dVHFae8V8vg8mU73KyCSrDK6wIm6u4S
-         +eAPejpm9nhg5ZVZ+gRrzXyK1tr98NNacP44/n6CkP2/R0cRobtATj5q6g9yBvRGekBj
-         b+Iw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=S53fopYlto7GATnEBLPdwchlTbAjmE+Zrf3fu00VL9U=;
+        b=rO9/u0hC4LsiAn2UbqXFnpyAab0+aBHGiOFhtlI6nAzI+I3KBJ+U7lzlSEfjAvAqaI
+         NgiUKTA+9ieG0V2rzCXhPcbIToPwxOp7w0ILc/MD73uW6NPKONUZIn1uXVSfimusP2uv
+         kHUdbzGQK6HoZyljM0Ucm6c4U73WrvcjxtEGuA8APmby6nOrhRCtCrE4k0Ij2m7/g+Ld
+         oCEjQ3rvwFl1S7ApuA7ShfYovcH4q4KuT/3ZvP3BHZfMx3kPorzoBFC7c3H/syWes2jW
+         PBWdHAMNTJ3o98yt841wK/d6PyXddEiIMy3FiFYgsp9H8+jWY57zAdveqRAczlRZu0ov
+         ZGfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qASrqfIv;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a27-20020a056a001d1b00b0058985ed4115sor2599111pfx.95.2023.01.10.06.02.30
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 10 Jan 2023 06:02:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JSNneCK1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTP id q3-20020a056214194300b00531d3100d40si6842095qvk.527.2023.01.10.07.06.56
+        for <alex.bennee@linaro.org>;
+        Tue, 10 Jan 2023 07:06:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qASrqfIv;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=9WC4K7zYh2oZ5YAoZKDUxrgzMbH3Ps3fi5GbO0fyXOo=;
-        b=qASrqfIv0EG39YHjPe+uGZKQMDwOiJYERxXZmq8M1AHBcLGA9Z/fVF4/IB+iK99Keh
-         uiHJoZ9GgaHxuEiMcpzsJaFT/m9Js8RNp6wIN7N8kLkrmFzMJWCJKna9g4Nz/vupLfj+
-         ZmZ9rqks3YoNYozebD4SBOsYP5FyQCvivsEvoyv5jniw+EmVt86dLllEGtd3AhooD9wW
-         IkFvPLh+4j0+pBOtJUjxp0X7/fkwwylyHXcuY7/dEhquTbKDOVm7ryh+H7Uug4HxBeBl
-         JUJN0/YUd64nPffBiqT8x/d2tZqfoaOYmlvvNimiyE0YZhdotWCQpa+o1ysH7h1giMgR
-         VBow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9WC4K7zYh2oZ5YAoZKDUxrgzMbH3Ps3fi5GbO0fyXOo=;
-        b=Gz7OGeJ9L2rkhKPoidsrxvLBT6sbvkeDfAvZNqS6jTUtTcS/RLW96CQpeuaMZSiJEk
-         0t1kKm1W6pfEYwH/sCJvhCICoNI2OoPYuJgmG9lkmnjdg+45Lelakq6ey21JKhafIIXP
-         0kwIPQ7XiPhv9qwiJTmF5eU71tKpOYHqt2455SxgoB11N14WhdaMsPNT76d8N01Emzx8
-         T8VuX+iYGf45No2rU7FLTpVPa/3F5X6w7D/ZPdwqgY+et22SrG5wonzhgObQSBxeZqjX
-         OuFu+WgQtwo5LRzxfhXKip7KXCnX2I122x9tQ4oqXJDRBGSipQCUcaxXamBltuvY1TrB
-         2j3g==
-X-Gm-Message-State: AFqh2kojOU9dM6AkZZW3FL8dgs+xlQR55W0pNweIipqkIkMT9anWbnde
-	wrBG18V3HvcfQeka40PIMlgKN6DFTkJkvOApxMrdvp/h
-X-Google-Smtp-Source: AMrXdXtACAqDWYIAdzi7r1gfQu5djwu2cTcgwIWqvPx62A1mz0GkKX32eR5D9EYs6UFpfDRxnj6HnWZq6ovjR5BVSrg=
-X-Received: by 2002:aa7:9485:0:b0:582:bdaa:b575 with SMTP id
- z5-20020aa79485000000b00582bdaab575mr2289819pfk.51.1673359350041; Tue, 10 Jan
- 2023 06:02:30 -0800 (PST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JSNneCK1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pFFIj-0008Ci-Co; Tue, 10 Jan 2023 09:08:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1pFFIf-0008Am-Og
+ for qemu-arm@nongnu.org; Tue, 10 Jan 2023 09:08:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1pFFIe-0004gW-9v
+ for qemu-arm@nongnu.org; Tue, 10 Jan 2023 09:08:25 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1673359703;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=S53fopYlto7GATnEBLPdwchlTbAjmE+Zrf3fu00VL9U=;
+ b=JSNneCK13qC1TfrGvw+kxiCd4o0gBWce98ST8NYcztFd1J38fQg8bdtFaByDbs4SMK2FLy
+ Nv14v7aI9oR2YIfBVhmGWhhkShod1TZ5y1yL9XXsZ1FPXtG5JQVN9lNi5SgITkLDzRyJCQ
+ EGK61egIHFZxL4Yf4YmjAmN2VPiHXls=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-538-lbQzg5JzOeqnyA1bzBhYXg-1; Tue, 10 Jan 2023 09:08:20 -0500
+X-MC-Unique: lbQzg5JzOeqnyA1bzBhYXg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 09AFF80557C;
+ Tue, 10 Jan 2023 14:08:08 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.4])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4C93A422FE;
+ Tue, 10 Jan 2023 14:08:06 +0000 (UTC)
+Date: Tue, 10 Jan 2023 15:08:04 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Hanna Reitz <hreitz@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ John Snow <jsnow@redhat.com>, Kashyap Chamarthy <kchamart@redhat.com>,
+ Xiang Zheng <zhengxiang9@huawei.com>
+Subject: Re: [PATCH v2] pflash: Only read non-zero parts of backend image
+Message-ID: <Y71xRO+sHh+TZ3PS@redhat.com>
+References: <20221220084246.1984871-1-kraxel@redhat.com>
 MIME-Version: 1.0
-References: <20230109224232.11661-1-farosas@suse.de> <20230109224232.11661-14-farosas@suse.de>
- <35870ab3-1da6-c222-b708-06ac71a5883c@redhat.com> <87zgaqa6jk.fsf@suse.de>
- <CAFEAcA_x_kTdNt8+5YAjo518Wj_Ej4jZ=0OrCQmutNOjJx=3Gw@mail.gmail.com> <87sfgia4uj.fsf@suse.de>
-In-Reply-To: <87sfgia4uj.fsf@suse.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Jan 2023 14:02:18 +0000
-Message-ID: <CAFEAcA_AaWfwAbCLOC3ELf3c20Cv5jQhWc71Py4ww4kLo2nYeg@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 13/19] tests: do not run test-hmp on all machines
- for ARM KVM-only
-To: Fabiano Rosas <farosas@suse.de>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>, 
-	Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>, 
-	Laurent Vivier <lvivier@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 5ajs/Ij58TYV
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221220084246.1984871-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PA6PnRV7u3oE
 
-On Tue, 10 Jan 2023 at 13:36, Fabiano Rosas <farosas@suse.de> wrote:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > On Tue, 10 Jan 2023 at 13:00, Fabiano Rosas <farosas@suse.de> wrote:
-> >>
-> >> Thomas Huth <thuth@redhat.com> writes:
-> >>
-> >> > On 09/01/2023 23.42, Fabiano Rosas wrote:
-> >> >> From: Claudio Fontana <cfontana@suse.de>
-> >> >>
-> >> >> on ARM we currently list and build all machines, even when
-> >> >> building KVM-only, without TCG.
-> >> >>
-> >> >> Until we fix this (and we only list and build machines that are
-> >> >> compatible with KVM), only test specifically using the "virt"
-> >> >> machine in this case.
-> >> >
-> >> > Why don't you fix it immediately? ...
-> >>
-> >> My idea was to have in this series the minimum to unbreak the
-> >> --disable-tcg build and later bring the rest of the changes
-> >> incrementally.
-> >
-> > This test is basically checking "all the machines should
-> > work". That's an important invariant to maintain, so
-> > I don't think we should just skip it for Arm targets.
->
-> But what does "all machines" mean in a no-TCG build? The original intent
-> of the patch was that only 'virt' should be present and therefore the
-> only one tested.
+Am 20.12.2022 um 09:42 hat Gerd Hoffmann geschrieben:
+> From: Xiang Zheng <zhengxiang9@huawei.com>
+> 
+> Currently we fill the VIRT_FLASH memory space with two 64MB NOR images
+> when using persistent UEFI variables on virt board. Actually we only use
+> a very small(non-zero) part of the memory while the rest significant
+> large(zero) part of memory is wasted.
+> 
+> So this patch checks the block status and only writes the non-zero part
+> into memory. This requires pflash devices to use sparse files for
+> backends.
+> 
+> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> 
+> [ kraxel: rebased to latest master ]
+> 
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 
-It means "every machine the user can create". If the
-machine can't run then either we shouldn't compile it
-in, or else we should be compiling in enough extra stuff
-to allow it to work.
+Thanks, applied to the block branch.
 
--- PMM
+Even though discussion is ongoing about using alternative devices, it
+seems to me that this is a simple optimisation that doesn't change the
+behaviour as seen by the guest and that we want to have either way. If
+anyone objects and wants me to drop the patch again, let me know.
+
+Kevin
+

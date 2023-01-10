@@ -1,126 +1,109 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3175426ejc;
-        Tue, 10 Jan 2023 05:36:58 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs0ggGq72Ym7mgND9sAezWuu6Qmjzt4AlQb4l+vFlNStx0STS1/wZQNr60ZO2wvMnThP4ZT
-X-Received: by 2002:a05:600c:a4d:b0:3cf:6e78:e2ca with SMTP id c13-20020a05600c0a4d00b003cf6e78e2camr52996963wmq.5.1673357817843;
-        Tue, 10 Jan 2023 05:36:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673357817; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3191245ejc;
+        Tue, 10 Jan 2023 06:00:42 -0800 (PST)
+X-Received: by 2002:a17:90a:f3cc:b0:226:daad:8c88 with SMTP id ha12-20020a17090af3cc00b00226daad8c88mr16130882pjb.16.1673359242345;
+        Tue, 10 Jan 2023 06:00:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673359242; cv=none;
         d=google.com; s=arc-20160816;
-        b=gGYc7jH8LVZ9gXsflGJL9uuzKLpAgV3Ms5x9NS1Fd8o1S/bi4YtKa3r48QrkEu51cv
-         F+hMw542Y5tgL1iVQ3D1rf3Ihy2EZeLWeyaW8Bb+LeHNnS5+mBYO6dviw8Zpq25V6rIZ
-         Rw9EnJMHczsskS2LIpCvPwhZanV4Qd5pkGp3/cRujiTb//jJhtWGzdIIyOX03T1UelvX
-         PFvkqMXDi3/JGvTZRIGAOxQC8ZocbUIFfEOVMLLDWjr4qDbVnEhP9MXBlkFxlqbCLnMh
-         PtF1UKLJ406KKqTLyypt30XwlW6aFvLIS9rzEh2V66lpX9jaq9qgwHaHHlTvGpQFw/1Q
-         4pvw==
+        b=vlRibS5ccvTAUM45UHjQc9PuqHLiDphi4RKgxOpoSnY2nxpunT4GGgGVN75iHpUPHY
+         H9n5GGf7zYwGDYQhkp8TF8Y2GRSYLncZ7y3+iTKBAeLXZEpoRqX8f4+CFhmEMH2qSo+5
+         laipIsoiD8+kOQc4gZ6CMMaeO4eaUcIpje8+ukCI3a2zBw6ygv0hU1idi7zfP5+erZv5
+         QTJKvaDgFfI1t/z5T3rqoT95KpW6u/rAKkdRjpjPplOrcB2WYlchKt1nnNYR2cNTmEhV
+         a/ziu+oH5wAOxi3w+DN3Pxi6zh2aPf6WbReSXcLxpOB27rjOlgI2zeS767R065M40HvL
+         GD4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=2FZoGBZyY5QIjarJEBtrX/c/I4Z/CXUzrjP9bsG5GHk=;
-        b=XUkv3m9Z7CNrcng4eLkAC0vEhc1Vi+Ky8WMISAroTiPLaLoM/0BjnQHFFDCTtmVUgU
-         ESsGuGuWACidFGsOKnFCJ64yPWZrMHAiuJmIq87+exbl54NL3Cc4/OwABi39DQsqiKL/
-         oqBJ3Bv2taqHbgBxIjVN/lKf9+2X/cLf9A9aWEVLCON1g2aTeeXzd7K9JMdB4Eb3Y32j
-         U9XtDOeiQityukdKjCcaVlsACfw/Xa8nn5nh6WLUb8RW6QXOyEvI7zWLGG6N61HHMrE6
-         eHUoKlFYSRPNHuWMSvXuX5oFtC4VBj6hZgkwDp8/h70dKNH3miL5sYXosofizyDODK/I
-         ZcnQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=DMe7RbaSJgZe9w623NlnNt2u89RwUee6aXRdGZn6u68=;
+        b=mQ9g1NTf9r+wnJ+nFWiVuLUM/lh14qT4tbw8H10vvMvlIcpgaK4QtYuQPF0i2/g9Hq
+         Trq6zBCCjExrjGoW8KwUuPC/CfHKbwNwmJZfWcK2UjZSX/VQTqGRtkuI0kJcS9DvHQoo
+         1CaQXPVcSaDxCZ0n+dOO6GhmhkK6/ytLndw399BMq0ebbKbvV058dYKzhuH/OkneXrMz
+         yXK3X+vgjSRpjhQShXb/2i9tJvrT6aue+WU7UplQ1IlsnEwP7p9vmAkppeu2L8QWN3GL
+         Max4KxW04mcdjhGjHWdudoZuwOE5lB813e0NeBTzlKJKbBZ524x/SE0Ehmz8NxbiayK/
+         5UaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="SZk7/KsD";
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id a1-20020a05600c224100b003d1b4d957b0si8742320wmm.162.2023.01.10.05.36.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Jan 2023 05:36:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nB8UN+d0;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id gj1-20020a17090b108100b0020d88f95db6sor5665931pjb.42.2023.01.10.06.00.42
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 10 Jan 2023 06:00:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="SZk7/KsD";
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 03F2676198;
-	Tue, 10 Jan 2023 13:36:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673357816; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2FZoGBZyY5QIjarJEBtrX/c/I4Z/CXUzrjP9bsG5GHk=;
-	b=SZk7/KsDO9G89/jCCVRArO5jrcBpv5dfuHA3dD0u3FbJbC6p5EoUYUMztW/rm/dhXZgWc7
-	Y7hFr+9X6w3ExLd4aEm1lTTMpXIi3B5BZaaRieLRsgWj1/ICPyKSNRG36F+1vIgDmiSytk
-	7cIabZm7CrW7gN1hWwJy9RaqWDo7X4U=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673357816;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2FZoGBZyY5QIjarJEBtrX/c/I4Z/CXUzrjP9bsG5GHk=;
-	b=xT6pQVAkcKbSsPLhW2MZ/sIc/de5V+2DOiaJP8hdJPm0nfh3WzOxFHvuqGGBGunTIZTobS
-	Bwk81jEIbf6ioTDg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 76F5313338;
-	Tue, 10 Jan 2023 13:36:55 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 8UrnD/dpvWNCQQAAMHmgww
-	(envelope-from <farosas@suse.de>); Tue, 10 Jan 2023 13:36:55 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
- Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Laurent Vivier <lvivier@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Subject: Re: [RFC PATCH v2 13/19] tests: do not run test-hmp on all machines
- for ARM KVM-only
-In-Reply-To: <CAFEAcA_x_kTdNt8+5YAjo518Wj_Ej4jZ=0OrCQmutNOjJx=3Gw@mail.gmail.com>
-References: <20230109224232.11661-1-farosas@suse.de>
- <20230109224232.11661-14-farosas@suse.de>
- <35870ab3-1da6-c222-b708-06ac71a5883c@redhat.com> <87zgaqa6jk.fsf@suse.de>
- <CAFEAcA_x_kTdNt8+5YAjo518Wj_Ej4jZ=0OrCQmutNOjJx=3Gw@mail.gmail.com>
-Date: Tue, 10 Jan 2023 10:36:52 -0300
-Message-ID: <87sfgia4uj.fsf@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=nB8UN+d0;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=DMe7RbaSJgZe9w623NlnNt2u89RwUee6aXRdGZn6u68=;
+        b=nB8UN+d0FTA8nZ2nPBX5r1yYRY0ODU42OIbACFuyGN4iT3WxumrGCn917M/CtJC0SM
+         Qx9W6LpXjgKUTTwMfEfV+2uP+1tJJSsm8vmnfXkjldY11WLAYHnw5BzvxsTgVwlUyR/b
+         e6Rx4dLPpKoVN/7dEcEKhYaF0697vhb+s5lg2ES48Y5vMNXxiEujPVx5xuhy6ZsgTqye
+         +x99V2vPiXH7ApprPNDcrR5Qa9zXPX3bnFgIXfnj6YHH/wOLLesS9zScyISSpJSTV+ZL
+         KU14KMm668eHahXOU2uVnkR55IUY3jbdcw8lTiRiRXxnbYZemMoCiquHo16Xv2+20hcx
+         tF9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DMe7RbaSJgZe9w623NlnNt2u89RwUee6aXRdGZn6u68=;
+        b=sBlOsXoLwhE0C5QaTx1rPsT2X16UaWZizgSC2zDR5Z+71x6mY4ZeqnBXY334eaEShQ
+         B8JPxH1BIf5vvhpB1mIb47OA5r2RgtLmASjsh9EZ+XSOeNgDE4W5zGLlvI11ebwysciR
+         VNNkXL8gD0AhxYd+TUBaBIh9xYeMwN9e0DEYx+gX4lfcRgDzOo6Ga3JRTFYgnFi4TZDy
+         +nfD4+7r4OwGfPG9++nzpXnIQPKO7ECdLaBIT0HiOaa9MsNASU/ZRpDEd3986GFOdNS0
+         fbACJ6b34dY+4tbnB9iuV+L8UEqczuKUbfQ3JVOmPKEtd4+2r+bOzdLv/5pCw8wqtpog
+         adYg==
+X-Gm-Message-State: AFqh2krbN4Qpy8jNFje4MRIro4G4316KyHPYdyCT0B4lFBONev1E2WZV
+	E+ubw14ooQUIMadp7+wMjJ4QF0AeNNtY6vdvk6apgcJb
+X-Google-Smtp-Source: AMrXdXvJhwsj1XZA/WWJ1qxaLRBPx96Pk/M9XC2XXMRS5QU8oh8JeWU8kSP/UogbhvGsnFww38EE/dVKDxklDM3aMdU=
+X-Received: by 2002:a17:90b:30ce:b0:228:dac2:3704 with SMTP id
+ hi14-20020a17090b30ce00b00228dac23704mr70836pjb.221.1673359241260; Tue, 10
+ Jan 2023 06:00:41 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: RQItW1DDF2Dq
+References: <20230109224232.11661-1-farosas@suse.de> <20230109224232.11661-8-farosas@suse.de>
+ <c1541118-b5fc-d39c-cfc9-e4fa2d83c801@linaro.org> <87v8lea5n7.fsf@suse.de>
+In-Reply-To: <87v8lea5n7.fsf@suse.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 10 Jan 2023 14:00:30 +0000
+Message-ID: <CAFEAcA_422_D4bCxO-_v8omMa4VRSwUwDaY3JHuhPDs6PCh3fg@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 07/19] target/arm: Move helper_set_pstate_* into cpregs.c
+To: Fabiano Rosas <farosas@suse.de>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
+	qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>, 
+	Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: K02SqvUOkKjS
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> On Tue, 10 Jan 2023 at 13:00, Fabiano Rosas <farosas@suse.de> wrote:
->>
->> Thomas Huth <thuth@redhat.com> writes:
->>
->> > On 09/01/2023 23.42, Fabiano Rosas wrote:
->> >> From: Claudio Fontana <cfontana@suse.de>
->> >>
->> >> on ARM we currently list and build all machines, even when
->> >> building KVM-only, without TCG.
->> >>
->> >> Until we fix this (and we only list and build machines that are
->> >> compatible with KVM), only test specifically using the "virt"
->> >> machine in this case.
->> >
->> > Why don't you fix it immediately? ...
->>
->> My idea was to have in this series the minimum to unbreak the
->> --disable-tcg build and later bring the rest of the changes
->> incrementally.
+On Tue, 10 Jan 2023 at 13:19, Fabiano Rosas <farosas@suse.de> wrote:
 >
-> This test is basically checking "all the machines should
-> work". That's an important invariant to maintain, so
-> I don't think we should just skip it for Arm targets.
-
-But what does "all machines" mean in a no-TCG build? The original intent
-of the patch was that only 'virt' should be present and therefore the
-only one tested.
-
+> Richard Henderson <richard.henderson@linaro.org> writes:
 >
-> -- PMM
+> > On 1/9/23 14:42, Fabiano Rosas wrote:
+> >> We want to move sme_helper into the tcg directory, but the cpregs
+> >> accessor functions cannot go along, otherwise they would be separate
+> >> from the respective ARMCPRegInfo definition which needs to be compiled
+> >> with CONFIG_TCG=n as well.
+> >
+> > Hmm.  I would have hoped these could stay tcg-only, somehow.
+> > I wonder if it warrants being an ARM_CP_SPECIAL_MASK value instead of svcr_write.
+>
+> In general, what characterizes as "special" for a register to use
+> ARM_CP_SPECIAL_MASK?
+
+It means that the register has special-case handling code
+in the translate.c/translate-a64.c TCG codegen functions.
+Non-special registers can be handled all in the same way
+(load a constant, read a field from the CPU state struct,
+or call a read/write function); the special cases directly
+emit code to handle whatever they are doing. See the switch
+commented "Handle special cases first" in target/arm/translate-a64.c
+function handle_sys().
+
+-- PMM

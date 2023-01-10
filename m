@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id x7-20020a05600c188700b003c701c12a17sm19162023wmp.12.2023.01.10.09.39.24
+        by smtp.gmail.com with ESMTPSA id k9-20020a5d6d49000000b002bc8130cca7sm3712663wri.23.2023.01.10.09.39.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Jan 2023 09:39:24 -0800 (PST)
+        Tue, 10 Jan 2023 09:39:27 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D41211FFB8;
-	Tue, 10 Jan 2023 17:39:22 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 4ED601FFBD;
+	Tue, 10 Jan 2023 17:39:23 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -33,130 +33,103 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	John G Johnson <john.g.johnson@oracle.com>
-Subject: [PATCH 01/26] scripts/ci: update gitlab-runner playbook to use latest runner
-Date: Tue, 10 Jan 2023 17:38:57 +0000
-Message-Id: <20230110173922.265055-2-alex.bennee@linaro.org>
+Subject: [PATCH 05/26] build-sys: fix crlf-ending C code
+Date: Tue, 10 Jan 2023 17:39:01 +0000
+Message-Id: <20230110173922.265055-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230110173922.265055-1-alex.bennee@linaro.org>
 References: <20230110173922.265055-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: j3YaGngtVA8R
+X-TUID: VKFWnml2OlL+
 
-We were using quite and old runner on our machines and running into
-issues with stalling jobs. Gitlab in the meantime now reliably provide
-the latest packaged versions of the runner under a stable URL. This
-update:
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-  - creates a per-arch subdir for builds
-  - switches from binary tarballs to deb packages
-  - re-uses the same binary for the secondary runner
-  - updates distro check for second to 22.04
+On msys2, the shader-to-C script produces bad C:
+./ui/shader/texture-blit-vert.h:2:5: error: missing terminating " character [-Werror]
 
-Note this script isn't fully idempotent as we end up accumulating
-runners especially during testing. However we also want to be able to
-run twice with different GitLab keys (e.g. project and personal) so I
-think we just have to be mindful of that during testing.
+Fix it by changing the line ending from crlf to lf, and convert the
+script to Python (qemu build seems perl-free after that).
 
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Acked-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20230110132700.833690-2-marcandre.lureau@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - only register aarch32 runner, move service start post both registers
-  - tested on s390x
----
- scripts/ci/setup/gitlab-runner.yml | 56 +++++++-----------------------
- scripts/ci/setup/vars.yml.template |  2 --
- 2 files changed, 13 insertions(+), 45 deletions(-)
+ meson.build              |  2 +-
+ scripts/shaderinclude.pl | 16 ----------------
+ scripts/shaderinclude.py | 26 ++++++++++++++++++++++++++
+ 3 files changed, 27 insertions(+), 17 deletions(-)
+ delete mode 100644 scripts/shaderinclude.pl
+ create mode 100644 scripts/shaderinclude.py
 
-diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
-index 33128be85d..95d4199c03 100644
---- a/scripts/ci/setup/gitlab-runner.yml
-+++ b/scripts/ci/setup/gitlab-runner.yml
-@@ -50,60 +50,30 @@
+diff --git a/meson.build b/meson.build
+index 175517eafd..b3c6db8343 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2781,7 +2781,7 @@ config_host_data.set('CONFIG_SLIRP', slirp.found())
+ genh += configure_file(output: 'config-host.h', configuration: config_host_data)
  
-     - name: Download the matching gitlab-runner
-       get_url:
--        dest: /usr/local/bin/gitlab-runner
--        url: "https://s3.amazonaws.com/gitlab-runner-downloads/v{{ gitlab_runner_version  }}/binaries/gitlab-runner-{{ gitlab_runner_os }}-{{ gitlab_runner_arch }}"
--        owner: gitlab-runner
--        group: gitlab-runner
--        mode: u=rwx,g=rwx,o=rx
+ hxtool = find_program('scripts/hxtool')
+-shaderinclude = find_program('scripts/shaderinclude.pl')
++shaderinclude = find_program('scripts/shaderinclude.py')
+ qapi_gen = find_program('scripts/qapi-gen.py')
+ qapi_gen_depends = [ meson.current_source_dir() / 'scripts/qapi/__init__.py',
+                      meson.current_source_dir() / 'scripts/qapi/commands.py',
+diff --git a/scripts/shaderinclude.pl b/scripts/shaderinclude.pl
+deleted file mode 100644
+index cd3bb40b12..0000000000
+--- a/scripts/shaderinclude.pl
++++ /dev/null
+@@ -1,16 +0,0 @@
+-#!/usr/bin/env perl
+-use strict;
+-use warnings;
 -
--    - name: Register the gitlab-runner
--      command: "/usr/local/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list {{ ansible_facts[\"architecture\"] }},{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
--
--    - name: Install the gitlab-runner service using its own functionality
--      command: /usr/local/bin/gitlab-runner install --user gitlab-runner --working-directory /home/gitlab-runner
--      register: gitlab_runner_install_service_result
--      failed_when: "gitlab_runner_install_service_result.rc != 0 and \"already exists\" not in gitlab_runner_install_service_result.stderr"
-+        dest: "/root/"
-+        url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_{{ gitlab_runner_arch }}.deb"
- 
--    - name: Enable the gitlab-runner service
--      service:
--        name: gitlab-runner
--        state: started
--        enabled: yes
-+    - name: Install gitlab-runner via package manager
-+      apt: deb="/root/gitlab-runner_{{ gitlab_runner_arch }}.deb"
- 
--    - name: Download secondary gitlab-runner
--      get_url:
--        dest: /usr/local/bin/gitlab-runner-arm
--        url: "https://s3.amazonaws.com/gitlab-runner-downloads/v{{ gitlab_runner_version  }}/binaries/gitlab-runner-{{ gitlab_runner_os }}-arm"
--        owner: gitlab-runner
--        group: gitlab-runner
--        mode: u=rwx,g=rwx,o=rx
--      when:
--        - ansible_facts['distribution'] == 'Ubuntu'
--        - ansible_facts['architecture'] == 'aarch64'
--        - ansible_facts['distribution_version'] == '20.04'
-+    - name: Register the gitlab-runner
-+      command: "/usr/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list {{ ansible_facts[\"architecture\"] }},{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
- 
-+    # The secondary runner will still run under the single gitlab-runner service
-     - name: Register secondary gitlab-runner
--      command: "/usr/local/bin/gitlab-runner-arm register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list aarch32,{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
-+      command: "/usr/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list aarch32,{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
-       when:
-         - ansible_facts['distribution'] == 'Ubuntu'
-         - ansible_facts['architecture'] == 'aarch64'
--        - ansible_facts['distribution_version'] == '20.04'
-+        - ansible_facts['distribution_version'] == '22.04'
- 
--    - name: Install the secondary gitlab-runner service using its own functionality
--      command: /usr/local/bin/gitlab-runner-arm install --user gitlab-runner --working-directory /home/gitlab-runner/arm -n gitlab-runner-arm
-+    - name: Install the gitlab-runner service using its own functionality
-+      command: "/usr/bin/gitlab-runner install --user gitlab-runner --working-directory /home/gitlab-runner"
-       register: gitlab_runner_install_service_result
-       failed_when: "gitlab_runner_install_service_result.rc != 0 and \"already exists\" not in gitlab_runner_install_service_result.stderr"
--      when:
--        - ansible_facts['distribution'] == 'Ubuntu'
--        - ansible_facts['architecture'] == 'aarch64'
--        - ansible_facts['distribution_version'] == '20.04'
- 
--    - name: Enable the secondary gitlab-runner service
-+    - name: Enable the gitlab-runner service
-       service:
--        name: gitlab-runner-arm
-+        name: gitlab-runner
-         state: started
-         enabled: yes
--      when:
--        - ansible_facts['distribution'] == 'Ubuntu'
--        - ansible_facts['architecture'] == 'aarch64'
--        - ansible_facts['distribution_version'] == '20.04'
-diff --git a/scripts/ci/setup/vars.yml.template b/scripts/ci/setup/vars.yml.template
-index e48089761f..4b355fb80f 100644
---- a/scripts/ci/setup/vars.yml.template
-+++ b/scripts/ci/setup/vars.yml.template
-@@ -1,5 +1,3 @@
--# The version of the gitlab-runner to use
--gitlab_runner_version: 13.12.0
- # The URL of the gitlab server to use, usually https://gitlab.com unless you're
- # using a private GitLab instance
- gitlab_runner_server_url: https://gitlab.com
+-my $file = shift;
+-open FILE, "<", $file or die "open $file: $!";
+-my $name = $file;
+-$name =~ s|.*/||;
+-$name =~ s/[-.]/_/g;
+-print "static GLchar ${name}_src[] =\n";
+-while (<FILE>) {
+-    chomp;
+-    printf "    \"%s\\n\"\n", $_;
+-}
+-print "    \"\\n\";\n";
+-close FILE;
+diff --git a/scripts/shaderinclude.py b/scripts/shaderinclude.py
+new file mode 100644
+index 0000000000..ab2aade2cd
+--- /dev/null
++++ b/scripts/shaderinclude.py
+@@ -0,0 +1,26 @@
++#!/usr/bin/env python3
++#
++# Copyright (C) 2023 Red Hat, Inc.
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import sys
++import os
++
++
++def main(args):
++    file_path = args[1]
++    basename = os.path.basename(file_path)
++    varname = basename.replace('-', '_').replace('.', '_')
++
++    with os.fdopen(sys.stdout.fileno(), "wt", closefd=False, newline='\n') as stdout:
++        with open(file_path, "r", encoding='utf-8') as file:
++            print(f'static GLchar {varname}_src[] =', file=stdout)
++            for line in file:
++                line = line.rstrip()
++                print(f'    "{line}\\n"', file=stdout)
++            print('    "\\n";', file=stdout)
++
++
++if __name__ == '__main__':
++    sys.exit(main(sys.argv))
 -- 
 2.34.1

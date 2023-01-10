@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id z2-20020a5d6402000000b00297dcfdc90fsm11713916wru.24.2023.01.10.09.46.58
+        by smtp.gmail.com with ESMTPSA id s23-20020a1cf217000000b003d1e3b1624dsm20185141wmc.2.2023.01.10.09.46.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 10 Jan 2023 09:46:58 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 249D91FFCF;
-	Tue, 10 Jan 2023 17:39:26 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id A9AAC1FFCC;
+	Tue, 10 Jan 2023 17:39:25 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -34,71 +34,69 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	John G Johnson <john.g.johnson@oracle.com>,
 	Emilio Cota <cota@braap.org>
-Subject: [PATCH 26/26] cpu-exec: assert that plugin_mem_cbs is NULL after execution
-Date: Tue, 10 Jan 2023 17:39:22 +0000
-Message-Id: <20230110173922.265055-27-alex.bennee@linaro.org>
+Subject: [PATCH 22/26] plugins: make qemu_plugin_user_exit's locking order consistent with fork_start's
+Date: Tue, 10 Jan 2023 17:39:18 +0000
+Message-Id: <20230110173922.265055-23-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230110173922.265055-1-alex.bennee@linaro.org>
 References: <20230110173922.265055-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: xQ69Fi6PdOFT
+X-TUID: BVCWScDlbqg3
 
 From: Emilio Cota <cota@braap.org>
 
-Fixes: #1381
+To fix potential deadlocks as reported by tsan.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Emilio Cota <cota@braap.org>
-Message-Id: <20230108165107.62488-1-cota@braap.org>
-[AJB: manually applied follow-up fix]
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230109224954.161672-6-cota@braap.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/plugin.h | 4 ++++
- accel/tcg/cpu-exec.c  | 2 ++
- 2 files changed, 6 insertions(+)
+ plugins/core.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index e0ebedef84..fb338ba576 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -59,6 +59,8 @@ get_plugin_meminfo_rw(qemu_plugin_meminfo_t i)
- #ifdef CONFIG_PLUGIN
- extern QemuOptsList qemu_plugin_opts;
+diff --git a/plugins/core.c b/plugins/core.c
+index ccb770a485..728bacef95 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -500,10 +500,17 @@ void qemu_plugin_user_exit(void)
+     enum qemu_plugin_event ev;
+     CPUState *cpu;
  
-+#define QEMU_PLUGIN_ASSERT(cond) g_assert(cond)
-+
- static inline void qemu_plugin_add_opts(void)
- {
-     qemu_add_opts(&qemu_plugin_opts);
-@@ -250,6 +252,8 @@ void qemu_plugin_user_postfork(bool is_child);
+-    QEMU_LOCK_GUARD(&plugin.lock);
+-
++    /*
++     * Locking order: we must acquire locks in an order that is consistent
++     * with the one in fork_start(). That is:
++     * - start_exclusive(), which acquires qemu_cpu_list_lock,
++     *   must be called before acquiring plugin.lock.
++     * - tb_flush(), which acquires mmap_lock(), must be called
++     *   while plugin.lock is not held.
++     */
+     start_exclusive();
  
- #else /* !CONFIG_PLUGIN */
- 
-+#define QEMU_PLUGIN_ASSERT(cond)
-+
- static inline void qemu_plugin_add_opts(void)
- { }
- 
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 6bd29227f3..f272504611 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -504,6 +504,7 @@ static void cpu_exec_exit(CPUState *cpu)
-     if (cc->tcg_ops->cpu_exec_exit) {
-         cc->tcg_ops->cpu_exec_exit(cpu);
++    qemu_rec_mutex_lock(&plugin.lock);
+     /* un-register all callbacks except the final AT_EXIT one */
+     for (ev = 0; ev < QEMU_PLUGIN_EV_MAX; ev++) {
+         if (ev != QEMU_PLUGIN_EV_ATEXIT) {
+@@ -513,13 +520,12 @@ void qemu_plugin_user_exit(void)
+             }
+         }
      }
-+    QEMU_PLUGIN_ASSERT(cpu->plugin_mem_cbs == NULL);
- }
+-
+-    tb_flush(current_cpu);
+-
+     CPU_FOREACH(cpu) {
+         qemu_plugin_disable_mem_helpers(cpu);
+     }
++    qemu_rec_mutex_unlock(&plugin.lock);
  
- void cpu_exec_step_atomic(CPUState *cpu)
-@@ -1031,6 +1032,7 @@ int cpu_exec(CPUState *cpu)
++    tb_flush(current_cpu);
+     end_exclusive();
  
-             cpu_loop_exec_tb(cpu, tb, pc, &last_tb, &tb_exit);
- 
-+            QEMU_PLUGIN_ASSERT(cpu->plugin_mem_cbs == NULL);
-             /* Try to align the host and virtual clocks
-                if the guest is in advance */
-             align_clocks(&sc, cpu);
+     /* now it's safe to handle the exit case */
 -- 
 2.34.1

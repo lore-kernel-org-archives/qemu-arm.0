@@ -1,237 +1,204 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2991475ejc;
-        Tue, 10 Jan 2023 00:31:23 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvaY2KGyDDrI/Gft1AHgP7VvhCaggnq51kENE28M20N0FCvI+ohCBUp1upKQ4Opi/kTt/dV
-X-Received: by 2002:a05:622a:a0b:b0:3a6:a7f6:701d with SMTP id bv11-20020a05622a0a0b00b003a6a7f6701dmr108344690qtb.36.1673339483225;
-        Tue, 10 Jan 2023 00:31:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673339483; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2994914ejc;
+        Tue, 10 Jan 2023 00:38:31 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvD7dnxDN50NkNq8zSwE+ymIGFdLw6HftMfthSONZvAgOSBLXPrGMPxfE8Ysrr7GLsEAQlH
+X-Received: by 2002:ad4:568d:0:b0:532:23db:c116 with SMTP id bd13-20020ad4568d000000b0053223dbc116mr16666234qvb.46.1673339911566;
+        Tue, 10 Jan 2023 00:38:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673339911; cv=none;
         d=google.com; s=arc-20160816;
-        b=vOm0wlQoY/V3uCRcJ17EEymC2v8rwqJKx96jEpnEBRmZVWLVSuDEMvpV9ywL7WJxQP
-         ac8w+DaYAk5VG1uoxHsiXcApfA0iAxH2tNuD8nJFjX5yP93SxNjySCGJu0BbbYxhUfRI
-         Dhw5X0K4dZchNUTot62UUVEVHDECYabzICN9TIgzfXOwy0/Z0QnlcRYsx8vmScoRRjEg
-         ijE6vFFuhFiCkUOts9xD8evAZbj335qjt/3bvugR7lzYMagoZA1A+9P3EzbSp9AnRG0a
-         EFESI4XW75jPCpkgXR4FwJP9DgwJJJ2ne6N4wZiS/8VzgrqkjTiAqAmc1TnBg6awLZ2M
-         /eCw==
+        b=EvCyYd2XSmXoV3cRA00v89SBrmOfCat5ccJAQ8cr5pJ5fCeIBBnpBbKlyWE0zKoTy4
+         tHghl8saCInsYlq2+vCcVmETEs0rXiFHG+W69+dWZ3a0OI82cLWFc/K8U5R1sMQRBvZm
+         up51Z3davFZvzshs1PuXglXVqe8/gw0s/rzTmh83RI2EuMgGLSTSq+AjKdjkt7g8j0Cq
+         hGQBMfRUl63c8fVCVwbB9ZOjD48ibfiSn6eHUPgbKmifjWAxWzCpH3j+T9Ukq3V/NWL1
+         oEmFpyiU79Uw9j0aHeA9Hdr/7dOZhTN/6DpEbr03hTwTs9PTA3lB7BwT/sXwWiwgq4JJ
+         z4SA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=s3fAH0u4CO+FRORAz0QlHL8PSjAcVIMkkv12suNzz80=;
-        b=ZRjjiHWYdi/wvJUd5YquhgjyVxMb9ODm25p7UodNHbDt+QGVcC3IwZiXHjkBMCAY6j
-         An5pXdWpSvo1L2fCtLHRP+puxGTaxF1n39gD9D8FJnbP3vx0b5YXiqJyT39QaPCEM24J
-         JGcmE4dSdq1EjXgLZzlRnvFwdbgb0y7JrTOpelEig+TECe3dV6zJb6mIz1MJ/IPg/Rbk
-         Sx1VPzAi7ME3Xu1f26Df89Po/G5LWIjMDeICPvcJb/AL3/xfjgTCVic0OzRr7gkuT4SD
-         mJ5p1EkJhC3fhZ90Hp7DlW7bm19lj+jlOI/oXdisjK27tKnGvgL/DLQeqm/R4OlBbzCw
-         mMCw==
+        bh=/ti15IV9GQmTjc2dtF2pUFnsEJ5Eg/sMdeoZUB/d2rk=;
+        b=Kpq0V4bdkoPjNPxsM+tQsneAkP7ajToWZGxDWOwUV59V5MgrnAFC5xCBxhshwisRnJ
+         EmhztDVDQfsZylQXLz/MkxjRYcwhyA58ccygRuE5J1sO0EXsgFOw14pEO0HrE+vWrnqh
+         lhowqvmG0ltoqScOMpV1Y3vhXT2PO1dgieXc3q/M0f4ZBqkA/91YaZVrX3KwS9k2JMYy
+         L1a9vDE9YXhaOnjxnkN6f4mYfPMwxXcDlNPZSXCkt/Tq0M4HBaXlhnGPloon3cMw5llY
+         LmZWtwVY++dMVSL2bIBpSeFXDWwaNPb8wW5sBR1DwbTIXb9NIuh/JuAPMGyhEcHbxdjG
+         R02Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kqb4yADb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vNOhICyD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14-20020a05620a454e00b00704cf5d76f7si6299392qkp.511.2023.01.10.00.31.23
+        by mx.google.com with ESMTPS id l3-20020a37f903000000b006fa0fed9bdbsi5689605qkj.324.2023.01.10.00.38.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Jan 2023 00:31:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Jan 2023 00:38:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kqb4yADb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vNOhICyD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pFA1A-0006ho-S4; Tue, 10 Jan 2023 03:30:00 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pF9wi-0005Ys-Sy; Tue, 10 Jan 2023 03:25:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFA19-0006gx-EB
- for qemu-devel@nongnu.org; Tue, 10 Jan 2023 03:29:59 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pF9wg-0005X3-OX
+ for qemu-arm@nongnu.org; Tue, 10 Jan 2023 03:25:22 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFA16-0006KD-M8
- for qemu-devel@nongnu.org; Tue, 10 Jan 2023 03:29:59 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- k26-20020a05600c1c9a00b003d972646a7dso11167864wms.5
- for <qemu-devel@nongnu.org>; Tue, 10 Jan 2023 00:29:54 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pF9wf-0004Wg-76
+ for qemu-arm@nongnu.org; Tue, 10 Jan 2023 03:25:22 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ p1-20020a05600c1d8100b003d8c9b191e0so9181041wms.4
+ for <qemu-arm@nongnu.org>; Tue, 10 Jan 2023 00:25:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=s3fAH0u4CO+FRORAz0QlHL8PSjAcVIMkkv12suNzz80=;
- b=kqb4yADbvtKvCnlbrNu9NIj6vjEzfUz7MjJsVWdfHRHd6SVBf7j6Y2l6Aes7kg+kD2
- ttmODfhIPtZ2UOQN3OPJZ+3rRT+n/nnVYzGhYMeUWHny9svEcKlgYOKS9LPcYzOn2YtH
- pTEsFeyNtdqwiSIspy/7REabfK/W1EYM8RoaFL7kKGsI06KOWTDv6h7fyKfDk3t758Za
- rRTlAz+HBn6e7+LgWhFPDnhOoPHz+sb6v23dVQ3n/djjFEHPIVK/3IiBHLMoFyusudj6
- mpg9YXXB99SwHV2vldlwtZXIcBvnLCZsCcctHF7MBJp3iXDaWfvl2QbmRF/f9/L+8j+l
- G3ng==
+ bh=/ti15IV9GQmTjc2dtF2pUFnsEJ5Eg/sMdeoZUB/d2rk=;
+ b=vNOhICyDsZR3mOCc5Zv7CZ1MbzPMBaS4IWceBba88/ctkdVbz6hkItpl6oDg6nRAWt
+ 6qe6qZNiYAL+Q6/7DmDidIow6A/nzJubVX9yOv5K+Su9C8QN/77t7X5j+9XwM8sVgcFT
+ qa1TKcG19moivkp0pmROVamEAQdEt7phT7yY0MUpayk5iwk1Yw38IzdLl6VWJacz1JT6
+ 7Qa+nymP+FzzdlW2ixoBJCENtC0VS3jIH5AfT/HFauROJYGlvv5umEWZfNZ6rhXCp4vy
+ iL0Y1s/YD+sGAxaDZU9OKXseKdN1giK+TCLmSRlaNSBAmIvjWz/eAc9pAHJu0tKxyOht
+ ilGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=s3fAH0u4CO+FRORAz0QlHL8PSjAcVIMkkv12suNzz80=;
- b=Q17+13NeWW6AUnaG33bxq5cM8IqSNdFz34YRv7gwhYteW6B5Xn5gDAfmGKvsZXSELa
- Yz0y/wA63QPhaAVrkkhTXN5zSbZwurxe1LNCc791EVB/3tsx78CsucOtTXm0XbRrLaty
- xLRu5E6doFVSiGFewx5G+N8fSQ/oIR+fLXlAc8cXKQvlgWqBZcGY1y6XZu6KxdDzPKCP
- ar10RcId1nz5WdBkBeLA7HXgvocJXRhexbULRV+03Nywu9k51yVKGGfF/HjeqXWvws8B
- jAY4vUoA2hd9/lKZqEEwYmfCDKpXZ54+mnmowtvaRumCqJIo9lgU3p7ipf8AQRF523O6
- ebQQ==
-X-Gm-Message-State: AFqh2krTeeDG682boMC7GuLjcXzrmeheTcolbB37//FCiZVUTaORDn8u
- LjqEdkp8uuycecUrbi/t6Od0XBJnEcihHpkA
-X-Received: by 2002:a05:600c:248:b0:3d3:5d47:271c with SMTP id
- 8-20020a05600c024800b003d35d47271cmr47600987wmj.12.1673339393679; 
- Tue, 10 Jan 2023 00:29:53 -0800 (PST)
+ bh=/ti15IV9GQmTjc2dtF2pUFnsEJ5Eg/sMdeoZUB/d2rk=;
+ b=6zKkyEUrRmZbTWMQZCwhzFcDp/OBbVUYYR2zsHFzuNqd5PGaU1Tfj8APmr7aQDvoxK
+ B0jZme5WvzEGe8IKIK3FM3kWIdk0I7nvM2CmYiUk1X16LpnFpEnTZ0NqSm1b6Q3PFxQq
+ T6v+tNWGLYBkUsNtsa9d8SvRu7baKb+d7WSf0Mr3lX4CIZ2u7rU5ci1TRQ+FHJ/zCGT5
+ qbRNZ0e4g+mLDEmIFSur1PjCIbow4oV4ucGOtQxwdykUvUGtC5qbTaARPH6qGu9r107A
+ v8zRIwJSn5m7hqgtjUfN/jvCIJ5k3Xqxe2EpVM7BDaFF5Z/l6Nb03U73NpEWXIjY7yXJ
+ shQQ==
+X-Gm-Message-State: AFqh2ko+blnJNkU6AaNH0iQx+hCE2xiQEBwlvBrIVRKBDV7N0LegWSQa
+ gyrvK4ZZE33GSqAWW3eU1yHkOQ==
+X-Received: by 2002:a05:600c:2318:b0:3c6:e63e:23e9 with SMTP id
+ 24-20020a05600c231800b003c6e63e23e9mr51419102wmo.24.1673339119781; 
+ Tue, 10 Jan 2023 00:25:19 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- f11-20020a05600c4e8b00b003d04e4ed873sm20981447wmq.22.2023.01.10.00.29.52
+ g14-20020a05600c310e00b003cf5ec79bf9sm15275356wmo.40.2023.01.10.00.25.19
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 10 Jan 2023 00:29:53 -0800 (PST)
+ Tue, 10 Jan 2023 00:25:19 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 4/5] hw/i2c/bitbang_i2c: Trace state changes
-Date: Tue, 10 Jan 2023 09:29:31 +0100
-Message-Id: <20230110082932.24386-5-philmd@linaro.org>
+Subject: [PATCH v2 2/5] hw/i2c/versatile_i2c: Replace VersatileI2CState ->
+ ArmSbconI2CState
+Date: Tue, 10 Jan 2023 09:25:05 +0100
+Message-Id: <20230110082508.24038-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230110082932.24386-1-philmd@linaro.org>
-References: <20230110082932.24386-1-philmd@linaro.org>
+In-Reply-To: <20230110082508.24038-1-philmd@linaro.org>
+References: <20230110082508.24038-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KJBui2jpVP87
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ulTs9eAlLWTh
 
-Trace bitbang state machine changes with trace events.
+In order to rename TYPE_VERSATILE_I2C as TYPE_ARM_SBCON_I2C
+(the formal ARM naming), start renaming its state.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/i2c/bitbang_i2c.c | 33 ++++++++++++++++++++++++++++-----
- hw/i2c/trace-events  |  3 +++
- 2 files changed, 31 insertions(+), 5 deletions(-)
+ hw/i2c/versatile_i2c.c         | 10 +++++-----
+ include/hw/i2c/arm_sbcon_i2c.h |  3 +--
+ 2 files changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
-index bf4b781393..8a67ff6fae 100644
---- a/hw/i2c/bitbang_i2c.c
-+++ b/hw/i2c/bitbang_i2c.c
-@@ -16,6 +16,7 @@
- #include "hw/sysbus.h"
- #include "qemu/module.h"
+diff --git a/hw/i2c/versatile_i2c.c b/hw/i2c/versatile_i2c.c
+index 52a650f45e..ee095762e5 100644
+--- a/hw/i2c/versatile_i2c.c
++++ b/hw/i2c/versatile_i2c.c
+@@ -30,7 +30,7 @@
  #include "qom/object.h"
-+#include "trace.h"
  
- //#define DEBUG_BITBANG_I2C
+ typedef ArmSbconI2CState VersatileI2CState;
+-DECLARE_INSTANCE_CHECKER(VersatileI2CState, VERSATILE_I2C,
++DECLARE_INSTANCE_CHECKER(ArmSbconI2CState, VERSATILE_I2C,
+                          TYPE_VERSATILE_I2C)
  
-@@ -26,15 +27,41 @@ do { printf("bitbang_i2c: " fmt , ## __VA_ARGS__); } while (0)
- #define DPRINTF(fmt, ...) do {} while(0)
- #endif
  
-+/* bitbang_i2c_state enum to name */
-+static const char *sname[] = {
-+#define NAME(e) [e] = stringify(e)
-+    NAME(STOPPED),
-+    [SENDING_BIT7] = "SENDING_BIT7 (START)",
-+    NAME(SENDING_BIT6),
-+    NAME(SENDING_BIT5),
-+    NAME(SENDING_BIT4),
-+    NAME(SENDING_BIT3),
-+    NAME(SENDING_BIT2),
-+    NAME(SENDING_BIT1),
-+    NAME(SENDING_BIT0),
-+    NAME(WAITING_FOR_ACK),
-+    [RECEIVING_BIT7] = "RECEIVING_BIT7 (ACK)",
-+    NAME(RECEIVING_BIT6),
-+    NAME(RECEIVING_BIT5),
-+    NAME(RECEIVING_BIT4),
-+    NAME(RECEIVING_BIT3),
-+    NAME(RECEIVING_BIT2),
-+    NAME(RECEIVING_BIT1),
-+    NAME(RECEIVING_BIT0),
-+    NAME(SENDING_ACK),
-+    NAME(SENT_NACK)
-+#undef NAME
-+};
-+
- static void bitbang_i2c_set_state(bitbang_i2c_interface *i2c,
-                                   bitbang_i2c_state state)
+@@ -45,7 +45,7 @@ REG32(CONTROL_CLR, 4)
+ static uint64_t versatile_i2c_read(void *opaque, hwaddr offset,
+                                    unsigned size)
  {
-+    trace_bitbang_i2c_state(sname[i2c->state], sname[state]);
-     i2c->state = state;
- }
+-    VersatileI2CState *s = opaque;
++    ArmSbconI2CState *s = opaque;
  
- static void bitbang_i2c_enter_stop(bitbang_i2c_interface *i2c)
+     switch (offset) {
+     case A_CONTROL_SET:
+@@ -60,7 +60,7 @@ static uint64_t versatile_i2c_read(void *opaque, hwaddr offset,
+ static void versatile_i2c_write(void *opaque, hwaddr offset,
+                                 uint64_t value, unsigned size)
  {
--    DPRINTF("STOP\n");
-     if (i2c->current_addr >= 0)
-         i2c_end_transfer(i2c->bus);
-     i2c->current_addr = -1;
-@@ -73,7 +100,6 @@ int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level)
-             return bitbang_i2c_nop(i2c);
-         }
-         if (level == 0) {
--            DPRINTF("START\n");
-             /* START condition.  */
-             bitbang_i2c_set_state(i2c, SENDING_BIT7);
-             i2c->current_addr = -1;
-@@ -122,7 +148,6 @@ int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level)
-             /* NACK (either addressing a nonexistent device, or the
-              * device we were sending to decided to NACK us).
-              */
--            DPRINTF("Got NACK\n");
-             bitbang_i2c_set_state(i2c, SENT_NACK);
-             bitbang_i2c_enter_stop(i2c);
-             return bitbang_i2c_ret(i2c, 1);
-@@ -147,11 +172,9 @@ int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level)
+-    VersatileI2CState *s = opaque;
++    ArmSbconI2CState *s = opaque;
  
-     case SENDING_ACK:
-         if (data != 0) {
--            DPRINTF("NACKED\n");
-             bitbang_i2c_set_state(i2c, SENT_NACK);
-             i2c_nack(i2c->bus);
-         } else {
--            DPRINTF("ACKED\n");
-             bitbang_i2c_set_state(i2c, RECEIVING_BIT7);
-         }
-         return bitbang_i2c_ret(i2c, 1);
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index af181d43ee..2a479c1c12 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -1,5 +1,8 @@
- # See docs/devel/tracing.rst for syntax documentation.
+     switch (offset) {
+     case A_CONTROL_SET:
+@@ -86,7 +86,7 @@ static const MemoryRegionOps versatile_i2c_ops = {
+ static void versatile_i2c_init(Object *obj)
+ {
+     DeviceState *dev = DEVICE(obj);
+-    VersatileI2CState *s = VERSATILE_I2C(obj);
++    ArmSbconI2CState *s = VERSATILE_I2C(obj);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+     I2CBus *bus;
  
-+# bitbang_i2c.c
-+bitbang_i2c_state(const char *old_state, const char *new_state) "state %s -> %s"
-+
- # core.c
+@@ -100,7 +100,7 @@ static void versatile_i2c_init(Object *obj)
+ static const TypeInfo versatile_i2c_info = {
+     .name          = TYPE_VERSATILE_I2C,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(VersatileI2CState),
++    .instance_size = sizeof(ArmSbconI2CState),
+     .instance_init = versatile_i2c_init,
+ };
  
- i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
+diff --git a/include/hw/i2c/arm_sbcon_i2c.h b/include/hw/i2c/arm_sbcon_i2c.h
+index f54d1e5413..0101422d9d 100644
+--- a/include/hw/i2c/arm_sbcon_i2c.h
++++ b/include/hw/i2c/arm_sbcon_i2c.h
+@@ -21,8 +21,7 @@
+ #define TYPE_ARM_SBCON_I2C TYPE_VERSATILE_I2C
+ 
+ typedef struct ArmSbconI2CState ArmSbconI2CState;
+-DECLARE_INSTANCE_CHECKER(ArmSbconI2CState, ARM_SBCON_I2C,
+-                         TYPE_ARM_SBCON_I2C)
++DECLARE_INSTANCE_CHECKER(ArmSbconI2CState, ARM_SBCON_I2C, TYPE_ARM_SBCON_I2C)
+ 
+ struct ArmSbconI2CState {
+     /*< private >*/
 -- 
 2.38.1
 

@@ -1,38 +1,38 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3316706ejc;
-        Tue, 10 Jan 2023 08:44:32 -0800 (PST)
-X-Received: by 2002:a05:600c:5101:b0:3d9:f806:2d26 with SMTP id o1-20020a05600c510100b003d9f8062d26mr2534225wms.7.1673369072522;
-        Tue, 10 Jan 2023 08:44:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673369072; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3316768ejc;
+        Tue, 10 Jan 2023 08:44:38 -0800 (PST)
+X-Received: by 2002:a05:600c:3b0a:b0:3d9:91cb:bbff with SMTP id m10-20020a05600c3b0a00b003d991cbbbffmr35019314wms.26.1673369077904;
+        Tue, 10 Jan 2023 08:44:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673369077; cv=none;
         d=google.com; s=arc-20160816;
-        b=MQua60Oyg6ilLdgMJV/KgBBPpmKzIVvT5XTq/K5lLQkeZHIjivW6RqvhEvAQQMsJH5
-         zmNIAnrydcWWeBY78GEWbFPEZAUnHpBH7VC4ejP+KtnsAVj3xIr1q8lEtZr7FMHcU78Y
-         TyfeyhLYjiZ6lEn6l1teQLbx/QYXr1Kmbby6PL6u5+EKsHzFCS5jXVYrgzdjFC2i2ZRW
-         zEg76EeQyN0hcFcphLFyTW4xsXUR661vNhJrXU294cjIpml1BE8g2I5VUNWBVVejEvIC
-         Ouds7pmXcWarcvybv1AMg3a5q88L3U/SP9EnyJZzfFW0c/rk5bosJPCMpn5sKgypeR0k
-         n7nw==
+        b=Gj9tvEa4Qm+3bbWEPA565Ci9ZzN1z6n2atjhe74k86W7pAapwDfFP7BKCpAcSqfssE
+         3ZzbdPqFO68kLj7LWfZrK2TZacptX3JbqGbRfhPJpkSM1DASp8yR5/osvDwtNPcRjc2h
+         BuJ3kEpRYE4M0XOok4lF/VJOWCljbxml1XozmqLFgDsah3SmAHQTMpnzQk1Yf3bwSnae
+         bjIpcuAAm8/ujboX8ZUaoWc2qJ5JWegsml3EtS83o0Asl6M7A+GE30w8ek1msZKBrPzs
+         DPpn4kgicbG4pvyxVx68mC7IzEVLEuTcmi7OKRuug9P6fjTcpfRRsxtpYzsSOUt1bUxM
+         YMuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=djWjHp1PKVzuHPGY/PIVLhSBEcAmWoL71xzvCOJIpjc=;
-        b=ABM4Vzf+fjl5HpLYS0BOI/H11kYJjJWVBzPGk8WQvj862GefslogZ7f2udmumpOcSZ
-         pHLhCLJsoUOHryu+rbgFW4ZL3wTQJaLClVw9FJ5Zptnd393SBPd/UGz8JgDun3e7UfW0
-         s/q+dx4ItV5ietbesekaQgBQFS8otW4h7utzldgZD1Wq0rfL0uP+fmtA2xhWD5cD+JjR
-         QIumxww0WgphScIFe6QKtOrudYxI+vvq4Zwy7+SnKwVs8GDLMU+e8/amMgKNBn7dKEiw
-         Y9lg1moFqu4zaDYoUyVOwFozIPCR9nGVSem3SsfurM6XdModo8U+ZNZ7xFpc/VYA8oOT
-         RkPg==
+        bh=KPo282/uew3iuzImHfNxHuSGZYMfkFiyRCBHN2R+reg=;
+        b=SSq1GtQPj1HDb9K5JXnmhV5QJL7C6ymUOkjTE2miIZ7IX6IgG3GYNzl5+yyKA+0r99
+         zIdnCfw/YCv9XPrU9S3oipLsR60bZTT65NTYNkdTgOQeParj4GqC2WpdRXYTIqVGlDcv
+         7t1LBQn67zjPAuaCCZeXqHlZzlHhNxBOnNsQKJF4TRdJJt8r9MDX5CmV0QJsPPn/Bo7b
+         SnFj0zCS9Z67Bo48+Dlj5VGCwrNdQm03rAzru0ca1AwYDmnlomCcCM0o8V5oFOOrAPm5
+         3kSZAbaY22W/FyLnDXCnXDEugm6tVARP8pzocSbextsYwo/J7+CSm1M8KMcaRWmGSrsH
+         HcRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TuKlboWP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qrhy6Iw7;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id iz10-20020a05600c554a00b003d1ce248663sor3762841wmb.36.2023.01.10.08.44.32
+        by mx.google.com with SMTPS id p22-20020a05600c359600b003d9e06412d7sor3156042wmq.39.2023.01.10.08.44.37
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 10 Jan 2023 08:44:32 -0800 (PST)
+        Tue, 10 Jan 2023 08:44:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TuKlboWP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qrhy6Iw7;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,35 +40,35 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=djWjHp1PKVzuHPGY/PIVLhSBEcAmWoL71xzvCOJIpjc=;
-        b=TuKlboWPbvposCOlgrcg/KtwgV7jHLYx+hFvF4LOl9zNKz1818Qe1lc9bidbuyNIUt
-         pFVoxgPqm5IisID+FIwou32Oz9NwA3VzngIm6WzJ6nnwElJlEzlyy9ue97dtOXrMJ9WW
-         g3hslvZe4IXrXe4nFrZaZ91/Q4zyn6dEVXYj0vnsdpPkxRxdOD3h6jGUaZkNi21cHdUp
-         cU8bAlIJjfIKEdVmStkrtVVHPrWG9igsJMCDuw/5gbI99xDq8QvNyzS66wnVyieIjybO
-         xtloNwF+GpzX5qK3EahOHfJ0fn0Ehjowosw+fm/uPqaIWhOzx2uM1exlTK5n4+/9SVax
-         g5DQ==
+        bh=KPo282/uew3iuzImHfNxHuSGZYMfkFiyRCBHN2R+reg=;
+        b=qrhy6Iw759H6bZICrx9tRM8mKmb8jMMnw3X84KMracRcoxgvKt+z+wJpSbexd1bLqU
+         pLPDnLcFB93U4GKltHY5i2okbajMQhHKW1p3HrfHeyy87gl0zpI/TTn9NNHqZP/9DqgO
+         Pul9nhnEEps5gNTZ34JSVxeo6q4Tas6hazG9DPuNGSAwQ5l0FnYsd8UTqg8exB6E4qzR
+         KZxrX1nKP3jJS5mnI5oB1PiW27r7/h0KY61vneSxKMdR6QjOzcHmIN2sOe7FkTeRfvkX
+         QVQm/hFCbEa+PoUBPXrZe3DJD06aMslLARl1dDIRCyPOgMRHEulXla+0PpQs4XgcwxR0
+         y7+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=djWjHp1PKVzuHPGY/PIVLhSBEcAmWoL71xzvCOJIpjc=;
-        b=beF71iNqmyFxbXe3vat8G2LYFvaGTm4ekFp1HsP0k+3tmaunV5aHRFhcqZJU7+2IcA
-         ZZIxU2TjoAX0Bs6UVv2GXZlHYWMvuNrbH5XAsgaTCrBBBKBwrxJkQ9yZ4QDz1jrz43uY
-         Iils1kVPILOFogYDB8zFGvHcnNXxiz8ED4eHMd45xOun+CmI1GbfGHcg0VzjZJGx1/SD
-         q50jl5m2hyTU5GtWyfE1+eXAKy+tG5aO1k05wE728nZRBDt8Hmoe5zIePjuGldCemjt+
-         zriHPLIG/H96kvZ/WP77n9Zg5vGqYk8hsvwqy86SQ+yzu1j9aSFW0D7KFMyOR+Yt+b7p
-         qh3g==
-X-Gm-Message-State: AFqh2krRT+QL/WI6RMC5fD1HKjUYP6mwOrTB8Rkptu10tHmQKPmNCfCK
-	53zqmiknuwVKRwlIMj1Fu2fltqiI
-X-Google-Smtp-Source: AMrXdXujPhEd18uM6h37MjYfydsUbn/lQFdDS1699jE+ilIpEh3QV6TRVmuyM6+ruYeD0FkCa3UUWw==
-X-Received: by 2002:a05:600c:3c87:b0:3d9:e8b3:57f9 with SMTP id bg7-20020a05600c3c8700b003d9e8b357f9mr8522703wmb.8.1673369072346;
-        Tue, 10 Jan 2023 08:44:32 -0800 (PST)
+        bh=KPo282/uew3iuzImHfNxHuSGZYMfkFiyRCBHN2R+reg=;
+        b=gr6LCrU3+pJt4SZdUFX2fFovHXx6YsB/Tdke558ipwbvCuJe3gtcP/PF7o5RcFdXOm
+         4+L89pm2bGQtRp9ESk9hYsB6pZluMXVU8OknTNgZYzUgSZ0JTkS3EYiSzs4S5bPCQlYd
+         qBEkl2bURki9U3zS9aU/XNNPOnQ/c1E2A/DlDiLxngj+6ae87KZllFSPwlpyzQOa60RZ
+         WgcEaGKWgEmBs0++MbLgzGV+DWIQPg8uB24EXRrN4dJFjAs+GeYScFRAs7VK6SlkUUuN
+         JWRPRBvmhcBatvUSb/kTpbGjyjb2tZMiq+ORwB+8ZBiny5I8wYcSOQ9av8UySVT0EnOI
+         FW0g==
+X-Gm-Message-State: AFqh2kpTfFBrK0dBD0eC4fxVhRWYpq3K9YGBlEGXDblgSdY0sjdlAZtu
+	tJDTsF+gtjxkRwTXFz4bDEX+1bn6
+X-Google-Smtp-Source: AMrXdXt8S3GJKiZmzYyQyopJp1IgN21n6HZEifW+v2c7deRR5IBMdGg9bQebV+JCGVDr3lEV1HWbYg==
+X-Received: by 2002:a05:600c:1f11:b0:3d0:57ea:319c with SMTP id bd17-20020a05600c1f1100b003d057ea319cmr49741887wmb.13.1673369077657;
+        Tue, 10 Jan 2023 08:44:37 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id 2-20020a05600c228200b003d9e00dfccfsm12905306wmf.8.2023.01.10.08.44.30
+        by smtp.gmail.com with ESMTPSA id m18-20020a05600c4f5200b003c71358a42dsm26960870wmq.18.2023.01.10.08.44.36
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 10 Jan 2023 08:44:31 -0800 (PST)
+        Tue, 10 Jan 2023 08:44:37 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: ale@rev.ng,
@@ -85,81 +85,140 @@ Cc: ale@rev.ng,
 	Antony Pavlov <antonynpavlov@gmail.com>,
 	Jan Kiszka <jan.kiszka@web.de>,
 	Beniamino Galvani <b.galvani@gmail.com>
-Subject: [PATCH 04/18] hw/arm: Use full "target/arm/cpu.h" path to include target's "cpu.h"
-Date: Tue, 10 Jan 2023 17:43:52 +0100
-Message-Id: <20230110164406.94366-5-philmd@linaro.org>
+Subject: [PATCH 05/18] target/arm: Move CPU QOM type definitions to "hw/arm/cpu.h"
+Date: Tue, 10 Jan 2023 17:43:53 +0100
+Message-Id: <20230110164406.94366-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230110164406.94366-1-philmd@linaro.org>
 References: <20230110164406.94366-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8TBmSP7E1gHf
+X-TUID: uDsRKmH5tAiP
 
-First we want to introduce a new "cpu.h" header in the "hw/arm/"
-namespace; second we would like to get rid of '-I target/$ARCH/'
-in the CPPFLAGS.
-Use the full path to "cpu.h": "target/arm/cpu.h".
+Units including "target/arm/cpu.h" can't be built once via meson's
+softmmu_ss[] source set. Since this header depends on specific
+definitions such the word size (32 or 64-bit), for ARM such units
+must go to the per-target arm_ss[].
+
+We want to expose few architectural definitions to hardware models.
+
+Start by exposing the ARM CPU QOM types to files under hw/
+via the new "hw/arm/cpu.h" header. Doing so, less HW models
+will require access to "target/arm/cpu.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/arm/digic.h      | 2 +-
- include/hw/arm/fsl-imx6.h   | 2 +-
- include/hw/arm/fsl-imx6ul.h | 2 +-
- include/hw/arm/fsl-imx7.h   | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+ include/hw/arm/cpu.h | 28 ++++++++++++++++++++++++++++
+ target/arm/cpu-qom.h | 13 +------------
+ target/arm/cpu.h     |  8 ++++----
+ 3 files changed, 33 insertions(+), 16 deletions(-)
+ create mode 100644 include/hw/arm/cpu.h
 
-diff --git a/include/hw/arm/digic.h b/include/hw/arm/digic.h
-index 8f2735c284..646802806e 100644
---- a/include/hw/arm/digic.h
-+++ b/include/hw/arm/digic.h
-@@ -18,7 +18,7 @@
- #ifndef HW_ARM_DIGIC_H
- #define HW_ARM_DIGIC_H
+diff --git a/include/hw/arm/cpu.h b/include/hw/arm/cpu.h
+new file mode 100644
+index 0000000000..0c5d6ca2a8
+--- /dev/null
++++ b/include/hw/arm/cpu.h
+@@ -0,0 +1,28 @@
++/*
++ * ARM / Aarch64 CPU definitions
++ *
++ * This file contains architectural definitions consumed by hardware models
++ * implementations (files under hw/).
++ * Definitions not required to be exposed to hardware has to go in the
++ * architecture specific "target/arm/cpu.h" header.
++ *
++ * Copyright (c) 2003 Fabrice Bellard
++ *
++ * SPDX-License-Identifier: LGPL-2.1-or-later
++ */
++#ifndef HW_ARM_CPU_H
++#define HW_ARM_CPU_H
++
++#include "hw/core/cpu.h"
++
++#define TYPE_ARM_CPU "arm-cpu"
++OBJECT_DECLARE_CPU_TYPE(ARMCPU, ARMCPUClass, ARM_CPU)
++
++#define TYPE_AARCH64_CPU "aarch64-cpu"
++typedef struct AArch64CPUClass AArch64CPUClass;
++DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU, TYPE_AARCH64_CPU)
++
++#define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
++#define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
++
++#endif
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 514c22ced9..b98904b6bc 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -21,16 +21,11 @@
+ #define QEMU_ARM_CPU_QOM_H
  
--#include "cpu.h"
-+#include "target/arm/cpu.h"
- #include "hw/timer/digic-timer.h"
- #include "hw/char/digic-uart.h"
- #include "qom/object.h"
-diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
-index 83291457cf..9d24d98189 100644
---- a/include/hw/arm/fsl-imx6.h
-+++ b/include/hw/arm/fsl-imx6.h
-@@ -33,7 +33,7 @@
- #include "hw/usb/chipidea.h"
- #include "hw/usb/imx-usb-phy.h"
- #include "exec/memory.h"
--#include "cpu.h"
-+#include "target/arm/cpu.h"
- #include "qom/object.h"
- 
- #define TYPE_FSL_IMX6 "fsl-imx6"
-diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
-index 7812e516a5..4f42fe4192 100644
---- a/include/hw/arm/fsl-imx6ul.h
-+++ b/include/hw/arm/fsl-imx6ul.h
-@@ -37,7 +37,7 @@
- #include "hw/usb/chipidea.h"
- #include "hw/usb/imx-usb-phy.h"
- #include "exec/memory.h"
--#include "cpu.h"
-+#include "target/arm/cpu.h"
- #include "qom/object.h"
- 
- #define TYPE_FSL_IMX6UL "fsl-imx6ul"
-diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
-index 4e5e071864..ed8c1ec813 100644
---- a/include/hw/arm/fsl-imx7.h
-+++ b/include/hw/arm/fsl-imx7.h
-@@ -38,7 +38,7 @@
- #include "hw/net/imx_fec.h"
- #include "hw/pci-host/designware.h"
- #include "hw/usb/chipidea.h"
--#include "cpu.h"
-+#include "target/arm/cpu.h"
+ #include "hw/core/cpu.h"
++#include "hw/arm/cpu.h"
  #include "qom/object.h"
  
- #define TYPE_FSL_IMX7 "fsl-imx7"
+ struct arm_boot_info;
+ 
+-#define TYPE_ARM_CPU "arm-cpu"
+-
+-OBJECT_DECLARE_CPU_TYPE(ARMCPU, ARMCPUClass, ARM_CPU)
+-
+-#define TYPE_ARM_MAX_CPU "max-" TYPE_ARM_CPU
+-
+ typedef struct ARMCPUInfo {
+     const char *name;
+     void (*initfn)(Object *obj);
+@@ -57,12 +52,6 @@ struct ARMCPUClass {
+     ResettablePhases parent_phases;
+ };
+ 
+-
+-#define TYPE_AARCH64_CPU "aarch64-cpu"
+-typedef struct AArch64CPUClass AArch64CPUClass;
+-DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
+-                       TYPE_AARCH64_CPU)
+-
+ struct AArch64CPUClass {
+     /*< private >*/
+     ARMCPUClass parent_class;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index bf2bce046d..52ac99cad3 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -17,8 +17,8 @@
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#ifndef ARM_CPU_H
+-#define ARM_CPU_H
++#ifndef TARGET_ARM_CPU_H
++#define TARGET_ARM_CPU_H
+ 
+ #include "kvm-consts.h"
+ #include "qemu/cpu-float.h"
+@@ -26,6 +26,7 @@
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+ #include "qapi/qapi-types-common.h"
++#include "hw/arm/cpu.h"
+ 
+ /* ARM processors have a weak memory model */
+ #define TCG_GUEST_DEFAULT_MO      (0)
+@@ -2853,11 +2854,10 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
+ #define ARM_CPUID_TI915T      0x54029152
+ #define ARM_CPUID_TI925T      0x54029252
+ 
+-#define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
+-#define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
+ #define CPU_RESOLVING_TYPE TYPE_ARM_CPU
+ 
+ #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
++#define TYPE_ARM_MAX_CPU "max-" TYPE_ARM_CPU
+ 
+ #define cpu_list arm_cpu_list
+ 
 -- 
 2.38.1

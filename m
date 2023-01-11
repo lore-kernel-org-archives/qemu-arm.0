@@ -1,534 +1,155 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3812943ejc;
-        Wed, 11 Jan 2023 00:40:23 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvvzov+KnU6BQw29yHhozdA8uETv//sD17WJDjlC7B9PSBr/Er+FW1/ScuQ54rpb0wzlJcn
-X-Received: by 2002:ac8:6f05:0:b0:3ac:c2b8:19 with SMTP id bs5-20020ac86f05000000b003acc2b80019mr18718344qtb.19.1673426423173;
-        Wed, 11 Jan 2023 00:40:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673426423; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3819925ejc;
+        Wed, 11 Jan 2023 00:50:49 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtKlM3+Ih2fs3mnQ5zQ2WM66DPDknw1HE0nyj1SwvE7KEklqLSoi4VD8AUuEQf8axFbKCcf
+X-Received: by 2002:a05:6214:1021:b0:4df:2bdc:14e1 with SMTP id k1-20020a056214102100b004df2bdc14e1mr105050090qvr.47.1673427048818;
+        Wed, 11 Jan 2023 00:50:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673427048; cv=none;
         d=google.com; s=arc-20160816;
-        b=PuLeeeKXB8rBxlTHIbJMPEs2hhaCv2yQD6F2aoACB4zVeZR0N9aO+YrEfw9wi+U2A4
-         Pe5V+AXGRiOxoOX/pP0yJjmkARGMq9fT0hNXno2kmTIMSLmMPYhTvfHW/eDNukrrNNaE
-         vvzPLgPh/K7Q/nA2eBg1wkY18v4URyuQosheqbzRrL7l2WVj/q8R59bQsuVcFRNQHAge
-         DaXbyYlwsD0FXB1o2kBKAvVRoUhvncIOXXuZmVQM+LHakNGOjoptlcSj43b5wLD5C0xv
-         63smIX2Kv5+wq3zVshjU4fbvXDFDkjgqZOKNHNnnNkfZGj+UFqLdGodELCwlWHHC7xVQ
-         Z+4g==
+        b=qxULg0iOfRtOqLLKyfAKy6P6lTcGIqNI9L6znKjLyQBPPM75w4AXGEz6agMYwVo5Wc
+         /mAbjpLz2ZHS8vuv06SR1uUVKkQPqx3vP/VBFatAuxncRwbdaqc4ZO4MBIpMIO5c+ome
+         /KVVCvs7ypsbI6qOfq9/o58X0U8A1WNbBaMscuO0P9DtfKPokLcclmxyNfc8Zhw7zCev
+         cf02sK+oS2HvhsXKjSMlqxsRO52V5ijRtZKwIaJQeY5fatlM1My+92ynSgYILv9MVHLi
+         xQIkaoHNbZLVf4w/8RAj16pwZ7UvaqVBCAlKx3OGCPZePnzQL1O2IZ2MYn6ufVw2CaxE
+         ChHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ORcIO3Q16LO89LF5It+n7AHGZNSc9obPcjCMBZ5jUj4=;
-        b=ZLEhC3MiVtI5NcMFNcTbU8JZzHEyQtapccx1SqCU+GB5y19KGo/mLbodcOmPjnW0mi
-         7FEz88jvqf7XMioiltUjYPmXlLEZGqQEUUCwJtrROr49U24haBKOd6gbFIs1LXlAZp+f
-         1zcHhMFjI9grrfKkVgoUcG41Qm8KHm2zNV28fUYKlOtpjwZxbzvJoU8e3hMzXrQlpDKg
-         PMQbr6VCav3AnvZEMkbpH0vUU5Pak+ujCT0ILZ2/hT8EkMyntM1TzftEUHdK239p5pYE
-         cc+8EaWylmbFrqgU0zMqW8Mpffxdljj4ZyM4nUzehVuq/RbFhVSRoZWPzIpIJiSyY8cp
-         j1sA==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=mT+LWt01/sleIbh0MDOTvrE02y2MJEW1VXEk+avLKDA=;
+        b=fSSWg5AZ8HagJeCxhlG0Cg1aCg8YnB8vVKnR/rJmYYF4/ap1kYpmw6vACk0pnVevIm
+         fUzhSu6J8y4lG/3CNrVrAXexnGxz4+uj3glvNAOPJpH0qHChwtJPQuz3wAvdxZX/0e2a
+         wosnU7/3LZsRtql1WhFnTOmMTr0qo1VWPd5IfDf8WNR2uxm2pqLsy4XN3TrYSkw3cjv6
+         IyJpJgePfhjrPQphLbF5j2AUcji8JLJ4QLA54YhVJjmQ7vyoIlJJfiXVOd4LuIyeEU2Y
+         VxASFRdUTFtFAPMVJoC6hdmSxkHLj2PZT+GpBtTbsStC+dHEQptlHuOU+4W14pBm9xZG
+         C1Xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CZy+OweF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=x2s+qJAl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16-20020a05620a441000b007059f010e9esi8166443qkp.752.2023.01.11.00.40.23
+        by mx.google.com with ESMTPS id r6-20020ad45766000000b004bb6b995982si7849973qvx.581.2023.01.11.00.50.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jan 2023 00:40:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Jan 2023 00:50:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CZy+OweF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=x2s+qJAl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pFWds-0004iB-K1; Wed, 11 Jan 2023 03:39:28 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pFWoW-0003AN-Hf; Wed, 11 Jan 2023 03:50:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFWdq-0004f3-JI
- for qemu-devel@nongnu.org; Wed, 11 Jan 2023 03:39:26 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFWoP-000364-W5
+ for qemu-arm@nongnu.org; Wed, 11 Jan 2023 03:50:22 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFWdm-0005Rg-P1
- for qemu-devel@nongnu.org; Wed, 11 Jan 2023 03:39:26 -0500
-Received: by mail-wm1-x334.google.com with SMTP id ja17so10561836wmb.3
- for <qemu-devel@nongnu.org>; Wed, 11 Jan 2023 00:39:22 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFWoN-0007Zc-Qv
+ for qemu-arm@nongnu.org; Wed, 11 Jan 2023 03:50:21 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ k26-20020a05600c1c9a00b003d972646a7dso13790870wms.5
+ for <qemu-arm@nongnu.org>; Wed, 11 Jan 2023 00:50:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ORcIO3Q16LO89LF5It+n7AHGZNSc9obPcjCMBZ5jUj4=;
- b=CZy+OweFvz0BKtJ56abiVfIZIslTJJA9ISlamm3fNkKjpXJe6j/QtpzmKWRCuwLDJV
- efX+wSEy3zS5m+X579ik8edNWGRD53VnCdmyb5mzRucPSntB6HAC9fp6GKBtpW8EQtO2
- gTQ2KFaW7mUNFsjPqEK/JT68iMzmZn+XyYwyW2rXFYQhxGcSSSqwqWrE3KB4SWAbwKhW
- oaEHlXskdVb8K6M4hPfJrkymL631hhPCjIZrW3vRQoIenQWUkkZi/ModowptsK2P7JW0
- KaKU86FoHaU+zFtnfR+U37XEUf0CJ1br4WolRq2Fikqt1kNSBIxCuaQgKupjpzJMVRU+
- nC3A==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=mT+LWt01/sleIbh0MDOTvrE02y2MJEW1VXEk+avLKDA=;
+ b=x2s+qJAlrhg+yHrXRGGRBWjDq/nLh5awC5PjogaxNASQjMgZtNrCUEsl4t7lIgzF9F
+ +dTEwmDS+8mrFlfuo/gDBBZ2c9jSuvyFwK1Go6G/Zck7kHq6XWuyPMYIL1lYCi7ZyfRs
+ F6n9CCooSKo2uuI9WPnQOixNgDL0KDSduaRv28mlQQos2mSVv9WOkcUHL9MWQYSvbmJW
+ swShtN2dDBHdDYe7EfL53SgVtALZLQKK1uidJwelI4b7fkYJFWr90J9ApbINvyD5Vds2
+ IhRQSW90VQ3Go3GJWjcnM5QCZ2mXk8mGl9e1lMHXLq3ktBC+pgd3c43Xu3CxSXjz5dtR
+ zbTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ORcIO3Q16LO89LF5It+n7AHGZNSc9obPcjCMBZ5jUj4=;
- b=jlTBC4nDM0w8Hw2Do4lNiH6KhBaNCL53ZZ47M8WY2d32qWJzf0V9WdI79rStPEr+S8
- aAC57rnz9aJYswvU4FUIljIRR17RJmRjP7jVXH50hhkOjUkGs0w0LmYDTxIsOK6zA7rk
- +bzr3tgJBj7y7hJSU5pWHYjR1YQWqmKMofJ/h7gT92S9vC3lLFhI67Gzp5FU7BcEw/fF
- eqWfL/3QbAz3Dyyy/CTM9ZQwVWt0TwNgoYYZWcoYnDZE2KAYLgr3AuHJ9GnKDprpfO25
- z8nBiWVua1/kD7pdm2BrTGkIG8rVbaOvKfJfPkCV6Qwb1bFlV3cCDSejJJONPg/Iq8K9
- vQwA==
-X-Gm-Message-State: AFqh2koNjY0/2fy0YgcdX0/T1H6jv1qs8D8oj2GG2owvYSWcrf6j7UIn
- YHWFOmwwa4y4TsqaS0bsvOREZIww1/7Aw6vH
-X-Received: by 2002:a05:600c:3b1c:b0:3d9:f0da:542c with SMTP id
- m28-20020a05600c3b1c00b003d9f0da542cmr7660227wms.28.1673426361111; 
- Wed, 11 Jan 2023 00:39:21 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=mT+LWt01/sleIbh0MDOTvrE02y2MJEW1VXEk+avLKDA=;
+ b=hjoGvJh1+h8sjEbc9fuPN8uJ9+Tm5cHjatXZD7S/AgZbmuqk+DW4D/sc5e5TJuR1fh
+ UuEDm1/U8zjmKOhxQvk7j7OMgyxJaR7BISI7AcyyUCD7jq5fjLV0UR9CHDMAHIDdMfD8
+ edSU17NfIFl1ZbF765pR+e/G6vdf726oIhSBB8lMDm1aVX5dzwWXqrXt2TFEf/vLcjG5
+ w2JJkbdsVVqtG9+LXgZJNT0VBxUXrsGfPshp93ZSEh6Xs8YN90T2SCA2iAowepG8Wteo
+ kjwewUy5OSNKvv0ChNXyh/XIR3TfUL/O2ISFzlEFtmmLi51WZfcs4lGWWRdsq1SNMEQ7
+ 4yzA==
+X-Gm-Message-State: AFqh2krr1EhfxjE4oevl2yXMaBP7ZJVjW2+2uc00rWm8VANwqjt2G6io
+ x01bvShkVVMEIsWn2IVj7fqFmA==
+X-Received: by 2002:a05:600c:19d1:b0:3d9:ea0a:19c5 with SMTP id
+ u17-20020a05600c19d100b003d9ea0a19c5mr9697883wmq.38.1673427018104; 
+ Wed, 11 Jan 2023 00:50:18 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- i5-20020a5d55c5000000b002a6f329203esm13275728wrw.61.2023.01.11.00.39.20
+ u21-20020a7bc055000000b003d9aa76dc6asm26107920wmc.0.2023.01.11.00.50.17
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 11 Jan 2023 00:39:20 -0800 (PST)
+ Wed, 11 Jan 2023 00:50:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- qemu-block@nongnu.org,
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
+ qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 2/4] bulk: Coding style fixes
-Date: Wed, 11 Jan 2023 09:39:07 +0100
-Message-Id: <20230111083909.42624-3-philmd@linaro.org>
+Subject: [PATCH v3 0/5] hw/i2c/bitbang_i2c: Housekeeping
+Date: Wed, 11 Jan 2023 09:50:11 +0100
+Message-Id: <20230111085016.44551-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230111083909.42624-1-philmd@linaro.org>
-References: <20230111083909.42624-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /vsQ4qLVa11j
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YHRRVRez4kum
 
-Fix the following checkpatch.pl violation on lines using the
-TARGET_FMT_plx definition to avoid:
+Series fully reviewed.
 
-  WARNING: line over 80 characters
+Since v2:
+- Use array of const pointers to const (Richard)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/block/pflash_cfi01.c       |  5 +++--
- hw/char/digic-uart.c          |  8 ++++----
- hw/core/sysbus.c              |  3 ++-
- hw/dma/pl330.c                | 16 +++++++++-------
- hw/i386/multiboot.c           |  3 ++-
- hw/i386/xen/xen-hvm.c         |  3 ++-
- hw/i386/xen/xen-mapcache.c    | 13 ++++++++-----
- hw/intc/exynos4210_combiner.c | 20 ++++++++++----------
- hw/misc/auxbus.c              |  3 ++-
- hw/net/allwinner_emac.c       |  8 ++++----
- hw/timer/digic-timer.c        |  8 ++++----
- hw/timer/etraxfs_timer.c      |  3 +--
- softmmu/memory.c              |  3 ++-
- target/ppc/mmu-hash32.c       | 10 ++++++----
- target/ppc/mmu_common.c       |  8 +++++---
- target/sparc/mmu_helper.c     |  5 +++--
- 16 files changed, 67 insertions(+), 52 deletions(-)
+Since v1:
+- Fixed overwritten RECEIVING_BIT7 entry (Richard)
+- Picked R-b tags
 
-diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index 0cbc2fb4cb..951419b2ed 100644
---- a/hw/block/pflash_cfi01.c
-+++ b/hw/block/pflash_cfi01.c
-@@ -645,8 +645,9 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
- 
-  error_flash:
-     qemu_log_mask(LOG_UNIMP, "%s: Unimplemented flash cmd sequence "
--                  "(offset " TARGET_FMT_plx ", wcycle 0x%x cmd 0x%x value 0x%x)"
--                  "\n", __func__, offset, pfl->wcycle, pfl->cmd, value);
-+                             "(offset " TARGET_FMT_plx
-+                             ", wcycle 0x%x cmd 0x%x value 0x%x)\n",
-+                  __func__, offset, pfl->wcycle, pfl->cmd, value);
- 
-  mode_read_array:
-     trace_pflash_mode_read_array(pfl->name);
-diff --git a/hw/char/digic-uart.c b/hw/char/digic-uart.c
-index 00e5df5517..3bbc43193b 100644
---- a/hw/char/digic-uart.c
-+++ b/hw/char/digic-uart.c
-@@ -62,8 +62,8 @@ static uint64_t digic_uart_read(void *opaque, hwaddr addr,
- 
-     default:
-         qemu_log_mask(LOG_UNIMP,
--                      "digic-uart: read access to unknown register 0x"
--                      TARGET_FMT_plx "\n", addr << 2);
-+                      "digic-uart: read access to unknown register"
-+                      " 0x" TARGET_FMT_plx "\n", addr << 2);
-     }
- 
-     return ret;
-@@ -100,8 +100,8 @@ static void digic_uart_write(void *opaque, hwaddr addr, uint64_t value,
- 
-     default:
-         qemu_log_mask(LOG_UNIMP,
--                      "digic-uart: write access to unknown register 0x"
--                      TARGET_FMT_plx "\n", addr << 2);
-+                      "digic-uart: write access to unknown register"
-+                      " 0x" TARGET_FMT_plx "\n", addr << 2);
-     }
- }
- 
-diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index 05c1da3d31..e8b31683e7 100644
---- a/hw/core/sysbus.c
-+++ b/hw/core/sysbus.c
-@@ -269,7 +269,8 @@ static void sysbus_dev_print(Monitor *mon, DeviceState *dev, int indent)
- 
-     for (i = 0; i < s->num_mmio; i++) {
-         size = memory_region_size(s->mmio[i].memory);
--        monitor_printf(mon, "%*smmio " TARGET_FMT_plx "/" TARGET_FMT_plx "\n",
-+        monitor_printf(mon,
-+                       "%*smmio " TARGET_FMT_plx "/" TARGET_FMT_plx "\n",
-                        indent, "", s->mmio[i].addr, size);
-     }
- }
-diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
-index e5d521c329..60ce65c2a7 100644
---- a/hw/dma/pl330.c
-+++ b/hw/dma/pl330.c
-@@ -1337,8 +1337,8 @@ static void pl330_debug_exec(PL330State *s)
-     }
-     if (ch->stall) {
-         trace_pl330_debug_exec_stall();
--        qemu_log_mask(LOG_UNIMP, "pl330: stall of debug instruction not "
--                      "implemented\n");
-+        qemu_log_mask(LOG_UNIMP,
-+                      "pl330: stall of debug instruction not implemented\n");
-     }
-     s->debug_status = 0;
- }
-@@ -1372,9 +1372,10 @@ static void pl330_iomem_write(void *opaque, hwaddr offset,
-             pl330_debug_exec(s);
-             pl330_exec(s);
-         } else {
--            qemu_log_mask(LOG_GUEST_ERROR, "pl330: write of illegal value %u "
--                          "for offset " TARGET_FMT_plx "\n", (unsigned)value,
--                          offset);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "pl330: write of illegal value %u"
-+                          " for offset " TARGET_FMT_plx "\n",
-+                          (unsigned)value, offset);
-         }
-         break;
-     case PL330_REG_DBGINST0:
-@@ -1384,8 +1385,9 @@ static void pl330_iomem_write(void *opaque, hwaddr offset,
-         s->dbg[1] = value;
-         break;
-     default:
--        qemu_log_mask(LOG_GUEST_ERROR, "pl330: bad write offset " TARGET_FMT_plx
--                      "\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "pl330: bad write offset " TARGET_FMT_plx "\n",
-+                      offset);
-         break;
-     }
- }
-diff --git a/hw/i386/multiboot.c b/hw/i386/multiboot.c
-index 963e29362e..ec747245c2 100644
---- a/hw/i386/multiboot.c
-+++ b/hw/i386/multiboot.c
-@@ -353,7 +353,8 @@ int load_multiboot(X86MachineState *x86ms,
-             mb_add_mod(&mbs, mbs.mb_buf_phys + offs,
-                        mbs.mb_buf_phys + offs + mb_mod_length, c);
- 
--            mb_debug("mod_start: %p\nmod_end:   %p\n  cmdline: "TARGET_FMT_plx,
-+            mb_debug("mod_start: %p\nmod_end:   %p\n"
-+                     "  cmdline: "TARGET_FMT_plx,
-                      (char *)mbs.mb_buf + offs,
-                      (char *)mbs.mb_buf + offs + mb_mod_length, c);
-             g_free(one_file);
-diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-index e4293d6d66..67d250ab54 100644
---- a/hw/i386/xen/xen-hvm.c
-+++ b/hw/i386/xen/xen-hvm.c
-@@ -522,7 +522,8 @@ static void xen_set_memory(struct MemoryListener *listener,
-         }
-     } else {
-         if (xen_remove_from_physmap(state, start_addr, size) < 0) {
--            DPRINTF("physmapping does not exist at "TARGET_FMT_plx"\n", start_addr);
-+            DPRINTF("physmapping does not exist at "TARGET_FMT_plx"\n",
-+                    start_addr);
-         }
-     }
- }
-diff --git a/hw/i386/xen/xen-mapcache.c b/hw/i386/xen/xen-mapcache.c
-index a2f93096e7..491320e24a 100644
---- a/hw/i386/xen/xen-mapcache.c
-+++ b/hw/i386/xen/xen-mapcache.c
-@@ -357,7 +357,8 @@ tryagain:
-         entry->lock++;
-         if (entry->lock == 0) {
-             fprintf(stderr,
--                    "mapcache entry lock overflow: "TARGET_FMT_plx" -> %p\n",
-+                    "mapcache entry lock overflow: "
-+                    TARGET_FMT_plx" -> %p\n",
-                     entry->paddr_index, entry->vaddr_base);
-             abort();
-         }
-@@ -404,8 +405,8 @@ ram_addr_t xen_ram_addr_from_mapcache(void *ptr)
-     if (!found) {
-         fprintf(stderr, "%s, could not find %p\n", __func__, ptr);
-         QTAILQ_FOREACH(reventry, &mapcache->locked_entries, next) {
--            DPRINTF("   "TARGET_FMT_plx" -> %p is present\n", reventry->paddr_index,
--                    reventry->vaddr_req);
-+            DPRINTF("   "TARGET_FMT_plx" -> %p is present\n",
-+                    reventry->paddr_index, reventry->vaddr_req);
-         }
-         abort();
-         return 0;
-@@ -445,7 +446,8 @@ static void xen_invalidate_map_cache_entry_unlocked(uint8_t *buffer)
-     if (!found) {
-         DPRINTF("%s, could not find %p\n", __func__, buffer);
-         QTAILQ_FOREACH(reventry, &mapcache->locked_entries, next) {
--            DPRINTF("   "TARGET_FMT_plx" -> %p is present\n", reventry->paddr_index, reventry->vaddr_req);
-+            DPRINTF("   "TARGET_FMT_plx" -> %p is present\n",
-+                    reventry->paddr_index, reventry->vaddr_req);
-         }
-         return;
-     }
-@@ -578,7 +580,8 @@ static uint8_t *xen_replace_cache_entry_unlocked(hwaddr old_phys_addr,
-     if (!test_bits(address_offset >> XC_PAGE_SHIFT,
-                 test_bit_size >> XC_PAGE_SHIFT,
-                 entry->valid_mapping)) {
--        DPRINTF("Unable to update a mapcache entry for "TARGET_FMT_plx"!\n",
-+        DPRINTF("Unable to update a mapcache entry for "
-+                TARGET_FMT_plx "!\n",
-                 old_phys_addr);
-         return NULL;
-     }
-diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
-index a289510bdb..44810bb63a 100644
---- a/hw/intc/exynos4210_combiner.c
-+++ b/hw/intc/exynos4210_combiner.c
-@@ -119,8 +119,8 @@ exynos4210_combiner_read(void *opaque, hwaddr offset, unsigned size)
-         break;
-     default:
-         if (offset >> 2 >= IIC_REGSET_SIZE) {
--            hw_error("exynos4210.combiner: overflow of reg_set by 0x"
--                    TARGET_FMT_plx "offset\n", offset);
-+            hw_error("exynos4210.combiner: overflow of reg_set by"
-+                     " 0x" TARGET_FMT_plx "offset\n", offset);
-         }
-         val = s->reg_set[offset >> 2];
-     }
-@@ -183,20 +183,20 @@ static void exynos4210_combiner_write(void *opaque, hwaddr offset,
-     reg_n = (offset - (req_quad_base_n << 4)) >> 2;
- 
-     if (req_quad_base_n >= IIC_NGRP) {
--        hw_error("exynos4210.combiner: unallowed write access at offset 0x"
--                TARGET_FMT_plx "\n", offset);
-+        hw_error("exynos4210.combiner: unallowed write access at offset"
-+                 " 0x" TARGET_FMT_plx "\n", offset);
-         return;
-     }
- 
-     if (reg_n > 1) {
--        hw_error("exynos4210.combiner: unallowed write access at offset 0x"
--                TARGET_FMT_plx "\n", offset);
-+        hw_error("exynos4210.combiner: unallowed write access at offset"
-+                 " 0x" TARGET_FMT_plx "\n", offset);
-         return;
-     }
- 
-     if (offset >> 2 >= IIC_REGSET_SIZE) {
--        hw_error("exynos4210.combiner: overflow of reg_set by 0x"
--                TARGET_FMT_plx "offset\n", offset);
-+        hw_error("exynos4210.combiner: overflow of reg_set by"
-+                 " 0x" TARGET_FMT_plx "offset\n", offset);
-     }
-     s->reg_set[offset >> 2] = val;
- 
-@@ -245,8 +245,8 @@ static void exynos4210_combiner_write(void *opaque, hwaddr offset,
-         exynos4210_combiner_update(s, grp_quad_base_n + 3);
-         break;
-     default:
--        hw_error("exynos4210.combiner: unallowed write access at offset 0x"
--                TARGET_FMT_plx "\n", offset);
-+        hw_error("exynos4210.combiner: unallowed write access at offset"
-+                 " 0x" TARGET_FMT_plx "\n", offset);
-         break;
-     }
- }
-diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
-index 8a8012f5f0..a2a0f88836 100644
---- a/hw/misc/auxbus.c
-+++ b/hw/misc/auxbus.c
-@@ -299,7 +299,8 @@ static void aux_slave_dev_print(Monitor *mon, DeviceState *dev, int indent)
- 
-     s = AUX_SLAVE(dev);
- 
--    monitor_printf(mon, "%*smemory " TARGET_FMT_plx "/" TARGET_FMT_plx "\n",
-+    monitor_printf(mon,
-+                   "%*smemory " TARGET_FMT_plx "/" TARGET_FMT_plx "\n",
-                    indent, "",
-                    object_property_get_uint(OBJECT(s->mmio), "addr", NULL),
-                    memory_region_size(s->mmio));
-diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
-index ddddf35c45..53412c23e4 100644
---- a/hw/net/allwinner_emac.c
-+++ b/hw/net/allwinner_emac.c
-@@ -303,8 +303,8 @@ static uint64_t aw_emac_read(void *opaque, hwaddr offset, unsigned size)
-                                    extract32(s->phy_target, PHY_REG_SHIFT, 8));
-     default:
-         qemu_log_mask(LOG_UNIMP,
--                      "allwinner_emac: read access to unknown register 0x"
--                      TARGET_FMT_plx "\n", offset);
-+                      "allwinner_emac: read access to unknown register"
-+                      " 0x" TARGET_FMT_plx "\n", offset);
-         ret = 0;
-     }
- 
-@@ -406,8 +406,8 @@ static void aw_emac_write(void *opaque, hwaddr offset, uint64_t value,
-         break;
-     default:
-         qemu_log_mask(LOG_UNIMP,
--                      "allwinner_emac: write access to unknown register 0x"
--                      TARGET_FMT_plx "\n", offset);
-+                      "allwinner_emac: write access to unknown register"
-+                      " 0x" TARGET_FMT_plx "\n", offset);
-     }
- }
- 
-diff --git a/hw/timer/digic-timer.c b/hw/timer/digic-timer.c
-index d5186f4454..d324b5e698 100644
---- a/hw/timer/digic-timer.c
-+++ b/hw/timer/digic-timer.c
-@@ -75,8 +75,8 @@ static uint64_t digic_timer_read(void *opaque, hwaddr offset, unsigned size)
-         break;
-     default:
-         qemu_log_mask(LOG_UNIMP,
--                      "digic-timer: read access to unknown register 0x"
--                      TARGET_FMT_plx "\n", offset);
-+                      "digic-timer: read access to unknown register"
-+                      " 0x" TARGET_FMT_plx "\n", offset);
-     }
- 
-     return ret;
-@@ -115,8 +115,8 @@ static void digic_timer_write(void *opaque, hwaddr offset,
- 
-     default:
-         qemu_log_mask(LOG_UNIMP,
--                      "digic-timer: read access to unknown register 0x"
--                      TARGET_FMT_plx "\n", offset);
-+                      "digic-timer: read access to unknown register"
-+                      " 0x" TARGET_FMT_plx "\n", offset);
-     }
- }
- 
-diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
-index ecc2831baf..993df3557d 100644
---- a/hw/timer/etraxfs_timer.c
-+++ b/hw/timer/etraxfs_timer.c
-@@ -324,8 +324,7 @@ timer_write(void *opaque, hwaddr addr,
-             t->rw_ack_intr = 0;
-             break;
-         default:
--            printf ("%s " TARGET_FMT_plx " %x\n",
--                __func__, addr, value);
-+            printf("%s " TARGET_FMT_plx " %x\n", __func__, addr, value);
-             break;
-     }
- }
-diff --git a/softmmu/memory.c b/softmmu/memory.c
-index e05332d07f..e8c1f73312 100644
---- a/softmmu/memory.c
-+++ b/softmmu/memory.c
-@@ -1290,7 +1290,8 @@ static void unassigned_mem_write(void *opaque, hwaddr addr,
-                                  uint64_t val, unsigned size)
- {
- #ifdef DEBUG_UNASSIGNED
--    printf("Unassigned mem write " TARGET_FMT_plx " = 0x%"PRIx64"\n", addr, val);
-+    printf("Unassigned mem write " TARGET_FMT_plx " = 0x%"PRIx64"\n",
-+           addr, val);
- #endif
- }
- 
-diff --git a/target/ppc/mmu-hash32.c b/target/ppc/mmu-hash32.c
-index cc091c3e62..ad353a86bc 100644
---- a/target/ppc/mmu-hash32.c
-+++ b/target/ppc/mmu-hash32.c
-@@ -361,10 +361,12 @@ static hwaddr ppc_hash32_htab_lookup(PowerPCCPU *cpu,
-     pte_offset = ppc_hash32_pteg_search(cpu, pteg_off, 0, ptem, pte);
-     if (pte_offset == -1) {
-         /* Secondary PTEG lookup */
--        qemu_log_mask(CPU_LOG_MMU, "1 htab=" TARGET_FMT_plx "/" TARGET_FMT_plx
--                " vsid=%" PRIx32 " api=%" PRIx32
--                " hash=" TARGET_FMT_plx "\n", ppc_hash32_hpt_base(cpu),
--                ppc_hash32_hpt_mask(cpu), vsid, ptem, ~hash);
-+        qemu_log_mask(CPU_LOG_MMU,
-+                      "1 htab=" TARGET_FMT_plx "/" TARGET_FMT_plx
-+                      " vsid=%" PRIx32 " api=%" PRIx32
-+                      " hash=" TARGET_FMT_plx "\n",
-+                      ppc_hash32_hpt_base(cpu),
-+                      ppc_hash32_hpt_mask(cpu), vsid, ptem, ~hash);
-         pteg_off = get_pteg_offset32(cpu, ~hash);
-         pte_offset = ppc_hash32_pteg_search(cpu, pteg_off, 1, ptem, pte);
-     }
-diff --git a/target/ppc/mmu_common.c b/target/ppc/mmu_common.c
-index 8901f4d134..94cbb8b6a0 100644
---- a/target/ppc/mmu_common.c
-+++ b/target/ppc/mmu_common.c
-@@ -328,7 +328,8 @@ static int get_bat_6xx_tlb(CPUPPCState *env, mmu_ctx_t *ctx,
-                 ctx->prot = prot;
-                 ret = check_prot(ctx->prot, access_type);
-                 if (ret == 0) {
--                    qemu_log_mask(CPU_LOG_MMU, "BAT %d match: r " TARGET_FMT_plx
-+                    qemu_log_mask(CPU_LOG_MMU,
-+                                  "BAT %d match: r " TARGET_FMT_plx
-                                   " prot=%c%c\n", i, ctx->raddr,
-                                   ctx->prot & PAGE_READ ? 'R' : '-',
-                                   ctx->prot & PAGE_WRITE ? 'W' : '-');
-@@ -420,8 +421,9 @@ static int get_segment_6xx_tlb(CPUPPCState *env, mmu_ctx_t *ctx,
-                 hwaddr curaddr;
-                 uint32_t a0, a1, a2, a3;
- 
--                qemu_log("Page table: " TARGET_FMT_plx " len " TARGET_FMT_plx
--                         "\n", ppc_hash32_hpt_base(cpu),
-+                qemu_log("Page table: " TARGET_FMT_plx
-+                         " len " TARGET_FMT_plx "\n",
-+                         ppc_hash32_hpt_base(cpu),
-                          ppc_hash32_hpt_mask(cpu) + 0x80);
-                 for (curaddr = ppc_hash32_hpt_base(cpu);
-                      curaddr < (ppc_hash32_hpt_base(cpu)
-diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-index 919448a494..e3bdb6c3b8 100644
---- a/target/sparc/mmu_helper.c
-+++ b/target/sparc/mmu_helper.c
-@@ -368,8 +368,9 @@ void dump_mmu(CPUSPARCState *env)
-                 pde = mmu_probe(env, va1, 1);
-                 if (pde) {
-                     pa = cpu_get_phys_page_debug(cs, va1);
--                    qemu_printf(" VA: " TARGET_FMT_lx ", PA: "
--                                TARGET_FMT_plx " PDE: " TARGET_FMT_lx "\n",
-+                    qemu_printf(" VA: " TARGET_FMT_lx
-+                                ", PA: " TARGET_FMT_plx
-+                                " PDE: " TARGET_FMT_lx "\n",
-                                 va1, pa, pde);
-                     for (o = 0, va2 = va1; o < 64; o++, va2 += 4 * 1024) {
-                         pde = mmu_probe(env, va2, 0);
+- Remove unused dummy MemoryRegion
+- Convert DPRINTF() to using trace events
+
+(series used as base for follow-up, better if merged via ARM tree)
+
+Philippe Mathieu-Daudé (5):
+  hw/i2c/bitbang_i2c: Define TYPE_GPIO_I2C in public header
+  hw/i2c/bitbang_i2c: Remove unused dummy MemoryRegion
+  hw/i2c/bitbang_i2c: Change state calling bitbang_i2c_set_state()
+    helper
+  hw/i2c/bitbang_i2c: Trace state changes
+  hw/i2c/bitbang_i2c: Convert DPRINTF() to trace events
+
+ hw/arm/musicpal.c            |  3 +-
+ hw/i2c/bitbang_i2c.c         | 80 ++++++++++++++++++++++--------------
+ hw/i2c/trace-events          |  7 ++++
+ include/hw/i2c/bitbang_i2c.h |  2 +
+ 4 files changed, 61 insertions(+), 31 deletions(-)
+
 -- 
 2.38.1
 

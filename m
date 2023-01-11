@@ -1,200 +1,122 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3957722ejc;
-        Wed, 11 Jan 2023 04:36:47 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuTpVCMoR5XSbkI06o65LB345Xyr7pBO5/iGl1NHUxia7fz3y3lDfmt+erXvBDyOnvCYREX
-X-Received: by 2002:a05:6000:257:b0:2bd:c6ce:7bfb with SMTP id m23-20020a056000025700b002bdc6ce7bfbmr951708wrz.28.1673440607494;
-        Wed, 11 Jan 2023 04:36:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673440607; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4061283ejc;
+        Wed, 11 Jan 2023 07:06:59 -0800 (PST)
+X-Received: by 2002:a05:7500:610:b0:ee:57e7:7b62 with SMTP id bc16-20020a057500061000b000ee57e77b62mr3698562gab.62.1673449619734;
+        Wed, 11 Jan 2023 07:06:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673449619; cv=none;
         d=google.com; s=arc-20160816;
-        b=esi+4sgMKXPb9PBChAAU/0+F1Mx4NgWkQWWq2F5EvPy1+v3wNdR4oKdNt2NEQ0NlNe
-         XrijlCv98SsWziSJux/rJk8BZZLwqsfnUKLsqjMRMbMyc9ORDshZ8felfMnAD52nExFn
-         zpDmY1gbm26Dt0IZ8HdJFVySuNh80B0AdeO/ta7JwvXR37vNuOV52r+kZYLeMxzmi9kp
-         qJdnwTHtlYlyxLsOqSiBkMlbQrShMM+QcIEyoGO8BABFlQ/2xGEM/JboV1ux3TvLZPMP
-         Trjt51AqRPvemq4z1wcbyI6/c53Vn5pLi6THRH3SaeVKeN9BSYdiJCmdTSDGVuLCJ84N
-         GFXg==
+        b=sfK1640xXVmOBcSy3moOouAA3kEOCGT6ry9ovBAJxwCgn1lCAQsU7EZqBGZYX52u8Z
+         4IXOqLBA3hfk+EsJEO34Tv2gF8loLiJzH5tP8wsl8SPL5BPbs3L8c3e3lHmHD93NwzV2
+         85p6FzFv4Qi6rFe1rKw37di2QkA8Hzmcsqtqdp2CBCuvNJghgN38LsN8AuT3DniGq7S5
+         7sa1lkBj+UUGJ9WYpoE9EK+sHZQo5qUHyprt8wFBCpQjauIEPBppcUx8Id5/LORNhiBZ
+         +cEVXjUgMYJ5DMX/5UdcLOTdSDVrHa1i+9geFOvd4dflUfSgNtIRbaaap6kcBdrq741P
+         cdIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=o7+hc/DFjslwrESw5agfyTFCIkxacbwjNjx4lyXZbpM=;
-        b=IQxgsSaHQV4rGnOfgbg74g1x65JHIyF+Wpwda5fQa54UkFE5G58jZ4grpLA60Cu3A1
-         /fr0cXviG4LSK0Pn6HQVBV1d16PZmOLHb9GCy2rG1W7ul+V3aAnnkW7R0BHLVovaTIP7
-         LQ93nLCPNHOv22pKV0+l/hAA6kxcwe2edHxMsgPv6E7gY1mLh8NmI/s86hUlBxBTgaHJ
-         Dd4qqci3w+mNjHEx+2KtYxOLB+eN6GFQEJhQBDiVT8o2SL/vQF61j/WiDhva0lTV5KCp
-         ZoPGhdTzqVDUG8NwboYi3VnbQet0bYx8/vx7c/oGJSdaryjiMfg1OSajiDczqNHjqKuN
-         EkRw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=cf/lJoArq8QrnipC49cD1Zh4f8VhsnbBmzMv7uBKIic=;
+        b=sRG5eVGJFwu5lO1j1E2o9VHRiEoo/Qdyq3W1a0LgrRzpEr/hKbd2dmqkWCUW6/5MgU
+         Ri2JTI8csiQcGuFToGEX6URgpdFEI+Qq2vmNBZuO3PUloP8nj2Kb9aPHUSmJy7QJjQps
+         oyzGfmBfVA98qt13WobcEycGkA+PxpTETBtQ2rruIXEnXLjJapRqimJwOhXMISikgzLZ
+         R9dcuk05gtaNkyEsTY16L9h/07Hc/sCvuE2ucsWB9j/YUeJ91CsF5/7e16oiioZxuoGu
+         XHhGfeNJA6kfDEa+VSh5AR5HRQcTHwKJjYQXzscjGZ471PzUoU0iFppNSSOCwX70M3gy
+         /41Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rMURa6f+;
-       dkim=neutral (no key) header.i=@suse.de header.b=DJkV+XDh;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id u6-20020a056000038600b002bc7d10a3fasi6080127wrf.332.2023.01.11.04.36.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Jan 2023 04:36:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JtRAqPgX;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m23-20020ac866d7000000b0034355eddd26sor10250870qtp.85.2023.01.11.07.06.59
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 11 Jan 2023 07:06:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rMURa6f+;
-       dkim=neutral (no key) header.i=@suse.de header.b=DJkV+XDh;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id DBA527593F;
-	Wed, 11 Jan 2023 12:36:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673440606; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=o7+hc/DFjslwrESw5agfyTFCIkxacbwjNjx4lyXZbpM=;
-	b=rMURa6f+YYpM4kpj0XrLxuFq2uYH4JtmcZDiKC+61MNZMYh16QePKUM+lG7rKMXlCI7aMS
-	H0Cwo7NgoyXsye+AB7tOVM50DaOduMP7qDkD2swPUBO2z49NFY2rCMZ9iuuaY4EWGjsYoE
-	G0/7w9+r6VbktnA3fQNZ78Kw1TKJ0dg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673440606;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=o7+hc/DFjslwrESw5agfyTFCIkxacbwjNjx4lyXZbpM=;
-	b=DJkV+XDhpUkb6QoJ/td1s/muOmB4QV09Tbfta3NlF/4fhli+Vl4CQdhTqLyW3dxn+Kt+WW
-	x5TIa6BcpYIeP7Ag==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 66DB313591;
-	Wed, 11 Jan 2023 12:36:46 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id Gj3QC16tvmN3TgAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 11 Jan 2023 12:36:46 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Claudio Fontana <cfontana@suse.de>, Peter Maydell
- <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Eduardo
- Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>, Laurent
- Vivier <lvivier@redhat.com>, "Dr. David Alan Gilbert"
- <dgilbert@redhat.com>
-Subject: Re: [RFC PATCH v2 13/19] tests: do not run test-hmp on all machines
- for ARM KVM-only
-In-Reply-To: <9fb63a5d-d839-016d-b0a8-4151b6d6946c@suse.de>
-References: <20230109224232.11661-1-farosas@suse.de>
- <20230109224232.11661-14-farosas@suse.de>
- <35870ab3-1da6-c222-b708-06ac71a5883c@redhat.com> <87zgaqa6jk.fsf@suse.de>
- <CAFEAcA_x_kTdNt8+5YAjo518Wj_Ej4jZ=0OrCQmutNOjJx=3Gw@mail.gmail.com>
- <87sfgia4uj.fsf@suse.de>
- <CAFEAcA_AaWfwAbCLOC3ELf3c20Cv5jQhWc71Py4ww4kLo2nYeg@mail.gmail.com>
- <9fb63a5d-d839-016d-b0a8-4151b6d6946c@suse.de>
-Date: Wed, 11 Jan 2023 09:36:43 -0300
-Message-ID: <87fschcko4.fsf@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=JtRAqPgX;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=cf/lJoArq8QrnipC49cD1Zh4f8VhsnbBmzMv7uBKIic=;
+        b=JtRAqPgXWIQhTIJ/pvk9nHYyl7YD9joVmZx7bvBLPEfghgcyasYNpGEfImgnL21RZM
+         Vu3LV7gd9NY3k30xaHijY9Vg0DQbiyxJAjEHqf+s9pWiPiikulqgKmoYH1kce92Aibcl
+         yl84iRyD1nJ5jDH5UY/79s5T6x7lNYs8KHXW3whmtwFBVb/H40VKRmgOuiLWWrTmEvDT
+         +z54+0Ji1v0WqejbtVy4wjc73ivZFxPlbsKPySg1aicbJ0299CFo8AfIW7zQLZMmpMmA
+         nQNb4iI87PSSI3NUhU4g31bGpQaDIAEK7KD/iKiuiWN6x+ogimpzelpSABwID15eK1j6
+         wpcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=cf/lJoArq8QrnipC49cD1Zh4f8VhsnbBmzMv7uBKIic=;
+        b=13b/SdrITSgrcMbSMTJYWuJ8p050b3xYGoc8u9s3ys1qCAyNzMNgw8AZmQVPYyoihn
+         IdmyTMRaCuCgH/Z+NuVu5qiT0F+LZkqdRFYj0uxdEEzQt2uBYQBQpIKfGocgGCNY58Ku
+         YB7tDS2VNnNMtV4K9zE/9th1DcURXM+/rxOsS+72Acs8dgYhvrLIuWyTlvXLohBydgNU
+         Ec8DZj5vvOKl4zvmoG1J4sy5RvEUwXVHoZOpULFawaqocvi5FgGizVZZ3kF41UKgt973
+         /rlIh4v7iaTgyX4T+OYnISxYPuSPX1qTLUeQSar/pXCLyLjJd9mnZihZDjpF6LNfdf8X
+         3RxA==
+X-Gm-Message-State: AFqh2krvDWEH9PXJVGxw6VsVBsPDJW/6wX9rWgEl/1GG1GkATIsGcgHu
+	uoPTRo2C7XI8MXP9UdwqsKbZv2qrdH6WEUThTg8=
+X-Google-Smtp-Source: AMrXdXtsl7+BdVbfYQ/BdyMcVxwR67zbAtKaRlaPFHgzN6ZcSRGdIpIaDmwAMndXGaCkuYpOGow1PQ==
+X-Received: by 2002:ac8:690c:0:b0:3ab:9974:3a06 with SMTP id bt12-20020ac8690c000000b003ab99743a06mr74358212qtb.38.1673449619237;
+        Wed, 11 Jan 2023 07:06:59 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2607:fb90:8062:d32d:5ad4:bcd:2063:a06? ([2607:fb90:8062:d32d:5ad4:bcd:2063:a06])
+        by smtp.gmail.com with ESMTPSA id m20-20020ac866d4000000b003a6a7a20575sm7661969qtp.73.2023.01.11.07.06.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Jan 2023 07:06:58 -0800 (PST)
+Message-ID: <7ba0bf63-1b46-7f70-a0ff-6d62cc963d4f@linaro.org>
+Date: Wed, 11 Jan 2023 07:06:53 -0800
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: 7emTcxA5Z6sm
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v4 03/36] tcg: Allocate objects contiguously in
+ temp_allocate_frame
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net,
+ qemu-devel@nongnu.org
+References: <20230108023719.2466341-1-richard.henderson@linaro.org>
+ <20230108023719.2466341-4-richard.henderson@linaro.org>
+ <87zgapl7az.fsf@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <87zgapl7az.fsf@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: rNCtClim77de
 
-Claudio Fontana <cfontana@suse.de> writes:
+On 1/11/23 01:59, Alex Bennée wrote:
+>> @@ -3277,13 +3278,26 @@ static void temp_allocate_frame(TCGContext *s, TCGTemp *ts)
+>>           tcg_raise_tb_overflow(s);
+>>       }
+>>       s->current_frame_offset = off + size;
+>> -
+>> -    ts->mem_offset = off;
+>>   #if defined(__sparc__)
+>> -    ts->mem_offset += TCG_TARGET_STACK_BIAS;
+>> +    off += TCG_TARGET_STACK_BIAS;
+>>   #endif
+>> -    ts->mem_base = s->frame_temp;
+>> -    ts->mem_allocated = 1;
+>> +
+>> +    /* If the object was subdivided, assign memory to all the parts. */
+>> +    if (ts->base_type != ts->type) {
+>> +        int part_size = tcg_type_size(ts->type);
+>> +        int part_count = size / part_size;
+>> +
+>> +        ts -= ts->temp_subindex;
+> 
+> Whats going on here? Are we jumping to a previous temp? What guarentees
+> there is something at ts - ts->temp_subindex?
 
-> On 1/10/23 15:02, Peter Maydell wrote:
->> On Tue, 10 Jan 2023 at 13:36, Fabiano Rosas <farosas@suse.de> wrote:
->>>
->>> Peter Maydell <peter.maydell@linaro.org> writes:
->>>
->>>> On Tue, 10 Jan 2023 at 13:00, Fabiano Rosas <farosas@suse.de> wrote:
->>>>>
->>>>> Thomas Huth <thuth@redhat.com> writes:
->>>>>
->>>>>> On 09/01/2023 23.42, Fabiano Rosas wrote:
->>>>>>> From: Claudio Fontana <cfontana@suse.de>
->>>>>>>
->>>>>>> on ARM we currently list and build all machines, even when
->>>>>>> building KVM-only, without TCG.
->>>>>>>
->>>>>>> Until we fix this (and we only list and build machines that are
->>>>>>> compatible with KVM), only test specifically using the "virt"
->>>>>>> machine in this case.
->>>>>>
->>>>>> Why don't you fix it immediately? ...
->>>>>
->>>>> My idea was to have in this series the minimum to unbreak the
->>>>> --disable-tcg build and later bring the rest of the changes
->>>>> incrementally.
->>>>
->>>> This test is basically checking "all the machines should
->>>> work". That's an important invariant to maintain, so
->>>> I don't think we should just skip it for Arm targets.
->>>
->>> But what does "all machines" mean in a no-TCG build? The original intent
->>> of the patch was that only 'virt' should be present and therefore the
->>> only one tested.
->> 
->> It means "every machine the user can create". If the
->> machine can't run then either we shouldn't compile it
->> in, or else we should be compiling in enough extra stuff
->> to allow it to work.
->> 
->> -- PMM
->
-> Hi,
->
-> once upon a time there was a series by Philippe to accomplish that (KConfig) right?
+Yes.  Guaranteed by base_type != type.  See tcg_temp_new_internal -- it's the raison 
+d'être of temp_subindex.
 
-Is this it?
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg777719.html
 
-I have now moved the cpus into the tcg directory:
-
-# ./qemu-system-aarch64 -cpu ? 
-Available CPUs:
-  a64fx
-  cortex-a35
-  cortex-a53
-  cortex-a55
-  cortex-a57
-  cortex-a72
-  cortex-a76
-  host
-  max
-  neoverse-n1
-
-What remains is changing the Kconfig to not bring all the
-machines. Nowadays for KVM is the 'virt' machine the only one we use? I
-did some tests yesterday by keeping only CONFIG_ARM_VIRT and was left
-with this:
-
-# ./qemu-system-aarch64 -machine ? 
-Supported machines are:
-none                 empty machine
-virt-2.10            QEMU 2.10 ARM Virtual Machine
-virt-2.11            QEMU 2.11 ARM Virtual Machine
-virt-2.12            QEMU 2.12 ARM Virtual Machine
-virt-2.6             QEMU 2.6 ARM Virtual Machine
-virt-2.7             QEMU 2.7 ARM Virtual Machine
-virt-2.8             QEMU 2.8 ARM Virtual Machine
-virt-2.9             QEMU 2.9 ARM Virtual Machine
-virt-3.0             QEMU 3.0 ARM Virtual Machine
-virt-3.1             QEMU 3.1 ARM Virtual Machine
-virt-4.0             QEMU 4.0 ARM Virtual Machine
-virt-4.1             QEMU 4.1 ARM Virtual Machine
-virt-4.2             QEMU 4.2 ARM Virtual Machine
-virt-5.0             QEMU 5.0 ARM Virtual Machine
-virt-5.1             QEMU 5.1 ARM Virtual Machine
-virt-5.2             QEMU 5.2 ARM Virtual Machine
-virt-6.0             QEMU 6.0 ARM Virtual Machine
-virt-6.1             QEMU 6.1 ARM Virtual Machine
-virt-6.2             QEMU 6.2 ARM Virtual Machine
-virt-7.0             QEMU 7.0 ARM Virtual Machine
-virt-7.1             QEMU 7.1 ARM Virtual Machine
-virt-7.2             QEMU 7.2 ARM Virtual Machine
-virt                 QEMU 8.0 ARM Virtual Machine (alias of virt-8.0)
-virt-8.0             QEMU 8.0 ARM Virtual Machine
-x-remote             Experimental remote machine
-
-But qtest dislikes that even more. I need to figure out why.
-
-The approach of that series seems interesting, moving CONFIG_FOO=y from
-default.mak into Kconfig as 'default y if TCG'. Maybe that will yield
-better results, I'll try to follow that route.
+r~

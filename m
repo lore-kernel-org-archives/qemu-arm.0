@@ -1,196 +1,122 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4362893ejc;
-        Wed, 11 Jan 2023 14:48:08 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsYqpavP6z3PDEWr8KnOha4kDFc/cNh8TPFFC6tOW82tfQbeLH8JaeziqutkT6jzLtN1bC5
-X-Received: by 2002:a05:6214:390a:b0:4bc:176f:a50d with SMTP id nh10-20020a056214390a00b004bc176fa50dmr107049723qvb.3.1673477288470;
-        Wed, 11 Jan 2023 14:48:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673477288; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4416419ejc;
+        Wed, 11 Jan 2023 16:37:30 -0800 (PST)
+X-Received: by 2002:a17:90a:1957:b0:225:a78a:942f with SMTP id 23-20020a17090a195700b00225a78a942fmr76820012pjh.5.1673483850135;
+        Wed, 11 Jan 2023 16:37:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673483850; cv=none;
         d=google.com; s=arc-20160816;
-        b=BLF/fusDYNLv/3dOiVNQsl9X3mFJ5WHstuBR71UwbtD1b+Xu++L3jLdud2x1TVeQs9
-         Y++68MPAWx7wmegfdKKijYjqNmAcykES4uBUG91qxm6Ysu1ur1pJlr88s31bphn3kgBF
-         iqI9ufeAvPxdUnwW2wGAItWfR/CczTpXqoJe8hWd6jB6s8TSTlHmMKtcD3o3uBecCl9/
-         vVSSVsh+DSvwE3gu0ycxUIrGsq/aIRvo2mVKVST4pyADV2KPqaujAPwtc6RYAhStTzDo
-         ndVMs5N6ivXddW4kIc+Y0ybyzLybhBLJkMlhYXPHOlnnDHXxZ6HGFCxzFZ70/h9xPFda
-         FtWQ==
+        b=Axv5/ghmm2Skg53AIoWPdKiTNPgxrdPE8b2gKWtbiRpmS855hIHLS6V3XVSN2HJxPY
+         ogv85LxidjMeLt6jAWdt+FyWIgSE/HO+NeYSt0ntAIo0WcOYlgsmUeVzZEynTLK78/p5
+         kwBTXfkiocowX2JjrF6I2SW6jbwj6l345Z3wKdsZtcouPCfvujLG29/lmwCHfEmTGEoF
+         UEba5i4iwuM2Ai9Sou5LytMyHNKJaXGL3CxYQNcStaSw2+M8uelQsLUSINbpuJT9LH1j
+         OCDHMzT3XkmMvmP6B2XCrSC5c0uI+CthYEexo2mgHH/G+5u6NByuiebW/wIWPOnOBUC3
+         LiQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=eix9Qs1pc8UL6Tkfcg/KM+RVjD8G3z0dcoM2qLXbhWM=;
-        b=c2shd0tz4i4wGtVreVeAQvBV5FVx1MmLwrbBNUWVozkYOeQb8IP1nR3Fe/5Ih1LD3G
-         RZGQGwn4JmwSXG0hQl+SPIAfe8djJPR7i1veI0vzeWL/QBa1xbifTzWbsylmwanWCieA
-         3ZW08IXTEy87W5LitWliXoqxv1f817JW7WkmXXjRJtz219oxV7F7Rg4gFD1c8Y1kmAZH
-         oAzq773grEp7pYxhWglCSVswXm9JzusZpbomesblHzL3J+KJUU7KXdtOFGa7OoYMkhoz
-         OkxwqlaX7mxqXyToIFdm44OPZ8E/gzKOYKR+e3iRbmkgdC1P2fLKfa+w73ZO836Qtmfd
-         9lDQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=NHe9dNY1K3nmf+eGBsXRPck1pnlk9Q/oUevBJyUKEic=;
+        b=L+oe3MhSKfw/KLoguSh+FRRW70kKNDyhj4xa8QVDeYUZNqV+yWi1id+CRdaFb2uifQ
+         KtI1c4ugYMiU5sZYAgQUVOVZaHfjQT9wN4oIoR69kiKJb/lsD6yd7X8mPRjQ04G/8VxI
+         Hy0t0WbPMTlKpWMpIBiyEsTstZJHbKK0AcknAWvkAj0Sg/9mTOhy225QdQhDlYIL4q7p
+         7I1OP3QMTAPhlRZM4Dwv++7yeqv6jZ84CjCTwEDgeeCRU2RSb9SwOJOawax2Kz39O6lo
+         +8/50Vq7o25Q3vnkDDXKQfnUxyQpVZO5EM1CUR6n+HZwXuvAJfvwfy0+/+6vdsxxS3RS
+         ejCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RMmK29St;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m14-20020a05620a290e00b006fc97875494si9897539qkp.650.2023.01.11.14.48.08
+       dkim=pass header.i=@linaro.org header.s=google header.b=RjG68IZf;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n61-20020a17090a5ac300b00225eb703074sor9568369pji.37.2023.01.11.16.37.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jan 2023 14:48:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 11 Jan 2023 16:37:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RMmK29St;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pFjsd-0004z0-Pm; Wed, 11 Jan 2023 17:47:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pFjsV-0004yA-G2; Wed, 11 Jan 2023 17:47:34 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pFjsT-0003bo-GV; Wed, 11 Jan 2023 17:47:26 -0500
-Received: by mail-ej1-x630.google.com with SMTP id gh17so40615958ejb.6;
- Wed, 11 Jan 2023 14:47:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eix9Qs1pc8UL6Tkfcg/KM+RVjD8G3z0dcoM2qLXbhWM=;
- b=RMmK29Stdgeph632we4oCYeLFMx8/5d5t/KTV8qO5m/2zgRAQT2v1txFaFQCbyufw4
- rsWF90QdaxVYWEgoIo0kB2ujP7tuMvvllb5QlOymuFHajv6w31A3/a+e/BNCy/YrycXE
- ACt3v3/cPk7pUWbCGJghcAxWSnssYEjoBzsjmNstGk9jf1P+2wJMYFdEi1F6eDaotqbb
- RpVicf/BLVgx5/BNTyvTBNpgNLK3SBWtxBG0Hy4vEv2Kjlem80hYdoFWJ8i0NpZssaiL
- WPNZYSyj4agkWeZ/t68u0fBdPHfwwaCo93OOmRsrqfAI7Vnb3OicDMPn2uYmpdDObwGb
- TMVA==
+       dkim=pass header.i=@linaro.org header.s=google header.b=RjG68IZf;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=NHe9dNY1K3nmf+eGBsXRPck1pnlk9Q/oUevBJyUKEic=;
+        b=RjG68IZfTyPWTbOK/wtTwhVfd8EhlSUoxqbR9NQTfRNUkAfAxC/D/Ru4czxLy/1AhX
+         PyT/Ln6QdcFd7N7bOB2+/clGNzYp6vLjtYKVQ3XKJ1xZOkZCjhzD9wzKK1KgYmi7FxJB
+         OH2fDqskLCpTMBTjYwKBv0fcCw7TvKL8LNEd45lcJSW4xAUHzas6F4kuYe8wpgNd0yd7
+         m4YkRzXHKQG/vCA9861oxPJBT5H5TDrooPLxrA9C1bvjMNDOU4R+oyWjU90wbrc7Zhtn
+         4rHAyG/Ds9afTXivA3cSHOBCt+XIEnJ44GZyfZ+7iEGmtCu5pQ2rnBul7KMjMXUhCamx
+         VPmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=eix9Qs1pc8UL6Tkfcg/KM+RVjD8G3z0dcoM2qLXbhWM=;
- b=U5QJtM/fG79GJ6zHSoyjLey+/q69t7c+jgOGlFJg6dnJVIH9CeW08/GH9nPVEcGD+G
- l5tYJtgmLnlPnP84XLG64QefaYbYVbQsaDq4hkPlLPIV/wkcN1b7ulp+A0u9Xl38wKMt
- ULdJMGR98IxAUOcegOM0US2ZwXc27KPXhZ7bDie9LRKcFnEc0KeD6g14WI5RD18dMibO
- rqdEikD49CcVoyoGr1f0FWb82sRmxOBQif1yilqNbaFrOmf2kAAf2JULSvyROHFLPDRl
- o+65zeDcDMBdYe9bsr0qxC6pwJRnXPgG33R/YMET65diGrMetRsl1QVN3JhCNA4Mn5PE
- Gq2Q==
-X-Gm-Message-State: AFqh2kq/MQbElEeMmxuzilKpXhrTuD6rhqRE8tvoV+fO+BMPfN2A6O+V
- jrH4jSsk1yHXHA/SP+ywcMs=
-X-Received: by 2002:a17:907:a508:b0:7c1:539b:d028 with SMTP id
- vr8-20020a170907a50800b007c1539bd028mr64058144ejc.48.1673477241399; 
- Wed, 11 Jan 2023 14:47:21 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-077-191-046-148.77.191.pool.telefonica.de.
- [77.191.46.148]) by smtp.gmail.com with ESMTPSA id
- y19-20020a1709060a9300b0084debc351b3sm3430197ejf.20.2023.01.11.14.47.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Jan 2023 14:47:20 -0800 (PST)
-Date: Wed, 11 Jan 2023 22:47:13 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: John G Johnson <john.g.johnson@oracle.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, Ani Sinha <ani@anisinha.ca>,
- Eduardo Habkost <eduardo@habkost.net>, Gerd Hoffmann <kraxel@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>
-Subject: Re: [PATCH v6 25/33] hw/isa/piix4: Use TYPE_ISA_PIC device
-In-Reply-To: <803306e6-685f-2187-4a35-416e6f5a5134@linaro.org>
-References: <20230109172347.1830-1-shentey@gmail.com>
- <20230109172347.1830-26-shentey@gmail.com>
- <803306e6-685f-2187-4a35-416e6f5a5134@linaro.org>
-Message-ID: <5F2F9EA6-A0B9-42DB-91B7-0544B0F6B6A7@gmail.com>
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=NHe9dNY1K3nmf+eGBsXRPck1pnlk9Q/oUevBJyUKEic=;
+        b=FR5TuLL9Gw5gMucCxXQfqxD0vT3IY/ZyWutIb3iKck/FY6/+qDpF7NWh2eo9TzQaTS
+         W0DB1UWhuEi0t4wCcwLwc9A7F0fRZ+XnWuUIZ/OqFR6tig0gwK4mKKcQCHprBvhhy/m6
+         iNErpGfVgvQ/eKr5jGIPWDqdx4FxO21nVPn96/mTWibW6uIY885Q3c0u5NjH6DsuuPZd
+         8Y2z76NRgnOKVaV1QMr52oTAA0UbrSy2Hs5VwXoUBrgEculwxvlTDy60ez078BqA7yEB
+         6a3KqQRengbZXkN8hID5Nw7O3YStkLJ4atWNnFhN6eE+JIMXfMieDB4Ga9mpdfNe782r
+         +qog==
+X-Gm-Message-State: AFqh2kqJMgqZ7tP4C30yZDcIzwAJCjoGNv7MNBU+hyRyiJwbXWy3ghiZ
+	0TxJW2OJhndqxN+2tW2o8WVVj3vM
+X-Google-Smtp-Source: AMrXdXtDu06Ah38uPc1HPAtBxFq2YcxnLMVyEJFHcwIINvKH5asLHydbqKYEW8kNQ8wJgz0Jm9ak6Q==
+X-Received: by 2002:a17:90a:6443:b0:226:f85c:2333 with SMTP id y3-20020a17090a644300b00226f85c2333mr16843963pjm.20.1673483849634;
+        Wed, 11 Jan 2023 16:37:29 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
+        by smtp.gmail.com with ESMTPSA id em6-20020a17090b014600b00223ffe2ba61sm9631602pjb.15.2023.01.11.16.37.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Jan 2023 16:37:29 -0800 (PST)
+Message-ID: <57ec8753-a08c-914f-d0ab-3e1e62682cb6@linaro.org>
+Date: Wed, 11 Jan 2023 10:29:09 -1000
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EQ4VVkHT1TFP
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [RFC PATCH v2 12/19] target/arm: Move hflags code into the tcg
+ directory
+Content-Language: en-US
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
+References: <20230109224232.11661-1-farosas@suse.de>
+ <20230109224232.11661-13-farosas@suse.de>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230109224232.11661-13-farosas@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: jxmc6YhP4rMy
+
+On 1/9/23 14:42, Fabiano Rosas wrote:
+> +inline void assert_hflags_rebuild_correctly(CPUARMState *env)
+> +{
+> +#ifdef CONFIG_DEBUG_TCG
+> +    CPUARMTBFlags c = env->hflags;
+> +    CPUARMTBFlags r = rebuild_hflags_internal(env);
+> +
+> +    if (unlikely(c.flags != r.flags || c.flags2 != r.flags2)) {
+> +        fprintf(stderr, "TCG hflags mismatch "
+> +                        "(current:(0x%08x,0x" TARGET_FMT_lx ")"
+> +                        " rebuilt:(0x%08x,0x" TARGET_FMT_lx ")\n",
+> +                c.flags, c.flags2, r.flags, r.flags2);
+> +        abort();
+> +    }
+> +#endif
+> +}
+
+Inline marker non-functional.
+
+Anyway, this should not be separated from cpu_get_tb_cpu_state, where it folds to no-op 
+when --disable-debug-tcg.  Indeed, I once had it textually inlined in 
+cpu_get_tb_cpu_state, before Philippe thought it looked nicer as a separate helper function.
+
+Otherwise,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
-
-Am 11=2E Januar 2023 17:08:28 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <p=
-hilmd@linaro=2Eorg>:
->On 9/1/23 18:23, Bernhard Beschow wrote:
->> Aligns the code with PIIX3 such that PIIXState can be used in PIIX4,
->> too=2E
->>=20
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> Reviewed-by: Michael S=2E Tsirkin <mst@redhat=2Ecom>
->> Message-Id: <20221022150508=2E26830-33-shentey@gmail=2Ecom>
->> ---
->>   hw/isa/piix4=2Ec  | 28 ++++++++++------------------
->>   hw/mips/malta=2Ec | 11 +++++++++--
->>   hw/mips/Kconfig |  1 +
->>   3 files changed, 20 insertions(+), 20 deletions(-)
->
->> @@ -1459,7 +1461,12 @@ void mips_malta_init(MachineState *machine)
->>       pci_ide_create_devs(PCI_DEVICE(dev));
->>         /* Interrupt controller */
->> -    qdev_connect_gpio_out_named(DEVICE(piix4), "intr", 0, i8259_irq);
->> +    dev =3D DEVICE(object_resolve_path_component(OBJECT(piix4), "pic")=
-);
->> +    i8259 =3D i8259_init(isa_bus, i8259_irq);
->> +    for (i =3D 0; i < ISA_NUM_IRQS; i++) {
->> +        qdev_connect_gpio_out(dev, i, i8259[i]);
->> +    }
->> +    g_free(i8259);
->>         /* generate SPD EEPROM data */
->>       dev =3D DEVICE(object_resolve_path_component(OBJECT(piix4), "pm")=
-);
->> diff --git a/hw/mips/Kconfig b/hw/mips/Kconfig
->> index 4e7042f03d=2E=2Ed156de812c 100644
->> --- a/hw/mips/Kconfig
->> +++ b/hw/mips/Kconfig
->> @@ -1,5 +1,6 @@
->>   config MALTA
->>       bool
->> +    select I8259
->>       select ISA_SUPERIO
->>       select PIIX4
->
->The PIIX4 owns / exposes the I8259, so we don't need to select it here=2E
->The Malta board only initializes it=2E Why did you have to add this?
-
-The Malta board instantiates a real I8259 while PIIX4 instantiates the TYP=
-E_ISA_PIC proxy=2E Both are implemented pragmatically in the same source fi=
-le, so both Malta and PIIX4 select it for different reasons=2E
-
-In previous iterations using the TYPE_PROXY_PIC this might have been clear=
-er: PIIX4 would select PROXY_PIC (and not I8259) while Malta would select I=
-8259=2E
-
-OK?
-
-Best regards,
-Bernhard
+r~

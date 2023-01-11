@@ -1,39 +1,39 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4416313ejc;
-        Wed, 11 Jan 2023 16:37:13 -0800 (PST)
-X-Received: by 2002:a17:903:186:b0:188:d2b3:26c1 with SMTP id z6-20020a170903018600b00188d2b326c1mr97979651plg.10.1673483832864;
-        Wed, 11 Jan 2023 16:37:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673483832; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4416459ejc;
+        Wed, 11 Jan 2023 16:37:34 -0800 (PST)
+X-Received: by 2002:a17:902:ed92:b0:192:7a02:31a7 with SMTP id e18-20020a170902ed9200b001927a0231a7mr4450409plj.49.1673483854595;
+        Wed, 11 Jan 2023 16:37:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673483854; cv=none;
         d=google.com; s=arc-20160816;
-        b=SoGi8aJ19NXB7lWV3wQrME8EQh8thN33UmL5dxqFIoTm/pM6cwIQoh44V+/N5TcaDj
-         EYd+hiwjBr5Ew+rP26GtkEpBK816zzRCEcO1R9yIgCUXzglXXy7nJowTNsYtlQN+wG2C
-         RpXFa5dKhYQAo62Mnz47u1Y3Oahhq6DzpA+pJ1ZdOGlHwCHreB7RJAEGmOawpcdIFAQJ
-         FWIXeviD1ukEI4onEceDiSXPvLGSuNpla3hNu5TW8G29gf9VvsmWhYMZl/OWDkCt3fWu
-         QXTIsMONxv2f25VkKyGvOnL+mClYa3AOfSOBT+a2wlfoOIZw2CPkmj72i94l3u8CReEI
-         U6bQ==
+        b=gkz9DjDJDC1cnUSvudoa+TZ2/xekw0a+Ho95rVSCqG0cXmnVFjXtcp7tBQeLhMMAXg
+         lXmY5l9su4pTkVWHL5ePRaJAVrWHC9pul2nshmaFc9V3SiZczRwX2A1e3MdO7suV9jyK
+         nXVtFJ21sqWqhPTcv958Wwg9FTjBM2894ktjZxffwyu5a3XCsgzvUTZR9sGpv3rVSLEr
+         COs6nVZiIDVZsu8RrjTnta3dZV48fqmrDiyp4owZKbVbY66GEFRQTRH+3zzeVDtPWoZZ
+         2mTsYK7aNfMfLp0SIUoidBAsIq8oxdWeNKaxPH2x6goKDcyYYE0sqbYto75mOy26yDfJ
+         vndw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=P8D66QBPX4fZgqOG7/VW8Yb8evSDFfLLLM0zaFKClFo=;
-        b=Xn+vHu/N0WfZQoFE0ziCxOSL5l6r3aUWB3NjWM183Ksmglx6Jo6UzEtNeJ1pk/Os65
-         kw0cOFJSr2QR/P6SkSrXGqlYS3a4BSnH1YdmJl3IBc1GGfwzgjtYqSUQSyHkO8yfnV4o
-         jRxikXSe4DEyBD8dGrZ3b+EjDTLFxJ5e67a21kQwnoQ7bG6AZ1Cwr3sC9kNTuwf0UWrN
-         w1APL55r+Av9/ESBZPvHm1YvOWS5ZzrNxK6Ckt1JI2OnmyR08RmrkmZ4fKyAxo4sO+K8
-         ME5dh/Jfh1wqnRGqJiWj+Gox6Xs7F0PSjorExAveYZUdDrlBR6AfAkj2QaWZXK0wgGwB
-         ZjOQ==
+        bh=w3dSyXN1RKi7nVnTNy7sl17nMxRk5FXSE/DSuWGove4=;
+        b=0suUsxzFzmoS3eubAxlZo6p+CzqlfVh1RLHcHnGveh3wQap253u2roJJ9A6f/Evs1i
+         dDeUGrmZp59FN4wI9f9g0aomw365G7+IMPhp/Q3KaeKVvOYVkG6dczpxmKWeWCb15ZCY
+         pBzD0p3wYJcfqRbHDOnIU3IpRf9yKzMxsj+12s5CP9fPk7w2qAUkRtSRH2lyxyoD6WeI
+         s9zhWe4J4AMgZTO0sqndd8eQwqPe+Um/52QKcoFJBNNEe/KsQT9GceyxEheEuAz01sth
+         jFyLa52TWGNHEBungLAAPGs9hNulZL6t4CJeFQYT/VyLxM2QKiVNYWf2ITPbAaNiELbi
+         wLQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rSbLegtA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bragzYjh;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ay5-20020a1709028b8500b001930b7c53b5sor7787875plb.5.2023.01.11.16.37.12
+        by mx.google.com with SMTPS id w2-20020a1709026f0200b00192fad42ca8sor7956978plk.141.2023.01.11.16.37.34
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 11 Jan 2023 16:37:12 -0800 (PST)
+        Wed, 11 Jan 2023 16:37:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rSbLegtA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bragzYjh;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -41,74 +41,68 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=P8D66QBPX4fZgqOG7/VW8Yb8evSDFfLLLM0zaFKClFo=;
-        b=rSbLegtANOTR2ZB/+rlm7Y1xRLvZck9Hp0mxHk+iVC2f13fHVCvsLap21DtLjzknyk
-         yH4SUzmJZmbdxPov4EmpBBnCMmT3pO63eP+cBiSJp3N6eKY/j6Em8c7y/68TPLtuu5C9
-         38A5SG9dqZcvcGvNP13BhDHjezlJmfMsf2mF9a+GRKTpe1QiHX2b+g59HMr2HklWiFwA
-         ug8uCUL9qhtxmi9rnyu0i5h5dZeHoXrCJOhpcy0EAZ7B0b57X2xERVol3ti8wPANklP/
-         GikqN8840KRYpc/1CDDkc345o4NPX3TyurteWVEyw7frDTbTWa8OEROHg8cc05tqqyeM
-         PsdA==
+        bh=w3dSyXN1RKi7nVnTNy7sl17nMxRk5FXSE/DSuWGove4=;
+        b=bragzYjhsFgpfEbGjBOrr+EHL785poIt7eomUK+mq4dPGV8qt5qbSRn1usWK74SfKL
+         fR+PSFGzOFC/MvRey3VHa1ksoIVJEa2ZFkGcrSS3P+w+IECS/Othes3yZi87j3SnPWqC
+         Wlm0NnYQFq5L8fpRiIi/LZNCKBEHL9nB1qybgZQNXt0r3qv2QhYZPLOtLG2yCbnOIk7X
+         lkhw0fGpM9ZZPbZ7o5RuxRNBkJRY1B+9ooh2bzBKnYP7EAPMbucvgFo4d7aejthobtSa
+         nO67zW4DbmyHlIgruGchwfzQIPWFTeus0OJ5kSaUXfG1IgU8HUHBNQ3dtU3A6mEttnsX
+         Jobg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=P8D66QBPX4fZgqOG7/VW8Yb8evSDFfLLLM0zaFKClFo=;
-        b=2p5LHOZO3E3WdjosZ1aqKgS2AIC4wyONslOvZxfG66soiaIsKY189YMZRTD5pQa3Ia
-         x3lF4x7S3ktzHd8NYeYOUR/APpMBLQDzt3euW6z1MT/CkSGGf3MDVQ0T+ArhJlfCPq35
-         65GpIHQppO5zLe+1IfPZOCOdctEI8h0x5UDQilrPSSVD1ZDfnu8TRP6WkaioSvujlejY
-         RGrpM6ETv1Gsd19gHfmarjwcuC5FQxgiV6mUEj65Gfgbp2BjBZkVrY2mrREnlKD06ZxU
-         ZwH4CqqwAsDlg+ykvsIr/9cDoDdvfpulcL9GEOwHMZ8XdcEXqLy5Qw3x09R1uxkrW3+w
-         wOQA==
-X-Gm-Message-State: AFqh2kpwq4chS27h1nAwriAC6MQQB6L4bt7UCjpF7+crwNiw0nd3B/cn
-	uYueg30J+lNiZt9m7szxbDbcDB4t
-X-Google-Smtp-Source: AMrXdXs6ZKDxhmOUPG2eDHzcx776wA93Xks+2RCfGIWf6SLUuncO3Np/hAKVrKsvwKkf/hgns9zsrg==
-X-Received: by 2002:a17:902:a402:b0:191:7d3:7fe4 with SMTP id p2-20020a170902a40200b0019107d37fe4mr66366586plq.59.1673483832345;
-        Wed, 11 Jan 2023 16:37:12 -0800 (PST)
+        bh=w3dSyXN1RKi7nVnTNy7sl17nMxRk5FXSE/DSuWGove4=;
+        b=pjXibpBAV/dCBcw1EBTItbb6c7OCRuFJ51fnnV6qZNJUsnCWEwC0rqZnlhgOGLznWZ
+         +0m9TSdaiDsJHEfpAYON0bgmdlloUZYXpoIBcLy/Jp6GNLmBknYDaMDTID0PR0uU2eN5
+         AJ/4DA60XYGFB8fxHs1pBDBxoJPDIfBH4jjmNg3EATbBTTKu6uuhIv0X5g7bqPeiDPbC
+         wGi7svioNetpAmIS6M62Y9JgyEsPX76B3k80h/nyVwQdcTriLNH2qr8WSCo51NvjRP7q
+         r6g0Qxq/XZGxm2vc0frhE8BZbfH8ql4dp1uic44121ceHtbaFlafsOSQGy/MO7OWkjjg
+         NvRg==
+X-Gm-Message-State: AFqh2krTPFs9UT4DsyK6LeE9FJMvD0MWmvqRslxCPtqsYkFdUxqxmbHi
+	LCOtqm5kz5G5aCM9wnYtlQSsFEpY
+X-Google-Smtp-Source: AMrXdXvakTMQKGLw079z5qtRMw0NLOdBkx/f2cu0irF0GNDudSJMp/LauzAYhToQR7LitobGDeO5bg==
+X-Received: by 2002:a05:6a20:9592:b0:b6:3708:7be9 with SMTP id iu18-20020a056a20959200b000b637087be9mr6440246pzb.36.1673483854146;
+        Wed, 11 Jan 2023 16:37:34 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
-        by smtp.gmail.com with ESMTPSA id u12-20020a17090341cc00b0019327a6b740sm7994562ple.308.2023.01.11.16.37.09
+        by smtp.gmail.com with ESMTPSA id d63-20020a623642000000b0057691fb0d37sm10486699pfa.193.2023.01.11.16.37.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Jan 2023 16:37:11 -0800 (PST)
-Message-ID: <b316e3fd-69b1-4be4-a748-53116fa52576@linaro.org>
-Date: Wed, 11 Jan 2023 09:58:38 -1000
+        Wed, 11 Jan 2023 16:37:33 -0800 (PST)
+Message-ID: <214f89fc-6e90-7d0b-8555-4bae1d1d0b70@linaro.org>
+Date: Wed, 11 Jan 2023 10:30:35 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH 04/18] hw/arm: Use full "target/arm/cpu.h" path to include
- target's "cpu.h"
+Subject: Re: [RFC PATCH v2 13/19] tests: do not run test-hmp on all machines
+ for ARM KVM-only
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: ale@rev.ng, Andrey Smirnov <andrew.smirnov@gmail.com>,
- Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Antonio Caggiano <antonio.caggiano@collabora.com>,
- Rob Herring <robh@kernel.org>, Antony Pavlov <antonynpavlov@gmail.com>,
- Jan Kiszka <jan.kiszka@web.de>, Beniamino Galvani <b.galvani@gmail.com>
-References: <20230110164406.94366-1-philmd@linaro.org>
- <20230110164406.94366-5-philmd@linaro.org>
+To: Fabiano Rosas <farosas@suse.de>, Claudio Fontana <cfontana@suse.de>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@linaro.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>, Laurent Vivier <lvivier@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+References: <20230109224232.11661-1-farosas@suse.de>
+ <20230109224232.11661-14-farosas@suse.de>
+ <35870ab3-1da6-c222-b708-06ac71a5883c@redhat.com> <87zgaqa6jk.fsf@suse.de>
+ <CAFEAcA_x_kTdNt8+5YAjo518Wj_Ej4jZ=0OrCQmutNOjJx=3Gw@mail.gmail.com>
+ <87sfgia4uj.fsf@suse.de>
+ <CAFEAcA_AaWfwAbCLOC3ELf3c20Cv5jQhWc71Py4ww4kLo2nYeg@mail.gmail.com>
+ <9fb63a5d-d839-016d-b0a8-4151b6d6946c@suse.de> <87fschcko4.fsf@suse.de>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230110164406.94366-5-philmd@linaro.org>
+In-Reply-To: <87fschcko4.fsf@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: H9rGVPPgh1I4
+Content-Transfer-Encoding: 7bit
+X-TUID: v18kgGlYUq8Y
 
-On 1/10/23 08:43, Philippe Mathieu-Daudé wrote:
-> First we want to introduce a new "cpu.h" header in the "hw/arm/"
-> namespace;
+On 1/11/23 04:36, Fabiano Rosas wrote:
+> Nowadays for KVM is the 'virt' machine the only one we use?
 
-Do we?  Is that really the best name (not having seen its contents).
-
-> second we would like to get rid of '-I target/$ARCH/'
-> in the CPPFLAGS.
-> Use the full path to "cpu.h": "target/arm/cpu.h".
-
-That seems a worthy goal for hw/ though.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Also sbsa-ref.
 
 
 r~

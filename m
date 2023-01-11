@@ -1,99 +1,88 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3948935ejc;
-        Wed, 11 Jan 2023 04:22:45 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs2E+5EOqJDeeNRILYuzfChVUfa6gbWz1w4WRbImIM3u3qk9nT7ergjCj67SSKKKQFSDISO
-X-Received: by 2002:a05:6214:350d:b0:533:bcd4:3509 with SMTP id nk13-20020a056214350d00b00533bcd43509mr8193853qvb.7.1673439764838;
-        Wed, 11 Jan 2023 04:22:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673439764; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3957722ejc;
+        Wed, 11 Jan 2023 04:36:47 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuTpVCMoR5XSbkI06o65LB345Xyr7pBO5/iGl1NHUxia7fz3y3lDfmt+erXvBDyOnvCYREX
+X-Received: by 2002:a05:6000:257:b0:2bd:c6ce:7bfb with SMTP id m23-20020a056000025700b002bdc6ce7bfbmr951708wrz.28.1673440607494;
+        Wed, 11 Jan 2023 04:36:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673440607; cv=none;
         d=google.com; s=arc-20160816;
-        b=APkspLucoPJS5bb5EsL6QGDmkPXHzB/+U3vnmf+oWCrPAHnkvITEt0blTCfpBYcodg
-         TccM2phf0P9vhQ2ZoP/m+Nqd998N7SPcI5Jd3KVP0Iki89Q7CSqtc16hL5wb8xjT2ThE
-         AIp5+Hqg3OND2CKBU0Xsu/eMrpdnTqCEYJEmuO5Dtr6UmdYVTOGovZd7eF5sJfm1nW0x
-         jtzir4HCDJYDAlzPl4Ggk+91sGtcR3jN9t1iqsTrs/FRIv3/6yFbNz2vOpled9wP6h/K
-         6IEzNV3qdeHvi6haA5rX94Aqg4voEJigu6ZjkIlHJNiPjJXhe3PjjDIRms4H+DceWDI4
-         bfqg==
+        b=esi+4sgMKXPb9PBChAAU/0+F1Mx4NgWkQWWq2F5EvPy1+v3wNdR4oKdNt2NEQ0NlNe
+         XrijlCv98SsWziSJux/rJk8BZZLwqsfnUKLsqjMRMbMyc9ORDshZ8felfMnAD52nExFn
+         zpDmY1gbm26Dt0IZ8HdJFVySuNh80B0AdeO/ta7JwvXR37vNuOV52r+kZYLeMxzmi9kp
+         qJdnwTHtlYlyxLsOqSiBkMlbQrShMM+QcIEyoGO8BABFlQ/2xGEM/JboV1ux3TvLZPMP
+         Trjt51AqRPvemq4z1wcbyI6/c53Vn5pLi6THRH3SaeVKeN9BSYdiJCmdTSDGVuLCJ84N
+         GFXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=yEYZiH/Ph6zRFMocgLriJV3qKykFL1ySLUuMpvE1co0=;
-        b=ntWWPb1IWXMJ9CVpzsKtl3Qbh/yAEQXZgurtjPRO5mCOrrJlWnwMPEa0gzIpTe7DBB
-         2sQZs+Nb26sXRKJRG7dMntIA9zh+05EVYMoRud86os00sz5FRE2WMPzTD4eszIveEP4b
-         42PU3xJv0z9F8we4EwTxpLGid8djfFqwxArcu7EeReMqkceBd8bKEG6FLa1R9IG0rBjR
-         GGyuq5Getk9x71LH1TYx6IZy5dA5ctshmPHX72c5xEnsB9/9ELMzfvHt96e4rgtcF2lP
-         1EQMpb00wh5GObXu4xShKcvI5k+XcLU13o66OYUsyfRZemAo/tlHjjHEJ73eBiuayjIn
-         FvbA==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=o7+hc/DFjslwrESw5agfyTFCIkxacbwjNjx4lyXZbpM=;
+        b=IQxgsSaHQV4rGnOfgbg74g1x65JHIyF+Wpwda5fQa54UkFE5G58jZ4grpLA60Cu3A1
+         /fr0cXviG4LSK0Pn6HQVBV1d16PZmOLHb9GCy2rG1W7ul+V3aAnnkW7R0BHLVovaTIP7
+         LQ93nLCPNHOv22pKV0+l/hAA6kxcwe2edHxMsgPv6E7gY1mLh8NmI/s86hUlBxBTgaHJ
+         Dd4qqci3w+mNjHEx+2KtYxOLB+eN6GFQEJhQBDiVT8o2SL/vQF61j/WiDhva0lTV5KCp
+         ZoPGhdTzqVDUG8NwboYi3VnbQet0bYx8/vx7c/oGJSdaryjiMfg1OSajiDczqNHjqKuN
+         EkRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QRfz3WpW;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id a2-20020ad45c42000000b004c62f35ea86si8536477qva.273.2023.01.11.04.22.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Jan 2023 04:22:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rMURa6f+;
+       dkim=neutral (no key) header.i=@suse.de header.b=DJkV+XDh;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id u6-20020a056000038600b002bc7d10a3fasi6080127wrf.332.2023.01.11.04.36.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Jan 2023 04:36:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QRfz3WpW;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1673439764;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rMURa6f+;
+       dkim=neutral (no key) header.i=@suse.de header.b=DJkV+XDh;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id DBA527593F;
+	Wed, 11 Jan 2023 12:36:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1673440606; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=yEYZiH/Ph6zRFMocgLriJV3qKykFL1ySLUuMpvE1co0=;
-	b=QRfz3WpW8ehBzPS0/ql4YMeydnoL4OGMDFh2tXlIa/CWcXnVVcjbY046HYlU/dzAydR6+s
-	FDx7o+72gV8EfUTtaiYIBKsTvoKFtqIkIIsxlRIGRh7tEJ4HtpbqI4aNW0BE6oyOQZIZfJ
-	BGH6wZCMc3vxGglz833oIC/6UjVa59c=
-Received: from mail-vs1-f72.google.com (mail-vs1-f72.google.com
- [209.85.217.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-546-WQg-CIuUMtKxHz_8TBpNUA-1; Wed, 11 Jan 2023 07:22:41 -0500
-X-MC-Unique: WQg-CIuUMtKxHz_8TBpNUA-1
-Received: by mail-vs1-f72.google.com with SMTP id 190-20020a6707c7000000b003b134bce1dbso3699580vsh.21
-        for <alex.bennee@linaro.org>; Wed, 11 Jan 2023 04:22:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yEYZiH/Ph6zRFMocgLriJV3qKykFL1ySLUuMpvE1co0=;
-        b=PsdGaDh+LwztDs3fxqyoSZdJ6UGWUP3B+Q255fbRWjTH/lqvCyqCNhUe0oApUDynTN
-         Ki+BN3Ed01EaS5W89UAOoXcCAGF9zvy8WgZv2cZY8YNMHzFlRKY1uU5rYkoTBzH1nhyz
-         rQlpkh0D8AspI9qVD3yWprYO3G/1cRtwf2YzRVYOmTS6nXL62ygoioevePY4iAxHteyb
-         rCPFrnIEmX6J962hiL8vnB0Wc2syRKKXrCJ9+82qljXSpiRpynbh1WNdvQy0tgsqnDrL
-         cLtV7a9SvBtcnuLwPZ2anTYkmHj/Aq4DF3O5pBQMO9hGpRJccrwVAJRot40ddSUxRR6c
-         qMkA==
-X-Gm-Message-State: AFqh2kqZuU79co5auOaV/0ysSUgK2gRbQ17vh+dPy6od4BS3kYnvO2Ix
-	rccx5IlQEk/3M6anH1lQU05RiGspFz4oks0jHO6+IKgaLI2MqhBXVDFRXV8+q7t3fiT1pwa57eS
-	iXT3PMYz1hzNprpID
-X-Received: by 2002:a67:d902:0:b0:3cb:bbc5:ba60 with SMTP id t2-20020a67d902000000b003cbbbc5ba60mr26218353vsj.5.1673439760824;
-        Wed, 11 Jan 2023 04:22:40 -0800 (PST)
-X-Received: by 2002:a67:d902:0:b0:3cb:bbc5:ba60 with SMTP id t2-20020a67d902000000b003cbbbc5ba60mr26218338vsj.5.1673439760586;
-        Wed, 11 Jan 2023 04:22:40 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.2] (ip-109-43-176-91.web.vodafone.de. [109.43.176.91])
-        by smtp.gmail.com with ESMTPSA id q5-20020a05620a0d8500b006eee3a09ff3sm8920213qkl.69.2023.01.11.04.22.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Jan 2023 04:22:39 -0800 (PST)
-Message-ID: <dd02aa03-1c97-9a1f-4d06-6f9802ce7644@redhat.com>
-Date: Wed, 11 Jan 2023 13:22:35 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
+	bh=o7+hc/DFjslwrESw5agfyTFCIkxacbwjNjx4lyXZbpM=;
+	b=rMURa6f+YYpM4kpj0XrLxuFq2uYH4JtmcZDiKC+61MNZMYh16QePKUM+lG7rKMXlCI7aMS
+	H0Cwo7NgoyXsye+AB7tOVM50DaOduMP7qDkD2swPUBO2z49NFY2rCMZ9iuuaY4EWGjsYoE
+	G0/7w9+r6VbktnA3fQNZ78Kw1TKJ0dg=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1673440606;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=o7+hc/DFjslwrESw5agfyTFCIkxacbwjNjx4lyXZbpM=;
+	b=DJkV+XDhpUkb6QoJ/td1s/muOmB4QV09Tbfta3NlF/4fhli+Vl4CQdhTqLyW3dxn+Kt+WW
+	x5TIa6BcpYIeP7Ag==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 66DB313591;
+	Wed, 11 Jan 2023 12:36:46 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id Gj3QC16tvmN3TgAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 11 Jan 2023 12:36:46 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Claudio Fontana <cfontana@suse.de>, Peter Maydell
+ <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Richard
+ Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Eduardo
+ Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>, Laurent
+ Vivier <lvivier@redhat.com>, "Dr. David Alan Gilbert"
+ <dgilbert@redhat.com>
 Subject: Re: [RFC PATCH v2 13/19] tests: do not run test-hmp on all machines
  for ARM KVM-only
-To: Claudio Fontana <cfontana@suse.de>,
- Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Laurent Vivier <lvivier@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+In-Reply-To: <9fb63a5d-d839-016d-b0a8-4151b6d6946c@suse.de>
 References: <20230109224232.11661-1-farosas@suse.de>
  <20230109224232.11661-14-farosas@suse.de>
  <35870ab3-1da6-c222-b708-06ac71a5883c@redhat.com> <87zgaqa6jk.fsf@suse.de>
@@ -101,16 +90,14 @@ References: <20230109224232.11661-1-farosas@suse.de>
  <87sfgia4uj.fsf@suse.de>
  <CAFEAcA_AaWfwAbCLOC3ELf3c20Cv5jQhWc71Py4ww4kLo2nYeg@mail.gmail.com>
  <9fb63a5d-d839-016d-b0a8-4151b6d6946c@suse.de>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <9fb63a5d-d839-016d-b0a8-4151b6d6946c@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 4KOrEJcFcMg1
+Date: Wed, 11 Jan 2023 09:36:43 -0300
+Message-ID: <87fschcko4.fsf@suse.de>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-TUID: 7emTcxA5Z6sm
 
-On 11/01/2023 13.08, Claudio Fontana wrote:
+Claudio Fontana <cfontana@suse.de> writes:
+
 > On 1/10/23 15:02, Peter Maydell wrote:
 >> On Tue, 10 Jan 2023 at 13:36, Fabiano Rosas <farosas@suse.de> wrote:
 >>>
@@ -143,23 +130,71 @@ On 11/01/2023 13.08, Claudio Fontana wrote:
 >>> But what does "all machines" mean in a no-TCG build? The original intent
 >>> of the patch was that only 'virt' should be present and therefore the
 >>> only one tested.
->>
+>> 
 >> It means "every machine the user can create". If the
 >> machine can't run then either we shouldn't compile it
 >> in, or else we should be compiling in enough extra stuff
 >> to allow it to work.
->>
+>> 
 >> -- PMM
-> 
+>
 > Hi,
-> 
+>
 > once upon a time there was a series by Philippe to accomplish that (KConfig) right?
 
-Maybe that one:
+Is this it?
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg777719.html
 
-  https://lore.kernel.org/qemu-devel/20190903114729.3400-1-philmd@redhat.com/
+I have now moved the cpus into the tcg directory:
 
-?
+# ./qemu-system-aarch64 -cpu ? 
+Available CPUs:
+  a64fx
+  cortex-a35
+  cortex-a53
+  cortex-a55
+  cortex-a57
+  cortex-a72
+  cortex-a76
+  host
+  max
+  neoverse-n1
 
-  Thomas
+What remains is changing the Kconfig to not bring all the
+machines. Nowadays for KVM is the 'virt' machine the only one we use? I
+did some tests yesterday by keeping only CONFIG_ARM_VIRT and was left
+with this:
 
+# ./qemu-system-aarch64 -machine ? 
+Supported machines are:
+none                 empty machine
+virt-2.10            QEMU 2.10 ARM Virtual Machine
+virt-2.11            QEMU 2.11 ARM Virtual Machine
+virt-2.12            QEMU 2.12 ARM Virtual Machine
+virt-2.6             QEMU 2.6 ARM Virtual Machine
+virt-2.7             QEMU 2.7 ARM Virtual Machine
+virt-2.8             QEMU 2.8 ARM Virtual Machine
+virt-2.9             QEMU 2.9 ARM Virtual Machine
+virt-3.0             QEMU 3.0 ARM Virtual Machine
+virt-3.1             QEMU 3.1 ARM Virtual Machine
+virt-4.0             QEMU 4.0 ARM Virtual Machine
+virt-4.1             QEMU 4.1 ARM Virtual Machine
+virt-4.2             QEMU 4.2 ARM Virtual Machine
+virt-5.0             QEMU 5.0 ARM Virtual Machine
+virt-5.1             QEMU 5.1 ARM Virtual Machine
+virt-5.2             QEMU 5.2 ARM Virtual Machine
+virt-6.0             QEMU 6.0 ARM Virtual Machine
+virt-6.1             QEMU 6.1 ARM Virtual Machine
+virt-6.2             QEMU 6.2 ARM Virtual Machine
+virt-7.0             QEMU 7.0 ARM Virtual Machine
+virt-7.1             QEMU 7.1 ARM Virtual Machine
+virt-7.2             QEMU 7.2 ARM Virtual Machine
+virt                 QEMU 8.0 ARM Virtual Machine (alias of virt-8.0)
+virt-8.0             QEMU 8.0 ARM Virtual Machine
+x-remote             Experimental remote machine
+
+But qtest dislikes that even more. I need to figure out why.
+
+The approach of that series seems interesting, moving CONFIG_FOO=y from
+default.mak into Kconfig as 'default y if TCG'. Maybe that will yield
+better results, I'll try to follow that route.

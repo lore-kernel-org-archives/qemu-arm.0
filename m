@@ -1,270 +1,114 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4117969ejc;
-        Wed, 11 Jan 2023 08:14:43 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXusJRSGmtNErfsvdkSKKZYU8MEf429e9Bejo7UqzQI06l/0XtjK5BtUPxqax1cMBkZQkTrv
-X-Received: by 2002:ad4:4dc9:0:b0:531:c3b0:49e with SMTP id cw9-20020ad44dc9000000b00531c3b0049emr48910251qvb.20.1673453683079;
-        Wed, 11 Jan 2023 08:14:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673453683; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4416313ejc;
+        Wed, 11 Jan 2023 16:37:13 -0800 (PST)
+X-Received: by 2002:a17:903:186:b0:188:d2b3:26c1 with SMTP id z6-20020a170903018600b00188d2b326c1mr97979651plg.10.1673483832864;
+        Wed, 11 Jan 2023 16:37:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673483832; cv=none;
         d=google.com; s=arc-20160816;
-        b=P9f851nLUHl4/At1PSBwkQjFQBkLcRmYnkJwTfoMfGixm+VaKWah/7vGp1aXD/JQ/q
-         0uZ2L5ydWlGeozCzIEtpe1bEKRTvR9dTuKH/jJYwr02917bEG3r6l/NsuVpbbpl2YxZo
-         xK2vRW/93bXn48zubAVQYWKcF4I98V1qMXCbDB8N3VzvFOYwj90QqlkYhyC+66DjCqtC
-         szadc3Vr0rt2XCKjeMpTMO5aM6gHj0xxuE79kfF2sRu2emPqJIlyt86odxzAkuqH/e3R
-         DdgP0la4hFxRDVJDTi6bw8iG6pKLNN3JaPphGW3g7o+TEXK8wVSN9csv43qMqnPHMSKb
-         pKQw==
+        b=SoGi8aJ19NXB7lWV3wQrME8EQh8thN33UmL5dxqFIoTm/pM6cwIQoh44V+/N5TcaDj
+         EYd+hiwjBr5Ew+rP26GtkEpBK816zzRCEcO1R9yIgCUXzglXXy7nJowTNsYtlQN+wG2C
+         RpXFa5dKhYQAo62Mnz47u1Y3Oahhq6DzpA+pJ1ZdOGlHwCHreB7RJAEGmOawpcdIFAQJ
+         FWIXeviD1ukEI4onEceDiSXPvLGSuNpla3hNu5TW8G29gf9VvsmWhYMZl/OWDkCt3fWu
+         QXTIsMONxv2f25VkKyGvOnL+mClYa3AOfSOBT+a2wlfoOIZw2CPkmj72i94l3u8CReEI
+         U6bQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Q7U3BISuSPwAWuMpwLqgxRRbJoso0xAD3vBoILCXk1A=;
-        b=Dy0vHwHspppL7ofuW4DC4eZgaoYgrFQfFbQL23hnl7e32V00E4t8rC3w1dZ915AInu
-         t/2X71tHXavsRqEo/RU4mNLojPNDtBsEzeg1nrJ6gHYXnnJuzTpCxRnY+5LXOiN6TkDM
-         UPZ+8b17pvKboEUIim4ZIMnkNv9uWpTAqWL8SVE3eX7T63AITL2KCR8hGylSvfT3Ob37
-         bRH4whPX+QLYO5r3u6xgvuofFEDqbuDbTGP15g1cBYXBtnZxiETOsf5rF2EbZj4Utrjr
-         YLNlD+NJ/Edg81DAbARI15poFS65c7DRet10DcqZBFE7rHhG+xRCaZ/gwB8kmi49Lebj
-         TTQA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=P8D66QBPX4fZgqOG7/VW8Yb8evSDFfLLLM0zaFKClFo=;
+        b=Xn+vHu/N0WfZQoFE0ziCxOSL5l6r3aUWB3NjWM183Ksmglx6Jo6UzEtNeJ1pk/Os65
+         kw0cOFJSr2QR/P6SkSrXGqlYS3a4BSnH1YdmJl3IBc1GGfwzgjtYqSUQSyHkO8yfnV4o
+         jRxikXSe4DEyBD8dGrZ3b+EjDTLFxJ5e67a21kQwnoQ7bG6AZ1Cwr3sC9kNTuwf0UWrN
+         w1APL55r+Av9/ESBZPvHm1YvOWS5ZzrNxK6Ckt1JI2OnmyR08RmrkmZ4fKyAxo4sO+K8
+         ME5dh/Jfh1wqnRGqJiWj+Gox6Xs7F0PSjorExAveYZUdDrlBR6AfAkj2QaWZXK0wgGwB
+         ZjOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dnqNH50Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ey5-20020a0562140b6500b0053227970d47si6987328qvb.231.2023.01.11.08.14.42
+       dkim=pass header.i=@linaro.org header.s=google header.b=rSbLegtA;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ay5-20020a1709028b8500b001930b7c53b5sor7787875plb.5.2023.01.11.16.37.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Jan 2023 08:14:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 11 Jan 2023 16:37:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dnqNH50Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pFdjS-0000nE-Uw; Wed, 11 Jan 2023 11:13:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pFdjR-0000mI-Kq
- for qemu-arm@nongnu.org; Wed, 11 Jan 2023 11:13:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.145.221.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pFdjL-0002x8-Q8
- for qemu-arm@nongnu.org; Wed, 11 Jan 2023 11:13:38 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673453614;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Q7U3BISuSPwAWuMpwLqgxRRbJoso0xAD3vBoILCXk1A=;
- b=dnqNH50Y8PjwHwe5xP8yHw8s0RXpTbt50KyASCGiIwBU4Qj9//hRpTFpExsdnlpEGLfeof
- 5a7SXYdff5+hof3Y7BGZcn3GU2wggCmaAYzNzvEiWBVyDB5SGkgIqDRs41YQqbS5nzoc2f
- LoNm+c6oNq+nsP/k+vUB642vSfEH2xw=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-2-VmhDB6ldPOS3ANR5C0iavw-1; Wed, 11 Jan 2023 11:13:30 -0500
-X-MC-Unique: VmhDB6ldPOS3ANR5C0iavw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5F6D51C08797;
- Wed, 11 Jan 2023 16:13:30 +0000 (UTC)
-Received: from gondolin.redhat.com (unknown [10.39.195.25])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E00A52026D68;
- Wed, 11 Jan 2023 16:13:27 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
- Eric Auger <eauger@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Gavin Shan <gshan@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH v4 2/2] qtests/arm: add some mte tests
-Date: Wed, 11 Jan 2023 17:13:17 +0100
-Message-Id: <20230111161317.52250-3-cohuck@redhat.com>
-In-Reply-To: <20230111161317.52250-1-cohuck@redhat.com>
-References: <20230111161317.52250-1-cohuck@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=rSbLegtA;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=P8D66QBPX4fZgqOG7/VW8Yb8evSDFfLLLM0zaFKClFo=;
+        b=rSbLegtANOTR2ZB/+rlm7Y1xRLvZck9Hp0mxHk+iVC2f13fHVCvsLap21DtLjzknyk
+         yH4SUzmJZmbdxPov4EmpBBnCMmT3pO63eP+cBiSJp3N6eKY/j6Em8c7y/68TPLtuu5C9
+         38A5SG9dqZcvcGvNP13BhDHjezlJmfMsf2mF9a+GRKTpe1QiHX2b+g59HMr2HklWiFwA
+         ug8uCUL9qhtxmi9rnyu0i5h5dZeHoXrCJOhpcy0EAZ7B0b57X2xERVol3ti8wPANklP/
+         GikqN8840KRYpc/1CDDkc345o4NPX3TyurteWVEyw7frDTbTWa8OEROHg8cc05tqqyeM
+         PsdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=P8D66QBPX4fZgqOG7/VW8Yb8evSDFfLLLM0zaFKClFo=;
+        b=2p5LHOZO3E3WdjosZ1aqKgS2AIC4wyONslOvZxfG66soiaIsKY189YMZRTD5pQa3Ia
+         x3lF4x7S3ktzHd8NYeYOUR/APpMBLQDzt3euW6z1MT/CkSGGf3MDVQ0T+ArhJlfCPq35
+         65GpIHQppO5zLe+1IfPZOCOdctEI8h0x5UDQilrPSSVD1ZDfnu8TRP6WkaioSvujlejY
+         RGrpM6ETv1Gsd19gHfmarjwcuC5FQxgiV6mUEj65Gfgbp2BjBZkVrY2mrREnlKD06ZxU
+         ZwH4CqqwAsDlg+ykvsIr/9cDoDdvfpulcL9GEOwHMZ8XdcEXqLy5Qw3x09R1uxkrW3+w
+         wOQA==
+X-Gm-Message-State: AFqh2kpwq4chS27h1nAwriAC6MQQB6L4bt7UCjpF7+crwNiw0nd3B/cn
+	uYueg30J+lNiZt9m7szxbDbcDB4t
+X-Google-Smtp-Source: AMrXdXs6ZKDxhmOUPG2eDHzcx776wA93Xks+2RCfGIWf6SLUuncO3Np/hAKVrKsvwKkf/hgns9zsrg==
+X-Received: by 2002:a17:902:a402:b0:191:7d3:7fe4 with SMTP id p2-20020a170902a40200b0019107d37fe4mr66366586plq.59.1673483832345;
+        Wed, 11 Jan 2023 16:37:12 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
+        by smtp.gmail.com with ESMTPSA id u12-20020a17090341cc00b0019327a6b740sm7994562ple.308.2023.01.11.16.37.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Jan 2023 16:37:11 -0800 (PST)
+Message-ID: <b316e3fd-69b1-4be4-a748-53116fa52576@linaro.org>
+Date: Wed, 11 Jan 2023 09:58:38 -1000
 MIME-Version: 1.0
-Content-type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 04/18] hw/arm: Use full "target/arm/cpu.h" path to include
+ target's "cpu.h"
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: ale@rev.ng, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Antonio Caggiano <antonio.caggiano@collabora.com>,
+ Rob Herring <robh@kernel.org>, Antony Pavlov <antonynpavlov@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Beniamino Galvani <b.galvani@gmail.com>
+References: <20230110164406.94366-1-philmd@linaro.org>
+ <20230110164406.94366-5-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230110164406.94366-5-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: permerror client-ip=216.145.221.124;
- envelope-from=cohuck@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_FAIL=0.001,
- SPF_HELO_NONE=0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rmOlqcBB9FMN
+X-TUID: H9rGVPPgh1I4
 
-Acked-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
- tests/qtest/arm-cpu-features.c | 76 ++++++++++++++++++++++++++++++++++
- 1 file changed, 76 insertions(+)
+On 1/10/23 08:43, Philippe Mathieu-Daudé wrote:
+> First we want to introduce a new "cpu.h" header in the "hw/arm/"
+> namespace;
 
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index 5a145273860c..e264d2178a8b 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -22,6 +22,7 @@
- 
- #define MACHINE     "-machine virt,gic-version=max -accel tcg "
- #define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
-+#define MACHINE_MTE "-machine virt,gic-version=max,mte=on -accel tcg "
- #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
-                     "  'arguments': { 'type': 'full', "
- #define QUERY_TAIL  "}}"
-@@ -155,6 +156,18 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-     g_assert(qdict_get_bool(_props, feature) == (expected_value));     \
- })
- 
-+#define resp_assert_feature_str(resp, feature, expected_value)         \
-+({                                                                     \
-+    QDict *_props;                                                     \
-+                                                                       \
-+    g_assert(_resp);                                                   \
-+    g_assert(resp_has_props(_resp));                                   \
-+    _props = resp_get_props(_resp);                                    \
-+    g_assert(qdict_get(_props, feature));                              \
-+    g_assert_cmpstr(qdict_get_try_str(_props, feature), ==,            \
-+                    expected_value);                                   \
-+})
-+
- #define assert_feature(qts, cpu_type, feature, expected_value)         \
- ({                                                                     \
-     QDict *_resp;                                                      \
-@@ -165,6 +178,16 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-     qobject_unref(_resp);                                              \
- })
- 
-+#define assert_feature_str(qts, cpu_type, feature, expected_value)     \
-+({                                                                     \
-+    QDict *_resp;                                                      \
-+                                                                       \
-+    _resp = do_query_no_props(qts, cpu_type);                          \
-+    g_assert(_resp);                                                   \
-+    resp_assert_feature_str(_resp, feature, expected_value);           \
-+    qobject_unref(_resp);                                              \
-+})
-+
- #define assert_set_feature(qts, cpu_type, feature, value)              \
- ({                                                                     \
-     const char *_fmt = (value) ? "{ %s: true }" : "{ %s: false }";     \
-@@ -176,6 +199,16 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-     qobject_unref(_resp);                                              \
- })
- 
-+#define assert_set_feature_str(qts, cpu_type, feature, value, _fmt)    \
-+({                                                                     \
-+    QDict *_resp;                                                      \
-+                                                                       \
-+    _resp = do_query(qts, cpu_type, _fmt, feature);                    \
-+    g_assert(_resp);                                                   \
-+    resp_assert_feature_str(_resp, feature, value);                    \
-+    qobject_unref(_resp);                                              \
-+})
-+
- #define assert_has_feature_enabled(qts, cpu_type, feature)             \
-     assert_feature(qts, cpu_type, feature, true)
- 
-@@ -412,6 +445,24 @@ static void sve_tests_sve_off_kvm(const void *data)
-     qtest_quit(qts);
- }
- 
-+static void mte_tests_tag_memory_on(const void *data)
-+{
-+    QTestState *qts;
-+
-+    qts = qtest_init(MACHINE_MTE "-cpu max");
-+
-+    /*
-+     * With tag memory, "mte" should default to on, and explicitly specifying
-+     * either on or off should be fine.
-+     */
-+    assert_has_feature(qts, "max", "mte");
-+
-+    assert_set_feature_str(qts, "max", "mte", "off", "{ 'mte': 'off' }");
-+    assert_set_feature_str(qts, "max", "mte", "on", "{ 'mte': 'on' }");
-+
-+    qtest_quit(qts);
-+}
-+
- static void pauth_tests_default(QTestState *qts, const char *cpu_type)
- {
-     assert_has_feature_enabled(qts, cpu_type, "pauth");
-@@ -424,6 +475,21 @@ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
-                  "{ 'pauth': false, 'pauth-impdef': true }");
- }
- 
-+static void mte_tests_default(QTestState *qts, const char *cpu_type)
-+{
-+    assert_has_feature(qts, cpu_type, "mte");
-+
-+    /*
-+     * Without tag memory, mte will be off under tcg.
-+     * Explicitly enabling it yields an error.
-+     */
-+    assert_has_feature(qts, cpu_type, "mte");
-+
-+    assert_set_feature_str(qts, "max", "mte", "off", "{ 'mte': 'off' }");
-+    assert_error(qts, cpu_type, "mte=on requires tag memory",
-+                 "{ 'mte': 'on' }");
-+}
-+
- static void test_query_cpu_model_expansion(const void *data)
- {
-     QTestState *qts;
-@@ -473,6 +539,7 @@ static void test_query_cpu_model_expansion(const void *data)
- 
-         sve_tests_default(qts, "max");
-         pauth_tests_default(qts, "max");
-+        mte_tests_default(qts, "max");
- 
-         /* Test that features that depend on KVM generate errors without. */
-         assert_error(qts, "max",
-@@ -516,6 +583,13 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-         assert_set_feature(qts, "host", "pmu", false);
-         assert_set_feature(qts, "host", "pmu", true);
- 
-+        /*
-+         * Unfortunately, there's no easy way to test whether this instance
-+         * of KVM supports MTE. So we can only assert that the feature
-+         * is present, but not whether it can be toggled.
-+         */
-+        assert_has_feature(qts, "host", "mte");
-+
-         /*
-          * Some features would be enabled by default, but they're disabled
-          * because this instance of KVM doesn't support them. Test that the
-@@ -630,6 +704,8 @@ int main(int argc, char **argv)
-                             NULL, sve_tests_sve_off);
-         qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
-                             NULL, sve_tests_sve_off_kvm);
-+        qtest_add_data_func("/arm/max/query-cpu-model-expansion/tag-memory",
-+                            NULL, mte_tests_tag_memory_on);
-     }
- 
-     return g_test_run();
--- 
-2.39.0
+Do we?  Is that really the best name (not having seen its contents).
 
+> second we would like to get rid of '-I target/$ARCH/'
+> in the CPPFLAGS.
+> Use the full path to "cpu.h": "target/arm/cpu.h".
+
+That seems a worthy goal for hw/ though.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

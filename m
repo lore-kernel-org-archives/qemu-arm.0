@@ -1,113 +1,99 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4685484ejc;
-        Thu, 12 Jan 2023 02:42:22 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXu/lPVHdee2T5l0SLm1AyjCN/GkCSOunk9X3KwuFt7T70gVxJBiChnYUhmHS2bTDBZkURih
-X-Received: by 2002:ac8:65c5:0:b0:3b0:d8a4:62c8 with SMTP id t5-20020ac865c5000000b003b0d8a462c8mr7120682qto.23.1673520142389;
-        Thu, 12 Jan 2023 02:42:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673520142; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4703419ejc;
+        Thu, 12 Jan 2023 03:20:48 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuCqR8pcYIvFR1EC+gcJ65LrQMVrvWIbsYsHvyqa+uyEKUeXwXfcXl8Ve/jCvt6u46WZHhR
+X-Received: by 2002:ac8:7c8b:0:b0:3a5:4fa8:141c with SMTP id y11-20020ac87c8b000000b003a54fa8141cmr13252970qtv.23.1673522448421;
+        Thu, 12 Jan 2023 03:20:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673522448; cv=none;
         d=google.com; s=arc-20160816;
-        b=yHYPPLkwQ7lS7Yik0BPqR0BJkdzqCjeEuzFYhTwPjV/5e6//rZuUtnIF3qBzXOezYG
-         Rwal8agIUolObqHyiQjItc87tx3A6z7uIGTPl0FwlGrMkMqRrM04pPsvF05A0qT3jPES
-         NeRlYXct9Zs7aR7bat8zg98RqfJI8b8XRkeF7VToJhgw0wRAh/fdchH06UOjcZYPr5bO
-         OcQOs5JaR+g6pY7e5VerT+fjez10aavUOmgVveiEKsL3fJJDYU+5XECh+G5H59Wdl0jA
-         8WAydu4o2ZueheEycE9PcTztvxfytiCKLwMGB4vW/PSmEwr77Q18KRWMwKNfCEhy1FN8
-         cyzA==
+        b=F0xdNIG8YmgwtPZHSj71VEFSqFzu/rY1kKb+o9ejOfNjMigQH2XO/FwghfvbFUF099
+         QYgKUHaNSvJWh49VHpsVY0MhLVaVgMaQ3CJSAB4PZmH5tevGVpxQKGLEr1J4h8yeq+vf
+         Hx0DGZMO1d4ZCsGoI7ZDbE8geIec+aDT2iWHLvH6rb9dkp0KkW0z4qAAoU4HDHqE1IsK
+         L0RRYHYignRHi1gTFYNj0D8O9KyirRPxXsJSo3hu2qq23Ed3RIsYjfg4MCapz/kz2HQ/
+         32Jgos6xPUSCZoXU/oWYL3i9e6xGyRVm1nKkMLgDh0ic6dRxs8qAvFg3TWIy7t/L/Dk/
+         YdHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=mUA0s/OLF3irpYz8q/+5iIV+g6F7cgz94WGYfbGpTw8=;
-        b=ubA20CcDmbtGABmTegEA2H/m4RYykP8WKiaxv0v7ONzCWKfB9ZnuXHfPv3B35RJbDk
-         qLCDoc6xmEwVHw4M3optszuzJN4BwQEFCH/0eMxcCS9AK4QqtiiIW7iGOT2mYS5aVCeM
-         z7Te2IqOhROkyoLLGttzG7VTjy8VkeOXjuKHYqI73H8h5ojy9yRNMLhjwuhePHFdf8yH
-         jk4rHgm5SljUQ/KxPFfXSm5oyLZUdYX385RTim3b6XVP/PiExcHnrd/7b5+MOrKEY12a
-         2cfqq3kt6KIZ/oZceVBjhqCXJG0pQyDhutu4rxyNFfRlKQju5q0xaHjXJ11KCPU/3Zvl
-         rRDg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=JnAC9Rw0dpTSPawHnysPOek8UnGCBXB9113lAWZhX3M=;
+        b=lnkVynPSuswxQ7TIIl8IH78GcfEKnb8Uk/pf66LlFBXexcCQz1tf0jZuciAd3+KZ9i
+         /5qHK0UTJM1aBIQRl4GIVNsC7m4QkxtXhFslNS+AJrZHQrzWeyl/A1x7zTixwxeGFzO+
+         JeNi7PNKnXYdpVsjclVMkf4BKBGbFMji75pjolD5Huz0ybmpiQDdn2a5Xt2sJRc4SM8Q
+         +A5/jy8+RXwVCiwOj8USIH/jkzNRTQNUW2Sfbc5vYQFndO2cUSK/C14tZ0HlQGUSkAPl
+         1mOVQ9oljOSOmINeucrEbn+VNQrWvWoYl/yAJ2Rjjc9adHeDJEu8xZ35nTJzLhHXW06P
+         MGHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Sewkk4bC;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="ZyG/+aYV";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTP id m10-20020ac866ca000000b003a7eee6dc26si9817924qtp.671.2023.01.12.02.42.22
-        for <alex.bennee@linaro.org>;
-        Thu, 12 Jan 2023 02:42:22 -0800 (PST)
+        by mx.google.com with ESMTPS id i26-20020ac860da000000b0039cdeacc6cbsi10711139qtm.120.2023.01.12.03.20.48
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Jan 2023 03:20:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Sewkk4bC;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="ZyG/+aYV";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pFum3-00036m-6U; Thu, 12 Jan 2023 05:25:31 -0500
+	id 1pFvTa-00048L-Ts; Thu, 12 Jan 2023 06:10:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFulp-0002vo-1l
- for qemu-arm@nongnu.org; Thu, 12 Jan 2023 05:25:18 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
+ id 1pFvTW-000464-JL
+ for qemu-arm@nongnu.org; Thu, 12 Jan 2023 06:10:27 -0500
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFuln-0000Wd-5p
- for qemu-arm@nongnu.org; Thu, 12 Jan 2023 05:25:16 -0500
-Received: by mail-wm1-x330.google.com with SMTP id ay40so12850689wmb.2
- for <qemu-arm@nongnu.org>; Thu, 12 Jan 2023 02:25:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=mUA0s/OLF3irpYz8q/+5iIV+g6F7cgz94WGYfbGpTw8=;
- b=Sewkk4bCLwBH/pHnaleAQkGb1+NuBVt+ZNiur7WAfGsG1gemNpSTO7lxNQlBC5tOBG
- 4gLNx9CTD7F/sGHD7yeKdGNOJzKJEyZNxri4fVNbbAfgu7ShGM07pW/096/nVMMg+Kmb
- BRPRpghh+ABTSWdNyaREaB5P7UQxr4hQeeYCarGz0FeiHzKlQPCSaua7zmlRsgCvu6u8
- zLdRLIbwYx6gfedLxMXIScVH8Ma4P/P+ZlkGqva8AnZ44zdvKk1Ua48b8UQ+3Qmabf9a
- ymWbGsEn21c6QGfgnj6b8VeCyk9UIKznn+8O3bLmHbJkhte9zAk/qi9mdfcmJukXzrsM
- PlGQ==
+ (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
+ id 1pFvTQ-0001Fd-EW
+ for qemu-arm@nongnu.org; Thu, 12 Jan 2023 06:10:22 -0500
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-4b6255ce5baso233631357b3.11
+ for <qemu-arm@nongnu.org>; Thu, 12 Jan 2023 03:10:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=JnAC9Rw0dpTSPawHnysPOek8UnGCBXB9113lAWZhX3M=;
+ b=ZyG/+aYVz1KLwsKWRKhenvUDxKoZ638TFnwrWf3ZhJGPZjqp6CPm2tESRe+vOT9+Bg
+ l2uv/QM3W3T9OoVuSM5ehj1ggp3wIcAjgSDPyI66/DVh4Kt8WX7RzxjIGaayUsM4y36y
+ PFTPVsjci1yxEa7j+RGcWDp7hO+6FPdQCfrXRY67xx2I+ZaGwym9DXCuu4ooQMunN87A
+ vfh2GnocknCn8bEQP/7sPoYfQ3MX8I97nPFrgHiB3dsqFkGCLZVTa/6LzSkcbw+Miq/A
+ YmhYgkXN5BHbyzp2QUAyVemfiQxNsLVWAgrr59UFNITYQZG8knDYokrX3mTYlAe0yavV
+ t5ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=mUA0s/OLF3irpYz8q/+5iIV+g6F7cgz94WGYfbGpTw8=;
- b=kXAquyJlRHZl+OAsBRJrdn6+HU0PVB+zEJ+k+cK14M5x17CRCdy21orF6b1Mp1g4nd
- EigJ+jJt75gf9iLrfYir6FsthS2zjfFvK2lNvoI0MEoFpVoSnIrB4uVWmzaHBI68TRa7
- 1/C32M9JuBSyffKJDoUa1MK8lsE/AODVoBYwVZYSeGU04qPTOrSUFJiot4qmIXxP25kv
- iV8ndwjcRf2p/o+x2XUhJHleRyT5v7m0I8tlo22PQL4zeSpTjUTvacJT+gQpb/EurdKM
- DOpov1aTexyADS9aDbLxWszjGnnFPiXTJgORzfrBl75RoY4jM+/9QBTtOqmj/T5Huljh
- kECA==
-X-Gm-Message-State: AFqh2koG6hH87lA6ruKA9xmKpywPFB0AHBiWTTqdn84ouoCkG+VbnaVy
- 8nTkqkPLGA8jjVYDNNhhAeN+2w==
-X-Received: by 2002:a05:600c:19c7:b0:3d9:7096:262a with SMTP id
- u7-20020a05600c19c700b003d97096262amr48776350wmq.27.1673519113813; 
- Thu, 12 Jan 2023 02:25:13 -0800 (PST)
-Received: from localhost.localdomain ([81.0.6.76])
- by smtp.gmail.com with ESMTPSA id
- ay13-20020a05600c1e0d00b003d34faca949sm21317183wmb.39.2023.01.12.02.25.12
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 12 Jan 2023 02:25:13 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>
-Cc: Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 7/7] target/arm/sme: Unify set_pstate() SM/ZA helpers as
- set_svcr()
-Date: Thu, 12 Jan 2023 11:24:36 +0100
-Message-Id: <20230112102436.1913-8-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230112102436.1913-1-philmd@linaro.org>
-References: <20230112102436.1913-1-philmd@linaro.org>
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=JnAC9Rw0dpTSPawHnysPOek8UnGCBXB9113lAWZhX3M=;
+ b=RVDeCqXzNm1KdwuRCtyKEcPrObNVAsgb4xFbv0uk8bNL+jc/EB0RCpYOns6V8SDp5l
+ jNMXCb3BiWoF4RtsbXR/i1EePL8jHiLqqRkfEPfbfe/3BHwVO0XNU6jaqU3nfWU0DqM6
+ N3l5VczbRvBv8tkBlMBXhEOWi36zp43qyt9QXfvyG0fWBFiyxYc6qmfJ/D+brCWe7D6C
+ wGSOuS1qOmwD0ycGma5q7kG1v9T9o6pfqxol7QyLKFRizS2arUBbhgXjfsKRM7VzEpCK
+ +bQWcihzlUljoy5Ag1Qeju5XhZOb745QUYH2q7Ajq6XOSgk9GtZ6tBuQTPWo4jDpKa3N
+ zG8Q==
+X-Gm-Message-State: AFqh2kq2kcmLLaxoUCtUxvbGElxs5p5RTttRDvxXYvuH7NqYfHLlnaxp
+ 8DTczIytRwdehRyV83A/BE4WGSt04YprTX8thNpPf9/7fS3atg==
+X-Received: by 2002:a81:3984:0:b0:472:f0bc:6c3e with SMTP id
+ g126-20020a813984000000b00472f0bc6c3emr1784468ywa.240.1673521818343; Thu, 12
+ Jan 2023 03:10:18 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+From: Janne Karhunen <janne.karhunen@gmail.com>
+Date: Thu, 12 Jan 2023 13:10:05 +0200
+Message-ID: <CAE=NcrY02FoRhbAYiw+BQ9q111HcMmGjbpVW0pM8e6P5agusHQ@mail.gmail.com>
+Subject: static builds on aarch64 ubuntu 22.04
+To: qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=janne.karhunen@gmail.com; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -124,93 +110,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0gQj6wm49piS
+X-TUID: EBDQveB6V5ke
 
-From: Richard Henderson <richard.henderson@linaro.org>
+Hi,
 
-Unify the two helper_set_pstate_{sm,za} in this function.
-Do not call helper_* functions from svcr_write.
+Anyone seen this on aarch64 ubuntu 22.04 when doing a static build?
+Broken libc build maybe? Standard -fPIC (and disabled PIE as AFAIK
+those are mutually exclusive) doesn't seem to affect, neither does
+gcc9 -> gcc10 change or even entirely disabled stack protector.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230112004322.161330-1-richard.henderson@linaro.org>
-[PMD: Split patch in multiple tiny steps]
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/helper-sme.h    |  3 +--
- target/arm/helper.c        |  2 --
- target/arm/sme_helper.c    |  9 ++-------
- target/arm/translate-a64.c | 10 ++--------
- 4 files changed, 5 insertions(+), 19 deletions(-)
+[2751/2752] cc -Ilibqemu-aarch64-softmmu.fa.p -I. -I.. -Itarget/arm
+-I../target/arm -Iqapi -Itrace -Iui -Iui/shader
+-I/usr/include/pixman-1 -I/usr/include/spice-server
+-I/usr/include/spice-1 -I/usr/include/glib-2.0
+-I/usr/lib/aarch64-linux-gnu/glib-2.0/include -fdiagnostics-color=auto
+-Wall -Winvalid-pch -std=gnu11 -O2 -g -isystem
+/build/qemu/linux-headers -isystem linux-headers -iquote . -iquote
+/build/qemu -iquote /build/qemu/include -iquote
+/build/qemu/tcg/aarch64 -pthread -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+-D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+-Wstrict-prototypes -Wredundant-decls -Wundef -Wwrite-strings
+-Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv
+-Wold-style-declaration -Wold-style-definition -Wtype-limits
+-Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers
+-Wempty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined
+-Wimplicit-fallthrough=2 -Wno-missing-include-dirs
+-Wno-shift-negative-value -Wno-psabi -fstack-protector-strong -fPIC
+-fno-stack-protector -isystem../linux-headers -isystemlinux-headers
+-DNEED_CPU_H '-DCONFIG_TARGET="aarch64-softmmu-config-target.h"'
+'-DCONFIG_DEVICES="aarch64-softmmu-config-devices.h"' -MD -MQ
+libqemu-aarch64-softmmu.fa.p/target_arm_sve_helper.c.o -MF
+libqemu-aarch64-softmmu.fa.p/target_arm_sve_helper.c.o.d -o
+libqemu-aarch64-softmmu.fa.p/target_arm_sve_helper.c.o -c
+../target/arm/sve_helper.c
+[2752/2752] c++ @qemu-system-aarch64.rsp
+FAILED: qemu-system-aarch64
+c++ @qemu-system-aarch64.rsp
+/usr/bin/ld: /usr/lib/aarch64-linux-gnu/libgmodule-2.0.a(gmodule.c.o):
+in function `g_module_open_full':
+(.text+0x5bc): warning: Using 'dlopen' in statically linked
+applications requires at runtime the shared libraries from the glibc
+version used for linking
+/usr/bin/ld: libblockdev.fa.p/os-posix.c.o: in function `change_process_uid':
+/build/qemu/build/../os-posix.c:174: warning: Using 'initgroups' in
+statically linked applications requires at runtime the shared
+libraries from the glibc version used for linking
+/usr/bin/ld: /usr/lib/aarch64-linux-gnu/libgio-2.0.a(glocalfileinfo.c.o):
+in function `_g_local_file_info_get':
+(.text+0x35e4): warning: Using 'getgrgid_r' in statically linked
+applications requires at runtime the shared libraries from the glibc
+version used for linking
+/usr/bin/ld: /usr/lib/libmount.a(la-utils.o): in function `mnt_get_gid':
+/build/util-linux-2.37.4/libmount/src/utils.c:649: warning: Using
+'getgrnam_r' in statically linked applications requires at runtime the
+shared libraries from the glibc version used for linking
+/usr/bin/ld: libblockdev.fa.p/os-posix.c.o: in function `os_parse_cmd_args':
+/build/qemu/build/../os-posix.c:136: warning: Using 'getpwnam' in
+statically linked applications requires at runtime the shared
+libraries from the glibc version used for linking
+/usr/bin/ld: libcommon.fa.p/net_slirp.c.o: in function `slirp_smb':
+/build/qemu/build/../net/slirp.c:890: warning: Using 'getpwuid' in
+statically linked applications requires at runtime the shared
+libraries from the glibc version used for linking
+/usr/bin/ld: /usr/lib/libmount.a(la-utils.o): in function `mnt_get_uid':
+/build/util-linux-2.37.4/libmount/src/utils.c:622: warning: Using
+'getpwnam_r' in statically linked applications requires at runtime the
+shared libraries from the glibc version used for linking
+/usr/bin/ld: /usr/lib/aarch64-linux-gnu/libgio-2.0.a(glocalfileinfo.c.o):
+in function `lookup_uid_data':
+(.text+0x12fc): warning: Using 'getpwuid_r' in statically linked
+applications requires at runtime the shared libraries from the glibc
+version used for linking
+/usr/bin/ld: libcommon.fa.p/net_l2tpv3.c.o: in function `net_init_l2tpv3':
+/build/qemu/build/../net/l2tpv3.c:640: warning: Using 'getaddrinfo' in
+statically linked applications requires at runtime the shared
+libraries from the glibc version used for linking
+/usr/bin/ld: libcommon.fa.p/net_net.c.o: in function `parse_host_port':
+/build/qemu/build/../net/net.c:102: warning: Using 'gethostbyname' in
+statically linked applications requires at runtime the shared
+libraries from the glibc version used for linking
+/usr/bin/ld: /usr/lib/aarch64-linux-gnu/libgio-2.0.a(gnetworkaddress.c.o):
+in function `g_network_address_parse':
+(.text+0x18d8): warning: Using 'getservbyname' in statically linked
+applications requires at runtime the shared libraries from the glibc
+version used for linking
+/usr/bin/ld: (.text+0x18f0): warning: Using 'endservent' in statically
+linked applications requires at runtime the shared libraries from the
+glibc version used for linking
+/usr/lib/gcc/aarch64-linux-gnu/10/../../../aarch64-linux-gnu/libc.a(abort.o):
+in function `abort':
+(.text.unlikely+0x20): relocation truncated to fit:
+R_AARCH64_LD64_GOTPAGE_LO15 against symbol `__stack_chk_guard' defined
+in .data.rel.ro section in
+/usr/lib/gcc/aarch64-linux-gnu/10/../../../aarch64-linux-gnu/libc.a(libc-start.o)
+/usr/bin/ld: (.text.unlikely+0x20): warning: too many GOT entries for
+-fpic, please recompile with -fPIC
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+make[1]: *** [Makefile:162: run-ninja] Error 1
+make[1]: Leaving directory '/build/qemu/build'
+make[1]: Entering directory '/build/qemu/build'
+[1/51] Generating qemu-version.h with a custom command (wrapped by
+meson to capture output)
+[2/36] Linking target qemu-system-aarch64
+FAILED: qemu-system-aarch64
 
-diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
-index d2d544a696..27eef49a11 100644
---- a/target/arm/helper-sme.h
-+++ b/target/arm/helper-sme.h
-@@ -17,8 +17,7 @@
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
--DEF_HELPER_FLAGS_2(set_pstate_sm, TCG_CALL_NO_RWG, void, env, i32)
--DEF_HELPER_FLAGS_2(set_pstate_za, TCG_CALL_NO_RWG, void, env, i32)
-+DEF_HELPER_FLAGS_3(set_svcr, TCG_CALL_NO_RWG, void, env, i32, i32)
- 
- DEF_HELPER_FLAGS_3(sme_zero, TCG_CALL_NO_RWG, void, env, i32, i32)
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index cf77bdd378..1d74b95971 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6762,8 +6762,6 @@ void aarch64_set_svcr(CPUARMState *env, uint64_t new, uint64_t mask)
- static void svcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                        uint64_t value)
- {
--    helper_set_pstate_sm(env, FIELD_EX64(value, SVCR, SM));
--    helper_set_pstate_za(env, FIELD_EX64(value, SVCR, ZA));
-     aarch64_set_svcr(env, value, -1);
- }
- 
-diff --git a/target/arm/sme_helper.c b/target/arm/sme_helper.c
-index 3abe03e4cb..1e67fcac30 100644
---- a/target/arm/sme_helper.c
-+++ b/target/arm/sme_helper.c
-@@ -29,14 +29,9 @@
- #include "vec_internal.h"
- #include "sve_ldst_internal.h"
- 
--void helper_set_pstate_sm(CPUARMState *env, uint32_t i)
-+void helper_set_svcr(CPUARMState *env, uint32_t val, uint32_t mask)
- {
--    aarch64_set_svcr(env, 0, R_SVCR_SM_MASK);
--}
--
--void helper_set_pstate_za(CPUARMState *env, uint32_t i)
--{
--    aarch64_set_svcr(env, 0, R_SVCR_ZA_MASK);
-+    aarch64_set_svcr(env, val, mask);
- }
- 
- void helper_sme_zero(CPUARMState *env, uint32_t imm, uint32_t svl)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 035e63bdc5..19cf371c4c 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -1847,14 +1847,8 @@ static void handle_msr_i(DisasContext *s, uint32_t insn,
- 
-             if ((old ^ new) & msk) {
-                 /* At least one bit changes. */
--                bool i = crm & 1;
--
--                if ((crm & 2) && i != s->pstate_sm) {
--                    gen_helper_set_pstate_sm(cpu_env, tcg_constant_i32(i));
--                }
--                if ((crm & 4) && i != s->pstate_za) {
--                    gen_helper_set_pstate_za(cpu_env, tcg_constant_i32(i));
--                }
-+                gen_helper_set_svcr(cpu_env, tcg_constant_i32(new),
-+                                    tcg_constant_i32(msk));
-             } else {
-                 s->base.is_jmp = DISAS_NEXT;
-             }
--- 
-2.38.1
 
+
+--
+Janne

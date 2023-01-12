@@ -1,94 +1,93 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4791580ejc;
-        Thu, 12 Jan 2023 05:50:30 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs9GZl9cO/D0h+t9RjfhkST+L7GQoqvFBLy5CPGqWZUhBxCSxl0lHvBEDGSwKA5Y7DUd7Xt
-X-Received: by 2002:ad4:4987:0:b0:534:672e:5c3 with SMTP id u7-20020ad44987000000b00534672e05c3mr1486988qvx.33.1673531429918;
-        Thu, 12 Jan 2023 05:50:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673531429; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4791875ejc;
+        Thu, 12 Jan 2023 05:50:58 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXt05RfwikNgZ3j55t4781fcqq5g8lBdW5bQRqT+NbMmcPbgECLe6BvvHJfQeWZmGI0qHFA3
+X-Received: by 2002:a0c:ea27:0:b0:4c7:4c9c:e582 with SMTP id t7-20020a0cea27000000b004c74c9ce582mr8641666qvp.6.1673531458549;
+        Thu, 12 Jan 2023 05:50:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673531458; cv=none;
         d=google.com; s=arc-20160816;
-        b=0bwdt4lLKs7gY2/6jraYML/x+WVXFtcv5OV85+U43EZAZ7SxBCXLMo764hP9EyklkW
-         /TQ00wmH3WWoBSu+C+H6kUqwHDq0ccJmZ5nFUaCnHSK5CYnFpdHb38VM0lTg7eXqt5wE
-         VYptRSxqRNq8q2XXYSgEel08Hws6gbF7jAHXnY9cb5L6jR6THJTwtNYZJkdD/whPgEwM
-         LceVg71KKYqNqxQnp9VkzPUhhrrNTmOk8zFxwHxwHoAZCWcUGXsKiUj9Bd6u+5jWWVy6
-         qpa+9LNNtUs3/OEQQl5Ww+4z/RPaiN+gtoUxwlqdnxq7AMylj9tKMYGiqaFmGhh99lp3
-         ZoHg==
+        b=hYL2gGUhVDbMy/++/MvopBdGth+i724AIb/Acy1a4XbTfnqgiOZ4QRrOELqyIOmbnH
+         6PrflH0nWmXenndYEnIb7VX3R0gUIOMbHVPVvY/nObEV8RPdJGOSW0/jagvWDDtdH1do
+         w42Iu+610QowsEde1kJMlCvd3yvNwoa5bEG5jDtBJ00Rh2INmHh+JbgbukCW4zOoi7nm
+         c+aAVAhKPONpIqclYVPXkm8AHo67Zc2OH+iNwOrt1sCy1Fdx43vsfCOkCUCoMwMztGbd
+         FGAc49T7a9sVL3DOb8NFTfpNnr3JTvk/ZMSfcPqBdg8lGeGRScl9M3kgN9rQOajp7z+W
+         dTCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3qD4ndr8yIl/ZBVBvbiwIXGY8SdSYcDtBxXg5KJCkME=;
-        b=nrsUdVDkWEUidgM5dcN228d6mU5WGKifreDWkLe80OssIME/Qi1Jlu138DbQFmDALG
-         jvlbUnV5zzVs3aczn515FTWALguormoQ0KfiGJIKbT4KKQ360knTxPXV/XpTLKmWG+mw
-         d9Ebup5GaDqv3VsahCx75W6bz4Oh9vLnDqYlr7Lqt9iAYA3oepP5tsrfQgOzsT42bn7V
-         Mthg+g4sJgZk40SUkmJFiCkdXBffyDiYRBl5BITZYAzJRDn+c4dmOhpZi7MgcKYJAXQF
-         jO6gY+RDDC9cHR0J0Bp7zRp6ClQsLREHNIAU6fCdWuL9QwIgm8q6KtXlSyb0kVciP/TB
-         LUhg==
+        bh=RykjkEh7BQO6RxxlX7tvf65xg6DR3UMVDcJmXk8iCIo=;
+        b=c3gW8650une8SlZwS1KtVpA0OlXRH7pVJPyQxg+CQ+lmaEOrfe7xhfOWcnaUDh8M6i
+         /77Sgtnw1mwrVQQb3PEv2UpQw9kTu8tdhs/R9d2hjXQKFklu1jRCJoWuG8MRJGfaQeym
+         7l2YKG8PTPRPpUXhIENIFlWZ49e1SITtkFD5E3NobAI+fYf5sa7M+ybtbs2svqNcdnmY
+         xHzY1kZ2IhJEo3hl6LCTYoTKFK/sZXBFF9nWaPCZjiA2EDW0TCtelQdhtec8/K+kvJYB
+         f4eKFLwSM01h3Rgqg77qDGVPwuLnntarTQc8nhmICD+U490u+wg82WEXeSCiEBKsVJSp
+         v2/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XmbwVEFW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KPSKgYZ0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r11-20020a0562140c8b00b004ad1fd02c0dsi10554213qvr.552.2023.01.12.05.50.29
+        by mx.google.com with ESMTPS id h5-20020a0562140da500b005322d9aee23si7956133qvh.323.2023.01.12.05.50.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jan 2023 05:50:29 -0800 (PST)
+        Thu, 12 Jan 2023 05:50:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XmbwVEFW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KPSKgYZ0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pFxxe-0001aO-5H; Thu, 12 Jan 2023 08:49:42 -0500
+	id 1pFxxm-0001m6-LH; Thu, 12 Jan 2023 08:49:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxZ-0001TW-LU
- for qemu-devel@nongnu.org; Thu, 12 Jan 2023 08:49:39 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxh-0001fp-H1
+ for qemu-devel@nongnu.org; Thu, 12 Jan 2023 08:49:45 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxX-000369-MI
- for qemu-devel@nongnu.org; Thu, 12 Jan 2023 08:49:37 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxf-0003A3-RV
+ for qemu-devel@nongnu.org; Thu, 12 Jan 2023 08:49:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673531375;
+ s=mimecast20190719; t=1673531383;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3qD4ndr8yIl/ZBVBvbiwIXGY8SdSYcDtBxXg5KJCkME=;
- b=XmbwVEFWaXIMlSlSNjkBCPJwDGyW6lcQsZwZkyiyhZnf2hd0hCU9UMcmtXoQieYfT99t/j
- 8lDoA5B9uQzoKY/6aIJnlNa4GExq8JXPz71m0zCBs+LX4xNL5q0JsiIJYaqXV4x34WXqS0
- 2ZIoGqCehiptC6cygr8dO/p8pI3CqYU=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=RykjkEh7BQO6RxxlX7tvf65xg6DR3UMVDcJmXk8iCIo=;
+ b=KPSKgYZ04f1/noqERffcAI5eTisC97Aj/qC62Dyd3mPDUuvFmfIYH4HwIjM0u6qEHM5sA+
+ puwIMZq+GTsSxGNOLWbjKUyjt56MqlesJfQQ5nlwI0WNOoBrjmPkxoi3bgXFIfJDQC5CEm
+ MAJtPTA/JEVrcJCjUUDWIHkzF+L/4d0=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-6-At0Y7tupP_6tQYExP8BgWw-1; Thu, 12 Jan 2023 08:49:33 -0500
-X-MC-Unique: At0Y7tupP_6tQYExP8BgWw-1
+ us-mta-459-r0mE9uT9Nb-XouMuzEupdg-1; Thu, 12 Jan 2023 08:49:39 -0500
+X-MC-Unique: r0mE9uT9Nb-XouMuzEupdg-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B9E1D3811F3D;
- Thu, 12 Jan 2023 13:49:32 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 69C68181E3EE;
+ Thu, 12 Jan 2023 13:49:39 +0000 (UTC)
 Received: from thuth.com (unknown [10.39.193.2])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E00BD40C2064;
- Thu, 12 Jan 2023 13:49:31 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9822C40C2004;
+ Thu, 12 Jan 2023 13:49:38 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	qemu-trivial@nongnu.org
-Subject: [PATCH 1/7] hw/display: Move omap_lcdc.c out of target-specific
- source set
-Date: Thu, 12 Jan 2023 14:49:22 +0100
-Message-Id: <20230112134928.1026006-2-thuth@redhat.com>
+Subject: [PATCH 7/7] hw/usb: Mark the XLNX_VERSAL-related files as
+ target-independent
+Date: Thu, 12 Jan 2023 14:49:28 +0100
+Message-Id: <20230112134928.1026006-8-thuth@redhat.com>
 In-Reply-To: <20230112134928.1026006-1-thuth@redhat.com>
 References: <20230112134928.1026006-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -111,33 +110,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mI7dWhF3ZGny
+X-TUID: bKve2Pi9Cg+x
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+Seems like there is nothing target-specific in here, so these files
+can be moved to softmmu_ss to avoid that they get compiled twice
+(once for qemu-system-arm and once for qemu-system-aarch64).
 
-While only used by the ARM targets, this device can be built
-once for all.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20221209170042.71169-2-philmd@linaro.org>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/display/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/usb/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/display/meson.build b/hw/display/meson.build
-index 7a725ed80e..2cab7a8ff2 100644
---- a/hw/display/meson.build
-+++ b/hw/display/meson.build
-@@ -111,7 +111,7 @@ if config_all_devices.has_key('CONFIG_VIRTIO_VGA')
-   hw_display_modules += {'virtio-vga-gl': virtio_vga_gl_ss}
- endif
+diff --git a/hw/usb/meson.build b/hw/usb/meson.build
+index 793df42e21..bdf34cbd3e 100644
+--- a/hw/usb/meson.build
++++ b/hw/usb/meson.build
+@@ -30,8 +30,8 @@ softmmu_ss.add(when: 'CONFIG_TUSB6010', if_true: files('tusb6010.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('chipidea.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX_USBPHY', if_true: files('imx-usb-phy.c'))
+ softmmu_ss.add(when: 'CONFIG_VT82C686', if_true: files('vt82c686-uhci-pci.c'))
+-specific_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-usb2-ctrl-regs.c'))
+-specific_ss.add(when: 'CONFIG_XLNX_USB_SUBSYS', if_true: files('xlnx-usb-subsystem.c'))
++softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-usb2-ctrl-regs.c'))
++softmmu_ss.add(when: 'CONFIG_XLNX_USB_SUBSYS', if_true: files('xlnx-usb-subsystem.c'))
  
--specific_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_lcdc.c'))
-+softmmu_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_lcdc.c'))
- 
- softmmu_ss.add(when: 'CONFIG_ALL', if_true: files('acpi-vga-stub.c'))
- modules += { 'hw-display': hw_display_modules }
+ # emulated usb devices
+ softmmu_ss.add(when: 'CONFIG_USB', if_true: files('dev-hub.c'))
 -- 
 2.31.1
 

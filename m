@@ -1,139 +1,153 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4793640ejc;
-        Thu, 12 Jan 2023 05:53:59 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvzWkM3PSXab230+OQ8HEYk4b6c23JPAelWWBkAuHaac8cBmWB6VCbI3cxe0kov5noH+fjX
-X-Received: by 2002:ad4:45b2:0:b0:532:2fd0:5932 with SMTP id y18-20020ad445b2000000b005322fd05932mr21387022qvu.30.1673531639483;
-        Thu, 12 Jan 2023 05:53:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673531639; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4817387ejc;
+        Thu, 12 Jan 2023 06:25:29 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXukz9qZ30M3pnC65ry7l/G5qW1sp44l7pDy5Metgp6aNDEU89XvEbZBcSLW6BSk2yvwk1aq
+X-Received: by 2002:a25:800e:0:b0:79c:191d:6913 with SMTP id m14-20020a25800e000000b0079c191d6913mr36326003ybk.59.1673533529273;
+        Thu, 12 Jan 2023 06:25:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673533529; cv=none;
         d=google.com; s=arc-20160816;
-        b=FgwRCY+vcKprYKURHQcKTkzItUV/dKyPq7JGk2rduFuAlj2I40jTWgrWYJyQM3fpbc
-         mupZadE8HelnEXCw6Twy/k5TPafTDGC9Vr+iknh7H4lFj7WZeguQuh0EAfPbXIVQYDbw
-         xr7EKzwvsP2QemRcUk8yV6AR3UOoCxKD7lZ3JRALjaO5VQ98x4JiuleX0+joKTBtlwT/
-         aX/kvXCHb6bNNZTxYpAeFdgE/uqp0d7qN5qsMuzPNcevgwm+7T/QV2R5NaEq6xU/pd7m
-         VKxJ0bEfXy2yDJMrlkNelD/2EkYV+XUU+Vj2iPy0AUWyNsVm+QlI5kv0z+5SfhKxqt2I
-         IxyA==
+        b=GC43GgrJtCBrneYxGo5+tVCwNTBUyp5jLDYP8f1ihns2b3xzCB9dfBjEQxhwKN59xk
+         msaTvlHdV31FlSFzFpuRxQZxDorrL9YNsuBUeShIzy8M26jPW+UDreRVme1++6fCO6+a
+         BbcKuLrsJOg+IJgJgkRrniR5HSxR32dU7McUwW4iZ3W+NciXCqyCB8FjxqtSWvNXporo
+         Sy9QIrF8S2v7uVfmHQvJJFZ6DiehfC6Z7PZC+0qWDfkODajG+NMZHpYn4NRS95wveyIX
+         SpNCm1ooxoxZy41EM/GYpPOkSkirt/ebhEjysK5KWmJm/bDy6Ve1d502AF/cxN1k7fue
+         NMGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=I2MazIJlglkEzIo5AdsUjj8BWJ7NmMe7Yj6yOWjXLWg=;
-        b=OCPQZphG0+DffMiiezV5eYMLi05WeSNrut76KL9k+vitQ8Wc/OXxVUCTdJdgxC/W8A
-         ngahZ3dw+6tGt9eglnBdt35TNJ1lGsdYysAby6tIAZlGliXt9KJ8mB8g0zzcjPEILxgv
-         xxEXuGtgLEsAtT8z6SGOUr6b+B7NcZ9w6/k5OvQl/h3dd0rldMw3sAFG7Ulq0fRwbTsj
-         FUYTZ0asO9fc8L3HZpwqGitoRkZtcIugNSr6zLUsK+UcMIN9J2+FdE5QhtacLLClnfFG
-         kv8MtBBUNxNPTP4cki7o+sRcY0OpRZK4C1+hA/+Ype6vNK7Gf8GBH+FW3I9IhVEKRaQD
-         NW3Q==
+         :mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=SxXfMXOpCp0KR4sM5jvrXtqvji1351aoBaDwEPM+BIw=;
+        b=eiM7jwcEi8w1jzprCnngdSBPPkZBFV0Obil5nD1F8OKwV5rPVSMHbLzUUUUE/XvoR3
+         jRzS9I1kS9Dy4XZBlk+fd6FpbdkvtLyzIGJ27sTCSoLXgsLJj8AQaG6ial18j/uZzvGG
+         klXu1UiCjqWecw7Pfuvccfn+o8A3dSvQdzPb4bn1G3TI6/QwgVyf4Xnk8lxdR4n7mbds
+         xJVfpG6xJJ7GwTQKeK2Hvq1PQ8hTSA7QMjgXqJPJc7olB5ffBNTOlZaFmrywK2S8YEKW
+         RJaDIUeMPBkSfN4wX5fN7QtIfB75jJvNIfWDhaNcOitQsF+dOv/ykM/ziRR2gK2bGGdF
+         licg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zv8QhS2W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Kji9ngYh;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a2-20020ad45c42000000b004c62f35ea86si10743367qva.273.2023.01.12.05.53.59
+        by mx.google.com with ESMTPS id f22-20020a05620a409600b006ffb7e57ba6si11408660qko.238.2023.01.12.06.25.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Jan 2023 05:53:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Jan 2023 06:25:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zv8QhS2W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Kji9ngYh;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pFxxk-0001jt-OP; Thu, 12 Jan 2023 08:49:48 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pFyS0-0004Ob-BG; Thu, 12 Jan 2023 09:21:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxd-0001ZN-M9
- for qemu-arm@nongnu.org; Thu, 12 Jan 2023 08:49:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxb-00037l-Ih
- for qemu-arm@nongnu.org; Thu, 12 Jan 2023 08:49:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673531379;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1pFyRi-0004D4-4P; Thu, 12 Jan 2023 09:20:53 -0500
+Received: from smtp-out2.suse.de ([195.135.220.29])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1pFyRe-0000ld-4p; Thu, 12 Jan 2023 09:20:45 -0500
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 1594A3FCDC;
+ Thu, 12 Jan 2023 14:20:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1673533239; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=I2MazIJlglkEzIo5AdsUjj8BWJ7NmMe7Yj6yOWjXLWg=;
- b=Zv8QhS2Wuf5ks1RpTfuI0nbNDh8aNh/wzJyuc/OcrSCDabkhV/GPzfN0GSdOyuMaH07CyQ
- HqwtcLZ+3LMqEScshaC+bWWqRYJ0FPvYDnKC+3Y9XCe0ydBGFfoyIaoxFBRIrCFbneCwoD
- ut6dk5mrsP2SzvZRSHs50V9S2r1m3XU=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-150-v_BMhGuCM4yNYsR-HDmVFQ-1; Thu, 12 Jan 2023 08:49:37 -0500
-X-MC-Unique: v_BMhGuCM4yNYsR-HDmVFQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ bh=SxXfMXOpCp0KR4sM5jvrXtqvji1351aoBaDwEPM+BIw=;
+ b=Kji9ngYhSIgvhQnLsoWwz/KnPZGz1ZM26IhmPtwIqTbshJO4NuWPSKx5niIPPfqgflnlLl
+ 1fcEwaJAvj3tG/K9i1+5O8SqpCK0Dl5ZXAJL8PLos5wseNecGTqtxbr+7NltYboPAUkkfP
+ Pg5Dw7Kg5fN/EQZNJA9ixu9r+4ja0a0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1673533239;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SxXfMXOpCp0KR4sM5jvrXtqvji1351aoBaDwEPM+BIw=;
+ b=GUdlZudB7V84fYQmEcSp3sjP0tconCtMtWFMDoqJx7TSHUR0NdZdSXUjQLrdoNT7+P7X+Y
+ hXi4fyIIGJwABrBA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 331C6811E6E;
- Thu, 12 Jan 2023 13:49:37 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.193.2])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6269F40C2064;
- Thu, 12 Jan 2023 13:49:36 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	qemu-trivial@nongnu.org
-Subject: [PATCH 5/7] hw/cpu: Mark arm11 and realview mpcore as
- target-independent code
-Date: Thu, 12 Jan 2023 14:49:26 +0100
-Message-Id: <20230112134928.1026006-6-thuth@redhat.com>
-In-Reply-To: <20230112134928.1026006-1-thuth@redhat.com>
-References: <20230112134928.1026006-1-thuth@redhat.com>
+ by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 9469F13585;
+ Thu, 12 Jan 2023 14:20:38 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+ by imap2.suse-dmz.suse.de with ESMTPSA id vSkOFzYXwGPxAQAAMHmgww
+ (envelope-from <farosas@suse.de>); Thu, 12 Jan 2023 14:20:38 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+Cc: Laurent Vivier <laurent@vivier.eu>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathi?=
+ =?utf-8?Q?eu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH v2 0/7] target/arm: Introduce aarch64_set_svcr
+In-Reply-To: <20230112102436.1913-1-philmd@linaro.org>
+References: <20230112102436.1913-1-philmd@linaro.org>
+Date: Thu, 12 Jan 2023 11:20:36 -0300
+Message-ID: <87ilhbhm17.fsf@suse.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=195.135.220.29; envelope-from=farosas@suse.de;
+ helo=smtp-out2.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 30woskd5n+WF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: //fCwcHvhn8Y
 
-Seems like there is nothing target-specific in here, so these files
-can be moved to softmmu_ss to avoid that they get compiled twice
-(once for qemu-system-arm and once for qemu-system-aarch64).
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/cpu/meson.build | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> This is a respin of Richard's patch
+> https://lore.kernel.org/qemu-devel/20230112004322.161330-1-richard.hender=
+son@linaro.org/
+> but split in multiple trivial changes, as I was having hard
+> time to understand all changes at once while reviewing it.
+>
+> Richard Henderson (7):
+>   target/arm/sme: Reorg SME access handling in handle_msr_i()
+>   target/arm/sme: Rebuild hflags in set_pstate() helpers
+>   target/arm/sme: Introduce aarch64_set_svcr()
+>   target/arm/sme: Reset SVE state in aarch64_set_svcr()
+>   target/arm/sme: Reset ZA state in aarch64_set_svcr()
+>   target/arm/sme: Rebuild hflags in aarch64_set_svcr()
+>   target/arm/sme: Unify set_pstate() SM/ZA helpers as set_svcr()
+>
+>  linux-user/aarch64/cpu_loop.c | 11 ++--------
+>  linux-user/aarch64/signal.c   | 13 ++---------
+>  target/arm/cpu.h              |  2 +-
+>  target/arm/helper-sme.h       |  3 +--
+>  target/arm/helper.c           | 41 ++++++++++++++++++++++++++++++++---
+>  target/arm/sme_helper.c       | 37 ++-----------------------------
+>  target/arm/translate-a64.c    | 19 ++++++----------
+>  7 files changed, 53 insertions(+), 73 deletions(-)
 
-diff --git a/hw/cpu/meson.build b/hw/cpu/meson.build
-index 9e52fee9e7..e37490074f 100644
---- a/hw/cpu/meson.build
-+++ b/hw/cpu/meson.build
-@@ -1,6 +1,6 @@
- softmmu_ss.add(files('core.c', 'cluster.c'))
- 
--specific_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
--specific_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
-+softmmu_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
-+softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
- specific_ss.add(when: 'CONFIG_A9MPCORE', if_true: files('a9mpcore.c'))
- specific_ss.add(when: 'CONFIG_A15MPCORE', if_true: files('a15mpcore.c'))
--- 
-2.31.1
-
+Reviewed-by: Fabiano Rosas <farosas@suse.de>

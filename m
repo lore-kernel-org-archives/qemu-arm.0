@@ -1,146 +1,112 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4818193ejc;
-        Thu, 12 Jan 2023 06:26:40 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtgJ+sk4Gd8yNpAtVPsAKCHSXIFln71UZbbIWX0U6FjlDfnVM+jTbI7wDChxprGCd6joEhE
-X-Received: by 2002:a05:622a:2612:b0:3a8:3058:db43 with SMTP id ci18-20020a05622a261200b003a83058db43mr115224982qtb.57.1673533600594;
-        Thu, 12 Jan 2023 06:26:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673533600; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4833336ejc;
+        Thu, 12 Jan 2023 06:49:58 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvS2mDNcWuA8TtJfg4CWdqKr46slBwdpXVOIy2J/yMGOoOftYSJezCrXOzIB1eFARW/3v6z
+X-Received: by 2002:a05:600c:4e47:b0:3d9:e9ef:fa08 with SMTP id e7-20020a05600c4e4700b003d9e9effa08mr13981192wmq.3.1673534998620;
+        Thu, 12 Jan 2023 06:49:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673534998; cv=none;
         d=google.com; s=arc-20160816;
-        b=pCiMuUtOHIAldSG46/L2jAxu3HfZQDDhqhtvhFKk3DcYCQqnVSUcurt2lZKUjXObOo
-         N/IYLrAFUuCMQDEjM8/TiCUWXKX6iA3zoCaznd0Q0ZzY2ZrSsmeGUcIRkfM9ftdD4/7U
-         k2RMgIKkqyVSBUPmULyn3emrPGNaBAepO/PYVlLs1qOI9wQFreKwe8UFeCqG+51E9U3B
-         bdUQU1zo4ij+OPy1Phyxao7Gh12Nq9gtckirGDJ7yABluwhoz2Lw9GHJt5sSROd2dQHO
-         Uk8dzZTKlekUx6/hEPt3bihIKOEw3UMriCEuqqrT43OY1XVAdWoo1ykuelEqjL9c/ckK
-         saHA==
+        b=xbqLofFy7k1mw4f+/UmrV9ZoPq/3vEvwB64GCRtQZGw2kDAx9kgB1Cc49N0d2D+9fp
+         zvgA+sf8L6GMkNtKFiRVBeQuMF4bne0n7huVd5qgUZhZLzCg/dn/R0UvESS7wOfOjW2/
+         fF2TF5+nM5Zet9REFKBXsXfC3D5sa/gVMoucy35trudonXsTvXTYPN9+jh6d7cQKKLit
+         YrlxbPYHg1aOcLztRlyQxEIXnVo8usbPNuMmn/LixkkzOGTxVQ8YufVdjITmd8Bzc6DP
+         11RRfPJQG3/E9nYmoKt6iEXWdUi7TA8ew2Vc31tbPFRTWpzrAkMW4KDlBRIeNNT1W3P+
+         1FJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Yj7k7Q8S83zKCwM9PvdgW0lmc+tfOH9sqoawaWxhZkE=;
-        b=ZQ/GBVqQtS4tucyx3AqhVMs9vBbKmPEC8CTwDhgoS1VcGlZu8wZV0ATQpdtT/PIAbv
-         5ue8GNfOB/SLr+z0fmj668GvtQsHIDyubrMaA0mfmC/Ug5wD9U80izsCYptvxLZLLQnt
-         FqmxchX3rpQ+2v+Cf0ZqELNQmnuXLzWd1D8n28qc//oMTbF+1DuaqdyYCfQg0zQFEZ/2
-         4ofgz+LwE5cxWUguQ+0XOoWlrH/05EwdIQ0+bDPbBd360+Z111IK82FOYkbejyyBgxIq
-         RWXVqGCqj6CpACJiEx3x8gJT0+wabXXCcOt3pxrXT/j0pjAG0sHRasNdvDa7Y+42senp
-         fZDg==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=08hrdMBjSFtZWKMqM4pHo6gTKAlmsb+X47EIQYA/pqU=;
+        b=nNkcvYjSKlZE5fZuXas7WEOq4Vx3/4M1EiTedq4jtgDWsRxShE/d2qdJdGxaYRsHER
+         HvnMtO4OE5WJPkYcdbEDcbSN4WUbmh8cEdxRCvSx5qK59USpC5SVHpsZDABBDbRM1Lgq
+         9W3Kpnqz+Sbb3qpr9ZENcFSm/JlYOOAXyb6bP7fOrXHPvKdXyNjmkyYVGnyNsjJccVS6
+         g5+k1W1xQrr1IfflXaxiG/+DwFMVCy2Tq8k9xWUrkolZvFMAw1YBjszMYHtsp8clT9N4
+         pAWRxU/nJPhcSF6NBr5O19+721BKw1jSZNpVpf88gqRUqk/NbvXhd7WeZK/q/VQTmWW3
+         qM1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SFtm5gD2;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id bc14-20020a05622a1cce00b003a51b82f290si10209737qtb.495.2023.01.12.06.26.40
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Jan 2023 06:26:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=q02d9zxm;
+       dkim=neutral (no key) header.i=@suse.de header.b=0zB3BKa3;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id l6-20020a5d6d86000000b002426c59d2f2si16459453wrs.147.2023.01.12.06.49.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jan 2023 06:49:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SFtm5gD2;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1673533600;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=q02d9zxm;
+       dkim=neutral (no key) header.i=@suse.de header.b=0zB3BKa3;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id EBC003FF9E;
+	Thu, 12 Jan 2023 14:49:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1673534997; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Yj7k7Q8S83zKCwM9PvdgW0lmc+tfOH9sqoawaWxhZkE=;
-	b=SFtm5gD2NXkUR8zy4+doW5q9SrXTqGTUsGG+5U4LmuXLnUM8sXoRVvCBVzdbanzHnrmyJU
-	40h9Ef7JZxMFwc5HgC8YBmh+j/Z5yjjGnPJf/trbqxjVLb4ZamGBoqCR+UolxCyJRiuXe4
-	Ty8E6XeKwh2OUUFCF5Zv6ce7swiajCw=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-210-xuOsOCpMP7CN1XbJ72cKKw-1; Thu, 12 Jan 2023 09:26:38 -0500
-X-MC-Unique: xuOsOCpMP7CN1XbJ72cKKw-1
-Received: by mail-wm1-f70.google.com with SMTP id v23-20020a05600c215700b003d9e9974a05so7084912wml.8
-        for <alex.bennee@linaro.org>; Thu, 12 Jan 2023 06:26:38 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Yj7k7Q8S83zKCwM9PvdgW0lmc+tfOH9sqoawaWxhZkE=;
-        b=Y0T2it6cDfH7VQaYIl5Om6Y+JDrL26lx9ikTaOWUkq2FwlC43RXAL33a92pKkJAhVX
-         e3u8SZXFJrhE0Ze3SDsWafC5tDwLu5NSqugYzoqP3E3RtIpGgjGv59NoGN0cpdE/FiwW
-         fCc/LNJUIRys88o7kBgJrAU5YpsRc5iijwmnnkziGFBFm3xZQzzRi6Qv0xV5m0Oe/aP4
-         JX6hkMKsAPZvW5+u0lUx6ZX7s5wteEepHvCk/7wmFVK6TjDObieYo5EcUrIhw5VxMaLB
-         1kCYxIPjBS9068ciQDfy758PscYdj9ITyl2fTaFx9XUQYaRCwoYWvRXteeR+JDGagJls
-         iKcA==
-X-Gm-Message-State: AFqh2kp0lN+aSL0JmgqiSeiDXZO8CRCJ0uA00coqwCmVoiNGMVtD2cib
-	Jcf4rp8YZfaYlXGdJx3ez8W0NIDJBmZFjJjJQy7eSsMRCkf9IPyumVgtZ83C0V+7gtrfSliOX7/
-	MATo9qn4pobgzFerUMboYPZcJl6WvkEWi3Nh3JjYG5UydGKqtFXXu49dO7tbxulo8
-X-Received: by 2002:a05:600c:3b93:b0:3d2:1bf6:5796 with SMTP id n19-20020a05600c3b9300b003d21bf65796mr56543870wms.35.1673533597512;
-        Thu, 12 Jan 2023 06:26:37 -0800 (PST)
-X-Received: by 2002:a05:600c:3b93:b0:3d2:1bf6:5796 with SMTP id n19-20020a05600c3b9300b003d21bf65796mr56543833wms.35.1673533597222;
-        Thu, 12 Jan 2023 06:26:37 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.2] (ip-109-43-177-128.web.vodafone.de. [109.43.177.128])
-        by smtp.gmail.com with ESMTPSA id m25-20020a05600c3b1900b003d9ed49ee2bsm17873817wms.1.2023.01.12.06.26.35
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Jan 2023 06:26:36 -0800 (PST)
-Message-ID: <2e9e18ea-db55-72ad-0bee-2ef3d2543548@redhat.com>
-Date: Thu, 12 Jan 2023 15:26:34 +0100
+	bh=08hrdMBjSFtZWKMqM4pHo6gTKAlmsb+X47EIQYA/pqU=;
+	b=q02d9zxmNDcfbo+USVqRzCqYyN0k0nk+3JjPMRGhWjlPFGpKiCun0Nc/EVQ/TBO0hmQ9Sf
+	rj4KNb0a70SyqCs/PUzr9Gn/vBxbJ2LnzVUCmSLvm3O1JhYhw2Fv0vfdzG7BhKVg54Xllk
+	t2C2Tg15fE4Mu3Gj+tB/OyaaDWYniFo=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1673534997;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=08hrdMBjSFtZWKMqM4pHo6gTKAlmsb+X47EIQYA/pqU=;
+	b=0zB3BKa3g4z4GGH9vgCnlAhIOCwY/MofL20DMwErxTmVta+oWzCtu4oQkiH8ugP6Z2c29J
+	u2zGSA9Yt/znLBBA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 77D7A13776;
+	Thu, 12 Jan 2023 14:49:57 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id Si9AEBUewGNFEgAAMHmgww
+	(envelope-from <farosas@suse.de>); Thu, 12 Jan 2023 14:49:57 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Richard Henderson <richard.henderson@linaro.org>, Claudio Fontana
+ <cfontana@suse.de>, Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Laurent Vivier <lvivier@redhat.com>, "Dr. David Alan Gilbert"
+ <dgilbert@redhat.com>
+Subject: Re: [RFC PATCH v2 13/19] tests: do not run test-hmp on all machines
+ for ARM KVM-only
+In-Reply-To: <214f89fc-6e90-7d0b-8555-4bae1d1d0b70@linaro.org>
+References: <20230109224232.11661-1-farosas@suse.de>
+ <20230109224232.11661-14-farosas@suse.de>
+ <35870ab3-1da6-c222-b708-06ac71a5883c@redhat.com> <87zgaqa6jk.fsf@suse.de>
+ <CAFEAcA_x_kTdNt8+5YAjo518Wj_Ej4jZ=0OrCQmutNOjJx=3Gw@mail.gmail.com>
+ <87sfgia4uj.fsf@suse.de>
+ <CAFEAcA_AaWfwAbCLOC3ELf3c20Cv5jQhWc71Py4ww4kLo2nYeg@mail.gmail.com>
+ <9fb63a5d-d839-016d-b0a8-4151b6d6946c@suse.de> <87fschcko4.fsf@suse.de>
+ <214f89fc-6e90-7d0b-8555-4bae1d1d0b70@linaro.org>
+Date: Thu, 12 Jan 2023 11:49:55 -0300
+Message-ID: <87fscfhkoc.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH 02/26] gitlab: add FF_SCRIPT_SECTIONS for timings
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>, Beraldo Leal <bleal@redhat.com>,
- John Snow <jsnow@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, Ed Maste <emaste@freebsd.org>,
- Yanan Wang <wangyanan55@huawei.com>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Li-Wen Hsu <lwhsu@freebsd.org>, Markus Armbruster <armbru@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Michael Roth <michael.roth@amd.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- John G Johnson <john.g.johnson@oracle.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <20230110173922.265055-1-alex.bennee@linaro.org>
- <20230110173922.265055-3-alex.bennee@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230110173922.265055-3-alex.bennee@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: tmwrRPtrBQ8h
+Content-Type: text/plain
+X-TUID: VnfsI3jsvd78
 
-On 10/01/2023 18.38, Alex Bennée wrote:
-> From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> 
-> Suggested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   .gitlab-ci.d/base.yml | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/.gitlab-ci.d/base.yml b/.gitlab-ci.d/base.yml
-> index 69b36c148a..50fb59e147 100644
-> --- a/.gitlab-ci.d/base.yml
-> +++ b/.gitlab-ci.d/base.yml
-> @@ -6,6 +6,11 @@
->   # most restrictive to least restrictive
->   #
->   .base_job_template:
-> +  variables:
-> +    # Each script line from will be in a collapsible section in the job output
-> +    # and show the duration of each line.
-> +    FF_SCRIPT_SECTIONS: 1
-> +
->     rules:
->       #############################################################
->       # Stage 1: exclude scenarios where we definitely don't
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-I was just about to create a patch from Mark's suggestion, too ... glad that 
-there is already one!
+> On 1/11/23 04:36, Fabiano Rosas wrote:
+>> Nowadays for KVM is the 'virt' machine the only one we use?
+>
+> Also sbsa-ref.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+It seems not, sbsa_ref_init has this:
+
+if (kvm_enabled()) {
+    error_report("sbsa-ref: KVM is not supported for this machine");
+    exit(1);
+}

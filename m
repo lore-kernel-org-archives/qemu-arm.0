@@ -1,95 +1,96 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4751766ejc;
-        Thu, 12 Jan 2023 04:46:04 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsL6J3DDDZkwyPBNV/dje3ni9DOdqR++iWv88A2Xj7Un2pK9g0Zma3lVa3O22YpjUZvvB9T
-X-Received: by 2002:a05:6214:3401:b0:534:1ed6:3291 with SMTP id mp1-20020a056214340100b005341ed63291mr12975572qvb.46.1673527564133;
-        Thu, 12 Jan 2023 04:46:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673527564; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4752660ejc;
+        Thu, 12 Jan 2023 04:47:50 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsv7+NqiyrQWwgkzFRz1V1g5PKI12pTjmaoIx2E96v3H/ngMBYUU/nKfNQVcXzNWp+KyrZX
+X-Received: by 2002:ad4:5586:0:b0:531:85bf:362a with SMTP id f6-20020ad45586000000b0053185bf362amr8496310qvx.23.1673527670046;
+        Thu, 12 Jan 2023 04:47:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673527670; cv=none;
         d=google.com; s=arc-20160816;
-        b=F2NzItj4g9f+PZ2cYz3qN4NC9rmNLLJ3t6mJ5iPih5IwoXYcppiTLaFjSTsZP1aPYn
-         e21XRKJhdyxZceyAMm2+oEaBo0hcWaPsTvMHwLLHoOUtAcnwT/xuar8P2z9XbeTt6cpi
-         gbGdQyxIqhvC/ufa7h6f8AelmJfpSQmBj8Hby4HehJxm4oSmJszyuuYOI+0Yglk2mpSJ
-         DiKECppWeTFrXkgevyOezf+WI4B2eKTUCMQBoo/JTWn9BdGTCNPr3TIkThzlCTrn5ZJC
-         p1v4wzIudtlzaSXhLkxhWv0jgBaPLsHv3efUF2KXaJvi4FznxUqO8wXn6gVzA0rKrvnv
-         jbaA==
+        b=bDP8Ui8SmlRTjch+omZIAm6Tr3gsGPekgM9/nuHxk81VkZZoxpBaVFFKOnZR4vzNrE
+         cCeuyBLUMfJ8So/Mp5u7HsSs0W8QJDUDn2YOHw2aFs3QgkRtnXL/XWhPZ5jejv3uoqbe
+         DswLxgKsKHGnF4+z8aPgTu8PcUy0kyZcbjBTIaTOJp/lfy+1e9aOl5jq1fKFowRzVH7A
+         RAHEf9xcugdyF2AiTBmo2M+LwcRZNkKzLVEQOzop+F9gFXIxNZn2DYi3wmJYvBNB8SyA
+         nnOWNWF48mLou+PlepODOg9ZkUiTgZmbt99brPuRG7awvcabjGnlfgE5nmtIDUZi9bG0
+         66Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=7F/xXmpfa6gcNdKv8Dx8M5etMEkhCkv+n97k0/aw9zo=;
-        b=1Fxqt/XewZY2Et3++nyGJJogl2fJtYCV+Qh8/RoEeJ0kdd69YVP54UYnBZDx+VwL1c
-         63vC2eTVfc8SrIMGk6faYTFYetNtUYPyg/wAecIzuigFlXC/kOagxc1pi5sYF2A8EOrB
-         OGk1VZuUiDFeOR+nnQCDuE9+nT/GZydVkEvbmkq+QTtv77O8xAFBLAT75pR9PIDMlxGT
-         qrwCgCnaQv+4JwpGa7mu7u+xVv+HxZaxmxHvc8IZJy0RLa0VX7pXwjEK3IonVsa4CHFl
-         w2eYDk2JhWj5VZ+YaEp3pqzKUd0ApvdSyUqbiSTH/cHufiHUW8TFQZhpn0rExGSy95D0
-         lPmA==
+        bh=S38fk2tJJtHcgQic+iBsuH12Ik//PCr9dbdVCIaHrfw=;
+        b=vjlI6IMOvnaVh3rJtYIosuKofy/lrZoORE00iQWccqze7YjISH4sdLH5d2av1gcnvc
+         iciA+o677tjDERT5W8I1CB1HPx71BRQ3UghxV539tHsfXBt03ws4cBmV8uJhM+YbcugC
+         h6Un3Q8pSBRbva8fGpUWVNerOxH+qpcl36p7msaUuzs71rsLUbVVPqUXMf7jkjY7hEvU
+         fcAK8FVDJSB9bpzlFlJL+0lXxpZLdThVC0HlXfegn6SuN4lod7SzO0I0lvQaV7G0h8Zi
+         a799dFa53AZWhx238Pul9cYwb+ReDMaCN3M6zOoKBMthPBeI5SLQxnWR69wtW0R2w3iY
+         GvAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pKkPh3fQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M0QMJ2pT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTP id h6-20020a05620a13e600b00705ba9d0d85si4772197qkl.283.2023.01.12.04.46.03
-        for <alex.bennee@linaro.org>;
-        Thu, 12 Jan 2023 04:46:04 -0800 (PST)
+        by mx.google.com with ESMTPS id hu11-20020a056214234b00b004ff2c52268asi10031911qvb.62.2023.01.12.04.47.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Jan 2023 04:47:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pKkPh3fQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M0QMJ2pT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pFwxG-0005UB-8f; Thu, 12 Jan 2023 07:45:14 -0500
+	id 1pFwz1-0006tC-IK; Thu, 12 Jan 2023 07:47:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFwxD-0005Px-6Z
- for qemu-arm@nongnu.org; Thu, 12 Jan 2023 07:45:11 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFwyy-0006q7-Ug
+ for qemu-arm@nongnu.org; Thu, 12 Jan 2023 07:47:01 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFwxA-0004FP-9H
- for qemu-arm@nongnu.org; Thu, 12 Jan 2023 07:45:10 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id w1so17962042wrt.8
- for <qemu-arm@nongnu.org>; Thu, 12 Jan 2023 04:45:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFwyw-00051T-Ef
+ for qemu-arm@nongnu.org; Thu, 12 Jan 2023 07:47:00 -0500
+Received: by mail-wr1-x431.google.com with SMTP id bk16so17942358wrb.11
+ for <qemu-arm@nongnu.org>; Thu, 12 Jan 2023 04:46:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=7F/xXmpfa6gcNdKv8Dx8M5etMEkhCkv+n97k0/aw9zo=;
- b=pKkPh3fQABWAQ7P4+l/NtU6NCnuiCjSg4KzavtYgGNO/HceLoZvbyy+BRI4JSxUWA1
- gAUGpzNTvJwkD1TjeYXVJX6ou7aA96b3J/fyHJ5qeaR36/QAOyofoCLQ7dbKh5bYoWhh
- 6qRr3iIlbUowyi65XpEx5XHHdL1am3fkIxS6zRidsHnmzOEMMDIjeA5Ucc9iR75Uqm34
- x9qJWlMoTiYw++QURvtQBtaatRL27Nkz+27t4rNhzsPnUZ9Pn8L3CQFEFr+pEMmGy+MQ
- pe30QT8J1XxH220dj1sf3/HiLg+AR9JigR8+jnsSq3VSi3JZtBqp3wqyrkRgQC5AC4b7
- xCOw==
+ bh=S38fk2tJJtHcgQic+iBsuH12Ik//PCr9dbdVCIaHrfw=;
+ b=M0QMJ2pTlO9yoiHML5x8c8BTmkvTv+iG461EKSsmIY5nSJ1M4mTL8WnUIgnurVlhCU
+ ZfSZT0IYjJuEYf/q3vM1FtSJCX3+E9OTqFpshmkqhcP88ZAitVxkWXmItYROj6xhhIn/
+ QQ4nCtvqOQyXImAHkbycUXSrgPDZRZYlJhcz5WvqOcab4MYcT37nHklneVICQcDgiuBG
+ 5B4CyYP9CcljOqkESHIDAgTQev1+P61APdtnG7HXo+3t848azfR7biFVdUpJVuwHizZc
+ rgdGE4ermmDMDb9LVPIBXcgEMdwBNEsvTG4HTpzeeRh09zhsIzZA/f8Oi1jMNaIu8Ngj
+ oaAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7F/xXmpfa6gcNdKv8Dx8M5etMEkhCkv+n97k0/aw9zo=;
- b=qK5BhgAOxl2s3P+P1pv2WfVmctb1cC2mNUI4BMvJvpkS7v5ExdukvderSc/NDdR6/J
- a94KNWRhahqQjvo/NlQluxFrrDiSsVWubiZvBjpzuMq3t815svVf96qeA4GUvGf9VsZ3
- MFyKTFWJH0gT4vBWs9QQ8ysq7Kc86WeV0wG9D6t6MxUunocW3bWW8qbMY8KyM1lUUJ5m
- aWXKqfTZvxdEs4e4JBlC8w5oXE+dxHRl2H9VSq9OFYNsh1gc9OBaekThAfKPHhPpIkBJ
- XZWroEDM6mXisve1EU5u20OkJDJZca/e/qFXHDPRqY836qLiHYGKXOFJGPBTuPhg20ot
- gIiA==
-X-Gm-Message-State: AFqh2kr3PgwZMsWlyqOrZN5x2uxK7S5nV9LP8ak11xy3GGXHBKq8Gxiq
- QqnPmBFm73ryFpJeJGEZRyc+xg==
-X-Received: by 2002:adf:e88b:0:b0:2bd:c6ce:7bef with SMTP id
- d11-20020adfe88b000000b002bdc6ce7befmr3677814wrm.26.1673527506613; 
- Thu, 12 Jan 2023 04:45:06 -0800 (PST)
+ bh=S38fk2tJJtHcgQic+iBsuH12Ik//PCr9dbdVCIaHrfw=;
+ b=NViE+giuqZ9b9AodcWmpNF1ppVyHT8j/kfpvbVhfxPZhK1vjelBzzPy2sHj/Ncj3R2
+ caOynlScYCs9Zx0PDI9bjkXp3mVkmPVV8bnmb4Zvlb4LCLFBn7h8zI8uHmC3/lq9WLk3
+ OPfjkLbEqiIZX3yOdE+ljRMxFshcYF0O9Bbli1Rmmy1ixMmHxxiouOdzGqCk6KAWWIHx
+ aDgaCA29hcEzLsoTYaCYRVizlGDofkHaFO6f/zFFMzpSB+z0DPgXRhZAwaAE76QlbGXR
+ H5OMgl/7Fmm3//UtzCQhwPF4nr27kBrrLbKU0Gs6RnaFSJcoR7zBkN8xC+N5JPU/0XDZ
+ nZ9g==
+X-Gm-Message-State: AFqh2kqRXioOxAhwS4e/AARmS1k0Y7V/CRUbtiBKj2mzEYx+TN4nyELW
+ bGloNTAGAna3I4O6WTqnmOvE0g==
+X-Received: by 2002:a05:6000:1c11:b0:2bd:bcc6:c450 with SMTP id
+ ba17-20020a0560001c1100b002bdbcc6c450mr6849428wrb.17.1673527616729; 
+ Thu, 12 Jan 2023 04:46:56 -0800 (PST)
 Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- w5-20020adfcd05000000b002bdc914a139sm3476400wrm.108.2023.01.12.04.45.05
+ t6-20020adfe446000000b002bb28209744sm16049244wrm.31.2023.01.12.04.46.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Jan 2023 04:45:06 -0800 (PST)
-Message-ID: <0b268419-a089-0a3a-5fdf-7bf107d746ae@linaro.org>
-Date: Thu, 12 Jan 2023 13:45:04 +0100
+ Thu, 12 Jan 2023 04:46:56 -0800 (PST)
+Message-ID: <581c8788-80f4-1740-3772-5947647091a3@linaro.org>
+Date: Thu, 12 Jan 2023 13:46:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v6 14/33] hw/isa/piix3: Create USB controller in host
- device
+Subject: Re: [PATCH v6 15/33] hw/isa/piix3: Create power management controller
+ in host device
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: John G Johnson <john.g.johnson@oracle.com>,
@@ -106,13 +107,13 @@ Cc: John G Johnson <john.g.johnson@oracle.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
 References: <20230109172347.1830-1-shentey@gmail.com>
- <20230109172347.1830-15-shentey@gmail.com>
+ <20230109172347.1830-16-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230109172347.1830-15-shentey@gmail.com>
+In-Reply-To: <20230109172347.1830-16-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,24 +135,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y55wiJeaMDOe
+X-TUID: DHYZsstLWj5B
 
 On 9/1/23 18:23, Bernhard Beschow wrote:
-> The USB controller is an integral part of PIIX3 (function 2). So create
-> it as part of the south bridge.
+> The power management controller is an integral part of PIIX3 (function
+> 3). So create it as part of the south bridge.
 > 
-> Note that the USB function is optional in QEMU. This is why it gets
+> Note that the ACPI function is optional in QEMU. This is why it gets
 > object_initialize_child()'ed in realize rather than in instance_init.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Message-Id: <20221022150508.26830-13-shentey@gmail.com>
+> Message-Id: <20221022150508.26830-14-shentey@gmail.com>
 > ---
->   include/hw/southbridge/piix.h |  4 ++++
->   hw/i386/pc_piix.c             |  7 ++-----
->   hw/isa/piix3.c                | 17 +++++++++++++++++
+>   include/hw/southbridge/piix.h |  6 ++++++
+>   hw/i386/pc_piix.c             | 24 ++++++++++++++----------
+>   hw/isa/piix3.c                | 14 ++++++++++++++
 >   hw/isa/Kconfig                |  1 +
->   4 files changed, 24 insertions(+), 5 deletions(-)
+>   4 files changed, 35 insertions(+), 10 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

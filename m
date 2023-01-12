@@ -1,160 +1,125 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4417708ejc;
-        Wed, 11 Jan 2023 16:40:16 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXudatVzoK2mQs4QR1NheXVHDA/FC+i9V3SxyinM/hz7up+mcifDzkSZIjoZVCsxnwSgiqfd
-X-Received: by 2002:a05:622a:610f:b0:3af:55cb:8761 with SMTP id hg15-20020a05622a610f00b003af55cb8761mr10124710qtb.47.1673484016150;
-        Wed, 11 Jan 2023 16:40:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673484016; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4694546ejc;
+        Thu, 12 Jan 2023 03:03:41 -0800 (PST)
+X-Received: by 2002:a05:6a21:6da5:b0:b0:4c16:10a6 with SMTP id wl37-20020a056a216da500b000b04c1610a6mr118922702pzb.0.1673521421738;
+        Thu, 12 Jan 2023 03:03:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673521421; cv=none;
         d=google.com; s=arc-20160816;
-        b=xpEfaViT7gP76kl7DfQOtHzPtm/T3KgSwE10lxQLlOeZGnmHzp0qunmPsc1AkYraqu
-         VTPRf546gnaXuIKxcABzI1HrDS3+tDUibFBQZrStk80PBVfY6tCZCB9Su5As1zKih8cI
-         QZyw4GsJRyZN5xHpqr6y0kceH4OkJDEOiQatKhNgomKvRan5ZW9jxM7Lrdy30UkqMbYP
-         SUjmxQWEBkWnyUEi1u6FqKNOLm22W3zyt0S7/i9VXzANW/b8/JzheXOkWuW/KcqjWzSp
-         oXvmsTpN3PWZkFB7PrCJcCgUVLCtoSFdkWAIksk+EZbrmcxd63slN6TNTbHHCsrDXrCD
-         l8Tg==
+        b=ONbuLKF2MvYoI7AwKc7baVhFlvPQZJvaborPiewe5IQLxpElZz2G5OuErjG4eq1cE2
+         l2MOvWXLEKIuGsLTNiTj/K3ltzwP1NrCJjVAyYf/d4ZXfxApRBrqXSJZPBuGDvB+vt35
+         0NmLnrufkbMgAOpsNh8k13jkFFJ6K75mWslWpvny3DY592xBprhhncVV39zQFVMW6Ap/
+         J/zcLTfvJlADpO/drvYETYT2ZCfQtwNtp/QeVlIXVzRE9U9eLwHHeQdCL3N5OafCUGfs
+         Vs8pMu8CuwBk+EErA+OwuRAxR6bfkUDnAEqlJkdvzrIiKGkVgHoBOz+CBZSqxSFJTm+/
+         +9UQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=nwuYdBYbacb9IWlfEKWZ+6Ak12b3r2mxv1nKNS0ptTY=;
-        b=NSCynVRFT9SjA6g0ptJE9Gfx5cTePLilmv9uVeLNqCOf9hJNAb8evgjxPfTa/0BOjw
-         2zOSgi7Dzjd1Kx51th//t9MtvuqorrhUB4h6CL45JpYr9k5fkcaj6WmH3tnf5ClTK6Ri
-         TpreXeP7jIUwQOYULoGPCbPN5aj2S8BkUVl5VYsTekbTNQIOWTRTjNU6rlv7eESYEhFR
-         dVs+om1S+XMOA1dzm+tSUXZS3o9FvU60kC82bFQHaZ83H8q4boJCouYa3JZMHMOUqci2
-         AUWp38c6+lsZal3Un1UD3e+D4glRmhoOPFJdSIrjOW6g34pv1fz+tLq5eRZZRARM9f2J
-         Hmew==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=YRMIxmrMjxFmZ7KhnuQyQ4LQN+JFHEuz988Y3hBKhAY=;
+        b=egOHbsWJTElYw4MKIj0M1WwXRq4M+h7R+nCnRynW1rByeLZTbZIXi0pWStfsSTzweY
+         8KzvWLAfhRxDH6O2pzHgunYddr+dtRKJ/O6tW+tzoqW5wyhWIHg2nOFI9UKdnxdu73gV
+         OzHVTT3p9qz7wqSydAq0h2Z8N0Pal65t3A5DIsh034bBTzPr0NfyIqbafWepjUtiZhdr
+         zFhLD75WfKmEll57PNKVUFTkXB7JPaTUwmxx8gIsk7P+v2pV5KkWsFavSm5OnedInmSm
+         z/Yu+Pmrgf8rhts//w+LfkykWIntbqAFu7tYWQDEHTx8zFvMB3xTKeL6MV2/mXXpNYgk
+         2JkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JtvqOCMY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AE2aKbGl;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTP id ck13-20020a05622a230d00b003a823ab220dsi9936975qtb.43.2023.01.11.16.40.16
-        for <alex.bennee@linaro.org>;
-        Wed, 11 Jan 2023 16:40:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x184-20020a6386c1000000b00477f5ab8054sor8879511pgd.64.2023.01.12.03.03.41
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 12 Jan 2023 03:03:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JtvqOCMY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AE2aKbGl;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pFlaT-0007be-QY; Wed, 11 Jan 2023 19:36:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pFlaR-0007Zl-UP
- for qemu-devel@nongnu.org; Wed, 11 Jan 2023 19:36:55 -0500
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pFlaQ-0001fh-DU
- for qemu-devel@nongnu.org; Wed, 11 Jan 2023 19:36:55 -0500
-Received: by mail-pj1-x1030.google.com with SMTP id
- o1-20020a17090a678100b00219cf69e5f0so21868551pjj.2
- for <qemu-devel@nongnu.org>; Wed, 11 Jan 2023 16:36:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=nwuYdBYbacb9IWlfEKWZ+6Ak12b3r2mxv1nKNS0ptTY=;
- b=JtvqOCMYzrzn6oTn2ep9CgKQhHe40kl/2mKYyMkXNhZIKwVNrfTGwTCOMzptoDImx0
- x0oXQ9Usvhjrs8fqHN3QaQDzGmvGK7ucdfd1F1Y0smxlkolyWebozjshUZWaPOUenkF3
- jApaX7doudMH1tvsBsaz0UnujSxwizd9BLnX4bFH9i30VxGMKbmtZBayTj/L9WcLhzED
- 4SMg/gD58uyZI0ACUPGvP3+uwe6eqJ84Ke4AR7BfTa1foZ0Ep5dlfw8tI/bkqKYsbSNI
- vcU/hQdorB0fUBtNxyyEhYK3fgKgXgF1r5+wbWBiGfxomwIdDyhBw2Yc3cCZJ5x9xqin
- gP0w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YRMIxmrMjxFmZ7KhnuQyQ4LQN+JFHEuz988Y3hBKhAY=;
+        b=AE2aKbGlog+nDLpzx6+73PFOKcFOlk7OrHENBBiyt8FPDfJtjJp9iazQfWNk1uJlM0
+         QhMv2+Ux9eLUuLYjgMZWUkvqrbE7es6WjuMPIEs60T4Ls+D9q0/MzjqYBaO5D/adYkBZ
+         nLgcDr0VnC6f+kKHzeT+m/f66v9V7jsPZreL9Ref5zsYSVjUQMk+NCI/f3XlF9FD4h0p
+         wOJxBBhwgklj8lzeQO0DR7laeFBaDePYrZfypE63u0O/Ijnim3Qg/vKTEBQfhWb/FDZ3
+         bh9hcjDTqiCPNZ6NKrduBHZtkSr3wrmKYWvOgX+Ta+5LYTfWRaUENMdezVR8C8dPh7E4
+         HGZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nwuYdBYbacb9IWlfEKWZ+6Ak12b3r2mxv1nKNS0ptTY=;
- b=K6YVYyCndSCjUd+OdAbzPpfaHM7lZE7v4EZGaJcTO/S6uJYFRUHTD4aH78CocKcgK/
- RJ2XCZvoxv1+Sg5ZzUch6lGP4lbdgsJS68m1/8g89cybPTHgfN1PGiVrq+hgYJ9n1xY2
- RnFb0KZ82oQ0CYIWT00RnAji/MIfo8SW4HbE/5cqKEDwT3kOYCZUpJBFtsbQZBKPMnB1
- uu3xD0NUgqaizgZrczVozbYPByWDtpIPJGpDOtw6l3gKuwMz4ETAWJlQWC0sx2subTjb
- Ug4T3biSKbBNNnV4KNoUF8AqQdZm56OG0wDac+BCEttXiGxbiNOhrastcoUMkwLI42q+
- mXDw==
-X-Gm-Message-State: AFqh2kp/xhn486CHo8IfxWje6as5ikKmBoe+BGVyTYw5PDMKZ+KQLRJM
- umzxxPiFwJZFI1YPpWv5A8gDQQ==
-X-Received: by 2002:a17:902:a5c1:b0:189:62fd:140e with SMTP id
- t1-20020a170902a5c100b0018962fd140emr73199788plq.29.1673483813705; 
- Wed, 11 Jan 2023 16:36:53 -0800 (PST)
-Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com.
- [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
- k7-20020a170902760700b00192bf7eaf28sm10716395pll.286.2023.01.11.16.36.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Jan 2023 16:36:53 -0800 (PST)
-Message-ID: <6da2fab1-4318-f466-bdec-0c4296711bf9@linaro.org>
-Date: Wed, 11 Jan 2023 09:48:58 -1000
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=YRMIxmrMjxFmZ7KhnuQyQ4LQN+JFHEuz988Y3hBKhAY=;
+        b=agbFbyOJFaEfY7NsP0jSFMzD7+TL0jhRsVikDGK5PZ5YfJDV8Vo8C8Y/oCERbu6plm
+         ZUzBXDn/IFIIIdS1MZIl7oCsQIbCeLj4LIIpKKRrafPtFzkdhClvKBpAPPpHme2En5L+
+         7eBusABanG2Y839+ss0/WYY5e9s9VK7M8d7CtzBQ4kYbNvtbsC+AK8JJVaAj2HEs/1r2
+         DIFii+UOZuqG/6kyyA9RZKiviiAyKyQ3NXxcem75DDtt5xIz/75y0HjS93kFmIHRj1UH
+         LeVsB1/mqOdFecx4UA3m7yL9mYrqm5rwXLiG5kY8BbAP2KBWO3Yto5zvkET8pSIjVSkS
+         gsbQ==
+X-Gm-Message-State: AFqh2kq2mHj7GAVFKloc2aDLZuLJfQQUDYfvmLPCmV/vWcCRJX8G1EJj
+	alGQOeXG2oYbkEYr1nBtSLqlNP5PpztScfQMONnyBjrP
+X-Google-Smtp-Source: AMrXdXu5V4bX22nwNZjWYHOvPbmvbmEPrM5ZbLD1wZubhZ6omG79rXH/n1MH1qTGUPIgVjvQP0rVQQGio1U3g6Ik/Ao=
+X-Received: by 2002:a63:e20b:0:b0:479:18a:8359 with SMTP id
+ q11-20020a63e20b000000b00479018a8359mr4968225pgh.105.1673521421294; Thu, 12
+ Jan 2023 03:03:41 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2 2/4] bulk: Coding style fixes
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- qemu-block@nongnu.org
-References: <20230111083909.42624-1-philmd@linaro.org>
- <20230111083909.42624-3-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230111083909.42624-3-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
-X-Spam_score_int: 20
-X-Spam_score: 2.0
-X-Spam_bar: ++
-X-Spam_report: (2.0 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2SUzImbBe5Iu
+References: <20230110212947.34557-1-philmd@linaro.org> <d4ea8bf5-a669-eb33-6dd2-f37417dab1c7@eik.bme.hu>
+In-Reply-To: <d4ea8bf5-a669-eb33-6dd2-f37417dab1c7@eik.bme.hu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Jan 2023 11:03:29 +0000
+Message-ID: <CAFEAcA-5054ZzubQbZuzb8=D1QfbfKgqwnr48r2kOx5p4=Rchg@mail.gmail.com>
+Subject: Re: [PATCH] bulk: Rename TARGET_FMT_plx -> HWADDR_FMT_plx
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
+	qemu-ppc@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, ale@rev.ng, 
+	qemu-riscv@nongnu.org, xen-devel@lists.xenproject.org, 
+	Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: ODD/kpSsUhvb
 
-On 1/11/23 00:39, Philippe Mathieu-Daudé wrote:
-> Fix the following checkpatch.pl violation on lines using the
-> TARGET_FMT_plx definition to avoid:
-> 
->    WARNING: line over 80 characters
-> 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   hw/block/pflash_cfi01.c       |  5 +++--
->   hw/char/digic-uart.c          |  8 ++++----
->   hw/core/sysbus.c              |  3 ++-
->   hw/dma/pl330.c                | 16 +++++++++-------
->   hw/i386/multiboot.c           |  3 ++-
->   hw/i386/xen/xen-hvm.c         |  3 ++-
->   hw/i386/xen/xen-mapcache.c    | 13 ++++++++-----
->   hw/intc/exynos4210_combiner.c | 20 ++++++++++----------
->   hw/misc/auxbus.c              |  3 ++-
->   hw/net/allwinner_emac.c       |  8 ++++----
->   hw/timer/digic-timer.c        |  8 ++++----
->   hw/timer/etraxfs_timer.c      |  3 +--
->   softmmu/memory.c              |  3 ++-
->   target/ppc/mmu-hash32.c       | 10 ++++++----
->   target/ppc/mmu_common.c       |  8 +++++---
->   target/sparc/mmu_helper.c     |  5 +++--
->   16 files changed, 67 insertions(+), 52 deletions(-)
+On Tue, 10 Jan 2023 at 22:04, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>
+> On Tue, 10 Jan 2023, Philippe Mathieu-Daud=C3=A9 wrote:
+> > The 'hwaddr' type is defined in "exec/hwaddr.h" as:
+> >
+> >    hwaddr is the type of a physical address
+> >   (its size can be different from 'target_ulong').
+> >
+> > All definitions use the 'HWADDR_' prefix, except TARGET_FMT_plx:
+> >
+> > $ fgrep define include/exec/hwaddr.h
+> > #define HWADDR_H
+> > #define HWADDR_BITS 64
+> > #define HWADDR_MAX UINT64_MAX
+> > #define TARGET_FMT_plx "%016" PRIx64
+> >         ^^^^^^
+> > #define HWADDR_PRId PRId64
+> > #define HWADDR_PRIi PRIi64
+> > #define HWADDR_PRIo PRIo64
+> > #define HWADDR_PRIu PRIu64
+> > #define HWADDR_PRIx PRIx64
+>
+> Why are there both TARGET_FMT_plx and HWADDR_PRIx? Why not just use
+> HWADDR_PRIx instead?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+TARGET_FMT_plx is part of a family of defines for printing
+target_foo types; the rest are in cpu-defs.h. These all include the
+'%' character. This is more convenient to use, but it's also
+out-of-line with the C standard format macros like PRIx64.
+The HWADDR_* macros take the approach of aligning with how you
+use the C standard format macros.
 
-r~
+As usual in QEMU, where there are two different ways of doing
+things, it's probably because one of them is a lot older than
+the other and written by a different person. In theory it would
+be nice to apply some consistency here but it rarely seems
+worth the effort of the bulk code edit.
+
+thanks
+-- PMM

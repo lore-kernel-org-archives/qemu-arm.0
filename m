@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp415007ejc;
-        Fri, 13 Jan 2023 06:07:39 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuVQkBWx/Ge7E+HTJ35HIuBy9J1jwM4SSUeKLDi9A/mnx/xE4h1SlsEDGYHm9q11724htTS
-X-Received: by 2002:a05:6000:1c9:b0:2bc:1b95:f364 with SMTP id t9-20020a05600001c900b002bc1b95f364mr12237887wrx.54.1673618859103;
-        Fri, 13 Jan 2023 06:07:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673618859; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp415050ejc;
+        Fri, 13 Jan 2023 06:07:42 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsg09/8EyNGjphHlUUtfig13BT1aXd+9cO6ugIUwvZSnNF2A5zMvDrU6JMKIO/l72xtsyXA
+X-Received: by 2002:adf:cf01:0:b0:2b9:d6ba:21ee with SMTP id o1-20020adfcf01000000b002b9d6ba21eemr18369563wrj.1.1673618862398;
+        Fri, 13 Jan 2023 06:07:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673618862; cv=none;
         d=google.com; s=arc-20160816;
-        b=JmEHhRFHyMGe/WRkitaamXxf6PiYZPr9A2sguc2HvsEWQ56tOPrR7N3o+J/4h6svz8
-         Y+J1PAEYvrvITI676fE7qNWAIGqc/d9H47VVlHa0OgywhUStOc87/YQcaHMVyi2SRMUO
-         6MhDFTzlMM2P8GjC/2oewCQ1vikS6Bavf63mpfhvEYrmYbmWARnlAUkaevwpYkVUSVpP
-         l8jeWCmIJ38cL7KbfBpzK3oB5Uz4tkgBFvhFggii6k6+SFNG0klcZr8dRB1ZFmXtLCUU
-         w3dqUhjOzsIL9jDl2FkLSD3njZK0M0OKV44+T7Oy8f5IZCg0Q2fEWHCk8caWomAZWD2l
-         tUMA==
+        b=AT7LGOWuodPaNLheS65b4tL+mKj8kSbrf4KNG9YEkPNdgZhy3ouBWSpQ3tkpi5c0MC
+         OSM71daQgtGeaAGoVz4pC9OEwGn0eAtZrSSzrlY1lBZp+z0fXYblbTkgw2rqnjuFIuOl
+         iAHP8XBWIZY0IME2W13v6reay3MfDUirKscyJZ+KDhZm/TGMp9w8XHZKIIRrHVJbeceB
+         4VZKKG+KnhdJ7JVB4b0xtIF5lVR38eaRbgUan8SNmzED6CSRWsgC/3MZjK93aE8lK7ag
+         pXHA7n59OoxR/HHFlNhLsszrndRjxKJ2XIYzv0pof9kvor6T8cVJHNYV0CVIlEEnVKOP
+         5zTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=43Vb2eVEM42+G2dsOM6a3AIXh1asg0rkcfl8Hv/lG+k=;
-        b=bf4dIi4bcW8ahb9kEYIHzhIpFDizIC9zT+PnOVMaCeXqbCC6XE0R0NnzZqChDNVtSC
-         JnZYBikJj0dU8RxuR5JITRI70+mmnW3iIstd3IoirosWKVxDHyxAstw+QhbhO7q/ULY/
-         7Bb2lcouo1kLkhslQEGWt+P72eEw5j0LttgSbCGjx+KqewmWaCVfNx7rSJ3FYYVF85Ul
-         3m31xrZSG0kHLwYD6gBQomsu8bmTg1OS+SBtgoOao7ZL2cqb2CAS3Zj2gywOj4Ots726
-         5Ryn8yCHhgfWVypeHL+vQA1a9LQTHiQQhvBLFgyPeP8/IGYIosnsqHApTbkhoYvoGsPS
-         KFrw==
+        bh=b9wgLuv1S8KisqJZ2hXcODVe9gh+CNpuuMmjcOOVIBo=;
+        b=0mwX3NRv9fLvLBcq/4c2bcSaJBPltCw6xI413S+vC7430clDm5PnrUNVinenruvwHn
+         BumpLDLvCndbaEmLKUZysQyhPmeh1Nb5ZduroyMwsH0ehdkSI5UYoUWhMrvpdM7Yd22v
+         9njSujxYDEGf+oR8ZBhGOJy5ILgwm7HMUuqHOIT08d/tsET7vgjbN4SBeoCXeHL00QVO
+         fGmoDCbNoHUvIIXUoSriqcKNeXduMWNFiVqbfW79z/in2QPNHzuyZsrPcMA4/q2MqU7e
+         w3TSRpZp/4qVbK1kni5Dl494DUe8pJ77ILuCeMpIs8hJtWkCxDY0jKNFDARyRDXLv63Q
+         UiMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=TiKNpqU8;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="zQc7/UgY";
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=m8675CmD;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id m5-20020a5d64a5000000b002bb31e4caacsi22780230wrp.400.2023.01.13.06.07.38
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id bn18-20020a056000061200b002bc8025828dsi11321880wrb.90.2023.01.13.06.07.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jan 2023 06:07:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+        Fri, 13 Jan 2023 06:07:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=TiKNpqU8;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="zQc7/UgY";
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=m8675CmD;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 237255D6FF;
-	Fri, 13 Jan 2023 14:07:38 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id CF86A6B4FE;
+	Fri, 13 Jan 2023 14:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673618858; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1673618861; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=43Vb2eVEM42+G2dsOM6a3AIXh1asg0rkcfl8Hv/lG+k=;
-	b=TiKNpqU86v6JeZFG/xEEa73RJbE8StmpWmWC4D6JP9R9nPSV1EsxoriSHUkyQkUU0JPqJ5
-	IVGapQaNA8vgUmP3oWUTUmV8OY8It2/YK8DYNfy0UjUhLSlQZySPxMEL0Rly80S+XDdIvh
-	6zR0sH/L1Pb4bpgzDbN/je5eVUItRkc=
+	bh=b9wgLuv1S8KisqJZ2hXcODVe9gh+CNpuuMmjcOOVIBo=;
+	b=m8675CmDyRyQNUZqeVQQdU6+mDipNdN5/k0gLr3/L06s16gA4h13fdGVI1KueyNAcWoRf4
+	oKl8eLzsGGf38QzPQNYm4ujjgOpOvzIx+KJ/8C2o5VkGB/x1U/eoSx6yBScruro+9799VV
+	q+Zf2oyLMXEHZCHoJosTDLcDiVAANak=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673618858;
+	s=susede2_ed25519; t=1673618861;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=43Vb2eVEM42+G2dsOM6a3AIXh1asg0rkcfl8Hv/lG+k=;
-	b=zQc7/UgYldFU7M7uXoVwBpypxR8HnGeJFsJIKBvdfXdciSE3rrX/BnhfizRgYEqgI/OAcs
-	nK0Z9/Y5uBAqYDBg==
+	bh=b9wgLuv1S8KisqJZ2hXcODVe9gh+CNpuuMmjcOOVIBo=;
+	b=Kg688s8Gpwt3iPgb+mJPKZuJBJG20Ry2ipEqrdc+m9ff5W8l3Q9djlY0FDE1rGGcYSfAqU
+	RRretHyEF/tD6tCA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 4B4D91358A;
-	Fri, 13 Jan 2023 14:07:35 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 8EEAB1358A;
+	Fri, 13 Jan 2023 14:07:38 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id KO1nBadlwWP8DQAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:07:35 +0000
+	id wFf6FaplwWP8DQAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:07:38 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,77 +82,44 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [RFC PATCH v3 23/28] tests/tcg: Do not build/run TCG tests if TCG is disabled
-Date: Fri, 13 Jan 2023 11:04:14 -0300
-Message-Id: <20230113140419.4013-24-farosas@suse.de>
+	Cleber Rosa <crosa@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>
+Subject: [RFC PATCH v3 24/28] tests/avocado: Skip tests that require a missing accelerator
+Date: Fri, 13 Jan 2023 11:04:15 -0300
+Message-Id: <20230113140419.4013-25-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230113140419.4013-1-farosas@suse.de>
 References: <20230113140419.4013-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: GYcB5+pJaye5
+X-TUID: GC8wiAHsWOkZ
 
-The tests under tests/tcg depend on the TCG accelerator. Do not build
-them if --disable-tcg was given in the configure line.
+If a test was tagged with the "accel" tag and the specified
+accelerator it not present in the qemu binary, cancel the test.
 
-Test against CONFIG_TCG='' instead of CONFIG_TCG=y to account for
-CONFIG_TCG=m.
-
-sample output:
-
-$ make check-tcg
-  GIT     ui/keycodemapdb meson dtc
-  SKIPPED x86_64-softmmu guest-tests because TCG is disabled in this build
+We can now write tests without explicit calls to require_accelerator,
+just the tag is enough.
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 ---
- configure              |  4 ++++
- tests/Makefile.include | 10 ++++++++++
- 2 files changed, 14 insertions(+)
+ tests/avocado/avocado_qemu/__init__.py | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/configure b/configure
-index 9e407ce2e3..a6f9892757 100755
---- a/configure
-+++ b/configure
-@@ -2352,6 +2352,10 @@ if test "$plugins" = "yes" ; then
-     echo "CONFIG_PLUGIN=y" >> $config_host_mak
- fi
+diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
+index 910f3ba1ea..ed2809210b 100644
+--- a/tests/avocado/avocado_qemu/__init__.py
++++ b/tests/avocado/avocado_qemu/__init__.py
+@@ -274,6 +274,10 @@ def setUp(self):
  
-+if test "$tcg" = "enabled" ; then
-+    echo "CONFIG_TCG=y" >> $config_host_mak
-+fi
+         super().setUp('qemu-system-')
+ 
++        accel_required = self._get_unique_tag_val('accel')
++        if accel_required:
++            self.require_accelerator(accel_required)
 +
- if test -n "$gdb_bin"; then
-     gdb_version=$($gdb_bin --version | head -n 1)
-     if version_ge ${gdb_version##* } 9.1; then
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 9422ddaece..aa0e610cf2 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -45,6 +45,7 @@ RUN_TCG_TARGET_RULES=$(patsubst %,run-tcg-tests-%, $(TCG_TESTS_TARGETS))
- $(foreach TARGET,$(TCG_TESTS_TARGETS), \
-         $(eval $(BUILD_DIR)/tests/tcg/config-$(TARGET).mak: config-host.mak))
+         self.machine = self.params.get('machine',
+                                        default=self._get_unique_tag_val('machine'))
  
-+ifneq ($(CONFIG_TCG),)
- .PHONY: $(TCG_TESTS_TARGETS:%=build-tcg-tests-%)
- $(TCG_TESTS_TARGETS:%=build-tcg-tests-%): build-tcg-tests-%: $(BUILD_DIR)/tests/tcg/config-%.mak
- 	$(call quiet-command, \
-@@ -56,6 +57,15 @@ $(TCG_TESTS_TARGETS:%=run-tcg-tests-%): run-tcg-tests-%: build-tcg-tests-%
- 	$(call quiet-command, \
-            $(MAKE) -C tests/tcg/$* $(SUBDIR_MAKEFLAGS) SPEED=$(SPEED) run, \
-         "RUN", "$* guest-tests")
-+else
-+.PHONY: $(TCG_TESTS_TARGETS:%=build-tcg-tests-%)
-+$(TCG_TESTS_TARGETS:%=build-tcg-tests-%):
-+	@echo "  SKIPPED $(subst build-tcg-tests-,,$@) guest-tests because TCG is disabled in this build"
-+
-+.PHONY: $(TCG_TESTS_TARGETS:%=run-tcg-tests-%)
-+$(TCG_TESTS_TARGETS:%=run-tcg-tests-%):
-+	@echo "  SKIPPED $(subst run-tcg-tests-,,$@) guest-tests because TCG is disabled in this build"
-+endif
- 
- .PHONY: $(TCG_TESTS_TARGETS:%=clean-tcg-tests-%)
- $(TCG_TESTS_TARGETS:%=clean-tcg-tests-%): clean-tcg-tests-%:
 -- 
 2.35.3

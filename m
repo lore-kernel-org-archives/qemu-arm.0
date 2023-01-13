@@ -1,143 +1,133 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp432092ejc;
-        Fri, 13 Jan 2023 06:27:48 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuTuglkpfjFy068rNuwVvpBLnRTjWHHPWzxmJuo599779N445BQedexdOlJ4xr0qfE41AuN
-X-Received: by 2002:a81:10f:0:b0:4c3:6d3e:3167 with SMTP id 15-20020a81010f000000b004c36d3e3167mr20811226ywb.25.1673620068441;
-        Fri, 13 Jan 2023 06:27:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673620068; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp466290ejc;
+        Fri, 13 Jan 2023 07:16:30 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuiGIIjjSzGsGbyeCVnCAEf0jMGWorY68h4VHR+0XJZ+hswQ7WUosTKjvxqw87wdsTkd88O
+X-Received: by 2002:a5d:52cd:0:b0:241:f95f:eef8 with SMTP id r13-20020a5d52cd000000b00241f95feef8mr48975697wrv.11.1673622990304;
+        Fri, 13 Jan 2023 07:16:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673622990; cv=none;
         d=google.com; s=arc-20160816;
-        b=loBf97R525Q9p+4UwjDgtDoqfCj0CpWNOCO1DzsnRaOV7K7NSxljo0JqiXbcbAPaGj
-         GrDth3GtPIjxaG2199xzgv5gT3fVoiKT1KEXh3Dv/1bIhbeVpjzDqB2jKyKUvKkfeNnw
-         cxVW+wefzOYJ+MwH2jPx7/8UDmeWfcI99+nawpk/Z33w//DvK9W3xx19NNPsb/2FWaAm
-         vnd9bfmIRydtvw1yaB+IwJ2IuJ3epZ8N0QoBai9EEpIuZ3UKcYPLlb0n9rr6vGZ2lS4u
-         xNmHiG8URpdjEawKLeEBy5hvcGDAvs8YWG1UQgeW2F41B/idtc6+dy9rFGYivJN8AiuU
-         YRiw==
+        b=PAczm49OW3OVonkiBeojDj7smGZsd4BBW6wT5bNHvQzhP3wLCXuT3SNYGsYbmOvzX7
+         WyE2h7eOXbsrBaw5t/h8A1FgXoqBzNttPUEWW09xwp1wkxT+bm1Jz5gBKG5WwbiEsng4
+         oaQKyxtgwwhJ9hk1mMWzTHBkorppggHrPHmNktnVGnBTv+E7dfJF9DwtyHvIToKqHWGF
+         7ZWPHAaam4193BA9X1vVNXDhiG9kTraKjcOEmfaeKi/namYQaWOj4xXQaU+9qmKTin6e
+         WwRlLshLCsfGhv+BHFb9nYTREY7FaUKyCLI/R5Su+r/r+ThowqoTTbb7YSbAgrfnHY4Y
+         4wKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=shcFh22nF6EFzDZQbp+ujZhMZlzdg1vA2H9XE4J8C5M=;
-        b=DCWVSz01KR/9BzqVhs/elBScL1+OxnTiTABXAkqOGIZdvNpHveRrsgvdmjH4pt8Yhj
-         zMrriAo0zAWjH2KmwYsNxMBba8OurioKSrgP8rMXWN+zN8wV7DrIBNUSaiLddMN1eS6W
-         rxllwvgqaooU1h8mdqEypNNPIkylh1NDRlRdQLWhSJMsOKEzXWX/dtDYC75QL5LlmgnM
-         eeIYsvTF9/PJ0eNkPefno6dn0fDy2bF5E81uNFEocUvF4kJKgdOhOrB5O7HZ1aVdqdbX
-         LcwVSUH7wugZ0ZkyYWdKvExp6oLx5HdduiaHz9OtLnJEbTau+xNagm++SVhyea+s0PFV
-         XRFw==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=m0OHjKgIMktckgF3OHq8dy1ejkySu3Cxj6wan8Tsm1g=;
+        b=NX6tw7hUdHV4TwhDytGfotzMgg3MA19QjLkiitE0EH3NkSmarEQ83GCjc08EQxXIy7
+         x7LAk5QwqOvL/PGAo6P7jVMavkQGVnYr8lCP2ruYK+pCs0YkbgE8zd9s8xm5qoaLXybg
+         BdANJoflur9itCQiaZZuufIbShoYCowDWKhXJOYz5TsRPwHCeuqeOfGdzaVPf8KjJydh
+         I67EqNOkBtKkaq6jhVhFhlFBr7iRNHrxwdfpZp/lRBEOQyqSk18sQ5HiLKHuZBF9R0Sw
+         sGVueZfIVzr/LeAoWDchewOxR1I+tY2oye5Falv1wHD8FeTTPQeiNB6+azrM1RnKY0T0
+         i/XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CxZg1Fk8;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id u84-20020a817957000000b003be6574bce9si20927982ywc.536.2023.01.13.06.27.48
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jan 2023 06:27:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="T+NLasW/";
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id u16-20020adfdb90000000b002421edfc94esi16081704wri.711.2023.01.13.07.16.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Jan 2023 07:16:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CxZg1Fk8;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1673620067;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="T+NLasW/";
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 69159377DB;
+	Fri, 13 Jan 2023 15:16:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1673622989; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=shcFh22nF6EFzDZQbp+ujZhMZlzdg1vA2H9XE4J8C5M=;
-	b=CxZg1Fk88zQTlRJwrw6qIPKcCCCcjvtYRFzSa8fxXFo8ftfe6F2jtupTf6ZbM4oDcTyhMH
-	HvTud8vREGjt/cnw3RmJoWl78HLc4MllVhhhj9B/P2QrPBHiudOO5iJm0FJQRLL7LQwnaJ
-	2avJcXGJd7w/whrUyPMAtqB4T52BzFU=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-17-4VzqAh-VMP6wvEpX2bh5eA-1; Fri, 13 Jan 2023 09:27:46 -0500
-X-MC-Unique: 4VzqAh-VMP6wvEpX2bh5eA-1
-Received: by mail-wm1-f69.google.com with SMTP id g9-20020a7bc4c9000000b003d214cffa4eso4950102wmk.5
-        for <alex.bennee@linaro.org>; Fri, 13 Jan 2023 06:27:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=shcFh22nF6EFzDZQbp+ujZhMZlzdg1vA2H9XE4J8C5M=;
-        b=nnw1fXxVtcAyr0+Iw94E9WsOe9kwql0WHWO2ChxbIfEo7wk0a08iMi3on2+C7Gl5LZ
-         gnI0wQ0zKDGpcChszSINaG6utnOUepVMhWoCYE0nL5ZKol5Ymx2Dy1ghsRI6r3OFzuuB
-         xOJO9cWAXcaiZVcUeYncjC6aD4YwLiFLbsQsImMcmNOIgPHuf6rtcfGDc2e4wlGVxCtC
-         EZSIZnfFq+GzbYS7Rnmo42Cv1KDDWUCT7vQ/7hfs64Hghsc9k5ycnEYLeD+Eo1P6LS4E
-         ox1rbUtEraoJz9iaQYchYlr8yNPGXZGY5aCUOtJFL/s2kkyRtXKrBbBdH0AHsjDlN6Sw
-         b+6w==
-X-Gm-Message-State: AFqh2ko7RunrS2s0QQAwHV66ijetda7/rSd4Uu+/pexlCySWGAplcU+X
-	gMMEYvk0VDtW6dkArMe0vnSI7g0bsYaC/L0nIBsITzp0q805BzfFhkXPP9LHsAyOZX736hZFSEi
-	676TuZcat7a38xPZ+
-X-Received: by 2002:a05:600c:3b9b:b0:3da:23f8:f028 with SMTP id n27-20020a05600c3b9b00b003da23f8f028mr1831878wms.21.1673620065797;
-        Fri, 13 Jan 2023 06:27:45 -0800 (PST)
-X-Received: by 2002:a05:600c:3b9b:b0:3da:23f8:f028 with SMTP id n27-20020a05600c3b9b00b003da23f8f028mr1831862wms.21.1673620065622;
-        Fri, 13 Jan 2023 06:27:45 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.2] (ip-109-43-177-39.web.vodafone.de. [109.43.177.39])
-        by smtp.gmail.com with ESMTPSA id f12-20020a05600c154c00b003d9fba3c7a4sm12122188wmg.16.2023.01.13.06.27.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jan 2023 06:27:42 -0800 (PST)
-Message-ID: <60747f19-91ca-403d-29b5-c205141c7047@redhat.com>
-Date: Fri, 13 Jan 2023 15:27:41 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [RFC PATCH v3 23/28] tests/tcg: Do not build/run TCG tests if TCG
- is disabled
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Claudio Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>
+	bh=m0OHjKgIMktckgF3OHq8dy1ejkySu3Cxj6wan8Tsm1g=;
+	b=T+NLasW/0S9smKBxw5bFRYgovTvG6zhTot6rJHkDSd2aubyPZ4qH5YXGvxPie+aXgrVweP
+	jyosZbnELxAr2EZQ4OCS4TPY+fEvmGOVUzPFYufl2LQSmKwKCrD9GOuWJyS8jD727MHiCf
+	nUp/m2kyXse6xGlDiCp6cMn27a6ogqQ=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1673622989;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=m0OHjKgIMktckgF3OHq8dy1ejkySu3Cxj6wan8Tsm1g=;
+	b=2D2U/7HQ/Cx2AsS9hRxRfsAgPCjAnrrN+bcM7pP93HgooQzy6u3JjfAdWP7s1liviCRqww
+	r+ydWsV13LbKO+AQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id E092413913;
+	Fri, 13 Jan 2023 15:16:28 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id 99nHKMx1wWMqMwAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 15:16:28 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [RFC PATCH v3 21/28] tests/qtest: Skip tests that depend on TCG
+ when CONFIG_TCG=n
+In-Reply-To: <81895ce0-ce46-bdff-9865-0721dd4accf1@redhat.com>
 References: <20230113140419.4013-1-farosas@suse.de>
- <20230113140419.4013-24-farosas@suse.de>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230113140419.4013-24-farosas@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: L4etHS3pXCb6
+ <20230113140419.4013-22-farosas@suse.de>
+ <81895ce0-ce46-bdff-9865-0721dd4accf1@redhat.com>
+Date: Fri, 13 Jan 2023 12:16:26 -0300
+Message-ID: <878ri6ihx1.fsf@suse.de>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-TUID: 7X5D1MERVmtN
 
-On 13/01/2023 15.04, Fabiano Rosas wrote:
-> The tests under tests/tcg depend on the TCG accelerator. Do not build
-> them if --disable-tcg was given in the configure line.
-> 
-> Test against CONFIG_TCG='' instead of CONFIG_TCG=y to account for
-> CONFIG_TCG=m.
-> 
-> sample output:
-> 
-> $ make check-tcg
->    GIT     ui/keycodemapdb meson dtc
->    SKIPPED x86_64-softmmu guest-tests because TCG is disabled in this build
-> 
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
-> ---
->   configure              |  4 ++++
->   tests/Makefile.include | 10 ++++++++++
->   2 files changed, 14 insertions(+)
-> 
-> diff --git a/configure b/configure
-> index 9e407ce2e3..a6f9892757 100755
-> --- a/configure
-> +++ b/configure
-> @@ -2352,6 +2352,10 @@ if test "$plugins" = "yes" ; then
->       echo "CONFIG_PLUGIN=y" >> $config_host_mak
->   fi
->   
-> +if test "$tcg" = "enabled" ; then
-> +    echo "CONFIG_TCG=y" >> $config_host_mak
-> +fi
+Thomas Huth <thuth@redhat.com> writes:
 
-Commit 8a19980e3fc42239a moved CONFIG_TCG to meson.build, so this looks 
-backward now ... could you maybe simply make sure that TCG_TESTS_TARGETS 
-does not get set in config-host.mak if TCG is disabled?
+> On 13/01/2023 15.04, Fabiano Rosas wrote:
+>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>> ---
+>>   tests/qtest/arm-cpu-features.c | 24 ++++++++++++++++++++++++
+>>   1 file changed, 24 insertions(+)
+>> 
+>> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+>> index 4be1415823..9a052e41fc 100644
+>> --- a/tests/qtest/arm-cpu-features.c
+>> +++ b/tests/qtest/arm-cpu-features.c
+>> @@ -217,6 +217,15 @@ static void assert_bad_props(QTestState *qts, const char *cpu_type)
+>>       qobject_unref(resp);
+>>   }
+>>   
+>> +static bool tcg_disabled(void)
+>> +{
+>> +#ifndef CONFIG_TCG
+>> +    return true;
+>> +#else
+>> +    return false;
+>> +#endif
+>> +}
+>> +
+>>   static uint64_t resp_get_sve_vls(QDict *resp)
+>>   {
+>>       QDict *props;
+>> @@ -338,6 +347,11 @@ static void sve_tests_sve_max_vq_8(const void *data)
+>>   {
+>>       QTestState *qts;
+>>   
+>> +    if (tcg_disabled()) {
+>> +        g_test_skip("TCG support disabled in this build");
+>> +        return;
+>> +    }
+>
+> Could you please use qtest_has_accel("tcg") instead? ... that's what we use 
+> in other spots in the qtests for checking for valid accelerators already.
 
-  Thomas
-
+Ah, that's much better, thanks!

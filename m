@@ -1,39 +1,39 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp708298ejc;
-        Fri, 13 Jan 2023 14:05:17 -0800 (PST)
-X-Received: by 2002:a05:6a00:198c:b0:582:d44f:3948 with SMTP id d12-20020a056a00198c00b00582d44f3948mr36899997pfl.18.1673647517420;
-        Fri, 13 Jan 2023 14:05:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673647517; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp708825ejc;
+        Fri, 13 Jan 2023 14:06:11 -0800 (PST)
+X-Received: by 2002:a17:902:db05:b0:194:751f:3e89 with SMTP id m5-20020a170902db0500b00194751f3e89mr2815280plx.63.1673647571516;
+        Fri, 13 Jan 2023 14:06:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673647571; cv=none;
         d=google.com; s=arc-20160816;
-        b=PnMGertA5g43xhnj/Ey966D/uiKtrbfGcEkxhHMg3vBFL78Dyt0k3Wgdv592d8yv/N
-         i5hMHL9JIoNQO2UvCO+51ftZsMRXxsfuuuKRtdoaGedHeS8/aFYJH0YZKrSfebk6bRTo
-         XEt3HWo810U+88MBKyN4b+Bi/cjo06orXwbFm7H4Vmo6McZ5OOyYOIqj5zV1wFleSKcE
-         EPFkBvQeKV+CMODmgc3s5+ZKGCO7CU8BeN/xV4N4NYYdkmowz6a83FrxWDKuNAFuITDD
-         ZUf27LebUrAonq7oUUnwxMueIY3ATcJxXU6qQtqZetPw494qVo1dCCrERyTTUNKX3Rlu
-         5Ayg==
+        b=NEMfWINmJ5+mdcvaGDoKsNGeY3C0KgWFIqu2Qqm+pqpR9+Obs9e8/z0cT3Q8+ITWdF
+         6SGthF3+cKDfpGsquEWI4luv89kQOudktqolEk5Y/qyLFifn14qLH+sszGPZrqcNhtk6
+         XUAimtk/uxW3np1LRcbGtRzxqszL5ZV5sqci19kX882vkVyHFR5BeJpwzK7YtJ13a0CG
+         +eWfVdIXLjz4j208rT0bBLe46x2r/Z+jQygQ6I60USI3QigPa0UL71VX0VPkTeX3BECS
+         T1FhJbrqsnXLvuYXgRbAD+msf7Dx2W/GYrlm6AacXqRPYSw0z3xOSnOBAjHgKMKPu0uI
+         QmWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=CPatGZdqtcKWZEzUuU2RAvA5NjsjbyNrc9rK1pyXCQ0=;
-        b=cs5H8VdewbNPCGdpMZ/C7UC/zY6yguFZW6QacWa9tsuxd7TdSOpcVt7Rg2jBVh8tfT
-         EvL6iYxxxh7xfHnG5ITeAL3xw3L0uLdwisBY7gBYKSaVZhh2rp/8Rn6+qrsULRyQKx7+
-         d4ZlBda0vuOxEzaUxQXbm6gubpk4Ic8sKtJRczpCxMv+PJ8bi3nb81CnTIbABIvZodWc
-         s6quIGMlOVvQahHxdD1VVd7PWz09W7w8zEv9DHR+LgHw8ji4DPbHer95tj5Xn1tOqixR
-         kTIT+MNGRQp7WN0/RgqND/jVa3DixWUJL+XZwcMzI1CeeT8h0Nm+bCIihW7baVo+r1/9
-         SSlw==
+        bh=Y+qvu+7Pyq9eGkJEkiUMjhl/CTNX4Fkv/iCghWgzUEA=;
+        b=olx1IKwhr4Dg+R9mm5yq44GKRZfVNzs0jfZeuXhRN4wAveDZzuUVW5tDhQKz/vkAEp
+         xzVMUkWmM8aayu7oE1S/dyjl1gNbQwJeWrxcpbmnTq7XHePnakaffsLMN2TPfg2Os0ro
+         Dd9P+Igm9zf3Wu3Bj9ibDSADObiSVXUHnMaj2owMFO3runKGBth6ei630CPWhFsJG+Re
+         Qzi5dkzvKW2yH8SY8N4Na2aH3DtnK0bDsVLHEk/5R8pEiR9YN4fd25KGIugnKRQ1PcTX
+         +1Oe9tdGmNw7Qy2MFOiHuamuOwSmXR6FII424atox5pX08wF3FlS1xCCvAkxAldn+bCX
+         D0Kw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Hnohg1fl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GWzupnxt;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j20-20020a62e914000000b00581da213e54sor11618546pfh.78.2023.01.13.14.05.17
+        by mx.google.com with SMTPS id f18-20020a170902ce9200b001947221dc94sor1203913plg.153.2023.01.13.14.06.11
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 13 Jan 2023 14:05:17 -0800 (PST)
+        Fri, 13 Jan 2023 14:06:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Hnohg1fl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GWzupnxt;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -41,69 +41,79 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=CPatGZdqtcKWZEzUuU2RAvA5NjsjbyNrc9rK1pyXCQ0=;
-        b=Hnohg1flgaLoOuo3Xc7snE5g8On9ybXYzngyFt4M1shQ9iT3RI0Hi3kzUWN/wvk5H4
-         2FgVkU4QCGez/F9UVDKPC7k+1wqG1XDfatVkCXS1l3bLuikUCRo7r2djbMIgLdpm5I86
-         JpOjh22PKO+HnZpxKg63qfSEHoCA+5K7lmBEBn7mu7prd8wUVnZ0cR5519JOoWla28SY
-         fhaFsVtG8JMp+0KmKck/BRldJlAYMon6fp1Wahn71cZz5rKFzHlmKuV8ynP2NK9Lal6/
-         YD7b7QzpEeNe92lT7rJgDMWbzFlAWVvUHQGknZobtIqEURMdJRhUljzToQtBMF8xvzyZ
-         OJ/A==
+        bh=Y+qvu+7Pyq9eGkJEkiUMjhl/CTNX4Fkv/iCghWgzUEA=;
+        b=GWzupnxtiMTv9PyYpGSi1Ph4fVSpUTC8VH+gkqVospHTdK3Bb79I9XQsyo9HmaUG/T
+         I1YCRGMPuj33EZUegH5v2xph/c9m1OjXIdKnhfpUO4ltynxKqGDKlESEhVq0HTUZNTUX
+         tHreFmhHR2YRXgrJzKj7osbn6D7uzBvSXdd6cYN86OQ1Spq4noDBza/1xY3MCl1hIJQi
+         Vsf5jLijCMkVnTSqgtA2sEF6QUSpJ97iOAFe3tuuHXBLNUT2UKs8yB4nmsoSOkQOMWPc
+         rnIFvi8IoNJEV4Zvt7om8VdumRTq3epxvKd/s1rdnjEp/xTa8AFsHMe1vjSojzlerpAc
+         E36g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=CPatGZdqtcKWZEzUuU2RAvA5NjsjbyNrc9rK1pyXCQ0=;
-        b=C3waeB937FCV3SOuam4+PVMBB7U7XmETpULFvWjwqqCR5fKt1TqExu1jn2MlZkgZmt
-         pxXMSTz+0J2wsaGUyQCQJhpHIlvLQ/IeAVnt0OyOaRwpnF7ArnQDSinA/JawADg/ugqW
-         8BmMkXD5Hv4avPfhW5eFty/Ue/fbMyh2it7WZt0iK1FC/Wyq/fGH6+ciTTyAQX4O4lGZ
-         biow54fh0eboEqahQYpSwcHk3DD778TGpccb5Dwc7X8Y1ciiT1tK32Nz6ohy4nmq3Wo7
-         n6QCn0vGNo0uBOHtt3HMUWxPWAJUVdM5ZijRINJ2qBjYgRqOmCsZXfsCQI1fc4vhG/lh
-         //Vg==
-X-Gm-Message-State: AFqh2ko73Fn0Cl9HDpz/mU3I0SMzuyk53y78ECzwBOkSLjtxltzBRD28
-	Wmi/RUHICWNiLawFzQw5w5DcvgE5
-X-Google-Smtp-Source: AMrXdXvbFwDrOuvySoaGSKg9mYSk1KBeOrdHjoILX3ItHTzKkuA6tnlneyFjj0+bzzfpj6UnKGNTXw==
-X-Received: by 2002:aa7:9732:0:b0:580:d722:10e7 with SMTP id k18-20020aa79732000000b00580d72210e7mr75512301pfg.24.1673647516902;
-        Fri, 13 Jan 2023 14:05:16 -0800 (PST)
+        bh=Y+qvu+7Pyq9eGkJEkiUMjhl/CTNX4Fkv/iCghWgzUEA=;
+        b=eikAcuEhX8wI4r+m+tL9hLoaQtQMHndQJnSgL/tD3iWTHlYMp/MNLdE5nrz/ATc56+
+         jnhsUJbMvBFQph3HOokuA+i9UTfjjXUBpHrYJrt+Nr7N8H+av6YWTpRBLLhnzOT5Qfxr
+         3ulC6ivxDqVJNtJhXEw+h9aTHsTXcSf7iNZ0/GgRF0qv2McHCJuHoAyIZ40kuEKXX+Mp
+         eUAgwgojBtHPwC8UMm7THdK3eTbc+KvQNHeAvqSBrU21zmkPMW1cnGO2MfgX/sa8EBOD
+         nWJw++MVPKC/IjIBsaSuyIpKoiBVLW7vDTmDvlQVmCKPJACIWxqmNXKMkmfv2wVXSc5C
+         lkvA==
+X-Gm-Message-State: AFqh2kpSF8DEDvkdRGywcONClcxb2N0nwazqjPGs6QanmdLLmT0Yhtmr
+	YBSB6W8Tfv2+qA1NRoXQTdkhM5kY
+X-Google-Smtp-Source: AMrXdXthoEcC0VtLJnDCb/yDqaibGbZuSB6Tr7SakXW299e+yKfjwRbKlVZCFoLh5shmSb03HSW4WQ==
+X-Received: by 2002:a17:902:c401:b0:189:ba1f:b168 with SMTP id k1-20020a170902c40100b00189ba1fb168mr122912315plk.1.1673647570979;
+        Fri, 13 Jan 2023 14:06:10 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
-        by smtp.gmail.com with ESMTPSA id f13-20020aa7968d000000b0056b4c5dde61sm2180303pfk.98.2023.01.13.14.05.14
+        by smtp.gmail.com with ESMTPSA id t24-20020a170902b21800b001766a3b2a26sm14649164plr.105.2023.01.13.14.06.08
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jan 2023 14:05:16 -0800 (PST)
-Message-ID: <bb5f5cd7-6d53-eb69-3e79-db95c9734f07@linaro.org>
-Date: Fri, 13 Jan 2023 12:05:11 -1000
+        Fri, 13 Jan 2023 14:06:10 -0800 (PST)
+Message-ID: <bf48eed6-bd46-a9d5-15df-a402c5ea3546@linaro.org>
+Date: Fri, 13 Jan 2023 12:06:06 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
 Subject: Re: [RFC PATCH v3 20/28] target/arm: Set cortex-a57 as default cpu
  for KVM-only build
 Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+To: Fabiano Rosas <farosas@suse.de>, Claudio Fontana <cfontana@suse.de>,
+ qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>
 References: <20230113140419.4013-1-farosas@suse.de>
  <20230113140419.4013-21-farosas@suse.de>
+ <3be55a1c-64cd-28f3-9c7f-ceb67b20c36e@suse.de> <875ydaievb.fsf@suse.de>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230113140419.4013-21-farosas@suse.de>
+In-Reply-To: <875ydaievb.fsf@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: 5E93cK/efArS
+X-TUID: 76c1ZcZ0il3D
 
-On 1/13/23 06:04, Fabiano Rosas wrote:
-> The cortex-a15 is not present anymore when CONFIG_TCG=n, so use the
-> cortex-a57 as default cpu for KVM.
+On 1/13/23 08:22, Fabiano Rosas wrote:
+> Claudio Fontana <cfontana@suse.de> writes:
 > 
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>> On 1/13/23 15:04, Fabiano Rosas wrote:
+>>> The cortex-a15 is not present anymore when CONFIG_TCG=n, so use the
+>>> cortex-a57 as default cpu for KVM.
+>>>
+>>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>>
+>> Our recommendation currently for KVM on ARM is to always use CPU="host", as named cpu models generally don't work (yet?) with KVM.
+>>
+>> https://qemu-project.gitlab.io/qemu/system/arm/cpu-features.html
+>>
+>> Should then "host" be the default for KVM if CONFIG_TCG=N or CONFIG_TCG=M and the TCG .so is not loaded?
+> 
+> Yes, "host" seems to make more sense. I was under the impression that
+> there was a way to use cortex-a57 and cortex-a53 since they have
+> cpu->kvm_target set.
 
-Ideally there would not be a default at all, requiring the command-line option to be used.
-
-Second choice would be "host", since that's the only value that's actually usable (except 
-for the off-chance that you're actually running on an a57, which is less and less likely 
-as time moves on).
-
+One may use a -cpu other than 'host' if and only if it exactly matches the host.
 
 r~

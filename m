@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp414766ejc;
-        Fri, 13 Jan 2023 06:07:25 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtwamyvWxckYHFMBrLng4evSTPq/Lzt/in2dfrPdW0KXM3DBjOoRKw2Z+GzItiwXZNX3Gzl
-X-Received: by 2002:adf:fad0:0:b0:2bd:e539:46e0 with SMTP id a16-20020adffad0000000b002bde53946e0mr1363613wrs.46.1673618845025;
-        Fri, 13 Jan 2023 06:07:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673618845; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp414830ejc;
+        Fri, 13 Jan 2023 06:07:29 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXucjiqh5qkPGiBheSmm1FQulv7HiA9SBGO8HAGMJEyNncLibCICL3iGLwsYxYjeVUwZT8gl
+X-Received: by 2002:a7b:ca54:0:b0:3da:26e5:10ba with SMTP id m20-20020a7bca54000000b003da26e510bamr800021wml.19.1673618848879;
+        Fri, 13 Jan 2023 06:07:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673618848; cv=none;
         d=google.com; s=arc-20160816;
-        b=RwTUQ/bkM2xI4Tc+N8GjeAL3m8g+VVR+o+OUNLvy6Rtcn+zyrL0M6uJl+dZDO2tK29
-         X89Cll3T3EalkNfRWjsn3GASo5+25eaTFeESovfSYFTYGSVLGQWWfvJTuE4J2khk6xeV
-         2J2UL0QPoW/vcnZ+eKtZ+9AaDEHLExMQfNOarFeikI2TJov01yzJb5seRkn8cbBLw83L
-         3BOqu5BBDi0X5tL29O3uYjBhC083vG5C5CKFIbCfFpH5FyBxBH6CBiLG1hYzDN2sJbe/
-         Oc66qiJTOi6L1VdGai2VUSeVRnzOm4aZnqTWMUDQeJYcXa+NLD3WUfOSzgBo/tjEWLMp
-         8E2g==
+        b=XkpYo3uvCi+aGM2X9VCKPNhK0hrVhOptjzZgWaONOZYzK5aFkH6Ery6H+/ZiE0LCde
+         2XWG5WQoUmZkUys8+IJXqXlLp8Esijl6DmeHoe4EOL7T3//5nP/LhxyOkNw9tqsrD89m
+         rOj9DUmh1ZQds20BVmQSJIHoPi7DVXbPebDMwV9EATgBUfECOmXN5ITWAqGXz8XO8ssd
+         2BeIfzDNkwX0gTFfN5ZoxnvKb5nvC23m0HzBCtCZ1qG8h4Kx/rTzdbdNjG7Cw2LLacOb
+         Oikhq52dgnZqU1WH5eDIqaBo2JhRdcImx1eqveSgwSLoWO3BK1Fajs5ixBklBeAG+VeA
+         0MRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=BgxTDwH6kxR/wgmh9MEH8ZoFcSs+tVa4bOrsIpU9uAM=;
-        b=fCCqawjiJBmj16aq8cFzAOFc3jhay3DodrFKDduYlQWrpiGbWGc3LjFqn3hoyTi/FF
-         04ne++OGloxx27DeTpZDWriXEiWotSe6LEzIUbKD5140xVm34fjx6aMjBCaVNHAQdUn8
-         5Uve43nXDDZvogs1MEFf2YkeHkakGkRORVvxCUu6ebGqfNYgtPMPPf0iuv1szgox2X58
-         jpE0TRnO0qQAzbxtLXtDH2Gq/4ZekAPn2OG2n3GyjiD5pR4kTi2+Ixb1oN0/yUGfYTz+
-         K090U/y91mbiTU+XtFxrepAK18kYghysvRrAUGYf8w/lXIqJBoH8EMqYkooQa6rKJv84
-         L0Eg==
+        bh=5bF0kBNPYXnCCOfoP1XmA8Hs86RBaTeS2DR5VwhZdKs=;
+        b=KJi7/f5uTCzZA8pMjq0Z71eM74JB90+ataVO+KwVy9HsF1QfVMv5J1jiAlpTY5dess
+         v+A3ASv1WbO9Xls8ym5Cpwr8Oaa+2akXaSPMh0YQ90yUbtDvScPVlUIAp7CYT1H4GAsa
+         Df65BMplFWYJCb9jEMsENMXVztfDTLaV+4/NMXqRcFWhjKa/N1U8N53Uyhcy8+jmNMcZ
+         rp6WjB7813EHZDO0Uo3KC5ENeNRXEosUtPYksOKwmPskI4YkexBGHYXSnktlREC4bXlm
+         6r2x47jFb1h3Y1n1wsl/KvTs+9Wue3B2xG0IY8XbTH902fMFsAEGgfUnOqH8189IR/LV
+         KfvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OldAUDvJ;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Dbjkwskh;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id k17-20020a5d6e91000000b0022d3f2d67e6si15364750wrz.1038.2023.01.13.06.07.24
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id e19-20020a05600c4e5300b003b4fb04184bsi20088493wmq.139.2023.01.13.06.07.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jan 2023 06:07:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+        Fri, 13 Jan 2023 06:07:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OldAUDvJ;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Dbjkwskh;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 739FE4DE3E;
-	Fri, 13 Jan 2023 14:07:24 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id E9AA921980;
+	Fri, 13 Jan 2023 14:07:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673618844; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1673618847; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=BgxTDwH6kxR/wgmh9MEH8ZoFcSs+tVa4bOrsIpU9uAM=;
-	b=OldAUDvJAp8Nc0yEwoMqFSYH3N7G6aIJXl8qWACQj2djPKXNZc9uR1/mAlAomLhEg/+rBe
-	UO8Jye4PWknYjQoR9iJ7dBuztW6pJylktSYueqkDjTU72WUTvO3uO+E38eWLYmhnDODEn7
-	E+xYp/Y+dxJdaEIALqgTBebcCvwEGV0=
+	bh=5bF0kBNPYXnCCOfoP1XmA8Hs86RBaTeS2DR5VwhZdKs=;
+	b=DbjkwskhHWc8p/UR3aq6mFWrPZPF0o0rW9R2uXYVwEu/nZt5FFsuJg2E9gxE0Rn4JPCLQX
+	ZRDuo80YxynM8PDdSCoZf/RWg13KQQtLUL6MzwAVZBBSr2/79P3OoloMMdRG1i88KupyXi
+	EnkkRt+i2LE4KtQBDh/p3jBWSqRRG+s=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673618844;
+	s=susede2_ed25519; t=1673618847;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=BgxTDwH6kxR/wgmh9MEH8ZoFcSs+tVa4bOrsIpU9uAM=;
-	b=cL+e37eB+vZVgLphmi89enONeMr+o8GdTGzKxrLGLZN9hbtH6H6x7IEQHuU9mk3nPZK5Th
-	u7/WLs2TqppGEzDg==
+	bh=5bF0kBNPYXnCCOfoP1XmA8Hs86RBaTeS2DR5VwhZdKs=;
+	b=+0J7x79kXFoRN3x+WFr6baEMoCqLzagsIVrxK9rLUY114zEIY0PxfdQgK4sXSilOOHA9kb
+	PKtWMhAnksIfzPBQ==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D59211358A;
-	Fri, 13 Jan 2023 14:07:21 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id E088D1358A;
+	Fri, 13 Jan 2023 14:07:24 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id +IFAJ5llwWP8DQAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:07:21 +0000
+	id EN8JKpxlwWP8DQAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:07:24 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -81,124 +81,68 @@ Cc: qemu-arm@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>
-Subject: [RFC PATCH v3 19/28] target/arm: move cpu_tcg to tcg/cpu32.c
-Date: Fri, 13 Jan 2023 11:04:10 -0300
-Message-Id: <20230113140419.4013-20-farosas@suse.de>
+	Alexander Graf <agraf@csgraf.de>,
+	Thomas Huth <thuth@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>
+Subject: [RFC PATCH v3 20/28] target/arm: Set cortex-a57 as default cpu for KVM-only build
+Date: Fri, 13 Jan 2023 11:04:11 -0300
+Message-Id: <20230113140419.4013-21-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230113140419.4013-1-farosas@suse.de>
 References: <20230113140419.4013-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: R3C0xWG+PYUn
+X-TUID: YzroriJ2HVdn
 
-From: Claudio Fontana <cfontana@suse.de>
+The cortex-a15 is not present anymore when CONFIG_TCG=n, so use the
+cortex-a57 as default cpu for KVM.
 
-move the module containing cpu models definitions
-for 32bit TCG-only CPUs to tcg/ and rename it for clarity.
-
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/meson.build                |  1 -
- target/arm/{cpu_tcg.c => tcg/cpu32.c} | 13 +++----------
- target/arm/tcg/meson.build            |  1 +
- 3 files changed, 4 insertions(+), 11 deletions(-)
- rename target/arm/{cpu_tcg.c => tcg/cpu32.c} (99%)
+ hw/arm/virt.c                  | 6 ++++++
+ tests/qtest/arm-cpu-features.c | 3 +--
+ 2 files changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 595d22a099..88f1a5c570 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -5,7 +5,6 @@ arm_ss.add(files(
-   'gdbstub.c',
-   'helper.c',
-   'vfp_helper.c',
--  'cpu_tcg.c',
- ))
- arm_ss.add(zlib)
- 
-diff --git a/target/arm/cpu_tcg.c b/target/arm/tcg/cpu32.c
-similarity index 99%
-rename from target/arm/cpu_tcg.c
-rename to target/arm/tcg/cpu32.c
-index 571e29bc16..10c4386222 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -1,5 +1,5 @@
- /*
-- * QEMU ARM TCG CPUs.
-+ * QEMU ARM TCG-only CPUs.
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
-@@ -10,9 +10,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#ifdef CONFIG_TCG
- #include "hw/core/tcg-cpu-ops.h"
--#endif /* CONFIG_TCG */
- #include "internals.h"
- #if !defined(CONFIG_USER_ONLY)
- #include "hw/boards.h"
-@@ -23,7 +21,7 @@
- /* CPU models. These are not needed for the AArch64 linux-user build. */
- #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
- 
--#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
-+#if !defined(CONFIG_USER_ONLY)
- static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
- {
-     CPUClass *cc = CPU_GET_CLASS(cs);
-@@ -47,7 +45,7 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-     }
-     return ret;
- }
--#endif /* !CONFIG_USER_ONLY && CONFIG_TCG */
-+#endif /* !CONFIG_USER_ONLY */
- 
- static void arm926_initfn(Object *obj)
- {
-@@ -943,7 +941,6 @@ static void pxa270c5_initfn(Object *obj)
-     cpu->reset_sctlr = 0x00000078;
- }
- 
--#ifdef CONFIG_TCG
- static const struct TCGCPUOps arm_v7m_tcg_ops = {
-     .initialize = arm_translate_init,
-     .synchronize_from_tb = arm_cpu_synchronize_from_tb,
-@@ -964,7 +961,6 @@ static const struct TCGCPUOps arm_v7m_tcg_ops = {
-     .debug_check_breakpoint = arm_debug_check_breakpoint,
- #endif /* !CONFIG_USER_ONLY */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ea2413a0ba..19854f4137 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -203,8 +203,10 @@ static const int a15irqmap[] = {
  };
--#endif /* CONFIG_TCG */
  
- static void arm_v7m_class_init(ObjectClass *oc, void *data)
- {
-@@ -972,10 +968,7 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
-     CPUClass *cc = CPU_CLASS(oc);
+ static const char *valid_cpus[] = {
++#ifdef CONFIG_TCG
+     ARM_CPU_TYPE_NAME("cortex-a7"),
+     ARM_CPU_TYPE_NAME("cortex-a15"),
++#endif
+     ARM_CPU_TYPE_NAME("cortex-a35"),
+     ARM_CPU_TYPE_NAME("cortex-a53"),
+     ARM_CPU_TYPE_NAME("cortex-a55"),
+@@ -3003,7 +3005,11 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->minimum_page_bits = 12;
+     mc->possible_cpu_arch_ids = virt_possible_cpu_arch_ids;
+     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
++#ifdef CONFIG_TCG
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
++#else
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
++#endif
+     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
+     mc->kvm_type = virt_kvm_type;
+     assert(!mc->get_hotplug_handler);
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 8691802950..4be1415823 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -507,8 +507,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+         char *error;
  
-     acc->info = data;
--#ifdef CONFIG_TCG
-     cc->tcg_ops = &arm_v7m_tcg_ops;
--#endif /* CONFIG_TCG */
--
-     cc->gdb_core_xml_file = "arm-m-profile.xml";
- }
+         assert_error(qts, "cortex-a15",
+-            "We cannot guarantee the CPU type 'cortex-a15' works "
+-            "with KVM on this host", NULL);
++            "The CPU type 'cortex-a15' is not a recognized ARM CPU type", NULL);
  
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 25bc98999e..3c2f1e8d84 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -18,6 +18,7 @@ gen = [
- arm_ss.add(gen)
+         assert_has_feature_enabled(qts, "host", "aarch64");
  
- arm_ss.add(files(
-+  'cpu32.c',
-   'translate.c',
-   'translate-m-nocp.c',
-   'translate-mve.c',
 -- 
 2.35.3

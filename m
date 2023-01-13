@@ -1,280 +1,146 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp413757ejc;
-        Fri, 13 Jan 2023 06:06:26 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuTy15zmKBNuyWptRnOXBYdCEM48hncIsq0Gfvc6EmyrPw/Q2Kfz2wQhZ6oeood/9dgXqG3
-X-Received: by 2002:a5d:668e:0:b0:2bd:def5:4356 with SMTP id l14-20020a5d668e000000b002bddef54356mr1571797wru.39.1673618785972;
-        Fri, 13 Jan 2023 06:06:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673618785; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp427464ejc;
+        Fri, 13 Jan 2023 06:22:18 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsjZPaOBAhgx865MaNQc/nt4x8qlF54Y7M+MO2VNQqmMgZdr9imEiRL2iiJ4RZwb5+OE522
+X-Received: by 2002:a25:e00d:0:b0:6f5:7d1b:b86e with SMTP id x13-20020a25e00d000000b006f57d1bb86emr9339903ybg.0.1673619738383;
+        Fri, 13 Jan 2023 06:22:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673619738; cv=none;
         d=google.com; s=arc-20160816;
-        b=PgGZpuzWxzLitwo/iMto4dCx47MYyX5YAp7yDdSC70Ye1oZ9Rp1c7Gem1Jkk1K9SiL
-         7iz5yieNZQrgzJlMlXI0a+Ojga82m+5gN+rwcSjnigI7S8zn+ulmm/HMG1z+nMTnaekp
-         nVtdpA86tmmfV/NjetZMgi6ZDOzMS+aJtXKCULvbY1uTu4flC5ilO0/sJ4m63ZoNwSzw
-         BZ5F3XH1uxP6dSFJpqSziVhVVMCDcqwBhN+siiqIvPPj6OkGGn5cDMFZJlIXhmjSghkl
-         lpQMfNtd0izWAnVfc7Fvs7ZWkHnoqGlbSPWGfBT+RxHe1cUgPujUazAL1XfWVp5/pZJm
-         OqBw==
+        b=Ay/5DFs2uL3GYGBF0I7D2fekPNeO7zNEiPOQkzdV7cbIRQQ8VASWwtdFrnv+xZb4Cx
+         47EKI6jXtiYwpaoCUmqu03srkCk/hu13rAtc3d7ZrUi+Eu8wZG2bnqyyL801FVQ8PhUi
+         e5kt62o3xjkhUhE9s4/AmpNvf53I5ZcdQ/pxvvW85DQEgtsvolK7PIom+bZ/fS05eCRo
+         yec8ClKJPrzv86UWe2g4u7+Vn6jMgoQc7OV77iuKCMknDDXfD8dah16sd79wxUrCBqPo
+         sxJ8/e6cz5/942xzSuZN44atzd08Aby2PC9BHNNhagQsmAy4cFHZaPy0qbZFZC8JBfOs
+         RHxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature:dkim-signature;
-        bh=/FEGpcFg9zbN6etlRXuk3dPtqAHUqZy1fKVQrdmJkJg=;
-        b=hzN2yle7QzExAqfzS8xmkY/25uyI0RUAa2n53/aLldXK642eKHh02ggL/4Qr+hoG2w
-         oMqLvHYzEO4gBRsgYJo8V3a1BBOIa078z6iYd0DE/cYHGe6kgdehZzVJTERYW9jYhcWN
-         ZwRkaQIDqDBfh9Fx3Lf0deddi+XGW/dVa1RC/wlRHeztvisgGEGsM3PRAy0vkjq1eLkl
-         Msg1PTM/6nAH7B9VVKoDXexyhSHvrZ4ngA2YVAqdmaeWtbFvncnw7SWLMBL+TkLJ+B2C
-         azK33N5pjmpR+o2ByrlZUb7U8i7LNzEBAKgvCHdAUum7X0be8WcksNabUDUayHmnc6bB
-         gdAg==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=lp2RZ1DNWGnPOCNuTdafHAOiadCqKFsfZ5OfEbcFHeA=;
+        b=F/Rk0b2befxDQXtpuciR4tdGQAiolxlW4N9JZKTj9upyB0Sb+cOJJ0ZGWt9EG4bHXh
+         PULnHlkFRumOieIufNWhVJgG7aIkxCo4hKqd99PvAhaLlLWucjndO2lLMaEgIaBaK2xT
+         u/87qK8jm0s1ZH0aCqJwkrjOFOfsv4vxfCytzuIbWFxKAuZzQrlfP3zrDvjq2AuEXGgk
+         7Tl7r2ROCZs6+MsdLHObAXPdAJJLmwjoPHctmw5Cmr3yiHke0DVIKXrME8Zmm/1BHcpl
+         s9shhuBgjlSIfUbivNyOb8LJkLA1XEDN7IT2siiIBok+1QCGIur5a1iUJaGIww9jjIZU
+         Repg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=JcTZUSGQ;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id bs14-20020a056000070e00b002bc7d108b61si10386246wrb.966.2023.01.13.06.06.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jan 2023 06:06:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bHbAAzmv;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id x7-20020a254a07000000b00758b79d43aasi20370629yba.61.2023.01.13.06.22.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Jan 2023 06:22:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=JcTZUSGQ;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 229AD256BA;
-	Fri, 13 Jan 2023 14:06:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673618785; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=/FEGpcFg9zbN6etlRXuk3dPtqAHUqZy1fKVQrdmJkJg=;
-	b=JcTZUSGQNwSWfFnWA5NXTvV2L5M3cAOFkZy/k4WTkyey38xhySGfHv0KSRh+5Gu41Jj6WZ
-	Y1/3IbAA7+BMhCQlxfFOAMiQeJHEYC4euuQVTErWvqEM12DJKMZ4bUNcoaIdnlvwu0jLB7
-	7mEWwIpXccBz5MUZpsKH2/Qeu+46WAM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673618785;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=/FEGpcFg9zbN6etlRXuk3dPtqAHUqZy1fKVQrdmJkJg=;
-	b=2yWvJPFo1n/BQA8XOVTIJLA6B4dRk1NSg5BApLFqdO0lfwgEBBTAA87mu3DhNSZVpJKA82
-	EyA0GDfsNAWwEUAw==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 80AC61358A;
-	Fri, 13 Jan 2023 14:06:22 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id UkuUEl5lwWP8DQAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:06:22 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>
-Subject: [RFC PATCH v3 00/28] target/arm: Allow CONFIG_TCG=n builds
-Date: Fri, 13 Jan 2023 11:03:51 -0300
-Message-Id: <20230113140419.4013-1-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bHbAAzmv;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1673619737;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=lp2RZ1DNWGnPOCNuTdafHAOiadCqKFsfZ5OfEbcFHeA=;
+	b=bHbAAzmvZMLNhaKx2AkT3Mfnj8pJySYAuHlql+NBzgnsD6sLCVeMvLRxpSaGg1qvEyemTH
+	F+9EU8Dln8wDwA6a5z4j03JdeczwgJT15Kx2pAI26gb6FRiVLgeWDW6CBhzFoAJJMEWa+z
+	LZtRY79I0baVVz2H9BziSJ6PN2b4EEo=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-387-YCGrcr1wMC6AQv-Lu9uSCA-1; Fri, 13 Jan 2023 09:22:16 -0500
+X-MC-Unique: YCGrcr1wMC6AQv-Lu9uSCA-1
+Received: by mail-wr1-f69.google.com with SMTP id y5-20020adfc7c5000000b002bc02b72d2dso3491929wrg.19
+        for <alex.bennee@linaro.org>; Fri, 13 Jan 2023 06:22:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lp2RZ1DNWGnPOCNuTdafHAOiadCqKFsfZ5OfEbcFHeA=;
+        b=PqXjVjEHC3ZbY1sOdJDyrutT6z85g5VCJ8F19XCQngpqKyRf03PmPS8SKQUWbKBHyS
+         YEQxYxRn8f19lTNRa2+YdYoJOJx9vssfUJVFPWVsGBNb0t5nE4XVDpZp45r8QfwG0xTn
+         NNKPQCcd83nnYbJE0s2qvwNtucXis8W0kRDMAb0V6NVe9LehOCjJkOBg47OA8yN39NnZ
+         RHZcDbqHgaqEK8PfjldDww7n4Ab79UMxPzFha16vt7NzPer3VTV963fn05KSsKNOe6yi
+         XHB7kSX3pOP0A7UfTxDBk8hMYioXgii13/r0hQByS1UdKekgcB/ntBXeyzxjIUGdR5f4
+         hv0Q==
+X-Gm-Message-State: AFqh2kp2IuqNOEpTk6x6LwhdpOek2Ta2+0dXVVHrCLHWgV+F19OuEY7+
+	MFRSGLkrDDgDvtWAJ9p0AGjRuVGn63Gx1EjVhEC0ZikWtERbBIZxRak5vJKDOYCK3NeGv+Z4RNq
+	bQbpO8rwIbhRAe/M8
+X-Received: by 2002:a05:600c:1d28:b0:3d2:1d51:246e with SMTP id l40-20020a05600c1d2800b003d21d51246emr61861523wms.9.1673619735691;
+        Fri, 13 Jan 2023 06:22:15 -0800 (PST)
+X-Received: by 2002:a05:600c:1d28:b0:3d2:1d51:246e with SMTP id l40-20020a05600c1d2800b003d21d51246emr61861501wms.9.1673619735500;
+        Fri, 13 Jan 2023 06:22:15 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.2] (ip-109-43-177-39.web.vodafone.de. [109.43.177.39])
+        by smtp.gmail.com with ESMTPSA id p3-20020a05600c358300b003d1f2c3e571sm33110641wmq.33.2023.01.13.06.22.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Jan 2023 06:22:14 -0800 (PST)
+Message-ID: <81895ce0-ce46-bdff-9865-0721dd4accf1@redhat.com>
+Date: Fri, 13 Jan 2023 15:22:12 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: x0T79uI7Aws5
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [RFC PATCH v3 21/28] tests/qtest: Skip tests that depend on TCG
+ when CONFIG_TCG=n
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Laurent Vivier <lvivier@redhat.com>
+References: <20230113140419.4013-1-farosas@suse.de>
+ <20230113140419.4013-22-farosas@suse.de>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230113140419.4013-22-farosas@suse.de>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: cAlwKY5LQRam
 
-This series makes the necessary changes to allow the use of
---disable-tcg for arm.
+On 13/01/2023 15.04, Fabiano Rosas wrote:
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+>   tests/qtest/arm-cpu-features.c | 24 ++++++++++++++++++++++++
+>   1 file changed, 24 insertions(+)
+> 
+> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+> index 4be1415823..9a052e41fc 100644
+> --- a/tests/qtest/arm-cpu-features.c
+> +++ b/tests/qtest/arm-cpu-features.c
+> @@ -217,6 +217,15 @@ static void assert_bad_props(QTestState *qts, const char *cpu_type)
+>       qobject_unref(resp);
+>   }
+>   
+> +static bool tcg_disabled(void)
+> +{
+> +#ifndef CONFIG_TCG
+> +    return true;
+> +#else
+> +    return false;
+> +#endif
+> +}
+> +
+>   static uint64_t resp_get_sve_vls(QDict *resp)
+>   {
+>       QDict *props;
+> @@ -338,6 +347,11 @@ static void sve_tests_sve_max_vq_8(const void *data)
+>   {
+>       QTestState *qts;
+>   
+> +    if (tcg_disabled()) {
+> +        g_test_skip("TCG support disabled in this build");
+> +        return;
+> +    }
 
-Based on Richard's "target/arm: Introduce aarch64_set_svcr":
-https://lore.kernel.org/r/20230112004322.161330-1-richard.henderson@linaro.org
+Could you please use qtest_has_accel("tcg") instead? ... that's what we use 
+in other spots in the qtests for checking for valid accelerators already.
 
-branch here: https://github.com/farosas/qemu/tree/arm-disable-tcg
-
-Since v2:
-
-patch 5: removed extraneous include statements
-patch 6: removed extraneous tcg_enabled
-patch 7: dropped in favor of "target/arm: Introduce aarch64_set_svcr"
-patch 12: removed inline
-patch 13-15: dropped, not needed due to Kconfig changes
-
-new:
-
-- cpregs.h changes I had forgotten to include in v2
-- moved CPUs initialization into tcg/
-- skipped tests that require TCG
-- fixed the migration tests for aarch64
-- Kconfig changes, left only the 'virt' machine set by default with KVM
-
-NOTE: current master shows errors in make check when using
---without-default-devices. This series does not touch the implicitly
-added devices, only the ones in devices.mak, so this shouldn't affect
-it. I'll take a look at the errors on master in the meantime.
-
-v2:
-https://lore.kernel.org/r/20230109224232.11661-1-farosas@suse.de
-
-v1:
-https://lore.kernel.org/r/20230104215835.24692-1-farosas@suse.de
-
-Claudio Fontana (6):
-  target/arm: rename handle_semihosting to tcg_handle_semihosting
-  target/arm: wrap psci call with tcg_enabled
-  target/arm: wrap call to aarch64_sve_change_el in tcg_enabled()
-  target/arm: move helpers to tcg/
-  target/arm: Move psci.c into the tcg directory
-  target/arm: move cpu_tcg to tcg/cpu32.c
-
-Fabiano Rosas (22):
-  target/arm: Move PC alignment check
-  target/arm: Move cpregs code out of cpu.h
-  target/arm: Move cpregs code into cpregs.c
-  target/arm: Move define_debug_regs() to cpregs.c
-  target/arm: Wrap breakpoint/watchpoint updates with tcg_enabled
-  target/arm: move translate modules to tcg/
-  target/arm: Wrap arm_rebuild_hflags calls with tcg_enabled
-  target/arm: Move hflags code into the tcg directory
-  target/arm: Move regime_using_lpae_format into internal.h
-  target/arm: Don't access TCG code when debugging with KVM
-  cpu-defs.h: Expose CPUTLBEntryFull to non-TCG code
-  target/arm: Move cortex sysregs into cpregs.c
-  target/arm: Move common cpu code into cpu.c
-  target/arm: Set cortex-a57 as default cpu for KVM-only build
-  tests/qtest: Skip tests that depend on TCG when CONFIG_TCG=n
-  tests/qtest: Restrict bcm2835-dma-test to CONFIG_RASPI
-  tests/tcg: Do not build/run TCG tests if TCG is disabled
-  tests/avocado: Skip tests that require a missing accelerator
-  tests/avocado: Tag TCG tests with accel:tcg
-  target/avocado: Pass parameters to migration test on aarch64
-  arm/Kconfig: Always select SEMIHOSTING when TCG is present
-  arm/Kconfig: Do not build TCG-only boards on a KVM-only build
-
- MAINTAINERS                                 |    1 +
- configs/devices/aarch64-softmmu/default.mak |    4 -
- configs/devices/arm-softmmu/default.mak     |   38 -
- configure                                   |    4 +
- hw/arm/Kconfig                              |   40 +-
- hw/arm/boot.c                               |    6 +-
- hw/arm/virt.c                               |    6 +
- hw/intc/armv7m_nvic.c                       |   20 +-
- include/exec/cpu-defs.h                     |    6 +
- target/arm/Kconfig                          |    7 +
- target/arm/arm-powerctl.c                   |    7 +-
- target/arm/cpregs.c                         | 9530 +++++++++++++++++++
- target/arm/cpregs.h                         |  104 +
- target/arm/cpu.c                            |   85 +-
- target/arm/cpu.h                            |   91 -
- target/arm/cpu64.c                          |    1 +
- target/arm/helper.c                         | 9457 +-----------------
- target/arm/internals.h                      |   38 +-
- target/arm/machine.c                        |   30 +-
- target/arm/meson.build                      |   49 +-
- target/arm/ptw.c                            |    4 +
- target/arm/tcg-stubs.c                      |   27 +
- target/arm/{ => tcg}/a32-uncond.decode      |    0
- target/arm/{ => tcg}/a32.decode             |    0
- target/arm/{cpu_tcg.c => tcg/cpu32.c}       |  149 +-
- target/arm/{ => tcg}/crypto_helper.c        |    0
- target/arm/{ => tcg}/debug_helper.c         |  367 -
- target/arm/{ => tcg}/helper-a64.c           |    0
- target/arm/tcg/hflags.c                     |  370 +
- target/arm/{ => tcg}/iwmmxt_helper.c        |    0
- target/arm/{ => tcg}/m-nocp.decode          |    0
- target/arm/{ => tcg}/m_helper.c             |    0
- target/arm/tcg/meson.build                  |   52 +
- target/arm/{ => tcg}/mte_helper.c           |    0
- target/arm/{ => tcg}/mve.decode             |    0
- target/arm/{ => tcg}/mve_helper.c           |    0
- target/arm/{ => tcg}/neon-dp.decode         |    0
- target/arm/{ => tcg}/neon-ls.decode         |    0
- target/arm/{ => tcg}/neon-shared.decode     |    0
- target/arm/{ => tcg}/neon_helper.c          |    0
- target/arm/{ => tcg}/op_helper.c            |    0
- target/arm/{ => tcg}/pauth_helper.c         |    0
- target/arm/{ => tcg}/psci.c                 |    0
- target/arm/{ => tcg}/sme-fa64.decode        |    0
- target/arm/{ => tcg}/sme.decode             |    0
- target/arm/{ => tcg}/sme_helper.c           |    0
- target/arm/{ => tcg}/sve.decode             |    0
- target/arm/{ => tcg}/sve_helper.c           |    0
- target/arm/{ => tcg}/t16.decode             |    0
- target/arm/{ => tcg}/t32.decode             |    0
- target/arm/{ => tcg}/tlb_helper.c           |   18 -
- target/arm/{ => tcg}/translate-a64.c        |    0
- target/arm/{ => tcg}/translate-a64.h        |    0
- target/arm/{ => tcg}/translate-m-nocp.c     |    0
- target/arm/{ => tcg}/translate-mve.c        |    0
- target/arm/{ => tcg}/translate-neon.c       |    0
- target/arm/{ => tcg}/translate-sme.c        |    0
- target/arm/{ => tcg}/translate-sve.c        |    0
- target/arm/{ => tcg}/translate-vfp.c        |    0
- target/arm/{ => tcg}/translate.c            |    0
- target/arm/{ => tcg}/translate.h            |    0
- target/arm/{ => tcg}/vec_helper.c           |    0
- target/arm/{ => tcg}/vec_internal.h         |    0
- target/arm/{ => tcg}/vfp-uncond.decode      |    0
- target/arm/{ => tcg}/vfp.decode             |    0
- target/arm/trace-events                     |    2 +-
- tests/Makefile.include                      |   10 +
- tests/avocado/avocado_qemu/__init__.py      |    4 +
- tests/avocado/boot_linux_console.py         |    1 +
- tests/avocado/migration.py                  |   11 +-
- tests/avocado/reverse_debugging.py          |    8 +
- tests/qtest/arm-cpu-features.c              |   27 +-
- tests/qtest/meson.build                     |    4 +-
- 73 files changed, 10388 insertions(+), 10190 deletions(-)
- create mode 100644 target/arm/cpregs.c
- create mode 100644 target/arm/tcg-stubs.c
- rename target/arm/{ => tcg}/a32-uncond.decode (100%)
- rename target/arm/{ => tcg}/a32.decode (100%)
- rename target/arm/{cpu_tcg.c => tcg/cpu32.c} (86%)
- rename target/arm/{ => tcg}/crypto_helper.c (100%)
- rename target/arm/{ => tcg}/debug_helper.c (63%)
- rename target/arm/{ => tcg}/helper-a64.c (100%)
- create mode 100644 target/arm/tcg/hflags.c
- rename target/arm/{ => tcg}/iwmmxt_helper.c (100%)
- rename target/arm/{ => tcg}/m-nocp.decode (100%)
- rename target/arm/{ => tcg}/m_helper.c (100%)
- create mode 100644 target/arm/tcg/meson.build
- rename target/arm/{ => tcg}/mte_helper.c (100%)
- rename target/arm/{ => tcg}/mve.decode (100%)
- rename target/arm/{ => tcg}/mve_helper.c (100%)
- rename target/arm/{ => tcg}/neon-dp.decode (100%)
- rename target/arm/{ => tcg}/neon-ls.decode (100%)
- rename target/arm/{ => tcg}/neon-shared.decode (100%)
- rename target/arm/{ => tcg}/neon_helper.c (100%)
- rename target/arm/{ => tcg}/op_helper.c (100%)
- rename target/arm/{ => tcg}/pauth_helper.c (100%)
- rename target/arm/{ => tcg}/psci.c (100%)
- rename target/arm/{ => tcg}/sme-fa64.decode (100%)
- rename target/arm/{ => tcg}/sme.decode (100%)
- rename target/arm/{ => tcg}/sme_helper.c (100%)
- rename target/arm/{ => tcg}/sve.decode (100%)
- rename target/arm/{ => tcg}/sve_helper.c (100%)
- rename target/arm/{ => tcg}/t16.decode (100%)
- rename target/arm/{ => tcg}/t32.decode (100%)
- rename target/arm/{ => tcg}/tlb_helper.c (94%)
- rename target/arm/{ => tcg}/translate-a64.c (100%)
- rename target/arm/{ => tcg}/translate-a64.h (100%)
- rename target/arm/{ => tcg}/translate-m-nocp.c (100%)
- rename target/arm/{ => tcg}/translate-mve.c (100%)
- rename target/arm/{ => tcg}/translate-neon.c (100%)
- rename target/arm/{ => tcg}/translate-sme.c (100%)
- rename target/arm/{ => tcg}/translate-sve.c (100%)
- rename target/arm/{ => tcg}/translate-vfp.c (100%)
- rename target/arm/{ => tcg}/translate.c (100%)
- rename target/arm/{ => tcg}/translate.h (100%)
- rename target/arm/{ => tcg}/vec_helper.c (100%)
- rename target/arm/{ => tcg}/vec_internal.h (100%)
- rename target/arm/{ => tcg}/vfp-uncond.decode (100%)
- rename target/arm/{ => tcg}/vfp.decode (100%)
-
--- 
-2.35.3
+  Thanks,
+   Thomas

@@ -1,248 +1,143 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp564644ejc;
-        Fri, 13 Jan 2023 09:45:00 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXttWIc1QLP5SMNc0+cctI7UL6JsKxzoyEYZ03pULQRBqoAlAYlnvQvn+qkKWJ52RJDix5Eb
-X-Received: by 2002:a05:622a:6094:b0:3a5:fd39:ff90 with SMTP id hf20-20020a05622a609400b003a5fd39ff90mr22343854qtb.3.1673631900670;
-        Fri, 13 Jan 2023 09:45:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673631900; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp622472ejc;
+        Fri, 13 Jan 2023 11:21:04 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvPc6dCAxy2Pz9bsHylIzX0vat5XYI0hYjXHXGLlED4Q/ZwlhsnDMdzMp4xfswC9dT+5DeQ
+X-Received: by 2002:a05:6214:2b9e:b0:531:92f6:4bb3 with SMTP id kr30-20020a0562142b9e00b0053192f64bb3mr77101311qvb.50.1673637664420;
+        Fri, 13 Jan 2023 11:21:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673637664; cv=none;
         d=google.com; s=arc-20160816;
-        b=j9o4XsDq+jZLri5sd25GjsD3+01bKzH7swY7VpWgHTlSKuN0jrBlwdfwXUvXxFKMA1
-         EEGydvWR1wjxLJUevYP3HF8lRclvCbRNxvpZfbsC7oJL8axtVrXkkcD2DYp5teSv788g
-         +ZmzdB12WhJBagRCq/6UJc9+j35GjzqppGkMrtHw8bIkIRA2EFVBFRVsZhQQiCwG/kf7
-         Gjkvie2IaNGK7YnwsNp9AsOhWNqrmkTYTCI7SRPajO2E+Rox4uyZmbjBTtSkOP5RAfuc
-         g9QNPoTeNVUkykDESzkLoDYJvK31X3qTP3Ynd2Y2x0pNnXf0c8rb5UV3++5frxcG0Owm
-         U5SQ==
+        b=ZBYxGz5Wmao9FWS8hlDRwE9VqgoCMdpYyCOLqBX9uCazRXN7QC4HMZL3+kTk9s+3dh
+         +k0m2J0E9Bah198Cg9pg2VIXjtSJXkeRqEOeNApwnlCHDS23bh1wpmW5YsVRmMv5B6mg
+         PEvsmYir5c69f8MuIH4EaAMMQr+NtpDFhnrThFz5O2K8BR6/LXRixw39lp3Z7KQyTlmi
+         DuN7qk7JOEwTvKlcPqoBKFaXzbEFZ9GbgqorSFQuC9nzYXsTaZwKrMd2eXCvjKzwJDZe
+         S77PDOML3fX8qjBqXhIcVj09Fkl3t/IZyn91N7yMe5iTdMfIMIbz8GNVXpOvSq+CalVA
+         /3+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=GDy8bJ/Gv2qqj+xAOHoFWy6kzv9BYh/XQshZdn4QF+s=;
-        b=ACXDFOH3A3132lsDHJ2f9rBHXrUw8D4ayPJkFTqWBxS4GA0UmoVRnazW8e1a0FRBgs
-         +7EEoXPQYRuI3fltFSZQY9zkf6ufc6ANNVCXSdCSQ38A/FZrZ+A4OPrZL+aWYvVcVaSM
-         DVWeUG0cLZMNbUxGEKERcqNw0KaEHYOlvSyjNa/uq+nfwJV9iftXaP0fQxb/fwMyI6yt
-         9StcT5tWZ8mpVMkMv7U3/ETC21H0m+4j5+NCeCuPf/MxSP379+M2OV6p7AQAGXJrUtaG
-         2/ub4Ja+qgRAN2xphIAdycOb8RbGVshuhTvRgekZq/oun6wXsSHGlCVq7xLOXMax3W/7
-         0isQ==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=kXa9R5xB7y2gNG/9s3BDnYDPFcXLhmiSz7dWIOzeb/w=;
+        b=yHMc2BYi4UkX4R1SLGJ1XiD/F6Y2bga0OJtOQoW/BxRCtHS1vn18FHfCmlbIwcuhsI
+         wRQ8EJIv8d4ZD+tJDOV9b8APTaBCboWZ4SqJg9aTWNDvaB6GSiDq77OdvlufqQtLrSqr
+         /IBwZdcvbcLh9MtBT3cPq6Hygtitn4wJMS/xV20h1gGbbKWD2g/JDyZlcWSWfRHIlZBP
+         V+/iW1QPvTK93OSnoDxkvHrV9KF9MSiEd0hwvJeOC7G44iyGTm52rMjCsjAsCNsz+u1K
+         VGR7JdFZxsRnjQ9l7EAonP8nZov0+Itv8XH7GeZXHTK5+yoOacdZzIZZCVYeS+cOO3Yh
+         5CSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IU016H8G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=fhXHp+Wj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTP id i5-20020ac813c5000000b003aebd444ccasi8084389qtj.627.2023.01.13.09.45.00
-        for <alex.bennee@linaro.org>;
-        Fri, 13 Jan 2023 09:45:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        by mx.google.com with ESMTPS id 5-20020ad45b85000000b00531cb2c4c09si512372qvp.300.2023.01.13.11.21.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 13 Jan 2023 11:21:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IU016H8G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=fhXHp+Wj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pGO0H-00063L-C2; Fri, 13 Jan 2023 12:38:09 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pGPbM-0006an-VZ; Fri, 13 Jan 2023 14:20:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pGO01-0005cx-IV; Fri, 13 Jan 2023 12:37:59 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pGPbK-0006ZH-ST
+ for qemu-devel@nongnu.org; Fri, 13 Jan 2023 14:20:30 -0500
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pGNzz-0006FE-PJ; Fri, 13 Jan 2023 12:37:53 -0500
-Received: by mail-ej1-x633.google.com with SMTP id u9so53984034ejo.0;
- Fri, 13 Jan 2023 09:37:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=GDy8bJ/Gv2qqj+xAOHoFWy6kzv9BYh/XQshZdn4QF+s=;
- b=IU016H8Gb6vz4jht0eC/NwvtnV91l/Wi+xAOLwFOlmPXvTnxyNzWKfwG4zoOgib3k8
- QfcwAbybjyduKtZl1k03JII5cLpVIGCIr/ohj2Tp3XqW5hXixuHAz3QAtqBHt4ungRVP
- BhrbGlnZdGnp4jv+TGo/FLmJ1MtrwbZiO7TuEcal09/fLCmUcaD0vcm37zaAcW1yksu2
- WT07wvFsp9RM1x+Gerzhojb5QIWJZIxnwWf1XXkifFRkFQdFjpWVz4SYB+/GsEb4SQcB
- KT4xLXsxJv56EXVrnAX6WDqSeal++gVfl07JUfTZYEW8sgK/W+K98wUR97zO+HMXw7a8
- IyAQ==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pGPbI-0006ZP-8W
+ for qemu-devel@nongnu.org; Fri, 13 Jan 2023 14:20:30 -0500
+Received: by mail-pl1-x62a.google.com with SMTP id g23so8801458plq.12
+ for <qemu-devel@nongnu.org>; Fri, 13 Jan 2023 11:20:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=kXa9R5xB7y2gNG/9s3BDnYDPFcXLhmiSz7dWIOzeb/w=;
+ b=fhXHp+Wjg5X7om/gU4Lljdb7HPZn3iBMN5TvmdGo7HFTsQ50frYpmxl9iBZKtW93rN
+ PLMF1lvn1QJOJ8E3UEuZRR/IWjOjB6yYUVzriGTh2duABX3MoCu4C33vF3vY+ndkVJiJ
+ JaP024nTBTueEzUiWU2q6rQQfBV1sUGDWnur+6d8KlMaWwzi7DVrYJEf6Y0pqKATUBlH
+ ZNIORuQmZbGELCujK/9Zkl5gVpFznUuN1IIh/1bN/kUPv7IIO6wn1P0utDe6wnkrIkkA
+ N6H9NvK41K8cOZ4ZIxjkF/cdTy6od2cx46TLRZfMuq0yqRb6inT4hgpJ9YrMX/ynGHHn
+ lxPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=GDy8bJ/Gv2qqj+xAOHoFWy6kzv9BYh/XQshZdn4QF+s=;
- b=cSB/5SSXlZwEG5MjZdWUyqaUeowfeYH8IhDHaSmc4bzPuNd3wT3GWyMWdo0AbRESms
- MCzc+qHAH5kpLPD86vNsEhfkM0euvCG1HRCyUa3KDWlgiEvI5L2gqYs3G82EgvANKt2d
- fvUo+AGJFXHvuq0bNGTQYO67Vg4NnAzZUK6gqkYm/uhn2HtxuaV4ybdlinDYcDxv9yoA
- RTmvBYakIX8UEzheO0j+dGSnbm9Sw47pCV/ht7W4ryc7rr47rs08jaGf7OoZARCqPdun
- nUvFoiuH3vh/gxk8WnYfxHp1kCMUYG3xbm0YyJoSFItGMV76w1JSfxrQnRRnuok8JNms
- C0Yw==
-X-Gm-Message-State: AFqh2kpMg97N1JX03kZ/lvdvBfYc5wpVd/KifneKdT7pfwxkdvn8iLFc
- Hdd3FiIjbhpMRK41fLYcNQU=
-X-Received: by 2002:a17:907:7b88:b0:84d:465f:d2fe with SMTP id
- ne8-20020a1709077b8800b0084d465fd2femr18102339ejc.41.1673631468883; 
- Fri, 13 Jan 2023 09:37:48 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-089-012-135-037.89.12.pool.telefonica.de.
- [89.12.135.37]) by smtp.gmail.com with ESMTPSA id
- u1-20020a1709061da100b0086b7ffb3b92sm509900ejh.205.2023.01.13.09.37.48
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=kXa9R5xB7y2gNG/9s3BDnYDPFcXLhmiSz7dWIOzeb/w=;
+ b=QJK6BzebzwWAbQkyLYNdS8UxAt/pgR13fFXQB+XC849BdNdinfW5OQzdnw2i6GcuL0
+ 6cO6wKN+xnjGKkU4mchD+XzARwRelnb/XrmVRdNos6F+DmTfYFdiOSYXwZn7hsRDohgY
+ x65+Euz4uInwL+461FFmKfBRrZug+WVy25V6zNSdFTNtPD61o1fUL+ZNbGgyxz6AvdJP
+ SoqLFac70sxWNZv15kOO+T5jZtYF7VaplTT633iwC8Z411lj+nsms0dz/3IabBFdrUCs
+ jA95R8fvW26I+SIo/0QY/KFw+tsjWulPhBJg2u4gA/2vEJPP3bAs4WnQRN5fIK8homdm
+ YWRQ==
+X-Gm-Message-State: AFqh2kqlN+i/ZVLYj3Kyd29pkNUstOW9cWlaeFYAqCVTIkpxwCFFd6iN
+ yn7O1A6zwvsLPMtdgSnGDiaCLw==
+X-Received: by 2002:a05:6a20:d819:b0:b2:3b40:32b1 with SMTP id
+ iv25-20020a056a20d81900b000b23b4032b1mr92074700pzb.57.1673637624926; 
+ Fri, 13 Jan 2023 11:20:24 -0800 (PST)
+Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com.
+ [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
+ e17-20020aa798d1000000b0058ba98f16a3sm3281267pfm.171.2023.01.13.11.20.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Jan 2023 09:37:48 -0800 (PST)
-Date: Fri, 13 Jan 2023 17:37:39 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: John G Johnson <john.g.johnson@oracle.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, Ani Sinha <ani@anisinha.ca>,
- Eduardo Habkost <eduardo@habkost.net>, Gerd Hoffmann <kraxel@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v6_04/33=5D_hw/pci/pci=3A_Factor_o?=
- =?US-ASCII?Q?ut_pci=5Fbus=5Fmap=5Firqs=28=29_from_pci=5Fbus=5Firqs=28=29?=
-In-Reply-To: <0b7cf41c-6fca-f8d9-e8c2-0a1cfea2c51e@linaro.org>
-References: <20230109172347.1830-1-shentey@gmail.com>
- <20230109172347.1830-5-shentey@gmail.com>
- <0b7cf41c-6fca-f8d9-e8c2-0a1cfea2c51e@linaro.org>
-Message-ID: <4D077DB6-9595-4487-ACCE-84CFB1D73AC1@gmail.com>
+ Fri, 13 Jan 2023 11:20:24 -0800 (PST)
+Message-ID: <21a11ed5-839b-d466-86bf-571fb473d56f@linaro.org>
+Date: Fri, 13 Jan 2023 09:20:21 -1000
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 0/7] Trivial: Mark some more files as target-independant
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+References: <20230112134928.1026006-1-thuth@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230112134928.1026006-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n+pOzf80VDrT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VtiQSVddcj0C
 
+On 1/12/23 05:49, Thomas Huth wrote:
+> Philippe Mathieu-Daudé (4):
+>    hw/display: Move omap_lcdc.c out of target-specific source set
+>    hw/intc: Move some files out of the target-specific source set
+>    hw/tpm: Move tpm_ppi.c out of target-specific source set
+>    hw/arm: Move various units to softmmu_ss[]
+> 
+> Thomas Huth (3):
+>    hw/cpu: Mark arm11 and realview mpcore as target-independent code
+>    hw/intc: Mark more interrupt-controller files as target independent
+>    hw/usb: Mark the XLNX_VERSAL-related files as target-independent
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Am 13=2E Januar 2023 10:13:29 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <p=
-hilmd@linaro=2Eorg>:
->On 9/1/23 18:23, Bernhard Beschow wrote:
->> pci_bus_irqs() coupled together the assignment of pci_set_irq_fn and
->> pci_map_irq_fn to a PCI bus=2E This coupling gets in the way when the
->> pci_map_irq_fn is board-specific while the pci_set_irq_fn is device-
->> specific=2E
->>=20
->> For example, both of QEMU's PIIX south bridge models have different
->> pci_map_irq_fn implementations which are board-specific rather than
->> device-specific=2E These implementations should therefore reside in boa=
-rd
->> code=2E The pci_set_irq_fn's, however, should stay in the device models
->> because they access memory internal to the model=2E
->>=20
->> Factoring out pci_bus_map_irqs() from pci_bus_irqs() allows the
->> assignments to be decoupled, resolving the problem described above=2E
->>=20
->> Note also how pci_vpb_realize() which gets touched in this commit
->> assigns different pci_map_irq_fn's depending on the board=2E
->>=20
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> Reviewed-by: Michael S=2E Tsirkin <mst@redhat=2Ecom>
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
->> ---
->>   include/hw/pci/pci=2Eh    |  3 ++-
->>   hw/i386/pc_q35=2Ec        |  4 ++--
->>   hw/isa/piix3=2Ec          |  8 ++++----
->>   hw/isa/piix4=2Ec          |  3 ++-
->>   hw/pci-host/raven=2Ec     |  3 ++-
->>   hw/pci-host/versatile=2Ec |  3 ++-
->>   hw/pci/pci=2Ec            | 12 +++++++++---
->>   hw/remote/machine=2Ec     |  3 ++-
->>   8 files changed, 25 insertions(+), 14 deletions(-)
->>=20
->> diff --git a/include/hw/pci/pci=2Eh b/include/hw/pci/pci=2Eh
->> index 7048a373d1=2E=2E85ee458cd2 100644
->> --- a/include/hw/pci/pci=2Eh
->> +++ b/include/hw/pci/pci=2Eh
->> @@ -282,8 +282,9 @@ PCIBus *pci_root_bus_new(DeviceState *parent, const=
- char *name,
->>                            MemoryRegion *address_space_io,
->>                            uint8_t devfn_min, const char *typename);
->>   void pci_root_bus_cleanup(PCIBus *bus);
->> -void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq, pci_map_irq_fn =
-map_irq,
->> +void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq,
->>                     void *irq_opaque, int nirq);
->> +void pci_bus_map_irqs(PCIBus *bus, pci_map_irq_fn map_irq);
->
->I'm squashing:
->
->-- >8 --
->diff --git a/hw/remote/vfio-user-obj=2Ec b/hw/remote/vfio-user-obj=2Ec
->index fe1fdfb5f7=2E=2E46171f22f7 100644
->--- a/hw/remote/vfio-user-obj=2Ec
->+++ b/hw/remote/vfio-user-obj=2Ec
->@@ -667,4 +667,4 @@ void vfu_object_set_bus_irq(PCIBus *pci_bus)
->
->-    pci_bus_irqs(pci_bus, vfu_object_set_irq, vfu_object_map_irq, pci_bu=
-s,
->-                 max_bdf);
->+    pci_bus_irqs(pci_bus, vfu_object_set_irq, , pci_bus, max_bdf);
->+    pci_bus_map_irqs(pci_bus, vfu_object_map_irq);
-> }
->---
->
->to fix:
->
->=2E=2E/hw/remote/vfio-user-obj=2Ec: In function =E2=80=98vfu_object_set_b=
-us_irq=E2=80=99:
->=2E=2E/hw/remote/vfio-user-obj=2Ec:668:67: error: passing argument 4 of =
-=E2=80=98pci_bus_irqs=E2=80=99 makes integer from pointer without a cast [-=
-Werror=3Dint-conversion]
->     pci_bus_irqs(pci_bus, vfu_object_set_irq, vfu_object_map_irq, pci_bu=
-s,
->                                                                   ^~~~~~=
-~
->In file included from include/hw/pci/pci_device=2Eh:4,
->                 from include/hw/remote/iohub=2Eh:14,
->                 from include/hw/remote/machine=2Eh:18,
->                 from =2E=2E/hw/remote/vfio-user-obj=2Ec:43:
->include/hw/pci/pci=2Eh:286:41: note: expected =E2=80=98int=E2=80=99 but a=
-rgument is of type =E2=80=98PCIBus *=E2=80=99 {aka =E2=80=98struct PCIBus *=
-=E2=80=99}
->                   void *irq_opaque, int nirq);
->                                     ~~~~^~~~
->=2E=2E/hw/remote/vfio-user-obj=2Ec:668:5: error: too many arguments to fu=
-nction =E2=80=98pci_bus_irqs=E2=80=99
->     pci_bus_irqs(pci_bus, vfu_object_set_irq, vfu_object_map_irq, pci_bu=
-s,
->     ^~~~~~~~~~~~
->In file included from include/hw/pci/pci_device=2Eh:4,
->                 from include/hw/remote/iohub=2Eh:14,
->                 from include/hw/remote/machine=2Eh:18,
->                 from =2E=2E/hw/remote/vfio-user-obj=2Ec:43:
->include/hw/pci/pci=2Eh:285:6: note: declared here
-> void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq,
->      ^~~~~~~~~~~~
->
-
-Thanks!
-
-I've missed enabling vfio-user-server for my builds=2E Fixed now=2E
-
-Best regards,
-Bernhard
+r~

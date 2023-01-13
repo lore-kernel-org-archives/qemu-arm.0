@@ -1,88 +1,91 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp643430ejc;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp643432ejc;
         Fri, 13 Jan 2023 12:02:54 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsyKYOCTISKHNfgCueV79pynZKTXqtcJOHrD23v8zzwUReqmyYeVKQuk00q8tLDi7ngfjeK
-X-Received: by 2002:a05:7500:5e9b:b0:eb:36ab:5206 with SMTP id fk27-20020a0575005e9b00b000eb36ab5206mr4510244gab.68.1673640174128;
+X-Google-Smtp-Source: AMrXdXuBYmLAHjoI4egwu0MZfjNeae09hjYq5pozw4juGwjNNl8/ccxPNBQLxaIk1Kv8SB3w2vU2
+X-Received: by 2002:a05:6871:4e93:b0:144:c5e3:643a with SMTP id uk19-20020a0568714e9300b00144c5e3643amr5617155oab.4.1673640174300;
         Fri, 13 Jan 2023 12:02:54 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1673640174; cv=none;
         d=google.com; s=arc-20160816;
-        b=pdKpcy96NXHndqxY7ahc5TyEYtsSNvlPJV5ITwW4SaONu7FwaFRhlv/s9rS8wZMRDO
-         oU1hqmM0N22sFXj3JOimuOSkJPsSTXZBdqd8imY+Xvb6+MojwGYUIUP5xZvhT5IJgiNT
-         BoqmCgFL6sul615Yh/HFb+HDCbzsLv0blVo5gZGZwJKgUDrSHg9GJwNCQYkCWwH8USBw
-         NCuy2/5aNtN8OhHNEf9Z1NwrYmEnKWqDGz1gSH+0M1Dwz2ozLQvFr3lNrnkwMnBCDq8n
-         DpMslUg/HR55VCK0CxOOFZLL1Msh9PUHSVE0gVr6b6nx3dUDx+ZaCXPM7GhIlKtMAsjD
-         Egsw==
+        b=q0SE8w0S2ma4SZrJUWBHgJZE457XNas8Dq6l8/YbIHBgSTJJlQO4snTYy2FyGeb/92
+         ZgK75gzLtKGG11nrzTuE5Nalm/iqWPfuENGchexkgui7gQiawUA8mUMAV5tmGKbp9Xtm
+         WpBrv/iaPjwIiATEq3QxqZEKP6hHokDSSEak513pmfhfQkZoipQIsivZVEUCgd7FcK9Q
+         +Hh0LOixm0+AZOgv6yC8tshsTpYgUYgt4knaiHjllUqZLw03kNkSIs2SWB487UYD3rnJ
+         q/pNra79kjyamd/h0ywYRxeFjMD5nNNAotUAItSCgm4i+WuE1TsBMAOahaZkqDHMCRm9
+         R38w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=4h32Jp869ZqboavElIPakrsSsrqP8c1Xy1WEU51P8z8=;
-        b=wqFR1D4UlZ+JWg6S7c2vI/fhN/5CYHfJ/ksAbkWtZ6OxsglbIp9aJWuk1aWfd+LfZI
-         +/EUHeS3Q+LF1ya4xKlp3OCIotDZRSTQQZSPfOjxi66OIYTIHWG+ilE0becXVtyGFjQL
-         +4BWjJYgSZvhD54Dxq5VFa/8GbykmBJARYIlLmGVLVHXIHI87tNmScSMDDCnkg3wxs/G
-         vqttoPaNLiWQ7GbeEXMbZo6BrPa7k0rQt0FRI02rrGvC1aybmdatvkfozfglmFujnbwP
-         1x7nuMs6PNXwiTMZFx3Icpdg8jOUmgu17f8qaIgmwCzkzhCxSkfGDs4AkiS85AG48JHE
-         J3+w==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=+3xrrNRp0/omZTUi+2E7NdYj0ZRdClls5k9S0IjFHIM=;
+        b=uOcVTdQoDLoVAnq3ympW+zzO50wVJsbNrwRo6PvnHnnxmdKv1qQwKfIxeNIvxD4QDf
+         K4Q2/LUWXuHDO8bwp2vADu3nAcua99krlUJRa4sP361C1ScHt2mz/p6Tcmem8KX+R6+V
+         9MKA4ZvcCZvXUOYAEYujINOgfO0pmu8G1SetikfdB8+VBBkD0HQhvTAL7vjt4JDwVyUW
+         gPUUvroll5HlkqxrUpjqGCzlgwtsScfRJt/PtgomsQ4bTjK8sIo0jyeRN/pUyeIIaGOw
+         iyvB0ZuvQe/e/matmIEPIpp2prNjhayz9aPK2tBNNGkozzjSomWMU8QXSg5Q8uakWd3O
+         3qTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vy1NDW2b;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dL7snLgq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v12-20020ae9e30c000000b006fc8359140esi12156075qkf.352.2023.01.13.12.02.53
+        by mx.google.com with ESMTPS id az31-20020a05620a171f00b006fd55610b30si13262941qkb.456.2023.01.13.12.02.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 13 Jan 2023 12:02:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vy1NDW2b;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dL7snLgq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pGQFG-0003Vl-Qj; Fri, 13 Jan 2023 15:01:46 -0500
+	id 1pGQFO-0003Xk-V3; Fri, 13 Jan 2023 15:01:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGQFF-0003Us-0E
- for qemu-devel@nongnu.org; Fri, 13 Jan 2023 15:01:45 -0500
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGQFM-0003Xb-9g
+ for qemu-devel@nongnu.org; Fri, 13 Jan 2023 15:01:53 -0500
 Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGQFD-0006kb-7T
- for qemu-devel@nongnu.org; Fri, 13 Jan 2023 15:01:44 -0500
-Received: by mail-wm1-x334.google.com with SMTP id m3so15973381wmq.0
- for <qemu-devel@nongnu.org>; Fri, 13 Jan 2023 12:01:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGQFI-0006lo-Fh
+ for qemu-devel@nongnu.org; Fri, 13 Jan 2023 15:01:50 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ bi26-20020a05600c3d9a00b003d3404a89faso1250662wmb.1
+ for <qemu-devel@nongnu.org>; Fri, 13 Jan 2023 12:01:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=4h32Jp869ZqboavElIPakrsSsrqP8c1Xy1WEU51P8z8=;
- b=vy1NDW2b8KQqG+096/fDeOCSOB9pljhDQn3VUQrjqLJ3+j/0ofIBo/qhQjyF4quVTY
- 6G7ctubWc92GMA+DCs+xLCJplrYNAbEqZKZMtOaQHH+oXnCrzeVMkgX0z+L1ObdQSUPT
- kQZsj8/5/MQ8a6Tt+MQGjpyROLvTxLt6qfISVEDaKPRygmmQn12f2srVRf0EO2XWgy55
- 2L4L4lZB/tZigslDXTfNsTo9d4LraTrpS+EDgo8nva8oVgFmDqll820zzCPMTfvnlbb+
- HUj0i3pHW74alG1M6uchPP4cSCFoLCUTlWwuoD3vx726IBMCPJfEYTFWVrc791Glfscl
- jb1Q==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=+3xrrNRp0/omZTUi+2E7NdYj0ZRdClls5k9S0IjFHIM=;
+ b=dL7snLgqGB1px0xv/nW0v144lD88hT2heYtyMZH3cF8I+rRna0VGx4fCu4RPGw7rMN
+ f7mJ9PeX4f/HsSVT+0Rcm2ePV7Vg879V8cmdZH984fMf6tz8GrisO8YUUgc4h/vkP78g
+ QKEBdHI0dm6zFC9lAkWbRi64YSndf94UzF5XXCiFiqTPkFfeBg7qnOOYi2eU516l37nF
+ RM9e9BVt/6MZ6uLIic9aNkDn0V8Uus9krZhv/g9fsybV7IVkxbLf4ZohHqZ6Y6G6vbHk
+ Jh1EYGNgP60d1qzRAEJBapruB1KUh0NAf7mjnYC4GkPURT6DCxHVCwbZCAjA17DS+ZTi
+ rCdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=4h32Jp869ZqboavElIPakrsSsrqP8c1Xy1WEU51P8z8=;
- b=1fHAWJRLrhGjfonPFq42jHaUhcY0euRqapvTaSehnpU1VnL3AsEKOFhFXaMGoo2rQK
- zWc3Y+83CiHl5UoxLLbfjSRUBcAxVKJlM4W4dU78vdKPWQpxUDP8SKJQAzKP8coKmAhn
- 20VlAa3l2z7re37Q0hxmf5CGU6LuhiKSfFQcRljnSDjk8i1y2um2gaz6GySfZIJtEACW
- IPTCE7januTqaucAigBFGnvCoqCJ2iAUBK7/4SfC57t/L1Y2v8RvrjD/+ohbbJKx0NNA
- Hh65RJYaXfORxb6KiD3TgL4l4C2GCvMnitT67QUT3WUPhLcr/6eXqRrPNaCeCCkxyYv5
- gkuA==
-X-Gm-Message-State: AFqh2koVZrOnU/vmSTdo0sF2f9SckZ1TkpNncZXnk9VAYxA2nWkZ9ESV
- vh1KGOkimxUn0QWU6IDUFN+Obd7/sh3/MFaC
-X-Received: by 2002:a05:600c:4f4f:b0:3d8:e0d3:ee24 with SMTP id
- m15-20020a05600c4f4f00b003d8e0d3ee24mr60245630wmq.37.1673640101616; 
- Fri, 13 Jan 2023 12:01:41 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=+3xrrNRp0/omZTUi+2E7NdYj0ZRdClls5k9S0IjFHIM=;
+ b=g0GwIgJPpfwXKwV5XXx/DAf3CWb3aBjHDC+/5O08s8HTy6K9ECsTkmc3DIu+lUuINp
+ i/UBZeJllADHXjU3QMgdmXlplV14RDmz7oshQG4trf4JAEQ4wsgS9cW4VVp95CEeNzUf
+ UYoVh735UPlB5HMKdun+jmxI/777x5tEr9zKY538+ZloVeZnbB6+24WIEBBFpx7ReRSX
+ k7OIMKXi0PXxJypLklH4G7QR8unRdjOzdZ2DSYTAYIeN/01xG9qYzK+dfAneNtDkL+B1
+ DUwfkTHXQwmSXtkMVYVMsuWZjBUY1s8FJA/fchDBQ9wHvkl+YpFJiYeX2pJUrPQX1iLX
+ /dZw==
+X-Gm-Message-State: AFqh2krMh9pl9MNhXoeH0hZ9RQXPoKVFioWdsiYQEajmr8iXJDPgdJoj
+ V8pBK7FfXMZgwPThHtru2PpLIU2PABodQlQD
+X-Received: by 2002:a1c:4c12:0:b0:3c6:e63e:89a6 with SMTP id
+ z18-20020a1c4c12000000b003c6e63e89a6mr59510328wmf.2.1673640107016; 
+ Fri, 13 Jan 2023 12:01:47 -0800 (PST)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- f15-20020a7bcd0f000000b003d9a71ee54dsm24909242wmj.36.2023.01.13.12.01.40
+ bi6-20020a05600c3d8600b003d9df9e59c4sm23162459wmb.37.2023.01.13.12.01.45
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 13 Jan 2023 12:01:41 -0800 (PST)
+ Fri, 13 Jan 2023 12:01:46 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-arm@nongnu.org,
@@ -90,12 +93,14 @@ Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-arm@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 0/4] hw: QOM housekeeping around IOTHREAD / IRQ types
-Date: Fri, 13 Jan 2023 21:01:34 +0100
-Message-Id: <20230113200138.52869-1-philmd@linaro.org>
+Subject: [PATCH 1/4] iothread: Remove unused IOThreadClass / IOTHREAD_CLASS
+Date: Fri, 13 Jan 2023 21:01:35 +0100
+Message-Id: <20230113200138.52869-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230113200138.52869-1-philmd@linaro.org>
+References: <20230113200138.52869-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::334;
  envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
@@ -120,34 +125,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sMwkK/NtUYbD
+X-TUID: 8LTuD5m9Cck1
 
-- remove unused code
-- use recent QOM macros
-- use CamelCase typedef
+Since commit be8d853766 ("iothread: add I/O thread object") we
+never used IOThreadClass / IOTHREAD_CLASS() / IOTHREAD_GET_CLASS(),
+remove these definitions.
 
-Philippe Mathieu-Daudé (4):
-  iothread: Remove unused IOThreadClass / IOTHREAD_CLASS
-  hw/irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
-  hw/or-irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
-  hw: Replace qemu_or_irq typedef by OrIRQState
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ iothread.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
- hw/arm/exynos4210.c                  |  4 ++--
- hw/arm/mps2-tz.c                     |  2 +-
- hw/core/irq.c                        |  9 ++++-----
- hw/core/or-irq.c                     | 18 +++++++++---------
- hw/pci-host/raven.c                  |  2 +-
- include/hw/arm/armsse.h              |  6 +++---
- include/hw/arm/bcm2835_peripherals.h |  2 +-
- include/hw/arm/exynos4210.h          |  4 ++--
- include/hw/arm/stm32f205_soc.h       |  2 +-
- include/hw/arm/stm32f405_soc.h       |  2 +-
- include/hw/arm/xlnx-versal.h         |  6 +++---
- include/hw/arm/xlnx-zynqmp.h         |  2 +-
- include/hw/or-irq.h                  |  5 +----
- iothread.c                           |  4 ----
- 14 files changed, 30 insertions(+), 38 deletions(-)
-
+diff --git a/iothread.c b/iothread.c
+index 3862a64471..b41c305bd9 100644
+--- a/iothread.c
++++ b/iothread.c
+@@ -25,10 +25,6 @@
+ #include "qemu/rcu.h"
+ #include "qemu/main-loop.h"
+ 
+-typedef ObjectClass IOThreadClass;
+-
+-DECLARE_CLASS_CHECKERS(IOThreadClass, IOTHREAD,
+-                       TYPE_IOTHREAD)
+ 
+ #ifdef CONFIG_POSIX
+ /* Benchmark results from 2016 on NVMe SSD drives show max polling times around
 -- 
 2.38.1
 

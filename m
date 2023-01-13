@@ -1,230 +1,187 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp268685ejc;
-        Fri, 13 Jan 2023 02:14:40 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv6qxqU5hU5CSACC87ACECk3p0vDVc9iJYbgJKZNcIqFUYvOrK6xpp4t0S7zvxyD0i/+whi
-X-Received: by 2002:a0c:b354:0:b0:4c7:493a:fb6f with SMTP id a20-20020a0cb354000000b004c7493afb6fmr108666478qvf.5.1673604879849;
-        Fri, 13 Jan 2023 02:14:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673604879; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp361804ejc;
+        Fri, 13 Jan 2023 04:49:47 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXta7Umge0xy5M4SCRsV8Epzle/5kiRl2fEbjU0613rrrmrvfQ2ZjQZAKj+UwTf2yVg8s8zG
+X-Received: by 2002:ac8:7513:0:b0:3a9:8b17:d090 with SMTP id u19-20020ac87513000000b003a98b17d090mr114019445qtq.36.1673614187634;
+        Fri, 13 Jan 2023 04:49:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673614187; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pu90faxH15v/G3SV+f1ZnwMmGT7Re1kq/KtyGXzMN5uyHZgVtBWPC2AvYCLEnqNMMc
-         aLsySIwhKCM6RGAVrKXRLkL0ZivMXzU7b/acS+BZeS3y8jT266tm0LU1lGziy+WOipkt
-         bBI62vWfBGWfCvS3Fn6YoNwAn9c0NAMllWCIV8t6kkLo3fra9Exs3mjOpLUVQgU7y7xJ
-         w2i6zGcEOY6HqJZlbIh6Z6qzp8gpfv1/vusODXOfgL4vZbpCj1/s9gFdVZfWtmgySWAP
-         tBeDPQMJsO08vuFVMv9j6wJGDuryQUnRmKR0CYDEkJlMUP2a8tGBHc8mn4QLaySnTrW0
-         HNFg==
+        b=x7plvyPyYoi60ghPBdNe8g9eWpBjwVi7wn7uG0hhbAuAA21h3Q28aoe98qh5ifbcln
+         TSGyNCsUscBZK2NJYAAy6IZN9WLpUAOOyhfGfPGZreO5O4TW3VlDUNYk0NVDjGjjmzTS
+         OVVBcBMOXcplgBfFPUVB5STHH7bGcLju7T0zrqKwuxQJbOcG8+/9MS9Elj3xj5YCDUb+
+         E5Kir4Stu580XPW843vPJERu+1ggtPwSXFaYPtTb1TF4S88WzcA3vMpxdztfuIIhFBAY
+         h6s2GNnZPUrEJOjqoftAYwZvmgC18VIVI+oGzEw+6EDGUv64G/Y9xzZFn2tCm7kL8Ygq
+         wOAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Cd6mY6sQ3JKAIiq4jReduNopszqm/a2MRDdyXZj4bvU=;
-        b=WbZAsB54KdgIUIyZOQeqzYwLqnHuyXJ1qGZGzVdAjnB0xI3rL6NOyOaRtxPqE7IU6s
-         ex8kcTRb0a2dprSOt7wQKwv8YEgYPqTqrbOAbGfJhNHKnycrXdwNNDXZIbX2cNrnRw/6
-         BQaJXk8Cj9ssnrc9Fr7S0f8+D/Wv/SKIfMO0X6DPEGyYHVrNI+z/0cWIUsRAFzoLR2nh
-         Cd9lwiTelr682mo+IOGH5x1pbjW5CXjOTanawvTKNzUnwxAGqYiCgHKGeNyt8WQDj0Qx
-         IzdodUKtCjQHMItLCNsKlk2S79S8R0QRMGj0f7FriKxLx0DsBLScSDPZZuQTm4do/iSx
-         f9Yw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=jgKk+Bp4VDQHumrIw+UiMcSHawBjFRqDdJL19jey4fI=;
+        b=HT+2dIvZRj5hR5bM3OC2teyOzzdLG+3Bd7dqT7GNS15STyWX7Ut9qfeGqvyF22+h0h
+         QTbLA1q2vUVo42ul0xg9ELP37WAKfBoqDlFWTYFIpAdiccHkKDDbZOxB3qdYzWy1bByg
+         0hsfmEpgahPo9tAjTWohkF07eHjMRP/Rmiu7FgwDhRItk7hqXsw7D4KJdvlc4Fejk94y
+         DaSye/RqIhmYrsnOzZT0ntHjXV3Ytd8i8S0LxOiTOKBmx5rDfS1Jzs335MK2BDOC/PJJ
+         UkPbQgcdCqMo/aVy5F7QzSyyUhAAXPIY12Ags4mxAmmReaXywxnphrDQxTs1JshlC/1k
+         35qA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BYMeyXk4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="g/k/rbus";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o20-20020a05620a2a1400b006fee9a8f319si12842568qkp.649.2023.01.13.02.14.39
+        by mx.google.com with ESMTPS id j13-20020a05620a410d00b006edee0f497bsi13383734qko.30.2023.01.13.04.49.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Jan 2023 02:14:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Jan 2023 04:49:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BYMeyXk4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="g/k/rbus";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pGH4B-0006GV-CU; Fri, 13 Jan 2023 05:13:43 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pGJUq-0005a6-Pn; Fri, 13 Jan 2023 07:49:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGH48-0006F4-SF
- for qemu-arm@nongnu.org; Fri, 13 Jan 2023 05:13:41 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pGJUn-0005Zh-LQ
+ for qemu-devel@nongnu.org; Fri, 13 Jan 2023 07:49:22 -0500
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGH46-00042C-9e
- for qemu-arm@nongnu.org; Fri, 13 Jan 2023 05:13:40 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- j16-20020a05600c1c1000b003d9ef8c274bso12652628wms.0
- for <qemu-arm@nongnu.org>; Fri, 13 Jan 2023 02:13:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pGJUl-0000Ai-Pm
+ for qemu-devel@nongnu.org; Fri, 13 Jan 2023 07:49:21 -0500
+Received: by mail-pl1-x631.google.com with SMTP id c6so23350706pls.4
+ for <qemu-devel@nongnu.org>; Fri, 13 Jan 2023 04:49:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Cd6mY6sQ3JKAIiq4jReduNopszqm/a2MRDdyXZj4bvU=;
- b=BYMeyXk4OiZgz7mRSRNGEcPcPU42cQLTaAjiXH3fVGbn9cnUlu7XDqbOHO1GOzLiAS
- 7rm3M0P4yoUnal8tkeS89MhjoZq0SnQSiB99MNu2w3YAY0v1GpW1rloT1KlURwpLW+FK
- DOcFdNf0lG8LchnFRTV8ZAPiC9vJzWd2OLX65ydCgtqI8vp4FFs6vqp59Kw2/4JmtLhF
- PWTa1JGkAJk+4qkZkcVgoRK/gAV3upisBH483K9yeIN/0Hx2iGOW/vfwcTKwA2RBeK6/
- SQ4KZ9yvmtQtqg2wamEbi0TO/73DM7Qzt4Y83HvKozT+UPLVDwUg43Sbsl5PgJeYCFcA
- VffQ==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=jgKk+Bp4VDQHumrIw+UiMcSHawBjFRqDdJL19jey4fI=;
+ b=g/k/rbusRE4JXpvlBKu5tDms/YupK1oQWRCwyXtaxs+sf3SCWAI7z9ZZz6Cg7MwDEr
+ cNjk33OtKUn1DcrzM50+Xb+31DnZ8QwflmXhfgCTteNBbLwUtAYwesJefqEG/9fdBkCU
+ Mc8T2kivzqIBN52KfW+7fowmi3phJ77NtF5nsVK2sbQUX93qCxkZleURoFMz0enIKMzZ
+ cyVgLjASdAjrhgdG03OOvJv1i7VmU5n6CIidDnHDw7K9YGJcwnyqeDHOl5rfwpujBMJt
+ PXdDDwuJu7CTw0mAW+y+amdeBeiVXIpufs9sP3OiVpneyFPKkm5IyM+KeSsDXjw1GGzc
+ S/XA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Cd6mY6sQ3JKAIiq4jReduNopszqm/a2MRDdyXZj4bvU=;
- b=zB7yaBf2PyLg0oRtxpkRCqvbnMKqbkK3p35kFglWkyxYUhqfMXqRIpUBvFEnXbSMQm
- mvB4oWeqQpoaeKMdFEukGtpuS+yidrAToG9f1T06yKG3ekDTh3cVAIdC87XJgydxHSwg
- 61lFkOeYERM0dX3QUOqkBSwgnp9cbbdmZoykxQZ5bObZ6+bjp9hzpj+1qKaenS+xVceq
- 8+vmmW40nyDmpfljecDjhjvtYgvcPRSJAC6X6/W6eM3QQxPg2VAI6w//zvIaxhwIJWfS
- tYQRRBY1PtHqgUeTDumawAiMZLdLKSNmydvdQwe/USz3ip28ZdJHazj42Uym1tZC9SXc
- +Adw==
-X-Gm-Message-State: AFqh2kooMHXakeHHxcZeAiSjKQbc8BEwsNizshdKzwKL8rnlhzXEGQTl
- 5TfAPtbRp1ykQbiZgtcGdC6caQ==
-X-Received: by 2002:a05:600c:1d20:b0:3d2:2aaf:316 with SMTP id
- l32-20020a05600c1d2000b003d22aaf0316mr58102271wms.36.1673604816603; 
- Fri, 13 Jan 2023 02:13:36 -0800 (PST)
-Received: from [192.168.95.175] (13.red-88-28-24.dynamicip.rima-tde.net.
- [88.28.24.13]) by smtp.gmail.com with ESMTPSA id
- ay13-20020a05600c1e0d00b003d34faca949sm24416759wmb.39.2023.01.13.02.13.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Jan 2023 02:13:36 -0800 (PST)
-Message-ID: <0b7cf41c-6fca-f8d9-e8c2-0a1cfea2c51e@linaro.org>
-Date: Fri, 13 Jan 2023 11:13:29 +0100
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jgKk+Bp4VDQHumrIw+UiMcSHawBjFRqDdJL19jey4fI=;
+ b=1GieGjU2iyhlM7otQtQtIF4502k3wjDx9RCKkdmqhiXeZ/gEjcFvdWIm5Lmyp7/ypZ
+ FTxXGHCMaqAAbr7UGeLgyemgqDz4notrITMBombwMOVXVUCpwczoQk5eIjaoMhyO0GcV
+ L0rPDOVzfKCXXmabMHaC+5wpUYdN0qIuE2NBz9g4hzTEM7wDAUK8S/FLudALG4oYbthS
+ vwWjuEkhNQsPGAM6SDxzXwI/8FTm5xvqLen3n2QLWrWvuHPhV6j6DD2BBTGdWK7dfM7x
+ ZoVwdVrlvuZJH8mwRFoV7SsXJyczHJTPhOCtaKUhGrDCH9wpVorb//hb7uF8k3qnWSL0
+ C/4w==
+X-Gm-Message-State: AFqh2kqjVxdaT5DLUsvau7pIRz6vkPU7JfSDdhsRvISLV0LxZv9pO6cp
+ MHEd67j3TPRGYoL8Wn8qwWy8oo2U6l7oSgHWWRngzg==
+X-Received: by 2002:a17:902:e0c4:b0:194:45d0:3b2c with SMTP id
+ e4-20020a170902e0c400b0019445d03b2cmr965480pla.52.1673614158055; Fri, 13 Jan
+ 2023 04:49:18 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v6 04/33] hw/pci/pci: Factor out pci_bus_map_irqs() from
- pci_bus_irqs()
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: John G Johnson <john.g.johnson@oracle.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, Ani Sinha <ani@anisinha.ca>,
- Eduardo Habkost <eduardo@habkost.net>, Gerd Hoffmann <kraxel@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
-References: <20230109172347.1830-1-shentey@gmail.com>
- <20230109172347.1830-5-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230109172347.1830-5-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+References: <166990501232.22022.16582561244534011083-0@git.sr.ht>
+ <166990501232.22022.16582561244534011083-1@git.sr.ht>
+In-Reply-To: <166990501232.22022.16582561244534011083-1@git.sr.ht>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 13 Jan 2023 12:49:07 +0000
+Message-ID: <CAFEAcA83MFr0qq5o_CzHhvPzu75ayDcRSxDi2BAVzzt-gZFhbQ@mail.gmail.com>
+Subject: Re: [PATCH qemu.git v2 1/1] hw/arm/virt: make second UART available
+To: "~axelheider" <axelheider@gmx.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: v8uxT4vTOyaJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: j18YiGJOJWHV
 
-On 9/1/23 18:23, Bernhard Beschow wrote:
-> pci_bus_irqs() coupled together the assignment of pci_set_irq_fn and
-> pci_map_irq_fn to a PCI bus. This coupling gets in the way when the
-> pci_map_irq_fn is board-specific while the pci_set_irq_fn is device-
-> specific.
-> 
-> For example, both of QEMU's PIIX south bridge models have different
-> pci_map_irq_fn implementations which are board-specific rather than
-> device-specific. These implementations should therefore reside in board
-> code. The pci_set_irq_fn's, however, should stay in the device models
-> because they access memory internal to the model.
-> 
-> Factoring out pci_bus_map_irqs() from pci_bus_irqs() allows the
-> assignments to be decoupled, resolving the problem described above.
-> 
-> Note also how pci_vpb_realize() which gets touched in this commit
-> assigns different pci_map_irq_fn's depending on the board.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   include/hw/pci/pci.h    |  3 ++-
->   hw/i386/pc_q35.c        |  4 ++--
->   hw/isa/piix3.c          |  8 ++++----
->   hw/isa/piix4.c          |  3 ++-
->   hw/pci-host/raven.c     |  3 ++-
->   hw/pci-host/versatile.c |  3 ++-
->   hw/pci/pci.c            | 12 +++++++++---
->   hw/remote/machine.c     |  3 ++-
->   8 files changed, 25 insertions(+), 14 deletions(-)
-> 
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index 7048a373d1..85ee458cd2 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -282,8 +282,9 @@ PCIBus *pci_root_bus_new(DeviceState *parent, const char *name,
->                            MemoryRegion *address_space_io,
->                            uint8_t devfn_min, const char *typename);
->   void pci_root_bus_cleanup(PCIBus *bus);
-> -void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq, pci_map_irq_fn map_irq,
-> +void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq,
->                     void *irq_opaque, int nirq);
-> +void pci_bus_map_irqs(PCIBus *bus, pci_map_irq_fn map_irq);
+On Thu, 1 Dec 2022 at 14:30, ~axelheider <axelheider@git.sr.ht> wrote:
+>
+> From: Axel Heider <axel.heider@hensoldt.net>
+>
+> The first UART always always exists. If the security extensions are
+> enabled, the second UART also always exists. Otherwise, it only exists
+> if a backend is configured explicitly via '-serial <backend>', where
+> 'null' creates a dummy backend. This allows enabling the second UART
+> explicitly on demand and does not interfere with any existing setup
+> that just expect one (or two if security extensions are enabled)
+> UARTs.
+>
+> Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
 
-I'm squashing:
+Hi; just wanted to say that this is still on my to-review list.
+As a preliminary note:
 
--- >8 --
-diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
-index fe1fdfb5f7..46171f22f7 100644
---- a/hw/remote/vfio-user-obj.c
-+++ b/hw/remote/vfio-user-obj.c
-@@ -667,4 +667,4 @@ void vfu_object_set_bus_irq(PCIBus *pci_bus)
+> @@ -2222,11 +2250,12 @@ static void machvirt_init(MachineState *machine)
+>
+>      fdt_add_pmu_nodes(vms);
+>
+> -    create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
+> +    create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
+> +    create_uart(vms, VIRT_UART1, vms->secure ? secure_sysmem : sysmem,
+> +                serial_hd(1));
 
--    pci_bus_irqs(pci_bus, vfu_object_set_irq, vfu_object_map_irq, pci_bus,
--                 max_bdf);
-+    pci_bus_irqs(pci_bus, vfu_object_set_irq, , pci_bus, max_bdf);
-+    pci_bus_map_irqs(pci_bus, vfu_object_map_irq);
-  }
----
+Creating the UARTs in this order in the code results in
+them appearing in the DTB in reverse order. (I forget why;
+I think dtb nodes put on a list in one order and then
+put into the dtb proper in the other, or something.)
+The result is that if you add an extra '-serial foo'
+argument then Linux decides that UART0 is ttyAMA1 and
+UART1 is ttyAMA0, which is a bit counter-intuitive.
 
-to fix:
+This can be avoided by something like:
 
-../hw/remote/vfio-user-obj.c: In function ‘vfu_object_set_bus_irq’:
-../hw/remote/vfio-user-obj.c:668:67: error: passing argument 4 of 
-‘pci_bus_irqs’ makes integer from pointer without a cast 
-[-Werror=int-conversion]
-      pci_bus_irqs(pci_bus, vfu_object_set_irq, vfu_object_map_irq, pci_bus,
-                                                                    ^~~~~~~
-In file included from include/hw/pci/pci_device.h:4,
-                  from include/hw/remote/iohub.h:14,
-                  from include/hw/remote/machine.h:18,
-                  from ../hw/remote/vfio-user-obj.c:43:
-include/hw/pci/pci.h:286:41: note: expected ‘int’ but argument is of 
-type ‘PCIBus *’ {aka ‘struct PCIBus *’}
-                    void *irq_opaque, int nirq);
-                                      ~~~~^~~~
-../hw/remote/vfio-user-obj.c:668:5: error: too many arguments to 
-function ‘pci_bus_irqs’
-      pci_bus_irqs(pci_bus, vfu_object_set_irq, vfu_object_map_irq, pci_bus,
-      ^~~~~~~~~~~~
-In file included from include/hw/pci/pci_device.h:4,
-                  from include/hw/remote/iohub.h:14,
-                  from include/hw/remote/machine.h:18,
-                  from ../hw/remote/vfio-user-obj.c:43:
-include/hw/pci/pci.h:285:6: note: declared here
-  void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq,
-       ^~~~~~~~~~~~
+@@ -2289,9 +2289,20 @@ static void machvirt_init(MachineState *machine)
 
+     fdt_add_pmu_nodes(vms);
+
++    /*
++     * These end up in the DTB in reverse order of creation, so
++     * we must create UART0 last to ensure it appears as the
++     * first UART, ttyAMA0, for Linux.
++     * For back-compatibility with older QEMU versions, if UART1 is
++     * the secure UART and thus always created, we create it second.
++     */
++    if (!vms->secure) {
++        create_uart(vms, VIRT_UART1, sysmem, serial_hd(1));
++    }
+     create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
+-    create_uart(vms, VIRT_UART1, vms->secure ? secure_sysmem : sysmem,
+-                serial_hd(1));
++    if (vms->secure) {
++        create_uart(vms, VIRT_UART1, secure_sysmem, serial_hd(1));
++    }
+
+     if (vms->secure) {
+         create_secure_ram(vms, secure_sysmem, secure_tag_sysmem);
+
+I still need to:
+ * look at what UEFI does if presented with this DTB
+   (may involve filing a bug report to see if they will
+   change the enumeration order if it's still silly)
+ * check what happens when we boot Linux passing it the
+   h/w info via ACPI
+
+thanks
+-- PMM

@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp414534ejc;
-        Fri, 13 Jan 2023 06:07:09 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtDg7B+qxMUnT8Oo+Cxb+AfW4VDzXwpmE2ASJ6TBv4/TGYpv9o1dWB7lQ7eFvdQy0mpC3nY
-X-Received: by 2002:a5d:5b1d:0:b0:29a:c631:e761 with SMTP id bx29-20020a5d5b1d000000b0029ac631e761mr25749763wrb.43.1673618829646;
-        Fri, 13 Jan 2023 06:07:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673618829; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp414600ejc;
+        Fri, 13 Jan 2023 06:07:12 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsY6oFu0HCDDFYKAvJHdhH1dMrIN6pKO5wKuCNkZcAXZY+XisGBPnQ2/JHCJyeC5IvagOj/
+X-Received: by 2002:a1c:4b04:0:b0:3c6:f0b8:74e6 with SMTP id y4-20020a1c4b04000000b003c6f0b874e6mr59718181wma.4.1673618832698;
+        Fri, 13 Jan 2023 06:07:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673618832; cv=none;
         d=google.com; s=arc-20160816;
-        b=gZCenJmCQh9dxwZEx6CGjsN51N5283b4TPKAJ0iOQVB/MAJyu8+DkbMYiR1iDey3m2
-         +R8neuGq8jbHuFFMZ17m1j6HbR7XYC2T6bQxXqSb4t5Mqw/5FTKdappEGALEpIV6ZQiO
-         +AdVNk3JsKjO9Yoeelbv/6mfXgmVdUZ3nZSTEV/XvwRhmK7efSl5r+8agufddPxF4pwv
-         T/vEUNVhAK+eAeF+67yVX3AYGaZDzF6YvPkb8AOYpiojrjHph7D6rj3w1HTGb4ZTCT74
-         LdSMN8lDalNzdp5BpK7XxGq8mXU9D8I7X3I/YvyUpYLwZJBGcq+03nbs3RyQT2GKraTG
-         y/+g==
+        b=dRqjUYRcHycbB7BSOJe0TeSLpMebsf4NRdXSd153VGpXWEk+m3kH7BrpyALKzIX+hh
+         uRlPiLldjxqVtMVpf7cZLA5FhE38CkG8NEyn7AkDWil4lZLLb6TjpjdsCWW+Ytag9pmq
+         y9JBWC34BGHITFt3CgqaHWF/m0BHmsIv9cay5eSXH39FQItlvumQ7kfvrxHuoXaR5Gp5
+         mV+I0oow/ZcJTYCIx3zVn/hgHYEMAO4SaNgP/eNGiXijzL/tA5iwcBPoIZV0XKVofBIQ
+         3JTM19svgzbP40YQ6OBjLXzm1BYLhQc2+uOtPINkMEl5McOwRPEgEHoh1IQfZzXWFQVT
+         IhLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=PyF8sUoOTCrhIQWtWkBHJhnk7fgtE7ayPgnJhS9bdlI=;
-        b=QyXWAr0J3/vHPxN9iTZ8CqlvvgILkc+alh59dMXM7X1ct6qliKeG7/ufXdFlS2fhgw
-         AxBBaYOZAzcvXjRjoHffw+TcESeUSChu7pZEK9Sq3oyOcFzuCpDRylDarRAji4cTeleT
-         vGqpZhHHwGuX3G+h4IyDn4zO1WqsG5OfbeFGQUFKqkSgnWuaeS1ZeouQmWWKEyaDWhZP
-         i8z9iQvFtiG4kxHPSe/Q7ws4TVrRcgErUBCW4eeiAHOLoeZmCl2QRQ1TxPfbrPjoSawW
-         sKbgNdX+n2tbLIUfyJXwhwPF1rNnTgSFMoZpelJbP0pj3/Q8UgPoeBf+ctlIAFIlI2Fj
-         MDDA==
+        bh=bFCLtdp68XCkucr0GBNgmDryKCRj7k/2ikV3JWwMC5g=;
+        b=Entz2GovoE5fDviJqnTfWC9reATVw1Pd5I+lkGtdfGl8sZWNWw1KWZrm2CsLLCbdr+
+         sKvGm2j9bqM+y9WWeDIdF+bJQ2XBAsHBWOXZ8J0x2nV2NkL3TwDmdRDmTH4J+rLj95nE
+         PM2/RVYdPLS5Mc5buMzcXuuTV7P0UObv9iAWPtZI41B3ma0dKRUxT8fKWuqEpwuPoWdG
+         /V3phzzcC//YmDJG47qJqemZ5B97974YDmJE/WHJnOLC1bCRY9pkvu8CPSv9P2c96M8i
+         oM1ek94Gp2D6FYyYI2OuW0GrDO2xAQpo1bpaARzSDAkhNnQAPrtT5y+T2xp33wRF8A7O
+         NJOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=TmcQP655;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=oKIhacN1;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=xpHQOYeL;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id a5-20020a056000050500b00228c68047fesi15399961wrf.999.2023.01.13.06.07.09
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id l19-20020a05600c1d1300b003d9f91cbee4si10853427wms.199.2023.01.13.06.07.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jan 2023 06:07:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Fri, 13 Jan 2023 06:07:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=TmcQP655;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=oKIhacN1;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=xpHQOYeL;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 29AF160970;
-	Fri, 13 Jan 2023 14:07:09 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 349E04DE3E;
+	Fri, 13 Jan 2023 14:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673618829; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1673618832; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=PyF8sUoOTCrhIQWtWkBHJhnk7fgtE7ayPgnJhS9bdlI=;
-	b=TmcQP655JqKRvskga2VmWpFmTmwGlrv63hDsLcBqOAxQ3kJ6JH+1QDexKnTZh+uI/uRLj8
-	+fvNX0Whoer8E6m2ea5mkbgo/mj+eGuAYfpT898M6jpZ1bNX7HRpTyfexwP0DM5vLcqGdh
-	RFdCiLq6z1G29jRrQ6l4jsKrRCyQSNc=
+	bh=bFCLtdp68XCkucr0GBNgmDryKCRj7k/2ikV3JWwMC5g=;
+	b=xpHQOYeLHFrF14S2x0Yh8NCJ7VXZHscjkPQC/oimMIanM9ZobA8bWrF52H5HQxfliOJTtE
+	vYdBNvuLihW9Bc05HTtbiekQ3LcjQUWI22IaLvrPbpwFnsF9bUkPiGgwzXyQlh03kWWClC
+	r042hIMjBwoAQJODIdT+sx6C4zW4P1w=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673618829;
+	s=susede2_ed25519; t=1673618832;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=PyF8sUoOTCrhIQWtWkBHJhnk7fgtE7ayPgnJhS9bdlI=;
-	b=oKIhacN1HqJId8CF28KN+pghnXhQtkoIypyne5el49HXLTmj5x+XKPBRWMxUDffRCzVrtF
-	1QhaqySVuO06gpCA==
+	bh=bFCLtdp68XCkucr0GBNgmDryKCRj7k/2ikV3JWwMC5g=;
+	b=wQruSaskzwx0e2QuCXAstCp5KqoEt19RkZxNR5Vabg3wQpbuhxUYLxrtHBEfUFljzhiuaX
+	U6y+JX7pBhdRHEBQ==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 85A101358A;
-	Fri, 13 Jan 2023 14:07:06 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 92CD71358A;
+	Fri, 13 Jan 2023 14:07:09 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id kM3KE4plwWP8DQAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:07:06 +0000
+	id 8GHxFo1lwWP8DQAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:07:09 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,94 +82,46 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>
-Subject: [RFC PATCH v3 14/28] target/arm: Move regime_using_lpae_format into internal.h
-Date: Fri, 13 Jan 2023 11:04:05 -0300
-Message-Id: <20230113140419.4013-15-farosas@suse.de>
+Subject: [RFC PATCH v3 15/28] target/arm: Don't access TCG code when debugging with KVM
+Date: Fri, 13 Jan 2023 11:04:06 -0300
+Message-Id: <20230113140419.4013-16-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230113140419.4013-1-farosas@suse.de>
 References: <20230113140419.4013-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: uB5uXHfspdeR
+X-TUID: apawmqBYhetV
 
-This function is needed by common code (ptw.c), so move it along with
-the other regime_* functions in internal.h. When we enable the build
-without TCG, the tlb_helper.c file will not be present.
+When TCG is disabled this part of the code should not be reachable, so
+wrap it with an ifdef for now.
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h      | 21 ++++++++++++++++++---
- target/arm/tcg/tlb_helper.c | 18 ------------------
- 2 files changed, 18 insertions(+), 21 deletions(-)
+ target/arm/ptw.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 865b9e8104..b1fccf13a3 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -614,9 +614,6 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(CPUARMState *env,
- /* Return the MMU index for a v7M CPU in the specified security state */
- ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate);
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 4bda0590c7..2af75d0904 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -254,6 +254,7 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
+         ptw->out_host = NULL;
+         ptw->out_rw = false;
+     } else {
++#ifdef CONFIG_TCG
+         CPUTLBEntryFull *full;
+         int flags;
  
--/* Return true if the translation regime is using LPAE format page tables */
--bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
--
- /*
-  * Return true if the stage 1 translation regime is using LPAE
-  * format page tables
-@@ -781,6 +778,24 @@ static inline uint64_t regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
-     return env->cp15.tcr_el[regime_el(env, mmu_idx)];
- }
+@@ -270,6 +271,9 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
+         ptw->out_rw = full->prot & PAGE_WRITE;
+         pte_attrs = full->pte_attrs;
+         pte_secure = full->attrs.secure;
++#else
++        g_assert_not_reached();
++#endif
+     }
  
-+/* Return true if the translation regime is using LPAE format page tables */
-+static inline bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
-+{
-+    int el = regime_el(env, mmu_idx);
-+    if (el == 2 || arm_el_is_aa64(env, el)) {
-+        return true;
-+    }
-+    if (arm_feature(env, ARM_FEATURE_PMSA) &&
-+        arm_feature(env, ARM_FEATURE_V8)) {
-+        return true;
-+    }
-+    if (arm_feature(env, ARM_FEATURE_LPAE)
-+        && (regime_tcr(env, mmu_idx) & TTBCR_EAE)) {
-+        return true;
-+    }
-+    return false;
-+}
-+
- /**
-  * arm_num_brps: Return number of implemented breakpoints.
-  * Note that the ID register BRPS field is "number of bps - 1",
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index 60abcbebe6..31eb77f7df 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -12,24 +12,6 @@
- #include "exec/helper-proto.h"
- 
- 
--/* Return true if the translation regime is using LPAE format page tables */
--bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
--{
--    int el = regime_el(env, mmu_idx);
--    if (el == 2 || arm_el_is_aa64(env, el)) {
--        return true;
--    }
--    if (arm_feature(env, ARM_FEATURE_PMSA) &&
--        arm_feature(env, ARM_FEATURE_V8)) {
--        return true;
--    }
--    if (arm_feature(env, ARM_FEATURE_LPAE)
--        && (regime_tcr(env, mmu_idx) & TTBCR_EAE)) {
--        return true;
--    }
--    return false;
--}
--
- /*
-  * Returns true if the stage 1 translation regime is using LPAE format page
-  * tables. Used when raising alignment exceptions, whose FSR changes depending
+     if (regime_is_stage2(s2_mmu_idx)) {
 -- 
 2.35.3

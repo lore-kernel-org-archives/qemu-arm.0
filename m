@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp414453ejc;
-        Fri, 13 Jan 2023 06:07:04 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXudZfvmRhDud08NTFi/Xj6p+SBRgb5GXr4+ji50UmBDwpI4O+PS9N5VI3StIQK/+1uN5z17
-X-Received: by 2002:a05:600c:3482:b0:3d3:4f56:62e1 with SMTP id a2-20020a05600c348200b003d34f5662e1mr56789523wmq.27.1673618824183;
-        Fri, 13 Jan 2023 06:07:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673618824; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp414497ejc;
+        Fri, 13 Jan 2023 06:07:07 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXu/8Ao9mpWIpt3hdIlajMSCtwnUPrUSdE+mcuXQMBDIOPvRjS83jAxEJJqV/SboWENaJLGU
+X-Received: by 2002:adf:e2c4:0:b0:2bd:c270:15ad with SMTP id d4-20020adfe2c4000000b002bdc27015admr6884195wrj.18.1673618826809;
+        Fri, 13 Jan 2023 06:07:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673618826; cv=none;
         d=google.com; s=arc-20160816;
-        b=HGLd1a4yp3bg+TRJ6o0O+WcP7Ixuaf3QEgKhaGH6PZMUp1OTCkZRN5eW+CIeP0YgcT
-         xbN/+VU7Q3OQowf7B1j7yRwbYXTad2ApmkW9ZcSQmWOylF698PZH8VRrGz46vMkxOi88
-         DpBMt/rdxkhsIpGczfTWRI9Yzm/eSWggr8+w217Wi6jvrzxWMOVn1q/KKDq+pIVYgxhp
-         aiwJirGcnvc1HU2t8H3YE0MDPGMvn6ebdcajTkeuRdI0LZjbtYPZ80VPohzi+acDVOPx
-         QYF9nnDHfo7OAwqzj5EZK9B9PISPjT8ovUlIq874DYDRenC95YTkM5u3UKS+lN/Gal8k
-         lHdQ==
+        b=uc/nE7Bkez2qEOmgCj8c+LsjBILLKSY0F4CD4R2qhbUGUhm/EZAQJQ8cOfq0+8njlY
+         CMkT3W5nnMwK+uNcjRueDAmNOm3XFmTUApT7evj04gm+eITQBAPUDlXHYAAhSmSUWpRI
+         Zs3zjnew0XvWtaalmKZOpjIqlhXyh0a9EVlwCs24K9BOAwSfpDf2PS1/atw5z4ItLVPF
+         oGMYV0l+7oLTTWZc3sj9dTWluWi5Y4PcvrrIZCNof6xlmXP86RtX/nXrdouZ8mxlUFWJ
+         xrHjJ7/TYhtWnqBzC6EpBMS0LZdmYkY3uGMRqW8v+rv6EVlUtDCR7QT52WBmMaR76A8t
+         x9xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=M8GtUMzNwfhihhOG15xJRQ6eN0+OBvVcoq7KwxHxFAU=;
-        b=EddSxaoyKGN++sLcG98XSQ/RCApq+X3vFAqWOicNcmm8W5sTqlQ9d1+vCw+bNbCz3L
-         5AHgDMUWCzzB4Qa2Z9GwQJC/deDhRqGbNJsdndZUFsi/oiUo/c4McyMDfPPUV65g3pYt
-         ywzwnlOKwoRrA3j7X6frnirZsAXMW/0X+lMBLRHuGB7PTwJZwb7UZVb90E5dAIEIMuSS
-         CWAs1a6bOHEqsIpgMSmK6mCeRE7zAN8kI/4zs8hwMQtRn+5Qm8JyNDYZ4beuA0Xea3oO
-         0Nv2soEC136W7K4mOqzwk0V+fMA/t5l9fLUWX1vSU/ZwBkAmHRZS7hlauQdj8vmyYH2b
-         6eGg==
+        bh=0rGw7WOn7HqWc0Q0a3zF6LmghAKy2urNNBsSHtQfjbQ=;
+        b=eshdPkw/GWANWVolRoe13Vu9uH5gkkcGktT1ZofFfkmv1mlsDNbLgmOYJOi4vqhrHO
+         cj5nGx1qgprhIGzcJNMP7KXi1fXHXEJxnpZR+MuZ8s6golP7T5WITCJ+3ep9Mk/uWUrB
+         TVhblpBorye8GjooAmjKIi8n3PH7xl4ADlQAOwNnYHvPkw57jWNxiqn8gFwAnaQ7cg7H
+         qSA+1OLzPuDi4Iw+jmWu9pbfXSZV4T8ovGGy9wAzxWwR/5Yl5KpPLgU0exY+IKSqcK+V
+         HFZji0DXFgJ7G7X6/kArSGz7/pH3licjEPVZL3I69V9LDd63KMYFgh9Um5X16DvdVT1n
+         Fv5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=wrzyKqNq;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=KayX41zd;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id fl8-20020a05600c0b8800b003d1bf5e497dsi16007595wmb.116.2023.01.13.06.07.03
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id f1-20020a5d64c1000000b002bb912537aasi16091643wri.241.2023.01.13.06.07.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jan 2023 06:07:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+        Fri, 13 Jan 2023 06:07:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=wrzyKqNq;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=KayX41zd;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 08E866B4ED;
-	Fri, 13 Jan 2023 14:07:03 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 17C7221F87;
+	Fri, 13 Jan 2023 14:07:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673618823; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1673618826; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=M8GtUMzNwfhihhOG15xJRQ6eN0+OBvVcoq7KwxHxFAU=;
-	b=wrzyKqNqx0VxRKgiIrBlde1PTbbR7675KpY5mQQMSAHn/FeepabAfXVxEfHN04RG2TQAvq
-	hp70YXArZ5U6rYU1QE3bz8Agi4pHlaGgkrozlwSBaJJJMMAXdVqtQC2DOhDv/w2fJeelIj
-	0fodTv4OnRq88NilUPef/i7i0e8ZDmo=
+	bh=0rGw7WOn7HqWc0Q0a3zF6LmghAKy2urNNBsSHtQfjbQ=;
+	b=KayX41zdNN4wDLOUweStuN47AqMWGQmXD1W1TUCMb+6BR7yOdmdgjqwMGkAc+zr02cImXr
+	X5SrNVhAWsjp/ObijhWn5vk1isduHCASijW/Rwe/WJav5Z2TMFBB/X2IjZV2Mk1CXUBzen
+	zZ5GntwiZaz0NC6Xv89iUHaiMbsspD8=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673618823;
+	s=susede2_ed25519; t=1673618826;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=M8GtUMzNwfhihhOG15xJRQ6eN0+OBvVcoq7KwxHxFAU=;
-	b=M6KPQN+fP56lGXYn7/n2R0bl5TQj8VnHC9qfOdjJzCbSOCazvBf8ZEHDvLfSW2LS6MzqdG
-	GtRbqoozQtGymHCA==
+	bh=0rGw7WOn7HqWc0Q0a3zF6LmghAKy2urNNBsSHtQfjbQ=;
+	b=ixrORTrmrdZ4zGzldKbJJqcLNCAEH4hnkHoGJ036HuTWjE6iKFcdwej9+wsfUE7xu/ASUB
+	fdFpcHvtw5RQEEDg==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6DEA21358A;
-	Fri, 13 Jan 2023 14:07:00 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 7B21F1358A;
+	Fri, 13 Jan 2023 14:07:03 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id gOUiDoRlwWP8DQAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:07:00 +0000
+	id cFBMEYdlwWP8DQAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:07:03 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,221 +82,837 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>
-Subject: [RFC PATCH v3 12/28] target/arm: Wrap arm_rebuild_hflags calls with tcg_enabled
-Date: Fri, 13 Jan 2023 11:04:03 -0300
-Message-Id: <20230113140419.4013-13-farosas@suse.de>
+Subject: [RFC PATCH v3 13/28] target/arm: Move hflags code into the tcg directory
+Date: Fri, 13 Jan 2023 11:04:04 -0300
+Message-Id: <20230113140419.4013-14-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230113140419.4013-1-farosas@suse.de>
 References: <20230113140419.4013-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: xYawW2+M4/if
+X-TUID: j/TIEbnFaORg
 
-This is in preparation to moving the hflags code into its own file
-under the tcg/ directory.
+The hflags are used only for TCG code, so introduce a new file
+hflags.c to keep that code.
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-I extracted these into a separate patch so we can discuss. If I move
-the tcg_enabled check to a header that would add overhead for all the
-calls where we know for sure that the code is running with TCG. And I
-don't think we want a new arm_rebuild_hflags_foo to be used for common
-code.
+If I move assert_hflags_rebuild_correctly along with
+cpu_get_tb_cpu_state, rebuild_hflags_internal would have to be
+exposed. This used to work before because everything was in helper.c.
 ---
- hw/arm/boot.c             |  6 +++++-
- hw/intc/armv7m_nvic.c     | 20 +++++++++++++-------
- target/arm/arm-powerctl.c |  7 +++++--
- target/arm/cpregs.c       |  2 +-
- target/arm/cpu.c          |  3 ++-
- target/arm/helper.c       | 16 ++++++++++++----
- target/arm/machine.c      |  5 ++++-
- 7 files changed, 42 insertions(+), 17 deletions(-)
+ target/arm/helper.c        | 361 +-----------------------------------
+ target/arm/internals.h     |   2 +
+ target/arm/tcg-stubs.c     |   4 +
+ target/arm/tcg/hflags.c    | 370 +++++++++++++++++++++++++++++++++++++
+ target/arm/tcg/meson.build |   1 +
+ 5 files changed, 378 insertions(+), 360 deletions(-)
+ create mode 100644 target/arm/tcg/hflags.c
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 3d7d11f782..1e021c4a34 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -15,6 +15,7 @@
- #include "hw/arm/boot.h"
- #include "hw/arm/linux-boot-if.h"
- #include "sysemu/kvm.h"
-+#include "sysemu/tcg.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/numa.h"
- #include "hw/boards.h"
-@@ -827,7 +828,10 @@ static void do_cpu_reset(void *opaque)
-                 info->secondary_cpu_reset_hook(cpu, info);
-             }
-         }
--        arm_rebuild_hflags(env);
-+
-+        if (tcg_enabled()) {
-+            arm_rebuild_hflags(env);
-+        }
-     }
- }
- 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 1f7763964c..74ac8f610c 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -18,6 +18,7 @@
- #include "hw/intc/armv7m_nvic.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
-+#include "sysemu/tcg.h"
- #include "sysemu/runstate.h"
- #include "target/arm/cpu.h"
- #include "exec/exec-all.h"
-@@ -2466,8 +2467,10 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-     /* This is UNPREDICTABLE; treat as RAZ/WI */
- 
-  exit_ok:
--    /* Ensure any changes made are reflected in the cached hflags.  */
--    arm_rebuild_hflags(&s->cpu->env);
-+    if (tcg_enabled()) {
-+        /* Ensure any changes made are reflected in the cached hflags. */
-+        arm_rebuild_hflags(&s->cpu->env);
-+    }
-     return MEMTX_OK;
- }
- 
-@@ -2648,11 +2651,14 @@ static void armv7m_nvic_reset(DeviceState *dev)
-         }
-     }
- 
--    /*
--     * We updated state that affects the CPU's MMUidx and thus its hflags;
--     * and we can't guarantee that we run before the CPU reset function.
--     */
--    arm_rebuild_hflags(&s->cpu->env);
-+    if (tcg_enabled()) {
-+        /*
-+         * We updated state that affects the CPU's MMUidx and thus its
-+         * hflags; and we can't guarantee that we run before the CPU
-+         * reset function.
-+         */
-+        arm_rebuild_hflags(&s->cpu->env);
-+    }
- }
- 
- static void nvic_systick_trigger(void *opaque, int n, int level)
-diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-index b75f813b40..326a03153d 100644
---- a/target/arm/arm-powerctl.c
-+++ b/target/arm/arm-powerctl.c
-@@ -15,6 +15,7 @@
- #include "arm-powerctl.h"
- #include "qemu/log.h"
- #include "qemu/main-loop.h"
-+#include "sysemu/tcg.h"
- 
- #ifndef DEBUG_ARM_POWERCTL
- #define DEBUG_ARM_POWERCTL 0
-@@ -127,8 +128,10 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
-         target_cpu->env.regs[0] = info->context_id;
-     }
- 
--    /* CP15 update requires rebuilding hflags */
--    arm_rebuild_hflags(&target_cpu->env);
-+    if (tcg_enabled()) {
-+        /* CP15 update requires rebuilding hflags */
-+        arm_rebuild_hflags(&target_cpu->env);
-+    }
- 
-     /* Start the new CPU at the requested address */
-     cpu_set_pc(target_cpu_state, info->entry);
-diff --git a/target/arm/cpregs.c b/target/arm/cpregs.c
-index dee03f8a41..a353fb9b03 100644
---- a/target/arm/cpregs.c
-+++ b/target/arm/cpregs.c
-@@ -5179,7 +5179,7 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     /* This may enable/disable the MMU, so do a TLB flush.  */
-     tlb_flush(CPU(cpu));
- 
--    if (ri->type & ARM_CP_SUPPRESS_TB_END) {
-+    if (tcg_enabled() && ri->type & ARM_CP_SUPPRESS_TB_END) {
-         /*
-          * Normally we would always end the TB on an SCTLR write; see the
-          * comment in ARMCPRegInfo sctlr initialization below for why Xscale
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index d7ceb626f0..ce1a425e10 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -539,8 +539,9 @@ static void arm_cpu_reset_hold(Object *obj)
-     if (tcg_enabled()) {
-         hw_breakpoint_update_all(cpu);
-         hw_watchpoint_update_all(cpu);
-+
-+        arm_rebuild_hflags(env);
-     }
--    arm_rebuild_hflags(env);
- }
- 
- #if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0c3e72a266..5188d0ddbf 100644
+index 5188d0ddbf..b4f28117c1 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -340,7 +340,9 @@ void aarch64_set_svcr(CPUARMState *env, uint64_t new, uint64_t mask)
-         memset(env->zarray, 0, sizeof(env->zarray));
-     }
- 
--    arm_rebuild_hflags(env);
-+    if (tcg_enabled()) {
-+        arm_rebuild_hflags(env);
-+    }
- }
- #endif /* TARGET_AARCH64 */
- 
-@@ -609,7 +611,7 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
-     }
-     mask &= ~CACHED_CPSR_BITS;
-     env->uncached_cpsr = (env->uncached_cpsr & ~mask) | (val & mask);
--    if (rebuild_hflags) {
-+    if (tcg_enabled() && rebuild_hflags) {
-         arm_rebuild_hflags(env);
-     }
- }
-@@ -1168,7 +1170,10 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
-         env->regs[14] = env->regs[15] + offset;
-     }
-     env->regs[15] = newpc;
--    arm_rebuild_hflags(env);
-+
-+    if (tcg_enabled()) {
-+        arm_rebuild_hflags(env);
-+    }
- }
- 
- static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
-@@ -1724,7 +1729,10 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-     pstate_write(env, PSTATE_DAIF | new_mode);
-     env->aarch64 = true;
-     aarch64_restore_sp(env, new_el);
--    helper_rebuild_hflags_a64(env, new_el);
-+
-+    if (tcg_enabled()) {
-+        helper_rebuild_hflags_a64(env, new_el);
-+    }
- 
-     env->pc = addr;
- 
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index fd6323f6d8..fc4a4a4064 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -871,7 +871,10 @@ static int cpu_post_load(void *opaque, int version_id)
-     if (!kvm_enabled()) {
-         pmu_op_finish(&cpu->env);
-     }
--    arm_rebuild_hflags(&cpu->env);
-+
-+    if (tcg_enabled()) {
-+        arm_rebuild_hflags(&cpu->env);
-+    }
- 
+@@ -239,32 +239,6 @@ int sme_exception_el(CPUARMState *env, int el)
      return 0;
  }
+ 
+-/* This corresponds to the ARM pseudocode function IsFullA64Enabled(). */
+-static bool sme_fa64(CPUARMState *env, int el)
+-{
+-    if (!cpu_isar_feature(aa64_sme_fa64, env_archcpu(env))) {
+-        return false;
+-    }
+-
+-    if (el <= 1 && !el_is_in_host(env, el)) {
+-        if (!FIELD_EX64(env->vfp.smcr_el[1], SMCR, FA64)) {
+-            return false;
+-        }
+-    }
+-    if (el <= 2 && arm_is_el2_enabled(env)) {
+-        if (!FIELD_EX64(env->vfp.smcr_el[2], SMCR, FA64)) {
+-            return false;
+-        }
+-    }
+-    if (arm_feature(env, ARM_FEATURE_EL3)) {
+-        if (!FIELD_EX64(env->vfp.smcr_el[3], SMCR, FA64)) {
+-            return false;
+-        }
+-    }
+-
+-    return true;
+-}
+-
+ /*
+  * Given that SVE is enabled, return the vector length for EL.
+  */
+@@ -1873,7 +1847,7 @@ int aa64_va_parameter_tbid(uint64_t tcr, ARMMMUIdx mmu_idx)
+     }
+ }
+ 
+-static int aa64_va_parameter_tcma(uint64_t tcr, ARMMMUIdx mmu_idx)
++int aa64_va_parameter_tcma(uint64_t tcr, ARMMMUIdx mmu_idx)
+ {
+     if (regime_has_2_ranges(mmu_idx)) {
+         return extract64(tcr, 57, 2);
+@@ -2584,339 +2558,6 @@ ARMMMUIdx arm_mmu_idx(CPUARMState *env)
+     return arm_mmu_idx_el(env, arm_current_el(env));
+ }
+ 
+-static CPUARMTBFlags rebuild_hflags_common(CPUARMState *env, int fp_el,
+-                                           ARMMMUIdx mmu_idx,
+-                                           CPUARMTBFlags flags)
+-{
+-    DP_TBFLAG_ANY(flags, FPEXC_EL, fp_el);
+-    DP_TBFLAG_ANY(flags, MMUIDX, arm_to_core_mmu_idx(mmu_idx));
+-
+-    if (arm_singlestep_active(env)) {
+-        DP_TBFLAG_ANY(flags, SS_ACTIVE, 1);
+-    }
+-    return flags;
+-}
+-
+-static CPUARMTBFlags rebuild_hflags_common_32(CPUARMState *env, int fp_el,
+-                                              ARMMMUIdx mmu_idx,
+-                                              CPUARMTBFlags flags)
+-{
+-    bool sctlr_b = arm_sctlr_b(env);
+-
+-    if (sctlr_b) {
+-        DP_TBFLAG_A32(flags, SCTLR__B, 1);
+-    }
+-    if (arm_cpu_data_is_big_endian_a32(env, sctlr_b)) {
+-        DP_TBFLAG_ANY(flags, BE_DATA, 1);
+-    }
+-    DP_TBFLAG_A32(flags, NS, !access_secure_reg(env));
+-
+-    return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
+-}
+-
+-static CPUARMTBFlags rebuild_hflags_m32(CPUARMState *env, int fp_el,
+-                                        ARMMMUIdx mmu_idx)
+-{
+-    CPUARMTBFlags flags = {};
+-    uint32_t ccr = env->v7m.ccr[env->v7m.secure];
+-
+-    /* Without HaveMainExt, CCR.UNALIGN_TRP is RES1. */
+-    if (ccr & R_V7M_CCR_UNALIGN_TRP_MASK) {
+-        DP_TBFLAG_ANY(flags, ALIGN_MEM, 1);
+-    }
+-
+-    if (arm_v7m_is_handler_mode(env)) {
+-        DP_TBFLAG_M32(flags, HANDLER, 1);
+-    }
+-
+-    /*
+-     * v8M always applies stack limit checks unless CCR.STKOFHFNMIGN
+-     * is suppressing them because the requested execution priority
+-     * is less than 0.
+-     */
+-    if (arm_feature(env, ARM_FEATURE_V8) &&
+-        !((mmu_idx & ARM_MMU_IDX_M_NEGPRI) &&
+-          (ccr & R_V7M_CCR_STKOFHFNMIGN_MASK))) {
+-        DP_TBFLAG_M32(flags, STACKCHECK, 1);
+-    }
+-
+-    if (arm_feature(env, ARM_FEATURE_M_SECURITY) && env->v7m.secure) {
+-        DP_TBFLAG_M32(flags, SECURE, 1);
+-    }
+-
+-    return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
+-}
+-
+-static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
+-                                        ARMMMUIdx mmu_idx)
+-{
+-    CPUARMTBFlags flags = {};
+-    int el = arm_current_el(env);
+-
+-    if (arm_sctlr(env, el) & SCTLR_A) {
+-        DP_TBFLAG_ANY(flags, ALIGN_MEM, 1);
+-    }
+-
+-    if (arm_el_is_aa64(env, 1)) {
+-        DP_TBFLAG_A32(flags, VFPEN, 1);
+-    }
+-
+-    if (el < 2 && env->cp15.hstr_el2 &&
+-        (arm_hcr_el2_eff(env) & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
+-        DP_TBFLAG_A32(flags, HSTR_ACTIVE, 1);
+-    }
+-
+-    if (env->uncached_cpsr & CPSR_IL) {
+-        DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
+-    }
+-
+-    /*
+-     * The SME exception we are testing for is raised via
+-     * AArch64.CheckFPAdvSIMDEnabled(), as called from
+-     * AArch32.CheckAdvSIMDOrFPEnabled().
+-     */
+-    if (el == 0
+-        && FIELD_EX64(env->svcr, SVCR, SM)
+-        && (!arm_is_el2_enabled(env)
+-            || (arm_el_is_aa64(env, 2) && !(env->cp15.hcr_el2 & HCR_TGE)))
+-        && arm_el_is_aa64(env, 1)
+-        && !sme_fa64(env, el)) {
+-        DP_TBFLAG_A32(flags, SME_TRAP_NONSTREAMING, 1);
+-    }
+-
+-    return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
+-}
+-
+-static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+-                                        ARMMMUIdx mmu_idx)
+-{
+-    CPUARMTBFlags flags = {};
+-    ARMMMUIdx stage1 = stage_1_mmu_idx(mmu_idx);
+-    uint64_t tcr = regime_tcr(env, mmu_idx);
+-    uint64_t sctlr;
+-    int tbii, tbid;
+-
+-    DP_TBFLAG_ANY(flags, AARCH64_STATE, 1);
+-
+-    /* Get control bits for tagged addresses.  */
+-    tbid = aa64_va_parameter_tbi(tcr, mmu_idx);
+-    tbii = tbid & ~aa64_va_parameter_tbid(tcr, mmu_idx);
+-
+-    DP_TBFLAG_A64(flags, TBII, tbii);
+-    DP_TBFLAG_A64(flags, TBID, tbid);
+-
+-    if (cpu_isar_feature(aa64_sve, env_archcpu(env))) {
+-        int sve_el = sve_exception_el(env, el);
+-
+-        /*
+-         * If either FP or SVE are disabled, translator does not need len.
+-         * If SVE EL > FP EL, FP exception has precedence, and translator
+-         * does not need SVE EL.  Save potential re-translations by forcing
+-         * the unneeded data to zero.
+-         */
+-        if (fp_el != 0) {
+-            if (sve_el > fp_el) {
+-                sve_el = 0;
+-            }
+-        } else if (sve_el == 0) {
+-            DP_TBFLAG_A64(flags, VL, sve_vqm1_for_el(env, el));
+-        }
+-        DP_TBFLAG_A64(flags, SVEEXC_EL, sve_el);
+-    }
+-    if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
+-        int sme_el = sme_exception_el(env, el);
+-        bool sm = FIELD_EX64(env->svcr, SVCR, SM);
+-
+-        DP_TBFLAG_A64(flags, SMEEXC_EL, sme_el);
+-        if (sme_el == 0) {
+-            /* Similarly, do not compute SVL if SME is disabled. */
+-            int svl = sve_vqm1_for_el_sm(env, el, true);
+-            DP_TBFLAG_A64(flags, SVL, svl);
+-            if (sm) {
+-                /* If SVE is disabled, we will not have set VL above. */
+-                DP_TBFLAG_A64(flags, VL, svl);
+-            }
+-        }
+-        if (sm) {
+-            DP_TBFLAG_A64(flags, PSTATE_SM, 1);
+-            DP_TBFLAG_A64(flags, SME_TRAP_NONSTREAMING, !sme_fa64(env, el));
+-        }
+-        DP_TBFLAG_A64(flags, PSTATE_ZA, FIELD_EX64(env->svcr, SVCR, ZA));
+-    }
+-
+-    sctlr = regime_sctlr(env, stage1);
+-
+-    if (sctlr & SCTLR_A) {
+-        DP_TBFLAG_ANY(flags, ALIGN_MEM, 1);
+-    }
+-
+-    if (arm_cpu_data_is_big_endian_a64(el, sctlr)) {
+-        DP_TBFLAG_ANY(flags, BE_DATA, 1);
+-    }
+-
+-    if (cpu_isar_feature(aa64_pauth, env_archcpu(env))) {
+-        /*
+-         * In order to save space in flags, we record only whether
+-         * pauth is "inactive", meaning all insns are implemented as
+-         * a nop, or "active" when some action must be performed.
+-         * The decision of which action to take is left to a helper.
+-         */
+-        if (sctlr & (SCTLR_EnIA | SCTLR_EnIB | SCTLR_EnDA | SCTLR_EnDB)) {
+-            DP_TBFLAG_A64(flags, PAUTH_ACTIVE, 1);
+-        }
+-    }
+-
+-    if (cpu_isar_feature(aa64_bti, env_archcpu(env))) {
+-        /* Note that SCTLR_EL[23].BT == SCTLR_BT1.  */
+-        if (sctlr & (el == 0 ? SCTLR_BT0 : SCTLR_BT1)) {
+-            DP_TBFLAG_A64(flags, BT, 1);
+-        }
+-    }
+-
+-    /* Compute the condition for using AccType_UNPRIV for LDTR et al. */
+-    if (!(env->pstate & PSTATE_UAO)) {
+-        switch (mmu_idx) {
+-        case ARMMMUIdx_E10_1:
+-        case ARMMMUIdx_E10_1_PAN:
+-            /* TODO: ARMv8.3-NV */
+-            DP_TBFLAG_A64(flags, UNPRIV, 1);
+-            break;
+-        case ARMMMUIdx_E20_2:
+-        case ARMMMUIdx_E20_2_PAN:
+-            /*
+-             * Note that EL20_2 is gated by HCR_EL2.E2H == 1, but EL20_0 is
+-             * gated by HCR_EL2.<E2H,TGE> == '11', and so is LDTR.
+-             */
+-            if (env->cp15.hcr_el2 & HCR_TGE) {
+-                DP_TBFLAG_A64(flags, UNPRIV, 1);
+-            }
+-            break;
+-        default:
+-            break;
+-        }
+-    }
+-
+-    if (env->pstate & PSTATE_IL) {
+-        DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
+-    }
+-
+-    if (cpu_isar_feature(aa64_mte, env_archcpu(env))) {
+-        /*
+-         * Set MTE_ACTIVE if any access may be Checked, and leave clear
+-         * if all accesses must be Unchecked:
+-         * 1) If no TBI, then there are no tags in the address to check,
+-         * 2) If Tag Check Override, then all accesses are Unchecked,
+-         * 3) If Tag Check Fail == 0, then Checked access have no effect,
+-         * 4) If no Allocation Tag Access, then all accesses are Unchecked.
+-         */
+-        if (allocation_tag_access_enabled(env, el, sctlr)) {
+-            DP_TBFLAG_A64(flags, ATA, 1);
+-            if (tbid
+-                && !(env->pstate & PSTATE_TCO)
+-                && (sctlr & (el == 0 ? SCTLR_TCF0 : SCTLR_TCF))) {
+-                DP_TBFLAG_A64(flags, MTE_ACTIVE, 1);
+-            }
+-        }
+-        /* And again for unprivileged accesses, if required.  */
+-        if (EX_TBFLAG_A64(flags, UNPRIV)
+-            && tbid
+-            && !(env->pstate & PSTATE_TCO)
+-            && (sctlr & SCTLR_TCF0)
+-            && allocation_tag_access_enabled(env, 0, sctlr)) {
+-            DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
+-        }
+-        /* Cache TCMA as well as TBI. */
+-        DP_TBFLAG_A64(flags, TCMA, aa64_va_parameter_tcma(tcr, mmu_idx));
+-    }
+-
+-    return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
+-}
+-
+-static CPUARMTBFlags rebuild_hflags_internal(CPUARMState *env)
+-{
+-    int el = arm_current_el(env);
+-    int fp_el = fp_exception_el(env, el);
+-    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
+-
+-    if (is_a64(env)) {
+-        return rebuild_hflags_a64(env, el, fp_el, mmu_idx);
+-    } else if (arm_feature(env, ARM_FEATURE_M)) {
+-        return rebuild_hflags_m32(env, fp_el, mmu_idx);
+-    } else {
+-        return rebuild_hflags_a32(env, fp_el, mmu_idx);
+-    }
+-}
+-
+-void arm_rebuild_hflags(CPUARMState *env)
+-{
+-    env->hflags = rebuild_hflags_internal(env);
+-}
+-
+-/*
+- * If we have triggered a EL state change we can't rely on the
+- * translator having passed it to us, we need to recompute.
+- */
+-void HELPER(rebuild_hflags_m32_newel)(CPUARMState *env)
+-{
+-    int el = arm_current_el(env);
+-    int fp_el = fp_exception_el(env, el);
+-    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
+-
+-    env->hflags = rebuild_hflags_m32(env, fp_el, mmu_idx);
+-}
+-
+-void HELPER(rebuild_hflags_m32)(CPUARMState *env, int el)
+-{
+-    int fp_el = fp_exception_el(env, el);
+-    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
+-
+-    env->hflags = rebuild_hflags_m32(env, fp_el, mmu_idx);
+-}
+-
+-/*
+- * If we have triggered a EL state change we can't rely on the
+- * translator having passed it to us, we need to recompute.
+- */
+-void HELPER(rebuild_hflags_a32_newel)(CPUARMState *env)
+-{
+-    int el = arm_current_el(env);
+-    int fp_el = fp_exception_el(env, el);
+-    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
+-    env->hflags = rebuild_hflags_a32(env, fp_el, mmu_idx);
+-}
+-
+-void HELPER(rebuild_hflags_a32)(CPUARMState *env, int el)
+-{
+-    int fp_el = fp_exception_el(env, el);
+-    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
+-
+-    env->hflags = rebuild_hflags_a32(env, fp_el, mmu_idx);
+-}
+-
+-void HELPER(rebuild_hflags_a64)(CPUARMState *env, int el)
+-{
+-    int fp_el = fp_exception_el(env, el);
+-    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
+-
+-    env->hflags = rebuild_hflags_a64(env, el, fp_el, mmu_idx);
+-}
+-
+-static inline void assert_hflags_rebuild_correctly(CPUARMState *env)
+-{
+-#ifdef CONFIG_DEBUG_TCG
+-    CPUARMTBFlags c = env->hflags;
+-    CPUARMTBFlags r = rebuild_hflags_internal(env);
+-
+-    if (unlikely(c.flags != r.flags || c.flags2 != r.flags2)) {
+-        fprintf(stderr, "TCG hflags mismatch "
+-                        "(current:(0x%08x,0x" TARGET_FMT_lx ")"
+-                        " rebuilt:(0x%08x,0x" TARGET_FMT_lx ")\n",
+-                c.flags, c.flags2, r.flags, r.flags2);
+-        abort();
+-    }
+-#endif
+-}
+-
+ static bool mve_no_pred(CPUARMState *env)
+ {
+     /*
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 0983e65300..865b9e8104 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1087,6 +1087,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+ 
+ int aa64_va_parameter_tbi(uint64_t tcr, ARMMMUIdx mmu_idx);
+ int aa64_va_parameter_tbid(uint64_t tcr, ARMMMUIdx mmu_idx);
++int aa64_va_parameter_tcma(uint64_t tcr, ARMMMUIdx mmu_idx);
+ 
+ /* Determine if allocation tags are available.  */
+ static inline bool allocation_tag_access_enabled(CPUARMState *env, int el,
+@@ -1368,4 +1369,5 @@ bool arm_generate_debug_exceptions(CPUARMState *env);
+     ((1 << (1 - 1)) | (1 << (2 - 1)) |                  \
+      (1 << (4 - 1)) | (1 << (8 - 1)) | (1 << (16 - 1)))
+ 
++void assert_hflags_rebuild_correctly(CPUARMState *env);
+ #endif
+diff --git a/target/arm/tcg-stubs.c b/target/arm/tcg-stubs.c
+index 1a7ddb3664..152b172e24 100644
+--- a/target/arm/tcg-stubs.c
++++ b/target/arm/tcg-stubs.c
+@@ -21,3 +21,7 @@ void raise_exception_ra(CPUARMState *env, uint32_t excp, uint32_t syndrome,
+ {
+     g_assert_not_reached();
+ }
++/* Temporarily while cpu_get_tb_cpu_state() is still in common code */
++void assert_hflags_rebuild_correctly(CPUARMState *env)
++{
++}
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+new file mode 100644
+index 0000000000..3383b3a912
+--- /dev/null
++++ b/target/arm/tcg/hflags.c
+@@ -0,0 +1,370 @@
++/*
++ * ARM hflags
++ *
++ * This code is licensed under the GNU GPL v2 or later.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "internals.h"
++#include "exec/helper-proto.h"
++
++static CPUARMTBFlags rebuild_hflags_common(CPUARMState *env, int fp_el,
++                                           ARMMMUIdx mmu_idx,
++                                           CPUARMTBFlags flags)
++{
++    DP_TBFLAG_ANY(flags, FPEXC_EL, fp_el);
++    DP_TBFLAG_ANY(flags, MMUIDX, arm_to_core_mmu_idx(mmu_idx));
++
++    if (arm_singlestep_active(env)) {
++        DP_TBFLAG_ANY(flags, SS_ACTIVE, 1);
++    }
++    return flags;
++}
++
++static CPUARMTBFlags rebuild_hflags_common_32(CPUARMState *env, int fp_el,
++                                              ARMMMUIdx mmu_idx,
++                                              CPUARMTBFlags flags)
++{
++    bool sctlr_b = arm_sctlr_b(env);
++
++    if (sctlr_b) {
++        DP_TBFLAG_A32(flags, SCTLR__B, 1);
++    }
++    if (arm_cpu_data_is_big_endian_a32(env, sctlr_b)) {
++        DP_TBFLAG_ANY(flags, BE_DATA, 1);
++    }
++    DP_TBFLAG_A32(flags, NS, !access_secure_reg(env));
++
++    return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
++}
++
++static CPUARMTBFlags rebuild_hflags_m32(CPUARMState *env, int fp_el,
++                                        ARMMMUIdx mmu_idx)
++{
++    CPUARMTBFlags flags = {};
++    uint32_t ccr = env->v7m.ccr[env->v7m.secure];
++
++    /* Without HaveMainExt, CCR.UNALIGN_TRP is RES1. */
++    if (ccr & R_V7M_CCR_UNALIGN_TRP_MASK) {
++        DP_TBFLAG_ANY(flags, ALIGN_MEM, 1);
++    }
++
++    if (arm_v7m_is_handler_mode(env)) {
++        DP_TBFLAG_M32(flags, HANDLER, 1);
++    }
++
++    /*
++     * v8M always applies stack limit checks unless CCR.STKOFHFNMIGN
++     * is suppressing them because the requested execution priority
++     * is less than 0.
++     */
++    if (arm_feature(env, ARM_FEATURE_V8) &&
++        !((mmu_idx & ARM_MMU_IDX_M_NEGPRI) &&
++          (ccr & R_V7M_CCR_STKOFHFNMIGN_MASK))) {
++        DP_TBFLAG_M32(flags, STACKCHECK, 1);
++    }
++
++    if (arm_feature(env, ARM_FEATURE_M_SECURITY) && env->v7m.secure) {
++        DP_TBFLAG_M32(flags, SECURE, 1);
++    }
++
++    return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
++}
++
++/* This corresponds to the ARM pseudocode function IsFullA64Enabled(). */
++static bool sme_fa64(CPUARMState *env, int el)
++{
++    if (!cpu_isar_feature(aa64_sme_fa64, env_archcpu(env))) {
++        return false;
++    }
++
++    if (el <= 1 && !el_is_in_host(env, el)) {
++        if (!FIELD_EX64(env->vfp.smcr_el[1], SMCR, FA64)) {
++            return false;
++        }
++    }
++    if (el <= 2 && arm_is_el2_enabled(env)) {
++        if (!FIELD_EX64(env->vfp.smcr_el[2], SMCR, FA64)) {
++            return false;
++        }
++    }
++    if (arm_feature(env, ARM_FEATURE_EL3)) {
++        if (!FIELD_EX64(env->vfp.smcr_el[3], SMCR, FA64)) {
++            return false;
++        }
++    }
++
++    return true;
++}
++
++static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
++                                        ARMMMUIdx mmu_idx)
++{
++    CPUARMTBFlags flags = {};
++    int el = arm_current_el(env);
++
++    if (arm_sctlr(env, el) & SCTLR_A) {
++        DP_TBFLAG_ANY(flags, ALIGN_MEM, 1);
++    }
++
++    if (arm_el_is_aa64(env, 1)) {
++        DP_TBFLAG_A32(flags, VFPEN, 1);
++    }
++
++    if (el < 2 && env->cp15.hstr_el2 &&
++        (arm_hcr_el2_eff(env) & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
++        DP_TBFLAG_A32(flags, HSTR_ACTIVE, 1);
++    }
++
++    if (env->uncached_cpsr & CPSR_IL) {
++        DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
++    }
++
++    /*
++     * The SME exception we are testing for is raised via
++     * AArch64.CheckFPAdvSIMDEnabled(), as called from
++     * AArch32.CheckAdvSIMDOrFPEnabled().
++     */
++    if (el == 0
++        && FIELD_EX64(env->svcr, SVCR, SM)
++        && (!arm_is_el2_enabled(env)
++            || (arm_el_is_aa64(env, 2) && !(env->cp15.hcr_el2 & HCR_TGE)))
++        && arm_el_is_aa64(env, 1)
++        && !sme_fa64(env, el)) {
++        DP_TBFLAG_A32(flags, SME_TRAP_NONSTREAMING, 1);
++    }
++
++    return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
++}
++
++static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
++                                        ARMMMUIdx mmu_idx)
++{
++    CPUARMTBFlags flags = {};
++    ARMMMUIdx stage1 = stage_1_mmu_idx(mmu_idx);
++    uint64_t tcr = regime_tcr(env, mmu_idx);
++    uint64_t sctlr;
++    int tbii, tbid;
++
++    DP_TBFLAG_ANY(flags, AARCH64_STATE, 1);
++
++    /* Get control bits for tagged addresses.  */
++    tbid = aa64_va_parameter_tbi(tcr, mmu_idx);
++    tbii = tbid & ~aa64_va_parameter_tbid(tcr, mmu_idx);
++
++    DP_TBFLAG_A64(flags, TBII, tbii);
++    DP_TBFLAG_A64(flags, TBID, tbid);
++
++    if (cpu_isar_feature(aa64_sve, env_archcpu(env))) {
++        int sve_el = sve_exception_el(env, el);
++
++        /*
++         * If either FP or SVE are disabled, translator does not need len.
++         * If SVE EL > FP EL, FP exception has precedence, and translator
++         * does not need SVE EL.  Save potential re-translations by forcing
++         * the unneeded data to zero.
++         */
++        if (fp_el != 0) {
++            if (sve_el > fp_el) {
++                sve_el = 0;
++            }
++        } else if (sve_el == 0) {
++            DP_TBFLAG_A64(flags, VL, sve_vqm1_for_el(env, el));
++        }
++        DP_TBFLAG_A64(flags, SVEEXC_EL, sve_el);
++    }
++    if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
++        int sme_el = sme_exception_el(env, el);
++        bool sm = FIELD_EX64(env->svcr, SVCR, SM);
++
++        DP_TBFLAG_A64(flags, SMEEXC_EL, sme_el);
++        if (sme_el == 0) {
++            /* Similarly, do not compute SVL if SME is disabled. */
++            int svl = sve_vqm1_for_el_sm(env, el, true);
++            DP_TBFLAG_A64(flags, SVL, svl);
++            if (sm) {
++                /* If SVE is disabled, we will not have set VL above. */
++                DP_TBFLAG_A64(flags, VL, svl);
++            }
++        }
++        if (sm) {
++            DP_TBFLAG_A64(flags, PSTATE_SM, 1);
++            DP_TBFLAG_A64(flags, SME_TRAP_NONSTREAMING, !sme_fa64(env, el));
++        }
++        DP_TBFLAG_A64(flags, PSTATE_ZA, FIELD_EX64(env->svcr, SVCR, ZA));
++    }
++
++    sctlr = regime_sctlr(env, stage1);
++
++    if (sctlr & SCTLR_A) {
++        DP_TBFLAG_ANY(flags, ALIGN_MEM, 1);
++    }
++
++    if (arm_cpu_data_is_big_endian_a64(el, sctlr)) {
++        DP_TBFLAG_ANY(flags, BE_DATA, 1);
++    }
++
++    if (cpu_isar_feature(aa64_pauth, env_archcpu(env))) {
++        /*
++         * In order to save space in flags, we record only whether
++         * pauth is "inactive", meaning all insns are implemented as
++         * a nop, or "active" when some action must be performed.
++         * The decision of which action to take is left to a helper.
++         */
++        if (sctlr & (SCTLR_EnIA | SCTLR_EnIB | SCTLR_EnDA | SCTLR_EnDB)) {
++            DP_TBFLAG_A64(flags, PAUTH_ACTIVE, 1);
++        }
++    }
++
++    if (cpu_isar_feature(aa64_bti, env_archcpu(env))) {
++        /* Note that SCTLR_EL[23].BT == SCTLR_BT1.  */
++        if (sctlr & (el == 0 ? SCTLR_BT0 : SCTLR_BT1)) {
++            DP_TBFLAG_A64(flags, BT, 1);
++        }
++    }
++
++    /* Compute the condition for using AccType_UNPRIV for LDTR et al. */
++    if (!(env->pstate & PSTATE_UAO)) {
++        switch (mmu_idx) {
++        case ARMMMUIdx_E10_1:
++        case ARMMMUIdx_E10_1_PAN:
++            /* TODO: ARMv8.3-NV */
++            DP_TBFLAG_A64(flags, UNPRIV, 1);
++            break;
++        case ARMMMUIdx_E20_2:
++        case ARMMMUIdx_E20_2_PAN:
++            /*
++             * Note that EL20_2 is gated by HCR_EL2.E2H == 1, but EL20_0 is
++             * gated by HCR_EL2.<E2H,TGE> == '11', and so is LDTR.
++             */
++            if (env->cp15.hcr_el2 & HCR_TGE) {
++                DP_TBFLAG_A64(flags, UNPRIV, 1);
++            }
++            break;
++        default:
++            break;
++        }
++    }
++
++    if (env->pstate & PSTATE_IL) {
++        DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
++    }
++
++    if (cpu_isar_feature(aa64_mte, env_archcpu(env))) {
++        /*
++         * Set MTE_ACTIVE if any access may be Checked, and leave clear
++         * if all accesses must be Unchecked:
++         * 1) If no TBI, then there are no tags in the address to check,
++         * 2) If Tag Check Override, then all accesses are Unchecked,
++         * 3) If Tag Check Fail == 0, then Checked access have no effect,
++         * 4) If no Allocation Tag Access, then all accesses are Unchecked.
++         */
++        if (allocation_tag_access_enabled(env, el, sctlr)) {
++            DP_TBFLAG_A64(flags, ATA, 1);
++            if (tbid
++                && !(env->pstate & PSTATE_TCO)
++                && (sctlr & (el == 0 ? SCTLR_TCF0 : SCTLR_TCF))) {
++                DP_TBFLAG_A64(flags, MTE_ACTIVE, 1);
++            }
++        }
++        /* And again for unprivileged accesses, if required.  */
++        if (EX_TBFLAG_A64(flags, UNPRIV)
++            && tbid
++            && !(env->pstate & PSTATE_TCO)
++            && (sctlr & SCTLR_TCF0)
++            && allocation_tag_access_enabled(env, 0, sctlr)) {
++            DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
++        }
++        /* Cache TCMA as well as TBI. */
++        DP_TBFLAG_A64(flags, TCMA, aa64_va_parameter_tcma(tcr, mmu_idx));
++    }
++
++    return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
++}
++
++static CPUARMTBFlags rebuild_hflags_internal(CPUARMState *env)
++{
++    int el = arm_current_el(env);
++    int fp_el = fp_exception_el(env, el);
++    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
++
++    if (is_a64(env)) {
++        return rebuild_hflags_a64(env, el, fp_el, mmu_idx);
++    } else if (arm_feature(env, ARM_FEATURE_M)) {
++        return rebuild_hflags_m32(env, fp_el, mmu_idx);
++    } else {
++        return rebuild_hflags_a32(env, fp_el, mmu_idx);
++    }
++}
++
++void arm_rebuild_hflags(CPUARMState *env)
++{
++    env->hflags = rebuild_hflags_internal(env);
++}
++
++/*
++ * If we have triggered a EL state change we can't rely on the
++ * translator having passed it to us, we need to recompute.
++ */
++void HELPER(rebuild_hflags_m32_newel)(CPUARMState *env)
++{
++    int el = arm_current_el(env);
++    int fp_el = fp_exception_el(env, el);
++    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
++
++    env->hflags = rebuild_hflags_m32(env, fp_el, mmu_idx);
++}
++
++void HELPER(rebuild_hflags_m32)(CPUARMState *env, int el)
++{
++    int fp_el = fp_exception_el(env, el);
++    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
++
++    env->hflags = rebuild_hflags_m32(env, fp_el, mmu_idx);
++}
++
++/*
++ * If we have triggered a EL state change we can't rely on the
++ * translator having passed it to us, we need to recompute.
++ */
++void HELPER(rebuild_hflags_a32_newel)(CPUARMState *env)
++{
++    int el = arm_current_el(env);
++    int fp_el = fp_exception_el(env, el);
++    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
++    env->hflags = rebuild_hflags_a32(env, fp_el, mmu_idx);
++}
++
++void HELPER(rebuild_hflags_a32)(CPUARMState *env, int el)
++{
++    int fp_el = fp_exception_el(env, el);
++    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
++
++    env->hflags = rebuild_hflags_a32(env, fp_el, mmu_idx);
++}
++
++void HELPER(rebuild_hflags_a64)(CPUARMState *env, int el)
++{
++    int fp_el = fp_exception_el(env, el);
++    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
++
++    env->hflags = rebuild_hflags_a64(env, el, fp_el, mmu_idx);
++}
++
++void assert_hflags_rebuild_correctly(CPUARMState *env)
++{
++#ifdef CONFIG_DEBUG_TCG
++    CPUARMTBFlags c = env->hflags;
++    CPUARMTBFlags r = rebuild_hflags_internal(env);
++
++    if (unlikely(c.flags != r.flags || c.flags2 != r.flags2)) {
++        fprintf(stderr, "TCG hflags mismatch "
++                        "(current:(0x%08x,0x" TARGET_FMT_lx ")"
++                        " rebuilt:(0x%08x,0x" TARGET_FMT_lx ")\n",
++                c.flags, c.flags2, r.flags, r.flags2);
++        abort();
++    }
++#endif
++}
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index 47006f903c..25bc98999e 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -25,6 +25,7 @@ arm_ss.add(files(
+   'translate-vfp.c',
+   'crypto_helper.c',
+   'debug_helper.c',
++  'hflags.c',
+   'iwmmxt_helper.c',
+   'm_helper.c',
+   'mve_helper.c',
 -- 
 2.35.3

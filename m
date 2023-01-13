@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp414402ejc;
-        Fri, 13 Jan 2023 06:07:00 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXt8L5RE69zU+43ZxYy6FBI4Uh4VFUHm63FoFxlkbIY3eRf39P32EC9/m9C/gMSCvsY5y1Hb
-X-Received: by 2002:a5d:624f:0:b0:24d:12ce:2dca with SMTP id m15-20020a5d624f000000b0024d12ce2dcamr52851680wrv.53.1673618820521;
-        Fri, 13 Jan 2023 06:07:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673618820; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp414453ejc;
+        Fri, 13 Jan 2023 06:07:04 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXudZfvmRhDud08NTFi/Xj6p+SBRgb5GXr4+ji50UmBDwpI4O+PS9N5VI3StIQK/+1uN5z17
+X-Received: by 2002:a05:600c:3482:b0:3d3:4f56:62e1 with SMTP id a2-20020a05600c348200b003d34f5662e1mr56789523wmq.27.1673618824183;
+        Fri, 13 Jan 2023 06:07:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673618824; cv=none;
         d=google.com; s=arc-20160816;
-        b=ENyFqZQMKtm5sZXPO42W4YdMowCnGz1z+3G5BoZ6o+JOhajh1KyyeamrjIS9Z1jN6K
-         o4YTbrl1+LACux750COtHlrdtAM07tuhmAWZH3hg74lVt8h2iDmw8csuUiHlN1YnxDDL
-         P4mEKGiKZjHmsWxbrSKVTQhPKumg/SHQP2hA6Tfeq6lBjDgnStk3plv/jbkJdLZ9AY19
-         oMADvr6ps92ttwW2jBE/EZs9lHV2dzlxzlCVB9q52GO8lM2TIgnA1pOtfrmlmIuDrHEi
-         aWbGzmhm9dqHPITJinKUCvMVoibrKtbrbDMosAN0FiDWLDt+AntYGNo8kkfbFA/Pnpws
-         Dr6w==
+        b=HGLd1a4yp3bg+TRJ6o0O+WcP7Ixuaf3QEgKhaGH6PZMUp1OTCkZRN5eW+CIeP0YgcT
+         xbN/+VU7Q3OQowf7B1j7yRwbYXTad2ApmkW9ZcSQmWOylF698PZH8VRrGz46vMkxOi88
+         DpBMt/rdxkhsIpGczfTWRI9Yzm/eSWggr8+w217Wi6jvrzxWMOVn1q/KKDq+pIVYgxhp
+         aiwJirGcnvc1HU2t8H3YE0MDPGMvn6ebdcajTkeuRdI0LZjbtYPZ80VPohzi+acDVOPx
+         QYF9nnDHfo7OAwqzj5EZK9B9PISPjT8ovUlIq874DYDRenC95YTkM5u3UKS+lN/Gal8k
+         lHdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=2bZNRFBZ+XzBgzjYJl5VTmOByJ6GMFubKN5YaXKn3TM=;
-        b=m03mW4U5XDAd5UeAMRS8nVfzocZZVRrF8ISFfLzLravJGree0W78P1CbADdU9trxL9
-         aNc7EYvYudFzVpYChp3DaH9PUl5VI+4n9e5VSB1PhMv1tacjyFQ2AZCx2TvCs0OsPwLO
-         0b12wQWatyqXPQJtyzg/7Kiov7+cDXCdJYzhj/IJHSt/jjQ5TqdXp1rFjYa0zeWsN7HM
-         RxxKopduHRO/fEdBKDf3D6/SNTQTmvwLxhS+EM7nq6E/5zJvXHvtIdAYCcLRHykltGiO
-         6d7pvtNmareeTYmtS69/YLVs2BAxgCbT9dWPfFzY6uz+o28rJM2LO0ugNbmmtYp+SR5g
-         q2Qw==
+        bh=M8GtUMzNwfhihhOG15xJRQ6eN0+OBvVcoq7KwxHxFAU=;
+        b=EddSxaoyKGN++sLcG98XSQ/RCApq+X3vFAqWOicNcmm8W5sTqlQ9d1+vCw+bNbCz3L
+         5AHgDMUWCzzB4Qa2Z9GwQJC/deDhRqGbNJsdndZUFsi/oiUo/c4McyMDfPPUV65g3pYt
+         ywzwnlOKwoRrA3j7X6frnirZsAXMW/0X+lMBLRHuGB7PTwJZwb7UZVb90E5dAIEIMuSS
+         CWAs1a6bOHEqsIpgMSmK6mCeRE7zAN8kI/4zs8hwMQtRn+5Qm8JyNDYZ4beuA0Xea3oO
+         0Nv2soEC136W7K4mOqzwk0V+fMA/t5l9fLUWX1vSU/ZwBkAmHRZS7hlauQdj8vmyYH2b
+         6eGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=DyZT4kBk;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=uBBavFlo;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=wrzyKqNq;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id cl4-20020a5d5f04000000b002bdd1b83fcfsi4370365wrb.575.2023.01.13.06.07.00
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id fl8-20020a05600c0b8800b003d1bf5e497dsi16007595wmb.116.2023.01.13.06.07.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jan 2023 06:07:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Fri, 13 Jan 2023 06:07:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=DyZT4kBk;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=uBBavFlo;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=wrzyKqNq;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id F003B60313;
-	Fri, 13 Jan 2023 14:06:59 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 08E866B4ED;
+	Fri, 13 Jan 2023 14:07:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673618819; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	t=1673618823; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=2bZNRFBZ+XzBgzjYJl5VTmOByJ6GMFubKN5YaXKn3TM=;
-	b=DyZT4kBk1NRttRDXENVEgUmLcf/mLmr2M/AR1U8/NzCiApUWPRqS7hpGGXSyg/SMYilLQz
-	kQaWExK+EfeF9fslmQLgvIKyz0avR84cXvGCh5r3FhdZnRjmhaRjIT/LUla5a43lC8MGl3
-	e28oUiwR5sJEKoG/0Z93/6jzaG4RLgI=
+	bh=M8GtUMzNwfhihhOG15xJRQ6eN0+OBvVcoq7KwxHxFAU=;
+	b=wrzyKqNqx0VxRKgiIrBlde1PTbbR7675KpY5mQQMSAHn/FeepabAfXVxEfHN04RG2TQAvq
+	hp70YXArZ5U6rYU1QE3bz8Agi4pHlaGgkrozlwSBaJJJMMAXdVqtQC2DOhDv/w2fJeelIj
+	0fodTv4OnRq88NilUPef/i7i0e8ZDmo=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673618819;
+	s=susede2_ed25519; t=1673618823;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=2bZNRFBZ+XzBgzjYJl5VTmOByJ6GMFubKN5YaXKn3TM=;
-	b=uBBavFloHsUWwlFdnaxCG0iMx9VNl+kopYdiudSr6JkZ3UIcp8XjK0l51YMf3bSrw9asaW
-	+wCdX0r+5wRBt9DA==
+	bh=M8GtUMzNwfhihhOG15xJRQ6eN0+OBvVcoq7KwxHxFAU=;
+	b=M6KPQN+fP56lGXYn7/n2R0bl5TQj8VnHC9qfOdjJzCbSOCazvBf8ZEHDvLfSW2LS6MzqdG
+	GtRbqoozQtGymHCA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 5A8CC1358A;
-	Fri, 13 Jan 2023 14:06:57 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6DEA21358A;
+	Fri, 13 Jan 2023 14:07:00 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id wLViCYFlwWP8DQAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:06:57 +0000
+	id gOUiDoRlwWP8DQAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 13 Jan 2023 14:07:00 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,57 +82,221 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>
-Subject: [RFC PATCH v3 11/28] target/arm: Move psci.c into the tcg directory
-Date: Fri, 13 Jan 2023 11:04:02 -0300
-Message-Id: <20230113140419.4013-12-farosas@suse.de>
+Subject: [RFC PATCH v3 12/28] target/arm: Wrap arm_rebuild_hflags calls with tcg_enabled
+Date: Fri, 13 Jan 2023 11:04:03 -0300
+Message-Id: <20230113140419.4013-13-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230113140419.4013-1-farosas@suse.de>
 References: <20230113140419.4013-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: iaF1V9/fckda
+X-TUID: xYawW2+M4/if
 
-From: Claudio Fontana <cfontana@suse.de>
+This is in preparation to moving the hflags code into its own file
+under the tcg/ directory.
 
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/meson.build      | 1 -
- target/arm/tcg/meson.build  | 4 ++++
- target/arm/{ => tcg}/psci.c | 0
- 3 files changed, 4 insertions(+), 1 deletion(-)
- rename target/arm/{ => tcg}/psci.c (100%)
+I extracted these into a separate patch so we can discuss. If I move
+the tcg_enabled check to a header that would add overhead for all the
+calls where we know for sure that the code is running with TCG. And I
+don't think we want a new arm_rebuild_hflags_foo to be used for common
+code.
+---
+ hw/arm/boot.c             |  6 +++++-
+ hw/intc/armv7m_nvic.c     | 20 +++++++++++++-------
+ target/arm/arm-powerctl.c |  7 +++++--
+ target/arm/cpregs.c       |  2 +-
+ target/arm/cpu.c          |  3 ++-
+ target/arm/helper.c       | 16 ++++++++++++----
+ target/arm/machine.c      |  5 ++++-
+ 7 files changed, 42 insertions(+), 17 deletions(-)
 
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 01143a805c..595d22a099 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -22,7 +22,6 @@ arm_softmmu_ss.add(files(
-   'arm-powerctl.c',
-   'machine.c',
-   'monitor.c',
--  'psci.c',
-   'ptw.c',
- ))
- 
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index c27ac2939c..47006f903c 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -44,3 +44,7 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'sme_helper.c',
-   'sve_helper.c',
- ))
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 3d7d11f782..1e021c4a34 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -15,6 +15,7 @@
+ #include "hw/arm/boot.h"
+ #include "hw/arm/linux-boot-if.h"
+ #include "sysemu/kvm.h"
++#include "sysemu/tcg.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/numa.h"
+ #include "hw/boards.h"
+@@ -827,7 +828,10 @@ static void do_cpu_reset(void *opaque)
+                 info->secondary_cpu_reset_hook(cpu, info);
+             }
+         }
+-        arm_rebuild_hflags(env);
 +
-+arm_softmmu_ss.add(files(
-+  'psci.c',
-+))
-diff --git a/target/arm/psci.c b/target/arm/tcg/psci.c
-similarity index 100%
-rename from target/arm/psci.c
-rename to target/arm/tcg/psci.c
++        if (tcg_enabled()) {
++            arm_rebuild_hflags(env);
++        }
+     }
+ }
+ 
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 1f7763964c..74ac8f610c 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -18,6 +18,7 @@
+ #include "hw/intc/armv7m_nvic.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
++#include "sysemu/tcg.h"
+ #include "sysemu/runstate.h"
+ #include "target/arm/cpu.h"
+ #include "exec/exec-all.h"
+@@ -2466,8 +2467,10 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
+     /* This is UNPREDICTABLE; treat as RAZ/WI */
+ 
+  exit_ok:
+-    /* Ensure any changes made are reflected in the cached hflags.  */
+-    arm_rebuild_hflags(&s->cpu->env);
++    if (tcg_enabled()) {
++        /* Ensure any changes made are reflected in the cached hflags. */
++        arm_rebuild_hflags(&s->cpu->env);
++    }
+     return MEMTX_OK;
+ }
+ 
+@@ -2648,11 +2651,14 @@ static void armv7m_nvic_reset(DeviceState *dev)
+         }
+     }
+ 
+-    /*
+-     * We updated state that affects the CPU's MMUidx and thus its hflags;
+-     * and we can't guarantee that we run before the CPU reset function.
+-     */
+-    arm_rebuild_hflags(&s->cpu->env);
++    if (tcg_enabled()) {
++        /*
++         * We updated state that affects the CPU's MMUidx and thus its
++         * hflags; and we can't guarantee that we run before the CPU
++         * reset function.
++         */
++        arm_rebuild_hflags(&s->cpu->env);
++    }
+ }
+ 
+ static void nvic_systick_trigger(void *opaque, int n, int level)
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index b75f813b40..326a03153d 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -15,6 +15,7 @@
+ #include "arm-powerctl.h"
+ #include "qemu/log.h"
+ #include "qemu/main-loop.h"
++#include "sysemu/tcg.h"
+ 
+ #ifndef DEBUG_ARM_POWERCTL
+ #define DEBUG_ARM_POWERCTL 0
+@@ -127,8 +128,10 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+         target_cpu->env.regs[0] = info->context_id;
+     }
+ 
+-    /* CP15 update requires rebuilding hflags */
+-    arm_rebuild_hflags(&target_cpu->env);
++    if (tcg_enabled()) {
++        /* CP15 update requires rebuilding hflags */
++        arm_rebuild_hflags(&target_cpu->env);
++    }
+ 
+     /* Start the new CPU at the requested address */
+     cpu_set_pc(target_cpu_state, info->entry);
+diff --git a/target/arm/cpregs.c b/target/arm/cpregs.c
+index dee03f8a41..a353fb9b03 100644
+--- a/target/arm/cpregs.c
++++ b/target/arm/cpregs.c
+@@ -5179,7 +5179,7 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     /* This may enable/disable the MMU, so do a TLB flush.  */
+     tlb_flush(CPU(cpu));
+ 
+-    if (ri->type & ARM_CP_SUPPRESS_TB_END) {
++    if (tcg_enabled() && ri->type & ARM_CP_SUPPRESS_TB_END) {
+         /*
+          * Normally we would always end the TB on an SCTLR write; see the
+          * comment in ARMCPRegInfo sctlr initialization below for why Xscale
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index d7ceb626f0..ce1a425e10 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -539,8 +539,9 @@ static void arm_cpu_reset_hold(Object *obj)
+     if (tcg_enabled()) {
+         hw_breakpoint_update_all(cpu);
+         hw_watchpoint_update_all(cpu);
++
++        arm_rebuild_hflags(env);
+     }
+-    arm_rebuild_hflags(env);
+ }
+ 
+ #if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0c3e72a266..5188d0ddbf 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -340,7 +340,9 @@ void aarch64_set_svcr(CPUARMState *env, uint64_t new, uint64_t mask)
+         memset(env->zarray, 0, sizeof(env->zarray));
+     }
+ 
+-    arm_rebuild_hflags(env);
++    if (tcg_enabled()) {
++        arm_rebuild_hflags(env);
++    }
+ }
+ #endif /* TARGET_AARCH64 */
+ 
+@@ -609,7 +611,7 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
+     }
+     mask &= ~CACHED_CPSR_BITS;
+     env->uncached_cpsr = (env->uncached_cpsr & ~mask) | (val & mask);
+-    if (rebuild_hflags) {
++    if (tcg_enabled() && rebuild_hflags) {
+         arm_rebuild_hflags(env);
+     }
+ }
+@@ -1168,7 +1170,10 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+         env->regs[14] = env->regs[15] + offset;
+     }
+     env->regs[15] = newpc;
+-    arm_rebuild_hflags(env);
++
++    if (tcg_enabled()) {
++        arm_rebuild_hflags(env);
++    }
+ }
+ 
+ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
+@@ -1724,7 +1729,10 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+     pstate_write(env, PSTATE_DAIF | new_mode);
+     env->aarch64 = true;
+     aarch64_restore_sp(env, new_el);
+-    helper_rebuild_hflags_a64(env, new_el);
++
++    if (tcg_enabled()) {
++        helper_rebuild_hflags_a64(env, new_el);
++    }
+ 
+     env->pc = addr;
+ 
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index fd6323f6d8..fc4a4a4064 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -871,7 +871,10 @@ static int cpu_post_load(void *opaque, int version_id)
+     if (!kvm_enabled()) {
+         pmu_op_finish(&cpu->env);
+     }
+-    arm_rebuild_hflags(&cpu->env);
++
++    if (tcg_enabled()) {
++        arm_rebuild_hflags(&cpu->env);
++    }
+ 
+     return 0;
+ }
 -- 
 2.35.3

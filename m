@@ -1,123 +1,123 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp226785ejc;
-        Fri, 13 Jan 2023 00:48:21 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvaC2kNNM/Rmlf2AohWCBwSqswAnUEK508r533qpKCYsW71krN7o/vhAbVE7UDnhkHWVb/n
-X-Received: by 2002:ac8:4747:0:b0:3b3:560b:353 with SMTP id k7-20020ac84747000000b003b3560b0353mr555433qtp.63.1673599701147;
-        Fri, 13 Jan 2023 00:48:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673599701; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp246447ejc;
+        Fri, 13 Jan 2023 01:28:32 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsqoJHDT/3XwFIT4Zzuo1ENSSmRPJBizq1bt321eLrWFAp2Y0eSTKD85i/cGqpp+O/t9N1P
+X-Received: by 2002:a0c:f7c7:0:b0:534:228d:875f with SMTP id f7-20020a0cf7c7000000b00534228d875fmr14078444qvo.16.1673602112003;
+        Fri, 13 Jan 2023 01:28:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673602111; cv=none;
         d=google.com; s=arc-20160816;
-        b=M4TF9TNqJ8kDqtxd2hgWx7gxSnCgo0kprm4IbAqHQj/ky94350U1X8ppzgHG0c9YKJ
-         cBPyphTM3rQe31+tTdzdImmnn7nGi5WzFIGiNWhQvWg4Lkogt0G3OVjGlwrXgn46aNOC
-         IzQtj01fNfc8UVk5fD4enDrsWm9S+ZYDvnaDFv9FrotdK53+VxGq9v2+f2gpmAxj7G4x
-         kFBRJunZ9RJWyhs7EbEfRe5F3x9PXm3qMZ114+zqMXFNWmJgktgqb7p7MT9jr567DQb7
-         8a6WZkp54gw32dUNXoYPo5s9MdbVUTyLhJbeN8QIpr3piEPNF7UnMc/55urwh0utFtyZ
-         G4Rg==
+        b=XpcPPPHCAmDG+kh2NJCYbosMYMRdf8dtm1Gb81QlVnHk8EyTh4eqyeAoDa/Yg3/6VO
+         dZNvi7F3OtWYGiBhLFbFq/J8oUL2IJCyKBq3n7eay5xeCXt1tigpZgd2bGVetiRtkDEB
+         KLnT5R15NvRHUmqXnku9BRpHAAFiLl3HbSETPn9bBiBlr+rmmD2V0ZHN1JWFD09ygJcc
+         aIklVSth3R6q1RUBKpUszWib7DUxxmvwpNyiQbBhXf5iR5RVBGZNgJpYZ9X10lBHinTG
+         XfhczcvbMmisuOznEX58pcIirC8P+q/BCfaIE6jwhC3rnZ+BKob4HKRVZm9KWo+/9QWL
+         O/wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
+         :in-reply-to:subject:from:cc:references:to:content-language
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=7sN7mW/rsD8601mF/U9Jne/Qx7dXlGG7c7jydlSEIN0=;
-        b=mRQ8tR09sLzSbfEXYDMD2gf3I2yZd4mgsJPSOQxS9/vZTYTUNFJKMYHAhZ/bpYSTF+
-         D9B9Nlps6IS4gG8loymLGj9EBGbUMrKV/nIds+oRdzrDgwHlanCD/5LEEaJesI6h0dG2
-         zZTW8Hs1n3a2bmKH64jVd14Hyk9oz4r5eEhvnzo/2MmSmaBl60nbA6EiXlwSEQ3ugfMX
-         buaXN9w2m99VOgF9cNrkXXqNwSliC/M+BS8IEYJ/yPY8H43tfWISEkTEIDpHkl94zu1N
-         9McDVxxTZPqvvxgfAR8PfbQJDKnyIKSJyDmvcX5omeK3LheyWQk2FUs4QfsQWHGutVxd
-         bQvg==
+        bh=J3gUJmQAhlQ1U4sUUKpO210Cnl04uqDCCn0c5sYAZ4k=;
+        b=qig/ex7YYsyuvaPurgZDZpgicDWeylIqRo8kNPVXo5Nu6Dk2dcxY1WJNKmYZ0+/9IC
+         bJmcXtuV9W/MiM5IkdVTIO9dNgmsG5+w1SzbuSQFmpq/TjO3HZj5XqT9SFjcpu3k6MvC
+         hjr/4jbL+iRP8NGKnFl3sqkCkGM5Gq6Mm4SlmkcoHEKxrxqci9jMW0w+ZFDbgOs2meVJ
+         NBkP9UBA+Xw/6G9hT7BP1L/9s7jekZAnhXuWnZ1l4mXi3Gi7TQmCu0wcjoXg714zMHKi
+         hlFWrpvtvegot55Xk2fAzZmg7SjHA8Uz+5KEF6Cy5/D9kb8505zWt+MIODYpafJH3SnT
+         b5Qg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LQZBHvLI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eTmhwTpH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTP id e1-20020ac80641000000b003a5cacb9ca9si10883121qth.539.2023.01.13.00.48.20
+        by mx.google.com with ESMTP id jr3-20020a0562142a8300b004c6fde7f98csi11250020qvb.434.2023.01.13.01.28.31
         for <alex.bennee@linaro.org>;
-        Fri, 13 Jan 2023 00:48:21 -0800 (PST)
+        Fri, 13 Jan 2023 01:28:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LQZBHvLI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eTmhwTpH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pGFiL-0002N5-DU; Fri, 13 Jan 2023 03:47:05 -0500
+	id 1pGGLG-00009R-Sp; Fri, 13 Jan 2023 04:27:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGFiG-0002M4-1w
- for qemu-devel@nongnu.org; Fri, 13 Jan 2023 03:47:02 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGFiD-0005dg-9Y
- for qemu-devel@nongnu.org; Fri, 13 Jan 2023 03:46:59 -0500
-Received: by mail-wr1-x431.google.com with SMTP id e3so11154223wru.13
- for <qemu-devel@nongnu.org>; Fri, 13 Jan 2023 00:46:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=7sN7mW/rsD8601mF/U9Jne/Qx7dXlGG7c7jydlSEIN0=;
- b=LQZBHvLI51DDd+o5Zl+DeTBbjEz0IetrBG0ADVDZbvaNgsYJ2qDQSsxOlMEqkqDsVN
- V7ngN0Wb8eHrYZvcKMSywsXG+7jfvHavuqVQPNduXu3gjgoCyFanxwhZXJN6EySbeYuB
- sCkl5CATkfrRuMX12+nNp55E51L1i7Zjaxid49Uake8n+X7G6+EnyMm7E5igGVmh8bK/
- FaxABAS4+/KiFVu8UJiZmgthWxVy1BLycecoOW+le+v39SdR0rEJrU2j8GBafUpTCSdX
- b38vkENFWLH8RdmFbD5lK9EF4RgMpJP682h291Q9TIHhLAlFVWPkgoMwUdBfvR7xTMKi
- EAyw==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pGGLE-00008z-Pz
+ for qemu-devel@nongnu.org; Fri, 13 Jan 2023 04:27:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pGGLC-0004tl-S5
+ for qemu-devel@nongnu.org; Fri, 13 Jan 2023 04:27:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1673602034;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=J3gUJmQAhlQ1U4sUUKpO210Cnl04uqDCCn0c5sYAZ4k=;
+ b=eTmhwTpHNN8K2culPPqHYDtOw4WX0fzB+KK10dAAA7zMvkyeEO3daJWMgSbcOrBLKnRmf7
+ HJE5vsylggIXTBzCMTO1J1jPqaGdH3oIXysYq2VnYc/Ppv8uPkousbNAoNVZKDDOUGoc0M
+ ctc3C/PvvT68L6BAuQTuTkPqfx05AVo=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-377-stjNplb5NuuYtioChB9xKw-1; Fri, 13 Jan 2023 04:27:12 -0500
+X-MC-Unique: stjNplb5NuuYtioChB9xKw-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ n9-20020a05600c3b8900b003d9f14e904eso7957086wms.9
+ for <qemu-devel@nongnu.org>; Fri, 13 Jan 2023 01:27:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:subject:from:cc:references:to
+ :content-language:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7sN7mW/rsD8601mF/U9Jne/Qx7dXlGG7c7jydlSEIN0=;
- b=5ElKi8eFuIQ5O+EayNTMEIOnMb00GEh8XlUKGyEzDR9cJ/gnPqJsLawCAHPoNRK/5Q
- p/aKVatmPFGgb2v+LuJPjv3S6nAKOi4H8I+4OcdLUzHPRZJjc50ChMfu/0f64shkVAnJ
- ZvfflqF3l1T0mhDW0AKLy8uAy6SrZpDOfE8eKwzVhES5cm9HtyxKft3/4S3MOUd9CSSX
- OoyAR6voE1xcNUERjClFClCmyio5mAUY+mXGdvpgmWTPrrE29k20ftUtk+rAlnx01PAh
- 2JQagIuadPnSROrg339muwyMR3x9eh6sSms77qa9YPhtqc0kXaWRqWn0uNmbYyeUwD7U
- 3SEA==
-X-Gm-Message-State: AFqh2kr68sv0tjlp5NQAAg5K5VnRVk3bXP+Jt2vxfDZiBYoLx+nEy7VC
- 7HYlM4ie3clLOfOqd85i6mCxDw==
-X-Received: by 2002:adf:ab16:0:b0:2b6:2eb3:82a1 with SMTP id
- q22-20020adfab16000000b002b62eb382a1mr19590668wrc.67.1673599615421; 
- Fri, 13 Jan 2023 00:46:55 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- az22-20020adfe196000000b002bddaea7a0bsm2345170wrb.57.2023.01.13.00.46.53
+ bh=J3gUJmQAhlQ1U4sUUKpO210Cnl04uqDCCn0c5sYAZ4k=;
+ b=5u4fvLcvifmhsKlTJxInNtugAbwsG/AdoH2Dkgggro9RiwgKVq+8pGOV9ZYwwQ4DdR
+ RQGbKBRJkcNbbF90NX/DXtLtBswv+JFOpxL7R3WXlaE13k6XnmpRFyGaej8wfYWPaxAy
+ BWg2zfIh1xlYMCpw5pyOug1AszeQYcUzEKJtwm4rS27wFkwu8Z7pjTcZQpegY4XMHTjX
+ I/ah/WxaAdCphu5pyVDNyzoF3jJdmYss47S6YzZWKLDO/ZbkKX+DNh72hqm+EV1T9VoN
+ LQLzEEzWUaZWdnb1b9B4hRIRW56/qRq7nX1cobVEJnrHG4GoWtZ/OTK2pxdgus8rRBI2
+ FDHA==
+X-Gm-Message-State: AFqh2kpWeR577zLGt9nQn2uuohoAlbobQqIVB6yF/muqFduvbDRte19y
+ urGuhhwIbpl6qNyNIe6HFfBNpMa21P+h6oDdhxFVGuzrskkMN8LUzFOoewX4m5iE7coKvaRgduX
+ 5dK2GzbW8ITbPk7g=
+X-Received: by 2002:a5d:4d8d:0:b0:2bd:ca88:d07a with SMTP id
+ b13-20020a5d4d8d000000b002bdca88d07amr4466995wru.33.1673602031867; 
+ Fri, 13 Jan 2023 01:27:11 -0800 (PST)
+X-Received: by 2002:a5d:4d8d:0:b0:2bd:ca88:d07a with SMTP id
+ b13-20020a5d4d8d000000b002bdca88d07amr4466974wru.33.1673602031496; 
+ Fri, 13 Jan 2023 01:27:11 -0800 (PST)
+Received: from [192.168.0.2] (ip-109-43-177-39.web.vodafone.de.
+ [109.43.177.39]) by smtp.gmail.com with ESMTPSA id
+ n13-20020a5d67cd000000b002bdcce37d31sm5247029wrw.99.2023.01.13.01.27.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Jan 2023 00:46:55 -0800 (PST)
-Message-ID: <211e791a-9d37-9655-ca93-9e3bda2e21c3@linaro.org>
-Date: Fri, 13 Jan 2023 09:46:53 +0100
+ Fri, 13 Jan 2023 01:27:10 -0800 (PST)
+Message-ID: <f1c34dd3-7e90-ff40-a1e0-b35f031b3a15@redhat.com>
+Date: Fri, 13 Jan 2023 10:27:09 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v6 00/33] Consolidate PIIX south bridges
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
 Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: John G Johnson <john.g.johnson@oracle.com>,
+To: Rot127 <unisono@quyllur.org>, qemu-devel@nongnu.org
+References: <c4ec12d4-e07c-ada9-5cec-744dae7c069b@quyllur.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, Ani Sinha <ani@anisinha.ca>,
- Eduardo Habkost <eduardo@habkost.net>, Gerd Hoffmann <kraxel@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
-References: <20230109172347.1830-1-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230109172347.1830-1-shentey@gmail.com>
+ capstone-users@lists.sourceforge.net
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [Capstone] Feedback request for new architecture updater
+In-Reply-To: <c4ec12d4-e07c-ada9-5cec-744dae7c069b@quyllur.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,61 +132,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sb2COovg5sFf
+X-TUID: fPOs4UvIGOgx
 
-Hi Bernhard,
-
-On 9/1/23 18:23, Bernhard Beschow wrote:
-> This series consolidates the implementations of the PIIX3 and PIIX4 south
-> bridges and is an extended version of [1]. The motivation is to share as much
-> code as possible and to bring both device models to feature parity such that
-> perhaps PIIX4 can become a drop-in-replacement for PIIX3 in the pc machine. This
-> could resolve the "Frankenstein" PIIX4-PM problem in PIIX3 discussed on this
-> list before.
-
-> Bernhard Beschow (30):
->    hw/pci/pci: Factor out pci_bus_map_irqs() from pci_bus_irqs()
->    hw/isa/piix3: Decouple INTx-to-LNKx routing which is board-specific
->    hw/isa/piix4: Decouple INTx-to-LNKx routing which is board-specific
->    hw/mips/Kconfig: Track Malta's PIIX dependencies via Kconfig
->    hw/usb/hcd-uhci: Introduce TYPE_ defines for device models
->    hw/intc/i8259: Make using the isa_pic singleton more type-safe
->    hw/intc/i8259: Introduce i8259 proxy TYPE_ISA_PIC
->    hw/i386/pc: Create RTC controllers in south bridges
->    hw/i386/pc: No need for rtc_state to be an out-parameter
->    hw/i386/pc_piix: Allow for setting properties before realizing PIIX3
->      south bridge
->    hw/isa/piix3: Create USB controller in host device
->    hw/isa/piix3: Create power management controller in host device
->    hw/isa/piix3: Create TYPE_ISA_PIC in host device
->    hw/isa/piix3: Create IDE controller in host device
->    hw/isa/piix3: Wire up ACPI interrupt internally
->    hw/isa/piix3: Resolve redundant PIIX_NUM_PIC_IRQS
->    hw/isa/piix3: Rename pci_piix3_props for sharing with PIIX4
->    hw/isa/piix3: Rename piix3_reset() for sharing with PIIX4
->    hw/isa/piix3: Drop the "3" from PIIX base class
->    hw/isa/piix4: Make PIIX4's ACPI and USB functions optional
->    hw/isa/piix4: Remove unused inbound ISA interrupt lines
->    hw/isa/piix4: Use TYPE_ISA_PIC device
->    hw/isa/piix4: Reuse struct PIIXState from PIIX3
->    hw/isa/piix4: Rename reset control operations to match PIIX3
->    hw/isa/piix3: Merge hw/isa/piix4.c
->    hw/isa/piix: Harmonize names of reset control memory regions
->    hw/isa/piix: Reuse PIIX3 base class' realize method in PIIX4
->    hw/isa/piix: Rename functions to be shared for interrupt triggering
->    hw/isa/piix: Consolidate IRQ triggering
->    hw/isa/piix: Share PIIX3's base class with PIIX4
+On 12/01/2023 17.24, Rot127 wrote:
+> I currently work on a new updater for architecture modules in Capstone.
 > 
-> Philippe Mathieu-Daudé (3):
->    hw/mips/malta: Introduce PIIX4_PCI_DEVFN definition
->    hw/mips/malta: Set PIIX4 IRQ routes in embedded bootloader
->    hw/isa/piix4: Correct IRQRC[A:D] reset values
+> The current update process has the problem that it is a lot of manual work.
+> Syncing the information from LLVM to Capstone requires a one to translate a 
+> lot of C++ to C code and fix a ton of build errors.
+> This lead to architecture modules not getting updated. So there are many new 
+> instructions in Capstone which are not supported.
+> 
+> The new updater will take away as much manual work as possible.
+> It does this by translating most C++ to C via a little translation tool and 
+> uses refactored LLVM-TableGen backends which emit directly the code Capstone 
+> needs.
+> Currently it is in a early stage but it is ready to receive some feedback.
+> 
+> If anyone finds the time to take a look at it and write down their thoughts, 
+> suggestions or improvement ideas, I would be very grateful.
+> 
+> Capstone draft PR: https://github.com/capstone-engine/capstone/pull/1949
 
-I'm queuing the first 10 patches for now to alleviate the size of this
-series, and I'll respin a v7 with the rest to avoid making you suffer
-any longer :/ Thanks for insisting in this effort and I apologize it
-is taking me so long...
+  Hi!
 
-Regards,
+Thanks for the heads up! I see your pull request addresses the ARM part of 
+Capstone, so I CC:-ed qemu-arm@nongnu.org in case anybody there wants to 
+give it a try.
 
-Phil.
+ From my personal point of view, what I really would love to see is an 
+update for sparc and mips in the next version of Capstone, so we could 
+finally get of the old disas/sparc.c and disas/mips.c files in QEMU (which 
+were still disassembling more instructions than Capstone 4.0, so we kept 
+them ... but AFAIK the upstream LLVM code implemented many missing 
+instructions in the past years, so if Capstone gets refreshed, it should be 
+good enough to replace the old code now).
+
+Do you have any plans to work on Sparc and Mips any time soon? If not, do 
+you have some short (shell) instructions how the update process 
+theoretically works - maybe someone else can help?
+
+  Thanks,
+   Thomas
+

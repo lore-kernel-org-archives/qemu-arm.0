@@ -1,187 +1,151 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp361804ejc;
-        Fri, 13 Jan 2023 04:49:47 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXta7Umge0xy5M4SCRsV8Epzle/5kiRl2fEbjU0613rrrmrvfQ2ZjQZAKj+UwTf2yVg8s8zG
-X-Received: by 2002:ac8:7513:0:b0:3a9:8b17:d090 with SMTP id u19-20020ac87513000000b003a98b17d090mr114019445qtq.36.1673614187634;
-        Fri, 13 Jan 2023 04:49:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673614187; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp406015ejc;
+        Fri, 13 Jan 2023 05:57:33 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXt6wodyUEpYdJfFm+Qhvl4+sahqWBCX5/UvwlM4e+g0VCK6oF83SsXlBXPkbbglPJvj6HIa
+X-Received: by 2002:a0c:90c5:0:b0:521:2df4:f467 with SMTP id p63-20020a0c90c5000000b005212df4f467mr153089336qvp.38.1673618252782;
+        Fri, 13 Jan 2023 05:57:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673618252; cv=none;
         d=google.com; s=arc-20160816;
-        b=x7plvyPyYoi60ghPBdNe8g9eWpBjwVi7wn7uG0hhbAuAA21h3Q28aoe98qh5ifbcln
-         TSGyNCsUscBZK2NJYAAy6IZN9WLpUAOOyhfGfPGZreO5O4TW3VlDUNYk0NVDjGjjmzTS
-         OVVBcBMOXcplgBfFPUVB5STHH7bGcLju7T0zrqKwuxQJbOcG8+/9MS9Elj3xj5YCDUb+
-         E5Kir4Stu580XPW843vPJERu+1ggtPwSXFaYPtTb1TF4S88WzcA3vMpxdztfuIIhFBAY
-         h6s2GNnZPUrEJOjqoftAYwZvmgC18VIVI+oGzEw+6EDGUv64G/Y9xzZFn2tCm7kL8Ygq
-         wOAg==
+        b=WgLPZ8/Rww0oLBV/2tvun7+nnkIak9YYz/zEMDnclg5jJ7z6TyQcPPLwKSSfHrkurl
+         AuziwcI7IPf9xmDVoaHFDtVbvbopc7GW0SvxrIzpqHICue9WBRrRkJaALKQhwE3png0k
+         3rajcMWHikvDD9Vdc8TX2993lF10ReZGE0tGNRE6ODPJiHot03f3F+74kFQ3yfN0qmJ6
+         aFWAXITVDetyhiVoEWqGajT/1F04hUvFpud4Bvrjr6ZJtIG3R7vX7+uj4Vim9pFtXCCK
+         SGV3K384QoJZ87Zx4IK+PVDL5eaXZ2QSy+D1Z5hLpYDcw6dOxcoiaJndThgs20x93ml1
+         kK+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=jgKk+Bp4VDQHumrIw+UiMcSHawBjFRqDdJL19jey4fI=;
-        b=HT+2dIvZRj5hR5bM3OC2teyOzzdLG+3Bd7dqT7GNS15STyWX7Ut9qfeGqvyF22+h0h
-         QTbLA1q2vUVo42ul0xg9ELP37WAKfBoqDlFWTYFIpAdiccHkKDDbZOxB3qdYzWy1bByg
-         0hsfmEpgahPo9tAjTWohkF07eHjMRP/Rmiu7FgwDhRItk7hqXsw7D4KJdvlc4Fejk94y
-         DaSye/RqIhmYrsnOzZT0ntHjXV3Ytd8i8S0LxOiTOKBmx5rDfS1Jzs335MK2BDOC/PJJ
-         UkPbQgcdCqMo/aVy5F7QzSyyUhAAXPIY12Ags4mxAmmReaXywxnphrDQxTs1JshlC/1k
-         35qA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=/NrQg7ILU0BG89aNNTPa3gdKfsMXOW9egUeImyvizTs=;
+        b=031amz5MTwu3OJAqgsVZDME4rMx/X0J9Gi9nTcE35NUdd/hgDf3z9sbiZ+J9rarVsB
+         UvByndkyg/k2AQ6lqioQc2dRgDPHCwKfzF4GdTo9htaKcqOhhNG4FafihPRjVUtX2ydD
+         TLKCE7ogleSF3UQdJvzxnF887dkEb/ZJFlIZ9ZmcjOBgd/PVHZSlk5bZEl1qxvjxr0Zk
+         u2z8WAMOdadeLPR8FnD8uaPZrQdtgksYYAEBsxL59VDfYhjU6J8IBmztn6MbOGZ50TjQ
+         kEoQ5uMtJc406F4rnfRoFJqAPR9HNF1+tXxCNV+Mip2xUhsSSTYnyBgJqy8ygD8dgqFV
+         OzZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="g/k/rbus";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DHgYrqkW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13-20020a05620a410d00b006edee0f497bsi13383734qko.30.2023.01.13.04.49.47
+        by mx.google.com with ESMTPS id fw6-20020a056214238600b004bba80844a7si11680466qvb.270.2023.01.13.05.57.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Jan 2023 04:49:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Jan 2023 05:57:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="g/k/rbus";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DHgYrqkW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pGJUq-0005a6-Pn; Fri, 13 Jan 2023 07:49:24 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pGKYZ-0002Fs-W2; Fri, 13 Jan 2023 08:57:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pGJUn-0005Zh-LQ
- for qemu-devel@nongnu.org; Fri, 13 Jan 2023 07:49:22 -0500
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pGJUl-0000Ai-Pm
- for qemu-devel@nongnu.org; Fri, 13 Jan 2023 07:49:21 -0500
-Received: by mail-pl1-x631.google.com with SMTP id c6so23350706pls.4
- for <qemu-devel@nongnu.org>; Fri, 13 Jan 2023 04:49:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=jgKk+Bp4VDQHumrIw+UiMcSHawBjFRqDdJL19jey4fI=;
- b=g/k/rbusRE4JXpvlBKu5tDms/YupK1oQWRCwyXtaxs+sf3SCWAI7z9ZZz6Cg7MwDEr
- cNjk33OtKUn1DcrzM50+Xb+31DnZ8QwflmXhfgCTteNBbLwUtAYwesJefqEG/9fdBkCU
- Mc8T2kivzqIBN52KfW+7fowmi3phJ77NtF5nsVK2sbQUX93qCxkZleURoFMz0enIKMzZ
- cyVgLjASdAjrhgdG03OOvJv1i7VmU5n6CIidDnHDw7K9YGJcwnyqeDHOl5rfwpujBMJt
- PXdDDwuJu7CTw0mAW+y+amdeBeiVXIpufs9sP3OiVpneyFPKkm5IyM+KeSsDXjw1GGzc
- S/XA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jgKk+Bp4VDQHumrIw+UiMcSHawBjFRqDdJL19jey4fI=;
- b=1GieGjU2iyhlM7otQtQtIF4502k3wjDx9RCKkdmqhiXeZ/gEjcFvdWIm5Lmyp7/ypZ
- FTxXGHCMaqAAbr7UGeLgyemgqDz4notrITMBombwMOVXVUCpwczoQk5eIjaoMhyO0GcV
- L0rPDOVzfKCXXmabMHaC+5wpUYdN0qIuE2NBz9g4hzTEM7wDAUK8S/FLudALG4oYbthS
- vwWjuEkhNQsPGAM6SDxzXwI/8FTm5xvqLen3n2QLWrWvuHPhV6j6DD2BBTGdWK7dfM7x
- ZoVwdVrlvuZJH8mwRFoV7SsXJyczHJTPhOCtaKUhGrDCH9wpVorb//hb7uF8k3qnWSL0
- C/4w==
-X-Gm-Message-State: AFqh2kqjVxdaT5DLUsvau7pIRz6vkPU7JfSDdhsRvISLV0LxZv9pO6cp
- MHEd67j3TPRGYoL8Wn8qwWy8oo2U6l7oSgHWWRngzg==
-X-Received: by 2002:a17:902:e0c4:b0:194:45d0:3b2c with SMTP id
- e4-20020a170902e0c400b0019445d03b2cmr965480pla.52.1673614158055; Fri, 13 Jan
- 2023 04:49:18 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pGKYW-0002CV-TQ
+ for qemu-arm@nongnu.org; Fri, 13 Jan 2023 08:57:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pGKYV-0000Qf-Dx
+ for qemu-arm@nongnu.org; Fri, 13 Jan 2023 08:57:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1673618232;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/NrQg7ILU0BG89aNNTPa3gdKfsMXOW9egUeImyvizTs=;
+ b=DHgYrqkWrbtsM3Ks0vQNiOJF/A3F173wSRkA/fOybxYMcHn4UiyvjB/8IGV4hfdosXZjFO
+ TCCzCWbjH7Q3G3fmdcKNJliPVAYkVN4j21Vti+y86TC/to5DIvbog/zLk7dWQ/1kPMmpFR
+ H+b9n9NEiim4thVUbWn4dUm4TZ9eri0=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-604-gKau6a-HMiKg7Amf9oP69Q-1; Fri, 13 Jan 2023 08:57:07 -0500
+X-MC-Unique: gKau6a-HMiKg7Amf9oP69Q-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9B6B43C0219C;
+ Fri, 13 Jan 2023 13:57:06 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.78])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0E92114171B7;
+ Fri, 13 Jan 2023 13:57:05 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 8A40721E675B; Fri, 13 Jan 2023 14:57:04 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-ppc@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le
+ Goater
+ <clg@kaod.org>,  Peter Maydell <peter.maydell@linaro.org>,  Greg Kurz
+ <groug@kaod.org>,  Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,  Aurelien Jarno
+ <aurelien@aurel32.net>,  Huacai Chen <chenhuacai@kernel.org>,  Aleksandar
+ Rikalo <aleksandar.rikalo@syrmia.com>,  qemu-arm@nongnu.org,  David Gibson
+ <david@gibson.dropbear.id.au>,  Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Markus Armbruster <armbru@redhat.com>,  Song Gao <gaosong@loongson.cn>
+Subject: Re: [PATCH RESEND v2 0/5] target: Restrict
+ 'qapi-commands-machine.h' to system emulation
+References: <20221220111122.8966-1-philmd@linaro.org>
+Date: Fri, 13 Jan 2023 14:57:04 +0100
+In-Reply-To: <20221220111122.8966-1-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 20 Dec 2022 12:11:17
+ +0100")
+Message-ID: <87y1q61qrz.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-References: <166990501232.22022.16582561244534011083-0@git.sr.ht>
- <166990501232.22022.16582561244534011083-1@git.sr.ht>
-In-Reply-To: <166990501232.22022.16582561244534011083-1@git.sr.ht>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Jan 2023 12:49:07 +0000
-Message-ID: <CAFEAcA83MFr0qq5o_CzHhvPzu75ayDcRSxDi2BAVzzt-gZFhbQ@mail.gmail.com>
-Subject: Re: [PATCH qemu.git v2 1/1] hw/arm/virt: make second UART available
-To: "~axelheider" <axelheider@gmx.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x631.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j18YiGJOJWHV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iVtGniZPb2mR
 
-On Thu, 1 Dec 2022 at 14:30, ~axelheider <axelheider@git.sr.ht> wrote:
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+
+> [resend fixing my last name typography...]
 >
-> From: Axel Heider <axel.heider@hensoldt.net>
+> All series reviewed, can patches be picked by corresponding
+> maintainers?
 >
-> The first UART always always exists. If the security extensions are
-> enabled, the second UART also always exists. Otherwise, it only exists
-> if a backend is configured explicitly via '-serial <backend>', where
-> 'null' creates a dummy backend. This allows enabling the second UART
-> explicitly on demand and does not interfere with any existing setup
-> that just expect one (or two if security extensions are enabled)
-> UARTs.
+> The "qapi-commands-machine.h" header is not generated in user-only
+> emulation. This series removes its use in user-emu code by moving
+> the QMP code depending on this header into a separate sysemu unit.
 >
-> Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+> Since v1:
+> - renamed cpu-monitor.c -> monitor.c on loongarch
 
-Hi; just wanted to say that this is still on my to-review list.
-As a preliminary note:
+Quick drive-by remark: we usually name C files containing just QMP
+commands SUBSYSTEM-qmp-cmds.c, and files containing just HMP commands
+SUBSYSTEM-hmp-cmds.c.  On the other hand, the existing monitor-related
+files seem to be named target/TARGET/monitor.c.
 
-> @@ -2222,11 +2250,12 @@ static void machvirt_init(MachineState *machine)
->
->      fdt_add_pmu_nodes(vms);
->
-> -    create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
-> +    create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
-> +    create_uart(vms, VIRT_UART1, vms->secure ? secure_sysmem : sysmem,
-> +                serial_hd(1));
+Keeping QMP and HMP two separate is desirable, but not required.
+monitor.c is a fine name for a file containing both.
 
-Creating the UARTs in this order in the code results in
-them appearing in the DTB in reverse order. (I forget why;
-I think dtb nodes put on a list in one order and then
-put into the dtb proper in the other, or something.)
-The result is that if you add an extra '-serial foo'
-argument then Linux decides that UART0 is ttyAMA1 and
-UART1 is ttyAMA0, which is a bit counter-intuitive.
+Use your judgement.
 
-This can be avoided by something like:
-
-@@ -2289,9 +2289,20 @@ static void machvirt_init(MachineState *machine)
-
-     fdt_add_pmu_nodes(vms);
-
-+    /*
-+     * These end up in the DTB in reverse order of creation, so
-+     * we must create UART0 last to ensure it appears as the
-+     * first UART, ttyAMA0, for Linux.
-+     * For back-compatibility with older QEMU versions, if UART1 is
-+     * the secure UART and thus always created, we create it second.
-+     */
-+    if (!vms->secure) {
-+        create_uart(vms, VIRT_UART1, sysmem, serial_hd(1));
-+    }
-     create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
--    create_uart(vms, VIRT_UART1, vms->secure ? secure_sysmem : sysmem,
--                serial_hd(1));
-+    if (vms->secure) {
-+        create_uart(vms, VIRT_UART1, secure_sysmem, serial_hd(1));
-+    }
-
-     if (vms->secure) {
-         create_secure_ram(vms, secure_sysmem, secure_tag_sysmem);
-
-I still need to:
- * look at what UEFI does if presented with this DTB
-   (may involve filing a bug report to see if they will
-   change the enumeration order if it's still silly)
- * check what happens when we boot Linux passing it the
-   h/w info via ACPI
-
-thanks
--- PMM

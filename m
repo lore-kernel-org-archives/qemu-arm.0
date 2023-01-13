@@ -1,113 +1,156 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4921398ejc;
-        Thu, 12 Jan 2023 08:45:25 -0800 (PST)
-X-Received: by 2002:a62:58c1:0:b0:573:f869:2115 with SMTP id m184-20020a6258c1000000b00573f8692115mr73385113pfb.9.1673541925065;
-        Thu, 12 Jan 2023 08:45:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673541925; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp218703ejc;
+        Fri, 13 Jan 2023 00:29:09 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsoVk0ei6juyJKx/uJApyukMA49nuSHFIH+PHipS99Re71Vy11NPRG6EaBKdx66f81G4YXD
+X-Received: by 2002:a05:622a:1f91:b0:3a5:460f:9650 with SMTP id cb17-20020a05622a1f9100b003a5460f9650mr125143963qtb.46.1673598549396;
+        Fri, 13 Jan 2023 00:29:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673598549; cv=none;
         d=google.com; s=arc-20160816;
-        b=WuU5EuPk0UMJs547LbDR0j3G1n4IvPPAfPBBZh3UNhXrz1W8dzmKSLo51nBsBJqgia
-         C7msKNUeRV+z4UJWfjxROPjLal56gq5pumTDY7Pa60oY/MP0gE2dBAbpOHGM7hPoa3Nu
-         +DewpaDVGW0KDhp2k13j3YcNhQwOGDkMk57GQnai8dfzsc6mhJCmJlXWH+J9TBYkYkVa
-         OHgkvuPXw7SI/X95TZnmyRAs/TgkMhvJe0nwkv7A05XO0WISYUbfARca71YEbD0qW3VL
-         48QRhLCQE5oQDqrms2iNfiQDZOhhsW2blyWq2oSeU5T2tGibF+Q0oIsywXErv1jehPHG
-         UKsw==
+        b=x7tmF02v4d2Bktppc+L6fuQhEwjUS6/SWmcaWumvyKuJ39QauRZVmQG+huDyqLOPg+
+         L13/O8HogEauaq8Vt/SQLBj0Faqmdfi51TV3B2eJsqAG+/kudd9pe+y/aSHZLSnQD4gU
+         O03zr7Iaeihd8jwgbPCfRfSYd3Jut1WcUSOVmzP0shyDHwRukeRR/5iDaT+PfanXM49z
+         9WSMpZOmKBwb/V23U9OBrs/a5D6I6o6fAgOMs5V6+q2I+HhTU810SHIAMIftoQWEQ7cz
+         mt5Ac7sLQam6od6ftZf4Ffh7mbDM6B3QHTL8fgACBUL5lvZ0J3D6JVw0DTvWQRreFKRg
+         yUsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=IX4jc6ICPyfSVLMTYVAaxQVG+cqEexbaNzKWqxc4deU=;
-        b=IuLVn5uiNv4ekD0I3jJcEan2XS4yJw/5q6khaXKQjrmydeCUtSxZiMaDK7IoDiwqAF
-         pPAZoV5YTwiKuyNJKXRR+WotsRdMM4vE7u4WyCBPzi33g1McB1LYxJgSeaSa5NJ6ThS2
-         cVwh+1TodVdNodP80wmkezwQIxLF0bUDkt6GRRFZjjCLOOAEV224/s14NhcsP8rv79xM
-         jQGn4LrQoXe7eXX6Erga7v4W2l/bT8qo9lTBkkkf0Yuo5dZH1Y56SD2r2bOQBGFcSAcT
-         u7rYkggiu58V9VhMKiTWhdQVX11gT/t4N82Eb45Yusa9fgeApXxsn0Sn5TVixUxb2ooD
-         NoPQ==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=AtYF55lI7ABSr3HOXxn349J+rDNEp7cVLLDCD2wJ5JA=;
+        b=J+C2VWVbo/jGeB5k4z5Va9GQE01d12BsJiqhHZ9XKzh5v3gvmj1NSLJmr42B29x9sA
+         SMqgBX+mF7EIzd7lYbR2mTxl1d/y4no0Po62O4WXWi21K2i5zo7Ie9tEIrRqz9fYEAHr
+         XUEUon5ER6ZNDdoyDsfBPTxmNN0uvo0DsJOQ2c+wYsqnVJeBZl5QFyFvviP8xpyIVaye
+         Vm4sRS5zdFkvNs2ssCoT32im4WOwHuCse3j3DzvLkzhQynMkDzCfHvvXhyegvIM2r7MM
+         TK95Ua96xHVxWnC5LjJ0Iz3PlmznPSE7ElRdy2Tq3G+mURVC6Yx0L1JyeuVJNrGqlvUP
+         DBYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GpInqOOM;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o1-20020a655bc1000000b0046b0e17658bsor9193963pgr.26.2023.01.12.08.45.24
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QtaoScLW;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id gc13-20020a05622a59cd00b003a97e3eadfdsi6726531qtb.200.2023.01.13.00.29.09
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 12 Jan 2023 08:45:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Jan 2023 00:29:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GpInqOOM;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IX4jc6ICPyfSVLMTYVAaxQVG+cqEexbaNzKWqxc4deU=;
-        b=GpInqOOMRM5xZV53gtVGd83aH+taIlvRFg+vgT04hxwRNzjzU8IFJj7L9SwtpNTC97
-         Eh9gGdcJ+E4tssHdv0XuKNncm57EIpN7cA0HuMXb/+hwdkL75UhEsFJhsJfmwQWMKgUT
-         E07T3DHnXqI/iwyRtJGCtnOYUgfwhI1ZETVPmyTEAgQRcMdd4jjiM4WpthhNBl/YcCgp
-         SWvM/XntFFNvCqG+Lgnasaos7jFSJhPlJ8IVmuV3G7RkkBbWxQGcsgohupKcStItLO7o
-         g3bF0Se5OP+xjskAfPHYxSBVMMuojxtgXw8vP9muo/IsqolDRkaQP9FTlqM7SXx1QkME
-         DELA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QtaoScLW;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1673598549;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=AtYF55lI7ABSr3HOXxn349J+rDNEp7cVLLDCD2wJ5JA=;
+	b=QtaoScLWqMTi0eGsYv0Gtzk15f2xb65ozOLqN0Bt5h3ABacxuLRRPuwU0sn6uqpMAE+WG+
+	+xfmHdN5iC+puVj+aMkncjQ29GCH/O15XX8YTBTyOm6z3tMLK8ppeeoUqC/96HkePMn2vW
+	SDoNvAb4cgEnHg9ExJzRDBhbujap7NM=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-244-HoxJTcf4P7yh5KMo7q4ChA-1; Fri, 13 Jan 2023 03:29:08 -0500
+X-MC-Unique: HoxJTcf4P7yh5KMo7q4ChA-1
+Received: by mail-ed1-f72.google.com with SMTP id h8-20020a056402280800b0046af59e0986so14350038ede.22
+        for <alex.bennee@linaro.org>; Fri, 13 Jan 2023 00:29:07 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IX4jc6ICPyfSVLMTYVAaxQVG+cqEexbaNzKWqxc4deU=;
-        b=O0GjETiB9HWVq4qkovexrSIVkfmnTLNjMTz/L+Z3t+qD9q+Mqj4ybUGqjC4i3kEy/s
-         pr06MyFZmbf9MTOSTtqPGsqXOZiX0JxlvslLpJHNz7ZnV+o5dGfVWU4bTi+0RbcmIx81
-         CKKdyGEj0OYMhkjcqb7K/whbo9MPA8Y/OIlmgTkTxt7sAavJZItf1NCiwAz3IzFCEh9+
-         4oNn+wVzpw1DX5xTb0Dk1CsFkAvUL0uVbtCmgb23uIKsiDu8KE9IziHHrNMQ73TJ6IyI
-         y3Jgmo44KD5n/j31pwHJ24wgpFNUTQb75KKNgNzp+g9whulYvdECQL9us/s58UY5RvaN
-         jTQg==
-X-Gm-Message-State: AFqh2kpaIUX1VtqsUjLRj1i7jHTqjVqZZm9CSEyhZd4ZDVZJiAXcHMAl
-	p3M5Jd8BZfb/P70QKrUVjCSuUZxLr6lOZaBEKgC5ldA4sqENfsJV
-X-Google-Smtp-Source: AMrXdXvudL23d/l+c6aAhRPuSAmXDztgBwgOQnFkejiFpH8isGHVBRJji0ZXkafnvWILWGrj7HEj1LZPeMhR+lxOcHM=
-X-Received: by 2002:a63:9d47:0:b0:4af:9f91:54d1 with SMTP id
- i68-20020a639d47000000b004af9f9154d1mr1211727pgd.192.1673541924653; Thu, 12
- Jan 2023 08:45:24 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AtYF55lI7ABSr3HOXxn349J+rDNEp7cVLLDCD2wJ5JA=;
+        b=F4aD3LrjmAeWYGdFZjHjm1yTcK6nuAheDI5InY/lwVQ8R/DwazA1zz83QEUIM427dg
+         z6Le/NCQnKKpVlW2XjAbZ9DLVQZtj4bXlTgYFyfp34NusspWewcDCAUWPx8I7V8UUcv2
+         Fx74pggWYm2XJcJqaBBnZRPX/nZ1JVYPCCub8wD3G9Xnie3Yo916DcKvVi0YEsIhkHWH
+         MBvc51a0uIQ/jNG4eLcTqsdNvNlc/5V5FnpPKTEyBJf797uyfnwjWqqGqDdKrEWDlyly
+         3oKK0ZG7hLzyQSoX/RKTZYJ8Hc5yOBEeX+9vUqZAqqtKfdlkmh/LA55B0ZKpACKxN5LI
+         Y1kA==
+X-Gm-Message-State: AFqh2kqzni1igJf0ZG5ugqpytp1HbpRTjfOen6Ps04EVlPSuVN3Q6J8N
+	r5SmgRi+1Rz0bYS1fuG08DPzAAIBHa5TFmynHqPwGM3KTfo8cQkGnOq4AosfYs16fMt+FcougRZ
+	iubKkZBtaeTEbzpXzSjVcC2pKSo0qdLpoxS1qriS67qKN9R+Xi79BNo/4vp6XYKnBoA7l
+X-Received: by 2002:a17:907:d387:b0:7c1:6fd3:1ef3 with SMTP id vh7-20020a170907d38700b007c16fd31ef3mr69929561ejc.33.1673598546347;
+        Fri, 13 Jan 2023 00:29:06 -0800 (PST)
+X-Received: by 2002:a17:907:d387:b0:7c1:6fd3:1ef3 with SMTP id vh7-20020a170907d38700b007c16fd31ef3mr69929518ejc.33.1673598545992;
+        Fri, 13 Jan 2023 00:29:05 -0800 (PST)
+Return-Path: <pbonzini@redhat.com>
+Received: from ?IPV6:2001:b07:6468:f312:63a7:c72e:ea0e:6045? ([2001:b07:6468:f312:63a7:c72e:ea0e:6045])
+        by smtp.googlemail.com with ESMTPSA id kv24-20020a17090778d800b0078d9cd0d2d6sm8332621ejc.11.2023.01.13.00.29.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Jan 2023 00:29:05 -0800 (PST)
+Message-ID: <2953a506-23cc-abe7-7774-077ebdc6c341@redhat.com>
+Date: Fri, 13 Jan 2023 09:29:01 +0100
 MIME-Version: 1.0
-References: <20230109170323.3796306-1-alex.bennee@linaro.org>
-In-Reply-To: <20230109170323.3796306-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Jan 2023 16:45:13 +0000
-Message-ID: <CAFEAcA8aBNcw7crRHXR2Cj2qHp-DsX+tqLLAzRAmS0hcUGMXxw@mail.gmail.com>
-Subject: Re: [RFC PATCH] docs: add a proper feature overview in "About QEMU"
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
-	Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Elena Ufimtseva <elena.ufimtseva@oracle.com>, Jagannathan Raman <jag.raman@oracle.com>, 
-	John G Johnson <john.g.johnson@oracle.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: VjEAdUgYPlUc
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.1
+Subject: Re: [PATCH 07/26] configure: replace Perl usage with sed
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, Beraldo Leal <bleal@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>, Ed Maste <emaste@freebsd.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Li-Wen Hsu <lwhsu@freebsd.org>, Markus Armbruster <armbru@redhat.com>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Michael Roth <michael.roth@amd.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ John G Johnson <john.g.johnson@oracle.com>
+References: <20230110173922.265055-1-alex.bennee@linaro.org>
+ <20230110173922.265055-8-alex.bennee@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+In-Reply-To: <20230110173922.265055-8-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: /RVEu9T3caR7
 
-On Mon, 9 Jan 2023 at 17:04, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> I decide to do this because I was looking for the best place to add a
-> reference to a document on semihosting and there didn't seem to be
-> an obvious place to do this. To do this I took the original pre-amble
-> to the about index and moved it to its own section, expanding the
-> description and giving a quick high level overview of some of the key
-> feature of QEMU.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+On 1/10/23 18:39, Alex Bennée wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+> 
+> Let's try to reduce our Perl usage during config/build-time.
+> 
+> Note: this patch might be dropped if "configure: remove
+> backwards-compatibility code" is merged earlier.
 
-To summarise from our conversation on IRC:
+It can be dropped now.
 
-(1) I like the current short summary and orientation that we
-have at the top of https://www.qemu.org/docs/master/about/index.html
-and would prefer not to delete it. We can add hyperlinks to cue
-the user that they can go look at the top level sections
-for system emulation etc for more detail.
+Paolo
 
-(2) I think most of this text would be better at the start
-of docs/system/index.rst and/or in a new subsection at the top
-of docs/system (which would be more easily findable from
-the top level if we added those hyperlinks).
-
-(3) I don't think we should be mentioning TCI this prominently.
-
-thanks
--- PMM
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> Tested-by: Thomas Huth <thuth@redhat.com>
+> Message-Id: <20230110132700.833690-4-marcandre.lureau@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   configure | 8 +++-----
+>   1 file changed, 3 insertions(+), 5 deletions(-)
+> 
+> diff --git a/configure b/configure
+> index 2281892657..9a944698b4 100755
+> --- a/configure
+> +++ b/configure
+> @@ -2571,11 +2571,9 @@ else
+>     if test -f meson-private/cmd_line.txt; then
+>       # Adjust old command line options whose type was changed
+>       # Avoids having to use "setup --wipe" when Meson is upgraded
+> -    perl -i -ne '
+> -      s/^gettext = true$/gettext = auto/;
+> -      s/^gettext = false$/gettext = disabled/;
+> -      /^b_staticpic/ && next;
+> -      print;' meson-private/cmd_line.txt
+> +    sed -i.bak -e 's/^gettext = true$/gettext = auto/g' \
+> +      -e 's/^gettext = false$/gettext = disabled/g' \
+> +      -e '/^b_staticpic/d' meson-private/cmd_line.txt
+>     fi
+>   fi
+>   

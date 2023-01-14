@@ -1,110 +1,113 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp240221ejc;
-        Sat, 14 Jan 2023 09:02:18 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs/2t0l9rrTTWxMl/GgHoIVFW2/1cA3MWWLxgs748N4c6jLxW3waTJY+YVVrmnpp+vCLSFa
-X-Received: by 2002:a05:6808:682:b0:360:e20a:35e4 with SMTP id k2-20020a056808068200b00360e20a35e4mr36231249oig.5.1673715738393;
-        Sat, 14 Jan 2023 09:02:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673715738; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp240254ejc;
+        Sat, 14 Jan 2023 09:02:21 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtOlG9WlRHrI7G2yTpWVtY8xd5H2v6+OWjWBROKxDVwSTfZkBpGaEKYmFEwJc6mcd25+JCU
+X-Received: by 2002:a1f:e381:0:b0:3c5:9374:d6ec with SMTP id a123-20020a1fe381000000b003c59374d6ecmr38211597vkh.14.1673715740632;
+        Sat, 14 Jan 2023 09:02:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673715740; cv=none;
         d=google.com; s=arc-20160816;
-        b=H9HDWSrSSeWd0jph22MRvFZ0/gSh0TffFTSera9IHOSM//5SlYsGRI/iVeSBX2/xDN
-         3M6/0UjPCXlxrQE5X8DjiGXbSuggSLS6CHsXzHhgDUy4m5hsvsHont9DzuM/5rzSUk8s
-         dX1/DAg7MKaRGVAkUijwjoXE524V9jIo6lh1D1r5oyc01x8Lt06u1dZk3PvBbxD0S8w3
-         E+hE+62FZZGGiCf9iEiueib1LhGeUTxHITN8xjrz5VjHWoOua2Fj6BXGNwHzzg/bOSJF
-         yWW0Fc+WkCx+CTlK/DvVmV10gVn2MEEZM84zBKLYX3iCI42977/jsm7cVweGpjJiEckQ
-         FuDg==
+        b=ykKNtjzOy+wR2ugfZ8XvEUk/4XKEk+vvZaWNyj9CyMpLY2y7HHo7EzYP9fnH7LsOaS
+         Dd//OZ0rj2AiqHCYN9kXgqhVODeQ9HxPLgYS+Uoi42Db7vGn+DDuJCFi+lEPbyyGlBBe
+         wt2/Sy58Af7yu2soFZc2kGLeCAvGR/sKPjpFeEJ2XTM7grOmdwz6ad/F0io0JnyDbmZF
+         iz8LaRqCHouur2lM0c7LtLmDRB3nmHgvo7i3mRMjI0WdyOkrGWCp1W5JAKrOU710djKP
+         6S/db341xKIkCDnHs2Ngez6JRMtw3NaNJJrfSoeh+41qWrb3xrlS1SklTTO4mazJTdDq
+         3p0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=J9WWP+D83LjQZ25t0MybN1ZJA72LlHXks8fP8ntCWfk=;
-        b=BmM2OeM7WkzHnFlWV/zqzGX0CBf29DC9G6vMC5Sbe8Ox9D5W8thcnT5UhPtfsUYJA5
-         Y3c0Oxab0JL/THkC4Hdy/fBnljk1rFzDIVV8696BU3NRdigjz9vPACnU9yLJc6uimPES
-         4KI1gA9716HenCSGBs7t+Oldb/9FLLWPNo352EtDJ0rkfwcZ78HUB5Mvezwx8Zd4cHrV
-         Sf6IcRFLfzZciUDZGR8MTz98MiB2gu1C+WQn8eNKXYPqQfH5tm1heJRx0orW0XpImXIH
-         4mssmKaFv5QasMRV3OPKE58g+W49rNixMeOGUZWpp2clSN+0iMmWeMLRkYHxist+zRpu
-         SLiA==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:feedback-id:dkim-signature:dkim-signature;
+        bh=nm78oN9BBO1E0nwvftxvIO+6A3EDc/cOD893O1ZxQgk=;
+        b=gUh+eQ0szRxEjMCKRqiqUA/6e1He6fMkK7Q8T6Wgpy5wRcZGbLG+3jMhQ7mcWE5JWC
+         WBSwg7omf8g9U6DtRssvcwEwurhPpUE9sa6fYVAAzRdZZbrk34InioUJX7kaM7lnJYHM
+         SmLdhmXrxb1+7MLe5wk/bZi+Dq8DvkqYpK+8bMydZN6NAACY0Uq/4aANWqtkl78EAoYn
+         NZjHlUtDtyaaPPW42oLUb+Cnt4Y6AlKM7aJWQhUj1pYG9tj1+3Z4nuJxfaRlktL2b7RD
+         HPLU6xahYAttvSQ/nJE1XMQbAMWVsduxbXzjlERPZojLDTfZ87hsrcfFf34PQ23e9gcU
+         CqGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=iofJZH9y;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=C1ulJT2A;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=wTBHU0Hb;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=DiquBDJ5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ch11-20020a05622a40cb00b003a69c77eb09si15205926qtb.706.2023.01.14.09.02.18
+        by mx.google.com with ESMTPS id 199-20020a1f19d0000000b003e0880f2c5fsi307958vkz.25.2023.01.14.09.02.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Jan 2023 09:02:18 -0800 (PST)
+        Sat, 14 Jan 2023 09:02:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=iofJZH9y;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=C1ulJT2A;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=wTBHU0Hb;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=DiquBDJ5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pGjv6-0005VI-7D; Sat, 14 Jan 2023 12:02:16 -0500
+	id 1pGjv6-0005Y9-Va; Sat, 14 Jan 2023 12:02:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pGjus-0005Eh-CX; Sat, 14 Jan 2023 12:02:04 -0500
+ id 1pGjuw-0005Kp-MK; Sat, 14 Jan 2023 12:02:07 -0500
 Received: from out4-smtp.messagingengine.com ([66.111.4.28])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pGjup-0005Om-Mq; Sat, 14 Jan 2023 12:02:02 -0500
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.nyi.internal (Postfix) with ESMTP id 03F625C0004;
- Sat, 14 Jan 2023 12:01:56 -0500 (EST)
+ id 1pGjuv-0005Ut-4G; Sat, 14 Jan 2023 12:02:06 -0500
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.nyi.internal (Postfix) with ESMTP id 6064F5C00DF;
+ Sat, 14 Jan 2023 12:02:04 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Sat, 14 Jan 2023 12:01:56 -0500
+ by compute2.internal (MEProxy); Sat, 14 Jan 2023 12:02:04 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
  :content-transfer-encoding:date:date:from:from:in-reply-to
- :message-id:mime-version:reply-to:sender:subject:subject:to:to;
- s=fm1; t=1673715715; x=1673802115; bh=J9WWP+D83LjQZ25t0MybN1ZJA
- 72LlHXks8fP8ntCWfk=; b=iofJZH9yjU/i1iDhBJZqxfXc6xWpqrnr9djhh9BhW
- Jsaw1vGUbNy8G2gkaYnm/d1adqQDLVAmAKybibIlmr3OixKUgHcRa38vJQrEVZIb
- W9UNmT3YnfQ6pQNYi5kqF5IEbKfGaOnI9NFeqvaUcl5QlrvVivW4t6dkTk0Atf34
- 2zUl5wTbXmDpdKUIVMmaRlaForivBkSQS0GoxrCjRAWx5qS/HUhenPzP8SD1jSMU
- X5z+Zp3FCyueAYCFiOecCtn0mCaoZr0gab3mNawkYiiVGiZeWDbN6n7miUE556tr
- i74+yFLhfo81PbW62+lL6qdcGM+8djZFn0uunOX2renaQ==
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm1; t=1673715724; x=1673802124; bh=nm
+ 78oN9BBO1E0nwvftxvIO+6A3EDc/cOD893O1ZxQgk=; b=wTBHU0HbJ6YQFQm/9t
+ 458KezZqouEmOpNZf/X94c3R+xPQkQBbqpc7uILPHGnXBHoYQQ9gfMXPCYz7AUj4
+ TdH4GKkrdmkPb9Z7iBEgyIdBIYPBjwmEmUtFECTZyKFJAjbK5urYO7iRVfl+/UdR
+ PvgJoqN6JJor+0+V3PBv8vwKu4f62lUvJsBShNRkjr+UFN2dEeyYusTCaOZUdFB8
+ DQb6STNIjUy4I8DFcSFUXPFqbaTumxGxSGHpyeyEhzLriwIxfh72fO2bBQ51+Xki
+ mib52bJQyYbLGSvORzOWV3lOX1jlGKotTTiKy97kdFS1SRVYgoOMaw9jhtDRtnyQ
+ ssfQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:message-id
- :mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1673715715; x=1673802115; bh=J9WWP+D83LjQZ25t0MybN1ZJA72LlHXks8f
- P8ntCWfk=; b=C1ulJT2A9gNr0FsjBRqbMci3u812AzyVqj+ykjKDP7ilzYko0+u
- vQymrKnoK/fFU/e9xvXPDEeQjiNoHXEiAtpYvrvvUJdYWBpUM02CeOEGPccoYjqj
- Bmv88Iq7jNcWvtmIEDLXKG23ILC446/qW4h+yGoHpGJecnA8XzctE8iUJWP2Fkqg
- myybhFAvPWTL50hRoJoMilLKTZhYxqYb0HhZe6srO9HL/IQXydglqBUIRDmJ7Gh5
- VQX49bCCs52XTZlh//5CohAhjegzJLkEfWu/SI6orvaM6c4cRRhXbvHhHfAf8pSq
- 2GtHb2KKYOkEmwn8Twhihupjm2VftZ9CSuw==
-X-ME-Sender: <xms:AuDCYxFljzlrvGyuLxgQRE3wnZXsBxrZoMkfl6HbwwtCirwssisnRQ>
- <xme:AuDCY2VqfYhPtUh6vjYA7UzhW1OKZplFs3MScAJkoHlTAnAq7BJ-grVR0nzSxOXE7
- 5ADOUZs8xuZmtJ_z2k>
-X-ME-Received: <xmr:AuDCYzJjeW3ll4N1nvpgQHKYJ8fQ2y2q14bmP2lqdojc3rDFFywIICtQ4YKI4WZFBHX-_QWQPOtjw4Bx1uPGd1CRO6zN8xYKt0s9LXIxM4g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddttddgleegucetufdoteggodetrfdotf
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm3; t=1673715724; x=1673802124; bh=nm78oN9BBO1E0
+ nwvftxvIO+6A3EDc/cOD893O1ZxQgk=; b=DiquBDJ5lySS9yG3bxwXHRNdHwsPk
+ 7sIgOkkGRVxjew72S2ndmWsUzK4ricIoIvQvnskACTwvDRmWZ1ZWxaL1aPrQqRdM
+ vzcyY2CLpDXznlO8YFNutj7v/P31fNSEjuGoKW0xfjQUigy16wD8pCnYtGxE+CIP
+ WfmXXefo9hwh6GkAeSkXkHOsLmVP4gEsqqXvspfu5K0yS9CorWz+z90m1rUU/SIN
+ NLUZ072RUyztC57Jr3R2+XdW06QGmUbBhVO01VSyb6AwzztxYCQ4oJUfvkqcHdsO
+ 3euyabzerzhUC8P4EeU4N96r6U2RgpSLeg2ysdsw3TUoXjwcpQNILZmTQ==
+X-ME-Sender: <xms:CuDCY1s6KcVpwsUsvgpSHoxmcJxJiew2pJKFEYoomnNIV7N26s-Ecw>
+ <xme:CuDCY-e21fqUWRPXyyEyEPmd2gn1G3mQjeXzkaR2_JZvnA0Wr4hIoEM4oIjIWL9Kk
+ QoMOK3Wbok4wA8iPCs>
+X-ME-Received: <xmr:CuDCY4zCprWu64h9TYbDEcAKGYhUAKK39TmqtyBxyVp2GkUQfnSw3l2Hm7SrpHrqFR7hnPojcOrk0sTdxS4SzuVagdjZEHZlz8A6RVtdbBs>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddttddgleehucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
- dmnecujfgurhephffvvefufffkofgggfestdekredtredttdenucfhrhhomheprfgvthgv
- rhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrfgrth
- htvghrnhepvdejgefhkeejjeeitddutddvueegheehfeelteffueegjedutdetgfdvgeev
- ieegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepph
- gvthgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:AuDCY3GUyb5eOK8IpGGMbf25X8frtAS4CWtN_djk0g3w4b-qUPI3KQ>
- <xmx:AuDCY3V-oWlPvaQptejOyAyB_bKQLvirSrlykIXmhQkmSK1pXKcqyA>
- <xmx:AuDCYyOSIpxS1IEAbwITWqQsSW4f_Q5QVMg5rH4g3dqIJgqgHdtcaQ>
- <xmx:A-DCYzp876j8D25K7blMETH8TN_hr9yCcUaFNMDdCkmw05halqpBbA>
+ dmnecujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomheprfgv
+ thgvrhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrf
+ grthhtvghrnhepteelgfeuleeffffffeekiefghfejuefgtdfgteeigeekvdefffevieek
+ vdelteevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+ epphgvthgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:CuDCY8MJvjA5FvoazovtRsyGFgM_eqtjMNmH31xINUyufy0x64uiLA>
+ <xmx:CuDCY18et9MBFQ9dGpXhIuxmAmDxl1StA8C6oBfbGd-bqmWgLIn9bw>
+ <xmx:CuDCY8Xku4x3qjNdOuDdnovcXej0ApBnFKqSnQosvi-XHvjk-5ziaA>
+ <xmx:DODCYxRm-0tMV8eQvXXVFxp4OIxMby9hkB5hPnoufANhbP9Obfz9HA>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 14 Jan 2023 12:01:53 -0500 (EST)
+ 14 Jan 2023 12:02:01 -0500 (EST)
 From: Peter Delevoryas <peter@pjd.dev>
 To: 
 Cc: patrick@stwcx.xyz, peter@pjd.dev, clg@kaod.org, peter.maydell@linaro.org,
  andrew@aj.id.au, joal@jms.id.au, hskinnemoen@google.com,
  kfting@nuvoton.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH 0/6] hw/nvram/eeprom_at24c: Cleanup + FRUID EEPROM init example
-Date: Sat, 14 Jan 2023 09:01:45 -0800
-Message-Id: <20230114170151.87833-1-peter@pjd.dev>
+Subject: [PATCH 4/6] hw/arm/npcm7xx: Remove local copy of at24c_eeprom_init
+Date: Sat, 14 Jan 2023 09:01:49 -0800
+Message-Id: <20230114170151.87833-5-peter@pjd.dev>
 X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230114170151.87833-1-peter@pjd.dev>
+References: <20230114170151.87833-1-peter@pjd.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=66.111.4.28; envelope-from=peter@pjd.dev;
@@ -130,35 +133,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RumI2bjoeAvT
+X-TUID: Og2WHzpRvczf
 
-This cleans up some of the code we have creating at24c-eeprom objects in the
-Aspeed and Nuvoton files, and adds an example of how to initialize a FRUID
-EEPROM with static data using I2C transfers.
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+---
+ hw/arm/npcm7xx_boards.c | 20 +++++---------------
+ 1 file changed, 5 insertions(+), 15 deletions(-)
 
-Initially I was going to propose a patch to update the at24c-eeprom realize
-function to incorporate static data, but then I realized I could just
-accomplish the same thing using i2c_send in board reset. The patch at the end
-demonstrates this.
-
-Thanks,
-Peter
-
-Peter Delevoryas (6):
-  hw/nvram/eeprom_at24c: Add header w/ init helper
-  hw/arm/aspeed: Remove local copy of at24c_eeprom_init
-  hw/arm/aspeed: Replace aspeed_eeprom_init with at24c_eeprom_init
-  hw/arm/npcm7xx: Remove local copy of at24c_eeprom_init
-  hw/nvram/eeprom_at24c: Add I2C write helper
-  hw/arm/aspeed: Init fby35 BMC FRUID EEPROM
-
- hw/arm/aspeed.c                 | 154 +++++++++++++++++++-------------
- hw/arm/npcm7xx_boards.c         |  20 ++---
- hw/nvram/eeprom_at24c.c         |  25 ++++++
- include/hw/nvram/eeprom_at24c.h |  12 +++
- 4 files changed, 135 insertions(+), 76 deletions(-)
- create mode 100644 include/hw/nvram/eeprom_at24c.h
-
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index 6bc6f5d2fe29..9b31207a06e9 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -21,6 +21,7 @@
+ #include "hw/i2c/i2c_mux_pca954x.h"
+ #include "hw/i2c/smbus_eeprom.h"
+ #include "hw/loader.h"
++#include "hw/nvram/eeprom_at24c.h"
+ #include "hw/qdev-core.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+@@ -140,17 +141,6 @@ static I2CBus *npcm7xx_i2c_get_bus(NPCM7xxState *soc, uint32_t num)
+     return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]), "i2c-bus"));
+ }
+ 
+-static void at24c_eeprom_init(NPCM7xxState *soc, int bus, uint8_t addr,
+-                              uint32_t rsize)
+-{
+-    I2CBus *i2c_bus = npcm7xx_i2c_get_bus(soc, bus);
+-    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
+-    DeviceState *dev = DEVICE(i2c_dev);
+-
+-    qdev_prop_set_uint32(dev, "rom-size", rsize);
+-    i2c_slave_realize_and_unref(i2c_dev, i2c_bus, &error_abort);
+-}
+-
+ static void npcm7xx_init_pwm_splitter(NPCM7xxMachine *machine,
+                                       NPCM7xxState *soc, const int *fan_counts)
+ {
+@@ -253,8 +243,8 @@ static void quanta_gsj_i2c_init(NPCM7xxState *soc)
+     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 3), "tmp105", 0x5c);
+     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), "tmp105", 0x5c);
+ 
+-    at24c_eeprom_init(soc, 9, 0x55, 8192);
+-    at24c_eeprom_init(soc, 10, 0x55, 8192);
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 9), 0x55, 8192);
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 10), 0x55, 8192);
+ 
+     /*
+      * i2c-11:
+@@ -360,7 +350,7 @@ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
+ 
+     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), TYPE_PCA9548, 0x77);
+ 
+-    at24c_eeprom_init(soc, 4, 0x50, 8192); /* mbfru */
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 4), 0x50, 8192); /* mbfru */
+ 
+     i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 13),
+                                       TYPE_PCA9548, 0x77);
+@@ -371,7 +361,7 @@ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x48);
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x49);
+ 
+-    at24c_eeprom_init(soc, 14, 0x55, 8192); /* bmcfru */
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 14), 0x55, 8192); /* bmcfru */
+ 
+     /* TODO: Add remaining i2c devices. */
+ }
 -- 
 2.39.0
 

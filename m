@@ -1,209 +1,142 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp171403ejc;
-        Fri, 13 Jan 2023 22:49:31 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtHOXDvA+kUPIxf8XO/jk3fcSelyw4bpE+KS89SEdIjaPXwft6MZmyEyFhC/a27lmnKllS+
-X-Received: by 2002:a17:906:da09:b0:7c0:e5c6:2a6d with SMTP id fi9-20020a170906da0900b007c0e5c62a6dmr5584799ejb.39.1673678971329;
-        Fri, 13 Jan 2023 22:49:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673678971; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp216405ejc;
+        Sat, 14 Jan 2023 08:13:48 -0800 (PST)
+X-Received: by 2002:a05:600c:3110:b0:3da:2932:b61a with SMTP id g16-20020a05600c311000b003da2932b61amr2324174wmo.18.1673712828839;
+        Sat, 14 Jan 2023 08:13:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673712828; cv=none;
         d=google.com; s=arc-20160816;
-        b=lY4wZEL9H8cjF5tlvWPhX0EC6A+AR6qVclG9GX3ROTsJvgB3/ULkb2xxi/tJySMh9N
-         4Ba1W1RIzjXFcfdI/RDGkXPDzOh7OrVYVG85EqwG36PfGFkQhp6W9sTFNsGAewM9lZSs
-         wa6j5auhe0NCGVrcKx5mLJagAXwN81ZLOswSZdvCPeQAz8s5jG2JHqjBnO8nM+tTTfCi
-         4zDjgIrQWTvvjMd+9BjUbkaEQeTIMDPboUTE+ZnVJiBp0tIvA93wTXigXQ5mmmYTWl8q
-         vWTa8UQg+YOY+mIDNOncBZ1c1zJ2XT+uyZQqR5SzBnt445zpWFbeE1zcryoSZ4EuU637
-         2FTA==
+        b=ciyizw4374EF9l9hEaW6UiHFuuDM5utS4vcKcc6Tt0jyK0Yc80rJvxe8R6vXasCcS5
+         xglSxwrqHjF4EOngVPH/njPethDPd3u7qgMcEccv2QXFsny2JHFaerJTHNUCQYgAruMo
+         y+ONfIMnOsc+ZbsAqYlObT4tuAsmQON2rqp4yBZ8aQFYzzOM+a0ENOMFMI8lx9efrXZO
+         i/n835D/2wgwXrSh8r/SH3PV6aNwn/LdSyZK5elw4RNAnjLmDCHRzfjB7AwEAHA1jEEP
+         f1vlkZ+b+0MceY0NmHrS3r6DzROtxjcFWVp03V+A0aLVzuVjw6V2sQDCXo3Um/O0jBd8
+         xhxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=0ChTh83yXmK7gfJH3Jpqy2LKc13XowEbohWOUpbLCCQ=;
-        b=TmEs4jG9JqxW2DurFDyIDDZL64EBgxBSbkCLX8U3SvqWJIzF6w5U4sygyd+xDhugdo
-         X7BACuaPw/FZJ2q7uKy3DrMSEn5dFtcySsIJi9OGIs7f4gvqeb/wRooaU9wueKQuyNfu
-         hl7PrzbBMD9YChzsl4JT+tbT8ub3PjOAHF3I+xz518Xdx/caK0O3hCZ4ENZ4/pvy6mG7
-         u2WjQHkOfHPWBa1wX+mHLzAA0ddyqwd7ArWVg1TYKhjHjqKiVlQXSNyiiI84RHZS2zph
-         JwxEub73cf30KgreXdtbYMIA/A06Zi5CLx5Ctj9j2yWeYU5G7aZeQPqJNtdfoLuPIJ8c
-         sZ7Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=3541pRrn8lpJE4sW30oitbMJnzbaSEbBU6oloBO7whE=;
+        b=m4Ulu3HrHNrPeOb6gIBjx6UVct+56JTIcmcsdx/oJz0eNFJ8+/WhFw+ir9ye7SAaOE
+         a6PyzA60x2l9kO7SKbBdRAmop2ufRpqePgW1nRTHn05/MA57fv4Kz3IUG+fFW6hkFpcA
+         ClAup7ADRVTVhDfLtroDnTMLVjZThBQCk6rQuBT0X+ot5HvdwhysK2I9NZTz5z7jLpuW
+         h7sEsW08Qw026EzW55SUQKpa6+B41u3tOYYDgNUY7CmzCpG5U4XP1MVed+GEU55yXdyh
+         AEUmTO91mkO7lbDShX5Sb30TK0OcBMxfUb7rqZ9N5sFORk0lecb46rgBqq65jjtrKyxG
+         Gc5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=hY1XJkKT;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id hs27-20020a1709073e9b00b0086d23c33ea5si1091970ejc.110.2023.01.13.22.49.31;
-        Fri, 13 Jan 2023 22:49:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kCgUde19;
+       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <francesco.cagnin@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id q9-20020adfab09000000b0022ccbedc1b7sor9128764wrc.4.2023.01.14.08.13.48
+        (Google Transport Security);
+        Sat, 14 Jan 2023 08:13:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=hY1XJkKT;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229674AbjANGt3 (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 3 others); Sat, 14 Jan 2023 01:49:29 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45446 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229498AbjANGt2 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sat, 14 Jan 2023 01:49:28 -0500
-Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com [IPv6:2607:f8b0:4864:20::634])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 2D37E46AB
-        for <kvm@vger.kernel.org>; Fri, 13 Jan 2023 22:49:27 -0800 (PST)
-Received: by mail-pl1-x634.google.com with SMTP id c6so25549074pls.4
-        for <kvm@vger.kernel.org>; Fri, 13 Jan 2023 22:49:27 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kCgUde19;
+       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=0ChTh83yXmK7gfJH3Jpqy2LKc13XowEbohWOUpbLCCQ=;
-        b=hY1XJkKTEi1o9mzaFwrfT8mUe3sC8eXcCaMuggKB/h3iL/Vk1+C8IvsN40fL862l71
-         Yl1x4xnlylvMZNKlBenl27z8mITz0dEZL6Uw/Yfag6ascp4hQ2IfaVZChmmyaK8gN+Es
-         twYhjwcMzhls2avFq6421us2lSdwnGiBPwJ5WsS5D7cChouJPCg8IaXFiT/wQACbamZ2
-         8BkfdKqiBIO+u4q5IAyr/9JbV6tcKP5fjjCLGBgh5r0RiWgPlLpNG5sMGkxMqj+XljKR
-         ZH46Ogiv2THPt8I+vSXezduQ3868VOq6nOfQ+CUd/ydB2bRzJjGhXz0ms42/NsmByvtJ
-         wyvQ==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=3541pRrn8lpJE4sW30oitbMJnzbaSEbBU6oloBO7whE=;
+        b=kCgUde19pA8R7rDD0R4+Uks6v7VasNd9LqbmpnR6FtXMt0B6ilEsB3bB7yJBu1oj2q
+         /NxRMXw65rrHBBc58tWCPf+Fyv+/qzmD2Xq0a9mKugigSxVvS+swci8LRw4pgDJxpZso
+         ryjAoVYdLDToaaeULXsZiYJbe+t+bKY4s3R/eBNEf+NAt6H5vJbSGw82AnlaTePd3GT6
+         cerTdyCRN4Bz2UTJ3VnmNqf7u2Z7sws6/N/QCCIUCtVpVzscQAo7vTp84C+0vF0QzgiC
+         X7CYCLhNpY7/R3gpmqUYOSEcipsk4BU6mfg2BCj98USD4f75DcmSZvAqZIHrRfppjhrj
+         lD/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0ChTh83yXmK7gfJH3Jpqy2LKc13XowEbohWOUpbLCCQ=;
-        b=Ef/jjvUWG7Q+APbZMmMzOJsTvrX77C333tYwILDOubIncfZlnwpqGTug9Ati7+fBas
-         bBN1JRPJQpmxzjdoMIPF5/Kg303WKg+ZCy1hP4NAVAwqdESRejikdhY8Uxx0v8Lxdyz7
-         8KBUkaUEnis2MPHNsVXl6105bfTRJTdQQtevaUV0jcJ8HMgt1QRTqBe+Lxf/x0GPmyuW
-         5jY/m32tlmaoK5FweZUXBGg3iSCrmj5ldXw/YoUsriJ+MOtn/kjYnFFnExFlq/s3AHXt
-         NBaX/JUVQ3oqKo1tLD6L3o0LFHikxQ6N/lHQY2YEuGnNWiSSqPs9YK/taOUaTypH3X6O
-         Sddw==
-X-Gm-Message-State: AFqh2kreOLxA8eF62zThQ9ea4RNUeay2x5AutW6DJ7QWrw0Dy55PAYOb
-        NBZJtW4sUsJXMZbWzqCihVY+OA==
-X-Received: by 2002:a17:902:eb11:b0:194:46e0:1b61 with SMTP id l17-20020a170902eb1100b0019446e01b61mr14811067plb.63.1673678966620;
-        Fri, 13 Jan 2023 22:49:26 -0800 (PST)
-Received: from ?IPV6:2400:4050:a840:1e00:4457:c267:5e09:481b? ([2400:4050:a840:1e00:4457:c267:5e09:481b])
-        by smtp.gmail.com with ESMTPSA id x4-20020a1709029a4400b00192aa53a7d5sm15270475plv.8.2023.01.13.22.49.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jan 2023 22:49:26 -0800 (PST)
-Message-ID: <fb435604-1638-c4ee-efca-bdbe2a4be98b@daynix.com>
-Date:   Sat, 14 Jan 2023 15:49:23 +0900
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3541pRrn8lpJE4sW30oitbMJnzbaSEbBU6oloBO7whE=;
+        b=LWAQM6X5lEQDO+m2n98VW2/IvVGyTmm4PqF/eoA41KQkLKEwBLewGZTNIPVsVNCVaf
+         gtwNMPPVD3nKF9/+XwTVe7pFu7esP1uEC+YNMCzjjdDc1jg0cl3UItIN4vRtYIOvLIev
+         mtAFoIbpBCjfKi3aG53pGHbY6BswADGrRh4EdHDA8qSj1a59HhvDIvAvh07pFBN3xDQR
+         YlYF2DLcDhr5jnkcuzlOJ0tDaOj3gtyU4+Hno6M3oCaP8sfVNsmZgXagFNr1PasqFkJN
+         P/x61ypjlBI5Qc0V+Wl4L1z9tegjXIiqoe76J6mEZp0ofV5Ui9GR1DOEEOqDiW1K3Y2z
+         Vi5A==
+X-Gm-Message-State: AFqh2krVY8xiSGoH/ai40Z0v4ik8c5z2zjzvIayoyyPvshPW+tmI0wra
+	6MdIoG+4fl6/I9TNdA1c/e4=
+X-Google-Smtp-Source: AMrXdXtq1PwCgIxN+MfRDjRl7cC4rUOOIdiTmqBfWJI9xFUjs7WBfwSp3LndOkUTp8Hn9WLo/5773g==
+X-Received: by 2002:a5d:688b:0:b0:2bd:db42:36cd with SMTP id h11-20020a5d688b000000b002bddb4236cdmr5820999wru.0.1673712828245;
+        Sat, 14 Jan 2023 08:13:48 -0800 (PST)
+Return-Path: <francesco.cagnin@gmail.com>
+Received: from omega.lan (194.46.205.77.rev.sfr.net. [77.205.46.194])
+        by smtp.gmail.com with ESMTPSA id y18-20020a5d6152000000b002425be3c9e2sm21330040wrt.60.2023.01.14.08.13.46
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Sat, 14 Jan 2023 08:13:47 -0800 (PST)
+From: francesco.cagnin@gmail.com
+X-Google-Original-From: fcagnin@quarkslab.com
+To: qemu-devel@nongnu.org
+Cc: mads@ynddal.dk,
+	dirty@apple.com,
+	peter.maydell@linaro.org,
+	qemu-arm@nongnu.org,
+	agraf@csgraf.de,
+	pbonzini@redhat.com,
+	alex.bennee@linaro.org,
+	Francesco Cagnin <fcagnin@quarkslab.com>
+Subject: [PATCH v3 0/3] Add gdbstub support to HVF
+Date: Sat, 14 Jan 2023 17:12:59 +0100
+Message-Id: <20230114161302.94595-1-fcagnin@quarkslab.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH] accel/kvm: Specify default IPA size for arm64
-Content-Language: en-US
-To:     Richard Henderson <richard.henderson@linaro.org>
-Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>
-References: <20230109062259.79074-1-akihiko.odaki@daynix.com>
- <481867e4-b019-80de-5369-9a503fa049ac@linaro.org>
-From:   Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <481867e4-b019-80de-5369-9a503fa049ac@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: clgq7J8nSmfs
+X-TUID: FVogPlyR5vs4
 
-On 2023/01/14 14:23, Richard Henderson wrote:
-> On 1/8/23 22:22, Akihiko Odaki wrote:
->> libvirt uses "none" machine type to test KVM availability. Before this
->> change, QEMU used to pass 0 as machine type when calling KVM_CREATE_VM.
->>
->> The kernel documentation says:
->>> On arm64, the physical address size for a VM (IPA Size limit) is
->>> limited to 40bits by default. The limit can be configured if the host
->>> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
->>> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine type
->>> identifier, where IPA_Bits is the maximum width of any physical
->>> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
->>> machine type identifier.
->>>
->>> e.g, to configure a guest to use 48bit physical address size::
->>>
->>>      vm_fd = ioctl(dev_fd, KVM_CREATE_VM, KVM_VM_TYPE_ARM_IPA_SIZE(48));
->>>
->>> The requested size (IPA_Bits) must be:
->>>
->>>   ==   =========================================================
->>>    0   Implies default size, 40bits (for backward compatibility)
->>>    N   Implies N bits, where N is a positive integer such that,
->>>        32 <= N <= Host_IPA_Limit
->>>   ==   =========================================================
->>
->>> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
->>> and is dependent on the CPU capability and the kernel configuration.
->>> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
->>> KVM_CHECK_EXTENSION ioctl() at run-time.
->>>
->>> Creation of the VM will fail if the requested IPA size (whether it is
->>> implicit or explicit) is unsupported on the host.
->> https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
->>
->> So if Host_IPA_Limit < 40, such KVM_CREATE_VM will fail, and libvirt
->> incorrectly thinks KVM is not available. This actually happened on M2
->> MacBook Air.
->>
->> Fix this by specifying 32 for IPA_Bits as any arm64 system should
->> support the value according to the documentation.
->>
->> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->> ---
->>   accel/kvm/kvm-all.c | 4 ++++
->>   1 file changed, 4 insertions(+)
->>
->> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
->> index e86c33e0e6..776ac7efcc 100644
->> --- a/accel/kvm/kvm-all.c
->> +++ b/accel/kvm/kvm-all.c
->> @@ -2294,7 +2294,11 @@ static int kvm_init(MachineState *ms)
->>       KVMState *s;
->>       const KVMCapabilityInfo *missing_cap;
->>       int ret;
->> +#ifdef TARGET_AARCH64
->> +    int type = 32;
->> +#else
->>       int type = 0;
->> +#endif
-> 
-> No need for an ifdef.  Down below we have,
-> 
->      if (object_property_find(OBJECT(current_machine), "kvm-type")) {
->          g_autofree char *kvm_type = 
-> object_property_get_str(OBJECT(current_machine),
->                                                              "kvm-type",
->                                                              &error_abort);
->          type = mc->kvm_type(ms, kvm_type);
->      } else if (mc->kvm_type) {
->          type = mc->kvm_type(ms, NULL);
->      }
-> 
-> and the aarch64 -M virt machine provides virt_kvm_type as mc->kvm_type.
-> 
-> How did you hit this?  Are you trying to implement your own board model?
-> 
-> Looking at this, I'm surprised this is a board hook and not a cpu hook.  
-> But I suppose the architecture specific 'type' can hide any number of 
-> sins.  Anyway, if you are doing your own board model, I suggest 
-> arranging to share the virt board hook -- maybe moving it to 
-> target/arm/kvm.c in the process?
-> 
-> 
-> r~
+From: Francesco Cagnin <fcagnin@quarkslab.com>
 
-I hit this problem when I used libvirt; libvirt uses "none" machine type 
-to probe the availability of KVM and "none" machine type does not 
-provide kvm_type hook.
+This patch series aims to add gdbstub support to HVF (the 'QEMU
+accelerator on macOS that employs Hypervisor.framework') on Apple
+Silicon hosts.
 
-As the implementation of "none" machine type is shared among different 
-architectures, we cannot remove ifdef by moving it to the hook.
+The proposed implementation, structured like the KVM counterpart,
+handles single-stepping, software breakpoints, hardware breakpoints and
+hardware watchpoints.
 
-Although implementing the hook for "none" machine type is still 
-possible, I  think the default type should provide the lowest common 
-denominator and "none" machine type shouldn't try to work around when 
-the type is wrong. Otherwise it doesn't make sense to provide the "default".
+The patch has been most recently tested working on macOS Ventura 13.1
+hosts and Linux kernel 5.19 guests with the test script
+'tests/guest-debug/test-gdbstub.py' (slightly updated to make it work
+with Linux kernels compiled on macOS).
 
-The virt board hook depends on the memory map of the board so it is not 
-straightforward to share it with "none" machine type.
+v3:
+* Keep separate views of DBG*_EL1 registers while guest debugging is
+  enabled  
+  NOTE: Should be implemented as Peter and Alex suggested, and works as
+  intended in my (limited) tests. Any other register to handle beside
+  DBG*_EL1?
+* Handle singlestepping over instructions triggering a VM exit
+  NOTE: I'm not aware of unwanted side effects, please double-check the
+  fix is adequate.
+* Merge patches 2 and 3 from previous patch series
 
-Regards,
-Akihiko Odaki
+v2:
+* Move debug helpers to 'target/arm/hyp_gdbstub.c'
+* Add support for SSTEP_NOIRQ and multi-core (thanks Mads Ynddal)
+* Move calls to 'hv_vcpu_set_trap_debug_exceptions()' to
+  'hvf_arch_update_guest_debug()'
+* Use 'arm_num_brps()' and 'arm_num_wrps()' to compute the number of
+  breakpoints and watchpoints available (thanks Peter Maydell)
+
+Francesco Cagnin (3):
+  arm: move KVM breakpoints helpers
+  hvf: implement guest debugging on Apple Silicon hosts
+  hvf: handle singlestepping over instructions which trigger a VM exit
+
+ accel/hvf/hvf-accel-ops.c | 123 ++++++++
+ accel/hvf/hvf-all.c       |  24 ++
+ cpu.c                     |   3 +
+ include/sysemu/hvf.h      |  29 ++
+ include/sysemu/hvf_int.h  |   1 +
+ target/arm/hvf/hvf.c      | 635 +++++++++++++++++++++++++++++++++++++-
+ target/arm/hyp_gdbstub.c  | 242 +++++++++++++++
+ target/arm/internals.h    |  50 +++
+ target/arm/kvm64.c        | 276 -----------------
+ target/arm/meson.build    |   3 +-
+ 10 files changed, 1107 insertions(+), 279 deletions(-)
+ create mode 100644 target/arm/hyp_gdbstub.c
+
+-- 
+2.39.0

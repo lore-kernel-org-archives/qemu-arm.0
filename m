@@ -1,39 +1,39 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp711113ejc;
-        Fri, 13 Jan 2023 14:10:35 -0800 (PST)
-X-Received: by 2002:a17:902:e887:b0:193:e89:f5ff with SMTP id w7-20020a170902e88700b001930e89f5ffmr15700710plg.28.1673647834885;
-        Fri, 13 Jan 2023 14:10:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673647834; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp79222ejc;
+        Fri, 13 Jan 2023 18:34:09 -0800 (PST)
+X-Received: by 2002:a17:902:e5c5:b0:189:c57c:9a19 with SMTP id u5-20020a170902e5c500b00189c57c9a19mr111243780plf.58.1673663649285;
+        Fri, 13 Jan 2023 18:34:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673663649; cv=none;
         d=google.com; s=arc-20160816;
-        b=KdpYK+sE+FehsiR1jZX4RZ6s9muuodNkH0pVXp8MfVohhKo9fzfCQXon9hOgGsWkag
-         Sf+BiylrNQi5MSkkR7CKjxFtKILPAhtquyvrRG91GRLfTuZ31bXZ86VNmcrJoDN72abZ
-         ylhjVQCwo0dJEGsQB50w6a5p9J+r9LhVbxgL5BLU2WyaslhcL4XtpaW55qPUQ9Iw5cS3
-         i6qDRfDEGPJik81j2tA44wFfY+bTYR+8msIkej+NCyL2pM+qi86ccPAcnaGy/x0SqORW
-         xTI8h4c3Qhv2fqPPEOqmax8TEeKJ/kDB4jV4sQwkJ4FKH+ybXVgZm5lFsn8HjSreFPzk
-         Darw==
+        b=xfZtH2Rc8Wk7C9ciJlTQyu+w2VfDlF7+PVJqE8K8NCITkd8aCCHkHTPpq2sBUtE3ws
+         QMBW/O0UiJgWvhvSbZkG0csqd7zNj6Hpmp9Ad++9Ia+D+XvasbK0Kn8dJPAMuj3W1qaM
+         gJEjduJVh8mFeqsrrBGbo3Op2IPa85RF3F9OffOTsZNjm/toYln4OyauSxtb/XMF6ry1
+         Qutm9aJKKDGC7Vn5Aj6KNBcf3cne7apHL4gg9lVYTJs7kmdtkUyy52ezZAK9QiqSyjEj
+         3R/YTslnmKt8GOC4aMjPmI1LxM4lLY/nNm1Ldoh/pZoumo4QyPWclSSvSX6jpRp/E7dr
+         kvJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=KDkgJVUOGVqnbtkEvSCUgGW3k1/G5Qsgxm2rGoE3dQE=;
-        b=fOkBzxQAR/bDHDSxAylxy9YScdAJ+i6/DqVqQwPdxUQ+DmRuimLbfS6mPm4fy8mGXq
-         c+owSshUJE+uSX+qndxi6tXFAnqTqJCsociD4pDcInOwz0XsO1bT+3+JKF3iqPxosWMo
-         pu5PHVDDJUjPW2tiBtnJPvZLZkAuDmzi6ig4D2hI0nXV2Ijzf/kqFKmZ6FtW8r9W1j5W
-         H0mH4RGTCHQFYsRuuUf/eQLRwTMvtctdv2iyAnXEP8a0Tn3+Rlt2//Jrg4+LZakQa3qU
-         9RZBsg7ZeLqcJvgtfNv+LsEGKay/PEQx17kNCRAYNh6QaN8DkpJyg7DvvcfnyoQs2XjS
-         w7Rw==
+        bh=gjav3zuYvpbFyuced3+kXs6qBD4vCq1U9b46uWY/t7g=;
+        b=cA8TpRUs6bADNId2s23ICkCpGMJQFu1nX+fJbZzgEvhaiSYP09d1jb9orSh+jAXB9k
+         KEITvMq+j+udWW8ZJRlYbJzEr+N+E1zj/rPp65TtsxNDtkk2TUGaJThEoZ8nlGZa1f7y
+         9bpMJrzNcnbxxCO5VwiupqjQnAUUywaUaFd5Ml1ZYM3iOuRVVJHaWUHOHqi2sifg09bx
+         ngD2KzBJmqhInJTP4uEvMc96cPNx/yECN9V3fv4e1QTTTVFos5pgVA4+JMxEDtRBW9xp
+         +foMEGq6ad1iNgbqjI0XXVHPkWxTTXyLKRvTIamYHcahllxpu7tisC9vSuvDdsPOfJC/
+         65MQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SERqJGtR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H5IQpT1s;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id bg12-20020a1709028e8c00b001930c15db14sor10755784plb.130.2023.01.13.14.10.34
+        by mx.google.com with SMTPS id jw22-20020a170903279600b001891fe1cc0csor4855687plb.123.2023.01.13.18.34.09
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 13 Jan 2023 14:10:34 -0800 (PST)
+        Fri, 13 Jan 2023 18:34:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SERqJGtR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H5IQpT1s;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -41,68 +41,86 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=KDkgJVUOGVqnbtkEvSCUgGW3k1/G5Qsgxm2rGoE3dQE=;
-        b=SERqJGtREB0Oj/3xzdY7JQptWJpmAB0rTjVFegDa4iTrk/uc9WSajyvUKpYUNp2dBO
-         kN3d9yEKA5E7AT4PO+36NdR0xqiIP5fQGfpZpZwQQ7V+8hvniXf77im5TBQBMltUP9sz
-         hJy+2ymaIyoEjf731ORMK9NnCMItQhY/gxbovlfVqGozHziyN2KcuPsmZ3ERohCmSwQD
-         GHVkDVSUvFI2133Yjew4oFkLlkiLFJAGFT/ksnp1dmpdsw3C/SOtPUHqxwVR3yd3kr3v
-         VqeoWcu0VZh/NF2jiqnKsbYQrPwdsLU7ivDdK1Pl9rwZTS67mc31BTX7dE0cyKQrsTn9
-         CczQ==
+        bh=gjav3zuYvpbFyuced3+kXs6qBD4vCq1U9b46uWY/t7g=;
+        b=H5IQpT1sVM87nUqQsS8zt1gQNPvxdwnce/PYS2KvVpEmRGDkZ8pceSK9jr+miftnEB
+         fP9r4UmzhbazZyKBr/Ie/COHU1N4jtgzduS/r9TltG7wSlI5nHZ7pYEW3ertqcBGDTm2
+         GxTJmfWpggXCds7j7EM3Yn1mnpjEO2+TEb7Zhgo0ZZqFH0HqWBqb6TuU3ONd2A2V5n0V
+         pz+0VwswrbRrCwcL1jNBRVHWJhCkgrH9HQGi96ttAsbF6nrYK7ZoTR+idht7XWk6vdTM
+         J4Y9S/5ce38EHVdEn8Ph40AbXzWO7jRGi0ewZjm7sJitHyiP9G5nF+XuHQEkB2Z8fBA+
+         G8cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=KDkgJVUOGVqnbtkEvSCUgGW3k1/G5Qsgxm2rGoE3dQE=;
-        b=JaW3WamAxrnXjXIgdMH94rQZO7+w4GYb2ZXr68q9IEIQ2f673gEasDnPD3fclOb4Z1
-         uqahrm1sXYiBVEfDnu+KWa72NdLhiVdp/kjU7sHJZzXc+RIuPH6/uqJagkBS/lGZ6pq2
-         6Zy7ibm+ySO86Df4lvt4O9hz29RFBr5qDDkp2j0tnbBCvLH9dPfq4gKC3RRjJK4qZqBc
-         TxJxw9yYFsXG8QAow7LxH3+2hcp9pfAjgfCFvybqt0tdtFwLsMokyKEAhu9dFZ6JPQWJ
-         yRLIVrbG/HtEVEQBny3LMNiE9jzo+9ftQbx5fFRWjXRBbOJdgPSjhBeXafk3EYEzwbL6
-         tqLQ==
-X-Gm-Message-State: AFqh2kr5nxY5QfzePmw5ph03y9o4eGs0WpOT5R+qF62YOx0pVhrVZXiO
-	GEKbkmCMvUQIGigtltEuPgkuMJuL/ZRePKeAcrI=
-X-Google-Smtp-Source: AMrXdXvHQZlL1MRCm0NE409EueUE6BO/DKreJUanSkGG0cp1+A20Tr7qgkhCrvqdAh0jiEQmbZ48JA==
-X-Received: by 2002:a17:902:8501:b0:194:63a0:54f9 with SMTP id bj1-20020a170902850100b0019463a054f9mr6736995plb.24.1673647834442;
-        Fri, 13 Jan 2023 14:10:34 -0800 (PST)
+        bh=gjav3zuYvpbFyuced3+kXs6qBD4vCq1U9b46uWY/t7g=;
+        b=sAfDXgLXNMghlDH17GVF9SgnO567hkBVslC/SJ5pGlQ/MqS+FQiIjKtQEXUJ/YLyUA
+         fz/inK+Glkk8nDBvJ2xMXvz46rrHZwGI4eryp//XOnr0Ukq9brMxgVKfPWERxgtVSHt9
+         iV4hUCSEwPlHZmqqzx64UMS/1rvUDo+/K/4eSTVDQbpR00dSbQTpU3dTJAGTinKqYFl0
+         ltMWYtxuOOQLUWFYI1W51NhAYCfx1wDCJvsItKHB6vnE0yVF1ZI1Oen3N/tYDOX1+AHu
+         ZkxfECsftQQ1um4wyqZLjpyc/b9uEUEruhLw+0Qo59Hzk+jDehW0ENmaTuByF7uMYePf
+         pgrg==
+X-Gm-Message-State: AFqh2kpGUurFhdV7TWkHjqM6IYVCzR43LptF2C8ohBsJD8dZy6Bag5sS
+	A+wx1C+eNVnqaKuCvuUjKVLLMDrmFmhB9fkLiGE=
+X-Google-Smtp-Source: AMrXdXuojJZX13oyLYJgGUrGXSDaQGoOZaJfinbwsIa1rRGu21YhzV5KU1TjUKeGZqhVGJTUT0yuxA==
+X-Received: by 2002:a05:6a20:9b87:b0:ac:44ab:be3b with SMTP id mr7-20020a056a209b8700b000ac44abbe3bmr96762289pzb.60.1673663648679;
+        Fri, 13 Jan 2023 18:34:08 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
-        by smtp.gmail.com with ESMTPSA id a14-20020a170902710e00b00194516b2d88sm5380007pll.260.2023.01.13.14.10.32
+        by smtp.gmail.com with ESMTPSA id c4-20020a63da04000000b0047911890728sm12430012pgh.79.2023.01.13.18.34.06
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jan 2023 14:10:33 -0800 (PST)
-Message-ID: <f63a77d6-c63d-7001-79f0-b31740cf6eda@linaro.org>
-Date: Fri, 13 Jan 2023 12:10:30 -1000
+        Fri, 13 Jan 2023 18:34:07 -0800 (PST)
+Message-ID: <76e73d82-6a44-b9c6-ce60-417e15507b40@linaro.org>
+Date: Fri, 13 Jan 2023 16:34:04 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [RFC PATCH v3 22/28] tests/qtest: Restrict bcm2835-dma-test to
- CONFIG_RASPI
+Subject: Re: [RFC PATCH] testing: probe gdb for supported architectures ahead
+ of time
 Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
-References: <20230113140419.4013-1-farosas@suse.de>
- <20230113140419.4013-23-farosas@suse.de>
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20230105181533.2235792-1-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230113140419.4013-23-farosas@suse.de>
+In-Reply-To: <20230105181533.2235792-1-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 65dcY8u2KDeA
+Content-Transfer-Encoding: 8bit
+X-TUID: KehmdqkOwv0j
 
-On 1/13/23 06:04, Fabiano Rosas wrote:
-> We will soon enable the build without TCG, which does not support many
-> machines, so only run the bcm2835-dma-test when the corresponding
-> machine is present.
+On 1/5/23 10:15, Alex Bennée wrote:
+> Currently when we encounter a gdb that is old or not built with
+> multiarch in mind we fail rather messily. Try and improve the
+> situation by probing ahead of time and setting
+> HOST_GDB_SUPPORTS_ARCH=y in the relevant tcg configs. We can then skip
+> and give a more meaningful message if we don't run the test.
 > 
-> Signed-off-by: Fabiano Rosas<farosas@suse.de>
+> [AJB: we still miss some arches, for example gdb uses s390 which fails
+> when we look for s390x. Not sure what the best way to deal with that
+> is? Maybe define a gdb_arch as we probe each target?]
+> 
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> Cc: Richard Henderson<richard.henderson@linaro.org>
+> Cc: Paolo Bonzini<pbonzini@redhat.com>
 > ---
->   tests/qtest/meson.build | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   configure                                     |  8 +++++
+>   scripts/probe-gdb-support.sh                  | 36 +++++++++++++++++++
+>   tests/tcg/aarch64/Makefile.target             |  2 +-
+>   tests/tcg/multiarch/Makefile.target           |  5 +++
+>   .../multiarch/system/Makefile.softmmu-target  |  6 +++-
+>   tests/tcg/s390x/Makefile.target               |  2 +-
+>   6 files changed, 56 insertions(+), 3 deletions(-)
+>   create mode 100755 scripts/probe-gdb-support.sh
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Plausible as a mechanism.
+
+I would say that your script would need to actually examine all of the 'set architecture' 
+output to map gdb arches to qemu arches.  In particular, the :foo stuff is important. 
+E.g. mips:isa64 (amongst others) means mips64.
+
+I can verify that I no longer get the MicroBlaze error with make check-tcg, so that part 
+of the patch works.
+
 
 r~

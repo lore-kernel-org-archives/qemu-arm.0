@@ -1,123 +1,109 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp244149ejc;
-        Sat, 14 Jan 2023 09:07:55 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuhEn3bHM3QikoKfn1QzC7mlMCY4mw9QWxBZVMzPjylAE+g08+lSNMVSoz8ISbQ+XB7Ivpl
-X-Received: by 2002:a0c:dc07:0:b0:532:27ca:8757 with SMTP id s7-20020a0cdc07000000b0053227ca8757mr20381203qvk.49.1673716075525;
-        Sat, 14 Jan 2023 09:07:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673716075; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp853987ejc;
+        Sun, 15 Jan 2023 09:16:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXv+FgAbgOndDcOR3myDD8QTKYWnDDYyAxgrgD3GCXBABYCr6LT7B2HbzZHpRvmaiSt9ANra
+X-Received: by 2002:a05:6214:b25:b0:534:7163:b2bf with SMTP id w5-20020a0562140b2500b005347163b2bfmr16516526qvj.43.1673803013729;
+        Sun, 15 Jan 2023 09:16:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673803013; cv=none;
         d=google.com; s=arc-20160816;
-        b=R/T3YmRIQbj0cgRTYNRvGLVHmMpv/MFUvC/v5p210EhMTKNAwRvX4U3KrCxBUxoBBq
-         D6mknTuUA+5/OaSnFmDkw4ZCXhBUkUaT65S1upiprCe8ipC45RyDqWZo/jTRz1CWBYbC
-         jqtS6gf7Um0WdsLViZoFYrutg3RXyB0mD3EBzCslns8NckH5i1kDHil9UFvpnt4/63RG
-         N2ND5uVMAtKJFH9oQ1Bp8IovBfcT8Nu+n/LXtVxrVN1EESJ+lI1dFygy0MS8YTaHdFF1
-         OgHlQ4jTtjeb+shbluJ0p3w1f1UyPG7Lj4sjilNQZtkOICoEQg1QkbYjKyXzcZsKY5IT
-         BnBA==
+        b=ELpmMsV7Xxus8P+MeTeTMax4QyxcM+212YNOcCbIcHZY+axhXq+UpBnZQkQh8NlaG/
+         jhEPnQQ4SIJs0lU1iA2e0MrrRrYAaLYDWh9HghpwBbmkQe2l90j3Jo8jXFMCG0NSszS9
+         f7XfB+pFkLPNnbOVTRefq0bue0YStib0Qekw4Ntrhfe9Wh8GzKDJEw3b+YBItw+WRoam
+         js4TepVfFmMjSALYultbI1FeD9uUOk3ntXNV20P1V+uHxglNwdNYrvt4YfYBMdFkyhhv
+         lMHAKF0Eq6d0RRLxnX2rbqwmUFNszMC3AbYKYBMBXlI3ONdR12p95EMdPK6y2WU76z2J
+         MlHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=xHAR4dj5s0zWF/rLLxJBPBX6N/CzkRTUdheh7+Xx3Fk=;
-        b=GZd0zFbN36/oJ6ZXdwMWCnEcpiAXqTgpX0MoM6xEiyqROlIUIv1ZhgtT1qrAhnR9Vw
-         ISEkzQN9x+9h/AgWsdhsB7aDT+2eaYfrSWr812P3qZu1i1yIJouEUQ/1v3elEFbkyRtE
-         Og8xNhw6DJzf+u/9UHDgbs7XnVfvC1Z+PzK5dcv/A1xzqXrPCAS7iDeHSaisOW8ZFo2S
-         E0esZqZw8b9Dh5djZRquV6ceN0Mo/QMHA9zuwkgQEKO6y+ykSGqFxzkCtlfj9BFeTk9q
-         xCfyTOQRleVfnWAavBGYMF3GFqU4K+GiOuf8z5+SnGNdUrP1AxBmldwO3FG3eFfprvb3
-         uQsA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=mrv9cPitT4gYyiIqkJILWgmA5af8TdIaHVS1zuDY5+g=;
+        b=NPmlNTpd477z5dRBTFVPklL+MSZLbJMbzO0EA+4Ca+LZkHHhyRApsTU1UScMzontfG
+         Jsm7jOvLzmbMa63XW3PAxM0BZ2uWqqq1ZHhKQADhagdkAfjT9qTjPW3iouwMboslGU82
+         1KV/99h4TU4NQciv1Fpvt+/OaiYc5hTo45fpg5wELk13FWxMJWNgI/ewBZ8LjVm4aidD
+         dEz6nyPNqcUL2DRHpdB7eHM0WEVQPKN+B1UJTHq/W07E9Lml9mF4K2SO941hPoLOJYuc
+         NOGoyMsVPd5en+EHd8bLePe8RDlfaEF8PmfYv0Wn+Rnx5k1YmDLHRY89M7jEfNMQqImw
+         kYTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=NV1nqovB;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=aIvGQLBH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="V/aLbKdU";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hu14-20020a056214234e00b004c77495007dsi14950185qvb.153.2023.01.14.09.07.55
+        by mx.google.com with ESMTPS id iu11-20020ad45ccb000000b00534f75324a7si1064541qvb.316.2023.01.15.09.16.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Jan 2023 09:07:55 -0800 (PST)
+        Sun, 15 Jan 2023 09:16:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=NV1nqovB;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=aIvGQLBH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="V/aLbKdU";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pGk0F-0003q9-E3; Sat, 14 Jan 2023 12:07:35 -0500
+	id 1pH6ce-0002cq-Pi; Sun, 15 Jan 2023 12:16:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pGk0E-0003pU-09; Sat, 14 Jan 2023 12:07:34 -0500
-Received: from out4-smtp.messagingengine.com ([66.111.4.28])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pGk0C-0006IF-AR; Sat, 14 Jan 2023 12:07:33 -0500
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id 100B75C00ED;
- Sat, 14 Jan 2023 12:07:31 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Sat, 14 Jan 2023 12:07:31 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc
- :content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm1; t=1673716051; x=1673802451; bh=xHAR4dj5s0
- zWF/rLLxJBPBX6N/CzkRTUdheh7+Xx3Fk=; b=NV1nqovBVVvNs2aWGar3Vvy4gL
- VT1A+5a3uEFp7+MNWAwARE2PSOKm4PDuKwBxLgPvZpkicXvhW2GHBBYzgymJcE09
- rTsnBCjOY37WteBIkKBU8KFctZYHckK9fXB1RA5Cc6pNLfYLtdbpwY/hElDWbgE7
- 7E9Q1ckqOkr8SvuTjpOzrNTAsnnEOSBywUAzdCce/QNs3Q3iuTqDsXnJieOwCG/n
- sHhse4Nb0aCQERPv8OimvKSvCoxbDOPTYjx6Z2Qis/+rzeyqHzlC3zeA6lXWkI0Z
- azr3zCA8tPSjbF4Zd3bxTa5B4Erhb8CjbHbsPPZH2vkzfkTAQFaggiiglFXQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1673716051; x=1673802451; bh=xHAR4dj5s0zWF/rLLxJBPBX6N/Cz
- kRTUdheh7+Xx3Fk=; b=aIvGQLBH3ojr8geg7HkwlM0j85RSipbyFQaJt5+zYlFt
- Mv1vybdxPRpzUPvX/z+7dgCraZ+13Pn8nDH0x47JIxGkendHqI4lq6L2ybtdPJgJ
- AkvymWKrP2+D1Cf4HCSZ0G2JJq26Sm/zcBRGHWy0r4ThC88fLBKRPosPoKnNMkbV
- fIKrcP09nwb8dRWp3ts1rJi2M/9pYm0ub3DgdkIfhmPuBocN9heZnl/M9WfZcXXC
- 6JzwBti3K48eMm0f4KM2qZu7qzdOECBQ6rPha1wBGjqnVDt2fa4UNYcKbCWwct8Z
- b2t4z3ycixw+8yG9f5w0jLmhpiSuGDImufQr7FORhQ==
-X-ME-Sender: <xms:UuHCY0Y-kQbbR3RVX1d5wWVnorHutHyLiMUujRRNopnn7cUP_8TjEQ>
- <xme:UuHCY_aDSK7ADmTEvYWpTc5fri7HQURAMm3hC2HtoZCSs6BD_BiMYiBOahxb7RMLK
- y9noq0UeRKC6kKZ1HQ>
-X-ME-Received: <xmr:UuHCY--Ll00OIGrN1M4ejSwdQ_3wFrMZyk8cgICfQ1eH7UgHRfV9aYdiPzbYBpadaQN3SPLtYyoAwPWwaGIYGtq6wg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddttddgleeiucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujgesthdtre
- dttddtvdenucfhrhhomheprfgvthgvrhcuffgvlhgvvhhorhihrghsuceophgvthgvrhes
- phhjugdruggvvheqnecuggftrfgrthhtvghrnhepieehheejheeiveetvdfhkeevgeeiff
- dvieetuedtheekteegkeeijeeffeduheelnecuffhomhgrihhnpehgihhthhhusgdrtgho
- mhenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehpvg
- htvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:UuHCY-q6drjl4Z0riOZ5lLSmJIguUbxwuA_aL_nFjKDosSHyPGjojA>
- <xmx:UuHCY_qVd66zkfQXawLIRdVdjIWqAPhCjSJ52gqjhiE98flBfWYM_g>
- <xmx:UuHCY8QTCEm7YmJQRqJ5htSybwcaTOH-Yg64_H6CpdPTXYPFBK0-Cw>
- <xmx:U-HCYwfBgvCcyvoUyVOHeie9Gqcbo8vmyj7eFT8_NZoQkfAExOtV_g>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 14 Jan 2023 12:07:29 -0500 (EST)
-Date: Sat, 14 Jan 2023 09:07:27 -0800
-From: Peter Delevoryas <peter@pjd.dev>
-To: patrick@stwcx.xyz, clg@kaod.org, peter.maydell@linaro.org,
- andrew@aj.id.au, hskinnemoen@google.com, kfting@nuvoton.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH 0/6] hw/nvram/eeprom_at24c: Cleanup + FRUID EEPROM init
- example
-Message-ID: <Y8LhT0sinfZdMmHu@pdel-mbp>
-References: <20230114170151.87833-1-peter@pjd.dev>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pH6cd-0002by-0K
+ for qemu-arm@nongnu.org; Sun, 15 Jan 2023 12:16:43 -0500
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pH6cY-0004f4-Kl
+ for qemu-arm@nongnu.org; Sun, 15 Jan 2023 12:16:41 -0500
+Received: by mail-pj1-x102c.google.com with SMTP id
+ gz9-20020a17090b0ec900b002290bda1b07so4828500pjb.1
+ for <qemu-arm@nongnu.org>; Sun, 15 Jan 2023 09:16:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=mrv9cPitT4gYyiIqkJILWgmA5af8TdIaHVS1zuDY5+g=;
+ b=V/aLbKdUeYoZYJjxyx4V5iCLqRZKYSMBIv5AxjWuJrqftbtRMaSBxzNhHaaTYaSnVv
+ RoH23OE3JMVkdQf3L1Tx6Nimv+E2+HvNqPhMsZnh+Rh5vPUYqe6F9Dgtcg137WN1eTSg
+ 2V71LdXQuz37AsQ/GlZjNS/4UhuC+xBkc9PC4hULE5goaoXsi3K3esd/mm+ee3VGVSlq
+ kh042nNb0xl9CRH4wvPXWTL/6/XKiolYumlVy8FFj0lqBznW4e/rgn2ybtCyn9CjxzO8
+ 7ZoFqPxAwo7lFVeIhB74sXEosmCzzECTymSUGGfcWJtoT93Nv/MuIaD2jabnk4rJDnb+
+ /UVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=mrv9cPitT4gYyiIqkJILWgmA5af8TdIaHVS1zuDY5+g=;
+ b=eDQ04lPKYeB8WthXfwb+1egVLSrU2t1E6grFuMXiPyioi/p2wGWBkLRUwwDsZRUTbB
+ Uy2NNEVqKUXpuDjORcwhcvdJxJprsIs5by22LEtiUCgWz4BPZyIzq7qX9AWGHygDuPs6
+ ggKV8j13nXGXW7DAFTZ3znuMMBZQLrvm9tuihjgd6R/RpYi5T6v+BjxUx3JNJQxlGEpD
+ bSCEWdTiJoYMHR3TDdLGKxAeZstcE9l8UyCULI+jU42zo2z4/+LmQ+6jsz1VG/OyzNdE
+ 7vYRhEfovAc39K0MMQ4x+zqduuMg8ipCJHWbVyB6qKz88vPVEviIY1+RScRUHlzicAw1
+ TH0g==
+X-Gm-Message-State: AFqh2kpNLrldEqgf7cdJB8rrwNpYfzN5ihYQAQHAms78eSvnEZU4qgbW
+ 6dQJi+RETdWgf8inMXvoeelXPhP8hCDKIfi+
+X-Received: by 2002:a17:902:d48a:b0:192:48d1:f06c with SMTP id
+ c10-20020a170902d48a00b0019248d1f06cmr26089646plg.35.1673802996471; 
+ Sun, 15 Jan 2023 09:16:36 -0800 (PST)
+Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
+ by smtp.gmail.com with ESMTPSA id
+ z9-20020a1709027e8900b0019472226769sm4716086pla.251.2023.01.15.09.16.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 15 Jan 2023 09:16:35 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH] target/arm: Widen cnthctl_el2 to uint64_t
+Date: Sun, 15 Jan 2023 07:16:33 -1000
+Message-Id: <20230115171633.3171890-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230114170151.87833-1-peter@pjd.dev>
-Received-SPF: pass client-ip=66.111.4.28; envelope-from=peter@pjd.dev;
- helo=out4-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,69 +118,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IMG4/Xc+njoi
+X-TUID: HP6hL1dWkd8x
 
-On Sat, Jan 14, 2023 at 09:01:45AM -0800, Peter Delevoryas wrote:
-> This cleans up some of the code we have creating at24c-eeprom objects in the
-> Aspeed and Nuvoton files, and adds an example of how to initialize a FRUID
-> EEPROM with static data using I2C transfers.
-> 
-> Initially I was going to propose a patch to update the at24c-eeprom realize
-> function to incorporate static data, but then I realized I could just
-> accomplish the same thing using i2c_send in board reset. The patch at the end
-> demonstrates this.
+This is a 64-bit register on AArch64, even if the high 44 bits
+are RES0.  Because this is defined as ARM_CP_STATE_BOTH, we are
+asserting that the cpreg field is 64-bits.
 
-1. I messed up Joel's email on this thread, sorry about that.
-2. I forgot to post the output of the test I used to verify this:
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1400
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
 
-qemu-system-aarch64 -machine fby35-bmc -nographic -mtdblock flash-fby35
-...
-root@bmc-oob:~# fruid-util bmc
+During my perigrinations of reorganizing cpregs, I've been thinking
+of ways to detect these sorts of errors -- preferably at build time,
+but failing that at startup.  I think all raw usage of offsetof has
+got to be replaced with something like
 
-FRU Information           : BMC
----------------           : ------------------
-Board Mfg Date            : Mon Jan 10 21:42:00 2022
-Board Mfg                 : XXXXXX
-Board Product             : BMC Storage Module
-Board Serial              : XXXXXXXXXXXXX
-Board Part Number         : XXXXXXXXXXXXXX
-Board FRU ID              : 1.0
-Board Custom Data 1       : XXXXXXXXX
-Board Custom Data 2       : XXXXXXXXXXXXXXXXXX
-Product Manufacturer      : XXXXXX
-Product Name              : Yosemite V3.5 EVT2
-Product Part Number       : XXXXXXXXXXXXXX
-Product Version           : EVT2
-Product Serial            : XXXXXXXXXXXXX
-Product Asset Tag         : XXXXXXX
-Product FRU ID            : 1.0
-Product Custom Data 1     : XXXXXXXXX
-Product Custom Data 2     : Config A
+#define cpreg_fieldoffset(field) \
+    .fieldoffset = offsetof(CPUARMState, field), \
+    .fieldsize = sizeof(((CPUARMState *)0)->field),
 
-A reference flash-fby35 image can be found here:
+I'm not going to touch this until Fabiano's --disable-tcg cleanup lands.
 
-https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
+r~
 
-> 
-> Thanks,
-> Peter
-> 
-> Peter Delevoryas (6):
->   hw/nvram/eeprom_at24c: Add header w/ init helper
->   hw/arm/aspeed: Remove local copy of at24c_eeprom_init
->   hw/arm/aspeed: Replace aspeed_eeprom_init with at24c_eeprom_init
->   hw/arm/npcm7xx: Remove local copy of at24c_eeprom_init
->   hw/nvram/eeprom_at24c: Add I2C write helper
->   hw/arm/aspeed: Init fby35 BMC FRUID EEPROM
-> 
->  hw/arm/aspeed.c                 | 154 +++++++++++++++++++-------------
->  hw/arm/npcm7xx_boards.c         |  20 ++---
->  hw/nvram/eeprom_at24c.c         |  25 ++++++
->  include/hw/nvram/eeprom_at24c.h |  12 +++
->  4 files changed, 135 insertions(+), 76 deletions(-)
->  create mode 100644 include/hw/nvram/eeprom_at24c.h
-> 
-> -- 
-> 2.39.0
-> 
-> 
+---
+ target/arm/cpu.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index bf2bce046d..1feb63b4d7 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -479,7 +479,7 @@ typedef struct CPUArchState {
+         };
+         uint64_t c14_cntfrq; /* Counter Frequency register */
+         uint64_t c14_cntkctl; /* Timer Control register */
+-        uint32_t cnthctl_el2; /* Counter/Timer Hyp Control register */
++        uint64_t cnthctl_el2; /* Counter/Timer Hyp Control register */
+         uint64_t cntvoff_el2; /* Counter Virtual Offset register */
+         ARMGenericTimer c14_timer[NUM_GTIMERS];
+         uint32_t c15_cpar; /* XScale Coprocessor Access Register */
+-- 
+2.34.1
+

@@ -1,133 +1,128 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1430051ejc;
-        Mon, 16 Jan 2023 06:08:22 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtggHW5lfhJ5b/jZ19Bd1ICWMJUkIdJAuIZC6n/lW7UqzaaeZmyylDmB1NwEAnEN+/Meg5c
-X-Received: by 2002:a05:6000:1b05:b0:2b5:dc24:e08e with SMTP id f5-20020a0560001b0500b002b5dc24e08emr26744408wrz.69.1673878102619;
-        Mon, 16 Jan 2023 06:08:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673878102; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1509401ejc;
+        Mon, 16 Jan 2023 07:37:50 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXv7duAykPCrKRm+apU3czOlzfiN95z3KwVycnFjl3Dvt3Z2dc1VW/OyTD4i4JIwTgH9ymBm
+X-Received: by 2002:a67:f30a:0:b0:3d0:def3:f74 with SMTP id p10-20020a67f30a000000b003d0def30f74mr10668840vsf.22.1673883470213;
+        Mon, 16 Jan 2023 07:37:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673883470; cv=none;
         d=google.com; s=arc-20160816;
-        b=o5zTmFLeuF92QRWjvBYKZ+neyGuFtgZZMvbhR6DimJqgeDU++nPxaXdjRpvVzELFkh
-         uX0WDie20P9mHSXWYGYiqGeMbQlFmXvkFPAYoCn0/8rff/RzL7qsCMqKbYrpclK5pL3E
-         e9h098kJV427V/OmS+6bxpv3ebvdINW1Clut9GjxVwmNHbV323G52eHg75qJhUDlKVXO
-         1i+X1q9RjOzhol6VBhChQ/yq/2IDiji+riI9iAv0zjgwkCX9PC3OeFOXNyk8rM1J2z/d
-         oxbFiyIgwjbA3xV8nmZqJsAgisblpjYqfV4wDOI7ZQB6B+xVOFnESXeUPNOXzl2zApkL
-         EU4g==
+        b=AjoJ83dVxrhOTUOifE6SOGPs+mmt0+ioqQzrvgyPyqaB2AXz8uoZ8iGxJmrSOoKs7l
+         mDtdVvIyp187VIcsFde0+sEPJRkf5HYF7zmdgrEuJJHP1jbW6ssX0esXxFmtISevl8Kw
+         stPoRQ0N6mfviMpSX1+Fj3oCERhc//fhU0q2eHslGtG1sro7gjTAe2lP3i3S1PVL7VMQ
+         YBt6XhEfzdke/KZ97HD5d6Udi44ouniAo4MWbZ3NQseAkycjj75fKBPBCHXVdz2TFp2X
+         j1VaWZ5hZtDT+PgTEL1opdjDb4YG8MmCaJOjUCK0rmqm2+FXqi3CysI2IAnkpFiz23QF
+         2tBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=jYpvfBUUQx5AgLWD7HpZ/ikak7btnZaNIlIB9bjuo/4=;
-        b=h6XgVlGK60K2y/3iib1NaLlvQiWobkn08Nettxk4bfR16TbIsFPfUoGFBggnvWcHvq
-         UupC4QW4lsHb2bE+Dq4E7wVer3HMDdHJgraEkm/8onFGUrYD3O9mdYBlLNC0lWoVhUn4
-         DMNe+cnG7DDYnaRAA1DMrrcs/MwjbSVsLwo9Dp9FGdMtpZTCHrrHLN6TRsgHUi5ClyQR
-         +3IE4acbSkeV65Ink0/8PqWWpPDnNO17LYclJrAqxDQ1bXDSDsWtJk19+Cdk3OFD5D7R
-         OqpBerjK5sVbbddAwQTkj7WvT/WH42YzP+/ErxiES8QoOkU8hFWXncoUn1qapF2tb3Kb
-         2lvA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :subject:from:cc:to:content-language:user-agent:mime-version:date
+         :message-id:dkim-signature:dkim-filter;
+        bh=y0nlBlXEtoiAjCeIGddAEJEbom40QaX7TQETc5IwyYw=;
+        b=BXqyDlreeJYtoAc43svRrU7geXi5N6kGlAIgcCfbDAV4/OsJU6ngl74S4dj0eYpJku
+         Qn7vEdKMI2wbywnKUBLH6dsmHJD/wLTk9il5GpqqJ8xnSmPVPTZCfEM4FvNbZMECV33o
+         Fq2xNsbn2EOt8zlakTyKwxt02GSGCRXsriUNL7kRhDMPlds0u9M4dfC+HKye2uxElWXo
+         VpWYfdil5rjoupdOLiMFqBxR/kawWpV5UmMwsaIIJtUqMhyEiX2guq2lTAlTM1fRtxy6
+         PYZbnXHjeY1d7976RuTvHv3RGIisH08Dso3M3PjNkcD54rlmBx1I5GPkZ34+uF9qIksc
+         jgOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=jN7idM75;
-       dkim=neutral (no key) header.i=@suse.de header.b=67OQSLJc;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id m9-20020a5d6249000000b002787ce8057csi23277764wrv.457.2023.01.16.06.08.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Jan 2023 06:08:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=dquJyh0N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t12-20020a37ea0c000000b006fc2210cf12si16903177qkj.465.2023.01.16.07.37.50
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Jan 2023 07:37:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=jN7idM75;
-       dkim=neutral (no key) header.i=@suse.de header.b=67OQSLJc;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id EDB2B678BE;
-	Mon, 16 Jan 2023 14:08:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673878101; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jYpvfBUUQx5AgLWD7HpZ/ikak7btnZaNIlIB9bjuo/4=;
-	b=jN7idM75FOXoIf7po8BgPta5c7v69eV9jQFxbHXN3b7ceASf2mmvC+8/gXhKcmBcvUXLtS
-	3CkXsTOatimbAIM9mog+nrV7jBNy3mXa8pQWtnstHOWIXLm3UPHIq1C5gVVGLwsRxiHIXg
-	11jViQsYkBIwA15kcX1Xh2wqT9PYY6M=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673878101;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jYpvfBUUQx5AgLWD7HpZ/ikak7btnZaNIlIB9bjuo/4=;
-	b=67OQSLJckyjz3TKZi6h/0da2Fu/SPHP5dmYoupUy0h8bM8cTi2oYBSB5bvISvgl0lFqdiX
-	ItsLd/T9LCuzGbCQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 7BEE5138FE;
-	Mon, 16 Jan 2023 14:08:21 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id KK11EVVaxWO+VwAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 16 Jan 2023 14:08:21 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Alex
- =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>,
- Claudio Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Thomas Huth <thuth@redhat.com>, Laurent
- Vivier <lvivier@redhat.com>
-Subject: Re: [RFC PATCH v3 20/28] target/arm: Set cortex-a57 as default cpu
- for KVM-only build
-In-Reply-To: <CAFEAcA8cUc28JBT7QikUirthUn7yP-BVV3+cibHryAGx5FWE+w@mail.gmail.com>
-References: <20230113140419.4013-1-farosas@suse.de>
- <20230113140419.4013-21-farosas@suse.de>
- <bb5f5cd7-6d53-eb69-3e79-db95c9734f07@linaro.org> <874jsqzj7m.fsf@suse.de>
- <CAFEAcA8cUc28JBT7QikUirthUn7yP-BVV3+cibHryAGx5FWE+w@mail.gmail.com>
-Date: Mon, 16 Jan 2023 11:08:19 -0300
-Message-ID: <87wn5my3l8.fsf@suse.de>
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=dquJyh0N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pHRYA-0001Jx-9Y; Mon, 16 Jan 2023 10:37:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
+ id 1pHRY7-0001J3-Ii; Mon, 16 Jan 2023 10:37:29 -0500
+Received: from linux.microsoft.com ([13.77.154.182])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <eiakovlev@linux.microsoft.com>)
+ id 1pHRY4-0001I1-UL; Mon, 16 Jan 2023 10:37:27 -0500
+Received: from [192.168.0.20] (unknown [77.64.253.186])
+ by linux.microsoft.com (Postfix) with ESMTPSA id 822FB20DFE74;
+ Mon, 16 Jan 2023 07:37:13 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 822FB20DFE74
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1673883434;
+ bh=y0nlBlXEtoiAjCeIGddAEJEbom40QaX7TQETc5IwyYw=;
+ h=Date:To:Cc:From:Subject:From;
+ b=dquJyh0NPLfz1lX0guNbRhozjRHxlRe9g2RcCBr9DR1oqeTYTMkSQcEZwi6LunYpW
+ zJrfV1Xno7RIU2qdp5OLThvXTgXwjBulvyHItKtw6RMWE1vYHXP2c1kM7ZXivAgj62
+ 7luOGD62JSS4/OlKKBIc/9Ymvun+NUnrzE+y2r5s=
+Message-ID: <b6a1427d-51b6-0daa-c4f1-b1e8ea145844@linux.microsoft.com>
+Date: Mon, 16 Jan 2023 16:37:18 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: nUh1YfYXJLw4
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Content-Language: en-US
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ eric.auger@redhat.com
+From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
+Subject: [RFC] 2-stage translation emulation support for SMMUv3 on TCG
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=eiakovlev@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -197
+X-Spam_score: -19.8
+X-Spam_bar: -------------------
+X-Spam_report: (-19.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, ENV_AND_HDR_SPF_MATCH=-0.5,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UsPGU9/2/wE1
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Hi!
 
-> On Mon, 16 Jan 2023 at 13:45, Fabiano Rosas <farosas@suse.de> wrote:
->>
->> Richard Henderson <richard.henderson@linaro.org> writes:
->>
->> > On 1/13/23 06:04, Fabiano Rosas wrote:
->> >> The cortex-a15 is not present anymore when CONFIG_TCG=n, so use the
->> >> cortex-a57 as default cpu for KVM.
->> >>
->> >> Signed-off-by: Fabiano Rosas <farosas@suse.de>
->> >
->> > Ideally there would not be a default at all, requiring the command-line option to be used.
->>
->> We could probably do that now without impact to users, since KVM would
->> always require a -cpu option due to the current default being
->> cortex-a15.
->>
->> >
->> > Second choice would be "host", since that's the only value that's actually usable (except
->> > for the off-chance that you're actually running on an a57, which is less and less likely
->> > as time moves on).
->> >
->>
->> I'll have to go around fixing qtest first, either to add -cpu or to add
->> -accel kvm, otherwise we get:
->>
->> The 'host' CPU type can only be used with KVM or HVF
->
-> For a CPU type that will work with either KVM or TCG, that would
-> be "max".
 
-Yes, although the issue here is more that there are tests running with
-!kvm_enabled (no -accel kvm given) and !tcg_enabled (--disable-tcg).
+We are using qemu-tcg-aarch64 to run Hyper-V test and debug builds for 
+arm. Besides some minor fixes that i have submitted over the last couple 
+of weeks, one big compatibility item for us is SMMUv3 2-stage 
+translations support. We can do fine without it right now, but having it 
+would also allow us to test nested arm guests with SMMUv3, which is great.
 
-The "max" cpu does in fact work with qtest because even when
-CONFIG_TCG=n, it ends up configuring a "cortex-a57 + extra things" in
-aarch64_max_initfn. But that seems a bit too implicit to me, it would be
-better for the tests to explicitly set the accel and cpu options.
+
+One idea we have floating around is implementing 2-stage translations in 
+SMMUv3 in Qemu. We can't make a commitment yet, but before we consider 
+it i think it would be wise to ask the community about it, specifically:
+
+* Do 2-stage translations sound like something qemu-arm would be keen on 
+accepting? Are there any other use-cases for it besides an arguably wild 
+corner case of nesting an EL2 hypervisor on software-emulated arm64?
+
+* Is there anyone already working on it as we speak maybe?
+
+* Were there any previous attempts to do this and if yes why they 
+evidently didn't get through?
+
+
+Thanks!
+

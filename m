@@ -1,138 +1,257 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1575960ejc;
-        Mon, 16 Jan 2023 08:58:39 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuCzp5ceS3Tw+mmGrwFJ89mjrWuKEPlUxQgejC3mxrfmiajcS3EbXqrwUjCXDzfNH+HLRz1
-X-Received: by 2002:ac8:7409:0:b0:3b1:691f:3d7a with SMTP id p9-20020ac87409000000b003b1691f3d7amr24839968qtq.68.1673888319188;
-        Mon, 16 Jan 2023 08:58:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673888319; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1594579ejc;
+        Mon, 16 Jan 2023 09:20:11 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXu0s4x8PnRPIat6WKd27oMGQe2UA6/KKwG7hYsCdCf69+PcLJDvD129wiHsmEMTzlDaBKgQ
+X-Received: by 2002:ac8:7c8d:0:b0:3a9:763b:4a61 with SMTP id y13-20020ac87c8d000000b003a9763b4a61mr119692821qtv.28.1673889610930;
+        Mon, 16 Jan 2023 09:20:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673889610; cv=none;
         d=google.com; s=arc-20160816;
-        b=cJ4HZ35HrFCJSXmngf6MTi0L8ITYe20fAU7yO8m8D4ESFgLk6k2CQ8meUnWwiRTmRh
-         w9HYGJ8WWtkZKoY9H8a1OwJSgDvU8bPlE7tTqGEF9LrtVUgzqUyHOB29CfmTujo/Knaf
-         smaRUlfPnWKHhP0PipfmrKFgVCEdkmU6mi1eebetpO9TKgeqK5eW+thU44fLmlmT+wS0
-         55wucs+VRZT1nEP7YW4X4LwMbRohOU8sTIkdilNQGlgbGm0+/jpdNGopbolZUia7UUK3
-         wcGQaq02eVUpSMB6F3LvotSKDsmvlgCY3n53LC5Q/qzaYQKP8qCeJqeeOyf/A9q0TJsE
-         xM4w==
+        b=FPhu6Swo8plYPgTmczxeO8t2wuoOfCgk3pGkvgRk3mCxoJSf2MSA4xod9/+OnJAMKa
+         vlNg7nqlPGdHAvBFw/NSWAYswKKjTmmFF93DjSqOOFx9rdzX02yoBgzBRrsPpia1HEN7
+         AFOD27wcU9zAHakK5Y6EWDcuHHAISw9Bu+DEBdveJwkrLNA1SLaE/j+OQk7N0Js84dkF
+         b/Y30yXeW9JLJJ8jVURRv2Ntn/ETMh/uKipuGPcMy2gyXaPw1FHsjNoOpaNppLjDDtyU
+         yu6eIz2PbmIieJYDDQuUokDmBmDQf9a1FAyDqhDGMzHYlRi+/fNEShC1Gl7qg3Shdgxy
+         TWAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:ui-outboundreport
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=r5IGdxmwiJJwIu9fCIfXNKm/u1jo29S0vrk6CGaB+zk=;
-        b=M+qTnyn8m0CFZm1Rvziqm+9zJxkMmpZgXluukfouJO35iSKCpGDa2vdOoUjVU1tcpw
-         BOkzfQNap0CY8ZCCrxBZh4kZiuQcqwb2j0NZ4xyk6qXb9pATi9cMZIbEE18iHLyd8p70
-         jU2mKlcXhx8yRsVC8pHDkYbZKF/3HBQJSNoui9nuNrbyQNxJWWECFv+22l1Oa89raWE2
-         Jlq9DoOO4/zAX3U7AYxYMmtCrFaWdy2apsCoP5fXkVdCbvtk+m15ZrPLPvSxO9+nU8yN
-         iN9CTi6JstCiLJNXh5XYlQpVhwkf6NYVnm4G7ssPZUfj73BNWymJKJTbKhVokP/zrcj4
-         dxiw==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=vtUHUbgm1Z/AOh5OqfLWhe3wl1ozKsc/IBfogveBl34=;
+        b=k+4NYMs383V1uIiJVKPh+K3AAJvHTGFCto+Sqhp3yJaP6V2I3GRKn1D4nLBkPibkfa
+         idzRQQfeGl3MXtSdvBJRH4ycYiPEF9cW7wZ9s5L1IU20nAv0xdWrCfNW9Z8C5seHJw03
+         yqOp2to2MdF2zpVxdHfIEM7L0ntpzJjdyO4bKJXrcV9BRKvrOWGFwyyxX/jNGB8E6Au7
+         5eH99NnRvGgbgLrzSMaotAZHONEPNWVTCLbaIIbJltDpbK0VyphxDh/j8HK63iS30oSD
+         3+qNvv+tx3u+7xUjYCITAJJ8fAQ06IEFNjje0/OKWflVxT1mAY/o59QWQbKHdytaTa84
+         Dc0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=QqBzsXv7;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=rwe5D86D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bt15-20020ac8690f000000b003b0e7c36057si10593070qtb.759.2023.01.16.08.58.39
+        by mx.google.com with ESMTPS id l7-20020a05620a28c700b0070525820111si19310253qkp.261.2023.01.16.09.20.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jan 2023 08:58:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Jan 2023 09:20:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=QqBzsXv7;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=rwe5D86D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pHSoT-0002lf-8K; Mon, 16 Jan 2023 11:58:26 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pHT96-0004m2-Tl; Mon, 16 Jan 2023 12:19:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHSoS-0002lI-0k; Mon, 16 Jan 2023 11:58:24 -0500
-Received: from mout.kundenserver.de ([212.227.126.135])
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1pHT91-0004XJ-DI; Mon, 16 Jan 2023 12:19:41 -0500
+Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHSoQ-0006v3-9w; Mon, 16 Jan 2023 11:58:23 -0500
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MLRDv-1p0CwT0lV5-00IYVW; Mon, 16 Jan 2023 17:58:18 +0100
-Message-ID: <d410e592-acb8-af23-3a71-21cbd7a47547@vivier.eu>
-Date: Mon, 16 Jan 2023 17:58:17 +0100
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1pHT8y-0002Iw-SX; Mon, 16 Jan 2023 12:19:39 -0500
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.west.internal (Postfix) with ESMTP id F36BF320094A;
+ Mon, 16 Jan 2023 12:19:30 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Mon, 16 Jan 2023 12:19:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1673889570; x=
+ 1673975970; bh=vtUHUbgm1Z/AOh5OqfLWhe3wl1ozKsc/IBfogveBl34=; b=Q
+ qBzsXv7IXoQV9bLR6UyIrQRIwa/mhHoEixZ2F2fbXQmQYpp5uu5kyQRAqwJMWdcH
+ p5c0xrANhcMrw4WzYAYStFbbXXdUkbdipl5ssBiA/p+IAby+9lZRyVtbjjQ19FCw
+ XsmsUi0+u8ybKbXQi5Uu7fzniKatvgPzbmYV+izVw2pAAVaflgDL0FWKnaQ5N962
+ yf4Wf8RCp6gMlneT8VlF5oOeco+cqCIyWGK0QoQhjZbaBK/rvVeaqgE4QbUS1ell
+ IcZgMD11gS+sBtqa4P0Ovp5KJI4o1+JbuKLxtdQ1hVOKvw6PuSMYcLyzQkTUZGJB
+ wn/UPY13K4B78fwoRHRYA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1673889570; x=
+ 1673975970; bh=vtUHUbgm1Z/AOh5OqfLWhe3wl1ozKsc/IBfogveBl34=; b=r
+ we5D86D31cF7YwOKc0UXQKCSJCNQuJ88Ww+q4L5sTBDswHzyM/rROCX3b5K7KPiH
+ pBQ9Pzv4sVJcVCMxBzm58pAhZZ/+Mv5jSHDQxnraSf8t2xKKLIU16YRYY68ujou8
+ UuuwS4ChjdoDYWcOVBayBv19vfYHjMANwyv0FhV7UOCP4ju8SFMXUkf5egUdHWh6
+ iHtPT4cxNebN5a5v2oBXgBI82/gDRioW6PjmQcL+agMSD7LMoij8QGAeXlvYShuu
+ bA+wBKY1FG+1WtaO2yI2XsoYgxxaFf1rUAQd/dhG6DJylZLke1Y3p3/nojgeexs4
+ 8E/E2ZQN3DAy1QdivqG7A==
+X-ME-Sender: <xms:IYfFY-28VV-uOnKlS6kUer8kGS_f7jeED3RVqH3Ouxqd0auPC3NHzw>
+ <xme:IYfFYxF7sJcvZty-HRFoTmASUZxF15BEVMwvF1iqJ0AknYD3Sc6H6RrFz7R9f-QN-
+ JCj4O1cYjNCIaQXvw0>
+X-ME-Received: <xmr:IYfFY24Ewk2sIwhXqBRG9tn8aTqxn2POsdwCtlDAmsh0612PnWeplxG_F6ooXueNS7jkRcDe9JwxURJ-lryRShq6QA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtgedgleelucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefrvght
+ vghrucffvghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrg
+ htthgvrhhnpefgueekffdtueetgfehteffledtueehgfehgeelfedujeefhfffteekvddt
+ feetteenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihiivg
+ eptdenucfrrghrrghmpehmrghilhhfrhhomhepphgvthgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:IYfFY_0i4imR6iHDaILz2IpUOB9mZMLo2ITzevb9_gDnTvRc91kfbw>
+ <xmx:IYfFYxH4N-TrsOzN4m8-hKrk8wowETDJs8d_HogpG9ocv8-VkqXVog>
+ <xmx:IYfFY4-BRmMrHDbCkLvujc4-S4KMqgUtGmkEAvF5Gyh6Qpds6MDRMA>
+ <xmx:IofFY3bk0rvdTQZplAWcd1a2t0lnpEtawtp5qWceivS6J-on4wEFBw>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 16 Jan 2023 12:19:28 -0500 (EST)
+Date: Mon, 16 Jan 2023 09:19:26 -0800
+From: Peter Delevoryas <peter@pjd.dev>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: patrick@stwcx.xyz, peter.maydell@linaro.org, andrew@aj.id.au,
+ joel@jms.id.au, hskinnemoen@google.com, kfting@nuvoton.com,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: Re: [PATCH 6/6] hw/arm/aspeed: Init fby35 BMC FRUID EEPROM
+Message-ID: <Y8WHHrGicyqr9hzP@pdel-mbp>
+References: <20230114170151.87833-1-peter@pjd.dev>
+ <20230114170151.87833-7-peter@pjd.dev>
+ <3131a986-1db0-8ab2-12cd-11aa32ea29e0@kaod.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH 0/7] Trivial: Mark some more files as target-independant
-Content-Language: fr
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-References: <20230112134928.1026006-1-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20230112134928.1026006-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ORwA9WpDFkUa6HcTCV1L++5+VPbqATaHmXrdZ+Sl85HWK+kIU6A
- SajTjlM7YG02YAbzpDJ7nYI+YJmllZ6zDriiiWCnmegMmyEE2fQXNfmvzAdoaiAl1RmlVcc
- bzQooQgeEmdA+Mo89YKBWThKs1Hi/2zmhgywAwhBir/oKUQqHq2MxJNFt69a4h9y+kjhklT
- sfi6zPASL3WLschAuHa5g==
-UI-OutboundReport: notjunk:1;M01:P0:646/efj4mxw=;vqTGNtlbC2cqGttn27idrmktugz
- EOJynP/foXeTw4Ll33PiFKQlqkRzD7wxwsV2OT8XLdj3x8amMDETZEkraCyUX+D9g5EzfruVj
- 2mwHFxV2v6cE0Rm2F0l0z2iPRG7ficnCmxch3IaZvdtNby3gGtRTVYYNPREnt4zn/F6hUFqW6
- 3Q/bm1Z/hX5fqf5dVQB3hqVbNPDkknxUdSSMsnJLOEXZnnJ6GgZ2IQU7Z25kUQLR+CilAMN8g
- W1b90FK7xvmC8jk9vW36dgY6To0EUx1YFumhPuzcm+aD5P10IjMfa4o5GQGzaC50CiRuGAnAI
- jHXaTSKrLdUjuPu+lwZYxQsCDHafFB0Yu7OTQZmKR4S71gkIZsi9+G7aW5Orm82f9mHXVJW0R
- /fKy/nvhoV964gMOxFK+3OZVlqTn4Q7kgLz1ILGQvgA1vgcE3QvHZ2Wg+xKQfnZ/75wWoaEiC
- WRhJgcDQJ2/MXXaEghi9lSh/E3QnoaIpiRmbV71QZDlCI9J605rsHFfXBDM5CgcGwQKW/4dPP
- hn1UWDdx8eOjvcWtArvNS3D339wc7mlJ0Ywg+vnN4YPeE5dkQENWNxDI0uwPvuEOInfAjN0ti
- da5NCLvB0hChKOLSv4HVgFUJ/VO2LkKRHsbAJAVnxZscrv3uy5dP/ssrodXIcgO3e4UqJWTUK
- rjwpJf0KnazUFZzgy4MmAmGKJtYB8d8E0elobyDVcw==
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+In-Reply-To: <3131a986-1db0-8ab2-12cd-11aa32ea29e0@kaod.org>
+Received-SPF: pass client-ip=64.147.123.24; envelope-from=peter@pjd.dev;
+ helo=wout1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.097,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 65Bbj6nquWK5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7yzvPUG8w6yj
 
-Le 12/01/2023 à 14:49, Thomas Huth a écrit :
-> Here's a collection of low-hanging fruits to mark some more files
-> as target-independent (so that they do not have to be compiled twice,
-> once for qemu-system-arm and once for qemu-system-aarch64).
+On Mon, Jan 16, 2023 at 01:42:48PM +0100, C�dric Le Goater wrote:
+> On 1/14/23 18:01, Peter Delevoryas wrote:
+> > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+> > ---
+> >   hw/arm/aspeed.c | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+> >   1 file changed, 49 insertions(+)
+> > 
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index c929c61d582a..4ac8ff11a835 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -922,6 +922,52 @@ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+> >       i2c_slave_create_simple(i2c[12], TYPE_PCA9552, 0x67);
+> >   }
+> > +static const uint8_t fby35_bmc_fruid[] = {
+> > +    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
+> > +    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
+> > +    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
+> > +    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
+> > +    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
+> > +    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
+> > +    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
+> > +    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> > +};
 > 
-> Philippe's patches have been on the list before, but I slightly
-> modified some of them (like fixing typos in the subject etc.).
-> My patches are new.
 > 
-> Philippe Mathieu-Daudé (4):
->    hw/display: Move omap_lcdc.c out of target-specific source set
->    hw/intc: Move some files out of the target-specific source set
->    hw/tpm: Move tpm_ppi.c out of target-specific source set
->    hw/arm: Move various units to softmmu_ss[]
-> 
-> Thomas Huth (3):
->    hw/cpu: Mark arm11 and realview mpcore as target-independent code
->    hw/intc: Mark more interrupt-controller files as target independent
->    hw/usb: Mark the XLNX_VERSAL-related files as target-independent
-> 
->   hw/arm/meson.build     | 11 +++++++----
->   hw/cpu/meson.build     |  4 ++--
->   hw/display/meson.build |  2 +-
->   hw/intc/meson.build    | 12 ++++++------
->   hw/tpm/meson.build     |  4 ++--
->   hw/usb/meson.build     |  4 ++--
->   6 files changed, 20 insertions(+), 17 deletions(-)
-> 
+> I would introduce a new aspeed_eeprom.c file for these definitions because
+> each machine could have its own set of eeproms and aspeed.c is already big
+> enough.
 
-Series applied to my trivial-patches branch.
++1
 
-Thanks,
-Laurent
+> 
+> >   static void fby35_i2c_init(AspeedMachineState *bmc)
+> >   {
+> >       AspeedSoCState *soc = &bmc->soc;
+> > @@ -1363,6 +1409,9 @@ static void fby35_reset(MachineState *state, ShutdownCause reason)
+> >       object_property_set_bool(OBJECT(gpio), "gpioB3", false, &error_fatal);
+> >       object_property_set_bool(OBJECT(gpio), "gpioB4", false, &error_fatal);
+> >       object_property_set_bool(OBJECT(gpio), "gpioB5", false, &error_fatal);
+> > +
+> > +    at24c_eeprom_write(aspeed_i2c_get_bus(&bmc->soc.i2c, 11),
+> > +                       0x54, 0, fby35_bmc_fruid, sizeof(fby35_bmc_fruid));
+> >   }
+> 
+> That's one way to model the default reset values of the eeprom, we would
+> loose any writes though.
+> 
+> I think we should have a reset_data buffer instead, which would be used
+> at realize time to set the initial data, if there are no drive backend,
+> and at reset if !writable. Something like smbus_eeprom_init_one() does
+> without a proper property API.
 
+I actually did it this way downstream[1], but I thought it would be controversial
+without using properties, and I wasn't sure how to model it with properties.
+
+[1] https://github.com/facebook/openbmc/blob/b98f10b7967ebce1f97e14a9a5d4c14f9f7d4c55/common/recipes-devtools/qemu/qemu/0014-hw-nvram-at24c-Add-static-memory-init-option.patch
+
+> 
+> We would need some new interface to set a property for a constant buffer
+> of uint<>_t values. I don't know how complex that would be. It could be
+> useful to other models to define the init state of registers.
+
+Would DEFINE_PROP_ARRAY not work? Won't the properties be constant after
+qdev_realize()?
+
+Or if that's not preferable, DEFINE_PROP_LINK (uint8_t *reset_data) +
+DEFINE_PROP_UINT32 (reset_data_size)?
+
+Otherwise, if the property stuff is too uncertain, I'd be happy just adding an
+adhoc API through the helper like smbus_eeprom_init_one does.
+
+> 
+> Thanks,
+> 
+> C.
+> 
+> >   static void aspeed_machine_fby35_class_init(ObjectClass *oc, void *data)
+> 

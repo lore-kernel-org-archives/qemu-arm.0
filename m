@@ -1,89 +1,94 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1509401ejc;
-        Mon, 16 Jan 2023 07:37:50 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv7duAykPCrKRm+apU3czOlzfiN95z3KwVycnFjl3Dvt3Z2dc1VW/OyTD4i4JIwTgH9ymBm
-X-Received: by 2002:a67:f30a:0:b0:3d0:def3:f74 with SMTP id p10-20020a67f30a000000b003d0def30f74mr10668840vsf.22.1673883470213;
-        Mon, 16 Jan 2023 07:37:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673883470; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1602813ejc;
+        Mon, 16 Jan 2023 09:31:33 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuLB6X4sfKxk61GaPeosPK0hn/dP2xaGhq+PQyLRtFQbVAqRrKCwhMqHW+7zHNAfTElXst8
+X-Received: by 2002:ac8:6b0b:0:b0:3b6:2f47:de80 with SMTP id w11-20020ac86b0b000000b003b62f47de80mr6659551qts.20.1673890293733;
+        Mon, 16 Jan 2023 09:31:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673890293; cv=none;
         d=google.com; s=arc-20160816;
-        b=AjoJ83dVxrhOTUOifE6SOGPs+mmt0+ioqQzrvgyPyqaB2AXz8uoZ8iGxJmrSOoKs7l
-         mDtdVvIyp187VIcsFde0+sEPJRkf5HYF7zmdgrEuJJHP1jbW6ssX0esXxFmtISevl8Kw
-         stPoRQ0N6mfviMpSX1+Fj3oCERhc//fhU0q2eHslGtG1sro7gjTAe2lP3i3S1PVL7VMQ
-         YBt6XhEfzdke/KZ97HD5d6Udi44ouniAo4MWbZ3NQseAkycjj75fKBPBCHXVdz2TFp2X
-         j1VaWZ5hZtDT+PgTEL1opdjDb4YG8MmCaJOjUCK0rmqm2+FXqi3CysI2IAnkpFiz23QF
-         2tBw==
+        b=tgtDqaGnWro59aGArFmqL3+5lHfwiP0xDDT7/96kGI3I/tu/1THvhKjPkBWrnSQyzH
+         9lmwDQhmV3zgVX1nTZjm1mGci/nO/aJOzKSXVcpowOIP+Qpa/Q/Q21dJ4FDGygPEj9PR
+         Nto7TT3jNOfVmnDANGmJRRsEr4oE0FITf8cHp3tKNsxKnGF/etbdDDOU5P/b1qRpC4/r
+         YBleER6OQFpc0mEexuyjk3bUjIvRcOzop1tM2354VNlpWcrAWX0jlRhF0KscMJGJbXBP
+         O8YMhtSgIjFjWdBlqDD/21VbwerRtPgySDaiS3WwYLAOYTXlaOSHIXY3LLaQW96evT18
+         MaUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:from:cc:to:content-language:user-agent:mime-version:date
-         :message-id:dkim-signature:dkim-filter;
-        bh=y0nlBlXEtoiAjCeIGddAEJEbom40QaX7TQETc5IwyYw=;
-        b=BXqyDlreeJYtoAc43svRrU7geXi5N6kGlAIgcCfbDAV4/OsJU6ngl74S4dj0eYpJku
-         Qn7vEdKMI2wbywnKUBLH6dsmHJD/wLTk9il5GpqqJ8xnSmPVPTZCfEM4FvNbZMECV33o
-         Fq2xNsbn2EOt8zlakTyKwxt02GSGCRXsriUNL7kRhDMPlds0u9M4dfC+HKye2uxElWXo
-         VpWYfdil5rjoupdOLiMFqBxR/kawWpV5UmMwsaIIJtUqMhyEiX2guq2lTAlTM1fRtxy6
-         PYZbnXHjeY1d7976RuTvHv3RGIisH08Dso3M3PjNkcD54rlmBx1I5GPkZ34+uF9qIksc
-         jgOg==
+         :list-unsubscribe:list-id:precedence:ui-outboundreport
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=9aExGiBe6AM6X3yETD4ju69W7O6tMr+lfY0IGB8Qg94=;
+        b=r1qCoBRbSHRIaoVJrbOuzs9S7IV1fEufknw06GX5H8oc/e84TpaugbpFfIbHUvxlIA
+         8D7padGn70xoGOK3NOZqSb7SjXrwX+E4ENwJtkmEBJtD4DgstujupOPkYUJ82NcbkNOi
+         zk2SjOL8RTPn0bTugX9tmB6NolYZXytdrmW2cGs5GT2uPeCrExh4dubKgnDt/l4S0rdL
+         xSwpmi24/ePwn0dPjkcPJddRi9roy6uBPnYv/0wFWUoHjsvWztxrecxuN29vGebW/tqs
+         BFZeMRB84xmM6KVHBlRV1bHBo4xk8j8ku8rmcDrWKintNVad/mICmSCaduhMeygHYn3a
+         lwhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=dquJyh0N;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t12-20020a37ea0c000000b006fc2210cf12si16903177qkj.465.2023.01.16.07.37.50
+        by mx.google.com with ESMTPS id bc10-20020a05622a1cca00b003b49185a80fsi3962160qtb.744.2023.01.16.09.31.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jan 2023 07:37:50 -0800 (PST)
+        Mon, 16 Jan 2023 09:31:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=dquJyh0N;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHRYA-0001Jx-9Y; Mon, 16 Jan 2023 10:37:30 -0500
+	id 1pHTKA-0003wj-4H; Mon, 16 Jan 2023 12:31:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHRY7-0001J3-Ii; Mon, 16 Jan 2023 10:37:29 -0500
-Received: from linux.microsoft.com ([13.77.154.182])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHRY4-0001I1-UL; Mon, 16 Jan 2023 10:37:27 -0500
-Received: from [192.168.0.20] (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id 822FB20DFE74;
- Mon, 16 Jan 2023 07:37:13 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 822FB20DFE74
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1673883434;
- bh=y0nlBlXEtoiAjCeIGddAEJEbom40QaX7TQETc5IwyYw=;
- h=Date:To:Cc:From:Subject:From;
- b=dquJyh0NPLfz1lX0guNbRhozjRHxlRe9g2RcCBr9DR1oqeTYTMkSQcEZwi6LunYpW
- zJrfV1Xno7RIU2qdp5OLThvXTgXwjBulvyHItKtw6RMWE1vYHXP2c1kM7ZXivAgj62
- 7luOGD62JSS4/OlKKBIc/9Ymvun+NUnrzE+y2r5s=
-Message-ID: <b6a1427d-51b6-0daa-c4f1-b1e8ea145844@linux.microsoft.com>
-Date: Mon, 16 Jan 2023 16:37:18 +0100
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pHTK8-0003vI-BK; Mon, 16 Jan 2023 12:31:08 -0500
+Received: from mout.kundenserver.de ([212.227.126.135])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pHTK3-0004MC-HP; Mon, 16 Jan 2023 12:31:08 -0500
+Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N8n8I-1odJTA0Z9y-015uBF; Mon, 16 Jan 2023 18:30:58 +0100
+Message-ID: <86fc15b7-6880-b628-c9c6-c4cc1d602eeb@vivier.eu>
+Date: Mon, 16 Jan 2023 18:30:57 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Content-Language: en-US
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- eric.auger@redhat.com
-From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
-Subject: [RFC] 2-stage translation emulation support for SMMUv3 on TCG
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v3 0/5] hw/i2c/bitbang_i2c: Housekeeping
+Content-Language: fr
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
+ qemu-trivial@nongnu.org
+References: <20230111085016.44551-1-philmd@linaro.org>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <20230111085016.44551-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=eiakovlev@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -197
-X-Spam_score: -19.8
-X-Spam_bar: -------------------
-X-Spam_report: (-19.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, ENV_AND_HDR_SPF_MATCH=-0.5,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:b9ptuYCHik5xG1OgcoUTvkqqqkyAxdf1o6ga4eJI3WcDOJBOQ1s
+ IJop18Xc1WQuYOslxrIxE7fnhUKT8chDVMrDBJpl8RhY0Is869/lPu6l9XVhkYNhyusFNTP
+ qGqyvFEjmrtkqg7+JgKEyyuVXH76DtAjvRqxNoJc9aA8igWp2Ac8GGhJMaTFjRKdcPPEWjn
+ HUZ24VmNuVOqL1/FYSQyg==
+UI-OutboundReport: notjunk:1;M01:P0:rY6nDk+mIxw=;bRCHoBhDAr5elq5hGg5UoXq2IBQ
+ golH4bjRB4apnR4toGVjKKXyIy20uukdN6xS5vP898TLXzJINW5iGAy9bof/IuvlTcwo9E0jF
+ sqpeBVdc3C4sCFGDXv/b7Et5jn4dsD8xAGfSg98IMf4tMvC3we39kBuUhTyp4Zua5eJCExVNs
+ WSiHaqmhn9JEEhS/xaDfn3lBdZES/7kATSyTfNCOl1SmzDGYeVhG2SOXjCZUfHBPrcxp2VnFN
+ oawiFp0J+iMggrpUTRMSsEyVsfIogEid6rPAoRLuy+A7Ku7UYzCrPmTWa72u0E4S5OlfzbKv4
+ 7QvkBixdj5BzpDU9kgLLNBfeDfGwUDHneOWdZH/Ef2PY6FsasvmIwUNWj9ORYwdndnfcuJgj+
+ UPKEhz4SaW+WhYIPf4JQO73SC5ia/ZxGrnyHkd5Ea9qXo45EE7KfNw8OotoWYbw5Ot8cWeQxt
+ WUizynKJuHnOh6bL6B2ZjiHnsuIh0OcKVIdo7rkgzfUo9UIfN5xpa9BdlW4Q0NK4h/WlR7qiy
+ JF+FG9NuR5JWj4+Sq2RLd2Vh90GhibUNikAEHxKY2GFpTM3VtopS4JdtBJGGKS5DZDwTJf70m
+ RZtwPfbTcMzI3fCbQD2855mJt5VQY7wQafBlH8BmC7pzIyXcVgSXNwxnP5ggUKqVZmdUuFHJP
+ hPLscQUHNFAC3Aikzy59GpR6ZopT5E60Szz8xS8nUg==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.097,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,31 +103,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UsPGU9/2/wE1
+X-TUID: Rus3VuHnqbR3
 
-Hi!
+Le 11/01/2023 à 09:50, Philippe Mathieu-Daudé a écrit :
+> Series fully reviewed.
+> 
+> Since v2:
+> - Use array of const pointers to const (Richard)
+> 
+> Since v1:
+> - Fixed overwritten RECEIVING_BIT7 entry (Richard)
+> - Picked R-b tags
+> 
+> - Remove unused dummy MemoryRegion
+> - Convert DPRINTF() to using trace events
+> 
+> (series used as base for follow-up, better if merged via ARM tree)
 
+I can take this via trivial, what do you prefer?
 
-We are using qemu-tcg-aarch64 to run Hyper-V test and debug builds for 
-arm. Besides some minor fixes that i have submitted over the last couple 
-of weeks, one big compatibility item for us is SMMUv3 2-stage 
-translations support. We can do fine without it right now, but having it 
-would also allow us to test nested arm guests with SMMUv3, which is great.
+Laurent
 
-
-One idea we have floating around is implementing 2-stage translations in 
-SMMUv3 in Qemu. We can't make a commitment yet, but before we consider 
-it i think it would be wise to ask the community about it, specifically:
-
-* Do 2-stage translations sound like something qemu-arm would be keen on 
-accepting? Are there any other use-cases for it besides an arguably wild 
-corner case of nesting an EL2 hypervisor on software-emulated arm64?
-
-* Is there anyone already working on it as we speak maybe?
-
-* Were there any previous attempts to do this and if yes why they 
-evidently didn't get through?
-
-
-Thanks!
+> 
+> Philippe Mathieu-Daudé (5):
+>    hw/i2c/bitbang_i2c: Define TYPE_GPIO_I2C in public header
+>    hw/i2c/bitbang_i2c: Remove unused dummy MemoryRegion
+>    hw/i2c/bitbang_i2c: Change state calling bitbang_i2c_set_state()
+>      helper
+>    hw/i2c/bitbang_i2c: Trace state changes
+>    hw/i2c/bitbang_i2c: Convert DPRINTF() to trace events
+> 
+>   hw/arm/musicpal.c            |  3 +-
+>   hw/i2c/bitbang_i2c.c         | 80 ++++++++++++++++++++++--------------
+>   hw/i2c/trace-events          |  7 ++++
+>   include/hw/i2c/bitbang_i2c.h |  2 +
+>   4 files changed, 61 insertions(+), 31 deletions(-)
+> 
 

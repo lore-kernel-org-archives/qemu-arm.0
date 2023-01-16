@@ -1,112 +1,101 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1413488ejc;
-        Mon, 16 Jan 2023 05:48:33 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvDD3xWVOR7+5UQwv+Oc1GM/4OrUPpM56hd658iGv3OjVwj75l583Kxnu+h8VpWzVKwRuq1
-X-Received: by 2002:adf:f44f:0:b0:2bd:c6ce:7bf9 with SMTP id f15-20020adff44f000000b002bdc6ce7bf9mr16052304wrp.33.1673876913647;
-        Mon, 16 Jan 2023 05:48:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673876913; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1414249ejc;
+        Mon, 16 Jan 2023 05:49:42 -0800 (PST)
+X-Received: by 2002:a17:90b:1058:b0:229:990:de46 with SMTP id gq24-20020a17090b105800b002290990de46mr16544004pjb.33.1673876982448;
+        Mon, 16 Jan 2023 05:49:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673876982; cv=none;
         d=google.com; s=arc-20160816;
-        b=R4GbtBS61rnbmDKOlIZB0kmrpPAMsbeUR4DCk/WOSMEM0biAeCtSCLkghIYCDXRD86
-         RYjZMevUQ7qmSr++VUUHCTaufB76mWzX2TUMo9gzaQTLbeeNIPFw/S1hVBQBgp20SaHI
-         gFPbkTljXeFl0m1D0q/VERxkWvl6wfg7nL5vqvHXe18EjoVjR/eT+sZbj0aO2+HFB31q
-         1vxfkDV//a1AJ+9SvApNFtrDj8huMlj1QAu4JUD0vkrLTieThTVtArirbD23iY1eZwuw
-         /vrLNaghquij20KaoFUiN2p38AABi+B8/MR2xgCsbyOu1ryqeTstRkfiH4KasQoWfjW4
-         6f+Q==
+        b=Z9pjaCZeq3h6jRXn/v8glSfhHejicie0XzOYZIeljmlh3zlBRcJAhFnRdyB1oP28b5
+         zrbmOCye78rCokuK4xZTjymr16bL9GRSij3Jaw005X9q8QnbrH7re61nKzPZ8iSlnu0U
+         ncsYCQMIGR/gQn3DFXDlMltlXabBH5JCR9inexRhhuUnB2EE1IbUa7jYyLNrF/6hC2eP
+         WNzMGiSF9tSR9t4Qkdx3NVP06wT3CIy0punjuygqtqu+7YPSpN4zMv2KXFdsWwvl0EvW
+         broCbXGSAUHDmdozB/fAF+lBS0p2AM/lTfbkXGlX+V51jwf8pZI0ZaiLEe+bViaXMJeE
+         dd7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=2n7LBwL7ufHu0ZK/c8vwlNZYTcl9jqojEdhcpfG8yk4=;
-        b=ypy6xH4umHsP1G6to1EquOil6MqhD1ZI2i8+8byswUX9j6LbjJAtkH9I0Y9xn+Gr6Z
-         EAzBG9mMFKBAz7CKJ9adUFPXyrvB+uPPAQF45SKq+bUwEO5HUBau4lX7B1sX7UqkrbKd
-         82E5MQPDDP0muJdl8jP2HzCXxo3mmG2eRbMQSjvB/Rewyfm8XA3ZlxfMLHEQldjSKSPu
-         75Bw8/+QukSPaa4BDPuWmuCVAoyAOGwS2c1JcP0Oun0DVdMfrfJZwOqNSwFN9Jpf1HTx
-         GAm66CEJC47FtPxvW6aVOHav45iV/RNSKqcYRR7BXfe5A89OUmliUO+hg9J5mqxqmAsL
-         yK9g==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=a3CnBVOLCP2dM6Ha1kb4WheMOMwZ6ZjS+Mi3lpu6eYI=;
+        b=dwU55cFnm6N37TJtCPoqnIHnCbXloaTduZ40Df8VlRt7aWkGcU4OxkyUgd+tYbLBzQ
+         Lj1er6kbTHm+KIFwrIAiXVoqh5IbnJYqaDtvpEUSgbzD9ySXjXEuaszSLSB5ETtOxGH8
+         oAomUppzaYGGXbdHd9Fum07Euj+IlvO66Wl+zW7Ds0T+p8pa8LfKGyVlDoBb5riFtxvv
+         YgdvpavXfLm8DD+y+QP6j9PTvgPZWOZ36K7OuTr4jlp5RDniExQJRKUtRA4Rn/8eXdwq
+         zFjjkdM6k6ZeDu/rtTsgk4YO74db+QWzvq6klONUXr4qgfHsAGpG9/mY8gJbI6CYC4BW
+         m9Uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ROZUaknf;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=IGOGgpR8;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id u2-20020adff882000000b0028f4168a80esi25532178wrp.520.2023.01.16.05.48.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Jan 2023 05:48:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+       dkim=pass header.i=@linaro.org header.s=google header.b=f7Y1sy3Z;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v202-20020a6361d3000000b004c76dcc9998sor2781947pgb.0.2023.01.16.05.49.42
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 16 Jan 2023 05:49:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ROZUaknf;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=IGOGgpR8;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 398E337610;
-	Mon, 16 Jan 2023 13:48:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673876913; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2n7LBwL7ufHu0ZK/c8vwlNZYTcl9jqojEdhcpfG8yk4=;
-	b=ROZUaknf8C7UdB2y4S0kVOPhKOCE8ogmIvhdMo67s9vylwyjySfeIe196FVJ4Qu0kzJ6M6
-	t6Cm+YDK0MQS/7ezu3AJtHbnYQjkFazBejBsm0K2j/NxtUEsLB5M07FB7Wmg+Pb8Ib3HUm
-	XUAFAsQAYYqHQhMll54tddK0HnKsrbc=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673876913;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2n7LBwL7ufHu0ZK/c8vwlNZYTcl9jqojEdhcpfG8yk4=;
-	b=IGOGgpR8Zwcjlys8bsa9/NUNcmHtXRhPPtK3+zC5LWMtAf6lixiT4sYCuJjwpjab80E35D
-	r/iiA7vmiYKTzjAA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id BA734138FE;
-	Mon, 16 Jan 2023 13:48:32 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id FHYSIbBVxWP4SgAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 16 Jan 2023 13:48:32 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alex =?utf-8?Q?Benn?=
- =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [RFC PATCH v3 21/28] tests/qtest: Skip tests that depend on TCG
- when CONFIG_TCG=n
-In-Reply-To: <870053e2-f9e1-3048-c80e-687a13ccdf9f@linaro.org>
-References: <20230113140419.4013-1-farosas@suse.de>
- <20230113140419.4013-22-farosas@suse.de>
- <870053e2-f9e1-3048-c80e-687a13ccdf9f@linaro.org>
-Date: Mon, 16 Jan 2023 10:48:30 -0300
-Message-ID: <871qnuzj2p.fsf@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=f7Y1sy3Z;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=a3CnBVOLCP2dM6Ha1kb4WheMOMwZ6ZjS+Mi3lpu6eYI=;
+        b=f7Y1sy3ZvKh1ah3gIMMcEMipeDAO++/fR90DEUfVzzFy65AqEGwRRljHP4d6pk3UVv
+         Kg+hxlEJSxWJOTGQCpSmwTITnJHGAsq+wQlbnwsq7b7+2RpoFdV0MJDy1bUns9MduTQt
+         Gcv2NccolyAq9t7BGbZsxdhNLuVm+dlc39evbMxyi85F0Dx1jc5x45xeO1E6Mm/BTG9R
+         +Qd/bKSHgflWUJbVtnShq4GLOfsY9G/wmIZYQVHvCTpXLrQnltWbT2gJIRoM0ZcYRhil
+         2Lpm/1WR3Tw9KRdCTriGEcgLUrP8kr3EsGbb0Z2WsMHljfDlLg2whgF+25CEsBrDR2SU
+         hcVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=a3CnBVOLCP2dM6Ha1kb4WheMOMwZ6ZjS+Mi3lpu6eYI=;
+        b=ZDGYMCtM0TFMSQlDDz6EaVzG+y8Ipga+f1BvV+ZbG1Z1sNcJkpVVOk/cboxbInN1Ra
+         yJMjXh1vqK+aosutsdWXuAzciEO8GbLjFiolkZBVjzhRvYsKwZ64ZZ60Jt27Xt3A8IsF
+         0MWc2qz1JgqyyM+xwiFYApiGwwwGuIAbNaXcW+T5qXMM15OWN7S/yjLmiTNabvKPNJ4n
+         ZtOglL+EMtoRK2ztbTE8kGtjNRqCGb5DAKBu7wch0ZXJFIHV4U91ge7ObAD+emS5+4Sb
+         rGOfgeLymekVq0iIGLmd74N8LHPK7s6U+bNKRZK8WGj0s++AIfl9RcPz+HnFmLL5jAMR
+         GMCQ==
+X-Gm-Message-State: AFqh2krdpbRiddzf3XGuSLcjzbK1lC2xmloj921zzH4nkGNwUNn/v00G
+	VYy5WqbaHnDlEsd+ibkKB34V8Gu5pvhizx8ebqzHphvS
+X-Google-Smtp-Source: AMrXdXtKNSYAsXvpCf1U94N5to2+0tLVgM5NYG1i7LNtkYG5aQRZyV2UhmoSToiTUVHT98A/jdoKQcVAuATR+Ac+XmE=
+X-Received: by 2002:a63:9d47:0:b0:4af:9f91:54d1 with SMTP id
+ i68-20020a639d47000000b004af9f9154d1mr1862211pgd.192.1673876982035; Mon, 16
+ Jan 2023 05:49:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: ksRO0UWrRBGY
+References: <20230113140419.4013-1-farosas@suse.de> <20230113140419.4013-21-farosas@suse.de>
+ <bb5f5cd7-6d53-eb69-3e79-db95c9734f07@linaro.org>
+In-Reply-To: <bb5f5cd7-6d53-eb69-3e79-db95c9734f07@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 Jan 2023 13:49:30 +0000
+Message-ID: <CAFEAcA-XXWg+NXyFJVECfomGHAkytW9WZoVdE48Hrcmyhs4nHw@mail.gmail.com>
+Subject: Re: [RFC PATCH v3 20/28] target/arm: Set cortex-a57 as default cpu
+ for KVM-only build
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>, 
+	Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>, Thomas Huth <thuth@redhat.com>, 
+	Laurent Vivier <lvivier@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: MHm3y4QWTYdi
 
-Richard Henderson <richard.henderson@linaro.org> writes:
-
-> On 1/13/23 06:04, Fabiano Rosas wrote:
->> @@ -373,6 +387,11 @@ static void sve_tests_sve_off(const void *data)
->>   {
->>       QTestState *qts;
->>   
->> +    if (tcg_disabled()) {
->> +        g_test_skip("TCG support is disabled in this build");
->> +        return;
->> +    }
->> +
->>       qts = qtest_init(MACHINE "-cpu max,sve=off");
->>   
->>       /* SVE is off, so the map should be empty. */
+On Fri, 13 Jan 2023 at 22:05, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> This should work with kvm as well.
-> It should always be ok to turn off an unsupported feature.
+> On 1/13/23 06:04, Fabiano Rosas wrote:
+> > The cortex-a15 is not present anymore when CONFIG_TCG=n, so use the
+> > cortex-a57 as default cpu for KVM.
+> >
+> > Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>
+> Ideally there would not be a default at all, requiring the command-line option to be used.
 
-This test forces -accel tcg. There's another one that uses -accel kvm:
-sve_tests_sve_off_kvm
+Effectively, you pretty much do always need to use the command line
+option, because almost 0% of people wanted the cortex-a15 at this point,
+even when using TCG...
+
+-- PMM

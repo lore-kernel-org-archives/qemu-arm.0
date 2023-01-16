@@ -1,435 +1,137 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1079325ejc;
-        Sun, 15 Jan 2023 18:49:22 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs/U7PMW9VP5UF0QHh+WMupP3lHltPJ2MYpsrXqwhuuW8OvPSctQqZTHRp69UgoMfF0AkGK
-X-Received: by 2002:ac8:5401:0:b0:39c:da20:616 with SMTP id b1-20020ac85401000000b0039cda200616mr29164233qtq.32.1673837362239;
-        Sun, 15 Jan 2023 18:49:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673837362; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1091479ejc;
+        Sun, 15 Jan 2023 19:22:26 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuzL9q3wL46AfUImfemxnumYLN7a9cEfD3cd07Gwc19E8c91Oi4FPzVDjvUyiuVbXyqcZMh
+X-Received: by 2002:a05:622a:1246:b0:3a6:91f2:62bf with SMTP id z6-20020a05622a124600b003a691f262bfmr134515339qtx.37.1673839345998;
+        Sun, 15 Jan 2023 19:22:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673839345; cv=none;
         d=google.com; s=arc-20160816;
-        b=JN7gI325br8JyNLvawAr24ZVfdAx0qISsgB6Ufe1RERSx7H9p0mBC4OTdHKEbUfUpv
-         dZRsBwSrCWul9AWVbBwrYmdZcBrsNFfU4Ll5dB+HHhkFYW6XJeKtybqor3l1NCEslqoA
-         gW876pL8RSP+4kgrrI20gClTFPW6yL+AcrLcQxOoQsakB90lUQ5n9VsR5kX1lLmBoPVC
-         HVpxt9628mls0gvQE0juNpiUkggRB01KkDgHJgUM1Cg2ClmyOqzot9YlWVgStatozDpY
-         Rm36auI3wT8hgH977mA8ttApznu+HRCkwhnRpihM6zPz274T0hB2JZea06c7NjsY2LHO
-         mLgg==
+        b=czI4vkM/QqqXeLXOnFOuH9R2/CSRWlQsQ5HamTjKmIOeU0cvFyn8yDfkgI/PIJNbO8
+         anGGNwZS/nTqH9DDecaWZ/g8oRU/LCYjAkQ92KoDxL9BbL8xf6nUpKFow/ertrYSKI3E
+         /wrfs5Z5sd3pVDECPFDF+iaiQDSOhNN4nuM4rgMU+MBVfyy8FSfbt+cg60nfu4VXOkeC
+         60EEGond+AfwIWLTNmlXYDRQQSwnNaEamafQ5GH+Fgoe8Aid1d1zH2WGV30r1m1qoyRh
+         QqcpGg+BEto1tgPab+bq3q+RcQlCe7I9fc6+vGo3Ods+0zTsflNA9FEmkX1mAezZI+0P
+         AGUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=BDIUpumaRud4TSL3Rzqc8YTQU2bmATKtwd+TLtpjfXo=;
-        b=NGgBblWEdlwCgZQHtPk6EGeOCBXn2TN5kuEzycEnQbohaniK8Gs/m0gsn3iNH3SQ6v
-         ZGdyTKfmoN4W98u+jWkf0anFsYgLyedMZ97sSaVyA+1U8abBLaefgQY0JMQZsCs8zvVj
-         W8cxMthmNVt8MDzrwWeWn0wRl3Qm8f0/U6xRzKOipMfDs4uvGz9d5D3KqDCKzsni/Lbj
-         G4+QbESUZZaOBa+KWk21WEyqSpzkQ11qBg+lobLdcBI0HelxMBgl0xvdSEoTDiHeUrnx
-         71O5Ddqb6+lRMkVTZLladm5iB12vcTzm1blnceY3Tq3Th3OX9ccNebWh7q1r26duUkWb
-         Xrsg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=wU4RBYwyLpo6wFhvdqwG3YX7ndgaL0/IE1IGa8yRpaw=;
+        b=tqF6qwwqZuggK7ED4kahcoV8FYtcx153bborcpvc2kn9n+Qf6+oIjN0MaMdAHrEh2M
+         UYpiQx6JF39pk05iYDOz78uKKjlFr8k5tRblReLHHRBCz/D2FnfEmfg3hhTN7dErdd+W
+         kpBWx0pqUYYTilJ1JaiiHMy2TO3NL0z0TrkZPmmSX5BU6VIDcM39H/hj9+QoLHIGAT6P
+         pzMn7fE9NgYST4X3sRaFYwi9KzBK73ICegG24xQMLLMxnfaL1OPEIDCYc4urAxW2i32q
+         LWz3qQxFXEbPe866qzdQvbf+P0NoSo3y8OiS9eLMRQeEBQphRPPCVEp3R/ZP0Ft/zE3y
+         t31w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GiGFyfzO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m21-20020a05622a119500b003a69d10ad7asi16088237qtk.705.2023.01.15.18.49.22
+        by mx.google.com with ESMTPS id ay26-20020a05622a229a00b003ab78a0b43asi16857887qtb.14.2023.01.15.19.22.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Jan 2023 18:49:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 15 Jan 2023 19:22:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GiGFyfzO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHFYU-00085p-Hy; Sun, 15 Jan 2023 21:49:02 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pHG4J-0007Yz-2G; Sun, 15 Jan 2023 22:21:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1pHFYS-00084d-NZ; Sun, 15 Jan 2023 21:49:00 -0500
-Received: from mail-vs1-xe32.google.com ([2607:f8b0:4864:20::e32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1pHFYQ-0000PE-LO; Sun, 15 Jan 2023 21:49:00 -0500
-Received: by mail-vs1-xe32.google.com with SMTP id d66so15338067vsd.9;
- Sun, 15 Jan 2023 18:48:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BDIUpumaRud4TSL3Rzqc8YTQU2bmATKtwd+TLtpjfXo=;
- b=GiGFyfzOhpe9EQg1F3O0/MqHIhJImLov5TRi28L0TC5oUS6XCyN2+5UoXOPla8zKwa
- 2zGd5w8S6/f8VWvJFXceE8f8uCZnRe2t7P91GuEnsrvJ0fnKPILQe7SJX8bO3sRPSN60
- tlhIRz7eH8jsTtBZC0q/QeJGdzI9ZAwDCA1U0PIipGr8qj7uGmhxxWqslhEiK89GkeoS
- WDoSQLbQhesHvPmkpqwVCfDxejan0td7FGHucgOgfqjkwSCu5uUIK5+Rm5WRBhKyK1m7
- jKmiNKR7u8lkJXL6YFzJYGEh1EpfWJqqW1RK54reYZNn9F+n4uaSsBc4U0lLyTu8PuJ1
- BtUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=BDIUpumaRud4TSL3Rzqc8YTQU2bmATKtwd+TLtpjfXo=;
- b=AcBzARZa9Grqv73bkwFZAjUb22C/5lEOLuMTTjhHMqrYnA6hZ2/kCPyQNZsltLbn//
- WmpEyH+kv2ym4tx6tr+khe+GIZZma2t6fGQykThns4ZHel1dqw9Q9q0D4SyU0UHMWkx1
- 9z+dhvTvRpGQs95ijJDudnBLgtL9MDQAHk93EI3P3TLGcMbQwfSwdXgcpJHWIJaAUfLR
- uBQmZsXaY2mzNKdPKSCGRBqDqHZIzdKbydZRQOH7Gb6u+t62jNJ1+YG05Y0qVHtYnZmE
- E+kVOWRiz1WDmJxZBMW4XjJpeAULYVzz82tpCGj5ztaL/1pbQ2qp4vqwC6UK6rPrZ2bK
- bryw==
-X-Gm-Message-State: AFqh2kqWPOZvTeWhCMG/0S0JhUpKtgojg8HtUIOPCB9GRNPTbKriO6Dg
- SXdGO4MAi2aN3kMJxzYj8withL8aiAHTQizTtso=
-X-Received: by 2002:a67:e052:0:b0:3d0:c2e9:cb77 with SMTP id
- n18-20020a67e052000000b003d0c2e9cb77mr3001266vsl.54.1673837336497; Sun, 15
- Jan 2023 18:48:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
+ id 1pHG4G-0007Yc-V8; Sun, 15 Jan 2023 22:21:52 -0500
+Received: from [122.235.246.20] (helo=liuqiang-OptiPlex-7060)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
+ id 1pHG4F-00057P-3x; Sun, 15 Jan 2023 22:21:52 -0500
+Received: from localhost (liuqiang-OptiPlex-7060 [local])
+ by liuqiang-OptiPlex-7060 (OpenSMTPD) with ESMTPA id dbd5a6e0;
+ Mon, 16 Jan 2023 02:55:08 +0000 (UTC)
+From: Qiang Liu <cyruscyliu@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Qiang Liu <cyruscyliu@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:Xilinx ZynqMP and...)
+Subject: [PATCH] hw/display/xlnx_dp: fix abort in xlnx_dp_change_graphic_fmt()
+Date: Mon, 16 Jan 2023 10:54:59 +0800
+Message-Id: <20230116025459.1376583-1-cyruscyliu@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20230113200138.52869-1-philmd@linaro.org>
- <20230113200138.52869-5-philmd@linaro.org>
-In-Reply-To: <20230113200138.52869-5-philmd@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 16 Jan 2023 12:48:30 +1000
-Message-ID: <CAKmqyKN9Hggf9Gv8UPnXH5ra+xVOfOA=POOPdvYnNHhoZHW9iw@mail.gmail.com>
-Subject: Re: [PATCH 4/4] hw: Replace qemu_or_irq typedef by OrIRQState
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org, 
- Alistair Francis <alistair@alistair23.me>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e32;
- envelope-from=alistair23@gmail.com; helo=mail-vs1-xe32.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 122.235.246.20 (failed)
+Received-SPF: softfail client-ip=122.235.246.20;
+ envelope-from=cyruscyliu@gmail.com; helo=liuqiang-OptiPlex-7060
+X-Spam_score_int: 48
+X-Spam_score: 4.8
+X-Spam_bar: ++++
+X-Spam_report: (4.8 / 5.0 requ) BAYES_00=-1.9, DKIM_ADSP_CUSTOM_MED=0.001,
+ FORGED_GMAIL_RCVD=1, FREEMAIL_FROM=0.001, FSL_HELO_NON_FQDN_1=0.001,
+ HELO_NO_DOMAIN=0.001, NML_ADSP_CUSTOM_MED=0.9, RCVD_IN_PBL=3.335,
+ RDNS_NONE=0.793, SPF_SOFTFAIL=0.665, SPOOFED_FREEMAIL=0.001,
+ SPOOFED_FREEMAIL_NO_RDNS=0.001, SPOOF_GMAIL_MID=0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WVbL8eYz6CUC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 74VPp2vmcMgH
 
-On Sat, Jan 14, 2023 at 6:04 AM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> OBJECT_DECLARE_SIMPLE_TYPE() macro provides the OrIRQState
-> declaration for free. Besides, the QOM code style is to use
-> the structure name as typedef, and QEMU style is to use Camel
-> Case, so rename qemu_or_irq as OrIRQState.
->
-> Mechanical change using:
->
->   $ sed -i -e 's/qemu_or_irq/OrIRQState/g' $(git grep -l qemu_or_irq)
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+xlnx_dp_change_graphic_fmt() will directly abort if either graphic
+format or the video format is not supported.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+This patch directly let xlnx_dp_change_graphic_fmt() return if the
+formats are not supported.
 
-Alistair
+xlnx_dp_change_graphic_fmt() has two callsites in xlnx_dp_avbufm_write()
+and xlnx_dp_reset(). I think it may be OK to drop the abort in
+xlnx_dp_change_graphic_fmt() because the error information will be
+printed.
 
-> ---
->  hw/arm/exynos4210.c                  |  4 ++--
->  hw/arm/mps2-tz.c                     |  2 +-
->  hw/core/or-irq.c                     | 18 +++++++++---------
->  hw/pci-host/raven.c                  |  2 +-
->  include/hw/arm/armsse.h              |  6 +++---
->  include/hw/arm/bcm2835_peripherals.h |  2 +-
->  include/hw/arm/exynos4210.h          |  4 ++--
->  include/hw/arm/stm32f205_soc.h       |  2 +-
->  include/hw/arm/stm32f405_soc.h       |  2 +-
->  include/hw/arm/xlnx-versal.h         |  6 +++---
->  include/hw/arm/xlnx-zynqmp.h         |  2 +-
->  include/hw/or-irq.h                  |  2 --
->  12 files changed, 25 insertions(+), 27 deletions(-)
->
-> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-> index 8dafa2215b..6f2dda13f6 100644
-> --- a/hw/arm/exynos4210.c
-> +++ b/hw/arm/exynos4210.c
-> @@ -507,7 +507,7 @@ static uint64_t exynos4210_calc_affinity(int cpu)
->      return (0x9 << ARM_AFF1_SHIFT) | cpu;
->  }
->
-> -static DeviceState *pl330_create(uint32_t base, qemu_or_irq *orgate,
-> +static DeviceState *pl330_create(uint32_t base, OrIRQState *orgate,
->                                   qemu_irq irq, int nreq, int nevents, in=
-t width)
->  {
->      SysBusDevice *busdev;
-> @@ -806,7 +806,7 @@ static void exynos4210_init(Object *obj)
->
->      for (i =3D 0; i < ARRAY_SIZE(s->pl330_irq_orgate); i++) {
->          char *name =3D g_strdup_printf("pl330-irq-orgate%d", i);
-> -        qemu_or_irq *orgate =3D &s->pl330_irq_orgate[i];
-> +        OrIRQState *orgate =3D &s->pl330_irq_orgate[i];
->
->          object_initialize_child(obj, name, orgate, TYPE_OR_IRQ);
->          g_free(name);
-> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-> index 284c09c91d..07aecd9497 100644
-> --- a/hw/arm/mps2-tz.c
-> +++ b/hw/arm/mps2-tz.c
-> @@ -152,7 +152,7 @@ struct MPS2TZMachineState {
->      TZMSC msc[4];
->      CMSDKAPBUART uart[6];
->      SplitIRQ sec_resp_splitter;
-> -    qemu_or_irq uart_irq_orgate;
-> +    OrIRQState uart_irq_orgate;
->      DeviceState *lan9118;
->      SplitIRQ cpu_irq_splitter[MPS2TZ_NUMIRQ_MAX];
->      Clock *sysclk;
-> diff --git a/hw/core/or-irq.c b/hw/core/or-irq.c
-> index d8f3754e96..1df4bc05a7 100644
-> --- a/hw/core/or-irq.c
-> +++ b/hw/core/or-irq.c
-> @@ -31,7 +31,7 @@
->
->  static void or_irq_handler(void *opaque, int n, int level)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(opaque);
-> +    OrIRQState *s =3D OR_IRQ(opaque);
->      int or_level =3D 0;
->      int i;
->
-> @@ -46,7 +46,7 @@ static void or_irq_handler(void *opaque, int n, int lev=
-el)
->
->  static void or_irq_reset(DeviceState *dev)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(dev);
-> +    OrIRQState *s =3D OR_IRQ(dev);
->      int i;
->
->      for (i =3D 0; i < MAX_OR_LINES; i++) {
-> @@ -56,7 +56,7 @@ static void or_irq_reset(DeviceState *dev)
->
->  static void or_irq_realize(DeviceState *dev, Error **errp)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(dev);
-> +    OrIRQState *s =3D OR_IRQ(dev);
->
->      assert(s->num_lines <=3D MAX_OR_LINES);
->
-> @@ -65,7 +65,7 @@ static void or_irq_realize(DeviceState *dev, Error **er=
-rp)
->
->  static void or_irq_init(Object *obj)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(obj);
-> +    OrIRQState *s =3D OR_IRQ(obj);
->
->      qdev_init_gpio_out(DEVICE(obj), &s->out_irq, 1);
->  }
-> @@ -84,7 +84,7 @@ static void or_irq_init(Object *obj)
->
->  static bool vmstate_extras_needed(void *opaque)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(opaque);
-> +    OrIRQState *s =3D OR_IRQ(opaque);
->
->      return s->num_lines >=3D OLD_MAX_OR_LINES;
->  }
-> @@ -95,7 +95,7 @@ static const VMStateDescription vmstate_or_irq_extras =
-=3D {
->      .minimum_version_id =3D 1,
->      .needed =3D vmstate_extras_needed,
->      .fields =3D (VMStateField[]) {
-> -        VMSTATE_VARRAY_UINT16_UNSAFE(levels, qemu_or_irq, num_lines, 0,
-> +        VMSTATE_VARRAY_UINT16_UNSAFE(levels, OrIRQState, num_lines, 0,
->                                       vmstate_info_bool, bool),
->          VMSTATE_END_OF_LIST(),
->      },
-> @@ -106,7 +106,7 @@ static const VMStateDescription vmstate_or_irq =3D {
->      .version_id =3D 1,
->      .minimum_version_id =3D 1,
->      .fields =3D (VMStateField[]) {
-> -        VMSTATE_BOOL_SUB_ARRAY(levels, qemu_or_irq, 0, OLD_MAX_OR_LINES)=
-,
-> +        VMSTATE_BOOL_SUB_ARRAY(levels, OrIRQState, 0, OLD_MAX_OR_LINES),
->          VMSTATE_END_OF_LIST(),
->      },
->      .subsections =3D (const VMStateDescription*[]) {
-> @@ -116,7 +116,7 @@ static const VMStateDescription vmstate_or_irq =3D {
->  };
->
->  static Property or_irq_properties[] =3D {
-> -    DEFINE_PROP_UINT16("num-lines", qemu_or_irq, num_lines, 1),
-> +    DEFINE_PROP_UINT16("num-lines", OrIRQState, num_lines, 1),
->      DEFINE_PROP_END_OF_LIST(),
->  };
->
-> @@ -136,7 +136,7 @@ static void or_irq_class_init(ObjectClass *klass, voi=
-d *data)
->  static const TypeInfo or_irq_type_info =3D {
->     .name =3D TYPE_OR_IRQ,
->     .parent =3D TYPE_DEVICE,
-> -   .instance_size =3D sizeof(qemu_or_irq),
-> +   .instance_size =3D sizeof(OrIRQState),
->     .instance_init =3D or_irq_init,
->     .class_init =3D or_irq_class_init,
->  };
-> diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
-> index 2c96ddf8fe..5e0a5b9303 100644
-> --- a/hw/pci-host/raven.c
-> +++ b/hw/pci-host/raven.c
-> @@ -60,7 +60,7 @@ DECLARE_INSTANCE_CHECKER(PREPPCIState, RAVEN_PCI_HOST_B=
-RIDGE,
->  struct PRePPCIState {
->      PCIHostState parent_obj;
->
-> -    qemu_or_irq *or_irq;
-> +    OrIRQState *or_irq;
->      qemu_irq pci_irqs[PCI_NUM_PINS];
->      PCIBus pci_bus;
->      AddressSpace pci_io_as;
-> diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-> index 9648e7a419..cd0931d0a0 100644
-> --- a/include/hw/arm/armsse.h
-> +++ b/include/hw/arm/armsse.h
-> @@ -155,12 +155,12 @@ struct ARMSSE {
->      TZPPC apb_ppc[NUM_INTERNAL_PPCS];
->      TZMPC mpc[IOTS_NUM_MPC];
->      CMSDKAPBTimer timer[3];
-> -    qemu_or_irq ppc_irq_orgate;
-> +    OrIRQState ppc_irq_orgate;
->      SplitIRQ sec_resp_splitter;
->      SplitIRQ ppc_irq_splitter[NUM_PPCS];
->      SplitIRQ mpc_irq_splitter[IOTS_NUM_EXP_MPC + IOTS_NUM_MPC];
-> -    qemu_or_irq mpc_irq_orgate;
-> -    qemu_or_irq nmi_orgate;
-> +    OrIRQState mpc_irq_orgate;
-> +    OrIRQState nmi_orgate;
->
->      SplitIRQ cpu_irq_splitter[NUM_SSE_IRQS];
->
-> diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm283=
-5_peripherals.h
-> index c9d25d493e..d724a2fc28 100644
-> --- a/include/hw/arm/bcm2835_peripherals.h
-> +++ b/include/hw/arm/bcm2835_peripherals.h
-> @@ -56,7 +56,7 @@ struct BCM2835PeripheralState {
->      BCM2835AuxState aux;
->      BCM2835FBState fb;
->      BCM2835DMAState dma;
-> -    qemu_or_irq orgated_dma_irq;
-> +    OrIRQState orgated_dma_irq;
->      BCM2835ICState ic;
->      BCM2835PropertyState property;
->      BCM2835RngState rng;
-> diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
-> index 97353f1c02..68db19f0cb 100644
-> --- a/include/hw/arm/exynos4210.h
-> +++ b/include/hw/arm/exynos4210.h
-> @@ -96,8 +96,8 @@ struct Exynos4210State {
->      MemoryRegion boot_secondary;
->      MemoryRegion bootreg_mem;
->      I2CBus *i2c_if[EXYNOS4210_I2C_NUMBER];
-> -    qemu_or_irq pl330_irq_orgate[EXYNOS4210_NUM_DMA];
-> -    qemu_or_irq cpu_irq_orgate[EXYNOS4210_NCPUS];
-> +    OrIRQState pl330_irq_orgate[EXYNOS4210_NUM_DMA];
-> +    OrIRQState cpu_irq_orgate[EXYNOS4210_NCPUS];
->      A9MPPrivState a9mpcore;
->      Exynos4210GicState ext_gic;
->      Exynos4210CombinerState int_combiner;
-> diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_so=
-c.h
-> index 849d3ed889..5a4f776264 100644
-> --- a/include/hw/arm/stm32f205_soc.h
-> +++ b/include/hw/arm/stm32f205_soc.h
-> @@ -63,7 +63,7 @@ struct STM32F205State {
->      STM32F2XXADCState adc[STM_NUM_ADCS];
->      STM32F2XXSPIState spi[STM_NUM_SPIS];
->
-> -    qemu_or_irq *adc_irqs;
-> +    OrIRQState *adc_irqs;
->
->      MemoryRegion sram;
->      MemoryRegion flash;
-> diff --git a/include/hw/arm/stm32f405_soc.h b/include/hw/arm/stm32f405_so=
-c.h
-> index 249ab5434e..c968ce3ab2 100644
-> --- a/include/hw/arm/stm32f405_soc.h
-> +++ b/include/hw/arm/stm32f405_soc.h
-> @@ -63,7 +63,7 @@ struct STM32F405State {
->      STM32F4xxExtiState exti;
->      STM32F2XXUsartState usart[STM_NUM_USARTS];
->      STM32F2XXTimerState timer[STM_NUM_TIMERS];
-> -    qemu_or_irq adc_irqs;
-> +    OrIRQState adc_irqs;
->      STM32F2XXADCState adc[STM_NUM_ADCS];
->      STM32F2XXSPIState spi[STM_NUM_SPIS];
->
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index cbe8a19c10..b6786e9832 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -85,7 +85,7 @@ struct Versal {
->          } rpu;
->
->          struct {
-> -            qemu_or_irq irq_orgate;
-> +            OrIRQState irq_orgate;
->              XlnxXramCtrl ctrl[XLNX_VERSAL_NR_XRAM];
->          } xram;
->
-> @@ -103,7 +103,7 @@ struct Versal {
->                  XlnxCSUDMA dma_src;
->                  XlnxCSUDMA dma_dst;
->                  MemoryRegion linear_mr;
-> -                qemu_or_irq irq_orgate;
-> +                OrIRQState irq_orgate;
->              } ospi;
->          } iou;
->
-> @@ -113,7 +113,7 @@ struct Versal {
->          XlnxVersalEFuseCtrl efuse_ctrl;
->          XlnxVersalEFuseCache efuse_cache;
->
-> -        qemu_or_irq apb_irq_orgate;
-> +        OrIRQState apb_irq_orgate;
->      } pmc;
->
->      struct {
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index 20bdf894aa..687c75e3b0 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -130,7 +130,7 @@ struct XlnxZynqMPState {
->      XlnxZDMA gdma[XLNX_ZYNQMP_NUM_GDMA_CH];
->      XlnxZDMA adma[XLNX_ZYNQMP_NUM_ADMA_CH];
->      XlnxCSUDMA qspi_dma;
-> -    qemu_or_irq qspi_irq_orgate;
-> +    OrIRQState qspi_irq_orgate;
->      XlnxZynqMPAPUCtrl apu_ctrl;
->      XlnxZynqMPCRF crf;
->      CadenceTTCState ttc[XLNX_ZYNQMP_NUM_TTC];
-> diff --git a/include/hw/or-irq.h b/include/hw/or-irq.h
-> index 131abc2e0c..c0a42f3711 100644
-> --- a/include/hw/or-irq.h
-> +++ b/include/hw/or-irq.h
-> @@ -35,8 +35,6 @@
->   */
->  #define MAX_OR_LINES      48
->
-> -typedef struct OrIRQState qemu_or_irq;
-> -
->  OBJECT_DECLARE_SIMPLE_TYPE(OrIRQState, OR_IRQ)
->
->  struct OrIRQState {
-> --
-> 2.38.1
->
->
+Fixes: 58ac482a66de ("introduce xlnx-dp")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1415
+Reported-by: Qiang Liu <cyruscyliu@gmail.com>
+Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
+---
+ hw/display/xlnx_dp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+index b0828d65aa..407518c870 100644
+--- a/hw/display/xlnx_dp.c
++++ b/hw/display/xlnx_dp.c
+@@ -641,7 +641,7 @@ static void xlnx_dp_change_graphic_fmt(XlnxDPState *s)
+     default:
+         error_report("%s: unsupported graphic format %u", __func__,
+                      s->avbufm_registers[AV_BUF_FORMAT] & DP_GRAPHIC_MASK);
+-        abort();
++        return;
+     }
+ 
+     switch (s->avbufm_registers[AV_BUF_FORMAT] & DP_NL_VID_FMT_MASK) {
+@@ -657,7 +657,7 @@ static void xlnx_dp_change_graphic_fmt(XlnxDPState *s)
+     default:
+         error_report("%s: unsupported video format %u", __func__,
+                      s->avbufm_registers[AV_BUF_FORMAT] & DP_NL_VID_FMT_MASK);
+-        abort();
++        return;
+     }
+ 
+     xlnx_dp_recreate_surface(s);
+-- 
+2.25.1
+

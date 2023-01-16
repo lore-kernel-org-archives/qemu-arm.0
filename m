@@ -1,205 +1,115 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1360844ejc;
-        Mon, 16 Jan 2023 04:44:08 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv292NeHpk5D2+qXnZoFaacSiBuEyYDuoV+JqhzKlqKsRJ+LkK7iiyMgsb3QHXrqKo0QW+d
-X-Received: by 2002:a05:622a:5917:b0:3a9:7e3f:2646 with SMTP id ga23-20020a05622a591700b003a97e3f2646mr151035965qtb.11.1673873048734;
-        Mon, 16 Jan 2023 04:44:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673873048; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1411272ejc;
+        Mon, 16 Jan 2023 05:45:37 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXushDaYQRUbhNXqGgn56B4/q/34IO9JVi9Z7M+Xk0ouo0ramRURl54RdX1DcOOjUQLkPmeP
+X-Received: by 2002:adf:ebc1:0:b0:2bd:d34e:534c with SMTP id v1-20020adfebc1000000b002bdd34e534cmr11112333wrn.36.1673876737315;
+        Mon, 16 Jan 2023 05:45:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673876737; cv=none;
         d=google.com; s=arc-20160816;
-        b=vmHF5+JhalPCJ+DZ/Rj6KML8ewgD/aehrFhwuZZFmQIZGQEntvZSdJjSYqm7K+BHbU
-         prZxyib0QE2BNWZ4IIE9HT5Qmw51JtmAQyjl73W28Q+yCgG8y0MshwH60wcvAnlHtK5J
-         gXrKwFmzhxWEsoGegb0mpEkT06dwj5/Vux2WDv5teZtnjY9q3PpIXazTmWpaQlsMEcBi
-         BbGPbW9vleRZEizmQarn3qIvIpM+wh4+BAFkOw3IjDnwXlqXYuKZxOQ112f/f+Dl67v8
-         mLhPKdBn5oramsVshPRPO8mZYRohJ9L/7qV+oZiD4DfWqiSP8OwoF4KmsdLgd3JnEB+u
-         WXvQ==
+        b=pCsXVieDE+/4nEs9YUjN8v64FNU9rLKMCZOEk0C/VNclhk3w9U+FW6WXadQ6ImFTAL
+         m/zMONEMH7FAfTbEnCrXmJnORSgiY50+MvpdsoG8JiKgbjo+a2J5GSl7pyxQvxZCFk2u
+         y85eWUz5PsnVS2OZRCYwHTGJPE8+hSPssDNkKck5ds7sH2pomCyTMu40ryvMriuxzb1v
+         5WvJ0BapQU5ZY2oLZ+T35LFa0TqeJ5oQHM3QHBZHkW9Pea008P8YnzJuCoka1ZXUvAm2
+         UfKXRnl2ZG2JBVeaqD2NeOMc/cD4n2AyuaU8w3FIF7vAZYTYhel9JK/3BHiw/TFVnCJM
+         qXRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=wr2thK1WdozqMKXJl5GrjAgqy9isiQRWEZiqqWJ5H50=;
-        b=UD0ikwPeRGThYXZNIqAaelcPtRqvslQZy6i+FfoeRXDlxA6Ae3qUfqH+IbTaQ1Tci7
-         slo9NZQkOof/Pb+N7T29rtFz0DN/YgxVHMwZxbp0d+Fu0cvUBkyGgGz9XyLgBYlAuEq3
-         QRdzNL7I4HBPK+JfvtAV63ohylvidqD3c18Lj47DPs+KGII+eI4v0WhgwmQ37CNzU8x6
-         iYsOv+3W0/jAQUJzMyZY/vE/Fbx3+6HgsjxtKBdKqFMftsbgzCtwgZeEhLdl6SCvcPGi
-         mHIt24znrFw3vZRta1jSe156zLVMH67tR5A3iNrkAT3Bza55sfqKiYdvFAz3iZ6cio3g
-         4v6g==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=9P9rok1+3VTsTeZXa2TO/Cf9rR6N2BtD12VhnVoV9Q4=;
+        b=lbP70s/GiCkkATQeDo3Q4MSBkocTNTQ9vAJeawKfBvCSPMmbWe0rElDOkRQL8Hnxgw
+         6lE8cWw0CB+xTMVAeH6lRkjpj+tzjkp/YPmZ8ZP3tgPEUl9g6hGWwu2aDLghyLLXR7Gg
+         ZMm6R144XITcEsHFoZ8I6TIHXp057r0hl7/cLiAHLYy9Unzk1V7dEwB06zBZaPJY3YKY
+         c8CuDHQHlQIKjGk7d9F509HYStoIgrPtncJ7NTxjjY6zuh6m5bDeQG5PjJ19FZO9tbw8
+         LSAnsBthcn2hSt/973K6iRsjS2513PteBdWMwN2NY47Ylc66xzQF+FsFp7nxWHxzrJS5
+         3/VQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m5-20020ac86885000000b003a4efd908aasi17263967qtq.30.2023.01.16.04.44.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jan 2023 04:44:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=j8LVhcag;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
+        by mx.google.com with ESMTPS id h16-20020a5d6e10000000b0022cde86b8absi21987170wrz.707.2023.01.16.05.45.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Jan 2023 05:45:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHOpx-00083p-N9; Mon, 16 Jan 2023 07:43:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1pHOpO-0007rV-2a; Mon, 16 Jan 2023 07:43:10 -0500
-Received: from 4.mo552.mail-out.ovh.net ([178.33.43.201])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1pHOpI-0005u6-Jt; Mon, 16 Jan 2023 07:43:03 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.183])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id ED4152CE32;
- Mon, 16 Jan 2023 12:42:49 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Mon, 16 Jan
- 2023 13:42:48 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006250d0a7a-a69f-43ff-b5ea-f5c2b815cf15,
- 9562F276D9C9043C19838F7BDA7B87DE9C964FD3) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <3131a986-1db0-8ab2-12cd-11aa32ea29e0@kaod.org>
-Date: Mon, 16 Jan 2023 13:42:48 +0100
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=j8LVhcag;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 9235367893;
+	Mon, 16 Jan 2023 13:45:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1673876736; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9P9rok1+3VTsTeZXa2TO/Cf9rR6N2BtD12VhnVoV9Q4=;
+	b=j8LVhcagNbaXTBbG+6rhippSfkO4zbVYn70WgRyt/d2OZt4/ASajwCYml+8WVo3weota8D
+	Qrt5XNz67+mOhOV7FDfKwqm/3k2N4KO4sRvfJAN2E25Ou50iCs2ojlTHn4aFSqpnXTNjMm
+	PIMoG/1n0fiYDc/VZ9xrkzMmv5+/8Z8=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1673876736;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9P9rok1+3VTsTeZXa2TO/Cf9rR6N2BtD12VhnVoV9Q4=;
+	b=UZNsg76eDGDcnJvsTJDJOZKuV6AcqOO9gObIqiFr9dlSf2smAfbDG55oUYwwlniKq64et8
+	26211GfZS29D8yDQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 13FB0138FA;
+	Mon, 16 Jan 2023 13:45:35 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id GMHcM/9UxWP7SAAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 16 Jan 2023 13:45:35 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alex =?utf-8?Q?Benn?=
+ =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [RFC PATCH v3 20/28] target/arm: Set cortex-a57 as default cpu
+ for KVM-only build
+In-Reply-To: <bb5f5cd7-6d53-eb69-3e79-db95c9734f07@linaro.org>
+References: <20230113140419.4013-1-farosas@suse.de>
+ <20230113140419.4013-21-farosas@suse.de>
+ <bb5f5cd7-6d53-eb69-3e79-db95c9734f07@linaro.org>
+Date: Mon, 16 Jan 2023 10:45:33 -0300
+Message-ID: <874jsqzj7m.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH 6/6] hw/arm/aspeed: Init fby35 BMC FRUID EEPROM
-Content-Language: en-US
-To: Peter Delevoryas <peter@pjd.dev>
-CC: <patrick@stwcx.xyz>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
- <joel@jms.id.au>, <hskinnemoen@google.com>, <kfting@nuvoton.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20230114170151.87833-1-peter@pjd.dev>
- <20230114170151.87833-7-peter@pjd.dev>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230114170151.87833-7-peter@pjd.dev>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: d19c0072-7c50-4800-94e1-2b82f129b49e
-X-Ovh-Tracer-Id: 5064579257042111410
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedruddtgedggeefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeuuddtteelgeejhfeikeegffekhfelvefgfeejveffjeeiveegfeehgfdtgfeitdenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphgvthgvrhesphhjugdruggvvhdpphgrthhrihgtkhesshhtfigtgidrgiihiidpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdgrnhgurhgvfiesrghjrdhiugdrrghupdhjohgvlhesjhhmshdrihgurdgruhdphhhskhhinhhnvghmohgvnhesghhoohhglhgvrdgtohhmpdhkfhhtihhnghesnhhuvhhothhonhdrtghomhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphhhihhlmhgusehlih
- hnrghrohdrohhrghdpoffvtefjohhsthepmhhoheehvddpmhhouggvpehsmhhtphhouhht
-Received-SPF: pass client-ip=178.33.43.201; envelope-from=clg@kaod.org;
- helo=4.mo552.mail-out.ovh.net
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.097,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6n9Pe/XCeewD
+Content-Type: text/plain
+X-TUID: JKwf9AYQE5gl
 
-On 1/14/23 18:01, Peter Delevoryas wrote:
-> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-> ---
->   hw/arm/aspeed.c | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 49 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index c929c61d582a..4ac8ff11a835 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -922,6 +922,52 @@ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
->       i2c_slave_create_simple(i2c[12], TYPE_PCA9552, 0x67);
->   }
->   
-> +static const uint8_t fby35_bmc_fruid[] = {
-> +    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
-> +    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
-> +    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
-> +    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
-> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
-> +    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
-> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
-> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
-> +    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
-> +    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-> +    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
-> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
-> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
-> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
-> +    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +};
+Richard Henderson <richard.henderson@linaro.org> writes:
 
+> On 1/13/23 06:04, Fabiano Rosas wrote:
+>> The cortex-a15 is not present anymore when CONFIG_TCG=n, so use the
+>> cortex-a57 as default cpu for KVM.
+>> 
+>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>
+> Ideally there would not be a default at all, requiring the command-line option to be used.
 
-I would introduce a new aspeed_eeprom.c file for these definitions because
-each machine could have its own set of eeproms and aspeed.c is already big
-enough.
+We could probably do that now without impact to users, since KVM would
+always require a -cpu option due to the current default being
+cortex-a15.
 
->   static void fby35_i2c_init(AspeedMachineState *bmc)
->   {
->       AspeedSoCState *soc = &bmc->soc;
-> @@ -1363,6 +1409,9 @@ static void fby35_reset(MachineState *state, ShutdownCause reason)
->       object_property_set_bool(OBJECT(gpio), "gpioB3", false, &error_fatal);
->       object_property_set_bool(OBJECT(gpio), "gpioB4", false, &error_fatal);
->       object_property_set_bool(OBJECT(gpio), "gpioB5", false, &error_fatal);
-> +
-> +    at24c_eeprom_write(aspeed_i2c_get_bus(&bmc->soc.i2c, 11),
-> +                       0x54, 0, fby35_bmc_fruid, sizeof(fby35_bmc_fruid));
->   }
+>
+> Second choice would be "host", since that's the only value that's actually usable (except 
+> for the off-chance that you're actually running on an a57, which is less and less likely 
+> as time moves on).
+>
 
-That's one way to model the default reset values of the eeprom, we would
-loose any writes though.
+I'll have to go around fixing qtest first, either to add -cpu or to add
+-accel kvm, otherwise we get:
 
-I think we should have a reset_data buffer instead, which would be used
-at realize time to set the initial data, if there are no drive backend,
-and at reset if !writable. Something like smbus_eeprom_init_one() does
-without a proper property API.
-
-We would need some new interface to set a property for a constant buffer
-of uint<>_t values. I don't know how complex that would be. It could be
-useful to other models to define the init state of registers.
-
-Thanks,
-
-C.
-
->   static void aspeed_machine_fby35_class_init(ObjectClass *oc, void *data)
-
+The 'host' CPU type can only be used with KVM or HVF

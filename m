@@ -1,156 +1,138 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1493548ejc;
-        Mon, 16 Jan 2023 07:20:08 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvr9bkMTXkx0cIMLFsYzkOzNvLftKF5iib/xd7tag30IYKbg25MsaxN2EQ4xjSbR+Oa1T2U
-X-Received: by 2002:a67:bb02:0:b0:3cf:222a:c432 with SMTP id m2-20020a67bb02000000b003cf222ac432mr11934227vsn.19.1673882408531;
-        Mon, 16 Jan 2023 07:20:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673882408; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1575960ejc;
+        Mon, 16 Jan 2023 08:58:39 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuCzp5ceS3Tw+mmGrwFJ89mjrWuKEPlUxQgejC3mxrfmiajcS3EbXqrwUjCXDzfNH+HLRz1
+X-Received: by 2002:ac8:7409:0:b0:3b1:691f:3d7a with SMTP id p9-20020ac87409000000b003b1691f3d7amr24839968qtq.68.1673888319188;
+        Mon, 16 Jan 2023 08:58:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673888319; cv=none;
         d=google.com; s=arc-20160816;
-        b=aFjjyeINk3uQvn98oCuugPh9W5G+U43cCPxNJp0aZFfAOWt9mqGLWvlW/WoeQRbKLa
-         HRwzzdGRcrijrJMqTCF4AWVoIbzXugEHETIMhXCcGT/BbicAlAHcRMKozhbN2FAqhXvl
-         jZHxIEOrXsvHiSJzMzIkSgLXH7btDxc5OT5PxrM3epcQkOy5KOkjvoWanHci8r915613
-         aYWe20B1nbKTcznojrAV3gjBAXcp2wCYohra3w6AmwEBljqvE01Uh3OZPFA5W/K0jiKI
-         XQ3pXauhYBfd2hBsED5uorCrWkDEjsaYP9gN/bp5nWtfZzgo+lKMLsCIp0pTGFy7e/cX
-         mEfA==
+        b=cJ4HZ35HrFCJSXmngf6MTi0L8ITYe20fAU7yO8m8D4ESFgLk6k2CQ8meUnWwiRTmRh
+         w9HYGJ8WWtkZKoY9H8a1OwJSgDvU8bPlE7tTqGEF9LrtVUgzqUyHOB29CfmTujo/Knaf
+         smaRUlfPnWKHhP0PipfmrKFgVCEdkmU6mi1eebetpO9TKgeqK5eW+thU44fLmlmT+wS0
+         55wucs+VRZT1nEP7YW4X4LwMbRohOU8sTIkdilNQGlgbGm0+/jpdNGopbolZUia7UUK3
+         wcGQaq02eVUpSMB6F3LvotSKDsmvlgCY3n53LC5Q/qzaYQKP8qCeJqeeOyf/A9q0TJsE
+         xM4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature:dkim-filter;
-        bh=Mmwbj8+DX6iQDBlbEOQlcM7mW/eeiXMLStuoVmG8PiY=;
-        b=ATtZrn98haoJ36hFBLRNaJi2RG8Y+qGhHWVjrS7g90V5nlVU7S7t0LrmVVYLrB1Sed
-         ik5AmqLssaSkwr/V7wRQ2zePeu1t/ixCMYWAb3MDRZmwgiD41DDWF4MS71cPOp35KbIn
-         fryfWZ/VBe/NsffwNDWr0aa5U1fG1F8fj//ZHEEszlQTAnckJmTvDZ66ShkVtgAolBNG
-         hj9zc7fG6yJhjBrfN8WKtVoh2oHJhomnPQngRbyBIrFaZCWgwPFaOMds3QAtqoOYkfOf
-         rBZn3lWgvkOJnTzYzKHesIk9ys3DtgY81Y0SO8ru0pMh8Kb/bL7w3WFLc6El8qyT5IfH
-         DEIg==
+         :list-unsubscribe:list-id:precedence:ui-outboundreport
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=r5IGdxmwiJJwIu9fCIfXNKm/u1jo29S0vrk6CGaB+zk=;
+        b=M+qTnyn8m0CFZm1Rvziqm+9zJxkMmpZgXluukfouJO35iSKCpGDa2vdOoUjVU1tcpw
+         BOkzfQNap0CY8ZCCrxBZh4kZiuQcqwb2j0NZ4xyk6qXb9pATi9cMZIbEE18iHLyd8p70
+         jU2mKlcXhx8yRsVC8pHDkYbZKF/3HBQJSNoui9nuNrbyQNxJWWECFv+22l1Oa89raWE2
+         Jlq9DoOO4/zAX3U7AYxYMmtCrFaWdy2apsCoP5fXkVdCbvtk+m15ZrPLPvSxO9+nU8yN
+         iN9CTi6JstCiLJNXh5XYlQpVhwkf6NYVnm4G7ssPZUfj73BNWymJKJTbKhVokP/zrcj4
+         dxiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=KGPASYhM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k1-20020a05620a414100b006e043ac205asi19771179qko.744.2023.01.16.07.20.08
+        by mx.google.com with ESMTPS id bt15-20020ac8690f000000b003b0e7c36057si10593070qtb.759.2023.01.16.08.58.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jan 2023 07:20:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Jan 2023 08:58:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=KGPASYhM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHRH1-0006BR-DX; Mon, 16 Jan 2023 10:19:47 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pHSoT-0002lf-8K; Mon, 16 Jan 2023 11:58:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHRGr-00069s-2f; Mon, 16 Jan 2023 10:19:43 -0500
-Received: from linux.microsoft.com ([13.77.154.182])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHRGp-0006MB-Dl; Mon, 16 Jan 2023 10:19:36 -0500
-Received: from [192.168.0.20] (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id 6DFB620DFE75;
- Mon, 16 Jan 2023 07:19:30 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 6DFB620DFE75
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1673882371;
- bh=Mmwbj8+DX6iQDBlbEOQlcM7mW/eeiXMLStuoVmG8PiY=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=KGPASYhMnekUUzcBZDAd1bV1+7nPkOjYL/1HHlCuDE+4kJ0ze2LdDtiPfXjJSEukv
- RUmbKInCw9HwIKM9VHgXXZuCwFbB/bbLjcBCgSqcjZpQizh3l67QRlYl4BdXS1xNWG
- KuIQpyCSMmu32ngxTVBlgTaa/WN/zImLcpfDX0DE=
-Message-ID: <d1a57714-efde-cc5d-1e3a-be4724fe6b50@linux.microsoft.com>
-Date: Mon, 16 Jan 2023 16:19:35 +0100
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pHSoS-0002lI-0k; Mon, 16 Jan 2023 11:58:24 -0500
+Received: from mout.kundenserver.de ([212.227.126.135])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pHSoQ-0006v3-9w; Mon, 16 Jan 2023 11:58:23 -0500
+Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MLRDv-1p0CwT0lV5-00IYVW; Mon, 16 Jan 2023 17:58:18 +0100
+Message-ID: <d410e592-acb8-af23-3a71-21cbd7a47547@vivier.eu>
+Date: Mon, 16 Jan 2023 17:58:17 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH 3/3] target/arm: allow writes to SCR_EL3.HXEn bit when
- FEAT_HCX is enabled
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- qemu-stable <qemu-stable@nongnu.org>
-References: <20230105221251.17896-1-eiakovlev@linux.microsoft.com>
- <20230105221251.17896-4-eiakovlev@linux.microsoft.com>
- <CAFEAcA_1K6jC1aM3DX3iNN503pqw14yyCUiORoHPSfxN7g8Xzg@mail.gmail.com>
-Content-Language: en-US
-From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
-In-Reply-To: <CAFEAcA_1K6jC1aM3DX3iNN503pqw14yyCUiORoHPSfxN7g8Xzg@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH 0/7] Trivial: Mark some more files as target-independant
+Content-Language: fr
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+References: <20230112134928.1026006-1-thuth@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <20230112134928.1026006-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=eiakovlev@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -198
-X-Spam_score: -19.9
-X-Spam_bar: -------------------
-X-Spam_report: (-19.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, ENV_AND_HDR_SPF_MATCH=-0.5,
- NICE_REPLY_A=-0.097, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:ORwA9WpDFkUa6HcTCV1L++5+VPbqATaHmXrdZ+Sl85HWK+kIU6A
+ SajTjlM7YG02YAbzpDJ7nYI+YJmllZ6zDriiiWCnmegMmyEE2fQXNfmvzAdoaiAl1RmlVcc
+ bzQooQgeEmdA+Mo89YKBWThKs1Hi/2zmhgywAwhBir/oKUQqHq2MxJNFt69a4h9y+kjhklT
+ sfi6zPASL3WLschAuHa5g==
+UI-OutboundReport: notjunk:1;M01:P0:646/efj4mxw=;vqTGNtlbC2cqGttn27idrmktugz
+ EOJynP/foXeTw4Ll33PiFKQlqkRzD7wxwsV2OT8XLdj3x8amMDETZEkraCyUX+D9g5EzfruVj
+ 2mwHFxV2v6cE0Rm2F0l0z2iPRG7ficnCmxch3IaZvdtNby3gGtRTVYYNPREnt4zn/F6hUFqW6
+ 3Q/bm1Z/hX5fqf5dVQB3hqVbNPDkknxUdSSMsnJLOEXZnnJ6GgZ2IQU7Z25kUQLR+CilAMN8g
+ W1b90FK7xvmC8jk9vW36dgY6To0EUx1YFumhPuzcm+aD5P10IjMfa4o5GQGzaC50CiRuGAnAI
+ jHXaTSKrLdUjuPu+lwZYxQsCDHafFB0Yu7OTQZmKR4S71gkIZsi9+G7aW5Orm82f9mHXVJW0R
+ /fKy/nvhoV964gMOxFK+3OZVlqTn4Q7kgLz1ILGQvgA1vgcE3QvHZ2Wg+xKQfnZ/75wWoaEiC
+ WRhJgcDQJ2/MXXaEghi9lSh/E3QnoaIpiRmbV71QZDlCI9J605rsHFfXBDM5CgcGwQKW/4dPP
+ hn1UWDdx8eOjvcWtArvNS3D339wc7mlJ0Ywg+vnN4YPeE5dkQENWNxDI0uwPvuEOInfAjN0ti
+ da5NCLvB0hChKOLSv4HVgFUJ/VO2LkKRHsbAJAVnxZscrv3uy5dP/ssrodXIcgO3e4UqJWTUK
+ rjwpJf0KnazUFZzgy4MmAmGKJtYB8d8E0elobyDVcw==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.097,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: f5VOxaIg1V4t
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 65Bbj6nquWK5
 
+Le 12/01/2023 à 14:49, Thomas Huth a écrit :
+> Here's a collection of low-hanging fruits to mark some more files
+> as target-independent (so that they do not have to be compiled twice,
+> once for qemu-system-arm and once for qemu-system-aarch64).
+> 
+> Philippe's patches have been on the list before, but I slightly
+> modified some of them (like fixing typos in the subject etc.).
+> My patches are new.
+> 
+> Philippe Mathieu-Daudé (4):
+>    hw/display: Move omap_lcdc.c out of target-specific source set
+>    hw/intc: Move some files out of the target-specific source set
+>    hw/tpm: Move tpm_ppi.c out of target-specific source set
+>    hw/arm: Move various units to softmmu_ss[]
+> 
+> Thomas Huth (3):
+>    hw/cpu: Mark arm11 and realview mpcore as target-independent code
+>    hw/intc: Mark more interrupt-controller files as target independent
+>    hw/usb: Mark the XLNX_VERSAL-related files as target-independent
+> 
+>   hw/arm/meson.build     | 11 +++++++----
+>   hw/cpu/meson.build     |  4 ++--
+>   hw/display/meson.build |  2 +-
+>   hw/intc/meson.build    | 12 ++++++------
+>   hw/tpm/meson.build     |  4 ++--
+>   hw/usb/meson.build     |  4 ++--
+>   6 files changed, 20 insertions(+), 17 deletions(-)
+> 
 
-On 1/13/2023 14:20, Peter Maydell wrote:
-> On Thu, 5 Jan 2023 at 22:13, Evgeny Iakovlev
-> <eiakovlev@linux.microsoft.com> wrote:
->> ARM trusted firmware, when built with FEAT_HCX support, sets SCR_EL3.HXEn bit
->> to allow EL2 to modify HCRX_EL2 register without trapping it in EL3. Qemu
->> uses a valid mask to clear unsupported SCR_EL3 bits when emulating SCR_EL3
->> write, and that mask doesn't include SCR_EL3.HXEn bit even if FEAT_HCX is
->> enabled and exposed to the guest. As a result EL3 writes of that bit are
->> ignored.
->>
->> Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
->> ---
->>   target/arm/helper.c | 3 +++
->>   1 file changed, 3 insertions(+)
->>
->> diff --git a/target/arm/helper.c b/target/arm/helper.c
->> index bac2ea62c4..962affdd52 100644
->> --- a/target/arm/helper.c
->> +++ b/target/arm/helper.c
->> @@ -1844,6 +1844,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
->>           if (cpu_isar_feature(aa64_sme, cpu)) {
->>               valid_mask |= SCR_ENTP2;
->>           }
->> +        if (cpu_isar_feature(aa64_hcx, cpu)) {
->> +            valid_mask |= SCR_HXEN;
->> +        }
->>       } else {
->>           valid_mask &= ~(SCR_RW | SCR_ST);
->>           if (cpu_isar_feature(aa32_ras, cpu)) {
->> --
-> Oops. This is worth
-> Cc: qemu-stable@nongnu.org
->
-> I think.
->
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->
-> I'll take this 3rd patch into target-arm.next now; I've left
-> review comments for the other 2.
->
-> thanks
-> -- PMM
+Series applied to my trivial-patches branch.
 
-
-Thanks, Peter! I'll be addressing the comments today and post a v2 with 
-changes for the first 2.
-
+Thanks,
+Laurent
 

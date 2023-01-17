@@ -1,87 +1,93 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2784312ejc;
-        Tue, 17 Jan 2023 14:06:17 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvl5MbXw++XBNl6dgsHSs17NV5JizeMHC0qN8Kz4fXfybElcHCRPM3op5VwykEOiju4XVS4
-X-Received: by 2002:ac8:491a:0:b0:3ab:b012:f173 with SMTP id e26-20020ac8491a000000b003abb012f173mr4579188qtq.28.1673993177701;
-        Tue, 17 Jan 2023 14:06:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673993177; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2784934ejc;
+        Tue, 17 Jan 2023 14:07:05 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuNP3TAGdfkkeooKYegWlEwr85syMXgegFalRio/W0qjbzBhmZQObfTqF69XVkr3tQcOc5s
+X-Received: by 2002:a0c:efd4:0:b0:532:2dc4:c5ce with SMTP id a20-20020a0cefd4000000b005322dc4c5cemr33225058qvt.29.1673993225739;
+        Tue, 17 Jan 2023 14:07:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673993225; cv=none;
         d=google.com; s=arc-20160816;
-        b=UnqYggtcRFVrt4WBlxgZlBbgILUFrdKaTrV+GBTrQInXKMa+bBjTp2+hbkcylqWoja
-         BoDCR572XWKjdkx8YyEFa4CXeNHGK+neaXjFyXjmBXgYS/ae3SNb+B45+zlRpeEIkDNx
-         fGrCgpjAToNwEgWEUWQ7iuaeGHC7Nr0ppVzgSrpNemE0VoNqljK33wjv+zvf0OQ4319a
-         pL3h7vGbhipBCXNVZGEDRu/HxGFFsSP3AYkT2OBJpgZOfdrmN+bcrgfUhH0ZabSZ8xPi
-         uo0zU+xCp9o2hpHWKdzfErNq5UNI7anuyap3naqws4qPZ/elgcl0jcGj8Rw1MLGPcRYc
-         Y0BQ==
+        b=c7N6e6BKNJ5maUuF4z3AjUUEXPKOvrYwRi4aspN0TM/2SxzWsUMKw/oelnzMvYketS
+         zfA2kGSW/FTgWtsDFKmeOfFaf9tRg+2l7HgH6NEg0yynYs1WUxekf0CVs04ezij8bbrr
+         dKROyd94kzmaW5/Mu02eLqQd62hpZul5D/NZeyyq9FoRs8CVcfOV83jBQtt4QWPCmvB4
+         sRyUgHScaV/frwOuaHo4nd+EO4VUoD04AAdvYKMSSCsb8BXKcwNogyzjPiZz0Ejv2UeG
+         CtjPrTaS6Uiy3gBwhs+JZnz4gjAKbDclco2dqeGkT8FXyhQigroc4GZdCEci8Znbkqwc
+         d8ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=tOFYsve5o6d8zTAgtdtirQp+zyHt7PERoMWWbpIlYIw=;
-        b=gqSAym3qRcFLZQ+qYBSJkJsUbIo69BpqnulGfuHBRPe1h3qVFjj2zjNMVL37+AYaFz
-         Kn+0Roj/qZzvQkfi7YrdPH69JIvhNzRt5PWsKntZemA3rK4bOx2JWZcyAKuAUMi+dHoY
-         a9OHGg4Ts/6orNckgSW0xNAR3b8mRkU7HTVAf/XHinY6T2IfQ61BJoZQbBy8OOPCK08/
-         yTSR0WzOzX+swDoJ/VO2tvEnk2Aw6/O9a4c8I5oAoSNdvQO2/Wb4QY5tpMmR9CV77T/I
-         V/wyFEopWOLqaIfCa6BgTJmrEuKdS20eKLDODb+738S9KNMx2z04Qv04+0KUHJsdANPA
-         woRQ==
+         :in-reply-to:references:subject:to:from:user-agent:mime-version:date
+         :message-id:dkim-signature:dkim-filter;
+        bh=em4MsoHXlRnwzHzecn9clyK5jiawdFbw0SnpG8aeTBo=;
+        b=Ft7KBcQ7n9QcMLJPjXRoVpiNTrPcpumiDcRLndWmhvlYEtid23n0vhbibJT+gNFMJ8
+         PV8ZI674Br43+ZJfqaOaSKtr713yg9OuYkk2jKnfN4/AVQ116XzeSH78SKTxhQzmmVXG
+         M6m9lkRwp7hhHLIvsxLestvhD+DuUJYqQuzpRL3nL6rsAdVXadF3K8fKbtUahMlGyx+J
+         dEyStADdXPV8zF2IKTUt6lES0b+nbtW9uwgxrSIDjmLRrwvMhnR7roj3RV3c9tBLOSEO
+         npJ+do2XM1S3aaancGl9B1IK+u0hBd0LfdVmRx0I4U0LmDVBJGRWxCAr39cz/TVS8XjP
+         KLVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=KVFH5fSL;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=CXDdKRFs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl12-20020a05622a244c00b003ac2beee9cdsi142847qtb.166.2023.01.17.14.06.17
+        by mx.google.com with ESMTPS id 8-20020a0562140dc800b00530d08f3da7si20589307qvt.336.2023.01.17.14.07.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jan 2023 14:06:17 -0800 (PST)
+        Tue, 17 Jan 2023 14:07:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=KVFH5fSL;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=CXDdKRFs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHu5R-0003fb-3k; Tue, 17 Jan 2023 17:05:45 -0500
+	id 1pHu6X-0004gT-GA; Tue, 17 Jan 2023 17:06:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHu5J-0003d3-Kn; Tue, 17 Jan 2023 17:05:40 -0500
+ id 1pHu6V-0004ca-As; Tue, 17 Jan 2023 17:06:51 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHu5F-0006qr-0s; Tue, 17 Jan 2023 17:05:35 -0500
-Received: from localhost.localdomain (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id 5CF6420E09E3;
- Tue, 17 Jan 2023 14:05:30 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 5CF6420E09E3
+ id 1pHu6T-000757-Cp; Tue, 17 Jan 2023 17:06:51 -0500
+Received: from [192.168.0.20] (unknown [77.64.253.186])
+ by linux.microsoft.com (Postfix) with ESMTPSA id 1CB0020E09E0;
+ Tue, 17 Jan 2023 14:06:46 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 1CB0020E09E0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1673993131;
- bh=tOFYsve5o6d8zTAgtdtirQp+zyHt7PERoMWWbpIlYIw=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=KVFH5fSL8Du2JleVnKPWn+VxA1MEwJd2IhCsf6fLewVMFRKt8wY3bHsevh3HeepEy
- nJ+HUGAdrJSM3L4PyESjIAo280Nn13rJC29tn1diQ8cdZnGuiMgRwcoofPAO04bbnK
- +wfnivom0oKaqxinS4EN8NhIq6iNk0hICv+5PdWw=
-From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org
-Subject: [PATCH v2 1/4] hw/char/pl011: refactor FIFO depth handling code
-Date: Tue, 17 Jan 2023 23:05:20 +0100
-Message-Id: <20230117220523.20911-2-eiakovlev@linux.microsoft.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230117220523.20911-1-eiakovlev@linux.microsoft.com>
-References: <20230117220523.20911-1-eiakovlev@linux.microsoft.com>
+ s=default; t=1673993208;
+ bh=em4MsoHXlRnwzHzecn9clyK5jiawdFbw0SnpG8aeTBo=;
+ h=Date:From:To:Subject:References:In-Reply-To:From;
+ b=CXDdKRFshS6ZxHMr96yNCg8dMsrIZQBpKZbQPkFc8ukBwdKDmwOAQHrP3dVD0AvZ2
+ dCtiaM0ZRO7Ko3gLyRMgCnp5xmykXZZdpNtHUPjkQQapONrFJFJVoh9JS/1Y5l0dVE
+ ic9U2EJ1Fetyfp1MUih8ZOwLVoDmwu5e+ZHop3/g=
+Message-ID: <c8eb0fb6-2c37-dae9-da9d-8c6107e07a18@linux.microsoft.com>
+Date: Tue, 17 Jan 2023 23:06:45 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+From: eiakovlev@linux.microsoft.com
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, marcandre.lureau@redhat.com, pbonzini@redhat.com
+Subject: Re: [PATCH 1/2] hw/char/pl011: better handling of FIFO flags on LCR
+ reset
+References: <20230106172851.2430-1-eiakovlev@linux.microsoft.com>
+ <20230106172851.2430-2-eiakovlev@linux.microsoft.com>
+ <CAFEAcA-VkWjSO84dCmoeKaO0PEFydi7Bj2gXhBYDatGpuCuc_w@mail.gmail.com>
+ <f5af2eee-e04e-fadd-8bad-b9ec4a2a1998@linux.microsoft.com>
+ <CAFEAcA-UuXdF5-akaiu0Nsg1c4T6pnQbpBh2pDK0gpc19+RrGw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-UuXdF5-akaiu0Nsg1c4T6pnQbpBh2pDK0gpc19+RrGw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=13.77.154.182;
  envelope-from=eiakovlev@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -197
-X-Spam_score: -19.8
+X-Spam_score_int: -198
+X-Spam_score: -19.9
 X-Spam_bar: -------------------
-X-Spam_report: (-19.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-19.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, ENV_AND_HDR_SPF_MATCH=-0.5,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5,
+ NICE_REPLY_A=-0.097, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
  USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -97,117 +103,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Xpl4Bapr8wZP
+X-TUID: wmOnayNT7Mzx
 
-PL011 can be in either of 2 modes depending guest config: FIFO and
-single register. The last mode could be viewed as a 1-element-deep FIFO.
 
-Current code open-codes a bunch of depth-dependent logic. Refactor FIFO
-depth handling code to isolate calculating current FIFO depth.
 
-One functional (albeit guest-invisible) side-effect of this change is
-that previously we would always increment s->read_pos in UARTDR read
-handler even if FIFO was disabled, now we are limiting read_pos to not
-exceed FIFO depth (read_pos itself is reset to 0 if user disables FIFO).
+On 1/17/23 5:02 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Tue, 17 Jan 2023 at 15:54, Evgeny Iakovlev
+> <eiakovlev@linux.microsoft.com> wrote:
+> >
+> >
+> > On 1/17/2023 16:24, Peter Maydell wrote:
+> >> On Fri, 6 Jan 2023 at 17:28, Evgeny Iakovlev
+> >> <eiakovlev@linux.microsoft.com> wrote:
+> >>> Current FIFO handling code does not reset RXFE/RXFF flags when guest
+> >>> resets FIFO by writing to UARTLCR register, although internal FIFO state
+> >>> is reset to 0 read count. Actual flag update will happen only on next
+> >>> read or write to UART. As a result of that any guest that expects RXFE
+> >>> flag to be set (and RXFF to be cleared) after resetting FIFO will just
+> >>> hang.
+> >>>
+> >>> Correctly reset FIFO flags on FIFO reset. Also, clean up some FIFO
+> >>> depth handling code based on current FIFO mode.
+> >> This patch is doing multiple things at once ("also" in a
+> >> commit message is often a sign of that) and I think it
+> >> would be helpful to split it. There are three things here:
+> >>    * refactorings which aren't making any real code change
+> >>      (eg calling pl011_get_fifo_depth() instead of doing the
+> >>      "if LCR bit set then 16 else 1" inline)
+> >
+> >
+> > Yeah, tbh i also though i should do it..
+> >
+> >
+> >>    * the fix to the actual bug
+> >>    * changes to the handling of the FIFO which should in theory
+> >>      not be visible to the guest (I think it now when the FIFO
+> >>      is disabled always puts the incoming character in read_fifo[0],
+> >>      whereas previously it would allow read_pos to increment all
+> >>      the way around the FIFO even though we only keep one character
+> >>      at a time).
+> >
+> >
+> > That last part i don't understand. If by changes to the FIFO you are
+> > referring to the flags handling, then it will be visible to the guest by
+> > design, since that's what I'm fixing. Could you maybe explain that one
+> > again? :)
+> 
+> I meant the bit where the existing code for the FIFO-disabled
+> case puts incoming characters in s->read_fifo[s->read_pos] and
+> reads from UARTDR always increment s->read_pos; whereas the
+> changed code always puts characters in s->read_fifo[0] and
+> avoids incrementing read_pos. I think your version is more
+> sensible (and also matches what the TRM claims the hardware
+> is doing), although the guest-visible behaviour doesn't change.
 
-Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
----
- hw/char/pl011.c         | 25 +++++++++++++------------
- include/hw/char/pl011.h |  5 ++++-
- 2 files changed, 17 insertions(+), 13 deletions(-)
+I see, thanks. I tried separating this particular piece into its own commit, but i just feel like it makes the part that's left pointless, because pl011_get_fifo_depth replaces mostly just those 2 occurences anyway.. I've added a paragraph to a commit message to document a functional change. Let me know if that's not good enough. I've sent out a v2 with the rest of comments addressed + a reset method for PL011.
 
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index c076813423..329cc6926d 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -81,6 +81,12 @@ static void pl011_update(PL011State *s)
-     }
- }
- 
-+static inline unsigned pl011_get_fifo_depth(PL011State *s)
-+{
-+    /* Note: FIFO depth is expected to be power-of-2 */
-+    return s->lcr & 0x10 ? PL011_FIFO_DEPTH : 1;
-+}
-+
- static uint64_t pl011_read(void *opaque, hwaddr offset,
-                            unsigned size)
- {
-@@ -94,8 +100,7 @@ static uint64_t pl011_read(void *opaque, hwaddr offset,
-         c = s->read_fifo[s->read_pos];
-         if (s->read_count > 0) {
-             s->read_count--;
--            if (++s->read_pos == 16)
--                s->read_pos = 0;
-+            s->read_pos = (s->read_pos + 1) & (pl011_get_fifo_depth(s) - 1);
-         }
-         if (s->read_count == 0) {
-             s->flags |= PL011_FLAG_RXFE;
-@@ -273,11 +278,7 @@ static int pl011_can_receive(void *opaque)
-     PL011State *s = (PL011State *)opaque;
-     int r;
- 
--    if (s->lcr & 0x10) {
--        r = s->read_count < 16;
--    } else {
--        r = s->read_count < 1;
--    }
-+    r = s->read_count < pl011_get_fifo_depth(s);
-     trace_pl011_can_receive(s->lcr, s->read_count, r);
-     return r;
- }
-@@ -286,15 +287,15 @@ static void pl011_put_fifo(void *opaque, uint32_t value)
- {
-     PL011State *s = (PL011State *)opaque;
-     int slot;
-+    unsigned pipe_depth;
- 
--    slot = s->read_pos + s->read_count;
--    if (slot >= 16)
--        slot -= 16;
-+    pipe_depth = pl011_get_fifo_depth(s);
-+    slot = (s->read_pos + s->read_count) & (pipe_depth - 1);
-     s->read_fifo[slot] = value;
-     s->read_count++;
-     s->flags &= ~PL011_FLAG_RXFE;
-     trace_pl011_put_fifo(value, s->read_count);
--    if (!(s->lcr & 0x10) || s->read_count == 16) {
-+    if (s->read_count == pipe_depth) {
-         trace_pl011_put_fifo_full();
-         s->flags |= PL011_FLAG_RXFF;
-     }
-@@ -359,7 +360,7 @@ static const VMStateDescription vmstate_pl011 = {
-         VMSTATE_UINT32(dmacr, PL011State),
-         VMSTATE_UINT32(int_enabled, PL011State),
-         VMSTATE_UINT32(int_level, PL011State),
--        VMSTATE_UINT32_ARRAY(read_fifo, PL011State, 16),
-+        VMSTATE_UINT32_ARRAY(read_fifo, PL011State, PL011_FIFO_DEPTH),
-         VMSTATE_UINT32(ilpr, PL011State),
-         VMSTATE_UINT32(ibrd, PL011State),
-         VMSTATE_UINT32(fbrd, PL011State),
-diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
-index dc2c90eedc..926322e242 100644
---- a/include/hw/char/pl011.h
-+++ b/include/hw/char/pl011.h
-@@ -27,6 +27,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(PL011State, PL011)
- /* This shares the same struct (and cast macro) as the base pl011 device */
- #define TYPE_PL011_LUMINARY "pl011_luminary"
- 
-+/* Depth of UART FIFO in bytes, when FIFO mode is enabled (else depth == 1) */
-+#define PL011_FIFO_DEPTH 16
-+
- struct PL011State {
-     SysBusDevice parent_obj;
- 
-@@ -39,7 +42,7 @@ struct PL011State {
-     uint32_t dmacr;
-     uint32_t int_enabled;
-     uint32_t int_level;
--    uint32_t read_fifo[16];
-+    uint32_t read_fifo[PL011_FIFO_DEPTH];
-     uint32_t ilpr;
-     uint32_t ibrd;
-     uint32_t fbrd;
--- 
-2.34.1
-
+> 
+> thanks
+> -- PMM
+> 

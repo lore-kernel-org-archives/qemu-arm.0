@@ -1,193 +1,123 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2547580ejc;
-        Tue, 17 Jan 2023 09:03:42 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvog/exkp3SnCo7cNnYIcdmMIUkYK/tUvzUir5vzzBFmkqRTVWsCas6+aB+i0k5ZDrEXMoQ
-X-Received: by 2002:a05:6214:5f87:b0:534:61a9:6f60 with SMTP id ls7-20020a0562145f8700b0053461a96f60mr5280332qvb.18.1673975022792;
-        Tue, 17 Jan 2023 09:03:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673975022; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2660592ejc;
+        Tue, 17 Jan 2023 11:00:26 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtEyr9Q70ggvgTySvpacsU6qVwR1Zn0jFN1UDnUs+e50SjvkZVgGzZTw9vjMRgxkZP/DWCb
+X-Received: by 2002:a05:600c:510d:b0:3da:f6ae:faa9 with SMTP id o13-20020a05600c510d00b003daf6aefaa9mr9470821wms.29.1673982026873;
+        Tue, 17 Jan 2023 11:00:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673982026; cv=none;
         d=google.com; s=arc-20160816;
-        b=mOUs61K1Ud7OxRNCCDGhZ8Bp1UkaY4WCfGGxy+7s4NUI2md3cNnU6pTcBBXmjDSjaL
-         Bd9HhYga23TqEKJmWRlsKoLOH5a6uCpa4aytV0P79x2zWemg5miq9mZ0oWWzP4UBQt4F
-         f/sJ0FHuycvrQIL3ZLehTrRlh9VO34LCtdkqbs/IYzSggZwC24W+kN2ZaLF3+pM2IAKe
-         2Zcsy39cBeSuO7IsGb9Ny81zbNAG/LlbKgqurbFi6lcufvrz7qYzCKSQSL3c+bYoHUKa
-         MtXQfv4s9hx3WdXCP5H/y1jYiLB50qzB7j85TrM5wcWvwaxN31xnV5iWgi8eE8I0nygI
-         EIKQ==
+        b=j9mCGMd5vYZs8jkVgak3gFoQUgTEpJKWVXbKYwz8oxbQcluyyfYUIWVubXfR1xT2iF
+         dcVmDahaLxfVDovDMegf3Aq20Xw30jCI+GOiF0tpdsa6/h3MYEC6FOrXJW/O9a9NJQtm
+         Jxx4oe93zWsqeSRUJTa27e+yz+yxbNT9lHqbdDjopgOsLNQfEGNs7Rjq6IvxlVOdIlcI
+         tysmzF1oplRH2szB8IHm1NOM3eXcYJgGiiYetSSpcAQTRLvxPswt9b27jEZf8Yx+mz37
+         k8q9/Z0TBdCAsuw2PI7+Gh26OaBpYL70zYJfcRJL+pyias7UEG33HbL6UXXXDnuzPL3D
+         sX9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=K/9tMHDqLNn9i6Z4LYDE7RAQ8nBgObnUQsdbmyuualY=;
-        b=eI8L/URLq738+wmeWSMU/lIxwvV8jfziHE+hbR3kduaGCDxk215EB/TuAl5/Tjz8j+
-         ZcO4CFTvsnMLYqfka7MCmVc7ABaqH0I+MM3DTmCRkvOvfPOBSdUbtRElykTiqpbnHBVl
-         AoCcypNK8/V55wuLEtsQPKgMkLJb0vCJUiGNaj6sGFw5bZ2flrelRhqAxlLhe7fm8aPV
-         9euF4COYu/fZsRVvAqxzumfK1O5v2k9t7ySq1NPBp6ii0z13vPFSBuMhtucApbzlZa6h
-         JNr1jywX/Bl/wRCu3uRWBNO/Pk6dmSZTNa4gcMCg/nAFF1MYSTq3aeb6nNVsNKnKt2wu
-         Rb7A==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=tytMECktt2q8IMOwV1IDHPfg1Wk4gHqp+asVqAXJr4o=;
+        b=BQxMYj72r6HNNLmMV86mXEPmJVJFObLRsgySm6InnS1cj6ixgDCHlMV/lMNGZQRO9F
+         KitktIoN7ufI4R51hPFYITB9pxwsg+xe8jLJwjKz4rJStGR0ViYl3Nt4rnNbQK32v43T
+         we4F3eWjugdMGkkgJJcmOGKH+XTL1u2RMsN9LYtoAMyftdqckRufjtk+gWpruWCVrl1J
+         fI2qTH6F53IisExUWHG+RYizdBNbszrpYXWY4RtmHJKD22zfn1Esi+JvZ2GCqS7T5GKB
+         0iwkq70yB0VhC5Mdc6zcw2RWRunvPxtLxKfLmd94jjI9VgqAM6W/HrfEEtp0Vgfjiv9K
+         q3zg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDFUvZ2G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ke4-20020a056214300400b005317ca76d3asi18281099qvb.359.2023.01.17.09.03.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jan 2023 09:03:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Lb11nkLO;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=fM5yOdV2;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id v11-20020a056000144b00b002a26f11d20csi10593246wrx.24.2023.01.17.11.00.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Jan 2023 11:00:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDFUvZ2G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHpN0-0003qS-UP; Tue, 17 Jan 2023 12:03:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pHpMp-0003dY-MI
- for qemu-arm@nongnu.org; Tue, 17 Jan 2023 12:03:27 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pHpMn-00034J-FB
- for qemu-arm@nongnu.org; Tue, 17 Jan 2023 12:03:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673974833;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=K/9tMHDqLNn9i6Z4LYDE7RAQ8nBgObnUQsdbmyuualY=;
- b=eDFUvZ2G1ESIb9aooh+2+FUeSIRz8K9MUBC01s67cA/ECD5henaX/u1XMe1N6FVWkUuqXT
- FSWn5/TUu2RXHQAilyTz2bVHjajEadVHeecGZtT6Ly4VZHUrAN6bkHjNt06pkg420aq+uK
- sHtECu/+9/E5KcAmpz2al4SHuW844Ys=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-288-h3jaDZ3HPbulzq6zaZgaCA-1; Tue, 17 Jan 2023 12:00:15 -0500
-X-MC-Unique: h3jaDZ3HPbulzq6zaZgaCA-1
-Received: by mail-qk1-f200.google.com with SMTP id
- m3-20020a05620a24c300b006fee2294e97so23245384qkn.11
- for <qemu-arm@nongnu.org>; Tue, 17 Jan 2023 09:00:09 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=K/9tMHDqLNn9i6Z4LYDE7RAQ8nBgObnUQsdbmyuualY=;
- b=YGLOpMqB86tYjezjqy1mFONvDDtwGUXcfyf5cLypr15gLX4qMKOc+lu+EBK6T1gerS
- XqcdwsbnvNEEZxg3U6G3YjJ43Kz9H1GR4zfj9iKBMEyXaVCVLslPNjN1W0M3OlZvztZE
- LmivNo41X3Br+wUixaT8GLznzoNyT2CxZv5PYU0LpGQ70WURjlNrstZSPqEyEyjcXBW1
- CyZZegh9wiAKd46rImDXHY/Obo+8HQqqsZT9w6CGHW1ZyyaVGvpHn1gXEhA+WYELRDOM
- dJdWj5NPLFrmP/Qe2kgdcGEumZV2yEl6owL5I4pt+kj/JPPDGc7ka5wfAtj/euQDHWn8
- ZNoQ==
-X-Gm-Message-State: AFqh2kot7wnURMSpVWp3ByX0RR5BoqktDmwbNI63D8MUiyg7Y46ZE3YY
- td+rK74ds+2Tg+7MjknZ0WhDSYtzpW2IHwTHmePqUgG8K+wxx3FidGsflFUejYLHc3AmJbMtRLi
- eO5mJEN4Ss+QO
-X-Received: by 2002:a0c:e8d0:0:b0:534:8a2d:a654 with SMTP id
- m16-20020a0ce8d0000000b005348a2da654mr5503364qvo.39.1673974809373; 
- Tue, 17 Jan 2023 09:00:09 -0800 (PST)
-X-Received: by 2002:a0c:e8d0:0:b0:534:8a2d:a654 with SMTP id
- m16-20020a0ce8d0000000b005348a2da654mr5503345qvo.39.1673974809171; 
- Tue, 17 Jan 2023 09:00:09 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- r7-20020ae9d607000000b0070650f5ee2fsm5656855qkk.65.2023.01.17.09.00.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Jan 2023 09:00:08 -0800 (PST)
-Message-ID: <1fe1dc81-f6bc-3da8-81c1-16dd248cc23d@redhat.com>
-Date: Tue, 17 Jan 2023 18:00:00 +0100
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Lb11nkLO;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=fM5yOdV2;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 338BE1FF0D;
+	Tue, 17 Jan 2023 19:00:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1673982026; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tytMECktt2q8IMOwV1IDHPfg1Wk4gHqp+asVqAXJr4o=;
+	b=Lb11nkLOzJWT4dWlNhLo0qNHdxmPOgqJ4TG8JLbKd9pm/hMF7XYGNsg/fTaYwVc5g9REeO
+	9r9ghlDdqBn5YpNSEjhm1NogRxXzAfR1Kq4pBeO0MnWv0cNmFiGsyJkuhGyKveG+7lJciE
+	AaQ1nbxRd9h5VOuR2Lsw/UmuXSbB9Y8=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1673982026;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tytMECktt2q8IMOwV1IDHPfg1Wk4gHqp+asVqAXJr4o=;
+	b=fM5yOdV24ZCMhTHVuVPU9fDZ1rLxcbCypsYXgqpECmtwXOJOVPdWEaOKy7EB5t/ejbM0Cp
+	kMcUPHDS0gXf7sBA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id B6F711390C;
+	Tue, 17 Jan 2023 19:00:25 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id MC8XIEnwxmMIOgAAMHmgww
+	(envelope-from <farosas@suse.de>); Tue, 17 Jan 2023 19:00:25 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Richard
+ Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
+ Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>
+Subject: Re: [RFC PATCH v3 12/28] target/arm: Wrap arm_rebuild_hflags calls
+ with tcg_enabled
+In-Reply-To: <0a3720ef-fbc4-2be8-14b6-2906117f9fe6@linaro.org>
+References: <20230113140419.4013-1-farosas@suse.de>
+ <20230113140419.4013-13-farosas@suse.de>
+ <0a3720ef-fbc4-2be8-14b6-2906117f9fe6@linaro.org>
+Date: Tue, 17 Jan 2023 16:00:23 -0300
+Message-ID: <87edrt0ywo.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [RFC] 2-stage translation emulation support for SMMUv3 on TCG
-To: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <b6a1427d-51b6-0daa-c4f1-b1e8ea145844@linux.microsoft.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <b6a1427d-51b6-0daa-c4f1-b1e8ea145844@linux.microsoft.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.097, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9t3qrnoy+m1y
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: a9zFkg+BJGdM
 
-Hi Evgeny,
-On 1/16/23 16:37, Evgeny Iakovlev wrote:
-> Hi!
->
->
-> We are using qemu-tcg-aarch64 to run Hyper-V test and debug builds for
-> arm. Besides some minor fixes that i have submitted over the last
-> couple of weeks, one big compatibility item for us is SMMUv3 2-stage
-> translations support. We can do fine without it right now, but having
-> it would also allow us to test nested arm guests with SMMUv3, which is
-> great.
->
->
-> One idea we have floating around is implementing 2-stage translations
-> in SMMUv3 in Qemu. We can't make a commitment yet, but before we
-> consider it i think it would be wise to ask the community about it,
-> specifically:
->
-> * Do 2-stage translations sound like something qemu-arm would be keen
-> on accepting? Are there any other use-cases for it besides an arguably
-> wild corner case of nesting an EL2 hypervisor on software-emulated arm64?
-Personally I don't have anything against. I guess we cannot prevent you
-from adding a feature that is supported by the spec ;-) One concern I
-have is the extra complexity it will bring to the device. At least I
-would recommend you to try to isolate stage2 support at most from the
-rest and make your utmost to keep the stage1 perf as close as possible
-to what it is currently. Indeed the main "production" use case is S1
-vSMMU with KVM acceleration. Currently in linux arm-smmuv3 driver, only
-S1 is used. Out of curiosity how are the S2 and S1+S2 used with HyperV?
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-I am mostly involved in KVM accelerated use cases so I will let others
-comment on potential use cases using S2.
+> On 13/1/23 15:04, Fabiano Rosas wrote:
+>> This is in preparation to moving the hflags code into its own file
+>> under the tcg/ directory.
+>>=20
+>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>> ---
+>> I extracted these into a separate patch so we can discuss. If I move
+>> the tcg_enabled check to a header that would add overhead for all the
+>> calls where we know for sure that the code is running with TCG. And I
+>> don't think we want a new arm_rebuild_hflags_foo to be used for common
+>> code.
+>> ---
+>>   hw/arm/boot.c             |  6 +++++-
+>>   hw/intc/armv7m_nvic.c     | 20 +++++++++++++-------
+>>   target/arm/arm-powerctl.c |  7 +++++--
+>>   target/arm/cpregs.c       |  2 +-
+>>   target/arm/cpu.c          |  3 ++-
+>>   target/arm/helper.c       | 16 ++++++++++++----
+>>   target/arm/machine.c      |  5 ++++-
+>>   7 files changed, 42 insertions(+), 17 deletions(-)
 >
-> * Is there anyone already working on it as we speak maybe?
-afaik I am not aware of anybody working on that at the moment
->
-> * Were there any previous attempts to do this and if yes why they
-> evidently didn't get through?
-afaik there were no series sent publicly
+> Shouldn't we also restrict arm_rebuild_hflags() to CONFIG_TCG in
+> target/arm/cpu.h (to be sure future code using this helper stays
+> TCG-only)?
 
-Thanks
-
-Eric
->
->
-> Thanks!
->
->
-
+We could, but in practice hflags.c is already under CONFIG_TCG
+anyway. If people don't build with disable-tcg they will not notice.

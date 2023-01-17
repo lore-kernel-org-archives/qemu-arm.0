@@ -1,92 +1,92 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2511855ejc;
-        Tue, 17 Jan 2023 08:17:14 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvTykBWXMjlcpwX3YN/BwMERcaHAv7Z+mCLjrEd6KVQvaKWkmMboDP+qgCw320NOebx48Zy
-X-Received: by 2002:a17:903:248f:b0:189:6ab3:9e64 with SMTP id p15-20020a170903248f00b001896ab39e64mr4034684plw.34.1673972233960;
-        Tue, 17 Jan 2023 08:17:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673972233; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2545563ejc;
+        Tue, 17 Jan 2023 09:01:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtH8YaWvuQJf5pvc/FiBZ/jEgtsk9/TsLT3sMpKec2kQ4r4LntXV+qEepwFTJQtLWMPo9lA
+X-Received: by 2002:a17:907:8196:b0:7c1:6fd3:1efa with SMTP id iy22-20020a170907819600b007c16fd31efamr14821687ejc.28.1673974913226;
+        Tue, 17 Jan 2023 09:01:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673974913; cv=none;
         d=google.com; s=arc-20160816;
-        b=M3AzHE+/7M2x258ti0S83ZOBKHZPmrvZWVpCsclh4sNC7AtXWmTyV2jI7TkBI1G1x7
-         DEroGs4cfU4F6LyxDvmh/bFCkUe9pxJRIW/SP4lLAWVsbG5S/F5wvfactrA/9EgV0H32
-         jt8yCuyenwhWadlnnIzGGipqsCfTaHaDQAOK9j8mbmXhmq410Bf/DoWB2kBEHFWuv22G
-         t7Gtz62cPo8Q0pGeC1XNWwsZV9SDKV/0aCuV4ERRLCywVFIP+3gDnMeCjB1H/5G425Fk
-         wlPrG3VeOtu/pyFmMvVYR2Ry89d92gJ0HMvUCt2HNEvyWsr2ZW3l1LT0cjm02teV6Oi5
-         FQ8g==
+        b=b13yeJ+W3dtCT4owGbs7sEb4mqJn6gMza2iUKE0yoIvHsKiXSJjlsfnGi8SsoK9YqT
+         JKmF3o+EvTjgtcixl7pTBAqtGBK4a/baT86hFcbMQj9yT6wv45KQ1zoeLtvjEbHEh1oJ
+         1k5IPJtvZEv3/rI8GmGhtcmE+WpU4PT+NNodtwDWjoUD7TSSX26qRH/GQ60HiOvffG2J
+         dDMH5pQm01nkL99AJErv8cwq+Qcwkv6o266CUo8YIQdpuqNZwpL3NC6lh5Nu/2DCtJEc
+         leaPEdixNeOcS88sCQ7P/ihzUGKoqh68G/7/tbtCXPOshoQLlHcoRUowNNA64Xz0Ik2S
+         32VA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:dkim-signature;
-        bh=U0S7ck160OChTYQtalHwvMVf9FHH7U/c+TVKdNXO/kI=;
-        b=FJL+cCoQvzd63foZl0/Q8RIhzI24pzTkALhziqwhM74KUqHZwotxg7sU/whhwyfDAA
-         TMDHI19aPknUw3SQsNEkyI2HpNmigkJdnvFVGJ/lIKsvdJ7ky21A4tnFQsaTKS1NmAxc
-         czlYXAu2tcPTuuf6rA1RYbjG658tvub1QWQ/7+JfUXauOblpzZZYjQLpgy77MHRxW6IM
-         fP3Rex5hJzY0ExXj9bj+K9OOBgh/pfIUAVQwgV1sJRfmMWe2iPm1GhUCbuicfOJmaDL8
-         3p3PRePhDjcVPahkYaz0QwtNX5hEmdAfBfCffEPDMQoesRUdX4ZFY8SOxC3ENYqT/UCE
-         hefA==
+        bh=rZYOg2f+szhhX3cBVgOIK9JGWCbhOCSqTfu1Pg+gH+Y=;
+        b=XnbEsQtmgixAf6sREG77FTXGBC7q1l5mxF+wNeJhUYMI2Gx6MTKv5+oJG6IetLIWAz
+         +vOS/YY5uEURL5tHRtNZyURO4yFoeKu0V3BNcb/LP+rMbpiAvBIumok5+zLjc8Q9rj00
+         a+lmZyk1Q74Je+lv7sSY4/of9BTVz9/DjBsouQMQ2hkdbk7Y+803KoVD8p+cOxMPrTNX
+         YmpQlOfsWpxHePYn0td7JAJYL9lOYwMU4ihOct2Y06L4JS4oKtav3PeZb+Bmt6E9PNU3
+         ERs77Ra1ceI1vtlQ3uKK7KKGVn5NSocvhq+Jjjmkqu0kBwH86dwWPWho7zuN0WeshETF
+         vXSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IerS2pgm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=u7YGpSfz;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id u5-20020a170902e5c500b0019338f4a652si6977729plf.573.2023.01.17.08.17.13;
-        Tue, 17 Jan 2023 08:17:13 -0800 (PST)
+        by mx.google.com with ESMTP id hg6-20020a1709072cc600b0086b31465a93si14751591ejc.401.2023.01.17.09.01.53;
+        Tue, 17 Jan 2023 09:01:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IerS2pgm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=u7YGpSfz;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S232517AbjAQQRM (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 3 others); Tue, 17 Jan 2023 11:17:12 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:36900 "EHLO
+        id S230229AbjAQRBu (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 3 others); Tue, 17 Jan 2023 12:01:50 -0500
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:36694 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S231347AbjAQQRF (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 17 Jan 2023 11:17:05 -0500
-Received: from mail-pg1-x52f.google.com (mail-pg1-x52f.google.com [IPv6:2607:f8b0:4864:20::52f])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 048D443477
-        for <kvm@vger.kernel.org>; Tue, 17 Jan 2023 08:17:01 -0800 (PST)
-Received: by mail-pg1-x52f.google.com with SMTP id s67so22340358pgs.3
-        for <kvm@vger.kernel.org>; Tue, 17 Jan 2023 08:17:01 -0800 (PST)
+        with ESMTP id S230326AbjAQRBl (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 17 Jan 2023 12:01:41 -0500
+Received: from mail-pl1-x632.google.com (mail-pl1-x632.google.com [IPv6:2607:f8b0:4864:20::632])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 7B6E621A0E
+        for <kvm@vger.kernel.org>; Tue, 17 Jan 2023 09:01:38 -0800 (PST)
+Received: by mail-pl1-x632.google.com with SMTP id jl4so34166945plb.8
+        for <kvm@vger.kernel.org>; Tue, 17 Jan 2023 09:01:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=U0S7ck160OChTYQtalHwvMVf9FHH7U/c+TVKdNXO/kI=;
-        b=IerS2pgmn6RtT0riu0dw9I30WCr5FmiYXwkmbdoBcNUXLOjwQ4g2vYtDQVbaN6cfqN
-         Ioi4iuEXYrMpE/mb2DPsspJ2TjPSOHWxmjA1qXs+djQfAx2vVXMfh8x/pbvCvZ4WLqvL
-         p6+3IKY6Qe0UWCcr+uPMDDbBnGX8K/JdhMFL6ns/6Z33jwu8Q1I/bBX5lYO4I+2zum6g
-         CVbPekdNDFTEXg3AKyfm6i778D4KSj6aSeL3r1Iwk8YAJG6TaDpiNjgxgDHDchkMEa6Q
-         VW7r+8uuSiNnS6aSiIiDzTU+rPlCy6GSjU82RbeHXVu778ftMPtJ4F6Y50LjIJdE8ovu
-         Id5Q==
+        bh=rZYOg2f+szhhX3cBVgOIK9JGWCbhOCSqTfu1Pg+gH+Y=;
+        b=u7YGpSfziXUPkvB/gafuQpp2n2O9dmMUBX3rWS3KKN6ZokdDcMtvDAYv3XOMw+2h/T
+         iD6qSMgkCtx10QxQcDOGuejP4c78ZAdJxc+9+H3z/UfiysUm7BlHsWQHhEOmEGhxpeOy
+         7ESUswWmKjB+l8k0BuOHdYNXOTLlVcz+CTtX2hPpLX/r7KZwQBCmP5cEQ2nGx8ON0Lwv
+         RqDhVFB3bPkQ+5ryUeOd/zJN+dPcaPhOKlochWNUuWmIlnsk8D6NCtAut3efDsUuE1hS
+         5UDDbQJtOdCDuHjRhQFXBYg6orXmCb1JceLkLPScsHA9CiIMQsc8szFu83ccrCdL4t5Q
+         s7rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=U0S7ck160OChTYQtalHwvMVf9FHH7U/c+TVKdNXO/kI=;
-        b=Seexk8kLI24XDNRa9L9weE6D5ba4SgR1nltttA3ene/Wy02T3xK7yJy5sKh/VDXX32
-         chUuCi34EtI0bHTlIaRSG4nUfr+yM06KN/6yLGL9fxuTfiQ5J3QoHvBRUFBgOUiz+YYY
-         a4Mva2c4O7uVxJo6i8o4khyLnWGZ7dVGbK5kHGOjwWMCgTQFw8cPcxMH2Hao16vGpuJQ
-         UKdeIzwyYoivtrT3B9/l8MwUOyIGfsddGC1h0AKA/IAanU60XBczdsCawOIeH8zemsnR
-         FqYOnn1WVbmclqX398QEgew7UDuWXXxcLSK3vpm28TWydm1WGU8/aTVNYoJirdIZCmOe
-         OlAg==
-X-Gm-Message-State: AFqh2kpeXQ/yDlB7FjgVvQM/tf1FhH7jVFe4zBAoiIHgvOaSxhEofh6t
-        3/q5jCI1HLQkoTliOtl2TFLG4SCRYv/tYBJuhsGL2bb9LiSXvg==
-X-Received: by 2002:a63:234d:0:b0:4ce:ca5c:c472 with SMTP id
- u13-20020a63234d000000b004ceca5cc472mr256570pgm.105.1673972221176; Tue, 17
- Jan 2023 08:17:01 -0800 (PST)
+        bh=rZYOg2f+szhhX3cBVgOIK9JGWCbhOCSqTfu1Pg+gH+Y=;
+        b=JZ7Zn8ZSudq4iFtGSjVnve2X7bs60n2xChq9bq8tuEBgitzapHanlRTJbrzS/yFT7j
+         WZumAdbrGMGX0NxHBhsTqwFW7LDtooMXJOoJy1pLkD9nu3p5iwyIUEL2XPaiKX0XeErL
+         9qtGv2NbMjpDO2rHgKNItec6BNV5IfBjNrW6qO9BEdDRJNTCF3AMOR5iNoIKEm5enodj
+         eChrQOxZJtHZnqiK+prKhcg0lXzaTmUCVEO8DtP4n9Jbw22zoIstr34LCz34msIpZuJD
+         i8RHDYa6seOS92S7EdP3dcWjb4tcGErYpbHaELZSdiiRzq56JLUD+IiKhx9SDbe8xFuO
+         ngmg==
+X-Gm-Message-State: AFqh2kq+/gFLtB7kG8P81EJr70ZFiqr18ZW19GJMQcMzEoElD7K5Mhi7
+        BTkV6frTFZoqbU5XCdsmX+CKGM18sKptR2qXy9EBKg==
+X-Received: by 2002:a17:90a:ea92:b0:229:189b:6fee with SMTP id
+ h18-20020a17090aea9200b00229189b6feemr340092pjz.221.1673974897929; Tue, 17
+ Jan 2023 09:01:37 -0800 (PST)
 MIME-Version: 1.0
 References: <20230111161317.52250-1-cohuck@redhat.com> <20230111161317.52250-2-cohuck@redhat.com>
-In-Reply-To: <20230111161317.52250-2-cohuck@redhat.com>
+ <CAFEAcA9BKX+fSEZZbziwTNq5wsshDajuxGZ_oByVZ=gDSYOn9g@mail.gmail.com> <Y8bR7xrsCMr5z6xI@work-vm>
+In-Reply-To: <Y8bR7xrsCMr5z6xI@work-vm>
 From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 17 Jan 2023 16:16:49 +0000
-Message-ID: <CAFEAcA9BKX+fSEZZbziwTNq5wsshDajuxGZ_oByVZ=gDSYOn9g@mail.gmail.com>
+Date:   Tue, 17 Jan 2023 17:01:26 +0000
+Message-ID: <CAFEAcA-rnb=fSW+ZiZkX7EAgTnmksr4Grow3P=UdQR1yhay4TQ@mail.gmail.com>
 Subject: Re: [PATCH v4 1/2] arm/kvm: add support for MTE
-To:     Cornelia Huck <cohuck@redhat.com>
-Cc:     Thomas Huth <thuth@redhat.com>,
+To:     "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc:     Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
         Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
         qemu-devel@nongnu.org, kvm@vger.kernel.org,
         Eric Auger <eauger@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
         Juan Quintela <quintela@redhat.com>,
         Gavin Shan <gshan@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
@@ -98,68 +98,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 3gmcLHe5NXln
+X-TUID: oej+BYEw+XN0
 
-On Wed, 11 Jan 2023 at 16:13, Cornelia Huck <cohuck@redhat.com> wrote:
+On Tue, 17 Jan 2023 at 16:51, Dr. David Alan Gilbert
+<dgilbert@redhat.com> wrote:
 >
-> Introduce a new cpu feature flag to control MTE support. To preserve
-> backwards compatibility for tcg, MTE will continue to be enabled as
-> long as tag memory has been provided.
+> * Peter Maydell (peter.maydell@linaro.org) wrote:
+> > On Wed, 11 Jan 2023 at 16:13, Cornelia Huck <cohuck@redhat.com> wrote:
+> > > +MTE CPU Property
+> > > +================
+> > > +
+> > > +The ``mte`` property controls the Memory Tagging Extension. For TCG, it requires
+> > > +presence of tag memory (which can be turned on for the ``virt`` machine via
+> > > +``mte=on``). For KVM, it requires the ``KVM_CAP_ARM_MTE`` capability; until
+> > > +proper migration support is implemented, enabling MTE will install a migration
+> > > +blocker.
+> > > +
+> > > +If not specified explicitly via ``on`` or ``off``, MTE will be available
+> > > +according to the following rules:
+> > > +
+> > > +* When TCG is used, MTE will be available iff tag memory is available; i.e. it
+> > > +  preserves the behaviour prior to introduction of the feature.
+> > > +
+> > > +* When KVM is used, MTE will default to off, so that migration will not
+> > > +  unintentionally be blocked.
+> > > +
+> > > +* Other accelerators currently don't support MTE.
+> >
+> > Minor nits for the documentation:
+> > we should expand out "if and only if" -- not everybody recognizes
+> > "iff", especially if they're not native English speakers or not
+> > mathematicians.
+> >
+> > Should we write specifically that in a future QEMU version KVM
+> > might change to defaulting to "on if available" when migration
+> > support is implemented?
 >
-> If MTE has been enabled, we need to disable migration, as we do not
-> yet have a way to migrate the tags as well. Therefore, MTE will stay
-> off with KVM unless requested explicitly.
->
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  docs/system/arm/cpu-features.rst |  21 +++++
->  hw/arm/virt.c                    |   2 +-
->  target/arm/cpu.c                 |  18 ++---
->  target/arm/cpu.h                 |   1 +
->  target/arm/cpu64.c               | 133 +++++++++++++++++++++++++++++++
->  target/arm/internals.h           |   1 +
->  target/arm/kvm64.c               |   5 ++
->  target/arm/kvm_arm.h             |  12 +++
->  target/arm/monitor.c             |   1 +
->  9 files changed, 181 insertions(+), 13 deletions(-)
->
-> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-> index 00c444042ff5..e278650c837e 100644
-> --- a/docs/system/arm/cpu-features.rst
-> +++ b/docs/system/arm/cpu-features.rst
-> @@ -443,3 +443,24 @@ As with ``sve-default-vector-length``, if the default length is larger
->  than the maximum vector length enabled, the actual vector length will
->  be reduced.  If this property is set to ``-1`` then the default vector
->  length is set to the maximum possible length.
-> +
-> +MTE CPU Property
-> +================
-> +
-> +The ``mte`` property controls the Memory Tagging Extension. For TCG, it requires
-> +presence of tag memory (which can be turned on for the ``virt`` machine via
-> +``mte=on``). For KVM, it requires the ``KVM_CAP_ARM_MTE`` capability; until
-> +proper migration support is implemented, enabling MTE will install a migration
-> +blocker.
-> +
-> +If not specified explicitly via ``on`` or ``off``, MTE will be available
-> +according to the following rules:
-> +
-> +* When TCG is used, MTE will be available iff tag memory is available; i.e. it
-> +  preserves the behaviour prior to introduction of the feature.
-> +
-> +* When KVM is used, MTE will default to off, so that migration will not
-> +  unintentionally be blocked.
-> +
-> +* Other accelerators currently don't support MTE.
+> Please make sure if you do something like that, that the failure
+> is obious; 'on if available' gets messy for things like libvirt
+> and higher level tools detecting features that are available and
+> machines they can migrate to.
 
-Minor nits for the documentation:
-we should expand out "if and only if" -- not everybody recognizes
-"iff", especially if they're not native English speakers or not
-mathematicians.
+If we have a plan for how this ought to work when we eventually
+implement migration support that's great and we should document
+it. My point is really "we should make sure we don't box ourselves
+into a set of defaults that we regret in the future, eg where
+TCG and KVM always have different defaults forever". If we don't
+have a plan for what the future is, then I'd rather we delayed
+adding MTE-without-migration-support until we've determined that
+plan.
 
-Should we write specifically that in a future QEMU version KVM
-might change to defaulting to "on if available" when migration
-support is implemented?
+Though the default for the CPU property is a bit moot, because
+at the machine level we only implement tag memory on the virt
+board, and there we disable it at the machine level (ie the
+machine property 'mte' defaults to 'false').
 
 thanks
 -- PMM

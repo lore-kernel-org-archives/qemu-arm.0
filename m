@@ -1,183 +1,175 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2133543ejc;
-        Mon, 16 Jan 2023 23:43:12 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsJ6iC/qs4Q5GLUyyHxbISNRcAbVVBMN9ryAYnQXFMW9ReWuGbYX0RHzj32zDboly6BUr+/
-X-Received: by 2002:a05:6214:5883:b0:532:2c56:8f63 with SMTP id md3-20020a056214588300b005322c568f63mr3464118qvb.13.1673941392220;
-        Mon, 16 Jan 2023 23:43:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673941392; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2145847ejc;
+        Tue, 17 Jan 2023 00:01:04 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuiA8CwN8NxYgv7/PZ0RrjetOTJUHCP6NVzfjCsCqWZImuowF7BoTNWKY00rryl7ANDvyyY
+X-Received: by 2002:a05:6214:2c0a:b0:532:35ef:203a with SMTP id lc10-20020a0562142c0a00b0053235ef203amr3598918qvb.31.1673942463939;
+        Tue, 17 Jan 2023 00:01:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673942463; cv=none;
         d=google.com; s=arc-20160816;
-        b=N3qz67xGT/PYm+nXb7nN4EZwpNoVwXH4a28jX1rvdbgjHSsBAVGkY8P6bjrfJOnUY8
-         aX09Q57qjzXDctBRR8S8xXAIEmp9mS5aS395cgZqe21HQHTMpzhQ8iRVffefSxqDkVoZ
-         VGjqwQ6XDIzWseRg7Rp6RDlDUHi53vwfq0Gek94fjTR8nHOQRS61Wuawt+e/OfrZNzAR
-         6UmmbDvzLDwNWx4hXQ3G+IIKZ8waNr4U+yRwVIS/AYzqk9mf6KAMxBt5rcDOax1E+9rh
-         GHNWju+O0aon2x8QcWaEpT+auCh2TdnbA6ZaXUUefIVC0NMxq5k41n8s3O9pWH4BC9u6
-         yfKg==
+        b=s49738N7JiGv2bQlvFv+cmhHLbITC9JziKYs2O1CRYQCaNqb8G9beOn09MqgO7mXEe
+         Kb9278egKKdcs8SI+i350XPQX9/VBQuVSsn9sKtnsiQWSHcNb4AP5m63hsgmZp5HOa/P
+         FHSmnRFeWAhR3b1y+5StatuHc0SmQ5Bg4Ikw7HX3sxO9/6AuxionRFG6QTRFPld/tMEc
+         h9mwz7V89ZrvcpUFS/JwVeQ9+q3pr8NlmqZ36ZWlBnM5ACyU3gk4ghl50itewPJx3EeP
+         m7SiAqJkHip6kkzPilFHwc85rLTAIxlM0bl4d7VIa8t0JYoSt23khISaW9lwlyr/wdUY
+         PkCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=cQRATWGUR+MiaJshLyeFpWwPoXdvblzcxoIuKyAEMKw=;
-        b=LRnZWfB9exEyrJOS+FN2QzapqAs282PwA3STAciUajLB+U8xKCzLHUIw4XtlB4k1bx
-         lBnbH0Wf4QVYFeDut8XiOSbCtjsH6Q+J50u//D/aeTUHHvvT9g12LCnGo2fEVe0PnRgR
-         KVD08neph9ravzyp5Jwgw0Pdt0xZ/qKvCCkW0Ti3FMfmKqLbAjaH8f5OD8ikam9oouUt
-         8V6/vsXR3Q3t8qiqvwRPdFCUKywtYQh8BVX0NDVh4cXaeJAb76EEqtUq8UbXphfHwLE9
-         eBz/lVFIS/MFPFMSJ+sip0adVpmHh2wW0fqhUA9YuZmh2XQk9gZj+u4Xd9NO/1YDRdVu
-         AmVg==
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=FbaD7T1wl5LUv3rQOnBXlbzGgPRsgbyZv+c1yBKtxYQ=;
+        b=g9R+qKTSqXKhD/doStOQCZOiv1mx+AiKW/RyXNXtj1fdKTkNmRLIGGpPN5AcovQhWa
+         ZrvJkdmDrQRdutTgdijKfH34OlnRHvtsTU6eIo3TLFlB1WULX1wcfGh9Mx0/yB/UUtMG
+         rRRTYefJ2JSbY2sQEb37Tpwhg/OfkRGHE9ULdONTq27fITSy3lsUGRImUxN8yQCUcjeR
+         DgvgHk1Hi3ZmKB7UkP09mFn7guo5EnFGaD9FP+zZ3odHO1SqMB65hM3AsrY6oIHPh6Mt
+         USghvm2KgL7PBmj3ePFQI0BoOq1FS8KHVNQoXNy27FISn/05/AxfNMONVo3VhykUUuP6
+         1MGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=q6vxxe1P;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jk8-20020ad45d48000000b004c778634ff4si19018289qvb.197.2023.01.16.23.43.12
+        by mx.google.com with ESMTPS id u8-20020a05620a430800b006fef612fcfesi19518805qko.23.2023.01.17.00.01.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Jan 2023 23:43:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Jan 2023 00:01:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=q6vxxe1P;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHgcW-0005Md-6Y; Tue, 17 Jan 2023 02:43:00 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pHgtm-0000Jb-Lu; Tue, 17 Jan 2023 03:00:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pHgcU-0005M5-L4
- for qemu-arm@nongnu.org; Tue, 17 Jan 2023 02:42:58 -0500
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pHgcS-00054Y-Dy
- for qemu-arm@nongnu.org; Tue, 17 Jan 2023 02:42:58 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.98])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 1FA3C1550A7AA;
- Tue, 17 Jan 2023 08:42:52 +0100 (CET)
-Received: from kaod.org (37.59.142.96) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Tue, 17 Jan
- 2023 08:42:51 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R00177359bff-15a9-43e9-ae11-1eb77a248ec2,
- 80E99EE0A2DD913C679298F6DB2E78D5E583611C) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <356419e3-339d-b45e-c8d2-2e3679e701f4@kaod.org>
-Date: Tue, 17 Jan 2023 08:42:46 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHgtd-0000Ay-8y
+ for qemu-devel@nongnu.org; Tue, 17 Jan 2023 03:00:42 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHgta-0007zB-TA
+ for qemu-devel@nongnu.org; Tue, 17 Jan 2023 03:00:40 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ f12-20020a7bc8cc000000b003daf6b2f9b9so4191897wml.3
+ for <qemu-devel@nongnu.org>; Tue, 17 Jan 2023 00:00:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FbaD7T1wl5LUv3rQOnBXlbzGgPRsgbyZv+c1yBKtxYQ=;
+ b=q6vxxe1PT/Ggu+GTw4QJQXCvQWUlAnusSnziYFKZlHW7NdUUkjXAKW+tbRjMvX2pd6
+ e0ZnK8cZeHNY0fQjdSHXtK7Q6jzM7LRlYYXTGIdZmcn4EwIydWm3kgjNpq5WURP/V2ut
+ ld+n9b/EcXunhYXIjGf5BC5QESwgDdKISX6Z6ZSzvuJ0WL0c89yx0W1+N10f0fQmZN9u
+ aeWPqryljHTTExCn33MLnR91K5uR72NTPnFEFhRG3JrFKe74ChvgG+5zpUGZ/Xd8rX3/
+ bpjR8vkaJvSZF1/aSmEO0FCuW7qg2+Cmnj3SQMy4Bs1S4MUEV0idS7aiRXtwRnsDU+Be
+ Zfsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=FbaD7T1wl5LUv3rQOnBXlbzGgPRsgbyZv+c1yBKtxYQ=;
+ b=d7ZIKqSJ2/3bNpjdtvp4zjsSL9Ks8qc8oMzs1Cgzsdivvbrg70meO44g3AoJdHUUht
+ nr2cL1u6pF1Ix0nAGLYOUFuFdtOdHK5nnNYTwHsOyLKnP390l1W9KXdaLt/d73niLl5r
+ wLeefJRZIN+KN/JWv9XCaIzCmaVzo5kHwUa5xEIQmSURdw0JIZhBtxi0kdNxs7MSETEv
+ yw2APSPJ8OwKTymabWyVCCTSM1bqX7g+OevicbokYIH641N/NIrRl0j7Bk5a9ffjQhCL
+ tscShfpZZnNjkk113h6PbSLTwKfoLrFHrUR4fBp8gdCAXM6Jyo4IybUBWK96YXZYOpNb
+ qBCg==
+X-Gm-Message-State: AFqh2kpjDT2AIBfV4dVoTbxaHy5Ocmv+ofd0V8CeHKoP2qrT3x/oAYeT
+ zO8pvfpnkIFSRGJSzDixBUBGqQ==
+X-Received: by 2002:a05:600c:3ca6:b0:3d1:caf1:3f56 with SMTP id
+ bg38-20020a05600c3ca600b003d1caf13f56mr10963956wmb.9.1673942436018; 
+ Tue, 17 Jan 2023 00:00:36 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ k9-20020a05600c1c8900b003dafbd859a6sm6035993wms.43.2023.01.17.00.00.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 17 Jan 2023 00:00:35 -0800 (PST)
+Message-ID: <961515e6-65ad-ec7f-f51e-a862424f574d@linaro.org>
+Date: Tue, 17 Jan 2023 09:00:34 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2 5/5] hw/nvram/eeprom_at24c: Make reset behavior more
- like hardware
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH v2 1/5] hw/arm: Extract at24c_eeprom_init helper from
+ Aspeed and Nuvoton boards
 Content-Language: en-US
 To: Peter Delevoryas <peter@pjd.dev>
-CC: <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
- <hskinnemoen@google.com>, <kfting@nuvoton.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
+Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ hskinnemoen@google.com, kfting@nuvoton.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20230116235604.55099-1-peter@pjd.dev>
- <20230116235604.55099-6-peter@pjd.dev>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230116235604.55099-6-peter@pjd.dev>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+ <20230116235604.55099-2-peter@pjd.dev>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230116235604.55099-2-peter@pjd.dev>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 782a0eef-f78e-4458-9159-b580f2d8ea21
-X-Ovh-Tracer-Id: 5871568017067510636
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedruddthedguddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepuedutdetleegjefhieekgeffkefhleevgfefjeevffejieevgeefhefgtdfgiedtnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphgvthgvrhesphhjugdruggvvhdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdgrnhgurhgvfiesrghjrdhiugdrrghupdhjohgvlhesjhhmshdrihgurdgruhdphhhskhhinhhnvghmohgvnhesghhoohhglhgvrdgtohhmpdhkfhhtihhnghesnhhuvhhothhonhdrtghomhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhohedvledpmhhouggvpehsmhhtphhouhht
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.097,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.097,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ar1gumz0rLHa
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JeIbx6dgB4Gj
 
-On 1/17/23 00:56, Peter Delevoryas wrote:
-> EEPROM's are a form of non-volatile memory. After power-cycling an EEPROM,
-> I would expect the I2C state machine to be reset to default values, but I
-> wouldn't really expect the memory to change at all.
-
-
+On 17/1/23 00:56, Peter Delevoryas wrote:
+> This helper is useful in board initialization because lets users initialize and
+> realize an EEPROM on an I2C bus with a single function call.
 > 
-> The current implementation of the at24c EEPROM resets its internal memory on
-> reset. This matches the specification in docs/devel/reset.rst:
-> 
->    Cold reset is supported by every resettable object. In QEMU, it means we reset
->    to the initial state corresponding to the start of QEMU; this might differ
->    from what is a real hardware cold reset. It differs from other resets (like
->    warm or bus resets) which may keep certain parts untouched.
-> 
-> But differs from my intuition. For example, if someone writes some information
-> to an EEPROM, then AC power cycles their board, they would expect the EEPROM to
-> retain that information. It's very useful to be able to test things like this
-> in QEMU as well, to verify software instrumentation like determining the cause
-> of a reboot.
-
-Yes. should we take into account the "writable" property  ? It is not set to
-false in any model but it could.
-
-Thanks,
-
-C.
-
-> Fixes: 5d8424dbd3e8 ("nvram: add AT24Cx i2c eeprom")
 > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
 > ---
->   hw/nvram/eeprom_at24c.c | 22 ++++++++++------------
->   1 file changed, 10 insertions(+), 12 deletions(-)
-> 
-> diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-> index bb9ee75864fe..6bcded7b496c 100644
-> --- a/hw/nvram/eeprom_at24c.c
-> +++ b/hw/nvram/eeprom_at24c.c
-> @@ -185,18 +185,6 @@ static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
->       }
->   
->       ee->mem = g_malloc0(ee->rsize);
-> -
-> -}
-> -
-> -static
-> -void at24c_eeprom_reset(DeviceState *state)
-> -{
-> -    EEPROMState *ee = AT24C_EE(state);
-> -
-> -    ee->changed = false;
-> -    ee->cur = 0;
-> -    ee->haveaddr = 0;
-> -
->       memset(ee->mem, 0, ee->rsize);
->   
->       if (ee->blk) {
-> @@ -214,6 +202,16 @@ void at24c_eeprom_reset(DeviceState *state)
->       }
->   }
->   
-> +static
-> +void at24c_eeprom_reset(DeviceState *state)
-> +{
-> +    EEPROMState *ee = AT24C_EE(state);
+>   hw/arm/aspeed.c                 | 10 +---------
+>   hw/arm/npcm7xx_boards.c         | 20 +++++---------------
+>   hw/nvram/eeprom_at24c.c         | 12 ++++++++++++
+>   include/hw/nvram/eeprom_at24c.h | 10 ++++++++++
+>   4 files changed, 28 insertions(+), 24 deletions(-)
+>   create mode 100644 include/hw/nvram/eeprom_at24c.h
+
+> diff --git a/include/hw/nvram/eeprom_at24c.h b/include/hw/nvram/eeprom_at24c.h
+> new file mode 100644
+> index 000000000000..79a36b53ca87
+> --- /dev/null
+> +++ b/include/hw/nvram/eeprom_at24c.h
+> @@ -0,0 +1,10 @@
+> +/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+
+What license for this copyright?
+
+> +#ifndef EEPROM_AT24C_H
+> +#define EEPROM_AT24C_H
 > +
-> +    ee->changed = false;
-> +    ee->cur = 0;
-> +    ee->haveaddr = 0;
-> +}
+> +#include "hw/i2c/i2c.h"
+
+  /**
+   * Create and realize an AT24C EEPROM device on the heap.
+   * @bus: I2C bus to put it on
+   * @addr: I2C address of the EEPROM slave when put on a bus
+   * @rom_size: size of the EEPROM
+   *
+   * Create the device state structure, initialize it, put it on
+   * the specified @bus, and drop the reference to it (the device
+   * is realized).
+   */
+  I2CSlave *at24c_eeprom_create_simple(I2CBus *bus, uint8_t addr,
+                                       size_t rom_size);
+
+> +I2CSlave *at24c_eeprom_init(I2CBus *bus, uint8_t address, uint32_t rom_size);
 > +
->   static Property at24c_eeprom_props[] = {
->       DEFINE_PROP_UINT32("rom-size", EEPROMState, rsize, 0),
->       DEFINE_PROP_BOOL("writable", EEPROMState, writable, true),
+> +#endif
 

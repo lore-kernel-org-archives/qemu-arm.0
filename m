@@ -1,121 +1,133 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2119475ejc;
-        Mon, 16 Jan 2023 23:21:56 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuxgktJ4bqDayuVMRYfpY/GlI1k5HoNQa6HL+A3QgvrR2WO9XwTUArJVrCDK+VmeoptJgtG
-X-Received: by 2002:a17:907:75cf:b0:7aa:76a:fb3 with SMTP id jl15-20020a17090775cf00b007aa076a0fb3mr1679788ejc.66.1673940116818;
-        Mon, 16 Jan 2023 23:21:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673940116; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2242778ejc;
+        Tue, 17 Jan 2023 02:29:11 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXt/NMdlqZs/K5CrNqiEhJmorPkShaznMy4XEUGOSiHLy1jP+uGLcIMMiej2Lhfi8ZYTqzO7
+X-Received: by 2002:ac8:5545:0:b0:3b6:2f0d:1925 with SMTP id o5-20020ac85545000000b003b62f0d1925mr2941600qtr.64.1673951351104;
+        Tue, 17 Jan 2023 02:29:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673951351; cv=none;
         d=google.com; s=arc-20160816;
-        b=eQfyJszKLVAKvlz1AnK4VPTpE+QiODbAbe1lYGzcAwPZYUtgjDPr9dgHIK7EUMnRb4
-         a4b/h0zLHq/4urZXZTf2W5GNYHCpgaydN6J+s9dEpsFj8YGEEHvQW0TO9R8CwVG8ZKlb
-         +XoCH6aFgFzZC9e1n+V+MoCD+CW0mNSt1r6wU1n6UOGXPPn9EQrbV43fYLJ8D94g/uxB
-         f5SEILleb1k2GjfVYHIYPTN58e8eV9Sr92q3Wh6JEockJhmlvM5Fgi/ONQRLwGGiExku
-         WijzyVqaJka4yT4hneYnEuW2/7BDr9jJM0INYSJm+dbXlwjtIeoV1HRGv3zVnHtAso7J
-         Fe+w==
+        b=Djz825XCGk696gMtWhlZfhVVidrTFlhd8OV1TfXfEDVLy6Gsyr+//RJevWJgF/tWqY
+         +gntmY6KzS39RFqKXc80WiABP3zYODMiM8DZyrdjTCNFHem61rkgipzkgXwl/wrRN/oq
+         f3p2PljZXRMMBC+SjUrfXmFKaEpyLBDOn6TORYkmqjoqjCCZ7t90YFNdqCDNgGCdGixr
+         dE/19rdvr6uV0FMNByqRXq2p0W35NPxDJFUSwBVvnJqQxa18JuMzKaFPCbNAEnEJ7ALo
+         elVYCt49o1JpZxZYzHPICl/HbwXlRkKjCG7oAxde+1oeY3B4fdHKdRxKAP9YBy8U7Iii
+         ruMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=IYK/nQC07kIXJuVOxh4RJkITmazo+pChDR0p2flp/O4=;
-        b=Wzi1qGEmKK7GH/RhyYBz/gRRD1QN4nfIE3lw63BBhXb/qeXy+dTIFPlUThUnl9BsTj
-         aChlwWoswMTDHvhUAwIE7sDOvHl6z2j5sLeYRrae8Czeeb7VB6diIPvraJ7Kb0vx1lSX
-         ytGaUi4++wW8JqfdRvhoFOaQGf0Qeh8JHFDFxXb2PQnr49awhejE9dws4v9Gq9X7bTkK
-         D/c7KAQyYX5CMdDXCsRRcUByv4WFx5YLpeC92Ot9JRjA/ZeWLSzxBNdN7gd3gkuQ9h+e
-         w/7IG6JCYkO3iyKEO6E/m+SquDOFSxFqVMhg/PXQBX2Y3jwGiDtR4rJOEDmMRvCBGEUi
-         czQg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=j0sjaXYymy/iFSyarSlSMqgcs4oRuwRD/LeY/JNZ8IY=;
+        b=HtC6kn8yIBnaBtTtGedWTPz8GjyCi8vm+lwq3mhwMTwB/aWCfs7nYZxWXYRle3v/po
+         oRh0Y0rf0b/Hz9YKbmCQG0l43YPAD87vFAk5/znqYmH6EDmjJCyJgK8030Ko+QugGNqr
+         BBt6YXjf/kA05VyAVqImAdv9fhnu+xUlfZa1zwzI5BW/ruMDQvqn7PwVFYElH3UXGKY/
+         2pV0asvgKBF3cmPmll8HCSy9aC6JoH2vnYl917oK5062gyYg/hk+QA6c+yPAaTyBSdGA
+         LuBYqTACMy+TXCKgkQDLyuo3DGzl1+0EF8U/3XcpzYR7rBggpmAeOCWTSLFwzFsKCFw8
+         Vj5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ecuKJ/Xm";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="UgyA/Tyy";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id di6-20020a170906730600b00857c01c6b3fsi24319144ejc.164.2023.01.16.23.21.56;
-        Mon, 16 Jan 2023 23:21:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id fd3-20020a05622a4d0300b003b63c005edcsi1134555qtb.490.2023.01.17.02.29.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Jan 2023 02:29:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ecuKJ/Xm";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="UgyA/Tyy";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S235576AbjAQHVy (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 3 others); Tue, 17 Jan 2023 02:21:54 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:59840 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S235451AbjAQHVu (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 17 Jan 2023 02:21:50 -0500
-Received: from mail-wr1-x429.google.com (mail-wr1-x429.google.com [IPv6:2a00:1450:4864:20::429])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 93C9022A38
-        for <kvm@vger.kernel.org>; Mon, 16 Jan 2023 23:21:49 -0800 (PST)
-Received: by mail-wr1-x429.google.com with SMTP id d2so9468209wrp.8
-        for <kvm@vger.kernel.org>; Mon, 16 Jan 2023 23:21:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=IYK/nQC07kIXJuVOxh4RJkITmazo+pChDR0p2flp/O4=;
-        b=ecuKJ/XmVYYqvlJwSjcrMFqGGGT0Sv43bs2oPlN/IRlABuZn7yGA5rpllK+ctCj4GF
-         GzMKSYZcFxC7bgOI1UoFecqosdJLkUUhmqdRMllqBR8Mc+vEuNgd0qAIqkq6gNihodjp
-         C9amJbE6XPO/uo7KVLxjKBPHwpMYaihQGh5VKT0Unu4o9992meTjFaQvaAj0ymTZakg5
-         CcdEia3M3n7k6C20Q4E//NpeiU3bu67Lz1Lzs0YbfyBd1YvnILWUP5A69jCsSP33GR+2
-         drTFF3ot/MXUraeo/Pysnos1wvx8dpFKfQFrrh35b64eYICKfPfsrMfL6h7IccEosAuP
-         +JRQ==
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pHjDB-0005Pz-M5; Tue, 17 Jan 2023 05:29:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pHjDA-0005Pi-AQ
+ for qemu-arm@nongnu.org; Tue, 17 Jan 2023 05:29:00 -0500
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pHjD7-0007By-U8
+ for qemu-arm@nongnu.org; Tue, 17 Jan 2023 05:28:59 -0500
+Received: by mail-pj1-x102a.google.com with SMTP id
+ z9-20020a17090a468900b00226b6e7aeeaso33699698pjf.1
+ for <qemu-arm@nongnu.org>; Tue, 17 Jan 2023 02:28:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=j0sjaXYymy/iFSyarSlSMqgcs4oRuwRD/LeY/JNZ8IY=;
+ b=UgyA/TyyscZm3DN0vstVKIBOZlhjFiskGRxbNvwI3Z7KX+djIj+sPqcEehF2eU2TxA
+ eE3TSbNZqT5K/Azzk+kMqgFuRC9ELvzN+LwtXaWLknpi6QU2cAXshPT+cyVz+s9B+K4P
+ zlVm4VKIZxxnBDoxsACIWiRcwipcXpnkONeVdSYzbEiGH+PE8WCLi5fJL6btl6+hXUWl
+ UsxO//CihgnKSUr0AepPXmf0HyedlG8tizdYp4rovAOgMJTdSLcRvyft4B7uRNGS91Oh
+ gzN+EyCDHOGuS+IvIiyu09lZvVeBr8NjaPxsi44nW9To012Jrha7DrF7PH1vn7eXrFWH
+ wFKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IYK/nQC07kIXJuVOxh4RJkITmazo+pChDR0p2flp/O4=;
-        b=ZbYHIfT+LqkgotgdlemkdeGwIHQclGRwU0sZ/jJ7w0J381UxF0e+AmS5nwXiEyiiMS
-         l5L26+KFvHRLQnIiyTMBXWGkGWN34YR2j3K5TH5dxH0X3c1YpF7Se7HcEF422QVtnzCY
-         hKbfQkKuWIlDbxHXBr4l+33NAh7Fvu7yX3AAOEo61h8qrKMsDm+qd4VgGpeOZdKgjHrU
-         TLNjVv56Q56UrbUKvvKkBxDJ49ZF23ij7VFatxyB/OfGnFEtXb5tCbVfevvBsi+3xSJg
-         lctRUx7dKLU67woUOf3GiQijkOIgw6333yHjr6zF+OilGy3UIL7j7pWfC2YJmuukMNvD
-         +N+w==
-X-Gm-Message-State: AFqh2krAzr1baOcBGeSIXSxcW9wAO+HLpdQZMVx+eyyPYNn7mF2mufrh
-        c9mlITa3nOV+rzRjc8526DOD7A==
-X-Received: by 2002:adf:fc0f:0:b0:2bc:7ec3:8a8 with SMTP id i15-20020adffc0f000000b002bc7ec308a8mr1917902wrr.44.1673940107978;
-        Mon, 16 Jan 2023 23:21:47 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id az35-20020a05600c602300b003dafb0c8dfbsm6889603wmb.14.2023.01.16.23.21.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 16 Jan 2023 23:21:47 -0800 (PST)
-Message-ID: <2dc89f14-d38b-2220-64ff-d3480d85057e@linaro.org>
-Date:   Tue, 17 Jan 2023 08:21:45 +0100
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=j0sjaXYymy/iFSyarSlSMqgcs4oRuwRD/LeY/JNZ8IY=;
+ b=PU08rwqH+6U//DrQlARx40wMuzBsRwFyCo2WZ27//Vkb5Wk/mAqUcAjeALLrwDPfIz
+ LE+5oNixmE/J1Cl07vcC+vTwcdyGEp414Qlu/ZaOcrKmzWfn73isMZi80oL67NfpaGyq
+ +SBwaFBvA3j3w5ycwYyEa0ycbOJDExwjcFJYdrxIRjreKeTz29jPYIiMWWqQaUQ84d8y
+ EaUQJbZcT1yfycmeCz0yPGUD8P6S7bSmcYDmRA8z6HdlHz38PTSzduQgKGhIMOtZtqwn
+ 5Iy7sig2EM44NbTRVzgUmxsZQhwuwugAhX144Ru09ItBk7dGFPwTBNOf4MR/q0bv+94t
+ X47g==
+X-Gm-Message-State: AFqh2kqgXrHC2Olgiqidxr43hS64YjXDSBCI2IgBX5lIbhiOSoqK+8MS
+ ei/ASU7m381EDfg7GLrG7qzOPBYKkSL+VzoYTHl87Q==
+X-Received: by 2002:a17:90a:ea92:b0:229:189b:6fee with SMTP id
+ h18-20020a17090aea9200b00229189b6feemr225365pjz.221.1673951336291; Tue, 17
+ Jan 2023 02:28:56 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v4 2/2] qtests/arm: add some mte tests
-Content-Language: en-US
-To:     Cornelia Huck <cohuck@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Thomas Huth <thuth@redhat.com>,
-        Laurent Vivier <lvivier@redhat.com>
-Cc:     qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
-        Eric Auger <eauger@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Juan Quintela <quintela@redhat.com>,
-        Gavin Shan <gshan@redhat.com>
-References: <20230111161317.52250-1-cohuck@redhat.com>
- <20230111161317.52250-3-cohuck@redhat.com>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230111161317.52250-3-cohuck@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 8zVlC2M8OLlP
+References: <20230106194451.1213153-1-richard.henderson@linaro.org>
+ <4db4ccba-1985-f1b2-6c5a-615b865ba749@linaro.org>
+In-Reply-To: <4db4ccba-1985-f1b2-6c5a-615b865ba749@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Jan 2023 10:28:45 +0000
+Message-ID: <CAFEAcA-4dUF8MySqFxFdrHFF+Jjw+wZo9mp6uNuHqumssKX_Aw@mail.gmail.com>
+Subject: Re: [PATCH 0/2] target/arm: Look up ARMCPRegInfo at runtime
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bP93JRqfP/hv
 
-On 11/1/23 17:13, Cornelia Huck wrote:
-> Acked-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->   tests/qtest/arm-cpu-features.c | 76 ++++++++++++++++++++++++++++++++++
->   1 file changed, 76 insertions(+)
+On Mon, 16 Jan 2023 at 20:16, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Ping.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+What did you think of my suggestion in the other thread of hashing
+the info we need to determine the cpreg set (ID regs, feature flags,
+etc) and using that to look up whether we've already created a
+cpreg hashtable for this config? If we did that, we could refcount
+the cpreg hashtable and only free it when all CPUs are done with
+it, which would mean we don't need this indirection.
+
+thanks
+-- PMM

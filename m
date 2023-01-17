@@ -1,112 +1,163 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2661720ejc;
-        Tue, 17 Jan 2023 11:01:30 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvU8XgULLp3qYBRtFDZgbJxcL9dyA1XW2V2yYHHemYvvbaTin2FSPTWvogUnUR7KchY1TVH
-X-Received: by 2002:a05:600c:4e12:b0:3da:fb0b:8496 with SMTP id b18-20020a05600c4e1200b003dafb0b8496mr4044980wmq.34.1673982090163;
-        Tue, 17 Jan 2023 11:01:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673982090; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2665155ejc;
+        Tue, 17 Jan 2023 11:04:18 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuxWtpABrd7VxftXotGG5IRBlWEpeQMNBHBjRZ7Yr1iYtkrsTgQzae2JFj7veamx/WxrXyC
+X-Received: by 2002:a5d:4c48:0:b0:2bd:c431:46d8 with SMTP id n8-20020a5d4c48000000b002bdc43146d8mr12932410wrt.49.1673982258466;
+        Tue, 17 Jan 2023 11:04:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673982258; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xqymys74X87yxwa1C13JYJkRRsFg5mcX4BnVey7nIoJL4GmBYLUWR6adQluJWsCKXZ
-         xmTCUOF6FB+fhIBV73x8jYsjSsUZFLXZttUe7xS/3vpwANp3bH2IYeybBAI+/AZAb+EJ
-         u4XBJILZ8rU4qpZ3u/JOq690hF9qIaY0bTfz6cod40D5xlBgvSzB9TSt8UKL4sq0YUUM
-         3xIFYsCiMucrG4vaYRxyZzvL8e4qWI16gqvy7a+gk71DckY0oexWLka31rCs7rRgwQZQ
-         MY0zW604IpWURNh55WxiVIyEPWcSkzrbwVX1iLNp0ADOhiE3aSXEu1AtAlQbaI6CW/u0
-         JuDg==
+        b=dJi7RPH69oLVdODNmwwHDrSB3HKVjm4391FxCyFWdhr8rFzzxLHvm29i2MFj1fMGS5
+         OC/5ev3pb8TNgAAiA7mEAHc2V7uQMTFZ8mie0Fi2L/6EN/BB+1XsHwGeqrFvPWAnmR5A
+         RkA7mJJK+V8io66PxIcl1GqnaaYrCB1Zs/40mvbNhRGR58ay0Z8J0XdnCLAecMeeryhC
+         MTUiqnuseLgP/vW169W280UqUrm+CUvSYI3xFobFNnQL8l61dVlpp8Fthd9PKrcWZLUR
+         sR1VfjwC6NjhRVTyOYO93Ix/9mkLn8gtptHaRXiRnbZsy5TaC/zYRocVtjpjCfWLtqhX
+         I+pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=iThEnDTET59x2sUomagCvKmMSdatwdYlv/6+dzSVev4=;
-        b=Qbw1zmnMgFdGgaqv4HU+SJB6DIT0bp8e3CTZvSKAycVQAm4klruc8EXsXN649p67AJ
-         kY6GFRYNyqPzUACuwBDhLyG0B4Buy9Bq0JQNl0UQX8dIjDSuXOW+EQ42MyJfxabJqGyx
-         X2+Kx8SyK4auN+Z4gPYdaDNj3Zptnx7zvou+UKCO6hHU+k1HziYmQAXeFOmxnzcljCUK
-         G75aMXad7H5K3FfHoIBJRg/d5Gd9w1rTMT1tvUrdJgJevWaKlGowZ13aNkvQQ3eVkDTQ
-         uEIT0PlJT+yb92SybUWePUGhbbqd1wZgbMNH1dx5xV3QGVStwFJNUQd1jsXztjDeTcO6
-         YqYg==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=igX/hAWhdeyLVUd1sjjff06FwLtEbMuD3RohQNs4foI=;
+        b=pgHHQh/ilC6khM4OHre4eph/63Xsfk8xNeT/1VqDLZiEY1EWW+4sfdQNxpOiMUezWn
+         /wusSKTBzMVXJRbHWiuS2B7ve7UNdIKMLp6gWNcFeJrVXzkbm0v2eZuIBvEwPC9AzHPu
+         ZmOt0GS8Vp0bQHNqT4PG2Vm3epsKESurgWkPQNS+wfgRE9sBjFQM6aTjQSPhETMjdH/a
+         9lrT1emtUmdRyzKuB/QFbOYZipCmyBkogEg0+TpzzMHbr7gzayb9bUny9+MfatTlAc2x
+         8EZ4h9IrcGvYOq1VNER31G0tgTfhGQONTbazCnv0kNWUEaawg0ts06g+p7h2spQThofI
+         URDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=LZi5ix13;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=odVFiV6z;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=h+zuAi8t;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id t14-20020a7bc3ce000000b003d220627bd7si25399147wmj.163.2023.01.17.11.01.29
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id h3-20020adffd43000000b002365ce2019csi25421835wrs.185.2023.01.17.11.04.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jan 2023 11:01:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Tue, 17 Jan 2023 11:04:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=LZi5ix13;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=odVFiV6z;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=h+zuAi8t;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id BA6EF1FF51;
-	Tue, 17 Jan 2023 19:01:29 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 1A80322208;
+	Tue, 17 Jan 2023 19:04:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673982089; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1673982258; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=iThEnDTET59x2sUomagCvKmMSdatwdYlv/6+dzSVev4=;
-	b=LZi5ix13e1mTv2wyG5lYWvHceHGy9wTVpIILt0JwA1KqDL6+Sn0dzrGxBA5KH1vV61avRA
-	yUBg+gDl7u8mIMc7z9a9pzsviwG3egD4Uph6MYLyTkCGa4TES+fX2Qd0QyV5Ig2XDMp02C
-	UpIczJwKyQRIb4j6GxS7CqKh90tqrGY=
+	bh=igX/hAWhdeyLVUd1sjjff06FwLtEbMuD3RohQNs4foI=;
+	b=h+zuAi8tveo1IXTAscMa97oEUrWEXz3h4K11huy211s5cvVZn9Jx5E6kMHXPj0X+xTV8Wc
+	VEEV9r5kInhykWW5cHjyq9759zY95K59rJI4lIa/ErwtZLSl3vOjd8Aze++8/tHi0pcnK7
+	kLHWntoMT6bVzgsxH59ugIITvidHvJw=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673982089;
+	s=susede2_ed25519; t=1673982258;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=iThEnDTET59x2sUomagCvKmMSdatwdYlv/6+dzSVev4=;
-	b=odVFiV6zXT4E4D1YVMiVO4I9kYPZrKd6KxuVFChS88pgQlX2AsXKoCyWWjkXdtF7cXWkzZ
-	i00qgPqkTomAuoAw==
+	bh=igX/hAWhdeyLVUd1sjjff06FwLtEbMuD3RohQNs4foI=;
+	b=ul2F2JydHyQcTKqxTlJZL6Z8FCU7IO/vc+nC7R9nmdkxZw5/0ctUN94ap6KLli6mJjjgJZ
+	l7M+6+kdq/okDyBw==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 4750A1390C;
-	Tue, 17 Jan 2023 19:01:29 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 9E59D1390C;
+	Tue, 17 Jan 2023 19:04:17 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 8sB4BInwxmN3OgAAMHmgww
-	(envelope-from <farosas@suse.de>); Tue, 17 Jan 2023 19:01:29 +0000
+	id 8dAUGjHxxmOZOwAAMHmgww
+	(envelope-from <farosas@suse.de>); Tue, 17 Jan 2023 19:04:17 +0000
 From: Fabiano Rosas <farosas@suse.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
- Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>
-Subject: Re: [RFC PATCH v3 18/28] target/arm: Move common cpu code into cpu.c
-In-Reply-To: <bafc45b7-f42a-a500-053f-65f057a14cc1@linaro.org>
+To: Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Alexander Graf <agraf@csgraf.de>, Thomas Huth <thuth@redhat.com>, Laurent
+ Vivier <lvivier@redhat.com>
+Subject: Re: [RFC PATCH v3 21/28] tests/qtest: Skip tests that depend on TCG
+ when CONFIG_TCG=n
+In-Reply-To: <87ilh58c5p.fsf@redhat.com>
 References: <20230113140419.4013-1-farosas@suse.de>
- <20230113140419.4013-19-farosas@suse.de>
- <bafc45b7-f42a-a500-053f-65f057a14cc1@linaro.org>
-Date: Tue, 17 Jan 2023 16:01:26 -0300
-Message-ID: <87bkmx0yux.fsf@suse.de>
+ <20230113140419.4013-22-farosas@suse.de> <87ilh58c5p.fsf@redhat.com>
+Date: Tue, 17 Jan 2023 16:04:15 -0300
+Message-ID: <878ri10yq8.fsf@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 8GY2Tles1QLO
+Content-Type: text/plain
+X-TUID: ePib9LlZ3hH4
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Cornelia Huck <cohuck@redhat.com> writes:
 
-> On 13/1/23 15:04, Fabiano Rosas wrote:
->> The cpu_tcg.c file about to be moved into the tcg directory. Move the
->> code that is needed for cpus that also work with KVM into cpu.c.
->>=20
+> On Fri, Jan 13 2023, Fabiano Rosas <farosas@suse.de> wrote:
+>
 >> Signed-off-by: Fabiano Rosas <farosas@suse.de>
 >> ---
->>   target/arm/cpu.c     | 76 +++++++++++++++++++++++++++++++++++++++++++
->>   target/arm/cpu_tcg.c | 77 --------------------------------------------
->>   2 files changed, 76 insertions(+), 77 deletions(-)
->>=20
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> [...]
+>>  tests/qtest/arm-cpu-features.c | 24 ++++++++++++++++++++++++
+>>  1 file changed, 24 insertions(+)
+>>
+>> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+>> index 4be1415823..9a052e41fc 100644
+>> --- a/tests/qtest/arm-cpu-features.c
+>> +++ b/tests/qtest/arm-cpu-features.c
+>> @@ -217,6 +217,15 @@ static void assert_bad_props(QTestState *qts, const char *cpu_type)
+>>      qobject_unref(resp);
+>>  }
+>>  
+>> +static bool tcg_disabled(void)
+>> +{
+>> +#ifndef CONFIG_TCG
+>> +    return true;
+>> +#else
+>> +    return false;
+>> +#endif
+>> +}
+>> +
+>>  static uint64_t resp_get_sve_vls(QDict *resp)
+>>  {
+>>      QDict *props;
+>> @@ -338,6 +347,11 @@ static void sve_tests_sve_max_vq_8(const void *data)
+>>  {
+>>      QTestState *qts;
+>>  
+>> +    if (tcg_disabled()) {
+>> +        g_test_skip("TCG support disabled in this build");
+>> +        return;
+>> +    }
+>> +
+>>      qts = qtest_init(MACHINE "-cpu max,sve-max-vq=8");
+>>  
+>>      assert_sve_vls(qts, "max", BIT_ULL(8) - 1, NULL);
+>> @@ -373,6 +387,11 @@ static void sve_tests_sve_off(const void *data)
+>>  {
+>>      QTestState *qts;
+>>  
+>> +    if (tcg_disabled()) {
+>> +        g_test_skip("TCG support is disabled in this build");
+>> +        return;
+>> +    }
+>> +
+>>      qts = qtest_init(MACHINE "-cpu max,sve=off");
+>>  
+>>      /* SVE is off, so the map should be empty. */
 >
-> TYPE_IDAU_INTERFACE is ARMv8-M specific, so TCG AFAIU.
+> I'm wondering whether the invocation of tcg and kvm test cases should be
+> reorganized a bit. Currently, we have test cases that use MACHINE (tcg),
+> and test cases that use MACHINE_KVM (kvm with a fallback to
+> tcg). MACHINE_KVM is used either for aarch64 && kvm
+> (test_query_cpu_model_expansion_kvm, which tests behaviour specific to
+> kvm), or for aarch64 (sve_tests_sve_off_kvm, which tests behaviour that
+> is the same for both kvm and tcg, and therefore tests tcg twice if kvm
+> is not available.)
+>
+> So, should we
+> - drop "-accel tcg" from MACHINE_KVM,
+> - call sve_tests_sve_off_kvm only if kvm is available, and
+> - call the functions you skip here conditionally on tcg being available
+>   instead? (not sure whether not calling should be preferred to skipping
+>   in general)
 
-Hm.. QEMU doesn't start without it. There might be some implicit
-dependency. I'll check.
+I did the last two already for the next version. Good point on dropping
+"-accel tcg", I'll do that as well.

@@ -1,153 +1,164 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2655793ejc;
-        Tue, 17 Jan 2023 10:55:24 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvRDMAzAuHrIp6YyBpFhlh/5jkiIP70cLPcvboHy7WnUqDUBwigOlY6IGaIc0v8fwL54ixZ
-X-Received: by 2002:a05:600c:3b83:b0:3d9:f758:e280 with SMTP id n3-20020a05600c3b8300b003d9f758e280mr4142062wms.24.1673981724817;
-        Tue, 17 Jan 2023 10:55:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673981724; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2688602ejc;
+        Tue, 17 Jan 2023 11:30:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsKddNUt/4rhsKYlfx5iASSdthjiE77n2s+bO0hEPkBmzeuzOwdFTV4BX5feSq13RE2qzDZ
+X-Received: by 2002:ac8:530e:0:b0:3a8:e5b:4306 with SMTP id t14-20020ac8530e000000b003a80e5b4306mr5172797qtn.21.1673983853655;
+        Tue, 17 Jan 2023 11:30:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673983853; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kwij8d7V2+irl32Do1/YXEUGNP7P+Fnt8GD4RAA5RIcR3vvbjuqAIY9ixOsadhKFmD
-         lfeVmDmvy4p7aquM434kHJWkZ6KJ+Q0GUsdq+LS5LmXTtwB3Ul8xB/5/kbzY46y92HrK
-         3GYV4grFzqIL9+gyoaCdrpRu5cHeBkrwVQDr37+65r0ajNqe7EByQgU7rc5UGqCkL3OZ
-         IEG2aUzTVjcWxdnrbnw2iQ+wMQ6dYgw0NaFx0wvIteEUrDxE1tqRzaQdbZ9eO8uZZHhT
-         tLrBjYlqBkjsV2S0eswBWPg9NxR2G0TUKHhtpBAvK0XslTHQ0tTthU546I5csEreWJLI
-         mVbw==
+        b=UQXCC6OANBHN6ZGcC5ohHYoGO62UtOK0jXwQCjyIF3szW0YyeZwG30hV/T57XEAgbI
+         DGRyf2Gmu9K17XT0CtaAk1Ly1hWPp2GXs3o1muEkeQxpsu2cJ+iYO486CgRV7Hv6W7Qn
+         k8rJ3NHTpHCkj2Ass0jlqu5YzpZSomuLxodkKYXGOOZrQdE+9jp2igdpuJ+pEq6Avhlg
+         Dt93dA7AX8s7FCi9s/fXcm0lM62GMCGLRX+S99FUv75jYxWCSJsweVjexKgQHdyJhbXC
+         dhcxbrc2hiTYXPOIh0j+NPHt94zuIS6NFMVzioGUiTnFejDjNXA2ngQwJVPBTZLRlfOF
+         Ncmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=dZv+jTHc+XmPDQ3MR441gXG/YLreUAMyp4/Uz9nuK/I=;
-        b=yAjk0yRevSvI5ogJeGK++sxYdzWGEWb1QcczM88g0sBFhAlAb642vCtYYtf4RcHfTo
-         i/Qdsf1uXrZ/YGWiu2Ehr725uzofyZpOQntft8MTwAIQuSXv6CXpO4er9387XdDYPQ5F
-         CAsguanWAPFyqKvqlun202oqLkC8y5pRuwEZs43Eq6wZoHkFisCvce8qesAtcpPLZZnT
-         pCmTgKzTJL6gynmIzdNU2KXPBXzHKdLjGQEAC1gWjYCac5XB6+MuVTmuHCIUB/j0byj1
-         I+fABZm06Zxc1v9oAUgHYr9i6dI2RI4l477BWSvphJVXySwpxAXyMYBGtI82SclKbnTb
-         elbA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=l7/Pf3QFy7tCNP1T2A2CbqV1qRDD69xfRcKghv8dT2E=;
+        b=z1NIj0NpNWkHBU/koGr39mDsFCiOVdWzaUy9MV6ac2J3ajb6pabLAYRjd9VWm4gOdk
+         T526LcFHecHGGlu10BtBECrwowmCqQT+fEVsHWvYjc47XSW7JZzdQX0N040XcNRWR+tl
+         bCklTnA+YZdnfdbPEvUUMygRdP3xBT6Pf9/I8t5BonwyNBIGlTrnFofhotALs3PMKiTe
+         /i1GUiiF9Nk4rxHRE1veYOuupjHz0Paid+en8vj8zGfPc/Kc5AffuVz7KxDaL2CCqzL0
+         k2D0EvtUUaG2WYftfWfOd66c27/1QFq2DdcmNnefkpuzV4Y/i2dFtnTpnqIudHXNKYLv
+         /OpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=FArfxiRc;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=FGFsL8iq;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id w10-20020a05600c474a00b003d9f86da484si21444732wmo.97.2023.01.17.10.55.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jan 2023 10:55:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+       dkim=pass header.i=@linaro.org header.s=google header.b=B4cgeNkL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id cd12-20020a05622a418c00b003b636efda4esi2483340qtb.537.2023.01.17.11.30.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Jan 2023 11:30:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=FArfxiRc;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=FGFsL8iq;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 256B11FF3D;
-	Tue, 17 Jan 2023 18:55:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673981724; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=dZv+jTHc+XmPDQ3MR441gXG/YLreUAMyp4/Uz9nuK/I=;
-	b=FArfxiRcCP2TEC7co3pL1n9jvAjmZ9G1G68/OVMq4kNJduHxeHXIe/WAz6cMwsHkxymTGT
-	Fbzjw2usV/KsZ+LIRGm3x1qWe6+cgH3bVjk6Hr1dnPbuqE6QF6ovy6I6j2vFDguJdy1KLs
-	lSj6BUQAVuB6dW7KDKdU4gdQK/tOnyw=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673981724;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=dZv+jTHc+XmPDQ3MR441gXG/YLreUAMyp4/Uz9nuK/I=;
-	b=FGFsL8iqR7Gy0WR+3SlQuf1CR+NyVvvCzfs9sTOxUXLfKwCxHDpu2cmQ1xhPxbEWjlDzzV
-	Xtfe2LkSUHwvycDA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id A4C251390C;
-	Tue, 17 Jan 2023 18:55:23 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 8l+BGxvvxmOoNwAAMHmgww
-	(envelope-from <farosas@suse.de>); Tue, 17 Jan 2023 18:55:23 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
- Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>
-Subject: Re: [RFC PATCH v3 10/28] target/arm: move helpers to tcg/
-In-Reply-To: <7d47f4df-1a14-d448-f8df-9c31dc2ee371@linaro.org>
-References: <20230113140419.4013-1-farosas@suse.de>
- <20230113140419.4013-11-farosas@suse.de>
- <7d47f4df-1a14-d448-f8df-9c31dc2ee371@linaro.org>
-Date: Tue, 17 Jan 2023 15:55:21 -0300
-Message-ID: <87h6wp0z52.fsf@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=B4cgeNkL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pHrf5-0002J3-MN; Tue, 17 Jan 2023 14:30:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHrf3-0002IY-PH
+ for qemu-arm@nongnu.org; Tue, 17 Jan 2023 14:30:21 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHrf2-0007vu-3V
+ for qemu-arm@nongnu.org; Tue, 17 Jan 2023 14:30:21 -0500
+Received: by mail-ej1-x629.google.com with SMTP id ud5so77846490ejc.4
+ for <qemu-arm@nongnu.org>; Tue, 17 Jan 2023 11:30:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=l7/Pf3QFy7tCNP1T2A2CbqV1qRDD69xfRcKghv8dT2E=;
+ b=B4cgeNkLMnxoXm6wGLj82xnvRcoJ7RK6qZZ9lfNNEI3Zbpp5QhksaHfSrqzNJmaQin
+ x6sioJHeRR9TwkeZluIUlX0Gd4OQV2ijDzbRe3zKFz8AMTTYLwMh+HGFhvc+rC9aE4Wk
+ d6h1rLkS2s+ikTdV3z5tS3b6SAZ6kCc5ZqDMOcHTa3Lt7yETZ4dNfi9oN7yoRwSyO8PI
+ ffSrsf+XXUfDuMSzc1leB2VhNK3IOdH9AD83RDgVSVMgdXJzseFnTiLeHnQTuig/32kc
+ u0IgBYLwOXnGCQETkstFpO1qVeEUmQ/2KD7w3Qv6Zruh3sFTjxRj7LNgvixOBFzna67i
+ xcXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=l7/Pf3QFy7tCNP1T2A2CbqV1qRDD69xfRcKghv8dT2E=;
+ b=JcfhQ0uY5nqnbmE6wLSQbJLbjG7z9M8aHTUiMSHGnqspr+SQYYywZxyOzZ0L/VtPUa
+ wUmKCQzwcMQKNeAV7HYlpaSBcuUN3rNs3tp4HcGdWKiEWqIVBPrH+EGCRaF1Frk7di54
+ Z9sxHl2uoQHXQKbNCAwrCHbF5cHkXjTtW1/3chtTTrhH5byodo3THpNEMEhF0ZXE3sI7
+ DImy01N5MgVMTKc1X8jomLPjrmLeqbuyO7CBl7E9KKGc7ZOChBKZu9Sho6Jeq0eUrUsW
+ wHMnBEB6k7/dG3GYEBLhXwjNETEZeyYwDycBHEadOr+QhQAoYCF6IzsOJCd/wc8qnKGg
+ 9gCQ==
+X-Gm-Message-State: AFqh2krjYHVLav29+oCLSmQD5wZhIW3bwy7YJJ9E4PyWr7bZNBgq7PmI
+ dvyqVEQGpUFMnlwWhXRUEpZlFA==
+X-Received: by 2002:a17:906:e2cd:b0:870:2aa7:6509 with SMTP id
+ gr13-20020a170906e2cd00b008702aa76509mr4329544ejb.43.1673983818290; 
+ Tue, 17 Jan 2023 11:30:18 -0800 (PST)
+Received: from localhost.localdomain ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ ia2-20020a170907a06200b00868c5005e13sm6323824ejc.98.2023.01.17.11.30.16
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 17 Jan 2023 11:30:17 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Eric Auger <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] hw: Use TYPE_PCI_BUS definition where appropriate
+Date: Tue, 17 Jan 2023 20:30:14 +0100
+Message-Id: <20230117193014.83502-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: rLbkDKxWLKit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: o5WI6067tO0O
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Use the proper QOM type definition instead of magic string.
+This also helps during eventual refactor while using git-grep.
 
-> On 13/1/23 15:04, Fabiano Rosas wrote:
->> From: Claudio Fontana <cfontana@suse.de>
->>=20
->> Signed-off-by: Claudio Fontana <cfontana@suse.de>
->> Signed-off-by: Fabiano Rosas <farosas@suse.de>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->
->> ---
->>   target/arm/meson.build               | 16 ++--------------
->>   target/arm/tcg-stubs.c               | 23 +++++++++++++++++++++++
->>   target/arm/{ =3D> tcg}/crypto_helper.c |  0
->>   target/arm/{ =3D> tcg}/debug_helper.c  |  0
->>   target/arm/{ =3D> tcg}/helper-a64.c    |  0
->>   target/arm/{ =3D> tcg}/iwmmxt_helper.c |  0
->>   target/arm/{ =3D> tcg}/m_helper.c      |  0
->>   target/arm/tcg/meson.build           | 14 ++++++++++++++
->>   target/arm/{ =3D> tcg}/mte_helper.c    |  0
->>   target/arm/{ =3D> tcg}/mve_helper.c    |  0
->>   target/arm/{ =3D> tcg}/neon_helper.c   |  0
->>   target/arm/{ =3D> tcg}/op_helper.c     |  0
->>   target/arm/{ =3D> tcg}/pauth_helper.c  |  0
->>   target/arm/{ =3D> tcg}/sme_helper.c    |  0
->>   target/arm/{ =3D> tcg}/sve_helper.c    |  0
->>   target/arm/{ =3D> tcg}/tlb_helper.c    |  0
->>   target/arm/{ =3D> tcg}/vec_helper.c    |  0
->>   target/arm/{ =3D> tcg}/vec_internal.h  |  0
->>   18 files changed, 39 insertions(+), 14 deletions(-)
->>   create mode 100644 target/arm/tcg-stubs.c
->>   rename target/arm/{ =3D> tcg}/crypto_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/debug_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/helper-a64.c (100%)
->>   rename target/arm/{ =3D> tcg}/iwmmxt_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/m_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/mte_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/mve_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/neon_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/op_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/pauth_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/sme_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/sve_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/tlb_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/vec_helper.c (100%)
->>   rename target/arm/{ =3D> tcg}/vec_internal.h (100%)
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
->> +void raise_exception_ra(CPUARMState *env, uint32_t excp, uint32_t syndr=
-ome,
->> +                        uint32_t target_el, uintptr_t ra)
->> +{
->> +    g_assert_not_reached();
->> +}
->
-> Do you have a plan to restrict the calls to raise_exception_ra() to TCG?
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/smmu-common.c     | 3 ++-
+ hw/virtio/virtio-iommu.c | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-Not yet, looks like moving the sdiv and udiv helpers which call
-handle_possible_div0_trap would be enough.
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 54186f31cb..733c964778 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -535,7 +535,8 @@ static void smmu_base_reset_hold(Object *obj)
+ 
+ static Property smmu_dev_properties[] = {
+     DEFINE_PROP_UINT8("bus_num", SMMUState, bus_num, 0),
+-    DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus, "PCI", PCIBus *),
++    DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus,
++                     TYPE_PCI_BUS, PCIBus *),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 23c470977e..1cd258135d 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -1366,7 +1366,8 @@ static const VMStateDescription vmstate_virtio_iommu = {
+ };
+ 
+ static Property virtio_iommu_properties[] = {
+-    DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus, "PCI", PCIBus *),
++    DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus,
++                     TYPE_PCI_BUS, PCIBus *),
+     DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+-- 
+2.38.1
+

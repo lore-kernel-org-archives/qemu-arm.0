@@ -1,36 +1,187 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id iv14-20020a05600c548e00b003b47b80cec3sm47993125wmb.42.2023.01.17.07.42.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jan 2023 07:42:23 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 2C47B1FFB7;
-	Tue, 17 Jan 2023 15:42:23 +0000 (GMT)
-References: <20230106194451.1213153-1-richard.henderson@linaro.org>
- <20230106194451.1213153-2-richard.henderson@linaro.org>
-User-agent: mu4e 1.9.14; emacs 29.0.60
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH 1/2] target/arm: Reorg do_coproc_insn
-Date: Tue, 17 Jan 2023 15:42:18 +0000
-In-reply-to: <20230106194451.1213153-2-richard.henderson@linaro.org>
-Message-ID: <87lem1cgm8.fsf@linaro.org>
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2538875ejc;
+        Tue, 17 Jan 2023 08:52:49 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXs2aH2nGYkhz2hKNL0p93Zezvu49elAhcVjBgrwtChInoAydh7F3HNZEJjrc3bcV4wbFOI4
+X-Received: by 2002:a05:6214:424e:b0:531:95f2:89aa with SMTP id ne14-20020a056214424e00b0053195f289aamr34413516qvb.35.1673974369660;
+        Tue, 17 Jan 2023 08:52:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673974369; cv=none;
+        d=google.com; s=arc-20160816;
+        b=hyNkXmrkIxp3R5efK/TDiKcCYjFgmo911iNL7hbyveowOMchQtf+JYBpuzAnQGlz6+
+         YcF5v1pbsxGVCNwYt/wnAD+QkFLTyxhZ5wn6cRMr2MpWDYPvmnxccuBAutJ6IDTggX5s
+         Jtuf+Ngh4gTiTHGMDGakx+k3TDLp3PW5dLU6X3cY0heXaVnSyXHwZoD4QpHT9Pzd/A50
+         0hAOhnBmvScGW4m2bCVuXc9UBZdLGXXQOlyXMvFyEfLZEpIRSstu85T5ae2AA8+geC+9
+         04/8qjVogOtTgLQILWyz0IQSjuwN9kCq3xz2btMrQ3xnGBQ/xSJxQaKobdHZYL6FMgXe
+         nuCg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=FDgixqMdZgJKYF6e0PBWXRXvTbMCho7EW2mMMQM3c70=;
+        b=Qy7E9EDQA2yLSMvSq7HI+bp73Rn8EDmHL4HrBOqIzy7y2d0YfFB0l5vUoX5E4u3wkR
+         CYa5NRQ2NOHMC/pr1Az05REZru5oKZ3CyUU1M4Nk+Dp7s+dwi+zjKcAguMeqLbHeWiSU
+         f+BsxUYnAOvAIC2HBw+QxaAhEnav/kkq46LaFXYA/1aT46bZT3ogh+B/H7gC8xzF3IAi
+         n3MUYnjDn02P83UPwxg51Pn140HkFM8ut0NELZnp5nphrHaMwNKw3EZ5pKLE3GUi+8LC
+         hUWg2Q/CsxwlERyYKXu811dEGWqZ29n1l2Pmz9q7SGg4RkvNgg4CECXthFiczWvY6E5H
+         KMqw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZIDZqnqX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c1-20020ad45ae1000000b0053420a90f9csi13045854qvh.460.2023.01.17.08.52.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Jan 2023 08:52:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZIDZqnqX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pHpCY-0005VF-OA; Tue, 17 Jan 2023 11:52:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pHpCX-0005Uz-I7
+ for qemu-arm@nongnu.org; Tue, 17 Jan 2023 11:52:45 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pHpCW-0001p4-1l
+ for qemu-arm@nongnu.org; Tue, 17 Jan 2023 11:52:45 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1673974363;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=FDgixqMdZgJKYF6e0PBWXRXvTbMCho7EW2mMMQM3c70=;
+ b=ZIDZqnqXxJtst9ypPmxZLTYe/0pDJYK1EMPloHpp2eK7MB7Bjzy5biH4i4m9sTBm45zT17
+ Tofomq9zIB9BWm5mg09WWlY4KtKkU41xE72c5B3cjDE6NGVwPM2OOv4lwEhpjF+wI4WUIs
+ niZGxpNLi/2U4pys23/f494xkbM6iss=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-175-KRcR06ouMPCBRAQ0kDPHRw-1; Tue, 17 Jan 2023 11:52:39 -0500
+X-MC-Unique: KRcR06ouMPCBRAQ0kDPHRw-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4E4C938173E8;
+ Tue, 17 Jan 2023 16:52:09 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.81])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A843A492B01;
+ Tue, 17 Jan 2023 16:52:08 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, Eric
+ Auger <eauger@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH v4 1/2] arm/kvm: add support for MTE
+In-Reply-To: <CAFEAcA9BKX+fSEZZbziwTNq5wsshDajuxGZ_oByVZ=gDSYOn9g@mail.gmail.com>
+Organization: Red Hat GmbH
+References: <20230111161317.52250-1-cohuck@redhat.com>
+ <20230111161317.52250-2-cohuck@redhat.com>
+ <CAFEAcA9BKX+fSEZZbziwTNq5wsshDajuxGZ_oByVZ=gDSYOn9g@mail.gmail.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Tue, 17 Jan 2023 17:52:06 +0100
+Message-ID: <87a62h85op.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 0VBJVJkwtpPa
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LvqCS/Rv7QIk
 
+On Tue, Jan 17 2023, Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Richard Henderson <richard.henderson@linaro.org> writes:
-
-> Move the ri =3D=3D NULL case to the top of the function and return.
-> This allows the else to be removed and the code unindented.
+> On Wed, 11 Jan 2023 at 16:13, Cornelia Huck <cohuck@redhat.com> wrote:
+>>
+>> Introduce a new cpu feature flag to control MTE support. To preserve
+>> backwards compatibility for tcg, MTE will continue to be enabled as
+>> long as tag memory has been provided.
+>>
+>> If MTE has been enabled, we need to disable migration, as we do not
+>> yet have a way to migrate the tags as well. Therefore, MTE will stay
+>> off with KVM unless requested explicitly.
+>>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>>  docs/system/arm/cpu-features.rst |  21 +++++
+>>  hw/arm/virt.c                    |   2 +-
+>>  target/arm/cpu.c                 |  18 ++---
+>>  target/arm/cpu.h                 |   1 +
+>>  target/arm/cpu64.c               | 133 +++++++++++++++++++++++++++++++
+>>  target/arm/internals.h           |   1 +
+>>  target/arm/kvm64.c               |   5 ++
+>>  target/arm/kvm_arm.h             |  12 +++
+>>  target/arm/monitor.c             |   1 +
+>>  9 files changed, 181 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+>> index 00c444042ff5..e278650c837e 100644
+>> --- a/docs/system/arm/cpu-features.rst
+>> +++ b/docs/system/arm/cpu-features.rst
+>> @@ -443,3 +443,24 @@ As with ``sve-default-vector-length``, if the default length is larger
+>>  than the maximum vector length enabled, the actual vector length will
+>>  be reduced.  If this property is set to ``-1`` then the default vector
+>>  length is set to the maximum possible length.
+>> +
+>> +MTE CPU Property
+>> +================
+>> +
+>> +The ``mte`` property controls the Memory Tagging Extension. For TCG, it requires
+>> +presence of tag memory (which can be turned on for the ``virt`` machine via
+>> +``mte=on``). For KVM, it requires the ``KVM_CAP_ARM_MTE`` capability; until
+>> +proper migration support is implemented, enabling MTE will install a migration
+>> +blocker.
+>> +
+>> +If not specified explicitly via ``on`` or ``off``, MTE will be available
+>> +according to the following rules:
+>> +
+>> +* When TCG is used, MTE will be available iff tag memory is available; i.e. it
+>> +  preserves the behaviour prior to introduction of the feature.
+>> +
+>> +* When KVM is used, MTE will default to off, so that migration will not
+>> +  unintentionally be blocked.
+>> +
+>> +* Other accelerators currently don't support MTE.
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Minor nits for the documentation:
+> we should expand out "if and only if" -- not everybody recognizes
+> "iff", especially if they're not native English speakers or not
+> mathematicians.
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Ok, will change that.
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+>
+> Should we write specifically that in a future QEMU version KVM
+> might change to defaulting to "on if available" when migration
+> support is implemented?
+
+I can certainly add "Future QEMU versions might change that behaviour."
+We should be able to add compat handling for that.
+

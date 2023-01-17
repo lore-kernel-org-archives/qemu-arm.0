@@ -1,94 +1,187 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2784934ejc;
-        Tue, 17 Jan 2023 14:07:05 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuNP3TAGdfkkeooKYegWlEwr85syMXgegFalRio/W0qjbzBhmZQObfTqF69XVkr3tQcOc5s
-X-Received: by 2002:a0c:efd4:0:b0:532:2dc4:c5ce with SMTP id a20-20020a0cefd4000000b005322dc4c5cemr33225058qvt.29.1673993225739;
-        Tue, 17 Jan 2023 14:07:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673993225; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2806682ejc;
+        Tue, 17 Jan 2023 14:46:05 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsqXwhkSxHTAOsp5/zH4YqUwkEXwu2BNrX3WoMJItIuq0X6PnYBTNlkhGbRQGRYWnV5RISR
+X-Received: by 2002:a0c:ea2c:0:b0:532:1fc2:9ad5 with SMTP id t12-20020a0cea2c000000b005321fc29ad5mr35178122qvp.0.1673995565706;
+        Tue, 17 Jan 2023 14:46:05 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1673995565; cv=pass;
         d=google.com; s=arc-20160816;
-        b=c7N6e6BKNJ5maUuF4z3AjUUEXPKOvrYwRi4aspN0TM/2SxzWsUMKw/oelnzMvYketS
-         zfA2kGSW/FTgWtsDFKmeOfFaf9tRg+2l7HgH6NEg0yynYs1WUxekf0CVs04ezij8bbrr
-         dKROyd94kzmaW5/Mu02eLqQd62hpZul5D/NZeyyq9FoRs8CVcfOV83jBQtt4QWPCmvB4
-         sRyUgHScaV/frwOuaHo4nd+EO4VUoD04AAdvYKMSSCsb8BXKcwNogyzjPiZz0Ejv2UeG
-         CtjPrTaS6Uiy3gBwhs+JZnz4gjAKbDclco2dqeGkT8FXyhQigroc4GZdCEci8Znbkqwc
-         d8ig==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Eo/LP3Aq+rwKrtwKg2RKa8wZVGnuxEKu73wdwstlWZFEyozaFWdES2Sdj8NYY5eamO
+         dghEqTzDjPmLdo//Y4KsoGBeJQoFghniWnpIcg1nj3iva+WA5hHUHiKTZGeHHGPX3518
+         zmJutHesmVtkWzK41RsiJw+CytD6UMyqdt2WS5SmGYRy+oGJdKD8Fcm1zvV+qLKnAGgr
+         f+Hl/Na1J9HIj8th8LAcOw3jNnuUy72fTrEN/PG3OzbtmkRMRi4rKKRZVE/PWczD0CoE
+         kGvT05PAJt8l++jDdzTX9eMIDQNJ24YlyqhWkksraRhe7xu+ujYOrDXCP98z0bs20+IY
+         rhIw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:subject:to:from:user-agent:mime-version:date
-         :message-id:dkim-signature:dkim-filter;
-        bh=em4MsoHXlRnwzHzecn9clyK5jiawdFbw0SnpG8aeTBo=;
-        b=Ft7KBcQ7n9QcMLJPjXRoVpiNTrPcpumiDcRLndWmhvlYEtid23n0vhbibJT+gNFMJ8
-         PV8ZI674Br43+ZJfqaOaSKtr713yg9OuYkk2jKnfN4/AVQ116XzeSH78SKTxhQzmmVXG
-         M6m9lkRwp7hhHLIvsxLestvhD+DuUJYqQuzpRL3nL6rsAdVXadF3K8fKbtUahMlGyx+J
-         dEyStADdXPV8zF2IKTUt6lES0b+nbtW9uwgxrSIDjmLRrwvMhnR7roj3RV3c9tBLOSEO
-         npJ+do2XM1S3aaancGl9B1IK+u0hBd0LfdVmRx0I4U0LmDVBJGRWxCAr39cz/TVS8XjP
-         KLVQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=CXDdKRFs;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:date:message-id:dkim-signature;
+        bh=wCuTcPoNeR7Qjny+ikG7c3PkyPBsrNLnRg9Q6ta3kvU=;
+        b=ky/tZSifMl4ZIsleMjCxYK2Q3l4NK+wJkJ3ERVbGDYATH+rta7d0C6nlnvUWBrscgl
+         PJDaeZaLdKkzq0Nc5NoEMOOkYDUZMbfQuCap5k+IHyUhZAEQos/QIp8bE+MLM9lfKWEH
+         +8Tl8kOFzrGeb6+8cqKuVLiPrzjnj8KLCU8g4JxS8iDKomIU7v7HtwiSzRYpYroIzW6g
+         0UoGbPx75C+Z0lIcOHUeSFDDXM8Q7D1Dyl4oI8jwsZmlYbRqZC4lKfn1HQhHIJeC9shm
+         47TO06Nmh3k9Qq+14x0LQgmuEp7eKXey+MznaR1ELEOdOXYNSbKPC7zLuNQDz+pbxuML
+         SiOw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@meta.com header.s=s2048-2021-q4 header.b=PnpdIkKN;
+       arc=pass (i=1 spf=pass spfdomain=meta.com dkim=pass dkdomain=meta.com dmarc=pass fromdomain=meta.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=meta.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8-20020a0562140dc800b00530d08f3da7si20589307qvt.336.2023.01.17.14.07.05
+        by mx.google.com with ESMTPS id t4-20020ad45bc4000000b00531bf3db4dfsi5442173qvt.573.2023.01.17.14.46.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jan 2023 14:07:05 -0800 (PST)
+        Tue, 17 Jan 2023 14:46:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=CXDdKRFs;
+       dkim=pass header.i=@meta.com header.s=s2048-2021-q4 header.b=PnpdIkKN;
+       arc=pass (i=1 spf=pass spfdomain=meta.com dkim=pass dkdomain=meta.com dmarc=pass fromdomain=meta.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=meta.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHu6X-0004gT-GA; Tue, 17 Jan 2023 17:06:53 -0500
+	id 1pHuhu-0004CW-3X; Tue, 17 Jan 2023 17:45:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHu6V-0004ca-As; Tue, 17 Jan 2023 17:06:51 -0500
-Received: from linux.microsoft.com ([13.77.154.182])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHu6T-000757-Cp; Tue, 17 Jan 2023 17:06:51 -0500
-Received: from [192.168.0.20] (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id 1CB0020E09E0;
- Tue, 17 Jan 2023 14:06:46 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 1CB0020E09E0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1673993208;
- bh=em4MsoHXlRnwzHzecn9clyK5jiawdFbw0SnpG8aeTBo=;
- h=Date:From:To:Subject:References:In-Reply-To:From;
- b=CXDdKRFshS6ZxHMr96yNCg8dMsrIZQBpKZbQPkFc8ukBwdKDmwOAQHrP3dVD0AvZ2
- dCtiaM0ZRO7Ko3gLyRMgCnp5xmykXZZdpNtHUPjkQQapONrFJFJVoh9JS/1Y5l0dVE
- ic9U2EJ1Fetyfp1MUih8ZOwLVoDmwu5e+ZHop3/g=
-Message-ID: <c8eb0fb6-2c37-dae9-da9d-8c6107e07a18@linux.microsoft.com>
-Date: Tue, 17 Jan 2023 23:06:45 +0100
+ (Exim 4.90_1) (envelope-from <prvs=438116b86b=dreiss@meta.com>)
+ id 1pHuht-0004CK-ER; Tue, 17 Jan 2023 17:45:29 -0500
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=438116b86b=dreiss@meta.com>)
+ id 1pHuhr-0005UU-JM; Tue, 17 Jan 2023 17:45:29 -0500
+Received: from pps.filterd (m0109333.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 30HLULF0030318; Tue, 17 Jan 2023 14:45:24 -0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=meta.com;
+ h=message-id : date :
+ subject : to : cc : references : from : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=s2048-2021-q4;
+ bh=wCuTcPoNeR7Qjny+ikG7c3PkyPBsrNLnRg9Q6ta3kvU=;
+ b=PnpdIkKNsOSejvAhgNccSRUuIYGTpEO4gbHevmXDV33rJdQrrmbxQEHzVt3qobf+ssfX
+ Djg5XSFi71I2X+culgg23V3kQCDLT/NJ7+iVjW2BJ+COUJ/ffCYP+FH5+wjPPfPatmaP
+ 2feU/g0j8ZOivKK/EQuTQiEgRcuHdknVMV0+JmAMpC8nWzuaGV5phPVbfN68qF+TpjLV
+ FihVs/MuKxndjVnVWvs3zCkMUOPni1mDIFRRVW54/mQm3G8vQX1IOO1/H/uqf8MZp+mG
+ N1v5gDtf/xPCmM3Yt8XkvJCZjCVRInftWpocG7pazaSrkc/QdESiFlGVgZ0WC7fKZsxj Ww== 
+Received: from nam10-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam10lp2102.outbound.protection.outlook.com [104.47.55.102])
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 3n5x0eb2ua-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 17 Jan 2023 14:45:24 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=j2wfFoK/PGEudI+RZzboXb+mI9Wrg4mSvWP4eL2S4PBHlSIAaQoj6185cBn6094ozoDqqpjhvbvx0cJaTotk7QR8G9TRVbc0op4rOo6J72k1Yxufs970mdKNblSL8VcSlcukMIgdy0IygiWGPMHh/vOw3bGoAUqgexqLn91ny9odCF+9uPuxqO6u5RweVjCwCh2LZR/5Lhtn+lCGWrDI2RIOQBW1bbaldxcFriBsdsum9vakkbNcdeFLp8TcYIe/nbQxdC2XMxPU6oO+4frsyeUowz2D1tP1rI5HhkZvQGxXlxsCFB32Wc8iv2f+H4P5jkqbS/6oR4W8Us1oqZGLWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=wCuTcPoNeR7Qjny+ikG7c3PkyPBsrNLnRg9Q6ta3kvU=;
+ b=k5TBa+GcXvbgUQcdwD/uQmLu6m7qeaoDkw9yNdCvn5cb2n/RRp6TWOmzxDZOOvlIkYi028smnidz2MQ0rfX2xOfQ6IjtVNLD/LJeqkQcArYWMl/F6yUNZlbWjWYJp/n7fIjs8EBbrGY1cYwMy5JukPo+padxqlHp6lmtl0oYy3+RWc/mC7JdNUzvXtoZXtddNdcwg2sWxosZ9d4uvlPWQv2nxzLKzzJiob5EI256w2sOdEC6shHr3lLs6jHOWrXB3VjXaoOL+ufoHPqa6q7+LfodIrVkFajsn2lmc7HQRAj3vCMUo1PmsHHbGZA4XRcL0JZ6oOHwSrADxn0dL4+knw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=meta.com; dmarc=pass action=none header.from=meta.com;
+ dkim=pass header.d=meta.com; arc=none
+Received: from SJ0PR15MB4680.namprd15.prod.outlook.com (2603:10b6:a03:37d::9)
+ by SJ0PR15MB4234.namprd15.prod.outlook.com (2603:10b6:a03:2c9::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.23; Tue, 17 Jan
+ 2023 22:45:22 +0000
+Received: from SJ0PR15MB4680.namprd15.prod.outlook.com
+ ([fe80::818f:54b8:f837:9f9c]) by SJ0PR15MB4680.namprd15.prod.outlook.com
+ ([fe80::818f:54b8:f837:9f9c%5]) with mapi id 15.20.5986.023; Tue, 17 Jan 2023
+ 22:45:22 +0000
+Message-ID: <fa222dbf-29cf-219c-95bc-c5c54a87cb79@meta.com>
+Date: Tue, 17 Jan 2023 14:45:20 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH qemu v2 2/3] target/arm/gdbstub: Support reading M system
+ registers from GDB
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <167398464577.10345.18365355650640365165-2@git.sr.ht>
+ <cb9cdb62-5c5a-c7de-9fa7-99f5438af332@linaro.org>
+From: David Reiss <dreiss@meta.com>
+In-Reply-To: <cb9cdb62-5c5a-c7de-9fa7-99f5438af332@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: BYAPR06CA0041.namprd06.prod.outlook.com
+ (2603:10b6:a03:14b::18) To SJ0PR15MB4680.namprd15.prod.outlook.com
+ (2603:10b6:a03:37d::9)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-From: eiakovlev@linux.microsoft.com
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, marcandre.lureau@redhat.com, pbonzini@redhat.com
-Subject: Re: [PATCH 1/2] hw/char/pl011: better handling of FIFO flags on LCR
- reset
-References: <20230106172851.2430-1-eiakovlev@linux.microsoft.com>
- <20230106172851.2430-2-eiakovlev@linux.microsoft.com>
- <CAFEAcA-VkWjSO84dCmoeKaO0PEFydi7Bj2gXhBYDatGpuCuc_w@mail.gmail.com>
- <f5af2eee-e04e-fadd-8bad-b9ec4a2a1998@linux.microsoft.com>
- <CAFEAcA-UuXdF5-akaiu0Nsg1c4T6pnQbpBh2pDK0gpc19+RrGw@mail.gmail.com>
-In-Reply-To: <CAFEAcA-UuXdF5-akaiu0Nsg1c4T6pnQbpBh2pDK0gpc19+RrGw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=eiakovlev@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -198
-X-Spam_score: -19.9
-X-Spam_bar: -------------------
-X-Spam_report: (-19.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, ENV_AND_HDR_SPF_MATCH=-0.5,
- NICE_REPLY_A=-0.097, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ0PR15MB4680:EE_|SJ0PR15MB4234:EE_
+X-MS-Office365-Filtering-Correlation-Id: a80636f1-9994-4446-e197-08daf8dc844e
+X-FB-Source: Internal
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: JnxrtEoURYC8DhEs7N2jpg2LG2XZ+HHKiu4rP9KwLnEwP2cJgogGExhs68rJuwwT+Ly0BOrzAb7wjrJZK3zLbe8xFIQ97YB4fGce35b6ctjX4s42+NqeVtGERJomkBu7Y72pDbxZWSCj8SleBszyIBX+YwNbIO5o6a83QioGZLUBbat6HoBVQKcEjXVrl+vepTJW6+RP4zbN0jY/ugWKuiysUkw7h+XhG1oaq4tLm40gUTm0zMQDwNCm9QZ+JurNwAzfDT63RXfax7iPRR3wxGzfZsRpHESPBe1C9iDlAvsbYobFWX8P+8OQPz8brCodJRHYytob2AKAs2eraKMpjT/wOOSsfOV2O8h7Cze5GPcvMeERvxQNeIvQBkAf16CKNCoFTVltXnLq6oFGsBY9fHbupb42dgPlj0jJTI4tukvI8Hd5VkzvqMz/aaMsm6EUx0knCGHIV08eRQwKuBwglFZQhBpuFkXbY/I50YnHxtygmp/kS+JwLXDceo23dEHxXEtDBVEPNphNerrKFYZCwJYKaKkAEBz1iUyKZxKIRGHw8dApv5f1ZtzkbvXVjuXzF//PDLiEHfcp+xasdhAKwqoAJcHMLEY3RSynjA8779mNbQfdaRnEv9qsempWChgw8TDhBjsilJ/+GJ1cXPLTkoxw2k7+QFi8kSKhuMDbbdcgP+QHG3ox9O2BpYTZZR0O7BUxFj8cfK17Wt+2fnlSHa0IhxWbNCtMs5cIjCErpss=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR15MB4680.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(4636009)(346002)(366004)(39860400002)(376002)(136003)(396003)(451199015)(86362001)(38100700002)(2906002)(4326008)(4744005)(8676002)(5660300002)(8936002)(66556008)(31696002)(66946007)(66476007)(41300700001)(186003)(6512007)(6506007)(2616005)(53546011)(6486002)(316002)(478600001)(31686004)(36756003)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?czNhblFQZzBZaVR1NGhSU3pKMy9MbGEyMHpLV0Y2WG44b3N2blNOdWlDeXd2?=
+ =?utf-8?B?bXdkQ3RnVFBhUWIwNEJzKzNpUnhOU01rUVU0QlM5c3BoSFA0K0VvdE80MXpO?=
+ =?utf-8?B?WFpULyttbkpIMTE4VlYyK3dUZko1R0lpZkZtVFB2QmxnVWNiMUllelFOOXJZ?=
+ =?utf-8?B?eDliZWd1ZzE4ckFDRmc1a2t5Z00va2Z4MXAwZkM3eURTOEhkTFpTUjBzdU9K?=
+ =?utf-8?B?UkVWTlYrUXZpb1g5bThRRndKdnpENFJSdVRRY0RUbE5lVTREVU9GZzQ5dW9R?=
+ =?utf-8?B?M1d3aDYrRzBKSnk0UjhwV2M1OE4rbmJRYmZtODlLN3dxbDFYci9FM0hPcUVY?=
+ =?utf-8?B?WEl3MVJiczBIRm5ZMDlHL2g1aTdCcWFaY25xY0JrMG4wTHFobjVPcVFVK2JI?=
+ =?utf-8?B?MDgvR28zNkdYalVOby9ZdmxYSENnUFBmMTFJOElaSWV2WlpsMEZGbEhGaWZX?=
+ =?utf-8?B?NE1ld0I4SXkvdWF2QnlqaFJJS0s5NnBJam1HVjBPWEN5dlg2ZlZsdTdpSUxU?=
+ =?utf-8?B?ck5DeWREUzc0aVdMaitVTUhXUFY4OS9kREhLRFhVY3FoTXFhSzRFTTdiQ0Ji?=
+ =?utf-8?B?VE5xT1pzYTJreEpMSGJTTXl1M0JNUGJNWFFjczB2Z2RPeHVnT1hkNkJ3WUFl?=
+ =?utf-8?B?KytaVHZIbnl3ckRFeHFLTTNBczVnUzBNaDltRVpLcTMrQmJpMmI4QXpSQTNO?=
+ =?utf-8?B?bFg2S2FVT2RraEcwMWppajRrRmJqSGtaVFJyNmhYSWs1RldTam1EeDZVb2pH?=
+ =?utf-8?B?NDhKbWo1NVNTbElDUWNyTmI1cVJ4dGFoQi9ON1lKREF5V3h5NHhNTUU5THN3?=
+ =?utf-8?B?ZGVwMGlqWUhpVnQ0bnVaV1lrVmF4L2FHSkl4R1I1UkZ1WXlzRDZEODNoc2or?=
+ =?utf-8?B?Wm1RcXBVd3YvVEtxZzR1ZmN5QTZZc1pxOUN5eXhRVW5nTFl5VnpHbDdZcE9s?=
+ =?utf-8?B?enN0YzJYQzJwRkErdXpxeHNTaXhYUU5INUMzcGh2VU43UUZxRko0MnlveXd4?=
+ =?utf-8?B?V3RISU1PVkxyMi9ocmQyWVV4YjVMY3JwUXQzMEJpalZQVDN6ellaYXZzMFlN?=
+ =?utf-8?B?MW1Wc2RrYjJORFVESHFaQitkUXZmaFYxa1hEeFArNEJsQTdXYjZNdkFRM2ta?=
+ =?utf-8?B?eUlaTnJPVnFhSDBrT29xbm1zcnRWd0YxYXloTzZraGUrUU1keVVOa3JMZzFQ?=
+ =?utf-8?B?UE1RZmVmYmhHbkE4TXVsNFhEKzBlLzZLYmNOTnBqbTgvVk1nU1FEYmxYeTZ4?=
+ =?utf-8?B?bUFVVlZSSzNhVWlqNXZaRnAxbi9wRGFOOFl4bXRKMWpwY0lnVmE4MzVHQzgx?=
+ =?utf-8?B?MXBaZnpFdXRkcUd2QUFoMEFyTTcvUzNkcnJqNWZnZHNHMUtFdmt4dWxYMmtZ?=
+ =?utf-8?B?cGhZMzBYVzlRU2dQRkJKRThBbGM1dEpXTXRKMDkyTTkwV3MyMElxNHJieHNt?=
+ =?utf-8?B?akxZbm9KZ3NPRlVHNnNFMlFsdWxHTXNKc1lQeWR0bk5OSmh4N2xUOENBUGRa?=
+ =?utf-8?B?VTV6S3FYWU9wdkNrWnE0RWRycGJuKzFEb2hTVmZtQVlMajNXeFAxa2Vidm9J?=
+ =?utf-8?B?Q0FiZlJuVjRMT0RWWlhtOEJoSHduY3ZjaURJUy9JTEx6VFFabzk4NFNYM0Jz?=
+ =?utf-8?B?QjVmbGNNWFBRZkszKzRmNFo5U1pHVkl1aEdCU25jemZvbTJBVGoyM1MzeHlj?=
+ =?utf-8?B?NndlSDIwWWJoaWthNDJZdVZ3L201SHEyQ3p0Z2V2SElPRmJMNlBjSEJ0Z291?=
+ =?utf-8?B?cEV6NTlDQUlUL0swRllmcnRickRUaEg5N1JXRCtkcHBYMUlqOTVmbjdjNlVN?=
+ =?utf-8?B?eFF6VE5MdzZTdVJzcXhVRzduYkdjRGtibW52UmZaaGdJYXpRV1FEQmpwWUUw?=
+ =?utf-8?B?L25SdS9JS1NpTlhKNjNGYnUyaUd5ZmNFUy95c3ZQQUJEN1pDUyszcVJXRHhW?=
+ =?utf-8?B?MjJwcTlqRXg2dzRmM3JNdS81bVZuOXhVRUlkdGlZS0hjUERaQitka1lVVElF?=
+ =?utf-8?B?VTB3cGFwK1Fhay9KYnJXM0FvVW9iTFd1Q0tvS082MnlKWkEvSVUxZFFqVW44?=
+ =?utf-8?B?V3J5WHFJdWZJcHEwdHlGZ3QxM1l0dmRLL2lCcnlPNVpNUkxjMXh2UXlwNmxT?=
+ =?utf-8?B?YWJUWU9qbXRxZ3ZrZUZwamZyandvampzcnhzaUFOcWV5eWFmQUliajJmODFk?=
+ =?utf-8?B?M0E9PQ==?=
+X-OriginatorOrg: meta.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a80636f1-9994-4446-e197-08daf8dc844e
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR15MB4680.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jan 2023 22:45:22.4476 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 9L2D9L0NyRk8qJBrogWqPi1xHmrvYR8FfJXTJWDQr/xPJhBHMW/B4nPgguD4IJva
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR15MB4234
+X-Proofpoint-GUID: PIPyqwHnSrFVw3VZzOoBsXEYhrtc8HEW
+X-Proofpoint-ORIG-GUID: PIPyqwHnSrFVw3VZzOoBsXEYhrtc8HEW
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.923,Hydra:6.0.562,FMLib:17.11.122.1
+ definitions=2023-01-17_10,2023-01-17_01,2022-06-22_01
+Received-SPF: pass client-ip=67.231.145.42;
+ envelope-from=prvs=438116b86b=dreiss@meta.com; helo=mx0a-00082601.pphosted.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.097,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,63 +196,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wmOnayNT7Mzx
+X-TUID: R0KgnO7s19h+
 
 
 
-On 1/17/23 5:02 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On Tue, 17 Jan 2023 at 15:54, Evgeny Iakovlev
-> <eiakovlev@linux.microsoft.com> wrote:
-> >
-> >
-> > On 1/17/2023 16:24, Peter Maydell wrote:
-> >> On Fri, 6 Jan 2023 at 17:28, Evgeny Iakovlev
-> >> <eiakovlev@linux.microsoft.com> wrote:
-> >>> Current FIFO handling code does not reset RXFE/RXFF flags when guest
-> >>> resets FIFO by writing to UARTLCR register, although internal FIFO state
-> >>> is reset to 0 read count. Actual flag update will happen only on next
-> >>> read or write to UART. As a result of that any guest that expects RXFE
-> >>> flag to be set (and RXFF to be cleared) after resetting FIFO will just
-> >>> hang.
-> >>>
-> >>> Correctly reset FIFO flags on FIFO reset. Also, clean up some FIFO
-> >>> depth handling code based on current FIFO mode.
-> >> This patch is doing multiple things at once ("also" in a
-> >> commit message is often a sign of that) and I think it
-> >> would be helpful to split it. There are three things here:
-> >>    * refactorings which aren't making any real code change
-> >>      (eg calling pl011_get_fifo_depth() instead of doing the
-> >>      "if LCR bit set then 16 else 1" inline)
-> >
-> >
-> > Yeah, tbh i also though i should do it..
-> >
-> >
-> >>    * the fix to the actual bug
-> >>    * changes to the handling of the FIFO which should in theory
-> >>      not be visible to the guest (I think it now when the FIFO
-> >>      is disabled always puts the incoming character in read_fifo[0],
-> >>      whereas previously it would allow read_pos to increment all
-> >>      the way around the FIFO even though we only keep one character
-> >>      at a time).
-> >
-> >
-> > That last part i don't understand. If by changes to the FIFO you are
-> > referring to the flags handling, then it will be visible to the guest by
-> > design, since that's what I'm fixing. Could you maybe explain that one
-> > again? :)
+On 1/17/23 1:40 PM, Richard Henderson wrote:
+>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> index bf2bce046d..fdbb0d9107 100644
+>> --- a/target/arm/cpu.h
+>> +++ b/target/arm/cpu.h
+>> @@ -856,6 +856,7 @@ struct ArchCPU {
+>>         DynamicGDBXMLInfo dyn_sysreg_xml;
+>>       DynamicGDBXMLInfo dyn_svereg_xml;
+>> +    DynamicGDBXMLInfo dyn_m_systemreg_xml;
 > 
-> I meant the bit where the existing code for the FIFO-disabled
-> case puts incoming characters in s->read_fifo[s->read_pos] and
-> reads from UARTDR always increment s->read_pos; whereas the
-> changed code always puts characters in s->read_fifo[0] and
-> avoids incrementing read_pos. I think your version is more
-> sensible (and also matches what the TRM claims the hardware
-> is doing), although the guest-visible behaviour doesn't change.
+> You don't need a new variable here, because a given cpu cannot be both a-profile and m-profile -- dyn_sysreg_xml can hold the xml for the current set of system registers.
 
-I see, thanks. I tried separating this particular piece into its own commit, but i just feel like it makes the part that's left pointless, because pl011_get_fifo_depth replaces mostly just those 2 occurences anyway.. I've added a paragraph to a commit message to document a functional change. Let me know if that's not good enough. I've sent out a v2 with the rest of comments addressed + a reset method for PL011.
+Maybe I'm missing something?  It looks like arm_cpu_register_gdb_regs_for_features
+unconditionally calls
 
-> 
-> thanks
-> -- PMM
-> 
+gdb_register_coprocessor(..., arm_gen_dynamic_sysreg_xml(...), ...);
+
+which would cause a collision.

@@ -1,144 +1,151 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2488525ejc;
-        Tue, 17 Jan 2023 07:49:11 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvYQBbM/VILzYs8j9KJuTaffqdKOsTfAvFADe7ZOedhX9hdFHy7zhd1wkMQcWfFWWn5VGUz
-X-Received: by 2002:a05:6102:c04:b0:3ca:6d6b:bcaf with SMTP id x4-20020a0561020c0400b003ca6d6bbcafmr1530633vss.29.1673970550872;
-        Tue, 17 Jan 2023 07:49:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673970550; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2448846ejc;
+        Tue, 17 Jan 2023 07:04:40 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsjwxJNSUVoTTDTdyRdlslTbUct1Yu/pl2MfUE66pWVLGiGDD5Xl0uWjHWEWJz75aFY9f4k
+X-Received: by 2002:a0c:fac5:0:b0:534:dfcc:f423 with SMTP id p5-20020a0cfac5000000b00534dfccf423mr4838582qvo.48.1673967879952;
+        Tue, 17 Jan 2023 07:04:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673967879; cv=none;
         d=google.com; s=arc-20160816;
-        b=iDdRwWqp0I0PXt4wq8Ye6AuwIWeRhVKK2KEF6Y6lgMUJ4W4vapovfDhkz8Sy+L5TnY
-         uAI+BT2GNMYcRa87YzgTmXXBzt1eSkiP+g9AL4qRPlxL6UiH8k9a8sXX8ob6F3f+eiZg
-         5zAyt0MFNBzfjy74KSyE/5b90KPLmjDvXkIepZG9AY3SdqZ3FKBDv+Nz/9PWvI8QXAQZ
-         xTZDusJmj7mCnEHCiW0sanhLomR9A+1mQmXeANNepSdSt7tHGWC2G1GV6gcotanW3Ape
-         SJ+GQD8n/XX36xz2r6qf5KAyzCSH6GVBxrL7L9gGWSyRy6ZIXr8x2wRf5UnZjGRqt9r5
-         qJcw==
+        b=esSOF6mHw9JiaNFcjBx8oGu4QjdndX46013KjEHwRzdeExNIIaLPdoxB94dYGGiVlM
+         Wcidpdbi+uvfYXgB5nZCtf3FoEq7WDnxEfMmeEikvzq/qtQ/Mnk4NsMfVimYkcZC79t/
+         V6yW27buP6UbLb2CCxkBMyFpeD79OEIzXpAxpEs+drWnucH2OlTwAA4lC3XTMt7oZLbu
+         lDFiYntv10FMnlMuYonxYJtb5FITiZP2nFeAZRW555ZxlpkMveNhdbeqcl9MuLSEV7vI
+         SHV268ZvEa/JjKeYgYxV7qCazVB2oO3JyhXwNdY9q/tiqRs4PaMJVWicN1D0NfoxlMKo
+         i/2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Hj4Q2euY+utrkP+JXzaQUcU+iG3h00AI27hYYVS7I70=;
-        b=zvqCV1akuFrQqLUqv5l1N7JATWkJoSRN752+NWJwce1uY5iDl5bFVjwSF4aAR7Kws1
-         U4X2pWwzP5f5aiLB8UBGM95YVInL7xFI72yrrerzQvoG6CAcPbr8UrPYSbLx+L6nX+iW
-         /gzJ8gMgQtDmKQ5oFVKOZhswZ4CoNhGVPAAzJJ61o6ha0sP+SrBML4oUUKnzgG800DDu
-         /S/xYIxv0Cp0rg2kdoqFmzF1xBguWjM3rTv17ZGaef8RDORI34pnfOxC1Ba1j12gWjRy
-         xEQH93we3mgAOw/EeFZ7XhZRWZO72vO3iURwyKqHywqaWUphjqpOIOXDtqaoop+feXRd
-         AkPA==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=6+WWXUG+FtOsFgttNAevqrhh9iBa3N55JRLaBzhwZOw=;
+        b=CVsCFvwFYgP0TA/R2E9ePyXiWmhIja35S5qsa925KrOdY/1F0n73dalBcSc9zm9nWI
+         yYmi9zoZx4l/ywqYeTe+5OGWgEv2bcUhlCIfFmGPbD5xJz6InsNudqLsEnr3yF3IypQj
+         yJQOC17GoN2ADDPORemtyY/pfMksuaRYde8e68k6gV3oZEmjjIrzPexzALxXRudpxPq8
+         N1R1Lv7r6Ib78qbfTs85zNoLKoQN8trsOQ81tcbxXkF1bEyyIwIPJOz+kwMpC+SMVjg4
+         wh8u1rJCx4T40VNEM4uMOYBX10DpV381Jxhfy1Y97SRvBDXbesBIiwqcPkO3udhOYm1y
+         NA7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MyKwY+Uo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=bzULKc51;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k13-20020a05620a414d00b006fec356aa37si20481812qko.508.2023.01.17.07.49.10
+        by mx.google.com with ESMTPS id jm11-20020ad45ecb000000b00534f2e547b7si3782752qvb.476.2023.01.17.07.04.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jan 2023 07:49:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Jan 2023 07:04:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MyKwY+Uo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=bzULKc51;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pHoCw-0004xx-Q0; Tue, 17 Jan 2023 10:49:06 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pHnVb-00060V-Ip; Tue, 17 Jan 2023 10:04:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pHoCp-0004uq-4r
- for qemu-devel@nongnu.org; Tue, 17 Jan 2023 10:48:59 -0500
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pHoCn-0008B9-Dv
- for qemu-devel@nongnu.org; Tue, 17 Jan 2023 10:48:58 -0500
-Received: by mail-pg1-x52c.google.com with SMTP id 7so22281403pga.1
- for <qemu-devel@nongnu.org>; Tue, 17 Jan 2023 07:48:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Hj4Q2euY+utrkP+JXzaQUcU+iG3h00AI27hYYVS7I70=;
- b=MyKwY+UonIdAFQPbKvcE7UBjAU8YkrQoLz9xbEyAtgyK36ZsSqVZCAdT4BJ+vCgB4a
- x/fzq9gHGvhAStcY9E7AXU6IHvGWdgPNuBQfO94skP7+BL5h/1+qkSq5+8HyI755oYdO
- UH9LVtlQrpI1ekEDV04gsPj0LuSny+5kOOHgKep8Ifj/1jJCQdOr5jvG+4eYiqQQTFX4
- nO2p4zXVfqE+fx/XydnnsWr0UvOkMR2eHyyTwv8O1iKFR++YdKJ6kVoOgagBKKUGt+WN
- aPqo60wzo84r/EyIUjv/ILsxWTdxsUOg3xfN5xSDLYzr7EOGXVdHC90r9CqqmBO62SOL
- QJKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Hj4Q2euY+utrkP+JXzaQUcU+iG3h00AI27hYYVS7I70=;
- b=GZWAraPFNHmr6jXFWyaxUrb9Ai1SyZ3UuFcaj0vjETXOthvbaDZdV8eadxZGakz4qz
- 20dWXycT+W4Av0OkpTMGynTcyMrPWvOpuigoUg+PuLzawlROSyj0ISttw73stk6kkK6z
- kFTFaKuIz+/b/TxpscRNxs4ZeqG5Sagm2+DxdvrSzBjmNhdP1GvJgH4XOqzpwOxN2w+E
- pnRzLQZRccBw1+e5UppbE/sUDCM0KxPK2kBe3PbCAo1UdE23dexsJrgZW+g/h+8ZejMK
- OY60DbCwOLIf5RfTY3gFe/8388NDviY8rl5NfeGG7lPz9hzJyggbMadCWrjf9RYQ0Uoo
- 7wTA==
-X-Gm-Message-State: AFqh2krGZG72mSAs3bDMHue5xZgoQp/00pDeNLar4SJPP22dwfSEWChf
- lg7XHFqL5RZuBHshscxsUlrhJA==
-X-Received: by 2002:aa7:8515:0:b0:58d:aae3:bcc1 with SMTP id
- v21-20020aa78515000000b0058daae3bcc1mr2778058pfn.5.1673970535997; 
- Tue, 17 Jan 2023 07:48:55 -0800 (PST)
-Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com.
- [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
- u83-20020a627956000000b0058cda506a4fsm5867459pfc.145.2023.01.17.07.48.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Jan 2023 07:48:55 -0800 (PST)
-Message-ID: <16c2871a-9e2a-5113-a121-5373d6e4bb71@linaro.org>
-Date: Tue, 17 Jan 2023 05:48:52 -1000
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2 1/2] target/arm: implement DBGCLAIM registers
-Content-Language: en-US
-To: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org
+ (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
+ id 1pHnVY-0005zb-DK; Tue, 17 Jan 2023 10:04:16 -0500
+Received: from linux.microsoft.com ([13.77.154.182])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <eiakovlev@linux.microsoft.com>)
+ id 1pHnVW-0000Wl-UU; Tue, 17 Jan 2023 10:04:16 -0500
+Received: from localhost.localdomain (unknown [77.64.253.186])
+ by linux.microsoft.com (Postfix) with ESMTPSA id 5A31A20DFE9C;
+ Tue, 17 Jan 2023 07:04:12 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 5A31A20DFE9C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1673967853;
+ bh=6+WWXUG+FtOsFgttNAevqrhh9iBa3N55JRLaBzhwZOw=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=bzULKc51lw2X3jXsiuNIg3XhXZ1tVlvoDPMh2E8CIUXetR3B7oMYzUTDrdo8EDnq1
+ kOKzJ6sgaR2ZwluOG4O0UlfPApDiQ9Lwa+hTTho2y2PjaeRWLHmwkhY48msMpq8m0E
+ sCUHM7uAYYsnqDdRHTL38rUUnES2lKFbTdUNDR0Q=
+From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	peter.maydell@linaro.org
+Subject: [PATCH v2 2/2] target/arm: provide stubs for more external debug
+ registers
+Date: Tue, 17 Jan 2023 16:04:05 +0100
+Message-Id: <20230117150405.2940-3-eiakovlev@linux.microsoft.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230117150405.2940-1-eiakovlev@linux.microsoft.com>
 References: <20230117150405.2940-1-eiakovlev@linux.microsoft.com>
- <20230117150405.2940-2-eiakovlev@linux.microsoft.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230117150405.2940-2-eiakovlev@linux.microsoft.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.097,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=eiakovlev@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -197
+X-Spam_score: -19.8
+X-Spam_bar: -------------------
+X-Spam_report: (-19.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, ENV_AND_HDR_SPF_MATCH=-0.5,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZypgiOoDNh+p
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bJtM7lC6XuUG
 
-On 1/17/23 05:04, Evgeny Iakovlev wrote:
-> +    { .name = "DBGCLAIMCLR_EL1", .state = ARM_CP_STATE_BOTH,
-> +      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 7, .crm = 9, .opc2 = 6,
-> +      .access = PL1_RW, .accessfn = access_tda,
-> +      .writefn = dbgclaimclr_write, .raw_writefn = dbgclaimclr_raw_write,
-> +      .fieldoffset = offsetof(CPUARMState, cp15.dbgclaim) },
+Qemu doesn't implement Debug Communication Channel, as well as the rest
+of external debug interface. However, Microsoft Hyper-V tries to access
+some of these registers during an EL2 context switch.
 
-You didn't need a new function, just .raw_writefn = raw_write
-(which then uses .fieldoffset to dtrt).
+Since there is no architectural way to not advertise support for external
+debug, provide RAZ/WI stubs for OSDTRRX_EL1, OSDTRTX_EL1 and OSECCR_EL1
+registers in the same way the rest of external debug is currently done.
 
-Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/debug_helper.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 6c34c6e27d..bc213ac91e 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -684,6 +684,27 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
+       .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 1, .opc2 = 0,
+       .access = PL0_R, .accessfn = access_tda,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
++    /*
++     * OSDTRRX_EL1/OSDTRTX_EL1 are used for save and restore of DBGDTRRX_EL0.
++     * It is a component of the Debug Communications Channel, which is not implemented.
++     */
++    { .name = "OSDTRRX_EL1", .state = ARM_CP_STATE_BOTH, .cp = 14,
++      .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 0, .opc2 = 2,
++      .access = PL1_RW, .accessfn = access_tda,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "OSDTRTX_EL1", .state = ARM_CP_STATE_BOTH, .cp = 14,
++      .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 2,
++      .access = PL1_RW, .accessfn = access_tda,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
++    /*
++     * OSECCR_EL1 provides a mechanism for an operating system
++     * to access the contents of EDECCR. EDECCR is not implemented though,
++     * as is the rest of external device mechanism.
++     */
++    { .name = "OSECCR_EL1", .state = ARM_CP_STATE_BOTH, .cp = 14,
++      .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 2,
++      .access = PL1_RW, .accessfn = access_tda,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
+     /*
+      * DBGDSCRint[15,12,5:2] map to MDSCR_EL1[15,12,5:2].  Map all bits as
+      * it is unlikely a guest will care.
+-- 
+2.34.1
 
-r~

@@ -1,190 +1,153 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2632869ejc;
-        Tue, 17 Jan 2023 10:34:38 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvEWNDMOrtTKJ5B+TBV+/CHCkGUCO2DsYNh3An/72+RdSy+o39xWRaVSXIPvqcDP6UVL1jZ
-X-Received: by 2002:a05:6214:5c84:b0:534:b991:26ce with SMTP id lj4-20020a0562145c8400b00534b99126cemr5659724qvb.38.1673980478549;
-        Tue, 17 Jan 2023 10:34:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673980478; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2655793ejc;
+        Tue, 17 Jan 2023 10:55:24 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvRDMAzAuHrIp6YyBpFhlh/5jkiIP70cLPcvboHy7WnUqDUBwigOlY6IGaIc0v8fwL54ixZ
+X-Received: by 2002:a05:600c:3b83:b0:3d9:f758:e280 with SMTP id n3-20020a05600c3b8300b003d9f758e280mr4142062wms.24.1673981724817;
+        Tue, 17 Jan 2023 10:55:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673981724; cv=none;
         d=google.com; s=arc-20160816;
-        b=L14e2NmBPgGTXce0Ty8L8KG5tjELPFNgjaaYCqL5wXCLf3Y8zB3NTrH2ZX8hHEjGuB
-         zNm2GF1U1GcWoPRh38h+Ab6QXlcHDAdwy8EoW31xybfYzChPz1+LXPm0jlqW9j1r1O5h
-         luJGsNmBg309cy8qCPPM3c9/2t2BBWxLp6njUgs8ph3DbrX4XFfUtV+JYE/fgTcYiTjj
-         zqkd/oaZ2nMgta6Xo+aj9Hm6c/GsWkSIV6mxQ/ZvWNB0MW/DVuQPqFiGumD4Jzp9zHi3
-         ykl1DzRs3JrAH69XLi6a2D4kfPzzCOt29TLAbQOwZARODG6Yq0HDo5Jb3XsPGwn4d9CF
-         XdjQ==
+        b=Kwij8d7V2+irl32Do1/YXEUGNP7P+Fnt8GD4RAA5RIcR3vvbjuqAIY9ixOsadhKFmD
+         lfeVmDmvy4p7aquM434kHJWkZ6KJ+Q0GUsdq+LS5LmXTtwB3Ul8xB/5/kbzY46y92HrK
+         3GYV4grFzqIL9+gyoaCdrpRu5cHeBkrwVQDr37+65r0ajNqe7EByQgU7rc5UGqCkL3OZ
+         IEG2aUzTVjcWxdnrbnw2iQ+wMQ6dYgw0NaFx0wvIteEUrDxE1tqRzaQdbZ9eO8uZZHhT
+         tLrBjYlqBkjsV2S0eswBWPg9NxR2G0TUKHhtpBAvK0XslTHQ0tTthU546I5csEreWJLI
+         mVbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=l4Hh/ODTUo1ZSOLfpCsXpdmf8t/R1i5uvfMX7S3UTI4=;
-        b=MXdoDMdLAG9UEBPV6Cd17DP2+bbMYTJQvJUKpik9kEYWjBkH6D7WSAd5/StLGHQ28Z
-         6TfS3sTiVTLjGaj64NG2v9gefzUtjUBz+ogzT+wv9eV0PaqwbNMcDmB86DIvg8875SjW
-         8gVfXW9t5o7z4zFUejGAHMh+VOyu+swjBDm6ArGQvQ9F8dggrItgDY0TN+Y460uCDtAC
-         dTwA5p9YP4n65RJhRYmqriCACJXrJAm8m4HwGJY1iFq4MTNQ9RhZIkrkFhw6GDiiz0CW
-         0qB1XhWKRtuJiz1EG4joVbtObNOEroDF3q79MBu2f/leyFvsVS4qduNr2eeknSnHIaod
-         Aosw==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=dZv+jTHc+XmPDQ3MR441gXG/YLreUAMyp4/Uz9nuK/I=;
+        b=yAjk0yRevSvI5ogJeGK++sxYdzWGEWb1QcczM88g0sBFhAlAb642vCtYYtf4RcHfTo
+         i/Qdsf1uXrZ/YGWiu2Ehr725uzofyZpOQntft8MTwAIQuSXv6CXpO4er9387XdDYPQ5F
+         CAsguanWAPFyqKvqlun202oqLkC8y5pRuwEZs43Eq6wZoHkFisCvce8qesAtcpPLZZnT
+         pCmTgKzTJL6gynmIzdNU2KXPBXzHKdLjGQEAC1gWjYCac5XB6+MuVTmuHCIUB/j0byj1
+         I+fABZm06Zxc1v9oAUgHYr9i6dI2RI4l477BWSvphJVXySwpxAXyMYBGtI82SclKbnTb
+         elbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=bOgfYb4y;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=L2fRcfBl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p10-20020a05621421ea00b00534e3dca3b8si4547327qvj.398.2023.01.17.10.34.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jan 2023 10:34:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=FArfxiRc;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=FGFsL8iq;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id w10-20020a05600c474a00b003d9f86da484si21444732wmo.97.2023.01.17.10.55.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Jan 2023 10:55:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=bOgfYb4y;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=L2fRcfBl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHqn4-000311-TV; Tue, 17 Jan 2023 13:34:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pHqmo-0002wY-C2; Tue, 17 Jan 2023 13:34:30 -0500
-Received: from out3-smtp.messagingengine.com ([66.111.4.27])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pHqmm-0007iR-M9; Tue, 17 Jan 2023 13:34:17 -0500
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailout.nyi.internal (Postfix) with ESMTP id D0AB65C0132;
- Tue, 17 Jan 2023 13:34:15 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute6.internal (MEProxy); Tue, 17 Jan 2023 13:34:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1673980455; x=
- 1674066855; bh=l4Hh/ODTUo1ZSOLfpCsXpdmf8t/R1i5uvfMX7S3UTI4=; b=b
- OgfYb4y1em8B5sE5V0hXP4cMVRrDxQjiBnGuyYzivPr4DAgZZPnkcQOc9eSreOAz
- AYuxPJ0IAOCqVjXKL7RkKS0j6iq28252vb1RQSjvepgrq6+1ZumV+0Xb5eF8lxUH
- DU+IIUpQebTNDUtBBL9SKA892SYhdbf2P8FLdueYIcawgrEsGZWkkcoLVepAtH80
- /DCTtZHBtKKWQxmpXECEmjsuBfUyf76g0tOAj2v602nZWeBJkQ5hb7rLDIYVhYaN
- /gAuTQXwPmD1IHKm4u708aIOfDrWpvS+/HWYMLMvvtg1NAnNBEda3fKDeqqKa4q6
- du6rfLOapdSebQjnqvY3A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1673980455; x=
- 1674066855; bh=l4Hh/ODTUo1ZSOLfpCsXpdmf8t/R1i5uvfMX7S3UTI4=; b=L
- 2fRcfBl9GCALYvXnB9WRkFnU+0WwSDQZLut9Zm1fNbB4/DqEf4BN+XZ5AZah5ZfV
- pAa3/iIyzefyqCtWU0DPowb+NsyuZwGnZxbY+8sEbT89l9wg6Y6ceCTFq1Mjq9J3
- O+k0KIp+nTyqjLibIEknnEn8/FCV9B5mCguRhVZHDaErcPNkrTXz4IL9xYY6OWq+
- D72311OOQWtBYguvDiNbW6ZP0nsTTNSOrhAVbtUQf5uD9KC/7Iqjvx0kKML0w/hx
- xcJdSzSs+zEvbhn2zjQSVL29p62AHLBS1XnJ4Kmn1jUDZ55eDHwlMcMhAr0G6smH
- D30/n9+kltMPyvHDkgHuQ==
-X-ME-Sender: <xms:J-rGYxr6Z_L7U4mAOEX6Mmg0j30rlzGvLW_3EdPhqxwmnb6kvLx6cA>
- <xme:J-rGYzr15gTysBHUREgIqqqvbE3y3vXnhNXXlSxj5WFGDjcoiCnpobpvSC50EZwye
- Ii-AjXJ-_s_iZleiPs>
-X-ME-Received: <xmr:J-rGY-PdgOt4-qVenCMlnVNXt7susd2xfqyerW917LJKOTrdXYE_5T9hT83_>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtiedguddugecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpeffhffvvefukfhfgggtugfgjgesthekredttddtudenucfhrhhomheprfgv
- thgvrhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrf
- grthhtvghrnhephfegffevudefveetgeekteeijefhhfduueejvdegvdehffehjeevtefh
- hffffeeunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
- epphgvthgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:J-rGY87XX7lpKla0VTyKqRKwtWnBNUQdLH8KvYtH5Ea2XiIGIOFoew>
- <xmx:J-rGYw673dt91CvFtkxIKeLFvBRLZDvoHviJoiW1DyQOivJ8Y6K6kw>
- <xmx:J-rGY0jVRelkbTXTDu8Cusxy5UEsGViBwCvfnVxbAodnHAIBE74Oow>
- <xmx:J-rGY_ZBQN26YRNK0sBZqn3bYXPH_MC_y_MstkwubcoMQVbKMOeDhA>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 17 Jan 2023 13:34:14 -0500 (EST)
-Date: Tue, 17 Jan 2023 10:34:12 -0800
-From: Peter Delevoryas <peter@pjd.dev>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- hskinnemoen@google.com, kfting@nuvoton.com, qemu-arm@nongnu.org,
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=FArfxiRc;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=FGFsL8iq;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 256B11FF3D;
+	Tue, 17 Jan 2023 18:55:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1673981724; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dZv+jTHc+XmPDQ3MR441gXG/YLreUAMyp4/Uz9nuK/I=;
+	b=FArfxiRcCP2TEC7co3pL1n9jvAjmZ9G1G68/OVMq4kNJduHxeHXIe/WAz6cMwsHkxymTGT
+	Fbzjw2usV/KsZ+LIRGm3x1qWe6+cgH3bVjk6Hr1dnPbuqE6QF6ovy6I6j2vFDguJdy1KLs
+	lSj6BUQAVuB6dW7KDKdU4gdQK/tOnyw=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1673981724;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dZv+jTHc+XmPDQ3MR441gXG/YLreUAMyp4/Uz9nuK/I=;
+	b=FGFsL8iqR7Gy0WR+3SlQuf1CR+NyVvvCzfs9sTOxUXLfKwCxHDpu2cmQ1xhPxbEWjlDzzV
+	Xtfe2LkSUHwvycDA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id A4C251390C;
+	Tue, 17 Jan 2023 18:55:23 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id 8l+BGxvvxmOoNwAAMHmgww
+	(envelope-from <farosas@suse.de>); Tue, 17 Jan 2023 18:55:23 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Subject: Re: [PATCH v2 4/5] hw/arm/aspeed: Add aspeed_eeprom.c
-Message-ID: <Y8bqJCJqsdkD+q71@pdel-mbp>
-References: <20230116235604.55099-1-peter@pjd.dev>
- <20230116235604.55099-5-peter@pjd.dev>
- <d494fe87-d083-cc64-867b-186852a120d7@kaod.org>
- <ca4d0954-4d45-ea42-e1c1-efae62e30b1c@linaro.org>
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Richard
+ Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
+ Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>
+Subject: Re: [RFC PATCH v3 10/28] target/arm: move helpers to tcg/
+In-Reply-To: <7d47f4df-1a14-d448-f8df-9c31dc2ee371@linaro.org>
+References: <20230113140419.4013-1-farosas@suse.de>
+ <20230113140419.4013-11-farosas@suse.de>
+ <7d47f4df-1a14-d448-f8df-9c31dc2ee371@linaro.org>
+Date: Tue, 17 Jan 2023 15:55:21 -0300
+Message-ID: <87h6wp0z52.fsf@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ca4d0954-4d45-ea42-e1c1-efae62e30b1c@linaro.org>
-Received-SPF: pass client-ip=66.111.4.27; envelope-from=peter@pjd.dev;
- helo=out3-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e6IBae97UcX1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: rLbkDKxWLKit
 
-On Tue, Jan 17, 2023 at 09:08:57AM +0100, Philippe Mathieu-Daudé wrote:
-> On 17/1/23 08:39, Cédric Le Goater wrote:
-> > On 1/17/23 00:56, Peter Delevoryas wrote:
-> > > - Create aspeed_eeprom.c and aspeed_eeprom.h
-> > > - Include aspeed_eeprom.c in CONFIG_ASPEED meson source files
-> > > - Include aspeed_eeprom.h in aspeed.c
-> > > - Add fby35_bmc_fruid data
-> > > - Use new at24c_eeprom_init_rom helper to initialize BMC FRUID
-> > > EEPROM with data
-> > >    from aspeed_eeprom.c
-> [...]
-> 
-> > > diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
-> > > new file mode 100644
-> > > index 000000000000..89860e37d007
-> > > --- /dev/null
-> > > +++ b/hw/arm/aspeed_eeprom.h
-> > > @@ -0,0 +1,11 @@
-> > > +/* Copyright (c) Meta Platforms, Inc. and affiliates. */
-> 
-> Missing license.
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-+1, will fix
+> On 13/1/23 15:04, Fabiano Rosas wrote:
+>> From: Claudio Fontana <cfontana@suse.de>
+>>=20
+>> Signed-off-by: Claudio Fontana <cfontana@suse.de>
+>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>
+>> ---
+>>   target/arm/meson.build               | 16 ++--------------
+>>   target/arm/tcg-stubs.c               | 23 +++++++++++++++++++++++
+>>   target/arm/{ =3D> tcg}/crypto_helper.c |  0
+>>   target/arm/{ =3D> tcg}/debug_helper.c  |  0
+>>   target/arm/{ =3D> tcg}/helper-a64.c    |  0
+>>   target/arm/{ =3D> tcg}/iwmmxt_helper.c |  0
+>>   target/arm/{ =3D> tcg}/m_helper.c      |  0
+>>   target/arm/tcg/meson.build           | 14 ++++++++++++++
+>>   target/arm/{ =3D> tcg}/mte_helper.c    |  0
+>>   target/arm/{ =3D> tcg}/mve_helper.c    |  0
+>>   target/arm/{ =3D> tcg}/neon_helper.c   |  0
+>>   target/arm/{ =3D> tcg}/op_helper.c     |  0
+>>   target/arm/{ =3D> tcg}/pauth_helper.c  |  0
+>>   target/arm/{ =3D> tcg}/sme_helper.c    |  0
+>>   target/arm/{ =3D> tcg}/sve_helper.c    |  0
+>>   target/arm/{ =3D> tcg}/tlb_helper.c    |  0
+>>   target/arm/{ =3D> tcg}/vec_helper.c    |  0
+>>   target/arm/{ =3D> tcg}/vec_internal.h  |  0
+>>   18 files changed, 39 insertions(+), 14 deletions(-)
+>>   create mode 100644 target/arm/tcg-stubs.c
+>>   rename target/arm/{ =3D> tcg}/crypto_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/debug_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/helper-a64.c (100%)
+>>   rename target/arm/{ =3D> tcg}/iwmmxt_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/m_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/mte_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/mve_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/neon_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/op_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/pauth_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/sme_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/sve_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/tlb_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/vec_helper.c (100%)
+>>   rename target/arm/{ =3D> tcg}/vec_internal.h (100%)
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>
+>> +void raise_exception_ra(CPUARMState *env, uint32_t excp, uint32_t syndr=
+ome,
+>> +                        uint32_t target_el, uintptr_t ra)
+>> +{
+>> +    g_assert_not_reached();
+>> +}
+>
+> Do you have a plan to restrict the calls to raise_exception_ra() to TCG?
 
-> 
-> > > +#ifndef ASPEED_EEPROM_H
-> > > +#define ASPEED_EEPROM_H
-> > > +
-> > > +#include "qemu/osdep.h"
-> > > +
-> > > +extern const uint8_t fby35_bmc_fruid[];
-> > 
-> > 
-> > may be define the array with an explicit size to avoid the size variable ?
-> > I don't see any good solution.
->  /* Return rom_size and set rombufptr, or return 0 */
->  size_t aspeed_get_default_rom_content(const char *machine_typename,
->                                        const void **rombufptr);
-> 
-> ?
-
-
-Hmmm I don't think this would work, cause actually there are more FRUID
-EEPROM's than just this one. I only added this one in this commit, but there's
-also FRUID EEPROM's from the network card and baseboard. I'll include those 2
-EEPROM's in the next version to illustrate.
+Not yet, looks like moving the sdiv and udiv helpers which call
+handle_possible_div0_trap would be enough.

@@ -1,105 +1,106 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2285940ejc;
-        Tue, 17 Jan 2023 03:35:55 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs+xTXP9OvUWlu/YSF++B0uqtPKfI00rdaQmt3qYXrZNQdWSZRglbvTGmHEOj6XaZTwzzWv
-X-Received: by 2002:ac8:4a03:0:b0:3b6:3c95:7352 with SMTP id x3-20020ac84a03000000b003b63c957352mr2780010qtq.13.1673955354902;
-        Tue, 17 Jan 2023 03:35:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673955354; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2380630ejc;
+        Tue, 17 Jan 2023 05:38:37 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsBYrmiQow0MB7Zj79ZbLAr0FKkg0KNATv2q8BS03IVyRIAUAYt4tWx+MrOpRCRh+y5774y
+X-Received: by 2002:a0c:c209:0:b0:4c7:5f2b:5d0 with SMTP id l9-20020a0cc209000000b004c75f2b05d0mr32611988qvh.32.1673962716861;
+        Tue, 17 Jan 2023 05:38:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673962716; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gqd9lyRjdZqzabeCgbqB2JAtIRyTEAPs1W8DtOYwgHDqp1xb7bokcEHXPbrhCNZ4V2
-         /5V0U/M9SV8hSaBibWGUdZA4gB680nOss0dmysqkuBFkf3BZrcqMQUMj8JmVoRLkK3A6
-         AEdTGbk0uJkuLM1qSK3NJmCKriQaNh81E8wt00k/pqVucU0RdN5Kv/GnQGsmZp2ZhhI6
-         G0/9l5qyQd22Zs/awm+tfTnnlGXRZhJZ8dFM/30p4EEmXvITlZ1rjQ33DW25oMf2XciC
-         gIeDjlA4Cbp5xBEI1LXPcifaSWeFwn8CPnlp29nByUy4atcT0Sno+cVgC58hRXAhg6EA
-         BxnA==
+        b=B09hfeXp3qawZmw/H6Hor1+sqIecaWEyAe+dDyM3442/D7BQca20WlusxzrAxdGX/4
+         p6r4kt5xzsGGtoAtWREtmeNc5MZ4ihkva/N1Sprn3Pl5LfSmk8nrSI8OfQtaR+waA9Mi
+         xDGo6GsiptL16X1tXnKHNmzPGs0V/2MSeUQhSAU/dSqCIt1psjQL9+QWMw8Yssulfhl1
+         yMnLAVFiCoJgOwqHc8S8taC6PtF9H8mSFe9wkunwXJ5JryU0hJ32TvhKUxf7tRwd0/6w
+         //XrT2xXQYXk8xGks0+oakcKNJSUf1yV8yXAqTfEO/fNgbOhHINMCgnRL6/cpHSDB+C6
+         8tBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=TyYmPNOg8nIpNU/hX39hfcm7D13D/i+/kHYNQoqc/wI=;
-        b=nudJSSLzj9bwkGaGGSyaGXGXboYEUdc1KLuhDy5v9DOjtQuJW1ZNwIIUM8OIuZ1l/q
-         B1dnaWFzQnrnK4eyF+tkXsYSeCOs04mkjGqGtG4OasS9uPKbfkeEey6mK7aV/vP2J6Kk
-         DAkJWcGQTbEAC19/xbhvZXOMfm3yfLJv+J9zCC0Wjz2PCDdMsovPRFaUr7c989Ma48/C
-         RyRPKvPjvV0HIlhq8Rfm6LkSGr++5gPHOzVhoI/7XWO6VXx+m7vrJXXJGhtWF78TuewV
-         E6uTELSNdWQGUOImvJm+WgPVmvPsn2u8KJJKqUmrpQccEjTvj8dFA432xso7Dr1Gxb/q
-         1/Ag==
+        bh=ZxEhWfSfRmCA3vaULf3RhUCXXQ4gmytIb3p4HyoDtDs=;
+        b=WuYqpb0GANR11kPthIZHXn8g0yf3MnHaHwldGrM12RigZ+PN44WQ6annLjjk0AEpr3
+         dye+dOd0OGhuaqN4qarDcHtd93MX+KmQ9zv8Z1Z9Fq5Tre44t/iMIYf4+1G0ml0Bdkkn
+         dLkSZ7I0uzVz9dNCrQVzucRalvQmJa8CdP70eGfutZdgqFyVvfRw7JqT8578e0vjOs//
+         uVPsNVLnowcPa4zE61fPJZMlVAgcCSfKhbBbpX5ANBAaxtH9U/OD4CamFpA/WaEXBH0Y
+         IWEirF57oSHB6GQeks2ZXMOFjhxrbdBswlksV5Fa7OXas1rZLpI7a+ThRx1Hsi9nMkdF
+         CiIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LgEWZmJn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r9oRBWdY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq17-20020a05622a1c1100b003a58279c54bsi2506528qtb.53.2023.01.17.03.35.54
+        by mx.google.com with ESMTPS id iy12-20020a0562140f6c00b005306c96d188si18385275qvb.195.2023.01.17.05.38.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jan 2023 03:35:54 -0800 (PST)
+        Tue, 17 Jan 2023 05:38:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LgEWZmJn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r9oRBWdY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHkFh-0003no-UB; Tue, 17 Jan 2023 06:35:43 -0500
+	id 1pHmAG-0001fc-Sk; Tue, 17 Jan 2023 08:38:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pHkFa-0003ld-ET
- for qemu-arm@nongnu.org; Tue, 17 Jan 2023 06:35:39 -0500
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+ id 1pHmAE-0001dU-F7
+ for qemu-arm@nongnu.org; Tue, 17 Jan 2023 08:38:10 -0500
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pHkFX-0000XF-GN
- for qemu-arm@nongnu.org; Tue, 17 Jan 2023 06:35:32 -0500
-Received: by mail-pg1-x533.google.com with SMTP id s67so21719581pgs.3
- for <qemu-arm@nongnu.org>; Tue, 17 Jan 2023 03:35:30 -0800 (PST)
+ id 1pHmAC-0003jN-Lr
+ for qemu-arm@nongnu.org; Tue, 17 Jan 2023 08:38:10 -0500
+Received: by mail-pf1-x433.google.com with SMTP id a184so23463685pfa.9
+ for <qemu-arm@nongnu.org>; Tue, 17 Jan 2023 05:38:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=TyYmPNOg8nIpNU/hX39hfcm7D13D/i+/kHYNQoqc/wI=;
- b=LgEWZmJnFFrCoZPDq2BMLnWu7wsaKIy7RJN3/Gt5OwALDIuPRB5gnCsGBrVgQo0qdh
- mun1Rs1KoCNQi+h7VRt9VXNu0T5uzvwRvDe4FX7YJCA/qcY0B8IxPMpN5jFyWCqgTr/f
- XE+0EnaVvMIbhI8MOUQz3UnBct5nNLOzddc2uyFrh4oYUqIPB2InkD1GxF6oEp4cGweJ
- WS0VO9U7KEPS9iTz9VErQo07zPkQyD3skpVQISq9m4DUyUY4U9o3zEAgMYoDUALF/PUr
- PoMtP69ZuhPPWJ8usIZ43fdFy9nz9/Tsw+3cCZKnun9snDHrZmwcB5VinrNwU+0l2pKJ
- Jdqg==
+ bh=ZxEhWfSfRmCA3vaULf3RhUCXXQ4gmytIb3p4HyoDtDs=;
+ b=r9oRBWdY6k9ZpeVGZZ8T7Xo9qZHmysHfztE8K/3WnkdTpApUlJ/5nqr9uy4cZuLJKh
+ 0pqSk2Lmcb9bcwcwoOw1JWyH4N5djl21Q+bPXR0lBKSKXX1p1xEo7EYqECncjjk+h6yk
+ q3ggB3MBm7nPogSLQevLDTGnXp7UH27YYFxocLnmbxkgtUKpSkz4Z4T31PRhaqDShhjv
+ 2bsl6mvDjW6FTFwZxWwj8O8kHSJc0Pc4FPgSDyQisYo7YgYvDEvMHP7gi/CJ1Dy6Pk6W
+ h9IbYv80gbjiHfwH70a3HTnP44duk1vb1XUSllkW+Pb4lV8wJO8d5Cxk3fMtm8VLFESa
+ bYLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=TyYmPNOg8nIpNU/hX39hfcm7D13D/i+/kHYNQoqc/wI=;
- b=LQ8ySn43LpWt+pkVi8CBw/2m45H8UjGdi0c9ZVF33SC6DMEuxbBy3MvjU7TG4UzPgs
- Fa0qwM5Ry7Z0B853u4ioPWWTs94XwUdcsP4Sp7GsYOHpVOE7V2hcF6EEe6Kar1Al0uvw
- iBTHMHi8qjUazGmRoGjSO1XQ7OnoLn7Ktdy4onD1VgVq1vi7Jia4FJ9oKpgbTKrTeuSK
- yTwd1oTS2YyKtQaFvI4YB7hRaF40unPpOzUgdYmg5EUmwAVUrxIiGcP9/QHt8wl2cGOZ
- fJjBgZ4hSM/3C4iyzmy2fWYEAi3+ec5omUGqhf5JoERcUxDzwrgXTW5ygsxfQI/o5aTR
- 8Bwg==
-X-Gm-Message-State: AFqh2kpD3ts8aVWJ2k+q902260rQEH9FyQfkLIZiIujO1bZzPqu8xfGf
- 9QKEwiVnsU5/ey0SfoxPoHNEis5HacgPjNJnN/2FmA==
-X-Received: by 2002:a63:510f:0:b0:477:86c1:640f with SMTP id
- f15-20020a63510f000000b0047786c1640fmr207885pgb.231.1673955329209; Tue, 17
- Jan 2023 03:35:29 -0800 (PST)
+ bh=ZxEhWfSfRmCA3vaULf3RhUCXXQ4gmytIb3p4HyoDtDs=;
+ b=Txq9VlBf1omjiMRC2ZBv8FhYN2fmlJ0GQXde6yuo/2u5IDzXL7StCjYXnj364y/r21
+ ifqj8QUCSYkvWoQneN8v/PrtxnXbKNTlbQt6490u8x10bPqJgPDwHC9qw/nnwguGYCoG
+ ntq2QQi3S8YZXqd0DOY0IbC05sMqCeEF5uMbUDyuJLteRPQKtHhYqVC4gZVq7lmL17G/
+ d8Q8RNixTb1rfPZIO41qtVxx40P8xcXhclwQ6nLa5oAjyL+cs/qgZ2DeJPYpzafr8fAB
+ GDuS0AdlAoeyqOPv2DX9GvFN7K/x4ilyfN+UqPF02zPcRhwTqHOs1BhOWySjG9ZLm9ni
+ RR8Q==
+X-Gm-Message-State: AFqh2kpyAlRgTHHbzB+Y3icPadem5kWrWa9Z8yu3OranS40GIV9uZZAM
+ w7qpBsOp3yLvT0nXOEBd5DdXYNs+6eKtTa0dN5YUBA==
+X-Received: by 2002:a05:6a00:2b1:b0:582:a212:d922 with SMTP id
+ q17-20020a056a0002b100b00582a212d922mr265197pfs.3.1673962686650; Tue, 17 Jan
+ 2023 05:38:06 -0800 (PST)
 MIME-Version: 1.0
 References: <167330628518.10497.13100425787268927786-0@git.sr.ht>
-In-Reply-To: <167330628518.10497.13100425787268927786-0@git.sr.ht>
+ <167330628518.10497.13100425787268927786-2@git.sr.ht>
+In-Reply-To: <167330628518.10497.13100425787268927786-2@git.sr.ht>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Jan 2023 11:35:17 +0000
-Message-ID: <CAFEAcA_50YsaEZ4KX5T6r01y8sFJZZ5fYccF9kBJgL+_epbTGQ@mail.gmail.com>
-Subject: Re: [PATCH qemu 1/3] target/arm: Unify checking for M Main Extension
- in MRS/MSR
+Date: Tue, 17 Jan 2023 13:37:55 +0000
+Message-ID: <CAFEAcA8sHX0g6nYJ0F34=JvRJkRNhSMmjMKpHqFbCfP5LankEQ@mail.gmail.com>
+Subject: Re: [PATCH qemu 3/3] target/arm/gdbstub: Support reading M security
+ extension registers from GDB
 To: "~dreiss-meta" <dreiss@meta.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,29 +115,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uwrENs6BMP81
+X-TUID: n3dr3x/H9co8
 
 On Mon, 9 Jan 2023 at 23:18, ~dreiss-meta <dreiss-meta@git.sr.ht> wrote:
 >
 > From: David Reiss <dreiss@meta.com>
 >
-> BASEPRI, FAULTMASK, and their _NS equivalents only exist on devices with
-> the Main Extension.  However, the MRS instruction did not check this,
-> and the MSR instruction handled it inconsistently (warning BASEPRI, but
-> silently ignoring writes to BASEPRI_NS).  Unify this behavior and always
-> warn when reading or writing any of these registers if the extension is
-> not present.
+> Follows a fairly similar pattern to the existing special register debug
+> support.  Only reading is implemented, but it should be possible to
+> implement writes.
 >
 > Signed-off-by: David Reiss <dreiss@meta.com>
-> ---
 
-Hi; it looks like you didn't send a cover letter for this patchset.
-If you're making contributions in future, if you could send a cover
-letter for a multi-patch submission, that's helpful because our
-automated tooling tends to get confused by patchsets which don't
-have one. (A single standalone patch doesn't need a cover letter.)
+> +static struct v8m_stack_registers get_v8m_stack_registers(CPUARMState *env)
+> +{
+> +    uint32_t current_ss_msp;
+> +    uint32_t current_ss_psp;
+> +    if (v7m_using_psp(env)) {
+> +        current_ss_msp = env->v7m.other_sp;
+> +        current_ss_psp = env->regs[13];
+> +    } else {
+> +        current_ss_msp = env->regs[13];
+> +        current_ss_psp = env->v7m.other_sp;
+> +
+> +    }
+> +
+> +    struct v8m_stack_registers ret;
+> +    if (env->v7m.secure) {
+> +        ret.msp_s = current_ss_msp;
+> +        ret.psp_s = current_ss_psp;
+> +        ret.msp_ns = env->v7m.other_ss_msp;
+> +        ret.psp_ns = env->v7m.other_ss_psp;
+> +    } else {
+> +        ret.msp_s = env->v7m.other_ss_msp;
+> +        ret.psp_s = env->v7m.other_ss_psp;
+> +        ret.msp_ns = current_ss_msp;
+> +        ret.psp_ns = current_ss_psp;
+> +    }
+> +
+> +    return ret;
+> +}
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+I wondered about using get_v7m_sp_ptr(), but this is fine I guess.
+
+> +static int arm_gdb_get_m_secextreg(CPUARMState *env, GByteArray *buf, int reg)
+> +{
+> +    switch (reg) {
+> +    case  0:  /* MSP_S */
+> +        return gdb_get_reg32(buf, get_v8m_stack_registers(env).msp_s);
+> +    case  1:  /* PSP_S */
+> +        return gdb_get_reg32(buf, get_v8m_stack_registers(env).psp_s);
+> +    case  2:  /* MSPLIM_S */
+> +        return gdb_get_reg32(buf, env->v7m.msplim[M_REG_S]);
+> +    case  3:  /* PSPLIM_S */
+> +        return gdb_get_reg32(buf, env->v7m.psplim[M_REG_S]);
+> +    case  4:  /* PRIMASK_S */
+> +        return gdb_get_reg32(buf, env->v7m.primask[M_REG_S]);
+> +    case  5:  /* BASEPRI_S */
+> +        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
+> +            return 0;
+> +        }
+> +        return gdb_get_reg32(buf, env->v7m.basepri[M_REG_S]);
+> +    case  6:  /* FAULTMASK_S */
+> +        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
+> +            return 0;
+> +        }
+> +        return gdb_get_reg32(buf, env->v7m.faultmask[M_REG_S]);
+> +    case  7:  /* CONTROL_S */
+> +        return gdb_get_reg32(buf, env->v7m.control[M_REG_S]);
+> +    case  8:  /* MSP_NS */
+> +        return gdb_get_reg32(buf, get_v8m_stack_registers(env).msp_ns);
+> +    case  9:  /* PSP_NS */
+> +        return gdb_get_reg32(buf, get_v8m_stack_registers(env).psp_ns);
+> +    case 10:  /* MSPLIM_NS */
+> +        return gdb_get_reg32(buf, env->v7m.msplim[M_REG_NS]);
+> +    case 11:  /* PSPLIM_NS */
+> +        return gdb_get_reg32(buf, env->v7m.psplim[M_REG_NS]);
+> +    case 12:  /* PRIMASK_NS */
+> +        return gdb_get_reg32(buf, env->v7m.primask[M_REG_NS]);
+> +    case 13:  /* BASEPRI_NS */
+> +        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
+> +            return 0;
+> +        }
+> +        return gdb_get_reg32(buf, env->v7m.basepri[M_REG_NS]);
+> +    case 14:  /* FAULTMASK_NS */
+> +        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
+> +            return 0;
+> +        }
+> +        return gdb_get_reg32(buf, env->v7m.faultmask[M_REG_NS]);
+> +    case 15:  /* CONTROL_NS */
+> +        return gdb_get_reg32(buf, env->v7m.control[M_REG_NS]);
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static int arm_gdb_set_m_secextreg(CPUARMState *env, uint8_t *buf, int reg)
+> +{
+> +    /* TODO: Implement. */
+> +    return 0;
+> +}
+> +
+> +int arm_gen_dynamic_m_securereg_xml(CPUState *cs, int base_reg)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    GString *s = g_string_new(NULL);
+> +    DynamicGDBXMLInfo *info = &cpu->dyn_m_securereg_xml;
+> +    g_string_printf(s, "<?xml version=\"1.0\"?>");
+> +    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+> +    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.secext\">\n");
+> +
+> +    g_autoptr(GArray) regs = g_array_new(false, true, sizeof(const char *));
+> +    /*  0 */ g_array_append_str_literal(regs, "msp_s");
+> +    /*  1 */ g_array_append_str_literal(regs, "psp_s");
+> +    /*  2 */ g_array_append_str_literal(regs, "msplim_s");
+> +    /*  3 */ g_array_append_str_literal(regs, "psplim_s");
+> +    /*  4 */ g_array_append_str_literal(regs, "primask_s");
+> +    /*  5 */ g_array_append_str_literal(regs, "basepri_s");
+> +    /*  6 */ g_array_append_str_literal(regs, "faultmask_s");
+> +    /*  7 */ g_array_append_str_literal(regs, "control_s");
+> +    /*  8 */ g_array_append_str_literal(regs, "msp_ns");
+> +    /*  9 */ g_array_append_str_literal(regs, "psp_ns");
+> +    /* 10 */ g_array_append_str_literal(regs, "msplim_ns");
+> +    /* 11 */ g_array_append_str_literal(regs, "psplim_ns");
+> +    /* 12 */ g_array_append_str_literal(regs, "primask_ns");
+> +    /* 13 */ g_array_append_str_literal(regs, "basepri_ns");
+> +    /* 14 */ g_array_append_str_literal(regs, "faultmask_ns");
+> +    /* 15 */ g_array_append_str_literal(regs, "control_ns");
+
+In patch 1 you skip the registers that don't exist without
+the main extension, but here you throw them all in regardless.
+Why the difference ?
+
+(If we do want to have the xml be fixed and not dependent on
+whether the main extension exists, we don't need to runtime
+generate it, but can instead use a fixed xml file, as we do with
+eg arm-m-profile-mve.xml.)
+
+> +
+> +    for (int idx = 0; idx < regs->len; idx++) {
+> +        const char *name = g_array_index(regs, const char *, idx);
+> +        if (*name != '\0') {
+> +            g_string_append_printf(s,
+> +                        "<reg name=\"%s\" bitsize=\"32\" regnum=\"%d\"/>\n",
+> +                        name, base_reg);
+> +        }
+> +        base_reg++;
+> +    }
+> +    info->num = regs->len;
+> +
+> +    g_string_append_printf(s, "</feature>");
+> +    info->desc = g_string_free(s, false);
+> +    return info->num;
+> +}
 
 thanks
 -- PMM

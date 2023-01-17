@@ -1,74 +1,73 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2448846ejc;
-        Tue, 17 Jan 2023 07:04:40 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsjwxJNSUVoTTDTdyRdlslTbUct1Yu/pl2MfUE66pWVLGiGDD5Xl0uWjHWEWJz75aFY9f4k
-X-Received: by 2002:a0c:fac5:0:b0:534:dfcc:f423 with SMTP id p5-20020a0cfac5000000b00534dfccf423mr4838582qvo.48.1673967879952;
-        Tue, 17 Jan 2023 07:04:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1673967879; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2449109ejc;
+        Tue, 17 Jan 2023 07:04:56 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtuGEeJPElmgqgbZNZ3is1/jfI7umLdzzkZI7JNN4uaXOL6DfcYPmZAwTAktDvmCgQMHr/0
+X-Received: by 2002:ac8:45c4:0:b0:3b6:34b0:fc9c with SMTP id e4-20020ac845c4000000b003b634b0fc9cmr3937931qto.42.1673967895967;
+        Tue, 17 Jan 2023 07:04:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1673967895; cv=none;
         d=google.com; s=arc-20160816;
-        b=esSOF6mHw9JiaNFcjBx8oGu4QjdndX46013KjEHwRzdeExNIIaLPdoxB94dYGGiVlM
-         Wcidpdbi+uvfYXgB5nZCtf3FoEq7WDnxEfMmeEikvzq/qtQ/Mnk4NsMfVimYkcZC79t/
-         V6yW27buP6UbLb2CCxkBMyFpeD79OEIzXpAxpEs+drWnucH2OlTwAA4lC3XTMt7oZLbu
-         lDFiYntv10FMnlMuYonxYJtb5FITiZP2nFeAZRW555ZxlpkMveNhdbeqcl9MuLSEV7vI
-         SHV268ZvEa/JjKeYgYxV7qCazVB2oO3JyhXwNdY9q/tiqRs4PaMJVWicN1D0NfoxlMKo
-         i/2g==
+        b=yuG1Abqbw2rlglaJ54KJ349jPwjc8GLzNT+Np44HpDz0nsLA3lJZsxLku6SAcB1IZb
+         8/V+kN+MBagXpqoqfY/kA/zKxV7AEzztfRyOH0qvd9hRdO6JlUoavZNSqM8JXFQuEpPZ
+         wDB+P0XzrRtqVIc5CUng8WUTWb3qwH/81qQX01XsttkXNzTKP+Zmfy1EyVqLO7qE7q9h
+         CogTdSfGog2fmVrOqTDuh9Y5wS9pN9cFXhm5zzMHxPX4W3qZRJR0KvSrD/eoUZD+b/xn
+         occC1FdzpKg6jLMBKkmZG6RBzObuCqbKbmoDyvPc7/+qIX3AFBsfRGmQUnEPJvyWEKIF
+         FJkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
-        bh=6+WWXUG+FtOsFgttNAevqrhh9iBa3N55JRLaBzhwZOw=;
-        b=CVsCFvwFYgP0TA/R2E9ePyXiWmhIja35S5qsa925KrOdY/1F0n73dalBcSc9zm9nWI
-         yYmi9zoZx4l/ywqYeTe+5OGWgEv2bcUhlCIfFmGPbD5xJz6InsNudqLsEnr3yF3IypQj
-         yJQOC17GoN2ADDPORemtyY/pfMksuaRYde8e68k6gV3oZEmjjIrzPexzALxXRudpxPq8
-         N1R1Lv7r6Ib78qbfTs85zNoLKoQN8trsOQ81tcbxXkF1bEyyIwIPJOz+kwMpC+SMVjg4
-         wh8u1rJCx4T40VNEM4uMOYBX10DpV381Jxhfy1Y97SRvBDXbesBIiwqcPkO3udhOYm1y
-         NA7g==
+        bh=JQI/hQq9twRi2qAs9giuU1jaByhc7XoUTrhQigrCPCA=;
+        b=ZbcYA9zaxvC8493uY1hlv50NpCYrKiRQLaB2fM+X4zn7mqF5stU5JIVg6faAtjnudb
+         wvHsi6//MhqZsnW3k2R0S2WSmX4f+psvcG/IaDGV/SFlF41j3DOxBnt9kict79zgKSDN
+         cWlfzq/Omc5UcB872Wp1hgWxIdlffOxPw3FYa9eO4W+CNDJypvbnOEHkQES6iHDjCq4v
+         o0hEFw2u7kIF/37qUxB49mYOc1jan8mjhoNSOH++rcEDW5f9y46Jma142WQ6lSCfBjxb
+         skWKZp8rCBsyK1Pd66AWtDCLyK//Pmm/fYRAmAjVvjKfvFH46WDl+DbMb0u1G3lmqJoE
+         XGBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=bzULKc51;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=gkn8fwjp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jm11-20020ad45ecb000000b00534f2e547b7si3782752qvb.476.2023.01.17.07.04.39
+        by mx.google.com with ESMTPS id f10-20020a05622a114a00b003a68b8303c4si1743001qty.690.2023.01.17.07.04.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jan 2023 07:04:39 -0800 (PST)
+        Tue, 17 Jan 2023 07:04:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=bzULKc51;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=gkn8fwjp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHnVb-00060V-Ip; Tue, 17 Jan 2023 10:04:19 -0500
+	id 1pHnVb-00060l-RL; Tue, 17 Jan 2023 10:04:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHnVY-0005zb-DK; Tue, 17 Jan 2023 10:04:16 -0500
+ id 1pHnVW-0005zZ-NE; Tue, 17 Jan 2023 10:04:16 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pHnVW-0000Wl-UU; Tue, 17 Jan 2023 10:04:16 -0500
+ id 1pHnVU-0000WP-UC; Tue, 17 Jan 2023 10:04:14 -0500
 Received: from localhost.localdomain (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id 5A31A20DFE9C;
- Tue, 17 Jan 2023 07:04:12 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 5A31A20DFE9C
+ by linux.microsoft.com (Postfix) with ESMTPSA id 1708420DFE9B;
+ Tue, 17 Jan 2023 07:04:10 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 1708420DFE9B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1673967853;
- bh=6+WWXUG+FtOsFgttNAevqrhh9iBa3N55JRLaBzhwZOw=;
+ s=default; t=1673967851;
+ bh=JQI/hQq9twRi2qAs9giuU1jaByhc7XoUTrhQigrCPCA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=bzULKc51lw2X3jXsiuNIg3XhXZ1tVlvoDPMh2E8CIUXetR3B7oMYzUTDrdo8EDnq1
- kOKzJ6sgaR2ZwluOG4O0UlfPApDiQ9Lwa+hTTho2y2PjaeRWLHmwkhY48msMpq8m0E
- sCUHM7uAYYsnqDdRHTL38rUUnES2lKFbTdUNDR0Q=
+ b=gkn8fwjp38JylkJisxsb8UEpnbDf7/IFS1TLkEAdlyD5Qi6+KUnM2xcxQyO5J7LPb
+ GJ8TMC2tik1uNTtyDOfSuu7n5U3jjSFRYcDK0kP4VVuEb7zND39JNUg9znsLEA8Wks
+ inQIOqnfC+HfseKddtteV8Y+UAMvdEKmpVObxVm4=
 From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v2 2/2] target/arm: provide stubs for more external debug
- registers
-Date: Tue, 17 Jan 2023 16:04:05 +0100
-Message-Id: <20230117150405.2940-3-eiakovlev@linux.microsoft.com>
+Subject: [PATCH v2 1/2] target/arm: implement DBGCLAIM registers
+Date: Tue, 17 Jan 2023 16:04:04 +0100
+Message-Id: <20230117150405.2940-2-eiakovlev@linux.microsoft.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230117150405.2940-1-eiakovlev@linux.microsoft.com>
 References: <20230117150405.2940-1-eiakovlev@linux.microsoft.com>
@@ -98,54 +97,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bJtM7lC6XuUG
+X-TUID: P3d49sgzgf7y
 
-Qemu doesn't implement Debug Communication Channel, as well as the rest
-of external debug interface. However, Microsoft Hyper-V tries to access
-some of these registers during an EL2 context switch.
-
-Since there is no architectural way to not advertise support for external
-debug, provide RAZ/WI stubs for OSDTRRX_EL1, OSDTRTX_EL1 and OSECCR_EL1
-registers in the same way the rest of external debug is currently done.
+The architecture does not define any functionality for the CLAIM tag bits.
+So we will just keep the raw bits, as per spec.
 
 Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/debug_helper.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ target/arm/cpu.h          |  1 +
+ target/arm/debug_helper.c | 38 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 39 insertions(+)
 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 2b4bd20f9d..eddec155b0 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -494,6 +494,7 @@ typedef struct CPUArchState {
+         uint64_t dbgbcr[16]; /* breakpoint control registers */
+         uint64_t dbgwvr[16]; /* watchpoint value registers */
+         uint64_t dbgwcr[16]; /* watchpoint control registers */
++        uint64_t dbgclaim;   /* DBGCLAIM bits */
+         uint64_t mdscr_el1;
+         uint64_t oslsr_el1; /* OS Lock Status */
+         uint64_t osdlr_el1; /* OS DoubleLock status */
 diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 6c34c6e27d..bc213ac91e 100644
+index c21739242c..6c34c6e27d 100644
 --- a/target/arm/debug_helper.c
 +++ b/target/arm/debug_helper.c
-@@ -684,6 +684,27 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-       .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 1, .opc2 = 0,
-       .access = PL0_R, .accessfn = access_tda,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-+    /*
-+     * OSDTRRX_EL1/OSDTRTX_EL1 are used for save and restore of DBGDTRRX_EL0.
-+     * It is a component of the Debug Communications Channel, which is not implemented.
-+     */
-+    { .name = "OSDTRRX_EL1", .state = ARM_CP_STATE_BOTH, .cp = 14,
-+      .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 0, .opc2 = 2,
-+      .access = PL1_RW, .accessfn = access_tda,
-+      .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "OSDTRTX_EL1", .state = ARM_CP_STATE_BOTH, .cp = 14,
-+      .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 2,
-+      .access = PL1_RW, .accessfn = access_tda,
-+      .type = ARM_CP_CONST, .resetvalue = 0 },
-+    /*
-+     * OSECCR_EL1 provides a mechanism for an operating system
-+     * to access the contents of EDECCR. EDECCR is not implemented though,
-+     * as is the rest of external device mechanism.
-+     */
-+    { .name = "OSECCR_EL1", .state = ARM_CP_STATE_BOTH, .cp = 14,
-+      .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 2,
-+      .access = PL1_RW, .accessfn = access_tda,
-+      .type = ARM_CP_CONST, .resetvalue = 0 },
+@@ -629,6 +629,29 @@ static void osdlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     }
+ }
+ 
++static void dbgclaimset_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    env->cp15.dbgclaim |= (value & 0xFF);
++}
++
++static uint64_t dbgclaimset_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    /* CLAIM bits are RAO */
++    return 0xFF;
++}
++
++static void dbgclaimclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    env->cp15.dbgclaim &= ~(value & 0xFF);
++}
++
++static void dbgclaimclr_raw_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
++{
++    env->cp15.dbgclaim = value;
++}
++
+ static const ARMCPRegInfo debug_cp_reginfo[] = {
      /*
-      * DBGDSCRint[15,12,5:2] map to MDSCR_EL1[15,12,5:2].  Map all bits as
-      * it is unlikely a guest will care.
+      * DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
+@@ -712,6 +735,21 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
+       .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tda,
+       .type = ARM_CP_NOP },
++    /*
++     * Dummy DBGCLAIM registers.
++     * "The architecture does not define any functionality for the CLAIM tag bits.",
++     * so we only keep the raw bits
++     */
++    { .name = "DBGCLAIMSET_EL1", .state = ARM_CP_STATE_BOTH,
++      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 7, .crm = 8, .opc2 = 6,
++      .type = ARM_CP_ALIAS,
++      .access = PL1_RW, .accessfn = access_tda,
++      .writefn = dbgclaimset_write, .readfn = dbgclaimset_read },
++    { .name = "DBGCLAIMCLR_EL1", .state = ARM_CP_STATE_BOTH,
++      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 7, .crm = 9, .opc2 = 6,
++      .access = PL1_RW, .accessfn = access_tda,
++      .writefn = dbgclaimclr_write, .raw_writefn = dbgclaimclr_raw_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.dbgclaim) },
+ };
+ 
+ static const ARMCPRegInfo debug_lpae_cp_reginfo[] = {
 -- 
 2.34.1
 

@@ -1,127 +1,166 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp467247ejc;
-        Wed, 18 Jan 2023 04:46:23 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXszrySIZxhSZdNjFJPrL4/byZcUL4yLNkl2s2WvLBLmsR09wrrVn+e3Lv9AUpfW+qCQ6m6w
-X-Received: by 2002:a17:906:9405:b0:859:1a3c:8b5c with SMTP id q5-20020a170906940500b008591a3c8b5cmr7024534ejx.53.1674045983624;
-        Wed, 18 Jan 2023 04:46:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674045983; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp628016ejc;
+        Wed, 18 Jan 2023 08:10:11 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsNzN0YsExfTSCvBq6QfXKhl2az7bBWVaOMwsP3Ma6kJtsqTUKkzTa43NBfHdnwOK+cYU1X
+X-Received: by 2002:a05:6122:2019:b0:3d5:42e8:ba29 with SMTP id l25-20020a056122201900b003d542e8ba29mr5232131vkd.4.1674058210900;
+        Wed, 18 Jan 2023 08:10:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674058210; cv=none;
         d=google.com; s=arc-20160816;
-        b=SBJa9ojdBS/rf150y9sVM2wDenfac7RSttmk0mGboiI0yGFBruBu90CgSrldDP3N5B
-         oqJaBCk0z3U2FGTW48x3QcwlbVM+liubMA43PUcXkaXjun0FOgN7pfUJjvoPKwSgeGMW
-         jeJQUUXllmAKMd6YOfkpbFUsh1Nl+HOsnqyNulwZLuFQi5ZBJr9fiduZupQNfU9PO2Ih
-         fC3xHrGrVmimNJ2QS/jUtjgB182hgSS2aOPFiuAQyaDi3FGD+dgHfvL5W7r4JKggbr/3
-         4oFx7eGWNR1BP6pnqBsUsIUc7flPhSgyAzl6ipZl/hkfyqugsU473alshLvP8xZsDb0Z
-         Wh3w==
+        b=r4UyaXhbuN6Ox/+S8ApjoyWfdaxLqIWI01F6lHy1SlWPvIWXNBUltJHpvJSz2eseSN
+         7SPTL5wk0ZMt7v2tfrTUcdr/UYbR9Bv3swLZiHsRK3Y9bzEueXKWuISZ6ZeCnSm87rBx
+         KaX6Ph/QNoEohz1sFgKRBWeMXiMuJOY7DiOAu9I8SlPAt6G60t2ATgSA3qORB/7IhhHh
+         2uAzq0TwnBDAMJzw4aFRd+249rgjdrUSLmLKQ9w8eWldJds4Uh/J1TWDCqbSZLL243v4
+         oaFJnqKXZiZJ9tH7U3jTLwP+HDp4z0J3dHTIZ5qzw/1T6K1ispTBOa+0pkRdUFiF+ztK
+         3Zrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=CzzW5KC7SS4dxc5epZcneRLL0zjUBBAQSWbpXhTvOxo=;
-        b=Q/sP30bK9M/Vyv1IHY6+htVXDc6khOlMvsqdQR8UXO1mJ95OiX9zb2HK3/gvyZ9fwI
-         BENbxAz63v2lD6XSfiPXJXFm3oRi4iEy+HziR1RR0/nKY2iHza/1UtQ647b6AC5Pn6Ci
-         1/P3uVVm/aptfxAuGalouw31GHuH4GngIJ5WJ2gPmKjCSuL7wU5G6uswOICOMeeO9OQU
-         nkSd1EX6u+HGQsXLrG55KrGKbnWximBcrx8PMT9jQ31FvlT/sNh5t2G/jmaNVvTKLMlw
-         /rV7Hd6Z30neLQD/D3hYQFsiebLA6uTJjOj0YF7VxEN1fHPnGcVDU6jDsSmDJlHYCbm+
-         BIhQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=2EnczWuya39j3dK9APW5iguAlxAq+7FeVUnZHxoSSFc=;
+        b=WSjOPdvPYTAvQ61ZrKug21xpV2qEiahwTn6RsvdevpT7wU5afojaChUeI+ypBOMF4d
+         UzqFEXi9gzWlzm00jIiOyXoXWoP/R+qAa+FykZgotIDP1JRoWuvrFqoOARND4/rSegVy
+         luttJ9wua2OSGntL7bzsNSaN8Ni0NwmjuXoUOh2uLkyoBM9qHz9M8UMJy2hSOA9dtt1S
+         w6PcTCh7kShAf1DSQWAiSukHeJAIPpXEDgBT8o7MWBoBTtIqqzM41ciX/c2LGIt958bQ
+         5hySWhOOQBoD69tV+Zf/6UG8H//VHX+8NPp+PRtEjhiEe8b1W00gLQ4LkPGVTH4fWwRE
+         5aWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=cR8Bf1I8;
-       dkim=neutral (no key) header.i=@suse.de header.b=Up3iUQcF;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id gs8-20020a1709072d0800b0085a483a6fcdsi29361949ejc.311.2023.01.18.04.46.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Jan 2023 04:46:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b2l0S1dG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u129-20020a1fab87000000b003d5d15e4e6csi8837295vke.191.2023.01.18.08.10.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 18 Jan 2023 08:10:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=cR8Bf1I8;
-       dkim=neutral (no key) header.i=@suse.de header.b=Up3iUQcF;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id C2B483F6B3;
-	Wed, 18 Jan 2023 12:46:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674045982; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CzzW5KC7SS4dxc5epZcneRLL0zjUBBAQSWbpXhTvOxo=;
-	b=cR8Bf1I8+gF6myx0UIl0ShbgnVFi/zFalEBUXdf1NOBwrdKwcel0Jzam2N3rKYeBKvfkKF
-	/6+RDh+ADjHbSgLhL2iuAXgDH776B2/q32a5iBI0Z14SZuyH+3KOv2etJvusaYY10Sh7OB
-	XPUYYkKf6ZRRhwsPR9GIYFV6w8vqVTE=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674045982;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CzzW5KC7SS4dxc5epZcneRLL0zjUBBAQSWbpXhTvOxo=;
-	b=Up3iUQcFe7cy5XXLrjUrrMn5rYlLSN6iIJT6K7cJD2hJaKyrrECnARpDwdpXNxZ8bKklRt
-	CZlDOMmh6qruxPBA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 509A7138FE;
-	Wed, 18 Jan 2023 12:46:22 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id dP7MBh7qx2OAJwAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 18 Jan 2023 12:46:22 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alex =?utf-8?Q?Benn?=
- =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
-Subject: Re: [RFC PATCH v3 18/28] target/arm: Move common cpu code into cpu.c
-In-Reply-To: <d1edb6d0-2bb9-4923-ea0f-378b6f944fed@linaro.org>
-References: <20230113140419.4013-1-farosas@suse.de>
- <20230113140419.4013-19-farosas@suse.de>
- <d1edb6d0-2bb9-4923-ea0f-378b6f944fed@linaro.org>
-Date: Wed, 18 Jan 2023 09:46:19 -0300
-Message-ID: <87h6woc8o4.fsf@suse.de>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b2l0S1dG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pIB0S-0003iX-6S; Wed, 18 Jan 2023 11:09:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pIB0P-0003fa-Ha
+ for qemu-devel@nongnu.org; Wed, 18 Jan 2023 11:09:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pIB0O-0002Ki-3e
+ for qemu-devel@nongnu.org; Wed, 18 Jan 2023 11:09:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1674058179;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2EnczWuya39j3dK9APW5iguAlxAq+7FeVUnZHxoSSFc=;
+ b=b2l0S1dGEZCgEUwkoEi8w6Gscvga5ITTOfI/694pEoNe1nsmSu8XAAXCw0rcPzPmWO7O3N
+ mGXlb1uZYkKk87ly5539tpkMUYyDW3v6cCxv0baET8vfs7DOdqT8+G9eb8vfz5RrcV4tsK
+ JW/izPodaFf7xzGuekKOKHQ4nhT5m54=
+Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
+ [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-213-wVsGnXNTN_-x150wDdiWKg-1; Wed, 18 Jan 2023 11:09:36 -0500
+X-MC-Unique: wVsGnXNTN_-x150wDdiWKg-1
+Received: by mail-yw1-f199.google.com with SMTP id
+ 00721157ae682-4c2d68b6969so353281257b3.7
+ for <qemu-devel@nongnu.org>; Wed, 18 Jan 2023 08:09:36 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2EnczWuya39j3dK9APW5iguAlxAq+7FeVUnZHxoSSFc=;
+ b=ipoMgAu4u0vd1Vmz20G9qVPwQDUGmkSEyMLexkZGV/IBvJoIkClgI9Kr5oizwH7A4L
+ 27zAeopaa3SoWrgNMWXih7E1Mw/kLVkWKHJkVwCnCxz9+F+/TDkNpuC+SZfp9Pmgrvk8
+ KrMrsSvx0vMdGlU7Uw4FzR13tSLYnBxlSV02zJtxxmTbCqafOjOAsSMNALda2cEZX6JW
+ JqXUKhcUPV1QYHAAoNsRxwnZnucs4u48y6LGpx4IME8cwx5vSvhzWom213zMJgXSMGbn
+ kCpHxjekz7gnRnuO4kHRou/U80XNm7cBTe0Ug4RkXwwmPWRShN+9URqilS2KZvv2sQJx
+ hJYw==
+X-Gm-Message-State: AFqh2ko27iyqSdt13NLqK4sqQm2xkYWyDcHBU71kd0ONgujdIaj9vkTq
+ jY/oZo7L6iUgzt0GV2IiCIWsil0BB4AbGodEg7tfYI6R0RkQx4bsB4U8ZB4sw7vA9JUmIkTI5n0
+ VNSec6cJ1EyzT0V8=
+X-Received: by 2002:a05:7500:6609:b0:f0:4854:5db7 with SMTP id
+ ix9-20020a057500660900b000f048545db7mr641457gab.68.1674058175562; 
+ Wed, 18 Jan 2023 08:09:35 -0800 (PST)
+X-Received: by 2002:a05:7500:6609:b0:f0:4854:5db7 with SMTP id
+ ix9-20020a057500660900b000f048545db7mr641419gab.68.1674058175188; 
+ Wed, 18 Jan 2023 08:09:35 -0800 (PST)
+Received: from [192.168.8.105] (tmo-099-5.customers.d1-online.com.
+ [80.187.99.5]) by smtp.gmail.com with ESMTPSA id
+ l14-20020a05620a28ce00b007062139ecb3sm10885240qkp.95.2023.01.18.08.09.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 Jan 2023 08:09:34 -0800 (PST)
+Message-ID: <fd06e139-c6e8-e978-c0ed-3e9aca258f19@redhat.com>
+Date: Wed, 18 Jan 2023 17:09:31 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: n0xpfKxO4o4O
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v2 2/4] bulk: Coding style fixes
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+References: <20230111083909.42624-1-philmd@linaro.org>
+ <20230111083909.42624-3-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230111083909.42624-3-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.089, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 377GIezwbnWT
 
-Richard Henderson <richard.henderson@linaro.org> writes:
+On 11/01/2023 09.39, Philippe Mathieu-Daudé wrote:
+> Fix the following checkpatch.pl violation on lines using the
+> TARGET_FMT_plx definition to avoid:
+> 
+>    WARNING: line over 80 characters
 
-> On 1/13/23 06:04, Fabiano Rosas wrote:
->> The cpu_tcg.c file about to be moved into the tcg directory. Move the
->> code that is needed for cpus that also work with KVM into cpu.c.
->> 
->> Signed-off-by: Fabiano Rosas <farosas@suse.de>
->> ---
->>   target/arm/cpu.c     | 76 +++++++++++++++++++++++++++++++++++++++++++
->>   target/arm/cpu_tcg.c | 77 --------------------------------------------
->>   2 files changed, 76 insertions(+), 77 deletions(-)
->
-> Actually, not true.  This is tcg-only.  As is the bulk of aarch64_max_initfn from which 
-> this is called -- note the first 4 lines of that function:
->
->      if (kvm_enabled() || hvf_enabled()) {
->          /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
->          aarch64_host_initfn(obj);
->          return;
->      }
->
-> Thus the rest of the function is only reachable for tcg.
+It's just a warning...
 
-Sigh... It seems it's not that simple:
+> @@ -420,8 +421,9 @@ static int get_segment_6xx_tlb(CPUPPCState *env, mmu_ctx_t *ctx,
+>                   hwaddr curaddr;
+>                   uint32_t a0, a1, a2, a3;
+>   
+> -                qemu_log("Page table: " TARGET_FMT_plx " len " TARGET_FMT_plx
+> -                         "\n", ppc_hash32_hpt_base(cpu),
+> +                qemu_log("Page table: " TARGET_FMT_plx
+> +                         " len " TARGET_FMT_plx "\n",
+> +                         ppc_hash32_hpt_base(cpu),
+>                            ppc_hash32_hpt_mask(cpu) + 0x80);
+>                   for (curaddr = ppc_hash32_hpt_base(cpu);
+>                        curaddr < (ppc_hash32_hpt_base(cpu)
 
-We can currently have a QEMU invocation with "-accel qtest -cpu max" and
-no other accelerator. Currently, it falls into this implicit else
-branch. So this is actually "else if (tcg_enabled() || qtest_enabled())".
+... and in cases like this, I'd really prefer the original line.
 
-If I move the "TCG-only" code under CONFIG_TCG, the qtests that use -cpu
-max will break.
+I think it would be better to just fix it if checkpatch.pl really throws an 
+ERROR instead of a WARNING.
 
-So I have chosen to move the code which depends on aa32_max_features as
-you suggest into tcg/ but kept the cortex-a57 as a baseline for
-qtest. This has the effect of causing "-cpu max" for the tests to be a
-slightly different CPU depending on whether TCG is built in (which
-perhaps is ok because if the tests depended on cpu features they should
-specify an accel?).
+  Thomas
+

@@ -1,87 +1,87 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp135367ejc;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp135369ejc;
         Tue, 17 Jan 2023 18:43:42 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvvJqgJijouj/4ompr83WH1T5X7ngpUj3o8XbF+2ac0MARMze8nr6XeqBsJG0n/lDw05oY/
-X-Received: by 2002:ac8:4a03:0:b0:3b6:3c95:7352 with SMTP id x3-20020ac84a03000000b003b63c957352mr6556064qtq.13.1674009822112;
+X-Google-Smtp-Source: AMrXdXvCSFWmOlTNti0Yd5Uvo+UL2TIkIZFw2B9114plZ3NIRHm5rJfBGtkhuHencP8luhHoQX80
+X-Received: by 2002:a05:6214:2e82:b0:534:8c24:9c92 with SMTP id oc2-20020a0562142e8200b005348c249c92mr8320451qvb.38.1674009822266;
         Tue, 17 Jan 2023 18:43:42 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1674009822; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ora3BUR98uI9/BeZrCKYXTfFLhxZq2KXRW+tCbQ2Ufk3Y7odI0NNb8QYeNfCrr7jJN
-         5SqQvoOhZh84IGO/J2kwGU6ieRfqpwzGlROnlX7EsFMhdmixQeBExT44tVi1HGxWcgnv
-         aEz8UbKvONTZZFnGnmq9D3b5WUG6Zm9qY9lSdw7x9P84ZJUqZQ8TZTI7bsHriatJ1ulN
-         m7MBBayKRB65Fqd29fq4YUs8ZLVGbzCAx3Axoq+fVo5oIYFv+HRaSfXt/bbSAvg4qXGe
-         ttKebN3X1bGZJZ0Z73F3/rY1FLGxQInehV9H7EWpEnGcFBsHw3Xhk7AFNf/0ldQllxHV
-         /9hg==
+        b=XFl5zotyNTqrHObLI9pyDBN3XFMehJZTjLNKu5HhZKV6M/q+WB2noYRIZ2MTjmyusx
+         cBloguhRYV18llTM+WFiKsBmb4RPDMPhMAfbJqxymVN9ajINKsjCgpPTuSbBhmfpI/Af
+         l9mflvJKFdZda4VmcI/+7TqGS+W/nExcVnuaj7nTxoSMmmSVu23wUeLrLsWCYC8gNUXi
+         l9U712Irb5SVgzFwnDT2FGcmyVlnH1UzU1KNuJNGzOntmPWuGjNbb3jhJwVj77Yng9Ay
+         41TibF3vrcGjHZMAWeHC2jXyxso+ONOJfqzfjMkdI2rEekPXGvn1FVUH7wCZzZo+s26M
+         nLPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:feedback-id:dkim-signature:dkim-signature;
-        bh=V8MxqXvBtv6gjCtHzwIxy0r9m1Is5M4oNLKG6RTErL4=;
-        b=dbcrJTNWWcE/+9Q+vkQzGBlQNwhUiD+fbhdrfOKd2utGtsjgW+pmzUhXpXPYIxLD3L
-         MSWjM6EXvZWbB+oFXzp2Hwc6S4l7eH67LozDhR0ndPDl1VhTSZ/mUrQ9DernmDCnQX8F
-         Zzy8npYJ5VzRG3PKb7oylGOFaRDl7tAW8wSUM8byThV3Z5r/Ihkd67cQ6pBTVITuV+nU
-         Cvi6kIEF4p8B5fD/I6N6eBbwhdKAD8LQeFH+JRl+mNjxnhDwHh0+fDRRnf+BiypxtI/5
-         t/NtovbnyKi4p1jD7rBPpb0/7lA5r4YUFqI1eTkqT+w0geAP5PAsGG4D0/QVzhlglHTX
-         II/g==
+        bh=Z8b4TuMq0IyBoljG29VQAgDtZYdTTN29FtaPFHe089Y=;
+        b=CEXtpoOP0j07V8t4ZypFeUCb7fXmBeeBhRDZKoJozGOvZmnlYR8aj380DgUQLAWV4C
+         IOGcHE8zWP15uHcXmguYwQzUXqqLdZxjqDmoTnJz8AQ5PPb3QAsIA73+si2vWqWS1SPn
+         yO3R3JJZitg46+8DPobkfFNy/X0NLI4QYZgLTQFMCIvcLkMJPpbSMNlgneHS3vUOioHj
+         p6Ck3Ph4bBSOODel+KUedHD0Wo+/+fg6Ba7K2IxdTWhKGwuBYk21MRp3rQt06xtgDnsf
+         0H6HbB2kyPTdg9i9V0vA03LtlwR7pK5D4auu4Ek7Av1WJ4FeLvnGbbflufLD9aAWrj3u
+         Wnfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=vfqJtb8j;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=KyTLQW8d;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=wW0fx4xz;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GMoxywx5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gc12-20020a05622a59cc00b003b634f3ac17si3440916qtb.550.2023.01.17.18.43.41
+        by mx.google.com with ESMTPS id fv11-20020a056214240b00b004c704932562si19532109qvb.74.2023.01.17.18.43.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 17 Jan 2023 18:43:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=vfqJtb8j;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=KyTLQW8d;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=wW0fx4xz;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GMoxywx5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHyPH-0005W7-Fx; Tue, 17 Jan 2023 21:42:31 -0500
+	id 1pHyPI-0005WJ-8r; Tue, 17 Jan 2023 21:42:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pHyPD-0005TY-45; Tue, 17 Jan 2023 21:42:27 -0500
+ id 1pHyPG-0005VE-2u; Tue, 17 Jan 2023 21:42:30 -0500
 Received: from out2-smtp.messagingengine.com ([66.111.4.26])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pHyPA-0006qH-Q5; Tue, 17 Jan 2023 21:42:26 -0500
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id DC2265C00FB;
- Tue, 17 Jan 2023 21:42:23 -0500 (EST)
+ id 1pHyPE-0006s4-El; Tue, 17 Jan 2023 21:42:29 -0500
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.nyi.internal (Postfix) with ESMTP id DDDA15C0116;
+ Tue, 17 Jan 2023 21:42:26 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Tue, 17 Jan 2023 21:42:23 -0500
+ by compute1.internal (MEProxy); Tue, 17 Jan 2023 21:42:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
  :content-transfer-encoding:date:date:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; t=1674009743; x=1674096143; bh=V8
- MxqXvBtv6gjCtHzwIxy0r9m1Is5M4oNLKG6RTErL4=; b=vfqJtb8jgtJAQ6Gdlo
- VkkZdoEvNPk7CThc1xtVTW6z6PW3T9/49fo21GvEzZH1Lrf3kKH0qfQH1sXF1WZ5
- A0/V7YyIrSqOkpMmUBcnl6xJM19Gj1U59Gd+avzU8NxQuQZ0zFpa0NwMnARs2Kyv
- jU5mEd2/8qAG/koTeZ+pcH3r/y0dZZR8caBxExuNQHywBUjNzGwJ0yHG0szaDkOn
- q7xYV7AuMVeD9Ipy+rfFriXgHnj1yDu8pLmVOSHrnZS2dBUykpWsee30ktebRF9g
- eq3k6TJCqA+R4XA4W9DW1/r+ptJTsidvf37eANTD0C2hvjWjv98H4SxKAk5WgBRZ
- jZYQ==
+ :subject:subject:to:to; s=fm1; t=1674009746; x=1674096146; bh=Z8
+ b4TuMq0IyBoljG29VQAgDtZYdTTN29FtaPFHe089Y=; b=wW0fx4xzpT+fBpuZMG
+ 2qGL1pYpP1Cu/wGeTrTx0boyYCRnupYxiRlh6UfIRR1M7j2uK1du0s+W5Lgu/2Ps
+ mA4SQvfBtmHCL6IAvSlq6vSOJT1E4hYLt3gTLz61Gwb5+ylSQMwg6rrhWdPkyhEi
+ ZeszjYdF1pMjy6EX9hikk9nHGBonG0IEZbOgqKvcU8lK5E368C4Nap6Whp/CI6cW
+ /pyO7PmDx/EIJPBtln0eqAXZTmqYqvBcMLwHUAaH7QjE64YW4Y205F8CKXHS56Er
+ z48itJjyVKFhAAkZ21Wq1HPYZNXV43rizudQthT3z+uWBhSEjxOkFlEBjyIhfLfc
+ 4nsw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm3; t=1674009743; x=1674096143; bh=V8MxqXvBtv6gj
- CtHzwIxy0r9m1Is5M4oNLKG6RTErL4=; b=KyTLQW8dSnLwO3Z60zGF3VNKRbJ3T
- meuKUVzXtqDNkpnH8kDtTLB7p9HuapXs4KYOYUms1XyGRxZrFw11e7dMOgQnx8hi
- oFUm/zujs91P1w1G5y7aGPa/akbD0VUMjtB1RAY/SpsIBsFeo/2Wc8y9Urz1uj4v
- u6UReUJGdjx82JpVDz/IFYjxYsmc0CenX237qUdtiGkSlqgyuvCTCEe+AryYapi9
- jXPHK6b0/xm9n5dk57P5dBKCB7epVdo8ePus5/WYU/jl+X51/qfJ1FWFY78bX+Y5
- +vrrmFQBWbkkmkARjr26BgfIPPWQ6Z4at/Cy59vJlhXZn2vFpPIZdKrzg==
-X-ME-Sender: <xms:j1zHY8J9BQraIORPcJO3GZ9tqhHcfWZEwr6WO1lkXUjv3FTvIkBbyw>
- <xme:j1zHY8LzIKa74Vn6RDEgZWgtcLjrql2K1aOx7rtexd-9hzSCXcm1uRefys40c-3gS
- jLSWnO7C9w6UCB_Pnc>
-X-ME-Received: <xmr:j1zHY8ttQEGYXLXhLdbXAOJvLgwkT9XqfnAR6sevjJHXgoUFMFjcW23ErWmgovwbk6SSHhzRi9GQDURD3B6bGHQtod3OMJALCIlJv5eMyok>
+ :x-sasl-enc; s=fm3; t=1674009746; x=1674096146; bh=Z8b4TuMq0IyBo
+ ljG29VQAgDtZYdTTN29FtaPFHe089Y=; b=GMoxywx5vqd4M2joGmW6H0t+nf94V
+ NSkJ71uZx160Q8zv7i/s1XY50wwvVS3fJTrVp6PrZTnmTT88f+0Z8CsI/b11WHRn
+ f+kxOSSrU+TfumYnnymDY3JgCeURtTvg2JHsv86w1uIyhgUJyD1qOw3/bX+GNM5Q
+ X/YNAb2ppKn57LhCuymXqVYu2IsOVJiX2IelPfcmF09vNpEZ7rGtbXkMVy+BvEHB
+ EQqmDb9FclJNLcLnWRUB2Xpef0BUblyfkDiQiRZ42FioSzj6SBrf5VMPRcDA5uau
+ MrOaa0UQ3skLfQtYuNThjrrx69BUSWIkMwgMj+BLmxpLPtEwtH4CDvTxw==
+X-ME-Sender: <xms:klzHY20ZfI7LDsCiIVTZSYeqvUKo9X-q0KBYDtarqiLyPwk1vgm9Vg>
+ <xme:klzHY5HdIGhvpdujGfXu9rpG9b_-mQBujra60y7tR8hAecyFjalEz3zEjfij0aEh-
+ 3k8kKvwfw2hGgjgOa8>
+X-ME-Received: <xmr:klzHY-70GtTc4j8zt8AEExhZluJdqXr_1OEJonHxzIwm9bMliMN-2UiY0oYxcXlV7OTTZjLsWauz4DC474qrBF3GBWBaWpuu-vGcyIn5mw4>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtjedgheduucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
@@ -90,22 +90,22 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtjedgheduucetufdoteggod
  esphhjugdruggvvheqnecuggftrfgrthhtvghrnhepteelgfeuleeffffffeekiefghfej
  uefgtdfgteeigeekvdefffevieekvdelteevnecuvehluhhsthgvrhfuihiivgeptdenuc
  frrghrrghmpehmrghilhhfrhhomhepphgvthgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:j1zHY5aNGjHsXR29vk3zYcyrZGV8z2Q9iS39Nc399kOzAVhrhmA3Nw>
- <xmx:j1zHYzbRDpqZNVssYK8h26N_1j3IGFOPBOysXDUbQimQMzAPkYvXAA>
- <xmx:j1zHY1A09BqHHqjMdBIqglC3hwP7PRxMAWzR1CZzmN4CQ0wromlz6Q>
- <xmx:j1zHYxNf4ilkTvKbyXx8vlftQalQjUHUO1E8jemguB1d0orLzw71FQ>
+X-ME-Proxy: <xmx:klzHY32J0_txIZ8p69P-OCa0gcReiEyhsWP6UpDgblJ0bcgj4Flj5w>
+ <xmx:klzHY5GcF6gXDpatYFxOgjfYQKdaLGT8k1nO7uA2hZ1XJ9Dt9LYAww>
+ <xmx:klzHYw-MSl0ankL6rpmEHKtGeujcInZ9zqQC84m6tYbVS3aefslQnA>
+ <xmx:klzHY_b0SIQP_AUjxar9RjfEZ82AqmtTIOwP7yjUM41mNQVvIrYlJg>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 17 Jan 2023 21:42:22 -0500 (EST)
+ 17 Jan 2023 21:42:25 -0500 (EST)
 From: Peter Delevoryas <peter@pjd.dev>
 To: 
 Cc: peter@pjd.dev, clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au,
  joel@jms.id.au, hskinnemoen@google.com, kfting@nuvoton.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, philmd@linaro.org
-Subject: [PATCH v4 3/5] hw/nvram/eeprom_at24c: Add init_rom field and
- at24c_eeprom_init_rom helper
-Date: Tue, 17 Jan 2023 18:42:12 -0800
-Message-Id: <20230118024214.14413-4-peter@pjd.dev>
+Subject: [PATCH v4 5/5] hw/nvram/eeprom_at24c: Make reset behavior more like
+ hardware
+Date: Tue, 17 Jan 2023 18:42:14 -0800
+Message-Id: <20230118024214.14413-6-peter@pjd.dev>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230118024214.14413-1-peter@pjd.dev>
 References: <20230118024214.14413-1-peter@pjd.dev>
@@ -134,124 +134,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EM8Ri8FjPJ0Q
+X-TUID: 6FjyKFPIhkye
 
-Allows users to specify binary data to initialize an EEPROM, allowing users to
-emulate data programmed at manufacturing time.
+EEPROM's are a form of non-volatile memory. After power-cycling an EEPROM,
+I would expect the I2C state machine to be reset to default values, but I
+wouldn't really expect the memory to change at all.
 
-- Added init_rom and init_rom_size attributes to TYPE_AT24C_EE
-- Added at24c_eeprom_init_rom helper function to initialize attributes
-- If -drive property is provided, it overrides init_rom data
+The current implementation of the at24c EEPROM resets its internal memory on
+reset. This matches the specification in docs/devel/reset.rst:
 
+  Cold reset is supported by every resettable object. In QEMU, it means we reset
+  to the initial state corresponding to the start of QEMU; this might differ
+  from what is a real hardware cold reset. It differs from other resets (like
+  warm or bus resets) which may keep certain parts untouched.
+
+But differs from my intuition. For example, if someone writes some information
+to an EEPROM, then AC power cycles their board, they would expect the EEPROM to
+retain that information. It's very useful to be able to test things like this
+in QEMU as well, to verify software instrumentation like determining the cause
+of a reboot.
+
+Fixes: 5d8424dbd3e8 ("nvram: add AT24Cx i2c eeprom")
 Signed-off-by: Peter Delevoryas <peter@pjd.dev>
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 ---
- hw/nvram/eeprom_at24c.c         | 37 ++++++++++++++++++++++++++++-----
- include/hw/nvram/eeprom_at24c.h | 16 ++++++++++++++
- 2 files changed, 48 insertions(+), 5 deletions(-)
+ hw/nvram/eeprom_at24c.c | 22 ++++++++++------------
+ 1 file changed, 10 insertions(+), 12 deletions(-)
 
 diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-index 98857e3626b9..f8d751fa278d 100644
+index f8d751fa278d..5074776bff04 100644
 --- a/hw/nvram/eeprom_at24c.c
 +++ b/hw/nvram/eeprom_at24c.c
-@@ -50,6 +50,9 @@ struct EEPROMState {
-     uint8_t *mem;
- 
-     BlockBackend *blk;
-+
-+    const uint8_t *init_rom;
-+    uint32_t init_rom_size;
- };
- 
- static
-@@ -131,19 +134,38 @@ int at24c_eeprom_send(I2CSlave *s, uint8_t data)
- 
- I2CSlave *at24c_eeprom_init(I2CBus *bus, uint8_t address, uint32_t rom_size)
- {
--    I2CSlave *i2c_dev = i2c_slave_new(TYPE_AT24C_EE, address);
--    DeviceState *dev = DEVICE(i2c_dev);
-+    return at24c_eeprom_init_rom(bus, address, rom_size, NULL, 0);
-+}
-+
-+I2CSlave *at24c_eeprom_init_rom(I2CBus *bus, uint8_t address, uint32_t rom_size,
-+                                const uint8_t *init_rom, uint32_t init_rom_size)
-+{
-+    EEPROMState *s;
-+
-+    s = AT24C_EE(qdev_new(TYPE_AT24C_EE));
-+
-+    qdev_prop_set_uint8(DEVICE(s), "address", address);
-+    qdev_prop_set_uint32(DEVICE(s), "rom-size", rom_size);
- 
--    qdev_prop_set_uint32(dev, "rom-size", rom_size);
--    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
-+    /* TODO: Model init_rom with QOM properties. */
-+    s->init_rom = init_rom;
-+    s->init_rom_size = init_rom_size;
- 
--    return i2c_dev;
-+    i2c_slave_realize_and_unref(I2C_SLAVE(s), bus, &error_abort);
-+
-+    return I2C_SLAVE(s);
- }
- 
- static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
- {
-     EEPROMState *ee = AT24C_EE(dev);
- 
-+    if (ee->init_rom_size > ee->rsize) {
-+        error_setg(errp, "%s: init rom is larger than rom: %u > %u",
-+                   TYPE_AT24C_EE, ee->init_rom_size, ee->rsize);
-+        return;
-+    }
-+
-     if (ee->blk) {
-         int64_t len = blk_getlength(ee->blk);
- 
-@@ -163,6 +185,7 @@ static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
+@@ -185,18 +185,6 @@ static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
      }
  
      ee->mem = g_malloc0(ee->rsize);
-+
- }
- 
- static
-@@ -176,6 +199,10 @@ void at24c_eeprom_reset(DeviceState *state)
- 
+-
+-}
+-
+-static
+-void at24c_eeprom_reset(DeviceState *state)
+-{
+-    EEPROMState *ee = AT24C_EE(state);
+-
+-    ee->changed = false;
+-    ee->cur = 0;
+-    ee->haveaddr = 0;
+-
      memset(ee->mem, 0, ee->rsize);
  
-+    if (ee->init_rom) {
-+        memcpy(ee->mem, ee->init_rom, MIN(ee->init_rom_size, ee->rsize));
-+    }
-+
-     if (ee->blk) {
-         int ret = blk_pread(ee->blk, 0, ee->rsize, ee->mem, 0);
+     if (ee->init_rom) {
+@@ -214,6 +202,16 @@ void at24c_eeprom_reset(DeviceState *state)
+     }
+ }
  
-diff --git a/include/hw/nvram/eeprom_at24c.h b/include/hw/nvram/eeprom_at24c.h
-index 196db309d451..acb9857b2add 100644
---- a/include/hw/nvram/eeprom_at24c.h
-+++ b/include/hw/nvram/eeprom_at24c.h
-@@ -20,4 +20,20 @@
-  */
- I2CSlave *at24c_eeprom_init(I2CBus *bus, uint8_t address, uint32_t rom_size);
- 
++static
++void at24c_eeprom_reset(DeviceState *state)
++{
++    EEPROMState *ee = AT24C_EE(state);
 +
-+/*
-+ * Create and realize an AT24C EEPROM device on the heap with initial data.
-+ * @bus: I2C bus to put it on
-+ * @address: I2C address of the EEPROM slave when put on a bus
-+ * @rom_size: size of the EEPROM
-+ * @init_rom: Array of bytes to initialize EEPROM memory with
-+ * @init_rom_size: Size of @init_rom, must be less than or equal to @rom_size
-+ *
-+ * Create the device state structure, initialize it, put it on the specified
-+ * @bus, and drop the reference to it (the device is realized). Copies the data
-+ * from @init_rom to the beginning of the EEPROM memory buffer.
-+ */
-+I2CSlave *at24c_eeprom_init_rom(I2CBus *bus, uint8_t address, uint32_t rom_size,
-+                                const uint8_t *init_rom, uint32_t init_rom_size);
++    ee->changed = false;
++    ee->cur = 0;
++    ee->haveaddr = 0;
++}
 +
- #endif
+ static Property at24c_eeprom_props[] = {
+     DEFINE_PROP_UINT32("rom-size", EEPROMState, rsize, 0),
+     DEFINE_PROP_BOOL("writable", EEPROMState, writable, true),
 -- 
 2.39.0
 

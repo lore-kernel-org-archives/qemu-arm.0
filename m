@@ -1,119 +1,132 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp391781ejc;
-        Wed, 18 Jan 2023 02:47:42 -0800 (PST)
-X-Received: by 2002:a05:600c:1c1a:b0:3da:fbd2:a324 with SMTP id j26-20020a05600c1c1a00b003dafbd2a324mr6153962wms.36.1674038862157;
-        Wed, 18 Jan 2023 02:47:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674038862; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp418493ejc;
+        Wed, 18 Jan 2023 03:33:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsiGWh8SLJG3qnS3mC4NYz3xcDmJRXFTaAg4NkiqhZxBw5kb/ZcvaAnSWYjW+BSgUj4xs9z
+X-Received: by 2002:a17:907:88cd:b0:859:5541:f3ff with SMTP id rq13-20020a17090788cd00b008595541f3ffmr7523023ejc.32.1674041633536;
+        Wed, 18 Jan 2023 03:33:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674041633; cv=none;
         d=google.com; s=arc-20160816;
-        b=zcC0e6nKiumxxADAZmX1+EL70vsT5S7Fn36E52IqrvJA6jeACcjTFsNhIik9ahzmkS
-         BCGFmPP1+BGgK+sxFUSJecx8v4SXo+MRyRrfEzFQXkJDKou9mcUFzxIy1czdfVmDAUO1
-         95Y5aF9o/6iSLDx+FectNDs81u4e9PtzZoujd/7gtSff/XawFobTpN/T7uu7FHWegf13
-         HFS4c/FgdAJ3jafIa/c+TYM4J42IfWjuYp98mNeVOQdaJZ/kF9U6lK0eiECEf2eoOehX
-         q1eAAm9jfJkxQ8Bl3PeI9QD8wfBDWzq+XBX/PFDr9OE3N8sSo2vnTew4YzCVYgGL4KKD
-         +h/A==
+        b=xGXCkqHl3EewPPWb2ikD1anrrcFmZJxCq2iETVwM3sAb0sqLBe2QOrSbaDjXl7sKJA
+         OVSCk8ZBotvzTVLhBmusV1u4ylEWuhZ7i9XGs3sqqU5PztvgDDofpmBhoF5pazV/LMX2
+         AHn8ggVMplvvr55zXjlSNVSNm74Xs0PAPXRcH5m0WBC2Rrv1euy5rPpAyp1ma6mgSmbg
+         bJpXYwurXsuMW7gGVwwFuMgH4esdb/XBrYvwacZMn/lyT13lQNzRkA5SLZu3/vaJiAbN
+         NTFP1oh0JzMj0NXx+IwVJX6XDVjPbv0OEbYuV/r+RU9ppyfVQSmBQmznsHSZFyCvUPSK
+         xOgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=iog5WF2G/vImaly9nWHyzB47r7oe5u859s8q/Iq03KI=;
-        b=IfzHe1FLXLY22HyQrC5AQJFCTpooBU7DGKJV/uoM5wAONZliuz8ebZfe0YgjLMIN4I
-         gqiOBAaM7etsofOhvVFyVRGqa9yr4pCgoDtwcWgaNJ6jCndSap2JbIg6h8m6C9fUYW6s
-         jGmGi219Q4gpuLtzKcWxQ6dv0fA0hCQcNbdA3ZhKlSdF8p9izJavsdN9YuDctW1y3ZD2
-         yhyhqy7VX6hhBfa66WCdnIR+VGR64/fu5qSZqn1Z/c85ye0pNun0+qD/J5PhQmeOBxud
-         HkehZ4JrsvByUTzVGFu3mPueosSGK53KYF6yy2eyOWh61xx6dRu6YMe/RuB+JBaXXwnN
-         Q5mw==
+         :dkim-signature:dkim-signature;
+        bh=tiKmrXvaLUOKOhl28VHbquXQKFRjoZ1o/inJ9lYSie0=;
+        b=DQnBJpPuJxGEX56w1hrOc8a9Q9wxY9xg/+4LUzhH1peeVCHr4LMT5W8JM6Ipe+hwom
+         i5LW1PEuFtJXA4/RVRbuQ810RDKEy0qrdB6tJUWkgFqtyeCh6EhdscC7EPyxpCoeatbh
+         l3NqFkqqOI7zKqZJm1jXoQyKTZh6GBPT+VuASrdJBT6Pfks+nHoG3aKMax6v8/Ke2eJj
+         6rsnAY3iNEsXolH5u+KWJxoXPhk9vQgMrqYXzKZwBx1aAYLbYLUNfRbWhC0h1oOygxp8
+         iLEPbE7s0yDY6MmpnxcNEyA5Mt/bRfn/9ndeE3WgnaTJSQV2/OdbQQZYg+WCX6zj3AlN
+         mQiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=baioGDKs;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z10-20020a1c4c0a000000b003daf671f7c2sor492554wmf.20.2023.01.18.02.47.42
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 18 Jan 2023 02:47:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Lf76XRt6;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=cfontana@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <cfontana@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id xb7-20020a170907070700b007877f3132d9si39002149ejb.438.2023.01.18.03.33.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Jan 2023 03:33:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of cfontana@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=baioGDKs;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=iog5WF2G/vImaly9nWHyzB47r7oe5u859s8q/Iq03KI=;
-        b=baioGDKsZeIOuXCxkxK0Ra7D23iWhGKshy/++/xIuPq2sQQ/+XxHH7eL05ZfU7dVb2
-         7AqoIIoXkQ3xVsE3kvUoE5zXZ8Ks4Kmwvok/yBqZfkLipazMyBAzMpgCexZvYM0gtTyI
-         aWlyRFi/c4jjCuFmyHmH4caIUKVQ0jBkmC3q7iozSvhE8X/bewUwpxGzkaiSAtznviX3
-         af/RwQnW5GgyCe/1llnhJ+NJceFoTqSlA6e7vSrh9WphusQWeElXBH5C0jsGLTP/wrJD
-         Kzae6rrRg9c2GCXElW1sSy2uqnMOalRNnHLCo7hnxR/u2rkqlh0ss/ooi/05HtSIPelW
-         zreg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iog5WF2G/vImaly9nWHyzB47r7oe5u859s8q/Iq03KI=;
-        b=ZrfoGV1F2XQFcfAF+8SYmbI2+KinjgLax2HII1vaW0XVtfPu72cuiQZBS1h8PvMZ+m
-         VU949y84zZ/c0xUG2Q0AgLjMNC0Ql4rfcMxZ7p2qCnvKMVXanEbM2TOI0u7NHF/aPPIy
-         pFBkU0rNxsNHJ9J2RY6HyBBDHTu0BFwwC22p/HJ63KhqrbYQiThYTdr2Hgts1+NnPExX
-         TaDOtptMzAu0VOuphbV2lzIeOAOehptQiJk3kazaAHDpVD1bIAGtcyDw4YliPXWS3hmv
-         Nm6j8hn5WNLEh7I4VdefAiukUpA0KZMCvu/sRLuNKSUv6TtO1yWU3PVy4GjqYmqLSbhV
-         HhTA==
-X-Gm-Message-State: AFqh2kpz0idMBhnSPE8jEwkQNy5SXO/a/PAlwl///f+LgSnYNtJ7h9TC
-	jij0c4f+Oz18DR9r6ZtSyEo3T4gK
-X-Google-Smtp-Source: AMrXdXvFTNuzmkgTU4C300XWj40ncWfv5L7TaSZMhcJPVM9Yn3eurxfVrkPwO6s8SjgTq+Xk0eEQsQ==
-X-Received: by 2002:a05:600c:4e08:b0:3db:1a41:663a with SMTP id b8-20020a05600c4e0800b003db1a41663amr197239wmq.20.1674038861899;
-        Wed, 18 Jan 2023 02:47:41 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id ay13-20020a05600c1e0d00b003cf71b1f66csm1725100wmb.0.2023.01.18.02.47.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Jan 2023 02:47:41 -0800 (PST)
-Message-ID: <29287d50-7bff-2610-afab-b7ea96e427fb@linaro.org>
-Date: Wed, 18 Jan 2023 11:47:40 +0100
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Lf76XRt6;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=cfontana@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id E024320ED4;
+	Wed, 18 Jan 2023 11:33:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1674041632; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tiKmrXvaLUOKOhl28VHbquXQKFRjoZ1o/inJ9lYSie0=;
+	b=Lf76XRt6U25BDCXTVYl2QqRfTldSmdV2i/KM/FgckjjauQLK1QJvP0lB0tEw1WKORnyNFx
+	5RNRZI0Ln6Z4j6M0ID3P803uXYRlZ/GdMqCOGVIUFW4GTnkcp/N5ViWrGf8xBgo0jf9mEy
+	eHUFV4rzVnehyaqPevBLOwSQDfFtP9g=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1674041632;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tiKmrXvaLUOKOhl28VHbquXQKFRjoZ1o/inJ9lYSie0=;
+	b=oxDH4ajLBfT+GkqEkjKZwCRF4+jzD8JlN4iGvxq5UcYLnVuByBejYG13fcZe03YDEP4zuJ
+	jF25HC2sZ+5NHGAg==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 80258139D2;
+	Wed, 18 Jan 2023 11:33:52 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id RpowHSDZx2NTfQAAMHmgww
+	(envelope-from <cfontana@suse.de>); Wed, 18 Jan 2023 11:33:52 +0000
+Message-ID: <c803c8a5-5788-2935-c1d8-3b62cc9a64d9@suse.de>
+Date: Wed, 18 Jan 2023 12:33:52 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [RFC PATCH v3 00/28] target/arm: Allow CONFIG_TCG=n builds
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [RFC PATCH v3 18/28] target/arm: Move common cpu code into cpu.c
 Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>
 References: <20230113140419.4013-1-farosas@suse.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230113140419.4013-1-farosas@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: UBmkuD+DKh2M
+ <20230113140419.4013-19-farosas@suse.de>
+ <bafc45b7-f42a-a500-053f-65f057a14cc1@linaro.org> <87bkmx0yux.fsf@suse.de>
+ <1ff29148-eae9-84b7-3521-4b9d543f12e3@linaro.org>
+From: Claudio Fontana <cfontana@suse.de>
+In-Reply-To: <1ff29148-eae9-84b7-3521-4b9d543f12e3@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Cr9eYziQ+3xP
 
-On 13/1/23 15:03, Fabiano Rosas wrote:
-> This series makes the necessary changes to allow the use of
-> --disable-tcg for arm.
+On 1/18/23 11:45, Philippe Mathieu-Daudé wrote:
+> On 17/1/23 20:01, Fabiano Rosas wrote:
+>> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+>>
+>>> On 13/1/23 15:04, Fabiano Rosas wrote:
+>>>> The cpu_tcg.c file about to be moved into the tcg directory. Move the
+>>>> code that is needed for cpus that also work with KVM into cpu.c.
+>>>>
+>>>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>>>> ---
+>>>>    target/arm/cpu.c     | 76 +++++++++++++++++++++++++++++++++++++++++++
+>>>>    target/arm/cpu_tcg.c | 77 --------------------------------------------
+>>>>    2 files changed, 76 insertions(+), 77 deletions(-)
+>>>>
+>>>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>>> [...]
+>>>
+>>> TYPE_IDAU_INTERFACE is ARMv8-M specific, so TCG AFAIU.
+>>
+>> Hm.. QEMU doesn't start without it. There might be some implicit
+>> dependency. I'll check.
 > 
-> Based on Richard's "target/arm: Introduce aarch64_set_svcr":
-> https://lore.kernel.org/r/20230112004322.161330-1-richard.henderson@linaro.org
+> Likely some M-profile code (note this type is a QOM *interface*).
 > 
-> branch here: https://github.com/farosas/qemu/tree/arm-disable-tcg
-> 
-> Since v2:
-> 
-> patch 5: removed extraneous include statements
-> patch 6: removed extraneous tcg_enabled
-> patch 7: dropped in favor of "target/arm: Introduce aarch64_set_svcr"
-> patch 12: removed inline
-> patch 13-15: dropped, not needed due to Kconfig changes
-> 
-> new:
-> 
-> - cpregs.h changes I had forgotten to include in v2
-> - moved CPUs initialization into tcg/
-> - skipped tests that require TCG
-> - fixed the migration tests for aarch64
-> - Kconfig changes, left only the 'virt' machine set by default with KVM
+> I checked the uses (git-grep -W IDAU_INTERFACE) and none should be
+> reachable in a non-TCG build.
 
-For v4, consider splitting it in two parts, first reviewed patches that
-Peter can queue directly, and second part requiring more review.
+crossing fingers, I remember getting in trouble there, but maybe that is now solved by the KConfig thing..
+
+https://lists.gnu.org/archive/html/qemu-devel/2021-04/msg02958.html
+
+My understanding is probably obsolete now, if so sorry for the noise.
+
+Claudio

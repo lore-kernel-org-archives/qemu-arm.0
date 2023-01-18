@@ -1,124 +1,105 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp327292ejc;
-        Wed, 18 Jan 2023 00:38:19 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvAiZBU9v4CsXzTTWWixTMExVo9sq5eaUk6xPG5BKmenem+FPwdgOIMM0BlSJ5uf6050yTl
-X-Received: by 2002:a05:622a:1b0e:b0:3b6:4544:1dfe with SMTP id bb14-20020a05622a1b0e00b003b645441dfemr4939637qtb.56.1674031098957;
-        Wed, 18 Jan 2023 00:38:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674031098; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp331080ejc;
+        Wed, 18 Jan 2023 00:46:45 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXteYASuzQXc7Sb2YMSNXD2hLKPObXKOUlAafLtgN4fu7yWHNaB+wrtrpR8rxAtJ0v004pes
+X-Received: by 2002:ac8:7ed7:0:b0:3b6:3260:fa1d with SMTP id x23-20020ac87ed7000000b003b63260fa1dmr8108462qtj.45.1674031605278;
+        Wed, 18 Jan 2023 00:46:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674031605; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wm/F/cIA7R5K+M8j97zhOfvW7N6cIAJvUk03jobQJkjYXbSNGeMTyzV2zWBJ90ItXX
-         pcG9E/SUN6kF8qJfZUIeLnVEUJuJGxWVcVWoAF6NVtsKFbD7lJe4NlbLx+ccBjioUdy2
-         OsScw1qHiPmZ7E/grKMUvOUUzQ8IfTPNSgDZev2LObCI1R4BZ5rCQxIKDG9L6mItodBx
-         vcJP3zxpFGuySoEAoIBBTPkLTivNJgMVqAo12+xh6pwuXY2FryiZ57sboPjSNbwpJoST
-         Tgm60vEmRUL3NeuXUuHF0chHq0gJrQ4vKt+iLisYDMj47fbfeWIevDz1OdsmmTHSaUsi
-         TBIQ==
+        b=nmQWdLTgfF+SoNbXyLwBS3vmy0KpAsWA8931/IoF+u73BoGPytZIAs7/LqbFCcZAbC
+         XyYAYtH59jkXGmVQ/uDwyBlJtS7ouj2b5pi1HRSxLzNk68yXSdg56Cod98Z0YuGz26LX
+         aiHLeQQjTZWlcVbX85hCMZpBOQ376YXxpNgy51KfvKcJ184vnXdWeh4liR/PrduHnsqt
+         reuXHp1eLL/m37TcWaA8rf1yHBo+oBqrRCP1oIwJ4onPNBod2Pgaj3Jd8WD7Eaq1I+/q
+         yt8yCeW9ii4PdogMeW5WZZ1ddQKdU5mNO1dSZhocec4LV2G5s2QQL9SCavehSd9CD85n
+         qG4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=gSGxKCrJE3DVbK9tjGe4fQkYJ8hEiFobz6BMSb2tpKY=;
-        b=U0Ehop3n2Ejk0HRLd4iipJ1zsed+XS9YZzbzJ6nxqkyWi+7zKU2k8uWR+5W3OixeXT
-         bNjEsLgtOFIHlDQTFeFDubAZFpPfzrnNWW1aD889auFPppMqEyaf0zHsdunNLwQdu5nQ
-         oI7GQoS1rxPckiFO1FzhQA6C7NyLMj3jW9dDz/aYSzIiO2seoGPWhCSvgaSuCwePk7Cm
-         ibg5WN031Z1eTIJ3AHEO/SGtd/edvFjR2FeIHx/e2rpi8nvBWPU5HTDkyBsxAXctwqdt
-         prpT9zUMwR4yX+RfqbTq1MLB+lhz1NxzKum2rq3WztqYZRGuC/5yt/APKGybn489pVdA
-         +Lmw==
+         :in-reply-to:references:cc:to:from:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=Ys+8pTisCtqc1F7fq5EDvS45hiAWOMOuL059KRRij08=;
+        b=xQoOsENi6wwWrtQlZbOQhAdPqfPf1UfEVJcATb6qAG5hNrOweyByIA/z9/3/k28ice
+         jLbTWnqlsET6mYPlkefMGx9xrrNbFgIDG3/ZgXJbt8YseUozug3xKtQgq0vndb5gSRk8
+         Yqw6URnN2NRTJINYK64rBpXBKlML0QkS6W5jWiAkDHB03JmxcHo3TN1/saWe/OJ1zcJ5
+         C2WL2nb3bE5Vu+cQ0VmVmDM+mgYKcSx0Y7NEb+F5v84xqNp9Y/8wvkTjPkNvNBAJsZk/
+         SR1gqfcQBQD0DrXZChFAug1o1vkpINjFFIuLf2WBDnDJeel/CePw44qNF/dgpeBF/lQn
+         L/6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="m/8+HVw2";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ga20-20020a05622a591400b003b633c2b328si4215327qtb.516.2023.01.18.00.38.18
+        by mx.google.com with ESMTPS id 64-20020a370c43000000b00706a452c077si2091686qkm.151.2023.01.18.00.46.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Jan 2023 00:38:18 -0800 (PST)
+        Wed, 18 Jan 2023 00:46:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="m/8+HVw2";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pI3ww-0000fD-KP; Wed, 18 Jan 2023 03:37:38 -0500
+	id 1pI45X-0005l5-Oo; Wed, 18 Jan 2023 03:46:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pI3wu-0000eV-Rp
- for qemu-devel@nongnu.org; Wed, 18 Jan 2023 03:37:36 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pI3ws-0001MW-UE
- for qemu-devel@nongnu.org; Wed, 18 Jan 2023 03:37:36 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- fl11-20020a05600c0b8b00b003daf72fc844so888518wmb.0
- for <qemu-devel@nongnu.org>; Wed, 18 Jan 2023 00:37:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=gSGxKCrJE3DVbK9tjGe4fQkYJ8hEiFobz6BMSb2tpKY=;
- b=m/8+HVw2IVqgbcysMfnI23Sp2fATzYLU3w5gynI9qYsMqWqyHNdmTl/GinKUqQLvbP
- GpC0eZmLMfxS55zvcrF+yAn0B93IHVkuAJdnQRKO1IrciPSQQXt6cR3tTYt2462SeQsZ
- ySwePxa+A806mMs/62aHvtqqRYi9fSjjGgzJODxUQ7yI1bL/z9UysUEkL2qjVFi8c62Q
- FEdQVKFDrQDYwGjvrO5bJz3dbiYUdG7rh2DibHIk9iMTnGXzwQ3Uu+G9W0FvLFygnioi
- mJQ0642Cf9yJXyN0IRYLHopXjMmHk4eaWWmuSvAUKDOThwEs8y/aORK7LuXNX1PnLrMb
- +PEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gSGxKCrJE3DVbK9tjGe4fQkYJ8hEiFobz6BMSb2tpKY=;
- b=mtMNMZLYdlQWy0S/tnaiKt/KC7FygMhE36r+K/1TcDWM9P0G+ai+UP7ztS4MU0VYdM
- vbgmG2uI8YsZ787O3uP5pONg4a19mONZt6VefHiFzGc9N/OkJ62QHpR6OKwpxOaS7B6j
- bD/8u0l4gYorzIl2Mru8I8Ax2xHmzDWuaXjSwpWe6t4UyX7IUvAJF4MAbMl1nBR3PRaS
- f/yk2uKz1h0akBRj2mtdeGQAK7jJYe7UfJ25hH0CglHpkxXyotJH+HL9FwIuEsPIZmDb
- 00qOmNLufkSw6eMWzlS2Sl8FiY34azJGxJvIdRv3zT28VQCCNNihoIdGOEcoDi7WSbJY
- XXcA==
-X-Gm-Message-State: AFqh2kr2DUjzpy3jUhLwTZorfpntAMKL4dKw2WJCOE6Zyj98Cml/l/x2
- KX0cQ9jAlA6Ytd2uXFsIDfTLdg==
-X-Received: by 2002:a05:600c:1c1a:b0:3da:fbd2:a324 with SMTP id
- j26-20020a05600c1c1a00b003dafbd2a324mr5760025wms.36.1674031053088; 
- Wed, 18 Jan 2023 00:37:33 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- az15-20020a05600c600f00b003cfa622a18asm1361898wmb.3.2023.01.18.00.37.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Jan 2023 00:37:32 -0800 (PST)
-Message-ID: <1c532bf1-e69e-1ee6-da46-44ad07208af3@linaro.org>
-Date: Wed, 18 Jan 2023 09:37:30 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pI45W-0005kf-IT
+ for qemu-devel@nongnu.org; Wed, 18 Jan 2023 03:46:30 -0500
+Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pI45U-0003CP-H2
+ for qemu-devel@nongnu.org; Wed, 18 Jan 2023 03:46:30 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.6])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 1B3012E632;
+ Wed, 18 Jan 2023 08:46:24 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Wed, 18 Jan
+ 2023 09:46:23 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G003cb749571-80ff-45d1-89b3-be4a749c2394,
+ B02C0E203F6A6AD140F658F33EDEBE178EEACDD3) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <6aeeb580-b74f-20f4-286c-ce66cd894742@kaod.org>
+Date: Wed, 18 Jan 2023 09:46:18 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v2 04/11] hw/arm/aspeed: Use the IEC binary prefix
- definitions
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v2 01/11] hw/watchdog/wdt_aspeed: Rename MMIO region size
+ as 'iosize'
 Content-Language: en-US
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Cc: qemu-devel@nongnu.org, Troy Lee <troy_lee@aspeedtech.com>,
- Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
- Peter Delevoryas <peter@pjd.dev>, Steven Lee <steven_lee@aspeedtech.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Peter Delevoryas <pdel@fb.com>,
- Peter Delevoryas <pdel@meta.com>, qemu-arm@nongnu.org,
- Cleber Rosa <crosa@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+To: "Dong, Eddie" <eddie.dong@intel.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Joel Stanley <joel@jms.id.au>, Troy Lee <troy_lee@aspeedtech.com>, Beraldo
+ Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Wainer dos
+ Santos Moschetta <wainersm@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, Peter Delevoryas
+ <peter@pjd.dev>, Steven Lee <steven_lee@aspeedtech.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Peter Delevoryas <pdel@fb.com>, Peter Delevoryas
+ <pdel@meta.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Cleber Rosa
+ <crosa@redhat.com>
 References: <20221230113504.37032-1-philmd@linaro.org>
- <20221230113504.37032-5-philmd@linaro.org>
- <CACPK8XcdKGvQGOeBKQXRhYVZKO5k8jCv_1syNbZr8YPufaSjLg@mail.gmail.com>
- <8646a560-dd95-6cdb-1f7b-3d344ee744f7@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <8646a560-dd95-6cdb-1f7b-3d344ee744f7@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20221230113504.37032-2-philmd@linaro.org>
+ <BL0PR11MB3042D4D8CA5F740D5EB3D5A08AF19@BL0PR11MB3042.namprd11.prod.outlook.com>
+ <55ccb3e8-330e-4dfb-7e9a-4177212dfbf3@kaod.org>
+In-Reply-To: <55ccb3e8-330e-4dfb-7e9a-4177212dfbf3@kaod.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: de9f4949-c0ed-4551-b803-993f477904ef
+X-Ovh-Tracer-Id: 12817244543311514439
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedruddtjedguddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuhffvvehfjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgeevgeduffefiefgvdetueekfeelteegkefgfedukeeuvdejudelfedtiefhtdffnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepvgguughivgdrughonhhgsehinhhtvghlrdgtohhmpdhpuggvlhesmhgvthgrrdgtohhmpdhpuggvlhesfhgsrdgtohhmpdhjrghmihhnpghlihhnsegrshhpvggvughtvggthhdrtghomhdpshhtvghvvghnpghlvggvsegrshhpvggvughtvggthhdrtghomhdpphgvthgvrhesphhjugdruggvvhdptghhihhnqdhtihhnghgpkhhuohesrghsphgvvgguthgvtghhrdgtohhmpdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdgrnhgurhgvfiesrghjrdhiugdrrghupdhpvghtvg
+ hrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpsghlvggrlhesrhgvughhrghtrdgtohhmpdhtrhhohigplhgvvgesrghsphgvvgguthgvtghhrdgtohhmpdhjohgvlhesjhhmshdrihgurdgruhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphhhihhlmhgusehlihhnrghrohdrohhrghdpfigrihhnvghrshhmsehrvgguhhgrthdrtghomhdptghrohhsrgesrhgvughhrghtrdgtohhmpdfovfetjfhoshhtpehmohehhedvpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
+ helo=3.mo552.mail-out.ovh.net
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.097,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.097,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -135,43 +116,162 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sdIWSFWWEmlE
+X-TUID: AMsISCs214Ug
 
-On 18/1/23 08:32, Cédric Le Goater wrote:
-> On 1/18/23 07:53, Joel Stanley wrote:
->> On Fri, 30 Dec 2022 at 11:35, Philippe Mathieu-Daudé 
->> <philmd@linaro.org> wrote:
+Philippe,
+
+On 1/2/23 13:30, Cédric Le Goater wrote:
+> On 12/31/22 23:43, Dong, Eddie wrote:
 >>>
->>> IEC binary prefixes ease code review: the unit is explicit.
+>>> Avoid confusing two different things:
+>>> - the WDT I/O region size ('iosize')
+>>> - at which offset the SoC map the WDT ('offset') While it is often the same, we
+>>> can map smaller region sizes at larger offsets.
+>>>
+>>> Here we are interested in the I/O region size, so rename as 'iosize'.
+>>>
+>>> Reviewed-by: Peter Delevoryas <peter@pjd.dev>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> ---
+>>>   hw/arm/aspeed_ast10x0.c          | 2 +-
+>>>   hw/arm/aspeed_ast2600.c          | 2 +-
+>>>   hw/arm/aspeed_soc.c              | 2 +-
+>>>   hw/watchdog/wdt_aspeed.c         | 8 ++++----
+>>>   include/hw/watchdog/wdt_aspeed.h | 2 +-
+>>>   5 files changed, 8 insertions(+), 8 deletions(-)
+>>>
+>>> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c index
+>>> 4d0b9b115f..122b3fd3f3 100644
+>>> --- a/hw/arm/aspeed_ast10x0.c
+>>> +++ b/hw/arm/aspeed_ast10x0.c
+>>> @@ -325,7 +325,7 @@ static void aspeed_soc_ast1030_realize(DeviceState
+>>> *dev_soc, Error **errp)
+>>>               return;
+>>>           }
+>>>           aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0,
+>>> -                        sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
+>>> +                        sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize);
 >>
->> I strongly prefer the existing code; it tells you the size without
->> having to do maths.
-
-I guess it depends on one's mindset and culture / education,
-maybe I'm too young for the full hexadecimal world and am more
-custom to decimal notation with binary prefixes.
-
-0x16400 is just another magic number for me, while 89 * KiB is a size.
-
-> you mean that it matches better with the address space representation
-> in the code and the 'info mtree' output ? If so, I agree. We can keep
-> this patch out, it is not fundamental.
+>>
+>> How does the specification say here (I didn't find it)?
+>> I read this is for a case where multiple WDTs are implemented.
+>> And offset means the distance io registers of WDT[1] are located from WDT[0].
 > 
-> The hex representation of values has its advantages compared to the
-> macros because hex is generally what you get in debug outputs and
-> it is easier to compare and manipulate.  Some Linux dev feel the
-> same.
+> The specs say 'offset'
+> 
+>> Or does the spec explicitly says the io registers of WDT[1] is located right after
+>> WDT[0] without any gaps in this case, iosize is better)?
+> 
+> The IO regions are contiguous but size/width is larger than the register set.
+> 
+> That said, the model takes some shortcuts and Phil's proposal is a sign that
+> we need to clarify and distinguish the number of regs, the region width and
+> the offset where it is mapped in the overall MMIO region of the SoC.
+> 
+> 
+>>
+>>>       }
+>>>
+>>>       /* GPIO */
+>>> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c index
+>>> cd75465c2b..a79e05ddbd 100644
+>>> --- a/hw/arm/aspeed_ast2600.c
+>>> +++ b/hw/arm/aspeed_ast2600.c
+>>> @@ -472,7 +472,7 @@ static void aspeed_soc_ast2600_realize(DeviceState
+>>> *dev, Error **errp)
+>>>               return;
+>>>           }
+>>>           aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0,
+>>> -                        sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
+>>> +                        sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize);
+> 
+> May be, as a clarification, introduce :
+> 
+>    hwaddr wdt_offset = sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize
 
->>> aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
->>>       sc->name         = "ast2600-a3";
->>>       sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
->>>       sc->silicon_rev  = AST2600_A3_SILICON_REV;
->>> -    sc->sram_size    = 0x16400;
->>> +    sc->sram_size    = 89 * KiB;
-To keep everybody happy I'll respin using:
-
-          sc->sram_size    = 0x16400; /* 89 * KiB */
+That would be nice to add since you are about to respin.
 
 Thanks,
 
-Phil.
+C.
+
+> 
+> 
+> 
+>>>       }
+>>>
+>>>       /* RAM */
+>>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c index
+>>> b05b9dd416..2c0924d311 100644
+>>> --- a/hw/arm/aspeed_soc.c
+>>> +++ b/hw/arm/aspeed_soc.c
+>>> @@ -393,7 +393,7 @@ static void aspeed_soc_realize(DeviceState *dev,
+>>> Error **errp)
+>>>               return;
+>>>           }
+>>>           aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0,
+>>> -                        sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
+>>> +                        sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize);
+>>>       }
+>>>
+>>>       /* RAM  */
+>>> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c index
+>>> d753693a2e..958725a1b5 100644
+>>> --- a/hw/watchdog/wdt_aspeed.c
+>>> +++ b/hw/watchdog/wdt_aspeed.c
+>>> @@ -309,7 +309,7 @@ static void aspeed_2400_wdt_class_init(ObjectClass
+>>> *klass, void *data)
+>>>       AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
+>>>
+>>>       dc->desc = "ASPEED 2400 Watchdog Controller";
+>>> -    awc->offset = 0x20;
+>>> +    awc->iosize = 0x20;
+>>>       awc->ext_pulse_width_mask = 0xff;
+>>>       awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
+>>>       awc->wdt_reload = aspeed_wdt_reload; @@ -346,7 +346,7 @@ static void
+>>> aspeed_2500_wdt_class_init(ObjectClass *klass, void *data)
+>>>       AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
+>>>
+>>>       dc->desc = "ASPEED 2500 Watchdog Controller";
+>>> -    awc->offset = 0x20;
+>>> +    awc->iosize = 0x20;
+>>>       awc->ext_pulse_width_mask = 0xfffff;
+>>>       awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
+>>>       awc->reset_pulse = aspeed_2500_wdt_reset_pulse; @@ -369,7 +369,7
+>>> @@ static void aspeed_2600_wdt_class_init(ObjectClass *klass, void *data)
+>>>       AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
+>>>
+>>>       dc->desc = "ASPEED 2600 Watchdog Controller";
+>>> -    awc->offset = 0x40;
+>>> +    awc->iosize = 0x40;
+>>>       awc->ext_pulse_width_mask = 0xfffff; /* TODO */
+>>>       awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
+>>>       awc->reset_pulse = aspeed_2500_wdt_reset_pulse; @@ -392,7 +392,7
+>>> @@ static void aspeed_1030_wdt_class_init(ObjectClass *klass, void *data)
+>>>       AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
+>>>
+>>>       dc->desc = "ASPEED 1030 Watchdog Controller";
+>>> -    awc->offset = 0x80;
+>>> +    awc->iosize = 0x80;
+>>>       awc->ext_pulse_width_mask = 0xfffff; /* TODO */
+>>>       awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
+>>>       awc->reset_pulse = aspeed_2500_wdt_reset_pulse; diff --git
+>>> a/include/hw/watchdog/wdt_aspeed.h
+>>> b/include/hw/watchdog/wdt_aspeed.h
+>>> index dfa5dfa424..db91ee6b51 100644
+>>> --- a/include/hw/watchdog/wdt_aspeed.h
+>>> +++ b/include/hw/watchdog/wdt_aspeed.h
+>>> @@ -40,7 +40,7 @@ struct AspeedWDTState {  struct AspeedWDTClass {
+>>>       SysBusDeviceClass parent_class;
+>>>
+>>> -    uint32_t offset;
+>>> +    uint32_t iosize;
+>>>       uint32_t ext_pulse_width_mask;
+>>>       uint32_t reset_ctrl_reg;
+>>>       void (*reset_pulse)(AspeedWDTState *s, uint32_t property);
+>>> -- 
+>>> 2.38.1
+>>>
+>>
+> 
+

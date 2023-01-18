@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp787569ejc;
-        Wed, 18 Jan 2023 11:37:59 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvXihgDMiqHCDPGeg1s8DQsATR+oMIkLiEVbMMMJCeP95G5/0VNGkr3Ik8La5xkYG63ujgk
-X-Received: by 2002:a1c:cc11:0:b0:3da:1d52:26b5 with SMTP id h17-20020a1ccc11000000b003da1d5226b5mr16407297wmb.14.1674070679368;
-        Wed, 18 Jan 2023 11:37:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674070679; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp787614ejc;
+        Wed, 18 Jan 2023 11:38:02 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtZt+EjY93ZjWGB76aowqLdoc2XODt8pnAUDN4TFU26vT1XuEMLxygkm3f/8JqE/C2wQL+e
+X-Received: by 2002:a5d:568f:0:b0:24f:11cc:86b7 with SMTP id f15-20020a5d568f000000b0024f11cc86b7mr6616611wrv.41.1674070682523;
+        Wed, 18 Jan 2023 11:38:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674070682; cv=none;
         d=google.com; s=arc-20160816;
-        b=tKnldhqsSpDaOThru0bWrx0jrlRK1neOeH6+blCXRPJZGlmMQ8TKztCO3kaih/oLB8
-         eE9dKDX2NjtXWLPCiDckkq+uqt+Bn9VA6MhyNWX3VArNDOUQ49xHhmynstGkMKxRyGS+
-         E+cj25JRf4FX4gKcJHsotbbperu/f8xQiAeEDloOBRJpeG+Rtw4cmxV3d9WO3/Nx3uCw
-         VxIqhaJrrnXyYMwA87yOhv2WG8gP1jy5kCbPaMMLnSrP4KvZ6KP869okeK7A9WIVgbkz
-         jpj+pgP16g+A5XDqKjd9QZlhPD7Y00pzURpRVFGYLRVDYKNXuaDMq+C7xf7apNpXjF92
-         uCeg==
+        b=gYncqZqCdJXbTAJsboTEgoCHqIOloSPPF6e8YKeXF5HqLqWKr1DaasgOadYe6Ifpty
+         mY1V89uaz1PjWYdLQBjoG91nF5xovdosA9GrfxN9V7PbKS6lkKFdvJu0OW9O+C+UWfRM
+         UY4ZIwQgqEzPdvvlJhKbutAlle+DtsubohZkYjZtSuvSufDS6VvIKLC8s1I7OcY/ZojJ
+         XUJHtdYsoEEW8bkDu8vs483oSRcp1qGmridytcm9npjrOmgUEJ6WSd3Hc4Gj/gcCLZEv
+         1lWhYxMR88zTxd+jhPMdadpFPk3QDNWG6TxS1jyzVkshEU4AoUbeULFf/fLx0TZf3Hh/
+         OgoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=2bZNRFBZ+XzBgzjYJl5VTmOByJ6GMFubKN5YaXKn3TM=;
-        b=G3eg9GqW4mTTqNwmHuCIycjLFCTNFhNZlpB2lA7gMgtasGLCcHMP0qqKdzfGr33K/d
-         z5Llljnw2i6O2o4e71PIAamlsAjixdmwaahAssrHhq0f5oc+D2Unk/h52+i4d0hfb66S
-         8dxU2bfx7tgITrJxOi1wnLFq6yNoJn1DkcP/wh7zxV4Q5GB+Wxm+/M4KRIraCbyrUlVs
-         uDLE7Ohowdf5pP6hImH89Iki6f1zKBK6vaRH+ql38GHcwFxThSzJPmQNL8MXHKA5Zpyy
-         HHH3muAwpJx6+tZ441lFXg+pP3kzDXvYE53CvWwyT0MugdCAiN4K51uWTR79gf3yFZjH
-         YBGg==
+        bh=+H65Ma665C/sX9KzZOm51kUPJadJciMv4EsptAN/s7Q=;
+        b=Uik0lYBVy9WHEDhPgDKSsB81V4dkwlRIiMXOEu5emyM3pJlKhsuhVYTgnqg/OwcOxK
+         szKn+ZTpMZ+wfIEqbm6vaXBXLMmZHXmPeeLiR/4KvdgQH9teaK5a8URLab4kO83079eG
+         fhM6g3eHLXZ/MErh1Vv6mBBOh3g4jPZP4bc8yyhvAjgtiSRl8j3TjsCwOxFgmAIldQhU
+         feIsbURIHkQBY0XN0o6eiAwP+UFiGT7aLlDLKIDeSWP4fiBNKEtrr3PkcMmTWqL/uz3P
+         XNBcUafTG53EbrzQ9tHiXFRKV2z7SiV//pg8Fk/cxcHlqeOtHcFmFOfQhfOcONtZL+Qx
+         NpEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="JOXlC/LQ";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=abDwpZTa;
+       dkim=neutral (no key) header.i=@suse.de header.b=Fl4YMq26;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id y14-20020a05600015ce00b002bdc14dc952si23814073wry.494.2023.01.18.11.37.59
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
+        by mx.google.com with ESMTPS id l4-20020a05600002a400b002bbdd6bf776si34959050wry.860.2023.01.18.11.38.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Jan 2023 11:37:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+        Wed, 18 Jan 2023 11:38:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="JOXlC/LQ";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=abDwpZTa;
+       dkim=neutral (no key) header.i=@suse.de header.b=Fl4YMq26;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 05C6B20DE8;
-	Wed, 18 Jan 2023 19:37:59 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 2245A5BED0;
+	Wed, 18 Jan 2023 19:38:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674070679; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	t=1674070682; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=2bZNRFBZ+XzBgzjYJl5VTmOByJ6GMFubKN5YaXKn3TM=;
-	b=JOXlC/LQ+Lki9HCIp1tAoGZ4tzcMbOiVkH89SxGVjiq7qRd86GEUaJotXixBi8M3fXTALS
-	HtghX6PvKo9yMKFNTX0A/uoFlJRdW1i6fkZ06EFm2P7Fjne0BWrE1RZjx8g7YdsauKa0n8
-	PZxlQMh1lygXdp0uj8oxSSNOjD7zpzc=
+	bh=+H65Ma665C/sX9KzZOm51kUPJadJciMv4EsptAN/s7Q=;
+	b=abDwpZTaZGxyKUX/5zfDEM1cR8pEeAYL+R0L6rCmlaWbfhub70Uxec5GQSK05UXJV6cTSx
+	MtZO7WEGQCOUX37p/dRbvNNxhfTX/YzrEEdRfXbNlw5/dKXf8Vu2i6OolRbGHkD7dXWNJk
+	61oJKgBqTpn+/f9NKrr93baW8HV5hgM=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674070679;
+	s=susede2_ed25519; t=1674070682;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=2bZNRFBZ+XzBgzjYJl5VTmOByJ6GMFubKN5YaXKn3TM=;
-	b=ITVR8HpZP2DmwQosOOTLFS5IJg3PUG1clc21lEvkOX/Q7l43gCZ2hwCzdc8X4MR3PVwSrm
-	VI45ipcdsBRgYyAA==
+	bh=+H65Ma665C/sX9KzZOm51kUPJadJciMv4EsptAN/s7Q=;
+	b=Fl4YMq26/GhPWuOLpLIbPmkPSc/Hm+xJS5Dtvg7aysIzm/m/jQJYDXuOKTnYMBDrG8Whl6
+	M4R7Ly3xaowvRxDw==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 64219139D2;
-	Wed, 18 Jan 2023 19:37:56 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 7B88F139D2;
+	Wed, 18 Jan 2023 19:37:59 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id sBSUC5RKyGOWBwAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 18 Jan 2023 19:37:56 +0000
+	id oJBAEZdKyGOWBwAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 18 Jan 2023 19:37:59 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,57 +82,216 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>
-Subject: [PATCH 11/20] target/arm: Move psci.c into the tcg directory
-Date: Wed, 18 Jan 2023 16:35:09 -0300
-Message-Id: <20230118193518.26433-12-farosas@suse.de>
+Subject: [PATCH 12/20] target/arm: Wrap arm_rebuild_hflags calls with tcg_enabled
+Date: Wed, 18 Jan 2023 16:35:10 -0300
+Message-Id: <20230118193518.26433-13-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230118193518.26433-1-farosas@suse.de>
 References: <20230118193518.26433-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: japwbHjv9Ony
+X-TUID: lw1TT+7G3sKR
 
-From: Claudio Fontana <cfontana@suse.de>
+This is in preparation to moving the hflags code into its own file
+under the tcg/ directory.
 
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/meson.build      | 1 -
- target/arm/tcg/meson.build  | 4 ++++
- target/arm/{ => tcg}/psci.c | 0
- 3 files changed, 4 insertions(+), 1 deletion(-)
- rename target/arm/{ => tcg}/psci.c (100%)
+ hw/arm/boot.c             |  6 +++++-
+ hw/intc/armv7m_nvic.c     | 20 +++++++++++++-------
+ target/arm/arm-powerctl.c |  7 +++++--
+ target/arm/cpregs.c       |  2 +-
+ target/arm/cpu.c          |  3 ++-
+ target/arm/helper.c       | 16 ++++++++++++----
+ target/arm/machine.c      |  5 ++++-
+ 7 files changed, 42 insertions(+), 17 deletions(-)
 
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 01143a805c..595d22a099 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -22,7 +22,6 @@ arm_softmmu_ss.add(files(
-   'arm-powerctl.c',
-   'machine.c',
-   'monitor.c',
--  'psci.c',
-   'ptw.c',
- ))
- 
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index c27ac2939c..47006f903c 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -44,3 +44,7 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'sme_helper.c',
-   'sve_helper.c',
- ))
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 3d7d11f782..1e021c4a34 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -15,6 +15,7 @@
+ #include "hw/arm/boot.h"
+ #include "hw/arm/linux-boot-if.h"
+ #include "sysemu/kvm.h"
++#include "sysemu/tcg.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/numa.h"
+ #include "hw/boards.h"
+@@ -827,7 +828,10 @@ static void do_cpu_reset(void *opaque)
+                 info->secondary_cpu_reset_hook(cpu, info);
+             }
+         }
+-        arm_rebuild_hflags(env);
 +
-+arm_softmmu_ss.add(files(
-+  'psci.c',
-+))
-diff --git a/target/arm/psci.c b/target/arm/tcg/psci.c
-similarity index 100%
-rename from target/arm/psci.c
-rename to target/arm/tcg/psci.c
++        if (tcg_enabled()) {
++            arm_rebuild_hflags(env);
++        }
+     }
+ }
+ 
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 1f7763964c..74ac8f610c 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -18,6 +18,7 @@
+ #include "hw/intc/armv7m_nvic.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
++#include "sysemu/tcg.h"
+ #include "sysemu/runstate.h"
+ #include "target/arm/cpu.h"
+ #include "exec/exec-all.h"
+@@ -2466,8 +2467,10 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
+     /* This is UNPREDICTABLE; treat as RAZ/WI */
+ 
+  exit_ok:
+-    /* Ensure any changes made are reflected in the cached hflags.  */
+-    arm_rebuild_hflags(&s->cpu->env);
++    if (tcg_enabled()) {
++        /* Ensure any changes made are reflected in the cached hflags. */
++        arm_rebuild_hflags(&s->cpu->env);
++    }
+     return MEMTX_OK;
+ }
+ 
+@@ -2648,11 +2651,14 @@ static void armv7m_nvic_reset(DeviceState *dev)
+         }
+     }
+ 
+-    /*
+-     * We updated state that affects the CPU's MMUidx and thus its hflags;
+-     * and we can't guarantee that we run before the CPU reset function.
+-     */
+-    arm_rebuild_hflags(&s->cpu->env);
++    if (tcg_enabled()) {
++        /*
++         * We updated state that affects the CPU's MMUidx and thus its
++         * hflags; and we can't guarantee that we run before the CPU
++         * reset function.
++         */
++        arm_rebuild_hflags(&s->cpu->env);
++    }
+ }
+ 
+ static void nvic_systick_trigger(void *opaque, int n, int level)
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index b75f813b40..326a03153d 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -15,6 +15,7 @@
+ #include "arm-powerctl.h"
+ #include "qemu/log.h"
+ #include "qemu/main-loop.h"
++#include "sysemu/tcg.h"
+ 
+ #ifndef DEBUG_ARM_POWERCTL
+ #define DEBUG_ARM_POWERCTL 0
+@@ -127,8 +128,10 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+         target_cpu->env.regs[0] = info->context_id;
+     }
+ 
+-    /* CP15 update requires rebuilding hflags */
+-    arm_rebuild_hflags(&target_cpu->env);
++    if (tcg_enabled()) {
++        /* CP15 update requires rebuilding hflags */
++        arm_rebuild_hflags(&target_cpu->env);
++    }
+ 
+     /* Start the new CPU at the requested address */
+     cpu_set_pc(target_cpu_state, info->entry);
+diff --git a/target/arm/cpregs.c b/target/arm/cpregs.c
+index 6362dd5b54..c86d29c1c1 100644
+--- a/target/arm/cpregs.c
++++ b/target/arm/cpregs.c
+@@ -5182,7 +5182,7 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     /* This may enable/disable the MMU, so do a TLB flush.  */
+     tlb_flush(CPU(cpu));
+ 
+-    if (ri->type & ARM_CP_SUPPRESS_TB_END) {
++    if (tcg_enabled() && ri->type & ARM_CP_SUPPRESS_TB_END) {
+         /*
+          * Normally we would always end the TB on an SCTLR write; see the
+          * comment in ARMCPRegInfo sctlr initialization below for why Xscale
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index d7ceb626f0..ce1a425e10 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -539,8 +539,9 @@ static void arm_cpu_reset_hold(Object *obj)
+     if (tcg_enabled()) {
+         hw_breakpoint_update_all(cpu);
+         hw_watchpoint_update_all(cpu);
++
++        arm_rebuild_hflags(env);
+     }
+-    arm_rebuild_hflags(env);
+ }
+ 
+ #if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index fa327423a5..9e290efce0 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -339,7 +339,9 @@ void aarch64_set_svcr(CPUARMState *env, uint64_t new, uint64_t mask)
+         memset(env->zarray, 0, sizeof(env->zarray));
+     }
+ 
+-    arm_rebuild_hflags(env);
++    if (tcg_enabled()) {
++        arm_rebuild_hflags(env);
++    }
+ }
+ #endif /* TARGET_AARCH64 */
+ 
+@@ -608,7 +610,7 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
+     }
+     mask &= ~CACHED_CPSR_BITS;
+     env->uncached_cpsr = (env->uncached_cpsr & ~mask) | (val & mask);
+-    if (rebuild_hflags) {
++    if (tcg_enabled() && rebuild_hflags) {
+         arm_rebuild_hflags(env);
+     }
+ }
+@@ -1167,7 +1169,10 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+         env->regs[14] = env->regs[15] + offset;
+     }
+     env->regs[15] = newpc;
+-    arm_rebuild_hflags(env);
++
++    if (tcg_enabled()) {
++        arm_rebuild_hflags(env);
++    }
+ }
+ 
+ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
+@@ -1723,7 +1728,10 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+     pstate_write(env, PSTATE_DAIF | new_mode);
+     env->aarch64 = true;
+     aarch64_restore_sp(env, new_el);
+-    helper_rebuild_hflags_a64(env, new_el);
++
++    if (tcg_enabled()) {
++        helper_rebuild_hflags_a64(env, new_el);
++    }
+ 
+     env->pc = addr;
+ 
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index fd6323f6d8..fc4a4a4064 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -871,7 +871,10 @@ static int cpu_post_load(void *opaque, int version_id)
+     if (!kvm_enabled()) {
+         pmu_op_finish(&cpu->env);
+     }
+-    arm_rebuild_hflags(&cpu->env);
++
++    if (tcg_enabled()) {
++        arm_rebuild_hflags(&cpu->env);
++    }
+ 
+     return 0;
+ }
 -- 
 2.35.3

@@ -1,188 +1,124 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp135050ejc;
-        Tue, 17 Jan 2023 18:42:57 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtzbJk0PiZbXY+NOJ0L/bAsX2U0ytT1cUH1DOmID9tJpI5C5yiBvZsXB3Hu7chaw1wuOcG5
-X-Received: by 2002:a05:622a:290:b0:3b4:5d7f:2805 with SMTP id z16-20020a05622a029000b003b45d7f2805mr9395731qtw.6.1674009777075;
-        Tue, 17 Jan 2023 18:42:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674009777; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp410680ejc;
+        Wed, 18 Jan 2023 03:19:50 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXueCWMnNBgjfT5WYFJIc0isF1Al7XTffLDDsl88HaNEZRhSZmj/uS+ntnWeG/rfgGYtmJjL
+X-Received: by 2002:a05:6214:3c07:b0:535:3611:ea9 with SMTP id nt7-20020a0562143c0700b0053536110ea9mr6911858qvb.20.1674040790335;
+        Wed, 18 Jan 2023 03:19:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674040790; cv=none;
         d=google.com; s=arc-20160816;
-        b=l/L3I2fvtbvOGQODKybHxsZs5xHIK35srh7tjfJenLE8ZmB/bcaJtwY9x+SBGF6SoG
-         TegbABTvll5ruVf2YB9FXuV5gPBuEpzE9gjH/8w5vhTUBrcgf7XEycHHOc2coEL5GMO3
-         YH0+3vKdE9fXyUERdateZ8X7/tMYcmWRUsHRREsOj3TZ8PQwUOkS3LzwYoVluh9FhTKi
-         v47KVIycjoSLXku95j2PKNn3qXdFccX6H1Kl3ZwMJLvzyJNPLMBOKbtTv/s0+9n86Y+d
-         dAeybrsMxe5mDDGU6SyMMqnear5HBy/1TKnURKRxp2YWc9Xt/NbDeXKaC4+HDPd2NMl9
-         KgvA==
+        b=b5jLTE2M74qcHGAaTuawHElRs4I6nikj2BgNmbimO6eDMpZaymKzcNkh5Opr/Q0lZ9
+         LorDl+NYp7eTL2GuA4zvLvhI4q/OJuxdlIzJXC5c1ERkyUGlLVfyfBGOFY39HyUHQa8T
+         6DvqDmALl/BeSnu6kjOsRfDb20HopjifPyz4waoyzFnEEWxV7E68oZD3KXWVP9CDnqt7
+         kIT5WDHUXwRjjoY5gg06JAnCJxCrbK7k6yuM4KZ+eRmLka85gz7kpN2rrAehr7qR4Qw2
+         QIXgSgvOZ6yA3n+dj2T0Y1pVk02hGb57LroiDHj/lYuMHtSBaXL2FXUuO6ORElVx6LsB
+         iXzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:feedback-id
-         :dkim-signature:dkim-signature;
-        bh=QfoHj9tcz/1Uzbm2cTdi8Grjw+z/K2RNHW0+3w2BYdQ=;
-        b=ZTmX8fSQqbfwGD0qDFLitu/6o3LxlI9u8jPsDC22NLtD/4GIdr8vIaz5NpH9CW3NOA
-         5pPCvVpz2WJa9HIEJW/ZJ5K/9nJ5grGN8aSrWM4dXMzpNi5BFGNlMiHJFE3p/5cFaRys
-         BJr6NAXzD3pwiE5fh3bsOKZ9VSEjkl6MLwmMX3IZj0GiIVbjvKWeXNvsjofU81B26tVV
-         evFuNJe2vwN4Uejgwy8GIseSzQVdMpnJny1ZIqr4GUu4IRJxnFVVLynChdgKOGanTNsG
-         3jdLzpFLZMqyge3GGWqIZaFytPXSbaEbuwhPlZX5mcP7Br8FCd6rpDRbTlXeDkahQhkK
-         6Bjg==
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:dkim-signature;
+        bh=fRkC/0Cj2kfhuZiOHcEapM3RPYUjSRfx6mOYXSWVLx8=;
+        b=gNCPX1Lx6w6Il7+gAoVdSD99wBw+/QbW1xEp6pXZP53U7TaqKWzERSJnXZnT1Icbbi
+         bv/oNtvf/s9Yd0rJIK+k4PBYc+GudD70/APEhYnlxHnXrtAMPKk+SFIaATahwB565V55
+         UG7b88sU0YU1c18UmnMZc4tqO/Gmp86hqs2eMuBH/fQAuXRf1f2gm49liWDgmv4ny9gi
+         oWdgkkj712btIEl4rw61fKPiUPg8lQStAesoiOpshw3izxpT3GWaz4Yajt6pfTDXabo1
+         ixyB2IwlKln7aK7oY9PmoB61J+l08+IAu00v1KCXGbhD5tGbyCg6I+/r/j0GFFhxwnsz
+         +O4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=PGiCUgto;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=gMlvvZGa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7-20020a05620a29c700b006eec09eed41si20316169qkp.517.2023.01.17.18.42.56
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=fc5RTGPE;
+       spf=pass (google.com: domain of mads@ynddal.dk designates 17.57.155.22 as permitted sender) smtp.mailfrom=mads@ynddal.dk
+Return-Path: <mads@ynddal.dk>
+Received: from qs51p00im-qukt01080501.me.com (qs51p00im-qukt01080501.me.com. [17.57.155.22])
+        by mx.google.com with ESMTPS id r21-20020a056214125500b004c69966cd28si21938406qvv.523.2023.01.18.03.19.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Jan 2023 18:42:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Jan 2023 03:19:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of mads@ynddal.dk designates 17.57.155.22 as permitted sender) client-ip=17.57.155.22;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=PGiCUgto;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=gMlvvZGa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pHyPB-0005Sl-4G; Tue, 17 Jan 2023 21:42:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pHyP9-0005Ms-62; Tue, 17 Jan 2023 21:42:23 -0500
-Received: from out2-smtp.messagingengine.com ([66.111.4.26])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pHyP6-0006pd-Ds; Tue, 17 Jan 2023 21:42:22 -0500
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id 2B0D15C00F1;
- Tue, 17 Jan 2023 21:42:19 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Tue, 17 Jan 2023 21:42:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:message-id:mime-version:reply-to:sender:subject
- :subject:to:to; s=fm1; t=1674009739; x=1674096139; bh=QfoHj9tcz/
- 1Uzbm2cTdi8Grjw+z/K2RNHW0+3w2BYdQ=; b=PGiCUgto8Y76dhirtc82A17NNC
- m3kHiWOp0b7DMpWUaOcSlupe4Rwypov8nM6KJYQiRn9r+30PoGgg7fzMlOnNWDkB
- tPXx/vb3sHfBP7nI710OeJ2KAJCohqf/XKAjYMQkHI0MNN6DtTn0YM9nvMYs7yGH
- TjxSY90qte10QIfNBwNkOtmNzpQ4usP011SPlXZ0yI796M0r2QpXU26az2POJdFM
- ikvr3mmAuXdCCl2L/XHLaPM6SKCQCl9ZyDmuSC8KPnmEYIrntCXvCKhijL3M+bay
- 5B/WHO8F+SBpVEtrenecRh6qwUk0yfJXf1pvfP7ZzC6l5NgxQ2E/K1cv4WYQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:message-id:mime-version:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm3; t=1674009739; x=1674096139; bh=QfoHj9tcz/1Uz
- bm2cTdi8Grjw+z/K2RNHW0+3w2BYdQ=; b=gMlvvZGa9T3ipccgS84iW4J4cRnqy
- lvXnU3356pj5Jk4Lw169pRHr/RvxsCAYbSQ94zSo08Co8XcN+waQ+JHS0YGU++/r
- BEArPhQUPSz8nK/BB2PZXTwh1YcDAR8MiPD7Hnrm9E+crltQBYCQ6oQZEe060uxl
- w+iWglL6Z5rmXb51hB0Fq3g+XyGmwQ21wFIJByVsDMXYtFmFjUXErg+KzkIP0QY/
- sqmynDa0tBC1+0f2APuMpkIqykGjJzIY0m0/lyIdGdm5nJWnroqxyeQ2CFTn4djw
- tQljGf39+FS3GNrQAjwXpwCrcomzLv97Nxx7xsdRcKA2a39SrVic+r3kw==
-X-ME-Sender: <xms:ilzHY3BMUXZAWSu4IovYCIcEc2xZ7rwN8Va3-9MPrVJQ7mCMh33pdw>
- <xme:ilzHY9hHgEp7O1W63mleduxcw0TxCR8vzCxeQH3jzL2G6nxOA2j-TY7xLd_awhwX9
- bLBvihgiMErasuAG3Q>
-X-ME-Received: <xmr:ilzHYyn_qntbBhWcXxkqNHN-3Q3j-p_Pb3ZMeR6qfSskwxA7DPjZSeek9kMKket29UdcbmHRUKknECfG9IW73r-8JEWsvleyc4mLKFwRFEk>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtjedgheduucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
- dmnegoteeftdduqddtudculdduhedmnecujfgurhephffvvefufffkofggtgfgsehtkeer
- tdertdejnecuhfhrohhmpefrvghtvghrucffvghlvghvohhrhigrshcuoehpvghtvghrse
- hpjhgurdguvghvqeenucggtffrrghtthgvrhhnpeetffejteejgefgffdvuefhgeeludfg
- feduueeltdefgfduhfetudetueeujeeukeenucffohhmrghinhepkhgvrhhnvghlrdhorh
- hgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepphgv
- thgvrhesphhjugdruggvvh
-X-ME-Proxy: <xmx:ilzHY5zmvFX3ku-NN5Z1OiB89mioAbcfmCCcVMvjebL3Oux1ks9Z8A>
- <xmx:ilzHY8QcslTrklX8G37XpieloMv6ipjRn85NaNC4XP1ojMHZfVTmeA>
- <xmx:ilzHY8bzRBNZ7inLT04ThuReBTiWvsXfMFQYuWn9NuAKe_7PkbTE1w>
- <xmx:i1zHY_EDrPLKlBu73_7AI7bFpcQnOANVRpzNvXymGN52DubvLdakrw>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 17 Jan 2023 21:42:17 -0500 (EST)
-From: Peter Delevoryas <peter@pjd.dev>
-To: 
-Cc: peter@pjd.dev, clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au,
- joel@jms.id.au, hskinnemoen@google.com, kfting@nuvoton.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, philmd@linaro.org
-Subject: [PATCH v4 0/5] hw/nvram/eeprom_at24c: Cleanup + FRUID EEPROM init
- example
-Date: Tue, 17 Jan 2023 18:42:09 -0800
-Message-Id: <20230118024214.14413-1-peter@pjd.dev>
-X-Mailer: git-send-email 2.39.0
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=66.111.4.26; envelope-from=peter@pjd.dev;
- helo=out2-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xRxXy7EfXTCC
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=fc5RTGPE;
+       spf=pass (google.com: domain of mads@ynddal.dk designates 17.57.155.22 as permitted sender) smtp.mailfrom=mads@ynddal.dk
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
+	t=1674040789; bh=fRkC/0Cj2kfhuZiOHcEapM3RPYUjSRfx6mOYXSWVLx8=;
+	h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To;
+	b=fc5RTGPEpVehvGP5VX0xaXI04bSQZW3nENj9/Dpk+ND+fPPJCRcww2rnDpa6jN2w+
+	 dZUilszmuxyPA8YSL+BR9FSDuH3L7GGtgB1GE0T3wz7vbVK2RdeZmx1tGu1mJK0EUm
+	 2WI5kgNOINmr6Xdv18fdZ/dT0SzRl0uAcheRJAVhzn44+XLFkZ1UcjBQ5U6EjG4vkj
+	 fMJH5a6c81SZt7YklYCWNsA2c0Aofd9UtUQN8tPzm8T6HcR4mPLhgcl7HKhlb0e+bn
+	 HIqithR8GUdtWIJ9O5cBZqNBX+Lx8BYIXvaS43O2M1Pg7jp+lX9Gq52VdYRysjvksX
+	 01VzGPZrkjr9g==
+Received: from smtpclient.apple (qs51p00im-dlb-asmtp-mailmevip.me.com [17.57.155.28])
+	by qs51p00im-qukt01080501.me.com (Postfix) with ESMTPSA id 049E819809BD;
+	Wed, 18 Jan 2023 11:19:47 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.300.101.1.3\))
+Subject: Re: [PATCH v3 2/3] hvf: implement guest debugging on Apple Silicon
+ hosts
+From: Mads Ynddal <mads@ynddal.dk>
+In-Reply-To: <20230114161302.94595-3-fcagnin@quarkslab.com>
+Date: Wed, 18 Jan 2023 12:19:36 +0100
+Cc: qemu-devel@nongnu.org,
+ dirty@apple.com,
+ peter.maydell@linaro.org,
+ qemu-arm@nongnu.org,
+ agraf@csgraf.de,
+ pbonzini@redhat.com,
+ alex.bennee@linaro.org,
+ Francesco Cagnin <fcagnin@quarkslab.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <5B722E51-E635-4196-8978-E0393F9EEFA1@ynddal.dk>
+References: <20230114161302.94595-1-fcagnin@quarkslab.com>
+ <20230114161302.94595-3-fcagnin@quarkslab.com>
+To: francesco.cagnin@gmail.com
+X-Mailer: Apple Mail (2.3731.300.101.1.3)
+X-Proofpoint-ORIG-GUID: iexFohMw8sDjWxjBW_74pYdQEFpqc44e
+X-Proofpoint-GUID: iexFohMw8sDjWxjBW_74pYdQEFpqc44e
+X-Proofpoint-Virus-Version: =?UTF-8?Q?vendor=3Dfsecure_engine=3D1.1.170-22c6f66c430a71ce266a39bfe25bc?=
+ =?UTF-8?Q?2903e8d5c8f:6.0.138,18.0.790,17.11.62.513.0000000_definitions?=
+ =?UTF-8?Q?=3D2022-01-12=5F02:2020-02-14=5F02,2022-01-12=5F02,2021-12-02?=
+ =?UTF-8?Q?=5F01_signatures=3D0?=
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 malwarescore=0 bulkscore=0
+ mlxscore=0 clxscore=1030 suspectscore=0 adultscore=0 mlxlogscore=430
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2301180098
+X-TUID: Nvs5jXqW5qQG
 
-v1: https://lore.kernel.org/qemu-devel/20230114170151.87833-1-peter@pjd.dev/
-v2:
-    - Squashed 3 commits from original series into extract helper commit
-    - Dropped last 2 commits from original series
-    - Changed at24c_eeprom_init to return the I2CSlave object
-    - Added commit to introduce at24c-eeprom "init_rom" attribute
-    - Added aspeed_eeprom.c and fby35-bmc BMC FRUID EEPROM initialization
-    - Added commit to change reset behavior for at24c-eeprom (optional)
-v3:
-    - Added doc comments to function headers
-	- Added fby35 NIC and baseboard EEPROM's (to illustrate 2+ EEPROM's)
-    - Replaced "extern uint32 fby35_bmc_fruid_size" by adding explicit array
-      sizes, e.g. "extern uint8_t fby35_bmc_fruid[200]".
-    - Fixed Meta Platforms licenses by adding SPDX-License-Identifier for GPL2.
-    - Moved ee->init_rom initialization code before ee->blk, so that -drive
-      property overrides init_rom initialization. This gives more flexibility
-      (people can override contents of an AT24C EEPROM using a file for
-      debugging/prototyping) while still allowing the init_rom data to be
-      specified for a board for default behavior.
-v4:
-	- Moved at24c_eeprom_init_rom doc comment to the patch introducing the
-      function (moved from patch 4/5 to patch 3/5).
-	- Added review tags from Joel
 
-Thanks,
-Peter
+> On 14 Jan 2023, at 17.13, francesco.cagnin@gmail.com wrote:
+>=20
+> From: Francesco Cagnin <fcagnin@quarkslab.com>
+>=20
+> Support is added for single-stepping, software breakpoints, hardware
+> breakpoints and watchpoints. The code has been structured like the KVM
+> counterpart (and many parts are basically identical).
+>=20
+> Guests can be debugged through the gdbstub.
+>=20
+> While guest debugging is enabled, the guest can still read and write =
+the
+> DBG*_EL1 registers but they don't have any effect.
+>=20
+> Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
+> ---
+> accel/hvf/hvf-accel-ops.c | 123 ++++++++
+> accel/hvf/hvf-all.c       |  24 ++
+> cpu.c                     |   3 +
+> include/sysemu/hvf.h      |  29 ++
+> include/sysemu/hvf_int.h  |   1 +
+> target/arm/hvf/hvf.c      | 631 +++++++++++++++++++++++++++++++++++++-
+> 6 files changed, 809 insertions(+), 2 deletions(-)
+>=20
 
-Peter Delevoryas (5):
-  hw/arm: Extract at24c_eeprom_init helper from Aspeed and Nuvoton
-    boards
-  hw/arm/aspeed: Replace aspeed_eeprom_init with at24c_eeprom_init
-  hw/nvram/eeprom_at24c: Add init_rom field and at24c_eeprom_init_rom
-    helper
-  hw/arm/aspeed: Add aspeed_eeprom.c
-  hw/nvram/eeprom_at24c: Make reset behavior more like hardware
+It seems v3 has a regression in regards to BRK instructions that I =
+cannot
+reproduce with v2. If I start QEMU and GDB with the Linux kernel =
+(v6.0-rc5),
+and set a software breakpoint at `bio_split` (probably not specific to =
+this
+function), I see messages in stdout like this:
 
- hw/arm/aspeed.c                 | 109 ++++++++++++++------------------
- hw/arm/aspeed_eeprom.c          |  78 +++++++++++++++++++++++
- hw/arm/aspeed_eeprom.h          |  16 +++++
- hw/arm/meson.build              |   1 +
- hw/arm/npcm7xx_boards.c         |  20 ++----
- hw/nvram/eeprom_at24c.c         |  59 +++++++++++++----
- include/hw/nvram/eeprom_at24c.h |  39 ++++++++++++
- 7 files changed, 235 insertions(+), 87 deletions(-)
- create mode 100644 hw/arm/aspeed_eeprom.c
- create mode 100644 hw/arm/aspeed_eeprom.h
- create mode 100644 include/hw/nvram/eeprom_at24c.h
+[    4.663981] Unexpected kernel BRK exception at EL1
+[    4.664650] Internal error: BRK handler: f2000000 [#1] PREEMPT SMP
+...
 
--- 
-2.39.0
+Maybe the software breakpoints aren't removed/reapplied correctly in v3?
 
+=E2=80=94
+Mads Ynddal

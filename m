@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp787191ejc;
-        Wed, 18 Jan 2023 11:37:27 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtJnHMmMevytjwIvdR/xLu9df+b3dH6qy8id5ICfusNYymcaBCX3IUdih8UyRdQAr4Pvxo4
-X-Received: by 2002:a05:600c:3b07:b0:3d9:c6f5:c643 with SMTP id m7-20020a05600c3b0700b003d9c6f5c643mr7833794wms.29.1674070647345;
-        Wed, 18 Jan 2023 11:37:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674070647; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp787229ejc;
+        Wed, 18 Jan 2023 11:37:30 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtmxC8v3jV9jHKqt2fk5lASz9P8XQy8x76VhHFrc6BRrdTKF1FlBo5/8gXdi0mbP1vVzw+U
+X-Received: by 2002:adf:e9d2:0:b0:2ab:80b3:67b0 with SMTP id l18-20020adfe9d2000000b002ab80b367b0mr7282502wrn.61.1674070650381;
+        Wed, 18 Jan 2023 11:37:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674070650; cv=none;
         d=google.com; s=arc-20160816;
-        b=u7VuxyclJoeZn6nd1bBg/BACObwOOnviJndk7Oj9u3x+F7sitWaotPAOsQXabxOg0+
-         oUBQ2RKy0rQxlJYIaH678JcUlggLKfwuU3gbmriP/O5hPSn170HYCMFxPjK+SZZKAb/w
-         FN3lDu4WF2w36l/ynen0JgUx74dV3fBA0u4ljh2m/frVeLyJGo1/RZpd6HVYOF2zwbQx
-         orEDfNdBIFGB/d1dZvlQfCRoKKEv6U+hECrcXa2cJ/cOdmqppgXzBkYoNjLSEMZzu11g
-         hZdR0+uEJwdrMmbUCV9ZKV06To1KJAJr/AoR97BnWd08P2YUpXI3OTdvmuBquLnnBEXO
-         //WQ==
+        b=TyWoaETWt1yFfcomd/Yxt3E+i4lzVvAgbou4ym8v8gSpCnxl/DjTvwmap099c2mb25
+         1f+N/zNWA+hRsoiTp9Gn2ehal/hghGZKgI9LKS8Bn31wmMLz25rzly6mn6ueBvLVvvGG
+         4Lwz+hX93tJTOXcSiKNzKJNNK14+/Uwb2ftPY5ruy5nbPWnF/lryfZvEdHfAJwuCkHnT
+         /ZnE6wHC8QdIIWK3+CL0kOykcP4BJHvH+Md+R4049C94vdpy8egcwBi5YUNZ+u9ZnslK
+         pXv6ZvnrTFC/0QFWyjrKl88TGkZTCHCTAWNseLdgbF0z1dxSZz283BI1rR4HEBeL1bL7
+         wTHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=HhbJpNHW+Lwvhi95bxflLe8LTd2aqZyacCsLiXDAYs4=;
-        b=ll+GgpI2yJTthBRb7eYg5P99E1WJtuwaxiCbNxRQ1CKWeOd+2JnjrOWs2ewYZwjJSb
-         FdvUMM1Iy9dtDigof/XCgjtNeASxw9fqUNOoiPcrS8dtFD+ceusnhseMcFO7VIIdkQBa
-         h5O4Yhra+Xzavp7w18AdUUtKXOTC2zcYulqHhBmPdrf4oKC/pqu4kjN8M28I6YUXZNIt
-         Uq3rv81SxAnOWujebpSTuS9U6H9hv0J3nOZLMT78g+QJtA5Y+SkDV8RTUh3mGNnmZr9f
-         FWcmZt+oh8+qONd5BRvpWz/LdC39iFf91TUwrP+8nWtj9jvltf4Gi2nuLo3USAQUhDo/
-         EqaQ==
+        bh=paJgP+QiG/EwIIxiB4Oa6lWh7hcsCTHjlQELhIqjQXI=;
+        b=Thb8IX+4S22010pLbIM5kWsvwCquSUoItZGDqN3dTALZkN4iGbCDwWntR+MeLwBTMB
+         AxZKH9i+aB1AQzSqfJA5s/N1XbhT/I4VjQvn+3nK/r+5UUTMwGEJfW8r7WA/6iP3QHE6
+         5fEvRT+JH4VX+nK25Imi7trIHs8T/+n2RTrQT0DbGD32MFMv7t7yRlhG6p6rtw7Tey7e
+         JfgCLhVBFBwV5zEEgIEdOh3/NCtPRRYgtGUK+GiaIrhwFlZtkL8N9Ss1TVZNFyIqJMAE
+         SATFiGDzCi5vfuO5sg1Nk8cX59ehau3RSXkKACw5hRNuYr0hN9uK92k3FJRm5ESuN14Y
+         Bc9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=z5BakPBg;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Pm3AQolq;
        dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id f12-20020a7bc8cc000000b003da23df7f39si2353113wml.137.2023.01.18.11.37.27
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id f5-20020a0560001a8500b002a4507a889csi35452324wry.257.2023.01.18.11.37.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Jan 2023 11:37:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+        Wed, 18 Jan 2023 11:37:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=z5BakPBg;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Pm3AQolq;
        dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id EC9D920DE8;
-	Wed, 18 Jan 2023 19:37:26 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 070C83EEAC;
+	Wed, 18 Jan 2023 19:37:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674070646; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	t=1674070650; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=HhbJpNHW+Lwvhi95bxflLe8LTd2aqZyacCsLiXDAYs4=;
-	b=z5BakPBg8MzQ4dL/ah6suzOMlR4nKnixHsAUI2FQjij4IR658WUUDLZNBzf3PVEj9ONHdy
-	BwDEBVgKnDm28wNJeuekxNAQTHAZx10qp8slY5a0T7yDJJn6MN0BxROwInbMNMB1r5S8w0
-	sqfHLUhpqe+z7jbwP8dolPVDJf+weEw=
+	bh=paJgP+QiG/EwIIxiB4Oa6lWh7hcsCTHjlQELhIqjQXI=;
+	b=Pm3AQolqWgKMPvkPoyhYPugelM+gZKYIfafcJeS5gKvBHG37r6ENNJ86fIy2O4oZN+7/G2
+	L279mrZdy2NrBCBKRyMAAJ9QO4A7FHPV+hIxd94vjCGQtebMsPQYdLEu6SuhJST3KpQIl7
+	pgqTnISLeNdrccAWjAaaGYckBunV1Ac=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674070646;
+	s=susede2_ed25519; t=1674070650;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=HhbJpNHW+Lwvhi95bxflLe8LTd2aqZyacCsLiXDAYs4=;
-	b=ZPlWdZ2NR0HMZrPUB5Dlp87ndgfENuoL0FoMbknOpxr/MP5U0nnPfmCnD3e8Ghk8lPCgmG
-	L47cuyBSH4s25VBg==
+	bh=paJgP+QiG/EwIIxiB4Oa6lWh7hcsCTHjlQELhIqjQXI=;
+	b=0GAgb5Ukje5NX0RLNVyue+5cUlKtOo2vXpKN2rm27N0XYJtfnDP6CV8hpdjmiiA2yhWXX8
+	22Uf2KUZQQhpd4Dg==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 50768139D2;
-	Wed, 18 Jan 2023 19:37:24 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 63C47139D2;
+	Wed, 18 Jan 2023 19:37:27 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id CA6OBnRKyGOWBwAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 18 Jan 2023 19:37:24 +0000
+	id GAt3C3dKyGOWBwAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 18 Jan 2023 19:37:27 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,50 +82,48 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>
-Subject: [PATCH 01/20] target/arm: rename handle_semihosting to tcg_handle_semihosting
-Date: Wed, 18 Jan 2023 16:34:59 -0300
-Message-Id: <20230118193518.26433-2-farosas@suse.de>
+Subject: [PATCH 02/20] target/arm: wrap psci call with tcg_enabled
+Date: Wed, 18 Jan 2023 16:35:00 -0300
+Message-Id: <20230118193518.26433-3-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230118193518.26433-1-farosas@suse.de>
 References: <20230118193518.26433-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: jkFg8b2i0fBg
+X-TUID: YCzi6bmbj2Oa
 
 From: Claudio Fontana <cfontana@suse.de>
 
-make it clearer from the name that this is a tcg-only function.
+for "all" builds (tcg + kvm), we want to avoid doing
+the psci check if tcg is built-in, but not enabled.
 
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
 ---
- target/arm/helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/helper.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 72b37b7cf1..45b5939676 100644
+index 45b5939676..7c39280a83 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -10803,7 +10803,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-  * trapped to the hypervisor in KVM.
-  */
- #ifdef CONFIG_TCG
--static void handle_semihosting(CPUState *cs)
-+static void tcg_handle_semihosting(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-@@ -10865,7 +10865,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-      */
- #ifdef CONFIG_TCG
-     if (cs->exception_index == EXCP_SEMIHOST) {
--        handle_semihosting(cs);
-+        tcg_handle_semihosting(cs);
-         return;
+@@ -22,6 +22,7 @@
+ #include "hw/irq.h"
+ #include "sysemu/cpu-timers.h"
+ #include "sysemu/kvm.h"
++#include "sysemu/tcg.h"
+ #include "qapi/qapi-commands-machine-target.h"
+ #include "qapi/error.h"
+ #include "qemu/guest-random.h"
+@@ -10852,7 +10853,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+                       env->exception.syndrome);
      }
- #endif
+ 
+-    if (arm_is_psci_call(cpu, cs->exception_index)) {
++    if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
+         arm_handle_psci_call(cpu);
+         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
+         return;
 -- 
 2.35.3

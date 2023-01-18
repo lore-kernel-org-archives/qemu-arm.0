@@ -1,253 +1,398 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp692382ejc;
-        Wed, 18 Jan 2023 09:37:57 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtrOCHZMI4jC0jOTSOxIoZXfoQ2v2uBWDYOuWzewmExuL9zVeraqc/mP2qwI+5/2Ls4OSCM
-X-Received: by 2002:ac8:51d2:0:b0:3b5:7c0a:5968 with SMTP id d18-20020ac851d2000000b003b57c0a5968mr22279560qtn.68.1674063477249;
-        Wed, 18 Jan 2023 09:37:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674063477; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp751665ejc;
+        Wed, 18 Jan 2023 10:52:02 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvdJ38U+/q9+zJu76UVhatJCOvhAaix/RW6/BW/eq96y7v3TLRfxWHmnJ5UREbh1r49uc/n
+X-Received: by 2002:ac8:110a:0:b0:3b6:3ab8:6396 with SMTP id c10-20020ac8110a000000b003b63ab86396mr10206872qtj.36.1674067922673;
+        Wed, 18 Jan 2023 10:52:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674067922; cv=none;
         d=google.com; s=arc-20160816;
-        b=A0m9sjgnMftqFTaSplgqSObq2XLIgc9PLDs6GTEQdJcwn9G0bhbWg+xZXyFsY4SDHc
-         APKHOt021lthNYRJ/LXHEl1AENxw9LJKDztMMmySFHPpA9zWgMLh7ConQ6vydeZGkczp
-         BS81BBIhsbpDPRoApqmJN0OXorECzV+tmAQafH6mS40Wb7ev2gVZQy9SFV1WJLNJ3vI7
-         4/8Bf+kzDwJkKqVfTqKpsOLBchXd2R7ZmXvSRz07tm4FExE12F0foy2cQ+mkRHf1IQFa
-         hFlaepjJCQESlzwkgm7fbsGcSObG9Vre3jVWLaMKAc3MyuMNjiYOe8ysx1aVpwPknP0o
-         2iqg==
+        b=Ddk0aSfhc6oaYN2PYLY6iC+ROe6eyRDQhEmPPdd+dEP6vnTKiMjUI63NmouhvVlKrL
+         KSH7iaKnATmhPJWuC48fUev0FC30ZBT2/K83nMRaHEjrv82cvTKTakzC5m9u8+cg43R5
+         FKzXdhDOPCegtbTE5R9RxsXfKlcdNI/Qfr/bg6Py23Rl4r8cY2EE+8Pdh3zLwCuCB1AU
+         Mdo3rW9aj7l5JR/fixjvokE/ECiNvB1Y28e8bSxjIsPE0dlfDqUxq1NYTdnPTW0v8FCd
+         d+qmv0fO7QigeHH0wup9bQTEmxJ6cGRRZ7FlY0S2yRm37jo7V0R4GzisPszGC+M/2c+1
+         BFXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :user-agent:references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=EcOGpMJZHpvpIVLPl2NxaPq3qMDI707uF0xETD21OrE=;
-        b=Jsv/JJ7PQ68yUa/im+bqQoj3T3TYhfD0yEZUfzwzipRSTiuEsIUVxoMlTFeVQejRdx
-         4Q7b5+V+ubPectm4/GfeZ+CmWVM9tTCsPYFB7IJCC7hs53Xumfvr7KvzDUIvYKjqpzbQ
-         2lzsDbKpvgEqreSVCB2gaEXaoyDMG1B89n02WL9jZ8PUE0l3sA/Y1dky8VB8/Xc4J7IV
-         CABHRMUrY2YyN3jTrTw8K+hYvOtkPLt4aVtDZPqNBWxxGPrQTxGt7eXe+Y0719PoZAjZ
-         5GFmd+Omcj/5zgA5GGXKDGby5Q5/A1hEpuGHtJpt82tGfsyQgiI9y4tmuTsWPBiVsogj
-         USNQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=4CSN7tUhurg9sTLq7USXbyKmJpYRtL+mK9RFGc0vQRk=;
+        b=WEC/jLFFB79ycHdP37OBufnErnOVaBVTRTa4WiZcwwbNKiXFXuefXieihcHqS2/bdr
+         draCdXA2WV0gElt3wFmTr41sL4Bg7yN3n/ozSmX0qx1l4H2VQbjeC9Uvn9VV6Hescloo
+         xV2sL1T/r35sW+/ZIaO1+W95B2R+/kGXo1OFdaslN+dh6R+zVbLVxjIqDZqWAgNOUMMA
+         On5O4WjkwLS/J8/dfaxlDUGqmOhptbxOpDi31nSXE938eL++tSSU9rxORCsGVH00m4+7
+         hsei+cbIl7j0h06nJHV80smhFWB5tkzqWQXYfAGOsmTrMEZk25KvexDpHwOT2fBV7aE0
+         C1XA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X0C3wHuM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=S+QiphH0;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=FXgByDbl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl12-20020a05622a244c00b003ac2beee9cdsi2092616qtb.166.2023.01.18.09.37.57
+        by mx.google.com with ESMTPS id d12-20020ac847cc000000b003b4155467b2si8305879qtr.232.2023.01.18.10.52.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Jan 2023 09:37:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Jan 2023 10:52:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X0C3wHuM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=S+QiphH0;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=FXgByDbl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pICNV-0003kC-Ja; Wed, 18 Jan 2023 12:37:37 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pIDXB-0003N5-N2; Wed, 18 Jan 2023 13:51:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pICNP-0003ic-C3
- for qemu-devel@nongnu.org; Wed, 18 Jan 2023 12:37:31 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1pIDWQ-0003BH-J2; Wed, 18 Jan 2023 13:50:58 -0500
+Received: from out2-smtp.messagingengine.com ([66.111.4.26])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pICNN-00028e-DY
- for qemu-devel@nongnu.org; Wed, 18 Jan 2023 12:37:31 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674063448;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=EcOGpMJZHpvpIVLPl2NxaPq3qMDI707uF0xETD21OrE=;
- b=X0C3wHuMpF46eH+trl+uMvkRsqs3OhaekG5L9lGZMNddflN8fhpyx5W6s6Mm8HPvQkaFtc
- Zq1fr2DRCxCHjeOHo7vcHkIUZGP1pQCpG2dRc3O5dglRgBS5/vvnvC8KvQ/BMk/f1wL4h+
- KFC22fVPWnSXrmH5st6WRH2lL8HbJGQ=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-618-ppKmffdfMj6cPFITbHfZCQ-1; Wed, 18 Jan 2023 12:37:26 -0500
-X-MC-Unique: ppKmffdfMj6cPFITbHfZCQ-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1772185A588;
- Wed, 18 Jan 2023 17:37:26 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.85])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B1D54492B02;
- Wed, 18 Jan 2023 17:37:25 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>, Peter Maydell
- <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
- <lvivier@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, Eric
- Auger <eauger@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH v4 1/2] arm/kvm: add support for MTE
-In-Reply-To: <b92e6786-acc6-50ef-8804-e4e3ef4eb2d6@linaro.org>
-Organization: Red Hat GmbH
-References: <20230111161317.52250-1-cohuck@redhat.com>
- <20230111161317.52250-2-cohuck@redhat.com>
- <b92e6786-acc6-50ef-8804-e4e3ef4eb2d6@linaro.org>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Wed, 18 Jan 2023 18:37:24 +0100
-Message-ID: <87fsc7oiaz.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1pIDWN-0007hu-Ac; Wed, 18 Jan 2023 13:50:53 -0500
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.nyi.internal (Postfix) with ESMTP id BD1845C019C;
+ Wed, 18 Jan 2023 13:50:48 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute3.internal (MEProxy); Wed, 18 Jan 2023 13:50:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1674067848; x=
+ 1674154248; bh=4CSN7tUhurg9sTLq7USXbyKmJpYRtL+mK9RFGc0vQRk=; b=S
+ +QiphH0Q5wNGCVOSKXv/5jxvGj5LMJJJZzSakTTw6LHGl33orrpYlTn3Dk3KR8uP
+ blzPi3WyuDE0X0AEZ5Nij2Bf8IeMOKw/N4hcOwRYZKxzlmxzQ6+xRYUv6VR4i5yb
+ FjwZP1DJkl+ayFExjdlDszgq8IHlyWkxAx3s1zZOlFJHZ4Zkn9qWAFKZ/PlKMIjn
+ ZFaAKh9Dx3wFpF7JPW5VONvy1ZIyhwXfyBG0BWx1HWPqU/5M1QCAzz0npIzSFNB1
+ BoAjEuE56KG0QsBbdW3Lo8ksvKa8BpQTOhMAXY4AnFGFxGT1jqmM4UmyfSikzDAC
+ hCaetLBuula/GxCuBeNyw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1674067848; x=
+ 1674154248; bh=4CSN7tUhurg9sTLq7USXbyKmJpYRtL+mK9RFGc0vQRk=; b=F
+ XgByDblR80okCfBAQ28NWVBnKSt9cSEbw9bhgAjtUfxt69IrlqNP22vM6k4U/2KW
+ y7nXvixjEc9q2FstPLdDrCsu1YcjKMBmtmjpMa7QBdzeBlqwQ1sUKPrhDSQ50aR+
+ SJVNjOCT4MQncR37uwA+bk+UQ4evdvD+Hp/anb2oB3rABYyEW+rEb3MNkGkTbtpj
+ xRP94KLLvkEmgLI7N5qO0XYNdGWdk48LOChbqVrZzIZ3M3h3AIt2gRLN4311maBG
+ sR6zHI3QmIFHNq5hjqScSatxhknNpX4OKXJZLJ7tonrbLHw/JyOaC2e8L3oxqoTJ
+ Ck1KQI9Y2mTSVJcomqc7w==
+X-ME-Sender: <xms:hz_IY36MLODJGvGCqvV1csEcgHWiPIrEFugUMKphxUtM7cALSchFew>
+ <xme:hz_IY84hT4l3eOCIPSCpUw_tYpBGJeX3IYjPNgoLoZ7DnYeHWtWwmarRYPYaku1Jg
+ ZhhItLDYdiBy_REx0g>
+X-ME-Received: <xmr:hz_IY-fQWFRyLbo33jTZFhDEWhvP3NO-wZ1KRn0K66QggSa3H638Vo8ygOCVNh_JRT6AtpnEwK5xGE3gt1r6cA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtkedguddujecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecunecujfgurhepfffhvfevuffkfhggtggugfgjse
+ htkeertddttddunecuhfhrohhmpefrvghtvghrucffvghlvghvohhrhigrshcuoehpvght
+ vghrsehpjhgurdguvghvqeenucggtffrrghtthgvrhhnpefgueekffdtueetgfehteffle
+ dtueehgfehgeelfedujeefhfffteekvddtfeetteenucffohhmrghinhepghhithhhuhgs
+ rdgtohhmnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+ epphgvthgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:hz_IY4LoV-EsvRssjB5p9sPK2OhMJWVZnul78E0TSUl32excWlTPXg>
+ <xmx:hz_IY7KPbj1GQk5Aeb8nz_PXynOWrC-xuQt8w96WozHIhrysQ9y8WQ>
+ <xmx:hz_IYxy3K9LXUdwvbvstKn8PL6gr_9AGNwTNXeUury7VDWvdJ8h4KA>
+ <xmx:iD_IY4q7HP-IaxyAPFde5biiVw3CvRjo2g__HvRJi_IBZku8UvZ1Eg>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 18 Jan 2023 13:50:46 -0500 (EST)
+Date: Wed, 18 Jan 2023 10:50:42 -0800
+From: Peter Delevoryas <peter@pjd.dev>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ hskinnemoen@google.com, kfting@nuvoton.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, philmd@linaro.org
+Subject: Re: [PATCH v4 4/5] hw/arm/aspeed: Add aspeed_eeprom.c
+Message-ID: <Y8g/gp5bteQg4xrg@pdel-mbp.dhcp.thefacebook.com>
+References: <20230118024214.14413-1-peter@pjd.dev>
+ <20230118024214.14413-5-peter@pjd.dev>
+ <ddea0c77-7a00-8796-443c-ba1707ddd8b4@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ddea0c77-7a00-8796-443c-ba1707ddd8b4@kaod.org>
+Received-SPF: pass client-ip=66.111.4.26; envelope-from=peter@pjd.dev;
+ helo=out2-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XXubh2YUKN1x
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7+jDc/w2s6RH
 
-On Tue, Jan 17 2023, Richard Henderson <richard.henderson@linaro.org> wrote:
+On Wed, Jan 18, 2023 at 11:31:57AM +0100, Cédric Le Goater wrote:
+> On 1/18/23 03:42, Peter Delevoryas wrote:
+> > - Create aspeed_eeprom.c and aspeed_eeprom.h
+> > - Include aspeed_eeprom.c in CONFIG_ASPEED meson source files
+> > - Include aspeed_eeprom.h in aspeed.c
+> > - Add fby35_bmc_fruid data
+> > - Use new at24c_eeprom_init_rom helper to initialize BMC FRUID EEPROM with data
+> >    from aspeed_eeprom.c
+> > 
+> > wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
+> > qemu-system-aarch64 -machine fby35-bmc -nographic -mtdblock fby35.mtd
+> > ...
+> > user: root
+> > pass: 0penBmc
+> > ...
+> > root@bmc-oob:~# fruid-util bb
+> > 
+> > FRU Information           : Baseboard
+> > ---------------           : ------------------
+> > Chassis Type              : Rack Mount Chassis
+> > Chassis Part Number       : N/A
+> > Chassis Serial Number     : N/A
+> > Board Mfg Date            : Fri Jan  7 10:30:00 2022
+> > Board Mfg                 : XXXXXX
+> > Board Product             : Management Board wBMC
+> > Board Serial              : XXXXXXXXXXXXX
+> > Board Part Number         : XXXXXXXXXXXXXX
+> > Board FRU ID              : 1.0
+> > Board Custom Data 1       : XXXXXXXXX
+> > Board Custom Data 2       : XXXXXXXXXXXXXXXXXX
+> > Product Manufacturer      : XXXXXX
+> > Product Name              : Yosemite V3.5 EVT2
+> > Product Part Number       : XXXXXXXXXXXXXX
+> > Product Version           : EVT2
+> > Product Serial            : XXXXXXXXXXXXX
+> > Product Asset Tag         : XXXXXXX
+> > Product FRU ID            : 1.0
+> > Product Custom Data 1     : XXXXXXXXX
+> > Product Custom Data 2     : N/A
+> > root@bmc-oob:~# fruid-util bmc
+> > 
+> > FRU Information           : BMC
+> > ---------------           : ------------------
+> > Board Mfg Date            : Mon Jan 10 21:42:00 2022
+> > Board Mfg                 : XXXXXX
+> > Board Product             : BMC Storage Module
+> > Board Serial              : XXXXXXXXXXXXX
+> > Board Part Number         : XXXXXXXXXXXXXX
+> > Board FRU ID              : 1.0
+> > Board Custom Data 1       : XXXXXXXXX
+> > Board Custom Data 2       : XXXXXXXXXXXXXXXXXX
+> > Product Manufacturer      : XXXXXX
+> > Product Name              : Yosemite V3.5 EVT2
+> > Product Part Number       : XXXXXXXXXXXXXX
+> > Product Version           : EVT2
+> > Product Serial            : XXXXXXXXXXXXX
+> > Product Asset Tag         : XXXXXXX
+> > Product FRU ID            : 1.0
+> > Product Custom Data 1     : XXXXXXXXX
+> > Product Custom Data 2     : Config A
+> > root@bmc-oob:~# fruid-util nic
+> > 
+> > FRU Information           : NIC
+> > ---------------           : ------------------
+> > Board Mfg Date            : Tue Nov  2 08:51:00 2021
+> > Board Mfg                 : XXXXXXXX
+> > Board Product             : Mellanox ConnectX-6 DX OCP3.0
+> > Board Serial              : XXXXXXXXXXXXXXXXXXXXXXXX
+> > Board Part Number         : XXXXXXXXXXXXXXXXXXXXX
+> > Board FRU ID              : FRU Ver 0.02
+> > Product Manufacturer      : XXXXXXXX
+> > Product Name              : Mellanox ConnectX-6 DX OCP3.0
+> > Product Part Number       : XXXXXXXXXXXXXXXXXXXXX
+> > Product Version           : A9
+> > Product Serial            : XXXXXXXXXXXXXXXXXXXXXXXX
+> > Product Custom Data 3     : ConnectX-6 DX
+> > 
+> > Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+> > Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> > Reviewed-by: Joel Stanley <joel@jms.id.au>
+> > ---
+> >   hw/arm/aspeed.c        | 10 ++++--
+> >   hw/arm/aspeed_eeprom.c | 78 ++++++++++++++++++++++++++++++++++++++++++
+> >   hw/arm/aspeed_eeprom.h | 16 +++++++++
+> >   hw/arm/meson.build     |  1 +
+> >   4 files changed, 102 insertions(+), 3 deletions(-)
+> >   create mode 100644 hw/arm/aspeed_eeprom.c
+> >   create mode 100644 hw/arm/aspeed_eeprom.h
+> > 
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index c929c61d582a..382965f82c38 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -14,6 +14,7 @@
+> >   #include "hw/arm/boot.h"
+> >   #include "hw/arm/aspeed.h"
+> >   #include "hw/arm/aspeed_soc.h"
+> > +#include "hw/arm/aspeed_eeprom.h"
+> >   #include "hw/i2c/i2c_mux_pca954x.h"
+> >   #include "hw/i2c/smbus_eeprom.h"
+> >   #include "hw/misc/pca9552.h"
+> > @@ -940,9 +941,12 @@ static void fby35_i2c_init(AspeedMachineState *bmc)
+> >       at24c_eeprom_init(i2c[4], 0x51, 128 * KiB);
+> >       at24c_eeprom_init(i2c[6], 0x51, 128 * KiB);
+> > -    at24c_eeprom_init(i2c[8], 0x50, 32 * KiB);
+> > -    at24c_eeprom_init(i2c[11], 0x51, 128 * KiB);
+> > -    at24c_eeprom_init(i2c[11], 0x54, 128 * KiB);
+> > +    at24c_eeprom_init_rom(i2c[8], 0x50, 32 * KiB, fby35_nic_fruid,
+> > +                          sizeof(fby35_nic_fruid));
+> > +    at24c_eeprom_init_rom(i2c[11], 0x51, 128 * KiB, fby35_bb_fruid,
+> > +                          sizeof(fby35_bb_fruid));
+> > +    at24c_eeprom_init_rom(i2c[11], 0x54, 128 * KiB, fby35_bmc_fruid,
+> > +                          sizeof(fby35_bmc_fruid));
+> >       /*
+> >        * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC on
+> > diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+> > new file mode 100644
+> > index 000000000000..9d0700d4b709
+> > --- /dev/null
+> > +++ b/hw/arm/aspeed_eeprom.c
+> > @@ -0,0 +1,78 @@
+> > +/*
+> > + * Copyright (c) Meta Platforms, Inc. and affiliates.
+> > + *
+> > + * SPDX-License-Identifier: GPL-2.0-only
+> > + */
+> > +
+> > +#include "aspeed_eeprom.h"
+> > +
+> > +const uint8_t fby35_nic_fruid[] = {
+> > +    0x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0xcf, 0x01, 0x0e, 0x19, 0xd7,
+> > +    0x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xdd,
+> > +    0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f, 0x6e,
+> > +    0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20, 0x4f,
+> > +    0x43, 0x50, 0x33, 0x2e, 0x30, 0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0xcc, 0x46, 0x52, 0x55, 0x20, 0x56, 0x65, 0x72,
+> > +    0x20, 0x30, 0x2e, 0x30, 0x32, 0xc0, 0xc0, 0xc0, 0xc1, 0x00, 0x00, 0x2f,
+> > +    0x01, 0x11, 0x19, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0xdd, 0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f,
+> > +    0x6e, 0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20,
+> > +    0x4f, 0x43, 0x50, 0x33, 0x2e, 0x30, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0xd3, 0x41, 0x39, 0x20, 0x20, 0x20, 0x20, 0x20,
+> > +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
+> > +    0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0xc0, 0xc0, 0xc0, 0xc0, 0xcd, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63,
+> > +    0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0xc1, 0x00, 0x00, 0x00, 0x00,
+> > +    0x00, 0x00, 0x00, 0xdb, 0xc0, 0x82, 0x30, 0x15, 0x79, 0x7f, 0xa6, 0x00,
+> > +    0x01, 0x18, 0x0b, 0xff, 0x08, 0x00, 0xff, 0xff, 0x64, 0x00, 0x00, 0x00,
+> > +    0x00, 0x03, 0x20, 0x01, 0xff, 0xff, 0x04, 0x46, 0x00, 0xff, 0xff, 0xff,
+> > +    0xff, 0xff, 0xff, 0xff, 0x01, 0x81, 0x09, 0x15, 0xb3, 0x10, 0x1d, 0x00,
+> > +    0x24, 0x15, 0xb3, 0x00, 0x02, 0xeb, 0x8a, 0x95, 0x5c,
+> > +};
+> > +
+> > +const uint8_t fby35_bb_fruid[] = {
+> > +    0x01, 0x00, 0x01, 0x03, 0x10, 0x00, 0x00, 0xeb, 0x01, 0x02, 0x17, 0xc3,
+> > +    0x4e, 0x2f, 0x41, 0xc3, 0x4e, 0x2f, 0x41, 0xc1, 0x00, 0x00, 0x00, 0x23,
+> > +    0x01, 0x0d, 0x00, 0xb6, 0xd2, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0xd5, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74,
+> > +    0x20, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x77, 0x42, 0x4d, 0x43, 0xcd,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa8, 0x01, 0x0c, 0x00, 0xc6,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
+> > +    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
+> > +    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x4e, 0x2f,
+> > +    0x41, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43,
+> > +};
+> > +
+> > +const uint8_t fby35_bmc_fruid[] = {
+> > +    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
+> > +    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
+> > +    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
+> > +    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
+> > +    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
+> > +    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
+> > +    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
+> > +    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+> > +};
+> > diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+> > new file mode 100644
+> > index 000000000000..bc4475a85f24
+> > --- /dev/null
+> > +++ b/hw/arm/aspeed_eeprom.h
+> > @@ -0,0 +1,16 @@
+> > +/*
+> > + * Copyright (c) Meta Platforms, Inc. and affiliates.
+> > + *
+> > + * SPDX-License-Identifier: GPL-2.0-only
+> > + */
+> > +
+> > +#ifndef ASPEED_EEPROM_H
+> > +#define ASPEED_EEPROM_H
+> > +
+> > +#include "qemu/osdep.h"
+> > +
+> > +extern const uint8_t fby35_nic_fruid[309];
+> > +extern const uint8_t fby35_bb_fruid[224];
+> > +extern const uint8_t fby35_bmc_fruid[200];
+> 
+> 
+> I preferred your first version :/
 
-> On 1/11/23 06:13, Cornelia Huck wrote:
->> @@ -2136,7 +2136,7 @@ static void machvirt_init(MachineState *machine)
->>   
->>       if (vms->mte && (kvm_enabled() || hvf_enabled())) {
->>           error_report("mach-virt: %s does not support providing "
->> -                     "MTE to the guest CPU",
->> +                     "emulated MTE to the guest CPU",
->>                        kvm_enabled() ? "KVM" : "HVF");
->
-> Not your bug, but noticing this should use current_accel_name().
+Aw dang it, well, how come you and Phil suggested doing it this way?
 
-I can fix it as I'm touching the code anyway.
+Maybe you were just offering suggestions heh
 
-(Hm... two more of these right above. Maybe better in a separate patch.)
+> 
+> No need to resend, I will rework the code to add :
+> 
+>   extern const size_t fby35_nic_len;
+>   extern const size_t fby35_bb_len;
+>   extern const size_t fby35_bmc_len;
 
->
->> +static inline bool arm_machine_has_tag_memory(void)
->> +{
->> +#ifndef CONFIG_USER_ONLY
->> +    Object *obj = object_dynamic_cast(qdev_get_machine(), TYPE_VIRT_MACHINE);
->> +
->> +    /* so far, only the virt machine has support for tag memory */
->> +    if (obj) {
->> +        VirtMachineState *vms = VIRT_MACHINE(obj);
->> +
->> +        return vms->mte;
->> +    }
->> +#endif
->> +    return false;
->> +}
->
-> True for CONFIG_USER_ONLY, via page_get_target_data().
-> You should have seen check-tcg test failures...
+That would be great, thanks!
 
-Weird, let me check my setup...
-
->
->> +void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp)
->> +{
->> +    bool enable_mte;
->> +
->> +    switch (cpu->prop_mte) {
->> +    case ON_OFF_AUTO_OFF:
->> +        enable_mte = false;
->> +        break;
->> +    case ON_OFF_AUTO_ON:
->> +        if (!kvm_enabled()) {
->
-> tcg_enabled(), here and everywhere else you test for !kvm.
->
->> +#ifdef CONFIG_KVM
->> +        if (kvm_enabled() && !kvm_arm_mte_supported()) {
->
-> kvm_arm.h should get a stub inline returning false, so that the ifdef is removed.
-> See e.g. kvm_arm_sve_supported().
-
-Oh, I actually did add it already...
-
->
->> +    default: /* AUTO */
->> +        if (!kvm_enabled()) {
->
-> tcg_enabled.
->
->> +    /* accelerator-specific enablement */
->> +    if (kvm_enabled()) {
->> +#ifdef CONFIG_KVM
->> +        if (kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0)) {
->> +            error_setg(errp, "Failed to enable KVM_CAP_ARM_MTE");
->
-> Ideally this ifdef could go away as well.
->
->> +        } else {
->> +            /* TODO: add proper migration support with MTE enabled */
->> +            if (!mte_migration_blocker) {
->
-> Move the global variable here, as a local static?
->
-> I guess this check is to avoid adding one blocker per cpu?
-> I would guess the cap doesn't need enabling more than once either?
-
-Indeed, it's a VM cap. (I only tested this on a single-cpu FVP setup.)
-
->
->
->> +                error_setg(&mte_migration_blocker,
->> +                           "Live migration disabled due to MTE enabled");
->> +                if (migrate_add_blocker(mte_migration_blocker, NULL)) {
->
-> You pass NULL to the migrate_add_blocker errp argument...
->
->> +                    error_setg(errp, "Failed to add MTE migration blocker");
->
-> ... then make up your own generic reason for why it failed.
-> In this case it seems only related to another command-line option: --only-migratable.
->
->
-> Anyway, I wonder about hiding all of this in target/arm/kvm.c:
->
-> bool kvm_arm_enable_mte(Error *errp)
-> {
->      static bool once = false;
->      Error *blocker;
->
->      if (once) {
->          return;
->      }
->      once = true;
->
->      if (kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0)) {
->          error_setg_errno(errp, "Failed to enable KVM_CAP_ARM_MTE");
->          return false;
->      }
->
->      blocker = g_new0(Error);
->      error_setg(blocker, "Live migration disabled....");
->      return !migrate_add_blocker(blocker, errp);
-> }
->
-> with
->
-> static inline bool kvm_arm_enable_mte(Error *errp)
-> {
->      g_assert_not_reached();
-> }
->
-> in the !CONFIG_KVM block in kvm_arm.h.
-
-Good suggestion, I'll give that one a try.
-
-Thanks for the feedback!
-
+> 
+> Thanks,
+> 
+> C.
+> 
+> > +
+> > +#endif
+> > diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> > index 76d4d650e42e..f70e8cfd4545 100644
+> > --- a/hw/arm/meson.build
+> > +++ b/hw/arm/meson.build
+> > @@ -53,6 +53,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+> >     'aspeed.c',
+> >     'aspeed_ast2600.c',
+> >     'aspeed_ast10x0.c',
+> > +  'aspeed_eeprom.c',
+> >     'fby35.c'))
+> >   arm_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
+> >   arm_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
+> 

@@ -1,39 +1,39 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp390639ejc;
-        Wed, 18 Jan 2023 02:45:28 -0800 (PST)
-X-Received: by 2002:adf:ff90:0:b0:2bd:de40:3a45 with SMTP id j16-20020adfff90000000b002bdde403a45mr5512414wrr.51.1674038728813;
-        Wed, 18 Jan 2023 02:45:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674038728; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp391781ejc;
+        Wed, 18 Jan 2023 02:47:42 -0800 (PST)
+X-Received: by 2002:a05:600c:1c1a:b0:3da:fbd2:a324 with SMTP id j26-20020a05600c1c1a00b003dafbd2a324mr6153962wms.36.1674038862157;
+        Wed, 18 Jan 2023 02:47:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674038862; cv=none;
         d=google.com; s=arc-20160816;
-        b=vt/q5/WWDkQ4aVgY5j1Kg1BGvzAWVpSxpF6PHN3HR+3eYgYV4TrASktVt3p0Fdfvs2
-         mZT9su9CuWzACJZ2EgdEOznmysRorvRa8Xh06ExWe6JIKlt2XXh+dVHS37cYcg4hfwH2
-         8SqGYiECiCs1FwoDD77epIVvpHM5o4AM0G6s1ASb1fbl33MED7Jf/W9aNz91cmKAFiLG
-         IOH73MyeO1E34+5+8WA4DBV7mQhj0pF3Hy14MhpRx5sXdz4/MuV99koUDarVzA9O24Iy
-         wsKYT0EzrmB8rVTgyMhtiZ0Jla60Gcrdybf0Eyt4sDimh8VrxwBKNBbA7/7iemd8arM4
-         eUCQ==
+        b=zcC0e6nKiumxxADAZmX1+EL70vsT5S7Fn36E52IqrvJA6jeACcjTFsNhIik9ahzmkS
+         BCGFmPP1+BGgK+sxFUSJecx8v4SXo+MRyRrfEzFQXkJDKou9mcUFzxIy1czdfVmDAUO1
+         95Y5aF9o/6iSLDx+FectNDs81u4e9PtzZoujd/7gtSff/XawFobTpN/T7uu7FHWegf13
+         HFS4c/FgdAJ3jafIa/c+TYM4J42IfWjuYp98mNeVOQdaJZ/kF9U6lK0eiECEf2eoOehX
+         q1eAAm9jfJkxQ8Bl3PeI9QD8wfBDWzq+XBX/PFDr9OE3N8sSo2vnTew4YzCVYgGL4KKD
+         +h/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=POBLeK6wEBeyqlHV8bgMgnWeDtKCT80g2KWdwHFt+N4=;
-        b=BJDEOiVdOC6wIJOK35cpyAV2v/ciElp0vxuixBu36V0kgl3JHwtICPFpYsesbnzI9H
-         WIIYYE2K4F4ExNnT5iNA9FRYqbRT3qh/kSInqLLPhHOegI4vD1+itJu9rTX2AAmSTytZ
-         sO95t5BbS1a8mX2vds+zUMCbxJKNrAyudsWW94ojO7gUG8h9enF/u/2BcY+i8VZ5sgTS
-         P8Ink5+hXuEqSH6zYv/nA9dpKcuEiepT5/Ylw/Jksic6kHS0U80Le9gSOLRItLIgBZhK
-         qMRHb9oFULXo9wIYHj4gQRPPCVoOn8h/54idgGcB39nhJfAxeiydbnJ2zfZDEUJf5YSp
-         BPbA==
+        bh=iog5WF2G/vImaly9nWHyzB47r7oe5u859s8q/Iq03KI=;
+        b=IfzHe1FLXLY22HyQrC5AQJFCTpooBU7DGKJV/uoM5wAONZliuz8ebZfe0YgjLMIN4I
+         gqiOBAaM7etsofOhvVFyVRGqa9yr4pCgoDtwcWgaNJ6jCndSap2JbIg6h8m6C9fUYW6s
+         jGmGi219Q4gpuLtzKcWxQ6dv0fA0hCQcNbdA3ZhKlSdF8p9izJavsdN9YuDctW1y3ZD2
+         yhyhqy7VX6hhBfa66WCdnIR+VGR64/fu5qSZqn1Z/c85ye0pNun0+qD/J5PhQmeOBxud
+         HkehZ4JrsvByUTzVGFu3mPueosSGK53KYF6yy2eyOWh61xx6dRu6YMe/RuB+JBaXXwnN
+         Q5mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eBHh1gU9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=baioGDKs;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id r1-20020adfa141000000b002be2b409252sor994741wrr.67.2023.01.18.02.45.28
+        by mx.google.com with SMTPS id z10-20020a1c4c0a000000b003daf671f7c2sor492554wmf.20.2023.01.18.02.47.42
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 18 Jan 2023 02:45:28 -0800 (PST)
+        Wed, 18 Jan 2023 02:47:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eBHh1gU9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=baioGDKs;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -41,41 +41,41 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=POBLeK6wEBeyqlHV8bgMgnWeDtKCT80g2KWdwHFt+N4=;
-        b=eBHh1gU9890a0Cjs1jBmE58zoc/8pgoRzETRQ2kwcC/e+CQkN8jNP3Eo45hsHPXfQu
-         fkaoh+LR2Bb07pDtH3lMsdI3tualo557O+NyIijMGwVmIikmxjra0NkxfM8bFFSMMB64
-         yldNagt4h2dEw2AjFYo9eWlS3hQ1iOSFBx04oMVZN0px1BzuTQSy/LXnYKMZ/e/9WPEj
-         K5Rm47VJEgPNxzB9Lq6bO0ArRcrnaDAP08rcY3PWqqRwKv0x1DR/+mDWYbeE1EJXWD9R
-         h8JjCPdg1u1tgz9mjnVGNOn3V+HKh93W4tNkPsrZ5BOz/S32eRQAWrF/GWJQsbIZnNdF
-         xF9w==
+        bh=iog5WF2G/vImaly9nWHyzB47r7oe5u859s8q/Iq03KI=;
+        b=baioGDKsZeIOuXCxkxK0Ra7D23iWhGKshy/++/xIuPq2sQQ/+XxHH7eL05ZfU7dVb2
+         7AqoIIoXkQ3xVsE3kvUoE5zXZ8Ks4Kmwvok/yBqZfkLipazMyBAzMpgCexZvYM0gtTyI
+         aWlyRFi/c4jjCuFmyHmH4caIUKVQ0jBkmC3q7iozSvhE8X/bewUwpxGzkaiSAtznviX3
+         af/RwQnW5GgyCe/1llnhJ+NJceFoTqSlA6e7vSrh9WphusQWeElXBH5C0jsGLTP/wrJD
+         Kzae6rrRg9c2GCXElW1sSy2uqnMOalRNnHLCo7hnxR/u2rkqlh0ss/ooi/05HtSIPelW
+         zreg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=POBLeK6wEBeyqlHV8bgMgnWeDtKCT80g2KWdwHFt+N4=;
-        b=yGBBaNN7fX819fquS2aNl0Bsa+xGIqgeeO17c4gqjj+eGPXTtk1XzEBDUf9KBq8xWV
-         ysf9gbrIj4tqryNlL66+tZXHZRAUikU9y/mkWbMTQlkj00RdiZW7DXwK2XzJXHCFgbiq
-         HxRlPpkG66gKOnVwx8QiQsc/D7B8j+rl3hQ4h8BNi32c9OEwMwt5egbOEf2z4vvgGdv6
-         GQhQHqTF/On+omLOKP14kUuEpVdjOYrqr2kb+97wjsSRyQ5Wxbp7bqE10E1VxRVLNAb8
-         UGNOMiOGdaAML6/ZpnAPRf5LEaK0nrnzaRvwCMDLqFaOrbvA+esvXWH08To/KrfrVenp
-         1BJg==
-X-Gm-Message-State: AFqh2kpPnkWAC2rQvUpR8AHsEueWwF9jBW1axzNKokuV1CRjIv/zPrw+
-	2rp0RQQ6/S/3EuEHjU2wjllD18Dv
-X-Google-Smtp-Source: AMrXdXvb7kGmsBhwQYlBpEUi/YaiU0sZP3RlGi7e9bGC9mrhnmUQMDdPSHWj9CGvHNgjl/HQidjpeQ==
-X-Received: by 2002:adf:a318:0:b0:2bd:dc0c:ffd1 with SMTP id c24-20020adfa318000000b002bddc0cffd1mr5978546wrb.13.1674038728583;
-        Wed, 18 Jan 2023 02:45:28 -0800 (PST)
+        bh=iog5WF2G/vImaly9nWHyzB47r7oe5u859s8q/Iq03KI=;
+        b=ZrfoGV1F2XQFcfAF+8SYmbI2+KinjgLax2HII1vaW0XVtfPu72cuiQZBS1h8PvMZ+m
+         VU949y84zZ/c0xUG2Q0AgLjMNC0Ql4rfcMxZ7p2qCnvKMVXanEbM2TOI0u7NHF/aPPIy
+         pFBkU0rNxsNHJ9J2RY6HyBBDHTu0BFwwC22p/HJ63KhqrbYQiThYTdr2Hgts1+NnPExX
+         TaDOtptMzAu0VOuphbV2lzIeOAOehptQiJk3kazaAHDpVD1bIAGtcyDw4YliPXWS3hmv
+         Nm6j8hn5WNLEh7I4VdefAiukUpA0KZMCvu/sRLuNKSUv6TtO1yWU3PVy4GjqYmqLSbhV
+         HhTA==
+X-Gm-Message-State: AFqh2kpz0idMBhnSPE8jEwkQNy5SXO/a/PAlwl///f+LgSnYNtJ7h9TC
+	jij0c4f+Oz18DR9r6ZtSyEo3T4gK
+X-Google-Smtp-Source: AMrXdXvFTNuzmkgTU4C300XWj40ncWfv5L7TaSZMhcJPVM9Yn3eurxfVrkPwO6s8SjgTq+Xk0eEQsQ==
+X-Received: by 2002:a05:600c:4e08:b0:3db:1a41:663a with SMTP id b8-20020a05600c4e0800b003db1a41663amr197239wmq.20.1674038861899;
+        Wed, 18 Jan 2023 02:47:41 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id h3-20020adfe983000000b002bdf5832843sm10162239wrm.66.2023.01.18.02.45.27
+        by smtp.gmail.com with ESMTPSA id ay13-20020a05600c1e0d00b003cf71b1f66csm1725100wmb.0.2023.01.18.02.47.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Jan 2023 02:45:28 -0800 (PST)
-Message-ID: <1ff29148-eae9-84b7-3521-4b9d543f12e3@linaro.org>
-Date: Wed, 18 Jan 2023 11:45:25 +0100
+        Wed, 18 Jan 2023 02:47:41 -0800 (PST)
+Message-ID: <29287d50-7bff-2610-afab-b7ea96e427fb@linaro.org>
+Date: Wed, 18 Jan 2023 11:47:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [RFC PATCH v3 18/28] target/arm: Move common cpu code into cpu.c
+Subject: Re: [RFC PATCH v3 00/28] target/arm: Allow CONFIG_TCG=n builds
 Content-Language: en-US
 To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -84,36 +84,36 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
  Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>
 References: <20230113140419.4013-1-farosas@suse.de>
- <20230113140419.4013-19-farosas@suse.de>
- <bafc45b7-f42a-a500-053f-65f057a14cc1@linaro.org> <87bkmx0yux.fsf@suse.de>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <87bkmx0yux.fsf@suse.de>
+In-Reply-To: <20230113140419.4013-1-farosas@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: /h0Xy2ZxB09X
+Content-Transfer-Encoding: 7bit
+X-TUID: UBmkuD+DKh2M
 
-On 17/1/23 20:01, Fabiano Rosas wrote:
-> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+On 13/1/23 15:03, Fabiano Rosas wrote:
+> This series makes the necessary changes to allow the use of
+> --disable-tcg for arm.
 > 
->> On 13/1/23 15:04, Fabiano Rosas wrote:
->>> The cpu_tcg.c file about to be moved into the tcg directory. Move the
->>> code that is needed for cpus that also work with KVM into cpu.c.
->>>
->>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
->>> ---
->>>    target/arm/cpu.c     | 76 +++++++++++++++++++++++++++++++++++++++++++
->>>    target/arm/cpu_tcg.c | 77 --------------------------------------------
->>>    2 files changed, 76 insertions(+), 77 deletions(-)
->>>
->>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> [...]
->>
->> TYPE_IDAU_INTERFACE is ARMv8-M specific, so TCG AFAIU.
+> Based on Richard's "target/arm: Introduce aarch64_set_svcr":
+> https://lore.kernel.org/r/20230112004322.161330-1-richard.henderson@linaro.org
 > 
-> Hm.. QEMU doesn't start without it. There might be some implicit
-> dependency. I'll check.
+> branch here: https://github.com/farosas/qemu/tree/arm-disable-tcg
+> 
+> Since v2:
+> 
+> patch 5: removed extraneous include statements
+> patch 6: removed extraneous tcg_enabled
+> patch 7: dropped in favor of "target/arm: Introduce aarch64_set_svcr"
+> patch 12: removed inline
+> patch 13-15: dropped, not needed due to Kconfig changes
+> 
+> new:
+> 
+> - cpregs.h changes I had forgotten to include in v2
+> - moved CPUs initialization into tcg/
+> - skipped tests that require TCG
+> - fixed the migration tests for aarch64
+> - Kconfig changes, left only the 'virt' machine set by default with KVM
 
-Likely some M-profile code (note this type is a QOM *interface*).
-
-I checked the uses (git-grep -W IDAU_INTERFACE) and none should be
-reachable in a non-TCG build.
+For v4, consider splitting it in two parts, first reviewed patches that
+Peter can queue directly, and second part requiring more review.

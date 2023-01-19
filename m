@@ -1,81 +1,80 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp645966ejc;
-        Thu, 19 Jan 2023 13:59:57 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtKfHo8DnHjfGHWOsNgjsRLsA4mcIhIgZNxONYNcoSqssvKU5HZ8U80cmqRbf7HtbQj52ex
-X-Received: by 2002:a05:6214:5091:b0:535:1fde:729c with SMTP id kk17-20020a056214509100b005351fde729cmr23350024qvb.42.1674165597173;
-        Thu, 19 Jan 2023 13:59:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674165597; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp648013ejc;
+        Thu, 19 Jan 2023 14:02:52 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvn+K5Nxs1kVFn0K8EY9cvjkgsaSTF43iXihNPOviyj99OBUr9MH5+kEja3rwLBx2NdF1s+
+X-Received: by 2002:ac8:45ce:0:b0:3b6:30e6:adaf with SMTP id e14-20020ac845ce000000b003b630e6adafmr14241096qto.52.1674165772528;
+        Thu, 19 Jan 2023 14:02:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674165772; cv=none;
         d=google.com; s=arc-20160816;
-        b=d+7LFTtP5rZbwI9CKTaRglIo3HygGZQBwOUv4oAixoTax0luSNP+mQZtzxYPAMRaWC
-         bznZNJywBdtxb9Z6UR148a+QE7lyBgXdIWUe9BubYjPlg3BKNStr3OlbyTNGXpwK1v0j
-         7CY1iqk79zZ9ePQ0CVMZwYY9vgS1qG9S9HhmrZLNbNBlHH90GYf78XOVpumVlbSKA2to
-         uUPeiZJDuq2+6nEXm0Fmvyp0iZ5s7Z3dJWs2c8mlPMqXzyEpSiS5Y7yWqt6VTiOd5PtO
-         geDJcTZhqkraCOJba598Hl9klJcgyZAWEAFlbIQJ/WlTf1LSH/1kSDzPU8l5M0Yi43BN
-         iR6w==
+        b=vEOV1Gbv+chpwD5S1IiyhC1Y+byjTOBOmLNWLi54IuMSkS0dgPNJdC0pVfrUyadS5w
+         LvE+wKwmewnsdYV4WbiJlIZyPxP+nXd6aadD5cwd/AxPUIVNtIDT5DZ4SFS4sdsP+PH1
+         WckHWPT/fh6IDBwjpj1RqHNEOb3xBLxxbukKOvFJa1/X5Y9zMSzYv+ZPozvMfjUv4zlv
+         ft8He72gh9un87bPnzNNGQVA0eP+RpmPglQ/Y+efVwAfvcC6hUC/ChgTnf4Xb2rJi+37
+         3X8Ayz35UkddPjrkmcioUOzRby7Z84sg5uUePcj/oFO2IReq8YJwI/3ftGIxF66JissW
+         psEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
+         :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature:dkim-filter;
-        bh=jsK45Kzhec33n4ZMGu42lWfnqqm4FRUJ2O1s19IbE90=;
-        b=M6euTZ9ewljLzTz6rXXL4sBaptaawxy4YKT8swqhL9SQtrOqV2l5v3oFmZDZFmhM2E
-         bp7MT7dijnIbX3AmdkUW/DUDMawNa/V2+F+NPRGIlY+vv3TRS63It1LQCIDwayCmQY4U
-         9fZPRQcixFO+EMqj6EhSvPtdGF50YGYatGE4qmi/nJhFma5WY5ctuG4QphJ/mDVcodmz
-         oGwUSAmLQCCcg8ktN+KX+5q9kJZRkqCqqcnhxZUZvH8Z9dAO6xlvAbKC0E0gTECAJa9f
-         FbZ6wUbroHR0TW5yS011UZB8eqb2Gs6+tA68iQEEmaXPTEET8HDbYl2dv8IBbjQrVpVl
-         Cayw==
+        bh=bjL/baM7wjIGagE14YBNqI9Zd7koJOwlvL477ydbRAQ=;
+        b=ADwuhDE4o+W2zGO7wfSp2a2gNM8fYY1aBwvb1XilX/LMvTdwtlnGJv/AG8hoNFKMy0
+         i7vlIYfKIhyO/UCb/+gWX/8xibCkdk1SBa0A5oEZNNvCf18gd2F1Ul+tvEwbX+y4zsCJ
+         akPCW40k+Folrdff9jbZtLrhI9OHbqHmQRrgVlFt7wLhU4qaFtA3Ha5jW0uuxuydhk8t
+         u+6aDWJWlnkVg7QXSZdNDEljQSwPupWmTwjhh4z6d3jIvGPgieSKiP8Jna2fLY7NHLb6
+         tuLclFzZYIbmDtq7u2HQrhS7N2cJ9c0xICBBsdf+de8lpf/guoaz6J6H1iz9DOhWOde+
+         phBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=DlA9qAMg;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=jiLb9vHx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m7-20020a05620a290700b006fec5425cc5si7076648qkp.642.2023.01.19.13.59.56
+        by mx.google.com with ESMTPS id g7-20020ac84807000000b003b62d60e891si8596266qtq.272.2023.01.19.14.02.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 13:59:57 -0800 (PST)
+        Thu, 19 Jan 2023 14:02:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=DlA9qAMg;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=jiLb9vHx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pIcwg-0000jc-7Q; Thu, 19 Jan 2023 16:59:42 -0500
+	id 1pIczj-00023f-GT; Thu, 19 Jan 2023 17:02:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pIcwe-0000jD-53; Thu, 19 Jan 2023 16:59:40 -0500
+ id 1pIczW-000212-Jo; Thu, 19 Jan 2023 17:02:38 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pIcwc-0005ra-47; Thu, 19 Jan 2023 16:59:39 -0500
+ id 1pIczS-0006b3-Em; Thu, 19 Jan 2023 17:02:36 -0500
 Received: from [192.168.0.20] (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id 604EA20E09FC;
- Thu, 19 Jan 2023 13:59:35 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 604EA20E09FC
+ by linux.microsoft.com (Postfix) with ESMTPSA id 29C8620E09FD;
+ Thu, 19 Jan 2023 14:02:31 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 29C8620E09FD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1674165576;
- bh=jsK45Kzhec33n4ZMGu42lWfnqqm4FRUJ2O1s19IbE90=;
+ s=default; t=1674165752;
+ bh=bjL/baM7wjIGagE14YBNqI9Zd7koJOwlvL477ydbRAQ=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=DlA9qAMgOP9NVsfCC6GpI3SPGG5GVvMLKov3GnRzEMAwbGqrpIxx/H+wwKVyacp3f
- EytUHyRtHuPPTllGMeGr2XuFZiPQah7Ww7PDjcAEeoTqlz2mY2JDnoi4KBsmLUW7rJ
- CjmvjeopAvXUPNcqwpDso1kiUg8kt0E5TZRlSVoY=
-Message-ID: <71985634-92cc-5da7-91a0-c48ab7bd664b@linux.microsoft.com>
-Date: Thu, 19 Jan 2023 22:59:33 +0100
+ b=jiLb9vHxs5PzNc4rRvvSVrvSzRr2qme+/sp+NiwxpVZBu5UcRPFOo1MxHaWHNC00B
+ c7Q+uxqd306g2AlpjYc79PglLVJMle+DOJs7s+SDfugxW6X+Ofcpbi4V730nVXKmd4
+ 8s6dX9mVdZQPGkCxcGrdAP0QCs8KUzeAEFi8wYTs=
+Message-ID: <b1228a0e-8677-eaec-9040-e90a821d25a9@linux.microsoft.com>
+Date: Thu, 19 Jan 2023 23:02:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v2 3/4] hw/char/pl011: better handling of FIFO flags on
- LCR reset
-Content-Language: en-US
+Subject: Re: [PATCH v2 1/4] hw/char/pl011: refactor FIFO depth handling code
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20230117220523.20911-1-eiakovlev@linux.microsoft.com>
- <20230117220523.20911-4-eiakovlev@linux.microsoft.com>
- <CAFEAcA_r_jeuFnpJfDkvhXCWKO81wHTuE31Wsjuuu8_Uaxfc6w@mail.gmail.com>
+ <20230117220523.20911-2-eiakovlev@linux.microsoft.com>
+ <CAFEAcA9EndzEQA7CPszBCFJyzSgD7=FqeFFK-LHxucTA=CSimA@mail.gmail.com>
+Content-Language: en-US
 From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
-In-Reply-To: <CAFEAcA_r_jeuFnpJfDkvhXCWKO81wHTuE31Wsjuuu8_Uaxfc6w@mail.gmail.com>
+In-Reply-To: <CAFEAcA9EndzEQA7CPszBCFJyzSgD7=FqeFFK-LHxucTA=CSimA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=13.77.154.182;
@@ -102,50 +101,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /KtZeGnhAo7n
+X-TUID: vmskXToHqAS4
 
 
-On 1/19/2023 14:30, Peter Maydell wrote:
+On 1/19/2023 14:45, Peter Maydell wrote:
 > On Tue, 17 Jan 2023 at 22:05, Evgeny Iakovlev
 > <eiakovlev@linux.microsoft.com> wrote:
->> Current FIFO handling code does not reset RXFE/RXFF flags when guest
->> resets FIFO by writing to UARTLCR register, although internal FIFO state
->> is reset to 0 read count. Actual guest-visible flag update will happen
->> only on next data read or write attempt. As a result of that any guest
->> that expects RXFE flag to be set (and RXFF to be cleared) after resetting
->> FIFO will never see that happen.
+>> PL011 can be in either of 2 modes depending guest config: FIFO and
+>> single register. The last mode could be viewed as a 1-element-deep FIFO.
+>>
+>> Current code open-codes a bunch of depth-dependent logic. Refactor FIFO
+>> depth handling code to isolate calculating current FIFO depth.
+>>
+>> One functional (albeit guest-invisible) side-effect of this change is
+>> that previously we would always increment s->read_pos in UARTDR read
+>> handler even if FIFO was disabled, now we are limiting read_pos to not
+>> exceed FIFO depth (read_pos itself is reset to 0 if user disables FIFO).
 >>
 >> Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 >> ---
->>   hw/char/pl011.c | 14 +++++++++-----
->>   1 file changed, 9 insertions(+), 5 deletions(-)
->>
+>>   hw/char/pl011.c         | 25 +++++++++++++------------
+>>   include/hw/char/pl011.h |  5 ++++-
+>>   2 files changed, 17 insertions(+), 13 deletions(-)
+> Looking at this again, I realised that there's a subtle point
+> here about migration compatibility. If we do a VM migration
+> from an older version of QEMU without this change to a newer
+> version that does have this change, the incoming migration state
+> might indicate that we have FIFOs disabled, and there's a character
+> in read_fifo[] that isn't in array element 0 (because the old
+> code doesn't put it there). I think this works out OK because
+> the codepath in the UARTDR read-from-FIFO will first read the
+> character from read_fifo[read_pos], which will be the non-zero
+> read_pos as set by the old QEMU, before constraining it to be
+> 0 when it does the advance of read_pos; and the pl011_put_fifo
+> code doesn't care about the actual value of read_pos.
+>
+> But this is kind of tricky to reason about, and fragile to
+> future changes in the code, so I feel like it would be better
+> to have a migration post_load function that sanitizes the
+> incoming state to enforce the invariant assumed by the new code, i.e.
+>
+>    if (pl011_fifo_depth(s) == 1 && s->read_count > 0 && s->read_pos > 0) {
+>        /*
+>         * Older versions of QEMU didn't ensure that the single
+>         * character in the FIFO in FIFO-disabled mode is in
+>         * element 0 of the array; convert to follow the current
+>         * code's assumptions.
+>         */
+>        s->read_fifo[0] = s->read_fifo[s->read_pos];
+>        s->read_pos = 0;
+>    }
+>
+> If we're putting in a post-load function we can also sanitize
+> the incoming migration stream to fail the migration on bogus
+> (possibly malicious) data like read_pos > ARRAY_SIZE(read_fifo)
+> or read_count > fifo depth.
+
+
+Yeah, i also saw this issue with migration and how it was not really a 
+problem. I do agree with your point about making it more obviously fixed 
+though.
+
+
+>
 >> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
->> index 404d52a3b8..3184949d69 100644
+>> index c076813423..329cc6926d 100644
 >> --- a/hw/char/pl011.c
 >> +++ b/hw/char/pl011.c
->> @@ -87,6 +87,13 @@ static inline unsigned pl011_get_fifo_depth(PL011State *s)
->>       return s->lcr & 0x10 ? PL011_FIFO_DEPTH : 1;
+>> @@ -81,6 +81,12 @@ static void pl011_update(PL011State *s)
+>>       }
 >>   }
 >>
->> +static inline void pl011_reset_pipe(PL011State *s)
+>> +static inline unsigned pl011_get_fifo_depth(PL011State *s)
 >> +{
->> +    s->read_count = 0;
->> +    s->read_pos = 0;
->> +    s->flags = PL011_FLAG_RXFE | PL011_FLAG_TXFE;
-> Should this really be resetting all the other flags to 0 ?
-> I think we should set/clear only the FIFO related flags, and
-> leave the others alone. We don't yet implement the
-> modem-status signals, but if/when we ever do, clearing them
-> would be the wrong thing here.
->
-> (Reset still needs to reset all the flag register bits.)
-
-
-Right, i thought about it, but as you mention we only use FIFO flags 
-currently. Still, your suggestion about future changes makes sense.
-
-
->
+>> +    /* Note: FIFO depth is expected to be power-of-2 */
+>> +    return s->lcr & 0x10 ? PL011_FIFO_DEPTH : 1;
+>> +}
+>> +
+>>   static uint64_t pl011_read(void *opaque, hwaddr offset,
+>>                              unsigned size)
+>>   {
+>> @@ -94,8 +100,7 @@ static uint64_t pl011_read(void *opaque, hwaddr offset,
+>>           c = s->read_fifo[s->read_pos];
+>>           if (s->read_count > 0) {
+>>               s->read_count--;
+>> -            if (++s->read_pos == 16)
+>> -                s->read_pos = 0;
+>> +            s->read_pos = (s->read_pos + 1) & (pl011_get_fifo_depth(s) - 1);
+>>           }
+>>           if (s->read_count == 0) {
+>>               s->flags |= PL011_FLAG_RXFE;
+>> @@ -273,11 +278,7 @@ static int pl011_can_receive(void *opaque)
+>>       PL011State *s = (PL011State *)opaque;
+>>       int r;
+>>
+>> -    if (s->lcr & 0x10) {
+>> -        r = s->read_count < 16;
+>> -    } else {
+>> -        r = s->read_count < 1;
+>> -    }
+>> +    r = s->read_count < pl011_get_fifo_depth(s);
+>>       trace_pl011_can_receive(s->lcr, s->read_count, r);
+>>       return r;
+>>   }
+>> @@ -286,15 +287,15 @@ static void pl011_put_fifo(void *opaque, uint32_t value)
+>>   {
+>>       PL011State *s = (PL011State *)opaque;
+>>       int slot;
+>> +    unsigned pipe_depth;
+>>
+>> -    slot = s->read_pos + s->read_count;
+>> -    if (slot >= 16)
+>> -        slot -= 16;
+>> +    pipe_depth = pl011_get_fifo_depth(s);
+>> +    slot = (s->read_pos + s->read_count) & (pipe_depth - 1);
+>>       s->read_fifo[slot] = value;
+>>       s->read_count++;
+>>       s->flags &= ~PL011_FLAG_RXFE;
+>>       trace_pl011_put_fifo(value, s->read_count);
+>> -    if (!(s->lcr & 0x10) || s->read_count == 16) {
+>> +    if (s->read_count == pipe_depth) {
+>>           trace_pl011_put_fifo_full();
+>>           s->flags |= PL011_FLAG_RXFF;
+>>       }
 > thanks
 > -- PMM

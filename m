@@ -1,90 +1,90 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp216365ejc;
-        Thu, 19 Jan 2023 02:12:31 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtA9yOcMjGSneGxOpdLPAXqpp+sdAeJEMRnSVfCbfw5YvkA7PUz+7Fnx75airkUIPyTmxby
-X-Received: by 2002:a05:6214:12d7:b0:535:44e4:ffc5 with SMTP id s23-20020a05621412d700b0053544e4ffc5mr6021304qvv.22.1674123151011;
-        Thu, 19 Jan 2023 02:12:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674123150; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp216798ejc;
+        Thu, 19 Jan 2023 02:13:15 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtTYvPHmChFaKKemsURw7+WVuzW88Qkn93FnRxB/I+azI/ab3H2FrD7dm/y0axNjbS6gWLH
+X-Received: by 2002:a05:6214:4413:b0:534:6d5c:d5ad with SMTP id oj19-20020a056214441300b005346d5cd5admr15863647qvb.4.1674123195421;
+        Thu, 19 Jan 2023 02:13:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674123195; cv=none;
         d=google.com; s=arc-20160816;
-        b=a9oUroP+9b0PoewdoDQpiOCrylCXN+K8NsgtmJD1AkweviVq4q+eizqC7KTOF40MOh
-         zL/tG7AfwuUsrA713KXy2WJMv9aDQ53OaLfmECVxqiLippPlzc8ZO3z9Fe4X/viAGj05
-         zpRa3JXXiiZRkfNXm9uEujE0VQQqChpOw3+afwjmwBIBQrOt6LyCa4eekbHuYGG2ng1B
-         um8Jp8ZfPYX7ufO1A310eoEXXmzLggftKedCjgpDiOKoHpnf0gnUMIFNL2X3+hgrnKuT
-         ri1agbOuyR/JWGcJkKflHT8adv5GLMgeauaD2RPaGqR3naODCmZw6M7KVEizNCvDuxHA
-         NBPw==
+        b=QxLtszZ2HrPzuadvPH8hYEhBWZIn17cQ3OG1mPIJsv3HVhzU27E76vnaQSp+zUQMcy
+         rAhe3uyz8QLRnMrPjoFOB1xzpslekStyYhPHIIXYm97Sru1GGYZ8NEUVJ97mJ23XjVgz
+         vfMFLXQHgzsJJ5D2eiGdexir/1oEWD58VjcDzMY32h2V9Zj5L2BOp4r/T77Ev+y/1WL8
+         VRh/EJU/qMNpoq7Rlw/M77WBIsqCBk05+qvWjkCboETIqDst+39m/yaBKIme1ofmDkPX
+         mjEPhmz8mSN5sABmTscnegSonbIhL0fE5w908TFeUyKJIsT1Ocq3xjV7RcUXKS5kL9UP
+         BUtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=SkoelqvlvrsqhEevYhEIlMsDmCtwS6JCJdP3XdXAQaY=;
-        b=lxByUeomyyWFB/RUwcV5nN7Dqr/DzC5px6UV8v1wuwoYSr0QJIC85YhzGNwAPtO46E
-         kwR150P4dqHfU2bVVAlXxuBwHfKd4J+P3vQ2LlL8MASFH6os1dudz1ZBDzYHeGvtGQUz
-         cEaRyJ3bCULwjnPawgTnkzdHt8Gwnl/uoK7yloGXLwIhsdrLt2iX4sj9oVrwWT2u6w+s
-         Y1KfJ7OfuUil+xFTv4Ll9A/a0xP9obE/tsLgndkPP/9YMxYHCqIXutgd1TmRxmu7jzCP
-         V66Kg3s89mYpXu5uZ/vc88iJ/S5hyb2eKoCnkdio3PtM9OD/AEwmFQlGp1e3i6rojc2L
-         ac2A==
+        bh=+5bluXdjaCn3oQ9NGGs572QWlIZ5/vAONfTlGZhWE+Q=;
+        b=KbUqtQo9JfTzpWrr7TEJ9XSBxbJvKumShQqB6Mf3Ar6lq/h3bWo4U57FmVStuCBLLf
+         TzbrjsbaDMl+HTpwOggI/0jmIiGxJB6Z9KVQivAbE/+3udoz3wndjN20SWL3M0Rkka/c
+         /3yEDfAYYn0vvoRnXRCEP3mirj0TjxpI7I0SwGITqQvcHINYIfBI8uyTul0AfN4liSgf
+         XQoKhMVLuGATzt10/erUxveua1pQhFF0twF0202dKnD6MznX4/FZAPoJHGUwB3AiD7f/
+         wNmyRwwWVTQyJkphwV3qvt30HbZi5OT8GavItj+Pet/rQsTAywMl6LwPFueJtFg8xMoX
+         TOoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DRlkFpm4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F+7rMfdu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10-20020ad45aaa000000b00534bc467aeasi9178874qvg.137.2023.01.19.02.12.30
+        by mx.google.com with ESMTPS id dm39-20020a05620a1d6700b007065283fa6esi7275477qkb.422.2023.01.19.02.13.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 02:12:30 -0800 (PST)
+        Thu, 19 Jan 2023 02:13:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DRlkFpm4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F+7rMfdu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pIRos-0004V8-Ti; Thu, 19 Jan 2023 05:06:54 -0500
+	id 1pIRot-0004YP-Mi; Thu, 19 Jan 2023 05:06:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIRoG-00042s-Vg
- for qemu-devel@nongnu.org; Thu, 19 Jan 2023 05:06:21 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIRo1-0003s9-0m
+ for qemu-devel@nongnu.org; Thu, 19 Jan 2023 05:06:01 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIRoF-0005Db-FE
- for qemu-devel@nongnu.org; Thu, 19 Jan 2023 05:06:16 -0500
-Received: by mail-wr1-x432.google.com with SMTP id r9so1323634wrw.4
- for <qemu-devel@nongnu.org>; Thu, 19 Jan 2023 02:06:15 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIRnx-0005Em-O3
+ for qemu-devel@nongnu.org; Thu, 19 Jan 2023 05:06:00 -0500
+Received: by mail-wm1-x333.google.com with SMTP id m15so1068436wms.4
+ for <qemu-devel@nongnu.org>; Thu, 19 Jan 2023 02:05:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SkoelqvlvrsqhEevYhEIlMsDmCtwS6JCJdP3XdXAQaY=;
- b=DRlkFpm4Ujwik5d5delbdEAW7f3wEd9Sn4dA1gs8+gOTt1BEmEgkIPvtU4GjoV3+fY
- pI85suLacZ02B3qtWWwjbQ6k0Oua7ZL+l9OdsLcEJjSCy/WA9xpgPI3F41VlWAnXMYUv
- C5A7xWnaI49Fl9gZ141fFRAUOAx9lXlZJ90lV8TOWXZpFIJTs85SJ9epjCtZNbanEZ18
- T/sfHNTjmwcmGGr4GWkVQVz+LOP9Va5YGM3V89RXe/P0x3l+4B+Wx5q8YdwSraR0tR27
- R1FgxbS8cfH0jPaeV64aZlLD1kY66FFBZo3kuBIs0pMeBxKXnO2YbDSn7iishF9lb9q1
- lypA==
+ bh=+5bluXdjaCn3oQ9NGGs572QWlIZ5/vAONfTlGZhWE+Q=;
+ b=F+7rMfdusOTDEJWqznE7TFHET01XE7DRIr9/IbCv9G5KPTdOOs+doMC8ySkQESTR5x
+ j4qR0TKSQYNXDwgFkfjxL7+MTouMfUnUrDjQiMTgdHJZdF14l9XDnBijwieTyDbA2LID
+ 5819HK+hko25zPbJcqlTKbTY4t4PKufJ2Cci0di6fCa4uSZ1eqJz/ybOQ20AI7Eu/579
+ fP8JoPVLfyMhq3R7cLZMBEeF8qziTRaO+iEqM8prkB8IO4oL7ccAvkY7kvhO1jefp3xz
+ mmbQrhJKCI2rQdC63fdBU0LK9XFXVHBz7hd2snSdqRgEGqGNU6cW3R3mZO9ArseCoDlX
+ PucQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=SkoelqvlvrsqhEevYhEIlMsDmCtwS6JCJdP3XdXAQaY=;
- b=CAZc2QGHHrQ7Lq/g/+puOp/KxwpAMaHr6JgEutLAo9/i5LYpa7jvEccAB72hVRZspF
- Ve727R3XPaNwZy1zCoCvVwKApl7zVAB1c/8nF1w7a8cq3Tc+C1Tom5mcmMwiv4NPx3Ak
- S5YjQT9bDh+OmAer2tX/g7l4hxpsW0oGxsCsRvE6oZkLrZKpn583ftVUq37WfBBfIt9y
- rBIG0unGO0uh1tOPBMt5CsSYFvYXQK0tLofpPhYWFoRkvlZLuzo14MliVw4uSj0Fn2Ds
- hxPa3ctVcec7P1jtQO8ONyGL4fXEk4OAXkNeGj5W2Mcyvnfqt0yx0KNaiK7UkiyAv7Vf
- whhw==
-X-Gm-Message-State: AFqh2krCFVL3DNQpJ+AoYvLsQr8iJluDxIObku54kafhRr4TKvxima0r
- KJ92iNs50BabAgOSmz2X49wjkaCpjMcJ8kOw
-X-Received: by 2002:a05:6000:108a:b0:2bd:e8b2:4da8 with SMTP id
- y10-20020a056000108a00b002bde8b24da8mr4462105wrw.35.1674122774481; 
- Thu, 19 Jan 2023 02:06:14 -0800 (PST)
+ bh=+5bluXdjaCn3oQ9NGGs572QWlIZ5/vAONfTlGZhWE+Q=;
+ b=MFpG64uNF3r9ATOfkwBC6VmZOD4nvWaA7R9V2CilD9Y1flSCBBMnSUUmvsq4fRN1iX
+ 0UIfz1Td4gg6z6q90nHR6exh0zmlBCMjNUvqBqf//k9JyrG0XX7RXqIEy49RdmGk9xPL
+ BkLcMrBNERa3Eig1YQ++KBwLxxe2USsGMz3Bpy/XIKw5F7DbudUB40CMoNWcFGif6jue
+ JGMnTnl2pxc5HPA3bRuL1GSQj4ax4+6I2KhOzzgrWjHD7aUI8yDj3+KQ4z+RLbtS/UEd
+ BD+6fiMuH7aNo8zCa/q+ak4Kw6a/hRBGpYOo6858sl4MnoC9zOUXdgrfrhnADZHfvxKm
+ Uz1Q==
+X-Gm-Message-State: AFqh2kqlWOE7Mm1fobbFbVfV2gYJAeXQHXzG5C8Fjn9/u7JB3TNkcQwe
+ 1KRJZcjdEaGFGSDHVuK9yRoyMS1x4MoDnHK6
+X-Received: by 2002:a05:600c:3555:b0:3da:f4d4:4c2 with SMTP id
+ i21-20020a05600c355500b003daf4d404c2mr9572214wmq.37.1674122754363; 
+ Thu, 19 Jan 2023 02:05:54 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- j15-20020adfd20f000000b002be2a4b521fsm5490774wrh.45.2023.01.19.02.06.13
+ h1-20020a05600c350100b003d990372dd5sm4563111wmq.20.2023.01.19.02.05.53
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Jan 2023 02:06:14 -0800 (PST)
+ Thu, 19 Jan 2023 02:05:54 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -92,24 +92,25 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 7/8] tests/qtest/boot-serial-test: Allow running with HVF
-Date: Thu, 19 Jan 2023 11:05:36 +0100
-Message-Id: <20230119100537.5114-8-philmd@linaro.org>
+Subject: [PATCH 3/8] tests/qtest/boot-serial-test: Only use available
+ accelerators
+Date: Thu, 19 Jan 2023 11:05:32 +0100
+Message-Id: <20230119100537.5114-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230119100537.5114-1-philmd@linaro.org>
 References: <20230119100537.5114-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,43 +125,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aK7UaEoCCIMY
+X-TUID: CZlkzlQQVRPT
+
+For example, avoid when TCG is disabled:
+
+  $ make check-qtest-aarch64
+  ...
+  18/20 qemu:qtest+qtest-aarch64 / qtest-aarch64/boot-serial-test
+  qemu-system-aarch64: -accel tcg: invalid accelerator tcg
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/qtest/boot-serial-test.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ tests/qtest/boot-serial-test.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
-index f8d0c684c2..4a2cbcf8e8 100644
+index fccf706f99..f8d0c684c2 100644
 --- a/tests/qtest/boot-serial-test.c
 +++ b/tests/qtest/boot-serial-test.c
-@@ -19,6 +19,7 @@
+@@ -17,6 +17,9 @@
+ #include "libqtest.h"
+ #include "libqos/libqos-spapr.h"
  
- static bool has_tcg;
- static bool has_kvm;
-+static bool has_hvf;
- 
++static bool has_tcg;
++static bool has_kvm;
++
  static const uint8_t bios_avr[] = {
      0x88, 0xe0,             /* ldi r24, 0x08   */
-@@ -273,6 +274,9 @@ static void test_machine(const void *data)
-     if (has_kvm) {
-         g_string_append(cmd, "-accel kvm ");
-     }
-+    if (has_hvf) {
-+        g_string_append(cmd, "-accel hvf ");
+     0x80, 0x93, 0xc1, 0x00, /* sts 0x00C1, r24 ; Enable tx */
+@@ -264,8 +267,12 @@ static void test_machine(const void *data)
+      * Make sure that this test uses tcg if available: It is used as a
+      * fast-enough smoketest for that.
+      */
+-    g_string_append(cmd, "-accel tcg ");
+-    g_string_append(cmd, "-accel kvm ");
++    if (has_tcg) {
++        g_string_append(cmd, "-accel tcg ");
++    }
++    if (has_kvm) {
++        g_string_append(cmd, "-accel kvm ");
 +    }
      g_string_append(cmd, test->extra);
  
      qts = qtest_init(cmd->str);
-@@ -301,6 +305,7 @@ int main(int argc, char *argv[])
+@@ -292,6 +299,9 @@ int main(int argc, char *argv[])
+     const char *arch = qtest_get_arch();
+     int i;
  
-     has_tcg = qtest_has_accel("tcg");
-     has_kvm = qtest_has_accel("kvm");
-+    has_hvf = qtest_has_accel("hvf");
- 
++    has_tcg = qtest_has_accel("tcg");
++    has_kvm = qtest_has_accel("kvm");
++
      g_test_init(&argc, &argv, NULL);
  
+     for (i = 0; tests[i].arch != NULL; i++) {
 -- 
 2.38.1
 

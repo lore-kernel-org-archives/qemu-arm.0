@@ -1,187 +1,571 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp353929ejc;
-        Thu, 19 Jan 2023 06:06:59 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXt1ITx3dAaQg0fG/y35KOVAb5t3E4xk8ORdKGxktoKT2L3yLXp2wv68pZU9GWc3kedKA5H0
-X-Received: by 2002:a25:f54:0:b0:7b9:d20e:a99d with SMTP id 81-20020a250f54000000b007b9d20ea99dmr8292688ybp.31.1674137219598;
-        Thu, 19 Jan 2023 06:06:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674137219; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp362685ejc;
+        Thu, 19 Jan 2023 06:18:32 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtVjlHfp9QEjorAjG1IKKDVD8n4oyKFd0gM0vDUZRGZFyvkj9jp8Yfxypk5yk9rqPPOJ4Fi
+X-Received: by 2002:ac8:6f09:0:b0:3b6:2d34:45ef with SMTP id bs9-20020ac86f09000000b003b62d3445efmr18178616qtb.7.1674137912224;
+        Thu, 19 Jan 2023 06:18:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674137912; cv=none;
         d=google.com; s=arc-20160816;
-        b=JSMQcO3jZ+BbGPTJUCK5C69z7TBohKkbwxcs5kDRI3bYp9WErqrK4M936PHogfXCgp
-         uh+UeMCoHIJsvsKYbkuUf0vVseu6nzAsIPoJEoCqKjvGVSyBbpwblfH6/YiFm6FW6AhQ
-         LirIa7Rr0JMRuosgMWV+fBAdAQR+jyZ1gaDRsZshRo8XCuHJc1/Fwa+IKhZo5Sg6j+so
-         ftBqNsEk3XPIKh53w8nAwbJuSGQphRMTbqmdlTiVygT/SkQba6Higuji7ITda2WmY9JH
-         xU7WeX8cCOp4FlRYpVfh0iSeglwRRKEpyGoe4AchGvl3K+UYzXr/TAr+zecxL99pNMQA
-         nxKg==
+        b=BLxSxaoz8WoJRUsglcsDJ2DfR4ogyugHtbZj39PNlnsStQXDzrlqChbKk490BKWIm9
+         msxui35TbiPtdq7CzBfqepOVaFQPfnnt16g1o+9Do9yKdIXCrQ4KzWBRRc4QDWUZvQMV
+         4EGWNYlwP1aiXQ7LvCVWFP37BUv0adC6V2ng2OcD93oq3U5XoqBaErpV4DaluK5mR8hb
+         Dso1V+QJHv/xhUGJPR1uJu/T0Lp1WBpPyKjCSapHbwG51UbLL9b6KfhtkpA4aSDp2lJD
+         KPdp2mnGT/GYx0j8W5+uzSgnPWUZ4KJK1iQ5kp8NeJRt0lw2KOpOIbDs0LBpwowoCFdx
+         LKSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=q7VptEAsu6EyqTaMheBg2vEhPZp9hALIjSxskec0D9E=;
-        b=IEoZ+q6aRWYPXM+Polb7NfcV5fBz7TyusnifS/7DebLhq8h7ZogK7hMdFHOxshNFeK
-         FCDO32ljRqiz8EnvXPn0FFHtWz094VyREOB3Pvozl43IOcm6Ja0wTstc5KgjTGMG8ZuQ
-         y7l1Z2+W6ahU0oJUNL2tbTKVj3BQdUphiRGVcCnw2dyixVVHdqlIEf0Z2NTU7GDeDOlj
-         25/9+W62OyYAnAqRTqElAGdiALkNxMPI9DlQNRnoxRs4n5zJF8S8nsYqEceZ64Aj6Et1
-         OU1pR0u1Wu5TTDyewgBSmPaZL9LT8foxloW6XmK/tHFExXb35ldUjOM99rhGxwP/Fb5l
-         BKvQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date;
+        bh=L9pFax8+wuHrP8jBv8VRCvhYm5BstzweecE51JQO6S4=;
+        b=kUzxEu+NVF7KP80iMn+nTbcQC9ddUmfvCgbhYMgZeo97LxPY8vrOnlokcMJI36CyOz
+         tJy+Wf81QGBO92d+EzcYGD/ecOd4JW2BKIXuCgUnthj5cp88kZDpFyV8vt1URwELaEaW
+         6IstBwLGigDzQqw0sakRCDlLqYVDV1tocPfDbgZRpYDfaQtRcGcF61sl/IlreuGbuBKR
+         Z0BFqdiNuVhUO723TNMsU6nA99/6A6yK3bJNg5mzw4LRjlIG0YUZhsuRchFv6JuEWoj8
+         KctMA6RAYRNwIRElSTkneAOgA1C+Phq4TdrAzYMEGx6qGnxdmZ3daZvn5Yu6fuqcBn4o
+         wvdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dvSHGLPB;
-       spf=pass (google.com: domain of dgilbert@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=dgilbert@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <dgilbert@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id cj13-20020a056902188d00b007d4d65ab007si21762930ybb.136.2023.01.19.06.06.59
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id fb21-20020a05622a481500b003a9861da69esi23645453qtb.239.2023.01.19.06.18.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jan 2023 06:06:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of dgilbert@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Jan 2023 06:18:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dvSHGLPB;
-       spf=pass (google.com: domain of dgilbert@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=dgilbert@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1674137219;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=q7VptEAsu6EyqTaMheBg2vEhPZp9hALIjSxskec0D9E=;
-	b=dvSHGLPBG+Ixn8QrKZKyc0c41pBzh0TX6N9mWr+CAsQyBe0QInHSui/a6XkSdptbKCeCrb
-	XftWRBqr2jW581d8INOTOidOWry6Ht5P7vtP/ZLy3WAeRXO5DhxjZ3tL0rMUO8N5xp1CIo
-	7ObZSG6XHGTzUeSAPkn7UiTpG6o90Vg=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-533-O-A7Wx6iPAG4XH-IyNZVzg-1; Thu, 19 Jan 2023 09:06:53 -0500
-X-MC-Unique: O-A7Wx6iPAG4XH-IyNZVzg-1
-Received: by mail-wr1-f71.google.com with SMTP id k18-20020adfb352000000b002bdd0a7a2b5so389674wrd.0
-        for <alex.bennee@linaro.org>; Thu, 19 Jan 2023 06:06:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=q7VptEAsu6EyqTaMheBg2vEhPZp9hALIjSxskec0D9E=;
-        b=4xYJHeOcol+EcdRdvG0J9xAkZBfiRMaJVWw5qDz6hfPiRAg0Z/PYzWoCQEB3yxErkr
-         etf5DGBVOZlrPNk+toZVnUE3qKt9vuQ9nM8pwf/XThVfgfWSbWRJbXHJ5qpOoamyvdGY
-         M4RJRAjpYRiELwYT5tvy8+FTNj4SpcvvqADf9owiDsBLSJXbgob2i/w8R3aKdB3K24/p
-         JUyF3VOnOXEbuf+I9ZoNonO3QyA/6+g7TkwKsPleFEFE4g4ey3nvIJRO6PcDyqBqxTLU
-         c6AhttkhXnhrqyAOiERmBF/cW2udTJ8b8fO5yf/Ae9mRGAIyzMUF/YBtxeIOU/J3Wcnf
-         0hEg==
-X-Gm-Message-State: AFqh2ko95GljlWG+FwAyFPOcso7fCy97XK8cwRbVTcwEuVqrPmwrjS9j
-	Xc5a2mKJm3thnAqfRed6iQ88lLxpBUXoUk/EpEXkfNhpauByVbI/AJPSZi1cGZLkMyxCH6sVWIy
-	SlTvSE521UmATgyKs
-X-Received: by 2002:a5d:6b07:0:b0:236:695b:82d4 with SMTP id v7-20020a5d6b07000000b00236695b82d4mr9344770wrw.30.1674137211841;
-        Thu, 19 Jan 2023 06:06:51 -0800 (PST)
-X-Received: by 2002:a5d:6b07:0:b0:236:695b:82d4 with SMTP id v7-20020a5d6b07000000b00236695b82d4mr9344752wrw.30.1674137211598;
-        Thu, 19 Jan 2023 06:06:51 -0800 (PST)
-Return-Path: <dgilbert@redhat.com>
-Received: from work-vm (ward-16-b2-v4wan-166627-cust863.vm18.cable.virginm.net. [81.97.203.96])
-        by smtp.gmail.com with ESMTPSA id l5-20020adfe9c5000000b002238ea5750csm19310627wrn.72.2023.01.19.06.06.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 06:06:51 -0800 (PST)
-Date: Thu, 19 Jan 2023 14:06:49 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Fabiano Rosas <farosas@suse.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [RFC PATCH v4 08/15] tests/qtest: Adjust test-hmp to always pass
- -cpu option
-Message-ID: <Y8lOeRqfcAUljaJN@work-vm>
-References: <20230119135424.5417-1-farosas@suse.de>
- <20230119135424.5417-9-farosas@suse.de>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pIVk9-0003OP-MO; Thu, 19 Jan 2023 09:18:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>)
+ id 1pIVjV-0003G2-BT; Thu, 19 Jan 2023 09:17:44 -0500
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>)
+ id 1pIVjQ-0001gE-UZ; Thu, 19 Jan 2023 09:17:36 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.58])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 8568B155FAF28;
+ Thu, 19 Jan 2023 15:17:17 +0100 (CET)
+Received: from kaod.org (37.59.142.110) by DAG8EX2.mxp5.local (172.16.2.72)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Thu, 19 Jan
+ 2023 15:17:15 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-110S004dcc4925c-a362-485b-abf8-43f2d5f70c1c,
+ 24E9BC4E0C08A0C5F41A8E8F02276630B3C3193A) smtp.auth=groug@kaod.org
+X-OVh-ClientIp: 78.197.208.248
+Date: Thu, 19 Jan 2023 15:17:14 +0100
+From: Greg Kurz <groug@kaod.org>
+To: Markus Armbruster <armbru@redhat.com>
+CC: <qemu-devel@nongnu.org>, <richard.henderson@linaro.org>,
+ <pbonzini@redhat.com>, <kwolf@redhat.com>, <hreitz@redhat.com>,
+ <imp@bsdimp.com>, <kevans@freebsd.org>, <berrange@redhat.com>,
+ <qemu_oss@crudebyte.com>, <mst@redhat.com>, <philmd@linaro.org>,
+ <peter.maydell@linaro.org>, <alistair@alistair23.me>, <jasowang@redhat.com>,
+ <jonathan.cameron@huawei.com>, <kbastian@mail.uni-paderborn.de>,
+ <quintela@redhat.com>, <dgilbert@redhat.com>, <michael.roth@amd.com>,
+ <kkostiuk@redhat.com>, <tsimpson@quicinc.com>, <palmer@dabbelt.com>,
+ <bin.meng@windriver.com>, <qemu-block@nongnu.org>, <qemu-arm@nongnu.org>,
+ <qemu-riscv@nongnu.org>
+Subject: Re: [PATCH v4 19/19] Drop duplicate #include
+Message-ID: <20230119151714.30bde826@bahia>
+In-Reply-To: <20230119065959.3104012-20-armbru@redhat.com>
+References: <20230119065959.3104012-1-armbru@redhat.com>
+ <20230119065959.3104012-20-armbru@redhat.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20230119135424.5417-9-farosas@suse.de>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-TUID: ptWV/2W4P4uh
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.110]
+X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG8EX2.mxp5.local
+ (172.16.2.72)
+X-Ovh-Tracer-GUID: 81610c14-3411-4bf1-8062-cf853aa910fa
+X-Ovh-Tracer-Id: 5831317092559395109
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedruddutddgieefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkjghfofggtgfgihesthejredtredtvdenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgeekjedtveegkeeileffvdetvddvgedtudduiefghffhgfdvhfegjeetkeehfeeknecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdduuddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeoghhrohhugheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopegrrhhmsghruhesrhgvughhrghtrdgtohhmpdhqvghmuhdqsghlohgtkhesnhhonhhgnhhurdhorhhgpdgsihhnrdhmvghnghesfihinhgurhhivhgvrhdrtghomhdpphgrlhhmvghrsegurggssggvlhhtrdgtohhmpdhtshhimhhpshhonhesqhhuihgtihhntgdrtghomhdpkhhkohhsthhiuhhksehrvgguhhgrthdrtghomhdpmhhitghhrggvlhdrrhhothhhsegrmhgurdgtohhmpdgughhilhgsvghrthesrhgvughhrghtrdgtohhmpdhquhhinhhtvghlrgesrhgvughhrghtrdgtohhmpd
+ hksggrshhtihgrnhesmhgrihhlrdhunhhiqdhprgguvghrsghorhhnrdguvgdpjhhonhgrthhhrghnrdgtrghmvghrohhnsehhuhgrfigvihdrtghomhdpjhgrshhofigrnhhgsehrvgguhhgrthdrtghomhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdprghlihhsthgrihhrsegrlhhishhtrghirhdvfedrmhgvpdhphhhilhhmugeslhhinhgrrhhordhorhhgpdhmshhtsehrvgguhhgrthdrtghomhdpqhgvmhhupghoshhssegtrhhuuggvsgihthgvrdgtohhmpdgsvghrrhgrnhhgvgesrhgvughhrghtrdgtohhmpdhkvghvrghnshesfhhrvggvsghsugdrohhrghdpihhmphessghsughimhhprdgtohhmpdhhrhgvihhtiiesrhgvughhrghtrdgtohhmpdhkfiholhhfsehrvgguhhgrthdrtghomhdpphgsohhniihinhhisehrvgguhhgrthdrtghomhdprhhitghhrghrugdrhhgvnhguvghrshhonheslhhinhgrrhhordhorhhgpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpqhgvmhhuqdhrihhstghvsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhohedvledpmhhouggvpehsmhhtphhouhht
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=groug@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vrHZ31OrMI62
 
-* Fabiano Rosas (farosas@suse.de) wrote:
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+On Thu, 19 Jan 2023 07:59:59 +0100
+Markus Armbruster <armbru@redhat.com> wrote:
+
+> Tracked down with the help of scripts/clean-includes.
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  tests/qtest/test-hmp.c | 34 +++++++++++++++++++++++++++++++---
->  1 file changed, 31 insertions(+), 3 deletions(-)
+
+For ppc changes.
+
+Reviewed-by: Greg Kurz <groug@kaod.org>
+
+>  include/hw/arm/fsl-imx6ul.h   | 1 -
+>  include/hw/arm/fsl-imx7.h     | 1 -
+>  backends/tpm/tpm_emulator.c   | 1 -
+>  hw/acpi/piix4.c               | 1 -
+>  hw/alpha/dp264.c              | 1 -
+>  hw/arm/virt.c                 | 1 -
+>  hw/arm/xlnx-versal.c          | 1 -
+>  hw/block/pflash_cfi01.c       | 1 -
+>  hw/core/machine.c             | 1 -
+>  hw/hppa/machine.c             | 1 -
+>  hw/i386/acpi-build.c          | 1 -
+>  hw/loongarch/acpi-build.c     | 1 -
+>  hw/misc/macio/cuda.c          | 1 -
+>  hw/misc/macio/pmu.c           | 1 -
+>  hw/net/xilinx_axienet.c       | 1 -
+>  hw/ppc/ppc405_uc.c            | 2 --
+>  hw/ppc/ppc440_bamboo.c        | 1 -
+>  hw/ppc/spapr_drc.c            | 1 -
+>  hw/rdma/vmw/pvrdma_dev_ring.c | 1 -
+>  hw/remote/machine.c           | 1 -
+>  hw/remote/remote-obj.c        | 1 -
+>  hw/rtc/mc146818rtc.c          | 1 -
+>  hw/s390x/virtio-ccw-serial.c  | 1 -
+>  migration/postcopy-ram.c      | 2 --
+>  softmmu/dirtylimit.c          | 1 -
+>  softmmu/runstate.c            | 1 -
+>  softmmu/vl.c                  | 1 -
+>  target/loongarch/translate.c  | 1 -
+>  target/mips/tcg/translate.c   | 1 -
+>  target/nios2/translate.c      | 2 --
+>  tests/unit/test-cutils.c      | 1 -
+>  ui/gtk.c                      | 1 -
+>  util/oslib-posix.c            | 4 ----
+>  33 files changed, 39 deletions(-)
 > 
-> diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
-> index f8b22abe4c..c367612d4a 100644
-> --- a/tests/qtest/test-hmp.c
-> +++ b/tests/qtest/test-hmp.c
-> @@ -121,21 +121,49 @@ static void test_info_commands(QTestState *qts)
->      g_free(info_buf);
->  }
+> diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
+> index 7812e516a5..1952cb984d 100644
+> --- a/include/hw/arm/fsl-imx6ul.h
+> +++ b/include/hw/arm/fsl-imx6ul.h
+> @@ -30,7 +30,6 @@
+>  #include "hw/timer/imx_gpt.h"
+>  #include "hw/timer/imx_epit.h"
+>  #include "hw/i2c/imx_i2c.h"
+> -#include "hw/gpio/imx_gpio.h"
+>  #include "hw/sd/sdhci.h"
+>  #include "hw/ssi/imx_spi.h"
+>  #include "hw/net/imx_fec.h"
+> diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
+> index 4e5e071864..355bd8ea83 100644
+> --- a/include/hw/arm/fsl-imx7.h
+> +++ b/include/hw/arm/fsl-imx7.h
+> @@ -32,7 +32,6 @@
+>  #include "hw/timer/imx_gpt.h"
+>  #include "hw/timer/imx_epit.h"
+>  #include "hw/i2c/imx_i2c.h"
+> -#include "hw/gpio/imx_gpio.h"
+>  #include "hw/sd/sdhci.h"
+>  #include "hw/ssi/imx_spi.h"
+>  #include "hw/net/imx_fec.h"
+> diff --git a/backends/tpm/tpm_emulator.c b/backends/tpm/tpm_emulator.c
+> index 49cc3d749d..2b440d2c9a 100644
+> --- a/backends/tpm/tpm_emulator.c
+> +++ b/backends/tpm/tpm_emulator.c
+> @@ -35,7 +35,6 @@
+>  #include "sysemu/runstate.h"
+>  #include "sysemu/tpm_backend.h"
+>  #include "sysemu/tpm_util.h"
+> -#include "sysemu/runstate.h"
+>  #include "tpm_int.h"
+>  #include "tpm_ioctl.h"
+>  #include "migration/blocker.h"
+> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+> index 0a81f1ad93..df39f91294 100644
+> --- a/hw/acpi/piix4.c
+> +++ b/hw/acpi/piix4.c
+> @@ -35,7 +35,6 @@
+>  #include "sysemu/xen.h"
+>  #include "qapi/error.h"
+>  #include "qemu/range.h"
+> -#include "hw/acpi/pcihp.h"
+>  #include "hw/acpi/cpu_hotplug.h"
+>  #include "hw/acpi/cpu.h"
+>  #include "hw/hotplug.h"
+> diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+> index c502c8c62a..4161f559a7 100644
+> --- a/hw/alpha/dp264.c
+> +++ b/hw/alpha/dp264.c
+> @@ -18,7 +18,6 @@
+>  #include "net/net.h"
+>  #include "qemu/cutils.h"
+>  #include "qemu/datadir.h"
+> -#include "net/net.h"
 >  
-> +static const char *arch_get_cpu(const char *machine)
-> +{
-> +    const char *arch = qtest_get_arch();
-> +
-> +    if (g_str_equal(arch, "aarch64")) {
-> +        if (!strncmp(machine, "virt", 4)) {
-> +            return "cortex-a57";
-
-Won't that break on a kvm host on a different CPU?
-Would -cpu max   work on everything?
-
-Dave
-
-> +        }
-> +    }
-> +
-> +    return NULL;
-> +}
-> +
->  static void test_machine(gconstpointer data)
+>  static uint64_t cpu_alpha_superpage_to_phys(void *opaque, uint64_t addr)
 >  {
->      const char *machine = data;
->      char *args;
->      QTestState *qts;
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ea2413a0ba..d3849d7233 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -33,7 +33,6 @@
+>  #include "qemu/units.h"
+>  #include "qemu/option.h"
+>  #include "monitor/qdev.h"
+> -#include "qapi/error.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/arm/boot.h"
+>  #include "hw/arm/primecell.h"
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> index 57276e1506..69b1b99e93 100644
+> --- a/hw/arm/xlnx-versal.c
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -22,7 +22,6 @@
+>  #include "hw/misc/unimp.h"
+>  #include "hw/arm/xlnx-versal.h"
+>  #include "qemu/log.h"
+> -#include "hw/sysbus.h"
 >  
-> -    args = g_strdup_printf("-S -M %s", machine);
-> +    args = qtest_get_machine_args(machine, arch_get_cpu(machine), "-S");
->      qts = qtest_init(args);
+>  #define XLNX_VERSAL_ACPU_TYPE ARM_CPU_TYPE_NAME("cortex-a72")
+>  #define XLNX_VERSAL_RCPU_TYPE ARM_CPU_TYPE_NAME("cortex-r5f")
+> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+> index 0cbc2fb4cb..d11406eada 100644
+> --- a/hw/block/pflash_cfi01.c
+> +++ b/hw/block/pflash_cfi01.c
+> @@ -45,7 +45,6 @@
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "qemu/bitops.h"
+> -#include "qemu/error-report.h"
+>  #include "qemu/host-utils.h"
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 616f3a207c..67cf9f9dcd 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -39,7 +39,6 @@
+>  #include "exec/confidential-guest-support.h"
+>  #include "hw/virtio/virtio.h"
+>  #include "hw/virtio/virtio-pci.h"
+> -#include "qom/object_interfaces.h"
 >  
->      test_info_commands(qts);
->      test_commands(qts);
+>  GlobalProperty hw_compat_7_2[] = {};
+>  const size_t hw_compat_7_2_len = G_N_ELEMENTS(hw_compat_7_2);
+> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+> index de1cc7ab71..7ac68c943f 100644
+> --- a/hw/hppa/machine.c
+> +++ b/hw/hppa/machine.c
+> @@ -28,7 +28,6 @@
+>  #include "qapi/error.h"
+>  #include "net/net.h"
+>  #include "qemu/log.h"
+> -#include "net/net.h"
 >  
->      qtest_quit(qts);
-> -    g_free(args);
->      g_free((void *)data);
-> +    g_free((void *)args);
-> +}
-> +
-> +static void test_none_with_memory(void)
-> +{
-> +    QTestState *qts;
-> +    char *args;
-> +
-> +    args = qtest_get_machine_args("none", NULL, "-S -m 2");
-> +    qts = qtest_init(args);
-> +
-> +    test_info_commands(qts);
-> +    test_commands(qts);
-> +
-> +    qtest_quit(qts);
-> +    g_free((void *)args);
->  }
+>  #define MIN_SEABIOS_HPPA_VERSION 6 /* require at least this fw version */
 >  
->  static void add_machine_test_case(const char *mname)
-> @@ -160,7 +188,7 @@ int main(int argc, char **argv)
->      qtest_cb_for_every_machine(add_machine_test_case, g_test_quick());
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 127c4e2d50..14f6f75454 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -76,7 +76,6 @@
 >  
->      /* as none machine has no memory by default, add a test case with memory */
-> -    qtest_add_data_func("hmp/none+2MB", g_strdup("none -m 2"), test_machine);
-> +    qtest_add_func("hmp/none+2MB", test_none_with_memory);
+>  #include "hw/acpi/hmat.h"
+>  #include "hw/acpi/viot.h"
+> -#include "hw/acpi/cxl.h"
 >  
->      return g_test_run();
->  }
-> -- 
-> 2.35.3
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+>  #include CONFIG_DEVICES
+>  
+> diff --git a/hw/loongarch/acpi-build.c b/hw/loongarch/acpi-build.c
+> index c2b237736d..f551296a0e 100644
+> --- a/hw/loongarch/acpi-build.c
+> +++ b/hw/loongarch/acpi-build.c
+> @@ -22,7 +22,6 @@
+>  /* Supported chipsets: */
+>  #include "hw/pci-host/ls7a.h"
+>  #include "hw/loongarch/virt.h"
+> -#include "hw/acpi/aml-build.h"
+>  
+>  #include "hw/acpi/utils.h"
+>  #include "hw/acpi/pci.h"
+> diff --git a/hw/misc/macio/cuda.c b/hw/misc/macio/cuda.c
+> index 853e88bfed..29a8e5ed19 100644
+> --- a/hw/misc/macio/cuda.c
+> +++ b/hw/misc/macio/cuda.c
+> @@ -30,7 +30,6 @@
+>  #include "hw/input/adb.h"
+>  #include "hw/misc/mos6522.h"
+>  #include "hw/misc/macio/cuda.h"
+> -#include "qapi/error.h"
+>  #include "qemu/timer.h"
+>  #include "sysemu/runstate.h"
+>  #include "sysemu/rtc.h"
+> diff --git a/hw/misc/macio/pmu.c b/hw/misc/macio/pmu.c
+> index 97ef8c771b..5a788e595a 100644
+> --- a/hw/misc/macio/pmu.c
+> +++ b/hw/misc/macio/pmu.c
+> @@ -36,7 +36,6 @@
+>  #include "hw/misc/mos6522.h"
+>  #include "hw/misc/macio/gpio.h"
+>  #include "hw/misc/macio/pmu.h"
+> -#include "qapi/error.h"
+>  #include "qemu/timer.h"
+>  #include "sysemu/runstate.h"
+>  #include "sysemu/rtc.h"
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index 990ff3a1c2..673af7da26 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -31,7 +31,6 @@
+>  #include "net/net.h"
+>  #include "net/checksum.h"
+>  
+> -#include "hw/hw.h"
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/stream.h"
+> diff --git a/hw/ppc/ppc405_uc.c b/hw/ppc/ppc405_uc.c
+> index c973cfb04e..0cc68178ad 100644
+> --- a/hw/ppc/ppc405_uc.c
+> +++ b/hw/ppc/ppc405_uc.c
+> @@ -38,8 +38,6 @@
+>  #include "sysemu/sysemu.h"
+>  #include "exec/address-spaces.h"
+>  #include "hw/intc/ppc-uic.h"
+> -#include "hw/qdev-properties.h"
+> -#include "qapi/error.h"
+>  #include "trace.h"
+>  
+>  /*****************************************************************************/
+> diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
+> index 81d71adf34..2880c81cb1 100644
+> --- a/hw/ppc/ppc440_bamboo.c
+> +++ b/hw/ppc/ppc440_bamboo.c
+> @@ -13,7 +13,6 @@
+>  
+>  #include "qemu/osdep.h"
+>  #include "qemu/units.h"
+> -#include "qemu/error-report.h"
+>  #include "qemu/datadir.h"
+>  #include "qemu/error-report.h"
+>  #include "net/net.h"
+> diff --git a/hw/ppc/spapr_drc.c b/hw/ppc/spapr_drc.c
+> index 4923435a8b..b5c400a94d 100644
+> --- a/hw/ppc/spapr_drc.c
+> +++ b/hw/ppc/spapr_drc.c
+> @@ -17,7 +17,6 @@
+>  #include "hw/ppc/spapr_drc.h"
+>  #include "qom/object.h"
+>  #include "migration/vmstate.h"
+> -#include "qapi/error.h"
+>  #include "qapi/qapi-events-qdev.h"
+>  #include "qapi/visitor.h"
+>  #include "qemu/error-report.h"
+> diff --git a/hw/rdma/vmw/pvrdma_dev_ring.c b/hw/rdma/vmw/pvrdma_dev_ring.c
+> index 598e6adc5e..30ce22a5be 100644
+> --- a/hw/rdma/vmw/pvrdma_dev_ring.c
+> +++ b/hw/rdma/vmw/pvrdma_dev_ring.c
+> @@ -14,7 +14,6 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "qemu/cutils.h"
+>  #include "hw/pci/pci.h"
+>  #include "cpu.h"
+>  #include "qemu/cutils.h"
+> diff --git a/hw/remote/machine.c b/hw/remote/machine.c
+> index 519f855ec1..fdc6c441bb 100644
+> --- a/hw/remote/machine.c
+> +++ b/hw/remote/machine.c
+> @@ -22,7 +22,6 @@
+>  #include "hw/remote/iohub.h"
+>  #include "hw/remote/iommu.h"
+>  #include "hw/qdev-core.h"
+> -#include "hw/remote/iommu.h"
+>  #include "hw/remote/vfio-user-obj.h"
+>  #include "hw/pci/msi.h"
+>  
+> diff --git a/hw/remote/remote-obj.c b/hw/remote/remote-obj.c
+> index 333e5ac443..65b6f7cc86 100644
+> --- a/hw/remote/remote-obj.c
+> +++ b/hw/remote/remote-obj.c
+> @@ -12,7 +12,6 @@
+>  #include "qemu/error-report.h"
+>  #include "qemu/notify.h"
+>  #include "qom/object_interfaces.h"
+> -#include "hw/qdev-core.h"
+>  #include "io/channel.h"
+>  #include "hw/qdev-core.h"
+>  #include "hw/remote/machine.h"
+> diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+> index bc1192b7ae..ba612a151d 100644
+> --- a/hw/rtc/mc146818rtc.c
+> +++ b/hw/rtc/mc146818rtc.c
+> @@ -43,7 +43,6 @@
+>  #include "qapi/error.h"
+>  #include "qapi/qapi-events-misc.h"
+>  #include "qapi/visitor.h"
+> -#include "hw/rtc/mc146818rtc_regs.h"
+>  
+>  //#define DEBUG_CMOS
+>  //#define DEBUG_COALESCED
+> diff --git a/hw/s390x/virtio-ccw-serial.c b/hw/s390x/virtio-ccw-serial.c
+> index bf8057880f..8f8d2302f8 100644
+> --- a/hw/s390x/virtio-ccw-serial.c
+> +++ b/hw/s390x/virtio-ccw-serial.c
+> @@ -15,7 +15,6 @@
+>  #include "hw/qdev-properties.h"
+>  #include "hw/virtio/virtio-serial.h"
+>  #include "virtio-ccw.h"
+> -#include "hw/virtio/virtio-serial.h"
+>  
+>  #define TYPE_VIRTIO_SERIAL_CCW "virtio-serial-ccw"
+>  OBJECT_DECLARE_SIMPLE_TYPE(VirtioSerialCcw, VIRTIO_SERIAL_CCW)
+> diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
+> index b9a37ef255..8b7d1af75d 100644
+> --- a/migration/postcopy-ram.c
+> +++ b/migration/postcopy-ram.c
+> @@ -17,7 +17,6 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "qemu/rcu.h"
+>  #include "qemu/madvise.h"
+>  #include "exec/target_page.h"
+>  #include "migration.h"
+> @@ -34,7 +33,6 @@
+>  #include "hw/boards.h"
+>  #include "exec/ramblock.h"
+>  #include "socket.h"
+> -#include "qemu-file.h"
+>  #include "yank_functions.h"
+>  #include "tls.h"
+>  
+> diff --git a/softmmu/dirtylimit.c b/softmmu/dirtylimit.c
+> index 12668555f2..c56f0f58c8 100644
+> --- a/softmmu/dirtylimit.c
+> +++ b/softmmu/dirtylimit.c
+> @@ -11,7 +11,6 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "qapi/error.h"
+>  #include "qemu/main-loop.h"
+>  #include "qapi/qapi-commands-migration.h"
+>  #include "qapi/qmp/qdict.h"
+> diff --git a/softmmu/runstate.c b/softmmu/runstate.c
+> index cab9f6fc07..f9ad88e6a7 100644
+> --- a/softmmu/runstate.c
+> +++ b/softmmu/runstate.c
+> @@ -41,7 +41,6 @@
+>  #include "qapi/qapi-commands-run-state.h"
+>  #include "qapi/qapi-events-run-state.h"
+>  #include "qemu/error-report.h"
+> -#include "qemu/log.h"
+>  #include "qemu/job.h"
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+> diff --git a/softmmu/vl.c b/softmmu/vl.c
+> index 5355a7fe5a..b2ee3fee3f 100644
+> --- a/softmmu/vl.c
+> +++ b/softmmu/vl.c
+> @@ -129,7 +129,6 @@
+>  #include "qapi/qapi-commands-misc.h"
+>  #include "qapi/qapi-visit-qom.h"
+>  #include "qapi/qapi-commands-ui.h"
+> -#include "qapi/qmp/qdict.h"
+>  #include "block/qdict.h"
+>  #include "qapi/qmp/qerror.h"
+>  #include "sysemu/iothread.h"
+> diff --git a/target/loongarch/translate.c b/target/loongarch/translate.c
+> index 38ced69803..72a6275665 100644
+> --- a/target/loongarch/translate.c
+> +++ b/target/loongarch/translate.c
+> @@ -12,7 +12,6 @@
+>  #include "exec/helper-proto.h"
+>  #include "exec/helper-gen.h"
+>  
+> -#include "exec/translator.h"
+>  #include "exec/log.h"
+>  #include "qemu/qemu-print.h"
+>  #include "fpu/softfloat.h"
+> diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
+> index 624e6b7786..aa12bb708a 100644
+> --- a/target/mips/tcg/translate.c
+> +++ b/target/mips/tcg/translate.c
+> @@ -32,7 +32,6 @@
+>  #include "semihosting/semihost.h"
+>  
+>  #include "trace.h"
+> -#include "exec/translator.h"
+>  #include "exec/log.h"
+>  #include "qemu/qemu-print.h"
+>  #include "fpu_helper.h"
+> diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+> index 4db8b47744..7aee65a089 100644
+> --- a/target/nios2/translate.c
+> +++ b/target/nios2/translate.c
+> @@ -938,8 +938,6 @@ static const char * const cr_regnames[NUM_CR_REGS] = {
+>  };
+>  #endif
+>  
+> -#include "exec/gen-icount.h"
+> -
+>  /* generate intermediate code for basic block 'tb'.  */
+>  static void nios2_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+>  {
+> diff --git a/tests/unit/test-cutils.c b/tests/unit/test-cutils.c
+> index 2126b46391..3c4f875420 100644
+> --- a/tests/unit/test-cutils.c
+> +++ b/tests/unit/test-cutils.c
+> @@ -26,7 +26,6 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "qemu/units.h"
+>  #include "qemu/cutils.h"
+>  #include "qemu/units.h"
+>  
+> diff --git a/ui/gtk.c b/ui/gtk.c
+> index 4817623c8f..7f752d8b7d 100644
+> --- a/ui/gtk.c
+> +++ b/ui/gtk.c
+> @@ -53,7 +53,6 @@
+>  #include <math.h>
+>  
+>  #include "trace.h"
+> -#include "qemu/cutils.h"
+>  #include "ui/input.h"
+>  #include "sysemu/runstate.h"
+>  #include "sysemu/sysemu.h"
+> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+> index fd03fd32c8..77d882e681 100644
+> --- a/util/oslib-posix.c
+> +++ b/util/oslib-posix.c
+> @@ -59,10 +59,6 @@
+>  
+>  #include "qemu/mmap-alloc.h"
+>  
+> -#ifdef CONFIG_DEBUG_STACK_USAGE
+> -#include "qemu/error-report.h"
+> -#endif
+> -
+>  #define MAX_MEM_PREALLOC_THREAD_COUNT 16
+>  
+>  struct MemsetThread;
+

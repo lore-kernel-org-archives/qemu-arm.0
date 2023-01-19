@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp345719ejc;
-        Thu, 19 Jan 2023 05:56:57 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsznXs2Fj1jZhmjepSy8tjz6CRnOG72AURhg8dwIiYchREzHufTmmN9FTf3kX3lAtA83cT0
-X-Received: by 2002:a05:6402:501a:b0:47e:bdb8:9133 with SMTP id p26-20020a056402501a00b0047ebdb89133mr13996779eda.38.1674136617748;
-        Thu, 19 Jan 2023 05:56:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674136617; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp345756ejc;
+        Thu, 19 Jan 2023 05:57:02 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtJ2oU/WsbK1v0P5wLKiWncWlpbi6tEy7b3Y671MVthggMn/nO10VFVKCa/r+WAzPP25KQi
+X-Received: by 2002:a5d:4f90:0:b0:2af:8d8b:726e with SMTP id d16-20020a5d4f90000000b002af8d8b726emr9668123wru.1.1674136621953;
+        Thu, 19 Jan 2023 05:57:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674136621; cv=none;
         d=google.com; s=arc-20160816;
-        b=x6F/Qf4SFqjHRxgJVK31qa71Tgvs6VTqZ4W/0CAQiW24zmzpkOAnkTYnfcCaP2o8Br
-         xax+56wzYg2WF6AyWFXm231792GKoQ6n+M4PKs661tpXsW/IrnBpz4+/lSJr2awP3TVa
-         AWxcyLLtgB7aAPyC9G83UaN7yJSDk6IL2J7YypjBYnq/2Q975snGojivcTEzroMCOZG8
-         UQ8iPGbm0SVT/FBaD7m4Jdd06orKkN1MdV2Jjlv7AUqUmPVOe12OtNt2w+sD0Yt7hSXJ
-         xp7z1gBiQIreXIzcSXJ++HzQIkGF5hbcYglJ42YlB8bf35aCoyNRWhGT3NDJ72mT8V+m
-         C8Gg==
+        b=mHATnWnw4mVlE2/wcnPUFrejl69ueAWkzNTSPY9jodFUDKek/UTcsW6UBd1scANbMB
+         O9yVpTuKLPhQcn9s18Al1LTnNVTl96kDKRh5rxf/pOoHFyfxf82lai8iDjpPJ18UFZ/l
+         LPXmkycASWCAcNT7bvq8u2YFDvSMdYXnozh/luKVV2nZLJXVWe61xFVGLiaAFNLlQQ2f
+         acZOPZJvuTRNlHDNiaXDcYW/IKS1QEP6s4IaV0FN58HUaY87kybr+g/AHmQ3K6fHTfp0
+         +sn1nQBMcKYxyFjVwF2RHouNLrx0zW2mBXAvWYfYTgw8WHcxm39bE4loxiWR29qO/AfB
+         5oSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=lxrWaE16yozIzsy6MYwQ2ElnYdRKzu+lkQhgFbpYZCs=;
-        b=PXdYejrl7TuUDm4GWz9tr4CO4tmR/Sq5P0WAKwEnKdpsDKjE1KqQek11BeInVPTkOp
-         HPvdsSjtB36f9tiDY8fQ6CZOZDNMRKKhl2Y28hQ3nRBXrKFST4YzuWMXfEX5VosdsLxo
-         nwOpEubKpN0taSbntSK2lXCG2VU12qMOczzbMCg3rMhCzjzZrAAaf8emD+GqIsY77QFe
-         eR4s45uSAjI7nHFQrl3HGKv2uCAC4+f9bclgrHDaB1ogyk7aTk7+ZhP3MrJyrN3Unusi
-         sAXmSAGOihzug5sDy127+yIsc8T5ETVVpaEmE/6+nvrb3Xho5KYWmHxaWEFLMJnzzEGa
-         jVoQ==
+        bh=jVIAoajRUGSfIyuCmuIYwLpNRsCSx50sO+LkAUTEiBQ=;
+        b=NhMWVcuIzJPt+g6b/FPMeiUQrfVaykgWUsnoNAK26pvHsjjzJrJb74LaTa8yqEn8y1
+         SnGXyqAw2pNH3S0aTs2X3pn9CeiVeC7pm9NGIrqPl/HTcrJ6ffp9hf9ylDwTnSbs9iP/
+         cSOojwjwR17SLP37ENlu1gSDdsIAYKypm0XBaacvbSaFdBUlKUstZXDki2JhyHjFN9bb
+         /xll5UGGOsSUJICd4AhpUI961AhVJWQBg04CgVhuapQZrqRmN7UO/68RJT8xgDFc32HO
+         iBjcytbFwm5zoPTbJRLyyADfHz0jzfp2Ze86nv4Q5MChonxI8Uf65/+Wh52YAGMyiTOM
+         kqNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=NlRRNdGA;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=b47EtG+3;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=Ufvsker1;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id h20-20020a05640250d400b0049e5fecfe87si3458414edb.503.2023.01.19.05.56.57
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
+        by mx.google.com with ESMTPS id n12-20020a5d588c000000b002bbdb48c889si7159874wrf.363.2023.01.19.05.57.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 05:56:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+        Thu, 19 Jan 2023 05:57:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=NlRRNdGA;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=b47EtG+3;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=Ufvsker1;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 5A7123F42D;
-	Thu, 19 Jan 2023 13:56:57 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 8E38D5CE73;
+	Thu, 19 Jan 2023 13:57:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674136617; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1674136621; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=lxrWaE16yozIzsy6MYwQ2ElnYdRKzu+lkQhgFbpYZCs=;
-	b=NlRRNdGAvSOg6zR76ssvfseWB89iZx3hK7Ot12ezt/RrypwCfxVM07eempfSN/1B6BHYSl
-	oNj11537Lfsc6nHonWNYqubX1ZL1lK9Tfwqj41ki2PJJDnHihNug+3uONhsFxuumvKtgB5
-	plajpx8dfQmFy5IyyKpYNzR1o69CyCU=
+	bh=jVIAoajRUGSfIyuCmuIYwLpNRsCSx50sO+LkAUTEiBQ=;
+	b=b47EtG+3hHfdBHb7Q1kuWl1Rvud7VOQIAiPSxNMZG8JpGdOxQOy5mc8Pkr1JBXNnLwoTpc
+	5hhdtND/mGDtATABmWoaO13RHVbQ51wLG9cW2lE0SDcV9TOppKSSJHqqq8zQlvNpR0ErqM
+	RrblfZKPI/6OlwYgtR3V4kc8XYNSC1I=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674136617;
+	s=susede2_ed25519; t=1674136621;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=lxrWaE16yozIzsy6MYwQ2ElnYdRKzu+lkQhgFbpYZCs=;
-	b=3syI/HaJ3PkKJOQyQY9hlyKStjMYczEkIgbNbxq/f43izSdTFscuiaEsVMupxq04zbOkEp
-	NyoYd20DfqabmjBA==
+	bh=jVIAoajRUGSfIyuCmuIYwLpNRsCSx50sO+LkAUTEiBQ=;
+	b=Ufvsker160jzUSC9OqfDZqBGmOVMgrlzw4DkAtb3a99EteIAGOLz4Av5fMTEEMaFy2eDdY
+	j/ER5pTj5bfnU/Dw==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D118D134F5;
-	Thu, 19 Jan 2023 13:56:53 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id CDFD3134F5;
+	Thu, 19 Jan 2023 13:56:57 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 0OMhJSVMyWOCFAAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 19 Jan 2023 13:56:53 +0000
+	id uImKJClMyWOCFAAAMHmgww
+	(envelope-from <farosas@suse.de>); Thu, 19 Jan 2023 13:56:57 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,32 +83,30 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [RFC PATCH v4 07/15] tests/qtest: Adjust qom-test to always set a -cpu option
-Date: Thu, 19 Jan 2023 10:54:16 -0300
-Message-Id: <20230119135424.5417-8-farosas@suse.de>
+Subject: [RFC PATCH v4 08/15] tests/qtest: Adjust test-hmp to always pass -cpu option
+Date: Thu, 19 Jan 2023 10:54:17 -0300
+Message-Id: <20230119135424.5417-9-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230119135424.5417-1-farosas@suse.de>
 References: <20230119135424.5417-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: iRdRfjKdRUEY
-
-Start using the qtest_get_machine_args function, which explicitly
-sets the -cpu option according to the machine default.
+X-TUID: tS11aAGN1P/V
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 ---
- tests/qtest/qom-test.c | 19 +++++++++++++++++--
- 1 file changed, 17 insertions(+), 2 deletions(-)
+ tests/qtest/test-hmp.c | 34 +++++++++++++++++++++++++++++++---
+ 1 file changed, 31 insertions(+), 3 deletions(-)
 
-diff --git a/tests/qtest/qom-test.c b/tests/qtest/qom-test.c
-index d380261f8f..462e3c4281 100644
---- a/tests/qtest/qom-test.c
-+++ b/tests/qtest/qom-test.c
-@@ -78,14 +78,28 @@ static void test_properties(QTestState *qts, const char *path, bool recurse)
-     qobject_unref(response);
+diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
+index f8b22abe4c..c367612d4a 100644
+--- a/tests/qtest/test-hmp.c
++++ b/tests/qtest/test-hmp.c
+@@ -121,21 +121,49 @@ static void test_info_commands(QTestState *qts)
+     g_free(info_buf);
  }
  
 +static const char *arch_get_cpu(const char *machine)
@@ -127,24 +125,46 @@ index d380261f8f..462e3c4281 100644
  static void test_machine(gconstpointer data)
  {
      const char *machine = data;
-+    char *args;
-     QDict *response;
+     char *args;
      QTestState *qts;
  
--    qts = qtest_initf("-machine %s", machine);
--
-+    args = qtest_get_machine_args(machine, arch_get_cpu(machine), NULL);
-+    qts = qtest_init(args);
-     test_properties(qts, "/machine", true);
+-    args = g_strdup_printf("-S -M %s", machine);
++    args = qtest_get_machine_args(machine, arch_get_cpu(machine), "-S");
+     qts = qtest_init(args);
  
-     response = qtest_qmp(qts, "{ 'execute': 'quit' }");
-@@ -94,6 +108,7 @@ static void test_machine(gconstpointer data)
+     test_info_commands(qts);
+     test_commands(qts);
  
      qtest_quit(qts);
-     g_free((void *)machine);
+-    g_free(args);
+     g_free((void *)data);
++    g_free((void *)args);
++}
++
++static void test_none_with_memory(void)
++{
++    QTestState *qts;
++    char *args;
++
++    args = qtest_get_machine_args("none", NULL, "-S -m 2");
++    qts = qtest_init(args);
++
++    test_info_commands(qts);
++    test_commands(qts);
++
++    qtest_quit(qts);
 +    g_free((void *)args);
  }
  
  static void add_machine_test_case(const char *mname)
+@@ -160,7 +188,7 @@ int main(int argc, char **argv)
+     qtest_cb_for_every_machine(add_machine_test_case, g_test_quick());
+ 
+     /* as none machine has no memory by default, add a test case with memory */
+-    qtest_add_data_func("hmp/none+2MB", g_strdup("none -m 2"), test_machine);
++    qtest_add_func("hmp/none+2MB", test_none_with_memory);
+ 
+     return g_test_run();
+ }
 -- 
 2.35.3

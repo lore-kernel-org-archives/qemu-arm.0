@@ -1,61 +1,61 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp297220ejc;
-        Thu, 19 Jan 2023 04:37:38 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs2YkfSQ4sxcV4JJSe/KHbgPLpCnQm+u52f6lXzZW4byifrIoRfETHY+S9/5FO0FFQx5fM3
-X-Received: by 2002:a05:6214:360c:b0:535:12cb:98f6 with SMTP id nv12-20020a056214360c00b0053512cb98f6mr17570103qvb.52.1674131858384;
-        Thu, 19 Jan 2023 04:37:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674131858; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp297320ejc;
+        Thu, 19 Jan 2023 04:37:47 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvUCHDXLEqK3VdMQpC6aySu2oCJofilpgzb1J2gn/TpaZAi+6JlDKL5LIjzX8+y79pn17xW
+X-Received: by 2002:a67:c21c:0:b0:3d0:b4e7:c2d2 with SMTP id i28-20020a67c21c000000b003d0b4e7c2d2mr7205576vsj.18.1674131867095;
+        Thu, 19 Jan 2023 04:37:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674131867; cv=none;
         d=google.com; s=arc-20160816;
-        b=JNdCIT9tJjlQjeLzQnCsQisBQlJkFDIuVzHzE+j/Yx9oHeJIVPVEH0Q8ET3X1+9bOy
-         tvpZg47sUvF2KfAF6mKprg/0OaiN3KOcDJFMigVvZS0arMIg3QDpgWWrVqpvbLo0JSj4
-         t6HJdrt4HM41mDVJEhRyxWSMIsIt+kODuEKytgiacpnZ/CPEH+Ek8uFAT8Bf5zezDao1
-         Q8OPPSPnHtE64kC3yJAtSvQo1xe4bwT/d8Wfa7B333K7nowZlUcguVVEiWZ44Tle02yf
-         OUlIj/zLLS9KLuxLgbfp2ZrAERpvUDlbJbqTqTDPVQ0oROyamU2wCzBTNDyv9SdYeUtQ
-         IVFg==
+        b=xDsIc1cxbqv7ii6XM4QpuSRaYkYFHE+zKhpFN47UJ3r0jdya9Nb6/ezQCSxdJtzhwa
+         FViTCcI4cqyzb9i21rRxEoM8XssTJkfiO9b60v6oUQ4koLGRBxf6sGUVKxpf2uPbxOc4
+         WrVJfA91tuLr3AktC+K0RJlCYcFy1Tf6vz3MLws/htjc66qNlnT37uUfB8jXXGcRncu5
+         clz2DvINv2iitMJsnxQDCfXhhp3uNxYmgMnp2NfMck9YCFxd4SYp41NEro83yeM4FmT/
+         MDo5hdoZ8RHJXT2hY9XB8LqGby4U3pHnvRT+8q6aAD8+zNUNJOnFkmaStJosH70lzSZ9
+         vanA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=/lTuiMIkRXJU1I0qcygaiT77weNkwoeEYjy7oIGWPVE=;
-        b=eCz4wWIjgLDqE0fgmPLm7V2pWN/3ZybG7qdiG6f352zQV17hTOvLBEeqEcfW1qeu/+
-         44oHJ7f1QiwIkzqlm+1blvaGZVaK3iuPRpdqg/M9mK9NeEe46AA82oC5+SP2nm//Fp7M
-         iXqVBh9UfdByB/MTJki6YyKgSt4GC0tP5zpYSkYXGB1c/ffJIm8CvxH/TvvxgS9l60bm
-         xvp/8ixWWd6WRL6xeYzuAAE4u3cG7Zeag7AVJF9zY3MjHb9MH9ewxo8uaYD9iCRqX3uL
-         BYorTRoV5qOQLbGL1jlJW3OeQHU27iVYhCajDNV5JOzE46V6N9FiROTofTwvza/qICX1
-         82QQ==
+        bh=cI07N6o5NRzwn6YWUExPbNDBD3Q6LVtt/lB33ruqB24=;
+        b=MBQoFys7kkVDAqvCQ/EmzegQVv3TCKL0/PjVhYTgZd/N5ClgTSWDGsdzMC7lVkl0wq
+         zrrgOgQDbLoWrYo+M2i+bDS4fuoDpDjLXKB4qcqXyAklcAVcSArwwFOYFWXKEk8dmjwP
+         mskdr+Cpv9L1yeRxcJYeb9FgdNUgWDXkcOe2aVFmCmU5Z4RKwhXTJSvm1k89DEE1iTPW
+         cxoPkvSL9mMlIS3tDkFlQ/B5hordzPni4eLLf0J53vz4rOu9mJvouhz+Nvzn3YQTEUcS
+         xPoZH75SmS7kpdB/R/MNLZGistkWpN2erUMv1pZmRHlXmHKWA/USfilWRpW599iXyOcL
+         Uzrg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fq13-20020a056214258d00b00535433eb047si2974810qvb.341.2023.01.19.04.37.38
+        by mx.google.com with ESMTPS id u14-20020a05620a454e00b00704cf5d76f7si25264172qkp.511.2023.01.19.04.37.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 04:37:38 -0800 (PST)
+        Thu, 19 Jan 2023 04:37:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pIU9v-00005v-Ge; Thu, 19 Jan 2023 07:36:47 -0500
+	id 1pIU9M-0007ZZ-7L; Thu, 19 Jan 2023 07:36:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU9M-0007a4-D2; Thu, 19 Jan 2023 07:36:12 -0500
+ id 1pIU9E-0007Ir-1n; Thu, 19 Jan 2023 07:36:05 -0500
 Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU9K-0007h9-R5; Thu, 19 Jan 2023 07:36:12 -0500
+ id 1pIU9B-0007eu-L9; Thu, 19 Jan 2023 07:36:03 -0500
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYh2NF4z4xN4;
- Thu, 19 Jan 2023 23:36:08 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYX4n1sz4xZj;
+ Thu, 19 Jan 2023 23:36:00 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYf1wrJz4xN1;
- Thu, 19 Jan 2023 23:36:06 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYV4HC5z4xyZ;
+ Thu, 19 Jan 2023 23:35:58 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -63,10 +63,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 24/25] hw/arm/aspeed_ast10x0: Add TODO comment to use
- Cortex-M4F
-Date: Thu, 19 Jan 2023 13:34:48 +0100
-Message-Id: <20230119123449.531826-25-clg@kaod.org>
+Subject: [PATCH 21/25] hw/arm/aspeed_ast10x0: Map I3C peripheral
+Date: Thu, 19 Jan 2023 13:34:45 +0100
+Message-Id: <20230119123449.531826-22-clg@kaod.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230119123449.531826-1-clg@kaod.org>
 References: <20230119123449.531826-1-clg@kaod.org>
@@ -95,35 +94,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WnHgGaK5g6eI
+X-TUID: XzJKxAKcDQr7
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-This SoC uses a Cortex-M4F. QEMU only implements a M4,
-which is good enough. Add a TODO note in case the M4F
-is added.
+Since I don't have access to the datasheet, the relevant
+values were found in:
+https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/dts/arm/aspeed/ast10x0.dtsi
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Peter Delevoryas <peter@pjd.dev>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed_ast10x0.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/aspeed_ast10x0.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 5c794c2420..649b3b13c1 100644
+index b970a5ea58..1a06269cb1 100644
 --- a/hw/arm/aspeed_ast10x0.c
 +++ b/hw/arm/aspeed_ast10x0.c
-@@ -420,7 +420,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
-     dc->realize = aspeed_soc_ast1030_realize;
+@@ -53,6 +53,7 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
+     [ASPEED_DEV_WDT]       = 0x7E785000,
+     [ASPEED_DEV_LPC]       = 0x7E789000,
+     [ASPEED_DEV_PECI]      = 0x7E78B000,
++    [ASPEED_DEV_I3C]       = 0x7E7A0000,
+     [ASPEED_DEV_I2C]       = 0x7E7B0000,
+ };
  
-     sc->name = "ast1030-a1";
--    sc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
-+    sc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m4"); /* TODO cortex-m4f */
-     sc->silicon_rev = AST1030_A1_SILICON_REV;
-     sc->sram_size = 0xc0000;
-     sc->secsram_size = 0x40000; /* 256 * KiB */
+@@ -88,6 +89,7 @@ static const int aspeed_soc_ast1030_irqmap[] = {
+     [ASPEED_DEV_ADC]       = 46,
+     [ASPEED_DEV_SPI1]      = 65,
+     [ASPEED_DEV_SPI2]      = 66,
++    [ASPEED_DEV_I3C]       = 102, /* 102 -> 105 */
+     [ASPEED_DEV_I2C]       = 110, /* 110 ~ 123 */
+     [ASPEED_DEV_KCS]       = 138, /* 138 -> 142 */
+     [ASPEED_DEV_UDC]       = 9,
+@@ -129,6 +131,8 @@ static void aspeed_soc_ast1030_init(Object *obj)
+     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+     object_initialize_child(obj, "i2c", &s->i2c, typename);
+ 
++    object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
++
+     snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
+     object_initialize_child(obj, "timerctrl", &s->timerctrl, typename);
+ 
+@@ -239,6 +243,18 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
+     }
+ 
++    /* I3C */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->i3c), errp)) {
++        return;
++    }
++    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->i3c), 0, sc->memmap[ASPEED_DEV_I3C]);
++    for (i = 0; i < ASPEED_I3C_NR_DEVICES; i++) {
++        qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->armv7m),
++                                        sc->irqmap[ASPEED_DEV_I3C] + i);
++        /* The AST1030 I3C controller has one IRQ per bus. */
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->i3c.devices[i]), 0, irq);
++    }
++
+     /* PECI */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
+         return;
 -- 
 2.39.0
 

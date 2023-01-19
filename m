@@ -1,84 +1,86 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp296827ejc;
-        Thu, 19 Jan 2023 04:37:00 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvAL3pFqiFyMdmsBjGv/+AKlCuaEtRoBSaQCCk3FyriBridtk7y3o4+su8xXvuLMPvuo1Ii
-X-Received: by 2002:ac8:5184:0:b0:3b6:46ee:16f8 with SMTP id c4-20020ac85184000000b003b646ee16f8mr12222274qtn.49.1674131820706;
-        Thu, 19 Jan 2023 04:37:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674131820; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp296863ejc;
+        Thu, 19 Jan 2023 04:37:05 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsQT0c9FKerDo4TuUkGIMSKtRzjVpjqACMVeBp+tgDGSeT35cljdxZOiK8TXxMT+GmRzdsV
+X-Received: by 2002:a05:6102:1d6:b0:3d3:ead1:e26 with SMTP id s22-20020a05610201d600b003d3ead10e26mr6701768vsq.8.1674131825175;
+        Thu, 19 Jan 2023 04:37:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674131825; cv=none;
         d=google.com; s=arc-20160816;
-        b=m+fnP5fKF6DSM+WXJGHFdfj6hc2FqgeSO+4DblVKzfBbvnHUjaswi1/7SjOm9890jZ
-         IR9YWWAhc76L+JWTcrshQXG7gD2cnzobRwzi28jPBy4TlgF1qR9XV+AFiqa7JqEDew4r
-         SBZ52wRXzfQ+FQLzMxeIOnxqy4DmnnpcH09TRXAnZbFoEZkPcK/sKXPTrurqtK+z0tSX
-         FZIBT84YJcz4Xf0vjrPqY1nMsuwQlsHfUhTtxz/oH+Bf2AcxDvIL++HKYdOQ78uRxTRY
-         bbClHcFZg5kL2DIzlhZOksMC6chQAFz9qhBcfEXqPl+H0Lja9snXUgk5iVpPnHCwzTrS
-         E+nA==
+        b=E8AzteP3PrLTk5f+zUtTWbsZ4wjAWukZJVMjcRnT3fJqjuqCRcz4LqSrOaUupKUBLk
+         Gh2KGkXW1accfua0jZjWzjLJ9/FnNgOvMBvMyEMO0hYTDWoPYWhXR/pLpieRRXdPc+VD
+         AHEZ++zipthIpvQqLzWa3+vsZg7bhsLvpfST0chYlRII5q/TL67fe9xXYUosJuDFAb5z
+         olJLLGLdH9adVjKZeSvVjce8zjrJAb/KgaHATAbzjExH//E0vwT6h1lns2vvg4HCnrYU
+         czBalkUU1AQBmxzPz0peLuqxt45pTc021muAsbVJAmYbQD2LJm1ZqRJG0Ed8sXzt3tnC
+         bkYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=ofUiYkgJPZOn10Twal2rfjAMQUQDu9jH6kwmL7c7NwA=;
-        b=VnCosVZncYoIetqrGxoMcWN5+2qRtknXKEgDYurFqt+dhEl4t4nBCbQ6FHzx3l99TR
-         Z83nVEMkFcyytbL2WvAqRQbP2BaYbSKjT4bRNvkNeofpbLMEEB1gdZg74MEv19DPiCvQ
-         y5Dxe5qXkn+HcfmwzRbfGwIBZg/B4Cs3lO9Erzj9b7pNnbjX4XKp2e1xc7PttsScA4wR
-         xDqc/m6srUZoTCVrChafZqTwBXjnmn1uDi97Llt5mDUYcPHcmJhz/svyItxOvjWS5vF5
-         a3syo1WcDLKJEuh6+r33KJa9rqegtD4StLQDjG9546iawsdM18+KWGSJA516/5uGAzbC
-         9gzA==
+        bh=0N6dRZwGPlohzPCOuTdh75vnxJBpTidclISykSEWneo=;
+        b=FveJD6gTTND1a4JmYopyClNxNUk5thcpQwimfKhBcudIws8ptcmxJhl4F5Oi10Gw+K
+         CBylUXpl3uEOidI/JkI7Zkg6eKUmEH1FVsbD+Vh4shC7Dj4FP8kxyNjXF2XSCD/ugOsI
+         OsrDeNquBL1Ydo8cz335HK78zYC8vXXp0+iI9mDngg6LFmvbUhv1YgNvMNy9Ug4/R5nO
+         ZOJWoXllsm14Q49jCZzojLB1gE6leHZ6r9d1tnDa0EugTnYSbeCXPSfqm+ydAZ3pVrVU
+         BXFSfwVuCT3ZaH/t70sGuVzZ4o0SmTSu7JONbX6+H8KbBeKDqoRua9/zl8ctqLTTN3Bo
+         SFkA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z6-20020a05622a124600b003ad45c0fd1bsi20307576qtx.461.2023.01.19.04.37.00
+        by mx.google.com with ESMTPS id o18-20020a05620a2a1200b006fac1edf4bfsi24218969qkp.615.2023.01.19.04.37.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 04:37:00 -0800 (PST)
+        Thu, 19 Jan 2023 04:37:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pIU90-00075e-3Y; Thu, 19 Jan 2023 07:35:50 -0500
+	id 1pIU9k-00082K-Es; Thu, 19 Jan 2023 07:36:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU8y-0006zD-7V; Thu, 19 Jan 2023 07:35:48 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1pIU9L-0007Y7-Oc; Thu, 19 Jan 2023 07:36:11 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU8w-0007dk-8F; Thu, 19 Jan 2023 07:35:47 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYF1kH8z4xyV;
- Thu, 19 Jan 2023 23:35:45 +1100 (AEDT)
+ id 1pIU9I-0007gH-Ek; Thu, 19 Jan 2023 07:36:11 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYd5Q9sz4xHV;
+ Thu, 19 Jan 2023 23:36:05 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYC3FM7z4xZj;
- Thu, 19 Jan 2023 23:35:43 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYb57tKz4xN1;
+ Thu, 19 Jan 2023 23:36:03 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 15/25] target/arm: Allow users to set the number of VFP
- registers
-Date: Thu, 19 Jan 2023 13:34:39 +0100
-Message-Id: <20230119123449.531826-16-clg@kaod.org>
+Subject: [PATCH 23/25] hw/arm/aspeed_ast10x0: Map HACE peripheral
+Date: Thu, 19 Jan 2023 13:34:47 +0100
+Message-Id: <20230119123449.531826-24-clg@kaod.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230119123449.531826-1-clg@kaod.org>
 References: <20230119123449.531826-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,104 +95,150 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QL5ZMB8uESNj
+X-TUID: Y3cubE3VeKG0
 
-Cortex A7 CPUs with an FPU implementing VFPv4 without NEON support
-have 16 64-bit FPU registers and not 32 registers. Let users set the
-number of VFP registers with a CPU property.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The primary use case of this property is for the Cortex A7 of the
-Aspeed AST2600 SoC.
+Since I don't have access to the datasheet, the relevant
+values were found in:
+https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/dts/arm/aspeed/ast10x0.dtsi
 
+Before on Zephyr:
+
+  uart:~$ hash test
+  sha256_test
+  tv[0]:hash_final error
+  sha384_test
+  tv[0]:hash_final error
+  sha512_test
+  tv[0]:hash_final error
+  [00:00:06.278,000] <err> hace_global: HACE poll timeout
+  [00:00:09.324,000] <err> hace_global: HACE poll timeout
+  [00:00:12.261,000] <err> hace_global: HACE poll timeout
+
+  uart:~$ crypto aes256_cbc_vault
+  aes256_cbc vault key 1
+  [00:00:06.699,000] <inf> hace_global: aspeed_crypto_session_setup
+  [00:00:06.699,000] <inf> hace_global: data->cmd: 1c2098
+  [00:00:06.699,000] <inf> hace_global: crypto_data_src: 93340
+  [00:00:06.699,000] <inf> hace_global: crypto_data_dst: 93348
+  [00:00:06.699,000] <inf> hace_global: crypto_ctx_base: 93300
+  [00:00:06.699,000] <inf> hace_global: crypto_data_len: 80000040
+  [00:00:06.699,000] <inf> hace_global: crypto_cmd_reg:  11c2098
+  [00:00:09.743,000] <inf> hace_global: HACE_STS: 0
+  [00:00:09.743,000] <err> hace_global: HACE poll timeout
+  [00:00:09.743,000] <err> crypto: CBC mode ENCRYPT - Failed
+  [00:00:09.743,000] <inf> hace_global: aspeed_crypto_session_free
+  uart:~$
+
+After:
+
+  uart:~$ hash test
+  sha256_test
+  tv[0]:PASS
+  tv[1]:PASS
+  tv[2]:PASS
+  tv[3]:PASS
+  tv[4]:PASS
+  sha384_test
+  tv[0]:PASS
+  tv[1]:PASS
+  tv[2]:PASS
+  tv[3]:PASS
+  tv[4]:PASS
+  tv[5]:PASS
+  sha512_test
+  tv[0]:PASS
+  tv[1]:PASS
+  tv[2]:PASS
+  tv[3]:PASS
+  tv[4]:PASS
+  tv[5]:PASS
+
+  uart:~$ crypto aes256_cbc_vault
+  aes256_cbc vault key 1
+  Was waiting for:
+  6b c1 be e2 2e 40 9f 96 e9 3d 7e 11 73 93 17 2a
+  ae 2d 8a 57 1e 03 ac 9c 9e b7 6f ac 45 af 8e 51
+  30 c8 1c 46 a3 5c e4 11 e5 fb c1 19 1a 0a 52 ef
+  f6 9f 24 45 df 4f 9b 17 ad 2b 41 7b e6 6c 37 10
+
+   But got:
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+  [00:00:05.771,000] <inf> hace_global: aspeed_crypto_session_setup
+  [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2098
+  [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
+  [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
+  [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
+  [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
+  [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2098
+  [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
+  [00:00:05.772,000] <inf> crypto: Output length (encryption): 80
+  [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_free
+  [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_setup
+  [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2018
+  [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
+  [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
+  [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
+  [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
+  [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2018
+  [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
+  [00:00:05.772,000] <inf> crypto: Output length (decryption): 64
+  [00:00:05.772,000] <err> crypto: CBC mode DECRYPT - Mismatch between plaintext and decrypted cipher text
+  [00:00:05.774,000] <inf> hace_global: aspeed_crypto_session_free
+  uart:~$
+
+Reviewed-by: Peter Delevoryas <peter@pjd.dev>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- target/arm/cpu.h        |  2 ++
- hw/arm/aspeed_ast2600.c |  2 ++
- target/arm/cpu.c        | 31 +++++++++++++++++++++++++++++++
- 3 files changed, 35 insertions(+)
+ hw/arm/aspeed_ast10x0.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index bf2bce046d..5f2fefef4e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -901,6 +901,8 @@ struct ArchCPU {
-     bool has_pmu;
-     /* CPU has VFP */
-     bool has_vfp;
-+    /* CPU has 32 VFP registers */
-+    bool has_vfp_d32;
-     /* CPU has Neon */
-     bool has_neon;
-     /* CPU has M-profile DSP extension */
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index cd75465c2b..37f43b4165 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -309,6 +309,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-                                 &error_abort);
-         object_property_set_bool(OBJECT(&s->cpu[i]), "neon", false,
-                                 &error_abort);
-+        object_property_set_bool(OBJECT(&s->cpu[i]), "vfp-d32", false,
-+                                &error_abort);
-         object_property_set_link(OBJECT(&s->cpu[i]), "memory",
-                                  OBJECT(s->memory), &error_abort);
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 592a19d988..5c794c2420 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -28,6 +28,7 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
+     [ASPEED_DEV_SPI1]      = 0x7E630000,
+     [ASPEED_DEV_SPI2]      = 0x7E640000,
+     [ASPEED_DEV_UDC]       = 0x7E6A2000,
++    [ASPEED_DEV_HACE]      = 0x7E6D0000,
+     [ASPEED_DEV_SCU]       = 0x7E6E2000,
+     [ASPEED_DEV_JTAG0]     = 0x7E6E4000,
+     [ASPEED_DEV_JTAG1]     = 0x7E6E4100,
+@@ -165,6 +166,9 @@ static void aspeed_soc_ast1030_init(Object *obj)
+     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+     object_initialize_child(obj, "gpio", &s->gpio, typename);
  
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5f63316dbf..ad90de75fb 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1269,6 +1269,9 @@ static Property arm_cpu_cfgend_property =
- static Property arm_cpu_has_vfp_property =
-             DEFINE_PROP_BOOL("vfp", ARMCPU, has_vfp, true);
- 
-+static Property arm_cpu_has_vfp_d32_property =
-+            DEFINE_PROP_BOOL("vfp-d32", ARMCPU, has_vfp_d32, true);
++    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
++    object_initialize_child(obj, "hace", &s->hace, typename);
 +
- static Property arm_cpu_has_neon_property =
-             DEFINE_PROP_BOOL("neon", ARMCPU, has_neon, true);
- 
-@@ -1400,6 +1403,14 @@ void arm_cpu_post_init(Object *obj)
-         }
+     object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemented,
+                             TYPE_UNIMPLEMENTED_DEVICE);
+@@ -358,6 +362,17 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
      }
+     aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
  
-+    if (cpu->has_vfp && cpu_isar_feature(aa32_simd_r32, cpu)) {
-+        cpu->has_vfp_d32 = true;
-+        if (!kvm_enabled()) {
-+            qdev_property_add_static(DEVICE(obj),
-+                                     &arm_cpu_has_vfp_d32_property);
-+        }
-+    }
-+
-     if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
-         cpu->has_neon = true;
-         if (!kvm_enabled()) {
-@@ -1661,6 +1672,26 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    if (!cpu->has_vfp_d32 &&
-+        arm_feature(env, ARM_FEATURE_V8) &&
-+        !arm_feature(env, ARM_FEATURE_M)) {
-+        error_setg(errp, "ARMv8A CPUs must have VFP32");
++    /* HACE */
++    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(&s->sram),
++                             &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
 +        return;
 +    }
++    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->hace), 0,
++                    sc->memmap[ASPEED_DEV_HACE]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
 +
-+    if (cpu->has_vfp_d32 != cpu->has_neon) {
-+        error_setg(errp, "ARM CPUs must have both VFP32 and Neon or neither");
-+        return;
-+    }
-+
-+   if (!cpu->has_vfp_d32) {
-+        uint32_t u;
-+
-+        u = cpu->isar.mvfr0;
-+        u = FIELD_DP32(u, MVFR0, SIMDREG, 1); /* 16 registers */
-+        cpu->isar.mvfr0 = u;
-+    }
-+
-     if (!cpu->has_vfp) {
-         uint64_t t;
-         uint32_t u;
+     /* Watch dog */
+     for (i = 0; i < sc->wdts_num; i++) {
+         AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
 -- 
 2.39.0
 

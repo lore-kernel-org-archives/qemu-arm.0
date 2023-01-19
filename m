@@ -1,341 +1,134 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp635498ejc;
-        Thu, 19 Jan 2023 13:35:58 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsVCnJhKq1nt2OouerGa46VUmptRxUDJZ+WKFICOI0tmzv0O6BURnMYW9Fu5ABGEqCnXEDl
-X-Received: by 2002:a05:6102:2908:b0:3d0:ec63:5fff with SMTP id cz8-20020a056102290800b003d0ec635fffmr9659195vsb.8.1674164158263;
-        Thu, 19 Jan 2023 13:35:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674164158; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp637333ejc;
+        Thu, 19 Jan 2023 13:40:10 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtyfBgdY7gEvCrAkjXyAXfTlbtw4Q6HOmxlp9wIAy2g6LmjRXyk1u2uEX3mAQm9ER7LeTh8
+X-Received: by 2002:adf:de81:0:b0:2bd:dc5c:7e4c with SMTP id w1-20020adfde81000000b002bddc5c7e4cmr10716748wrl.15.1674164410129;
+        Thu, 19 Jan 2023 13:40:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674164410; cv=none;
         d=google.com; s=arc-20160816;
-        b=x2Ar4bk64wo3T2Lb7qU6YjZSBvk5hItXgUjjCI/Tgrr2IuB5H57m3slf7uVkDFmtqk
-         XjrfZNwRd5Vn44w4GcGMQQV5AuYUYyALvZKiv2jag3+Q2ouwEMjVVKckioysjoc3yQJm
-         q5osid2DDzGFTQ6AgI6jrA4J2c8RFojl0anuxawODQGDRrgc8GhTOtsX4Iw/J5KfvbJ0
-         RgLGqH86rtiQnhBVYKWQQgq02dem/MDLF32AVaN91AfYMWuwWvf3IEyK12FyBD1HT3fP
-         JUOmwheLSk2bdPBWI32P6EekLhd6K32kP4wu9J7wM2lcYWZnkiRoUhRqbUrOaVLrfkQ2
-         B8nQ==
+        b=xOsTuHm/VRKQfFGxWyPf6jlRAYLHIFnAAdUA7Ve/9mdvYFRRDSE1OpU0XdUYvFaii3
+         LLfzhIOKVEv5XFhrZtyoLXI0kwyOAxYupcYux0Geoh69rXATfZ9ZKwQxLFO2W/r14U8C
+         0Qorp2s7yj2A8lLhFIpD/gPQ0Yra0EXFlE7Boe6yMFDBex8kOjbY3H3WeSSvHIZx1am+
+         s9wxDqEOhcpfZ/WF9a/+69pQgmHkeoNB7+DpJpC/QysWCq/5bNcbJ57DRJr3EwH6IS5I
+         5n6ulCBg/6G7dQtUSyzCdZ4cqSvYciyE+MmhZp6QBe/1m0aTiJt0uKdYusrP1LZCbxwQ
+         LFUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:cc:to:from:date
-         :references:in-reply-to:message-id:mime-version:user-agent
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=cSsG6jGHbpA5EvtVUnuQ/k4rw7ch+t+8n09cSe3AS8w=;
-        b=aYdlhPtZleZ+V6SSgze+QtBAq14d4k066mdQjZsi1WHbap4D3Jfk5exjrcqdT6/vdX
-         akKwoF/AFLGapi1FqC3mCutuD2hyOWHM64x6OxTRHb5RxicGxKD7D8K8g9g4lRO8OHe0
-         yWJpDZpt2awaZTnLRR1rKgr2m299+lEqWcDl9hbPNJrnIy9eF5DeEc6N7SEXUOvRNWH5
-         iZpU0sMgrAcfq3dpRHyoZA3yziOPQwGNCWHujBGCm3ltOPEddd27C8JoJKiKyd6yUfEF
-         beMh1jfUjkbfN09cFUJYEbTDnLv8Fo2JhsAEIc68T0IffjGoCrATtmxgUTwnDS8BLaJY
-         5Ebg==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=RoEh7zPScss2YI3wPFjVqkzK4GVROPBcUOeXIx4Ip6Y=;
+        b=akDY4wVacEid+duNm5LZY59TFKb05EmEIlcVJw7PfQCJJKhSVvHYcSdzCnKZqnRC34
+         rciN7t2Cju7MlxAXc3jj/04NyyoHcYc/BASll7BsmUzMtgFGG3a/MshWzLjxxouvelJ9
+         FkEhD7KTBYA3C5Lud831G01XjpqPrhRbQqOpgZkWWwgaLj+GbSl9sNz8naXYEAZ/GZSk
+         uUcz9e1xf99yBnmhozlfQG3xT/IjO5OvhdHkwOLoHAlwn797WfYjPqIf3pDdrqw0fc5i
+         G9Z/PDOtOV+yLB3oQclCap9z575uF5nPnhbnez2loug5yFlFogZNDv9EU/JzWZ2n+lo2
+         7VOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=QI8UlsFn;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=L3pCPJ59;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bn31-20020a05620a2adf00b0070650cc560fsi8441835qkb.395.2023.01.19.13.35.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 13:35:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Qiu65j7W;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id b15-20020a05600003cf00b0028d35a4efebsi32381489wrg.573.2023.01.19.13.40.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Jan 2023 13:40:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=QI8UlsFn;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=L3pCPJ59;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pIcZb-0005Ye-Jo; Thu, 19 Jan 2023 16:35:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1pIcZZ-0005YN-BT; Thu, 19 Jan 2023 16:35:49 -0500
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1pIcZV-0001ZU-DW; Thu, 19 Jan 2023 16:35:49 -0500
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailout.west.internal (Postfix) with ESMTP id 8CE1F32002F9;
- Thu, 19 Jan 2023 16:35:41 -0500 (EST)
-Received: from imap50 ([10.202.2.100])
- by compute6.internal (MEProxy); Thu, 19 Jan 2023 16:35:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
- :cc:content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm2; t=1674164141; x=1674250541; bh=cSsG6jGHbp
- A5EvtVUnuQ/k4rw7ch+t+8n09cSe3AS8w=; b=QI8UlsFn38tYj3O3PDGJ/Tv1L4
- DbOzfwzD5NEa/pVCeLlOqeiEn6SyVicGPrCSX8GapTtJMNYRrhOiQFbtIwqqRZlW
- GBGsvX01yqS1PmjD5lG+uPLhJlZEDc5OxF26J5CzCkDqqZyD15eFYoNImWa2LdWn
- Cnf3NqnIAYdPLD7H187hjsjIEwUEWcqXBGeJ4d99F3yvgmYjrJii+5QbdKYCgqcT
- DTEwTkTM8g+aj+eIyg2Up3vqzIrLMFsWGzEvQrnbpfBaWkB0dLi0EuJieBw1mW7j
- YYvU9sC1Zss8CB/rXWpDGuO5fPWhBTXb3k0Z/v7ggmNn8lbbP007L3pxlHjg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1674164141; x=1674250541; bh=cSsG6jGHbpA5EvtVUnuQ/k4rw7ch
- +t+8n09cSe3AS8w=; b=L3pCPJ59ZoJMS6vHzCHZG6cgDp4QI8h5mfpkkUuFJJIo
- UdChOKDWVm3ThxpL6KFbdRWtjofxRvp7xPeUg8MnOm8oGEZ+MTmuIwvYE+U6p01r
- IUAxCsdC9wBWx6y0+MNritm0d0H9xqXF2xzat1OCGBsGJft/vtrOdulsgkNqMdd+
- iUBru1VhVgEie8zKBq4D1xLY58C8l4eIOBKdI3ZJBe3OEJQD0/magYZie+Upamf8
- 6GCCm8qhckwQa2iwKT8bDBNz/ike1ZOMX+XZfQoUQ/JiT0tNIOrSnzaa+fbNhjig
- qdMSN/hDdjM0R8NYdZBSCG6ynS/A9zHQIsXVqlmPwQ==
-X-ME-Sender: <xms:rLfJY5mjwOOsoesGF54iaXyZxB8a71j3fGB2sYoaG3dq9oEks6-C1Q>
- <xme:rLfJY006A9OUIxq02_4gFD19GCxwTTxvRw2Xz5ThhNqPtVWgATV2UyHojOX5K_8Un
- kuKytxjl6PpGzDFZg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddutddgudehvdcutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpefofgggkfgjfhffhffvvefutgesthdtredtreertdenucfhrhhomhepfdet
- nhgurhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecugg
- ftrfgrthhtvghrnhepkedvkeejkefgjeduffetteegjeekteetudevtdfftdeluddthfeh
- veefteekieetnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrh
- homheprghnughrvgifsegrjhdrihgurdgruh
-X-ME-Proxy: <xmx:rLfJY_pYHTsiQysI84lLAdEq2qcurVZJJKCzKnWLRxADLf5OXg9Y6g>
- <xmx:rLfJY5nqyqBnkMpdwdMwvdP4d-jWC453cKlVH-bsAEC9LJBDvfFcMw>
- <xmx:rLfJY30de_S8lLZWRiVgDqusdczAQeC3hXqk4vUWD114tpnaKz992w>
- <xmx:rbfJY1B9C557qOWX6xqS9xkGBN1fahM3Jr9o0yaHSA_BCCqGt7elAQ>
-Feedback-ID: idfb84289:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 8CEC21700089; Thu, 19 Jan 2023 16:35:40 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-85-gd6d859e0cf-fm-20230116.001-gd6d859e0
-Mime-Version: 1.0
-Message-Id: <2c7e9943-be27-4136-8b45-7dc18aebed01@app.fastmail.com>
-In-Reply-To: <20230119124440.50243-1-joel@jms.id.au>
-References: <20230119124440.50243-1-joel@jms.id.au>
-Date: Fri, 20 Jan 2023 08:05:09 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Joel Stanley" <joel@jms.id.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "Peter Maydell" <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9_via?= <qemu-arm@nongnu.org>,
- "Cameron Esfahani via" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] hw/misc: Add basic Aspeed GFX model
-Content-Type: text/plain
-Received-SPF: pass client-ip=64.147.123.24; envelope-from=andrew@aj.id.au;
- helo=wout1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Cj7YHNZX4sK0
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Qiu65j7W;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 92CE42199F;
+	Thu, 19 Jan 2023 21:40:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1674164409; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=RoEh7zPScss2YI3wPFjVqkzK4GVROPBcUOeXIx4Ip6Y=;
+	b=Qiu65j7WmiA7K0cDkfdRa7tML03klXjRKnIZorYP18nrTBoWU90rH4wZ5GCmfHXhuY9Pg3
+	lM1RH0qspaLowM/G3Yi1b+oyzbwM/wjHi2pI9OnAnXqTlePnG+9NzmJTiE9jHkTkh0XoWd
+	WlR6UU3xJeAmgmvmz1dNtcXmppNmd8M=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1674164409;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=RoEh7zPScss2YI3wPFjVqkzK4GVROPBcUOeXIx4Ip6Y=;
+	b=vqa/3VBW878i5N4gfaKxrY4L3yCwRBLCeU4G8ucUoTq33q6JzYMbOjosqoiBM4Uw4wozwo
+	P9JM4Vf35yANUqDQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 1C1E2139ED;
+	Thu, 19 Jan 2023 21:40:08 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id WhBzNbi4yWO9eAAAMHmgww
+	(envelope-from <farosas@suse.de>); Thu, 19 Jan 2023 21:40:08 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Richard
+ Henderson
+ <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>,
+ Claudio Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: Re: [RFC PATCH v4 14/15] arm/Kconfig: Always select SEMIHOSTING
+ when TCG is present
+In-Reply-To: <440155ee-4782-c7fa-6860-c39a983aecae@linaro.org>
+References: <20230119135424.5417-1-farosas@suse.de>
+ <20230119135424.5417-15-farosas@suse.de>
+ <216d61ba-d5a4-f701-0190-0656e7e2e40f@linaro.org>
+ <440155ee-4782-c7fa-6860-c39a983aecae@linaro.org>
+Date: Thu, 19 Jan 2023 18:40:06 -0300
+Message-ID: <87y1py2og9.fsf@suse.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: RTgmduBLu1XU
 
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-
-On Thu, 19 Jan 2023, at 23:14, Joel Stanley wrote:
-> Enough model to capture the pinmux writes to enable correct operation of
-> the parts of pinmux that depend on GFX registers.
+> On 19/1/23 19:50, Richard Henderson wrote:
+>> On 1/19/23 03:54, Fabiano Rosas wrote:
+>>> We are about to enable the build without TCG, so CONFIG_SEMIHOSTING
+>>> and CONFIG_ARM_COMPATIBLE_SEMIHOSTING cannot be unconditionally set in
+>>> default.mak anymore. So reflect the change in a Kconfig.
+>>>
+>>> Instead of using semihosting/Kconfig, use a target-specific file, so
+>>> that the change doesn't affect other architectures which might
+>>> implement semihosting in a way compatible with KVM.
+>>>
+>>> The selection from ARM_v7M needs to be removed to avoid a cycle during
+>>> parsing.
+>>>
+>>> Signed-off-by: Fabiano Rosas<farosas@suse.de>
+>>=20
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>=20
+>>> The linux-user build does not use Kconfig. Is it worth it to add
+>>> support to it? There's just the semihosting config so far.
+>>=20
+>> Probably not.
 >
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> ---
->  include/hw/arm/aspeed_soc.h  |   3 +
->  include/hw/misc/aspeed_gfx.h |  31 +++++++++
->  hw/arm/aspeed_ast2600.c      |  11 ++++
->  hw/arm/aspeed_soc.c          |  12 ++++
->  hw/misc/aspeed_gfx.c         | 121 +++++++++++++++++++++++++++++++++++
->  hw/misc/meson.build          |   1 +
->  hw/misc/trace-events         |   4 ++
->  7 files changed, 183 insertions(+)
->  create mode 100644 include/hw/misc/aspeed_gfx.h
->  create mode 100644 hw/misc/aspeed_gfx.c
+> I hit this limitation last week trying to restrict libdecnumber to
+> powerpc targets.
 >
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 8389200b2d01..7084e0efeb97 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -26,6 +26,7 @@
->  #include "hw/ssi/aspeed_smc.h"
->  #include "hw/misc/aspeed_hace.h"
->  #include "hw/misc/aspeed_sbc.h"
-> +#include "hw/misc/aspeed_gfx.h"
->  #include "hw/watchdog/wdt_aspeed.h"
->  #include "hw/net/ftgmac100.h"
->  #include "target/arm/cpu.h"
-> @@ -81,6 +82,7 @@ struct AspeedSoCState {
->      AspeedSDHCIState emmc;
->      AspeedLPCState lpc;
->      AspeedPECIState peci;
-> +    AspeedGFXState gfx;
->      SerialMM uart[ASPEED_UARTS_NUM];
->      Clock *sysclk;
->      UnimplementedDeviceState iomem;
-> @@ -171,6 +173,7 @@ enum {
->      ASPEED_DEV_EMMC,
->      ASPEED_DEV_KCS,
->      ASPEED_DEV_HACE,
-> +    ASPEED_DEV_GFX,
->      ASPEED_DEV_DPMCU,
->      ASPEED_DEV_DP,
->      ASPEED_DEV_I3C,
-> diff --git a/include/hw/misc/aspeed_gfx.h b/include/hw/misc/aspeed_gfx.h
-> new file mode 100644
-> index 000000000000..b0736a53f577
-> --- /dev/null
-> +++ b/include/hw/misc/aspeed_gfx.h
-> @@ -0,0 +1,31 @@
-> +/*
-> + * ASPEED GFX Controller
-> + *
-> + * Copyright (C) 2023 IBM Corp.
-> + *
-> + * This code is licensed under the GPL version 2 or later.  See
-> + * the COPYING file in the top-level directory.
-> + */
+> Fabiano, do you see how this can be done easily?
 
-Use SPDX here?
+If you grep for Kconfig in the top level meson.build, that code there
+could be adapted to also include linux-user targets.
 
-> +
-> +#ifndef ASPEED_GFX_H
-> +#define ASPEED_GFX_H
-> +
-> +#include "hw/sysbus.h"
-> +
-> +#define TYPE_ASPEED_GFX "aspeed.gfx"
-> +#define ASPEED_GFX(obj) OBJECT_CHECK(AspeedGFXState, (obj), TYPE_ASPEED_GFX)
-> +
-> +#define ASPEED_GFX_NR_REGS (0xFC >> 2)
-> +
-> +typedef struct AspeedGFXState {
-> +    /* <private> */
-> +    SysBusDevice parent;
-> +
-> +    /*< public >*/
-> +    MemoryRegion iomem;
-> +    qemu_irq irq;
-> +
-> +    uint32_t regs[ASPEED_GFX_NR_REGS];
-> +} AspeedGFXState;
-> +
-> +#endif /* _ASPEED_GFX_H_ */
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index cd75465c2bdd..10e4a13655cc 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -43,6 +43,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
->      [ASPEED_DEV_HACE]      = 0x1E6D0000,
->      [ASPEED_DEV_SDMC]      = 0x1E6E0000,
->      [ASPEED_DEV_SCU]       = 0x1E6E2000,
-> +    [ASPEED_DEV_GFX]       = 0x1E6E6000,
->      [ASPEED_DEV_XDMA]      = 0x1E6E7000,
->      [ASPEED_DEV_ADC]       = 0x1E6E9000,
->      [ASPEED_DEV_DP]        = 0x1E6EB000,
-> @@ -255,6 +256,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
-> 
->      object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
-> 
-> +    object_initialize_child(obj, "gfx", &s->gfx, TYPE_ASPEED_GFX);
-> +
->      object_initialize_child(obj, "iomem", &s->iomem, 
-> TYPE_UNIMPLEMENTED_DEVICE);
->      object_initialize_child(obj, "video", &s->video, 
-> TYPE_UNIMPLEMENTED_DEVICE);
->      object_initialize_child(obj, "dpmcu", &s->dpmcu, 
-> TYPE_UNIMPLEMENTED_DEVICE);
-> @@ -607,6 +610,14 @@ static void aspeed_soc_ast2600_realize(DeviceState 
-> *dev, Error **errp)
->          return;
->      }
->      aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, 
-> sc->memmap[ASPEED_DEV_SBC]);
-> +
-> +    /* GFX */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gfx), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gfx), 0, 
-> sc->memmap[ASPEED_DEV_GFX]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gfx), 0,
-> +                       aspeed_soc_get_irq(s, ASPEED_DEV_GFX));
-
-I think we're missing an entry for ASPEED_DEV_GFX in the irqmap array?
-
->  }
-> 
->  static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index b05b9dd41602..053149f9ccdf 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -33,6 +33,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
->      [ASPEED_DEV_SDMC]   = 0x1E6E0000,
->      [ASPEED_DEV_SCU]    = 0x1E6E2000,
->      [ASPEED_DEV_HACE]   = 0x1E6E3000,
-> +    [ASPEED_DEV_GFX]    = 0x1E6E6000,
->      [ASPEED_DEV_XDMA]   = 0x1E6E7000,
->      [ASPEED_DEV_VIDEO]  = 0x1E700000,
->      [ASPEED_DEV_ADC]    = 0x1E6E9000,
-> @@ -69,6 +70,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
->      [ASPEED_DEV_SDMC]   = 0x1E6E0000,
->      [ASPEED_DEV_SCU]    = 0x1E6E2000,
->      [ASPEED_DEV_HACE]   = 0x1E6E3000,
-> +    [ASPEED_DEV_GFX]    = 0x1E6E6000,
->      [ASPEED_DEV_XDMA]   = 0x1E6E7000,
->      [ASPEED_DEV_ADC]    = 0x1E6E9000,
->      [ASPEED_DEV_VIDEO]  = 0x1E700000,
-> @@ -233,6 +235,8 @@ static void aspeed_soc_init(Object *obj)
->      snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
->      object_initialize_child(obj, "hace", &s->hace, typename);
-> 
-> +    object_initialize_child(obj, "gfx", &s->gfx, TYPE_ASPEED_GFX);
-> +
->      object_initialize_child(obj, "iomem", &s->iomem, 
-> TYPE_UNIMPLEMENTED_DEVICE);
->      object_initialize_child(obj, "video", &s->video, 
-> TYPE_UNIMPLEMENTED_DEVICE);
->  }
-> @@ -482,6 +486,14 @@ static void aspeed_soc_realize(DeviceState *dev, 
-> Error **errp)
->                      sc->memmap[ASPEED_DEV_HACE]);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
->                         aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
-> +
-> +    /* GFX */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gfx), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gfx), 0, 
-> sc->memmap[ASPEED_DEV_GFX]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gfx), 0,
-> +                       aspeed_soc_get_irq(s, ASPEED_DEV_GFX));
-
-Again with the irqmap
-
->  }
->  static Property aspeed_soc_properties[] = {
->      DEFINE_PROP_LINK("memory", AspeedSoCState, memory, 
-> TYPE_MEMORY_REGION,
-> diff --git a/hw/misc/aspeed_gfx.c b/hw/misc/aspeed_gfx.c
-> new file mode 100644
-> index 000000000000..42d2167b4a59
-> --- /dev/null
-> +++ b/hw/misc/aspeed_gfx.c
-> @@ -0,0 +1,121 @@
-> +/*
-> + * ASPEED GFX Controller
-> + *
-> + * Copyright (C) 2023 IBM Corp.
-> + *
-> + * This code is licensed under the GPL version 2 or later.  See
-> + * the COPYING file in the top-level directory.
-> + */
-
-SPDX again?
-
-Cheers,
-
-Andrew
+I did some experimenting and I could generate linux-user.mak files with
+all the configs from the existing Kconfigs. It would be a matter of
+adding the proper CONFIG_SOFTMMU, CONFIG_LINUX_USER options to separate
+the two and then hooking up the .mak files with the rest of the
+build. That last part I'm not sure how to do.

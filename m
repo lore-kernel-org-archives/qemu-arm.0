@@ -1,85 +1,86 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp296309ejc;
-        Thu, 19 Jan 2023 04:36:10 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXut9EB87QOawAoFJ3y4e39AYicA+k9vtCkAyhdTWPQjabIBRXSCdVn41rPkMyXm9Dn8yKWR
-X-Received: by 2002:ac8:6bd2:0:b0:3b2:2195:e2a2 with SMTP id b18-20020ac86bd2000000b003b22195e2a2mr14267597qtt.45.1674131770639;
-        Thu, 19 Jan 2023 04:36:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674131770; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp296345ejc;
+        Thu, 19 Jan 2023 04:36:17 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvFg5alS4yYtTXk/3XLZ7FWMKsVf1ynAEhLclPbkZyz4fr0MPUvDqt/L/NU71b34IGWNofr
+X-Received: by 2002:ac8:7ec4:0:b0:3b6:3c9c:59f0 with SMTP id x4-20020ac87ec4000000b003b63c9c59f0mr14422049qtj.15.1674131776864;
+        Thu, 19 Jan 2023 04:36:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674131776; cv=none;
         d=google.com; s=arc-20160816;
-        b=CCfaS1bN4qTCMqsjobv3NJz44SeO+DEpk8YR8N+1e/La4xcPe+AoN/D2ZkICdQXM+B
-         JSk4I9RDfYGqtzEGOYElV2ywNVOe1YeU27lc/iYI+19JwO9NtN02X/iqO0s4+IkQDIg4
-         Fnhy+ybgTWt8JdhCUfTJCv+msctPITLnvhkmTaSECAETOME3VrlZ03hBJ/hFoBVqmyp5
-         oSU4CICMe6MTd8zbZj/NrAGroa++jZJmnQ7oSXhOaKJaA70rZX+urn9AZ/l9G7a3mD+2
-         koQWNsS1QCve3cKqbwPpSGiNnVCMJSHar0dbJkxCsxTIkBeKHk0LWG+5b1//7J8uta6g
-         WbuA==
+        b=K4V6GRnCWfajEi95CRDtlXuz3DnrGAKzu9pyyFdvk/Yq+1cspnMaDMyItIMcDQI5uS
+         gZpgWpdg2NLgd0qJnOrP4Vpc/RfNoEQqaoO4xeJTu1vhyL1dztBct1D+Nxfn9rup9G9e
+         xGqWTadRFbbv5qId+fEGlJueIlpqJw8btsbsnccx/b/gQEE4QotNIajxcP9IKC5M9VnI
+         AIPXVykJ3bR4xe2y3egjNsLoyw1lCDUsyjusFtSlVq6pveTD0sKBxhOiLJUs9d2oA/bJ
+         ZwwzQBdZ+ctygs0yuDzQgHcyMErQIiFP06PW0YYery3RUiIAzkd+10trLm+KcrpRWjqt
+         zlAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=kSz+hgi9Z90xPBSb8z8f8z7Vw0CiqylWMpz1IKrpsTQ=;
-        b=twuHsIaEqLt7TTOCbyScdwIJInFJ1onM+Cs4T0lxTn2HOKKYMND1eZ+X7LeYMXbX7H
-         MHI4GCj251y47/Otq2dJ4MDshX46m3Y3ELf4pdrRVrPoEpJXkBbl1JN4SytMEv9uF7pY
-         e3IOxwyogbY3/u9d0igs/2IqN7+XRJJBNgVjG+K1waMnPvzsUCBu7vzq+G/+AWO08MSf
-         wAdpC+G4UoYZiXuH/WQ2jyO3di6mB2aWFKh1/H/WIef+iX0GpDlSCLCvK5i7CcJZQmT4
-         0/nvfcZMhcNDNzFBSRtLbNRWPjxAGC5HlXR+jDhieVEJAq8hgCh/OUSSYCAB0OCCkm0Q
-         JXVg==
+        bh=ZfCMloy3+h2ZMhPuRQm8RiOYHDOjWGkhJn0FfGyJLcw=;
+        b=Cw+cUP/jigAjPtHIOGvtlsRjUva/ZTg2l5kmBqbzr38O5EB3UY+Y2ZAikzFwSl/HXL
+         OY6DiE1OlFVrZqGznsiLWIUlJ2/Jxx0rOuICVhCfz1g/2ZmQGW5KPodrbR/LN9zc7iMl
+         qCiTN37uspgd66C0swlyJIRl5+PTUfElMyRfw8jobm1syMDhlRDTx8T5vR8HT4Qqro6a
+         i+J7eBCuNwVw0kmaGGOy30XndhNlV8u3QYDul+5Q5WJiZOfV2DB/7IRev5/oLnGYwHg0
+         A2FvoIOmGVf9qX2ZL8dqOWrn3VxNmAnJvp7HblIXLPosrbEMjlH1cmZzvBvPiTVMQ8hr
+         01aw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12-20020ac8534c000000b003b41e8d66bfsi9868582qto.195.2023.01.19.04.36.10
+        by mx.google.com with ESMTPS id dt54-20020a05620a47b600b00706303ee940si9694413qkb.50.2023.01.19.04.36.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 04:36:10 -0800 (PST)
+        Thu, 19 Jan 2023 04:36:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pIU8t-0006fB-8d; Thu, 19 Jan 2023 07:35:43 -0500
+	id 1pIU9F-0007Ke-TU; Thu, 19 Jan 2023 07:36:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU8r-0006el-PM; Thu, 19 Jan 2023 07:35:41 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1pIU96-0007DN-9J; Thu, 19 Jan 2023 07:35:58 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU8p-0007dU-PP; Thu, 19 Jan 2023 07:35:41 -0500
+ id 1pIU94-0007ee-Gp; Thu, 19 Jan 2023 07:35:56 -0500
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMY52W75z4xZj;
- Thu, 19 Jan 2023 23:35:37 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYP01yjz4xN1;
+ Thu, 19 Jan 2023 23:35:53 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMY30RLYz4xHV;
- Thu, 19 Jan 2023 23:35:34 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYL6tQbz4xHV;
+ Thu, 19 Jan 2023 23:35:50 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Delevoryas <peter@pjd.dev>, Joel Stanley <joel@jms.id.au>,
+ Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 12/25] hw/nvram/eeprom_at24c: Add init_rom field and
- at24c_eeprom_init_rom helper
-Date: Thu, 19 Jan 2023 13:34:36 +0100
-Message-Id: <20230119123449.531826-13-clg@kaod.org>
+Subject: [PATCH 18/25] hw/watchdog/wdt_aspeed: Log unimplemented registers as
+ UNIMP level
+Date: Thu, 19 Jan 2023 13:34:42 +0100
+Message-Id: <20230119123449.531826-19-clg@kaod.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230119123449.531826-1-clg@kaod.org>
 References: <20230119123449.531826-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,128 +95,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i7NKpiHbViKq
+X-TUID: ZJ1tnPMG8A6b
 
-From: Peter Delevoryas <peter@pjd.dev>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Allows users to specify binary data to initialize an EEPROM, allowing users to
-emulate data programmed at manufacturing time.
+Add more Aspeed watchdog registers from [*].
 
-- Added init_rom and init_rom_size attributes to TYPE_AT24C_EE
-- Added at24c_eeprom_init_rom helper function to initialize attributes
-- If -drive property is provided, it overrides init_rom data
+Since guests can righteously access them, log the access at
+'unimplemented' level instead of 'guest-errors'.
 
-Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+[*] https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/drivers/watchdog/wdt_aspeed.c#L31
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Delevoryas <peter@pjd.dev>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/nvram/eeprom_at24c.h | 16 ++++++++++++++
- hw/nvram/eeprom_at24c.c         | 37 ++++++++++++++++++++++++++++-----
- 2 files changed, 48 insertions(+), 5 deletions(-)
+ include/hw/watchdog/wdt_aspeed.h |  2 +-
+ hw/watchdog/wdt_aspeed.c         | 13 +++++++++++++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/nvram/eeprom_at24c.h b/include/hw/nvram/eeprom_at24c.h
-index 196db309d4..acb9857b2a 100644
---- a/include/hw/nvram/eeprom_at24c.h
-+++ b/include/hw/nvram/eeprom_at24c.h
-@@ -20,4 +20,20 @@
-  */
- I2CSlave *at24c_eeprom_init(I2CBus *bus, uint8_t address, uint32_t rom_size);
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index db91ee6b51..e90ef86651 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -21,7 +21,7 @@ OBJECT_DECLARE_TYPE(AspeedWDTState, AspeedWDTClass, ASPEED_WDT)
+ #define TYPE_ASPEED_2600_WDT TYPE_ASPEED_WDT "-ast2600"
+ #define TYPE_ASPEED_1030_WDT TYPE_ASPEED_WDT "-ast1030"
  
+-#define ASPEED_WDT_REGS_MAX        (0x20 / 4)
++#define ASPEED_WDT_REGS_MAX        (0x30 / 4)
+ 
+ struct AspeedWDTState {
+     /*< private >*/
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index eefca31ae4..d267aa185c 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -42,6 +42,11 @@
+ #define     WDT_PUSH_PULL_MAGIC         (0xA8 << 24)
+ #define     WDT_OPEN_DRAIN_MAGIC        (0x8A << 24)
+ #define WDT_RESET_MASK1                 (0x1c / 4)
++#define WDT_RESET_MASK2                 (0x20 / 4)
 +
-+/*
-+ * Create and realize an AT24C EEPROM device on the heap with initial data.
-+ * @bus: I2C bus to put it on
-+ * @address: I2C address of the EEPROM slave when put on a bus
-+ * @rom_size: size of the EEPROM
-+ * @init_rom: Array of bytes to initialize EEPROM memory with
-+ * @init_rom_size: Size of @init_rom, must be less than or equal to @rom_size
-+ *
-+ * Create the device state structure, initialize it, put it on the specified
-+ * @bus, and drop the reference to it (the device is realized). Copies the data
-+ * from @init_rom to the beginning of the EEPROM memory buffer.
-+ */
-+I2CSlave *at24c_eeprom_init_rom(I2CBus *bus, uint8_t address, uint32_t rom_size,
-+                                const uint8_t *init_rom, uint32_t init_rom_size);
-+
- #endif
-diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-index 98857e3626..f8d751fa27 100644
---- a/hw/nvram/eeprom_at24c.c
-+++ b/hw/nvram/eeprom_at24c.c
-@@ -50,6 +50,9 @@ struct EEPROMState {
-     uint8_t *mem;
++#define WDT_SW_RESET_CTRL               (0x24 / 4)
++#define WDT_SW_RESET_MASK1              (0x28 / 4)
++#define WDT_SW_RESET_MASK2              (0x2c / 4)
  
-     BlockBackend *blk;
-+
-+    const uint8_t *init_rom;
-+    uint32_t init_rom_size;
- };
+ #define WDT_TIMEOUT_STATUS              (0x10 / 4)
+ #define WDT_TIMEOUT_CLEAR               (0x14 / 4)
+@@ -83,6 +88,10 @@ static uint64_t aspeed_wdt_read(void *opaque, hwaddr offset, unsigned size)
+         return s->regs[WDT_RESET_MASK1];
+     case WDT_TIMEOUT_STATUS:
+     case WDT_TIMEOUT_CLEAR:
++    case WDT_RESET_MASK2:
++    case WDT_SW_RESET_CTRL:
++    case WDT_SW_RESET_MASK1:
++    case WDT_SW_RESET_MASK2:
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: uninmplemented read at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
+@@ -190,6 +199,10 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
  
- static
-@@ -131,19 +134,38 @@ int at24c_eeprom_send(I2CSlave *s, uint8_t data)
- 
- I2CSlave *at24c_eeprom_init(I2CBus *bus, uint8_t address, uint32_t rom_size)
- {
--    I2CSlave *i2c_dev = i2c_slave_new(TYPE_AT24C_EE, address);
--    DeviceState *dev = DEVICE(i2c_dev);
-+    return at24c_eeprom_init_rom(bus, address, rom_size, NULL, 0);
-+}
-+
-+I2CSlave *at24c_eeprom_init_rom(I2CBus *bus, uint8_t address, uint32_t rom_size,
-+                                const uint8_t *init_rom, uint32_t init_rom_size)
-+{
-+    EEPROMState *s;
-+
-+    s = AT24C_EE(qdev_new(TYPE_AT24C_EE));
-+
-+    qdev_prop_set_uint8(DEVICE(s), "address", address);
-+    qdev_prop_set_uint32(DEVICE(s), "rom-size", rom_size);
- 
--    qdev_prop_set_uint32(dev, "rom-size", rom_size);
--    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
-+    /* TODO: Model init_rom with QOM properties. */
-+    s->init_rom = init_rom;
-+    s->init_rom_size = init_rom_size;
- 
--    return i2c_dev;
-+    i2c_slave_realize_and_unref(I2C_SLAVE(s), bus, &error_abort);
-+
-+    return I2C_SLAVE(s);
- }
- 
- static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
- {
-     EEPROMState *ee = AT24C_EE(dev);
- 
-+    if (ee->init_rom_size > ee->rsize) {
-+        error_setg(errp, "%s: init rom is larger than rom: %u > %u",
-+                   TYPE_AT24C_EE, ee->init_rom_size, ee->rsize);
-+        return;
-+    }
-+
-     if (ee->blk) {
-         int64_t len = blk_getlength(ee->blk);
- 
-@@ -163,6 +185,7 @@ static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
-     }
- 
-     ee->mem = g_malloc0(ee->rsize);
-+
- }
- 
- static
-@@ -176,6 +199,10 @@ void at24c_eeprom_reset(DeviceState *state)
- 
-     memset(ee->mem, 0, ee->rsize);
- 
-+    if (ee->init_rom) {
-+        memcpy(ee->mem, ee->init_rom, MIN(ee->init_rom_size, ee->rsize));
-+    }
-+
-     if (ee->blk) {
-         int ret = blk_pread(ee->blk, 0, ee->rsize, ee->mem, 0);
- 
+     case WDT_TIMEOUT_STATUS:
+     case WDT_TIMEOUT_CLEAR:
++    case WDT_RESET_MASK2:
++    case WDT_SW_RESET_CTRL:
++    case WDT_SW_RESET_MASK1:
++    case WDT_SW_RESET_MASK2:
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: uninmplemented write at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
 -- 
 2.39.0
 

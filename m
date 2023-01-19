@@ -1,138 +1,151 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp332076ejc;
-        Thu, 19 Jan 2023 05:33:59 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsYSfBNOg9xO+SBsu2ANiEDTQmLLHjLuL9kCIrNAVDRnBqaCc8k8eHh54BdvRNXGaCK5DOP
-X-Received: by 2002:a05:6214:37c2:b0:535:1b07:87ec with SMTP id nj2-20020a05621437c200b005351b0787ecmr18125577qvb.18.1674135238911;
-        Thu, 19 Jan 2023 05:33:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674135238; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp376363ejc;
+        Thu, 19 Jan 2023 06:39:14 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsN6CgsdzW0HchxP6zoJRnA0Zt8MzMQl82+FUGkcUaqoVv8S9dLE6l15I5tnec5L3oaZLys
+X-Received: by 2002:a17:907:84ca:b0:82b:61db:92b8 with SMTP id oh10-20020a17090784ca00b0082b61db92b8mr10738231ejc.57.1674139154150;
+        Thu, 19 Jan 2023 06:39:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674139154; cv=none;
         d=google.com; s=arc-20160816;
-        b=Du9l/YjhOm3O/vc77TIysPC58SHbWSIQtX6+qXslP+krPHtSsHI9DqvMvygwyGBeAm
-         vhCJK5l6/NMX0rD5LIG6r59VJQuyGja16YvbyJAoAo+L8fDb+vK72MYHGtHgsfofcunM
-         oGMm76HMqehyWKwUTHfDTRbYH3JteFnpBt0ibf7cNWISVIxJR13oyaDTkX6BnmpqTnkN
-         uapAw1ZnyHoKjxVULouaOnPqEQ6ggxcOF7IwLGJ1hDyUNtIlzh2zJ74HScvJfDUGqQxD
-         rckbj1lxeobShERxXbXznsUsRZiZawpTc0ac5H0n4WzRbijYBvd7vazhZpkH2SzIhroA
-         6e2w==
+        b=gO5CBWLMC4PNv09aLCHqEIyMCPTBy2Vc4znHcnx5S6xmYjW3YdGmMYrDa7VvfaGXd8
+         elaGM499C6g/sYoCl7VKcBNGDc1lJ54g8Qy54G62qNk/hpZEn/T1BKCo8NPbQqvvB8ZN
+         dL0gkZ9qmmI5nIv3ySgDC/+beBOjBQNQ8QI0l8gKAEYM23lvs7m3k+4EGdyCdEcrguV7
+         +8slWtZdG6OZt3AoSd1nmZRzgb4OPW8lIMQ2AB0jD+5whHUKC1CffQ/dkRBbxOQDbUpq
+         IV4TymZK0eO6tbd/+hbkncbSLiZbfr7G1kg23SFzaCIwStjn0pkVezmZGEZuexCwE09j
+         hGEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=xCMuQOEvhJPcTcEOSP3gcDTwP3FmeI54dDpngbTo6ww=;
-        b=xcUUlwXIC4lZh9sBD2CkgBRWe1Ie1/kAk1HM+ihOnQhuktAm16JMwAgYAJMb/MXZ9K
-         zaex2QyOgnjoDkS7MK4peHKQMUoRirovmqeL/5Mu4GoCmO4h2tDwx8JB4Lo0549yWF5l
-         YKA/9A1h20b0AxcKIWVOjfZ9Xk/oaig/HaQSB1YUygH/IfIaTETd6n/62MYvlweaxfCo
-         2rkOmckvJL8hIyGWlbdAMzlQBG4TebbhqreUZzrRbvd9JIdmNIlZrGnl+Oej/cdxXkKr
-         snzsXEaXVJB71AXH21ZcxITw7R0rXtg1VEMnL+b6K70PDLvyof6M0OulpiJbBxcy0CZF
-         llzg==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=1GIvdkOTXlKxnBEquwvZZPXfR47HKfI3DYtRrAbRCYM=;
+        b=LLgbVPchePabW/0GEdv53nuFtPez2Ld7zUCG5Ey7/SbWZAArID3LOk9pblljFWMM+o
+         L2yUb2D+n31fO90GuczuB2kaKwlXaRm93YD91OOtPexS3cmLzoqjYv9tNdTp1jnn6Wjc
+         oxsM/B+rWLA3Oh6BmkP3xYHz4WLnc693mkb8DOC/usXm7aOk8fNZdcJUs7DT6sOw/6FI
+         ml4AGUqSuTkY2QQKKN6jo90q1cXHvHzWjiyzdE5apkn4iUUWHIxSF5RrRgjyTYpOL6HT
+         WaINAwdP7uyrx6jDQuG3FjPyY1CAFsuc0AVa8sPHDAag07d1lnIPYna+Wk7DQQGOzb67
+         5u7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u3dlXLlG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iv3-20020ad45ce3000000b0053485182ab4si12488060qvb.262.2023.01.19.05.33.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 05:33:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=F9367bnD;
+       dkim=neutral (no key) header.i=@suse.de header.b=sszIGyUm;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id sc3-20020a1709078a0300b0087769779d12si3435563ejc.820.2023.01.19.06.39.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Jan 2023 06:39:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u3dlXLlG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pIV1B-0004sU-9A; Thu, 19 Jan 2023 08:31:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pIV13-0004P8-Im
- for qemu-devel@nongnu.org; Thu, 19 Jan 2023 08:31:41 -0500
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pIV11-0000cl-KH
- for qemu-devel@nongnu.org; Thu, 19 Jan 2023 08:31:41 -0500
-Received: by mail-pj1-x102f.google.com with SMTP id o13so2408052pjg.2
- for <qemu-devel@nongnu.org>; Thu, 19 Jan 2023 05:31:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=xCMuQOEvhJPcTcEOSP3gcDTwP3FmeI54dDpngbTo6ww=;
- b=u3dlXLlG+9lIhC7ouw6M1f00hvuyEdiV2Me6QddCh/4gKc9fhSuy8gObHjG1H3ILDs
- 9UGKSPaLi/MGBNVfv5yjiBUT1KcynCNmQLhnuS4LBej9e8NWX2RmRqQ3l5w7SwAA7E17
- byCcruZ5Othd0hfEbWtm9UveBkkCXGG8zNDQDyHFbjDGOaPeNit91MlSmGhmkScmFfIX
- SZ05tJI5IasILRxAvFOzOmfETypaQW8P7ciuDvW76LILUC2j8M1srfHMjjnkrOQxvTQa
- pSGLMg4K1ASBw4cK5JGHnalbBcUoigPVVlG2QSiDNVA/sg2vBVbfE2C8Myi2ycIUcl11
- +l5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xCMuQOEvhJPcTcEOSP3gcDTwP3FmeI54dDpngbTo6ww=;
- b=KF6fl3+FiUTArmRGPSGcWvMxzMTFsSqGaZWEipyZs4YizfWHwWVRZd4PA/M6oFSCs/
- EPedPI7BOZnJgskIlpABwZ3eDUEkgliX3yUo1FvBPFWqPIaCBSDE8j5e3lxCp5ZCR76J
- pVjIEHiJakVSrr9/6YNJRWw+lGHjGOYff5PwI0Ep3eKpb2V3+KrcoZoVMxFt9BPC/sWI
- pF2hfmg+OsDqaC33+biidaLUpk/huyRfAhGNhXWPt/SfC2f1k7Om2cF0DwYa05W3R4kv
- 3aJe7zwESV0rbuSL4CzqAHFpcQ035S7k3teHFD7yw4Dj7KaOYH/ZXUFuOouqcLoruTSq
- c/XQ==
-X-Gm-Message-State: AFqh2krDZxabm7T/OJ7slKs1yrOIL0jU9C0hJ1FtN4xwVo5/XqkifIz5
- y7FPoyUUJZeFyschJnofujq0Xl+vMRsVsITU7FVuhQ==
-X-Received: by 2002:a17:902:aa4b:b0:194:b3c6:18ee with SMTP id
- c11-20020a170902aa4b00b00194b3c618eemr753379plr.29.1674135098305; Thu, 19 Jan
- 2023 05:31:38 -0800 (PST)
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=F9367bnD;
+       dkim=neutral (no key) header.i=@suse.de header.b=sszIGyUm;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 510C821E4F;
+	Thu, 19 Jan 2023 14:39:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1674139153; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1GIvdkOTXlKxnBEquwvZZPXfR47HKfI3DYtRrAbRCYM=;
+	b=F9367bnDVeSOcwzNOEyd6I4pZuhVHRlnf5SCvmQEAjWIYUOWC1HH3YTw1NmnUh/KvOu4gF
+	8TYbIOSkx50D2fE7ODRnR7/l5LHR96x8+rzXy017/M+51Zrj5XDVqF2LaXyeOm9wWr9AIl
+	iVBOqPNrv51vLZTEeAcFvt8YiBZx3G0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1674139153;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1GIvdkOTXlKxnBEquwvZZPXfR47HKfI3DYtRrAbRCYM=;
+	b=sszIGyUmZUwgrmWPA+mzBTQyMqwU6KrhDqSGH93qMwyUkR17HyF89FDUHtZX2TJitna3rn
+	ihEgUsG1BMhPmuCg==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D3B27139ED;
+	Thu, 19 Jan 2023 14:39:12 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id vQUBJxBWyWOKLAAAMHmgww
+	(envelope-from <farosas@suse.de>); Thu, 19 Jan 2023 14:39:12 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Peter Maydell
+ <peter.maydell@linaro.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn?=
+ =?utf-8?Q?=C3=A9e?=
+ <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
+ Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [RFC PATCH v4 08/15] tests/qtest: Adjust test-hmp to always
+ pass -cpu option
+In-Reply-To: <Y8lOeRqfcAUljaJN@work-vm>
+References: <20230119135424.5417-1-farosas@suse.de>
+ <20230119135424.5417-9-farosas@suse.de> <Y8lOeRqfcAUljaJN@work-vm>
+Date: Thu, 19 Jan 2023 11:39:10 -0300
+Message-ID: <874jsm1tdd.fsf@suse.de>
 MIME-Version: 1.0
-References: <20230117220523.20911-1-eiakovlev@linux.microsoft.com>
- <20230117220523.20911-5-eiakovlev@linux.microsoft.com>
-In-Reply-To: <20230117220523.20911-5-eiakovlev@linux.microsoft.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Jan 2023 13:31:27 +0000
-Message-ID: <CAFEAcA-68d=4DaygtyaFsv68fPYmXZNQzHUNPyEYr8SLuBu66Q@mail.gmail.com>
-Subject: Re: [PATCH v2 4/4] hw/char/pl011: check if UART is enabled before RX
- or TX operation
-To: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6fIZbIPa3Wz6
+Content-Type: text/plain
+X-TUID: kNcXCZ8KQiUu
 
-On Tue, 17 Jan 2023 at 22:05, Evgeny Iakovlev
-<eiakovlev@linux.microsoft.com> wrote:
->
-> UART should be enabled in general and have RX enabled specifically to be
-> able to receive data from peripheral device. Same goes for transmitting
-> data to peripheral device and a TXE flag.
->
-> Check if UART CR register has EN and RXE or TXE bits enabled before
-> trying to receive or transmit data.
->
-> Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
-> ---
->  hw/char/pl011.c | 22 +++++++++++++++++++---
->  1 file changed, 19 insertions(+), 3 deletions(-)
+"Dr. David Alan Gilbert" <dgilbert@redhat.com> writes:
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> * Fabiano Rosas (farosas@suse.de) wrote:
+>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>> ---
+>>  tests/qtest/test-hmp.c | 34 +++++++++++++++++++++++++++++++---
+>>  1 file changed, 31 insertions(+), 3 deletions(-)
+>> 
+>> diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
+>> index f8b22abe4c..c367612d4a 100644
+>> --- a/tests/qtest/test-hmp.c
+>> +++ b/tests/qtest/test-hmp.c
+>> @@ -121,21 +121,49 @@ static void test_info_commands(QTestState *qts)
+>>      g_free(info_buf);
+>>  }
+>>  
+>> +static const char *arch_get_cpu(const char *machine)
+>> +{
+>> +    const char *arch = qtest_get_arch();
+>> +
+>> +    if (g_str_equal(arch, "aarch64")) {
+>> +        if (!strncmp(machine, "virt", 4)) {
+>> +            return "cortex-a57";
+>
+> Won't that break on a kvm host on a different CPU?
+> Would -cpu max   work on everything?
 
-thanks
--- PMM
+These tests run with -accel qtest only. No TCG or KVM. So this won't
+break a KVM host with a different CPU. But we also cannot expect that
+cpu to do anything useful. This is more to avoid initial configuration
+code to break due to lack of cpu.
+
+About -cpu max, before this series, it works because of a nuance of the
+code which does:
+
+aarch64_max_initfn:
+if kvm || hvf
+    host
+else
+    cortex-a57
+    extra_features that depend on TCG
+
+After this series this becomes roughly (see patch 01):
+
+aarch64_max_initfn:
+if kvm || hvf
+    host
+else if qtest
+    cortex-a57
+#ifdef CONFIG_TCG    
+else if tcg
+    cortex-a57
+    extra_features that depend on TCG
+#endif
+
+The above routine causes us to have two different -cpu max depending on
+whether TCG is built in or not, so I'm basically bypassing it and
+hardcoding cortex-a57 to be consistent.

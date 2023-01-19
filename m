@@ -1,132 +1,118 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp244167ejc;
-        Thu, 19 Jan 2023 03:09:15 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuFx8Y75z3hthVLGJu8eatxY5Evbq0Sn7A6u2pkmX9axrt+gYkOq1SU0SElio62wD91K0on
-X-Received: by 2002:a05:622a:114a:b0:3b6:3a7a:d3c8 with SMTP id f10-20020a05622a114a00b003b63a7ad3c8mr15538062qty.17.1674126555299;
-        Thu, 19 Jan 2023 03:09:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674126555; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp248315ejc;
+        Thu, 19 Jan 2023 03:16:23 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXv+BcoXKBmUkpUwNyylZrZsJB6ptnQw6p9RF1LDuZI0mNOLgfv8UBSa555jTWU5pqzRHNX7
+X-Received: by 2002:ac8:4c84:0:b0:3b6:31e2:f537 with SMTP id j4-20020ac84c84000000b003b631e2f537mr13698682qtv.8.1674126983411;
+        Thu, 19 Jan 2023 03:16:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674126983; cv=none;
         d=google.com; s=arc-20160816;
-        b=MitNbKXNN+pKeOmESTewZvP6wdsjm6WCNUwUrvsDbgNTeGoWvCZ5hL/05PgRsqP27Q
-         9KH78muusHpUxXA7Tn0+JZZmakLIOmOI6AOcwzTOLkbbUeovyy6dwXm3NBB0M6g1LvmF
-         +FBEDbUcJ12s5TSaoblD6D3BjPsHJjDx2AoI94SxtiW4Wx1cN/RtmhNIMXW5HyvvI10E
-         GtO/7OiGfTL2Alu/M5w6kemxDqoTVFyezvZw7sIEfni6pH09XdqX9lU/txzVsMnuqEpn
-         7/T+PKsiPv8ZWdubpmOr0DALXhQdWqa6fG6f1wRa+qDHfFksugjy0wpmDBj3bywaa5sO
-         1CFQ==
+        b=UMXG60Ed0QPBUTYeChgUf29MyoQrcQ9WLQWHRThpjUq4PsA3/wjw2MHn4QohRWbr1/
+         oYgaE3gfuZlA9gFHkTCDH2nOoSBHx8VQd3ap+h+QONgX/2givePitLv88xIfPJH6XnzW
+         vc/GUIJFYuFxTflcUHvYEXC+UTxldE+nlZmqJsn94IbUgPSIv6g0ZqU7Xk0x9rnsHDu3
+         lBRCcacrZSicVYEEaQQPSEb0fGsA5kZ2ajxY9+HmBS1WLZHVLfiDJWjGPN+Fi8VGcnEW
+         We1orozSVs0C7MeLXqjXWwUNVJU4bP257SNjxF7XbBpSDqJ7vyzCoYpYK1jlkoJQjmUS
+         LX3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=bJyY5SyRPd05rQpITcjmKdkYdCswBH9bA+C1ckXwwII=;
-        b=y9lhgNYYGjE20/d5OZi8chQVoVfqikpxwUuF8J104hjLhwBn5rYqbSo5yK14nIAr4V
-         TX8SPJA4UaLmtI69IdDH3Tu8Q4tmjsgHv3KSx8K3BNsEXH5ErnW/E8+YOTDHTMzY18gP
-         CHbdFIa5ZPtI9Re7ocx8TdDfUkJxlcQKcAiCGbTKhuKewXdQ8ai3vFNw9KISSK6nyloE
-         K68dxRlshVDzBXjMZsx5WnsWV+o0pb5UM5ws2I96mVGgRYyx6Cn0OhQDxLnZ6Jiwae4h
-         onDo9upMuGzHe9YRfeov6tClEQqB6DKl2UREyolAJ5NkVW+FkAbnQWkMrCxh3GGxVF3F
-         E+SA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=NYyAYGOqmeiQ5irt+FYs7TMwfNtyRl5zZkW45wNNMpU=;
+        b=eXeAz+km9QE4coZkbqq1kIaV0jFaA2fq2tvJmdLBJ3jKJhUodSPQZZHzh8m1DfXI0/
+         NPTD6CW1TXvXJ2/i8Hzs6zMCLbwpPof1r/2mxCq4rQq79uCw8Ipto76cB0kwT7i8bf7H
+         LVkhDsZ28jNYAb0zWjcRTTy3WbZCjcsadV2p6j/AUYcivPEuJ/p3bdm/K9QBMr0GVRyf
+         HvPsidMQbDxRDz9YiRyTLudvlJHOCYFSww/sCd0qhY520j2R6DYTVNPN+AAikpADK9qm
+         3UGWbngTd5txPrT62CiZMNQAOJjCGBFqx+MdBSMtgf3NZbIqgo1Xb1Uggcs4B1xHkOvd
+         sImg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ut4Rc3KN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UlDeKjQN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pc34-20020a05620a842200b00705bb8e5cfdsi6558403qkn.329.2023.01.19.03.09.15
+        by mx.google.com with ESMTPS id bk31-20020a05620a1a1f00b00706b42c0870si3600425qkb.450.2023.01.19.03.16.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 03:09:15 -0800 (PST)
+        Thu, 19 Jan 2023 03:16:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ut4Rc3KN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UlDeKjQN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pISmf-0001ic-4j; Thu, 19 Jan 2023 06:08:41 -0500
+	id 1pIStm-00069N-7j; Thu, 19 Jan 2023 06:16:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1pISme-0001iK-Bt
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:08:40 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1pISmc-0000Hy-JK
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:08:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674126517;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bJyY5SyRPd05rQpITcjmKdkYdCswBH9bA+C1ckXwwII=;
- b=Ut4Rc3KNBuTafGVUbcokp9puQaiVA2F+THTvSRCmF8asY5oBcseg9w6/079eKKKjpAA4Yd
- a8AYohkOPwLSReIWr5x5AxM43hY3ArqzIxCMjFnn9e/UpUzp9bk+yYgGBlfD+NBGmlF6nk
- 7LqY8dDLcTU8leaOdCxb2NDJKZYCpDs=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-121-P91GyVRpOBmtlRCCq77Onw-1; Thu, 19 Jan 2023 06:08:36 -0500
-X-MC-Unique: P91GyVRpOBmtlRCCq77Onw-1
-Received: by mail-wr1-f69.google.com with SMTP id
- k18-20020adfb352000000b002bdd0a7a2b5so297534wrd.0
- for <qemu-arm@nongnu.org>; Thu, 19 Jan 2023 03:08:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIStk-00067a-N8
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:16:00 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIStg-0001Wv-Ux
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:16:00 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ q10-20020a1cf30a000000b003db0edfdb74so2606154wmq.1
+ for <qemu-arm@nongnu.org>; Thu, 19 Jan 2023 03:15:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=NYyAYGOqmeiQ5irt+FYs7TMwfNtyRl5zZkW45wNNMpU=;
+ b=UlDeKjQNxxSDOawR0HpfQtS88GRgzS2twvK+ygife66xEGzpr0m89RJm2ZMgTytL9W
+ yjHCw3l9OkBZEhvUQnOx/OFDbsPDrGFrhm7XpaY2UP2o4T1cWiVFwvq9iLmSDw/fmatA
+ O3ZrG/pwZjn9ev+Y0wIxARjcqIla2DfZDJMAER+uzZhsCGAwBOOllS1bX3ZMWQU9BmrZ
+ GFn/eOlYpIq1jT1uOoRZDexe/KvBxVSx7Ie+61JEEa58M5Gi1Ibzd7MJaxA32QFm626h
+ VtWnvI6qFEtyBhBD77DoIB0poERe1pa0UVO4Sb75d7gto7pul1yVAujWllScjf9YvlEw
+ CL1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=bJyY5SyRPd05rQpITcjmKdkYdCswBH9bA+C1ckXwwII=;
- b=lzkeUj2v69hFStRWJpB6+IcmAOYDrTCH5OfnCcfT2At1+gHCW6+gcRAq8sDwjVzW4m
- JKHkpoikcRFqIop869aAR97MtoSnEIZI+QOWDapGjZNl3GOsmvy2ais9FGN+hc6XbWPr
- VdNOMN6QjvpdAuRJus7ZfJqnfY7K4lMmr2IW/2GfpFU3ssusGroUBYtXr6QgL3I8nHLt
- TTLJHsc2kVONHoJtHXyjKIZPNyoDwUlIZYM8hQ+ssmzdGBw7rO3moBg1Yk+Ert6DmVNP
- 80Sxo75fInoXstlMhPuTzLnDH2Apmt2bvJS2HzQiOl3UvREfoZAiJ2SPHc2g4FcuuxSv
- vjEg==
-X-Gm-Message-State: AFqh2kpMKSXUhRCpXZuM2VDRzL+Y9vqgFra9S7/ts88lccWIbQFroSWK
- JTB4cHkFXZOIw5q3O5g87MCOR4fLBJAftbzTmUxASIV3ij+/fwl7ZaXb5b/umB35MZWEUoDwmJL
- 5qrNc70LbC7dr
-X-Received: by 2002:a5d:6288:0:b0:2bd:bc57:3c5b with SMTP id
- k8-20020a5d6288000000b002bdbc573c5bmr8037352wru.33.1674126515400; 
- Thu, 19 Jan 2023 03:08:35 -0800 (PST)
-X-Received: by 2002:a5d:6288:0:b0:2bd:bc57:3c5b with SMTP id
- k8-20020a5d6288000000b002bdbc573c5bmr8037336wru.33.1674126515177; 
- Thu, 19 Jan 2023 03:08:35 -0800 (PST)
-Received: from work-vm
- (ward-16-b2-v4wan-166627-cust863.vm18.cable.virginm.net. [81.97.203.96])
- by smtp.gmail.com with ESMTPSA id
- co22-20020a0560000a1600b002a01e64f7a1sm10108993wrb.88.2023.01.19.03.08.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Jan 2023 03:08:34 -0800 (PST)
-Date: Thu, 19 Jan 2023 11:08:32 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=NYyAYGOqmeiQ5irt+FYs7TMwfNtyRl5zZkW45wNNMpU=;
+ b=2hp4PlQJSZLJyBudNerVeCFnR6NaGaWSVv2mw0g4wvDQJz9+XrSsMAyKR+S/2JfgKK
+ CYkoJ3zqGFPsBgagwRLYUMFPXOIHPLVzPpw7+RBWJX3Zf5F7KCxyxDwEkUDSUa42yjcJ
+ YZxGdnHi9OxhjDrTLjS0tW+BGwIwcp5Dwpoc4oOCzlECAQ2ikin6pEggdp9f5mnvPauQ
+ d6JYv3l7Hxef03sP5QuMH/iVT2XZPJzRY16PLP0zr18c1Q5KunHarBuTRb2m1bKqwwjt
+ XrsGn+mElWVeGwrass6koXstnCBZV+eBga9g/4lSVu4AE2bqCMwFQ8WnykShBHLx3dE9
+ TeAA==
+X-Gm-Message-State: AFqh2kr3XJyVP0nlXCrP6oJnADLw3BoVVPBe2a4MuXWhvezQbCHkS0e9
+ nmsrTObYmdfNdlLvAtR5tIWzHw==
+X-Received: by 2002:a05:600c:4928:b0:3d3:4aa6:4fe6 with SMTP id
+ f40-20020a05600c492800b003d34aa64fe6mr10027991wmp.3.1674126949065; 
+ Thu, 19 Jan 2023 03:15:49 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ r9-20020a05600c458900b003d35acb0fd7sm4764266wmo.34.2023.01.19.03.15.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Jan 2023 03:15:48 -0800 (PST)
+Message-ID: <82250558-cd3e-b863-614d-468ad5f24643@linaro.org>
+Date: Thu, 19 Jan 2023 12:15:46 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH 4/8] tests/qtest/migration-test: Build command line using
+ GString API
+Content-Language: en-US
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Juan Quintela <quintela@redhat.com>, Thomas Huth <thuth@redhat.com>,
  qemu-arm@nongnu.org
-Subject: Re: [PATCH 5/8] tests/qtest/migration-test: Only use available
- accelerators
-Message-ID: <Y8kksKspvrbgHB9f@work-vm>
 References: <20230119100537.5114-1-philmd@linaro.org>
- <20230119100537.5114-6-philmd@linaro.org>
-MIME-Version: 1.0
-In-Reply-To: <20230119100537.5114-6-philmd@linaro.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+ <20230119100537.5114-5-philmd@linaro.org> <Y8kiiMLWxKmHIJTr@work-vm>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <Y8kiiMLWxKmHIJTr@work-vm>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.089,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,77 +127,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UFMrrQHKFnss
+X-TUID: dMPVGIPVDfDH
 
-* Philippe Mathieu-Daudé (philmd@linaro.org) wrote:
-> For example, avoid when TCG is disabled:
+On 19/1/23 11:59, Dr. David Alan Gilbert wrote:
+> * Philippe Mathieu-DaudÃ© (philmd@linaro.org) wrote:
+>> Signed-off-by: Philippe Mathieu-DaudÃ© <philmd@linaro.org>
+>> ---
+>>   tests/qtest/migration-test.c | 85 ++++++++++++++++++------------------
+>>   1 file changed, 42 insertions(+), 43 deletions(-)
+>>
+>> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+>> index dbde726adf..36e6074653 100644
+>> --- a/tests/qtest/migration-test.c
+>> +++ b/tests/qtest/migration-test.c
+>> @@ -582,13 +582,13 @@ typedef struct {
+>>   static int test_migrate_start(QTestState **from, QTestState **to,
+>>                                 const char *uri, MigrateStart *args)
+>>   {
 > 
->   $ make check-qtest-aarch64
->   ...
->   20/20 qemu:qtest+qtest-aarch64 / qtest-aarch64/migration-test
->   qemu-system-aarch64: -accel tcg: invalid accelerator tcg
+> bit of a big change with lots of things moving around, I think it's
+> mostly OK but...
+
+I'll see how to split.
+
+>> +    g_autoptr(GString) cmd_common = NULL;
+>>       g_autofree gchar *arch_source = NULL;
+>> +    g_autoptr(GString) cmd_source = NULL;
+>>       g_autofree gchar *arch_target = NULL;
+>> -    g_autofree gchar *cmd_source = NULL;
+>> -    g_autofree gchar *cmd_target = NULL;
+>> -    const gchar *ignore_stderr;
+>> +    g_autoptr(GString) cmd_target = NULL;
+>> +    const gchar *ignore_stderr = NULL;
+>>       g_autofree char *bootpath = NULL;
+>> -    g_autofree char *shmem_opts = NULL;
+>>       g_autofree char *shmem_path = NULL;
+>>       const char *arch = qtest_get_arch();
+>>       const char *machine_opts = NULL;
+>> @@ -602,6 +602,12 @@ static int test_migrate_start(QTestState **from, QTestState **to,
+>>       }
+>>   
+>>       got_stop = false;
+>> +
+>> +    cmd_common = g_string_new("");
+>> +    g_string_append(cmd_common, "-accel tcg ");
+>> +    g_string_append_printf(cmd_common, "-accel kvm%s ",
+>> +                           args->use_dirty_ring ? ",dirty-ring-size=4096" : "");
+>> +
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-With the ordering proviso of the previous patch,
-
-
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-
-> ---
->  tests/qtest/migration-test.c | 17 +++++++++++++----
->  1 file changed, 13 insertions(+), 4 deletions(-)
+> Isn't that swapping the order of -accel tcg and -accel kvm ?
+> In the original it's
+>                      g_strdup_printf("-accel kvm%s -accel tcg%s%s "
 > 
-> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-> index 36e6074653..1e7f1ea162 100644
-> --- a/tests/qtest/migration-test.c
-> +++ b/tests/qtest/migration-test.c
-> @@ -45,6 +45,8 @@
->  
->  unsigned start_address;
->  unsigned end_address;
-> +static bool has_tcg;
-> +static bool has_kvm;
->  static bool uffd_feature_thread_id;
->  
->  /*
-> @@ -604,9 +606,14 @@ static int test_migrate_start(QTestState **from, QTestState **to,
->      got_stop = false;
->  
->      cmd_common = g_string_new("");
-> -    g_string_append(cmd_common, "-accel tcg ");
-> -    g_string_append_printf(cmd_common, "-accel kvm%s ",
-> -                           args->use_dirty_ring ? ",dirty-ring-size=4096" : "");
-> +    if (has_tcg) {
-> +        g_string_append(cmd_common, "-accel tcg ");
-> +    }
-> +    if (has_kvm) {
-> +        g_string_append_printf(cmd_common, "-accel kvm%s ",
-> +                               args->use_dirty_ring
-> +                               ? ",dirty-ring-size=4096" : "");
-> +    }
->  
->      bootpath = g_strdup_printf("%s/bootsect", tmpfs);
->      if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-> @@ -2458,12 +2465,14 @@ static bool kvm_dirty_ring_supported(void)
->  
->  int main(int argc, char **argv)
->  {
-> -    const bool has_kvm = qtest_has_accel("kvm");
->      const bool has_uffd = ufd_version_check();
->      const char *arch = qtest_get_arch();
->      g_autoptr(GError) err = NULL;
->      int ret;
->  
-> +    has_tcg = qtest_has_accel("tcg");
-> +    has_kvm = qtest_has_accel("kvm");
-> +
->      g_test_init(&argc, &argv, NULL);
->  
->      /*
-> -- 
-> 2.38.1
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> I think you're ending up with tcg first?
+
+Oops good catch, thanks!
 

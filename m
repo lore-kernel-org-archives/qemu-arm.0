@@ -1,81 +1,81 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp133297ejc;
-        Wed, 18 Jan 2023 23:04:52 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvKzVdtyPMY12U2W9vMkAhnUdQXdg2tTeR0fyN0qweQrfrdVoaDShfgVQjYHO59Ks12Udz8
-X-Received: by 2002:a05:6214:360c:b0:535:12cb:98f6 with SMTP id nv12-20020a056214360c00b0053512cb98f6mr16177546qvb.52.1674111892622;
-        Wed, 18 Jan 2023 23:04:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674111892; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp133419ejc;
+        Wed, 18 Jan 2023 23:05:08 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXu+lPunqczC7udGhA5vm4cr0K1zaItnxglboi8gAeY7PIkwG6TLmw44iqMvrmCoK3EJwRCd
+X-Received: by 2002:ac8:5510:0:b0:3b6:3ac8:22ec with SMTP id j16-20020ac85510000000b003b63ac822ecmr13582155qtq.14.1674111908293;
+        Wed, 18 Jan 2023 23:05:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674111908; cv=none;
         d=google.com; s=arc-20160816;
-        b=ocdvIvnoRkG11OpJYh23UhEHbWnePxypoMAFe+sObfe7MtwnzftjElKF9KGQvaA2Ht
-         QObsaKErABKkWxVRBS8TJg6AApthfNLYZh6s1h9HSoe5zEJSvUuuLUZOC6AFR9m4+k78
-         ISdhY9t1Ny1cNt0YQxErScqNLW2g+RL7BsxFmhZ/L1AetZ9+MsGNfUFatlB4lOK5CKWT
-         pAv5JgeXGVfWHzwzF3JR900NUMuQBlv+StjAUHuajLlEJElLjj8zABl+Vj9u0Zl4fbhP
-         ieSNkgOncKckbMG2HPSWPcrxDDaDPRnuOT1dPGzLntnkLUQ3jpRW3GtAULUrjZidJuT2
-         jIRQ==
+        b=dZjETGHBy98vmxBMEloEw/uI3pbku7WZKLC4v7ZdwO6hmcXY680PjTg8EZelXXcu8j
+         i8DvA3KkwUGv7F8iRqT5X55hmvorYbCVJM1doY49oAii2QotAGE9GtI9wdZmL+O96Sa7
+         /nKK1+jEjV0Cdp75eM/jbA2E2LdUBBLP9ci6oiOWQKygJQg/+Q4KjwXnJz4RNtuTe/0N
+         ViOucVCIwFyCecpFCYAz6EkBnPWGukfgbU9B0atL1hpmz/gxq+GP0UgCz1HSl7TKJ8kM
+         dlPu3+JNnqiZGO+tQvSA58PUS+a/KQJ038eULJuJxuDqPCNA5aBkvgY9AHgI67OITLwJ
+         DaMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=qwTU95ZFOsRMbuXZPZ33ukGTvyvrp8C5a1rdKoTsKuE=;
-        b=V9HFdSON4TgF17V2cHTudtUwDIf1K+TIYFDLDBjs1lK/hRX+WLQw72H/aKddrLBqyo
-         YmF1eRWNPT62dE9fXQ6u1MDRtNZIBTbNj0LkH0uFDLBjAKjRqLxzvB2kb0DS9lhzssiY
-         91+ku0bsgzcQnkPx2LADthtaQHXreRth9JUi/vcXrF3v20iLBKKlHGmpXf/ctHojr608
-         KHDmRM0vwQzodNbO5H4fDjqOmmKDF+WnzxbWwMK5Z3rXm3EAanAawjgEHipdVELIuWKg
-         IQrwOHMvAOmKqzMQq9e9cYa+qI+Gi6qu6Zvq2UGcs0QArWAY3+PIyb30HKO7Fg1JFTVL
-         WJlw==
+        bh=cwWjKORsTd/U3ucwfmdmjdqlJ1uSQpGItRpbAp5drHw=;
+        b=bnWpfTH/WxZTONe3CDsDQChzfmN5x81+XxFP+xrF0d9suY3E+xS0yBW8+8vLDudbi1
+         KiluyYhRL/3v6Am1LvybHzcqWM8lRW6wxeXdPvE+eBRI4SNA0gA0nePIBN5y0AzjdzvM
+         ApTuoFAEXp3RqBwqc3vpz1G7nWFQy+EicYF9mLLB36JH3xkEWeV16sMCZmfyBO/IOY3S
+         CzzWJPMlANn0NrroyMZQYA3oWfnDlMlgvGlQ+dpFaC4rc4FUpwveecDurDyLti/YEVnO
+         HM9zz2gxI1LBXcJtrYp68ncxsz2Bvj/J0/ONiebfSmkDADQlMrNVLdazSbj5yP09BtdQ
+         xlMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cfOPArNW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="B755en/e";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g8-20020a0562140ac800b004ad365ed00esi22429311qvi.577.2023.01.18.23.04.52
+        by mx.google.com with ESMTPS id u9-20020a05620a454900b006fa2dde9e10si23142001qkp.38.2023.01.18.23.05.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Jan 2023 23:04:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Jan 2023 23:05:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cfOPArNW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="B755en/e";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pIOv6-0006wr-3Y; Thu, 19 Jan 2023 02:01:08 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pIOue-0006ai-GC; Thu, 19 Jan 2023 02:00:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pIOuZ-0006Yv-ST
- for qemu-devel@nongnu.org; Thu, 19 Jan 2023 02:00:37 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pIOuG-0006LP-LW
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 02:00:19 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pIOuM-0008AW-Vb
- for qemu-devel@nongnu.org; Thu, 19 Jan 2023 02:00:35 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pIOuC-00089a-FU
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 02:00:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674111608;
+ s=mimecast20190719; t=1674111607;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qwTU95ZFOsRMbuXZPZ33ukGTvyvrp8C5a1rdKoTsKuE=;
- b=cfOPArNWyxctvuVp34QdRPIORpBbDtqhaHQ8cKHW0q8ySpQaSwZb15wSu/P5tSkUGmbKQB
- NiACMEukCyk2WYpcXRVWZfDhb/8EDQmDGMCcxlNwKv7ZhCHF5FzR8AHyDnsgo3AzKEas37
- E/Br2aoi/pekQx8f6CQB5p2MFwhCeP4=
+ bh=cwWjKORsTd/U3ucwfmdmjdqlJ1uSQpGItRpbAp5drHw=;
+ b=B755en/eiX/gLSe0O9yPGKH5DknFwVW4S3ny/okBnL4twb1rZ5LICmsNk+O+36eaXO98Ko
+ 6027j/ulJz6m2qZZVAmYm/MAUa0fSBMaIfQiv8xZkCf2Uam3U7VWWmSFWJhvpItgyXF16j
+ r+m4IA/cXg46cdGL54yiGPwJVMiEOSo=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-302-hwPOV9wiMhGKR87GHQhkUg-1; Thu, 19 Jan 2023 02:00:02 -0500
-X-MC-Unique: hwPOV9wiMhGKR87GHQhkUg-1
+ us-mta-442-bVRH3SPrNY2cI3zHhj89iQ-1; Thu, 19 Jan 2023 02:00:04 -0500
+X-MC-Unique: bVRH3SPrNY2cI3zHhj89iQ-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CC85D8533DF;
- Thu, 19 Jan 2023 07:00:01 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5E3AF183B3C1;
+ Thu, 19 Jan 2023 07:00:03 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 01168140EBF6;
- Thu, 19 Jan 2023 07:00:00 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 228A6140EBF6;
+ Thu, 19 Jan 2023 07:00:03 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 3FD1221E6806; Thu, 19 Jan 2023 07:59:59 +0100 (CET)
+ id 5398421E6600; Thu, 19 Jan 2023 07:59:59 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
@@ -87,9 +87,9 @@ Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
  kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com,
  bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org
-Subject: [PATCH v4 01/19] scripts/clean-includes: Fully skip / ignore files
-Date: Thu, 19 Jan 2023 07:59:41 +0100
-Message-Id: <20230119065959.3104012-2-armbru@redhat.com>
+Subject: [PATCH v4 07/19] hw/input: Clean up includes
+Date: Thu, 19 Jan 2023 07:59:47 +0100
+Message-Id: <20230119065959.3104012-8-armbru@redhat.com>
 In-Reply-To: <20230119065959.3104012-1-armbru@redhat.com>
 References: <20230119065959.3104012-1-armbru@redhat.com>
 MIME-Version: 1.0
@@ -106,84 +106,56 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1OqLeLdHiZi4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kbPYP2D+rleu
 
-When clean-includes claims to skip or ignore a file, only the part
-that sanitizes use of qemu/osdep.h skips the file.  The part that
-looks for duplicate #include does not, and neither does committing to
-Git.
+Clean up includes so that osdep.h is included first and headers
+which it implies are not included manually.
 
-The latter can get unrelated stuff included in the commit, but only if
-you run clean-includes in a dirty tree, which is unwise.  Messed up
-when we added skipping in commit fd3e39a40c "scripts/clean-includes:
-Enhance to handle header files".
+This commit was created with scripts/clean-includes.
 
-The former can cause bogus reports for --check-dup-head.  Added in
-commit d66253e46a "scripts/clean-includes: added duplicate #include
-check", duplicating the prior mistake.
-
-Fix the script to fully skip files.
-
-Fixes: fd3e39a40ca2ee26b09a5de3149af8b056b85233
-Fixes: d66253e46ae2b9c36a9dd90b2b74c0dfa5804b22
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- scripts/clean-includes | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ include/hw/input/pl050.h | 1 -
+ hw/input/tsc210x.c       | 1 -
+ 2 files changed, 2 deletions(-)
 
-diff --git a/scripts/clean-includes b/scripts/clean-includes
-index d37bd4f692..86944f27fc 100755
---- a/scripts/clean-includes
-+++ b/scripts/clean-includes
-@@ -111,6 +111,7 @@ cat >"$COCCIFILE" <<EOT
- )
- EOT
+diff --git a/include/hw/input/pl050.h b/include/hw/input/pl050.h
+index 89ec4fafc9..4cb8985f31 100644
+--- a/include/hw/input/pl050.h
++++ b/include/hw/input/pl050.h
+@@ -10,7 +10,6 @@
+ #ifndef HW_PL050_H
+ #define HW_PL050_H
  
-+files=
- for f in "$@"; do
-   case "$f" in
-     *.c.inc)
-@@ -144,6 +145,7 @@ for f in "$@"; do
-       continue
-       ;;
-   esac
-+  files="$files $f"
+-#include "qemu/osdep.h"
+ #include "hw/sysbus.h"
+ #include "migration/vmstate.h"
+ #include "hw/input/ps2.h"
+diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
+index fdd5ff87d9..7eae5989f7 100644
+--- a/hw/input/tsc210x.c
++++ b/hw/input/tsc210x.c
+@@ -20,7 +20,6 @@
+  */
  
-   if [ "$MODE" = "c" ]; then
-     # First, use Coccinelle to add qemu/osdep.h before the first existing include
-@@ -174,8 +176,8 @@ for f in "$@"; do
- 
- done
- 
--if [ "$DUPHEAD" = "yes" ]; then
--    egrep "^[[:space:]]*#[[:space:]]*include" "$@" | tr -d '[:blank:]' \
-+if [ "$DUPHEAD" = "yes" ] && [ -n "$files" ]; then
-+    egrep "^[[:space:]]*#[[:space:]]*include" $files | tr -d '[:blank:]' \
-         | sort | uniq -c | awk '{if ($1 > 1) print $0}'
-     if [ $? -eq 0 ]; then
-         echo "Found duplicate header file includes. Please check the above files manually."
-@@ -184,7 +186,7 @@ if [ "$DUPHEAD" = "yes" ]; then
- fi
- 
- if [ "$GIT" = "yes" ]; then
--    git add -- "$@"
-+    git add -- $files
-     git commit --signoff -F - <<EOF
- $GITSUBJ: Clean up includes
- 
+ #include "qemu/osdep.h"
+-#include "qemu/log.h"
+ #include "hw/hw.h"
+ #include "audio/audio.h"
+ #include "qemu/timer.h"
 -- 
 2.39.0
 

@@ -1,123 +1,105 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp246770ejc;
-        Thu, 19 Jan 2023 03:13:35 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuZkqDjJ3x2PblM5WYRH9yoGYlbnxdHNmzaiV9AZDxyKIA+5Mo+L6ylyhODUYqpS0gY1vN2
-X-Received: by 2002:ac8:65d4:0:b0:3b6:308e:94a8 with SMTP id t20-20020ac865d4000000b003b6308e94a8mr20559208qto.43.1674126815024;
-        Thu, 19 Jan 2023 03:13:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674126815; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp225561ejc;
+        Thu, 19 Jan 2023 02:31:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsg8cajq8L1NkR9nqvEvg2cdK7hsnXyVJFJH6tGnEAGFMSzC9SPFSnoSxHBJH7PdQ3VyqDg
+X-Received: by 2002:a5d:5227:0:b0:275:618c:83ea with SMTP id i7-20020a5d5227000000b00275618c83eamr9033850wra.29.1674124313606;
+        Thu, 19 Jan 2023 02:31:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674124313; cv=none;
         d=google.com; s=arc-20160816;
-        b=QPO2tBmeUg970HBtqJkXVo9RMRMMVqiDDSucECKERK3saIw+RTkrqxZCDjOkBhjntH
-         ttLX3U0YDWl6rfx8Y9yvyRVfThmd0GbQIjgqJog65PEkDPdmGdrWzOBmeARkqeG9ekCs
-         uOExSF3meSYKyKBfyXg1H2gsDdx1Q4TZY/5apvvmYe4WlGzC0TJHWF4VEYV/OSqlRWcO
-         aMOm2KXYSLm+RfySrs2VR75FqhaJRX8surNb0meeMJdZ3VE6hfLr+GFltHEEHE41lQsH
-         fjbIqqtKGXbFibYnKKcPBWxEnBmSg2u7ZuYtYBIv7d75w11Po3LfIYWHFMbf4O8JTDJy
-         qxpw==
+        b=pViQ8UHfBym/GSkXz7TCu6MIxnjucGeavPWmCx9KZEBv507BzmHkmSA2PyhPNZ6jp5
+         ckZsI4YW5JPBwFEba3RX671vMt3aS18u6mBJt2dxbuxj6u41SNSPdaytFTEOZx7QLgeg
+         pld7PcZISqGZpAXk4fpmPBB3Hupu83Rw1iFznF5vtZevW3hcz5cJfQ85EPo5LMH5pQbR
+         HgjONmuDHGsk8DLEo4F5HiFDqrINol6tKYP7NpvxqLhN0GVQa7r7gSIeiq33wlECEeN1
+         KssP8Dj0Gh3vavMq3Yk6Q1Gu5uPIVPnp8aL7h1JaM0ywq0fF7Nl156ujMsBcgfD8MPSf
+         2xWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=L3TjRLsmgBPdDuG0cIgu1MZ+P5YyZBG5cdukKbkExQI=;
-        b=i04eyinZVFY1tKfLK9bRiOH7zqwT0lnrgIelKWx6BS+im2zZDU2QFOgIOsw+uYObQa
-         eKUuRFo3xQc5I30nJr5tho3TQlXGT8NxGQQgkJ/L7Na7sB8VZB9LEdEfR9PUXRp36AG/
-         isP91bK7R7706tylSTmwpSbE+Q8cYNrYx9QOIgCpiZTW94puVbzTeuZLWPG044nIlNj0
-         3f8drKD3fqpGmFcSUcnp2xFUrAnvzVRCx5jG1RM/l82HoeE3CQWiW82kgoaUqu646a8I
-         ji3tecmQleeX7SlLCKl8xQYP/Q5tA3j5YtTLwHSDLMrLxAOrOb2HDSaY7ZeBiCQzkRMJ
-         ao3A==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:cc:to:from
+         :dkim-signature;
+        bh=5cAMniY4Sq/aNzeHFopx54x1dJ12LrHPcsyRVFVEa6s=;
+        b=m9Tdziba6uSx8uMOJ3pYl9PlS0i0Sj3DOhIDB6dHpc2O1PRoeiSy3YU+0cVuGditq8
+         AVbhJRWjOcQ3talU2zdSwlPJbleWSaZxpF6iF6s1RRUZYa4Hy2pd1mljE/sWiDf1Y3RK
+         Q3Z5jD3EbVXzuCDvDx3n9NjRpRj9T0vGtxwHaHa6YLcPbnfT334iIUyU9SEUEnAijnnj
+         FLGyldv2BCWrtQ4DzfDmnldFgh86P5EmH3t88zfFPOub1W30f6BGXF/PGSIkLgBLE1/E
+         HdFUFm9+s///g0ZI1XymFLpwYm+03Hto+du7BQdwuOelfl7gm5foZrO7jLa31vI5fWwQ
+         TQTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JMZp7myG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i1oeRwux;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fx10-20020a05622a4aca00b003b63940d49fsi5937387qtb.675.2023.01.19.03.13.34
+        by mx.google.com with ESMTPS id s14-20020adff80e000000b002bdc7edb27asi19115093wrp.301.2023.01.19.02.31.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 03:13:35 -0800 (PST)
+        Thu, 19 Jan 2023 02:31:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JMZp7myG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i1oeRwux;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pISrC-0003be-Dy; Thu, 19 Jan 2023 06:13:22 -0500
+	id 1pISCk-0007cf-1I; Thu, 19 Jan 2023 05:31:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1pISr8-0003b5-Vw
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:13:19 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pISCi-0007bf-Fa
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 05:31:32 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1pISr3-00015y-PH
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:13:17 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pISCh-0002Sp-2H
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 05:31:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674126792;
+ s=mimecast20190719; t=1674124290;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=L3TjRLsmgBPdDuG0cIgu1MZ+P5YyZBG5cdukKbkExQI=;
- b=JMZp7myGZOaFhPhk9vkbmEbGtdf18mob4XqKdttCrEHlx6Fq6BuXAfIrz02DAnMw4Hk6hv
- 6J2LCgp9ur1LnTjP2iLr6YUVzqlF0rKBhaTQ6wKJxptVv1G5T3dDSBSUnavdwlgrq7AYdJ
- AgP78MhPTVQleGlCixl23KVPQlDRSek=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-260-KQAhb5SROW2FT7yNdrJs5w-1; Thu, 19 Jan 2023 06:13:11 -0500
-X-MC-Unique: KQAhb5SROW2FT7yNdrJs5w-1
-Received: by mail-wm1-f72.google.com with SMTP id
- n18-20020a05600c4f9200b003d993e08485so1050895wmq.2
- for <qemu-arm@nongnu.org>; Thu, 19 Jan 2023 03:13:11 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=L3TjRLsmgBPdDuG0cIgu1MZ+P5YyZBG5cdukKbkExQI=;
- b=ZQDRVKUqkht4Qnl6RISpABNCksq9yrlqceGEzpdo1KvBkrWSNN7P+c5fD7l3IOfTkg
- adSAIfniGP3OSV+FM1oaKoY7w9tQRZiIjJofeWtqI6ylkjjO130hoBdxRM1EA22f57+2
- 8dRJ12PxpE716LQy0wZHGvePiqLHWAz/Ook2fSXfghXpUBBblj6sChTpBgdTj0QbPNTM
- zfKLph6Uw3yuckSNkXIr75tpvDxZitMIHJfUwStNEOpf8yzbJF5nfCHPTi1mW7joZ27Y
- VQeJuYTj00MDX2ru1bzTfIyZ/7/8FJLxEqRc3Syl+OMZo9a0yOjnPO00dxhMZU/6/XyD
- 9SHw==
-X-Gm-Message-State: AFqh2ko6ubWP9hBTHz5kNEaj7hMdqzrRHXovelpnwUrHiM24Fr9sdLtj
- 3u95vcOYmPDp9ziiW8sCXbFX761nfXOlBsjHynxiHCM9R4fy0D8eiRwf16H1GKevJVt+NLlJ6lR
- uDejXqaDOFq1O
-X-Received: by 2002:a05:600c:6001:b0:3da:f80a:5e85 with SMTP id
- az1-20020a05600c600100b003daf80a5e85mr9737370wmb.26.1674126790623; 
- Thu, 19 Jan 2023 03:13:10 -0800 (PST)
-X-Received: by 2002:a05:600c:6001:b0:3da:f80a:5e85 with SMTP id
- az1-20020a05600c600100b003daf80a5e85mr9737353wmb.26.1674126790404; 
- Thu, 19 Jan 2023 03:13:10 -0800 (PST)
-Received: from work-vm
- (ward-16-b2-v4wan-166627-cust863.vm18.cable.virginm.net. [81.97.203.96])
- by smtp.gmail.com with ESMTPSA id
- s7-20020a1cf207000000b003db11dfc687sm4448660wmc.36.2023.01.19.03.13.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Jan 2023 03:13:10 -0800 (PST)
-Date: Thu, 19 Jan 2023 11:13:07 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Juan Quintela <quintela@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH 8/8] tests/qtest/migration-test: Allow running with HVF
-Message-ID: <Y8klwyh3fgmns+Wg@work-vm>
-References: <20230119100537.5114-1-philmd@linaro.org>
- <20230119100537.5114-9-philmd@linaro.org>
+ bh=5cAMniY4Sq/aNzeHFopx54x1dJ12LrHPcsyRVFVEa6s=;
+ b=i1oeRwuxf2D9wKUDd7O40vvFrjVQTIwUq6ZC3izPuK+PLJhZ9uARmEOHkzosCRWaKsdUmF
+ 4AVd20tK583Q48nwjWoYnUDqScPoLf2+xQq46sz5ly5buWz/sD9+8xjUfris9oOShgveBM
+ U/Szit4daTjBit32o5joUJNi8EaYZcE=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-442-cqcVJtFFOna291hUw2wHXg-1; Thu, 19 Jan 2023 05:31:26 -0500
+X-MC-Unique: cqcVJtFFOna291hUw2wHXg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1A9C91C068E3;
+ Thu, 19 Jan 2023 10:31:25 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7921540C6EC4;
+ Thu, 19 Jan 2023 10:31:19 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D2E8B21E6A28; Thu, 19 Jan 2023 11:31:17 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: qemu-devel@nongnu.org,  richard.henderson@linaro.org,
+ pbonzini@redhat.com,  kwolf@redhat.com,  hreitz@redhat.com,
+ imp@bsdimp.com,  kevans@freebsd.org,  berrange@redhat.com,
+ groug@kaod.org,  qemu_oss@crudebyte.com,  mst@redhat.com,
+ philmd@linaro.org,  peter.maydell@linaro.org,  alistair@alistair23.me,
+ jasowang@redhat.com,  jonathan.cameron@huawei.com,
+ kbastian@mail.uni-paderborn.de,  quintela@redhat.com,
+ michael.roth@amd.com,  kkostiuk@redhat.com,  tsimpson@quicinc.com,
+ palmer@dabbelt.com,  bin.meng@windriver.com,  qemu-block@nongnu.org,
+ qemu-arm@nongnu.org,  qemu-riscv@nongnu.org
+Subject: Re: [PATCH v4 10/19] migration: Clean up includes
+References: <20230119065959.3104012-1-armbru@redhat.com>
+ <20230119065959.3104012-11-armbru@redhat.com>
+ <Y8kOj6m4jhtUVg+A@work-vm>
+Date: Thu, 19 Jan 2023 11:31:17 +0100
+In-Reply-To: <Y8kOj6m4jhtUVg+A@work-vm> (David Alan Gilbert's message of "Thu, 
+ 19 Jan 2023 09:34:07 +0000")
+Message-ID: <87wn5ivmru.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20230119100537.5114-9-philmd@linaro.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=dgilbert@redhat.com;
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -140,52 +122,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gbcubWbUBKF8
+X-TUID: KjFP/GjdUqU7
 
-* Philippe Mathieu-Daudé (philmd@linaro.org) wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+"Dr. David Alan Gilbert" <dgilbert@redhat.com> writes:
 
-Does it support migration? I don't remember anyone ever mentioning it.
+> * Markus Armbruster (armbru@redhat.com) wrote:
+>> Clean up includes so that osdep.h is included first and headers
+>> which it implies are not included manually.
+>
+> That change doesn't seem to match the message; the patch is removing the
+> osdep.h include.
 
-Dave
+It's the commit message scripts/clean-includes creates :)
 
-> ---
->  tests/qtest/migration-test.c | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-> index 1e7f1ea162..7a0fcfb81d 100644
-> --- a/tests/qtest/migration-test.c
-> +++ b/tests/qtest/migration-test.c
-> @@ -47,6 +47,7 @@ unsigned start_address;
->  unsigned end_address;
->  static bool has_tcg;
->  static bool has_kvm;
-> +static bool has_hvf;
->  static bool uffd_feature_thread_id;
->  
->  /*
-> @@ -614,6 +615,9 @@ static int test_migrate_start(QTestState **from, QTestState **to,
->                                 args->use_dirty_ring
->                                 ? ",dirty-ring-size=4096" : "");
->      }
-> +    if (has_hvf) {
-> +        g_string_append(cmd_common, "-accel hvf ");
-> +    }
->  
->      bootpath = g_strdup_printf("%s/bootsect", tmpfs);
->      if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-> @@ -2472,6 +2476,7 @@ int main(int argc, char **argv)
->  
->      has_tcg = qtest_has_accel("tcg");
->      has_kvm = qtest_has_accel("kvm");
-> +    has_hvf = qtest_has_accel("hvf");
->  
->      g_test_init(&argc, &argv, NULL);
->  
-> -- 
-> 2.38.1
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+I can throw in another patch to the script so it mentions it also
+removes qemu/osdep.h from headers.
+
+>> This commit was created with scripts/clean-includes.
+>> 
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+>>  include/qemu/userfaultfd.h | 1 -
+>>  1 file changed, 1 deletion(-)
+>> 
+>> diff --git a/include/qemu/userfaultfd.h b/include/qemu/userfaultfd.h
+>> index 6b74f92792..55c95998e8 100644
+>> --- a/include/qemu/userfaultfd.h
+>> +++ b/include/qemu/userfaultfd.h
+>> @@ -13,7 +13,6 @@
+>>  #ifndef USERFAULTFD_H
+>>  #define USERFAULTFD_H
+>>  
+>> -#include "qemu/osdep.h"
+>>  #include "exec/hwaddr.h"
+>>  #include <linux/userfaultfd.h>
+>>  
+>> -- 
+>> 2.39.0
+>> 
 

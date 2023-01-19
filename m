@@ -1,712 +1,1530 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp482342ejc;
-        Thu, 19 Jan 2023 09:06:16 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsBqrdZNz/s8uEwHiveuaP5dDRNrgpB74ycnnKb2552y4hLr8eqzWSamrd0G/F2ZkyYXBlf
-X-Received: by 2002:a05:7500:1b1b:b0:f0:155f:194e with SMTP id dp27-20020a0575001b1b00b000f0155f194emr1065343gab.14.1674147976561;
-        Thu, 19 Jan 2023 09:06:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674147976; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp538378ejc;
+        Thu, 19 Jan 2023 10:31:53 -0800 (PST)
+X-Received: by 2002:a05:6a00:4088:b0:58d:aadf:5e62 with SMTP id bw8-20020a056a00408800b0058daadf5e62mr12701616pfb.18.1674153112727;
+        Thu, 19 Jan 2023 10:31:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674153112; cv=none;
         d=google.com; s=arc-20160816;
-        b=JjuJ1nFOt1CfiUC67+xvYfL3FDxQCweNdwQ3hR9FuU7WJRleGQFB27nL4OfQ+V2Uns
-         /joTPfSrAIKsf5OWiRa7U6it2/jMC7J2z6Hrt17ruWoIK2v7lo2DyiHRdIodFSX/hklG
-         DEQP4SGP/bzW0442dS10Gb9Ege9D85s8ymavBmYF/kdaN3gj9K3+wGCzOGde3a+FpKwJ
-         wthL7SGZRrh7st6ASNXm8GvCpm7W4fTj1yPf1Lan+NbQtfsgV9koUPe/1uVqn+4YYHGz
-         OWretSBvYgBpQFjA9J6LpXEL1WyPvanas8cs8JLJJYV+wW3xmlgIEztWkPAEKynRN4T4
-         RThw==
+        b=ZYlAqpu32ZHgrOhV1//7KXha1VLVJEEVpBgLl6xLdfj70FlSfo9JIbPa7SzMVzUh9T
+         8P3k+DoZP19wtQ1uB3ysWTLx1QEqNqmjx1rkUNDj9JKLBM5fXMIJ9Shz3CTMA3fDZbbp
+         9GMpk+XTyK3qvh2fXUmYudLeIFOWLVGAguPgLuxBawSCj06JLBbvuDNtRhUTgyFrs/Ka
+         XkD+mz1PKmozIVK4lxRf0j/duvjURTZoRHO8gYpEsj0wmHBjA/w12pHMgeDhXPc5KCXj
+         vtX/uGzJXUftFiDewinEnMF/R4mEPRpivcuvES9AUFkaZNyKsdIX/ccgjaSv0AZjg0LB
+         eFaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=UWzOXCdUD+Yv36E2mlv+VtotmBAQjBl+l2LotWjHVjA=;
-        b=IemfDUF5OwBMFwxBvCm9UVU+kyYTNxMxAYgQx4DMRAjLr5HexKPHLNgpT2u3ih1Bo/
-         LsoYMP2JxomMkETYY89bzaqj/xS+LB8Oo20rsk7sTLu3HlsfEsnjcP8DZiGlcj+zLYV8
-         xcPagx5xa/4axKJlW2y57YBqw+n6a7Z6iNj3M5fzociTZkOOW73VhCu5ioK7FbKs8/Ww
-         EtTMuOBajGWvaHWpaaHSTbLSt+d4N/QUcNrA1iJYtTGfS0yHT5iD5BdBqW72ygn1wMqM
-         CrD19QNypYPJUH7wa468h5fmN8ZwZcej7gxlvxysiCHQ9XXOPPn7E/k/xb9UfjDL8mdL
-         kgVw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=BdyyQ0LupTtlANHHoXD2Q1M8sN9gbvdtXiLRW8l3WbQ=;
+        b=EP3bKEdPOLsdtIBaBYXVigYVhf0w60Qb2Aqsu+fKON52B/rYtLiCCd6o6YbkHczNPF
+         VoaVApG3m5mkyLXJw1aiDrUpnGHhw8Jh4XjmyIEnJQgwC8u5QOr6PsA4k0KjceqT6qH8
+         9ecA/Q3590rjhII8gyr0Eu4EkUERlTY7ePXibTLf6+LYhYRFXGzDB8src7mXTSP9Eu88
+         z3WgDoi3sQu40hQC0dMisaFppMU6NOyuCrDdRrm5M5UufaaofzSy/MdQuwiLS+iTKL6i
+         wIsqWY7Pk6hIqTRtyRis1HuIz8bcKug2m8E95ixLZiiZ4Yyc7DPCSdTZn6PEW2f1YEEA
+         v5nQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b=R1NIPwYJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 68-20020a670447000000b003b07583dee2si9763511vse.430.2023.01.19.09.06.16
+       dkim=pass header.i=@linaro.org header.s=google header.b=n1kgE7ga;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x134-20020a62868c000000b0056bc9a151efsor17854341pfd.1.2023.01.19.10.31.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 09:06:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 19 Jan 2023 10:31:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b=R1NIPwYJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pIYLp-0005Sv-Ad; Thu, 19 Jan 2023 12:05:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1pIYLo-0005Se-AD
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 12:05:20 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1pIYLj-0003ES-CZ
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 12:05:20 -0500
-Received: by mail-ej1-x636.google.com with SMTP id hw16so7323431ejc.10
- for <qemu-arm@nongnu.org>; Thu, 19 Jan 2023 09:05:14 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=n1kgE7ga;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=UWzOXCdUD+Yv36E2mlv+VtotmBAQjBl+l2LotWjHVjA=;
- b=R1NIPwYJcR6Elf/6rW3ejwp5ziCMCJYLocxck6gCX8BGG+CF28/tcEPArXWgP9dDF9
- rpZbdV1SfV9ct2PowFaP5ToaPI6jPMEbW5bpk6sR5Qs5Rzj6V4N81DLYz/b+AyEi3nep
- OBejk4CYsxMNG50roOJ+VbkHXmAy5aEoTBPxDGrdSTBEzPXxRFXrbaTMMDuQn2frmjD+
- V/6OR8OvPWTxBCegSEvpfFHda3D99tbVi51fr1bTPR9TwZVRLu9/048ybTD3Xf3cI1iM
- 0AqsKMSeVCX+JwULR5syFyFOH/4ZjIxopc36RH8C1X+Et/ThVaQDcbPtarZQi67ON4gu
- fZMA==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BdyyQ0LupTtlANHHoXD2Q1M8sN9gbvdtXiLRW8l3WbQ=;
+        b=n1kgE7ga58QXz8BbOW7sC2QcBwcjBkmebOEgsb2YSx76coq2v1X9zsLwU4cZRcMEbr
+         yVWYVL490hSdvxXbC/4vQv8teQejFH1lQUjXzcnBPOuDNdV+NW1PJJWDWhkzAtCbCfjy
+         qJfMMQ5xoTGUK0MMiU7AcTUkVhh++CQIUL5sAr56KWELnb/acogL5tauDfpW2nfcOTYh
+         E5tZjNFAHMTYMMVmtVgHM0LliJrd+QMxMqL8thduaRcropzJKtdE9jQnK34EJqdK/usY
+         Z6uRYOhYsrjs8qL3eh3QpcMZ1Ft3d9MyY3J62kg3WlKijQ6y1fnokRrPKdHTsLAYllLA
+         fNxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=UWzOXCdUD+Yv36E2mlv+VtotmBAQjBl+l2LotWjHVjA=;
- b=IaHDpuSs7bujrNPodUDZLPFSuCyn6C4qx7iGEPXkuscGS+lYQyDH7ePbj1kypFeZvx
- 5DCRrBoGK9KOxlHjQo6XoFHO89BpfAWgMNQXDN7TseCSXjVFqDXoLTjr7VxbiJlfILpZ
- +bYgPWJk9FzUTIam56rwDCn8VX4Ven29r1JIcbpILAx4p+YREs3xuodnLkW+pytSnmhr
- JmTC27awEul/pa7J8B/d1splDSErWpFkdMOJl/sqsbgsOcJ7wqxXdpXsN7nTiknj5sNv
- n4uW2aWnAPjgVhGgjAXGgl90tj6xIU4i2GMr7Ic80gn7dw9ebS2EV2LJGZkePLHJ2Y6k
- ziJQ==
-X-Gm-Message-State: AFqh2kp5laJ1zHm80GWqju7wP4+4c9TsPVeNZskpC5k6iRUZvzQyCSSW
- Fdr9f7khwKIH+eyns8xatC3vQLXgz70b6Ie9Ot0bDA==
-X-Received: by 2002:a17:906:606:b0:877:60aa:7090 with SMTP id
- s6-20020a170906060600b0087760aa7090mr446024ejb.451.1674147912843; Thu, 19 Jan
- 2023 09:05:12 -0800 (PST)
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BdyyQ0LupTtlANHHoXD2Q1M8sN9gbvdtXiLRW8l3WbQ=;
+        b=6ak5KBPIozCBQh1pKJJfHYRJfBKQ5zJn2HzQStvOGc+MjkwoaHl0JPkqp04BjTHRKe
+         xoOrgxR2KS2TOvOtKPSnvbgFl/D8uyEfggAtoR2JjbsC8G+PLeicgvdNE/FN2U0UwRmq
+         +5cvcMKZ5tfgZUItylzIaPJoSUB/YSREk+jRttHb4uCNWrB9M/3iGgahx+WmlHS5lCXV
+         tmB1coTaZRTcBArSKjrUHY4ufIp3AhO5LIzvXASJdQOOJXILaiFktkH80fu40/O6aIwh
+         u/darjiNjM4JpMorg50DQV429n+AN+dL/1//yGrIcalj3c3/aImqyBEeua5PdNhxbeS7
+         Dznw==
+X-Gm-Message-State: AFqh2kpFpg5RPuwVtSoVwM9XVlRoxdVGdoBC2QuXzUDJHrC5FjRCUiiD
+	XCG1E4lyiz7vhPcwG2s1sskUtCbB
+X-Google-Smtp-Source: AMrXdXtc9310AbBVF/+5S0M1DzzfpsuwvTwphyt43nr/VVtryyBUJXFBhZvqh8R0Kt8iLayaVHwneg==
+X-Received: by 2002:a05:6a00:4c0b:b0:58d:bffa:db25 with SMTP id ea11-20020a056a004c0b00b0058dbffadb25mr16013505pfb.19.1674153111717;
+        Thu, 19 Jan 2023 10:31:51 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
+        by smtp.gmail.com with ESMTPSA id z30-20020aa7991e000000b005898fcb7c2bsm20087512pff.170.2023.01.19.10.31.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Jan 2023 10:31:51 -0800 (PST)
+Message-ID: <6fb8d60e-4283-1429-fd15-f8b799d277cf@linaro.org>
+Date: Thu, 19 Jan 2023 08:31:47 -1000
 MIME-Version: 1.0
-References: <20230119065959.3104012-1-armbru@redhat.com>
- <20230119065959.3104012-5-armbru@redhat.com>
- <CANCZdfrU4zVcepMj=B5EVUz-qhCDhMYDs+cYS5yfW1-G01PsbA@mail.gmail.com>
- <87r0vqpjbt.fsf@pond.sub.org>
-In-Reply-To: <87r0vqpjbt.fsf@pond.sub.org>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 19 Jan 2023 10:05:01 -0700
-Message-ID: <CANCZdfrLF6Lecrd9VLTu-iDGWFCUJRM1veMejE2oX3ZAVEMBjg@mail.gmail.com>
-Subject: Re: [PATCH v4 04/19] bsd-user: Clean up includes
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, richard.henderson@linaro.org, pbonzini@redhat.com, 
- kwolf@redhat.com, hreitz@redhat.com, kevans@freebsd.org,
- berrange@redhat.com, 
- groug@kaod.org, qemu_oss@crudebyte.com, mst@redhat.com, philmd@linaro.org, 
- peter.maydell@linaro.org, alistair@alistair23.me, jasowang@redhat.com, 
- jonathan.cameron@huawei.com, kbastian@mail.uni-paderborn.de, 
- quintela@redhat.com, dgilbert@redhat.com, michael.roth@amd.com, 
- kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com, 
- bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
- qemu-riscv@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000a59ef205f2a0efeb"
-Received-SPF: none client-ip=2a00:1450:4864:20::636;
- envelope-from=wlosh@bsdimp.com; helo=mail-ej1-x636.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FG/dWgmztYzs
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [RFC PATCH v4 01/15] target/arm: Move 64-bit TCG CPUs into tcg/
+Content-Language: en-US
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Cornelia Huck <cohuck@redhat.com>
+References: <20230119135424.5417-1-farosas@suse.de>
+ <20230119135424.5417-2-farosas@suse.de>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230119135424.5417-2-farosas@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 7MmroUoHsB52
 
---000000000000a59ef205f2a0efeb
-Content-Type: text/plain; charset="UTF-8"
+On 1/19/23 03:54, Fabiano Rosas wrote:
+> Move the 64-bit CPUs that are TCG-only:
+> - cortex-a35
+> - cortex-a55
+> - cortex-a72
+> - cortex-a76
+> - a64fx
+> - neoverse-n1
+> 
+> Keep the CPUs that can be used with KVM:
+> - cortex-a57
+> - cortex-a53
+> - max
+> - host
 
-On Thu, Jan 19, 2023 at 9:42 AM Markus Armbruster <armbru@redhat.com> wrote:
-
-> Warner Losh <imp@bsdimp.com> writes:
->
-> > On Thu, Jan 19, 2023 at 12:00 AM Markus Armbruster <armbru@redhat.com>
-> > wrote:
-> >
-> >> Clean up includes so that osdep.h is included first and headers
-> >> which it implies are not included manually.
-> >>
-> >> This commit was created with scripts/clean-includes.
-> >>
-> >> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> >> ---
-> >>  bsd-user/bsd-proc.h               | 4 ----
-> >>  bsd-user/qemu.h                   | 1 -
-> >>  bsd-user/arm/signal.c             | 1 +
-> >>  bsd-user/arm/target_arch_cpu.c    | 2 ++
-> >>  bsd-user/freebsd/os-sys.c         | 1 +
-> >>  bsd-user/i386/signal.c            | 1 +
-> >>  bsd-user/i386/target_arch_cpu.c   | 3 +--
-> >>  bsd-user/main.c                   | 4 +---
-> >>  bsd-user/strace.c                 | 1 -
-> >>  bsd-user/x86_64/signal.c          | 1 +
-> >>  bsd-user/x86_64/target_arch_cpu.c | 3 +--
-> >>  11 files changed, 9 insertions(+), 13 deletions(-)
-> >>
-> >> diff --git a/bsd-user/bsd-proc.h b/bsd-user/bsd-proc.h
-> >> index 68b66e571d..a1061bffb8 100644
-> >> --- a/bsd-user/bsd-proc.h
-> >> +++ b/bsd-user/bsd-proc.h
-> >> @@ -20,11 +20,7 @@
-> >>  #ifndef BSD_PROC_H_
-> >>  #define BSD_PROC_H_
-> >>
-> >> -#include <sys/types.h>
-> >> -#include <sys/stat.h>
-> >> -#include <sys/time.h>
-> >>  #include <sys/resource.h>
-> >>
-> >
-> > Did you test this on FreeBSD 12? FreeBSD 13 has started to climb the hill
-> > where all includes are independent, but much of that hasn't been merged
-> to
-> > 12 yet. sys/types.h, at least, is documented as a prereq for both
-> > sys/stat.h and sys/resource.h.
-> >
-> > I know many of these are in os-dep.h, and I've had trouble in the
-> bsd-user
-> > fork with that and the layout of the code which has arguably way too much
-> > in the .h files.
->
-> No, I didn't test on FreeBSD 12.
->
-
-OK. Fair enough. If it passes the CI tests, then it's likely fine (though
-if I hit issues, I'll submit patches).
+All of those cpus can be used with kvm, if and only if you have matching hardware.  There 
+is no rationale for considering any of them differently.
 
 
-> Any .c must include qemu/osdep.h *first*.  Any further inclusions of
-> headers qemu/osdep.h includes already are no-ops unless the headers in
-> question lack multiple inclusion guards.
->
+r~
 
-OK.
-
-
-> > Also, why didn't you move sys/resource.h and other such files to
-> os-dep.h?
-> > I'm struggling to understand the rules around what is or isn't included
-> > where?
->
-> This series is "run scripts/clean-includes, split it into reviewable
-> chunks, tidy up blank lines".  Moving more includes into qemu/osdep.h is
-> out of scope.
->
-
-OK. Fair point. I'm happy with that answer since it tells me I could move
-things there too, if need be.
-
-
-> I sympathize with your complaint that QEMU does too much in headers in
-> general, and in qemu/osdep.h in particular.
->
-
-Yea, I'm not entirely sure  it's a complaint, or if it's an observation of
-difficulties relative to other code bases... I go back and forth on my
-opinion of it...
-
-
-> >> -#include <unistd.h>
-> >>
-> >>  /* exit(2) */
-> >>  static inline abi_long do_bsd_exit(void *cpu_env, abi_long arg1)
-> >> diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
-> >> index be6105385e..0ceecfb6df 100644
-> >> --- a/bsd-user/qemu.h
-> >> +++ b/bsd-user/qemu.h
-> >> @@ -17,7 +17,6 @@
-> >>  #ifndef QEMU_H
-> >>  #define QEMU_H
-> >>
-> >> -#include "qemu/osdep.h"
-> >>  #include "cpu.h"
-> >>  #include "qemu/units.h"
-> >>  #include "exec/cpu_ldst.h"
-> >> diff --git a/bsd-user/arm/signal.c b/bsd-user/arm/signal.c
-> >> index 2b1dd745d1..9734407543 100644
-> >> --- a/bsd-user/arm/signal.c
-> >> +++ b/bsd-user/arm/signal.c
-> >> @@ -17,6 +17,7 @@
-> >>   *  along with this program; if not, see <http://www.gnu.org/licenses/
-> >.
-> >>   */
-> >>
-> >> +#include "qemu/osdep.h"
-> >>  #include "qemu.h"
-> >>
-> >>  /*
-> >> diff --git a/bsd-user/arm/target_arch_cpu.c
-> >> b/bsd-user/arm/target_arch_cpu.c
-> >> index 02bf9149d5..fe38ae2210 100644
-> >> --- a/bsd-user/arm/target_arch_cpu.c
-> >> +++ b/bsd-user/arm/target_arch_cpu.c
-> >> @@ -16,6 +16,8 @@
-> >>   *  You should have received a copy of the GNU General Public License
-> >>   *  along with this program; if not, see <http://www.gnu.org/licenses/
-> >.
-> >>   */
-> >> +
-> >> +#include "qemu/osdep.h"
-> >>  #include "target_arch.h"
-> >>
-> >>  void target_cpu_set_tls(CPUARMState *env, target_ulong newtls)
-> >> diff --git a/bsd-user/freebsd/os-sys.c b/bsd-user/freebsd/os-sys.c
-> >> index 309e27b9d6..1676ec10f8 100644
-> >> --- a/bsd-user/freebsd/os-sys.c
-> >> +++ b/bsd-user/freebsd/os-sys.c
-> >> @@ -17,6 +17,7 @@
-> >>   *  along with this program; if not, see <http://www.gnu.org/licenses/
-> >.
-> >>   */
-> >>
-> >> +#include "qemu/osdep.h"
-> >>  #include "qemu.h"
-> >>  #include "target_arch_sysarch.h"
-> >>
-> >> diff --git a/bsd-user/i386/signal.c b/bsd-user/i386/signal.c
-> >> index 5dd975ce56..a3131047b8 100644
-> >> --- a/bsd-user/i386/signal.c
-> >> +++ b/bsd-user/i386/signal.c
-> >> @@ -17,6 +17,7 @@
-> >>   *  along with this program; if not, see <http://www.gnu.org/licenses/
-> >.
-> >>   */
-> >>
-> >> +#include "qemu/osdep.h"
-> >>  #include "qemu.h"
-> >>
-> >>  /*
-> >> diff --git a/bsd-user/i386/target_arch_cpu.c
-> >> b/bsd-user/i386/target_arch_cpu.c
-> >> index d349e45299..2a3af2ddef 100644
-> >> --- a/bsd-user/i386/target_arch_cpu.c
-> >> +++ b/bsd-user/i386/target_arch_cpu.c
-> >> @@ -17,9 +17,8 @@
-> >>   *  along with this program; if not, see <http://www.gnu.org/licenses/
-> >.
-> >>   */
-> >>
-> >> -#include <sys/types.h>
-> >> -
-> >>  #include "qemu/osdep.h"
-> >> +
-> >>  #include "cpu.h"
-> >>  #include "qemu.h"
-> >>  #include "qemu/timer.h"
-> >> diff --git a/bsd-user/main.c b/bsd-user/main.c
-> >> index 6f09180d65..41290e16f9 100644
-> >> --- a/bsd-user/main.c
-> >> +++ b/bsd-user/main.c
-> >> @@ -18,12 +18,10 @@
-> >>   *  along with this program; if not, see <http://www.gnu.org/licenses/
-> >.
-> >>   */
-> >>
-> >> -#include <sys/types.h>
-> >> -#include <sys/time.h>
-> >> +#include "qemu/osdep.h"
-> >>  #include <sys/resource.h>
-> >>  #include <sys/sysctl.h>
-> >>
-> >> -#include "qemu/osdep.h"
-> >>  #include "qemu/help-texts.h"
-> >>  #include "qemu/units.h"
-> >>  #include "qemu/accel.h"
-> >> diff --git a/bsd-user/strace.c b/bsd-user/strace.c
-> >> index a77d10dd6b..96499751eb 100644
-> >> --- a/bsd-user/strace.c
-> >> +++ b/bsd-user/strace.c
-> >> @@ -20,7 +20,6 @@
-> >>  #include <sys/select.h>
-> >>  #include <sys/syscall.h>
-> >>  #include <sys/ioccom.h>
-> >> -#include <ctype.h>
-> >>
-> >>  #include "qemu.h"
-> >>
-> >> diff --git a/bsd-user/x86_64/signal.c b/bsd-user/x86_64/signal.c
-> >> index c3875bc4c6..46cb865180 100644
-> >> --- a/bsd-user/x86_64/signal.c
-> >> +++ b/bsd-user/x86_64/signal.c
-> >> @@ -16,6 +16,7 @@
-> >>   *  along with this program; if not, see <http://www.gnu.org/licenses/
-> >.
-> >>   */
-> >>
-> >> +#include "qemu/osdep.h"
-> >>  #include "qemu.h"
-> >>
-> >>  /*
-> >> diff --git a/bsd-user/x86_64/target_arch_cpu.c
-> >> b/bsd-user/x86_64/target_arch_cpu.c
-> >> index be7bd10720..1d32f18907 100644
-> >> --- a/bsd-user/x86_64/target_arch_cpu.c
-> >> +++ b/bsd-user/x86_64/target_arch_cpu.c
-> >> @@ -17,9 +17,8 @@
-> >>   *  along with this program; if not, see <http://www.gnu.org/licenses/
-> >.
-> >>   */
-> >>
-> >> -#include <sys/types.h>
-> >> -
-> >>  #include "qemu/osdep.h"
-> >> +
-> >>  #include "cpu.h"
-> >>  #include "qemu.h"
-> >>  #include "qemu/timer.h"
-> >>
-> >
-> > I suppose these are fine. How do I run the cleanup script? I have 2x the
-> > number of files not upstream in the bsd-user fork that I'd like to
-> cleanup
-> > as well and they are likely a bigger mess and I'll just upstream them in
-> > the messy state unless I understand how to keep the neat :).
->
-> I used
->
->     $ scripts/clean-includes --check-dup-head --all
->
-> Which resulted in a big mess I didn't dare to submit for review :)  So I
-> split it up.  Easiest way was to identify useful sets of files, add
-> files that include headers from the set, transitively, then run
->
->     $ scripts/clean-includes FILES...
->
-> --check-dup-head reports possible duplicate inclusions.  It is prone to
-> false positives.  That's why it merely reports them.  You may want to
-> not use it for now.
->
-> There's a big usage comment at the beginning of the script.
->
-> Hope this helps!
->
-
-It does. After your changes land, I'll merge, and run this on the branch. I
-have a few changes queued up, and have been contemplating changes to my
-upstreaming workflow to speed the process along...
-
-So I'm happy with it. Thanks for the cleanup and the time to answer my
-questions.
-
-Reviewed-by: Warner Losh <imp@bsdimp.com>
-
-Warner
-
---000000000000a59ef205f2a0efeb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jan 19, 2023 at 9:42 AM Marku=
-s Armbruster &lt;<a href=3D"mailto:armbru@redhat.com">armbru@redhat.com</a>=
-&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
-0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Warn=
-er Losh &lt;<a href=3D"mailto:imp@bsdimp.com" target=3D"_blank">imp@bsdimp.=
-com</a>&gt; writes:<br>
-<br>
-&gt; On Thu, Jan 19, 2023 at 12:00 AM Markus Armbruster &lt;<a href=3D"mail=
-to:armbru@redhat.com" target=3D"_blank">armbru@redhat.com</a>&gt;<br>
-&gt; wrote:<br>
-&gt;<br>
-&gt;&gt; Clean up includes so that osdep.h is included first and headers<br=
->
-&gt;&gt; which it implies are not included manually.<br>
-&gt;&gt;<br>
-&gt;&gt; This commit was created with scripts/clean-includes.<br>
-&gt;&gt;<br>
-&gt;&gt; Signed-off-by: Markus Armbruster &lt;<a href=3D"mailto:armbru@redh=
-at.com" target=3D"_blank">armbru@redhat.com</a>&gt;<br>
-&gt;&gt; ---<br>
-&gt;&gt;=C2=A0 bsd-user/bsd-proc.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0| 4 ----<br>
-&gt;&gt;=C2=A0 bsd-user/qemu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0| 1 -<br>
-&gt;&gt;=C2=A0 bsd-user/arm/signal.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0| 1 +<br>
-&gt;&gt;=C2=A0 bsd-user/arm/target_arch_cpu.c=C2=A0 =C2=A0 | 2 ++<br>
-&gt;&gt;=C2=A0 bsd-user/freebsd/os-sys.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
- 1 +<br>
-&gt;&gt;=C2=A0 bsd-user/i386/signal.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 | 1 +<br>
-&gt;&gt;=C2=A0 bsd-user/i386/target_arch_cpu.c=C2=A0 =C2=A0| 3 +--<br>
-&gt;&gt;=C2=A0 bsd-user/main.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0| 4 +---<br>
-&gt;&gt;=C2=A0 bsd-user/strace.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0| 1 -<br>
-&gt;&gt;=C2=A0 bsd-user/x86_64/signal.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
- 1 +<br>
-&gt;&gt;=C2=A0 bsd-user/x86_64/target_arch_cpu.c | 3 +--<br>
-&gt;&gt;=C2=A0 11 files changed, 9 insertions(+), 13 deletions(-)<br>
-&gt;&gt;<br>
-&gt;&gt; diff --git a/bsd-user/bsd-proc.h b/bsd-user/bsd-proc.h<br>
-&gt;&gt; index 68b66e571d..a1061bffb8 100644<br>
-&gt;&gt; --- a/bsd-user/bsd-proc.h<br>
-&gt;&gt; +++ b/bsd-user/bsd-proc.h<br>
-&gt;&gt; @@ -20,11 +20,7 @@<br>
-&gt;&gt;=C2=A0 #ifndef BSD_PROC_H_<br>
-&gt;&gt;=C2=A0 #define BSD_PROC_H_<br>
-&gt;&gt;<br>
-&gt;&gt; -#include &lt;sys/types.h&gt;<br>
-&gt;&gt; -#include &lt;sys/stat.h&gt;<br>
-&gt;&gt; -#include &lt;sys/time.h&gt;<br>
-&gt;&gt;=C2=A0 #include &lt;sys/resource.h&gt;<br>
-&gt;&gt;<br>
-&gt;<br>
-&gt; Did you test this on FreeBSD 12? FreeBSD 13 has started to climb the h=
-ill<br>
-&gt; where all includes are independent, but much of that hasn&#39;t been m=
-erged to<br>
-&gt; 12 yet. sys/types.h, at least, is documented as a prereq for both<br>
-&gt; sys/stat.h and sys/resource.h.<br>
-&gt;<br>
-&gt; I know many of these are in os-dep.h, and I&#39;ve had trouble in the =
-bsd-user<br>
-&gt; fork with that and the layout of the code which has arguably way too m=
-uch<br>
-&gt; in the .h files.<br>
-<br>
-No, I didn&#39;t test on FreeBSD 12.<br></blockquote><div><br></div><div>OK=
-. Fair enough. If it passes the CI tests, then it&#39;s likely fine (though=
- if I hit issues, I&#39;ll submit patches).</div><div>=C2=A0</div><blockquo=
-te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
-solid rgb(204,204,204);padding-left:1ex">
-Any .c must include qemu/osdep.h *first*.=C2=A0 Any further inclusions of<b=
-r>
-headers qemu/osdep.h includes already are no-ops unless the headers in<br>
-question lack multiple inclusion guards.<br></blockquote><div><br></div><di=
-v>OK.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"marg=
-in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
-x">
-&gt; Also, why didn&#39;t you move sys/resource.h and other such files to o=
-s-dep.h?<br>
-&gt; I&#39;m struggling to understand the rules around what is or isn&#39;t=
- included<br>
-&gt; where?<br>
-<br>
-This series is &quot;run scripts/clean-includes, split it into reviewable<b=
-r>
-chunks, tidy up blank lines&quot;.=C2=A0 Moving more includes into qemu/osd=
-ep.h is<br>
-out of scope.<br></blockquote><div><br></div><div>OK. Fair point. I&#39;m h=
-appy with that answer since it tells me I could move things there too, if n=
-eed be.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex">
-I sympathize with your complaint that QEMU does too much in headers in<br>
-general, and in qemu/osdep.h in particular.<br></blockquote><div><br></div>=
-<div>Yea, I&#39;m not entirely sure=C2=A0 it&#39;s a complaint, or if it&#3=
-9;s an observation of difficulties relative to other code bases... I go bac=
-k and forth on my opinion of it...</div><div>=C2=A0</div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">
-&gt;&gt; -#include &lt;unistd.h&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 /* exit(2) */<br>
-&gt;&gt;=C2=A0 static inline abi_long do_bsd_exit(void *cpu_env, abi_long a=
-rg1)<br>
-&gt;&gt; diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h<br>
-&gt;&gt; index be6105385e..0ceecfb6df 100644<br>
-&gt;&gt; --- a/bsd-user/qemu.h<br>
-&gt;&gt; +++ b/bsd-user/qemu.h<br>
-&gt;&gt; @@ -17,7 +17,6 @@<br>
-&gt;&gt;=C2=A0 #ifndef QEMU_H<br>
-&gt;&gt;=C2=A0 #define QEMU_H<br>
-&gt;&gt;<br>
-&gt;&gt; -#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;cpu.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu/units.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;exec/cpu_ldst.h&quot;<br>
-&gt;&gt; diff --git a/bsd-user/arm/signal.c b/bsd-user/arm/signal.c<br>
-&gt;&gt; index 2b1dd745d1..9734407543 100644<br>
-&gt;&gt; --- a/bsd-user/arm/signal.c<br>
-&gt;&gt; +++ b/bsd-user/arm/signal.c<br>
-&gt;&gt; @@ -17,6 +17,7 @@<br>
-&gt;&gt;=C2=A0 =C2=A0*=C2=A0 along with this program; if not, see &lt;<a hr=
-ef=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">ht=
-tp://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;&gt;=C2=A0 =C2=A0*/<br>
-&gt;&gt;<br>
-&gt;&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu.h&quot;<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 /*<br>
-&gt;&gt; diff --git a/bsd-user/arm/target_arch_cpu.c<br>
-&gt;&gt; b/bsd-user/arm/target_arch_cpu.c<br>
-&gt;&gt; index 02bf9149d5..fe38ae2210 100644<br>
-&gt;&gt; --- a/bsd-user/arm/target_arch_cpu.c<br>
-&gt;&gt; +++ b/bsd-user/arm/target_arch_cpu.c<br>
-&gt;&gt; @@ -16,6 +16,8 @@<br>
-&gt;&gt;=C2=A0 =C2=A0*=C2=A0 You should have received a copy of the GNU Gen=
-eral Public License<br>
-&gt;&gt;=C2=A0 =C2=A0*=C2=A0 along with this program; if not, see &lt;<a hr=
-ef=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">ht=
-tp://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;&gt;=C2=A0 =C2=A0*/<br>
-&gt;&gt; +<br>
-&gt;&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;target_arch.h&quot;<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 void target_cpu_set_tls(CPUARMState *env, target_ulong newtl=
-s)<br>
-&gt;&gt; diff --git a/bsd-user/freebsd/os-sys.c b/bsd-user/freebsd/os-sys.c=
-<br>
-&gt;&gt; index 309e27b9d6..1676ec10f8 100644<br>
-&gt;&gt; --- a/bsd-user/freebsd/os-sys.c<br>
-&gt;&gt; +++ b/bsd-user/freebsd/os-sys.c<br>
-&gt;&gt; @@ -17,6 +17,7 @@<br>
-&gt;&gt;=C2=A0 =C2=A0*=C2=A0 along with this program; if not, see &lt;<a hr=
-ef=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">ht=
-tp://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;&gt;=C2=A0 =C2=A0*/<br>
-&gt;&gt;<br>
-&gt;&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;target_arch_sysarch.h&quot;<br>
-&gt;&gt;<br>
-&gt;&gt; diff --git a/bsd-user/i386/signal.c b/bsd-user/i386/signal.c<br>
-&gt;&gt; index 5dd975ce56..a3131047b8 100644<br>
-&gt;&gt; --- a/bsd-user/i386/signal.c<br>
-&gt;&gt; +++ b/bsd-user/i386/signal.c<br>
-&gt;&gt; @@ -17,6 +17,7 @@<br>
-&gt;&gt;=C2=A0 =C2=A0*=C2=A0 along with this program; if not, see &lt;<a hr=
-ef=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">ht=
-tp://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;&gt;=C2=A0 =C2=A0*/<br>
-&gt;&gt;<br>
-&gt;&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu.h&quot;<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 /*<br>
-&gt;&gt; diff --git a/bsd-user/i386/target_arch_cpu.c<br>
-&gt;&gt; b/bsd-user/i386/target_arch_cpu.c<br>
-&gt;&gt; index d349e45299..2a3af2ddef 100644<br>
-&gt;&gt; --- a/bsd-user/i386/target_arch_cpu.c<br>
-&gt;&gt; +++ b/bsd-user/i386/target_arch_cpu.c<br>
-&gt;&gt; @@ -17,9 +17,8 @@<br>
-&gt;&gt;=C2=A0 =C2=A0*=C2=A0 along with this program; if not, see &lt;<a hr=
-ef=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">ht=
-tp://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;&gt;=C2=A0 =C2=A0*/<br>
-&gt;&gt;<br>
-&gt;&gt; -#include &lt;sys/types.h&gt;<br>
-&gt;&gt; -<br>
-&gt;&gt;=C2=A0 #include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt; +<br>
-&gt;&gt;=C2=A0 #include &quot;cpu.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu/timer.h&quot;<br>
-&gt;&gt; diff --git a/bsd-user/main.c b/bsd-user/main.c<br>
-&gt;&gt; index 6f09180d65..41290e16f9 100644<br>
-&gt;&gt; --- a/bsd-user/main.c<br>
-&gt;&gt; +++ b/bsd-user/main.c<br>
-&gt;&gt; @@ -18,12 +18,10 @@<br>
-&gt;&gt;=C2=A0 =C2=A0*=C2=A0 along with this program; if not, see &lt;<a hr=
-ef=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">ht=
-tp://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;&gt;=C2=A0 =C2=A0*/<br>
-&gt;&gt;<br>
-&gt;&gt; -#include &lt;sys/types.h&gt;<br>
-&gt;&gt; -#include &lt;sys/time.h&gt;<br>
-&gt;&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;=C2=A0 #include &lt;sys/resource.h&gt;<br>
-&gt;&gt;=C2=A0 #include &lt;sys/sysctl.h&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; -#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu/help-texts.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu/units.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu/accel.h&quot;<br>
-&gt;&gt; diff --git a/bsd-user/strace.c b/bsd-user/strace.c<br>
-&gt;&gt; index a77d10dd6b..96499751eb 100644<br>
-&gt;&gt; --- a/bsd-user/strace.c<br>
-&gt;&gt; +++ b/bsd-user/strace.c<br>
-&gt;&gt; @@ -20,7 +20,6 @@<br>
-&gt;&gt;=C2=A0 #include &lt;sys/select.h&gt;<br>
-&gt;&gt;=C2=A0 #include &lt;sys/syscall.h&gt;<br>
-&gt;&gt;=C2=A0 #include &lt;sys/ioccom.h&gt;<br>
-&gt;&gt; -#include &lt;ctype.h&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu.h&quot;<br>
-&gt;&gt;<br>
-&gt;&gt; diff --git a/bsd-user/x86_64/signal.c b/bsd-user/x86_64/signal.c<b=
-r>
-&gt;&gt; index c3875bc4c6..46cb865180 100644<br>
-&gt;&gt; --- a/bsd-user/x86_64/signal.c<br>
-&gt;&gt; +++ b/bsd-user/x86_64/signal.c<br>
-&gt;&gt; @@ -16,6 +16,7 @@<br>
-&gt;&gt;=C2=A0 =C2=A0*=C2=A0 along with this program; if not, see &lt;<a hr=
-ef=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">ht=
-tp://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;&gt;=C2=A0 =C2=A0*/<br>
-&gt;&gt;<br>
-&gt;&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu.h&quot;<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 /*<br>
-&gt;&gt; diff --git a/bsd-user/x86_64/target_arch_cpu.c<br>
-&gt;&gt; b/bsd-user/x86_64/target_arch_cpu.c<br>
-&gt;&gt; index be7bd10720..1d32f18907 100644<br>
-&gt;&gt; --- a/bsd-user/x86_64/target_arch_cpu.c<br>
-&gt;&gt; +++ b/bsd-user/x86_64/target_arch_cpu.c<br>
-&gt;&gt; @@ -17,9 +17,8 @@<br>
-&gt;&gt;=C2=A0 =C2=A0*=C2=A0 along with this program; if not, see &lt;<a hr=
-ef=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">ht=
-tp://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;&gt;=C2=A0 =C2=A0*/<br>
-&gt;&gt;<br>
-&gt;&gt; -#include &lt;sys/types.h&gt;<br>
-&gt;&gt; -<br>
-&gt;&gt;=C2=A0 #include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt; +<br>
-&gt;&gt;=C2=A0 #include &quot;cpu.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu.h&quot;<br>
-&gt;&gt;=C2=A0 #include &quot;qemu/timer.h&quot;<br>
-&gt;&gt;<br>
-&gt;<br>
-&gt; I suppose these are fine. How do I run the cleanup script? I have 2x t=
-he<br>
-&gt; number of files not upstream in the bsd-user fork that I&#39;d like to=
- cleanup<br>
-&gt; as well and they are likely a bigger mess and I&#39;ll just upstream t=
-hem in<br>
-&gt; the messy state unless I understand how to keep the neat :).<br>
-<br>
-I used<br>
-<br>
-=C2=A0 =C2=A0 $ scripts/clean-includes --check-dup-head --all<br>
-<br>
-Which resulted in a big mess I didn&#39;t dare to submit for review :)=C2=
-=A0 So I<br>
-split it up.=C2=A0 Easiest way was to identify useful sets of files, add<br=
->
-files that include headers from the set, transitively, then run<br>
-<br>
-=C2=A0 =C2=A0 $ scripts/clean-includes FILES...<br>
-<br>
---check-dup-head reports possible duplicate inclusions.=C2=A0 It is prone t=
-o<br>
-false positives.=C2=A0 That&#39;s why it merely reports them.=C2=A0 You may=
- want to<br>
-not use it for now.<br>
-<br>
-There&#39;s a big usage comment at the beginning of the script.<br>
-<br>
-Hope this helps!<br></blockquote><div><br></div><div>It does. After your ch=
-anges land, I&#39;ll merge, and run this on the branch. I have a few change=
-s queued up, and have been contemplating changes to my upstreaming workflow=
- to speed the process along...</div><div><br></div><div>So I&#39;m happy wi=
-th it. Thanks for the cleanup and the time to answer my questions.</div><di=
-v><br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.=
-com">imp@bsdimp.com</a>&gt;</div><div><br></div><div>Warner=C2=A0</div></di=
-v></div>
-
---000000000000a59ef205f2a0efeb--
+> 
+> For the special case "max" CPU, there's a nuance that while KVM/HVF
+> use the "host" model instead, we still cannot move all of the TCG code
+> into the tcg directory because the qtests might reach the !kvm && !hvf
+> branch. Keep the cortex_a57_initfn() call to cover that scenario.
+> 
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+>   target/arm/cpu64.c         | 633 +----------------------------------
+>   target/arm/internals.h     |   4 +
+>   target/arm/tcg/cpu64.c     | 654 +++++++++++++++++++++++++++++++++++++
+>   target/arm/tcg/meson.build |   1 +
+>   4 files changed, 671 insertions(+), 621 deletions(-)
+>   create mode 100644 target/arm/tcg/cpu64.c
+> 
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 5dfdae7bd2..226f57c669 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -24,6 +24,8 @@
+>   #include "qemu/module.h"
+>   #include "sysemu/kvm.h"
+>   #include "sysemu/hvf.h"
+> +#include "sysemu/qtest.h"
+> +#include "sysemu/tcg.h"
+>   #include "kvm_arm.h"
+>   #include "hvf_arm.h"
+>   #include "qapi/visitor.h"
+> @@ -31,86 +33,6 @@
+>   #include "internals.h"
+>   #include "cpregs.h"
+>   
+> -static void aarch64_a35_initfn(Object *obj)
+> -{
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -
+> -    cpu->dtb_compatible = "arm,cortex-a35";
+> -    set_feature(&cpu->env, ARM_FEATURE_V8);
+> -    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> -    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> -    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> -    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> -    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> -
+> -    /* From B2.2 AArch64 identification registers. */
+> -    cpu->midr = 0x411fd040;
+> -    cpu->revidr = 0;
+> -    cpu->ctr = 0x84448004;
+> -    cpu->isar.id_pfr0 = 0x00000131;
+> -    cpu->isar.id_pfr1 = 0x00011011;
+> -    cpu->isar.id_dfr0 = 0x03010066;
+> -    cpu->id_afr0 = 0;
+> -    cpu->isar.id_mmfr0 = 0x10201105;
+> -    cpu->isar.id_mmfr1 = 0x40000000;
+> -    cpu->isar.id_mmfr2 = 0x01260000;
+> -    cpu->isar.id_mmfr3 = 0x02102211;
+> -    cpu->isar.id_isar0 = 0x02101110;
+> -    cpu->isar.id_isar1 = 0x13112111;
+> -    cpu->isar.id_isar2 = 0x21232042;
+> -    cpu->isar.id_isar3 = 0x01112131;
+> -    cpu->isar.id_isar4 = 0x00011142;
+> -    cpu->isar.id_isar5 = 0x00011121;
+> -    cpu->isar.id_aa64pfr0 = 0x00002222;
+> -    cpu->isar.id_aa64pfr1 = 0;
+> -    cpu->isar.id_aa64dfr0 = 0x10305106;
+> -    cpu->isar.id_aa64dfr1 = 0;
+> -    cpu->isar.id_aa64isar0 = 0x00011120;
+> -    cpu->isar.id_aa64isar1 = 0;
+> -    cpu->isar.id_aa64mmfr0 = 0x00101122;
+> -    cpu->isar.id_aa64mmfr1 = 0;
+> -    cpu->clidr = 0x0a200023;
+> -    cpu->dcz_blocksize = 4;
+> -
+> -    /* From B2.4 AArch64 Virtual Memory control registers */
+> -    cpu->reset_sctlr = 0x00c50838;
+> -
+> -    /* From B2.10 AArch64 performance monitor registers */
+> -    cpu->isar.reset_pmcr_el0 = 0x410a3000;
+> -
+> -    /* From B2.29 Cache ID registers */
+> -    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
+> -    cpu->ccsidr[1] = 0x201fe00a; /* 32KB L1 icache */
+> -    cpu->ccsidr[2] = 0x703fe03a; /* 512KB L2 cache */
+> -
+> -    /* From B3.5 VGIC Type register */
+> -    cpu->gic_num_lrs = 4;
+> -    cpu->gic_vpribits = 5;
+> -    cpu->gic_vprebits = 5;
+> -    cpu->gic_pribits = 5;
+> -
+> -    /* From C6.4 Debug ID Register */
+> -    cpu->isar.dbgdidr = 0x3516d000;
+> -    /* From C6.5 Debug Device ID Register */
+> -    cpu->isar.dbgdevid = 0x00110f13;
+> -    /* From C6.6 Debug Device ID Register 1 */
+> -    cpu->isar.dbgdevid1 = 0x2;
+> -
+> -    /* From Cortex-A35 SIMD and Floating-point Support r1p0 */
+> -    /* From 3.2 AArch32 register summary */
+> -    cpu->reset_fpsid = 0x41034043;
+> -
+> -    /* From 2.2 AArch64 register summary */
+> -    cpu->isar.mvfr0 = 0x10110222;
+> -    cpu->isar.mvfr1 = 0x12111111;
+> -    cpu->isar.mvfr2 = 0x00000043;
+> -
+> -    /* These values are the same with A53/A57/A72. */
+> -    define_cortex_a72_a57_a53_cp_reginfo(cpu);
+> -}
+> -
+>   void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+>   {
+>       /*
+> @@ -310,47 +232,6 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+>       cpu->sve_vq.map = vq_map;
+>   }
+>   
+> -static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> -                                   void *opaque, Error **errp)
+> -{
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -    uint32_t value;
+> -
+> -    /* All vector lengths are disabled when SVE is off. */
+> -    if (!cpu_isar_feature(aa64_sve, cpu)) {
+> -        value = 0;
+> -    } else {
+> -        value = cpu->sve_max_vq;
+> -    }
+> -    visit_type_uint32(v, name, &value, errp);
+> -}
+> -
+> -static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> -                                   void *opaque, Error **errp)
+> -{
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -    uint32_t max_vq;
+> -
+> -    if (!visit_type_uint32(v, name, &max_vq, errp)) {
+> -        return;
+> -    }
+> -
+> -    if (kvm_enabled() && !kvm_arm_sve_supported()) {
+> -        error_setg(errp, "cannot set sve-max-vq");
+> -        error_append_hint(errp, "SVE not supported by KVM on this host\n");
+> -        return;
+> -    }
+> -
+> -    if (max_vq == 0 || max_vq > ARM_MAX_VQ) {
+> -        error_setg(errp, "unsupported SVE vector length");
+> -        error_append_hint(errp, "Valid sve-max-vq in range [1-%d]\n",
+> -                          ARM_MAX_VQ);
+> -        return;
+> -    }
+> -
+> -    cpu->sve_max_vq = max_vq;
+> -}
+> -
+>   /*
+>    * Note that cpu_arm_{get,set}_vq cannot use the simpler
+>    * object_property_add_bool interface because they make use of the
+> @@ -541,7 +422,7 @@ static void cpu_arm_get_default_vec_len(Object *obj, Visitor *v,
+>   }
+>   #endif
+>   
+> -static void aarch64_add_sve_properties(Object *obj)
+> +void aarch64_add_sve_properties(Object *obj)
+>   {
+>       ARMCPU *cpu = ARM_CPU(obj);
+>       uint32_t vq;
+> @@ -564,7 +445,7 @@ static void aarch64_add_sve_properties(Object *obj)
+>   #endif
+>   }
+>   
+> -static void aarch64_add_sme_properties(Object *obj)
+> +void aarch64_add_sme_properties(Object *obj)
+>   {
+>       ARMCPU *cpu = ARM_CPU(obj);
+>       uint32_t vq;
+> @@ -629,7 +510,7 @@ static Property arm_cpu_pauth_property =
+>   static Property arm_cpu_pauth_impdef_property =
+>       DEFINE_PROP_BOOL("pauth-impdef", ARMCPU, prop_pauth_impdef, false);
+>   
+> -static void aarch64_add_pauth_properties(Object *obj)
+> +void aarch64_add_pauth_properties(Object *obj)
+>   {
+>       ARMCPU *cpu = ARM_CPU(obj);
+>   
+> @@ -650,9 +531,6 @@ static void aarch64_add_pauth_properties(Object *obj)
+>       }
+>   }
+>   
+> -static Property arm_cpu_lpa2_property =
+> -    DEFINE_PROP_BOOL("lpa2", ARMCPU, prop_lpa2, true);
+> -
+>   void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
+>   {
+>       uint64_t t;
+> @@ -787,316 +665,6 @@ static void aarch64_a53_initfn(Object *obj)
+>       define_cortex_a72_a57_a53_cp_reginfo(cpu);
+>   }
+>   
+> -static void aarch64_a55_initfn(Object *obj)
+> -{
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -
+> -    cpu->dtb_compatible = "arm,cortex-a55";
+> -    set_feature(&cpu->env, ARM_FEATURE_V8);
+> -    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> -    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> -    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> -    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> -    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> -
+> -    /* Ordered by B2.4 AArch64 registers by functional group */
+> -    cpu->clidr = 0x82000023;
+> -    cpu->ctr = 0x84448004; /* L1Ip = VIPT */
+> -    cpu->dcz_blocksize = 4; /* 64 bytes */
+> -    cpu->isar.id_aa64dfr0  = 0x0000000010305408ull;
+> -    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
+> -    cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
+> -    cpu->isar.id_aa64mmfr0 = 0x0000000000101122ull;
+> -    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
+> -    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
+> -    cpu->isar.id_aa64pfr0  = 0x0000000010112222ull;
+> -    cpu->isar.id_aa64pfr1  = 0x0000000000000010ull;
+> -    cpu->id_afr0       = 0x00000000;
+> -    cpu->isar.id_dfr0  = 0x04010088;
+> -    cpu->isar.id_isar0 = 0x02101110;
+> -    cpu->isar.id_isar1 = 0x13112111;
+> -    cpu->isar.id_isar2 = 0x21232042;
+> -    cpu->isar.id_isar3 = 0x01112131;
+> -    cpu->isar.id_isar4 = 0x00011142;
+> -    cpu->isar.id_isar5 = 0x01011121;
+> -    cpu->isar.id_isar6 = 0x00000010;
+> -    cpu->isar.id_mmfr0 = 0x10201105;
+> -    cpu->isar.id_mmfr1 = 0x40000000;
+> -    cpu->isar.id_mmfr2 = 0x01260000;
+> -    cpu->isar.id_mmfr3 = 0x02122211;
+> -    cpu->isar.id_mmfr4 = 0x00021110;
+> -    cpu->isar.id_pfr0  = 0x10010131;
+> -    cpu->isar.id_pfr1  = 0x00011011;
+> -    cpu->isar.id_pfr2  = 0x00000011;
+> -    cpu->midr = 0x412FD050;          /* r2p0 */
+> -    cpu->revidr = 0;
+> -
+> -    /* From B2.23 CCSIDR_EL1 */
+> -    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
+> -    cpu->ccsidr[1] = 0x200fe01a; /* 32KB L1 icache */
+> -    cpu->ccsidr[2] = 0x703fe07a; /* 512KB L2 cache */
+> -
+> -    /* From B2.96 SCTLR_EL3 */
+> -    cpu->reset_sctlr = 0x30c50838;
+> -
+> -    /* From B4.45 ICH_VTR_EL2 */
+> -    cpu->gic_num_lrs = 4;
+> -    cpu->gic_vpribits = 5;
+> -    cpu->gic_vprebits = 5;
+> -    cpu->gic_pribits = 5;
+> -
+> -    cpu->isar.mvfr0 = 0x10110222;
+> -    cpu->isar.mvfr1 = 0x13211111;
+> -    cpu->isar.mvfr2 = 0x00000043;
+> -
+> -    /* From D5.4 AArch64 PMU register summary */
+> -    cpu->isar.reset_pmcr_el0 = 0x410b3000;
+> -}
+> -
+> -static void aarch64_a72_initfn(Object *obj)
+> -{
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -
+> -    cpu->dtb_compatible = "arm,cortex-a72";
+> -    set_feature(&cpu->env, ARM_FEATURE_V8);
+> -    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> -    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> -    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> -    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> -    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> -    cpu->midr = 0x410fd083;
+> -    cpu->revidr = 0x00000000;
+> -    cpu->reset_fpsid = 0x41034080;
+> -    cpu->isar.mvfr0 = 0x10110222;
+> -    cpu->isar.mvfr1 = 0x12111111;
+> -    cpu->isar.mvfr2 = 0x00000043;
+> -    cpu->ctr = 0x8444c004;
+> -    cpu->reset_sctlr = 0x00c50838;
+> -    cpu->isar.id_pfr0 = 0x00000131;
+> -    cpu->isar.id_pfr1 = 0x00011011;
+> -    cpu->isar.id_dfr0 = 0x03010066;
+> -    cpu->id_afr0 = 0x00000000;
+> -    cpu->isar.id_mmfr0 = 0x10201105;
+> -    cpu->isar.id_mmfr1 = 0x40000000;
+> -    cpu->isar.id_mmfr2 = 0x01260000;
+> -    cpu->isar.id_mmfr3 = 0x02102211;
+> -    cpu->isar.id_isar0 = 0x02101110;
+> -    cpu->isar.id_isar1 = 0x13112111;
+> -    cpu->isar.id_isar2 = 0x21232042;
+> -    cpu->isar.id_isar3 = 0x01112131;
+> -    cpu->isar.id_isar4 = 0x00011142;
+> -    cpu->isar.id_isar5 = 0x00011121;
+> -    cpu->isar.id_aa64pfr0 = 0x00002222;
+> -    cpu->isar.id_aa64dfr0 = 0x10305106;
+> -    cpu->isar.id_aa64isar0 = 0x00011120;
+> -    cpu->isar.id_aa64mmfr0 = 0x00001124;
+> -    cpu->isar.dbgdidr = 0x3516d000;
+> -    cpu->isar.dbgdevid = 0x01110f13;
+> -    cpu->isar.dbgdevid1 = 0x2;
+> -    cpu->isar.reset_pmcr_el0 = 0x41023000;
+> -    cpu->clidr = 0x0a200023;
+> -    cpu->ccsidr[0] = 0x701fe00a; /* 32KB L1 dcache */
+> -    cpu->ccsidr[1] = 0x201fe012; /* 48KB L1 icache */
+> -    cpu->ccsidr[2] = 0x707fe07a; /* 1MB L2 cache */
+> -    cpu->dcz_blocksize = 4; /* 64 bytes */
+> -    cpu->gic_num_lrs = 4;
+> -    cpu->gic_vpribits = 5;
+> -    cpu->gic_vprebits = 5;
+> -    cpu->gic_pribits = 5;
+> -    define_cortex_a72_a57_a53_cp_reginfo(cpu);
+> -}
+> -
+> -static void aarch64_a76_initfn(Object *obj)
+> -{
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -
+> -    cpu->dtb_compatible = "arm,cortex-a76";
+> -    set_feature(&cpu->env, ARM_FEATURE_V8);
+> -    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> -    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> -    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> -    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> -    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> -
+> -    /* Ordered by B2.4 AArch64 registers by functional group */
+> -    cpu->clidr = 0x82000023;
+> -    cpu->ctr = 0x8444C004;
+> -    cpu->dcz_blocksize = 4;
+> -    cpu->isar.id_aa64dfr0  = 0x0000000010305408ull;
+> -    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
+> -    cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
+> -    cpu->isar.id_aa64mmfr0 = 0x0000000000101122ull;
+> -    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
+> -    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
+> -    cpu->isar.id_aa64pfr0  = 0x1100000010111112ull; /* GIC filled in later */
+> -    cpu->isar.id_aa64pfr1  = 0x0000000000000010ull;
+> -    cpu->id_afr0       = 0x00000000;
+> -    cpu->isar.id_dfr0  = 0x04010088;
+> -    cpu->isar.id_isar0 = 0x02101110;
+> -    cpu->isar.id_isar1 = 0x13112111;
+> -    cpu->isar.id_isar2 = 0x21232042;
+> -    cpu->isar.id_isar3 = 0x01112131;
+> -    cpu->isar.id_isar4 = 0x00010142;
+> -    cpu->isar.id_isar5 = 0x01011121;
+> -    cpu->isar.id_isar6 = 0x00000010;
+> -    cpu->isar.id_mmfr0 = 0x10201105;
+> -    cpu->isar.id_mmfr1 = 0x40000000;
+> -    cpu->isar.id_mmfr2 = 0x01260000;
+> -    cpu->isar.id_mmfr3 = 0x02122211;
+> -    cpu->isar.id_mmfr4 = 0x00021110;
+> -    cpu->isar.id_pfr0  = 0x10010131;
+> -    cpu->isar.id_pfr1  = 0x00010000; /* GIC filled in later */
+> -    cpu->isar.id_pfr2  = 0x00000011;
+> -    cpu->midr = 0x414fd0b1;          /* r4p1 */
+> -    cpu->revidr = 0;
+> -
+> -    /* From B2.18 CCSIDR_EL1 */
+> -    cpu->ccsidr[0] = 0x701fe01a; /* 64KB L1 dcache */
+> -    cpu->ccsidr[1] = 0x201fe01a; /* 64KB L1 icache */
+> -    cpu->ccsidr[2] = 0x707fe03a; /* 512KB L2 cache */
+> -
+> -    /* From B2.93 SCTLR_EL3 */
+> -    cpu->reset_sctlr = 0x30c50838;
+> -
+> -    /* From B4.23 ICH_VTR_EL2 */
+> -    cpu->gic_num_lrs = 4;
+> -    cpu->gic_vpribits = 5;
+> -    cpu->gic_vprebits = 5;
+> -    cpu->gic_pribits = 5;
+> -
+> -    /* From B5.1 AdvSIMD AArch64 register summary */
+> -    cpu->isar.mvfr0 = 0x10110222;
+> -    cpu->isar.mvfr1 = 0x13211111;
+> -    cpu->isar.mvfr2 = 0x00000043;
+> -
+> -    /* From D5.1 AArch64 PMU register summary */
+> -    cpu->isar.reset_pmcr_el0 = 0x410b3000;
+> -}
+> -
+> -static void aarch64_a64fx_initfn(Object *obj)
+> -{
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -
+> -    cpu->dtb_compatible = "arm,a64fx";
+> -    set_feature(&cpu->env, ARM_FEATURE_V8);
+> -    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> -    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> -    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> -    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> -    cpu->midr = 0x461f0010;
+> -    cpu->revidr = 0x00000000;
+> -    cpu->ctr = 0x86668006;
+> -    cpu->reset_sctlr = 0x30000180;
+> -    cpu->isar.id_aa64pfr0 =   0x0000000101111111; /* No RAS Extensions */
+> -    cpu->isar.id_aa64pfr1 = 0x0000000000000000;
+> -    cpu->isar.id_aa64dfr0 = 0x0000000010305408;
+> -    cpu->isar.id_aa64dfr1 = 0x0000000000000000;
+> -    cpu->id_aa64afr0 = 0x0000000000000000;
+> -    cpu->id_aa64afr1 = 0x0000000000000000;
+> -    cpu->isar.id_aa64mmfr0 = 0x0000000000001122;
+> -    cpu->isar.id_aa64mmfr1 = 0x0000000011212100;
+> -    cpu->isar.id_aa64mmfr2 = 0x0000000000001011;
+> -    cpu->isar.id_aa64isar0 = 0x0000000010211120;
+> -    cpu->isar.id_aa64isar1 = 0x0000000000010001;
+> -    cpu->isar.id_aa64zfr0 = 0x0000000000000000;
+> -    cpu->clidr = 0x0000000080000023;
+> -    cpu->ccsidr[0] = 0x7007e01c; /* 64KB L1 dcache */
+> -    cpu->ccsidr[1] = 0x2007e01c; /* 64KB L1 icache */
+> -    cpu->ccsidr[2] = 0x70ffe07c; /* 8MB L2 cache */
+> -    cpu->dcz_blocksize = 6; /* 256 bytes */
+> -    cpu->gic_num_lrs = 4;
+> -    cpu->gic_vpribits = 5;
+> -    cpu->gic_vprebits = 5;
+> -    cpu->gic_pribits = 5;
+> -
+> -    /* The A64FX supports only 128, 256 and 512 bit vector lengths */
+> -    aarch64_add_sve_properties(obj);
+> -    cpu->sve_vq.supported = (1 << 0)  /* 128bit */
+> -                          | (1 << 1)  /* 256bit */
+> -                          | (1 << 3); /* 512bit */
+> -
+> -    cpu->isar.reset_pmcr_el0 = 0x46014040;
+> -
+> -    /* TODO:  Add A64FX specific HPC extension registers */
+> -}
+> -
+> -static void aarch64_neoverse_n1_initfn(Object *obj)
+> -{
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -
+> -    cpu->dtb_compatible = "arm,neoverse-n1";
+> -    set_feature(&cpu->env, ARM_FEATURE_V8);
+> -    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> -    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> -    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> -    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> -    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> -    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> -
+> -    /* Ordered by B2.4 AArch64 registers by functional group */
+> -    cpu->clidr = 0x82000023;
+> -    cpu->ctr = 0x8444c004;
+> -    cpu->dcz_blocksize = 4;
+> -    cpu->isar.id_aa64dfr0  = 0x0000000110305408ull;
+> -    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
+> -    cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
+> -    cpu->isar.id_aa64mmfr0 = 0x0000000000101125ull;
+> -    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
+> -    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
+> -    cpu->isar.id_aa64pfr0  = 0x1100000010111112ull; /* GIC filled in later */
+> -    cpu->isar.id_aa64pfr1  = 0x0000000000000020ull;
+> -    cpu->id_afr0       = 0x00000000;
+> -    cpu->isar.id_dfr0  = 0x04010088;
+> -    cpu->isar.id_isar0 = 0x02101110;
+> -    cpu->isar.id_isar1 = 0x13112111;
+> -    cpu->isar.id_isar2 = 0x21232042;
+> -    cpu->isar.id_isar3 = 0x01112131;
+> -    cpu->isar.id_isar4 = 0x00010142;
+> -    cpu->isar.id_isar5 = 0x01011121;
+> -    cpu->isar.id_isar6 = 0x00000010;
+> -    cpu->isar.id_mmfr0 = 0x10201105;
+> -    cpu->isar.id_mmfr1 = 0x40000000;
+> -    cpu->isar.id_mmfr2 = 0x01260000;
+> -    cpu->isar.id_mmfr3 = 0x02122211;
+> -    cpu->isar.id_mmfr4 = 0x00021110;
+> -    cpu->isar.id_pfr0  = 0x10010131;
+> -    cpu->isar.id_pfr1  = 0x00010000; /* GIC filled in later */
+> -    cpu->isar.id_pfr2  = 0x00000011;
+> -    cpu->midr = 0x414fd0c1;          /* r4p1 */
+> -    cpu->revidr = 0;
+> -
+> -    /* From B2.23 CCSIDR_EL1 */
+> -    cpu->ccsidr[0] = 0x701fe01a; /* 64KB L1 dcache */
+> -    cpu->ccsidr[1] = 0x201fe01a; /* 64KB L1 icache */
+> -    cpu->ccsidr[2] = 0x70ffe03a; /* 1MB L2 cache */
+> -
+> -    /* From B2.98 SCTLR_EL3 */
+> -    cpu->reset_sctlr = 0x30c50838;
+> -
+> -    /* From B4.23 ICH_VTR_EL2 */
+> -    cpu->gic_num_lrs = 4;
+> -    cpu->gic_vpribits = 5;
+> -    cpu->gic_vprebits = 5;
+> -    cpu->gic_pribits = 5;
+> -
+> -    /* From B5.1 AdvSIMD AArch64 register summary */
+> -    cpu->isar.mvfr0 = 0x10110222;
+> -    cpu->isar.mvfr1 = 0x13211111;
+> -    cpu->isar.mvfr2 = 0x00000043;
+> -
+> -    /* From D5.1 AArch64 PMU register summary */
+> -    cpu->isar.reset_pmcr_el0 = 0x410c3000;
+> -}
+> -
+>   static void aarch64_host_initfn(Object *obj)
+>   {
+>   #if defined(CONFIG_KVM)
+> @@ -1115,203 +683,26 @@ static void aarch64_host_initfn(Object *obj)
+>   #endif
+>   }
+>   
+> -/* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
+> - * otherwise, a CPU with as many features enabled as our emulation supports.
+> - * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
+> - * this only needs to handle 64 bits.
+> - */
+>   static void aarch64_max_initfn(Object *obj)
+>   {
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -    uint64_t t;
+> -    uint32_t u;
+> -
+>       if (kvm_enabled() || hvf_enabled()) {
+>           /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
+>           aarch64_host_initfn(obj);
+> -        return;
+>       }
+>   
+> -    /* '-cpu max' for TCG: we currently do this as "A57 with extra things" */
+> -
+> -    aarch64_a57_initfn(obj);
+> -
+> -    /*
+> -     * Reset MIDR so the guest doesn't mistake our 'max' CPU type for a real
+> -     * one and try to apply errata workarounds or use impdef features we
+> -     * don't provide.
+> -     * An IMPLEMENTER field of 0 means "reserved for software use";
+> -     * ARCHITECTURE must be 0xf indicating "v7 or later, check ID registers
+> -     * to see which features are present";
+> -     * the VARIANT, PARTNUM and REVISION fields are all implementation
+> -     * defined and we choose to define PARTNUM just in case guest
+> -     * code needs to distinguish this QEMU CPU from other software
+> -     * implementations, though this shouldn't be needed.
+> -     */
+> -    t = FIELD_DP64(0, MIDR_EL1, IMPLEMENTER, 0);
+> -    t = FIELD_DP64(t, MIDR_EL1, ARCHITECTURE, 0xf);
+> -    t = FIELD_DP64(t, MIDR_EL1, PARTNUM, 'Q');
+> -    t = FIELD_DP64(t, MIDR_EL1, VARIANT, 0);
+> -    t = FIELD_DP64(t, MIDR_EL1, REVISION, 0);
+> -    cpu->midr = t;
+> -
+> -    /*
+> -     * We're going to set FEAT_S2FWB, which mandates that CLIDR_EL1.{LoUU,LoUIS}
+> -     * are zero.
+> -     */
+> -    u = cpu->clidr;
+> -    u = FIELD_DP32(u, CLIDR_EL1, LOUIS, 0);
+> -    u = FIELD_DP32(u, CLIDR_EL1, LOUU, 0);
+> -    cpu->clidr = u;
+> -
+> -    t = cpu->isar.id_aa64isar0;
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2);      /* FEAT_PMULL */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);     /* FEAT_SHA1 */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, SHA2, 2);     /* FEAT_SHA512 */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, CRC32, 1);
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, ATOMIC, 2);   /* FEAT_LSE */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, RDM, 1);      /* FEAT_RDM */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, SHA3, 1);     /* FEAT_SHA3 */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, SM3, 1);      /* FEAT_SM3 */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, SM4, 1);      /* FEAT_SM4 */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);       /* FEAT_DotProd */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);      /* FEAT_FHM */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2);       /* FEAT_FlagM2 */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2);      /* FEAT_TLBIRANGE */
+> -    t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);     /* FEAT_RNG */
+> -    cpu->isar.id_aa64isar0 = t;
+> -
+> -    t = cpu->isar.id_aa64isar1;
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);      /* FEAT_DPB2 */
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 1);    /* FEAT_JSCVT */
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, FCMA, 1);     /* FEAT_FCMA */
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, LRCPC, 2);    /* FEAT_LRCPC2 */
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);  /* FEAT_FRINTTS */
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, SB, 1);       /* FEAT_SB */
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);  /* FEAT_SPECRES */
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 1);     /* FEAT_BF16 */
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, DGH, 1);      /* FEAT_DGH */
+> -    t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);     /* FEAT_I8MM */
+> -    cpu->isar.id_aa64isar1 = t;
+> -
+> -    t = cpu->isar.id_aa64pfr0;
+> -    t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);        /* FEAT_FP16 */
+> -    t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);   /* FEAT_FP16 */
+> -    t = FIELD_DP64(t, ID_AA64PFR0, RAS, 2);       /* FEAT_RASv1p1 + FEAT_DoubleFault */
+> -    t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
+> -    t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);      /* FEAT_SEL2 */
+> -    t = FIELD_DP64(t, ID_AA64PFR0, DIT, 1);       /* FEAT_DIT */
+> -    t = FIELD_DP64(t, ID_AA64PFR0, CSV2, 2);      /* FEAT_CSV2_2 */
+> -    t = FIELD_DP64(t, ID_AA64PFR0, CSV3, 1);      /* FEAT_CSV3 */
+> -    cpu->isar.id_aa64pfr0 = t;
+> -
+> -    t = cpu->isar.id_aa64pfr1;
+> -    t = FIELD_DP64(t, ID_AA64PFR1, BT, 1);        /* FEAT_BTI */
+> -    t = FIELD_DP64(t, ID_AA64PFR1, SSBS, 2);      /* FEAT_SSBS2 */
+> -    /*
+> -     * Begin with full support for MTE. This will be downgraded to MTE=0
+> -     * during realize if the board provides no tag memory, much like
+> -     * we do for EL2 with the virtualization=on property.
+> -     */
+> -    t = FIELD_DP64(t, ID_AA64PFR1, MTE, 3);       /* FEAT_MTE3 */
+> -    t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 0);  /* FEAT_RASv1p1 + FEAT_DoubleFault */
+> -    t = FIELD_DP64(t, ID_AA64PFR1, SME, 1);       /* FEAT_SME */
+> -    t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
+> -    cpu->isar.id_aa64pfr1 = t;
+> -
+> -    t = cpu->isar.id_aa64mmfr0;
+> -    t = FIELD_DP64(t, ID_AA64MMFR0, PARANGE, 6); /* FEAT_LPA: 52 bits */
+> -    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16, 1);   /* 16k pages supported */
+> -    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16_2, 2); /* 16k stage2 supported */
+> -    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN64_2, 2); /* 64k stage2 supported */
+> -    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN4_2, 2);  /*  4k stage2 supported */
+> -    cpu->isar.id_aa64mmfr0 = t;
+> -
+> -    t = cpu->isar.id_aa64mmfr1;
+> -    t = FIELD_DP64(t, ID_AA64MMFR1, HAFDBS, 2);   /* FEAT_HAFDBS */
+> -    t = FIELD_DP64(t, ID_AA64MMFR1, VMIDBITS, 2); /* FEAT_VMID16 */
+> -    t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);       /* FEAT_VHE */
+> -    t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1);     /* FEAT_HPDS */
+> -    t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);       /* FEAT_LOR */
+> -    t = FIELD_DP64(t, ID_AA64MMFR1, PAN, 2);      /* FEAT_PAN2 */
+> -    t = FIELD_DP64(t, ID_AA64MMFR1, XNX, 1);      /* FEAT_XNX */
+> -    t = FIELD_DP64(t, ID_AA64MMFR1, ETS, 1);      /* FEAT_ETS */
+> -    t = FIELD_DP64(t, ID_AA64MMFR1, HCX, 1);      /* FEAT_HCX */
+> -    cpu->isar.id_aa64mmfr1 = t;
+> -
+> -    t = cpu->isar.id_aa64mmfr2;
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, CNP, 1);      /* FEAT_TTCNP */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);      /* FEAT_UAO */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, IESB, 1);     /* FEAT_IESB */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1);  /* FEAT_LVA */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1);       /* FEAT_TTST */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, IDS, 1);      /* FEAT_IDST */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, FWB, 1);      /* FEAT_S2FWB */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, TTL, 1);      /* FEAT_TTL */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, BBM, 2);      /* FEAT_BBM at level 2 */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, EVT, 2);      /* FEAT_EVT */
+> -    t = FIELD_DP64(t, ID_AA64MMFR2, E0PD, 1);     /* FEAT_E0PD */
+> -    cpu->isar.id_aa64mmfr2 = t;
+> -
+> -    t = cpu->isar.id_aa64zfr0;
+> -    t = FIELD_DP64(t, ID_AA64ZFR0, SVEVER, 1);
+> -    t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);       /* FEAT_SVE_PMULL128 */
+> -    t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);   /* FEAT_SVE_BitPerm */
+> -    t = FIELD_DP64(t, ID_AA64ZFR0, BFLOAT16, 1);  /* FEAT_BF16 */
+> -    t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);      /* FEAT_SVE_SHA3 */
+> -    t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);       /* FEAT_SVE_SM4 */
+> -    t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);      /* FEAT_I8MM */
+> -    t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);     /* FEAT_F32MM */
+> -    t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);     /* FEAT_F64MM */
+> -    cpu->isar.id_aa64zfr0 = t;
+> -
+> -    t = cpu->isar.id_aa64dfr0;
+> -    t = FIELD_DP64(t, ID_AA64DFR0, DEBUGVER, 9);  /* FEAT_Debugv8p4 */
+> -    t = FIELD_DP64(t, ID_AA64DFR0, PMUVER, 6);    /* FEAT_PMUv3p5 */
+> -    cpu->isar.id_aa64dfr0 = t;
+> -
+> -    t = cpu->isar.id_aa64smfr0;
+> -    t = FIELD_DP64(t, ID_AA64SMFR0, F32F32, 1);   /* FEAT_SME */
+> -    t = FIELD_DP64(t, ID_AA64SMFR0, B16F32, 1);   /* FEAT_SME */
+> -    t = FIELD_DP64(t, ID_AA64SMFR0, F16F32, 1);   /* FEAT_SME */
+> -    t = FIELD_DP64(t, ID_AA64SMFR0, I8I32, 0xf);  /* FEAT_SME */
+> -    t = FIELD_DP64(t, ID_AA64SMFR0, F64F64, 1);   /* FEAT_SME_F64F64 */
+> -    t = FIELD_DP64(t, ID_AA64SMFR0, I16I64, 0xf); /* FEAT_SME_I16I64 */
+> -    t = FIELD_DP64(t, ID_AA64SMFR0, FA64, 1);     /* FEAT_SME_FA64 */
+> -    cpu->isar.id_aa64smfr0 = t;
+> -
+> -    /* Replicate the same data to the 32-bit id registers.  */
+> -    aa32_max_features(cpu);
+> -
+> -#ifdef CONFIG_USER_ONLY
+> -    /*
+> -     * For usermode -cpu max we can use a larger and more efficient DCZ
+> -     * blocksize since we don't have to follow what the hardware does.
+> -     */
+> -    cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
+> -    cpu->dcz_blocksize = 7; /*  512 bytes */
+> -#endif
+> -
+> -    cpu->sve_vq.supported = MAKE_64BIT_MASK(0, ARM_MAX_VQ);
+> -    cpu->sme_vq.supported = SVE_VQ_POW2_MAP;
+> +    if (tcg_enabled() || qtest_enabled()) {
+> +        aarch64_a57_initfn(obj);
+> +    }
+>   
+> -    aarch64_add_pauth_properties(obj);
+> -    aarch64_add_sve_properties(obj);
+> -    aarch64_add_sme_properties(obj);
+> -    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
+> -                        cpu_max_set_sve_max_vq, NULL, NULL);
+> -    qdev_property_add_static(DEVICE(obj), &arm_cpu_lpa2_property);
+> +    if (tcg_enabled()) {
+> +        /* '-cpu max' for TCG: we currently do this as "A57 with extra things" */
+> +        aarch64_max_tcg_initfn(obj);
+> +    }
+>   }
+>   
+>   static const ARMCPUInfo aarch64_cpus[] = {
+> -    { .name = "cortex-a35",         .initfn = aarch64_a35_initfn },
+>       { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
+>       { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
+> -    { .name = "cortex-a55",         .initfn = aarch64_a55_initfn },
+> -    { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
+> -    { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
+> -    { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
+> -    { .name = "neoverse-n1",        .initfn = aarch64_neoverse_n1_initfn },
+>       { .name = "max",                .initfn = aarch64_max_initfn },
+>   #if defined(CONFIG_KVM) || defined(CONFIG_HVF)
+>       { .name = "host",               .initfn = aarch64_host_initfn },
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index a8fb8aa363..72e3d2fef2 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -1364,6 +1364,10 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
+>   void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
+>   void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
+>   void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
+> +void aarch64_max_tcg_initfn(Object *obj);
+> +void aarch64_add_pauth_properties(Object *obj);
+> +void aarch64_add_sve_properties(Object *obj);
+> +void aarch64_add_sme_properties(Object *obj);
+>   #endif
+>   
+>   bool el_is_in_host(CPUARMState *env, int el);
+> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> new file mode 100644
+> index 0000000000..4d5bdddae4
+> --- /dev/null
+> +++ b/target/arm/tcg/cpu64.c
+> @@ -0,0 +1,654 @@
+> +/*
+> + * QEMU AArch64 TCG CPUs
+> + *
+> + * Copyright (c) 2013 Linaro Ltd
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public License
+> + * as published by the Free Software Foundation; either version 2
+> + * of the License, or (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program; if not, see
+> + * <http://www.gnu.org/licenses/gpl-2.0.html>
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "cpu.h"
+> +#include "qemu/module.h"
+> +#include "qapi/visitor.h"
+> +#include "hw/qdev-properties.h"
+> +#include "internals.h"
+> +#include "cpregs.h"
+> +
+> +static void aarch64_a35_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    cpu->dtb_compatible = "arm,cortex-a35";
+> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> +
+> +    /* From B2.2 AArch64 identification registers. */
+> +    cpu->midr = 0x411fd040;
+> +    cpu->revidr = 0;
+> +    cpu->ctr = 0x84448004;
+> +    cpu->isar.id_pfr0 = 0x00000131;
+> +    cpu->isar.id_pfr1 = 0x00011011;
+> +    cpu->isar.id_dfr0 = 0x03010066;
+> +    cpu->id_afr0 = 0;
+> +    cpu->isar.id_mmfr0 = 0x10201105;
+> +    cpu->isar.id_mmfr1 = 0x40000000;
+> +    cpu->isar.id_mmfr2 = 0x01260000;
+> +    cpu->isar.id_mmfr3 = 0x02102211;
+> +    cpu->isar.id_isar0 = 0x02101110;
+> +    cpu->isar.id_isar1 = 0x13112111;
+> +    cpu->isar.id_isar2 = 0x21232042;
+> +    cpu->isar.id_isar3 = 0x01112131;
+> +    cpu->isar.id_isar4 = 0x00011142;
+> +    cpu->isar.id_isar5 = 0x00011121;
+> +    cpu->isar.id_aa64pfr0 = 0x00002222;
+> +    cpu->isar.id_aa64pfr1 = 0;
+> +    cpu->isar.id_aa64dfr0 = 0x10305106;
+> +    cpu->isar.id_aa64dfr1 = 0;
+> +    cpu->isar.id_aa64isar0 = 0x00011120;
+> +    cpu->isar.id_aa64isar1 = 0;
+> +    cpu->isar.id_aa64mmfr0 = 0x00101122;
+> +    cpu->isar.id_aa64mmfr1 = 0;
+> +    cpu->clidr = 0x0a200023;
+> +    cpu->dcz_blocksize = 4;
+> +
+> +    /* From B2.4 AArch64 Virtual Memory control registers */
+> +    cpu->reset_sctlr = 0x00c50838;
+> +
+> +    /* From B2.10 AArch64 performance monitor registers */
+> +    cpu->isar.reset_pmcr_el0 = 0x410a3000;
+> +
+> +    /* From B2.29 Cache ID registers */
+> +    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
+> +    cpu->ccsidr[1] = 0x201fe00a; /* 32KB L1 icache */
+> +    cpu->ccsidr[2] = 0x703fe03a; /* 512KB L2 cache */
+> +
+> +    /* From B3.5 VGIC Type register */
+> +    cpu->gic_num_lrs = 4;
+> +    cpu->gic_vpribits = 5;
+> +    cpu->gic_vprebits = 5;
+> +    cpu->gic_pribits = 5;
+> +
+> +    /* From C6.4 Debug ID Register */
+> +    cpu->isar.dbgdidr = 0x3516d000;
+> +    /* From C6.5 Debug Device ID Register */
+> +    cpu->isar.dbgdevid = 0x00110f13;
+> +    /* From C6.6 Debug Device ID Register 1 */
+> +    cpu->isar.dbgdevid1 = 0x2;
+> +
+> +    /* From Cortex-A35 SIMD and Floating-point Support r1p0 */
+> +    /* From 3.2 AArch32 register summary */
+> +    cpu->reset_fpsid = 0x41034043;
+> +
+> +    /* From 2.2 AArch64 register summary */
+> +    cpu->isar.mvfr0 = 0x10110222;
+> +    cpu->isar.mvfr1 = 0x12111111;
+> +    cpu->isar.mvfr2 = 0x00000043;
+> +
+> +    /* These values are the same with A53/A57/A72. */
+> +    define_cortex_a72_a57_a53_cp_reginfo(cpu);
+> +}
+> +
+> +static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> +                                   void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    uint32_t value;
+> +
+> +    /* All vector lengths are disabled when SVE is off. */
+> +    if (!cpu_isar_feature(aa64_sve, cpu)) {
+> +        value = 0;
+> +    } else {
+> +        value = cpu->sve_max_vq;
+> +    }
+> +    visit_type_uint32(v, name, &value, errp);
+> +}
+> +
+> +static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> +                                   void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    uint32_t max_vq;
+> +
+> +    if (!visit_type_uint32(v, name, &max_vq, errp)) {
+> +        return;
+> +    }
+> +
+> +    if (max_vq == 0 || max_vq > ARM_MAX_VQ) {
+> +        error_setg(errp, "unsupported SVE vector length");
+> +        error_append_hint(errp, "Valid sve-max-vq in range [1-%d]\n",
+> +                          ARM_MAX_VQ);
+> +        return;
+> +    }
+> +
+> +    cpu->sve_max_vq = max_vq;
+> +}
+> +
+> +static Property arm_cpu_lpa2_property =
+> +    DEFINE_PROP_BOOL("lpa2", ARMCPU, prop_lpa2, true);
+> +
+> +static void aarch64_a55_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    cpu->dtb_compatible = "arm,cortex-a55";
+> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> +
+> +    /* Ordered by B2.4 AArch64 registers by functional group */
+> +    cpu->clidr = 0x82000023;
+> +    cpu->ctr = 0x84448004; /* L1Ip = VIPT */
+> +    cpu->dcz_blocksize = 4; /* 64 bytes */
+> +    cpu->isar.id_aa64dfr0  = 0x0000000010305408ull;
+> +    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
+> +    cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
+> +    cpu->isar.id_aa64mmfr0 = 0x0000000000101122ull;
+> +    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
+> +    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
+> +    cpu->isar.id_aa64pfr0  = 0x0000000010112222ull;
+> +    cpu->isar.id_aa64pfr1  = 0x0000000000000010ull;
+> +    cpu->id_afr0       = 0x00000000;
+> +    cpu->isar.id_dfr0  = 0x04010088;
+> +    cpu->isar.id_isar0 = 0x02101110;
+> +    cpu->isar.id_isar1 = 0x13112111;
+> +    cpu->isar.id_isar2 = 0x21232042;
+> +    cpu->isar.id_isar3 = 0x01112131;
+> +    cpu->isar.id_isar4 = 0x00011142;
+> +    cpu->isar.id_isar5 = 0x01011121;
+> +    cpu->isar.id_isar6 = 0x00000010;
+> +    cpu->isar.id_mmfr0 = 0x10201105;
+> +    cpu->isar.id_mmfr1 = 0x40000000;
+> +    cpu->isar.id_mmfr2 = 0x01260000;
+> +    cpu->isar.id_mmfr3 = 0x02122211;
+> +    cpu->isar.id_mmfr4 = 0x00021110;
+> +    cpu->isar.id_pfr0  = 0x10010131;
+> +    cpu->isar.id_pfr1  = 0x00011011;
+> +    cpu->isar.id_pfr2  = 0x00000011;
+> +    cpu->midr = 0x412FD050;          /* r2p0 */
+> +    cpu->revidr = 0;
+> +
+> +    /* From B2.23 CCSIDR_EL1 */
+> +    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
+> +    cpu->ccsidr[1] = 0x200fe01a; /* 32KB L1 icache */
+> +    cpu->ccsidr[2] = 0x703fe07a; /* 512KB L2 cache */
+> +
+> +    /* From B2.96 SCTLR_EL3 */
+> +    cpu->reset_sctlr = 0x30c50838;
+> +
+> +    /* From B4.45 ICH_VTR_EL2 */
+> +    cpu->gic_num_lrs = 4;
+> +    cpu->gic_vpribits = 5;
+> +    cpu->gic_vprebits = 5;
+> +    cpu->gic_pribits = 5;
+> +
+> +    cpu->isar.mvfr0 = 0x10110222;
+> +    cpu->isar.mvfr1 = 0x13211111;
+> +    cpu->isar.mvfr2 = 0x00000043;
+> +
+> +    /* From D5.4 AArch64 PMU register summary */
+> +    cpu->isar.reset_pmcr_el0 = 0x410b3000;
+> +}
+> +
+> +static void aarch64_a72_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    cpu->dtb_compatible = "arm,cortex-a72";
+> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> +    cpu->midr = 0x410fd083;
+> +    cpu->revidr = 0x00000000;
+> +    cpu->reset_fpsid = 0x41034080;
+> +    cpu->isar.mvfr0 = 0x10110222;
+> +    cpu->isar.mvfr1 = 0x12111111;
+> +    cpu->isar.mvfr2 = 0x00000043;
+> +    cpu->ctr = 0x8444c004;
+> +    cpu->reset_sctlr = 0x00c50838;
+> +    cpu->isar.id_pfr0 = 0x00000131;
+> +    cpu->isar.id_pfr1 = 0x00011011;
+> +    cpu->isar.id_dfr0 = 0x03010066;
+> +    cpu->id_afr0 = 0x00000000;
+> +    cpu->isar.id_mmfr0 = 0x10201105;
+> +    cpu->isar.id_mmfr1 = 0x40000000;
+> +    cpu->isar.id_mmfr2 = 0x01260000;
+> +    cpu->isar.id_mmfr3 = 0x02102211;
+> +    cpu->isar.id_isar0 = 0x02101110;
+> +    cpu->isar.id_isar1 = 0x13112111;
+> +    cpu->isar.id_isar2 = 0x21232042;
+> +    cpu->isar.id_isar3 = 0x01112131;
+> +    cpu->isar.id_isar4 = 0x00011142;
+> +    cpu->isar.id_isar5 = 0x00011121;
+> +    cpu->isar.id_aa64pfr0 = 0x00002222;
+> +    cpu->isar.id_aa64dfr0 = 0x10305106;
+> +    cpu->isar.id_aa64isar0 = 0x00011120;
+> +    cpu->isar.id_aa64mmfr0 = 0x00001124;
+> +    cpu->isar.dbgdidr = 0x3516d000;
+> +    cpu->isar.dbgdevid = 0x01110f13;
+> +    cpu->isar.dbgdevid1 = 0x2;
+> +    cpu->isar.reset_pmcr_el0 = 0x41023000;
+> +    cpu->clidr = 0x0a200023;
+> +    cpu->ccsidr[0] = 0x701fe00a; /* 32KB L1 dcache */
+> +    cpu->ccsidr[1] = 0x201fe012; /* 48KB L1 icache */
+> +    cpu->ccsidr[2] = 0x707fe07a; /* 1MB L2 cache */
+> +    cpu->dcz_blocksize = 4; /* 64 bytes */
+> +    cpu->gic_num_lrs = 4;
+> +    cpu->gic_vpribits = 5;
+> +    cpu->gic_vprebits = 5;
+> +    cpu->gic_pribits = 5;
+> +    define_cortex_a72_a57_a53_cp_reginfo(cpu);
+> +}
+> +
+> +static void aarch64_a76_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    cpu->dtb_compatible = "arm,cortex-a76";
+> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> +
+> +    /* Ordered by B2.4 AArch64 registers by functional group */
+> +    cpu->clidr = 0x82000023;
+> +    cpu->ctr = 0x8444C004;
+> +    cpu->dcz_blocksize = 4;
+> +    cpu->isar.id_aa64dfr0  = 0x0000000010305408ull;
+> +    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
+> +    cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
+> +    cpu->isar.id_aa64mmfr0 = 0x0000000000101122ull;
+> +    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
+> +    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
+> +    cpu->isar.id_aa64pfr0  = 0x1100000010111112ull; /* GIC filled in later */
+> +    cpu->isar.id_aa64pfr1  = 0x0000000000000010ull;
+> +    cpu->id_afr0       = 0x00000000;
+> +    cpu->isar.id_dfr0  = 0x04010088;
+> +    cpu->isar.id_isar0 = 0x02101110;
+> +    cpu->isar.id_isar1 = 0x13112111;
+> +    cpu->isar.id_isar2 = 0x21232042;
+> +    cpu->isar.id_isar3 = 0x01112131;
+> +    cpu->isar.id_isar4 = 0x00010142;
+> +    cpu->isar.id_isar5 = 0x01011121;
+> +    cpu->isar.id_isar6 = 0x00000010;
+> +    cpu->isar.id_mmfr0 = 0x10201105;
+> +    cpu->isar.id_mmfr1 = 0x40000000;
+> +    cpu->isar.id_mmfr2 = 0x01260000;
+> +    cpu->isar.id_mmfr3 = 0x02122211;
+> +    cpu->isar.id_mmfr4 = 0x00021110;
+> +    cpu->isar.id_pfr0  = 0x10010131;
+> +    cpu->isar.id_pfr1  = 0x00010000; /* GIC filled in later */
+> +    cpu->isar.id_pfr2  = 0x00000011;
+> +    cpu->midr = 0x414fd0b1;          /* r4p1 */
+> +    cpu->revidr = 0;
+> +
+> +    /* From B2.18 CCSIDR_EL1 */
+> +    cpu->ccsidr[0] = 0x701fe01a; /* 64KB L1 dcache */
+> +    cpu->ccsidr[1] = 0x201fe01a; /* 64KB L1 icache */
+> +    cpu->ccsidr[2] = 0x707fe03a; /* 512KB L2 cache */
+> +
+> +    /* From B2.93 SCTLR_EL3 */
+> +    cpu->reset_sctlr = 0x30c50838;
+> +
+> +    /* From B4.23 ICH_VTR_EL2 */
+> +    cpu->gic_num_lrs = 4;
+> +    cpu->gic_vpribits = 5;
+> +    cpu->gic_vprebits = 5;
+> +    cpu->gic_pribits = 5;
+> +
+> +    /* From B5.1 AdvSIMD AArch64 register summary */
+> +    cpu->isar.mvfr0 = 0x10110222;
+> +    cpu->isar.mvfr1 = 0x13211111;
+> +    cpu->isar.mvfr2 = 0x00000043;
+> +
+> +    /* From D5.1 AArch64 PMU register summary */
+> +    cpu->isar.reset_pmcr_el0 = 0x410b3000;
+> +}
+> +
+> +static void aarch64_a64fx_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    cpu->dtb_compatible = "arm,a64fx";
+> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> +    cpu->midr = 0x461f0010;
+> +    cpu->revidr = 0x00000000;
+> +    cpu->ctr = 0x86668006;
+> +    cpu->reset_sctlr = 0x30000180;
+> +    cpu->isar.id_aa64pfr0 =   0x0000000101111111; /* No RAS Extensions */
+> +    cpu->isar.id_aa64pfr1 = 0x0000000000000000;
+> +    cpu->isar.id_aa64dfr0 = 0x0000000010305408;
+> +    cpu->isar.id_aa64dfr1 = 0x0000000000000000;
+> +    cpu->id_aa64afr0 = 0x0000000000000000;
+> +    cpu->id_aa64afr1 = 0x0000000000000000;
+> +    cpu->isar.id_aa64mmfr0 = 0x0000000000001122;
+> +    cpu->isar.id_aa64mmfr1 = 0x0000000011212100;
+> +    cpu->isar.id_aa64mmfr2 = 0x0000000000001011;
+> +    cpu->isar.id_aa64isar0 = 0x0000000010211120;
+> +    cpu->isar.id_aa64isar1 = 0x0000000000010001;
+> +    cpu->isar.id_aa64zfr0 = 0x0000000000000000;
+> +    cpu->clidr = 0x0000000080000023;
+> +    cpu->ccsidr[0] = 0x7007e01c; /* 64KB L1 dcache */
+> +    cpu->ccsidr[1] = 0x2007e01c; /* 64KB L1 icache */
+> +    cpu->ccsidr[2] = 0x70ffe07c; /* 8MB L2 cache */
+> +    cpu->dcz_blocksize = 6; /* 256 bytes */
+> +    cpu->gic_num_lrs = 4;
+> +    cpu->gic_vpribits = 5;
+> +    cpu->gic_vprebits = 5;
+> +    cpu->gic_pribits = 5;
+> +
+> +    /* The A64FX supports only 128, 256 and 512 bit vector lengths */
+> +    aarch64_add_sve_properties(obj);
+> +    cpu->sve_vq.supported = (1 << 0)  /* 128bit */
+> +                          | (1 << 1)  /* 256bit */
+> +                          | (1 << 3); /* 512bit */
+> +
+> +    cpu->isar.reset_pmcr_el0 = 0x46014040;
+> +
+> +    /* TODO:  Add A64FX specific HPC extension registers */
+> +}
+> +
+> +static void aarch64_neoverse_n1_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    cpu->dtb_compatible = "arm,neoverse-n1";
+> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> +
+> +    /* Ordered by B2.4 AArch64 registers by functional group */
+> +    cpu->clidr = 0x82000023;
+> +    cpu->ctr = 0x8444c004;
+> +    cpu->dcz_blocksize = 4;
+> +    cpu->isar.id_aa64dfr0  = 0x0000000110305408ull;
+> +    cpu->isar.id_aa64isar0 = 0x0000100010211120ull;
+> +    cpu->isar.id_aa64isar1 = 0x0000000000100001ull;
+> +    cpu->isar.id_aa64mmfr0 = 0x0000000000101125ull;
+> +    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
+> +    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
+> +    cpu->isar.id_aa64pfr0  = 0x1100000010111112ull; /* GIC filled in later */
+> +    cpu->isar.id_aa64pfr1  = 0x0000000000000020ull;
+> +    cpu->id_afr0       = 0x00000000;
+> +    cpu->isar.id_dfr0  = 0x04010088;
+> +    cpu->isar.id_isar0 = 0x02101110;
+> +    cpu->isar.id_isar1 = 0x13112111;
+> +    cpu->isar.id_isar2 = 0x21232042;
+> +    cpu->isar.id_isar3 = 0x01112131;
+> +    cpu->isar.id_isar4 = 0x00010142;
+> +    cpu->isar.id_isar5 = 0x01011121;
+> +    cpu->isar.id_isar6 = 0x00000010;
+> +    cpu->isar.id_mmfr0 = 0x10201105;
+> +    cpu->isar.id_mmfr1 = 0x40000000;
+> +    cpu->isar.id_mmfr2 = 0x01260000;
+> +    cpu->isar.id_mmfr3 = 0x02122211;
+> +    cpu->isar.id_mmfr4 = 0x00021110;
+> +    cpu->isar.id_pfr0  = 0x10010131;
+> +    cpu->isar.id_pfr1  = 0x00010000; /* GIC filled in later */
+> +    cpu->isar.id_pfr2  = 0x00000011;
+> +    cpu->midr = 0x414fd0c1;          /* r4p1 */
+> +    cpu->revidr = 0;
+> +
+> +    /* From B2.23 CCSIDR_EL1 */
+> +    cpu->ccsidr[0] = 0x701fe01a; /* 64KB L1 dcache */
+> +    cpu->ccsidr[1] = 0x201fe01a; /* 64KB L1 icache */
+> +    cpu->ccsidr[2] = 0x70ffe03a; /* 1MB L2 cache */
+> +
+> +    /* From B2.98 SCTLR_EL3 */
+> +    cpu->reset_sctlr = 0x30c50838;
+> +
+> +    /* From B4.23 ICH_VTR_EL2 */
+> +    cpu->gic_num_lrs = 4;
+> +    cpu->gic_vpribits = 5;
+> +    cpu->gic_vprebits = 5;
+> +    cpu->gic_pribits = 5;
+> +
+> +    /* From B5.1 AdvSIMD AArch64 register summary */
+> +    cpu->isar.mvfr0 = 0x10110222;
+> +    cpu->isar.mvfr1 = 0x13211111;
+> +    cpu->isar.mvfr2 = 0x00000043;
+> +
+> +    /* From D5.1 AArch64 PMU register summary */
+> +    cpu->isar.reset_pmcr_el0 = 0x410c3000;
+> +}
+> +
+> +/*
+> + * -cpu max: a CPU with as many features enabled as our emulation supports.
+> + * The version of '-cpu max' for qemu-system-arm is defined in cpu_tcg.c;
+> + * this only needs to handle 64 bits.
+> + */
+> +void aarch64_max_tcg_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    uint64_t t;
+> +    uint32_t u;
+> +
+> +    /*
+> +     * Reset MIDR so the guest doesn't mistake our 'max' CPU type for a real
+> +     * one and try to apply errata workarounds or use impdef features we
+> +     * don't provide.
+> +     * An IMPLEMENTER field of 0 means "reserved for software use";
+> +     * ARCHITECTURE must be 0xf indicating "v7 or later, check ID registers
+> +     * to see which features are present";
+> +     * the VARIANT, PARTNUM and REVISION fields are all implementation
+> +     * defined and we choose to define PARTNUM just in case guest
+> +     * code needs to distinguish this QEMU CPU from other software
+> +     * implementations, though this shouldn't be needed.
+> +     */
+> +    t = FIELD_DP64(0, MIDR_EL1, IMPLEMENTER, 0);
+> +    t = FIELD_DP64(t, MIDR_EL1, ARCHITECTURE, 0xf);
+> +    t = FIELD_DP64(t, MIDR_EL1, PARTNUM, 'Q');
+> +    t = FIELD_DP64(t, MIDR_EL1, VARIANT, 0);
+> +    t = FIELD_DP64(t, MIDR_EL1, REVISION, 0);
+> +    cpu->midr = t;
+> +
+> +    /*
+> +     * We're going to set FEAT_S2FWB, which mandates that CLIDR_EL1.{LoUU,LoUIS}
+> +     * are zero.
+> +     */
+> +    u = cpu->clidr;
+> +    u = FIELD_DP32(u, CLIDR_EL1, LOUIS, 0);
+> +    u = FIELD_DP32(u, CLIDR_EL1, LOUU, 0);
+> +    cpu->clidr = u;
+> +
+> +    t = cpu->isar.id_aa64isar0;
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2);      /* FEAT_PMULL */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);     /* FEAT_SHA1 */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, SHA2, 2);     /* FEAT_SHA512 */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, CRC32, 1);
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, ATOMIC, 2);   /* FEAT_LSE */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, RDM, 1);      /* FEAT_RDM */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, SHA3, 1);     /* FEAT_SHA3 */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, SM3, 1);      /* FEAT_SM3 */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, SM4, 1);      /* FEAT_SM4 */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);       /* FEAT_DotProd */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);      /* FEAT_FHM */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2);       /* FEAT_FlagM2 */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2);      /* FEAT_TLBIRANGE */
+> +    t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);     /* FEAT_RNG */
+> +    cpu->isar.id_aa64isar0 = t;
+> +
+> +    t = cpu->isar.id_aa64isar1;
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);      /* FEAT_DPB2 */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 1);    /* FEAT_JSCVT */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, FCMA, 1);     /* FEAT_FCMA */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, LRCPC, 2);    /* FEAT_LRCPC2 */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);  /* FEAT_FRINTTS */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, SB, 1);       /* FEAT_SB */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);  /* FEAT_SPECRES */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 1);     /* FEAT_BF16 */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, DGH, 1);      /* FEAT_DGH */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);     /* FEAT_I8MM */
+> +    cpu->isar.id_aa64isar1 = t;
+> +
+> +    t = cpu->isar.id_aa64pfr0;
+> +    t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);        /* FEAT_FP16 */
+> +    t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);   /* FEAT_FP16 */
+> +    t = FIELD_DP64(t, ID_AA64PFR0, RAS, 2);       /* FEAT_RASv1p1 + FEAT_DoubleFault */
+> +    t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
+> +    t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);      /* FEAT_SEL2 */
+> +    t = FIELD_DP64(t, ID_AA64PFR0, DIT, 1);       /* FEAT_DIT */
+> +    t = FIELD_DP64(t, ID_AA64PFR0, CSV2, 2);      /* FEAT_CSV2_2 */
+> +    t = FIELD_DP64(t, ID_AA64PFR0, CSV3, 1);      /* FEAT_CSV3 */
+> +    cpu->isar.id_aa64pfr0 = t;
+> +
+> +    t = cpu->isar.id_aa64pfr1;
+> +    t = FIELD_DP64(t, ID_AA64PFR1, BT, 1);        /* FEAT_BTI */
+> +    t = FIELD_DP64(t, ID_AA64PFR1, SSBS, 2);      /* FEAT_SSBS2 */
+> +    /*
+> +     * Begin with full support for MTE. This will be downgraded to MTE=0
+> +     * during realize if the board provides no tag memory, much like
+> +     * we do for EL2 with the virtualization=on property.
+> +     */
+> +    t = FIELD_DP64(t, ID_AA64PFR1, MTE, 3);       /* FEAT_MTE3 */
+> +    t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 0);  /* FEAT_RASv1p1 + FEAT_DoubleFault */
+> +    t = FIELD_DP64(t, ID_AA64PFR1, SME, 1);       /* FEAT_SME */
+> +    t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
+> +    cpu->isar.id_aa64pfr1 = t;
+> +
+> +    t = cpu->isar.id_aa64mmfr0;
+> +    t = FIELD_DP64(t, ID_AA64MMFR0, PARANGE, 6); /* FEAT_LPA: 52 bits */
+> +    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16, 1);   /* 16k pages supported */
+> +    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16_2, 2); /* 16k stage2 supported */
+> +    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN64_2, 2); /* 64k stage2 supported */
+> +    t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN4_2, 2);  /*  4k stage2 supported */
+> +    cpu->isar.id_aa64mmfr0 = t;
+> +
+> +    t = cpu->isar.id_aa64mmfr1;
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, HAFDBS, 2);   /* FEAT_HAFDBS */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, VMIDBITS, 2); /* FEAT_VMID16 */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);       /* FEAT_VHE */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1);     /* FEAT_HPDS */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);       /* FEAT_LOR */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, PAN, 2);      /* FEAT_PAN2 */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, XNX, 1);      /* FEAT_XNX */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, ETS, 1);      /* FEAT_ETS */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, HCX, 1);      /* FEAT_HCX */
+> +    cpu->isar.id_aa64mmfr1 = t;
+> +
+> +    t = cpu->isar.id_aa64mmfr2;
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, CNP, 1);      /* FEAT_TTCNP */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);      /* FEAT_UAO */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, IESB, 1);     /* FEAT_IESB */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1);  /* FEAT_LVA */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1);       /* FEAT_TTST */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, IDS, 1);      /* FEAT_IDST */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, FWB, 1);      /* FEAT_S2FWB */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, TTL, 1);      /* FEAT_TTL */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, BBM, 2);      /* FEAT_BBM at level 2 */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, EVT, 2);      /* FEAT_EVT */
+> +    t = FIELD_DP64(t, ID_AA64MMFR2, E0PD, 1);     /* FEAT_E0PD */
+> +    cpu->isar.id_aa64mmfr2 = t;
+> +
+> +    t = cpu->isar.id_aa64zfr0;
+> +    t = FIELD_DP64(t, ID_AA64ZFR0, SVEVER, 1);
+> +    t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);       /* FEAT_SVE_PMULL128 */
+> +    t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);   /* FEAT_SVE_BitPerm */
+> +    t = FIELD_DP64(t, ID_AA64ZFR0, BFLOAT16, 1);  /* FEAT_BF16 */
+> +    t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);      /* FEAT_SVE_SHA3 */
+> +    t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);       /* FEAT_SVE_SM4 */
+> +    t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);      /* FEAT_I8MM */
+> +    t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);     /* FEAT_F32MM */
+> +    t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);     /* FEAT_F64MM */
+> +    cpu->isar.id_aa64zfr0 = t;
+> +
+> +    t = cpu->isar.id_aa64dfr0;
+> +    t = FIELD_DP64(t, ID_AA64DFR0, DEBUGVER, 9);  /* FEAT_Debugv8p4 */
+> +    t = FIELD_DP64(t, ID_AA64DFR0, PMUVER, 6);    /* FEAT_PMUv3p5 */
+> +    cpu->isar.id_aa64dfr0 = t;
+> +
+> +    t = cpu->isar.id_aa64smfr0;
+> +    t = FIELD_DP64(t, ID_AA64SMFR0, F32F32, 1);   /* FEAT_SME */
+> +    t = FIELD_DP64(t, ID_AA64SMFR0, B16F32, 1);   /* FEAT_SME */
+> +    t = FIELD_DP64(t, ID_AA64SMFR0, F16F32, 1);   /* FEAT_SME */
+> +    t = FIELD_DP64(t, ID_AA64SMFR0, I8I32, 0xf);  /* FEAT_SME */
+> +    t = FIELD_DP64(t, ID_AA64SMFR0, F64F64, 1);   /* FEAT_SME_F64F64 */
+> +    t = FIELD_DP64(t, ID_AA64SMFR0, I16I64, 0xf); /* FEAT_SME_I16I64 */
+> +    t = FIELD_DP64(t, ID_AA64SMFR0, FA64, 1);     /* FEAT_SME_FA64 */
+> +    cpu->isar.id_aa64smfr0 = t;
+> +
+> +    /* Replicate the same data to the 32-bit id registers.  */
+> +    aa32_max_features(cpu);
+> +
+> +#ifdef CONFIG_USER_ONLY
+> +    /*
+> +     * For usermode -cpu max we can use a larger and more efficient DCZ
+> +     * blocksize since we don't have to follow what the hardware does.
+> +     */
+> +    cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
+> +    cpu->dcz_blocksize = 7; /*  512 bytes */
+> +#endif
+> +
+> +    cpu->sve_vq.supported = MAKE_64BIT_MASK(0, ARM_MAX_VQ);
+> +    cpu->sme_vq.supported = SVE_VQ_POW2_MAP;
+> +
+> +    aarch64_add_pauth_properties(obj);
+> +    aarch64_add_sve_properties(obj);
+> +    aarch64_add_sme_properties(obj);
+> +    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
+> +                        cpu_max_set_sve_max_vq, NULL, NULL);
+> +    qdev_property_add_static(DEVICE(obj), &arm_cpu_lpa2_property);
+> +}
+> +
+> +static const ARMCPUInfo aarch64_cpus[] = {
+> +    { .name = "cortex-a35",         .initfn = aarch64_a35_initfn },
+> +    { .name = "cortex-a55",         .initfn = aarch64_a55_initfn },
+> +    { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
+> +    { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
+> +    { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
+> +    { .name = "neoverse-n1",        .initfn = aarch64_neoverse_n1_initfn },
+> +};
+> +
+> +static void aarch64_cpu_register_types(void)
+> +{
+> +    size_t i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(aarch64_cpus); ++i) {
+> +        aarch64_cpu_register(&aarch64_cpus[i]);
+> +    }
+> +}
+> +
+> +type_init(aarch64_cpu_register_types)
+> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+> index 25bc98999e..8debe81fd5 100644
+> --- a/target/arm/tcg/meson.build
+> +++ b/target/arm/tcg/meson.build
+> @@ -36,6 +36,7 @@ arm_ss.add(files(
+>   ))
+>   
+>   arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+> +  'cpu64.c',
+>     'translate-a64.c',
+>     'translate-sve.c',
+>     'translate-sme.c',

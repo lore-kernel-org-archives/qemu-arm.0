@@ -1,82 +1,81 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp649009ejc;
-        Thu, 19 Jan 2023 14:04:32 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuOZrtnXFkfSeJxKgVr9ykcT0wpNuB9AtyVyoSzgDtWI9JdxzNIGVrFNVsLg7C3XrA1JWjW
-X-Received: by 2002:a05:690c:78f:b0:4fa:e002:d6f9 with SMTP id bw15-20020a05690c078f00b004fae002d6f9mr2954844ywb.46.1674165872323;
-        Thu, 19 Jan 2023 14:04:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674165872; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp651126ejc;
+        Thu, 19 Jan 2023 14:09:00 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXv0CxvDGjHGuYOV34PV04zDocnhl2P5LSYJweepWzZlAfZyfJfPsCgviJB9ph8gpRMegsQS
+X-Received: by 2002:ad4:58b3:0:b0:534:1fd6:10d8 with SMTP id ea19-20020ad458b3000000b005341fd610d8mr15741409qvb.13.1674166140759;
+        Thu, 19 Jan 2023 14:09:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674166140; cv=none;
         d=google.com; s=arc-20160816;
-        b=AIxUy0lGC/0KY4d4gxO4Du0/rKZVQWkfNtzikPR79BKsJXmTvvYebttpiX+Gz6XCYk
-         HevG3bbnihSXlzltJ3kAARXkxmF0yQeA8pZxh9gEhcNc5WIbTTUNa/CqKWemc8NM41Pd
-         uAUn5Hr8RXYEjP1FcDB4QXw7dh4VmYAFyEiCkG7B5FiRZ+aaDPRu1nnXUVGS/CTpsmd+
-         odaD8FNCqrmJBrUQiIJB2l3+ZKbb7CtOvqzNrUydxPgI1r3p2qKV0AO4vy0NJxP5KTXD
-         62tQ/EPJqXbPz8m+9iXS2Opw4vH9c2ybwEYSPh2sKkUIDWb6V4kAvJ0TtLYFnzWpN7BF
-         nNww==
+        b=WFpTOSQwmPHANz5Uc5taXF1v10LDS7eeRoxO3WDEyJ1SfII6jYXA3KwKTFbyb/L4ja
+         P1pB+Vk5E3EHAKlUwW4WHqm7AU4+5/i6iYZGj4nfxwobod6yuXUTjiBXn7gIzB+TLeiD
+         iFruoFXNoGmNIlGxLUwcj0nsmEI/1zYWTxqAEf2iQ2+44Krrymqn0oeiVp+Sxue4zsY4
+         l3iIWlMwL7ftvRzkWqsWjGUd6I5sa1XFihS0BK3Htq3Co46X2x57qAerY4rAzhrOr3zo
+         RKSO8PHVMQRYCUwrzJ5i5jtIv36El5+5dpUN8DKnGc40520l1A+T9qNHlQwZiWRSuQos
+         Re4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature:dkim-filter;
-        bh=IrlmIyq6dXkAWOFnaVlWqG8mJktcmtMCI/lEVURgqO0=;
-        b=k0DyfPd5ZaICsA7B9DZ/5lFYSdYrJGMN1bWh79oxn9JwebUliNbYt7VRyH/DM2BMcW
-         PDZz5lLJlTuHJK+gKtxk3l8MC+AmIPc9vjLXh+XdsOqoHTrz82ss2wIGONXUScG7Zel7
-         oSsJ4/YFbprDHqtChRVHYwnRlFWVsBayMFlExwHnLmK9bKgMA5mL0dz6bbdYyd7usyda
-         ca9amJZFY2js0wCP1+zXPA+SKFTWpNPQg06a2CVmRME+B2fxYT5PfWjt8/QgW7JxwvZN
-         SJBbfFtk22QH3alFR1kE4gKDsjOLD7V9ICSDUGi7l86/B81oG1gvewYHyH/NEqMOlcuq
-         TQbg==
+        bh=yaL9U5qPbERxoMFF9/XB1bBrqry+09uCNni20nEZlb0=;
+        b=g1muFCgGxjCBlhl8UF3jb4PtEGpXtVwuXNM1Oh5mRZZAY7trTrMBC2iRPpy0UIezhu
+         xIpp879xWZXERwPmvmR1o5LhWpyFpBphc1coZadCp0gN2Y7NJe8iuk739XYJgk9EArYn
+         pRkDIqQ47ciK7xOqvdztFL6q0HQt9tNPKAr08CnSeaxs6DJWxMPr82De7FdA0w3aaHRh
+         wvw2jwFP4ouh9Lvxcb+QPcWTJCs7/TnaG0l3MyCxURAaUlf9yCI278CX0YesHV+0i07U
+         G31U3GgYlFqfBRqc0VYk0YNPlBjsZFuPI4zN3yjcWIrgKJrkobl6N3jcu9b6vkxBBdD4
+         Yv3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=AMStUl97;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=KJ5NikZI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x1-20020a05620a448100b006fa9e8a1696si27279296qkp.588.2023.01.19.14.04.32
+        by mx.google.com with ESMTPS id kk20-20020a056214509400b005353bfe0a5asi4312051qvb.122.2023.01.19.14.09.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 14:04:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Jan 2023 14:09:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=AMStUl97;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=KJ5NikZI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pId13-0002Zl-EY; Thu, 19 Jan 2023 17:04:13 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pId5G-0004SN-Sf; Thu, 19 Jan 2023 17:08:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pId0t-0002UN-3F; Thu, 19 Jan 2023 17:04:04 -0500
+ id 1pId5F-0004SA-Tw; Thu, 19 Jan 2023 17:08:33 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pId0j-0006h8-Uu; Thu, 19 Jan 2023 17:04:02 -0500
+ id 1pId5E-0007Pc-1Q; Thu, 19 Jan 2023 17:08:33 -0500
 Received: from [192.168.0.20] (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id 1DEEF20E09FD;
- Thu, 19 Jan 2023 14:03:41 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 1DEEF20E09FD
+ by linux.microsoft.com (Postfix) with ESMTPSA id D328C20E09FE;
+ Thu, 19 Jan 2023 14:08:29 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com D328C20E09FE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1674165823;
- bh=IrlmIyq6dXkAWOFnaVlWqG8mJktcmtMCI/lEVURgqO0=;
+ s=default; t=1674166110;
+ bh=yaL9U5qPbERxoMFF9/XB1bBrqry+09uCNni20nEZlb0=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=AMStUl97NRTwGsJPeshrT44Fp9pR+G8P4IzD8VVl4p2e01sbmo84pQ4FRVs/9pN5t
- yuUDIq+xcZE2hvibfuRAErzjirfto8q9hKdD+ku4/iTi4joAdMPGaJtfh43tuFZD12
- 3M/wdz9D9/rehLq9zb5A55ify3vcVtVWrT9jQRFI=
-Message-ID: <640fb5b5-6524-9cce-22c6-fe94df80e91d@linux.microsoft.com>
-Date: Thu, 19 Jan 2023 23:03:40 +0100
+ b=KJ5NikZIuSZaqeFNs4gCLV77dwcaixV21akvSBQFWr/yHuZacrf/39qApk/+QJ7aV
+ /2UC/PVOB0CSW2jtS95FroR9jr6fQ3eTQUoY2nuC9XTW3uQzUMAHPjtwM9eT9f51bn
+ kCWOdQ4BD/2TP9SiALxJw3TNOSTZbGVlfa1YWfK0=
+Message-ID: <95207957-10b6-838b-d2c9-35feb282d49e@linux.microsoft.com>
+Date: Thu, 19 Jan 2023 23:08:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v2 1/2] target/arm: implement DBGCLAIM registers
+Subject: Re: [RFC] 2-stage translation emulation support for SMMUv3 on TCG
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org
-References: <20230117150405.2940-1-eiakovlev@linux.microsoft.com>
- <20230117150405.2940-2-eiakovlev@linux.microsoft.com>
- <16c2871a-9e2a-5113-a121-5373d6e4bb71@linaro.org>
+To: eric.auger@redhat.com, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <b6a1427d-51b6-0daa-c4f1-b1e8ea145844@linux.microsoft.com>
+ <1fe1dc81-f6bc-3da8-81c1-16dd248cc23d@redhat.com>
 From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
-In-Reply-To: <16c2871a-9e2a-5113-a121-5373d6e4bb71@linaro.org>
+In-Reply-To: <1fe1dc81-f6bc-3da8-81c1-16dd248cc23d@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=13.77.154.182;
  envelope-from=eiakovlev@linux.microsoft.com; helo=linux.microsoft.com
 X-Spam_score_int: -198
@@ -88,41 +87,77 @@ X-Spam_report: (-19.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
  USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8YkYPrgsVbGb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: P7amfTR8mpYh
 
 
-On 1/17/2023 16:48, Richard Henderson wrote:
-> On 1/17/23 05:04, Evgeny Iakovlev wrote:
->> +    { .name = "DBGCLAIMCLR_EL1", .state = ARM_CP_STATE_BOTH,
->> +      .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 7, .crm = 9, .opc2 = 6,
->> +      .access = PL1_RW, .accessfn = access_tda,
->> +      .writefn = dbgclaimclr_write, .raw_writefn = 
->> dbgclaimclr_raw_write,
->> +      .fieldoffset = offsetof(CPUARMState, cp15.dbgclaim) },
+On 1/17/2023 18:00, Eric Auger wrote:
+> Hi Evgeny,
+> On 1/16/23 16:37, Evgeny Iakovlev wrote:
+>> Hi!
+>>
+>>
+>> We are using qemu-tcg-aarch64 to run Hyper-V test and debug builds for
+>> arm. Besides some minor fixes that i have submitted over the last
+>> couple of weeks, one big compatibility item for us is SMMUv3 2-stage
+>> translations support. We can do fine without it right now, but having
+>> it would also allow us to test nested arm guests with SMMUv3, which is
+>> great.
+>>
+>>
+>> One idea we have floating around is implementing 2-stage translations
+>> in SMMUv3 in Qemu. We can't make a commitment yet, but before we
+>> consider it i think it would be wise to ask the community about it,
+>> specifically:
+>>
+>> * Do 2-stage translations sound like something qemu-arm would be keen
+>> on accepting? Are there any other use-cases for it besides an arguably
+>> wild corner case of nesting an EL2 hypervisor on software-emulated arm64?
+> Personally I don't have anything against. I guess we cannot prevent you
+> from adding a feature that is supported by the spec ;-) One concern I
+> have is the extra complexity it will bring to the device. At least I
+> would recommend you to try to isolate stage2 support at most from the
+> rest and make your utmost to keep the stage1 perf as close as possible
+> to what it is currently. Indeed the main "production" use case is S1
+> vSMMU with KVM acceleration. Currently in linux arm-smmuv3 driver, only
+> S1 is used. Out of curiosity how are the S2 and S1+S2 used with HyperV?
 >
-> You didn't need a new function, just .raw_writefn = raw_write
-> (which then uses .fieldoffset to dtrt).
+> I am mostly involved in KVM accelerated use cases so I will let others
+> comment on potential use cases using S2.
 
 
-Ah, i see, okay.
+Hyper-V is using 2-stage xlate i think in the same scenario KVM/vfio 
+does: to expose SMMU to the guest and allow it to program stage 1 tables 
+and also support some nesting scenarious.
+
+
+>> * Is there anyone already working on it as we speak maybe?
+> afaik I am not aware of anybody working on that at the moment
+>> * Were there any previous attempts to do this and if yes why they
+>> evidently didn't get through?
+> afaik there were no series sent publicly
+
+
+Thanks for confirming, Eric!
 
 
 >
-> Otherwise,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Thanks
 >
->
-> r~
+> Eric
+>>
+>> Thanks!
+>>
+>>

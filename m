@@ -1,244 +1,147 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp296863ejc;
-        Thu, 19 Jan 2023 04:37:05 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsQT0c9FKerDo4TuUkGIMSKtRzjVpjqACMVeBp+tgDGSeT35cljdxZOiK8TXxMT+GmRzdsV
-X-Received: by 2002:a05:6102:1d6:b0:3d3:ead1:e26 with SMTP id s22-20020a05610201d600b003d3ead10e26mr6701768vsq.8.1674131825175;
-        Thu, 19 Jan 2023 04:37:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674131825; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp296919ejc;
+        Thu, 19 Jan 2023 04:37:10 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvyBfDyg+O/BrPZZq2T4n5cTCl6eTt3N5lKaCGRJZv/44Viw6f3q/3QleLcI/7lJ2CMTTkC
+X-Received: by 2002:a67:f88c:0:b0:3d0:d44f:c023 with SMTP id h12-20020a67f88c000000b003d0d44fc023mr5807167vso.23.1674131829841;
+        Thu, 19 Jan 2023 04:37:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674131829; cv=none;
         d=google.com; s=arc-20160816;
-        b=E8AzteP3PrLTk5f+zUtTWbsZ4wjAWukZJVMjcRnT3fJqjuqCRcz4LqSrOaUupKUBLk
-         Gh2KGkXW1accfua0jZjWzjLJ9/FnNgOvMBvMyEMO0hYTDWoPYWhXR/pLpieRRXdPc+VD
-         AHEZ++zipthIpvQqLzWa3+vsZg7bhsLvpfST0chYlRII5q/TL67fe9xXYUosJuDFAb5z
-         olJLLGLdH9adVjKZeSvVjce8zjrJAb/KgaHATAbzjExH//E0vwT6h1lns2vvg4HCnrYU
-         czBalkUU1AQBmxzPz0peLuqxt45pTc021muAsbVJAmYbQD2LJm1ZqRJG0Ed8sXzt3tnC
-         bkYQ==
+        b=QYe629zlkEcJI2H723lsrvmA0l4AmFijgU5uUzx83TGzkHcY3Tj4GSd4H/Vh0vjGAI
+         /yV1IfJkPfXq4FRXcmyBtwCrc3lKo8OZ3D2VGqsaG/mv/vHxOUGNs+rwLw60TlPdXZDW
+         zRY+QfihCtOQeXwgzGNa+BoYgptJtNoJ4xa0uWQspjR5oNaUPDJcqyRdFnPpJ+KQH1Aw
+         KlsZjtUdp5UF+/sCgiVj5fdPSdhsKHudIgamIVkYVTLMFbFciOX+ST0rsyWBzU+LsA2K
+         hdzEXPg2ewtSiipLzr2Oa6Uag0ranHBM3j/VlswJ60xRcyFcnEk8Wv0l5IEpjr+9yQR/
+         D/jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=0N6dRZwGPlohzPCOuTdh75vnxJBpTidclISykSEWneo=;
-        b=FveJD6gTTND1a4JmYopyClNxNUk5thcpQwimfKhBcudIws8ptcmxJhl4F5Oi10Gw+K
-         CBylUXpl3uEOidI/JkI7Zkg6eKUmEH1FVsbD+Vh4shC7Dj4FP8kxyNjXF2XSCD/ugOsI
-         OsrDeNquBL1Ydo8cz335HK78zYC8vXXp0+iI9mDngg6LFmvbUhv1YgNvMNy9Ug4/R5nO
-         ZOJWoXllsm14Q49jCZzojLB1gE6leHZ6r9d1tnDa0EugTnYSbeCXPSfqm+ydAZ3pVrVU
-         BXFSfwVuCT3ZaH/t70sGuVzZ4o0SmTSu7JONbX6+H8KbBeKDqoRua9/zl8ctqLTTN3Bo
-         SFkA==
+        bh=lTA18JeV+pK1gHYXyKZqXai6WukMgtEGQdVpb1sNKDI=;
+        b=EW1SqY8/2e3QrMTNYpGpQiy6Msn8b3YeIUDpAzHPKsbNbd7nLsRaCBWQS5ENHoNpsM
+         bpPi0uMeDLWZrJ5T0drdljHwHaYjc6aXgPzZJxnCS0Vo/0XlW62AMS4UFUHqToPw/dOK
+         LIid7+ezdMO2agStMOgYaa7yUyYn95GmiVDhA8aR7KkBcgCqDe85zpaIlQ9oH9fR+VW8
+         wsUJVhcmSqDw+oKKTk9V7gB/Cvv9CJwk/B1Mt8QWGB61nlEVtqnwOQlLi4OL63sFYFyu
+         1bTFAsCXL/staDTeEolbPavvheWAmYtHRqIZzgOrjaZZ0GAcV/Xdq6SqfrKJ4SmsRKaR
+         EB1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18-20020a05620a2a1200b006fac1edf4bfsi24218969qkp.615.2023.01.19.04.37.04
+        by mx.google.com with ESMTPS id i7-20020ae9ee07000000b007060e6e7f3asi12399423qkg.180.2023.01.19.04.37.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 04:37:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Jan 2023 04:37:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pIU9k-00082K-Es; Thu, 19 Jan 2023 07:36:37 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pIU8c-0006LM-G5; Thu, 19 Jan 2023 07:35:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU9L-0007Y7-Oc; Thu, 19 Jan 2023 07:36:11 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ id 1pIU8W-0006Ic-8M; Thu, 19 Jan 2023 07:35:20 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU9I-0007gH-Ek; Thu, 19 Jan 2023 07:36:11 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYd5Q9sz4xHV;
- Thu, 19 Jan 2023 23:36:05 +1100 (AEDT)
+ id 1pIU8U-0007Vb-DH; Thu, 19 Jan 2023 07:35:19 -0500
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMXg4Q8rz4xyK;
+ Thu, 19 Jan 2023 23:35:15 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYb57tKz4xN1;
- Thu, 19 Jan 2023 23:36:03 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMXd48zxz4xN4;
+ Thu, 19 Jan 2023 23:35:13 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Delevoryas <peter@pjd.dev>,
+ Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 23/25] hw/arm/aspeed_ast10x0: Map HACE peripheral
-Date: Thu, 19 Jan 2023 13:34:47 +0100
-Message-Id: <20230119123449.531826-24-clg@kaod.org>
+Subject: [PATCH 04/25] avocado/boot_linux_console.py: Update ast2600 test
+Date: Thu, 19 Jan 2023 13:34:28 +0100
+Message-Id: <20230119123449.531826-5-clg@kaod.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230119123449.531826-1-clg@kaod.org>
 References: <20230119123449.531826-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y3cubE3VeKG0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: H5dZIn3WNMBp
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Joel Stanley <joel@jms.id.au>
 
-Since I don't have access to the datasheet, the relevant
-values were found in:
-https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/dts/arm/aspeed/ast10x0.dtsi
+Update the test_arm_ast2600_debian test to
 
-Before on Zephyr:
+ - the latest Debian kernel
+ - use the Rainier machine instead of Tacoma
 
-  uart:~$ hash test
-  sha256_test
-  tv[0]:hash_final error
-  sha384_test
-  tv[0]:hash_final error
-  sha512_test
-  tv[0]:hash_final error
-  [00:00:06.278,000] <err> hace_global: HACE poll timeout
-  [00:00:09.324,000] <err> hace_global: HACE poll timeout
-  [00:00:12.261,000] <err> hace_global: HACE poll timeout
+Both of which contains support for more hardware and thus exercises more
+of the hardware Qemu models.
 
-  uart:~$ crypto aes256_cbc_vault
-  aes256_cbc vault key 1
-  [00:00:06.699,000] <inf> hace_global: aspeed_crypto_session_setup
-  [00:00:06.699,000] <inf> hace_global: data->cmd: 1c2098
-  [00:00:06.699,000] <inf> hace_global: crypto_data_src: 93340
-  [00:00:06.699,000] <inf> hace_global: crypto_data_dst: 93348
-  [00:00:06.699,000] <inf> hace_global: crypto_ctx_base: 93300
-  [00:00:06.699,000] <inf> hace_global: crypto_data_len: 80000040
-  [00:00:06.699,000] <inf> hace_global: crypto_cmd_reg:  11c2098
-  [00:00:09.743,000] <inf> hace_global: HACE_STS: 0
-  [00:00:09.743,000] <err> hace_global: HACE poll timeout
-  [00:00:09.743,000] <err> crypto: CBC mode ENCRYPT - Failed
-  [00:00:09.743,000] <inf> hace_global: aspeed_crypto_session_free
-  uart:~$
-
-After:
-
-  uart:~$ hash test
-  sha256_test
-  tv[0]:PASS
-  tv[1]:PASS
-  tv[2]:PASS
-  tv[3]:PASS
-  tv[4]:PASS
-  sha384_test
-  tv[0]:PASS
-  tv[1]:PASS
-  tv[2]:PASS
-  tv[3]:PASS
-  tv[4]:PASS
-  tv[5]:PASS
-  sha512_test
-  tv[0]:PASS
-  tv[1]:PASS
-  tv[2]:PASS
-  tv[3]:PASS
-  tv[4]:PASS
-  tv[5]:PASS
-
-  uart:~$ crypto aes256_cbc_vault
-  aes256_cbc vault key 1
-  Was waiting for:
-  6b c1 be e2 2e 40 9f 96 e9 3d 7e 11 73 93 17 2a
-  ae 2d 8a 57 1e 03 ac 9c 9e b7 6f ac 45 af 8e 51
-  30 c8 1c 46 a3 5c e4 11 e5 fb c1 19 1a 0a 52 ef
-  f6 9f 24 45 df 4f 9b 17 ad 2b 41 7b e6 6c 37 10
-
-   But got:
-  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-
-  [00:00:05.771,000] <inf> hace_global: aspeed_crypto_session_setup
-  [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2098
-  [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
-  [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
-  [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
-  [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
-  [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2098
-  [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
-  [00:00:05.772,000] <inf> crypto: Output length (encryption): 80
-  [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_free
-  [00:00:05.772,000] <inf> hace_global: aspeed_crypto_session_setup
-  [00:00:05.772,000] <inf> hace_global: data->cmd: 1c2018
-  [00:00:05.772,000] <inf> hace_global: crypto_data_src: 93340
-  [00:00:05.772,000] <inf> hace_global: crypto_data_dst: 93348
-  [00:00:05.772,000] <inf> hace_global: crypto_ctx_base: 93300
-  [00:00:05.772,000] <inf> hace_global: crypto_data_len: 80000040
-  [00:00:05.772,000] <inf> hace_global: crypto_cmd_reg:  11c2018
-  [00:00:05.772,000] <inf> hace_global: HACE_STS: 1000
-  [00:00:05.772,000] <inf> crypto: Output length (decryption): 64
-  [00:00:05.772,000] <err> crypto: CBC mode DECRYPT - Mismatch between plaintext and decrypted cipher text
-  [00:00:05.774,000] <inf> hace_global: aspeed_crypto_session_free
-  uart:~$
-
-Reviewed-by: Peter Delevoryas <peter@pjd.dev>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20220607011938.1676459-1-joel@jms.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed_ast10x0.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ tests/avocado/boot_linux_console.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 592a19d988..5c794c2420 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -28,6 +28,7 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
-     [ASPEED_DEV_SPI1]      = 0x7E630000,
-     [ASPEED_DEV_SPI2]      = 0x7E640000,
-     [ASPEED_DEV_UDC]       = 0x7E6A2000,
-+    [ASPEED_DEV_HACE]      = 0x7E6D0000,
-     [ASPEED_DEV_SCU]       = 0x7E6E2000,
-     [ASPEED_DEV_JTAG0]     = 0x7E6E4000,
-     [ASPEED_DEV_JTAG1]     = 0x7E6E4100,
-@@ -165,6 +166,9 @@ static void aspeed_soc_ast1030_init(Object *obj)
-     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
-     object_initialize_child(obj, "gpio", &s->gpio, typename);
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 8c1d981586..f3a1d00be9 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -1098,18 +1098,18 @@ def test_arm_vexpressa9(self):
+     def test_arm_ast2600_debian(self):
+         """
+         :avocado: tags=arch:arm
+-        :avocado: tags=machine:tacoma-bmc
++        :avocado: tags=machine:rainier-bmc
+         """
+         deb_url = ('http://snapshot.debian.org/archive/debian/'
+-                   '20210302T203551Z/'
++                   '20220606T211338Z/'
+                    'pool/main/l/linux/'
+-                   'linux-image-5.10.0-3-armmp_5.10.13-1_armhf.deb')
+-        deb_hash = 'db40d32fe39255d05482bea48d72467b67d6225bb2a2a4d6f618cb8976f1e09e'
++                   'linux-image-5.17.0-2-armmp_5.17.6-1%2Bb1_armhf.deb')
++        deb_hash = '8acb2b4439faedc2f3ed4bdb2847ad4f6e0491f73debaeb7f660c8abe4dcdc0e'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
+                                     algorithm='sha256')
+-        kernel_path = self.extract_from_deb(deb_path, '/boot/vmlinuz-5.10.0-3-armmp')
++        kernel_path = self.extract_from_deb(deb_path, '/boot/vmlinuz-5.17.0-2-armmp')
+         dtb_path = self.extract_from_deb(deb_path,
+-                '/usr/lib/linux-image-5.10.0-3-armmp/aspeed-bmc-opp-tacoma.dtb')
++                '/usr/lib/linux-image-5.17.0-2-armmp/aspeed-bmc-ibm-rainier.dtb')
  
-+    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-+    object_initialize_child(obj, "hace", &s->hace, typename);
-+
-     object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
-     object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemented,
-                             TYPE_UNIMPLEMENTED_DEVICE);
-@@ -358,6 +362,17 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     }
-     aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
- 
-+    /* HACE */
-+    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(&s->sram),
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->hace), 0,
-+                    sc->memmap[ASPEED_DEV_HACE]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
-+
-     /* Watch dog */
-     for (i = 0; i < sc->wdts_num; i++) {
-         AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
+         self.vm.set_console()
+         self.vm.add_args('-kernel', kernel_path,
 -- 
 2.39.0
 

@@ -1,90 +1,90 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp389345ejc;
-        Thu, 19 Jan 2023 06:59:52 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsfzX+YTXh6iXV13g9GoYkkUKxDnroebeQFBkwGiYIdXsnG4zyIeI0OYlKSQ/KvDl8gPz7J
-X-Received: by 2002:ac8:70a:0:b0:3b1:c477:eb65 with SMTP id g10-20020ac8070a000000b003b1c477eb65mr15391561qth.60.1674140392543;
-        Thu, 19 Jan 2023 06:59:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674140392; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp389500ejc;
+        Thu, 19 Jan 2023 07:00:06 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXscHtQkrmN1cmUCyIlw1sjqHBANHWeUG+p8CAAT7V/jfrOcVvJgEzheDoZwFuAVp2q/v7cl
+X-Received: by 2002:ac8:4d02:0:b0:3b4:63d8:bcbb with SMTP id w2-20020ac84d02000000b003b463d8bcbbmr15364420qtv.28.1674140406260;
+        Thu, 19 Jan 2023 07:00:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674140406; cv=none;
         d=google.com; s=arc-20160816;
-        b=E2QD7Zk80L0/Un2glCaG6c/o4dI1Ft9gI18Bu+W48GRdRgV0oDVUoqs764mF8ChtEj
-         e/B/cr9qX8XEktAA4Nt5uK1sm9Big7CzJ6LkhPfAQRjfnmJCuId0S+YTfUl7OB7j9vCZ
-         v9FXxx+7iQ/BZR9k8HDSIopvWVH6ZCzsjqeUYTCGUYuDNJ2a7sPDRDuzo+aWqb3zkE/x
-         A3KRcuCjhvvehATg+R9euNimEF6ZYds0btCh1C2wcbr7NmIzgKMszxMaL6BwuhNbuTSf
-         CRf9/+Bky23Wfc86h7kGxXP083mMUXKx7pXSb0jGPoxt1jVoj89gK7tk21lDW9XMRAWr
-         4gzw==
+        b=dlbegm09cx4sL0zG7N5uLFtjDCFEzXq/MI/UugmRJ5uKoxWc+sL7tZc8c0UEf8YUSa
+         HY441AK7oosy+2u2OrWw34dK9CytVXQGwnPOH4iorOLDga4v8bM2+js1wPLV/iZNHJtH
+         +fmJ+VcrWJxzR6VJAqN1aGZ8pwyqwRyWlSBCc5uBhyxJ5VNiM6WMkMt29HLHkhQ6XPCW
+         WodA7sD8agtCy1UXmF34AKfmB9qgrzF606T9SW4xTIwxSR+jytXVHGm8m0Osaftl0bkV
+         zACprFZSbswGTdJuoivFUvdE7aWb6HltLmsMopSBmMEN/go1utfNP9H6fb1RlMLpB9C+
+         +Nhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=PHvSg/mQjdmpWjiVzZNybtfs6HzFLrJQQgtlLJ8QVaM=;
-        b=kROcugybG3wyt3PcNTCmZn/5KcVk5IcwlrtnRpS9QnBLRmPOryzMJvp4cRHSi41wv4
-         rmXb6Duta+W0fB9KnefOsihZ0BbthLAdxaHh+lolirRSef4YnI+oEJGh57R+RG19TqfY
-         hFSLFpjh5mjO9lE+TS3sDI4dMPcz/YuQdVtk+EKiCYzz927b4i0h7F7q3huTtkIhO/xl
-         AB1iF0EY/xReBJ9XpPndqxB1nNLApdWGTFFIwvNY6ohuzuLILkwKbzVHdHaWSbj4qmRv
-         aTTug1C4q0dddFhC0XzLWT+BNVe7OA5ywHdbb/Hm2mUzYyZlK74zHJV/bNijobUisq9o
-         Kpkg==
+        bh=rDyw5jGUguYP19whij1cKtwFdUxKXvk9EDw1Rxg7JLU=;
+        b=sv6Tx+Wak2MqU2FLcteKBpUu/FsFoww5KKGwl22ExxX/SB4VcG7SFwOVk2nVFrpZz8
+         2ptFYSOs5BxHYJtsuGSEVSxFuleNT1wk1jaNeKHDGtvB5dZHay8/CELVl0hwaqOJFM3z
+         Hfcuy6xe0RqDgU3iuNtvKpO1tRdmvRJunF6kL40385lCpM4W9dUB6jyyE2xycq6uMDYB
+         3Z1KiaVkn5XPfzaIKK2Hsgbqc5+PcPZEb/IN0/T49TKhbg+DRKNVjZSF74dAXpR8p/Nh
+         w/yJRb98H+n6Dk5XnASdCP2+Y8DMs5cUxvIozBYGLNgN5hk2MNRCF1/LMFLPaCpkfDpg
+         bZ8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=grtJredg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zx625sje;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl11-20020a05622a244b00b003a8271939b8si23913597qtb.238.2023.01.19.06.59.52
+        by mx.google.com with ESMTPS id bl12-20020a05622a244c00b003ac2beee9cdsi4218105qtb.166.2023.01.19.07.00.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 06:59:52 -0800 (PST)
+        Thu, 19 Jan 2023 07:00:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=grtJredg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zx625sje;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pIWO9-0007rd-57; Thu, 19 Jan 2023 09:59:37 -0500
+	id 1pIWOJ-0008Uo-ER; Thu, 19 Jan 2023 09:59:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIWO7-0007nP-2D
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 09:59:35 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIWOI-0008QN-5Q
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 09:59:46 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIWO5-0003Z2-Hp
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 09:59:34 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id bk16so2114949wrb.11
- for <qemu-arm@nongnu.org>; Thu, 19 Jan 2023 06:59:33 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIWOG-0003gm-I0
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 09:59:45 -0500
+Received: by mail-wm1-x336.google.com with SMTP id m15so1750006wms.4
+ for <qemu-arm@nongnu.org>; Thu, 19 Jan 2023 06:59:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PHvSg/mQjdmpWjiVzZNybtfs6HzFLrJQQgtlLJ8QVaM=;
- b=grtJredguK6Odurr8v7Nd4MFu1fynCqzad4KflFqBvCOvKX+FXGkUunlfMNyIT4oFH
- z16/A0Uny8/UNv/i6+UzFR38ZVcxLJm+VQ744tmpB1GFODIms2l9/odSdjaEp6g1rCAT
- XmlumW/NeuNl9QFTab9UKA3c4fWgpiEGg5laOQCB2BQ129FW7fnLQbpZJwqpL69XK27j
- kltJG7DG+qeDQKxf0NRoS5iOzpw387teTPKoc9NApqEw6Zey5WHbi5qJDtNoTEGxaJJ3
- yLyrxYYRjrnWuRAoxG+T+eWlp40CeRadvvxp39lGkM+VWDOChkTJyYfKsROvpm+1jI0S
- iCjw==
+ bh=rDyw5jGUguYP19whij1cKtwFdUxKXvk9EDw1Rxg7JLU=;
+ b=zx625sjetE/+G4xs3sYp9MwIfdMcxC1aARl39RwoEN/uciBhGKTKsV4TY2RJUDwmJD
+ J5ON7BC6hSt7aZPX9qDrs2R+uCHOzGiSbourlj1maxlOE8iAdufYGeYAevZIauAuluRO
+ 7c4AlzQ1BDuQM+XAe9FY8wIqkcYFuQ92J5hBs7uP5+wiryzn2tkIc8BTeTnPClelUQ7Q
+ /RsUkV0shJfRgwt7Cv90YT1WSTUWz+36/ZvdDsBQzueAU6PXwoutYk7DQ2D8kMwm3k93
+ Y89th4YaXUKSr2jJ/eEpHwneNRbJgsfeiUoEDfNfXNVewzQM8EyqTwjnIAPI55876nlD
+ W9zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PHvSg/mQjdmpWjiVzZNybtfs6HzFLrJQQgtlLJ8QVaM=;
- b=J8MeR84kSo0VXxLh2wn1cgFrqTs1/Q5wgYCi1h4N1WAwxd4TWttdccv1eyaEz1T9BI
- nTpeyP+0GaQ45+OfG33ldvk0A+3ClPs7ZZ0vME8dBkovcumtb7vo6CarsfZwPxPOOnEW
- +C1Yi/2Bk+w7xWSl5txbzUopK5+yjDt2+yOu9M9OZ70+1m11oDGJfr/nR5dthWpZOi9b
- pGj6w0wK1lIRBe8j2Dli+/MSyzweij3PEkw8pwalD4H4UZG0no5+CKb+pjZlildU1Atu
- a4FyKRdWS8Lb6U/ecJy+aSklMt/jURM74be4XJ9MqKDcNgjRt+nSQSGlewixsvgmKtjG
- cRuA==
-X-Gm-Message-State: AFqh2kr4UAcyk0Y910yRcgzazE730M4TNZnQmYcGhc6ZvPlwRT91Hfo2
- cGwqCCbftWAdMAnN9OaOF6y1hg==
-X-Received: by 2002:adf:dbc6:0:b0:2be:12a8:9f75 with SMTP id
- e6-20020adfdbc6000000b002be12a89f75mr8304705wrj.55.1674140372843; 
- Thu, 19 Jan 2023 06:59:32 -0800 (PST)
+ bh=rDyw5jGUguYP19whij1cKtwFdUxKXvk9EDw1Rxg7JLU=;
+ b=NmoQjPmw85tnXTzt7XNzm3WFp0MQ7QE5r9YeezYPh3isusm+L/fM4WgM0PEcv358XJ
+ +loNbo2N0M2Qd0DvKuOlx5wE2CNGBwTOnroGBACdhy+ndjNcjc4D2OBTygUnolrY5Xu7
+ sUrYzu3TxAc35ko/80OxjMS3pG/qCpwd4LQU15rH3ksrsl7S+2T5TxfwddAP3+CZfFla
+ IfjCecGE+u8hskhLYSzjQ64jH33R95ePFRw0dT1C3P4SnpjJBMhJhl9fEa2cay3YfR1z
+ n8UC6p0IqSMSuc3o7RzihUuCEXcHqBhwBg4cmH6pvHsjeyx35rmg5+3+U+yMYXMxv80a
+ fJtA==
+X-Gm-Message-State: AFqh2kpKGkUY3BzFZeYY9De/bzmY9x4gv2YeV6e6U7QrhRIZjj6SJ0an
+ QZIQ5lcXDcMxPreGb0OaurTd0w==
+X-Received: by 2002:a05:600c:3b13:b0:3db:26b8:5023 with SMTP id
+ m19-20020a05600c3b1300b003db26b85023mr1648284wms.10.1674140383093; 
+ Thu, 19 Jan 2023 06:59:43 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- m15-20020adffe4f000000b002bdd155ca4dsm19683640wrs.48.2023.01.19.06.59.24
+ c2-20020a05600c0a4200b003daf6e3bc2fsm7009111wmq.1.2023.01.19.06.59.42
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Jan 2023 06:59:32 -0800 (PST)
+ Thu, 19 Jan 2023 06:59:42 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Juan Quintela <quintela@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -92,18 +92,18 @@ Cc: Juan Quintela <quintela@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
  Fabiano Rosas <farosas@suse.de>, Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 09/11] tests/qtest/migration-test: Build command line using
- GString API (3/4)
-Date: Thu, 19 Jan 2023 15:58:36 +0100
-Message-Id: <20230119145838.41835-10-philmd@linaro.org>
+Subject: [PATCH v2 11/11] tests/qtest/migration-test: Only use available
+ accelerators
+Date: Thu, 19 Jan 2023 15:58:38 +0100
+Message-Id: <20230119145838.41835-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230119145838.41835-1-philmd@linaro.org>
 References: <20230119145838.41835-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,57 +125,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mwPDXhnwedtq
+X-TUID: BWzltGl13fhJ
 
-Part 3/4: Convert accelerator options.
+For example, avoid when TCG is disabled:
 
+  $ make check-qtest-aarch64
+  ...
+  20/20 qemu:qtest+qtest-aarch64 / qtest-aarch64/migration-test
+  qemu-system-aarch64: -accel tcg: invalid accelerator tcg
+
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/qtest/migration-test.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ tests/qtest/migration-test.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
 
 diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-index 8377b3976a..015b774a9e 100644
+index a930964268..17783d7334 100644
 --- a/tests/qtest/migration-test.c
 +++ b/tests/qtest/migration-test.c
-@@ -603,6 +603,9 @@ static int test_migrate_start(QTestState **from, QTestState **to,
+@@ -45,6 +45,8 @@
+ 
+ unsigned start_address;
+ unsigned end_address;
++static bool has_tcg;
++static bool has_kvm;
+ static bool uffd_feature_thread_id;
+ 
+ /*
+@@ -603,9 +605,14 @@ static int test_migrate_start(QTestState **from, QTestState **to,
      got_stop = false;
  
      cmd_common = g_string_new("");
-+    g_string_append_printf(cmd_common, "-accel kvm%s ",
-+                           args->use_dirty_ring ? ",dirty-ring-size=4096" : "");
-+    g_string_append(cmd_common, "-accel tcg ");
+-    g_string_append_printf(cmd_common, "-accel kvm%s ",
+-                           args->use_dirty_ring ? ",dirty-ring-size=4096" : "");
+-    g_string_append(cmd_common, "-accel tcg ");
++    if (has_kvm) { /* KVM first */
++        g_string_append_printf(cmd_common, "-accel kvm%s ",
++                               args->use_dirty_ring
++                               ? ",dirty-ring-size=4096" : "");
++    }
++    if (has_tcg) {
++        g_string_append(cmd_common, "-accel tcg ");
++    }
  
      bootpath = g_strdup_printf("%s/bootsect", tmpfs);
      if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-@@ -678,25 +681,21 @@ static int test_migrate_start(QTestState **from, QTestState **to,
-     if (!args->only_target) {
-         g_autofree gchar *cmd_source = NULL;
+@@ -2457,12 +2464,14 @@ static bool kvm_dirty_ring_supported(void)
  
--        cmd_source = g_strdup_printf("-accel kvm%s -accel tcg%s "
-+        cmd_source = g_strdup_printf("%s "
-                                      "-name source,debug-threads=on "
-                                      "-serial file:%s/src_serial "
-                                      "%s %s %s",
--                                     args->use_dirty_ring ?
--                                     ",dirty-ring-size=4096" : "",
-                                      cmd_common->str, tmpfs, arch_source,
-                                      args->opts_source ? args->opts_source : "",
-                                      ignore_stderr);
-         *from = qtest_init(cmd_source);
-     }
+ int main(int argc, char **argv)
+ {
+-    const bool has_kvm = qtest_has_accel("kvm");
+     const bool has_uffd = ufd_version_check();
+     const char *arch = qtest_get_arch();
+     g_autoptr(GError) err = NULL;
+     int ret;
  
--    cmd_target = g_strdup_printf("-accel kvm%s -accel tcg%s "
-+    cmd_target = g_strdup_printf("%s "
-                                  "-name target,debug-threads=on "
-                                  "-serial file:%s/dest_serial "
-                                  "-incoming %s "
-                                  "%s %s %s",
--                                 args->use_dirty_ring ?
--                                 ",dirty-ring-size=4096" : "",
-                                  cmd_common->str, tmpfs, uri, arch_target,
-                                  args->opts_target ? args->opts_target : "",
-                                  ignore_stderr);
++    has_tcg = qtest_has_accel("tcg");
++    has_kvm = qtest_has_accel("kvm");
++
+     g_test_init(&argc, &argv, NULL);
+ 
+     /*
 -- 
 2.38.1
 

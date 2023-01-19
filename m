@@ -1,199 +1,90 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp293742ejc;
-        Thu, 19 Jan 2023 04:32:20 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXu2KV43QJSB0BiS69Bj9TXwTPmp+3JNgejR7GCA3+XvEyoV1qqVQ/rzBQYaeFCyHx6f7TDO
-X-Received: by 2002:adf:f7c6:0:b0:2bd:dc81:286e with SMTP id a6-20020adff7c6000000b002bddc81286emr9596453wrq.37.1674131540132;
-        Thu, 19 Jan 2023 04:32:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674131540; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp295873ejc;
+        Thu, 19 Jan 2023 04:35:31 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtjrsTzLFP2vxYlP8pRkJv8IH43FhIPtOWz57iyDeA6MSr8n96bFd2Hucur45fRL0/6iQir
+X-Received: by 2002:a05:6a00:26e3:b0:58b:c4b4:86e3 with SMTP id p35-20020a056a0026e300b0058bc4b486e3mr20424932pfw.24.1674131730841;
+        Thu, 19 Jan 2023 04:35:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674131730; cv=none;
         d=google.com; s=arc-20160816;
-        b=jID02cYdKtFqe1IvaAeVMTClkHNptz9oT1fz0Ski2gARnkhTcKxFBkFnChpmX/ujrG
-         8nGLsa9x+aImMIr/r8NEdEWKdMQXJSx5Y248eBl7Ojs9SgPfubvbo7B5xXAm8rukbSs7
-         OVdh2qcb2fVHoDybnAUXBK9hsm/HChxXR8Y7cHmtbGOHK/kgrlbdiKZJ6H22yhakaEig
-         4aAm0CcFOLdlDDA+6n6sgSqDuJXSDmyvqhhaD8FdtojkVHn+L0NybyWyFRxxrZcnsYHA
-         fvW/RFRv1+GKbCRk6Ellfz3R2s9QMJy0LgZ80u3C3UhfuKhK4EGxMv03FovJHTH/dMSu
-         nc6g==
+        b=H3XY+PV0qdGCa2fYqzGzreBY6q91nHBN1a2lqEtnBfMvDY1SMYH/cLQXTz9NCvAt9x
+         E2qCaH0oUx59HdOl/M+v85kHodrZTCD3hKNdfyGANFUkc1MVAQJFpBwbIQAZrkU9oWbY
+         uBzbZAPKVv99Hze0JjAaJs7ryGsJstt567rlKl8rBlt3XprEbe/2Xmm8MjDsW61b7RaF
+         uL1sfHthUTwZxHQuYgEUwLESJW37DVpGKJqFd6SynQLetyt+fI3wbGOFQRmkCiGDfWUj
+         6siUbOF7jN8YZbFf3JLeJWnMNK5tErmcoMl+Q4ribbf9/skkd1V8MLdPaCvGDW4i03D3
+         sNLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=9+L1SQIrEUE97f/bZ0nkPw3GH4QiHeOKZFUoaUOMW9s=;
-        b=0ydbJZVAqk+91ufDrOTkxn/vF0ZMagmwPsKvLiSvxM1SH6JJcnq4NaAR4czs1zTRB+
-         okakwzW5/N4OCz5hL7SswNPSZiVQzs6Gu74PDZTSm515pl1sYPZE2lQSy5nZPNLqvoME
-         dgl0IrX4askd7bu0A+k91EWk6bb1y+O2cxweWE+wUeoGuEGnAJB4Gcig/kQpO7J/cY6d
-         exzU/FLCorgFELRIlmC5ISxNEwtnf5Z8t2qESrjHnGXnKmIaR/HL1Zx237oZe3SYR8Yq
-         a2OjVHomMRrNw9fPsuvTkD7B8h3aYk2QOnwQjDgj5y1xf/QVXxtJxHrjLc+c0Pt//QYG
-         FfVg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=gSPSWg+di0mfyH8cRPdv69trPt5Kmk1VJj1F4M5/t+M=;
+        b=l2Z/wGNs4dht0nVGUWwJwIz34KtaPcAmnzlhHL5r+m6mT7Z03bwwEHZjyebMS2SFoq
+         zg9h92A6w+5+J2pUgFmSrBAZPSeIkUgreHiGatxH1ZJmqo3DrhGMsrJWPkYFafr6xPR4
+         zpjPQjAtcuvt3zO1gd9f+517rI9qdvY2z01CiE9p66prJLVIvKKVWWC7SPUnHd2oQbWu
+         JB5s6feqJI6flBaOuFdS3TYraSoCYaBspNwSxUxuRpWIKsJ1p7cc6qm6xmTIucIn+dtm
+         SGbQdLpbetAoe4sAa14eQSOV+Qx64PuMzrLDO5JjZkP6EfacBEe4QgDuUn+CpxdE78Jr
+         FbdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=wC0912m4;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id a3-20020a056000050300b002be1e9f819asi7573533wrf.1040.2023.01.19.04.32.19
+       spf=pass (google.com: domain of srs0=w1sb=5q=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org"
+Return-Path: <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
+        by mx.google.com with ESMTPS id a1-20020aa78641000000b0057462551be5si17990857pfo.237.2023.01.19.04.35.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 04:32:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+        Thu, 19 Jan 2023 04:35:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=w1sb=5q=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=wC0912m4;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+       spf=pass (google.com: domain of srs0=w1sb=5q=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org"
+Received: from gandalf.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMXw6mMyz4xyB;
+	Thu, 19 Jan 2023 23:35:28 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id B8C653886E;
-	Thu, 19 Jan 2023 12:32:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674131539; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9+L1SQIrEUE97f/bZ0nkPw3GH4QiHeOKZFUoaUOMW9s=;
-	b=wC0912m4jN4efZvMtd24pIpXV75dAFUR4C+7bN2ti+4g8AekWS4AcshYh+7VxwzBE29dqO
-	U/W/TljAr3AG8dwaCuFocQRUYQiqAkgd0EdCqqGhtCpleAqhSMi+lHrffUQZl5YCMwdKf5
-	4R1RGMosWBPEkTmuQW+erRnn7mYzTfg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674131539;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9+L1SQIrEUE97f/bZ0nkPw3GH4QiHeOKZFUoaUOMW9s=;
-	b=EaGqgo8nWU72vaH3erunFFHvx1y5v/gQMxMof7khTzQMNVL7R0Nt8okmKmyI+FUxQi/1eE
-	YD24h8PNt76VC5DA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 49821139ED;
-	Thu, 19 Jan 2023 12:32:19 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id WcdYBVM4yWO3YQAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 19 Jan 2023 12:32:19 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
- Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 00/20] target/arm: CONFIG_TCG=n part 1
-In-Reply-To: <39bb348d-e3af-6a20-e7d5-d7a1c918a389@linaro.org>
-References: <20230118193518.26433-1-farosas@suse.de>
- <39bb348d-e3af-6a20-e7d5-d7a1c918a389@linaro.org>
-Date: Thu, 19 Jan 2023 09:32:16 -0300
-Message-ID: <87bkmu1z8v.fsf@suse.de>
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMXt2sdSz4xN1;
+	Thu, 19 Jan 2023 23:35:26 +1100 (AEDT)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 09/25] hw/core/loader: Remove declarations of option_rom_has_mr/rom_file_has_mr
+Date: Thu, 19 Jan 2023 13:34:33 +0100
+Message-Id: <20230119123449.531826-10-clg@kaod.org>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230119123449.531826-1-clg@kaod.org>
+References: <20230119123449.531826-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: Aczrh5HFw2M7
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: hgyBstHXnW1Q
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+These globals were moved to MachineClass by commit 71ae9e94d9 ("pc: Move
+option_rom_has_mr/rom_file_has_mr globals to MachineClass"). Finish cleanup.
 
-> On 18/1/23 20:34, Fabiano Rosas wrote:
->> These are the already reviewed patches from the first half of my
->> previous series:
->> https://lore.kernel.org/r/20230113140419.4013-1-farosas@suse.de
->>=20
->> This unbreaks the --disable-tcg build, but there are issues in runtime
->> that are still being hashed out in the other series.
->>=20
->> For the build _with_ TCG, this should behave the same as master.
->>=20
->> Based on Richard's "target/arm: Introduce aarch64_set_svcr":
->> https://lore.kernel.org/r/20230112004322.161330-1-richard.henderson@lina=
-ro.org
->>=20
->> Claudio Fontana (5):
->>    target/arm: rename handle_semihosting to tcg_handle_semihosting
->>    target/arm: wrap psci call with tcg_enabled
->>    target/arm: wrap call to aarch64_sve_change_el in tcg_enabled()
->>    target/arm: move helpers to tcg/
->>    target/arm: Move psci.c into the tcg directory
->>=20
->> Fabiano Rosas (15):
->>    target/arm: Move PC alignment check
->>    target/arm: Move cpregs code out of cpu.h
->>    target/arm: Move cpregs code into cpregs.c
->>    target/arm: Move define_debug_regs() to cpregs.c
->>    target/arm: Wrap breakpoint/watchpoint updates with tcg_enabled
->>    target/arm: move translate modules to tcg/
->>    target/arm: Wrap arm_rebuild_hflags calls with tcg_enabled
->>    target/arm: Move hflags code into the tcg directory
->>    target/arm: Move regime_using_lpae_format into internal.h
->>    target/arm: Don't access TCG code when debugging with KVM
->>    cpu-defs.h: Expose CPUTLBEntryFull to non-TCG code
->>    target/arm: Move cortex sysregs into cpregs.c
->>    tests/qtest: Restrict bcm2835-dma-test to CONFIG_RASPI
->>    tests/avocado: Skip tests that require a missing accelerator
->>    tests/avocado: Tag TCG tests with accel:tcg
->
-> Testing on Darwin:
->
-> 14/20 qemu:qtest+qtest-aarch64 / qtest-aarch64/test-hmp=20
->=20=20
-> ERROR:../../target/arm/helper.c:2495:arm_v7m_mmu_idx_for_secstate: code=20
-> should not be reached
-> 17/20 qemu:qtest+qtest-aarch64 / qtest-aarch64/qom-test=20
->          qemu-system-aarch64: unknown type 'arm-gicv3'
-> 18/20 qemu:qtest+qtest-aarch64 / qtest-aarch64/boot-serial-test
-> qemu-system-aarch64: -accel tcg: invalid accelerator tcg
-> 19/20 qemu:qtest+qtest-aarch64 / qtest-aarch64/vnc-display-test
-> qemu-system-aarch64: No machine specified, and there is no default
-> 20/20 qemu:qtest+qtest-aarch64 / qtest-aarch64/migration-test
-> qemu-system-aarch64: -accel tcg: invalid accelerator tcg
->
-> Reproducers:
->
-> $ ./qemu-system-aarch64 -display none -S -M mps3-an547 -accel qtest=20
-> -monitor stdio
-> QEMU 7.2.50 monitor - type 'help' for more information
-> (qemu) gva2gpa 0
-> **
-> ERROR:../../target/arm/helper.c:2495:arm_v7m_mmu_idx_for_secstate: code=20
-> should not be reached
-> Bail out!=20
-> ERROR:../../target/arm/helper.c:2495:arm_v7m_mmu_idx_for_secstate: code=20
-> should not be reached
-> Abort trap: 6
->
->      frame #4: 0x0000000101fdd6cc=20
-> libglib-2.0.0.dylib`g_assertion_message_expr + 116
->      frame #5: 0x0000000100360ce0=20
-> qemu-system-aarch64`arm_v7m_mmu_idx_for_secstate(env=3D<unavailable>,=20
-> secstate=3D<unavailable>) at helper.c:2495:5
->      frame #6: 0x000000010035f7f4=20
-> qemu-system-aarch64`arm_mmu_idx_el(env=3D<unavailable>, el=3D<unavailable=
->)=20
-> at helper.c:2514:16
->      frame #7: 0x00000001002d17ec=20
-> qemu-system-aarch64`arm_cpu_get_phys_page_attrs_debug(cs=3D<unavailable>,=
-=20
-> addr=3D0, attrs=3D0x000000016fdfda50) at ptw.c:2982:23
->      frame #8: 0x00000001003c660c=20
-> qemu-system-aarch64`hmp_gva2gpa(mon=3D0x000060000390f0c0,=20
-> qdict=3D<unavailable>) at misc.c:714:12
->
-> $ ./qemu-system-aarch64 -display none -machine sbsa-ref -accel qtest
-> qemu-system-aarch64: unknown type 'arm-gicv3'
-> Abort trap: 6
->
->      frame #2: 0x00000001958522c8 libsystem_c.dylib`abort + 180
->      frame #3: 0x00000001003d32e8=20
-> qemu-system-aarch64`qdev_new(name=3D"arm-gicv3") at qdev.c:164:9
->      frame #4: 0x00000001002f30d4 qemu-system-aarch64`sbsa_ref_init=20
-> [inlined] create_gic(sms=3D0x0000000103ff0d10) at sbsa-ref.c:405:16
->      frame #5: 0x00000001002f30a0=20
-> qemu-system-aarch64`sbsa_ref_init(machine=3D0x0000000103ff0d10) at=20
-> sbsa-ref.c:773:5
->      frame #6: 0x00000001000905c0=20
-> qemu-system-aarch64`machine_run_board_init(machine=3D0x0000000103ff0d10,=
-=20
-> mem_path=3D<unavailable>, errp=3D<unavailable>) at machine.c:1404:5
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Marcel Apfelbaum <marcel@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ include/hw/loader.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
-Are these errors without TCG? If so they will be fixed by the other half
-of the series by removing the machines/cpus that depend on TCG. Nothing
-against fixing this now in the specific tests, of course, but a user on
-the cmdline would also hit these.
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 70248e0da7..1384796a4b 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -251,9 +251,6 @@ void pstrcpy_targphys(const char *name,
+                       hwaddr dest, int buf_size,
+                       const char *source);
+ 
+-extern bool option_rom_has_mr;
+-extern bool rom_file_has_mr;
+-
+ ssize_t rom_add_file(const char *file, const char *fw_dir,
+                      hwaddr addr, int32_t bootindex,
+                      bool option_rom, MemoryRegion *mr, AddressSpace *as);
+-- 
+2.39.0

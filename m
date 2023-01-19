@@ -1,60 +1,61 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp296691ejc;
-        Thu, 19 Jan 2023 04:36:49 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtxEJhj+s2a4Bt0Elda+ght14fbJ2aEPZuUHKzLNOLYY5rMjFt0fKUFBpdPHYAeD/IQY31o
-X-Received: by 2002:a05:622a:4319:b0:3b6:5fc7:f554 with SMTP id el25-20020a05622a431900b003b65fc7f554mr9203665qtb.7.1674131809065;
-        Thu, 19 Jan 2023 04:36:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674131809; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp296740ejc;
+        Thu, 19 Jan 2023 04:36:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXud0WxeKGTdlBP4EEsvnhQnGZfJ8CbNF86T4tqJ1/DZPvF1Dns7/iEXkszZawccGx0XPxWQ
+X-Received: by 2002:a05:622a:4315:b0:3a9:8b48:f8f with SMTP id el21-20020a05622a431500b003a98b480f8fmr11644136qtb.67.1674131812887;
+        Thu, 19 Jan 2023 04:36:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674131812; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ws0Tkeo+Nr7tcQNzTwhfnq/+Ufqvsd+91tlSaDu2YUvf9PxpK6W6vIGdX1r5Nb01ox
-         zs50rKLYFo54BorP3AQXEIErj+z/29TV00g6usaMTYmC8OBvtHGw12As5nGRfpWgd/D5
-         oqYdx5K9xLKl+fVVpcf2tGw1uyzgydxOehZiAzZVBsJMnj7RNlJ9SFKtVJ4o7ibzO7zn
-         OEGTOuHvva+jjEaXXa+sNJdORewkrsgZfJBV7yVBXU2xqrnsPgIdTwHJ2pc8x9TA5eaL
-         njikzoObUZCStYxe74EyVXu844p80PhuOdK9LOqqIVehNfUAI8A8hPr8E8tTqjX4zgJX
-         gA+Q==
+        b=OIj4ls9SjxWpQweP6qus0PDJIZ+TrpAip+ebumZ9y7kfqn9j23gPuWXx9EppyjAyxY
+         JGccYV/CUhDE3rVOO0xANyxgsQE5YZmz7ZS5YrtbVoSY5a5agXD7ZUV+ILVpyu3cZv/w
+         mIWuRYy5ZSY07TBwCH6EynqEP0XKQ0ps2+7l7j+X7EneexeCEaSfRmowjBEGSROG1Tgr
+         6ZBPCz1DhfN/5yjpOD5OKnEKf4Nq0StEePJWiTjzwYq23kQaJxwEVRzyCTWj7/ud2K4F
+         m8Qf3BBz+lzAVLt69GH+SGqwhZH61d4bKlmiFPufaWkC6Ttc6GLiYGTXkW3zIzvegRap
+         lLWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=pYiygB+dzZbihMHeffQDUByinS8F9CIiLOUe5QKe8hw=;
-        b=OUTSLOzpqpOV6F5JNLIy3Wrij6yukHUQrlQG1FjctFMKB9xMYc7YUs6Akmzmch/h2A
-         q9vubFW2IDPnBrForFIdoOLa4ZQJeH9L6IAPe7dXPh0VlfeHPAezQXMr7Kcl2NOMz54T
-         VjY/kI/p8adWE82pJ6vU/k7KYui8KsP8cWcOUdI90g6Bl49J+1BRUfBDX0zJDuCwi2mc
-         gA9Qu39n9GMOr6mcxc+TrrzqkRJAaSEZuiCsIrB88sIRER53Flu+AT0WPIFwc6N8qmKB
-         xOYkxOBJpeJ7qZNRdFD/8Ai35DRDVn82RZbDXUl0dTagzTJu3HYT5/k79/Fkn2mw+v+y
-         YdVA==
+        bh=wI2DRWs/U/PsC7+cVZx9qQK+MpxYP15ChNKRzZ4Jvgw=;
+        b=07B5H/DvRLv82w/kODpwmaPtpDr6f7PLiIJJSOa4MLVp4b/MBs74L/Y1twbYxbwc3K
+         gssMNf0HK/k+ZuGHb/izrD1NYRDHyy9y7w8C3IWcC7Hx6Uf71GtBh/u37H/lxAZ33GrK
+         XPgrVXOGpxUdeNVODE3BLaCUeYlqREAVz0LIkJk3n/kcC/dp0fWKeHyirYH1X39VZT1I
+         p0fCEhLXt043zjygPsoX/vIxF0eHML+AAdYw/rxscOPkAluwWSBW0tNw3oCzZKrF5m8j
+         lmmelMf8IakCSd6P8Q4e6KZzNZTOiuUlbEELs6MNNHHHfqkx037nTwYPveQLw/HncoAq
+         pMDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9-20020ac84c89000000b003b3c57c49e8si6468419qtv.330.2023.01.19.04.36.48
+        by mx.google.com with ESMTPS id bs21-20020ac86f15000000b003ab9bc68ccesi23542702qtb.695.2023.01.19.04.36.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 04:36:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Jan 2023 04:36:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pIU9E-0007Hz-1Z; Thu, 19 Jan 2023 07:36:05 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pIU9N-0007aa-BN; Thu, 19 Jan 2023 07:36:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU95-0007Cg-FH; Thu, 19 Jan 2023 07:35:56 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1pIU92-00079m-Q1; Thu, 19 Jan 2023 07:35:56 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU92-0007eu-OX; Thu, 19 Jan 2023 07:35:55 -0500
+ id 1pIU90-0007ee-Lt; Thu, 19 Jan 2023 07:35:52 -0500
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYL3HYNz4xZj;
- Thu, 19 Jan 2023 23:35:50 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYH64rbz4xyf;
+ Thu, 19 Jan 2023 23:35:47 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYJ2ZPmz4xHV;
- Thu, 19 Jan 2023 23:35:48 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYF5KC8z4xHV;
+ Thu, 19 Jan 2023 23:35:45 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -62,122 +63,179 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 17/25] hw/watchdog/wdt_aspeed: Extend MMIO range to cover more
- registers
-Date: Thu, 19 Jan 2023 13:34:41 +0100
-Message-Id: <20230119123449.531826-18-clg@kaod.org>
+Subject: [PATCH 16/25] hw/watchdog/wdt_aspeed: Rename MMIO region size as
+ 'iosize'
+Date: Thu, 19 Jan 2023 13:34:40 +0100
+Message-Id: <20230119123449.531826-17-clg@kaod.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230119123449.531826-1-clg@kaod.org>
 References: <20230119123449.531826-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UJVQJTmNZdBP
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YSiwf2wkjWWR
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-When booting the Zephyr demo in [1] we get:
+Avoid confusing two different things:
+- the WDT I/O region size ('iosize')
+- at which offset the SoC map the WDT ('offset')
+While it is often the same, we can map smaller region sizes
+at larger offsets.
 
-  aspeed.io: unimplemented device write (size 4, offset 0x185128, value 0x030f1ff1) <--
-  aspeed.io: unimplemented device write (size 4, offset 0x18512c, value 0x03fffff1)
-
-This corresponds to this Zephyr code [2]:
-
-  static int aspeed_wdt_init(const struct device *dev)
-  {
-    const struct aspeed_wdt_config *config = dev->config;
-    struct aspeed_wdt_data *const data = dev->data;
-    uint32_t reg_val;
-
-    /* disable WDT by default */
-    reg_val = sys_read32(config->ctrl_base + WDT_CTRL_REG);
-    reg_val &= ~WDT_CTRL_ENABLE;
-    sys_write32(reg_val, config->ctrl_base + WDT_CTRL_REG);
-
-    sys_write32(data->rst_mask1,
-                config->ctrl_base + WDT_SW_RESET_MASK1_REG);   <------
-    sys_write32(data->rst_mask2,
-                config->ctrl_base + WDT_SW_RESET_MASK2_REG);
-
-    return 0;
-  }
-
-The register definitions are [3]:
-
-  #define WDT_RELOAD_VAL_REG          0x0004
-  #define WDT_RESTART_REG             0x0008
-  #define WDT_CTRL_REG                0x000C
-  #define WDT_TIMEOUT_STATUS_REG      0x0010
-  #define WDT_TIMEOUT_STATUS_CLR_REG  0x0014
-  #define WDT_RESET_MASK1_REG         0x001C
-  #define WDT_RESET_MASK2_REG         0x0020
-  #define WDT_SW_RESET_MASK1_REG      0x0028   <------
-  #define WDT_SW_RESET_MASK2_REG      0x002C
-  #define WDT_SW_RESET_CTRL_REG       0x0024
-
-Currently QEMU only cover a MMIO region of size 0x20:
-
-  #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
-
-Change to map the whole 'iosize' which might be bigger, covering
-the other registers. The MemoryRegionOps read/write handlers will
-report the accesses as out-of-bounds guest-errors, but the next
-commit will report them as unimplemented.
-
-[1] https://github.com/AspeedTech-BMC/zephyr/releases/tag/v00.01.07
-[2] https://github.com/AspeedTech-BMC/zephyr/commit/2e99f10ac27b
-[3] https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/drivers/watchdog/wdt_aspeed.c#L31
+Here we are interested in the I/O region size, so rename as
+'iosize'.
 
 Reviewed-by: Peter Delevoryas <peter@pjd.dev>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+[ clg: Introduced temporary wdt_offset variable ]
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/watchdog/wdt_aspeed.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/hw/watchdog/wdt_aspeed.h | 2 +-
+ hw/arm/aspeed_ast10x0.c          | 4 ++--
+ hw/arm/aspeed_ast2600.c          | 4 ++--
+ hw/arm/aspeed_soc.c              | 4 ++--
+ hw/watchdog/wdt_aspeed.c         | 8 ++++----
+ 5 files changed, 11 insertions(+), 11 deletions(-)
 
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index dfa5dfa424..db91ee6b51 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -40,7 +40,7 @@ struct AspeedWDTState {
+ struct AspeedWDTClass {
+     SysBusDeviceClass parent_class;
+ 
+-    uint32_t offset;
++    uint32_t iosize;
+     uint32_t ext_pulse_width_mask;
+     uint32_t reset_ctrl_reg;
+     void (*reset_pulse)(AspeedWDTState *s, uint32_t property);
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 4d0b9b115f..b483735dc2 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -318,14 +318,14 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     /* Watch dog */
+     for (i = 0; i < sc->wdts_num; i++) {
+         AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
++        hwaddr wdt_offset = sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize;
+ 
+         object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
+                                  &error_abort);
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
+             return;
+         }
+-        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0,
+-                        sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
++        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0, wdt_offset);
+     }
+ 
+     /* GPIO */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 37f43b4165..75add765c6 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -467,14 +467,14 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     /* Watch dog */
+     for (i = 0; i < sc->wdts_num; i++) {
+         AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
++        hwaddr wdt_offset = sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize;
+ 
+         object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
+                                  &error_abort);
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
+             return;
+         }
+-        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0,
+-                        sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
++        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0, wdt_offset);
+     }
+ 
+     /* RAM */
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index b05b9dd416..e884d6badc 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -386,14 +386,14 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     /* Watch dog */
+     for (i = 0; i < sc->wdts_num; i++) {
+         AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
++        hwaddr wdt_offset = sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize;
+ 
+         object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
+                                  &error_abort);
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
+             return;
+         }
+-        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0,
+-                        sc->memmap[ASPEED_DEV_WDT] + i * awc->offset);
++        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->wdt[i]), 0, wdt_offset);
+     }
+ 
+     /* RAM  */
 diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 958725a1b5..eefca31ae4 100644
+index d753693a2e..958725a1b5 100644
 --- a/hw/watchdog/wdt_aspeed.c
 +++ b/hw/watchdog/wdt_aspeed.c
-@@ -260,6 +260,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
- {
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     AspeedWDTState *s = ASPEED_WDT(dev);
-+    AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(dev);
+@@ -309,7 +309,7 @@ static void aspeed_2400_wdt_class_init(ObjectClass *klass, void *data)
+     AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
  
-     assert(s->scu);
+     dc->desc = "ASPEED 2400 Watchdog Controller";
+-    awc->offset = 0x20;
++    awc->iosize = 0x20;
+     awc->ext_pulse_width_mask = 0xff;
+     awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
+     awc->wdt_reload = aspeed_wdt_reload;
+@@ -346,7 +346,7 @@ static void aspeed_2500_wdt_class_init(ObjectClass *klass, void *data)
+     AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
  
-@@ -271,7 +272,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
-     s->pclk_freq = PCLK_HZ;
+     dc->desc = "ASPEED 2500 Watchdog Controller";
+-    awc->offset = 0x20;
++    awc->iosize = 0x20;
+     awc->ext_pulse_width_mask = 0xfffff;
+     awc->reset_ctrl_reg = SCU_RESET_CONTROL1;
+     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
+@@ -369,7 +369,7 @@ static void aspeed_2600_wdt_class_init(ObjectClass *klass, void *data)
+     AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
  
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
--                          TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
-+                          TYPE_ASPEED_WDT, awc->iosize);
-     sysbus_init_mmio(sbd, &s->iomem);
- }
+     dc->desc = "ASPEED 2600 Watchdog Controller";
+-    awc->offset = 0x40;
++    awc->iosize = 0x40;
+     awc->ext_pulse_width_mask = 0xfffff; /* TODO */
+     awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
+     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
+@@ -392,7 +392,7 @@ static void aspeed_1030_wdt_class_init(ObjectClass *klass, void *data)
+     AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
  
+     dc->desc = "ASPEED 1030 Watchdog Controller";
+-    awc->offset = 0x80;
++    awc->iosize = 0x80;
+     awc->ext_pulse_width_mask = 0xfffff; /* TODO */
+     awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
+     awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
 -- 
 2.39.0
 

@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp345624ejc;
-        Thu, 19 Jan 2023 05:56:45 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXssdRiAXfK4OiAxl7IWcb+8TgOh9iKFKyDhdfsbo1uKEVB6/JY0T44bukfMjgVUh8tZr2h0
-X-Received: by 2002:a5d:5a96:0:b0:2bd:fedc:38fb with SMTP id bp22-20020a5d5a96000000b002bdfedc38fbmr10427802wrb.3.1674136605778;
-        Thu, 19 Jan 2023 05:56:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674136605; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp345652ejc;
+        Thu, 19 Jan 2023 05:56:49 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsYXyM9c+Kbhj/nkz8iyMYT3TfUSMy1g15zaf+e6zf4sBOTJa6VccdzNr9tIpaNGx8vMqR+
+X-Received: by 2002:a17:906:b317:b0:84e:d302:1551 with SMTP id n23-20020a170906b31700b0084ed3021551mr11390422ejz.37.1674136609714;
+        Thu, 19 Jan 2023 05:56:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674136609; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ss4ejA6rUksx7D/VlCxAlkS4UYsHWepHAepmomw0lmhaWedMvbwaKQ4hrzbWO6ujcs
-         ygc5ewmtOUIOc2ThHRMEiM/Odc1kXd0zX6PsHm1mj7m1gARHEKqPjimqme1e7mnRFRcQ
-         AJf7QMQHWyhf0Gx2+JJ5TTz6Y8tSSnbbaFBSmHdq7QBJXd/QkIjpf1ZqyxnmiBQwSAmD
-         KPCQVVCWnWkw1aB9NlxNPJI4L+jfnIB1bt2h9S5btCM5igT9SG0xAfvJL3unnroL1sdr
-         bgNfvSbkadOlsaF2IwdrVvibpDrf2Bw3SjYY8mXt9a0JOiosg5Xt147C+TxCMZ4bj1PN
-         SGtQ==
+        b=jB3wt7XQzP24l8QQbWD5lgM61aW1kpE15cOtawOB0X6wx7t5XKd6TDPv64oBMWwu3f
+         umYYtqFJ1YogIZFQB3PxBTaBANMwveMQEuUstfulC/xW6xuGZux+00OjlcAG/PX7lTXt
+         LvrRXovjZLQEd/edoBoGtjuMj2wH6Tyc2/O0/wbz1NHKESwIAN/3qYYFLt3A2SWX/b7a
+         WFsojrgl1IWmLPH2h89E30nQ9QxXzioilPvCEYJQX462Gdbue2agMSczDsOgT9R48kii
+         gUmgd/dEPp3gQTMQSP4qRpAaaRjkG8gChQQeUM3UxBhUc3NqUMDV004ihhwSvdc/Xq5a
+         Zlew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=Kxw6TKsC9kiV5b4c5UCL6Qn2d2CdJeDlo8i5iP+EEIc=;
-        b=bgUtrxNM0AgHD4lPT3BjNdYPtptVuzOWdpZExU7LiDBeH+A4mrmI8h5JaHq0VlQh7B
-         bE7r2goN/wVQz+wc/6vfmiCNtIfEQufKduQBKQGA/VaAmcIOv9T/KgKqY/H6KNYSTy9E
-         ayRakUd62XhDLsquB3Xz0qoMFSuAnbuFjSeFFaGmPC8BpUsQsr5IW0xpZztBlPjYTUaU
-         osq1mrwnDbwnVw+MKLjaDgx0gFgxe/VYNzzt6ZleXj9YbBTyY4BlqcAjq4DL9LpWsdas
-         mcrR7gSSuBgrm3oj79TRnwUkmYd4R+AX7Yr7YZIoaiLVadQrh1sGHIO4I2YTntk4Drf3
-         CsOw==
+        bh=pOHcxdY1LhPmAxt6QcRmCOJFL4WbnqEVMCoD9cJwpTA=;
+        b=oFV9v0GK/iLhsEUKhcnqNILE22hgQgGUYV6IzFwhi78lUO6p3+uVR/qEAWvd69qc0u
+         d0nU0H0Xw2tnCNPCC5XdSlcFYm3fMU79L+BxP0q08EE/IE0U9jfxsXYlimzFmdFfHagO
+         jY7nzVDdFG3QRvyieG5CQpEFlpJ086Lr+uDTlCNc7k7xWJrne8UOJ3/HfYgoWTHPsXBT
+         7+eXreCA0rPDYQu/ACM35nBJUoLsg/LghFqqjBsiGQxCkaBfc8c7/GPRxLmPeo2iouSu
+         qfoCcQR+GavmcTBOMPD/1X8EroMJoXiprmb1mhXSHNLRHiQGpgdxPQOZru5UUrc7ZMBe
+         Redg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=jsTLzQek;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=rNCU1wPF;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oJ5p0feU;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="CGUaP/62";
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id f15-20020a5d64cf000000b00268cb84a022si38822091wri.136.2023.01.19.05.56.45
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id xb13-20020a170907070d00b0084d1310711dsi41901247ejb.315.2023.01.19.05.56.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 05:56:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Thu, 19 Jan 2023 05:56:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=jsTLzQek;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=rNCU1wPF;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oJ5p0feU;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="CGUaP/62";
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 5F30D5CE73;
-	Thu, 19 Jan 2023 13:56:45 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 5A5B33F42D;
+	Thu, 19 Jan 2023 13:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674136605; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1674136609; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Kxw6TKsC9kiV5b4c5UCL6Qn2d2CdJeDlo8i5iP+EEIc=;
-	b=jsTLzQekYnBCWELT6ZEMxrmCEQ4zoqpWVOZWqS9124UV2qKhEFIs0DBxo8+Klzp5vwBM2d
-	MIvkVvFxMjZWoNWfeWoWDG/9hNNpDExE2kLs4/Z0PFr/AxzimyOvWRcDXe7Besg7I0P+9D
-	B9Dp47F2KEGlOEePcmJ+ApB3lzbfG3U=
+	bh=pOHcxdY1LhPmAxt6QcRmCOJFL4WbnqEVMCoD9cJwpTA=;
+	b=oJ5p0feUmJAGHMPBu5ez6hcgwq4q4e+FIf1jfFNp6eF2cMEQnNQAHvKtr4dHxqY0vTUhpn
+	hgCAMmvgp6G8Bkqm82X3yn3cFoPq4VzoTqE5nXV2uDOkK7XR3mOnFMnttF3wp/w34wOX3P
+	1snuEA/or1XAGdc3a+n4b/I0vhalPMM=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674136605;
+	s=susede2_ed25519; t=1674136609;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Kxw6TKsC9kiV5b4c5UCL6Qn2d2CdJeDlo8i5iP+EEIc=;
-	b=rNCU1wPFGDw7zl/eyqDQ+hVbT9dxWu+EebmuunernFzSlnfUVWXpMSXqxM0/QfBYFJ9YVX
-	MWmBAtWI3O/17NAg==
+	bh=pOHcxdY1LhPmAxt6QcRmCOJFL4WbnqEVMCoD9cJwpTA=;
+	b=CGUaP/62tDPP6DugZZloOkD0nOe4mw9AnWYRNdZDNeCIcEKZXjggw63aPXrih6e3V+Xq5+
+	Dg5Fz0AlDO1Bf/Bg==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D8EE0134F5;
-	Thu, 19 Jan 2023 13:56:41 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D3949134F5;
+	Thu, 19 Jan 2023 13:56:45 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id sLkPJxlMyWOCFAAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 19 Jan 2023 13:56:41 +0000
+	id QHDKJR1MyWOCFAAAMHmgww
+	(envelope-from <farosas@suse.de>); Thu, 19 Jan 2023 13:56:45 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -85,79 +85,55 @@ Cc: qemu-arm@nongnu.org,
 	Cornelia Huck <cohuck@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [RFC PATCH v4 04/15] tests/qtest: arm-cpu-features: Match tests to required accelerators
-Date: Thu, 19 Jan 2023 10:54:13 -0300
-Message-Id: <20230119135424.5417-5-farosas@suse.de>
+Subject: [RFC PATCH v4 05/15] tests/qtest: Restrict tpm-tis-devices-{swtpm}-test to CONFIG_TCG
+Date: Thu, 19 Jan 2023 10:54:14 -0300
+Message-Id: <20230119135424.5417-6-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230119135424.5417-1-farosas@suse.de>
 References: <20230119135424.5417-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: jz3d1zY2CT6C
+X-TUID: 1z1Z2ug/JvsQ
+
+These tests set -accel tcg, so restrict them to when TCG is present.
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 ---
- tests/qtest/arm-cpu-features.c | 22 +++++++++++++++-------
- 1 file changed, 15 insertions(+), 7 deletions(-)
+ tests/qtest/meson.build | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index 4ff2014bea..1555b0bab8 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -21,7 +21,7 @@
- #define SVE_MAX_VQ 16
- 
- #define MACHINE     "-machine virt,gic-version=max -accel tcg "
--#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
-+#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm "
- #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
-                     "  'arguments': { 'type': 'full', "
- #define QUERY_TAIL  "}}"
-@@ -613,31 +613,39 @@ int main(int argc, char **argv)
- {
-     g_test_init(&argc, &argv, NULL);
- 
--    qtest_add_data_func("/arm/query-cpu-model-expansion",
--                        NULL, test_query_cpu_model_expansion);
-+    if (qtest_has_accel("tcg")) {
-+        qtest_add_data_func("/arm/query-cpu-model-expansion",
-+                            NULL, test_query_cpu_model_expansion);
-+    }
-+
-+    if (!g_str_equal(qtest_get_arch(), "aarch64")) {
-+        goto out;
-+    }
- 
-     /*
-      * For now we only run KVM specific tests with AArch64 QEMU in
-      * order avoid attempting to run an AArch32 QEMU with KVM on
-      * AArch64 hosts. That won't work and isn't easy to detect.
-      */
--    if (g_str_equal(qtest_get_arch(), "aarch64") && qtest_has_accel("kvm")) {
-+    if (qtest_has_accel("kvm")) {
-         /*
-          * This tests target the 'host' CPU type, so register it only if
-          * KVM is available.
-          */
-         qtest_add_data_func("/arm/kvm/query-cpu-model-expansion",
-                             NULL, test_query_cpu_model_expansion_kvm);
-+
-+        qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
-+                            NULL, sve_tests_sve_off_kvm);
-     }
- 
--    if (g_str_equal(qtest_get_arch(), "aarch64")) {
-+    if (qtest_has_accel("tcg")) {
-         qtest_add_data_func("/arm/max/query-cpu-model-expansion/sve-max-vq-8",
-                             NULL, sve_tests_sve_max_vq_8);
-         qtest_add_data_func("/arm/max/query-cpu-model-expansion/sve-off",
-                             NULL, sve_tests_sve_off);
--        qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
--                            NULL, sve_tests_sve_off_kvm);
-     }
- 
-+out:
-     return g_test_run();
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 1af63f8bd2..9dd5c2de6e 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -204,8 +204,8 @@ qtests_arm = \
+ # TODO: once aarch64 TCG is fixed on ARM 32 bit host, make bios-tables-test unconditional
+ qtests_aarch64 = \
+   (cpu != 'arm' and unpack_edk2_blobs ? ['bios-tables-test'] : []) +                            \
+-  (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-test'] : []) +        \
+-  (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-swtpm-test'] : []) +  \
++  (config_all_devices.has_key('CONFIG_TCG') and config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ?   \
++    ['tpm-tis-device-test', 'tpm-tis-device-swtpm-test'] : []) +                                         \
+   (config_all_devices.has_key('CONFIG_XLNX_ZYNQMP_ARM') ? ['xlnx-can-test', 'fuzz-xlnx-dp-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test'] : []) +  \
+   ['arm-cpu-features',
+@@ -295,11 +295,15 @@ qtests = {
+   'tpm-crb-test': [io, tpmemu_files],
+   'tpm-tis-swtpm-test': [io, tpmemu_files, 'tpm-tis-util.c'],
+   'tpm-tis-test': [io, tpmemu_files, 'tpm-tis-util.c'],
+-  'tpm-tis-device-swtpm-test': [io, tpmemu_files, 'tpm-tis-util.c'],
+-  'tpm-tis-device-test': [io, tpmemu_files, 'tpm-tis-util.c'],
+   'vmgenid-test': files('boot-sector.c', 'acpi-utils.c'),
  }
+ 
++if config_all_devices.has_key('CONFIG_TCG')
++   qtests += { 'tpm-tis-device-swtpm-test': [io, tpmemu_files, 'tpm-tis-util.c'],
++               'tpm-tis-device-test': [io, tpmemu_files, 'tpm-tis-util.c'], }
++endif
++
++
+ gvnc = dependency('gvnc-1.0', required: false)
+ if gvnc.found()
+   qtests += {'vnc-display-test': [gvnc]}
 -- 
 2.35.3

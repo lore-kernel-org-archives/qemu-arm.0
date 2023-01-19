@@ -1,61 +1,61 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp297188ejc;
-        Thu, 19 Jan 2023 04:37:36 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvn5jIEd8UKOs0OfzXxy/CJZY4eovARFTMEQxK+N7607BoZdVcOffJxDI3tCDZxTT89DdIT
-X-Received: by 2002:a67:fb99:0:b0:3d3:e0a9:d467 with SMTP id n25-20020a67fb99000000b003d3e0a9d467mr6063748vsr.33.1674131856060;
-        Thu, 19 Jan 2023 04:37:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674131856; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp297220ejc;
+        Thu, 19 Jan 2023 04:37:38 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXs2YkfSQ4sxcV4JJSe/KHbgPLpCnQm+u52f6lXzZW4byifrIoRfETHY+S9/5FO0FFQx5fM3
+X-Received: by 2002:a05:6214:360c:b0:535:12cb:98f6 with SMTP id nv12-20020a056214360c00b0053512cb98f6mr17570103qvb.52.1674131858384;
+        Thu, 19 Jan 2023 04:37:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674131858; cv=none;
         d=google.com; s=arc-20160816;
-        b=IARZO0fHT3ghOap+ljb0QET78y+Qwnb4OzbSgMEy6EEtn5qWvxV2gx56MJEvPOcTpR
-         8wUHgvmJytx/HQy8keyKAvSkcWoQ7QwAouciODP+uRRmRs1sZINFfnoY1JOjEZKWZh7c
-         tqjXohCyx6rtzKsyzivuAGWj7R+9BGVt/ej/7/MNIeP89Mut6pRMnSiVlreRck16tty9
-         9yK4WoZAa0IDr9/G1Ay7p9buCJKdhpVc3rvQwcAkrdoPkmfxTWcEA/F06/X/tMDFA1kD
-         5hm2Dxkylj2efFaj5bAPOf2oTsslGRW9bLGlUYI8OaNdt8GrYaJt6VQQ5qYJnOJEwfg7
-         hBXA==
+        b=JNdCIT9tJjlQjeLzQnCsQisBQlJkFDIuVzHzE+j/Yx9oHeJIVPVEH0Q8ET3X1+9bOy
+         tvpZg47sUvF2KfAF6mKprg/0OaiN3KOcDJFMigVvZS0arMIg3QDpgWWrVqpvbLo0JSj4
+         t6HJdrt4HM41mDVJEhRyxWSMIsIt+kODuEKytgiacpnZ/CPEH+Ek8uFAT8Bf5zezDao1
+         Q8OPPSPnHtE64kC3yJAtSvQo1xe4bwT/d8Wfa7B333K7nowZlUcguVVEiWZ44Tle02yf
+         OUlIj/zLLS9KLuxLgbfp2ZrAERpvUDlbJbqTqTDPVQ0oROyamU2wCzBTNDyv9SdYeUtQ
+         IVFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=neyaOrGv5nQO6wP4ANJHaXdGxWOwH4u1lWO/+Z7Ow7M=;
-        b=MKQMLo6atJqa4QcDHoqXz/SsDbOyeqoNZLZ9pOgAnkiQyW/YTP7wgsI6+PdSw/j/be
-         eXBzNnqOn79RMMAIENVaDjEQnOowqNFoKFtzzWpb0HxhXag3hx7bePZ+1E77Si0k8bxl
-         AEkrfPd317Tayj+CQRf6t9DDGReZgZZ6SoX4BuMi5Z2rJqDk+qwEcWCd1FSRb7hkpvEq
-         2EVHRqktKP1zLf6A/HWqqbeO0LSlHp1HcSHs+t/JwxKnU4AlvlzVlnDmUQzkFhYdx34T
-         cvxfr2Zv7XXNLAuqylRRsxMAiuWuQU3XLWK9SK1VWZ85Pm4QHBRfmdpfMgm8BxeoVnQ9
-         6Vfw==
+        bh=/lTuiMIkRXJU1I0qcygaiT77weNkwoeEYjy7oIGWPVE=;
+        b=eCz4wWIjgLDqE0fgmPLm7V2pWN/3ZybG7qdiG6f352zQV17hTOvLBEeqEcfW1qeu/+
+         44oHJ7f1QiwIkzqlm+1blvaGZVaK3iuPRpdqg/M9mK9NeEe46AA82oC5+SP2nm//Fp7M
+         iXqVBh9UfdByB/MTJki6YyKgSt4GC0tP5zpYSkYXGB1c/ffJIm8CvxH/TvvxgS9l60bm
+         xvp/8ixWWd6WRL6xeYzuAAE4u3cG7Zeag7AVJF9zY3MjHb9MH9ewxo8uaYD9iCRqX3uL
+         BYorTRoV5qOQLbGL1jlJW3OeQHU27iVYhCajDNV5JOzE46V6N9FiROTofTwvza/qICX1
+         82QQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n16-20020a05620a295000b006fbdf77201asi4890903qkp.597.2023.01.19.04.37.35
+        by mx.google.com with ESMTPS id fq13-20020a056214258d00b00535433eb047si2974810qvb.341.2023.01.19.04.37.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 04:37:36 -0800 (PST)
+        Thu, 19 Jan 2023 04:37:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pIU9f-0007vY-L8; Thu, 19 Jan 2023 07:36:31 -0500
+	id 1pIU9v-00005v-Ge; Thu, 19 Jan 2023 07:36:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU99-0007Fa-N6; Thu, 19 Jan 2023 07:36:00 -0500
+ id 1pIU9M-0007a4-D2; Thu, 19 Jan 2023 07:36:12 -0500
 Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=w1SB=5Q=kaod.org=clg@ozlabs.org>)
- id 1pIU96-0007eu-G0; Thu, 19 Jan 2023 07:35:58 -0500
+ id 1pIU9K-0007h9-R5; Thu, 19 Jan 2023 07:36:12 -0500
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYR3tWmz4xN4;
- Thu, 19 Jan 2023 23:35:55 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4NyMYh2NF4z4xN4;
+ Thu, 19 Jan 2023 23:36:08 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYP3dfpz4xHV;
- Thu, 19 Jan 2023 23:35:53 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4NyMYf1wrJz4xN1;
+ Thu, 19 Jan 2023 23:36:06 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -63,10 +63,10 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 19/25] hw/misc/aspeed_hace: Do not crash if
- address_space_map() failed
-Date: Thu, 19 Jan 2023 13:34:43 +0100
-Message-Id: <20230119123449.531826-20-clg@kaod.org>
+Subject: [PATCH 24/25] hw/arm/aspeed_ast10x0: Add TODO comment to use
+ Cortex-M4F
+Date: Thu, 19 Jan 2023 13:34:48 +0100
+Message-Id: <20230119123449.531826-25-clg@kaod.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230119123449.531826-1-clg@kaod.org>
 References: <20230119123449.531826-1-clg@kaod.org>
@@ -95,98 +95,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0nG07lNxlETT
+X-TUID: WnHgGaK5g6eI
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-address_space_map() can fail:
-
-  uart:~$ hash test
-  sha256_test
-  tv[0]:
-  Segmentation fault: 11
-  Thread 3 "qemu-system-arm" received signal SIGSEGV, Segmentation fault.
-  gen_acc_mode_iov (req_len=0x7ffff18b7778, id=<optimized out>, iov=0x7ffff18b7780, s=0x555556ce0bd0)
-      at ../hw/misc/aspeed_hace.c:171
-  171         if (has_padding(s, &iov[id], *req_len, &total_msg_len, &pad_offset)) {
-  (gdb) bt
-  #0  gen_acc_mode_iov (req_len=0x7ffff18b7778, id=<optimized out>, iov=0x7ffff18b7780, s=0x555556ce0bd0)
-      at ../hw/misc/aspeed_hace.c:171
-  #1  do_hash_operation (s=s@entry=0x555556ce0bd0, algo=3, sg_mode=sg_mode@entry=true, acc_mode=acc_mode@entry=true)
-      at ../hw/misc/aspeed_hace.c:224
-  #2  0x00005555559bdbb8 in aspeed_hace_write (opaque=<optimized out>, addr=12, data=262488, size=<optimized out>)
-      at ../hw/misc/aspeed_hace.c:358
-
-This change doesn't fix much, but at least the guest
-can't crash QEMU anymore. Instead it is still usable:
-
-  uart:~$ hash test
-  sha256_test
-  tv[0]:hash_final error
-  sha384_test
-  tv[0]:hash_final error
-  sha512_test
-  tv[0]:hash_final error
-  [00:00:06.278,000] <err> hace_global: HACE poll timeout
-  [00:00:09.324,000] <err> hace_global: HACE poll timeout
-  [00:00:12.261,000] <err> hace_global: HACE poll timeout
-  uart:~$
+This SoC uses a Cortex-M4F. QEMU only implements a M4,
+which is good enough. Add a TODO note in case the M4F
+is added.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Peter Delevoryas <peter@pjd.dev>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/misc/aspeed_hace.c | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
+ hw/arm/aspeed_ast10x0.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index ac21be306c..12a761f1f5 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -193,6 +193,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-     size_t digest_len = 0;
-     int niov = 0;
-     int i;
-+    void *haddr;
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 5c794c2420..649b3b13c1 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -420,7 +420,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
+     dc->realize = aspeed_soc_ast1030_realize;
  
-     if (sg_mode) {
-         uint32_t len = 0;
-@@ -217,9 +218,13 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-             addr &= SG_LIST_ADDR_MASK;
- 
-             plen = len & SG_LIST_LEN_MASK;
--            iov[i].iov_base = address_space_map(&s->dram_as, addr, &plen, false,
--                                                MEMTXATTRS_UNSPECIFIED);
--
-+            haddr = address_space_map(&s->dram_as, addr, &plen, false,
-+                                      MEMTXATTRS_UNSPECIFIED);
-+            if (haddr == NULL) {
-+                qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
-+                return;
-+            }
-+            iov[i].iov_base = haddr;
-             if (acc_mode) {
-                 niov = gen_acc_mode_iov(s, iov, i, &plen);
- 
-@@ -230,10 +235,14 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-     } else {
-         hwaddr len = s->regs[R_HASH_SRC_LEN];
- 
-+        haddr = address_space_map(&s->dram_as, s->regs[R_HASH_SRC],
-+                                  &len, false, MEMTXATTRS_UNSPECIFIED);
-+        if (haddr == NULL) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
-+            return;
-+        }
-+        iov[0].iov_base = haddr;
-         iov[0].iov_len = len;
--        iov[0].iov_base = address_space_map(&s->dram_as, s->regs[R_HASH_SRC],
--                                            &len, false,
--                                            MEMTXATTRS_UNSPECIFIED);
-         i = 1;
- 
-         if (s->iov_count) {
+     sc->name = "ast1030-a1";
+-    sc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
++    sc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m4"); /* TODO cortex-m4f */
+     sc->silicon_rev = AST1030_A1_SILICON_REV;
+     sc->sram_size = 0xc0000;
+     sc->secsram_size = 0x40000; /* 256 * KiB */
 -- 
 2.39.0
 

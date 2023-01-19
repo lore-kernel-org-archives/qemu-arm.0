@@ -1,118 +1,549 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp367861ejc;
-        Thu, 19 Jan 2023 06:26:32 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsuGoUFqHCyPjMfUs0aQjcK2/V4+yvSLoIN3JTkZvF6TSHy9RVr2V8bsN5g+83z4z1XGqcP
-X-Received: by 2002:a05:6000:1f95:b0:2bc:371a:8a2 with SMTP id bw21-20020a0560001f9500b002bc371a08a2mr10249320wrb.37.1674138392286;
-        Thu, 19 Jan 2023 06:26:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674138392; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp378748ejc;
+        Thu, 19 Jan 2023 06:42:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXt9hyI/fdSdRrlpu1hZxSrK2nufF48DKOx1BKj8uEpQnJl1p1H/onM+YT8SW5kM9s/UJaVT
+X-Received: by 2002:a05:6214:2622:b0:513:e345:4ccd with SMTP id gv2-20020a056214262200b00513e3454ccdmr24141663qvb.37.1674139373149;
+        Thu, 19 Jan 2023 06:42:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674139373; cv=none;
         d=google.com; s=arc-20160816;
-        b=rZD/Tryuy7mexL5Hu9mIHRxuSmextHgHbM2m/fVFK+y8mX4XkgO3oCvali7TYLMpnd
-         stKkqgHwMw3AyQRTjk+5XS0ftieFx2b6ZuOHyw96Ay35QFWOnr9/EWSc2K/TGglqOtxR
-         PSYU4+EIZjDsTzQCDF/AbBJR2+N2v+ho9pd3YD854+FarN1tiiEitWNRiRkeK5dsRPzD
-         GMlOfQRIdBsdJPu8GlIUzqlEQc2xkPKDNtbZmOEq7+/ygk21NwGspVzh98/HTklCx76/
-         8IB2ywfQyb5ozwhEscQu4cNsWIq9IJKjH4IOmDeJN7EenooHMJFRRClcCQ29OVe411EW
-         QWkg==
+        b=EMHjDQVc6kM+QXL13pf7ngIMyFh1ifbFT4U6T887LMWICbDJpxqHdcL59AXcZ75F+l
+         c2tS9Z9sBF35uE/qA30jFrSa2H7boDkt5ylQFTOH/fIUZo7WlgrXsNm6dtEMUzNCo80D
+         SybUX/3V3eg2p6tU+H50k/8eaqGEPtK+CsMET0QDBoJeTGlXFcQBBjkjV/rBysrTwckH
+         r9RuHCRlQqP4nevJTj2iA0E30XDBCqHuPsVz7HI7WyKRXCWvNbS277ZzllwcWYdkdfM9
+         ewJux+PlBJUD4xnDKw7n4asGcdvzJ0BjdErI31zsm3OUYxo59bQucW461hlQCZ8XeI3X
+         w5ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=D3SrGXQAGdia3Gtgzpgxn1EVA7CxIh05SQOCdS5nkXk=;
-        b=NSFkNtQRkkI0GK+59wH14zeekRFniDfvCjYpXlwPJuagaVYf5Yii9nrvjH5D7mPtTo
-         44GskTF6e0wHmN2kzRvQrBcKxFECWm5KlCJxJGIZJZouRkTciIX8j7+9fwownY9Spm2j
-         7wfw+TRNDlxwBxy2aUMytGLUxgWybntQPP5egBpPvaIoPtgKx1Xeq880hwFdsP5ZBrlr
-         SPkz0kNnMicFh7ldiN0MTd06mueWVn6jQ0/QfPZqk/twDheJQEu+DzRmu8iUpp/FfPNB
-         +nyVl1dH5Tekgn/4peiOBlA3wN4Cpt/9Dap7Xc8CxZ6U4ktAzgAyzT/6q3gf3mM/IBXS
-         77gg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=WLm/26TDzMxR9AjqcQLVzx0EJOKTTp2Q5NhztMFa29c=;
+        b=XIB30fU3Cq9YzRP4KjfVe1gsFtiWa3tj167CPcGKZsCgGTVVsAOu2H9xVmHMEXsYE0
+         lqYBoULsjxOXY+cBC2U1EKo7Hl4/P5ZD+zIKjbCOpY9qcXKI27QOyhlNSi7U4fSRqCvr
+         MewVBdynIl/xT1ZICnfwJzZdbVK9iVKEesXHvD8EsNeleFN+XAvxIPXiuxO4AVQv614Q
+         6OsdrEo0Q0FTIfajJnMI0oiXLNZMWCLZwUiuEPOYxhBM5rjwG5vtDBjmVwXe7ZsIjrby
+         6fsLgMU+WeUd5zNwTAB0CBvdpZqbR8AhsrJ30JavgEkXIl7d1iIr92LviDcBUV5BGab3
+         Nrcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rtnsSVeJ;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=Ewt5hOnG;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id h13-20020a05600016cd00b002be1b371f39si8775428wrf.739.2023.01.19.06.26.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 06:26:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b=TBMCPeFM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id dv28-20020a05620a1b9c00b0070642e83809si6860460qkb.363.2023.01.19.06.42.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Jan 2023 06:42:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rtnsSVeJ;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=Ewt5hOnG;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 9DDBA5CECF;
-	Thu, 19 Jan 2023 14:26:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674138391; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=D3SrGXQAGdia3Gtgzpgxn1EVA7CxIh05SQOCdS5nkXk=;
-	b=rtnsSVeJDfUSxn4Yffdkh4vv38EZndqH6AMXHFO1iSB4cMAxy1JAw5wIxmpklFqATQlNOP
-	fS0IhZ4g+hoYR3RTR4uncHrczTf83Z9NKh6P3y/X0xob52N254TDYcITd8067y2IyubcVH
-	QoOEgpEseoTKO7cr/1/f36WmISXusnM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674138391;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=D3SrGXQAGdia3Gtgzpgxn1EVA7CxIh05SQOCdS5nkXk=;
-	b=Ewt5hOnGB50Z43ICiZWl2P6qsr2dHCOdNxdr+zAeQQsi7+80b6E3be6NhrgShzXPJ4yrbP
-	kr2sIAnSm9Do6jCg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 29E7F139ED;
-	Thu, 19 Jan 2023 14:26:30 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id AWDAOBZTyWOhJQAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 19 Jan 2023 14:26:30 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
- Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 00/20] target/arm: CONFIG_TCG=n part 1
-In-Reply-To: <d8da1d01-c87d-a226-0914-448a7da144c5@linaro.org>
-References: <20230118193518.26433-1-farosas@suse.de>
- <39bb348d-e3af-6a20-e7d5-d7a1c918a389@linaro.org> <87bkmu1z8v.fsf@suse.de>
- <d8da1d01-c87d-a226-0914-448a7da144c5@linaro.org>
-Date: Thu, 19 Jan 2023 11:26:28 -0300
-Message-ID: <877cxi1tyj.fsf@suse.de>
+       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b=TBMCPeFM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pIW7k-0003w6-3e; Thu, 19 Jan 2023 09:42:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1pIW7j-0003ut-7c
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 09:42:39 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1pIW7f-0000BH-DQ
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 09:42:38 -0500
+Received: by mail-ej1-x629.google.com with SMTP id bk15so6188137ejb.9
+ for <qemu-arm@nongnu.org>; Thu, 19 Jan 2023 06:42:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=WLm/26TDzMxR9AjqcQLVzx0EJOKTTp2Q5NhztMFa29c=;
+ b=TBMCPeFMINvlR6sLfqmBm9/vaLQjMVVaZZNdyj3wfzPAho/+69TQfPAGmXBfcQgvE2
+ 3MvTFGEuGGhy10YgDigUsENiJ0WQ9QHP+FCn+M4x9x1Gv+33h+zvfPdAz3VQg5YfJ15C
+ RBq8K4q5oaxmGElBG2xYzudAxiovhsDns7/JEomVxBoexfkvAbuMk7v7jiLFWlwH6Lf+
+ v6NVPChBDRjuviN5jqAQLygyfD4s3RMzQF08cYUy38D0qCHIYTBopdBA07F+x7d87w49
+ JejKb5gPur7f5jPjMFbXfHrzmRW0tlsWHSQz65j4IKCwbpU5xvBVjNpUzinQJltxSBAM
+ px9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=WLm/26TDzMxR9AjqcQLVzx0EJOKTTp2Q5NhztMFa29c=;
+ b=Z5R4NiSDsYzPdBXNOUKZkym9PkwUu8jDzGCJgaKmeKG5J4U0LO+ft5O9dmJEf6gPtS
+ cg/GgTzIl82luZuQ9hsvWPgnXJIUiMG+DSNPagELxHcqNvyixNoVjiQ1p5it9CNGQzIY
+ WDaMUBmBeCTc3EAC3xujiG4ux3Q5prxTOCOL24aPoAXg7kIETSXDMmfJH2w430cCfAgA
+ 60q6PoQSy+VEiBsf7dPMR0XdyP/3sSw/QuoAOrtkNISZurS8tkKf0YdoOSobCPMsbJ48
+ X4KToqqu3t4ske1lqernnhYB+NjGooH8pvEVkGcEXFUxopz/k2ERGj+LmJEwitMA3uZ7
+ u+NQ==
+X-Gm-Message-State: AFqh2koHM2zpu9kiq5GqLKKGXKLe/GEjJMfmznbhEPGnHk4u7fucemiM
+ 5WN4sSYJ38SgfmVpW2OKbl2gEVunbo8RH8Xv9Kag4A==
+X-Received: by 2002:a17:906:a3c3:b0:870:7c88:466e with SMTP id
+ ca3-20020a170906a3c300b008707c88466emr788492ejb.140.1674139353359; Thu, 19
+ Jan 2023 06:42:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 7kDr+DF+aCxH
+References: <20230119065959.3104012-1-armbru@redhat.com>
+ <20230119065959.3104012-5-armbru@redhat.com>
+In-Reply-To: <20230119065959.3104012-5-armbru@redhat.com>
+From: Warner Losh <imp@bsdimp.com>
+Date: Thu, 19 Jan 2023 07:42:46 -0700
+Message-ID: <CANCZdfrU4zVcepMj=B5EVUz-qhCDhMYDs+cYS5yfW1-G01PsbA@mail.gmail.com>
+Subject: Re: [PATCH v4 04/19] bsd-user: Clean up includes
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, richard.henderson@linaro.org, pbonzini@redhat.com, 
+ kwolf@redhat.com, hreitz@redhat.com, kevans@freebsd.org,
+ berrange@redhat.com, 
+ groug@kaod.org, qemu_oss@crudebyte.com, mst@redhat.com, philmd@linaro.org, 
+ peter.maydell@linaro.org, alistair@alistair23.me, jasowang@redhat.com, 
+ jonathan.cameron@huawei.com, kbastian@mail.uni-paderborn.de, 
+ quintela@redhat.com, dgilbert@redhat.com, michael.roth@amd.com, 
+ kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com, 
+ bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
+ qemu-riscv@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000763fdf05f29ef11f"
+Received-SPF: none client-ip=2a00:1450:4864:20::629;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gYoKbLBE3aZf
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+--000000000000763fdf05f29ef11f
+Content-Type: text/plain; charset="UTF-8"
 
-> On 19/1/23 13:32, Fabiano Rosas wrote:
->> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->>=20
->>> On 18/1/23 20:34, Fabiano Rosas wrote:
->>>> These are the already reviewed patches from the first half of my
->>>> previous series:
->>>> https://lore.kernel.org/r/20230113140419.4013-1-farosas@suse.de
->>>>
->>>> This unbreaks the --disable-tcg build, but there are issues in runtime
->>>> that are still being hashed out in the other series.
+On Thu, Jan 19, 2023 at 12:00 AM Markus Armbruster <armbru@redhat.com>
+wrote:
+
+> Clean up includes so that osdep.h is included first and headers
+> which it implies are not included manually.
 >
-> Are you saying, we can *link* this configuration but not *run* it yet?
+> This commit was created with scripts/clean-includes.
+>
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  bsd-user/bsd-proc.h               | 4 ----
+>  bsd-user/qemu.h                   | 1 -
+>  bsd-user/arm/signal.c             | 1 +
+>  bsd-user/arm/target_arch_cpu.c    | 2 ++
+>  bsd-user/freebsd/os-sys.c         | 1 +
+>  bsd-user/i386/signal.c            | 1 +
+>  bsd-user/i386/target_arch_cpu.c   | 3 +--
+>  bsd-user/main.c                   | 4 +---
+>  bsd-user/strace.c                 | 1 -
+>  bsd-user/x86_64/signal.c          | 1 +
+>  bsd-user/x86_64/target_arch_cpu.c | 3 +--
+>  11 files changed, 9 insertions(+), 13 deletions(-)
+>
+> diff --git a/bsd-user/bsd-proc.h b/bsd-user/bsd-proc.h
+> index 68b66e571d..a1061bffb8 100644
+> --- a/bsd-user/bsd-proc.h
+> +++ b/bsd-user/bsd-proc.h
+> @@ -20,11 +20,7 @@
+>  #ifndef BSD_PROC_H_
+>  #define BSD_PROC_H_
+>
+> -#include <sys/types.h>
+> -#include <sys/stat.h>
+> -#include <sys/time.h>
+>  #include <sys/resource.h>
+>
 
-Strictly speaking, we cannot run it. While it works most of the time,
-there are still references to machines and cpus that are TCG-only. Try
-running -machine ? or -cpu ? for instance. If a user tries to pass one
-of those, there might be breakages like the ones you saw.
+Did you test this on FreeBSD 12? FreeBSD 13 has started to climb the hill
+where all includes are independent, but much of that hasn't been merged to
+12 yet. sys/types.h, at least, is documented as a prereq for both
+sys/stat.h and sys/resource.h.
 
-The other series (I just sent a v4) removes everything that depends on
-TCG. Then it will be 100% safe to use --disable-tcg and consume the
-result.
+I know many of these are in os-dep.h, and I've had trouble in the bsd-user
+fork with that and the layout of the code which has arguably way too much
+in the .h files.
+
+Also, why didn't you move sys/resource.h and other such files to os-dep.h?
+I'm struggling to understand the rules around what is or isn't included
+where?
 
 
+> -#include <unistd.h>
+>
+>  /* exit(2) */
+>  static inline abi_long do_bsd_exit(void *cpu_env, abi_long arg1)
+> diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
+> index be6105385e..0ceecfb6df 100644
+> --- a/bsd-user/qemu.h
+> +++ b/bsd-user/qemu.h
+> @@ -17,7 +17,6 @@
+>  #ifndef QEMU_H
+>  #define QEMU_H
+>
+> -#include "qemu/osdep.h"
+>  #include "cpu.h"
+>  #include "qemu/units.h"
+>  #include "exec/cpu_ldst.h"
+> diff --git a/bsd-user/arm/signal.c b/bsd-user/arm/signal.c
+> index 2b1dd745d1..9734407543 100644
+> --- a/bsd-user/arm/signal.c
+> +++ b/bsd-user/arm/signal.c
+> @@ -17,6 +17,7 @@
+>   *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+>   */
+>
+> +#include "qemu/osdep.h"
+>  #include "qemu.h"
+>
+>  /*
+> diff --git a/bsd-user/arm/target_arch_cpu.c
+> b/bsd-user/arm/target_arch_cpu.c
+> index 02bf9149d5..fe38ae2210 100644
+> --- a/bsd-user/arm/target_arch_cpu.c
+> +++ b/bsd-user/arm/target_arch_cpu.c
+> @@ -16,6 +16,8 @@
+>   *  You should have received a copy of the GNU General Public License
+>   *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+>   */
+> +
+> +#include "qemu/osdep.h"
+>  #include "target_arch.h"
+>
+>  void target_cpu_set_tls(CPUARMState *env, target_ulong newtls)
+> diff --git a/bsd-user/freebsd/os-sys.c b/bsd-user/freebsd/os-sys.c
+> index 309e27b9d6..1676ec10f8 100644
+> --- a/bsd-user/freebsd/os-sys.c
+> +++ b/bsd-user/freebsd/os-sys.c
+> @@ -17,6 +17,7 @@
+>   *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+>   */
+>
+> +#include "qemu/osdep.h"
+>  #include "qemu.h"
+>  #include "target_arch_sysarch.h"
+>
+> diff --git a/bsd-user/i386/signal.c b/bsd-user/i386/signal.c
+> index 5dd975ce56..a3131047b8 100644
+> --- a/bsd-user/i386/signal.c
+> +++ b/bsd-user/i386/signal.c
+> @@ -17,6 +17,7 @@
+>   *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+>   */
+>
+> +#include "qemu/osdep.h"
+>  #include "qemu.h"
+>
+>  /*
+> diff --git a/bsd-user/i386/target_arch_cpu.c
+> b/bsd-user/i386/target_arch_cpu.c
+> index d349e45299..2a3af2ddef 100644
+> --- a/bsd-user/i386/target_arch_cpu.c
+> +++ b/bsd-user/i386/target_arch_cpu.c
+> @@ -17,9 +17,8 @@
+>   *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+>   */
+>
+> -#include <sys/types.h>
+> -
+>  #include "qemu/osdep.h"
+> +
+>  #include "cpu.h"
+>  #include "qemu.h"
+>  #include "qemu/timer.h"
+> diff --git a/bsd-user/main.c b/bsd-user/main.c
+> index 6f09180d65..41290e16f9 100644
+> --- a/bsd-user/main.c
+> +++ b/bsd-user/main.c
+> @@ -18,12 +18,10 @@
+>   *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+>   */
+>
+> -#include <sys/types.h>
+> -#include <sys/time.h>
+> +#include "qemu/osdep.h"
+>  #include <sys/resource.h>
+>  #include <sys/sysctl.h>
+>
+> -#include "qemu/osdep.h"
+>  #include "qemu/help-texts.h"
+>  #include "qemu/units.h"
+>  #include "qemu/accel.h"
+> diff --git a/bsd-user/strace.c b/bsd-user/strace.c
+> index a77d10dd6b..96499751eb 100644
+> --- a/bsd-user/strace.c
+> +++ b/bsd-user/strace.c
+> @@ -20,7 +20,6 @@
+>  #include <sys/select.h>
+>  #include <sys/syscall.h>
+>  #include <sys/ioccom.h>
+> -#include <ctype.h>
+>
+>  #include "qemu.h"
+>
+> diff --git a/bsd-user/x86_64/signal.c b/bsd-user/x86_64/signal.c
+> index c3875bc4c6..46cb865180 100644
+> --- a/bsd-user/x86_64/signal.c
+> +++ b/bsd-user/x86_64/signal.c
+> @@ -16,6 +16,7 @@
+>   *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+>   */
+>
+> +#include "qemu/osdep.h"
+>  #include "qemu.h"
+>
+>  /*
+> diff --git a/bsd-user/x86_64/target_arch_cpu.c
+> b/bsd-user/x86_64/target_arch_cpu.c
+> index be7bd10720..1d32f18907 100644
+> --- a/bsd-user/x86_64/target_arch_cpu.c
+> +++ b/bsd-user/x86_64/target_arch_cpu.c
+> @@ -17,9 +17,8 @@
+>   *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+>   */
+>
+> -#include <sys/types.h>
+> -
+>  #include "qemu/osdep.h"
+> +
+>  #include "cpu.h"
+>  #include "qemu.h"
+>  #include "qemu/timer.h"
+>
+
+I suppose these are fine. How do I run the cleanup script? I have 2x the
+number of files not upstream in the bsd-user fork that I'd like to cleanup
+as well and they are likely a bigger mess and I'll just upstream them in
+the messy state unless I understand how to keep the neat :).
+
+Warner
+
+--000000000000763fdf05f29ef11f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jan 19, 2023 at 12:00 AM Mark=
+us Armbruster &lt;<a href=3D"mailto:armbru@redhat.com">armbru@redhat.com</a=
+>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
+ 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Cle=
+an up includes so that osdep.h is included first and headers<br>
+which it implies are not included manually.<br>
+<br>
+This commit was created with scripts/clean-includes.<br>
+<br>
+Signed-off-by: Markus Armbruster &lt;<a href=3D"mailto:armbru@redhat.com" t=
+arget=3D"_blank">armbru@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0bsd-user/bsd-proc.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0| 4 ----<br>
+=C2=A0bsd-user/qemu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0| 1 -<br>
+=C2=A0bsd-user/arm/signal.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+| 1 +<br>
+=C2=A0bsd-user/arm/target_arch_cpu.c=C2=A0 =C2=A0 | 2 ++<br>
+=C2=A0bsd-user/freebsd/os-sys.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 1 +<br>
+=C2=A0bsd-user/i386/signal.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 1 +=
+<br>
+=C2=A0bsd-user/i386/target_arch_cpu.c=C2=A0 =C2=A0| 3 +--<br>
+=C2=A0bsd-user/main.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0| 4 +---<br>
+=C2=A0bsd-user/strace.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0| 1 -<br>
+=C2=A0bsd-user/x86_64/signal.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 1 +<br>
+=C2=A0bsd-user/x86_64/target_arch_cpu.c | 3 +--<br>
+=C2=A011 files changed, 9 insertions(+), 13 deletions(-)<br>
+<br>
+diff --git a/bsd-user/bsd-proc.h b/bsd-user/bsd-proc.h<br>
+index 68b66e571d..a1061bffb8 100644<br>
+--- a/bsd-user/bsd-proc.h<br>
++++ b/bsd-user/bsd-proc.h<br>
+@@ -20,11 +20,7 @@<br>
+=C2=A0#ifndef BSD_PROC_H_<br>
+=C2=A0#define BSD_PROC_H_<br>
+<br>
+-#include &lt;sys/types.h&gt;<br>
+-#include &lt;sys/stat.h&gt;<br>
+-#include &lt;sys/time.h&gt;<br>
+=C2=A0#include &lt;sys/resource.h&gt;<br></blockquote><div><br></div><div>D=
+id you test this on FreeBSD 12? FreeBSD 13 has started to climb the hill wh=
+ere all includes are independent, but much of that hasn&#39;t been merged t=
+o 12 yet. sys/types.h, at least, is documented as a prereq for both sys/sta=
+t.h and sys/resource.h.</div><div><br></div><div>I know many of these are i=
+n os-dep.h, and I&#39;ve had trouble in the bsd-user fork with that and the=
+ layout of the code which has arguably way too much in the .h files.</div><=
+div><br></div><div>Also, why didn&#39;t you move sys/resource.h and other s=
+uch files to os-dep.h? I&#39;m struggling to understand the rules around wh=
+at is or isn&#39;t included where?<br></div><div>=C2=A0</div><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex">
+-#include &lt;unistd.h&gt;<br>
+<br>
+=C2=A0/* exit(2) */<br>
+=C2=A0static inline abi_long do_bsd_exit(void *cpu_env, abi_long arg1)<br>
+diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h<br>
+index be6105385e..0ceecfb6df 100644<br>
+--- a/bsd-user/qemu.h<br>
++++ b/bsd-user/qemu.h<br>
+@@ -17,7 +17,6 @@<br>
+=C2=A0#ifndef QEMU_H<br>
+=C2=A0#define QEMU_H<br>
+<br>
+-#include &quot;qemu/osdep.h&quot;<br>
+=C2=A0#include &quot;cpu.h&quot;<br>
+=C2=A0#include &quot;qemu/units.h&quot;<br>
+=C2=A0#include &quot;exec/cpu_ldst.h&quot;<br>
+diff --git a/bsd-user/arm/signal.c b/bsd-user/arm/signal.c<br>
+index 2b1dd745d1..9734407543 100644<br>
+--- a/bsd-user/arm/signal.c<br>
++++ b/bsd-user/arm/signal.c<br>
+@@ -17,6 +17,7 @@<br>
+=C2=A0 *=C2=A0 along with this program; if not, see &lt;<a href=3D"http://w=
+ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
+rg/licenses/</a>&gt;.<br>
+=C2=A0 */<br>
+<br>
++#include &quot;qemu/osdep.h&quot;<br>
+=C2=A0#include &quot;qemu.h&quot;<br>
+<br>
+=C2=A0/*<br>
+diff --git a/bsd-user/arm/target_arch_cpu.c b/bsd-user/arm/target_arch_cpu.=
+c<br>
+index 02bf9149d5..fe38ae2210 100644<br>
+--- a/bsd-user/arm/target_arch_cpu.c<br>
++++ b/bsd-user/arm/target_arch_cpu.c<br>
+@@ -16,6 +16,8 @@<br>
+=C2=A0 *=C2=A0 You should have received a copy of the GNU General Public Li=
+cense<br>
+=C2=A0 *=C2=A0 along with this program; if not, see &lt;<a href=3D"http://w=
+ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
+rg/licenses/</a>&gt;.<br>
+=C2=A0 */<br>
++<br>
++#include &quot;qemu/osdep.h&quot;<br>
+=C2=A0#include &quot;target_arch.h&quot;<br>
+<br>
+=C2=A0void target_cpu_set_tls(CPUARMState *env, target_ulong newtls)<br>
+diff --git a/bsd-user/freebsd/os-sys.c b/bsd-user/freebsd/os-sys.c<br>
+index 309e27b9d6..1676ec10f8 100644<br>
+--- a/bsd-user/freebsd/os-sys.c<br>
++++ b/bsd-user/freebsd/os-sys.c<br>
+@@ -17,6 +17,7 @@<br>
+=C2=A0 *=C2=A0 along with this program; if not, see &lt;<a href=3D"http://w=
+ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
+rg/licenses/</a>&gt;.<br>
+=C2=A0 */<br>
+<br>
++#include &quot;qemu/osdep.h&quot;<br>
+=C2=A0#include &quot;qemu.h&quot;<br>
+=C2=A0#include &quot;target_arch_sysarch.h&quot;<br>
+<br>
+diff --git a/bsd-user/i386/signal.c b/bsd-user/i386/signal.c<br>
+index 5dd975ce56..a3131047b8 100644<br>
+--- a/bsd-user/i386/signal.c<br>
++++ b/bsd-user/i386/signal.c<br>
+@@ -17,6 +17,7 @@<br>
+=C2=A0 *=C2=A0 along with this program; if not, see &lt;<a href=3D"http://w=
+ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
+rg/licenses/</a>&gt;.<br>
+=C2=A0 */<br>
+<br>
++#include &quot;qemu/osdep.h&quot;<br>
+=C2=A0#include &quot;qemu.h&quot;<br>
+<br>
+=C2=A0/*<br>
+diff --git a/bsd-user/i386/target_arch_cpu.c b/bsd-user/i386/target_arch_cp=
+u.c<br>
+index d349e45299..2a3af2ddef 100644<br>
+--- a/bsd-user/i386/target_arch_cpu.c<br>
++++ b/bsd-user/i386/target_arch_cpu.c<br>
+@@ -17,9 +17,8 @@<br>
+=C2=A0 *=C2=A0 along with this program; if not, see &lt;<a href=3D"http://w=
+ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
+rg/licenses/</a>&gt;.<br>
+=C2=A0 */<br>
+<br>
+-#include &lt;sys/types.h&gt;<br>
+-<br>
+=C2=A0#include &quot;qemu/osdep.h&quot;<br>
++<br>
+=C2=A0#include &quot;cpu.h&quot;<br>
+=C2=A0#include &quot;qemu.h&quot;<br>
+=C2=A0#include &quot;qemu/timer.h&quot;<br>
+diff --git a/bsd-user/main.c b/bsd-user/main.c<br>
+index 6f09180d65..41290e16f9 100644<br>
+--- a/bsd-user/main.c<br>
++++ b/bsd-user/main.c<br>
+@@ -18,12 +18,10 @@<br>
+=C2=A0 *=C2=A0 along with this program; if not, see &lt;<a href=3D"http://w=
+ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
+rg/licenses/</a>&gt;.<br>
+=C2=A0 */<br>
+<br>
+-#include &lt;sys/types.h&gt;<br>
+-#include &lt;sys/time.h&gt;<br>
++#include &quot;qemu/osdep.h&quot;<br>
+=C2=A0#include &lt;sys/resource.h&gt;<br>
+=C2=A0#include &lt;sys/sysctl.h&gt;<br>
+<br>
+-#include &quot;qemu/osdep.h&quot;<br>
+=C2=A0#include &quot;qemu/help-texts.h&quot;<br>
+=C2=A0#include &quot;qemu/units.h&quot;<br>
+=C2=A0#include &quot;qemu/accel.h&quot;<br>
+diff --git a/bsd-user/strace.c b/bsd-user/strace.c<br>
+index a77d10dd6b..96499751eb 100644<br>
+--- a/bsd-user/strace.c<br>
++++ b/bsd-user/strace.c<br>
+@@ -20,7 +20,6 @@<br>
+=C2=A0#include &lt;sys/select.h&gt;<br>
+=C2=A0#include &lt;sys/syscall.h&gt;<br>
+=C2=A0#include &lt;sys/ioccom.h&gt;<br>
+-#include &lt;ctype.h&gt;<br>
+<br>
+=C2=A0#include &quot;qemu.h&quot;<br>
+<br>
+diff --git a/bsd-user/x86_64/signal.c b/bsd-user/x86_64/signal.c<br>
+index c3875bc4c6..46cb865180 100644<br>
+--- a/bsd-user/x86_64/signal.c<br>
++++ b/bsd-user/x86_64/signal.c<br>
+@@ -16,6 +16,7 @@<br>
+=C2=A0 *=C2=A0 along with this program; if not, see &lt;<a href=3D"http://w=
+ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
+rg/licenses/</a>&gt;.<br>
+=C2=A0 */<br>
+<br>
++#include &quot;qemu/osdep.h&quot;<br>
+=C2=A0#include &quot;qemu.h&quot;<br>
+<br>
+=C2=A0/*<br>
+diff --git a/bsd-user/x86_64/target_arch_cpu.c b/bsd-user/x86_64/target_arc=
+h_cpu.c<br>
+index be7bd10720..1d32f18907 100644<br>
+--- a/bsd-user/x86_64/target_arch_cpu.c<br>
++++ b/bsd-user/x86_64/target_arch_cpu.c<br>
+@@ -17,9 +17,8 @@<br>
+=C2=A0 *=C2=A0 along with this program; if not, see &lt;<a href=3D"http://w=
+ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
+rg/licenses/</a>&gt;.<br>
+=C2=A0 */<br>
+<br>
+-#include &lt;sys/types.h&gt;<br>
+-<br>
+=C2=A0#include &quot;qemu/osdep.h&quot;<br>
++<br>
+=C2=A0#include &quot;cpu.h&quot;<br>
+=C2=A0#include &quot;qemu.h&quot;<br>
+=C2=A0#include &quot;qemu/timer.h&quot;<br></blockquote><div><br></div><div=
+>I suppose these are fine. How do I run the cleanup script? I have 2x the n=
+umber of files not upstream in the bsd-user fork that I&#39;d like to clean=
+up as well and they are likely a bigger mess and I&#39;ll just upstream the=
+m in the messy state unless I understand how to keep the neat :).<br></div>=
+<div><br></div><div>Warner <br></div></div></div>
+
+--000000000000763fdf05f29ef11f--

@@ -1,127 +1,120 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp263396ejc;
-        Thu, 19 Jan 2023 03:46:08 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuHRbOT6ErqmontFkJG2w0G4j0TxadpejxH7TOQv8UQY2H7fNTI5Vrk2CyhWp11akvSIeXK
-X-Received: by 2002:a05:622a:207:b0:3ac:e03e:f93f with SMTP id b7-20020a05622a020700b003ace03ef93fmr21293146qtx.2.1674128768644;
-        Thu, 19 Jan 2023 03:46:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674128768; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp265070ejc;
+        Thu, 19 Jan 2023 03:49:47 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXv4CW4EoMW6WlKbXJbKyxn8fdNcTfQrdWAqMyHIEAWlnxhUoSIsWp8ZsKq3wTyltglrNlun
+X-Received: by 2002:a05:6214:5686:b0:534:e798:8e8 with SMTP id lm6-20020a056214568600b00534e79808e8mr19068689qvb.2.1674128987612;
+        Thu, 19 Jan 2023 03:49:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674128987; cv=none;
         d=google.com; s=arc-20160816;
-        b=dZOBF3mkBlVdJYjN2cC+gklSDI2nFP0qn+szLrcvihjKE2Vk8yq/GQGP4RXNBOhRIJ
-         l6KA2sIqU6R33LTqqyeq70rUpaJ9NJN4xXefQPiBRvLplimzS9MEvNVDSVaZa58juIyM
-         JDw+WIJoAODP2/GpZPyyCtHOqJgxBmGc3qKVvDbgIu0fQQ4GIUeRPECWNpgYwWGd98Bn
-         ApbLSr5h3txMc9vkkuvntwiTKevLpApUXYFBCK5Wc2nbkIrIpj8Hlg4vRBFtKFQGz20h
-         TzRk6zZOjn1jOfCPPw/PKGThw/0RgT+Mx+P32hvc6Vaqs9ArrQZ9MbE9wuuoM5WSpBaG
-         ngsg==
+        b=O25uavX4yv12WhTqngl5VxTzuSCydQlpR7WeW3ncf1gFJt3Nj+CEnK13t6JxVP4qCZ
+         98G2rHHHp8IffCd1qQWG2DS2LdI6lt39IKfo527UYaWDDLAyj94jrfyb6IAGQ86AU1+4
+         AVXF6fzTygmcJegYgRlb4+JUwZQX19+r94TsjaqaEJJHv/fiU/hjkVHFjHIvTUc51xgi
+         +itc3H9ZZGUkvQRRkWuarh13agmN4eyT8d9wuPzjNwNiDhBREWqNH5VE3KZYWhjShrYQ
+         OEcxQhmSrG14gAKHietrL9oiqGPOMzE+GyCTsVnwoQ1B/2O8fIE5zPR83yCKLi7pJXNE
+         CxzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=P78m2bxRvKQ56Scy0mxTJdk2vWI6fJdUGvOt38e9eUg=;
-        b=H4dqgvdkahoQPn3Shjq4kZbOMTxr5HljmKJlPnJ+acgBSrTw5USOufs5yqORWI41zk
-         jGkGyoWQV0x0DupOB/e3ohjv25SXVgTizKEhR8DRFF2ZjcKATc4qLlWl//uw89ZfIHcD
-         URL0BkVqEV+LobZlGyo+0msjI4Fgho3afA7C+Feiwe/jzx1Lr4mJsamqsHpPLnJEGTZe
-         8jgkOn0gir6kLoxzOug8rXz2KeO3rNEUrdCdud8QoJwa1Y0nJVl0RtK8/OcM6loMPenV
-         juzJOKUm+N9Yd6qAfygjM2tCYWNGBvo/vVrwtCdT0X9eNqkGNCFyp7klJWpoaJQiHhO8
-         c1tA==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=gXKBhQL1oyDDx1ruE2azlrsK+OKUgC5n4NqJsx1Hc+Q=;
+        b=iMgtBsfnuUbs4tndLwb2lWL3n9oU9wZfdbv1oH3yOffBcxW3NVUI37jmyfQxR68oo4
+         A2pWHqOTuIctrI14gxo7+KHogsl9HY9sL6cS0b00b+y5Lgg5/Hv9ZKFHX2MhlnGa9VHY
+         i4D0v/Ro7hRBNf2P0es+uoFZDbYnhe9uY+CFUP2ft/a/bJFnTCSMpjsm/NNCVXvXMGft
+         rRUmlCgqh+eRq7ZKNa8eJbgqBnPS37FlHcvzi10eb50oM+0vXU0z60rN4AdiUHg1G+Rr
+         ipNFkYBI6YWLF4fA4RincJsoqBT/C7XjXviuz+GzrLogaB76xw4uDJX2TxxelKjvejl5
+         l0Ow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QiXd4nBQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jHJPDYae;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e12-20020ac8670c000000b003b694f0b24fsi19057qtp.635.2023.01.19.03.46.08
+        by mx.google.com with ESMTPS id gg9-20020a056214252900b004c6b5207209si17637670qvb.227.2023.01.19.03.49.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Jan 2023 03:46:08 -0800 (PST)
+        Thu, 19 Jan 2023 03:49:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QiXd4nBQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jHJPDYae;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pITMY-0007c0-CQ; Thu, 19 Jan 2023 06:45:46 -0500
+	id 1pITQG-0001IB-Hc; Thu, 19 Jan 2023 06:49:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1pITMW-0007XG-K2
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:45:44 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pITQF-0001Hu-8K
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:49:35 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1pITMU-00076U-2C
- for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:45:44 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pITQD-0007gi-8h
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 06:49:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674128741;
+ s=mimecast20190719; t=1674128972;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=P78m2bxRvKQ56Scy0mxTJdk2vWI6fJdUGvOt38e9eUg=;
- b=QiXd4nBQYA3OTLlHdXft/Dt1VQhjdRlnygadiAakA0mG7Jbm8xHU9c/bJ20vACEenIvlP7
- s0yEDXuLA2JLlvlPAjwoYh5Rx/4wvELae6R9gXiivFAX241fUVVxNmEbQ72zNhITc4mszw
- XQkzRpIG0DbjerlLS2DFEwBX1RX0Gvg=
+ bh=gXKBhQL1oyDDx1ruE2azlrsK+OKUgC5n4NqJsx1Hc+Q=;
+ b=jHJPDYaemEFP2hZMHL6u5BZtoIj/L8xSEZ6A21QICsDgH+cCEIkaHQaK7e3XhAONUJPffi
+ pudwaukintVN/JAEICA3Inn50WfZgS5t7OGKs0BWCfTsVDfJbL9UISx+NGJ6zgI5n3DhpI
+ pwehkvMrh0J/c4eXwAhwl7Y1i3mtfNI=
 Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
  [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-605-9tsOLJdnOQqgnUNO-0gfGQ-1; Thu, 19 Jan 2023 06:45:40 -0500
-X-MC-Unique: 9tsOLJdnOQqgnUNO-0gfGQ-1
+ us-mta-283-Z9PSsxjHPxiPnTZg6qlQcA-1; Thu, 19 Jan 2023 06:49:31 -0500
+X-MC-Unique: Z9PSsxjHPxiPnTZg6qlQcA-1
 Received: by mail-wm1-f72.google.com with SMTP id
- m10-20020a05600c3b0a00b003dafe7451deso1086113wms.4
- for <qemu-arm@nongnu.org>; Thu, 19 Jan 2023 03:45:39 -0800 (PST)
+ c7-20020a1c3507000000b003d355c13ba8so1084134wma.6
+ for <qemu-arm@nongnu.org>; Thu, 19 Jan 2023 03:49:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=P78m2bxRvKQ56Scy0mxTJdk2vWI6fJdUGvOt38e9eUg=;
- b=a4BdjI/ZDZK47W4ssiPg16maSENnLYFY42RI1qsk8SN1KU6gCyyihJnQfLtbCFUwFR
- b2CaW90SOElKUSnL7VPwoK3xf7cjpjl9Jqq4OB+hX1Cgcdh5a27ohIQZiz34MtyGzjfY
- DKYuf/PGGy96rjgwlCDpkp/XD7fv3UvbPb4stxwKHqZVOtjWTM+AVNeQyETz/vslTHjw
- k8PRrW5iOS9rcA2wSmFDWIBa4vYmivzDtEq7Vmw6EsPTWQtZ4Ov6UMZtTfiV/cKg4aQD
- Oje8Z55CFZzWBpXVNedvMdAv8QBqvhxplTWZHzQvDHwZK2fPdSL7gCMktaESJffynWyk
- rCkg==
-X-Gm-Message-State: AFqh2kpM7axWCiWMRVHn7eHNCVsqf8Mh4+LDUwJNZJBJnbAcgDWdzwcd
- qj4+QPxjho0Qyva+5ZEgbronPiqUuEfeR8JPkqrc8p5vtrm5SHZl/q8UhAEmnOZaz/6aijgiz1j
- SWB7U2amRyzQq
-X-Received: by 2002:a05:600c:214f:b0:3d9:ecae:84f2 with SMTP id
- v15-20020a05600c214f00b003d9ecae84f2mr9637808wml.25.1674128738967; 
- Thu, 19 Jan 2023 03:45:38 -0800 (PST)
-X-Received: by 2002:a05:600c:214f:b0:3d9:ecae:84f2 with SMTP id
- v15-20020a05600c214f00b003d9ecae84f2mr9637775wml.25.1674128738765; 
- Thu, 19 Jan 2023 03:45:38 -0800 (PST)
-Received: from work-vm
- (ward-16-b2-v4wan-166627-cust863.vm18.cable.virginm.net. [81.97.203.96])
- by smtp.gmail.com with ESMTPSA id
- x23-20020a1c7c17000000b003d974076f13sm4504208wmc.3.2023.01.19.03.45.37
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=gXKBhQL1oyDDx1ruE2azlrsK+OKUgC5n4NqJsx1Hc+Q=;
+ b=kXGQXeiXIZXsGx+tfIvm0A1qES9WQAP5TP2N3Ww4sc10Vxj5kv6gFFVuIv0RO9hd+r
+ cwlHKEo9obfdFTV/1owgDdPoyb9E9/WzCNpHaF460h46bfnsypjmI+qAV8sZkJZwT53Q
+ d9BCqY3iAhXzKjkWvittEVrege6uaS/+ceHPhjDJm7jz1zSFzwNIyqN7HIc20wKPDLcu
+ XmLE31310SIMx0rZT9Zpd4bAQQGdLN1FNdKUDpNsDnW4hXtjjTU5fPYYDMjngGXR49og
+ /a8auNCgOnyaUUlR9kJDniE76LYkC9eH8g5ftGNYuvRd6ThoedvshvfgQxi+E/c1SvQX
+ ZiPQ==
+X-Gm-Message-State: AFqh2kqoJFJZZQ0nO+U5vS6m5DUsppn/49rRrCYbYB5YKVPuxNckpwZl
+ bsTPAlo9MdjVfRVL1rVcZrElXjjnzp2hKfVEunyh8Xf4dtimwo0BLIZpAtpYOw85x3L+AQX7YLs
+ 96JwilHXuXElT
+X-Received: by 2002:a05:600c:995:b0:3da:f4f5:ad0e with SMTP id
+ w21-20020a05600c099500b003daf4f5ad0emr9882100wmp.9.1674128970427; 
+ Thu, 19 Jan 2023 03:49:30 -0800 (PST)
+X-Received: by 2002:a05:600c:995:b0:3da:f4f5:ad0e with SMTP id
+ w21-20020a05600c099500b003daf4f5ad0emr9882077wmp.9.1674128970208; 
+ Thu, 19 Jan 2023 03:49:30 -0800 (PST)
+Received: from redhat.com ([2.52.28.74]) by smtp.gmail.com with ESMTPSA id
+ r1-20020a05600c35c100b003db06493ee7sm4939784wmq.47.2023.01.19.03.49.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Jan 2023 03:45:38 -0800 (PST)
-Date: Thu, 19 Jan 2023 11:45:36 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+ Thu, 19 Jan 2023 03:49:29 -0800 (PST)
+Date: Thu, 19 Jan 2023 06:49:24 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>
 Cc: qemu-devel@nongnu.org, richard.henderson@linaro.org,
  pbonzini@redhat.com, kwolf@redhat.com, hreitz@redhat.com,
  imp@bsdimp.com, kevans@freebsd.org, berrange@redhat.com,
- groug@kaod.org, qemu_oss@crudebyte.com, mst@redhat.com,
- philmd@linaro.org, peter.maydell@linaro.org, alistair@alistair23.me,
+ groug@kaod.org, qemu_oss@crudebyte.com, philmd@linaro.org,
+ peter.maydell@linaro.org, alistair@alistair23.me,
  jasowang@redhat.com, jonathan.cameron@huawei.com,
  kbastian@mail.uni-paderborn.de, quintela@redhat.com,
- michael.roth@amd.com, kkostiuk@redhat.com, tsimpson@quicinc.com,
- palmer@dabbelt.com, bin.meng@windriver.com, qemu-block@nongnu.org,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-Subject: Re: [PATCH v4 10/19] migration: Clean up includes
-Message-ID: <Y8ktYMfKahtAZ83A@work-vm>
+ dgilbert@redhat.com, michael.roth@amd.com, kkostiuk@redhat.com,
+ tsimpson@quicinc.com, palmer@dabbelt.com, bin.meng@windriver.com,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org
+Subject: Re: [PATCH v4 00/19] Clean up includes
+Message-ID: <20230119064833-mutt-send-email-mst@kernel.org>
 References: <20230119065959.3104012-1-armbru@redhat.com>
- <20230119065959.3104012-11-armbru@redhat.com>
- <Y8kOj6m4jhtUVg+A@work-vm> <87wn5ivmru.fsf@pond.sub.org>
 MIME-Version: 1.0
-In-Reply-To: <87wn5ivmru.fsf@pond.sub.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
+In-Reply-To: <20230119065959.3104012-1-armbru@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=dgilbert@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -144,50 +137,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RY+37dekMOq/
+X-TUID: zHq94M/T+t/m
 
-* Markus Armbruster (armbru@redhat.com) wrote:
-> "Dr. David Alan Gilbert" <dgilbert@redhat.com> writes:
+On Thu, Jan 19, 2023 at 07:59:40AM +0100, Markus Armbruster wrote:
+> Back in 2016, we discussed[1] rules for headers, and these were
+> generally liked:
 > 
-> > * Markus Armbruster (armbru@redhat.com) wrote:
-> >> Clean up includes so that osdep.h is included first and headers
-> >> which it implies are not included manually.
-> >
-> > That change doesn't seem to match the message; the patch is removing the
-> > osdep.h include.
+> 1. Have a carefully curated header that's included everywhere first.  We
+>    got that already thanks to Peter: osdep.h.
 > 
-> It's the commit message scripts/clean-includes creates :)
+> 2. Headers should normally include everything they need beyond osdep.h.
+>    If exceptions are needed for some reason, they must be documented in
+>    the header.  If all that's needed from a header is typedefs, put
+>    those into qemu/typedefs.h instead of including the header.
 > 
-> I can throw in another patch to the script so it mentions it also
-> removes qemu/osdep.h from headers.
+> 3. Cyclic inclusion is forbidden.
+> 
+> This series fixes violations of rule 2.  I may have split patches too
+> aggressively.  Let me know if you want some squashed together.
 
-Oh hmm it would be clearer; but OK then, so 
+series
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+feel free to merge.
 
-> >> This commit was created with scripts/clean-includes.
-> >> 
-> >> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> >> ---
-> >>  include/qemu/userfaultfd.h | 1 -
-> >>  1 file changed, 1 deletion(-)
-> >> 
-> >> diff --git a/include/qemu/userfaultfd.h b/include/qemu/userfaultfd.h
-> >> index 6b74f92792..55c95998e8 100644
-> >> --- a/include/qemu/userfaultfd.h
-> >> +++ b/include/qemu/userfaultfd.h
-> >> @@ -13,7 +13,6 @@
-> >>  #ifndef USERFAULTFD_H
-> >>  #define USERFAULTFD_H
-> >>  
-> >> -#include "qemu/osdep.h"
-> >>  #include "exec/hwaddr.h"
-> >>  #include <linux/userfaultfd.h>
-> >>  
-> >> -- 
-> >> 2.39.0
-> >> 
+> v4:
+> * PATCH 01-03: New
+> * PATCH 04-15: Previous version redone with scripts/clean-includes,
+>   	       result split up for review
+> * PATCH 16-19: New
 > 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> v3:
+> * Rebased, old PATCH 1+2+4 are in master as commit
+>   881e019770..f07ceffdf5
+> * PATCH 1: Fix bsd-user
+> 
+> v2:
+> * Rebased
+> * PATCH 3: v1 posted separately
+> * PATCH 4: New
+> 
+> [1] Message-ID: <87h9g8j57d.fsf@blackfin.pond.sub.org>
+>     https://lists.nongnu.org/archive/html/qemu-devel/2016-03/msg03345.html
+> 
+> Markus Armbruster (19):
+>   scripts/clean-includes: Fully skip / ignore files
+>   scripts/clean-includes: Don't claim duplicate headers found when not
+>   scripts/clean-includes: Skip symbolic links
+>   bsd-user: Clean up includes
+>   crypto: Clean up includes
+>   hw/cxl: Clean up includes
+>   hw/input: Clean up includes
+>   hw/tricore: Clean up includes
+>   qga: Clean up includes
+>   migration: Clean up includes
+>   net: Clean up includes
+>   target/hexagon: Clean up includes
+>   riscv: Clean up includes
+>   block: Clean up includes
+>   accel: Clean up includes
+>   Fix non-first inclusions of qemu/osdep.h
+>   Don't include headers already included by qemu/osdep.h
+>   9p: Drop superfluous include of linux/limits.h
+>   Drop duplicate #include
+> 
+>  backends/tpm/tpm_ioctl.h          |  2 --
+>  bsd-user/bsd-proc.h               |  4 ----
+>  bsd-user/qemu.h                   |  1 -
+>  crypto/block-luks-priv.h          |  1 -
+>  fsdev/p9array.h                   |  2 --
+>  include/block/graph-lock.h        |  1 -
+>  include/block/write-threshold.h   |  2 --
+>  include/hw/arm/fsl-imx6ul.h       |  1 -
+>  include/hw/arm/fsl-imx7.h         |  1 -
+>  include/hw/cxl/cxl_component.h    |  2 --
+>  include/hw/cxl/cxl_host.h         |  1 -
+>  include/hw/cxl/cxl_pci.h          |  1 -
+>  include/hw/input/pl050.h          |  1 -
+>  include/hw/misc/aspeed_lpc.h      |  2 --
+>  include/hw/pci/pcie_doe.h         |  1 -
+>  include/hw/tricore/triboard.h     |  1 -
+>  include/qemu/async-teardown.h     |  2 --
+>  include/qemu/dbus.h               |  1 -
+>  include/qemu/host-utils.h         |  1 -
+>  include/qemu/userfaultfd.h        |  1 -
+>  include/sysemu/accel-blocker.h    |  1 -
+>  include/sysemu/event-loop-base.h  |  1 -
+>  net/vmnet_int.h                   |  1 -
+>  qga/cutils.h                      |  2 --
+>  target/hexagon/hex_arch_types.h   |  1 -
+>  target/hexagon/mmvec/macros.h     |  1 -
+>  target/riscv/pmu.h                |  1 -
+>  accel/tcg/cpu-exec.c              |  1 -
+>  audio/sndioaudio.c                |  2 +-
+>  backends/hostmem-epc.c            |  2 +-
+>  backends/tpm/tpm_emulator.c       |  1 -
+>  block/export/vduse-blk.c          |  2 +-
+>  block/qapi.c                      |  1 -
+>  bsd-user/arm/signal.c             |  1 +
+>  bsd-user/arm/target_arch_cpu.c    |  2 ++
+>  bsd-user/freebsd/os-sys.c         |  1 +
+>  bsd-user/i386/signal.c            |  1 +
+>  bsd-user/i386/target_arch_cpu.c   |  3 +--
+>  bsd-user/main.c                   |  4 +---
+>  bsd-user/strace.c                 |  1 -
+>  bsd-user/x86_64/signal.c          |  1 +
+>  bsd-user/x86_64/target_arch_cpu.c |  3 +--
+>  hw/9pfs/9p.c                      |  5 -----
+>  hw/acpi/piix4.c                   |  1 -
+>  hw/alpha/dp264.c                  |  1 -
+>  hw/arm/virt.c                     |  1 -
+>  hw/arm/xlnx-versal.c              |  1 -
+>  hw/block/pflash_cfi01.c           |  1 -
+>  hw/core/machine.c                 |  1 -
+>  hw/display/virtio-gpu-udmabuf.c   |  1 -
+>  hw/hppa/machine.c                 |  1 -
+>  hw/hyperv/syndbg.c                |  2 +-
+>  hw/i2c/pmbus_device.c             |  1 -
+>  hw/i386/acpi-build.c              |  1 -
+>  hw/input/tsc210x.c                |  1 -
+>  hw/loongarch/acpi-build.c         |  1 -
+>  hw/misc/macio/cuda.c              |  1 -
+>  hw/misc/macio/pmu.c               |  1 -
+>  hw/net/xilinx_axienet.c           |  1 -
+>  hw/ppc/ppc405_uc.c                |  2 --
+>  hw/ppc/ppc440_bamboo.c            |  1 -
+>  hw/ppc/spapr_drc.c                |  1 -
+>  hw/rdma/vmw/pvrdma_dev_ring.c     |  1 -
+>  hw/remote/machine.c               |  1 -
+>  hw/remote/proxy-memory-listener.c |  1 -
+>  hw/remote/remote-obj.c            |  1 -
+>  hw/rtc/mc146818rtc.c              |  1 -
+>  hw/s390x/virtio-ccw-serial.c      |  1 -
+>  hw/sensor/adm1272.c               |  1 -
+>  hw/usb/dev-storage-bot.c          |  1 -
+>  hw/usb/dev-storage-classic.c      |  1 -
+>  migration/postcopy-ram.c          |  2 --
+>  qga/commands-posix.c              |  1 -
+>  qga/cutils.c                      |  3 ++-
+>  softmmu/dirtylimit.c              |  1 -
+>  softmmu/runstate.c                |  1 -
+>  softmmu/vl.c                      |  3 ---
+>  target/loongarch/translate.c      |  1 -
+>  target/mips/tcg/translate.c       |  1 -
+>  target/nios2/translate.c          |  2 --
+>  tcg/tci.c                         |  1 -
+>  tests/unit/test-cutils.c          |  1 -
+>  tests/unit/test-seccomp.c         |  1 -
+>  ui/gtk.c                          |  1 -
+>  ui/udmabuf.c                      |  1 -
+>  util/async-teardown.c             | 12 ++++--------
+>  util/main-loop.c                  |  1 -
+>  util/oslib-posix.c                |  6 ------
+>  scripts/clean-includes            | 15 ++++++++++-----
+>  89 files changed, 29 insertions(+), 123 deletions(-)
+> 
+> -- 
+> 2.39.0
 

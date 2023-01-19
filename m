@@ -1,148 +1,148 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp787875ejc;
-        Wed, 18 Jan 2023 11:38:29 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtZWMGlWaym8M0WmwRpiamll2gYMFbXjolVNMayYLbjZ8EhvX5ijsJEfSYouiQED9rqRdEN
-X-Received: by 2002:a5d:6849:0:b0:24a:9a21:c9e with SMTP id o9-20020a5d6849000000b0024a9a210c9emr7045097wrw.59.1674070709085;
-        Wed, 18 Jan 2023 11:38:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674070709; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp130974ejc;
+        Wed, 18 Jan 2023 23:00:41 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsD+0hghUM6F7v7HFqtbzqEbZiFwG6ce5bgrfGM2IyJIXN+fsMDSbxUGHQfYbEjWPZVb5Pf
+X-Received: by 2002:a05:6214:4381:b0:535:26a9:782 with SMTP id oh1-20020a056214438100b0053526a90782mr14261433qvb.37.1674111641702;
+        Wed, 18 Jan 2023 23:00:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674111641; cv=none;
         d=google.com; s=arc-20160816;
-        b=B0u4OH8rX78pnDlZ8SK0/DfFi3VM2Der0mb8HebkVwDWWH9m8mTQILB/jO5d67UdpZ
-         lOSTYB2Bdd9jz4+x/c70Zl1xW95jILRUBd5UIpGg3Ul0svgzH6PjhtE6+mW2KVZZj9UN
-         nR8L/4wxPKGhevM4JqCS4E1kU2vpczFO8ihSFa7GRwWaVV2Dq6gvGZTCrModAztFbsGV
-         GP3H/17O5+0tohyK7gUJgg/IiL0gXy4JHGtjUWrP/kr+/2hkQTjDvzt4IB7RsXGYXxQt
-         /ia25FEhVr3SB3It3OzV02VaY0JuHpbODg0oky2qZefImjb7B+63/hrOrSIjKceybhwi
-         F22A==
+        b=Z9e/W5rLN31DsKIrmfa7Svzh+qzoRol9C23+u9vtKig6MlU0WNYJo3OLAk2Nyg8OqZ
+         qF2ucK0wn/0drRvnFy0bFa6hb9hl2NnxDYUvJuaS7iQzRlthhproqj2yDbz2vThPlEHS
+         TGSr0FpLHb/EoRku60Hk2DAnHUbLEHIoVzO36l6DaIkAB9xu9+0AYVZsZVlFWicKP8Ku
+         3l5pbAlnuKfZevCGINsWzRGI1a9l52knRSaNgA0of8Tc2l/+n1Kgd45vV8lMmmV8y/LU
+         KxsLfZolCuJQlVMZTKW9py2cORmWJt9j7OxAzqMPL9tK/tQJaRl59/qK/auIchdRkwPu
+         8AJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=BtHJBVBQ6X4CRCaUHJwzKOFSedyFeFXp3iolnOpnd60=;
-        b=Xh9wPV8rWlNnQtBH8tyDDvm4l2tMjDiqUPy2pyQWN335YtT4D1BIb0BFk+s89OXSi9
-         ARvq86glB38GDk4ZWOT79e+hSp8NmrjOuREqMd83SEDZdUNz/waAgOIaOsG0UxeHMw0K
-         ji/RlNsoi1WcF2gB3boH9y5TuVd7VlfohxZAmOu7idkQOiYpsQhHHh+ViP0uCxsdogE2
-         zBQD/RxEKDwYEwALNUxOes/e8uv1oz6PiYG4sp/3tYV9xXy1rzQzwor3E8teOujyPGQK
-         HZry8+PK2wn9NJrI5BP8qdrD6TgQT/2lOcWyH0MnuyIJYeTUgJdib3xUBtI7EsZHdYp7
-         PSpg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=crP6mBB8FenMMe0mP+YUj+myR0zA5GWaiOW3a613yRo=;
+        b=x6+CApuHMhB04y5YE/P79+n+zoQEzsiDxNmE+QhOFf35a6wvE8J7GnBScVxoits9/0
+         BavFeS99NtMuiFbuaO0k2cXG0bA3IUvcPntFPC5Ax4Y3Tlh6VxdWnI1W24l2UKT7DfBJ
+         ZIBZu99MXrCEZCpE2k53nw4JVh4rsdz9vHeik1USSsP+vIHjsGC9rsPEMq+BZZCdAcB1
+         Wv/6NVUJZ2wEYi1l8bVfVYQTf3Bn3FBmTB8WwTIoNxsn/O2y0KJT+wSJJQVB+m/KS/RR
+         a0MxcjHCS4o5wiI4eVhEV3WbfiJfKnfqkp4XCNbBmAX2x7O0Ua+f0yZ3auqnqqXivS3U
+         skKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Hec4l3aw;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id r2-20020adff102000000b002bdda195faesi17008999wro.118.2023.01.18.11.38.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Jan 2023 11:38:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T+SGOL0r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bs40-20020a05620a472800b006fa299566afsi21855992qkb.568.2023.01.18.23.00.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 18 Jan 2023 23:00:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Hec4l3aw;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id B50F138D49;
-	Wed, 18 Jan 2023 19:38:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674070708; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BtHJBVBQ6X4CRCaUHJwzKOFSedyFeFXp3iolnOpnd60=;
-	b=Hec4l3awmcYTgZgi1NK1ERC2WhOIEhgKcK6ffUY5Ni02b4qR/nUdmzrNcfRzlp6l+9Rcun
-	P4iFveqCQOkZ4zm8RN0ZQdxpNF21TizYwAQn1VXsHLHnxzYKdS6968/8G/Y4Opp4nXr/Ot
-	pbet+0vhFqfo0WKEVck7cWxkmN4HNK8=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674070708;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BtHJBVBQ6X4CRCaUHJwzKOFSedyFeFXp3iolnOpnd60=;
-	b=+xyZgMPaLEM2+08HnSuWb5yvkzhkx5n46gyAS96XfMge5hRaA5n8vXslW7XWzoiOjO2Auw
-	aR2FNjBK1MrHzkDQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 396A3139D2;
-	Wed, 18 Jan 2023 19:38:25 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id iLEzAbFKyGOWBwAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 18 Jan 2023 19:38:25 +0000
-From: Fabiano Rosas <farosas@suse.de>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T+SGOL0r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pIOuP-0006Sh-Nr; Thu, 19 Jan 2023 02:00:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pIOuG-0006LN-L4
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 02:00:19 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pIOuD-0008Bq-GH
+ for qemu-arm@nongnu.org; Thu, 19 Jan 2023 02:00:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1674111609;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=crP6mBB8FenMMe0mP+YUj+myR0zA5GWaiOW3a613yRo=;
+ b=T+SGOL0r0QBslzGTp4TQcSn7hbvsYLap0M4m4rqQndHMe7dSlpO0NuGsncMCcI58fv0x05
+ dUE0SnacdMUvARv0SZ4rJr0eBopW0CiEODIZi0QdDWGDTmTJsNGNckZvlioAab+FN5TvWj
+ oF++vIx7t71hPmVrNSrcBPPqWN0ewaA=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-230-lGV4UpUgO7aRyKSfo5IU7g-1; Thu, 19 Jan 2023 02:00:06 -0500
+X-MC-Unique: lGV4UpUgO7aRyKSfo5IU7g-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 05827280BCA2;
+ Thu, 19 Jan 2023 07:00:05 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BCBC22166B29;
+ Thu, 19 Jan 2023 07:00:04 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 6C88621E5DCF; Thu, 19 Jan 2023 07:59:59 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Cleber Rosa <crosa@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
-Subject: [PATCH 20/20] tests/avocado: Tag TCG tests with accel:tcg
-Date: Wed, 18 Jan 2023 16:35:18 -0300
-Message-Id: <20230118193518.26433-21-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230118193518.26433-1-farosas@suse.de>
-References: <20230118193518.26433-1-farosas@suse.de>
+Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
+ hreitz@redhat.com, imp@bsdimp.com, kevans@freebsd.org, berrange@redhat.com,
+ groug@kaod.org, qemu_oss@crudebyte.com, mst@redhat.com, philmd@linaro.org,
+ peter.maydell@linaro.org, alistair@alistair23.me, jasowang@redhat.com,
+ jonathan.cameron@huawei.com, kbastian@mail.uni-paderborn.de,
+ quintela@redhat.com, dgilbert@redhat.com, michael.roth@amd.com,
+ kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com,
+ bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org
+Subject: [PATCH v4 15/19] accel: Clean up includes
+Date: Thu, 19 Jan 2023 07:59:55 +0100
+Message-Id: <20230119065959.3104012-16-armbru@redhat.com>
+In-Reply-To: <20230119065959.3104012-1-armbru@redhat.com>
+References: <20230119065959.3104012-1-armbru@redhat.com>
 MIME-Version: 1.0
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-TUID: IAHa/riw79KV
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: F6ZnC4LkzY9w
 
-This allows the test to be skipped when TCG is not present in the QEMU
-binary.
+Clean up includes so that osdep.h is included first and headers
+which it implies are not included manually.
 
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+This commit was created with scripts/clean-includes.
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- tests/avocado/boot_linux_console.py | 1 +
- tests/avocado/reverse_debugging.py  | 8 ++++++++
- 2 files changed, 9 insertions(+)
+ include/sysemu/accel-blocker.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 8c1d981586..980a14991a 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -990,6 +990,7 @@ def test_arm_orangepi_uboot_netbsd9(self):
+diff --git a/include/sysemu/accel-blocker.h b/include/sysemu/accel-blocker.h
+index 72020529ef..0733783bcc 100644
+--- a/include/sysemu/accel-blocker.h
++++ b/include/sysemu/accel-blocker.h
+@@ -14,7 +14,6 @@
+ #ifndef ACCEL_BLOCKER_H
+ #define ACCEL_BLOCKER_H
  
-     def test_aarch64_raspi3_atf(self):
-         """
-+        :avocado: tags=accel:tcg
-         :avocado: tags=arch:aarch64
-         :avocado: tags=machine:raspi3b
-         :avocado: tags=cpu:cortex-a53
-diff --git a/tests/avocado/reverse_debugging.py b/tests/avocado/reverse_debugging.py
-index d2921e70c3..680c314cfc 100644
---- a/tests/avocado/reverse_debugging.py
-+++ b/tests/avocado/reverse_debugging.py
-@@ -173,6 +173,10 @@ def reverse_debugging(self, shift=7, args=None):
-         vm.shutdown()
+-#include "qemu/osdep.h"
+ #include "sysemu/cpus.h"
  
- class ReverseDebugging_X86_64(ReverseDebugging):
-+    """
-+    :avocado: tags=accel:tcg
-+    """
-+
-     REG_PC = 0x10
-     REG_CS = 0x12
-     def get_pc(self, g):
-@@ -190,6 +194,10 @@ def test_x86_64_pc(self):
-         self.reverse_debugging()
- 
- class ReverseDebugging_AArch64(ReverseDebugging):
-+    """
-+    :avocado: tags=accel:tcg
-+    """
-+
-     REG_PC = 32
- 
-     # unidentified gitlab timeout problem
+ extern void accel_blocker_init(void);
 -- 
-2.35.3
+2.39.0
+

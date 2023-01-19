@@ -1,484 +1,187 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp345993ejc;
-        Thu, 19 Jan 2023 05:57:29 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtqcuKkxdjzxQVJKYCkhQymrWFIPAvzNesm0/sNatQPD7IW+3/VTslLtNeFBiSr3DyRNxfs
-X-Received: by 2002:a05:600c:d3:b0:3da:23a4:627e with SMTP id u19-20020a05600c00d300b003da23a4627emr10073397wmm.6.1674136649182;
-        Thu, 19 Jan 2023 05:57:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674136649; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp353929ejc;
+        Thu, 19 Jan 2023 06:06:59 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXt1ITx3dAaQg0fG/y35KOVAb5t3E4xk8ORdKGxktoKT2L3yLXp2wv68pZU9GWc3kedKA5H0
+X-Received: by 2002:a25:f54:0:b0:7b9:d20e:a99d with SMTP id 81-20020a250f54000000b007b9d20ea99dmr8292688ybp.31.1674137219598;
+        Thu, 19 Jan 2023 06:06:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674137219; cv=none;
         d=google.com; s=arc-20160816;
-        b=vB1uyOam+Iy1U1cdRiqhg8eyojb2e+Lt9a6oeDtOU4TGRrioQ/YzKT1L8X41xsmJ/Z
-         84YFxQby4/UiYrqH7mmWGUNfj4VJZXhtk027v6aBwi0wtL2iAw+tBoHxMFP0HrbLunFJ
-         TMP7BT7wLKFmCT8Ywk6krdtPaS6Ovsz4L+Lwp6HMRAL4HMF2t/OET1gdGHdfLXp3ZwR0
-         QDtVbSEC9/fK15klwSmmAht0Y066Vse6UMMdfKmq7Qk+98rF1dIBZxHdiBnLa7msGy1I
-         11uHf0k79x+ek+tnknz9y0LoRJkZbWprXVcw04oYs1PWkSnyVmmtKOKeFcll1RnmqNgJ
-         G+cA==
+        b=JSMQcO3jZ+BbGPTJUCK5C69z7TBohKkbwxcs5kDRI3bYp9WErqrK4M936PHogfXCgp
+         uh+UeMCoHIJsvsKYbkuUf0vVseu6nzAsIPoJEoCqKjvGVSyBbpwblfH6/YiFm6FW6AhQ
+         LirIa7Rr0JMRuosgMWV+fBAdAQR+jyZ1gaDRsZshRo8XCuHJc1/Fwa+IKhZo5Sg6j+so
+         ftBqNsEk3XPIKh53w8nAwbJuSGQphRMTbqmdlTiVygT/SkQba6Higuji7ITda2WmY9JH
+         xU7WeX8cCOp4FlRYpVfh0iSeglwRRKEpyGoe4AchGvl3K+UYzXr/TAr+zecxL99pNMQA
+         nxKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=LgAAk/tLn57Rj5xG8Js8OUtSbZPEhStqL3FDCZ22ceY=;
-        b=ma9jPibVfnlePdXlwgrICD6+rrtGPePVaFFAKsB+owPapH6eYh9awfgbbAg4lwYt8H
-         zCcfE6T/D+iQypMi6qH6Rd3sOXWpQyeHxZzbgg5rRHMUw3dFMhJdFgjeEKaXvn7SlqlL
-         ++sFgBxvb38cgwwXQCD6ZnNM/nZGkWExTmlX8Ly+ZJ0f511FsjHr/GGNQrX1pC0qSv1n
-         iF0rhUtg9HZ4VYTSi0xBvgA2f60AHaxmxxFv65nbos8QbXBDCK18F37cTiZ3AIDZbtkN
-         eMwkup4nbZtwyZ02KvcPG3qKn3lsLsXlc/sBTRgbHzTpU/aSARfN/0pGlv1UfrTpmLGD
-         Y8uQ==
+        h=content-disposition:user-agent:in-reply-to:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=q7VptEAsu6EyqTaMheBg2vEhPZp9hALIjSxskec0D9E=;
+        b=IEoZ+q6aRWYPXM+Polb7NfcV5fBz7TyusnifS/7DebLhq8h7ZogK7hMdFHOxshNFeK
+         FCDO32ljRqiz8EnvXPn0FFHtWz094VyREOB3Pvozl43IOcm6Ja0wTstc5KgjTGMG8ZuQ
+         y7l1Z2+W6ahU0oJUNL2tbTKVj3BQdUphiRGVcCnw2dyixVVHdqlIEf0Z2NTU7GDeDOlj
+         25/9+W62OyYAnAqRTqElAGdiALkNxMPI9DlQNRnoxRs4n5zJF8S8nsYqEceZ64Aj6Et1
+         OU1pR0u1Wu5TTDyewgBSmPaZL9LT8foxloW6XmK/tHFExXb35ldUjOM99rhGxwP/Fb5l
+         BKvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=2U3QWKey;
-       dkim=neutral (no key) header.i=@suse.de header.b=FsygTZRg;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id n30-20020a05600c501e00b003d9c75b5b6dsi4647571wmr.222.2023.01.19.05.57.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 05:57:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dvSHGLPB;
+       spf=pass (google.com: domain of dgilbert@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=dgilbert@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <dgilbert@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id cj13-20020a056902188d00b007d4d65ab007si21762930ybb.136.2023.01.19.06.06.59
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Jan 2023 06:06:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of dgilbert@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=2U3QWKey;
-       dkim=neutral (no key) header.i=@suse.de header.b=FsygTZRg;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id B75E65CE73;
-	Thu, 19 Jan 2023 13:57:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674136648; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dvSHGLPB;
+       spf=pass (google.com: domain of dgilbert@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=dgilbert@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1674137219;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=LgAAk/tLn57Rj5xG8Js8OUtSbZPEhStqL3FDCZ22ceY=;
-	b=2U3QWKeyBxwCw/W8B236C79XltvSBzYs9jFPcHCIuAX55RG3w7GBUim2dSIUSp5LLysiC/
-	P/VIIKos5FECAXPrjZ7c2qwj/ptwzNcehI0UmSGsAXrTh+gys+b5upN0WwKSy5P5IWR1yd
-	RynsnrTp3zxuB+DjRiXfv4tKk9751rs=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674136648;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LgAAk/tLn57Rj5xG8Js8OUtSbZPEhStqL3FDCZ22ceY=;
-	b=FsygTZRgq12YOScJV+KGntLrB2YJUYq/3cUwIEzwzvnSfAFBTzR+MuMzjeWbjITuUj0Pae
-	zmDZlWMAqrhAGNCg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id A1A08134F5;
-	Thu, 19 Jan 2023 13:57:25 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id OH2aGUVMyWOCFAAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 19 Jan 2023 13:57:25 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
+	bh=q7VptEAsu6EyqTaMheBg2vEhPZp9hALIjSxskec0D9E=;
+	b=dvSHGLPBG+Ixn8QrKZKyc0c41pBzh0TX6N9mWr+CAsQyBe0QInHSui/a6XkSdptbKCeCrb
+	XftWRBqr2jW581d8INOTOidOWry6Ht5P7vtP/ZLy3WAeRXO5DhxjZ3tL0rMUO8N5xp1CIo
+	7ObZSG6XHGTzUeSAPkn7UiTpG6o90Vg=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-533-O-A7Wx6iPAG4XH-IyNZVzg-1; Thu, 19 Jan 2023 09:06:53 -0500
+X-MC-Unique: O-A7Wx6iPAG4XH-IyNZVzg-1
+Received: by mail-wr1-f71.google.com with SMTP id k18-20020adfb352000000b002bdd0a7a2b5so389674wrd.0
+        for <alex.bennee@linaro.org>; Thu, 19 Jan 2023 06:06:52 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=q7VptEAsu6EyqTaMheBg2vEhPZp9hALIjSxskec0D9E=;
+        b=4xYJHeOcol+EcdRdvG0J9xAkZBfiRMaJVWw5qDz6hfPiRAg0Z/PYzWoCQEB3yxErkr
+         etf5DGBVOZlrPNk+toZVnUE3qKt9vuQ9nM8pwf/XThVfgfWSbWRJbXHJ5qpOoamyvdGY
+         M4RJRAjpYRiELwYT5tvy8+FTNj4SpcvvqADf9owiDsBLSJXbgob2i/w8R3aKdB3K24/p
+         JUyF3VOnOXEbuf+I9ZoNonO3QyA/6+g7TkwKsPleFEFE4g4ey3nvIJRO6PcDyqBqxTLU
+         c6AhttkhXnhrqyAOiERmBF/cW2udTJ8b8fO5yf/Ae9mRGAIyzMUF/YBtxeIOU/J3Wcnf
+         0hEg==
+X-Gm-Message-State: AFqh2ko95GljlWG+FwAyFPOcso7fCy97XK8cwRbVTcwEuVqrPmwrjS9j
+	Xc5a2mKJm3thnAqfRed6iQ88lLxpBUXoUk/EpEXkfNhpauByVbI/AJPSZi1cGZLkMyxCH6sVWIy
+	SlTvSE521UmATgyKs
+X-Received: by 2002:a5d:6b07:0:b0:236:695b:82d4 with SMTP id v7-20020a5d6b07000000b00236695b82d4mr9344770wrw.30.1674137211841;
+        Thu, 19 Jan 2023 06:06:51 -0800 (PST)
+X-Received: by 2002:a5d:6b07:0:b0:236:695b:82d4 with SMTP id v7-20020a5d6b07000000b00236695b82d4mr9344752wrw.30.1674137211598;
+        Thu, 19 Jan 2023 06:06:51 -0800 (PST)
+Return-Path: <dgilbert@redhat.com>
+Received: from work-vm (ward-16-b2-v4wan-166627-cust863.vm18.cable.virginm.net. [81.97.203.96])
+        by smtp.gmail.com with ESMTPSA id l5-20020adfe9c5000000b002238ea5750csm19310627wrn.72.2023.01.19.06.06.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Jan 2023 06:06:51 -0800 (PST)
+Date: Thu, 19 Jan 2023 14:06:49 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>
-Subject: [RFC PATCH v4 15/15] arm/Kconfig: Do not build TCG-only boards on a KVM-only build
-Date: Thu, 19 Jan 2023 10:54:24 -0300
-Message-Id: <20230119135424.5417-16-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230119135424.5417-1-farosas@suse.de>
+	Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [RFC PATCH v4 08/15] tests/qtest: Adjust test-hmp to always pass
+ -cpu option
+Message-ID: <Y8lOeRqfcAUljaJN@work-vm>
 References: <20230119135424.5417-1-farosas@suse.de>
+ <20230119135424.5417-9-farosas@suse.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: C35Z+PTUQnWj
+In-Reply-To: <20230119135424.5417-9-farosas@suse.de>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-TUID: ptWV/2W4P4uh
 
-Move all the CONFIG_FOO=y from default.mak into "default y if TCG"
-statements in Kconfig. That way they won't be selected when
-CONFIG_TCG=n.
+* Fabiano Rosas (farosas@suse.de) wrote:
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+>  tests/qtest/test-hmp.c | 34 +++++++++++++++++++++++++++++++---
+>  1 file changed, 31 insertions(+), 3 deletions(-)
+> 
+> diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
+> index f8b22abe4c..c367612d4a 100644
+> --- a/tests/qtest/test-hmp.c
+> +++ b/tests/qtest/test-hmp.c
+> @@ -121,21 +121,49 @@ static void test_info_commands(QTestState *qts)
+>      g_free(info_buf);
+>  }
+>  
+> +static const char *arch_get_cpu(const char *machine)
+> +{
+> +    const char *arch = qtest_get_arch();
+> +
+> +    if (g_str_equal(arch, "aarch64")) {
+> +        if (!strncmp(machine, "virt", 4)) {
+> +            return "cortex-a57";
 
-I'm leaving CONFIG_ARM_VIRT in default.mak because it allows us to
-keep the two default.mak files not empty and keep aarch64-default.mak
-including arm-default.mak. That way we don't surprise anyone that's
-used to altering these files.
+Won't that break on a kvm host on a different CPU?
+Would -cpu max   work on everything?
 
-With this change we can start building with --disable-tcg.
+Dave
 
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
-sbsa-ref has an explicit check to avoid running with KVM
-xlnx-versal-virt has avocado tests tagged with tcg
----
- configs/devices/aarch64-softmmu/default.mak |  4 --
- configs/devices/arm-softmmu/default.mak     | 37 ------------------
- hw/arm/Kconfig                              | 42 ++++++++++++++++++++-
- 3 files changed, 41 insertions(+), 42 deletions(-)
-
-diff --git a/configs/devices/aarch64-softmmu/default.mak b/configs/devices/aarch64-softmmu/default.mak
-index cf43ac8da1..70e05a197d 100644
---- a/configs/devices/aarch64-softmmu/default.mak
-+++ b/configs/devices/aarch64-softmmu/default.mak
-@@ -2,7 +2,3 @@
- 
- # We support all the 32 bit boards so need all their config
- include ../arm-softmmu/default.mak
--
--CONFIG_XLNX_ZYNQMP_ARM=y
--CONFIG_XLNX_VERSAL=y
--CONFIG_SBSA_REF=y
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-index cb3e5aea65..647fbce88d 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -4,40 +4,3 @@
- # CONFIG_TEST_DEVICES=n
- 
- CONFIG_ARM_VIRT=y
--CONFIG_CUBIEBOARD=y
--CONFIG_EXYNOS4=y
--CONFIG_HIGHBANK=y
--CONFIG_INTEGRATOR=y
--CONFIG_FSL_IMX31=y
--CONFIG_MUSICPAL=y
--CONFIG_MUSCA=y
--CONFIG_CHEETAH=y
--CONFIG_SX1=y
--CONFIG_NSERIES=y
--CONFIG_STELLARIS=y
--CONFIG_STM32VLDISCOVERY=y
--CONFIG_REALVIEW=y
--CONFIG_VERSATILE=y
--CONFIG_VEXPRESS=y
--CONFIG_ZYNQ=y
--CONFIG_MAINSTONE=y
--CONFIG_GUMSTIX=y
--CONFIG_SPITZ=y
--CONFIG_TOSA=y
--CONFIG_Z2=y
--CONFIG_NPCM7XX=y
--CONFIG_COLLIE=y
--CONFIG_ASPEED_SOC=y
--CONFIG_NETDUINO2=y
--CONFIG_NETDUINOPLUS2=y
--CONFIG_OLIMEX_STM32_H405=y
--CONFIG_MPS2=y
--CONFIG_RASPI=y
--CONFIG_DIGIC=y
--CONFIG_SABRELITE=y
--CONFIG_EMCRAFT_SF2=y
--CONFIG_MICROBIT=y
--CONFIG_FSL_IMX25=y
--CONFIG_FSL_IMX7=y
--CONFIG_FSL_IMX6UL=y
--CONFIG_ALLWINNER_H3=y
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index e0da8841db..4a2460311a 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -34,20 +34,24 @@ config ARM_VIRT
- 
- config CHEETAH
-     bool
-+    default y if TCG && ARM
-     select OMAP
-     select TSC210X
- 
- config CUBIEBOARD
-     bool
-+    default y if TCG && ARM
-     select ALLWINNER_A10
- 
- config DIGIC
-     bool
-+    default y if TCG && ARM
-     select PTIMER
-     select PFLASH_CFI02
- 
- config EXYNOS4
-     bool
-+    default y if TCG && ARM
-     imply I2C_DEVICES
-     select A9MPCORE
-     select I2C
-@@ -60,6 +64,7 @@ config EXYNOS4
- 
- config HIGHBANK
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select A15MPCORE
-     select AHCI
-@@ -74,6 +79,7 @@ config HIGHBANK
- 
- config INTEGRATOR
-     bool
-+    default y if TCG && ARM
-     select ARM_TIMER
-     select INTEGRATOR_DEBUG
-     select PL011 # UART
-@@ -86,12 +92,14 @@ config INTEGRATOR
- 
- config MAINSTONE
-     bool
-+    default y if TCG && ARM
-     select PXA2XX
-     select PFLASH_CFI01
-     select SMC91C111
- 
- config MUSCA
-     bool
-+    default y if TCG && ARM
-     select ARMSSE
-     select PL011
-     select PL031
-@@ -103,6 +111,7 @@ config MARVELL_88W8618
- 
- config MUSICPAL
-     bool
-+    default y if TCG && ARM
-     select OR_IRQ
-     select BITBANG_I2C
-     select MARVELL_88W8618
-@@ -113,18 +122,22 @@ config MUSICPAL
- 
- config NETDUINO2
-     bool
-+    default y if TCG && ARM
-     select STM32F205_SOC
- 
- config NETDUINOPLUS2
-     bool
-+    default y if TCG && ARM
-     select STM32F405_SOC
- 
- config OLIMEX_STM32_H405
-     bool
-+    default y if TCG && ARM
-     select STM32F405_SOC
- 
- config NSERIES
-     bool
-+    default y if TCG && ARM
-     select OMAP
-     select TMP105   # tempature sensor
-     select BLIZZARD # LCD/TV controller
-@@ -157,12 +170,14 @@ config PXA2XX
- 
- config GUMSTIX
-     bool
-+    default y if TCG && ARM
-     select PFLASH_CFI01
-     select SMC91C111
-     select PXA2XX
- 
- config TOSA
-     bool
-+    default y if TCG && ARM
-     select ZAURUS  # scoop
-     select MICRODRIVE
-     select PXA2XX
-@@ -170,6 +185,7 @@ config TOSA
- 
- config SPITZ
-     bool
-+    default y if TCG && ARM
-     select ADS7846 # touch-screen controller
-     select MAX111X # A/D converter
-     select WM8750  # audio codec
-@@ -182,6 +198,7 @@ config SPITZ
- 
- config Z2
-     bool
-+    default y if TCG && ARM
-     select PFLASH_CFI01
-     select WM8750
-     select PL011 # UART
-@@ -189,6 +206,7 @@ config Z2
- 
- config REALVIEW
-     bool
-+    default y if TCG && ARM
-     imply PCI_DEVICES
-     imply PCI_TESTDEV
-     imply I2C_DEVICES
-@@ -217,6 +235,7 @@ config REALVIEW
- 
- config SBSA_REF
-     bool
-+    default y if TCG && AARCH64
-     imply PCI_DEVICES
-     select AHCI
-     select ARM_SMMUV3
-@@ -232,11 +251,13 @@ config SBSA_REF
- 
- config SABRELITE
-     bool
-+    default y if TCG && ARM
-     select FSL_IMX6
-     select SSI_M25P80
- 
- config STELLARIS
-     bool
-+    default y if TCG && ARM
-     imply I2C_DEVICES
-     select ARM_V7M
-     select CMSDK_APB_WATCHDOG
-@@ -254,6 +275,7 @@ config STELLARIS
- 
- config STM32VLDISCOVERY
-     bool
-+    default y if TCG && ARM
-     select STM32F100_SOC
- 
- config STRONGARM
-@@ -262,16 +284,19 @@ config STRONGARM
- 
- config COLLIE
-     bool
-+    default y if TCG && ARM
-     select PFLASH_CFI01
-     select ZAURUS  # scoop
-     select STRONGARM
- 
- config SX1
-     bool
-+    default y if TCG && ARM
-     select OMAP
- 
- config VERSATILE
-     bool
-+    default y if TCG && ARM
-     select ARM_TIMER # sp804
-     select PFLASH_CFI01
-     select LSI_SCSI_PCI
-@@ -283,6 +308,7 @@ config VERSATILE
- 
- config VEXPRESS
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select A15MPCORE
-     select ARM_MPTIMER
-@@ -298,6 +324,7 @@ config VEXPRESS
- 
- config ZYNQ
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select CADENCE # UART
-     select PFLASH_CFI02
-@@ -314,7 +341,7 @@ config ZYNQ
- config ARM_V7M
-     bool
-     # currently v7M must be included in a TCG build due to translate.c
--    default y if TCG && (ARM || AARCH64)
-+    default y if TCG && ARM
-     select PTIMER
- 
- config ALLWINNER_A10
-@@ -332,6 +359,7 @@ config ALLWINNER_A10
- 
- config ALLWINNER_H3
-     bool
-+    default y if TCG && ARM
-     select ALLWINNER_A10_PIT
-     select ALLWINNER_SUN8I_EMAC
-     select ALLWINNER_I2C
-@@ -345,6 +373,7 @@ config ALLWINNER_H3
- 
- config RASPI
-     bool
-+    default y if TCG && ARM
-     select FRAMEBUFFER
-     select PL011 # UART
-     select SDHCI
-@@ -375,6 +404,7 @@ config STM32F405_SOC
- 
- config XLNX_ZYNQMP_ARM
-     bool
-+    default y if TCG && AARCH64
-     select AHCI
-     select ARM_GIC
-     select CADENCE
-@@ -391,6 +421,7 @@ config XLNX_ZYNQMP_ARM
- 
- config XLNX_VERSAL
-     bool
-+    default y if TCG && AARCH64
-     select ARM_GIC
-     select PL011
-     select CADENCE
-@@ -404,6 +435,7 @@ config XLNX_VERSAL
- 
- config NPCM7XX
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select ADM1272
-     select ARM_GIC
-@@ -420,6 +452,7 @@ config NPCM7XX
- 
- config FSL_IMX25
-     bool
-+    default y if TCG && ARM
-     imply I2C_DEVICES
-     select IMX
-     select IMX_FEC
-@@ -429,6 +462,7 @@ config FSL_IMX25
- 
- config FSL_IMX31
-     bool
-+    default y if TCG && ARM
-     imply I2C_DEVICES
-     select SERIAL
-     select IMX
-@@ -449,6 +483,7 @@ config FSL_IMX6
- 
- config ASPEED_SOC
-     bool
-+    default y if TCG && ARM
-     select DS1338
-     select FTGMAC100
-     select I2C
-@@ -469,6 +504,7 @@ config ASPEED_SOC
- 
- config MPS2
-     bool
-+    default y if TCG && ARM
-     imply I2C_DEVICES
-     select ARMSSE
-     select LAN9118
-@@ -484,6 +520,7 @@ config MPS2
- 
- config FSL_IMX7
-     bool
-+    default y if TCG && ARM
-     imply PCI_DEVICES
-     imply TEST_DEVICES
-     imply I2C_DEVICES
-@@ -502,6 +539,7 @@ config ARM_SMMUV3
- 
- config FSL_IMX6UL
-     bool
-+    default y if TCG && ARM
-     imply I2C_DEVICES
-     select A15MPCORE
-     select IMX
-@@ -513,6 +551,7 @@ config FSL_IMX6UL
- 
- config MICROBIT
-     bool
-+    default y if TCG && ARM
-     select NRF51_SOC
- 
- config NRF51_SOC
-@@ -524,6 +563,7 @@ config NRF51_SOC
- 
- config EMCRAFT_SF2
-     bool
-+    default y if TCG && ARM
-     select MSF2
-     select SSI_M25P80
- 
+> +        }
+> +    }
+> +
+> +    return NULL;
+> +}
+> +
+>  static void test_machine(gconstpointer data)
+>  {
+>      const char *machine = data;
+>      char *args;
+>      QTestState *qts;
+>  
+> -    args = g_strdup_printf("-S -M %s", machine);
+> +    args = qtest_get_machine_args(machine, arch_get_cpu(machine), "-S");
+>      qts = qtest_init(args);
+>  
+>      test_info_commands(qts);
+>      test_commands(qts);
+>  
+>      qtest_quit(qts);
+> -    g_free(args);
+>      g_free((void *)data);
+> +    g_free((void *)args);
+> +}
+> +
+> +static void test_none_with_memory(void)
+> +{
+> +    QTestState *qts;
+> +    char *args;
+> +
+> +    args = qtest_get_machine_args("none", NULL, "-S -m 2");
+> +    qts = qtest_init(args);
+> +
+> +    test_info_commands(qts);
+> +    test_commands(qts);
+> +
+> +    qtest_quit(qts);
+> +    g_free((void *)args);
+>  }
+>  
+>  static void add_machine_test_case(const char *mname)
+> @@ -160,7 +188,7 @@ int main(int argc, char **argv)
+>      qtest_cb_for_every_machine(add_machine_test_case, g_test_quick());
+>  
+>      /* as none machine has no memory by default, add a test case with memory */
+> -    qtest_add_data_func("hmp/none+2MB", g_strdup("none -m 2"), test_machine);
+> +    qtest_add_func("hmp/none+2MB", test_none_with_memory);
+>  
+>      return g_test_run();
+>  }
+> -- 
+> 2.35.3
+> 
 -- 
-2.35.3
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

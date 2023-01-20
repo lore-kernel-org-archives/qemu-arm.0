@@ -1,219 +1,107 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1036240ejc;
-        Fri, 20 Jan 2023 04:22:56 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuWsIKlRVCqLShnE0GIk2LMo7p/C1rTipAXfUSGwfYmwMMcWzCrMNXRZOQgJweQn6A8GMJp
-X-Received: by 2002:a05:6102:4a2:b0:3c8:c8b5:a48f with SMTP id r2-20020a05610204a200b003c8c8b5a48fmr9875964vsa.28.1674217376022;
-        Fri, 20 Jan 2023 04:22:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674217376; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1037218ejc;
+        Fri, 20 Jan 2023 04:24:41 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsWI0oHsKWnBmRUEztEIP8D+Gel5+tDJMNn7pc6IZgUVYhF0I7Y2bbtZQEMxzgKsTM64ysI
+X-Received: by 2002:a0d:e747:0:b0:4e0:196:7713 with SMTP id q68-20020a0de747000000b004e001967713mr20117232ywe.5.1674217480900;
+        Fri, 20 Jan 2023 04:24:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674217480; cv=none;
         d=google.com; s=arc-20160816;
-        b=D+eh216wJiqSLXUo7ZEQFWMZTekKPrzlY0/38IxZwRA3+fHMwudl39ONnERdNnXExc
-         KNeRsn2yZwrKdJkBOHeVw574BLxxouHGDte7Nrhcg2Tykwu9vgFVKhtqfDS4cl5vmVCe
-         x6EiAauxrXaLMt76mXBC8lLNhvBLzohy1lfv4TRH9U2smK2Qn95hm+53SEkSOhG8zRCu
-         3JM9+cKKFehbrz3Lek470dgaaBEV0EtCKqPVwkLlGzQO6vWRvmaj5C1PK7+GfwrWmgij
-         IpTsvWRc9Yoxr84MI8fRCKzgmZLPxZTJgM7M7NUjc13IUp3So7GgmfMsRejbp0TNBhQn
-         G3eA==
+        b=EVZhq1bFoCbPmVXbBrz76UG/78tvo8d4I8BRJgV2LGxLzP1IO8za+XNmUNju9Q5qav
+         9ZY3wjdyaIE9PSDYYYu3icensSOCUbr9sCwtQjMdCNcA+2xU6DIDz6UUNLSWGJoVafDH
+         UMEM+UZ5n8KRMbTqJcUHpKpSunGDfMHg6L8IItG+Io41HcLM/IyDxn/Ko90thK29fsvk
+         nweePm073bdmvW+j4jlaLjjeQcL7FlVxQOytsRHNjgHrr+8VdBeK2ZBDaBLuohMtTvJd
+         gK+4A3jUajEnnE8dk8eCSDERz8U138FSAWimnSFeDdUnWBL8lZQ0Febw9CeBRdfZXtbn
+         x22w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=WGw+r06uFfSpjmWD5y34BLzh/X3XWwfRyA8qpNBDs1s=;
-        b=RUpxygd2YybLH6nNofiJPS0GpjGvcumwBndvXNgXUhV6ORjwzjD0nR6+ovUe+lR/Gp
-         tOIgSmoYLXtcB1hkrjashtYzzb0G0CVnQYxXabfDDALrdEhEYUhY0vMyrwTXv2+t73Fj
-         7aTUgPIcSdVHLcIAPag6bvCsQYfp1LVU1XLpRANcz9gbF6Sr/z5+68M3dk0gPzlo0gxo
-         gj46kYFRnD0tMpb5knFatEeCqJTJtrfJLew1uzFh3EP4TaYxGfRRcaEQO24rmy0YT1uS
-         39vqVTpo4qKtlnAkZ22LMU2FI+l7SdSuPzSkM2BR2TMjXLjy9tPnqHzuXQ+aOFGkyGGh
-         FiDQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=1ZZU8K6IpuHAZeldxts/x6ftKTKYjsoVtHVIG/va/38=;
+        b=YhVW0wM03ZF76bfxAYEv4cVklbLIKsHMkNrhSpCcCqjszonpIXJeaQcD3UhYyWlf9X
+         F2q8vYlac70oaWnk4D7nZFkQeuJGjGgHvw8NePwFOzjgeH8cVYGy64jQX7zH1CUiVAQy
+         1usCfGUf55Xqd6+G8/SU69EQ86FEXtOl6kFwud6I2W62THPFQ+IPoJzGLMOj/2nvH71U
+         lJ88z2b78YVlEgl7JDBedfJUc26rST7uf987VNOWoArDyrIW2wVDNYpwMPqGX8AZioGp
+         63fpROmdQRHiK70ZVyizuuaOcquCBODk7bLQlcmfrT5ab2TDpOMD2dKIGgoLhRlPUSbx
+         6ZJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pEJxKPiS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u6-20020a376006000000b00705749ecb17si23917713qkb.293.2023.01.20.04.22.55
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="cT/EEAsI";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id c22-20020a814e16000000b004d3748a1022si2294996ywb.487.2023.01.20.04.24.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Jan 2023 04:22:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jan 2023 04:24:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=pEJxKPiS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pIqPs-0000N2-0W; Fri, 20 Jan 2023 07:22:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pIqPp-0000KK-RC; Fri, 20 Jan 2023 07:22:41 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pIqPn-0007z9-VS; Fri, 20 Jan 2023 07:22:41 -0500
-Received: by mail-ed1-x529.google.com with SMTP id b4so6635005edf.0;
- Fri, 20 Jan 2023 04:22:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=WGw+r06uFfSpjmWD5y34BLzh/X3XWwfRyA8qpNBDs1s=;
- b=pEJxKPiS6QKfPYV8Sd6o8NNiVRaIlk5k7PY7AwDIbwOWgTGJOxY+HSX9PCMd5dPUCL
- b4ZE4OuNpZIWaIAV3Mpmz32F506mz7GM3oE62a1KLPTr39QDygj0adEhTPs9Ow93UURA
- afiMjW+DJE3UN0gMX6TRnEZJow2etXHdSeTaD0yfcf36+1igIwlDVlW+T8YtVoPOiq1V
- t3H/VvYmSYrT5Xo7YWWOCRG5u26B82Y3tpajubdIfe+55AfuHiMCnnNX7iYPgaPS3uN6
- N9QkZp+fmrSQ7kmswex1W38GNcQmJ1SlF/MTV/4VKnwgqvHkw5eHBY+lYrtanVlTL+6w
- xzwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=WGw+r06uFfSpjmWD5y34BLzh/X3XWwfRyA8qpNBDs1s=;
- b=o5Y3HLcPCbrrN5sVyWo8qhoa7Mn/1T7WYKbfBGgrHCYIAoyvK4KPmxqHcz1O6vV3TT
- 29nu6YjGigyLJ6ID+cXz/VoW/3DsH355rMVZYlc6NPyTkHW++pB6sZEzbN8jnVvTVta0
- g+lH0spbJbAuDkYaAKrU0ugnh6nuwOqRF72pSTL4eyNA7tk0GTTpj09iAX66MrnVelwM
- jkINvKvOKe5T1kZMPwv4O73xiz+ry2wD2ayhQHSxyPJ9VmqsguoNWLXo7i86AtZE3JoH
- nEoaAfYTLx+BeROgL3+Xjhk6SPDwM6n8FX3d9yZrkBwboviE2LOKVqlZa5zGvOOzCrMW
- s0yw==
-X-Gm-Message-State: AFqh2krA3PSyvE6WhuOmk+H5MvoW5H+U/7trQHPQQa1Sj9LqmzTHHbtH
- pks9gIDFYKrfaozdtKoQtTI=
-X-Received: by 2002:a05:6402:5d3:b0:49b:58ca:ebbc with SMTP id
- n19-20020a05640205d300b0049b58caebbcmr17750119edx.32.1674217356486; 
- Fri, 20 Jan 2023 04:22:36 -0800 (PST)
-Received: from ?IPv6:::1?
- (p200300faaf0bb200b886192207547078.dip0.t-ipconnect.de.
- [2003:fa:af0b:b200:b886:1922:754:7078])
- by smtp.gmail.com with ESMTPSA id
- d3-20020aa7d5c3000000b004835bd8dfe5sm17342054eds.35.2023.01.20.04.22.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Jan 2023 04:22:36 -0800 (PST)
-Date: Fri, 20 Jan 2023 12:22:29 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: John G Johnson <john.g.johnson@oracle.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, Ani Sinha <ani@anisinha.ca>,
- Eduardo Habkost <eduardo@habkost.net>, Gerd Hoffmann <kraxel@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>
-Subject: Re: [PATCH v6 00/33] Consolidate PIIX south bridges
-In-Reply-To: <6D8095E7-E540-4D7E-B976-D71522F8664A@gmail.com>
-References: <20230109172347.1830-1-shentey@gmail.com>
- <211e791a-9d37-9655-ca93-9e3bda2e21c3@linaro.org>
- <6D8095E7-E540-4D7E-B976-D71522F8664A@gmail.com>
-Message-ID: <752135A6-44DC-4504-8E16-C2E71EC76872@gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="cT/EEAsI";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1674217480;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
+	bh=1ZZU8K6IpuHAZeldxts/x6ftKTKYjsoVtHVIG/va/38=;
+	b=cT/EEAsIwOzZ5tK0q5Q8cJCpvNw7q1DR9nOj8OvA2nIOsrsgxo7eefDsud/qWJNMLK51bK
+	2l/qptBVvPWy273Eg6L4UeMAXBBJhSRsZK7n8p0t2ypN9/hb489E8JscK5zQpevLjrrfsY
+	3+Htc4aV6B415l0kLewHcMKvznZGHQk=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-563-Jti6ghEcP3C9MrCVmmKULQ-1; Fri, 20 Jan 2023 07:24:39 -0500
+X-MC-Unique: Jti6ghEcP3C9MrCVmmKULQ-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com [10.11.54.10])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 63597885620;
+	Fri, 20 Jan 2023 12:24:38 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.72])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 01D16492B02;
+	Fri, 20 Jan 2023 12:24:34 +0000 (UTC)
+Date: Fri, 20 Jan 2023 12:24:31 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [RFC PATCH v4 03/15] target/arm: Remove default cpu for KVM-only
+ builds
+Message-ID: <Y8qH/4VHdG1kk/Y4@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20230119135424.5417-1-farosas@suse.de>
+ <20230119135424.5417-4-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fmN8jZxYFTIO
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230119135424.5417-4-farosas@suse.de>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+X-TUID: 5ySCXPI1l+YG
 
-
-
-Am 13=2E Januar 2023 17:39:45 UTC schrieb Bernhard Beschow <shentey@gmail=
-=2Ecom>:
+On Thu, Jan 19, 2023 at 10:54:12AM -0300, Fabiano Rosas wrote:
+> We'd prefer if the user always had to specify the machine and cpu
+> options in the command line instead of relying on defaults.
 >
->
->Am 13=2E Januar 2023 08:46:53 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <=
-philmd@linaro=2Eorg>:
->>Hi Bernhard,
->>
->>On 9/1/23 18:23, Bernhard Beschow wrote:
->>> This series consolidates the implementations of the PIIX3 and PIIX4 so=
-uth
->>> bridges and is an extended version of [1]=2E The motivation is to shar=
-e as much
->>> code as possible and to bring both device models to feature parity suc=
-h that
->>> perhaps PIIX4 can become a drop-in-replacement for PIIX3 in the pc mac=
-hine=2E This
->>> could resolve the "Frankenstein" PIIX4-PM problem in PIIX3 discussed o=
-n this
->>> list before=2E
->>
->>> Bernhard Beschow (30):
->>>    hw/pci/pci: Factor out pci_bus_map_irqs() from pci_bus_irqs()
->>>    hw/isa/piix3: Decouple INTx-to-LNKx routing which is board-specific
->>>    hw/isa/piix4: Decouple INTx-to-LNKx routing which is board-specific
->>>    hw/mips/Kconfig: Track Malta's PIIX dependencies via Kconfig
->>>    hw/usb/hcd-uhci: Introduce TYPE_ defines for device models
->>>    hw/intc/i8259: Make using the isa_pic singleton more type-safe
->>>    hw/intc/i8259: Introduce i8259 proxy TYPE_ISA_PIC
->>>    hw/i386/pc: Create RTC controllers in south bridges
->>>    hw/i386/pc: No need for rtc_state to be an out-parameter
->>>    hw/i386/pc_piix: Allow for setting properties before realizing PIIX=
-3
->>>      south bridge
->>>    hw/isa/piix3: Create USB controller in host device
->>>    hw/isa/piix3: Create power management controller in host device
->>>    hw/isa/piix3: Create TYPE_ISA_PIC in host device
->>>    hw/isa/piix3: Create IDE controller in host device
->>>    hw/isa/piix3: Wire up ACPI interrupt internally
->>>    hw/isa/piix3: Resolve redundant PIIX_NUM_PIC_IRQS
->>>    hw/isa/piix3: Rename pci_piix3_props for sharing with PIIX4
->>>    hw/isa/piix3: Rename piix3_reset() for sharing with PIIX4
->>>    hw/isa/piix3: Drop the "3" from PIIX base class
->>>    hw/isa/piix4: Make PIIX4's ACPI and USB functions optional
->>>    hw/isa/piix4: Remove unused inbound ISA interrupt lines
->>>    hw/isa/piix4: Use TYPE_ISA_PIC device
->>>    hw/isa/piix4: Reuse struct PIIXState from PIIX3
->>>    hw/isa/piix4: Rename reset control operations to match PIIX3
->>>    hw/isa/piix3: Merge hw/isa/piix4=2Ec
->>>    hw/isa/piix: Harmonize names of reset control memory regions
->>>    hw/isa/piix: Reuse PIIX3 base class' realize method in PIIX4
->>>    hw/isa/piix: Rename functions to be shared for interrupt triggering
->>>    hw/isa/piix: Consolidate IRQ triggering
->>>    hw/isa/piix: Share PIIX3's base class with PIIX4
->>>=20
->>> Philippe Mathieu-Daud=C3=A9 (3):
->>>    hw/mips/malta: Introduce PIIX4_PCI_DEVFN definition
->>>    hw/mips/malta: Set PIIX4 IRQ routes in embedded bootloader
->>>    hw/isa/piix4: Correct IRQRC[A:D] reset values
->>
->>I'm queuing the first 10 patches for now to alleviate the size of this
->>series, and I'll respin a v7 with the rest to avoid making you suffer
->>any longer :/ Thanks for insisting in this effort and I apologize it
->>is taking me so long=2E=2E=2E
->
->Okay=2E=2E=2E What's the further plan? Is there anything missing?
+> Since the KVM build already doesn't work with the current default of
+> cortex-a15, remove the default altogether for KVM builds.
 
-Ping
+IMHO not having a working default CPU model is a undesirable
+state to be in and user hostile, especially so when it makes
+aarch64 be a special case compared to other targets.
 
->
->Thanks,
->Bernhard
->>
->>Regards,
->>
->>Phil=2E
+Can't we just make 'host' be the default model for KVM, if
+the named CPU models don't work ?
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

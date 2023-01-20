@@ -1,168 +1,154 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1087910ejc;
-        Fri, 20 Jan 2023 05:44:03 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuMGGrVxTZy/1P8HClw8xN1zcPPiUzemwNCYcQV7ZXwKsh6PpiKLVVb060ZkrvLKPfDUf9S
-X-Received: by 2002:a05:6214:3311:b0:534:ba17:9e71 with SMTP id mo17-20020a056214331100b00534ba179e71mr24616006qvb.9.1674222243286;
-        Fri, 20 Jan 2023 05:44:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674222243; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1118255ejc;
+        Fri, 20 Jan 2023 06:26:22 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsph8zkupK1qJxpZ7gASiqiDamEItaLx3iuqyBjVt3ElWfL9skIZaiNP4YP2kocF/Ri2Olf
+X-Received: by 2002:a05:6214:21a8:b0:534:2099:5df9 with SMTP id t8-20020a05621421a800b0053420995df9mr29005575qvc.20.1674224782377;
+        Fri, 20 Jan 2023 06:26:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674224782; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ul8rZ8/LuXrMmggNqoWMFuuJq1/53W90yMZcQFUbiguKY1B2TXvoA0N8fVRuEOT+Fi
-         DtKRdCAQVs0xHzyNII8G0tyclnsqplq9CpFuIkyNYzuNGD5y84M3d2hXQQs6S4hYMCZJ
-         uVPObVHMItYnNMRRqwfVKF6B7v9Xgib0IptVTkxwelOZnwwm/AFVB3FwWSEM3tkvWw9y
-         ldQEXm19Ww/gZWe9Yco5hX9mEnKSVAf5X75nrHmUZ+gBgmlPZ7eiG/l002uTtwKLpf6O
-         PPPt8Zz+N+do1f95XT2C+mNlJ7gxO6RaZWiJ4FbwgJll8gwSw0KXJVYGx+JtXRwNYIO6
-         T6xw==
+        b=ruj38UBctToKI0g6gBTPR+ucaFw/xZUqxSeHH85KqlMSz3EbUCh9v/H8ajjbI/4Y1/
+         +yYX8XxDDJvi+fuhUhUwmPgJTCYvQBrbF7VWI0SOtK9XtZrD6M0wYWyl6xarEK/6NSaS
+         0CmHcsyGt1lat/g9NgdbQx3tMJYFs6dg+kHumEzwwouMhXmk2FWj5Qlh93HaLmTWJ0wr
+         DQ2LreFuR4yweutGh/0wDAhRzFJP3286uB6+BPeem/mU2ca23Xdm8PJzF1vA24t0v0I1
+         HAL7ohCB7G/9noNiyjDEJr754cbGsAeuOK9XRyGkL62LoYVpI9QE5W1HbXA9Y8gJZuoU
+         ++dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=UNHd8/T89f0TRHea37adZgQvQ+f5+hWer7661K7hDXI=;
-        b=Zizx63YlePKZRPJ6JDVs/hkEfN8NdUyFE7fp8p8rhyq/CVdEaYpFkz97icxUWV10j2
-         SMy7blIUSTGAQouoSJGbKrKtqvYrR+Hm3ELvbvkloUp5RLlNzlLNW3CU+vLteyBBK+wy
-         Gr+MFNrqLt2QM7GpU9p+pRKwn16GzY3+Mj1QocKhHdFEdubJ2Onp/AOoIvLJ4Q9t3T3H
-         UrPEvvkUEsOQX4X5ATc0PzRwmF5FHzDwE9mdGkLWpNCsBAan+/0U5wmwAD6tbU4zoncE
-         uJ72iDLtEGfzVuugfmg9dFkBnN3MuvoiVTqR1hBZDd7q+Z0Q2Ur0VHt4TGbuQK09cPdJ
-         x8LQ==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=KBy3ZQLGQHh/vTDyBwwa0pU/PwW9dIIX84zu//Y4tjM=;
+        b=FR0SJ6smP0wNWfNx8iTvIxeBOUEyX0WWKD6OQ5YgQ/O6FUOxx4L/9Lqd+WcYgz+fX2
+         D0+ZlXsJxliPrgzQkAnZMFz+as7CIxM6MWlt8WZja76LcN1zqWz7ncrxBPxpoJQJmf+P
+         EqU7NBAjzSlZ6qW7yVEv9fo2MkUoRsHe43dOsPgj3CZ1x30L3HH6R6lZN8Z59TjfLOnW
+         8xPEHlA5GnDHUw3iwC1VEfJCY13lxn7TVxc0+gcoNn15GPtOjpzBpTkT+JTiJq1yr/Uy
+         aNxUIUsVgV3Z9JDk8TvLblKW71Tqmq+y6Xd0Q2WMOxNNCc24RzvqR3xogkvs8AWERzYk
+         mKPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qHk0TYqX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gc5-20020a056214230500b004b1ca99019asi25140235qvb.333.2023.01.20.05.44.03
+        by mx.google.com with ESMTPS id gf3-20020a056214250300b004ef59b08961si25335140qvb.536.2023.01.20.06.26.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Jan 2023 05:44:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Jan 2023 06:26:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qHk0TYqX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pIrfx-00013U-RN; Fri, 20 Jan 2023 08:43:25 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pIsLJ-0001lD-Mm; Fri, 20 Jan 2023 09:26:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIrfw-000137-Aw
- for qemu-arm@nongnu.org; Fri, 20 Jan 2023 08:43:24 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIrfu-0007Ww-P3
- for qemu-arm@nongnu.org; Fri, 20 Jan 2023 08:43:24 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- c4-20020a1c3504000000b003d9e2f72093so5879950wma.1
- for <qemu-arm@nongnu.org>; Fri, 20 Jan 2023 05:43:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UNHd8/T89f0TRHea37adZgQvQ+f5+hWer7661K7hDXI=;
- b=qHk0TYqXYGW8iALXaE11M3MlMIxhkCjmG4yJZismQtXQG97rzmhRqZ5r0GoMLNgsZ7
- CN1qJ8bGYYWss5i1LGDomJnR+6JsKMZkqPzHOSqeAtLFWcLmHZA7akjkYXE4sqWhCqwt
- IdQ5sCwaQgWNmhy4XkOLQlXbU2mMvKczMjhJasZfEjXQhivjGnnALEgMqZZPrQD84rLD
- QBao2M9nkpE5JhiLb/vFWzUddlmrJ2/gN5Blhn9fMGz4SbOUh+NKA2hAVXREQujAiH3m
- bJx4SII0RkieQnjQAFpZHUOWB3zdMJ8lU78T78YQMUpCj82hSpkjIGrBIKVP6X6bWp7y
- Bs7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=UNHd8/T89f0TRHea37adZgQvQ+f5+hWer7661K7hDXI=;
- b=OFCpKNNEsUTduwBZV4F4DPd4N3Vmc3xfZDqIsCDtK+e7jb6BZOeh6pU7sNF+t1fu7k
- BbM7D6qmXFtZT7TKLGrps9iBV5lHam5B9MRMPdTXGOM52SC0G+ow40/cF4wyDYv30krW
- /iyIF2yXXYo6jN7pekRX2DzcfJsQmShIIHujzi5GxAJ3NdS7XK2ZY246lyi0Z+9ZdCDX
- cTzIgas2AqkhPLlEOwE44PjYmpbRabdy51W4A53Km2uVXo2MfsitRKXC+NwJa9dWdZnX
- 08CHB2p7TUZsRHYNRkQ0T2pD85x0mC9na9GIp4heXi5MhyvidKZIFyFdcHk6GgypPnoV
- Whug==
-X-Gm-Message-State: AFqh2kovxSTXtUrQv5MIHDndGXZuufHdDrZKZCs7+utVHc5RiVPFOJ1Z
- ZV53CUkeSYq840PkqYAlLkbq/Q==
-X-Received: by 2002:a05:600c:1712:b0:3d9:a145:91a with SMTP id
- c18-20020a05600c171200b003d9a145091amr14158241wmn.28.1674222201108; 
- Fri, 20 Jan 2023 05:43:21 -0800 (PST)
-Received: from localhost.localdomain ([81.0.6.76])
- by smtp.gmail.com with ESMTPSA id
- h13-20020a05600c2cad00b003cfa622a18asm2691725wmc.3.2023.01.20.05.43.20
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 20 Jan 2023 05:43:20 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Beraldo Leal <bleal@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Subject: [PATCH v2 1/2] tests/avocado: Factor file_truncate() helper out
-Date: Fri, 20 Jan 2023 14:43:13 +0100
-Message-Id: <20230120134314.81956-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230120134314.81956-1-philmd@linaro.org>
-References: <20230120134314.81956-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1pIsLG-0001hP-OM; Fri, 20 Jan 2023 09:26:07 -0500
+Received: from 9.mo552.mail-out.ovh.net ([87.98.180.222])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1pIsLB-0006vQ-WC; Fri, 20 Jan 2023 09:26:06 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.180])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 157962AD31;
+ Fri, 20 Jan 2023 14:25:56 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.16; Fri, 20 Jan
+ 2023 15:25:55 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-101G0047f0e0811-9d9b-4b40-80b5-400d064d373e,
+ B144956C13BBC382596DA5742790BEAB579A3E91) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <2d35012a-d493-83d7-843c-fdcee387e63f@kaod.org>
+Date: Fri, 20 Jan 2023 15:25:54 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v2 1/2] tests/avocado: Factor file_truncate() helper out
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ <qemu-devel@nongnu.org>
+CC: Beraldo Leal <bleal@redhat.com>, Wainer dos Santos Moschetta
+ <wainersm@redhat.com>, <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Subbaraya Sundeep
+ <sundeep.lkml@gmail.com>
+References: <20230120134314.81956-1-philmd@linaro.org>
+ <20230120134314.81956-2-philmd@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230120134314.81956-2-philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: eb36aae7-08d5-4326-b3f5-8bac4bd7e5d1
+X-Ovh-Tracer-Id: 11849815047274531692
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrudduvddgieeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffudefleeiudejfeffhfejffeigffhhffhvdekieejheelvdeufffhjedtheeggeenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphhhihhlmhgusehlihhnrghrohdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpsghlvggrlhesrhgvughhrghtrdgtohhmpdifrghinhgvrhhsmhesrhgvughhrghtrdgtohhmpdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdgtrhhoshgrsehrvgguhhgrthdrtghomhdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhsuhhnuggvvghprdhlkhhmlhesghhmrghilhdrtghomhdpoffvtefjohhsthepmhhoheehvddpmhhouggvpe
+ hsmhhtphhouhht
+Received-SPF: pass client-ip=87.98.180.222; envelope-from=clg@kaod.org;
+ helo=9.mo552.mail-out.ovh.net
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.089,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JSWbsVA5+NEm
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 84vFo/cOO53Z
 
-Factor file_truncate() helper out of image_pow2ceil_expand()
-for reuse.
+On 1/20/23 14:43, Philippe Mathieu-Daudé wrote:
+> Factor file_truncate() helper out of image_pow2ceil_expand()
+> for reuse.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   tests/avocado/boot_linux_console.py | 13 +++++++------
+>   1 file changed, 7 insertions(+), 6 deletions(-)
+> 
+> diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+> index 8c1d981586..8a598be966 100644
+> --- a/tests/avocado/boot_linux_console.py
+> +++ b/tests/avocado/boot_linux_console.py
+> @@ -30,15 +30,16 @@
+>   def pow2ceil(x):
+>       return 1 if x == 0 else 2**(x - 1).bit_length()
+>   
+> +def file_truncate(path, size):
+> +    if size != os.path.getsize(path):
+> +        with open(path, 'ab+') as fd:
+> +            fd.truncate(size)
+> +
+>   """
+>   Expand file size to next power of 2
+>   """
+> -def image_pow2ceil_expand(path):
+> -        size = os.path.getsize(path)
+> -        size_aligned = pow2ceil(size)
+> -        if size != size_aligned:
+> -            with open(path, 'ab+') as fd:
+> -                fd.truncate(size_aligned)
+> +def image_pow2ceil_expand(path, size):
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- tests/avocado/boot_linux_console.py | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+The image_pow2ceil_expand() callers should be changed to add 'size' argument.
 
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 8c1d981586..8a598be966 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -30,15 +30,16 @@
- def pow2ceil(x):
-     return 1 if x == 0 else 2**(x - 1).bit_length()
- 
-+def file_truncate(path, size):
-+    if size != os.path.getsize(path):
-+        with open(path, 'ab+') as fd:
-+            fd.truncate(size)
-+
- """
- Expand file size to next power of 2
- """
--def image_pow2ceil_expand(path):
--        size = os.path.getsize(path)
--        size_aligned = pow2ceil(size)
--        if size != size_aligned:
--            with open(path, 'ab+') as fd:
--                fd.truncate(size_aligned)
-+def image_pow2ceil_expand(path, size):
-+    file_truncate(path, pow2ceil(size))
- 
- class LinuxKernelTest(QemuSystemTest):
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
--- 
-2.38.1
+C.
+
+
+> +    file_truncate(path, pow2ceil(size))
+>   
+>   class LinuxKernelTest(QemuSystemTest):
+>       KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
 

@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1303473ejc;
-        Fri, 20 Jan 2023 10:50:55 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXu3++VX9dpzQ3QUMqEPoXzk8eI7u4mHkhGIA1q3W6aELnnSUat6Q2f032Z9/pUiGitcEAyG
-X-Received: by 2002:a17:907:6746:b0:871:b898:92fd with SMTP id qm6-20020a170907674600b00871b89892fdmr18122338ejc.6.1674240655344;
-        Fri, 20 Jan 2023 10:50:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674240655; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1303507ejc;
+        Fri, 20 Jan 2023 10:50:59 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtleZqz9tYUDQ/qNn2/JB2KcRv1LWYHiBFgfBPuEnayH3kSW/jVNOVrU7W1ZmlLhy4fpmsf
+X-Received: by 2002:a5d:66d1:0:b0:2be:3538:2ef2 with SMTP id k17-20020a5d66d1000000b002be35382ef2mr8087256wrw.45.1674240659617;
+        Fri, 20 Jan 2023 10:50:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674240659; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z5BEpuSNFeXHiRP+YhlNS1DyaL9guLrczscfzEVBO7RGz7+wi99tdPFybBl1d1F69B
-         X52N5HbI6QysSFsg2sec8oeVRVyroJzi8n/zesK+YVDJJo4KQHR5UO8USsa3n+MVg/Bp
-         jwPQIR76B5OZCETIJNMjXmmfaqoT+qgRthVnvF9MW5jpz7C/NVJBTKTMzmktyEju3xU4
-         0Kmna5cT2sF7eHkuz9xqv8jREX4H48Z+Ksz7FNmHaQMPnMftKWnXSWbU4CnyxkbhvdnL
-         mkCqSBR0a+gfyeAUsFCkQEZGdiY6ROU4j43b8ct0ECsBRsFYeZpkCaz6ZRh8Vo1R9py8
-         q+IQ==
+        b=Vx3ozJ9puGClwvIiDpMMkuUGwOf052kzKSC17rOIyDKIS3e04ND5I15qocITTJOpFX
+         2RO/OTdYQy3U/u6eRoJUMi6itwjAyjN8MFcqRwmZZ5AdS4Ogfc5+bj1Eea+ZG2NTJss4
+         du4yCAbLAKZSjThtrEfvYSe3yoK356lyKI60ABxFP3QUGCa8RDvhfzJzLZLEPFNdHmBj
+         dx6PqFFQpNFzR4GKMX3Asdp7FezxNjbt0GjWu4fVC/81upLeqPfDZ/omTAWfWRfwA582
+         OWWRZ2vtG0koboIq3wqc2pKhhCPqqKeuaPU9OVWHVefgEem2iHKON9ix2twOT+eWd92V
+         OPBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=ER80PJwpTMoGZflgDcdmaejpQuhPqaaBc1ZyThFUlNM=;
-        b=e5fKX8o/XzVffJPWXsIXdquOpHZHYYYU5KKGTktQCBJxvIdebpQGblYkRjZgbfo/mx
-         I8HbbP1yvbkMuWQB+c7hLnWtseD7AZC2WKKiYKRHuh6EkIHpSaI5vh9O8MV9YpMIL0f5
-         lc1ZyltvbJIcxHOiga2Kgkpf6mmtpGLWgQnfeWnwGpPw+X1ZUZN16ZGD0AvMveqHzzRS
-         Vf1SGuKIzl14yntuIwCD2fWL0SwN35ezscKFskfTMMF6ZGYE1SErwCF5GmcZcNtZ+UJb
-         W4XOpYjHu0mO2MTx9m/iZOZufkbQh4T2iEB0mTUqmh2TaLmyfdmXQkGFxiS76iZKawjj
-         8soQ==
+        bh=P/rV0PJIOUZCnnLBP0TDoGgeA0dRFVlBjTTK1Nu2RhU=;
+        b=YO21/YgbILgkjk+a0S5NrOTXQ8sW7GLnPiokaQfmPCbNgjwF0QVBgvO4+tivTDdmS2
+         ZRZSlwAHlXnzrzKkn6NrTFgCp/QAMubz5ftRWc5EdUrI23IADcCzPFAzX7aCIEZErDSn
+         UsRQo/zXpDc8CUVrKgfnM+nX0iwqqvLQMaEuYA+rnqMQtFE1fLJ8zFbLenC93EbllBQg
+         koNZwwExWrRaWgBXC3/BE7srqhxnj+OxTuP2j7NMYmNLOg5nqXc2xQ80zUC5gx6LGGfQ
+         CxV76uy7kNbqaAD3PTpj5NS33TdZKJ+oLbpAG7BR9mc3vehzkVYqt6cSdFw/20wZfGwB
+         ty4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=HJn1bx0d;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=QIiaWelZ;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id nb3-20020a1709071c8300b00870c8690d6csi14882230ejc.207.2023.01.20.10.50.55
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id o1-20020a05600002c100b002bbdbdcadc9si40535584wry.350.2023.01.20.10.50.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Jan 2023 10:50:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+        Fri, 20 Jan 2023 10:50:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=HJn1bx0d;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=QIiaWelZ;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id F22F5337CA;
-	Fri, 20 Jan 2023 18:50:54 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 4175A337C7;
+	Fri, 20 Jan 2023 18:50:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1674240655; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	t=1674240659; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ER80PJwpTMoGZflgDcdmaejpQuhPqaaBc1ZyThFUlNM=;
-	b=HJn1bx0dp5V4deR+2JB6M8x0LJO2goGbi+lpRuAtXz0kbq4X0OuVW7QWSNPafCWhh3URtm
-	incELBCKt0oVvEksy57clgSEm2oBvvHz8jAmiuL/C3M1saWKVoDBsKZ/y/mlMTIJzldS/M
-	PTBpjdndC7F7FZ6AAyooxG+UO4ZOV/s=
+	bh=P/rV0PJIOUZCnnLBP0TDoGgeA0dRFVlBjTTK1Nu2RhU=;
+	b=QIiaWelZepFLC+oDa3xMb1lXmxI8n9KbF0VqKqpi0kpml7hCGh6cV2S2sTLHAody4wWIub
+	cUbw8WKLykysYyvh8JPcRJrOdeLhYQa1SdsKxF0HB3uI/8CqBi7zghqbkgrZuo8lotyjN8
+	ip22jczp7nYzV23gsXg/5ZsmH9LdJCw=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1674240655;
+	s=susede2_ed25519; t=1674240659;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ER80PJwpTMoGZflgDcdmaejpQuhPqaaBc1ZyThFUlNM=;
-	b=GW3tgvk9kZCpZatzxyFOKGz+p+KqvwGG4gPewKVAKhNzj2WoPvurMwIBg3nEmTPPzpSWBg
-	YMgdworwN0Yt6SDw==
+	bh=P/rV0PJIOUZCnnLBP0TDoGgeA0dRFVlBjTTK1Nu2RhU=;
+	b=3pxGQ4pOCEWc3N0Tmnsvc/otsKwKE3paxOEjohyWyxvwGvJ2lCk38mM9eD1WqWHCUFXX5d
+	D+tsOeYu9ZKdGXDA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id A1CCE1390C;
-	Fri, 20 Jan 2023 18:50:51 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 71E111390C;
+	Fri, 20 Jan 2023 18:50:55 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 4FozGYviymNSbQAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 20 Jan 2023 18:50:51 +0000
+	id YIS9DY/iymNSbQAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 20 Jan 2023 18:50:55 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,44 +83,60 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [RFC PATCH v5 6/9] tests/tcg: Do not build/run TCG tests if TCG is disabled
-Date: Fri, 20 Jan 2023 15:48:22 -0300
-Message-Id: <20230120184825.31626-7-farosas@suse.de>
+	Cleber Rosa <crosa@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>
+Subject: [RFC PATCH v5 7/9] target/avocado: Pass parameters to migration test on aarch64
+Date: Fri, 20 Jan 2023 15:48:23 -0300
+Message-Id: <20230120184825.31626-8-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230120184825.31626-1-farosas@suse.de>
 References: <20230120184825.31626-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: oIkOhj7CcZzl
+X-TUID: HU9qM/aFimKe
 
-The tests under tests/tcg depend on the TCG accelerator. Do not build
-them if --disable-tcg was given in the configure line.
+The migration tests are currently broken for an aarch64 host because
+the tests pass no 'machine' and 'cpu' options on the QEMU command
+line. Most other architectures define a default value in QEMU for
+these options, but arm does not.
+
+Add these options to the test class in case the test is being executed
+in an aarch64 host.
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- configure | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ tests/avocado/migration.py | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/configure b/configure
-index 9e407ce2e3..64960c6000 100755
---- a/configure
-+++ b/configure
-@@ -2483,7 +2483,11 @@ for target in $target_list; do
-       tcg_tests_targets="$tcg_tests_targets $target"
-   fi
- done
--echo "TCG_TESTS_TARGETS=$tcg_tests_targets" >> config-host.mak)
-+
-+if test "$tcg" = "enabled"; then
-+    echo "TCG_TESTS_TARGETS=$tcg_tests_targets" >> config-host.mak
-+fi
-+)
+diff --git a/tests/avocado/migration.py b/tests/avocado/migration.py
+index 4b25680c50..ffd3db0f35 100644
+--- a/tests/avocado/migration.py
++++ b/tests/avocado/migration.py
+@@ -11,6 +11,8 @@
  
- if test "$skip_meson" = no; then
-   cross="config-meson.cross.new"
+ 
+ import tempfile
++import os
++
+ from avocado_qemu import QemuSystemTest
+ from avocado import skipUnless
+ 
+@@ -26,6 +28,14 @@ class Migration(QemuSystemTest):
+ 
+     timeout = 10
+ 
++    def setUp(self):
++        super().setUp()
++
++        arch = os.uname()[4]
++        if arch == 'aarch64':
++            self.machine = 'virt'
++            self.cpu = 'max'
++
+     @staticmethod
+     def migration_finished(vm):
+         return vm.command('query-migrate')['status'] in ('completed', 'failed')
 -- 
 2.35.3

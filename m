@@ -1,91 +1,88 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1087860ejc;
-        Fri, 20 Jan 2023 05:43:59 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXviTO2wcPe8c2iMz2UbQAbDuExNeA8qTnU9tErUyBee6e7eUc0wBep/qkZhP8tlBkNZMI8n
-X-Received: by 2002:ac8:6045:0:b0:3b2:8972:d541 with SMTP id k5-20020ac86045000000b003b28972d541mr16806535qtm.22.1674222239412;
-        Fri, 20 Jan 2023 05:43:59 -0800 (PST)
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1087871ejc;
+        Fri, 20 Jan 2023 05:44:00 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvIUdlYjzVkqyZouE7TNUbiVtSj0LBrug96Rvjt2W7bM9QAd0xsD5yMdp/GzbN9JN60qsf7
+X-Received: by 2002:ac8:6045:0:b0:3b2:8972:d541 with SMTP id k5-20020ac86045000000b003b28972d541mr16806576qtm.22.1674222240009;
+        Fri, 20 Jan 2023 05:44:00 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1674222239; cv=none;
         d=google.com; s=arc-20160816;
-        b=oQ8Mz0cttCzzDBaPHRjMFkJg2mWJVVQzQItgNrrh11dH8iGoFW99CHjuT7RzH1Orpd
-         ZcMnL2J3VQzsYEei93wzq2YhqkNHok2LYr8JFCj8rhlRqAC2lYleIJu6KhShiaD1Hfb1
-         qTdw+VgPV9CSvHPl7ZydqCSvDHHSr5uZPQrwSOYoztXGSyugJo8GxbgBZNKHkd15xh2R
-         S29hHvaHMcO2TH/vCvUIIdQWQhWRsreUhhOxtIl9TjMBOfwwVGog17sVBpM/LDpWU4/X
-         0h+u53mitRSGqAq8j6hlkWi39U0Ih+wLY+u7CMFqYmosjY/YUDQLgTDN+Ibe1Zor8Ldl
-         TxQA==
+        b=SBUnCrnBVYsXnev3u5MB9K1CBVeUdiSm0C56odY3nv/isPsN2b1CrfPFgq6HKIkcnt
+         fgVpfP619bsJ4kF9jKUSNcckfHpcQBiPYKRp7dn8tGpbvX+BuVbu2rkVkJk79ZqQrXyn
+         utqPq+Qx4+sj2CdvEprFOTVjNbz148BZQiF4NQ6aWuvB18r1m1L78698EK9EqQa7EGwV
+         LvjqFgjrV+h+Yl3hnWTmGsHYKzBqw6zenWKx4hr5Grb24OVliTmL7mv+uRbzJhhiAfob
+         lgWaOND7fRr5DXl8OgXnagTFV2S9KwDQrJl2+CW1J5JvuTKiYCTAqzr1ayNK/KkP8N46
+         GYxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=s8GtNAPgyhpBwG+7nq0uxfOe9enuDqptYaOVvOfM+co=;
-        b=OOtCn7sZfRBqVDOHAfHPasb9jP7kH2kk724ogW4kslz6Ak8qBtLWpJGWX8lUmA/m8Z
-         KHrmfjteM/A5KbfkdqhimqxkodBmqMSrGQBtQyPceWBNKzjToU2/DL44o73gkNIq5G7A
-         lQqQq9DLj7l0OQsoYyrZzKUOHViWOpNm9XB2Ya4gixibwKLDGnDAKAh5NCuTL0c9xBWr
-         EagJxJXrUXdFLEDnCYPsnA7JCI7FKjkYbYoCO+RP1FESyLRS2mi5KPAk1IHhwBfOq7E6
-         psjcIIL5wbbmFcCUxuyf8wkpvA0S2Mmxf+8dOG5DuKtyzFIvbfUqjP+G5Bwxj4RWrdmy
-         vnRQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gXuDv/C0Rs9dQca1e1w0gMaDH945zae3nzhBwBhgYss=;
+        b=UxHE1EQUUet2rdlKfPY2cP4zIZJWbsAZrrWDaE0i9aP5wqZLWH1e5oSY+uHHX7Wmzd
+         xowiLEsfVYMg3kLrmRtdXlKgVpNVsmF86W589CV5KqGfmyAaezSlSR1E5K85BOxxJQuf
+         4zIGt+O7Rzkea1mMOTqXTz6LDXceWMBm12OMNDvr/Anmn5gVpCgJy3hrGtE+NZM2LzLx
+         kDNnYF7hw2XE/GClG4qImFn9gkCdgGSFVPTmm7yD3Nx/PToCemhIih3liaPF/uV/bghS
+         eMzaNjqtx40ky4bJwJVHr75+I8klb8friiX5iBsqPAF/2++pTo3ipps/oD80xso1Uz04
+         V04Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lEIwHB3u;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aDdvOcVK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l17-20020ac84a91000000b003b62f71a02esi9539767qtq.332.2023.01.20.05.43.59
+        by mx.google.com with ESMTPS id bq8-20020a05622a1c0800b003b631d32120si9063315qtb.508.2023.01.20.05.43.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 20 Jan 2023 05:43:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lEIwHB3u;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aDdvOcVK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pIrg2-00018V-Ht; Fri, 20 Jan 2023 08:43:30 -0500
+	id 1pIrfu-00012P-O0; Fri, 20 Jan 2023 08:43:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIrg1-00017z-Ce
- for qemu-arm@nongnu.org; Fri, 20 Jan 2023 08:43:29 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIrfr-00010z-Cm
+ for qemu-arm@nongnu.org; Fri, 20 Jan 2023 08:43:19 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIrfz-0007Xg-Hm
- for qemu-arm@nongnu.org; Fri, 20 Jan 2023 08:43:29 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- m5-20020a05600c4f4500b003db03b2559eso3711660wmq.5
- for <qemu-arm@nongnu.org>; Fri, 20 Jan 2023 05:43:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIrfp-0007Vy-O9
+ for qemu-arm@nongnu.org; Fri, 20 Jan 2023 08:43:19 -0500
+Received: by mail-wr1-x433.google.com with SMTP id r9so4901519wrw.4
+ for <qemu-arm@nongnu.org>; Fri, 20 Jan 2023 05:43:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=s8GtNAPgyhpBwG+7nq0uxfOe9enuDqptYaOVvOfM+co=;
- b=lEIwHB3ugGTDTf+OxmLQetvIr4Mxakn7v4LQiSj/5uSRIZwt70Vk15vF7j5NAyfRJv
- M213FplsS8AHESMJhfkbsRAxkEeJhVPrVC9JhmcSx+dpDUnb2CiIj8YitCRIZbZuFM27
- HJqQP3KbkO86q5iT2N6QPRwCM5DQSqCBqoqVfOKhxH+k99IqIii3WfPNFBkegQgR634V
- 0iJF1ba16Lkpf7yuxW9WgAT4MZOXgclsTZ44w1jqsGtHebVZ6W7KxBa4cx/VaKw1y5iV
- EN75CKJceupP/YAHE5jzyzBEPS2HVqpZmmFBOBmArJK09/gatJPfPZRPbE3gZK3SDCso
- fKZA==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=gXuDv/C0Rs9dQca1e1w0gMaDH945zae3nzhBwBhgYss=;
+ b=aDdvOcVKHmz8bhEdKgqTPwFekE8EliPsTF+Sa5oudfNiSOWeY6HC9REVEjxaP0kaeV
+ najG8MqQ5/QpV+1kb8N3jOen8oBs+cEu19dKChriLY4Az9vXM1z85Gj3RPYX9Jq1/cgE
+ gfJ0/IN3RAgEga5qpdaGjgaU99e3hi5Ji+DT0s1kMBlPZuTmkoeE4kce/Pj1Um5ql1WS
+ to4QpA22+taJfLjzbY3YjrIEO62HgsIELO4zV3C+JMSh9imq+dCs5LsB/yp4DWLFkvHP
+ CaGHxZed66BgiQ2ucKUYejZVNcSrR2cmranV9Zg9jjpn2JY4P+WT2Hcl4qv2eg+x7SIx
+ iE5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=s8GtNAPgyhpBwG+7nq0uxfOe9enuDqptYaOVvOfM+co=;
- b=F3nHec979h7gjrHA2E66UZVfCo3BMDzE8eWvNNtSdFyLXZmxVSMhBAAvGiNWSdg/vQ
- DuVhYmgdeDa80UCjjtfneJBOFycQ1WvQaZxNyXqUtFZdpA+hlhJUX1UonJd04mYU6s/E
- QH5Gfn/sQLOOh/5YtHFCGMX146GRyIhxWksksJw4oYSh1m940OIBTs0lMf91Zm9bfyzC
- H+hptacefGtHq6UtrXDkmGv3MM3GvJs+oV52Gt7cuH5ilQ+uAGTmq7QzOLENo8QGEFtE
- tAGtTRSw3oiBDcq/eZgRYEfEEM9vNpcdpSIpeAq9e/M4utbSEOK+pdciTHyzu8FmZodl
- /R6A==
-X-Gm-Message-State: AFqh2kq/D5Ko2+CbVTwN6f6tD8z+HeR8XSRnQUpkXzrqI0mg2XPFyoot
- 51r0Ye4wRwGTo4KJIyr2CTIpCQ==
-X-Received: by 2002:a05:600c:540d:b0:3d9:fb59:c16b with SMTP id
- he13-20020a05600c540d00b003d9fb59c16bmr10559299wmb.36.1674222206112; 
- Fri, 20 Jan 2023 05:43:26 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gXuDv/C0Rs9dQca1e1w0gMaDH945zae3nzhBwBhgYss=;
+ b=A+gQsy0jqJnBVIgDcaFlcS5HwNHdOjB5oavE/UHb3vw9GOKqI2EK/WgurIGhrbHnB+
+ 3BdeWOPVp1EgY8P8sqdHs004jKJtX6v34gpQljV/OIW1xdx+BrgOtRcMyIcrh8+c3RYG
+ ZMhAmijm2Yvr3FfeRQtnUFNWKqSTsPWkh5q08BJ6iZde83sk6YdfoWdyC3tRgMnPtUUM
+ Iq7j8W88vU0IgAsat/lH8ktY7teGZXQvQqZUCj7S+JyEgMhHNAdBKk3o+fjVQNAjZwxt
+ o+G/Hn6aoWb7C2SFxFzerKTox5/wxb9shbplb0zfJaPIfXpiuq2Ep7Y+eoi8b7eyuJBg
+ tRkQ==
+X-Gm-Message-State: AFqh2krUTSO/5Q8NUG7zKUEU1FOUD4byK2+iNqE2TI8fGWm+gK6BcW9o
+ CAUtZI4p0eCuv4abKB+p5wwoQg==
+X-Received: by 2002:adf:cd81:0:b0:2bd:e0e8:694f with SMTP id
+ q1-20020adfcd81000000b002bde0e8694fmr13257915wrj.32.1674222196127; 
+ Fri, 20 Jan 2023 05:43:16 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- f22-20020a1cc916000000b003d35acb0fd7sm2344031wmb.34.2023.01.20.05.43.25
+ f7-20020a5d6647000000b002bbeb700c38sm31004057wrw.91.2023.01.20.05.43.15
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 20 Jan 2023 05:43:25 -0800 (PST)
+ Fri, 20 Jan 2023 05:43:15 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Beraldo Leal <bleal@redhat.com>,
@@ -94,18 +91,16 @@ Cc: Beraldo Leal <bleal@redhat.com>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Subject: [PATCH v2 2/2] tests/avocado: Truncate M2S-FG484 SOM SPI flash to
+Subject: [PATCH v2 0/2] tests/avocado: Truncate M2S-FG484 SOM SPI flash to
  16MiB
-Date: Fri, 20 Jan 2023 14:43:14 +0100
-Message-Id: <20230120134314.81956-3-philmd@linaro.org>
+Date: Fri, 20 Jan 2023 14:43:12 +0100
+Message-Id: <20230120134314.81956-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230120134314.81956-1-philmd@linaro.org>
-References: <20230120134314.81956-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,63 +122,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G1HmCTAIhCEo
+X-TUID: BGMrz9JxXgIX
 
-The M2S-FG484 SOM uses a 16 MiB SPI flash (Spansion
-S25FL128SDPBHICO).  Since the test asset is bigger,
-truncate it to the correct size to avoid when running
-the test_arm_emcraft_sf2 test:
+The M2S-FG484 SOM SPI flash is 16MiB. Truncate the file
+provided with the Avocado test to avoid:
 
-  qemu-system-arm: device requires 16777216 bytes, block backend provides 67108864 bytes
+ qemu-system-arm: device requires 16777216 bytes, block backend provides 67108864 bytes
 
-Add comment regarding the M2S-FG484 SOM hardware in
-hw/arm/msf2-som.c.
+before merging the "m25p80: Improve error when the backend
+file size does not match the device" patch:
+https://lore.kernel.org/qemu-devel/20230119123449.531826-2-clg@kaod.org/
 
-Reported-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Tested-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/msf2-som.c                   | 5 ++++-
- tests/avocado/boot_linux_console.py | 2 ++
- 2 files changed, 6 insertions(+), 1 deletion(-)
+Since v1:
+- add missing 'size' argument in file_truncate (Cédric)
 
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-index a6df473ec9..7b3106c790 100644
---- a/hw/arm/msf2-som.c
-+++ b/hw/arm/msf2-som.c
-@@ -1,6 +1,9 @@
- /*
-  * SmartFusion2 SOM starter kit(from Emcraft) emulation.
-  *
-+ * M2S-FG484 SOM hardware architecture specification:
-+ *   https://www.emcraft.com/jdownloads/som/m2s/m2s-som-ha.pdf
-+ *
-  * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining a copy
-@@ -87,7 +90,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
- 
-     /* Attach SPI flash to SPI0 controller */
-     spi_bus = qdev_get_child_bus(dev, "spi0");
--    spi_flash = qdev_new("s25sl12801");
-+    spi_flash = qdev_new("s25sl12801"); /* Spansion S25FL128SDPBHICO */
-     qdev_prop_set_uint8(spi_flash, "spansion-cr2nv", 1);
-     if (dinfo) {
-         qdev_prop_set_drive_err(spi_flash, "drive",
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 8a598be966..9f5077c791 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -396,6 +396,8 @@ def test_arm_emcraft_sf2(self):
-         spi_hash = '65523a1835949b6f4553be96dec1b6a38fb05501'
-         spi_path = self.fetch_asset(spi_url, asset_hash=spi_hash)
- 
-+        file_truncate(spi_path, 16 << 20) # Spansion S25FL128SDPBHICO is 16 MiB
-+
-         self.vm.set_console()
-         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE
-         self.vm.add_args('-kernel', uboot_path,
+Philippe Mathieu-Daudé (2):
+  tests/avocado: Factor file_truncate() helper out
+  tests/avocado: Truncate M2S-FG484 SOM SPI flash to 16MiB
+
+ hw/arm/msf2-som.c                   |  5 ++++-
+ tests/avocado/boot_linux_console.py | 15 +++++++++------
+ 2 files changed, 13 insertions(+), 7 deletions(-)
+
 -- 
 2.38.1
 

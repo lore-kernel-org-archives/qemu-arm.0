@@ -1,77 +1,74 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1185163ejc;
-        Fri, 20 Jan 2023 07:56:19 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtGXqE7W1DoCdEeA+ZcJsboOK3k5IdNk7hzZOWBPIIy+O1cA6EXTb/teyi7TYIxbYQ9A9kf
-X-Received: by 2002:a05:622a:4f8c:b0:3b6:2d63:c852 with SMTP id ej12-20020a05622a4f8c00b003b62d63c852mr17146833qtb.47.1674230179311;
-        Fri, 20 Jan 2023 07:56:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674230179; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1187299ejc;
+        Fri, 20 Jan 2023 07:59:57 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXukelIZtObC5BjWzTZrx1enZ8Ypa1lnYaQcRAZsqNxAdmmZQb3M0v/II8z4IVhRxv22kpwU
+X-Received: by 2002:ac8:60c9:0:b0:3a8:15d2:6e8f with SMTP id i9-20020ac860c9000000b003a815d26e8fmr21342765qtm.44.1674230396974;
+        Fri, 20 Jan 2023 07:59:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674230396; cv=none;
         d=google.com; s=arc-20160816;
-        b=bHkwNJkBlAggjd6tf+cfSnlnP8uq9AaKZWfDKgT25nLyHZUTBDHG+eyfjDorvB46VX
-         uChY71I70hQOksiOuQZg1p6nZojsleCF95g28673OPWvHo2L7fzUVMpa9QLKVwiIc2Hv
-         AGX5P+nDooOVsnjuzL7BHHKT22y+DP6j96yHZnGaTiUcPQJEtPFiuYKx5dyumXlE1Qq6
-         mC+obUpIX+vc0DR3bDeZDCMUEwiP9ux068yJ4bv0Gv7lM5yaVzp53MraR7c1E8QLnjtc
-         D8YDdf1TpwwKjzve9q1jg+KpGiaCLg25DtQFXut1tpyy76zF0t1iVbjq+d5r5QEylEpD
-         VYkQ==
+        b=VwduYVoZMtrrXPQgc927Z5PK9GJkwIVrL1q7gYpshKT2yvuJYoLtSarmqUtfQbt0jU
+         xAyMCBMmVc2H+1VagL0Ef3vJvmqtDZDLXvowdw5Hxlbp2ThgbVSDpeHIP9MyKW2CS0bk
+         JoFWGUhBQAXrdwoI0FPHCmxYPURtmuXr3z2Ws1CRhksBMIK46Bln6OXB7/FFNqf2fDB1
+         xCjG96YRCGwjyI9l4C1vsvIs3MyK8zusc9D9rOitno+XCocHZz3z7t8Szsmw+9OD+LOl
+         kOOHg5O0UhJJKM5vay5LaL5/CBJJ1fTe55EuvsZKD8ZqLfJ341+OqkvewbyDDcMZSnF/
+         HGuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=OukxYZp0mxPPulJ0ZXIOyj5ZXhlBod5vf7Qiii3DBjY=;
-        b=i2oUvYQ31k73WU2Q1brcC6BqhV7gJhQ4y1RrvBgid3JLBNpBeRWkJgzRb0S7YVN7BY
-         Ai6syFRK48/Qqyo23sZF0HgNZK7qIcBBGh49BZd3C672cY/kdAaA/GXksnXnf/Tp0TgF
-         vK3YvE0Q+zh5dXEoGBadUSciaz7Ez4L8HVBW1/1tLLgc+Led3UDQz5Zd1pyqI7XJ4yGz
-         nzAVgjDRXEA4aar4jm8AhD8ifXzTM5IHq96LCSD3DPFJXZFCn4mIJ2VP7YKrSVSjBL0L
-         guqHk2XsA0ZuWzj0KKCDFvtzsn6NM4l6ymgMhrn3gHNV9LVF4a9nBDPEq1exRr4G7HHv
-         vFZQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=1SYd02ysTymy00KMv8nS+1COA78uasffvtd0JBKbW1w=;
+        b=QOjTNCahaJjsMaD59F+o6NSyZj1GuIdXmchunUEZadrSvbIhoHHDBBf62KtEpuLq1p
+         y4GGN6J5UdWC5JqHdAnob3XpCKJWfzgxSXd9D9Q4bFLE7Pkc/e2pAWDPpKi5yyEWVOZq
+         gn2Jpaf2cTcIGjZOkOeMKzh+yeJva+MmTBxHrHLP3gFNGJW30McSJmN1raGv06dQCqVV
+         /3sEvYSvbDYEtWUlz1gNnkzyb9frZwt5clXG+OUnamclnx5lHwg8wjK/pfDTvx7aNh6m
+         yJpptWpv6HMIbywRSlj2WoLx284O7nQwPzCibpluI3CMu/DN36oEsva/Kbf7gchwNA4j
+         qIqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=kAbPjVHQ;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=fGuNwoQ+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fg9-20020a05622a580900b003b69ecc10ffsi764663qtb.579.2023.01.20.07.56.19
+        by mx.google.com with ESMTPS id fv26-20020a05622a4a1a00b003ac6453b0bcsi8466417qtb.187.2023.01.20.07.59.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Jan 2023 07:56:19 -0800 (PST)
+        Fri, 20 Jan 2023 07:59:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=kAbPjVHQ;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=fGuNwoQ+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pItjI-0004Zh-1f; Fri, 20 Jan 2023 10:55:00 -0500
+	id 1pItnp-0000fR-0J; Fri, 20 Jan 2023 10:59:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pItjG-0004YZ-Lc; Fri, 20 Jan 2023 10:54:58 -0500
+ id 1pItnn-0000eZ-8i; Fri, 20 Jan 2023 10:59:39 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pItjF-00068y-1A; Fri, 20 Jan 2023 10:54:58 -0500
+ id 1pItnl-00073Y-Ot; Fri, 20 Jan 2023 10:59:38 -0500
 Received: from localhost.localdomain (unknown [77.64.253.186])
- by linux.microsoft.com (Postfix) with ESMTPSA id 9D5EF20E1A50;
- Fri, 20 Jan 2023 07:54:54 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 9D5EF20E1A50
+ by linux.microsoft.com (Postfix) with ESMTPSA id C1D8620E1A43;
+ Fri, 20 Jan 2023 07:59:34 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com C1D8620E1A43
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1674230095;
- bh=OukxYZp0mxPPulJ0ZXIOyj5ZXhlBod5vf7Qiii3DBjY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=kAbPjVHQoWRFgFrxw98AL0N5jps7/n1D6W7h6pTturLLsGGJ1/o6B3tOEi2rMhlX7
- ljAQiuHT098Dm6puuWXmyKCwPGAQrf6woM5tIQplBPrWT+XGejl0FNPcbpltt1M1zb
- Td1B786EosjFuSihntpf29kFahg/Ms7Pcn3H/p/4=
+ s=default; t=1674230375;
+ bh=1SYd02ysTymy00KMv8nS+1COA78uasffvtd0JBKbW1w=;
+ h=From:To:Cc:Subject:Date:From;
+ b=fGuNwoQ+kCyB4uDTn2QgSPz6B1NzBMCau87c3jgxDpOWWeYTC9z6fzTgBh97jUGhQ
+ m98baWbSXl2NTwpNakfNnomJ3o4xSN9lTREkYZw5217Jq5xMB7zusp9b2NweeS3/Hg
+ 3Y66ty6i4PPm9WVcthy+5El1oBDYm70Mk2LG2gyM=
 From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org
-Subject: [PATCH v3 2/5] hw/char/pl011: add post_load hook for
- backwards-compatibility
-Date: Fri, 20 Jan 2023 16:54:44 +0100
-Message-Id: <20230120155447.31702-3-eiakovlev@linux.microsoft.com>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org
+Subject: [PATCH v3 0/2] various aarch64 fixes for running Hyper-V on TCG
+Date: Fri, 20 Jan 2023 16:59:27 +0100
+Message-Id: <20230120155929.32384-1-eiakovlev@linux.microsoft.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230120155447.31702-1-eiakovlev@linux.microsoft.com>
-References: <20230120155447.31702-1-eiakovlev@linux.microsoft.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=13.77.154.182;
@@ -98,68 +95,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hM1wNtPwl7jg
+X-TUID: +aWlybxwTgA8
 
-Previous change slightly modified the way we handle data writes when
-FIFO is disabled. Previously we kept incrementing read_pos and were
-storing data at that position, although we only have a
-single-register-deep FIFO now. Then we changed it to always store data
-at pos 0.
+Small series of changes to aarch64 emulation to better support running
+Hyper-V as a TCG guest wtih EL3 firmware.
 
-If guest disables FIFO and the proceeds to read data, it will work out
-fine, because we read from current read_pos before setting it to 0.
+v3:
+* Replaced raw_write fn with raw_write instead of a manual function
 
-However, to make code less fragile, introduce a post_load hook for
-PL011State and move fixup read FIFO state when FIFO is disabled. Since
-we are introducing a post_load hook, also do some sanity checking on
-untrusted incoming input state.
+v2:
+* DBGCLAIM now implements a (trivial) raw_write handler
+* Added comments around ignored external debug registers
+* Patch 3 is dropped because it was manually picked into target-arm.next
 
-Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
----
- hw/char/pl011.c | 27 ++++++++++++++++++++++++++-
- 1 file changed, 26 insertions(+), 1 deletion(-)
+Evgeny Iakovlev (2):
+  target/arm: implement DBGCLAIM registers
+  target/arm: provide stubs for more external debug registers
 
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index 3fa3b75d04..4df649a064 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -352,10 +352,35 @@ static const VMStateDescription vmstate_pl011_clock = {
-     }
- };
- 
-+static int pl011_post_load(void *opaque, int version_id)
-+{
-+    PL011State* s = opaque;
-+
-+    /* Sanity-check input state */
-+    if (s->read_pos >= ARRAY_SIZE(s->read_fifo) ||
-+        s->read_count > ARRAY_SIZE(s->read_fifo)) {
-+        return -1;
-+    }
-+
-+    if (version_id < 3 && !pl011_is_fifo_enabled(s)) {
-+        /*
-+         * Older versions of PL011 didn't ensure that the single
-+         * character in the FIFO in FIFO-disabled mode is in
-+         * element 0 of the array; convert to follow the current
-+         * code's assumptions.
-+         */
-+        s->read_fifo[0] = s->read_fifo[s->read_pos];
-+        s->read_pos = 0;
-+    }
-+
-+    return 0;
-+}
-+
- static const VMStateDescription vmstate_pl011 = {
-     .name = "pl011",
--    .version_id = 2,
-+    .version_id = 3,
-     .minimum_version_id = 2,
-+    .post_load = pl011_post_load,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(readbuff, PL011State),
-         VMSTATE_UINT32(flags, PL011State),
+ target/arm/cpu.h          |  1 +
+ target/arm/debug_helper.c | 54 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 55 insertions(+)
+
 -- 
 2.34.1
 

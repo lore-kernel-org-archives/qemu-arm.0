@@ -1,107 +1,186 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1037218ejc;
-        Fri, 20 Jan 2023 04:24:41 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsWI0oHsKWnBmRUEztEIP8D+Gel5+tDJMNn7pc6IZgUVYhF0I7Y2bbtZQEMxzgKsTM64ysI
-X-Received: by 2002:a0d:e747:0:b0:4e0:196:7713 with SMTP id q68-20020a0de747000000b004e001967713mr20117232ywe.5.1674217480900;
-        Fri, 20 Jan 2023 04:24:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674217480; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1040560ejc;
+        Fri, 20 Jan 2023 04:30:06 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvzyEqHKsyW5pBMZ/G8p/8pnm9Ma65S40JFLgik3xiEuH2SXeUC0nL0hvavrdHbPRR5X/b1
+X-Received: by 2002:ac8:6654:0:b0:3b6:9418:ad6f with SMTP id j20-20020ac86654000000b003b69418ad6fmr6542186qtp.67.1674217806413;
+        Fri, 20 Jan 2023 04:30:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674217806; cv=none;
         d=google.com; s=arc-20160816;
-        b=EVZhq1bFoCbPmVXbBrz76UG/78tvo8d4I8BRJgV2LGxLzP1IO8za+XNmUNju9Q5qav
-         9ZY3wjdyaIE9PSDYYYu3icensSOCUbr9sCwtQjMdCNcA+2xU6DIDz6UUNLSWGJoVafDH
-         UMEM+UZ5n8KRMbTqJcUHpKpSunGDfMHg6L8IItG+Io41HcLM/IyDxn/Ko90thK29fsvk
-         nweePm073bdmvW+j4jlaLjjeQcL7FlVxQOytsRHNjgHrr+8VdBeK2ZBDaBLuohMtTvJd
-         gK+4A3jUajEnnE8dk8eCSDERz8U138FSAWimnSFeDdUnWBL8lZQ0Febw9CeBRdfZXtbn
-         x22w==
+        b=RuL2efiYiB+yielfDj8QSq2ycAQGNisXciwbeqpNIsihlBaTwzaFBYisEvkpAWd3xJ
+         7Z0nYYu9MD0aXwUJF/RGLwFC1tSNKqPUW3mLRPg6j0RuO/ZbgoaL8pFPdJxfOqfDJFaX
+         UfnTHrkDqIIeimnLVhw+7XbTMrx8yUtBuac2FEWeqsNgnQnMTYjtAJKrqc12uLP2S+L7
+         qT4olSYPHqWakxslngqs4PHkUt3Rb0kwaNJEPGHaBiJPFYj9zl5zdNiS0ee1w2UglkBh
+         S/IJY0dNpfVGv1pCMggvaTDOJQ9PDwCUH9lfNNq3bkOgVkv0keUt5me2rZZ5buFonwKX
+         4apQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=1ZZU8K6IpuHAZeldxts/x6ftKTKYjsoVtHVIG/va/38=;
-        b=YhVW0wM03ZF76bfxAYEv4cVklbLIKsHMkNrhSpCcCqjszonpIXJeaQcD3UhYyWlf9X
-         F2q8vYlac70oaWnk4D7nZFkQeuJGjGgHvw8NePwFOzjgeH8cVYGy64jQX7zH1CUiVAQy
-         1usCfGUf55Xqd6+G8/SU69EQ86FEXtOl6kFwud6I2W62THPFQ+IPoJzGLMOj/2nvH71U
-         lJ88z2b78YVlEgl7JDBedfJUc26rST7uf987VNOWoArDyrIW2wVDNYpwMPqGX8AZioGp
-         63fpROmdQRHiK70ZVyizuuaOcquCBODk7bLQlcmfrT5ab2TDpOMD2dKIGgoLhRlPUSbx
-         6ZJQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=FGfd+s93OXmBs1xShD51Cu54C0TFiZYgj8zpzf2YW5Y=;
+        b=qz/hkxDa/WQtfLYPefM23b1Lnkp1PV7phH2x7qrSySSDc8QJv8HTW2Ot90qRYOeBwi
+         MrggVDdmYwz6qLgQTkR8B8RBtvvmZA+HspdhwvUxTtV8e0idVgZTro2JewUsSOFEznH9
+         OmiaoFEK6hEZv4GPDV4/k1+bXS6o4RKgnOzxEKBNpy0bBLZJCYWgPSdStllw7SKAcBhT
+         U7KHtJxtiTJE+IwwBq+JHMOFqapiplJ8SexILNclKn+v1LRhnn1JHteu5nhv4KKAnPrO
+         52pPG6mbJ6B6fTvWU4vOhdHz/nSNvjKWLOjMCZC92KYSKDm/UOeCUree4GPvnLMzqA1d
+         Il6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="cT/EEAsI";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id c22-20020a814e16000000b004d3748a1022si2294996ywb.487.2023.01.20.04.24.40
+       dkim=pass header.i=@linaro.org header.s=google header.b=WlXXHnZ2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id fb27-20020a05622a481b00b003b63c9c59f8si2783245qtb.216.2023.01.20.04.30.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Jan 2023 04:24:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 20 Jan 2023 04:30:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="cT/EEAsI";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1674217480;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=1ZZU8K6IpuHAZeldxts/x6ftKTKYjsoVtHVIG/va/38=;
-	b=cT/EEAsIwOzZ5tK0q5Q8cJCpvNw7q1DR9nOj8OvA2nIOsrsgxo7eefDsud/qWJNMLK51bK
-	2l/qptBVvPWy273Eg6L4UeMAXBBJhSRsZK7n8p0t2ypN9/hb489E8JscK5zQpevLjrrfsY
-	3+Htc4aV6B415l0kLewHcMKvznZGHQk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-563-Jti6ghEcP3C9MrCVmmKULQ-1; Fri, 20 Jan 2023 07:24:39 -0500
-X-MC-Unique: Jti6ghEcP3C9MrCVmmKULQ-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com [10.11.54.10])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 63597885620;
-	Fri, 20 Jan 2023 12:24:38 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.72])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 01D16492B02;
-	Fri, 20 Jan 2023 12:24:34 +0000 (UTC)
-Date: Fri, 20 Jan 2023 12:24:31 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Fabiano Rosas <farosas@suse.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [RFC PATCH v4 03/15] target/arm: Remove default cpu for KVM-only
- builds
-Message-ID: <Y8qH/4VHdG1kk/Y4@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20230119135424.5417-1-farosas@suse.de>
- <20230119135424.5417-4-farosas@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=WlXXHnZ2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pIqVt-0002Uk-5j; Fri, 20 Jan 2023 07:28:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIqVq-00027E-Ve
+ for qemu-devel@nongnu.org; Fri, 20 Jan 2023 07:28:55 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIqVp-0000iW-0e
+ for qemu-devel@nongnu.org; Fri, 20 Jan 2023 07:28:54 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ o17-20020a05600c511100b003db021ef437so3546642wms.4
+ for <qemu-devel@nongnu.org>; Fri, 20 Jan 2023 04:28:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FGfd+s93OXmBs1xShD51Cu54C0TFiZYgj8zpzf2YW5Y=;
+ b=WlXXHnZ2syaih3huXt3wIS3At7kWXRjAuMnWrQg6l5JkcRd/fBElkYKJwMbheAkPkd
+ FBIPPwcMiJAfaODB3NnDzN4SaC/NqwpVOgch/WXQFGnYkwLxm1svaAf9It0AyvfQUmht
+ zMsBROX71V+oJyQsgeu7HtJIORaE2y/nBaOJBKO0Jj3bJ72q4dv6kwX4rYCR62Ftrftp
+ O56Jwpe2LRVdnFQ7MDBfqDL9laB5BXT5YsdgGmAzmg68zdc0bFVnqEwSL8vomV97lmzt
+ r1xeGlisbwQvi5Jw4l6RyKM1t+hY6KTHCMZlnYP+Fh4uuo99dzGCjhPHrOSOWSR2pkRW
+ 8cqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=FGfd+s93OXmBs1xShD51Cu54C0TFiZYgj8zpzf2YW5Y=;
+ b=0wxTKtLhr0pp00kGSEUDJniZR+Nt54U2hqQJMmSrtiQPQ9V4bWa2za2FEsEMaLO12p
+ YYELXTPc4KxKgGCRmYPJvKDAbEhLcUR5Kaof37ERFVbhpuEOAy5pf4l0bm+9b4h5ilsj
+ 369p73ftvjwNngHInIgYfq9z9nhoz2/03Awjmtn2b5D2H/fwT4qIk088SA/XX5N5laSF
+ 48ajNxF+baeOePyTEVFdOj2R/BoCGL5AQU1UkYD5qb8akBwuTsCIH3xt650CU+m3ADW6
+ LuO+uyVPjp7gk1k9ulbYobj25AlhZ437WKooCCUix/yR6uIGna+rjeNH7b122GPNeWjk
+ Pj2A==
+X-Gm-Message-State: AFqh2krxXwxlMkoputXcQpWs6+iFnfhmiythdsoOz8E0Ssg5Uwl5n1LR
+ L3sQ+TIN6rsnGZh8UMBvarDFsDHgZVj0ulKA
+X-Received: by 2002:a05:600c:210e:b0:3d9:ed30:6a73 with SMTP id
+ u14-20020a05600c210e00b003d9ed306a73mr13892507wml.9.1674217728780; 
+ Fri, 20 Jan 2023 04:28:48 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
+ by smtp.gmail.com with ESMTPSA id
+ d4-20020a05600c3ac400b003d9fa355387sm2082017wms.27.2023.01.20.04.28.47
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 20 Jan 2023 04:28:48 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
+Subject: [PATCH 2/2] tests/avocado: Truncate M2S-FG484 SOM SPI flash to 16MiB
+Date: Fri, 20 Jan 2023 13:28:36 +0100
+Message-Id: <20230120122836.81675-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230120122836.81675-1-philmd@linaro.org>
+References: <20230120122836.81675-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20230119135424.5417-4-farosas@suse.de>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-X-TUID: 5ySCXPI1l+YG
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UWXDahMiA5Ui
 
-On Thu, Jan 19, 2023 at 10:54:12AM -0300, Fabiano Rosas wrote:
-> We'd prefer if the user always had to specify the machine and cpu
-> options in the command line instead of relying on defaults.
->
-> Since the KVM build already doesn't work with the current default of
-> cortex-a15, remove the default altogether for KVM builds.
+The M2S-FG484 SOM uses a 16 MiB SPI flash (Spansion
+S25FL128SDPBHICO).  Since the test asset is bigger,
+truncate it to the correct size to avoid when running
+the test_arm_emcraft_sf2 test:
 
-IMHO not having a working default CPU model is a undesirable
-state to be in and user hostile, especially so when it makes
-aarch64 be a special case compared to other targets.
+  qemu-system-arm: device requires 16777216 bytes, block backend provides 67108864 bytes
 
-Can't we just make 'host' be the default model for KVM, if
-the named CPU models don't work ?
+Add comment regarding the M2S-FG484 SOM hardware in
+hw/arm/msf2-som.c.
 
-With regards,
-Daniel
+Reported-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/msf2-som.c                   | 5 ++++-
+ tests/avocado/boot_linux_console.py | 2 ++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
+index a6df473ec9..7b3106c790 100644
+--- a/hw/arm/msf2-som.c
++++ b/hw/arm/msf2-som.c
+@@ -1,6 +1,9 @@
+ /*
+  * SmartFusion2 SOM starter kit(from Emcraft) emulation.
+  *
++ * M2S-FG484 SOM hardware architecture specification:
++ *   https://www.emcraft.com/jdownloads/som/m2s/m2s-som-ha.pdf
++ *
+  * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+@@ -87,7 +90,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
+ 
+     /* Attach SPI flash to SPI0 controller */
+     spi_bus = qdev_get_child_bus(dev, "spi0");
+-    spi_flash = qdev_new("s25sl12801");
++    spi_flash = qdev_new("s25sl12801"); /* Spansion S25FL128SDPBHICO */
+     qdev_prop_set_uint8(spi_flash, "spansion-cr2nv", 1);
+     if (dinfo) {
+         qdev_prop_set_drive_err(spi_flash, "drive",
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 49a4b22fe1..37600be4a2 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -399,6 +399,8 @@ def test_arm_emcraft_sf2(self):
+         spi_hash = '65523a1835949b6f4553be96dec1b6a38fb05501'
+         spi_path = self.fetch_asset(spi_url, asset_hash=spi_hash)
+ 
++        file_truncate(spi_path, 16 << 20) # Spansion S25FL128SDPBHICO is 16 MiB
++
+         self.vm.set_console()
+         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE
+         self.vm.add_args('-kernel', uboot_path,
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.38.1
+

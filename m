@@ -1,97 +1,112 @@
-Received: by 2002:a17:504:1b46:b0:1be9:327d:8ee3 with SMTP id t6csp4138934njh;
-        Wed, 4 Jun 2025 07:33:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVerLveq9/EJxl86h9g4Ik3VdLAPtkVDCSFmq0qniaJovKiDt48K3PtiM3S6Te/H4+ar0SE+A49E4kGmQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFFN4zE9L2dpf1bWCndLoODuQiqqO6/IGkjVHoIMfIt4bMiqoT1AeRneLA+e9fooCDBa0+C
-X-Received: by 2002:a05:620a:3181:b0:7c5:5e05:df33 with SMTP id af79cd13be357-7d2198ef3c3mr449516185a.51.1749047602277;
-        Wed, 04 Jun 2025 07:33:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749047602; cv=none;
-        d=google.com; s=arc-20240605;
-        b=YWIobsONwqHAHIMJptrq2HlywoL05oMj4AoXIQyGwsPZWDxnjujvzQ4L1aeZhctGkg
-         ibvP1Harof8EEJ/A8gcM9EoX0mMIbendHtmvEGlM2E/QmVLjKglQADTF9RmB5o7TxQ9E
-         2iAX2dO40Ye6PMTZFCXq2qN4wXki4oHFHFU8SmFPz6ygQzaptPYdL5/C/GrmB7Sxd539
-         xJkMkxfn2NGCc/rR69ROGKvoJSrTrbjU3LluYHbmKhoGqJZ8QYiz0DHEVhxhnqyy6yrm
-         mAxEyBMnzp2o43xUxXyAa1UhK1HDlQNirbPar7mbAv+0DW+OyDKkgqjpzh5sKhwLbS4I
-         sNqw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=SLmTshJPJv0Pe+jwxL6MVWrO2MnnGtBHromxE18Q29U=;
-        fh=tua/CDVJZ+sbrFft9hFgWdrPa6BmNXQR1cvssXCUvV8=;
-        b=jodPsqFNlx1l6TkXycITj13V0ZQFnSBOFj0RK5eOF1IBSvcmzukA/j9PaI1xr0SlpA
-         TYV+3ik1CMOrcCPBVGT62mnusYuxephouJYrazpVSicx6aw0WK4SwlRIWewvdJNI9OiK
-         9AJMqbwPZ135j5cPEXcc5RtcIJJBDZEeIbFrTHVEshC5TncbBCUkF3ArppiR+iYve72I
-         U+nkV5WKpE+buBTlSjbQadUnGncI9Qsh/hsYn8zD1KFjH3bxmu5toXox733ECtf5So5m
-         NQkXeKIBUDb4gNP6XbUpF20trCWYbbs46iLsuV32dtVfmDiwg4ZutQO77QZPPc3yH1KL
-         o+dw==;
-        dara=google.com
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2749701ejc;
+        Sun, 22 Jan 2023 23:26:11 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXusx36tYuBPS1Y0YRezNuKnvIPOlxZCbjw8XsfRFOlPSJ0EAvHuIAZtxxfVJ/L8DTW+fPYa
+X-Received: by 2002:ac8:5ed0:0:b0:3b6:37dc:cb13 with SMTP id s16-20020ac85ed0000000b003b637dccb13mr33124418qtx.51.1674458771158;
+        Sun, 22 Jan 2023 23:26:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674458771; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UKjwBLNQxuGIxU94v0g3oBhGSmi44A9gQvEJ4R+pjuFByjUPeP/K79HalRnhv3kfEU
+         lY3NjBmyXUyWnNUT3tFALnSO8vxij6eIKDuS4T3I3onR9UCKKNV8WybPpOg6lUJDCwy3
+         /Up3T/otu1osEtBC8U3+hhTWx9Iq3zjvOCBbybZ0mgIYwXuQJm9av7Kr7AmEL6w/Gvo1
+         uTAze2IYSEf2VIODU9EcoXB3JFToEB5rS4BORD7e9g/KVr3rngXLBZfjELYupsGgSdA1
+         N8iIgyK+WdeuLu2h05o6k69BUF6h7qNTxhp7fbtlWv671TCJ0hyuWMdjJaHj7+2X8wQu
+         bSXQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=HB1/QeBkm2hRdMTD3BOgsdtjebQYUh2d/gTlXGQ4b9A=;
+        b=uV8MFxyz2XFUJxcUBPtswL1O4WaTgGxFcUON0nl3xz8HqPjtN7qcqsTEYj8bEr9Vj3
+         GLscsqXJ+y1Oa/TIbDsVVIjdyXhWP51wUkk/ak40lus5zWb3m4sXdPjHQ+QdDSXNGw9I
+         A8pW20DdoXCpnvHC3RaHCwYbz3B1x0dlkWEPxehEh3hviqFudVn+wWxCDqyO60NdcHWf
+         mTqXPp5zSK2Z4EelAo1y+yNu9iGyn6AFicEK5g0JzxpfKhF38k+KaICElk76eUa1bBio
+         K9U6muS8nUGOxAS0NwIJIV3Wtk4nmdOa3sDlQwGwcOE8TGHW3tE+PqFS61pNxJGCcLFt
+         UEmg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A8itqXrn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7d09a1104a1si1470595185a.85.2025.06.04.07.33.22
+        by mx.google.com with ESMTPS id k17-20020ac84791000000b003b6311a02a1si13851563qtq.442.2023.01.22.23.26.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Jun 2025 07:33:22 -0700 (PDT)
+        Sun, 22 Jan 2023 23:26:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A8itqXrn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uMpAs-0001mc-0K; Wed, 04 Jun 2025 10:33:02 -0400
+	id 1pJrDE-0005Y2-02; Mon, 23 Jan 2023 02:25:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1uMpAp-0001lK-FD; Wed, 04 Jun 2025 10:32:59 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1uMpAm-0005tU-Cc; Wed, 04 Jun 2025 10:32:59 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bC95n2HQGz6K99W;
- Wed,  4 Jun 2025 22:32:29 +0800 (CST)
-Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
- by mail.maildlp.com (Postfix) with ESMTPS id 8E2E71400D9;
- Wed,  4 Jun 2025 22:32:42 +0800 (CST)
-Received: from localhost (10.203.177.99) by frapeml500003.china.huawei.com
- (7.182.85.28) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 4 Jun
- 2025 16:32:41 +0200
-Date: Wed, 4 Jun 2025 15:32:37 +0100
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, Peter Maydell
- <peter.maydell@linaro.org>, <mst@redhat.com>, <linux-cxl@vger.kernel.org>,
- <qemu-arm@nongnu.org>, Yuquan Wang <wangyuquan1236@phytium.com.cn>, "Itaru
- Kitayama" <itaru.kitayama@linux.dev>, Philippe =?ISO-8859-1?Q?Mathieu-Daud?=
- =?ISO-8859-1?Q?=E9?= <philmd@linaro.org>, Alireza Sanaee
- <alireza.sanaee@huawei.com>
-Subject: Re: [PATCH v14 5/5] qtest/cxl: Add aarch64 virt test for CXL
-Message-ID: <20250604153051.0000190c@huawei.com>
-In-Reply-To: <20250528110726.226389-6-Jonathan.Cameron@huawei.com>
-References: <20250528110726.226389-1-Jonathan.Cameron@huawei.com>
- <20250528110726.226389-6-Jonathan.Cameron@huawei.com>
-Organization: Huawei
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJrCx-0005Vd-SR
+ for qemu-arm@nongnu.org; Mon, 23 Jan 2023 02:25:39 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJrCv-0006D2-S5
+ for qemu-arm@nongnu.org; Mon, 23 Jan 2023 02:25:35 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id b7so9875050wrt.3
+ for <qemu-arm@nongnu.org>; Sun, 22 Jan 2023 23:25:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=HB1/QeBkm2hRdMTD3BOgsdtjebQYUh2d/gTlXGQ4b9A=;
+ b=A8itqXrn3kXoqrdkodTC1dR8MNICtsbXrfsiRveeYC55U3W+yE4aKVPiE6wBeNTNSk
+ TAB6ksub7uVxqxG1ziAe/M3R9cmc/TzgAvA8a3DDeA9OgZHG3db2p1vZD1SYvsJhCKI8
+ umUcShthzLRVEj+xEKuQzXZgtqlP+wZr4NekDP12LJAzPyCytmwQoFdVGj63w232VrAX
+ 5oQRArLzbd4L/xIC+Qywpgd+miy/2sVDciAj4ECAnY3arBRgkV9zarXb2jmgoVRC6I+1
+ A8H3lfW/4cevuX5fx5dafO56cgh4keiLR5cHd8sUCro1r5Inqik2uSFPSWBg2VLuVR2I
+ /u4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=HB1/QeBkm2hRdMTD3BOgsdtjebQYUh2d/gTlXGQ4b9A=;
+ b=GFlcHJJuQ6iS25dXhBhDqyQkkZNCQdGGz6FQliUbAg6UYI6SRUA+jnIuQ7jIoevPQO
+ fePa45wSKVLNVYXFMxY2MbGi5VWcOYhIXl4f4Si+sfHkBdbrKxYJHeu11pVetSmElphc
+ NEnO9INdAxUzViZaIWy4ptcBMpFatWGj7w9a5rH0QqSnIu1hvGFqt+DJAssdPQ5CuY8K
+ tFcybtqgkGNs7qQBBvrxByBL1eIoHhTKOHdaS6vxL+4EBfq/AKoaHs4bMdjakQhhBnM4
+ 5RMsQH815g9nT2XhZw7yXxDFejP4aNSl8p10rPBOMojlIG2uXGPXQADmx8479Ur14+Wj
+ X5UA==
+X-Gm-Message-State: AFqh2kqZBtoezQyXXacvfogjNRWI9aHG5uclc27kuegOqtkrS9C/TfqP
+ vW5khc1yEd8OJIj5clPZaBtMXQ==
+X-Received: by 2002:adf:f0c8:0:b0:2bf:9656:d1a8 with SMTP id
+ x8-20020adff0c8000000b002bf9656d1a8mr8225219wro.32.1674458729218; 
+ Sun, 22 Jan 2023 23:25:29 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ w7-20020adfd4c7000000b002baa780f0fasm4117229wrk.111.2023.01.22.23.25.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 22 Jan 2023 23:25:28 -0800 (PST)
+Message-ID: <af8222c9-539d-214f-4d5b-ab1862891503@linaro.org>
+Date: Mon, 23 Jan 2023 08:25:27 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.99]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
- frapeml500003.china.huawei.com (7.182.85.28)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH v3 3/5] hw/char/pl011: implement a reset method
+To: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org
+References: <20230120155447.31702-1-eiakovlev@linux.microsoft.com>
+ <20230120155447.31702-4-eiakovlev@linux.microsoft.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230120155447.31702-4-eiakovlev@linux.microsoft.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.149,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,141 +120,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
-From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 819GAzpTgwDy
+X-TUID: E3UoE5ZGIZGi
 
-On Wed, 28 May 2025 12:07:26 +0100
-Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
-
-> Add a single complex case for aarch64 virt machine.
-> Given existing much more comprehensive tests for x86 cover the
-> common functionality, a single test should be enough to verify
-> that the aarch64 part continue to work.
+On 20/1/23 16:54, Evgeny Iakovlev wrote:
+> PL011 currently lacks a reset method. Implement it.
 > 
-> Tested-by: Itaru Kitayama <itaru.kitayama@fujitsu.com>
-> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> 
+> Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 > ---
-> v14: Tags only.
-> ---
->  tests/qtest/cxl-test.c  | 59
-> ++++++++++++++++++++++++++++++++--------- tests/qtest/meson.build |
-> 1 + 2 files changed, 47 insertions(+), 13 deletions(-)
-> 
-> diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-> index a600331843..c7189d6222 100644
-> --- a/tests/qtest/cxl-test.c
-> +++ b/tests/qtest/cxl-test.c
-> @@ -19,6 +19,12 @@
->      "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
->      "-M
-> cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G
-> " +#define QEMU_VIRT_2PXB_CMD \
-> +    "-machine virt,cxl=on -cpu max " \
-> +    "-device pxb-cxl,id=cxl.0,bus=pcie.0,bus_nr=52 " \
-> +    "-device pxb-cxl,id=cxl.1,bus=pcie.0,bus_nr=53 " \
-> +    "-M
-> cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=4G
-> " + #define QEMU_RP \
->      "-device cxl-rp,id=rp0,bus=cxl.0,chassis=0,slot=0 "
->  
-> @@ -197,25 +203,52 @@ static void cxl_2pxb_4rp_4t3d(void)
->      qtest_end();
->      rmdir(tmpfs);
->  }
-> +
-> +static void cxl_virt_2pxb_4rp_4t3d(void)
-> +{
-> +    g_autoptr(GString) cmdline = g_string_new(NULL);
-> +    char template[] = "/tmp/cxl-test-XXXXXX";
-> +    const char *tmpfs;
-> +
-> +    tmpfs = mkdtemp(template);
-> +
-> +    g_string_printf(cmdline, QEMU_VIRT_2PXB_CMD QEMU_4RP QEMU_4T3D,
-> +                    tmpfs, tmpfs, tmpfs, tmpfs, tmpfs, tmpfs,
-> +                    tmpfs, tmpfs);
-> +
-> +    qtest_start(cmdline->str);
-> +    qtest_end();
-> +    rmdir(tmpfs);
-> +}
->  #endif /* CONFIG_POSIX */
->  
->  int main(int argc, char **argv)
->  {
-> -    g_test_init(&argc, &argv, NULL);
-> +    const char *arch = qtest_get_arch();
->  
-> -    qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-> -    qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-> -    qtest_add_func("/pci/cxl/pxb_with_window", cxl_pxb_with_window);
-> -    qtest_add_func("/pci/cxl/pxb_x2_with_window",
-> cxl_2pxb_with_window);
-> -    qtest_add_func("/pci/cxl/rp", cxl_root_port);
-> -    qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
-> +    g_test_init(&argc, &argv, NULL);
-> +    if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-> +        qtest_add_func("/pci/cxl/basic_hostbridge", cxl_basic_hb);
-> +        qtest_add_func("/pci/cxl/basic_pxb", cxl_basic_pxb);
-> +        qtest_add_func("/pci/cxl/pxb_with_window",
-> cxl_pxb_with_window);
-> +        qtest_add_func("/pci/cxl/pxb_x2_with_window",
-> cxl_2pxb_with_window);
-> +        qtest_add_func("/pci/cxl/rp", cxl_root_port);
-> +        qtest_add_func("/pci/cxl/rp_x2", cxl_2root_port);
->  #ifdef CONFIG_POSIX
-> -    qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-> -    qtest_add_func("/pci/cxl/type3_device_pmem", cxl_t3d_persistent);
-> -    qtest_add_func("/pci/cxl/type3_device_vmem", cxl_t3d_volatile);
-> -    qtest_add_func("/pci/cxl/type3_device_vmem_lsa",
-> cxl_t3d_volatile_lsa);
-> -    qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-> -    qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
-> cxl_2pxb_4rp_4t3d);
-> +        qtest_add_func("/pci/cxl/type3_device", cxl_t3d_deprecated);
-> +        qtest_add_func("/pci/cxl/type3_device_pmem",
-> cxl_t3d_persistent);
-> +        qtest_add_func("/pci/cxl/type3_device_vmem",
-> cxl_t3d_volatile);
-> +        qtest_add_func("/pci/cxl/type3_device_vmem_lsa",
-> cxl_t3d_volatile_lsa);
-> +        qtest_add_func("/pci/cxl/rp_x2_type3_x2", cxl_1pxb_2rp_2t3d);
-> +        qtest_add_func("/pci/cxl/pxb_x2_root_port_x4_type3_x4",
-> +                       cxl_2pxb_4rp_4t3d);
->  #endif
-> +    } else if (strcmp(arch, "aarch64") == 0) {
-> +#ifdef CONFIG_POSIX
-> +        qtest_add_func("/pci/cxl/virt/pxb_x2_root_port_x4_type3_x4",
-> +                       cxl_virt_2pxb_4rp_4t3d);
-> +#endif
-> +    }
-> +
->      return g_test_run();
->  }
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 43e5a86699..3145c7b5fb 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -259,6 +259,7 @@ qtests_aarch64 = \
->    (config_all_accel.has_key('CONFIG_TCG') and
->                     \
-> config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ?
-> ['tpm-tis-i2c-test'] : []) + \
-> (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 :
-> []) + \
-> +  qtests_cxl +
->                            \ ['arm-cpu-features',
->     'numa-test',
->     'boot-serial-test',
+>   hw/char/pl011.c | 26 +++++++++++++++++++++-----
+>   1 file changed, 21 insertions(+), 5 deletions(-)
 
-Hi Jonathan,
+>   static void pl011_class_init(ObjectClass *oc, void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(oc);
+>   
+>       dc->realize = pl011_realize;
+> +    dc->reset = pl011_reset;
+Maybe directly implement as ResettableHoldPhase from "hw/resettable.h".
 
-This patch does not apply on the latest master anymore. I think did a
-few days ago though. Not sure what's wrong.
-
-Thanks,
-Alireza
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

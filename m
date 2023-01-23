@@ -1,174 +1,160 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2972748ejc;
-        Mon, 23 Jan 2023 06:39:53 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuf0fYmZD89IxE54c5cZxzO5nYTngl/hL0YbfmRCCQ9ERAK1W/0y3T2iPQj6Kn0wlo+Nhkn
-X-Received: by 2002:a05:6214:440c:b0:531:9fb7:979 with SMTP id oj12-20020a056214440c00b005319fb70979mr36399920qvb.27.1674484793293;
-        Mon, 23 Jan 2023 06:39:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674484793; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3007111ejc;
+        Mon, 23 Jan 2023 07:29:40 -0800 (PST)
+X-Received: by 2002:adf:d084:0:b0:2be:1eb:1f82 with SMTP id y4-20020adfd084000000b002be01eb1f82mr20465437wrh.6.1674487780059;
+        Mon, 23 Jan 2023 07:29:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674487780; cv=none;
         d=google.com; s=arc-20160816;
-        b=BpOAxoycHnKkidQzxVtMWJFR2D1Hl4r5OoM1PXHolioGLYvrInLQfZrXhNtHUFyXLP
-         KNkpX7TdHqvySBMJltwpNMD0KB71EVnTcQi6ITHFsuMz2rzXnzbvv2UJ140x1mhblpp0
-         0SmRtj6YkjVQNcWGCh/zBi2ASqvbxwED5aGq15TX6mDFsrDkIUUbDU49e/WC+IaPU0EY
-         mdMyBCaZqLu0w3dRUNiEIhyAt+v9NXEVZs8BUXG6rh7KzsthZGqLJ1evKSUs4npObknM
-         j8twIjMPP19MAuC2RCrNy7gxyQnDRi19r23TqA1LOtienw0FO7jZeYGm5bO17U01k0j7
-         4BmQ==
+        b=iHNyYi39curlzxuIaTtWYn0Az1U2C6lmelw0fLSUEXexr2UVY1z/klu0hpvxJHx7dO
+         yMboh1148tvI2MgNQvhBtzk+LHwRth6wn3iYOYLjGvwhgbQ2OcrVLunvYqtA6D48W6MA
+         paWWE4QgSs5wkhT+5t1Wo6ZdUQQoa8nvGMGtBU3qHVJathM0yl6MZO3vYDGk4zEFwcJp
+         sav416dKPNNyv8lsTTk0HcqyK2athstGpZjXwLBrc6C5VzTpaXOVcRlafM3+9W/pmn5z
+         kwajdTXDDWNj4bI4k4ypoXD9cR8TyxlmskEjk2v4DYj/xVLXNtI9tDkkmqzKPk6GD4gD
+         ArWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature:dkim-filter;
-        bh=5xpjNFjSNFRczxxgFFK3YrQ42HyOzHNfjfnUUCkT+Uw=;
-        b=YTN4kidi4eHD4RbcjNeHoSV5cBiD4dYGsTINsSwlKY/H2PDiuHJ8mM4CIQFrCjjoi0
-         gLenyWwYue+6JzdOesNrWG1kAijk2DUdziSclQMb92XD4RBJ8YBf+Gb3GjpYALofRa5o
-         yop1D76/xKd/e6mIPVZZosDPL/1ZzKpb/Ayb5mWpPQxSmKf3burHEDl0h/hy7RQ4PjoD
-         kjjsIaUMM2gQ3VqSX7MrushI0HUSifE+BmI1LL0atKpE4HhVaRsB609hqZTP/Kzrhlc/
-         jSX+P0SpuXSvrtvSAJWYkxPof2qUb+jEVd2D4YkrUiqkICoikHNOXiwchMIdORkoSLUt
-         dhhg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Ag7ITHTYVgJVxAJpVhIXSpT7l89y1QU2TY+2UBhcQLg=;
+        b=CY1Z76RNY1ORhBU+FaP+NWLEZNcbd3R/epbDpjWUCGrsFJRFpBkzAf/4EBX4bbk1fI
+         WR9ZTP3Rp4MxjAOOdVf2iUf/9FNSzG+rnX+0mPKNXWeeLC4IVRLXZxFvS35BpmHKWBhM
+         8eNAUEZwKLnXl/7ujpMZC8tZXgThnOWnk+4JeTOBOV0834QiJvNgUfIk5I/h+gyFoRQA
+         MEPcjZXsFxePJvipBUgCZm1wwlr3XI9XVZbxYrqfxE/NYatiWACd7S3mJmjguf8j/d5T
+         8gzKlvEduTlhM0Nu/s3wizGqrN4tv7xCMN55yqn/vBLBS0MlN5mGm9lo4Hc5Eq5WX3uc
+         liAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=jhXVgan+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id og9-20020a056214428900b004c79462964bsi3641022qvb.412.2023.01.23.06.39.53
+       dkim=pass header.i=@linaro.org header.s=google header.b="N/hfbLkw";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id h5-20020a05600016c500b0022ccbedc1b7sor1955347wrf.4.2023.01.23.07.29.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Jan 2023 06:39:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 23 Jan 2023 07:29:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=jhXVgan+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pJxz6-0006m4-Pu; Mon, 23 Jan 2023 09:39:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pJxz5-0006lr-Ie; Mon, 23 Jan 2023 09:39:43 -0500
-Received: from linux.microsoft.com ([13.77.154.182])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pJxz3-0008Kg-VQ; Mon, 23 Jan 2023 09:39:43 -0500
-Received: from [192.168.0.20] (unknown [77.64.253.114])
- by linux.microsoft.com (Postfix) with ESMTPSA id A5D6F20E2D02;
- Mon, 23 Jan 2023 06:39:38 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com A5D6F20E2D02
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1674484779;
- bh=5xpjNFjSNFRczxxgFFK3YrQ42HyOzHNfjfnUUCkT+Uw=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=jhXVgan+hfwMxdo8W1p4qlW8WLVd3ulu8CQqwPElS8DV2QxaDVEJYXP1XppnXSZGg
- yYHyzQHo9Hb+S3xHixNXxZ2xFn7xpJ85GPFTUqwgduPdVPlpbpJdq+dmoRj+lipur4
- fvHuI/M5PX00bJUPNAttYiOmsoaazPs+9SMfjBtQ=
-Message-ID: <3bb5a011-6947-8376-a51b-9a3c857daeaa@linux.microsoft.com>
-Date: Mon, 23 Jan 2023 15:39:36 +0100
+       dkim=pass header.i=@linaro.org header.s=google header.b="N/hfbLkw";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Ag7ITHTYVgJVxAJpVhIXSpT7l89y1QU2TY+2UBhcQLg=;
+        b=N/hfbLkwtIiOnnUCwe+6G0R0yH1OISVvccHsBfNnM9+68oB3frKpUvCyE+/GbmFbKI
+         3mclV9s6eEUxxgvbKrrx3vCnsw2q3IX20e4hWfoHOo/zPyhDonsM1dFPNt0/8pUNDsZ+
+         66nab0+RBgTUGeSRNXW8EEIYROXbY6yRfBgO7YPHRithOCVIMNhvmAVxfygm00BPMliP
+         xYKgS4I+vJ2gesohg928DrIer2QRUPkASRMugw/tnLJ6vv5GBkOkQb8dTRkaMeedFGUf
+         8vpNLRhNTZMqb1WHyGxoBH+Pp3pmh+UNGmZItMgE8L9bC/V3UBVZS9BUlWfO4rFJqpTs
+         1Arw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ag7ITHTYVgJVxAJpVhIXSpT7l89y1QU2TY+2UBhcQLg=;
+        b=LeeN1pQPC8r7Mopu3OxogjRGwkuj2oJBH/KqV5QfhE2+OhnVIuvCCO8ZFeX3d64meg
+         ZuM+6BQ94KejC4qF1IzEDYkGN25BDdZCeyTCqQhtRUaZExNIXbxozYupL6Y4aOUjzoPK
+         EG8FMbbrslgj3YtN7GfQghWDRB2btztm9A1+HOTLdURVbuywcfnEt7lJKygZoTFweUbt
+         Wo0ZN3J9iae2Jwl1+nS/7+W5Fpu9ycbTZC9QGWqWfqYWPq9VMYpkqIweMSg4SrWgMUxu
+         3VubJVTlFVhDoKka9dwULofW92UuzWeZmytgvOcT5Gb9k5ah4K7EX2fnh87tquYaozIb
+         eAHA==
+X-Gm-Message-State: AFqh2krIDJd8r+nyhrYI4bG9DkPUauJTIV/unonFCy2HFUG+tsI50HDd
+	s8oACO9f1WDSWOGij0UnrsaOnTnb
+X-Google-Smtp-Source: AMrXdXu/0iu5bjJowzEZ4SCeKLJW3JFz/tPzrJX44rLswL/IRKsiW6tKvM1395eMYe2aH0KuiMSz2Q==
+X-Received: by 2002:adf:f852:0:b0:29f:4e42:33c3 with SMTP id d18-20020adff852000000b0029f4e4233c3mr21866250wrq.56.1674487779750;
+        Mon, 23 Jan 2023 07:29:39 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.30.216] ([81.0.6.76])
+        by smtp.gmail.com with ESMTPSA id b9-20020adff909000000b002be5401ef5fsm8310826wrr.39.2023.01.23.07.29.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 23 Jan 2023 07:29:39 -0800 (PST)
+Message-ID: <3f577967-377f-aa6d-1c69-542988a26a26@linaro.org>
+Date: Mon, 23 Jan 2023 16:29:37 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v3 2/5] hw/char/pl011: add post_load hook for
- backwards-compatibility
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20230120155447.31702-1-eiakovlev@linux.microsoft.com>
- <20230120155447.31702-3-eiakovlev@linux.microsoft.com>
- <CAFEAcA8RSCvkt+k2N+At67CYZejJgnrkqCox-meq0TtraooBCg@mail.gmail.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [RFC PATCH v5 7/9] target/avocado: Pass parameters to migration
+ test on aarch64
 Content-Language: en-US
-From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
-In-Reply-To: <CAFEAcA8RSCvkt+k2N+At67CYZejJgnrkqCox-meq0TtraooBCg@mail.gmail.com>
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org,
+ Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Cornelia Huck <cohuck@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
+References: <20230120184825.31626-1-farosas@suse.de>
+ <20230120184825.31626-8-farosas@suse.de>
+ <65cf6b01-a6d6-53ca-9ead-ebf50148cce7@linaro.org> <874jshco5h.fsf@suse.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <874jshco5h.fsf@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=eiakovlev@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -208
-X-Spam_score: -20.9
-X-Spam_bar: --------------------
-X-Spam_report: (-20.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, ENV_AND_HDR_SPF_MATCH=-0.5,
- NICE_REPLY_A=-1.147, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PDcNlWUT+W2S
+Content-Transfer-Encoding: 8bit
+X-TUID: 8+2ULSwjtXQd
 
-
-On 1/20/2023 19:22, Peter Maydell wrote:
-> On Fri, 20 Jan 2023 at 15:54, Evgeny Iakovlev
-> <eiakovlev@linux.microsoft.com> wrote:
->> Previous change slightly modified the way we handle data writes when
->> FIFO is disabled. Previously we kept incrementing read_pos and were
->> storing data at that position, although we only have a
->> single-register-deep FIFO now. Then we changed it to always store data
->> at pos 0.
+On 23/1/23 15:37, Fabiano Rosas wrote:
+> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+> 
+>> On 20/1/23 19:48, Fabiano Rosas wrote:
+>>> The migration tests are currently broken for an aarch64 host because
+>>> the tests pass no 'machine' and 'cpu' options on the QEMU command
+>>> line. Most other architectures define a default value in QEMU for
+>>> these options, but arm does not.
 >>
->> If guest disables FIFO and the proceeds to read data, it will work out
->> fine, because we read from current read_pos before setting it to 0.
+>> There was some discussions around that in the past:
+>> https://lore.kernel.org/qemu-devel/20190621153806.13489-1-wainersm@redhat.com/
+>> https://lore.kernel.org/qemu-devel/CAFEAcA9NBu+L4wHfkLTv93wy90wjnV05EZ12PT6PmLjdZ5h_YA@mail.gmail.com/
+> 
+> There's more than one topic being discussed, specially in this last
+> thread, but here's my two cents.
+> 
+> About defaults: It's probably best to be explicit in tests. And if we
+> wanted, have a separate test to make sure the lack of an option still
+> does what it's expected, either outputting a message or behaving the
+> same as the explicit version.
+> 
+> About host architecture-specific tests: Unless we're talking about KVM,
+> I see no point. Having to change hosts to test agnostic features makes
+> no sense (the migration test is one example).
+> 
+> About generic tests: If a feature is required to behave the same for all
+> architectures/machines/cpus then sure. But most low level stuff would be
+> quite dependent on specifics.
+> 
+>>> Add these options to the test class in case the test is being executed
+>>> in an aarch64 host.
 >>
->> However, to make code less fragile, introduce a post_load hook for
->> PL011State and move fixup read FIFO state when FIFO is disabled. Since
->> we are introducing a post_load hook, also do some sanity checking on
->> untrusted incoming input state.
+>> I'm not sure what we are aiming to test here.
 >>
->> Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
->> ---
->>   hw/char/pl011.c | 27 ++++++++++++++++++++++++++-
->>   1 file changed, 26 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
->> index 3fa3b75d04..4df649a064 100644
->> --- a/hw/char/pl011.c
->> +++ b/hw/char/pl011.c
->> @@ -352,10 +352,35 @@ static const VMStateDescription vmstate_pl011_clock = {
->>       }
->>   };
->>
->> +static int pl011_post_load(void *opaque, int version_id)
->> +{
->> +    PL011State* s = opaque;
->> +
->> +    /* Sanity-check input state */
->> +    if (s->read_pos >= ARRAY_SIZE(s->read_fifo) ||
->> +        s->read_count > ARRAY_SIZE(s->read_fifo)) {
->> +        return -1;
->> +    }
->> +
->> +    if (version_id < 3 && !pl011_is_fifo_enabled(s)) {
->> +        /*
->> +         * Older versions of PL011 didn't ensure that the single
->> +         * character in the FIFO in FIFO-disabled mode is in
->> +         * element 0 of the array; convert to follow the current
->> +         * code's assumptions.
->> +         */
->> +        s->read_fifo[0] = s->read_fifo[s->read_pos];
->> +        s->read_pos = 0;
->> +    }
-> You don't need to bump the version id and do this
-> check based on version ID. You can just check whether
-> the old state indicates that the data isn't in slot 0
-> of the array, the way I suggested in my comment on the
-> previous version of the patchset.
->
-> (New->old migration will work fine.)
+>> Migration in general? If so, any random machine should work.
+>> By hardcoding the 'virt' machine, at least this test is reproducible.
+> 
+> Yeah, I cannot say for sure there isn't some machine property that gets
+> transferred during migration. It seemed more conservative to define a
+> specific one.
 
+Why did you choose 'virt' and not 'xlnx-versal-virt' or 'sbsa-ref'?
 
-Right, i thought this was a cleaner check, because it doesn't rely as 
-much on internal state. Breaking backwards migration is not as great 
-though..
+What does this test require? Any machine running KVM?
 
+Adding Juan and David for migration since I'm still confused trying
+to understand what we are trying to test here...
 
->
-> thanks
-> -- PMM
+>> I'd rather fix that generically as "if a test requires a default
+>> machine and the target doesn't provide any default, then SKIP the
+>> test". Then adding machine-specific tests. Can be done on top, so
+> 
+> I agree, but the only tests that should *require* a default are the ones
+> that test the command line parsing or adjacent features. We could always
+> test "-machine foo" and then separately test that the lack of a machine
+> option still gives the Foo machine.
+> 
+> The fact that we sometimes use defaults to be able to have the same-ish
+> command line for every case is more of a limitation of our testing
+> infrastructure in my opinion.

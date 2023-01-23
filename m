@@ -1,112 +1,113 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3057167ejc;
-        Mon, 23 Jan 2023 08:41:54 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuv0NC3/in+KcJy/2m4Mjk9emeAXdhuC2fmEpeitH/PkFzR0S2PIVP+HMQsD85cUC63C+cw
-X-Received: by 2002:ac8:5a95:0:b0:3b6:2f0d:1924 with SMTP id c21-20020ac85a95000000b003b62f0d1924mr48225837qtc.32.1674492114029;
-        Mon, 23 Jan 2023 08:41:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674492114; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3059614ejc;
+        Mon, 23 Jan 2023 08:46:00 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXt0iGAKINDDhZGTanEofy6LA/MoOC9Un6dRGiEMFnKjAWEBV9FQEywLC2RDDR5IhAYVxinY
+X-Received: by 2002:a05:622a:4d0e:b0:3b6:32f6:c14d with SMTP id fd14-20020a05622a4d0e00b003b632f6c14dmr42859710qtb.29.1674492360667;
+        Mon, 23 Jan 2023 08:46:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674492360; cv=none;
         d=google.com; s=arc-20160816;
-        b=pwF8yezKZRSniZ/W5rXUuHW+E8sLfTIoHv1ps22th+GDbVCO4TBqchpBpD2pr4KBqt
-         oxvxAXEA0WYHDDSOLKqEAbKDk4MhRSbBOrFvY35esCPEr9CGmsYeUIIQKiNZcfzKmRf/
-         gIploRdpn2bsO0G5Zt1fxBETcpF3tfTX8A9ORekkqgdPXx5+aSdR7WNR6/MuBzv8qr4u
-         5APvgVfJaW8+p38W+7bnnctY7RPziwldY3RNx8YKU0XmxqW4egeat9qFoc2TPJvFv9JG
-         QR6I4MpsvOISL5pHq4pQrar/X5AlUOgPYAEYraWbBCw4G8ntPfnKQI5oYPkPosQ1SMdi
-         9ZcQ==
+        b=bEEl5U9MipiQ/vdO/o80cqSUfQOhvihQpWG881mdWc+rBpdxd1aruHX93QT1qqIpHt
+         NKUePSU60YRZmPClLFsGnJ/ZWJAiYWZWmBL5ObmsDNCoB2gMqPXsDiftD6eTSRxGG55h
+         WSr4ncY3AGF98qJAI3Od+zoBQ9R2bCSIDI689RpNdcHn/1kXYUp208MeL3/nlJgbjk0L
+         ZCV8dhlzrnJLYglElH49GR955HY4KM8cjFVx6Qt77waQoZ4470/h2s/FLx6fsVK0jN92
+         V8hN2oyWTePMYB1Sp8iqQCgC+xYZkMAf/SwcHbUD4HUu/bY1YuxiMd/8YCp6ViU2fadF
+         Vl+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
+         :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=tWXOu7UZkYprU7FVvJ1dHULN2R/hsHttRxH9fu/yWgc=;
-        b=MBeSqzO15Uwqz2rPYTFe8XJ1Wmo/r3x1p4Neql02QGuOUCVuK3A3ke45/4/l4GLcLQ
-         Dp4erbr0zrKKjby0HHxLH3uCT3iVJQsKcVhe6AIdNOknu3MqZMIEwM9kAC9KiQ6VrJKe
-         6zosVJ3uoir43GsVqFga5VyTpAnLwTJXWtXfiqKLpiQ0d9KdCAB4JoyZs7dGObYXoz2D
-         rPWoIO4BhVj2gBpfiV6xIWTImsyTZ9z/17kB0wyE8mJMlWVzsiJrsNQZUg3ixKevg1Co
-         AxbDJcIqXxeBmxYt5B2EYWSHbcW38+MzvyQBbbkld4mHkjhPk6OvZ1PJLfU6JY6hQ2NK
-         DDng==
+        bh=F8HoZXDQqlObrpo1a7/s4kPKWOzPmMiLG+iYvJ3AJ04=;
+        b=Gcd6jdfOGY/1Uagd0h9h0ZzFaovOuTvo9a+kPo5Ynl3OSQyuiee83XO+40o9V6q+2g
+         sf8nTk9diJ59tG1Gux4rgx6ATpkVdyfJqAuQsC9ht84NkMnZjeYO7MoUHAjWvxC91ye7
+         I7hawpXqxVjyC7XvfbFjPfnE2jSuv893iGFkm5dbexbIhwMxzm852Rp3fU2qIjSC0B9Q
+         Vs7Zrf31JOMQocmqqYx5bhfzpWkKg2jtmAZGaG/Nr84kF+z8mVhrfXBxP1y2VQ/iMrvk
+         FO0zBM+2o2KVCP96UekC6tJ7xvIKuBPa6tMqyM5OC9XqqJwfnuV5wWfsmLhM8zOp3crw
+         GIUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FJNz9jJJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=i3K3DlK7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fa11-20020a05622a4ccb00b003b655d0dacfsi12362613qtb.221.2023.01.23.08.41.53
+        by mx.google.com with ESMTPS id t3-20020a05620a450300b006fcc017214esi33262620qkp.217.2023.01.23.08.46.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Jan 2023 08:41:54 -0800 (PST)
+        Mon, 23 Jan 2023 08:46:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FJNz9jJJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=i3K3DlK7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pJzsy-0000IE-Is; Mon, 23 Jan 2023 11:41:32 -0500
+	id 1pJzwj-0001cl-5o; Mon, 23 Jan 2023 11:45:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJzsv-0000HX-TV
- for qemu-arm@nongnu.org; Mon, 23 Jan 2023 11:41:29 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJzwi-0001cP-6V
+ for qemu-arm@nongnu.org; Mon, 23 Jan 2023 11:45:24 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJzsu-0006KJ-5i
- for qemu-arm@nongnu.org; Mon, 23 Jan 2023 11:41:29 -0500
-Received: by mail-wr1-x432.google.com with SMTP id d14so7698960wrr.9
- for <qemu-arm@nongnu.org>; Mon, 23 Jan 2023 08:41:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJzwg-0007B2-AW
+ for qemu-arm@nongnu.org; Mon, 23 Jan 2023 11:45:23 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ m5-20020a05600c4f4500b003db03b2559eso9032080wmq.5
+ for <qemu-arm@nongnu.org>; Mon, 23 Jan 2023 08:45:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=tWXOu7UZkYprU7FVvJ1dHULN2R/hsHttRxH9fu/yWgc=;
- b=FJNz9jJJmmOG/gyUSWYfLet252KVxdDLzI6qtfqns4h7EYSP6nb8sV988xwHZY5ML2
- giXoqPrHlvq8ZvkWATUSPd/ek+5lYYIrnccWs+uVbsqzVp0bSsBlEwrOe4cPwzXVbtvH
- NY3WH8LWPq5jHf6T8tXdhepW6m4i/oh5WeCI+5hMzC0QocHn+VbmrR6WTycJoc+uI6Ig
- I88uU5OwnVLmJCWqF5puAWBzosu0yxAYvGzRGAPZDuWh/fOnX2ZXNeN9ZVSdlfU4sYVM
- D8mEnUh+hrzF/IM5FKtxL5T/qjuMUxI9MXyaYMaSYOtuvlld2wgvYYw9qAZn6My4Rxlg
- RCTQ==
+ bh=F8HoZXDQqlObrpo1a7/s4kPKWOzPmMiLG+iYvJ3AJ04=;
+ b=i3K3DlK706zoDIivftCioLt/IqL4rdefPdqe/nQFCLvKZypj+E9Dejlj3xUBuagwy0
+ IYsUe/FuBmtqrGsVpXJM7eTnMNsysPn6N4rSsNawGkGrBC2rj1YMOzVCU9c20Ns3vOTz
+ 6cGu9p9fhjk8EsMpdMA9VI52hNUrtXLF/ofJHyqop8V8MERbLFg1rkVPAQk/x7bhFg16
+ FZrV7h/MuFPRY7hUTxLqfcC/VYiF3Z8pEA2QM7DDBfmYRnqiVlnacqT5aIK5inU6tgve
+ YqGjexLiIs9jpY3MFUrwnfZR2FnxKV1VLatnFxGkwoatyXmdbNxko1ZjsfhOJxnGxnM0
+ 8/DQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tWXOu7UZkYprU7FVvJ1dHULN2R/hsHttRxH9fu/yWgc=;
- b=7y7lxJwySxMIMnGalEPtEOAUkbiBgxks4E818VicWzb6SrCDkLGh/4Q+EAT+bDZQRp
- x27fbZ75ImxGNNf36uVjhVPejgdf18BoEAHt80iadAtt1pQte4JzsRpyHEmStsXQkeHz
- iiqfP50w4353Jl7cmHvZv4/agf4MxaBokedOnAQBv6G+gujDG0UipcoJcMqk8qChEJTY
- 6nGONRkWQA63OYjXwk6uUZzDgJuRqIDwhZFfwd+sWfSqz3yRcFYAyuAqQqk1hCj4kFgT
- o4zny6+MVAseazPCCo7AcBI1rsqu7+AMU/5bQprsemAbQEbqZqYveSSYA2RUPlhMPdOM
- KwJQ==
-X-Gm-Message-State: AFqh2ko1j4BcMZD/agMZALlUtjOz7KNzeUTo9V9X29ZrBYWZQjJUFzun
- EwT/4ijnI3CKeye0oznbf+6ZJw==
-X-Received: by 2002:adf:b604:0:b0:242:1809:7e17 with SMTP id
- f4-20020adfb604000000b0024218097e17mr21318159wre.6.1674492086526; 
- Mon, 23 Jan 2023 08:41:26 -0800 (PST)
+ bh=F8HoZXDQqlObrpo1a7/s4kPKWOzPmMiLG+iYvJ3AJ04=;
+ b=aQu08utRt9H7bRWIn/KrEzlNxEUJVKjiReToKZ2Wx5pS8tZJTC0AB7UrigCkRc7Vuq
+ eCnDXaTYEr7JdhOmR3X9KbOpmgs9FC2HwINftUfO+D2488jz0olZo/bt2rJtnzU4A9j5
+ 87DD0kiojAL25NbgyqeVGgYKXHo/Fbj09DpjEQ8+FT+IokZIpZgTtDIpry16iBghoHjt
+ eAMxzDStyC0OlEhjH8xR1ZLWAvQmvfHBtAQd53TeCuzIlOBEA4pcgQCSf4NNVWElu2FI
+ qWT8sf0SfBgGPXoNDMfx9qozVNe7rN8EKSWw0O8zTuq3JJaX5cM9onADn0QRzW91HqH9
+ N7ow==
+X-Gm-Message-State: AFqh2koSD738AI1ySC7J+6gevvQxD9xY96HV8H01X0CmSpwCfYdHAxez
+ 5vVg2XvBXFauc6N7cT9IcaHTZQ==
+X-Received: by 2002:a05:600c:2152:b0:3d9:ecae:853f with SMTP id
+ v18-20020a05600c215200b003d9ecae853fmr24845082wml.3.1674492320520; 
+ Mon, 23 Jan 2023 08:45:20 -0800 (PST)
 Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- j10-20020adfea4a000000b002bbdcd15e44sm2606151wrn.37.2023.01.23.08.41.25
+ j8-20020a05600c1c0800b003d9862ec435sm12086088wms.20.2023.01.23.08.45.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Jan 2023 08:41:26 -0800 (PST)
-Message-ID: <484f5d72-2186-c60c-112a-1ae76b7b7e45@linaro.org>
-Date: Mon, 23 Jan 2023 17:41:24 +0100
+ Mon, 23 Jan 2023 08:45:20 -0800 (PST)
+Message-ID: <1086b35f-f085-617d-6b98-17e57bd5889d@linaro.org>
+Date: Mon, 23 Jan 2023 17:45:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.6.1
 Subject: Re: [PATCH v3 5/5] hw/char/pl011: check if UART is enabled before RX
  or TX operation
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Content-Language: en-US
+To: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org
 References: <20230120155447.31702-1-eiakovlev@linux.microsoft.com>
  <20230120155447.31702-6-eiakovlev@linux.microsoft.com>
  <fc01ef6d-73d7-af1a-3e59-bd4f1e3e83ba@linaro.org>
  <1937dbbf-579d-e236-4669-afdc633995a1@linux.microsoft.com>
  <04d950dc-bd01-d9ca-cbec-25b52ccd70e8@linaro.org>
- <CAFEAcA_93iF+oiYAs_tymHGSkFAZx3-1Rh=z22ggBggz+3KnKA@mail.gmail.com>
-Content-Language: en-US
+ <be7dae6f-30d6-a6c6-af3c-4d826b39de07@linux.microsoft.com>
+ <767e54ca-53f4-7092-6171-2689e46709b8@linux.microsoft.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA_93iF+oiYAs_tymHGSkFAZx3-1Rh=z22ggBggz+3KnKA@mail.gmail.com>
+In-Reply-To: <767e54ca-53f4-7092-6171-2689e46709b8@linux.microsoft.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
@@ -128,93 +129,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hZ5K7t8iyUlE
+X-TUID: efDFws3VDcaD
 
-On 23/1/23 17:23, Peter Maydell wrote:
-> On Mon, 23 Jan 2023 at 15:21, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->> pl011_can_receive() returns the number of bytes that pl011_receive() can
->> accept, pl011_can_transmit() returns a boolean.
->>
->> I was thinking of:
->>
->> -- >8 --
->> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
->> index dd20b76609..ea5769a31c 100644
->> --- a/hw/char/pl011.c
->> +++ b/hw/char/pl011.c
->> @@ -221,6 +221,11 @@ static inline bool pl011_can_transmit(PL011State *s)
->>        return s->cr & PL011_CR_UARTEN && s->cr & PL011_CR_TXE;
->>    }
->>
->> +static inline bool pl011_can_receive(PL011State *s)
->> +{
->> +    return s->cr & PL011_CR_UARTEN && s->cr & PL011_CR_RXE;
->> +}
->> +
->>    static void pl011_write(void *opaque, hwaddr offset,
->>                            uint64_t value, unsigned size)
->>    {
->> @@ -299,12 +304,12 @@ static void pl011_write(void *opaque, hwaddr offset,
->>        }
->>    }
->>
->> -static int pl011_can_receive(void *opaque)
->> +static int pl011_receivable_bytes(void *opaque)
->>    {
->>        PL011State *s = (PL011State *)opaque;
->>        int r;
->>
->> -    if (!(s->cr & PL011_CR_UARTEN) || !(s->cr & PL011_CR_RXE)) {
->> +    if (!pl011_can_receive(s)) {
->>            r = 0;
->>        } else {
->>            r = s->read_count < pl011_get_fifo_depth(s);
->> @@ -459,7 +464,7 @@ static void pl011_realize(DeviceState *dev, Error
->> **errp)
->>    {
->>        PL011State *s = PL011(dev);
->>
->> -    qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_receive,
->> +    qemu_chr_fe_set_handlers(&s->chr, pl011_receivable_bytes,
->> pl011_receive,
->>                                 pl011_event, NULL, s, NULL, true);
->>    }
->>
->> ---
->>
->> with maybe a better name for pl011_receivable_bytes().
+On 23/1/23 17:09, Evgeny Iakovlev wrote:
 > 
-> Our standard-ish name for the function you pass to
-> qemu_chr_fe_set_handlers() is either foo_can_receive
-> or foo_can_read, though. That is followed through in
-> the name of the function argument (fd_can_read),
-> its type (IOCanReadHandler), and the field it gets stored
-> in (CharBackend::chr_can_read). It's not a great convention
-> but at least it is a convention...
+> On 1/23/2023 16:59, Evgeny Iakovlev wrote:
+>>
+>> On 1/23/2023 16:21, Philippe Mathieu-Daudé wrote:
+>>> On 23/1/23 15:43, Evgeny Iakovlev wrote:
+>>>>
+>>>> On 1/23/2023 09:14, Philippe Mathieu-Daudé wrote:
+>>>>> On 20/1/23 16:54, Evgeny Iakovlev wrote:
+>>>>>> UART should be enabled in general and have RX enabled specifically 
+>>>>>> to be
+>>>>>> able to receive data from peripheral device. Same goes for 
+>>>>>> transmitting
+>>>>>> data to peripheral device and a TXE flag.
+>>>>>>
+>>>>>> Check if UART CR register has EN and RXE or TXE bits enabled before
+>>>>>> trying to receive or transmit data.
+>>>>>>
+>>>>>> Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
+>>>>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>>>>> ---
+>>>>>>   hw/char/pl011.c | 22 +++++++++++++++++++---
+>>>>>>   1 file changed, 19 insertions(+), 3 deletions(-)
+>>>>>
+>>>>>> +static inline bool pl011_can_transmit(PL011State *s)
+>>>>>> +{
+>>>>>> +    return s->cr & PL011_CR_UARTEN && s->cr & PL011_CR_TXE;
+>>>>>> +}
+>>>>>> +
+>>>>>>   static void pl011_write(void *opaque, hwaddr offset,
+>>>>>>                           uint64_t value, unsigned size)
+>>>>>>   {
+>>>>>> @@ -221,7 +231,9 @@ static void pl011_write(void *opaque, hwaddr 
+>>>>>> offset,
+>>>>>>         switch (offset >> 2) {
+>>>>>>       case 0: /* UARTDR */
+>>>>>> -        /* ??? Check if transmitter is enabled.  */
+>>>>>> +        if (!pl011_can_transmit(s)) {
+>>>>>> +            break;
+>>>>>> +        }
+>>>>>>           ch = value;
+>>>>>>           /* XXX this blocks entire thread. Rewrite to use
+>>>>>>            * qemu_chr_fe_write and background I/O callbacks */
+>>>>>> @@ -292,7 +304,11 @@ static int pl011_can_receive(void *opaque)
+>>>>>>       PL011State *s = (PL011State *)opaque;
+>>>>>>       int r;
+>>>>>>   -    r = s->read_count < pl011_get_fifo_depth(s);
+>>>>>> +    if (!(s->cr & PL011_CR_UARTEN) || !(s->cr & PL011_CR_RXE)) {
+>>>>>
+>>>>> Maybe add pl011_can_receive() similarly to pl011_can_transmit().
+>>>>>
+>>>>> Otherwise:
+>>>>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>>
+>>>>
+>>>> Thanks! There's already a pl011_can_receive though, its the 
+>>>> pl011_can_transmit that's new :)
+>>>
+>>> pl011_can_receive() returns the number of bytes that pl011_receive() 
+>>> can accept, pl011_can_transmit() returns a boolean.
+>>
+>>
+>> Hm, no, pl011_can_receive never actually returned the number of bytes. 
+>> It's a boolean value as an int. Which is a bug, because 
+>> qemu_chr_fe_set_handlers expects it to return the byte count, not a 
+>> 0/1 value.
+>>
+>> I'll fix it then.
+> 
+> 
+> Actually, no, i spoke too soon. qemu_chr_fe_set_handlers indeed expects 
+> a number of bytes from pl011_can_receive, but pl011_can_receive also 
+> deliberately gives it 1 and not how many bytes are there in queue 
+> really, because everything else on the receive code path is written with 
+> an assumption to only accept 1 element at a time (see pl011_put_fifo).
 
-I agree this deserves a better name; maybe this is not a
-convention but I'd expect functions starting with is_* / can_*
-to return a boolean value, not a number:
+That would be great if we had a model actually using the FIFO, but
+since nobody complained about it ...
 
-/**
-  * IOCanReadHandler: Return the number of bytes that #IOReadHandler can 
-accept
-  *
-  * This function reports how many bytes #IOReadHandler is prepared to 
-accept.
-  * #IOReadHandler may be invoked with up to this number of bytes.  If this
-  * function returns 0 then #IOReadHandler is not invoked.
-  *
-  * This function is typically called from an event loop.  If the number of
-  * bytes changes outside the event loop (e.g. because a vcpu thread 
-drained the
-  * buffer), then it is necessary to kick the event loop so that this 
-function
-  * is called again.  aio_notify() or qemu_notify_event() can be used to 
-kick
-  * the event loop.
-  */
-typedef int IOCanReadHandler(void *opaque);
-
-Also, maybe using unsigned or size_t type for the return value would
-better fit. Anyhow, not really a priority :)
+> If we want to optimize this part, we would need to change that 
+> assumption. That should better be done as a separate change though, 
+> which i can send later.
+No problem, this patch is fine. Thanks!

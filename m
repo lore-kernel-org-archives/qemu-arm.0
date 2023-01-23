@@ -1,106 +1,107 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2749701ejc;
-        Sun, 22 Jan 2023 23:26:11 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXusx36tYuBPS1Y0YRezNuKnvIPOlxZCbjw8XsfRFOlPSJ0EAvHuIAZtxxfVJ/L8DTW+fPYa
-X-Received: by 2002:ac8:5ed0:0:b0:3b6:37dc:cb13 with SMTP id s16-20020ac85ed0000000b003b637dccb13mr33124418qtx.51.1674458771158;
-        Sun, 22 Jan 2023 23:26:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674458771; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp2751336ejc;
+        Sun, 22 Jan 2023 23:30:15 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvc7L9tpFTOnyPvQEaYp7Ha1j4X0//g2sQO427Dom0nO9WffF3HZDY1Pzx/Kw9LZ27bwMzZ
+X-Received: by 2002:ac8:12c2:0:b0:3a9:90d9:58be with SMTP id b2-20020ac812c2000000b003a990d958bemr34815548qtj.56.1674459014948;
+        Sun, 22 Jan 2023 23:30:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674459014; cv=none;
         d=google.com; s=arc-20160816;
-        b=UKjwBLNQxuGIxU94v0g3oBhGSmi44A9gQvEJ4R+pjuFByjUPeP/K79HalRnhv3kfEU
-         lY3NjBmyXUyWnNUT3tFALnSO8vxij6eIKDuS4T3I3onR9UCKKNV8WybPpOg6lUJDCwy3
-         /Up3T/otu1osEtBC8U3+hhTWx9Iq3zjvOCBbybZ0mgIYwXuQJm9av7Kr7AmEL6w/Gvo1
-         uTAze2IYSEf2VIODU9EcoXB3JFToEB5rS4BORD7e9g/KVr3rngXLBZfjELYupsGgSdA1
-         N8iIgyK+WdeuLu2h05o6k69BUF6h7qNTxhp7fbtlWv671TCJ0hyuWMdjJaHj7+2X8wQu
-         bSXQ==
+        b=aEa/c3C+nSyl4s2yJW1Zik3WhLMszqQrrmrlZYMgfIDY9zM+FGZBTSjr+GCCufx7uR
+         zh0I2H9WzFNx8pA+KrTTdrMeuStvqYjRktTc4XsDel+Htjs2xSO8dCXMypr49tyLCXgU
+         fhY3YoBobDfuGUdu5imR7PFl7GoyZD02fcx+y+hvuFS3fm3wrHvKNAb1yEnqRGEU00Xh
+         uWaYVpGhDRItWuW5LKvhMgVZPDxdpv2teDrbhvzT9yTU65fixR+G5Z6o8qISDzxr/ohT
+         CIAugK0VcdNVjVOoEOV/ZFwBbDPb6vveEYPTASvVIrB6hBA8WQ5JFkqmEPKphiXnt2od
+         3Jog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
+         :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=HB1/QeBkm2hRdMTD3BOgsdtjebQYUh2d/gTlXGQ4b9A=;
-        b=uV8MFxyz2XFUJxcUBPtswL1O4WaTgGxFcUON0nl3xz8HqPjtN7qcqsTEYj8bEr9Vj3
-         GLscsqXJ+y1Oa/TIbDsVVIjdyXhWP51wUkk/ak40lus5zWb3m4sXdPjHQ+QdDSXNGw9I
-         A8pW20DdoXCpnvHC3RaHCwYbz3B1x0dlkWEPxehEh3hviqFudVn+wWxCDqyO60NdcHWf
-         mTqXPp5zSK2Z4EelAo1y+yNu9iGyn6AFicEK5g0JzxpfKhF38k+KaICElk76eUa1bBio
-         K9U6muS8nUGOxAS0NwIJIV3Wtk4nmdOa3sDlQwGwcOE8TGHW3tE+PqFS61pNxJGCcLFt
-         UEmg==
+        bh=BOUisgqUlNpSS6htmfq9yKyIBS8hQAph5eip8NaHiyY=;
+        b=X+dFfDr+5nH70Y37tEUdP+snva57RiVLr8GaFp985gLpFOpje5QI6M2mfwlT/fHWiu
+         awUsjZmiqI2fS6XjZsQ2LTsHKvbNv61h/zmu0A1ZpMVZXSHayiiscBRCFreS/p4s2wBb
+         VD9rBgUXSdrQCGToP8EoudqGIVri7mvJwDuxZT3Jh9dBOHulF2RRDfiGin020zzf5sUb
+         WbsDFxc60iXlLuKwPREiRwefyH7WgyD5SqaZ7kMiRW8npWgOByL8NRGsYXCAhpklTsis
+         +e9tncHQG/KJqzJBozmIIRPzdvJD85WPKwqorRG7bFrqx3rkeguorOXjrST6+7xhe6bs
+         z1yQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A8itqXrn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jVCtm2qg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17-20020ac84791000000b003b6311a02a1si13851563qtq.442.2023.01.22.23.26.11
+        by mx.google.com with ESMTPS id r10-20020ae9d60a000000b00706321c7cf0si15579270qkk.580.2023.01.22.23.30.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Jan 2023 23:26:11 -0800 (PST)
+        Sun, 22 Jan 2023 23:30:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A8itqXrn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jVCtm2qg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pJrDE-0005Y2-02; Mon, 23 Jan 2023 02:25:52 -0500
+	id 1pJrHC-0006bX-Ul; Mon, 23 Jan 2023 02:29:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJrCx-0005Vd-SR
- for qemu-arm@nongnu.org; Mon, 23 Jan 2023 02:25:39 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJrHB-0006bF-9c
+ for qemu-arm@nongnu.org; Mon, 23 Jan 2023 02:29:57 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJrCv-0006D2-S5
- for qemu-arm@nongnu.org; Mon, 23 Jan 2023 02:25:35 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id b7so9875050wrt.3
- for <qemu-arm@nongnu.org>; Sun, 22 Jan 2023 23:25:30 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pJrH9-0006lW-Gr
+ for qemu-arm@nongnu.org; Mon, 23 Jan 2023 02:29:57 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ d4-20020a05600c3ac400b003db1de2aef0so7815526wms.2
+ for <qemu-arm@nongnu.org>; Sun, 22 Jan 2023 23:29:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=HB1/QeBkm2hRdMTD3BOgsdtjebQYUh2d/gTlXGQ4b9A=;
- b=A8itqXrn3kXoqrdkodTC1dR8MNICtsbXrfsiRveeYC55U3W+yE4aKVPiE6wBeNTNSk
- TAB6ksub7uVxqxG1ziAe/M3R9cmc/TzgAvA8a3DDeA9OgZHG3db2p1vZD1SYvsJhCKI8
- umUcShthzLRVEj+xEKuQzXZgtqlP+wZr4NekDP12LJAzPyCytmwQoFdVGj63w232VrAX
- 5oQRArLzbd4L/xIC+Qywpgd+miy/2sVDciAj4ECAnY3arBRgkV9zarXb2jmgoVRC6I+1
- A8H3lfW/4cevuX5fx5dafO56cgh4keiLR5cHd8sUCro1r5Inqik2uSFPSWBg2VLuVR2I
- /u4w==
+ bh=BOUisgqUlNpSS6htmfq9yKyIBS8hQAph5eip8NaHiyY=;
+ b=jVCtm2qgZH6MYn4A5rDH7sbZJu7wmlB7S2SMmuVIR87HgQ4FnxK0xIyCNlUq3VbDZr
+ M+WsFO3+5Yyt5IDBiSzeV4BFZRqaqtgWI/WkZYFg3dnRKnK7EK/HKk1Wtuug73mez4WP
+ xSo3Lw2D+d4uZdKUPcZrQDcFmYzXUH6KpAv8GJWKoD+u3Anzl7OSFZ9EsBKGlitrvP0O
+ uW3uk52b8ueTEvj4vlG2XkzL5oCcDR5xRxNBNLoNE70EAJtRQ7znONy9hA7Q2kVAoMCz
+ +xYZRpJYeoLBccRrPEaDdQU7DRIfS09NABaXwIQmFb6BR6dIouV0UrDzod4OVkXh9Bj7
+ XIdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=HB1/QeBkm2hRdMTD3BOgsdtjebQYUh2d/gTlXGQ4b9A=;
- b=GFlcHJJuQ6iS25dXhBhDqyQkkZNCQdGGz6FQliUbAg6UYI6SRUA+jnIuQ7jIoevPQO
- fePa45wSKVLNVYXFMxY2MbGi5VWcOYhIXl4f4Si+sfHkBdbrKxYJHeu11pVetSmElphc
- NEnO9INdAxUzViZaIWy4ptcBMpFatWGj7w9a5rH0QqSnIu1hvGFqt+DJAssdPQ5CuY8K
- tFcybtqgkGNs7qQBBvrxByBL1eIoHhTKOHdaS6vxL+4EBfq/AKoaHs4bMdjakQhhBnM4
- 5RMsQH815g9nT2XhZw7yXxDFejP4aNSl8p10rPBOMojlIG2uXGPXQADmx8479Ur14+Wj
- X5UA==
-X-Gm-Message-State: AFqh2kqZBtoezQyXXacvfogjNRWI9aHG5uclc27kuegOqtkrS9C/TfqP
- vW5khc1yEd8OJIj5clPZaBtMXQ==
-X-Received: by 2002:adf:f0c8:0:b0:2bf:9656:d1a8 with SMTP id
- x8-20020adff0c8000000b002bf9656d1a8mr8225219wro.32.1674458729218; 
- Sun, 22 Jan 2023 23:25:29 -0800 (PST)
+ bh=BOUisgqUlNpSS6htmfq9yKyIBS8hQAph5eip8NaHiyY=;
+ b=VqxtkNpxdf9hU6sF57X5AgfQ6sazL9qGji20rp1/UBQby0j3Ezz5yO4UVGBZIW2pBQ
+ k0SsyX7AelsUt3+Q5PXHq0qdCGpIb4b89YwPS4gVlxAD3N7g3NUv7omCrZ/k6xlI9z7T
+ n2bsy9hWzJ+CitdS6EzoDjhdTa9A4ADcbw+oBPr1/ORa6tujpS+rmXhDjN7AeUlbDngX
+ k50OWiVVDRFnXqe/ksvek4oAfquBgOOxysf8tg4il53gG7aKPb09s9ok0IoV25BgjcMM
+ j53ZjiHH0a6J3Z4n12pHRnpoSf450nzDi4T89jUjWp0qVlwoSRXoCY+LUJQidQV+E+1T
+ yNhA==
+X-Gm-Message-State: AFqh2ko1+yqt4HJexqMi4jcPbt8GUj3QNqtpxMORdq/xnNl9biaKFB4e
+ 7IpgCX8g8ppzRiszkwEv7HCCNA==
+X-Received: by 2002:a05:600c:16c9:b0:3db:222:3e0c with SMTP id
+ l9-20020a05600c16c900b003db02223e0cmr22765247wmn.33.1674458992795; 
+ Sun, 22 Jan 2023 23:29:52 -0800 (PST)
 Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- w7-20020adfd4c7000000b002baa780f0fasm4117229wrk.111.2023.01.22.23.25.28
+ n1-20020a5d67c1000000b002bc7f64efa3sm33996593wrw.29.2023.01.22.23.29.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 22 Jan 2023 23:25:28 -0800 (PST)
-Message-ID: <af8222c9-539d-214f-4d5b-ab1862891503@linaro.org>
-Date: Mon, 23 Jan 2023 08:25:27 +0100
+ Sun, 22 Jan 2023 23:29:52 -0800 (PST)
+Message-ID: <08362288-ac57-6d96-d9c8-aad708001e43@linaro.org>
+Date: Mon, 23 Jan 2023 08:29:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v3 3/5] hw/char/pl011: implement a reset method
+Subject: Re: [PATCH v3 1/5] hw/char/pl011: refactor FIFO depth handling code
+Content-Language: en-US
 To: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org
 References: <20230120155447.31702-1-eiakovlev@linux.microsoft.com>
- <20230120155447.31702-4-eiakovlev@linux.microsoft.com>
-Content-Language: en-US
+ <20230120155447.31702-2-eiakovlev@linux.microsoft.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230120155447.31702-4-eiakovlev@linux.microsoft.com>
+In-Reply-To: <20230120155447.31702-2-eiakovlev@linux.microsoft.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
@@ -122,22 +123,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E3UoE5ZGIZGi
+X-TUID: kp7ngFfHvVwd
 
 On 20/1/23 16:54, Evgeny Iakovlev wrote:
-> PL011 currently lacks a reset method. Implement it.
+> PL011 can be in either of 2 modes depending guest config: FIFO and
+> single register. The last mode could be viewed as a 1-element-deep FIFO.
+> 
+> Current code open-codes a bunch of depth-dependent logic. Refactor FIFO
+> depth handling code to isolate calculating current FIFO depth.
+> 
+> One functional (albeit guest-invisible) side-effect of this change is
+> that previously we would always increment s->read_pos in UARTDR read
+> handler even if FIFO was disabled, now we are limiting read_pos to not
+> exceed FIFO depth (read_pos itself is reset to 0 if user disables FIFO).
 > 
 > Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 > ---
->   hw/char/pl011.c | 26 +++++++++++++++++++++-----
->   1 file changed, 21 insertions(+), 5 deletions(-)
-
->   static void pl011_class_init(ObjectClass *oc, void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(oc);
->   
->       dc->realize = pl011_realize;
-> +    dc->reset = pl011_reset;
-Maybe directly implement as ResettableHoldPhase from "hw/resettable.h".
+>   hw/char/pl011.c         | 30 ++++++++++++++++++------------
+>   include/hw/char/pl011.h |  5 ++++-
+>   2 files changed, 22 insertions(+), 13 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+

@@ -1,77 +1,79 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3045677ejc;
-        Mon, 23 Jan 2023 08:23:28 -0800 (PST)
-X-Google-Smtp-Source: AK7set/gTJZNhgBq2qt2Bbq5NOy9mSR4XqyxB2TDsVrLLxHL2gElZ2dgFJILf6i6ow+3vVgmbLXs
-X-Received: by 2002:a0c:f181:0:b0:537:63fa:5963 with SMTP id m1-20020a0cf181000000b0053763fa5963mr503064qvl.47.1674491008143;
-        Mon, 23 Jan 2023 08:23:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674491008; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3045696ejc;
+        Mon, 23 Jan 2023 08:23:31 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuvbKjw7qG0LAt591b6OZlT3Lm8yrWN+XPxvW+wtFjpniXRUbUwseTYiMAfQX/y3AuYWGVX
+X-Received: by 2002:a05:622a:1aa5:b0:3b6:a1fd:19cd with SMTP id s37-20020a05622a1aa500b003b6a1fd19cdmr22647859qtc.46.1674491010787;
+        Mon, 23 Jan 2023 08:23:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674491010; cv=none;
         d=google.com; s=arc-20160816;
-        b=QW4YggRXL838gx2JfyDFkZCbg3h/riamQPKeY3GWOPoIMHQlV+phl4NGnv+mcSa0D9
-         B93G4glwI2h936nvoJpN8/rUIpEZulQyQHBIuSSc6S4gCvhO99p1gVJsAwygYWS45BNi
-         40e8q6OwPzT4oqamAVPs65JN5C2CMmlxDVsGqW5Nuav2Sw8RF/Rzv2qqa6WAL6YRgi3v
-         Hmsy5wuJWqM7TiguTniuoYV6Qp7zcOcutx54Fa5rICdk3dJ8N0KWPqgYVlFddEPagTtZ
-         CmNWbb/8XWCRr2otbv7XKzSvzeV5b4Rf+TGg05+iPs7lEyb8B5i761cQmQsKZIQEoGye
-         JQ9w==
+        b=uZiapUTGV5j6mIl5A9LnxGkFxe2/6a6cp9TVzouWZN6sMxApAgREXOOrqGhLlz89lX
+         LkyD72XI4R60bfhFfZJbFeE9Sxtzi3PBz/rswKVHYDo8VHdpvXkHvQApSEEfV3K2K0Tg
+         C2U3XCmsNdqlK/aDdVub/NgsfPr8RAz93wEZMJQG9d31yD6POv2PFGovCN13KVv/V1ws
+         8DLOL5ELCpk61nK+rlKfwchMSsawEr6+DziFC6HCQaSLe5Sqo6iLtPDyS8u7ZiY36BdW
+         Sho/JnbjsTOyEOv4ha0D/K/M1+jb3klnMratExKufEK122lIphtE5zavkUsqWcqKiw/E
+         vyNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
-         :dkim-filter;
-        bh=D4r48KVnk7ot18DtWCSTUBNmhBPIHZ6bG95OQJkFm5E=;
-        b=p43F4LyBL8sDusbU7T/isO+OAHDwB/qyirDHzw9MrVIk0T4xcIfdxhEzQSmOpKSXXl
-         sS/qobeQQMOmPmhlEzAiptnFkFAzEjtW5feQmaNv30QxI5yaGQBpS0J2EMVjd37aP5gS
-         2BGbiXwHydt2BQn052s0KnkL5CoDdy0nSa35Cttw459xdncdbGjs8cfDCZDyz7b/YmS3
-         +f+BAdX/yXoOIyMoStrp7xQ/qkaHJQS4ofWMU4PXgsxfKNTqvJsv9oFbGpGt2MF7oQJm
-         ZYzpH5LMkfyWhUYSUGCK3ijmLUJR/7h9ha60Pe+SzmTzAFLWyd4HOJ5OU3oMU5OJ6WGt
-         dyxQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=C+EScrM/BlF+L0aCDcrNncH4RADSJ3Df3ccUc0bOkbE=;
+        b=p17cYfJzhg0skqKkHhsgkLRV7ETFRz8fXJiyaPkJDHknKjo0G2Gg9FwBrTdxb1eUmb
+         QtXbtHmwFFQyNhnkj/IZkOvM6980KhAUYIPcSxLq5dusdfrfpo3RyAotmwTGj6AdwPoD
+         AoDU+sOvb0bqaUaj/Jt0fjPk9+fA342I/ytDMH0aEyMEm/KkSKD5Uz81HpmEBZrDMH1a
+         ECSYVAmz9vN2VlkcCxGmjcsCChaCEvHRQMXnuUNIBwMgjx5l+LFU+nrZOk2DZe7/pCfs
+         zkxAtTilJpXmxP7Ky9rNn9k2KadPI67EMLbx2z28iRAReAxIq5MsWm9QwRMJVe4Udb+a
+         3iaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=B2iic5Ti;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=RDaN6vK0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id og3-20020a056214428300b00535748be2e4si6302065qvb.317.2023.01.23.08.23.28
+        by mx.google.com with ESMTPS id e7-20020ac80647000000b00397e910165esi28609124qth.417.2023.01.23.08.23.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Jan 2023 08:23:28 -0800 (PST)
+        Mon, 23 Jan 2023 08:23:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=B2iic5Ti;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=RDaN6vK0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pJzbI-0007bO-FT; Mon, 23 Jan 2023 11:23:16 -0500
+	id 1pJzbM-0007eg-Ul; Mon, 23 Jan 2023 11:23:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pJzbG-0007at-Sr; Mon, 23 Jan 2023 11:23:14 -0500
+ id 1pJzbL-0007du-Aw; Mon, 23 Jan 2023 11:23:19 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <eiakovlev@linux.microsoft.com>)
- id 1pJzbF-0003a0-81; Mon, 23 Jan 2023 11:23:14 -0500
+ id 1pJzbJ-0003bQ-Ot; Mon, 23 Jan 2023 11:23:19 -0500
 Received: from localhost.localdomain (unknown [77.64.253.114])
- by linux.microsoft.com (Postfix) with ESMTPSA id C824C20E1ABA;
- Mon, 23 Jan 2023 08:23:09 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com C824C20E1ABA
+ by linux.microsoft.com (Postfix) with ESMTPSA id 84FA320E1ABA;
+ Mon, 23 Jan 2023 08:23:15 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 84FA320E1ABA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1674490990;
- bh=D4r48KVnk7ot18DtWCSTUBNmhBPIHZ6bG95OQJkFm5E=;
- h=From:To:Cc:Subject:Date:From;
- b=B2iic5TilhEFf/rbEu060LjiT/7DBM5xfcTCqYgMFsF7mKO87UNea/2/2NPcVRtvI
- 7lIkci+SwVgSqPBX9aWSThoxk3lI4850dCGxBXg/A6Hx7DICqfJWBJ6s+c0BZQp+wP
- h/RfNBt1odBt5TLSpz6E5GcdqLG6N1CKCRK4s27o=
+ s=default; t=1674490996;
+ bh=C+EScrM/BlF+L0aCDcrNncH4RADSJ3Df3ccUc0bOkbE=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=RDaN6vK0qainpzsagd4sNqdQLynkm5UKnpd1H35XSHJoEnz52H0A1dbSZRUmJxJzS
+ sGVOQZ6kWUx3oP9lKzX0ii4qnJwdB+xZcHDk8mShWql+gJm51prxUPjDMorty++Qff
+ xlm+U06kmDvhw4xURy7DFpysEqCCP8/oMdm6HElA=
 From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org,
 	philmd@linaro.org
-Subject: [PATCH v4 0/5] Series of fixes for PL011 char device
-Date: Mon, 23 Jan 2023 17:22:59 +0100
-Message-Id: <20230123162304.26254-1-eiakovlev@linux.microsoft.com>
+Subject: [PATCH v4 4/5] hw/char/pl011: better handling of FIFO flags on LCR
+ reset
+Date: Mon, 23 Jan 2023 17:23:03 +0100
+Message-Id: <20230123162304.26254-5-eiakovlev@linux.microsoft.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230123162304.26254-1-eiakovlev@linux.microsoft.com>
+References: <20230123162304.26254-1-eiakovlev@linux.microsoft.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=13.77.154.182;
  envelope-from=eiakovlev@linux.microsoft.com; helo=linux.microsoft.com
@@ -97,35 +99,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ianKkZTiGYI7
+X-TUID: D0m4qpizaQD8
 
-v4:
-* Fixed post_load hook to be backwards-migratable
-* Refactored some code in 5/5 as per review comments
+Current FIFO handling code does not reset RXFE/RXFF flags when guest
+resets FIFO by writing to UARTLCR register, although internal FIFO state
+is reset to 0 read count. Actual guest-visible flag update will happen
+only on next data read or write attempt. As a result of that any guest
+that expects RXFE flag to be set (and RXFF to be cleared) after resetting
+FIFO will never see that happen.
 
-v3:
-* Introduced a post_load hook for PL011State migration for
-  backwards-compatibility due to some input state fragility.
-* No longer touching irq lines in reset method
-* Minor changes based on review feedback.
+Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/char/pl011.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
-v2:
-* Moved FIFO depth refactoring part of FIFO flags change into its own
-  commit.
-* Added a reset method for PL011
-
-
-Evgeny Iakovlev (5):
-  hw/char/pl011: refactor FIFO depth handling code
-  hw/char/pl011: add post_load hook for backwards-compatibility
-  hw/char/pl011: implement a reset method
-  hw/char/pl011: better handling of FIFO flags on LCR reset
-  hw/char/pl011: check if UART is enabled before RX or TX operation
-
- hw/char/pl011.c         | 121 +++++++++++++++++++++++++++++++++-------
- include/hw/char/pl011.h |   5 +-
- 2 files changed, 105 insertions(+), 21 deletions(-)
-
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index ca7537d8ed..c15cb7af20 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -92,6 +92,16 @@ static inline unsigned pl011_get_fifo_depth(PL011State *s)
+     return pl011_is_fifo_enabled(s) ? PL011_FIFO_DEPTH : 1;
+ }
+ 
++static inline void pl011_reset_fifo(PL011State *s)
++{
++    s->read_count = 0;
++    s->read_pos = 0;
++
++    /* Reset FIFO flags */
++    s->flags &= ~(PL011_FLAG_RXFF | PL011_FLAG_TXFF);
++    s->flags |= PL011_FLAG_RXFE | PL011_FLAG_TXFE;
++}
++
+ static uint64_t pl011_read(void *opaque, hwaddr offset,
+                            unsigned size)
+ {
+@@ -239,8 +249,7 @@ static void pl011_write(void *opaque, hwaddr offset,
+     case 11: /* UARTLCR_H */
+         /* Reset the FIFO state on FIFO enable or disable */
+         if ((s->lcr ^ value) & 0x10) {
+-            s->read_count = 0;
+-            s->read_pos = 0;
++            pl011_reset_fifo(s);
+         }
+         if ((s->lcr ^ value) & 0x1) {
+             int break_enable = value & 0x1;
+@@ -450,12 +459,11 @@ static void pl011_reset(DeviceState *dev)
+     s->ilpr = 0;
+     s->ibrd = 0;
+     s->fbrd = 0;
+-    s->read_pos = 0;
+-    s->read_count = 0;
+     s->read_trigger = 1;
+     s->ifl = 0x12;
+     s->cr = 0x300;
+-    s->flags = 0x90;
++    s->flags = 0;
++    pl011_reset_fifo(s);
+ }
+ 
+ static void pl011_class_init(ObjectClass *oc, void *data)
 -- 
 2.34.1
 

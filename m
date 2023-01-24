@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id g9-20020adff3c9000000b002bfb29d19e4sm1552773wrp.88.2023.01.24.10.01.32
+        by smtp.gmail.com with ESMTPSA id z18-20020a05600c079200b003d9780466b0sm2431477wmo.31.2023.01.24.10.01.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 24 Jan 2023 10:01:35 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id CCB241FFCE;
+	by zen.linaroharston (Postfix) with ESMTP id 6680F1FFBA;
 	Tue, 24 Jan 2023 18:01:30 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,114 +38,360 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Li-Wen Hsu <lwhsu@freebsd.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Emilio Cota <cota@braap.org>
-Subject: [PATCH v2 26/35] cpu: free cpu->tb_jmp_cache with RCU
-Date: Tue, 24 Jan 2023 18:01:18 +0000
-Message-Id: <20230124180127.1881110-27-alex.bennee@linaro.org>
+	Kashyap Chamarthy <kchamart@redhat.com>
+Subject: [PATCH v2 22/35] docs: add an introduction to the system docs
+Date: Tue, 24 Jan 2023 18:01:14 +0000
+Message-Id: <20230124180127.1881110-23-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 69rb8qfYtx6e
+X-TUID: /WywZEVKSOst
 
-From: Emilio Cota <cota@braap.org>
+Drop the frankly misleading quickstart section for a more rounded
+introduction section. This new section gives an overview of the
+accelerators as well as a high level introduction to some of the key
+features of the emulator. We also expand on a general form for a QEMU
+command line with a hopefully not too scary worked example of what
+this looks like.
 
-Fixes the appended use-after-free. The root cause is that
-during tb invalidation we use CPU_FOREACH, and therefore
-to safely free a vCPU we must wait for an RCU grace period
-to elapse.
-
-$ x86_64-linux-user/qemu-x86_64 tests/tcg/x86_64-linux-user/munmap-pthread
-=================================================================
-==1800604==ERROR: AddressSanitizer: heap-use-after-free on address 0x62d0005f7418 at pc 0x5593da6704eb bp 0x7f4961a7ac70 sp 0x7f4961a7ac60
-READ of size 8 at 0x62d0005f7418 thread T2
-    #0 0x5593da6704ea in tb_jmp_cache_inval_tb ../accel/tcg/tb-maint.c:244
-    #1 0x5593da6704ea in do_tb_phys_invalidate ../accel/tcg/tb-maint.c:290
-    #2 0x5593da670631 in tb_phys_invalidate__locked ../accel/tcg/tb-maint.c:306
-    #3 0x5593da670631 in tb_invalidate_phys_page_range__locked ../accel/tcg/tb-maint.c:542
-    #4 0x5593da67106d in tb_invalidate_phys_range ../accel/tcg/tb-maint.c:614
-    #5 0x5593da6a64d4 in target_munmap ../linux-user/mmap.c:766
-    #6 0x5593da6dba05 in do_syscall1 ../linux-user/syscall.c:10105
-    #7 0x5593da6f564c in do_syscall ../linux-user/syscall.c:13329
-    #8 0x5593da49e80c in cpu_loop ../linux-user/x86_64/../i386/cpu_loop.c:233
-    #9 0x5593da6be28c in clone_func ../linux-user/syscall.c:6633
-    #10 0x7f496231cb42 in start_thread nptl/pthread_create.c:442
-    #11 0x7f49623ae9ff  (/lib/x86_64-linux-gnu/libc.so.6+0x1269ff)
-
-0x62d0005f7418 is located 28696 bytes inside of 32768-byte region [0x62d0005f0400,0x62d0005f8400)
-freed by thread T148 here:
-    #0 0x7f49627b6460 in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:52
-    #1 0x5593da5ac057 in cpu_exec_unrealizefn ../cpu.c:180
-    #2 0x5593da81f851  (/home/cota/src/qemu/build/qemu-x86_64+0x484851)
-
-Signed-off-by: Emilio Cota <cota@braap.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230111151628.320011-2-cota@braap.org>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- accel/tcg/tb-jmp-cache.h |  1 +
- accel/tcg/cpu-exec.c     |  3 +--
- cpu.c                    | 11 ++++++++++-
- 3 files changed, 12 insertions(+), 3 deletions(-)
+Reviewed-by: Kashyap Chamarthy <kchamart@redhat.com>
 
-diff --git a/accel/tcg/tb-jmp-cache.h b/accel/tcg/tb-jmp-cache.h
-index ff5ffc8fc2..b3f6e78835 100644
---- a/accel/tcg/tb-jmp-cache.h
-+++ b/accel/tcg/tb-jmp-cache.h
-@@ -18,6 +18,7 @@
-  * a load_acquire/store_release to 'tb'.
-  */
- struct CPUJumpCache {
-+    struct rcu_head rcu;
-     struct {
-         TranslationBlock *tb;
- #if TARGET_TB_PCREL
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 04cd1f3092..25ec73ef9a 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -1064,13 +1064,12 @@ void tcg_exec_realizefn(CPUState *cpu, Error **errp)
- /* undo the initializations in reverse order */
- void tcg_exec_unrealizefn(CPUState *cpu)
- {
--    qemu_plugin_vcpu_exit_hook(cpu);
- #ifndef CONFIG_USER_ONLY
-     tcg_iommu_free_notifier_list(cpu);
- #endif /* !CONFIG_USER_ONLY */
+---
+v2
+  - integrated Kashyap's comments
+  - used -blockdev for pflash
+  - remove extra whitespace
+  - some punctuation fixes from Peter
+  - make it clearer TCG is the default accelerator
+---
+ docs/interop/live-block-operations.rst |   2 +
+ docs/interop/qemu-qmp-ref.rst          |   2 +
+ docs/system/index.rst                  |   2 +-
+ docs/system/introduction.rst           | 220 +++++++++++++++++++++++++
+ docs/system/multi-process.rst          |   2 +
+ docs/system/quickstart.rst             |  21 ---
+ qemu-options.hx                        |   3 +
+ 7 files changed, 230 insertions(+), 22 deletions(-)
+ create mode 100644 docs/system/introduction.rst
+ delete mode 100644 docs/system/quickstart.rst
+
+diff --git a/docs/interop/live-block-operations.rst b/docs/interop/live-block-operations.rst
+index 135784ab33..691429c7af 100644
+--- a/docs/interop/live-block-operations.rst
++++ b/docs/interop/live-block-operations.rst
+@@ -4,6 +4,8 @@
+     This work is licensed under the terms of the GNU GPL, version 2 or
+     later.  See the COPYING file in the top-level directory.
  
-     tlb_destroy(cpu);
--    g_free(cpu->tb_jmp_cache);
-+    g_free_rcu(cpu->tb_jmp_cache, rcu);
- }
- 
- #ifndef CONFIG_USER_ONLY
-diff --git a/cpu.c b/cpu.c
-index 4a7d865427..21cf809614 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -176,11 +176,20 @@ void cpu_exec_unrealizefn(CPUState *cpu)
-         vmstate_unregister(NULL, &vmstate_cpu_common, cpu);
-     }
- #endif
++.. _Live Block Operations:
 +
-+    /* Call the plugin hook before clearing cpu->cpu_index in cpu_list_remove */
-     if (tcg_enabled()) {
--        tcg_exec_unrealizefn(cpu);
-+        qemu_plugin_vcpu_exit_hook(cpu);
-     }
+ ============================
+ Live Block Device Operations
+ ============================
+diff --git a/docs/interop/qemu-qmp-ref.rst b/docs/interop/qemu-qmp-ref.rst
+index 357effd64f..f94614a0b2 100644
+--- a/docs/interop/qemu-qmp-ref.rst
++++ b/docs/interop/qemu-qmp-ref.rst
+@@ -1,3 +1,5 @@
++.. _QMP Ref:
++
+ QEMU QMP Reference Manual
+ =========================
  
-     cpu_list_remove(cpu);
-+    /*
-+     * Now that the vCPU has been removed from the RCU list, we can call
-+     * tcg_exec_unrealizefn, which may free fields using call_rcu.
-+     */
-+    if (tcg_enabled()) {
-+        tcg_exec_unrealizefn(cpu);
-+    }
- }
+diff --git a/docs/system/index.rst b/docs/system/index.rst
+index 282b6ffb56..3605bbe1ce 100644
+--- a/docs/system/index.rst
++++ b/docs/system/index.rst
+@@ -12,7 +12,7 @@ or Hypervisor.Framework.
+ .. toctree::
+    :maxdepth: 3
  
- /*
+-   quickstart
++   introduction
+    invocation
+    device-emulation
+    keys
+diff --git a/docs/system/introduction.rst b/docs/system/introduction.rst
+new file mode 100644
+index 0000000000..a4a6130b02
+--- /dev/null
++++ b/docs/system/introduction.rst
+@@ -0,0 +1,220 @@
++Introduction
++============
++
++Virtualisation Accelerators
++---------------------------
++
++QEMU's system emulation provides a virtual model of a machine (CPU,
++memory and emulated devices) to run a guest OS. It supports a number
++of hypervisors (known as accelerators) as well as a JIT known as the
++Tiny Code Generator (TCG) capable of emulating many CPUs.
++
++.. list-table:: Supported Accelerators
++  :header-rows: 1
++
++  * - Accelerator
++    - Host OS
++    - Host Architectures
++  * - KVM
++    - Linux
++    - Arm (64 bit only), MIPS, PPC, RISC-V, s390x, x86
++  * - Xen
++    - Linux (as dom0)
++    - Arm, x86
++  * - Intel HAXM (hax)
++    - Linux, Windows
++    - x86
++  * - Hypervisor Framework (hvf)
++    - MacOS
++    - x86 (64 bit only), Arm (64 bit only)
++  * - Windows Hypervisor Platform (wphx)
++    - Windows
++    - x86
++  * - NetBSD Virtual Machine Monitor (nvmm)
++    - NetBSD
++    - x86
++  * - Tiny Code Generator (tcg)
++    - Linux, other POSIX, Windows, MacOS
++    - Arm, x86, Loongarch64, MIPS, PPC, s390x, Sparc64
++
++Feature Overview
++----------------
++
++System emulation provides a wide range of device models to emulate
++various hardware components you may want to add to your machine. This
++includes a wide number of VirtIO devices which are specifically tuned
++for efficient operation under virtualisation. Some of the device
++emulation can be offloaded from the main QEMU process using either
++vhost-user (for VirtIO) or :ref:`Multi-process QEMU`. If the platform
++supports it QEMU also supports directly passing devices through to
++guest VMs to eliminate the device emulation overhead. See
++:ref:`device-emulation` for more details.
++
++There is a full :ref:`featured block layer<Live Block Operations>`
++which allows for construction of complex storage topology which can be
++stacked across multiple layers supporting redirection, networking,
++snapshots and migration support.
++
++The flexible ``chardev`` system allows for handling IO from character
++like devices using stdio, files, unix sockets and TCP networking.
++
++QEMU provides a number of management interfaces including a line based
++:ref:`Human Monitor Protocol (HMP)<QEMU monitor>` that allows you to
++dynamically add and remove devices as well as introspect the system
++state. The :ref:`QEMU Monitor Protocol<QMP Ref>` (QMP) is a well
++defined, versioned, machine usable API that presents a rich interface
++to other tools to create, control and manage Virtual Machines. This is
++the interface used by higher level tools interfaces such as `Virt
++Manager <https://virt-manager.org/>`_ using the `libvirt framework
++<https://libvirt.org>`_.
++
++For the common accelerators QEMU, supported debugging with its
++:ref:`gdbstub<GDB usage>` which allows users to connect GDB and debug
++system software images.
++
++Running
++-------
++
++QEMU provides a rich and complex API which can be overwhelming to
++understand. While some architectures can boot something with just a
++disk image, those examples elide a lot of details with defaults that
++may not be optimal for modern systems.
++
++For a non-x86 system where we emulate a broad range of machine types,
++the command lines are generally more explicit in defining the machine
++and boot behaviour. You will find often find example command lines in
++the :ref:`system-targets-ref` section of the manual.
++
++While the project doesn't want to discourage users from using the
++command line to launch VMs, we do want to highlight that there are a
++number of projects dedicated to providing a more user friendly
++experience. Those built around the ``libvirt`` framework can make use
++of feature probing to build modern VM images tailored to run on the
++hardware you have.
++
++That said, the general form of a QEMU command line can be expressed
++as:
++
++.. parsed-literal::
++
++  $ |qemu_system| [machine opts] \\
++                  [cpu opts] \\
++                  [accelerator opts] \\
++                  [device opts] \\
++                  [backend opts] \\
++                  [interface opts] \\
++                  [boot opts] 
++
++Most options will generate some help information. So for example:
++
++.. parsed-literal::
++
++   $ |qemu_system| -M help
++
++will list the machine types supported by that QEMU binary. ``help``
++can also be passed as an argument to another option. For example:
++
++.. parsed-literal::
++
++  $ |qemu_system| -device scsi-hd,help
++
++will list the arguments and their default values of additional options
++that can control the behaviour of the ``scsi-hd`` device.
++
++.. list-table:: Options Overview
++  :header-rows: 1
++  :widths: 10, 90
++
++  * - Options
++    -
++  * - Machine
++    - Define the :ref:`machine type<Machine Options>`, amount of memory etc
++  * - CPU
++    - Type and number/topology of vCPUs. Most accelerators offer
++      a ``host`` cpu option which simply passes through your host CPU
++      configuration without filtering out any features.
++  * - Accelerator
++    - This will depend on the hypervisor you run. Note that the
++      default is TCG, which is purely emulated, so you must specify an
++      accelerator type to take advantage of hardware virtualization.
++  * - Devices
++    - Additional devices that are not defined by default with the
++      machine type.
++  * - Backends
++    - Backends are how QEMU deals with the guest's data, for example
++      how a block device is stored, how network devices see the
++      network or how a serial device is directed to the outside world.
++  * - Interfaces
++    - How the system is displayed, how it is managed and controlled or
++      debugged.
++  * - Boot
++    - How the system boots, via firmware or direct kernel boot.
++
++In the following example we first define a ``virt`` machine which is a
++general purpose platform for running Aarch64 guests. We enable
++virtualisation so we can use KVM inside the emulated guest. As the
++``virt`` machine comes with some built in pflash devices we give them
++names so we can override the defaults later.
++
++.. code::
++
++ $ qemu-system-aarch64 \
++    -machine type=virt,virtualization=on,pflash0=rom,pflash1=efivars \
++    -m 4096 \
++
++We then define the 4 vCPUs using the ``max`` option which gives us all
++the Arm features QEMU is capable of emulating. We enable a more
++emulation friendly implementation of Arm's pointer authentication
++algorithm. We explicitly specify TCG acceleration even though QEMU
++would default to it anyway.
++
++.. code::
++
++ -cpu max,pauth-impdef=on \
++ -smp 4 \
++ -accel tcg \
++
++As the ``virt`` platform doesn't have any default network or storage
++devices we need to define them. We give them ids so we can link them
++with the backend later on.
++
++.. code::
++
++ -device virtio-net-pci,netdev=unet \
++ -device virtio-scsi-pci \
++ -device scsi-hd,drive=hd \
++
++We connect the user-mode networking to our network device. As
++user-mode networking isn't directly accessible from the outside world
++we forward localhost port 2222 to the ssh port on the guest.
++
++.. code::
++
++ -netdev user,id=unet,hostfwd=tcp::2222-:22 \
++
++We connect the guest visible block device to an LVM partition we have
++set aside for our guest.
++
++.. code::
++
++ -blockdev driver=raw,node-name=hd,file.driver=host_device,file.filename=/dev/lvm-disk/debian-bullseye-arm64 \
++
++We then tell QEMU to multiplex the :ref:`QEMU monitor` with the serial
++port output (we can switch between the two using :ref:`keys in the
++character backend multiplexer`). As there is no default graphical
++device we disable the display as we can work entirely in the terminal.
++
++.. code::
++
++ -serial mon:stdio \
++ -display none \
++
++Finally we override the default firmware to ensure we have some
++storage for EFI to persist its configuration. That firmware is
++responsible for finding the disk, booting grub and eventually running
++our system.
++
++.. code::
++
++ -blockdev node-name=rom,driver=file,filename=(pwd)/pc-bios/edk2-aarch64-code.fd,read-only=true \
++ -blockdev node-name=efivars,driver=file,filename=$HOME/images/qemu-arm64-efivars
+diff --git a/docs/system/multi-process.rst b/docs/system/multi-process.rst
+index 210531ee17..16f0352416 100644
+--- a/docs/system/multi-process.rst
++++ b/docs/system/multi-process.rst
+@@ -1,3 +1,5 @@
++.. _Multi-process QEMU:
++
+ Multi-process QEMU
+ ==================
+ 
+diff --git a/docs/system/quickstart.rst b/docs/system/quickstart.rst
+deleted file mode 100644
+index 681678c86e..0000000000
+--- a/docs/system/quickstart.rst
++++ /dev/null
+@@ -1,21 +0,0 @@
+-.. _pcsys_005fquickstart:
+-
+-Quick Start
+------------
+-
+-Download and uncompress a PC hard disk image with Linux installed (e.g.
+-``linux.img``) and type:
+-
+-.. parsed-literal::
+-
+-   |qemu_system| linux.img
+-
+-Linux should boot and give you a prompt.
+-
+-Users should be aware the above example elides a lot of the complexity
+-of setting up a VM with x86_64 specific defaults and assumes the
+-first non switch argument is a PC compatible disk image with a boot
+-sector. For a non-x86 system where we emulate a broad range of machine
+-types, the command lines are generally more explicit in defining the
+-machine and boot behaviour. You will find more example command lines
+-in the :ref:`system-targets-ref` section of the manual.
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 4508a00c59..fd5347657a 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -20,6 +20,9 @@ DEF("version", 0, QEMU_OPTION_version,
+ SRST
+ ``-version``
+     Display version information and exit
++
++    .. _Machine Options:
++
+ ERST
+ 
+ DEF("machine", HAS_ARG, QEMU_OPTION_machine, \
 -- 
 2.34.1

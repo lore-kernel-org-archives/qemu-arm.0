@@ -1,113 +1,113 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3293818ejc;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3293814ejc;
         Mon, 23 Jan 2023 16:01:06 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsgYSYkoMCaJpFZmBVTrzPB1cxPatX+J1/c2z7w3GbXw/xKvXhxX4VOLnkyVVLjhgGSWRKr
-X-Received: by 2002:a05:690c:dca:b0:4fa:3b3:109d with SMTP id db10-20020a05690c0dca00b004fa03b3109dmr15859192ywb.15.1674518466710;
+X-Google-Smtp-Source: AK7set8w42LJgU/4IJRS8VhDrWcIsFcGuBxH74SqvvdFAeXI9VAmaZIqofUJfEOdovX33ejnDGZC
+X-Received: by 2002:a0c:dd09:0:b0:537:6692:b6d8 with SMTP id u9-20020a0cdd09000000b005376692b6d8mr870987qvk.6.1674518466599;
         Mon, 23 Jan 2023 16:01:06 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1674518466; cv=none;
         d=google.com; s=arc-20160816;
-        b=iVISg+hql+kVG+uElxjnPlpF/GjjSTRqPU8hdV3EuZ7o4hxhnjUc9VM+JGNxzRHFeo
-         hPPwveVSv3nJhOCtZNF6OO/qJPGefQCMPKfUrxRplEIsTSrJjcLD8hukHZ0knkvtqRj5
-         sNwmjoFqtJcY5TMZhF1q2BNZpXlEqyyex3ydwhNqXlyzAMAnr3xHCM5nLfm9i2H8X1i2
-         G2Ry4CHVTThAsKpwzvQ1wMMJNHGOQyLYADBa7IYzKc8PWjopZ3cjIfcOnz7895KjILxt
-         0rgECQPjbutqbG9buVdQ/f0JiJSLkOz6dOTPXhAqkugOil5cKOXoke0KN1lBtP6ZNC55
-         TQww==
+        b=aA+i45agkGNrcp1Lzp20jJmYPM0yDxI4BjBBQPVAZS2qYoQ7PPS6njuNK/wKgA8BUY
+         tIBoxKJ8w26Cm0k202CuI6QBnMAOOoqOg+q7waZYbKQL/dS5Wakeoq/b/RT7oUKIw4Mq
+         uHSFPewvOg6U9bXFXJ5ODmtT3h8q49/29sjLquruoy7eYSHASH3x1m5riw/lLUc3puEa
+         UUbk1VZOs/WZz+ZN73XmLUQf/pWsFgswkC1dkf9nlQ0QXHwepMmmO29YA7/607KrKUPz
+         wiaVy8nQz97BXYptXY+yKw33hnKKzXP9cebKsCFpgmHqCz2+Vz1zcIEFe0v+eciaQg+6
+         Asag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=4KPCpSfOS3MJgxEieajg71yzTiyoHQkyPgf80iICoXk=;
-        b=PPjA6r4KBChHTunwm//iepfkBZtPsVIu9wVSxyO3mESBy6D7OXc+uO7P5FMfrfWoZ0
-         z0HYA5cFE6F4bkKhquuDJKfKIrG4DEm7+Y8vk3Y2MURj6IDnUQxJ1RFB4PxnuBT6p9fX
-         g0kUK+pG9BBr4+NXIY5dLOTFqmCJR6p/rGo/nVq7Mxznap+60E+ZKRTVC3kuz0+eHP96
-         jxIx22lHLhhaZiqWpqpjdSjTENX/DZR/NibBFPX4Vf46271WKZamXqbcdw8mxnBGtoY5
-         14PNC3qocxdN8x+7npI4sXJjaccYvNvhq45WHo0XY/4VpPwEGyGyzSNI4cuU20ZLGR+a
-         +N4w==
+        bh=4r5uXH4L8nGIwtYKHW9rJtEDV6tOU9ZjQj8r0cJYWOU=;
+        b=L4RMXexO4MahfrBz0l0l36+VpifL6L8PKgoG793kgg6rAk2lHoklLZkIxJrnvVfmdB
+         MiZdN8XTfOUYJlWda6llKmWJdSb7as3BlUZvi8AE97YFeqgwiDfpT2L5gBwTIMVVOYHT
+         XdxHh0A/SKBpv5wupZJNiyqylksxHD32mqukPjoihANgBED2tU0Xa48qImLAlGNDRphB
+         AaI4Cv69Y/gWxJbnp4g1ZsU4zl2t9bOBa7nh1JT54xG5npB/SIP58xfrbY3XXAJxeRW0
+         +W9GDlkiJnQCK2aV2v4YwfS5xV1R0xLKpIOXHMg11Eg79HmbhznC+hSk1wNKmG2yh8jq
+         OOXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PQ15xiPe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rQc7qOHE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t185-20020a372dc2000000b007069ffd02acsi421769qkh.760.2023.01.23.16.01.06
+        by mx.google.com with ESMTPS id h10-20020a0ceeca000000b004c74b9fbc58si251270qvs.448.2023.01.23.16.01.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 23 Jan 2023 16:01:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PQ15xiPe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rQc7qOHE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pK6kH-0008Gr-Vr; Mon, 23 Jan 2023 19:01:02 -0500
+	id 1pK6kL-0000A3-Kp; Mon, 23 Jan 2023 19:01:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pK6kE-00088V-Ny
- for qemu-arm@nongnu.org; Mon, 23 Jan 2023 19:00:58 -0500
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+ id 1pK6kI-0008Jf-Te
+ for qemu-arm@nongnu.org; Mon, 23 Jan 2023 19:01:02 -0500
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pK6kB-0001rD-FI
- for qemu-arm@nongnu.org; Mon, 23 Jan 2023 19:00:58 -0500
-Received: by mail-pg1-x52c.google.com with SMTP id q9so10246212pgq.5
- for <qemu-arm@nongnu.org>; Mon, 23 Jan 2023 16:00:55 -0800 (PST)
+ id 1pK6kG-0001sX-6v
+ for qemu-arm@nongnu.org; Mon, 23 Jan 2023 19:01:02 -0500
+Received: by mail-pg1-x536.google.com with SMTP id 78so10240312pgb.8
+ for <qemu-arm@nongnu.org>; Mon, 23 Jan 2023 16:00:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4KPCpSfOS3MJgxEieajg71yzTiyoHQkyPgf80iICoXk=;
- b=PQ15xiPemBcAFX7MBj1LRvs+4eHEz4bC9dqtgCa4H9FMD8CNyZff0+jn7G3RYoYrNS
- GJUTsrjedkyyygRoGSb4TudSqaYOPM2uH879/W2VYmINlMBwELjsEvYg4KyfLAjEQ2YN
- H4QjLlmxrAzlxZzEvdckLVZ0lsy5hwLvmNEuEWs2HnzbsUcOPKFgokT6qLF4tez+327n
- x8OxOXKFitlDGmJVI2hSHAziupH+6JF/PQywPDw0zZTxkhQ0/IrAOT3E2FfeS+95B62R
- 0rCoKdb6dy0ggHCcwLmU3SxHntV2pfFPLPXoeInNRXj+I6LCSi9kM/dO7E1TZiV+29oV
- e5Qw==
+ bh=4r5uXH4L8nGIwtYKHW9rJtEDV6tOU9ZjQj8r0cJYWOU=;
+ b=rQc7qOHEqwS03yHpuF5src3a9lAbce51K6d4Cg2WlB4GXvIyTMDCU15R+EWI9UyQ1T
+ xB/WjzWRE1WHUvk7bdcL5XY+xK/s0ikw23n+zJc38rjEEp31c+TsCi7ElnzF9ObjpwNe
+ 5mlPP7cuFKgvQ1/zmlBiUIDq7nd8bQ/t71i7jrrGwXdKjUw7qONYSElZVhjejRayttbM
+ WbV8ZhtJqR9q4y5g2Wp8eL6HVdhvydE7+3jVF6p4bm5H4D8M5I7XCRmG3cQL4XX8aqIU
+ Tn1iJu1764njs0IBdpeHwlpdmguG5729n1XRQAHwv/Aa7avDMcvmwCLIpxtVleR+22fF
+ nnTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4KPCpSfOS3MJgxEieajg71yzTiyoHQkyPgf80iICoXk=;
- b=kgw02kmLgZ1f4Be3uCOgdkGJlD4pdsOm3O7+f0jUT0hKdPxcxIiXALSMPxrclEtkmi
- 5/ETNniKFKxaH7VtD62Ac+TNSxjLjirTYU+LUJ8UFuSd3Wts4Sk5mLH9oiZaADTSgxxS
- sgtNEbU3b/Iwrv1YU9VipicIJQIyi8uu3g8FjKxSj2ObGkP/+0Iz0YTpzad6Bvv0plpD
- EVXGd3xHoBl4hTSmPbnOcZtQKR+CdYKJOK1C3MtgR3l0GGIkOub5PPegn7fQsXvVh7Py
- fdG8IgjYBRJHQMNBH6yN2ko8SFmsyCRgs6ejm0ub74EWPor5nuRCH/qq5SWK1cPW9YCa
- DE+A==
-X-Gm-Message-State: AFqh2kpEGdfpHlQjVQ0N+VukRTiTjSl0/3zZZINir9re1PMWk7ZVjyd5
- JOU10sxOv6j5esJjrZzefaItBw==
-X-Received: by 2002:a05:6a00:430a:b0:574:35fd:379e with SMTP id
- cb10-20020a056a00430a00b0057435fd379emr25538922pfb.2.1674518453705; 
- Mon, 23 Jan 2023 16:00:53 -0800 (PST)
+ bh=4r5uXH4L8nGIwtYKHW9rJtEDV6tOU9ZjQj8r0cJYWOU=;
+ b=x4fKIXvTdY1sjq+W8eB9iAUz1JryRSBPKJTGplxv/nvUwy0SgpCClO7QXhn4X7c4Nq
+ zdu1MJCpfeeEIenqMdxyW+CqTXzhbKUkIODAn3W0rMqnK0849+3yMajhmljxWf09turT
+ cudhhd1LSoqiTMPReaW/nHOj8u6O3AWcL/i9CpqvytRZivU94Qaix4JDRcsA7R20KglA
+ u2iYOJOylU31DwXW61nNWibIVGtdy077pXtD0nuMcN60IP1n1CEBfq5BZXNHYUMj4s2C
+ 3nsInwPr9QR3zpzua8jVtMJRIatGvD5rEIDerFVmjBWROxr6WuKXmKCWkLXqSTVJS+Gk
+ vUIg==
+X-Gm-Message-State: AFqh2kq9ncyhKEsKHui9jEk9dfpsS8EfMRN/3FRDmYL3rzDKJqBW2+1n
+ 2H1Vt/ztgn/HtFGUJoK8faDJOWZBY7XlIPAV
+X-Received: by 2002:a05:6a00:26cc:b0:589:62bd:14d with SMTP id
+ p12-20020a056a0026cc00b0058962bd014dmr25668975pfw.1.1674518458914; 
+ Mon, 23 Jan 2023 16:00:58 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- x21-20020a056a00189500b0058bc37f3d13sm174104pfh.43.2023.01.23.16.00.52
+ x21-20020a056a00189500b0058bc37f3d13sm174104pfh.43.2023.01.23.16.00.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Jan 2023 16:00:53 -0800 (PST)
+ Mon, 23 Jan 2023 16:00:58 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, yier.jin@huawei.com, jonathan.cameron@huawei.com,
  leonardo.garcia@linaro.org
-Subject: [PATCH 04/22] target/arm: Update SCR and HCR for RME
-Date: Mon, 23 Jan 2023 14:00:09 -1000
-Message-Id: <20230124000027.3565716-5-richard.henderson@linaro.org>
+Subject: [PATCH 07/22] target/arm: Introduce ARMSecuritySpace
+Date: Mon, 23 Jan 2023 14:00:12 -1000
+Message-Id: <20230124000027.3565716-8-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230124000027.3565716-1-richard.henderson@linaro.org>
 References: <20230124000027.3565716-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,84 +122,194 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JA+pAFTra2hD
+X-TUID: 6cLzTllM5qQK
 
-Define the missing SCR and HCR bits, allow SCR_NSE and {SCR,HCR}_GPF
-to be set, and invalidate TLBs when NSE changes.
+Introduce both the enumeration and functions to retrieve
+the current state, and state outside of EL3.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h    |  5 +++--
- target/arm/helper.c | 10 ++++++++--
- 2 files changed, 11 insertions(+), 4 deletions(-)
+ target/arm/cpu.h    | 87 +++++++++++++++++++++++++++++++++++----------
+ target/arm/helper.c | 46 ++++++++++++++++++++++++
+ 2 files changed, 115 insertions(+), 18 deletions(-)
 
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 81d5a51b62..9d1a6b346d 100644
+index 26bdd6e465..cfc62d60b0 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -1638,7 +1638,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define HCR_TERR      (1ULL << 36)
- #define HCR_TEA       (1ULL << 37)
- #define HCR_MIOCNCE   (1ULL << 38)
--/* RES0 bit 39 */
-+#define HCR_TME       (1ULL << 39)
- #define HCR_APK       (1ULL << 40)
- #define HCR_API       (1ULL << 41)
- #define HCR_NV        (1ULL << 42)
-@@ -1647,7 +1647,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define HCR_NV2       (1ULL << 45)
- #define HCR_FWB       (1ULL << 46)
- #define HCR_FIEN      (1ULL << 47)
--/* RES0 bit 48 */
-+#define HCR_GPF       (1ULL << 48)
- #define HCR_TID4      (1ULL << 49)
- #define HCR_TICAB     (1ULL << 50)
- #define HCR_AMVOFFEN  (1ULL << 51)
-@@ -1712,6 +1712,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define SCR_TRNDR             (1ULL << 40)
- #define SCR_ENTP2             (1ULL << 41)
- #define SCR_GPF               (1ULL << 48)
-+#define SCR_NSE               (1ULL << 62)
+@@ -2397,23 +2397,53 @@ static inline int arm_feature(CPUARMState *env, int feature)
  
- #define HSTR_TTEE (1 << 16)
- #define HSTR_TJDBX (1 << 17)
+ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp);
+ 
++/*
++ * ARM v9 security states.
++ * The ordering of the enumeration corresponds to the low 2 bits
++ * of the GPI value, and (except for Root) the concat of NSE:NS.
++ */
++
++typedef enum ARMSecuritySpace {
++    ARMSS_Secure     = 0,
++    ARMSS_NonSecure  = 1,
++    ARMSS_Root       = 2,
++    ARMSS_Realm      = 3,
++} ARMSecuritySpace;
++
++/* Return true if @space is secure, in the pre-v9 sense. */
++static inline bool arm_space_is_secure(ARMSecuritySpace space)
++{
++    return space == ARMSS_Secure || space == ARMSS_Root;
++}
++
++/* Return the ARMSecuritySpace for @secure, assuming !RME or EL[0-2]. */
++static inline ARMSecuritySpace arm_secure_to_space(bool secure)
++{
++    return secure ? ARMSS_Secure : ARMSS_NonSecure;
++}
++
+ #if !defined(CONFIG_USER_ONLY)
+-/* Return true if exception levels below EL3 are in secure state,
+- * or would be following an exception return to that level.
+- * Unlike arm_is_secure() (which is always a question about the
+- * _current_ state of the CPU) this doesn't care about the current
+- * EL or mode.
++/**
++ * arm_security_space_below_el3:
++ * @env: cpu context
++ *
++ * Return the security space of exception levels below EL3, following
++ * an exception return to those levels.  Unlike arm_security_space,
++ * this doesn't care about the current EL.
++ */
++ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env);
++
++/**
++ * arm_is_secure_below_el3:
++ * @env: cpu context
++ *
++ * Return true if exception levels below EL3 are in secure state,
++ * or would be following an exception return to those levels.
+  */
+ static inline bool arm_is_secure_below_el3(CPUARMState *env)
+ {
+-    if (arm_feature(env, ARM_FEATURE_EL3)) {
+-        return !(env->cp15.scr_el3 & SCR_NS);
+-    } else {
+-        /* If EL3 is not supported then the secure state is implementation
+-         * defined, in which case QEMU defaults to non-secure.
+-         */
+-        return false;
+-    }
++    ARMSecuritySpace ss = arm_security_space_below_el3(env);
++    return ss == ARMSS_Secure;
+ }
+ 
+ /* Return true if the CPU is AArch64 EL3 or AArch32 Mon */
+@@ -2432,13 +2462,24 @@ static inline bool arm_is_el3_or_mon(CPUARMState *env)
+     return false;
+ }
+ 
+-/* Return true if the processor is in secure state */
++/**
++ * arm_security_space:
++ * @env: cpu context
++ *
++ * Return the current security space of the cpu.
++ */
++ARMSecuritySpace arm_security_space(CPUARMState *env);
++
++/**
++ * arm_is_secure:
++ * @env: cpu context
++ *
++ * Return true if the processor is in secure state.
++ */
+ static inline bool arm_is_secure(CPUARMState *env)
+ {
+-    if (arm_is_el3_or_mon(env)) {
+-        return true;
+-    }
+-    return arm_is_secure_below_el3(env);
++    ARMSecuritySpace ss = arm_security_space(env);
++    return ss == ARMSS_Secure || ss == ARMSS_Root;
+ }
+ 
+ /*
+@@ -2457,11 +2498,21 @@ static inline bool arm_is_el2_enabled(CPUARMState *env)
+ }
+ 
+ #else
++static inline ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env)
++{
++    return ARMSS_NonSecure;
++}
++
+ static inline bool arm_is_secure_below_el3(CPUARMState *env)
+ {
+     return false;
+ }
+ 
++static inline ARMSecuritySpace arm_security_space(CPUARMState *env)
++{
++    return ARMSS_NonSecure;
++}
++
+ static inline bool arm_is_secure(CPUARMState *env)
+ {
+     return false;
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 72b37b7cf1..293f8eda8c 100644
+index 7bd15e9d17..bf78a1d74e 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -1869,6 +1869,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         if (cpu_isar_feature(aa64_hcx, cpu)) {
-             valid_mask |= SCR_HXEN;
-         }
-+        if (cpu_isar_feature(aa64_rme, cpu)) {
-+            valid_mask |= SCR_NSE | SCR_GPF;
-+        }
-     } else {
-         valid_mask &= ~(SCR_RW | SCR_ST);
-         if (cpu_isar_feature(aa32_ras, cpu)) {
-@@ -1898,10 +1901,10 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-     env->cp15.scr_el3 = value;
- 
-     /*
--     * If SCR_EL3.NS changes, i.e. arm_is_secure_below_el3, then
-+     * If SCR_EL3.{NS,NSE} changes, i.e. change of security state,
-      * we must invalidate all TLBs below EL3.
-      */
--    if (changed & SCR_NS) {
-+    if (changed & (SCR_NS | SCR_NSE)) {
-         tlb_flush_by_mmuidx(env_cpu(env), (ARMMMUIdxBit_E10_0 |
-                                            ARMMMUIdxBit_E20_0 |
-                                            ARMMMUIdxBit_E10_1 |
-@@ -5578,6 +5581,9 @@ static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
-         if (cpu_isar_feature(aa64_fwb, cpu)) {
-             valid_mask |= HCR_FWB;
-         }
-+        if (cpu_isar_feature(aa64_rme, cpu)) {
-+            valid_mask |= HCR_GPF;
-+        }
+@@ -12280,3 +12280,49 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
      }
- 
-     if (cpu_isar_feature(any_evt, cpu)) {
+ }
+ #endif
++
++#ifndef CONFIG_USER_ONLY
++ARMSecuritySpace arm_security_space(CPUARMState *env)
++{
++    if (!arm_feature(env, ARM_FEATURE_EL3)) {
++        return ARMSS_NonSecure;
++    }
++
++    /* Check for AArch64 EL3 or AArch32 Mon. */
++    if (is_a64(env)) {
++        if (extract32(env->pstate, 2, 2) == 3) {
++            if (cpu_isar_feature(aa64_rme, env_archcpu(env))) {
++                return ARMSS_Root;
++            } else {
++                return ARMSS_Secure;
++            }
++        }
++    } else {
++        if ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_MON) {
++            return ARMSS_Secure;
++        }
++    }
++
++    return arm_security_space_below_el3(env);
++}
++
++ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env)
++{
++    if (!arm_feature(env, ARM_FEATURE_EL3)) {
++        return ARMSS_NonSecure;
++    }
++
++    /*
++     * Note NSE cannot be set without RME, and NSE & !NS is Reserved.
++     * Ignoring NSE when !NS retains consistency without having to
++     * modify other predicates.
++     */
++    if (!(env->cp15.scr_el3 & SCR_NS)) {
++        return ARMSS_Secure;
++    } else if (env->cp15.scr_el3 & SCR_NSE) {
++        return ARMSS_Realm;
++    } else {
++        return ARMSS_NonSecure;
++    }
++}
++#endif /* !CONFIG_USER_ONLY */
 -- 
 2.34.1
 

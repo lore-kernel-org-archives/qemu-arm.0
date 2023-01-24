@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id v19-20020a05600c429300b003db03725e86sm2566214wmc.8.2023.01.24.10.01.29
+        by smtp.gmail.com with ESMTPSA id g22-20020a05600c309600b003c6b70a4d69sm2498872wmn.42.2023.01.24.10.01.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 24 Jan 2023 10:01:29 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3AD2F1FFBE;
-	Tue, 24 Jan 2023 18:01:28 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id B08311FFB8;
+	Tue, 24 Jan 2023 18:01:27 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -38,53 +38,130 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Li-Wen Hsu <lwhsu@freebsd.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 06/35] .gitlab-ci.d/windows: do not disable opengl
-Date: Tue, 24 Jan 2023 18:00:58 +0000
-Message-Id: <20230124180127.1881110-7-alex.bennee@linaro.org>
+Subject: [PATCH v2 01/35] scripts/ci: update gitlab-runner playbook to use latest runner
+Date: Tue, 24 Jan 2023 18:00:53 +0000
+Message-Id: <20230124180127.1881110-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: XvKLS8h7ySn7
+X-TUID: 0/9Ouq5OgpGj
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+We were using quite and old runner on our machines and running into
+issues with stalling jobs. Gitlab in the meantime now reliably provide
+the latest packaged versions of the runner under a stable URL. This
+update:
 
-The previous patch should have fixed shader compilation.
+  - creates a per-arch subdir for builds
+  - switches from binary tarballs to deb packages
+  - re-uses the same binary for the secondary runner
+  - updates distro check for second to 22.04
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230110132700.833690-3-marcandre.lureau@redhat.com>
-[AJB: tweak commit message]
+Note this script isn't fully idempotent as we end up accumulating
+runners especially during testing. However we also want to be able to
+run twice with different GitLab keys (e.g. project and personal) so I
+think we just have to be mindful of that during testing.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- .gitlab-ci.d/windows.yml | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/.gitlab-ci.d/windows.yml b/.gitlab-ci.d/windows.yml
-index a1d5790580..cf445b77f6 100644
---- a/.gitlab-ci.d/windows.yml
-+++ b/.gitlab-ci.d/windows.yml
-@@ -71,7 +71,7 @@ msys2-64bit:
-   # for the msys2 64-bit job, due to the build could not complete within
-   # the project timeout.
-   - ..\msys64\usr\bin\bash -lc '../configure --target-list=x86_64-softmmu
--      --without-default-devices --disable-opengl'
-+      --without-default-devices'
-   - ..\msys64\usr\bin\bash -lc 'make'
-   # qTests don't run successfully with "--without-default-devices",
-   # so let's exclude the qtests from CI for now.
-@@ -113,8 +113,7 @@ msys2-32bit:
-   - $env:MSYS = 'winsymlinks:native' # Enable native Windows symlink
-   - mkdir output
-   - cd output
--  - ..\msys64\usr\bin\bash -lc '../configure --target-list=ppc64-softmmu
--        --disable-opengl'
-+  - ..\msys64\usr\bin\bash -lc '../configure --target-list=ppc64-softmmu'
-   - ..\msys64\usr\bin\bash -lc 'make'
-   - ..\msys64\usr\bin\bash -lc 'make check MTESTARGS=\"--no-suite qtest\" ||
-                                 { cat meson-logs/testlog.txt; exit 1; }'
+---
+v2
+  - only register aarch32 runner, move service start post both registers
+  - tested on s390x
+---
+ scripts/ci/setup/gitlab-runner.yml | 56 +++++++-----------------------
+ scripts/ci/setup/vars.yml.template |  2 --
+ 2 files changed, 13 insertions(+), 45 deletions(-)
+
+diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
+index 33128be85d..95d4199c03 100644
+--- a/scripts/ci/setup/gitlab-runner.yml
++++ b/scripts/ci/setup/gitlab-runner.yml
+@@ -50,60 +50,30 @@
+ 
+     - name: Download the matching gitlab-runner
+       get_url:
+-        dest: /usr/local/bin/gitlab-runner
+-        url: "https://s3.amazonaws.com/gitlab-runner-downloads/v{{ gitlab_runner_version  }}/binaries/gitlab-runner-{{ gitlab_runner_os }}-{{ gitlab_runner_arch }}"
+-        owner: gitlab-runner
+-        group: gitlab-runner
+-        mode: u=rwx,g=rwx,o=rx
+-
+-    - name: Register the gitlab-runner
+-      command: "/usr/local/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list {{ ansible_facts[\"architecture\"] }},{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
+-
+-    - name: Install the gitlab-runner service using its own functionality
+-      command: /usr/local/bin/gitlab-runner install --user gitlab-runner --working-directory /home/gitlab-runner
+-      register: gitlab_runner_install_service_result
+-      failed_when: "gitlab_runner_install_service_result.rc != 0 and \"already exists\" not in gitlab_runner_install_service_result.stderr"
++        dest: "/root/"
++        url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_{{ gitlab_runner_arch }}.deb"
+ 
+-    - name: Enable the gitlab-runner service
+-      service:
+-        name: gitlab-runner
+-        state: started
+-        enabled: yes
++    - name: Install gitlab-runner via package manager
++      apt: deb="/root/gitlab-runner_{{ gitlab_runner_arch }}.deb"
+ 
+-    - name: Download secondary gitlab-runner
+-      get_url:
+-        dest: /usr/local/bin/gitlab-runner-arm
+-        url: "https://s3.amazonaws.com/gitlab-runner-downloads/v{{ gitlab_runner_version  }}/binaries/gitlab-runner-{{ gitlab_runner_os }}-arm"
+-        owner: gitlab-runner
+-        group: gitlab-runner
+-        mode: u=rwx,g=rwx,o=rx
+-      when:
+-        - ansible_facts['distribution'] == 'Ubuntu'
+-        - ansible_facts['architecture'] == 'aarch64'
+-        - ansible_facts['distribution_version'] == '20.04'
++    - name: Register the gitlab-runner
++      command: "/usr/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list {{ ansible_facts[\"architecture\"] }},{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
+ 
++    # The secondary runner will still run under the single gitlab-runner service
+     - name: Register secondary gitlab-runner
+-      command: "/usr/local/bin/gitlab-runner-arm register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list aarch32,{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
++      command: "/usr/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list aarch32,{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
+       when:
+         - ansible_facts['distribution'] == 'Ubuntu'
+         - ansible_facts['architecture'] == 'aarch64'
+-        - ansible_facts['distribution_version'] == '20.04'
++        - ansible_facts['distribution_version'] == '22.04'
+ 
+-    - name: Install the secondary gitlab-runner service using its own functionality
+-      command: /usr/local/bin/gitlab-runner-arm install --user gitlab-runner --working-directory /home/gitlab-runner/arm -n gitlab-runner-arm
++    - name: Install the gitlab-runner service using its own functionality
++      command: "/usr/bin/gitlab-runner install --user gitlab-runner --working-directory /home/gitlab-runner"
+       register: gitlab_runner_install_service_result
+       failed_when: "gitlab_runner_install_service_result.rc != 0 and \"already exists\" not in gitlab_runner_install_service_result.stderr"
+-      when:
+-        - ansible_facts['distribution'] == 'Ubuntu'
+-        - ansible_facts['architecture'] == 'aarch64'
+-        - ansible_facts['distribution_version'] == '20.04'
+ 
+-    - name: Enable the secondary gitlab-runner service
++    - name: Enable the gitlab-runner service
+       service:
+-        name: gitlab-runner-arm
++        name: gitlab-runner
+         state: started
+         enabled: yes
+-      when:
+-        - ansible_facts['distribution'] == 'Ubuntu'
+-        - ansible_facts['architecture'] == 'aarch64'
+-        - ansible_facts['distribution_version'] == '20.04'
+diff --git a/scripts/ci/setup/vars.yml.template b/scripts/ci/setup/vars.yml.template
+index e48089761f..4b355fb80f 100644
+--- a/scripts/ci/setup/vars.yml.template
++++ b/scripts/ci/setup/vars.yml.template
+@@ -1,5 +1,3 @@
+-# The version of the gitlab-runner to use
+-gitlab_runner_version: 13.12.0
+ # The URL of the gitlab server to use, usually https://gitlab.com unless you're
+ # using a private GitLab instance
+ gitlab_runner_server_url: https://gitlab.com
 -- 
 2.34.1

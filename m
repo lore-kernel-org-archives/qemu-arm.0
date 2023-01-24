@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id a5-20020a5d5705000000b002bdbde1d3absm2334399wrv.78.2023.01.24.10.06.59
+        by smtp.gmail.com with ESMTPSA id a18-20020a056000101200b002be25db0b7bsm2469169wrx.10.2023.01.24.10.06.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 24 Jan 2023 10:07:02 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 895FB1FFD3;
-	Tue, 24 Jan 2023 18:01:31 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id E4D8F1FFCF;
+	Tue, 24 Jan 2023 18:01:30 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -39,81 +39,45 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Li-Wen Hsu <lwhsu@freebsd.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Emilio Cota <cota@braap.org>
-Subject: [PATCH v2 33/35] tcg: exclude non-memory effecting helpers from instrumentation
-Date: Tue, 24 Jan 2023 18:01:25 +0000
-Message-Id: <20230124180127.1881110-34-alex.bennee@linaro.org>
+Subject: [PATCH v2 27/35] util/qht: add missing atomic_set(hashes[i])
+Date: Tue, 24 Jan 2023 18:01:19 +0000
+Message-Id: <20230124180127.1881110-28-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ulCo61ungRVk
+X-TUID: cNhX1Uc+HzP7
 
 From: Emilio Cota <cota@braap.org>
 
-There are actually a whole bunch of helpers that don't affect memory
-that we shouldn't instrument. They are helpfully identified by the
-TCG_CALL_NO_SIDE_EFFECTS flag which marks out lookup_tb_ptr as well as
-a lot of the maths helpers. To avoid the string compare we introduce a
-new flag for plugin internals so we skip that too.
+We forgot to add this one in "a890643958 util/qht: atomically set b->hashes".
 
-Related: #1381
+Detected with tsan.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Emilio Cota <cota@braap.org>
-Message-Id: <20230108164731.61469-4-cota@braap.org>
-[AJB: updated to skip all no SE plugins, add flag for plugin helper]
+Message-Id: <20230111151628.320011-3-cota@braap.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - use TCG_CALL_NO_SIDE_EFFECTS as suggested by rth
-  - add flag for plugin specific helpers
----
- accel/tcg/plugin-helpers.h | 4 ++--
- include/tcg/tcg.h          | 2 ++
- tcg/tcg.c                  | 6 ++++--
- 3 files changed, 8 insertions(+), 4 deletions(-)
+ util/qht.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/accel/tcg/plugin-helpers.h b/accel/tcg/plugin-helpers.h
-index 9829abe4a9..8e685e0654 100644
---- a/accel/tcg/plugin-helpers.h
-+++ b/accel/tcg/plugin-helpers.h
-@@ -1,4 +1,4 @@
- #ifdef CONFIG_PLUGIN
--DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb, TCG_CALL_NO_RWG, void, i32, ptr)
--DEF_HELPER_FLAGS_4(plugin_vcpu_mem_cb, TCG_CALL_NO_RWG, void, i32, i32, i64, ptr)
-+DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, ptr)
-+DEF_HELPER_FLAGS_4(plugin_vcpu_mem_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, i32, i64, ptr)
- #endif
-diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
-index 6f497172f8..8dc291d030 100644
---- a/include/tcg/tcg.h
-+++ b/include/tcg/tcg.h
-@@ -405,6 +405,8 @@ typedef TCGv_ptr TCGv_env;
- #define TCG_CALL_NO_SIDE_EFFECTS    0x0004
- /* Helper is G_NORETURN.  */
- #define TCG_CALL_NO_RETURN          0x0008
-+/* Helper is part of Plugins.  */
-+#define TCG_CALL_PLUGIN             0x0010
+diff --git a/util/qht.c b/util/qht.c
+index 065fc501f4..15866299e6 100644
+--- a/util/qht.c
++++ b/util/qht.c
+@@ -688,7 +688,7 @@ static inline void qht_bucket_remove_entry(struct qht_bucket *orig, int pos)
+     int i;
  
- /* convenience version of most used call flags */
- #define TCG_CALL_NO_RWG         TCG_CALL_NO_READ_GLOBALS
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index d502327be2..fd557d55d3 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -1674,8 +1674,10 @@ void tcg_gen_callN(void *func, TCGTemp *ret, int nargs, TCGTemp **args)
-     op = tcg_op_alloc(INDEX_op_call, total_args);
- 
- #ifdef CONFIG_PLUGIN
--    /* detect non-plugin helpers */
--    if (tcg_ctx->plugin_insn && unlikely(strncmp(info->name, "plugin_", 7))) {
-+    /* Flag helpers that may affect guest state */
-+    if (tcg_ctx->plugin_insn &&
-+        !(info->flags & TCG_CALL_PLUGIN) &&
-+        !(info->flags & TCG_CALL_NO_SIDE_EFFECTS)) {
-         tcg_ctx->plugin_insn->calls_helpers = true;
+     if (qht_entry_is_last(orig, pos)) {
+-        orig->hashes[pos] = 0;
++        qatomic_set(&orig->hashes[pos], 0);
+         qatomic_set(&orig->pointers[pos], NULL);
+         return;
      }
- #endif
 -- 
 2.34.1

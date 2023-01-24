@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id d6-20020a5d6dc6000000b002423edd7e50sm2350815wrz.32.2023.01.24.10.06.57
+        by smtp.gmail.com with ESMTPSA id v1-20020a5d4b01000000b002be53aa2260sm2707513wrq.117.2023.01.24.10.06.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jan 2023 10:06:58 -0800 (PST)
+        Tue, 24 Jan 2023 10:06:59 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 039921FFBD;
+	by zen.linaroharston (Postfix) with ESMTP id AEFF01FFCD;
 	Tue, 24 Jan 2023 18:01:30 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -37,91 +37,68 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 19/35] docs: add hotlinks to about preface text
-Date: Tue, 24 Jan 2023 18:01:11 +0000
-Message-Id: <20230124180127.1881110-20-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>,
+	Robert Henry <robhenry@microsoft.com>,
+	Aaron Lindsay <aaron@os.amperecomputing.com>
+Subject: [PATCH v2 25/35] tests/tcg: add memory-sve test for aarch64
+Date: Tue, 24 Jan 2023 18:01:17 +0000
+Message-Id: <20230124180127.1881110-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 9Ze+Sqkm5O5E
+X-TUID: iWTH8YeaXHpc
 
-Make it easier to navigate the documentation.
+This will be helpful in debugging problems with tracking SVE memory
+accesses via the TCG plugins system.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Robert Henry <robhenry@microsoft.com>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
 ---
- docs/about/index.rst  | 16 ++++++++--------
- docs/system/index.rst |  2 ++
- docs/tools/index.rst  |  2 ++
- docs/user/index.rst   |  2 ++
- 4 files changed, 14 insertions(+), 8 deletions(-)
+ tests/tcg/aarch64/Makefile.softmmu-target | 7 +++++++
+ tests/tcg/aarch64/system/boot.S           | 3 ++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/docs/about/index.rst b/docs/about/index.rst
-index 5bea653c07..bae1309cc6 100644
---- a/docs/about/index.rst
-+++ b/docs/about/index.rst
-@@ -5,19 +5,19 @@ About QEMU
- QEMU is a generic and open source machine emulator and virtualizer.
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index a1368905f5..df9747bae8 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -36,6 +36,13 @@ config-cc.mak: Makefile
  
- QEMU can be used in several different ways. The most common is for
--"system emulation", where it provides a virtual model of an
-+:ref:`System Emulation`, where it provides a virtual model of an
- entire machine (CPU, memory and emulated devices) to run a guest OS.
--In this mode the CPU may be fully emulated, or it may work with
--a hypervisor such as KVM, Xen, Hax or Hypervisor.Framework to
--allow the guest to run directly on the host CPU.
-+In this mode the CPU may be fully emulated, or it may work with a
-+hypervisor such as KVM, Xen, Hax or Hypervisor.Framework to allow the
-+guest to run directly on the host CPU.
+ memory: CFLAGS+=-DCHECK_UNALIGNED=1
  
--The second supported way to use QEMU is "user mode emulation",
-+The second supported way to use QEMU is :ref:`User Mode Emulation`,
- where QEMU can launch processes compiled for one CPU on another CPU.
- In this mode the CPU is always emulated.
- 
--QEMU also provides a number of standalone commandline utilities,
--such as the ``qemu-img`` disk image utility that allows you to create,
--convert and modify disk images.
-+QEMU also provides a number of standalone :ref:`command line
-+utilities<Tools>`, such as the ``qemu-img`` disk image utility that
-+allows you to create, convert and modify disk images.
- 
- .. toctree::
-    :maxdepth: 2
-diff --git a/docs/system/index.rst b/docs/system/index.rst
-index e3695649c5..282b6ffb56 100644
---- a/docs/system/index.rst
-+++ b/docs/system/index.rst
-@@ -1,3 +1,5 @@
-+.. _System Emulation:
++memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
 +
- ----------------
- System Emulation
- ----------------
-diff --git a/docs/tools/index.rst b/docs/tools/index.rst
-index 1edd5a8054..2151adcf78 100644
---- a/docs/tools/index.rst
-+++ b/docs/tools/index.rst
-@@ -1,3 +1,5 @@
-+.. _Tools:
++memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3 -fno-tree-loop-distribute-patterns
 +
- -----
- Tools
- -----
-diff --git a/docs/user/index.rst b/docs/user/index.rst
-index 2c4e29f3db..782d27cda2 100644
---- a/docs/user/index.rst
-+++ b/docs/user/index.rst
-@@ -1,3 +1,5 @@
-+.. _User Mode Emulation:
++TESTS+=memory-sve
 +
- -------------------
- User Mode Emulation
- -------------------
+ # Running
+ QEMU_BASE_MACHINE=-M virt -cpu max -display none
+ QEMU_OPTS+=$(QEMU_BASE_MACHINE) -semihosting-config enable=on,target=native,chardev=output -kernel
+diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
+index e190b1efa6..f136363d2a 100644
+--- a/tests/tcg/aarch64/system/boot.S
++++ b/tests/tcg/aarch64/system/boot.S
+@@ -179,12 +179,13 @@ __start:
+ 	isb
+ 
+ 	/*
+-	 * Enable FP registers. The standard C pre-amble will be
++	 * Enable FP/SVE registers. The standard C pre-amble will be
+ 	 * saving these and A-profile compilers will use AdvSIMD
+ 	 * registers unless we tell it not to.
+ 	*/
+ 	mrs	x0, cpacr_el1
+ 	orr	x0, x0, #(3 << 20)
++	orr	x0, x0, #(3 << 16)
+ 	msr	cpacr_el1, x0
+ 
+ 	/* Setup some stack space and enter the test code.
 -- 
 2.34.1

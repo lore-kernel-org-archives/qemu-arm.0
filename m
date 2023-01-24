@@ -1,143 +1,120 @@
-Received: by 2002:a17:906:9f27:b0:7ad:ca5a:aee3 with SMTP id fy39csp2199563ejc;
-        Tue, 1 Nov 2022 14:20:15 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6UWaB0A0kVCSDTUPGkPP4/OXPvnshoqIUr801qfppK1igRXta636EVw+SbECJR2m5HPRua
-X-Received: by 2002:ac8:5746:0:b0:39c:deac:c69c with SMTP id 6-20020ac85746000000b0039cdeacc69cmr17055133qtx.292.1667337615501;
-        Tue, 01 Nov 2022 14:20:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1667337615; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3915634ejc;
+        Tue, 24 Jan 2023 12:07:08 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvFSMOylFsykzZAdoZ437VJRbFsGhNYRypOJOvCmgOlrwXcaDlU4jbCzmdW/8hTXYLQKPaF
+X-Received: by 2002:a05:6214:3b01:b0:534:2344:e1ff with SMTP id nm1-20020a0562143b0100b005342344e1ffmr49248007qvb.17.1674590827941;
+        Tue, 24 Jan 2023 12:07:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674590827; cv=none;
         d=google.com; s=arc-20160816;
-        b=ucpzBPL6ZyLzfwhDnKzUE3qAp1t8rjaiBE8cMoujWqJ+qPFm1Ap7TFC3nvsFc7sV3m
-         IFzwkU2ebHuBHccBY0WZsGMS7q1S76vAIpN40hNVRlgfwZM0n7ZQcfiAXWrM1cGXEtUB
-         1rukL3Hr9puL7N/GTYEnKJxnZGub5Rq6iotcJQTHXFi0GNkU4wPB0PvvTb9icl64ya+O
-         x2udN3FIP1gBFus155hlfoGLLPngGSizrdG66bFocfGigSZXz+Q73RiuBF9SbTjkH3Ks
-         TLbktDJhoHBMI6Mi7L0Itm3vLudTD2/u2LD1DGZwqlEn5yQrsP6I362sMPpupiSLnM3u
-         eMvw==
+        b=pt0q4+I9l1+617U7Dx3jg2Xuptet5GpNlC0k0BfgvzlMIsF7nMezGOBKL3JAbjCqCp
+         0P58K7i0xAfkO8Ula0dNSj4/HW10vGBEQ/Rv0RlivZbdB2zbwMMmkFZfUoi2CpB6zG8M
+         HARVo+E9/dZ7nV1Qj9LTx22W67JPNNveR+hWiCF0cRlTCLnGDA+5k/jTZ6Q17ciRnQ+d
+         nZ/hygeCol50x9WUAw3kAxOgZTiEanZ2rTeGl+I2Yd8kZ6Z1G7RIn2y4rNRe/ydUC8qW
+         x+ifCtDpD8GcEDVP6OPm6RokU/MBSeRAh4DWYvi1QfhB7tXb/nKHzH5JHh3y3TP4OFCT
+         7uZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:ui-outboundreport
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=cWGf89HPc1+fYeeUcP+wFHLk0HyMzZdNLhY8+gWxLBg=;
-        b=jAa5BnZ0Qkt53T3IOh6ai3dG09jgx6BCJXQp5JUHQB1o+fIci6nJ1qp5R3FC1gfKIs
-         5jjaGfQOWtBL82NoZctLRxopuRQdShH9X8Rqn1/A/DJFX5WDxzZbiJaEWXz07NnVRi9V
-         n0ZyV/tGh5la4ywNBHrlyQbA2wIesK+svWT1TOVGuWLm4ZsA2cHW/BtwEAyQhvW3F64J
-         umx3aC4zOeCuu5sYvXpNq89YSScpGD8SNcA/p1/O+SNZd+IW6c3ZvKUtLAGm6UkCXhej
-         JAYHpTZkisxY//9T+hUAtlVsBBrbbm9cZoI9V3Sg02/y0ATvMotJOenxXchC7k7IBSbs
-         EO/A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=t0W82eVkxLwYifr8Md1HSizhjhSvEnFURdJQhGghNKw=;
+        b=vKO76ei2BoIcgio2/+n5M6D9ZGjERMPNj3E4RFMxL2tMLw8cHu10dSNNfpqirl93ql
+         yDXcNeejngVS31HsRnyewwPv4OhiL9C3P2YOOIZPEd8Lk9g3UsgZCGeiMu5OKfAqDuLX
+         WKRW5QE9vXe8xE/GZRJcOvt2Ksw3qvJ6byHdIhqHdPYb08n5fSoNj/vZVGc3LZb8YnY3
+         1UYE9QympNcyGkAI1CE9NZz0Y4gNfkCJDCUxXfBoWu72ScFrJCtOE2Tccyvmm/pe7aHw
+         xTjvUH9Uu0vhF34WGFPs0yHm8FE+DSE65nghRn0tuxRvMxqJK8f9T6LgXD0zIMHT6HXg
+         0CUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b="d9Ea5n/5";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6-20020a05622a170600b003a5258b1022si5397310qtk.730.2022.11.01.14.20.15
+        by mx.google.com with ESMTPS id lx9-20020a0562145f0900b005376ef97535si825606qvb.467.2023.01.24.12.07.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Nov 2022 14:20:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Jan 2023 12:07:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b="d9Ea5n/5";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1opyfL-0003jU-Av; Tue, 01 Nov 2022 17:19:23 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pKPUQ-0000hL-PY; Tue, 24 Jan 2023 15:01:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1opyfJ-0003ii-8U; Tue, 01 Nov 2022 17:19:21 -0400
-Received: from mout.gmx.net ([212.227.15.15])
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1pKPUH-0000Zg-CJ
+ for qemu-arm@nongnu.org; Tue, 24 Jan 2023 15:01:48 -0500
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1opyfH-0001eW-JS; Tue, 01 Nov 2022 17:19:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
- t=1667337556; bh=cWGf89HPc1+fYeeUcP+wFHLk0HyMzZdNLhY8+gWxLBg=;
- h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
- b=d9Ea5n/5R3iBUTDN/I6/8TcdAOl6zrnwCooDzESRJDIeMmasGqPKBk0CDrx/q2wDd
- VDvRkBodi/q7GsybQcjMe5YQ6MR717RAVbbweXTgR1X6oi0x/vy8OqGgxCU/M7Zw2N
- +P88a6aw5NzJjjTN/srpBVAWe52htN79Fd2kLb68b1h7ATVVXeXYf5JCC0jyTdP2ql
- qyU3IZCThtkH0Qlc0nykQJkmCpQhuHSKDKCMPvYUK6jXFFYUSnvtef8K99OzFG04vZ
- IMgPLqRPOZCWBxCSx4Dqp+LCptCPMaqs1k0Iaydc6lnlQ79307p+kTTSZSv7DVCC3f
- /lm6rxqCAYo4Q==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from localhost ([95.115.113.189]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1My36T-1pFUIV2bp1-00zV4V; Tue, 01
- Nov 2022 22:19:16 +0100
-Message-ID: <7fbf8be0-a067-4c1f-f7b0-3d090171a7e7@gmx.de>
-Date: Tue, 1 Nov 2022 22:19:16 +0100
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1pKPUF-0002v9-3M
+ for qemu-arm@nongnu.org; Tue, 24 Jan 2023 15:01:44 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id A9D56260839;
+ Tue, 24 Jan 2023 21:01:40 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id n7pddvEkiQHT; Tue, 24 Jan 2023 21:01:38 +0100 (CET)
+Received: from puchatek.com (83.8.199.139.ipv4.supernova.orange.pl
+ [83.8.199.139])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 48B85260084;
+ Tue, 24 Jan 2023 21:01:38 +0100 (CET)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: Radoslaw Biernacki <rad@semihalf.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>
+Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH] sbsa-ref: remove cortex-a76 from list of supported cpus
+Date: Tue, 24 Jan 2023 21:01:13 +0100
+Message-Id: <20230124200113.1768552-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [PATCH qemu.git 11/11] hw/timer/imx_epit: rework CR write handling
-Content-Language: de-DE, en-US
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <166718254546.5893.5075929684621857903-11@git.sr.ht>
- <3ea4f10d-e807-b48d-0eda-19d70763c960@linaro.org>
-From: Axel Heider <axelheider@gmx.de>
-In-Reply-To: <3ea4f10d-e807-b48d-0eda-19d70763c960@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:2pHJjjxQAPgBHmLzZ3rJxY5ED/BXkQjehuI4cWlKMmbfsYeIPz4
- P7jHH+J5atZXRDjOeKCDVEO+0I74kxJbzWDt63+3nPZKTVs/ryCo0n8Krcj47mvCyHaadPW
- 6CVf5a9sq+T9Yz7jj7peNg9z7StEqN2tk5d3IjZc4Eex5I35nodWRAnZF6ep6hKxo70GQuk
- Wbe2kXF0C83nn0VQ3cjbQ==
-UI-OutboundReport: notjunk:1;M01:P0:/V1TB5sVSW0=;c/nrfSd2VjgCLyTIIhQr+bn3Y5O
- V5Od076W3cc3vWGifY49z9MyxgFCN2iEv+umBnQbmFUuDAeoqS6+swG8o2VlchLOqt+SI0kad
- ECdO93Y9BuMlC2HTM9628rebrTlc89Lc7JIKqJgZ8GtEBSebKv6zHJ5o1HQ/x6B9D5xVFcaXj
- BB8Bn9nRMURoSsEgFvZUNL99RLYGGK9pJsdgqYqfKLnPAfVJ1cbKksW0Ox9EbYXmDiFjgywPB
- t1lhutZ3sAOJ3hs4IY/KDIsmF80XJXFZrly8ks58FRmT4179bq/FyB6AhkMgxbA39Rde5nisf
- 9+Xt4VFJl9ElxHfIAgBCqdDLFkarcE0K3JUA3TJVvWpQUFZTiPlt70Rs198F6yAU+ulz1QTJ1
- QEw9BiC6RNXRjRiokykgK6eLjbHZo5RFN3xDcS85AQLU2n5B7lhJtWQ1lApG37nPJNZd6kuc3
- 1A3qDPxlPvz0wdD3/65p64iCuMzTLtcCwHwKjmwglbMU+cx7VUZUDSz7ADhJRhfOURveNgw5E
- eUsFWGYOcUFhMGNcQQYkzN6XA0Pi8dVOvKgD2vNgPmfCdwNjbEdrKAI8kAQzaMmbzEVJvZwqh
- NvvkSXz1TsxewLoxPxSDWuhA5IkTHwIZYfn4qNW9FY/ZM6iL8rXC8KRyJGMfaVMXHj9eFON8V
- P5m7JJ0izJX4ht7dBGtA15gn9s2BnuJHX8PoofR9NblCe+f2qtKXCS6jNi8eDEy2WoiQcoJFx
- KpOYY7Tj0W7YHOVHv/Jx1J4SbWVUOxuyLok6nOkFSAR9CpGePVZGK8ylwrSoerP7YC786HI7t
- f23oj0NU8/+UL3ObCf1HRJ8MyfOWGLO3WBP4ovtwbc+/SEZVtKilAlD0dRwIp/rqbKyg4bjrs
- iSTi5TMbUbJsP+3foTA9VOgTY7dsOov8gryVVosEbEE/a5RBlkhF6TwS7Ntfsc0i4YFpxq06f
- GLB4/P9A1VhX3GbrPzl7yuiN85o=
-Received-SPF: pass client-ip=212.227.15.15; envelope-from=axelheider@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Sender: "Qemu-devel" <qemu-devel-bounces@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AOgA/PeFRxzs
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PS+RI2PqT2Un
 
+Cortex-A76 supports 40bits of address space. sbsa-ref's memory
+starts above this limit.
 
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ hw/arm/sbsa-ref.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-=2D------- Original Message --------
-> From: Philippe Mathieu-Daud=C3=A9 [mailto:philmd@linaro.org]
->
->> - simplify code, improve comments
->> - fix https://gitlab.com/qemu-project/qemu/-/issues/1263
->
-> This doesn't match GitLab issues closing pattern:
-> https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#defa=
-ult-closing-pattern
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 4bb444684f..67c1f68c54 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -145,7 +145,6 @@ static const int sbsa_ref_irqmap[] = {
+ static const char * const valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("cortex-a57"),
+     ARM_CPU_TYPE_NAME("cortex-a72"),
+-    ARM_CPU_TYPE_NAME("cortex-a76"),
+     ARM_CPU_TYPE_NAME("neoverse-n1"),
+     ARM_CPU_TYPE_NAME("max"),
+ };
+-- 
+2.39.0
 
-I will change this to use "fix #1263" then. But the issue git closed alrea=
-dy
-from an earlier patch that got merged a few days ago.
-
-Axel

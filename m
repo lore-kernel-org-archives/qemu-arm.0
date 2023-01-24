@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id y4-20020adfd084000000b0028e55b44a99sm2366949wrh.17.2023.01.24.10.06.56
+        by smtp.gmail.com with ESMTPSA id o24-20020a05600c511800b003d9de0c39fasm19331828wms.36.2023.01.24.10.06.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jan 2023 10:06:56 -0800 (PST)
+        Tue, 24 Jan 2023 10:06:58 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 959431FFCC;
-	Tue, 24 Jan 2023 18:01:30 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id DA12B1FFC8;
+	Tue, 24 Jan 2023 18:01:29 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -37,63 +37,53 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
-	Bin Meng <bmeng.cn@gmail.com>
-Subject: [PATCH v2 24/35] semihosting: add O_BINARY flag in host_open for NT compatibility
-Date: Tue, 24 Jan 2023 18:01:16 +0000
-Message-Id: <20230124180127.1881110-25-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 18/35] MAINTAINERS: Fix the entry for tests/tcg/nios2
+Date: Tue, 24 Jan 2023 18:01:10 +0000
+Message-Id: <20230124180127.1881110-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: y6XRZbud4ESL
+X-TUID: KkPIwioRAX69
 
-From: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
+From: Thomas Huth <thuth@redhat.com>
 
-Windows open(2) implementation opens files in text mode by default and
-needs a Windows-only O_BINARY flag to open files as binary. QEMU already
-knows about that flag in osdep and it is defined to 0 on non-Windows,
-so we can just add it to the host_flags for better compatibility.
+tests/tcg/nios2/Makefile.target has accidentally been added
+to the Microblaze section. Move it into the correct nios2
+section instead - and while we're at it, it should also cover
+the whole folder, and not only the Makefile.
 
-Signed-off-by: Evgeny Iakovlev <eiakovlev@linux.microsoft.com>
+Fixes: 67f80eb4d0 ("tests/tcg: enable debian-nios2-cross for test building")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
-Message-Id: <20230106102018.20520-1-eiakovlev@linux.microsoft.com>
+Message-Id: <20230119130326.2030297-1-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- semihosting/syscalls.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/semihosting/syscalls.c b/semihosting/syscalls.c
-index ba28194b59..e89992cf90 100644
---- a/semihosting/syscalls.c
-+++ b/semihosting/syscalls.c
-@@ -253,7 +253,7 @@ static void host_open(CPUState *cs, gdb_syscall_complete_cb complete,
- {
-     CPUArchState *env G_GNUC_UNUSED = cs->env_ptr;
-     char *p;
--    int ret, host_flags;
-+    int ret, host_flags = O_BINARY;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c581c11a64..629ab5bbb1 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -240,7 +240,6 @@ F: target/microblaze/
+ F: hw/microblaze/
+ F: disas/microblaze.c
+ F: tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
+-F: tests/tcg/nios2/Makefile.target
  
-     ret = validate_lock_user_string(&p, cs, fname, fname_len);
-     if (ret < 0) {
-@@ -262,11 +262,11 @@ static void host_open(CPUState *cs, gdb_syscall_complete_cb complete,
-     }
+ MIPS TCG CPUs
+ M: Philippe Mathieu-Daudé <philmd@linaro.org>
+@@ -262,6 +261,7 @@ F: hw/nios2/
+ F: disas/nios2.c
+ F: configs/devices/nios2-softmmu/default.mak
+ F: tests/docker/dockerfiles/debian-nios2-cross.d/build-toolchain.sh
++F: tests/tcg/nios2/
  
-     if (gdb_flags & GDB_O_WRONLY) {
--        host_flags = O_WRONLY;
-+        host_flags |= O_WRONLY;
-     } else if (gdb_flags & GDB_O_RDWR) {
--        host_flags = O_RDWR;
-+        host_flags |= O_RDWR;
-     } else {
--        host_flags = O_RDONLY;
-+        host_flags |= O_RDONLY;
-     }
-     if (gdb_flags & GDB_O_CREAT) {
-         host_flags |= O_CREAT;
+ OpenRISC TCG CPUs
+ M: Stafford Horne <shorne@gmail.com>
 -- 
 2.34.1

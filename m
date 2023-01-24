@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id l36-20020a05600c08a400b003da28dfdedcsm3115927wmp.5.2023.01.24.10.06.57
+        by smtp.gmail.com with ESMTPSA id h13-20020a05600c2cad00b003cfa622a18asm15401351wmc.3.2023.01.24.10.06.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jan 2023 10:06:58 -0800 (PST)
+        Tue, 24 Jan 2023 10:06:59 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 08B791FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id BDE071FFD9;
 	Tue, 24 Jan 2023 18:01:31 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -37,47 +37,45 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Emilio Cota <cota@braap.org>
-Subject: [PATCH v2 28/35] thread: de-const qemu_spin_destroy
-Date: Tue, 24 Jan 2023 18:01:20 +0000
-Message-Id: <20230124180127.1881110-29-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 35/35] plugins: Iterate on cb_lists in qemu_plugin_user_exit
+Date: Tue, 24 Jan 2023 18:01:27 +0000
+Message-Id: <20230124180127.1881110-36-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: zfAVBXRbl83U
+X-TUID: C/2Xd0aXRJ6K
 
-From: Emilio Cota <cota@braap.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Emilio Cota <cota@braap.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230111151628.320011-4-cota@braap.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Rather than iterate over all plugins for all events,
+iterate over plugins that have registered a given event.
+
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230117035701.168514-4-richard.henderson@linaro.org>
 ---
- include/qemu/thread.h | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ plugins/core.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/include/qemu/thread.h b/include/qemu/thread.h
-index 7c6703bce3..7841084199 100644
---- a/include/qemu/thread.h
-+++ b/include/qemu/thread.h
-@@ -237,11 +237,10 @@ static inline void qemu_spin_init(QemuSpin *spin)
- #endif
- }
- 
--/* const parameter because the only purpose here is the TSAN annotation */
--static inline void qemu_spin_destroy(const QemuSpin *spin)
-+static inline void qemu_spin_destroy(QemuSpin *spin)
- {
- #ifdef CONFIG_TSAN
--    __tsan_mutex_destroy((void *)spin, __tsan_mutex_not_static);
-+    __tsan_mutex_destroy(spin, __tsan_mutex_not_static);
- #endif
- }
- 
+diff --git a/plugins/core.c b/plugins/core.c
+index 728bacef95..e04ffa1ba4 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -514,9 +514,10 @@ void qemu_plugin_user_exit(void)
+     /* un-register all callbacks except the final AT_EXIT one */
+     for (ev = 0; ev < QEMU_PLUGIN_EV_MAX; ev++) {
+         if (ev != QEMU_PLUGIN_EV_ATEXIT) {
+-            struct qemu_plugin_ctx *ctx;
+-            QTAILQ_FOREACH(ctx, &plugin.ctxs, entry) {
+-                plugin_unregister_cb__locked(ctx, ev);
++            struct qemu_plugin_cb *cb, *next;
++
++            QLIST_FOREACH_SAFE_RCU(cb, &plugin.cb_lists[ev], entry, next) {
++                plugin_unregister_cb__locked(cb->ctx, ev);
+             }
+         }
+     }
 -- 
 2.34.1

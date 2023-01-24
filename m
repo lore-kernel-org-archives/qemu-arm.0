@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id r18-20020a05600c435200b003db06224953sm2888995wme.41.2023.01.24.10.06.57
+        by smtp.gmail.com with ESMTPSA id a5-20020a5d5705000000b002bdbde1d3absm2334399wrv.78.2023.01.24.10.06.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jan 2023 10:06:58 -0800 (PST)
+        Tue, 24 Jan 2023 10:07:02 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3ED521FFCA;
-	Tue, 24 Jan 2023 18:01:30 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 895FB1FFD3;
+	Tue, 24 Jan 2023 18:01:31 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -37,183 +37,83 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 21/35] semihosting: add semihosting section to the docs
-Date: Tue, 24 Jan 2023 18:01:13 +0000
-Message-Id: <20230124180127.1881110-22-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>,
+	Emilio Cota <cota@braap.org>
+Subject: [PATCH v2 33/35] tcg: exclude non-memory effecting helpers from instrumentation
+Date: Tue, 24 Jan 2023 18:01:25 +0000
+Message-Id: <20230124180127.1881110-34-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: fbpfI6MV4tgn
+X-TUID: ulCo61ungRVk
 
-The main reason to do this is to document our O_BINARY implementation
-decision somewhere. However I've also moved some of the implementation
-details out of qemu-options and added links between the two. As a
-bonus I've highlighted the scary warnings about host access with the
-appropriate RST tags.
+From: Emilio Cota <cota@braap.org>
 
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+There are actually a whole bunch of helpers that don't affect memory
+that we shouldn't instrument. They are helpfully identified by the
+TCG_CALL_NO_SIDE_EFFECTS flag which marks out lookup_tb_ptr as well as
+a lot of the maths helpers. To avoid the string compare we introduce a
+new flag for plugin internals so we skip that too.
+
+Related: #1381
+Signed-off-by: Emilio Cota <cota@braap.org>
+Message-Id: <20230108164731.61469-4-cota@braap.org>
+[AJB: updated to skip all no SE plugins, add flag for plugin helper]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v2
-  - moved inside the generic emulation section
-  - make it clearer semihosting is specified by the architecture
-  - more expansive description for O_BINARY
-  - s/mips/MIPS/
+  - use TCG_CALL_NO_SIDE_EFFECTS as suggested by rth
+  - add flag for plugin specific helpers
 ---
- docs/about/emulation.rst | 89 ++++++++++++++++++++++++++++++++++++++++
- qemu-options.hx          | 27 +++++-------
- 2 files changed, 99 insertions(+), 17 deletions(-)
+ accel/tcg/plugin-helpers.h | 4 ++--
+ include/tcg/tcg.h          | 2 ++
+ tcg/tcg.c                  | 6 ++++--
+ 3 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
-index bdc0630b35..dde892a226 100644
---- a/docs/about/emulation.rst
-+++ b/docs/about/emulation.rst
-@@ -101,3 +101,92 @@ depending on the guest architecture.
+diff --git a/accel/tcg/plugin-helpers.h b/accel/tcg/plugin-helpers.h
+index 9829abe4a9..8e685e0654 100644
+--- a/accel/tcg/plugin-helpers.h
++++ b/accel/tcg/plugin-helpers.h
+@@ -1,4 +1,4 @@
+ #ifdef CONFIG_PLUGIN
+-DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb, TCG_CALL_NO_RWG, void, i32, ptr)
+-DEF_HELPER_FLAGS_4(plugin_vcpu_mem_cb, TCG_CALL_NO_RWG, void, i32, i32, i64, ptr)
++DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, ptr)
++DEF_HELPER_FLAGS_4(plugin_vcpu_mem_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, i32, i64, ptr)
+ #endif
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index 6f497172f8..8dc291d030 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -405,6 +405,8 @@ typedef TCGv_ptr TCGv_env;
+ #define TCG_CALL_NO_SIDE_EFFECTS    0x0004
+ /* Helper is G_NORETURN.  */
+ #define TCG_CALL_NO_RETURN          0x0008
++/* Helper is part of Plugins.  */
++#define TCG_CALL_PLUGIN             0x0010
  
- A number of features are are only available when running under
- emulation including :ref:`Record/Replay<replay>` and :ref:`TCG Plugins`.
-+
-+.. _Semihosting:
-+
-+Semihosting
-+-----------
-+
-+Semihosting is a feature defined by the owner of the architecture to
-+allow programs to interact with a debugging host system. On real
-+hardware this is usually provided by an In-circuit emulator (ICE)
-+hooked directly to the board. QEMU's implementation allows for
-+semihosting calls to be passed to the host system or via the
-+``gdbstub``.
-+
-+Generally semihosting makes it easier to bring up low level code before a
-+more fully functional operating system has been enabled. On QEMU it
-+also allows for embedded micro-controller code which typically doesn't
-+have a full libc to be run as "bare-metal" code under QEMU's user-mode
-+emulation. It is also useful for writing test cases and indeed a
-+number of compiler suites as well as QEMU itself use semihosting calls
-+to exit test code while reporting the success state.
-+
-+Semihosting is only available using TCG emulation. This is because the
-+instructions to trigger a semihosting call are typically reserved
-+causing most hypervisors to trap and fault on them.
-+
-+.. warning::
-+   Semihosting inherently bypasses any isolation there may be between
-+   the guest and the host. As a result a program using semihosting can
-+   happily trash your host system. You should only ever run trusted
-+   code with semihosting enabled.
-+
-+Redirection
-+~~~~~~~~~~~
-+
-+Semihosting calls can be re-directed to a (potentially remote) gdb
-+during debugging via the :ref:`gdbstub<GDB usage>`. Output to the
-+semihosting console is configured as a ``chardev`` so can be
-+redirected to a file, pipe or socket like any other ``chardev``
-+device.
-+
-+See :ref:`Semihosting Options<Semihosting Options>` for details.
-+
-+Supported Targets
-+~~~~~~~~~~~~~~~~~
-+
-+Most targets offer similar semihosting implementations with some
-+minor changes to define the appropriate instruction to encode the
-+semihosting call and which registers hold the parameters. They tend to
-+presents a simple POSIX-like API which allows your program to read and
-+write files, access the console and some other basic interactions.
-+
-+For full details of the ABI for a particular target, and the set of
-+calls it provides, you should consult the semihosting specification
-+for that architecture.
-+
-+.. note::
-+   QEMU makes an implementation decision to implement all file
-+   access in ``O_BINARY`` mode. The user-visible effect of this is
-+   regardless of the text/binary mode the program sets QEMU will
-+   always select a binary mode ensuring no line-terminator conversion
-+   is performed on input or output. This is because gdb semihosting
-+   support doesn't make the distinction between the modes and
-+   magically processing line endings can be confusing.
-+
-+.. list-table:: Guest Architectures supporting Semihosting
-+  :widths: 10 10 80
-+  :header-rows: 1
-+
-+  * - Architecture
-+    - Modes
-+    - Specification
-+  * - Arm
-+    - System and User-mode
-+    - https://github.com/ARM-software/abi-aa/blob/main/semihosting/semihosting.rst
-+  * - m68k
-+    - System
-+    - https://sourceware.org/git/?p=newlib-cygwin.git;a=blob;f=libgloss/m68k/m68k-semi.txt;hb=HEAD
-+  * - MIPS
-+    - System
-+    - Unified Hosting Interface (MD01069)
-+  * - Nios II
-+    - System
-+    - https://sourceware.org/git/gitweb.cgi?p=newlib-cygwin.git;a=blob;f=libgloss/nios2/nios2-semi.txt;hb=HEAD
-+  * - RISC-V
-+    - System and User-mode
-+    - https://github.com/riscv/riscv-semihosting-spec/blob/main/riscv-semihosting-spec.adoc
-+  * - Xtensa
-+    - System
-+    - Tensilica ISS SIMCALL
-diff --git a/qemu-options.hx b/qemu-options.hx
-index d59d19704b..4508a00c59 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4633,10 +4633,13 @@ DEF("semihosting", 0, QEMU_OPTION_semihosting,
-     QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2 | QEMU_ARCH_RISCV)
- SRST
- ``-semihosting``
--    Enable semihosting mode (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V only).
-+    Enable :ref:`Semihosting` mode (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V only).
+ /* convenience version of most used call flags */
+ #define TCG_CALL_NO_RWG         TCG_CALL_NO_READ_GLOBALS
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index d502327be2..fd557d55d3 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -1674,8 +1674,10 @@ void tcg_gen_callN(void *func, TCGTemp *ret, int nargs, TCGTemp **args)
+     op = tcg_op_alloc(INDEX_op_call, total_args);
  
--    Note that this allows guest direct access to the host filesystem, so
--    should only be used with a trusted guest OS.
-+    .. warning::
-+      Note that this allows guest direct access to the host filesystem, so
-+      should only be used with a trusted guest OS.
-+
-+    .. _Semihosting Options:
- 
-     See the -semihosting-config option documentation for further
-     information about the facilities this enables.
-@@ -4648,22 +4651,12 @@ QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA |
- QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2 | QEMU_ARCH_RISCV)
- SRST
- ``-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]``
--    Enable and configure semihosting (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V
-+    Enable and configure :ref:`Semihosting` (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V
-     only).
- 
--    Note that this allows guest direct access to the host filesystem, so
--    should only be used with a trusted guest OS.
--
--    On Arm this implements the standard semihosting API, version 2.0.
--
--    On M68K this implements the "ColdFire GDB" interface used by
--    libgloss.
--
--    Xtensa semihosting provides basic file IO calls, such as
--    open/read/write/seek/select. Tensilica baremetal libc for ISS and
--    linux platform "sim" use this interface.
--
--    On RISC-V this implements the standard semihosting API, version 0.2.
-+    .. warning::
-+      Note that this allows guest direct access to the host filesystem, so
-+      should only be used with a trusted guest OS.
- 
-     ``target=native|gdb|auto``
-         Defines where the semihosting calls will be addressed, to QEMU
+ #ifdef CONFIG_PLUGIN
+-    /* detect non-plugin helpers */
+-    if (tcg_ctx->plugin_insn && unlikely(strncmp(info->name, "plugin_", 7))) {
++    /* Flag helpers that may affect guest state */
++    if (tcg_ctx->plugin_insn &&
++        !(info->flags & TCG_CALL_PLUGIN) &&
++        !(info->flags & TCG_CALL_NO_SIDE_EFFECTS)) {
+         tcg_ctx->plugin_insn->calls_helpers = true;
+     }
+ #endif
 -- 
 2.34.1

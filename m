@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id az41-20020a05600c602900b003dab77aa911sm14298103wmb.23.2023.01.24.10.06.59
+        by smtp.gmail.com with ESMTPSA id g16-20020adffc90000000b002882600e8a0sm2545747wrr.12.2023.01.24.10.06.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jan 2023 10:07:02 -0800 (PST)
+        Tue, 24 Jan 2023 10:07:04 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 7E6351FFCB;
+	by zen.linaroharston (Postfix) with ESMTP id 23E681FFC9;
 	Tue, 24 Jan 2023 18:01:30 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -37,140 +37,179 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Keith Packard <keithp@keithp.com>
-Subject: [PATCH v2 23/35] semihosting: Write back semihosting data before completion callback
-Date: Tue, 24 Jan 2023 18:01:15 +0000
-Message-Id: <20230124180127.1881110-24-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 20/35] docs: add a new section to outline emulation support
+Date: Tue, 24 Jan 2023 18:01:12 +0000
+Message-Id: <20230124180127.1881110-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: H2dN+EtZCZZr
+X-TUID: zSosw3f/idCh
 
-From: Keith Packard <keithp@keithp.com>
+This affects both system and user mode emulation so we should probably
+list it up front.
 
-'lock_user' allocates a host buffer to shadow a target buffer,
-'unlock_user' copies that host buffer back to the target and frees the
-host memory. If the completion function uses the target buffer, it
-must be called after unlock_user to ensure the data are present.
-
-This caused the arm-compatible TARGET_SYS_READC to fail as the
-completion function, common_semi_readc_cb, pulled data from the target
-buffer which would not have been gotten the console data.
-
-I decided to fix all instances of this pattern instead of just the
-console_read function to make things consistent and potentially fix
-bugs in other cases.
-
-Signed-off-by: Keith Packard <keithp@keithp.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20221012014822.1242170-1-keithp@keithp.com>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- semihosting/syscalls.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/semihosting/syscalls.c b/semihosting/syscalls.c
-index 5893c760c5..ba28194b59 100644
---- a/semihosting/syscalls.c
-+++ b/semihosting/syscalls.c
-@@ -319,11 +319,11 @@ static void host_read(CPUState *cs, gdb_syscall_complete_cb complete,
-     }
-     ret = RETRY_ON_EINTR(read(gf->hostfd, ptr, len));
-     if (ret == -1) {
--        complete(cs, -1, errno);
-         unlock_user(ptr, buf, 0);
-+        complete(cs, -1, errno);
-     } else {
--        complete(cs, ret, 0);
-         unlock_user(ptr, buf, ret);
-+        complete(cs, ret, 0);
-     }
- }
+---
+v2
+  - HPs -> HP's
+  - MIPs-like -> MIPS-like
+---
+ docs/about/emulation.rst      | 103 ++++++++++++++++++++++++++++++++++
+ docs/about/index.rst          |   1 +
+ docs/devel/tcg-plugins.rst    |   2 +
+ docs/system/arm/emulation.rst |   2 +
+ 4 files changed, 108 insertions(+)
+ create mode 100644 docs/about/emulation.rst
+
+diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+new file mode 100644
+index 0000000000..bdc0630b35
+--- /dev/null
++++ b/docs/about/emulation.rst
+@@ -0,0 +1,103 @@
++Emulation
++=========
++
++QEMU's Tiny Code Generator (TCG) gives it the ability to emulate a
++number of CPU architectures on any supported platform. Both
++:ref:`System Emulation` and :ref:`User Mode Emulation` are supported
++depending on the guest architecture.
++
++.. list-table:: Supported Guest Architectures for Emulation
++  :widths: 30 10 10 50
++  :header-rows: 1
++
++  * - Architecture (qemu name)
++    - System
++    - User-mode
++    - Notes
++  * - Alpha
++    - Yes
++    - Yes
++    - Legacy 64 bit RISC ISA developed by DEC
++  * - Arm (arm, aarch64)
++    - Yes
++    - Yes
++    - Wide range of features, see :ref:`Arm Emulation` for details
++  * - AVR
++    - Yes
++    - No
++    - 8 bit micro controller, often used in maker projects
++  * - Cris
++    - Yes
++    - Yes
++    - Embedded RISC chip developed by AXIS
++  * - Hexagon
++    - No
++    - Yes
++    - Family of DSPs by Qualcomm
++  * - PA-RISC (hppa)
++    - Yes
++    - Yes
++    - A legacy RISC system used in HP's old minicomputers
++  * - x86 (i386, x86_64)
++    - Yes
++    - Yes
++    - The ubiquitous desktop PC CPU architecture, 32 and 64 bit.
++  * - Loongarch
++    - Yes
++    - Yes
++    - A MIPS-like 64bit RISC architecture developed in China
++  * - m68k
++    - Yes
++    - Yes
++    - Motorola 68000 variants and ColdFire
++  * - Microblaze
++    - Yes
++    - Yes
++    - RISC based soft-core by Xilinx
++  * - MIPS (mips, mipsel, mips64, mips64el)
++    - Yes
++    - Yes
++    - Venerable RISC architecture originally out of Stanford University
++  * - Nios2
++    - Yes
++    - Yes
++    - 32 bit embedded soft-core by Altera
++  * - OpenRISC
++    - Yes
++    - Yes
++    - Open source RISC architecture developed by the OpenRISC community
++  * - Power (ppc, ppc64)
++    - Yes
++    - Yes
++    - A general purpose RISC architecture now managed by IBM
++  * - RISC-V
++    - Yes
++    - Yes
++    - An open standard RISC ISA maintained by RISC-V International
++  * - RX
++    - Yes
++    - No
++    - A 32 bit micro controller developed by Renesas
++  * - s390x
++    - Yes
++    - Yes
++    - A 64 bit CPU found in IBM's System Z mainframes
++  * - sh4
++    - Yes
++    - Yes
++    - A 32 bit RISC embedded CPU developed by Hitachi
++  * - SPARC (sparc, sparc64)
++    - Yes
++    - Yes
++    - A RISC ISA originally developed by Sun Microsystems
++  * - Tricore
++    - Yes
++    - No
++    - A 32 bit RISC/uController/DSP developed by Infineon
++  * - Xtensa
++    - Yes
++    - Yes
++    - A configurable 32 bit soft core now owned by Cadence
++
++A number of features are are only available when running under
++emulation including :ref:`Record/Replay<replay>` and :ref:`TCG Plugins`.
+diff --git a/docs/about/index.rst b/docs/about/index.rst
+index bae1309cc6..b00b584b31 100644
+--- a/docs/about/index.rst
++++ b/docs/about/index.rst
+@@ -23,6 +23,7 @@ allows you to create, convert and modify disk images.
+    :maxdepth: 2
  
-@@ -339,8 +339,8 @@ static void host_write(CPUState *cs, gdb_syscall_complete_cb complete,
-         return;
-     }
-     ret = write(gf->hostfd, ptr, len);
--    complete(cs, ret, ret == -1 ? errno : 0);
-     unlock_user(ptr, buf, 0);
-+    complete(cs, ret, ret == -1 ? errno : 0);
- }
+    build-platforms
++   emulation
+    deprecated
+    removed-features
+    license
+diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+index 9740a70406..81dcd43a61 100644
+--- a/docs/devel/tcg-plugins.rst
++++ b/docs/devel/tcg-plugins.rst
+@@ -3,6 +3,8 @@
+    Copyright (c) 2019, Linaro Limited
+    Written by Emilio Cota and Alex Bennée
  
- static void host_lseek(CPUState *cs, gdb_syscall_complete_cb complete,
-@@ -426,8 +426,8 @@ static void host_stat(CPUState *cs, gdb_syscall_complete_cb complete,
-             ret = -1;
-         }
-     }
--    complete(cs, ret, err);
-     unlock_user(name, fname, 0);
-+    complete(cs, ret, err);
- }
++.. _TCG Plugins:
++
+ QEMU TCG Plugins
+ ================
  
- static void host_remove(CPUState *cs, gdb_syscall_complete_cb complete,
-@@ -444,8 +444,8 @@ static void host_remove(CPUState *cs, gdb_syscall_complete_cb complete,
-     }
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index b33d7c28dc..b87e064d9d 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -1,3 +1,5 @@
++.. _Arm Emulation:
++
+ A-profile CPU architecture support
+ ==================================
  
-     ret = remove(p);
--    complete(cs, ret, ret ? errno : 0);
-     unlock_user(p, fname, 0);
-+    complete(cs, ret, ret ? errno : 0);
- }
- 
- static void host_rename(CPUState *cs, gdb_syscall_complete_cb complete,
-@@ -469,9 +469,9 @@ static void host_rename(CPUState *cs, gdb_syscall_complete_cb complete,
-     }
- 
-     ret = rename(ostr, nstr);
--    complete(cs, ret, ret ? errno : 0);
-     unlock_user(ostr, oname, 0);
-     unlock_user(nstr, nname, 0);
-+    complete(cs, ret, ret ? errno : 0);
- }
- 
- static void host_system(CPUState *cs, gdb_syscall_complete_cb complete,
-@@ -488,8 +488,8 @@ static void host_system(CPUState *cs, gdb_syscall_complete_cb complete,
-     }
- 
-     ret = system(p);
--    complete(cs, ret, ret == -1 ? errno : 0);
-     unlock_user(p, cmd, 0);
-+    complete(cs, ret, ret == -1 ? errno : 0);
- }
- 
- static void host_gettimeofday(CPUState *cs, gdb_syscall_complete_cb complete,
-@@ -554,8 +554,8 @@ static void staticfile_read(CPUState *cs, gdb_syscall_complete_cb complete,
-     }
-     memcpy(ptr, gf->staticfile.data + gf->staticfile.off, len);
-     gf->staticfile.off += len;
--    complete(cs, len, 0);
-     unlock_user(ptr, buf, len);
-+    complete(cs, len, 0);
- }
- 
- static void staticfile_lseek(CPUState *cs, gdb_syscall_complete_cb complete,
-@@ -608,8 +608,8 @@ static void console_read(CPUState *cs, gdb_syscall_complete_cb complete,
-         return;
-     }
-     ret = qemu_semihosting_console_read(cs, ptr, len);
--    complete(cs, ret, 0);
-     unlock_user(ptr, buf, ret);
-+    complete(cs, ret, 0);
- }
- 
- static void console_write(CPUState *cs, gdb_syscall_complete_cb complete,
-@@ -624,8 +624,8 @@ static void console_write(CPUState *cs, gdb_syscall_complete_cb complete,
-         return;
-     }
-     ret = qemu_semihosting_console_write(ptr, len);
--    complete(cs, ret ? ret : -1, ret ? 0 : EIO);
-     unlock_user(ptr, buf, 0);
-+    complete(cs, ret ? ret : -1, ret ? 0 : EIO);
- }
- 
- static void console_fstat(CPUState *cs, gdb_syscall_complete_cb complete,
 -- 
 2.34.1

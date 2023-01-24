@@ -1,109 +1,167 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id hu30-20020a05600ca29e00b003db0659c454sm3049876wmb.32.2023.01.24.10.06.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jan 2023 10:06:58 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A50D61FFD6;
-	Tue, 24 Jan 2023 18:01:31 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp4004813ejc;
+        Tue, 24 Jan 2023 15:21:38 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXv6iPn8hF3qPMiT9Zm3igJuRcyjocx9LnMJI9Rn+UnWHhinyfEXNW+n8yOSOHS3MCry1L5b
+X-Received: by 2002:ac8:1402:0:b0:3ae:189c:7455 with SMTP id k2-20020ac81402000000b003ae189c7455mr37438237qtj.47.1674602497900;
+        Tue, 24 Jan 2023 15:21:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674602497; cv=none;
+        d=google.com; s=arc-20160816;
+        b=f6k1UAAPDaBVksUyhs6pWaWUhNRN5A06yPP0FziperjqULJibdodp+MZZnmfOzsYMu
+         vB9AaH4TXNF110iQkT3quXoSKaNMZ9lGxRtFQbXa24iVJd2DB6QiTylzy/wl9z79rN9x
+         doDptAZberNfxQojduMcXC5My/ryiMBm4iqgqxGFTlijC7GWPyor8j7jwo2ejeHvfC0D
+         Rf5KHx2gKTyIiRiHrL47oXIY/dsvAy+oMezYAw2gyWBfAW+tDsm5KheR2Vx5OHg7rgI6
+         NZD7HxUi5uoPRs45RbdSfMlgwMp9I4VtedswIqJEOt7C+F9kUbf5oqKxPu2ntG7pqvJ0
+         SUoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=1ERJ2Ch1QZiTxrD9CCXUoOLeDzJoYJb8Lu3vpv52E10=;
+        b=BbfCE1qQO4Hpp9097clnJ9+MklTrdUjmPE9UInq7SZgKGjNAtqxBEfj9TNQrVgGDaQ
+         G9cEljtRuQmJr5xvZaVeL+eJaci5AfDADX3tnWgZZLe+05oYGwvpbjp/EBaMeFRXYoqL
+         8x9yqwUAPf4KUSt0XEKBfN+pbJXJBihhgJz0r2H+DqRwvx6Vgl4Z80odowa0ILzlOELJ
+         jcY+KMeo4l4XqxG532j4tAnHM+i0LP9IfMiYYDi1XugoRYgt3ciDXARdq5G7LGqdl5Qy
+         gaJXJPvAogGSOXVtUMedCyL84Da0K+/f+jppNQVTR7eFDJaZA793oSIJ4BFwSWxYpjGA
+         eB+w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IvVXzOWZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s199-20020a3745d0000000b006fb05de4731si2395621qka.722.2023.01.24.15.21.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 24 Jan 2023 15:21:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IvVXzOWZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pKSbK-0002dE-1u; Tue, 24 Jan 2023 18:21:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pKSbH-0002cv-Gw
+ for qemu-arm@nongnu.org; Tue, 24 Jan 2023 18:21:11 -0500
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pKSbB-0005B5-Ea
+ for qemu-arm@nongnu.org; Tue, 24 Jan 2023 18:21:11 -0500
+Received: by mail-pj1-x102f.google.com with SMTP id
+ z9-20020a17090a468900b00226b6e7aeeaso276092pjf.1
+ for <qemu-arm@nongnu.org>; Tue, 24 Jan 2023 15:21:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=1ERJ2Ch1QZiTxrD9CCXUoOLeDzJoYJb8Lu3vpv52E10=;
+ b=IvVXzOWZqdG2xbBkAQTJGgVIz6AyY9O0CWAl5upP91Ioh3sqUxgzCb9KvFkXYqGaDE
+ KPKj0tRTKmTC/F/7mI3z0g0yg2n18Ln9k+T7P+jH1Q3gDqNhzfvkKCsOjVD/8KP5S5uL
+ hCbevRSHDC4gYSEXDC5z6Sxg/V0sdl72ojAGc6Coh9VPyABJUQBp20HxmoAJiFZPqZId
+ mgbDaIOD+IT8UC0Bc/13SSaeUu1C9beagBcqurrePJKLKMkNyi8jchLNxrNggzuXQAT/
+ O7JpjRVeUwslyv3DnIOnxS+lT9w/Mv7I3wBcctJWeHOG9+E4kqQmKOesRMhsCisLf8lK
+ D9NQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=1ERJ2Ch1QZiTxrD9CCXUoOLeDzJoYJb8Lu3vpv52E10=;
+ b=GMEkxog6HJ7U4cqy96WwQVcwZcA876XYFyLwWgHEvWWJCdOK2O9lxi0u7zwuCRWjgh
+ fs6j9UCHfSEvN3ZLJ21S9kpncch2dh5MMab1p8Paa5dFCSWqi9Z17Zx4ksM9G6sZsp50
+ wImOQ+gC63TtZuL0oFLk9G/86gg8s26GiyixseeaN5g/kROCSHWo0sh8Mmb2BQq1x76F
+ 0/cGtqG6vz8CHXQA87wDhz5psXh23fzTp0BaeKf5CqUe+wBqOupxsj92z07Xpcp2gJCs
+ PGHQ+e5qAEmvy3uN18rn332KWkB1OfDp080U0zClkN/YzcPHh6l4BZZ2SDcFK9pz97wN
+ pMAg==
+X-Gm-Message-State: AFqh2koQAL0Pr9v+DIaM/2SuXw0kyRWS9LyhLfwQeylPLm4eE9XERixE
+ jV1VfyTeY4F5waBo+PHDnaIXd18P9SJtiyiD
+X-Received: by 2002:a17:902:b713:b0:194:3fa4:3f46 with SMTP id
+ d19-20020a170902b71300b001943fa43f46mr29383782pls.29.1674602463713; 
+ Tue, 24 Jan 2023 15:21:03 -0800 (PST)
+Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
+ by smtp.gmail.com with ESMTPSA id
+ f9-20020a623809000000b0056c2e497b02sm2194090pfa.173.2023.01.24.15.21.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 24 Jan 2023 15:21:03 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	Ed Maste <emaste@freebsd.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Jagannathan Raman <jag.raman@oracle.com>,
-	John G Johnson <john.g.johnson@oracle.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Bandan Das <bsd@redhat.com>,
-	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Beraldo Leal <bleal@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Alexander Bulekov <alxndr@bu.edu>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	John Snow <jsnow@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Darren Kenny <darren.kenny@oracle.com>,
-	qemu-arm@nongnu.org,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Emilio Cota <cota@braap.org>
-Subject: [PATCH v2 34/35] cpu-exec: assert that plugin_mem_cbs is NULL after execution
-Date: Tue, 24 Jan 2023 18:01:26 +0000
-Message-Id: <20230124180127.1881110-35-alex.bennee@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH] hw/arm: Use TYPE_ARM_SMMUV3
+Date: Tue, 24 Jan 2023 13:20:59 -1000
+Message-Id: <20230124232059.4017615-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
-References: <20230124180127.1881110-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: I+lhJ5rjvQa/
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3Aj7kXwAKn/Y
 
-From: Emilio Cota <cota@braap.org>
+Use the macro instead of two explicit string literals.
 
-Fixes: #1381
-
-Signed-off-by: Emilio Cota <cota@braap.org>
-Message-Id: <20230108165107.62488-1-cota@braap.org>
-[AJB: manually applied follow-up fix]
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/qemu/plugin.h | 4 ++++
- accel/tcg/cpu-exec.c  | 2 ++
- 2 files changed, 6 insertions(+)
+ hw/arm/sbsa-ref.c | 3 ++-
+ hw/arm/virt.c     | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index e0ebedef84..fb338ba576 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -59,6 +59,8 @@ get_plugin_meminfo_rw(qemu_plugin_meminfo_t i)
- #ifdef CONFIG_PLUGIN
- extern QemuOptsList qemu_plugin_opts;
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 4bb444684f..8378441dbb 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -29,6 +29,7 @@
+ #include "exec/hwaddr.h"
+ #include "kvm_arm.h"
+ #include "hw/arm/boot.h"
++#include "hw/arm/smmuv3.h"
+ #include "hw/block/flash.h"
+ #include "hw/boards.h"
+ #include "hw/ide/internal.h"
+@@ -574,7 +575,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+     DeviceState *dev;
+     int i;
  
-+#define QEMU_PLUGIN_ASSERT(cond) g_assert(cond)
-+
- static inline void qemu_plugin_add_opts(void)
- {
-     qemu_add_opts(&qemu_plugin_opts);
-@@ -250,6 +252,8 @@ void qemu_plugin_user_postfork(bool is_child);
+-    dev = qdev_new("arm-smmuv3");
++    dev = qdev_new(TYPE_ARM_SMMUV3);
  
- #else /* !CONFIG_PLUGIN */
- 
-+#define QEMU_PLUGIN_ASSERT(cond)
-+
- static inline void qemu_plugin_add_opts(void)
- { }
- 
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 25ec73ef9a..9c857eeb07 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -504,6 +504,7 @@ static void cpu_exec_exit(CPUState *cpu)
-     if (cc->tcg_ops->cpu_exec_exit) {
-         cc->tcg_ops->cpu_exec_exit(cpu);
+     object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+                              &error_abort);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 5f1fddd210..d103de8c2e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1344,7 +1344,7 @@ static void create_smmu(const VirtMachineState *vms,
+         return;
      }
-+    QEMU_PLUGIN_ASSERT(cpu->plugin_mem_cbs == NULL);
- }
  
- void cpu_exec_step_atomic(CPUState *cpu)
-@@ -980,6 +981,7 @@ cpu_exec_loop(CPUState *cpu, SyncClocks *sc)
+-    dev = qdev_new("arm-smmuv3");
++    dev = qdev_new(TYPE_ARM_SMMUV3);
  
-             cpu_loop_exec_tb(cpu, tb, pc, &last_tb, &tb_exit);
- 
-+            QEMU_PLUGIN_ASSERT(cpu->plugin_mem_cbs == NULL);
-             /* Try to align the host and virtual clocks
-                if the guest is in advance */
-             align_clocks(sc, cpu);
+     object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+                              &error_abort);
 -- 
 2.34.1
+

@@ -1,39 +1,39 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp326679ejc;
-        Wed, 25 Jan 2023 04:16:06 -0800 (PST)
-X-Received: by 2002:a05:600c:3488:b0:3cf:68f8:790b with SMTP id a8-20020a05600c348800b003cf68f8790bmr28691778wmq.11.1674648966079;
-        Wed, 25 Jan 2023 04:16:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674648966; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp328256ejc;
+        Wed, 25 Jan 2023 04:18:33 -0800 (PST)
+X-Received: by 2002:a05:600c:4451:b0:3dc:191a:3b13 with SMTP id v17-20020a05600c445100b003dc191a3b13mr3165077wmn.8.1674649113203;
+        Wed, 25 Jan 2023 04:18:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674649113; cv=none;
         d=google.com; s=arc-20160816;
-        b=cTBHZiXY4OxHZKlTjeLRcruJo0pVoStiE8r6h5na4zDZD9Ni+hZLcSak2gbZsFnBro
-         U0He7Js2gOjuZY+e/Rg/X55AiGbZmnMK0YDW0jjUlVR1XoaDBobc4oEPXjz8TqwwbFx9
-         k3URif6UhClsLByNxZB0qNUHAp7bc5+d90DMpfUUBfVVLk1vMety/Gx0Fp9srbYXp++K
-         eYh4tzbZrtCAlVi7HxJdPvLJkrkXipLmyfBRHnIxGGDgAfzkmRvLfpVrUyS55TbwiGGt
-         zcyIy1dBfBsd4qZyXiUo82kaCFh3aPV+I084S35yj1xdDZUcdGkxDqZSX0OfubTCM5vX
-         1W+w==
+        b=f9ITkRyM953+i5nbBy9kCG6acdatjfAKxeFNuuS1NGlqvdyVViE0DHX9aMySqQqMHe
+         y8MwyxSemqedqLNr1ZWjABEUh724mSIGhak1ID2MV4s6QB4x8BpODl58myvd2W2Puiqn
+         Eh12Jyq+Hxey0vWa++ruc72+GF4UNQZoK4DAaDFIMY51VYlSowJfgqbelgSdo7d07LbG
+         Wsdj+0uqu0+l7KHOhU4I1vdpwJAoUKO1DtCZ9YXw4+dbEJMnVU73FFMB5dxsvkuKxnwa
+         DYdC2C3E/SPCMNHPxDgDQy4dlCKDDkUjts/V5h65BW1FmC1Ks/Xr0N8WNP7WVOkhLFMc
+         YRAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=ER2SI4PlaWHGQyH2e2dd96iwPQoAleiGSkVyIcN6NyE=;
-        b=bEZK8c+v9CbeLXVs23G1mOtwUtDpRCe65WUPHgoNcQvEORcY1vMMaFkVOO8JmywJuW
-         DbRC+5Xhu0Ol/sMk6pBO2rAz4FqO8wTNNeOj4RNJgaks21lLVUakWNnix1CTh5fDK6bg
-         kv/RH2o9NAjxXiItAnKkhvfQ+4+Vx2P6c7XZtJC5mHbbB46xI4WzCPm5395/ieDH37EP
-         PDCj4lBxJqAYufLl6Byp2T6ybt3gmkIE2mQ67/cLypqyVUtO+eT4grhF1IHW7XbwQQ3X
-         XVMUG73YBOXSfyfHPkFdCY2fINYOAR8pFFDH2Wist61du/h4QYeQ8eDinDRo9ttKGyJc
-         9Ugw==
+        bh=3sEN5kbOw+2jZmdBXHhxE/xNu6E2VOYJgZaT+5A393Y=;
+        b=UQZr4W/kI6VW5ca/wmKnk5OyA5bbGUFT5uHypREwnvXhIyo14uoqnYYvUP8dH6RhYl
+         dpq1hk/2K1l6yD1/oysHkrAbJSTfiYGBO3Hb5Pmx9PiCIP/5s2B1v8GXTIw2TY+9V3ev
+         nb7YccZYsQRA2SepnuH5dh3txrpGEUh7biiMKAC+1EwKVZzTmE6tGCkSVpxarw/caPio
+         ntIpNJsB8uftq1/jCtM3+epBroytofLES35KayZ5Yv5ii7ehbCrRqzSzHXdILGAyT+xq
+         2NSRLVtyG3083z8AHlvwCxTtW3xLLiy6SDzMnPvcIeNtIGO6aGrQyeex93C0/fjlqRkv
+         FRpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oJEKCV5G;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PeEaBvn1;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 6-20020a05600c024600b003dafc5fdab8sor560810wmj.43.2023.01.25.04.16.06
+        by mx.google.com with SMTPS id p9-20020a05600c204900b003d23eed82a4sor587658wmg.29.2023.01.25.04.18.33
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 25 Jan 2023 04:16:06 -0800 (PST)
+        Wed, 25 Jan 2023 04:18:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oJEKCV5G;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PeEaBvn1;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -41,47 +41,48 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=ER2SI4PlaWHGQyH2e2dd96iwPQoAleiGSkVyIcN6NyE=;
-        b=oJEKCV5G3wULQ5/rTU24gUwxEFgmQ6i6MzOpcn6cRF1KLaxiN/ecbQSX2wmPb46eKE
-         ff0+4tslLvVUSw9iOPKRegyyLrqPpSdvlMen569CuJfBzl4JsDRM6jERXS/MT0mQ6MK7
-         lkW0kESfBC0mliv58D6IZnNbNUecPdS0Kv3dE8V38qSCRQeBOaaV9RPJ55ylvfAFhb0O
-         X7eDMhfxE+srAQOEiLPYzQVoskR2KRP9hxPcExm14rarBpIbHOzCykBiug7OfF1xNFfz
-         x5KTI3Z54DE1hB4h40QZyO//bQKLOjMs3/ipB4fVRJLIHplONZJAoDUXYi+vM1WmroBr
-         5COQ==
+        bh=3sEN5kbOw+2jZmdBXHhxE/xNu6E2VOYJgZaT+5A393Y=;
+        b=PeEaBvn1A+CuZOOl384nszACPDSoESPoZNyEc3XHj2jPL9ksAdJ9NJZ7gyxtjLFxxP
+         JoMEqQopYMPYXppJDiitUGoSUFsB+RMuQvWWk8XLmZnOB2N48eaVIkDhmrPRGhI5JmCz
+         pjUjQw2XAvHy8UPCuBsGAQrWpVurk/Vs+Q5ZDJCThXkuefhKNthEjWlZz+vAMQV+KPlZ
+         FPHDnv2R1YBJ0GgxcMKi82MMQxvG5Gd3MrhFRkwz/D4Zw5ls/JTbAD9Uz/cUmS7vYVeZ
+         yi2R0V7YlAl0DWVEc8uwFtZvAYKTFaGurybkSQ042FdwZIUEQl/+1fRYLhHtJY6SXq6k
+         quCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ER2SI4PlaWHGQyH2e2dd96iwPQoAleiGSkVyIcN6NyE=;
-        b=eBFdvpoxGpauXkKw7S9+WUsirPu6vuG3z41OyXMLatYG4BDnNJjr7gYz1PQNhp+Tv1
-         vShZ3S952OkI0dm04+3pF1KOgolTbw4KQti09qwKFbqVuvkd4Et6YBDEtVEMI/5LrZG4
-         ElyumIoDp4+QFeLOVktkxU1xoHpisM+jt+h1QOd6od+9ODVSv2OOq+aSUvJyp4wtSI/q
-         GDec1y34OIHs/KQtLrdky50qf99aDn4P7fxh8mG1xlwzUeIkthyejDRCpARfyuHMDSKr
-         fyQE8mIIjKbIFdJmPi+JMBMd2uby+nylBG7WMP/3Rc6U5IAPaDIWhL0w49N2iIP0zITy
-         CwdA==
-X-Gm-Message-State: AFqh2kosiH0IPmADdGC1A8E3gpk7SM4msPOuvDEeodnDMVfrgt13DHTq
-	HkIsNnBBkmk6ZacFo1cSiN2r6zC0L0QAZDWmkVp2mw==
-X-Google-Smtp-Source: AMrXdXvNv+mdbb7AtqIq+hx/VRRyNRmxWORy4dDdYX2jOFNqxY/aKSTVG4e6+cVCuwdVgbaphIDiqA==
-X-Received: by 2002:a05:600c:ad4:b0:3db:11d0:21e2 with SMTP id c20-20020a05600c0ad400b003db11d021e2mr28325094wmr.29.1674648965603;
-        Wed, 25 Jan 2023 04:16:05 -0800 (PST)
+        bh=3sEN5kbOw+2jZmdBXHhxE/xNu6E2VOYJgZaT+5A393Y=;
+        b=MGcqAlkFbkZN+V5iDNqyT/yF8PdJfzy+3v23yc1cvgV+HKdda5D17fDEPR2j2jfJ5S
+         2shfFNHCsUpiqEPNbI5tORtuW5ZvRNk28+/EMWNbHpDcGKw62KfQFbev6smUBHWBRPIw
+         lryB/IxvkXqjJl352Lgktu3g+3R2Se7VkyzxEDbLb+iJt9ZAfVqDDam2kjKW93rJRm20
+         4W19fG7SD2MHf9zrFf89xxYc+AuY/yCIk14jwr8Eb90JCwEo1adc3QAXNYfYpOmIV+Cn
+         0uNhY77qsF3OVXX3zs89rYBkxMkoEdzA/T4TdUT5b82nYUwF3RX0w+mMQjNPGbcfKjan
+         KJjQ==
+X-Gm-Message-State: AFqh2kqQtXeu6gVrGzEi2pgAvNqSJSrp60jdmiLPqyUpF5cLGk1SyLU7
+	LZbgTRYE9rD/QpxUDN51vYTGJK2c
+X-Google-Smtp-Source: AMrXdXt7XkHFK1LEuV+HW/WcP62139yPIHwOM54QfkhWj0JHlHdg1E0en53gD9xbVxcOEu3MWDSEkQ==
+X-Received: by 2002:a05:600c:4d98:b0:3d3:5c7d:a5f3 with SMTP id v24-20020a05600c4d9800b003d35c7da5f3mr39226897wmp.37.1674649112918;
+        Wed, 25 Jan 2023 04:18:32 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.0.114] ([196.77.22.181])
-        by smtp.gmail.com with ESMTPSA id b5-20020a05600c150500b003dafb0c8dfbsm1939388wmg.14.2023.01.25.04.16.03
+        by smtp.gmail.com with ESMTPSA id d24-20020a05600c4c1800b003db0cab0844sm1603947wmp.40.2023.01.25.04.18.30
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Jan 2023 04:16:04 -0800 (PST)
-Message-ID: <657d1e7c-875f-9eb5-4ab5-9d8f9094063b@linaro.org>
-Date: Wed, 25 Jan 2023 13:16:02 +0100
+        Wed, 25 Jan 2023 04:18:32 -0800 (PST)
+Message-ID: <8c21fc0a-de49-60e3-60b1-bd9f805e3d5f@linaro.org>
+Date: Wed, 25 Jan 2023 13:18:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v2 19/35] docs: add hotlinks to about preface text
+Subject: Re: [PATCH v2 20/35] docs: add a new section to outline emulation
+ support
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
- Ed Maste <emaste@freebsd.org>, Thomas Huth <thuth@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Markus Armbruster <armbru@redhat.com>,
+ Ed Maste <emaste@freebsd.org>, Alexandre Iooss <erdnaxe@crans.org>,
+ Markus Armbruster <armbru@redhat.com>,
  Jagannathan Raman <jag.raman@oracle.com>,
  John G Johnson <john.g.johnson@oracle.com>,
  Mahmoud Mandour <ma.mandourr@gmail.com>,
@@ -99,24 +100,115 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Li-Wen Hsu
  <lwhsu@freebsd.org>, Peter Maydell <peter.maydell@linaro.org>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
- <20230124180127.1881110-20-alex.bennee@linaro.org>
+ <20230124180127.1881110-21-alex.bennee@linaro.org>
+ <f21ac8e6-911f-b156-18ff-3929d89ba3d1@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230124180127.1881110-20-alex.bennee@linaro.org>
+In-Reply-To: <f21ac8e6-911f-b156-18ff-3929d89ba3d1@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: zbEnkR0CEteZ
+X-TUID: tiU42GwzlJ+B
 
-On 24/1/23 19:01, Alex Bennée wrote:
-> Make it easier to navigate the documentation.
+On 25/1/23 08:58, Thomas Huth wrote:
+> On 24/01/2023 19.01, Alex Bennée wrote:
+>> This affects both system and user mode emulation so we should probably
+>> list it up front.
+>>
+>> Acked-by: Richard Henderson <richard.henderson@linaro.org>
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>
+>> ---
+>> v2
+>>    - HPs -> HP's
+>>    - MIPs-like -> MIPS-like
+>> ---
+>>   docs/about/emulation.rst      | 103 ++++++++++++++++++++++++++++++++++
+>>   docs/about/index.rst          |   1 +
+>>   docs/devel/tcg-plugins.rst    |   2 +
+>>   docs/system/arm/emulation.rst |   2 +
+>>   4 files changed, 108 insertions(+)
+>>   create mode 100644 docs/about/emulation.rst
+>>
+>> diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+>> new file mode 100644
+>> index 0000000000..bdc0630b35
+>> --- /dev/null
+>> +++ b/docs/about/emulation.rst
+>> @@ -0,0 +1,103 @@
+>> +Emulation
+>> +=========
+>> +
+>> +QEMU's Tiny Code Generator (TCG) gives it the ability to emulate a
 > 
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Acked-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   docs/about/index.rst  | 16 ++++++++--------
->   docs/system/index.rst |  2 ++
->   docs/tools/index.rst  |  2 ++
->   docs/user/index.rst   |  2 ++
->   4 files changed, 14 insertions(+), 8 deletions(-)
+> I'd maybe rather say "provides" instead of "gives it".
+> 
+>> +number of CPU architectures on any supported platform. Both
+> 
+> I'd maybe add a "host" between "supported" and "platform.
+> 
+>> +:ref:`System Emulation` and :ref:`User Mode Emulation` are supported
+>> +depending on the guest architecture.
+>> +
+>> +.. list-table:: Supported Guest Architectures for Emulation
+>> +  :widths: 30 10 10 50
+>> +  :header-rows: 1
+>> +
+>> +  * - Architecture (qemu name)
+>> +    - System
+>> +    - User-mode
+> 
+> Maybe just use "User" instead of "User-mode" to make the column smaller?
+> 
+>> +    - Notes
+>> +  * - Alpha
+>> +    - Yes
+>> +    - Yes
+>> +    - Legacy 64 bit RISC ISA developed by DEC
+>> +  * - Arm (arm, aarch64)
+>> +    - Yes
+>> +    - Yes
+>> +    - Wide range of features, see :ref:`Arm Emulation` for details
+>> +  * - AVR
+>> +    - Yes
+>> +    - No
+>> +    - 8 bit micro controller, often used in maker projects
+>> +  * - Cris
+>> +    - Yes
+>> +    - Yes
+>> +    - Embedded RISC chip developed by AXIS
+>> +  * - Hexagon
+>> +    - No
+>> +    - Yes
+>> +    - Family of DSPs by Qualcomm
+>> +  * - PA-RISC (hppa)
+>> +    - Yes
+>> +    - Yes
+>> +    - A legacy RISC system used in HP's old minicomputers
+>> +  * - x86 (i386, x86_64)
+>> +    - Yes
+>> +    - Yes
+>> +    - The ubiquitous desktop PC CPU architecture, 32 and 64 bit.
+>> +  * - Loongarch
+>> +    - Yes
+>> +    - Yes
+>> +    - A MIPS-like 64bit RISC architecture developed in China
+>> +  * - m68k
+>> +    - Yes
+> 
+> Would it be possible to link the "Yes" entries in the "System" column to 
+> corresponding target-*.rst files? E.g. docs/system/target-m68k.rst for 
+> the m68k entry?
+> 
+>> +    - Yes
+>> +    - Motorola 68000 variants and ColdFire
+>> +  * - Microblaze
+>> +    - Yes
+>> +    - Yes
+>> +    - RISC based soft-core by Xilinx
+>> +  * - MIPS (mips, mipsel, mips64, mips64el)
+> 
+> The table renders very badly for me, the last column is cut off and you 
+> need to scroll to see its contents. This seems mainly to happen since 
+> this MIPS entry is very long. Could the information in the parentheses 
+> maybe be shortened to "(mips*)" or be dropped completely?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Or "32 and 64 bit".

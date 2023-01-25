@@ -1,146 +1,156 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp98808ejc;
-        Tue, 24 Jan 2023 20:10:45 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtL6/zvhSYh2OpbLNbipO97gsAKuM9ynaS0wy5lHS87lUxc3sGQEH8ZTUkEqSkScq8RuiJL
-X-Received: by 2002:a17:906:6b03:b0:86e:26d8:52ff with SMTP id q3-20020a1709066b0300b0086e26d852ffmr36948765ejr.2.1674619845277;
-        Tue, 24 Jan 2023 20:10:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674619845; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp197637ejc;
+        Tue, 24 Jan 2023 23:45:05 -0800 (PST)
+X-Google-Smtp-Source: AK7set/OrqBSC5N1NEd1/RcECxGqmBqXCuGw5Z3aiK1bdkh1r/bgHnJkAAUdbPkcWznzufhufPkI
+X-Received: by 2002:ac8:5756:0:b0:3a5:c851:29ff with SMTP id 22-20020ac85756000000b003a5c85129ffmr2721909qtx.23.1674632704984;
+        Tue, 24 Jan 2023 23:45:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674632704; cv=none;
         d=google.com; s=arc-20160816;
-        b=kW+t3tV1ioh+uDdmmeBYjMPAGJw1CzRQle1JBpedgW84yeHtkcfVRfrrvlJjyekBoO
-         HVVaLKywhAckwd0DewPpZiI2/aMmxK+p24rI+DnXUGN+xpUOQYQ28DH/Bh5StIhmkuqC
-         2UHjg+7Kd+AAGOq2l0NPhExCSjThrOqSrZWFaGDB1Q5UELYphnhTNu0UdJmQRbSoK0CQ
-         xjjwJIXc2waQtDOUlMRfdoTbfGxy/GY5Qke7W5nFMCi3RSTdflvfU4TGqlXvTcWNrMw6
-         pUr1cFN0eZjnWvP/XajaCvF1JFgZqyh6sadft5VT5OU+XA3TPdM4TiBwjiHtkbD++xOd
-         nFTQ==
+        b=qONjwJFkTsQ10PZYPp3vPslJelksdZfMgDslHH17qqKzmIR6lPfEal1PbZAu9SPANL
+         GN6hnz/KT4BuRCz3hyt69DI3M8r7Toq3+CyG4fo1JasIjBDvrU7a+1Q3nSBSwkH/ZPUo
+         pYhhw29xjMFa0D4x5dbhjsh0yQWsmchXa/VptejslzayjE4ZwGoZ1T+XUaB3EcHsADfP
+         963EHyqzZpSXgK8YBl9DaBzCfSUuhnd/iM8bVRX3c+zdrR8G0vhb7qnQS+A13NMKvYwN
+         Rdr3H2kN82EQIxNBqVH+RONfAO0zsUj4s59p4WzGlOeuYuDrEQC+ysiizvsxdWHaHTAo
+         Fvng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=jPE1Z4AiasvWAh81482PZ75gc33qItYy0XzDyKoMixc=;
-        b=L57E37RoXJ85djHlG/DQ8X+4+/Eiocm3nrjSTQePWOYfGuV8IxWtJQemwFEVXupoYy
-         BdyFwuJUBNCi+eRnhhj1OVrN59eAUUuPAgdpQwp7bZlbZdJKyQidDTi1n6hLlDP45NzH
-         l4U1ww8f2iiElsn/NTIJ7u3VAUeXgQdd5Y+jg2+XbuEGFVgcLtNPAn6ZhNKhry7SEylE
-         tSmKO8TQEF8URfBdHjfewnf2kWuQ7QTYg1aE96XlBJF63qlVqkEF5z2wTlkMM05D0qsb
-         aDZ/gEmQcqxCtZvzng5/Rj2Me4+v+wqluwukygHoRRcxM43EoOF3ih3RAjXMhCgLPQ9V
-         ExEw==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=NZXrEOZNrjD0LfHadt43o6PEtuIH7GBerz/Kzc4W35w=;
+        b=Y3loOorRUvpb9qO364iNWtmxSMP9khIM/ksgz2+bwTismH2OjQT65AWZm8/72nvpVI
+         TVPhDSzB6AdksXH17Hp1NRUsaonpGnUMjE3wM1km+jBLkV8bhGgX4W52hiAgcBYIsdBP
+         RcOnR/Je+qhvL2xUbFoA7Rdc6tz/spF2UQTZ7+n+4KY7owdEvEM7pHV24vmjHYPzGdP1
+         J/RJ2131PQsrUBRSxrrAQlulTUsZ/AImxgJCupmV4LkWQmxBgxsCJllMFRcMK5AEI3SH
+         QJsOqF85WponLBBXWB919VSBTjeClie1kOUL8eYQmKzp3k9BGyUFzLJxE3qMNn9zXkn0
+         C55w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=oTU6Yj4h;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id fc10-20020a1709073a4a00b0087762f26ce7si4206430ejc.868.2023.01.24.20.10.45;
-        Tue, 24 Jan 2023 20:10:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HkwNUkEV;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id v19-20020ac87293000000b003b62b4723fasi3283994qto.522.2023.01.24.23.45.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 24 Jan 2023 23:45:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=oTU6Yj4h;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230115AbjAYEKo (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 3 others); Tue, 24 Jan 2023 23:10:44 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:34332 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229528AbjAYEKm (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 24 Jan 2023 23:10:42 -0500
-Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com [IPv6:2607:f8b0:4864:20::62d])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id BDF7C3E600
-        for <kvm@vger.kernel.org>; Tue, 24 Jan 2023 20:10:41 -0800 (PST)
-Received: by mail-pl1-x62d.google.com with SMTP id d3so16748255plr.10
-        for <kvm@vger.kernel.org>; Tue, 24 Jan 2023 20:10:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=jPE1Z4AiasvWAh81482PZ75gc33qItYy0XzDyKoMixc=;
-        b=oTU6Yj4hJGaiSLcbk7N2YURh0GtdwHzd2W6FgaM+BedXCoWTMzrRNSXzrA5f/m3GSU
-         y1QNATWo9RrqxhYdkXDclsfMdfcHmOnboZcg+LghPsH06C2vf9dQrQ2VOThLNc3YHdRt
-         GHGHYDWGMaizrgTfufgsBkciIoC5oL6ZRXSzvErIy/c8LnsLQt296DoZWy6/EyY5qUL9
-         hfbUzV+OYffiSPWfUJEhIYbmKBBkjFbUbXc2HyRWzFK1HRDajP5YWmv/+F6+aAo0kBLS
-         qIU28l0t68zGSTzi8ayp3qSuXI4dfNcKC3nrGV4eAN4D59jOxvu5D5d4p6sTeN6nFGb9
-         R0IA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HkwNUkEV;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1674632704;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=NZXrEOZNrjD0LfHadt43o6PEtuIH7GBerz/Kzc4W35w=;
+	b=HkwNUkEVVLLaRIr95uYNyy6Nj8l7U0CLOGQJDDAM1ZWQctNGYgv+eysEMf82kSc9g9XxzL
+	DpIo4rnhbPV40ig6Ld6wPat/TDPWZm3K5HLw2leDaDWKAMdxlnuXDAa4M+LJV/57ihhBHI
+	rlCz5MezjfFqiMAGSrBD60/PXTyRYpI=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-329-uA2pzhpFNT2lhIb_gjIHxw-1; Wed, 25 Jan 2023 02:45:03 -0500
+X-MC-Unique: uA2pzhpFNT2lhIb_gjIHxw-1
+Received: by mail-qk1-f199.google.com with SMTP id s7-20020a05620a0bc700b006e08208eb31so12430747qki.3
+        for <alex.bennee@linaro.org>; Tue, 24 Jan 2023 23:45:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jPE1Z4AiasvWAh81482PZ75gc33qItYy0XzDyKoMixc=;
-        b=ff79tjMyQSvhyrpGbxyEwuw/9xhKtVJtihEOZMsKTSuTodM8aggDEyD2fU10DlnEn6
-         BNW0/nqF/jfYbHpKz1+6440n2p15R1kvKnOAHK1mrSgg86LFFjyd7LVt2jpO6CKSEnlw
-         y1rBE5Pb1voTDVbDyA0H4pu+9s356G/sSbAfyRf2l68KKxMZPNCW94LonSLIFA+Siid9
-         02yLrypAGPoQD1gyZCzeqwE77OdgH6EXhxZh9//fiveAadg8X8w6oO/7MUO72FCB3JVc
-         lmC4sKgtP+ysPR1cMsWlE+nwzNbUtW1zVzz1z4HCHEMEFy0Fac5PJ/1AO2sPpQpncb3P
-         ceuw==
-X-Gm-Message-State: AO0yUKUx9xH812DRcMHPZz2hCJQPT4pBllcOWIidUZYvTzpUfDjfHiVM
-        XjaQt7NTCyXl5kA/6UHZQRBzLg==
-X-Received: by 2002:a17:90b:3805:b0:22c:4e1:93e with SMTP id mq5-20020a17090b380500b0022c04e1093emr1348473pjb.15.1674619841228;
-        Tue, 24 Jan 2023 20:10:41 -0800 (PST)
-Received: from ?IPV6:2400:4050:a840:1e00:4457:c267:5e09:481b? ([2400:4050:a840:1e00:4457:c267:5e09:481b])
-        by smtp.gmail.com with ESMTPSA id 101-20020a17090a09ee00b002276ba8fb71sm377487pjo.25.2023.01.24.20.10.39
+        bh=NZXrEOZNrjD0LfHadt43o6PEtuIH7GBerz/Kzc4W35w=;
+        b=6kL45dMZKx7fF0IzgacJywsiKtLH1xWlqKDaexM1DWppTv8HeuInleNVY/vkNDtTFA
+         o295PVm63GsxVQy8PR9nCoKfA/RDDcCmPeAiIfobxdDVlsQg1rdCNxdpzuC/go1DEi4W
+         VCxPq0G9+lBwlpaCpJ8ZXs0YvVCtCF51NRfTHp8Rhn2RRIz4xQMJq3JqBR64r28jYPV3
+         islOgC2WDklVqacaCfLdF/bTd0K5deHuavinEjgx07oXEG3dr6NbdoaAz0NAE15GsdxW
+         3eKL6DlGoz3BWyoPmKXDC2jKnxKTC33uM1q/vqC6mkHvrS8B0BFLNbge450JkKjSqQ1v
+         5/5Q==
+X-Gm-Message-State: AO0yUKWTz7sst6oq1wnbXtfbP16DUGqOEgMQas7fP5CGojob70ONR9uq
+	NoaB4fmTLYe7+1mhajQe5Utb9bY7QJ47N44ApkbqkbnpGvckALBM3WXPAdv5VNr/BMhs223xJtQ
+	1liFz3vn8e0ygPvMLOxCYGDhl1+6mNI1L7/5bY4gLNIHyaxkFPD20rnYBCEPbIBes
+X-Received: by 2002:a05:622a:14e:b0:3b4:d5be:a2e0 with SMTP id v14-20020a05622a014e00b003b4d5bea2e0mr2721102qtw.20.1674632702681;
+        Tue, 24 Jan 2023 23:45:02 -0800 (PST)
+X-Received: by 2002:a05:622a:14e:b0:3b4:d5be:a2e0 with SMTP id v14-20020a05622a014e00b003b4d5bea2e0mr2721029qtw.20.1674632702190;
+        Tue, 24 Jan 2023 23:45:02 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.2] (ip-109-43-178-209.web.vodafone.de. [109.43.178.209])
+        by smtp.gmail.com with ESMTPSA id y18-20020ac87092000000b003ad373d04b6sm2830638qto.59.2023.01.24.23.44.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 24 Jan 2023 20:10:40 -0800 (PST)
-Message-ID: <76931dd5-e390-5055-8283-0e1cdf2ddf03@daynix.com>
-Date:   Wed, 25 Jan 2023 13:10:38 +0900
+        Tue, 24 Jan 2023 23:45:01 -0800 (PST)
+Message-ID: <92d370f1-a06b-75e9-469b-944674d53c79@redhat.com>
+Date: Wed, 25 Jan 2023 08:44:55 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH] target/arm: Propagate errno when writing list
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v2 09/35] gitlab: add lsan suppression file to workaround
+ tcmalloc issues
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Ed Maste <emaste@freebsd.org>, Alexandre Iooss <erdnaxe@crans.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ John G Johnson <john.g.johnson@oracle.com>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Bandan Das <bsd@redhat.com>, Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Michael Roth <michael.roth@amd.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Beraldo Leal <bleal@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@linaro.org>, John Snow <jsnow@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Darren Kenny <darren.kenny@oracle.com>,
+ qemu-arm@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Li-Wen Hsu
+ <lwhsu@freebsd.org>, Peter Maydell <peter.maydell@linaro.org>
+References: <20230124180127.1881110-1-alex.bennee@linaro.org>
+ <20230124180127.1881110-10-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230124180127.1881110-10-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To:     Peter Maydell <peter.maydell@linaro.org>
-Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>
-References: <20221201103312.70720-1-akihiko.odaki@daynix.com>
- <CAFEAcA9sj838rCyPrxAOncXKmdOftZeM16rKiXB5ww7dSYY0tA@mail.gmail.com>
-From:   Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <CAFEAcA9sj838rCyPrxAOncXKmdOftZeM16rKiXB5ww7dSYY0tA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-3.0 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: INfE78ybRYQZ
+Content-Transfer-Encoding: 8bit
+X-TUID: Ua6MlHClbGuB
 
-On 2023/01/25 1:12, Peter Maydell wrote:
-> On Thu, 1 Dec 2022 at 10:33, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
->>
->> Before this change, write_kvmstate_to_list() and
->> write_list_to_kvmstate() tolerated even if it failed to access some
->> register, and returned a bool indicating whether one of the register
->> accesses failed. However, it does not make sen not to fail early as the
->> the callers check the returned value and fail early anyway.
->>
->> So let write_kvmstate_to_list() and write_list_to_kvmstate() fail early
->> too. This will allow to propagate errno to the callers and log it if
->> appropriate.
+On 24/01/2023 19.01, Alex Bennée wrote:
+> The up-coming upgrade to Fedora 37 will bring in libtcmalloc as a
+> dependency of libglusterfs which confuses our fuzz run. Rather than
+> disable the build lets use LSAN's suppression mechanism to prevent the
+> job from failing.
 > 
-> (Sorry this one didn't get reviewed earlier.)
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>   .gitlab-ci.d/buildtest.yml             | 1 +
+>   scripts/oss-fuzz/lsan_suppressions.txt | 2 ++
+>   2 files changed, 3 insertions(+)
+>   create mode 100644 scripts/oss-fuzz/lsan_suppressions.txt
 > 
-> I agree that all the callers of these functions check for
-> failure, so there's no major benefit from doing the
-> don't-fail-early logic. But is there a reason why we should
-> actively make this change?
-> 
-> In particular, these functions form part of a family with the
-> similar write_cpustate_to_list() and write_list_to_cpustate(),
-> and it's inconsistent to have the kvmstate ones return
-> negative-errno while the cpustate ones still return bool.
-> For the cpustate ones we *do* rely in some places on
-> the "don't fail early" behaviour. The kvmstate ones do the
-> same thing I think mostly for consistency.
-> 
-> So unless there's a specific reason why changing these
-> functions improves behaviour as seen by users, I think
-> I favour retaining the consistency.
-> 
-> thanks
-> -- PMM
+> diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+> index f09a898c3e..9a6ba1fe3b 100644
+> --- a/.gitlab-ci.d/buildtest.yml
+> +++ b/.gitlab-ci.d/buildtest.yml
+> @@ -511,6 +511,7 @@ build-oss-fuzz:
+>       IMAGE: fedora
+>     script:
+>       - mkdir build-oss-fuzz
+> +    - export LSAN_OPTIONS=suppressions=scripts/oss-fuzz/lsan_suppressions.txt
+>       - CC="clang" CXX="clang++" CFLAGS="-fsanitize=address"
+>         ./scripts/oss-fuzz/build.sh
+>       - export ASAN_OPTIONS="fast_unwind_on_malloc=0"
+> diff --git a/scripts/oss-fuzz/lsan_suppressions.txt b/scripts/oss-fuzz/lsan_suppressions.txt
+> new file mode 100644
+> index 0000000000..02ec0a6ed5
+> --- /dev/null
+> +++ b/scripts/oss-fuzz/lsan_suppressions.txt
+> @@ -0,0 +1,2 @@
+> +# The tcmalloc on Fedora37 confuses things
+> +leak:/lib64/libtcmalloc_minimal.so.4
 
-I withdraw this patch. The only reason is that it allows to log errno 
-when reporting the error, and the benefit is negligible when compared to 
-the consistency.
-
-Regards,
-Akihiko Odaki
+Reviewed-by: Thomas Huth <thuth@redhat.com>

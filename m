@@ -1,82 +1,192 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([185.81.254.11])
-        by smtp.gmail.com with ESMTPSA id n21-20020adf8b15000000b0028965dc7c6bsm2365227wra.73.2023.01.24.10.16.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jan 2023 10:16:56 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 8D2EF1FFC5;
-	Tue, 24 Jan 2023 18:01:29 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	Ed Maste <emaste@freebsd.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Jagannathan Raman <jag.raman@oracle.com>,
-	John G Johnson <john.g.johnson@oracle.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Bandan Das <bsd@redhat.com>,
-	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Beraldo Leal <bleal@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Alexander Bulekov <alxndr@bu.edu>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	John Snow <jsnow@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Darren Kenny <darren.kenny@oracle.com>,
-	qemu-arm@nongnu.org,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 15/35] tests/tcg: skip the vma-pthread test on CI
-Date: Tue, 24 Jan 2023 18:01:07 +0000
-Message-Id: <20230124180127.1881110-16-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230124180127.1881110-1-alex.bennee@linaro.org>
-References: <20230124180127.1881110-1-alex.bennee@linaro.org>
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp221518ejc;
+        Wed, 25 Jan 2023 00:45:03 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvbfIa1e/92IGTRlrTwTI2UBC2d22khl29LbRn99W53rdJa5nfsfacY5JY1UV9X3mJtU2YT
+X-Received: by 2002:a17:906:8d86:b0:870:dceb:696d with SMTP id ry6-20020a1709068d8600b00870dceb696dmr39140707ejc.43.1674636303476;
+        Wed, 25 Jan 2023 00:45:03 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1674636303; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=l0Kqsqt5wHAmLljwry5g7y/eZEdWhIEp8gZjBenAIWWrWrLsgNgvGHk8Pdu7V3oAqp
+         8SHEtyG55IyvvgNFQeuToWv0iw40GpLbOfd+nZb50Nc31BuxN9qrjOBUZrXFYA0BaKVh
+         utl219N5T8YkTT+zi4KDmv2S8nSXlvYFPSNiB1cp/fXEol+OyqZEmYzK7bEWvoYLUchM
+         7bGSRjDpYb7d6bSHNLhAlSDCtfNPjU+jFBl3aAr2H1cwYZ0XwoG6axyWSl/ORrnL5pgq
+         De4qN4ctwsUOj/XLVpMOvFIEwX/8SrW3oonKD5gVHbQTHEynOdwbCj6qILYw3UrLv6Tw
+         wpOw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=/6RMYIuXur/hQizPdgkR79Juo1RH5cFqlOnZ0Xl8lqo=;
+        b=DUjt7X+F7Arzz0ig89M+70O3skMxdNoKIcF/8w8wqN/baaGjQ1UBRrDmkAHjX6p3F3
+         YUwJAcx18hIhRdnTwG4JfK8AyYME1yc+y2gf4xyOayDjuUO20XP2keKozzv6CRJHuE1S
+         OgDpmNBtc+m7UpQtZTaJLy57umsVQf6MPjSqXNjXlZo81P7TuQOWpBgN7M6dLuOzYQoi
+         /KwHqNT4rx68tvt3l23M/1KLKLt4VjReZnHOsUQrgRXiny6MMOFWfXTC+U44W5CA6fda
+         yHjDm6Djl7KR4kB49XStCigL/lPVuzeZ0XIuxLXP7IB5jjdhs8sLuxds9rL8ltTdnFsI
+         sy4Q==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=vldVUt1K;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of vikram.garhwal@amd.com designates 40.107.236.41 as permitted sender) smtp.mailfrom=vikram.garhwal@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <vikram.garhwal@amd.com>
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (mail-bn8nam11on2041.outbound.protection.outlook.com. [40.107.236.41])
+        by mx.google.com with ESMTPS id ge7-20020a170907908700b007c17f750b75si5301153ejb.796.2023.01.25.00.45.02
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 25 Jan 2023 00:45:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of vikram.garhwal@amd.com designates 40.107.236.41 as permitted sender) client-ip=40.107.236.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=vldVUt1K;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of vikram.garhwal@amd.com designates 40.107.236.41 as permitted sender) smtp.mailfrom=vikram.garhwal@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=lZKJ+r++xbLiJS/zYGFJP+fHkvEOBIMEkKfYQoukd5vtKLjDV4CJX2Z4fLEIGpzy0BqIKu6gKqYeHieGF1N1aoczy+XCEJZ0S5f3DXVN+ICaoVlK+Kvqtcc+CKbKNjTDuNYq4B07NxrnFnpbPYtdTXCqKOwb8NSat/wk8IQv6VzILXZIh0zr56et1eP7soRtwCb02QHA+p+ouIlXDFl6H1pvCyyknsv17aHYdXMfGLR12rzhK3/oEamKnieSEtjKbSvQu6H3PYp8pJfYJI/J8ftrzIse3zrn0z0GJ/uwS/yQiEbZqxLFx+3Y4/k7CvyGARSvkReOLrLRO+/r9OpLAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/6RMYIuXur/hQizPdgkR79Juo1RH5cFqlOnZ0Xl8lqo=;
+ b=gnf3Dn4Wk+B3G4Iz1BSqftFRfMkfnbb3ZWoUhPtRJfjktF9tiaW1hHhomY19+lu5H8C1KBIcr3oXhmuN8K0E+teANIjx5O93BwXqdnzOexzaLe31Hl5ESzp9MlttjqeNppvOj+Q7IJm4JvVBpgKv5ddClOLTLGVcNxn4j6r/rCw0IG5HfgfjUqFssnj0MUxCMhG+7T+qwNW+9N4UYA37Jsm4jCpd2/kzCtR7jgEQhIYLX3Wkvk6X97qYcB0H94edxntwdXsOAN7awuskVb8HbgmYl1RUIyde0yb6OeaSrz0fY5F50cv1v5Vt3YwHlyD2gXNrRGJvq/rjEDYDruOnaQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/6RMYIuXur/hQizPdgkR79Juo1RH5cFqlOnZ0Xl8lqo=;
+ b=vldVUt1KH+Mo6Rt3OeV85C4wKPj+I3uIcNFji1GmSnOBl1xCfVIgN+rCzLW4bVRjplysDmhGkRfGttqxjxXdjI97AE974GxcANT2bS8DNvNA1F6aq95y7I5IF7Dmrr1tKUGmbXEITGA8zCkUAxz0MpA2a+WX5RMl1ZA81En4m4c=
+Received: from DM6PR08CA0043.namprd08.prod.outlook.com (2603:10b6:5:1e0::17)
+ by SJ0PR12MB5674.namprd12.prod.outlook.com (2603:10b6:a03:42c::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.21; Wed, 25 Jan
+ 2023 08:44:55 +0000
+Received: from DM6NAM11FT115.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:1e0:cafe::50) by DM6PR08CA0043.outlook.office365.com
+ (2603:10b6:5:1e0::17) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.17 via Frontend
+ Transport; Wed, 25 Jan 2023 08:44:55 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ DM6NAM11FT115.mail.protection.outlook.com (10.13.173.33) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6043.21 via Frontend Transport; Wed, 25 Jan 2023 08:44:54 +0000
+Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Wed, 25 Jan
+ 2023 02:44:53 -0600
+Received: from xsjfnuv50.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server id 15.1.2375.34 via Frontend
+ Transport; Wed, 25 Jan 2023 02:44:52 -0600
+From: Vikram Garhwal <vikram.garhwal@amd.com>
+To: <qemu-devel@nongnu.org>
+CC: <xen-devel@lists.xenproject.org>, <vikram.garhwal@amd.com>,
+	<stefano.stabellini@amd.com>, <alex.bennee@linaro.org>, Oleksandr Tyshchenko
+	<oleksandr_tyshchenko@epam.com>, Peter Maydell <peter.maydell@linaro.org>,
+	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Subject: [QEMU][PATCH v3 04/12] xen_arm: Add "accel = xen" and drop extra interface openings
+Date: Wed, 25 Jan 2023 00:43:49 -0800
+Message-ID: <20230125084356.6684-5-vikram.garhwal@amd.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20230125084356.6684-1-vikram.garhwal@amd.com>
+References: <20230125084356.6684-1-vikram.garhwal@amd.com>
+Return-Path: vikram.garhwal@amd.com
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: BwVDcnqROt6m
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6NAM11FT115:EE_|SJ0PR12MB5674:EE_
+X-MS-Office365-Filtering-Correlation-Id: 73687c1e-53a1-42a7-fe2f-08dafeb06e6d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	oUtmTJ7y1AgSEHl6PkRSX8s2dmFNxi1Qja0LHx7oFtqtUemcwrD6RwisYgTFnSt5wjX9Ti199ItD9AE6uP9VklJCXtKwa46ODq4EG9mRhDuqUGJB5LCMK2n0+MYlWfgei6gEk8P5uf0NbXYb8JyLDKTJ8WKyeiVSSmE1D1COWs8+ZJwNjWb9LqYi7UNTWAiQhKHCUYNjioAsqHQMazjNS6zZt5p8TajUvqn3j5SM0DjhwkUPyqr9eqCkuzBGGgsM7en6WjuxDMBnGwR1nI0fRWqqKXdIDhDiCkS2kfFit6C8y/k4CE0XRUIRuI06xZo+U+PNj3CfICxDUaoqY2bpze8hP9o8s/tCRzkMxP3bwModvzFhXyF/oiFGD7osKj5kS+jAK5fyqrbHcB3t34wx63uYr6AOFA2mcG0d0QdF3VuXTITBESiEIpH3VnDB9t3MxjOMxXvK5d6aLibiqLd+2TQPjguR/mmKhoAIQo4zlJRBjLsT2WfZ4qtSWCEdpXcPKOgb4fBxwyveWS0Sly8kqLngXvKAILlBURXVBTy+fhCzS4kdH10BvcgHtBrlxASH97xfw9gnll4txiyJ1M8JLIbnE+SgMOZyK5azgwy+NSLThvAtMvalm1K4w+pAvXz8qUXv1mIEyX2licxUuoNy+ISl+wbgsvcqY7M2Uq1iGp5FnitYot42op4pVIewgRF62XhX+aspcFaHvy+G4DYgcQrATkTYyEpnf9BqgsNhJvk=
+X-Forefront-Antispam-Report:
+	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB03.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230025)(4636009)(346002)(396003)(136003)(376002)(39860400002)(451199018)(40470700004)(46966006)(36840700001)(47076005)(36756003)(8676002)(40460700003)(40480700001)(81166007)(36860700001)(356005)(54906003)(2616005)(426003)(83380400001)(336012)(86362001)(26005)(82310400005)(186003)(44832011)(478600001)(5660300002)(6666004)(316002)(1076003)(82740400003)(70206006)(41300700001)(8936002)(70586007)(6916009)(2906002)(4326008)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jan 2023 08:44:54.5966
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 73687c1e-53a1-42a7-fe2f-08dafeb06e6d
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource:
+	DM6NAM11FT115.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB5674
+X-TUID: mM0rWq09QJ3U
 
-We are getting a lot of failures that are not related to changes so
-this could be a flaky test.
+In order to use virtio backends we need to make sure that Xen accelerator
+is enabled (xen_enabled() returns true) as the memory/cache systems
+check for xen_enabled() to perform specific actions. Without that
+the xen-mapcache (which is needed for mapping guest memory) is not in use.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Also drop extra interface opening as this is already done in xen-all.c
+(so drop xen_init_ioreq() completely) and skip virtio/tpm initialization
+if device emulation is not available.
+
+Signed-off-by: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+Reviewed-by: Stefano Stabellini <stefano.stabellini@amd.com>
 ---
- tests/tcg/multiarch/Makefile.target | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ hw/arm/xen_arm.c | 29 ++---------------------------
+ 1 file changed, 2 insertions(+), 27 deletions(-)
 
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index e7213af492..ae8b3d7268 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -42,6 +42,15 @@ munmap-pthread: LDFLAGS+=-pthread
- vma-pthread: CFLAGS+=-pthread
- vma-pthread: LDFLAGS+=-pthread
+diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+index fde919df29..4ac425a3c5 100644
+--- a/hw/arm/xen_arm.c
++++ b/hw/arm/xen_arm.c
+@@ -137,30 +137,6 @@ void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
+ {
+ }
  
-+# The vma-pthread seems very sensitive on gitlab and we currently
-+# don't know if its exposing a real bug or the test is flaky.
-+ifneq ($(GITLAB_CI),)
-+run-vma-pthread: vma-pthread
-+	$(call skip-test, $<, "flaky on CI?")
-+run-plugin-vma-pthread-with-%: vma-pthread
-+	$(call skip-test, $<, "flaky on CI?")
-+endif
-+
- # We define the runner for test-mmap after the individual
- # architectures have defined their supported pages sizes. If no
- # additional page sizes are defined we only run the default test.
+-static int xen_init_ioreq(XenIOState *state, unsigned int max_cpus)
+-{
+-    xen_dmod = xendevicemodel_open(0, 0);
+-    xen_xc = xc_interface_open(0, 0, 0);
+-
+-    if (xen_xc == NULL) {
+-        perror("xen: can't open xen interface\n");
+-        return -1;
+-    }
+-
+-    xen_fmem = xenforeignmemory_open(0, 0);
+-    if (xen_fmem == NULL) {
+-        perror("xen: can't open xen fmem interface\n");
+-        xc_interface_close(xen_xc);
+-        return -1;
+-    }
+-
+-    xen_register_ioreq(state, max_cpus, xen_memory_listener);
+-
+-    xenstore_record_dm_state(xenstore, "running");
+-
+-    return 0;
+-}
+-
+ static void xen_enable_tpm(void)
+ {
+ #ifdef CONFIG_TPM
+@@ -198,9 +174,7 @@ static void xen_arm_init(MachineState *machine)
+ 
+     xen_init_ram(machine);
+ 
+-    if (xen_init_ioreq(xam->state, machine->smp.cpus)) {
+-        return;
+-    }
++    xen_register_ioreq(xam->state, machine->smp.cpus, xen_memory_listener);
+ 
+     xen_create_virtio_mmio_devices(xam);
+ 
+@@ -218,6 +192,7 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
+     mc->max_cpus = 1;
+     /* Set explicitly here to make sure that real ram_size is passed */
+     mc->default_ram_size = 0;
++    mc->default_machine_opts = "accel=xen";
+ 
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+ }
 -- 
-2.34.1
+2.17.0

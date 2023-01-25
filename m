@@ -1,124 +1,144 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp325846ejc;
-        Wed, 25 Jan 2023 04:14:41 -0800 (PST)
-X-Received: by 2002:adf:f852:0:b0:29f:4e42:33c3 with SMTP id d18-20020adff852000000b0029f4e4233c3mr28115366wrq.56.1674648881642;
-        Wed, 25 Jan 2023 04:14:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674648881; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp326631ejc;
+        Wed, 25 Jan 2023 04:16:01 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsQBASrntCdVBdRpI1+ALIR+C+UQt1NM/58wGYgmv2QNxXrXxjP/KnjiF60eu/hrQe5Bd/f
+X-Received: by 2002:a5b:4c2:0:b0:7f4:37a0:da7b with SMTP id u2-20020a5b04c2000000b007f437a0da7bmr17068390ybp.65.1674648961572;
+        Wed, 25 Jan 2023 04:16:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674648961; cv=none;
         d=google.com; s=arc-20160816;
-        b=GiEm5m5i1UhD1Qm3zB6rH+OPkxUuvqG6OQONXfDAxsufh+X1hhus07rvpvB/7czuCA
-         AL+j355vWu1Gea576YBUs2+3iN5wYwLMJWBA7h9kTnpLE4ayKlAndT8aK1LwfGB9I8DB
-         JqpHV6fWc8TvY6AcOhp0b1Vb83I/8FqZiGg4pgAtEDulaq0JV3KAVphzIDh06lHQvZAx
-         BXfYLt6BGU5S9sCXzgzMp0+Ux6uP3ormTjxyU60KTYZ2SnFfWL4Ell8k/Cg+QwLwPYFr
-         ebcJpI1Z6U9fsyZIJo2mqCatSc+avh6M/ZkyJyJlXSME8oeFez5y5180cZ+P8Y05mCGq
-         jaXA==
+        b=hH3OnlL4DKzl/lhR1cW+6fabrDogLvN0rAoqvzok03Lxxf/gvlh0pLO6UU5GOcdVXx
+         Bngk7K/TGYoYzFVffCDdmbAKZBtMr40VoPecodDsMbKvXm2dO5SOY5g7hYk7eR+xdyYI
+         0UC9K/C6Ppg0DdYlXklMhFbH6h0k49AIXYNStLxgeZM8UJUWdKbvgyHCLgFbvnYRmOju
+         aPZ3LOmH2XAUzrhAW2oxKO5gG1+DSy/79WSaxI6NqnoVfU4p7aH25FrZmKAAmuKTEek1
+         eK5OrqT0qTPxccJ8OuMV+FP7pZxwqK+EMDokhBQLGXqCuq9u12Tv/4tat8M8T6+4voTg
+         HtJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=xhb26r0g+ueN4ZNmdQEagPvQ+a1A1H9R0Dz0H7Jxv7A=;
-        b=U0mFWF+bwcwQrTrcIm3ZCaewyhnLxGyGb0KCPLaXF9ZescJluPktV3/oRtoH/I8V2t
-         163+h32fC1Av/4cuO2+jkLtWBz4avrjGENHRkcCc0zIKTykzMOjhKdcuILp1cfuK7MHt
-         2uMpVfxQVJuuCVp/AuluWNOzWw7LzULO0hZS3Y17XXsAoDnYwy1ohZxDoxy5kC6jDUPQ
-         rWFQE9y6KrMIK1Z3oaIRoelmKT5j3JDs3Jb/2EhOoImKhH2MEMVoSGztAcnPPiN8q0QS
-         WGMJYMDhl+PLL+xJZl9alMojJRL/6DOBh5I+5XhePlNxzzMdUpUYv0/rUe0NWidxM2Xf
-         v4Qw==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=vXuHSJVEYIFR0qE/mFztaCrjX3OKedEb0eJY4virvX4=;
+        b=Ixn3r77C5FFuFHmKr2z3OJienBljslVt6MT/4OdjC2PZ9XIjTIQ6GK7itg7wRVbv2A
+         6ZkysMck8UJAlHsXk9kXj/Lh++EOv3zPxj/xdcVaoDT+1SF96HQC9cezMlgwm1mLwl1F
+         VKMKyPnhZdvBj6SXZlUQTws7my49XqEfQ1f2n4fYxZNn1GHTr/kzY17l0vXCFsUBQK94
+         TgTV8N58EOyJABcyIPWztNDLH2dwoWvWwQoKkTuu7Zzho3z+2dqkHmUCd24KCCjyaQhF
+         5LMz3Z4fi3rOej6HCIRTVNFR9q71b8M4eddEKBkGAqETehU51o0Mfp/GH19lw4iXCTEv
+         exeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=guhMwydP;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t11-20020a5d690b000000b002bfbcc517d3sor523360wru.62.2023.01.25.04.14.41
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QhEZ05N/";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id n12-20020a25d60c000000b006eed48061f8si5944990ybg.202.2023.01.25.04.16.01
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 25 Jan 2023 04:14:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=guhMwydP;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=xhb26r0g+ueN4ZNmdQEagPvQ+a1A1H9R0Dz0H7Jxv7A=;
-        b=guhMwydPepfzwGA1kGpBuR2WhVE4IWtEd2jT4g14TC2S7FyckND18Gzv0HhKmqeSIe
-         ooSs/yF1LsOfJt6Fiq2TpvInaBpxfDlVPQBeg1A1jkSWFu7Eff0QNrAlEHakep7Aup3m
-         sz8Z0C6GHd+KOG5n400W/gwzQlTIjOp2rBlN+lLwpjri4fP0YrAd/0t6cp+wn4kroIjF
-         e4KsmLzsecMYuXP/esYy3+MyhbcIFXzROsXbLGFScMl8HEP1I71o04+3qRO8OuTr2q+7
-         ZxiwbtnAUo0RlO8Id2IF3e/jEV+kz3pnBRDL0sBl1oyxGNkWXtUOJha8e/SES63RiWpY
-         6rPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xhb26r0g+ueN4ZNmdQEagPvQ+a1A1H9R0Dz0H7Jxv7A=;
-        b=Isf88mQR07IgOhOunRQY3aySwOrimS6bla+fnsYnHFe0KMgpQaYixKqqUdX9Nb5W5k
-         IlzHpFZVX42puAtG6IsTn+ZEpcbiDiIynerWoALK299MprK5u6QiyNQugFgYoogkuhL2
-         fTKVRwqnuPnshwtaW2a0wxXi3iUbwwxrdVDOQhOiI1id5gEb1EiEkLjBE6/9ZWPQ0Fjr
-         RnLebCKK7DgRyqxDZq0zOR0gSBzVX3gcZ8mhv2EiuSi6T9TO6wNIxmzPmF+RVKd76JcO
-         4fMCKzyWtDoP9uZ62SlBQE7oUAgG9U2GbkyLAdfB5r1Kq/4im+hG5K5JahLRszzZlUPy
-         LBXw==
-X-Gm-Message-State: AO0yUKXXyCXhTgYzQMC3SHmzMNmSLewGsxRp33T8PwXGfTi6BSthld/I
-	aaY1PeUr22uT6OO0XR4ODSLB8ERe6YHeFRbZtDB0qA==
-X-Google-Smtp-Source: AK7set817PJCJzgC8tRINNYNqO585/eE3u97N4YwBmalYUZkfjPj4GhJfW2GMCZxIxJbK1bzFzUD+Q==
-X-Received: by 2002:adf:f7c7:0:b0:2bf:bf27:2dc1 with SMTP id a7-20020adff7c7000000b002bfbf272dc1mr550731wrq.60.1674648881013;
-        Wed, 25 Jan 2023 04:14:41 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.0.114] ([196.77.22.181])
-        by smtp.gmail.com with ESMTPSA id n21-20020adf8b15000000b0028965dc7c6bsm4199593wra.73.2023.01.25.04.14.38
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Jan 2023 04:14:40 -0800 (PST)
-Message-ID: <e167b486-9616-6eeb-0aad-fc94f08e6b32@linaro.org>
-Date: Wed, 25 Jan 2023 13:14:37 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v2 16/35] tests/tcg: Use SIGKILL for timeout
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Ed Maste <emaste@freebsd.org>, Thomas Huth <thuth@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Markus Armbruster <armbru@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- John G Johnson <john.g.johnson@oracle.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Bandan Das <bsd@redhat.com>, Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Michael Roth <michael.roth@amd.com>, Eduardo Habkost <eduardo@habkost.net>,
- Beraldo Leal <bleal@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Qiuhao Li <Qiuhao.Li@outlook.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>, John Snow <jsnow@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Darren Kenny <darren.kenny@oracle.com>,
- qemu-arm@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
- Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Li-Wen Hsu
- <lwhsu@freebsd.org>, Peter Maydell <peter.maydell@linaro.org>
+        Wed, 25 Jan 2023 04:16:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QhEZ05N/";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1674648961;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vXuHSJVEYIFR0qE/mFztaCrjX3OKedEb0eJY4virvX4=;
+	b=QhEZ05N/8wPS9r4OkF1jmNOQDr/cBWQERqIfkwetpvwx+9VxPjgrLEGWYZGMZRjokerWOq
+	+vKmf2zXHwes39IY5DkIrMcRGw1mqIHeWQ7HXPyvkhfScwOBDVQ9lQd3ygSQ52x4jgh32/
+	KQLSMAEtlUIml3rlYjLs3Oow7r/jeds=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-523-tFhvqzzgPN68A4bnKdCR9Q-1; Wed, 25 Jan 2023 07:15:57 -0500
+X-MC-Unique: tFhvqzzgPN68A4bnKdCR9Q-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 84C6587B2A1;
+	Wed, 25 Jan 2023 12:15:56 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.150])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 50F68C15BAD;
+	Wed, 25 Jan 2023 12:15:52 +0000 (UTC)
+Date: Wed, 25 Jan 2023 12:15:50 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+	Ed Maste <emaste@freebsd.org>, Thomas Huth <thuth@redhat.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Jagannathan Raman <jag.raman@oracle.com>,
+	John G Johnson <john.g.johnson@oracle.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Bandan Das <bsd@redhat.com>,
+	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Beraldo Leal <bleal@redhat.com>,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	Qiuhao Li <Qiuhao.Li@outlook.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Alexander Bulekov <alxndr@bu.edu>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	John Snow <jsnow@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Darren Kenny <darren.kenny@oracle.com>, qemu-arm@nongnu.org,
+	Yanan Wang <wangyanan55@huawei.com>, Cleber Rosa <crosa@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Li-Wen Hsu <lwhsu@freebsd.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [PATCH v2 02/35] gitlab: add FF_SCRIPT_SECTIONS for timings
+Message-ID: <Y9EdduuXFEJGglpz@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20230124180127.1881110-1-alex.bennee@linaro.org>
- <20230124180127.1881110-17-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230124180127.1881110-17-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20230124180127.1881110-3-alex.bennee@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: zpvyTgROURo2
+In-Reply-To: <20230124180127.1881110-3-alex.bennee@linaro.org>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+X-TUID: u85SKYzSwzaO
 
-On 24/1/23 19:01, Alex Bennée wrote:
-> From: Richard Henderson <richard.henderson@linaro.org>
+On Tue, Jan 24, 2023 at 06:00:54PM +0000, Alex Bennée wrote:
+> From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 > 
-> linux-user blocks all signals while attempting to handle guest
-> signals (e.g. ABRT), which means that the default TERM sent by timeout
-> has no effect -- KILL instead.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> Message-Id: <20230117035701.168514-2-richard.henderson@linaro.org>
-> [AJB: expanded commit message from cover letter]
+> Suggested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > ---
->   tests/tcg/Makefile.target | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>  .gitlab-ci.d/base.yml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/.gitlab-ci.d/base.yml b/.gitlab-ci.d/base.yml
+> index 69b36c148a..50fb59e147 100644
+> --- a/.gitlab-ci.d/base.yml
+> +++ b/.gitlab-ci.d/base.yml
+> @@ -6,6 +6,11 @@
+>  # most restrictive to least restrictive
+>  #
+>  .base_job_template:
+> +  variables:
+> +    # Each script line from will be in a collapsible section in the job output
+> +    # and show the duration of each line.
+> +    FF_SCRIPT_SECTIONS: 1
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Ooh, it is nice to learn about this. FWIW, I found it eventually
+documented at
+
+  https://docs.gitlab.com/runner/configuration/feature-flags.html
+
+with a footnote indicating it si valid to set in the pipeline yaml
+config, not only the runner.
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

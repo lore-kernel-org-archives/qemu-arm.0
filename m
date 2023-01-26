@@ -1,118 +1,128 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp369330ejc;
-        Thu, 26 Jan 2023 03:44:43 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvnUUVFi9/IzDD/h7aDu1UucpyYN2wiwbKbi0+z6LyII+CJ2yh6QTE4+Hd21ks4IKubCYf+
-X-Received: by 2002:ac8:7f02:0:b0:3ad:17ca:c3f with SMTP id f2-20020ac87f02000000b003ad17ca0c3fmr65164501qtk.35.1674733482858;
-        Thu, 26 Jan 2023 03:44:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674733482; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp405549ejc;
+        Thu, 26 Jan 2023 04:43:35 -0800 (PST)
+X-Received: by 2002:a17:902:c94e:b0:196:3650:63e3 with SMTP id i14-20020a170902c94e00b00196365063e3mr4334297pla.1.1674737014859;
+        Thu, 26 Jan 2023 04:43:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674737014; cv=none;
         d=google.com; s=arc-20160816;
-        b=fxiPzgdSUoxc4atuKCpkhKFY+K0QEKEInJmU7Jo1fd7CfQisYCS7zSAidWOAlWIz26
-         8DEzaRNq1xDWgW8+UpDoOVQGBfcQSo1WL3U5LKhs90ILlTnSKP1WbhY4+lIC8IuCqxBq
-         Y8uJcXESLVXeP5yP8RLsUOrCa6Nb2/fRo7+9I3G6mEIIaTdbshen0Fw0pJuBDjzqn77b
-         xYLBspOaaciBqMyp4DydYS26VdqaL+ywv7hceEk/15LNDHsTLLeEb9ukvTdD6jSIFZ+T
-         HOlr9q6BihUZuQM6PZX+jJwsB5oXZRMl2CvpCsaUzxtgmdkY4+wMG3RAU6pEiTlBLT5V
-         /mJg==
+        b=ym4loO573IWTuI8ct+TuHHk1V3EyC4OEAfKTXgpGKM9VSp9763Z2DeEzb63e5PCGhM
+         OjcW7FR3WNXZyK1qSI+Og3PEnmp3kq5fcZvYoI2a6x5bIoTTingmYd7ZAnV0pygsnLUi
+         reWX59UWpglxAQ9o5FFRL8pcKojTktGan7X9xMzZJzWCN2+OYgSvidHoP6hzajHuineo
+         JOxTGKhBWsq0zhdiNHGSpXe72UIQ/GvijVWABPeBq1d6crxTnY6RaPQGs4wNXWdTiLkr
+         kUKrz1ocR0HSQ+p1cqODW6UI3sFMSuBIAozflgB72fkzVkl9CJ7/mzmDeeEfWeoMyhNn
+         HRng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=t0W82eVkxLwYifr8Md1HSizhjhSvEnFURdJQhGghNKw=;
-        b=lbo12t0Ahn6c1IH1AzYfYb6sWKZVIPqDmokhvX0H8BmBb+ZHfg5/6FPv22I2cv/Mp/
-         maK7GTsLbWzTM5FUJsye8wMBzO7hA+offeqULmrTUY2JiPrbKMOKmoc5sPxeuMiQo21y
-         NC9QPNXjFuQk/L/xm5eXjDdUp1JFG58BWP7WlJ/jOV2eWSPWaii/OFPbLXwO3aCu4+Ks
-         PEVvTvTJ0NUPJfqBb1vO7W80nDCdk495FYB3aAZmqcME4/YFpJYCFABY52FRd4tD1uPk
-         QveatCA5Cs3xZpnsaflI93CJY44pQduUlXWvDJslMrty07i8ahN4UHcFolOu0BbG7XQ7
-         diTA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=D2hlvI8lyCcJMPlrPJST1vcEL6w9MkuLh14hpGUqyys=;
+        b=rEFkZJwcqOFDmkC6bCH8tUIVtqwxyKnSPslSUx03O+YJ/LmlpoRliHc9GWQyLgvUu5
+         STpTYzTnepBZMMp+RXK39oeNTQ4M6KgN/QEHeXw5OlpMBqFfYJ2xTRHc9fOPvCoDuGhw
+         Ieg/iKeUcI3xPSuO3GESUNJAqjZu35PQzL0VHcasD2d6EbNGwBsqwQWQTClgSSBHt3Gx
+         9eLYhscaXsB2pHhXuHCD5iclF8ZJm0Xo669Wi+ha+99vz7IKTMm30k7Hhx5DECxwPQDp
+         Ki8QMlVrMspv+asI7KmCkDSz4ZbPzp+RjYjF2YYC/KCGWXxnPDlaubGArvqH9ncBwCT/
+         Dqqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 7-20020a05620a070700b006f9bc401e6dsi760915qkc.70.2023.01.26.03.44.42
+       dkim=pass header.i=@linaro.org header.s=google header.b=ASWppiC5;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i11-20020a170902c94b00b00194c43382fasor600531pla.142.2023.01.26.04.43.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Jan 2023 03:44:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 26 Jan 2023 04:43:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pL0g8-0000sx-U6; Thu, 26 Jan 2023 06:44:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1pL0g7-0000sk-K5; Thu, 26 Jan 2023 06:44:27 -0500
-Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1pL0g5-0003HK-Ra; Thu, 26 Jan 2023 06:44:27 -0500
-Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id BEC1E260241;
- Thu, 26 Jan 2023 12:44:21 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
-Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
- by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SrT7M81La2U0; Thu, 26 Jan 2023 12:44:19 +0100 (CET)
-Received: from puchatek.com (83.8.199.139.ipv4.supernova.orange.pl
- [83.8.199.139])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 2F38D260096;
- Thu, 26 Jan 2023 12:44:19 +0100 (CET)
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-To: Radoslaw Biernacki <rad@semihalf.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>
-Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH] sbsa-ref: remove cortex-a76 from list of supported cpus
-Date: Thu, 26 Jan 2023 12:44:16 +0100
-Message-Id: <20230126114416.2447685-1-marcin.juszkiewicz@linaro.org>
-X-Mailer: git-send-email 2.39.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=ASWppiC5;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=D2hlvI8lyCcJMPlrPJST1vcEL6w9MkuLh14hpGUqyys=;
+        b=ASWppiC5fQXEsg/mmROIFcS2qBpdkrjTX1VJKnfQ2/k03QZaFOxoKXXQhQRx8hSUrW
+         TEHJ0C0DiKorAnM1FNlYuQEiEb2ApQtDfXMLxeVZqcv0UkqfgQeV4EKHVVaDgpn6a4my
+         wgXiyD/lbqCXX6K+n8wOk45uIeC2WdUgKNEGmFVvayemjKMkszC2ilZCVORsJqX6T5ib
+         mgTuZkYX68hij2JyHaTwb3LrdZwcDWjiobhq60hvRB7YI06Odb1TN+6Q6fsY6noLDwCI
+         VRQtnIDejk3Q2C6NP2G0tZpi7tentRxJ2GhRxNb3jMhtDJ2jfUZAH9Eliq8FGYjO8BZA
+         2SBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=D2hlvI8lyCcJMPlrPJST1vcEL6w9MkuLh14hpGUqyys=;
+        b=VERgYa/I+2RVZsiRFiKHLC/5TPo+mP4tCBkAq+eKwZHu5dB246YqIiXYHwrFzg+joC
+         4JTsOgZLgYIk8slJ9rUiBR8ii4EWddH7L4AVzMlT9QC3th+JyS3HbijRxonrlw2Ov+OL
+         PG90vgb8BnEekJa7W2hNCzFXENsPC9ZNHzBmFzuneZ4WCLE6tX18376bnV6mneavJQOl
+         20P4xF4DV4n/ElKmtRWt2Q6+EFkxCrjKgwrrTCj2NGuTwZ8JAce5M5Yr65NsRV0umPRJ
+         7Wz0P4WbSVnCgxPpde0iflYqs1M4hB/e7SlpKURZ38p2pw9yXpsmua3hmNfb9OpfrfNE
+         8zKg==
+X-Gm-Message-State: AFqh2krUbCNanNbTye3rzGVBn36d3xj7lv6qERf5yMzTzHz+TDaVvnfO
+	RvhlX9m4x6TwMvyYVN1JBGhUZ3FNxgJWPs25hSlLY6rTt2eTiKmi
+X-Google-Smtp-Source: AMrXdXs400WuawVLDuFJZyW+uz2qtMMPSdzkALNh4CWMBjNnVT1DTl2fekfvxxh7Z1TtcOdXSXeiungt30WkzYAY/gc=
+X-Received: by 2002:a17:90a:d801:b0:22b:bc67:1dec with SMTP id
+ a1-20020a17090ad80100b0022bbc671decmr3023795pjv.67.1674737014315; Thu, 26 Jan
+ 2023 04:43:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: softfail client-ip=213.251.184.221;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I32dwLiNIm+v
+References: <20230110164406.94366-1-philmd@linaro.org> <20230110164406.94366-13-philmd@linaro.org>
+ <CAFEAcA-yEN3F3p6W16vfML4dAHzdwSnOS=759MkqQ0qDpArnaw@mail.gmail.com> <87sffyreuv.fsf@linaro.org>
+In-Reply-To: <87sffyreuv.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 26 Jan 2023 12:43:22 +0000
+Message-ID: <CAFEAcA_KRTzJy6ywjBVPx34ccWNTdcnNsC=5JYVkTNDSRSRsRA@mail.gmail.com>
+Subject: Re: [PATCH 12/18] hw/arm/digic: Replace object_initialize(ARMCPU) by object_new(ARMCPU)
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org, ale@rev.ng, Andrey Smirnov <andrew.smirnov@gmail.com>, 
+	Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, 
+	Niek Linnenbank <nieklinnenbank@gmail.com>, Jean-Christophe Dubois <jcd@tribudubois.net>, 
+	Antonio Caggiano <antonio.caggiano@collabora.com>, Rob Herring <robh@kernel.org>, 
+	Antony Pavlov <antonynpavlov@gmail.com>, Jan Kiszka <jan.kiszka@web.de>, 
+	Beniamino Galvani <b.galvani@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Pbvm1/EWvyGt
 
-Cortex-A76 supports 40bits of address space. sbsa-ref's memory
-starts above this limit.
+On Wed, 25 Jan 2023 at 12:14, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> Peter Maydell <peter.maydell@linaro.org> writes:
+> > I'm not really a fan of this, because it moves away
+> > from a standard coding pattern we've been using for
+> > new QOM 'container' devices, where all the sub-components
+> > of the device are structs embedded in the device's own
+> > struct. This is as opposed to the old style which tended
+> > to use "allocate memory for the sub-component and have
+> > pointers to it". It means the CPU object is now being
+> > treated differently from all the timers, UARTs, etc.
+>
+> I think you can certainly make the argument that CPU's have always been
+> treated separately because we pass it around as an anonymous pointer all
+> the time. We currently can't support two concrete CPU types in the same
+> structure. For example zyncmp has:
+>
+>   struct XlnxZynqMPState {
+>       /*< private >*/
+>       DeviceState parent_obj;
+>
+>       /*< public >*/
+>       CPUClusterState apu_cluster;
+>       CPUClusterState rpu_cluster;
+>       ARMCPU apu_cpu[XLNX_ZYNQMP_NUM_APU_CPUS];
+>       ARMCPU rpu_cpu[XLNX_ZYNQMP_NUM_RPU_CPUS];
+>
+> which only works because A/R cpus are the same underlying type. However
+> when we want to add Microblaze how would we do it?
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
----
- hw/arm/sbsa-ref.c | 1 -
- 1 file changed, 1 deletion(-)
+You'd add fields
+    MicroBlazeCPU other_cpu;
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 4bb444684f..67c1f68c54 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -145,7 +145,6 @@ static const int sbsa_ref_irqmap[] = {
- static const char * const valid_cpus[] = {
-     ARM_CPU_TYPE_NAME("cortex-a57"),
-     ARM_CPU_TYPE_NAME("cortex-a72"),
--    ARM_CPU_TYPE_NAME("cortex-a76"),
-     ARM_CPU_TYPE_NAME("neoverse-n1"),
-     ARM_CPU_TYPE_NAME("max"),
- };
--- 
-2.39.0
+As you note, at the moment that doesn't work because cpu.h
+is magic and embeds an assumption that it's only included
+in compile-per-target objects and therefore any given source
+file only includes one of them at once. I think we should be
+aiming to remove those assumptions, not work around them.
 
+thanks
+-- PMM

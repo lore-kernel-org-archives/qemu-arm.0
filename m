@@ -1,202 +1,488 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp697627ejc;
-        Wed, 25 Jan 2023 14:21:02 -0800 (PST)
-X-Google-Smtp-Source: AK7set8brU+WGCuCLoUurNsTqjIaYb2v1KvRnlaJSwAfu+B33CCuEoeo1KaKdOib1SQHmW78zfLW
-X-Received: by 2002:a05:6214:224:b0:537:7a35:4b39 with SMTP id j4-20020a056214022400b005377a354b39mr2633080qvt.7.1674685261952;
-        Wed, 25 Jan 2023 14:21:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674685261; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp113926ejc;
+        Wed, 25 Jan 2023 18:44:54 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuikicV1efyMxwYbQ8EHkNoxeVAstdWLlyHrBkNbSxDt3ZADHtRR7Qmm122CyTJjPMhQc6d
+X-Received: by 2002:a17:906:3e51:b0:7c1:932c:96d7 with SMTP id t17-20020a1709063e5100b007c1932c96d7mr31956243eji.58.1674701093996;
+        Wed, 25 Jan 2023 18:44:53 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1674701093; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rYQ7+CfH94eMGMhQBKzoQTdnh/Vj0acqRYJ7X14VktVmwJ0wqqThtMWdSBaNVM4YnT
-         7CSiUXcpfk24AanaohMg5vV7w4ek0ZanS9mjdJomzqwitxzhL1uOx/mgB+vsFCfVxTYV
-         gFd1w3DgWR6sVVdZENdpw6BDNbP3rQWPteonk0vlkSi0/UEt+gUPmsq2g+9qchKN29av
-         FfjGMew2yTAFfPg/v/jonW/DJSyg4C7c9TjOQjiDIWtAiCdBnDA77nCPIbM/5rFox1e5
-         X+HujPN1pjTfmuE1/h035uQCrReC53x3Wd5KHBimf1XumNgF09hdxOIKvlKmVAIyQHH1
-         H/Wg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        b=m7l9NoO16vHNnShU5Jtm5bjihWKFX2+d/WdQjTPXyoYzfnvAxWIgejSQ7f4acLoLBX
+         /VBIfkJR+N+yrODjDsd7Sex+e4qh8kzJSEobcYKhKU/BAtctve19F2aBQU8uEnE4kdnu
+         EQQH8PjDiqhApWSHuD7xn4kNG5viDYJIFibX55WMAqlC/KLTYoptdBmEe5ujkWDXRM1o
+         K70/9UwitIv7TIyF6vwSYVo2F1cJyGZOxOBjCILnBLrhW8AP2qVfKrMCgrhMndSIJPlo
+         iyNRH8kMyDVdSmpmMkr+WZ6PRC7TeVxsJs3JTQklaP9UHszMz1DEbYC29zVje8qPTu0H
+         5dfQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:in-reply-to:from:references
+         :cc:to:content-language:subject:user-agent:date:message-id
          :dkim-signature;
-        bh=Na3xe+QZCW01A+v/Yj9/ftxjQvjcENPbaW+sNyyenXI=;
-        b=r15lDoXg8cr0nM3uNpqzDbvXF1Dm66fpPU8bPvdXCwHuphoKkCJS8a+ZRQgG6w0/xi
-         qAgumKeKZpPHTZ6pkmmry8f+K/VGOsfTOMe393/qzBawM977V3V1vX01RtHE/RhnycB1
-         Qkr8XRL0XoWIqQenRiXGN35gjW7bWoxPO9RZBeYagnRQKzuTpBoB6wFoXQ01mMGCzuF9
-         Hj+cJxap9S3Be8swf3zmtEBvq2f3qR1j+l53NO+mB8qDWHeI0CNnHFbFyDEgfkI0Zqbx
-         YKfODOMz3NpwqdznWSn5ngNnikrfS5dQWsQfoykWOVjvQHKIpk6W444Sp1H/zdbG+A1g
-         +y7A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N5WY1p+6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10-20020a05621420ca00b0053485182ab4si4880690qve.262.2023.01.25.14.21.01
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Jan 2023 14:21:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        bh=rlvI8LkXToqzdA3+aPRP1u9+dN8LW4rsDNqSst6ck3o=;
+        b=UaCbQcU/u6W2KQlhCeclCyUQM/R6osM7f7qcLsxayKYRxT3ziNhoiAK7WNJOA+xfDK
+         3Dyxg3mlXXvQxEV6iiyl+5UmGcZLtO/HS1AloEVrUvbLzAZgp5QYgcl8pkoA3NcGtiwQ
+         X3MN64gyFOEp3sCd14onF2aatcgXIhD6MS+nXmXGFp1iSKVTFyoemOfxLZgr0gGPg5zz
+         T5rkOp/OY46WZit2mk652lqs1R0IquLXpJ3ZVekFzcYi4ZX4sw8tJ0auS9Djjhli2ga0
+         EWeeThpPWYU+kJSpF8RgRAhwF15fpVkmmSSaom6wqzRt5OqVaVx1wFirMj+VDkyhXutB
+         dsGQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=utuKKBMd;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of vikram.garhwal@amd.com designates 40.107.244.84 as permitted sender) smtp.mailfrom=vikram.garhwal@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <vikram.garhwal@amd.com>
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (mail-mw2nam12on2084.outbound.protection.outlook.com. [40.107.244.84])
+        by mx.google.com with ESMTPS id gc14-20020a1709072b0e00b0081a9c3ca498si7432100ejc.314.2023.01.25.18.44.53
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 25 Jan 2023 18:44:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of vikram.garhwal@amd.com designates 40.107.244.84 as permitted sender) client-ip=40.107.244.84;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N5WY1p+6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pKo7l-0005x9-7k; Wed, 25 Jan 2023 17:20:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1pKo7j-0005wy-IF
- for qemu-devel@nongnu.org; Wed, 25 Jan 2023 17:20:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1pKo7h-0005X8-Kz
- for qemu-devel@nongnu.org; Wed, 25 Jan 2023 17:20:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674685205;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Na3xe+QZCW01A+v/Yj9/ftxjQvjcENPbaW+sNyyenXI=;
- b=N5WY1p+6abgutvkUrG4GwTS9d+Frf+D/7nI3MZOD2yOHk56GWRLvsVsml6DUVxhBI2FiDF
- bZHVLcT9iUx9PmVlMyN44Ui0Ax4rLHyYtvTbKyufAVOkeLlcmzTFaqacIKQ5NDjdt4bnVn
- uHwHCPYz5hhTx2IHXmEslll2HWapwmU=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-653-dZa9kRTuPoi_YhvH_rzgJQ-1; Wed, 25 Jan 2023 17:19:59 -0500
-X-MC-Unique: dZa9kRTuPoi_YhvH_rzgJQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8D7D7100F903;
- Wed, 25 Jan 2023 22:19:58 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.105])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B172F1121330;
- Wed, 25 Jan 2023 22:19:57 +0000 (UTC)
-Date: Wed, 25 Jan 2023 17:19:55 -0500
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Alexander Bulekov <alxndr@bu.edu>
-Cc: qemu-devel@nongnu.org,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Mauro Matteo Cascella <mcascell@redhat.com>,
- Peter Xu <peterx@redhat.com>, Jason Wang <jasowang@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Bandan Das <bsd@redhat.com>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Darren Kenny <darren.kenny@oracle.com>, Bin Meng <bin.meng@windriver.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Jon Maloy <jmaloy@redhat.com>, Siqi Chen <coc.cyqh@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Paul Durrant <paul@xen.org>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Amit Shah <amit@kernel.org>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Fam Zheng <fam@euphon.net>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>,
- "open list:virtio-blk" <qemu-block@nongnu.org>,
- "open list:i.MX31 (kzm)" <qemu-arm@nongnu.org>,
- "open list:Old World (g3beige)" <qemu-ppc@nongnu.org>
-Subject: Re: [PATCH v4 3/3] hw: replace most qemu_bh_new calls with
- qemu_bh_new_guarded
-Message-ID: <Y9GrC87Nbp6ViSBj@fedora>
-References: <20230119070308.321653-1-alxndr@bu.edu>
- <20230119070308.321653-4-alxndr@bu.edu>
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=utuKKBMd;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of vikram.garhwal@amd.com designates 40.107.244.84 as permitted sender) smtp.mailfrom=vikram.garhwal@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Ste5XnmvEcriXvXq/ATwzg61Ckz+VNvBnHr1RseZq5qj5fbcgIjqh5/iUXixGDsRbfxX6ggx4ZyAMibpbBJpEjIv6VqBJM/yJveE6jBi1WasrXsonXPxWGzK9NITofE3eCv4QeLwsDSU8k+79Z8hRMHVCLjvwurljetd0/TL2HejDduvGpIprV+oTmTI0gVO5CkNPcxBlmO5dTvJv2h17bd/ZPd5KZy8uhJaNht0w3+xZkPq9Eq8Qd0xShhZPAqKbTUQ5QYTB3EVqiPchg+1dueoItqwj3IxTFWeAMlTSL+dUSXhnBIBwA7JYq4z9vTovImNVbzNmKK2uN9Ib9NI8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rlvI8LkXToqzdA3+aPRP1u9+dN8LW4rsDNqSst6ck3o=;
+ b=iAlvDPt43YZmhCFG146wM14pMaRY5849IXTaIi7n63p3zgEtzrKGOpIgtyt1Cf5Hxc6ZlZp2RW2fe1sBv5j6c8jNMrSXg8XLsSjIP6PeMEjGGLqOEtJkA8Us3GQ87/dMsZI6R3+ScVIjcs97kcH0eygZt7zPQIZ4wqYGyRdScjlOynoFuXVeaRvxXkwDj8QEF0gpY7ysAQ9LI9hG1kIugRefVvZ077tJJXsc9Tr3m6AuZs67U0J4vEatePgtL+E/JU8EfjE7zoaNn7hvaKPdHy+Jci8an4Z/vXMkGjeXBGXvlQri6dEWwI+vGC0JAN7OiKVYqHm018AH+hCu5bj4Yg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rlvI8LkXToqzdA3+aPRP1u9+dN8LW4rsDNqSst6ck3o=;
+ b=utuKKBMdWOQXkk+KTqnNb49FqXiRgl0maSdw6798T7ksZoeJoi10S6MRvVCPBxeSSppdI91ffpWFEUWDamd5jc502EW2BeHME8QMBtQ6MjsYvf+4Q5bC16rUyr0anLUCyrwiXyF9mxIzN/CI/UQgBZpA4pz4Lsf5BOgOhtyRV7A=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from MW3PR12MB4409.namprd12.prod.outlook.com (2603:10b6:303:2d::23)
+ by SN7PR12MB6839.namprd12.prod.outlook.com (2603:10b6:806:265::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.33; Thu, 26 Jan
+ 2023 02:44:50 +0000
+Received: from MW3PR12MB4409.namprd12.prod.outlook.com
+ ([fe80::f803:f951:a68f:663a]) by MW3PR12MB4409.namprd12.prod.outlook.com
+ ([fe80::f803:f951:a68f:663a%6]) with mapi id 15.20.6002.033; Thu, 26 Jan 2023
+ 02:44:50 +0000
+Message-ID: <d6bb030b-406a-5a07-f089-2382bdd46e3c@amd.com>
+Date: Wed, 25 Jan 2023 18:44:47 -0800
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [QEMU][PATCH v4 09/10] hw/arm: introduce xenpvh machine
+Content-Language: en-US
+To: Stefano Stabellini <sstabellini@kernel.org>
+Cc: qemu-devel@nongnu.org, xen-devel@lists.xenproject.org,
+ stefano.stabellini@amd.com, alex.bennee@linaro.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20230125085407.7144-1-vikram.garhwal@amd.com>
+ <20230125085407.7144-10-vikram.garhwal@amd.com>
+ <alpine.DEB.2.22.394.2301251410440.1978264@ubuntu-linux-20-04-desktop>
+From: Vikram Garhwal <vikram.garhwal@amd.com>
+In-Reply-To: <alpine.DEB.2.22.394.2301251410440.1978264@ubuntu-linux-20-04-desktop>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SJ0PR03CA0283.namprd03.prod.outlook.com
+ (2603:10b6:a03:39e::18) To MW3PR12MB4409.namprd12.prod.outlook.com
+ (2603:10b6:303:2d::23)
+Return-Path: vikram.garhwal@amd.com
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="PR/kp6ea097A6OkX"
-Content-Disposition: inline
-In-Reply-To: <20230119070308.321653-4-alxndr@bu.edu>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RSInVIMvRkfi
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MW3PR12MB4409:EE_|SN7PR12MB6839:EE_
+X-MS-Office365-Filtering-Correlation-Id: c57ce31b-6a8b-4479-e274-08daff474b4d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	nHrgwokLaRcsjOFVSdFHPpbNMamTQHmdFZbc70H+KUyN1bJf8hZeDLvQM26+DGsipBtadJR34q+uaXifleXh3RLcU+pHM0ejpGCAC8vryHeh9Bsft0WjUUciKMMJBr8QmHeAuvrjXdZVLq7TvBYDh3IPrrVi62L/8lG2bIbrIhcq2ejsEko/ZLdzXvmOpTjb0qdxaIdVciZffdj6UqVIh2Gxh2yQc5VP5SfA6agfZr8dVpVCd+joe+XqHZgwGkrq0B3i4wH7Lh8artu2YhMGjW4SNT6HcfsjbHqyuysLgo6XDu/s35dreuPTduTka1T/HkX3jU4OTBqhWM6V1O42lhSe+M4liLqVRDaQJCf5GMK3wTkMwDugCmH8lPsOgT/EUgVPd7jMvo/5kqmHWAVp0ZlmOI/gxELXHfJd7zOcFo4//dmdk7ahOAx5vpCxPT2Ts+VsPqtrRvGVtCvHFeQgrdB1yR2eBPDbWVX1UHuiR9gGbOVMCZL7CjrM5Strq344s7yHQyYUqrzAUsBfeGaWERHH2ue/BMsnPKc4BlcOfcJrSfzhakaJhUxz5um3Rc9CjbGgNXBHJN5NKgSCKE5ft8ABP57X97z3Zm/ldRnWj18T22NzPGrmBw/tfcdwWVymD4ng3lRh+5TxN5pPTJTWtxLQ5jXys6VAqSqa01NSib/PU54OdZ7XSLDQj2SknUw18+ojUyNb5d+i2Cc7jAubzs3lzfqZ89/OgjOoi+5CfYJ8l/TxiIxKPELHoBrABWK7I0XSIDBH5S+mgHUk1gz9Bw==
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MW3PR12MB4409.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(39860400002)(346002)(366004)(376002)(136003)(396003)(451199018)(66899018)(2616005)(2906002)(36756003)(41300700001)(86362001)(4326008)(44832011)(83380400001)(31696002)(30864003)(66476007)(316002)(38100700002)(478600001)(5660300002)(6506007)(6916009)(31686004)(8676002)(26005)(966005)(186003)(6512007)(66946007)(53546011)(6486002)(54906003)(66556008)(8936002)(6666004)(43740500002)(45980500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?d2ZHdWdQbnZ4aWZWcW1LWExlZ0tXSWQ5MEpkSjk2dlMwSjFjaGUrd2J1NEtk?=
+ =?utf-8?B?WUFaZm1LOTBmb2pvMUdwMjMxNTlYdFViTVVFdG5vUTdaRHh4QjdraUxFSUlC?=
+ =?utf-8?B?MW1tdmovU1NOZGRQdldnV1ZjazN6eGJ6WXZxUUdDOHJnUUVqdGt5N1d6SjZ0?=
+ =?utf-8?B?NDYzdDF1QUdmRlhnY1BOWXZYdVpsN0IwbzNBd3NoRHdobUFJZWhKOVdnSzhO?=
+ =?utf-8?B?YVhPVkV3NHNhTnplNGRMaDF2SVBtQWdaOXQvMEd3KzU1d0xmSkE3TytMY2JD?=
+ =?utf-8?B?TngvbmVXWHRhckFtQ3AreGhOUEJZN1BVRlkya1F0OHpNTTJxd1VHVXNMV2hG?=
+ =?utf-8?B?bjMvZFNpdXozWk5Pd0ZncnVtU1RyV3BvQjZkdTQ4ZHpTQy8rMVZmeVViSERN?=
+ =?utf-8?B?eGVaWm9CWjBndy9IdklzZ29YL2xJUXVvQ0pIWVFNL1cyczhXQnZOOHk3WjQ5?=
+ =?utf-8?B?OFVpMUNXUzR4cUlGdHkxZExxUlNVLzZad2s0c0h6SC9OeWV4QnVUQWdrZFBq?=
+ =?utf-8?B?MnJ5MlNmWXJNR1l2alBEWUdOQzhUTUlBVzQ1dnIyUmFVaGVlYmlRNmxWSjF2?=
+ =?utf-8?B?alVDVnV3c1Z3Ry9zNGFzOHQrN25ENkdEREJZQ0l3ek1Td2diak00SnNBTlk1?=
+ =?utf-8?B?YnVMaENSeXpSRFQ2TUtoWWFtSzIwMXFzN0dhWWhIRG5XcDFCMERLVmVKTkt2?=
+ =?utf-8?B?S0pMNDRNY3ZTcGZ4Z01ZMFBWT2hwa2NZampBa3RsVnQ2WndyNllDMnlva1Bi?=
+ =?utf-8?B?R3JNcEYvQnU0czB3aUpXdXhHcTNnUXFBSnFhUGZaVDJZM1ZPYnREdTVZenJB?=
+ =?utf-8?B?cWk2Qk5zMkx4N3duUGJ3d0QxRnVlL043RlYvcWFwZTJDTExueHJOSmZoVWdJ?=
+ =?utf-8?B?ZnROTld3SGdYNTI5N0h6RTZ2M2ZsT3VXWDU5NGp1MXZjTVdMOHgxazFJOEhr?=
+ =?utf-8?B?VVpucnhYenZDYXJHcEVUdS8zWXFndVBjd3NOd0M1RTFpbFFLTldNZVNOMUxy?=
+ =?utf-8?B?Q1lXL1Nsd3pqUzVTNUhlVUdsdGZuQ1pHcURSSVZ0MFc2bTIzMnU4SmhWKzhk?=
+ =?utf-8?B?aG9waStVVE8yOWxvRFVHWElYWmVHSElhd0VaZXAzZDFjZTRGaGMwbHlNT0dn?=
+ =?utf-8?B?S2c2WUdWMm55TW9GQmxYenJrUXZFMW5ENnQ3SHBpQkZTSEgvMXhSN1ZCNVVU?=
+ =?utf-8?B?ZGVoUStOaFprVEp2RjV3ZnZzQzdXTUxxVUM1YjlYZlhvbFFwUEhwRHBWb2k4?=
+ =?utf-8?B?dkxFU25PeUlLcHR1NUNSMDR2Y3hnR0svNldZdDBTNVh4RzFhMWNPMEtqMDc2?=
+ =?utf-8?B?RVM0aSsyWEhzcUcxekdnUzF0eHhGVm1WK1hGNXVSSm56ZERzYjZsWDc2MTJ4?=
+ =?utf-8?B?QlY2VmZaRGdvbCtQMzRBM3ZrbFJRa2RhVHV6ZlFmMjNrVmEvbkFwYkl2dmMy?=
+ =?utf-8?B?WGdVcjdxMWhGSjFYd3JRZXpUL0JkK3M2VkRueVo0L3UwaW5ObnFNN0xyOHQv?=
+ =?utf-8?B?alFvVFpmN3orY3g5SnFLRm4rNUY3aEVVZk5jY044U1BRSVE2Yld2Q1IvSFFH?=
+ =?utf-8?B?dWY1V1p0NitiTVBvcjd5V0xxaVhoSk5aVXB4QTdEUmg0cE1wWXNIZnJTVVVE?=
+ =?utf-8?B?eHFPeWF2K2RENVlhaDlwNkFPNUZWYVg2aHZQUGxlN1NOU05iK3h2QzB0cm5w?=
+ =?utf-8?B?b2lFWFBkaGUyV2I0U3M3ZEZBT3lnLzVQelgxeUpNWm52Y1VOczIrREFtdlBs?=
+ =?utf-8?B?QkEzMUJXc3JNZTE1MDNNaG9GUzBSNDhKYWpIeTkxQ0MvbUhzdkpPQjhEbjlZ?=
+ =?utf-8?B?VVQwUU85WFU5YWdxVGRQd2gydVVpR3ZKcXg5UUlaZGtJVkNtcEdDZm1ZRG5y?=
+ =?utf-8?B?akRoQUtpOVJUem5Ca2xaVG9GTVVwcG9nL21aUDRySEFBTzFXTXVCdFYxRTlt?=
+ =?utf-8?B?SEZ0QVRDczNFU1pNSVRTYkFneFJ2bXdxMG9nMVVFZERYQlkyaFc4UUJvdlRR?=
+ =?utf-8?B?NFhNNUcyQXI0eW8vbFVQWmJ1MEVKRzFQNk9ZVXRudnBNNndEenFza21iODJk?=
+ =?utf-8?B?bXVMUHlTQzgxd1ZzU2dBT0s2MDcwbDBnU2NKbUNYUGZ4TFNiRGZzVitKbnlX?=
+ =?utf-8?Q?G/8m/mDf/2BS9p+C9NGYW/2PJ?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c57ce31b-6a8b-4479-e274-08daff474b4d
+X-MS-Exchange-CrossTenant-AuthSource: MW3PR12MB4409.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jan 2023 02:44:49.9221
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DfSZ2j9t8C55LSW1Bibkp6RWIXyJ4riDhi5n1z0Xt6cohY4gtTcMVCko7rff1vM+cDDNqFkuAxnhDl2gNdnZRw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB6839
+X-TUID: jx/HHM8TitIr
 
+Hi Stefano,
 
---PR/kp6ea097A6OkX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 1/25/23 2:20 PM, Stefano Stabellini wrote:
+> On Wed, 25 Jan 2023, Vikram Garhwal wrote:
+>> Add a new machine xenpvh which creates a IOREQ server to register/connect with
+>> Xen Hypervisor.
+>>
+>> Optional: When CONFIG_TPM is enabled, it also creates a tpm-tis-device, adds a
+>> TPM emulator and connects to swtpm running on host machine via chardev socket
+>> and support TPM functionalities for a guest domain.
+>>
+>> Extra command line for aarch64 xenpvh QEMU to connect to swtpm:
+>>      -chardev socket,id=chrtpm,path=/tmp/myvtpm2/swtpm-sock \
+>>      -tpmdev emulator,id=tpm0,chardev=chrtpm \
+>>      -machine tpm-base-addr=0x0c000000 \
+>>
+>> swtpm implements a TPM software emulator(TPM 1.2 & TPM 2) built on libtpms and
+>> provides access to TPM functionality over socket, chardev and CUSE interface.
+>> Github repo: https://github.com/stefanberger/swtpm
+>> Example for starting swtpm on host machine:
+>>      mkdir /tmp/vtpm2
+>>      swtpm socket --tpmstate dir=/tmp/vtpm2 \
+>>      --ctrl type=unixio,path=/tmp/vtpm2/swtpm-sock &
+>>
+>> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+>> Signed-off-by: Stefano Stabellini <stefano.stabellini@amd.com>
+>> ---
+>>   docs/system/arm/xenpvh.rst    |  34 +++++++
+>>   docs/system/target-arm.rst    |   1 +
+>>   hw/arm/meson.build            |   2 +
+>>   hw/arm/xen_arm.c              | 184 ++++++++++++++++++++++++++++++++++
+>>   include/hw/arm/xen_arch_hvm.h |   9 ++
+>>   include/hw/xen/arch_hvm.h     |   2 +
+>>   6 files changed, 232 insertions(+)
+>>   create mode 100644 docs/system/arm/xenpvh.rst
+>>   create mode 100644 hw/arm/xen_arm.c
+>>   create mode 100644 include/hw/arm/xen_arch_hvm.h
+>>
+>> diff --git a/docs/system/arm/xenpvh.rst b/docs/system/arm/xenpvh.rst
+>> new file mode 100644
+>> index 0000000000..e1655c7ab8
+>> --- /dev/null
+>> +++ b/docs/system/arm/xenpvh.rst
+>> @@ -0,0 +1,34 @@
+>> +XENPVH (``xenpvh``)
+>> +=========================================
+>> +This machine creates a IOREQ server to register/connect with Xen Hypervisor.
+>> +
+>> +When TPM is enabled, this machine also creates a tpm-tis-device at a user input
+>> +tpm base address, adds a TPM emulator and connects to a swtpm application
+>> +running on host machine via chardev socket. This enables xenpvh to support TPM
+>> +functionalities for a guest domain.
+>> +
+>> +More information about TPM use and installing swtpm linux application can be
+>> +found at: docs/specs/tpm.rst.
+>> +
+>> +Example for starting swtpm on host machine:
+>> +.. code-block:: console
+>> +
+>> +    mkdir /tmp/vtpm2
+>> +    swtpm socket --tpmstate dir=/tmp/vtpm2 \
+>> +    --ctrl type=unixio,path=/tmp/vtpm2/swtpm-sock &
+>> +
+>> +Sample QEMU xenpvh commands for running and connecting with Xen:
+>> +.. code-block:: console
+>> +
+>> +    qemu-system-aarch64 -xen-domid 1 \
+>> +    -chardev socket,id=libxl-cmd,path=qmp-libxl-1,server=on,wait=off \
+>> +    -mon chardev=libxl-cmd,mode=control \
+>> +    -chardev socket,id=libxenstat-cmd,path=qmp-libxenstat-1,server=on,wait=off \
+>> +    -mon chardev=libxenstat-cmd,mode=control \
+>> +    -xen-attach -name guest0 -vnc none -display none -nographic \
+>> +    -machine xenpvh -m 1301 \
+>> +    -chardev socket,id=chrtpm,path=tmp/vtpm2/swtpm-sock \
+>> +    -tpmdev emulator,id=tpm0,chardev=chrtpm -machine tpm-base-addr=0x0C000000
+>> +
+>> +In above QEMU command, last two lines are for connecting xenpvh QEMU to swtpm
+>> +via chardev socket.
+>> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+>> index 91ebc26c6d..af8d7c77d6 100644
+>> --- a/docs/system/target-arm.rst
+>> +++ b/docs/system/target-arm.rst
+>> @@ -106,6 +106,7 @@ undocumented; you can get a complete list by running
+>>      arm/stm32
+>>      arm/virt
+>>      arm/xlnx-versal-virt
+>> +   arm/xenpvh
+>>   
+>>   Emulated CPU architecture support
+>>   =================================
+>> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+>> index b036045603..06bddbfbb8 100644
+>> --- a/hw/arm/meson.build
+>> +++ b/hw/arm/meson.build
+>> @@ -61,6 +61,8 @@ arm_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.
+>>   arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+>>   arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+>>   arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+>> +arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
+>> +arm_ss.add_all(xen_ss)
+>>   
+>>   softmmu_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
+>>   softmmu_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
+>> diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+>> new file mode 100644
+>> index 0000000000..12b19e3609
+>> --- /dev/null
+>> +++ b/hw/arm/xen_arm.c
+>> @@ -0,0 +1,184 @@
+>> +/*
+>> + * QEMU ARM Xen PV Machine
+>                     ^ PVH
+>
+>
+>> + *
+>> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+>> + * of this software and associated documentation files (the "Software"), to deal
+>> + * in the Software without restriction, including without limitation the rights
+>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+>> + * copies of the Software, and to permit persons to whom the Software is
+>> + * furnished to do so, subject to the following conditions:
+>> + *
+>> + * The above copyright notice and this permission notice shall be included in
+>> + * all copies or substantial portions of the Software.
+>> + *
+>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+>> + * THE SOFTWARE.
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qemu/error-report.h"
+>> +#include "qapi/qapi-commands-migration.h"
+>> +#include "qapi/visitor.h"
+>> +#include "hw/boards.h"
+>> +#include "hw/sysbus.h"
+>> +#include "sysemu/block-backend.h"
+>> +#include "sysemu/tpm_backend.h"
+>> +#include "sysemu/sysemu.h"
+>> +#include "hw/xen/xen-legacy-backend.h"
+>> +#include "hw/xen/xen-hvm-common.h"
+>> +#include "sysemu/tpm.h"
+>> +#include "hw/xen/arch_hvm.h"
+>> +
+>> +#define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpvh")
+>> +OBJECT_DECLARE_SIMPLE_TYPE(XenArmState, XEN_ARM)
+>> +
+>> +static MemoryListener xen_memory_listener = {
+>> +    .region_add = xen_region_add,
+>> +    .region_del = xen_region_del,
+>> +    .log_start = NULL,
+>> +    .log_stop = NULL,
+>> +    .log_sync = NULL,
+>> +    .log_global_start = NULL,
+>> +    .log_global_stop = NULL,
+>> +    .priority = 10,
+>> +};
+>> +
+>> +struct XenArmState {
+>> +    /*< private >*/
+>> +    MachineState parent;
+>> +
+>> +    XenIOState *state;
+>> +
+>> +    struct {
+>> +        uint64_t tpm_base_addr;
+>> +    } cfg;
+>> +};
+>> +
+>> +void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+>> +{
+>> +    hw_error("Invalid ioreq type 0x%x\n", req->type);
+>> +
+>> +    return;
+>> +}
+>> +
+>> +void arch_xen_set_memory(XenIOState *state, MemoryRegionSection *section,
+>> +                         bool add)
+>> +{
+>> +}
+>> +
+>> +void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+>> +{
+>> +}
+>> +
+>> +void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
+>> +{
+>> +}
+>> +
+>> +#ifdef CONFIG_TPM
+>> +static void xen_enable_tpm(XenArmState *xam)
+>> +{
+>> +    Error *errp = NULL;
+>> +    DeviceState *dev;
+>> +    SysBusDevice *busdev;
+>> +
+>> +    TPMBackend *be = qemu_find_tpm_be("tpm0");
+>> +    if (be == NULL) {
+>> +        DPRINTF("Couldn't fine the backend for tpm0\n");
+>> +        return;
+>> +    }
+>> +    dev = qdev_new(TYPE_TPM_TIS_SYSBUS);
+>> +    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
+>> +    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
+>> +    busdev = SYS_BUS_DEVICE(dev);
+>> +    sysbus_realize_and_unref(busdev, &error_fatal);
+>> +    sysbus_mmio_map(busdev, 0, xam->cfg.tpm_base_addr);
+>> +
+>> +    DPRINTF("Connected tpmdev at address 0x%lx\n", xam->cfg.tpm_base_addr);
+>> +}
+>> +#endif
+>> +
+>> +static void xen_arm_init(MachineState *machine)
+>> +{
+>> +    XenArmState *xam = XEN_ARM(machine);
+>> +
+>> +    xam->state =  g_new0(XenIOState, 1);
+>> +
+>> +    xen_register_ioreq(xam->state, machine->smp.cpus, xen_memory_listener);
+>> +
+>> +#ifdef CONFIG_TPM
+>> +    if (xam->cfg.tpm_base_addr) {
+>> +        xen_enable_tpm(xam);
+>> +    } else {
+>> +        DPRINTF("tpm-base-addr is not provided. TPM will not be enabled\n");
+>> +    }
+> I would remove the "else", we already have a DPRINTF at the end of
+> xen_enable_tpm.
 
-On Thu, Jan 19, 2023 at 02:03:08AM -0500, Alexander Bulekov wrote:
-> This protects devices from bh->mmio reentrancy issues.
->=20
-> Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
-> ---
->  hw/9pfs/xen-9p-backend.c        | 4 +++-
->  hw/block/dataplane/virtio-blk.c | 3 ++-
->  hw/block/dataplane/xen-block.c  | 5 +++--
->  hw/block/virtio-blk.c           | 5 +++--
->  hw/char/virtio-serial-bus.c     | 3 ++-
->  hw/display/qxl.c                | 9 ++++++---
->  hw/display/virtio-gpu.c         | 6 ++++--
->  hw/ide/ahci.c                   | 3 ++-
->  hw/ide/core.c                   | 3 ++-
->  hw/misc/imx_rngc.c              | 6 ++++--
->  hw/misc/macio/mac_dbdma.c       | 2 +-
->  hw/net/virtio-net.c             | 3 ++-
->  hw/nvme/ctrl.c                  | 6 ++++--
->  hw/scsi/mptsas.c                | 3 ++-
->  hw/scsi/scsi-bus.c              | 3 ++-
->  hw/scsi/vmw_pvscsi.c            | 3 ++-
->  hw/usb/dev-uas.c                | 3 ++-
->  hw/usb/hcd-dwc2.c               | 3 ++-
->  hw/usb/hcd-ehci.c               | 3 ++-
->  hw/usb/hcd-uhci.c               | 2 +-
->  hw/usb/host-libusb.c            | 6 ++++--
->  hw/usb/redirect.c               | 6 ++++--
->  hw/usb/xen-usb.c                | 3 ++-
->  hw/virtio/virtio-balloon.c      | 5 +++--
->  hw/virtio/virtio-crypto.c       | 3 ++-
->  25 files changed, 66 insertions(+), 35 deletions(-)
+This print is bit different than the one in /xen_enable_tpm/. I added it 
+because now user needs to provide "tpm_base_addr=0x0C00_0000" from 
+command line. If no /tpm_base_addr/ then /cfg.tpm_base_addr /value is 
+0x0 and we don't wanna create tpm device at 0x0.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Perhaps instead of debug print, I print a warning here?
 
---PR/kp6ea097A6OkX
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmPRqwsACgkQnKSrs4Gr
-c8j5WQf9F8Eg3nUxaGWZRHD3I8wFILb8NIBkmrWVzzVmfcZcxecQEQX/AJnoFfSP
-7SY83PXVaWxyH5HHtNQMGMMchQ2bMO4m/8Rci3LPGKgDkauPzWbQVdj4mqkODrnl
-/T+qIamwv5Zu7ddBh68Fi5qnA9OUGc6ycrKaQ0tDjA0xQ9j2ubdIw3i+KLLuUKLo
-woyYb5kim7fMMt/1kVhUOM21c85TsFqe1hsyUjkbWN5fO3JifQPwoFjpYvNWDHdu
-ysmdkchT2ekz2COepAVv5yc7yWI1ID8r7i//3xKrA486/GIm3XickhVNWoYNoU0e
-Qo53IYuDqiMcWlTjSsfBJbq4CQa5iw==
-=f/lH
------END PGP SIGNATURE-----
-
---PR/kp6ea097A6OkX--
-
+>
+>
+>> +#endif
+>> +
+>> +    return;
+> the return is unnecessary
+>
+>
+>> +}
+>> +
+>> +#ifdef CONFIG_TPM
+>> +static void xen_arm_get_tpm_base_addr(Object *obj, Visitor *v,
+>> +                                      const char *name, void *opaque,
+>> +                                      Error **errp)
+>> +{
+>> +    XenArmState *xam = XEN_ARM(obj);
+>> +    uint64_t value = xam->cfg.tpm_base_addr;
+>> +
+>> +    visit_type_uint64(v, name, &value, errp);
+>> +}
+>> +
+>> +static void xen_arm_set_tpm_base_addr(Object *obj, Visitor *v,
+>> +                                      const char *name, void *opaque,
+>> +                                      Error **errp)
+>> +{
+>> +    XenArmState *xam = XEN_ARM(obj);
+>> +    uint64_t value;
+>> +
+>> +    if (!visit_type_uint64(v, name, &value, errp)) {
+>> +        return;
+>> +    }
+>> +
+>> +    xam->cfg.tpm_base_addr = value;
+>> +}
+>> +#endif
+>> +
+>> +static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
+>> +{
+>> +
+>> +    MachineClass *mc = MACHINE_CLASS(oc);
+>> +    mc->desc = "Xen Para-virtualized PC";
+>> +    mc->init = xen_arm_init;
+>> +    mc->max_cpus = 1;
+>> +    mc->default_machine_opts = "accel=xen";
+>> +
+>> +#ifdef CONFIG_TPM
+>> +    object_class_property_add(oc, "tpm-base-addr", "uint64_t",
+>> +                              xen_arm_get_tpm_base_addr,
+>> +                              xen_arm_set_tpm_base_addr,
+>> +                              NULL, NULL);
+>> +    object_class_property_set_description(oc, "tpm-base-addr",
+>> +                                          "Set Base address for TPM device.");
+>> +
+>> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+>> +#endif
+>> +}
+>> +
+>> +static const TypeInfo xen_arm_machine_type = {
+>> +    .name = TYPE_XEN_ARM,
+>> +    .parent = TYPE_MACHINE,
+>> +    .class_init = xen_arm_machine_class_init,
+>> +    .instance_size = sizeof(XenArmState),
+>> +};
+>> +
+>> +static void xen_arm_machine_register_types(void)
+>> +{
+>> +    type_register_static(&xen_arm_machine_type);
+>> +}
+>> +
+>> +type_init(xen_arm_machine_register_types)
+>> diff --git a/include/hw/arm/xen_arch_hvm.h b/include/hw/arm/xen_arch_hvm.h
+>> new file mode 100644
+>> index 0000000000..8fd645e723
+>> --- /dev/null
+>> +++ b/include/hw/arm/xen_arch_hvm.h
+>> @@ -0,0 +1,9 @@
+>> +#ifndef HW_XEN_ARCH_ARM_HVM_H
+>> +#define HW_XEN_ARCH_ARM_HVM_H
+>> +
+>> +#include <xen/hvm/ioreq.h>
+>> +void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+>> +void arch_xen_set_memory(XenIOState *state,
+>> +                         MemoryRegionSection *section,
+>> +                         bool add);
+>> +#endif
+>> diff --git a/include/hw/xen/arch_hvm.h b/include/hw/xen/arch_hvm.h
+>> index 26674648d8..c7c515220d 100644
+>> --- a/include/hw/xen/arch_hvm.h
+>> +++ b/include/hw/xen/arch_hvm.h
+>> @@ -1,3 +1,5 @@
+>>   #if defined(TARGET_I386) || defined(TARGET_X86_64)
+>>   #include "hw/i386/xen_arch_hvm.h"
+>> +#elif defined(TARGET_ARM) || defined(TARGET_ARM_64)
+>> +#include "hw/arm/xen_arch_hvm.h"
+>>   #endif
+>> -- 
+>> 2.17.0
+>>

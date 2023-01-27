@@ -1,104 +1,104 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1338828ejc;
-        Fri, 27 Jan 2023 09:58:39 -0800 (PST)
-X-Google-Smtp-Source: AK7set/W5g7N/o3GZc6aogevW9lSCGK0+ZJeE4LzcDG8+xCcq6aOX1FwYzUFCoMk2nY1P6OH1L89
-X-Received: by 2002:a0c:eb48:0:b0:539:a377:8b38 with SMTP id c8-20020a0ceb48000000b00539a3778b38mr1520913qvq.18.1674842319263;
-        Fri, 27 Jan 2023 09:58:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674842319; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1338838ejc;
+        Fri, 27 Jan 2023 09:58:41 -0800 (PST)
+X-Google-Smtp-Source: AK7set/qwEUhbfF1eSsCzba5YjXbeDso27CH3nURQCGbCuwe09nVHt9SVQJGp2e9cf1dM0I9kCtl
+X-Received: by 2002:a05:6214:3109:b0:537:7402:e781 with SMTP id ks9-20020a056214310900b005377402e781mr14541812qvb.50.1674842321156;
+        Fri, 27 Jan 2023 09:58:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674842321; cv=none;
         d=google.com; s=arc-20160816;
-        b=0/FMkuEU+LdVA529nyB3FjzYE1q0Zos1MeC9rlnz4fF5LQOMxtHGwOMFI94t66hxB8
-         TjDJ9+0uG1c0J2M3cWQG8dJnXuP/r5uOkl8cqGYvcyk+NlTjKYtdbNRGWPCSfTTHFMVV
-         puLtjuUqP8cLyAt3B9C0FrNj1M165m7/vzV7b4cWHkE9Mo4QUkC6ZNmygVUjigEpNcnz
-         61H47BVi5GOTQJf31bMxIBV5UumMVPaf04H01ue2vbFBzpydCMFfzrXv+daPiHWX0zOV
-         n6Pimqwbhdjpd+TXq0i77asmyLEXk8O6Qsdqm8akgOFEYNTEx9Hpd9lHPGxG9EjJOjPS
-         mnbQ==
+        b=UK1lxL1kqtHG1xwtBkE0HOpZ52H9gWnW3OelZfWlP+8ZUgQ72nfJlYnjfH7qVEzhD4
+         j98ejh6L2kMQ52WLCkuTlaM4zIDjPnn9KfLhreprnJga2/hComba3Si6puOUYfGO93Uy
+         Ds1hYIBPp1KvfXh5XsCAqiuz5/rv5gkPymkk7A9G1hiXjswB3TBvVhu9TaZrB9w2tjey
+         s1rRkegGM/y/1OMNGw9TD1ZFk+h7+PJZrUY1JuHOe3P3H61BYuRC/46BJLzBdbrBd1Wv
+         BdOFWUaIA7QwEQRFFBpbomiZA0FT24nN9FcuBHzf27v7I/Ux6AFZYXNYK/dAulQk4ixH
+         XbYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=UFBOebjDMNyt8lt9YQWN5ih+hGCR/56+Fkpd8Mo1kfs=;
-        b=cOE5cMv/v1WW9B/N0EwFXDKCuOuLAI/N4e3a1+Er/y0b2T/7Hp8JIG7bztrRzhQCRk
-         UGriPeDnKfhwL8h+JKriwfyU006Gb5era43ydzviw1lxEBww3L0snlVH3cxs+STP/Hf0
-         sqviJiYgi69M7ShH0ov0iiXga9hcBqswJjziA2i5W7aY8jqBYsbBBZD5yBRghXDlZlsp
-         bkwyqGdpC5bL4oObTjf50BxTE+BEc+fjuy/deP8+pTZxGm5cww59kjFabitSJd5PD8PO
-         bl9dNMDGA2i8JXDI/S+LHZ7Yw562dxMu9oUCkkTINABv0oCk84nxTemZZcQMXn/jQKpk
-         yqWw==
+        bh=pq0TjCp+CRyVaIxgI9qvtQAfO37P/DRfdxZhTsYpsLM=;
+        b=nCOn52Nw3SVU/X2/klo0bobwJ0WwyXSc5aWIcmsIo0cnpgv9iT3k81gRXpctwOUkXw
+         TbxT7/s6vGmzc85xjDvuFitkgjj8pKuaF+4NBiVc2AWEheJYazfe4gFyZITDHkKphopS
+         M63Zlkah/FwdWtBP/jnIJxod4R7u4IdY52+UI9S7Cq3CYCKqcLiojJB/B4w1/95Ur26Q
+         osnfjWjxMVjZIJDzkWD4W4z7l5vWCeqCmf5k3EW2/KnKSETbFZNAdYWY/aApqZllfWLk
+         gLFK3wSdRoSufCnNkyBX73eP7VCdkFFAla531H4hmlq/8dmP7SrfjVAOanAa5IhxL6Vf
+         Y8Yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DTcVppdY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F8bOxBIE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s21-20020a05620a081500b00706b32d9d28si3054061qks.354.2023.01.27.09.58.39
+        by mx.google.com with ESMTPS id z20-20020a0cf014000000b004acd6af5b16si2751696qvk.435.2023.01.27.09.58.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 09:58:39 -0800 (PST)
+        Fri, 27 Jan 2023 09:58:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DTcVppdY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F8bOxBIE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pLSxC-00018Q-W5; Fri, 27 Jan 2023 12:55:59 -0500
+	id 1pLSx6-00012H-F2; Fri, 27 Jan 2023 12:55:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pLSwz-0000vX-Hx
- for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:45 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1pLSws-0000rR-Vp
+ for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:39 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pLSwm-00064a-G2
- for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:45 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id q5so5717423wrv.0
- for <qemu-devel@nongnu.org>; Fri, 27 Jan 2023 09:55:32 -0800 (PST)
+ id 1pLSwl-00061n-KZ
+ for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:38 -0500
+Received: by mail-wr1-x430.google.com with SMTP id y1so5694967wru.2
+ for <qemu-devel@nongnu.org>; Fri, 27 Jan 2023 09:55:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=UFBOebjDMNyt8lt9YQWN5ih+hGCR/56+Fkpd8Mo1kfs=;
- b=DTcVppdYuYi1dRWv9kQCj9Bq6Y31BKFuUqLlqXgByIx+L1C9uhdVmoSCDetltfSxb9
- 8cs3EZhXY2iwqDDvjZhA2QLjeg9vo3M4DVr/Lq2J7e/TVD1G4k0pGrBwpLLZhngZjL5q
- zryXtGuUr6KDnLv2CL9e11len6Pw07Vm2+QMNC31e9hpkWhrOI8ok1NT5AXCLNZpPPG4
- o7pW2FK0RnetbtwEzech+zwy82/MK/fJyscC7rY+nY4Sl4hapeDgKaevvo/5WuBcyQC7
- 2yoP57dSx8Z/KIDeP09gWI6MuzqqkxGNIyYldqxfSK0bKAdKSqcsomFm+bsSMcAcCBMQ
- 5aRw==
+ :reply-to; bh=pq0TjCp+CRyVaIxgI9qvtQAfO37P/DRfdxZhTsYpsLM=;
+ b=F8bOxBIECygsdjccKlU/PXUplfsRIATJVbL5hn1+DEoZbVw7iOIaWgJUJBw0cQPyFk
+ eyemePTeyjC7jvxdSESh9SYBl8mPRvS4+INQDfLUi0bW1bTf3O8jR7g/61BO/i47ugv9
+ b5w0phQf+YEfMQW2eSLHK8H18nurW8Ds+4KbdbRKsig4xKmr2r+aA8oxBWpQFFOM6P50
+ dmJS61kzU50nZojXBeTJDjp38xoiNEgrN92k+V0NLaPB3bVxnZRpBb8GkbH4izzUiUx4
+ qAzdziJ0rx79gj2MnAnw/Mavz0mLcSYeLzjpgiEhDtuOeus8o2pvkQRPcgQ7CAyqkknd
+ WFag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UFBOebjDMNyt8lt9YQWN5ih+hGCR/56+Fkpd8Mo1kfs=;
- b=qseF9t+io1XJ893Ukn/UuIIi/ETSbvHpm+WPMg+Ga3MyF+M4tJ4ta+m18IcFdwUTmw
- WKAl992FsDSMIR9AcFgkGyHlIDytKlvb3ZMV6wxgfqSj5X6UWnMeR3N7VEzar0Ud4kp/
- 5oQd3zTzhrDYayzFk4bIEnvc2vEMkQD4uqXIssDj3r0WJrGV6qlMqEKDFYKdxiRcCGzy
- rcqz2fz0CWuaT/Sks8ngMWAFS4xbNiQ9LQ9FbZgPUw177oVWZ+6ClBF7rEhH1zc2ZLGn
- aOLqxC7euuBm6Q2euwzYQnUehUhak9r0XXJcV4mNUxEdSpdvG6BHi76o120JBYe7ybeh
- 65kw==
-X-Gm-Message-State: AO0yUKXbE1UEafcKxxe5WwvC/k8rrMcHzznXDECMDBJA6NKw47eSYPLR
- mQxP2+XdOVK2JUYYnLN7tOa/1g==
-X-Received: by 2002:adf:fd8f:0:b0:2bf:d1c8:6a02 with SMTP id
- d15-20020adffd8f000000b002bfd1c86a02mr2867663wrr.68.1674842131011; 
- Fri, 27 Jan 2023 09:55:31 -0800 (PST)
+ bh=pq0TjCp+CRyVaIxgI9qvtQAfO37P/DRfdxZhTsYpsLM=;
+ b=RK4KU17aQulYnykupAw7vPsH42/lhmfyDNDLYKSjbpZ82G68yzFf+k+vKyP3jYTAAK
+ Nm0fJBkXcrNIhXFusKcc9poNHK3H2NH4R0QBayUk9Ln0eBVBOBsuOLIVstoycQ3vJK0i
+ 5s6HacLvSFm5u79Tt7bZluqNBk/y8WuFc1G6SpO/IdwEmf7Y65++AcqCzX5xvLoIkJQd
+ /EKDyIVInAo9p0fQlmK50+dgwot/TacJziN1q0KBTeOEwn0Jdf6nht53a3rvi5vEeIxP
+ pKmIfSw+xbvk0gOoUS8hMwsYq5TmHHkzZotKN88OJDkw4G+ZgnHojbSSeB9ylWxvz9On
+ 2kqg==
+X-Gm-Message-State: AFqh2krWRx5aA7L0kdPqHWnl74T1fnqccu3CBGw5c8WofaF+dZSLxfV9
+ vZ/5isP1tOb2kVGItlAR/1R+qxExVYF36DsG
+X-Received: by 2002:a5d:5c13:0:b0:2bd:d84d:bbc2 with SMTP id
+ cc19-20020a5d5c13000000b002bdd84dbbc2mr38252478wrb.46.1674842122020; 
+ Fri, 27 Jan 2023 09:55:22 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l13-20020adff48d000000b002366e3f1497sm4545089wro.6.2023.01.27.09.55.30
+ l13-20020adff48d000000b002366e3f1497sm4545089wro.6.2023.01.27.09.55.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Jan 2023 09:55:30 -0800 (PST)
+ Fri, 27 Jan 2023 09:55:21 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 20/23] target/arm: Implement the HFGITR_EL2.ERET trap
-Date: Fri, 27 Jan 2023 17:55:04 +0000
-Message-Id: <20230127175507.2895013-21-peter.maydell@linaro.org>
+Subject: [PATCH 11/23] target/arm: Mark up sysregs for HFGRTR bits 12..23
+Date: Fri, 27 Jan 2023 17:54:55 +0000
+Message-Id: <20230127175507.2895013-12-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230127175507.2895013-1-peter.maydell@linaro.org>
 References: <20230127175507.2895013-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,126 +120,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: brR2FiDq7MRI
+X-TUID: EGjlCZi2pTIc
 
-Implement the HFGITR_EL2.ERET fine-grained trap.  This traps
-execution from AArch64 EL1 of ERET, ERETAA and ERETAB.  The trap is
-reported with a syndrome value of 0x1a.
-
-The trap must take precedence over a possible pointer-authentication
-trap for ERETAA and ERETAB.
+Mark up the sysreg definitions for the registers trapped
+by HFGRTR/HFGWTR bits 12..23.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h           |  1 +
- target/arm/syndrome.h      | 10 ++++++++++
- target/arm/translate.h     |  2 ++
- target/arm/helper.c        |  3 +++
- target/arm/translate-a64.c | 10 ++++++++++
- 5 files changed, 26 insertions(+)
+ target/arm/cpregs.h | 12 ++++++++++++
+ target/arm/helper.c | 12 ++++++++++++
+ 2 files changed, 24 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 5cc81bec9bf..ec2a7716ce7 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3245,6 +3245,7 @@ FIELD(TBFLAG_A64, PSTATE_ZA, 23, 1)
- FIELD(TBFLAG_A64, SVL, 24, 4)
- /* Indicates that SME Streaming mode is active, and SMCR_ELx.FA64 is not. */
- FIELD(TBFLAG_A64, SME_TRAP_NONSTREAMING, 28, 1)
-+FIELD(TBFLAG_A64, FGT_ERET, 29, 1)
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 82f2cefff0a..67d87ae8bf5 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -591,6 +591,18 @@ typedef enum FGTBit {
+     DO_BIT(HFGRTR, CCSIDR_EL1),
+     DO_BIT(HFGRTR, CLIDR_EL1),
+     DO_BIT(HFGRTR, CONTEXTIDR_EL1),
++    DO_BIT(HFGRTR, CPACR_EL1),
++    DO_BIT(HFGRTR, CSSELR_EL1),
++    DO_BIT(HFGRTR, CTR_EL0),
++    DO_BIT(HFGRTR, DCZID_EL0),
++    DO_BIT(HFGRTR, ESR_EL1),
++    DO_BIT(HFGRTR, FAR_EL1),
++    DO_BIT(HFGRTR, ISR_EL1),
++    DO_BIT(HFGRTR, LORC_EL1),
++    DO_BIT(HFGRTR, LOREA_EL1),
++    DO_BIT(HFGRTR, LORID_EL1),
++    DO_BIT(HFGRTR, LORN_EL1),
++    DO_BIT(HFGRTR, LORSA_EL1),
+ } FGTBit;
  
- /*
-  * Helpers for using the above.
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 73df5e37938..d27d1bc31f0 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -48,6 +48,7 @@ enum arm_exception_class {
-     EC_AA64_SMC               = 0x17,
-     EC_SYSTEMREGISTERTRAP     = 0x18,
-     EC_SVEACCESSTRAP          = 0x19,
-+    EC_ERETTRAP               = 0x1a,
-     EC_SMETRAP                = 0x1d,
-     EC_INSNABORT              = 0x20,
-     EC_INSNABORT_SAME_EL      = 0x21,
-@@ -215,6 +216,15 @@ static inline uint32_t syn_sve_access_trap(void)
-     return EC_SVEACCESSTRAP << ARM_EL_EC_SHIFT;
- }
- 
-+/*
-+ * eret_op is bits [1:0] of the ERET instruction, so:
-+ * 0 for ERET, 2 for ERETAA, 3 for ERETAB.
-+ */
-+static inline uint32_t syn_erettrap(int eret_op)
-+{
-+    return (EC_ERETTRAP << ARM_EL_EC_SHIFT) | ARM_EL_IL | eret_op;
-+}
-+
- static inline uint32_t syn_smetrap(SMEExceptionType etype, bool is_16bit)
- {
-     return (EC_SMETRAP << ARM_EL_EC_SHIFT)
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 599902016dc..62a7706eabd 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -132,6 +132,8 @@ typedef struct DisasContext {
-     bool mve_no_pred;
-     /* True if fine-grained traps are active */
-     bool fgt_active;
-+    /* True if fine-grained trap on ERET is enabled */
-+    bool fgt_eret;
-     /*
-      * >= 0, a copy of PSTATE.BTYPE, which will be 0 without v8.5-BTI.
-      *  < 0, set by the current instruction.
+ #undef DO_BIT
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c0403aadae2..6151c775053 100644
+index 30e54455ac7..c059935d0e6 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -12065,6 +12065,9 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+@@ -869,6 +869,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+       .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0, },
+     { .name = "CPACR", .state = ARM_CP_STATE_BOTH, .opc0 = 3,
+       .crn = 1, .crm = 0, .opc1 = 0, .opc2 = 2, .accessfn = cpacr_access,
++      .fgt = FGT_CPACR_EL1,
+       .access = PL1_RW, .fieldoffset = offsetof(CPUARMState, cp15.cpacr_el1),
+       .resetfn = cpacr_reset, .writefn = cpacr_write, .readfn = cpacr_read },
+ };
+@@ -2170,6 +2171,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 2, .opc2 = 0,
+       .access = PL1_RW,
+       .accessfn = access_tid4,
++      .fgt = FGT_CSSELR_EL1,
+       .writefn = csselr_write, .resetvalue = 0,
+       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.csselr_s),
+                              offsetof(CPUARMState, cp15.csselr_ns) } },
+@@ -2233,6 +2235,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .resetfn = arm_cp_reset_ignore },
+     { .name = "ISR_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 1, .opc2 = 0,
++      .fgt = FGT_ISR_EL1,
+       .type = ARM_CP_NO_RAW, .access = PL1_R, .readfn = isr_read },
+     /* 32 bit ITLB invalidates */
+     { .name = "ITLBIALL", .cp = 15, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 0,
+@@ -4135,6 +4138,7 @@ static const ARMCPRegInfo vmsa_pmsa_cp_reginfo[] = {
+     { .name = "FAR_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .crn = 6, .crm = 0, .opc1 = 0, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
++      .fgt = FGT_FAR_EL1,
+       .fieldoffset = offsetof(CPUARMState, cp15.far_el[1]),
+       .resetvalue = 0, },
+ };
+@@ -4143,6 +4147,7 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
+     { .name = "ESR_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .crn = 5, .crm = 2, .opc1 = 0, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
++      .fgt = FGT_ESR_EL1,
+       .fieldoffset = offsetof(CPUARMState, cp15.esr_el[1]), .resetvalue = 0, },
+     { .name = "TTBR0_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 0,
+@@ -5215,6 +5220,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     { .name = "DCZID_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .opc2 = 7, .crn = 0, .crm = 0,
+       .access = PL0_R, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_DCZID_EL0,
+       .readfn = aa64_dczid_read },
+     { .name = "DC_ZVA", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 4, .opc2 = 1,
+@@ -7005,22 +7011,27 @@ static const ARMCPRegInfo lor_reginfo[] = {
+     { .name = "LORSA_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 10, .crm = 4, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_lor_other,
++      .fgt = FGT_LORSA_EL1,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "LOREA_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 10, .crm = 4, .opc2 = 1,
+       .access = PL1_RW, .accessfn = access_lor_other,
++      .fgt = FGT_LOREA_EL1,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "LORN_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 10, .crm = 4, .opc2 = 2,
+       .access = PL1_RW, .accessfn = access_lor_other,
++      .fgt = FGT_LORN_EL1,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "LORC_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 10, .crm = 4, .opc2 = 3,
+       .access = PL1_RW, .accessfn = access_lor_other,
++      .fgt = FGT_LORC_EL1,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "LORID_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 10, .crm = 4, .opc2 = 7,
+       .access = PL1_R, .accessfn = access_lor_ns,
++      .fgt = FGT_LORID_EL1,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+ };
  
-     if (arm_fgt_active(env, el)) {
-         DP_TBFLAG_ANY(flags, FGT_ACTIVE, 1);
-+        if (FIELD_EX64(env->cp15.fgt_exec[FGTREG_HFGITR], HFGITR_EL2, ERET)) {
-+            DP_TBFLAG_A64(flags, FGT_ERET, 1);
-+        }
-     }
- 
-     if (cpu_isar_feature(aa64_mte, env_archcpu(env))) {
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index a47dab4f1dd..11bfa3f717a 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -2385,6 +2385,10 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
-             if (op4 != 0) {
-                 goto do_unallocated;
-             }
-+            if (s->fgt_eret) {
-+                gen_exception_insn_el(s, 0, EXCP_UDEF, syn_erettrap(op3), 2);
-+                return;
-+            }
-             dst = tcg_temp_new_i64();
-             tcg_gen_ld_i64(dst, cpu_env,
-                            offsetof(CPUARMState, elr_el[s->current_el]));
-@@ -2398,6 +2402,11 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
-             if (rn != 0x1f || op4 != 0x1f) {
-                 goto do_unallocated;
-             }
-+            /* The FGT trap takes precedence over an auth trap. */
-+            if (s->fgt_eret) {
-+                gen_exception_insn_el(s, 0, EXCP_UDEF, syn_erettrap(op3), 2);
-+                return;
-+            }
-             dst = tcg_temp_new_i64();
-             tcg_gen_ld_i64(dst, cpu_env,
-                            offsetof(CPUARMState, elr_el[s->current_el]));
-@@ -14742,6 +14751,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     dc->align_mem = EX_TBFLAG_ANY(tb_flags, ALIGN_MEM);
-     dc->pstate_il = EX_TBFLAG_ANY(tb_flags, PSTATE__IL);
-     dc->fgt_active = EX_TBFLAG_ANY(tb_flags, FGT_ACTIVE);
-+    dc->fgt_eret = EX_TBFLAG_A64(tb_flags, FGT_ERET);
-     dc->sve_excp_el = EX_TBFLAG_A64(tb_flags, SVEEXC_EL);
-     dc->sme_excp_el = EX_TBFLAG_A64(tb_flags, SMEEXC_EL);
-     dc->vl = (EX_TBFLAG_A64(tb_flags, VL) + 1) * 16;
+@@ -8619,6 +8630,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             { .name = "CTR_EL0", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 3, .opc2 = 1, .crn = 0, .crm = 0,
+               .access = PL0_R, .accessfn = ctr_el0_access,
++              .fgt = FGT_CTR_EL0,
+               .type = ARM_CP_CONST, .resetvalue = cpu->ctr },
+             /* TCMTR and TLBTR exist in v8 but have no 64-bit versions */
+             { .name = "TCMTR",
 -- 
 2.34.1
 

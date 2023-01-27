@@ -1,38 +1,38 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1232524ejc;
-        Fri, 27 Jan 2023 07:16:01 -0800 (PST)
-X-Received: by 2002:a05:600c:3b86:b0:3dc:19d1:3c13 with SMTP id n6-20020a05600c3b8600b003dc19d13c13mr10876325wms.12.1674832561744;
-        Fri, 27 Jan 2023 07:16:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674832561; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1232535ejc;
+        Fri, 27 Jan 2023 07:16:02 -0800 (PST)
+X-Received: by 2002:a7b:c5d6:0:b0:3d9:fb89:4e3d with SMTP id n22-20020a7bc5d6000000b003d9fb894e3dmr41914888wmk.28.1674832562494;
+        Fri, 27 Jan 2023 07:16:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674832562; cv=none;
         d=google.com; s=arc-20160816;
-        b=j5vVEJn8al+l5uuN4Dg0+GJdDJ5G7ztgkfL4RENN6e0P4Wr92+Q+Eh/8mu1jxJGZ8o
-         8SfeFNuvSg9IO2RPu2RBkHqsulEKDkR5nwyHVk28rdPXRQHzg4W96UNJRB64+4mLixgT
-         q3BcXE6P/hOqtg1ZOcaCbdl7u6LS4GkMCrv8pmEfVZVn2O7GcJmhU4TX+22zpihrU88X
-         9T4JOuS5r+cIQmxSCbcFs/FFgNolljA0rV6gaS0Xf08C72VTl/nQBDHXWV4guHhZ3zb/
-         5MWF59COIRbcbPS073SR9DifEdNVVJQDezOJZYI+EBS7agbTTsbr8dWIuP84uS6Rrx6/
-         BF7g==
+        b=Px8jzch8c+2E0EC9ljrLsr0+5Ccsd+/Kp6Mc1b57QkA4no50wsXIcXGAeRAXbBliJ2
+         hVrtMLpC7NgzjkdVHXmylfCspLcijcoVavE8s2uPmYwSTuke4LVDQiatWRlzt5gr4buy
+         6iH0tKijRwcG4zcRpLXlHtU9AWoitsBX18bPH0e1qSAmxOkDymWBoVMjr4RbFXCT6kbu
+         GnNdyxlKc3ppmYj5YYzqfvKD41Ud+hEvewMheMucGgGJkCIytb/f3r39QlteIsti8WwZ
+         06m6EhVEDcLeQgkfgN+jbcUHfRw+jY1vF8UHa/9Cymwt5ye+KROjfUd8X1LuA5vBWGWA
+         UfSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6ywqj05UIg3deHK3wVqj9WoSaWiZ3oE7Ec+4/n7JA1s=;
-        b=nUW9E82R9B44lHN6eyAlguQ8gVSSafruAmqDSzxxYtgrdIE3VH7sBdrs0vVtiJd2p0
-         l5ihLJ6psfE6z+wP6zUUCvSv9u/S1KED0yInSDzu66tjBEi0bCE/j8ZYM0tM/w6+uaoK
-         l+h4TDfpJfzbZH9SwD/rOy/T+ivCZGcNpzf9JqwnI9/qYySxr4rLh+2EH9xIFf2fr68e
-         eKOxWNiLbckLejzuy1j+YPYLQck3ZhLyIS2lFNxkI/Nlz1wgO6+Ork6Z9EcJc4gBm07d
-         lbwpPyDEozRtv+L8M8erI90VnkXlVMSAwB6vPWU5+Xj1La1MVCZ+B6RpdEfYeOlwXUAr
-         CRnw==
+        bh=iNHpXIOZPTIR743s4/nV/ldq35abX9mbN8ZYO5pEXmY=;
+        b=l4cqXrIdNZbTd1ybEp/CktGRz6D5DHQuoLOQSs9YZIKreKyxKcW/C5M4neH87d31La
+         nN5dUwlIZGWoxGpuPuFr6GiyGHqXw1hwHInzcIktapP873mKkVZyWCI1kuU6ks5Lx7lC
+         TFHvyR8wa8lMy5Wy5rbbTNubMY9H6GLb/a+0HfT4Nge+A1C/8ojO+IoyeXs8H30r4xHx
+         obqgia2osjLsOGf4pAPZhEsAaWX/Cc98M5hq+gvdou+K2pH3Id+Zv0eUlnFIIlzN2pdJ
+         YaQ0/9JpUDpApr3HKlWPpbAJczZrqMOe7RA/AWG+wROwlmQk7oAbSpq+u9e1scex0tdP
+         AwBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Mp/VxvNb";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Qx8daHeX;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v6-20020a1cf706000000b003d9ae6cfd40sor2964924wmh.0.2023.01.27.07.16.01
+        by mx.google.com with SMTPS id c3-20020a7bc843000000b003d3506015afsor2889944wml.1.2023.01.27.07.16.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 27 Jan 2023 07:16:01 -0800 (PST)
+        Fri, 27 Jan 2023 07:16:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Mp/VxvNb";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Qx8daHeX;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,33 +40,33 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=6ywqj05UIg3deHK3wVqj9WoSaWiZ3oE7Ec+4/n7JA1s=;
-        b=Mp/VxvNbrTud0uPK6XiOgp1O24LiHNx5JpZvdntYF19EZ7D05iBgsRocJF6rvnltu/
-         IQO6+pZA7hr+JWnqCx+HH3ZcNYK1bnaH+lwPDWxXMdyW2Xa6ET5q9VVHFNdZjSr5gHWk
-         FuPjLNnF2G4CMVVxEy8MgHfd20xfLLDFzkcSvBX74icFfiewHa55DZiojFlSGvhbZyvY
-         NZV9e1SYdFSWjLmbWchV/LcvCG9sihrwNgBqwyKp+efwndyoeTbVGlFSRKeJy5SLn5FC
-         MCBsaGp85SUjIW7AReu7omNLaJlSk8oFsd6LynejNFIDBxWPkSI9OLulG3SglLLZZxio
-         Fg0g==
+        bh=iNHpXIOZPTIR743s4/nV/ldq35abX9mbN8ZYO5pEXmY=;
+        b=Qx8daHeXglt4t84zNhaUtZ+Pu5Sx6Ro+Sm3/MapxEJq3Vawt9leb1dPkFEwE2X3lHZ
+         ahCjUP3+B4UypURa5IuCE4zkccVUFGDu3zpcEJ7VfMKjf1mvi5WkcjPi0I0LkQPTXq3s
+         SXF8/VJVvmyUPEVuXT6ovMT1IYrGdurQO7K7aGh/7eqjdODHg8a1iCaSXnIo0VWLhe17
+         jhTL2+yNI06IvLdT3RGhDqsPmcfhNogIinOYHOft7ux2DypHo4GYDUUYdtHDSmSAAYJd
+         aru6Y6BUVoJ1m4u/Uy9816Ol2HSYRCP8VA+OsLDtxd7TvrXOKMzFfb0FVCNdrOZ8LquW
+         htTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=6ywqj05UIg3deHK3wVqj9WoSaWiZ3oE7Ec+4/n7JA1s=;
-        b=oiHDBoa3FkQDJ3vYMt9ndW4NFCdkuQEkyShx7qq6Qt6A8jaWzFpMSvFCtmBnjJJ7b+
-         A0Q1/lsxiIb4ifPJ8ZzsMs0p2kHho2wuXjSLazkHvWqai/LbpA4qnHu7qR7PdGfTx/L4
-         /dUYBcLzjhbFuGXMhCKKBGVFQNOoyyBHCUELzYdGgaozTYb1Vz2Oie/76M7Us+D1FpiC
-         DijvYMNCsyCIy+fJ4r3FDyoWT1DoNiJNSqnXWCeQQhR1TR/G27eDYH8D8W9jSSzwiftP
-         vBrC1YYbQfPPB3aywa/FcxWk89h8/Wc8EeD1/iRjrBakLPzDf9vUJ+JoVHJ0AgQeEBmR
-         KAXw==
-X-Gm-Message-State: AFqh2kpc90Kcgkt5mGrYWC7JCHSPG5xFUhxYECPog5+Z3Wj8fEYR9VxU
-	HB9mcjboaxVfzIkN4zrj20RsxAkE
-X-Google-Smtp-Source: AMrXdXtWCmF4+HftbHumXFJQdxVCrhlup0cBDuG202o2que5J8DyWfdH9HYh4ojM++qs44GxNW1hzw==
-X-Received: by 2002:a05:600c:1c9d:b0:3da:db4:6105 with SMTP id k29-20020a05600c1c9d00b003da0db46105mr40540319wms.37.1674832561473;
-        Fri, 27 Jan 2023 07:16:01 -0800 (PST)
+        bh=iNHpXIOZPTIR743s4/nV/ldq35abX9mbN8ZYO5pEXmY=;
+        b=W+BS+mXkH6p5ylTtQmPGjK++xMotnWc/yjaGxu+kxZENvXWsnL6tnh+8EYx5XTc9Fp
+         7BO6UnpoyGWPYoepZ3OppKVadC4DTjyLSzh8YVz9ipPME3q796z0XDMb9P5TrWqnfQiv
+         LMkM2lUXKG/lKEwosnaHiQJSdnp+73EODB/7xgCGEKfL4OI6F2Gw14b8kRKd4r1htWeS
+         HoJiHCm52cVQo/OAV59GtEgJ2SlV2vpufhigdwJ8mqF6nc2v8DS0YD/8RkfDrtWL1lfj
+         BZgeVgdXk2YfYP/3yQLyQjNRIpOlTkGpzSiw3+RV9V5FN9HiSI998mgPPx0OJhS5qJSe
+         1b2w==
+X-Gm-Message-State: AFqh2kp0ZCIimBbApFw6XKlnX5mLMsU+KS63qtYZT3JgXBXN0XJq7VJw
+	u35a/67tg82Z/MXT1vrLuAj2+a37
+X-Google-Smtp-Source: AMrXdXv25K5niC7lUq9pW0hiOwDCbWTGzTk+UKhoOAOIMuy+Tx2ZIx2kNFqhqa8pDHSzkIpFVStcjw==
+X-Received: by 2002:a05:600c:5386:b0:3cf:9844:7b11 with SMTP id hg6-20020a05600c538600b003cf98447b11mr41938022wmb.23.1674832562206;
+        Fri, 27 Jan 2023 07:16:02 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain (054592b0.skybroadband.com. [5.69.146.176])
-        by smtp.gmail.com with ESMTPSA id l7-20020a05600c47c700b003dc3bbdf518sm1656628wmo.21.2023.01.27.07.16.00
+        by smtp.gmail.com with ESMTPSA id l7-20020a05600c47c700b003dc3bbdf518sm1656628wmo.21.2023.01.27.07.16.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 27 Jan 2023 07:16:01 -0800 (PST)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
@@ -81,50 +81,173 @@ Cc: qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
 	richard.henderson@linaro.org,
 	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 07/16] target/arm/kvm: Select RME VM type for the scratch VM
-Date: Fri, 27 Jan 2023 15:07:20 +0000
-Message-Id: <20230127150727.612594-8-jean-philippe@linaro.org>
+Subject: [RFC PATCH 08/16] target/arm/kvm-rme: Populate the realm with boot images
+Date: Fri, 27 Jan 2023 15:07:21 +0000
+Message-Id: <20230127150727.612594-9-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230127150727.612594-1-jean-philippe@linaro.org>
 References: <20230127150727.612594-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: /eqxK+PfOvfk
+X-TUID: qxpjEmQR7skB
 
-Although the VM type does not affect values probed from the scratch vCPU
-at the moment, it could later. Ensure we specify the right type when
-creating the temporary VM.
+Initialize the GPA space and populate it with boot images (kernel,
+initrd, firmware, etc). Populating has to be done at VM start time,
+because the images are loaded during reset by rom_reset()
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
-Does the PA size need changing as well?
----
- target/arm/kvm.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ target/arm/kvm_arm.h |  6 ++++
+ target/arm/kvm-rme.c | 79 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 85 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index fcddead4fe..d8655d9041 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -70,6 +70,7 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
- {
-     int ret = 0, kvmfd = -1, vmfd = -1, cpufd = -1;
-     int max_vm_pa_size;
-+    int vm_type;
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index e4dc7fbb8d..cec6500603 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -371,6 +371,7 @@ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
  
-     kvmfd = qemu_open_old("/dev/kvm", O_RDWR);
-     if (kvmfd < 0) {
-@@ -79,8 +80,10 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-     if (max_vm_pa_size < 0) {
-         max_vm_pa_size = 0;
-     }
+ int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp);
+ int kvm_arm_rme_vm_type(MachineState *ms);
++void kvm_arm_rme_add_blob(hwaddr start, hwaddr src_size, hwaddr dst_size);
+ 
+ bool kvm_arm_rme_enabled(void);
+ int kvm_arm_rme_vcpu_init(CPUState *cs);
+@@ -458,6 +459,11 @@ static inline int kvm_arm_rme_vm_type(MachineState *ms)
+ {
+     return 0;
+ }
 +
-+    vm_type = kvm_arm_rme_vm_type(MACHINE(qdev_get_machine()));
-     do {
--        vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
-+        vmfd = ioctl(kvmfd, KVM_CREATE_VM, vm_type | max_vm_pa_size);
-     } while (vmfd == -1 && errno == EINTR);
-     if (vmfd < 0) {
-         goto err;
++static inline void kvm_arm_rme_add_blob(hwaddr start, hwaddr src_size,
++                                        hwaddr dst_size)
++{
++}
+ #endif
+ 
+ static inline const char *gic_class_name(void)
+diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+index 3833b187f9..c8c019f78a 100644
+--- a/target/arm/kvm-rme.c
++++ b/target/arm/kvm-rme.c
+@@ -9,6 +9,7 @@
+ #include "exec/confidential-guest-support.h"
+ #include "hw/boards.h"
+ #include "hw/core/cpu.h"
++#include "hw/loader.h"
+ #include "kvm_arm.h"
+ #include "migration/blocker.h"
+ #include "qapi/error.h"
+@@ -19,12 +20,22 @@
+ #define TYPE_RME_GUEST "rme-guest"
+ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
+ 
++#define RME_PAGE_SIZE qemu_real_host_page_size()
++
+ typedef struct RmeGuest RmeGuest;
+ 
+ struct RmeGuest {
+     ConfidentialGuestSupport parent_obj;
+ };
+ 
++struct RmeImage {
++    hwaddr base;
++    hwaddr src_size;
++    hwaddr dst_size;
++};
++
++static GSList *rme_images;
++
+ static RmeGuest *cgs_to_rme(ConfidentialGuestSupport *cgs)
+ {
+     if (!cgs) {
+@@ -51,6 +62,38 @@ static int rme_create_rd(RmeGuest *guest, Error **errp)
+     return ret;
+ }
+ 
++static void rme_populate_realm(gpointer data, gpointer user_data)
++{
++    int ret;
++    struct RmeImage *image = data;
++    struct kvm_cap_arm_rme_init_ipa_args init_args = {
++        .init_ipa_base = image->base,
++        .init_ipa_size = image->dst_size,
++    };
++    struct kvm_cap_arm_rme_populate_realm_args populate_args = {
++        .populate_ipa_base = image->base,
++        .populate_ipa_size = image->src_size,
++    };
++
++    ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_RME, 0,
++                            KVM_CAP_ARM_RME_INIT_IPA_REALM,
++                            (intptr_t)&init_args);
++    if (ret) {
++        error_setg_errno(&error_fatal, -ret,
++                         "RME: failed to initialize GPA range (0x%"HWADDR_PRIx", 0x%"HWADDR_PRIx")",
++                         image->base, image->dst_size);
++    }
++
++    ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_RME, 0,
++                            KVM_CAP_ARM_RME_POPULATE_REALM,
++                            (intptr_t)&populate_args);
++    if (ret) {
++        error_setg_errno(&error_fatal, -ret,
++                         "RME: failed to populate realm (0x%"HWADDR_PRIx", 0x%"HWADDR_PRIx")",
++                         image->base, image->src_size);
++    }
++}
++
+ static void rme_vm_state_change(void *opaque, bool running, RunState state)
+ {
+     int ret;
+@@ -72,6 +115,9 @@ static void rme_vm_state_change(void *opaque, bool running, RunState state)
+         }
+     }
+ 
++    g_slist_foreach(rme_images, rme_populate_realm, NULL);
++    g_slist_free_full(g_steal_pointer(&rme_images), g_free);
++
+     ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_RME, 0,
+                             KVM_CAP_ARM_RME_ACTIVATE_REALM);
+     if (ret) {
+@@ -118,6 +164,39 @@ int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
+     return 0;
+ }
+ 
++/*
++ * kvm_arm_rme_add_blob - Initialize the Realm IPA range and set up the image.
++ *
++ * @src_size is the number of bytes of the source image, to be populated into
++ *   Realm memory.
++ * @dst_size is the effective image size, which may be larger than @src_size.
++ *   For a kernel @dst_size may include zero-initialized regions such as the BSS
++ *   and initial page directory.
++ */
++void kvm_arm_rme_add_blob(hwaddr base, hwaddr src_size, hwaddr dst_size)
++{
++    struct RmeImage *image;
++
++    if (!kvm_arm_rme_enabled()) {
++        return;
++    }
++
++    base = QEMU_ALIGN_DOWN(base, RME_PAGE_SIZE);
++    src_size = QEMU_ALIGN_UP(src_size, RME_PAGE_SIZE);
++    dst_size = QEMU_ALIGN_UP(dst_size, RME_PAGE_SIZE);
++
++    image = g_malloc0(sizeof(*image));
++    image->base = base;
++    image->src_size = src_size;
++    image->dst_size = dst_size;
++
++    /*
++     * The ROM loader will only load the images during reset, so postpone the
++     * populate call until VM start.
++     */
++    rme_images = g_slist_prepend(rme_images, image);
++}
++
+ int kvm_arm_rme_vcpu_init(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
 -- 
 2.39.0

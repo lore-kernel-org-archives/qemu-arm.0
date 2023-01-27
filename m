@@ -1,38 +1,38 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1232599ejc;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1232617ejc;
         Fri, 27 Jan 2023 07:16:07 -0800 (PST)
-X-Received: by 2002:adf:de04:0:b0:2a9:89e:2b53 with SMTP id b4-20020adfde04000000b002a9089e2b53mr34958616wrm.45.1674832566910;
-        Fri, 27 Jan 2023 07:16:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674832566; cv=none;
+X-Received: by 2002:a05:600c:3549:b0:3da:acb1:2f09 with SMTP id i9-20020a05600c354900b003daacb12f09mr37027008wmq.19.1674832567668;
+        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674832567; cv=none;
         d=google.com; s=arc-20160816;
-        b=DcjUF5BTcXhFvfoohT9NGo1IWdu+4UJ9wltUM3KfzQkvMozIKV4Ok6EzDZOxjlH/Hz
-         oHZXUXC8NCu3bbl5vYSAfZ0h3zLnsGuH5S+hu4HnwJEYNYFsa2bPP6rJpS3YPBpVb65B
-         IWy3IVjOvubJVmJVrP9aM665TQEI40ImIpYXcleWmIr9JgMZ3SCPeKeuUuxZUMHy6aZs
-         5rkZzxjfNxbjOPMbEPf8lTLDNjUfQhNdqtRMjk3yoK+PSR7Fc/uk7C6QAwQlhf0Uc572
-         dV2ZowREKv2yh0gbIb2MX5IMyYOm7EEkPjJ+QhybdKv3KWlTT31HW1xVn5BbUtrz4gEO
-         d5bg==
+        b=EkuQHzLyCjvQELP26nrfWe/S1c6Ge1A3uc4ZMyfsqT3xgr1qaEvQJSbxaRIQMa0/UV
+         oYXFBE+MZCc2PZKLLwAcc8kifs5P6p10MV4W2uBVNEU+2k6DjUGWz3vk+tLW8npq2UF6
+         RGVcrPAjPxc1Y4GVv5my3sRADLiXi6FA12Eh9lG7dtGyvrwDvvz1oPXKgPQpFDQ1akjX
+         Uuw+txjLtQANhmZAE3JlYk7HIgmBp7flowAyuSncat6VPFoMG+f9oLw4AyeWhzroeIsL
+         mxRlQwx2pV8onoVmqYHJeNHU5cbClgpkPyb3Z2wUiWTKLMh2j9QMpmHqK4OtXO4XZSjd
+         2Vbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OVsmj85ALmOgtCiDtTlLrbkojrzYJRmCVUkA1PDs0hI=;
-        b=GJd6UCgFp48/iMKRX7tF/UKF4r6utPhfAXlcJSbe7W7Pc/KlDxEmcgfNpz/LB74uV+
-         RCxKtHYEIwnsbkHppDvkzNN49an/Xc8kkOxzWhneRKQMyd7E9h+rVFnHCaWCfeBOt8CO
-         3kR3buyJjZSp49MLq458DVV7/yu5pTRbiYSN/t4VFggpf10/j8NLwBI7pEKf6OvBkbfx
-         7V5wUGGdv8QCMvGSuXUQcJF3dq9P4F5RP1iqMmSm+fQsGuMBEI69xjSbv9GKvVQqQ1BX
-         +e2M3pf66gGfyKGQyAcjxQvK6EAFSo9u8/LVLRAhN1bgNZgW6h04FIjZOxMFpYsquCs9
-         cyoA==
+        bh=iUGz5LpQ3EDL/VJ3l1j+YJ+y/POf2GoDlmEHrO+uK2A=;
+        b=039YanEhNTXLsCVnJbeJBUjxMbzOnMTY7JRARCd5C/o8iuCYm2dAfLwLCGgR1rYKh4
+         n4S2vrChbuqX40GQjGZFu0cDRQ/c2AFJQJA1T6JuX6VurrOFubIg5jk1EMoN480Qut1q
+         clHvc7TvGX41Zz0psbNU8WVQGCW8tNxxBrtnS+g7VCyywAJme5uOUHqC16NacUirKsef
+         sYz9nf6Fhlla3oYGL/ScDRAar5txKV7yMpD3wEzpxvMz9mt8S3Kc/zQdeRCnshqXu2/Q
+         IQtrAr/+xgY9XJHnWNbbWKUp24Fy4ATuaQYPqdONs1zkV8wryv+JxmiFck/DKWJWUYoS
+         HThA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pSdn30aU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wXyJZGPR;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n25-20020a05600c3b9900b003daffc3a551sor1645797wms.15.2023.01.27.07.16.06
+        by mx.google.com with SMTPS id u15-20020a05600c440f00b003dc1b9c3eb9sor1560560wmn.1.2023.01.27.07.16.07
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 27 Jan 2023 07:16:06 -0800 (PST)
+        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pSdn30aU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wXyJZGPR;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,30 +40,30 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=OVsmj85ALmOgtCiDtTlLrbkojrzYJRmCVUkA1PDs0hI=;
-        b=pSdn30aUderHGq2l+XKDB7XFOzcA6XvNVG0TE4pbtfSq3Nv01Qf8usjCWUh1YfzZMD
-         a8T4a9YeQdEeYHZpsi4AISoFNJMW24EOFuvBiHNlp1lQEIvqL3nEOiX91DsvxW8omtwq
-         AxILQURVQitF6+6aYOItxcR1siQbDYtyd2Gl9aSd5xjZ6J9hKombHzZ3ZofC40LMK5t1
-         JZFDsh5MiY6Mgyor4E8gBWWkIqckipAzSmVcjXWYleUalvax9bdp3YHbVoxdVMwqa0Gc
-         tuQ6Upwt53NFaUGC7rdYoE0ZbJiwUvpXlIvntGkZF5GSnZSLq0h+uZsl8kvQp6YW9KIn
-         BiUQ==
+        bh=iUGz5LpQ3EDL/VJ3l1j+YJ+y/POf2GoDlmEHrO+uK2A=;
+        b=wXyJZGPRtmBDbVtTRWtQpdOWsoVhXY8Xn/2X3IF+mR+L8+eJcOAYqOy6PKvxnuh9hk
+         SxHS1tLb37F0Neh5H+FgpqZ65Yhgxf8rpEwVVY6SrVhyhdBmq8hP1ptHr9+BhGB+Br1J
+         /5sitb2htqalTdGWN06JCHHi5gSusbW3f+kMP30VIYea0vk8Nqo/nGBt+LKDW+sEBekB
+         VF4Fy6oK1OEbWiW3hz/59KN78yVAVtg45HuttMnOhGVOkwWDfx0v1TBs0W5ULmIjyRhq
+         QDJ1J8nEe1bCqoN8pN9uaYbG0pWFOQtuvrneRYL51xiad/t+yNWFxCSycrLCWTXBfF7Z
+         QVDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=OVsmj85ALmOgtCiDtTlLrbkojrzYJRmCVUkA1PDs0hI=;
-        b=WVfz9HkarP1xjtZmAOU1PYg6ve6ZiJzBzWms+D7egfSlDWYKkUPi7m4w8RdTYiZH2V
-         BQAzs/SKJPnWyCWNJXGF4HsTLxQVWzKZPNCewm1Maw7iCyhPnhwrPtXYJwlVAKAMDLie
-         DvIckYlyNmMl+cSjSONJRB9VX1M8UWZdGsUZS/JQzuS8OCagfk/6teCMtHzcbFVzIdpe
-         jeYaGXiL5XeBv32ieL+HDiIR66uaZ+O3fC3xxMv5Ui33egD5ulsWYXnVV48YIl0HGILO
-         pSSdwEN55o4ckBwg+yDN6Fvfmld4qpXqrJOJFRhYYnDqpdlBHAFx+VFXgk0N4ONHHsDp
-         xYbQ==
-X-Gm-Message-State: AFqh2kpniAMWTnqqKWkWHwftUmKfc870wRJvSnTseSFSBAjqIITMXwku
-	ilJkaDjZSaLOW19QO4sREmuvRBYc
-X-Google-Smtp-Source: AMrXdXvCyrrdBD4txmyM1581ANSCEcootkshX6S5ODTUKCWuBV6wWHsSOnDVnc556NQ4gvwBSGQDXw==
-X-Received: by 2002:a05:600c:4d93:b0:3d9:efd1:214d with SMTP id v19-20020a05600c4d9300b003d9efd1214dmr39903164wmp.25.1674832566675;
-        Fri, 27 Jan 2023 07:16:06 -0800 (PST)
+        bh=iUGz5LpQ3EDL/VJ3l1j+YJ+y/POf2GoDlmEHrO+uK2A=;
+        b=NBvtiFxd9TRljvDjIctY9hq2FdvTbl8sTkGOjvxYimC122rSobN8btPWj69elzeGdT
+         0sqgUqlASgSBdrZNNiMw9rv74lTLTofob94UZTNxRddJUOJ/YUDtfwMXcsRJVIb+Sg3m
+         Psx2CsYbodfz1EYK05a6wOf0mOusHu08uX0RDkf3YZnUy4bH/RUopqvXAT2AJB0rxbYC
+         UPIQPX0qXti3cs52gV03jh/lqpDU4xg/FuJnfnE4kkDztZ0Il/845Cfau9xOkoL8SPd8
+         jrUZ8QClb7p/JxYtA/N5jtUag8sVtzhFEzzUzYZRyaOCZvI5mbf/EcVjj0Cgnelsd7Qa
+         aMZQ==
+X-Gm-Message-State: AO0yUKWl2S/0uONG420iIIhnSIPyfsgPxVlQ3XB3CJxQdBpAW3W7fs53
+	IhQdr211u2f/yH4o5SCCS8iUVDbF
+X-Google-Smtp-Source: AK7set8gfQYjQ+GYxO80U7CUehAz2XW16FvZhYy4OJlItng3MUCW4ws9HcFwY3tNs5fcwHLaGW+Ubw==
+X-Received: by 2002:a05:600c:198d:b0:3dc:1031:14c4 with SMTP id t13-20020a05600c198d00b003dc103114c4mr14786447wmq.14.1674832567445;
+        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain (054592b0.skybroadband.com. [5.69.146.176])
         by smtp.gmail.com with ESMTPSA id l7-20020a05600c47c700b003dc3bbdf518sm1656628wmo.21.2023.01.27.07.16.06
@@ -81,114 +81,49 @@ Cc: qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
 	richard.henderson@linaro.org,
 	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 14/16] target/arm/kvm-rme: Add PMU num counters parameters
-Date: Fri, 27 Jan 2023 15:07:27 +0000
-Message-Id: <20230127150727.612594-15-jean-philippe@linaro.org>
+Subject: [RFC PATCH 15/16] target/arm/kvm: Disable Realm reboot
+Date: Fri, 27 Jan 2023 15:07:28 +0000
+Message-Id: <20230127150727.612594-16-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230127150727.612594-1-jean-philippe@linaro.org>
 References: <20230127150727.612594-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 8E1IImDHekPN
+X-TUID: FtR8N/XR+5Ey
 
-Pass the num_cntrs parameter to Realm creation. These parameters
-contribute to the initial Realm measurement.
+A realm cannot be reset, it must be recreated from scratch. The RMM
+specification defines states of a Realm as NEW -> ACTIVE -> SYSTEM_OFF,
+after which the Realm can only be destroyed. A PCSI_SYSTEM_RESET call,
+which normally reboots the system, puts the Realm in SYSTEM_OFF state.
+
+QEMU does not support recreating a VM. Normally, a reboot request by the
+guest causes all devices to reset, which cannot work for a Realm.
+Indeed, loading images into Realm memory and changing the PC is only
+allowed for a Realm in NEW state. Resetting the images for a Realm in
+SYSTEM_OFF state will cause QEMU to crash with a bus error.
+
+Handle reboot requests by the guest more gracefully, by indicating to
+runstate.c that the vCPUs of a Realm are not resettable, and that QEMU
+should exit.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- qapi/qom.json        |  5 ++++-
- target/arm/kvm-rme.c | 21 ++++++++++++++++++++-
- 2 files changed, 24 insertions(+), 2 deletions(-)
+ target/arm/kvm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/qapi/qom.json b/qapi/qom.json
-index 86ed386f26..13c85abde9 100644
---- a/qapi/qom.json
-+++ b/qapi/qom.json
-@@ -870,6 +870,8 @@
- #
- # @num-watchpoints: Number of watchpoints (default: 0)
- #
-+# @num-pmu-counters: Number of PMU counters (default: 0, PMU disabled)
-+#
- # Since: FIXME
- ##
- { 'struct': 'RmeGuestProperties',
-@@ -877,7 +879,8 @@
-             '*personalization-value': 'str',
-             '*sve-vector-length': 'uint32',
-             '*num-breakpoints': 'uint32',
--            '*num-watchpoints': 'uint32' } }
-+            '*num-watchpoints': 'uint32',
-+            '*num-pmu-counters': 'uint32' } }
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index d8655d9041..02b5e8009f 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1071,7 +1071,8 @@ int kvm_arch_msi_data_to_gsi(uint32_t data)
  
- ##
- # @ObjectType:
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-index 3f39f1f7ad..1baed79d46 100644
---- a/target/arm/kvm-rme.c
-+++ b/target/arm/kvm-rme.c
-@@ -24,7 +24,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
- 
- #define RME_MAX_BPS         0x10
- #define RME_MAX_WPS         0x10
--#define RME_MAX_CFG         4
-+#define RME_MAX_PMU_CTRS    0x20
-+#define RME_MAX_CFG         5
- 
- typedef struct RmeGuest RmeGuest;
- 
-@@ -35,6 +36,7 @@ struct RmeGuest {
-     uint32_t sve_vl;
-     uint32_t num_wps;
-     uint32_t num_bps;
-+    uint32_t num_pmu_cntrs;
- };
- 
- struct RmeImage {
-@@ -157,6 +159,13 @@ static int rme_configure_one(RmeGuest *guest, uint32_t cfg, Error **errp)
-         args.num_wrps = guest->num_wps;
-         cfg_str = "debug parameters";
-         break;
-+    case KVM_CAP_ARM_RME_CFG_PMU:
-+        if (!guest->num_pmu_cntrs) {
-+            return 0;
-+        }
-+        args.num_pmu_cntrs = guest->num_pmu_cntrs;
-+        cfg_str = "PMU";
-+        break;
-     default:
-         g_assert_not_reached();
-     }
-@@ -378,6 +387,8 @@ static void rme_get_uint32(Object *obj, Visitor *v, const char *name,
-         value = guest->num_bps;
-     } else if (strcmp(name, "num-watchpoints") == 0) {
-         value = guest->num_wps;
-+    } else if (strcmp(name, "num-pmu-counters") == 0) {
-+        value = guest->num_pmu_cntrs;
-     } else {
-         g_assert_not_reached();
-     }
-@@ -410,6 +421,9 @@ static void rme_set_uint32(Object *obj, Visitor *v, const char *name,
-     } else if (strcmp(name, "num-watchpoints") == 0) {
-         max_value = RME_MAX_WPS;
-         var = &guest->num_wps;
-+    } else if (strcmp(name, "num-pmu-counters") == 0) {
-+        max_value = RME_MAX_PMU_CTRS;
-+        var = &guest->num_pmu_cntrs;
-     } else {
-         g_assert_not_reached();
-     }
-@@ -456,6 +470,11 @@ static void rme_guest_class_init(ObjectClass *oc, void *data)
-                               rme_set_uint32, NULL, NULL);
-     object_class_property_set_description(oc, "num-watchpoints",
-             "Number of watchpoints");
-+
-+    object_class_property_add(oc, "num-pmu-counters", "uint32", rme_get_uint32,
-+                              rme_set_uint32, NULL, NULL);
-+    object_class_property_set_description(oc, "num-pmu-counters",
-+            "Number of PMU counters");
+ bool kvm_arch_cpu_check_are_resettable(void)
+ {
+-    return true;
++    /* A Realm cannot be reset */
++    return !kvm_arm_rme_enabled();
  }
  
- static const TypeInfo rme_guest_info = {
+ void kvm_arch_accel_class_init(ObjectClass *oc)
 -- 
 2.39.0

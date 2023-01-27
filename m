@@ -1,38 +1,38 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1232593ejc;
-        Fri, 27 Jan 2023 07:16:06 -0800 (PST)
-X-Received: by 2002:a05:600c:3d96:b0:3db:26b7:2fc8 with SMTP id bi22-20020a05600c3d9600b003db26b72fc8mr31141580wmb.39.1674832566215;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1232599ejc;
+        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
+X-Received: by 2002:adf:de04:0:b0:2a9:89e:2b53 with SMTP id b4-20020adfde04000000b002a9089e2b53mr34958616wrm.45.1674832566910;
         Fri, 27 Jan 2023 07:16:06 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1674832566; cv=none;
         d=google.com; s=arc-20160816;
-        b=BSt5OHWght3afTvTkl2YrrTEn6Q2a+Y1AW+zAHk17VPh0S1SQSZseSuio2MBOOUdtV
-         3D/rhx2cMBHhGa97SeZUVRhDrjkcncHOvKs700Nu4BdpuyOXrFmoWjCj3bSVuAlDNSrB
-         xFREDfM4kDreuipTWthJ0ypvvcKYr64u1G7vAx46w3+4lJZSpZNmO+iI4/LhMoLlnbpt
-         y6RJI+SiF5BpxfmJUDBR1/VeWKla3GK/zmp1QtMqvUnGSzSTjUOomVdXXz1rgnWLBBXv
-         XsC20oD/8ekEeIsiaQiz1MIthbOHIC61Y8tWhMTXpvDol9BuAgyjxKEGJrKmrZ40bgRw
-         s8KQ==
+        b=DcjUF5BTcXhFvfoohT9NGo1IWdu+4UJ9wltUM3KfzQkvMozIKV4Ok6EzDZOxjlH/Hz
+         oHZXUXC8NCu3bbl5vYSAfZ0h3zLnsGuH5S+hu4HnwJEYNYFsa2bPP6rJpS3YPBpVb65B
+         IWy3IVjOvubJVmJVrP9aM665TQEI40ImIpYXcleWmIr9JgMZ3SCPeKeuUuxZUMHy6aZs
+         5rkZzxjfNxbjOPMbEPf8lTLDNjUfQhNdqtRMjk3yoK+PSR7Fc/uk7C6QAwQlhf0Uc572
+         dV2ZowREKv2yh0gbIb2MX5IMyYOm7EEkPjJ+QhybdKv3KWlTT31HW1xVn5BbUtrz4gEO
+         d5bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=V2C8ym8is1CPYbe6HBHqeDtoLk1afh8VUgAOi79KyjA=;
-        b=ghih1+XdNBu8dGSBIu9q5qdZZOA7VA8JpFz0Bv1NZIuJhCMP1vBo0pq74kmQoUb6mK
-         QLemB9CMZBWDXNNfbce8aOpHPnS7SEYrbZvDDjUL8YJsPK8Y+Va9lr/cUr9fRgGqVBKm
-         uS2CWBLogNv415gS6hIBiqSFrei1RWYXlePct0Rf5CbencmFXBDmwPQ++0OfQCMM4yup
-         I53oyAzkfqcK3/vnMzrO0hblyV/3UJWUrmh4GuUoCZRpgSjPeSo9n7mR28wEXwDnRVOb
-         4+K3GvRRGXU8IqHZkbQ4mU8hPWQWoSmmvqWFLx5SQdm/lr3q49YNte30WkNTufvQWhUI
-         DiNQ==
+        bh=OVsmj85ALmOgtCiDtTlLrbkojrzYJRmCVUkA1PDs0hI=;
+        b=GJd6UCgFp48/iMKRX7tF/UKF4r6utPhfAXlcJSbe7W7Pc/KlDxEmcgfNpz/LB74uV+
+         RCxKtHYEIwnsbkHppDvkzNN49an/Xc8kkOxzWhneRKQMyd7E9h+rVFnHCaWCfeBOt8CO
+         3kR3buyJjZSp49MLq458DVV7/yu5pTRbiYSN/t4VFggpf10/j8NLwBI7pEKf6OvBkbfx
+         7V5wUGGdv8QCMvGSuXUQcJF3dq9P4F5RP1iqMmSm+fQsGuMBEI69xjSbv9GKvVQqQ1BX
+         +e2M3pf66gGfyKGQyAcjxQvK6EAFSo9u8/LVLRAhN1bgNZgW6h04FIjZOxMFpYsquCs9
+         cyoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s7mwAN6i;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pSdn30aU;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y24-20020a1c4b18000000b003daf66d3522sor2704813wma.44.2023.01.27.07.16.06
+        by mx.google.com with SMTPS id n25-20020a05600c3b9900b003daffc3a551sor1645797wms.15.2023.01.27.07.16.06
         for <alex.bennee@linaro.org>
         (Google Transport Security);
         Fri, 27 Jan 2023 07:16:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s7mwAN6i;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pSdn30aU;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,35 +40,35 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=V2C8ym8is1CPYbe6HBHqeDtoLk1afh8VUgAOi79KyjA=;
-        b=s7mwAN6iwR1Yf/RhvBpaZy7wHKwUfdOmrONVLHMtlMQ9jpePl/3OubN4tVZkAB2ntH
-         UmqzkbSf6+HRcCSwxA8Eh1Yfkrx65L11zu0AzegLZ06x/A29sSkCsA+2kHgVCoJPmiqg
-         AANnok2MzEDg134sXcVtijtQyp/Tn28+oj/wlqNbwHJMc5v4Oe7VETLN77Azfo42ss+0
-         ENVO+dG6ZGtiEun3UaB6clmmQF+DYu814B1D2NlfOvXDKLABSKoV7Zeyrp/UTaCJ6wFF
-         9JllU7HlhyCYry7q39UkzwfdTmlUspKXhZJpys9/l9gDhhEylzPYeCD/QkD6SRV0LYCW
-         28aQ==
+        bh=OVsmj85ALmOgtCiDtTlLrbkojrzYJRmCVUkA1PDs0hI=;
+        b=pSdn30aUderHGq2l+XKDB7XFOzcA6XvNVG0TE4pbtfSq3Nv01Qf8usjCWUh1YfzZMD
+         a8T4a9YeQdEeYHZpsi4AISoFNJMW24EOFuvBiHNlp1lQEIvqL3nEOiX91DsvxW8omtwq
+         AxILQURVQitF6+6aYOItxcR1siQbDYtyd2Gl9aSd5xjZ6J9hKombHzZ3ZofC40LMK5t1
+         JZFDsh5MiY6Mgyor4E8gBWWkIqckipAzSmVcjXWYleUalvax9bdp3YHbVoxdVMwqa0Gc
+         tuQ6Upwt53NFaUGC7rdYoE0ZbJiwUvpXlIvntGkZF5GSnZSLq0h+uZsl8kvQp6YW9KIn
+         BiUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=V2C8ym8is1CPYbe6HBHqeDtoLk1afh8VUgAOi79KyjA=;
-        b=6MLFyNAS00ZunHnEagK56EQg9aA2C38Uf87DapCG7wg5pRM+NJ4QTk9RuRFEm5/EpX
-         Eahs3klzsWzBCOHBv4YhG9To4K3JDPyu5StRw1RPKCFEzscMLUk+qVaMHrziEN1T6Wco
-         6v80HyUs1BEZEDOIb+ULA0js/ZO/DjkNba4D9OSMoNN0xZDRgsJDBCcApRyG4ZGKsdJ5
-         jvjb5f9th9tLM/n2d/SlLvFlNQzZRrT7gZNAZ84b/XZjKGDWiSk6qsSb6IqyBuovNk0f
-         HIm2SHOa2Qj1TNPF0AN9udv2ZSTH8Wwy8PHSPTdzPICHHv2qDOZCNmWtaBRPT5aoQYUI
-         EDQg==
-X-Gm-Message-State: AO0yUKXxUG8EtgnoKIOShcIGXLdG3vAleNsPKwUXeDEfHKuTSvwvX1e+
-	4SuiGPwOXl6gPyvAHTvNyJfZWg4/
-X-Google-Smtp-Source: AK7set/q19d4BBJOiVPaxHB2Y4QlBcQjF6fwBnxYMemjW0hkO6/cTM6gtypfWGJ7NyKxDqXtET9E8A==
-X-Received: by 2002:a05:600c:1551:b0:3dc:18de:b221 with SMTP id f17-20020a05600c155100b003dc18deb221mr12053778wmg.21.1674832565936;
-        Fri, 27 Jan 2023 07:16:05 -0800 (PST)
+        bh=OVsmj85ALmOgtCiDtTlLrbkojrzYJRmCVUkA1PDs0hI=;
+        b=WVfz9HkarP1xjtZmAOU1PYg6ve6ZiJzBzWms+D7egfSlDWYKkUPi7m4w8RdTYiZH2V
+         BQAzs/SKJPnWyCWNJXGF4HsTLxQVWzKZPNCewm1Maw7iCyhPnhwrPtXYJwlVAKAMDLie
+         DvIckYlyNmMl+cSjSONJRB9VX1M8UWZdGsUZS/JQzuS8OCagfk/6teCMtHzcbFVzIdpe
+         jeYaGXiL5XeBv32ieL+HDiIR66uaZ+O3fC3xxMv5Ui33egD5ulsWYXnVV48YIl0HGILO
+         pSSdwEN55o4ckBwg+yDN6Fvfmld4qpXqrJOJFRhYYnDqpdlBHAFx+VFXgk0N4ONHHsDp
+         xYbQ==
+X-Gm-Message-State: AFqh2kpniAMWTnqqKWkWHwftUmKfc870wRJvSnTseSFSBAjqIITMXwku
+	ilJkaDjZSaLOW19QO4sREmuvRBYc
+X-Google-Smtp-Source: AMrXdXvCyrrdBD4txmyM1581ANSCEcootkshX6S5ODTUKCWuBV6wWHsSOnDVnc556NQ4gvwBSGQDXw==
+X-Received: by 2002:a05:600c:4d93:b0:3d9:efd1:214d with SMTP id v19-20020a05600c4d9300b003d9efd1214dmr39903164wmp.25.1674832566675;
+        Fri, 27 Jan 2023 07:16:06 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain (054592b0.skybroadband.com. [5.69.146.176])
-        by smtp.gmail.com with ESMTPSA id l7-20020a05600c47c700b003dc3bbdf518sm1656628wmo.21.2023.01.27.07.16.05
+        by smtp.gmail.com with ESMTPSA id l7-20020a05600c47c700b003dc3bbdf518sm1656628wmo.21.2023.01.27.07.16.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Jan 2023 07:16:05 -0800 (PST)
+        Fri, 27 Jan 2023 07:16:06 -0800 (PST)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-devel@nongnu.org,
@@ -81,126 +81,112 @@ Cc: qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
 	richard.henderson@linaro.org,
 	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 13/16] target/arm/kvm-rme: Add breakpoints and watchpoints parameters
-Date: Fri, 27 Jan 2023 15:07:26 +0000
-Message-Id: <20230127150727.612594-14-jean-philippe@linaro.org>
+Subject: [RFC PATCH 14/16] target/arm/kvm-rme: Add PMU num counters parameters
+Date: Fri, 27 Jan 2023 15:07:27 +0000
+Message-Id: <20230127150727.612594-15-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230127150727.612594-1-jean-philippe@linaro.org>
 References: <20230127150727.612594-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: FYorWCiOeIR3
+X-TUID: 8E1IImDHekPN
 
-Pass the num_bps and num_wps parameters to Realm creation. These
-parameters contribute to the initial Realm measurement.
+Pass the num_cntrs parameter to Realm creation. These parameters
+contribute to the initial Realm measurement.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- qapi/qom.json        |  8 +++++++-
- target/arm/kvm-rme.c | 34 +++++++++++++++++++++++++++++++++-
- 2 files changed, 40 insertions(+), 2 deletions(-)
+ qapi/qom.json        |  5 ++++-
+ target/arm/kvm-rme.c | 21 ++++++++++++++++++++-
+ 2 files changed, 24 insertions(+), 2 deletions(-)
 
 diff --git a/qapi/qom.json b/qapi/qom.json
-index 94ecb87f6f..86ed386f26 100644
+index 86ed386f26..13c85abde9 100644
 --- a/qapi/qom.json
 +++ b/qapi/qom.json
-@@ -866,12 +866,18 @@
+@@ -870,6 +870,8 @@
  #
- # @sve-vector-length: SVE vector length (default: 0, SVE disabled)
+ # @num-watchpoints: Number of watchpoints (default: 0)
  #
-+# @num-breakpoints: Number of breakpoints (default: 0)
-+#
-+# @num-watchpoints: Number of watchpoints (default: 0)
++# @num-pmu-counters: Number of PMU counters (default: 0, PMU disabled)
 +#
  # Since: FIXME
  ##
  { 'struct': 'RmeGuestProperties',
-   'data': { '*measurement-algo': 'str',
+@@ -877,7 +879,8 @@
              '*personalization-value': 'str',
--            '*sve-vector-length': 'uint32' } }
-+            '*sve-vector-length': 'uint32',
-+            '*num-breakpoints': 'uint32',
-+            '*num-watchpoints': 'uint32' } }
+             '*sve-vector-length': 'uint32',
+             '*num-breakpoints': 'uint32',
+-            '*num-watchpoints': 'uint32' } }
++            '*num-watchpoints': 'uint32',
++            '*num-pmu-counters': 'uint32' } }
  
  ##
  # @ObjectType:
 diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-index 0b2153a45c..3f39f1f7ad 100644
+index 3f39f1f7ad..1baed79d46 100644
 --- a/target/arm/kvm-rme.c
 +++ b/target/arm/kvm-rme.c
-@@ -22,7 +22,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
+@@ -24,7 +24,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
  
- #define RME_PAGE_SIZE qemu_real_host_page_size()
- 
--#define RME_MAX_CFG         3
-+#define RME_MAX_BPS         0x10
-+#define RME_MAX_WPS         0x10
-+#define RME_MAX_CFG         4
+ #define RME_MAX_BPS         0x10
+ #define RME_MAX_WPS         0x10
+-#define RME_MAX_CFG         4
++#define RME_MAX_PMU_CTRS    0x20
++#define RME_MAX_CFG         5
  
  typedef struct RmeGuest RmeGuest;
  
-@@ -31,6 +33,8 @@ struct RmeGuest {
-     char *measurement_algo;
-     char *personalization_value;
+@@ -35,6 +36,7 @@ struct RmeGuest {
      uint32_t sve_vl;
-+    uint32_t num_wps;
-+    uint32_t num_bps;
+     uint32_t num_wps;
+     uint32_t num_bps;
++    uint32_t num_pmu_cntrs;
  };
  
  struct RmeImage {
-@@ -145,6 +149,14 @@ static int rme_configure_one(RmeGuest *guest, uint32_t cfg, Error **errp)
-         args.sve_vq = guest->sve_vl / 128;
-         cfg_str = "SVE";
+@@ -157,6 +159,13 @@ static int rme_configure_one(RmeGuest *guest, uint32_t cfg, Error **errp)
+         args.num_wrps = guest->num_wps;
+         cfg_str = "debug parameters";
          break;
-+    case KVM_CAP_ARM_RME_CFG_DBG:
-+        if (!guest->num_bps && !guest->num_wps) {
++    case KVM_CAP_ARM_RME_CFG_PMU:
++        if (!guest->num_pmu_cntrs) {
 +            return 0;
 +        }
-+        args.num_brps = guest->num_bps;
-+        args.num_wrps = guest->num_wps;
-+        cfg_str = "debug parameters";
++        args.num_pmu_cntrs = guest->num_pmu_cntrs;
++        cfg_str = "PMU";
 +        break;
      default:
          g_assert_not_reached();
      }
-@@ -362,6 +374,10 @@ static void rme_get_uint32(Object *obj, Visitor *v, const char *name,
- 
-     if (strcmp(name, "sve-vector-length") == 0) {
-         value = guest->sve_vl;
-+    } else if (strcmp(name, "num-breakpoints") == 0) {
-+        value = guest->num_bps;
-+    } else if (strcmp(name, "num-watchpoints") == 0) {
-+        value = guest->num_wps;
+@@ -378,6 +387,8 @@ static void rme_get_uint32(Object *obj, Visitor *v, const char *name,
+         value = guest->num_bps;
+     } else if (strcmp(name, "num-watchpoints") == 0) {
+         value = guest->num_wps;
++    } else if (strcmp(name, "num-pmu-counters") == 0) {
++        value = guest->num_pmu_cntrs;
      } else {
          g_assert_not_reached();
      }
-@@ -388,6 +404,12 @@ static void rme_set_uint32(Object *obj, Visitor *v, const char *name,
-             error_setg(errp, "invalid SVE vector length %"PRIu32, value);
-             return;
-         }
-+    } else if (strcmp(name, "num-breakpoints") == 0) {
-+        max_value = RME_MAX_BPS;
-+        var = &guest->num_bps;
-+    } else if (strcmp(name, "num-watchpoints") == 0) {
-+        max_value = RME_MAX_WPS;
-+        var = &guest->num_wps;
+@@ -410,6 +421,9 @@ static void rme_set_uint32(Object *obj, Visitor *v, const char *name,
+     } else if (strcmp(name, "num-watchpoints") == 0) {
+         max_value = RME_MAX_WPS;
+         var = &guest->num_wps;
++    } else if (strcmp(name, "num-pmu-counters") == 0) {
++        max_value = RME_MAX_PMU_CTRS;
++        var = &guest->num_pmu_cntrs;
      } else {
          g_assert_not_reached();
      }
-@@ -424,6 +446,16 @@ static void rme_guest_class_init(ObjectClass *oc, void *data)
+@@ -456,6 +470,11 @@ static void rme_guest_class_init(ObjectClass *oc, void *data)
                                rme_set_uint32, NULL, NULL);
-     object_class_property_set_description(oc, "sve-vector-length",
-             "SVE vector length. 0 disables SVE (the default)");
+     object_class_property_set_description(oc, "num-watchpoints",
+             "Number of watchpoints");
 +
-+    object_class_property_add(oc, "num-breakpoints", "uint32", rme_get_uint32,
++    object_class_property_add(oc, "num-pmu-counters", "uint32", rme_get_uint32,
 +                              rme_set_uint32, NULL, NULL);
-+    object_class_property_set_description(oc, "num-breakpoints",
-+            "Number of breakpoints");
-+
-+    object_class_property_add(oc, "num-watchpoints", "uint32", rme_get_uint32,
-+                              rme_set_uint32, NULL, NULL);
-+    object_class_property_set_description(oc, "num-watchpoints",
-+            "Number of watchpoints");
++    object_class_property_set_description(oc, "num-pmu-counters",
++            "Number of PMU counters");
  }
  
  static const TypeInfo rme_guest_info = {

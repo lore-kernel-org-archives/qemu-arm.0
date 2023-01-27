@@ -1,104 +1,104 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1338710ejc;
-        Fri, 27 Jan 2023 09:58:27 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtXD6kvmYf5Uj44RPg5pJj7hU7W095DGheoWA4M8OZIGXsqBbsYDfLpd+iPMkFHZbD5uzxG
-X-Received: by 2002:a05:622a:1a1b:b0:3b6:335a:828c with SMTP id f27-20020a05622a1a1b00b003b6335a828cmr74105780qtb.47.1674842307154;
-        Fri, 27 Jan 2023 09:58:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674842307; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1338718ejc;
+        Fri, 27 Jan 2023 09:58:28 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvFGzQG4Lnxzv05vWgVw/Wlim+UURiLSLKNfwvczBseFENpUgaoFhCxtLNoyw52USRmVD1P
+X-Received: by 2002:a0c:9c8a:0:b0:531:b7b1:c31e with SMTP id i10-20020a0c9c8a000000b00531b7b1c31emr58070424qvf.38.1674842308224;
+        Fri, 27 Jan 2023 09:58:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674842308; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ywvh40s0FzMq1MoYgFCpNLrVNUBQ0fsvRwqyVjQo0mfkN648JR+lhw2I6hl9tb4zCt
-         ADDVZJ0O05WYXz7wDamQEk7bndVxbWe+Fq/iUMf6HOXE/db092BC7KfxAt+HfHvj4Q91
-         sB+7AfOuUZYvPpQ8H75lgEIU1KaV1b+OLFTz9FsWQf2oJz6dJoTZkC3n2HpXA8SVeGVK
-         3RJrcvrjD3df7q+20CQfV+Di9bQGd5pUl/9+J+XQvQ2DTuTYVksojcsMh4HPc6wbqQ0x
-         xj/iw2p16CuVelF8QWbp/lHdmoqZBLvVMzowtHHbQtSmGpaYo9svf5e3AeswtASfitDS
-         dRsA==
+        b=Wuz0ZLTVzf59CD7OZ3lN4Z5uvPS5o5o59ZlECK1E2SLLhfYHI14kVc6Q7xpDBoV7YY
+         X9NvKBxKne61aQNIsVlmrEpstxAGj430BuNKKBcWUGqyVbboHopmLk99o+fD8NY73vB1
+         /VVBtmF56BZAlXpzbqPb1u4GOkyxQdn0w99EeLpE1G/IlvONW26YQ7KJAIIJd2jvKHNy
+         EGSUigG8eO85QG4xyHdFA6zacEtaCiEd6dHWH6LbYOt06VchPoWeA2cHoZt552FkxZrg
+         aUK0E5Q9U/IFpzrZC7voEk1cgugL8D8SyjMO3KF4YrKEMMivBvcZMw+xIO3tWtg+aHW+
+         f78A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dRvnpD/SS8NrhvE6itIT8RGFAlHq7tuRDHg3zL/7iNk=;
-        b=qDKiuO9c0OAA3CA4oyO/iId4h3zSLZ46fbzfnvCIgBzQwxWnD+Sop3mtF/Gnzy3ihF
-         ytyhI33B6AUultlUOJkTabkWA0qJm8iagccRZUw+SddbB5mVZY2ZGu75sc8/cE/D7q04
-         F96dPC7N/uK0bP4KbPSVf8qU0WRxNsFr7K9kQtluSXaeW4LOazlVJABKh20c7vh9jfr8
-         mzZP7MAJ40AQ97hrjSYAnti1OuBH4gnLlM+XLGE5K6W3i99sF3nFTpRcC/RIih4KeMk3
-         YQPe5CmDOAGjm0yOphQDbzbrw8OX1CyebuIJouECvm/qqusjo9OlL+b2UIM/4EZsHu4D
-         /oUg==
+        bh=ocuh6zX/sB0nMJnNqY88PpTxJzWwkZIqSEj3aMaaCrM=;
+        b=bCS3WNFL5s/0broZPKDVvXNZXpd1ytspdSRjdSbAMZ0DangTOhC2riDd7/B32sDJLI
+         d0ZawH4LbdN32yL2Dh3HVXG2IGLN70ErwSDgm5kxzFl3/KaabwRtou3oyx0888eOhdYq
+         gnAr8Cy6s3ahzJ3e/wx8Z2hUxuc2BOLbXVSi9ikocDXOxEIENyzcCEykTOJD3QydkuvV
+         J3paWmhyuOuChsejZDsffA+3b0ltQGRBMHfQVJkBsVMt3Hwm3yd6iqC6DrQwGdKHQVeG
+         5LEacyAfmmwbhIxPJ+DcbIarZXrJTjKKgUsOsRoPuHTOPBZQztWn2YscLVgw0+zsNIg6
+         Q3Tw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pmTc7U3g;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LGQraPld;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b140-20020ae9eb92000000b007069b0ef749si3070919qkg.364.2023.01.27.09.58.27
+        by mx.google.com with ESMTPS id i24-20020a05620a075800b00705f5029cf9si3115013qki.55.2023.01.27.09.58.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 09:58:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 27 Jan 2023 09:58:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pmTc7U3g;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LGQraPld;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pLSx6-00012g-KX; Fri, 27 Jan 2023 12:55:52 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pLSx4-00010M-Pj; Fri, 27 Jan 2023 12:55:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pLSwx-0000uq-O4
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 12:55:44 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1pLSwv-0000tR-Hy
+ for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:42 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pLSwl-00061W-Qc
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 12:55:43 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id r2so5665584wrv.7
- for <qemu-arm@nongnu.org>; Fri, 27 Jan 2023 09:55:21 -0800 (PST)
+ id 1pLSwl-00060m-Ov
+ for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:41 -0500
+Received: by mail-wr1-x434.google.com with SMTP id r2so5665464wrv.7
+ for <qemu-devel@nongnu.org>; Fri, 27 Jan 2023 09:55:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=dRvnpD/SS8NrhvE6itIT8RGFAlHq7tuRDHg3zL/7iNk=;
- b=pmTc7U3gf/1bvYlUizDcF0EeVOGsuwQjjxMWFvGkig4+atS4nuvAq7WhATRcCLoFT/
- YEEeKPXwZw+sQxI+ND0u1FyGNyJGX5fs+GwBruHzpOll1B61IHP1H7Ycqsi7f3n18hWR
- Egem2VGcu+ixWX4x7K6+tNtUqiGbi2+0ydv1WAL3UYs4nKQGfgS+Sueu0fBJ7gGuFLYb
- n9SJett6f2V8J3Wly2wxb4cpIS9WW0C6rjtgDFMAQjN08QY28u4XzepxLNqqtU7y0YZf
- QbPBH00QU7QhU6IUlBkfwgqzpg8ICJzGfqjqRLxJhy/ThrYibHneFLzlM4sWAkbS7jpC
- KVaQ==
+ :reply-to; bh=ocuh6zX/sB0nMJnNqY88PpTxJzWwkZIqSEj3aMaaCrM=;
+ b=LGQraPldm78FfexAlnXi2RslvySLR7QJsSFhNXWxHyTZ4R+Hk133c0TSd07pCbexuz
+ mBLGDOeiC2L6DZ2PguzmHCvE7oyKgc52YylRnNDNELdX/VXuY1P10z2ck8c/l7YD9RlN
+ U40BLHILx/QB2TKXXh7+vSWHdk0mxSlJwes7v83s5RMst18YukLxsSoyf3yZTWacp/bZ
+ A5y+C0bLKm3nsrzcKlu5xDTvaOo9+Ta1a8Bse5m2EwfW71z7dIvTvPnLZLIKzwTJdI70
+ LoFKSOjUoNpXNgnhzZXM/yP195BKNcG9d5Tb77SE8QFBXOXPeLLBypxCB4uT6Fvnipdn
+ sjaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=dRvnpD/SS8NrhvE6itIT8RGFAlHq7tuRDHg3zL/7iNk=;
- b=FXa4SvAVSGZ0CwOmipn7RsSq7Z0csgjDreLsHm33nrY+nkUROpC/JU7fSanadXsaSU
- 2ByspRloPUwAeGQlllHvd6FOVJewaO1MOiE1qXRQ5rcMbB7jxIsA/tO3Vwx7sSrsVWdx
- muarCchDQzLWCtEXMISHP9/wyEZCIa7nmAckGcKvAQkALCsDJhWaFI7Us5oVjMGdzLhi
- xlaoxYh5ODBk0jFvjfKb9fmr5lhLFZ4cV/NZ+T2bMNioXKDwZyzS5OXghrQXFQRi8lBd
- lsjDeK9rj7FtRjGhMo/EcM1yUQmOYhZh0GZccJPP84zDh8//h0hF6cJ9tp8Tjjz0Vs00
- UxKQ==
-X-Gm-Message-State: AFqh2kot+ihxsYQ5ZXsmYYDFIvCl/XKH+j8jDH9tVrKRj61E/DyO796y
- v1q3mo5RT9Ril9DWe62ODiqbrA4ShO/w3Fo0
-X-Received: by 2002:adf:f605:0:b0:2bd:be31:cd77 with SMTP id
- t5-20020adff605000000b002bdbe31cd77mr32440948wrp.30.1674842120771; 
- Fri, 27 Jan 2023 09:55:20 -0800 (PST)
+ bh=ocuh6zX/sB0nMJnNqY88PpTxJzWwkZIqSEj3aMaaCrM=;
+ b=JbBfAVzbPci4Xck1D2SWXao484jNcsgNCoVKxMKwyoUG8oKSY2mQYcRpGh9/Jfxp0j
+ feFPVG6Bq6cG/bzKOUzyfIN1/Dq3DVnc4DhCXv6EMdVoc9DkGh/pPM9emI1qLA1Sc5rq
+ hS4ML/h03wYsHvWMX3MWqJkzBjv/phHf/0daCeCehkuyg4tmzOOg44Ga1JU3EeZrJjzu
+ bOxW2zXBPu1aq7N0f89vDTc9Liuz1kujIMHjY5ewoSHn7GIypnMTB+Mzg7zc2AnpqB5e
+ w+BCVtQSF8ZgEpEK3NmZiMHP/48pjdybjiwwTNZHeSO6dd201etCmJZAOeT1Rx8G0OCV
+ nYvA==
+X-Gm-Message-State: AO0yUKX7vxsMhn+umBf5cnnBHS7RMmyvnvVd+CC15rkaqJdyqzJBUQr/
+ NzXPFi2Gi+l27FNbjC7o++yEoQ==
+X-Received: by 2002:a5d:5406:0:b0:2bf:d89b:7e17 with SMTP id
+ g6-20020a5d5406000000b002bfd89b7e17mr594309wrv.51.1674842117701; 
+ Fri, 27 Jan 2023 09:55:17 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l13-20020adff48d000000b002366e3f1497sm4545089wro.6.2023.01.27.09.55.19
+ l13-20020adff48d000000b002366e3f1497sm4545089wro.6.2023.01.27.09.55.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Jan 2023 09:55:20 -0800 (PST)
+ Fri, 27 Jan 2023 09:55:17 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 10/23] target/arm: Mark up sysregs for HFGRTR bits 0..11
-Date: Fri, 27 Jan 2023 17:54:54 +0000
-Message-Id: <20230127175507.2895013-11-peter.maydell@linaro.org>
+Subject: [PATCH 07/23] target/arm: Disable HSTR_EL2 traps if EL2 is not enabled
+Date: Fri, 27 Jan 2023 17:54:51 +0000
+Message-Id: <20230127175507.2895013-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230127175507.2895013-1-peter.maydell@linaro.org>
 References: <20230127175507.2895013-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,168 +107,61 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ru5XaHdy5uD7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rmdJuI2lfrgn
 
-Mark up the sysreg definitions for the registers trapped
-by HFGRTR/HFGWTR bits 0..11.
+The HSTR_EL2 register is not supposed to have an effect unless EL2 is
+enabled in the current security state.  We weren't checking for this,
+which meant that if the guest set up the HSTR_EL2 register we would
+incorrectly trap even for accesses from Secure EL0 and EL1.
+
+Add the missing checks. (Other places where we look at HSTR_EL2
+for the not-in-v8A bits TTEE and TJDBX are already checking that
+we are in NS EL0 or EL1, so there we alredy know EL2 is enabled.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-The annotation of the cpreg definitions is split into multiple
-patches for ease of review, 12 bits or so at a time.
----
- target/arm/cpregs.h | 14 ++++++++++++++
- target/arm/helper.c | 17 +++++++++++++++++
- 2 files changed, 31 insertions(+)
+ target/arm/helper.c    | 2 +-
+ target/arm/op_helper.c | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 8cc12045af6..82f2cefff0a 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -577,6 +577,20 @@ typedef enum FGTBit {
-     FGT_HDFGRTR = FGT_RW | (FGTREG_HDFGRTR << R_FGT_IDX_SHIFT),
-     FGT_HDFGWTR = FGT_W | (FGTREG_HDFGWTR << R_FGT_IDX_SHIFT),
-     FGT_HFGITR = FGT_EXEC | (FGTREG_HFGITR << R_FGT_IDX_SHIFT),
-+
-+    /* Trap bits in HFGRTR_EL2 / HFGWTR_EL2, starting from bit 0. */
-+    DO_BIT(HFGRTR, AFSR0_EL1),
-+    DO_BIT(HFGRTR, AFSR1_EL1),
-+    DO_BIT(HFGRTR, AIDR_EL1),
-+    DO_BIT(HFGRTR, AMAIR_EL1),
-+    DO_BIT(HFGRTR, APDAKEY),
-+    DO_BIT(HFGRTR, APDBKEY),
-+    DO_BIT(HFGRTR, APGAKEY),
-+    DO_BIT(HFGRTR, APIAKEY),
-+    DO_BIT(HFGRTR, APIBKEY),
-+    DO_BIT(HFGRTR, CCSIDR_EL1),
-+    DO_BIT(HFGRTR, CLIDR_EL1),
-+    DO_BIT(HFGRTR, CONTEXTIDR_EL1),
- } FGTBit;
- 
- #undef DO_BIT
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2389e41bd07..30e54455ac7 100644
+index 6f6772d8e04..66966869218 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -633,6 +633,7 @@ static const ARMCPRegInfo cp_reginfo[] = {
-     { .name = "CONTEXTIDR_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 13, .crm = 0, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_CONTEXTIDR_EL1,
-       .secure = ARM_CP_SECSTATE_NS,
-       .fieldoffset = offsetof(CPUARMState, cp15.contextidr_el[1]),
-       .resetvalue = 0, .writefn = contextidr_write, .raw_writefn = raw_write, },
-@@ -2163,6 +2164,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 1, .opc2 = 0,
-       .access = PL1_R,
-       .accessfn = access_tid4,
-+      .fgt = FGT_CCSIDR_EL1,
-       .readfn = ccsidr_read, .type = ARM_CP_NO_RAW },
-     { .name = "CSSELR", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 2, .opc2 = 0,
-@@ -2179,6 +2181,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 1, .crn = 0, .crm = 0, .opc2 = 7,
-       .access = PL1_R, .type = ARM_CP_CONST,
-       .accessfn = access_aa64_tid1,
-+      .fgt = FGT_AIDR_EL1,
-       .resetvalue = 0 },
-     /*
-      * Auxiliary fault status registers: these also are IMPDEF, and we
-@@ -2187,10 +2190,12 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-     { .name = "AFSR0_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_AFSR0_EL1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     { .name = "AFSR1_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_AFSR1_EL1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     /*
-      * MAIR can just read-as-written because we don't implement caches
-@@ -4392,6 +4397,7 @@ static const ARMCPRegInfo lpae_cp_reginfo[] = {
-     { .name = "AMAIR0", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_AMAIR_EL1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     /* AMAIR1 is mapped to AMAIR_EL1[63:32] */
-     { .name = "AMAIR1", .cp = 15, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 1,
-@@ -7041,42 +7047,52 @@ static const ARMCPRegInfo pauth_reginfo[] = {
-     { .name = "APDAKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 2, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APDAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apda.lo) },
-     { .name = "APDAKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 2, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APDAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apda.hi) },
-     { .name = "APDBKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 2, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APDBKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apdb.lo) },
-     { .name = "APDBKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 2, .opc2 = 3,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APDBKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apdb.hi) },
-     { .name = "APGAKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 3, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APGAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apga.lo) },
-     { .name = "APGAKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 3, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APGAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apga.hi) },
-     { .name = "APIAKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 1, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APIAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apia.lo) },
-     { .name = "APIAKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 1, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APIAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apia.hi) },
-     { .name = "APIBKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 1, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APIBKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apib.lo) },
-     { .name = "APIBKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 1, .opc2 = 3,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APIBKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apib.hi) },
- };
+@@ -11716,7 +11716,7 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
+         DP_TBFLAG_A32(flags, VFPEN, 1);
+     }
  
-@@ -7940,6 +7956,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 1, .opc2 = 1,
-             .access = PL1_R, .type = ARM_CP_CONST,
-             .accessfn = access_tid4,
-+            .fgt = FGT_CLIDR_EL1,
-             .resetvalue = cpu->clidr
-         };
-         define_one_arm_cp_reg(cpu, &clidr);
+-    if (el < 2 && env->cp15.hstr_el2 &&
++    if (el < 2 && env->cp15.hstr_el2 && arm_is_el2_enabled(env) &&
+         (arm_hcr_el2_eff(env) & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
+         DP_TBFLAG_A32(flags, HSTR_ACTIVE, 1);
+     }
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 8ac176e0742..5c17a5bd176 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -670,6 +670,7 @@ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
+      * we only need to check here for traps from EL0.
+      */
+     if (!is_a64(env) && arm_current_el(env) == 0 && ri->cp == 15 &&
++        arm_is_el2_enabled(env) &&
+         (arm_hcr_el2_eff(env) & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
+         uint32_t mask = 1 << ri->crn;
+ 
 -- 
 2.34.1
 

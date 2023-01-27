@@ -1,79 +1,79 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1454241ejc;
-        Fri, 27 Jan 2023 13:30:05 -0800 (PST)
-X-Google-Smtp-Source: AK7set/yG103n7ftj1FiT22vyeuNHUzTFt1qw23SNec3+AyfdEJBJOVlOcNoL1SLY+g9BkIjk6JC
-X-Received: by 2002:a05:6214:186e:b0:537:ab77:fbd4 with SMTP id eh14-20020a056214186e00b00537ab77fbd4mr8770812qvb.17.1674855005604;
-        Fri, 27 Jan 2023 13:30:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674855005; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1458658ejc;
+        Fri, 27 Jan 2023 13:38:52 -0800 (PST)
+X-Google-Smtp-Source: AK7set9mChaUAl5sA00OhP0bUCjYAdoCVMHrT3Q68Ax+43jtdj3G1Wo7GTxw0Rn/m88SoI6E/3rG
+X-Received: by 2002:a05:6214:419f:b0:537:6dbf:dccb with SMTP id ld31-20020a056214419f00b005376dbfdccbmr17801628qvb.46.1674855531980;
+        Fri, 27 Jan 2023 13:38:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674855531; cv=none;
         d=google.com; s=arc-20160816;
-        b=MG6KLTu/m5eLM7akaEa/um7BYVg1DeyoZry563ccRHPizlMR4vNZDWth9GNBso1dhs
-         2jGgy49Kx28KgF1dUCRad9ldIi14bwI4vofUDJGNmJ6c/8u/nDmFqn+0fhx7zCvT+QtR
-         yBCHzFRxrksQFRQ8A8mHk+6XBCTG+g3C9w4y3zgVg2XhF6NW4SCaiqN8qKcezy7S+1Rw
-         0XpKj8j4Z4ZZ7FubAVM7Vi6Pc7bhtFnqPRYBAfJxNtJwZP96y6e7O73vKDC1WuvFjdm7
-         TC+2jXMmeVWYgPABRNCSYgREQ051LBVTsd27Dio8cvRaroyHUSXz+QhoPbPz5dp1xsvM
-         56uA==
+        b=g9pVV8keTt2w1xOInHB8tlPXfc83pYDaHMWjOxnGHeOd/VLRuXRPtofMxySdrJK/cR
+         vKbyUGXiRT7tgaC50/b1IxfYhxN8jOSNIxHsWcMLO6jSFYPuchvakxVSKYzxYmdlsZhx
+         EXKjyGjZxfNdEn0Rn47Gy1GkN4n1uk/lcc/7l6quTQ+DW2yK36l1+fIXKQSRLP8nSfBQ
+         84lfqtU4jM79s6iv/hNVgLEzp7A7uqilWhM+Xrc7MAmxcrnLlXgdOJlyQ4NSmpxjFz2k
+         owctPts0D+z6RVBLIeP12NjxSxqKjNPscBKx5AnAurQQ+jbNdCSmDjZQExo2NIw29Oy2
+         cA/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=5604c2amRssKNuQ/KnZQ1hU9ntO9ROE8Vsb8YVLLtMs=;
-        b=qIE5aZxiCR0EZlvf0hm54pFnwfo5aYSzAiXUFgN02Pyzxq3gduMPFibmUTY9r11bj5
-         adJGuOZijCJVah64MHuetKUwXU+Ykvy2Oj6iINemWeMcPmUpSHN/teTFWzYbOt1Rp4O0
-         pCRN5EtAAbqPd5yvakbk04so6wbL1J/Zzm0H7eBZJD0RRjsV3X2rsPdNKdWq0PnIPEM6
-         RuxNS++KCXUxDuho/sEYss54ndNfRs5grTFZAevPWCFTpZXGuPi2Oyg/wUZqkQ6bF0Dg
-         KJcirmboahATomy2eyCKBxAwnYFCdVat6BoEgdJ4KNfxyjEUeUxlkXHxumGD1zpLacqw
-         +bYg==
+        bh=Ya3zFGla2F6Utbg1telArH2Elj2nIZTjDf4ias2Q7yw=;
+        b=mT3mGAzw0rqGVRc4y8xVcI4BJWvJsMEIzIhOABtwQaHCqfBfmsDv9QaZ2GIq9cwF2I
+         4lr1bVNtz0RC0CUeBLGSo3CDCIZqMRI43xwV+4/D0sfVu7WaPO6z5e6dn/QxbW0nqkCx
+         g9XxkfeRdsaCMRMER2yA5tpePFgEXSvwhFOh+FWSjjBhjU4ScBXrqw5lvi9/bQZR0FEd
+         FEkhui7e9dccj4ezPyf7VPYrIRCu7weLkmHGpJyi5YKxOMWmzPev/sebn87g9J7FH5pu
+         Is2vqevzy6JBP6D/6HsFF2newUEB/BEd28yR2NdSCdqerndzEFVkEI/Vrxxp48z1Vqjg
+         L7lQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X2YtCYl8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RFffHq9P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11-20020a056214194b00b0053777675214si3399531qvk.512.2023.01.27.13.30.05
+        by mx.google.com with ESMTPS id r8-20020ad45768000000b0053180c8f351si3562050qvx.515.2023.01.27.13.38.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 13:30:05 -0800 (PST)
+        Fri, 27 Jan 2023 13:38:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X2YtCYl8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RFffHq9P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pLWI7-00089X-LT; Fri, 27 Jan 2023 16:29:47 -0500
+	id 1pLWQo-00030q-4R; Fri, 27 Jan 2023 16:38:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1pLWI6-00088b-0i
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 16:29:46 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1pLWQm-00030J-Lr
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 16:38:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1pLWI3-0000g4-H1
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 16:29:45 -0500
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1pLWQk-0002qN-Je
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 16:38:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674854983;
+ s=mimecast20190719; t=1674855521;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=5604c2amRssKNuQ/KnZQ1hU9ntO9ROE8Vsb8YVLLtMs=;
- b=X2YtCYl8Z74WeT8xfhqtcOgyyPjIHY/7erTJjfgnCl6yg2EZenG7nWcJpH+JfqLXyEp53N
- nbZJGMNJlgSwXOs7SaXkkcv+4ezqSmlJqwv5g3tNrgIC5kR9k783NKpSnlvWLyAKV3T3kA
- V3YcavHFEu31rY3dfUPzBhuk0xrhTUE=
+ bh=Ya3zFGla2F6Utbg1telArH2Elj2nIZTjDf4ias2Q7yw=;
+ b=RFffHq9PzZgAq3QSV6cmDLECgaCPR6uCsaXg4SkHq+uuIPpWotDVcC92CO8IosxInDdoko
+ LqSfHf1Ac6vouV6/YHsL0r1U1XVmkoDFyMRiqFmAaPKlw4dClx34EuI6lhKH1l/+7oGNr7
+ mHIwFUGU5z9FQCu6K/kme6kNpZOocYg=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-230-jClL65yzO6q0dGkB3TSMVQ-1; Fri, 27 Jan 2023 16:29:39 -0500
-X-MC-Unique: jClL65yzO6q0dGkB3TSMVQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
+ us-mta-331-TfwT3yR3MuiFniYt48dwAA-1; Fri, 27 Jan 2023 16:38:38 -0500
+X-MC-Unique: TfwT3yR3MuiFniYt48dwAA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CA5D3811E6E;
- Fri, 27 Jan 2023 21:29:38 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 040C8101A55E;
+ Fri, 27 Jan 2023 21:38:37 +0000 (UTC)
 Received: from redhat.com (unknown [10.2.17.173])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2B90E14171BE;
- Fri, 27 Jan 2023 21:29:35 +0000 (UTC)
-Date: Fri, 27 Jan 2023 15:29:33 -0600
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 214397AD4;
+ Fri, 27 Jan 2023 21:38:34 +0000 (UTC)
+Date: Fri, 27 Jan 2023 15:38:32 -0600
 From: Eric Blake <eblake@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>
 Cc: qemu-devel@nongnu.org, richard.henderson@linaro.org,
@@ -86,17 +86,18 @@ Cc: qemu-devel@nongnu.org, richard.henderson@linaro.org,
  dgilbert@redhat.com, michael.roth@amd.com, kkostiuk@redhat.com,
  tsimpson@quicinc.com, palmer@dabbelt.com, bin.meng@windriver.com,
  qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-Subject: Re: [PATCH v4 01/19] scripts/clean-includes: Fully skip / ignore files
-Message-ID: <20230127212933.5bcwjqn6ht6fd7uq@redhat.com>
+Subject: Re: [PATCH v4 02/19] scripts/clean-includes: Don't claim duplicate
+ headers found when not
+Message-ID: <20230127213832.qzjhacznhvpochpn@redhat.com>
 References: <20230119065959.3104012-1-armbru@redhat.com>
- <20230119065959.3104012-2-armbru@redhat.com>
+ <20230119065959.3104012-3-armbru@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230119065959.3104012-2-armbru@redhat.com>
+In-Reply-To: <20230119065959.3104012-3-armbru@redhat.com>
 User-Agent: NeoMutt/20220429
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eblake@redhat.com;
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eblake@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -104,7 +105,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,41 +120,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Am54sXdViqB0
+X-TUID: 1BtbeqrZBedw
 
-On Thu, Jan 19, 2023 at 07:59:41AM +0100, Markus Armbruster wrote:
-...
+On Thu, Jan 19, 2023 at 07:59:42AM +0100, Markus Armbruster wrote:
+> When running with --check-dup-head, the script always claims it "Found
+> duplicate header file includes."  Fix to do it only when it actually
+> found some.
 > 
-> Fix the script to fully skip files.
-> 
-> Fixes: fd3e39a40ca2ee26b09a5de3149af8b056b85233
 > Fixes: d66253e46ae2b9c36a9dd90b2b74c0dfa5804b22
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  scripts/clean-includes | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+>  scripts/clean-includes | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 > 
 > diff --git a/scripts/clean-includes b/scripts/clean-includes
-> index d37bd4f692..86944f27fc 100755
+> index 86944f27fc..8e8420d785 100755
 > --- a/scripts/clean-includes
 > +++ b/scripts/clean-includes
-> @@ -111,6 +111,7 @@ cat >"$COCCIFILE" <<EOT
->  )
->  EOT
+> @@ -177,9 +177,8 @@ for f in "$@"; do
+>  done
 >  
-> +files=
->  for f in "$@"; do
->    case "$f" in
->      *.c.inc)
-> @@ -144,6 +145,7 @@ for f in "$@"; do
->        continue
->        ;;
->    esac
-> +  files="$files $f"
+>  if [ "$DUPHEAD" = "yes" ] && [ -n "$files" ]; then
+> -    egrep "^[[:space:]]*#[[:space:]]*include" $files | tr -d '[:blank:]' \
+> -        | sort | uniq -c | awk '{if ($1 > 1) print $0}'
+> -    if [ $? -eq 0 ]; then
+> +    if egrep "^[[:space:]]*#[[:space:]]*include" $files | tr -d '[:blank:]' \
+> +        | sort | uniq -c | grep -v '^ *1 '; then
 
-Bash's += might perform faster here, but this is a #!/bin/sh script.
+Indeed - the awk script was succeeding even if it printed nothing,
+whereas the grep -v is a bit lighter-weight and has the intended
+semantics of exit status based on output.
 
 Reviewed-by: Eric Blake <eblake@redhat.com>
+
+>          echo "Found duplicate header file includes. Please check the above files manually."
+>          exit 1
+>      fi
+> -- 
+> 2.39.0
+> 
+> 
 
 -- 
 Eric Blake, Principal Software Engineer

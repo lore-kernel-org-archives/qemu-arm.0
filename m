@@ -1,171 +1,122 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1232627ejc;
-        Fri, 27 Jan 2023 07:16:08 -0800 (PST)
-X-Received: by 2002:a05:600c:5027:b0:3db:37a9:e5db with SMTP id n39-20020a05600c502700b003db37a9e5dbmr27468840wmr.38.1674832568403;
-        Fri, 27 Jan 2023 07:16:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674832568; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1484751ejc;
+        Fri, 27 Jan 2023 14:37:19 -0800 (PST)
+X-Received: by 2002:a17:90b:1e41:b0:229:a46b:7629 with SMTP id pi1-20020a17090b1e4100b00229a46b7629mr56116pjb.30.1674859038901;
+        Fri, 27 Jan 2023 14:37:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674859038; cv=none;
         d=google.com; s=arc-20160816;
-        b=ilKoNlbPFpf4E8FX7ih8FnZqVsvk0q84VsiDB5Ia2eLjIDsl/FRJiZz2gTFE5/tuIH
-         ZGIMd5vajVmpCgqF7sx1bG7MRkjwVOviyo3BYNFAAz3FQabQUHWFPOnsJPAK5KC81zB2
-         496LlDFQ7wdMlq4tZqlsw70vJLvLnLRaYp/gD9n+GFUMvKC77FgIcaknbpaFDyRUqyEj
-         4lt1HjyAZtpANpes9HF6Ory7iuX5ArRPRySrxOQnBZHvgD6q4B0aFIdNcZPiCm0aSdK3
-         iLokOVrNA67EMq/d7bGzXlNGG9iikqLZsO3QP+XBZusqcaa2DLFV4vOCd+qtLjBmsOi5
-         xkJA==
+        b=IgzAnH2vbx7xMfdzf9HQ1+gQW5rGksNQLncfUfHDhOfrVcQeQCFIOYp9sL5h+BXMcQ
+         Eq5hZefF70CG3xClzxe2+Mez5COtGXpCZ+s2APHFZrDFwJJql24zOLcHpvJOoae0jWTa
+         5LifR8T1g3kknSAaMUjr/iTnR66DOn2fnCsbefEt9uLXxWt87zDvTSWmNnJehLSon42g
+         9rCYnrZ7EpWQ21F/ZdhhkDUfGxMp52I1xn2wMd3uT6R24ih/z4mmdgabFaFYi3sszOCu
+         snkQmoE6zhUJSSwv3/YoAXxoIKK3rQGtohvF5q45si2pC2rDOGRUiW9ZUa95dJVisK6S
+         Bf8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=W2Gttyqqmk9FJzTdv4GV6HEHY8zcoxRPE3NZzmrf+n4=;
-        b=bslJ5jfw4RKirzGjyWmUO8lrGRsVJmxZFrPQJvOyaNVnueKYST+lO7fPMSrUrVy8W/
-         eFRohqSEqZGQFLb2oB9Re+w2niIHn188pmz2x4Y/ia3MmHXMnynHDB7jQezYu+3udimI
-         0UL7eNh41+IP5x/zUqnYgNtfdbgYtp4qoHnFGGdmeScbrCZhA+ogVXDoAY/4pKdCX5gp
-         MN/DSijptyDNQMcihxOnzvRAPCVUT2XAU4w53ol18KaSSa8XlXvVH/buXbilo63GXdfZ
-         3O70O+09EtD5As7WZqWcPPquwL5bb0SIS/s//kcWvfNIkEkDleWTCs15XTSKayHY88Rq
-         hQFQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=s2CPd73Pjd/UIOMM2lbN5Y4pguFIZFCBuPPYBU70ubY=;
+        b=CZJVTkjeLfDzksP17MkUviL4sr7eSpSnNhu9je3Uaf00CiJfeUwJriWlAyKzJ3B5F9
+         Zkn2wQi4mEppHInB2JqHmMewv00dbU94WiuKdLPte8TXeT33q/V75+/zfXKl2A0OM2L1
+         6QWXEYZxUcWJUDjlfaSo02maurQ2NCrPmd3868Hzve6mHtZC7rK9790w8WP7AIbcWX6f
+         bprqeP6FORJf/QpIZWu3FXhToGgeaqJh8qt6yzzxlKGngDfHoSxc50Vs9656+3ldBfVD
+         6y+KHpuS+AV++0Ss1xvthMaaUNH7MrBh35MkeHS2EjQ0uLzW4gaFqSi0lioJpx0iE1th
+         uvyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VA6NUCDF;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DEcnKj1m;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <jean-philippe@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 9-20020a05600c020900b003dafd2b2b18sor2881374wmi.25.2023.01.27.07.16.08
+        by mx.google.com with SMTPS id q89-20020a17090a4fe200b002299632a00esor4068999pjh.25.2023.01.27.14.37.18
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 27 Jan 2023 07:16:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 27 Jan 2023 14:37:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VA6NUCDF;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DEcnKj1m;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=W2Gttyqqmk9FJzTdv4GV6HEHY8zcoxRPE3NZzmrf+n4=;
-        b=VA6NUCDFx8lOL0Z+1x3S3zxS7fGzsnMOU3H/Iuknae4YporvaEybf2o8k99xXmXi6V
-         EQqAGs342LLVqxVSoKJni7g9Cow+rAUCSbQ2RnthBF6g1P9p7jvy3pvwmvN4Yu2l2Je/
-         Db7oi1IvUo4zgBlalajjgIUblSBXSoxthCrNE/3PSRFm3OmFnrdC3sr0hhCmCJGasT1N
-         fCwnOQSvkQKRQqjNvhGLQaCBWEp/xqjlCPoXSulAm7n7bhRyqjGpSKNegbOF7dwvOwGv
-         +0wUlT2SjecqMBe/3wC8YbB419IAovE2jsj3tqI1cIxVqc4bQ5b6itSXfiMQQtc4JqiX
-         85Tw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=s2CPd73Pjd/UIOMM2lbN5Y4pguFIZFCBuPPYBU70ubY=;
+        b=DEcnKj1mEwr/VUkGrcAKw0HBRr5j7St/KwA55HKycEnc5OC0js4KhwbGNrG+YkOQqJ
+         RQlm3cQg6SPSuZIUGudKQZkd6judIREvFD9CVTDHh9ksqqhbXuWP35/EsV4OXv5OQ+ud
+         IenrKETflOfJk2eI7LaHN81vQTGkZ4UUM16xsbP/JryJt76bOfBQrOyQ+b93Uu3USa48
+         nyAyTw3ebd3eWSUsCVAxoVdm8g0SVGgsuDQq49J2r1oxeNLN+1y3doUOfG832w/DXZtX
+         lI91Dw9x5UTxmMG0W4TrVp9zh+NzFeze08UuoAlEn1njtDZBUxFb0aFoLK3zctg/gK0L
+         Y+AQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=W2Gttyqqmk9FJzTdv4GV6HEHY8zcoxRPE3NZzmrf+n4=;
-        b=r+8zuFWS8v74EV+Nuuf2sQU8ZrVwESTo0FRfOsK3TbkknBKhUkzwtggS+ber2t7/2d
-         lhixpngFs/9O/yV1ERF1eL+0YneDM8futjI412ZoFLlCNClQqZ2cf3ne+9CX4wrreofg
-         2IX3Pl+kmpvo8qEuNU28I9BU3/xew1NmIKT9JFT/hFAinElF+zxdBfKK7yrwWnjfhgB9
-         zQtFjDRLAN1pqmp216/CiGbGxHQZTh2nG0QJuVvH0T9M7uxs/fcWlScYkAjvHkS25ltB
-         1mKUwNbqQkh68Sbffknvu+1o6sadNrGRyY96Ib59+a84rwAHclLEARMhKD9o8MlLQIbY
-         y+/g==
-X-Gm-Message-State: AFqh2kobVk3qZxn7YxQTpvZMcFJWKqmPQl3/tOEo1wRq26uWN0GOjqMP
-	OVAeroCVLcBpZ55heEAjN+hrVNP6
-X-Google-Smtp-Source: AMrXdXsum66V9SryNqits/WuEqHeWo9nn9HzIUCwkYhiaMnfsqf9QZYrXWrHdPjjuSf/+nymGP9kJg==
-X-Received: by 2002:a05:600c:2056:b0:3db:ce8:6662 with SMTP id p22-20020a05600c205600b003db0ce86662mr38049375wmg.31.1674832568124;
-        Fri, 27 Jan 2023 07:16:08 -0800 (PST)
-Return-Path: <jean-philippe@linaro.org>
-Received: from localhost.localdomain (054592b0.skybroadband.com. [5.69.146.176])
-        by smtp.gmail.com with ESMTPSA id l7-20020a05600c47c700b003dc3bbdf518sm1656628wmo.21.2023.01.27.07.16.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	pbonzini@redhat.com,
-	eblake@redhat.com,
-	armbru@redhat.com,
-	berrange@redhat.com,
-	eduardo@habkost.net,
-	alex.bennee@linaro.org,
-	richard.henderson@linaro.org,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 16/16] target/arm/kvm-rme: Disable readonly mappings
-Date: Fri, 27 Jan 2023 15:07:29 +0000
-Message-Id: <20230127150727.612594-17-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230127150727.612594-1-jean-philippe@linaro.org>
-References: <20230127150727.612594-1-jean-philippe@linaro.org>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=s2CPd73Pjd/UIOMM2lbN5Y4pguFIZFCBuPPYBU70ubY=;
+        b=JWIYxXzfXp/85j8jgc6RDHCoysipZWM4m9BnOPgjeI9gGQHP28NCtCGsqbHbzbDSpR
+         di7lw9vFzqkGzz4KIoNrhoRKkhdfk81hhC5b6ox+bjeNspNmM4Jba0Tp1E2LM0v6/kJ0
+         Hd0i+bm2cLjspMX3bGW2RVKt0sDJBwyy3jlMy4C4lin3E3LUh8E0tLnYiUFlZcU2Fuzi
+         jR1az6giyiFjzefesNTYf5r0jbvdQfrs96KhXh6rRvpOjar4yY0GsOit9ifwiVLTr3b1
+         tUyViP8cR6UYi/jmYOoRmcZJciZNrV37hyRAa3piuj30ohP25uSead4lCjwr+ftUq1Nb
+         R1lg==
+X-Gm-Message-State: AO0yUKWVH0sOAgie0blxSL2YSRtCS67Cq5kztwTF++W9Hi7W6PIcROP/
+	XZfFgdQ6ku9JXKkaIGX4d5qeL5m3
+X-Google-Smtp-Source: AK7set+qlQekEf0GSrIDvskDxx7cQqiiS322YchR6t4v5o0nQt5EvMeuJslSXrIT1hbbfGBUeFtfPw==
+X-Received: by 2002:a17:90b:33c8:b0:22c:1331:9c59 with SMTP id lk8-20020a17090b33c800b0022c13319c59mr71219pjb.31.1674859038440;
+        Fri, 27 Jan 2023 14:37:18 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.50.174] (rrcs-173-197-98-118.west.biz.rr.com. [173.197.98.118])
+        by smtp.gmail.com with ESMTPSA id d197-20020a6336ce000000b0042988a04bfdsm2826072pga.9.2023.01.27.14.37.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 27 Jan 2023 14:37:17 -0800 (PST)
+Message-ID: <85606bc0-5e48-9280-781f-b9641c36ce03@linaro.org>
+Date: Fri, 27 Jan 2023 12:37:12 -1000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: 4iq3R7NFmIfu
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [RFC PATCH 06/16] target/arm/kvm-rme: Initialize vCPU
+Content-Language: en-US
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>, peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ eblake@redhat.com, armbru@redhat.com, berrange@redhat.com,
+ eduardo@habkost.net, alex.bennee@linaro.org
+References: <20230127150727.612594-1-jean-philippe@linaro.org>
+ <20230127150727.612594-7-jean-philippe@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230127150727.612594-7-jean-philippe@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: YpUiQCafKMAD
 
-KVM does not support creating read-only mappings for realms at the
-moment. Add an arch helper to detect whether read-only mappings are
-supported.
+On 1/27/23 05:07, Jean-Philippe Brucker wrote:
+> +static int kvm_arm_rme_get_core_regs(CPUState *cs)
+> +{
+> +    int i, ret;
+> +    struct kvm_one_reg reg;
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +
+> +    for (i = 0; i < 8; i++) {
+> +        reg.id = AARCH64_CORE_REG(regs.regs[i]);
+> +        reg.addr = (uintptr_t) &env->xregs[i];
+> +        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
+> +        if (ret) {
+> +            return ret;
+> +        }
+> +    }
+> +
+> +    return 0;
+> +}
 
-Device ROM and flash normally use read-only mappings. Device ROM seems
-limited to legacy use and does not need to be trusted by the guest, so
-trapping reads should be fine. Flash on the other hand, is used for the
-firmware and needs to be both executable and measured. It may be
-necessary to replace flash with RAM in order to run firmwares like edk2
-in realms.
+Wow, this is quite the restriction.
 
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
----
- include/sysemu/kvm.h | 2 ++
- accel/kvm/kvm-all.c  | 8 +++++++-
- target/arm/kvm-rme.c | 9 +++++++++
- 3 files changed, 18 insertions(+), 1 deletion(-)
+I get that this is just enough to seed the guest for boot, and take SMC traps, but I'm 
+concerned that we can't do much with the machine underneath, when it comes to other things 
+like "info registers" or gdbstub will be silently unusable.  I would prefer if we can 
+somehow make this loudly unusable.
 
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index e9a97eda8c..8d467c76c6 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -581,5 +581,7 @@ bool kvm_arch_cpu_check_are_resettable(void);
- 
- bool kvm_dirty_ring_enabled(void);
- 
-+bool kvm_arch_readonly_mem_allowed(KVMState *s);
-+
- uint32_t kvm_dirty_ring_size(void);
- #endif
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index f99b0becd8..56cdd2e9e9 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2267,6 +2267,11 @@ bool kvm_dirty_ring_enabled(void)
-     return kvm_state->kvm_dirty_ring_size ? true : false;
- }
- 
-+bool __attribute__((weak)) kvm_arch_readonly_mem_allowed(KVMState *s)
-+{
-+    return true;
-+}
-+
- static void query_stats_cb(StatsResultList **result, StatsTarget target,
-                            strList *names, strList *targets, Error **errp);
- static void query_stats_schemas_cb(StatsSchemaList **result, Error **errp);
-@@ -2520,7 +2525,8 @@ static int kvm_init(MachineState *ms)
-     }
- 
-     kvm_readonly_mem_allowed =
--        (kvm_check_extension(s, KVM_CAP_READONLY_MEM) > 0);
-+        (kvm_check_extension(s, KVM_CAP_READONLY_MEM) > 0) &&
-+        kvm_arch_readonly_mem_allowed(s);
- 
-     kvm_eventfds_allowed =
-         (kvm_check_extension(s, KVM_CAP_IOEVENTFD) > 0);
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-index 1baed79d46..2812a52aeb 100644
---- a/target/arm/kvm-rme.c
-+++ b/target/arm/kvm-rme.c
-@@ -62,6 +62,15 @@ bool kvm_arm_rme_enabled(void)
-     return !!cgs_to_rme(cgs);
- }
- 
-+/*
-+ * KVM does not support creating read-only stage-2 mappings for realms at the
-+ * moment
-+ */
-+bool kvm_arch_readonly_mem_allowed(KVMState *s)
-+{
-+    return !kvm_arm_rme_enabled();
-+}
-+
- static int rme_create_rd(RmeGuest *guest, Error **errp)
- {
-     int ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_RME, 0,
--- 
-2.39.0
+Pardon if I'm jumping the gun and you handle this later.
+
+
+r~

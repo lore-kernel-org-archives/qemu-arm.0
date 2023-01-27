@@ -1,38 +1,38 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1232617ejc;
-        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
-X-Received: by 2002:a05:600c:3549:b0:3da:acb1:2f09 with SMTP id i9-20020a05600c354900b003daacb12f09mr37027008wmq.19.1674832567668;
-        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674832567; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1232627ejc;
+        Fri, 27 Jan 2023 07:16:08 -0800 (PST)
+X-Received: by 2002:a05:600c:5027:b0:3db:37a9:e5db with SMTP id n39-20020a05600c502700b003db37a9e5dbmr27468840wmr.38.1674832568403;
+        Fri, 27 Jan 2023 07:16:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674832568; cv=none;
         d=google.com; s=arc-20160816;
-        b=EkuQHzLyCjvQELP26nrfWe/S1c6Ge1A3uc4ZMyfsqT3xgr1qaEvQJSbxaRIQMa0/UV
-         oYXFBE+MZCc2PZKLLwAcc8kifs5P6p10MV4W2uBVNEU+2k6DjUGWz3vk+tLW8npq2UF6
-         RGVcrPAjPxc1Y4GVv5my3sRADLiXi6FA12Eh9lG7dtGyvrwDvvz1oPXKgPQpFDQ1akjX
-         Uuw+txjLtQANhmZAE3JlYk7HIgmBp7flowAyuSncat6VPFoMG+f9oLw4AyeWhzroeIsL
-         mxRlQwx2pV8onoVmqYHJeNHU5cbClgpkPyb3Z2wUiWTKLMh2j9QMpmHqK4OtXO4XZSjd
-         2Vbw==
+        b=ilKoNlbPFpf4E8FX7ih8FnZqVsvk0q84VsiDB5Ia2eLjIDsl/FRJiZz2gTFE5/tuIH
+         ZGIMd5vajVmpCgqF7sx1bG7MRkjwVOviyo3BYNFAAz3FQabQUHWFPOnsJPAK5KC81zB2
+         496LlDFQ7wdMlq4tZqlsw70vJLvLnLRaYp/gD9n+GFUMvKC77FgIcaknbpaFDyRUqyEj
+         4lt1HjyAZtpANpes9HF6Ory7iuX5ArRPRySrxOQnBZHvgD6q4B0aFIdNcZPiCm0aSdK3
+         iLokOVrNA67EMq/d7bGzXlNGG9iikqLZsO3QP+XBZusqcaa2DLFV4vOCd+qtLjBmsOi5
+         xkJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=iUGz5LpQ3EDL/VJ3l1j+YJ+y/POf2GoDlmEHrO+uK2A=;
-        b=039YanEhNTXLsCVnJbeJBUjxMbzOnMTY7JRARCd5C/o8iuCYm2dAfLwLCGgR1rYKh4
-         n4S2vrChbuqX40GQjGZFu0cDRQ/c2AFJQJA1T6JuX6VurrOFubIg5jk1EMoN480Qut1q
-         clHvc7TvGX41Zz0psbNU8WVQGCW8tNxxBrtnS+g7VCyywAJme5uOUHqC16NacUirKsef
-         sYz9nf6Fhlla3oYGL/ScDRAar5txKV7yMpD3wEzpxvMz9mt8S3Kc/zQdeRCnshqXu2/Q
-         IQtrAr/+xgY9XJHnWNbbWKUp24Fy4ATuaQYPqdONs1zkV8wryv+JxmiFck/DKWJWUYoS
-         HThA==
+        bh=W2Gttyqqmk9FJzTdv4GV6HEHY8zcoxRPE3NZzmrf+n4=;
+        b=bslJ5jfw4RKirzGjyWmUO8lrGRsVJmxZFrPQJvOyaNVnueKYST+lO7fPMSrUrVy8W/
+         eFRohqSEqZGQFLb2oB9Re+w2niIHn188pmz2x4Y/ia3MmHXMnynHDB7jQezYu+3udimI
+         0UL7eNh41+IP5x/zUqnYgNtfdbgYtp4qoHnFGGdmeScbrCZhA+ogVXDoAY/4pKdCX5gp
+         MN/DSijptyDNQMcihxOnzvRAPCVUT2XAU4w53ol18KaSSa8XlXvVH/buXbilo63GXdfZ
+         3O70O+09EtD5As7WZqWcPPquwL5bb0SIS/s//kcWvfNIkEkDleWTCs15XTSKayHY88Rq
+         hQFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wXyJZGPR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VA6NUCDF;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u15-20020a05600c440f00b003dc1b9c3eb9sor1560560wmn.1.2023.01.27.07.16.07
+        by mx.google.com with SMTPS id 9-20020a05600c020900b003dafd2b2b18sor2881374wmi.25.2023.01.27.07.16.08
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
+        Fri, 27 Jan 2023 07:16:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wXyJZGPR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VA6NUCDF;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,35 +40,35 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=iUGz5LpQ3EDL/VJ3l1j+YJ+y/POf2GoDlmEHrO+uK2A=;
-        b=wXyJZGPRtmBDbVtTRWtQpdOWsoVhXY8Xn/2X3IF+mR+L8+eJcOAYqOy6PKvxnuh9hk
-         SxHS1tLb37F0Neh5H+FgpqZ65Yhgxf8rpEwVVY6SrVhyhdBmq8hP1ptHr9+BhGB+Br1J
-         /5sitb2htqalTdGWN06JCHHi5gSusbW3f+kMP30VIYea0vk8Nqo/nGBt+LKDW+sEBekB
-         VF4Fy6oK1OEbWiW3hz/59KN78yVAVtg45HuttMnOhGVOkwWDfx0v1TBs0W5ULmIjyRhq
-         QDJ1J8nEe1bCqoN8pN9uaYbG0pWFOQtuvrneRYL51xiad/t+yNWFxCSycrLCWTXBfF7Z
-         QVDQ==
+        bh=W2Gttyqqmk9FJzTdv4GV6HEHY8zcoxRPE3NZzmrf+n4=;
+        b=VA6NUCDFx8lOL0Z+1x3S3zxS7fGzsnMOU3H/Iuknae4YporvaEybf2o8k99xXmXi6V
+         EQqAGs342LLVqxVSoKJni7g9Cow+rAUCSbQ2RnthBF6g1P9p7jvy3pvwmvN4Yu2l2Je/
+         Db7oi1IvUo4zgBlalajjgIUblSBXSoxthCrNE/3PSRFm3OmFnrdC3sr0hhCmCJGasT1N
+         fCwnOQSvkQKRQqjNvhGLQaCBWEp/xqjlCPoXSulAm7n7bhRyqjGpSKNegbOF7dwvOwGv
+         +0wUlT2SjecqMBe/3wC8YbB419IAovE2jsj3tqI1cIxVqc4bQ5b6itSXfiMQQtc4JqiX
+         85Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=iUGz5LpQ3EDL/VJ3l1j+YJ+y/POf2GoDlmEHrO+uK2A=;
-        b=NBvtiFxd9TRljvDjIctY9hq2FdvTbl8sTkGOjvxYimC122rSobN8btPWj69elzeGdT
-         0sqgUqlASgSBdrZNNiMw9rv74lTLTofob94UZTNxRddJUOJ/YUDtfwMXcsRJVIb+Sg3m
-         Psx2CsYbodfz1EYK05a6wOf0mOusHu08uX0RDkf3YZnUy4bH/RUopqvXAT2AJB0rxbYC
-         UPIQPX0qXti3cs52gV03jh/lqpDU4xg/FuJnfnE4kkDztZ0Il/845Cfau9xOkoL8SPd8
-         jrUZ8QClb7p/JxYtA/N5jtUag8sVtzhFEzzUzYZRyaOCZvI5mbf/EcVjj0Cgnelsd7Qa
-         aMZQ==
-X-Gm-Message-State: AO0yUKWl2S/0uONG420iIIhnSIPyfsgPxVlQ3XB3CJxQdBpAW3W7fs53
-	IhQdr211u2f/yH4o5SCCS8iUVDbF
-X-Google-Smtp-Source: AK7set8gfQYjQ+GYxO80U7CUehAz2XW16FvZhYy4OJlItng3MUCW4ws9HcFwY3tNs5fcwHLaGW+Ubw==
-X-Received: by 2002:a05:600c:198d:b0:3dc:1031:14c4 with SMTP id t13-20020a05600c198d00b003dc103114c4mr14786447wmq.14.1674832567445;
-        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
+        bh=W2Gttyqqmk9FJzTdv4GV6HEHY8zcoxRPE3NZzmrf+n4=;
+        b=r+8zuFWS8v74EV+Nuuf2sQU8ZrVwESTo0FRfOsK3TbkknBKhUkzwtggS+ber2t7/2d
+         lhixpngFs/9O/yV1ERF1eL+0YneDM8futjI412ZoFLlCNClQqZ2cf3ne+9CX4wrreofg
+         2IX3Pl+kmpvo8qEuNU28I9BU3/xew1NmIKT9JFT/hFAinElF+zxdBfKK7yrwWnjfhgB9
+         zQtFjDRLAN1pqmp216/CiGbGxHQZTh2nG0QJuVvH0T9M7uxs/fcWlScYkAjvHkS25ltB
+         1mKUwNbqQkh68Sbffknvu+1o6sadNrGRyY96Ib59+a84rwAHclLEARMhKD9o8MlLQIbY
+         y+/g==
+X-Gm-Message-State: AFqh2kobVk3qZxn7YxQTpvZMcFJWKqmPQl3/tOEo1wRq26uWN0GOjqMP
+	OVAeroCVLcBpZ55heEAjN+hrVNP6
+X-Google-Smtp-Source: AMrXdXsum66V9SryNqits/WuEqHeWo9nn9HzIUCwkYhiaMnfsqf9QZYrXWrHdPjjuSf/+nymGP9kJg==
+X-Received: by 2002:a05:600c:2056:b0:3db:ce8:6662 with SMTP id p22-20020a05600c205600b003db0ce86662mr38049375wmg.31.1674832568124;
+        Fri, 27 Jan 2023 07:16:08 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain (054592b0.skybroadband.com. [5.69.146.176])
-        by smtp.gmail.com with ESMTPSA id l7-20020a05600c47c700b003dc3bbdf518sm1656628wmo.21.2023.01.27.07.16.06
+        by smtp.gmail.com with ESMTPSA id l7-20020a05600c47c700b003dc3bbdf518sm1656628wmo.21.2023.01.27.07.16.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Jan 2023 07:16:06 -0800 (PST)
+        Fri, 27 Jan 2023 07:16:07 -0800 (PST)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-devel@nongnu.org,
@@ -81,49 +81,91 @@ Cc: qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
 	richard.henderson@linaro.org,
 	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 15/16] target/arm/kvm: Disable Realm reboot
-Date: Fri, 27 Jan 2023 15:07:28 +0000
-Message-Id: <20230127150727.612594-16-jean-philippe@linaro.org>
+Subject: [RFC PATCH 16/16] target/arm/kvm-rme: Disable readonly mappings
+Date: Fri, 27 Jan 2023 15:07:29 +0000
+Message-Id: <20230127150727.612594-17-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230127150727.612594-1-jean-philippe@linaro.org>
 References: <20230127150727.612594-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: FtR8N/XR+5Ey
+X-TUID: 4iq3R7NFmIfu
 
-A realm cannot be reset, it must be recreated from scratch. The RMM
-specification defines states of a Realm as NEW -> ACTIVE -> SYSTEM_OFF,
-after which the Realm can only be destroyed. A PCSI_SYSTEM_RESET call,
-which normally reboots the system, puts the Realm in SYSTEM_OFF state.
+KVM does not support creating read-only mappings for realms at the
+moment. Add an arch helper to detect whether read-only mappings are
+supported.
 
-QEMU does not support recreating a VM. Normally, a reboot request by the
-guest causes all devices to reset, which cannot work for a Realm.
-Indeed, loading images into Realm memory and changing the PC is only
-allowed for a Realm in NEW state. Resetting the images for a Realm in
-SYSTEM_OFF state will cause QEMU to crash with a bus error.
-
-Handle reboot requests by the guest more gracefully, by indicating to
-runstate.c that the vCPUs of a Realm are not resettable, and that QEMU
-should exit.
+Device ROM and flash normally use read-only mappings. Device ROM seems
+limited to legacy use and does not need to be trusted by the guest, so
+trapping reads should be fine. Flash on the other hand, is used for the
+firmware and needs to be both executable and measured. It may be
+necessary to replace flash with RAM in order to run firmwares like edk2
+in realms.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- target/arm/kvm.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/sysemu/kvm.h | 2 ++
+ accel/kvm/kvm-all.c  | 8 +++++++-
+ target/arm/kvm-rme.c | 9 +++++++++
+ 3 files changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index d8655d9041..02b5e8009f 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -1071,7 +1071,8 @@ int kvm_arch_msi_data_to_gsi(uint32_t data)
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index e9a97eda8c..8d467c76c6 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -581,5 +581,7 @@ bool kvm_arch_cpu_check_are_resettable(void);
  
- bool kvm_arch_cpu_check_are_resettable(void)
- {
--    return true;
-+    /* A Realm cannot be reset */
-+    return !kvm_arm_rme_enabled();
+ bool kvm_dirty_ring_enabled(void);
+ 
++bool kvm_arch_readonly_mem_allowed(KVMState *s);
++
+ uint32_t kvm_dirty_ring_size(void);
+ #endif
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index f99b0becd8..56cdd2e9e9 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2267,6 +2267,11 @@ bool kvm_dirty_ring_enabled(void)
+     return kvm_state->kvm_dirty_ring_size ? true : false;
  }
  
- void kvm_arch_accel_class_init(ObjectClass *oc)
++bool __attribute__((weak)) kvm_arch_readonly_mem_allowed(KVMState *s)
++{
++    return true;
++}
++
+ static void query_stats_cb(StatsResultList **result, StatsTarget target,
+                            strList *names, strList *targets, Error **errp);
+ static void query_stats_schemas_cb(StatsSchemaList **result, Error **errp);
+@@ -2520,7 +2525,8 @@ static int kvm_init(MachineState *ms)
+     }
+ 
+     kvm_readonly_mem_allowed =
+-        (kvm_check_extension(s, KVM_CAP_READONLY_MEM) > 0);
++        (kvm_check_extension(s, KVM_CAP_READONLY_MEM) > 0) &&
++        kvm_arch_readonly_mem_allowed(s);
+ 
+     kvm_eventfds_allowed =
+         (kvm_check_extension(s, KVM_CAP_IOEVENTFD) > 0);
+diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+index 1baed79d46..2812a52aeb 100644
+--- a/target/arm/kvm-rme.c
++++ b/target/arm/kvm-rme.c
+@@ -62,6 +62,15 @@ bool kvm_arm_rme_enabled(void)
+     return !!cgs_to_rme(cgs);
+ }
+ 
++/*
++ * KVM does not support creating read-only stage-2 mappings for realms at the
++ * moment
++ */
++bool kvm_arch_readonly_mem_allowed(KVMState *s)
++{
++    return !kvm_arm_rme_enabled();
++}
++
+ static int rme_create_rd(RmeGuest *guest, Error **errp)
+ {
+     int ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_RME, 0,
 -- 
 2.39.0

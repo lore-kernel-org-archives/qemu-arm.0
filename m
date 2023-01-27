@@ -1,143 +1,208 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1491793ejc;
-        Fri, 27 Jan 2023 14:55:58 -0800 (PST)
-X-Google-Smtp-Source: AK7set9PHVevs5B5YyvW7jzURlN/W1DrSUAMEYk1l2PECYlFTyayTf6IqaZGYOTHbps3dcXgEvsn
-X-Received: by 2002:ad4:4bc4:0:b0:537:7bdc:74c7 with SMTP id l4-20020ad44bc4000000b005377bdc74c7mr12267905qvw.41.1674860157881;
-        Fri, 27 Jan 2023 14:55:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674860157; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1498320ejc;
+        Fri, 27 Jan 2023 15:08:41 -0800 (PST)
+X-Google-Smtp-Source: AK7set+2v/C1ml5sUSb2v7hDb7dy/9yZTo94m3ODWfNxXFG/3zL2iEUGBRJdLR83vZyrV+jlSHGf
+X-Received: by 2002:a05:622a:394:b0:3b8:296b:21ec with SMTP id j20-20020a05622a039400b003b8296b21ecmr5385919qtx.65.1674860921201;
+        Fri, 27 Jan 2023 15:08:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674860921; cv=none;
         d=google.com; s=arc-20160816;
-        b=UT+leQtznjMg/gXSp/bNsqsB0pK2s2RmfdUhrMYIET5mgSazVMSSkTLvYhhiPvWcKm
-         5srcLM3M7uLbi07ab3NsioeCibL4b8FXDuPcDMzfZr+SokpfFGi73ORc7o2qy9UUdOT5
-         oBJPOVFkKb1Ym9+t/I59y+Nr1mVF8J5sQmWAvOkssLH6RDc4Y5tGV1Y15Xu3axGgijcn
-         JFDdHda4/jUHuOEoXckDLZWsWJ+NqMxTP1eFLp+y4/2f9M7+jLLg21Xeif/3lJ9lydMk
-         hcH2ITZGksID9AC8fWvWTkxixvj2WcBKU2LpocGcinufc+VFA0WP/IB12y2bxUR654kv
-         t9MQ==
+        b=Rvd27B6V55iC7/SJhtvTXHPdClE9uuBWOIVB9YFOPDcX8oPQXXRg/YemZRE2B3l0YE
+         xKfRA5G+gbcB9YS6c2YRrUl/m0853gMrKWH5hRIv1Rn3T09jzvFzYw2s8f7ycqFtdBu0
+         ZspwnjwPGYrpt2j8gsZYzrnfRtmXUKlm2ZCWvePTpswZJh4Wohi1V4t13zc5qMDdYili
+         2GlMY44a2xMpPLx2aHYboMduX3M/ixT5e/aMfS7LZgj++ilQlQ7Jp/fsF5n46mYTknYB
+         Kx4cD2z/cEUsJL72GutRB48XNbi4mSvj7ETKHMC4qEyUoe9Pq9TVRxAe3J20duwS8q1v
+         I3dQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=WryUFBl66HGK4gCI9EH/8uEtyd4e2kmqtTQTKV9nerQ=;
-        b=r6cBr0UaCNal2s/hoTuFPjyMgpWpDyJHEE96I4xxI5cW2l03W0m8gguWw3+d4Sjg28
-         Q4oNS62sTjBN+u8+p0rSqQryhCclPT9E8rHgo61eP2FqQdHmv4uJxtvIg688nxyi07U7
-         HX/KFC8cg5Cv3leQNFNFq41EHajTk8lDy285uacgZLtnQaM19oqmQv3zuJx+Zp9UpNho
-         6UBXy6Mshkn/5y7ycBw6Ea4UBG/LUPZN+duQKfiekHWqQsZIykGi1919keI7zfjuleEJ
-         VdhJswnkEkJfp0D3uVUBtpIHrvcqNwpoMMOKB98ZeQTnRSxd/4Jx2UPNpCBb3wvSL/7u
-         LbRA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=jc1NKWKYVKF9M1D2q94NNuHiJJRJR9yHY2mCKrwc8Yc=;
+        b=xWyVVu9j/Uo6MDXHBLjByTzE9tXzKth7Ldgiwg4Xjr/Bzcckpz5qZJ3deHoscJCAqz
+         PqlvYpaqHWGQ21KtkrpG0mslR1GOvevmFUAv//hR3Cu9XfASJMxvuXNofJJwwXg18tA4
+         dQpseK5oe1afS1+4lt9FNX9e5R/88xC6EantKViMh5CbjDzvRTfe0Kwlbg+pkr5RHQBD
+         nJT++E1ND0zLESc9xM5McnS3XWHtgo3OFxmRL2ZCd+dp7lCgj/jdDjKd2XPFwSCtNEC6
+         3/L2jUDitlGmDuhRNzsC8Oz3a5W5UCZSEz8G+CS5+dQ5RXVzHahw2Yb6wqoJGGoPOfQ2
+         HD/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZeWHuOde;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b=plMu0f1F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j190-20020a3755c7000000b006ce8a7187d1si3284317qkb.36.2023.01.27.14.55.57
+        by mx.google.com with ESMTPS id 4-20020ac85904000000b003b646ea1ef9si3066858qty.404.2023.01.27.15.08.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 14:55:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 27 Jan 2023 15:08:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZeWHuOde;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b=plMu0f1F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pLXdE-0005IB-R5; Fri, 27 Jan 2023 17:55:40 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pLXpd-0002Qx-Vf; Fri, 27 Jan 2023 18:08:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1pLXdA-0005Gm-V2
- for qemu-devel@nongnu.org; Fri, 27 Jan 2023 17:55:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1pLXd8-0002gv-Dj
- for qemu-devel@nongnu.org; Fri, 27 Jan 2023 17:55:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674860133;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=WryUFBl66HGK4gCI9EH/8uEtyd4e2kmqtTQTKV9nerQ=;
- b=ZeWHuOdepy3LYI2f9p44Ol4awVKZzbUwvWILwS96kioJCSfp6NhPHzN0Z9N8TLBcQ5oOU6
- k0O/OWk3wZCnIzMn5TiC9P+4iJ+tf5z2vFT+Ty9hJc8zlywulLhGro9Tt9MJChYIH3gvwL
- qTcQXnmdmoVYZ97Z3x7cSEoAAc7rmv0=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-148-1jGQ55FrNy6C5QsacWUdMQ-1; Fri, 27 Jan 2023 17:55:29 -0500
-X-MC-Unique: 1jGQ55FrNy6C5QsacWUdMQ-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E8EF829AA3B3;
- Fri, 27 Jan 2023 22:55:28 +0000 (UTC)
-Received: from redhat.com (unknown [10.2.17.173])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id AABD4492C14;
- Fri, 27 Jan 2023 22:55:26 +0000 (UTC)
-Date: Fri, 27 Jan 2023 16:55:25 -0600
-From: Eric Blake <eblake@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, richard.henderson@linaro.org,
- pbonzini@redhat.com, kwolf@redhat.com, hreitz@redhat.com,
- imp@bsdimp.com, kevans@freebsd.org, berrange@redhat.com,
- groug@kaod.org, qemu_oss@crudebyte.com, mst@redhat.com,
- philmd@linaro.org, peter.maydell@linaro.org, alistair@alistair23.me,
- jasowang@redhat.com, jonathan.cameron@huawei.com,
- kbastian@mail.uni-paderborn.de, quintela@redhat.com,
- dgilbert@redhat.com, michael.roth@amd.com, kkostiuk@redhat.com,
- tsimpson@quicinc.com, palmer@dabbelt.com, bin.meng@windriver.com,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-Subject: Re: [PATCH v4 14/19] block: Clean up includes
-Message-ID: <20230127225525.t5bexrnx76a4oxdm@redhat.com>
-References: <20230119065959.3104012-1-armbru@redhat.com>
- <20230119065959.3104012-15-armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1pLXpb-0002Pq-Kw
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 18:08:28 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1pLXpZ-0005Gd-Kp
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 18:08:27 -0500
+Received: by mail-ed1-x535.google.com with SMTP id x7so2823559edr.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Jan 2023 15:08:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=jc1NKWKYVKF9M1D2q94NNuHiJJRJR9yHY2mCKrwc8Yc=;
+ b=plMu0f1FXGNaLE5E3rQPgp+4aqYQdvtepEIBYechDkbywxwvcj745oyYOuBHptxIk5
+ xD1hLewtOeWuk+qYWkzNtXZdu3ZuIUTW0C2l9yYUYxqYGa710Hs2ZuQHJD+JX9Em2H0T
+ IxqSXulh3yf8po90GXxUCVtIwOJvO/dJHr7k6/QIHbLam0mTZYAdd8ousVwprQw8eFfx
+ JJdFX/zAKjEZqLNVWcv2dvD7cIcEwFvkqFO4zV/zwm3dpk13BOKaY/RooGqPXJlFdj35
+ Ft4AuYYKFrgADUIcoeInLUcfZhEQmVkeChfsYcvoOmi85K62+WpdLglPoMnz1gMQ4dz0
+ xexA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jc1NKWKYVKF9M1D2q94NNuHiJJRJR9yHY2mCKrwc8Yc=;
+ b=zAan6M3lsgMRPTL9+xrsrF3XygIm+DaezTVPLCRPfCVUJtJ0YdbCa2dv9ZQU/ctqfH
+ lrXy3vj+pyUfv9N2P2wWlmBRRY2CB3fWfFqLKvrOvaKrCFMBXsDAs6mXPPHG3OwSCTCd
+ PgngGOvM7fgawXumSv5U1p0AQcov40BfDfZrthVIgfiATCd+Kd40tKBFXe8uRbGBi9+O
+ ulKvvRNeFhNM0VAEuHGZA9AYC6ilJSUR+ofI4pnDFTS/mRCsr1x26zSdLdO1qKZ+5rGu
+ lz3BfvxpLko+1LE+yS2eF7lGF2L4m6EBEIdeSYLlvsuEY50CS2pKBo3yj3RVz6CWQXqL
+ cCxg==
+X-Gm-Message-State: AO0yUKXHdtIx43Rte4FymMOsnwh0iOWWZaBtj9GbGjE9Lr1+wR8WsiA2
+ ldqgxtN7UZirC1F2tZDIWtsCs22aqWZtvL4TIhVhSg==
+X-Received: by 2002:aa7:d448:0:b0:4a0:f071:3656 with SMTP id
+ q8-20020aa7d448000000b004a0f0713656mr1788887edr.81.1674860903793; Fri, 27 Jan
+ 2023 15:08:23 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230119065959.3104012-15-armbru@redhat.com>
-User-Agent: NeoMutt/20220429
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20230119065959.3104012-1-armbru@redhat.com>
+ <20230119065959.3104012-4-armbru@redhat.com>
+ <20230127224746.2rqorp2ushelp4wj@redhat.com>
+In-Reply-To: <20230127224746.2rqorp2ushelp4wj@redhat.com>
+From: Warner Losh <imp@bsdimp.com>
+Date: Fri, 27 Jan 2023 16:08:12 -0700
+Message-ID: <CANCZdfoj4S06hhbGxHiVqCUQgj08Hyg7HCm5f5sQg0n1k854BA@mail.gmail.com>
+Subject: Re: [PATCH v4 03/19] scripts/clean-includes: Skip symbolic links
+To: Eric Blake <eblake@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+ richard.henderson@linaro.org, 
+ pbonzini@redhat.com, kwolf@redhat.com, hreitz@redhat.com, kevans@freebsd.org, 
+ berrange@redhat.com, groug@kaod.org, qemu_oss@crudebyte.com, mst@redhat.com, 
+ philmd@linaro.org, peter.maydell@linaro.org, alistair@alistair23.me, 
+ jasowang@redhat.com, jonathan.cameron@huawei.com, 
+ kbastian@mail.uni-paderborn.de, quintela@redhat.com, dgilbert@redhat.com, 
+ michael.roth@amd.com, kkostiuk@redhat.com, tsimpson@quicinc.com, 
+ palmer@dabbelt.com, bin.meng@windriver.com, qemu-block@nongnu.org, 
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000003829ed05f346f145"
+Received-SPF: none client-ip=2a00:1450:4864:20::535;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zodnMcVUYzRf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GMi264lMfdmW
 
-On Thu, Jan 19, 2023 at 07:59:54AM +0100, Markus Armbruster wrote:
-> Clean up includes so that osdep.h is included first and headers
-> which it implies are not included manually.
-> 
-> This commit was created with scripts/clean-includes.
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  include/block/graph-lock.h      | 1 -
->  include/block/write-threshold.h | 2 --
->  block/qapi.c                    | 1 -
->  3 files changed, 4 deletions(-)
+--0000000000003829ed05f346f145
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+On Fri, Jan 27, 2023 at 3:47 PM Eric Blake <eblake@redhat.com> wrote:
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+> On Thu, Jan 19, 2023 at 07:59:43AM +0100, Markus Armbruster wrote:
+> > When a symbolic link points to a file that needs cleaning, the script
+> > replaces the link with a cleaned regular file.  Not wanted; skip them.
+> >
+> > We have a few symbolic links under subprojects/libvduse/ and
+> > subprojects/libvhost-user/.
+> >
+> > Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> > ---
+> >  scripts/clean-includes | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> >
+> > diff --git a/scripts/clean-includes b/scripts/clean-includes
+> > index 8e8420d785..f0466a6262 100755
+> > --- a/scripts/clean-includes
+> > +++ b/scripts/clean-includes
+> > @@ -113,6 +113,10 @@ EOT
+> >
+> >  files=
+> >  for f in "$@"; do
+> > +  if [ -L "$f" ]; then
+>
+> I don't see -L used with test very often, but POSIX requires it, so it
+> is safe for our choice of /bin/sh.
+>
 
+FYI: -L is in FreeBSD, NetBSD, OpenBSD, etc. It's been in all these trees
+since the mid 90s. It wasn't in 4.4BSD, but all these projects have
+imported the code from pdksh's test.
+
+So in addition to POSIX, it's been widely implemented, at least in the BSD
+world, for over 20 years.
+
+Warner
+
+--0000000000003829ed05f346f145
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jan 27, 2023 at 3:47 PM Eric =
+Blake &lt;<a href=3D"mailto:eblake@redhat.com">eblake@redhat.com</a>&gt; wr=
+ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Thu, Jan=
+ 19, 2023 at 07:59:43AM +0100, Markus Armbruster wrote:<br>
+&gt; When a symbolic link points to a file that needs cleaning, the script<=
+br>
+&gt; replaces the link with a cleaned regular file.=C2=A0 Not wanted; skip =
+them.<br>
+&gt; <br>
+&gt; We have a few symbolic links under subprojects/libvduse/ and<br>
+&gt; subprojects/libvhost-user/.<br>
+&gt; <br>
+&gt; Signed-off-by: Markus Armbruster &lt;<a href=3D"mailto:armbru@redhat.c=
+om" target=3D"_blank">armbru@redhat.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 scripts/clean-includes | 4 ++++<br>
+&gt;=C2=A0 1 file changed, 4 insertions(+)<br>
+&gt; <br>
+&gt; diff --git a/scripts/clean-includes b/scripts/clean-includes<br>
+&gt; index 8e8420d785..f0466a6262 100755<br>
+&gt; --- a/scripts/clean-includes<br>
+&gt; +++ b/scripts/clean-includes<br>
+&gt; @@ -113,6 +113,10 @@ EOT<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 files=3D<br>
+&gt;=C2=A0 for f in &quot;$@&quot;; do<br>
+&gt; +=C2=A0 if [ -L &quot;$f&quot; ]; then<br>
+<br>
+I don&#39;t see -L used with test very often, but POSIX requires it, so it<=
+br>
+is safe for our choice of /bin/sh.<br></blockquote><div><br></div><div>FYI:=
+ -L is in FreeBSD, NetBSD, OpenBSD, etc. It&#39;s been in all these trees s=
+ince the mid 90s. It wasn&#39;t in 4.4BSD, but all these projects have impo=
+rted the code from pdksh&#39;s test.</div><div><br></div><div>So in additio=
+n to POSIX, it&#39;s been widely implemented, at least in the BSD world, fo=
+r over 20 years.<br></div><div><br></div><div>Warner<br></div></div></div>
+
+--0000000000003829ed05f346f145--

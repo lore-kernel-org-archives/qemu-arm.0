@@ -1,107 +1,112 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1338454ejc;
-        Fri, 27 Jan 2023 09:58:00 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs1NjkTq7JcqrHhaFaG7mwGuqUVZyNrY0SwjOmrUXpQ/gwD/pW7w1jBp5WPGETqnkOEFmiF
-X-Received: by 2002:a05:622a:6008:b0:3b6:3a8f:d743 with SMTP id he8-20020a05622a600800b003b63a8fd743mr53984952qtb.66.1674842280241;
-        Fri, 27 Jan 2023 09:58:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674842280; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1338522ejc;
+        Fri, 27 Jan 2023 09:58:07 -0800 (PST)
+X-Google-Smtp-Source: AK7set8a4SZwqTBkgIOdwv3TG5P/tOd3UqXcGKQdJ6nJNLjDJhSyYAJlwhJG7F6bFvTrKXe5Tvn7
+X-Received: by 2002:ad4:51c2:0:b0:539:45bd:5b73 with SMTP id p2-20020ad451c2000000b0053945bd5b73mr2523478qvq.52.1674842287547;
+        Fri, 27 Jan 2023 09:58:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674842287; cv=none;
         d=google.com; s=arc-20160816;
-        b=gfRIHSkT1EsoSLLunSTXaVEyLWDUhR88TpOvzEEDQM0/s6dY/lxBnBPAR+HpaKmO7R
-         pwJU8OIS0IOLPU6iyjLBlZk8t3Sn5elnqx25bz+CPKl5La8ImFhlHca4lhvT7GbHgJPX
-         /N8YY5eJFxJWoM6br2YWSa+ZsNuaYrbfD+5gZ+zqIUZkCqVT1dEOXzVoYk73oBHln6Oh
-         BzKW6oG/dE0xXleOYXTjIBpXuCl3+mXDRSWpivYK8o4wRdQNGU4vFtXVGZrM+GsfpNGX
-         PlcM6PB+Bpp20d+uVwN0juPqnsi7+wTKMDs7TqNQEjsbfiTBBh27vv8RhmNhFS3mgThI
-         IHmg==
+        b=nB40sfFavEqb0xbgdzma3cJvhLlB+HwKBJapSMTv7cRT/1aWGwEtDlgCNg0HhjXsAG
+         G9e2qPvZh4Wb1fOTLdPOcMTypgNFuPKhY1DWo4O7ASy8i98r2rUj8SFIz5iPTpixjsK5
+         btUMO2TutPyPdueC3xeIh2gUHbrFMKmLIAf2gHVB6WrAvI/TbPyGBzOBgPEEajoJCD3m
+         x4ogaKm06v8nIEjyF4pOzfD4qR/mHWf8kuckIQzHyTq4MvWR3bQuVAYiGGVnQ4m+7MbF
+         J+q2aGqHQ/fGhr9Sy0EhY8D/vVYNXLj2n16d3AdEQzBHBNbubJdzy5bj1BeDbqDFx2uK
+         ThpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=uvuf0K3RKNAPJETXJV9XevZKYErx9RVt5zxuzgDSynQ=;
-        b=G6CgSPO4P8UEBexvBC3DSL419zVCOcO3JYt6SiGDxAH1BKs/irJvKm42Ip+pFfKvbA
-         MCiv1NBqLiGbY4cCm4Qfmj1Le/9AtsW4Y6cvuIoCB/ptp4odfUTHa/9qhJsyMubnrVN7
-         jFDSvbx2CllUn4S2rPjaLO6nUCOetsOrn6vSMqN71AokFenTyIHubD39q2VFEQSgZm2Q
-         W8bpFo7e8qf0+N7C79+waLwIOMwzXxlccJj5ih8Okzh9q2wQBXC5JcW0lfCgpsGTq5k/
-         GmsKEFqOSvL2LZguV4eiQBGNIAR2b3IT1EgNcxRHHdVWUGJQaBMCI920nBZ4tcPEcdUD
-         ntEw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=9+UNwQuCENrumPZzNIm0geUn23LF6uOzndfw36doa8Q=;
+        b=waKBJecJ/0ikOacrvT5GLzuBWMNarOb3QrTnDvD3EsJoKV77wLrQD8VSJ0yfjBlbba
+         4+Of9vvrYq4FVswUlsOcBOyMPVBCroT3NYVsrG97Xmm7QyKyef5yk2dsZ3dTKqCh2i+p
+         2hCDWAdSkjtYUaxw9C+kUw2MzEdUEkNQX6mphVd104oa9vdt9JsT74PYn7JTV8AVo1VM
+         mq3JqGA6OBXd5srZZ5rI4ERM6NSMDlVbXjuGShDnf4rI/CzEbGTJofcuSY9DKUP5ml4l
+         ZH533zHoL0RoGONKxvaYXSbDGK+hKtDyh0Dkn8YQMaIl917+Nk/mp7C1qe5JIAZYsHhY
+         fYKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rVWb9Mgn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=co8E1m6f;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n17-20020ac85b51000000b003b630a616dbsi2605684qtw.730.2023.01.27.09.58.00
+        by mx.google.com with ESMTPS id im11-20020a056214246b00b005353d5811d0si3107602qvb.546.2023.01.27.09.58.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 09:58:00 -0800 (PST)
+        Fri, 27 Jan 2023 09:58:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rVWb9Mgn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=co8E1m6f;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pLSwo-0000oP-87; Fri, 27 Jan 2023 12:55:35 -0500
+	id 1pLSx0-0000ve-1v; Fri, 27 Jan 2023 12:55:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pLSwl-0000mr-S6
- for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:31 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1pLSwq-0000ol-0I
+ for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:36 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pLSwT-0005yR-9m
- for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:15 -0500
-Received: by mail-wr1-x434.google.com with SMTP id h16so5640615wrz.12
- for <qemu-devel@nongnu.org>; Fri, 27 Jan 2023 09:55:11 -0800 (PST)
+ id 1pLSwl-00060X-Ih
+ for qemu-devel@nongnu.org; Fri, 27 Jan 2023 12:55:35 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id m7so5672413wru.8
+ for <qemu-devel@nongnu.org>; Fri, 27 Jan 2023 09:55:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=uvuf0K3RKNAPJETXJV9XevZKYErx9RVt5zxuzgDSynQ=;
- b=rVWb9Mgnv9uPZXJYiAAK+Uy3P8sm4aTdS2P//YzaHxe3p9K0A9vv3KpRnc4Aspfq7z
- m/m1OXfJNSqAVW3FKHuy6E+YIvY9qD8wtT94tjUfogTORWDhkpTFTIU56oxTJMCCIeoR
- WpZ/FsjyIVNZWWz8IbJoOCZWIrZE2iLcxgZMa1ds0FWIYosJtRh/BrKjFZn5mVydlq9S
- 3gMnPEgxAQZi67k20hCzX+dyIFvAmxZVNDwYiis4q9KMS5omlcwn2Xph2XhgtzHM8XW2
- IDpGhZNxA1I98qzAtCGytu4KB8vvQiSmibRSwjkwIt9qkvHv2Fl+2IDD6UkdmjVJhv9h
- qSXg==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=9+UNwQuCENrumPZzNIm0geUn23LF6uOzndfw36doa8Q=;
+ b=co8E1m6fmDccFzipMezOvxLHE945gIT6OQZNJSeUnuZ+u8k7nMzUkUWZWG1jujA6FX
+ KW8gY9zj462yMsGdsOq0mJH8k/0kKbbQWiMqXOo9Fj/dcgQZVlyv0jG8ZlkKgl5AhvEp
+ qbM+YJveL3yRDR0hkpfOeWkSA6+vOAJpvj1jW2i3LqzjQ4GSFnpv6AmY/43/F9/o8bhf
+ VCwInFdZLWeJ+4NXif4SiEgJtR8gYzIWLhruVCCiThvlDf8pYdqj+0qmXGqQZJHeByNH
+ GaJaufmQ/kllCkhUPIlgWnE6tIwWmKNQxmFYCcPjXV6y2+6IHx2oBY9fL5yozGj1NIcb
+ wEeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=uvuf0K3RKNAPJETXJV9XevZKYErx9RVt5zxuzgDSynQ=;
- b=oqU86xCJ1L2zMvhTIUFxDs7US71CiTeSBp7rBs7OIie0+/OcobNUdBE1bhJLwICA75
- JFyN3suhwT6fqvNRNWGr2UoBracqqPLDDI32gRmwk9j1mt+Qp1fJlBPo/bbwjodZzclO
- Cvw1n34BfnThlxht/DVo6ektBI1NDTC2n3sERnrTodvKYwBfssnCvtdRycUVsw3D/AGO
- WtGJcUiteVC2HKjhMwdIYAKzvtB85j9VHnpnH8glZ7dIzGmoSoS2+H4Er3hdl7BPQ5jS
- ilZbDBMqjcT5MXud4w1gsURFElT8OU5IJUdAy7jqEmoDX/ZBmnuhedaZC50wheI/RYd4
- drdg==
-X-Gm-Message-State: AO0yUKV2zqRIR81DUOvBiCOMHuLZV8kM21BffG/zar3GIcBy6V1mxftd
- 58UGE2ZA1qGobkzJ2kG1i1W2yzJ7XcQi8eb1
-X-Received: by 2002:a5d:4951:0:b0:2bf:d425:11ba with SMTP id
- r17-20020a5d4951000000b002bfd42511bamr2806451wrs.22.1674842110542; 
- Fri, 27 Jan 2023 09:55:10 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=9+UNwQuCENrumPZzNIm0geUn23LF6uOzndfw36doa8Q=;
+ b=OVluR1Iv9RuBY/HP2r4mHhn8NvKxABZR6JW4m98S4BIE9alXTxlpzEMwRHE8uyW7FX
+ Pb7UzFig7zoHFn3Zrc5j3RjDuzEGO+ygQXGjtZvufj9+rE9325BoDFBOCNwo/37pk3Jv
+ X11Sez7J3PHRa6TERzvIlD36oJ4gc87JlF3I3XYQ5js9L+KkTa6tp1mmpPlWlXmZSs2M
+ oAAwvp+5rcEh1AnjINZd4AKPochqtWAD7RhSKSkjDtcp2RF8ka13qOEX2kLTg3SUC0ZI
+ +AnPWa/DhbJPtA9FgLTVXTInlwMGGvJpz+WdyOojZkd74wLjOdLe7kUNde5ijcJgZvoy
+ 6QBg==
+X-Gm-Message-State: AO0yUKXPVWATQ9GJuK2InJsUyBEEx2iwddkDXjPzfco3ZxOQD3UZSH0T
+ vjxBXajtBHvxTj40QPtqpHWxhvoeCjs9fLQd
+X-Received: by 2002:adf:d230:0:b0:2bf:ce9a:c19f with SMTP id
+ k16-20020adfd230000000b002bfce9ac19fmr4448945wrh.34.1674842116690; 
+ Fri, 27 Jan 2023 09:55:16 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l13-20020adff48d000000b002366e3f1497sm4545089wro.6.2023.01.27.09.55.08
+ l13-20020adff48d000000b002366e3f1497sm4545089wro.6.2023.01.27.09.55.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Jan 2023 09:55:09 -0800 (PST)
+ Fri, 27 Jan 2023 09:55:16 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 00/23] target/arm: Implement FEAT_FGT fine-grained traps
-Date: Fri, 27 Jan 2023 17:54:44 +0000
-Message-Id: <20230127175507.2895013-1-peter.maydell@linaro.org>
+Subject: [PATCH 06/23] target/arm: Make HSTR_EL2 traps take priority over
+ UNDEF-at-EL1
+Date: Fri, 27 Jan 2023 17:54:50 +0000
+Message-Id: <20230127175507.2895013-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230127175507.2895013-1-peter.maydell@linaro.org>
+References: <20230127175507.2895013-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,77 +121,155 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d5vy1yH8WZjM
+X-TUID: ZZnYPgK+8Ez+
 
-This series implements the FEAT_FGT fine-grained traps architectural
-feature. The bulk of this is new system registers HFGRTR_EL2, HFGWTR_EL2,
-HFGITR_EL2, HDFGRTR_EL2, HDFGWTR_EL2, which have bits that enable
-trapping of system register and system instruction accesses on a
-fine-grained basis (typically one or a few sysregs at a time).
+The semantics of HSTR_EL2 require that it traps cpreg accesses
+to EL2 for:
+ * EL1 accesses
+ * EL0 accesses, if the access is not UNDEFINED when the
+   trap bit is 0
 
-In theory we could implement this with our existing ARMCPRegInfo::accessfn
-machinery, but we would end up with many many very nearly identical
-access functions. Instead this series adds a new ARMCPRegInfo::fgt
-field, which specifies which bit in which FGT register should be
-checked; this is then tested by code in the access_check_cp_reg
-helper function.
+(You can see this in the I_ZFGJP priority ordering, where HSTR_EL2
+traps from EL1 to EL2 are priority 12, UNDEFs are priority 13, and
+HSTR_EL2 traps from EL0 are priority 15.)
 
-A few bits in HFGITR_EL2 allow trapping of instructions which aren't
-handled by the ARMCPRegInfo mechanism: ERET and SVC. These we just
-implement "by hand". FEAT_FGT also adds new MDCR_EL3.TDCC and
-MDCR_EL2.TDCC bits for trapping the Debug Comms Channel registers;
-these we implement with a standard accessfn.
+However, we don't get this right for EL1 accesses which UNDEF because
+the register doesn't exist at all or because its ri->access bits
+non-configurably forbid the access.  At EL1, check for the HSTR_EL2
+trap early, before either of these UNDEF reasons.
 
-The first seven patches are various cleanups and bugfixes that
-I noticed while I was doing the FEAT_FGT work. In particular, we
-weren't getting the priority of HSTR_EL2 traps right -- these should
-take priority over UNDEF-at-EL traps but not over UNDEF-at-EL0 traps.
-The rest of the series is FEAT_FGT itself.
+We have to retain the HSTR_EL2 check in access_check_cp_reg(),
+because at EL0 any kind of UNDEF-to-EL1 (including "no such
+register", "bad ri->access" and "ri->accessfn returns 'trap to EL1'")
+takes precedence over the trap to EL2.  But we only need to do that
+check for EL0 now.
 
-thanks
--- PMM
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.h    |  1 +
+ target/arm/op_helper.c | 13 ++++++++++++-
+ target/arm/translate.c | 37 ++++++++++++++++++++++++++++++++-----
+ 3 files changed, 45 insertions(+), 6 deletions(-)
 
-Peter Maydell (23):
-  target/arm: Name AT_S1E1RP and AT_S1E1WP cpregs correctly
-  target/arm: Correct syndrome for ATS12NSO* at Secure EL1
-  target/arm: Remove CP_ACCESS_TRAP_UNCATEGORIZED_{EL2,EL3}
-  target/arm: Move do_coproc_insn() syndrome calculation earlier
-  target/arm: All UNDEF-at-EL0 traps take priority over HSTR_EL2 traps
-  target/arm: Make HSTR_EL2 traps take priority over UNDEF-at-EL1
-  target/arm: Disable HSTR_EL2 traps if EL2 is not enabled
-  target/arm: Define the FEAT_FGT registers
-  target/arm: Implement FGT trapping infrastructure
-  target/arm: Mark up sysregs for HFGRTR bits 0..11
-  target/arm: Mark up sysregs for HFGRTR bits 12..23
-  target/arm: Mark up sysregs for HFGRTR bits 24..35
-  target/arm: Mark up sysregs for HFGRTR bits 36..63
-  target/arm: Mark up sysregs for HDFGRTR bits 0..11
-  target/arm: Mark up sysregs for HDFGRTR bits 12..63
-  target/arm: Mark up sysregs for HFGITR bits 0..11
-  target/arm: Mark up sysregs for HFGITR bits 12..17
-  target/arm: Mark up sysregs for HFGITR bits 18..47
-  target/arm: Mark up sysregs for HFGITR bits 48..63
-  target/arm: Implement the HFGITR_EL2.ERET trap
-  target/arm: Implement the HFGITR_EL2.SVC_EL0 and SVC_EL1 traps
-  target/arm: Implement MDCR_EL2.TDCC and MDCR_EL3.TDCC traps
-  target/arm: Enable FEAT_FGT on '-cpu max'
-
- docs/system/arm/emulation.rst |   1 +
- target/arm/cpregs.h           | 484 +++++++++++++++++++++++++++++++++-
- target/arm/cpu.h              |  18 ++
- target/arm/helper.h           |   1 +
- target/arm/internals.h        |  20 ++
- target/arm/syndrome.h         |  10 +
- target/arm/translate.h        |   6 +
- hw/intc/arm_gicv3_cpuif.c     |   2 +
- target/arm/cpu64.c            |   1 +
- target/arm/debug_helper.c     |  46 +++-
- target/arm/helper.c           | 245 ++++++++++++++++-
- target/arm/op_helper.c        |  65 ++++-
- target/arm/translate-a64.c    |  22 +-
- target/arm/translate.c        | 132 ++++++----
- 14 files changed, 986 insertions(+), 67 deletions(-)
-
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 018b00ea75b..17634b3e7b6 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -81,6 +81,7 @@ DEF_HELPER_FLAGS_2(check_bxj_trap, TCG_CALL_NO_WG, void, env, i32)
+ 
+ DEF_HELPER_4(access_check_cp_reg, cptr, env, i32, i32, i32)
+ DEF_HELPER_FLAGS_2(lookup_cp_reg, TCG_CALL_NO_RWG_SE, cptr, env, i32)
++DEF_HELPER_3(hstr_trap_check, void, env, i32, i32)
+ DEF_HELPER_3(set_cp_reg, void, env, cptr, i32)
+ DEF_HELPER_2(get_cp_reg, i32, env, cptr)
+ DEF_HELPER_3(set_cp_reg64, void, env, cptr, i64)
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 660dae696dd..8ac176e0742 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -624,6 +624,13 @@ uint32_t HELPER(mrs_banked)(CPUARMState *env, uint32_t tgtmode, uint32_t regno)
+     }
+ }
+ 
++void HELPER(hstr_trap_check)(CPUARMState *env, uint32_t mask, uint32_t syndrome)
++{
++    if (env->cp15.hstr_el2 & mask) {
++        raise_exception(env, EXCP_UDEF, syndrome, 2);
++    }
++}
++
+ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
+                                         uint32_t syndrome, uint32_t isread)
+ {
+@@ -658,7 +665,11 @@ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
+         goto fail;
+     }
+ 
+-    if (!is_a64(env) && arm_current_el(env) < 2 && ri->cp == 15 &&
++    /*
++     * HSTR_EL2 traps from EL1 are checked earlier, via hstr_trap_check;
++     * we only need to check here for traps from EL0.
++     */
++    if (!is_a64(env) && arm_current_el(env) == 0 && ri->cp == 15 &&
+         (arm_hcr_el2_eff(env) & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
+         uint32_t mask = 1 << ri->crn;
+ 
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 9252a464a12..ec1f2288ff8 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -4719,6 +4719,7 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+     TCGv_ptr tcg_ri = NULL;
+     bool need_exit_tb;
+     uint32_t syndrome;
++    bool emitted_update_pc = false;
+ 
+     /*
+      * Note that since we are an implementation which takes an
+@@ -4760,6 +4761,28 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+         break;
+     }
+ 
++    if (s->hstr_active && cpnum == 15 && s->current_el == 1) {
++        /*
++         * At EL1, check for a HSTR_EL2 trap, which must take precedence
++         * over the UNDEF for "no such register" or the UNDEF for "access
++         * permissions forbid this EL1 access". HSTR_EL2 traps from EL0
++         * only happen if the cpreg doesn't UNDEF at EL0, so we do those in
++         * access_check_cp_reg(), after the checks for whether the access
++         * configurably trapped to EL1.
++         */
++        uint32_t maskbit = is64 ? crm : crn;
++
++        if (maskbit != 4 && maskbit != 14) {
++            /* T4 and T14 are RES0 so never cause traps */
++            gen_set_condexec(s);
++            gen_update_pc(s, 0);
++            emitted_update_pc = true;
++            gen_helper_hstr_trap_check(cpu_env,
++                                       tcg_constant_i32(1 << maskbit),
++                                       tcg_constant_i32(syndrome));
++        }
++    }
++
+     if (!ri) {
+         /*
+          * Unknown register; this might be a guest error or a QEMU
+@@ -4788,7 +4811,7 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+         return;
+     }
+ 
+-    if (s->hstr_active || ri->accessfn ||
++    if ((s->hstr_active && s->current_el == 0) || ri->accessfn ||
+         (arm_dc_feature(s, ARM_FEATURE_XSCALE) && cpnum < 14)) {
+         /*
+          * Emit code to perform further access permissions checks at
+@@ -4796,8 +4819,10 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+          * Note that on XScale all cp0..c13 registers do an access check
+          * call in order to handle c15_cpar.
+          */
+-        gen_set_condexec(s);
+-        gen_update_pc(s, 0);
++        if (!emitted_update_pc) {
++            gen_set_condexec(s);
++            gen_update_pc(s, 0);
++        }
+         tcg_ri = tcg_temp_new_ptr();
+         gen_helper_access_check_cp_reg(tcg_ri, cpu_env,
+                                        tcg_constant_i32(key),
+@@ -4808,8 +4833,10 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+          * The readfn or writefn might raise an exception;
+          * synchronize the CPU state in case it does.
+          */
+-        gen_set_condexec(s);
+-        gen_update_pc(s, 0);
++        if (!emitted_update_pc) {
++            gen_set_condexec(s);
++            gen_update_pc(s, 0);
++        }
+     }
+ 
+     /* Handle special cases first */
 -- 
 2.34.1
 

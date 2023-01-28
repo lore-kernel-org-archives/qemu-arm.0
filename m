@@ -1,117 +1,128 @@
-Received: by 2002:a17:906:a8d:b0:883:7228:2f81 with SMTP id y13csp13043ejf;
-        Fri, 27 Jan 2023 18:53:24 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuLfXceESJHP0rQtUubgbeSSOeZSEkxlvT7qorSCI9JiOu78f0ybCNHscM1q4C3TYqbMmw2
-X-Received: by 2002:a05:622a:598b:b0:3a9:8f6c:2d7c with SMTP id gb11-20020a05622a598b00b003a98f6c2d7cmr65483428qtb.52.1674874404447;
-        Fri, 27 Jan 2023 18:53:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674874404; cv=none;
+Received: by 2002:a17:906:a8d:b0:883:7228:2f81 with SMTP id y13csp80373ejf;
+        Fri, 27 Jan 2023 22:06:38 -0800 (PST)
+X-Google-Smtp-Source: AK7set/TdAS1LdAERTTPp16RK/jbZBKuW1o8vvmwscEsQVn/uYd/1QDcyWHJNoVR9znbq87intmK
+X-Received: by 2002:ac8:5701:0:b0:3b8:49bb:16c3 with SMTP id 1-20020ac85701000000b003b849bb16c3mr49584qtw.28.1674885997871;
+        Fri, 27 Jan 2023 22:06:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674885997; cv=none;
         d=google.com; s=arc-20160816;
-        b=uwq5Qyur1wth79aQokd7b+jmusNdmuQnxRi7ZNGQ7nah6GYDXszQgmBVcX6lUq8Ut4
-         9HQ0Lmj33zAz8neATG1Lm8lSpMaKyEnrwbsyR2c0SbMQPzas/+0d4m13WmDy8Hc4kL0U
-         CedUIMuRKt868R7wOhLUjg7puCOvp2KgTpjfTL/eU9B3RPdpyLQsgFOtM8Q9R4FmXwFM
-         9w2oyQZQT9M+uo1WsIj0z7M76SmRBYtGwDvrBJHBwxunD24loJ1oeQzPNmu2WXWwMEMf
-         9EEoOL+duZWKCn577uJU234PKcua6UB8pzp5jyDJFxVAccTzy3MygLcyEwC5RdVYx0UW
-         dSKA==
+        b=UIIlfRW8MIJxYEHh0wiWPKFJQsIqpT3W+kgYfZ7zzF9Wya7PiyEzE/CjGuYavJz24X
+         WT6XrAuEktXnGiYtyI3RSt5F/UW63SsfwV5p28QzKtD9vBRVMs+tTr0nwRtXgjRt02jQ
+         1LewZVf8D+wL+KDbWH7Z9/X0UZcbsyqfUc3htFGuSAvmAJdAzGi1BGviGoI3I49NMk92
+         l6J8xSFFu8mwQw4pC1XrudrwbtjBcjcb3UHvlpB2J1b5l6v2iq4EtuvMgmo86TAyJE4N
+         a//LYzDeIW864nuj2w5x9axOUjgrzIin9fDt9yTTqjfp7KaDmaG7ziRsKa9q7sk/H2sI
+         Wkng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=NU4EVJCvTXWkS0yFA+wP1qGKZg+BOpVVc/MEE3lEEuM=;
-        b=vPVUTGLt+QnVofkXQbG2LQj4QHn7cdxF8uxkjWR+tu1YU29xgp7wKrejMXs3AfSAaK
-         JcYahMDUT/hda0qym52bkGdGeH65B1VSKGylezCcUuCAQ8v7MZRRWpyeDqthiJTYtPxi
-         aJgQfBWDWAmPzfscAiW/fIJVe5bwA+f8g0NRDi9RXe4TWHbBdnBVYb78kvBztJa24uKZ
-         ISfK/AQy7EBdrvBvyOqrPScMsgCLfCKp//rQKhhSHxBSWRemIHTP4fUUc6a9p7+fPLVe
-         ERARNhBuwHocofCfNbYijS8/OmOwEEHRGj7mCz0FPzy1TJB6S/hcTTcHGpQoI3Za0Ryn
-         hD8Q==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:feedback-id:dkim-signature:dkim-signature;
+        bh=uK9ZxOVUQX9EYpzYSZhZcK/S601ut66qaRhZS3IbyMw=;
+        b=vqlgsGaHvvMWiPisEu1yw4M/L/Uzs7FfyAPQvir5JqVn5Xn+YiE47rs8TBX9GJFnrE
+         rHq75/NZT3ld7UR7GXoO1VTl0OybgVxuqL6suQAz1NnlBFyDeFcdrwmCLLOaaDtUSuVp
+         mv8ehWtK+W7wIRvIOmbLl4DYnOVCNPXwB9TsPbedklEOzaE7Bn8IwMULaQB5eC5IK/W5
+         XNELs3AmHUAaOvG8IHZliKZ02x8v3RKOSLgBzNYFkRKx2VwKUNM6/EyHojulqNTdpBsE
+         Ta0Q1Yz2IvwJcO6tZigOrBC27SXe2SJfKhVbZQlPPZ20nc85e/qvKKKGUBEjxBQABjpI
+         vLkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nti0+XlU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=1+N8tOi7;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=ovRxshjm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2-20020ac85c02000000b003a7e5da777esi3427536qti.206.2023.01.27.18.53.24
+        by mx.google.com with ESMTPS id i7-20020ac85e47000000b003b469bc8761si3783297qtx.540.2023.01.27.22.06.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 18:53:24 -0800 (PST)
+        Fri, 27 Jan 2023 22:06:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nti0+XlU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=1+N8tOi7;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=ovRxshjm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pLbL3-0000e3-28; Fri, 27 Jan 2023 21:53:09 -0500
+	id 1pLeLa-0002Jq-N3; Sat, 28 Jan 2023 01:05:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pLbL2-0000dW-6p
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 21:53:08 -0500
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pLbL0-0001XL-D0
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 21:53:07 -0500
-Received: by mail-pj1-x102f.google.com with SMTP id
- m7-20020a17090a71c700b0022c0c070f2eso9744388pjs.4
- for <qemu-arm@nongnu.org>; Fri, 27 Jan 2023 18:53:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=NU4EVJCvTXWkS0yFA+wP1qGKZg+BOpVVc/MEE3lEEuM=;
- b=nti0+XlU6K5vcxk6uutZZbe0PhiLCSjYxGvNGQNtrUa3FsHjICGxr7PR7YBsh348E9
- H7JVbHVLZ/hQDUHcnw/PVy7uCtSyMGZ+Q5UjfxP011bwH7ohGQDXnOiv3VVnnZIsg9oZ
- kboUFACbg4+sD30RmrrGbFXlDk9b9NjA1ACOzQFNj1BhDF5mzWssvAsxoJuPSTLZG8Yu
- eQJ2lNXi7o2MqZ/Mgkm5cCH2DMKVxo5ZI7colaApxwPX/8UA0N8IV+wzJ5DbTbGMlaLH
- pk5Nzu8gYtRnAKadbfQU73p3ykt6wwDo6lFum8Idx1XkduNJUkJcSxnZPAph/MGRDSfY
- aexA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=NU4EVJCvTXWkS0yFA+wP1qGKZg+BOpVVc/MEE3lEEuM=;
- b=f4IfgZlG7Guqms4fBx4kWu+XL3dkYV5GRB+lz98jVv3/OJ56lSu8LUhFef6vkKM+dq
- /x88aFqlrJz+EbC3cCdQ/2qk2MgVyOi/78/qucUAzk9ZahseU28IgcrQb17+9CEZis1i
- Y0lfNbrSyRaF1tiycITNgNuNql0CJooFubYXLFaGDn6VMvGC5beeL7IMiWFLVtRL6jZL
- hMR+IdJov15nue/eHNY7peKgnp4SkRRGvlvU+IGnQFpAI2HatTFVXKjM4H8tW24OrxGC
- eTVeIcTglA3SYxfAKLA3dUno/pKai+UnYKtvEue6pcump1j/s4AdDorLl5+ecoJe4p3z
- Mgcw==
-X-Gm-Message-State: AO0yUKV5QO61ySKtbzNwrIXx5fctwTbgryAe4UcQFPpXRyq4ayVgCUjn
- 9n8iTJthDLqmk8tet0abt55Rlw==
-X-Received: by 2002:a17:90b:1e4e:b0:22b:f834:3fac with SMTP id
- pi14-20020a17090b1e4e00b0022bf8343facmr15230433pjb.11.1674874382881; 
- Fri, 27 Jan 2023 18:53:02 -0800 (PST)
-Received: from [192.168.50.174] (rrcs-173-197-98-118.west.biz.rr.com.
- [173.197.98.118]) by smtp.gmail.com with ESMTPSA id
- p10-20020a17090a2d8a00b0022bf0b0e1b7sm5745466pjd.10.2023.01.27.18.53.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Jan 2023 18:53:02 -0800 (PST)
-Message-ID: <eb1e8de9-f5a8-7c0b-c7a4-3f76823287c3@linaro.org>
-Date: Fri, 27 Jan 2023 16:52:59 -1000
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1pLeLZ-0002JM-Fn; Sat, 28 Jan 2023 01:05:53 -0500
+Received: from out1-smtp.messagingengine.com ([66.111.4.25])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1pLeLX-0007VJ-Du; Sat, 28 Jan 2023 01:05:53 -0500
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.nyi.internal (Postfix) with ESMTP id 9A70C5C06CF;
+ Sat, 28 Jan 2023 01:05:50 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute1.internal (MEProxy); Sat, 28 Jan 2023 01:05:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1674885950; x=
+ 1674972350; bh=uK9ZxOVUQX9EYpzYSZhZcK/S601ut66qaRhZS3IbyMw=; b=1
+ +N8tOi7788EKMf5OmFcErOMrhC87Ru/CaqLmupb7Te3rC3XnKUiUIO1jyQhMoMbn
+ Edgp3KvGrpcevcpY7IF66Ad4UqS+tt101VA0Ilj8zKcxX/LAz7uXOjiwhtOg1bUP
+ ba0joZOl3txozrBGLEyhMIAP5Eq2eR/p5TGB4sVdG02VoNtxtvIQKpQckVF0ZUtB
+ C+/w6MEKgDb95YuEoCbM/7eLQP6N5Cozs/Aq+aJHdiZQ/XhkEkzZ4o6swpr/dfEM
+ UUqvsSZTvhIW1Ls+U0QxR/leK+O1Nw9vT7il4Lpi4GaLX9h5Rb1CNrYXeVXdBfvi
+ uoFQ4ObVytuSKrXfWBaQg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1674885950; x=
+ 1674972350; bh=uK9ZxOVUQX9EYpzYSZhZcK/S601ut66qaRhZS3IbyMw=; b=o
+ vRxshjm2nC206gQlgRTZJel5fzXPuVmJ2RhHleWIFUxvs8pCKN0DJRBaD/1xorca
+ qdnYsGzbcDYjv2+N6GMXmXtguH/NKfLV01zXBG2V9Sg3A65la9YGZf1XofxYo7ae
+ nQqv5Op7Tz7hUh+BK0O7FTR6r/+h/IRYOeqh681+XD2bZfsH3Q4CnT+il205GjyC
+ mb1Ydb2I0y/3403MasPgFqAxDquB7c1wUpsxOHRUQppgAY2YiGh9h1iIJBaqLr8M
+ EhLPHIdabcbupojhekUr0DphuN7RLs/Sz8KhzGjUoQJGTPHzZg8yfqQJXgWEFs5g
+ sUXYNPwSBgekuikQ4h5+w==
+X-ME-Sender: <xms:PrvUY9C9E_iducVYV7H1M9zjKFeBhgxLYnSbesdmteErxztOmv_8pQ>
+ <xme:PrvUY7jNpgBW_rhsUP_XiD6lqAxbJH9exOSxp5qf1PhGjYep56BJJDGWnDjP0KlwV
+ 8COCOJVc9DVIniBE9U>
+X-ME-Received: <xmr:PrvUY4k_2VCsCzHnfpKsNN4in9q-gzq_w1qz_xUq74EFh483IAxkw64yKlElilejJY-IiY98ndedi8IBzLqJP3AZuAmDw6YaGCiR8bFM5cY>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddvjedgledvucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
+ dmnegoteeftdduqddtudculdduhedmnecujfgurhephffvvefufffkofgjfhggtgfgseht
+ keertdertdejnecuhfhrohhmpefrvghtvghrucffvghlvghvohhrhigrshcuoehpvghtvg
+ hrsehpjhgurdguvghvqeenucggtffrrghtthgvrhhnpedvhfevvefhtddvueevudelvedt
+ ieehvdejjeeuvedtudegjeeileetheekgfeggeenucevlhhushhtvghrufhiiigvpedtne
+ curfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvghrsehpjhgurdguvghv
+X-ME-Proxy: <xmx:PrvUY3yPxECqC6Zex8ggix18c_5ph5fe2FCAIDdmavrG_4qX82lANA>
+ <xmx:PrvUYyRELjenTil3Xclx2Rb-kFBdbmVTaAl0JVjQdjs7bK7ghWtrJg>
+ <xmx:PrvUY6b3AZou6c6JHz_P3biCT-GxZCSPXL7tpal5LUMamEL6T97YSQ>
+ <xmx:PrvUYz-HTJw1vbJ-UCArMW2jzxLkqMk60dWS-UllMqXzUBXDbTkRCg>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 28 Jan 2023 01:05:49 -0500 (EST)
+From: Peter Delevoryas <peter@pjd.dev>
+To: 
+Cc: peter@pjd.dev, clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au,
+ joel@jms.id.au, hskinnemoen@google.com, kfting@nuvoton.com,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, philmd@linaro.org,
+ cminyard@mvista.com
+Subject: [PATCH v5 2/5] hw/arm/aspeed: Replace aspeed_eeprom_init with
+ at24c_eeprom_init
+Date: Fri, 27 Jan 2023 22:05:40 -0800
+Message-Id: <20230128060543.95582-3-peter@pjd.dev>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230128060543.95582-1-peter@pjd.dev>
+References: <20230128060543.95582-1-peter@pjd.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 14/23] target/arm: Mark up sysregs for HDFGRTR bits 0..11
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20230127175507.2895013-1-peter.maydell@linaro.org>
- <20230127175507.2895013-15-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230127175507.2895013-15-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=66.111.4.25; envelope-from=peter@pjd.dev;
+ helo=out1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,19 +137,225 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6GHy541/jePB
+X-TUID: DdbYYg9CqV+R
 
-On 1/27/23 07:54, Peter Maydell wrote:
-> Mark up the sysreg definitons for the registers trapped
-> by HDFGRTR/HDFGWTR bits 0..11. These cover various debug
-> related registers.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   target/arm/cpregs.h       | 12 ++++++++++++
->   target/arm/debug_helper.c | 11 +++++++++++
->   2 files changed, 23 insertions(+)
+aspeed_eeprom_init is an exact copy of at24c_eeprom_init, not needed.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
+---
+ hw/arm/aspeed.c | 95 ++++++++++++++++++++++---------------------------
+ 1 file changed, 43 insertions(+), 52 deletions(-)
 
-r~
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 1f9799d4321e..c929c61d582a 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -660,15 +660,6 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+                           eeprom_buf);
+ }
+ 
+-static void aspeed_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
+-{
+-    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
+-    DeviceState *dev = DEVICE(i2c_dev);
+-
+-    qdev_prop_set_uint32(dev, "rom-size", rsize);
+-    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
+-}
+-
+ static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = &bmc->soc;
+@@ -701,7 +692,7 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     AspeedSoCState *soc = &bmc->soc;
+     I2CSlave *i2c_mux;
+ 
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB);
+ 
+     create_pca9552(soc, 3, 0x61);
+ 
+@@ -714,9 +705,9 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+                      0x4a);
+     i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4),
+                                       "pca9546", 0x70);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
+     create_pca9552(soc, 4, 0x60);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
+@@ -727,8 +718,8 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     create_pca9552(soc, 5, 0x61);
+     i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5),
+                                       "pca9546", 0x70);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
+                      0x48);
+@@ -738,10 +729,10 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+                      0x4b);
+     i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6),
+                                       "pca9546", 0x70);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
+ 
+     create_pca9552(soc, 7, 0x30);
+     create_pca9552(soc, 7, 0x31);
+@@ -754,15 +745,15 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "max31785", 0x52);
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB);
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
+                      0x4a);
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * KiB);
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * KiB);
+     create_pca9552(soc, 8, 0x60);
+     create_pca9552(soc, 8, 0x61);
+     /* Bus 8: ucd90320@11 */
+@@ -771,11 +762,11 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4d);
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50, 128 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50, 128 * KiB);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4d);
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50, 128 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50, 128 * KiB);
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
+                      0x48);
+@@ -783,18 +774,18 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+                      0x49);
+     i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11),
+                                       "pca9546", 0x70);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
+-    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+     create_pca9552(soc, 11, 0x60);
+ 
+ 
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 64 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 64 * KiB);
+     create_pca9552(soc, 13, 0x60);
+ 
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50, 64 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50, 64 * KiB);
+     create_pca9552(soc, 14, 0x60);
+ 
+-    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
+     create_pca9552(soc, 15, 0x60);
+ }
+ 
+@@ -838,45 +829,45 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
+     i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
+ 
+-    aspeed_eeprom_init(i2c[19], 0x52, 64 * KiB);
+-    aspeed_eeprom_init(i2c[20], 0x50, 2 * KiB);
+-    aspeed_eeprom_init(i2c[22], 0x52, 2 * KiB);
++    at24c_eeprom_init(i2c[19], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[20], 0x50, 2 * KiB);
++    at24c_eeprom_init(i2c[22], 0x52, 2 * KiB);
+ 
+     i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
+     i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
+     i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
+     i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
+ 
+-    aspeed_eeprom_init(i2c[8], 0x51, 64 * KiB);
++    at24c_eeprom_init(i2c[8], 0x51, 64 * KiB);
+     i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
+ 
+     i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
+-    aspeed_eeprom_init(i2c[50], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[50], 0x52, 64 * KiB);
+     i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
+     i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
+ 
+     i2c_slave_create_simple(i2c[59], TYPE_TMP75, 0x48);
+     i2c_slave_create_simple(i2c[60], TYPE_TMP75, 0x49);
+ 
+-    aspeed_eeprom_init(i2c[65], 0x53, 64 * KiB);
++    at24c_eeprom_init(i2c[65], 0x53, 64 * KiB);
+     i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x49);
+     i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x48);
+-    aspeed_eeprom_init(i2c[68], 0x52, 64 * KiB);
+-    aspeed_eeprom_init(i2c[69], 0x52, 64 * KiB);
+-    aspeed_eeprom_init(i2c[70], 0x52, 64 * KiB);
+-    aspeed_eeprom_init(i2c[71], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[68], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[69], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[70], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[71], 0x52, 64 * KiB);
+ 
+-    aspeed_eeprom_init(i2c[73], 0x53, 64 * KiB);
++    at24c_eeprom_init(i2c[73], 0x53, 64 * KiB);
+     i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x49);
+     i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x48);
+-    aspeed_eeprom_init(i2c[76], 0x52, 64 * KiB);
+-    aspeed_eeprom_init(i2c[77], 0x52, 64 * KiB);
+-    aspeed_eeprom_init(i2c[78], 0x52, 64 * KiB);
+-    aspeed_eeprom_init(i2c[79], 0x52, 64 * KiB);
+-    aspeed_eeprom_init(i2c[28], 0x50, 2 * KiB);
++    at24c_eeprom_init(i2c[76], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[77], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[78], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[79], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[28], 0x50, 2 * KiB);
+ 
+     for (int i = 0; i < 8; i++) {
+-        aspeed_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
++        at24c_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
+         i2c_slave_create_simple(i2c[82 + i * 8], TYPE_TMP75, 0x48);
+         i2c_slave_create_simple(i2c[83 + i * 8], TYPE_TMP75, 0x4b);
+         i2c_slave_create_simple(i2c[84 + i * 8], TYPE_TMP75, 0x4a);
+@@ -947,11 +938,11 @@ static void fby35_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
+     i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
+ 
+-    aspeed_eeprom_init(i2c[4], 0x51, 128 * KiB);
+-    aspeed_eeprom_init(i2c[6], 0x51, 128 * KiB);
+-    aspeed_eeprom_init(i2c[8], 0x50, 32 * KiB);
+-    aspeed_eeprom_init(i2c[11], 0x51, 128 * KiB);
+-    aspeed_eeprom_init(i2c[11], 0x54, 128 * KiB);
++    at24c_eeprom_init(i2c[4], 0x51, 128 * KiB);
++    at24c_eeprom_init(i2c[6], 0x51, 128 * KiB);
++    at24c_eeprom_init(i2c[8], 0x50, 32 * KiB);
++    at24c_eeprom_init(i2c[11], 0x51, 128 * KiB);
++    at24c_eeprom_init(i2c[11], 0x54, 128 * KiB);
+ 
+     /*
+      * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC on
+-- 
+2.39.0
+

@@ -1,111 +1,111 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1548438ejc;
-        Fri, 27 Jan 2023 17:14:05 -0800 (PST)
-X-Google-Smtp-Source: AK7set+HPow0K7Ya8fSBTW1VgyntoxPV2xSl1DqTltS5sAClAInsKomwAxomO81ADEAaedGwFfn1
-X-Received: by 2002:a05:622a:1788:b0:3a7:f552:fd60 with SMTP id s8-20020a05622a178800b003a7f552fd60mr1609980qtk.41.1674868445022;
-        Fri, 27 Jan 2023 17:14:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674868445; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1561727ejc;
+        Fri, 27 Jan 2023 17:47:26 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvm3bfMeOxwYz/EugDNUHKuc+hjp+ZyBHLR1amBxs3LFyI2LMP5E8SXAraZCMXpieqTGiWF
+X-Received: by 2002:a05:622a:1dc4:b0:3b6:3b60:e0 with SMTP id bn4-20020a05622a1dc400b003b63b6000e0mr55823035qtb.31.1674870446534;
+        Fri, 27 Jan 2023 17:47:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674870446; cv=none;
         d=google.com; s=arc-20160816;
-        b=bW5kUV059RnN1FBqrM22Td1k9PpXyyVPLZkSb83++uQ2Gq0DO//5xC2ryL8qiGsLiZ
-         YHMH/hG1XTzaUH4wZdAJUDihpNHKM4bYW6MxWT2wgF85jvMlWcUprwDUa52+Tqa1oqgd
-         saJym/JsJc4hc5pukZZhImlWuCZqHOfrbmrPV8+fHYHeqCUAmdl98wj2aOzjAB6oX0Ni
-         dymg7WJN46+Y2COaaNrnDz/BZSxEp+ZPyNUnmp5F3LHMzq48UV9PWS1Rd0rIzzPRP/qk
-         qf+pVt5z4gbkPIQCUUm4K3vY3o+VKV4j3BfttrXaCBmW+p/g6M8cs+3rKNbB0AGmW9ny
-         6BWQ==
+        b=Op4rngTbZTDSHsuks/w8GEIw+LoLG5YsHoThUZQqivq0hSjRSa0RoQX8P9nUAMX/PO
+         Wziys3s3loholK4J3QMo/JEU3ou5AYMCEJ9hNSLzohbs33/bvXunRa6aZxvFQR50y7kH
+         VzGcV4pnbaYYLvegK5mUKEeJHPatnx6HupvXLgh13m4+goLgzislJanWHzcLPUGI/U1U
+         RosBUdyvYLntEx0+lQxPZOuk3RGab+Ri/caVMrXYn6Meoi7Md5bTGDfcGt7uusZwa5Pm
+         9ULVbej4eoU6wpe7X3a2hBD72KeRbD0eKftRdRAJBynb6bZ+EzlIIVQ1Doa67shRwIgF
+         j+/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=sb1hIBNVIe3rR0re9Y21qriETaRXzVhWU8UoYxIBuUc=;
-        b=PjheaWtPo6e2VLYByf/Jtn+2JaD9UVzOXwyZz0XDYRMlLMVY16HdWaZsP9Pqa4agNA
-         tMzE1nV6FWBHpSWyCphJGixDr1e5ubzhIxqN3T5OdrmfeV9Q/nJgmtrM7ZYw22e9mIX4
-         SGzceL6KWBTbDKQ2fHiCxsFjgVW8pBGsdS+P0yWujgc3owod7tvHth/37LmepOREYqxw
-         qszJUaDUqMCsSP/Ui6dYE41B7d9gN4ESUyTUdqbBzYD2WKAvtvu4AoChTE+oJXXdgjey
-         qm5cVNo4aAo/7Oc0rzkVjb6exOaB7g0UVhO8NUS1zcevlDkxnnzy4XM37CQiLDLdj1vP
-         Z9Ow==
+        bh=JIMnU4HZfi5aqUU026Ue3HyisdN6V43OjLbp8WZb4K0=;
+        b=RAEqd2F93X9XzI3ifs4QA2x44aEEC2syhVHqpL8kA9fOzEecC6im7XEQEM8jw3q4Nk
+         rUqpMNLX2QDQnGb2a48zupiaeGpOK4Fiaka4VcL0N6ri9KfhqWrx8FjPfpZdqe/bF/28
+         4Pbe7GebMhpDxRKJX/ok81yTsOzIWWtYLx7xnB50L0zDYNzqPmUaRVT/m1VCbDZ5smpv
+         wDdBatwqZgX93XLR3C0Uvk+NRR8RcDKgz6rwH3XEHNCWJinwnduyfXef0u3oPavLFTkZ
+         jf/zJ5Tzg0t+zqksrb/lsH5qriC4UnTaVB8v7znLBy8bw1H60/1YyCc1P5FOdFCyPH4G
+         f+AQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WNSMuSCk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F4Lwljz9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11-20020ac8410b000000b0035a89595940si3075485qtl.19.2023.01.27.17.14.04
+        by mx.google.com with ESMTPS id k15-20020a05620a414f00b00719bf1a115esi1390006qko.479.2023.01.27.17.47.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 17:14:05 -0800 (PST)
+        Fri, 27 Jan 2023 17:47:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WNSMuSCk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F4Lwljz9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pLZmw-0005WE-Ff; Fri, 27 Jan 2023 20:13:50 -0500
+	id 1pLaJH-0002nR-3J; Fri, 27 Jan 2023 20:47:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pLZms-0005Vv-IE
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 20:13:46 -0500
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ id 1pLaJD-0002mU-Sn
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 20:47:11 -0500
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pLZmq-0008L1-Um
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 20:13:46 -0500
-Received: by mail-pj1-x102a.google.com with SMTP id
- n20-20020a17090aab9400b00229ca6a4636so10348113pjq.0
- for <qemu-arm@nongnu.org>; Fri, 27 Jan 2023 17:13:44 -0800 (PST)
+ id 1pLaJC-000673-4Y
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 20:47:11 -0500
+Received: by mail-pj1-x102d.google.com with SMTP id
+ v6-20020a17090ad58600b00229eec90a7fso9496543pju.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Jan 2023 17:47:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=sb1hIBNVIe3rR0re9Y21qriETaRXzVhWU8UoYxIBuUc=;
- b=WNSMuSCkD2nh3c9pLsLRHmkVbL4YaEd57Zy8TLYT6tyBUTNyrsUw8NLj3oG3eSQQFY
- vNOZHCXjNmqAREDyqF2O9qWRpxdexSRjjHYSgpqige5QcnWDSpPEPPSDOQgEIZ2lFNKf
- R25sHytjDq3RHdR/w2Ewi7fBfLYRQvu9M4PYXiv+C+zjkNq5ig+sEdEfr+Fi4IC6ouDE
- Ri0pa/3tDwdr9ZLfevT5qCM1W4y+Tvt138FfV6rqaOud+EbBoVeUqqc5o7zUavLdGQpy
- hlLTfxiNvHQor4W9G6IsxyMSddA4TEF+KMah49EvUQKKTwX82zgLY42l2tUli8fU5kJM
- 8wCA==
+ bh=JIMnU4HZfi5aqUU026Ue3HyisdN6V43OjLbp8WZb4K0=;
+ b=F4Lwljz9DkbT8A0ARFNR4a3EgcLutCYlAYeeIvdkq4o3uN/CF76H0gPxavd0NqXySB
+ 5kDUXEaZ1Dg7RayVshY7LOZwgw7bl6Y3QpaDAV48Froe75EmSIITA1As4ZwqFC1khfwh
+ rl5iJi06bR2Ktdmj5zYQymMZ8r5e/r+L9MeQfrA4sYsEbSAvLNi5BjupKxcSFV6hYGPG
+ twPYXBUs4dgV1o+wNgEBVgOM/K8gpz+/A0Ey+ZRtSLm/NDONo/crpFwRbjtrcRQD6JXL
+ jG255MkBV6y/FPTjytUzF2YLZG+x49Bul41ZNjY1kwBi3ryslCnGFeHpx346/nZzmq0u
+ KVDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sb1hIBNVIe3rR0re9Y21qriETaRXzVhWU8UoYxIBuUc=;
- b=A8ehCrQeOF9eVzyPp27hhwhpfN0JLe4juSs9lGVgOpgTnZX3onfwHgdtu/up4SfB4o
- 49dEK3TggFYQLqTA8as4WCwno55kW9fVBdZGJqj+I9FVtGJH+QiU5Tj3JDNTsLSGtgB8
- BsBBT0M3jJJq6j52U5AOsHeJrHQkYA3HA+QLgf0wLdj83byGxm4ljbNRfpPdz6rccvX5
- q0siSDQwu44YHF/KLe4G1l3Y1jkkQHG81G5ygcj1b64nsw/EgEHF5qd4poSpU/EvBPa5
- ry8Q8VGpjbYYAyTQ54SxJ7OyxB/nvAuSxv+RkWVgvLEhXbkkKftkLhALRXSpAeTTpnmF
- zPDA==
-X-Gm-Message-State: AO0yUKV4tLEVMF5V6DR+gDsPfioQDSEZBLTtRR2bWkNxdOlrG7f4+hiT
- 0MIbZBMgnK79IylpiaXIoCIQmw==
-X-Received: by 2002:a05:6a20:144d:b0:b8:65b8:a37 with SMTP id
- a13-20020a056a20144d00b000b865b80a37mr883794pzi.53.1674868423460; 
- Fri, 27 Jan 2023 17:13:43 -0800 (PST)
+ bh=JIMnU4HZfi5aqUU026Ue3HyisdN6V43OjLbp8WZb4K0=;
+ b=ydBT34ihoi53o6FHwvu2ZqvPhl7LUor4aHy5dnV/ATnfDpcg6O0UZtXRM4FsAzS6Ta
+ CIeImGE4uLkL+NKdHuXT+07wMn14A0UJRtNVFDQvim+zc7r25GitO8wPGqcYzSUgs8fa
+ /kdjw2Y5fUoCVn7+kQOfLJkQC4cMmTVJzCHGEwr6mLHF6etThCD79F24J2amO6RfsGb1
+ 4HrbIWFGTI/sBrWHxaEsNdsfUo+GPLWrN0+jNv3z3FraINlQ5mu8fDzX5RPsoLAiFMpp
+ EIrxtX45sv9mDHfS2gSOYRqBQD2Kn1IpmyqAtZxD9HVrw1W0GinmMzoC4+XeYsKOS0gz
+ g0uQ==
+X-Gm-Message-State: AO0yUKUA67CXj+qKhiFyPrvKrw5oEFJpjC6EdfqKcCe/ND3q+YhcK2zL
+ ejftC4cesP+FYRqKI8PdVed3mA==
+X-Received: by 2002:a05:6a21:6d9b:b0:bc:5d69:754f with SMTP id
+ wl27-20020a056a216d9b00b000bc5d69754fmr4087555pzb.18.1674870428364; 
+ Fri, 27 Jan 2023 17:47:08 -0800 (PST)
 Received: from [192.168.50.174] (rrcs-173-197-98-118.west.biz.rr.com.
  [173.197.98.118]) by smtp.gmail.com with ESMTPSA id
- l71-20020a63884a000000b004e28be19d1csm377471pgd.32.2023.01.27.17.13.41
+ b197-20020a6334ce000000b004da637aae96sm2928120pga.31.2023.01.27.17.47.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Jan 2023 17:13:42 -0800 (PST)
-Message-ID: <b093f644-9ebf-75e2-081e-b5887f95ed5d@linaro.org>
-Date: Fri, 27 Jan 2023 15:13:39 -1000
+ Fri, 27 Jan 2023 17:47:07 -0800 (PST)
+Message-ID: <351b2481-4e80-57db-f06c-3dbf95db06fe@linaro.org>
+Date: Fri, 27 Jan 2023 15:47:04 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH 04/23] target/arm: Move do_coproc_insn() syndrome
- calculation earlier
+Subject: Re: [PATCH 06/23] target/arm: Make HSTR_EL2 traps take priority over
+ UNDEF-at-EL1
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20230127175507.2895013-1-peter.maydell@linaro.org>
- <20230127175507.2895013-5-peter.maydell@linaro.org>
+ <20230127175507.2895013-7-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230127175507.2895013-5-peter.maydell@linaro.org>
+In-Reply-To: <20230127175507.2895013-7-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
@@ -127,31 +127,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CGPszpVVvJOz
+X-TUID: C8ruYlJYTYci
 
 On 1/27/23 07:54, Peter Maydell wrote:
-> Rearrange the code in do_coproc_insn() so that we calculate the
-> syndrome value for a potential trap early; we're about to add a
-> second check that wants this value earlier than where it is currently
-> determined.
-> 
-> (Specifically, a trap to EL2 because of HSTR_EL2 should take
-> priority over an UNDEF to EL1, even when the UNDEF is because
-> the register does not exist at all or because its ri->access
-> bits non-configurably fail the access. So the check we put in
-> for HSTR_EL2 trapping at EL1 (which needs the syndrome) is
-> going to have to be done before the check "is the ARMCPRegInfo
-> pointer NULL".)
-> 
-> This commit is just code motion; the change to HSTR_EL2
-> handling that will use the 'syndrome' variable is in a
-> subsequent commit.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   target/arm/translate.c | 83 +++++++++++++++++++++---------------------
->   1 file changed, 41 insertions(+), 42 deletions(-)
+> +void HELPER(hstr_trap_check)(CPUARMState *env, uint32_t mask, uint32_t syndrome)
+> +{
+> +    if (env->cp15.hstr_el2 & mask) {
+> +        raise_exception(env, EXCP_UDEF, syndrome, 2);
+> +    }
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+This is so simple...
+
+
+> @@ -4760,6 +4761,28 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+>           break;
+>       }
+>   
+> +    if (s->hstr_active && cpnum == 15 && s->current_el == 1) {
+> +        /*
+> +         * At EL1, check for a HSTR_EL2 trap, which must take precedence
+> +         * over the UNDEF for "no such register" or the UNDEF for "access
+> +         * permissions forbid this EL1 access". HSTR_EL2 traps from EL0
+> +         * only happen if the cpreg doesn't UNDEF at EL0, so we do those in
+> +         * access_check_cp_reg(), after the checks for whether the access
+> +         * configurably trapped to EL1.
+> +         */
+> +        uint32_t maskbit = is64 ? crm : crn;
+> +
+> +        if (maskbit != 4 && maskbit != 14) {
+> +            /* T4 and T14 are RES0 so never cause traps */
+> +            gen_set_condexec(s);
+> +            gen_update_pc(s, 0);
+> +            emitted_update_pc = true;
+> +            gen_helper_hstr_trap_check(cpu_env,
+> +                                       tcg_constant_i32(1 << maskbit),
+> +                                       tcg_constant_i32(syndrome));
+> +        }
+
+How about
+
+     if (maskbit...) {
+         TCGv_i32 t = load_cpu_offset(offsetoflow32(CPUARMState, hstr_el2));
+         DisasLabel *over = gen_disas_label(s);
+
+         tcg_gen_andi_i32(t, t, 1u << maskbit);
+         tcg_gen_brcondi_i32(TCG_COND_EQ, t, 0, over.label);
+         tcg_temp_free_i32(t);
+
+         gen_exception_insn(s, 0, EXCP_UDEF, syndrome);
+         set_disas_label(s, over);
+     }
+
+which also eliminates the need for emitted_update_pc.
+
 
 r~

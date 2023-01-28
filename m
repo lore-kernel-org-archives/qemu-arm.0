@@ -1,116 +1,113 @@
-Received: by 2002:a17:906:a8d:b0:883:7228:2f81 with SMTP id y13csp80825ejf;
-        Fri, 27 Jan 2023 22:07:07 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvgpzoWvt2HXZceTGbOZAUKClynwy7zxCR9N9/OW9XJBD6Ai88jWN1tRAaXENb78XEQGLIk
-X-Received: by 2002:ac8:718f:0:b0:3b6:35a2:bb04 with SMTP id w15-20020ac8718f000000b003b635a2bb04mr61702622qto.7.1674886027602;
-        Fri, 27 Jan 2023 22:07:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674886027; cv=none;
+Received: by 2002:a17:906:a8d:b0:883:7228:2f81 with SMTP id y13csp80962ejf;
+        Fri, 27 Jan 2023 22:07:17 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvInkzSYZhDUkuLv9+RbtQwPgvMMD5fspMtkdfV33GWaHRYTo6I27+zsvVYRe+HSOHZAqE9
+X-Received: by 2002:a05:622a:4813:b0:3a7:f6cf:a597 with SMTP id fb19-20020a05622a481300b003a7f6cfa597mr71543440qtb.33.1674886036850;
+        Fri, 27 Jan 2023 22:07:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674886036; cv=none;
         d=google.com; s=arc-20160816;
-        b=TnqFmLTXIVYXE0E3YUAVbgejGYOiJwx8M8NylL5pNmD2kz0U8Ro1UGbXyuevGGiDqU
-         igFpkWje5/3fQGGZ+LIKXm+Zd3v9MZHbtqXWfdJFjmm/PMyyM63N80lM0agKrhY/nUun
-         IBMTC0Fzv2IDiB8dzDfBd7TBsdQgs1xBqYBsRPpWp1OryW+Hi0BNibDRJYBQC22yv3OB
-         Yib9PvmB29McCYx3KkZfCb1Y2hdB2t7iN4hCJkQM1c45q80mmxQysxoHDsbGvsmv6wef
-         6ZQn1KxvlrQQ4iu27/nxP3ih650IJ6fujR2bjn2qZhPw3CfdgQ6i+TtADf01HCKDMZ9g
-         eYwA==
+        b=mozTBlnHu5zsyo4oD+h22Hel1x8o4NlO2UisEoxRU/v4CUfwJzrknxghSfUUtJZW/T
+         8d4iQ+nh2HVqHnkgue/I2kkh1gxRk8EFmrGxk/UOVnZxRE+RH/NMRS9NsGC2dnCS5eB5
+         j7ed5n1RltwoZ+6Ntpa3YfKj/nTYnUWHCkWXmEEuy2FIHvO+YOiGQcMMyB6oarPwtL8e
+         19WAaFZxMpe81UzOLGEleoIupdXm4GhonPBmcRNWtl95MgtihC8VlHKdhk/5bkvnzOJJ
+         NHmhbVmEoC+DSFSUH0yMrGZQ1rE+qSNNq2z1e/CKERM6E0FZ7AbZYa/7SYkppXbxdPOX
+         MAuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:feedback-id:dkim-signature:dkim-signature;
-        bh=DTUHALX0k1vaO18xVCoJ0yQy4x4oNkbwfEtDpOdf87M=;
-        b=Ydu2+1pNmwH5cbQQduwTg6FX4Lp18ut/ecWknNjca4j2iN4+5G5WgOn/u9zQka4MHM
-         MJQW1rhI527QfTTf4seJxOfoCdUqyzqbho9X3uPow6TR/hLkCyOlGR+SyMi9652YgEIw
-         aJYK/w9BepjiaduX88TfMS770R1FSaAUk4PwOqH1WxHWyY+qZdqdbVBsebrNnC/hmFV9
-         RXNuoibTeocTqe2l7H92qFa9lwssLWQycIsovvVPaiyAD59aheNThFIlxw7PcB2iWA1i
-         UWZpKc1t7qrJUWNemEBu9jSozedFdHUPIPlrmODffyEJcEx1ywTX0orJVLlxqwgj0KiK
-         p3/g==
+         :mime-version:message-id:date:subject:cc:to:from:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=pYb18UvdEhezrEQmRIhQIK2hpcfo1/NWxuxJqPl2xt0=;
+        b=zeEbmeL7SAiFlbja6GCDvWhwL5Tc44mDF1IN6DYbtajKdEZqTY7Jbx9tCQLwryeUlK
+         6wizf6PFZPD7pNr3t2jduViM7XRV4tK5W7qlNrDM6jUA2+SxYVA4p0qQ7ZUjrgC0I6g9
+         CcgVdt9wqTLVhImXyCt9jbsQyegH0pA74ZMczzyaeqEyqEZJRRiIRuQsxQ4+h8zeIUE7
+         Zp4OkJ9ZfAhoz4ylLbke4/kdYAzbRarPGcumYtddK1MohRe9tBprjTGTSzLMoJdIW+cz
+         gM+qqGVlXXK+hyGp3WsIHCNDcHZJZuD+mWscfSv7QBK9hsxWYDF0ssRV14cgPka2xbhF
+         mPbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=QhM9ycQL;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=kjIJG1Ae;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=tvnRNecA;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=iKo0qldU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m124-20020a37bc82000000b006feefd57a76si3825710qkf.80.2023.01.27.22.07.07
+        by mx.google.com with ESMTPS id p11-20020a05622a048b00b003b6309f82f2si3777892qtx.627.2023.01.27.22.07.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 22:07:07 -0800 (PST)
+        Fri, 27 Jan 2023 22:07:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=QhM9ycQL;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=kjIJG1Ae;
+       dkim=fail header.i=@pjd.dev header.s=fm1 header.b=tvnRNecA;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=iKo0qldU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pLeLY-0002Ik-Ob; Sat, 28 Jan 2023 01:05:52 -0500
+	id 1pLeLY-0002IP-8Q; Sat, 28 Jan 2023 01:05:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pLeLX-0002I6-KM; Sat, 28 Jan 2023 01:05:51 -0500
+ id 1pLeLW-0002HS-NP; Sat, 28 Jan 2023 01:05:50 -0500
 Received: from out1-smtp.messagingengine.com ([66.111.4.25])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1pLeLV-0007U0-PM; Sat, 28 Jan 2023 01:05:51 -0500
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailout.nyi.internal (Postfix) with ESMTP id E9B8B5C06CC;
- Sat, 28 Jan 2023 01:05:48 -0500 (EST)
+ id 1pLeLU-0007Th-Kx; Sat, 28 Jan 2023 01:05:50 -0500
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.nyi.internal (Postfix) with ESMTP id 35EEB5C06CD;
+ Sat, 28 Jan 2023 01:05:47 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Sat, 28 Jan 2023 01:05:48 -0500
+ by compute5.internal (MEProxy); Sat, 28 Jan 2023 01:05:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
  :content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1674885948; x=
- 1674972348; bh=DTUHALX0k1vaO18xVCoJ0yQy4x4oNkbwfEtDpOdf87M=; b=Q
- hM9ycQLv8PqIesWO+BfTaedLOxNv2J1+RcqvkzNtiMgsncArNEngzltuPTC0I+ut
- QZSsbVY/D6E8FWI9Stc3fQmn3/gXcHU7Vi9z34bWPRQL7a3pxYSEz1ds9Ou4dvRF
- 9XqFHwfsdZM02uvVQPNzUw9mKDjVbMCcg2OFb7uo7JDkKtkZ5erfpKzEOUZRs/0E
- Id6M/uZ7DDwZOoeYqY6JyD99UI4Cxf6TFDFJ9OgqPWkDD//HJ4YTlm/1YvoYJkLl
- vQQoEnrrX+2Qy5gs3VGyEBjenv5TWUHHNnFvdOw3ZuN6IR79hWqzbGuvsMNQVgDG
- Osw+QEZRakLTRId3yt+aw==
+ :in-reply-to:message-id:mime-version:reply-to:sender:subject
+ :subject:to:to; s=fm1; t=1674885947; x=1674972347; bh=pYb18UvdEh
+ ezrEQmRIhQIK2hpcfo1/NWxuxJqPl2xt0=; b=tvnRNecARLckj6N46S6XSuhn2D
+ AhvFRXCa+flB1iCrUgFLtlgkXbtpL/MYTytNpITGNJdI8IraH9MBPnr1XUidiTke
+ ZI/u8G4qz9AsWsiKd3Otr5QhQGJD6ajiEi3lvwk2W5PxabSAloknV/FfcEzKTHgv
+ BS/efO396eG73GEtesvTvQ/NdF/cCeB/Ma4q+0HysqYd1SXbN4cLEuK3zHX6tJrd
+ 4dw4B/z2ZMxFtlnV+SN8itFjuo6qla1dmfBisHaGpk0zoU4SjSJpwAZDKjby+2cP
+ z1jWq+TkJ+5VX6dt/8X4IwiUsJKRVIGe+1PSjvHccl1MSHM/unuVzPOvCtIQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1674885948; x=
- 1674972348; bh=DTUHALX0k1vaO18xVCoJ0yQy4x4oNkbwfEtDpOdf87M=; b=k
- jIJG1Ae1NOU6Ho/7b93gS/Q5nLR8FXLFCFsJXBGyJGycBDo8IDdxL7SkNePiqrRD
- VTYkJfnWyGesRvVUr6MsOMwY4c+4ehvDVg8UUgDuft5u/HUSwgUCrbmT9mQwRw9m
- zRROgZgtzbka/bEItpwC2UkLyTja2lL809By7el3pu2lj+zv0TqZhx4qA6prplfx
- 3r4LeotlLq51zSWYvaLkX82lU9xYVQDu/mumt/0s/nCbJ1SU5/TYA3e3g6KJ1xLF
- gCVyg8pK1XMdikobAZ95LMO0+n3RfkgKh+RO7bLzDKX0bO88UHQqu28jf0nYHBK4
- hx8K1+VKVzgmiHzyDPkWQ==
-X-ME-Sender: <xms:PLvUY9bgZJzfS6pYWqmoAzO-iqUZUf6_tZP6T6yq-fJN5xkRgFW8mQ>
- <xme:PLvUY0YbMlqUn6Z9TVFCdPblKuBMJBTJdpSiv6kTij1Mw5tGKXwe3ZjCgVCaglH4t
- lgdXH2giHW8HXZyagg>
-X-ME-Received: <xmr:PLvUY__YvjtrAITh2a862BQfQ6RmJik6UJGoVNlrIWW2uszbT33fWVsloX2hAmQr49DSinH58Q12FTBnQ2nt0Ac1W5PHxVACs6jxKuZw9xw>
+ :in-reply-to:message-id:mime-version:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm3; t=1674885947; x=1674972347; bh=pYb18UvdEhezr
+ EQmRIhQIK2hpcfo1/NWxuxJqPl2xt0=; b=iKo0qldU56chEvcV372Y9Tj69sM6v
+ R0ojgdTuzXTwFf18tkCeD/5xyxG7axf3BaeCUvuycn/Zv6LjqyAlHYZOKfpjURtF
+ 7YhOyVHIAGIDmousoNzUWM7jpkWuDmGvXyiBgojGHahHWggUsIClSPTRgRKbxb0v
+ NP+2rylPjD/HtCOFbUps2k8a5D4AdPGoMWvOqxKbIaKy2DsDX+H2iXYcJ8e6ow8b
+ nWjS85+ySpmG/njNX4kvI3F6CvVPw+aWcHaMN1X8kl3/qVNsiS2l9gBDxQk2ViC8
+ uDHSewCbAM2Dj1sJGEVGcqBXVUNTu3SrTvSfpMSbDiK//gehTXVcogJHg==
+X-ME-Sender: <xms:OrvUY1nmJZ4TD7AyWZyPiOJjcfYLVOvxDCJRltXxWBCiKQ2WkstDYA>
+ <xme:OrvUYw0mGTN5XwZRFf5yLK4M-Ay-ZQlQ0MMkzE-9oe2ljrgJ1ReUqTTdwfJlBZZw2
+ qgbR-9F0ha_CR_lnr4>
+X-ME-Received: <xmr:OrvUY7o5QauhWdax19XBo_Ux5BIpAe4C24zzcZherD9N2Iw4yTa4KtC3JttsQBR3pfkfHI507bMfH3Gu-GdKiv6N5oKOGSyyyFPbE8cz9_U>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddvjedgledvucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenuchmihhsshhinhhgucfvqfcufhhivghlugculdeftd
- dmnegoteeftdduqddtudculdduhedmnecujfgurhephffvvefufffkofgjfhggtgfgseht
- keertdertdejnecuhfhrohhmpefrvghtvghrucffvghlvghvohhrhigrshcuoehpvghtvg
- hrsehpjhgurdguvghvqeenucggtffrrghtthgvrhhnpedvhfevvefhtddvueevudelvedt
- ieehvdejjeeuvedtudegjeeileetheekgfeggeenucevlhhushhtvghrufhiiigvpedtne
- curfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvghrsehpjhgurdguvghv
-X-ME-Proxy: <xmx:PLvUY7rqLlnlchVPpwb8U1YdZ8TdcYh5FVvPdIdiEmcVy5YBNwnN3g>
- <xmx:PLvUY4rRmAtc5bF_SiUUUZTmtuneKz-Y1-ha6ffM7E0maAtu1TuYQw>
- <xmx:PLvUYxTQcZQURg7Hy-JDbqq9WshFnZiaY5SLrf7BHw4aXR5JDZBp7Q>
- <xmx:PLvUY_0tHDxUVKKug4Mn9xsdukofXeNm7e-xTWC52H07LHC_CRRjaQ>
+ dmnegoteeftdduqddtudculdduhedmnecujfgurhephffvvefufffkofggtgfgsehtkeer
+ tdertdejnecuhfhrohhmpefrvghtvghrucffvghlvghvohhrhigrshcuoehpvghtvghrse
+ hpjhgurdguvghvqeenucggtffrrghtthgvrhhnpeetffejteejgefgffdvuefhgeeludfg
+ feduueeltdefgfduhfetudetueeujeeukeenucffohhmrghinhepkhgvrhhnvghlrdhorh
+ hgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepphgv
+ thgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:OrvUY1kc_ky7u9p9bqF9cqJcWQ2s8n82vztJPs4yObT2tuYXxdouSQ>
+ <xmx:OrvUYz3M-aHAVKq8pCqdQ0bB9xZ_2qq5z0kVDPC-ivNme5JbWZ_93w>
+ <xmx:OrvUY0tg_RM50p08r1o0O9xNL5qfUQoqXYCVPcDH8WFu4bfgX6FlDg>
+ <xmx:O7vUY1wFJ957iI848y9bY8Hg8K3DEErPof8T0YFbxyQQBNt5dD0cJw>
 Feedback-ID: i9e814621:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 28 Jan 2023 01:05:47 -0500 (EST)
+ 28 Jan 2023 01:05:45 -0500 (EST)
 From: Peter Delevoryas <peter@pjd.dev>
 To: 
 Cc: peter@pjd.dev, clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au,
  joel@jms.id.au, hskinnemoen@google.com, kfting@nuvoton.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org, philmd@linaro.org,
  cminyard@mvista.com
-Subject: [PATCH v5 1/5] hw/arm: Extract at24c_eeprom_init helper from Aspeed
- and Nuvoton boards
-Date: Fri, 27 Jan 2023 22:05:39 -0800
-Message-Id: <20230128060543.95582-2-peter@pjd.dev>
+Subject: [PATCH v5 0/5] hw/nvram/eeprom_at24c: Cleanup + FRUID EEPROM init
+ example
+Date: Fri, 27 Jan 2023 22:05:38 -0800
+Message-Id: <20230128060543.95582-1-peter@pjd.dev>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230128060543.95582-1-peter@pjd.dev>
-References: <20230128060543.95582-1-peter@pjd.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -137,169 +134,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zijKe3rXdGR4
+X-TUID: 5DRKLmtyeXJN
 
-This helper is useful in board initialization because lets users initialize and
-realize an EEPROM on an I2C bus with a single function call.
+v1: https://lore.kernel.org/qemu-devel/20230114170151.87833-1-peter@pjd.dev/
+v2:
+    - Squashed 3 commits from original series into extract helper commit
+    - Dropped last 2 commits from original series
+    - Changed at24c_eeprom_init to return the I2CSlave object
+    - Added commit to introduce at24c-eeprom "init_rom" attribute
+    - Added aspeed_eeprom.c and fby35-bmc BMC FRUID EEPROM initialization
+    - Added commit to change reset behavior for at24c-eeprom (optional)
+v3:
+    - Added doc comments to function headers
+	- Added fby35 NIC and baseboard EEPROM's (to illustrate 2+ EEPROM's)
+    - Replaced "extern uint32 fby35_bmc_fruid_size" by adding explicit array
+      sizes, e.g. "extern uint8_t fby35_bmc_fruid[200]".
+    - Fixed Meta Platforms licenses by adding SPDX-License-Identifier for GPL2.
+    - Moved ee->init_rom initialization code before ee->blk, so that -drive
+      property overrides init_rom initialization. This gives more flexibility
+      (people can override contents of an AT24C EEPROM using a file for
+      debugging/prototyping) while still allowing the init_rom data to be
+      specified for a board for default behavior.
+v4:
+	- Moved at24c_eeprom_init_rom doc comment to the patch introducing the
+      function (moved from patch 4/5 to patch 3/5).
+	- Added review tags from Joel
+v5:
+    - Added review tags from Corey
+    - Added tested-by tag from Ninad
+    - Switched back to i2c_slave_new in eeprom_at24c.c
+    - Switched back to "extern const size_t fby35_*_len" in aspeed_eeprom.h
 
-Signed-off-by: Peter Delevoryas <peter@pjd.dev>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Corey Minyard <cminyard@mvista.com>
----
- hw/arm/aspeed.c                 | 10 +---------
- hw/arm/npcm7xx_boards.c         | 20 +++++---------------
- hw/nvram/eeprom_at24c.c         | 12 ++++++++++++
- include/hw/nvram/eeprom_at24c.h | 23 +++++++++++++++++++++++
- 4 files changed, 41 insertions(+), 24 deletions(-)
+NOTE: I rebased on the latest master and tlb exec segfaults in "Starting
+kernel" for fby35-bmc: I'll make a bug report separately. I've kept the base on
+7c9236d6d61f because of this.
+
+Thanks,
+Peter
+
+Peter Delevoryas (5):
+  hw/arm: Extract at24c_eeprom_init helper from Aspeed and Nuvoton
+    boards
+  hw/arm/aspeed: Replace aspeed_eeprom_init with at24c_eeprom_init
+  hw/nvram/eeprom_at24c: Add init_rom field and at24c_eeprom_init_rom
+    helper
+  hw/arm/aspeed: Add aspeed_eeprom.c
+  hw/nvram/eeprom_at24c: Make reset behavior more like hardware
+
+ hw/arm/aspeed.c                 | 109 ++++++++++++++------------------
+ hw/arm/aspeed_eeprom.c          |  82 ++++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.h          |  19 ++++++
+ hw/arm/meson.build              |   1 +
+ hw/arm/npcm7xx_boards.c         |  20 ++----
+ hw/nvram/eeprom_at24c.c         |  58 +++++++++++++----
+ include/hw/nvram/eeprom_at24c.h |  39 ++++++++++++
+ 7 files changed, 241 insertions(+), 87 deletions(-)
+ create mode 100644 hw/arm/aspeed_eeprom.c
+ create mode 100644 hw/arm/aspeed_eeprom.h
  create mode 100644 include/hw/nvram/eeprom_at24c.h
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 55f114ef729f..1f9799d4321e 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -17,6 +17,7 @@
- #include "hw/i2c/i2c_mux_pca954x.h"
- #include "hw/i2c/smbus_eeprom.h"
- #include "hw/misc/pca9552.h"
-+#include "hw/nvram/eeprom_at24c.h"
- #include "hw/sensor/tmp105.h"
- #include "hw/misc/led.h"
- #include "hw/qdev-properties.h"
-@@ -429,15 +430,6 @@ static void aspeed_machine_init(MachineState *machine)
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
- }
- 
--static void at24c_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize)
--{
--    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
--    DeviceState *dev = DEVICE(i2c_dev);
--
--    qdev_prop_set_uint32(dev, "rom-size", rsize);
--    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
--}
--
- static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-index 6bc6f5d2fe29..9b31207a06e9 100644
---- a/hw/arm/npcm7xx_boards.c
-+++ b/hw/arm/npcm7xx_boards.c
-@@ -21,6 +21,7 @@
- #include "hw/i2c/i2c_mux_pca954x.h"
- #include "hw/i2c/smbus_eeprom.h"
- #include "hw/loader.h"
-+#include "hw/nvram/eeprom_at24c.h"
- #include "hw/qdev-core.h"
- #include "hw/qdev-properties.h"
- #include "qapi/error.h"
-@@ -140,17 +141,6 @@ static I2CBus *npcm7xx_i2c_get_bus(NPCM7xxState *soc, uint32_t num)
-     return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]), "i2c-bus"));
- }
- 
--static void at24c_eeprom_init(NPCM7xxState *soc, int bus, uint8_t addr,
--                              uint32_t rsize)
--{
--    I2CBus *i2c_bus = npcm7xx_i2c_get_bus(soc, bus);
--    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
--    DeviceState *dev = DEVICE(i2c_dev);
--
--    qdev_prop_set_uint32(dev, "rom-size", rsize);
--    i2c_slave_realize_and_unref(i2c_dev, i2c_bus, &error_abort);
--}
--
- static void npcm7xx_init_pwm_splitter(NPCM7xxMachine *machine,
-                                       NPCM7xxState *soc, const int *fan_counts)
- {
-@@ -253,8 +243,8 @@ static void quanta_gsj_i2c_init(NPCM7xxState *soc)
-     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 3), "tmp105", 0x5c);
-     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), "tmp105", 0x5c);
- 
--    at24c_eeprom_init(soc, 9, 0x55, 8192);
--    at24c_eeprom_init(soc, 10, 0x55, 8192);
-+    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 9), 0x55, 8192);
-+    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 10), 0x55, 8192);
- 
-     /*
-      * i2c-11:
-@@ -360,7 +350,7 @@ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
- 
-     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), TYPE_PCA9548, 0x77);
- 
--    at24c_eeprom_init(soc, 4, 0x50, 8192); /* mbfru */
-+    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 4), 0x50, 8192); /* mbfru */
- 
-     i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 13),
-                                       TYPE_PCA9548, 0x77);
-@@ -371,7 +361,7 @@ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x48);
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x49);
- 
--    at24c_eeprom_init(soc, 14, 0x55, 8192); /* bmcfru */
-+    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 14), 0x55, 8192); /* bmcfru */
- 
-     /* TODO: Add remaining i2c devices. */
- }
-diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-index 2d4d8b952f38..98857e3626b9 100644
---- a/hw/nvram/eeprom_at24c.c
-+++ b/hw/nvram/eeprom_at24c.c
-@@ -12,6 +12,7 @@
- #include "qapi/error.h"
- #include "qemu/module.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/nvram/eeprom_at24c.h"
- #include "hw/qdev-properties.h"
- #include "hw/qdev-properties-system.h"
- #include "sysemu/block-backend.h"
-@@ -128,6 +129,17 @@ int at24c_eeprom_send(I2CSlave *s, uint8_t data)
-     return 0;
- }
- 
-+I2CSlave *at24c_eeprom_init(I2CBus *bus, uint8_t address, uint32_t rom_size)
-+{
-+    I2CSlave *i2c_dev = i2c_slave_new(TYPE_AT24C_EE, address);
-+    DeviceState *dev = DEVICE(i2c_dev);
-+
-+    qdev_prop_set_uint32(dev, "rom-size", rom_size);
-+    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
-+
-+    return i2c_dev;
-+}
-+
- static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
- {
-     EEPROMState *ee = AT24C_EE(dev);
-diff --git a/include/hw/nvram/eeprom_at24c.h b/include/hw/nvram/eeprom_at24c.h
-new file mode 100644
-index 000000000000..196db309d451
---- /dev/null
-+++ b/include/hw/nvram/eeprom_at24c.h
-@@ -0,0 +1,23 @@
-+/*
-+ * Copyright (c) Meta Platforms, Inc. and affiliates.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-only
-+ */
-+
-+#ifndef EEPROM_AT24C_H
-+#define EEPROM_AT24C_H
-+
-+#include "hw/i2c/i2c.h"
-+
-+/*
-+ * Create and realize an AT24C EEPROM device on the heap.
-+ * @bus: I2C bus to put it on
-+ * @address: I2C address of the EEPROM slave when put on a bus
-+ * @rom_size: size of the EEPROM
-+ *
-+ * Create the device state structure, initialize it, put it on the specified
-+ * @bus, and drop the reference to it (the device is realized).
-+ */
-+I2CSlave *at24c_eeprom_init(I2CBus *bus, uint8_t address, uint32_t rom_size);
-+
-+#endif
 -- 
 2.39.0
 

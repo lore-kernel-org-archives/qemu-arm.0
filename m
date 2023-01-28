@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:a8d:b0:883:7228:2f81 with SMTP id y13csp5688ejf;
-        Fri, 27 Jan 2023 18:31:59 -0800 (PST)
-X-Google-Smtp-Source: AK7set+CsOlKxXSoQsC7X55eCFd0gUKkUz8YxYX/NNXeNnmQY/0Klr7iRg/3RjU34mCwR5oHIZO3
-X-Received: by 2002:ac8:5f50:0:b0:3b8:2a6c:d1e4 with SMTP id y16-20020ac85f50000000b003b82a6cd1e4mr6003615qta.23.1674873119712;
-        Fri, 27 Jan 2023 18:31:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674873119; cv=none;
+Received: by 2002:a17:906:a8d:b0:883:7228:2f81 with SMTP id y13csp7249ejf;
+        Fri, 27 Jan 2023 18:36:31 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvwNoRB+BTDeXGXbVJgGt9bVcagBAMOSTg4lT6xR2ssDYz3rA5F6d5G9hM1L6U/ifD4dulA
+X-Received: by 2002:a05:6214:3d9c:b0:534:7db9:4c2c with SMTP id om28-20020a0562143d9c00b005347db94c2cmr73123949qvb.2.1674873390867;
+        Fri, 27 Jan 2023 18:36:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674873390; cv=none;
         d=google.com; s=arc-20160816;
-        b=YVeJWpN7gNra5ZM5bLXT3KLEu20jIQpNJSmWzyg8eZwD9dp9DgKqNEy15aj4QXhMBc
-         tygtDLC6LCRM8ja9yGkpVO81AjwHZHXGsKQVw4bXHOno+91Y8JoJtx2rRX9mP+mkhkDh
-         HI+UYPQyEBII31HkdiI2/KJ+GeK96iWBYvDLSbfAcRZXJDIOBQm+z6EfQlLqbGgabli9
-         RAkoNOpo1nuICsMf8JXN+fWr8x8OUdxIlTwswnXjOAH5G3Ac4ZAMKkaJJetWvUc+NEfe
-         nPY2om38ThupUePw2xJj0aDRqBTzWKmlFNoMoszoUbfMJMBHphlSpWGNBXL2OjkwVyJi
-         Vicw==
+        b=wf7rpxjaedqUY/yOpttZLrLtlMWH0/pA8H0Cuol8nYpqfOHAFmjqzP3Jh3YpQczDg1
+         qTwsH2YRGNB/iRZzJnLgwXHsIVIhYPSjYTezgtqCEKfDLAr6g7rP/G0agEt/sFMPyA/p
+         Z71KOWZ/13UtBdOkZacdViMC/LUeDrFQ69QRQbAV0cHLI2ygqDCtxlecKUTqNxQwgLbL
+         sar6uhBtf1NG1EQUiS2bayYB6FZIT2qsrP4o8Y0zNRxAXHchDMaMBUYQZpFrFaQisJu+
+         bIiM2STJXvbaZgcCpXByTSKLV5JzH1Pk7Dwx9mxje+mn29NUblprQg7Vq4VTFcFSBGIp
+         Z9oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=ujRLBQ/Gh7StapCYcLtuR4E4cgExFutBisuWFKM2zOk=;
-        b=YxmRkA096qW7WV7p4MkOnVTn0hbjpoX/3F9+ZFAay0szToABSse+Tj9xHPfiT8XSp9
-         UWM4Bjd4PqChM3YRiaXMsY1/hGkOYGlp7JRKnes4H784FzAbqFDwCR2KNT+9OdhtF8cc
-         dgRDZCrT+/rPQAM3zQ9hNPa9lS3VobIQsOn836lrX19yJ1zCV3n7YbtXvKXcfHgpEKiS
-         Yw2WUvPZ3rhu8UGRcKo+XVNkqaA2Vv2pI9tpZmDeD5cjJBko0qJQn389ByN+6rK0haSh
-         4FQeBuQ/8HYXjKko8V7PpLXpQ3F9xeYiWMlf+1q37Iutupnuqq6j+PVC6BWNGkNRtsoc
-         anYg==
+        bh=eeoUmQMLdQ1WyosW4nOBrLnFFdxkhZVRkIm4TQfaRF4=;
+        b=RCrGIGtzF3aADA3Rh24HIlDC7MTe6WypYSyuYGffNF7qNdGyKE06W9b9agTyd2ZprC
+         d8/8vrYFMg3wtzAn4Infm4u4/zSIRl/lOMdRfxpcXkZQfJaveBP+wGuy2udI8RUXSmAb
+         MAJGTszFpvZAkHERuwFzVDkJr1/VQSCnHluaX14dETK7uuj3CR/5VmHKNShqfvLileFl
+         qIxzRvvDx1vDDZA1GMb6Hcx6dGZoPEXtk8Q2LPZN6ZN014KrQhUQu6eHh1H+WfAP1/5o
+         8LPCaUDbo+AT715rRWP8WgIW5VUd6xfuvoZooA1Gp7gb28vQ+0tcrr2llXBdaFmZAnq0
+         D+dA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jBCP8Oqq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SmUiEc3t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z28-20020ac8431c000000b00399a6c4c4cesi1997937qtm.134.2023.01.27.18.31.59
+        by mx.google.com with ESMTPS id i13-20020a0cf48d000000b005355fe4b06bsi3406315qvm.263.2023.01.27.18.36.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 18:31:59 -0800 (PST)
+        Fri, 27 Jan 2023 18:36:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jBCP8Oqq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SmUiEc3t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pLb0B-00010w-Vt; Fri, 27 Jan 2023 21:31:36 -0500
+	id 1pLb4m-0002Pp-0C; Fri, 27 Jan 2023 21:36:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pLb0A-00010R-Ra
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 21:31:34 -0500
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ id 1pLb4k-0002NT-Kx
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 21:36:18 -0500
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pLb09-00068b-7K
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 21:31:34 -0500
-Received: by mail-pj1-x102e.google.com with SMTP id
- h5-20020a17090a9c0500b0022bb85eb35dso6380770pjp.3
- for <qemu-arm@nongnu.org>; Fri, 27 Jan 2023 18:31:32 -0800 (PST)
+ id 1pLb4j-0006ty-0v
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 21:36:18 -0500
+Received: by mail-pj1-x1031.google.com with SMTP id
+ nm12-20020a17090b19cc00b0022c2155cc0bso6381411pjb.4
+ for <qemu-arm@nongnu.org>; Fri, 27 Jan 2023 18:36:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ujRLBQ/Gh7StapCYcLtuR4E4cgExFutBisuWFKM2zOk=;
- b=jBCP8OqqySuSdgSvhVgstdZKOl4SoGcLOUy8SY9QJWdIZLjXdvQcKo7H+HFp/KNNU2
- PalEcFsoNZtQY52GF2ai775TOqNBhvA4k4zKnRqvCMa0W+qBGvzKN6bo793kfNrIMMhE
- Ae77XxIjgjyWLpzd4B3hHbFB+7d3xxRxW5LSjoiAONV1S/IFe+SD0SB+WX4aNOX6hd2F
- Hd/nMSxVQOryasZamYnuUsFfU1jtEkvY8ByWYMfa98BBGZ5Z7eOgCNkvs1a3OoQlaJXh
- YwkjYyTidahuOSwoo01JEqDg0jVaACdw7Yq1h46ZP2b9SjJg0EpVSvH3Sssk9oG1cD35
- uCTw==
+ bh=eeoUmQMLdQ1WyosW4nOBrLnFFdxkhZVRkIm4TQfaRF4=;
+ b=SmUiEc3tK4EmvCxAb7wRPgbVfZpHcdOLGEijc//CqAUQC12ZgVGKldSWM00DV/eVKJ
+ 01T0CS6qjSTXSdhwUzFIwN4VssVqA+PzjIPZUUVHfpqQ33uNCocUjhSlL8W8eSYmC0yp
+ HxZJx7v7KUGCFx/t2jUi6dpprivWvFW5OF/Tsiwjm+Mjl2CWTup+Iqfp/taxn3yyp9s6
+ f7lgB7Cqi9CzqyZ6eNJJSgnXok7FDayEGS0slyZw/uoTsTW0i30zo64qFr49IsmnOwZd
+ ppn+iSV2B92auezLDWtz2bsRhOjOcHqEqmCYA0cjR3xQPFsGeqdOt1pTKIngWoM7ZWWL
+ i1oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ujRLBQ/Gh7StapCYcLtuR4E4cgExFutBisuWFKM2zOk=;
- b=CSbqHui1oUHBXcENPjHIxpRa9k4Sett+7ipzkQLpsz59c8liy5shXALgNtUuNFxMPJ
- gGn/r3dEPIOhT5LQdC6zyKCxBe3+Ui1k0WGJshV7/VPbggQI8lOhqBbT0ypXmj1xT64K
- WDPAOuEe2BddR2VQYQgd3ieX1I3FaPffvNkSNoNqnhBEqDOXnTWLOnJrJoWalWon7El8
- vq4O+eakAoABIbEMjyGthgABOl/HiVmzmM5r/v9pkRJ03z48U078WmL0vhq0luGZB3y3
- sKemdy8eGuHo1rsYGlZu8wAhPJ2smKo76UbGUI7sBlBvpTJ1vALJ4w0LIRD25NbEf0+l
- zwtQ==
-X-Gm-Message-State: AFqh2koG76EQmQPjJ7cPgqEW+8ejUYK/E5nlZmHvRmYgrVtsMSOY56sP
- B7JDnnNAmGVVTHN2SO2IwajB0w==
-X-Received: by 2002:a17:90a:f606:b0:228:f6cc:dc4f with SMTP id
- bw6-20020a17090af60600b00228f6ccdc4fmr44680270pjb.10.1674873091393; 
- Fri, 27 Jan 2023 18:31:31 -0800 (PST)
+ bh=eeoUmQMLdQ1WyosW4nOBrLnFFdxkhZVRkIm4TQfaRF4=;
+ b=r50XSBx2/OIcyLuvUIOIZFNfCjJ33p0tvdZGheDkWJ8njSqISgQuADfH+mGdaitGu5
+ Om11FWxKtliT2MQl3ZJBDxICkL3GfFaCkxgwMI7MDs6JUz7AI41h+tR+HDXXsbwbYkUU
+ za/c3EDwcpvdqnuvSwbn+wsveu37APTWzPrwhoPlkWYbz/cs1s1QgG3EJn+6BUnA5kcG
+ 8uwa6maOM2pA1micvtf9byOIfnG+xQU9KT9TLKVUqPNhI0jxuVMNG0DLidUA9gol+IBl
+ BmH1mNb98b5ooJPtBV4Ty7hIp2fDXB0TW2z8F5vw6KQ46AR3oPH7nMQbiUL2OyNyi1Aa
+ 6KpQ==
+X-Gm-Message-State: AFqh2kq58S5oOPJ8HBHWJ0C+6GZctqyj3onCpGVPtCBGmDt99oJeTPiL
+ KyRJ1YQ7ZpsVWWs7m1fFlEAGZjyAeIf9PjJ6
+X-Received: by 2002:a17:90b:1e4c:b0:22b:aac7:9256 with SMTP id
+ pi12-20020a17090b1e4c00b0022baac79256mr31659705pjb.28.1674873374840; 
+ Fri, 27 Jan 2023 18:36:14 -0800 (PST)
 Received: from [192.168.50.174] (rrcs-173-197-98-118.west.biz.rr.com.
  [173.197.98.118]) by smtp.gmail.com with ESMTPSA id
- ep22-20020a17090ae65600b0022c08445e97sm3312820pjb.38.2023.01.27.18.31.30
+ q5-20020a17090a4f8500b002271b43e528sm5634847pjh.33.2023.01.27.18.36.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Jan 2023 18:31:30 -0800 (PST)
-Message-ID: <1fcd0c0f-f079-69ef-9455-1501ce725a07@linaro.org>
-Date: Fri, 27 Jan 2023 16:31:27 -1000
+ Fri, 27 Jan 2023 18:36:14 -0800 (PST)
+Message-ID: <c6fe258f-6670-e5b8-796a-1d5c05fa103d@linaro.org>
+Date: Fri, 27 Jan 2023 16:36:11 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH 08/23] target/arm: Define the FEAT_FGT registers
+Subject: Re: [PATCH 09/23] target/arm: Implement FGT trapping infrastructure
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20230127175507.2895013-1-peter.maydell@linaro.org>
- <20230127175507.2895013-9-peter.maydell@linaro.org>
+ <20230127175507.2895013-10-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230127175507.2895013-9-peter.maydell@linaro.org>
+In-Reply-To: <20230127175507.2895013-10-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
@@ -126,45 +126,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ub/fwjuT+JOQ
+X-TUID: g2M8NGY6WsMf
 
 On 1/27/23 07:54, Peter Maydell wrote:
-> Define the system registers which are provided by the
-> FEAT_FGT fine-grained trap architectural feature:
->   HFGRTR_EL2, HFGWTR_EL2, HDFGRTR_EL2, HDFGWTR_EL2, HFGITR_EL2
+> Implement the machinery for fine-grained traps on normal sysregs.
+> Any sysreg with a fine-grained trap will set the new field to
+> indicate which FGT register bit it should trap on.
 > 
-> All these registers are a set of bit fields, where each bit is set
-> for a trap and clear to not trap on a particular system register
-> access.  The R and W register pairs are for system registers,
-> allowing trapping to be done separately for reads and writes; the I
-> register is for system instructions where trapping is on instruction
-> execution.
+> FGT traps only happen when an AArch64 EL2 enables them for
+> an AArch64 EL1. They therefore are only relevant for AArch32
+> cpregs when the cpreg can be accessed from EL0. The logic
+> in access_check_cp_reg() will check this, so it is safe to
+> add a .fgt marking to an ARM_CP_STATE_BOTH ARMCPRegInfo.
 > 
-> The data storage in the CPU state struct is arranged as a set of
-> arrays rather than separate fields so that when we're looking up the
-> bits for a system register access we can just index into the array
-> rather than having to use a switch to select a named struct member.
-> The later FEAT_FGT2 will add extra elements to these arrays.
+> The DO_BIT and DO_REV_BIT macros define enum constants FGT_##bitname
+> which can be used to specify the FGT bit, eg
+>     .fgt = FGT_AFSR0_EL1
+> (We assume that there is no bit name duplication across the FGT
+> registers, for brevity's sake.)
 > 
-> The field definitions for the new registers are in cpregs.h because
-> in practice the code that needs them is code that also needs
-> the cpregs information; cpu.h is included in a lot more files.
-> We're also going to add some FGT-specific definitions to cpregs.h
-> in the next commit.
+> Subsequent commits will add the .fgt fields to the relevant register
+> definitions and define the FGT_nnn values for them.
 > 
-> We do not implement HAFGRTR_EL2, because we don't implement
-> FEAT_AMUv1.
+> Note that some of the FGT traps are for instructions that we don't
+> handle via the cpregs mechanisms (mostly these are instruction traps).
+> Those we will have to handle separately.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/cpregs.h | 285 ++++++++++++++++++++++++++++++++++++++++++++
->   target/arm/cpu.h    |  15 +++
->   target/arm/helper.c |  40 +++++++
->   3 files changed, 340 insertions(+)
-
-I spot-checked the field definitions before my eyes crossed.
+>   target/arm/cpregs.h        | 72 ++++++++++++++++++++++++++++++++++++++
+>   target/arm/cpu.h           |  1 +
+>   target/arm/internals.h     | 20 +++++++++++
+>   target/arm/translate.h     |  2 ++
+>   target/arm/helper.c        |  9 +++++
+>   target/arm/op_helper.c     | 30 ++++++++++++++++
+>   target/arm/translate-a64.c |  3 +-
+>   target/arm/translate.c     |  2 ++
+>   8 files changed, 138 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
 
 r~

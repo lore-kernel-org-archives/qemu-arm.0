@@ -1,131 +1,117 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1221478ejc;
-        Fri, 27 Jan 2023 07:02:38 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv3sUHqjZjS48Jlosf7DLA3Ek36xDcvjI1A4SMVY2OAt1iLf18zLMW3b5tZwHeZJitaQnxG
-X-Received: by 2002:ac8:110a:0:b0:3b6:3ab8:6396 with SMTP id c10-20020ac8110a000000b003b63ab86396mr53132259qtj.36.1674831757874;
-        Fri, 27 Jan 2023 07:02:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674831757; cv=none;
+Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp1547575ejc;
+        Fri, 27 Jan 2023 17:11:52 -0800 (PST)
+X-Google-Smtp-Source: AK7set8CQdF9e8caeBPs7LpjhtmVSRH3rsUFXUZiDRYus2jM/EmW2lahsnkU/sbYGp0glbc2MQxy
+X-Received: by 2002:a05:622a:181d:b0:3b8:2e8b:d8af with SMTP id t29-20020a05622a181d00b003b82e8bd8afmr3743566qtc.55.1674868312807;
+        Fri, 27 Jan 2023 17:11:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1674868312; cv=none;
         d=google.com; s=arc-20160816;
-        b=NFfkVv58MJw4eEbRXlo/teeuqZ0aGN9L7LdOwD+AZ3nFy8UMTVLQ618NBJ0MWgTkuh
-         +xN8ng8NPHWRgpIhbdKjk4NM5Kwa727hDTnz+jxFMLvvAzsZrN2DXIi5aT0zbrv2InBU
-         umVfyeEoR9C0CKfc6foVRlkSRkaVGxL+uR2ixHDxiw8TURgZDM1r68nhF+gZ3xfyoqgv
-         F7vTguOuJ5bj8PSd/fSYQUnN8un47U0hLHL91jT9nsz2UaDsM+GuNq1wYMq8oz29s/t4
-         O/WQz//q++UUde2rHo0NyD60VtBCU+WjcZkl4zhCAG7++2aTNYPyYTU68+XoaoRRjiAC
-         +g7g==
+        b=yh9TOfoWiJVukuVnCu+HE6aT44sZzWEHCfAjFUYfNK+1hc04M4ylraAT5O4alZtPTu
+         M7mSRfRY0+gjPJU9BsooJeR8x07N++gymcrdQRkiq+ckTCTqWylM7KjZKA1I2Y0PkuA3
+         quHJuj6mSpdL/UHpVzkGe34SFnjrwVx9PMdwJitnPl1oZqujBevOQvoHzwrAbfb1W8q9
+         k9XU2l97SQRjVF4utiKIY6FCDdzHp99/BgM0PE9Vk2XIyXRqrX7c2YdOEUShkYRXtcdH
+         srMIPFvMU3jriDgbT3imqv5a9PQp4FD85pAq1uEVJ6PjgAPqorR0zbtdTp9fM4SQDgtK
+         JweQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=BCAWQePqlmcUdEfpPWmFWDPQKTGxJINbp8IdMUJzeiY=;
-        b=EP/hgFTREThS108eddeqf0nPSMtyD8zCn7va81Tv+83tVf+c0Vod/RzX4LIhERjz9r
-         9YESUUJFpnHOaXzI7RKPlfangZdpsSxznScnYeWg4BvECtDWPmNhaHdn/8dlOvPoNFdf
-         LfQwMtMIX/35HA8qdiKdMn370XAYAx6pHhG2NQPw10JwI+84q2Akmg54JwEnSAW/6OnL
-         LoOfnENGyJdYSB0FLwsP8ucjIyLI5hHk5WVs5/G8PlfqZe+yTbr8cerbyMT+hijRhwL6
-         ZkE5y0tnJqxnz4GYQd1qEMySAXugKiigRB3/4c5FmAWH1UHrVX6jE6423lm5DePGKn3e
-         gsyg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=tbzrszhQoWSxYZcdrW5Vn7Ixdg0TRU7nKJnQZ5Yat1k=;
+        b=Jt1adTdDa+jojScGP375LqhyhwqxGbf2ArKTgXeDo6nI1JWa3krXGTeQu2T0V/TQOu
+         YmUoOO5CaN2oc2tNM3P3QooYItrtEk15LmLDjHacGp8hLtEMtgn0UUT4O06rGl4w6tTE
+         WL0F+BT2QTfxTknSFXuq/U3OJXgUJ8FovzgiZBoUpGLtK6gnTjBiwh21kD/+rfcdYcY2
+         fZoVDiqc88dJl7F5xxigIRPZuZ7XJAsd8QdfuyB1KG2oNMuvfDcaqG31dEKyWPUOmJ5w
+         ZiVQfWMUOg6ku43P0TJs7MzaWB7btpZPEZClWHuBhuFbe1v2NKQgK1bo7vGtkwTzeq/z
+         QAMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=deXJAZsI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NzNtvMK3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w11-20020a05622a190b00b003b6332010f7si2504688qtc.268.2023.01.27.07.02.37
+        by mx.google.com with ESMTPS id h16-20020ae9ec10000000b00705f514af17si3530156qkg.188.2023.01.27.17.11.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Jan 2023 07:02:37 -0800 (PST)
+        Fri, 27 Jan 2023 17:11:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=deXJAZsI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NzNtvMK3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pLQF4-0002RO-Vx; Fri, 27 Jan 2023 10:02:15 -0500
+	id 1pLZkj-0004as-PK; Fri, 27 Jan 2023 20:11:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pLQF0-0002QZ-69
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 10:02:13 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pLQEx-0004Id-Cl
- for qemu-arm@nongnu.org; Fri, 27 Jan 2023 10:02:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674831726;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=BCAWQePqlmcUdEfpPWmFWDPQKTGxJINbp8IdMUJzeiY=;
- b=deXJAZsI6OUDqVJywpy32GPOjvnu3KMW/AlVZl0609KVKVsWdwwqt7CMauSyjA637sQ60N
- GBywxRnH1KJUwZJbVVavQ4POIDr+bDqjGyn83nO344TSKgvmOJKcSxL49RbPuzox4gJLaB
- cHk0JLKlwesbw1xDFzu7AMh4illsRL8=
-Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
- [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-557-yYsH962XP4KMCzust1Yt0Q-1; Fri, 27 Jan 2023 10:02:00 -0500
-X-MC-Unique: yYsH962XP4KMCzust1Yt0Q-1
-Received: by mail-lf1-f72.google.com with SMTP id
- bp18-20020a056512159200b004b59c4fb76bso2187336lfb.2
- for <qemu-arm@nongnu.org>; Fri, 27 Jan 2023 07:02:00 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pLZki-0004aZ-VF
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 20:11:32 -0500
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pLZkh-0007vl-AE
+ for qemu-arm@nongnu.org; Fri, 27 Jan 2023 20:11:32 -0500
+Received: by mail-pf1-x42a.google.com with SMTP id a184so4405186pfa.9
+ for <qemu-arm@nongnu.org>; Fri, 27 Jan 2023 17:11:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=tbzrszhQoWSxYZcdrW5Vn7Ixdg0TRU7nKJnQZ5Yat1k=;
+ b=NzNtvMK3iIR4JStGpdgIl14XIIVUnfYEiARAb88djSWSxjZ3RGT5ezHcscim32CsTb
+ hYE5EkiOuEMl7EapOnstL/fIrbnOFn4nmLlEISN8rTBhZpnbvUIuUj+1kHNYe2RPTjmc
+ DBTvUy/w2QSvFhj8bR9CJEzEE3xIb1xDv212wBenWnB3XUaVhPZ5LmUlI5vfK5nVJZAN
+ yHzmyhDrZD08BxkRoTqd6kstLgyo4OUUn3sVnTQjEToc2oLvzrebjuPNIKY9xzEoRegl
+ yAgBu9QVXryoJjwb2rELe817NyWM6xmtp0YIgWjFun8JD5moG1JJyBdvY7/FCxKWL+PL
+ yfRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BCAWQePqlmcUdEfpPWmFWDPQKTGxJINbp8IdMUJzeiY=;
- b=qLKtRsxbnNfYQXQpzlgoDuMWjao+l3FtPGaNBUT7fZNlM0biCiXw8RtBsO/OLFDk1D
- llHPrI4iVuC8vGS3DmAFyZgYt89JErvorzNC2mtJ3/HOUGFUme5++obTV8I3xXYu8wq8
- cgM7k4/bjYyg1A70Nd2Ra1IfPx0/0Ym8UMsme/BA56VtiIT+pLTzeYBwPiDjgAy4LYm8
- 7GCaE9xpjaAvK5nfcf9MgcIPqJSc10euZLm2j2LqCp6M06JoRWipvrJV1XAV8gdMjHkx
- uSfiGf+nIG+S+5BxKNd6VS8cx+JI1JGZ/2tNHdYMZ3LSpnR+4pleNvXrLakDtCz9asry
- ClBQ==
-X-Gm-Message-State: AO0yUKUXW7YhGkHdjISHMUTsYV2lW8H6z4K6y/f0VD3OL1mkQaap9Yd7
- 9uGRFpUYn2zzh/w96KFjdv8juaLhgmw8Fx52igiB+RSK0LFw3xpaZfUP5dsDxzPLbP4ZojCW8e+
- PzFOF6ibJWBb0
-X-Received: by 2002:a2e:a4b6:0:b0:28f:8fa4:7c25 with SMTP id
- g22-20020a2ea4b6000000b0028f8fa47c25mr1203847ljm.25.1674831718788; 
- Fri, 27 Jan 2023 07:01:58 -0800 (PST)
-X-Received: by 2002:a2e:a4b6:0:b0:28f:8fa4:7c25 with SMTP id
- g22-20020a2ea4b6000000b0028f8fa47c25mr1203715ljm.25.1674831717017; 
- Fri, 27 Jan 2023 07:01:57 -0800 (PST)
-Received: from redhat.com ([2.52.137.69]) by smtp.gmail.com with ESMTPSA id
- cm20-20020a170907939400b00871cb1b8f63sm2370175ejc.26.2023.01.27.07.01.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Jan 2023 07:01:56 -0800 (PST)
-Date: Fri, 27 Jan 2023 10:01:50 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Warner Losh <imp@bsdimp.com>, Markus Armbruster <armbru@redhat.com>,
- qemu-devel@nongnu.org, richard.henderson@linaro.org,
- pbonzini@redhat.com, kwolf@redhat.com, hreitz@redhat.com,
- kevans@freebsd.org, berrange@redhat.com, groug@kaod.org,
- qemu_oss@crudebyte.com, philmd@linaro.org, alistair@alistair23.me,
- jasowang@redhat.com, jonathan.cameron@huawei.com,
- kbastian@mail.uni-paderborn.de, quintela@redhat.com,
- dgilbert@redhat.com, michael.roth@amd.com, kkostiuk@redhat.com,
- tsimpson@quicinc.com, palmer@dabbelt.com, bin.meng@windriver.com,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-Subject: Re: [PATCH v4 04/19] bsd-user: Clean up includes
-Message-ID: <20230127100052-mutt-send-email-mst@kernel.org>
-References: <20230119065959.3104012-1-armbru@redhat.com>
- <20230119065959.3104012-5-armbru@redhat.com>
- <CANCZdfrU4zVcepMj=B5EVUz-qhCDhMYDs+cYS5yfW1-G01PsbA@mail.gmail.com>
- <CAFEAcA8E98v5X5ekA16c6Fby2HAhOC5G4JYnN9TkrA9G7rVzvA@mail.gmail.com>
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=tbzrszhQoWSxYZcdrW5Vn7Ixdg0TRU7nKJnQZ5Yat1k=;
+ b=JX4FlKEktY+HcIYwy4BjR+IAKbL3JBjT44JiKhp00mgY7ImwHoqmZCUIOMUySuy6au
+ LblwbOE/R0G5dQXmk0Im7FFqFdxrZwtsdmq+Np9Sb+L7iGRSf0lkVGUYnQPsNYxC6BGs
+ dv8nIAt7/h8zPS/qF90TyPwWEBDQlKclyqPKU9CcCtYIUHAsuYtNlnOTsHEgzf6HFGoZ
+ xxjnm3lW3Wqe7+l5yqxlpmYo5QNlsZlVEIcz5I7y7OaUvvYY0IsirJn7SOWUOXSs1ThX
+ AV5BlQCcj/mBNrLRjERiEtEhoIRSucobGSP8dApoDYBcGzKucCLYm5xN87hZpQOu4weX
+ GSJA==
+X-Gm-Message-State: AFqh2kpRyojx0cBN5IusPLP9SaflLWRRjwbuzGcLqeOXISddsYdz9xaa
+ ZyRiOCAETLR3pGQnpRXfbns+oA==
+X-Received: by 2002:aa7:8a04:0:b0:581:1c:82a3 with SMTP id
+ m4-20020aa78a04000000b00581001c82a3mr39582196pfa.1.1674868289752; 
+ Fri, 27 Jan 2023 17:11:29 -0800 (PST)
+Received: from [192.168.50.174] (rrcs-173-197-98-118.west.biz.rr.com.
+ [173.197.98.118]) by smtp.gmail.com with ESMTPSA id
+ g196-20020a6252cd000000b0058e264958b7sm3321565pfb.91.2023.01.27.17.11.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 27 Jan 2023 17:11:29 -0800 (PST)
+Message-ID: <43748d60-0d62-fe74-021e-ffa5a584a3c9@linaro.org>
+Date: Fri, 27 Jan 2023 15:11:24 -1000
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8E98v5X5ekA16c6Fby2HAhOC5G4JYnN9TkrA9G7rVzvA@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 03/23] target/arm: Remove
+ CP_ACCESS_TRAP_UNCATEGORIZED_{EL2, EL3}
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20230127175507.2895013-1-peter.maydell@linaro.org>
+ <20230127175507.2895013-4-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230127175507.2895013-4-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,38 +126,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BzfhTGLu1U3c
+X-TUID: 2shB+M2HEftp
 
-On Fri, Jan 27, 2023 at 02:54:30PM +0000, Peter Maydell wrote:
-> On Thu, 19 Jan 2023 at 14:42, Warner Losh <imp@bsdimp.com> wrote:
-> >
-> > Also, why didn't you move sys/resource.h and other such files
-> > to os-dep.h? I'm struggling to understand the rules around what
-> > is or isn't included where?
+On 1/27/23 07:54, Peter Maydell wrote:
+> We added the CPAccessResult values CP_ACCESS_TRAP_UNCATEGORIZED_EL2
+> and CP_ACCESS_TRAP_UNCATEGORIZED_EL3 purely in order to use them in
+> the ats_access() function, but doing so was incorrect (a bug fixed in
+> a previous commit).  There aren't any cases where we want an access
+> function to be able to request a trap to EL2 or EL3 with a zero
+> syndrome value, so remove these enum values.
 > 
-> The rough rule of thumb is that if some OS needs a compatibility
-> fixup or workaround for a system header (eg not every mmap.h
-> defines MAP_ANONYMOUS; on Windows unistd.h has to come before
-> time.h) then we put that header include and the compat workaround
-> into osdep.h. This avoids "only fails on obscure platform" issues
-> where somebody puts a header include into some specific .c file
-> but not the compat workaround, and it works on the Linux host
-> that most people develop and test on and we only find the
-> problem later.
+> As well as cleaning up dead code, the motivation here is that
+> we'd like to implement fine-grained-trap handling in
+> helper_access_check_cp_reg(). Although the fine-grained traps
+> to EL2 are always lower priority than trap-to-same-EL and
+> higher priority than trap-to-EL3, they are in the middle of
+> various other kinds of trap-to-EL2. Knowing that a trap-to-EL2
+> must always for us have the same syndrome (ie that an access
+> function will return CP_ACCESS_TRAP_EL2 and there is no other
+> kind of trap-to-EL2 enum value) means we don't have to try
+> to choose which of the two syndrome values to report if the
+> access would trap to EL2 both for the fine-grained-trap and
+> because the access function requires it.
 > 
-> There's also no doubt some includes there for historical
-> reasons, and some which really are "everybody needs these"
-> convenience ones. But we should probably not add new
-> includes to osdep.h unless they fall into the "working around
-> system header issues" bucket.
-> 
-> thanks
-> -- PMM
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+> This isn't just "not used in QEMU"; the architecture doesn't have
+> any cases where you need to do this, except for the FPCR/FPSR
+> with HCR_TGE case, which we handle in raise_exception() by
+> squashing the EC_ADVSIMDFPACCESSTRAP to uncategorized.
+> ---
+>   target/arm/cpregs.h    | 4 ++--
+>   target/arm/op_helper.c | 2 ++
+>   2 files changed, 4 insertions(+), 2 deletions(-)
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-BTW maybe we should teach checkpatch about that rule:
-if a header is in osdep do not include it directly.
-
--- 
-MST
-
+r~

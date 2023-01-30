@@ -1,253 +1,556 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149918ejb;
-        Mon, 30 Jan 2023 10:26:52 -0800 (PST)
-X-Google-Smtp-Source: AK7set/olg9ijSRLyW01QvVH30WkRy5dixg3IMb0swvlB9tEWD+K7bdhA7rrr9qdc/gfeMHTSFGb
-X-Received: by 2002:ad4:4c4f:0:b0:538:9623:f074 with SMTP id cs15-20020ad44c4f000000b005389623f074mr18664606qvb.18.1675103212500;
-        Mon, 30 Jan 2023 10:26:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675103212; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149926ejb;
+        Mon, 30 Jan 2023 10:26:54 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvrsfUKs1mGQasnKGtRQGN6wDgftogOMZeHwWgv7DPkbLMkY9a8fSDT5jHBrgkhCoZ2n819
+X-Received: by 2002:a05:622a:4805:b0:3b2:365c:9a9e with SMTP id fb5-20020a05622a480500b003b2365c9a9emr72381492qtb.61.1675103214560;
+        Mon, 30 Jan 2023 10:26:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675103214; cv=none;
         d=google.com; s=arc-20160816;
-        b=h0ysNlZqqX11hAUUz0+RFxPOyJUSVOwwWCSGfdh7bMXFRtpA1d/vU+qpNcGSVE2vOl
-         ymOx7Mzo3+aRCvjkNHl8dlw3ZFeoGvJCdvUMi+2YiYVaanwgHnXPhGItmB2Xr6wgXan8
-         0/q2TivHTlT2+dN3hAbkxQIYfyy9BZqluEBrBQR4YRYirE9EfhTi6yacE7KpJLllum0B
-         P4oxJKkeVUv46gb8tbEr8w8IDih7jr1llw56b9xgUFaHvTkHLsGdjDzzJgFOVfBolgK6
-         TjN92YXRXhxx7EGG4kaxELSogAjPqaMmDD0Qs6b68JTpC1WtPbQCHib4Crlq3IeirsUJ
-         ozhw==
+        b=tC+o9q6OE4tKeAJ8r1pw1YUS0+ivbMdtxxb6W/za+mHQEpuAheR3yiRqoZ4fYhEOuc
+         Eihmo+lx/bvYUuz8LXkVNwzOxjCJp6Lfvj6sSwW9pmX6HkIBjsGn2P6PIKW86tzsokeh
+         KFicOZWMSa7ZVVMDL0n/+Qqx5w0B0svkDIWcelR4WlDpcHifDX+ZBKQU8lo97DrUQtxN
+         B8rCQ6IOlxBh5M9xJG5M0wE/0WNmIpkzj5jsMj0qzlrdam2vVt1GUug5Qz+AIqCLI8u7
+         xaMpVB/kuNz3stAZf9XzrWTL3eFW5XzA0EgDc4Xm59b8NRj3iTx4H/lkItZX3Vv7gmLf
+         rRLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Jcvd+N8dP8c49YORsITsraMbFg3q5O5eU5IyRhoB5B0=;
-        b=qmnTtOcgGH9sdPJAnQUhflS4h7DiunXTVqtCNBTjTFgZY+SFcz7KRDN89yhn24I+Om
-         q/iP3izGPkW7pZEjU5lP5+YWCAWViCRCJXzCcQkOAZoTgrtbaY2YnOhAqCnVno1hDfGH
-         g/1yC/tYGqGfU57fQ0ArR+JQKd/5aNsNqkFmMcc/xQglnmR8TeAxt2YoXZBBNTIUOQC+
-         Ho5t2m2lSumV4nG/+fJdkKP7+NY9l1fXqVEE2pQHs/r1Wh4B4bZg1+4wSqNduwSfzvPh
-         +8J4EsKdCVYYhfp1V7P/jLbDIMAIL/jULRn4x2Fr4rlxX/ZhPrdSyHjTQaYMbnIUF1x6
-         H1Cw==
+        bh=GZlNUmnacOCKtXq4PeFo0U7gTRR7fZxtFGOCvMCXmM4=;
+        b=ziaOweLVWZ0FcLk1hgD6gFo+ZXYk6cHfFqX61dhQmbNxOKsAP3Z0ZnBhC9zBS0u7hS
+         QcrWtPQdeFcwbjcyECkmGuibO6+YZMkePCX9xhNzgakvWHVEtIw5EUteh8qkM/oZkVBR
+         bN8gHVW97EWRQUnWYSNBWunCkyvp0ZQwMY49JV6K9fF2zJ8XT6GzmanC7xOCO5vw0rvo
+         UpBZdG0whYCtcBlGxNYvsFxQFmyfqiwscDLFKhudt8qzUhlxEjvwMWDf67amFUk2ZXXP
+         InNyWu9tiEt701S5nyI8+2OVln+5fyVZ8tMiOHATP/JBmu7VRGUT34rz3JRiRmy1iP9V
+         /kkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kjw1omPf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=M1yW+ngB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qd24-20020ad44818000000b0053770052b97si6919025qvb.414.2023.01.30.10.26.52
+        by mx.google.com with ESMTPS id x6-20020ac85f06000000b003b86b6c1515si1479962qta.240.2023.01.30.10.26.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jan 2023 10:26:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Jan 2023 10:26:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kjw1omPf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=M1yW+ngB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pMYqH-00012b-2t; Mon, 30 Jan 2023 13:25:21 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pMYqP-0001BQ-0P; Mon, 30 Jan 2023 13:25:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYqA-000108-9V
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:15 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1pMYqF-00012H-L5
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:20 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYq4-0008O3-Um
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:13 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id t18so12010432wro.1
- for <qemu-devel@nongnu.org>; Mon, 30 Jan 2023 10:25:07 -0800 (PST)
+ id 1pMYq7-0008QF-Ec
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:17 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id d14so11975428wrr.9
+ for <qemu-arm@nongnu.org>; Mon, 30 Jan 2023 10:25:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=Jcvd+N8dP8c49YORsITsraMbFg3q5O5eU5IyRhoB5B0=;
- b=Kjw1omPf+0Hh7OwZLbBENhSQhY0B1Rsvd++4cV9RmnQfpTyVzJ/1CECKCXB7ofGcyy
- CAk/f7xVBbFQdfs151DqGymz9pJxq+TNRR7zQalWDL3geeT4dqqXz3Zkiu5R+SVlUH8O
- 5/h8u5vD8ankaLCtJelg3lgJQH8yZy1DKgfOpy4ONNgyd6/szbdA4C0S5SRhdJf0B28T
- vTSWw3QzG7MIXiB4RbrS3qzZ8ycgdpJPcgkMmNrvcbKIYyGOvdYTL8ses/mveefJTL83
- kFj0Gsl61NDBpDRxxhRB3C10Ty22mtg6y2WKFJH6RWOg6CHg/nTpDULqkX33VJtfAwoH
- Y54g==
+ :reply-to; bh=GZlNUmnacOCKtXq4PeFo0U7gTRR7fZxtFGOCvMCXmM4=;
+ b=M1yW+ngBPV67xrzHeCuvn0ZrLdC0Epb75YVORxSWZMs8fvbPHUszqklRyB62XG6t8E
+ U+htVwyEC1oSiwSdSPliaJxCjfZOCqjgzG6Ibs5pTKD2k1wpjZ2tsZAfNo1vM8GZrBsf
+ h3+Z79d6N2PFTb+Vm2BUPb2+Vnda+/fjXc4n6CR3PXLi73rxD62GM2tC9Ebw2tBSHI8M
+ 303OJH8s9VSCUl/5n2pNBX5dL5i3YUeNzInxzlJL+c2HsgVAz3gkh/qpp7NewxqQXY3G
+ 2yLjSGE/+fhDQbbilFwdxR7Iq1I3SaZ5M43ErhTT0Rbb1oq0+uoamvGgcmhLPHt7biOB
+ CU1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Jcvd+N8dP8c49YORsITsraMbFg3q5O5eU5IyRhoB5B0=;
- b=CNr2iESA9LA97sZRWggQOqjxpaEY0UUuHwI8VXjW1ddG32oRm64KlP87O1wK3z2nrF
- hqPglHBCOfHYqLp3VVHAWObaaZmvq3lnajy0pLLoD52m3XBmFMBq4s4mVQ5OirJ1JwAt
- SYwbGiYbJcr+kgOYiCVn0OJsAFvX2M1CP+rwAbx6LXwrZ+g0hYivQ3lUPoGXfaCg3k0x
- jAKhU95SB+YqDyZPe+FXqc1fxzLZ9mPiyagFUYDycPfDGJmMofSy4DVYtEKPR6WnlJoP
- YN556A/tJXgwcmdYzYDcq/Vouobmqh58QOawfJxgc2qZMcbPj2aVOB07uCixoXHtZtn8
- lBqA==
-X-Gm-Message-State: AO0yUKVj6Pio5FHOe3uydlEGZPsa2kYwDtJy5beyQJX6cj/J4Sip+dLu
- wqKyQFGE5TluKMolPbB6DSLT6A==
-X-Received: by 2002:adf:a1ce:0:b0:2bf:cfc2:2eae with SMTP id
- v14-20020adfa1ce000000b002bfcfc22eaemr11920743wrv.69.1675103105798; 
- Mon, 30 Jan 2023 10:25:05 -0800 (PST)
+ bh=GZlNUmnacOCKtXq4PeFo0U7gTRR7fZxtFGOCvMCXmM4=;
+ b=go+yoBue1XX6B67ewM+vwylrzkZceofNttkmLJgdQb9vwEXg9VeD8tnfqsqILbitSY
+ u/VTyICxGJDde24USdOexDwytzw5cVETnLS4eBB71vDvdbpM1/+2VlRb2mD1T0eGHuw4
+ cA9uUz3ObKuJcVRDJDzJGG1N2VXPKYFrWi4Av+LvTwhorfFYkUKhla6QL2dHzf456UhX
+ F7mTfdmjK7vW7si7Lza3ev8Lcl9bF9jLBwOleZLF7GMF5xYvRz/Ix/qoEH6taXAWdxZR
+ nYgpiPwQKbRTknL+xk4FPGi5lDlTDKo8ppuk0rNVi98UvyGZWVO3o8/2vGv42wyoTSbp
+ V+XA==
+X-Gm-Message-State: AO0yUKW6kQ25DHq4ER7c+sYFvUI3Fp080VIH73X+AKnq106mNsMVtSCR
+ 1CGZKpb/ADQmnYM3QchyTfEKQf5OVa4a+svo
+X-Received: by 2002:adf:e90f:0:b0:2bf:ee0f:9f04 with SMTP id
+ f15-20020adfe90f000000b002bfee0f9f04mr3721055wrm.45.1675103109538; 
+ Mon, 30 Jan 2023 10:25:09 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.04
+ l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Jan 2023 10:25:04 -0800 (PST)
+ Mon, 30 Jan 2023 10:25:08 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 04/23] target/arm: Move do_coproc_insn() syndrome
- calculation earlier
-Date: Mon, 30 Jan 2023 18:24:40 +0000
-Message-Id: <20230130182459.3309057-5-peter.maydell@linaro.org>
+Subject: [PATCH v2 08/23] target/arm: Define the FEAT_FGT registers
+Date: Mon, 30 Jan 2023 18:24:44 +0000
+Message-Id: <20230130182459.3309057-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230130182459.3309057-1-peter.maydell@linaro.org>
 References: <20230130182459.3309057-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cHS0Jon3aRoG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2E717SKsirBQ
 
-Rearrange the code in do_coproc_insn() so that we calculate the
-syndrome value for a potential trap early; we're about to add a
-second check that wants this value earlier than where it is currently
-determined.
+Define the system registers which are provided by the
+FEAT_FGT fine-grained trap architectural feature:
+ HFGRTR_EL2, HFGWTR_EL2, HDFGRTR_EL2, HDFGWTR_EL2, HFGITR_EL2
 
-(Specifically, a trap to EL2 because of HSTR_EL2 should take
-priority over an UNDEF to EL1, even when the UNDEF is because
-the register does not exist at all or because its ri->access
-bits non-configurably fail the access. So the check we put in
-for HSTR_EL2 trapping at EL1 (which needs the syndrome) is
-going to have to be done before the check "is the ARMCPRegInfo
-pointer NULL".)
+All these registers are a set of bit fields, where each bit is set
+for a trap and clear to not trap on a particular system register
+access.  The R and W register pairs are for system registers,
+allowing trapping to be done separately for reads and writes; the I
+register is for system instructions where trapping is on instruction
+execution.
 
-This commit is just code motion; the change to HSTR_EL2
-handling that will use the 'syndrome' variable is in a
-subsequent commit.
+The data storage in the CPU state struct is arranged as a set of
+arrays rather than separate fields so that when we're looking up the
+bits for a system register access we can just index into the array
+rather than having to use a switch to select a named struct member.
+The later FEAT_FGT2 will add extra elements to these arrays.
+
+The field definitions for the new registers are in cpregs.h because
+in practice the code that needs them is code that also needs
+the cpregs information; cpu.h is included in a lot more files.
+We're also going to add some FGT-specific definitions to cpregs.h
+in the next commit.
+
+We do not implement HAFGRTR_EL2, because we don't implement
+FEAT_AMUv1.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20230127175507.2895013-5-peter.maydell@linaro.org
+Message-id: 20230127175507.2895013-9-peter.maydell@linaro.org
 ---
- target/arm/translate.c | 83 +++++++++++++++++++++---------------------
- 1 file changed, 41 insertions(+), 42 deletions(-)
+ target/arm/cpregs.h | 285 ++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.h    |  15 +++
+ target/arm/helper.c |  40 +++++++
+ 3 files changed, 340 insertions(+)
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 365e02fb0b8..9252a464a12 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -4718,6 +4718,47 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
-     const ARMCPRegInfo *ri = get_arm_cp_reginfo(s->cp_regs, key);
-     TCGv_ptr tcg_ri = NULL;
-     bool need_exit_tb;
-+    uint32_t syndrome;
-+
-+    /*
-+     * Note that since we are an implementation which takes an
-+     * exception on a trapped conditional instruction only if the
-+     * instruction passes its condition code check, we can take
-+     * advantage of the clause in the ARM ARM that allows us to set
-+     * the COND field in the instruction to 0xE in all cases.
-+     * We could fish the actual condition out of the insn (ARM)
-+     * or the condexec bits (Thumb) but it isn't necessary.
-+     */
-+    switch (cpnum) {
-+    case 14:
-+        if (is64) {
-+            syndrome = syn_cp14_rrt_trap(1, 0xe, opc1, crm, rt, rt2,
-+                                         isread, false);
-+        } else {
-+            syndrome = syn_cp14_rt_trap(1, 0xe, opc1, opc2, crn, crm,
-+                                        rt, isread, false);
-+        }
-+        break;
-+    case 15:
-+        if (is64) {
-+            syndrome = syn_cp15_rrt_trap(1, 0xe, opc1, crm, rt, rt2,
-+                                         isread, false);
-+        } else {
-+            syndrome = syn_cp15_rt_trap(1, 0xe, opc1, opc2, crn, crm,
-+                                        rt, isread, false);
-+        }
-+        break;
-+    default:
-+        /*
-+         * ARMv8 defines that only coprocessors 14 and 15 exist,
-+         * so this can only happen if this is an ARMv7 or earlier CPU,
-+         * in which case the syndrome information won't actually be
-+         * guest visible.
-+         */
-+        assert(!arm_dc_feature(s, ARM_FEATURE_V8));
-+        syndrome = syn_uncategorized();
-+        break;
-+    }
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 9744179df01..cb3dc567819 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -230,6 +230,291 @@ typedef enum CPAccessResult {
+     CP_ACCESS_TRAP_UNCATEGORIZED = (2 << 2),
+ } CPAccessResult;
  
-     if (!ri) {
-         /*
-@@ -4755,48 +4796,6 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
-          * Note that on XScale all cp0..c13 registers do an access check
-          * call in order to handle c15_cpar.
-          */
--        uint32_t syndrome;
--
--        /*
--         * Note that since we are an implementation which takes an
--         * exception on a trapped conditional instruction only if the
--         * instruction passes its condition code check, we can take
--         * advantage of the clause in the ARM ARM that allows us to set
--         * the COND field in the instruction to 0xE in all cases.
--         * We could fish the actual condition out of the insn (ARM)
--         * or the condexec bits (Thumb) but it isn't necessary.
--         */
--        switch (cpnum) {
--        case 14:
--            if (is64) {
--                syndrome = syn_cp14_rrt_trap(1, 0xe, opc1, crm, rt, rt2,
--                                             isread, false);
--            } else {
--                syndrome = syn_cp14_rt_trap(1, 0xe, opc1, opc2, crn, crm,
--                                            rt, isread, false);
--            }
--            break;
--        case 15:
--            if (is64) {
--                syndrome = syn_cp15_rrt_trap(1, 0xe, opc1, crm, rt, rt2,
--                                             isread, false);
--            } else {
--                syndrome = syn_cp15_rt_trap(1, 0xe, opc1, opc2, crn, crm,
--                                            rt, isread, false);
--            }
--            break;
--        default:
--            /*
--             * ARMv8 defines that only coprocessors 14 and 15 exist,
--             * so this can only happen if this is an ARMv7 or earlier CPU,
--             * in which case the syndrome information won't actually be
--             * guest visible.
--             */
--            assert(!arm_dc_feature(s, ARM_FEATURE_V8));
--            syndrome = syn_uncategorized();
--            break;
--        }
--
-         gen_set_condexec(s);
-         gen_update_pc(s, 0);
-         tcg_ri = tcg_temp_new_ptr();
++/* Indexes into fgt_read[] */
++#define FGTREG_HFGRTR 0
++#define FGTREG_HDFGRTR 1
++/* Indexes into fgt_write[] */
++#define FGTREG_HFGWTR 0
++#define FGTREG_HDFGWTR 1
++/* Indexes into fgt_exec[] */
++#define FGTREG_HFGITR 0
++
++FIELD(HFGRTR_EL2, AFSR0_EL1, 0, 1)
++FIELD(HFGRTR_EL2, AFSR1_EL1, 1, 1)
++FIELD(HFGRTR_EL2, AIDR_EL1, 2, 1)
++FIELD(HFGRTR_EL2, AMAIR_EL1, 3, 1)
++FIELD(HFGRTR_EL2, APDAKEY, 4, 1)
++FIELD(HFGRTR_EL2, APDBKEY, 5, 1)
++FIELD(HFGRTR_EL2, APGAKEY, 6, 1)
++FIELD(HFGRTR_EL2, APIAKEY, 7, 1)
++FIELD(HFGRTR_EL2, APIBKEY, 8, 1)
++FIELD(HFGRTR_EL2, CCSIDR_EL1, 9, 1)
++FIELD(HFGRTR_EL2, CLIDR_EL1, 10, 1)
++FIELD(HFGRTR_EL2, CONTEXTIDR_EL1, 11, 1)
++FIELD(HFGRTR_EL2, CPACR_EL1, 12, 1)
++FIELD(HFGRTR_EL2, CSSELR_EL1, 13, 1)
++FIELD(HFGRTR_EL2, CTR_EL0, 14, 1)
++FIELD(HFGRTR_EL2, DCZID_EL0, 15, 1)
++FIELD(HFGRTR_EL2, ESR_EL1, 16, 1)
++FIELD(HFGRTR_EL2, FAR_EL1, 17, 1)
++FIELD(HFGRTR_EL2, ISR_EL1, 18, 1)
++FIELD(HFGRTR_EL2, LORC_EL1, 19, 1)
++FIELD(HFGRTR_EL2, LOREA_EL1, 20, 1)
++FIELD(HFGRTR_EL2, LORID_EL1, 21, 1)
++FIELD(HFGRTR_EL2, LORN_EL1, 22, 1)
++FIELD(HFGRTR_EL2, LORSA_EL1, 23, 1)
++FIELD(HFGRTR_EL2, MAIR_EL1, 24, 1)
++FIELD(HFGRTR_EL2, MIDR_EL1, 25, 1)
++FIELD(HFGRTR_EL2, MPIDR_EL1, 26, 1)
++FIELD(HFGRTR_EL2, PAR_EL1, 27, 1)
++FIELD(HFGRTR_EL2, REVIDR_EL1, 28, 1)
++FIELD(HFGRTR_EL2, SCTLR_EL1, 29, 1)
++FIELD(HFGRTR_EL2, SCXTNUM_EL1, 30, 1)
++FIELD(HFGRTR_EL2, SCXTNUM_EL0, 31, 1)
++FIELD(HFGRTR_EL2, TCR_EL1, 32, 1)
++FIELD(HFGRTR_EL2, TPIDR_EL1, 33, 1)
++FIELD(HFGRTR_EL2, TPIDRRO_EL0, 34, 1)
++FIELD(HFGRTR_EL2, TPIDR_EL0, 35, 1)
++FIELD(HFGRTR_EL2, TTBR0_EL1, 36, 1)
++FIELD(HFGRTR_EL2, TTBR1_EL1, 37, 1)
++FIELD(HFGRTR_EL2, VBAR_EL1, 38, 1)
++FIELD(HFGRTR_EL2, ICC_IGRPENN_EL1, 39, 1)
++FIELD(HFGRTR_EL2, ERRIDR_EL1, 40, 1)
++FIELD(HFGRTR_EL2, ERRSELR_EL1, 41, 1)
++FIELD(HFGRTR_EL2, ERXFR_EL1, 42, 1)
++FIELD(HFGRTR_EL2, ERXCTLR_EL1, 43, 1)
++FIELD(HFGRTR_EL2, ERXSTATUS_EL1, 44, 1)
++FIELD(HFGRTR_EL2, ERXMISCN_EL1, 45, 1)
++FIELD(HFGRTR_EL2, ERXPFGF_EL1, 46, 1)
++FIELD(HFGRTR_EL2, ERXPFGCTL_EL1, 47, 1)
++FIELD(HFGRTR_EL2, ERXPFGCDN_EL1, 48, 1)
++FIELD(HFGRTR_EL2, ERXADDR_EL1, 49, 1)
++FIELD(HFGRTR_EL2, NACCDATA_EL1, 50, 1)
++/* 51-53: RES0 */
++FIELD(HFGRTR_EL2, NSMPRI_EL1, 54, 1)
++FIELD(HFGRTR_EL2, NTPIDR2_EL0, 55, 1)
++/* 56-63: RES0 */
++
++/* These match HFGRTR but bits for RO registers are RES0 */
++FIELD(HFGWTR_EL2, AFSR0_EL1, 0, 1)
++FIELD(HFGWTR_EL2, AFSR1_EL1, 1, 1)
++FIELD(HFGWTR_EL2, AMAIR_EL1, 3, 1)
++FIELD(HFGWTR_EL2, APDAKEY, 4, 1)
++FIELD(HFGWTR_EL2, APDBKEY, 5, 1)
++FIELD(HFGWTR_EL2, APGAKEY, 6, 1)
++FIELD(HFGWTR_EL2, APIAKEY, 7, 1)
++FIELD(HFGWTR_EL2, APIBKEY, 8, 1)
++FIELD(HFGWTR_EL2, CONTEXTIDR_EL1, 11, 1)
++FIELD(HFGWTR_EL2, CPACR_EL1, 12, 1)
++FIELD(HFGWTR_EL2, CSSELR_EL1, 13, 1)
++FIELD(HFGWTR_EL2, ESR_EL1, 16, 1)
++FIELD(HFGWTR_EL2, FAR_EL1, 17, 1)
++FIELD(HFGWTR_EL2, LORC_EL1, 19, 1)
++FIELD(HFGWTR_EL2, LOREA_EL1, 20, 1)
++FIELD(HFGWTR_EL2, LORN_EL1, 22, 1)
++FIELD(HFGWTR_EL2, LORSA_EL1, 23, 1)
++FIELD(HFGWTR_EL2, MAIR_EL1, 24, 1)
++FIELD(HFGWTR_EL2, PAR_EL1, 27, 1)
++FIELD(HFGWTR_EL2, SCTLR_EL1, 29, 1)
++FIELD(HFGWTR_EL2, SCXTNUM_EL1, 30, 1)
++FIELD(HFGWTR_EL2, SCXTNUM_EL0, 31, 1)
++FIELD(HFGWTR_EL2, TCR_EL1, 32, 1)
++FIELD(HFGWTR_EL2, TPIDR_EL1, 33, 1)
++FIELD(HFGWTR_EL2, TPIDRRO_EL0, 34, 1)
++FIELD(HFGWTR_EL2, TPIDR_EL0, 35, 1)
++FIELD(HFGWTR_EL2, TTBR0_EL1, 36, 1)
++FIELD(HFGWTR_EL2, TTBR1_EL1, 37, 1)
++FIELD(HFGWTR_EL2, VBAR_EL1, 38, 1)
++FIELD(HFGWTR_EL2, ICC_IGRPENN_EL1, 39, 1)
++FIELD(HFGWTR_EL2, ERRSELR_EL1, 41, 1)
++FIELD(HFGWTR_EL2, ERXCTLR_EL1, 43, 1)
++FIELD(HFGWTR_EL2, ERXSTATUS_EL1, 44, 1)
++FIELD(HFGWTR_EL2, ERXMISCN_EL1, 45, 1)
++FIELD(HFGWTR_EL2, ERXPFGCTL_EL1, 47, 1)
++FIELD(HFGWTR_EL2, ERXPFGCDN_EL1, 48, 1)
++FIELD(HFGWTR_EL2, ERXADDR_EL1, 49, 1)
++FIELD(HFGWTR_EL2, NACCDATA_EL1, 50, 1)
++FIELD(HFGWTR_EL2, NSMPRI_EL1, 54, 1)
++FIELD(HFGWTR_EL2, NTPIDR2_EL0, 55, 1)
++
++FIELD(HFGITR_EL2, ICIALLUIS, 0, 1)
++FIELD(HFGITR_EL2, ICIALLU, 1, 1)
++FIELD(HFGITR_EL2, ICIVAU, 2, 1)
++FIELD(HFGITR_EL2, DCIVAC, 3, 1)
++FIELD(HFGITR_EL2, DCISW, 4, 1)
++FIELD(HFGITR_EL2, DCCSW, 5, 1)
++FIELD(HFGITR_EL2, DCCISW, 6, 1)
++FIELD(HFGITR_EL2, DCCVAU, 7, 1)
++FIELD(HFGITR_EL2, DCCVAP, 8, 1)
++FIELD(HFGITR_EL2, DCCVADP, 9, 1)
++FIELD(HFGITR_EL2, DCCIVAC, 10, 1)
++FIELD(HFGITR_EL2, DCZVA, 11, 1)
++FIELD(HFGITR_EL2, ATS1E1R, 12, 1)
++FIELD(HFGITR_EL2, ATS1E1W, 13, 1)
++FIELD(HFGITR_EL2, ATS1E0R, 14, 1)
++FIELD(HFGITR_EL2, ATS1E0W, 15, 1)
++FIELD(HFGITR_EL2, ATS1E1RP, 16, 1)
++FIELD(HFGITR_EL2, ATS1E1WP, 17, 1)
++FIELD(HFGITR_EL2, TLBIVMALLE1OS, 18, 1)
++FIELD(HFGITR_EL2, TLBIVAE1OS, 19, 1)
++FIELD(HFGITR_EL2, TLBIASIDE1OS, 20, 1)
++FIELD(HFGITR_EL2, TLBIVAAE1OS, 21, 1)
++FIELD(HFGITR_EL2, TLBIVALE1OS, 22, 1)
++FIELD(HFGITR_EL2, TLBIVAALE1OS, 23, 1)
++FIELD(HFGITR_EL2, TLBIRVAE1OS, 24, 1)
++FIELD(HFGITR_EL2, TLBIRVAAE1OS, 25, 1)
++FIELD(HFGITR_EL2, TLBIRVALE1OS, 26, 1)
++FIELD(HFGITR_EL2, TLBIRVAALE1OS, 27, 1)
++FIELD(HFGITR_EL2, TLBIVMALLE1IS, 28, 1)
++FIELD(HFGITR_EL2, TLBIVAE1IS, 29, 1)
++FIELD(HFGITR_EL2, TLBIASIDE1IS, 30, 1)
++FIELD(HFGITR_EL2, TLBIVAAE1IS, 31, 1)
++FIELD(HFGITR_EL2, TLBIVALE1IS, 32, 1)
++FIELD(HFGITR_EL2, TLBIVAALE1IS, 33, 1)
++FIELD(HFGITR_EL2, TLBIRVAE1IS, 34, 1)
++FIELD(HFGITR_EL2, TLBIRVAAE1IS, 35, 1)
++FIELD(HFGITR_EL2, TLBIRVALE1IS, 36, 1)
++FIELD(HFGITR_EL2, TLBIRVAALE1IS, 37, 1)
++FIELD(HFGITR_EL2, TLBIRVAE1, 38, 1)
++FIELD(HFGITR_EL2, TLBIRVAAE1, 39, 1)
++FIELD(HFGITR_EL2, TLBIRVALE1, 40, 1)
++FIELD(HFGITR_EL2, TLBIRVAALE1, 41, 1)
++FIELD(HFGITR_EL2, TLBIVMALLE1, 42, 1)
++FIELD(HFGITR_EL2, TLBIVAE1, 43, 1)
++FIELD(HFGITR_EL2, TLBIASIDE1, 44, 1)
++FIELD(HFGITR_EL2, TLBIVAAE1, 45, 1)
++FIELD(HFGITR_EL2, TLBIVALE1, 46, 1)
++FIELD(HFGITR_EL2, TLBIVAALE1, 47, 1)
++FIELD(HFGITR_EL2, CFPRCTX, 48, 1)
++FIELD(HFGITR_EL2, DVPRCTX, 49, 1)
++FIELD(HFGITR_EL2, CPPRCTX, 50, 1)
++FIELD(HFGITR_EL2, ERET, 51, 1)
++FIELD(HFGITR_EL2, SVC_EL0, 52, 1)
++FIELD(HFGITR_EL2, SVC_EL1, 53, 1)
++FIELD(HFGITR_EL2, DCCVAC, 54, 1)
++FIELD(HFGITR_EL2, NBRBINJ, 55, 1)
++FIELD(HFGITR_EL2, NBRBIALL, 56, 1)
++
++FIELD(HDFGRTR_EL2, DBGBCRN_EL1, 0, 1)
++FIELD(HDFGRTR_EL2, DBGBVRN_EL1, 1, 1)
++FIELD(HDFGRTR_EL2, DBGWCRN_EL1, 2, 1)
++FIELD(HDFGRTR_EL2, DBGWVRN_EL1, 3, 1)
++FIELD(HDFGRTR_EL2, MDSCR_EL1, 4, 1)
++FIELD(HDFGRTR_EL2, DBGCLAIM, 5, 1)
++FIELD(HDFGRTR_EL2, DBGAUTHSTATUS_EL1, 6, 1)
++FIELD(HDFGRTR_EL2, DBGPRCR_EL1, 7, 1)
++/* 8: RES0: OSLAR_EL1 is WO */
++FIELD(HDFGRTR_EL2, OSLSR_EL1, 9, 1)
++FIELD(HDFGRTR_EL2, OSECCR_EL1, 10, 1)
++FIELD(HDFGRTR_EL2, OSDLR_EL1, 11, 1)
++FIELD(HDFGRTR_EL2, PMEVCNTRN_EL0, 12, 1)
++FIELD(HDFGRTR_EL2, PMEVTYPERN_EL0, 13, 1)
++FIELD(HDFGRTR_EL2, PMCCFILTR_EL0, 14, 1)
++FIELD(HDFGRTR_EL2, PMCCNTR_EL0, 15, 1)
++FIELD(HDFGRTR_EL2, PMCNTEN, 16, 1)
++FIELD(HDFGRTR_EL2, PMINTEN, 17, 1)
++FIELD(HDFGRTR_EL2, PMOVS, 18, 1)
++FIELD(HDFGRTR_EL2, PMSELR_EL0, 19, 1)
++/* 20: RES0: PMSWINC_EL0 is WO */
++/* 21: RES0: PMCR_EL0 is WO */
++FIELD(HDFGRTR_EL2, PMMIR_EL1, 22, 1)
++FIELD(HDFGRTR_EL2, PMBLIMITR_EL1, 23, 1)
++FIELD(HDFGRTR_EL2, PMBPTR_EL1, 24, 1)
++FIELD(HDFGRTR_EL2, PMBSR_EL1, 25, 1)
++FIELD(HDFGRTR_EL2, PMSCR_EL1, 26, 1)
++FIELD(HDFGRTR_EL2, PMSEVFR_EL1, 27, 1)
++FIELD(HDFGRTR_EL2, PMSFCR_EL1, 28, 1)
++FIELD(HDFGRTR_EL2, PMSICR_EL1, 29, 1)
++FIELD(HDFGRTR_EL2, PMSIDR_EL1, 30, 1)
++FIELD(HDFGRTR_EL2, PMSIRR_EL1, 31, 1)
++FIELD(HDFGRTR_EL2, PMSLATFR_EL1, 32, 1)
++FIELD(HDFGRTR_EL2, TRC, 33, 1)
++FIELD(HDFGRTR_EL2, TRCAUTHSTATUS, 34, 1)
++FIELD(HDFGRTR_EL2, TRCAUXCTLR, 35, 1)
++FIELD(HDFGRTR_EL2, TRCCLAIM, 36, 1)
++FIELD(HDFGRTR_EL2, TRCCNTVRn, 37, 1)
++/* 38, 39: RES0 */
++FIELD(HDFGRTR_EL2, TRCID, 40, 1)
++FIELD(HDFGRTR_EL2, TRCIMSPECN, 41, 1)
++/* 42: RES0: TRCOSLAR is WO */
++FIELD(HDFGRTR_EL2, TRCOSLSR, 43, 1)
++FIELD(HDFGRTR_EL2, TRCPRGCTLR, 44, 1)
++FIELD(HDFGRTR_EL2, TRCSEQSTR, 45, 1)
++FIELD(HDFGRTR_EL2, TRCSSCSRN, 46, 1)
++FIELD(HDFGRTR_EL2, TRCSTATR, 47, 1)
++FIELD(HDFGRTR_EL2, TRCVICTLR, 48, 1)
++/* 49: RES0: TRFCR_EL1 is WO */
++FIELD(HDFGRTR_EL2, TRBBASER_EL1, 50, 1)
++FIELD(HDFGRTR_EL2, TRBIDR_EL1, 51, 1)
++FIELD(HDFGRTR_EL2, TRBLIMITR_EL1, 52, 1)
++FIELD(HDFGRTR_EL2, TRBMAR_EL1, 53, 1)
++FIELD(HDFGRTR_EL2, TRBPTR_EL1, 54, 1)
++FIELD(HDFGRTR_EL2, TRBSR_EL1, 55, 1)
++FIELD(HDFGRTR_EL2, TRBTRG_EL1, 56, 1)
++FIELD(HDFGRTR_EL2, PMUSERENR_EL0, 57, 1)
++FIELD(HDFGRTR_EL2, PMCEIDN_EL0, 58, 1)
++FIELD(HDFGRTR_EL2, NBRBIDR, 59, 1)
++FIELD(HDFGRTR_EL2, NBRBCTL, 60, 1)
++FIELD(HDFGRTR_EL2, NBRBDATA, 61, 1)
++FIELD(HDFGRTR_EL2, NPMSNEVFR_EL1, 62, 1)
++FIELD(HDFGRTR_EL2, PMBIDR_EL1, 63, 1)
++
++/*
++ * These match HDFGRTR_EL2, but bits for RO registers are RES0.
++ * A few bits are for WO registers, where the HDFGRTR_EL2 bit is RES0.
++ */
++FIELD(HDFGWTR_EL2, DBGBCRN_EL1, 0, 1)
++FIELD(HDFGWTR_EL2, DBGBVRN_EL1, 1, 1)
++FIELD(HDFGWTR_EL2, DBGWCRN_EL1, 2, 1)
++FIELD(HDFGWTR_EL2, DBGWVRN_EL1, 3, 1)
++FIELD(HDFGWTR_EL2, MDSCR_EL1, 4, 1)
++FIELD(HDFGWTR_EL2, DBGCLAIM, 5, 1)
++FIELD(HDFGWTR_EL2, DBGPRCR_EL1, 7, 1)
++FIELD(HDFGWTR_EL2, OSLAR_EL1, 8, 1)
++FIELD(HDFGWTR_EL2, OSLSR_EL1, 9, 1)
++FIELD(HDFGWTR_EL2, OSECCR_EL1, 10, 1)
++FIELD(HDFGWTR_EL2, OSDLR_EL1, 11, 1)
++FIELD(HDFGWTR_EL2, PMEVCNTRN_EL0, 12, 1)
++FIELD(HDFGWTR_EL2, PMEVTYPERN_EL0, 13, 1)
++FIELD(HDFGWTR_EL2, PMCCFILTR_EL0, 14, 1)
++FIELD(HDFGWTR_EL2, PMCCNTR_EL0, 15, 1)
++FIELD(HDFGWTR_EL2, PMCNTEN, 16, 1)
++FIELD(HDFGWTR_EL2, PMINTEN, 17, 1)
++FIELD(HDFGWTR_EL2, PMOVS, 18, 1)
++FIELD(HDFGWTR_EL2, PMSELR_EL0, 19, 1)
++FIELD(HDFGWTR_EL2, PMSWINC_EL0, 20, 1)
++FIELD(HDFGWTR_EL2, PMCR_EL0, 21, 1)
++FIELD(HDFGWTR_EL2, PMBLIMITR_EL1, 23, 1)
++FIELD(HDFGWTR_EL2, PMBPTR_EL1, 24, 1)
++FIELD(HDFGWTR_EL2, PMBSR_EL1, 25, 1)
++FIELD(HDFGWTR_EL2, PMSCR_EL1, 26, 1)
++FIELD(HDFGWTR_EL2, PMSEVFR_EL1, 27, 1)
++FIELD(HDFGWTR_EL2, PMSFCR_EL1, 28, 1)
++FIELD(HDFGWTR_EL2, PMSICR_EL1, 29, 1)
++FIELD(HDFGWTR_EL2, PMSIRR_EL1, 31, 1)
++FIELD(HDFGWTR_EL2, PMSLATFR_EL1, 32, 1)
++FIELD(HDFGWTR_EL2, TRC, 33, 1)
++FIELD(HDFGWTR_EL2, TRCAUXCTLR, 35, 1)
++FIELD(HDFGWTR_EL2, TRCCLAIM, 36, 1)
++FIELD(HDFGWTR_EL2, TRCCNTVRn, 37, 1)
++FIELD(HDFGWTR_EL2, TRCIMSPECN, 41, 1)
++FIELD(HDFGWTR_EL2, TRCOSLAR, 42, 1)
++FIELD(HDFGWTR_EL2, TRCPRGCTLR, 44, 1)
++FIELD(HDFGWTR_EL2, TRCSEQSTR, 45, 1)
++FIELD(HDFGWTR_EL2, TRCSSCSRN, 46, 1)
++FIELD(HDFGWTR_EL2, TRCVICTLR, 48, 1)
++FIELD(HDFGWTR_EL2, TRFCR_EL1, 49, 1)
++FIELD(HDFGWTR_EL2, TRBBASER_EL1, 50, 1)
++FIELD(HDFGWTR_EL2, TRBLIMITR_EL1, 52, 1)
++FIELD(HDFGWTR_EL2, TRBMAR_EL1, 53, 1)
++FIELD(HDFGWTR_EL2, TRBPTR_EL1, 54, 1)
++FIELD(HDFGWTR_EL2, TRBSR_EL1, 55, 1)
++FIELD(HDFGWTR_EL2, TRBTRG_EL1, 56, 1)
++FIELD(HDFGWTR_EL2, PMUSERENR_EL0, 57, 1)
++FIELD(HDFGWTR_EL2, NBRBCTL, 60, 1)
++FIELD(HDFGWTR_EL2, NBRBDATA, 61, 1)
++FIELD(HDFGWTR_EL2, NPMSNEVFR_EL1, 62, 1)
++
+ typedef struct ARMCPRegInfo ARMCPRegInfo;
+ 
+ /*
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 8cf70693be4..063024508af 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -529,6 +529,16 @@ typedef struct CPUArchState {
+         uint64_t disr_el1;
+         uint64_t vdisr_el2;
+         uint64_t vsesr_el2;
++
++        /*
++         * Fine-Grained Trap registers. We store these as arrays so the
++         * access checking code doesn't have to manually select
++         * HFGRTR_EL2 vs HFDFGRTR_EL2 etc when looking up the bit to test.
++         * FEAT_FGT2 will add more elements to these arrays.
++         */
++        uint64_t fgt_read[2]; /* HFGRTR, HDFGRTR */
++        uint64_t fgt_write[2]; /* HFGWTR, HDFGWTR */
++        uint64_t fgt_exec[1]; /* HFGITR */
+     } cp15;
+ 
+     struct {
+@@ -4164,6 +4174,11 @@ static inline bool isar_feature_aa64_tgran64_2(const ARMISARegisters *id)
+     return t >= 2 || (t == 0 && isar_feature_aa64_tgran64(id));
+ }
+ 
++static inline bool isar_feature_aa64_fgt(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, FGT) != 0;
++}
++
+ static inline bool isar_feature_aa64_ccidx(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, CCIDX) != 0;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 66966869218..20527995359 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1869,6 +1869,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+         if (cpu_isar_feature(aa64_hcx, cpu)) {
+             valid_mask |= SCR_HXEN;
+         }
++        if (cpu_isar_feature(aa64_fgt, cpu)) {
++            valid_mask |= SCR_FGTEN;
++        }
+     } else {
+         valid_mask &= ~(SCR_RW | SCR_ST);
+         if (cpu_isar_feature(aa32_ras, cpu)) {
+@@ -7546,6 +7549,39 @@ static const ARMCPRegInfo scxtnum_reginfo[] = {
+       .access = PL3_RW,
+       .fieldoffset = offsetof(CPUARMState, scxtnum_el[3]) },
+ };
++
++static CPAccessResult access_fgt(CPUARMState *env, const ARMCPRegInfo *ri,
++                                 bool isread)
++{
++    if (arm_current_el(env) == 2 &&
++        arm_feature(env, ARM_FEATURE_EL3) && !(env->cp15.scr_el3 & SCR_FGTEN)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++    return CP_ACCESS_OK;
++}
++
++static const ARMCPRegInfo fgt_reginfo[] = {
++    { .name = "HFGRTR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 4,
++      .access = PL2_RW, .accessfn = access_fgt,
++      .fieldoffset = offsetof(CPUARMState, cp15.fgt_read[FGTREG_HFGRTR]) },
++    { .name = "HFGWTR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 5,
++      .access = PL2_RW, .accessfn = access_fgt,
++      .fieldoffset = offsetof(CPUARMState, cp15.fgt_write[FGTREG_HFGWTR]) },
++    { .name = "HDFGRTR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 3, .crm = 1, .opc2 = 4,
++      .access = PL2_RW, .accessfn = access_fgt,
++      .fieldoffset = offsetof(CPUARMState, cp15.fgt_read[FGTREG_HDFGRTR]) },
++    { .name = "HDFGWTR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 3, .crm = 1, .opc2 = 5,
++      .access = PL2_RW, .accessfn = access_fgt,
++      .fieldoffset = offsetof(CPUARMState, cp15.fgt_write[FGTREG_HDFGWTR]) },
++    { .name = "HFGITR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 6,
++      .access = PL2_RW, .accessfn = access_fgt,
++      .fieldoffset = offsetof(CPUARMState, cp15.fgt_exec[FGTREG_HFGITR]) },
++};
+ #endif /* TARGET_AARCH64 */
+ 
+ static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -8933,6 +8969,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_scxtnum, cpu)) {
+         define_arm_cp_regs(cpu, scxtnum_reginfo);
+     }
++
++    if (cpu_isar_feature(aa64_fgt, cpu)) {
++        define_arm_cp_regs(cpu, fgt_reginfo);
++    }
+ #endif
+ 
+     if (cpu_isar_feature(any_predinv, cpu)) {
 -- 
 2.34.1
 

@@ -1,118 +1,103 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1188971ejb;
-        Mon, 30 Jan 2023 11:37:32 -0800 (PST)
-X-Google-Smtp-Source: AK7set+LKyERvqfUQlw9YDfkhX02+Gf6I0vxmXMjBmf9vPYX0KPUt906gD0o0tn2L/SKbGUZltl1
-X-Received: by 2002:a0c:ea21:0:b0:538:e6a7:6a78 with SMTP id t1-20020a0cea21000000b00538e6a76a78mr17386691qvp.43.1675107452530;
-        Mon, 30 Jan 2023 11:37:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675107452; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1193492ejb;
+        Mon, 30 Jan 2023 11:47:42 -0800 (PST)
+X-Google-Smtp-Source: AK7set9ZqYmoQDArrfy9FXaHmCiefYnbmOvEo6a9KIuXoch6GyJ4bFxk8hO+IC3y38a3RC7+RoEq
+X-Received: by 2002:ad4:500d:0:b0:538:4c7b:fa9 with SMTP id s13-20020ad4500d000000b005384c7b0fa9mr19536365qvo.0.1675108061944;
+        Mon, 30 Jan 2023 11:47:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675108061; cv=none;
         d=google.com; s=arc-20160816;
-        b=pv6k/3onj/n2W7ic+QAjFVW+dcAkEYn4E36m2jy5P/DvOf5RX9A9ez114m4mO0GiW+
-         3TWBf773wTykqM3EGZrzg5FFXnGFIl0O6TkGZOChe8WWPlsgBbrA7SSmTP0BsLyXgtnm
-         DjYWgfSm2d2+iDR/e+yw+8Y8K4aJRPzn6CTy1V+jLcbFY7n5Bqg7FmeDrvwr4Tflcf0s
-         Y/8HoTi57Omjo5Eh73G+dExifzn1dgjOhm+egBuUr5+Kj33GwmErnQ3PIg+F+kFMVtFT
-         h1zgXpStLBeThDVyoDjSPV26Ffqa340HbxdOBHDshM7wM7ggj3HyZOj/4oeXAe+7geQ7
-         C5cQ==
+        b=c7W5rVIofjm3HljOJlfv5NhALv20uBLnzbPh57MYnFiOWwZcK2WNdIevo240CdGzcA
+         mqf+PUiuqcRDvLURpFwDIZdYRG2qhm+0FEfLRjPPxcmvbG70DJQ6wCRfOVpNZyjD7R2F
+         skRdYmuXjOyTtoRgCXQZWRvGLQAhPkNJSNNkGS2mpKGZ3lvxZ9qswQw+Fc7vytZLeRJX
+         SJMGfO5dC7uYDvNU1IdZP2msF8hPEO6P3ZGK4u+iOP6UFJwTvqM9NNo6ozGfmiAuQ4Z6
+         63AUslazNRALOvMm6YI07rpUfJgUBHPKbqg6IeNnA87qeGDvlqHbYG2+NIU4IdhtDTz2
+         TKtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=AA9esvsZFxH8kQfJpIhj4oVVAVHb2K+VrIFitU0VKL8=;
-        b=NVMzrH2PgoDl0k3NaCHr9CSgOv3dCp3EkhQntSHobMqDP6Zsdq3MIZIkK8fByeViBl
-         J5DbpvNgiseKAwlk+9adE4W6JYuMewCRXM6bB0VnZRHB+q7C+uSXomCnJpWEDrogmGtd
-         tt0ZmF1p+sgm75U/z/IgM2AtDLWIOK982zxIpP8maMAhbua16xY5eweztZ7DFMBYJxoS
-         umS/aHIUDSoYXAcAlN7hjC4sJ/FYQseLklBQFAVEdk3fHhCamr94ON4Hb/ct889VxuQk
-         CSFRiE49j+JOlBzE15sgb6Mh1XwgOGFTgImUq1cwo29ostJd3VF0DvAXzPx1R4BCBhD6
-         InbA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=wndVqPfVUSXYsL1HMhqEZ0esXnhbj/t7n1eyLj+lBg8=;
+        b=pYT00Rp5QLYLmVMSB2BrNLL5dYg+TTPGYLSoMZS5LHP869APKWWTBQRaafMLFCKxFk
+         4u8HgXCqSc3BGMFLiDF2fz2AB3TxqbNUWCyuZ0cnpBl07zpwqJYG1iasgtq2H2w/K+31
+         TP8Zy1BtsmSB/lrXrAfJLUbvBqscKMbAt9DiGLzCN5+FJHDw96//ki/eqZaisRYSzkpx
+         LGocd+FFTbm+dEqGZDVjf8OWg2G5ryCp9AmtxVmCeRbmmoDBwj39i/U84NZEpOQ5NfpM
+         V8wxfjuLsBKq0aEdtaRap+p6q358bTU7SHz6llrEya/ahW/7OXTFdgX+vZDmD5XXmAqo
+         CDSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xyXlLSmz;
+       dkim=pass header.i=@google.com header.s=20210112 header.b="ebY/6M6P";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dv14-20020a05620a1b8e00b007069773f448si7397355qkb.672.2023.01.30.11.37.32
+        by mx.google.com with ESMTPS id m21-20020ae9f215000000b006ee9af422b6si6902474qkg.226.2023.01.30.11.47.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jan 2023 11:37:32 -0800 (PST)
+        Mon, 30 Jan 2023 11:47:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xyXlLSmz;
+       dkim=pass header.i=@google.com header.s=20210112 header.b="ebY/6M6P";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pMZxe-0005hx-SJ; Mon, 30 Jan 2023 14:37:02 -0500
+	id 1pMa7R-0002i3-Rp; Mon, 30 Jan 2023 14:47:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pMZxd-0005hM-0w
- for qemu-arm@nongnu.org; Mon, 30 Jan 2023 14:37:01 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ (Exim 4.90_1) (envelope-from <tabba@google.com>) id 1pMa7Q-0002hn-9d
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 14:47:08 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pMZxb-0008IU-Bn
- for qemu-arm@nongnu.org; Mon, 30 Jan 2023 14:37:00 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id
- e8-20020a17090a9a8800b0022c387f0f93so11569696pjp.3
- for <qemu-arm@nongnu.org>; Mon, 30 Jan 2023 11:36:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=AA9esvsZFxH8kQfJpIhj4oVVAVHb2K+VrIFitU0VKL8=;
- b=xyXlLSmz/vpOxIvWq/x8+h1E7PwwNq8I76tv6/HcIU6tj8+qMd4x4I4PtO2UJ7oKUp
- Hdm0uFUY8ixyfkZJo+pkfWCXf5Cyb2+LQB1yQIe8UgCamjl/l8lnDxmplXMR5h7ct8mq
- DNPs3Xk9Mij+4podPZ566VqqwJel5eqkMZ3Y7Nvqwq5Am8piURmqRZStFeeJHxugrIxO
- w4PC658fFsxduqATds1eGOe8be2kcIft1Djr4kif7nugb/de7QD/A7RFg7eoQHmhf+IK
- DZbcX6+zyeN0jHJUL74Yn2Ggu+BDzCBvQkGotXJgVfB71o2zSQg+QeFEFFfuMLbxjXx/
- 4qwA==
+ (Exim 4.90_1) (envelope-from <tabba@google.com>) id 1pMa7N-0001Hn-Un
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 14:47:07 -0500
+Received: by mail-lf1-x130.google.com with SMTP id f34so20651483lfv.10
+ for <qemu-arm@nongnu.org>; Mon, 30 Jan 2023 11:47:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=wndVqPfVUSXYsL1HMhqEZ0esXnhbj/t7n1eyLj+lBg8=;
+ b=ebY/6M6Ps7jdFLOGX9rpIlyBzr4bQgYMl0TQ34t5rU8Zp3AUqUfpgP1E1ROcu71Cs5
+ fHBGKLvJV8TK7GaeikwizLpMdLfrvtHdt/UW4nPNmzT1awanpq6cmsQMN1TxWzIWDBoE
+ 8exLja0rEU/b/7eXzOfoHWpNeeydVeUe8kvLSPuGr54iKnuh8LZ0Gy9kp27xYTGmco5X
+ y6RLKvbl0kQmhe3Nn/OYboNBxN1EbOtpG1xwCrgZdwvyMDxcyVouxbwWzw8FjZnv2Evl
+ G/AOCI8EzdpttqxVT7SvoFPMz9dvqXyBi3w4nv9wC1digJnNiBP5QNbfIoTt+5wfc+BX
+ /YYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=AA9esvsZFxH8kQfJpIhj4oVVAVHb2K+VrIFitU0VKL8=;
- b=gDlIP0oxAMeeFrORbB9moPvEMZcfg4B2RX1VVbdT4+jim4Tl3S8kLLUjMbO+eY5yW9
- QOhndhejpQyS6H2xQcZo7ZBL8NZ6sKmYXmVMSnIKE861biWuoN6iCrEu7+y5JfYGTPi/
- wsPcNQGZVJAWLvCZcoe4LMOINSbEoTzMJCqLmyacNdtRrqeaV7sZq2x+7yhL9Zgbneyv
- zLvMKMQA3KB7MMwA23H1UDHhMvoD3o/TT9Gd6B5t88qOSazFGxV3JhuB2yyIjdXPdcIg
- RRWHn6qZ0/m1dNbjeKB2633Iw2NlxywknKa0b0z1/eGS6366v2SL/IyA+OU1z96oNUJ3
- ix0g==
-X-Gm-Message-State: AFqh2kqTTwyATfsfban1j2sZwzZcb+E69cO8q/bfR2VwkSi2BsHwzBst
- POO9eoEX6WHae99sagcUYDLRDg==
-X-Received: by 2002:a17:90a:d585:b0:227:c69:3ca7 with SMTP id
- v5-20020a17090ad58500b002270c693ca7mr53225440pju.10.1675107417515; 
- Mon, 30 Jan 2023 11:36:57 -0800 (PST)
-Received: from [192.168.50.50] (rrcs-173-197-98-118.west.biz.rr.com.
- [173.197.98.118]) by smtp.gmail.com with ESMTPSA id
- ep22-20020a17090ae65600b0022c08445e97sm7272593pjb.38.2023.01.30.11.36.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Jan 2023 11:36:57 -0800 (PST)
-Message-ID: <7afb4a86-0c01-4b5c-13bb-ea19a555c680@linaro.org>
-Date: Mon, 30 Jan 2023 09:36:54 -1000
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=wndVqPfVUSXYsL1HMhqEZ0esXnhbj/t7n1eyLj+lBg8=;
+ b=t8j3XOSAy7sf/OqVRBmzfAPbCPqyM/ZD16uDlA5BX8BNg+D8Tg5okAKXCB/RME8YoP
+ A54lOKopZbeQwx15BIG9DKIPWhEORa+GuaSk0uBcA7w2YWiwJoRQyji9tay5J0MRaQTA
+ svcQxaoTRgXjywBDyAi6P2ii7KnMFv6/G06xYGBH0e4wZyxVZiRey/oLNGIQcnADGc0G
+ vEIIwHev25kftAtipoJpYaGqVdZIa8fr0hHzAdkgIDBxn7FhEVSk3JZaV4p5xINhejuA
+ vItFdYyCR6jILlwHKQZrig7du+JEkxyJr5g9Tsg1o2p+/weutMurCWVj2QPnjww4PAtO
+ IVVg==
+X-Gm-Message-State: AFqh2kq7ZFATYGdnUWh3hExCO44B6ONpK4gyiuhAegvv8wdatGB5LPXw
+ n+rCV/iktxzMCe2S+shFLHlaBLYOKxu0EI1meozqvQ==
+X-Received: by 2002:a05:6512:1113:b0:4d0:9cea:63f1 with SMTP id
+ l19-20020a056512111300b004d09cea63f1mr3857918lfg.221.1675108022799; Mon, 30
+ Jan 2023 11:47:02 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2 06/23] target/arm: Make HSTR_EL2 traps take priority
- over UNDEF-at-EL1
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
 References: <20230130182459.3309057-1-peter.maydell@linaro.org>
- <20230130182459.3309057-7-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230130182459.3309057-7-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20230130182459.3309057-1-peter.maydell@linaro.org>
+From: Fuad Tabba <tabba@google.com>
+Date: Mon, 30 Jan 2023 19:47:00 +0000
+Message-ID: <CA+EHjTwG8Sj=V4NhF4GqdTN=t=pxCWANaMixjQ58fAp-fDsZUQ@mail.gmail.com>
+Subject: Re: [PATCH v2 00/23] target/arm: Implement FEAT_FGT fine-grained traps
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=tabba@google.com; helo=mail-lf1-x130.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,37 +112,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X9TQufWvkUoS
+X-TUID: f2gwt2dq8ZqO
 
-On 1/30/23 08:24, Peter Maydell wrote:
-> The semantics of HSTR_EL2 require that it traps cpreg accesses
-> to EL2 for:
->   * EL1 accesses
->   * EL0 accesses, if the access is not UNDEFINED when the
->     trap bit is 0
-> 
-> (You can see this in the I_ZFGJP priority ordering, where HSTR_EL2
-> traps from EL1 to EL2 are priority 12, UNDEFs are priority 13, and
-> HSTR_EL2 traps from EL0 are priority 15.)
-> 
-> However, we don't get this right for EL1 accesses which UNDEF because
-> the register doesn't exist at all or because its ri->access bits
-> non-configurably forbid the access.  At EL1, check for the HSTR_EL2
-> trap early, before either of these UNDEF reasons.
-> 
-> We have to retain the HSTR_EL2 check in access_check_cp_reg(),
-> because at EL0 any kind of UNDEF-to-EL1 (including "no such
-> register", "bad ri->access" and "ri->accessfn returns 'trap to EL1'")
-> takes precedence over the trap to EL2.  But we only need to do that
-> check for EL0 now.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> Message-id:20230127175507.2895013-7-peter.maydell@linaro.org
-> ---
->   target/arm/op_helper.c |  6 +++++-
->   target/arm/translate.c | 28 +++++++++++++++++++++++++++-
->   2 files changed, 32 insertions(+), 2 deletions(-)
+Hi,
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+On Mon, Jan 30, 2023 at 6:26 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This series implements the FEAT_FGT fine-grained traps architectural
+> feature. The bulk of this is new system registers HFGRTR_EL2, HFGWTR_EL2,
+> HFGITR_EL2, HDFGRTR_EL2, HDFGWTR_EL2, which have bits that enable
+> trapping of system register and system instruction accesses on a
+> fine-grained basis (typically one or a few sysregs at a time).
+>
+> Changes v1->v2:
+>  * patch 6 updated to use RTH's suggestion of doing the check
+>    inline rather than in a helper function
+>  * all other patches are already reviewed
+>
+> In theory we could implement this with our existing ARMCPRegInfo::accessfn
+> machinery, but we would end up with many many very nearly identical
+> access functions. Instead this series adds a new ARMCPRegInfo::fgt
+> field, which specifies which bit in which FGT register should be
+> checked; this is then tested by code in the access_check_cp_reg
+> helper function.
+>
+> A few bits in HFGITR_EL2 allow trapping of instructions which aren't
+> handled by the ARMCPRegInfo mechanism: ERET and SVC. These we just
+> implement "by hand". FEAT_FGT also adds new MDCR_EL3.TDCC and
+> MDCR_EL2.TDCC bits for trapping the Debug Comms Channel registers;
+> these we implement with a standard accessfn.
+>
+> The first seven patches are various cleanups and bugfixes that
+> I noticed while I was doing the FEAT_FGT work. In particular, we
+> weren't getting the priority of HSTR_EL2 traps right -- these should
+> take priority over UNDEF-at-EL traps but not over UNDEF-at-EL0 traps.
+> The rest of the series is FEAT_FGT itself.
 
-r~
+Thanks for this. I'd tested v1, which allowed me to run KVM/SME tests
+with qemu (which require FGTs). Reran the tests with V2:
+Tested-by: Fuad Tabba <tabba@google.com>
+
+Cheers,
+/fuad
+
+
+
+> thanks
+> -- PMM
+>
+> Peter Maydell (23):
+>   target/arm: Name AT_S1E1RP and AT_S1E1WP cpregs correctly
+>   target/arm: Correct syndrome for ATS12NSO* at Secure EL1
+>   target/arm: Remove CP_ACCESS_TRAP_UNCATEGORIZED_{EL2, EL3}
+>   target/arm: Move do_coproc_insn() syndrome calculation earlier
+>   target/arm: All UNDEF-at-EL0 traps take priority over HSTR_EL2 traps
+>   target/arm: Make HSTR_EL2 traps take priority over UNDEF-at-EL1
+>   target/arm: Disable HSTR_EL2 traps if EL2 is not enabled
+>   target/arm: Define the FEAT_FGT registers
+>   target/arm: Implement FGT trapping infrastructure
+>   target/arm: Mark up sysregs for HFGRTR bits 0..11
+>   target/arm: Mark up sysregs for HFGRTR bits 12..23
+>   target/arm: Mark up sysregs for HFGRTR bits 24..35
+>   target/arm: Mark up sysregs for HFGRTR bits 36..63
+>   target/arm: Mark up sysregs for HDFGRTR bits 0..11
+>   target/arm: Mark up sysregs for HDFGRTR bits 12..63
+>   target/arm: Mark up sysregs for HFGITR bits 0..11
+>   target/arm: Mark up sysregs for HFGITR bits 12..17
+>   target/arm: Mark up sysregs for HFGITR bits 18..47
+>   target/arm: Mark up sysregs for HFGITR bits 48..63
+>   target/arm: Implement the HFGITR_EL2.ERET trap
+>   target/arm: Implement the HFGITR_EL2.SVC_EL0 and SVC_EL1 traps
+>   target/arm: Implement MDCR_EL2.TDCC and MDCR_EL3.TDCC traps
+>   target/arm: Enable FEAT_FGT on '-cpu max'
+>
+>  docs/system/arm/emulation.rst |   1 +
+>  target/arm/cpregs.h           | 484 +++++++++++++++++++++++++++++++++-
+>  target/arm/cpu.h              |  18 ++
+>  target/arm/internals.h        |  20 ++
+>  target/arm/syndrome.h         |  10 +
+>  target/arm/translate.h        |   6 +
+>  hw/intc/arm_gicv3_cpuif.c     |   2 +
+>  target/arm/cpu64.c            |   1 +
+>  target/arm/debug_helper.c     |  46 +++-
+>  target/arm/helper.c           | 245 ++++++++++++++++-
+>  target/arm/op_helper.c        |  58 +++-
+>  target/arm/translate-a64.c    |  22 +-
+>  target/arm/translate.c        | 125 +++++----
+>  13 files changed, 974 insertions(+), 64 deletions(-)
+>
+> --
+> 2.34.1
+>
+>

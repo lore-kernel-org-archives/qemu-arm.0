@@ -1,104 +1,104 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149839ejb;
-        Mon, 30 Jan 2023 10:26:44 -0800 (PST)
-X-Google-Smtp-Source: AK7set+iZHP3rm1hFY3QxPApcfi7pYh6TktAjKwDlwyUsxuS7X1qGuL88lE9AFjemma/iwfWoiNa
-X-Received: by 2002:a05:622a:1183:b0:3b9:a586:374e with SMTP id m3-20020a05622a118300b003b9a586374emr974194qtk.67.1675103204801;
-        Mon, 30 Jan 2023 10:26:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675103204; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149846ejb;
+        Mon, 30 Jan 2023 10:26:45 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtu7MiN3aBPOIl0P+mnkRtKobzC2HGoe4MBRIoOl4J945RZJQkeaq1BzIHpW9uo3bZAbCBQ
+X-Received: by 2002:a05:6214:2f06:b0:531:557a:63c4 with SMTP id od6-20020a0562142f0600b00531557a63c4mr81732114qvb.39.1675103205277;
+        Mon, 30 Jan 2023 10:26:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675103205; cv=none;
         d=google.com; s=arc-20160816;
-        b=KAWBDOcxeUQmevntTyYmHGJBZntBThZ5ZAYkPcmS0BWPEW9jp3GbbT16l0LLrfySyE
-         RCGyPCaNO+2OsJZL/pQDmzUQZA6EAVVnTxyHSp84EItGbwVKxvAyfp+hNmUJhiCSvQ+q
-         ZAkD510Oip0OqYbjNcnD+KE1b8MeQP4w4FXB+kmMt2xuGMeYN/e25KRjwIu1MxA1YE0W
-         7HnipnLjhcOJc/6FBCigb3LGG0OX58JkF1DbjyoO95VFVcfxZZOFkboq6EhAhGWWKLlJ
-         zr0F683FbRqsAwtW7k0fBfJ9ODqVhdDiE18RlZg9HbvYpGWiArxfExakWVau9MJac2Dc
-         T+XA==
+        b=wG6M/+TwXzqJiuzZKqSuOVpA33A0uPbhSIRHm9Dh3oyLoW81AoSJHqvkDO2Ir8S8fr
+         gmbTN1Z92MqShV20IuowizvFw9vNPjF9cwOqdvtdEA3od6InCrrCD9V/f+sx4INGKG5o
+         P4/8ZQpx27G+dsa5lViNh0sxdh4ifNtviGtycLUy2haucz6fPYw9u/iFGM/bY5tER/4M
+         taad1JTe3QwT9R4z07CgmnjN4DnYgb7Dwf3jEGafUjVdxkQX+0YxPTgC0435nDc4lIWv
+         PZhSJl/XAK/THSDS7sx24dh0w2pGycWj1e8GTV9YhAq168DkrcDCXmZSCHyJlBr7KJ0o
+         cVBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ot3R8lszKLTWDHJu832shWug096nL7dcemqGGdqcIoc=;
-        b=xCmtW0oQO4VLXV3BF2W19M/isuTUNSUGPjwo32BPyJVCVxh9YwO0FuQ11m/SXB2AuJ
-         eJuxTnhL/RolMTL1KG5Pkgd33SAlmCsNYbAE13hZJAmVl6EKQn1eh6PztI3eP2x/wW/Y
-         ik/bOtraEtZrU9+MHHU+RpA8Q3CHdJyZsdJkmu5fZ3fN77pfZlPNI1fCrk/NEpKPQbRs
-         Q2QmldcKzKxFpbCh9qCeREdnEDxJqaAvX6SgIMIm/ri6NC2DxqkR3TonLm+h65RnvvEC
-         7P8Bf3r73zsHeVPMqfwRpmh2IJvnZITocwlRKcsLgvqxiNXgyEF3XIFwe+uIiMw5fGk2
-         RXmA==
+        bh=6nliOuAuRjTcf2JoYdVKu3rNo2RhYZa+jJOmXF9ZJUU=;
+        b=LVaNX+Z+wUJ3C992I/4L2k0zWeI8Ox1/fvVDQJ7pgTNggRlgq58oRai+t0WAlwmp1H
+         u3o5ZZwfn/tBflh+bjAheoBbIO6zMd7wOwSl1ywkT2/9kUSF3Q3Dq+0Dzi+cZyoIoZvd
+         /tDj8EiS3FEI3wMUFT1R8kUD0TNLp7ZWIOmmkPFMvJuBNTX+h5r4dAM+5P3wG/oUEBkz
+         krZfIfXkilywur13BK9vQWWSXbc0+hwNTLJ2yYfSlQMsT6/vxUPPStoqdm45ppzl02+Z
+         NcfV2MkctGacCszIkdCzlRR3KOkxoNvUEXsubgYX/wOJQS1cGH1KfT10UCVmu8fvMNz2
+         1lzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UD8E8PTP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kQwbvB71;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o30-20020a05620a0d5e00b007091983f544si6976165qkl.503.2023.01.30.10.26.44
+        by mx.google.com with ESMTPS id e5-20020ad450c5000000b004b4457d51e7si6661676qvq.152.2023.01.30.10.26.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jan 2023 10:26:44 -0800 (PST)
+        Mon, 30 Jan 2023 10:26:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UD8E8PTP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kQwbvB71;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pMYqJ-00015C-5r; Mon, 30 Jan 2023 13:25:23 -0500
+	id 1pMYqF-00012F-Ee; Mon, 30 Jan 2023 13:25:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYqF-00012E-IE
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:19 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1pMYq9-0000zb-0t
+ for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:13 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYq8-0008CG-Gk
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:18 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id o18so2514637wrj.3
- for <qemu-devel@nongnu.org>; Mon, 30 Jan 2023 10:25:12 -0800 (PST)
+ id 1pMYq4-0008NL-GD
+ for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:12 -0500
+Received: by mail-wr1-x435.google.com with SMTP id t18so12010366wro.1
+ for <qemu-devel@nongnu.org>; Mon, 30 Jan 2023 10:25:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=ot3R8lszKLTWDHJu832shWug096nL7dcemqGGdqcIoc=;
- b=UD8E8PTPYv8j69oYQpLCQ9bNUKK/eOJcGKVergZYlDz08N00v6q3zHgA+WQmoIb3zK
- 8lDR7MEsolbCtkq+rLsc8ljDlAWWadfW1nGO0PVUppfK5h43DIGZx2Roaw6JV0Yvyt4S
- wBQhZEyaHhQS1znIla1IP3ehyJI3xnTt0SfTO37UqlvBly/yla4sJEl9yaNZwxujpwLp
- R6+s8vUvcWxFiiLfqtqtCCfeXqrRf10rUZwX0SoNQ7FOYi78LEU5EpSViziwPJVxufc/
- mzzDorXA5oKe+eEmUw1Kddz9bFtyO6WSOPChnXw/1ibUgtvdR6s13KzMjyN7cnJKUX2g
- BQ/Q==
+ :reply-to; bh=6nliOuAuRjTcf2JoYdVKu3rNo2RhYZa+jJOmXF9ZJUU=;
+ b=kQwbvB71/z0WSJG9nauI5EZOVUcseABqYN/23Efvh70IYR9DqIU4GhSsPzKSLJOEKp
+ 9VXaxaqtIqz/5nU21Cc0878kKi13t3QrgVohhEhZUyXU4I7/hl51m16OGZvQNSWec7V4
+ nEoMs8eoU/lZXFPeeyGkjsh3K03dBJosNxOs89u3JTiqZIdHl2tvU5nhTC3T/tvzOMvz
+ Jv0QmH7HGKKpdC/cOD5QPgE9o1lUmkjqP6hwxPbahYUwOVW2ESjOe9NiVSCYcj6t8shx
+ 9pREYPmBhYMOEAUaw9Tg7f2KEvgVngHBpcLtLya2lQQ+xktxc+C4YsKwng17D0UJFCIO
+ Mvqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ot3R8lszKLTWDHJu832shWug096nL7dcemqGGdqcIoc=;
- b=sKifGjH0nun8eGKq5GyW6VTgVhCRc3CssvyOOCSKh2dohNOFHrhOr5pleCaqPwEUd/
- kQ5d03SUxll8qe9OE1CvjIFMfVVIEcFG0J/fSby15bb6zqRIcjBH00Nmy0cWxTBFfbcl
- 6DgZ4FrOXQafEXofewJsXYIamkb6kt0m5VajWwMTxOxWpzOmKojFt1m1wQVyt5iFMkQd
- YrtgYeChu07F/SFZl7OdIOPbkIyZlldt/15BOQCnrb5Yt+ZS58Q7MwrUt7Ln1cDcg7D4
- g5iT9/u1EdNJ33XdWUMO3Hdad6CrzPA9/LGe6ocznZrqYe676Y241tC8rcIeQbQnAWdn
- 77Sg==
-X-Gm-Message-State: AO0yUKUS1wMU8AdubTtzg94ZF+70egbMMOHxJdWYvLhxDvyTNW/YkZNW
- INpD/ZWJSNtDyweQGri3WqdNIRk/x/22k/jo
-X-Received: by 2002:a5d:4cd0:0:b0:2bf:cfb4:817c with SMTP id
- c16-20020a5d4cd0000000b002bfcfb4817cmr12131264wrt.35.1675103111698; 
- Mon, 30 Jan 2023 10:25:11 -0800 (PST)
+ bh=6nliOuAuRjTcf2JoYdVKu3rNo2RhYZa+jJOmXF9ZJUU=;
+ b=HpkCZ0R5E6jcI0SWeMuVR/byLahnYrEKGku5ZAhm+hwEnSxm0y+SGktDKoVxMsSPd2
+ 4LYVZtrMUy/gT1jc0REA+N/IXgt52ByUcZoiXtDBDH0/w3kJR4X4JciHKvrMN/b3rPaJ
+ 0cjiJQhDOjtgMbrr+ednD0CtZY8/N4yYe6gd28ukNhS6jSO37qHuVZRDVCCwGLo3F44B
+ 2xhRQOVcoScNmAAeqWgBweHQE/Jl4OkDzEJWNTRl2sS1hu7jCfpV5Hb/YjXtrc9mYSJM
+ fNTDlCeZzkWND/51YJfPCjlQ36Tkne8o+0qENqMoKIYrMpYkkyILXARseLg3XMu269cR
+ yDjg==
+X-Gm-Message-State: AO0yUKWY0NFqRV759qshie3ZiLGnEaHph9BrZi3u0c3qs4diBgXlmJHB
+ tHSQRAx59+Heo6VJB9oYE3KLV7MYT6DZVniM
+X-Received: by 2002:a05:6000:18a9:b0:2bf:b54f:61f0 with SMTP id
+ b9-20020a05600018a900b002bfb54f61f0mr30607927wri.57.1675103104578; 
+ Mon, 30 Jan 2023 10:25:04 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.10
+ l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Jan 2023 10:25:10 -0800 (PST)
+ Mon, 30 Jan 2023 10:25:04 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 10/23] target/arm: Mark up sysregs for HFGRTR bits 0..11
-Date: Mon, 30 Jan 2023 18:24:46 +0000
-Message-Id: <20230130182459.3309057-11-peter.maydell@linaro.org>
+Subject: [PATCH v2 03/23] target/arm: Remove CP_ACCESS_TRAP_UNCATEGORIZED_{EL2, EL3}
+Date: Mon, 30 Jan 2023 18:24:39 +0000
+Message-Id: <20230130182459.3309057-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230130182459.3309057-1-peter.maydell@linaro.org>
 References: <20230130182459.3309057-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,154 +120,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PmPUX06xFwit
+X-TUID: LvG1mNnHAEBC
 
-Mark up the sysreg definitions for the registers trapped
-by HFGRTR/HFGWTR bits 0..11.
+We added the CPAccessResult values CP_ACCESS_TRAP_UNCATEGORIZED_EL2
+and CP_ACCESS_TRAP_UNCATEGORIZED_EL3 purely in order to use them in
+the ats_access() function, but doing so was incorrect (a bug fixed in
+a previous commit).  There aren't any cases where we want an access
+function to be able to request a trap to EL2 or EL3 with a zero
+syndrome value, so remove these enum values.
+
+As well as cleaning up dead code, the motivation here is that
+we'd like to implement fine-grained-trap handling in
+helper_access_check_cp_reg(). Although the fine-grained traps
+to EL2 are always lower priority than trap-to-same-EL and
+higher priority than trap-to-EL3, they are in the middle of
+various other kinds of trap-to-EL2. Knowing that a trap-to-EL2
+must always for us have the same syndrome (ie that an access
+function will return CP_ACCESS_TRAP_EL2 and there is no other
+kind of trap-to-EL2 enum value) means we don't have to try
+to choose which of the two syndrome values to report if the
+access would trap to EL2 both for the fine-grained-trap and
+because the access function requires it.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20230127175507.2895013-11-peter.maydell@linaro.org
+Message-id: 20230127175507.2895013-4-peter.maydell@linaro.org
 ---
- target/arm/cpregs.h | 14 ++++++++++++++
- target/arm/helper.c | 17 +++++++++++++++++
- 2 files changed, 31 insertions(+)
+ target/arm/cpregs.h    | 4 ++--
+ target/arm/op_helper.c | 2 ++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 8cc12045af6..82f2cefff0a 100644
+index 7e78c2c05c6..9744179df01 100644
 --- a/target/arm/cpregs.h
 +++ b/target/arm/cpregs.h
-@@ -577,6 +577,20 @@ typedef enum FGTBit {
-     FGT_HDFGRTR = FGT_RW | (FGTREG_HDFGRTR << R_FGT_IDX_SHIFT),
-     FGT_HDFGWTR = FGT_W | (FGTREG_HDFGWTR << R_FGT_IDX_SHIFT),
-     FGT_HFGITR = FGT_EXEC | (FGTREG_HFGITR << R_FGT_IDX_SHIFT),
-+
-+    /* Trap bits in HFGRTR_EL2 / HFGWTR_EL2, starting from bit 0. */
-+    DO_BIT(HFGRTR, AFSR0_EL1),
-+    DO_BIT(HFGRTR, AFSR1_EL1),
-+    DO_BIT(HFGRTR, AIDR_EL1),
-+    DO_BIT(HFGRTR, AMAIR_EL1),
-+    DO_BIT(HFGRTR, APDAKEY),
-+    DO_BIT(HFGRTR, APDBKEY),
-+    DO_BIT(HFGRTR, APGAKEY),
-+    DO_BIT(HFGRTR, APIAKEY),
-+    DO_BIT(HFGRTR, APIBKEY),
-+    DO_BIT(HFGRTR, CCSIDR_EL1),
-+    DO_BIT(HFGRTR, CLIDR_EL1),
-+    DO_BIT(HFGRTR, CONTEXTIDR_EL1),
- } FGTBit;
+@@ -224,10 +224,10 @@ typedef enum CPAccessResult {
+      * Access fails and results in an exception syndrome 0x0 ("uncategorized").
+      * Note that this is not a catch-all case -- the set of cases which may
+      * result in this failure is specifically defined by the architecture.
++     * This trap is always to the usual target EL, never directly to a
++     * specified target EL.
+      */
+     CP_ACCESS_TRAP_UNCATEGORIZED = (2 << 2),
+-    CP_ACCESS_TRAP_UNCATEGORIZED_EL2 = CP_ACCESS_TRAP_UNCATEGORIZED | 2,
+-    CP_ACCESS_TRAP_UNCATEGORIZED_EL3 = CP_ACCESS_TRAP_UNCATEGORIZED | 3,
+ } CPAccessResult;
  
- #undef DO_BIT
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2389e41bd07..30e54455ac7 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -633,6 +633,7 @@ static const ARMCPRegInfo cp_reginfo[] = {
-     { .name = "CONTEXTIDR_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 13, .crm = 0, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_CONTEXTIDR_EL1,
-       .secure = ARM_CP_SECSTATE_NS,
-       .fieldoffset = offsetof(CPUARMState, cp15.contextidr_el[1]),
-       .resetvalue = 0, .writefn = contextidr_write, .raw_writefn = raw_write, },
-@@ -2163,6 +2164,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 1, .opc2 = 0,
-       .access = PL1_R,
-       .accessfn = access_tid4,
-+      .fgt = FGT_CCSIDR_EL1,
-       .readfn = ccsidr_read, .type = ARM_CP_NO_RAW },
-     { .name = "CSSELR", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 2, .opc2 = 0,
-@@ -2179,6 +2181,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 1, .crn = 0, .crm = 0, .opc2 = 7,
-       .access = PL1_R, .type = ARM_CP_CONST,
-       .accessfn = access_aa64_tid1,
-+      .fgt = FGT_AIDR_EL1,
-       .resetvalue = 0 },
-     /*
-      * Auxiliary fault status registers: these also are IMPDEF, and we
-@@ -2187,10 +2190,12 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-     { .name = "AFSR0_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_AFSR0_EL1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     { .name = "AFSR1_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_AFSR1_EL1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     /*
-      * MAIR can just read-as-written because we don't implement caches
-@@ -4392,6 +4397,7 @@ static const ARMCPRegInfo lpae_cp_reginfo[] = {
-     { .name = "AMAIR0", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_AMAIR_EL1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     /* AMAIR1 is mapped to AMAIR_EL1[63:32] */
-     { .name = "AMAIR1", .cp = 15, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 1,
-@@ -7041,42 +7047,52 @@ static const ARMCPRegInfo pauth_reginfo[] = {
-     { .name = "APDAKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 2, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APDAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apda.lo) },
-     { .name = "APDAKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 2, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APDAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apda.hi) },
-     { .name = "APDBKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 2, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APDBKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apdb.lo) },
-     { .name = "APDBKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 2, .opc2 = 3,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APDBKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apdb.hi) },
-     { .name = "APGAKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 3, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APGAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apga.lo) },
-     { .name = "APGAKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 3, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APGAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apga.hi) },
-     { .name = "APIAKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 1, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APIAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apia.lo) },
-     { .name = "APIAKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 1, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APIAKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apia.hi) },
-     { .name = "APIBKEYLO_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 1, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APIBKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apib.lo) },
-     { .name = "APIBKEYHI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 1, .opc2 = 3,
-       .access = PL1_RW, .accessfn = access_pauth,
-+      .fgt = FGT_APIBKEY,
-       .fieldoffset = offsetof(CPUARMState, keys.apib.hi) },
- };
- 
-@@ -7940,6 +7956,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 1, .opc2 = 1,
-             .access = PL1_R, .type = ARM_CP_CONST,
-             .accessfn = access_tid4,
-+            .fgt = FGT_CLIDR_EL1,
-             .resetvalue = cpu->clidr
-         };
-         define_one_arm_cp_reg(cpu, &clidr);
+ typedef struct ARMCPRegInfo ARMCPRegInfo;
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 31f89db8997..def5d3515e2 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -673,6 +673,8 @@ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
+     case CP_ACCESS_TRAP:
+         break;
+     case CP_ACCESS_TRAP_UNCATEGORIZED:
++        /* Only CP_ACCESS_TRAP traps are direct to a specified EL */
++        assert((res & CP_ACCESS_EL_MASK) == 0);
+         if (cpu_isar_feature(aa64_ids, cpu) && isread &&
+             arm_cpreg_in_idspace(ri)) {
+             /*
 -- 
 2.34.1
 

@@ -1,185 +1,208 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149846ejb;
-        Mon, 30 Jan 2023 10:26:45 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXtu7MiN3aBPOIl0P+mnkRtKobzC2HGoe4MBRIoOl4J945RZJQkeaq1BzIHpW9uo3bZAbCBQ
-X-Received: by 2002:a05:6214:2f06:b0:531:557a:63c4 with SMTP id od6-20020a0562142f0600b00531557a63c4mr81732114qvb.39.1675103205277;
-        Mon, 30 Jan 2023 10:26:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675103205; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149892ejb;
+        Mon, 30 Jan 2023 10:26:49 -0800 (PST)
+X-Google-Smtp-Source: AK7set//jfk+Ba7QbCCtJLcH4GA6N2fRYKYf/6XhmIi8cV4kWyoRSkQVMN/LQ4HGN9GbLTaLVfsu
+X-Received: by 2002:ac8:5a41:0:b0:3b8:6db0:7565 with SMTP id o1-20020ac85a41000000b003b86db07565mr4039716qta.11.1675103209299;
+        Mon, 30 Jan 2023 10:26:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675103209; cv=none;
         d=google.com; s=arc-20160816;
-        b=wG6M/+TwXzqJiuzZKqSuOVpA33A0uPbhSIRHm9Dh3oyLoW81AoSJHqvkDO2Ir8S8fr
-         gmbTN1Z92MqShV20IuowizvFw9vNPjF9cwOqdvtdEA3od6InCrrCD9V/f+sx4INGKG5o
-         P4/8ZQpx27G+dsa5lViNh0sxdh4ifNtviGtycLUy2haucz6fPYw9u/iFGM/bY5tER/4M
-         taad1JTe3QwT9R4z07CgmnjN4DnYgb7Dwf3jEGafUjVdxkQX+0YxPTgC0435nDc4lIWv
-         PZhSJl/XAK/THSDS7sx24dh0w2pGycWj1e8GTV9YhAq168DkrcDCXmZSCHyJlBr7KJ0o
-         cVBQ==
+        b=hdz6AJ8T//8o0/yTbagx1FIKy8wAd0xDaV2A4e8VjqTJEbyymo0y2zqdqhA2Rfl9vU
+         2lTpF7l+RRwkxU4Xw94Jk92FGeAfg34n06BOc9M7dXtKsgzrTmgNg3//ZpuNM26vs8jS
+         jRiaYJs/K9akhjnzVq/cPMht00rzqykViIkujHFgNg+Q2mJmTccCgf7QnQ+Orn6/WVfo
+         8Fzrmdy4C++R28Gxvlne7CdrUFAF/pS5UU3CXnQR33g6WXePzHGmSH1CaeIQDIhNX9cf
+         lue8mCp3FNyvUNneEFEJzvlt+C4Z7IflioeCRjmv/bnToaOK0M9TS3rUJQZNH/QVCRjv
+         nFYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=6nliOuAuRjTcf2JoYdVKu3rNo2RhYZa+jJOmXF9ZJUU=;
-        b=LVaNX+Z+wUJ3C992I/4L2k0zWeI8Ox1/fvVDQJ7pgTNggRlgq58oRai+t0WAlwmp1H
-         u3o5ZZwfn/tBflh+bjAheoBbIO6zMd7wOwSl1ywkT2/9kUSF3Q3Dq+0Dzi+cZyoIoZvd
-         /tDj8EiS3FEI3wMUFT1R8kUD0TNLp7ZWIOmmkPFMvJuBNTX+h5r4dAM+5P3wG/oUEBkz
-         krZfIfXkilywur13BK9vQWWSXbc0+hwNTLJ2yYfSlQMsT6/vxUPPStoqdm45ppzl02+Z
-         NcfV2MkctGacCszIkdCzlRR3KOkxoNvUEXsubgYX/wOJQS1cGH1KfT10UCVmu8fvMNz2
-         1lzA==
+        bh=i3PZZa+UR17dkZmHlwEV5fYemHt27708BnOn+3KkbpA=;
+        b=B10VVBN7F+9F4W4fXF47o1ebhnPrSnBJrtDfPqPeBDjeXdI31KyCKAhl5CoMaChJn5
+         ffr1jsIB6phl59SzeCCn/PyxV21fXNJAisGctUAB/AfEzJLg/LTWibkC1z4/YD3JT6nB
+         I/U0gej7WnQffsE1qlsUVD1kewqTuKZ2IjddPct7NthIPew2tg4XAhfO3s3MXF0RXe1o
+         NEej6k7Olhe1PBX4tstIgijLhP5jbN/pP/gKzjL0hqH7zzumbOQoKDVWe7tjpJhD8u5g
+         AnssC1swwunntqKpzWncaKwg0Zc6OPthzHS5MQK0hPjdpZQrrMFyCw6bdk4nLjTCZqrX
+         pigg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kQwbvB71;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gd5ndaKn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e5-20020ad450c5000000b004b4457d51e7si6661676qvq.152.2023.01.30.10.26.45
+        by mx.google.com with ESMTPS id s62-20020ae9de41000000b006fbdef09390si6854492qkf.96.2023.01.30.10.26.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jan 2023 10:26:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Jan 2023 10:26:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kQwbvB71;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gd5ndaKn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pMYqF-00012F-Ee; Mon, 30 Jan 2023 13:25:19 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pMYqJ-00015s-Va; Mon, 30 Jan 2023 13:25:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYq9-0000zb-0t
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:13 -0500
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ id 1pMYqA-00010B-GP
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:15 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYq4-0008NL-GD
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:12 -0500
-Received: by mail-wr1-x435.google.com with SMTP id t18so12010366wro.1
- for <qemu-devel@nongnu.org>; Mon, 30 Jan 2023 10:25:06 -0800 (PST)
+ id 1pMYq5-0008Or-4Z
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:14 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id m7so11983432wru.8
+ for <qemu-arm@nongnu.org>; Mon, 30 Jan 2023 10:25:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=6nliOuAuRjTcf2JoYdVKu3rNo2RhYZa+jJOmXF9ZJUU=;
- b=kQwbvB71/z0WSJG9nauI5EZOVUcseABqYN/23Efvh70IYR9DqIU4GhSsPzKSLJOEKp
- 9VXaxaqtIqz/5nU21Cc0878kKi13t3QrgVohhEhZUyXU4I7/hl51m16OGZvQNSWec7V4
- nEoMs8eoU/lZXFPeeyGkjsh3K03dBJosNxOs89u3JTiqZIdHl2tvU5nhTC3T/tvzOMvz
- Jv0QmH7HGKKpdC/cOD5QPgE9o1lUmkjqP6hwxPbahYUwOVW2ESjOe9NiVSCYcj6t8shx
- 9pREYPmBhYMOEAUaw9Tg7f2KEvgVngHBpcLtLya2lQQ+xktxc+C4YsKwng17D0UJFCIO
- Mvqw==
+ :reply-to; bh=i3PZZa+UR17dkZmHlwEV5fYemHt27708BnOn+3KkbpA=;
+ b=Gd5ndaKn7442bBjZ0aruwzRjuBHGIE+iG4aXpSpuP3kdaARRujyOFKxIVCk2W9UYiI
+ jp7f2uO/shhz0jHRycK9EEIZJcKCxfNxiGy2a21uAhnccYN7gGCT/t/148S4OWxrZFPD
+ c+2alkwZpAEeUP+4HB0eHNNVARxSt0KxpvQjZMbWEONgUZrPcO6p5ryN7EnftYHaU/tl
+ bSfW/s95zL5LOXhMgYsTI+t8cP8dIaUzXxJ44CCRC0mS9IyeIsmsKN54hPeWFlYsWc0j
+ gZR8U3Umhxf1HBuEDzx2iwIFdGI01aZbHr0SaU3NZDdiY5mi0UVZJkXDRFBgE/B8FdBk
+ U5Ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=6nliOuAuRjTcf2JoYdVKu3rNo2RhYZa+jJOmXF9ZJUU=;
- b=HpkCZ0R5E6jcI0SWeMuVR/byLahnYrEKGku5ZAhm+hwEnSxm0y+SGktDKoVxMsSPd2
- 4LYVZtrMUy/gT1jc0REA+N/IXgt52ByUcZoiXtDBDH0/w3kJR4X4JciHKvrMN/b3rPaJ
- 0cjiJQhDOjtgMbrr+ednD0CtZY8/N4yYe6gd28ukNhS6jSO37qHuVZRDVCCwGLo3F44B
- 2xhRQOVcoScNmAAeqWgBweHQE/Jl4OkDzEJWNTRl2sS1hu7jCfpV5Hb/YjXtrc9mYSJM
- fNTDlCeZzkWND/51YJfPCjlQ36Tkne8o+0qENqMoKIYrMpYkkyILXARseLg3XMu269cR
- yDjg==
-X-Gm-Message-State: AO0yUKWY0NFqRV759qshie3ZiLGnEaHph9BrZi3u0c3qs4diBgXlmJHB
- tHSQRAx59+Heo6VJB9oYE3KLV7MYT6DZVniM
-X-Received: by 2002:a05:6000:18a9:b0:2bf:b54f:61f0 with SMTP id
- b9-20020a05600018a900b002bfb54f61f0mr30607927wri.57.1675103104578; 
- Mon, 30 Jan 2023 10:25:04 -0800 (PST)
+ bh=i3PZZa+UR17dkZmHlwEV5fYemHt27708BnOn+3KkbpA=;
+ b=uId0Q+lY2Bxiehy8Bu4KC72Qrh/n+oKG12Dk179D9XHGb/EhcfH6/BEcvAk2tnaD65
+ OtjwTyA+JzWp+ma4IELcKKQzYhwKUioH6rRALZfxRhDW5u72/gXRuQWMKiXAPlUbqXvY
+ pNFeQqgOVH9leweHYjI8VRmrRl/91WFsQG3eADP6+QK6j98Zc4O7oETeQGUByxobhEvy
+ Bgzh9Zi/Ti2l9kTdNBFYvhbzzr72Rjm+Dk4+1tiW5zGuIx8Z3k68f4JeoUGSRhRWap4m
+ QSEXgeZ4XgEfb7fLxfz4AKHfsiKxdEHo2+bWZPAgL8R88KZSOOHtqiRMQsQX3Sc/V1KF
+ KYHw==
+X-Gm-Message-State: AO0yUKWKVFncUI/PMHKrm2tbbxDqi5lU7qTSJLuzOwgwUnASs+yBHQsu
+ GoOwjGQImL8E7PG0RGlKzxhi4NMiFVxisqQf
+X-Received: by 2002:a5d:4584:0:b0:2bf:dfa2:976f with SMTP id
+ p4-20020a5d4584000000b002bfdfa2976fmr7687163wrq.39.1675103106666; 
+ Mon, 30 Jan 2023 10:25:06 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.03
+ l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Jan 2023 10:25:04 -0800 (PST)
+ Mon, 30 Jan 2023 10:25:06 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 03/23] target/arm: Remove CP_ACCESS_TRAP_UNCATEGORIZED_{EL2, EL3}
-Date: Mon, 30 Jan 2023 18:24:39 +0000
-Message-Id: <20230130182459.3309057-4-peter.maydell@linaro.org>
+Subject: [PATCH v2 05/23] target/arm: All UNDEF-at-EL0 traps take priority
+ over HSTR_EL2 traps
+Date: Mon, 30 Jan 2023 18:24:41 +0000
+Message-Id: <20230130182459.3309057-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230130182459.3309057-1-peter.maydell@linaro.org>
 References: <20230130182459.3309057-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LvG1mNnHAEBC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PTmvXwCxxm9i
 
-We added the CPAccessResult values CP_ACCESS_TRAP_UNCATEGORIZED_EL2
-and CP_ACCESS_TRAP_UNCATEGORIZED_EL3 purely in order to use them in
-the ats_access() function, but doing so was incorrect (a bug fixed in
-a previous commit).  There aren't any cases where we want an access
-function to be able to request a trap to EL2 or EL3 with a zero
-syndrome value, so remove these enum values.
+The HSTR_EL2 register has a collection of trap bits which allow
+trapping to EL2 for AArch32 EL0 or EL1 accesses to coprocessor
+registers.  The specification of these bits is that when the bit is
+set we should trap
+ * EL1 accesses
+ * EL0 accesses, if the access is not UNDEFINED when the
+   trap bit is 0
 
-As well as cleaning up dead code, the motivation here is that
-we'd like to implement fine-grained-trap handling in
-helper_access_check_cp_reg(). Although the fine-grained traps
-to EL2 are always lower priority than trap-to-same-EL and
-higher priority than trap-to-EL3, they are in the middle of
-various other kinds of trap-to-EL2. Knowing that a trap-to-EL2
-must always for us have the same syndrome (ie that an access
-function will return CP_ACCESS_TRAP_EL2 and there is no other
-kind of trap-to-EL2 enum value) means we don't have to try
-to choose which of the two syndrome values to report if the
-access would trap to EL2 both for the fine-grained-trap and
-because the access function requires it.
+In other words, all UNDEF traps from EL0 to EL1 take precedence over
+the HSTR_EL2 trap to EL2.  (Since this is all AArch32, the only kind
+of trap-to-EL1 is the UNDEF.)
+
+Our implementation doesn't quite get this right -- we check for traps
+in the order:
+ * no such register
+ * ARMCPRegInfo::access bits
+ * HSTR_EL2 trap bits
+ * ARMCPRegInfo::accessfn
+
+So UNDEFs that happen because of the access bits or because the
+register doesn't exist at all correctly take priority over the
+HSTR_EL2 trap, but where a register can UNDEF at EL0 because of the
+accessfn we are incorrectly always taking the HSTR_EL2 trap.  There
+aren't many of these, but one example is the PMCR; if you look at the
+access pseudocode for this register you can see that UNDEFs taken
+because of the value of PMUSERENR.EN are checked before the HSTR_EL2
+bit.
+
+Rearrange helper_access_check_cp_reg() so that we always call the
+accessfn, and use its return value if it indicates that the access
+traps to EL0 rather than continuing to do the HSTR_EL2 check.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20230127175507.2895013-4-peter.maydell@linaro.org
+Message-id: 20230127175507.2895013-6-peter.maydell@linaro.org
 ---
- target/arm/cpregs.h    | 4 ++--
- target/arm/op_helper.c | 2 ++
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ target/arm/op_helper.c | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 7e78c2c05c6..9744179df01 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -224,10 +224,10 @@ typedef enum CPAccessResult {
-      * Access fails and results in an exception syndrome 0x0 ("uncategorized").
-      * Note that this is not a catch-all case -- the set of cases which may
-      * result in this failure is specifically defined by the architecture.
-+     * This trap is always to the usual target EL, never directly to a
-+     * specified target EL.
-      */
-     CP_ACCESS_TRAP_UNCATEGORIZED = (2 << 2),
--    CP_ACCESS_TRAP_UNCATEGORIZED_EL2 = CP_ACCESS_TRAP_UNCATEGORIZED | 2,
--    CP_ACCESS_TRAP_UNCATEGORIZED_EL3 = CP_ACCESS_TRAP_UNCATEGORIZED | 3,
- } CPAccessResult;
- 
- typedef struct ARMCPRegInfo ARMCPRegInfo;
 diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index 31f89db8997..def5d3515e2 100644
+index def5d3515e2..660dae696dd 100644
 --- a/target/arm/op_helper.c
 +++ b/target/arm/op_helper.c
-@@ -673,6 +673,8 @@ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
-     case CP_ACCESS_TRAP:
-         break;
-     case CP_ACCESS_TRAP_UNCATEGORIZED:
-+        /* Only CP_ACCESS_TRAP traps are direct to a specified EL */
-+        assert((res & CP_ACCESS_EL_MASK) == 0);
-         if (cpu_isar_feature(aa64_ids, cpu) && isread &&
-             arm_cpreg_in_idspace(ri)) {
-             /*
+@@ -640,10 +640,24 @@ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
+         goto fail;
+     }
+ 
++    if (ri->accessfn) {
++        res = ri->accessfn(env, ri, isread);
++    }
++
+     /*
+-     * Check for an EL2 trap due to HSTR_EL2. We expect EL0 accesses
+-     * to sysregs non accessible at EL0 to have UNDEF-ed already.
++     * If the access function indicates a trap from EL0 to EL1 then
++     * that always takes priority over the HSTR_EL2 trap. (If it indicates
++     * a trap to EL3, then the HSTR_EL2 trap takes priority; if it indicates
++     * a trap to EL2, then the syndrome is the same either way so we don't
++     * care whether technically the architecture says that HSTR_EL2 trap or
++     * the other trap takes priority. So we take the "check HSTR_EL2" path
++     * for all of those cases.)
+      */
++    if (res != CP_ACCESS_OK && ((res & CP_ACCESS_EL_MASK) == 0) &&
++        arm_current_el(env) == 0) {
++        goto fail;
++    }
++
+     if (!is_a64(env) && arm_current_el(env) < 2 && ri->cp == 15 &&
+         (arm_hcr_el2_eff(env) & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
+         uint32_t mask = 1 << ri->crn;
+@@ -661,9 +675,6 @@ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
+         }
+     }
+ 
+-    if (ri->accessfn) {
+-        res = ri->accessfn(env, ri, isread);
+-    }
+     if (likely(res == CP_ACCESS_OK)) {
+         return ri;
+     }
 -- 
 2.34.1
 

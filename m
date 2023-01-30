@@ -1,104 +1,104 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1150191ejb;
-        Mon, 30 Jan 2023 10:27:22 -0800 (PST)
-X-Google-Smtp-Source: AK7set9fjjZ1BucKy18q3hUinHqhfspagO7o9atHbQb0StPXe8ghuJDwk6VzaCx6HBQVwpOfcKKK
-X-Received: by 2002:ad4:500e:0:b0:53a:757:c685 with SMTP id s14-20020ad4500e000000b0053a0757c685mr11449584qvo.52.1675103242413;
-        Mon, 30 Jan 2023 10:27:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675103242; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1150243ejb;
+        Mon, 30 Jan 2023 10:27:29 -0800 (PST)
+X-Google-Smtp-Source: AK7set+EEuY3DMuJoTHN1qo/qElnprQWdB4QsQhnmxyHk+hyIjsnrVIW4Ut6LRinrNnsdKEby6I5
+X-Received: by 2002:a0c:e405:0:b0:532:1d4b:b93c with SMTP id o5-20020a0ce405000000b005321d4bb93cmr14205584qvl.31.1675103249255;
+        Mon, 30 Jan 2023 10:27:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675103249; cv=none;
         d=google.com; s=arc-20160816;
-        b=TjoEX/Cz/u2RnImnXqeeeSroxqjQugveItE76+FPReYlW747fprm5Kw8G/8DakD1BV
-         L9CXp60IwRNqLMzTu8qF5y0jPWDoOvkPJHJEMBUkmg3q7iQe/xJdM/83xYSKIjCGcAa4
-         Fo6ERILUGPcxR7KjwOEvXwxmEhqaFa9Umhtry1mPRvCYylBZiDArSji/dsSOJpDlqM9z
-         VMK7sqJqnhvJU/GUKUuHcCyfH9wq6e9+utGJ4WdqMLVpHKqEy+5m95xaxCKfhNJBULhb
-         BIxUGHCSATa04sCNwaLbmlP+bzWVzzngfsd4uASfKJF37n5LSWNqoBGHjCAvWlJtrhcD
-         RIxQ==
+        b=RAC4/V1kJYn1qzKf5vNc8h2zBIol+94lMTxMJQk22OYTSgJxYCKmMPsE83ivvJqu3C
+         ekSmFx2Uud8VJhnFEqnxWOqcvHTppMaM7d6++8NbddsHNjNNMalnxU62yd4/SUoshzy+
+         USvJKXQUWs+oNI/f4EWIpgIc7UofQh0ihVzW13NO/kBy08MBkRtNZvTSpsFeAN341O3M
+         hEh8DC6SA6FsG5IimNHc9QXTqAaeYaeMO4w2H4gKBSsadGTGckLXNFjjnaLx1BLel/Su
+         ExbmsFVBEZseCxCZ5wG8/QLXxeqiflJwXr1rLTouFkdmo4HE7PJpe7tHVWCRZRX9fJe7
+         k+rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=UzHZUC2Q/Mer8SDW1LpV1AWKuWIz5z5lMzrsLDlqH9k=;
-        b=oeS4D8kZ6eK8jTBQAYDf/5hk7bCQ1rAb8fu+arjE8Do8xH/cmRKNmJqdQJx+ycPrlk
-         vETl5itpkcuWr+IaKaLOYWh5MV8731URWXnzjZJSxWl0sJWwwi2f5F2+hEwV0VuW/FzA
-         7M4ILzcqCleGJyvzbzO/D5iDaG1HMqJq/CbzIsOtI0zJF0/QUMmTUy9msfPsLBYd2iwE
-         9cWIe3BmGyjGKRrIAyaBpw51W/PJFKcGTM6DHYpjPIz46Vclhj3JR8qo3Sy/FdxCmoAN
-         SBhEF5pQ9vaGG7U2KGilBNW9d67oGisowhz0dTED4npW3Knxr//8ISVPWhWOpFAr0+Hn
-         q1tA==
+        bh=olRZE9lYNDMbz4HP22WWPrxCe1HpZBct/wxph3A7z8E=;
+        b=yFwTbNAsX5f2mzVEtX8NTHiND85dsfrLs1b7uQK08yT3EPyZPYpSxmk8tn1z95DzpR
+         SvedNyQh7KNMEVwaOAhSGvWZVnM8KFo0eO/l8nZMGD3UZ0aSW3PHgMEJoenB7wIVv+aC
+         YBrFuT+YPPAezZxUgYz1O7oMdbeUgpJGDJkwS6RLu8/ez38mnbiLqz/8lIIDzfa4yABZ
+         vayuHuuKoy4g/P9+vU8M+Ve9MG3UAAP3SmnS8gN4OpSMumUZ9v09aVSCbh6/m+hHsplw
+         Dzk6Vp0vUvFt5iAR+Qm4kDtMozC89AOW5MyXChc/JKNiyoDtCPnZQaYgsccSKeYKYnZ9
+         l67w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="GVVR/fc1";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=GvFOn7oq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q51-20020a05620a2a7300b0072191d15c0esi983894qkp.721.2023.01.30.10.27.22
+        by mx.google.com with ESMTPS id oo22-20020a05620a531600b00720fdb50988si1035231qkn.746.2023.01.30.10.27.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jan 2023 10:27:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Jan 2023 10:27:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="GVVR/fc1";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=GvFOn7oq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pMYqP-0001Bl-3r; Mon, 30 Jan 2023 13:25:29 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pMYqM-00019s-Vc; Mon, 30 Jan 2023 13:25:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYqK-00016q-9L
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:24 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1pMYqJ-00016A-Pc
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:23 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYqE-0008PW-Td
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:23 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id m14so11522365wrg.13
- for <qemu-devel@nongnu.org>; Mon, 30 Jan 2023 10:25:17 -0800 (PST)
+ id 1pMYqC-0008IP-Vn
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:23 -0500
+Received: by mail-wr1-x434.google.com with SMTP id q10so11992476wrm.4
+ for <qemu-arm@nongnu.org>; Mon, 30 Jan 2023 10:25:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=UzHZUC2Q/Mer8SDW1LpV1AWKuWIz5z5lMzrsLDlqH9k=;
- b=GVVR/fc1lytWMg94yq8DaEsF+or+vFyshvXYBlTUq8ZFEVcQr6w/edCGL9Mz5upQzJ
- MIXWqT6nCC1fALdrJDytD0iiyIZ0UzbO3cxfQN8a4DSk6rb4ZhrHGuEKeGCbyRM06fBU
- kFqIv5jXs3UlLt3cpN8UI6LxoMb0poLUfW6Dyq8Y8kycy6q27CRdbe/9yRMrH0nAagzg
- BjlPCdjlkWplNtbKK7prfnwCRe/7wHbk30jj/MiO77r77NYN9NOpk7BiEqBe1QgwLZHM
- fp2+mWauKGHFSKRtqP3bPB1znVUnHEh9ttxJjHICLC5xJh10/roeyHTEWGFHhCsewpR3
- tktg==
+ :reply-to; bh=olRZE9lYNDMbz4HP22WWPrxCe1HpZBct/wxph3A7z8E=;
+ b=GvFOn7oq94jT9Co+B7KLnAYQIEu2GyoRfB3a5EFrm9eepB3QD9c23hdMyZn6ifI+HH
+ vF2xJfRbXZZruZnBmdjkEKw6qAqSExE5wXnOMdC5RYfbqaNNuqmLMz/B2myvVKS9WXDG
+ PpqCQ4IR0svk33c2VJKzryF3+qHlQNDQd/aFKR7wAQ5417DH+LjxpAYC1lW3vXOio2yX
+ o+By4q1VxTq/LneXfnW9R7LcYM8otvyy42HVouAylW6UzHHUKoR5gznIMrmWhLheb+/J
+ uvobUUFtE4inqHL7c21tv31Zsn47QV+83HhDOGf8Ou0OiKGN2udSTBXWobebpuEjDGqO
+ pe8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UzHZUC2Q/Mer8SDW1LpV1AWKuWIz5z5lMzrsLDlqH9k=;
- b=7nGElZnOeeEgdfew7fG0I2qPKMm+qDR4tTDW+RLMhL9Ix6qq3a8eBT++D/7ButDqt1
- x7i67VcbOomx/X/2GZkAHFC78HY2RFTs3AXvM1bhFQyqaXdVjf4oo/jprre6C6xvP6i/
- gGnxDWlGhD2XigeRs7ifxpfkueWaaAAy5ugklkejdJNuYLbbUC4I+ox6qFpoBBV2ytee
- /v4lhmEmDOEWFyvjye+j6M7AKetFXHTXTV61lSD+SlVN2xq4bvt2qZ6BYHHbh70EzEGd
- bmpanln9MMVvA/TEE3PcaDDLkba8+bLYigIWOSlj+RGV4ICe54xm/AZfNRKeBeY76VjJ
- Btlg==
-X-Gm-Message-State: AO0yUKXiNhGPnnne/vszWADim4XA7zWcrUMa/une89kQCq1PAoNMu83M
- 1dAOOPoDOUWkwxA+RopQJ3soBb2z/yaiqK6x
-X-Received: by 2002:a05:6000:143:b0:2bf:b88b:aae8 with SMTP id
- r3-20020a056000014300b002bfb88baae8mr343749wrx.50.1675103117499; 
- Mon, 30 Jan 2023 10:25:17 -0800 (PST)
+ bh=olRZE9lYNDMbz4HP22WWPrxCe1HpZBct/wxph3A7z8E=;
+ b=Wtf03F6R0nIg+7bQExs0PJYJzPv2ZXH3QogmLPDhGw1EFnpmDNlSSOEZmnCwzmuRYb
+ kiCBeshVf8+04NidHTEl31mABv5m4qTORli9CBNiekx2MT5JpuBTzclVAVcSYl8lY+3v
+ Lu6xw8KiRf8IiN3S0v/mFsolmWaLui6yi7L47B16fVCGK/xBUrbw4HaK0lRRyUerB9RA
+ 9+AWpJuWWs2iNNqeRqZ4PDyYvyK/+VvWgMxv3RbHcwfA0moMpA7ewmU5NmKTXDU939vC
+ b7pt683zmXYPirGTwypP6XH+rruzPRq2z7beFy2RdCoGkTdwwcPY6G2/rwH2Z4Q+pTEt
+ 1E2g==
+X-Gm-Message-State: AO0yUKUQ7okObGFGOPANO3wirR+46tS1htrOMNHaNBv0FKmnCRHSLfo7
+ OoBfRlTHOVDYTfssjajtVlw0VFWue0Wwc7b2
+X-Received: by 2002:a05:6000:1787:b0:2bf:f019:c23d with SMTP id
+ e7-20020a056000178700b002bff019c23dmr558289wrg.11.1675103116151; 
+ Mon, 30 Jan 2023 10:25:16 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.16
+ l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Jan 2023 10:25:16 -0800 (PST)
+ Mon, 30 Jan 2023 10:25:15 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 16/23] target/arm: Mark up sysregs for HFGITR bits 0..11
-Date: Mon, 30 Jan 2023 18:24:52 +0000
-Message-Id: <20230130182459.3309057-17-peter.maydell@linaro.org>
+Subject: [PATCH v2 15/23] target/arm: Mark up sysregs for HDFGRTR bits 12..63
+Date: Mon, 30 Jan 2023 18:24:51 +0000
+Message-Id: <20230130182459.3309057-16-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230130182459.3309057-1-peter.maydell@linaro.org>
 References: <20230130182459.3309057-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,221 +107,319 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AAPNYvSgDrDz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lHTe8cJbKjV6
 
-Mark up the sysreg definitions for the system instructions
-trapped by HFGITR bits 0..11. These bits cover various
-cache maintenance operations.
+Mark up the sysreg definitions for the registers trapped
+by HDFGRTR/HDFGWTR bits 12..x.
+
+Bits 12..22 and bit 58 are for PMU registers.
+
+The remaining bits in HDFGRTR/HDFGWTR are for traps on
+registers that are part of features we don't implement:
+
+Bits 23..32 and 63 : FEAT_SPE
+Bits 33..48 : FEAT_ETE
+Bits 50..56 : FEAT_TRBE
+Bits 59..61 : FEAT_BRBE
+Bit 62 : FEAT_SPEv1p2.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20230127175507.2895013-17-peter.maydell@linaro.org
+Message-id: 20230127175507.2895013-16-peter.maydell@linaro.org
 ---
- target/arm/cpregs.h | 14 ++++++++++++++
- target/arm/helper.c | 28 ++++++++++++++++++++++++++++
- 2 files changed, 42 insertions(+)
+ target/arm/cpregs.h | 12 ++++++++++++
+ target/arm/helper.c | 37 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 49 insertions(+)
 
 diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index c37e013b8f3..6596c2a1233 100644
+index 7c4d07ed9c6..c37e013b8f3 100644
 --- a/target/arm/cpregs.h
 +++ b/target/arm/cpregs.h
-@@ -646,6 +646,20 @@ typedef enum FGTBit {
-     DO_BIT(HDFGWTR, PMCR_EL0),
-     DO_BIT(HDFGRTR, PMMIR_EL1),
-     DO_BIT(HDFGRTR, PMCEIDN_EL0),
-+
-+    /* Trap bits in HFGITR_EL2, starting from bit 0 */
-+    DO_BIT(HFGITR, ICIALLUIS),
-+    DO_BIT(HFGITR, ICIALLU),
-+    DO_BIT(HFGITR, ICIVAU),
-+    DO_BIT(HFGITR, DCIVAC),
-+    DO_BIT(HFGITR, DCISW),
-+    DO_BIT(HFGITR, DCCSW),
-+    DO_BIT(HFGITR, DCCISW),
-+    DO_BIT(HFGITR, DCCVAU),
-+    DO_BIT(HFGITR, DCCVAP),
-+    DO_BIT(HFGITR, DCCVADP),
-+    DO_BIT(HFGITR, DCCIVAC),
-+    DO_BIT(HFGITR, DCZVA),
+@@ -634,6 +634,18 @@ typedef enum FGTBit {
+     DO_BIT(HDFGRTR, OSLSR_EL1),
+     DO_BIT(HDFGRTR, OSECCR_EL1),
+     DO_BIT(HDFGRTR, OSDLR_EL1),
++    DO_BIT(HDFGRTR, PMEVCNTRN_EL0),
++    DO_BIT(HDFGRTR, PMEVTYPERN_EL0),
++    DO_BIT(HDFGRTR, PMCCFILTR_EL0),
++    DO_BIT(HDFGRTR, PMCCNTR_EL0),
++    DO_BIT(HDFGRTR, PMCNTEN),
++    DO_BIT(HDFGRTR, PMINTEN),
++    DO_BIT(HDFGRTR, PMOVS),
++    DO_BIT(HDFGRTR, PMSELR_EL0),
++    DO_BIT(HDFGWTR, PMSWINC_EL0),
++    DO_BIT(HDFGWTR, PMCR_EL0),
++    DO_BIT(HDFGRTR, PMMIR_EL1),
++    DO_BIT(HDFGRTR, PMCEIDN_EL0),
  } FGTBit;
  
  #undef DO_BIT
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2e494b8f924..51866ba70e9 100644
+index a48b022def6..2e494b8f924 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -5261,6 +5261,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
- #ifndef CONFIG_USER_ONLY
-       /* Avoid overhead of an access check that always passes in user-mode */
-       .accessfn = aa64_zva_access,
-+      .fgt = FGT_DCZVA,
- #endif
-     },
-     { .name = "CURRENTEL", .state = ARM_CP_STATE_AA64,
-@@ -5270,21 +5271,26 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-     { .name = "IC_IALLUIS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 1, .opc2 = 0,
-       .access = PL1_W, .type = ARM_CP_NOP,
-+      .fgt = FGT_ICIALLUIS,
-       .accessfn = access_ticab },
-     { .name = "IC_IALLU", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 0,
-       .access = PL1_W, .type = ARM_CP_NOP,
-+      .fgt = FGT_ICIALLU,
-       .accessfn = access_tocu },
-     { .name = "IC_IVAU", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 5, .opc2 = 1,
-       .access = PL0_W, .type = ARM_CP_NOP,
-+      .fgt = FGT_ICIVAU,
-       .accessfn = access_tocu },
-     { .name = "DC_IVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 1,
-       .access = PL1_W, .accessfn = aa64_cacheop_poc_access,
-+      .fgt = FGT_DCIVAC,
-       .type = ARM_CP_NOP },
-     { .name = "DC_ISW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 2,
-+      .fgt = FGT_DCISW,
-       .access = PL1_W, .accessfn = access_tsw, .type = ARM_CP_NOP },
-     { .name = "DC_CVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 10, .opc2 = 1,
-@@ -5292,17 +5298,21 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_CSW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 2,
-+      .fgt = FGT_DCCSW,
-       .access = PL1_W, .accessfn = access_tsw, .type = ARM_CP_NOP },
-     { .name = "DC_CVAU", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 11, .opc2 = 1,
-       .access = PL0_W, .type = ARM_CP_NOP,
-+      .fgt = FGT_DCCVAU,
-       .accessfn = access_tocu },
-     { .name = "DC_CIVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 1,
-       .access = PL0_W, .type = ARM_CP_NOP,
-+      .fgt = FGT_DCCIVAC,
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_CISW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 2,
-+      .fgt = FGT_DCCISW,
-       .access = PL1_W, .accessfn = access_tsw, .type = ARM_CP_NOP },
-     /* TLBI operations */
-     { .name = "TLBI_VMALLE1IS", .state = ARM_CP_STATE_AA64,
-@@ -7413,6 +7423,7 @@ static const ARMCPRegInfo dcpop_reg[] = {
-     { .name = "DC_CVAP", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 1,
-       .access = PL0_W, .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
-+      .fgt = FGT_DCCVAP,
-       .accessfn = aa64_cacheop_poc_access, .writefn = dccvap_writefn },
- };
- 
-@@ -7420,6 +7431,7 @@ static const ARMCPRegInfo dcpodp_reg[] = {
-     { .name = "DC_CVADP", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 1,
-       .access = PL0_W, .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
-+      .fgt = FGT_DCCVADP,
-       .accessfn = aa64_cacheop_poc_access, .writefn = dccvap_writefn },
- };
- #endif /*CONFIG_USER_ONLY*/
-@@ -7499,28 +7511,36 @@ static const ARMCPRegInfo mte_reginfo[] = {
-     { .name = "DC_IGVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 3,
-       .type = ARM_CP_NOP, .access = PL1_W,
-+      .fgt = FGT_DCIVAC,
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_IGSW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 4,
-+      .fgt = FGT_DCISW,
-       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
-     { .name = "DC_IGDVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 5,
-       .type = ARM_CP_NOP, .access = PL1_W,
-+      .fgt = FGT_DCIVAC,
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_IGDSW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 6,
-+      .fgt = FGT_DCISW,
-       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
-     { .name = "DC_CGSW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 4,
-+      .fgt = FGT_DCCSW,
-       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
-     { .name = "DC_CGDSW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 6,
-+      .fgt = FGT_DCCSW,
-       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
-     { .name = "DC_CIGSW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 4,
-+      .fgt = FGT_DCCISW,
-       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
-     { .name = "DC_CIGDSW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 6,
-+      .fgt = FGT_DCCISW,
-       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
- };
- 
-@@ -7542,26 +7562,32 @@ static const ARMCPRegInfo mte_el0_cacheop_reginfo[] = {
-     { .name = "DC_CGVAP", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 3,
-       .type = ARM_CP_NOP, .access = PL0_W,
-+      .fgt = FGT_DCCVAP,
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_CGDVAP", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 5,
-       .type = ARM_CP_NOP, .access = PL0_W,
-+      .fgt = FGT_DCCVAP,
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_CGVADP", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 3,
-       .type = ARM_CP_NOP, .access = PL0_W,
-+      .fgt = FGT_DCCVADP,
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_CGDVADP", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 5,
-       .type = ARM_CP_NOP, .access = PL0_W,
-+      .fgt = FGT_DCCVADP,
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_CIGVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 3,
-       .type = ARM_CP_NOP, .access = PL0_W,
-+      .fgt = FGT_DCCIVAC,
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_CIGDVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 5,
-       .type = ARM_CP_NOP, .access = PL0_W,
-+      .fgt = FGT_DCCIVAC,
-       .accessfn = aa64_cacheop_poc_access },
-     { .name = "DC_GVA", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 4, .opc2 = 3,
-@@ -7569,6 +7595,7 @@ static const ARMCPRegInfo mte_el0_cacheop_reginfo[] = {
- #ifndef CONFIG_USER_ONLY
-       /* Avoid overhead of an access check that always passes in user-mode */
-       .accessfn = aa64_zva_access,
-+      .fgt = FGT_DCZVA,
- #endif
-     },
-     { .name = "DC_GZVA", .state = ARM_CP_STATE_AA64,
-@@ -7577,6 +7604,7 @@ static const ARMCPRegInfo mte_el0_cacheop_reginfo[] = {
- #ifndef CONFIG_USER_ONLY
-       /* Avoid overhead of an access check that always passes in user-mode */
-       .accessfn = aa64_zva_access,
-+      .fgt = FGT_DCZVA,
- #endif
-     },
- };
+@@ -2035,21 +2035,25 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmcnten),
+       .writefn = pmcntenset_write,
+       .accessfn = pmreg_access,
++      .fgt = FGT_PMCNTEN,
+       .raw_writefn = raw_write },
+     { .name = "PMCNTENSET_EL0", .state = ARM_CP_STATE_AA64, .type = ARM_CP_IO,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 1,
+       .access = PL0_RW, .accessfn = pmreg_access,
++      .fgt = FGT_PMCNTEN,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcnten), .resetvalue = 0,
+       .writefn = pmcntenset_write, .raw_writefn = raw_write },
+     { .name = "PMCNTENCLR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 2,
+       .access = PL0_RW,
+       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmcnten),
+       .accessfn = pmreg_access,
++      .fgt = FGT_PMCNTEN,
+       .writefn = pmcntenclr_write,
+       .type = ARM_CP_ALIAS | ARM_CP_IO },
+     { .name = "PMCNTENCLR_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 2,
+       .access = PL0_RW, .accessfn = pmreg_access,
++      .fgt = FGT_PMCNTEN,
+       .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcnten),
+       .writefn = pmcntenclr_write },
+@@ -2057,41 +2061,49 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .access = PL0_RW, .type = ARM_CP_IO,
+       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmovsr),
+       .accessfn = pmreg_access,
++      .fgt = FGT_PMOVS,
+       .writefn = pmovsr_write,
+       .raw_writefn = raw_write },
+     { .name = "PMOVSCLR_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 3,
+       .access = PL0_RW, .accessfn = pmreg_access,
++      .fgt = FGT_PMOVS,
+       .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
+       .writefn = pmovsr_write,
+       .raw_writefn = raw_write },
+     { .name = "PMSWINC", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 4,
+       .access = PL0_W, .accessfn = pmreg_access_swinc,
++      .fgt = FGT_PMSWINC_EL0,
+       .type = ARM_CP_NO_RAW | ARM_CP_IO,
+       .writefn = pmswinc_write },
+     { .name = "PMSWINC_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 4,
+       .access = PL0_W, .accessfn = pmreg_access_swinc,
++      .fgt = FGT_PMSWINC_EL0,
+       .type = ARM_CP_NO_RAW | ARM_CP_IO,
+       .writefn = pmswinc_write },
+     { .name = "PMSELR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 5,
+       .access = PL0_RW, .type = ARM_CP_ALIAS,
++      .fgt = FGT_PMSELR_EL0,
+       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmselr),
+       .accessfn = pmreg_access_selr, .writefn = pmselr_write,
+       .raw_writefn = raw_write},
+     { .name = "PMSELR_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 5,
+       .access = PL0_RW, .accessfn = pmreg_access_selr,
++      .fgt = FGT_PMSELR_EL0,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmselr),
+       .writefn = pmselr_write, .raw_writefn = raw_write, },
+     { .name = "PMCCNTR", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 0,
+       .access = PL0_RW, .resetvalue = 0, .type = ARM_CP_ALIAS | ARM_CP_IO,
++      .fgt = FGT_PMCCNTR_EL0,
+       .readfn = pmccntr_read, .writefn = pmccntr_write32,
+       .accessfn = pmreg_access_ccntr },
+     { .name = "PMCCNTR_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 13, .opc2 = 0,
+       .access = PL0_RW, .accessfn = pmreg_access_ccntr,
++      .fgt = FGT_PMCCNTR_EL0,
+       .type = ARM_CP_IO,
+       .fieldoffset = offsetof(CPUARMState, cp15.c15_ccnt),
+       .readfn = pmccntr_read, .writefn = pmccntr_write,
+@@ -2099,32 +2111,38 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+     { .name = "PMCCFILTR", .cp = 15, .opc1 = 0, .crn = 14, .crm = 15, .opc2 = 7,
+       .writefn = pmccfiltr_write_a32, .readfn = pmccfiltr_read_a32,
+       .access = PL0_RW, .accessfn = pmreg_access,
++      .fgt = FGT_PMCCFILTR_EL0,
+       .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .resetvalue = 0, },
+     { .name = "PMCCFILTR_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 15, .opc2 = 7,
+       .writefn = pmccfiltr_write, .raw_writefn = raw_write,
+       .access = PL0_RW, .accessfn = pmreg_access,
++      .fgt = FGT_PMCCFILTR_EL0,
+       .type = ARM_CP_IO,
+       .fieldoffset = offsetof(CPUARMState, cp15.pmccfiltr_el0),
+       .resetvalue = 0, },
+     { .name = "PMXEVTYPER", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 1,
+       .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
+       .accessfn = pmreg_access,
++      .fgt = FGT_PMEVTYPERN_EL0,
+       .writefn = pmxevtyper_write, .readfn = pmxevtyper_read },
+     { .name = "PMXEVTYPER_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 13, .opc2 = 1,
+       .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
+       .accessfn = pmreg_access,
++      .fgt = FGT_PMEVTYPERN_EL0,
+       .writefn = pmxevtyper_write, .readfn = pmxevtyper_read },
+     { .name = "PMXEVCNTR", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 2,
+       .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
+       .accessfn = pmreg_access_xevcntr,
++      .fgt = FGT_PMEVCNTRN_EL0,
+       .writefn = pmxevcntr_write, .readfn = pmxevcntr_read },
+     { .name = "PMXEVCNTR_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 13, .opc2 = 2,
+       .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
+       .accessfn = pmreg_access_xevcntr,
++      .fgt = FGT_PMEVCNTRN_EL0,
+       .writefn = pmxevcntr_write, .readfn = pmxevcntr_read },
+     { .name = "PMUSERENR", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 0,
+       .access = PL0_R | PL1_RW, .accessfn = access_tpm,
+@@ -2139,6 +2157,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .writefn = pmuserenr_write, .raw_writefn = raw_write },
+     { .name = "PMINTENSET", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 1,
+       .access = PL1_RW, .accessfn = access_tpm,
++      .fgt = FGT_PMINTEN,
+       .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pminten),
+       .resetvalue = 0,
+@@ -2146,18 +2165,21 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+     { .name = "PMINTENSET_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 1,
+       .access = PL1_RW, .accessfn = access_tpm,
++      .fgt = FGT_PMINTEN,
+       .type = ARM_CP_IO,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
+       .writefn = pmintenset_write, .raw_writefn = raw_write,
+       .resetvalue = 0x0 },
+     { .name = "PMINTENCLR", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 2,
+       .access = PL1_RW, .accessfn = access_tpm,
++      .fgt = FGT_PMINTEN,
+       .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
+       .writefn = pmintenclr_write, },
+     { .name = "PMINTENCLR_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 2,
+       .access = PL1_RW, .accessfn = access_tpm,
++      .fgt = FGT_PMINTEN,
+       .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
+       .writefn = pmintenclr_write },
+@@ -2293,6 +2315,7 @@ static const ARMCPRegInfo pmovsset_cp_reginfo[] = {
+     /* PMOVSSET is not implemented in v7 before v7ve */
+     { .name = "PMOVSSET", .cp = 15, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 3,
+       .access = PL0_RW, .accessfn = pmreg_access,
++      .fgt = FGT_PMOVS,
+       .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmovsr),
+       .writefn = pmovsset_write,
+@@ -2300,6 +2323,7 @@ static const ARMCPRegInfo pmovsset_cp_reginfo[] = {
+     { .name = "PMOVSSET_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 14, .opc2 = 3,
+       .access = PL0_RW, .accessfn = pmreg_access,
++      .fgt = FGT_PMOVS,
+       .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
+       .writefn = pmovsset_write,
+@@ -6884,6 +6908,7 @@ static void define_pmu_regs(ARMCPU *cpu)
+     ARMCPRegInfo pmcr = {
+         .name = "PMCR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 0,
+         .access = PL0_RW,
++        .fgt = FGT_PMCR_EL0,
+         .type = ARM_CP_IO | ARM_CP_ALIAS,
+         .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmcr),
+         .accessfn = pmreg_access, .writefn = pmcr_write,
+@@ -6893,6 +6918,7 @@ static void define_pmu_regs(ARMCPU *cpu)
+         .name = "PMCR_EL0", .state = ARM_CP_STATE_AA64,
+         .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 0,
+         .access = PL0_RW, .accessfn = pmreg_access,
++        .fgt = FGT_PMCR_EL0,
+         .type = ARM_CP_IO,
+         .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcr),
+         .resetvalue = cpu->isar.reset_pmcr_el0,
+@@ -6910,23 +6936,27 @@ static void define_pmu_regs(ARMCPU *cpu)
+             { .name = pmevcntr_name, .cp = 15, .crn = 14,
+               .crm = 8 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
+               .access = PL0_RW, .type = ARM_CP_IO | ARM_CP_ALIAS,
++              .fgt = FGT_PMEVCNTRN_EL0,
+               .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
+               .accessfn = pmreg_access_xevcntr },
+             { .name = pmevcntr_el0_name, .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 8 | (3 & (i >> 3)),
+               .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access_xevcntr,
+               .type = ARM_CP_IO,
++              .fgt = FGT_PMEVCNTRN_EL0,
+               .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
+               .raw_readfn = pmevcntr_rawread,
+               .raw_writefn = pmevcntr_rawwrite },
+             { .name = pmevtyper_name, .cp = 15, .crn = 14,
+               .crm = 12 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
+               .access = PL0_RW, .type = ARM_CP_IO | ARM_CP_ALIAS,
++              .fgt = FGT_PMEVTYPERN_EL0,
+               .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
+               .accessfn = pmreg_access },
+             { .name = pmevtyper_el0_name, .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 12 | (3 & (i >> 3)),
+               .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
++              .fgt = FGT_PMEVTYPERN_EL0,
+               .type = ARM_CP_IO,
+               .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
+               .raw_writefn = pmevtyper_rawwrite },
+@@ -6942,10 +6972,12 @@ static void define_pmu_regs(ARMCPU *cpu)
+             { .name = "PMCEID2", .state = ARM_CP_STATE_AA32,
+               .cp = 15, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 4,
+               .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
++              .fgt = FGT_PMCEIDN_EL0,
+               .resetvalue = extract64(cpu->pmceid0, 32, 32) },
+             { .name = "PMCEID3", .state = ARM_CP_STATE_AA32,
+               .cp = 15, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 5,
+               .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
++              .fgt = FGT_PMCEIDN_EL0,
+               .resetvalue = extract64(cpu->pmceid1, 32, 32) },
+         };
+         define_arm_cp_regs(cpu, v81_pmu_regs);
+@@ -6955,6 +6987,7 @@ static void define_pmu_regs(ARMCPU *cpu)
+             .name = "PMMIR_EL1", .state = ARM_CP_STATE_BOTH,
+             .opc0 = 3, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 6,
+             .access = PL1_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
++            .fgt = FGT_PMMIR_EL1,
+             .resetvalue = 0
+         };
+         define_one_arm_cp_reg(cpu, &v84_pmmir);
+@@ -8251,18 +8284,22 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             { .name = "PMCEID0", .state = ARM_CP_STATE_AA32,
+               .cp = 15, .opc1 = 0, .crn = 9, .crm = 12, .opc2 = 6,
+               .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
++              .fgt = FGT_PMCEIDN_EL0,
+               .resetvalue = extract64(cpu->pmceid0, 0, 32) },
+             { .name = "PMCEID0_EL0", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 6,
+               .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
++              .fgt = FGT_PMCEIDN_EL0,
+               .resetvalue = cpu->pmceid0 },
+             { .name = "PMCEID1", .state = ARM_CP_STATE_AA32,
+               .cp = 15, .opc1 = 0, .crn = 9, .crm = 12, .opc2 = 7,
+               .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
++              .fgt = FGT_PMCEIDN_EL0,
+               .resetvalue = extract64(cpu->pmceid1, 0, 32) },
+             { .name = "PMCEID1_EL0", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 7,
+               .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
++              .fgt = FGT_PMCEIDN_EL0,
+               .resetvalue = cpu->pmceid1 },
+         };
+ #ifdef CONFIG_USER_ONLY
 -- 
 2.34.1
 

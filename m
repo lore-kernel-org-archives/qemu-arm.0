@@ -1,117 +1,117 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp702033ejb;
-        Sun, 29 Jan 2023 20:44:27 -0800 (PST)
-X-Google-Smtp-Source: AK7set+43ezon6Ihmkvs4TdQ/S8/eUuM8gzA9Ijpxlsg+VaPNJVk92JFvM8wIR366SeaZMrGSH8B
-X-Received: by 2002:ac8:58cc:0:b0:3b8:6b1b:e3a2 with SMTP id u12-20020ac858cc000000b003b86b1be3a2mr3526852qta.10.1675053867617;
-        Sun, 29 Jan 2023 20:44:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675053867; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp702360ejb;
+        Sun, 29 Jan 2023 20:45:50 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvzIIbAJwGtBqlOFTlFMR4eatjVkwirvbbPTh6GclZNOz96oFC13/iPJ4qhxF6HCIu3YYNE
+X-Received: by 2002:a05:622a:190:b0:3b7:ec70:30af with SMTP id s16-20020a05622a019000b003b7ec7030afmr44249083qtw.46.1675053950434;
+        Sun, 29 Jan 2023 20:45:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675053950; cv=none;
         d=google.com; s=arc-20160816;
-        b=MPCqA2Zuup/c3ZPhEB1x5G6jeg26lSBfCq0DvhBeF7C3lGQsn/PSOq7Ln5xizHKAGR
-         f8Mk3a5NHqOiRZiOc49SvRDLjb0k4Tcv2aETqUX3PXr757HrM4j+jNgqPQkFJFff0psY
-         lpN83M7btk6wOuk9extpJgPxz5Fd/G2H9wLxIz1iNsB3wBPf/fXYCxGkOP/S7ooT+g/S
-         Zfy2MPGebdkTO0pliULbyLbxrcQC+pvDd4ick5F/Fl0GNtFhO73AeCW29qchkJAM9dzR
-         AYV20Jkajw4F1GUsyf3/l4YcuXaCyWeiek4BzCE0NdLMw7tsYJBUWN68OTl+u9e20zQs
-         2zaA==
+        b=usyViMb8Rl7Lv9SgCqSqgfAc+sNBAuHHzCdJ/EcHKMEA+2SZPIH0ilL9jHUSaAkme5
+         45g4KRcLayi1BcN74QSaGQv8UFjuORQCxDrFT7RQ0at+94jpRs88XpcX8geQvBj3xRzk
+         M7hUyI4p2Z7tMmsEUxAMF1murx33p6v8LmXLmXMoM0XALV0yoWV3ZH0H1lhB2qpNQHoW
+         YJSyNRjBN8ly3tf4ByxHGHoATgLB0YfN6nBgesio9i7aW8GeWXZ/E0at6+01bcoWSTUy
+         hAGHHufjdsnEDWnCORgTBdG1f5NGZLK1LaziIevOkg5dQKjxbBGhK79G/3Z0ZzJas9YF
+         NiAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:message-id:date:user-agent
          :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=UtK+hwV0BgY8e1Ahpp3J834IkiCp27zR1Cs06bJUyTo=;
-        b=MKPtBE8X6mxF5XiBihejqC7W/ozdlndkc6X4Yl886ey1fy0iBCCPRRjiyreTOqplax
-         3NCv13W9tpS0Vakrcs/O51MUCm9LweFgMNJNCGlBjenvDYjk0P55CMAR99iW1qG+KvYy
-         okqZKb34nzPnbWXC0yXzfTWCB/i0YrYOLSyrnuFAUC4K7MrdOS9AN7jBZ45NPPxqyUKJ
-         1X/WV5cWVcRTHJ3vov+5TdlfRwHxh5pNKTu5R0RzF80erPqTfZ3cnyjwTmDaGE846Ph9
-         RfueA8Dg2T16G5lX7Hm0In876XJf2LbnohC3l7866xeH9O3uBLwJ7JUc4g40v4N9Self
-         aFCA==
+        bh=QnZsA1EFFDQZ4GA0eiKICktlxR6/RkD5vBWiSbFtjqc=;
+        b=i1kv3Uf99T5t/hCCw3t1MXJwTnUDfq+0C9wrfcdaFAPM69b3Gwam+KtjCG9NOGZVGw
+         SEvsRcSY8mcqwkzBjCNbzHHFvVQ/5WhuwnQDrkzSs5kDEJeTbZBsaOhl2sfQrLq4Upm9
+         hxlxC4qcB1eQJflvogiGkVlD3esM0tFylOOYvOzx/K/GM8D1cQ/F7xbxofa/s2irRGYj
+         gEJO21E5YaPGfEtfhInItI1EZOkZR09Arvh7AIbJ0xkrMc6T4LsPkGW3S8MugNaC/wbe
+         qp/O40/BRwsNIoWuvlUc84tQtAhk/vTFkDQqRt2A+zMsSGJxFzAHIjMFCG2fmfImlJfY
+         21uQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Lrm+pb/j";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UgyFi1Ks;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v19-20020ae9e313000000b0071af3cb1067si3229005qkf.561.2023.01.29.20.44.27
+        by mx.google.com with ESMTPS id a7-20020a05620a02e700b00705749eada1si6319923qko.92.2023.01.29.20.45.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Jan 2023 20:44:27 -0800 (PST)
+        Sun, 29 Jan 2023 20:45:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Lrm+pb/j";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UgyFi1Ks;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pMM1n-0001vu-3H; Sun, 29 Jan 2023 23:44:23 -0500
+	id 1pMM39-0002gT-1E; Sun, 29 Jan 2023 23:45:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1pMM1l-0001vM-Jn
- for qemu-arm@nongnu.org; Sun, 29 Jan 2023 23:44:21 -0500
+ id 1pMM36-0002fa-JR
+ for qemu-arm@nongnu.org; Sun, 29 Jan 2023 23:45:44 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1pMM1k-0005ch-78
- for qemu-arm@nongnu.org; Sun, 29 Jan 2023 23:44:21 -0500
+ id 1pMM34-0005yf-BT
+ for qemu-arm@nongnu.org; Sun, 29 Jan 2023 23:45:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675053859;
+ s=mimecast20190719; t=1675053941;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UtK+hwV0BgY8e1Ahpp3J834IkiCp27zR1Cs06bJUyTo=;
- b=Lrm+pb/jrEfHVgclnkN7VO7cJomMCdE/OrYqHRlqy79q/sg0WBTnaArrgrDLS4n2VT+L/k
- dEA5kpITqQri4edAmagYu7q+wxy9Pjb+qgPU/29hoj6f8EH6G4VV8+S/t5sufU/+2BYRRM
- GHzVUKTacpQmHJQlVA4XlDWzFDzk5kI=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=QnZsA1EFFDQZ4GA0eiKICktlxR6/RkD5vBWiSbFtjqc=;
+ b=UgyFi1Ks/Zmi/7A9FbWuYJr6zZQXTRWg3AYh1vTRzj306OyMD7hdd8bbAFctkXvbH7Bokl
+ RHTnA8CYh6R4A3lmn+TIz3wdhhfgCN51OiLGFlkI7XOSyEPK0bLoMaWPbQumLWunhu/ogq
+ RP33gdbS4z5K0lNPrGdXPFhzbSQncl4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-25-ZzWnpxXNOguLfgMPtbygOw-1; Sun, 29 Jan 2023 23:44:18 -0500
-X-MC-Unique: ZzWnpxXNOguLfgMPtbygOw-1
-Received: by mail-wm1-f72.google.com with SMTP id
- r15-20020a05600c35cf00b003d9a14517b2so8887922wmq.2
- for <qemu-arm@nongnu.org>; Sun, 29 Jan 2023 20:44:18 -0800 (PST)
+ us-mta-663-dkGG4x4LOxirxuQTkrJ0Wg-1; Sun, 29 Jan 2023 23:45:40 -0500
+X-MC-Unique: dkGG4x4LOxirxuQTkrJ0Wg-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ r6-20020adff106000000b002bfe5fb9649so488341wro.14
+ for <qemu-arm@nongnu.org>; Sun, 29 Jan 2023 20:45:39 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:message-id:date:reply-to
  :user-agent:references:in-reply-to:subject:cc:to:from
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=UtK+hwV0BgY8e1Ahpp3J834IkiCp27zR1Cs06bJUyTo=;
- b=uCvp/OOn8fC/+S6zdN2IlzfnqEqmoCM37DPEIkUXcZSBwcs4QZ6nMv3jJm8+WpwmTt
- rhaWnTBa+w7C8giFPRQfy/o5tPf7rflwGKDkJl1CPE+evNjwqCVXAyoPQWVlkNmYYMvj
- jcoWNza8o4UaeFkKK8Q9VnfiUO1IMgSzpn0FXMxRiEDf+A/pEvF9HJYPbLFGJOECnUJd
- 97Q4ZEoJ/rOi3Gq/kqfTMvq8wIqFY5BMyWKU8VwB+f2qsFnvZ+8XSzkd0pn+yL2Ek6EB
- hWEa3bLvYpKJ5s9A0kjaZXJOTR14Ol3U7JcOyFpSNsJb0EcXYONeA4qAJninnH2Z2dES
- pw8A==
-X-Gm-Message-State: AFqh2krU4IZYw/kbKt/TzNsrGMH8eoe5X2tIKjELTmIV6AbQ3tQTVc93
- oMuCdEn+Xf9kebPvxVFwszZ7QH9C+KP9Snw35bynxX3dHduDO1ljcD7vUSB7JeFB1s9jdjovZDH
- nhXTlTWoRmsD9
-X-Received: by 2002:a05:600c:3d16:b0:3cf:8b22:76b3 with SMTP id
- bh22-20020a05600c3d1600b003cf8b2276b3mr45685490wmb.0.1675053857341; 
- Sun, 29 Jan 2023 20:44:17 -0800 (PST)
-X-Received: by 2002:a05:600c:3d16:b0:3cf:8b22:76b3 with SMTP id
- bh22-20020a05600c3d1600b003cf8b2276b3mr45685481wmb.0.1675053857169; 
- Sun, 29 Jan 2023 20:44:17 -0800 (PST)
+ bh=QnZsA1EFFDQZ4GA0eiKICktlxR6/RkD5vBWiSbFtjqc=;
+ b=nq330XfI8Md8n3lEeVkhTqkGplW9X+bZBfLSxnkTvvP+JLGSFBtoyUFQyVpRkf8nwZ
+ hYTxcMLUcByi/GWtWYuqyKSxtjjjF07RBhXKHdZPSCCPCXNDhr5zLgnqimKaDq1JfVX1
+ DJZhqHOEfqfg1t2qoCoXWHfrISLBlF4Ki8TfM+378var6Cu6irumXvgWmt9WQ+qyI0Jk
+ USeDZW033ZSCU4TnoF2s7zTs7RgZWdJR9ojIh33U7KbpCxVOfpgnBuBHPWbdLusPgVmm
+ dcZlpfTbVmEoPqKZEChOG2tCtB2JMG4XPAstELEzKnoCz607YEcDLVGaIMUyh0BI7tMH
+ SUbQ==
+X-Gm-Message-State: AO0yUKXick9UtLJ3I7dPtuosTV6iGcV47xaRDP3MfAi+7gIoAgGgql72
+ aKodYtkvc5V7aLhCF4MWZfBtib62ZfXc6eERTVOHDAERpNb2ne73mobIZfodLTCO77QSyoU9m4i
+ P8V2l6XHbP5Q6
+X-Received: by 2002:a05:600c:4f93:b0:3dc:2b62:ee9f with SMTP id
+ n19-20020a05600c4f9300b003dc2b62ee9fmr14597263wmq.3.1675053939085; 
+ Sun, 29 Jan 2023 20:45:39 -0800 (PST)
+X-Received: by 2002:a05:600c:4f93:b0:3dc:2b62:ee9f with SMTP id
+ n19-20020a05600c4f9300b003dc2b62ee9fmr14597253wmq.3.1675053938918; 
+ Sun, 29 Jan 2023 20:45:38 -0800 (PST)
 Received: from redhat.com ([46.136.252.173]) by smtp.gmail.com with ESMTPSA id
- p9-20020a05600c358900b003dc1f466a25sm15411435wmq.25.2023.01.29.20.44.16
+ m21-20020a05600c161500b003dc522dd25esm4047636wmn.30.2023.01.29.20.45.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 29 Jan 2023 20:44:16 -0800 (PST)
+ Sun, 29 Jan 2023 20:45:38 -0800 (PST)
 From: Juan Quintela <quintela@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  "Dr. David
  Alan Gilbert" <dgilbert@redhat.com>,  Thomas Huth <thuth@redhat.com>,
  Fabiano Rosas <farosas@suse.de>,  Laurent Vivier <lvivier@redhat.com>,
- qemu-arm@nongnu.org,  Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH v3 06/11] tests/qtest/migration-test: Reduce
- 'cmd_source' string scope
-In-Reply-To: <20230120082341.59913-7-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 20 Jan 2023 09:23:36
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH v3 07/11] tests/qtest/migration-test: Build command line
+ using GString API (1/4)
+In-Reply-To: <20230120082341.59913-8-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 20 Jan 2023 09:23:37
  +0100")
 References: <20230120082341.59913-1-philmd@linaro.org>
- <20230120082341.59913-7-philmd@linaro.org>
+ <20230120082341.59913-8-philmd@linaro.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
-Date: Mon, 30 Jan 2023 05:44:15 +0100
-Message-ID: <87a620my1s.fsf@secure.mitica>
+Date: Mon, 30 Jan 2023 05:45:37 +0100
+Message-ID: <875ycomxzi.fsf@secure.mitica>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
@@ -125,7 +125,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,16 +141,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: quintela@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: K3Y/4vvxRCs9
+X-TUID: buYogtNG4Ig/
 
 Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Part 1/4: Convert memory & machine options.
+>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
+Much nicer.
+
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-
-I am assuming that you will pull this patches through tests tree, not
-migration tree.
-
-Otherwise, let me know.
 

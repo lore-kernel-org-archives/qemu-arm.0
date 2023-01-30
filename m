@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp943388ejb;
-        Mon, 30 Jan 2023 05:26:17 -0800 (PST)
-X-Google-Smtp-Source: AK7set8qGr1y07fm6Hp9WB39FfdTjfojiQMn4KyDM1vps9KfZ//GsXTh2z0zM12DjsOR9JBAWOIf
-X-Received: by 2002:ac8:5c0e:0:b0:3b8:4729:8239 with SMTP id i14-20020ac85c0e000000b003b847298239mr11477574qti.12.1675085177403;
-        Mon, 30 Jan 2023 05:26:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675085177; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp944338ejb;
+        Mon, 30 Jan 2023 05:27:49 -0800 (PST)
+X-Google-Smtp-Source: AK7set9korjvQLJ8xdJAbkAddTDjmG5vA3YAigMeCT2z5qAK5p66eSG40fKiuhsQ7hnTC7wkrf/R
+X-Received: by 2002:ac8:5b05:0:b0:3b8:ca5a:ec4b with SMTP id m5-20020ac85b05000000b003b8ca5aec4bmr2009568qtw.65.1675085269417;
+        Mon, 30 Jan 2023 05:27:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675085269; cv=none;
         d=google.com; s=arc-20160816;
-        b=KXfvoJAAXkQnkBmFcdnEWzrSLcs5yqIxsFe9WiMavlJHv/prXhZXLD4W/MTmz68JAo
-         4AdCSxHmtUl/76wuXz1pisVlVrCAaEukhbW/Av9HqY6Q+jB8CSYBBlgDeH5VhAwVIlCN
-         RT1ExQZC/OHxsbGeYAU9VGqCuDtzO/VvmgWIfrkFU18CQaFs5wsX03GHkqx7imIhONM3
-         tENYwaSuBxR1XHIm+NqYG3nYitysUu4XgNA20nWRLKyVq+R/sH6kcEKS9Bq1V481lanR
-         q5TH4zrDU8POzD2fw29zSlNxltOK/2mvGljrVtVZCvHRl8GUGFyuG684Qfvyj1e0LVHd
-         aB4Q==
+        b=KdiToH5wq6p9Hcct//SQssmWqFph4oSVkkvAnAUNjzB3GTViZdOcY2SlU+7P0omFLO
+         jRSShH3OMT9AvPWAxLiIvueijEe8m/7QJoP0CLTFcj9CXgZyo+wi+IV9FuS4blsctmgZ
+         2OebamkXZdbHmxAR1slNSZJ9r77uYcU5wUIJCDz3f7lxpAYboJxKBNyawfrqzoF6k4W5
+         gc+2oG+0AJJD6mykqftHckfYKjGjy9dL7n/xU64tj1qWPdyN7YJVRoo9HDZc6hQCn3vo
+         SG3U28IppupbXx3Ycw2xZWRY1dpSniJpO4PA/Wqq+0toHQvh9gzfQ++4c40Wc3hNGmD0
+         E7Sg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=yo8RxmgtVnXL0bS5vFdivfD1QYbRW3xw/y/5lPafAos=;
-        b=GRvbpKa8ff4GXSRDLio7/Jc73Xl3VoaIGUhAxF7oJpYAwCDSy9e2y2orliPw2mmHOp
-         3U6YEfzp1ywLYShSYaGB/Vmpfkb5yTyLHcE/KUhwv0+Fuwn8xzr8bH0Z2T7obUCnSLGL
-         S/kS6zkpHK90jK6F7ZQl0fhS00tRFifuFXt0dvtdG/cchQ7uGPkhR3zhwML5XSeetpQW
-         L16vEfQAFhWQ3qOqCrnkEmym27VPQpwvGpTZHu9auYX55uB4kJXJDkWfONFzj7+DcKVS
-         3FJfGaw4LOKvt4waOeabmDjikxB2k0Th3jfCmJsyNANcCQTBRvk039VRL0nMd6iVoSO6
-         hEuA==
+        bh=NGpagByXc6J4MIDUTVLoDzWnIbFD7ozyvTMvhgaYQTI=;
+        b=aIzC5LGwjY2/CVzVMY9NoYQYF/uxCm1/V+ZKqailpPWfN0GFbDiE6lcyOxJ86k2j2y
+         SdD9GJnwvBBtgyjF4OZGpS7+fsAQ4Y30BGQUbv6wVXz7hpt/wbOvmPOvrj6aFc8Lw76y
+         MMcZWiwSZUMOZ6u8TnxbzPFlnLQx0B06LJKEEQBAbes7T7TItT1jAmdFGX1A/TvIOgT7
+         vlssk4TDgpMP7QOvzkeUsjreVgsCp+/qBAwM0k2TTro5kBvlIjvPXTm/PNnV7FDXYRhA
+         Obrz8OwuAKuBuxmQ7bESSpcRamrMoVQwnDjVUAoBdKB3R7JP9RmVUigYApql/P6hOVza
+         aLHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KvD/AnLK";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NKND5GjX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b4-20020a378004000000b00706c69f4d3esi6320950qkd.320.2023.01.30.05.26.17
+        by mx.google.com with ESMTPS id q4-20020a05622a030400b003adff1955edsi6181826qtw.662.2023.01.30.05.27.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jan 2023 05:26:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Jan 2023 05:27:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KvD/AnLK";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NKND5GjX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pMU7w-0006ul-PK; Mon, 30 Jan 2023 08:23:16 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pMU7l-0006Ct-5E; Mon, 30 Jan 2023 08:23:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pMU74-000522-Hc
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 08:22:22 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pMU70-0004ms-8m
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 08:22:18 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pMU6o-0005kB-TE
- for qemu-devel@nongnu.org; Mon, 30 Jan 2023 08:22:22 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pMU6n-0005js-VS
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 08:22:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1675084923;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=yo8RxmgtVnXL0bS5vFdivfD1QYbRW3xw/y/5lPafAos=;
- b=KvD/AnLKxiEI3XGnfUoV9FY6owQrrl81ZZ8/TLSEJ2uwAMwMvZQYqbqhCS+yEiQnu6K0hq
- sjZ0AJWjCundppnsTdXvhQDqrWdpcfPiHaS6yVzMxga5pSHz/wkduZwN+IVx+EOfdwLUDO
- xZcmnqfEuD0kdEkgyH/+6y6RqOtwXNI=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=NGpagByXc6J4MIDUTVLoDzWnIbFD7ozyvTMvhgaYQTI=;
+ b=NKND5GjXFXWPKKVBeZYN4cwhSXIc10cD+64/7QmeaDhM5qQvD/5roObq5P/cuAzXulKYye
+ kBDJb2Put56tGqDyfycP9w1GhTTMzhTmnLhTN7c3c/ahn/VObt0BggjqbS+o+P/O/2Kg1B
+ 06UVzlQhEPTg5WaA4hH5hoDGFpbIjQc=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-414-VoGU1dxEMEmw3cT9DBkhhg-1; Mon, 30 Jan 2023 08:21:59 -0500
-X-MC-Unique: VoGU1dxEMEmw3cT9DBkhhg-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ us-mta-445-eIymWka5PfyXRLu6sOtO3Q-1; Mon, 30 Jan 2023 08:22:01 -0500
+X-MC-Unique: eIymWka5PfyXRLu6sOtO3Q-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C00138030D5;
- Mon, 30 Jan 2023 13:21:58 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C413C3C0E44F;
+ Mon, 30 Jan 2023 13:21:59 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 974CA492B03;
- Mon, 30 Jan 2023 13:21:58 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 81878140EBF6;
+ Mon, 30 Jan 2023 13:21:59 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 64FC121E6914; Mon, 30 Jan 2023 14:21:56 +0100 (CET)
+ id 74E5821E691C; Mon, 30 Jan 2023 14:21:56 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
@@ -87,16 +87,17 @@ Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
  kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com,
  bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org
-Subject: [PATCH v5 13/20] target/hexagon: Clean up includes
-Date: Mon, 30 Jan 2023 14:21:49 +0100
-Message-Id: <20230130132156.1868019-14-armbru@redhat.com>
+Subject: [PATCH v5 18/20] Don't include headers already included by
+ qemu/osdep.h
+Date: Mon, 30 Jan 2023 14:21:54 +0100
+Message-Id: <20230130132156.1868019-19-armbru@redhat.com>
 In-Reply-To: <20230130132156.1868019-1-armbru@redhat.com>
 References: <20230130132156.1868019-1-armbru@redhat.com>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -104,69 +105,331 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aurUEIv2KfDF
-
-Clean up includes so that qemu/osdep.h is included first in .c, and
-not in .h, and headers which it implies are not included manually.
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: oOrk/shAA5Ur
 
 This commit was created with scripts/clean-includes.
 
-Changes to standalone programs dropped, because these intentionally
-don't use qemu/osdep.h:
-
-    target/hexagon/gen_dectree_import.c
-    target/hexagon/gen_semantics.c
-    target/hexagon/idef-parser/idef-parser.h
-    target/hexagon/idef-parser/parser-helpers.c
-    target/hexagon/idef-parser/parser-helpers.h
-
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Taylor Simpson <tsimpson@quicinc.com>
+Acked-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- target/hexagon/hex_arch_types.h | 1 -
- target/hexagon/mmvec/macros.h   | 1 -
- 2 files changed, 2 deletions(-)
+ backends/tpm/tpm_ioctl.h          | 2 --
+ fsdev/p9array.h                   | 2 --
+ include/hw/misc/aspeed_lpc.h      | 2 --
+ include/hw/pci/pcie_doe.h         | 1 -
+ include/qemu/async-teardown.h     | 2 --
+ include/qemu/dbus.h               | 1 -
+ include/qemu/host-utils.h         | 1 -
+ include/sysemu/event-loop-base.h  | 1 -
+ accel/tcg/cpu-exec.c              | 1 -
+ hw/9pfs/9p.c                      | 2 --
+ hw/display/virtio-gpu-udmabuf.c   | 1 -
+ hw/i2c/pmbus_device.c             | 1 -
+ hw/remote/proxy-memory-listener.c | 1 -
+ hw/sensor/adm1272.c               | 1 -
+ hw/usb/dev-storage-bot.c          | 1 -
+ hw/usb/dev-storage-classic.c      | 1 -
+ softmmu/vl.c                      | 2 --
+ tcg/tci.c                         | 1 -
+ tests/unit/test-seccomp.c         | 1 -
+ ui/udmabuf.c                      | 1 -
+ util/main-loop.c                  | 1 -
+ util/oslib-posix.c                | 2 --
+ 22 files changed, 29 deletions(-)
 
-diff --git a/target/hexagon/hex_arch_types.h b/target/hexagon/hex_arch_types.h
-index 885f68f760..52a7f2b2f3 100644
---- a/target/hexagon/hex_arch_types.h
-+++ b/target/hexagon/hex_arch_types.h
-@@ -18,7 +18,6 @@
- #ifndef HEXAGON_HEX_ARCH_TYPES_H
- #define HEXAGON_HEX_ARCH_TYPES_H
+diff --git a/backends/tpm/tpm_ioctl.h b/backends/tpm/tpm_ioctl.h
+index e506ef5160..b1d31768a6 100644
+--- a/backends/tpm/tpm_ioctl.h
++++ b/backends/tpm/tpm_ioctl.h
+@@ -12,8 +12,6 @@
+ # define __USE_LINUX_IOCTL_DEFS
+ #endif
  
--#include "qemu/osdep.h"
- #include "mmvec/mmvec.h"
+-#include <stdint.h>
+-#include <sys/types.h>
+ #ifndef _WIN32
+ #include <sys/uio.h>
+ #include <sys/ioctl.h>
+diff --git a/fsdev/p9array.h b/fsdev/p9array.h
+index 90e83a7c7b..50a1b15fe9 100644
+--- a/fsdev/p9array.h
++++ b/fsdev/p9array.h
+@@ -27,8 +27,6 @@
+ #ifndef QEMU_P9ARRAY_H
+ #define QEMU_P9ARRAY_H
+ 
+-#include "qemu/compiler.h"
+-
+ /**
+  * P9Array provides a mechanism to access arrays in common C-style (e.g. by
+  * square bracket [] operator) in conjunction with reference variables that
+diff --git a/include/hw/misc/aspeed_lpc.h b/include/hw/misc/aspeed_lpc.h
+index fd228731d2..fa398959af 100644
+--- a/include/hw/misc/aspeed_lpc.h
++++ b/include/hw/misc/aspeed_lpc.h
+@@ -12,8 +12,6 @@
+ 
+ #include "hw/sysbus.h"
+ 
+-#include <stdint.h>
+-
+ #define TYPE_ASPEED_LPC "aspeed.lpc"
+ #define ASPEED_LPC(obj) OBJECT_CHECK(AspeedLPCState, (obj), TYPE_ASPEED_LPC)
+ 
+diff --git a/include/hw/pci/pcie_doe.h b/include/hw/pci/pcie_doe.h
+index ba4d8b03bd..87dc17dcef 100644
+--- a/include/hw/pci/pcie_doe.h
++++ b/include/hw/pci/pcie_doe.h
+@@ -11,7 +11,6 @@
+ #define PCIE_DOE_H
+ 
+ #include "qemu/range.h"
+-#include "qemu/typedefs.h"
+ #include "hw/register.h"
+ 
+ /*
+diff --git a/include/qemu/async-teardown.h b/include/qemu/async-teardown.h
+index 092e7a37e7..b281da005b 100644
+--- a/include/qemu/async-teardown.h
++++ b/include/qemu/async-teardown.h
+@@ -13,8 +13,6 @@
+ #ifndef QEMU_ASYNC_TEARDOWN_H
+ #define QEMU_ASYNC_TEARDOWN_H
+ 
+-#include "config-host.h"
+-
+ #ifdef CONFIG_LINUX
+ void init_async_teardown(void);
+ #endif
+diff --git a/include/qemu/dbus.h b/include/qemu/dbus.h
+index 08f00dfd53..81d3de8a5a 100644
+--- a/include/qemu/dbus.h
++++ b/include/qemu/dbus.h
+@@ -15,7 +15,6 @@
+ #include "qom/object.h"
+ #include "chardev/char.h"
+ #include "qemu/notify.h"
+-#include "qemu/typedefs.h"
+ 
+ /* glib/gio 2.68 */
+ #define DBUS_METHOD_INVOCATION_HANDLED TRUE
+diff --git a/include/qemu/host-utils.h b/include/qemu/host-utils.h
+index 88d476161c..3ce62bf4a5 100644
+--- a/include/qemu/host-utils.h
++++ b/include/qemu/host-utils.h
+@@ -30,7 +30,6 @@
+ #ifndef HOST_UTILS_H
+ #define HOST_UTILS_H
+ 
+-#include "qemu/compiler.h"
+ #include "qemu/bswap.h"
  #include "qemu/int128.h"
  
-diff --git a/target/hexagon/mmvec/macros.h b/target/hexagon/mmvec/macros.h
-index 8c864e8c68..1201d778d0 100644
---- a/target/hexagon/mmvec/macros.h
-+++ b/target/hexagon/mmvec/macros.h
-@@ -18,7 +18,6 @@
- #ifndef HEXAGON_MMVEC_MACROS_H
- #define HEXAGON_MMVEC_MACROS_H
+diff --git a/include/sysemu/event-loop-base.h b/include/sysemu/event-loop-base.h
+index 2748bf6ae1..a6c24f1351 100644
+--- a/include/sysemu/event-loop-base.h
++++ b/include/sysemu/event-loop-base.h
+@@ -14,7 +14,6 @@
  
--#include "qemu/osdep.h"
- #include "qemu/host-utils.h"
- #include "arch.h"
- #include "mmvec/system_ext_mmvec.h"
+ #include "qom/object.h"
+ #include "block/aio.h"
+-#include "qemu/typedefs.h"
+ 
+ #define TYPE_EVENT_LOOP_BASE         "event-loop-base"
+ OBJECT_DECLARE_TYPE(EventLoopBase, EventLoopBaseClass,
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 04cd1f3092..8e0caf2fcc 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -28,7 +28,6 @@
+ #include "exec/exec-all.h"
+ #include "tcg/tcg.h"
+ #include "qemu/atomic.h"
+-#include "qemu/compiler.h"
+ #include "qemu/timer.h"
+ #include "qemu/rcu.h"
+ #include "exec/log.h"
+diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
+index 072cf67956..9621ec1341 100644
+--- a/hw/9pfs/9p.c
++++ b/hw/9pfs/9p.c
+@@ -19,8 +19,6 @@
+ #include "qemu/osdep.h"
+ #ifdef CONFIG_LINUX
+ #include <linux/limits.h>
+-#else
+-#include <limits.h>
+ #endif
+ #include <glib/gprintf.h>
+ #include "hw/virtio/virtio.h"
+diff --git a/hw/display/virtio-gpu-udmabuf.c b/hw/display/virtio-gpu-udmabuf.c
+index 8bdf4bac6e..847fa4c0cc 100644
+--- a/hw/display/virtio-gpu-udmabuf.c
++++ b/hw/display/virtio-gpu-udmabuf.c
+@@ -21,7 +21,6 @@
+ #include "exec/ramblock.h"
+ #include "sysemu/hostmem.h"
+ #include <sys/ioctl.h>
+-#include <fcntl.h>
+ #include <linux/memfd.h>
+ #include "qemu/memfd.h"
+ #include "standard-headers/linux/udmabuf.h"
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index 4071a88cfc..c3d6046784 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -8,7 +8,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include <math.h>
+-#include <string.h>
+ #include "hw/i2c/pmbus_device.h"
+ #include "migration/vmstate.h"
+ #include "qemu/module.h"
+diff --git a/hw/remote/proxy-memory-listener.c b/hw/remote/proxy-memory-listener.c
+index eb9918fe72..18d96a1d04 100644
+--- a/hw/remote/proxy-memory-listener.c
++++ b/hw/remote/proxy-memory-listener.c
+@@ -8,7 +8,6 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-#include "qemu/compiler.h"
+ #include "qemu/int128.h"
+ #include "qemu/range.h"
+ #include "exec/memory.h"
+diff --git a/hw/sensor/adm1272.c b/hw/sensor/adm1272.c
+index 7310c769be..8f4a1c2cd4 100644
+--- a/hw/sensor/adm1272.c
++++ b/hw/sensor/adm1272.c
+@@ -8,7 +8,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include <string.h>
+ #include "hw/i2c/pmbus_device.h"
+ #include "hw/irq.h"
+ #include "migration/vmstate.h"
+diff --git a/hw/usb/dev-storage-bot.c b/hw/usb/dev-storage-bot.c
+index b24b3148c2..1e5c5c711f 100644
+--- a/hw/usb/dev-storage-bot.c
++++ b/hw/usb/dev-storage-bot.c
+@@ -8,7 +8,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu/typedefs.h"
+ #include "qapi/error.h"
+ #include "hw/usb.h"
+ #include "hw/usb/desc.h"
+diff --git a/hw/usb/dev-storage-classic.c b/hw/usb/dev-storage-classic.c
+index 00f25bade2..84d19752b5 100644
+--- a/hw/usb/dev-storage-classic.c
++++ b/hw/usb/dev-storage-classic.c
+@@ -8,7 +8,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu/typedefs.h"
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+ #include "hw/usb.h"
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 9177d95d4e..5355a7fe5a 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -136,8 +136,6 @@
+ #include "qemu/guest-random.h"
+ #include "qemu/keyval.h"
+ 
+-#include "config-host.h"
+-
+ #define MAX_VIRTIO_CONSOLES 1
+ 
+ typedef struct BlockdevOptionsQueueEntry {
+diff --git a/tcg/tci.c b/tcg/tci.c
+index 05a24163d3..e7ac74cab0 100644
+--- a/tcg/tci.c
++++ b/tcg/tci.c
+@@ -21,7 +21,6 @@
+ #include "exec/cpu_ldst.h"
+ #include "tcg/tcg-op.h"
+ #include "tcg/tcg-ldst.h"
+-#include "qemu/compiler.h"
+ #include <ffi.h>
+ 
+ 
+diff --git a/tests/unit/test-seccomp.c b/tests/unit/test-seccomp.c
+index 3d7771e46c..f02c79cafd 100644
+--- a/tests/unit/test-seccomp.c
++++ b/tests/unit/test-seccomp.c
+@@ -25,7 +25,6 @@
+ #include "qapi/error.h"
+ #include "qemu/module.h"
+ 
+-#include <unistd.h>
+ #include <sys/syscall.h>
+ 
+ static void test_seccomp_helper(const char *args, bool killed,
+diff --git a/ui/udmabuf.c b/ui/udmabuf.c
+index cebceb2610..cbf4357bb1 100644
+--- a/ui/udmabuf.c
++++ b/ui/udmabuf.c
+@@ -8,7 +8,6 @@
+ #include "qapi/error.h"
+ #include "ui/console.h"
+ 
+-#include <fcntl.h>
+ #include <sys/ioctl.h>
+ 
+ int udmabuf_fd(void)
+diff --git a/util/main-loop.c b/util/main-loop.c
+index 58f776a8c9..3c0f525192 100644
+--- a/util/main-loop.c
++++ b/util/main-loop.c
+@@ -33,7 +33,6 @@
+ #include "block/thread-pool.h"
+ #include "qemu/error-report.h"
+ #include "qemu/queue.h"
+-#include "qemu/compiler.h"
+ #include "qom/object.h"
+ 
+ #ifndef _WIN32
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 59a891b6a8..fd03fd32c8 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -40,7 +40,6 @@
+ #include "qemu/thread.h"
+ #include <libgen.h>
+ #include "qemu/cutils.h"
+-#include "qemu/compiler.h"
+ #include "qemu/units.h"
+ #include "qemu/thread-context.h"
+ 
+@@ -50,7 +49,6 @@
+ 
+ #ifdef __FreeBSD__
+ #include <sys/thr.h>
+-#include <sys/types.h>
+ #include <sys/user.h>
+ #include <libutil.h>
+ #endif
 -- 
 2.39.0
 

@@ -1,279 +1,253 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149905ejb;
-        Mon, 30 Jan 2023 10:26:50 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvMLYbof9o87FzyVhQs5vOMhHt2hZeiUTXnhJfhm1F6DrRsXXKFqxLm2wmOsOR/e8ZKxUEX
-X-Received: by 2002:a0c:ee90:0:b0:535:5f72:d9c4 with SMTP id u16-20020a0cee90000000b005355f72d9c4mr52947998qvr.36.1675103210767;
-        Mon, 30 Jan 2023 10:26:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675103210; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149918ejb;
+        Mon, 30 Jan 2023 10:26:52 -0800 (PST)
+X-Google-Smtp-Source: AK7set/olg9ijSRLyW01QvVH30WkRy5dixg3IMb0swvlB9tEWD+K7bdhA7rrr9qdc/gfeMHTSFGb
+X-Received: by 2002:ad4:4c4f:0:b0:538:9623:f074 with SMTP id cs15-20020ad44c4f000000b005389623f074mr18664606qvb.18.1675103212500;
+        Mon, 30 Jan 2023 10:26:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675103212; cv=none;
         d=google.com; s=arc-20160816;
-        b=vCFY0gtBBt3jGfx3w9OvAVKmadzSegKbis2LRpDTnr0bLojlHbuyL2q/E6wlOj7xz9
-         EEEL9eZVZ9BKtCToiv+aPKiqx3nfUUg0S7iu5xrcp+EGoRmSP2VsaIt0uDGBjEIWa3xh
-         YHLOrAEL73eOaR5QqBAZDgpMbGvZSwrsHFe1rqaEjn0OIh94Tr24Pc+3fUghzMxMeE/t
-         70xHHuw7GRkTebf74KlCWH76LVtcJ0qO2e7UExjQ08PkJhoci3/5ygA22hcHx7VVMS2u
-         MWHQG5S7DcCdNsp8pJflg7qv+wXffjjKmp75Dn4+wuAKvCzI0oiNdcM29vLwTAISDFnj
-         DCfw==
+        b=h0ysNlZqqX11hAUUz0+RFxPOyJUSVOwwWCSGfdh7bMXFRtpA1d/vU+qpNcGSVE2vOl
+         ymOx7Mzo3+aRCvjkNHl8dlw3ZFeoGvJCdvUMi+2YiYVaanwgHnXPhGItmB2Xr6wgXan8
+         0/q2TivHTlT2+dN3hAbkxQIYfyy9BZqluEBrBQR4YRYirE9EfhTi6yacE7KpJLllum0B
+         P4oxJKkeVUv46gb8tbEr8w8IDih7jr1llw56b9xgUFaHvTkHLsGdjDzzJgFOVfBolgK6
+         TjN92YXRXhxx7EGG4kaxELSogAjPqaMmDD0Qs6b68JTpC1WtPbQCHib4Crlq3IeirsUJ
+         ozhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VeFx9B0Mzz35VrXD2mipraCVegd6Rxt0nAjW/UplbN4=;
-        b=qyG4lw3JayaJQYYorqwXqnDymaaAho0L4VYHTsYblX7cylm313o4WcNyVkqbF9++QH
-         8P1OFUfAJQlnJ6KId13vTf3yOp4xCTjlPZqavs2l62Ou9YAwFQanLiIJjBioiGuW00oR
-         qlv5QExwabSzYmyTLAnNSHWPk0jp1/6jKz6vjZ7cP5g8qcYIw3WeGAhJCZveOdhI5Fgj
-         wlL+/Jcrk3z7bGGPuiQr4uARyLYxZAA95juUm8QJoLSoZnzwOYl6ahBn80lFO0TGQVRp
-         saJwXtCsGziJafrsau4cohsJqzSV+bu/b7Sue/iFGo5gJ207Up3f6kN2db0kutNRcJQk
-         mZAw==
+        bh=Jcvd+N8dP8c49YORsITsraMbFg3q5O5eU5IyRhoB5B0=;
+        b=qmnTtOcgGH9sdPJAnQUhflS4h7DiunXTVqtCNBTjTFgZY+SFcz7KRDN89yhn24I+Om
+         q/iP3izGPkW7pZEjU5lP5+YWCAWViCRCJXzCcQkOAZoTgrtbaY2YnOhAqCnVno1hDfGH
+         g/1yC/tYGqGfU57fQ0ArR+JQKd/5aNsNqkFmMcc/xQglnmR8TeAxt2YoXZBBNTIUOQC+
+         Ho5t2m2lSumV4nG/+fJdkKP7+NY9l1fXqVEE2pQHs/r1Wh4B4bZg1+4wSqNduwSfzvPh
+         +8J4EsKdCVYYhfp1V7P/jLbDIMAIL/jULRn4x2Fr4rlxX/ZhPrdSyHjTQaYMbnIUF1x6
+         H1Cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A3sdf5PI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kjw1omPf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3-20020a056214202300b004c791803422si8391438qvf.5.2023.01.30.10.26.50
+        by mx.google.com with ESMTPS id qd24-20020ad44818000000b0053770052b97si6919025qvb.414.2023.01.30.10.26.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jan 2023 10:26:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Jan 2023 10:26:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A3sdf5PI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kjw1omPf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pMYqS-0001EA-G8; Mon, 30 Jan 2023 13:25:32 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pMYqH-00012b-2t; Mon, 30 Jan 2023 13:25:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYqP-0001C1-84
- for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:29 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1pMYqA-000108-9V
+ for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:15 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYqJ-0000At-PV
- for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:28 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id q10so11992731wrm.4
- for <qemu-arm@nongnu.org>; Mon, 30 Jan 2023 10:25:23 -0800 (PST)
+ id 1pMYq4-0008O3-Um
+ for qemu-devel@nongnu.org; Mon, 30 Jan 2023 13:25:13 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id t18so12010432wro.1
+ for <qemu-devel@nongnu.org>; Mon, 30 Jan 2023 10:25:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=VeFx9B0Mzz35VrXD2mipraCVegd6Rxt0nAjW/UplbN4=;
- b=A3sdf5PIuD4Pv/SyIV5fxs3BaQUCZ4p5N9i/qgbiEW9jdqvYZaACf6SWA+bIVwf4aZ
- Da6kg+VYWu++RcD2mCliEXXT2h7KsXQ3WHR1QwkRnixG8RgLj5w9sAFfKkbMQWlP1qeY
- ZxSBz97vOgThfunKwQJswoOGSmVzcvgg8sKFjUHDbjtSXYyM4NVMMwM6STmotcFc7Dsb
- u6FI86NeRfqu8xZGG3jajRwRIl6A0EKoROOk72QAH/4o207QIt/P4XoW/FBAnWhpuWji
- 9+iIbfkGl1qH4qQegCSsSCMnN548IFLu7Mz2SxoJBZV7w1pogDMEhud7pVKhi02lWJY/
- qzUw==
+ :reply-to; bh=Jcvd+N8dP8c49YORsITsraMbFg3q5O5eU5IyRhoB5B0=;
+ b=Kjw1omPf+0Hh7OwZLbBENhSQhY0B1Rsvd++4cV9RmnQfpTyVzJ/1CECKCXB7ofGcyy
+ CAk/f7xVBbFQdfs151DqGymz9pJxq+TNRR7zQalWDL3geeT4dqqXz3Zkiu5R+SVlUH8O
+ 5/h8u5vD8ankaLCtJelg3lgJQH8yZy1DKgfOpy4ONNgyd6/szbdA4C0S5SRhdJf0B28T
+ vTSWw3QzG7MIXiB4RbrS3qzZ8ycgdpJPcgkMmNrvcbKIYyGOvdYTL8ses/mveefJTL83
+ kFj0Gsl61NDBpDRxxhRB3C10Ty22mtg6y2WKFJH6RWOg6CHg/nTpDULqkX33VJtfAwoH
+ Y54g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=VeFx9B0Mzz35VrXD2mipraCVegd6Rxt0nAjW/UplbN4=;
- b=muK8DZ6bneMh0vr+3aM6UU3Y350l66sjuXEgZxmXmFCxIT9ecdHy+VQY0vni5CJ2u4
- FxRdmToBS1TegV4LzY7rvNg6MT1CkKNL2RR0WGEcti473eo6xG6FO7QsLm5fNFmcDOqM
- 1JAGoOPrybrB11Vx6XSEhuKsQh56AcG7WRzdEMKWAMhRilEgRn6SFXwtvEOVJfDwRW4O
- Cg4jI4iNXREekjhOK4QAloPCT7/0YDtpmsMf7rLjHil9t0W6tmnhp7i4/6ww2vtjv54y
- GGb18djwmZtZfXnL31z7oEHcp/LShj8NQKYybvEbOWiOWLfdAN+gMdwEyMyDk74Wx+ZP
- SPLw==
-X-Gm-Message-State: AO0yUKW5iLc670uJbPFd2gIDpWvk2PVwQdnyu0SbpI0eFKYFdVpkJFVY
- S/CeTBOioIgppP7JMlpCjyObcKrfAB9gubXI
-X-Received: by 2002:adf:9790:0:b0:2bf:d425:11ba with SMTP id
- s16-20020adf9790000000b002bfd42511bamr484301wrb.22.1675103122521; 
- Mon, 30 Jan 2023 10:25:22 -0800 (PST)
+ bh=Jcvd+N8dP8c49YORsITsraMbFg3q5O5eU5IyRhoB5B0=;
+ b=CNr2iESA9LA97sZRWggQOqjxpaEY0UUuHwI8VXjW1ddG32oRm64KlP87O1wK3z2nrF
+ hqPglHBCOfHYqLp3VVHAWObaaZmvq3lnajy0pLLoD52m3XBmFMBq4s4mVQ5OirJ1JwAt
+ SYwbGiYbJcr+kgOYiCVn0OJsAFvX2M1CP+rwAbx6LXwrZ+g0hYivQ3lUPoGXfaCg3k0x
+ jAKhU95SB+YqDyZPe+FXqc1fxzLZ9mPiyagFUYDycPfDGJmMofSy4DVYtEKPR6WnlJoP
+ YN556A/tJXgwcmdYzYDcq/Vouobmqh58QOawfJxgc2qZMcbPj2aVOB07uCixoXHtZtn8
+ lBqA==
+X-Gm-Message-State: AO0yUKVj6Pio5FHOe3uydlEGZPsa2kYwDtJy5beyQJX6cj/J4Sip+dLu
+ wqKyQFGE5TluKMolPbB6DSLT6A==
+X-Received: by 2002:adf:a1ce:0:b0:2bf:cfc2:2eae with SMTP id
+ v14-20020adfa1ce000000b002bfcfc22eaemr11920743wrv.69.1675103105798; 
+ Mon, 30 Jan 2023 10:25:05 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.21
+ l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Jan 2023 10:25:21 -0800 (PST)
+ Mon, 30 Jan 2023 10:25:04 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 21/23] target/arm: Implement the HFGITR_EL2.SVC_EL0 and
- SVC_EL1 traps
-Date: Mon, 30 Jan 2023 18:24:57 +0000
-Message-Id: <20230130182459.3309057-22-peter.maydell@linaro.org>
+Subject: [PATCH v2 04/23] target/arm: Move do_coproc_insn() syndrome
+ calculation earlier
+Date: Mon, 30 Jan 2023 18:24:40 +0000
+Message-Id: <20230130182459.3309057-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230130182459.3309057-1-peter.maydell@linaro.org>
 References: <20230130182459.3309057-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YdBTABW4ulEy
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cHS0Jon3aRoG
 
-Implement the HFGITR_EL2.SVC_EL0 and SVC_EL1 fine-grained traps.
-These trap execution of the SVC instruction from AArch32 and AArch64.
-(As usual, AArch32 can only trap from EL0, as fine grained traps are
-disabled with an AArch32 EL1.)
+Rearrange the code in do_coproc_insn() so that we calculate the
+syndrome value for a potential trap early; we're about to add a
+second check that wants this value earlier than where it is currently
+determined.
+
+(Specifically, a trap to EL2 because of HSTR_EL2 should take
+priority over an UNDEF to EL1, even when the UNDEF is because
+the register does not exist at all or because its ri->access
+bits non-configurably fail the access. So the check we put in
+for HSTR_EL2 trapping at EL1 (which needs the syndrome) is
+going to have to be done before the check "is the ARMCPRegInfo
+pointer NULL".)
+
+This commit is just code motion; the change to HSTR_EL2
+handling that will use the 'syndrome' variable is in a
+subsequent commit.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20230127175507.2895013-22-peter.maydell@linaro.org
+Message-id: 20230127175507.2895013-5-peter.maydell@linaro.org
 ---
- target/arm/cpu.h           |  1 +
- target/arm/translate.h     |  2 ++
- target/arm/helper.c        | 20 ++++++++++++++++++++
- target/arm/translate-a64.c |  9 ++++++++-
- target/arm/translate.c     | 12 +++++++++---
- 5 files changed, 40 insertions(+), 4 deletions(-)
+ target/arm/translate.c | 83 +++++++++++++++++++++---------------------
+ 1 file changed, 41 insertions(+), 42 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index ec2a7716ce7..7bc97fece97 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3171,6 +3171,7 @@ FIELD(TBFLAG_ANY, FPEXC_EL, 8, 2)
- FIELD(TBFLAG_ANY, ALIGN_MEM, 10, 1)
- FIELD(TBFLAG_ANY, PSTATE__IL, 11, 1)
- FIELD(TBFLAG_ANY, FGT_ACTIVE, 12, 1)
-+FIELD(TBFLAG_ANY, FGT_SVC, 13, 1)
- 
- /*
-  * Bit usage when in AArch32 state, both A- and M-profile.
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 62a7706eabd..3717824b754 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -134,6 +134,8 @@ typedef struct DisasContext {
-     bool fgt_active;
-     /* True if fine-grained trap on ERET is enabled */
-     bool fgt_eret;
-+    /* True if fine-grained trap on SVC is enabled */
-+    bool fgt_svc;
-     /*
-      * >= 0, a copy of PSTATE.BTYPE, which will be 0 without v8.5-BTI.
-      *  < 0, set by the current instruction.
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 6151c775053..c62ed05c122 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -11842,6 +11842,20 @@ ARMMMUIdx arm_mmu_idx(CPUARMState *env)
-     return arm_mmu_idx_el(env, arm_current_el(env));
- }
- 
-+static inline bool fgt_svc(CPUARMState *env, int el)
-+{
-+    /*
-+     * Assuming fine-grained-traps are active, return true if we
-+     * should be trapping on SVC instructions. Only AArch64 can
-+     * trap on an SVC at EL1, but we don't need to special-case this
-+     * because if this is AArch32 EL1 then arm_fgt_active() is false.
-+     * We also know el is 0 or 1.
-+     */
-+    return el == 0 ?
-+        FIELD_EX64(env->cp15.fgt_exec[FGTREG_HFGITR], HFGITR_EL2, SVC_EL0) :
-+        FIELD_EX64(env->cp15.fgt_exec[FGTREG_HFGITR], HFGITR_EL2, SVC_EL1);
-+}
-+
- static CPUARMTBFlags rebuild_hflags_common(CPUARMState *env, int fp_el,
-                                            ARMMMUIdx mmu_idx,
-                                            CPUARMTBFlags flags)
-@@ -11927,6 +11941,9 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
- 
-     if (arm_fgt_active(env, el)) {
-         DP_TBFLAG_ANY(flags, FGT_ACTIVE, 1);
-+        if (fgt_svc(env, el)) {
-+            DP_TBFLAG_ANY(flags, FGT_SVC, 1);
-+        }
-     }
- 
-     if (env->uncached_cpsr & CPSR_IL) {
-@@ -12068,6 +12085,9 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
-         if (FIELD_EX64(env->cp15.fgt_exec[FGTREG_HFGITR], HFGITR_EL2, ERET)) {
-             DP_TBFLAG_A64(flags, FGT_ERET, 1);
-         }
-+        if (fgt_svc(env, el)) {
-+            DP_TBFLAG_ANY(flags, FGT_SVC, 1);
-+        }
-     }
- 
-     if (cpu_isar_feature(aa64_mte, env_archcpu(env))) {
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 11bfa3f717a..bbfadb7c2e8 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -2179,6 +2179,7 @@ static void disas_exc(DisasContext *s, uint32_t insn)
-     int opc = extract32(insn, 21, 3);
-     int op2_ll = extract32(insn, 0, 5);
-     int imm16 = extract32(insn, 5, 16);
-+    uint32_t syndrome;
- 
-     switch (opc) {
-     case 0:
-@@ -2189,8 +2190,13 @@ static void disas_exc(DisasContext *s, uint32_t insn)
-          */
-         switch (op2_ll) {
-         case 1:                                                     /* SVC */
-+            syndrome = syn_aa64_svc(imm16);
-+            if (s->fgt_svc) {
-+                gen_exception_insn_el(s, 0, EXCP_UDEF, syndrome, 2);
-+                break;
-+            }
-             gen_ss_advance(s);
--            gen_exception_insn(s, 4, EXCP_SWI, syn_aa64_svc(imm16));
-+            gen_exception_insn(s, 4, EXCP_SWI, syndrome);
-             break;
-         case 2:                                                     /* HVC */
-             if (s->current_el == 0) {
-@@ -14751,6 +14757,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     dc->align_mem = EX_TBFLAG_ANY(tb_flags, ALIGN_MEM);
-     dc->pstate_il = EX_TBFLAG_ANY(tb_flags, PSTATE__IL);
-     dc->fgt_active = EX_TBFLAG_ANY(tb_flags, FGT_ACTIVE);
-+    dc->fgt_svc = EX_TBFLAG_ANY(tb_flags, FGT_SVC);
-     dc->fgt_eret = EX_TBFLAG_A64(tb_flags, FGT_ERET);
-     dc->sve_excp_el = EX_TBFLAG_A64(tb_flags, SVEEXC_EL);
-     dc->sme_excp_el = EX_TBFLAG_A64(tb_flags, SMEEXC_EL);
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 3f51dc6a6bf..c23a3462bfc 100644
+index 365e02fb0b8..9252a464a12 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -8834,9 +8834,14 @@ static bool trans_SVC(DisasContext *s, arg_SVC *a)
-         (a->imm == semihost_imm)) {
-         gen_exception_internal_insn(s, EXCP_SEMIHOST);
-     } else {
--        gen_update_pc(s, curr_insn_len(s));
--        s->svc_imm = a->imm;
--        s->base.is_jmp = DISAS_SWI;
-+        if (s->fgt_svc) {
-+            uint32_t syndrome = syn_aa32_svc(a->imm, s->thumb);
-+            gen_exception_insn_el(s, 0, EXCP_UDEF, syndrome, 2);
+@@ -4718,6 +4718,47 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+     const ARMCPRegInfo *ri = get_arm_cp_reginfo(s->cp_regs, key);
+     TCGv_ptr tcg_ri = NULL;
+     bool need_exit_tb;
++    uint32_t syndrome;
++
++    /*
++     * Note that since we are an implementation which takes an
++     * exception on a trapped conditional instruction only if the
++     * instruction passes its condition code check, we can take
++     * advantage of the clause in the ARM ARM that allows us to set
++     * the COND field in the instruction to 0xE in all cases.
++     * We could fish the actual condition out of the insn (ARM)
++     * or the condexec bits (Thumb) but it isn't necessary.
++     */
++    switch (cpnum) {
++    case 14:
++        if (is64) {
++            syndrome = syn_cp14_rrt_trap(1, 0xe, opc1, crm, rt, rt2,
++                                         isread, false);
 +        } else {
-+            gen_update_pc(s, curr_insn_len(s));
-+            s->svc_imm = a->imm;
-+            s->base.is_jmp = DISAS_SWI;
++            syndrome = syn_cp14_rt_trap(1, 0xe, opc1, opc2, crn, crm,
++                                        rt, isread, false);
 +        }
-     }
-     return true;
- }
-@@ -9417,6 +9422,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-     dc->align_mem = EX_TBFLAG_ANY(tb_flags, ALIGN_MEM);
-     dc->pstate_il = EX_TBFLAG_ANY(tb_flags, PSTATE__IL);
-     dc->fgt_active = EX_TBFLAG_ANY(tb_flags, FGT_ACTIVE);
-+    dc->fgt_svc = EX_TBFLAG_ANY(tb_flags, FGT_SVC);
++        break;
++    case 15:
++        if (is64) {
++            syndrome = syn_cp15_rrt_trap(1, 0xe, opc1, crm, rt, rt2,
++                                         isread, false);
++        } else {
++            syndrome = syn_cp15_rt_trap(1, 0xe, opc1, opc2, crn, crm,
++                                        rt, isread, false);
++        }
++        break;
++    default:
++        /*
++         * ARMv8 defines that only coprocessors 14 and 15 exist,
++         * so this can only happen if this is an ARMv7 or earlier CPU,
++         * in which case the syndrome information won't actually be
++         * guest visible.
++         */
++        assert(!arm_dc_feature(s, ARM_FEATURE_V8));
++        syndrome = syn_uncategorized();
++        break;
++    }
  
-     if (arm_feature(env, ARM_FEATURE_M)) {
-         dc->vfp_enabled = 1;
+     if (!ri) {
+         /*
+@@ -4755,48 +4796,6 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+          * Note that on XScale all cp0..c13 registers do an access check
+          * call in order to handle c15_cpar.
+          */
+-        uint32_t syndrome;
+-
+-        /*
+-         * Note that since we are an implementation which takes an
+-         * exception on a trapped conditional instruction only if the
+-         * instruction passes its condition code check, we can take
+-         * advantage of the clause in the ARM ARM that allows us to set
+-         * the COND field in the instruction to 0xE in all cases.
+-         * We could fish the actual condition out of the insn (ARM)
+-         * or the condexec bits (Thumb) but it isn't necessary.
+-         */
+-        switch (cpnum) {
+-        case 14:
+-            if (is64) {
+-                syndrome = syn_cp14_rrt_trap(1, 0xe, opc1, crm, rt, rt2,
+-                                             isread, false);
+-            } else {
+-                syndrome = syn_cp14_rt_trap(1, 0xe, opc1, opc2, crn, crm,
+-                                            rt, isread, false);
+-            }
+-            break;
+-        case 15:
+-            if (is64) {
+-                syndrome = syn_cp15_rrt_trap(1, 0xe, opc1, crm, rt, rt2,
+-                                             isread, false);
+-            } else {
+-                syndrome = syn_cp15_rt_trap(1, 0xe, opc1, opc2, crn, crm,
+-                                            rt, isread, false);
+-            }
+-            break;
+-        default:
+-            /*
+-             * ARMv8 defines that only coprocessors 14 and 15 exist,
+-             * so this can only happen if this is an ARMv7 or earlier CPU,
+-             * in which case the syndrome information won't actually be
+-             * guest visible.
+-             */
+-            assert(!arm_dc_feature(s, ARM_FEATURE_V8));
+-            syndrome = syn_uncategorized();
+-            break;
+-        }
+-
+         gen_set_condexec(s);
+         gen_update_pc(s, 0);
+         tcg_ri = tcg_temp_new_ptr();
 -- 
 2.34.1
 

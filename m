@@ -1,104 +1,105 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149499ejb;
-        Mon, 30 Jan 2023 10:26:05 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsZSs+6g2wVK2Z1rA4X5kE50TysiKQ8poI/YcAZYHOTaYVR/wTHz5+A3qvwitld4H3uLDdU
-X-Received: by 2002:a0c:b39e:0:b0:532:1d87:d78a with SMTP id t30-20020a0cb39e000000b005321d87d78amr73076886qve.2.1675103164987;
-        Mon, 30 Jan 2023 10:26:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675103164; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1149625ejb;
+        Mon, 30 Jan 2023 10:26:19 -0800 (PST)
+X-Google-Smtp-Source: AK7set9uVe+ncoI4OtiYn1Jn0wHPAfW4rjv7xCq5TGSa0GCTbb/IEkvy0QUfyGSxXCg+nxhCHW1B
+X-Received: by 2002:a05:6214:4406:b0:538:baf2:3ca7 with SMTP id oj6-20020a056214440600b00538baf23ca7mr18110722qvb.2.1675103179322;
+        Mon, 30 Jan 2023 10:26:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675103179; cv=none;
         d=google.com; s=arc-20160816;
-        b=bZESw5rFldtBxPUcL+XjTE7KztCVcMC6Qn3sr1dsNs2g6yvro7+QX4nrMoxkrbkIWH
-         4cLFWJlg22x0+yonzLXLMhQbn64wgKuxbmiGt77V5xvxh1qxZKND/2UjbuOmpMmDf3N1
-         39a8RkmXVauLJWLcZIBvZBM+v9TUrdlwXSksejzMPQQxB9Z3rFEMPYrYefMMgqhewY0l
-         Z8LvGLyQoUxVwzCpUnsLME3NFo7j8AudMx8g8aoqBItWAzmmxocOzf1Id7X9Jk7dU8Hg
-         NK25sR7o5UTwLZxWny+QDFM5ahndPjFkOc9nthiTEtderVLuPNwkZIm1OD4mpWt3G+Y2
-         wpBQ==
+        b=NG1PdqnxHpSrI9+JDUPCIe+9fhHewsZXTJ5A1ZipfCzFGJqo9OkJhK4gjdggRqhXSj
+         EOMc8CEAxOuMVfZlnatIUvlzBysky2bLtOBP/xsARZa5flZ4z/AWBfEIK6fD7dUAc8RU
+         eQXQy6Rgid9OMK3enU7Na0Sq+g66bRY+JPiB5F1trLT5Ird+Wk+tu4GqdHCEsh4UlCpr
+         JdHAZOo9mePmYknuMHR/QDghFrYZz6Ss1PtrQsr+/cLH23IiLq9d8cpMlXNaYUpDCI/X
+         IQS5shDOBrFU2RgYu/DlDc4UNlf/wYJc5UzskleQtxM8X/kex+xI08vLFGKyhz0gD+Zg
+         zHRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=uE1+7b7gus+hNDmeHdUGfNEuDyGv3C2iBvjQ8HFmN3M=;
-        b=yDzSGVn6eTBzFHrWCwtaI71YCgwS8edii2lGKn3d7PigouY2/4ksTdzJ1UGlZ7nm4Q
-         61lFwlpeIjzpsZhcFYbf6xHeIJZwCx7fY4dHAfpc0G9toG9eFC+kuEGtVBSJNxSj6wfy
-         6mH4Wiq+pm1NfHwbsrugCN+oY1OtowXuYrWtT/A1f1u/yj7c4JmKXR62IdZ8XtQgAhHq
-         cGmFEujGR0qjkoRuFekxWZXpYAVl8wzQEpm812W3FPqkpZ5PXIYYUD0LGPMiZ/mbDb/5
-         mIjzU3fslO8fhg8hQkxx8tsarlUVK45crI33FtoOnL7eiSbmdyf9wyHGi5CfzurTFgJJ
-         hR2w==
+        bh=rq0lR9ne6I1nZstcxCOL1EodaQTBuWKIlIMnYQtQVEQ=;
+        b=UhwSg4mwIj59CcfVonO/OYHMPAZTEODvwVwNoloCDnW563yY/4TIkBn2eApaSsWgFG
+         O9sdJW9psxbk3NNl00Ha3pk3x+38qThTmH1wTJ+qH1IA/+/udY51+OHtqKvGQHNCyzxl
+         HVmi6xLfCh8r9nkzVMrhD57xaY42u/LLWa3s9dKRehg1CxRKVMeMxm8IohgvMD/xC+mJ
+         u3v8C7J4Yc852sP9ba6AAVM8GAX4O42jW7vMvEAfLzW1/TsovkWILAfWQDvMgNBfTEVX
+         dJHodx57rDgB7GHFbZxt2oJVPcJBis69UeTba51+V1ax6b81r/zvF4efiL37XQ0wlG18
+         fIXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uhf5Rof4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CWBNV5kp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ea7-20020a05620a488700b007066fc780e1si4016259qkb.308.2023.01.30.10.26.04
+        by mx.google.com with ESMTPS id my8-20020a0562142e4800b005377156456esi6949370qvb.329.2023.01.30.10.26.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jan 2023 10:26:04 -0800 (PST)
+        Mon, 30 Jan 2023 10:26:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uhf5Rof4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CWBNV5kp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pMYqP-0001CD-Av; Mon, 30 Jan 2023 13:25:29 -0500
+	id 1pMYqH-000139-7b; Mon, 30 Jan 2023 13:25:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYqI-00014z-Hz
- for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:22 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ id 1pMYq9-0000zZ-0R
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:13 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pMYqB-0008U0-Mx
- for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:21 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id d14so11975612wrr.9
- for <qemu-arm@nongnu.org>; Mon, 30 Jan 2023 10:25:15 -0800 (PST)
+ id 1pMYq3-0008IM-El
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 13:25:12 -0500
+Received: by mail-wr1-x429.google.com with SMTP id y1so12005810wru.2
+ for <qemu-arm@nongnu.org>; Mon, 30 Jan 2023 10:25:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=uE1+7b7gus+hNDmeHdUGfNEuDyGv3C2iBvjQ8HFmN3M=;
- b=uhf5Rof4IxtTqsfdvUIRiVRRRk2K2j77EYOBa1xh2gchWP5FYp7UGaKk1tMr5swKeD
- SCOYTYn6eP5XM++d/Bav4bcgpAVkt1V4f0B18JP27xhz8qcoT5umkjiE74kM2g3FVp2G
- my6ueZ2wkdM+BV2zntJp2q+gJnpBy5nJqu2eytmVeHOPSPJX3uSDWVQIHKsiJuV0fHzv
- k+3UaKMoay4uEsE8ykSXN8JHBNIGVeY1Vh2uGmka68JOoT5S/Oti4hm5MtRPbimWY5+E
- VfbH1u8op0SnfSuCncqgTcB3sKL29JE4P9BgKD3wc+/nmaGqUZ4m9edUm0iOwf2nUbzE
- ziNQ==
+ :reply-to; bh=rq0lR9ne6I1nZstcxCOL1EodaQTBuWKIlIMnYQtQVEQ=;
+ b=CWBNV5kpX6yRYgoF+3K/zfNPHilLx7rVI7ZPhV9eX5W/Q66I20JRXkNF1ugMm6S4BM
+ Dd9DNjnzaWbrncSHM8BzU89sjBwqxmD2fWyhcqS1uxyGmEHHvRGpC3eBDNom5AJJsyns
+ zNfrnw9nDKSs2bjpiQnUcbg84hK59iTVYEBwPeqzp6/nMibgUcaclpSAxnUyUn1Sm4dF
+ ZNleYuioKtbCjP6F5IHAimgP4cx++3MtoQaqFKeIGrYtTMgK1NWXUxQCzQ5NiIFw/ANN
+ 5V7VGrSFu1PsGJNHcsxCeOlzJGqLewxYY3qbRaOvzWbr/JOypH5vYzzCtUTt7DpWaebU
+ jiqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=uE1+7b7gus+hNDmeHdUGfNEuDyGv3C2iBvjQ8HFmN3M=;
- b=olPYnnah6ZerBos/x4JkuaaMnRUJiu/T/RcggPnSf29x5/xNUdoRqRYIFBZU8mhLjk
- eakSR6S2gqj/FXvPcWbHLEO/bthhkLLxeIcglIJs8m+3Rczxi22kVi21hia61aKlEBX8
- /DEXk9ig3CkhRyyNt8UDISrFQ5qSDSCKZ5aTnHTbpab1hOlYccyZXM0OerNpt5X1eKhm
- WK8EyqPcXp0Wb7Zwx/abSJDnE78GvRS6biwjXtL7j8s8SEuoW1kl6/je+yANUD71VjHt
- 5c42GsRvkSzTLMejatrgJeHp4QaVR0yXqM9fHYQoc37e62lx6F7Gj6pf1RTdF6ZoC7JD
- CCcA==
-X-Gm-Message-State: AFqh2koWOF1XIvYewKMKmRKi9Ga4ALfGIV6NkkzOHdjAIv0tbkDDyZ7X
- JLtnYHDXNQDWKYQaHo+X0+02JasMD9UZNEW1
-X-Received: by 2002:a05:6000:38a:b0:2be:4c32:a7df with SMTP id
- u10-20020a056000038a00b002be4c32a7dfmr39515156wrf.63.1675103114414; 
- Mon, 30 Jan 2023 10:25:14 -0800 (PST)
+ bh=rq0lR9ne6I1nZstcxCOL1EodaQTBuWKIlIMnYQtQVEQ=;
+ b=22RuGpQGjvc30he02tr/Q80wrOPjO+S69A4ytMRsolN1WieBrO/7HtxiLbVPkq4cjC
+ hTWQ0ewCHLAkzn0/58HHkJSYf5LrCatOnIy7h4rrwGbWWCuwkjt/KJercVOve1lbesbx
+ OsgJp4YmFJgz1i/quG4j51MN+MMO7rFTp1Mpx/Ku+tP8qxTVinIkuxMfxzX/bpTa9mRI
+ y79lQLkzBt7palr1q443Djrbl7fWyBrWGCFuQLfNtpGczIMvYTUoJdOruYDrHVmL+8aR
+ BS+VJ9qcL6GLf4OpaAz1W690kXnO+Ks0fv8uDcuY4juFhIFqSmimc6fM95kFXdbPQGO/
+ Z1Qw==
+X-Gm-Message-State: AO0yUKWeRozky2uyya2DCgB/v9GySftkfq8pCuAC7M6liBTFS7h0wcNh
+ HOeqrw6pkIKE3gCmeV1GzGpaBobRWt+l3R5e
+X-Received: by 2002:a5d:5b0c:0:b0:2bf:eb2c:369 with SMTP id
+ bx12-20020a5d5b0c000000b002bfeb2c0369mr320600wrb.66.1675103103713; 
+ Mon, 30 Jan 2023 10:25:03 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.13
+ l16-20020adffe90000000b002b8fe58d6desm12245202wrr.62.2023.01.30.10.25.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Jan 2023 10:25:13 -0800 (PST)
+ Mon, 30 Jan 2023 10:25:02 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 13/23] target/arm: Mark up sysregs for HFGRTR bits 36..63
-Date: Mon, 30 Jan 2023 18:24:49 +0000
-Message-Id: <20230130182459.3309057-14-peter.maydell@linaro.org>
+Subject: [PATCH v2 02/23] target/arm: Correct syndrome for ATS12NSO* at Secure
+ EL1
+Date: Mon, 30 Jan 2023 18:24:38 +0000
+Message-Id: <20230130182459.3309057-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230130182459.3309057-1-peter.maydell@linaro.org>
 References: <20230130182459.3309057-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,128 +121,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Fr6I6x1Ulv46
+X-TUID: xVgW4nUig2G5
 
-Mark up the sysreg definitions for the registers trapped
-by HFGRTR/HFGWTR bits 36..63.
+The AArch32 ATS12NSO* address translation operations are supposed to
+trap to either EL2 or EL3 if they're executed at Secure EL1 (which
+can only happen if EL3 is AArch64).  We implement this, but we got
+the syndrome value wrong: like other traps to EL2 or EL3 on an
+AArch32 cpreg access, they should report the 0x3 syndrome, not the
+0x0 'uncategorized' syndrome.  This is clear in the access pseudocode
+for these instructions.
 
-Of these, some correspond to RAS registers which we implement as
-always-UNDEF: these don't need any extra handling for FGT because the
-UNDEF-to-EL1 always takes priority over any theoretical
-FGT-trap-to-EL2.
-
-Bit 50 (NACCDATA_EL1) is for the ACCDATA_EL1 register which is part
-of the FEAT_LS64_ACCDATA feature which we don't yet implement.
+Fix the syndrome value for these operations by correcting the
+returned value from the ats_access() function.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20230127175507.2895013-14-peter.maydell@linaro.org
+Message-id: 20230127175507.2895013-3-peter.maydell@linaro.org
 ---
- target/arm/cpregs.h       |  7 +++++++
- hw/intc/arm_gicv3_cpuif.c |  2 ++
- target/arm/helper.c       | 10 ++++++++++
- 3 files changed, 19 insertions(+)
+ target/arm/helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 1b219242d5d..fef8ad08acc 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -615,6 +615,13 @@ typedef enum FGTBit {
-     DO_BIT(HFGRTR, TPIDR_EL1),
-     DO_BIT(HFGRTR, TPIDRRO_EL0),
-     DO_BIT(HFGRTR, TPIDR_EL0),
-+    DO_BIT(HFGRTR, TTBR0_EL1),
-+    DO_BIT(HFGRTR, TTBR1_EL1),
-+    DO_BIT(HFGRTR, VBAR_EL1),
-+    DO_BIT(HFGRTR, ICC_IGRPENN_EL1),
-+    DO_BIT(HFGRTR, ERRIDR_EL1),
-+    DO_REV_BIT(HFGRTR, NSMPRI_EL1),
-+    DO_REV_BIT(HFGRTR, NTPIDR2_EL0),
- } FGTBit;
- 
- #undef DO_BIT
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index b17b29288c7..6a3ca482fff 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -2376,6 +2376,7 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 6,
-       .type = ARM_CP_IO | ARM_CP_NO_RAW,
-       .access = PL1_RW, .accessfn = gicv3_fiq_access,
-+      .fgt = FGT_ICC_IGRPENN_EL1,
-       .readfn = icc_igrpen_read,
-       .writefn = icc_igrpen_write,
-     },
-@@ -2384,6 +2385,7 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 7,
-       .type = ARM_CP_IO | ARM_CP_NO_RAW,
-       .access = PL1_RW, .accessfn = gicv3_irq_access,
-+      .fgt = FGT_ICC_IGRPENN_EL1,
-       .readfn = icc_igrpen_read,
-       .writefn = icc_igrpen_write,
-     },
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 9f6d9e2a3c9..a48b022def6 100644
+index ccb7d1e1712..6f6772d8e04 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -4158,12 +4158,14 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
-     { .name = "TTBR0_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_TTBR0_EL1,
-       .writefn = vmsa_ttbr_write, .resetvalue = 0,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.ttbr0_s),
-                              offsetof(CPUARMState, cp15.ttbr0_ns) } },
-     { .name = "TTBR1_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fgt = FGT_TTBR1_EL1,
-       .writefn = vmsa_ttbr_write, .resetvalue = 0,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.ttbr1_s),
-                              offsetof(CPUARMState, cp15.ttbr1_ns) } },
-@@ -6488,6 +6490,10 @@ static void disr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t val)
-  *   ERRSELR_EL1
-  * may generate UNDEFINED, which is the effect we get by not
-  * listing them at all.
-+ *
-+ * These registers have fine-grained trap bits, but UNDEF-to-EL1
-+ * is higher priority than FGT-to-EL2 so we do not need to list them
-+ * in order to check for an FGT.
-  */
- static const ARMCPRegInfo minimal_ras_reginfo[] = {
-     { .name = "DISR_EL1", .state = ARM_CP_STATE_BOTH,
-@@ -6497,6 +6503,7 @@ static const ARMCPRegInfo minimal_ras_reginfo[] = {
-     { .name = "ERRIDR_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 3, .opc2 = 0,
-       .access = PL1_R, .accessfn = access_terr,
-+      .fgt = FGT_ERRIDR_EL1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     { .name = "VDISR_EL2", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 1, .opc2 = 1,
-@@ -6819,6 +6826,7 @@ static const ARMCPRegInfo sme_reginfo[] = {
-     { .name = "TPIDR2_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 13, .crm = 0, .opc2 = 5,
-       .access = PL0_RW, .accessfn = access_tpidr2,
-+      .fgt = FGT_NTPIDR2_EL0,
-       .fieldoffset = offsetof(CPUARMState, cp15.tpidr2_el0) },
-     { .name = "SVCR", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 4, .crm = 2, .opc2 = 2,
-@@ -6856,6 +6864,7 @@ static const ARMCPRegInfo sme_reginfo[] = {
-     { .name = "SMPRI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 2, .opc2 = 4,
-       .access = PL1_RW, .accessfn = access_esm,
-+      .fgt = FGT_NSMPRI_EL1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     { .name = "SMPRIMAP_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 2, .opc2 = 5,
-@@ -8884,6 +8893,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             { .name = "VBAR", .state = ARM_CP_STATE_BOTH,
-               .opc0 = 3, .crn = 12, .crm = 0, .opc1 = 0, .opc2 = 0,
-               .access = PL1_RW, .writefn = vbar_write,
-+              .fgt = FGT_VBAR_EL1,
-               .bank_fieldoffsets = { offsetof(CPUARMState, cp15.vbar_s),
-                                      offsetof(CPUARMState, cp15.vbar_ns) },
-               .resetvalue = 0 },
+@@ -3284,9 +3284,9 @@ static CPAccessResult ats_access(CPUARMState *env, const ARMCPRegInfo *ri,
+         if (arm_current_el(env) == 1) {
+             if (arm_is_secure_below_el3(env)) {
+                 if (env->cp15.scr_el3 & SCR_EEL2) {
+-                    return CP_ACCESS_TRAP_UNCATEGORIZED_EL2;
++                    return CP_ACCESS_TRAP_EL2;
+                 }
+-                return CP_ACCESS_TRAP_UNCATEGORIZED_EL3;
++                return CP_ACCESS_TRAP_EL3;
+             }
+             return CP_ACCESS_TRAP_UNCATEGORIZED;
+         }
 -- 
 2.34.1
 

@@ -1,102 +1,125 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp944918ejb;
-        Mon, 30 Jan 2023 05:28:40 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXssU9/8yQE3dnHUy7DfwC51U7cDFaPhpY1k/TwAf0/1WD7hvwhKu6GvtTceK35SSGvLnglB
-X-Received: by 2002:a05:622a:6090:b0:3b6:942b:4ff1 with SMTP id hf16-20020a05622a609000b003b6942b4ff1mr54927048qtb.37.1675085320070;
-        Mon, 30 Jan 2023 05:28:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675085320; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp975530ejb;
+        Mon, 30 Jan 2023 06:13:02 -0800 (PST)
+X-Google-Smtp-Source: AK7set8BXg4l770+pW04rA4qQehNrWRkiDj77vavHmSWndxG5VQkkprPQnUOMe8qJp9QJidPHelE
+X-Received: by 2002:a25:5b44:0:b0:81a:825d:1762 with SMTP id p65-20020a255b44000000b0081a825d1762mr2615642ybb.54.1675087982257;
+        Mon, 30 Jan 2023 06:13:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675087982; cv=none;
         d=google.com; s=arc-20160816;
-        b=uwgzil+mPFguKPgzOemGl7YfUniJtYOyB9NBM2jxH0klDk6boktWS41kMO3bfO1GNP
-         Ha1cJJnfx+a6AjyjDzaeKvAYx2BWVYhDnYPBpAG3S4bw9c7KQ4a+oNmKcOPElKQVr6Nh
-         khwRzYzV9Fkmnhbj8ERpvCd5CKtk5rCQ+HpNXxeRl31oQlBQ0HzOzZGWSM2k0gV5iUn6
-         VlTowoS7M7x9sCyeyMmSJuNmxQhWBW4d1Vv3i6SoQ5DAh2e3krDZMkGWcRBbOo8JqId3
-         NCl+RyhJF+jAqBDEjCPrEr0oApzv8Mx4Q0zLKI1ebmABlvOYhtkQ0aSbrLZrB2FHxG3L
-         yt7w==
+        b=PbUmAbFq8e5S2DyfRYKuWy//T14QqtyMt8+uz5vmoKrynrfTiqc5Nmoktze6iD5twS
+         ZzeZgfftV5oxfu8IAwCnCJRghtMOkMOfpEyLXMOyQvZF1WREuQmZQa67hHnB33/AeUyL
+         HymNRVIIC4GY/FR+umdGLnSE2ZiFriZlmmTn7hV9HFCtCZLug8GiPisz5Tq/a/j6gLtz
+         pcdxI1+Rd+DGveMIAPCEAfxOR1QPS8BNxShCRJ5Ua3nRAnBYsXW+Pgeb7ZNjag5IEzNQ
+         M9Sv7+NILKoRpLr91TMgAadI2N++T1plnDcaud1iyzs3dK+beKbMk/1rJ8yLaX1obEdz
+         Q0Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:user-agent:references:in-reply-to:subject:cc:to
          :from:dkim-signature;
-        bh=cSuD7wwfEIoR/KVA5CwwxW/I+dK80Y2fYpG2Yd3+XNQ=;
-        b=MTEcmhHBA//0tC/NMkgIY5E/QJxWkhXSov4CDW4ny46E/UZ3xC/cAKveUb8QnHnBVM
-         OSQf/WBxINOUiBfU6i33aaBGMtHDh4s7VevwXGBErPoKukFVcn6XA1hA+YpAUB1aprEk
-         VJvdyoYC2iwUxDyi3eTvo9IlUUKwsGlIkPFCLiau3eDwx5aqRWG3YYG/Sc1yHjTPIzxQ
-         f7s/7/olJ2BNviYCBmjmuAgsLYEv4dVCnmJSHAz2UTph5ELkwrUZX5oYzBxA9/rfFEq7
-         ZygbjpLac+19Pf89V5X61c9aLT6o20ntcb0NksTm9BzxRTDr5EZbRiW5HLpfOb0H9IkQ
-         /qUA==
+        bh=/JfOpjghu1xEkXUaTMrcOhwi5M2JrjC97o13QlidUK8=;
+        b=G9XqzJJQGRUycAcXAtDTmrFJJUuCMHsf+DIEw5PCZi+NHAXFH7frrnBDLJ2jkmt+ff
+         u1YCxbpquFdOlPPX1VmmKraIrraNOggaxSV+sBLnMJHZwtXapItH3PzQOKUDdO1MW4pl
+         f8uzQers8LvNlmq04++FAUtptSAJ9P25MDn2VyfCeg6ksHQAvpkgWuMU5oqChmMmSWui
+         xT9EX7nNz/MoZBHDyAZQaAHqLI4K45OMNSdidIU6/L9JeUpPU3PR9fBwa6KZn3JD2J72
+         yf1zvw2n3Uc6I5ZQnzXeEeD6Tsk9nmGMIRxKzeozeaiRxpreDuFDszNKgPY6ybW+Apik
+         urJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bOLvCtWh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VpMHIcQP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p16-20020a05622a049000b003b64d8ccd7bsi6612676qtx.668.2023.01.30.05.28.39
+        by mx.google.com with ESMTPS id l7-20020ae9f007000000b006fefa5ef911si6547253qkg.266.2023.01.30.06.13.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jan 2023 05:28:40 -0800 (PST)
+        Mon, 30 Jan 2023 06:13:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bOLvCtWh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VpMHIcQP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pMU7y-00076c-Co; Mon, 30 Jan 2023 08:23:18 -0500
+	id 1pMUts-0001Cs-D1; Mon, 30 Jan 2023 09:12:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pMU75-00053O-Qe
- for qemu-arm@nongnu.org; Mon, 30 Jan 2023 08:22:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1pMUtn-0001Bp-32
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 09:12:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pMU6o-0005lE-T8
- for qemu-arm@nongnu.org; Mon, 30 Jan 2023 08:22:23 -0500
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1pMUti-0000II-Ny
+ for qemu-arm@nongnu.org; Mon, 30 Jan 2023 09:12:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675084924;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cSuD7wwfEIoR/KVA5CwwxW/I+dK80Y2fYpG2Yd3+XNQ=;
- b=bOLvCtWhoZzC+DMvtgnyNiu6V6NsCUhDUkODQ/v18mHTMdKx0U93GfM8whJSH8bNb6XZUP
- TRitoBggnuQ0IZbWKQMTztrHARqBOpllXGFhYKqOUcujuTV2moBPti6n0dLjau1sS6sE5J
- Kg30JV/qTTMbsdtuIcHnG++lTgqW0WE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-339-SbaOCKQWNW--c6lW5a7udA-1; Mon, 30 Jan 2023 08:22:01 -0500
-X-MC-Unique: SbaOCKQWNW--c6lW5a7udA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D689A100F910;
- Mon, 30 Jan 2023 13:21:59 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 90A13C15BAE;
- Mon, 30 Jan 2023 13:21:59 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7BF0C21E6921; Mon, 30 Jan 2023 14:21:56 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
- hreitz@redhat.com, imp@bsdimp.com, kevans@freebsd.org, berrange@redhat.com,
- groug@kaod.org, qemu_oss@crudebyte.com, mst@redhat.com, philmd@linaro.org,
- peter.maydell@linaro.org, alistair@alistair23.me, jasowang@redhat.com,
- jonathan.cameron@huawei.com, kbastian@mail.uni-paderborn.de,
- quintela@redhat.com, dgilbert@redhat.com, michael.roth@amd.com,
- kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com,
- bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PATCH v5 20/20] Drop duplicate #include
-Date: Mon, 30 Jan 2023 14:21:56 +0100
-Message-Id: <20230130132156.1868019-21-armbru@redhat.com>
-In-Reply-To: <20230130132156.1868019-1-armbru@redhat.com>
+ s=mimecast20190719; t=1675087957;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=/JfOpjghu1xEkXUaTMrcOhwi5M2JrjC97o13QlidUK8=;
+ b=VpMHIcQPYRqWmM16iStx/GYDuNIM3FSJtabW7Ovn/WGWb6x3wSRx7GdP2SZJbtybJ+ZHas
+ P0ReHBUkl3JRFv/0VsRBt9JNnAweLyFFWWK3reEBheWrOPJrglTwI9PC2aoGY4OieECSb3
+ eqAjdXS5krGsLdZ8XBygSaquGwYlw/I=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-494-tEnBi-klNGuiyeM2_7pOVA-1; Mon, 30 Jan 2023 09:12:36 -0500
+X-MC-Unique: tEnBi-klNGuiyeM2_7pOVA-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ h9-20020a1ccc09000000b003db1c488826so9594191wmb.3
+ for <qemu-arm@nongnu.org>; Mon, 30 Jan 2023 06:12:36 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=mime-version:message-id:date:reply-to:user-agent:references
+ :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=/JfOpjghu1xEkXUaTMrcOhwi5M2JrjC97o13QlidUK8=;
+ b=d8PHiPEGBmQyg5+/7lm0+AZa6TZ7dLlsJyX9wzKiicfUlfCQrPBEFtkxI7z2fFpA83
+ W2TFTpovpMVEZfSBSmvNDX0e9LBYejCb02sEhQMKZtV0Z2X6Rj86wsDNcTPBfBHgouuz
+ /11tbzZQ7hyw4wvqaFwSmkFJMJ9pa80f/5fdROSogKQuWFUwxAGJo+eSaj2XlxW8xLFE
+ tnXi2qtwk+1es4qcHDwLxHHtYDmZ15+wmeeQlUg1wNMXJt71yeYRp0NUq+dlEyM6BvDk
+ 7jkczj0T/O3bMbrbHp/7SONbkFf/4SepONr4i+kOqFMI1G68mYzWK5DyhNqn0n7KSx+e
+ 3Axg==
+X-Gm-Message-State: AFqh2kpQar6PFFGDR5ltxMmu5IpMb1QiIj1A5rfb40kXHNJS1buD4HgY
+ C6eI1l/7kM8Boe0gAddMR+T69hUnedCcf9n6bzn8TSBcMsk2uccD2Kie258zNW7J+1ccneXGSbJ
+ O0L4E1CWmwyjx
+X-Received: by 2002:a05:600c:1c2a:b0:3cf:d0b1:8aa1 with SMTP id
+ j42-20020a05600c1c2a00b003cfd0b18aa1mr48027878wms.0.1675087955499; 
+ Mon, 30 Jan 2023 06:12:35 -0800 (PST)
+X-Received: by 2002:a05:600c:1c2a:b0:3cf:d0b1:8aa1 with SMTP id
+ j42-20020a05600c1c2a00b003cfd0b18aa1mr48027839wms.0.1675087955281; 
+ Mon, 30 Jan 2023 06:12:35 -0800 (PST)
+Received: from redhat.com ([46.136.252.173]) by smtp.gmail.com with ESMTPSA id
+ o25-20020a1c7519000000b003daf6e3bc2fsm24805883wmc.1.2023.01.30.06.12.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Jan 2023 06:12:34 -0800 (PST)
+From: Juan Quintela <quintela@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org,  richard.henderson@linaro.org,
+ pbonzini@redhat.com,  kwolf@redhat.com,  hreitz@redhat.com,
+ imp@bsdimp.com,  kevans@freebsd.org,  berrange@redhat.com,
+ groug@kaod.org,  qemu_oss@crudebyte.com,  mst@redhat.com,
+ philmd@linaro.org,  peter.maydell@linaro.org,  alistair@alistair23.me,
+ jasowang@redhat.com,  jonathan.cameron@huawei.com,
+ kbastian@mail.uni-paderborn.de,  dgilbert@redhat.com,
+ michael.roth@amd.com,  kkostiuk@redhat.com,  tsimpson@quicinc.com,
+ palmer@dabbelt.com,  bin.meng@windriver.com,  qemu-block@nongnu.org,
+ qemu-arm@nongnu.org,  qemu-riscv@nongnu.org
+Subject: Re: [PATCH v5 04/20] scripts/clean-includes: Improve --git commit
+ message
+In-Reply-To: <20230130132156.1868019-5-armbru@redhat.com> (Markus Armbruster's
+ message of "Mon, 30 Jan 2023 14:21:40 +0100")
 References: <20230130132156.1868019-1-armbru@redhat.com>
+ <20230130132156.1868019-5-armbru@redhat.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+Date: Mon, 30 Jan 2023 15:12:33 +0100
+Message-ID: <87sffsnmb2.fsf@secure.mitica>
 MIME-Version: 1.0
-Content-type: text/plain
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -104,7 +127,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,462 +140,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JW5e6GXHenZm
+X-TUID: 3tjc3xNp5E8n
 
-Tracked down with the help of scripts/clean-includes.
+Markus Armbruster <armbru@redhat.com> wrote:
+> The script drops #include "qemu/osdep.h" from headers.  Mention it in
+> the commit message it uses for --git.
+>
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  scripts/clean-includes | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/scripts/clean-includes b/scripts/clean-includes
+> index f0466a6262..f9722c3aec 100755
+> --- a/scripts/clean-includes
+> +++ b/scripts/clean-includes
+> @@ -193,8 +193,8 @@ if [ "$GIT" = "yes" ]; then
+>      git commit --signoff -F - <<EOF
+>  $GITSUBJ: Clean up includes
+>  
+> -Clean up includes so that osdep.h is included first and headers
+> -which it implies are not included manually.
+> +Clean up includes so that qemu/osdep.h is included first in .c, and
+> +not in .h, and headers which it implies are not included manually.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reviewed-by: Greg Kurz <groug@kaod.org>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+I give a tree.
+
+Clean up includes so qemu/osdep.h is never used in .h files.  It makes
+sure that qemu/osdep.h is only used in .c files.  Once there, it assures
+that .h files already included in qemu/osdep.h are not included a second
+time on the .c file.
+
+What do you think?
+And yes, not using "include" the "include files" is .... interesting/confusing/....
+
+
+Anyways, if you preffer old text or net one.
+
 Reviewed-by: Juan Quintela <quintela@redhat.com>
----
- include/hw/arm/fsl-imx6ul.h   | 1 -
- include/hw/arm/fsl-imx7.h     | 1 -
- backends/tpm/tpm_emulator.c   | 1 -
- hw/acpi/piix4.c               | 1 -
- hw/alpha/dp264.c              | 1 -
- hw/arm/virt.c                 | 1 -
- hw/arm/xlnx-versal.c          | 1 -
- hw/block/pflash_cfi01.c       | 1 -
- hw/core/machine.c             | 1 -
- hw/hppa/machine.c             | 1 -
- hw/i386/acpi-build.c          | 1 -
- hw/loongarch/acpi-build.c     | 1 -
- hw/misc/macio/cuda.c          | 1 -
- hw/misc/macio/pmu.c           | 1 -
- hw/net/xilinx_axienet.c       | 1 -
- hw/ppc/ppc405_uc.c            | 2 --
- hw/ppc/ppc440_bamboo.c        | 1 -
- hw/ppc/spapr_drc.c            | 1 -
- hw/rdma/vmw/pvrdma_dev_ring.c | 1 -
- hw/remote/machine.c           | 1 -
- hw/remote/remote-obj.c        | 1 -
- hw/rtc/mc146818rtc.c          | 1 -
- hw/s390x/virtio-ccw-serial.c  | 1 -
- migration/postcopy-ram.c      | 2 --
- softmmu/dirtylimit.c          | 1 -
- softmmu/runstate.c            | 1 -
- softmmu/vl.c                  | 1 -
- target/loongarch/translate.c  | 1 -
- target/mips/tcg/translate.c   | 1 -
- target/nios2/translate.c      | 2 --
- tests/unit/test-cutils.c      | 1 -
- ui/gtk.c                      | 1 -
- util/oslib-posix.c            | 4 ----
- 33 files changed, 39 deletions(-)
-
-diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
-index 7812e516a5..1952cb984d 100644
---- a/include/hw/arm/fsl-imx6ul.h
-+++ b/include/hw/arm/fsl-imx6ul.h
-@@ -30,7 +30,6 @@
- #include "hw/timer/imx_gpt.h"
- #include "hw/timer/imx_epit.h"
- #include "hw/i2c/imx_i2c.h"
--#include "hw/gpio/imx_gpio.h"
- #include "hw/sd/sdhci.h"
- #include "hw/ssi/imx_spi.h"
- #include "hw/net/imx_fec.h"
-diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
-index 4e5e071864..355bd8ea83 100644
---- a/include/hw/arm/fsl-imx7.h
-+++ b/include/hw/arm/fsl-imx7.h
-@@ -32,7 +32,6 @@
- #include "hw/timer/imx_gpt.h"
- #include "hw/timer/imx_epit.h"
- #include "hw/i2c/imx_i2c.h"
--#include "hw/gpio/imx_gpio.h"
- #include "hw/sd/sdhci.h"
- #include "hw/ssi/imx_spi.h"
- #include "hw/net/imx_fec.h"
-diff --git a/backends/tpm/tpm_emulator.c b/backends/tpm/tpm_emulator.c
-index 67e7b212e3..d18144b92e 100644
---- a/backends/tpm/tpm_emulator.c
-+++ b/backends/tpm/tpm_emulator.c
-@@ -35,7 +35,6 @@
- #include "sysemu/runstate.h"
- #include "sysemu/tpm_backend.h"
- #include "sysemu/tpm_util.h"
--#include "sysemu/runstate.h"
- #include "tpm_int.h"
- #include "tpm_ioctl.h"
- #include "migration/blocker.h"
-diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-index 0a81f1ad93..df39f91294 100644
---- a/hw/acpi/piix4.c
-+++ b/hw/acpi/piix4.c
-@@ -35,7 +35,6 @@
- #include "sysemu/xen.h"
- #include "qapi/error.h"
- #include "qemu/range.h"
--#include "hw/acpi/pcihp.h"
- #include "hw/acpi/cpu_hotplug.h"
- #include "hw/acpi/cpu.h"
- #include "hw/hotplug.h"
-diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-index c502c8c62a..4161f559a7 100644
---- a/hw/alpha/dp264.c
-+++ b/hw/alpha/dp264.c
-@@ -18,7 +18,6 @@
- #include "net/net.h"
- #include "qemu/cutils.h"
- #include "qemu/datadir.h"
--#include "net/net.h"
- 
- static uint64_t cpu_alpha_superpage_to_phys(void *opaque, uint64_t addr)
- {
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ea2413a0ba..d3849d7233 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -33,7 +33,6 @@
- #include "qemu/units.h"
- #include "qemu/option.h"
- #include "monitor/qdev.h"
--#include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "hw/arm/boot.h"
- #include "hw/arm/primecell.h"
-diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-index 57276e1506..69b1b99e93 100644
---- a/hw/arm/xlnx-versal.c
-+++ b/hw/arm/xlnx-versal.c
-@@ -22,7 +22,6 @@
- #include "hw/misc/unimp.h"
- #include "hw/arm/xlnx-versal.h"
- #include "qemu/log.h"
--#include "hw/sysbus.h"
- 
- #define XLNX_VERSAL_ACPU_TYPE ARM_CPU_TYPE_NAME("cortex-a72")
- #define XLNX_VERSAL_RCPU_TYPE ARM_CPU_TYPE_NAME("cortex-r5f")
-diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index 36d68c70f6..3c066e3405 100644
---- a/hw/block/pflash_cfi01.c
-+++ b/hw/block/pflash_cfi01.c
-@@ -45,7 +45,6 @@
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "qemu/bitops.h"
--#include "qemu/error-report.h"
- #include "qemu/host-utils.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 616f3a207c..67cf9f9dcd 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -39,7 +39,6 @@
- #include "exec/confidential-guest-support.h"
- #include "hw/virtio/virtio.h"
- #include "hw/virtio/virtio-pci.h"
--#include "qom/object_interfaces.h"
- 
- GlobalProperty hw_compat_7_2[] = {};
- const size_t hw_compat_7_2_len = G_N_ELEMENTS(hw_compat_7_2);
-diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-index de1cc7ab71..7ac68c943f 100644
---- a/hw/hppa/machine.c
-+++ b/hw/hppa/machine.c
-@@ -28,7 +28,6 @@
- #include "qapi/error.h"
- #include "net/net.h"
- #include "qemu/log.h"
--#include "net/net.h"
- 
- #define MIN_SEABIOS_HPPA_VERSION 6 /* require at least this fw version */
- 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 127c4e2d50..14f6f75454 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -76,7 +76,6 @@
- 
- #include "hw/acpi/hmat.h"
- #include "hw/acpi/viot.h"
--#include "hw/acpi/cxl.h"
- 
- #include CONFIG_DEVICES
- 
-diff --git a/hw/loongarch/acpi-build.c b/hw/loongarch/acpi-build.c
-index c2b237736d..f551296a0e 100644
---- a/hw/loongarch/acpi-build.c
-+++ b/hw/loongarch/acpi-build.c
-@@ -22,7 +22,6 @@
- /* Supported chipsets: */
- #include "hw/pci-host/ls7a.h"
- #include "hw/loongarch/virt.h"
--#include "hw/acpi/aml-build.h"
- 
- #include "hw/acpi/utils.h"
- #include "hw/acpi/pci.h"
-diff --git a/hw/misc/macio/cuda.c b/hw/misc/macio/cuda.c
-index 853e88bfed..29a8e5ed19 100644
---- a/hw/misc/macio/cuda.c
-+++ b/hw/misc/macio/cuda.c
-@@ -30,7 +30,6 @@
- #include "hw/input/adb.h"
- #include "hw/misc/mos6522.h"
- #include "hw/misc/macio/cuda.h"
--#include "qapi/error.h"
- #include "qemu/timer.h"
- #include "sysemu/runstate.h"
- #include "sysemu/rtc.h"
-diff --git a/hw/misc/macio/pmu.c b/hw/misc/macio/pmu.c
-index 97ef8c771b..5a788e595a 100644
---- a/hw/misc/macio/pmu.c
-+++ b/hw/misc/macio/pmu.c
-@@ -36,7 +36,6 @@
- #include "hw/misc/mos6522.h"
- #include "hw/misc/macio/gpio.h"
- #include "hw/misc/macio/pmu.h"
--#include "qapi/error.h"
- #include "qemu/timer.h"
- #include "sysemu/runstate.h"
- #include "sysemu/rtc.h"
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index 7e00965323..5b19a01eaa 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -31,7 +31,6 @@
- #include "net/net.h"
- #include "net/checksum.h"
- 
--#include "hw/hw.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "hw/stream.h"
-diff --git a/hw/ppc/ppc405_uc.c b/hw/ppc/ppc405_uc.c
-index c973cfb04e..0cc68178ad 100644
---- a/hw/ppc/ppc405_uc.c
-+++ b/hw/ppc/ppc405_uc.c
-@@ -38,8 +38,6 @@
- #include "sysemu/sysemu.h"
- #include "exec/address-spaces.h"
- #include "hw/intc/ppc-uic.h"
--#include "hw/qdev-properties.h"
--#include "qapi/error.h"
- #include "trace.h"
- 
- /*****************************************************************************/
-diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
-index 81d71adf34..2880c81cb1 100644
---- a/hw/ppc/ppc440_bamboo.c
-+++ b/hw/ppc/ppc440_bamboo.c
-@@ -13,7 +13,6 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/units.h"
--#include "qemu/error-report.h"
- #include "qemu/datadir.h"
- #include "qemu/error-report.h"
- #include "net/net.h"
-diff --git a/hw/ppc/spapr_drc.c b/hw/ppc/spapr_drc.c
-index 4923435a8b..b5c400a94d 100644
---- a/hw/ppc/spapr_drc.c
-+++ b/hw/ppc/spapr_drc.c
-@@ -17,7 +17,6 @@
- #include "hw/ppc/spapr_drc.h"
- #include "qom/object.h"
- #include "migration/vmstate.h"
--#include "qapi/error.h"
- #include "qapi/qapi-events-qdev.h"
- #include "qapi/visitor.h"
- #include "qemu/error-report.h"
-diff --git a/hw/rdma/vmw/pvrdma_dev_ring.c b/hw/rdma/vmw/pvrdma_dev_ring.c
-index 598e6adc5e..30ce22a5be 100644
---- a/hw/rdma/vmw/pvrdma_dev_ring.c
-+++ b/hw/rdma/vmw/pvrdma_dev_ring.c
-@@ -14,7 +14,6 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "qemu/cutils.h"
- #include "hw/pci/pci.h"
- #include "cpu.h"
- #include "qemu/cutils.h"
-diff --git a/hw/remote/machine.c b/hw/remote/machine.c
-index 519f855ec1..fdc6c441bb 100644
---- a/hw/remote/machine.c
-+++ b/hw/remote/machine.c
-@@ -22,7 +22,6 @@
- #include "hw/remote/iohub.h"
- #include "hw/remote/iommu.h"
- #include "hw/qdev-core.h"
--#include "hw/remote/iommu.h"
- #include "hw/remote/vfio-user-obj.h"
- #include "hw/pci/msi.h"
- 
-diff --git a/hw/remote/remote-obj.c b/hw/remote/remote-obj.c
-index 333e5ac443..65b6f7cc86 100644
---- a/hw/remote/remote-obj.c
-+++ b/hw/remote/remote-obj.c
-@@ -12,7 +12,6 @@
- #include "qemu/error-report.h"
- #include "qemu/notify.h"
- #include "qom/object_interfaces.h"
--#include "hw/qdev-core.h"
- #include "io/channel.h"
- #include "hw/qdev-core.h"
- #include "hw/remote/machine.h"
-diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
-index bc1192b7ae..ba612a151d 100644
---- a/hw/rtc/mc146818rtc.c
-+++ b/hw/rtc/mc146818rtc.c
-@@ -43,7 +43,6 @@
- #include "qapi/error.h"
- #include "qapi/qapi-events-misc.h"
- #include "qapi/visitor.h"
--#include "hw/rtc/mc146818rtc_regs.h"
- 
- //#define DEBUG_CMOS
- //#define DEBUG_COALESCED
-diff --git a/hw/s390x/virtio-ccw-serial.c b/hw/s390x/virtio-ccw-serial.c
-index bf8057880f..8f8d2302f8 100644
---- a/hw/s390x/virtio-ccw-serial.c
-+++ b/hw/s390x/virtio-ccw-serial.c
-@@ -15,7 +15,6 @@
- #include "hw/qdev-properties.h"
- #include "hw/virtio/virtio-serial.h"
- #include "virtio-ccw.h"
--#include "hw/virtio/virtio-serial.h"
- 
- #define TYPE_VIRTIO_SERIAL_CCW "virtio-serial-ccw"
- OBJECT_DECLARE_SIMPLE_TYPE(VirtioSerialCcw, VIRTIO_SERIAL_CCW)
-diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
-index b9a37ef255..8b7d1af75d 100644
---- a/migration/postcopy-ram.c
-+++ b/migration/postcopy-ram.c
-@@ -17,7 +17,6 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "qemu/rcu.h"
- #include "qemu/madvise.h"
- #include "exec/target_page.h"
- #include "migration.h"
-@@ -34,7 +33,6 @@
- #include "hw/boards.h"
- #include "exec/ramblock.h"
- #include "socket.h"
--#include "qemu-file.h"
- #include "yank_functions.h"
- #include "tls.h"
- 
-diff --git a/softmmu/dirtylimit.c b/softmmu/dirtylimit.c
-index 12668555f2..c56f0f58c8 100644
---- a/softmmu/dirtylimit.c
-+++ b/softmmu/dirtylimit.c
-@@ -11,7 +11,6 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "qapi/error.h"
- #include "qemu/main-loop.h"
- #include "qapi/qapi-commands-migration.h"
- #include "qapi/qmp/qdict.h"
-diff --git a/softmmu/runstate.c b/softmmu/runstate.c
-index cab9f6fc07..f9ad88e6a7 100644
---- a/softmmu/runstate.c
-+++ b/softmmu/runstate.c
-@@ -41,7 +41,6 @@
- #include "qapi/qapi-commands-run-state.h"
- #include "qapi/qapi-events-run-state.h"
- #include "qemu/error-report.h"
--#include "qemu/log.h"
- #include "qemu/job.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-diff --git a/softmmu/vl.c b/softmmu/vl.c
-index 5355a7fe5a..b2ee3fee3f 100644
---- a/softmmu/vl.c
-+++ b/softmmu/vl.c
-@@ -129,7 +129,6 @@
- #include "qapi/qapi-commands-misc.h"
- #include "qapi/qapi-visit-qom.h"
- #include "qapi/qapi-commands-ui.h"
--#include "qapi/qmp/qdict.h"
- #include "block/qdict.h"
- #include "qapi/qmp/qerror.h"
- #include "sysemu/iothread.h"
-diff --git a/target/loongarch/translate.c b/target/loongarch/translate.c
-index 38ced69803..72a6275665 100644
---- a/target/loongarch/translate.c
-+++ b/target/loongarch/translate.c
-@@ -12,7 +12,6 @@
- #include "exec/helper-proto.h"
- #include "exec/helper-gen.h"
- 
--#include "exec/translator.h"
- #include "exec/log.h"
- #include "qemu/qemu-print.h"
- #include "fpu/softfloat.h"
-diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
-index 624e6b7786..aa12bb708a 100644
---- a/target/mips/tcg/translate.c
-+++ b/target/mips/tcg/translate.c
-@@ -32,7 +32,6 @@
- #include "semihosting/semihost.h"
- 
- #include "trace.h"
--#include "exec/translator.h"
- #include "exec/log.h"
- #include "qemu/qemu-print.h"
- #include "fpu_helper.h"
-diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-index 4db8b47744..7aee65a089 100644
---- a/target/nios2/translate.c
-+++ b/target/nios2/translate.c
-@@ -938,8 +938,6 @@ static const char * const cr_regnames[NUM_CR_REGS] = {
- };
- #endif
- 
--#include "exec/gen-icount.h"
--
- /* generate intermediate code for basic block 'tb'.  */
- static void nios2_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
- {
-diff --git a/tests/unit/test-cutils.c b/tests/unit/test-cutils.c
-index 2126b46391..3c4f875420 100644
---- a/tests/unit/test-cutils.c
-+++ b/tests/unit/test-cutils.c
-@@ -26,7 +26,6 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "qemu/units.h"
- #include "qemu/cutils.h"
- #include "qemu/units.h"
- 
-diff --git a/ui/gtk.c b/ui/gtk.c
-index 4817623c8f..7f752d8b7d 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -53,7 +53,6 @@
- #include <math.h>
- 
- #include "trace.h"
--#include "qemu/cutils.h"
- #include "ui/input.h"
- #include "sysemu/runstate.h"
- #include "sysemu/sysemu.h"
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index fd03fd32c8..77d882e681 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -59,10 +59,6 @@
- 
- #include "qemu/mmap-alloc.h"
- 
--#ifdef CONFIG_DEBUG_STACK_USAGE
--#include "qemu/error-report.h"
--#endif
--
- #define MAX_MEM_PREALLOC_THREAD_COUNT 16
- 
- struct MemsetThread;
--- 
-2.39.0
 

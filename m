@@ -1,88 +1,88 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp327151ejb;
-        Tue, 31 Jan 2023 23:50:14 -0800 (PST)
-X-Google-Smtp-Source: AK7set8Dzx856W1naj2/aGAmDDvL6o5fw7xpT11nUrlVZG5pE3AhBO+nMCh2YZzn0Rl2mlkE0qKL
-X-Received: by 2002:ac8:7fd5:0:b0:3b9:b817:e9ae with SMTP id b21-20020ac87fd5000000b003b9b817e9aemr2751964qtk.5.1675237814733;
-        Tue, 31 Jan 2023 23:50:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675237814; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp327912ejb;
+        Tue, 31 Jan 2023 23:52:06 -0800 (PST)
+X-Google-Smtp-Source: AK7set+mwCwBtcRdRCJB6/a/4CAxoerUl1YAAJeTLQ20CzGBXwGr0ptGRsLh4NS+5ViBRqQb/yuZ
+X-Received: by 2002:a05:622a:4b:b0:3b8:6cf0:da83 with SMTP id y11-20020a05622a004b00b003b86cf0da83mr2837818qtw.42.1675237926495;
+        Tue, 31 Jan 2023 23:52:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675237926; cv=none;
         d=google.com; s=arc-20160816;
-        b=O/v95F/rAGUfjoRQw8p2YfGtQyiboZbXKuA8F4IklBc66o1/omKqmCecxqGinxCKiq
-         iQVgCZRgrUtLWEAUuOKhGBKuZI8wiF3ZzoWfyk4gaRQtwACz/SHYRMwE9dqDgYVSZx70
-         sJWU5Jgi+hVsmvjUgVpRkHj6n237r/z1QEPdaec/4pU6FDgn6L79gkQ3AtjS2bhCdASM
-         ae/UwKWa40AdKpFHV9+XdyGgHToMYOOXbpHq7Nw7SM/QiVgSF792FW8931f/uRpx12p7
-         7qkojz12sos2POU2jiBBKtd3RmcsWfNoyJlLvZNkGb7GR4H5C8z44qJlKZHTD2LdDRkG
-         AZzg==
+        b=VA7Af/uba4qE25iLdFlWrj8iWDaeeNsY2Kr0t/Eb4td+QbDR/EYRylcFvNGVsTcQSH
+         1csKd1dyQ7IodGr8YfdnZaw1agVWHEnVPVXvfmmLbrMK33Or95wdPof0kdtnv/VvvEEM
+         WMW/znadpwvYc4OGA+JEPg6YZpFDv3nzsnesdOnhDr4EBb/x3cYBXzFov2/vzqhKGdgK
+         sO0qqY1yewAVvXC0Fg2pASIdtyZnMOeKbKf4k7R6vDp3rL5kpmnT3c3iRWTth2YH/6e3
+         nDRk62aeQ26tNjPXi9XUJTTtgzWjKgs4rTP6niAyeE/bNvY2P7dJ4JxydMxqnj5ZWuHi
+         eIIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=pyEEMjxBSwQNOLQlfUXjk6pIcfWdlku0q5Bqe8jDHd4=;
-        b=e96nNEakJCnCO+m40vkX9iLlRcMkWXxDEvlA/eUGLeOH+1kzEvJfo3R1V2eD8fOi+F
-         e9+M131Crqov+HrdgXBhQN71UnoKFgmwCvKysrz/PwZPuumNPZ1mO989QeQ9Vx4Is/2p
-         +wxeKL1dEKH6tqV+4F2X/I+vh2ekdqCkZ2/kho1Tin5AcDszVBUM3yIeQTPW6Hu6HDWP
-         t13ko9o4RGAkwCtAw+pfAwEnmXWIKUHHrynWMO1Pu1phHImLZ14r1wUmpi6Uq1bsaS/B
-         jG353C62AdxojZTbJcII19KGJ9PX3L+CYKqy2FNtbb/KBdkKMuuLnj8dz64FWrDELLGZ
-         wxug==
+        bh=5mTqkVQNA7M5IsAO2e30ZtQc5IAPFHcXFkU1R2pwGsQ=;
+        b=Eokgwzze3FuJP2GAMSBm3kDQ0qwRrwE/oePFYODAFJ8raYpNlQjsaCIK5MFkLO1qJQ
+         7bjeWmbRN2aj+kzjNG2OtcPxVMg2TTnX+FnKr8QmsjYO9bbyU4uTI2NnnrsZrauqY/ID
+         7JFs56oNdGmiZ7vQ8t2+FTZqZCxFUoqUtbd9akgWmBp88sS9nhLNLcO2QqFggTUni/YR
+         GOTRT81a5CJss0Hz6v12m4mhiu2FQq90FuYs1SaZsw6df2aWiccJcx3yKoKZGyqIMonY
+         WVlDFwfvY0AkT9ZBgyYVp3lM9+dnSPFesSHXV/ELdQr0NHP5/D3lNAk710Bb3VDVv+yl
+         kGmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g3-20020ac842c3000000b003b81d86242bsi6109023qtm.51.2023.01.31.23.50.14
+        by mx.google.com with ESMTPS id h15-20020ac85e0f000000b003b86cf500aesi4172019qtx.25.2023.01.31.23.52.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Jan 2023 23:50:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Jan 2023 23:52:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pN7sh-0003cg-Rn; Wed, 01 Feb 2023 02:50:12 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pN7uV-0005FF-6z; Wed, 01 Feb 2023 02:52:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pN7sf-0003bp-06
- for qemu-arm@nongnu.org; Wed, 01 Feb 2023 02:50:09 -0500
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1pN7uT-0005EH-EE; Wed, 01 Feb 2023 02:52:01 -0500
 Received: from 5.mo552.mail-out.ovh.net ([188.165.45.220])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pN7sb-0008H0-U4
- for qemu-arm@nongnu.org; Wed, 01 Feb 2023 02:50:08 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.11])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 053CC2B265;
- Wed,  1 Feb 2023 07:50:00 +0000 (UTC)
-Received: from kaod.org (37.59.142.105) by DAG4EX2.mxp5.local (172.16.2.32)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1pN7uR-0000jX-IH; Wed, 01 Feb 2023 02:52:01 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.141])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id C80972A935;
+ Wed,  1 Feb 2023 07:51:51 +0000 (UTC)
+Received: from kaod.org (37.59.142.96) by DAG4EX2.mxp5.local (172.16.2.32)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.17; Wed, 1 Feb
- 2023 08:50:00 +0100
+ 2023 08:51:51 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-105G00660eca92e-0607-4b7d-9872-90aaeccc239e,
+ (GARM-96R001b17f2c5b-8324-4705-844f-e33712a118cc,
  F0C8195E27B16437EDCB3A2BE992E155E5E23C80) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <f1f96a11-5b4d-1f9e-a832-8e07bb2cee56@kaod.org>
-Date: Wed, 1 Feb 2023 08:49:59 +0100
+Message-ID: <9ee4d21c-f3a6-9b66-1e3e-32924a036e77@kaod.org>
+Date: Wed, 1 Feb 2023 08:51:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH 02/25] aspeed: Add Supermicro X11 SPI machine type
+Subject: Re: [PATCH 04/25] avocado/boot_linux_console.py: Update ast2600 test
 Content-Language: en-US
 To: Joel Stanley <joel@jms.id.au>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Peter Maydell
  <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@linaro.org>, Guenter Roeck <linux@roeck-us.net>
+ <philmd@linaro.org>
 References: <20230119123449.531826-1-clg@kaod.org>
- <20230119123449.531826-3-clg@kaod.org>
- <CACPK8XeSN90WZjpAiBqcQyOgJh+q=HTgFsw98Ywm7voGHY7ypw@mail.gmail.com>
+ <20230119123449.531826-5-clg@kaod.org>
+ <CACPK8XccDp8gJW93rVqKOkutBqqBkd+km0ZGGBtsnuUWMVEC_A@mail.gmail.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CACPK8XeSN90WZjpAiBqcQyOgJh+q=HTgFsw98Ywm7voGHY7ypw@mail.gmail.com>
+In-Reply-To: <CACPK8XccDp8gJW93rVqKOkutBqqBkd+km0ZGGBtsnuUWMVEC_A@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.105]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX2.mxp5.local
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX2.mxp5.local
  (172.16.2.32)
-X-Ovh-Tracer-GUID: e0867b6f-503d-4802-ba4b-787eabba1f66
-X-Ovh-Tracer-Id: 1848727650116078374
+X-Ovh-Tracer-GUID: d8beb8f7-45d6-4c7b-8500-5d672e5edb7d
+X-Ovh-Tracer-Id: 1879971371163290531
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrudefhedguddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepvddvgfejudegudfgteduueehjedugffftdefgeetffeivdfhvdduhffhheegleefnecuffhomhgrihhnpehsuhhpvghrmhhitghrohdrtghomhenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghupdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpphhhihhlmhgusehlihhnrghrohdrohhrghdplhhinhhugiesrhhovggtkhdquhhsrdhnvghtpdfovfetjfhoshhtpehmohehhedvpdhmohguvgepshhmthhpohhuth
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrudefhedgudduhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepudfgueevteevgfevjeevgeefieevgedvtefhlefhgfelheegteefueffledvieejnecuffhomhgrihhnpeguvggsihgrnhdrohhrghenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhphhhilhhmugeslhhinhgrrhhordhorhhgpdfovfetjfhoshhtpehmohehhedvpdhmohguvgepshhmthhpohhuth
 Received-SPF: pass client-ip=188.165.45.220; envelope-from=clg@kaod.org;
  helo=5.mo552.mail-out.ovh.net
 X-Spam_score_int: -19
@@ -92,53 +92,83 @@ X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.09,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: af/xmntYUOer
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cW/0eikDYLcr
 
-On 2/1/23 06:39, Joel Stanley wrote:
-> On Thu, 19 Jan 2023 at 12:36, Cédric Le Goater <clg@kaod.org> wrote:
+On 2/1/23 06:46, Joel Stanley wrote:
+> On Thu, 19 Jan 2023 at 12:35, Cédric Le Goater <clg@kaod.org> wrote:
 >>
->> From: Guenter Roeck <linux@roeck-us.net>
+>> From: Joel Stanley <joel@jms.id.au>
 >>
->> supermicrox11-bmc is configured with ast2400-a1 SoC. This does not match
->> the Supermicro documentation for X11 BMCs, and it does not match the
->> devicetree file in the Linux kernel.
-> 
-> I found this sentence confusing; AFAICT X11 doesn't name a specific
-> motherboard. It appears to be a marketing term for a bunch of
-> different things.
-> 
->> As it turns out, some Supermicro X11 motherboards use AST2400 SoCs,
->> while others use AST2500.
+>> Update the test_arm_ast2600_debian test to
 >>
->> Introduce new machine type supermicrox11-spi-bmc with AST2500 SoC
+>>   - the latest Debian kernel
 > 
-> How about supermicro-x11spi-bmc? It would match the product name:
-> 
-> https://www.supermicro.com/en/products/motherboard/X11SPi-TF
-> 
-> as well as the device tree filename.
+> Would you like a newer version of this patch that uses the latest kernel?
 
-Indeed,
-
-         model = "X11SPI BMC";
-         compatible = "supermicro,x11spi-bmc", "aspeed,ast2500";
-
-I was the one who suggested the name. Let's change if Guenter agrees.
+Sure. We can not test all kernels. Using the latest is the best approach I think.
 
 Thanks,
 
 C.
+
+
+> 
+>>   - use the Rainier machine instead of Tacoma
+>>
+>> Both of which contains support for more hardware and thus exercises more
+>> of the hardware Qemu models.
+>>
+>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>> Message-Id: <20220607011938.1676459-1-joel@jms.id.au>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>   tests/avocado/boot_linux_console.py | 12 ++++++------
+>>   1 file changed, 6 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+>> index 8c1d981586..f3a1d00be9 100644
+>> --- a/tests/avocado/boot_linux_console.py
+>> +++ b/tests/avocado/boot_linux_console.py
+>> @@ -1098,18 +1098,18 @@ def test_arm_vexpressa9(self):
+>>       def test_arm_ast2600_debian(self):
+>>           """
+>>           :avocado: tags=arch:arm
+>> -        :avocado: tags=machine:tacoma-bmc
+>> +        :avocado: tags=machine:rainier-bmc
+>>           """
+>>           deb_url = ('http://snapshot.debian.org/archive/debian/'
+>> -                   '20210302T203551Z/'
+>> +                   '20220606T211338Z/'
+>>                      'pool/main/l/linux/'
+>> -                   'linux-image-5.10.0-3-armmp_5.10.13-1_armhf.deb')
+>> -        deb_hash = 'db40d32fe39255d05482bea48d72467b67d6225bb2a2a4d6f618cb8976f1e09e'
+>> +                   'linux-image-5.17.0-2-armmp_5.17.6-1%2Bb1_armhf.deb')
+>> +        deb_hash = '8acb2b4439faedc2f3ed4bdb2847ad4f6e0491f73debaeb7f660c8abe4dcdc0e'
+>>           deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
+>>                                       algorithm='sha256')
+>> -        kernel_path = self.extract_from_deb(deb_path, '/boot/vmlinuz-5.10.0-3-armmp')
+>> +        kernel_path = self.extract_from_deb(deb_path, '/boot/vmlinuz-5.17.0-2-armmp')
+>>           dtb_path = self.extract_from_deb(deb_path,
+>> -                '/usr/lib/linux-image-5.10.0-3-armmp/aspeed-bmc-opp-tacoma.dtb')
+>> +                '/usr/lib/linux-image-5.17.0-2-armmp/aspeed-bmc-ibm-rainier.dtb')
+>>
+>>           self.vm.set_console()
+>>           self.vm.add_args('-kernel', kernel_path,
+>> --
+>> 2.39.0
+>>
 

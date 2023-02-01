@@ -1,97 +1,97 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp309685ejb;
-        Tue, 31 Jan 2023 23:11:18 -0800 (PST)
-X-Google-Smtp-Source: AK7set9zQlEpCou+eDuV5AJaufpI7KK05+OslJUq0EUVIvQAgs40+tLaC0o6+CpEGwIIjn5VD1Sz
-X-Received: by 2002:a05:6214:c4e:b0:53c:8d39:53e6 with SMTP id r14-20020a0562140c4e00b0053c8d3953e6mr3200504qvj.28.1675235478771;
-        Tue, 31 Jan 2023 23:11:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675235478; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp309892ejb;
+        Tue, 31 Jan 2023 23:11:45 -0800 (PST)
+X-Google-Smtp-Source: AK7set8E2Ps0mf2iT9OTmIU2ZSMP+ak6RyhnYRfEheJTvpuWRkR0AQ+vj6Txb9CsVoFunX2Ub1AP
+X-Received: by 2002:ac8:5701:0:b0:3b6:3c95:735a with SMTP id 1-20020ac85701000000b003b63c95735amr24627065qtw.52.1675235505586;
+        Tue, 31 Jan 2023 23:11:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675235505; cv=none;
         d=google.com; s=arc-20160816;
-        b=gR74HUtXy7YA2A3PQ/2fkGZxa3vunZ60hH8j0AsztLCAvyJp9tSaKTCzhpv74ztTpC
-         sGEifC5QztX1AhJ1keRJLxz+JaDtJqz3sYLKEalBq19FoaENF9Ms5QGSmKk71t3fKpyE
-         +grsfQ5S9+OtyU4KkwzphIhqm45S8iyVSjlNIsM3uUrWZxZSOB/mzIzm40yFRCNjSCUo
-         B+37Dr/k7WjJQ//lhEH9kay3xFgvgUNLwMOcx08hqWcQ3r/W+ExjxkebnAfe9p5ijEFN
-         yVlPpY/7DkhvQhlnDHeybUzr2c1i0GEFpV4GkD63Kob4oLTyArD/YuDkRvoBjLkNeRxD
-         P+EQ==
+        b=KlReBQxTMg7DqdV3Z4cVuyBCEBTUhWwWxnTXbT9arwsWIuxV4Wlsf7M1tvbacuvhrT
+         Guq6HHrcXBL9sf7iIUDGASsOiUe+w39/P5UL/UuiLPWdlUjDWG2L3hdf8G/ydOf1C/tW
+         ulS92ZbaKvlwj1rTT/s+WH5xQbFO28y6CJO3CH/yofShWmG8OesAKGSNUjbj2Owdxymg
+         1PM233vwz/vj6xHr9keKvgrJgD7vRVcKSfzznSzg2o9BM6hmRe0AiHwVAG+jCXh6Us/A
+         XwCwo4S8nNds9xhUwiwaSwuwsNL14+iemIInP277F1vdqmzVbwWTVHmGoQmUfw3bRGVz
+         j5OQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=Me0V4ryWo4TJGqTg2ekzlN/c35e1c+tYe+k7RBitiNU=;
-        b=X/f0gZ7eO2a7Py37owYfDEBvkpZrdGsb71ibq3pCFVPtI1nPrEdxzF/J5Vu1yg1bHt
-         ZllaDtbzoQhI2nzxR9MXb7uv2f+skKJ3hVKDYUOeHSN4IgWol6Sr2XP6F32Bs8g1HFsk
-         HNxIziXqPaJQPT6XrIDUzjNY1ap749pUyC62JTWckryNpPexRNkndSob7Pi8H67SIXwy
-         4QaO2OCEOe9TIyDMhSwBiH9Pmrn00hfkLbwOxcmbDBsaifVHAjjdJRbV5iYCCC4hdGOX
-         5dSr6knEGK6oMjt5HV8UiZKeMT9WzY0u3mUK10O8IZMowa6ZWZN+q6Nc+G/ifZV85AxH
-         fdiQ==
+        bh=OqEowceQC4WiCxcwaqBJjKALz7d+JJbEp/SVWrGI4ic=;
+        b=S27j4GNbnT2TZLiliRsUrWQ7RZ8L10seBhmOozFWwQ758ZNBldDn71Z916V2Hi1FOs
+         gnfAu6ZxksQ9bgnmclk6kt8D7puEAjvFZwO23wEFlf8Qzd8mDLYkUBVB0FMbM0I6FhSD
+         lMwqKec+mo3vRtqFdnz8c5NYVipWMmdRoh30BgSO0d81DTsUMa3ctb0K2zj0nmgkNNB0
+         vzSM5FT60jN0GlEuxJdPon1nAs7p4aPeLIQgaT8BtgwCfhilmJ93JgrElQvO5O+XgYjy
+         1AaFBYGTWOdBMDqw38odNWO4nU8MfrUJM1oNNuu7qfpMZwpCDesmyUryJFVvY2N/Op73
+         Pw+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=VwJlwMRe;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=hIwTM+2F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bz4-20020ad44c04000000b005355d492b40si9112309qvb.531.2023.01.31.23.11.18
+        by mx.google.com with ESMTPS id y131-20020a376489000000b0070d1102b1d5si8130247qkb.582.2023.01.31.23.11.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Jan 2023 23:11:18 -0800 (PST)
+        Tue, 31 Jan 2023 23:11:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=VwJlwMRe;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=hIwTM+2F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pN66C-0004Fi-Le; Wed, 01 Feb 2023 00:56:00 -0500
+	id 1pN6K6-0005Bw-FX; Wed, 01 Feb 2023 01:10:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1pN667-0004FU-IX; Wed, 01 Feb 2023 00:55:56 -0500
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ id 1pN6K3-0005BV-Qu; Wed, 01 Feb 2023 01:10:19 -0500
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1pN65x-00086b-VW; Wed, 01 Feb 2023 00:55:54 -0500
-Received: by mail-lf1-x129.google.com with SMTP id j17so27704355lfr.3;
- Tue, 31 Jan 2023 21:55:44 -0800 (PST)
+ id 1pN6JW-0001CC-J9; Wed, 01 Feb 2023 01:10:19 -0500
+Received: by mail-ej1-x634.google.com with SMTP id ml19so24688184ejb.0;
+ Tue, 31 Jan 2023 22:09:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Me0V4ryWo4TJGqTg2ekzlN/c35e1c+tYe+k7RBitiNU=;
- b=VwJlwMReZngm/cBO0e3oAxZjSYW2yrv7CASKMP3SHKvMG/dj/LwDEau+Zf7bGvEXNr
- nqGOtjsKA0Mr3ep76nM3ULPWsPiY2hJYHmbaS8RzwQW8v8G78PcY1UCd69rjK7LRirWV
- R7bStcW03uJuW5I+Q8jB71e0l9zRBxFAUi0KQ=
+ bh=OqEowceQC4WiCxcwaqBJjKALz7d+JJbEp/SVWrGI4ic=;
+ b=hIwTM+2FtAmkvs+nabc3+5GsFLfuoSySgOO4zeh+XQMhv4PtDT4y35cL7acAPVTylH
+ P6THisjSZ7m7kM0P4eTxW1WODLsLpjjCtYBo1RMjcVgxRK9CzMG/n3L4wS2pdOC7SUXH
+ cLw7zG2rKAuuIxiHIP9Oc4RdqOL/7kK4JbgYg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Me0V4ryWo4TJGqTg2ekzlN/c35e1c+tYe+k7RBitiNU=;
- b=thyQyEnqIjsyFrjh9aSJLoZhMWmBxPqhgj/sS1dlNaKxtzXB9Td2aGx4ojWIz0/1ZS
- KyifNy7tcGPgwF1L69647LebhVZ00GW/LCAe0C1MOZfobU4PYXV2v2hMOP9Y7aKGsIar
- iCPxD+tUIWSzSl1B+cJBs/hM6ukikMg/2kV6fA+258hey3Th3I+52NDFKsNZBJJxxZKt
- mYL4+wTy4tiXQxARuma+oV+k1R58sn/NQ4Hj9BArfklNjQybVNPsUOfwZ4B1orUCzFM0
- r9jtpqey9qe5XMyhvjlQSqFDb+rNiqh9GW4n6XRi1e+oV0hgZgjJdG9QK3mUTq/r3iRe
- 0kYA==
-X-Gm-Message-State: AO0yUKVuj1ofdbJuGiyraXsoVLl8kss7US09XwsH0ZLuUQ8C+QHjae0/
- QpRNHAZIy+A9MKLxC1+GTVq3v1L0lCzr35bsUcnUNJs1
-X-Received: by 2002:a17:907:2391:b0:87f:5802:fd72 with SMTP id
- vf17-20020a170907239100b0087f5802fd72mr298381ejb.237.1675230462898; Tue, 31
- Jan 2023 21:47:42 -0800 (PST)
+ bh=OqEowceQC4WiCxcwaqBJjKALz7d+JJbEp/SVWrGI4ic=;
+ b=BKETOJ5EFIxJUWc1Y0qdmwVLjJJlGblee5xHLnxVNy5wsUGGZpHHZmx5Y4s0Dqev12
+ 6+orAwIlkvKmz27z54VwA2iOYlP7KlzwymIdsUV4i9RrsGrm8YuHTY7OPQXmmjdcABBc
+ tbQv6g2n6nHrYw1zv46O3PLuaM3rSboz3U3gE1eUNzOa0EiHHdKqFmlpe6IllMa30l2F
+ x3exfjiO5Xz19U03ZXkiuUyjyRoq9ne+yNG+JrEVztEsZU0DARlVTJMsS3s4PVL6G/br
+ nIb7+GeVtwVwnItaplMn0ftY43qOpErJrEQdw9kh1xCrtrHs67XEvOF9a9npbPH+3F2V
+ yo1A==
+X-Gm-Message-State: AO0yUKUoELTQBACKUkZm4yhqXM+odrXdNALelp8ORXexRX/uyFbVLbij
+ 4nxw1LMoYlGpcBZkQpAziYSWUbtJMxVncNHpTPW70p4ivBE=
+X-Received: by 2002:a17:906:1653:b0:88a:7cf5:5d33 with SMTP id
+ n19-20020a170906165300b0088a7cf55d33mr342719ejd.100.1675229982823; Tue, 31
+ Jan 2023 21:39:42 -0800 (PST)
 MIME-Version: 1.0
 References: <20230119123449.531826-1-clg@kaod.org>
- <20230119123449.531826-7-clg@kaod.org>
-In-Reply-To: <20230119123449.531826-7-clg@kaod.org>
+ <20230119123449.531826-3-clg@kaod.org>
+In-Reply-To: <20230119123449.531826-3-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 1 Feb 2023 05:47:29 +0000
-Message-ID: <CACPK8XejKOcegJZGbWqOOwMnOWsdODOANsPDK9CgkqO5=VrKVQ@mail.gmail.com>
-Subject: Re: [PATCH 06/25] tests/avocado/machine_aspeed.py: update buildroot
- tests
+Date: Wed, 1 Feb 2023 05:39:30 +0000
+Message-ID: <CACPK8XeSN90WZjpAiBqcQyOgJh+q=HTgFsw98Ywm7voGHY7ypw@mail.gmail.com>
+Subject: Re: [PATCH 02/25] aspeed: Add Supermicro X11 SPI machine type
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Guenter Roeck <linux@roeck-us.net>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=joel.stan@gmail.com; helo=mail-lf1-x129.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -114,62 +114,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E3/YL5WGcpuI
+X-TUID: hhH+KaiA6F/D
 
-On Thu, 19 Jan 2023 at 12:37, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Thu, 19 Jan 2023 at 12:36, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> Use buildroot 2022.11 based images plus some customization :
+> From: Guenter Roeck <linux@roeck-us.net>
 >
->   - Linux version is bumped to 6.0.9 and kernel is built with a custom
->     config similar to what OpenBMC provides.
->   - U-Boot is switched to the one provided by OpenBMC for better support.
->   - defconfigs includes more target tools for dev.
+> supermicrox11-bmc is configured with ast2400-a1 SoC. This does not match
+> the Supermicro documentation for X11 BMCs, and it does not match the
+> devicetree file in the Linux kernel.
+
+I found this sentence confusing; AFAICT X11 doesn't name a specific
+motherboard. It appears to be a marketing term for a bunch of
+different things.
+
+> As it turns out, some Supermicro X11 motherboards use AST2400 SoCs,
+> while others use AST2500.
 >
+> Introduce new machine type supermicrox11-spi-bmc with AST2500 SoC
+
+How about supermicro-x11spi-bmc? It would match the product name:
+
+https://www.supermicro.com/en/products/motherboard/X11SPi-TF
+
+as well as the device tree filename.
+
+> to match the devicetree description in the Linux kernel. Hardware
+> configuration details for this machine type are guesswork and taken
+> from defaults as well as from the Linux kernel devicetree file.
+>
+> The new machine type was tested with aspeed-bmc-supermicro-x11spi.dts
+> from the Linux kernel and with Linux versions 6.0.3 and 6.1-rc2.
+> Linux booted successfully from initrd and from both SPI interfaces.
+> Ethernet interfaces were confirmed to be operational.
+>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Link: https://lore.kernel.org/r/20221025165109.1226001-1-linux@roeck-us.n=
+et
+> Message-Id: <20221025165109.1226001-1-linux@roeck-us.net>
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-
 > ---
->  tests/avocado/machine_aspeed.py | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  hw/arm/aspeed.c | 33 +++++++++++++++++++++++++++++++++
+>  1 file changed, 33 insertions(+)
 >
-> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspe=
-ed.py
-> index 1fc385e1c8..773b1ff3a9 100644
-> --- a/tests/avocado/machine_aspeed.py
-> +++ b/tests/avocado/machine_aspeed.py
-> @@ -123,8 +123,8 @@ def test_arm_ast2500_evb_buildroot(self):
->          """
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 55f114ef72..4919a1fe9e 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -71,6 +71,16 @@ struct AspeedMachineState {
+>          SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       =
+\
+>          SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
 >
->          image_url =3D ('https://github.com/legoater/qemu-aspeed-boot/raw=
-/master/'
-> -                     'images/ast2500-evb/buildroot-2022.05/flash.img')
-> -        image_hash =3D ('549db6e9d8cdaf4367af21c36385a68bb465779c18b5e37=
-094fc7343decccd3f')
-> +                     'images/ast2500-evb/buildroot-2022.11-2-g15d3648df9=
-/flash.img')
-> +        image_hash =3D ('f96d11db521fe7a2787745e9e391225deeeec3318ee0fc0=
-7c8b799b8833dd474')
->          image_path =3D self.fetch_asset(image_url, asset_hash=3Dimage_ha=
-sh,
->                                        algorithm=3D'sha256')
+> +/* TODO: Find the actual hardware value */
+> +#define SUPERMICROX11_SPI_BMC_HW_STRAP1 (                               =
+\
+> +        AST2500_HW_STRAP1_DEFAULTS |                                    =
+\
+> +        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     =
+\
+> +        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        =
+\
+> +        SCU_AST2500_HW_STRAP_UART_DEBUG |                               =
+\
+> +        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              =
+\
+> +        SCU_HW_STRAP_SPI_WIDTH |                                        =
+\
+> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN))
+> +
+>  /* AST2500 evb hardware value: 0xF100C2E6 */
+>  #define AST2500_EVB_HW_STRAP1 ((                                        =
+\
+>          AST2500_HW_STRAP1_DEFAULTS |                                    =
+\
+> @@ -1141,6 +1151,25 @@ static void aspeed_machine_supermicrox11_bmc_class=
+_init(ObjectClass *oc,
+>      mc->default_ram_size =3D 256 * MiB;
+>  }
 >
-> @@ -151,8 +151,8 @@ def test_arm_ast2600_evb_buildroot(self):
->          """
->
->          image_url =3D ('https://github.com/legoater/qemu-aspeed-boot/raw=
-/master/'
-> -                     'images/ast2600-evb/buildroot-2022.05/flash.img')
-> -        image_hash =3D ('6cc9e7d128fd4fa1fd01c883af67593cae8072c3239a0b8=
-b6ace857f3538a92d')
-> +                     'images/ast2600-evb/buildroot-2022.11-2-g15d3648df9=
-/flash.img')
-> +        image_hash =3D ('e598d86e5ea79671ca8b59212a326c911bc8bea728dec1a=
-1f5390d717a28bb8b')
->          image_path =3D self.fetch_asset(image_url, asset_hash=3Dimage_ha=
-sh,
->                                        algorithm=3D'sha256')
->
+> +static void aspeed_machine_supermicrox11_spi_bmc_class_init(ObjectClass =
+*oc,
+> +                                                            void *data)
+> +{
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc       =3D "Supermicro X11 SPI BMC (ARM1176)";
+> +    amc->soc_name  =3D "ast2500-a1";
+> +    amc->hw_strap1 =3D SUPERMICROX11_SPI_BMC_HW_STRAP1;
+> +    amc->fmc_model =3D "mx25l25635e";
+> +    amc->spi_model =3D "mx25l25635e";
+> +    amc->num_cs    =3D 1;
+> +    amc->macs_mask =3D ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+> +    amc->i2c_init  =3D palmetto_bmc_i2c_init;
+> +    mc->default_ram_size =3D 512 * MiB;
+> +    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+> +        aspeed_soc_num_cpus(amc->soc_name);
+> +}
+> +
+>  static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void =
+*data)
+>  {
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+> @@ -1522,6 +1551,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
+>          .name          =3D MACHINE_TYPE_NAME("supermicrox11-bmc"),
+>          .parent        =3D TYPE_ASPEED_MACHINE,
+>          .class_init    =3D aspeed_machine_supermicrox11_bmc_class_init,
+> +    }, {
+> +        .name          =3D MACHINE_TYPE_NAME("supermicrox11-spi-bmc"),
+> +        .parent        =3D TYPE_ASPEED_MACHINE,
+> +        .class_init    =3D aspeed_machine_supermicrox11_spi_bmc_class_in=
+it,
+>      }, {
+>          .name          =3D MACHINE_TYPE_NAME("ast2500-evb"),
+>          .parent        =3D TYPE_ASPEED_MACHINE,
 > --
 > 2.39.0
 >

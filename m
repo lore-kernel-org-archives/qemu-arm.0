@@ -1,98 +1,97 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp308913ejb;
-        Tue, 31 Jan 2023 23:09:47 -0800 (PST)
-X-Google-Smtp-Source: AK7set+VxwRBzVciNlMsTLr+hYgZP1GNaM5yTQh8UdNHpseGzpLNb2dLM/NFCAN0EZd7fxlq2+Du
-X-Received: by 2002:ac8:5e54:0:b0:3b9:a4be:fc4a with SMTP id i20-20020ac85e54000000b003b9a4befc4amr2671411qtx.14.1675235386882;
-        Tue, 31 Jan 2023 23:09:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675235386; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp309685ejb;
+        Tue, 31 Jan 2023 23:11:18 -0800 (PST)
+X-Google-Smtp-Source: AK7set9zQlEpCou+eDuV5AJaufpI7KK05+OslJUq0EUVIvQAgs40+tLaC0o6+CpEGwIIjn5VD1Sz
+X-Received: by 2002:a05:6214:c4e:b0:53c:8d39:53e6 with SMTP id r14-20020a0562140c4e00b0053c8d3953e6mr3200504qvj.28.1675235478771;
+        Tue, 31 Jan 2023 23:11:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675235478; cv=none;
         d=google.com; s=arc-20160816;
-        b=EE/ey/okWW0ECrwD7wJT5J3YJWalIicpItlvWbicpCk7hbG8NG2MjkDwXhEqdy6xaf
-         j9noaDYf0kDE1w6dzxJypaIJggcxZ3MO9SrW5u1dqsSAjOrtceOJYOSO7o2Vng4p3ANj
-         BJTQvRITgDIIbMQVaL/me6kjcoxFGQhCpclvaboL/qYCqcuus23jKqiD+9gJxged3G5G
-         9d1RAQvRDxlxmr6utQwP0sviUnWd1YyUHzCyVyzC5ps8C+Zsx2fUSrzYIrZqeZhPiDpQ
-         G3f2wWh1J959l7H22Pk5nVzToRn8KnbvIol44QfVvBWFEQjoS1FsABVg7QDrFVy3FbmG
-         daKQ==
+        b=gR74HUtXy7YA2A3PQ/2fkGZxa3vunZ60hH8j0AsztLCAvyJp9tSaKTCzhpv74ztTpC
+         sGEifC5QztX1AhJ1keRJLxz+JaDtJqz3sYLKEalBq19FoaENF9Ms5QGSmKk71t3fKpyE
+         +grsfQ5S9+OtyU4KkwzphIhqm45S8iyVSjlNIsM3uUrWZxZSOB/mzIzm40yFRCNjSCUo
+         B+37Dr/k7WjJQ//lhEH9kay3xFgvgUNLwMOcx08hqWcQ3r/W+ExjxkebnAfe9p5ijEFN
+         yVlPpY/7DkhvQhlnDHeybUzr2c1i0GEFpV4GkD63Kob4oLTyArD/YuDkRvoBjLkNeRxD
+         P+EQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=pn19rRG/7d/WUOSzKiY9fffNXirK+WkYw4Vs2l/Coe0=;
-        b=v7HpczUleTcBiqsHdl862mjAW9cPapV/+DtAgDsvmjuEwIS8nZ9tb1AxAOcwZHR6Dz
-         Wjun+XIRNLA/6/EOBVe1wg8j+2Mh+46+OloLhrhHOtPyR3kqxcBy7StIDJZNW1gazHPn
-         nKhQcgTVAD0tZ6rqQZ6/FCPxYIxYuRhtp6KDNMydJT+1PHt+DfSTAyHYyvf0kJS3Cad2
-         utaHZ6k+VfPgLrnIGiMr8C9KHE1i78GcVWrJMht9jhoB2hDM96KkJ2jqrJ/+yPtD8mmV
-         EfBtfIpLSfYm9xi3X2eGQKsvXIBXXtYe0VOczCO9TUVqIY6XKLUzBdGA72dlxTLyw4at
-         Yyhw==
+        bh=Me0V4ryWo4TJGqTg2ekzlN/c35e1c+tYe+k7RBitiNU=;
+        b=X/f0gZ7eO2a7Py37owYfDEBvkpZrdGsb71ibq3pCFVPtI1nPrEdxzF/J5Vu1yg1bHt
+         ZllaDtbzoQhI2nzxR9MXb7uv2f+skKJ3hVKDYUOeHSN4IgWol6Sr2XP6F32Bs8g1HFsk
+         HNxIziXqPaJQPT6XrIDUzjNY1ap749pUyC62JTWckryNpPexRNkndSob7Pi8H67SIXwy
+         4QaO2OCEOe9TIyDMhSwBiH9Pmrn00hfkLbwOxcmbDBsaifVHAjjdJRbV5iYCCC4hdGOX
+         5dSr6knEGK6oMjt5HV8UiZKeMT9WzY0u3mUK10O8IZMowa6ZWZN+q6Nc+G/ifZV85AxH
+         fdiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=KZCKJFk9;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=VwJlwMRe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k15-20020a05620a414f00b00719bf1a115esi8239620qko.479.2023.01.31.23.09.46
+        by mx.google.com with ESMTPS id bz4-20020ad44c04000000b005355d492b40si9112309qvb.531.2023.01.31.23.11.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Jan 2023 23:09:46 -0800 (PST)
+        Tue, 31 Jan 2023 23:11:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=KZCKJFk9;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=VwJlwMRe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pN5te-00022j-C0; Wed, 01 Feb 2023 00:43:02 -0500
+	id 1pN66C-0004Fi-Le; Wed, 01 Feb 2023 00:56:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1pN5tc-000225-Ns; Wed, 01 Feb 2023 00:43:00 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ id 1pN667-0004FU-IX; Wed, 01 Feb 2023 00:55:56 -0500
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1pN5tS-00069H-V1; Wed, 01 Feb 2023 00:43:00 -0500
-Received: by mail-ej1-x636.google.com with SMTP id dr8so26530701ejc.12;
- Tue, 31 Jan 2023 21:42:49 -0800 (PST)
+ id 1pN65x-00086b-VW; Wed, 01 Feb 2023 00:55:54 -0500
+Received: by mail-lf1-x129.google.com with SMTP id j17so27704355lfr.3;
+ Tue, 31 Jan 2023 21:55:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pn19rRG/7d/WUOSzKiY9fffNXirK+WkYw4Vs2l/Coe0=;
- b=KZCKJFk9xndQkZMM6sXo5rCUKlGNTAZbYRsafZTbwVltunqwZGBGzC3Vz1Ztq5+DdF
- SUW8E02AYBGY6Y/txN9E4ECwB1EWu2Cy+Mc8pxoZiuLiMh4T6X2Qz/YeOLSU+EcDhiZT
- wGQsHL2+RuCKK5knQboiod2ZA+4XutjsNM1To=
+ bh=Me0V4ryWo4TJGqTg2ekzlN/c35e1c+tYe+k7RBitiNU=;
+ b=VwJlwMReZngm/cBO0e3oAxZjSYW2yrv7CASKMP3SHKvMG/dj/LwDEau+Zf7bGvEXNr
+ nqGOtjsKA0Mr3ep76nM3ULPWsPiY2hJYHmbaS8RzwQW8v8G78PcY1UCd69rjK7LRirWV
+ R7bStcW03uJuW5I+Q8jB71e0l9zRBxFAUi0KQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=pn19rRG/7d/WUOSzKiY9fffNXirK+WkYw4Vs2l/Coe0=;
- b=s8Hvh0tjZMLO0tXatx0kYjjGB7FcksBHkUZCJn7/mXGqisnOtAN/qTsBKL9nz+BB+a
- yzvg2SfFpVivI0i9RpcTGaLyUY1yzFhaAiRhIK+mDAHIVzsET0GpsigXQ1CH2DydNREk
- Hy7qUwzcokUdjZqE6hct86pjWDG8mtsjgLFJeCpt8rdO/cxO1ijFBDdZ5Z9rRSf8cO24
- 1vwOdF4zdQhFIICbQyd4ZC8IwIM+L71Uje4tgFVFWryy1BmzyKM+dXzO+Gya6iyZaJuW
- X2yTbg+xREJ5r/yNCMPjqbtczOSUBfh39ndtFQk/7q7acxDohV0FBZltRRswNA3KBe2y
- 8eCQ==
-X-Gm-Message-State: AO0yUKUzGRQZWZO4Zx3SVypfMt1Y8atfAlIGWj7Y/B1GTm1e99beJofy
- 8K/3f3VF+a6DWVWf6Y+4grqFDJNMQ9ODf4GvxfI=
+ bh=Me0V4ryWo4TJGqTg2ekzlN/c35e1c+tYe+k7RBitiNU=;
+ b=thyQyEnqIjsyFrjh9aSJLoZhMWmBxPqhgj/sS1dlNaKxtzXB9Td2aGx4ojWIz0/1ZS
+ KyifNy7tcGPgwF1L69647LebhVZ00GW/LCAe0C1MOZfobU4PYXV2v2hMOP9Y7aKGsIar
+ iCPxD+tUIWSzSl1B+cJBs/hM6ukikMg/2kV6fA+258hey3Th3I+52NDFKsNZBJJxxZKt
+ mYL4+wTy4tiXQxARuma+oV+k1R58sn/NQ4Hj9BArfklNjQybVNPsUOfwZ4B1orUCzFM0
+ r9jtpqey9qe5XMyhvjlQSqFDb+rNiqh9GW4n6XRi1e+oV0hgZgjJdG9QK3mUTq/r3iRe
+ 0kYA==
+X-Gm-Message-State: AO0yUKVuj1ofdbJuGiyraXsoVLl8kss7US09XwsH0ZLuUQ8C+QHjae0/
+ QpRNHAZIy+A9MKLxC1+GTVq3v1L0lCzr35bsUcnUNJs1
 X-Received: by 2002:a17:907:2391:b0:87f:5802:fd72 with SMTP id
- vf17-20020a170907239100b0087f5802fd72mr294894ejb.237.1675230162885; Tue, 31
- Jan 2023 21:42:42 -0800 (PST)
+ vf17-20020a170907239100b0087f5802fd72mr298381ejb.237.1675230462898; Tue, 31
+ Jan 2023 21:47:42 -0800 (PST)
 MIME-Version: 1.0
 References: <20230119123449.531826-1-clg@kaod.org>
- <20230119123449.531826-8-clg@kaod.org>
-In-Reply-To: <20230119123449.531826-8-clg@kaod.org>
+ <20230119123449.531826-7-clg@kaod.org>
+In-Reply-To: <20230119123449.531826-7-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 1 Feb 2023 05:42:30 +0000
-Message-ID: <CACPK8XfP55=6DXYKzaKWYp5O4PMNKpHiJ92VVDxXfki=WrVEvg@mail.gmail.com>
-Subject: Re: [PATCH 07/25] tests/avocado/machine_aspeed.py: Mask systemd
- services to speed up SDK boot
+Date: Wed, 1 Feb 2023 05:47:29 +0000
+Message-ID: <CACPK8XejKOcegJZGbWqOOwMnOWsdODOANsPDK9CgkqO5=VrKVQ@mail.gmail.com>
+Subject: Re: [PATCH 06/25] tests/avocado/machine_aspeed.py: update buildroot
+ tests
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Andrew Jeffery <andrew@aj.id.au>
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::129;
+ envelope-from=joel.stan@gmail.com; helo=mail-lf1-x129.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -115,53 +114,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: x9RiWsONt2kQ
+X-TUID: E3/YL5WGcpuI
 
-On Thu, 19 Jan 2023 at 12:39, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Thu, 19 Jan 2023 at 12:37, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> Use buildroot 2022.11 based images plus some customization :
+>
+>   - Linux version is bumped to 6.0.9 and kernel is built with a custom
+>     config similar to what OpenBMC provides.
+>   - U-Boot is switched to the one provided by OpenBMC for better support.
+>   - defconfigs includes more target tools for dev.
 >
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-NIce!
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
 > ---
->  tests/avocado/machine_aspeed.py | 11 +++++++++--
->  1 file changed, 9 insertions(+), 2 deletions(-)
+>  tests/avocado/machine_aspeed.py | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 >
 > diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspe=
 ed.py
-> index 773b1ff3a9..1cab946727 100644
+> index 1fc385e1c8..773b1ff3a9 100644
 > --- a/tests/avocado/machine_aspeed.py
 > +++ b/tests/avocado/machine_aspeed.py
-> @@ -183,7 +183,14 @@ def test_arm_ast2600_evb_buildroot(self):
+> @@ -123,8 +123,8 @@ def test_arm_ast2500_evb_buildroot(self):
+>          """
 >
->  class AST2x00MachineSDK(QemuSystemTest):
+>          image_url =3D ('https://github.com/legoater/qemu-aspeed-boot/raw=
+/master/'
+> -                     'images/ast2500-evb/buildroot-2022.05/flash.img')
+> -        image_hash =3D ('549db6e9d8cdaf4367af21c36385a68bb465779c18b5e37=
+094fc7343decccd3f')
+> +                     'images/ast2500-evb/buildroot-2022.11-2-g15d3648df9=
+/flash.img')
+> +        image_hash =3D ('f96d11db521fe7a2787745e9e391225deeeec3318ee0fc0=
+7c8b799b8833dd474')
+>          image_path =3D self.fetch_asset(image_url, asset_hash=3Dimage_ha=
+sh,
+>                                        algorithm=3D'sha256')
 >
-> -    EXTRA_BOOTARGS =3D ' quiet'
-> +    EXTRA_BOOTARGS =3D (
-> +        'quiet '
-> +        'systemd.mask=3Dorg.openbmc.HostIpmi.service '
-> +        'systemd.mask=3Dxyz.openbmc_project.Chassis.Control.Power@0.serv=
-ice '
-> +        'systemd.mask=3Dmodprobe@fuse.service '
-> +        'systemd.mask=3Drngd.service '
-> +        'systemd.mask=3Dobmc-console@ttyS2.service '
-> +    )
+> @@ -151,8 +151,8 @@ def test_arm_ast2600_evb_buildroot(self):
+>          """
 >
->      # FIXME: Although these tests boot a whole distro they are still
->      # slower than comparable machine models. There may be some
-> @@ -208,7 +215,7 @@ def do_test_arm_aspeed_sdk_start(self, image):
->          interrupt_interactive_console_until_pattern(
->              self, 'Hit any key to stop autoboot:', 'ast#')
->          exec_command_and_wait_for_pattern(
-> -            self, 'setenv bootargs ${bootargs}' + self.EXTRA_BOOTARGS, '=
-ast#')
-> +            self, 'setenv bootargs ${bootargs} ' + self.EXTRA_BOOTARGS, =
-'ast#')
->          exec_command_and_wait_for_pattern(
->              self, 'boot', '## Loading kernel from FIT Image')
->          self.wait_for_console_pattern('Starting kernel ...')
+>          image_url =3D ('https://github.com/legoater/qemu-aspeed-boot/raw=
+/master/'
+> -                     'images/ast2600-evb/buildroot-2022.05/flash.img')
+> -        image_hash =3D ('6cc9e7d128fd4fa1fd01c883af67593cae8072c3239a0b8=
+b6ace857f3538a92d')
+> +                     'images/ast2600-evb/buildroot-2022.11-2-g15d3648df9=
+/flash.img')
+> +        image_hash =3D ('e598d86e5ea79671ca8b59212a326c911bc8bea728dec1a=
+1f5390d717a28bb8b')
+>          image_path =3D self.fetch_asset(image_url, asset_hash=3Dimage_ha=
+sh,
+>                                        algorithm=3D'sha256')
+>
 > --
 > 2.39.0
 >

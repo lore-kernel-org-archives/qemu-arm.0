@@ -1,221 +1,144 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp310936ejb;
-        Tue, 31 Jan 2023 23:14:09 -0800 (PST)
-X-Google-Smtp-Source: AK7set8uZKv9FC7bK7psbMsEOvSYgoEQ4/xTXRe4abigBY9Yo5Yd8f2BLgebDW9arbp1nhdnKQ1y
-X-Received: by 2002:a5d:6691:0:b0:2bf:e45d:8e05 with SMTP id l17-20020a5d6691000000b002bfe45d8e05mr1334748wru.57.1675235649768;
-        Tue, 31 Jan 2023 23:14:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675235649; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp327151ejb;
+        Tue, 31 Jan 2023 23:50:14 -0800 (PST)
+X-Google-Smtp-Source: AK7set8Dzx856W1naj2/aGAmDDvL6o5fw7xpT11nUrlVZG5pE3AhBO+nMCh2YZzn0Rl2mlkE0qKL
+X-Received: by 2002:ac8:7fd5:0:b0:3b9:b817:e9ae with SMTP id b21-20020ac87fd5000000b003b9b817e9aemr2751964qtk.5.1675237814733;
+        Tue, 31 Jan 2023 23:50:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675237814; cv=none;
         d=google.com; s=arc-20160816;
-        b=riRyuamewegadtsA6b/6h/IJSGGZuZ4YYSgeHxabVNEtoPSh+eFSr1hK0a5+OKbK7w
-         iN5p08qq8j/tNuZdXFPB+fG9hhwqYRa5pT3+cO/gOCGdwYOTI+SkDSiKQt/Qlj5Ys8tV
-         +M16gkVBaHHp9exIowDMpROEzyZTHVPrcdiyP0q5VhEmhC/1cPyic6K6J0IAd8mvTVXf
-         NhO/yGij3N2uhT4sApjhL7J/K10LRTCPDuHwZjHqfvhbJQD2Ok1+OJCaIQCaifEXYMUA
-         spFIHLT6blgQiHtL8eGP6wkGQgRQIte/YzUI+G/HaOTx3PBc46K2bKc9nN7ZzhWfD64y
-         V4HA==
+        b=O/v95F/rAGUfjoRQw8p2YfGtQyiboZbXKuA8F4IklBc66o1/omKqmCecxqGinxCKiq
+         iQVgCZRgrUtLWEAUuOKhGBKuZI8wiF3ZzoWfyk4gaRQtwACz/SHYRMwE9dqDgYVSZx70
+         sJWU5Jgi+hVsmvjUgVpRkHj6n237r/z1QEPdaec/4pU6FDgn6L79gkQ3AtjS2bhCdASM
+         ae/UwKWa40AdKpFHV9+XdyGgHToMYOOXbpHq7Nw7SM/QiVgSF792FW8931f/uRpx12p7
+         7qkojz12sos2POU2jiBBKtd3RmcsWfNoyJlLvZNkGb7GR4H5C8z44qJlKZHTD2LdDRkG
+         AZzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=r6xttjhg1EkEM5Km8fh/iM+JYDGcTWhp1TGEZkbucWw=;
-        b=Nj7ldLO9nV/s32FcB++X7MveEGIeYfnFT7fh2bTl3vnFGn1jBpeRwu3Bf4pIiQJYJE
-         xDlxMKeF2cvbz+NhlvAUSTfiMqFfmpxOXd47U3Hkjn6VqoubiZNu3TjxK3uCOhs6W2UG
-         u44aHJtqwffJ6QrMgB3dVKktvbq3Au9zCPlvokMUVafaKlt8SYu6pSgsB+ynM3ZYgEv1
-         2qkAeby979Wt/1A/72f+o0f0fQuF+XeHWdfn3s+8U7EEN5ovm0CrY8fBhf6Iz9vcHqxu
-         /6ohVsN/FCxMR3l4kRLLoHbXCY4zzf/ueywTlSp8mAkemFE/d3rPt1I9RsIzNnVWTJHP
-         Cd5Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=pyEEMjxBSwQNOLQlfUXjk6pIcfWdlku0q5Bqe8jDHd4=;
+        b=e96nNEakJCnCO+m40vkX9iLlRcMkWXxDEvlA/eUGLeOH+1kzEvJfo3R1V2eD8fOi+F
+         e9+M131Crqov+HrdgXBhQN71UnoKFgmwCvKysrz/PwZPuumNPZ1mO989QeQ9Vx4Is/2p
+         +wxeKL1dEKH6tqV+4F2X/I+vh2ekdqCkZ2/kho1Tin5AcDszVBUM3yIeQTPW6Hu6HDWP
+         t13ko9o4RGAkwCtAw+pfAwEnmXWIKUHHrynWMO1Pu1phHImLZ14r1wUmpi6Uq1bsaS/B
+         jG353C62AdxojZTbJcII19KGJ9PX3L+CYKqy2FNtbb/KBdkKMuuLnj8dz64FWrDELLGZ
+         wxug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=UwJys4FR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ba15-20020a0560001c0f00b002c172f173a5si5311777wrb.953.2023.01.31.23.14.09
+        by mx.google.com with ESMTPS id g3-20020ac842c3000000b003b81d86242bsi6109023qtm.51.2023.01.31.23.50.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Jan 2023 23:14:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Jan 2023 23:50:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=UwJys4FR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pN6k0-000777-M9; Wed, 01 Feb 2023 01:37:09 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pN7sh-0003cg-Rn; Wed, 01 Feb 2023 02:50:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1pN6jw-00076c-1k; Wed, 01 Feb 2023 01:37:04 -0500
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1pN6jt-0008S7-P8; Wed, 01 Feb 2023 01:37:03 -0500
-Received: by mail-ej1-x631.google.com with SMTP id hx15so28835013ejc.11;
- Tue, 31 Jan 2023 22:37:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=r6xttjhg1EkEM5Km8fh/iM+JYDGcTWhp1TGEZkbucWw=;
- b=UwJys4FRvCEnPI17L1FhrA9TMq/5MufmsSVEjhTNyD79xog5OoHau6asNbhGHq1FVs
- dhY4BvnocWshJR6DhchuaiHS2HRKUAeBEL4hM+ZlUyxoN5ci95Xqt0QReZWhNndZ0BHs
- igNyvkDaU4xGuVc1E8GQ+FoIwyt96ss6lIJQ8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=r6xttjhg1EkEM5Km8fh/iM+JYDGcTWhp1TGEZkbucWw=;
- b=GmMXPkSS1q1eJF2uyP5Djf51dfIIqHXaauaNdQK2fzP40Y8dA367Ze0Db5m5qZoPF+
- mkKEFy3Em/E7jiUFwpLCH+bLpmfukss63wJTPB2ni0NjD2lSHiWbICW1HqSbq0Wtlute
- IY5FRSEM0OYwz6Udpbt2m1/xaXm6svtWuSTE9NWo/MuGOqIcC7R9lou4tEQ9XOX7SyaS
- GX5tHiqcOmaz1DoEyVUdVEOrYrLKeIcVWwBKig5eTi8IhYCQBrnkXus1uiUjYI7I8RzG
- 5el27sKfF7hdgXF7NUgWkmbBC7wGAkAdcoismTUTFjoYzY2BUV7z9w100cOZWFEinf34
- p1bA==
-X-Gm-Message-State: AO0yUKX4SXiJcmCO4ncBwwcLpO6800XI3NSAIGZ+1SGEguWHvXc6DRkH
- 2PXWxLkGeeog80HS7XmISd3bdC8yNKnFHf6cHEoWBULO
-X-Received: by 2002:a17:907:2391:b0:87f:5802:fd72 with SMTP id
- vf17-20020a170907239100b0087f5802fd72mr293671ejb.237.1675230049990; Tue, 31
- Jan 2023 21:40:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pN7sf-0003bp-06
+ for qemu-arm@nongnu.org; Wed, 01 Feb 2023 02:50:09 -0500
+Received: from 5.mo552.mail-out.ovh.net ([188.165.45.220])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pN7sb-0008H0-U4
+ for qemu-arm@nongnu.org; Wed, 01 Feb 2023 02:50:08 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.11])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 053CC2B265;
+ Wed,  1 Feb 2023 07:50:00 +0000 (UTC)
+Received: from kaod.org (37.59.142.105) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.17; Wed, 1 Feb
+ 2023 08:50:00 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G00660eca92e-0607-4b7d-9872-90aaeccc239e,
+ F0C8195E27B16437EDCB3A2BE992E155E5E23C80) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <f1f96a11-5b4d-1f9e-a832-8e07bb2cee56@kaod.org>
+Date: Wed, 1 Feb 2023 08:49:59 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH 02/25] aspeed: Add Supermicro X11 SPI machine type
+Content-Language: en-US
+To: Joel Stanley <joel@jms.id.au>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@linaro.org>, Guenter Roeck <linux@roeck-us.net>
 References: <20230119123449.531826-1-clg@kaod.org>
- <20230119123449.531826-6-clg@kaod.org>
-In-Reply-To: <20230119123449.531826-6-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 1 Feb 2023 05:40:37 +0000
-Message-ID: <CACPK8Xd_V-SMDidG7c9Z5578Nq8oc5sakRW10Vm9Wq_+uGLBuQ@mail.gmail.com>
-Subject: Re: [PATCH 05/25] m25p80: Add the is25wp256 SFPD table
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Guenter Roeck <linux@roeck-us.net>, Michael Walle <michael@walle.cc>, 
- Tudor Ambarus <tudor.ambarus@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ <20230119123449.531826-3-clg@kaod.org>
+ <CACPK8XeSN90WZjpAiBqcQyOgJh+q=HTgFsw98Ywm7voGHY7ypw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CACPK8XeSN90WZjpAiBqcQyOgJh+q=HTgFsw98Ywm7voGHY7ypw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: e0867b6f-503d-4802-ba4b-787eabba1f66
+X-Ovh-Tracer-Id: 1848727650116078374
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrudefhedguddugecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepvddvgfejudegudfgteduueehjedugffftdefgeetffeivdfhvdduhffhheegleefnecuffhomhgrihhnpehsuhhpvghrmhhitghrohdrtghomhenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghupdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpphhhihhlmhgusehlihhnrghrohdrohhrghdplhhinhhugiesrhhovggtkhdquhhsrdhnvghtpdfovfetjfhoshhtpehmohehhedvpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=188.165.45.220; envelope-from=clg@kaod.org;
+ helo=5.mo552.mail-out.ovh.net
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FMx/PatkjBFM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: af/xmntYUOer
 
-On Thu, 19 Jan 2023 at 12:36, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> From: Guenter Roeck <linux@roeck-us.net>
->
-> Generated from hardware using the following command and then padding
-> with 0xff to fill out a power-of-2:
->         xxd -p /sys/bus/spi/devices/spi0.0/spi-nor/sfdp
->
-> Cc: Michael Walle <michael@walle.cc>
-> Cc: Tudor Ambarus <tudor.ambarus@linaro.org>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Message-Id: <20221221122213.1458540-1-linux@roeck-us.net>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+On 2/1/23 06:39, Joel Stanley wrote:
+> On Thu, 19 Jan 2023 at 12:36, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> From: Guenter Roeck <linux@roeck-us.net>
+>>
+>> supermicrox11-bmc is configured with ast2400-a1 SoC. This does not match
+>> the Supermicro documentation for X11 BMCs, and it does not match the
+>> devicetree file in the Linux kernel.
+> 
+> I found this sentence confusing; AFAICT X11 doesn't name a specific
+> motherboard. It appears to be a marketing term for a bunch of
+> different things.
+> 
+>> As it turns out, some Supermicro X11 motherboards use AST2400 SoCs,
+>> while others use AST2500.
+>>
+>> Introduce new machine type supermicrox11-spi-bmc with AST2500 SoC
+> 
+> How about supermicro-x11spi-bmc? It would match the product name:
+> 
+> https://www.supermicro.com/en/products/motherboard/X11SPi-TF
+> 
+> as well as the device tree filename.
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+Indeed,
 
-I wonder if we could update the code so the padding is assumed.
+         model = "X11SPI BMC";
+         compatible = "supermicro,x11spi-bmc", "aspeed,ast2500";
 
-> ---
->  hw/block/m25p80_sfdp.h |  2 ++
->  hw/block/m25p80.c      |  3 ++-
->  hw/block/m25p80_sfdp.c | 40 ++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 44 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-> index df7adfb5ce..011a880f66 100644
-> --- a/hw/block/m25p80_sfdp.h
-> +++ b/hw/block/m25p80_sfdp.h
-> @@ -26,4 +26,6 @@ uint8_t m25p80_sfdp_w25q512jv(uint32_t addr);
->
->  uint8_t m25p80_sfdp_w25q01jvq(uint32_t addr);
->
-> +uint8_t m25p80_sfdp_is25wp256(uint32_t addr);
-> +
->  #endif
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 68a757abf3..dc5ffbc4ff 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -222,7 +222,8 @@ static const FlashPartInfo known_devices[] =3D {
->      { INFO("is25wp032",   0x9d7016,      0,  64 << 10,  64, ER_4K) },
->      { INFO("is25wp064",   0x9d7017,      0,  64 << 10, 128, ER_4K) },
->      { INFO("is25wp128",   0x9d7018,      0,  64 << 10, 256, ER_4K) },
-> -    { INFO("is25wp256",   0x9d7019,      0,  64 << 10, 512, ER_4K) },
-> +    { INFO("is25wp256",   0x9d7019,      0,  64 << 10, 512, ER_4K),
-> +      .sfdp_read =3D m25p80_sfdp_is25wp256 },
->
->      /* Macronix */
->      { INFO("mx25l2005a",  0xc22012,      0,  64 << 10,   4, ER_4K) },
-> diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
-> index 77615fa29e..b33811a4f5 100644
-> --- a/hw/block/m25p80_sfdp.c
-> +++ b/hw/block/m25p80_sfdp.c
-> @@ -330,3 +330,43 @@ static const uint8_t sfdp_w25q01jvq[] =3D {
->      0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
->  };
->  define_sfdp_read(w25q01jvq);
-> +
-> +/*
-> + * Integrated Silicon Solution (ISSI)
-> + */
-> +
-> +static const uint8_t sfdp_is25wp256[] =3D {
-> +    0x53, 0x46, 0x44, 0x50, 0x06, 0x01, 0x01, 0xff,
-> +    0x00, 0x06, 0x01, 0x10, 0x30, 0x00, 0x00, 0xff,
-> +    0x9d, 0x05, 0x01, 0x03, 0x80, 0x00, 0x00, 0x02,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xe5, 0x20, 0xf9, 0xff, 0xff, 0xff, 0xff, 0x0f,
-> +    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x80, 0xbb,
-> +    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff,
-> +    0xff, 0xff, 0x44, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
-> +    0x10, 0xd8, 0x00, 0xff, 0x23, 0x4a, 0xc9, 0x00,
-> +    0x82, 0xd8, 0x11, 0xce, 0xcc, 0xcd, 0x68, 0x46,
-> +    0x7a, 0x75, 0x7a, 0x75, 0xf7, 0xae, 0xd5, 0x5c,
-> +    0x4a, 0x42, 0x2c, 0xff, 0xf0, 0x30, 0xfa, 0xa9,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0x50, 0x19, 0x50, 0x16, 0x9f, 0xf9, 0xc0, 0x64,
-> +    0x8f, 0xef, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +};
-> +define_sfdp_read(is25wp256);
-> --
-> 2.39.0
->
->
+I was the one who suggested the name. Let's change if Guenter agrees.
+
+Thanks,
+
+C.
+

@@ -1,168 +1,113 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp250475ejb;
-        Tue, 31 Jan 2023 21:44:06 -0800 (PST)
-X-Google-Smtp-Source: AK7set8nR/KsKaKQ4yP9jwOX27/aKfnDJtB6yLKHbGVFfSjJ1ttio5eCB2JdxqBrt7McW4nxjpcj
-X-Received: by 2002:ad4:5ecc:0:b0:535:2730:c922 with SMTP id jm12-20020ad45ecc000000b005352730c922mr3038906qvb.42.1675230246316;
-        Tue, 31 Jan 2023 21:44:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675230246; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp251490ejb;
+        Tue, 31 Jan 2023 21:46:07 -0800 (PST)
+X-Received: by 2002:a05:6402:1505:b0:4a2:254f:6b1a with SMTP id f5-20020a056402150500b004a2254f6b1amr718866edw.11.1675230367648;
+        Tue, 31 Jan 2023 21:46:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675230367; cv=none;
         d=google.com; s=arc-20160816;
-        b=iDp9LUz3MLaSQEOevWubEAfK69kxPP3I8Gp3DI0v+MMSDPiShdvjM4yaqaaW0zBs/F
-         ulpsLXCRo/LMZHw0RiReTNiq+kn/gK2+2+zkWNO6fRz4KP31GGXXghWk1KZGbe7KpVSJ
-         NOTz7q+OTIhrnS5no3B6Fp1GqUy1GZ7UeDMnmaYWNYMtbuTAOjntbld1FwMLh8Ag7NnL
-         HPpOkG1dCFhCj40yR+oVwqgRZs2upcZA4/waWKuvoJ2kjwGQuO0HKBYwwu1WYKTjzvH3
-         tZnBnmfjIgFN9KTLCVUS0QbnoZCb3ww62li5ZV/p4Z7d0rrk1lSSTH42sa9l3gJtfZm2
-         VEIw==
+        b=PyNSKgqMDjS5gt7xJzn/rx6STtpS+OX75FemUrvntLW7VRC/coDOQNWNSQkSV1x+Dr
+         eLAa4OAdx9VFP9EGvxVNShh6Xm4bwmBAB3ejPR9uLP81hzsKjkrGyW5rVE/avSGEq6GS
+         sO3UF4Kdwgxg2nHXHl+fEqFiMCleqIDJ+sqijqd/dfoMvsetVwCV2JQ3aKKjH2Jf9Fjg
+         8q38OTM/fADI8jDV9qY8/meOEH82rU4b5DvFzlejQMMXmCBDNaUb6RfeRUzLz7PcpW5j
+         MgaK+Mq7IIOeAHx5o60DYR8PmJ7s6q2Hq3VIGw0wK+ttqFO1kuCKe3dk4UdjnmshS/I7
+         xwfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Z++FwVCX1y6cwYeVork6fJLitawyqNqAGw7pufJM6W8=;
-        b=VMSOt0UXPXF5OW3KtiD5p7AIvA/g314/a6fHnvOo1gOmHXeswkpiVxNz664iocMYri
-         kNGnvZbYLxwYAM49ieWw00d8qWIqwIRJopkAJdXTmOqHPMwT8Ik+OkrNinb7jS+zjzLb
-         sEs8wWXtuMMLRjUSHQYy14FmqvZKtDoJu/Tcdj2okayXrfjr3ZKtMUntZ0FXL3HMjBb6
-         aFvB4r6vx8xhnTX1rS1sJkmlHyFPyFqNb6L50WQBOXRtSL7F6GBO5raB9jlrUn25U9t2
-         TtrYJZFudUHmoNLwxLjhfkJA2sigDm05glkWlXnHq8tq1nxTojcoUZ58Yj+Mf0DCl84f
-         qMtw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=WnIT0gyJ7a7z0k/MzNTbP6PIX/2r5Z1ysnVnvNAbbrg=;
+        b=WEEpCfwy+v3r/pGPqQTT5r+0bJHVL6FXnpsZzkAs7pE1bPxhUZ2jAW5AT0ambFOnWT
+         aFg83aJ2xc8SG90mXTXBQRdDnXVQNNPdHbrQVLAWhTcVdIpTaFJfe6A31KeZFcqPH09z
+         n8KbV1Xv/6f36moNke3G6vBE2K+OMxeDIcupQcxOI1s7A3RjqC8Zk3kstQelFiMvh9xg
+         LfSxqbYAoderxa3cutRgSHOwZS4jgrKXmV5DtICRym5k5QkWXJXyOEAMCkPC/AL4EicH
+         iYm+c5I+FmK733m3Eviisq+wdqrN8PDpnBMYklyEFW6Zl3jayZOnOBFQdivW3yjs+R9V
+         yIDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=VKP9GAZa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i15-20020ad45c6f000000b004c6d681587asi10193298qvh.15.2023.01.31.21.44.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Jan 2023 21:44:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=OsJhzbwc;
+       spf=pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=joel.stan@gmail.com
+Return-Path: <joel.stan@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id t10-20020a1709066bca00b0087bdacbb929sor7628249ejs.25.2023.01.31.21.46.07
+        (Google Transport Security);
+        Tue, 31 Jan 2023 21:46:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=VKP9GAZa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pN5tX-000217-EQ; Wed, 01 Feb 2023 00:42:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1pN5tV-00020t-IY; Wed, 01 Feb 2023 00:42:53 -0500
-Received: from mail-ej1-f48.google.com ([209.85.218.48])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1pN5tK-00063S-DD; Wed, 01 Feb 2023 00:42:53 -0500
-Received: by mail-ej1-f48.google.com with SMTP id qw12so32190799ejc.2;
- Tue, 31 Jan 2023 21:42:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Z++FwVCX1y6cwYeVork6fJLitawyqNqAGw7pufJM6W8=;
- b=VKP9GAZazE2vCAM1kK+Jy9kHGS/dX4ody9QqzBKtXw5aA0dlnYLOj5Vnuaigp9nTVT
- 4+8nMMATL/WRssCWNQ/zfpbWCy/gPEwQhlkEPCPT/YE9ZGfPT5f9ncpo4PKNdTr9s5ZS
- 0fjbzortI6SSQoORkjYt2r9K8A6rG1EGd0pNI=
+       dkim=pass header.i=@jms.id.au header.s=google header.b=OsJhzbwc;
+       spf=pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=joel.stan@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=jms.id.au; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WnIT0gyJ7a7z0k/MzNTbP6PIX/2r5Z1ysnVnvNAbbrg=;
+        b=OsJhzbwcPKDe8FG2pykn1jG8whalvpwo2YfR87t0zkhrYrr86Olw7a8/BvdrSqQ0oD
+         2HV2WTB/2IrTyBAl7MOiYaQbTLEczRQfGUZXoVEHsXImcv1pmlw/P9+A68YR42E48SLV
+         vunyTmFOCLrc7Tl84YUm5LWbGAzoSIdSCBhAA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Z++FwVCX1y6cwYeVork6fJLitawyqNqAGw7pufJM6W8=;
- b=chFz1CG8ftYWnk0/zPUaQgDmc1e61nGJU3cC2R3Xjc3WczpaXh5aeACpY1sawSrjSk
- TTRP5cW/4sSR66vWeScLy1FvENzMIRSCV3X0BT9FOTRFsZwNuFGVIOuwm9cQERCMGebw
- 3HkHK4jSgfpQyXzcCNqAYfapJGTTh104Cw1PVYI+l6b8pKrIiLWwWyybwAIE6QSqJVZu
- d2+AryNFp22D+dTSwOpsmGTiJ+VCmUh/W7mfKA4wL6lOuV0iDylcJEgn5+m3D8TKuSyO
- IEF1Qmkc7kaZ4ekkgMYExYJ0IsN/c2llhL3gkJBbDYvILRTP9dLzOnqrrn57e/tpW7ml
- znJA==
-X-Gm-Message-State: AO0yUKUZKEj2lyYqMvbo9EQ3sFq2wb4i+FjBxo/W25YQWAvC17aL4cSF
- d//9PiaVSt1/3mKsKbjuKo2ZBMZqLyFVDroUkAU=
-X-Received: by 2002:a17:907:204c:b0:885:2313:c8b5 with SMTP id
- pg12-20020a170907204c00b008852313c8b5mr282697ejb.201.1675230109996; Tue, 31
- Jan 2023 21:41:49 -0800 (PST)
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=WnIT0gyJ7a7z0k/MzNTbP6PIX/2r5Z1ysnVnvNAbbrg=;
+        b=ChHzf8LTZ57ECM3X2431stqAoV3BwV8fTsM1dHLsrkewNzOkKCkYCEZuw2k5nBQw0q
+         pjSFwn1jZBxrNR81YfQfwyHsuuK9sCoNRFKvygNsKNjZp9R72+Q0ko6RDOkf/A/iYbTh
+         2ol0wVFSjo1Cw90qGPwn5BJLxj6Ll7KR/QYOvsQw0aooIaqzhHkkp6JlRWgMIIBVqbB4
+         Vt9EZN3KgzuPT5wdlegEL7w/FF7cIhsbyQkZesbT6EPSqWx7L/noJUgP79PKq4Vcwix9
+         g/+CONGi8CyPL20HlEJDwZOrsEO6IH4JcxraELn2hSxEnFNxRVZmoLiXw3IQelcqGlPG
+         mq1g==
+X-Gm-Message-State: AO0yUKX1YOEzlEvw0eZZBVUyX1S9ASc3in1v3gcNQbsh99HUjsQl+y6q
+	JdMolTEmG+X5/xe+Y1BQPygperZ9whXiaYqrImg=
+X-Google-Smtp-Source: AK7set9FcbzThg/7R/HM/0n0mCd1jEOgszkhi/+W/e0WsnMOx7KFW5vmmrSliR2VxIqA0wnKCuSxdmExlBl2NqsFk50=
+X-Received: by 2002:a17:906:e2d8:b0:88a:119:4d98 with SMTP id
+ gr24-20020a170906e2d800b0088a01194d98mr285640ejb.111.1675230367114; Tue, 31
+ Jan 2023 21:46:07 -0800 (PST)
 MIME-Version: 1.0
-References: <20230119123449.531826-1-clg@kaod.org>
- <20230119123449.531826-4-clg@kaod.org>
-In-Reply-To: <20230119123449.531826-4-clg@kaod.org>
+References: <20230119123449.531826-1-clg@kaod.org> <20230119123449.531826-10-clg@kaod.org>
+In-Reply-To: <20230119123449.531826-10-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 1 Feb 2023 05:41:37 +0000
-Message-ID: <CACPK8Xc7S4nbTWtJ+Txdyo639FWOKA7ptxaYUvmoSZKgv4qk1w@mail.gmail.com>
-Subject: Re: [PATCH 03/25] hw/net: Fix read of uninitialized memory in
- ftgmac100
+Date: Wed, 1 Feb 2023 05:45:54 +0000
+Message-ID: <CACPK8XeiDT9N9RbdEat4WyC=HPyTuNL+1-oM9WLBCgETUxkvTA@mail.gmail.com>
+Subject: Re: [PATCH 09/25] hw/core/loader: Remove declarations of option_rom_has_mr/rom_file_has_mr
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Stephen Longfield <slongfield@google.com>, Hao Wu <wuhaotsh@google.com>
+	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Eduardo Habkost <ehabkost@redhat.com>, Marcel Apfelbaum <marcel@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.218.48; envelope-from=joel.stan@gmail.com;
- helo=mail-ej1-f48.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bsqVFP4jd4G9
+X-TUID: 3bqQaFCGMPRy
 
-On Thu, 19 Jan 2023 at 12:39, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Thu, 19 Jan 2023 at 12:37, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> From: Stephen Longfield <slongfield@google.com>
+> These globals were moved to MachineClass by commit 71ae9e94d9 ("pc: Move
+> option_rom_has_mr/rom_file_has_mr globals to MachineClass"). Finish clean=
+up.
 >
-> With the `size +=3D 4` before the call to `crc32`, the CRC calculation
-> would overrun the buffer. Size is used in the while loop starting on
-> line 1009 to determine how much data to write back, with the last
-> four bytes coming from `crc_ptr`, so do need to increase it, but should
-> do this after the computation.
->
-> I'm unsure why this use of uninitialized memory in the CRC doesn't
-> result in CRC errors, but it seems clear to me that it should not be
-> included in the calculation.
-
-Does this affect the error counters observed under Linux?
-
->
-> Signed-off-by: Stephen Longfield <slongfield@google.com>
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> Message-Id: <20221220221437.3303721-1-slongfield@google.com>
+> Cc: Eduardo Habkost <ehabkost@redhat.com>
+> Cc: Marcel Apfelbaum <marcel@redhat.com>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
 > ---
->  hw/net/ftgmac100.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  include/hw/loader.h | 3 ---
+>  1 file changed, 3 deletions(-)
 >
-> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-> index 83ef0a783e..d3bf14be53 100644
-> --- a/hw/net/ftgmac100.c
-> +++ b/hw/net/ftgmac100.c
-> @@ -980,9 +980,9 @@ static ssize_t ftgmac100_receive(NetClientState *nc, =
-const uint8_t *buf,
->          return size;
->      }
+> diff --git a/include/hw/loader.h b/include/hw/loader.h
+> index 70248e0da7..1384796a4b 100644
+> --- a/include/hw/loader.h
+> +++ b/include/hw/loader.h
+> @@ -251,9 +251,6 @@ void pstrcpy_targphys(const char *name,
+>                        hwaddr dest, int buf_size,
+>                        const char *source);
 >
-> -    /* 4 bytes for the CRC.  */
-> -    size +=3D 4;
->      crc =3D cpu_to_be32(crc32(~0, buf, size));
-> +    /* Increase size by 4, loop below reads the last 4 bytes from crc_pt=
-r. */
-> +    size +=3D 4;
->      crc_ptr =3D (uint8_t *) &crc;
->
->      /* Huge frames are truncated.  */
+> -extern bool option_rom_has_mr;
+> -extern bool rom_file_has_mr;
+> -
+>  ssize_t rom_add_file(const char *file, const char *fw_dir,
+>                       hwaddr addr, int32_t bootindex,
+>                       bool option_rom, MemoryRegion *mr, AddressSpace *as=
+);
 > --
 > 2.39.0
 >

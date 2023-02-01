@@ -1,107 +1,149 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp348328ejb;
-        Wed, 1 Feb 2023 00:30:15 -0800 (PST)
-X-Received: by 2002:adf:e506:0:b0:2bf:df72:fdfd with SMTP id j6-20020adfe506000000b002bfdf72fdfdmr1582757wrm.5.1675240215244;
-        Wed, 01 Feb 2023 00:30:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675240215; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp494302ejb;
+        Wed, 1 Feb 2023 04:22:10 -0800 (PST)
+X-Google-Smtp-Source: AK7set9O84hfek5bgQQBZCeBe/T9DICoRnvlNZFqB+aOXVnITRWW6t+pHJwfYRvAecoullGaj2Ah
+X-Received: by 2002:a05:622a:4:b0:3ab:ceb9:10fd with SMTP id x4-20020a05622a000400b003abceb910fdmr3724298qtw.25.1675254130259;
+        Wed, 01 Feb 2023 04:22:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675254130; cv=none;
         d=google.com; s=arc-20160816;
-        b=ID6UktQAgS8vMv39hvg2B2w9BrSE+4kkqrc8ZMcxeRRape86fI8f23+gZmC3Xpyjux
-         7F6uaFqDrspRnMnQyCGhacHQEwYNmmVeTxvKv6dKnoyao0OLb1ndogs4FyA41Ie6759u
-         Wh1r9FZP94/SG28k8EdCqJxcPIVqSANvVgDeYUbhPuXqwCnWIhNQ2TNU+9dfM3cZWFzE
-         KZU6sknznFj7En79AiV33FugtPSMYJrmJQAdyIrjIk5iGFCDF2VUlpjN5XtzjmR+dSob
-         7tofUUDntGColqb2M8XlRB7ZKmHD1TYf4S2j84H7h6Y30RBWEMklL8nft6koOW4FjGdM
-         D5cA==
+        b=TrL/XKMPyD5cLikTxzHs7E1uoFSHqD37+Jp6JP48wrg1Plp30/zRY7NL+ieMZXmQyW
+         adiborRS5gt+7eAUKRaqRBHT7pFYjkAkduBULuyT0S68RaEHX8osQ8o8ip4yTjJ3SkHz
+         sQg8LXmNUrrt7ufQoqI7ROXo6s14PZsrgxgC65YqQa9zKgkp+J1dNX4UMZZsccFSAJvS
+         3xJTcsl2GJzEr1oyKEKJV9th6AhNhRY0teyLQbjmi/iVJP0AUbDDuwqsTFragIIftL5H
+         N/v+CQ2UIhaUbKgq2pgx9tpnfEhQg3xkho/gMs7veTrdloUVgzzDbQi8xe+TLjgsKjiz
+         MTFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:dkim-signature;
-        bh=I/e7owFfcePnLRzxpORdL+Ugp/T7FuArUHTWMklHSZE=;
-        b=OrzfBD+Xr0zlNdVSbiKnnKoEj7HVrdG9sTDqE6Tp8HIOW8d7eo3/z39nzhLMcxESu/
-         rmGWjLeLQ8m4tWDlyTE8Abl5cKW7AJ974U0B0W3X+1kqoEW0RdGlmjOykvOVuTWP1CX4
-         2+zX3eNukyC3JUE6TPCk8NxPCXxuwHHCjMZ0ZkHrYPUdQiPf1X/eN0GThTvAF8UkrjkV
-         4ejGN+XTf8zlG1UHXzh9X8vVqzHKgYkV3dTC//j9Kge8LKM5lUecxqivNEccQV1CP1rz
-         vEzRahibqJxmDpxvRjwDoUULy872P5j/4m4edTtCHEb8wAKEzI+3Q7xHlFNGFxHhw/1i
-         bh/g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=QmEwDIIXbnJQWe/vywVkIYSUouwOkGUSZz05T7U9oB0=;
+        b=LCw2A3+ZIGEsGEBhmQsDJ/UYiwDqvSq0z008L/Jvp8acM4jOkSrawpYQ64eDJ4fY3D
+         0AeEEdlTKvscTCKk9FduUFkz5tmEKkUMB7uAfC8i/wj1zaWDqVrPkuTLM3fTi232iSin
+         WPzHHzKjRpYvQrbuPNntJt78lYOb0g1TlQcsL6K5R1ei6sjNDkySJfbqYVeZLRP/ruRQ
+         O6neVxtYyD8y3+lYc3FSM3rpg8sEEvaJ5ojV0+1YXKZejb6HFvKLu7nuyolXiS/nkcSc
+         hw5q1Fo7Wfz01DqPAoQFUP1sgv7MvfmQ0Z2FKnuaOVo4qOIY26X3HIvgDC5lfIPo9ptQ
+         5Nog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EHcHSKQD;
-       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <xadimgnik@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id hg27-20020a05600c539b00b003db01df2facsor313487wmb.38.2023.02.01.00.30.15
-        (Google Transport Security);
-        Wed, 01 Feb 2023 00:30:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qcw+Kge3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e13-20020ac8414d000000b003b9a6d90602si3034817qtm.423.2023.02.01.04.22.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 01 Feb 2023 04:22:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EHcHSKQD;
-       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=I/e7owFfcePnLRzxpORdL+Ugp/T7FuArUHTWMklHSZE=;
-        b=EHcHSKQDWrNLfrV+Zaa/V6XU/gSZoD0Nre3JE13SUBQh3px4OSMGL+aMGglogy5m4G
-         T5/0+KUbLG5vUwYM0WZEJrMxk029b7oaDq96zZ9p+akCHZBRfL79n3bYkbwR1sDSzXsz
-         daQko7c6Q07LbIjQADi4sTGv44JTGn9W8gRgt1tApbYSYuu2ddh3IGDOv4nvaPtV5vuD
-         iF7KUbJIxQoU8Voq/qIFP7yvkLopvYsGlltoguRNw8y0RRWzW5jECBSxRd+y+1ehGaC/
-         GnGELYZ/vMMGOaJPdbRakzxkSc8RfBdP570p5tYDV6PWqGr9cBuUNKlZrS8g6P7MbXYo
-         EiYg==
+       dkim=pass header.i=@linaro.org header.s=google header.b=qcw+Kge3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pNC7g-0002kL-F6; Wed, 01 Feb 2023 07:22:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNC6P-00026U-6R
+ for qemu-arm@nongnu.org; Wed, 01 Feb 2023 07:20:38 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNC6M-0004IJ-VV
+ for qemu-arm@nongnu.org; Wed, 01 Feb 2023 07:20:36 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id o18so7652929wrj.3
+ for <qemu-arm@nongnu.org>; Wed, 01 Feb 2023 04:20:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=QmEwDIIXbnJQWe/vywVkIYSUouwOkGUSZz05T7U9oB0=;
+ b=qcw+Kge3QnCwNoKDVJ/gwR+DY4wMkyWQafRMQP1lYyduZHVPG6UuRWg0+Rn8zodZr6
+ cyhAr7X/y0VdYqlESy9kpm4p9fiJ0u8hizsMyaiAvT0GpBkxD7lS8pXLUFfrIOol84j7
+ Q3DNvH7qCxJAI4v2o2aACx6W5RceP9QsU9QPqIcSkUWhlnY+vCqO97UCopbFPZy0fEqd
+ NPKcyYA5tC101uHmdjZHm3E05Ie5G9TOcAHUnQI22JOTw1S0Q5ut6aoYmspxmFjWAWac
+ o7ocTivCa5Y5Inm3jkEHQ5rLo0Y/zBXMHABTlk71Wv9BogXt7SX0bQU4z9iIyFHlRVer
+ AaSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=I/e7owFfcePnLRzxpORdL+Ugp/T7FuArUHTWMklHSZE=;
-        b=djWz7wmVDOIjyud0VOOlg587kb8kucGfSLCq7QdmJLhoeQK4ZqIpanKmho+WZRA/hl
-         DEg7AE4cS6UBA6HP1r0oSAxnzZxEKsyQ4J/+mlkZPZrm+4hMz4qGPOeVAKWt4CMptN+d
-         f0AecgiE/VvE5KS73jJwt48ItMTZjCBq/1RkBYuy8aB28sIisAItF7LDXWgSYXb3HxK5
-         tAPQ/pcK7JekkS1W9eBANi1AKTRO9DSQNS+ZSTh1uht3MgfvIhCB1CDpz6narFWA2/6c
-         CCACmSuSLds866R3X6xWPrON53xm282Ch9zLxXIP9dMBRPMLYtJ/ScyU9Gu5KmlZiC8L
-         i3/g==
-X-Gm-Message-State: AO0yUKXIOt/I9Npf3io0wIZf4ILPGQMnsb3v0NZYrC8pzvGp2cKsEI4K
-	wdUF8RlQBvpLDW8EM2U69F8=
-X-Google-Smtp-Source: AK7set8U7h6JgTIUz/GSAXKxVEMdwMw6uPhYD8pbylUmygyycWG1uyrxwtyWU9ELgp5Jz13+EJJG8w==
-X-Received: by 2002:a1c:7c0e:0:b0:3dc:561a:79d8 with SMTP id x14-20020a1c7c0e000000b003dc561a79d8mr1285631wmc.35.1675240214862;
-        Wed, 01 Feb 2023 00:30:14 -0800 (PST)
-Return-Path: <xadimgnik@gmail.com>
-Received: from [192.168.9.204] (54-240-197-238.amazon.com. [54.240.197.238])
-        by smtp.gmail.com with ESMTPSA id f31-20020a05600c491f00b003dc3d9fb09asm922456wmp.47.2023.02.01.00.30.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Feb 2023 00:30:14 -0800 (PST)
-From: Paul Durrant <xadimgnik@gmail.com>
-X-Google-Original-From: Paul Durrant <paul@xen.org>
-Message-ID: <179d773b-2634-b52b-8836-8d8f882e1495@xen.org>
-Date: Wed, 1 Feb 2023 08:30:10 +0000
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=QmEwDIIXbnJQWe/vywVkIYSUouwOkGUSZz05T7U9oB0=;
+ b=5Ead4urPgDpiLd7yIWRDnk5g8ADBHnNAh7qxhbK3XfTHZdgtTajBh9ftmGYjUJ9BcV
+ QrPEoKO2mVzGn4ikuWvi85Er1hYI4SwjlhahUMATz31wf6SRt2+Dej/dJpbvAVfkCinl
+ 41NuHS4p5HvyoH0o/SIR8JnjNtiiu/nJd8noCutwVOCBkBxz9SkGCTC938D+vtgiinP6
+ Jegjbzn12EpzKG2BrnSpYwKW7oSPUIsYlwKbhbd2omPdYw78KMKJAw80oS+qj/pYIkTh
+ JzB8D4J1lilcyZ6ypKQBW43McOIoGMdfSuYJyP6H2A9cLEQ8I8zyvNaB5Hg1GceAOgLP
+ D3Dw==
+X-Gm-Message-State: AO0yUKXD1hzwAfgZ9aswqE3YBYK6a0meCX3z1gAjdWvM0CTnBElOHouR
+ API0SBQ1rXhzK2PEFrnbVsGZHh0b8EYrn45vWp8=
+X-Received: by 2002:adf:ee87:0:b0:2bf:e288:6289 with SMTP id
+ b7-20020adfee87000000b002bfe2886289mr2335035wro.15.1675254033296; 
+ Wed, 01 Feb 2023 04:20:33 -0800 (PST)
+Received: from [192.168.242.175] (107.red-88-29-181.dynamicip.rima-tde.net.
+ [88.29.181.107]) by smtp.gmail.com with ESMTPSA id
+ f6-20020a5d50c6000000b002bfc24e1c55sm17241228wrt.78.2023.02.01.04.20.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Feb 2023 04:20:32 -0800 (PST)
+Message-ID: <a1955947-8f04-42fb-f2bc-57fd0561ee5d@linaro.org>
+Date: Wed, 1 Feb 2023 13:20:31 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Reply-To: paul@xen.org
-Subject: Re: [QEMU][PATCH v5 09/10] hw/arm: introduce xenpvh machine
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH 08/25] hw/arm/boot: Export write_bootloader for Aspeed
+ machines
 Content-Language: en-US
-To: Vikram Garhwal <vikram.garhwal@amd.com>, qemu-devel@nongnu.org
-Cc: xen-devel@lists.xenproject.org, stefano.stabellini@amd.com,
- alex.bennee@linaro.org, Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20230131225149.14764-1-vikram.garhwal@amd.com>
- <20230131225149.14764-10-vikram.garhwal@amd.com>
-Organization: Xen Project
-In-Reply-To: <20230131225149.14764-10-vikram.garhwal@amd.com>
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20230119123449.531826-1-clg@kaod.org>
+ <20230119123449.531826-9-clg@kaod.org>
+ <CACPK8XfW6peVF27_YthCubp-9J8aGpKp5x15-2-qpusnV=4Dzg@mail.gmail.com>
+ <131c30d3-5ada-8f94-8c1a-84419c39b461@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <131c30d3-5ada-8f94-8c1a-84419c39b461@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: OZs4EdUR/SBX
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cfQSygZn3bq1
 
-On 31/01/2023 22:51, Vikram Garhwal wrote:
-> Add a new machine xenpvh which creates a IOREQ server to register/connect with
-> Xen Hypervisor.
+On 1/2/23 08:58, Cédric Le Goater wrote:
+> On 2/1/23 06:45, Joel Stanley wrote:
+>> On Thu, 19 Jan 2023 at 12:37, Cédric Le Goater <clg@kaod.org> wrote:
+>>>
+>>> AST2600 Aspeed machines have an home made boot loader for secondaries.
+>>> To improve support, export the internal ARM boot loader and use it
+>>> instead.
+>>
+>> I didn't quite follow why we're doing this. Is it just a cleanup?
 > 
+> It comes from this discussion :
+> 
+>    
+> https://lore.kernel.org/qemu-devel/20221222215549.86872-1-philmd@linaro.org/
 
-Is this really the right way? Is it not possible to do the Xen 
-initialization (including ioreq server registration) off the back of the 
-accelerator init (i.e. AccelOpsClass ops_init function), which seems 
-like the right place to do it now that it's no longer architecture specific.
-
-   Paul
+Joel, see:
+https://lore.kernel.org/qemu-devel/CAFEAcA9KD8WwPTKVQQUfAZxaqA=ASweZtJ=sAV0Vd8TkpqDBOw@mail.gmail.com/

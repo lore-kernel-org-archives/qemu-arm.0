@@ -1,352 +1,176 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp54739ejb;
-        Sat, 28 Jan 2023 14:45:43 -0800 (PST)
-X-Google-Smtp-Source: AK7set/EHd7HxrWrR7NQYuhMKoDqpRZG2HbKYP3w5w56lCZ7vuAyCAIHA6YI6jhY9nMVcsO52awl
-X-Received: by 2002:a05:622a:1b86:b0:3b8:5f26:e81f with SMTP id bp6-20020a05622a1b8600b003b85f26e81fmr1054104qtb.26.1674945943510;
-        Sat, 28 Jan 2023 14:45:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674945943; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp166099ejb;
+        Wed, 1 Feb 2023 23:53:45 -0800 (PST)
+X-Google-Smtp-Source: AK7set87snhDL8/LdGTDJxs33wwZ0Q2TzEDV7KLaZEOiZuTjY2iFbp1INrJXx75aOKnQr32oZw6A
+X-Received: by 2002:a05:622a:1206:b0:3b4:79f8:26c3 with SMTP id y6-20020a05622a120600b003b479f826c3mr10262759qtx.33.1675324424794;
+        Wed, 01 Feb 2023 23:53:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675324424; cv=none;
         d=google.com; s=arc-20160816;
-        b=JPqw64Kd7JrAxTqHRrgmP4sWSJ1HQU3IgP2IRMdJhDiY2zR8TVmP1bW1So9f22j6wo
-         iapbrsU3SeGjM9roK6FmmrngZZzejPl7TbYa5Ej+OMYKXOSeM7RUvKn+a8kPnM8bYdj4
-         ckHmnhW2sVFoCsLIkjX5RWHnciSV/gTImPLBfh8XOqV6zddiZu0UHdltJTcCWOtibugG
-         zgI2EpMqCija2HoGDWLNEDjVJxLfuseRAxSLHD29KMeWgsIvP64sbwk5RTCLhCq2ZtnX
-         s222dNKEsvBKBvJgdiKPLGHyAOsSsW0Sho9ODXuPa/uQcmrvV87GoX9rAFQE2ssAfWv+
-         W5Kw==
+        b=EjQeNA1n+d4Cnt/X0UQovOmB49oS36FHHTjxKq5THEicw4xhXIp/tGmmxU4wWKu0+z
+         cvza4aVGuB2fPZFEVssoJvKjZmUAJGaG5+bOc3CZGeFhdTYhAYnA+r3UJxAu3KroHDi0
+         RN5Q2splSjiQxn91zbvrTyxR8/HFsQCIHZyS5kMcTAv/7NzfcDskuUBPDVs6nvyzCh1z
+         Osfm4vSyiDADwJOObLRv7G1EqNIf7v3EL8Q//iGeWUylvfSRBViFffDcQuXMvgSFpCG+
+         0ysDNcIJYqzJ5zaSK3z9jCFT7BqpFcVKzWWJJ6aXgldK1vmTUm4cUpzS47nhbyBrF6Zp
+         Ex2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=9QRpOkj0TeGY33mSU7KbFBaVFkMBuP1hgoXdGqOOk2M=;
-        b=IeR1zlVWw109xg8oJh9QKhpO8P1W1VDown8zKRQ3Zr81wpJXB/9NBE1NTn53sT9Bta
-         /XoKYScFCfe3Wx1ZfWRClYqqKVrlkAPbiddYUvpn4MVkw9TWFXOO+WVP0gGY589CfS9u
-         asdSBh05c4fvYPjFhMzHZTBtnTPek5DS4aqtlChzrAJa8GwSWowiBV/qhPKyxTDQd6T0
-         lH7yqOMsVtOiVStW7zbJ8n/oCu+11edlbS7ztNgdpkbTfVzP0kuJ65umi85lHkrtG+sR
-         Kt/vmGgYCr+6CvclP01I3hNMHLLhpMhfSgwGll6t1I9H44q04/ZXfd5O7hH6eakGR2UB
-         ff9A==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=zj8l3w+P8ST5npKc1RTkEuUEQzYNRa6QApxIkVXblu0=;
+        b=xCEieNrzBfCzWzd1M0W8Mm2B+vLEhTdVBII2Mg2a1QKQA82xzW47Rhg/ysF0cXWHOF
+         6SWxuj76RKLOtI/ypRNKjMDKSH2AvhArb1JM41Ck3VP1d+ZZQHXBvzpFqjhvWuR0g/Vf
+         zGD1LiWllQmMfk3CmTASh7wieA1S5zwQLeYRg5JgVhuZWWvenlsxfCTgccOhSrwkATum
+         VnERyh9gP1M7dXrLh2CQVkmSPq0xN/yg6yfDiGwHW4QamEpQuv4elqYoi/76JGDbDpmv
+         uF2pIYhlQBk2eK7FqvpK6cqGF+ANg89bp5+q6yw+GHmbA3Ct/NSo7ZQAxKjYsqRnjd2Z
+         fEkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=P58eQnEX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s13-20020a05622a018d00b0039abe2daf39si1190538qtw.180.2023.01.28.14.45.43
+        by mx.google.com with ESMTPS id 3-20020ac84e83000000b003b3e31a8791si11614114qtp.443.2023.02.01.23.53.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 28 Jan 2023 14:45:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 01 Feb 2023 23:53:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=P58eQnEX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pLtwg-0005fe-I0; Sat, 28 Jan 2023 17:45:14 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pNUOq-0001NL-Kn; Thu, 02 Feb 2023 02:52:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1pLtwY-0005fT-0n; Sat, 28 Jan 2023 17:45:06 -0500
-Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1pLtwV-0005VG-TL; Sat, 28 Jan 2023 17:45:05 -0500
-Received: from localhost.localdomain (unknown [46.183.103.8])
- by csgraf.de (Postfix) with ESMTPSA id 067FB60801B9;
- Sat, 28 Jan 2023 23:45:01 +0100 (CET)
-From: Alexander Graf <agraf@csgraf.de>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pNUOp-0001N3-BS
+ for qemu-devel@nongnu.org; Thu, 02 Feb 2023 02:52:51 -0500
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pNUOn-0007jN-PP
+ for qemu-devel@nongnu.org; Thu, 02 Feb 2023 02:52:51 -0500
+Received: by mail-pj1-x1029.google.com with SMTP id
+ c10-20020a17090a1d0a00b0022e63a94799so4792545pjd.2
+ for <qemu-devel@nongnu.org>; Wed, 01 Feb 2023 23:52:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=zj8l3w+P8ST5npKc1RTkEuUEQzYNRa6QApxIkVXblu0=;
+ b=P58eQnEXfRAYb4FcnYieTMgfeimZZ/ht1RLzaHEoHu++wWoUnh39VrsGU/QcxYaqAY
+ 83OI3wOrmhr3+vOV5AUmMHmovRnqm8nAc2bAxnBB25bJxM5kaLKJsIeug19o2T+KMbVp
+ T8HQlkPtvR6w1C53USz2v1PRdnJnwL7jJU1NgIZkHme2jIQ6jEip7zlxSgkYK9aMpfIX
+ OQs1l1WO24SUI4fOiv3es/t+dXJTibMOMT/M7AnLTPBHkybmxG4GyPA4Qy/y6l8uFqTS
+ 2Nb96MVXlzSS60cPss/h3yGWW1o6eTsdFNRFQf56Xqov0GF97Py4geCHq0nHcaALd7FV
+ 0RQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zj8l3w+P8ST5npKc1RTkEuUEQzYNRa6QApxIkVXblu0=;
+ b=Ogz1wxY+UAijrFSJNPtOqK6VuM62mAapAK3czSOuIOcNZBgIYPWAfhMG1R7Z+MzrPI
+ 68Bp/OXTa064by1kav+TL/a+zuJKfX3djR04iUqv0rLajne1XvAR8BIaJ4eXDSVvfMsP
+ wqlk+gZmx3q4rIB5TBrDJ3qnB/CmLvpR3BHsl7+08UsBBuAT8zSSU99LC5HtN4NOy5DN
+ vIahCuborocd0m7tXr9A9eSsk16GFx06dKyCmmqfobECl8NMpSaDHzCGcMXNtQy8YCCp
+ iaa/JhqU0orqaEtBj2/PQ0+AK8bM9OmOcrGn8IR9ye7EhQLYlD1mfDW6396FCaEHALqM
+ mqLw==
+X-Gm-Message-State: AO0yUKWJ7oy/XzBIdMff4TWq4AiNiixGPgxPFYLWa39RsqK8g0C9fK1i
+ Ib9uEqw0recsBeqNsv6jQhsfmh7MFQ79rfRr
+X-Received: by 2002:a17:90b:17c6:b0:22c:6b5b:8509 with SMTP id
+ me6-20020a17090b17c600b0022c6b5b8509mr5780212pjb.16.1675324367800; 
+ Wed, 01 Feb 2023 23:52:47 -0800 (PST)
+Received: from stoup.. (rrcs-173-197-98-118.west.biz.rr.com. [173.197.98.118])
+ by smtp.gmail.com with ESMTPSA id
+ b4-20020a17090a7ac400b0022c35afad5bsm2496763pjl.16.2023.02.01.23.52.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 01 Feb 2023 23:52:47 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- osy <osy@turing.llc>
-Subject: [PATCH v2] hvf: arm: Add support for GICv3
-Date: Sat, 28 Jan 2023 23:44:59 +0100
-Message-Id: <20230128224459.70676-1-agraf@csgraf.de>
-X-Mailer: git-send-email 2.37.1 (Apple Git-137.1)
+Cc: anders.roxell@linaro.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH 0/4] target/arm: Cache ARMVAParameters
+Date: Wed,  1 Feb 2023 21:52:38 -1000
+Message-Id: <20230202075242.260793-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: 14
-X-Spam_score: 1.4
-X-Spam_bar: +
-X-Spam_report: (1.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RA2tAxO2hdba
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gkmBQZnGzzcl
 
-We currently only support GICv2 emulation. To also support GICv3, we will
-need to pass a few system registers into their respective handler functions.
+Hi Anders,
 
-This patch adds support for HVF to call into the TCG callbacks for GICv3
-system register handlers. This is safe because the GICv3 TCG code is generic
-as long as we limit ourselves to EL0 and EL1 - which are the only modes
-supported by HVF.
+I'm not well versed on tuxrun, and how to make that work with a qemu
+binary outside of the container, so I'm not sure if I'm comparing
+apples to bananas.  Can you look and see if this fixes the kselftest
+slowdown you reported?
 
-To make sure nobody trips over that, we also annotate callbacks that don't
-work in HVF mode, such as EL state change hooks.
+Anyway, for a boot and shutdown of your rootfs, I see:
 
-With GICv3 support in place, we can run with more than 8 vCPUs.
+Before:
+    11.13%  [.] aa64_va_parameters
+     8.38%  [.] helper_lookup_tb_ptr
+     7.37%  [.] pauth_computepac
+     3.79%  [.] qht_lookup_custom
 
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
+After:
+     9.17%  [.] helper_lookup_tb_ptr
+     8.05%  [.] pauth_computepac
+     4.22%  [.] qht_lookup_custom
+     3.68%  [.] pauth_addpac
+     ...
+     1.67%  [.] aa64_va_parameters
 
----
 
-v1 -> v2:
+This is all due to the heavy use pauth makes of aa64_va_parameters.
+It "only" needs 2 parameters, tsz and tbi, but tsz is probably the
+most expensive part of aa64_va_parameters -- do anything about that
+and we might as well cache the whole thing.
 
-  - assert when guest has EL2/EL3 and uses non-TCG GICv3
-  - use defines for sysreg masks
----
- hw/intc/arm_gicv3_cpuif.c   |  15 +++-
- target/arm/hvf/hvf.c        | 151 ++++++++++++++++++++++++++++++++++++
- target/arm/hvf/trace-events |   2 +
- 3 files changed, 167 insertions(+), 1 deletion(-)
+The change from struct+bitfields to uint32_t+FIELD is meant to combat
+some really ugly code that gcc produced.  Seems like they should have
+compiled to the same thing, more or less, but alas.
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index b17b29288c..c4ff595742 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -21,6 +21,7 @@
- #include "hw/irq.h"
- #include "cpu.h"
- #include "target/arm/cpregs.h"
-+#include "sysemu/tcg.h"
- 
- /*
-  * Special case return value from hppvi_index(); must be larger than
-@@ -2810,6 +2811,8 @@ void gicv3_init_cpuif(GICv3State *s)
-          * which case we'd get the wrong value.
-          * So instead we define the regs with no ri->opaque info, and
-          * get back to the GICv3CPUState from the CPUARMState.
-+         *
-+         * These CP regs callbacks can be called from either TCG or HVF code.
-          */
-         define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
- 
-@@ -2905,6 +2908,16 @@ void gicv3_init_cpuif(GICv3State *s)
-                 define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
-             }
-         }
--        arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
-+        if (tcg_enabled()) {
-+            /*
-+             * We can only trap EL changes with TCG. However the GIC interrupt
-+             * state only changes on EL changes involving EL2 or EL3, so for
-+             * the non-TCG case this is OK, as EL2 and EL3 can't exist.
-+             */
-+            arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
-+        } else {
-+            assert(!arm_feature(&cpu->env, ARM_FEATURE_EL2));
-+            assert(!arm_feature(&cpu->env, ARM_FEATURE_EL3));
-+        }
-     }
- }
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 060aa0ccf4..ad65603445 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -80,6 +80,33 @@
- #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
- #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
- 
-+#define SYSREG_ICC_AP0R0_EL1     SYSREG(3, 0, 12, 8, 4)
-+#define SYSREG_ICC_AP0R1_EL1     SYSREG(3, 0, 12, 8, 5)
-+#define SYSREG_ICC_AP0R2_EL1     SYSREG(3, 0, 12, 8, 6)
-+#define SYSREG_ICC_AP0R3_EL1     SYSREG(3, 0, 12, 8, 7)
-+#define SYSREG_ICC_AP1R0_EL1     SYSREG(3, 0, 12, 9, 0)
-+#define SYSREG_ICC_AP1R1_EL1     SYSREG(3, 0, 12, 9, 1)
-+#define SYSREG_ICC_AP1R2_EL1     SYSREG(3, 0, 12, 9, 2)
-+#define SYSREG_ICC_AP1R3_EL1     SYSREG(3, 0, 12, 9, 3)
-+#define SYSREG_ICC_ASGI1R_EL1    SYSREG(3, 0, 12, 11, 6)
-+#define SYSREG_ICC_BPR0_EL1      SYSREG(3, 0, 12, 8, 3)
-+#define SYSREG_ICC_BPR1_EL1      SYSREG(3, 0, 12, 12, 3)
-+#define SYSREG_ICC_CTLR_EL1      SYSREG(3, 0, 12, 12, 4)
-+#define SYSREG_ICC_DIR_EL1       SYSREG(3, 0, 12, 11, 1)
-+#define SYSREG_ICC_EOIR0_EL1     SYSREG(3, 0, 12, 8, 1)
-+#define SYSREG_ICC_EOIR1_EL1     SYSREG(3, 0, 12, 12, 1)
-+#define SYSREG_ICC_HPPIR0_EL1    SYSREG(3, 0, 12, 8, 2)
-+#define SYSREG_ICC_HPPIR1_EL1    SYSREG(3, 0, 12, 12, 2)
-+#define SYSREG_ICC_IAR0_EL1      SYSREG(3, 0, 12, 8, 0)
-+#define SYSREG_ICC_IAR1_EL1      SYSREG(3, 0, 12, 12, 0)
-+#define SYSREG_ICC_IGRPEN0_EL1   SYSREG(3, 0, 12, 12, 6)
-+#define SYSREG_ICC_IGRPEN1_EL1   SYSREG(3, 0, 12, 12, 7)
-+#define SYSREG_ICC_PMR_EL1       SYSREG(3, 0, 4, 6, 0)
-+#define SYSREG_ICC_RPR_EL1       SYSREG(3, 0, 12, 11, 3)
-+#define SYSREG_ICC_SGI0R_EL1     SYSREG(3, 0, 12, 11, 7)
-+#define SYSREG_ICC_SGI1R_EL1     SYSREG(3, 0, 12, 11, 5)
-+#define SYSREG_ICC_SRE_EL1       SYSREG(3, 0, 12, 12, 5)
-+
- #define WFX_IS_WFE (1 << 0)
- 
- #define TMR_CTL_ENABLE  (1 << 0)
-@@ -788,6 +815,43 @@ static bool is_id_sysreg(uint32_t reg)
-            SYSREG_CRM(reg) < 8;
- }
- 
-+static uint32_t hvf_reg2cp_reg(uint32_t reg)
-+{
-+    return ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
-+                              (reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
-+                              (reg >> SYSREG_CRM_SHIFT) & SYSREG_CRM_MASK,
-+                              (reg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK,
-+                              (reg >> SYSREG_OP1_SHIFT) & SYSREG_OP1_MASK,
-+                              (reg >> SYSREG_OP2_SHIFT) & SYSREG_OP2_MASK);
-+}
-+
-+static bool hvf_sysreg_read_cp(CPUState *cpu, uint32_t reg, uint64_t *val)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    const ARMCPRegInfo *ri;
-+
-+    ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
-+    if (ri) {
-+        if (ri->accessfn) {
-+            if (ri->accessfn(env, ri, true) != CP_ACCESS_OK) {
-+                return false;
-+            }
-+        }
-+        if (ri->type & ARM_CP_CONST) {
-+            *val = ri->resetvalue;
-+        } else if (ri->readfn) {
-+            *val = ri->readfn(env, ri);
-+        } else {
-+            *val = CPREG_FIELD64(env, ri);
-+        }
-+        trace_hvf_vgic_read(ri->name, *val);
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
- static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -839,6 +903,36 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint32_t rt)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         break;
-+    case SYSREG_ICC_AP0R0_EL1:
-+    case SYSREG_ICC_AP0R1_EL1:
-+    case SYSREG_ICC_AP0R2_EL1:
-+    case SYSREG_ICC_AP0R3_EL1:
-+    case SYSREG_ICC_AP1R0_EL1:
-+    case SYSREG_ICC_AP1R1_EL1:
-+    case SYSREG_ICC_AP1R2_EL1:
-+    case SYSREG_ICC_AP1R3_EL1:
-+    case SYSREG_ICC_ASGI1R_EL1:
-+    case SYSREG_ICC_BPR0_EL1:
-+    case SYSREG_ICC_BPR1_EL1:
-+    case SYSREG_ICC_DIR_EL1:
-+    case SYSREG_ICC_EOIR0_EL1:
-+    case SYSREG_ICC_EOIR1_EL1:
-+    case SYSREG_ICC_HPPIR0_EL1:
-+    case SYSREG_ICC_HPPIR1_EL1:
-+    case SYSREG_ICC_IAR0_EL1:
-+    case SYSREG_ICC_IAR1_EL1:
-+    case SYSREG_ICC_IGRPEN0_EL1:
-+    case SYSREG_ICC_IGRPEN1_EL1:
-+    case SYSREG_ICC_PMR_EL1:
-+    case SYSREG_ICC_SGI0R_EL1:
-+    case SYSREG_ICC_SGI1R_EL1:
-+    case SYSREG_ICC_SRE_EL1:
-+    case SYSREG_ICC_CTLR_EL1:
-+        /* Call the TCG sysreg handler. This is only safe for GICv3 regs. */
-+        if (!hvf_sysreg_read_cp(cpu, reg, &val)) {
-+            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-+        }
-+        break;
-     default:
-         if (is_id_sysreg(reg)) {
-             /* ID system registers read as RES0 */
-@@ -944,6 +1038,33 @@ static void pmswinc_write(CPUARMState *env, uint64_t value)
-     }
- }
- 
-+static bool hvf_sysreg_write_cp(CPUState *cpu, uint32_t reg, uint64_t val)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    const ARMCPRegInfo *ri;
-+
-+    ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
-+
-+    if (ri) {
-+        if (ri->accessfn) {
-+            if (ri->accessfn(env, ri, false) != CP_ACCESS_OK) {
-+                return false;
-+            }
-+        }
-+        if (ri->writefn) {
-+            ri->writefn(env, ri, val);
-+        } else {
-+            CPREG_FIELD64(env, ri) = val;
-+        }
-+
-+        trace_hvf_vgic_write(ri->name, val);
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
- static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -1021,6 +1142,36 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         break;
-+    case SYSREG_ICC_AP0R0_EL1:
-+    case SYSREG_ICC_AP0R1_EL1:
-+    case SYSREG_ICC_AP0R2_EL1:
-+    case SYSREG_ICC_AP0R3_EL1:
-+    case SYSREG_ICC_AP1R0_EL1:
-+    case SYSREG_ICC_AP1R1_EL1:
-+    case SYSREG_ICC_AP1R2_EL1:
-+    case SYSREG_ICC_AP1R3_EL1:
-+    case SYSREG_ICC_ASGI1R_EL1:
-+    case SYSREG_ICC_BPR0_EL1:
-+    case SYSREG_ICC_BPR1_EL1:
-+    case SYSREG_ICC_CTLR_EL1:
-+    case SYSREG_ICC_DIR_EL1:
-+    case SYSREG_ICC_EOIR0_EL1:
-+    case SYSREG_ICC_EOIR1_EL1:
-+    case SYSREG_ICC_HPPIR0_EL1:
-+    case SYSREG_ICC_HPPIR1_EL1:
-+    case SYSREG_ICC_IAR0_EL1:
-+    case SYSREG_ICC_IAR1_EL1:
-+    case SYSREG_ICC_IGRPEN0_EL1:
-+    case SYSREG_ICC_IGRPEN1_EL1:
-+    case SYSREG_ICC_PMR_EL1:
-+    case SYSREG_ICC_SGI0R_EL1:
-+    case SYSREG_ICC_SGI1R_EL1:
-+    case SYSREG_ICC_SRE_EL1:
-+        /* Call the TCG sysreg handler. This is only safe for GICv3 regs. */
-+        if (!hvf_sysreg_write_cp(cpu, reg, val)) {
-+            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-+        }
-+        break;
-     default:
-         cpu_synchronize_state(cpu);
-         trace_hvf_unhandled_sysreg_write(env->pc, reg,
-diff --git a/target/arm/hvf/trace-events b/target/arm/hvf/trace-events
-index 820e8e0297..4fbbe4b45e 100644
---- a/target/arm/hvf/trace-events
-+++ b/target/arm/hvf/trace-events
-@@ -9,3 +9,5 @@ hvf_unknown_hvc(uint64_t x0) "unknown HVC! 0x%016"PRIx64
- hvf_unknown_smc(uint64_t x0) "unknown SMC! 0x%016"PRIx64
- hvf_exit(uint64_t syndrome, uint32_t ec, uint64_t pc) "exit: 0x%"PRIx64" [ec=0x%x pc=0x%"PRIx64"]"
- hvf_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid) "PSCI Call x0=0x%016"PRIx64" x1=0x%016"PRIx64" x2=0x%016"PRIx64" x3=0x%016"PRIx64" cpu=0x%x"
-+hvf_vgic_write(const char *name, uint64_t val) "vgic write to %s [val=0x%016"PRIx64"]"
-+hvf_vgic_read(const char *name, uint64_t val) "vgic read from %s [val=0x%016"PRIx64"]"
+
+r~
+
+
+Richard Henderson (4):
+  target/arm: Flush only required tlbs for TCR_EL[12]
+  target/arm: Store tbi for both insns and data in ARMVAParameters
+  target/arm: Use FIELD for ARMVAParameters
+  target/arm: Cache ARMVAParameters
+
+ target/arm/cpu.h          |  30 +++++++
+ target/arm/internals.h    |  21 +----
+ target/arm/helper.c       | 177 ++++++++++++++++++++++++++++----------
+ target/arm/pauth_helper.c |  39 +++++----
+ target/arm/ptw.c          |  57 ++++++------
+ 5 files changed, 217 insertions(+), 107 deletions(-)
+
 -- 
-2.37.1 (Apple Git-137.1)
+2.34.1
 

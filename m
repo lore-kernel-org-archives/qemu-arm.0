@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp382758ejb;
-        Thu, 2 Feb 2023 05:39:14 -0800 (PST)
-X-Google-Smtp-Source: AK7set+KjNIrs43nptx55+/ytN9ChKP6eQXMqhgBZrB9EJqm68BbMU0F1hDkMSIePs0zjWCiwbN0
-X-Received: by 2002:a05:6214:268e:b0:53b:aa54:4ef1 with SMTP id gm14-20020a056214268e00b0053baa544ef1mr13383670qvb.32.1675345154575;
-        Thu, 02 Feb 2023 05:39:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675345154; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp382871ejb;
+        Thu, 2 Feb 2023 05:39:25 -0800 (PST)
+X-Google-Smtp-Source: AK7set9ITG0ZgZEKqt4OwOUrTaaSMHV+M/FGScIlIKn4Uw/Rps5haz8wA3USSUME5TNdSg7CUCiC
+X-Received: by 2002:a05:6214:5803:b0:4c7:13f1:98bd with SMTP id mk3-20020a056214580300b004c713f198bdmr9528873qvb.5.1675345165655;
+        Thu, 02 Feb 2023 05:39:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675345165; cv=none;
         d=google.com; s=arc-20160816;
-        b=dpZjg9IPl0tiN0ekWqFrM0gA4fI8dDJIDylip267i2sbuk/0o3O9UZlLYgdXj4PCHT
-         LAshN4TOOyeyy/6VUDDfrltTl4H9LLDy793/G93Z4FTcWimnx8x2LK4QupzZv9sWE8Yy
-         M4/1M4Hnih/fR51Q2GIi6JBHu4/IN3sY9mhvOYETYjRNEhK0K7bRmCRcbWZ+GvE2AgoH
-         4hLT3FxWLjayAF4k4fUuQN1T35QNxJkJNAA9u9NOOxmwQqY1k8IyyoxngF5OE3r9Ekph
-         uwmgHxASGNWq+4QicujEjLkgTI/ZmiNr314VQTiZu0r1gsPS65qPYHlBEfsfQhRT0uCk
-         MGKw==
+        b=i40+eqWFxWTAebprg8rCbN7woPK1xYMaq9UlpcE+w4ke+qEg+kxCDO5D5N/96xfEqv
+         oxE1oY+tyZ+/ZtCZjBiyIwjmNB2xv8ZbUGCk3QFdPqd4ax+7dFef56drUXi+8Bafzz9J
+         IOgLLoZUWr0DaOuHyp/l7PauvtWlkIH8lTMETu1NTTSg1DbBxUh2VChavDQ4PKsxW8sU
+         XTjI5OiBa/ima3TuQfS8ms/oGJj57KDew+Vusxe/qMRkQyh+9K3+Hu3Aa/D/SGoWXD73
+         i81i5A31kFcZUtNEI+2ieVf83t9jNZFJTFQhrg0oOwLETtkcplE0/fEZ3Lwtvqcdwma6
+         lXbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=qcRImc2dDs0fev9FIlKyp+kjuB8jSu/a15QT63yaRK8=;
-        b=Z0URcIYf18yaxnHnnzfuUISnVpqAFULqy/AbAIGma0Bi+zoFtCOqyMT2g+WEtSWuba
-         Y9BqcdqDzEJaGW3IrQCwmR8gtr4eqADcYQQP5QJpXgyWqNGyiM2eu0rCRr8tfPKpsOPj
-         qt2nFzBJpGnTQrvY87W2y9yWxF8bWs8U/YBpiv4JsOx720Aj7HbxLmagn5rnNRf71uEq
-         SltqZ2Yc13LrTdnEyrqsQa41iHf1YkbVB5JEDCGG6BbaOtYJBVkJBs0VC6VpJsYXTWF6
-         YspLV2C4IxZ6D+60eexZGZiaV1qMDonsEpDYlDz1NjFWf3kIpkDctpTueGNFVOFuTeGQ
-         /3fw==
+        bh=mF0jgZggtCq6IFdU4eiR/flrXkncb1hZ3jf1QrKITLU=;
+        b=fP8kfmNCExkxe+5rmv05yiRvGka3GckUw9FBF/IqeEL2h9j+QG6Fo3q1ZROS3lQLyT
+         S91HGkEW7r6qM2U//u3r+U+jSrFQ4tftRRJykJu8RsW4HcdaxMh+LT1523hFhnDl6Xvm
+         ky2cCdqYa223Gn1r7gBfFMg5974KrC5NovOGhSdgyIn3qvxCPu549Hh4YuvE5XSBC/TT
+         uIOJ14q65ZQZCZ8htchCjWLpAqAGAxC85lwcRH1Y+sEaNugFeTy7iB53KmCUm8yR9WDn
+         MDkC75/SnXZLqwLMtFB5GwHXa7k3gwZZryUEM3tB7rng0WVm9UcoBVrPU+8TqetwCWW6
+         +9uA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GwWuXo+D;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bnM2kr1m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 133-20020a37038b000000b0071c89f1587fsi8818952qkd.244.2023.02.02.05.39.14
+        by mx.google.com with ESMTPS id ok12-20020a0562143c8c00b00562098e0b52si1422271qvb.498.2023.02.02.05.39.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Feb 2023 05:39:14 -0800 (PST)
+        Thu, 02 Feb 2023 05:39:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GwWuXo+D;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bnM2kr1m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pNZnb-0005Gc-Ga; Thu, 02 Feb 2023 08:38:47 -0500
+	id 1pNZng-0005QZ-GZ; Thu, 02 Feb 2023 08:38:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnZ-0005EK-V3
- for qemu-arm@nongnu.org; Thu, 02 Feb 2023 08:38:45 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnc-0005J4-Ov
+ for qemu-arm@nongnu.org; Thu, 02 Feb 2023 08:38:48 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnV-000850-4M
- for qemu-arm@nongnu.org; Thu, 02 Feb 2023 08:38:43 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnY-00086q-VC
+ for qemu-arm@nongnu.org; Thu, 02 Feb 2023 08:38:48 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675345120;
+ s=mimecast20190719; t=1675345121;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qcRImc2dDs0fev9FIlKyp+kjuB8jSu/a15QT63yaRK8=;
- b=GwWuXo+DhDy2rxsOJ7cEpoYqlyGVKFRxnLQfP8PXA1b1aLqTl4uKOn+E+Uca1Xel6O1lv/
- vzqzfkPmYqF3Ifq/3cEir+7IbV925kEI8NNI8LSmq/DnvIlC+2XqUoPDwVz4sSwVoYXbF6
- lH5a9ufquvcE20X9wInHQJ9F7RYHCUY=
+ bh=mF0jgZggtCq6IFdU4eiR/flrXkncb1hZ3jf1QrKITLU=;
+ b=bnM2kr1mu8rhqzzQ/7pnMf8Q3nWwBqAMe0NF6gg6PaV/rtDpXAzYY3tZ0trzAEmjLCF9TD
+ jebiSXodIPA4PKbTL7i+41fN3NeZsGBWF2Ku3eEPRsThXBcZU9xcTt6M9/EBMYXDxtPORS
+ EAchqUinFbMcOR6bSXjOWX7BQxH9Pes=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-48-acQrf78ZPGmxVT-Kh4E9gw-1; Thu, 02 Feb 2023 08:38:37 -0500
-X-MC-Unique: acQrf78ZPGmxVT-Kh4E9gw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
+ us-mta-380-a-_TYRa-OVOTtxcWF6ON4A-1; Thu, 02 Feb 2023 08:38:37 -0500
+X-MC-Unique: a-_TYRa-OVOTtxcWF6ON4A-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D88BE8037AF;
- Thu,  2 Feb 2023 13:38:33 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0043285CBE7;
+ Thu,  2 Feb 2023 13:38:35 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CDD2614171BB;
- Thu,  2 Feb 2023 13:38:31 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8F0A7492B22;
+ Thu,  2 Feb 2023 13:38:33 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id ABFAD21E6A20; Thu,  2 Feb 2023 14:38:30 +0100 (CET)
+ id BA06421E6A24; Thu,  2 Feb 2023 14:38:30 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
@@ -86,16 +86,16 @@ Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
  quintela@redhat.com, dgilbert@redhat.com, michael.roth@amd.com,
  kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com,
  bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, Eric Blake <eblake@redhat.com>
-Subject: [PATCH v6 01/20] scripts/clean-includes: Fully skip / ignore files
-Date: Thu,  2 Feb 2023 14:38:11 +0100
-Message-Id: <20230202133830.2152150-2-armbru@redhat.com>
+ qemu-riscv@nongnu.org
+Subject: [PATCH v6 05/20] bsd-user: Clean up includes
+Date: Thu,  2 Feb 2023 14:38:15 +0100
+Message-Id: <20230202133830.2152150-6-armbru@redhat.com>
 In-Reply-To: <20230202133830.2152150-1-armbru@redhat.com>
 References: <20230202133830.2152150-1-armbru@redhat.com>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -104,7 +104,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,73 +119,185 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LC6TC686Ig0I
+X-TUID: ehs7rEXYWiap
 
-When clean-includes claims to skip or ignore a file, only the part
-that sanitizes use of qemu/osdep.h skips the file.  The part that
-looks for duplicate #include does not, and neither does committing to
-Git.
+This commit was created with scripts/clean-includes.
 
-The latter can get unrelated stuff included in the commit, but only if
-you run clean-includes in a dirty tree, which is unwise.  Messed up
-when we added skipping in commit fd3e39a40c "scripts/clean-includes:
-Enhance to handle header files".
+All .c should include qemu/osdep.h first.  The script performs three
+related cleanups:
 
-The former can cause bogus reports for --check-dup-head.  Added in
-commit d66253e46a "scripts/clean-includes: added duplicate #include
-check", duplicating the prior mistake.
+* Ensure .c files include qemu/osdep.h first.
+* Including it in a .h is redundant, since the .c  already includes
+  it.  Drop such inclusions.
+* Likewise, including headers qemu/osdep.h includes is redundant.
+  Drop these, too.
 
-Fix the script to fully skip files.
-
-Fixes: fd3e39a40ca2 ("scripts/clean-includes: Enhance to handle header files")
-Fixes: d66253e46ae2 ("scripts/clean-includes: added duplicate #include check")
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
 ---
- scripts/clean-includes | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ bsd-user/bsd-proc.h               | 4 ----
+ bsd-user/qemu.h                   | 1 -
+ bsd-user/arm/signal.c             | 1 +
+ bsd-user/arm/target_arch_cpu.c    | 2 ++
+ bsd-user/freebsd/os-sys.c         | 1 +
+ bsd-user/i386/signal.c            | 1 +
+ bsd-user/i386/target_arch_cpu.c   | 3 +--
+ bsd-user/main.c                   | 4 +---
+ bsd-user/strace.c                 | 1 -
+ bsd-user/x86_64/signal.c          | 1 +
+ bsd-user/x86_64/target_arch_cpu.c | 3 +--
+ 11 files changed, 9 insertions(+), 13 deletions(-)
 
-diff --git a/scripts/clean-includes b/scripts/clean-includes
-index d37bd4f692..86944f27fc 100755
---- a/scripts/clean-includes
-+++ b/scripts/clean-includes
-@@ -111,6 +111,7 @@ cat >"$COCCIFILE" <<EOT
- )
- EOT
+diff --git a/bsd-user/bsd-proc.h b/bsd-user/bsd-proc.h
+index 68b66e571d..a1061bffb8 100644
+--- a/bsd-user/bsd-proc.h
++++ b/bsd-user/bsd-proc.h
+@@ -20,11 +20,7 @@
+ #ifndef BSD_PROC_H_
+ #define BSD_PROC_H_
  
-+files=
- for f in "$@"; do
-   case "$f" in
-     *.c.inc)
-@@ -144,6 +145,7 @@ for f in "$@"; do
-       continue
-       ;;
-   esac
-+  files="$files $f"
+-#include <sys/types.h>
+-#include <sys/stat.h>
+-#include <sys/time.h>
+ #include <sys/resource.h>
+-#include <unistd.h>
  
-   if [ "$MODE" = "c" ]; then
-     # First, use Coccinelle to add qemu/osdep.h before the first existing include
-@@ -174,8 +176,8 @@ for f in "$@"; do
+ /* exit(2) */
+ static inline abi_long do_bsd_exit(void *cpu_env, abi_long arg1)
+diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
+index be6105385e..0ceecfb6df 100644
+--- a/bsd-user/qemu.h
++++ b/bsd-user/qemu.h
+@@ -17,7 +17,6 @@
+ #ifndef QEMU_H
+ #define QEMU_H
  
- done
+-#include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "qemu/units.h"
+ #include "exec/cpu_ldst.h"
+diff --git a/bsd-user/arm/signal.c b/bsd-user/arm/signal.c
+index 2b1dd745d1..9734407543 100644
+--- a/bsd-user/arm/signal.c
++++ b/bsd-user/arm/signal.c
+@@ -17,6 +17,7 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
  
--if [ "$DUPHEAD" = "yes" ]; then
--    egrep "^[[:space:]]*#[[:space:]]*include" "$@" | tr -d '[:blank:]' \
-+if [ "$DUPHEAD" = "yes" ] && [ -n "$files" ]; then
-+    egrep "^[[:space:]]*#[[:space:]]*include" $files | tr -d '[:blank:]' \
-         | sort | uniq -c | awk '{if ($1 > 1) print $0}'
-     if [ $? -eq 0 ]; then
-         echo "Found duplicate header file includes. Please check the above files manually."
-@@ -184,7 +186,7 @@ if [ "$DUPHEAD" = "yes" ]; then
- fi
++#include "qemu/osdep.h"
+ #include "qemu.h"
  
- if [ "$GIT" = "yes" ]; then
--    git add -- "$@"
-+    git add -- $files
-     git commit --signoff -F - <<EOF
- $GITSUBJ: Clean up includes
+ /*
+diff --git a/bsd-user/arm/target_arch_cpu.c b/bsd-user/arm/target_arch_cpu.c
+index 02bf9149d5..fe38ae2210 100644
+--- a/bsd-user/arm/target_arch_cpu.c
++++ b/bsd-user/arm/target_arch_cpu.c
+@@ -16,6 +16,8 @@
+  *  You should have received a copy of the GNU General Public License
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
++
++#include "qemu/osdep.h"
+ #include "target_arch.h"
  
+ void target_cpu_set_tls(CPUARMState *env, target_ulong newtls)
+diff --git a/bsd-user/freebsd/os-sys.c b/bsd-user/freebsd/os-sys.c
+index 309e27b9d6..1676ec10f8 100644
+--- a/bsd-user/freebsd/os-sys.c
++++ b/bsd-user/freebsd/os-sys.c
+@@ -17,6 +17,7 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include "qemu/osdep.h"
+ #include "qemu.h"
+ #include "target_arch_sysarch.h"
+ 
+diff --git a/bsd-user/i386/signal.c b/bsd-user/i386/signal.c
+index 5dd975ce56..a3131047b8 100644
+--- a/bsd-user/i386/signal.c
++++ b/bsd-user/i386/signal.c
+@@ -17,6 +17,7 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include "qemu/osdep.h"
+ #include "qemu.h"
+ 
+ /*
+diff --git a/bsd-user/i386/target_arch_cpu.c b/bsd-user/i386/target_arch_cpu.c
+index d349e45299..2a3af2ddef 100644
+--- a/bsd-user/i386/target_arch_cpu.c
++++ b/bsd-user/i386/target_arch_cpu.c
+@@ -17,9 +17,8 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#include <sys/types.h>
+-
+ #include "qemu/osdep.h"
++
+ #include "cpu.h"
+ #include "qemu.h"
+ #include "qemu/timer.h"
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 6f09180d65..41290e16f9 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -18,12 +18,10 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#include <sys/types.h>
+-#include <sys/time.h>
++#include "qemu/osdep.h"
+ #include <sys/resource.h>
+ #include <sys/sysctl.h>
+ 
+-#include "qemu/osdep.h"
+ #include "qemu/help-texts.h"
+ #include "qemu/units.h"
+ #include "qemu/accel.h"
+diff --git a/bsd-user/strace.c b/bsd-user/strace.c
+index a77d10dd6b..96499751eb 100644
+--- a/bsd-user/strace.c
++++ b/bsd-user/strace.c
+@@ -20,7 +20,6 @@
+ #include <sys/select.h>
+ #include <sys/syscall.h>
+ #include <sys/ioccom.h>
+-#include <ctype.h>
+ 
+ #include "qemu.h"
+ 
+diff --git a/bsd-user/x86_64/signal.c b/bsd-user/x86_64/signal.c
+index c3875bc4c6..46cb865180 100644
+--- a/bsd-user/x86_64/signal.c
++++ b/bsd-user/x86_64/signal.c
+@@ -16,6 +16,7 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include "qemu/osdep.h"
+ #include "qemu.h"
+ 
+ /*
+diff --git a/bsd-user/x86_64/target_arch_cpu.c b/bsd-user/x86_64/target_arch_cpu.c
+index be7bd10720..1d32f18907 100644
+--- a/bsd-user/x86_64/target_arch_cpu.c
++++ b/bsd-user/x86_64/target_arch_cpu.c
+@@ -17,9 +17,8 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#include <sys/types.h>
+-
+ #include "qemu/osdep.h"
++
+ #include "cpu.h"
+ #include "qemu.h"
+ #include "qemu/timer.h"
 -- 
 2.39.0
 

@@ -1,176 +1,97 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp166099ejb;
-        Wed, 1 Feb 2023 23:53:45 -0800 (PST)
-X-Google-Smtp-Source: AK7set87snhDL8/LdGTDJxs33wwZ0Q2TzEDV7KLaZEOiZuTjY2iFbp1INrJXx75aOKnQr32oZw6A
-X-Received: by 2002:a05:622a:1206:b0:3b4:79f8:26c3 with SMTP id y6-20020a05622a120600b003b479f826c3mr10262759qtx.33.1675324424794;
-        Wed, 01 Feb 2023 23:53:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675324424; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp233734ejb;
+        Thu, 2 Feb 2023 02:03:33 -0800 (PST)
+X-Google-Smtp-Source: AK7set+4lYSAGe+Hdpgz6/BeXRSYikh7vYnXIYgNQgyer1wr2jqDdk2NhDdN6aCHfXTAesxwyBAy
+X-Received: by 2002:a05:6a20:d043:b0:b9:7de5:239 with SMTP id hv3-20020a056a20d04300b000b97de50239mr5999220pzb.27.1675332213101;
+        Thu, 02 Feb 2023 02:03:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675332213; cv=none;
         d=google.com; s=arc-20160816;
-        b=EjQeNA1n+d4Cnt/X0UQovOmB49oS36FHHTjxKq5THEicw4xhXIp/tGmmxU4wWKu0+z
-         cvza4aVGuB2fPZFEVssoJvKjZmUAJGaG5+bOc3CZGeFhdTYhAYnA+r3UJxAu3KroHDi0
-         RN5Q2splSjiQxn91zbvrTyxR8/HFsQCIHZyS5kMcTAv/7NzfcDskuUBPDVs6nvyzCh1z
-         Osfm4vSyiDADwJOObLRv7G1EqNIf7v3EL8Q//iGeWUylvfSRBViFffDcQuXMvgSFpCG+
-         0ysDNcIJYqzJ5zaSK3z9jCFT7BqpFcVKzWWJJ6aXgldK1vmTUm4cUpzS47nhbyBrF6Zp
-         Ex2A==
+        b=h+7j/ZD1hySHh5FDO0MokwUk7xSjKKQgTbD20j0x9NhvB0cg/LO7SiaEAA8t7lFCbS
+         I02trIpvYLTvKZ8le2e125f90ykOeA8QyaHxfJaH0/5SV986Svfwd4T4uM7IsgDeL6i0
+         Etk3UeT1M7xS8zgYlqhjOsXgBlP0R3ISlRzmJHeZIaY1TDt0TlZwcHUhN6eFZlA1pnmq
+         ehxg+e0/lCjzjc3G3r3OR/uwa5Lcl8hDRFUV3ajwcAiYHQahYHKuVokkVk5g5aIiaE44
+         7ZrMRan1WWSlt3Qh/1FUOmB1i9gXwlWgCn8pGhoxejZ7EcNNj3H3wU95p1H6rK+W4LaW
+         PVtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zj8l3w+P8ST5npKc1RTkEuUEQzYNRa6QApxIkVXblu0=;
-        b=xCEieNrzBfCzWzd1M0W8Mm2B+vLEhTdVBII2Mg2a1QKQA82xzW47Rhg/ysF0cXWHOF
-         6SWxuj76RKLOtI/ypRNKjMDKSH2AvhArb1JM41Ck3VP1d+ZZQHXBvzpFqjhvWuR0g/Vf
-         zGD1LiWllQmMfk3CmTASh7wieA1S5zwQLeYRg5JgVhuZWWvenlsxfCTgccOhSrwkATum
-         VnERyh9gP1M7dXrLh2CQVkmSPq0xN/yg6yfDiGwHW4QamEpQuv4elqYoi/76JGDbDpmv
-         uF2pIYhlQBk2eK7FqvpK6cqGF+ANg89bp5+q6yw+GHmbA3Ct/NSo7ZQAxKjYsqRnjd2Z
-         fEkQ==
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:dkim-signature;
+        bh=yR0y+MSgxpHs1wct0+/mwH7E0d7naoviLcqyb2z2qXE=;
+        b=o/ZEVHkwnLzjA/DO8FJFeOYDRwq1dNVWe6IaTxXNdEDlTCyZkUXNO+g030ctrmQAdI
+         glJRj1tvngK8q7SlFW0A8DAT+yE6kLcNAik9Zfr+CBrOKYaHNwZO54d3CSDnXRE0ehcl
+         0SCkzQ5jxn8Ud5fnnyMVXLG15JWBD7wtQNmxJHrkqCdo5ssqJ/0Elhwk6nhFw3hY4JrC
+         SnkXVkbwKJw1CTcntoKdORNPIJ3fyUh8S+ZHF+66NGKxIn94IHu8dohkSy8ubgowuh0w
+         BbkdBwNMnlNy+HEDNC61Ow/FZZMDB1RWz1SgqJLV+iS1BnXoerOozTnV/mf7bTN/D/vC
+         yQIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P58eQnEX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3-20020ac84e83000000b003b3e31a8791si11614114qtp.443.2023.02.01.23.53.44
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=GBxe+s50;
+       spf=pass (google.com: domain of mads@ynddal.dk designates 17.58.38.53 as permitted sender) smtp.mailfrom=mads@ynddal.dk
+Return-Path: <mads@ynddal.dk>
+Received: from ms11p00im-qufo17281601.me.com (ms11p00im-qufo17281601.me.com. [17.58.38.53])
+        by mx.google.com with ESMTPS id j70-20020a638049000000b004e4681678c1si15471686pgd.513.2023.02.02.02.03.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Feb 2023 23:53:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Feb 2023 02:03:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of mads@ynddal.dk designates 17.58.38.53 as permitted sender) client-ip=17.58.38.53;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P58eQnEX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pNUOq-0001NL-Kn; Thu, 02 Feb 2023 02:52:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pNUOp-0001N3-BS
- for qemu-devel@nongnu.org; Thu, 02 Feb 2023 02:52:51 -0500
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pNUOn-0007jN-PP
- for qemu-devel@nongnu.org; Thu, 02 Feb 2023 02:52:51 -0500
-Received: by mail-pj1-x1029.google.com with SMTP id
- c10-20020a17090a1d0a00b0022e63a94799so4792545pjd.2
- for <qemu-devel@nongnu.org>; Wed, 01 Feb 2023 23:52:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=zj8l3w+P8ST5npKc1RTkEuUEQzYNRa6QApxIkVXblu0=;
- b=P58eQnEXfRAYb4FcnYieTMgfeimZZ/ht1RLzaHEoHu++wWoUnh39VrsGU/QcxYaqAY
- 83OI3wOrmhr3+vOV5AUmMHmovRnqm8nAc2bAxnBB25bJxM5kaLKJsIeug19o2T+KMbVp
- T8HQlkPtvR6w1C53USz2v1PRdnJnwL7jJU1NgIZkHme2jIQ6jEip7zlxSgkYK9aMpfIX
- OQs1l1WO24SUI4fOiv3es/t+dXJTibMOMT/M7AnLTPBHkybmxG4GyPA4Qy/y6l8uFqTS
- 2Nb96MVXlzSS60cPss/h3yGWW1o6eTsdFNRFQf56Xqov0GF97Py4geCHq0nHcaALd7FV
- 0RQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zj8l3w+P8ST5npKc1RTkEuUEQzYNRa6QApxIkVXblu0=;
- b=Ogz1wxY+UAijrFSJNPtOqK6VuM62mAapAK3czSOuIOcNZBgIYPWAfhMG1R7Z+MzrPI
- 68Bp/OXTa064by1kav+TL/a+zuJKfX3djR04iUqv0rLajne1XvAR8BIaJ4eXDSVvfMsP
- wqlk+gZmx3q4rIB5TBrDJ3qnB/CmLvpR3BHsl7+08UsBBuAT8zSSU99LC5HtN4NOy5DN
- vIahCuborocd0m7tXr9A9eSsk16GFx06dKyCmmqfobECl8NMpSaDHzCGcMXNtQy8YCCp
- iaa/JhqU0orqaEtBj2/PQ0+AK8bM9OmOcrGn8IR9ye7EhQLYlD1mfDW6396FCaEHALqM
- mqLw==
-X-Gm-Message-State: AO0yUKWJ7oy/XzBIdMff4TWq4AiNiixGPgxPFYLWa39RsqK8g0C9fK1i
- Ib9uEqw0recsBeqNsv6jQhsfmh7MFQ79rfRr
-X-Received: by 2002:a17:90b:17c6:b0:22c:6b5b:8509 with SMTP id
- me6-20020a17090b17c600b0022c6b5b8509mr5780212pjb.16.1675324367800; 
- Wed, 01 Feb 2023 23:52:47 -0800 (PST)
-Received: from stoup.. (rrcs-173-197-98-118.west.biz.rr.com. [173.197.98.118])
- by smtp.gmail.com with ESMTPSA id
- b4-20020a17090a7ac400b0022c35afad5bsm2496763pjl.16.2023.02.01.23.52.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 01 Feb 2023 23:52:47 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: anders.roxell@linaro.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH 0/4] target/arm: Cache ARMVAParameters
-Date: Wed,  1 Feb 2023 21:52:38 -1000
-Message-Id: <20230202075242.260793-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gkmBQZnGzzcl
-
-Hi Anders,
-
-I'm not well versed on tuxrun, and how to make that work with a qemu
-binary outside of the container, so I'm not sure if I'm comparing
-apples to bananas.  Can you look and see if this fixes the kselftest
-slowdown you reported?
-
-Anyway, for a boot and shutdown of your rootfs, I see:
-
-Before:
-    11.13%  [.] aa64_va_parameters
-     8.38%  [.] helper_lookup_tb_ptr
-     7.37%  [.] pauth_computepac
-     3.79%  [.] qht_lookup_custom
-
-After:
-     9.17%  [.] helper_lookup_tb_ptr
-     8.05%  [.] pauth_computepac
-     4.22%  [.] qht_lookup_custom
-     3.68%  [.] pauth_addpac
-     ...
-     1.67%  [.] aa64_va_parameters
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=GBxe+s50;
+       spf=pass (google.com: domain of mads@ynddal.dk designates 17.58.38.53 as permitted sender) smtp.mailfrom=mads@ynddal.dk
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
+	t=1675332212; bh=yR0y+MSgxpHs1wct0+/mwH7E0d7naoviLcqyb2z2qXE=;
+	h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To;
+	b=GBxe+s50e6D2x94NWvGyz1/ygWsj6IdZB8uJoukfI9N76FJMvIRd9QPFVOO6/Oio6
+	 Rnk2tdjju31vpWYpz/FvWlUGD+6/1an6DCbqvmCXdlHKdeBlwU+OrwLrNhLzmj8E2j
+	 XyDd/CzSjcLyBZRQ2ChGmfcygOqwoEEcYFwVmfp6WLGrmTScD6NPLr4EOUtLY4zcvo
+	 eGbzZzWFr2mLIXYk1roEtbU7fEZ/e0qLdRq140ciuHPBEhKamtiZ9dFYB8YWXS9sAa
+	 nw6gDi+dbMQ5pnhaViD/+0uWp4hMffxvCNSVISPt2ENeknxvV9dszoE+wC6qUm1Xjx
+	 bTlJ/d3ao8lHA==
+Received: from smtpclient.apple (ms11p00im-dlb-asmtpmailmevip.me.com [17.57.154.19])
+	by ms11p00im-qufo17281601.me.com (Postfix) with ESMTPSA id 82357AA0645;
+	Thu,  2 Feb 2023 10:03:29 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.300.101.1.3\))
+Subject: Re: [PATCH v3 2/3] hvf: implement guest debugging on Apple Silicon
+ hosts
+From: Mads Ynddal <mads@ynddal.dk>
+In-Reply-To: <CAF8_6K=7qhJc7jo2jrzYJ6_SjKnbxOd_6_6CtdKJXwfJj5onQg@mail.gmail.com>
+Date: Thu, 2 Feb 2023 11:03:16 +0100
+Cc: qemu-devel@nongnu.org,
+ dirty@apple.com,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM cores" <qemu-arm@nongnu.org>,
+ Alexander Graf <agraf@csgraf.de>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Francesco Cagnin <fcagnin@quarkslab.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <4002D932-B7A3-4166-BA8A-5A323CD87096@ynddal.dk>
+References: <20230114161302.94595-1-fcagnin@quarkslab.com>
+ <20230114161302.94595-3-fcagnin@quarkslab.com>
+ <5B722E51-E635-4196-8978-E0393F9EEFA1@ynddal.dk>
+ <1F9A3AAD-0A5D-4E7D-A053-7F49CE019096@ynddal.dk>
+ <CAF8_6K=7qhJc7jo2jrzYJ6_SjKnbxOd_6_6CtdKJXwfJj5onQg@mail.gmail.com>
+To: Francesco Cagnin <francesco.cagnin@gmail.com>
+X-Mailer: Apple Mail (2.3731.300.101.1.3)
+X-Proofpoint-ORIG-GUID: ASxqZ596wDjN4dGR2eMLtR-jlO0pc8Vu
+X-Proofpoint-GUID: ASxqZ596wDjN4dGR2eMLtR-jlO0pc8Vu
+X-Proofpoint-Virus-Version: =?UTF-8?Q?vendor=3Dfsecure_engine=3D1.1.170-22c6f66c430a71ce266a39bfe25bc?=
+ =?UTF-8?Q?2903e8d5c8f:6.0.138,18.0.572,17.0.605.474.0000000_definitions?=
+ =?UTF-8?Q?=3D2020-02-14=5F11:2020-02-14=5F02,2020-02-14=5F11,2020-01-23?=
+ =?UTF-8?Q?=5F02_signatures=3D0?=
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 mlxscore=0 phishscore=0
+ adultscore=0 mlxlogscore=572 clxscore=1030 suspectscore=0 spamscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2302020093
+X-TUID: aFdyAZ7viRJH
 
 
-This is all due to the heavy use pauth makes of aa64_va_parameters.
-It "only" needs 2 parameters, tsz and tbi, but tsz is probably the
-most expensive part of aa64_va_parameters -- do anything about that
-and we might as well cache the whole thing.
+> Are you running the Linux guest on multiple cores? If yes, could you
+> check if the issue persists also when using a single core?
 
-The change from struct+bitfields to uint32_t+FIELD is meant to combat
-some really ugly code that gcc produced.  Seems like they should have
-compiled to the same thing, more or less, but alas.
+Yes, I was running with 2 cores. I just tested with 1 and 2 several =
+times. I
+haven't reproduced the bug with 1 core, but happens around 70% of the =
+time with
+2 cores.
 
-
-r~
-
-
-Richard Henderson (4):
-  target/arm: Flush only required tlbs for TCR_EL[12]
-  target/arm: Store tbi for both insns and data in ARMVAParameters
-  target/arm: Use FIELD for ARMVAParameters
-  target/arm: Cache ARMVAParameters
-
- target/arm/cpu.h          |  30 +++++++
- target/arm/internals.h    |  21 +----
- target/arm/helper.c       | 177 ++++++++++++++++++++++++++++----------
- target/arm/pauth_helper.c |  39 +++++----
- target/arm/ptw.c          |  57 ++++++------
- 5 files changed, 217 insertions(+), 107 deletions(-)
-
--- 
-2.34.1
-
+=E2=80=94
+Mads Ynddal

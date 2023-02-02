@@ -1,137 +1,173 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp423190ejb;
-        Thu, 2 Feb 2023 06:32:03 -0800 (PST)
-X-Received: by 2002:a05:6000:68d:b0:248:ab8a:5144 with SMTP id bo13-20020a056000068d00b00248ab8a5144mr5952334wrb.63.1675348323413;
-        Thu, 02 Feb 2023 06:32:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675348323; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp497992ejb;
+        Thu, 2 Feb 2023 07:52:30 -0800 (PST)
+X-Google-Smtp-Source: AK7set+9AWIdJ9eukIUbXQqRAlMIkoRaoKPc34gCDS3R8IhCYlif4B/huYMvANjdQG3h9UnsNDQC
+X-Received: by 2002:a0c:ac47:0:b0:537:7522:93aa with SMTP id m7-20020a0cac47000000b00537752293aamr3603073qvb.26.1675353150571;
+        Thu, 02 Feb 2023 07:52:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675353150; cv=none;
         d=google.com; s=arc-20160816;
-        b=zYmuNj6laOqI3kwpG0thaFYg41PC28PPTmGHzB+9O47/QINUskbp6bhMdVHAh/ypP2
-         cftlT97nCRpfL6EBTyp5BUaCA+Tho/vRgwsrQqdGClI0Cstp7h//KoKPenQxt0S7MZbs
-         2IK0GhJfrOcI4rlTbmiSUx0vGpYubuQxj9s1Q59du6Uv98a9eKERZal5chHAVN430hOz
-         LfqkEdo87JF6zG3pgC3VxfF6vVDMwSio5siZbs1SkVY68hNEVwJHUyMBmivgq9AjdwfW
-         aMnGOLJ9i5xDIx/6FYyaiik95/uzl/PNS8PuW2v7rkCaBVt2Jk6BdecKmVZjKXVrb7IL
-         hvAA==
+        b=QEpe+jon9gOT+ppMGOGQq2/rS0lb/LYVzKs5G4Caij94ZigJxPivruQBXiSQiZz5X/
+         teo9XQvIf+PvbgG2u9RLCGMA8off5jhKO7Mgh8EXs6Np5/tmpKhpUZfVNrUb8BM312pE
+         RNkfKFCP6OIiZwEZoLmWPq08f1rNb+lXf/Z9a9/Rs+klr+Jb0wrxyEa89bex4JYqAGhN
+         Ek8RKqRoTS7FbCkkZKRWdJy0FjforbqDWT/VzKAofacORA3BW8XyVuGnvZqVW84B46CE
+         FHhrJkjKlMFTpbT4JAjQrDSm3Y0dKclQ6mEJq2W2ftxKBN2f0ierDxpvgLDEGoyeuePH
+         N+zA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:dkim-signature;
-        bh=I6dyQOgZukQ54QDK6aIe7WXm73Yx6J7f4p/XUgBjaiQ=;
-        b=Fb8PHGnhLAPD5UwxCDbrF9W+/T2hNGGVlba5SZBeqKGv6vVqfmOMYVvBdfY6bFC0rm
-         J0p4Jya2AVIvnW/oFbqGajlmo/bSdHyE6xqOUiwFRAVIIlXvTvZqvNosMh9yLfw0/nmL
-         mmdRzFXrDx0LIXqJqJNL6HAjSibN9kZaMxHIwdZxg/DpcdGrllOptk/38zL8xfgqfLVK
-         elr/vrtsJPz5kdd0SNDqiTYuGmpf9l5lhBWnox7NGhQp8Rl177xtTg3gVqvF2qDAV2h/
-         NewyFhUGNdBW1sgZnELzghotkhpDAy1NQrPwBRmwc6ynCXaOCrPLmAgr9L0AOh7vKDSJ
-         ddag==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=jSm8P5WWAKB01RwMt6V/7iA/kag/7EPbTGfrPjaPb8o=;
+        b=lEPqTxoxdlx++CB96FXPxyVdqDVcxWnL5rbVhN4EJTAxDh0B5jUSNMMgm+3bkWN/XY
+         K85mL4iHPpl4qi9aNqPnkMBtplEYQ6/LvBDhy5YzQprczbIBgL/PHrcJodKfZzZQof/d
+         W4KdbX+TJ7gysaYIps9l/h/DtqXklGIPKl6P/8sbW+ec9GfXBSd/McKubnSDzJwwFmoU
+         xYQ3Grjl5tcc6VaGbx8xhQNzRhsR+OfT13ltH9h9ZpS2qifBOo06mTW23NW4fadGxVgA
+         WuaXXRDwDOCsMSe/ty716++0PmCguA49jogGOFkzKmnLrSJqRKrqUjeFYS2zxO2hA6gG
+         LRxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gYEzfD17;
-       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <xadimgnik@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l10-20020adfc78a000000b002bdfcf43592sor3552382wrg.10.2023.02.02.06.32.03
-        (Google Transport Security);
-        Thu, 02 Feb 2023 06:32:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h4-20020a0cf404000000b004b1ca99019asi12161116qvl.333.2023.02.02.07.52.30
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 02 Feb 2023 07:52:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gYEzfD17;
-       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=I6dyQOgZukQ54QDK6aIe7WXm73Yx6J7f4p/XUgBjaiQ=;
-        b=gYEzfD17n8nHeGoo5M7J1IahG2YNPvjdBolDnNH1dKlwLIQXMWw5VU0hROBTqSsbWm
-         Npz0Q/sEvU9Pvv6n+f33YCfowllVjSHQofRAnH4e6OvqHfY4aYJ3iY1L6yRYpwNPNbmY
-         VI6gWJfW8NBJaQYAgGel+y5tvn51iZ3Ky+OAt/opWL3Gmkwx0qezwoZKvXvva4g1nXQh
-         IimNUx1q+fZliP6fbn4t2d+dyycwzO3lQKu0VqbQMomqkgPAL+BVeDucNBeEk42SdHEd
-         ztaaXz6nwQvW7Q2rJfuhQDam4dWfsPjwyqs3RdNhBr+gZZXgE7a20uII9ldSfZgOEMm8
-         8gQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=I6dyQOgZukQ54QDK6aIe7WXm73Yx6J7f4p/XUgBjaiQ=;
-        b=7bQRHAMYI7yCiVDcM5HF1HajMdlWTPDJ3h/uOPfwcxDiIncBhVVQw8piG47eAeSmGF
-         yVr8dlXNtXFcJTSCO7+fx4ZpHKZSLuRPnAcjZvexyQSi/4i90HJ5+nJDZhSIazgYDrPP
-         qJ6bOVE2OveHCXV+K92mDTbUymfRilVHGEpsV/8R1WpBiegMt5xv/dvneBptDp2ky54O
-         qsH0Au5rhhPdvFRlTgZF3OkMT7B8O65V1/kMyOP3tAcOZGmjni/YYsIo5ECZnbMZa4Yc
-         dfIB5W5zSF005CSjW4tzz6TaeP6p9ygcy0W7qndTnCIBMF6YkebXrGE7wx/FPpz3B5Xs
-         xRBA==
-X-Gm-Message-State: AO0yUKVHbzjxniF3EAKJhYY9eyj/0Rg0owTDNwheHIL2t6UsyQCcNfMm
-	j6MsS4UkjPLQWJvWdvy6x9Q=
-X-Google-Smtp-Source: AK7set/Ded8UbNBqMS274a0klw1pXZiUb0FG0DCX0n76UwKL6fmeBdzYOvVoqjnvG9oAyaz0U8rRew==
-X-Received: by 2002:a5d:464a:0:b0:2bf:b1f0:7bab with SMTP id j10-20020a5d464a000000b002bfb1f07babmr5097051wrs.47.1675348322958;
-        Thu, 02 Feb 2023 06:32:02 -0800 (PST)
-Return-Path: <xadimgnik@gmail.com>
-Received: from [10.95.156.231] (54-240-197-230.amazon.com. [54.240.197.230])
-        by smtp.gmail.com with ESMTPSA id e28-20020a5d595c000000b002bfd8ad20a0sm16175013wri.44.2023.02.02.06.32.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Feb 2023 06:32:02 -0800 (PST)
-From: Paul Durrant <xadimgnik@gmail.com>
-X-Google-Original-From: Paul Durrant <paul@xen.org>
-Message-ID: <5b7c223a-2c96-4bd2-7150-79a56281dd57@xen.org>
-Date: Thu, 2 Feb 2023 14:31:57 +0000
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pNbsd-0007TG-On; Thu, 02 Feb 2023 10:52:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1pNbsW-0007Sr-54; Thu, 02 Feb 2023 10:52:00 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1pNbsT-0007fQ-Va; Thu, 02 Feb 2023 10:51:59 -0500
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.206])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4P73Cp1HRwz6J9gG;
+ Thu,  2 Feb 2023 23:50:46 +0800 (CST)
+Received: from localhost (10.81.211.68) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Thu, 2 Feb
+ 2023 15:51:51 +0000
+Date: Thu, 2 Feb 2023 15:51:49 +0000
+To: Markus Armbruster <armbru@redhat.com>
+CC: <qemu-devel@nongnu.org>, <richard.henderson@linaro.org>,
+ <pbonzini@redhat.com>, <kwolf@redhat.com>, <hreitz@redhat.com>,
+ <imp@bsdimp.com>, <kevans@freebsd.org>, <berrange@redhat.com>,
+ <groug@kaod.org>, <qemu_oss@crudebyte.com>, <mst@redhat.com>,
+ <philmd@linaro.org>, <peter.maydell@linaro.org>, <alistair@alistair23.me>,
+ <jasowang@redhat.com>, <kbastian@mail.uni-paderborn.de>,
+ <quintela@redhat.com>, <dgilbert@redhat.com>, <michael.roth@amd.com>,
+ <kkostiuk@redhat.com>, <tsimpson@quicinc.com>, <palmer@dabbelt.com>,
+ <bin.meng@windriver.com>, <qemu-block@nongnu.org>, <qemu-arm@nongnu.org>,
+ <qemu-riscv@nongnu.org>
+Subject: Re: [PATCH v6 07/20] hw/cxl: Clean up includes
+Message-ID: <20230202155149.00002c8a@Huawei.com>
+In-Reply-To: <20230202133830.2152150-8-armbru@redhat.com>
+References: <20230202133830.2152150-1-armbru@redhat.com>
+ <20230202133830.2152150-8-armbru@redhat.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Reply-To: paul@xen.org
-Subject: Re: [QEMU][PATCH v5 09/10] hw/arm: introduce xenpvh machine
-Content-Language: en-US
-To: Vikram Garhwal <vikram.garhwal@amd.com>, qemu-devel@nongnu.org
-Cc: xen-devel@lists.xenproject.org, stefano.stabellini@amd.com,
- alex.bennee@linaro.org, Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20230131225149.14764-1-vikram.garhwal@amd.com>
- <20230131225149.14764-10-vikram.garhwal@amd.com>
- <179d773b-2634-b52b-8836-8d8f882e1495@xen.org>
- <3e205146-5113-861d-ef39-c463257b54a1@amd.com>
-Organization: Xen Project
-In-Reply-To: <3e205146-5113-861d-ef39-c463257b54a1@amd.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 6yH2BsOD+aIR
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.81.211.68]
+X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SeWyeEYPvjBg
 
-On 01/02/2023 18:22, Vikram Garhwal wrote:
-> Hi Paul,
-> 
-> Thanks for reviewing this and other patches in series.
-> 
-> Please see my reply below.
-> 
-> On 2/1/23 12:30 AM, Paul Durrant wrote:
->> On 31/01/2023 22:51, Vikram Garhwal wrote:
->>> Add a new machine xenpvh which creates a IOREQ server to 
->>> register/connect with
->>> Xen Hypervisor.
->>>
->>
->> Is this really the right way? Is it not possible to do the Xen 
->> initialization (including ioreq server registration) off the back of 
->> the accelerator init (i.e. AccelOpsClass ops_init function), which 
->> seems like the right place to do it now that it's no longer 
->> architecture specific.
->>
-> There are few other machines using the "accel=xen" option and few of 
-> these machines aren't using IOREQ and other Xen related initialization. 
-> Example: /xenpv/ machine under /hw/xenpv/xen_machine_pv.c /and few other 
-> machines under /hw/i386/pc_piix.c//.
+On Thu,  2 Feb 2023 14:38:17 +0100
+Markus Armbruster <armbru@redhat.com> wrote:
 
-Ok. TBH the concept of 'accel=xen' is probably somewhat broken then. 
-(QEMU isn't even running the VM in question, so how can it be 
-accelerated?). Maybe abstract machine types really are the right way then.
-
-   Paul
-
-> /So, that's//why we moved the IOREQ and other common initialization 
-> parts in hw/xen/xen-hvm-common.c and call them as needed for the 
-> particular machine.
+> This commit was created with scripts/clean-includes.
 > 
-> @stefano, just checking if you want to add any other suggestion here.
+> All .c should include qemu/osdep.h first.  The script performs three
+> related cleanups:
 > 
->>   Paul
->>
+> * Ensure .c files include qemu/osdep.h first.
+> * Including it in a .h is redundant, since the .c  already includes
+>   it.  Drop such inclusions.
+> * Likewise, including headers qemu/osdep.h includes is redundant.
+>   Drop these, too.
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+> ---
+>  include/hw/cxl/cxl_component.h | 2 --
+>  include/hw/cxl/cxl_host.h      | 1 -
+>  include/hw/cxl/cxl_pci.h       | 1 -
+>  3 files changed, 4 deletions(-)
+> 
+> diff --git a/include/hw/cxl/cxl_component.h b/include/hw/cxl/cxl_component.h
+> index 5dca21e95b..692d7a5507 100644
+> --- a/include/hw/cxl/cxl_component.h
+> +++ b/include/hw/cxl/cxl_component.h
+> @@ -15,9 +15,7 @@
+>  #define CXL2_COMPONENT_CM_REGION_SIZE 0x1000
+>  #define CXL2_COMPONENT_BLOCK_SIZE 0x10000
+>  
+> -#include "qemu/compiler.h"
+>  #include "qemu/range.h"
+> -#include "qemu/typedefs.h"
+>  #include "hw/cxl/cxl_cdat.h"
+>  #include "hw/register.h"
+>  #include "qapi/error.h"
+> diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
+> index a1b662ce40..c9bc9c7c50 100644
+> --- a/include/hw/cxl/cxl_host.h
+> +++ b/include/hw/cxl/cxl_host.h
+> @@ -7,7 +7,6 @@
+>   * COPYING file in the top-level directory.
+>   */
+>  
+> -#include "qemu/osdep.h"
+>  #include "hw/cxl/cxl.h"
+>  #include "hw/boards.h"
+>  
+> diff --git a/include/hw/cxl/cxl_pci.h b/include/hw/cxl/cxl_pci.h
+> index 01e15ed5b4..407be95b9e 100644
+> --- a/include/hw/cxl/cxl_pci.h
+> +++ b/include/hw/cxl/cxl_pci.h
+> @@ -10,7 +10,6 @@
+>  #ifndef CXL_PCI_H
+>  #define CXL_PCI_H
+>  
+> -#include "qemu/compiler.h"
+>  
+>  #define CXL_VENDOR_ID 0x1e98
+>  
+

@@ -1,160 +1,137 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp384703ejb;
-        Thu, 2 Feb 2023 05:42:33 -0800 (PST)
-X-Google-Smtp-Source: AK7set/GUG0rc0AD9AHXT1EWDMeZRJSnzxtKLN9cwCkrgM7oU89NUAIz2sJQk/amEcFDnPbT3434
-X-Received: by 2002:a05:6214:5d85:b0:535:54ab:16a3 with SMTP id mf5-20020a0562145d8500b0053554ab16a3mr9341218qvb.45.1675345353193;
-        Thu, 02 Feb 2023 05:42:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675345353; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp423190ejb;
+        Thu, 2 Feb 2023 06:32:03 -0800 (PST)
+X-Received: by 2002:a05:6000:68d:b0:248:ab8a:5144 with SMTP id bo13-20020a056000068d00b00248ab8a5144mr5952334wrb.63.1675348323413;
+        Thu, 02 Feb 2023 06:32:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675348323; cv=none;
         d=google.com; s=arc-20160816;
-        b=ejxljO2Hrv86OQ6nS1fLe346stmOJmXW88OVc0pRy9Q2rRflYkacalc7GvLQh38JYb
-         n+BpGHMTwnpGrd6GShVoMUPajE3Zcoq6kqHxXs9Ke1NesOmyeTKY7c7o5uW5XPxTNWPA
-         z5ElqhrR6LId8xmrP5Z/DOPczXTjSKxaia2zFkqSAc8esE3ouYZod79wUtAKcw0NdBXQ
-         pY71YXbo5unUR65DJvHCvp7W1VGDWGbIa7kaaesQI9DXwRa6S6J4eYDzcWBFPbl1fvvg
-         CTTOxwz0iXua4W02zYWQQ1TIJZSY0hB3Tx+fR/+JrFVXD184hLgpxjwsYdHDNLGHKnw1
-         j1ug==
+        b=zYmuNj6laOqI3kwpG0thaFYg41PC28PPTmGHzB+9O47/QINUskbp6bhMdVHAh/ypP2
+         cftlT97nCRpfL6EBTyp5BUaCA+Tho/vRgwsrQqdGClI0Cstp7h//KoKPenQxt0S7MZbs
+         2IK0GhJfrOcI4rlTbmiSUx0vGpYubuQxj9s1Q59du6Uv98a9eKERZal5chHAVN430hOz
+         LfqkEdo87JF6zG3pgC3VxfF6vVDMwSio5siZbs1SkVY68hNEVwJHUyMBmivgq9AjdwfW
+         aMnGOLJ9i5xDIx/6FYyaiik95/uzl/PNS8PuW2v7rkCaBVt2Jk6BdecKmVZjKXVrb7IL
+         hvAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=uVQB9lIfCWyjfJQUzFWsIj+mIMFTbPkU7f9Nz1ev2/4=;
-        b=lTLcuLoM1xGtfBUzToXWMug7000czMTa0kdjg3xQtfhWruAlCKcKawZL4j26wKvqoM
-         grOCNye1exa8CFvpvLzW4bgPtwaG7S4kxgvvNuW0OPnRqGLGBZflf8SSeWaiTptCMDmH
-         qmLOYnlWTsGZZg3BDbLVwu1osL8VFcaWpeBcyuDWJkCc3HMcuyWtd8h1LIJsm1TsSkQo
-         NVpg2XQN2e2sj7ssP6KXibFjdLv72DF3M1atvul7IY/6efB9uiX1NTz/n4SwFcLJrjNQ
-         eK84Szeqm+W/ZpWtR6933/VAjffGWfIM2xh6cYxRI9rq546lU0yl1Kkh6kNZFliB8dFg
-         yApw==
+        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:from:dkim-signature;
+        bh=I6dyQOgZukQ54QDK6aIe7WXm73Yx6J7f4p/XUgBjaiQ=;
+        b=Fb8PHGnhLAPD5UwxCDbrF9W+/T2hNGGVlba5SZBeqKGv6vVqfmOMYVvBdfY6bFC0rm
+         J0p4Jya2AVIvnW/oFbqGajlmo/bSdHyE6xqOUiwFRAVIIlXvTvZqvNosMh9yLfw0/nmL
+         mmdRzFXrDx0LIXqJqJNL6HAjSibN9kZaMxHIwdZxg/DpcdGrllOptk/38zL8xfgqfLVK
+         elr/vrtsJPz5kdd0SNDqiTYuGmpf9l5lhBWnox7NGhQp8Rl177xtTg3gVqvF2qDAV2h/
+         NewyFhUGNdBW1sgZnELzghotkhpDAy1NQrPwBRmwc6ynCXaOCrPLmAgr9L0AOh7vKDSJ
+         ddag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EYXkjtW0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q4-20020ae9dc04000000b00706ae868b19si11890241qkf.751.2023.02.02.05.42.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Feb 2023 05:42:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gYEzfD17;
+       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <xadimgnik@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l10-20020adfc78a000000b002bdfcf43592sor3552382wrg.10.2023.02.02.06.32.03
+        (Google Transport Security);
+        Thu, 02 Feb 2023 06:32:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EYXkjtW0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pNZod-00075C-MR; Thu, 02 Feb 2023 08:39:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnt-0005jO-Tn
- for qemu-arm@nongnu.org; Thu, 02 Feb 2023 08:39:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnc-0008A6-1o
- for qemu-arm@nongnu.org; Thu, 02 Feb 2023 08:39:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675345123;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uVQB9lIfCWyjfJQUzFWsIj+mIMFTbPkU7f9Nz1ev2/4=;
- b=EYXkjtW0XX4Ivp/RNopmKn0NHNjB416RFHnIx8m4RDOwkjai2zgOZF4WaulKa+X6JnFMKO
- I26ry2gUCFh+N1VBNw/tkDrlqBMvb8vtZw6mU4BIV/ZfdftipVMy4/E3nYGfm5cnj7i7RF
- sWqEOY7Y6Sa7OHhBV+tukUSECCW+9mA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-111-Uzu-YLiSOXW9_3GRRddnbQ-1; Thu, 02 Feb 2023 08:38:38 -0500
-X-MC-Unique: Uzu-YLiSOXW9_3GRRddnbQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6118583394D;
- Thu,  2 Feb 2023 13:38:33 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CEBF82166B33;
- Thu,  2 Feb 2023 13:38:31 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id B69E321E6A23; Thu,  2 Feb 2023 14:38:30 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
- hreitz@redhat.com, imp@bsdimp.com, kevans@freebsd.org, berrange@redhat.com,
- groug@kaod.org, qemu_oss@crudebyte.com, mst@redhat.com, philmd@linaro.org,
- peter.maydell@linaro.org, alistair@alistair23.me, jasowang@redhat.com,
- jonathan.cameron@huawei.com, kbastian@mail.uni-paderborn.de,
- quintela@redhat.com, dgilbert@redhat.com, michael.roth@amd.com,
- kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com,
- bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PATCH v6 04/20] scripts/clean-includes: Improve --git commit message
-Date: Thu,  2 Feb 2023 14:38:14 +0100
-Message-Id: <20230202133830.2152150-5-armbru@redhat.com>
-In-Reply-To: <20230202133830.2152150-1-armbru@redhat.com>
-References: <20230202133830.2152150-1-armbru@redhat.com>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gYEzfD17;
+       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=I6dyQOgZukQ54QDK6aIe7WXm73Yx6J7f4p/XUgBjaiQ=;
+        b=gYEzfD17n8nHeGoo5M7J1IahG2YNPvjdBolDnNH1dKlwLIQXMWw5VU0hROBTqSsbWm
+         Npz0Q/sEvU9Pvv6n+f33YCfowllVjSHQofRAnH4e6OvqHfY4aYJ3iY1L6yRYpwNPNbmY
+         VI6gWJfW8NBJaQYAgGel+y5tvn51iZ3Ky+OAt/opWL3Gmkwx0qezwoZKvXvva4g1nXQh
+         IimNUx1q+fZliP6fbn4t2d+dyycwzO3lQKu0VqbQMomqkgPAL+BVeDucNBeEk42SdHEd
+         ztaaXz6nwQvW7Q2rJfuhQDam4dWfsPjwyqs3RdNhBr+gZZXgE7a20uII9ldSfZgOEMm8
+         8gQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:from:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=I6dyQOgZukQ54QDK6aIe7WXm73Yx6J7f4p/XUgBjaiQ=;
+        b=7bQRHAMYI7yCiVDcM5HF1HajMdlWTPDJ3h/uOPfwcxDiIncBhVVQw8piG47eAeSmGF
+         yVr8dlXNtXFcJTSCO7+fx4ZpHKZSLuRPnAcjZvexyQSi/4i90HJ5+nJDZhSIazgYDrPP
+         qJ6bOVE2OveHCXV+K92mDTbUymfRilVHGEpsV/8R1WpBiegMt5xv/dvneBptDp2ky54O
+         qsH0Au5rhhPdvFRlTgZF3OkMT7B8O65V1/kMyOP3tAcOZGmjni/YYsIo5ECZnbMZa4Yc
+         dfIB5W5zSF005CSjW4tzz6TaeP6p9ygcy0W7qndTnCIBMF6YkebXrGE7wx/FPpz3B5Xs
+         xRBA==
+X-Gm-Message-State: AO0yUKVHbzjxniF3EAKJhYY9eyj/0Rg0owTDNwheHIL2t6UsyQCcNfMm
+	j6MsS4UkjPLQWJvWdvy6x9Q=
+X-Google-Smtp-Source: AK7set/Ded8UbNBqMS274a0klw1pXZiUb0FG0DCX0n76UwKL6fmeBdzYOvVoqjnvG9oAyaz0U8rRew==
+X-Received: by 2002:a5d:464a:0:b0:2bf:b1f0:7bab with SMTP id j10-20020a5d464a000000b002bfb1f07babmr5097051wrs.47.1675348322958;
+        Thu, 02 Feb 2023 06:32:02 -0800 (PST)
+Return-Path: <xadimgnik@gmail.com>
+Received: from [10.95.156.231] (54-240-197-230.amazon.com. [54.240.197.230])
+        by smtp.gmail.com with ESMTPSA id e28-20020a5d595c000000b002bfd8ad20a0sm16175013wri.44.2023.02.02.06.32.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 02 Feb 2023 06:32:02 -0800 (PST)
+From: Paul Durrant <xadimgnik@gmail.com>
+X-Google-Original-From: Paul Durrant <paul@xen.org>
+Message-ID: <5b7c223a-2c96-4bd2-7150-79a56281dd57@xen.org>
+Date: Thu, 2 Feb 2023 14:31:57 +0000
 MIME-Version: 1.0
-Content-type: text/plain
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Reply-To: paul@xen.org
+Subject: Re: [QEMU][PATCH v5 09/10] hw/arm: introduce xenpvh machine
+Content-Language: en-US
+To: Vikram Garhwal <vikram.garhwal@amd.com>, qemu-devel@nongnu.org
+Cc: xen-devel@lists.xenproject.org, stefano.stabellini@amd.com,
+ alex.bennee@linaro.org, Peter Maydell <peter.maydell@linaro.org>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20230131225149.14764-1-vikram.garhwal@amd.com>
+ <20230131225149.14764-10-vikram.garhwal@amd.com>
+ <179d773b-2634-b52b-8836-8d8f882e1495@xen.org>
+ <3e205146-5113-861d-ef39-c463257b54a1@amd.com>
+Organization: Xen Project
+In-Reply-To: <3e205146-5113-861d-ef39-c463257b54a1@amd.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +y7K8RAdGVHV
+X-TUID: 6yH2BsOD+aIR
 
-The script drops #include "qemu/osdep.h" from headers.  Mention it in
-the commit message it uses for --git.
+On 01/02/2023 18:22, Vikram Garhwal wrote:
+> Hi Paul,
+> 
+> Thanks for reviewing this and other patches in series.
+> 
+> Please see my reply below.
+> 
+> On 2/1/23 12:30 AM, Paul Durrant wrote:
+>> On 31/01/2023 22:51, Vikram Garhwal wrote:
+>>> Add a new machine xenpvh which creates a IOREQ server to 
+>>> register/connect with
+>>> Xen Hypervisor.
+>>>
+>>
+>> Is this really the right way? Is it not possible to do the Xen 
+>> initialization (including ioreq server registration) off the back of 
+>> the accelerator init (i.e. AccelOpsClass ops_init function), which 
+>> seems like the right place to do it now that it's no longer 
+>> architecture specific.
+>>
+> There are few other machines using the "accel=xen" option and few of 
+> these machines aren't using IOREQ and other Xen related initialization. 
+> Example: /xenpv/ machine under /hw/xenpv/xen_machine_pv.c /and few other 
+> machines under /hw/i386/pc_piix.c//.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
----
- scripts/clean-includes | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+Ok. TBH the concept of 'accel=xen' is probably somewhat broken then. 
+(QEMU isn't even running the VM in question, so how can it be 
+accelerated?). Maybe abstract machine types really are the right way then.
 
-diff --git a/scripts/clean-includes b/scripts/clean-includes
-index f0466a6262..58e1607a82 100755
---- a/scripts/clean-includes
-+++ b/scripts/clean-includes
-@@ -193,11 +193,17 @@ if [ "$GIT" = "yes" ]; then
-     git commit --signoff -F - <<EOF
- $GITSUBJ: Clean up includes
- 
--Clean up includes so that osdep.h is included first and headers
--which it implies are not included manually.
--
- This commit was created with scripts/clean-includes.
- 
-+All .c should include qemu/osdep.h first.  The script performs three
-+related cleanups:
-+
-+* Ensure .c files include qemu/osdep.h first.
-+* Including it in a .h is redundant, since the .c  already includes
-+  it.  Drop such inclusions.
-+* Likewise, including headers qemu/osdep.h includes is redundant.
-+  Drop these, too.
-+
- EOF
- 
- fi
--- 
-2.39.0
+   Paul
 
+> /So, that's//why we moved the IOREQ and other common initialization 
+> parts in hw/xen/xen-hvm-common.c and call them as needed for the 
+> particular machine.
+> 
+> @stefano, just checking if you want to add any other suggestion here.
+> 
+>>   Paul
+>>

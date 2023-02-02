@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp383604ejb;
-        Thu, 2 Feb 2023 05:40:40 -0800 (PST)
-X-Google-Smtp-Source: AK7set9ZNzCtPM/EKZv5roYpY0oF2j0nSLJlbKxrYupSxJUA5pjez74ZRk9ymxoTTtKwPrwjIfjO
-X-Received: by 2002:a05:622a:54f:b0:3b9:b1eb:ad38 with SMTP id m15-20020a05622a054f00b003b9b1ebad38mr11827269qtx.50.1675345240390;
-        Thu, 02 Feb 2023 05:40:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675345240; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp383616ejb;
+        Thu, 2 Feb 2023 05:40:41 -0800 (PST)
+X-Google-Smtp-Source: AK7set/qA7XyZWk/Qlefn0APH3BHLIZTss7tK17kwGAPeAiFHzzRIF9MLS7739UkaDFIWkAYqd7L
+X-Received: by 2002:ad4:42cc:0:b0:537:762a:e85d with SMTP id f12-20020ad442cc000000b00537762ae85dmr8465832qvr.42.1675345241683;
+        Thu, 02 Feb 2023 05:40:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675345241; cv=none;
         d=google.com; s=arc-20160816;
-        b=YFoR+JD2n39F5PEH2BG74oBNd395HwSf0lXCd65ilQ5AdNynUfqUs9qidI2ci8wzyL
-         3rRDfJ+lkmkg2sfTzUU2xHOO3c2ZcOMjedyWTqcM5EMzRH56yrAiRaBIGQIBDXUuYt8v
-         eVBtG6Sa6Pi4vhzqmIIF5vD6UBEzJZPUTVZJ0yzVKgqpbNwiBsw9Zu3ZpsMdGAQpruiA
-         NCI4kSQD0LsRS+ATU2rj6XePD4ESuV9ccmsPA7pL2OPCDwVPYnGAltTI6hKabjos8xpM
-         TtA8+5AVEOFRLM/1L8yQI3CQG2OdmuikJPRkr2QUWZ7vtekU++hAUwwVfFxLrjAjZdMn
-         0i1A==
+        b=ripZnEFnD+G4lCvN456y+JS/C6sRfD5XSv/ekQhClhSlDDkIXcOAMueUfnQwDHpJVV
+         oHhMTAaTya+f5+J6mgXOnAELj6WSTkoCHHHeVHQKV2HnBaoWL4g8vUQxNACoa30H4KvJ
+         YhxApiSOwZDNCK/YUZAaAq/ExLHJ3LYRX5evc57O/23egUkKz0QKVy/ocTVnpVlhcslO
+         4VmrCBgUdoCwHK4Zeq+hK2KDYjyC7dumHATZjXLE0GuqZUYsUc1pho2CFCwBhOYg+Ryn
+         n4FZ3DBA463fxNY9A6P/jJmSBIQkrzj0ndB96+sjDztzH+Bso2vpB70VsVu3Pym2QCQG
+         pt+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=4bgpb4bpASxmEcWIyxQ7LpGXNyGvsKJ7HrcENKOYhp0=;
-        b=Wh0LMOfQ/n4DAdrTDNv/wVQo6P+oBAiLugOaq2N7UoIlWv6Fa8jagzA4Vl1BAb1ZYG
-         5vOEA4WOM0x518TJzvDjDMiDOjEfGOP7sDNEkPb82+MFXiepFvJFqvLYYmdSl/9ncgy7
-         pEg+msXg8xHpsFVIIgxdw+VxURzjwP8gHOslc7ObxSDYunzvxBZZBOhePufZjPOpQFFM
-         1gtlcOa7mfruKTVkNmGPdmtnXQneeYrc82t55wGi6sZjj9kp1QkARvQqvN8DGTH7EKuO
-         PXrYRNY9lN1cxLDQ5HLS7Pla3zIxM/zovnFTf2I3p3vN6MoHR0HAcwsCGW180j+8Ws03
-         x6gg==
+        bh=XwzEO3ZQawUyZo8ixZ4rxULzkUrAMNz/Pht7lQz55io=;
+        b=QdIBwOjFgU0uvWiZLeX/aESc3hMt7l/dC2XnDC6TF9EQJJBfJ+QWXGBS3k1ZTHrhff
+         vlYGkJyHGSKxOtFP981Yrj6YRwRXNBSiLsxnqtgKAz4YZeudEUBrE/n6QgpFN5mqX0Lj
+         BndZRv1uIETdo4WxJt1CZLCR0Ejkl9XyIUyh4ApfcjAW7AcYdiK6ZQjCNzrPskjxhI38
+         abyyLJE6QnnZf7jHbPwgqcTcuMoPJW23h9ugRW4uD1Oq3vd7SVvRBSC/r7q7I99HGMsU
+         xowDpqB6nbx/YLHQCy3aWuiWo3ZAbrArq3OWEOXBHsel0//B2bwZt+aFN0j4+53cWkCe
+         lZAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e+32WjIx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WIrLGFJ4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7-20020ac87f47000000b003a5630d6ff4si12352135qtk.274.2023.02.02.05.40.40
+        by mx.google.com with ESMTPS id bn47-20020a05620a2aef00b0071b2303a52csi8949117qkb.752.2023.02.02.05.40.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Feb 2023 05:40:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Feb 2023 05:40:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e+32WjIx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WIrLGFJ4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pNZoH-0006Sd-AR; Thu, 02 Feb 2023 08:39:31 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pNZoF-0006Jb-6M; Thu, 02 Feb 2023 08:39:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnu-0005ka-M6
- for qemu-arm@nongnu.org; Thu, 02 Feb 2023 08:39:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnq-0005da-6D
+ for qemu-devel@nongnu.org; Thu, 02 Feb 2023 08:39:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnc-00089f-3s
- for qemu-arm@nongnu.org; Thu, 02 Feb 2023 08:39:06 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnb-00088q-Mr
+ for qemu-devel@nongnu.org; Thu, 02 Feb 2023 08:39:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675345123;
+ s=mimecast20190719; t=1675345122;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4bgpb4bpASxmEcWIyxQ7LpGXNyGvsKJ7HrcENKOYhp0=;
- b=e+32WjIxT0mSQM3CZs7aJ8iQw210o0gd6feeSlcGj2pRqplA0ZPKJ/qI1ek+iS6CCBhM24
- 9oFlLCVo7Vkqf+2pPSKuGb3ThsKMlpMQHCdY7n+3GI73rjua5DnOdbCKHkcE9e7aryNpqx
- KtgErj/knowQ7yKVnbNZNI+AbFhuePQ=
+ bh=XwzEO3ZQawUyZo8ixZ4rxULzkUrAMNz/Pht7lQz55io=;
+ b=WIrLGFJ4BwpUlLK5nufFRvrXPEqmH70h5zmSAbQyJEdaRo55AgrR4AHeN8dug2Li2k/PYb
+ HTMwHvSpcKpb4/uY+CSJXuEmEMynOjpDoRGtnr2N0hTJNa8E8mZ+pQjXawYibdMa41AKIZ
+ lRFZD20KaquU2RgkPCEpP4q/jKcmHLY=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-151-24yng0eVPYqeUANnERPgNA-1; Thu, 02 Feb 2023 08:38:39 -0500
-X-MC-Unique: 24yng0eVPYqeUANnERPgNA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
+ us-mta-448-P8aHkW4BPUyatzySdDJttQ-1; Thu, 02 Feb 2023 08:38:38 -0500
+X-MC-Unique: P8aHkW4BPUyatzySdDJttQ-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 632DE823DE9;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 62366102F1ED;
  Thu,  2 Feb 2023 13:38:35 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3CD1A2166B33;
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 39B0F492C3E;
  Thu,  2 Feb 2023 13:38:35 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id DA95B21E6916; Thu,  2 Feb 2023 14:38:30 +0100 (CET)
+ id E1DB721E691B; Thu,  2 Feb 2023 14:38:30 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
@@ -86,17 +86,17 @@ Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
  quintela@redhat.com, dgilbert@redhat.com, michael.roth@amd.com,
  kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com,
  bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, Eric Blake <eblake@redhat.com>
-Subject: [PATCH v6 15/20] block: Clean up includes
-Date: Thu,  2 Feb 2023 14:38:25 +0100
-Message-Id: <20230202133830.2152150-16-armbru@redhat.com>
+ qemu-riscv@nongnu.org
+Subject: [PATCH v6 17/20] Fix non-first inclusions of qemu/osdep.h
+Date: Thu,  2 Feb 2023 14:38:27 +0100
+Message-Id: <20230202133830.2152150-18-armbru@redhat.com>
 In-Reply-To: <20230202133830.2152150-1-armbru@redhat.com>
 References: <20230202133830.2152150-1-armbru@redhat.com>
 MIME-Version: 1.0
-Content-type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -106,78 +106,119 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UzJk1vrvQw6r
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IDBSy/uq+2n8
 
 This commit was created with scripts/clean-includes.
 
-All .c should include qemu/osdep.h first.  The script performs three
-related cleanups:
-
-* Ensure .c files include qemu/osdep.h first.
-* Including it in a .h is redundant, since the .c  already includes
-  it.  Drop such inclusions.
-* Likewise, including headers qemu/osdep.h includes is redundant.
-  Drop these, too.
-
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 ---
- include/block/graph-lock.h      | 1 -
- include/block/write-threshold.h | 2 --
- block/qapi.c                    | 1 -
- 3 files changed, 4 deletions(-)
+ audio/sndioaudio.c       |  2 +-
+ backends/hostmem-epc.c   |  2 +-
+ block/export/vduse-blk.c |  2 +-
+ hw/hyperv/syndbg.c       |  2 +-
+ util/async-teardown.c    | 12 ++++--------
+ 5 files changed, 8 insertions(+), 12 deletions(-)
 
-diff --git a/include/block/graph-lock.h b/include/block/graph-lock.h
-index 3ab924d5e2..18cc14de22 100644
---- a/include/block/graph-lock.h
-+++ b/include/block/graph-lock.h
-@@ -20,7 +20,6 @@
- #ifndef GRAPH_LOCK_H
- #define GRAPH_LOCK_H
+diff --git a/audio/sndioaudio.c b/audio/sndioaudio.c
+index 632b0e3825..3fde01fdbd 100644
+--- a/audio/sndioaudio.c
++++ b/audio/sndioaudio.c
+@@ -14,9 +14,9 @@
+  * to recording, which is what guest systems expect.
+  */
+ 
++#include "qemu/osdep.h"
+ #include <poll.h>
+ #include <sndio.h>
+-#include "qemu/osdep.h"
+ #include "qemu/main-loop.h"
+ #include "audio.h"
+ #include "trace.h"
+diff --git a/backends/hostmem-epc.c b/backends/hostmem-epc.c
+index 037292d267..4e162d6789 100644
+--- a/backends/hostmem-epc.c
++++ b/backends/hostmem-epc.c
+@@ -9,9 +9,9 @@
+  * This work is licensed under the terms of the GNU GPL, version 2 or later.
+  * See the COPYING file in the top-level directory.
+  */
+-#include <sys/ioctl.h>
+ 
+ #include "qemu/osdep.h"
++#include <sys/ioctl.h>
+ #include "qom/object_interfaces.h"
+ #include "qapi/error.h"
+ #include "sysemu/hostmem.h"
+diff --git a/block/export/vduse-blk.c b/block/export/vduse-blk.c
+index 350d6fdaf0..f7ae44e3ce 100644
+--- a/block/export/vduse-blk.c
++++ b/block/export/vduse-blk.c
+@@ -10,9 +10,9 @@
+  * later.  See the COPYING file in the top-level directory.
+  */
+ 
++#include "qemu/osdep.h"
+ #include <sys/eventfd.h>
  
 -#include "qemu/osdep.h"
- #include "qemu/clang-tsa.h"
+ #include "qapi/error.h"
+ #include "block/export.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/hyperv/syndbg.c b/hw/hyperv/syndbg.c
+index 16d04cfdc6..94fe1b534b 100644
+--- a/hw/hyperv/syndbg.c
++++ b/hw/hyperv/syndbg.c
+@@ -5,8 +5,8 @@
+  * See the COPYING file in the top-level directory.
+  */
  
- /**
-diff --git a/include/block/write-threshold.h b/include/block/write-threshold.h
-index f50f923e7e..63d1583887 100644
---- a/include/block/write-threshold.h
-+++ b/include/block/write-threshold.h
-@@ -13,8 +13,6 @@
- #ifndef BLOCK_WRITE_THRESHOLD_H
- #define BLOCK_WRITE_THRESHOLD_H
- 
--#include "qemu/typedefs.h"
--
- /*
-  * bdrv_write_threshold_set:
+-#include "qemu/ctype.h"
+ #include "qemu/osdep.h"
++#include "qemu/ctype.h"
+ #include "qemu/error-report.h"
+ #include "qemu/main-loop.h"
+ #include "qemu/sockets.h"
+diff --git a/util/async-teardown.c b/util/async-teardown.c
+index 62bfce1b3c..62cdeb0f20 100644
+--- a/util/async-teardown.c
++++ b/util/async-teardown.c
+@@ -10,16 +10,12 @@
+  * option) any later version.  See the COPYING file in the top-level directory.
   *
-diff --git a/block/qapi.c b/block/qapi.c
-index 9b4da12966..4f8df48cf4 100644
---- a/block/qapi.c
-+++ b/block/qapi.c
-@@ -40,7 +40,6 @@
- #include "qapi/qmp/qstring.h"
- #include "qemu/qemu-print.h"
- #include "sysemu/block-backend.h"
--#include "qemu/cutils.h"
+  */
+-#include <stdlib.h>
+-#include <stdio.h>
+-#include <sys/types.h>
+-#include <dirent.h>
+-#include <sys/prctl.h>
+-#include <signal.h>
+-#include <sched.h>
+-#include <unistd.h>
  
- BlockDeviceInfo *bdrv_block_device_info(BlockBackend *blk,
-                                         BlockDriverState *bs,
+ #include "qemu/osdep.h"
++#include <dirent.h>
++#include <sys/prctl.h>
++#include <sched.h>
++
+ #include "qemu/async-teardown.h"
+ 
+ #ifdef _SC_THREAD_STACK_MIN
 -- 
 2.39.0
 

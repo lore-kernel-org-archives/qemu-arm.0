@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp383616ejb;
-        Thu, 2 Feb 2023 05:40:41 -0800 (PST)
-X-Google-Smtp-Source: AK7set/qA7XyZWk/Qlefn0APH3BHLIZTss7tK17kwGAPeAiFHzzRIF9MLS7739UkaDFIWkAYqd7L
-X-Received: by 2002:ad4:42cc:0:b0:537:762a:e85d with SMTP id f12-20020ad442cc000000b00537762ae85dmr8465832qvr.42.1675345241683;
-        Thu, 02 Feb 2023 05:40:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675345241; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp383622ejb;
+        Thu, 2 Feb 2023 05:40:42 -0800 (PST)
+X-Google-Smtp-Source: AK7set/vULRwGScUV0xA+P6w5r9+IUELrVUo8VuOT+AQZCbSsIDuwACLtkWXSQorGyLF4rE0K2mX
+X-Received: by 2002:ac8:5e4f:0:b0:3b9:b761:b0a0 with SMTP id i15-20020ac85e4f000000b003b9b761b0a0mr12533636qtx.12.1675345242481;
+        Thu, 02 Feb 2023 05:40:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675345242; cv=none;
         d=google.com; s=arc-20160816;
-        b=ripZnEFnD+G4lCvN456y+JS/C6sRfD5XSv/ekQhClhSlDDkIXcOAMueUfnQwDHpJVV
-         oHhMTAaTya+f5+J6mgXOnAELj6WSTkoCHHHeVHQKV2HnBaoWL4g8vUQxNACoa30H4KvJ
-         YhxApiSOwZDNCK/YUZAaAq/ExLHJ3LYRX5evc57O/23egUkKz0QKVy/ocTVnpVlhcslO
-         4VmrCBgUdoCwHK4Zeq+hK2KDYjyC7dumHATZjXLE0GuqZUYsUc1pho2CFCwBhOYg+Ryn
-         n4FZ3DBA463fxNY9A6P/jJmSBIQkrzj0ndB96+sjDztzH+Bso2vpB70VsVu3Pym2QCQG
-         pt+w==
+        b=G8ctd7w08MBCDhmA3hUHFmtavdfYgq/ZZ8vn5nl7/9WcaTB0wcVmNK/FLCidJP2Yj6
+         28SFUQ4Zc8cJex0Uw9DYpOngkEhJQolpS1p1JtD55CZHRqwhFHLvoF++mLHTIEPENZgD
+         nG6jblRqUqsNxi3Vb9tMZ3h4e5ns4cZQe9ZTR+64MrDk0WHwvhksry5rF6nSEZ9z390a
+         o6+Ij6omMH0djs5IwcRrZg61Jgb2VhRBjztrIi9Pg2iwSjR7iOKcPPXqpHE1BO6zbLWN
+         L9ey0W8OkW6w9eezWLo+OQj33GGXpZkGLxwkEL6EjmAp9Ea3hu/Nld2rGnp939p94O5q
+         XLTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=XwzEO3ZQawUyZo8ixZ4rxULzkUrAMNz/Pht7lQz55io=;
-        b=QdIBwOjFgU0uvWiZLeX/aESc3hMt7l/dC2XnDC6TF9EQJJBfJ+QWXGBS3k1ZTHrhff
-         vlYGkJyHGSKxOtFP981Yrj6YRwRXNBSiLsxnqtgKAz4YZeudEUBrE/n6QgpFN5mqX0Lj
-         BndZRv1uIETdo4WxJt1CZLCR0Ejkl9XyIUyh4ApfcjAW7AcYdiK6ZQjCNzrPskjxhI38
-         abyyLJE6QnnZf7jHbPwgqcTcuMoPJW23h9ugRW4uD1Oq3vd7SVvRBSC/r7q7I99HGMsU
-         xowDpqB6nbx/YLHQCy3aWuiWo3ZAbrArq3OWEOXBHsel0//B2bwZt+aFN0j4+53cWkCe
-         lZAg==
+        bh=KGzGg0p8isHX9McZYkV6LVe0QVsHvHzU5W95vnnY9Ao=;
+        b=tV70ModoiT0i3Xqum2rwU7lZUz+S4lGfirwQUTERvcRpbzoVn2Y2gR6qT5xRBInzJ2
+         Ho8s++DA7f/cJ5lKn66BIymT1RInH0uirV5iErLXWjJeFNzX6+a1ACop9qZl7/cd+DMA
+         EKLgpNlcK1kUwgVmhl2nhfRX7jtBokbwnCmalbI5ZDYVn7vLnwTk9yDqY8xLyYehjPkI
+         QTWP/Hn6RiuELphdOdH9ntqbZts/nu8u7xcmB6v7V/Mu/CeqgvOEMTu+oDWgtL32B/je
+         2YzrS0OJPLyqm1B1mXDa0f1lGz+jXXP3rqs1bOBMs69/tSFEMgP6Ti70Jz+skZ60E1FE
+         GkIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WIrLGFJ4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b4GpokH1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bn47-20020a05620a2aef00b0071b2303a52csi8949117qkb.752.2023.02.02.05.40.41
+        by mx.google.com with ESMTPS id o12-20020ac87c4c000000b003ab73b7bb03si13127261qtv.624.2023.02.02.05.40.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Feb 2023 05:40:41 -0800 (PST)
+        Thu, 02 Feb 2023 05:40:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WIrLGFJ4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b4GpokH1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pNZoF-0006Jb-6M; Thu, 02 Feb 2023 08:39:27 -0500
+	id 1pNZoG-0006RS-Ux; Thu, 02 Feb 2023 08:39:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnq-0005da-6D
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnr-0005dx-3G
  for qemu-devel@nongnu.org; Thu, 02 Feb 2023 08:39:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnb-00088q-Mr
- for qemu-devel@nongnu.org; Thu, 02 Feb 2023 08:39:01 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNZnb-00089I-Rb
+ for qemu-devel@nongnu.org; Thu, 02 Feb 2023 08:39:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1675345122;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XwzEO3ZQawUyZo8ixZ4rxULzkUrAMNz/Pht7lQz55io=;
- b=WIrLGFJ4BwpUlLK5nufFRvrXPEqmH70h5zmSAbQyJEdaRo55AgrR4AHeN8dug2Li2k/PYb
- HTMwHvSpcKpb4/uY+CSJXuEmEMynOjpDoRGtnr2N0hTJNa8E8mZ+pQjXawYibdMa41AKIZ
- lRFZD20KaquU2RgkPCEpP4q/jKcmHLY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=KGzGg0p8isHX9McZYkV6LVe0QVsHvHzU5W95vnnY9Ao=;
+ b=b4GpokH1dpdLQ9IwqQ+YCmbosyLbmKSyWap5VfmdXohgW42MtpsT78IKcY2D8zISmbzICm
+ 8HBCcWobiOAsjgbQu4dZBhMvl+w/vr1s0a99ChwhJf+s7uP9ZfkZRctgoSJTuPB/kWgyoe
+ IlY0PujNF6dK6WOibjAPRW/hpVDGXxE=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-448-P8aHkW4BPUyatzySdDJttQ-1; Thu, 02 Feb 2023 08:38:38 -0500
-X-MC-Unique: P8aHkW4BPUyatzySdDJttQ-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ us-mta-377-8O3l02QLPeSq929Cx4Syhw-1; Thu, 02 Feb 2023 08:38:37 -0500
+X-MC-Unique: 8O3l02QLPeSq929Cx4Syhw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 62366102F1ED;
- Thu,  2 Feb 2023 13:38:35 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 802DB1C05EC0;
+ Thu,  2 Feb 2023 13:38:34 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 39B0F492C3E;
- Thu,  2 Feb 2023 13:38:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3465518EC4;
+ Thu,  2 Feb 2023 13:38:34 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id E1DB721E691B; Thu,  2 Feb 2023 14:38:30 +0100 (CET)
+ id C337221E6A28; Thu,  2 Feb 2023 14:38:30 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
@@ -87,16 +87,16 @@ Cc: richard.henderson@linaro.org, pbonzini@redhat.com, kwolf@redhat.com,
  kkostiuk@redhat.com, tsimpson@quicinc.com, palmer@dabbelt.com,
  bin.meng@windriver.com, qemu-block@nongnu.org, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org
-Subject: [PATCH v6 17/20] Fix non-first inclusions of qemu/osdep.h
-Date: Thu,  2 Feb 2023 14:38:27 +0100
-Message-Id: <20230202133830.2152150-18-armbru@redhat.com>
+Subject: [PATCH v6 08/20] hw/input: Clean up includes
+Date: Thu,  2 Feb 2023 14:38:18 +0100
+Message-Id: <20230202133830.2152150-9-armbru@redhat.com>
 In-Reply-To: <20230202133830.2152150-1-armbru@redhat.com>
 References: <20230202133830.2152150-1-armbru@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -119,106 +119,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IDBSy/uq+2n8
+X-TUID: a9HQrZ+eIn/T
 
 This commit was created with scripts/clean-includes.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
----
- audio/sndioaudio.c       |  2 +-
- backends/hostmem-epc.c   |  2 +-
- block/export/vduse-blk.c |  2 +-
- hw/hyperv/syndbg.c       |  2 +-
- util/async-teardown.c    | 12 ++++--------
- 5 files changed, 8 insertions(+), 12 deletions(-)
+All .c should include qemu/osdep.h first.  The script performs three
+related cleanups:
 
-diff --git a/audio/sndioaudio.c b/audio/sndioaudio.c
-index 632b0e3825..3fde01fdbd 100644
---- a/audio/sndioaudio.c
-+++ b/audio/sndioaudio.c
-@@ -14,9 +14,9 @@
-  * to recording, which is what guest systems expect.
-  */
- 
-+#include "qemu/osdep.h"
- #include <poll.h>
- #include <sndio.h>
--#include "qemu/osdep.h"
- #include "qemu/main-loop.h"
- #include "audio.h"
- #include "trace.h"
-diff --git a/backends/hostmem-epc.c b/backends/hostmem-epc.c
-index 037292d267..4e162d6789 100644
---- a/backends/hostmem-epc.c
-+++ b/backends/hostmem-epc.c
-@@ -9,9 +9,9 @@
-  * This work is licensed under the terms of the GNU GPL, version 2 or later.
-  * See the COPYING file in the top-level directory.
-  */
--#include <sys/ioctl.h>
- 
- #include "qemu/osdep.h"
-+#include <sys/ioctl.h>
- #include "qom/object_interfaces.h"
- #include "qapi/error.h"
- #include "sysemu/hostmem.h"
-diff --git a/block/export/vduse-blk.c b/block/export/vduse-blk.c
-index 350d6fdaf0..f7ae44e3ce 100644
---- a/block/export/vduse-blk.c
-+++ b/block/export/vduse-blk.c
-@@ -10,9 +10,9 @@
-  * later.  See the COPYING file in the top-level directory.
-  */
- 
-+#include "qemu/osdep.h"
- #include <sys/eventfd.h>
+* Ensure .c files include qemu/osdep.h first.
+* Including it in a .h is redundant, since the .c  already includes
+  it.  Drop such inclusions.
+* Likewise, including headers qemu/osdep.h includes is redundant.
+  Drop these, too.
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ include/hw/input/pl050.h | 1 -
+ hw/input/tsc210x.c       | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/include/hw/input/pl050.h b/include/hw/input/pl050.h
+index 89ec4fafc9..4cb8985f31 100644
+--- a/include/hw/input/pl050.h
++++ b/include/hw/input/pl050.h
+@@ -10,7 +10,6 @@
+ #ifndef HW_PL050_H
+ #define HW_PL050_H
  
 -#include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "block/export.h"
- #include "qemu/error-report.h"
-diff --git a/hw/hyperv/syndbg.c b/hw/hyperv/syndbg.c
-index 16d04cfdc6..94fe1b534b 100644
---- a/hw/hyperv/syndbg.c
-+++ b/hw/hyperv/syndbg.c
-@@ -5,8 +5,8 @@
-  * See the COPYING file in the top-level directory.
+ #include "hw/sysbus.h"
+ #include "migration/vmstate.h"
+ #include "hw/input/ps2.h"
+diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
+index fdd5ff87d9..7eae5989f7 100644
+--- a/hw/input/tsc210x.c
++++ b/hw/input/tsc210x.c
+@@ -20,7 +20,6 @@
   */
  
--#include "qemu/ctype.h"
  #include "qemu/osdep.h"
-+#include "qemu/ctype.h"
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
- #include "qemu/sockets.h"
-diff --git a/util/async-teardown.c b/util/async-teardown.c
-index 62bfce1b3c..62cdeb0f20 100644
---- a/util/async-teardown.c
-+++ b/util/async-teardown.c
-@@ -10,16 +10,12 @@
-  * option) any later version.  See the COPYING file in the top-level directory.
-  *
-  */
--#include <stdlib.h>
--#include <stdio.h>
--#include <sys/types.h>
--#include <dirent.h>
--#include <sys/prctl.h>
--#include <signal.h>
--#include <sched.h>
--#include <unistd.h>
- 
- #include "qemu/osdep.h"
-+#include <dirent.h>
-+#include <sys/prctl.h>
-+#include <sched.h>
-+
- #include "qemu/async-teardown.h"
- 
- #ifdef _SC_THREAD_STACK_MIN
+-#include "qemu/log.h"
+ #include "hw/hw.h"
+ #include "audio/audio.h"
+ #include "qemu/timer.h"
 -- 
 2.39.0
 

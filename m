@@ -1,107 +1,82 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1340346ejb;
-        Fri, 3 Feb 2023 04:34:23 -0800 (PST)
-X-Google-Smtp-Source: AK7set+whmpuBG7GY513dSYS+le+vmqod9rlynfLOCeSm7M1pWMfjCq3kqumQdurING5lCMffsiq
-X-Received: by 2002:ac8:590b:0:b0:3b9:b6c8:6d7a with SMTP id 11-20020ac8590b000000b003b9b6c86d7amr18317729qty.29.1675427662963;
-        Fri, 03 Feb 2023 04:34:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675427662; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1356082ejb;
+        Fri, 3 Feb 2023 04:53:12 -0800 (PST)
+X-Google-Smtp-Source: AK7set+OWEECA7uyLg+bngz+l//Od2JcmOG6vipqT95mn4KjBXcFVsq/FOqUcft4w8kKitfMOwfL
+X-Received: by 2002:a05:6214:19e6:b0:538:bd6f:9eff with SMTP id q6-20020a05621419e600b00538bd6f9effmr19539687qvc.0.1675428792013;
+        Fri, 03 Feb 2023 04:53:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675428792; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nqr6HBWeEsRCk8l1uCo0EWMXIDSf2jiZI+HOf4+6R31hlJnxCqPrbC7hz3/cmucJcC
-         mC1vpfQJzgptjq8gz1qE4pnvmVVbW/LrUbAv5ej1uUAf/tyUY0jfEc4NMGx20JeTgB2k
-         amsXnJkhEN3N6b+3YAMiEgOKOVHPp1R5UMMwEN5gMwfFpJsg5zzFh/g5uqYJ7YAF2vVj
-         MKMDKl4HgDrs8o3gxTGn8JuiwuUnt+8YpBDjYLNcph6K7MX/52stYPq7Ydqqf3pGBeZr
-         JXF6sZpBBXideYE9YaC31TcbfUgEtctm51d4gESE+Zo1cz1mRdtOPAlrgjSmK+eSjpoC
-         f5XA==
+        b=AuytSfccsd79x19T+DBed7wMWhTOr78By+tjxArXBNrRQOgi53VU+Fktm8TzaB1dWD
+         GecoHKBGoQH8jUK28D2H38Vv6i76IOHQQKSm+zVDa0bvenBC1TdHh2C2hZrQOfOKAWMx
+         48sWB7x77IDb1qgBI89zNE3rIAutZL3NDfJjRMce95K9TZgHLpBIWQOr9w61dQTLXTqP
+         1j/A4Njrk2zMU6j2WdPV/srfIk4ony+MsWezvm+2bqLfYY6XwbWISiFEAx3wm4itfQl5
+         WyYqF4nMfDZkUdPBCBTJihVdFegnrFu3RNt9LMMovTN3REDGZVqWtc99J9NSFid+GodV
+         0jxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=up0ne8COrAE42tEysraXT2ttxJdIz31866hjTGa8KpA=;
-        b=e+48ixThXBql5cPl6fWEFhn1bZAfrosMthBqUldPL3jJ7HeBGb8v1uUkHJup9fSmgE
-         U4SJPD9608fYZVpGs4z7DqjAxOEV0tVS+4piKSKyAlN3dvi79Vr3fv9M/xxs5/BtFI7j
-         R2fb6C6ZaV7Frqjm/e1/U6zLkG0nXhiqljDM6S2gnJ2R0MZpR+E1nCdf9v57DvCb2uwH
-         Qg1FRDThsf6C4RC6lSgEE8UBKMG4/UDUOrxVVggw0yHFU+j7u8YlIZJxlmH42c3Gk/Am
-         KV+JkR2julIvkav4idjCyVMf+Gw5i8saGfRyRntvhxzMK6a9wjpod66aPLC+g5yC/VJ1
-         +E1A==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=g8AVg8QW4n3mWaEq+7f8vIIg7a81Rw0UEEY+AxdXdUg=;
+        b=b8n84IujFvh/SHFxLuyg0Ps5cfvpSVUO8ZfeSttCjp5UghxDqaERjbSI5Y11b0ULWT
+         CmR6v9d4QWDtcnOaSeuJZ+EpzfuUoiEyfW+r5I+cAia1Xf/kCLBUfSeP2Mfqe695ruwE
+         SDBrV0XEIkA4b8m98C9UOrrZXxtmda2qgSBeImSEzTlwKuekFWPrLeSQM9E+hkhOoA01
+         T6pyA+IbOx89l3bV4k5FgxVH2lTHLkmmhv2B+SMR1YvvQPe4J6LR31CeW/aOIY1BNHNT
+         sYI8MRUKri3HaZIwlq/OiLGyYGguxQqlHYY8l2IJyzsNOkMsZ8JkTZIxaPnvVGrJgWX2
+         wlGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OIMLUuEd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 144-20020a370a96000000b007210a2509c3si1877155qkk.4.2023.02.03.04.34.22
+        by mx.google.com with ESMTPS id ns14-20020a056214380e00b0053544d2658fsi1724999qvb.559.2023.02.03.04.53.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 04:34:22 -0800 (PST)
+        Fri, 03 Feb 2023 04:53:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OIMLUuEd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pNvGI-0001Zu-7i; Fri, 03 Feb 2023 07:33:50 -0500
+	id 1pNvYw-0008KB-2q; Fri, 03 Feb 2023 07:53:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNvGB-0001Tj-Jq
- for qemu-arm@nongnu.org; Fri, 03 Feb 2023 07:33:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1pNvYt-0008I9-Dn; Fri, 03 Feb 2023 07:53:03 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pNvG9-0001xP-U2
- for qemu-arm@nongnu.org; Fri, 03 Feb 2023 07:33:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675427620;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=up0ne8COrAE42tEysraXT2ttxJdIz31866hjTGa8KpA=;
- b=OIMLUuEdBmLnViEzrlh8CMT5SW+dscV4dzcHaWBnvr2UC0hcpn5uje9RnNgAA+49+4Veze
- qzZypf7zRJK+Ve5wIkYozStDm13bIGiRmakhdwYPyxow10o2LQZo0/mIJeSEDeKeHadZUV
- 9zdo4Y6c9IhnRuCzPAJ3jU3A2ABJPX8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-512-Z5LFGru4PEiFb_qzw0U4OA-1; Fri, 03 Feb 2023 07:33:35 -0500
-X-MC-Unique: Z5LFGru4PEiFb_qzw0U4OA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9AD09101A521;
- Fri,  3 Feb 2023 12:33:34 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 78A9018EC5;
- Fri,  3 Feb 2023 12:33:34 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 79A1B21E6A1F; Fri,  3 Feb 2023 13:33:33 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- Eduardo Habkost <eduardo@habkost.net>,  Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH 5/9] hw/usb/hcd-ohci: Include missing 'sysbus.h' header
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1pNvYr-0008KG-3Q; Fri, 03 Feb 2023 07:53:03 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 259BF746392;
+ Fri,  3 Feb 2023 13:50:26 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id DF32C746377; Fri,  3 Feb 2023 13:50:25 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id DE1917456E3;
+ Fri,  3 Feb 2023 13:50:25 +0100 (CET)
+Date: Fri, 3 Feb 2023 13:50:25 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
+ Markus Armbruster <armbru@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: Re: [PATCH 2/9] hw/ppc/sam460ex: Correctly set MAL properties
+In-Reply-To: <20230203113650.78146-3-philmd@linaro.org>
+Message-ID: <4745a58c-c5b0-a851-e3c2-6efc43d5f944@eik.bme.hu>
 References: <20230203113650.78146-1-philmd@linaro.org>
- <20230203113650.78146-6-philmd@linaro.org>
-Date: Fri, 03 Feb 2023 13:33:33 +0100
-In-Reply-To: <20230203113650.78146-6-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 3 Feb 2023 12:36:46
- +0100")
-Message-ID: <87edr7c4iq.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ <20230203113650.78146-3-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-1090112839-1675428625=:62709"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,33 +91,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5gLHF9zVi7s/
+X-TUID: WhMbMOY6BAEn
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-> Avoid when including "hw/usb/hcd-ohci.h":
+--3866299591-1090112839-1675428625=:62709
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+
+On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
+> MAL properties are declared as uint8_t:
 >
->   hw/usb/hcd-ohci.h:100:5: error: unknown type name 'SysBusDevice'
->       SysBusDevice parent_obj;
->       ^
+>  static Property ppc4xx_mal_properties[] = {
+>      DEFINE_PROP_UINT8("txc-num", Ppc4xxMalState, txcnum, 0),
+>      DEFINE_PROP_UINT8("rxc-num", Ppc4xxMalState, rxcnum, 0),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Set the property using qdev_prop_set_uint8().
+>
+> Fixes: da116a8aab ("ppc/ppc405: QOM'ify MAL")
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+Apparently this makes no difference but MAL is also only there so the 
+firmware can program it but does nothing otherwise.
+
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+
 > ---
->  hw/usb/hcd-ohci.h | 1 +
->  1 file changed, 1 insertion(+)
+> hw/ppc/sam460ex.c | 4 ++--
+> 1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/usb/hcd-ohci.h b/hw/usb/hcd-ohci.h
-> index 11ac57058d..e5e6b434fd 100644
-> --- a/hw/usb/hcd-ohci.h
-> +++ b/hw/usb/hcd-ohci.h
-> @@ -21,6 +21,7 @@
->  #ifndef HCD_OHCI_H
->  #define HCD_OHCI_H
->=20=20
-> +#include "hw/sysbus.h"
->  #include "sysemu/dma.h"
->  #include "hw/usb.h"
->  #include "qom/object.h"
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-
+> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+> index 4a22ce3761..cf065aae0e 100644
+> --- a/hw/ppc/sam460ex.c
+> +++ b/hw/ppc/sam460ex.c
+> @@ -389,8 +389,8 @@ static void sam460ex_init(MachineState *machine)
+>
+>     /* MAL */
+>     dev = qdev_new(TYPE_PPC4xx_MAL);
+> -    qdev_prop_set_uint32(dev, "txc-num", 4);
+> -    qdev_prop_set_uint32(dev, "rxc-num", 16);
+> +    qdev_prop_set_uint8(dev, "txc-num", 4);
+> +    qdev_prop_set_uint8(dev, "rxc-num", 16);
+>     ppc4xx_dcr_realize(PPC4xx_DCR_DEVICE(dev), cpu, &error_fatal);
+>     object_unref(OBJECT(dev));
+>     sbdev = SYS_BUS_DEVICE(dev);
+>
+--3866299591-1090112839-1675428625=:62709--

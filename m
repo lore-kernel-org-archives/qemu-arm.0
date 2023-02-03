@@ -1,341 +1,154 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1644891ejb;
-        Fri, 3 Feb 2023 10:13:09 -0800 (PST)
-X-Google-Smtp-Source: AK7set8Fz1nZmfOo1BM8c47vo/hc+f40qzKaa6Ek2psqypOfOJaJ8WYZQxa4V+i16nSTE2Ato94J
-X-Received: by 2002:a05:622a:4ca:b0:3b8:68f4:31f0 with SMTP id q10-20020a05622a04ca00b003b868f431f0mr20658635qtx.41.1675447989458;
-        Fri, 03 Feb 2023 10:13:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675447989; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1675407ejb;
+        Fri, 3 Feb 2023 10:55:57 -0800 (PST)
+X-Google-Smtp-Source: AK7set/7lGembwbgqEZ9u5QJnAX8VxuArs/JkjGR9kk54/YT2AUt+atdseDdh7aTzbgJ46mT1rKa
+X-Received: by 2002:a05:622a:11d4:b0:3b9:a5d8:2c4d with SMTP id n20-20020a05622a11d400b003b9a5d82c4dmr19665241qtk.53.1675450557432;
+        Fri, 03 Feb 2023 10:55:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675450557; cv=none;
         d=google.com; s=arc-20160816;
-        b=UJuG+4DJSjvqngdL9OrnQZGtK/zlIRsP3/mo76F17ULP2cM7O5MHapz7pT2s07ceq8
-         LrEjvAfDeC48szsgtzJpl0PpYt+NODrz2XJ/cIsVokI6rM06+MIpAazNKJAmBy5vMuyF
-         rkrCZ1C25xwzUlecedNlD2c+E7Ufe6sYx2mfpYqCp6PpPloyAimHUE+4HtRIO1PWVVA/
-         0ZL8gQxLT75mH2hbyTm1wSEV70f5NiJZ0uhaUD4KzgCvWc4vlSwQwbiyOBF+O1X4Z63R
-         RnwJ801awZ7zb1/gSoGZjJB3fZoiuz7UYC6rw4WCWQSqY6GlOgca36ZAtgftupwSxiNe
-         R/bQ==
+        b=X4mYYKNOG7o2UqZVlTj4hGHh4jO25utBDousGeePmlNH3JPiqTTXLctTq+xHIMkyDR
+         CwN22qPnZsv5OkiJp03bxPlfC2pLlt5N53iGDNGwosxIP8kM2MnSoa/KDLkWjdJ6PFBL
+         a3wyLHHRVw7PqePqSxyLNRzfAC92WmMupQXh+QYrHOzQVdleiW3FWMNqzSVhOd1Cbvnn
+         du4f42QyezSboxB1mWDPWPhkny+mVIFXNGsH5qWB9QD7ahrpXA1R6J/b3IrhtliuUOK4
+         QKmqAUPKI/6klQphGzXMH1f8f+vv9yF4Tv8Yh7SkoLIboiJrBa7RxwjoO7EX114CPKjf
+         7+lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=yfuxLaxqk4mVFu2bySSXnIQtU3kYxIWtg5zFBO+Mz50=;
-        b=DCZ4o59i8MW0ojt4Pn1mJ7UchJ30P2HPi8Q7bhQxcDhe8n/3nOKlJi1WnGSnq/Ewsc
-         dY+JtyMA6S0cPkIUMp4QaWpj6k7i+Q/QDWCqP/ynztwKZWjxwb1grwggPkvI+N5HtV69
-         40e86Rxc+jod92geNJfY8qH7oPNToXG8ZEbpEHyvkNq/+q7OHI5jKKLDLB3+aKQBWuHm
-         Ki0Rmc255Z5GKLzFwuD62P7Z6Xg8tBfyPfuJSiiUQdYKqZEKl0rY7oQEBCYH+ANquCnd
-         1xcgB7HsmzBvClZ6ZO0/hNpR2ZPQMpi6a7GDSgMFpbMi2AMh+cOsixctBdXLPTp4xBiY
-         X9Rw==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=698zZ5qflWmqf+mHBCdyhQjaLyoSxVriGIegtCdtq18=;
+        b=c0Fpm8+xbwMuZJMA4fv9c5esXPqm2nbufvKQGnynHE3uowSoJv7RvSebabcIQOOdpw
+         aTvQ2+SQIBhkuTLFCuCsx46HF2xzYVJ6WosdU1izkzIkApfSRuyMj+I0gnbx0+qP5M1K
+         akkohhYqOc9qfgST2MVNS6gVPRRI2+ItZ+nMQDVczZ2oU0YT5GCfiRT2EyEgNjM5btXQ
+         AdPOTUP3mb3qQewVpvY1lh5gAqMmLRGRTKppHgq845jcyEPmF4H/uVucr0zcW9sR7Yrv
+         zlh63z67ymyjjTTkLJMaOy/6qg2cKt7GIHFpSktt9MNmsltHkuET5ujqf1PPr2R2addN
+         NJTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a2cDbtTf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d188-20020a37b4c5000000b0071eacff7528si2230007qkf.626.2023.02.03.10.13.09
+        by mx.google.com with ESMTPS id c18-20020ac85a92000000b003b86578a40csi2486188qtc.482.2023.02.03.10.55.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 10:13:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Feb 2023 10:55:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a2cDbtTf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pO0W0-0000Ji-GD; Fri, 03 Feb 2023 13:10:24 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pO1Da-0001oT-8c; Fri, 03 Feb 2023 13:55:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0Vy-0000FT-Sd
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 13:10:22 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0Vw-00008H-Ho
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 13:10:22 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- l21-20020a05600c1d1500b003dfe462b7e4so1953613wms.0
- for <qemu-devel@nongnu.org>; Fri, 03 Feb 2023 10:10:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=yfuxLaxqk4mVFu2bySSXnIQtU3kYxIWtg5zFBO+Mz50=;
- b=a2cDbtTf1yr0JSUgmzqfVrifho6NBGr2pv81vlACziRCKZCTMcADLVsZJDsq3vATV6
- klOQ2aBUa1HXDnb8ozL6nsNUcfzLYATGpd3nVVsTG5JzygjH4Dp5MVkGMv7lci2uhe+4
- bxlvmiKr7/Subg2UBF7qvFlHYLDghmwQch0p/eT/5w707ixfpZz/Aed+p9rZn7BME7iC
- e01GIBk0gIV/SN2xrETgiu51gAB/k4nQlMFPJkQad9MZLZt/zIXIUOUUHy+7SscZHlLX
- NyMH9k4cVzPi+f0HdK+Ja0CKviXmM6X4M+xWiIMwFCCDTHygdoqY/4EQvOfyQZVL89Hy
- s0NQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=yfuxLaxqk4mVFu2bySSXnIQtU3kYxIWtg5zFBO+Mz50=;
- b=TZYxfITaoQDSpdQdXXa23pANQn/GcbWNX3QzwY7xMRMmIs8VF28xW30StugOvZJqHD
- uANmjm5IaGIOt7pfichzylyLUKjHRbYw+rxSS43dSqI37EZjRDxeoiUcCepRAivTgAcI
- NlCcFmxqAc8foveEosp57zKQXdXTEjqVghAWkZw9uMWt8jL6EkVfRgURMcy87jGnBNPj
- pUDcL5wIMkxBCr5ZQcV+jBDyiaFoSHK7bljIFaX1RumUwlBYtgNZSEii+8vGrffTsTgI
- Qzdd/GsbzMKegZ89sdtWzl3DqflVA/QHPROIJKL8/0vINCWRLS0/BtNjxkMDqJSxiyHF
- DUiQ==
-X-Gm-Message-State: AO0yUKX/vHKy4qYoSWf7FVnXwrWa2DAxkqKLXy8/HhsFzoylFbBL9mR1
- ndygrT+gIAn0G8stxnO2YvG6pZTbmS6nop6K
-X-Received: by 2002:a05:600c:4fcb:b0:3dd:e38b:a12f with SMTP id
- o11-20020a05600c4fcb00b003dde38ba12fmr5088912wmq.40.1675447818832; 
- Fri, 03 Feb 2023 10:10:18 -0800 (PST)
-Received: from localhost.localdomain ([81.0.6.76])
- by smtp.gmail.com with ESMTPSA id
- u1-20020a05600c00c100b003a3442f1229sm8356415wmm.29.2023.02.03.10.10.17
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 03 Feb 2023 10:10:18 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-riscv@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>
-Subject: [RFC PATCH 12/19] hw/i386: Set QDev properties using QDev API
-Date: Fri,  3 Feb 2023 19:09:07 +0100
-Message-Id: <20230203180914.49112-13-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230203180914.49112-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1pO1DX-0001nY-4W; Fri, 03 Feb 2023 13:55:23 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1pO1DU-000406-LQ; Fri, 03 Feb 2023 13:55:22 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id E2F60746377;
+ Fri,  3 Feb 2023 19:52:48 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id A7FE7745712; Fri,  3 Feb 2023 19:52:48 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id A6B297456E3;
+ Fri,  3 Feb 2023 19:52:48 +0100 (CET)
+Date: Fri, 3 Feb 2023 19:52:48 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Markus Armbruster <armbru@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, qemu-riscv@nongnu.org
+Subject: Re: [PATCH 00/19] hw: Set QDev properties using QDev API (part
+ 1/3)
+In-Reply-To: <0fc499be-7981-6a6d-9115-3c6f320b0c04@linaro.org>
+Message-ID: <fd0b660d-344f-fcce-f499-41a6d4317aee@eik.bme.hu>
 References: <20230203180914.49112-1-philmd@linaro.org>
+ <0fc499be-7981-6a6d-9115-3c6f320b0c04@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-127882288-1675450368=:50577"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QGQsZYkFEbVa
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9GE5WsgWYoch
 
-No need to use the low-level QOM API when an object
-inherits from QDev. Directly use the QDev API to set
-its properties.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/i386/pc.c           |  8 +++-----
- hw/i386/pc_q35.c       | 25 +++++++++++--------------
- hw/i386/sgx.c          |  3 +--
- hw/i386/x86.c          | 12 ++++--------
- hw/mem/pc-dimm.c       |  5 ++---
- target/i386/cpu.c      |  6 ++----
- target/i386/host-cpu.c |  7 +++----
- 7 files changed, 26 insertions(+), 40 deletions(-)
+--3866299591-127882288-1675450368=:50577
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 6e592bd969..700fdefa12 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1236,8 +1236,7 @@ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl,
-         vmmouse = NULL;
-     }
-     if (vmmouse) {
--        object_property_set_link(OBJECT(vmmouse), TYPE_I8042, OBJECT(i8042),
--                                 &error_abort);
-+        qdev_prop_set_link(DEVICE(vmmouse), TYPE_I8042, OBJECT(i8042));
-         isa_realize_and_unref(vmmouse, isa_bus, &error_fatal);
-     }
-     port92 = isa_create_simple(isa_bus, TYPE_PORT92);
-@@ -1538,9 +1537,8 @@ static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-         char *resv_prop_str = g_strdup_printf("0xfee00000:0xfeefffff:%d",
-                                               VIRTIO_IOMMU_RESV_MEM_T_MSI);
- 
--        object_property_set_uint(OBJECT(dev), "len-reserved-regions", 1, errp);
--        object_property_set_str(OBJECT(dev), "reserved-regions[0]",
--                                resv_prop_str, errp);
-+        qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
-+        qdev_prop_set_string(dev, "reserved-regions[0]", resv_prop_str);
-         g_free(resv_prop_str);
-     }
- 
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 66cd718b70..760efa62ca 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -118,7 +118,7 @@ static void pc_q35_init(MachineState *machine)
-     PCMachineState *pcms = PC_MACHINE(machine);
-     PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
-     X86MachineState *x86ms = X86_MACHINE(machine);
--    Q35PCIHost *q35_host;
-+    DeviceState *q35_host;
-     PCIHostState *phb;
-     PCIBus *host_bus;
-     PCIDevice *lpc;
-@@ -206,7 +206,7 @@ static void pc_q35_init(MachineState *machine)
-     }
- 
-     /* create pci host bus */
--    q35_host = Q35_HOST_DEVICE(qdev_new(TYPE_Q35_HOST_DEVICE));
-+    q35_host = qdev_new(TYPE_Q35_HOST_DEVICE);
- 
-     if (pcmc->pci_enabled) {
-         pci_hole64_size = object_property_get_uint(OBJECT(q35_host),
-@@ -219,18 +219,15 @@ static void pc_q35_init(MachineState *machine)
-                    pci_hole64_size);
- 
-     object_property_add_child(qdev_get_machine(), "q35", OBJECT(q35_host));
--    object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_RAM_MEM,
--                             OBJECT(ram_memory), NULL);
--    object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_PCI_MEM,
--                             OBJECT(pci_memory), NULL);
--    object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_SYSTEM_MEM,
--                             OBJECT(get_system_memory()), NULL);
--    object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_IO_MEM,
--                             OBJECT(system_io), NULL);
--    object_property_set_int(OBJECT(q35_host), PCI_HOST_BELOW_4G_MEM_SIZE,
--                            x86ms->below_4g_mem_size, NULL);
--    object_property_set_int(OBJECT(q35_host), PCI_HOST_ABOVE_4G_MEM_SIZE,
--                            x86ms->above_4g_mem_size, NULL);
-+    qdev_prop_set_link(q35_host, MCH_HOST_PROP_RAM_MEM, OBJECT(ram_memory));
-+    qdev_prop_set_link(q35_host, MCH_HOST_PROP_PCI_MEM, OBJECT(pci_memory));
-+    qdev_prop_set_link(q35_host, MCH_HOST_PROP_IO_MEM, OBJECT(system_io));
-+    qdev_prop_set_link(q35_host, MCH_HOST_PROP_SYSTEM_MEM,
-+                       OBJECT(get_system_memory()));
-+    qdev_prop_set_uint64(q35_host, PCI_HOST_BELOW_4G_MEM_SIZE,
-+                         x86ms->below_4g_mem_size);
-+    qdev_prop_set_uint64(q35_host, PCI_HOST_ABOVE_4G_MEM_SIZE,
-+                         x86ms->above_4g_mem_size);
-     /* pci */
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(q35_host), &error_fatal);
-     phb = PCI_HOST_BRIDGE(q35_host);
-diff --git a/hw/i386/sgx.c b/hw/i386/sgx.c
-index 6a729bff94..196fa5afee 100644
---- a/hw/i386/sgx.c
-+++ b/hw/i386/sgx.c
-@@ -304,8 +304,7 @@ void pc_machine_init_sgx_epc(PCMachineState *pcms)
-         object_property_parse(OBJECT(dev), SGX_EPC_MEMDEV_PROP,
-                               list->value->memdev, &error_fatal);
-         /* set the numa node property for sgx epc object */
--        object_property_set_uint(OBJECT(dev), SGX_EPC_NUMA_NODE_PROP,
--                                 list->value->node, &error_fatal);
-+        qdev_prop_set_uint32(dev, SGX_EPC_NUMA_NODE_PROP, list->value->node);
-         qdev_realize_and_unref(dev, NULL, &error_fatal);
-     }
- 
-diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index eaff4227bd..191a8c36ee 100644
---- a/hw/i386/x86.c
-+++ b/hw/i386/x86.c
-@@ -43,6 +43,7 @@
- #include "sysemu/xen.h"
- #include "trace.h"
- 
-+#include "hw/qdev-properties.h"
- #include "hw/i386/x86.h"
- #include "target/i386/cpu.h"
- #include "hw/i386/topology.h"
-@@ -96,15 +97,10 @@ uint32_t x86_cpu_apic_id_from_index(X86MachineState *x86ms,
- 
- void x86_cpu_new(X86MachineState *x86ms, int64_t apic_id, Error **errp)
- {
--    Object *cpu = object_new(MACHINE(x86ms)->cpu_type);
-+    DeviceState *cpu = DEVICE(object_new(MACHINE(x86ms)->cpu_type));
- 
--    if (!object_property_set_uint(cpu, "apic-id", apic_id, errp)) {
--        goto out;
--    }
--    qdev_realize(DEVICE(cpu), NULL, errp);
--
--out:
--    object_unref(cpu);
-+    qdev_prop_set_uint32(cpu, "apic-id", apic_id);
-+    qdev_realize(cpu, NULL, errp);
- }
- 
- void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index 50ef83215c..d6e0c8b680 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -66,8 +66,7 @@ void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
-         error_propagate(errp, local_err);
-         return;
-     }
--    object_property_set_int(OBJECT(dimm), PC_DIMM_SLOT_PROP, slot,
--                            &error_abort);
-+    qdev_prop_set_int32(DEVICE(dimm), PC_DIMM_SLOT_PROP, slot);
-     trace_mhp_pc_dimm_assigned_slot(slot);
- 
-     memory_device_pre_plug(MEMORY_DEVICE(dimm), machine, legacy_align,
-@@ -234,7 +233,7 @@ static uint64_t pc_dimm_md_get_addr(const MemoryDeviceState *md)
- static void pc_dimm_md_set_addr(MemoryDeviceState *md, uint64_t addr,
-                                 Error **errp)
- {
--    object_property_set_uint(OBJECT(md), PC_DIMM_ADDR_PROP, addr, errp);
-+    qdev_prop_set_uint64(DEVICE(md), PC_DIMM_ADDR_PROP, addr);
- }
- 
- static MemoryRegion *pc_dimm_md_get_memory_region(MemoryDeviceState *md,
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 4d2b8d0444..5532cd42c5 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -5073,10 +5073,8 @@ static void x86_cpu_load_model(X86CPU *cpu, X86CPUModel *model)
-      */
- 
-     /* CPU models only set _minimum_ values for level/xlevel: */
--    object_property_set_uint(OBJECT(cpu), "min-level", def->level,
--                             &error_abort);
--    object_property_set_uint(OBJECT(cpu), "min-xlevel", def->xlevel,
--                             &error_abort);
-+    qdev_prop_set_uint32(DEVICE(cpu), "min-level", def->level);
-+    qdev_prop_set_uint32(DEVICE(cpu), "min-xlevel", def->xlevel);
- 
-     object_property_set_int(OBJECT(cpu), "family", def->family, &error_abort);
-     object_property_set_int(OBJECT(cpu), "model", def->model, &error_abort);
-diff --git a/target/i386/host-cpu.c b/target/i386/host-cpu.c
-index 10f8aba86e..0307eaa208 100644
---- a/target/i386/host-cpu.c
-+++ b/target/i386/host-cpu.c
-@@ -158,7 +158,7 @@ void host_cpu_instance_init(X86CPU *cpu)
- 
-         host_cpuid(0, 0, NULL, &ebx, &ecx, &edx);
-         x86_cpu_vendor_words2str(vendor, ebx, edx, ecx);
--        object_property_set_str(OBJECT(cpu), "vendor", vendor, &error_abort);
-+        qdev_prop_set_string(DEVICE(cpu), "vendor", vendor);
-     }
- }
- 
-@@ -174,13 +174,12 @@ void host_cpu_max_instance_init(X86CPU *cpu)
-     host_cpu_vendor_fms(vendor, &family, &model, &stepping);
-     host_cpu_fill_model_id(model_id);
- 
--    object_property_set_str(OBJECT(cpu), "vendor", vendor, &error_abort);
-+    qdev_prop_set_string(DEVICE(cpu), "vendor", vendor);
-     object_property_set_int(OBJECT(cpu), "family", family, &error_abort);
-     object_property_set_int(OBJECT(cpu), "model", model, &error_abort);
-     object_property_set_int(OBJECT(cpu), "stepping", stepping,
-                             &error_abort);
--    object_property_set_str(OBJECT(cpu), "model-id", model_id,
--                            &error_abort);
-+    qdev_prop_set_string(DEVICE(cpu), "model-id", model_id);
- }
- 
- static void host_cpu_class_init(ObjectClass *oc, void *data)
--- 
-2.38.1
+On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
+> On 3/2/23 19:08, Philippe Mathieu-Daudé wrote:
+>> QEMU provides the QOM API for core objects.
+>> Devices are modelled on top of QOM as QDev objects.
+>> 
+>> There is no point in using the lower level QOM API with
+>> QDev; it makes the code more complex and harder to review.
+>> 
+>> I first converted all the calls using errp=&error_abort or
+>> &errp=NULL, then noticed the other uses weren't really
+>> consistent.
+>> 
+>> A QDev property defined with the DEFINE_PROP_xxx() macros
+>> is always available, thus can't fail. When using hot-plug
+>> devices, we only need to check for optional properties
+>> registered at runtime with the object_property_add_XXX()
+>> API. Some are even always registered in device instance_init.
+>> 
+>> I have probably been overzealous, so I tagged the patches
+>> not using errp=&error_abort|&error_fatal|NULL as RFC.
+>> 
+>> PPC and ARM conversions will follow as two different series.
+>
+>>   46 files changed, 155 insertions(+), 221 deletions(-)
+>
+> Forgot to mention, this is based on
+> https://lore.kernel.org/qemu-devel/20230203163021.35754-1-philmd@linaro.org/
+> "hw/acpi/cpu_hotplug: Convert 'Object *device' -> 'DeviceState *parent'"
+>
+> Based-on: <20230203163021.35754-1-philmd@linaro.org>
 
+Doing these clean ups is nice but making tree wide one line changes in the 
+middle of development window has a high chance of breaking series not yet 
+merged which is less nice. I'm worried because it's hard enough to get a 
+series reviewed and catch the attention of the maintainer so that it will 
+also be merged. But when another series that causes my series to not apply 
+lands first mine will get rejected needing a rebase and I have to start 
+again which might mean it will miss the freeze and get forgotten or 
+delayed until the next release. This is OK as long as the other 
+conflicting series is adding functionality or fixing bugs but if it's just 
+trivial clean up then maybe it would be better to merge these tree wide 
+clean ups during the soft freeze or first after opening development to 
+reduce the number of comflicts. It would also be less of a problem if 
+merging a series would not take more than half of the development window 
+but would land within a week or so but maintainers are often too busy to 
+handle their job so we're limited to one ot two pulls per release. Please 
+consider this when submitting these clean up series.
+
+Regards,
+BALATON Zoltan
+--3866299591-127882288-1675450368=:50577--

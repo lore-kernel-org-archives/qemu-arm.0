@@ -1,111 +1,85 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4229401ejb;
-        Mon, 6 Feb 2023 06:10:52 -0800 (PST)
-X-Google-Smtp-Source: AK7set/TiUN2MXI15K4J0vxgs2UsaDsSXulRK4QdADG3JTiRfLt1F1MPCeAzBsKFbCgF+ZmZ9VKc
-X-Received: by 2002:ac8:590b:0:b0:3b9:b6c8:6d7a with SMTP id 11-20020ac8590b000000b003b9b6c86d7amr36269766qty.29.1675692652227;
-        Mon, 06 Feb 2023 06:10:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675692652; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1369893ejb;
+        Fri, 3 Feb 2023 05:08:36 -0800 (PST)
+X-Google-Smtp-Source: AK7set8KdxJbD0KGHTjYL35sXWjz1Tco8WLiGhXE6KLNu/Np41j1bPvvrT9DWkOrZ00ODDel5uYf
+X-Received: by 2002:a05:6214:2a8c:b0:568:d153:823a with SMTP id jr12-20020a0562142a8c00b00568d153823amr2816327qvb.15.1675429716641;
+        Fri, 03 Feb 2023 05:08:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675429716; cv=none;
         d=google.com; s=arc-20160816;
-        b=oZmzJ8mNm0kHydbg2oPTdRhnOzQgxMJc0RGSaxL93/M1hqkCJ+5ImrzS3kq3R7lz0a
-         +LNwHbN9DZR9WVryfFwAYXxqqyG7yWrGVOD3Eyz/RnDiXuTwQhI6Xg5eJM4SRwE3emOk
-         cgNw4QqtZBiizlSBF1SVJa6q5NzdU9WprBu388/pm+H9G2NcN7Nq2fotuxhQA29IfLlM
-         J8WlRZ9dPSOs1WcN6O6fwT7do0CrcudmNzBy8NrhkaaKSpmSmfBcdUB1Nh/POZzHmqv2
-         J6XuhJMIvuG0HDh3/XuFyPArUK4vkKP6fhPQ0WLIXh3a+ykjVo74YzGABFBvrYfvA5t6
-         +T8w==
+        b=zJEVnSloIO/Kb0q9XpP7rOJG/nog8riB9Vw/ulY/u8yZu8oOKAx+1ddqro0TnVFej1
+         klWw7tyawx5eAAwdK7fsvSTepzCxrdEa2cRKRFL/FrKnm9YBfhChV7BZM+HCa9tf/ICs
+         7L2GbCS6l2/7cxBhRNUFkIXTcXgiflPBA+8uPo9q9zgQlxjt851SNkDu8MenKtasawW6
+         bIYEmgvfgUtb6SK8uEqWwS0myLga+ZbIIlAQpn8cRSjQR/7oHb1zN+RQiuhCddWnwJaD
+         FHjjmT6dSWWbrml/1LeYZWFoJnH94nh2ZGdc1TSJnY3bk4I8bJzYeCtuEgh3sLuwx4ty
+         XBuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=2nF6Q1feagG1j59SSALXFHCj/mrnFM3pmdWjXUdvEyk=;
-        b=MI+p+kWdLwU+up7k5LpXgI90mvH3wQkmXNFvSA7QRXmHYQcNIdClmZsmyZY064gFvc
-         NGpQ27qnkFLwBgT+A4S2JJQR4jjs//T6bmTmp29y1i40eF7qT6lnpxJB9aMlGWvEc1v/
-         mrj1AcsrG5cWSYX5EkNNM235lRbFf8tYb9Epc96vAWf2CBwDLrZByw0lEeomplbilJVp
-         y9hCfRCBr1q4Rw8Zt6+wcMRLe8RMricJy/GeqGKWmWnSNog9js24dAFj7cm6i2ujFzHN
-         oJ7BWnB7bzOSvjCUqK9HI1iajsDZbRX4nGoCcFe5WlL//GLcngJlj0Ob4M98nOnRJvZq
-         khiQ==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=+88JxzBYBeU2+3knVukp08JtmA5ZDTwDRrYq7cuhCH4=;
+        b=EBHb8iH4s/bVAKCyyyYiQsdf29GwCTiUv47T0PQIgV/ZKO+cbcjJ7597kUqjcM1vll
+         dUTZDPtIFuNlOkeIZDkm3fBQvfRYaRFNCkV3rwNFpsnYwtwkG7vzysWraUiUcyre2kMH
+         quN6snfTMPsNpQtfF2vUEE/Y79JaR8rmxM9koMqvxj2v3e6/pmWMQ5rvQ05sWamzaWCk
+         kgD+E0llaeMe/gvCaAxoy0puSpqxW1GtsHlFrSS/Zos8SYE+AMTDm2DFMLk1qPjPsv7y
+         ignVsJG4XJ1J8+a/6wUKzC+RG/Okoj27iV0whHBoyGnaRMlLDV5rN6Avo3yiBOv92wr7
+         5E1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=2OyAQdYA;
-       dkim=neutral (no key) header.i=@nongnu.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t25-20020a05622a181900b003b85f26c4d8si8247553qtc.724.2023.02.06.06.10.52
+        by mx.google.com with ESMTPS id u1-20020a0cb401000000b004ad0f5cf00esi1531112qve.117.2023.02.03.05.08.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Feb 2023 06:10:52 -0800 (PST)
+        Fri, 03 Feb 2023 05:08:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=2OyAQdYA;
-       dkim=neutral (no key) header.i=@nongnu.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pP2Ck-00066b-Bq; Mon, 06 Feb 2023 09:10:46 -0500
+	id 1pNvnP-0005LF-Cw; Fri, 03 Feb 2023 08:08:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1pP2Ch-000662-Uj; Mon, 06 Feb 2023 09:10:44 -0500
-Received: from smtp-out2.suse.de ([195.135.220.29])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1pP2Cg-0002g0-Bi; Mon, 06 Feb 2023 09:10:43 -0500
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id 0311E60420;
- Mon,  6 Feb 2023 14:10:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1675692641; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2nF6Q1feagG1j59SSALXFHCj/mrnFM3pmdWjXUdvEyk=;
- b=2OyAQdYAuGIZZE+HtUF3pb3GSFde3he6QRrJZBlgGiuq9dFyjPEjOUpQDaFdNy26aMVoIl
- 4+W89l9r/RIkSFJwNOVwm5POLGFWSPQoAA4+BZ/EJHLk9vP4zeOkR0KZFz+spUQOX2Lb5s
- vG0EiiMrNS+ECpBlHNhvO43PdpT7DMI=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1675692641;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2nF6Q1feagG1j59SSALXFHCj/mrnFM3pmdWjXUdvEyk=;
- b=OIZjmeufdyR2kyZ7nHEmRVxefLjDZSE31xo571EU0XTrj1PVHAFLH3exKanxMAYsputE73
- y26HJq+sdrhRF6BA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 9B35E138E7;
- Mon,  6 Feb 2023 14:10:39 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id KEWOGF8K4WOgQAAAMHmgww
- (envelope-from <farosas@suse.de>); Mon, 06 Feb 2023 14:10:39 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Subject: [PATCH 06/10] hw/arm: Select VIRTIO_BLK for virt machine
-Date: Mon,  6 Feb 2023 11:08:05 -0300
-Message-Id: <20230206140809.26028-7-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230206140809.26028-1-farosas@suse.de>
-References: <20230206140809.26028-1-farosas@suse.de>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1pNvnN-0005KO-An; Fri, 03 Feb 2023 08:08:01 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1pNvnK-00033s-I2; Fri, 03 Feb 2023 08:08:00 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 5947A7466FF;
+ Fri,  3 Feb 2023 14:05:26 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id D9A8F74645F; Fri,  3 Feb 2023 14:05:25 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id D7EFC746392;
+ Fri,  3 Feb 2023 14:05:25 +0100 (CET)
+Date: Fri, 3 Feb 2023 14:05:25 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
+ Markus Armbruster <armbru@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, 
+ Yoshinori Sato <ysato@users.sourceforge.jp>, 
+ Magnus Damm <magnus.damm@gmail.com>
+Subject: Re: [PATCH 6/9] hw/display/sm501: QOM-alias 'dma-offset' property
+ in chipset object
+In-Reply-To: <20230203113650.78146-7-philmd@linaro.org>
+Message-ID: <136f25e8-686a-1529-b114-08dd54e6b819@eik.bme.hu>
+References: <20230203113650.78146-1-philmd@linaro.org>
+ <20230203113650.78146-7-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=195.135.220.29; envelope-from=farosas@suse.de;
- helo=smtp-out2.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
+Content-Type: multipart/mixed;
+ boundary="3866299591-884711868-1675429525=:62709"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -41
+X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,36 +94,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kb34FMBXj+dJ
+X-TUID: gzmBdYYk99MB
 
-The virt machine has IF_VIRTIO as block_default_type, which causes the
-generic code to try to create a virtio-blk-pci device pair at
-configure_blockdev()/qemu_create_cli_devices().
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Select VIRTIO_BLK and VIRTIO_PCI from CONFIG_ARM_VIRT to avoid errors
-when PCI_DEVICES=n (due to e.g. --without-default-devices):
+--3866299591-884711868-1675429525=:62709
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-$ ./qemu-system-aarch64 -M virt -accel tcg -cpu max -nodefaults -cdrom foo.qcow2
-qemu-system-aarch64: -cdrom foo.qcow2: 'virtio-blk' (alias
-'virtio-blk-pci') is not a valid device model name
+On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
+> No need to use an intermediate 'dma-offset' property in the
+> chipset object. Alias the property, so when the machine (here
+> r2d-plus) sets the value on the chipset, it is propagated to
+> the OHCI object.
+>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> hw/display/sm501.c | 22 +++++++++++-----------
+> hw/sh4/r2d.c       |  2 +-
+> 2 files changed, 12 insertions(+), 12 deletions(-)
 
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
- hw/arm/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+It does not seem to be any simpler by the number of lines but maybe a bit 
+cleaner. I wonder if it would worth renaming the property to dma-offset to 
+match that of ohci so it's less confusing what it refers to. It's only 
+used by r2d and this patch already changing that so would be an easy 
+change.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 8dcc08b7ec..296d4f5176 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -33,6 +33,7 @@ config ARM_VIRT
-     select ACPI_HMAT
-     select VIRTIO_PCI
-     select VIRTIO_NET
-+    select VIRTIO_BLK
- 
- config CHEETAH
-     bool
--- 
-2.35.3
+Regards,
+BALATON Zoltan
 
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index 52e42585af..49a648e952 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -28,6 +28,7 @@
+> #include "qapi/error.h"
+> #include "qemu/log.h"
+> #include "qemu/module.h"
+> +#include "hw/usb/hcd-ohci.h"
+> #include "hw/char/serial.h"
+> #include "ui/console.h"
+> #include "hw/sysbus.h"
+> @@ -1942,7 +1943,7 @@ struct SM501SysBusState {
+>     /*< public >*/
+>     SM501State state;
+>     uint32_t vram_size;
+> -    uint32_t base;
+> +    OHCISysBusState ohci;
+>     SerialMM serial;
+> };
+>
+> @@ -1950,7 +1951,6 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+> {
+>     SM501SysBusState *s = SYSBUS_SM501(dev);
+>     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> -    DeviceState *usb_dev;
+>     MemoryRegion *mr;
+>
+>     sm501_init(&s->state, dev, s->vram_size);
+> @@ -1963,13 +1963,10 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+>     sysbus_init_mmio(sbd, &s->state.mmio_region);
+>
+>     /* bridge to usb host emulation module */
+> -    usb_dev = qdev_new("sysbus-ohci");
+> -    qdev_prop_set_uint32(usb_dev, "num-ports", 2);
+> -    qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
+> -    sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
+> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->ohci), &error_fatal);
+>     memory_region_add_subregion(&s->state.mmio_region, SM501_USB_HOST,
+> -                       sysbus_mmio_get_region(SYS_BUS_DEVICE(usb_dev), 0));
+> -    sysbus_pass_irq(sbd, SYS_BUS_DEVICE(usb_dev));
+> +                       sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ohci), 0));
+> +    sysbus_pass_irq(sbd, SYS_BUS_DEVICE(&s->ohci));
+>
+>     /* bridge to serial emulation module */
+>     sysbus_realize(SYS_BUS_DEVICE(&s->serial), &error_fatal);
+> @@ -1980,7 +1977,6 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+>
+> static Property sm501_sysbus_properties[] = {
+>     DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
+> -    DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
+>     DEFINE_PROP_END_OF_LIST(),
+> };
+>
+> @@ -2016,15 +2012,19 @@ static void sm501_sysbus_class_init(ObjectClass *klass, void *data)
+> static void sm501_sysbus_init(Object *o)
+> {
+>     SM501SysBusState *sm501 = SYSBUS_SM501(o);
+> +    OHCISysBusState *ohci = &sm501->ohci;
+>     SerialMM *smm = &sm501->serial;
+>
+> +    object_initialize_child(o, "ohci", ohci, TYPE_SYSBUS_OHCI);
+> +    object_property_add_alias(o, "base", OBJECT(ohci), "dma-offset");
+> +    qdev_prop_set_uint32(DEVICE(ohci), "num-ports", 2);
+> +
+>     object_initialize_child(o, "serial", smm, TYPE_SERIAL_MM);
+>     qdev_set_legacy_instance_id(DEVICE(smm), SM501_UART0, 2);
+>     qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
+>     qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
+>
+> -    object_property_add_alias(o, "chardev",
+> -                              OBJECT(smm), "chardev");
+> +    object_property_add_alias(o, "chardev", OBJECT(smm), "chardev");
+> }
+>
+> static const TypeInfo sm501_sysbus_info = {
+> diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+> index 39fc4f19d9..279724ffbb 100644
+> --- a/hw/sh4/r2d.c
+> +++ b/hw/sh4/r2d.c
+> @@ -274,7 +274,7 @@ static void r2d_init(MachineState *machine)
+>     dev = qdev_new("sysbus-sm501");
+>     busdev = SYS_BUS_DEVICE(dev);
+>     qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
+> -    qdev_prop_set_uint32(dev, "base", 0x10000000);
+> +    qdev_prop_set_uint64(dev, "base", 0x10000000);
+>     qdev_prop_set_chr(dev, "chardev", serial_hd(2));
+>     sysbus_realize_and_unref(busdev, &error_fatal);
+>     sysbus_mmio_map(busdev, 0, 0x10000000);
+>
+--3866299591-884711868-1675429525=:62709--

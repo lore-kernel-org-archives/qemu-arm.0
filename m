@@ -1,112 +1,103 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1298177ejb;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1298181ejb;
         Fri, 3 Feb 2023 03:38:25 -0800 (PST)
-X-Google-Smtp-Source: AK7set80rSlmz17z5PXgxnUnnFEfO7pLL9i+wsyK5SEzVXpsDRyX37pYn59PeGUf7B23zd0ggQyS
-X-Received: by 2002:ac8:5e0f:0:b0:3b9:a6ae:e1e2 with SMTP id h15-20020ac85e0f000000b003b9a6aee1e2mr17512640qtx.58.1675424305001;
+X-Google-Smtp-Source: AK7set+M1iFzBo5MuevBw9WGImvogyqEKbLwVFeonekuPUt/gQsbafeEteS3d5d9UILFt9ufY0va
+X-Received: by 2002:ac8:5acc:0:b0:3b6:9817:18e4 with SMTP id d12-20020ac85acc000000b003b6981718e4mr17350059qtd.49.1675424305163;
         Fri, 03 Feb 2023 03:38:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675424304; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1675424305; cv=none;
         d=google.com; s=arc-20160816;
-        b=0BSVAvhXPdtL56CmrGIa8e91OqPc7+hWxsf7th52sV80W7FfKJIio4TJmQlXtShymv
-         xrcJyQBoN1rvD8xgqEqay2Y+BvVKiCmv8onmEvcmO86JHMSRSrBBelaHx2Xv0qnX3Yue
-         dCAMCt9s15jnE0eL7pXEq2EN6fkN+0KrCzEMF6COERt1Gw3/dPz2WW/TuDhzAlBbQWnR
-         2GruoZOMHTj2up6XyqEUQJjsUJ/zDtFFX/nEyKnxkfRVbften417YFZPzFSoNLT/S+jm
-         1MnPlRmW/DdQUgP1ry3vNZ3hQ2H/Aa7vfv0JPCoKFQQRNKzo5JZQPyhgCQv0MtPM03ul
-         m1dg==
+        b=vGOLc/G22LZ8WOJslyIkEcFRYPt5+f/f5Av3nhWbP3ooN1hTbLEvE7Cj2rWolPDmjn
+         Pa8LJyEqf+ykugcSj9xg9jaG90luCsfZNzV3z7iuCdwrH9srNama7+IktyKQMEtL373a
+         wE94TvPlOhXf6Ir+6G0rlXq6cdHSimo4XKGQT5MGv7K+9BQ+l8L/xnjmdkXkWUksBAba
+         pchghQ6IJvztqBVb1AIXQb+u8bLrO8r+k11wINZQrLb4Tq+t7xfGZ7ITyrFP+TBJZNUv
+         t4xB54BKP/TTV2XR4bLhLU9rNAfwWNlk4Iex6++K0yTQ8NpPolorMtP6h8TZh/Xd4/TK
+         o+BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=K+cjiRrUxf8pio68qBRhIQ1AivvB4oG5DvRMp0FNP4E=;
-        b=NAIXi8FFHD/7shEXEplnkn01CZRQN3IT84LHpJuy3w775Ahg1yL0r9/o7GwD5Q2/Xq
-         do2OFrwwHFDwK3Bhzaz8WbmtqhtVLCVSWe56ZTkPp/sfqGgOIukQM26gsf7Pye9p39/s
-         z7BQ+prYKaWUtVRlfKSfm4l46cUqKLYEaENtpYG11mgQTDUq8EmbLC3ity3VerKEaeC0
-         0AeLifqW3gHaupTYpYhSdcg7NIzOchFyHRRfSgNBqEQjrP7UABujD9t6G7d13D8+0c6M
-         nh9GqyEkwXPDwaqP7MSEY0/F3Qmkdx6G6HRPqYF3Fctz74Jd89M6rMwZijCNq0f5gBYP
-         54sQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=TR+VT6mWulFtprMX/0aWWSf6NU7JTRRTCnR3RQnSJ/A=;
+        b=zHkoA8F3i25E7N7HK+no/kP56/4wlp6m5WajpGz73YPC847K/BT9pvBPIhKh0dNNn+
+         6oVN7o6+rywa1Xp2GCiRVUl4+Ri8/NNRgkXEcsmJUZ0VQPl10LRkaI1ro9xta9adzm7H
+         hmAtZOzAj1v0gG5URWUUZp/gq/Gcf7C+74PuaIqQLbZm4B+l9l8KE5ANBs6JVPIJZuYL
+         W4RIqOTeVB591SsCBLrwiU7Ilo/ffRv+zwlm4qgMPH8qaHGyIy210menXbRsFx3Qxl25
+         6WeTuFGZb9EnsSgkKXSg5C8ySrGS4LSnUpAJZwuyNcYlKRPAwrwQ5i0ZayKP7noxtd4d
+         QrbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=joz2Q7NZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aLGUAK+V;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y20-20020a05622a165400b003b81a2a75easi1686795qtj.645.2023.02.03.03.38.24
+        by mx.google.com with ESMTPS id r10-20020ac85c8a000000b003b860983982si1892563qta.188.2023.02.03.03.38.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 03:38:24 -0800 (PST)
+        Fri, 03 Feb 2023 03:38:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=joz2Q7NZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aLGUAK+V;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pNuNj-0008D6-Is; Fri, 03 Feb 2023 06:37:27 -0500
+	id 1pNuNG-0007vP-OP; Fri, 03 Feb 2023 06:36:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNuNi-0008At-1x
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 06:37:26 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNuNF-0007um-CP
+ for qemu-devel@nongnu.org; Fri, 03 Feb 2023 06:36:57 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNuNf-0001GR-PW
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 06:37:25 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- k8-20020a05600c1c8800b003dc57ea0dfeso5822822wms.0
- for <qemu-devel@nongnu.org>; Fri, 03 Feb 2023 03:37:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNuNC-0001Ag-Ar
+ for qemu-devel@nongnu.org; Fri, 03 Feb 2023 06:36:57 -0500
+Received: by mail-wr1-x432.google.com with SMTP id ba1so314338wrb.5
+ for <qemu-devel@nongnu.org>; Fri, 03 Feb 2023 03:36:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=K+cjiRrUxf8pio68qBRhIQ1AivvB4oG5DvRMp0FNP4E=;
- b=joz2Q7NZy4LkvmEZpfE9ThGOiVfDAdi8oJL5jrAOgFOWlgGMpFnKpAsL0pFYk5yaRr
- YgsXnGUPddj0LkVytcsGSr5f8pNuMcMoqvTLANfyn1y1HfRkRHCsreTsXHAxun6QkHyG
- kRXq2v2IOfWAsrtEE9CefhygHGCBQjk8PaZCXr5glY6q6SFOojEbTm4aT1vwhkyR7MkK
- Q3IV0tDKzvoJ6/5ZLJmxpPsMz7DZbitKWjr0aYjcgLsCBh32bK5jTojYeAOadBujvc96
- b9mlFZaBxuRE5LJtbUC4BCBS5I7ksYXytx2DgN5UPQsjq5w0UFluEm0rFgGjQZsKgAcq
- BYeA==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=TR+VT6mWulFtprMX/0aWWSf6NU7JTRRTCnR3RQnSJ/A=;
+ b=aLGUAK+Vxgb1+133klDP6KhZwIkldsBCH+0VCw2v5NvTA+1FuqeERRyK5DxjrtBuT7
+ WtFtow5XZB0sREudGblBZnDuC61w0mmt59LOvCnNohhzZb3WRBiz9JJbTAnAfq3dhaYg
+ GxzT53+aN+5OZmf+W4ZA0FxDkPt95ToheIwNLNt6alblWKoqQh5r7XStqQQJe6fuhVtX
+ KLadcB7/x8cUs8joB3V7CH8ZCUloZpR4wUNCyD2g7YXfX5wQjKIGb7uja0ylsCDJtUUT
+ qdngJoV87Ed4398L/cUtngdjm/AqPSonAW5hJ+IollDu0+1/1wEzhY1t2dO2fG9UqgFc
+ eoSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=K+cjiRrUxf8pio68qBRhIQ1AivvB4oG5DvRMp0FNP4E=;
- b=eAhP8ON7lReFaDkh7rMfI0Z1Fw0F73KUAzSU72fpN7roEOz4Nsr85KxbwaA+g3oevQ
- NcWZLGfhSxBqz5Jreba0xDHDcRXzOUhW3+z6sathgBZZd58pSqcU3zHg61LmdkLoOyFx
- y+/GYlaF4XDxtZsActu2EK4j0jhfA94BzbEym78dB64ytB4dO4v+eTXSJcUw4fJi9jW/
- 0u1hdPn+m6o0BNycqtKIH/opb9W1fW1uDULue5uc+JJW+PLao1Rfw1C/pxo4e8m1mmak
- KD91jRDckX8vfdRoyGWFiby1qSbmlz7sEb7Zwxof/l2tR0qrAhZZSXvnnsGbRKs+TBmO
- akeQ==
-X-Gm-Message-State: AO0yUKV4FZ8LYDhOlN3VMvvdq8iyDhs/21IbmPiilHYHOoyAJ1Nx4O0O
- ztKHCiTBDc5GtOrKsdQcnZJDYp2Den4tgT3J
-X-Received: by 2002:a05:600c:210a:b0:3df:12db:2779 with SMTP id
- u10-20020a05600c210a00b003df12db2779mr8379657wml.3.1675424242406; 
- Fri, 03 Feb 2023 03:37:22 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=TR+VT6mWulFtprMX/0aWWSf6NU7JTRRTCnR3RQnSJ/A=;
+ b=OzI/q4iGYZTk8y6CXpUl/YWfSIqYmpVAY4jlZxx5PuWwEv0Tp9MfX2OEIUvZEf76JA
+ +5PUR2EYnhgpS6tXR2wpiG+qTnfn0QKmtfzIwX3ynLefA8fEpl0ggB5ad1z1jF8SYMxe
+ gRYrR5ID30hv54sZhP4St5V2sRLYn/6SzSq8nZc6h/Z6yzc+sdIOvEgbtTbO51W5NUNY
+ atSqswQx6bEM6YHSS8CW9grguWN8bv0FRRvr4YeHgJP39KWcX5WNtJlmGnLngAdP5jUa
+ udLrqPY9nAEny+jsTqu2PwtRaXgV/45BERgP5h2UYbrRFLOBmXqpFpQainYoJpdO8Ow2
+ ab9w==
+X-Gm-Message-State: AO0yUKW5tIhOP6ZjXjuZogtaotn7opP1QHHJg7aiWuSS5r+8wmyY+n7V
+ ccmvI+FBMQZMYRoSX4yVCShWDtkQp6qI8KlT
+X-Received: by 2002:a5d:60c4:0:b0:2c3:b4c:a4f with SMTP id
+ x4-20020a5d60c4000000b002c30b4c0a4fmr8239273wrt.67.1675424212329; 
+ Fri, 03 Feb 2023 03:36:52 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- i14-20020a1c540e000000b003db03725e86sm2517792wmb.8.2023.02.03.03.37.21
+ y10-20020a05600015ca00b002bfd137ecddsm1884866wry.11.2023.02.03.03.36.51
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 03 Feb 2023 03:37:22 -0800 (PST)
+ Fri, 03 Feb 2023 03:36:51 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Markus Armbruster <armbru@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>
-Subject: [PATCH 6/9] hw/display/sm501: QOM-alias 'dma-offset' property in
- chipset object
-Date: Fri,  3 Feb 2023 12:36:47 +0100
-Message-Id: <20230203113650.78146-7-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/9] hw: Use QOM alias properties and few QOM/QDev cleanups
+Date: Fri,  3 Feb 2023 12:36:41 +0100
+Message-Id: <20230203113650.78146-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230203113650.78146-1-philmd@linaro.org>
-References: <20230203113650.78146-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,108 +119,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Sct9OrzzBzIO
+X-TUID: PDEJ13ahj7u0
 
-No need to use an intermediate 'dma-offset' property in the
-chipset object. Alias the property, so when the machine (here
-r2d-plus) sets the value on the chipset, it is propagated to
-the OHCI object.
+These patches are extracted from a QOM/QDev refactor series,
+so they are preliminary cleanups noticed while working on it:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/display/sm501.c | 22 +++++++++++-----------
- hw/sh4/r2d.c       |  2 +-
- 2 files changed, 12 insertions(+), 12 deletions(-)
+- Use correct type when calling qdev_prop_set_xxx()
+- Unify some qdev properties in MIPS models
+- Replace intermediate properties by link properties
+- Remove DEFINE_PROP_DMAADDR() macro which is used one time
+- Use qdev_realize_and_unref() instead of open-coding it
 
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 52e42585af..49a648e952 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -28,6 +28,7 @@
- #include "qapi/error.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "hw/usb/hcd-ohci.h"
- #include "hw/char/serial.h"
- #include "ui/console.h"
- #include "hw/sysbus.h"
-@@ -1942,7 +1943,7 @@ struct SM501SysBusState {
-     /*< public >*/
-     SM501State state;
-     uint32_t vram_size;
--    uint32_t base;
-+    OHCISysBusState ohci;
-     SerialMM serial;
- };
- 
-@@ -1950,7 +1951,6 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
- {
-     SM501SysBusState *s = SYSBUS_SM501(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
--    DeviceState *usb_dev;
-     MemoryRegion *mr;
- 
-     sm501_init(&s->state, dev, s->vram_size);
-@@ -1963,13 +1963,10 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(sbd, &s->state.mmio_region);
- 
-     /* bridge to usb host emulation module */
--    usb_dev = qdev_new("sysbus-ohci");
--    qdev_prop_set_uint32(usb_dev, "num-ports", 2);
--    qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->ohci), &error_fatal);
-     memory_region_add_subregion(&s->state.mmio_region, SM501_USB_HOST,
--                       sysbus_mmio_get_region(SYS_BUS_DEVICE(usb_dev), 0));
--    sysbus_pass_irq(sbd, SYS_BUS_DEVICE(usb_dev));
-+                       sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ohci), 0));
-+    sysbus_pass_irq(sbd, SYS_BUS_DEVICE(&s->ohci));
- 
-     /* bridge to serial emulation module */
-     sysbus_realize(SYS_BUS_DEVICE(&s->serial), &error_fatal);
-@@ -1980,7 +1977,6 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
- 
- static Property sm501_sysbus_properties[] = {
-     DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
--    DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-@@ -2016,15 +2012,19 @@ static void sm501_sysbus_class_init(ObjectClass *klass, void *data)
- static void sm501_sysbus_init(Object *o)
- {
-     SM501SysBusState *sm501 = SYSBUS_SM501(o);
-+    OHCISysBusState *ohci = &sm501->ohci;
-     SerialMM *smm = &sm501->serial;
- 
-+    object_initialize_child(o, "ohci", ohci, TYPE_SYSBUS_OHCI);
-+    object_property_add_alias(o, "base", OBJECT(ohci), "dma-offset");
-+    qdev_prop_set_uint32(DEVICE(ohci), "num-ports", 2);
-+
-     object_initialize_child(o, "serial", smm, TYPE_SERIAL_MM);
-     qdev_set_legacy_instance_id(DEVICE(smm), SM501_UART0, 2);
-     qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
-     qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
- 
--    object_property_add_alias(o, "chardev",
--                              OBJECT(smm), "chardev");
-+    object_property_add_alias(o, "chardev", OBJECT(smm), "chardev");
- }
- 
- static const TypeInfo sm501_sysbus_info = {
-diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
-index 39fc4f19d9..279724ffbb 100644
---- a/hw/sh4/r2d.c
-+++ b/hw/sh4/r2d.c
-@@ -274,7 +274,7 @@ static void r2d_init(MachineState *machine)
-     dev = qdev_new("sysbus-sm501");
-     busdev = SYS_BUS_DEVICE(dev);
-     qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
--    qdev_prop_set_uint32(dev, "base", 0x10000000);
-+    qdev_prop_set_uint64(dev, "base", 0x10000000);
-     qdev_prop_set_chr(dev, "chardev", serial_hd(2));
-     sysbus_realize_and_unref(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, 0x10000000);
+Philippe Mathieu-Daudé (9):
+  hw/i386/sgx: Do not open-code qdev_realize_and_unref()
+  hw/ppc/sam460ex: Correctly set MAL properties
+  hw/arm/nrf51: QOM-alias 'flash-size' property in SoC object
+  hw/arm/fsl-imx: QOM-alias 'phy-num' property in SoC object
+  hw/usb/hcd-ohci: Include missing 'sysbus.h' header
+  hw/display/sm501: QOM-alias 'dma-offset' property in chipset object
+  hw/qdev: Remove DEFINE_PROP_DMAADDR() and 'hw/qdev-dma.h'
+  hw/mips: Declare all length properties as unsigned
+  hw/mips/itu: Pass SAAR using QOM link property
+
+ hw/arm/fsl-imx25.c           |  3 +--
+ hw/arm/fsl-imx6.c            |  3 +--
+ hw/arm/fsl-imx6ul.c          |  8 ++++----
+ hw/arm/fsl-imx7.c            | 12 ++++++------
+ hw/arm/microbit.c            |  5 ++++-
+ hw/arm/nrf51_soc.c           | 10 +---------
+ hw/display/sm501.c           | 22 +++++++++++-----------
+ hw/i386/sgx.c                |  5 ++---
+ hw/intc/mips_gic.c           |  4 ++--
+ hw/mips/boston.c             |  2 +-
+ hw/mips/cps.c                | 35 ++++++++++++-----------------------
+ hw/mips/malta.c              |  2 +-
+ hw/misc/mips_cmgcr.c         |  2 +-
+ hw/misc/mips_itu.c           | 30 ++++++++++++++++++++----------
+ hw/nvram/nrf51_nvm.c         |  6 +++++-
+ hw/ppc/sam460ex.c            |  4 ++--
+ hw/sh4/r2d.c                 |  2 +-
+ hw/usb/hcd-ohci-pci.c        |  1 -
+ hw/usb/hcd-ohci.c            |  3 +--
+ hw/usb/hcd-ohci.h            |  1 +
+ include/hw/arm/fsl-imx25.h   |  1 -
+ include/hw/arm/fsl-imx6.h    |  1 -
+ include/hw/arm/fsl-imx6ul.h  |  2 --
+ include/hw/arm/fsl-imx7.h    |  1 -
+ include/hw/arm/nrf51_soc.h   |  1 -
+ include/hw/intc/mips_gic.h   |  4 ++--
+ include/hw/misc/mips_cmgcr.h |  2 +-
+ include/hw/misc/mips_itu.h   |  9 ++++-----
+ include/hw/qdev-dma.h        | 16 ----------------
+ 29 files changed, 84 insertions(+), 113 deletions(-)
+ delete mode 100644 include/hw/qdev-dma.h
+
 -- 
 2.38.1
 

@@ -1,123 +1,128 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1743494ejb;
-        Fri, 3 Feb 2023 12:35:27 -0800 (PST)
-X-Google-Smtp-Source: AK7set9ibEOgMPKMymxxubJs7cURKDMWFKOTDtyskWMcla5GjealpCL+V268rpvjsDruWrBO9JCA
-X-Received: by 2002:a05:6000:68a:b0:2c3:be89:7c20 with SMTP id bo10-20020a056000068a00b002c3be897c20mr4628635wrb.3.1675456527653;
-        Fri, 03 Feb 2023 12:35:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675456527; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1749804ejb;
+        Fri, 3 Feb 2023 12:46:16 -0800 (PST)
+X-Received: by 2002:a17:903:1cc:b0:196:63d0:a674 with SMTP id e12-20020a17090301cc00b0019663d0a674mr14779430plh.9.1675457176627;
+        Fri, 03 Feb 2023 12:46:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675457176; cv=none;
         d=google.com; s=arc-20160816;
-        b=lX3Pi+XcRkRKKbwcnI6bpvMv1VuBhT5zuBPILb5JdCB/UvEOeMHPoq8jj77n4OoGck
-         +/xSJJh/TJUvXcuCChKBY+GSxV8HFzCkahV6vK8pFNx6BBx+U23JGMfQJgIlEuf+FHeF
-         RQG5e3ncInHpoVg1Fyr4uyTdiHdGtt/2Wo8HoXyfU9YT2PC9DqYjghI74cKxCoGhh5jy
-         8v5m4V2bAeYnEpAXDiz9NLQUEucNGz8smkG8nRkSzcTmye6YUtC2v+8ogIqd9EUrTCaw
-         nRNIVHoBNqzMLPIA7XOQX/1q5DZc5hCXhyXmigKka4P+xhkRxV72UQo4pWlM8biQIO3J
-         NZZw==
+        b=AapHV8xr1BhN2BewDd8AXQpS1zpcN49H4NY7YtDIXscmE/KWOQ2+y3QdBqtycIvxEQ
+         0jL2NnJRQtXiV1DIGGqsGFIYbgYAC9wAhI7zSZ+ZwWYd7POYsYE/WKvJIuofXVt/USE3
+         B97WvrqM1yA635P8fb2UA0ioCiWdx7RzNCGc9/n+3JAwBeWW/9KR2fiHuIA9o6RGDePq
+         /6yReKwcHE4p9Pa6kifaWptEOP9/4raV6kYqerv0XpyNpyxPFYAa0reMtg8znZfIIv8H
+         cMHktlot9mOOlnJRfy4bflN26g3nT9KlEKjfkaguaCBVO+DTZCVe7amvpPspaSnOAQQg
+         HOqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=t4DQXPc/X5fUbNeg2HxRM2Pr6KA5NGApVuBsRUVLFFg=;
-        b=K4CQJCv8TZCOar/KyWlQbM88H1ofecz9CS8jleY4j1Qqe5keFJq7vLR/XoOoXSo8AV
-         5sqgzsQNzHJMW2cU81QlgBi+vYPeAlQzHjU2SV6cabbS3RJYC9YRHnyZyMj4T6mp00Ss
-         1lOgzCvKOUEuyii+sNZXbrJzAqsBA6VLaScvfdmETlA81LrRJsBBijvyGiGT8orY9wEb
-         i7ZPiQ5V1EgKwlQayJCVzr40Pr7udLL8lkDh9QQY2MwJJitDNBZaF+fftyhUCc9PG0wo
-         LO6K+8FdG3m0/BPsksLMYc0wIr5EDgC1pF51xiHqz4ua/mKOXxlNRRnouX/ElpmLZFkF
-         TUiw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=90r2rH7VmupffwVD+Rrrr2U62ktUsW4af1IcWoBsIHc=;
+        b=u8PLhuusDUvRa85tCbmJGJG8vPrnws9CwPFzV0yBHZI+3eGpxpSmq/ekkY5bHwpMr0
+         ugbM9RgFQH7Gkw82wj1u0zMCQzn4Hj819n4oETe6XyD+J3f+1iTdvwBEI4MOsngmQM2d
+         IqH1CgGDHP90FKW69m2OjE66tbv3ubyzopZtu+N6ad2lPPOUd1zN8KOsh3nORIK+Wlkp
+         Y/wyYiJ97ysv0BpZ5WTXaVNVZGnxgdET191cSAdZrq4FtajbwiQPhrW21WB0yXi7ODTk
+         ROfcfdI0VHBzt1zujA3TpsHgNCkxPWoW4SevCBfH+4aEMdrQVNnF0pjQDSB4jCZj88eV
+         c0/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=FoimQh3o;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=iwd5Fgie;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id az8-20020adfe188000000b002c3cf02751esi3077581wrb.10.2023.02.03.12.35.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Feb 2023 12:35:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cAdR8ynd;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b9-20020a1709027e0900b00198a3655b0dsor1549679plm.16.2023.02.03.12.46.16
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 03 Feb 2023 12:46:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=FoimQh3o;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=iwd5Fgie;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id D98DA5C296;
-	Fri,  3 Feb 2023 20:35:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1675456526; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=t4DQXPc/X5fUbNeg2HxRM2Pr6KA5NGApVuBsRUVLFFg=;
-	b=FoimQh3o0l9hGPacNsJI0YN8s/0hEEnFUUJ6MEJ2KjzBud2t/PLUXLKZQau+y93CcxEgF0
-	fq/GdXcW4WAToJ/LRM/v0NID85uvhOcbGYSqsX2SrVPz5dMfc8jrHzqNs7qqPK2uLKoZTf
-	JDj9dz1e4A9V38px6bZPToLbwqmlb+M=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1675456526;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=t4DQXPc/X5fUbNeg2HxRM2Pr6KA5NGApVuBsRUVLFFg=;
-	b=iwd5FgieWBFuIThHoiyNkDo1oBI1EsBXCXUrL6pvCLQBTRChwOHmKxrsWA0dvuHfOagYtl
-	YW8XBtxRrr4/+wDw==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 621211358A;
-	Fri,  3 Feb 2023 20:35:26 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id MzR7Cg5w3WMrIgAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 03 Feb 2023 20:35:26 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Peter Maydell
- <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Wainer dos Santos
- Moschetta
- <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=cAdR8ynd;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=90r2rH7VmupffwVD+Rrrr2U62ktUsW4af1IcWoBsIHc=;
+        b=cAdR8yndVAnG5VibYma02cQlaT2uUofuD+mnwj+A2UocjAvr35AQrv6OdKQg5Cgcjk
+         tinLMh/r0UKu6RPYUlrbJxLl5D4NSuPQWk0IAEoikzFQukCVk9QZbSq0679D9ZIZ0D2b
+         gnds/9Fk53uQjebMyjQZTX0hcm5kkqlzdlxebcDtAb6FMZRBF7JZalKQ5Zmyt6izyPJ8
+         2BEmxLH/qyRmI/tw9W0C7UHgWP9lOQ7Osif9DIzJgj+ANB9nP3fa8GVhOrXG4vRYbBFH
+         BAdtx+tKMmHhGTK51UaR7mA6Fd2CA1UIlHcpMRUqySSil5/TXYJJTJscU9kkYT2VkWVt
+         4TTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=90r2rH7VmupffwVD+Rrrr2U62ktUsW4af1IcWoBsIHc=;
+        b=hI0YEyHPlrU1v3K7yQlOrq7NYlijv/BtBuPh3XTB8UMsFDFmsJknfvak8UWwCrKmAg
+         q+46nInEqJkOQP8ZLEWssfQcKvdgBuFyvYCnkZDeF1QqN4MZuIOJkodjmkWjVboDUCBP
+         0RTy+xznkHr9D9mFW7QL2dg+UzF1p1Em9siDxM2xkOfFYQ1lGPDzeCTGbSqnN1kKuRgk
+         pfZn96u9ycDEo42ToAXfuY4weRPahLjeM9QAp1EYpXNufpgsb/6gjHgMm4AFb2r0QVHh
+         Qeg20W5mpw6lKsyZlXmHZx4yBok807LnN+D6PwwI5Ch22QG34o1GDwaZih9SLKPf1+HL
+         /bUA==
+X-Gm-Message-State: AO0yUKVUodcF+c1N33EajCtmgFZjtqIZWGb+3SeEXLg9RKz49Ts6uHJC
+	Fn5dRaPuWLCzp/R3uUwAbjODq3gLh+oVpCbdYa8=
+X-Google-Smtp-Source: AK7set+XSWNXwBxOmzdkfd9RMPqGN0H0LVwj8E6QnkeJX8r8pvjRCH3Na+UzHwMz+NYnLpd7jYCYRg==
+X-Received: by 2002:a05:6a20:1442:b0:be:8fb1:9b11 with SMTP id a2-20020a056a20144200b000be8fb19b11mr15033890pzi.47.1675457176180;
+        Fri, 03 Feb 2023 12:46:16 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.50.177] (rrcs-173-197-98-118.west.biz.rr.com. [173.197.98.118])
+        by smtp.gmail.com with ESMTPSA id a77-20020a621a50000000b0058e12658485sm2316671pfa.94.2023.02.03.12.46.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 03 Feb 2023 12:46:15 -0800 (PST)
+Message-ID: <6be1085e-1909-45a3-741d-b2c8e1baaed0@linaro.org>
+Date: Fri, 3 Feb 2023 10:46:12 -1000
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
 Subject: Re: [RFC PATCH] tests/avocado: retire the Aarch64 TCG tests from
  boot_linux.py
-In-Reply-To: <20230203181632.2919715-1-alex.bennee@linaro.org>
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
 References: <20230203181632.2919715-1-alex.bennee@linaro.org>
-Date: Fri, 03 Feb 2023 17:35:23 -0300
-Message-ID: <87ilgia3n8.fsf@suse.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: W66QCkz6C2NH
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230203181632.2919715-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: MUht2CMGMmTv
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
-
+On 2/3/23 08:16, Alex Bennée wrote:
 > The two TCG tests for GICv2 and GICv3 are very heavy weight distros
 > that take a long time to boot up, especially for an --enable-debug
 > build. The total code coverage they give is:
->
->   Overall coverage rate:
->     lines......: 11.2% (59584 of 530123 lines)
->     functions..: 15.0% (7436 of 49443 functions)
->     branches...: 6.3% (19273 of 303933 branches)
->
+> 
+>    Overall coverage rate:
+>      lines......: 11.2% (59584 of 530123 lines)
+>      functions..: 15.0% (7436 of 49443 functions)
+>      branches...: 6.3% (19273 of 303933 branches)
+> 
 > We already get pretty close to that with the machine_aarch64_virt
 > tests which only does one full boot (~120s vs ~600s) of alpine. We
 > expand the kernel+initrd boot (~8s) to test both GICs and also add an
 > RNG device and a block device to generate a few IRQs and exercise the
 > storage layer. With that we get to a coverage of:
->
->   Overall coverage rate:
->     lines......: 11.0% (58121 of 530123 lines)
->     functions..: 14.9% (7343 of 49443 functions)
->     branches...: 6.0% (18269 of 303933 branches)
->
+> 
+>    Overall coverage rate:
+>      lines......: 11.0% (58121 of 530123 lines)
+>      functions..: 14.9% (7343 of 49443 functions)
+>      branches...: 6.0% (18269 of 303933 branches)
+> 
 > which I feel is close enough given the massive time saving. If we want
 > to target any more sub-systems we can use lighter weight more directed
 > tests.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
+> 
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> Cc: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   tests/avocado/boot_linux.py           | 48 ++++----------------
+>   tests/avocado/machine_aarch64_virt.py | 63 ++++++++++++++++++++++++---
+>   2 files changed, 65 insertions(+), 46 deletions(-)
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~

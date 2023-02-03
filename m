@@ -1,254 +1,310 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1463375ejb;
-        Fri, 3 Feb 2023 06:57:51 -0800 (PST)
-X-Google-Smtp-Source: AK7set/BLGDPO+nfD5220VFHiV28Hvu3Mw9hekeEI0m70uNJvYAb5VD4T+dXvES1Bkl9qW/0TC7A
-X-Received: by 2002:a05:622a:84:b0:3b9:bf43:fccd with SMTP id o4-20020a05622a008400b003b9bf43fccdmr16552473qtw.10.1675436271692;
-        Fri, 03 Feb 2023 06:57:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675436271; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1463541ejb;
+        Fri, 3 Feb 2023 06:58:04 -0800 (PST)
+X-Google-Smtp-Source: AK7set+vyESW1c74okT//zP/rf50yno3PtJdF9ZRMdTJ06cXZU/ZraSt1X6jO7J7iMVjVCo5Avc2
+X-Received: by 2002:a05:622a:1043:b0:3b6:3577:2fe7 with SMTP id f3-20020a05622a104300b003b635772fe7mr20893285qte.49.1675436284699;
+        Fri, 03 Feb 2023 06:58:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675436284; cv=none;
         d=google.com; s=arc-20160816;
-        b=UpCUA1QW4BquAYXpyopTlrfnx3SrQq+8A7qUNBm5StaVI1JCimV/AtPV7/P0MGmZd8
-         5eWMlRcNhMuJPYR1tgcbkXTwk7+9eVznoruYuY2qrXA9AbCyKH4r6n8NGYJQXsdwauXh
-         5aCxkN5aMkk/DrVo24FcEm9MF9HHnJ5Yjhla4LvjXDM/1WXwC6DctffqmNvZuokombzl
-         SqyzIiL4Ww6+We/OtFR+uuBYV7UzavDkounOqv59g5yN1QXtc/76Sc9vXnNoCVxDWEcP
-         z7A4yASD2xDI/SOyTz+/904IUqhYkuzpg4YZmYeKWSmhX2erhgsV6OZNryXakVIJSI8X
-         PJyA==
+        b=ATDFrl8nOmErTTKcS4bR34+mL9l5E6wBkLMMG/+5h+u1YrBXDTlx1j6hU4X23RED/U
+         HSsPtChS4SG+Sksb97AgitFxh+m3jBxivkypavzTNUWFh8CNejZab/V9/wBADrVqttF5
+         v/htOvN3OG889uhZNzgdr55aCeQrjKEn2l6E4kgS+uWR3Y8i1LzRPhJGW8NzjeCc1F3g
+         pV96KdpB7ipFyXJfpX4Cc3zK8P8ThfkskrTrl8Gvfej3DlfunDtOsUE8K1xsEl2ep+cW
+         Os0yyBgHafC6X+XVC9c0uwuSvKw4FN0kwR71kD7XWJH6J0Xj6RTKXj33/Zpyk//+HUFY
+         t3jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=T7gfeI3mnZ+Wy6rurWRcclNKo/AI2l33cgu5mda3V+c=;
-        b=W+rMR/TdeKLlrAuqMC5trfKXqLtdcsKsc8jDqu3+9NIVeLVcid4G3MiGOUuSUuA/ez
-         X+zlKTNI+NurWOFY5TKWiVPXM6lhrUfIvXwBiPj70Mj1lQBarfL5XPZiiNue0HTFl5cm
-         njkUEQcSAsR59l0lwpD3RlJjCJXncglcsgvBeHOqJT8+Gn6SVVHDlRSnqvHLoXCTmlz8
-         UKcWx39TmpWSWXZsYj3+oEWyByhqthGE79YGCXYEy9iF+tdVw9FSNz9xRk+5Q3dEBt5i
-         Oj1mDqoUDTfi/rwu4kWu3o7USSpOnFg8blyeFU00FxYbO6tAW+Azdy0VHLkf57luVvsg
-         s5Fw==
+        bh=dWk/17AxotpO2OiTLMBjakLfcxFYdT89H87fwCpt4bM=;
+        b=CPT3MhIdNVcSneSsgyqgHoRYR+7CRrV/jH2wgziYBxPYnrNTVCIKoP30CdQOTdmNf3
+         6UKv0kF+cD7nWVo5owbaCXWGOrz++8kBmJTWBrIHynIMoszJk4vf0Tm1LEp0HZjKNjVT
+         ToYuxqf1T9BOI+eM310sNx/58KGXJoZXkOC4mTVjMjN3wHxUTEMzlEHdRrG45Q7uIrH6
+         nZPIpGZwbxSAba8v0sH+TKD/WbkkQ/EZBr5dIrmRi1UuWVI2B0PsD5C8MceyxFHLogCG
+         7sgkcd5+qlt4BZXlsIcRWR31t8cP1H5SGlQJICjD2xpBTZU6dHhPFSvS00Qo9dILLjpO
+         39oQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zfE1tKdx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=V6lPwP4m;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j126-20020a37b984000000b006fc9e8c6f87si1963503qkf.705.2023.02.03.06.57.51
+        by mx.google.com with ESMTPS id c10-20020ac85a8a000000b003b9ba244f3dsi2033313qtc.167.2023.02.03.06.58.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 06:57:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Feb 2023 06:58:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zfE1tKdx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=V6lPwP4m;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pNxUB-0002WO-Tk; Fri, 03 Feb 2023 09:56:19 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pNxUq-0004iU-4R; Fri, 03 Feb 2023 09:57:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNxUA-0002Uz-EM
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 09:56:18 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNxUo-0004V2-C0
+ for qemu-arm@nongnu.org; Fri, 03 Feb 2023 09:56:58 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNxU7-0005xE-V4
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 09:56:18 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- k8-20020a05600c1c8800b003dc57ea0dfeso6214958wms.0
- for <qemu-devel@nongnu.org>; Fri, 03 Feb 2023 06:56:15 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNxUm-00066T-74
+ for qemu-arm@nongnu.org; Fri, 03 Feb 2023 09:56:58 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id q8so4060498wmo.5
+ for <qemu-arm@nongnu.org>; Fri, 03 Feb 2023 06:56:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=T7gfeI3mnZ+Wy6rurWRcclNKo/AI2l33cgu5mda3V+c=;
- b=zfE1tKdxzx0uKfjd8INXMPrMnB30oF7VsFg/WfIThH1WKj6dF5HDFNGOi1gnr7j8bv
- hHklH0PQrZ6CYOWT4Z6k4p3HUixcEmoLOI945v9q1D+eIQSdHwPX9iWqTYeGQ2goS5Kz
- qc6H3N5zdlQJLlue2g/+8PMOkG55OYiyl0oLLS6EzWqMgC4stLNsS9v7heAASRzz4j+K
- uCPPwTeNLi8a1VscZhIvUk93GFdsTlkR5cJnQ9BwNbUdLXj+7O9vr6JBZctYtrFMe2By
- aN3jnnZnvST1aYx52mQUEwI85pCD6s0oNCGgfITT4RbTT1D8KLZWsSx6glEjX61r0hFR
- MLrw==
+ bh=dWk/17AxotpO2OiTLMBjakLfcxFYdT89H87fwCpt4bM=;
+ b=V6lPwP4mC1QInCRGj5307s5pjCiA3lKNJkUvWVx8fuaigPxk6PbhynIY4EZDMGToJ5
+ Mbh5RPJZOYY1D3M1Xmq72e2vUUh2MJvYkUrl4vE7Tk7DiZEJHZ0M/aadotqv6B/KKNjT
+ RK8vkFsmTXOaMED8fAdbQxODS1T3EiGxu2bGq0SCeKAnk5Mf0dCQjbn6Y4YjBU4XU3Pn
+ +6Voic1JIfNOM0QPPQN8qhznpyCj7VxrSCvxiTD8e/tTXeKrPq48mc0sN8a3/vmaCtO0
+ zAz1tD7vIuaMIonMzXasOoTBFPphFNCXj610evAkNbgA/V744waaweh5LIltdFJ+3KQI
+ UpFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=T7gfeI3mnZ+Wy6rurWRcclNKo/AI2l33cgu5mda3V+c=;
- b=Ppnn/UCf6jGJliO8MyFvof3VDvOsjSx2HoBgYoHvSRbI67nmxVrx6Rwh/RJn1dmL2m
- SIhXF++Nq7U5Fj7jR+3UHF1ew6mz+OY5ZNq+HjglN0t/zExLfu/Uy/DlRbcpW6Pm0Eoz
- urM2/ZYNT/UNOyYylwOd3cuZMWO+Fx8AKJDMbIhHvXQeUlfWPjNgPHw4qlyJUNiVX6CS
- LMjkxg6vTMigAN9Kjc9IGyybq6tu1HkOzezchl06/sxW64uJYnYVzY/GGlisW3N3fIZs
- ByJ0QeepFZBjXi0TIobWo9Gk71xbgYstLDeKLXRrc4uZyXH9EgiaK6fcX4ruxTac/pTV
- 3ORw==
-X-Gm-Message-State: AO0yUKV5LgJOmHeTllmJPB2Zc2WL/ixMSYFs3fkbMSIiWugYNR5EhGFt
- 55svd4bTrUmJCximrFWaXSgGlQfb+hk4/Mnm
-X-Received: by 2002:a05:600c:314a:b0:3df:ee43:860b with SMTP id
- h10-20020a05600c314a00b003dfee43860bmr812324wmo.23.1675436174176; 
- Fri, 03 Feb 2023 06:56:14 -0800 (PST)
+ bh=dWk/17AxotpO2OiTLMBjakLfcxFYdT89H87fwCpt4bM=;
+ b=pP+NYxzabg/w4oPTD5lAu81E1/7vTK+pm3thOmmlOY+sDWiKPDyqjwpA9PeEYz40gj
+ kf5Je9iIvmmdxU2w/EDw7xQTOWuS9rY2ZWaAqDQh54gdLidS5ulGz9/9+3SKD21zi4Ew
+ 0Q+E75I36TCvZOwpdGNXmcemijlJRHR2xaP/0T3JsoB9Jk6SXii5y2xuUmJ1xYTMnAsk
+ XemFUi6FCphXYUB2Cehz8rLKvoX0qFbnuitI5vfcns0lyJJri1SaVyhTZBn3y34UJ2HG
+ hbe8EW6u1FxLpzDrTP1n8+qtRBDFjWS/F5EppR3h4+lK0H2EIg4h+dKkXMq/jlMeJlRL
+ IrLw==
+X-Gm-Message-State: AO0yUKWnMj5Kl/IBigNInIUXvjFDXSxVES7XdMU+Jl0Y1mGRRW/1km6j
+ FHbWD35XTohatESyldFRvpkfnw==
+X-Received: by 2002:a05:600c:3ba5:b0:3d3:4007:9c88 with SMTP id
+ n37-20020a05600c3ba500b003d340079c88mr12435443wms.18.1675436215514; 
+ Fri, 03 Feb 2023 06:56:55 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- r16-20020a05600c459000b003da28dfdedcsm3332092wmo.5.2023.02.03.06.56.13
+ l21-20020a05600c1d1500b003dc59d6f2f8sm3268871wms.17.2023.02.03.06.56.54
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 03 Feb 2023 06:56:13 -0800 (PST)
+ Fri, 03 Feb 2023 06:56:55 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 07/15] hw/arm/nrf51: Alias 'flash-size' QOM property in SoC
- object
-Date: Fri,  3 Feb 2023 15:55:28 +0100
-Message-Id: <20230203145536.17585-8-philmd@linaro.org>
+ Jiaxun Yang <jiaxun.yang@flygoat.com>
+Subject: [RFC PATCH v2 15/15] hw/mips/itu: Pass SAAR using QOM link property
+Date: Fri,  3 Feb 2023 15:55:36 +0100
+Message-Id: <20230203145536.17585-16-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230203145536.17585-1-philmd@linaro.org>
 References: <20230203145536.17585-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tQbIeuDjVRly
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1fnH6lmTmMQx
 
-No need to use an intermediate 'flash-size' property in the
-SoC object. Alias the property, so when the machine (here
-microbit) sets the value on the SoC, it is propagated to
-the flash object.
+QOM objects shouldn't access each other internals fields
+except using the QOM API.
+
+mips_cps_realize() instantiates a TYPE_MIPS_ITU object, and
+directly sets the 'saar' pointer:
+
+   if (saar_present) {
+       s->itu.saar = &env->CP0_SAAR;
+   }
+
+In order to avoid that, pass the MIPS_CPU object via a QOM
+link property, and set the 'saar' pointer in mips_itu_realize().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/microbit.c          |  5 ++++-
- hw/arm/nrf51_soc.c         | 10 +---------
- hw/nvram/nrf51_nvm.c       |  6 +++++-
- include/hw/arm/nrf51_soc.h |  1 -
- 4 files changed, 10 insertions(+), 12 deletions(-)
+RFC because not tested.
+---
+ hw/mips/cps.c              | 23 ++++++-----------------
+ hw/misc/mips_itu.c         | 26 ++++++++++++++++++--------
+ include/hw/misc/mips_itu.h |  5 ++---
+ 3 files changed, 26 insertions(+), 28 deletions(-)
 
-diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-index 50df362088..79b5574884 100644
---- a/hw/arm/microbit.c
-+++ b/hw/arm/microbit.c
-@@ -36,6 +36,7 @@ static void microbit_init(MachineState *machine)
-     MicrobitMachineState *s = MICROBIT_MACHINE(machine);
-     MemoryRegion *system_memory = get_system_memory();
-     MemoryRegion *mr;
-+    int64_t flash_size;
+diff --git a/hw/mips/cps.c b/hw/mips/cps.c
+index 38acc57468..2b5269ebf1 100644
+--- a/hw/mips/cps.c
++++ b/hw/mips/cps.c
+@@ -66,20 +66,17 @@ static bool cpu_mips_itu_supported(CPUMIPSState *env)
+ static void mips_cps_realize(DeviceState *dev, Error **errp)
+ {
+     MIPSCPSState *s = MIPS_CPS(dev);
+-    CPUMIPSState *env;
+-    MIPSCPU *cpu;
+-    int i;
+     target_ulong gcr_base;
+     bool itu_present = false;
+-    bool saar_present = false;
  
-     object_initialize_child(OBJECT(machine), "nrf51", &s->nrf51,
-                             TYPE_NRF51_SOC);
-@@ -43,6 +44,8 @@ static void microbit_init(MachineState *machine)
-     object_property_set_link(OBJECT(&s->nrf51), "memory",
-                              OBJECT(system_memory), &error_fatal);
-     sysbus_realize(SYS_BUS_DEVICE(&s->nrf51), &error_fatal);
-+    flash_size = object_property_get_int(OBJECT(&s->nrf51),
-+                                         "flash-size", &error_abort);
- 
-     /*
-      * Overlap the TWI stub device into the SoC.  This is a microbit-specific
-@@ -57,7 +60,7 @@ static void microbit_init(MachineState *machine)
-                                         mr, -1);
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
--                       0, s->nrf51.flash_size);
-+                       0, flash_size);
- }
- 
- static void microbit_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-index 34da0d62f0..cc4a636c51 100644
---- a/hw/arm/nrf51_soc.c
-+++ b/hw/arm/nrf51_soc.c
-@@ -24,9 +24,7 @@
-  * are supported in the future, add a sub-class of NRF51SoC for
-  * the specific variants
-  */
--#define NRF51822_FLASH_PAGES    256
- #define NRF51822_SRAM_PAGES     16
--#define NRF51822_FLASH_SIZE     (NRF51822_FLASH_PAGES * NRF51_PAGE_SIZE)
- #define NRF51822_SRAM_SIZE      (NRF51822_SRAM_PAGES * NRF51_PAGE_SIZE)
- 
- #define BASE_TO_IRQ(base) ((base >> 12) & 0x1F)
-@@ -122,11 +120,6 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
-                        BASE_TO_IRQ(NRF51_RNG_BASE)));
- 
-     /* UICR, FICR, NVMC, FLASH */
--    if (!object_property_set_uint(OBJECT(&s->nvm), "flash-size",
--                                  s->flash_size, errp)) {
--        return;
--    }
--
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->nvm), errp)) {
+     if (!clock_get(s->clock)) {
+         error_setg(errp, "CPS input clock is not connected to an output clock");
          return;
      }
-@@ -199,6 +192,7 @@ static void nrf51_soc_init(Object *obj)
-     object_initialize_child(obj, "rng", &s->rng, TYPE_NRF51_RNG);
  
-     object_initialize_child(obj, "nvm", &s->nvm, TYPE_NRF51_NVM);
-+    object_property_add_alias(obj, "flash-size", OBJECT(&s->nvm), "flash-size");
+-    for (i = 0; i < s->num_vp; i++) {
+-        cpu = MIPS_CPU(object_new(s->cpu_type));
++    for (int i = 0; i < s->num_vp; i++) {
++        MIPSCPU *cpu = MIPS_CPU(object_new(s->cpu_type));
++        CPUMIPSState *env = &cpu->env;
  
-     object_initialize_child(obj, "gpio", &s->gpio, TYPE_NRF51_GPIO);
+         /* All VPs are halted on reset. Leave powering up to CPC. */
+         if (!object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
+@@ -97,7 +94,6 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
+         cpu_mips_irq_init_cpu(cpu);
+         cpu_mips_clock_init(cpu);
  
-@@ -215,8 +209,6 @@ static Property nrf51_soc_properties[] = {
-     DEFINE_PROP_LINK("memory", NRF51State, board_memory, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-     DEFINE_PROP_UINT32("sram-size", NRF51State, sram_size, NRF51822_SRAM_SIZE),
--    DEFINE_PROP_UINT32("flash-size", NRF51State, flash_size,
--                       NRF51822_FLASH_SIZE),
-     DEFINE_PROP_END_OF_LIST(),
- };
+-        env = &cpu->env;
+         if (cpu_mips_itu_supported(env)) {
+             itu_present = true;
+             /* Attach ITC Tag to the VP */
+@@ -107,22 +103,15 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
+         qemu_register_reset(main_cpu_reset, cpu);
+     }
  
-diff --git a/hw/nvram/nrf51_nvm.c b/hw/nvram/nrf51_nvm.c
-index 7f1db8c423..bfae028fcd 100644
---- a/hw/nvram/nrf51_nvm.c
-+++ b/hw/nvram/nrf51_nvm.c
-@@ -26,6 +26,9 @@
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
+-    cpu = MIPS_CPU(first_cpu);
+-    env = &cpu->env;
+-    saar_present = (bool)env->saarp;
+-
+     /* Inter-Thread Communication Unit */
+     if (itu_present) {
+         object_initialize_child(OBJECT(dev), "itu", &s->itu, TYPE_MIPS_ITU);
++        object_property_set_link(OBJECT(&s->itu), "cpu[0]",
++                                 OBJECT(first_cpu), &error_abort);
+         object_property_set_uint(OBJECT(&s->itu), "num-fifo", 16,
+                                 &error_abort);
+         object_property_set_uint(OBJECT(&s->itu), "num-semaphores", 16,
+                                 &error_abort);
+-        object_property_set_bool(OBJECT(&s->itu), "saar-present", saar_present,
+-                                 &error_abort);
+-        if (saar_present) {
+-            s->itu.saar = &env->CP0_SAAR;
+-        }
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->itu), errp)) {
+             return;
+         }
+@@ -158,7 +147,7 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
+                             sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gic), 0));
  
-+#define NRF51822_FLASH_PAGES    256
-+#define NRF51822_FLASH_SIZE     (NRF51822_FLASH_PAGES * NRF51_PAGE_SIZE)
+     /* Global Configuration Registers */
+-    gcr_base = env->CP0_CMGCRBase << 4;
++    gcr_base = MIPS_CPU(first_cpu)->env.CP0_CMGCRBase << 4;
+ 
+     object_initialize_child(OBJECT(dev), "gcr", &s->gcr, TYPE_MIPS_GCR);
+     object_property_set_uint(OBJECT(&s->gcr), "num-vp", s->num_vp,
+diff --git a/hw/misc/mips_itu.c b/hw/misc/mips_itu.c
+index a06cdd10ea..0eda302db4 100644
+--- a/hw/misc/mips_itu.c
++++ b/hw/misc/mips_itu.c
+@@ -93,10 +93,10 @@ void itc_reconfigure(MIPSITUState *tag)
+     uint64_t size = (1 * KiB) + (am[1] & ITC_AM1_ADDR_MASK_MASK);
+     bool is_enabled = (am[0] & ITC_AM0_EN_MASK) != 0;
+ 
+-    if (tag->saar_present) {
+-        address = ((*(uint64_t *) tag->saar) & 0xFFFFFFFFE000ULL) << 4;
+-        size = 1ULL << ((*(uint64_t *) tag->saar >> 1) & 0x1f);
+-        is_enabled = *(uint64_t *) tag->saar & 1;
++    if (tag->saar) {
++        address = (tag->saar[0] & 0xFFFFFFFFE000ULL) << 4;
++        size = 1ULL << ((tag->saar[0] >> 1) & 0x1f);
++        is_enabled = tag->saar[0] & 1;
+     }
+ 
+     memory_region_transaction_begin();
+@@ -157,7 +157,7 @@ static inline ITCView get_itc_view(hwaddr addr)
+ static inline int get_cell_stride_shift(const MIPSITUState *s)
+ {
+     /* Minimum interval (for EntryGain = 0) is 128 B */
+-    if (s->saar_present) {
++    if (s->saar) {
+         return 7 + ((s->icr0 >> ITC_ICR0_BLK_GRAIN) &
+                     ITC_ICR0_BLK_GRAIN_MASK);
+     } else {
+@@ -515,6 +515,7 @@ static void mips_itu_init(Object *obj)
+ static void mips_itu_realize(DeviceState *dev, Error **errp)
+ {
+     MIPSITUState *s = MIPS_ITU(dev);
++    CPUMIPSState *env;
+ 
+     if (s->num_fifo > ITC_FIFO_NUM_MAX) {
+         error_setg(errp, "Exceed maximum number of FIFO cells: %d",
+@@ -526,6 +527,15 @@ static void mips_itu_realize(DeviceState *dev, Error **errp)
+                    s->num_semaphores);
+         return;
+     }
++    if (!s->cpu0) {
++        error_setg(errp, "Missing 'cpu[0]' property");
++        return;
++    }
 +
- /*
-  * FICR Registers Assignments
-  * CODEPAGESIZE      0x010
-@@ -358,7 +361,8 @@ static void nrf51_nvm_reset(DeviceState *dev)
- }
++    env = &s->cpu0->env;
++    if (env->saarp) {
++        s->saar = env->CP0_SAAR;
++    }
  
- static Property nrf51_nvm_properties[] = {
--    DEFINE_PROP_UINT32("flash-size", NRF51NVMState, flash_size, 0x40000),
-+    DEFINE_PROP_UINT32("flash-size", NRF51NVMState,
-+                       flash_size, NRF51822_FLASH_SIZE),
+     s->cell = g_new(ITCStorageCell, get_num_cells(s));
+ }
+@@ -534,8 +544,8 @@ static void mips_itu_reset(DeviceState *dev)
+ {
+     MIPSITUState *s = MIPS_ITU(dev);
+ 
+-    if (s->saar_present) {
+-        *(uint64_t *) s->saar = 0x11 << 1;
++    if (s->saar) {
++        s->saar[0] = 0x11 << 1;
+         s->icr0 = get_num_cells(s) << ITC_ICR0_CELL_NUM;
+     } else {
+         s->ITCAddressMap[0] = 0;
+@@ -553,7 +563,7 @@ static Property mips_itu_properties[] = {
+                       ITC_FIFO_NUM_MAX),
+     DEFINE_PROP_UINT32("num-semaphores", MIPSITUState, num_semaphores,
+                       ITC_SEMAPH_NUM_MAX),
+-    DEFINE_PROP_BOOL("saar-present", MIPSITUState, saar_present, false),
++    DEFINE_PROP_LINK("cpu[0]", MIPSITUState, cpu0, TYPE_MIPS_CPU, MIPSCPU *),
      DEFINE_PROP_END_OF_LIST(),
  };
  
-diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
-index e52a56e75e..8cf0c21614 100644
---- a/include/hw/arm/nrf51_soc.h
-+++ b/include/hw/arm/nrf51_soc.h
-@@ -45,7 +45,6 @@ struct NRF51State {
-     MemoryRegion twi;
+diff --git a/include/hw/misc/mips_itu.h b/include/hw/misc/mips_itu.h
+index ab6d286c38..35218b2d14 100644
+--- a/include/hw/misc/mips_itu.h
++++ b/include/hw/misc/mips_itu.h
+@@ -72,9 +72,8 @@ struct MIPSITUState {
+     uint64_t icr0;
  
-     uint32_t sram_size;
--    uint32_t flash_size;
+     /* SAAR */
+-    bool saar_present;
+-    void *saar;
+-
++    uint64_t *saar;
++    MIPSCPU *cpu0;
+ };
  
-     MemoryRegion *board_memory;
- 
+ /* Get ITC Configuration Tag memory region. */
 -- 
 2.38.1
 

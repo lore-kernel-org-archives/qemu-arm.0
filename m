@@ -1,111 +1,108 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1643151ejb;
-        Fri, 3 Feb 2023 10:11:06 -0800 (PST)
-X-Google-Smtp-Source: AK7set86GaLnM0q7YgTtDf8CPKRCdPoOsaWy5kwY/ivxduEzdy5zYkBjrj5IVmV332pHjRqGtQzi
-X-Received: by 2002:a05:6214:1fc9:b0:535:664b:772b with SMTP id jh9-20020a0562141fc900b00535664b772bmr15208457qvb.6.1675447865934;
-        Fri, 03 Feb 2023 10:11:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675447865; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1643178ejb;
+        Fri, 3 Feb 2023 10:11:07 -0800 (PST)
+X-Google-Smtp-Source: AK7set9ypRoO5zTVmryXMgwxcoYmkCs8BylwhsgIiCkxWOt30xYNjDH8X9gshpVvvije9ZCeMamg
+X-Received: by 2002:a0c:f787:0:b0:538:c780:8f28 with SMTP id s7-20020a0cf787000000b00538c7808f28mr14810608qvn.38.1675447866986;
+        Fri, 03 Feb 2023 10:11:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675447866; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lt8nBXasdO6ZBzVb9tarrUsBZwZGSmGInSorD2Hdpuf/IlDI+Jvc86wIWCgVt7/zRL
-         yIzUo/qkMgDvG4kFPj9cs3pkIWVTxaImqvqGUOeO8uGtMPts00fryRcMVXyY5Dov/CE9
-         mg2/4k4AWIcpsLR422W+0k25kNeIYnnVtkLUQ7KT2o/eCr0zp6KlMqDBDC10f+TjBrGf
-         o+YfQh5V3AvR1EA5YoiJoqWujt091nQeLKO2aAZ0WUGqfV6Nezwnat2e2NqE+pjgZLay
-         /80dHb8nCci8xXc6wkfaZENAKEGuTTDmXhF4WwqHQO4WgTppDNbycqepyOVrOGHl2UVC
-         42YA==
+        b=qRWevPSzMXCYIyQJH27OxSF4AIEEUjmKol/KiwD1RtNoAPyEMk/NeezWOmU/uvS0ej
+         Dk/fZYyPXjJ3vVGmCQMDfB1JH934KAQ2wq0UXkrSDOfdU6ZAt7jlA4i4cUFTi11/eN17
+         z+XSAhDDitvSd5MeJI1JuW3cLOjc/ZF4eIRzRiGW6KcuKFS4wDPiSMvFmhGORy53cFfc
+         6ZXe3EZrh5mwpkRQ+tkQa40TKke+8+cn3PPQM/01IqkZNQPG4CcK1ocYn4MJzqnpO+Jb
+         yUmEM3TnFkc6HKUh6SBH9nFeRhxbdJlAid5QXEZwL7UassXv7ynv2A1zK40T/zA2cbSu
+         698g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=SLTcZ2bERqFx5QJrSflHdKK5QKRI/+byta3hYLUUz0c=;
-        b=RCxWatGaw2hpwaQ0QN8yXdDUKTXonJ8ksvn/ItHAhPFc7M1dFXMQumCydL+Fxo1rV3
-         8vH1su5xSLy3c+yZykpJ2YxYrMqRKcUGfyiF8Hb8iqH5n+VGjlL1XdMYV2eufSZIYBk/
-         oURuHXPEjph2DpIHkaonWiwSDCzsxRt6OwcaFGmkvCS3uDj3S4pIOSXv/6qDPyMfeTDE
-         gqBjqDff9qarSvWUkv5JyfqQ5xpTVxvaFDdZiJ+n/Cumy8XIlmWBlUroDosYPenDHk7Y
-         LhAJ5MbNqhWIoY3GVxrfXjwVxmZcy7oCa1GsJ3J3ubZc5AadDOXkWxeT0VWtK8DfoOLY
-         nGyA==
+        bh=P/I3al5seYLenPgGBRZSaVfmIjm7PcZ28M3YPTxSCx8=;
+        b=CVAuZgBdgWUmpZlFSdqmPNrPY7VFH/NOLSwfvjYwTXkCw1SKDHhw83G/JPiSuXiN9s
+         DMJFd5DGa0H1VcFLgnXPFcQtgTTzau7yLlfbtpPF+o64hbriURfOPi0zz6sTF4k084z1
+         lOXp+DLGzEyG949CWPDE8lYKAK1nbm8RFHaIxNve4qZoXoO2X+EApifL9MllK9IvfaBt
+         W5KiWEo/PMj1KxWvmroVOJkr8DS975ylZKf3OdSAylSH20J8YgPsi8nfOQhbagV/juYw
+         UbfYaoTgvksH4sxs+QpnOPaKkJ1yr7kbqZBxmnVsKXRXSDkh2JA0SbxfeN40LSLk53A9
+         QMYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zvZlsVJv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="d/Ls8fK1";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b128-20020a379986000000b007065803b294si2456626qke.527.2023.02.03.10.11.05
+        by mx.google.com with ESMTPS id br38-20020a05620a462600b0071ad217fbb0si2971315qkb.85.2023.02.03.10.11.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 10:11:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Feb 2023 10:11:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zvZlsVJv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="d/Ls8fK1";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pO0WF-0001x9-Uh; Fri, 03 Feb 2023 13:10:40 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pO0W7-0000xm-6o; Fri, 03 Feb 2023 13:10:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0WD-0001nI-Vl
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 13:10:38 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0W3-0000bZ-Rk
+ for qemu-arm@nongnu.org; Fri, 03 Feb 2023 13:10:27 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0WC-0000DK-3K
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 13:10:37 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id bg26so4526878wmb.0
- for <qemu-devel@nongnu.org>; Fri, 03 Feb 2023 10:10:35 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0W1-0000DJ-GE
+ for qemu-arm@nongnu.org; Fri, 03 Feb 2023 13:10:27 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ q10-20020a1cf30a000000b003db0edfdb74so5949138wmq.1
+ for <qemu-arm@nongnu.org>; Fri, 03 Feb 2023 10:10:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SLTcZ2bERqFx5QJrSflHdKK5QKRI/+byta3hYLUUz0c=;
- b=zvZlsVJvQ9nVYz40xbEJsOTsWOExXlNi5m+ZWR11e2QgZdOlbijtW1EZV+9yYyttom
- qx/cONN4L24gJJ/b5iMak+z+CGG4sjTGq8RJDVKQlXkUFeP7es8lB3xKokC9GcBTVLyl
- seplGESIzoWOj+ioKMB/V9KcRLoilrWM069r/uvImip8xqqtk+ss1DhVGJrR9RYaZGp3
- 6GOe+Iq1VClsXRp+I1Uj4H3Y1hgXzAGWQKsZIscAtis+Q9rVXioUMnPgzpM5/evUAJmC
- EfrMEr6vLAys23XdlDl6QPEuhQCMmnjNdo65f/xcUID3GvN8axykf9Th2xh5KR/YY5O5
- nzvQ==
+ bh=P/I3al5seYLenPgGBRZSaVfmIjm7PcZ28M3YPTxSCx8=;
+ b=d/Ls8fK1E0DRDVhuJ+F4H2CDcQaF9fPPbMrilBLiBay3hEmtC0jjeYtWkvZ2oYjQqH
+ zs9+FGspjQcDMz6h3n3TtrC02ByY49ucsvslNbfru0f6lfliWLTi2pHOwbeJdFcfzghR
+ IeqsQj2szjrfjgIC+OQyFR41w9Uo2KsEQCrOGI9fPJjv4Tpb64jirxHRXYqG20hAEbpI
+ vbmL80dCP4sYb2/ngcf/RJ/rWRd6nzAFKNbYREA1xLQ4V/I8Ic1S2S2HJAuJfD93d6Lt
+ qRCE4SMLyOwdUw65f9vxOwHzltWyHXSC6jQt4Zq3goAh+6TUDUn2kvSJ1Lrk8H30ptnC
+ 8z0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=SLTcZ2bERqFx5QJrSflHdKK5QKRI/+byta3hYLUUz0c=;
- b=7lWs+twxjGoZa1IIF07eUIZjlYQJK2coP1JCNIPtZRtlvbw3xWRQhLxmQrtUxZsE33
- Il2fvpXTpo1lIJvTVFXG3xvj82ZmKvcOCbm7LIP7mze9/CpYCCli6WbZdHd5XYAcLmB0
- cN2WMrU6/0j0WJQeu963XmC+pZCaJN3yva70MOD+9PPneSfMRPSBjjrHWeIaQGx7Dcdn
- SaVR4QsfDuq3g5OjLFqidtt1POlc0wndLruGXDQQNLdRgLAKNpGM9rgqff3843ltqcn0
- AODIz1qNAgi57kgVKq84gCjX0ZvQH+0CZB+bAvr+7QoS4hnllMXmHDPzmaCVymncxqSg
- FvWA==
-X-Gm-Message-State: AO0yUKWE9BP9zIuhNyDd8Y+4Ja8Cds43x/qidpEvlNmX7C5fPZiuoJs4
- NTCSkarzHNSHwHO6AwxmHtSGmOUPkr60L5QJ
-X-Received: by 2002:a05:600c:35c6:b0:3de:56a8:ae6b with SMTP id
- r6-20020a05600c35c600b003de56a8ae6bmr4915919wmq.34.1675447835110; 
- Fri, 03 Feb 2023 10:10:35 -0800 (PST)
+ bh=P/I3al5seYLenPgGBRZSaVfmIjm7PcZ28M3YPTxSCx8=;
+ b=QEEe4NKW+A4JNGf/nVUAztSCAuBDvYHoCii6PZUNTKrRWmOH8T1mx7Y3BBwiigh+qE
+ N9VqZt7VA7KzBORm3Fpba4msEWOxLERfhU2+cmbBhrZf2ICtdYOpFMMquuRa8X0nVf5+
+ 19wA30ALJoeijbIFh6Z20SfIOG+akeO3mby/i5WNsCGILzgTCLATbMFCv/e1dtv/F1R6
+ 3OzbJwufGKXHC3DJHB+wGMUCTMo6h2LOwetF0IYizGdyuQ8aYe13yEhknK98jlCyX8QR
+ DuEtRT7kW0zQbFjPEUAGFmjjjJ/c5FI6tp6x1rfdDHaw8mjOg95TMh5jcnJNYK/hgTOX
+ ARBg==
+X-Gm-Message-State: AO0yUKX4hfGUSpip0qXF9uipvKD/hi+O9tnBarZ7Y7d/XOHeMtW4C4U7
+ owMEib7oEl51BuBbO+Aebw80Aw==
+X-Received: by 2002:a05:600c:5113:b0:3d0:761b:f86 with SMTP id
+ o19-20020a05600c511300b003d0761b0f86mr10859031wms.28.1675447824117; 
+ Fri, 03 Feb 2023 10:10:24 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- m2-20020a05600c4f4200b003dc522dd25esm3702947wmq.30.2023.02.03.10.10.33
+ n6-20020a05600c4f8600b003daf672a616sm3657304wmq.22.2023.02.03.10.10.22
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 03 Feb 2023 10:10:34 -0800 (PST)
+ Fri, 03 Feb 2023 10:10:23 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, qemu-riscv@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: [RFC PATCH 15/19] hw/mips: Set QDev properties using QDev API
-Date: Fri,  3 Feb 2023 19:09:10 +0100
-Message-Id: <20230203180914.49112-16-philmd@linaro.org>
+ Thomas Huth <huth@tuxfamily.org>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH 13/19] hw/m68k: Set QDev properties using QDev API
+Date: Fri,  3 Feb 2023 19:09:08 +0100
+Message-Id: <20230203180914.49112-14-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230203180914.49112-1-philmd@linaro.org>
 References: <20230203180914.49112-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,20 +111,20 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ebl8TSOfvfh9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bEjnHhRSAVO0
 
 No need to use the low-level QOM API when an object
 inherits from QDev. Directly use the QDev API to set
@@ -135,141 +132,55 @@ its properties.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/mips/boston.c |  6 ++----
- hw/mips/cps.c    | 42 ++++++++++++++----------------------------
- hw/mips/jazz.c   |  3 +--
- hw/mips/malta.c  |  6 ++----
- 4 files changed, 19 insertions(+), 38 deletions(-)
+ hw/m68k/next-cube.c | 2 +-
+ hw/m68k/q800.c      | 7 +++----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index 21ad844519..f3c2179f66 100644
---- a/hw/mips/boston.c
-+++ b/hw/mips/boston.c
-@@ -700,10 +700,8 @@ static void boston_mach_init(MachineState *machine)
-     }
+diff --git a/hw/m68k/next-cube.c b/hw/m68k/next-cube.c
+index e0d4a94f9d..460b84c6e6 100644
+--- a/hw/m68k/next-cube.c
++++ b/hw/m68k/next-cube.c
+@@ -966,7 +966,7 @@ static void next_cube_init(MachineState *machine)
  
-     object_initialize_child(OBJECT(machine), "cps", &s->cps, TYPE_MIPS_CPS);
--    object_property_set_str(OBJECT(&s->cps), "cpu-type", machine->cpu_type,
--                            &error_fatal);
--    object_property_set_uint(OBJECT(&s->cps), "num-vp", machine->smp.cpus,
--                            &error_fatal);
-+    qdev_prop_set_string(DEVICE(&s->cps), "cpu-type", machine->cpu_type);
-+    qdev_prop_set_uint32(DEVICE(&s->cps), "num-vp", machine->smp.cpus);
-     qdev_connect_clock_in(DEVICE(&s->cps), "clk-in",
-                           qdev_get_clock_out(dev, "cpu-refclk"));
-     sysbus_realize(SYS_BUS_DEVICE(&s->cps), &error_fatal);
-diff --git a/hw/mips/cps.c b/hw/mips/cps.c
-index 2b5269ebf1..3109644c5e 100644
---- a/hw/mips/cps.c
-+++ b/hw/mips/cps.c
-@@ -79,10 +79,8 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-         CPUMIPSState *env = &cpu->env;
+     /* Peripheral Controller */
+     pcdev = qdev_new(TYPE_NEXT_PC);
+-    object_property_set_link(OBJECT(pcdev), "cpu", OBJECT(cpu), &error_abort);
++    qdev_prop_set_link(pcdev, "cpu", OBJECT(cpu));
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(pcdev), &error_fatal);
  
-         /* All VPs are halted on reset. Leave powering up to CPC. */
--        if (!object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
--                                      errp)) {
--            return;
--        }
-+        qdev_prop_set_bit(DEVICE(cpu), "start-powered-off", true);
-+
-         /* All cores use the same clock tree */
-         qdev_connect_clock_in(DEVICE(cpu), "clk-in", s->clock);
+     /* 64MB RAM starting at 0x04000000  */
+diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+index 9d52ca6613..1f363a666c 100644
+--- a/hw/m68k/q800.c
++++ b/hw/m68k/q800.c
+@@ -427,7 +427,7 @@ static void q800_init(MachineState *machine)
  
-@@ -106,12 +104,9 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-     /* Inter-Thread Communication Unit */
-     if (itu_present) {
-         object_initialize_child(OBJECT(dev), "itu", &s->itu, TYPE_MIPS_ITU);
--        object_property_set_link(OBJECT(&s->itu), "cpu[0]",
--                                 OBJECT(first_cpu), &error_abort);
--        object_property_set_uint(OBJECT(&s->itu), "num-fifo", 16,
--                                &error_abort);
--        object_property_set_uint(OBJECT(&s->itu), "num-semaphores", 16,
--                                &error_abort);
-+        qdev_prop_set_link(DEVICE(&s->itu), "cpu[0]", OBJECT(first_cpu));
-+        qdev_prop_set_uint32(DEVICE(&s->itu), "num-fifo", 16);
-+        qdev_prop_set_uint32(DEVICE(&s->itu), "num-semaphores", 16);
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->itu), errp)) {
-             return;
-         }
-@@ -122,10 +117,8 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
+     /* IRQ Glue */
+     glue = qdev_new(TYPE_GLUE);
+-    object_property_set_link(OBJECT(glue), "cpu", OBJECT(cpu), &error_abort);
++    qdev_prop_set_link(glue, "cpu", OBJECT(cpu));
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(glue), &error_fatal);
  
-     /* Cluster Power Controller */
-     object_initialize_child(OBJECT(dev), "cpc", &s->cpc, TYPE_MIPS_CPC);
--    object_property_set_uint(OBJECT(&s->cpc), "num-vp", s->num_vp,
--                            &error_abort);
--    object_property_set_int(OBJECT(&s->cpc), "vp-start-running", 1,
--                            &error_abort);
-+    qdev_prop_set_uint32(DEVICE(&s->cpc), "num-vp", s->num_vp);
-+    qdev_prop_set_uint64(DEVICE(&s->cpc), "vp-start-running", 0x1);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->cpc), errp)) {
-         return;
-     }
-@@ -135,10 +128,8 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
+     /* VIA 1 */
+@@ -483,8 +483,7 @@ static void q800_init(MachineState *machine)
+     qdev_set_nic_properties(dev, &nd_table[0]);
+     qdev_prop_set_uint8(dev, "it_shift", 2);
+     qdev_prop_set_bit(dev, "big_endian", true);
+-    object_property_set_link(OBJECT(dev), "dma_mr",
+-                             OBJECT(get_system_memory()), &error_abort);
++    qdev_prop_set_link(dev, "dma_mr", OBJECT(get_system_memory()));
+     sysbus = SYS_BUS_DEVICE(dev);
+     sysbus_realize_and_unref(sysbus, &error_fatal);
+     sysbus_mmio_map(sysbus, 0, SONIC_BASE);
+@@ -520,7 +519,7 @@ static void q800_init(MachineState *machine)
  
-     /* Global Interrupt Controller */
-     object_initialize_child(OBJECT(dev), "gic", &s->gic, TYPE_MIPS_GIC);
--    object_property_set_uint(OBJECT(&s->gic), "num-vp", s->num_vp,
--                            &error_abort);
--    object_property_set_uint(OBJECT(&s->gic), "num-irq", 128,
--                            &error_abort);
-+    qdev_prop_set_uint32(DEVICE(&s->gic), "num-vp", s->num_vp);
-+    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", 128);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
-         return;
-     }
-@@ -150,16 +141,11 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-     gcr_base = MIPS_CPU(first_cpu)->env.CP0_CMGCRBase << 4;
- 
-     object_initialize_child(OBJECT(dev), "gcr", &s->gcr, TYPE_MIPS_GCR);
--    object_property_set_uint(OBJECT(&s->gcr), "num-vp", s->num_vp,
--                            &error_abort);
--    object_property_set_int(OBJECT(&s->gcr), "gcr-rev", 0x800,
--                            &error_abort);
--    object_property_set_int(OBJECT(&s->gcr), "gcr-base", gcr_base,
--                            &error_abort);
--    object_property_set_link(OBJECT(&s->gcr), "gic", OBJECT(&s->gic.mr),
--                             &error_abort);
--    object_property_set_link(OBJECT(&s->gcr), "cpc", OBJECT(&s->cpc.mr),
--                             &error_abort);
-+    qdev_prop_set_uint32(DEVICE(&s->gcr), "num-vp", s->num_vp);
-+    qdev_prop_set_int32(DEVICE(&s->gcr), "gcr-rev", 0x800);
-+    qdev_prop_set_uint64(DEVICE(&s->gcr), "gcr-base", gcr_base);
-+    qdev_prop_set_link(DEVICE(&s->gcr), "gic", OBJECT(&s->gic.mr));
-+    qdev_prop_set_link(DEVICE(&s->gcr), "cpc", OBJECT(&s->cpc.mr));
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gcr), errp)) {
-         return;
-     }
-diff --git a/hw/mips/jazz.c b/hw/mips/jazz.c
-index 6aefe9a61b..d18aeb439b 100644
---- a/hw/mips/jazz.c
-+++ b/hw/mips/jazz.c
-@@ -302,8 +302,7 @@ static void mips_jazz_init(MachineState *machine,
-             qdev_set_nic_properties(dev, nd);
-             qdev_prop_set_uint8(dev, "it_shift", 2);
-             qdev_prop_set_bit(dev, "big_endian", big_endian > 0);
--            object_property_set_link(OBJECT(dev), "dma_mr",
--                                     OBJECT(rc4030_dma_mr), &error_abort);
-+            qdev_prop_set_link(dev, "dma_mr", OBJECT(rc4030_dma_mr));
-             sysbus = SYS_BUS_DEVICE(dev);
-             sysbus_realize_and_unref(sysbus, &error_fatal);
-             sysbus_mmio_map(sysbus, 0, 0x80001000);
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index af9021316d..3b88668bae 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -1064,10 +1064,8 @@ static void create_cps(MachineState *ms, MaltaState *s,
-                        qemu_irq *cbus_irq, qemu_irq *i8259_irq)
- {
-     object_initialize_child(OBJECT(s), "cps", &s->cps, TYPE_MIPS_CPS);
--    object_property_set_str(OBJECT(&s->cps), "cpu-type", ms->cpu_type,
--                            &error_fatal);
--    object_property_set_uint(OBJECT(&s->cps), "num-vp", ms->smp.cpus,
--                            &error_fatal);
-+    qdev_prop_set_string(DEVICE(&s->cps), "cpu-type", ms->cpu_type);
-+    qdev_prop_set_uint32(DEVICE(&s->cps), "num-vp", ms->smp.cpus);
-     qdev_connect_clock_in(DEVICE(&s->cps), "clk-in", s->cpuclk);
-     sysbus_realize(SYS_BUS_DEVICE(&s->cps), &error_fatal);
- 
+     /* Logically OR both its IRQs together */
+     escc_orgate = DEVICE(object_new(TYPE_OR_IRQ));
+-    object_property_set_int(OBJECT(escc_orgate), "num-lines", 2, &error_fatal);
++    qdev_prop_set_uint16(escc_orgate, "num-lines", 2);
+     qdev_realize_and_unref(escc_orgate, NULL, &error_fatal);
+     sysbus_connect_irq(sysbus, 0, qdev_get_gpio_in(escc_orgate, 0));
+     sysbus_connect_irq(sysbus, 1, qdev_get_gpio_in(escc_orgate, 1));
 -- 
 2.38.1
 

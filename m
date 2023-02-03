@@ -1,121 +1,89 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1426760ejb;
-        Fri, 3 Feb 2023 06:12:16 -0800 (PST)
-X-Google-Smtp-Source: AK7set/90IqX2wQ0MQqMj9BWt6gfBckWgtYVRvj4IJru/kZRjc3qvBqHo+o2QoWBJhADtelvU+4w
-X-Received: by 2002:a05:622a:413:b0:3b9:a4fe:e86c with SMTP id n19-20020a05622a041300b003b9a4fee86cmr19851518qtx.16.1675433536541;
-        Fri, 03 Feb 2023 06:12:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675433536; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1429385ejb;
+        Fri, 3 Feb 2023 06:15:16 -0800 (PST)
+X-Google-Smtp-Source: AK7set/xPLnIIlhj6ZxpQTCwnFxXudC1hmDfuBuCjkTDAcKl/4G6i703klkQ/X82xbmh29S1LNXW
+X-Received: by 2002:a05:622a:1003:b0:3b8:6d8d:e7b1 with SMTP id d3-20020a05622a100300b003b86d8de7b1mr16807258qte.38.1675433716487;
+        Fri, 03 Feb 2023 06:15:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675433716; cv=none;
         d=google.com; s=arc-20160816;
-        b=ir+tAfuWu9O9rVGEdveeG4E+lwr97F/1TtH5XP8WAjbhrYe4tpZvDnZjx7c82/CtWP
-         qotzr57psd3InqN2Wp8xg4C7ZKxtA2Qaum3bVtEfo4ik952jV9IAVRRnJeLWsmCJMv0D
-         kYTDek80tcY0KR5bBXkK3sylGYAYQUVgFEcV9F3Csw8qCBmFHy/3M6zwwd4agsvMDxHX
-         Q14yvBj+5nrx6csCgcPkP6312kwB4BLd7fIRCD1GtSn/cn441gyxaih34P6TQbecCqIb
-         vsjgCfSJGacTPpsrx5NiSpywnJ+VO/3V5LjX7jUQqTWQPi9vqU4lqRjV0yi7GjmnS5Gy
-         +P/w==
+        b=jMhSlfPGrh9j7JxZ0LN2qKIk91iZMq2l+sKQtdF1nZV7iYEj4wO1e8UGM4Q5ndM24C
+         2ULfxYRkFzzew3Jyx0IK9eWC0w6CMLQmRHfv+JVA+bfpWnfaK6hQrl0mNpwoN6JWlAS8
+         jnU7rap0Iyf1y83+d6O7pj1ENsLusnTTmO1TDERpd1QRv4EBCxrk/ZoDa8UwOtRrQQ7R
+         it76x4hDJOx0WNuMYJJpMyEunmZ9pNPQtnojYWAjT+nrbENFNmYzjh5tymGLTwu4mb/O
+         JGMQfqxtCRmPUYSZfv7MIQ41a+8BSz24g0G2ScXYI1cZ1YP6iHCgbzqYAx9By2QnxOLK
+         0yog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=MGTuyaL3Srri9dYaCvD4PHJ8XHymtwxMYrYDAsSLUN0=;
-        b=0+NTVD6SARLjc0qznDZqesVyuwKih5qbynHkfks5V+pt3uuPZTFOe+Ja6cg8FsKw96
-         fUMB6nFF1WTi5hyLumnE2UN9myUmZtuaPZRlcndFAGa+h0Gd/McO68C21oRlfMzzegiX
-         I9/BRRus4ZzPxwd1VuMsJYt4GbsIEBUOrNNhhIOhoPLocFJVRRR1xvSfPlQp816jIw+C
-         nLcljL6k1qexMRg27fAmeqLyWnaOZOyoh+8uUaS0O/j+64ZuGr6kG2AMONPXxfVUWZhq
-         sjkCr25WI9dJUtMJOa1/zkKyw7XNxc4iePNMpISr2lNG0+YENL2kAKVKTMm9XNeVSy/B
-         wuZQ==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=64zldjJ2/VeYTxlVS3FHyC/vDGto68fv5bltzEwJxCI=;
+        b=UTcft0YMJRWzSpLXM15DblZLRWdSIGZH8YHemi9Ya3G+Vc3yKS6offj2zvmIvaZ3ba
+         qvY7gt+3WRtp9Gwx/ZsXjKDiQhJUFyYwXzYxa95ODGL+k3/oeaGjl8FqC9eFNew5LE9j
+         CTy+sscnJs56lQMPIRMPIhRX8XI4XlQ5CdWeoogZUSlIp4VXPPqf9U6c22Hp/z3DfylX
+         rbp1z2c7ig7VDfa3YMT7/+WpZIAZuQ7lAMUZ2WJgbUkto7B+v9pbwRG4t9MRrh6uMH5w
+         RVrcOzskur21ezG+aoxIi9UrtHqoD+zKh2b+L4BFzJ3lOogDoeJrDoIfU7UtMn6tryom
+         BnPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mkS4H0Ga;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17-20020a05620a449100b007301dd82ed3si48108qkp.548.2023.02.03.06.12.16
+        by mx.google.com with ESMTPS id y20-20020a05622a165400b003b81a2a75easi1920317qtj.645.2023.02.03.06.15.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 06:12:16 -0800 (PST)
+        Fri, 03 Feb 2023 06:15:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mkS4H0Ga;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pNwnD-0006Lk-4X; Fri, 03 Feb 2023 09:11:56 -0500
+	id 1pNwq8-0007hT-6x; Fri, 03 Feb 2023 09:14:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNwn9-0006Jo-Sh
- for qemu-arm@nongnu.org; Fri, 03 Feb 2023 09:11:52 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNwn6-000126-Vx
- for qemu-arm@nongnu.org; Fri, 03 Feb 2023 09:11:51 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- q10-20020a1cf30a000000b003db0edfdb74so5652752wmq.1
- for <qemu-arm@nongnu.org>; Fri, 03 Feb 2023 06:11:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=MGTuyaL3Srri9dYaCvD4PHJ8XHymtwxMYrYDAsSLUN0=;
- b=mkS4H0Ga/Q10UpyP/kiF6pTm8fb0F/UmALBGfwBUloXz2l8WwgBYF9gEKPmhFyaBHB
- K0d+uXJQpn8vYBokgPvaTThi8uuaYmurBJqhtaZSNOJI/9s1TGPaPeE18ma8MKREe6bb
- tTE0TXuUbW8sSVRYLeuMCa24k+da0Q+1uoVx0silTJ2JEvbrMOnN+MOYrm64ZdaWrEN+
- x2xM4g0qzQXwH8HqvgjwmW5fukS1mS2AmzspTRSxt1v470TGZZlxCVSMjG/zjYphQvET
- +YB7qA9/c3mbQIW2BcV1RCQna7EvdY2boJ5LjujNAayzKUyiedWUIPuvbD/0SwbuLXps
- xvKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=MGTuyaL3Srri9dYaCvD4PHJ8XHymtwxMYrYDAsSLUN0=;
- b=cWdtC9U/9PcTMFlxKjXaujzjI+SmTVIwUbbtfqQZqfoGRv2hFvWzoiaVaHqcptRyx4
- u3gxNi+iVP1JebeuncwRmJzPwKT0peOn0FPvf/1SBbxqiqdqPOiUvdALxRkfPz0znzfB
- 6e9lSK3cIw+kHFfUmdBvX9PmmmZ20kacj5sbLNdR6a/1bwSDxoet2o/hHrD9+bO490VB
- d8itCkJM2jx8Oxiq1bfcg2ZYjGJAL+Nl7orN+AbaTR6y1U0YMIsWdgXHzWMVT5cNGmm0
- pbqtwAP1qW7inOhSyIp7ToPI/NBvqOZZj2lAmVhZoQQbeiCpK7p3R7b9aOrJMbb67HXo
- 6/4A==
-X-Gm-Message-State: AO0yUKXG9dBcU166+lz23ks0q0PoS4OIpFyPBgtHviiqolkXK/9TX/w5
- oICqaoRMkVZf6fgh7rlGOWAGog==
-X-Received: by 2002:a05:600c:1d13:b0:3dc:5abb:2f50 with SMTP id
- l19-20020a05600c1d1300b003dc5abb2f50mr9374456wms.19.1675433507220; 
- Fri, 03 Feb 2023 06:11:47 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- m4-20020a05600c4f4400b003dc36981727sm9009377wmq.14.2023.02.03.06.11.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Feb 2023 06:11:46 -0800 (PST)
-Message-ID: <91463ac0-f2ea-d225-30da-90efed93ac28@linaro.org>
-Date: Fri, 3 Feb 2023 15:11:45 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH 6/9] hw/display/sm501: QOM-alias 'dma-offset' property in
- chipset object
-Content-Language: en-US
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, Eduardo Habkost
- <eduardo@habkost.net>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1pNwq7-0007hH-Br; Fri, 03 Feb 2023 09:14:55 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1pNwq5-0001mT-1Y; Fri, 03 Feb 2023 09:14:55 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id D5D22746392;
+ Fri,  3 Feb 2023 15:12:21 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 9A854745712; Fri,  3 Feb 2023 15:12:21 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 98D057456E3;
+ Fri,  3 Feb 2023 15:12:21 +0100 (CET)
+Date: Fri, 3 Feb 2023 15:12:21 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
+ Markus Armbruster <armbru@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, 
+ Yoshinori Sato <ysato@users.sourceforge.jp>, 
  Magnus Damm <magnus.damm@gmail.com>
+Subject: Re: [PATCH 6/9] hw/display/sm501: QOM-alias 'dma-offset' property
+ in chipset object
+In-Reply-To: <91463ac0-f2ea-d225-30da-90efed93ac28@linaro.org>
+Message-ID: <bdb1403e-d610-9755-d963-3a7864581245@eik.bme.hu>
 References: <20230203113650.78146-1-philmd@linaro.org>
  <20230203113650.78146-7-philmd@linaro.org>
  <136f25e8-686a-1529-b114-08dd54e6b819@eik.bme.hu>
  <075577d7-d5c4-393b-9d0d-2aab32abe957@linaro.org>
  <27fc6a3d-78b4-91f7-6f05-8c0cbd1ef125@eik.bme.hu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <27fc6a3d-78b4-91f7-6f05-8c0cbd1ef125@eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <91463ac0-f2ea-d225-30da-90efed93ac28@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="3866299591-1226957222-1675433541=:62709"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,44 +98,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5F9qLgICZA+C
+X-TUID: RA9Dyz5ro6Vm
 
-On 3/2/23 14:50, BALATON Zoltan wrote:
-> On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
->> On 3/2/23 14:05, BALATON Zoltan wrote:
->>> On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
->>>> No need to use an intermediate 'dma-offset' property in the
->>>> chipset object. Alias the property, so when the machine (here
->>>> r2d-plus) sets the value on the chipset, it is propagated to
->>>> the OHCI object.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>> ---
->>>> hw/display/sm501.c | 22 +++++++++++-----------
->>>> hw/sh4/r2d.c       |  2 +-
->>>> 2 files changed, 12 insertions(+), 12 deletions(-)
->>>
->>> It does not seem to be any simpler by the number of lines but maybe a 
->>> bit cleaner.
->>
->> Well it also moves to the "Embed QOM objects" pattern which Peter 
->> prefers.
->> Note this device doesn't implement unrealize().
-> 
-> True. Maybe worth mentioning in the commit message to make this more 
-> explicit. I saw it in the patch but did not think about that.
-> 
->>> I wonder if it would worth renaming the property to dma-offset to 
->>> match that of ohci so it's less confusing what it refers to. It's 
->>> only used by r2d and this patch already changing that so would be an 
->>> easy change.
->>
->> We can't because TYPE_PCI_SM501 is user-creatable, so we need to
->> go thru the whole deprecation process and we don't have any API to
->> deprecate QOM properties yet.
-> 
-> But the sm501 PCI device only creates the display part hence it has no 
-> base option only vram-size (see sm501_pci_properties) so only the sysbus 
-> version has this property. Is this still a problem in that case?
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Oh you are right, I misread the PCI/sysbus functions. Lucky me, thanks!
+--3866299591-1226957222-1675433541=:62709
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+
+On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
+> On 3/2/23 14:50, BALATON Zoltan wrote:
+>> On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
+>>> On 3/2/23 14:05, BALATON Zoltan wrote:
+>>>> On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
+>>>>> No need to use an intermediate 'dma-offset' property in the
+>>>>> chipset object. Alias the property, so when the machine (here
+>>>>> r2d-plus) sets the value on the chipset, it is propagated to
+>>>>> the OHCI object.
+>>>>> 
+>>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>>> ---
+>>>>> hw/display/sm501.c | 22 +++++++++++-----------
+>>>>> hw/sh4/r2d.c       |  2 +-
+>>>>> 2 files changed, 12 insertions(+), 12 deletions(-)
+>>>> 
+>>>> It does not seem to be any simpler by the number of lines but maybe a bit 
+>>>> cleaner.
+>>> 
+>>> Well it also moves to the "Embed QOM objects" pattern which Peter prefers.
+>>> Note this device doesn't implement unrealize().
+>> 
+>> True. Maybe worth mentioning in the commit message to make this more 
+>> explicit. I saw it in the patch but did not think about that.
+>> 
+>>>> I wonder if it would worth renaming the property to dma-offset to match 
+>>>> that of ohci so it's less confusing what it refers to. It's only used by 
+>>>> r2d and this patch already changing that so would be an easy change.
+>>> 
+>>> We can't because TYPE_PCI_SM501 is user-creatable, so we need to
+>>> go thru the whole deprecation process and we don't have any API to
+>>> deprecate QOM properties yet.
+>> 
+>> But the sm501 PCI device only creates the display part hence it has no base 
+>> option only vram-size (see sm501_pci_properties) so only the sysbus version 
+>> has this property. Is this still a problem in that case?
+>
+> Oh you are right, I misread the PCI/sysbus functions. Lucky me, thanks!
+
+And I've just realized then we also don't need separate 
+sm501_sysbus_properties[] and sm501_pci_properties[] so you can just keep 
+one and call it sm501_properties.
+
+Regards,
+BALATON Zoltan
+--3866299591-1226957222-1675433541=:62709--

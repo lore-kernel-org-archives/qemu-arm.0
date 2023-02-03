@@ -1,198 +1,327 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1298530ejb;
-        Fri, 3 Feb 2023 03:39:01 -0800 (PST)
-X-Google-Smtp-Source: AK7set8vxGLqS0w9yoG/x6UXM8nxWH+9fwsi9jMUkXms25Cvb9hUY+dFI09LZVoIKPU9bRBFjYFy
-X-Received: by 2002:a05:6214:5092:b0:56a:8d2a:8ef9 with SMTP id kk18-20020a056214509200b0056a8d2a8ef9mr596324qvb.35.1675424341412;
-        Fri, 03 Feb 2023 03:39:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675424341; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1298574ejb;
+        Fri, 3 Feb 2023 03:39:05 -0800 (PST)
+X-Google-Smtp-Source: AK7set/4u0HDqKregjIt5XM0mz3/nrgtQLF+APaSBNz8+tWDcZyOH1vwFyHrEOu5bCSA5ztKK9hD
+X-Received: by 2002:a05:6214:1fc2:b0:53a:a39f:b24e with SMTP id jh2-20020a0562141fc200b0053aa39fb24emr12863886qvb.11.1675424345304;
+        Fri, 03 Feb 2023 03:39:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675424345; cv=none;
         d=google.com; s=arc-20160816;
-        b=JKigx50IocMJgPMzRHmfBtExuhQvAnI04M3KRW0qxg1XrGImfhQ/QmDFgKFM74ZJwc
-         TdYEAR4T9IguO3kofZUKDpvUc0N4ktspqr63syQiHcNf5yZe8zfH2rx6Xe3yEnM6nIZD
-         S9+jjbLY1SbyFVxoAQVYaRWX0AT5S/BfW7QhL9WL+2RLxnkRRoDP41/bBi1wr+AGrLKp
-         8MAU2nRvhhKvJgckMsHjrx2gLx4DQVvhojPzmCwbfuvbx+KPQIGGAxgLdU4E5KY3okfE
-         sWbY7O0l19DCBk4WsJs9xtzUrCszxAk6B6GR0EGoFUcTz8KZYFi4QzQf+IT824x/T6FL
-         F1QA==
+        b=nJutvLCgQuXy9W7bM8dwJ3EUAjr3qhEm5pl7sQQ7X8ceMm69iYaIGfzVsaaSHvXTas
+         tKWqqHHnb++rqiZ+DzbXiMC+qbe4gkTsGadEBl5OqV7dXvUBkuMbu2HnFyUBvetYjHdK
+         eIo0awIji8lVDE00p59omov7rAU/P5aJcJGpfBC5sAEisYBRJ4V4qC/adqkJM7ARKGZ/
+         8f1L4YvwUgcCi54eD/tH1y4Ccz3Yp4L5i/XBIITTxPkysVKDOmIAVXEdRFW+YrXP3unt
+         stnVS5DF4DU0ntmU30q4VGVkIks8K2L09OwESNx3bCr45yiYzIScaGazOeijY2k1BcXr
+         bzhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=A0e0NEin6/qB1UWKlWtZ3V9I0KbRtGgK0QPchGtumd0=;
-        b=AVoJu61PelmfXRhnm2jsKciIJXUKLy8q1AvH3q1X4ayxQM+uvV11lGVEkbRMWl8qyn
-         DiD3nceKkPOSE0cKeS2d/ATfa7Jk6cqDEez3FQXZqMHW7STq6pXTsAsq3SeH0wL0LMyk
-         n3JWk5ioH1hVXfaxz0Has6uivo3kTWKAZP4+Db9V7q2M4ODzfd/S8u89jM2Fjt4yzzUm
-         BYoYOSyXcYoXJKOXpy/ejvKCgFav/A/F53JpPfEEisMyBwvAeZQKViFD5mRVTga07aSM
-         NgUTUFurMV1VuAVu5iUSFn3llPLWL0Y/QCSK003G5oPQabYXPNE+g9fnXwvYk3UDldK7
-         +u9g==
+        bh=f2kBLJKaVnGetSSqtxpfAhCXISkwd1yaz8QImmDemGM=;
+        b=AHeE8qbEffwgB9Hq3Z+pE2YGbMyijnkK/vF7eTQVU8zArnfNlY/jY+G+G4+KeqluHJ
+         NOxMQXFiL/hF/zme3is/87lb4GfxKcortxJZ7nKBuO8mcVaWcDl3iWryiRBA7dpJIjhe
+         RCzx2PJmWGpgrd2sd4BudA9vr3swqdXUJ2Q025oeSTQ35/6Pb2AV+a9HUkZaJJt1fnIM
+         Dj8FtxC8jxwO1D9MA9OTHF3RDaH/qnh6n3WHS/DwTFfxS2i0wCpClNWSnsKTRGwfgjib
+         BhBXN/0J6stb2Vji7lP0zhG9oYHbiSO4aDrTtoaearUegbE+F6bWztT1iVaWxUEKKqfP
+         sWfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DMrWgame;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=B2y5MLq9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y6-20020a37af06000000b00708fd79facfsi1650725qke.733.2023.02.03.03.39.01
+        by mx.google.com with ESMTPS id 4-20020a056214202400b004bb68c1cf38si1659759qvf.548.2023.02.03.03.39.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 03:39:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Feb 2023 03:39:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DMrWgame;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=B2y5MLq9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pNuNn-0008Eq-DW; Fri, 03 Feb 2023 06:37:31 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pNuNa-000882-7Y; Fri, 03 Feb 2023 06:37:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNuNm-0008EC-27
- for qemu-arm@nongnu.org; Fri, 03 Feb 2023 06:37:30 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNuNY-00086G-Mu
+ for qemu-devel@nongnu.org; Fri, 03 Feb 2023 06:37:16 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNuNk-0001HA-Fi
- for qemu-arm@nongnu.org; Fri, 03 Feb 2023 06:37:29 -0500
-Received: by mail-wr1-x429.google.com with SMTP id bt17so1344211wrb.8
- for <qemu-arm@nongnu.org>; Fri, 03 Feb 2023 03:37:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNuNW-0001F4-9g
+ for qemu-devel@nongnu.org; Fri, 03 Feb 2023 06:37:16 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id h16so4355853wrz.12
+ for <qemu-devel@nongnu.org>; Fri, 03 Feb 2023 03:37:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=A0e0NEin6/qB1UWKlWtZ3V9I0KbRtGgK0QPchGtumd0=;
- b=DMrWgameUQbjcd64+jNpjO/Qc9YTZNVQ3swQhJPAqBtUV/EmghCwdKjgTj5CEKwj4y
- fRyHuxc7qWci9UnH0yaHbzbtaMWV1iMxTikpF0EmFGbb0bOgHS6VH4pk78Fp7CX+TxzQ
- HBNXOo8l7OivuOBEfps/QVSKdI5YnJWQcW3r+4El74ckF3cDG35H9R6/iDjvDMS+8QlE
- jqpxMpgGpr12J1TufqCTxhlPT8jhMH93Sa+mL76OuBCiJ4jqkaQeIcSqA6qd/uvEtbj6
- c8v3J4AOIoTuDvneYP78cFFycmOtIj7/ApTV/HoEmxPmRa6zJeR7aMWT/5/JNvjamfoz
- P53A==
+ bh=f2kBLJKaVnGetSSqtxpfAhCXISkwd1yaz8QImmDemGM=;
+ b=B2y5MLq9wv1wRmz8W9UvNvElcqD7si5TjOQB9cGZ7fBXKiGD/2zTTlH3/RhSqB0SAk
+ wca/XKL2/GbDxAMIPJvnFbXDEecCU42bUERIF7SlL49CtkKDVjf8iX5WHEymcpQLascx
+ d9uQkiNNNG2gKj0oDbqBMd0uBHgSrY6attN+RP/ERXAKtuXXbYQscMJX4hKfugMXnYX8
+ 22Z53Q2QutELp68fXjArxmRt2v9OeHUjfSmE0499VLbrxYl+ot+KElXwVpdHq4rynaSg
+ aWoFgkp/gO/Ol0sufgOyiO4WQiX+OLE019F6JdGA9cXyNJIz7P1jKqYY8/MbQcpBlyTz
+ rJPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=A0e0NEin6/qB1UWKlWtZ3V9I0KbRtGgK0QPchGtumd0=;
- b=dWiMFiiea0mKXXLLxiOMCiuORwpAS7NG6Xai/lTeZ/5ReWoVXdyH11hHHgvNLicieC
- MCsIJiWKhvUQu/5e0S+QyNMOEDtQ+mqcTqHDvLsZ61KpC+xcH3IzPd/aOT7PPconj9NP
- ngZdsJfVo66FJQmRY4DNhVGk8qlspdDTC8ekSVqm/MYZd+SUnU58joTXR2Cndb0Nea/G
- HmWEVdk/S+ZIvWPpx3tRWRD960F5ndQsgQAz2rXcnUfs+bfc6XG5MDzyXR0jv40Ngd0I
- 5pWIs7IpguJW/6U2SdLvsmvM9iKDy9x0lyuBBCDQunSELJ4YUiGtbBnyY3M/OCcUO8lc
- soMQ==
-X-Gm-Message-State: AO0yUKUJpZnZ2J0JDMkRpAssGO5/lSJbYosSyKs02kZ1wMskdSIWQCq6
- dFi4+8KTyBLS0AApg0xkF25lQg==
-X-Received: by 2002:adf:f68f:0:b0:2bf:ae17:bf58 with SMTP id
- v15-20020adff68f000000b002bfae17bf58mr9143116wrp.37.1675424247207; 
- Fri, 03 Feb 2023 03:37:27 -0800 (PST)
+ bh=f2kBLJKaVnGetSSqtxpfAhCXISkwd1yaz8QImmDemGM=;
+ b=mSu8LxxHZcWIGij0rhlLbe77BE8Gp5q2isPdvnbUhCXQw2mTLV9RdX/d8YeNEdQCvd
+ 4eB9Fnw09SlZ9ugv5eZ31xLCh0bBNHDE8TKNtS3z7wG+m+2RLIj95y5IV4VsLitnI7jB
+ 1Er/FG4mdJ/8lOeELQz9/cdClZNqfvCJ9wr9x5wcka6OMSzMqFOlqtKNIBgXis8PvBEh
+ softmmJ/GzqoV1MrPi10getfDfZlWrxaBwuEqfBIXitW6K3t4XS5HSYuJ+z3k/Q6HVkW
+ r78KgViwquCsNaA6nd8HdrgV7U/QHIBxF1MNTbgtJjNauzEXlU6tNW61RM+FdYGzzsw2
+ i9Yg==
+X-Gm-Message-State: AO0yUKXGRc2r63g6E1vLy9uwry6iufYfxXjxh3Uwd5xdCPyStEM5bZQE
+ amJaAqdCsf2YD/8joBnL3QHmjf/V50iAYLWK
+X-Received: by 2002:a05:6000:1f1c:b0:2bf:e8f7:b4fb with SMTP id
+ bv28-20020a0560001f1c00b002bfe8f7b4fbmr10040764wrb.70.1675424232524; 
+ Fri, 03 Feb 2023 03:37:12 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- s7-20020adfeb07000000b002bff1de8d4bsm1791560wrn.49.2023.02.03.03.37.26
+ r6-20020a5d4986000000b002bfc24e1c55sm1769986wrq.78.2023.02.03.03.37.11
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 03 Feb 2023 03:37:26 -0800 (PST)
+ Fri, 03 Feb 2023 03:37:12 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Markus Armbruster <armbru@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 7/9] hw/qdev: Remove DEFINE_PROP_DMAADDR() and 'hw/qdev-dma.h'
-Date: Fri,  3 Feb 2023 12:36:48 +0100
-Message-Id: <20230203113650.78146-8-philmd@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: [PATCH 4/9] hw/arm/fsl-imx: QOM-alias 'phy-num' property in SoC object
+Date: Fri,  3 Feb 2023 12:36:45 +0100
+Message-Id: <20230203113650.78146-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230203113650.78146-1-philmd@linaro.org>
 References: <20230203113650.78146-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BWzXAztln2K2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Icg0uFv3dRtC
 
-DEFINE_PROP_DMAADDR() is only used once. Since it doesn't
-add much value, simply remove it, along with the header
-defining it.
+No need to use intermediate 'fec-phy-num' properties in the
+SoC object. Alias the properties, so when the machines set
+the value on the SoC, it is propagated to the network device
+object.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/usb/hcd-ohci-pci.c |  1 -
- hw/usb/hcd-ohci.c     |  3 +--
- include/hw/qdev-dma.h | 16 ----------------
- 3 files changed, 1 insertion(+), 19 deletions(-)
- delete mode 100644 include/hw/qdev-dma.h
+ hw/arm/fsl-imx25.c          |  3 +--
+ hw/arm/fsl-imx6.c           |  3 +--
+ hw/arm/fsl-imx6ul.c         |  8 ++++----
+ hw/arm/fsl-imx7.c           | 12 ++++++------
+ include/hw/arm/fsl-imx25.h  |  1 -
+ include/hw/arm/fsl-imx6.h   |  1 -
+ include/hw/arm/fsl-imx6ul.h |  2 --
+ include/hw/arm/fsl-imx7.h   |  1 -
+ 8 files changed, 12 insertions(+), 19 deletions(-)
 
-diff --git a/hw/usb/hcd-ohci-pci.c b/hw/usb/hcd-ohci-pci.c
-index 6b630d35a7..92cc151264 100644
---- a/hw/usb/hcd-ohci-pci.c
-+++ b/hw/usb/hcd-ohci-pci.c
-@@ -25,7 +25,6 @@
- #include "migration/vmstate.h"
- #include "hw/pci/pci_device.h"
- #include "hw/sysbus.h"
--#include "hw/qdev-dma.h"
- #include "hw/qdev-properties.h"
- #include "trace.h"
- #include "hcd-ohci.h"
-diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-index 9d68036d23..26c377bf1b 100644
---- a/hw/usb/hcd-ohci.c
-+++ b/hw/usb/hcd-ohci.c
-@@ -33,7 +33,6 @@
- #include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "hw/sysbus.h"
--#include "hw/qdev-dma.h"
- #include "hw/qdev-properties.h"
- #include "trace.h"
- #include "hcd-ohci.h"
-@@ -2008,7 +2007,7 @@ static Property ohci_sysbus_properties[] = {
-     DEFINE_PROP_STRING("masterbus", OHCISysBusState, masterbus),
-     DEFINE_PROP_UINT32("num-ports", OHCISysBusState, num_ports, 3),
-     DEFINE_PROP_UINT32("firstport", OHCISysBusState, firstport, 0),
--    DEFINE_PROP_DMAADDR("dma-offset", OHCISysBusState, dma_offset, 0),
-+    DEFINE_PROP_UINT64("dma-offset", OHCISysBusState, dma_offset, 0),
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index 24c4374590..eff58e1f7a 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -55,6 +55,7 @@ static void fsl_imx25_init(Object *obj)
+     }
+ 
+     object_initialize_child(obj, "fec", &s->fec, TYPE_IMX_FEC);
++    object_property_add_alias(obj, "fec-phy-num", OBJECT(&s->fec), "phy-num");
+ 
+     object_initialize_child(obj, "rngc", &s->rngc, TYPE_IMX_RNGC);
+ 
+@@ -169,7 +170,6 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+                                             epit_table[i].irq));
+     }
+ 
+-    object_property_set_uint(OBJECT(&s->fec), "phy-num", s->phy_num, &err);
+     qdev_set_nic_properties(DEVICE(&s->fec), &nd_table[0]);
+ 
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fec), errp)) {
+@@ -315,7 +315,6 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+ }
+ 
+ static Property fsl_imx25_properties[] = {
+-    DEFINE_PROP_UINT32("fec-phy-num", FslIMX25State, phy_num, 0),
      DEFINE_PROP_END_OF_LIST(),
  };
  
-diff --git a/include/hw/qdev-dma.h b/include/hw/qdev-dma.h
-deleted file mode 100644
-index b00391aa0c..0000000000
---- a/include/hw/qdev-dma.h
-+++ /dev/null
-@@ -1,16 +0,0 @@
--/*
-- * Support for dma_addr_t typed properties
-- *
-- * Copyright (C) 2012 David Gibson, IBM Corporation.
-- *
-- * This work is licensed under the terms of the GNU GPL, version 2 or later.
-- * See the COPYING file in the top-level directory.
-- */
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 00dafe3f62..4f870c928c 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -100,6 +100,7 @@ static void fsl_imx6_init(Object *obj)
+ 
+ 
+     object_initialize_child(obj, "eth", &s->eth, TYPE_IMX_ENET);
++    object_property_add_alias(obj, "fec-phy-num", OBJECT(&s->eth), "phy-num");
+ }
+ 
+ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+@@ -377,7 +378,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+                                             spi_table[i].irq));
+     }
+ 
+-    object_property_set_uint(OBJECT(&s->eth), "phy-num", s->phy_num, &err);
+     qdev_set_nic_properties(DEVICE(&s->eth), &nd_table[0]);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->eth), errp)) {
+         return;
+@@ -451,7 +451,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ }
+ 
+ static Property fsl_imx6_properties[] = {
+-    DEFINE_PROP_UINT32("fec-phy-num", FslIMX6State, phy_num, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index d88d6cc1c5..8b3939e8c5 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -120,8 +120,12 @@ static void fsl_imx6ul_init(Object *obj)
+      * Ethernet
+      */
+     for (i = 0; i < FSL_IMX6UL_NUM_ETHS; i++) {
++        g_autofree gchar *propname = g_strdup_printf("fec%d-phy-num", i + 1);
+         snprintf(name, NAME_SIZE, "eth%d", i);
+         object_initialize_child(obj, name, &s->eth[i], TYPE_IMX_ENET);
++        qdev_prop_set_uint32(DEVICE(&s->eth[i]), "phy-num", i);
++        object_property_add_alias(obj, propname,
++                                  OBJECT(&s->eth[i]), "phy-num");
+     }
+ 
+     /* USB */
+@@ -424,8 +428,6 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+             FSL_IMX6UL_ENET2_TIMER_IRQ,
+         };
+ 
+-        object_property_set_uint(OBJECT(&s->eth[i]), "phy-num",
+-                                 s->phy_num[i], &error_abort);
+         object_property_set_uint(OBJECT(&s->eth[i]), "tx-ring-num",
+                                  FSL_IMX6UL_ETH_NUM_TX_RINGS, &error_abort);
+         qdev_set_nic_properties(DEVICE(&s->eth[i]), &nd_table[i]);
+@@ -618,8 +620,6 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+ }
+ 
+ static Property fsl_imx6ul_properties[] = {
+-    DEFINE_PROP_UINT32("fec1-phy-num", FslIMX6ULState, phy_num[0], 0),
+-    DEFINE_PROP_UINT32("fec2-phy-num", FslIMX6ULState, phy_num[1], 1),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+index afc7480799..df035c9314 100644
+--- a/hw/arm/fsl-imx7.c
++++ b/hw/arm/fsl-imx7.c
+@@ -102,8 +102,12 @@ static void fsl_imx7_init(Object *obj)
+      * Ethernet
+      */
+     for (i = 0; i < FSL_IMX7_NUM_ETHS; i++) {
+-            snprintf(name, NAME_SIZE, "eth%d", i);
+-            object_initialize_child(obj, name, &s->eth[i], TYPE_IMX_ENET);
++        g_autofree gchar *propname = g_strdup_printf("fec%d-phy-num", i + 1);
++        snprintf(name, NAME_SIZE, "eth%d", i);
++        object_initialize_child(obj, name, &s->eth[i], TYPE_IMX_ENET);
++        qdev_prop_set_uint32(DEVICE(&s->eth[i]), "phy-num", i);
++        object_property_add_alias(obj, propname,
++                                  OBJECT(&s->eth[i]), "phy-num");
+     }
+ 
+     /*
+@@ -402,8 +406,6 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+             FSL_IMX7_ENET2_ADDR,
+         };
+ 
+-        object_property_set_uint(OBJECT(&s->eth[i]), "phy-num",
+-                                 s->phy_num[i], &error_abort);
+         object_property_set_uint(OBJECT(&s->eth[i]), "tx-ring-num",
+                                  FSL_IMX7_ETH_NUM_TX_RINGS, &error_abort);
+         qdev_set_nic_properties(DEVICE(&s->eth[i]), &nd_table[i]);
+@@ -599,8 +601,6 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+ }
+ 
+ static Property fsl_imx7_properties[] = {
+-    DEFINE_PROP_UINT32("fec1-phy-num", FslIMX7State, phy_num[0], 0),
+-    DEFINE_PROP_UINT32("fec2-phy-num", FslIMX7State, phy_num[1], 1),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
+index 1b1086e945..e377f8e79a 100644
+--- a/include/hw/arm/fsl-imx25.h
++++ b/include/hw/arm/fsl-imx25.h
+@@ -66,7 +66,6 @@ struct FslIMX25State {
+     MemoryRegion   rom[2];
+     MemoryRegion   iram;
+     MemoryRegion   iram_alias;
+-    uint32_t       phy_num;
+ };
+ 
+ /**
+diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
+index 83291457cf..f7d1a94640 100644
+--- a/include/hw/arm/fsl-imx6.h
++++ b/include/hw/arm/fsl-imx6.h
+@@ -74,7 +74,6 @@ struct FslIMX6State {
+     MemoryRegion   caam;
+     MemoryRegion   ocram;
+     MemoryRegion   ocram_alias;
+-    uint32_t       phy_num;
+ };
+ 
+ 
+diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
+index 7812e516a5..5217eeb8ff 100644
+--- a/include/hw/arm/fsl-imx6ul.h
++++ b/include/hw/arm/fsl-imx6ul.h
+@@ -88,8 +88,6 @@ struct FslIMX6ULState {
+     MemoryRegion       caam;
+     MemoryRegion       ocram;
+     MemoryRegion       ocram_alias;
 -
--#ifndef HW_QDEV_DMA_H
--#define HW_QDEV_DMA_H
--
--#define DEFINE_PROP_DMAADDR(_n, _s, _f, _d)                               \
--    DEFINE_PROP_UINT64(_n, _s, _f, _d)
--
--#endif
+-    uint32_t           phy_num[FSL_IMX6UL_NUM_ETHS];
+ };
+ 
+ enum FslIMX6ULMemoryMap {
+diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
+index 4e5e071864..16c68a4937 100644
+--- a/include/hw/arm/fsl-imx7.h
++++ b/include/hw/arm/fsl-imx7.h
+@@ -82,7 +82,6 @@ struct FslIMX7State {
+     IMX7GPRState       gpr;
+     ChipideaState      usb[FSL_IMX7_NUM_USBS];
+     DesignwarePCIEHost pcie;
+-    uint32_t           phy_num[FSL_IMX7_NUM_ETHS];
+ };
+ 
+ enum FslIMX7MemoryMap {
 -- 
 2.38.1
 

@@ -1,131 +1,130 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1643496ejb;
-        Fri, 3 Feb 2023 10:11:29 -0800 (PST)
-X-Google-Smtp-Source: AK7set9rk/8yEWUokzUJ9uv/fE6ODb/2v+IOAb+pXLsD4XRoGFDEoyhvIHNpGiZjFUarA3tcufG0
-X-Received: by 2002:ac8:7e86:0:b0:3b9:a641:aa66 with SMTP id w6-20020ac87e86000000b003b9a641aa66mr21101998qtj.15.1675447889289;
-        Fri, 03 Feb 2023 10:11:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675447889; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1643618ejb;
+        Fri, 3 Feb 2023 10:11:38 -0800 (PST)
+X-Google-Smtp-Source: AK7set+/OpV4svX2B6TGlcbrHmlIZFy01bnxStVDdHVuj2DxGzh5i27xrjfDIXOs69WzlKlxAL8m
+X-Received: by 2002:a67:e15c:0:b0:3f3:541b:549f with SMTP id o28-20020a67e15c000000b003f3541b549fmr6112908vsl.32.1675447898031;
+        Fri, 03 Feb 2023 10:11:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675447898; cv=none;
         d=google.com; s=arc-20160816;
-        b=jWdSH2aCO5wJfomtDivgJoelx5MqiVBCnJ0g6dg34Zu2UJOJlWTfjHQVjH9mLhHtIP
-         lImruHpeTDt/0gfFxnJrcU7GsQ8eRGRzatarjDV9NEyVPXm31l5tsAvBD/+jD8+cZmIQ
-         vOeABvcv5QCUlj+pRuhMX+G7aa1HPGoZjiTxQXKo6OsKFAUUbi2LW/2dl+oYvy2UOjLx
-         ws3T9I7eCcwFkVp0MHINiMtUdxUNGScn8DCwNMX6T2A4X2gII/ig9PZk6YEg/ZQdbBOV
-         LM6QqfwYiF4zvR9lcLdc7OZduTYN0+kAmO0U+KL/wCZFRZLzs6u1XZUme7k3rrKExmDY
-         UGcQ==
+        b=XmX4oDmUdlYFvRPCWjiGFgw/75p2sWme/Zqz6WHpgIH7fuk2UBfxUPWyZD7GWFEkYG
+         1wKZYhmCLAgTMhnkFm/e2qbBEnNZYOX+O3GWJyQp60tIHDRovSS85QubHII9lCjrKiSQ
+         CLoodPzoUj4tL/a4/G8Sbx8aU/Y+sLYsgEyGZOTtBk1RKoN+Emfddid/JU+XWfUy/dlC
+         VyAjSkGfOCCvrdFJ72YRdS8T0wzpachXrQiMRzYcK7ACPIApatOTbKEe6rkdf4SSFkBQ
+         4jcphLFJpGRt3qLnKA+Aw3YnZKkJCRo48KJuwIS6QmXLeKGXoagHZWsjHtE05BX+7VBC
+         mEzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=AFuCwAlq5IxtAXriS8uiMD+6Isqin7gOtT5GKermJKY=;
-        b=xTp+Dv0shFSq5OSl0WK6UkKlq8O4C+pCbXKILDMxOdcONdAZRbvJxfsgtuB7+wgHIR
-         PcbtwSZjjiQ78ipIlrS2CZQ1HBSK+uRvTfBMQfq7cxY9EL5DPKkD9XSJB6Ajq47gZip1
-         vvo3pb9RXGqPry4XXr/+In/iUDAqTMyq2QIIxM+ah+LBrdVeGipl1TbcrV4c29S2BNQK
-         DKwqaLmZtcgAWNQw/BG8y8GFj9puJY14Z2p2zn5N9gQt7B+1LYSK9QJwZzxF/AyrEL4K
-         vSfULocNFzoHrdaXSbYDmwA3ts+0alvYSz5TxFlYD+HXJT6dxIKGA7iY4RPrbpFfyaFA
-         9IMg==
+        bh=G/uz1xCSDOP+6dyc1BIJtE4kgUr4oayD/9Q5I8vW7Pg=;
+        b=wxYF62g5sX84ncKHUZ6lFd642MwtGF/SzJU5RqVPtTmv9LrI68037agW0kV+jPSdOd
+         rjD1qHQL8SOqY6JoDYy4+GowtSb+Rgb1Y2UxsDUvtjfFmpgmHllF5yAEnt92fhSJOQtB
+         K2HMTPrrk/HspzMczR5fxiGuB1nc4MdXgTMe8QkQpGdeXsViQxBtdCaEy7ElsGv18/iF
+         ENzGXiI6rZsXFUqiZywByt9tP7b9GPSuUCuqDUyFFH3Wyjn+aAKyR0L6It7Cnr1vjGOx
+         NloBcp7MrWpdxjyt74Q609TNURR5lIQ6pjXeKkbbhZFlI1Wt2DVCDGVuacgMXa/Qbrqi
+         C7+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QrILnDg5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rs57IDWy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m16-20020a05620a24d000b0072c64de6d7csi2985320qkn.714.2023.02.03.10.11.29
+        by mx.google.com with ESMTPS id b5-20020a67d385000000b003db20da46e3si926199vsj.28.2023.02.03.10.11.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 10:11:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Feb 2023 10:11:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QrILnDg5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rs57IDWy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pO0VH-00075T-2Y; Fri, 03 Feb 2023 13:09:39 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pO0WW-0003Hu-9L; Fri, 03 Feb 2023 13:10:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0VD-00074o-SU
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 13:09:37 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0WU-00035A-B7
+ for qemu-arm@nongnu.org; Fri, 03 Feb 2023 13:10:54 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0VA-00089h-Vk
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 13:09:35 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id ba1so1327376wrb.5
- for <qemu-devel@nongnu.org>; Fri, 03 Feb 2023 10:09:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pO0WR-0000mP-Q9
+ for qemu-arm@nongnu.org; Fri, 03 Feb 2023 13:10:54 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ m16-20020a05600c3b1000b003dc4050c94aso4501917wms.4
+ for <qemu-arm@nongnu.org>; Fri, 03 Feb 2023 10:10:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AFuCwAlq5IxtAXriS8uiMD+6Isqin7gOtT5GKermJKY=;
- b=QrILnDg56AYQyjEsqvz1V4zQmAKFgde/UZhM1brl+P8lHr3EOHfpF0nLW45Xx6teUB
- SZIxzh0F0FLcpXB98KbuHykNPHAoMa0d0WEQwWjJhRRwSfQbV58W8pIaqkAulN+uQWMg
- 2KGfZfL7tLxHNWKTidZYW0F3AHNUkEumd1oNj0tfE0Nv/pI/+ff/lvnPkI4JuQF7C2WX
- edAeQn3kPLDHxORkSmz7waKWnRWjfCeYsJr+aQ9eg6XZTEC0SwMIvjDV3kXYmvBo0ehE
- Z5bhqfic2FqyY3SKLpVp9ULWGPWiJRUttecUaWDGm9INJyzFnUlGLRHT0kbF56vgSlss
- pKkg==
+ bh=G/uz1xCSDOP+6dyc1BIJtE4kgUr4oayD/9Q5I8vW7Pg=;
+ b=rs57IDWy4ex+nQZQeb0ZdIEk31Xy11/nJRW20rReogKUl4KeTcl3cc8D8LgRDr/zB+
+ u1xu9JIMluXipYjm6yV9E/vCM1QV81BfzX0tAdIVcQnw3SCt52ft5tbmv43LCl6DvtTH
+ +QXN/gSlICEsSY7Anmepv49+d8lBSk9UIxVr0gIISD9X1Ok3aWpRr7HtqqsuJSk7XLTn
+ fVD6/NnMCZOT/f2RbzUvvj+eDfPcB+/4tofTKLsSRibABiwE6rlqpTGNK5Eo76e31gJO
+ dbSu47RseekPIV/lwoCjG8G/2gpwb7R4RXsh7j//TXCxI5TY2cP0XC26agoEOcURnJlX
+ nvQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AFuCwAlq5IxtAXriS8uiMD+6Isqin7gOtT5GKermJKY=;
- b=UQwVd45ixoNPIG+gRf8Dsic3tpIiSjKfEM7+XeaIMx/6x/MbgNlAtoOekJiXgwKrn2
- +1mwJqC6Ac8j1zeR93LX8pe3SoN7sjNLw78z0zc1yVj0bMWbs4qbJTHWhWvvcmV8upCu
- daTMHwyJcfm5kGOtUQcvBNb9xmqum/2OK2JQ7DXA5i7xqGbnGdWf2er7y8QykcMRisoz
- jVyDC2kPnbMKAJbm5s/239E3El4G8NH5pd1yIVi9IPWoGDWGk2CIC7be0rwelugFg+fW
- NKXm1bIyVU/MjYvIPSaSqaAB2jaztktTGFoZvqNLICiOw32vGlEUzH9IxFzt90t2hmgL
- Y4Iw==
-X-Gm-Message-State: AO0yUKWZjsJ2cjGyTBaBc5D0ULq2FchqMImn4NhqUD0UhVJMIMsnTV6c
- 3aeeUF35nBXtLkp6+1oh6yhPHVCUAxxvxwei
-X-Received: by 2002:adf:fbc8:0:b0:2bf:ae2f:576f with SMTP id
- d8-20020adffbc8000000b002bfae2f576fmr9212591wrs.14.1675447771318; 
- Fri, 03 Feb 2023 10:09:31 -0800 (PST)
+ bh=G/uz1xCSDOP+6dyc1BIJtE4kgUr4oayD/9Q5I8vW7Pg=;
+ b=QrmDTRFVYQbMvgu9nh42caFcLCYE42FDUMiTqrxXnZFX+tPAx/MJqtXDd9a5CW/75Y
+ H/DaCwD3yaJs9HWeNs5/2HuVXOEv3CV9IOY2GVGTE+rqXQ7l/Y+MWgf963alygnQGun9
+ 4nyelgACm1FGuQ+II2KDXXwPEfGwCopBlrO7oniUKRzLXw3R5qNQbPtA9gMKL88JuyUx
+ Yybk6tLFdwdQdOLPWxQYzluM+yxPt1KOU4vrWjudNK6OLZuX01zIzTjy5VORrpOKD9hZ
+ drtQarhKgiJ83Bu4YBVKC2FwjKLOFY2GTcx/ttSt/p2CGyvc30V+U67M5pnznWnMCcOl
+ ujew==
+X-Gm-Message-State: AO0yUKVW0LBspKuKXGRfxLtwaLc0n8NVUayOC3OyqebVbSprDg9YEY4s
+ RcSfAuquMWkcV62oRSMtEUqRyw==
+X-Received: by 2002:a05:600c:5543:b0:3df:5eb:828c with SMTP id
+ iz3-20020a05600c554300b003df05eb828cmr4955707wmb.32.1675447850564; 
+ Fri, 03 Feb 2023 10:10:50 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- e2-20020a5d5002000000b002c3be6ae0b1sm2517659wrt.65.2023.02.03.10.09.30
+ f21-20020a05600c43d500b003dc0cb5e3f1sm3231511wmn.46.2023.02.03.10.10.49
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 03 Feb 2023 10:09:31 -0800 (PST)
+ Fri, 03 Feb 2023 10:10:50 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, qemu-riscv@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <ani@anisinha.ca>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Subject: [PATCH 03/19] hw/acpi: Set QDev properties using QDev API
-Date: Fri,  3 Feb 2023 19:08:58 +0100
-Message-Id: <20230203180914.49112-4-philmd@linaro.org>
+ Yoshinori Sato <ysato@users.sourceforge.jp>
+Subject: [PATCH 18/19] hw/rx: Set QDev properties using QDev API
+Date: Fri,  3 Feb 2023 19:09:13 +0100
+Message-Id: <20230203180914.49112-19-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230203180914.49112-1-philmd@linaro.org>
 References: <20230203180914.49112-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sqHNlY0RiyPk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: g1B3/UHEazSJ
 
 No need to use the low-level QOM API when an object
 inherits from QDev. Directly use the QDev API to set
@@ -133,80 +132,38 @@ its properties.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/acpi/cpu_hotplug.c | 7 +++----
- hw/acpi/ich9.c        | 4 ++--
- hw/acpi/piix4.c       | 4 ++--
- 3 files changed, 7 insertions(+), 8 deletions(-)
+ hw/rx/rx-gdbsim.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/hw/acpi/cpu_hotplug.c b/hw/acpi/cpu_hotplug.c
-index b8c9081738..5bc5f435f4 100644
---- a/hw/acpi/cpu_hotplug.c
-+++ b/hw/acpi/cpu_hotplug.c
-@@ -10,6 +10,7 @@
-  * See the COPYING file in the top-level directory.
-  */
- #include "qemu/osdep.h"
-+#include "hw/qdev-properties.h"
- #include "hw/acpi/cpu_hotplug.h"
+diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
+index 47c17026c7..5d50f36877 100644
+--- a/hw/rx/rx-gdbsim.c
++++ b/hw/rx/rx-gdbsim.c
+@@ -21,6 +21,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/guest-random.h"
  #include "qapi/error.h"
- #include "hw/core/cpu.h"
-@@ -41,8 +42,7 @@ static void cpu_status_write(void *opaque, hwaddr addr, uint64_t data,
-      */
-     if (addr == 0 && data == 0) {
-         AcpiCpuHotplug *gpe = opaque;
--        object_property_set_bool(OBJECT(gpe->parent), "cpu-hotplug-legacy",
--                                 false, &error_abort);
-+        qdev_prop_set_bit(gpe->parent, "cpu-hotplug-legacy", false);
-     }
- }
- 
-@@ -66,8 +66,7 @@ static void acpi_set_cpu_present_bit(AcpiCpuHotplug *gpe, CPUState *cpu)
- 
-     cpu_id = k->get_arch_id(cpu);
-     if ((cpu_id / 8) >= ACPI_GPE_PROC_LEN) {
--        object_property_set_bool(OBJECT(gpe->parent), "cpu-hotplug-legacy",
--                                 false, &error_abort);
-+        qdev_prop_set_bit(gpe->parent, "cpu-hotplug-legacy", false);
-         return;
-     }
- 
-diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
-index 6c9a737479..9759119b32 100644
---- a/hw/acpi/ich9.c
-+++ b/hw/acpi/ich9.c
-@@ -30,6 +30,7 @@
- #include "hw/pci/pci.h"
- #include "migration/vmstate.h"
- #include "qemu/timer.h"
 +#include "hw/qdev-properties.h"
- #include "hw/core/cpu.h"
- #include "sysemu/reset.h"
- #include "sysemu/runstate.h"
-@@ -197,8 +198,7 @@ static bool vmstate_test_use_cpuhp(void *opaque)
- static int vmstate_cpuhp_pre_load(void *opaque)
- {
-     ICH9LPCPMRegs *s = opaque;
--    Object *obj = OBJECT(s->gpe.parent);
--    object_property_set_bool(obj, "cpu-hotplug-legacy", false, &error_abort);
-+    qdev_prop_set_bit(s->gpe.parent, "cpu-hotplug-legacy", false);
-     return 0;
- }
+ #include "hw/loader.h"
+ #include "hw/rx/rx62n.h"
+ #include "sysemu/qtest.h"
+@@ -99,12 +100,10 @@ static void rx_gdbsim_init(MachineState *machine)
  
-diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-index 3a61d89f92..9a86d506de 100644
---- a/hw/acpi/piix4.c
-+++ b/hw/acpi/piix4.c
-@@ -206,8 +206,8 @@ static bool vmstate_test_use_cpuhp(void *opaque)
+     /* Initialize MCU */
+     object_initialize_child(OBJECT(machine), "mcu", &s->mcu, rxc->mcu_name);
+-    object_property_set_link(OBJECT(&s->mcu), "main-bus", OBJECT(sysmem),
+-                             &error_abort);
+-    object_property_set_uint(OBJECT(&s->mcu), "xtal-frequency-hz",
+-                             rxc->xtal_freq_hz, &error_abort);
+-    object_property_set_bool(OBJECT(&s->mcu), "load-kernel",
+-                             kernel_filename != NULL, &error_abort);
++    qdev_prop_set_link(DEVICE(&s->mcu), "main-bus", OBJECT(sysmem));
++    qdev_prop_set_uint32(DEVICE(&s->mcu), "xtal-frequency-hz",
++                         rxc->xtal_freq_hz);
++    qdev_prop_set_bit(DEVICE(&s->mcu), "load-kernel", kernel_filename != NULL);
  
- static int vmstate_cpuhp_pre_load(void *opaque)
- {
--    Object *obj = OBJECT(opaque);
--    object_property_set_bool(obj, "cpu-hotplug-legacy", false, &error_abort);
-+    PIIX4PMState *s = opaque;
-+    qdev_prop_set_bit(DEVICE(s), "cpu-hotplug-legacy", false);
-     return 0;
- }
- 
+     if (!kernel_filename) {
+         if (machine->firmware) {
 -- 
 2.38.1
 

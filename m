@@ -1,109 +1,103 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1462511ejb;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1462513ejb;
         Fri, 3 Feb 2023 06:56:29 -0800 (PST)
-X-Google-Smtp-Source: AK7set9Bl7Q2RTvt7JmZ57KJxJ/VO89hELcF42C9UKNxg4Z9ee6tD1qUIxjZsTJg5x9PlYlwdHSa
-X-Received: by 2002:a0c:c68f:0:b0:53c:9354:9721 with SMTP id d15-20020a0cc68f000000b0053c93549721mr14043711qvj.21.1675436189294;
+X-Google-Smtp-Source: AK7set+EUufi2EJl8kstneCRUNtbOnFMeyBdJlGA/BROT1Pieo0dckpMrM8+UKMBaxHDaBGxIwL9
+X-Received: by 2002:a05:6102:e0f:b0:406:5756:1610 with SMTP id o15-20020a0561020e0f00b0040657561610mr599098vst.15.1675436189449;
         Fri, 03 Feb 2023 06:56:29 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1675436189; cv=none;
         d=google.com; s=arc-20160816;
-        b=At2WAowhS0KJv3Utjgdva/v9kVExScgdvSrDmRozxv9iyDQql6yvoPpVY4tNZ3piT9
-         rFCXBaX0u8uIb2sxMtOqiyq5qNtG6EAWQ2tVYFZX4gBwLFoVUy/m6HP+idjzj5pMVomn
-         12mL34ziZx2jiBIJT7oCh2qlp8lM+rEQrDd54AvBbRQ0fSh96CSkD8zHDdjfoZAyMURs
-         iWoBQ9nDO1T/ImDsjfn9BQJ8HmLIY8P6erUIB/F4ah31VH4ak8aWWXFQ8Zf+Pl4zh9Fb
-         zdw2dPoFKNTdpjEJqjQaGDJzz4Fh+gDho5e5F3u4+BJAM/zwiG2C5NVcH/y7llO/xMYu
-         lP1Q==
+        b=hF/uphwrlawYYkq+QHaFPCN+P9gV4ycVVISkm8mGZeCLZfwYAIQM+uhq3kTGESS2GF
+         nkwvEk2Yl6mBOcO9mU1oVp7hNedVyooEFV0mz4tsxU2c4RBi8e00VFzlURsrn05mwGSm
+         rJYH6Z6NvT8D+87B4txac7ZQIzDQrUBL15/xFPilJxH84WR7IjcRYShs+QRy1u8HpreA
+         GOAg7G6n2WSoUl9Vs0+f9IPRzs9zdH0ot8rcvKeDr75Ldc3ryzy9lHkdV53XWh75eDZh
+         qQIjgBXEmo33I2dCNnokzqorImvfMTPpj6AgRDhfZlDYbJN1XVS36rxUWLW7w7gEKzuZ
+         SwFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=b1jZnXzDBv6AIc7zb/xF5HP075z2PTTEUA4j1SOMKA0=;
-        b=tpMsaP2qCuCbHqB1mvIeoTXIRlQIr72v6EEmb2Wrx9DT658W5SRGetyncb8rq8Vt3U
-         CPRbmrAwfNBhRaNY9ZluM378Tzweb9XfYGBHhFoKy9rlrmdd0QB25FY5ZUonvWWzLBFu
-         uBj9KiXqAcMcrpZWFb4ckPOAHU9tpu5MiBXRJNArWZpDHMzOGWXkeYg5y9hJPcueBkHt
-         klyq5pJX3O4qUrAwJnmNOUWiGuOSBDNIee4tqrcPpYJBKnopmqibt89bQ1rYlvKQc8fb
-         sLAevzXNBeVbRP5lxU84xWo2dHolRGIHi6gg7WnNgvsi6ng0+2hXCtBIitYZmEwFxlWX
-         vWFg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=U1UtAD1cxyxTdrK64YRV25P2sKPgBwmLWBAD4nN05ls=;
+        b=CtZYZ6VsSDupkovad3yhUaNKEHzdnbeGLZHq8lvCqq0U4NzQPOtQrEYJfbyXtWGvgK
+         QYeKqveL08iSCoLGSC9cHSM8m2XKQ4crUWNTplAfizGTdL900Y6tsYiR35CV5UsvKSfE
+         lSOnqX20jpgyqBzPcy1fbpV6HzRRwcXaOKZNAsaNEN08LeP89wSx6LhPyLdwFOsdJ7xP
+         sBglV9Ev296mAI9qAQn5HFykJaFmPWmcjPfAqhDZ3jLuiSXO+1bPuBXaFf7bUPplnkIV
+         idPQ2bl1xzpvitZIvMHYalSAlIrzsWYsINZW6bb68RnQpkfIZXc/MvKRMosrd4auEb+l
+         RmEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=migsbNgl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q4O+smZK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id nh1-20020a056214390100b005321fc4cdf4si1965721qvb.488.2023.02.03.06.56.29
+        by mx.google.com with ESMTPS id b191-20020ae9ebc8000000b007257026f111si2099623qkg.172.2023.02.03.06.56.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 03 Feb 2023 06:56:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=migsbNgl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q4O+smZK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pNxTy-0001zP-Qm; Fri, 03 Feb 2023 09:56:06 -0500
+	id 1pNxTd-0001f5-93; Fri, 03 Feb 2023 09:55:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNxTv-0001vF-Ue
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 09:56:04 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNxTa-0001ZL-NG
+ for qemu-devel@nongnu.org; Fri, 03 Feb 2023 09:55:43 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNxTt-0005qt-OG
- for qemu-devel@nongnu.org; Fri, 03 Feb 2023 09:56:03 -0500
-Received: by mail-wr1-x432.google.com with SMTP id q5so4929998wrv.0
- for <qemu-devel@nongnu.org>; Fri, 03 Feb 2023 06:55:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNxTY-0005qu-OD
+ for qemu-devel@nongnu.org; Fri, 03 Feb 2023 09:55:42 -0500
+Received: by mail-wr1-x429.google.com with SMTP id h16so4856207wrz.12
+ for <qemu-devel@nongnu.org>; Fri, 03 Feb 2023 06:55:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=b1jZnXzDBv6AIc7zb/xF5HP075z2PTTEUA4j1SOMKA0=;
- b=migsbNglUZNbUMbZsnqOnYplVzxov4rWnz/3LbovPpI3xN/b+/3PAfZCyXKzrPcsEg
- NTdiQmEITsLr5bClFauNa5rEOY+oQ+oh0KnKFOWliMz/iyNJSCIceYPYU6QWmn7jOCgn
- lfrvAEJT4rD20uEijSwWtS/0vsjwZCG1jSl8hbwu6oIn2LF4yq2dBqcjoYBAZX59z6DO
- nDyUV3COuPPq2Dw9S3hTYSX2PvUpgMVb6y4CvQKAtfTimWA6rwQNQuMsocGZZeZYZK+4
- RVlXiwjSA0PlAIpsSCBABwChj+1ybm01+ozYJUOe2++kKF9WyddpVBUefIXZLLgneQnA
- hW4w==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=U1UtAD1cxyxTdrK64YRV25P2sKPgBwmLWBAD4nN05ls=;
+ b=q4O+smZKeQby8HBGS4pYTaumSRPE1EGF5VbFbCDCCGDcSImm4HEe4VQiNk4M1PodFN
+ YlwZXv55pW2ueGjoJLN6hUxi+u2IFqQpQzpPbcalTiXRXvyVCWLpLyLk5nSM/jSU3ikn
+ GfzlzUxz+t8g0g4nuk8CUMO5UWrgk6dnzA+TcJKEEO/KFk2ohJsTLPW0z9zeOEQocKwE
+ clU/7+xEIL/6jxdTcKhdtGE0d4bUE8wYDyH5D9FmGQrdLhSnaOe72HGZQLu0SGfyIWj4
+ KYbU79eWEsWjaIr5VvTGm5ndw3ZL12ivsHmHdfHavfdPcCmNsCe68xu3xdli3Z/2NmB6
+ yUNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=b1jZnXzDBv6AIc7zb/xF5HP075z2PTTEUA4j1SOMKA0=;
- b=AVNL/W9nkDt1F90hj2zN1KZz1eoqAo2Wy4JI1RGXzrjmKn1CqSuXsK93dj3YAE90E8
- TKcxR6TWzLTzd/LF4F/Z6RPBNVjYbz56tnwzw5+m6dWC5aENXBp3cbM05Qz8VYckqmlw
- ukJljVB3CCB9ZR2VLFQphP9kVzX0qlAU4DhnPqIGoTjGljZ5EF7Fql71/GJ13JKmEeU+
- QR6AqjusDuTE/sF132w3wxjTBtaWbq1U2T5yCsIvUAaTBV+weUD0AxcatlWQgYIVLE8M
- CPCago1VL6zpWcTPVp9F5ky08t+9kzVvRsIggpw8EhDOL6GlNQHA9eDYzva4mzVJPxpB
- lPZg==
-X-Gm-Message-State: AO0yUKVU8lCqxk8cqCYwxS0aMhGIZfXP8nclDsAZrE3gPitZyGj7sgYN
- kXyyXAriBt9ybHjV284oiaQyPjEjnyqRC5Wc
-X-Received: by 2002:a05:6000:1005:b0:2bf:b35d:2797 with SMTP id
- a5-20020a056000100500b002bfb35d2797mr8819725wrx.11.1675436158914; 
- Fri, 03 Feb 2023 06:55:58 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=U1UtAD1cxyxTdrK64YRV25P2sKPgBwmLWBAD4nN05ls=;
+ b=o2sqis+ETWCjdbfoNr4R51Nftw/T0OZA8HEDl4Pzg1IzkTz5syTcYISlSF0EtcWk1c
+ kCYQg3XdV+sxmlyM32DW57EUZiekakpQvnL8du8Dk1EC2ylUEiHih3wzEpReEccPCGIj
+ SdFcC4BUigpu2569OMS/5TnWVZv7UxiShiLID/naoAXT099CEN512atJm/3oCTp6B2Pp
+ cixWVYpzAh0hLZukwhe0xIFkYfmpzh3BgXt2GnG+JrVvnzrqLonFpqiH6xiQArtbbVfK
+ gAbcO5fLAFdRSkX+57QtHNvfYJ2c3yHGtnUEFYiyNP8WQmcbNFhNF1dMFuvFCxcERjUo
+ Rw6w==
+X-Gm-Message-State: AO0yUKVXBQPvjkaM/wri0I8n/cIrrVYnxc+2GxF8GNk5QFtZ27FMJCYL
+ Xl63Y1aHVQaXjpQS61/ei3mtbwPzOaRE2Ai0
+X-Received: by 2002:a5d:420d:0:b0:2c3:ba99:44bc with SMTP id
+ n13-20020a5d420d000000b002c3ba9944bcmr7819727wrq.68.1675436138396; 
+ Fri, 03 Feb 2023 06:55:38 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- v1-20020adf8b41000000b002be505ab59asm2248695wra.97.2023.02.03.06.55.57
+ z16-20020a5d4d10000000b002bbed1388a5sm2170114wrt.15.2023.02.03.06.55.37
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 03 Feb 2023 06:55:58 -0800 (PST)
+ Fri, 03 Feb 2023 06:55:37 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v2 04/15] hw/pci/pcie_sriov: Do not open-code
- qdev_unrealize_and_unref()
-Date: Fri,  3 Feb 2023 15:55:25 +0100
-Message-Id: <20230203145536.17585-5-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 00/15] hw: Use QOM alias properties and few QOM/QDev
+ cleanups
+Date: Fri,  3 Feb 2023 15:55:21 +0100
+Message-Id: <20230203145536.17585-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230203145536.17585-1-philmd@linaro.org>
-References: <20230203145536.17585-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,35 +119,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2/hXDfHhMh13
+X-TUID: 6oydCzeA72qD
 
-(See commits dc3edf8d8a "Convert to qdev_unrealize() manually"
- and 981c3dcd94 "Convert to qdev_unrealize() with Coccinelle").
+Since v1:
+- Addressed Markus & Zoltan review comments
+- Introduce/use qdev_unrealize_and_unref()
 
-Reported-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/pci/pcie_sriov.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+These patches are extracted from a QOM/QDev refactor series,
+so they are preliminary cleanups noticed while working on it:
 
-diff --git a/hw/pci/pcie_sriov.c b/hw/pci/pcie_sriov.c
-index 93b0624599..0b6101302b 100644
---- a/hw/pci/pcie_sriov.c
-+++ b/hw/pci/pcie_sriov.c
-@@ -204,11 +204,10 @@ static void unregister_vfs(PCIDevice *dev)
-     for (i = 0; i < num_vfs; i++) {
-         Error *errp = NULL;
-         PCIDevice *vf = dev->exp.sriov_pf.vf[i];
--        object_property_set_bool(OBJECT(vf), "realized", false, &errp);
--        if (errp) {
-+
-+        if (!qdev_unrealize_and_unref(DEVICE(vf), &errp)) {
-             warn_reportf_err(errp, "Failed to unplug: ");
-         }
--        object_unparent(OBJECT(vf));
-     }
-     g_free(dev->exp.sriov_pf.vf);
-     dev->exp.sriov_pf.vf = NULL;
+- Use correct type when calling qdev_prop_set_xxx()
+- Unify some qdev properties in MIPS models
+- Replace intermediate properties by link properties
+- Remove DEFINE_PROP_DMAADDR() macro which is used one time
+- Use qdev_realize_and_unref() instead of open-coding it
+
+Philippe Mathieu-Daudé (15):
+  hw/pci/pcie_sriov: Replace fprintf(error_pretty) -> 
+    warn_reportf_err()
+  hw/qdev: Introduce qdev_unrealize_and_unref()
+  linux-user/syscall: Do not open-code qdev_unrealize_and_unref()
+  hw/pci/pcie_sriov: Do not open-code qdev_unrealize_and_unref()
+  hw/i386/sgx: Do not open-code qdev_realize_and_unref()
+  hw/ppc/sam460ex: Correctly set MAL properties
+  hw/arm/nrf51: Alias 'flash-size' QOM property in SoC object
+  hw/arm/fsl-imx: Alias 'phy-num' QOM property in SoC object
+  hw/usb/hcd-ohci: Include missing 'sysbus.h' header
+  hw/display/sm501: Embed OHCI QOM child in chipset
+  hw/display/sm501: Alias 'dma-offset' QOM property in chipset object
+  hw/display/sm501: Unify common QOM properties
+  hw/qdev: Remove DEFINE_PROP_DMAADDR() and 'hw/qdev-dma.h'
+  hw/mips: Declare all length properties as unsigned
+  hw/mips/itu: Pass SAAR using QOM link property
+
+ hw/arm/fsl-imx25.c           |  3 +--
+ hw/arm/fsl-imx6.c            |  3 +--
+ hw/arm/fsl-imx6ul.c          |  8 ++++----
+ hw/arm/fsl-imx7.c            | 12 ++++++------
+ hw/arm/microbit.c            |  5 ++++-
+ hw/arm/nrf51_soc.c           | 10 +---------
+ hw/core/qdev.c               |  9 +++++++++
+ hw/display/sm501.c           | 33 ++++++++++++++-------------------
+ hw/i386/sgx.c                | 14 ++++++--------
+ hw/intc/mips_gic.c           |  4 ++--
+ hw/mips/boston.c             |  2 +-
+ hw/mips/cps.c                | 35 ++++++++++++-----------------------
+ hw/mips/malta.c              |  2 +-
+ hw/misc/mips_cmgcr.c         |  2 +-
+ hw/misc/mips_itu.c           | 30 ++++++++++++++++++++----------
+ hw/nvram/nrf51_nvm.c         |  6 +++++-
+ hw/pci/pcie_sriov.c          | 11 ++++-------
+ hw/ppc/sam460ex.c            |  4 ++--
+ hw/sh4/r2d.c                 |  2 +-
+ hw/usb/hcd-ohci-pci.c        |  1 -
+ hw/usb/hcd-ohci.c            |  3 +--
+ hw/usb/hcd-ohci.h            |  1 +
+ include/hw/arm/fsl-imx25.h   |  1 -
+ include/hw/arm/fsl-imx6.h    |  1 -
+ include/hw/arm/fsl-imx6ul.h  |  2 --
+ include/hw/arm/fsl-imx7.h    |  1 -
+ include/hw/arm/nrf51_soc.h   |  1 -
+ include/hw/intc/mips_gic.h   |  4 ++--
+ include/hw/misc/mips_cmgcr.h |  2 +-
+ include/hw/misc/mips_itu.h   |  9 ++++-----
+ include/hw/qdev-core.h       | 20 ++++++++++++++++++++
+ include/hw/qdev-dma.h        | 16 ----------------
+ linux-user/syscall.c         |  3 +--
+ 33 files changed, 125 insertions(+), 135 deletions(-)
+ delete mode 100644 include/hw/qdev-dma.h
+
 -- 
 2.38.1
 

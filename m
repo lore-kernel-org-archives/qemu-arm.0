@@ -1,104 +1,375 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1898082ejb;
-        Fri, 3 Feb 2023 16:35:26 -0800 (PST)
-X-Google-Smtp-Source: AK7set+bgbC/BbovBzp+/sPToX8Q2y7+gyErnX1YsWHAjeqdYgJOQCnpA2e53xvpvpI40rcRukhJ
-X-Received: by 2002:a05:6214:518f:b0:56a:390b:6fa9 with SMTP id kl15-20020a056214518f00b0056a390b6fa9mr4401546qvb.4.1675470926379;
-        Fri, 03 Feb 2023 16:35:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675470926; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp2369360ejb;
+        Sat, 4 Feb 2023 05:24:10 -0800 (PST)
+X-Google-Smtp-Source: AK7set+1LuOfIX0uiuwknEQeurgZ8mv5WReXBN/bXgyddVQx234m5TaTafGvL/V3NimQ79IfCICt
+X-Received: by 2002:a05:622a:180c:b0:3b6:8b52:1359 with SMTP id t12-20020a05622a180c00b003b68b521359mr14180837qtc.0.1675517050362;
+        Sat, 04 Feb 2023 05:24:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675517050; cv=none;
         d=google.com; s=arc-20160816;
-        b=sDuc0PDQZhkCcdmP3GXBUQVvb5Wu8LTCWD3epaIjeRPZRB4dHOyCPudDLCP99Fva5C
-         UF6sH0CNAP8fEthtZ6VKUdUnmbgMkIlCJ8GdVZfBUQjliDNTPdustK7c1JgO8dOuVD53
-         d7d9eWcbVi8gV3/JJOdMek1TG6f6cA76dMPEbzEvVPoDMsrYAEEjSS1RvR539GFzXHUN
-         bVDIT60aE2l/BWJYHVkC54YIXkqEcEaTzfyZOY9FW7O5uDtS4/Hk7wYbWLqHdOXRKe7M
-         n5wjdzZgkXOe1e3a675iRnJeNwmI16nZLxSAskj7ew4P1sjP3IgmB7mX6brK02I8u44r
-         h8ow==
+        b=c6iEsvqKHKV3IRq1uZWXn0zuRYDOomXq940g9wxCsq9qrKfwvGcqO4rv6bnxUXaQGZ
+         XRAK69z9/Ht75p/4oFcdLVrB0wcWvACLUBlgb2yVSZzpYylEgn/PFSxGSg32eEMfwQ1K
+         PdmXzHsi1pYTg1CyC9h19tbl3EFglSbsc3c8cNMr0Eu1FJGSm96SR5F36sRhd43519y+
+         ppZB8BePubPd7MUN5U+7IT0/Bz7fO5B/c4Ub8u3Qr9/4ei3ZobAONJlkU9Rc0ZknFOYy
+         O0qyERgzsRvjpxDOcr7jaGbxZrn/ITcPRh5Rp6pLghW7Ym3XHthPx7hppF3ALwKg8GD3
+         5iag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:message-id:mime-version:subject
-         :date:from;
-        bh=ZS39PoBufl++Ztlgs/FjTixw4LQfbcR3fQQLW53RbeA=;
-        b=FtyIczlsvAKHJgBg53im0EZtDSNrLmB5wXRolUoJkmuj2JIVTQuky83mr3kSXG14px
-         W2Nk3tk137VscXXwhCd9bzH2QHTMux/kCFAMvCmCdz7OMOyGhxRhRbcCivTIjQU2ok6v
-         +fsVzpefFbq0en8ET4ihrOOWoOd7SQAGY4H3P0UvxaPN7mnXXOFe1Ojqj/UpG/nwSrda
-         kMslpJCW6q+vGOu1KFWOXWbyQpjGpHpiHQgVleKDNd4cVZ7qo8sc6xGF/6ACc2+dCFNP
-         sVJLWDUtLuh023EAQGQyA0aGyFyblEKTqpGAOrKSu48XSphlfIdpHy+K0z4gGD0wfrGj
-         hmuw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=nFW15eM3QQLDoctzjP7iof9x9B0/XTXmd5jsJMhpTvE=;
+        b=BAjUNfuX+hXVczWwZW4lP/Q9SLm02OnqYBhvlkbxRFxiAbvYP0JTjoHwckF5Fv0rYa
+         F8o5ifPW5FDaiEa0M6FRiIa1Zg6PNou9497Zg8twuJ0z2+T/iEUzdRagKUGe3UQRehzg
+         pmgcTrBRRPN3jUtoBbwivHyL1xU/lZbFcmJsqTs5+q3+kwrXj0paRUcKAFBTHpnW2HAj
+         OpY2M3UfkIGFapxzonqmk8J55dm/JsWeR/lrtykw7XTJzm/E3IMCTYMyIApnr30vy5S1
+         qKTjigfSetLXIh98psST4b1qZg0GMypjaMflUNQTBw+4KAii6Qjm9UPmzGNJd69UOi/N
+         0bOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XkzRXjxX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14-20020a0cd64e000000b0053b66a408dasi2606118qvj.58.2023.02.03.16.35.26
+        by mx.google.com with ESMTPS id d11-20020a05622a15cb00b003af4aea8875si3879871qty.515.2023.02.04.05.24.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 16:35:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 04 Feb 2023 05:24:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XkzRXjxX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pO6Ve-0005cG-QZ; Fri, 03 Feb 2023 19:34:26 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pOIW8-0000pr-Pt; Sat, 04 Feb 2023 08:23:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pO6Vc-0005Yy-0Y; Fri, 03 Feb 2023 19:34:24 -0500
-Received: from mail-b.sr.ht ([173.195.146.151])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pO6VY-0003qt-Vi; Fri, 03 Feb 2023 19:34:23 -0500
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id AA05311F041;
- Sat,  4 Feb 2023 00:34:17 +0000 (UTC)
-From: ~dreiss-meta <dreiss-meta@git.sr.ht>
-Date: Sat, 04 Feb 2023 00:34:17 +0000
-Subject: [PATCH qemu v3 0/2] ARM: Add support for V8M special registers in GDB
- stub
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pOIVz-0000p8-RI; Sat, 04 Feb 2023 08:23:39 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pOIVx-0004zZ-Ji; Sat, 04 Feb 2023 08:23:35 -0500
+Received: by mail-ej1-x633.google.com with SMTP id gr7so22468134ejb.5;
+ Sat, 04 Feb 2023 05:23:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=nFW15eM3QQLDoctzjP7iof9x9B0/XTXmd5jsJMhpTvE=;
+ b=XkzRXjxXC1NobaLkQ1nuAuulFXOeww2JdUHCdZJa52tyS9borQLsVFuEFkFSdcUU0b
+ zRIROs2Sa0bZfJf3DpjWZ/TS5O26BzUPoJQ1+I3eD6ylkXEmLUG2r3htK2jSFeAnPhv8
+ jXigCnHut6Q18rRIn+JocgxGTxWo+rc0kjJLYO463Mh4EpyXnbPGiS/dHdtIr0S4WGxG
+ Rk9Vbxxdm7XU6A0s8rPo034RsA/w43RWPCOym+RUhm66i+goFe+CTk7RwAoq5n5e66qR
+ U8JBNcj1ZVuYQajsPcy3VOZZLirlTHN6R7VyAOmbg7BpCJqhtrkiw0dB3YQyjU/J1WG5
+ h0Rw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=nFW15eM3QQLDoctzjP7iof9x9B0/XTXmd5jsJMhpTvE=;
+ b=d+g5FBycCiYO8zwQDETVDAwnDeTka5f6OBDAwLhh4cWgtYclMmsWhqbxLxq1toyAmt
+ wOhVYfWtKqFZqJaXZiQrnsJnnANGGIC9PgXMI74MpXWJgzMR74er9WTJMAoQ/z9LJtLE
+ ibITS0GUSyyh4ZxQ+w5dtaxLTL+bEZpUzom4Mz4nMFlyauRFJXAAvrdyxfDBpsJDTyqd
+ lZxFXPgLSLZgD5M13f7UVQAQUPFiJIzaQnTjlel4Ax6nR332NQe8DbmJNjuoYQeiZ/JA
+ 6vLjiuLrgZsDmfWOHwQOnUsdS980a7p6fyncbDgQVyAnjQPaqfreTZf3OcX/PS8ed9mu
+ eE1A==
+X-Gm-Message-State: AO0yUKWIMywtY5TAt7vecCkgU6CHy1aGlwL4SGJ4Vdkj6A3aRXefqyAl
+ CXJFCd2F70nxaHrt3RlXN3s/Gx5WrRA=
+X-Received: by 2002:a17:907:8a04:b0:885:23bc:3174 with SMTP id
+ sc4-20020a1709078a0400b0088523bc3174mr19244568ejc.70.1675517010332; 
+ Sat, 04 Feb 2023 05:23:30 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-077-183-077-083.77.183.pool.telefonica.de.
+ [77.183.77.83]) by smtp.gmail.com with ESMTPSA id
+ p15-20020a1709060e8f00b0088bd01105eesm2810582ejf.188.2023.02.04.05.23.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 04 Feb 2023 05:23:29 -0800 (PST)
+Date: Sat, 04 Feb 2023 13:23:21 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+CC: qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-riscv@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>
+Subject: Re: [RFC PATCH 12/19] hw/i386: Set QDev properties using QDev API
+In-Reply-To: <20230203180914.49112-13-philmd@linaro.org>
+References: <20230203180914.49112-1-philmd@linaro.org>
+ <20230203180914.49112-13-philmd@linaro.org>
+Message-ID: <D0F3AEC0-FC01-426E-ABA3-08CA806E966E@gmail.com>
 MIME-Version: 1.0
-Message-ID: <167547085745.18032.9674021893886143814-0@git.sr.ht>
-X-Mailer: git.sr.ht
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: ~dreiss-meta <dreiss@meta.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: p0ZoIaGq7XcX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: W130Y3rH+T9l
 
-Rebased and updated to use NULL as a sentinel.
 
-David Reiss (2):
-  target/arm/gdbstub: Support reading M system registers from GDB
-  target/arm/gdbstub: Support reading M security extension registers
-    from GDB
 
- target/arm/cpu.h         |  25 +++-
- target/arm/gdbstub.c     | 241 +++++++++++++++++++++++++++++++++++++++
- target/arm/m_helper.c    |  29 ++---
- tests/lcitool/libvirt-ci |   2 +-
- 4 files changed, 277 insertions(+), 20 deletions(-)
+Am 3=2E Februar 2023 18:09:07 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <p=
+hilmd@linaro=2Eorg>:
+>No need to use the low-level QOM API when an object
+>inherits from QDev=2E Directly use the QDev API to set
+>its properties=2E
+>
+>Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
+>---
+> hw/i386/pc=2Ec           |  8 +++-----
+> hw/i386/pc_q35=2Ec       | 25 +++++++++++--------------
+> hw/i386/sgx=2Ec          |  3 +--
+> hw/i386/x86=2Ec          | 12 ++++--------
+> hw/mem/pc-dimm=2Ec       |  5 ++---
+> target/i386/cpu=2Ec      |  6 ++----
+> target/i386/host-cpu=2Ec |  7 +++----
+> 7 files changed, 26 insertions(+), 40 deletions(-)
+>
+>diff --git a/hw/i386/pc=2Ec b/hw/i386/pc=2Ec
+>index 6e592bd969=2E=2E700fdefa12 100644
+>--- a/hw/i386/pc=2Ec
+>+++ b/hw/i386/pc=2Ec
+>@@ -1236,8 +1236,7 @@ static void pc_superio_init(ISABus *isa_bus, bool c=
+reate_fdctrl,
+>         vmmouse =3D NULL;
+>     }
+>     if (vmmouse) {
+>-        object_property_set_link(OBJECT(vmmouse), TYPE_I8042, OBJECT(i80=
+42),
+>-                                 &error_abort);
+>+        qdev_prop_set_link(DEVICE(vmmouse), TYPE_I8042, OBJECT(i8042));
+>         isa_realize_and_unref(vmmouse, isa_bus, &error_fatal);
+>     }
+>     port92 =3D isa_create_simple(isa_bus, TYPE_PORT92);
+>@@ -1538,9 +1537,8 @@ static void pc_machine_device_pre_plug_cb(HotplugHa=
+ndler *hotplug_dev,
+>         char *resv_prop_str =3D g_strdup_printf("0xfee00000:0xfeefffff:%=
+d",
+>                                               VIRTIO_IOMMU_RESV_MEM_T_MS=
+I);
+>=20
+>-        object_property_set_uint(OBJECT(dev), "len-reserved-regions", 1,=
+ errp);
+>-        object_property_set_str(OBJECT(dev), "reserved-regions[0]",
+>-                                resv_prop_str, errp);
+>+        qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
+>+        qdev_prop_set_string(dev, "reserved-regions[0]", resv_prop_str);
+>         g_free(resv_prop_str);
+>     }
+>=20
+>diff --git a/hw/i386/pc_q35=2Ec b/hw/i386/pc_q35=2Ec
+>index 66cd718b70=2E=2E760efa62ca 100644
+>--- a/hw/i386/pc_q35=2Ec
+>+++ b/hw/i386/pc_q35=2Ec
+>@@ -118,7 +118,7 @@ static void pc_q35_init(MachineState *machine)
+>     PCMachineState *pcms =3D PC_MACHINE(machine);
+>     PCMachineClass *pcmc =3D PC_MACHINE_GET_CLASS(pcms);
+>     X86MachineState *x86ms =3D X86_MACHINE(machine);
+>-    Q35PCIHost *q35_host;
+>+    DeviceState *q35_host;
+>     PCIHostState *phb;
 
--- 
-2.34.5
+While at it, you could incorporate this change: https://lore=2Ekernel=2Eor=
+g/qemu-devel/20230131115326=2E12454-5-shentey@gmail=2Ecom/ , i=2Ee=2E resol=
+ve the now redundant q35_host variable and use phb instead as DeviceState=
+=2E
+
+I'll drop the patch from my series in favor of yours=2E
+
+Best regards,
+Bernhard
+
+>     PCIBus *host_bus;
+>     PCIDevice *lpc;
+>@@ -206,7 +206,7 @@ static void pc_q35_init(MachineState *machine)
+>     }
+>=20
+>     /* create pci host bus */
+>-    q35_host =3D Q35_HOST_DEVICE(qdev_new(TYPE_Q35_HOST_DEVICE));
+>+    q35_host =3D qdev_new(TYPE_Q35_HOST_DEVICE);
+>=20
+>     if (pcmc->pci_enabled) {
+>         pci_hole64_size =3D object_property_get_uint(OBJECT(q35_host),
+>@@ -219,18 +219,15 @@ static void pc_q35_init(MachineState *machine)
+>                    pci_hole64_size);
+>=20
+>     object_property_add_child(qdev_get_machine(), "q35", OBJECT(q35_host=
+));
+>-    object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_RAM_MEM,
+>-                             OBJECT(ram_memory), NULL);
+>-    object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_PCI_MEM,
+>-                             OBJECT(pci_memory), NULL);
+>-    object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_SYSTEM_MEM,
+>-                             OBJECT(get_system_memory()), NULL);
+>-    object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_IO_MEM,
+>-                             OBJECT(system_io), NULL);
+>-    object_property_set_int(OBJECT(q35_host), PCI_HOST_BELOW_4G_MEM_SIZE=
+,
+>-                            x86ms->below_4g_mem_size, NULL);
+>-    object_property_set_int(OBJECT(q35_host), PCI_HOST_ABOVE_4G_MEM_SIZE=
+,
+>-                            x86ms->above_4g_mem_size, NULL);
+>+    qdev_prop_set_link(q35_host, MCH_HOST_PROP_RAM_MEM, OBJECT(ram_memor=
+y));
+>+    qdev_prop_set_link(q35_host, MCH_HOST_PROP_PCI_MEM, OBJECT(pci_memor=
+y));
+>+    qdev_prop_set_link(q35_host, MCH_HOST_PROP_IO_MEM, OBJECT(system_io)=
+);
+>+    qdev_prop_set_link(q35_host, MCH_HOST_PROP_SYSTEM_MEM,
+>+                       OBJECT(get_system_memory()));
+>+    qdev_prop_set_uint64(q35_host, PCI_HOST_BELOW_4G_MEM_SIZE,
+>+                         x86ms->below_4g_mem_size);
+>+    qdev_prop_set_uint64(q35_host, PCI_HOST_ABOVE_4G_MEM_SIZE,
+>+                         x86ms->above_4g_mem_size);
+>     /* pci */
+>     sysbus_realize_and_unref(SYS_BUS_DEVICE(q35_host), &error_fatal);
+>     phb =3D PCI_HOST_BRIDGE(q35_host);
+>diff --git a/hw/i386/sgx=2Ec b/hw/i386/sgx=2Ec
+>index 6a729bff94=2E=2E196fa5afee 100644
+>--- a/hw/i386/sgx=2Ec
+>+++ b/hw/i386/sgx=2Ec
+>@@ -304,8 +304,7 @@ void pc_machine_init_sgx_epc(PCMachineState *pcms)
+>         object_property_parse(OBJECT(dev), SGX_EPC_MEMDEV_PROP,
+>                               list->value->memdev, &error_fatal);
+>         /* set the numa node property for sgx epc object */
+>-        object_property_set_uint(OBJECT(dev), SGX_EPC_NUMA_NODE_PROP,
+>-                                 list->value->node, &error_fatal);
+>+        qdev_prop_set_uint32(dev, SGX_EPC_NUMA_NODE_PROP, list->value->n=
+ode);
+>         qdev_realize_and_unref(dev, NULL, &error_fatal);
+>     }
+>=20
+>diff --git a/hw/i386/x86=2Ec b/hw/i386/x86=2Ec
+>index eaff4227bd=2E=2E191a8c36ee 100644
+>--- a/hw/i386/x86=2Ec
+>+++ b/hw/i386/x86=2Ec
+>@@ -43,6 +43,7 @@
+> #include "sysemu/xen=2Eh"
+> #include "trace=2Eh"
+>=20
+>+#include "hw/qdev-properties=2Eh"
+> #include "hw/i386/x86=2Eh"
+> #include "target/i386/cpu=2Eh"
+> #include "hw/i386/topology=2Eh"
+>@@ -96,15 +97,10 @@ uint32_t x86_cpu_apic_id_from_index(X86MachineState *=
+x86ms,
+>=20
+> void x86_cpu_new(X86MachineState *x86ms, int64_t apic_id, Error **errp)
+> {
+>-    Object *cpu =3D object_new(MACHINE(x86ms)->cpu_type);
+>+    DeviceState *cpu =3D DEVICE(object_new(MACHINE(x86ms)->cpu_type));
+>=20
+>-    if (!object_property_set_uint(cpu, "apic-id", apic_id, errp)) {
+>-        goto out;
+>-    }
+>-    qdev_realize(DEVICE(cpu), NULL, errp);
+>-
+>-out:
+>-    object_unref(cpu);
+>+    qdev_prop_set_uint32(cpu, "apic-id", apic_id);
+>+    qdev_realize(cpu, NULL, errp);
+> }
+>=20
+> void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
+>diff --git a/hw/mem/pc-dimm=2Ec b/hw/mem/pc-dimm=2Ec
+>index 50ef83215c=2E=2Ed6e0c8b680 100644
+>--- a/hw/mem/pc-dimm=2Ec
+>+++ b/hw/mem/pc-dimm=2Ec
+>@@ -66,8 +66,7 @@ void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState =
+*machine,
+>         error_propagate(errp, local_err);
+>         return;
+>     }
+>-    object_property_set_int(OBJECT(dimm), PC_DIMM_SLOT_PROP, slot,
+>-                            &error_abort);
+>+    qdev_prop_set_int32(DEVICE(dimm), PC_DIMM_SLOT_PROP, slot);
+>     trace_mhp_pc_dimm_assigned_slot(slot);
+>=20
+>     memory_device_pre_plug(MEMORY_DEVICE(dimm), machine, legacy_align,
+>@@ -234,7 +233,7 @@ static uint64_t pc_dimm_md_get_addr(const MemoryDevic=
+eState *md)
+> static void pc_dimm_md_set_addr(MemoryDeviceState *md, uint64_t addr,
+>                                 Error **errp)
+> {
+>-    object_property_set_uint(OBJECT(md), PC_DIMM_ADDR_PROP, addr, errp);
+>+    qdev_prop_set_uint64(DEVICE(md), PC_DIMM_ADDR_PROP, addr);
+> }
+>=20
+> static MemoryRegion *pc_dimm_md_get_memory_region(MemoryDeviceState *md,
+>diff --git a/target/i386/cpu=2Ec b/target/i386/cpu=2Ec
+>index 4d2b8d0444=2E=2E5532cd42c5 100644
+>--- a/target/i386/cpu=2Ec
+>+++ b/target/i386/cpu=2Ec
+>@@ -5073,10 +5073,8 @@ static void x86_cpu_load_model(X86CPU *cpu, X86CPU=
+Model *model)
+>      */
+>=20
+>     /* CPU models only set _minimum_ values for level/xlevel: */
+>-    object_property_set_uint(OBJECT(cpu), "min-level", def->level,
+>-                             &error_abort);
+>-    object_property_set_uint(OBJECT(cpu), "min-xlevel", def->xlevel,
+>-                             &error_abort);
+>+    qdev_prop_set_uint32(DEVICE(cpu), "min-level", def->level);
+>+    qdev_prop_set_uint32(DEVICE(cpu), "min-xlevel", def->xlevel);
+>=20
+>     object_property_set_int(OBJECT(cpu), "family", def->family, &error_a=
+bort);
+>     object_property_set_int(OBJECT(cpu), "model", def->model, &error_abo=
+rt);
+>diff --git a/target/i386/host-cpu=2Ec b/target/i386/host-cpu=2Ec
+>index 10f8aba86e=2E=2E0307eaa208 100644
+>--- a/target/i386/host-cpu=2Ec
+>+++ b/target/i386/host-cpu=2Ec
+>@@ -158,7 +158,7 @@ void host_cpu_instance_init(X86CPU *cpu)
+>=20
+>         host_cpuid(0, 0, NULL, &ebx, &ecx, &edx);
+>         x86_cpu_vendor_words2str(vendor, ebx, edx, ecx);
+>-        object_property_set_str(OBJECT(cpu), "vendor", vendor, &error_ab=
+ort);
+>+        qdev_prop_set_string(DEVICE(cpu), "vendor", vendor);
+>     }
+> }
+>=20
+>@@ -174,13 +174,12 @@ void host_cpu_max_instance_init(X86CPU *cpu)
+>     host_cpu_vendor_fms(vendor, &family, &model, &stepping);
+>     host_cpu_fill_model_id(model_id);
+>=20
+>-    object_property_set_str(OBJECT(cpu), "vendor", vendor, &error_abort)=
+;
+>+    qdev_prop_set_string(DEVICE(cpu), "vendor", vendor);
+>     object_property_set_int(OBJECT(cpu), "family", family, &error_abort)=
+;
+>     object_property_set_int(OBJECT(cpu), "model", model, &error_abort);
+>     object_property_set_int(OBJECT(cpu), "stepping", stepping,
+>                             &error_abort);
+>-    object_property_set_str(OBJECT(cpu), "model-id", model_id,
+>-                            &error_abort);
+>+    qdev_prop_set_string(DEVICE(cpu), "model-id", model_id);
+> }
+>=20
+> static void host_cpu_class_init(ObjectClass *oc, void *data)

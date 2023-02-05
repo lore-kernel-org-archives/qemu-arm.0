@@ -1,128 +1,592 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1749804ejb;
-        Fri, 3 Feb 2023 12:46:16 -0800 (PST)
-X-Received: by 2002:a17:903:1cc:b0:196:63d0:a674 with SMTP id e12-20020a17090301cc00b0019663d0a674mr14779430plh.9.1675457176627;
-        Fri, 03 Feb 2023 12:46:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675457176; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp2891644ejb;
+        Sat, 4 Feb 2023 20:09:18 -0800 (PST)
+X-Google-Smtp-Source: AK7set8gmtzSGKxljQmdCJxzgmuxUJ4UBfH/kJ5IZNS8cnoQUO1hNaUL1dkw41t6Rw8JW2+td18s
+X-Received: by 2002:a0c:d84f:0:b0:557:a5c5:7df8 with SMTP id i15-20020a0cd84f000000b00557a5c57df8mr11135715qvj.16.1675570157910;
+        Sat, 04 Feb 2023 20:09:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675570157; cv=none;
         d=google.com; s=arc-20160816;
-        b=AapHV8xr1BhN2BewDd8AXQpS1zpcN49H4NY7YtDIXscmE/KWOQ2+y3QdBqtycIvxEQ
-         0jL2NnJRQtXiV1DIGGqsGFIYbgYAC9wAhI7zSZ+ZwWYd7POYsYE/WKvJIuofXVt/USE3
-         B97WvrqM1yA635P8fb2UA0ioCiWdx7RzNCGc9/n+3JAwBeWW/9KR2fiHuIA9o6RGDePq
-         /6yReKwcHE4p9Pa6kifaWptEOP9/4raV6kYqerv0XpyNpyxPFYAa0reMtg8znZfIIv8H
-         cMHktlot9mOOlnJRfy4bflN26g3nT9KlEKjfkaguaCBVO+DTZCVe7amvpPspaSnOAQQg
-         HOqw==
+        b=V7kzutYhgb+7yP6xodfW983s6io1FeZLPc8Q1wcVtwuRAgAVtSmbmiyS4zliEytGJG
+         EbqbNOZxJc/5JveZeE9SNLg990aRVpJf5qMY5uACrXH6syiMr82+muLfU91yPpyiUZYI
+         C0cnOpUUZlMcPtQGC8sPaLqv2umvq5r7jkl5/PJ7legm6xH+5jIvHLBO0xbHwi5pypmf
+         rSeZN2nFNLoaIBaaQm3iUsJq7cC7iZ/XSTPBkJkiR3Yj0yfPDnDxJsXmk37qVgmmYp10
+         er5bv4a5KO2h8JL9WimAGi4S1haaYowAvciR0sjhSKi4vCMO40sPbL6yDmmXhaIf/CtD
+         96tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=90r2rH7VmupffwVD+Rrrr2U62ktUsW4af1IcWoBsIHc=;
-        b=u8PLhuusDUvRa85tCbmJGJG8vPrnws9CwPFzV0yBHZI+3eGpxpSmq/ekkY5bHwpMr0
-         ugbM9RgFQH7Gkw82wj1u0zMCQzn4Hj819n4oETe6XyD+J3f+1iTdvwBEI4MOsngmQM2d
-         IqH1CgGDHP90FKW69m2OjE66tbv3ubyzopZtu+N6ad2lPPOUd1zN8KOsh3nORIK+Wlkp
-         Y/wyYiJ97ysv0BpZ5WTXaVNVZGnxgdET191cSAdZrq4FtajbwiQPhrW21WB0yXi7ODTk
-         ROfcfdI0VHBzt1zujA3TpsHgNCkxPWoW4SevCBfH+4aEMdrQVNnF0pjQDSB4jCZj88eV
-         c0/g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:ironport-hdrordr:ironport-data;
+        bh=IOvqN3WejMEJLJDUyDO4/PFLr/b6LzRjKv9Yr9nPTE8=;
+        b=OASZCT/c6oDtx1i2h24j9TDK0V68I/u+8Hreyj5kNRZoZelFecZjK1w/QrqGe4B6eD
+         pQzyDMMO1BMNuB5BaRwkXWV/O1OLQneiLzNUrMDLIXnYUMSDQzWzKH8v1EW8yK1wngTc
+         fpnfx4vWHwhBtMuE7vds8SCYfjol+TzURIOypruuJaN6f8giBWWkasRCwDWQ3zJFijtX
+         bC1JGfZNFaQX3onmLv24V4hZK5ju/Euhtz/QV2NFmkNqJDPITAOPVZmXTQV4qLLte4/V
+         WO/H2ub7SPHD74i0Q7JRbUKYGGlDIjuN82CEx6Rzbnqx9db785V/TGQjd5gXwjCJ4jQM
+         JyUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cAdR8ynd;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b9-20020a1709027e0900b00198a3655b0dsor1549679plm.16.2023.02.03.12.46.16
+       dkim=pass header.i=@bu.edu header.s=s1gsbu header.b=aN6T2mk2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=bu.edu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p3-20020a37bf03000000b006bbbdefd8a1si5361618qkf.727.2023.02.04.20.09.17
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 03 Feb 2023 12:46:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 04 Feb 2023 20:09:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cAdR8ynd;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=90r2rH7VmupffwVD+Rrrr2U62ktUsW4af1IcWoBsIHc=;
-        b=cAdR8yndVAnG5VibYma02cQlaT2uUofuD+mnwj+A2UocjAvr35AQrv6OdKQg5Cgcjk
-         tinLMh/r0UKu6RPYUlrbJxLl5D4NSuPQWk0IAEoikzFQukCVk9QZbSq0679D9ZIZ0D2b
-         gnds/9Fk53uQjebMyjQZTX0hcm5kkqlzdlxebcDtAb6FMZRBF7JZalKQ5Zmyt6izyPJ8
-         2BEmxLH/qyRmI/tw9W0C7UHgWP9lOQ7Osif9DIzJgj+ANB9nP3fa8GVhOrXG4vRYbBFH
-         BAdtx+tKMmHhGTK51UaR7mA6Fd2CA1UIlHcpMRUqySSil5/TXYJJTJscU9kkYT2VkWVt
-         4TTw==
+       dkim=pass header.i=@bu.edu header.s=s1gsbu header.b=aN6T2mk2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=bu.edu
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pOWKx-0000n9-SP; Sat, 04 Feb 2023 23:09:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1pOWKu-0000jj-P9
+ for qemu-arm@nongnu.org; Sat, 04 Feb 2023 23:09:05 -0500
+Received: from esa5.hc2706-39.iphmx.com ([216.71.137.63])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1pOWKs-0002nS-0C
+ for qemu-arm@nongnu.org; Sat, 04 Feb 2023 23:09:04 -0500
+X-IronPort-RemoteIP: 209.85.160.72
+X-IronPort-MID: 268082364
+X-IronPort-Reputation: None
+X-IronPort-Listener: OutgoingMail
+X-IronPort-SenderGroup: RELAY_GSUITE
+X-IronPort-MailFlowPolicy: $RELAYED
+IronPort-Data: A9a23:xrHj/qzDi4pVQc71mW96t+eExCrEfRIJ4+MujC+fZmUNrF6WrkUOy
+ GdJDWqBPK3cZWTwct1wPtmxpBsFusXcmocwSlY9rC00HyNBpPSeOdnIdU2Y0wF+jyHgoOCLy
+ +1EN7Es+ehtFie0Si+Fa+Sn9j8kkPnSHdIQMcacUghpXwhoVSw9vhxqnu89k+ZAjMOwRgiAo
+ rsemeWGULOe82MyYz18B56r8ks156yo4G9A5TTSWNgQ1LPgvyhNZH4gDfzpR5fIatE8NvK3Q
+ e/F0Ia48gvxl/v6Ior4+lpTWhRiro/6ZGBiuFIPM0SRqkEqShgJ70oOHKF0hXG7Ktm+t4sZJ
+ N1l7fRcQOqyV0HGsL11vxJwSkmSMUDakVNuzLfWXcG7liX7n3XQL/pGKU09B6IxxbZLE3xxx
+ MExcBMAdQ6errfjqF67YrEEasULKcDqOMYYsyglw26DS/khRp/HTuPB4towMDUY3JgfW6aDI
+ ZNHMXwwNnwsYDUWUrsTIJs6jOGknFH1bntVpE/9Sa8fuTaDlFwri+axWDbTUuOXX8luxmabm
+ kDX+n3aQS5AFoXA8wPQpxpAgceKx0sXQrk6DbC967tjmli7wGsVBxsLE1yhrpGEZlWWXtteL
+ wkT83Nro/doskOsSdb5Uluzp3vsUgMgZue82tYSsGmlopc4KS7AboTYZlatsOAbifI=
+IronPort-HdrOrdr: A9a23:HitHaqg9vm8551LzFTS3cTv39nBQXkAji2hC6mlwRA09TyXGrb
+ HIoB1L726RtN9OYgBEpTnhAtj6fZq8z+8K3WB1B8bZLXTbUQSTXfBfBOHZogEIdxeOhtK1t5
+ 0QAZSWeeeAfmSS5PySiGLZYq9QvKj5zE2xv5an854Ed3ANV0gK1XYNNu/0KDw/eOBuP+tMKL
+ OsouZBujq8aTA2Q62AdzI4tuL41qr2fIqMW3A77+tN0mazZPCThYIS0SLz4v7TaUIt/V7qyw
+ S18TARP5/Txc1THCWsnlPu0w==
+Received: from mail-oa1-f72.google.com ([209.85.160.72])
+ by ob1.hc2706-39.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
+ 04 Feb 2023 23:08:59 -0500
+Received: by mail-oa1-f72.google.com with SMTP id
+ 586e51a60fabf-1500bc69a97so4893618fac.7
+ for <qemu-arm@nongnu.org>; Sat, 04 Feb 2023 20:08:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bu.edu; s=s1gsbu;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=IOvqN3WejMEJLJDUyDO4/PFLr/b6LzRjKv9Yr9nPTE8=;
+ b=aN6T2mk2T6GtehZIfi/g96OZW+dXClvobi5ThTY61Ag1KE2jshi2nyCYulicTs1iDT
+ vPfV3Ty2lKYS0a1P8VJR99ACPU6Kzpl1Yi2SJOrEv0WVN+UgRPBtioNaBN1de5PYM7h3
+ zzSuYRm/5OSX1PdIRm33dp5QzGsFyhdDq6sEHweuKg0CVEYHl1CslAR62OqLWsQj/yxq
+ ahEo2iEiWHLO4exDq6MWdHTqYfb1Xac9nOdTG59KMh42ud2HKQE6uxtZwc2WKDsJCWp7
+ dqUxgpkx0Sy/t9YhA3KX+ftYjWTtHDA0+OiMibGrKFS1chTiZkLmfdlChsJgD3QSsPXT
+ UTYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=90r2rH7VmupffwVD+Rrrr2U62ktUsW4af1IcWoBsIHc=;
-        b=hI0YEyHPlrU1v3K7yQlOrq7NYlijv/BtBuPh3XTB8UMsFDFmsJknfvak8UWwCrKmAg
-         q+46nInEqJkOQP8ZLEWssfQcKvdgBuFyvYCnkZDeF1QqN4MZuIOJkodjmkWjVboDUCBP
-         0RTy+xznkHr9D9mFW7QL2dg+UzF1p1Em9siDxM2xkOfFYQ1lGPDzeCTGbSqnN1kKuRgk
-         pfZn96u9ycDEo42ToAXfuY4weRPahLjeM9QAp1EYpXNufpgsb/6gjHgMm4AFb2r0QVHh
-         Qeg20W5mpw6lKsyZlXmHZx4yBok807LnN+D6PwwI5Ch22QG34o1GDwaZih9SLKPf1+HL
-         /bUA==
-X-Gm-Message-State: AO0yUKVUodcF+c1N33EajCtmgFZjtqIZWGb+3SeEXLg9RKz49Ts6uHJC
-	Fn5dRaPuWLCzp/R3uUwAbjODq3gLh+oVpCbdYa8=
-X-Google-Smtp-Source: AK7set+XSWNXwBxOmzdkfd9RMPqGN0H0LVwj8E6QnkeJX8r8pvjRCH3Na+UzHwMz+NYnLpd7jYCYRg==
-X-Received: by 2002:a05:6a20:1442:b0:be:8fb1:9b11 with SMTP id a2-20020a056a20144200b000be8fb19b11mr15033890pzi.47.1675457176180;
-        Fri, 03 Feb 2023 12:46:16 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.50.177] (rrcs-173-197-98-118.west.biz.rr.com. [173.197.98.118])
-        by smtp.gmail.com with ESMTPSA id a77-20020a621a50000000b0058e12658485sm2316671pfa.94.2023.02.03.12.46.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Feb 2023 12:46:15 -0800 (PST)
-Message-ID: <6be1085e-1909-45a3-741d-b2c8e1baaed0@linaro.org>
-Date: Fri, 3 Feb 2023 10:46:12 -1000
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=IOvqN3WejMEJLJDUyDO4/PFLr/b6LzRjKv9Yr9nPTE8=;
+ b=E9fYDJWa6a7NE3n1U1gY7WIN3RCxCXgEWZJ0R55d6CVmcGqV16IWogLwEAtu+TvNUS
+ h6Xy25EYKRaKrK0MoEYPpLTbeG2d19cw9L4YBt+CEJcw9kF/PTyvU+dwaiD+RIf3spdu
+ NSCpAVKsIqwlMpDyIriQx5szEFYMmocFRzjUfIEsMfcjgaZrDZXIHFddUIuxwrJzIq4/
+ s+qnATDCBQeD8QKH6iSOl6NgEPRsEvdO/PucQu+90g5oV1Zi4GpiMsolfofI7prjQJvI
+ 43oHXgDj+GvR1qIbprizXKi9IZ2J517Zkv3JgIbAOTRYPCmSXGh+jGjx6wdGEkvTTgFh
+ 6RiQ==
+X-Gm-Message-State: AO0yUKUkZINRBPMAxdWoflSzgJz1btkk4IrJKdr580NEnmz2WYkLk61z
+ GjBWRWbIMjMhA98+k6Q2zEq7rFGQ+y+hxWq1R+bGiCXmkvC4Wewj5l6GokHZD284qXqn2gbGOmI
+ VggLI+NnRrEjW56Sya0Xrbh/GiQk=
+X-Received: by 2002:ac8:7770:0:b0:3b9:bc8c:c20c with SMTP id
+ h16-20020ac87770000000b003b9bc8cc20cmr11909898qtu.23.1675570127800; 
+ Sat, 04 Feb 2023 20:08:47 -0800 (PST)
+X-Received: by 2002:ac8:7770:0:b0:3b9:bc8c:c20c with SMTP id
+ h16-20020ac87770000000b003b9bc8cc20cmr11909853qtu.23.1675570127403; 
+ Sat, 04 Feb 2023 20:08:47 -0800 (PST)
+Received: from mozz.bu.edu (mozz.bu.edu. [128.197.127.33])
+ by smtp.gmail.com with ESMTPSA id
+ x11-20020a05620a448b00b0072c01a3b6aasm5031450qkp.100.2023.02.04.20.08.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 04 Feb 2023 20:08:47 -0800 (PST)
+From: Alexander Bulekov <alxndr@bu.edu>
+To: qemu-devel@nongnu.org
+Cc: Alexander Bulekov <alxndr@bu.edu>, Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mauro Matteo Cascella <mcascell@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Bandan Das <bsd@redhat.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Darren Kenny <darren.kenny@oracle.com>, Bin Meng <bin.meng@windriver.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Jon Maloy <jmaloy@redhat.com>,
+ Siqi Chen <coc.cyqh@gmail.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Amit Shah <amit@kernel.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
+ Fam Zheng <fam@euphon.net>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ xen-devel@lists.xenproject.org (open list:X86 Xen CPUs),
+ qemu-block@nongnu.org (open list:virtio-blk),
+ qemu-arm@nongnu.org (open list:i.MX31 (kzm)),
+ qemu-ppc@nongnu.org (open list:Old World (g3beige))
+Subject: [PATCH v6 4/4] hw: replace most qemu_bh_new calls with
+ qemu_bh_new_guarded
+Date: Sat,  4 Feb 2023 23:07:37 -0500
+Message-Id: <20230205040737.3567731-5-alxndr@bu.edu>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230205040737.3567731-1-alxndr@bu.edu>
+References: <20230205040737.3567731-1-alxndr@bu.edu>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [RFC PATCH] tests/avocado: retire the Aarch64 TCG tests from
- boot_linux.py
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>
-References: <20230203181632.2919715-1-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230203181632.2919715-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: MUht2CMGMmTv
+X-CES-GSUITE_AUTH: bf3aNvsZpxl8
+Received-SPF: pass client-ip=216.71.137.63; envelope-from=alxndr@bu.edu;
+ helo=esa5.hc2706-39.iphmx.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.999, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 79+gJcmz0WyK
 
-On 2/3/23 08:16, Alex Bennée wrote:
-> The two TCG tests for GICv2 and GICv3 are very heavy weight distros
-> that take a long time to boot up, especially for an --enable-debug
-> build. The total code coverage they give is:
-> 
->    Overall coverage rate:
->      lines......: 11.2% (59584 of 530123 lines)
->      functions..: 15.0% (7436 of 49443 functions)
->      branches...: 6.3% (19273 of 303933 branches)
-> 
-> We already get pretty close to that with the machine_aarch64_virt
-> tests which only does one full boot (~120s vs ~600s) of alpine. We
-> expand the kernel+initrd boot (~8s) to test both GICs and also add an
-> RNG device and a block device to generate a few IRQs and exercise the
-> storage layer. With that we get to a coverage of:
-> 
->    Overall coverage rate:
->      lines......: 11.0% (58121 of 530123 lines)
->      functions..: 14.9% (7343 of 49443 functions)
->      branches...: 6.0% (18269 of 303933 branches)
-> 
-> which I feel is close enough given the massive time saving. If we want
-> to target any more sub-systems we can use lighter weight more directed
-> tests.
-> 
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
-> Cc: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   tests/avocado/boot_linux.py           | 48 ++++----------------
->   tests/avocado/machine_aarch64_virt.py | 63 ++++++++++++++++++++++++---
->   2 files changed, 65 insertions(+), 46 deletions(-)
+This protects devices from bh->mmio reentrancy issues.
 
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
+---
+ hw/9pfs/xen-9p-backend.c        | 4 +++-
+ hw/block/dataplane/virtio-blk.c | 3 ++-
+ hw/block/dataplane/xen-block.c  | 5 +++--
+ hw/char/virtio-serial-bus.c     | 3 ++-
+ hw/display/qxl.c                | 9 ++++++---
+ hw/display/virtio-gpu.c         | 6 ++++--
+ hw/ide/ahci.c                   | 3 ++-
+ hw/ide/core.c                   | 3 ++-
+ hw/misc/imx_rngc.c              | 6 ++++--
+ hw/misc/macio/mac_dbdma.c       | 2 +-
+ hw/net/virtio-net.c             | 3 ++-
+ hw/nvme/ctrl.c                  | 6 ++++--
+ hw/scsi/mptsas.c                | 3 ++-
+ hw/scsi/scsi-bus.c              | 3 ++-
+ hw/scsi/vmw_pvscsi.c            | 3 ++-
+ hw/usb/dev-uas.c                | 3 ++-
+ hw/usb/hcd-dwc2.c               | 3 ++-
+ hw/usb/hcd-ehci.c               | 3 ++-
+ hw/usb/hcd-uhci.c               | 2 +-
+ hw/usb/host-libusb.c            | 6 ++++--
+ hw/usb/redirect.c               | 6 ++++--
+ hw/usb/xen-usb.c                | 3 ++-
+ hw/virtio/virtio-balloon.c      | 5 +++--
+ hw/virtio/virtio-crypto.c       | 3 ++-
+ 24 files changed, 63 insertions(+), 33 deletions(-)
 
-r~
+diff --git a/hw/9pfs/xen-9p-backend.c b/hw/9pfs/xen-9p-backend.c
+index 65c4979c3c..f077c1b255 100644
+--- a/hw/9pfs/xen-9p-backend.c
++++ b/hw/9pfs/xen-9p-backend.c
+@@ -441,7 +441,9 @@ static int xen_9pfs_connect(struct XenLegacyDevice *xendev)
+         xen_9pdev->rings[i].ring.out = xen_9pdev->rings[i].data +
+                                        XEN_FLEX_RING_SIZE(ring_order);
+ 
+-        xen_9pdev->rings[i].bh = qemu_bh_new(xen_9pfs_bh, &xen_9pdev->rings[i]);
++        xen_9pdev->rings[i].bh = qemu_bh_new_guarded(xen_9pfs_bh,
++                                                     &xen_9pdev->rings[i],
++                                                     &DEVICE(xen_9pdev)->mem_reentrancy_guard);
+         xen_9pdev->rings[i].out_cons = 0;
+         xen_9pdev->rings[i].out_size = 0;
+         xen_9pdev->rings[i].inprogress = false;
+diff --git a/hw/block/dataplane/virtio-blk.c b/hw/block/dataplane/virtio-blk.c
+index b28d81737e..a6202997ee 100644
+--- a/hw/block/dataplane/virtio-blk.c
++++ b/hw/block/dataplane/virtio-blk.c
+@@ -127,7 +127,8 @@ bool virtio_blk_data_plane_create(VirtIODevice *vdev, VirtIOBlkConf *conf,
+     } else {
+         s->ctx = qemu_get_aio_context();
+     }
+-    s->bh = aio_bh_new(s->ctx, notify_guest_bh, s);
++    s->bh = aio_bh_new_guarded(s->ctx, notify_guest_bh, s,
++                               &DEVICE(vdev)->mem_reentrancy_guard);
+     s->batch_notify_vqs = bitmap_new(conf->num_queues);
+ 
+     *dataplane = s;
+diff --git a/hw/block/dataplane/xen-block.c b/hw/block/dataplane/xen-block.c
+index 2785b9e849..e31806b317 100644
+--- a/hw/block/dataplane/xen-block.c
++++ b/hw/block/dataplane/xen-block.c
+@@ -632,8 +632,9 @@ XenBlockDataPlane *xen_block_dataplane_create(XenDevice *xendev,
+     } else {
+         dataplane->ctx = qemu_get_aio_context();
+     }
+-    dataplane->bh = aio_bh_new(dataplane->ctx, xen_block_dataplane_bh,
+-                               dataplane);
++    dataplane->bh = aio_bh_new_guarded(dataplane->ctx, xen_block_dataplane_bh,
++                                       dataplane,
++                                       &DEVICE(xendev)->mem_reentrancy_guard);
+ 
+     return dataplane;
+ }
+diff --git a/hw/char/virtio-serial-bus.c b/hw/char/virtio-serial-bus.c
+index 7d4601cb5d..dd619f0731 100644
+--- a/hw/char/virtio-serial-bus.c
++++ b/hw/char/virtio-serial-bus.c
+@@ -985,7 +985,8 @@ static void virtser_port_device_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    port->bh = qemu_bh_new(flush_queued_data_bh, port);
++    port->bh = qemu_bh_new_guarded(flush_queued_data_bh, port,
++                                   &dev->mem_reentrancy_guard);
+     port->elem = NULL;
+ }
+ 
+diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+index ec712d3ca2..c0460c4ef1 100644
+--- a/hw/display/qxl.c
++++ b/hw/display/qxl.c
+@@ -2201,11 +2201,14 @@ static void qxl_realize_common(PCIQXLDevice *qxl, Error **errp)
+ 
+     qemu_add_vm_change_state_handler(qxl_vm_change_state_handler, qxl);
+ 
+-    qxl->update_irq = qemu_bh_new(qxl_update_irq_bh, qxl);
++    qxl->update_irq = qemu_bh_new_guarded(qxl_update_irq_bh, qxl,
++                                          &DEVICE(qxl)->mem_reentrancy_guard);
+     qxl_reset_state(qxl);
+ 
+-    qxl->update_area_bh = qemu_bh_new(qxl_render_update_area_bh, qxl);
+-    qxl->ssd.cursor_bh = qemu_bh_new(qemu_spice_cursor_refresh_bh, &qxl->ssd);
++    qxl->update_area_bh = qemu_bh_new_guarded(qxl_render_update_area_bh, qxl,
++                                              &DEVICE(qxl)->mem_reentrancy_guard);
++    qxl->ssd.cursor_bh = qemu_bh_new_guarded(qemu_spice_cursor_refresh_bh, &qxl->ssd,
++                                             &DEVICE(qxl)->mem_reentrancy_guard);
+ }
+ 
+ static void qxl_realize_primary(PCIDevice *dev, Error **errp)
+diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+index 5e15c79b94..66ac9b6cc5 100644
+--- a/hw/display/virtio-gpu.c
++++ b/hw/display/virtio-gpu.c
+@@ -1339,8 +1339,10 @@ void virtio_gpu_device_realize(DeviceState *qdev, Error **errp)
+ 
+     g->ctrl_vq = virtio_get_queue(vdev, 0);
+     g->cursor_vq = virtio_get_queue(vdev, 1);
+-    g->ctrl_bh = qemu_bh_new(virtio_gpu_ctrl_bh, g);
+-    g->cursor_bh = qemu_bh_new(virtio_gpu_cursor_bh, g);
++    g->ctrl_bh = qemu_bh_new_guarded(virtio_gpu_ctrl_bh, g,
++                                     &qdev->mem_reentrancy_guard);
++    g->cursor_bh = qemu_bh_new_guarded(virtio_gpu_cursor_bh, g,
++                                       &qdev->mem_reentrancy_guard);
+     QTAILQ_INIT(&g->reslist);
+     QTAILQ_INIT(&g->cmdq);
+     QTAILQ_INIT(&g->fenceq);
+diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+index 7ce001cacd..37091150cb 100644
+--- a/hw/ide/ahci.c
++++ b/hw/ide/ahci.c
+@@ -1508,7 +1508,8 @@ static void ahci_cmd_done(const IDEDMA *dma)
+     ahci_write_fis_d2h(ad);
+ 
+     if (ad->port_regs.cmd_issue && !ad->check_bh) {
+-        ad->check_bh = qemu_bh_new(ahci_check_cmd_bh, ad);
++        ad->check_bh = qemu_bh_new_guarded(ahci_check_cmd_bh, ad,
++                                           &DEVICE(ad)->mem_reentrancy_guard);
+         qemu_bh_schedule(ad->check_bh);
+     }
+ }
+diff --git a/hw/ide/core.c b/hw/ide/core.c
+index 5d1039378f..8c8d1a8ec2 100644
+--- a/hw/ide/core.c
++++ b/hw/ide/core.c
+@@ -519,7 +519,8 @@ BlockAIOCB *ide_issue_trim(
+ 
+     iocb = blk_aio_get(&trim_aiocb_info, s->blk, cb, cb_opaque);
+     iocb->s = s;
+-    iocb->bh = qemu_bh_new(ide_trim_bh_cb, iocb);
++    iocb->bh = qemu_bh_new_guarded(ide_trim_bh_cb, iocb,
++                                   &DEVICE(s)->mem_reentrancy_guard);
+     iocb->ret = 0;
+     iocb->qiov = qiov;
+     iocb->i = -1;
+diff --git a/hw/misc/imx_rngc.c b/hw/misc/imx_rngc.c
+index 632c03779c..082c6980ad 100644
+--- a/hw/misc/imx_rngc.c
++++ b/hw/misc/imx_rngc.c
+@@ -228,8 +228,10 @@ static void imx_rngc_realize(DeviceState *dev, Error **errp)
+     sysbus_init_mmio(sbd, &s->iomem);
+ 
+     sysbus_init_irq(sbd, &s->irq);
+-    s->self_test_bh = qemu_bh_new(imx_rngc_self_test, s);
+-    s->seed_bh = qemu_bh_new(imx_rngc_seed, s);
++    s->self_test_bh = qemu_bh_new_guarded(imx_rngc_self_test, s,
++                                          &dev->mem_reentrancy_guard);
++    s->seed_bh = qemu_bh_new_guarded(imx_rngc_seed, s,
++                                     &dev->mem_reentrancy_guard);
+ }
+ 
+ static void imx_rngc_reset(DeviceState *dev)
+diff --git a/hw/misc/macio/mac_dbdma.c b/hw/misc/macio/mac_dbdma.c
+index 43bb1f56ba..80a789f32b 100644
+--- a/hw/misc/macio/mac_dbdma.c
++++ b/hw/misc/macio/mac_dbdma.c
+@@ -914,7 +914,7 @@ static void mac_dbdma_realize(DeviceState *dev, Error **errp)
+ {
+     DBDMAState *s = MAC_DBDMA(dev);
+ 
+-    s->bh = qemu_bh_new(DBDMA_run_bh, s);
++    s->bh = qemu_bh_new_guarded(DBDMA_run_bh, s, &dev->mem_reentrancy_guard);
+ }
+ 
+ static void mac_dbdma_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index 3ae909041a..a170c724de 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -2885,7 +2885,8 @@ static void virtio_net_add_queue(VirtIONet *n, int index)
+         n->vqs[index].tx_vq =
+             virtio_add_queue(vdev, n->net_conf.tx_queue_size,
+                              virtio_net_handle_tx_bh);
+-        n->vqs[index].tx_bh = qemu_bh_new(virtio_net_tx_bh, &n->vqs[index]);
++        n->vqs[index].tx_bh = qemu_bh_new_guarded(virtio_net_tx_bh, &n->vqs[index],
++                                                  &DEVICE(vdev)->mem_reentrancy_guard);
+     }
+ 
+     n->vqs[index].tx_waiting = 0;
+diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
+index f25cc2c235..dcb250e772 100644
+--- a/hw/nvme/ctrl.c
++++ b/hw/nvme/ctrl.c
+@@ -4318,7 +4318,8 @@ static void nvme_init_sq(NvmeSQueue *sq, NvmeCtrl *n, uint64_t dma_addr,
+         QTAILQ_INSERT_TAIL(&(sq->req_list), &sq->io_req[i], entry);
+     }
+ 
+-    sq->bh = qemu_bh_new(nvme_process_sq, sq);
++    sq->bh = qemu_bh_new_guarded(nvme_process_sq, sq,
++                                 &DEVICE(sq->ctrl)->mem_reentrancy_guard);
+ 
+     if (n->dbbuf_enabled) {
+         sq->db_addr = n->dbbuf_dbs + (sqid << 3);
+@@ -4708,7 +4709,8 @@ static void nvme_init_cq(NvmeCQueue *cq, NvmeCtrl *n, uint64_t dma_addr,
+         }
+     }
+     n->cq[cqid] = cq;
+-    cq->bh = qemu_bh_new(nvme_post_cqes, cq);
++    cq->bh = qemu_bh_new_guarded(nvme_post_cqes, cq,
++                                 &DEVICE(cq->ctrl)->mem_reentrancy_guard);
+ }
+ 
+ static uint16_t nvme_create_cq(NvmeCtrl *n, NvmeRequest *req)
+diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
+index c485da792c..3de288b454 100644
+--- a/hw/scsi/mptsas.c
++++ b/hw/scsi/mptsas.c
+@@ -1322,7 +1322,8 @@ static void mptsas_scsi_realize(PCIDevice *dev, Error **errp)
+     }
+     s->max_devices = MPTSAS_NUM_PORTS;
+ 
+-    s->request_bh = qemu_bh_new(mptsas_fetch_requests, s);
++    s->request_bh = qemu_bh_new_guarded(mptsas_fetch_requests, s,
++                                        &DEVICE(dev)->mem_reentrancy_guard);
+ 
+     scsi_bus_init(&s->bus, sizeof(s->bus), &dev->qdev, &mptsas_scsi_info);
+ }
+diff --git a/hw/scsi/scsi-bus.c b/hw/scsi/scsi-bus.c
+index ceceafb2cd..e5c9f7a53d 100644
+--- a/hw/scsi/scsi-bus.c
++++ b/hw/scsi/scsi-bus.c
+@@ -193,7 +193,8 @@ static void scsi_dma_restart_cb(void *opaque, bool running, RunState state)
+         AioContext *ctx = blk_get_aio_context(s->conf.blk);
+         /* The reference is dropped in scsi_dma_restart_bh.*/
+         object_ref(OBJECT(s));
+-        s->bh = aio_bh_new(ctx, scsi_dma_restart_bh, s);
++        s->bh = aio_bh_new_guarded(ctx, scsi_dma_restart_bh, s,
++                                   &DEVICE(s)->mem_reentrancy_guard);
+         qemu_bh_schedule(s->bh);
+     }
+ }
+diff --git a/hw/scsi/vmw_pvscsi.c b/hw/scsi/vmw_pvscsi.c
+index fa76696855..4de34536e9 100644
+--- a/hw/scsi/vmw_pvscsi.c
++++ b/hw/scsi/vmw_pvscsi.c
+@@ -1184,7 +1184,8 @@ pvscsi_realizefn(PCIDevice *pci_dev, Error **errp)
+         pcie_endpoint_cap_init(pci_dev, PVSCSI_EXP_EP_OFFSET);
+     }
+ 
+-    s->completion_worker = qemu_bh_new(pvscsi_process_completion_queue, s);
++    s->completion_worker = qemu_bh_new_guarded(pvscsi_process_completion_queue, s,
++                                               &DEVICE(pci_dev)->mem_reentrancy_guard);
+ 
+     scsi_bus_init(&s->bus, sizeof(s->bus), DEVICE(pci_dev), &pvscsi_scsi_info);
+     /* override default SCSI bus hotplug-handler, with pvscsi's one */
+diff --git a/hw/usb/dev-uas.c b/hw/usb/dev-uas.c
+index 88f99c05d5..f013ded91e 100644
+--- a/hw/usb/dev-uas.c
++++ b/hw/usb/dev-uas.c
+@@ -937,7 +937,8 @@ static void usb_uas_realize(USBDevice *dev, Error **errp)
+ 
+     QTAILQ_INIT(&uas->results);
+     QTAILQ_INIT(&uas->requests);
+-    uas->status_bh = qemu_bh_new(usb_uas_send_status_bh, uas);
++    uas->status_bh = qemu_bh_new_guarded(usb_uas_send_status_bh, uas,
++                                         &d->mem_reentrancy_guard);
+ 
+     dev->flags |= (1 << USB_DEV_FLAG_IS_SCSI_STORAGE);
+     scsi_bus_init(&uas->bus, sizeof(uas->bus), DEVICE(dev), &usb_uas_scsi_info);
+diff --git a/hw/usb/hcd-dwc2.c b/hw/usb/hcd-dwc2.c
+index 8755e9cbb0..a0c4e782b2 100644
+--- a/hw/usb/hcd-dwc2.c
++++ b/hw/usb/hcd-dwc2.c
+@@ -1364,7 +1364,8 @@ static void dwc2_realize(DeviceState *dev, Error **errp)
+     s->fi = USB_FRMINTVL - 1;
+     s->eof_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, dwc2_frame_boundary, s);
+     s->frame_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, dwc2_work_timer, s);
+-    s->async_bh = qemu_bh_new(dwc2_work_bh, s);
++    s->async_bh = qemu_bh_new_guarded(dwc2_work_bh, s,
++                                      &dev->mem_reentrancy_guard);
+ 
+     sysbus_init_irq(sbd, &s->irq);
+ }
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index d4da8dcb8d..c930c60921 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -2533,7 +2533,8 @@ void usb_ehci_realize(EHCIState *s, DeviceState *dev, Error **errp)
+     }
+ 
+     s->frame_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, ehci_work_timer, s);
+-    s->async_bh = qemu_bh_new(ehci_work_bh, s);
++    s->async_bh = qemu_bh_new_guarded(ehci_work_bh, s,
++                                      &dev->mem_reentrancy_guard);
+     s->device = dev;
+ 
+     s->vmstate = qemu_add_vm_change_state_handler(usb_ehci_vm_state_change, s);
+diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+index 30ae0104bb..bdc891f57a 100644
+--- a/hw/usb/hcd-uhci.c
++++ b/hw/usb/hcd-uhci.c
+@@ -1193,7 +1193,7 @@ void usb_uhci_common_realize(PCIDevice *dev, Error **errp)
+                               USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL);
+         }
+     }
+-    s->bh = qemu_bh_new(uhci_bh, s);
++    s->bh = qemu_bh_new_guarded(uhci_bh, s, &DEVICE(dev)->mem_reentrancy_guard);
+     s->frame_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, uhci_frame_timer, s);
+     s->num_ports_vmstate = NB_PORTS;
+     QTAILQ_INIT(&s->queues);
+diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
+index 176868d345..f500db85ab 100644
+--- a/hw/usb/host-libusb.c
++++ b/hw/usb/host-libusb.c
+@@ -1141,7 +1141,8 @@ static void usb_host_nodev_bh(void *opaque)
+ static void usb_host_nodev(USBHostDevice *s)
+ {
+     if (!s->bh_nodev) {
+-        s->bh_nodev = qemu_bh_new(usb_host_nodev_bh, s);
++        s->bh_nodev = qemu_bh_new_guarded(usb_host_nodev_bh, s,
++                                          &DEVICE(s)->mem_reentrancy_guard);
+     }
+     qemu_bh_schedule(s->bh_nodev);
+ }
+@@ -1739,7 +1740,8 @@ static int usb_host_post_load(void *opaque, int version_id)
+     USBHostDevice *dev = opaque;
+ 
+     if (!dev->bh_postld) {
+-        dev->bh_postld = qemu_bh_new(usb_host_post_load_bh, dev);
++        dev->bh_postld = qemu_bh_new_guarded(usb_host_post_load_bh, dev,
++                                             &DEVICE(dev)->mem_reentrancy_guard);
+     }
+     qemu_bh_schedule(dev->bh_postld);
+     dev->bh_postld_pending = true;
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index fd7df599bc..39fbaaab16 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -1441,8 +1441,10 @@ static void usbredir_realize(USBDevice *udev, Error **errp)
+         }
+     }
+ 
+-    dev->chardev_close_bh = qemu_bh_new(usbredir_chardev_close_bh, dev);
+-    dev->device_reject_bh = qemu_bh_new(usbredir_device_reject_bh, dev);
++    dev->chardev_close_bh = qemu_bh_new_guarded(usbredir_chardev_close_bh, dev,
++                                                &DEVICE(dev)->mem_reentrancy_guard);
++    dev->device_reject_bh = qemu_bh_new_guarded(usbredir_device_reject_bh, dev,
++                                                &DEVICE(dev)->mem_reentrancy_guard);
+     dev->attach_timer = timer_new_ms(QEMU_CLOCK_VIRTUAL, usbredir_do_attach, dev);
+ 
+     packet_id_queue_init(&dev->cancelled, dev, "cancelled");
+diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
+index 0f7369e7ed..dec91294ad 100644
+--- a/hw/usb/xen-usb.c
++++ b/hw/usb/xen-usb.c
+@@ -1021,7 +1021,8 @@ static void usbback_alloc(struct XenLegacyDevice *xendev)
+ 
+     QTAILQ_INIT(&usbif->req_free_q);
+     QSIMPLEQ_INIT(&usbif->hotplug_q);
+-    usbif->bh = qemu_bh_new(usbback_bh, usbif);
++    usbif->bh = qemu_bh_new_guarded(usbback_bh, usbif,
++                                    &DEVICE(xendev)->mem_reentrancy_guard);
+ }
+ 
+ static int usbback_free(struct XenLegacyDevice *xendev)
+diff --git a/hw/virtio/virtio-balloon.c b/hw/virtio/virtio-balloon.c
+index 746f07c4d2..309cebacc6 100644
+--- a/hw/virtio/virtio-balloon.c
++++ b/hw/virtio/virtio-balloon.c
+@@ -908,8 +908,9 @@ static void virtio_balloon_device_realize(DeviceState *dev, Error **errp)
+         precopy_add_notifier(&s->free_page_hint_notify);
+ 
+         object_ref(OBJECT(s->iothread));
+-        s->free_page_bh = aio_bh_new(iothread_get_aio_context(s->iothread),
+-                                     virtio_ballloon_get_free_page_hints, s);
++        s->free_page_bh = aio_bh_new_guarded(iothread_get_aio_context(s->iothread),
++                                             virtio_ballloon_get_free_page_hints, s,
++                                             &DEVICE(s)->mem_reentrancy_guard);
+     }
+ 
+     if (virtio_has_feature(s->host_features, VIRTIO_BALLOON_F_REPORTING)) {
+diff --git a/hw/virtio/virtio-crypto.c b/hw/virtio/virtio-crypto.c
+index 516425e26a..4c95f1096e 100644
+--- a/hw/virtio/virtio-crypto.c
++++ b/hw/virtio/virtio-crypto.c
+@@ -1050,7 +1050,8 @@ static void virtio_crypto_device_realize(DeviceState *dev, Error **errp)
+         vcrypto->vqs[i].dataq =
+                  virtio_add_queue(vdev, 1024, virtio_crypto_handle_dataq_bh);
+         vcrypto->vqs[i].dataq_bh =
+-                 qemu_bh_new(virtio_crypto_dataq_bh, &vcrypto->vqs[i]);
++                 qemu_bh_new_guarded(virtio_crypto_dataq_bh, &vcrypto->vqs[i],
++                                     &dev->mem_reentrancy_guard);
+         vcrypto->vqs[i].vcrypto = vcrypto;
+     }
+ 
+-- 
+2.39.0
+

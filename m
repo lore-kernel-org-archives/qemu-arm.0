@@ -1,105 +1,104 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3073993ejb;
-        Sun, 5 Feb 2023 01:45:37 -0800 (PST)
-X-Google-Smtp-Source: AK7set/uTbaaFPqyc+FK+BFwoKLeJYhkkQMxYjf2EsXuKeyXwlbvfai+irAX9+Ca9CMO+FuEmJLO
-X-Received: by 2002:a0c:ea8f:0:b0:53b:4bad:4422 with SMTP id d15-20020a0cea8f000000b0053b4bad4422mr23145952qvp.37.1675590337352;
-        Sun, 05 Feb 2023 01:45:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675590337; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3074244ejb;
+        Sun, 5 Feb 2023 01:46:05 -0800 (PST)
+X-Google-Smtp-Source: AK7set8li8Lmv2oRrUBgawepK7he7rVKbJq8OsiphqGayNWN8Qpvs4F3IdJ2SvQeH70MMfRH/0ux
+X-Received: by 2002:a05:6214:300c:b0:56a:d22b:5821 with SMTP id ke12-20020a056214300c00b0056ad22b5821mr11412159qvb.22.1675590365134;
+        Sun, 05 Feb 2023 01:46:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675590365; cv=none;
         d=google.com; s=arc-20160816;
-        b=pDq37Q3z3enFLVJ+Kx5a50ZEvM2HPoTD367575y+T6HywpYpT+KLlcRZfyqwifStG6
-         9ou0qDyC8T7+fSgtscRMsGdtPfut6j+aEBABKfzl3zy7jc4tmoohFAhPo9PW+J9v7EhN
-         NR84vUcpl8bTEzQyGxD+aGz9l81BEoEWP4bzNhtmtFD9RlD4ZsnN1nLnG8JrNzJFVo7m
-         MHwjx5rfbyvwNimjuttIgItCEphodLZ9jm1dDxNTltd0pN7yjRLGr8Bza0YaQoJC+xOY
-         cvzxjpnKMSkJbrk5PMOe7tnR8vNI11ApNa5dNho8zrYo2ByXoqSeIvaAsmwo5DZSb8XR
-         P1oA==
+        b=sBlVQQkxqCccf+Wg+mCcLFLoSqikCYZD4Aod06HaSat69QABzGvZEAbhirpSI1vKz0
+         RZi2squ4/mOvUB8L8JI1JnLzaujQ5KLTIHT6Kn7ZgfMPPF8LfKwzdnE+ZIMUGUUSy2Q8
+         aascV5sTHFyEK8eah8VBHnm6ulFetWJK5hvN6lHka9NQmJTHIvrtmEEinDwlBuAdBsQ/
+         c2p6BEuS2+/mQS4b4nvYfTicy172Bpi87f/S3UENMBU2r1Pxa4TxKN/yHMWSZHP/sMML
+         XylQfyYQZlnZBjVOyY9nKR8NNuZYOiy3OSYBAu8tzMegKvKx2zb+q+jD3nlh3svmGrvM
+         OkMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=QHWID9O8NLHXx/axWLc3JttO4n1YSG79UIlshS4LLuM=;
-        b=JmmtpU4xksnY/cDhMAw7es03HMEgj+/nHWqqlK7BeMq5YcHSEHnMr1mO7eUPUyKyqf
-         YYHghtaoNF99uEBzNPM2GaqDw9AsaYq6dHM8nD+ArJoZrtj9aLccNUde1tGeexJQYUR6
-         gHfJxn4BPm/bAInHCUPD1FpBSDMJcIcarDjEYeISWYMsdPirt5mJj7mrQYS52bS6TFDM
-         ke7dZmEbYMykCOYQ4DWn4PhjUNQrfjk1O17zgbZIadjtwg1b4tn8BmJ1jIFNTlvDGD4p
-         qB/qar5aE1xULPxTtKiY6jwgJurQm18+03YUgYelBgYpDfH0I1e+8r7V4Ur5D6Alpki/
-         7aUw==
+        bh=oZmVbGTM1GrVSDIJ7xJyWQW2x7fLoxHdZgxSqMELtoo=;
+        b=UCy7fGV6k7Zxkzx93p4L2iH1PXSxrKjzEKqv5SB9LbT2Ktc37s3E1CPbqTnu1GsT1o
+         kSz5gx+ISWvvg2EwttiIn9IoBfz/kgc113PJpV6fo+zlXMEmawgpAheoHGRrmQgxO9Ov
+         BnKsuatltKRdDkrm+ZkIIaxyMx1NnIywjnjAa+BXZxY7X9GgqfotB+v4RlgNNuyAiQFC
+         BYyQmmOWOok56Bs29KtvhLW3o1ybwkEtPUzRw4hwXTnClU3dVx9PhFAyAbbijzvJ8PDL
+         UhgUzIwwQKtfQo4QhhcsyOUbIBvj0uUT7/hpAszojglukI1Bi8W2BZd7nnRfs8ZVjqW9
+         NWvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=aEtuMD7G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Fi2u5moW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id li19-20020a0562145e1300b00538aa33e1e7si4832200qvb.543.2023.02.05.01.45.37
+        by mx.google.com with ESMTPS id a18-20020a0ca992000000b0056ac181103bsi3652081qvb.39.2023.02.05.01.46.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Feb 2023 01:45:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 Feb 2023 01:46:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=aEtuMD7G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Fi2u5moW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pObaF-0003tz-2G; Sun, 05 Feb 2023 04:45:15 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pOba7-0003gZ-Km; Sun, 05 Feb 2023 04:45:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3oHrfYwgKCjknhjnoVaVbjjbgZ.XjhlZhp-YZqZgijibip.jmb@flex--smostafa.bounces.google.com>)
- id 1pObaA-0003lU-Bs
- for qemu-devel@nongnu.org; Sun, 05 Feb 2023 04:45:12 -0500
-Received: from mail-wm1-x349.google.com ([2a00:1450:4864:20::349])
+ <3nnrfYwgKCDclfhlmTYTZhhZeX.VhfjXfn-TkfghgZgn.hkZ@flex--smostafa.bounces.google.com>)
+ id 1pOba6-0003eG-4u
+ for qemu-arm@nongnu.org; Sun, 05 Feb 2023 04:45:06 -0500
+Received: from mail-wm1-x34a.google.com ([2a00:1450:4864:20::34a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3oHrfYwgKCjknhjnoVaVbjjbgZ.XjhlZhp-YZqZgijibip.jmb@flex--smostafa.bounces.google.com>)
- id 1pOba7-0001MB-Jm
- for qemu-devel@nongnu.org; Sun, 05 Feb 2023 04:45:10 -0500
-Received: by mail-wm1-x349.google.com with SMTP id
- h9-20020a05600c350900b003e000facbb1so36166wmq.9
- for <qemu-devel@nongnu.org>; Sun, 05 Feb 2023 01:45:06 -0800 (PST)
+ <3nnrfYwgKCDclfhlmTYTZhhZeX.VhfjXfn-TkfghgZgn.hkZ@flex--smostafa.bounces.google.com>)
+ id 1pOba3-00017O-J2
+ for qemu-arm@nongnu.org; Sun, 05 Feb 2023 04:45:04 -0500
+Received: by mail-wm1-x34a.google.com with SMTP id
+ n7-20020a05600c3b8700b003dc55dcb298so5002598wms.8
+ for <qemu-arm@nongnu.org>; Sun, 05 Feb 2023 01:45:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=QHWID9O8NLHXx/axWLc3JttO4n1YSG79UIlshS4LLuM=;
- b=aEtuMD7GEb6DDM6nNtYx/cIesP3Y4VbOOqVy9qfkzlOroAiIg7EJO7Q683/NqULwQq
- k2/5OEMjR4SXUeXRHvkAKwYMQIhRNZrTkJs6U1WF25Kc28Y6iE4lXr+8Ib4MHl0VL72N
- O1+jGspeP7wUp7FVETvDe1jFP7lAkqolWOagsoF8WVai+2g5GtVTQ7zFYpwe6A07oYK3
- aQo7cdCWw5Nhp/O3x4l6RIIlAOS9St6b4tP/3924IrflJSD7q5cUzokH9OJIqVbUfRjl
- Fx3sDo9nh+x/CnQsh1GGg9R+T5ufrIpODiNsVsj6JwdeHYAYhEMV19GVVQBYClowXL0y
- xbqg==
+ bh=oZmVbGTM1GrVSDIJ7xJyWQW2x7fLoxHdZgxSqMELtoo=;
+ b=Fi2u5moWNgChc+gmWxLvDu2+LkatRAoQchz3NaL2TVwS8jNEPy/RJuGR4js5jsknEY
+ DHTq2IPjiP+po/Uul3CGDkIKAdKH9wJ2XYgkZ4g4rthAH4CvR6MCrG7h2YDqRLEbeqz7
+ ZsuUN2dk2Qg1aMcTx5+4ZFS7y21zWJuGHaSQHZQSDJPERqN/JAtDwKiPn1w9nWwub2zP
+ uCJQw42GVc8xkJBz+Bw+TJQZDGSBExy7BHphfLd0vGRtGOb2Tp1a6WtsiU1NHlW3m10x
+ vkkKmpGrRo2Jvg4QvEX6+hTqNZ59oJZMjtzX3mmmeYDgDtmu6AKzopHT9MRT357+OLuo
+ Ih1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QHWID9O8NLHXx/axWLc3JttO4n1YSG79UIlshS4LLuM=;
- b=ln60n1Uqo+b6k6QgxSBIiHbqM5i6SOuQxgOFDjX9evQSHxyFtB6rHPFJm9Zh86Bf+4
- PJbMVhty/XGjiALVltInejrtYeD0j70V4clSxV9c2fZKTKiopnsfF9uJ8FIIBKBQOkXh
- lWFpOu7JLXj7Y/uP/qQceIvbphTtoqwSEXUfpf1GGOKMVqc6YTuBoexRijAXrTzOYYGs
- CbbqJunuJZD67lThyajTHNiKzb50u/+qeq7EWYgigxpTk0DuDA17l6Lw32sjdT8v3gaR
- FntfgH12ksWBhqwe6UFgpnYT/Xm9Fuvt6hZQB/ZECi3n5iBAuAhdNFYO4qLpukkV7bBo
- nK2w==
-X-Gm-Message-State: AO0yUKX98Wfk2L6qkIxAAX49SzVdN8LmaoKbgOFV+oW87/Cto9YEceU2
- SMp95uiaWe4reIiXhdK6I7qHbKaBqJ5CyBFG7ZwrTPLd3N9KOJ0/lqZM239GMgxQojD9ITtDqr5
- Buv927lYZ/9KOEPypBxzFLL7NnDrmKQftnaPcf+bWmUy9yyuB1RnagkK+okEKq9Q2YA==
+ bh=oZmVbGTM1GrVSDIJ7xJyWQW2x7fLoxHdZgxSqMELtoo=;
+ b=j3hzWOoNV8UpCi6O/sUVJNzAZSzVKcgb5vrbjR79/Ane2MIzP9s+D46vZ+ZvAov8CQ
+ pvJlRpob3TBTutRkLaXBpbDaX57ibJQYTg9ajLNLfMbpt6MpRwIm7NpxGdQfK+5lW3zo
+ ++b3YAyf/b6atHVXpLClw+C8aQirSFqtp0WHKlIPi45dBoFuD5hM1oE50esbJndIwQNd
+ Q+yYHfB7zLsHMocRIxFZ2ztoe8A2/tn4/MoatIxufKD11WiHKmYI1tmKUu8qpLdxG+mc
+ Q/VO2H+ek56eqPd/RQrGuCrq0XePEBUZZGDW3ZeJCjfVY3mTcrBRQmmoijzeeupIo9u0
+ rvfg==
+X-Gm-Message-State: AO0yUKUzJLGoq+9vZQ+Gxx5i9tny3cvJwg8UzA6xbfDTY98D4XS8EeOh
+ 6ex4LV2sDUuYXQj/gjYRL4UchlDmusUtkA==
 X-Received: from mostafa.c.googlers.com
  ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
- (user=smostafa job=sendgmr) by 2002:a1c:e907:0:b0:3cf:6f23:a3e3 with SMTP id
- q7-20020a1ce907000000b003cf6f23a3e3mr151647wmc.1.1675590304687; Sun, 05 Feb
- 2023 01:45:04 -0800 (PST)
-Date: Sun,  5 Feb 2023 09:44:03 +0000
+ (user=smostafa job=sendgmr) by 2002:a05:600c:198f:b0:3dc:58f0:e94d with SMTP
+ id t15-20020a05600c198f00b003dc58f0e94dmr686402wmq.30.1675590302357; Sun, 05
+ Feb 2023 01:45:02 -0800 (PST)
+Date: Sun,  5 Feb 2023 09:44:02 +0000
 In-Reply-To: <20230205094411.793816-1-smostafa@google.com>
 Mime-Version: 1.0
 References: <20230205094411.793816-1-smostafa@google.com>
 X-Mailer: git-send-email 2.39.1.519.gcb327c4b5f-goog
-Message-ID: <20230205094411.793816-9-smostafa@google.com>
-Subject: [RFC PATCH 08/16] hw/arm/smmuv3: Support S2AFFD
+Message-ID: <20230205094411.793816-8-smostafa@google.com>
+Subject: [RFC PATCH 07/16] hw/arm/smmuv3: Check validity of stage-2 page table
 From: Mostafa Saleh <smostafa@google.com>
 To: qemu-devel@nongnu.org
 Cc: jean-philippe@linaro.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
  qemu-arm@nongnu.org, Mostafa Saleh <smostafa@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::349;
- envelope-from=3oHrfYwgKCjknhjnoVaVbjjbgZ.XjhlZhp-YZqZgijibip.jmb@flex--smostafa.bounces.google.com;
- helo=mail-wm1-x349.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::34a;
+ envelope-from=3nnrfYwgKCDclfhlmTYTZhhZeX.VhfjXfn-TkfghgZgn.hkZ@flex--smostafa.bounces.google.com;
+ helo=mail-wm1-x34a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -108,98 +107,76 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /bM9HmlM3WDJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DJd4Og0RiBSi
 
-Parse S2AFFD from STE and use it in stage-2 translation.
-
-This is described in the SMMUv3 manual "5.2. Stream Table Entry" in
-"[181] S2AFFD".
-
-HTTU is not supported, SW is expected to maintain the Access flag.
-
-This flag determines the behavior on access of a stage-2 page whose
-descriptor has AF == 0:
-- 0b0: An Access flag fault occurs (stall not supported).
-- 0b1: An Access flag fault never occurs.
-
-An Access fault takes priority over a Permission fault.
+Check if with the configured start level, ia_bits and granularity we
+can have a valid page table as described in ARM ARM D8.2 Translation
+process.
+The idea is to see for the highest possible number of IPA bits, how
+many concatenated tables we would need, if it is more than 16, then
+this is not possible.
 
 Signed-off-by: Mostafa Saleh <smostafa@google.com>
 ---
- hw/arm/smmu-common.c     | 10 ++++++++++
- hw/arm/smmu-internal.h   |  2 ++
- hw/arm/smmuv3-internal.h |  1 +
- hw/arm/smmuv3.c          |  2 ++
- 4 files changed, 15 insertions(+)
+ hw/arm/smmuv3.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index df0d1dc024..541c427684 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -434,6 +434,16 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
-                                      pte_addr, pte, iova, gpa,
-                                      block_size >> 20);
-         }
-+
-+        /*
-+         * If S2AFFD and PTE.AF are 0 => fault. (5.2. Stream Table Entry)
-+         * An Access fault takes priority over a Permission fault.
-+         */
-+        if (!PTE_AF(pte) && !cfg->s2cfg.affd) {
-+            info->type = SMMU_PTW_ERR_ACCESS;
-+            goto error;
-+        }
-+
-         ap = PTE_AP(pte);
-         if (is_permission_fault_s2(ap, perm)) {
-             info->type = SMMU_PTW_ERR_PERMISSION;
-diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
-index b02c05319f..7d3f76ce14 100644
---- a/hw/arm/smmu-internal.h
-+++ b/hw/arm/smmu-internal.h
-@@ -66,6 +66,8 @@
- #define PTE_APTABLE(pte) \
-     (extract64(pte, 61, 2))
- 
-+#define PTE_AF(pte) \
-+    (extract64(pte, 10, 1))
- /*
-  * TODO: At the moment all transactions are considered as privileged (EL1)
-  * as IOMMU translation callback does not pass user/priv attributes.
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index ec64fb43a0..3ccb9d118e 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -524,6 +524,7 @@ typedef struct CD {
- #define STE_S2TG(x)        extract32((x)->word[5], 14, 2)
- #define STE_S2PS(x)        extract32((x)->word[5], 16, 3)
- #define STE_S2AA64(x)      extract32((x)->word[5], 19, 1)
-+#define STE_S2AFFD(x)      extract32((x)->word[5], 21, 1)
- #define STE_S2HD(x)        extract32((x)->word[5], 24, 1)
- #define STE_S2HA(x)        extract32((x)->word[5], 25, 1)
- #define STE_S2S(x)         extract32((x)->word[5], 26, 1)
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index c49b341287..7884401475 100644
+index 6633fe40fa..c49b341287 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -436,6 +436,8 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+@@ -341,6 +341,28 @@ static int smmu_get_cd(SMMUv3State *s, STE *ste, uint32_t ssid,
+     return 0;
+ }
+ 
++/*
++ * Return true if s2 page table config is valid.
++ * This checks with the configured start level, ia_bits and granularity we can
++ * have a valid page table as described in ARM ARM D8.2 Translation process.
++ * The idea here is to see for the highest possible number of IPA bits, how
++ * many concatenated tables we would need, if it is more than 16, then this is
++ * not possible.
++ */
++static bool s2_pgtable_config_valid(uint8_t sl0, uint8_t t0sz, uint8_t gran)
++{
++    int level = get_start_level(sl0, gran);
++    uint64_t ia_bits = 64 - t0sz;
++    uint64_t mx = (1ULL << ia_bits) - 1;
++    int nr_concat = pgd_idx(level, gran, mx) + 1;
++
++    if (nr_concat > SMMU_MAX_S2_CONCAT) {
++        return false;
++    }
++
++    return true;
++}
++
+ /* Returns < 0 in case of invalid STE, 0 otherwise */
+ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+                       STE *ste, SMMUEventInfo *event)
+@@ -407,6 +429,13 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
              goto bad_ste;
          }
  
-+        cfg->s2cfg.affd = STE_S2AFFD(ste);
++        if (!s2_pgtable_config_valid(cfg->s2cfg.sl0, cfg->s2cfg.tsz,
++                                     cfg->s2cfg.granule_sz)) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "SMMUv3 STE stage 2 config not valid!\n");
++            goto bad_ste;
++        }
 +
          /* This is still here as stage 2 has not been fully enabled yet. */
          qemu_log_mask(LOG_UNIMP, "SMMUv3 does not support stage 2 yet\n");

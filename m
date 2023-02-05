@@ -1,104 +1,104 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3075033ejb;
-        Sun, 5 Feb 2023 01:47:39 -0800 (PST)
-X-Google-Smtp-Source: AK7set9YMOVKBv2nNaJ28gBqBjfbXZoZZ8sCwtcN0mM6JGKL+RYuKv6KlQdXJe5vVl/INqVFNQTB
-X-Received: by 2002:a05:6214:5442:b0:535:5f72:d9c4 with SMTP id kz2-20020a056214544200b005355f72d9c4mr27230025qvb.36.1675590458906;
-        Sun, 05 Feb 2023 01:47:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675590458; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3075046ejb;
+        Sun, 5 Feb 2023 01:47:41 -0800 (PST)
+X-Google-Smtp-Source: AK7set/yLC6hHg4NN0Kca6pZ04aHy9xvAGQuan7+tMqSl1fAHgfbTazFK3stEoBEhAA6mrbtQBjq
+X-Received: by 2002:a05:622a:412:b0:3b8:61df:1c0 with SMTP id n18-20020a05622a041200b003b861df01c0mr28200865qtx.59.1675590461259;
+        Sun, 05 Feb 2023 01:47:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675590461; cv=none;
         d=google.com; s=arc-20160816;
-        b=csfbvlRlvRf3cThdTzAqJTz83qQLx4Of+Oev7DLdJGTVJbocajyebI+298yUv5qc8u
-         DbKj+AbT8DnVZPGaiI6G8vd6DJlrsEMs31i9JewBMCwMrr/Vs9/A6pfT+6pPtAKakYaW
-         AuuGULip9tAuWPNLzXMpLtE6nw/42ajpv3hGKslq05nXH3AOHcbWhOd6sMbl3Ckl5ten
-         UFeeA4hSiDWUvg02cKlDHLf+seBWrs24TUBEW9KGcD48NVO8PZN6fy4EOqu5NN8EJ1c1
-         NEDzQ82KwZ9XxWwCPjhEEkcWJAHLhl1hus0HWMrQAQ2+EBcz+0Fqkt7eFHrtgDdXTQ4M
-         hBCw==
+        b=BuMTxY8jaYDXf3ZC1gauQL/DD/mOT6QdJx0dL/HMN2j6o983dX2TPwZBsK+o9ThAIw
+         OTM99/4mSjMW3Cjn8kmpeAwZL3Pqug1WFsXBCycyEvlszloSOu5NeoCtICTiahHl0bPS
+         t5MNztoBvCW3MeahazOXS4w27kjU7O2rjsYiGRZvG7pDhyWyYd1+9oeFQchxnXldVHRL
+         Pwm1Yu8HqytiQDVgW9/ikVMRcI2ZO04rxz2kRRQ1/jVNuupIpBL6eOnOIfhL3HpLOJZ+
+         m7aRSZeLHwsw9PD70tqrMPRG8BDvqJvA62ydGGfvQ0tln6Q7jWLG/54Sh6ebf9Oc3bmb
+         /Gyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=z78/BenWmRG2niJ5TUh3WVxHeA5tSCQERjewCu6GIiU=;
-        b=K2faUK8Igxzv3ifFlz5LrNR7fQlHg3OEayHne8qU2YfwRuLdzff5zUwmT/RBrsr7tH
-         plKtGw/1ddG9Eq29nqXbz4dWTbN+vYttYKHHRYTWFf+cGBSNRX/aZj3y/xQ/Nb3UJJ13
-         1nxNuTv7OkvuSBNZ0rUzTTJB1IPNNQhoYigiJnK9ls0XQXtgqqY+VwGMvMoiMDTxDbxx
-         CFxtb4vu+jP3VpMDmqQAlvjQQdV79RI0ifz/Qk444DuhritPnvMJ1mlR72pawk48sVia
-         D8Y1vl171cstMyJ+ODC3W+RcpLRS6TCt4Is09IHc0GHqav6ss2wJc5aI0QqsQHxSCBYE
-         hfSQ==
+        bh=o9691ENMF1SN9+65UB+q+xz/jKM3ACw3IwZ/j1lsTsQ=;
+        b=Y3zA+Giuy4vZs8ku7WZIDQ9VzBNNwvPbk4IcIs0qrx9DznFENxIuJjhfhAM2rRnD/j
+         12b6cGKs8TuTCFDBzudhErCej6zroclEPrFuqSBQ75xE7P0Yz84aXXuwAiYc2onssbgz
+         gsQIdmj9WhvenrP0ewNcI85M3HShCnk5FmESX3b2yXqQGcWZiqO0tdqKquZQAlqBWtWn
+         TBGVMho/0n//QYG3IzFKQdj8DkWtlqW0C+D8lWAP+n3gcDAUJomobprtCp46ZSBDtjeU
+         t1h7nw5SWvadbwckYRPWhppRSPq/UE5QiADg89d09z1sdQ9pPpC0fjC+JtxRkGWFFOcI
+         To5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=BZ2ixR3X;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=GUKnC9b+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s131-20020a37a989000000b0071ada51ab52si5558463qke.413.2023.02.05.01.47.38
+        by mx.google.com with ESMTPS id f13-20020ac859cd000000b003b8373f33a3si5498397qtf.556.2023.02.05.01.47.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Feb 2023 01:47:38 -0800 (PST)
+        Sun, 05 Feb 2023 01:47:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=BZ2ixR3X;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=GUKnC9b+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pObbB-0005jK-IB; Sun, 05 Feb 2023 04:46:13 -0500
+	id 1pOba6-0003eH-8b; Sun, 05 Feb 2023 04:45:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3vHrfYwgKClUF9BFGx2x3BB381.zB9D19H-01I18ABA3AH.BE3@flex--smostafa.bounces.google.com>)
- id 1pObac-0004cF-D4
- for qemu-devel@nongnu.org; Sun, 05 Feb 2023 04:45:41 -0500
+ <3nHrfYwgKCjUjdfjkRWRXffXcV.TfdhVdl-UVmVcefeXel.fiX@flex--smostafa.bounces.google.com>)
+ id 1pOba3-0003dV-Nx
+ for qemu-devel@nongnu.org; Sun, 05 Feb 2023 04:45:03 -0500
 Received: from mail-wm1-x349.google.com ([2a00:1450:4864:20::349])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3vHrfYwgKClUF9BFGx2x3BB381.zB9D19H-01I18ABA3AH.BE3@flex--smostafa.bounces.google.com>)
- id 1pObaZ-0001AR-SI
- for qemu-devel@nongnu.org; Sun, 05 Feb 2023 04:45:38 -0500
+ <3nHrfYwgKCjUjdfjkRWRXffXcV.TfdhVdl-UVmVcefeXel.fiX@flex--smostafa.bounces.google.com>)
+ id 1pOba2-0001AR-1f
+ for qemu-devel@nongnu.org; Sun, 05 Feb 2023 04:45:03 -0500
 Received: by mail-wm1-x349.google.com with SMTP id
- iv6-20020a05600c548600b003dc4b8ee42fso4590707wmb.1
- for <qemu-devel@nongnu.org>; Sun, 05 Feb 2023 01:45:32 -0800 (PST)
+ iv6-20020a05600c548600b003dc4b8ee42fso4590453wmb.1
+ for <qemu-devel@nongnu.org>; Sun, 05 Feb 2023 01:45:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=z78/BenWmRG2niJ5TUh3WVxHeA5tSCQERjewCu6GIiU=;
- b=BZ2ixR3X0+yyQ+jMMS3hSFjYT1PP7t6Bljzb9eIY3HiTIa1tG5SLrpyS/e3xdhYara
- AXreHy/f09FXCDvcAKJ5/yetyjpEIEv5PGH+d0kyio9wz8Of7zt0DXy3jQqwpwWwxwJ2
- qc+LbeIgvhJBjHLTvHZo6Bx/Io5c+ZLvNAZLFm2Be0XVaDggqoDE+z6eQcakNQOSoH4b
- qDsgjkQdK76UMRZLUjc6SOz2Y/pN/z2y2mzVbBje2wbA2jCDT/AV2fIzdfpP1JdMlUxS
- b7E/oKEuUl7LEulGCw3enEsHEgN4kNKdBEcIAXldgfNJ7OXdduBGqzct8wWz2vHXWLdE
- 50Pg==
+ bh=o9691ENMF1SN9+65UB+q+xz/jKM3ACw3IwZ/j1lsTsQ=;
+ b=GUKnC9b+ZvFEWAyvE17jRUo5bMkV9FfWybedAcdOEXVv0Hdsf2mDRmNUuZk41dyQX0
+ l3fDQU40V0gx8OLcv5tT3A2gbLG0JxEYdK37SCm3mM2KxSb7b7yWl9bPMU0GODLknOpQ
+ EfVc9mG5gv5jaaSgKKYtvR3qP4r5NY1XkTeUlAL1auWKYea1UULZJQQK/oUTZlNHRaGA
+ G0bdY3uR/SAQIyyQJAUwHTRSYyUIoQtmiolEIGS2M2d/REKd8J+ioVhgCke/dX50XE7f
+ dtVTTpiJoEvPlEZjEYU3i0eaqjH/uT9BGUD1G78D34JCtr8NtodoftStmxmom3cAirMV
+ ZH2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=z78/BenWmRG2niJ5TUh3WVxHeA5tSCQERjewCu6GIiU=;
- b=EV2zssgk4SRhGgJcHWeZg0xypFCQpODJcI0pPGV5Onp7nWnTEC1bNrGRHS+mSTFqg/
- fYVzKBfBE4ft+7/x+h6jWzDIQNROKT4g0OFAGzxX6K69JzW0elSqOpnmiYAuR1AZIf27
- 4ws6q6Ap8obMoj2ImFz1Mmf+ScchUD6ggv0eVqC5eO6N6ZHd8M4dv5YqgAzDQgf6NgzC
- 9viKrIhHH+j+v3/cnCw/AEG++uN6hXmVi+bwGEbCU5FyTti0Hit64HWJ9T1Lu20tP9Tg
- SQ231GFn/uB32Jh19FzagHcOSnoKnqXfBP9PovS/zH3oX0OGlYAv13Sr0jT0JV8tILPJ
- LL4A==
-X-Gm-Message-State: AO0yUKXpw5kbeBUqAmbXHpLLqZlvHig9f9eRBc4XVi0IoUO8ooL4tHry
- zyRVhLy6DHaA8trpgwnw0PRR1/uEn3HH6pMk/A/tN7m2J01UoUlNO8Jp1Mv/3LvfSoHmR7Ro7r6
- QBHG+8395mtoibF9bQ6nRIY13RDBXnhSF0uF3ATSB2baA4qJ/FxlNHg0xoVFrsVn64w==
+ bh=o9691ENMF1SN9+65UB+q+xz/jKM3ACw3IwZ/j1lsTsQ=;
+ b=vobnrZqF1G1m65ca8vUT3lB2jVY8cEd1w+Y88QnjIyIPLiDzmqysMiqxcw9GrMghjw
+ clmTyLmHkNCLyiCRZBWqdZ2IvqRMk0LXnAbES0CpVYZdw4Z8NYKn3lYmIkjvgAaD73jJ
+ +Mq1z9m4IXHYn1Cb/H81QhiSfCafVUw1RTMDqghIsO52hQn7yo0rsdOzpjIieRdjAklT
+ FkO+vtexkPKRQu1JPAHSqdJP5+l+acB48XLwsaNmZ6v8KDFZPvYihLSGExRQL8+/QcQ8
+ fQEFe9HzE06SYWhPima+Wnsbdei4KU27dWAEYqp2+rkCM9kwaMlVJMpUTwJ4RSCdP86h
+ xqYA==
+X-Gm-Message-State: AO0yUKXeebDAW5mAfOaMtxlFE1+zVGuWDkLErc7z+HSSqdgI0TMeBk5L
+ vN4K0p9l2XxzVlHJ0MP92nJxzzqio7GvDoJhgohicGQyxwzipRx1JFAiMA7Mw6yu+feJBc4BmzI
+ xiD2J64ErKHM9ar0yod4h4qc3xgSckXjlXiBBbEmj5xh3VhbeM50HsOYQFudNffvwtQ==
 X-Received: from mostafa.c.googlers.com
  ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
- (user=smostafa job=sendgmr) by 2002:a05:600c:5564:b0:3df:daa1:d9a8 with SMTP
- id ja4-20020a05600c556400b003dfdaa1d9a8mr1071114wmb.158.1675590332385; Sun,
- 05 Feb 2023 01:45:32 -0800 (PST)
-Date: Sun,  5 Feb 2023 09:44:06 +0000
+ (user=smostafa job=sendgmr) by 2002:a05:6000:12cf:b0:2bf:dcdc:afbb with SMTP
+ id l15-20020a05600012cf00b002bfdcdcafbbmr484413wrx.642.1675590300084; Sun, 05
+ Feb 2023 01:45:00 -0800 (PST)
+Date: Sun,  5 Feb 2023 09:44:01 +0000
 In-Reply-To: <20230205094411.793816-1-smostafa@google.com>
 Mime-Version: 1.0
 References: <20230205094411.793816-1-smostafa@google.com>
 X-Mailer: git-send-email 2.39.1.519.gcb327c4b5f-goog
-Message-ID: <20230205094411.793816-12-smostafa@google.com>
-Subject: [RFC PATCH 11/16] hw/arm/smmuv3: Read VMID from STE
+Message-ID: <20230205094411.793816-7-smostafa@google.com>
+Subject: [RFC PATCH 06/16] hw/arm/smmuv3: Parse STE config for stage-2
 From: Mostafa Saleh <smostafa@google.com>
 To: qemu-devel@nongnu.org
 Cc: jean-philippe@linaro.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
  qemu-arm@nongnu.org, Mostafa Saleh <smostafa@google.com>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2a00:1450:4864:20::349;
- envelope-from=3vHrfYwgKClUF9BFGx2x3BB381.zB9D19H-01I18ABA3AH.BE3@flex--smostafa.bounces.google.com;
+ envelope-from=3nHrfYwgKCjUjdfjkRWRXffXcV.TfdhVdl-UVmVcefeXel.fiX@flex--smostafa.bounces.google.com;
  helo=mail-wm1-x349.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
@@ -121,50 +121,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5hp6I9UYw8ai
+X-TUID: x2d+sitjoD1R
 
-According to SMMUv3 user manual "5.2 Stream Table Entry": All fields
-with an S2 prefix (with the exception of S2VMID) are IGNORED when
-stage-2 bypasses translation (Config[1] == 0).
+Parse stage-2 configuration and populate it in SMMUTransCfg.
+Configs in this patch (s2g, ttb, tsz, sl0).
+Checking validity of values added when possible.
 
-Which means that VMID can be used(for TLB tagging) even if stage-2 is
-bypassed, so we parse it unconditionally when S2P exists. Otherwise
-it is set to -1.(only S1P)
-
-Advertise 16-bit VMID is supported.
+MAX IPA supported is 48 bits and only AA64 tables are supported.
 
 Signed-off-by: Mostafa Saleh <smostafa@google.com>
 ---
- hw/arm/smmuv3.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ hw/arm/smmuv3.c              | 43 +++++++++++++++++++++++++++++++++++-
+ include/hw/arm/smmu-common.h |  1 +
+ 2 files changed, 43 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 769c735697..35a0149bbf 100644
+index 54dd8e5ec1..6633fe40fa 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -260,6 +260,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, TTF, 2); /* AArch64 PTW only */
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, COHACC, 1); /* IO coherent */
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ASID16, 1); /* 16-bit ASID */
-+    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, VMID16, 1); /* 16-bit VMID */
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, TTENDIAN, 2); /* little endian */
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, STALL_MODEL, 1); /* No stall */
-     /* terminated transaction will always be aborted/error returned */
-@@ -388,6 +389,14 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+@@ -366,7 +366,48 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
          return 0;
      }
  
-+    if (STAGE2_SUPPORTED(s->features)) {
-+        /* VMID is considered even if s2 is disabled. */
-+        cfg->s2cfg.vmid = STE_S2VMID(ste);
-+    } else {
-+        /* Default to -1 */
-+        cfg->s2cfg.vmid = -1;
-+    }
+-    if (STE_CFG_S2_ENABLED(config)) {
++    if (STAGE2_SUPPORTED(s->features) && STE_CFG_S2_ENABLED(config)) {
++        cfg->stage = 2;
 +
-     if (STAGE2_SUPPORTED(s->features) && STE_CFG_S2_ENABLED(config)) {
-         cfg->stage = 2;
++        if (STE_S2AA64(ste) == 0x0) {
++            qemu_log_mask(LOG_UNIMP,
++                          "SMMUv3 AArch32 tables not supported\n");
++            goto bad_ste;
++        }
++
++        switch (STE_S2TG(ste)) {
++        case 0x0: /* 4KB */
++            cfg->s2cfg.granule_sz = 12;
++            break;
++        case 0x1: /* 64KB */
++            cfg->s2cfg.granule_sz = 16;
++            break;
++        case 0x2: /* 16KB */
++            cfg->s2cfg.granule_sz = 14;
++            break;
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "SMMUv3 bad STE S2TG: %x\n", STE_S2TG(ste));
++            goto bad_ste;
++        }
++
++        cfg->s2cfg.vttb = STE_S2TTB(ste);
++        cfg->s2cfg.tsz = STE_S2T0SZ(ste);
++
++        if ((64 - cfg->s2cfg.tsz) > SMMU_MAX_IPA_BITS) {
++            qemu_log_mask(LOG_UNIMP, "SMMUv3 IPA too big! TS0Z = %x\n",
++                          cfg->s2cfg.tsz);
++            goto bad_ste;
++        }
++
++        cfg->s2cfg.sl0 = STE_S2SL0(ste);
++        if (cfg->s2cfg.sl0 == 0x3) {
++            qemu_log_mask(LOG_UNIMP,
++                          "SMMUv3 STE->SL0 0x3 has no meaning!\n");
++            goto bad_ste;
++        }
++
++        /* This is still here as stage 2 has not been fully enabled yet. */
+         qemu_log_mask(LOG_UNIMP, "SMMUv3 does not support stage 2 yet\n");
+         goto bad_ste;
+     }
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index 1e666e8b6d..7906e359d9 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -28,6 +28,7 @@
+ #define SMMU_PCI_DEVFN(sid)   (sid & 0xFF)
  
+ #define SMMU_MAX_VA_BITS      48
++#define SMMU_MAX_IPA_BITS     48
+ #define SMMU_MAX_LEVELS       4
+ 
+ /*
 -- 
 2.39.1.519.gcb327c4b5f-goog
 

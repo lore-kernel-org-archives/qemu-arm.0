@@ -1,127 +1,160 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3057164ejb;
-        Sun, 5 Feb 2023 01:14:46 -0800 (PST)
-X-Google-Smtp-Source: AK7set/Zqf+rKmt8X77RoXMBWPtuaQHgP4EKtEKwddOIVvTOkSHp0JYKx7vl0a28fR6fEEuZ/rfd
-X-Received: by 2002:ac8:58c3:0:b0:3b8:2d45:4760 with SMTP id u3-20020ac858c3000000b003b82d454760mr30224228qta.61.1675588485861;
-        Sun, 05 Feb 2023 01:14:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675588485; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3073740ejb;
+        Sun, 5 Feb 2023 01:45:07 -0800 (PST)
+X-Google-Smtp-Source: AK7set/1dEkYgbP6uO3/yM94XiaFhvM2ISN1D3evclpehGixk8YUaBWuWcAHFBZ6IBe+Dd8suLzc
+X-Received: by 2002:a05:622a:1a8d:b0:3b8:ca09:e01d with SMTP id s13-20020a05622a1a8d00b003b8ca09e01dmr31460891qtc.53.1675590307605;
+        Sun, 05 Feb 2023 01:45:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675590307; cv=none;
         d=google.com; s=arc-20160816;
-        b=U4EukIciBpS4nSzm/TDHmZs/xyrfG8+0dIdxLunu4dc576Lnrrm/CKslkTBno9fqxg
-         Gxr9Dww+B+KQHBwPI2Ngby4MD379XGBnTx6g2H00yTg2opb/cPmlmHcQjMWXxLZCL8PB
-         3VWOlUfke6Kf7Tf3B3aKsrstlVP6LSwXyJl2N9GFLER71U15Qu8rL85Jm7fEchlAynvx
-         yc5EMtDTdYou830rM932ZBQqBo6Pk9V/o7pmg4+PJ6/pcSIkXvh+xI5RyRM8X5xiNylf
-         Yn8F5tTD5kIRKY9uPh6RzC4j2+CaCvadj36mF+RFHyJl2ZnDCyUjRxU/vjOSyKRkvp8k
-         eIfg==
+        b=qo1I6rc7cZHuG2T+eQi2hW0tugu9pDTGTKXEPFUyl3SHdb53mzplhMq8XgJgnmB4Aw
+         EUtfs6EHSxt2T/xlAublI7WERdtKCyTHAJ4Q5Zryv6vyg7hIU/HBYq/hfGrFPn/rOLC7
+         k+MVci5nw7W0lFeqWXkM4bej++ZCT0yHMgtGppFfz7L7Vsv4tkdZ1S6fmeFIkeiceGWB
+         Wmb2mKefuiBSbN1PSmOJJv2dYmTK9Qpg3aDDCpoVq2XdX7gGAkBEKZMBiv7NmTqUI816
+         I/RxEWnpfS+5fT/iazjBTkf9Xo2V6XyptkD7q95WbeoWoenBIvu4QvOjtJOmWK2rGDNY
+         v4/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date;
-        bh=MhEMZK1rOEhoLHl9mMkaygb83KFS1o3EGnxAxehcDLU=;
-        b=lfaRF0WbUxPRO+o0KNJC5ZlVi/T77+YbtyK9KBiXkmvgiNfYYWP66CsQaHn/vc0HhI
-         zhYUXN7CNZv4XXG2l9WGVc7oud1hvy2QVRdX2c+2qWBhv8bQ1yxpyPri/omBKnk9G1HC
-         rpYgBMWEoUec439uDW3s5qF9xmkhlaydaXJa9dNOCOgFx1ruMrpPbjgx28y5NkCfzv9U
-         7HDm+YdwLdshqRZAyy8+oT8CH0nZkD3IhTMtzbcaB8JdBGvp77QIXry6eUaHByAL3lh/
-         82hb8Y+xta1C1pfDfR/ioLdn65pacTCQSOIfOY0i+FvOPsSSI2jd7N4h4so2ejG55N4l
-         7bow==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=di6n3s8XJp9c3hUNu18fxGHG7njnSIxXVr67hNdV8+o=;
+        b=0PDwKWB/xpt5RmVxLwVSAXd1tJBfLKxdCCM+EcbVX6tM1jK3hD/j/jcgxuO78ijUSI
+         iAGOgyrlngIpkIk0CpbfeehvVp5XG7uU90DLWz9ocYS7yoq43Jh+cklpCBUHReWmbfy/
+         Fvs8UqNACcDWl9QppAy++TNInv8H6aRIepT3qvX7UiAZWxmaczaqwqzFoLzu7kJkdqEM
+         VApUNNAiDXkJIq5H8C3R9BsFHGHTD/0BpkBis7bGH5VK+4Bm3NrlCmuNor/g+7R+OIlk
+         8xeD9tHzXvelS7wSju8SjvtVYNdCRpO6m7TWeLeu9Jsiw+22JRne2EPyKTVaEY/L2L2v
+         CURQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=JXRtmpdF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x11-20020ac85f0b000000b003b9782742d2si5687328qta.602.2023.02.05.01.14.45
+        by mx.google.com with ESMTPS id k185-20020a37bac2000000b00705f8d6c9ddsi5311403qkf.367.2023.02.05.01.45.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Feb 2023 01:14:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 Feb 2023 01:45:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@google.com header.s=20210112 header.b=JXRtmpdF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pOb6M-00053s-7e; Sun, 05 Feb 2023 04:14:22 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pObZh-0003Sy-PA; Sun, 05 Feb 2023 04:44:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1pOb6J-00052n-LB; Sun, 05 Feb 2023 04:14:19 -0500
-Received: from mail-wm1-f44.google.com ([209.85.128.44])
+ (Exim 4.90_1) (envelope-from
+ <3f3rfYwgKChgGACGHy3y4CC492.0CAE2AI-12J29BCB4BI.CF4@flex--smostafa.bounces.google.com>)
+ id 1pObZg-0003SJ-6W
+ for qemu-devel@nongnu.org; Sun, 05 Feb 2023 04:44:40 -0500
+Received: from mail-wm1-x349.google.com ([2a00:1450:4864:20::349])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1pOb6H-0004st-OM; Sun, 05 Feb 2023 04:14:19 -0500
-Received: by mail-wm1-f44.google.com with SMTP id
- m16-20020a05600c3b1000b003dc4050c94aso6715997wms.4; 
- Sun, 05 Feb 2023 01:14:16 -0800 (PST)
+ (Exim 4.90_1) (envelope-from
+ <3f3rfYwgKChgGACGHy3y4CC492.0CAE2AI-12J29BCB4BI.CF4@flex--smostafa.bounces.google.com>)
+ id 1pObZZ-00016g-UO
+ for qemu-devel@nongnu.org; Sun, 05 Feb 2023 04:44:39 -0500
+Received: by mail-wm1-x349.google.com with SMTP id
+ l31-20020a05600c1d1f00b003deab30bb8bso4588088wms.2
+ for <qemu-devel@nongnu.org>; Sun, 05 Feb 2023 01:44:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=di6n3s8XJp9c3hUNu18fxGHG7njnSIxXVr67hNdV8+o=;
+ b=JXRtmpdF6SFugFolWqmC0L4VkzEhkGfeimPXstQmHd3gtRXiHwemEuuel3uOX95LIJ
+ HPhEZtkkrm+qXkY5OphU2VFjp2vkiFL+x0zWcSlOD4E8iUALVkPfHki3gKwz5XzYsma2
+ pgyuHHGR/3UGgyXkehU9Zf92dfzk/jJphTJ/DYv9Jsnfin/5S8QGwG67oRkgfHYzOhfK
+ oKEXE1yCU+Csg7mNgQSuLsEO0C3xKbAwYJNc3Hk/w40aT0Ib8pCDYkM/46wz/Jbz3jeX
+ ZA/CLdsk0oeiAtn4UeNBGCebxqoXq7e/oePiHSAH6DuFHO/2SwiEI7bfbsjRFJDOHEzV
+ m1TA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=MhEMZK1rOEhoLHl9mMkaygb83KFS1o3EGnxAxehcDLU=;
- b=HUc1hIOek/geyqgaldDof7WR2LiQthhfFABs8Mjqa9bkwT2xwHLjOaDnGM0xpypdpG
- dal1Mlc8yGYvBJcuDTO9Qaz4+Ia80cbCiVBIhwBVq6+MTiZDJgjkD+Cc2nrcLSpEkG4D
- ARY13bKU9e85mWirjqPvXZbu+VTafSce2YlaoMGshrYmZTBVtRpO1eAj8ZTiy7tHuhlo
- HNpltqgDJ2z5/SduLSVwBsoG3WR+VvJMjjqs3GgPT07ovLYWTBbCWSSQeJfl2x056jo2
- YpgSffce7cVEbkpt4OqCFC0vJPk0snLq6lL74CkYPUOueFtVSUUj5bVQvjsHepPnnijt
- dMJA==
-X-Gm-Message-State: AO0yUKUOqjjQ7WZ1a8E5ls0mJJyVxOMsOlz1JDYbdhwgIVw2YKktlw2X
- HZ4S4Yb8l1PollHcTTyc6X8=
-X-Received: by 2002:a05:600c:3c9b:b0:3dc:46e8:982 with SMTP id
- bg27-20020a05600c3c9b00b003dc46e80982mr14852469wmb.19.1675588455030; 
- Sun, 05 Feb 2023 01:14:15 -0800 (PST)
-Received: from localhost (tmo-098-228.customers.d1-online.com. [80.187.98.228])
- by smtp.gmail.com with ESMTPSA id
- o14-20020a05600c4fce00b003dc1a525f22sm7983385wmq.25.2023.02.05.01.14.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Feb 2023 01:14:14 -0800 (PST)
-Date: Sun, 5 Feb 2023 10:14:07 +0100
-From: Thomas Huth <huth@tuxfamily.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Markus Armbruster
- <armbru@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- qemu-riscv@nongnu.org, Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PATCH 13/19] hw/m68k: Set QDev properties using QDev API
-Message-ID: <20230205101407.1d6e979a@tuxfamily.org>
-In-Reply-To: <20230203180914.49112-14-philmd@linaro.org>
-References: <20230203180914.49112-1-philmd@linaro.org>
- <20230203180914.49112-14-philmd@linaro.org>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.34; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.128.44; envelope-from=th.huth@gmail.com;
- helo=mail-wm1-f44.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=di6n3s8XJp9c3hUNu18fxGHG7njnSIxXVr67hNdV8+o=;
+ b=3CD7zqQt7ebprVZgQWCg83MeRywvip0OrLdRUYlgbnhF+SgqBX9ZyarbB25be+2RLT
+ /znGro2k3stuhBZtcJcHrzecf8xjLdiOztopkU+DbfIonGSLJwklEtWTuyngTpPw0w7O
+ d82UGPNgIuQEwLYflWQyJlr4RqU27IR1c6TKKr1Rea9UhLjeCS7lgk3SAfsvdfun0J4E
+ ntNbx/lsHiGY2Rs/Dyhk1dcIxWjknRIUU7hlYVSioTE8nEcy7OLigxr24OdcfzHEIg+R
+ 2qYxinqLyISO2WkOwJ22rANTQe//SOBqKj64b8YjE2ElSvAjaFyRpxmBUpaLFY3WwaIe
+ hyxA==
+X-Gm-Message-State: AO0yUKXG+Rlhi9zqRZDIfa4GnXAf1JVi8XAjXg5QtN2NUrEUrdOLPP2P
+ HS6btIGwJSGgyplXwEy8KyrTxMiQE3KOtI6DCLyXlT93wyu5MtRHD7OJ5eoHoZAdcKoHPd55HH2
+ Ie6CLmslHAYHAJvD0xUQSXHQ5jV9TQNNBbTJ0ys9ndWhAlD9zc/Xv3FBUSn3Gls8Isg==
+X-Received: from mostafa.c.googlers.com
+ ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
+ (user=smostafa job=sendgmr) by 2002:a1c:4b0a:0:b0:3da:f8a:5b01 with SMTP id
+ y10-20020a1c4b0a000000b003da0f8a5b01mr113212wma.2.1675590271522; Sun, 05 Feb
+ 2023 01:44:31 -0800 (PST)
+Date: Sun,  5 Feb 2023 09:43:56 +0000
+In-Reply-To: <20230205094411.793816-1-smostafa@google.com>
+Mime-Version: 1.0
+References: <20230205094411.793816-1-smostafa@google.com>
+X-Mailer: git-send-email 2.39.1.519.gcb327c4b5f-goog
+Message-ID: <20230205094411.793816-2-smostafa@google.com>
+Subject: [RFC PATCH 01/16] hw/arm/smmuv3: Add missing fields for IDR0
+From: Mostafa Saleh <smostafa@google.com>
+To: qemu-devel@nongnu.org
+Cc: jean-philippe@linaro.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
+ qemu-arm@nongnu.org, Mostafa Saleh <smostafa@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::349;
+ envelope-from=3f3rfYwgKChgGACGHy3y4CC492.0CAE2AI-12J29BCB4BI.CF4@flex--smostafa.bounces.google.com;
+ helo=mail-wm1-x349.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ejObayIR2aPj
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rH/sK4QAcDg6
 
-Am Fri,  3 Feb 2023 19:09:08 +0100
-schrieb Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>:
+In preparation for adding stage-2 support.
+Add IDR0 fields related to stage-2.
 
-> No need to use the low-level QOM API when an object
-> inherits from QDev. Directly use the QDev API to set
-> its properties.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  hw/m68k/next-cube.c | 2 +-
->  hw/m68k/q800.c      | 7 +++----
->  2 files changed, 4 insertions(+), 5 deletions(-)
+VMID16: 16-bit VMID supported.
+S2P: Stage-2 translation supported.
 
-Reviewed-by: Thomas Huth <huth@tuxfamily.org>
+They are described in 6.3.1 SMMU_IDR0.
+
+No functional change intended.
+
+Signed-off-by: Mostafa Saleh <smostafa@google.com>
+---
+ hw/arm/smmuv3-internal.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index bce161870f..170e88c24a 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -34,10 +34,12 @@ typedef enum SMMUTranslationStatus {
+ /* MMIO Registers */
+ 
+ REG32(IDR0,                0x0)
++    FIELD(IDR0, S2P,         0 , 1)
+     FIELD(IDR0, S1P,         1 , 1)
+     FIELD(IDR0, TTF,         2 , 2)
+     FIELD(IDR0, COHACC,      4 , 1)
+     FIELD(IDR0, ASID16,      12, 1)
++    FIELD(IDR0, VMID16,      18, 1)
+     FIELD(IDR0, TTENDIAN,    21, 2)
+     FIELD(IDR0, STALL_MODEL, 24, 2)
+     FIELD(IDR0, TERM_MODEL,  26, 1)
+-- 
+2.39.1.519.gcb327c4b5f-goog
+

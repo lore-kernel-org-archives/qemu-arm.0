@@ -1,95 +1,96 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4075653ejb;
-        Mon, 6 Feb 2023 03:23:08 -0800 (PST)
-X-Google-Smtp-Source: AK7set9AWUs7HKxC3eXbYAM43J6BWUHSLV5Mu54YwLI5geQZ01hQ3+/3msNPKoRgLPAVxUxSyvow
-X-Received: by 2002:a05:622a:1390:b0:3a8:fdf:8ff8 with SMTP id o16-20020a05622a139000b003a80fdf8ff8mr36953568qtk.36.1675682588749;
-        Mon, 06 Feb 2023 03:23:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675682588; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4075732ejb;
+        Mon, 6 Feb 2023 03:23:13 -0800 (PST)
+X-Google-Smtp-Source: AK7set+jBPRIAQ+d1KhsPv4SuAEZRx4DbCAvcIvHAGHU130Uz2e2r2s4nojTBhFK01jmp4ryLaOx
+X-Received: by 2002:a0c:becc:0:b0:53a:ee35:a4bd with SMTP id f12-20020a0cbecc000000b0053aee35a4bdmr24906767qvj.18.1675682593333;
+        Mon, 06 Feb 2023 03:23:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675682593; cv=none;
         d=google.com; s=arc-20160816;
-        b=g6aYbKInKicVmj7MBcD9ZiYyE9l/rFx35ou0usrFDXBe3hC/dwx+uu1KibTmtG1r+F
-         WDBg79XMIbedMPU2BcJ2XzBZMwT1hNs1pwZ9a0O8FI/Dww9bfoXGXxaO9RsqJlKNJ+uG
-         JRBv3NYTsm+BKmNqCTwvWQLEPdnkGRZa1lD7ZFqoq9vXhaUNbduU2D6yqnnsgHGaxWhJ
-         YqAFIaB6wajRYI7e6H1La4ji/RWfnC1LF5TgGKoEPi52WjsIZ3Rs2XgVPx0Bw8oA+Pnm
-         9GF/r4Z3sghJwOrjMnM6IBUxIggPg0e7Ph5Q5s/llazve546fmmRaOTS6wLr1Vf6qtm3
-         y0qQ==
+        b=VMBOal2Bvn8cKeEWw2PO2Cr+mOJk1226Ccwq+l22zJEf6thU64JC1aEYCHxr1iEYUr
+         1kqTh89+z5KOGBvYURfaGrPuYclYZOS24AIzMCE3K8LYvyOBJ7cYuU4h3h4bV0XHuptV
+         Ir+E8CIUBCOYDyfrKmUKPPe7QA5LVdN0Gz3zO5b7+148TFQW++M+/h7FRGmuk9mQC3og
+         qPFxDrekpEI85GZTvRvbUlTCiHaEHp9gSlOVmzsgZB95wr1nmvP/rl2FxMndgi6kDoK1
+         fzxFyN9PK7QMAMpdngYwLYqVTasH+aKWMMmkgGwT9KxeNbU8km8U7jibZCPX3ntP19u/
+         M1TA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=a7SKC2TVqKQzjslWVnkLc/vK9me7ZpW6UmUARx4xlI4=;
-        b=C0BiWWzU2ZkaZmCgcAgfnj1pjuj9rSkEWAFm5Hal7DGRC/ITV+K8Y4nEpg4ziC5TeD
-         jtqaMYOg7qd5h7umOvr75yHg2n6DMvlV8TsWYuCJJ8xz6OuKPPeh8LGG/G+fIkUyTt/k
-         BLBiLZQjaOpMXhEkcZK2UweRofX1gsjANUyR8BvSEoFNSMgGrcI+2vBvhJCb5z/e6wD2
-         nMjdlWwu3Rv+hrLupByj20QcUMbPkRAGxy9BrsXx9fFHNrNwsovfmSVhpqyM0qPEJM2P
-         EAVwVDr5Xura9eWG2eqXCvKDTqC35xMBsOTy5ZoYFswWDobhpS9F6h6GQHgwyxg8GBb2
-         c3TQ==
+        bh=qtsL8ERd4ZdT7V/YvGYXethl/MqAVLTyFEEwTNfoqy4=;
+        b=sCWLv/Qm9NPjLijxX5g5ONsSmVHmxdVXvZBvDeuaJZslzhoDpUMX6tSIWuvmCwIdrl
+         0/eBPj0movttzW5qMA1A9s4GmlrPIgxWNbNx61tgWOkdjKPgUfgI16Ml9gMWSbc8xHG7
+         5NB2AlyLwOd7eIaRrKCuE9CYljWCXhxSk06xjSgYM+KH4ICKW6wZJJVpZzkJ9XHZZfb3
+         7h0ub8zII+Q156bwtZcOKAYgYiEKu7T4Qd6oz6oIKvrmJN3ely3NlRqJI1elO4ZVZrcQ
+         Kahadu0m/5AQy/S3oScL791FxWkVwe/npv4IKpkjkm4hW0GC23AqSTagO+TBobKHB8Q8
+         e3oA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TkOGAber;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MmaIOC3A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y125-20020a379683000000b0072d8141fc88si7913061qkd.581.2023.02.06.03.23.08
+        by mx.google.com with ESMTPS id q1-20020a378e01000000b0070655ddd307si7893230qkd.688.2023.02.06.03.23.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Feb 2023 03:23:08 -0800 (PST)
+        Mon, 06 Feb 2023 03:23:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TkOGAber;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MmaIOC3A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pOzZf-0004EN-AA; Mon, 06 Feb 2023 06:22:15 -0500
+	id 1pOzZr-0004IR-0A; Mon, 06 Feb 2023 06:22:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzZc-0004DU-GS
- for qemu-arm@nongnu.org; Mon, 06 Feb 2023 06:22:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzZm-0004Fm-B4
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 06:22:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzZa-0003ND-2X
- for qemu-arm@nongnu.org; Mon, 06 Feb 2023 06:22:11 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzZi-0003Oc-W4
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 06:22:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675682529;
+ s=mimecast20190719; t=1675682538;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=a7SKC2TVqKQzjslWVnkLc/vK9me7ZpW6UmUARx4xlI4=;
- b=TkOGAberCBDyJu3AyfAyCBWmoHyXTDmzx2FDC2VSNp3j05a21IL40YbaaS23mI85Yvs7pe
- MHonYGC9M89I+3mkcy0S7RDKTGTGm/FjPSh5RBVbuyCe924b6B7NQCxK3DC1p92y0PIxNa
- NoygUZwB7zMwaAVhOoRzkAFf32gYsYU=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=qtsL8ERd4ZdT7V/YvGYXethl/MqAVLTyFEEwTNfoqy4=;
+ b=MmaIOC3AXcZ51mHErx1eYNcvrO2RNC9mgwYNpJ+K7GzT3AMotcCIyIV32USKmsqOwavWlI
+ hUkkD8kHapXQTfw+vhWtGRYbRyf5y6683W4uK7Yk8nTZSRf5Y7viaTx8BND0QXM+kIsIqK
+ Yd552Jn6JhR4Z8FKrOxrunn+NsHnAw0=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-517-qAks29C5OHq9GLqAIKiCbg-1; Mon, 06 Feb 2023 06:21:00 -0500
-X-MC-Unique: qAks29C5OHq9GLqAIKiCbg-1
+ us-mta-616-Bx8nWHSlOYuyHWpfgOyq6g-1; Mon, 06 Feb 2023 06:21:10 -0500
+X-MC-Unique: Bx8nWHSlOYuyHWpfgOyq6g-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B64AC800050;
- Mon,  6 Feb 2023 11:20:59 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6E51F1C06EC2;
+ Mon,  6 Feb 2023 11:21:10 +0000 (UTC)
 Received: from gshan.redhat.com (vpn2-54-63.bne.redhat.com [10.64.54.63])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C54AC492B21;
- Mon,  6 Feb 2023 11:20:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BAD8A492B21;
+ Mon,  6 Feb 2023 11:21:05 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
  peterx@redhat.com, david@redhat.com, philmd@linaro.org, mst@redhat.com,
  cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com,
  maz@kernel.org, zhenyzha@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH RFCv1 1/8] linux-headers: Update for dirty ring
-Date: Mon,  6 Feb 2023 19:20:03 +0800
-Message-Id: <20230206112010.99871-2-gshan@redhat.com>
+Subject: [PATCH RFCv1 3/8] migration: Add last stage indicator to global dirty
+ log synchronization
+Date: Mon,  6 Feb 2023 19:20:05 +0800
+Message-Id: <20230206112010.99871-4-gshan@redhat.com>
 In-Reply-To: <20230206112010.99871-1-gshan@redhat.com>
 References: <20230206112010.99871-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -97,7 +98,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,39 +113,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6WlVNLCR3IfV
+X-TUID: p5tHIykVV/Cn
+
+For the pre-copy live migration scenario, the last stage indicator
+is needed for KVM backend to collect the dirty pages from the backup
+bitmap when dirty ring is used. The indicator isn't used so far.
+
+No functional change intended.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- linux-headers/asm-arm64/kvm.h | 1 +
- linux-headers/linux/kvm.h     | 2 ++
- 2 files changed, 3 insertions(+)
+ migration/ram.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
-index 4bf2d7246e..a7cfefb3a8 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -43,6 +43,7 @@
- #define __KVM_HAVE_VCPU_EVENTS
+diff --git a/migration/ram.c b/migration/ram.c
+index d1b9b270ec..6c9642edee 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -1176,7 +1176,7 @@ static void migration_trigger_throttle(RAMState *rs)
+     }
+ }
  
- #define KVM_COALESCED_MMIO_PAGE_OFFSET 1
-+#define KVM_DIRTY_LOG_PAGE_OFFSET 64
+-static void migration_bitmap_sync(RAMState *rs)
++static void migration_bitmap_sync(RAMState *rs, bool last_stage)
+ {
+     RAMBlock *block;
+     int64_t end_time;
+@@ -1188,7 +1188,7 @@ static void migration_bitmap_sync(RAMState *rs)
+     }
  
- #define KVM_REG_SIZE(id)						\
- 	(1U << (((id) & KVM_REG_SIZE_MASK) >> KVM_REG_SIZE_SHIFT))
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index ebdafa576d..5b4e0e4e68 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -1175,6 +1175,8 @@ struct kvm_ppc_resize_hpt {
- #define KVM_CAP_VM_DISABLE_NX_HUGE_PAGES 220
- #define KVM_CAP_S390_ZPCI_OP 221
- #define KVM_CAP_S390_CPU_TOPOLOGY 222
-+#define KVM_CAP_DIRTY_LOG_RING_ACQ_REL 223
-+#define KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP 225
+     trace_migration_bitmap_sync_start();
+-    memory_global_dirty_log_sync(false);
++    memory_global_dirty_log_sync(last_stage);
  
- #ifdef KVM_CAP_IRQ_ROUTING
+     qemu_mutex_lock(&rs->bitmap_mutex);
+     WITH_RCU_READ_LOCK_GUARD() {
+@@ -1222,7 +1222,7 @@ static void migration_bitmap_sync(RAMState *rs)
+     }
+ }
  
+-static void migration_bitmap_sync_precopy(RAMState *rs)
++static void migration_bitmap_sync_precopy(RAMState *rs, bool last_stage)
+ {
+     Error *local_err = NULL;
+ 
+@@ -1235,7 +1235,7 @@ static void migration_bitmap_sync_precopy(RAMState *rs)
+         local_err = NULL;
+     }
+ 
+-    migration_bitmap_sync(rs);
++    migration_bitmap_sync(rs, last_stage);
+ 
+     if (precopy_notify(PRECOPY_NOTIFY_AFTER_BITMAP_SYNC, &local_err)) {
+         error_report_err(local_err);
+@@ -2844,7 +2844,7 @@ void ram_postcopy_send_discard_bitmap(MigrationState *ms)
+     RCU_READ_LOCK_GUARD();
+ 
+     /* This should be our last sync, the src is now paused */
+-    migration_bitmap_sync(rs);
++    migration_bitmap_sync(rs, false);
+ 
+     /* Easiest way to make sure we don't resume in the middle of a host-page */
+     rs->pss[RAM_CHANNEL_PRECOPY].last_sent_block = NULL;
+@@ -3034,7 +3034,7 @@ static void ram_init_bitmaps(RAMState *rs)
+         /* We don't use dirty log with background snapshots */
+         if (!migrate_background_snapshot()) {
+             memory_global_dirty_log_start(GLOBAL_DIRTY_MIGRATION);
+-            migration_bitmap_sync_precopy(rs);
++            migration_bitmap_sync_precopy(rs, false);
+         }
+     }
+     qemu_mutex_unlock_ramlist();
+@@ -3349,7 +3349,7 @@ static int ram_save_complete(QEMUFile *f, void *opaque)
+ 
+     WITH_RCU_READ_LOCK_GUARD() {
+         if (!migration_in_postcopy()) {
+-            migration_bitmap_sync_precopy(rs);
++            migration_bitmap_sync_precopy(rs, true);
+         }
+ 
+         ram_control_before_iterate(f, RAM_CONTROL_FINISH);
+@@ -3407,7 +3407,7 @@ static void ram_save_pending(QEMUFile *f, void *opaque, uint64_t max_size,
+         remaining_size < max_size) {
+         qemu_mutex_lock_iothread();
+         WITH_RCU_READ_LOCK_GUARD() {
+-            migration_bitmap_sync_precopy(rs);
++            migration_bitmap_sync_precopy(rs, false);
+         }
+         qemu_mutex_unlock_iothread();
+         remaining_size = rs->migration_dirty_pages * TARGET_PAGE_SIZE;
 -- 
 2.23.0
 

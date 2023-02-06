@@ -1,108 +1,110 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4517974ejb;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4517976ejb;
         Mon, 6 Feb 2023 11:50:54 -0800 (PST)
-X-Google-Smtp-Source: AK7set/05ga/SZ2E7VcDMZm6BFAF2NZdQrq4FdrXFN3YaUF8g1JS9kAurCWmVkzPeliQ9UKkbGTR
-X-Received: by 2002:a05:6214:d84:b0:535:664b:772b with SMTP id e4-20020a0562140d8400b00535664b772bmr573643qve.6.1675713054347;
+X-Google-Smtp-Source: AK7set8fTMswaGkzTrWfgrZOgKic44feJv8Cy6FxIxywDrJHddBUUZv30PnqKNZQFfmF+Dxhwt1L
+X-Received: by 2002:ad4:4ee9:0:b0:56c:2e3:1565 with SMTP id dv9-20020ad44ee9000000b0056c02e31565mr609263qvb.16.1675713054614;
         Mon, 06 Feb 2023 11:50:54 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1675713054; cv=none;
         d=google.com; s=arc-20160816;
-        b=mLIcg6B77GvvaD0HCs/YodIrGN57pthmjehPQQYbJDnnIAwZtfGd7RIJNwjV6UbApB
-         hiulfHqGlV0SFjZaKnEtEjmXqVVazSAotnj3ptn+SBY8mhwT2mOgvMOpYAQjjrPxo6k4
-         U9u4bkmM3jLzlUnAUHdF9aVXhp8iHKfp6vUoCAwDhuaql43zLJkizxbM1y+dIJmMQ8lY
-         fzQU1wn3vW0Lv9fQ89uABywvX6CMaxxHbvM18QCV5qSQC3O7v2VlFRzV/PeXvIlW+vL8
-         wXCfJC+9mMKMHNsDKfkUNZuPuQyXntTmY4Qr0hW8LNttkxH6zxhpaAuMdmhJqbYwBO9Y
-         jfrA==
+        b=QFHykJ/L67kpqz411vc6voTXZM4uduSYjlXYEaOfUhi0z93X8ru4EVl3/CxB8cdTcX
+         ZZiISX8tZr/R5ZR9GzcSePsgxL2fOMpic8+gs5GZGhzvv8dZxdcLkTMWWirB8YJ2lRlN
+         CaMrcGIhFWSl/3tQVMqN046d6UKHrfK9S2Dr31TTrzd+GS4S/I91eftIpd60fV2Udy0b
+         Koc6KsQFuU2JvUXfFaB0xVW7zppNYrj5eoT21lB1TkyycX2Y6SZrLOM+zx3Sip37ICKt
+         NkC6WF/8KKyP2IE60FdfHTW7hzDXSB61PJ/jJ+oZATYcd2A+kEhZL/MQuH6dmU/fqK2K
+         bnhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=MIABIvJXLyUfLEOgHi2fdvN3Sdm0XCg8OR5adWLI9Ds=;
-        b=qOE9WQpQM++JoAoAD0aKEJi90Hj6zEVgQBRe16u9/yJQg8cwt0qTyBZ1o05JVUXqAe
-         m/YhUl+xdogrXMTSRGL7I0KGlr1ECV0xPV7Mb28TUCM7qm7q5Ts6UybPAYmPMDhDXnzJ
-         7svtz8mf+PKhdPdhjCpQDKBH8SBAFMyIwsWwzYcLtgaYmauX/lPx1kiEsKJegQmI8TVU
-         ddF85rzZl0JKS2IcvtJletpXKDfsaOhHhfjRqcDGS8kvMQWPvkZNOyvxXwb2BW0SM8/v
-         G/WHMAA3uyBxet4JFNoty40mj/o9a3TfV5cCtZyv3TzlIDwRvp9+2ZmXJfWIxJwIojCH
-         KLUw==
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=9ABrUA5krIv7LfvsXEqxczxaHvxnH2HruiF60Riq0HE=;
+        b=TcR+YKjD7MPTo8ocIgX6YIB4Uy524w71a0P9ONLMVZZ1MuY8z8wbjxuwyeiDy+eYK9
+         3EmbmF14M1Puc6bfQ9fLW69Hmc4VAc7bl7x9mo/GuSEq3iDN6MzJEibkYgMttS8HiYNj
+         G2ZzOXyxe+ra7KS3hSh8QNtBf1Hs1rMd3jCpZi6vRibqIX6UcGM11Oi+Jk8w7gf2+w8X
+         LsHEe48xO/ZbsGUJqcnOWCTegBzYss2u1aC09/I6uZvknZLqVgkqRAO3TFiearRXNAVx
+         GhA6Enr7Zn6LeXZdZFV3dmQS+XFV4czxSrvp7itItvgt7zAaB1L+mg5LbRBk6EaJ0Ths
+         Tnqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=jat5SGEC;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=DlSNsRBh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jk6-20020ad45d46000000b004ad5edaeeb5si10494022qvb.357.2023.02.06.11.50.54
+        by mx.google.com with ESMTPS id y125-20020a37af83000000b007069b005098si8886674qke.414.2023.02.06.11.50.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 06 Feb 2023 11:50:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=jat5SGEC;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=DlSNsRBh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pP7Ur-0007eZ-Qy; Mon, 06 Feb 2023 14:49:49 -0500
+	id 1pP7Uw-0007hj-FQ; Mon, 06 Feb 2023 14:49:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <311nhYwYKCjYlalmkjYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--titusr.bounces.google.com>)
- id 1pP7Uq-0007eQ-I3
- for qemu-devel@nongnu.org; Mon, 06 Feb 2023 14:49:48 -0500
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ <32lnhYwYKCjkodopnmbjjbgZ.XjhlZhp-YZqZgijibip.jmb@flex--titusr.bounces.google.com>)
+ id 1pP7Ut-0007fz-SD
+ for qemu-devel@nongnu.org; Mon, 06 Feb 2023 14:49:51 -0500
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <311nhYwYKCjYlalmkjYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--titusr.bounces.google.com>)
- id 1pP7Un-0007sU-N1
- for qemu-devel@nongnu.org; Mon, 06 Feb 2023 14:49:48 -0500
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-4c11ae6ab25so124065697b3.8
- for <qemu-devel@nongnu.org>; Mon, 06 Feb 2023 11:49:45 -0800 (PST)
+ <32lnhYwYKCjkodopnmbjjbgZ.XjhlZhp-YZqZgijibip.jmb@flex--titusr.bounces.google.com>)
+ id 1pP7Ur-0007tL-Gy
+ for qemu-devel@nongnu.org; Mon, 06 Feb 2023 14:49:51 -0500
+Received: by mail-yb1-xb49.google.com with SMTP id
+ z9-20020a25ba49000000b007d4416e3667so12625266ybj.23
+ for <qemu-devel@nongnu.org>; Mon, 06 Feb 2023 11:49:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=MIABIvJXLyUfLEOgHi2fdvN3Sdm0XCg8OR5adWLI9Ds=;
- b=jat5SGECEFw0KjrKMdqy8WV7sRNQOrbupm13DFddb7goYZNMV8LEG9QUUWaRAZNrXD
- 4TNRYKdhmyezN1r7ltZkCtWy2GxG180ItwjdisyfXZN+VB10QrYb7YL2GeqjCdxBjX3z
- BJihT2HmlSJISCZ+Mc/lR7qstqU7+yoDiQxznhaNdjWNaEaFK1IgDrQGsXatrkIV+XFh
- TznEG81n3efk8c2c5R2lsonLpqQJ1H2cLofAfjEruAj9j1ckH96t1cRDPVC3pI5xqdtN
- 0AebUBHW872TwpyfdBiQN+O6jPhjGnjAPzxl181zW0BUOSWNVgAoj7pWa134DMBkpO+U
- UmSA==
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=9ABrUA5krIv7LfvsXEqxczxaHvxnH2HruiF60Riq0HE=;
+ b=DlSNsRBhoPRYVT3NrHAWLtMTJbIOqrAPghBm/W/wmopCerf1PPI+LCDcFniockR3xo
+ h4V+1/xvy4obUp4DOKeGFEAljQ3k5IYy/heXP2e8MRhPgSG1/iOuWJQEsNdhNcs7fMkn
+ y+lOlLikRPChnkkB9XUkNb1zltKe/eMtYMN/Yc4UBeF0so5Ue4ekHwJIwFt7p650vLaD
+ Lc1gwdcnQJyWHjyBkl7I/1N/7ucNfjpL9JETj37GT9zwTpLwSKOaZ7JWmJDDhhOVdFAB
+ /toT77JzmeT+pn4BkqsZ60D/jIVAgTbKIFXPsV7PXrm9eW3HV3aEMdwxA23K9nzhSbhV
+ lH1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=MIABIvJXLyUfLEOgHi2fdvN3Sdm0XCg8OR5adWLI9Ds=;
- b=5kEuCYQdvWj8lsy4rkLriqNF8jajBDMcNGAbDQsettKBSOsDtQ70c+yy6uU2H7436r
- E4zM3d1M9ujceCGcelO93bs2pYi54ufEqkHOirE/WYMPlxetVkfoF0hcV8DFYpXxIStq
- QNfCugZVdj1D5zerugv4tFPNgKJQXqg79asbpBsdZxKIfghzoNY11vt1l9f71Jh1+KTh
- DLbf76XIdUwjOjeIfiJaP2HudTIqhVKX99HOaPIUsSnrPkIW0lo8KBnthjyXMwyfA4uR
- mEohRlJ9ah2tJo/TDeCxh+1dh6rHL/1y/qbwTuz6C4sufwB+GrvV0615C4DmLOqop9q3
- i2Vw==
-X-Gm-Message-State: AO0yUKV8i7O4+Nw9L2F1JlTHP0hyTGbOALSHKeoBv1xKqrzN8IgcSdEy
- NU0kp0h+fJRa9kA2Ap+uG/P5B6lyeeY=
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9ABrUA5krIv7LfvsXEqxczxaHvxnH2HruiF60Riq0HE=;
+ b=XzAnbDIWvc0o2XQAp77vpiu4e951UD55fCxrOEYDzGXvU3yJ0wrpQvnnMugbow/zdH
+ jiaNhctRBi8b2frDCHOty239+VeSLAey8WShWx8FKn3/XfY+FFk6UCq9dzibfFBJ8iwp
+ lQU+xV1mG6KaBnF9trl5mmVDg9fmDZYrIuapgGVAmzCvevM35l+psk876GC3cjwYCNp3
+ i+7dErYkjo9V9MqZtXpbT4PtVIaeR0a2k9dw0EFtGGNnxT7WWWVYp1tRDPJba8v9F5uq
+ W9XxAIo1nbGC8PbZ9Xs3ZuXszh50c88d8IOObAYa2aW2gXDeBL3jsu9PbzBpw1ElSJRZ
+ fUQQ==
+X-Gm-Message-State: AO0yUKVJTU/YW2Hjn1/oy70wbek0YgM40wzLVPM0AxK4iAUAuaM3UPdB
+ k7B9YqkE6mubcivgBms9vlyHSJhVGcA=
 X-Received: from titusr.c.googlers.com ([fda3:e722:ac3:cc00:14:4d90:c0a8:22b8])
- (user=titusr job=sendgmr) by 2002:a0d:f044:0:b0:527:ad97:a05f with SMTP id
- z65-20020a0df044000000b00527ad97a05fmr40981ywe.88.1675712983441; Mon, 06 Feb
- 2023 11:49:43 -0800 (PST)
-Date: Mon,  6 Feb 2023 19:49:33 +0000
+ (user=titusr job=sendgmr) by 2002:a25:dc6:0:b0:89a:3c0a:d6de with SMTP id
+ 189-20020a250dc6000000b0089a3c0ad6demr0ybn.11.1675712986886; Mon, 06 Feb 2023
+ 11:49:46 -0800 (PST)
+Date: Mon,  6 Feb 2023 19:49:36 +0000
+In-Reply-To: <20230206194936.168843-1-titusr@google.com>
 Mime-Version: 1.0
+References: <20230206194936.168843-1-titusr@google.com>
 X-Mailer: git-send-email 2.39.1.519.gcb327c4b5f-goog
-Message-ID: <20230206194936.168843-1-titusr@google.com>
-Subject: [PATCH 0/3] PCA I2C GPIO expanders
+Message-ID: <20230206194936.168843-4-titusr@google.com>
+Subject: [PATCH 3/3] hw/gpio: add PCA9536 i2c gpio expander
 From: Titus Rwantare <titusr@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Titus Rwantare <titusr@google.com>
+ Titus Rwantare <titusr@google.com>, Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=311nhYwYKCjYlalmkjYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--titusr.bounces.google.com;
- helo=mail-yw1-x1149.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=32lnhYwYKCjkodopnmbjjbgZ.XjhlZhp-YZqZgijibip.jmb@flex--titusr.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,44 +119,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Su5aXAvCoq7w
+X-TUID: TPEty3Y1FDbv
 
-This patch series contains a set of i2c GPIO expanders,
-with support for 4, 8, and 16 GPIO connections.
+This device has the same register layout as the pca9538, but 4 fewer
+gpio pins. This commit lowers the number of pins intialised, and reuses
+the pca9539 logic.
 
-The devices are configured as GPIO outputs by default, but can have pins
-configured to be inputs with qmp commands.
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Signed-off-by: Titus Rwantare <titusr@google.com>
+---
+ hw/gpio/pca_i2c_gpio.c         | 22 ++++++++++++++++++++++
+ include/hw/gpio/pca_i2c_gpio.h |  2 ++
+ 2 files changed, 24 insertions(+)
 
-For example, the following snippet in a board file for a system,
-configures a 16 bit pca6416 to have pins 8-11 as inputs, then asserts
-them.
-
-    dev = DEVICE(i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 3), "pca6416", 0x72));
-    object_property_set_uint(OBJECT(dev), "gpio_config", 0x0F00, &error_abort);
-    object_property_set_uint(OBJECT(dev), "gpio_input", 0x0F00, &error_abort);
-
-We currently use these to test hardware presence and LEDs in simulation.
-
-Thanks
-
-Titus Rwantare (3):
-  hw/gpio: add PCA6414 i2c GPIO expander
-  hw/gpio: add PCA9538 8-bit GPIO expander
-  hw/gpio: add PCA9536 i2c gpio expander
-
- hw/arm/Kconfig                  |   1 +
- hw/gpio/meson.build             |   1 +
- hw/gpio/pca_i2c_gpio.c          | 482 ++++++++++++++++++++++++++++++++
- hw/gpio/trace-events            |   5 +
- hw/i2c/Kconfig                  |   4 +
- include/hw/gpio/pca_i2c_gpio.h  |  81 ++++++
- tests/qtest/meson.build         |   1 +
- tests/qtest/pca_i2c_gpio-test.c | 169 +++++++++++
- 8 files changed, 744 insertions(+)
- create mode 100644 hw/gpio/pca_i2c_gpio.c
- create mode 100644 include/hw/gpio/pca_i2c_gpio.h
- create mode 100644 tests/qtest/pca_i2c_gpio-test.c
-
+diff --git a/hw/gpio/pca_i2c_gpio.c b/hw/gpio/pca_i2c_gpio.c
+index f77d8d7e84..66dd1d3369 100644
+--- a/hw/gpio/pca_i2c_gpio.c
++++ b/hw/gpio/pca_i2c_gpio.c
+@@ -414,6 +414,23 @@ static void pca9538_gpio_class_init(ObjectClass *klass, void *data)
+     pc->num_pins = PCA9538_NUM_PINS;
+ }
+ 
++static void pca9536_gpio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
++    PCAGPIOClass *pc = PCA_I2C_GPIO_CLASS(klass);
++
++    dc->desc = "PCA9536 4-bit I/O expander";
++    dc->realize = pca_i2c_realize;
++    dc->vmsd = &vmstate_pca_i2c_gpio;
++
++    k->event = pca_i2c_event;
++    k->recv = pca9538_recv;
++    k->send = pca9538_send;
++
++    pc->num_pins = PCA9536_NUM_PINS;
++}
++
+ static void pca_i2c_gpio_init(Object *obj)
+ {
+     PCAGPIOState *ps = PCA_I2C_GPIO(obj);
+@@ -455,6 +472,11 @@ static const TypeInfo pca_gpio_types[] = {
+     .parent = TYPE_PCA_I2C_GPIO,
+     .class_init = pca9538_gpio_class_init,
+     },
++    {
++    .name = TYPE_PCA9536_GPIO,
++    .parent = TYPE_PCA_I2C_GPIO,
++    .class_init = pca9536_gpio_class_init,
++    },
+ };
+ 
+ DEFINE_TYPES(pca_gpio_types);
+diff --git a/include/hw/gpio/pca_i2c_gpio.h b/include/hw/gpio/pca_i2c_gpio.h
+index 8cd268e8f0..3d2a88ba7b 100644
+--- a/include/hw/gpio/pca_i2c_gpio.h
++++ b/include/hw/gpio/pca_i2c_gpio.h
+@@ -19,6 +19,7 @@
+ 
+ #define PCA6416_NUM_PINS         16
+ #define PCA9538_NUM_PINS         8
++#define PCA9536_NUM_PINS         4
+ 
+ typedef struct PCAGPIOClass {
+     I2CSlaveClass parent;
+@@ -75,5 +76,6 @@ OBJECT_DECLARE_TYPE(PCAGPIOState, PCAGPIOClass, PCA_I2C_GPIO)
+ 
+ #define TYPE_PCA6416_GPIO "pca6416"
+ #define TYPE_PCA9538_GPIO "pca9538"
++#define TYPE_PCA9536_GPIO "pca9536"
+ 
+ #endif
 -- 
 2.39.1.519.gcb327c4b5f-goog
 

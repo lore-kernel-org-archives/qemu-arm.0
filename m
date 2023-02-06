@@ -1,178 +1,246 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4362314ejb;
-        Mon, 6 Feb 2023 08:42:34 -0800 (PST)
-X-Google-Smtp-Source: AK7set9+7XUZkCAsUM/jmYvyCiYg1fPfotqHkssvAh7er3CGOpUbjRDhOOCqlsV822T1Qr+jbOD+
-X-Received: by 2002:a17:906:53d5:b0:88c:8c2e:af17 with SMTP id p21-20020a17090653d500b0088c8c2eaf17mr19034704ejo.2.1675701754669;
-        Mon, 06 Feb 2023 08:42:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675701754; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4606597ejb;
+        Mon, 6 Feb 2023 13:55:13 -0800 (PST)
+X-Google-Smtp-Source: AK7set/qASBNXb5uY1HQQWPc2OJybWPOHOdnO3KcDDp4x+ZaxdAPVpJlYt1zHYav2yniZj3FOWwD
+X-Received: by 2002:ad4:5ba7:0:b0:538:861f:cff1 with SMTP id 7-20020ad45ba7000000b00538861fcff1mr691809qvq.48.1675720513712;
+        Mon, 06 Feb 2023 13:55:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675720513; cv=none;
         d=google.com; s=arc-20160816;
-        b=spPxQ3XruuafN7+ssF23jHYJJ+1npLdGqkDEr61qAtcQtgAjf0WvL6vXFzxpVpiiQt
-         uariWvGg9vIBNMboEoHXRuEA3b1SiYB/2KDRBjpmkoBc6E22apzAEYnGCFppHvI2L3Sk
-         yQMvbWbvuKsnj346dLpQbHwQ6CTh21EKweOIC5DMftFCMkMrogTEapOhljF0nYdbVJeZ
-         /oj9aN+56rclBNJAhq8KSyT0g9ihbL/c7MM5t50vVtkSaLZnh6VdPXx2FQ1yN6r7eqwK
-         lESTHlPe8magoNIkwYHuFVBX8qikin5K6vIpL49v/X1i+u3xKUX6JZKsD7kKLwW6CYVA
-         PmNw==
+        b=Ec6cgQQwkZS8kBCrd8BMWWuH93iHbdBlxq55DuPR5TPOmNbqB0JbXqPoZgBrV1oQoY
+         YUvAmn3bMn36Pe1Ugr6zvzOKu4OIs7tcEwd1NoBEIb+YB52S4j4QWHoJV214RmKHSMbq
+         /+qU3n1vtFz385wLYiCC/a7hybfhRP/PF37l+SrExGHJ0I85SS3qjQebHOuJ5Ihvqeqo
+         nUTUmtMU/OeQrn7pUdYDy0gzJE2upk1+gvEoT11ZizFCyodyTOz99+6OEzL2KzhNmaE2
+         iqgl1bYL1WFp2Xczn6zUFP+9L/OdDnCRg6cyOsIkjcIz2A1MEGWb3gNEi5Kd3arkV6Fy
+         xIjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=3ZLYf3PX0CAzEdb+eEBhMmy2mWJ/blmVpnhmvUTfE2M=;
-        b=FVRlmTbxRWhC3xpR5a8uMtJlhNG9sVaZI+QymQ270wtUCH34ybWM4EkHR4c8sMieW5
-         hbgHhQhuyyCwt7NfBZJPsczD+Y0Xp8KjzqozBMqUiPQZsYnMcRW2onHbiViYytTZAvVZ
-         yDnVzhEvqVKmzeWKriTV5DDQL56XoRbBBn9QpDM/Z2CMfQXfQ9tPkPuz10sbrcZOVr6+
-         qg8oHtJV/ZlIwP8G0q3H+wjC4zFcP3EM+064Dlg84BWSTCOgA6VxKCLkSwTet/yPMYeG
-         Sjaj1hNmUP8j1vMVp3amlYuJOavOCwBvFloJgn3cAVdAEn3RU86TtvfiFjOSbQ9AB0nS
-         j9fQ==
+        bh=ow7po2z9ElD+3JPhAM/K8HeZBhqp6LKr7z+KmBl5HUg=;
+        b=YaIRNi8zFm6yV2U1PFkvzl4DJMIlb258ejpu/4+yPTZ94/WfSBsV/p9VFXkgu4rdHm
+         xvqoS8UhqKSbTpoYz6vXXxbt92h4afPBUR9S8tEBiDx4HLwfGytJEK1oYUamiAwoatkk
+         RHvlB506pSiziT/AmLFVVFwM+zCF2Ho9ywnIWSWBZqFdIXJlU1i86PnKwe5VpzLYUfIb
+         oRSBqtDEw8axZ1FCDIDD00mYw9uufx81UG6Ue9rsDiqX+ZcdC/lvzgqKAxVy6jA8R9Ie
+         i9iNIxWc3AJD8mHEhstVCHrbEOSzHe0K7l+X8Ud20wZKFd4d5tQqnPGMjjOVQ8lRiXzx
+         C11g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UZ+uT6Fi;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id ge14-20020a170907908e00b00888768d4d0fsi11392340ejb.110.2023.02.06.08.42.34;
-        Mon, 06 Feb 2023 08:42:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=BcdJS5Li;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u13-20020a0c8dcd000000b0056c00ac422csi1672130qvb.166.2023.02.06.13.55.13
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 06 Feb 2023 13:55:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UZ+uT6Fi;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230216AbjBFQmd (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 3 others); Mon, 6 Feb 2023 11:42:33 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:49716 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S230214AbjBFQmc (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 6 Feb 2023 11:42:32 -0500
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 026AE279AF
-        for <kvm@vger.kernel.org>; Mon,  6 Feb 2023 08:41:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1675701706;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=3ZLYf3PX0CAzEdb+eEBhMmy2mWJ/blmVpnhmvUTfE2M=;
-        b=UZ+uT6FifBR6tMy7lbIPrAxFn9AQk98LU9eLU5zbIIVZ80kT/d/lJoTJ5/cGJqgzXGn///
-        ov2oiFqgdvEUC034QAVEmbmrz5iTotqr2HJEMMnXQ5Kn0RqBbjhPPU4zj1awOFXQCECrtj
-        yHK3dOKeXh6cgR5RC8GGMqhFZDVeDlA=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-149-3JBlDAU1OuedaV-ApOxlIg-1; Mon, 06 Feb 2023 11:41:42 -0500
-X-MC-Unique: 3JBlDAU1OuedaV-ApOxlIg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8261F3847980;
-        Mon,  6 Feb 2023 16:41:41 +0000 (UTC)
-Received: from localhost (dhcp-192-239.str.redhat.com [10.33.192.239])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 237B940CF8E2;
-        Mon,  6 Feb 2023 16:41:35 +0000 (UTC)
-From:   Cornelia Huck <cohuck@redhat.com>
-To:     Richard Henderson <richard.henderson@linaro.org>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Thomas Huth <thuth@redhat.com>,
-        Laurent Vivier <lvivier@redhat.com>
-Cc:     qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
-        Eric Auger <eauger@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Juan Quintela <quintela@redhat.com>,
-        Gavin Shan <gshan@redhat.com>,
-        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH v5 2/3] arm/kvm: add support for MTE
-In-Reply-To: <da118de5-adcd-ec0c-9870-454c3741a4ab@linaro.org>
-Organization: Red Hat GmbH
-References: <20230203134433.31513-1-cohuck@redhat.com>
- <20230203134433.31513-3-cohuck@redhat.com>
- <da118de5-adcd-ec0c-9870-454c3741a4ab@linaro.org>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date:   Mon, 06 Feb 2023 17:41:33 +0100
-Message-ID: <874jryn3uq.fsf@redhat.com>
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=BcdJS5Li;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pP9Ri-0000yz-T9; Mon, 06 Feb 2023 16:54:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pP9Rf-0000xJ-Jw; Mon, 06 Feb 2023 16:54:40 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pP9Rc-0004eC-PE; Mon, 06 Feb 2023 16:54:38 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=ow7po2z9ElD+3JPhAM/K8HeZBhqp6LKr7z+KmBl5HUg=; b=BcdJS5LiGPDK5tnB4baqjgYbHb
+ xIO+DvdqBMK+JiUTmrCHKFVA8XJma9v0FBl7Eg5qA1m7HS8kG/olPe5OfB/X6iKMLT044dXZif8J+
+ yanamyS1HJPlu0FcPhidpIFK6xvR1G6PieqT8Uq2U4hFhzJ1ljOif+MU80otXSbc1oiusgU+3308j
+ hu61tcTzR2aVUClvUUlgR0mU228u4KP0h1uZObiJhnW0rq0WW7FL35a8PsbvOZ84LIOsk4xkJDAlY
+ roVnId2jgO+sOafudFh6MsEZYi648eATo+D80qf+3azKjilzUUQioFiktjTYyrDY3b7lBexGlslmD
+ nN2KYE6JYX37xZldm+xAGuCYSRwG+6/zPTfyvPFMpBsgNePmfoF4gvfHhPeXWlnQ3r4LePAb3fO8X
+ 83v8nqCZ6NslHyWaQb9TMERjSQR9S6qecIJGzoDK3mRCTkoyMOrvIlXD085PzaivqCNoCQfGOQcwr
+ C8SwVBB8W5heZJLK0/fqlM+JVQZxg/bnvxI177MvuPB7FKXfEIBTSSAvcdQi5O3Lq55ISs1ZNLdqJ
+ VJdvTdnI/s29WEUYS9xUb325jyCQm434Fp9s/6jdIl2Cnx0wVxN02ncnGdtnZHDrRNn5wr6oPeu4R
+ ySntHGWPgjbG5JP7f51lHcs973YjLFjHVukDXREp4=;
+Received: from [2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pP9R4-00035a-4Q; Mon, 06 Feb 2023 21:54:02 +0000
+Message-ID: <8c7cfd90-e2aa-a6ff-506d-f3a5d24622b6@ilande.co.uk>
+Date: Mon, 6 Feb 2023 21:54:26 +0000
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        RCVD_IN_MSPIKE_H2,SPF_HELO_NONE,SPF_NONE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 1C4C1k/oWAQI
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, Eduardo Habkost
+ <eduardo@habkost.net>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20230203113650.78146-1-philmd@linaro.org>
+ <e30899d3-06b5-645e-3f42-c99631b5a53a@ilande.co.uk>
+ <46f52043-368c-e153-2d02-ba30220685dd@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <46f52043-368c-e153-2d02-ba30220685dd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 0/9] hw: Use QOM alias properties and few QOM/QDev cleanups
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PYanISTKXzD8
 
-On Fri, Feb 03 2023, Richard Henderson <richard.henderson@linaro.org> wrote:
+On 06/02/2023 15:27, Philippe Mathieu-Daudé wrote:
 
-> On 2/3/23 03:44, Cornelia Huck wrote:
->> +static inline bool arm_machine_has_tag_memory(void)
->> +{
->> +#ifndef CONFIG_USER_ONLY
->> +    Object *obj = object_dynamic_cast(qdev_get_machine(), TYPE_VIRT_MACHINE);
->> +
->> +    /* so far, only the virt machine has support for tag memory */
->> +    if (obj) {
->> +        VirtMachineState *vms = VIRT_MACHINE(obj);
->
-> VIRT_MACHINE() does object_dynamic_cast_assert, and we've just done that.
->
-> As this is startup, it's not the speed that matters.  But it does look unfortunate.  Not 
-> for this patch set, but perhaps we ought to add TRY_OBJ_NAME to DECLARE_INSTANCE_CHECKER?
+> On 6/2/23 00:29, Mark Cave-Ayland wrote:
+>> On 03/02/2023 11:36, Philippe Mathieu-Daudé wrote:
+>>
+>>> These patches are extracted from a QOM/QDev refactor series,
+>>> so they are preliminary cleanups noticed while working on it:
+>>>
+>>> - Use correct type when calling qdev_prop_set_xxx()
+>>> - Unify some qdev properties in MIPS models
+>>> - Replace intermediate properties by link properties
+>>> - Remove DEFINE_PROP_DMAADDR() macro which is used one time
+>>> - Use qdev_realize_and_unref() instead of open-coding it
+>>>
+>>> Philippe Mathieu-Daudé (9):
+>>>    hw/i386/sgx: Do not open-code qdev_realize_and_unref()
+>>>    hw/ppc/sam460ex: Correctly set MAL properties
+>>>    hw/arm/nrf51: QOM-alias 'flash-size' property in SoC object
+>>>    hw/arm/fsl-imx: QOM-alias 'phy-num' property in SoC object
+>>>    hw/usb/hcd-ohci: Include missing 'sysbus.h' header
+>>>    hw/display/sm501: QOM-alias 'dma-offset' property in chipset object
+>>>    hw/qdev: Remove DEFINE_PROP_DMAADDR() and 'hw/qdev-dma.h'
+>>>    hw/mips: Declare all length properties as unsigned
+>>>    hw/mips/itu: Pass SAAR using QOM link property
+>>>
+>>>   hw/arm/fsl-imx25.c           |  3 +--
+>>>   hw/arm/fsl-imx6.c            |  3 +--
+>>>   hw/arm/fsl-imx6ul.c          |  8 ++++----
+>>>   hw/arm/fsl-imx7.c            | 12 ++++++------
+>>>   hw/arm/microbit.c            |  5 ++++-
+>>>   hw/arm/nrf51_soc.c           | 10 +---------
+>>>   hw/display/sm501.c           | 22 +++++++++++-----------
+>>>   hw/i386/sgx.c                |  5 ++---
+>>>   hw/intc/mips_gic.c           |  4 ++--
+>>>   hw/mips/boston.c             |  2 +-
+>>>   hw/mips/cps.c                | 35 ++++++++++++-----------------------
+>>>   hw/mips/malta.c              |  2 +-
+>>>   hw/misc/mips_cmgcr.c         |  2 +-
+>>>   hw/misc/mips_itu.c           | 30 ++++++++++++++++++++----------
+>>>   hw/nvram/nrf51_nvm.c         |  6 +++++-
+>>>   hw/ppc/sam460ex.c            |  4 ++--
+>>>   hw/sh4/r2d.c                 |  2 +-
+>>>   hw/usb/hcd-ohci-pci.c        |  1 -
+>>>   hw/usb/hcd-ohci.c            |  3 +--
+>>>   hw/usb/hcd-ohci.h            |  1 +
+>>>   include/hw/arm/fsl-imx25.h   |  1 -
+>>>   include/hw/arm/fsl-imx6.h    |  1 -
+>>>   include/hw/arm/fsl-imx6ul.h  |  2 --
+>>>   include/hw/arm/fsl-imx7.h    |  1 -
+>>>   include/hw/arm/nrf51_soc.h   |  1 -
+>>>   include/hw/intc/mips_gic.h   |  4 ++--
+>>>   include/hw/misc/mips_cmgcr.h |  2 +-
+>>>   include/hw/misc/mips_itu.h   |  9 ++++-----
+>>>   include/hw/qdev-dma.h        | 16 ----------------
+>>>   29 files changed, 84 insertions(+), 113 deletions(-)
+>>>   delete mode 100644 include/hw/qdev-dma.h
+>>
+>> I must admit to being slightly nervous about using QOM alias properties in this 
+>> way, simply because you start creating implicit dependencies between QOM objects. 
+>> How would this work when trying to build machines from configuration files and/or 
+>> the monitor? Or are the changes restricted to container devices i.e. those which 
+>> consist of in-built child devices?
+> 
+> The latter. All parents forward a property to a contained child.
+> 
+> The parent forwarding property is replaced by a link into the child,
+> so accessing the parent property transparently access the child one.
+> 
+> The dependencies are already explicit. We can not create a parent
+> without its children (the children creation is implicit when we
+> create the parent object).
+> 
+> I thought this was the canonical QOM alias properties use. What is
+> the normal use then?
 
-Instead of the pattern above, we could also do
+The problem I've found with this approach in the past is that it fails when you have 
+more than one child device of the same type.
 
-VirtMachineState *vms = (VirtMachineState *) object_dynamic_cast(...);
-if (vms) {
-(...)
+For example imagine the scenario where there is a QEMU device that contains 2 child 
+UARTs and each UART has a property to disable hardware handshaking: if you add a 
+property alias to the container device, it can only map to a single child UART. 
+Furthermore if you then try to alias the UART IRQs onto the container device using 
+qdev_pass_gpios(), then that also fails with 2 UARTs because the gpios from each UART 
+have the same property name.
+
+You could then think about solving that problem by using object_property_add_alias() 
+directly to specify a different property name for each UART's mapped property on the 
+container device, but then you end up accessing the child UART properties with 
+different names, but only when using that particular parent container device(!).
+
+For this reason I've tended to avoid aliases and setup child objects from the 
+container like this:
+
+    static void container_init(Object *obj)
+    {
+        object_initialize_child(obj, "uart0", &s->uart0, TYPE_UART);
+        object_initialize_child(obj, "uart1", &s->uart1, TYPE_UART);
+    }
+
+And then when configuring the board it is possible to obtain the UART references like 
+this:
+
+    uart0 = UART(object_resolve_path_component(OBJECT(container), "uart0"));
+    irq0 = qdev_connect_gpio_out(DEVICE(uart0), 0, ... );
+
+    uart1 = UART(object_resolve_path_component(OBJECT(container), "uart1"));
+    irq1 = qdev_connect_gpio_out(DEVICE(uart1), 0, ... );
+
+This allows all UART configuration to be done in the same way regardless of the 
+parent container device and number of child devices, and without having to think 
+about using different property names depending upon the container device.
+
+One place where it could conceivably be useful is where you have a chip modelled as a 
+device and you want to expose the memory regions and IRQs to an interface such as 
+ISA, but often even that doesn't work (think PCI IRQs for example).
+
+The only valid use cases I can think of are the /rtc property (which is an alias to 
+the RTC device, regardless of where it exists in the QOM tree) and perhaps in future 
+adding similar array aliases to the root of the machine that can point to things like 
+block devices, network devices, chardevs and audio devices (i.e. anything that has a 
+corresponding QEMU backend).
 
 
->
->> +void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp)
->> +{
->> +    bool enable_mte;
->> +
->> +    switch (cpu->prop_mte) {
->> +    case ON_OFF_AUTO_OFF:
->> +        enable_mte = false;
->> +        break;
->> +    case ON_OFF_AUTO_ON:
->> +        if (tcg_enabled()) {
->> +            if (cpu_isar_feature(aa64_mte, cpu)) {
->> +                if (!arm_machine_has_tag_memory()) {
->> +                    error_setg(errp, "mte=on requires tag memory");
->> +                    return;
->> +                }
->> +            } else {
->> +                error_setg(errp, "mte not supported by this CPU type");
->> +                return;
->> +            }
->> +        }
->> +        if (kvm_enabled() && !kvm_arm_mte_supported()) {
->> +            error_setg(errp, "mte not supported by kvm");
->> +            return;
->> +        }
->> +        enable_mte = true;
->> +        break;
->
-> What's here is not wrong, but maybe better structured as
->
-> 	enable_mte = true;
->          if (qtest_enabled()) {
->              break;
->          }
->          if (tcg_enabled()) {
->              if (arm_machine_tag_mem) {
->                  break;
->              }
->              error;
->              return;
->          }
->          if (kvm_enabled() && kvm_arm_mte_supported) {
->              break;
->          }
->          error("mte not supported by %s", current_accel_type());
->          return;
+ATB,
 
-That's indeed better, as we also see what's going on for the different
-accelarators.
-
-> We only add the property for tcg via -cpu max, so the isar check is redundant.
+Mark.

@@ -1,132 +1,117 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4456961ejb;
-        Mon, 6 Feb 2023 10:24:06 -0800 (PST)
-X-Google-Smtp-Source: AK7set/1s8WY+qaBD28CQm7z9C9r0ZjxwJvwk2IdltSYJphxH7DsJv1UXEMLHlMacsblpSFm3eBL
-X-Received: by 2002:ac8:578c:0:b0:3b9:b668:6baa with SMTP id v12-20020ac8578c000000b003b9b6686baamr484089qta.19.1675707846261;
-        Mon, 06 Feb 2023 10:24:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675707846; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4635739ejb;
+        Mon, 6 Feb 2023 14:28:06 -0800 (PST)
+X-Google-Smtp-Source: AK7set+FuadOCPEuD23GaqKevGs6wni8JH7jORWy72QapG14LD+A2YqPzTpu8Dc4jcmAv/DEEGiX
+X-Received: by 2002:a05:622a:1447:b0:3ae:ee82:33b7 with SMTP id v7-20020a05622a144700b003aeee8233b7mr1773059qtx.5.1675722486354;
+        Mon, 06 Feb 2023 14:28:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675722486; cv=none;
         d=google.com; s=arc-20160816;
-        b=rYndyNiQMJ9qdUutdm0Qb3nxVBa4WwZ3yERj8UofFib3m+tBtrvbhglDVjpY1owuNH
-         cso0tMWkdocv4esqpfFMJH/76pycGOoYScCoiJC4WTvnKOFnrnhRrORsnV1q3rMd85at
-         Fx3Hmg5yzs9PJCUjxLfo2L3fRv3rK5kmRyYXVg/n0dhncww1r0pS0w+GCZ8yHzB0bshw
-         p5KDMq6ma78R39GMcNCITl+UQ9Ecpf4Iz+ml8/iPfhw4qhTzRP8+L0uE+bm6ZLPDcYFa
-         Lqi+983KhgKsb6c+wH7oDncc4OlEhlBuorf3c2NzC8glTMn5g632nrBhrlyfOZCC5rin
-         CQ0g==
+        b=phgJf6vN/M2vHioFb1BwxvjGueVS4pt6XQv+z3APMPFkA/1S/rH+pZyhnzmyI5djpt
+         FasAcPqcDKwvbpanQlfBN6z2yEc9kEr2hLmXkrtGLAq0KRTwfWgRVCxApe7gvGPUybB8
+         /cI5HWUibNSqo0b8GH/L809cmSf31qIXQCr0bsDax9Mb3RURIl4p9lJvYRrWz8ajLe1X
+         vSdJxYrOYgLgeoXZIA75Rq/0n+QjKzxYkcOhCV2gCQZDQY4Q8twKQVjL4DQCt4NFhifD
+         8ldXueCZ255viz5QaeTH4WlJBH7gRDj/eTJJrnoL6HHDvcp8gWcyuvnFmym+kDDl0O3v
+         jdRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=FWuHJM2vrIVPSRC7Cm3a4a5SQKoCxaLOmsMZq298YuY=;
-        b=r/LhcuXRfj5kkHL7JOZjelds5RxJLWGgHcjuAE+7pXs+f3W1ebEioJOSqMTnQMu79e
-         5/TiM+IfMh6H0F0p1Pxe0qA7Sx7aaeX2EeeKQAO1CQ6ZpbkaxHddm1yctq243iNm4pG5
-         vcIZFIRc9OvqVY8CfacQqnV1fibxVdcOwj3xNjx02tPhSz/OB2TQ0avcEGODwq4uYVLw
-         Tb/ZqZMHOx0hQlYuMQXT+UOAu8Ks8Wcj7t7CzuKCzhsoVE1SPrS23F5GIeJz/DAZuAJ2
-         vZA9zR1dNvjmFfdnhEcWPtkjcsBatyHKSckBkiRITVBmJ+c5JSKAr1VoFwI9/P5T/fUC
-         5edw==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=9DXq4G9rF8gTjgKl9AteOtmUj46JKtMp/pXGKZh7P0M=;
+        b=zUjk6p0yTWS02v7ba+afjwDKQvUPnOPOGFCCqeRPpJIT4aM5LI2mNxzYcxhTEW0R/2
+         fIbT1O/4i0I99e3APH1mtHj2vehVLy+NIVroJ03o8YuDczgpwdVr/Q7dChNjl1n5MY6D
+         CpkJs/tqFPN8qquAt+81WWbmvJPODy3XOZ0SNUAMEiYpuJoW6L5MxbODeWWllZ+5GNpH
+         AJNayMQjgYkimTZV/soIySewRt2uRgdcgKmwE5z7pTj8X+54VKzaDewe1q4+87jPbOoy
+         oMetgCvjz4ZhnRkj9LmEEXmh67xerhdQf/0B/8+ITFGgsGPMYs6I+qWUDLEFw0Bit/kp
+         7UsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gpMsgXNm;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=niJClOte;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h1-20020ac87d41000000b003b68e9d252csi8272182qtb.585.2023.02.06.10.24.06
+        by mx.google.com with ESMTPS id p15-20020a05622a13cf00b003ad2c69a429si9444833qtk.275.2023.02.06.14.28.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Feb 2023 10:24:06 -0800 (PST)
+        Mon, 06 Feb 2023 14:28:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gpMsgXNm;
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=niJClOte;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pP69V-0000gF-Ma; Mon, 06 Feb 2023 13:23:41 -0500
+	id 1pP9xv-0008A7-JQ; Mon, 06 Feb 2023 17:28:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1pP69R-0000f6-RM
- for qemu-arm@nongnu.org; Mon, 06 Feb 2023 13:23:39 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1pP69N-0000Di-Cg
- for qemu-arm@nongnu.org; Mon, 06 Feb 2023 13:23:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675707810;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FWuHJM2vrIVPSRC7Cm3a4a5SQKoCxaLOmsMZq298YuY=;
- b=gpMsgXNmHb3CL05dDjGi+Kd9MVGIrCB8QGGfadPVEawUFu4QAxBLaBo3z1JjgGHrkwpImH
- rddJaxi4ZdihUpKZm3+4EQfkw4xM2enHgx+jhN8lBL4+XbT79tqzJuvE0xJw/7Z4GjkalT
- eJUK/x7n3Yw0Fq6faNc+4W9cagZC0IU=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-647-sgapDYzNO_SvL1eldTc_jQ-1; Mon, 06 Feb 2023 13:23:23 -0500
-X-MC-Unique: sgapDYzNO_SvL1eldTc_jQ-1
-Received: by mail-qt1-f197.google.com with SMTP id
- s4-20020ac85284000000b003b849aa2cd6so6963522qtn.15
- for <qemu-arm@nongnu.org>; Mon, 06 Feb 2023 10:23:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1pP9xs-00089a-RK; Mon, 06 Feb 2023 17:27:56 -0500
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1pP9xo-00038e-5e; Mon, 06 Feb 2023 17:27:54 -0500
+Received: by mail-qt1-x831.google.com with SMTP id z5so14745512qtn.8;
+ Mon, 06 Feb 2023 14:27:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9DXq4G9rF8gTjgKl9AteOtmUj46JKtMp/pXGKZh7P0M=;
+ b=niJClOte7FtucTTnFmC8JEDkrZc2PdpqrOr71IRdanpcpiEj2p7N8wnbxY2nU6QYo6
+ TgRX6zJqCoRVeoHq6EcFl5/iN0saveajaRENvQi2Qku9F5fag+TqKA6s+QMNFr96Lv7w
+ 6qLnrBc8KHbg2vhFr4CtBrgUI1v8a6mrspz6foilSALNcJFa3nMPhpLwdiq3d2Cn+i7s
+ ex6idV2zZBmph9GaYtESPFBvG7Di6n+85BlwE4U1YMi9JrclqMOd18ZYzzVDrdazapFX
+ +xEb3IuoblaC7KRsziyfpkOc0gcopljBygWXuTuGYLe81uv7VIUh+VPjaQIc+MFsIOle
+ rozA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=FWuHJM2vrIVPSRC7Cm3a4a5SQKoCxaLOmsMZq298YuY=;
- b=43QfmbTFSXopj4wjmc9WEaIC+TBvAXcJNw7vl1/eedSnyjtQsCvKQnhJrDLZXp5yLQ
- nUQfpscKL0pEc/oVAdk+/LE1lWPO+nN5jiAMOsBBDlVB1DvJjELMK0eNtb1a7FQYcxjf
- Sxz1ogRJJWAGzRJZFCHRk11Apm/yfqc/aWWAvRiC9Eiq3OmgpohrgGHYrG28Fbz1m01z
- aWgpYgPqintgyLd/MsPkOysFKuG9tZwn0LV4I5qTUZWu0QVYrX3KNH4w8cN+3+ygXblw
- 39aAc6c1qA8kOWpXAu66HfR/1+uLcaiDAjeknHirJN8WnIsqBHosPgCUhBqxELD2CGLS
- 95/Q==
-X-Gm-Message-State: AO0yUKVlW4hYNvdjmmUS5MOkDbvRukzGcQHZ5sLS02J07GHZECJ6eMQ0
- BCtIewR6ra1b6iZV+mSVkmeTVgz0aH0A1EX9rtzCGXJFZ7PhGLKu95SlDlYvUCN+3HroKK6vdb5
- /GDoFqLpfC1o/
-X-Received: by 2002:ac8:5cce:0:b0:3b9:a777:3d9a with SMTP id
- s14-20020ac85cce000000b003b9a7773d9amr365565qta.44.1675707801077; 
- Mon, 06 Feb 2023 10:23:21 -0800 (PST)
-X-Received: by 2002:ac8:5cce:0:b0:3b9:a777:3d9a with SMTP id
- s14-20020ac85cce000000b003b9a7773d9amr365519qta.44.1675707800716; 
- Mon, 06 Feb 2023 10:23:20 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=9DXq4G9rF8gTjgKl9AteOtmUj46JKtMp/pXGKZh7P0M=;
+ b=RzJ+7WFu8WOc/I72DWhz18NoQG05RGpY0EBinRGC+YRMc1KUVy0CP0Lc4Y3cxN5MzZ
+ 7hJt6z6QEqSk/HpDoApe1lmw6/Dm1kAg5jRlZSiQTZHfZVG6ZYi7tgQj8xVifuqC1Mbf
+ XLOI53wmFUDD1SduHs4bK0uHbMunVhyseEK0RnrpZXflkNBKy4b7hGreA1rqyzfM7AFz
+ Cv1+XpRWQmhZh3Qg1E/UgSWcQrRAX/oaAMkemx96uTswd3avVmEmdQF0cCbAsoegSewG
+ Jx5yxFlZRpeEem6QFThsKdXb2pqrQRIfG2OIlx6S7BPQUo/QiJYL5JVVFr8m8k73YW/8
+ 5N3A==
+X-Gm-Message-State: AO0yUKXP+0Ga/mP8AnAFH0s/y5cG2kitDllXuziEyZ58PAbNcumGZYT9
+ 29PUeIZJBiP2nkjjKHzQqQ==
+X-Received: by 2002:ac8:5fce:0:b0:3b2:1003:37e5 with SMTP id
+ k14-20020ac85fce000000b003b2100337e5mr1523333qta.55.1675722470226; 
+ Mon, 06 Feb 2023 14:27:50 -0800 (PST)
+Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
  by smtp.gmail.com with ESMTPSA id
- l9-20020ae9f009000000b007069fde14a6sm7323856qkg.25.2023.02.06.10.23.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Feb 2023 10:23:19 -0800 (PST)
-Message-ID: <a7904d6e-c8e5-055b-34f7-8ea2956ec65f@redhat.com>
-Date: Mon, 6 Feb 2023 19:23:15 +0100
+ n13-20020ac81e0d000000b003b9a4a497a1sm8116228qtl.86.2023.02.06.14.27.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Feb 2023 14:27:49 -0800 (PST)
+Received: from minyard.net (unknown
+ [IPv6:2001:470:b8f6:1b:28be:e361:3303:837c])
+ by serve.minyard.net (Postfix) with ESMTPSA id 209CF1800E8;
+ Mon,  6 Feb 2023 22:27:48 +0000 (UTC)
+Date: Mon, 6 Feb 2023 16:27:46 -0600
+From: Corey Minyard <minyard@acm.org>
+To: Titus Rwantare <titusr@google.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Hao Wu <wuhaotsh@google.com>
+Subject: Re: [PATCH 1/3] hw/gpio: add PCA6414 i2c GPIO expander
+Message-ID: <Y+F+4nt79DPqL5BH@minyard.net>
+References: <20230206194936.168843-1-titusr@google.com>
+ <20230206194936.168843-2-titusr@google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [PATCH v5 3/3] qtests/arm: add some mte tests
-To: Cornelia Huck <cohuck@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Gavin Shan <gshan@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20230203134433.31513-1-cohuck@redhat.com>
- <20230203134433.31513-4-cohuck@redhat.com>
-From: Eric Auger <eauger@redhat.com>
-In-Reply-To: <20230203134433.31513-4-cohuck@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.148, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230206194936.168843-2-titusr@google.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::831;
+ envelope-from=tcminyard@gmail.com; helo=mail-qt1-x831.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,195 +124,728 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: minyard@acm.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eOC6fd5hOhFK
+X-TUID: oF29RSk4welY
 
-Hi,
-
-On 2/3/23 14:44, Cornelia Huck wrote:
-> Acked-by: Thomas Huth <thuth@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-
-Still as you need to respin I think adding a short commit msg wouldn't
-hurt ;-) Add new cpu MTE feature tests with TCG+virt tag memory and
-TCG-no tag memory (default) attempting to set cpu mte option on/off. No
-real test for KVM because ../..
-> ---
->  tests/qtest/arm-cpu-features.c | 75 ++++++++++++++++++++++++++++++++++
->  1 file changed, 75 insertions(+)
+On Mon, Feb 06, 2023 at 07:49:34PM +0000, Titus Rwantare wrote:
+> This is a simple i2c device that allows i2c capable devices to have
+> GPIOs.
 > 
-> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-> index 8691802950ca..c5dbf66e938a 100644
-> --- a/tests/qtest/arm-cpu-features.c
-> +++ b/tests/qtest/arm-cpu-features.c
-> @@ -22,6 +22,7 @@
+> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> Signed-off-by: Titus Rwantare <titusr@google.com>
+> ---
+>  hw/arm/Kconfig                  |   1 +
+>  hw/gpio/meson.build             |   1 +
+>  hw/gpio/pca_i2c_gpio.c          | 362 ++++++++++++++++++++++++++++++++
+>  hw/gpio/trace-events            |   5 +
+>  hw/i2c/Kconfig                  |   4 +
+>  include/hw/gpio/pca_i2c_gpio.h  |  72 +++++++
+>  tests/qtest/meson.build         |   1 +
+>  tests/qtest/pca_i2c_gpio-test.c | 169 +++++++++++++++
+>  8 files changed, 615 insertions(+)
+>  create mode 100644 hw/gpio/pca_i2c_gpio.c
+>  create mode 100644 include/hw/gpio/pca_i2c_gpio.h
+>  create mode 100644 tests/qtest/pca_i2c_gpio-test.c
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 2d157de9b8..1b533ddd76 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -418,6 +418,7 @@ config NPCM7XX
+>      select SSI
+>      select UNIMP
+>      select PCA954X
+> +    select PCA_I2C_GPIO
 >  
->  #define MACHINE     "-machine virt,gic-version=max -accel tcg "
->  #define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
-> +#define MACHINE_MTE "-machine virt,gic-version=max,mte=on -accel tcg "
->  #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
->                      "  'arguments': { 'type': 'full', "
->  #define QUERY_TAIL  "}}"
-> @@ -156,6 +157,18 @@ static bool resp_get_feature(QDict *resp, const char *feature)
->      g_assert(qdict_get_bool(_props, feature) == (expected_value));     \
->  })
->  
-> +#define resp_assert_feature_str(resp, feature, expected_value)         \
-> +({                                                                     \
-> +    QDict *_props;                                                     \
-> +                                                                       \
-> +    g_assert(_resp);                                                   \
-> +    g_assert(resp_has_props(_resp));                                   \
-> +    _props = resp_get_props(_resp);                                    \
-> +    g_assert(qdict_get(_props, feature));                              \
-> +    g_assert_cmpstr(qdict_get_try_str(_props, feature), ==,            \
-> +                    expected_value);                                   \
-> +})
-> +
->  #define assert_feature(qts, cpu_type, feature, expected_value)         \
->  ({                                                                     \
->      QDict *_resp;                                                      \
-> @@ -166,6 +179,16 @@ static bool resp_get_feature(QDict *resp, const char *feature)
->      qobject_unref(_resp);                                              \
->  })
->  
-> +#define assert_feature_str(qts, cpu_type, feature, expected_value)     \
-> +({                                                                     \
-> +    QDict *_resp;                                                      \
-> +                                                                       \
-> +    _resp = do_query_no_props(qts, cpu_type);                          \
-> +    g_assert(_resp);                                                   \
-> +    resp_assert_feature_str(_resp, feature, expected_value);           \
-> +    qobject_unref(_resp);                                              \
-> +})
-> +
->  #define assert_set_feature(qts, cpu_type, feature, value)              \
->  ({                                                                     \
->      const char *_fmt = (value) ? "{ %s: true }" : "{ %s: false }";     \
-> @@ -177,6 +200,17 @@ static bool resp_get_feature(QDict *resp, const char *feature)
->      qobject_unref(_resp);                                              \
->  })
->  
-Not really related to your series but those macros become increasingly
-difficult to follow. Especially the feature param versus format that are
-partly redundant look weird: "mte", "off", "{ 'mte': 'off' }
+>  config FSL_IMX25
+>      bool
+> diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+> index b726e6d27a..1e5b602002 100644
+> --- a/hw/gpio/meson.build
+> +++ b/hw/gpio/meson.build
+> @@ -12,3 +12,4 @@ softmmu_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_gpio.c'))
+>  softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_gpio.c'))
+>  softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c'))
+>  softmmu_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'))
+> +softmmu_ss.add(when: 'CONFIG_PCA_I2C_GPIO', if_true: files('pca_i2c_gpio.c'))
+> diff --git a/hw/gpio/pca_i2c_gpio.c b/hw/gpio/pca_i2c_gpio.c
+> new file mode 100644
+> index 0000000000..afae497a22
+> --- /dev/null
+> +++ b/hw/gpio/pca_i2c_gpio.c
+> @@ -0,0 +1,362 @@
+> +/*
+> + * NXP PCA I2C GPIO Expanders
+> + *
+> + * Low-voltage translating 16-bit I2C/SMBus GPIO expander with interrupt output,
+> + * reset, and configuration registers
+> + *
+> + * Datasheet: https://www.nxp.com/docs/en/data-sheet/PCA6416A.pdf
+> + *
+> + * Copyright 2023 Google LLC
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + *
+> + * These devices, by default, are configured to input only. The configuration is
 
-Starting adding comments may help the reading.
-> +#define assert_set_feature_str(qts, cpu_type, feature, value, _fmt)    \
-> +({                                                                     \
-> +    const char *__fmt = _fmt;                                          \
-> +    QDict *_resp;                                                      \
-> +                                                                       \
-> +    _resp = do_query(qts, cpu_type, __fmt, feature);                   \
-> +    g_assert(_resp);                                                   \
-> +    resp_assert_feature_str(_resp, feature, value);                    \
-> +    qobject_unref(_resp);                                              \
-> +})
+Yout initial email set they are output only by default.
+
+> + * settable through qom/qmp, or i2c.To set some pins as inputs before boot, use
+> + * the following in the board file of the machine:
+> + *      object_property_set_uint(Object *obj, const char *name,
+> + *                               uint64_t value, Error **errp);
+> + * specifying name as "gpio_config" and the value as a bitfield of the inputs
+> + * e.g. for the pca6416, a value of 0xFFF0, sets pins 0-3 as outputs and
+> + * 4-15 as inputs.
+> + * This value can also be set at runtime through qmp externally, or by
+> + * writing to the config register using i2c.
+
+When the real hardware comes up, can it be configured in some way
+before the software access it through I2C?  It seems odd to me that you
+have a qemu configuration for something that wouldn't normally be
+configurable by something at power up time.
+
+Philippe mentioned some things, too, but this looks good to me beyond
+that.
+
+-corey
+
+> + *
+> + */
 > +
->  #define assert_has_feature_enabled(qts, cpu_type, feature)             \
->      assert_feature(qts, cpu_type, feature, true)
->  
-> @@ -413,6 +447,24 @@ static void sve_tests_sve_off_kvm(const void *data)
->      qtest_quit(qts);
->  }
->  
-> +static void mte_tests_tag_memory_on(const void *data)
+> +#include "qemu/osdep.h"
+> +#include "hw/gpio/pca_i2c_gpio.h"
+> +#include "hw/irq.h"
+> +#include "hw/qdev-properties.h"
+> +#include "migration/vmstate.h"
+> +#include "qapi/visitor.h"
+> +#include "qemu/log.h"
+> +#include "qemu/module.h"
+> +#include "trace.h"
+> +
+> +/*
+> + * compare new_output to curr_output and update irq to match new_output
+> + *
+> + * The Input port registers (registers 0 and 1) reflect the incoming logic
+> + * levels of the pins, regardless of whether the pin is defined as an input or
+> + * an output by the Configuration register.
+> + */
+> +static void pca_i2c_update_irqs(PCAGPIOState *ps)
 > +{
-> +    QTestState *qts;
+> +    PCAGPIOClass *pc = PCA_I2C_GPIO_GET_CLASS(ps);
+> +    uint16_t out_diff = ps->new_output ^ ps->curr_output;
+> +    uint16_t in_diff = ps->new_input ^ ps->curr_input;
+> +    uint16_t mask, pin_i;
 > +
-> +    qts = qtest_init(MACHINE_MTE "-cpu max");
+> +    if (in_diff || out_diff) {
+> +        for (int i = 0; i < pc->num_pins; i++) {
+> +            mask = BIT(i);
+> +            /* pin must be configured as an output to be set here */
+> +            if (out_diff & ~ps->config & mask) {
+> +                pin_i = mask & ps->new_output;
+> +                qemu_set_irq(ps->output[i], pin_i > 0);
+> +                ps->curr_output &= ~mask;
+> +                ps->curr_output |= pin_i;
+> +            }
 > +
-> +    /*
-> +     * With tag memory, "mte" should default to on, and explicitly specifying
-> +     * either on or off should be fine.
-> +     */
-the above comment rather applies to assert_set_feature_str's, right?
-> +    assert_has_feature(qts, "max", "mte");
-> +
-> +    assert_set_feature_str(qts, "max", "mte", "off", "{ 'mte': 'off' }");
-> +    assert_set_feature_str(qts, "max", "mte", "on", "{ 'mte': 'on' }");
-> +
-> +    qtest_quit(qts);
+> +            if (in_diff & mask) {
+> +                ps->curr_input &= ~mask;
+> +                ps->curr_input |= mask & ps->new_input;
+> +            }
+> +        }
+> +        /* make diff = 0 */
+> +        ps->new_input = ps->curr_input;
+> +    }
 > +}
 > +
->  static void pauth_tests_default(QTestState *qts, const char *cpu_type)
->  {
->      assert_has_feature_enabled(qts, cpu_type, "pauth");
-> @@ -425,6 +477,19 @@ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
->                   "{ 'pauth': false, 'pauth-impdef': true }");
->  }
->  
-> +static void mte_tests_default(QTestState *qts, const char *cpu_type)
+> +static void pca_i2c_irq_handler(void *opaque, int n, int level)
 > +{
-> +    assert_has_feature(qts, cpu_type, "mte");
+> +    PCAGPIOState *ps = opaque;
+> +    PCAGPIOClass *pc = PCA_I2C_GPIO_GET_CLASS(opaque);
+> +    uint16_t mask = BIT(n);
 > +
-> +    /*
-> +     * Without tag memory, mte will be off under tcg.
-> +     * Explicitly enabling it yields an error.
-> +     */
-> +    assert_set_feature_str(qts, "max", "mte", "off", "{ 'mte': 'off' }");
-> +    assert_error(qts, cpu_type, "mte=on requires tag memory",
-> +                 "{ 'mte': 'on' }");
-Sorry in v4 I reported I preferred the pauth msg, clarifying now:
-
-    assert_error(qts, cpu_type, "cannot enable pauth-impdef without pauth",
-                 "{ 'pauth': false, 'pauth-impdef': true }");
-
-Here would translate into cannot enable mte without tag memory.
-
+> +    g_assert(n < pc->num_pins);
+> +    g_assert(n >= 0);
+> +
+> +    ps->new_input &= ~mask;
+> +
+> +    if (level > 0) {
+> +        ps->new_input |= BIT(n);
+> +    }
+> +
+> +    pca_i2c_update_irqs(ps);
 > +}
 > +
->  static void test_query_cpu_model_expansion(const void *data)
->  {
->      QTestState *qts;
-> @@ -474,6 +539,7 @@ static void test_query_cpu_model_expansion(const void *data)
->  
->          sve_tests_default(qts, "max");
->          pauth_tests_default(qts, "max");
-> +        mte_tests_default(qts, "max");
->  
->          /* Test that features that depend on KVM generate errors without. */
->          assert_error(qts, "max",
-> @@ -517,6 +583,13 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->          assert_set_feature(qts, "host", "pmu", false);
->          assert_set_feature(qts, "host", "pmu", true);
->  
-> +        /*
-> +         * Unfortunately, there's no easy way to test whether this instance
-> +         * of KVM supports MTE. So we can only assert that the feature
-> +         * is present, but not whether it can be toggled.
-> +         */
-> +        assert_has_feature(qts, "host", "mte");
-I know you replied in v4 but I am still confused:
-What does
-      (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
-return on a MTE capable host and and on a non MTE capable host?
-
-If I remember correctly qmp_query_cpu_model_expansion loops over the
-advertised features and try to set them explicitly so if the host does
-not support it this should fail and the result should be different from
-the case where the host supports it (even if it is off by default)
-
-Does assert_has_feature_enabled() returns false?
-
-Thanks
-
-Eric
-
-
+> +/* slave to master */
+> +static uint8_t pca6416_recv(I2CSlave *i2c)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(i2c);
+> +    uint8_t data;
 > +
->          /*
->           * Some features would be enabled by default, but they're disabled
->           * because this instance of KVM doesn't support them. Test that the
-> @@ -631,6 +704,8 @@ int main(int argc, char **argv)
->                              NULL, sve_tests_sve_off);
->          qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
->                              NULL, sve_tests_sve_off_kvm);
-> +        qtest_add_data_func("/arm/max/query-cpu-model-expansion/tag-memory",
-> +                            NULL, mte_tests_tag_memory_on);
->      }
+> +    switch (ps->command) {
+> +    case PCA6416_INPUT_PORT_0:
+> +        data = ps->curr_input;
+> +        break;
+> +
+> +    case PCA6416_INPUT_PORT_1:
+> +        data = ps->curr_input >> 8;
+> +        break;
+> +
+> +    /*
+> +     * i2c reads to the output registers reflect the values written
+> +     * NOT the actual values of the gpios
+> +     */
+> +    case PCA6416_OUTPUT_PORT_0:
+> +        data = ps->new_output;
+> +        break;
+> +
+> +    case PCA6416_OUTPUT_PORT_1:
+> +        data = ps->new_output >> 8;
+> +        break;
+> +
+> +    case PCA6416_POLARITY_INVERSION_PORT_0:
+> +        data = ps->polarity_inv;
+> +        break;
+> +
+> +    case PCA6416_POLARITY_INVERSION_PORT_1:
+> +        data = ps->polarity_inv >> 8;
+> +        break;
+> +
+> +    case PCA6416_CONFIGURATION_PORT_0:
+> +        data = ps->config;
+> +        break;
+> +
+> +    case PCA6416_CONFIGURATION_PORT_1:
+> +        data = ps->config >> 8;
+> +        break;
+> +
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: reading from unsupported register 0x%02x",
+> +                      __func__, ps->command);
+> +        data = 0xFF;
+> +        break;
+> +    }
+> +
+> +    trace_pca_i2c_recv(DEVICE(ps)->canonical_path, ps->command, data);
+> +    return data;
+> +}
+> +
+> +/* master to slave */
+> +static int pca6416_send(I2CSlave *i2c, uint8_t data)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(i2c);
+> +    if (ps->i2c_cmd) {
+> +        ps->command = data;
+> +        ps->i2c_cmd = false;
+> +        return 0;
+> +    }
+> +
+> +    trace_pca_i2c_send(DEVICE(ps)->canonical_path, ps->command, data);
+> +
+> +    switch (ps->command) {
+> +    case PCA6416_INPUT_PORT_0:
+> +    case PCA6416_INPUT_PORT_1:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing to read only reg: 0x%02x",
+> +                      __func__, ps->command);
+> +        break;
+> +
+> +    case PCA6416_OUTPUT_PORT_0:
+> +        ps->new_output &= 0xFF00;
+> +        ps->new_output |= data;
+> +        break;
+> +
+> +    case PCA6416_OUTPUT_PORT_1:
+> +        ps->new_output &= 0xFF;
+> +        ps->new_output |= data << 8;
+> +        break;
+> +
+> +    case PCA6416_POLARITY_INVERSION_PORT_0:
+> +        ps->polarity_inv &= 0xFF00;
+> +        ps->polarity_inv |= data;
+> +        break;
+> +
+> +    case PCA6416_POLARITY_INVERSION_PORT_1:
+> +        ps->polarity_inv &= 0xFF;
+> +        ps->polarity_inv |= data << 8;
+> +        break;
+> +
+> +    case PCA6416_CONFIGURATION_PORT_0:
+> +        ps->config &= 0xFF00;
+> +        ps->config |= data;
+> +        break;
+> +
+> +    case PCA6416_CONFIGURATION_PORT_1:
+> +        ps->config &= 0xFF;
+> +        ps->config |= data << 8;
+> +        break;
+> +
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: writing to unsupported register\n",
+> +                      __func__);
+> +        return -1;
+> +    }
+> +
+> +    pca_i2c_update_irqs(ps);
+> +    return 0;
+> +}
+> +
+> +static int pca_i2c_event(I2CSlave *i2c, enum i2c_event event)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(i2c);
+> +
+> +    switch (event) {
+> +    case I2C_START_RECV:
+> +        trace_pca_i2c_event(DEVICE(ps)->canonical_path, "START_RECV");
+> +        break;
+> +
+> +    case I2C_START_SEND:
+> +        trace_pca_i2c_event(DEVICE(ps)->canonical_path, "START_SEND");
+> +        ps->i2c_cmd = true;
+> +        break;
+> +
+> +    case I2C_FINISH:
+> +        trace_pca_i2c_event(DEVICE(ps)->canonical_path, "FINISH");
+> +        break;
+> +
+> +    case I2C_NACK:
+> +        trace_pca_i2c_event(DEVICE(ps)->canonical_path, "NACK");
+> +        break;
+> +
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s: unknown event 0x%x\n",
+> +                      DEVICE(ps)->canonical_path, __func__, event);
+> +        return -1;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static void pca_i2c_config_get(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(obj);
+> +    visit_type_uint16(v, name, &ps->config, errp);
+> +}
+> +
+> +static void pca_i2c_config_set(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(obj);
+> +    if (!visit_type_uint16(v, name, &ps->config, errp)) {
+> +        return;
+> +    }
+> +    pca_i2c_update_irqs(ps);
+> +}
+> +
+> +
+> +static void pca_i2c_input_get(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(obj);
+> +    visit_type_uint16(v, name, &ps->curr_input, errp);
+> +}
+> +
+> +static void pca_i2c_input_set(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(obj);
+> +    if (!visit_type_uint16(v, name, &ps->new_input, errp)) {
+> +        return;
+> +    }
+> +    pca_i2c_update_irqs(ps);
+> +}
+> +
+> +static void pca_i2c_output_get(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(obj);
+> +    visit_type_uint16(v, name, &ps->curr_output, errp);
+> +}
+> +
+> +static void pca_i2c_output_set(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(obj);
+> +    if (!visit_type_uint16(v, name, &ps->new_output, errp)) {
+> +        return;
+> +    }
+> +    pca_i2c_update_irqs(ps);
+> +}
+> +
+> +static void pca_i2c_realize(DeviceState *dev, Error **errp)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(dev);
+> +    pca_i2c_update_irqs(ps);
+> +}
+> +
+> +static const VMStateDescription vmstate_pca_i2c_gpio = {
+> +    .name = TYPE_PCA_I2C_GPIO,
+> +    .version_id = 0,
+> +    .minimum_version_id = 0,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_I2C_SLAVE(parent, PCAGPIOState),
+> +        VMSTATE_UINT16(polarity_inv, PCAGPIOState),
+> +        VMSTATE_UINT16(config, PCAGPIOState),
+> +        VMSTATE_UINT16(curr_input, PCAGPIOState),
+> +        VMSTATE_UINT16(curr_output, PCAGPIOState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void pca6416_gpio_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+> +    PCAGPIOClass *pc = PCA_I2C_GPIO_CLASS(klass);
+> +
+> +    dc->desc = "PCA6416 16-bit I/O expander";
+> +    dc->realize = pca_i2c_realize;
+> +    dc->vmsd = &vmstate_pca_i2c_gpio;
+> +
+> +    k->event = pca_i2c_event;
+> +    k->recv = pca6416_recv;
+> +    k->send = pca6416_send;
+> +
+> +    pc->num_pins = PCA6416_NUM_PINS;
+> +}
+> +
+> +static void pca_i2c_gpio_init(Object *obj)
+> +{
+> +    PCAGPIOState *ps = PCA_I2C_GPIO(obj);
+> +    PCAGPIOClass *pc = PCA_I2C_GPIO_GET_CLASS(obj);
+> +    DeviceState *dev = DEVICE(obj);
+> +
+> +    ps->new_output = PCA_I2C_OUTPUT_DEFAULT;
+> +    ps->config = PCA_I2C_CONFIG_DEFAULT;
+> +
+> +    object_property_add(obj, "gpio_input", "uint16",
+> +                        pca_i2c_input_get,
+> +                        pca_i2c_input_set, NULL, NULL);
+> +    object_property_add(obj, "gpio_output", "uint16",
+> +                        pca_i2c_output_get,
+> +                        pca_i2c_output_set, NULL, NULL);
+> +    object_property_add(obj, "gpio_config", "uint16",
+> +                        pca_i2c_config_get,
+> +                        pca_i2c_config_set, NULL, NULL);
+> +    qdev_init_gpio_in(dev, pca_i2c_irq_handler, pc->num_pins);
+> +    qdev_init_gpio_out(dev, ps->output, pc->num_pins);
+> +}
+> +
+> +static const TypeInfo pca_gpio_types[] = {
+> +    {
+> +    .name = TYPE_PCA_I2C_GPIO,
+> +    .parent = TYPE_I2C_SLAVE,
+> +    .instance_size = sizeof(PCAGPIOState),
+> +    .instance_init = pca_i2c_gpio_init,
+> +    .class_size = sizeof(PCAGPIOClass),
+> +    .abstract = true,
+> +    },
+> +    {
+> +    .name = TYPE_PCA6416_GPIO,
+> +    .parent = TYPE_PCA_I2C_GPIO,
+> +    .class_init = pca6416_gpio_class_init,
+> +    },
+> +};
+> +
+> +DEFINE_TYPES(pca_gpio_types);
+> diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+> index 9736b362ac..3fb0685096 100644
+> --- a/hw/gpio/trace-events
+> +++ b/hw/gpio/trace-events
+> @@ -31,3 +31,8 @@ sifive_gpio_update_output_irq(int64_t line, int64_t value) "line %" PRIi64 " val
+>  # aspeed_gpio.c
+>  aspeed_gpio_read(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 " value 0x%" PRIx64
+>  aspeed_gpio_write(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 " value 0x%" PRIx64
+> +
+> +# pca_i2c_gpio.c
+> +pca_i2c_event(const char *id, const char *event) "%s: %s"
+> +pca_i2c_recv(const char *id, uint8_t cmd, uint8_t data) "%s cmd: 0x%" PRIx8 " data 0x%" PRIx8
+> +pca_i2c_send(const char *id, uint8_t cmd, uint8_t data) "%s cmd: 0x%" PRIx8 " data 0x%" PRIx8
+> diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
+> index 14886b35da..b59a79fddf 100644
+> --- a/hw/i2c/Kconfig
+> +++ b/hw/i2c/Kconfig
+> @@ -42,6 +42,10 @@ config PCA954X
+>      bool
+>      select I2C
 >  
->      return g_test_run();
-
+> +config PCA_I2C_GPIO
+> +    bool
+> +    select I2C
+> +
+>  config PMBUS
+>      bool
+>      select SMBUS
+> diff --git a/include/hw/gpio/pca_i2c_gpio.h b/include/hw/gpio/pca_i2c_gpio.h
+> new file mode 100644
+> index 0000000000..a10897c0e0
+> --- /dev/null
+> +++ b/include/hw/gpio/pca_i2c_gpio.h
+> @@ -0,0 +1,72 @@
+> +/*
+> + * NXP PCA6416A
+> + * Low-voltage translating 16-bit I2C/SMBus GPIO expander with interrupt output,
+> + * reset, and configuration registers
+> + *
+> + * Datasheet: https://www.nxp.com/docs/en/data-sheet/PCA6416A.pdf
+> + *
+> + * Note: Polarity inversion emulation not implemented
+> + *
+> + * Copyright 2021 Google LLC
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +#ifndef PCA_I2C_GPIO_H
+> +#define PCA_I2C_GPIO_H
+> +
+> +#include "hw/i2c/i2c.h"
+> +#include "qom/object.h"
+> +
+> +#define PCA6416_NUM_PINS         16
+> +
+> +typedef struct PCAGPIOClass {
+> +    I2CSlaveClass parent;
+> +
+> +    uint8_t num_pins;
+> +} PCAGPIOClass;
+> +
+> +typedef struct PCAGPIOState {
+> +    I2CSlave parent;
+> +
+> +    uint16_t polarity_inv;
+> +    uint16_t config;
+> +
+> +    /* the values of the gpio pins are mirrored in these integers */
+> +    uint16_t curr_input;
+> +    uint16_t curr_output;
+> +    uint16_t new_input;
+> +    uint16_t new_output;
+> +
+> +    /*
+> +     * Note that these outputs need to be consumed by some other input
+> +     * to be useful, qemu ignores writes to disconnected gpio pins
+> +     */
+> +    qemu_irq output[PCA6416_NUM_PINS];
+> +
+> +    /* i2c transaction info */
+> +    uint8_t command;
+> +    bool i2c_cmd;
+> +
+> +} PCAGPIOState;
+> +
+> +#define TYPE_PCA_I2C_GPIO "pca_i2c_gpio"
+> +OBJECT_DECLARE_TYPE(PCAGPIOState, PCAGPIOClass, PCA_I2C_GPIO)
+> +
+> +#define PCA6416_INPUT_PORT_0                 0x00 /* read */
+> +#define PCA6416_INPUT_PORT_1                 0x01 /* read */
+> +#define PCA6416_OUTPUT_PORT_0                0x02 /* read/write */
+> +#define PCA6416_OUTPUT_PORT_1                0x03 /* read/write */
+> +#define PCA6416_POLARITY_INVERSION_PORT_0    0x04 /* read/write */
+> +#define PCA6416_POLARITY_INVERSION_PORT_1    0x05 /* read/write */
+> +#define PCA6416_CONFIGURATION_PORT_0         0x06 /* read/write */
+> +#define PCA6416_CONFIGURATION_PORT_1         0x07 /* read/write */
+> +
+> +#define PCA6416_OUTPUT_DEFAULT               0xFFFF
+> +#define PCA6416_CONFIG_DEFAULT               0xFFFF
+> +
+> +#define PCA_I2C_OUTPUT_DEFAULT               0xFFFF
+> +#define PCA_I2C_CONFIG_DEFAULT               0xFFFF
+> +
+> +#define TYPE_PCA6416_GPIO "pca6416"
+> +
+> +#endif
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index e97616d327..49f406af6b 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -241,6 +241,7 @@ qos_test_ss.add(
+>    'ne2000-test.c',
+>    'tulip-test.c',
+>    'nvme-test.c',
+> +  'pca_i2c_gpio-test.c',
+>    'pca9552-test.c',
+>    'pci-test.c',
+>    'pcnet-test.c',
+> diff --git a/tests/qtest/pca_i2c_gpio-test.c b/tests/qtest/pca_i2c_gpio-test.c
+> new file mode 100644
+> index 0000000000..041ca34e22
+> --- /dev/null
+> +++ b/tests/qtest/pca_i2c_gpio-test.c
+> @@ -0,0 +1,169 @@
+> +/*
+> + * QTest for PCA I2C GPIO expanders
+> + *
+> + * Copyright 2021 Google LLC
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/gpio/pca_i2c_gpio.h"
+> +#include "libqtest-single.h"
+> +#include "libqos/i2c.h"
+> +#include "qapi/qmp/qdict.h"
+> +#include "qapi/qmp/qnum.h"
+> +#include "qemu/bitops.h"
+> +
+> +
+> +#define TEST_ID "pca_i2c_gpio-test"
+> +#define PCA_CONFIG_BYTE     0x55
+> +#define PCA_CONFIG_WORD     0x5555
+> +
+> +static uint16_t qmp_pca_gpio_get(const char *id, const char *property)
+> +{
+> +    QDict *response;
+> +    uint16_t ret;
+> +    response = qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
+> +                   "'property': %s } }", id, property);
+> +    g_assert(qdict_haskey(response, "return"));
+> +    ret = qnum_get_uint(qobject_to(QNum, qdict_get(response, "return")));
+> +    qobject_unref(response);
+> +    return ret;
+> +}
+> +
+> +static void qmp_pca_gpio_set(const char *id, const char *property,
+> +                             uint16_t value)
+> +{
+> +    QDict *response;
+> +
+> +    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
+> +                   "'property': %s, 'value': %u } }",
+> +                   id, property, value);
+> +    g_assert(qdict_haskey(response, "return"));
+> +    qobject_unref(response);
+> +}
+> +
+> +static void test_set_input(void *obj, void *data, QGuestAllocator *alloc)
+> +{
+> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
+> +    uint8_t value;
+> +    uint16_t qmp_value;
+> +    /* configure pins to be inputs */
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_0, 0xFF);
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_1, 0xFF);
+> +
+> +    qmp_pca_gpio_set(TEST_ID, "gpio_input", 0xAAAA);
+> +    value = i2c_get8(i2cdev, PCA6416_INPUT_PORT_0);
+> +    g_assert_cmphex(value, ==, 0xAA);
+> +    value = i2c_get8(i2cdev, PCA6416_INPUT_PORT_1);
+> +    g_assert_cmphex(value, ==, 0xAA);
+> +
+> +    qmp_value = qmp_pca_gpio_get(TEST_ID, "gpio_input");
+> +    g_assert_cmphex(qmp_value, ==, 0xAAAA);
+> +}
+> +static void test_config(void *obj, void *data, QGuestAllocator *alloc)
+> +{
+> +
+> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
+> +    uint8_t value;
+> +    uint16_t qmp_value;
+> +    /* configure half the pins to be inputs */
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_0, PCA_CONFIG_BYTE);
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_1, PCA_CONFIG_BYTE);
+> +    value = i2c_get8(i2cdev, PCA6416_CONFIGURATION_PORT_0);
+> +    g_assert_cmphex(value, ==, PCA_CONFIG_BYTE);
+> +
+> +    value = i2c_get8(i2cdev, PCA6416_CONFIGURATION_PORT_1);
+> +    g_assert_cmphex(value, ==, PCA_CONFIG_BYTE);
+> +
+> +    /* the pins that match the config should be set, the rest are undef */
+> +    qmp_pca_gpio_set(TEST_ID, "gpio_input", 0xFFFF);
+> +    value = i2c_get8(i2cdev, PCA6416_INPUT_PORT_0);
+> +    g_assert_cmphex(value & PCA_CONFIG_BYTE, ==, 0x55);
+> +    value = i2c_get8(i2cdev, PCA6416_INPUT_PORT_1);
+> +    g_assert_cmphex(value & PCA_CONFIG_BYTE, ==, 0x55);
+> +    qmp_value = qmp_pca_gpio_get(TEST_ID, "gpio_input");
+> +    g_assert_cmphex(qmp_value & PCA_CONFIG_WORD, ==, 0x5555);
+> +
+> +    /*
+> +     * i2c will return the value written to the output register, not the values
+> +     * of the output pins, so we check only the configured pins
+> +     */
+> +    qmp_pca_gpio_set(TEST_ID, "gpio_output", 0xFFFF);
+> +    value = i2c_get8(i2cdev, PCA6416_OUTPUT_PORT_0);
+> +    g_assert_cmphex(value & ~PCA_CONFIG_BYTE, ==, 0xAA);
+> +    value = i2c_get8(i2cdev, PCA6416_OUTPUT_PORT_1);
+> +    g_assert_cmphex(value & ~PCA_CONFIG_BYTE, ==, 0xAA);
+> +
+> +    qmp_value = qmp_pca_gpio_get(TEST_ID, "gpio_output");
+> +    g_assert_cmphex(qmp_value & ~PCA_CONFIG_WORD, ==, 0xAAAA);
+> +}
+> +
+> +static void test_set_output(void *obj, void *data, QGuestAllocator *alloc)
+> +{
+> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
+> +    uint8_t value;
+> +    uint16_t qmp_value;
+> +    /* configure pins to be outputs */
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_0, 0);
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_1, 0);
+> +
+> +    qmp_pca_gpio_set(TEST_ID, "gpio_output", 0x5555);
+> +    value = i2c_get8(i2cdev, PCA6416_OUTPUT_PORT_0);
+> +    g_assert_cmphex(value, ==, 0x55);
+> +    value = i2c_get8(i2cdev, PCA6416_OUTPUT_PORT_1);
+> +    g_assert_cmphex(value, ==, 0x55);
+> +
+> +    qmp_value = qmp_pca_gpio_get(TEST_ID, "gpio_output");
+> +    g_assert_cmphex(qmp_value, ==, 0x5555);
+> +}
+> +
+> +static void test_tx_rx(void *obj, void *data, QGuestAllocator *alloc)
+> +{
+> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
+> +    uint8_t value;
+> +
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_0, 0xFF);
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_1, 0xFF);
+> +    i2c_set8(i2cdev, PCA6416_POLARITY_INVERSION_PORT_0, 0);
+> +    i2c_set8(i2cdev, PCA6416_POLARITY_INVERSION_PORT_1, 0);
+> +
+> +    value = i2c_get8(i2cdev, PCA6416_CONFIGURATION_PORT_0);
+> +    g_assert_cmphex(value, ==, 0xFF);
+> +
+> +    value = i2c_get8(i2cdev, PCA6416_CONFIGURATION_PORT_1);
+> +    g_assert_cmphex(value, ==, 0xFF);
+> +
+> +    value = i2c_get8(i2cdev, PCA6416_POLARITY_INVERSION_PORT_0);
+> +    g_assert_cmphex(value, ==, 0);
+> +
+> +    value = i2c_get8(i2cdev, PCA6416_POLARITY_INVERSION_PORT_1);
+> +    g_assert_cmphex(value, ==, 0);
+> +
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_0, 0xAB);
+> +    value = i2c_get8(i2cdev, PCA6416_CONFIGURATION_PORT_0);
+> +    g_assert_cmphex(value, ==, 0xAB);
+> +
+> +    i2c_set8(i2cdev, PCA6416_CONFIGURATION_PORT_1, 0xBC);
+> +    value = i2c_get8(i2cdev, PCA6416_CONFIGURATION_PORT_1);
+> +    g_assert_cmphex(value, ==, 0xBC);
+> +
+> +}
+> +
+> +static void pca_i2c_gpio_register_nodes(void)
+> +{
+> +    QOSGraphEdgeOptions opts = {
+> +        .extra_device_opts = "id=" TEST_ID ",address=0x78"
+> +    };
+> +    add_qi2c_address(&opts, &(QI2CAddress) { 0x78 });
+> +    g_test_set_nonfatal_assertions();
+> +
+> +    qos_node_create_driver("pca6416", i2c_device_create);
+> +    qos_node_consumes("pca6416", "i2c-bus", &opts);
+> +
+> +    qos_add_test("tx-rx", "pca6416", test_tx_rx, NULL);
+> +    qos_add_test("set_output_gpio", "pca6416", test_set_output, NULL);
+> +    qos_add_test("set_input_gpio", "pca6416", test_set_input, NULL);
+> +    qos_add_test("follow_gpio_config", "pca6416", test_config, NULL);
+> +}
+> +libqos_init(pca_i2c_gpio_register_nodes);
+> -- 
+> 2.39.1.519.gcb327c4b5f-goog
+> 
+> 

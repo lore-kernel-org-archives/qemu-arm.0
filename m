@@ -1,85 +1,115 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1369893ejb;
-        Fri, 3 Feb 2023 05:08:36 -0800 (PST)
-X-Google-Smtp-Source: AK7set8KdxJbD0KGHTjYL35sXWjz1Tco8WLiGhXE6KLNu/Np41j1bPvvrT9DWkOrZ00ODDel5uYf
-X-Received: by 2002:a05:6214:2a8c:b0:568:d153:823a with SMTP id jr12-20020a0562142a8c00b00568d153823amr2816327qvb.15.1675429716641;
-        Fri, 03 Feb 2023 05:08:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675429716; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4294432ejb;
+        Mon, 6 Feb 2023 07:27:57 -0800 (PST)
+X-Google-Smtp-Source: AK7set9JwBiTAhbWn6lZFaSopyddh7rjl1DohQbltwGV0HaKNDmEududs9P2g+JALk3X/APrRc0l
+X-Received: by 2002:ac8:5c04:0:b0:3b8:6c10:f52 with SMTP id i4-20020ac85c04000000b003b86c100f52mr39532514qti.46.1675697277144;
+        Mon, 06 Feb 2023 07:27:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675697277; cv=none;
         d=google.com; s=arc-20160816;
-        b=zJEVnSloIO/Kb0q9XpP7rOJG/nog8riB9Vw/ulY/u8yZu8oOKAx+1ddqro0TnVFej1
-         klWw7tyawx5eAAwdK7fsvSTepzCxrdEa2cRKRFL/FrKnm9YBfhChV7BZM+HCa9tf/ICs
-         7L2GbCS6l2/7cxBhRNUFkIXTcXgiflPBA+8uPo9q9zgQlxjt851SNkDu8MenKtasawW6
-         bIYEmgvfgUtb6SK8uEqWwS0myLga+ZbIIlAQpn8cRSjQR/7oHb1zN+RQiuhCddWnwJaD
-         FHjjmT6dSWWbrml/1LeYZWFoJnH94nh2ZGdc1TSJnY3bk4I8bJzYeCtuEgh3sLuwx4ty
-         XBuQ==
+        b=qA/fPcTUgK4rSXPtVAEiobRgtMhvXvFoOBj7/hCPq4Y6FLr3rFF+EaxBKj42XPjqMr
+         22xFUOppjxMl7v1GzcgAc/ZUFoYr5AGqhDxCV8ZsSRsoGV4yloblCncJiZ9AmKMikiYY
+         xEk/OMktgl3MTg0RXAd2Vi99DOHSSMOqUgv47Go2zj3azqOABImKCk6RSx1UZVuuSVhR
+         TpOWhLO7BaRbp3ljMFQLq4lNx8++P6EwelTlijyYc6ysMtXN04eDN+V81npdT82kC+Lr
+         UuTpWU6bwPEphqsjwiL/n56MgYZLSUINEvWvstRB1He/QbyF7MHL1Kq02/yDnhyg0okZ
+         wWJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=+88JxzBYBeU2+3knVukp08JtmA5ZDTwDRrYq7cuhCH4=;
-        b=EBHb8iH4s/bVAKCyyyYiQsdf29GwCTiUv47T0PQIgV/ZKO+cbcjJ7597kUqjcM1vll
-         dUTZDPtIFuNlOkeIZDkm3fBQvfRYaRFNCkV3rwNFpsnYwtwkG7vzysWraUiUcyre2kMH
-         quN6snfTMPsNpQtfF2vUEE/Y79JaR8rmxM9koMqvxj2v3e6/pmWMQ5rvQ05sWamzaWCk
-         kgD+E0llaeMe/gvCaAxoy0puSpqxW1GtsHlFrSS/Zos8SYE+AMTDm2DFMLk1qPjPsv7y
-         ignVsJG4XJ1J8+a/6wUKzC+RG/Okoj27iV0whHBoyGnaRMlLDV5rN6Avo3yiBOv92wr7
-         5E1Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=bwiGbfcWt1cMeEWPC/yatRM1Hq2EpPB8luPfTJXNUR4=;
+        b=ZXrH0pgMaDSAljeClx/Wq2+pgKLGunZ7HjlJLJZaTTOK/8CZLnnB5lzsn/U9bFkFdB
+         zo0+90OviRhrIkZDlb5CEQ55H76skExlP6V7HePvQ570H/f56PXk96tN2dSwA/jZiXw5
+         b3fD2WkUf5I9xrIME/AqUwRO/TT3EyrZc/WzPgTGPZdm4IJf8EsoDKipxCcXhBLSqFyF
+         45Y9T0I2evO/5p0u4HDVAGNBanOWKeFTdnS7it6vzGvC/sEck4KuXN8j6YzoAGcx+OmX
+         IaeiPn9pAFXCtzx9yhJdXtpESvm24tXBE7FZWkX2aSw29oyj9PFg0+KPDTHcAOzK9DIV
+         3QOw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jh9h0L21;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u1-20020a0cb401000000b004ad0f5cf00esi1531112qve.117.2023.02.03.05.08.36
+        by mx.google.com with ESMTPS id s18-20020ac85cd2000000b003b82ce74ec4si8586912qta.131.2023.02.06.07.27.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 05:08:36 -0800 (PST)
+        Mon, 06 Feb 2023 07:27:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jh9h0L21;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pNvnP-0005LF-Cw; Fri, 03 Feb 2023 08:08:03 -0500
+	id 1pP3PE-0003aZ-Ci; Mon, 06 Feb 2023 10:27:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1pNvnN-0005KO-An; Fri, 03 Feb 2023 08:08:01 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1pNvnK-00033s-I2; Fri, 03 Feb 2023 08:08:00 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 5947A7466FF;
- Fri,  3 Feb 2023 14:05:26 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id D9A8F74645F; Fri,  3 Feb 2023 14:05:25 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id D7EFC746392;
- Fri,  3 Feb 2023 14:05:25 +0100 (CET)
-Date: Fri, 3 Feb 2023 14:05:25 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
- Markus Armbruster <armbru@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>, 
- Yoshinori Sato <ysato@users.sourceforge.jp>, 
- Magnus Damm <magnus.damm@gmail.com>
-Subject: Re: [PATCH 6/9] hw/display/sm501: QOM-alias 'dma-offset' property
- in chipset object
-In-Reply-To: <20230203113650.78146-7-philmd@linaro.org>
-Message-ID: <136f25e8-686a-1529-b114-08dd54e6b819@eik.bme.hu>
-References: <20230203113650.78146-1-philmd@linaro.org>
- <20230203113650.78146-7-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pP3PC-0003Tz-Og
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 10:27:42 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pP3PB-00058v-0M
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 10:27:42 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id bk16so10717123wrb.11
+ for <qemu-arm@nongnu.org>; Mon, 06 Feb 2023 07:27:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=bwiGbfcWt1cMeEWPC/yatRM1Hq2EpPB8luPfTJXNUR4=;
+ b=Jh9h0L21/qfUtrwJ5GE1qBRWiHRAxgIHUCnmLB/em5VtdWRiqNZ3glrYjjIMMPRLZu
+ hWgvdfHlEILh5Ha2B6NPhktAyr2pq5LPtDOINoZgL83xlAD0pQBlaHaj+6QlCJqXByjD
+ AT6KjTcxHq4SFfOPpToUjkdu5K5xkgAf2HEdU1YfpU2CoYieCm7nZGU5xwcTZjG5ZLNJ
+ aYBRf3DzCMaEKdzLUGP4Z1GEFpJnDiogGowv/QymY/BaHuH6wUFt9hUxWJEjF7ppyycC
+ 4fSc4bjygzx9I15asIW6M2hewf+GGwTZMQ98FeSuqXrC4YkdwAedvh5dY2FxpoUbj0v3
+ IMMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=bwiGbfcWt1cMeEWPC/yatRM1Hq2EpPB8luPfTJXNUR4=;
+ b=7Wmf5zyP1A8h4rYjdz8m088Q3A/JrOEWvubLEwBqZDepZ5NZw6kcx8xcJcZxIp7oJf
+ IQX7bUBKABUBaHs9iCUIXuZhp95P461Zsidn0B1SgnfuULVTc6Cz+TTvIeEH9+sn/6fz
+ Haypk2IqWlQV51b+IW9P264yugMUvNI3dJIZkqm3AXBxDj+5t7b+jwOyVI4jEGklpPjK
+ dXICnHZRy04twlbt54sEY4IRnWSoGpBXzUpX4uupC96+yUkOhk0J1+Fg44s+l83OteZh
+ 4jvufkx35DvLl3tW0UJmdhKVxyv7obpBYIpvHqnO2xv83dHTQ3tnCIH9gkI98Cb9mZoo
+ aBWw==
+X-Gm-Message-State: AO0yUKURHfkORd2oY3r+5NYnh4GvRzp8MjCEzQBP755bcmB/9zzrkcE1
+ osA1oZR8nwWDYOhL4gWwtn/bog==
+X-Received: by 2002:a5d:514d:0:b0:2bf:ae1e:84d2 with SMTP id
+ u13-20020a5d514d000000b002bfae1e84d2mr16311798wrt.12.1675697259415; 
+ Mon, 06 Feb 2023 07:27:39 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ v7-20020adfebc7000000b002bc7e5a1171sm9219039wrn.116.2023.02.06.07.27.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Feb 2023 07:27:38 -0800 (PST)
+Message-ID: <46f52043-368c-e153-2d02-ba30220685dd@linaro.org>
+Date: Mon, 6 Feb 2023 16:27:36 +0100
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-884711868-1675429525=:62709"
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH 0/9] hw: Use QOM alias properties and few QOM/QDev cleanups
+Content-Language: en-US
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, Eduardo Habkost
+ <eduardo@habkost.net>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20230203113650.78146-1-philmd@linaro.org>
+ <e30899d3-06b5-645e-3f42-c99631b5a53a@ilande.co.uk>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <e30899d3-06b5-645e-3f42-c99631b5a53a@ilande.co.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,124 +124,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gzmBdYYk99MB
+X-TUID: drXWVcyiMOEd
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On 6/2/23 00:29, Mark Cave-Ayland wrote:
+> On 03/02/2023 11:36, Philippe Mathieu-Daudé wrote:
+> 
+>> These patches are extracted from a QOM/QDev refactor series,
+>> so they are preliminary cleanups noticed while working on it:
+>>
+>> - Use correct type when calling qdev_prop_set_xxx()
+>> - Unify some qdev properties in MIPS models
+>> - Replace intermediate properties by link properties
+>> - Remove DEFINE_PROP_DMAADDR() macro which is used one time
+>> - Use qdev_realize_and_unref() instead of open-coding it
+>>
+>> Philippe Mathieu-Daudé (9):
+>>    hw/i386/sgx: Do not open-code qdev_realize_and_unref()
+>>    hw/ppc/sam460ex: Correctly set MAL properties
+>>    hw/arm/nrf51: QOM-alias 'flash-size' property in SoC object
+>>    hw/arm/fsl-imx: QOM-alias 'phy-num' property in SoC object
+>>    hw/usb/hcd-ohci: Include missing 'sysbus.h' header
+>>    hw/display/sm501: QOM-alias 'dma-offset' property in chipset object
+>>    hw/qdev: Remove DEFINE_PROP_DMAADDR() and 'hw/qdev-dma.h'
+>>    hw/mips: Declare all length properties as unsigned
+>>    hw/mips/itu: Pass SAAR using QOM link property
+>>
+>>   hw/arm/fsl-imx25.c           |  3 +--
+>>   hw/arm/fsl-imx6.c            |  3 +--
+>>   hw/arm/fsl-imx6ul.c          |  8 ++++----
+>>   hw/arm/fsl-imx7.c            | 12 ++++++------
+>>   hw/arm/microbit.c            |  5 ++++-
+>>   hw/arm/nrf51_soc.c           | 10 +---------
+>>   hw/display/sm501.c           | 22 +++++++++++-----------
+>>   hw/i386/sgx.c                |  5 ++---
+>>   hw/intc/mips_gic.c           |  4 ++--
+>>   hw/mips/boston.c             |  2 +-
+>>   hw/mips/cps.c                | 35 ++++++++++++-----------------------
+>>   hw/mips/malta.c              |  2 +-
+>>   hw/misc/mips_cmgcr.c         |  2 +-
+>>   hw/misc/mips_itu.c           | 30 ++++++++++++++++++++----------
+>>   hw/nvram/nrf51_nvm.c         |  6 +++++-
+>>   hw/ppc/sam460ex.c            |  4 ++--
+>>   hw/sh4/r2d.c                 |  2 +-
+>>   hw/usb/hcd-ohci-pci.c        |  1 -
+>>   hw/usb/hcd-ohci.c            |  3 +--
+>>   hw/usb/hcd-ohci.h            |  1 +
+>>   include/hw/arm/fsl-imx25.h   |  1 -
+>>   include/hw/arm/fsl-imx6.h    |  1 -
+>>   include/hw/arm/fsl-imx6ul.h  |  2 --
+>>   include/hw/arm/fsl-imx7.h    |  1 -
+>>   include/hw/arm/nrf51_soc.h   |  1 -
+>>   include/hw/intc/mips_gic.h   |  4 ++--
+>>   include/hw/misc/mips_cmgcr.h |  2 +-
+>>   include/hw/misc/mips_itu.h   |  9 ++++-----
+>>   include/hw/qdev-dma.h        | 16 ----------------
+>>   29 files changed, 84 insertions(+), 113 deletions(-)
+>>   delete mode 100644 include/hw/qdev-dma.h
+> 
+> I must admit to being slightly nervous about using QOM alias properties 
+> in this way, simply because you start creating implicit dependencies 
+> between QOM objects. How would this work when trying to build machines 
+> from configuration files and/or the monitor? Or are the changes 
+> restricted to container devices i.e. those which consist of in-built 
+> child devices?
 
---3866299591-884711868-1675429525=:62709
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+The latter. All parents forward a property to a contained child.
 
-On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
-> No need to use an intermediate 'dma-offset' property in the
-> chipset object. Alias the property, so when the machine (here
-> r2d-plus) sets the value on the chipset, it is propagated to
-> the OHCI object.
->
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-> hw/display/sm501.c | 22 +++++++++++-----------
-> hw/sh4/r2d.c       |  2 +-
-> 2 files changed, 12 insertions(+), 12 deletions(-)
+The parent forwarding property is replaced by a link into the child,
+so accessing the parent property transparently access the child one.
 
-It does not seem to be any simpler by the number of lines but maybe a bit 
-cleaner. I wonder if it would worth renaming the property to dma-offset to 
-match that of ohci so it's less confusing what it refers to. It's only 
-used by r2d and this patch already changing that so would be an easy 
-change.
+The dependencies are already explicit. We can not create a parent
+without its children (the children creation is implicit when we
+create the parent object).
 
-Regards,
-BALATON Zoltan
 
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index 52e42585af..49a648e952 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -28,6 +28,7 @@
-> #include "qapi/error.h"
-> #include "qemu/log.h"
-> #include "qemu/module.h"
-> +#include "hw/usb/hcd-ohci.h"
-> #include "hw/char/serial.h"
-> #include "ui/console.h"
-> #include "hw/sysbus.h"
-> @@ -1942,7 +1943,7 @@ struct SM501SysBusState {
->     /*< public >*/
->     SM501State state;
->     uint32_t vram_size;
-> -    uint32_t base;
-> +    OHCISysBusState ohci;
->     SerialMM serial;
-> };
->
-> @@ -1950,7 +1951,6 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
-> {
->     SM501SysBusState *s = SYSBUS_SM501(dev);
->     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> -    DeviceState *usb_dev;
->     MemoryRegion *mr;
->
->     sm501_init(&s->state, dev, s->vram_size);
-> @@ -1963,13 +1963,10 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
->     sysbus_init_mmio(sbd, &s->state.mmio_region);
->
->     /* bridge to usb host emulation module */
-> -    usb_dev = qdev_new("sysbus-ohci");
-> -    qdev_prop_set_uint32(usb_dev, "num-ports", 2);
-> -    qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
-> -    sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
-> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->ohci), &error_fatal);
->     memory_region_add_subregion(&s->state.mmio_region, SM501_USB_HOST,
-> -                       sysbus_mmio_get_region(SYS_BUS_DEVICE(usb_dev), 0));
-> -    sysbus_pass_irq(sbd, SYS_BUS_DEVICE(usb_dev));
-> +                       sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ohci), 0));
-> +    sysbus_pass_irq(sbd, SYS_BUS_DEVICE(&s->ohci));
->
->     /* bridge to serial emulation module */
->     sysbus_realize(SYS_BUS_DEVICE(&s->serial), &error_fatal);
-> @@ -1980,7 +1977,6 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
->
-> static Property sm501_sysbus_properties[] = {
->     DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
-> -    DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
->     DEFINE_PROP_END_OF_LIST(),
-> };
->
-> @@ -2016,15 +2012,19 @@ static void sm501_sysbus_class_init(ObjectClass *klass, void *data)
-> static void sm501_sysbus_init(Object *o)
-> {
->     SM501SysBusState *sm501 = SYSBUS_SM501(o);
-> +    OHCISysBusState *ohci = &sm501->ohci;
->     SerialMM *smm = &sm501->serial;
->
-> +    object_initialize_child(o, "ohci", ohci, TYPE_SYSBUS_OHCI);
-> +    object_property_add_alias(o, "base", OBJECT(ohci), "dma-offset");
-> +    qdev_prop_set_uint32(DEVICE(ohci), "num-ports", 2);
-> +
->     object_initialize_child(o, "serial", smm, TYPE_SERIAL_MM);
->     qdev_set_legacy_instance_id(DEVICE(smm), SM501_UART0, 2);
->     qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
->     qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
->
-> -    object_property_add_alias(o, "chardev",
-> -                              OBJECT(smm), "chardev");
-> +    object_property_add_alias(o, "chardev", OBJECT(smm), "chardev");
-> }
->
-> static const TypeInfo sm501_sysbus_info = {
-> diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
-> index 39fc4f19d9..279724ffbb 100644
-> --- a/hw/sh4/r2d.c
-> +++ b/hw/sh4/r2d.c
-> @@ -274,7 +274,7 @@ static void r2d_init(MachineState *machine)
->     dev = qdev_new("sysbus-sm501");
->     busdev = SYS_BUS_DEVICE(dev);
->     qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
-> -    qdev_prop_set_uint32(dev, "base", 0x10000000);
-> +    qdev_prop_set_uint64(dev, "base", 0x10000000);
->     qdev_prop_set_chr(dev, "chardev", serial_hd(2));
->     sysbus_realize_and_unref(busdev, &error_fatal);
->     sysbus_mmio_map(busdev, 0, 0x10000000);
->
---3866299591-884711868-1675429525=:62709--
+I thought this was the canonical QOM alias properties use. What is
+the normal use then?

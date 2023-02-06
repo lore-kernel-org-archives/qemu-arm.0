@@ -1,88 +1,88 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4075821ejb;
-        Mon, 6 Feb 2023 03:23:19 -0800 (PST)
-X-Google-Smtp-Source: AK7set92PCqAulTqrhc2mgyFpMeJ+Le9WEy0BV7HwVtJZfafXOiO9urZhOQmWlu+2uidIvxzhSbc
-X-Received: by 2002:ac8:5f8e:0:b0:3b9:e2a6:cb0b with SMTP id j14-20020ac85f8e000000b003b9e2a6cb0bmr26419009qta.12.1675682598938;
-        Mon, 06 Feb 2023 03:23:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675682598; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4076085ejb;
+        Mon, 6 Feb 2023 03:23:41 -0800 (PST)
+X-Google-Smtp-Source: AK7set/lCfiWBkqtAptgSjXUBZkF+oG9Nur4jp1qBRPUM4iAZ/Vw5w9o2r1vhmppVG1gvnofF9XW
+X-Received: by 2002:ac8:7d14:0:b0:3b6:2ff8:3009 with SMTP id g20-20020ac87d14000000b003b62ff83009mr37692449qtb.2.1675682620805;
+        Mon, 06 Feb 2023 03:23:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675682620; cv=none;
         d=google.com; s=arc-20160816;
-        b=dxfWafckhAq6MomD3JNO2Vah87HGuUcM9VHB6Fq4y+kjtOJQWD2JPWIRRZdXWImo07
-         Vw0sjVCjwtHJVb9NQQHGCN4HHFts/vRMOgJJ15iBY1O5I6VRlBV7rzW/PfJPjVKYP2oh
-         zPQt0RaoasYhMMhRIEUQlSBtDjeAQnUuJoaAAF3x9etThbSjGPl4+JmUyFiQ7sZnhpE7
-         gcF35x5rtQjE2F45tC0dUTm9yNJHlscktev9mVVbtfk7fAilEH0wejR63MMvgx4Qlg7w
-         JwuVkaVBZlBTsvzxUHjp6P/1p1FtwTZYFVoFg+iS3a/T+attK1F4Oq7Y0DwvsKfop2of
-         Ic+A==
+        b=UVpZZwLVqBZE+n+b2EIUmp6NdOHAgg3jHidAuTB0TX5IA874xokaXhTBgIe/CAKnHb
+         iVByLl3KymkkZmyU5aFrdrt8AzWld7il/yX/qk7FKU6O77GQsndCpfAOnQSh6v62Fmub
+         6KQ+cDHZfxXFpBJtok0f+4VgOlWx5LufpUyhKbS7hzflic2fGaUmKpQoJO4b0OI/BzAL
+         S/eeQOWsg4zEHxVSVItOhtMjMumCFXTp3HXRjx2/Rh6Lxf5tZYEixYf5KHr2mjKYDob6
+         aZILvPIoKAWoBHe9XQcoRIwgVsVscUH8tbGIc0LWRy6YO5mkn/PFXUE8E7zUIzYpqvae
+         aJWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+pBZkvwO/MSacYruR8vBHavjUuE24O9czHcjOtXLm1A=;
-        b=RTGYHpLBJHqZzSGcGfuutsn2Y2XDgipcXhO5Hx0RqY0SBK0ZTBglofgk738v0zcXv+
-         +H+LfWf2dYeSx+adxnU0oXs/jbBAEnl4x+8wpx2j5SjKWKGpFTszCjbPtcdHtLsd+KI1
-         EghGfVgMKFimunJ5aasSNbnp8YWmK1aJ3G6Ijqtbyc4y6506qun2LFzRxvsesGQ3oCO6
-         o8D5Kd0bLh+IxxXAluxTtEqu4Z6NSOg0JJ4mFwfMc8UJyCjjU1IdpI4asH0jUpTQsruz
-         /bClIHsE/ZEIcDcwNseRvKMKf8AcIgSXSPEjeArWjMaF36eKoGkVGdhZucjrjn8LnT8q
-         rm6w==
+        bh=AV1dHV/DKMAbDep2jVZbQdk/CCup6inKTxE45seX6JQ=;
+        b=wqC9NWnXg062KaAScBc38XA1o24hLatf7H9kKc7cD7H56GLjKSB5qknNo3gWbsVrXV
+         taUjrgRenTWTjmx4bbWN61UeK3LN/KqpeI2NQ/CutV8Aldq++iozeM5flm9+EgLWsari
+         cwLQ/8v5q3LYCKFiR04pe1pL+kgzk9mE6VnV6C4RmBbH/WMSRFWdy2iN3FdUR0G6mC6v
+         jTi1eSc3vI4HmBZrr/5uxBxJeUrwF9bLqachH1bId4O+qL8xpx+xtHD/GLo7LH13G3LB
+         0SDusn31Ryr2PY0/x+7QAGHhLTJfTZPWTg7z0ldsMCIoTYRzbrXu7eWRsBlevkDEnu+X
+         cNAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Q1Czvk/7";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZBGclPXn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u4-20020a05620a454400b0072db9589b21si8484007qkp.50.2023.02.06.03.23.18
+        by mx.google.com with ESMTPS id 21-20020ac85615000000b003ba1a343c31si4185142qtr.95.2023.02.06.03.23.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Feb 2023 03:23:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Feb 2023 03:23:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Q1Czvk/7";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZBGclPXn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pOzaS-00053N-SR; Mon, 06 Feb 2023 06:23:05 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pOzaU-0005F1-Th; Mon, 06 Feb 2023 06:23:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzaR-0004zl-0v
- for qemu-devel@nongnu.org; Mon, 06 Feb 2023 06:23:03 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzaS-00052W-En
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 06:23:04 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzaP-0003XM-71
- for qemu-devel@nongnu.org; Mon, 06 Feb 2023 06:23:02 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzaP-0003Xp-KM
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 06:23:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675682580;
+ s=mimecast20190719; t=1675682581;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+pBZkvwO/MSacYruR8vBHavjUuE24O9czHcjOtXLm1A=;
- b=Q1Czvk/7vagchrxbSnhgWCIoyK5Suq8AkFWKnnIr4XaIDmahcGaEbm0Ni6jtoR7Nx2dfQU
- eSOutn+TkFwZfSeQ82sEVrinjJHyKzVulayolZNFhKR09B0HcEZpDMRBeG3gnGOkfy0SJx
- xkFp/XeJe6Qd+pckEr3cKVe768YOc5w=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=AV1dHV/DKMAbDep2jVZbQdk/CCup6inKTxE45seX6JQ=;
+ b=ZBGclPXnqZPZewW0+0PvCEgIuwKLeFsbcLynMlIzRDwV/5GSaY6yprhLc3+QEiSZ3xMul7
+ TZwSJKcE4R9BIPwnvNSlKa1RLHZPIwxgn/2ApCH4n1lY1mp6SshCB09lKm/whZsiGYBT6b
+ /1uO1SaCTrXREKxkrkkfgL4+uj59mCY=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-90-l4xcpkjLNuORLG3vQhMfmw-1; Mon, 06 Feb 2023 06:21:22 -0500
-X-MC-Unique: l4xcpkjLNuORLG3vQhMfmw-1
+ us-mta-363-M3c4unt1NFyNVhKtRVjbGw-1; Mon, 06 Feb 2023 06:21:27 -0500
+X-MC-Unique: M3c4unt1NFyNVhKtRVjbGw-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D65A41875041;
- Mon,  6 Feb 2023 11:21:21 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5EC891C05151;
+ Mon,  6 Feb 2023 11:21:27 +0000 (UTC)
 Received: from gshan.redhat.com (vpn2-54-63.bne.redhat.com [10.64.54.63])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F04E2492B21;
- Mon,  6 Feb 2023 11:21:10 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6F46B492B21;
+ Mon,  6 Feb 2023 11:21:22 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
  peterx@redhat.com, david@redhat.com, philmd@linaro.org, mst@redhat.com,
  cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com,
  maz@kernel.org, zhenyzha@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH RFCv1 4/8] kvm: Introduce secondary dirty bitmap
-Date: Mon,  6 Feb 2023 19:20:06 +0800
-Message-Id: <20230206112010.99871-5-gshan@redhat.com>
+Subject: [PATCH RFCv1 5/8] kvm: Synchronize secondary bitmap in last stage
+Date: Mon,  6 Feb 2023 19:20:07 +0800
+Message-Id: <20230206112010.99871-6-gshan@redhat.com>
 In-Reply-To: <20230206112010.99871-1-gshan@redhat.com>
 References: <20230206112010.99871-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -97,168 +97,60 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Eh5mXMVZw/Cv
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DaFJRZ4+K93J
 
-When dirty ring is enabled on ARM64, the backup bitmap may be used
-to track the dirty pages in no-running-vcpu situations. The original
-bitmap is the primary one, used for the dirty ring buffer. We need
-the secondary bitmap to collect the backup bitmap for ARM64.
-
-No functional change intended.
+In the last stage of live migration or memory slot removal, the
+backup bitmap needs to be synchronized.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- accel/kvm/kvm-all.c      | 50 ++++++++++++++++++++++++++++++----------
- include/sysemu/kvm_int.h |  1 +
- 2 files changed, 39 insertions(+), 12 deletions(-)
+ accel/kvm/kvm-all.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 01a6a026af..1a93985574 100644
+index 1a93985574..9ec117c441 100644
 --- a/accel/kvm/kvm-all.c
 +++ b/accel/kvm/kvm-all.c
-@@ -553,13 +553,29 @@ static void kvm_log_stop(MemoryListener *listener,
-     }
- }
- 
-+static unsigned long *kvm_slot_dirty_bitmap(KVMSlot *slot, bool primary)
-+{
-+    if (primary) {
-+        return slot->dirty_bmap;
-+    }
-+
-+    return slot->dirty_bmap +
-+           slot->dirty_bmap_size / sizeof(slot->dirty_bmap[0]);
-+}
-+
- /* get kvm's dirty pages bitmap and update qemu's */
--static void kvm_slot_sync_dirty_pages(KVMSlot *slot)
-+static void kvm_slot_sync_dirty_pages(KVMSlot *slot, bool primary)
- {
-+    KVMState *s = kvm_state;
-+    unsigned long *bmap = kvm_slot_dirty_bitmap(slot, primary);
-     ram_addr_t start = slot->ram_start_offset;
-     ram_addr_t pages = slot->memory_size / qemu_real_host_page_size();
- 
--    cpu_physical_memory_set_dirty_lebitmap(slot->dirty_bmap, start, pages);
-+    if (!s->kvm_dirty_ring_with_bitmap && !primary) {
-+        return;
-+    }
-+
-+    cpu_physical_memory_set_dirty_lebitmap(bmap, start, pages);
- }
- 
- static void kvm_slot_reset_dirty_pages(KVMSlot *slot)
-@@ -572,6 +588,9 @@ static void kvm_slot_reset_dirty_pages(KVMSlot *slot)
- /* Allocate the dirty bitmap for a slot  */
- static void kvm_slot_init_dirty_bitmap(KVMSlot *mem)
- {
-+    KVMState *s = kvm_state;
-+    hwaddr bitmap_size, alloc_size;
-+
-     if (!(mem->flags & KVM_MEM_LOG_DIRTY_PAGES) || mem->dirty_bmap) {
-         return;
-     }
-@@ -593,9 +612,11 @@ static void kvm_slot_init_dirty_bitmap(KVMSlot *mem)
-      * And mem->memory_size is aligned to it (otherwise this mem can't
-      * be registered to KVM).
-      */
--    hwaddr bitmap_size = ALIGN(mem->memory_size / qemu_real_host_page_size(),
--                                        /*HOST_LONG_BITS*/ 64) / 8;
--    mem->dirty_bmap = g_malloc0(bitmap_size);
-+    bitmap_size = ALIGN(mem->memory_size / qemu_real_host_page_size(),
-+                        /*HOST_LONG_BITS*/ 64) / 8;
-+    alloc_size = s->kvm_dirty_ring_with_bitmap ? 2 * bitmap_size : bitmap_size;
-+
-+    mem->dirty_bmap = g_malloc0(alloc_size);
-     mem->dirty_bmap_size = bitmap_size;
- }
- 
-@@ -603,12 +624,16 @@ static void kvm_slot_init_dirty_bitmap(KVMSlot *mem)
-  * Sync dirty bitmap from kernel to KVMSlot.dirty_bmap, return true if
-  * succeeded, false otherwise
-  */
--static bool kvm_slot_get_dirty_log(KVMState *s, KVMSlot *slot)
-+static bool kvm_slot_get_dirty_log(KVMState *s, KVMSlot *slot, bool primary)
- {
-     struct kvm_dirty_log d = {};
-     int ret;
- 
--    d.dirty_bitmap = slot->dirty_bmap;
-+    if (!s->kvm_dirty_ring_with_bitmap && !primary) {
-+        return false;
-+    }
-+
-+    d.dirty_bitmap = kvm_slot_dirty_bitmap(slot, primary);
-     d.slot = slot->slot | (slot->as_id << 16);
-     ret = kvm_vm_ioctl(s, KVM_GET_DIRTY_LOG, &d);
- 
-@@ -839,8 +864,8 @@ static void kvm_physical_sync_dirty_bitmap(KVMMemoryListener *kml,
-             /* We don't have a slot if we want to trap every access. */
-             return;
-         }
--        if (kvm_slot_get_dirty_log(s, mem)) {
--            kvm_slot_sync_dirty_pages(mem);
-+        if (kvm_slot_get_dirty_log(s, mem, true)) {
-+            kvm_slot_sync_dirty_pages(mem, true);
-         }
-         start_addr += slot_size;
-         size -= slot_size;
-@@ -1353,9 +1378,9 @@ static void kvm_set_phys_mem(KVMMemoryListener *kml,
+@@ -1377,10 +1377,12 @@ static void kvm_set_phys_mem(KVMMemoryListener *kml,
+                  */
                  if (kvm_state->kvm_dirty_ring_size) {
                      kvm_dirty_ring_reap_locked(kvm_state, NULL);
++                    kvm_slot_get_dirty_log(kvm_state, mem, false);
                  } else {
--                    kvm_slot_get_dirty_log(kvm_state, mem);
-+                    kvm_slot_get_dirty_log(kvm_state, mem, true);
+                     kvm_slot_get_dirty_log(kvm_state, mem, true);
                  }
--                kvm_slot_sync_dirty_pages(mem);
-+                kvm_slot_sync_dirty_pages(mem, true);
+                 kvm_slot_sync_dirty_pages(mem, true);
++                kvm_slot_sync_dirty_pages(mem, false);
              }
  
              /* unregister the slot */
-@@ -1572,7 +1597,7 @@ static void kvm_log_sync_global(MemoryListener *l, bool last_stage)
-     for (i = 0; i < s->nr_slots; i++) {
-         mem = &kml->slots[i];
-         if (mem->memory_size && mem->flags & KVM_MEM_LOG_DIRTY_PAGES) {
--            kvm_slot_sync_dirty_pages(mem);
-+            kvm_slot_sync_dirty_pages(mem, true);
-             /*
-              * This is not needed by KVM_GET_DIRTY_LOG because the
-              * ioctl will unconditionally overwrite the whole region.
-@@ -3701,6 +3726,7 @@ static void kvm_accel_instance_init(Object *obj)
-     s->kernel_irqchip_split = ON_OFF_AUTO_AUTO;
-     /* KVM dirty ring is by default off */
-     s->kvm_dirty_ring_size = 0;
-+    s->kvm_dirty_ring_with_bitmap = false;
-     s->notify_vmexit = NOTIFY_VMEXIT_OPTION_RUN;
-     s->notify_window = 0;
- }
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index 60b520a13e..fdd5b1bde0 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -115,6 +115,7 @@ struct KVMState
-     } *as;
-     uint64_t kvm_dirty_ring_bytes;  /* Size of the per-vcpu dirty ring */
-     uint32_t kvm_dirty_ring_size;   /* Number of dirty GFNs per ring */
-+    bool kvm_dirty_ring_with_bitmap;
-     struct KVMDirtyRingReaper reaper;
-     NotifyVmexitOption notify_vmexit;
-     uint32_t notify_window;
+@@ -1604,6 +1606,11 @@ static void kvm_log_sync_global(MemoryListener *l, bool last_stage)
+              * However kvm dirty ring has no such side effect.
+              */
+             kvm_slot_reset_dirty_pages(mem);
++
++            if (s->kvm_dirty_ring_with_bitmap && last_stage &&
++                kvm_slot_get_dirty_log(s, mem, false)) {
++                kvm_slot_sync_dirty_pages(mem, false);
++            }
+         }
+     }
+     kvm_slots_unlock();
 -- 
 2.23.0
 

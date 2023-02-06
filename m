@@ -1,148 +1,275 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4229866ejb;
-        Mon, 6 Feb 2023 06:11:27 -0800 (PST)
-X-Google-Smtp-Source: AK7set91AdQPfwL+0EYVf5zoSbJnqAAGIhBoBWYhxHWHUoQJe0khQo2lg8DSQQ6wj2NUgjx6l5jJ
-X-Received: by 2002:a05:622a:1647:b0:3ba:18c2:99e7 with SMTP id y7-20020a05622a164700b003ba18c299e7mr13204533qtj.45.1675692686987;
-        Mon, 06 Feb 2023 06:11:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675692686; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4075141ejb;
+        Mon, 6 Feb 2023 03:22:36 -0800 (PST)
+X-Google-Smtp-Source: AK7set+stllZC8L7O8Ym4BrGBY2MJsngCNuOn51Hdc9LMZiGIyztf1EJQKbJiCcwGHH7ux+2L7nn
+X-Received: by 2002:a05:6214:1c09:b0:56c:103:2965 with SMTP id u9-20020a0562141c0900b0056c01032965mr1288431qvc.21.1675682556160;
+        Mon, 06 Feb 2023 03:22:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675682556; cv=none;
         d=google.com; s=arc-20160816;
-        b=fj+EKZbMnd7lQ8/Ae3xF6A+JyJmuSa3WExuUP6BZmt7r5nNHEtrBdYf874YRyaHK5Y
-         9VKhQMc4vLT+ambs1QPjTQMiyrSlISCWpm6M8sQI9BS2nXt+2FQ23eDjjnfs+p1SkKXS
-         imfwW6HlOcuGy5m+eBjliXNAFxATp50yocy7kULqUIc8+4J/pQL+mDUHzX51O6Xieg5Y
-         r8I6Kv5GjR6cOvUii6blQlP5ubmE5bQzw3A026HzNfaZ6xekcc4UUiNWMFhQLNCWG00/
-         AHbLD920liVzpVDCCSj+lnVCP3UovsdWYZ9t55p4abed/LKP1otbmy0beslhKOhnxdN7
-         Zb+w==
+        b=hGWUJUHR0CbjcZBcc+PK68fN9WpOKwTZ0lURJEOOwcZM8UY5bsQSPU+tnXAQ+fU8wk
+         D/Ooufgfwt2aH0DTiXwzN8R8mreZc9juV+i0x4vG6HGJUrPum+23IAhC1K2GeyPpMIvM
+         AD6QTeLEsnGhpCMuqi0ZrnO8oNWaU5Vt2O+HnCONO2qP/2LLOGE7w7ikRChkqbhkbot4
+         QJZ7l9befo/sSsFWfDRFZExOLuk4iVmsx0CT+p9uNuXNTv+DB7UMaY4Yn4fVjHpKHswJ
+         jCAJjzPvSBp9NTcVt2ETSW4PnB1lnh7EAal6uvnJDtqEkJNsFv5t2G1FZYhQ7UpNJ4cg
+         N6pA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=6Sr6k0UBoZ4rpW7+N3yTty4+4axcyqsEsxFDoi5sJPA=;
-        b=F2O07qSJBFY9KgCfpBLJwIu0amYe+nxjtGZjprYmXXPdhlfGl+aZvXndRdEJr987Rg
-         l/zG9dxx3Rtgf6ZeEKZcPUIdY1yLhbAY12l7zmpFC9UWWju+RDThZ7tYGBlJoOiVzjUa
-         w6SwePXDzsmIJP7EuqQfF8eD7Gv1AtlVoG+vZBWNBre6YMc1ruCXy8ip0VkG2QYMwTcl
-         rMUEaZqQn/MnRW2fBblNEO0Kxei7MCZuQ0sJia7XFW9HeOeWcs35B+ESTCax4vCfxDf1
-         pBGSJCk6Il5qNjohHqlM4f3YPRSUQFuF7eL0oW80f5eB3o1hoIpD8ebAQ0zQV1pf5aM9
-         iRJQ==
+         :from:dkim-signature;
+        bh=/Q1skwqJamEhJJMNEc5BkiWW2OHQ6d6mDlGtktQruOA=;
+        b=fsWqyTGXGn1GHfpCws33UhcXVZSIpTb/cSgvokG7dSIdxbm6+Np2woKkf/WSrX5n7T
+         VIdPwc6xzjYq7ZpSuWc/zSG3LyWP/nEN/MeDR3aIVwNc8KGi6DkbWDfbKB6rrYnC1sjS
+         bbYV9lsk1awAhamf3jWfE1ajaCIcYaDsLtNeeZWaFZyROjhvEs5euUCm0cYWRhcjV9Vr
+         2XH8BE5uxMjDwjanbtABzLrjE6ygu45OA2MwOXhs+vrei9wn1PC9Elw7bnt5IcVv3wUC
+         E0CwDc/mgCEdvavXs16t4W+AI3x2Oyvpe7aR6WW28Spnkg/telmXzYPl0TLA1IQgdNbZ
+         w94A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ybztKT7l;
-       dkim=neutral (no key) header.i=@nongnu.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZYLLrMGx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 192-20020a3704c9000000b0072602c36130si8957743qke.173.2023.02.06.06.11.26
+        by mx.google.com with ESMTPS id l8-20020a0cac08000000b0056bf62f07e6si2482807qvb.261.2023.02.06.03.22.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Feb 2023 06:11:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Feb 2023 03:22:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ybztKT7l;
-       dkim=neutral (no key) header.i=@nongnu.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZYLLrMGx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pP2D0-0006BS-EM; Mon, 06 Feb 2023 09:11:02 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pOzZp-0004I4-WD; Mon, 06 Feb 2023 06:22:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1pP2Co-00067z-Rn; Mon, 06 Feb 2023 09:10:52 -0500
-Received: from smtp-out2.suse.de ([195.135.220.29])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1pP2Cm-0002h2-Kj; Mon, 06 Feb 2023 09:10:49 -0500
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id 8DE9F6042A;
- Mon,  6 Feb 2023 14:10:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1675692646; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzZi-0004FT-NB
+ for qemu-devel@nongnu.org; Mon, 06 Feb 2023 06:22:20 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pOzZg-0003Nz-0e
+ for qemu-devel@nongnu.org; Mon, 06 Feb 2023 06:22:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1675682535;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6Sr6k0UBoZ4rpW7+N3yTty4+4axcyqsEsxFDoi5sJPA=;
- b=ybztKT7l+Ad1tS0evGb3xpqrJtygw25BQ5uIRjUOVXIYq9WtOQ1h2QFB22o5sZLQbksi+U
- LeF79aDl3dYj7ExKv8GQygQ+50RNKU6ypAVQvE8Q19jEMknXHiz5PQXiKmuNwfAwoIBHLC
- dcqQRzykVElC8EqVWK20mkj6vjCAuxY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1675692646;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6Sr6k0UBoZ4rpW7+N3yTty4+4axcyqsEsxFDoi5sJPA=;
- b=yaO9VE5O+slz20P51rLo020ziIBxUr47DNgE9g8wIhGvkpa+1Fq7ib2/aOLrasp0QMip1M
- muFIIIfQA4VFNhBg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ bh=/Q1skwqJamEhJJMNEc5BkiWW2OHQ6d6mDlGtktQruOA=;
+ b=ZYLLrMGxiuKQnsQTlivGsYl/zV7aR++pKJWDNUILmWH+/Qqa/PQOeFhIAxyFi2Yq4FICTw
+ Go4PTb/OzhS00xYkq7qNEOqVKYhU29J/Rx9r5BKRzZ1TDAbp+uz2GNlm9fJCMK+0ZVL9jq
+ DsAxcUJnvSQY2C7fResX/E6vgMZkpNI=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-160-DutwdtJMP5qQUYAfgfdfIw-1; Mon, 06 Feb 2023 06:21:05 -0500
+X-MC-Unique: DutwdtJMP5qQUYAfgfdfIw-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 25F49138E7;
- Mon,  6 Feb 2023 14:10:44 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id YAZTN2QK4WOgQAAAMHmgww
- (envelope-from <farosas@suse.de>); Mon, 06 Feb 2023 14:10:44 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Subject: [PATCH 09/10] hw/arm: Select e1000e for sbsa-ref machine
-Date: Mon,  6 Feb 2023 11:08:08 -0300
-Message-Id: <20230206140809.26028-10-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230206140809.26028-1-farosas@suse.de>
-References: <20230206140809.26028-1-farosas@suse.de>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 28DD5811E9C;
+ Mon,  6 Feb 2023 11:21:05 +0000 (UTC)
+Received: from gshan.redhat.com (vpn2-54-63.bne.redhat.com [10.64.54.63])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5609C492B21;
+ Mon,  6 Feb 2023 11:21:00 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
+ peterx@redhat.com, david@redhat.com, philmd@linaro.org, mst@redhat.com,
+ cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com,
+ maz@kernel.org, zhenyzha@redhat.com, shan.gavin@gmail.com
+Subject: [PATCH RFCv1 2/8] memory: Add last stage indicator to global dirty
+ log synchronization
+Date: Mon,  6 Feb 2023 19:20:04 +0800
+Message-Id: <20230206112010.99871-3-gshan@redhat.com>
+In-Reply-To: <20230206112010.99871-1-gshan@redhat.com>
+References: <20230206112010.99871-1-gshan@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=195.135.220.29; envelope-from=farosas@suse.de;
- helo=smtp-out2.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fyUExzqKnRZx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PAZVQyXC5c6i
 
-This machine explicitly selects the e1000e network adapter if no other
-option was given in the command line. Make sure e1000e is present in
-the build.
+The global dirty log synchronization is used when KVM and dirty ring
+are enabled. There is a particularity for ARM64 where the backup
+bitmap is used to track dirty pages in non-running-vcpu situations.
+It means the dirty ring works with the combination of ring buffer
+and backup bitmap. The dirty bits in the backup bitmap needs to
+collected in the last stage of live migration.
 
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
+In order to identify the last stage of live migration and pass it
+down, an extra parameter is added to the relevant functions and
+callback. This last stage information isn't used yet.
+
+No functional change intended.
+
+Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- hw/arm/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+ accel/kvm/kvm-all.c   |  2 +-
+ include/exec/memory.h |  5 +++--
+ migration/dirtyrate.c |  4 ++--
+ migration/ram.c       |  6 +++---
+ softmmu/memory.c      | 10 +++++-----
+ 5 files changed, 14 insertions(+), 13 deletions(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 823f8b11f1..5022d519ea 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -233,6 +233,7 @@ config SBSA_REF
-     select USB_EHCI_SYSBUS
-     select WDT_SBSA
-     select ARM_GICV3_TCG
-+    select E1000E_PCI_EXPRESS
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 9b26582655..01a6a026af 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -1554,7 +1554,7 @@ static void kvm_log_sync(MemoryListener *listener,
+     kvm_slots_unlock();
+ }
  
- config SABRELITE
-     bool
+-static void kvm_log_sync_global(MemoryListener *l)
++static void kvm_log_sync_global(MemoryListener *l, bool last_stage)
+ {
+     KVMMemoryListener *kml = container_of(l, KVMMemoryListener, listener);
+     KVMState *s = kvm_state;
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 2e602a2fad..75b2fd9f48 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -929,8 +929,9 @@ struct MemoryListener {
+      * its @log_sync must be NULL.  Vice versa.
+      *
+      * @listener: The #MemoryListener.
++     * @last_stage: The last stage to synchronize the log during migration
+      */
+-    void (*log_sync_global)(MemoryListener *listener);
++    void (*log_sync_global)(MemoryListener *listener, bool last_stage);
+ 
+     /**
+      * @log_clear:
+@@ -2408,7 +2409,7 @@ MemoryRegionSection memory_region_find(MemoryRegion *mr,
+  *
+  * Synchronizes the dirty page log for all address spaces.
+  */
+-void memory_global_dirty_log_sync(void);
++void memory_global_dirty_log_sync(bool last_stage);
+ 
+ /**
+  * memory_global_dirty_log_sync: synchronize the dirty log for all memory
+diff --git a/migration/dirtyrate.c b/migration/dirtyrate.c
+index 4bfb97fc68..aecc8142e4 100644
+--- a/migration/dirtyrate.c
++++ b/migration/dirtyrate.c
+@@ -101,7 +101,7 @@ void global_dirty_log_change(unsigned int flag, bool start)
+ static void global_dirty_log_sync(unsigned int flag, bool one_shot)
+ {
+     qemu_mutex_lock_iothread();
+-    memory_global_dirty_log_sync();
++    memory_global_dirty_log_sync(false);
+     if (one_shot) {
+         memory_global_dirty_log_stop(flag);
+     }
+@@ -553,7 +553,7 @@ static void calculate_dirtyrate_dirty_bitmap(struct DirtyRateConfig config)
+      * skip it unconditionally and start dirty tracking
+      * from 2'round of log sync
+      */
+-    memory_global_dirty_log_sync();
++    memory_global_dirty_log_sync(false);
+ 
+     /*
+      * reset page protect manually and unconditionally.
+diff --git a/migration/ram.c b/migration/ram.c
+index 334309f1c6..d1b9b270ec 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -1188,7 +1188,7 @@ static void migration_bitmap_sync(RAMState *rs)
+     }
+ 
+     trace_migration_bitmap_sync_start();
+-    memory_global_dirty_log_sync();
++    memory_global_dirty_log_sync(false);
+ 
+     qemu_mutex_lock(&rs->bitmap_mutex);
+     WITH_RCU_READ_LOCK_GUARD() {
+@@ -3817,7 +3817,7 @@ void colo_incoming_start_dirty_log(void)
+     qemu_mutex_lock_iothread();
+     qemu_mutex_lock_ramlist();
+ 
+-    memory_global_dirty_log_sync();
++    memory_global_dirty_log_sync(false);
+     WITH_RCU_READ_LOCK_GUARD() {
+         RAMBLOCK_FOREACH_NOT_IGNORED(block) {
+             ramblock_sync_dirty_bitmap(ram_state, block);
+@@ -4114,7 +4114,7 @@ void colo_flush_ram_cache(void)
+     void *src_host;
+     unsigned long offset = 0;
+ 
+-    memory_global_dirty_log_sync();
++    memory_global_dirty_log_sync(false);
+     WITH_RCU_READ_LOCK_GUARD() {
+         RAMBLOCK_FOREACH_NOT_IGNORED(block) {
+             ramblock_sync_dirty_bitmap(ram_state, block);
+diff --git a/softmmu/memory.c b/softmmu/memory.c
+index 9d64efca26..1cc36ef028 100644
+--- a/softmmu/memory.c
++++ b/softmmu/memory.c
+@@ -2224,7 +2224,7 @@ void memory_region_set_dirty(MemoryRegion *mr, hwaddr addr,
+  * If memory region `mr' is NULL, do global sync.  Otherwise, sync
+  * dirty bitmap for the specified memory region.
+  */
+-static void memory_region_sync_dirty_bitmap(MemoryRegion *mr)
++static void memory_region_sync_dirty_bitmap(MemoryRegion *mr, bool last_stage)
+ {
+     MemoryListener *listener;
+     AddressSpace *as;
+@@ -2254,7 +2254,7 @@ static void memory_region_sync_dirty_bitmap(MemoryRegion *mr)
+              * is to do a global sync, because we are not capable to
+              * sync in a finer granularity.
+              */
+-            listener->log_sync_global(listener);
++            listener->log_sync_global(listener, last_stage);
+             trace_memory_region_sync_dirty(mr ? mr->name : "(all)", listener->name, 1);
+         }
+     }
+@@ -2318,7 +2318,7 @@ DirtyBitmapSnapshot *memory_region_snapshot_and_clear_dirty(MemoryRegion *mr,
+ {
+     DirtyBitmapSnapshot *snapshot;
+     assert(mr->ram_block);
+-    memory_region_sync_dirty_bitmap(mr);
++    memory_region_sync_dirty_bitmap(mr, false);
+     snapshot = cpu_physical_memory_snapshot_and_clear_dirty(mr, addr, size, client);
+     memory_global_after_dirty_log_sync();
+     return snapshot;
+@@ -2844,9 +2844,9 @@ bool memory_region_present(MemoryRegion *container, hwaddr addr)
+     return mr && mr != container;
+ }
+ 
+-void memory_global_dirty_log_sync(void)
++void memory_global_dirty_log_sync(bool last_stage)
+ {
+-    memory_region_sync_dirty_bitmap(NULL);
++    memory_region_sync_dirty_bitmap(NULL, last_stage);
+ }
+ 
+ void memory_global_after_dirty_log_sync(void)
 -- 
-2.35.3
+2.23.0
 

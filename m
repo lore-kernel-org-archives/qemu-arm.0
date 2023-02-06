@@ -1,111 +1,110 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4478761ejb;
-        Mon, 6 Feb 2023 10:59:40 -0800 (PST)
-X-Google-Smtp-Source: AK7set+UN5LtKZCUPYU5OSTIdDvLDNHNtTHLYP/5nafHcWrJnO1rAJiji9lbKk0k067jmtO5Oaka
-X-Received: by 2002:a05:6214:240b:b0:56b:f9d9:1aa3 with SMTP id fv11-20020a056214240b00b0056bf9d91aa3mr256341qvb.14.1675709980587;
-        Mon, 06 Feb 2023 10:59:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675709980; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4479909ejb;
+        Mon, 6 Feb 2023 11:01:09 -0800 (PST)
+X-Google-Smtp-Source: AK7set/X+RTgDQ6/nQtJ3BX393qnZeyXU+nZD9isMQX7ikBtpZpcrzfN3lqOjhY6WelBh6WDHARm
+X-Received: by 2002:a05:6214:e81:b0:537:649f:747c with SMTP id hf1-20020a0562140e8100b00537649f747cmr277647qvb.11.1675710069423;
+        Mon, 06 Feb 2023 11:01:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675710069; cv=none;
         d=google.com; s=arc-20160816;
-        b=sDEJWJWnxJnukoSG+iQiaW8sP2qW7g1lQSazRKjprr/JHNcRI2bFqOiUWlmx3LS/td
-         kRD+Ow9O6l3wbDpUxkvzQTvsgqyam5gs4lMTekWEAGzv/4llnib3p4yQqV30SlKmXF+F
-         Z0peVOKq/J8MB+TFtjwfOswOqBGlV5csJukLmxrJ8gtxX3p/R44nk+PNR3iyZzNshIaw
-         OZV18oR/14pd3pULsorNLG43wkczkUzyrazag77Q+GdfsDDFEMYwlMd6KNGd93pASyJh
-         5Ae6zDPO8nvlAMV5I6j8/B/YfB66XTuHm9taeCD012vpOMZ1SntNveZ35we4oBafz/hp
-         x2/g==
+        b=eCi960V71m2EnKPT3Wy4YuzQFV2TnKIGqQBG9zwzeYbERGQ8Ow9XMDyGhZIrMSg5kz
+         7M8yS+GkkrIcsJJJluI6qlY3YYbEMKd1Zx/03P+WRrbR3apiZOHHfZ/BBvSrjbJ0oDKx
+         jOS24TqnDJZmYFZ2ILrmdSPuS9HFf1txEVSq8xJqHjrxfdrQL1e+MbxGy3Y3rCzzUAgs
+         jzPLRNK1zJmUEPUttVF8hv3AXppKC+5SGIP8JjztoE55DfFKuopffCxgtblBFPK1/UtT
+         g5DVJNQcwHWo0cUsysVzgUyHTcbJ9j1e0GmPCOYxDkCa8sOhd/g9opnfvMRJ7RFSoJcz
+         6X/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=f3OtrwXSwfJpC87TsYuhJYLn56aWcRnxzuKLBspPg10=;
-        b=sLcdCTIHdUPQdrFAjXXzWVtSRfXq8jhstPUroMUbRzDZTd3Lv3C22gDCqi2kZxxLgO
-         g4vxNW8eyCN24fttKCc9Z/f0tjScPxXs8FkLjBQ1tt+qoxcxVexTreatIHEUSutPH3c/
-         Bq7BOxQaZHRA9x/hH7zlFbXYbAjZGeqFVTFym3cjR5R4gFosxJmU1Z0tShQ2jDs6XcQU
-         5lz6pmGy5x+Edn9DGq6nduGTRn3UXjOd5Ibu0PLjpcyNGprqlmsjHCdt5IHl5a81lHwu
-         ZVcKb1e9c3b2T8Dqr+ZuTGyJ+tiQE+Za5fh3j5p5tg9hPTj/L09cKMNhrJE6LcOcA6Qa
-         WkrA==
+        bh=sh+zRdZjqnzdHsztzozyzvh2mHcmb+rVWQloRpkidLo=;
+        b=GaEjKg42kcGh/c3+cweZ+B5yf+XticgdJpvRECD52CY0hd2bLEG1Tz8Pc/Dt+TDGO2
+         Bsl3lAh4b7LBUoN0E8SZiI0YGrcLYLUwaCJjl4sxnToQ7o1m/Jws8CvIBGiXjXmW1B+q
+         5NRBd10ZCNgJFC4Yp1VG0eGSGbPOv8r73TL9IFdbIu6Qw78AlHYhLyc/aNBaX/CqRj73
+         cqUqf1MlUFMgWdlc7QIoPrJV082h8HiDW7lsLss3lcqAmDx5Y+zZkxDOjnd706ETT3f6
+         Pen9X9fzPaUT6N0SKOmLeOygdY34vv0/E8RqPLycyWSW4wJE0+lCfhX2IBHntzEjZRom
+         lJfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=us1R5tjs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S8rRBXUw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 137-20020a37068f000000b0071ea29b1836si8620534qkg.278.2023.02.06.10.59.40
+        by mx.google.com with ESMTPS id pt5-20020a056214048500b00534c0382230si9626441qvb.332.2023.02.06.11.01.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Feb 2023 10:59:40 -0800 (PST)
+        Mon, 06 Feb 2023 11:01:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=us1R5tjs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S8rRBXUw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pP6i5-0001DY-TO; Mon, 06 Feb 2023 13:59:25 -0500
+	id 1pP6jb-00022K-LQ; Mon, 06 Feb 2023 14:00:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pP6i1-0001D8-NN
- for qemu-arm@nongnu.org; Mon, 06 Feb 2023 13:59:21 -0500
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pP6jP-0001wn-NX
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 14:00:48 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pP6hz-0006cA-F4
- for qemu-arm@nongnu.org; Mon, 06 Feb 2023 13:59:20 -0500
-Received: by mail-pf1-x433.google.com with SMTP id ay1so9100952pfb.7
- for <qemu-arm@nongnu.org>; Mon, 06 Feb 2023 10:59:19 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pP6jK-00074U-Bg
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 14:00:45 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ c4-20020a1c3504000000b003d9e2f72093so11510424wma.1
+ for <qemu-arm@nongnu.org>; Mon, 06 Feb 2023 11:00:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=f3OtrwXSwfJpC87TsYuhJYLn56aWcRnxzuKLBspPg10=;
- b=us1R5tjsXexYo2le3Gbc5jUGB/XKVYFGZcT8+Fn6OZUMJObnlkvEs5fRl2RusAeUDC
- o9um8XSBS239cBIP9jgNDSLNcv0IspJlxNx5RTISEQhkBS5zK/6yCpAInr8qtlWo0VlL
- vJgkfWsL21WlZyMVdrRkc6CT6gj8RYpyYluwjAmK0WifvcOOaYLfDvzfKXC4GvsIv2J0
- JiHUFAYFQKtyo0fzSSwy/scljEwWsrGjcoDE1fKKU8/M2qZyUxC4hTCozOZACboMmUfR
- 1bsUyoEc9TlvOWKPxzw9WT5f0Lla3tn4W95b0oRfnEhcc/py3xrstRhMwGDvIlboYaEH
- S8zw==
+ bh=sh+zRdZjqnzdHsztzozyzvh2mHcmb+rVWQloRpkidLo=;
+ b=S8rRBXUwf+vME6a7H6sLbKh4unJtEBImJfY+ltPgh8gDYbxCLktRqZSMVwLvYcMRH1
+ 1bAg9rbtu5AcYwEfvfUOD9hWlyNUMh7ePgeEhJ0StaPzJ5H+zvDGqlpTIO5V+cGqTSq1
+ VZSYxB6ORi+pqwi2hZZRVojeH8TLglmtSDXf4rieh1G0oxkRb4u5myL0pPoFTgoVK5km
+ PumefimQjJPlQL86BpurCCE3DV9DArBy4ApWAwz1KCeOukjzFvnRFFQcV8oZsW/eJWme
+ l5HvcIrxagFzbmKps8CxFRKciyh5GLPmlEDa8/B04OkpRLAQG5hcdyS8A7jAk/XELmJp
+ ZmZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=f3OtrwXSwfJpC87TsYuhJYLn56aWcRnxzuKLBspPg10=;
- b=ZXPtt01u60WfuhfcLpoIpc8P39+fc8a4OiWZ0pdhNx7owrA+iHKvazN/sIrzrpj9Uc
- IOy5i28PyLLS86Fh0gz7+JdZmhzQ4hJYyK5UeHcwjrCFAGnlvh5qrASZnDGfgdPNkUWa
- 0qSlEX47wQyv92i3abNM/zG3U+oSuzLs4PKYaZ9+77CWMOesnBV5QirvNswaXQjPlJKq
- sIfE0pTuT6JYVuNMfCb7nOjOQzIOF3P9PCcKVLoxAHW6bHXIaCiSFbqdcEjbyKMWWrkI
- BNivRulAx4M/Pm/rlSIDWs5BedjPRxe/UlA7+RIbfh8kfKo6WDZrLMUTr4BhEBiN2BuG
- DkRQ==
-X-Gm-Message-State: AO0yUKVIYGtvphotE/KxT3ZnDMvlPTHeijpYe1Yyb13/06LxzAC9ABzN
- mTgrmjhqUniuckAAA9jG4Xud4PI2Yc/9eD11JjhXkQ==
-X-Received: by 2002:a62:1605:0:b0:58d:be61:8bc8 with SMTP id
- 5-20020a621605000000b0058dbe618bc8mr491197pfw.8.1675709958155; 
- Mon, 06 Feb 2023 10:59:18 -0800 (PST)
-Received: from [192.168.101.227] (rrcs-74-87-59-234.west.biz.rr.com.
- [74.87.59.234]) by smtp.gmail.com with ESMTPSA id
- 187-20020a6217c4000000b005825b8e0540sm7476882pfx.204.2023.02.06.10.59.16
+ bh=sh+zRdZjqnzdHsztzozyzvh2mHcmb+rVWQloRpkidLo=;
+ b=jPQV+vvXaJoRoCZTgLy91rX0yQAAjTqXqcZqWro8wtIFm8H95arNQNjX59q2CFlSw8
+ I4BA7//0Jr3xNpQY4MwC/9FZEsEo8svC3tCWBSf33zphGt401ukyu/UoioFmoOAsKHRd
+ pRApx4sNEcyfAUzYAYbkirjLk1bT5nuOnY7i6j6HeTCqhUGr56G781mC4bTtBgdYk29x
+ mOn2kdtHFHfFnfPf26Pit5QsBh6RjJ4rQfM/PSTY2yRt2Bl62tR9TYjfbl2K20TO8L1e
+ llLMTpNK12V5Fn63AWM2NnEKFhX9Vs5G9+ILUA27klbS2grlC2WbrgK5ps7X4Gu/ts4N
+ 3igA==
+X-Gm-Message-State: AO0yUKXVDNI6+DEMsT64Vq2hbEuL3cMWhneoVscTDriPhPux+a+HO35N
+ Qh6vhJVdhBiPczKmx72y54VErw==
+X-Received: by 2002:a05:600c:16d6:b0:3db:14d0:65be with SMTP id
+ l22-20020a05600c16d600b003db14d065bemr667805wmn.34.1675710040636; 
+ Mon, 06 Feb 2023 11:00:40 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ j14-20020a05600c130e00b003df241f52e8sm10957016wmf.42.2023.02.06.11.00.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Feb 2023 10:59:17 -0800 (PST)
-Message-ID: <1f778126-e60c-261f-b40b-7f6dd8476c6f@linaro.org>
-Date: Mon, 6 Feb 2023 08:59:14 -1000
+ Mon, 06 Feb 2023 11:00:40 -0800 (PST)
+Message-ID: <55a05bd4-5dd9-6880-2d61-22c31298d1bf@linaro.org>
+Date: Mon, 6 Feb 2023 20:00:38 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 7/9] target/arm: Declare CPU <-> NVIC helpers in
- 'hw/intc/armv7m_nvic.h'
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH 6/9] target/arm: Restrict CPUARMState::nvic to sysemu and
+ store as NVICState*
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 References: <20230206121714.85084-1-philmd@linaro.org>
- <20230206121714.85084-8-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230206121714.85084-8-philmd@linaro.org>
+ <20230206121714.85084-7-philmd@linaro.org>
+ <888efe85-b495-41c6-742e-70e9a0a5dfe1@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <888efe85-b495-41c6-742e-70e9a0a5dfe1@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
@@ -127,21 +126,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mVu9DW1s2xok
+X-TUID: hT+fKG8za7qA
 
-On 2/6/23 02:17, Philippe Mathieu-Daudé wrote:
-> While dozens of files include "cpu.h", only 3 files require
-> these NVIC helper declarations.
+On 6/2/23 19:57, Richard Henderson wrote:
+> On 2/6/23 02:17, Philippe Mathieu-Daudé wrote:
+>> There is no point in using a void pointer to access the NVIC.
+>> Use the real type to avoid casting it while debugging.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
 > 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   include/hw/intc/armv7m_nvic.h | 123 ++++++++++++++++++++++++++++++++++
->   target/arm/cpu.c              |   4 +-
->   target/arm/cpu.h              | 123 ----------------------------------
->   target/arm/cpu_tcg.c          |   3 +
->   target/arm/m_helper.c         |   3 +
->   5 files changed, 132 insertions(+), 124 deletions(-)
+> This is doing several things at once.  The nvic interface change needn't 
+> be done simultaneously.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+You mean this change?
 
-r~
+-typedef struct NVICState NVICState;
+-DECLARE_INSTANCE_CHECKER(NVICState, NVIC,
+-                         TYPE_NVIC)
++OBJECT_DECLARE_SIMPLE_TYPE(NVICState, NVIC)
+
+This is a No-OP, converting from the older DECLARE_INSTANCE_CHECKER
+style to the newer OBJECT_DECLARE_SIMPLE_TYPE. But OK, unrelated, I'll
+remove it from the patch.

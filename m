@@ -1,274 +1,151 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4664631ejb;
-        Mon, 6 Feb 2023 15:05:44 -0800 (PST)
-X-Google-Smtp-Source: AK7set91jhxmCLvDHqdbfz9Q7YYMcCLEkLXKWDbwoQ63KnGj7h9IoEZE+m2j06nZ8KAV9kfn2lSx
-X-Received: by 2002:ac8:5e4c:0:b0:3b6:3acb:7f70 with SMTP id i12-20020ac85e4c000000b003b63acb7f70mr1697109qtx.61.1675724744746;
-        Mon, 06 Feb 2023 15:05:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675724744; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4687160ejb;
+        Mon, 6 Feb 2023 15:35:23 -0800 (PST)
+X-Google-Smtp-Source: AK7set8Dk9S8tyhsKtc7el/HoqykTNh7HggTj+OQevVM5ouTPoCcJ+y/ac5juq6L3k5dVt12xhYE
+X-Received: by 2002:ac8:4e88:0:b0:3b8:8756:6de8 with SMTP id 8-20020ac84e88000000b003b887566de8mr1823745qtp.67.1675726522968;
+        Mon, 06 Feb 2023 15:35:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675726522; cv=none;
         d=google.com; s=arc-20160816;
-        b=SjKd3ge4w//33ImRChpkVfehstHqDmZtB0FuhfYsdF6CUDXXmxUtyxYIBgUX/NAkU/
-         IvSCJJcnXf0TXuxApix/ZGbIERTEjSWX0pHZADJA5PED7jRLKvgmsc2w4Rr+PheW5cod
-         ZO4syfs7Y7CttBq7xQFpBkMEcxkCQAmCrxN18716E8SBNHE/jdn4wBRD/KqNddYfOuqz
-         7WRkDStrFmATdYYxmez3oEjGmJbmL452mEsLINbVrI/OceTwWH3l9Zm6Ib1II4VEKIor
-         qO0a4bxjIiqKl3yuFUzDUD7ivmLEL4nh+Qj+E7TIJnk6omY0oB8+KzZEGQeqI1TviJkC
-         yI2A==
+        b=i6y4hyoxeXAOsqdTvj2FhZ/z1YvbzVSN/kZNt0N6w0hWN7QGJAVnV1u1zdgRLVrk2b
+         nxvoBAZucYjLTzNQCNPmIXxcN+7WLDFE3TnLBGw2N+Og0dU+eFB3sTdbzAExISZ+DjXb
+         vlWkOHUnqr2STd21U8+4OZmq2I7nLg/oJnRnZ3RtgQ0didug8qXA3ZnMpeQTbOfexpiA
+         8QbFjMdCqAPcZD1+ptWW+a3vW004khrIbcDqjyA0gylrMdObPBPNK1ZnN7Z3Jq5Oh48i
+         +WyhOw5dlBaZ7oOqulIlgoucH0arBgvWJAmdAIPCd9kfoxt1HfK3mucdKOmylOQLSnXj
+         xQWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=c9EgP6YKdZyMczvzVG3mnPsmQ7deQBk3kbubESLR/Ao=;
-        b=egY/0aXmk6cDcBYmQbbbfTfhSKt/0UetupwtMhvVcoECSSIq6ICS6I7ULAshU7tsYD
-         ViyuZw5xzxJskaJxiImtPsIJyXWoH0N5hqsIZUo44zwihzDWy920ApcMKS7g/MCbLDIG
-         kBJzrYA3ieUyhbdO1Ff8u7OBc5DOoLKUw/m9d2CHGUNB9Dc0agEwBRbjv6FVyt1mLK69
-         lgVKd0iJ6GDf7nbnnvuPSAV9U087CYA6t9l3sBTxiZbtWqn0Y9oQebNIUhF9c2EH9y7O
-         MLzeIwKaOGyF80ArZIOBJno3sJ3CrwKo+DVap9yfvTL6jx720nevdG9G7cmxX0wnfFJ5
-         6JWA==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=FYWw/qRjdcb7I6Rft+1C6I9O+sG+q2eO6RDEKUbphx0=;
+        b=xU9Dy0DO2JWY8Ag/3O1pqBIm4GHPY04V68AL+/F+8WaD//QkSm0QziacQoMsJzi8qH
+         /OeAaWGwLEvdZfwQnITovZ4VpRLh1VPSSw5h40xDA9xZTkzmZKEa/rz0vaTzuy/mQ7+d
+         rrHDcoOmYH7bvFovylUpR9aiMU4v3aaXkRqKEbTeso7IvE/i4Mr8KHIIwCDCjNPGaf+A
+         b+c6V4TcYvBrDQOGMF+gG6sGRDCqmiaUjz2m6TbyggD+46YgZFGa+I7jvFjYfH2iRuEI
+         BDMthEBYjSfiYPUtIqy3OVPx2enk0TzgbVku1iV9ibPHwPI1XNUt330Y9Gx8xxf6gd/Y
+         3xSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I3FXHHYY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=UCXXWM74;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e4-20020ac84904000000b003b86741824dsi8001552qtq.472.2023.02.06.15.05.44
+        by mx.google.com with ESMTPS id f13-20020a05622a104d00b003ba1ccba50fsi5298122qte.557.2023.02.06.15.35.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Feb 2023 15:05:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Feb 2023 15:35:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I3FXHHYY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@google.com header.s=20210112 header.b=UCXXWM74;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pPAXt-0007EA-Ql; Mon, 06 Feb 2023 18:05:09 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pPB10-0000W4-Pw; Mon, 06 Feb 2023 18:35:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pPAXi-0007AU-Ac
- for qemu-devel@nongnu.org; Mon, 06 Feb 2023 18:04:59 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from
+ <3jI7hYwgKCFUJH4xBGF43BB381.zB9D19H-xE9ABA3AH.BE3@flex--wuhaotsh.bounces.google.com>)
+ id 1pPB0Y-0000Ie-Jw
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 18:34:54 -0500
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pPAXd-0000fN-2i
- for qemu-devel@nongnu.org; Mon, 06 Feb 2023 18:04:57 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id j25so8404329wrc.4
- for <qemu-devel@nongnu.org>; Mon, 06 Feb 2023 15:04:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=c9EgP6YKdZyMczvzVG3mnPsmQ7deQBk3kbubESLR/Ao=;
- b=I3FXHHYY8odOlRsr5VWCs+hBdksWBysrKWczUzGTFZNyGA8NAwVGEIith064XChh4y
- m0TJ4k1siF5pH+XpnSAu/Pt6vuJPngfNGAFNxo0JGvUPp8MKI8mrxsTFZfhT8tzGVEJ9
- 3r+RpIT9NqxcdIDIjepvoaa+AQMsCFAmaB8KEWb3uAgxIVDgOrc3mrYd6KzqfScnWKfk
- /4WDSD+BnvkqWYYqrGfI8x1juGuTf9tDxa9iCULkbi6P9RVLy+QgPgMOS6a0iq3W4D8O
- 4E1YImhZLPjoYApUJydwqXYClOBs2feGLcd/ehznNdcyRH4e9whU0dfLWvJF1MwKKGZ8
- wKXg==
+ (Exim 4.90_1) (envelope-from
+ <3jI7hYwgKCFUJH4xBGF43BB381.zB9D19H-xE9ABA3AH.BE3@flex--wuhaotsh.bounces.google.com>)
+ id 1pPB0S-0006Dz-Cl
+ for qemu-arm@nongnu.org; Mon, 06 Feb 2023 18:34:45 -0500
+Received: by mail-pg1-x54a.google.com with SMTP id
+ e11-20020a63d94b000000b0048988ed9a6cso5766811pgj.1
+ for <qemu-arm@nongnu.org>; Mon, 06 Feb 2023 15:34:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=FYWw/qRjdcb7I6Rft+1C6I9O+sG+q2eO6RDEKUbphx0=;
+ b=UCXXWM74nYoVXuvviTlBWaDwqwbTfaWrZFCsgE7AjZbuiXHP5JPbW+cnyl8lA2S7Ob
+ b+KP+6+w8AHmNe4/is4nhMHkWdHDY71RNCGcISJRWQWDeLop/yT6URFZeA3reQu7y6o8
+ 2tbnyTaLWXEhPJbzX9PpGxAQYp0HzBEU0xDAiLHE6DvnvDRLZFxfvCKoeAZvzrmMLAn4
+ QuX3PsNJbuNaMqNPRVQ0azu0VTRgSv9SZQ8yxLzgodKgeQRJaSwZVISqh70TWl3VLU/T
+ 8g4WpHB4RKYUB3NXrdK1oWgscjAjQYyHyzMwMHVOP5PZFNXe3xrx1QUtHNuzW15vWsI9
+ ZC7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=c9EgP6YKdZyMczvzVG3mnPsmQ7deQBk3kbubESLR/Ao=;
- b=EwDVmoB5attPTETdzzEsfv4WHt/3+MAeTss78B/f5/N+fWPec5dx0Hg7rVKwpAR+bP
- FaPDir7lF+MLT4KQBh5gedjPKBKsKGSVYgbmsVL0lpWgYqTk5yFS98T0mXtW0ett8S/5
- lq2mFn4ipXRH0HC8bTUqKU8VBUzotXJx06RbYPqT2OyPxq65onfI3COoCeGmmdRgRhnB
- j3kL7yHT3z09AUr23ulxGKaspmPkyX3vsIPVqi2vFhCaZhJ3CT7Ke4sUBIFcDVtvOcEl
- dirKQh5scum6h+AkWbsYUe9P6fNEKYgh74nKtCYFIBgyXhs7npWuJrNBE3PTKjKz4SD5
- Pq5A==
-X-Gm-Message-State: AO0yUKULLatHtbxKgMJcl5R2fKMjnka6VAa634k1AJn/70/0Gm5T3Yi7
- u2kJX/YVbEF2HtPp15BMWswgXA==
-X-Received: by 2002:a5d:49d1:0:b0:2be:f21:6af6 with SMTP id
- t17-20020a5d49d1000000b002be0f216af6mr457209wrs.23.1675724691212; 
- Mon, 06 Feb 2023 15:04:51 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- j11-20020a5d604b000000b002b57bae7174sm9917510wrt.5.2023.02.06.15.04.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Feb 2023 15:04:50 -0800 (PST)
-Message-ID: <8b79daf4-28de-86f7-8f84-32f7d3f7ce56@linaro.org>
-Date: Tue, 7 Feb 2023 00:04:49 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH 0/9] hw: Use QOM alias properties and few QOM/QDev cleanups
-Content-Language: en-US
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, Eduardo Habkost
- <eduardo@habkost.net>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20230203113650.78146-1-philmd@linaro.org>
- <e30899d3-06b5-645e-3f42-c99631b5a53a@ilande.co.uk>
- <46f52043-368c-e153-2d02-ba30220685dd@linaro.org>
- <8c7cfd90-e2aa-a6ff-506d-f3a5d24622b6@ilande.co.uk>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <8c7cfd90-e2aa-a6ff-506d-f3a5d24622b6@ilande.co.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FYWw/qRjdcb7I6Rft+1C6I9O+sG+q2eO6RDEKUbphx0=;
+ b=gv7Hq0K/usEtd+sxysPn4HIDj7gC2Xhb2sremNx2fUGk/dkviJ39TPrbYBqp9mh8g5
+ uxg61yt79ZXmdsPqfBBNVOVTgrsq65214u84+sMR3HXdPQvAU0Usj4lyvFqmrTXXNY7i
+ FNj7Qz3WuIY9ZS/KkvoCZHJNjFeY3jU0GqBmuILAmf10MTl3Mqotn4Ji/nJM2HIqsH9s
+ ZoKiU4Rf0hR+/7zA5MJHdqg0FrjTubdizAYVNHoRgftdDZHgS2C1w+8hBQbs/+gvrgyJ
+ 3pN9G+gmtSHNEnf2X45fwzaLyKFyT8I/mnSR4UCw3nfAK5Fm2rLDC4ki4EWCR9yenRRR
+ Pk/Q==
+X-Gm-Message-State: AO0yUKURO5IepbVDlMlC4IQYEhZn89QnZy9c5gCa7qXUHXaJOXJgMxpL
+ yXFExnVrkF95NdkSJIseZzq4fma8dAKnEw==
+X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
+ (user=wuhaotsh job=sendgmr) by 2002:a17:90b:1001:b0:230:ca06:f0fc with SMTP
+ id gm1-20020a17090b100100b00230ca06f0fcmr819685pjb.95.1675726476385; Mon, 06
+ Feb 2023 15:34:36 -0800 (PST)
+Date: Mon,  6 Feb 2023 15:34:25 -0800
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.39.1.519.gcb327c4b5f-goog
+Message-ID: <20230206233428.2772669-1-wuhaotsh@google.com>
+Subject: [PATCH 0/3] Nuvoton Peripheral SPI (PSPI) Module
+From: Hao Wu <wuhaotsh@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
+ venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
+ hskinnemoen@google.com, titusr@google.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
+ envelope-from=3jI7hYwgKCFUJH4xBGF43BB381.zB9D19H-xE9ABA3AH.BE3@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pg1-x54a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: N98yd1ux5TZ9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HZEae8F16tD+
 
-On 6/2/23 22:54, Mark Cave-Ayland wrote:
-> On 06/02/2023 15:27, Philippe Mathieu-Daudé wrote:
-> 
->> On 6/2/23 00:29, Mark Cave-Ayland wrote:
->>> On 03/02/2023 11:36, Philippe Mathieu-Daudé wrote:
->>>
->>>> These patches are extracted from a QOM/QDev refactor series,
->>>> so they are preliminary cleanups noticed while working on it:
->>>>
->>>> - Use correct type when calling qdev_prop_set_xxx()
->>>> - Unify some qdev properties in MIPS models
->>>> - Replace intermediate properties by link properties
->>>> - Remove DEFINE_PROP_DMAADDR() macro which is used one time
->>>> - Use qdev_realize_and_unref() instead of open-coding it
+This patch set adds peripheral SPI (PSPI) modules
+to NPCM7XX SoCs. These modules can be used to
+connect any SPI peripheral devices to the SoC.
 
+This module will also be used in the next generation
+NPCM8XX SoCs which haven't been merged yet.
 
->>> I must admit to being slightly nervous about using QOM alias 
->>> properties in this way, simply because you start creating implicit 
->>> dependencies between QOM objects. How would this work when trying to 
->>> build machines from configuration files and/or the monitor? Or are 
->>> the changes restricted to container devices i.e. those which consist 
->>> of in-built child devices?
->>
->> The latter. All parents forward a property to a contained child.
->>
->> The parent forwarding property is replaced by a link into the child,
->> so accessing the parent property transparently access the child one.
->>
->> The dependencies are already explicit. We can not create a parent
->> without its children (the children creation is implicit when we
->> create the parent object).
->>
->> I thought this was the canonical QOM alias properties use. What is
->> the normal use then?
-> 
-> The problem I've found with this approach in the past is that it fails 
-> when you have more than one child device of the same type.
-> 
-> For example imagine the scenario where there is a QEMU device that 
-> contains 2 child UARTs and each UART has a property to disable hardware 
-> handshaking: if you add a property alias to the container device, it can 
-> only map to a single child UART. Furthermore if you then try to alias 
-> the UART IRQs onto the container device using qdev_pass_gpios(), then 
-> that also fails with 2 UARTs because the gpios from each UART have the 
-> same property name.
+Thanks!
 
-I noticed some qdev gpio namespace issues. Thanks for pointing that
-qdev_pass_gpios() restriction.
+Hao Wu (3):
+  MAINTAINERS: Add myself to maintainers and remove Havard
+  hw/ssi: Add Nuvoton PSPI Module
+  hw/arm: Attach PSPI module to NPCM7XX SoC
 
-> You could then think about solving that problem by using 
-> object_property_add_alias() directly to specify a different property 
-> name for each UART's mapped property on the container device, but then 
-> you end up accessing the child UART properties with different names, but 
-> only when using that particular parent container device(!).
-> 
-> For this reason I've tended to avoid aliases and setup child objects 
-> from the container like this:
-> 
->     static void container_init(Object *obj)
->     {
->         object_initialize_child(obj, "uart0", &s->uart0, TYPE_UART);
->         object_initialize_child(obj, "uart1", &s->uart1, TYPE_UART);
->     }
+ MAINTAINERS                 |   8 +-
+ docs/system/arm/nuvoton.rst |   2 +-
+ hw/arm/npcm7xx.c            |  25 ++++-
+ hw/ssi/meson.build          |   2 +-
+ hw/ssi/npcm_pspi.c          | 216 ++++++++++++++++++++++++++++++++++++
+ hw/ssi/trace-events         |   5 +
+ include/hw/arm/npcm7xx.h    |   2 +
+ include/hw/ssi/npcm_pspi.h  |  53 +++++++++
+ 8 files changed, 305 insertions(+), 8 deletions(-)
+ create mode 100644 hw/ssi/npcm_pspi.c
+ create mode 100644 include/hw/ssi/npcm_pspi.h
 
-Hmm OK, this is the approach used in IMX:
+-- 
+2.39.1.519.gcb327c4b5f-goog
 
-@@ -120,8 +120,12 @@ static void fsl_imx6ul_init(Object *obj)
-       * Ethernet
-       */
-      for (i = 0; i < FSL_IMX6UL_NUM_ETHS; i++) {
-+        g_autofree gchar *propname = g_strdup_printf("fec%d-phy-num", i 
-+ 1);
-          snprintf(name, NAME_SIZE, "eth%d", i);
-          object_initialize_child(obj, name, &s->eth[i], TYPE_IMX_ENET);
-+        qdev_prop_set_uint32(DEVICE(&s->eth[i]), "phy-num", i);
-+        object_property_add_alias(obj, propname,
-+                                  OBJECT(&s->eth[i]), "phy-num");
-      }
-
-But then this is how it is used today:
-
-  static Property fsl_imx6ul_properties[] = {
--    DEFINE_PROP_UINT32("fec1-phy-num", FslIMX6ULState, phy_num[0], 0),
--    DEFINE_PROP_UINT32("fec2-phy-num", FslIMX6ULState, phy_num[1], 1),
-      DEFINE_PROP_END_OF_LIST(),
-  };
-
-What do you mean by "you end up accessing the child UART properties with
-different names, but only when using that particular parent container
-device(!)."? I tend to see QOM modelling as matching hardware design,
-so if a container is used, there is a similar relationship / hierarchy
-in the hardware, then accessing the children via a particular parent
-container path sounds the correct way. QOM indexed child must have the
-same meaning in the hardware layout.
-
-> And then when configuring the board it is possible to obtain the UART 
-> references like this:
-> 
->     uart0 = UART(object_resolve_path_component(OBJECT(container), 
-> "uart0"));
->     irq0 = qdev_connect_gpio_out(DEVICE(uart0), 0, ... );
-> 
->     uart1 = UART(object_resolve_path_component(OBJECT(container), 
-> "uart1"));
->     irq1 = qdev_connect_gpio_out(DEVICE(uart1), 0, ... );
-> 
-> This allows all UART configuration to be done in the same way regardless 
-> of the parent container device and number of child devices, and without 
-> having to think about using different property names depending upon the 
-> container device.
-
-OK I think this is the same explanation as what I just wrote earlier.
-
-> One place where it could conceivably be useful is where you have a chip 
-> modelled as a device and you want to expose the memory regions and IRQs 
-> to an interface such as ISA, but often even that doesn't work (think PCI 
-> IRQs for example).
-
-IRQ wiring is an unsolved problem in my TODO, in particular when a bus
-is involved...
-
-> The only valid use cases I can think of are the /rtc property (which is 
-> an alias to the RTC device, regardless of where it exists in the QOM 
-> tree) and perhaps in future adding similar array aliases to the root of 
-> the machine that can point to things like block devices, network 
-> devices, chardevs and audio devices (i.e. anything that has a 
-> corresponding QEMU backend).
-
-Hmm I see, but this seems a very restrictive use of QOM link property
-concept IMHO. For me a QOM link allows to share pointer to any QOM
-object (with the QOM type checked). Am I abusing the concept?
-
-BTW DEFINE_PROP_xxx() macros are a QDev concept. In particular
-DEFINE_PROP_LINK(). The 'realize' step is also a QDev concept...
-
-Markus suggested I watch Paolo's QOM talk to use the standard
-terminology from the expert. I suppose this is "QOM exegesis and
-apocalypse" from 2014.
-
-Thanks for the brainstorming and clarifications!
-
-Phil.

@@ -1,81 +1,129 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1547517ejb;
-        Fri, 3 Feb 2023 08:23:20 -0800 (PST)
-X-Google-Smtp-Source: AK7set9NGjAL4Fr8wcnWxpTj2oEIkxDlWGsRyR3fEmiA3+zQTQyBhtLQI6xF2xV3uP9dcYg0E5wS
-X-Received: by 2002:a0c:f3c3:0:b0:537:7619:58d9 with SMTP id f3-20020a0cf3c3000000b00537761958d9mr15964435qvm.9.1675441400205;
-        Fri, 03 Feb 2023 08:23:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675441400; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4148900ejb;
+        Mon, 6 Feb 2023 04:47:32 -0800 (PST)
+X-Google-Smtp-Source: AK7set+SgdMr5MnqcamV47NMHdoSU3RTicVK4w1DT4ESvyEZUF+ZY4eLNzX5wEyxzROXvAQxDVcj
+X-Received: by 2002:a05:6214:2526:b0:56b:ef97:10e0 with SMTP id gg6-20020a056214252600b0056bef9710e0mr11587154qvb.46.1675687652078;
+        Mon, 06 Feb 2023 04:47:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675687652; cv=none;
         d=google.com; s=arc-20160816;
-        b=jn+sdoNxKFNGticQ0y11pflpB67joP7x+ti/hUWVPRZV4abNHFwrexBTx1S2zu0RIn
-         BXcBgQL4ixgINMaGdWCYsPWeoTLssL/LZzYY8Yi34AlpNgpHLxGtAdchohGVMbF0mWKK
-         tonHBnYv2Ra4sc2iOyg3kh56skUZxtO9xM7xCwxYtarrMnOVa4/6O9Ab/zxHm0eXC0I1
-         KCEi+F1i65wofUiEWpG86WzRUJqSR9c+TGns+aCehDxTZ0Z5In38YaIA4c9rqijG2DLy
-         gcaNLg9XTQDPuOxkKgJOHmMfPzzJl8748LP0br89rwTCMqrkVskfkPH3bLsa5WlDWgI8
-         Ir0Q==
+        b=Xh08izHujwVNorZSBoQro/7rNF3WHF+LxofFO2qWEbGUcZre/MRm3CRP9tQGMT8gOU
+         j3nWt7eOcfpAN4QZ+a47ah6KPrWEPFygIXfybBOAx6uqp4+ix+QR/FFoDg9nlpDwEN3i
+         wPjTBSVfIa+l7tbru5o45ojrbySn0pqIXrXtGYuye0kdXuW3qsBm+ygT0Vu6d45Jb3vo
+         a+vbWD5O+Q0MCkUOCBEEouPcQJ1sOXB6dZMdHbF+uvjWyaO7VYYI4jnbi95IREkndSKA
+         LF1+kWS49a3elLwc9Bq99i8iO/Q71o9AMSZFKeEEcss5RDaRexs75DASjVkhZOcLIgfQ
+         Sqcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=yVYLzflCuzvEpc+kqJmqE83CgoZJv7fJwRTIPBIT+aM=;
-        b=oSRNopC5JZ5uHZsFve9CZ0WAmyIoNSle+ZS7JvXiv76XJqhw+n8GvPN74wdpyJvCJ3
-         le9ZlEvAq2CRxts55zGHFaQsIC5QWBrER6ZCC+dZAuJNqqbh6jM64ED81xpklE8ZnKNr
-         BnFC4XJ1gjBJQ8ovNu6SMW8myxGWbFTi+x5vXCnRzhdD4G9fuensUigkUycBzYuPRQVm
-         pCdfstpVG3JeDL7GK9GighLp11fb7rYS2F0kAzyPfloCg1qgzlb7di9Lgg+J6W2NGyPl
-         Z9kx5w6/XdWosdq53X+j26GWsZlrhYIDJsUwPkfT8rCOkc6LW+3apS7/i6zg1cl7fRMy
-         SraA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=TDRj1e1Of6zXPK6vdEPHmWKOg6uKLmaGGU/8IdkYWus=;
+        b=guvvyr+Yudo/J6W4HiFygPevWDGQJ/DPCpKpo1+9MDsZLZlkX+0k6NI74SJRkfYAlh
+         2Hg6GDofJlAaulRT9BiYpnfv230pakKt8zTmc7IsjQqAIVCRQt5kF3Iq0q6L8somNQBf
+         mw2DLFcg8gjvlMatqO6sNsnedsnDxHP92tgRZSKA+VYdpZsfYbMDJsnj9uGVJ20z1soq
+         9/EypsweWBPg6Qe4ayHUfx+kwa7o7ZbTyDb4dCicQdst+k1wZbBAF0hzXmSoCDdqNMiE
+         NPXzZpt9sD5Ig0ZvIKKMXACYItW1J0pg2VinPLIqGu1jDO4ITL2Cc6FW+/He11110a3o
+         eqiw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WQxhDeZC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e8-20020a056214162800b005393d3f22f4si1907993qvw.52.2023.02.03.08.23.20
+        by mx.google.com with ESMTPS id i5-20020a0cfcc5000000b00498925e2db2si7482240qvq.524.2023.02.06.04.47.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Feb 2023 08:23:20 -0800 (PST)
+        Mon, 06 Feb 2023 04:47:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WQxhDeZC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pNyq3-0005yG-Kr; Fri, 03 Feb 2023 11:22:59 -0500
+	id 1pP0tm-0000pQ-Qz; Mon, 06 Feb 2023 07:47:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1pNypz-0005sT-FA; Fri, 03 Feb 2023 11:22:57 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2])
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1pP0tc-0000oh-UW
+ for qemu-devel@nongnu.org; Mon, 06 Feb 2023 07:46:59 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1pNypx-0005Z2-TR; Fri, 03 Feb 2023 11:22:55 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id A4350746377;
- Fri,  3 Feb 2023 17:20:23 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 6A0C8745712; Fri,  3 Feb 2023 17:20:23 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 685B77456E3;
- Fri,  3 Feb 2023 17:20:23 +0100 (CET)
-Date: Fri, 3 Feb 2023 17:20:23 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>, 
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
- Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH v2 12/15] hw/display/sm501: Unify common QOM properties
-In-Reply-To: <20230203145536.17585-13-philmd@linaro.org>
-Message-ID: <d4127cf0-3006-9143-36c4-e059acf8908d@eik.bme.hu>
-References: <20230203145536.17585-1-philmd@linaro.org>
- <20230203145536.17585-13-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1pP0tb-0003FT-AC
+ for qemu-devel@nongnu.org; Mon, 06 Feb 2023 07:46:56 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1675687614;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TDRj1e1Of6zXPK6vdEPHmWKOg6uKLmaGGU/8IdkYWus=;
+ b=WQxhDeZCsFAsWjLmtlkYd7yGtQ8FCi+ejeRIq7VSHOLHQ5jxsn1xF8wm6Nj7r0r5dme8MR
+ hbGBqz80Ru2P4i7N3kWPoLS7+S/fNR6q3n9KkBuNbncJBshxETXY/TH1rEdOGnXJACrzEJ
+ 6Dq92rYNvRxfl2zqXYQrqZAcvJbnSD4=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-139-e-uG1_6BPD-wlvSN7TpW5w-1; Mon, 06 Feb 2023 07:46:53 -0500
+X-MC-Unique: e-uG1_6BPD-wlvSN7TpW5w-1
+Received: by mail-qv1-f71.google.com with SMTP id
+ pv16-20020ad45490000000b0056bf828babfso1084393qvb.23
+ for <qemu-devel@nongnu.org>; Mon, 06 Feb 2023 04:46:52 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=TDRj1e1Of6zXPK6vdEPHmWKOg6uKLmaGGU/8IdkYWus=;
+ b=GwfdL/+4OwLHLmZOdxMSn62/1XPvndJuGyjP/yc16xAkYrU72myetBYGyJTq8xk6Zw
+ gs4cFtNRWNuDc0xNqZzgHrDzFy3ow0RBvXYUtJTGKzdN80JCf90izmkt0u+pj1NjxFjo
+ bwsC2oe5ooefrrtOltUHqpSLRLaTEEjOZThdv8/IhJcX5PwbNJ2A+nYfPl9JedUMTTcU
+ q0RiSU/y/1sovs3oDhnMm6YiRII7pGNqlZLZtRpnkooXqSfpBzDSfR/s+H38MTr2+Xzy
+ xixNwyL7K4jxnMNO5TFGmaXJrteAqupO0Ws009zkgo65wuAhnMYQTsonqKcHu7GGD09M
+ E7IA==
+X-Gm-Message-State: AO0yUKV5cBJRFv5Y9nMY4eatmkLgk8xcyT2P9FL0CzClfjmYKrdumHRD
+ Rt9mxPRCT4+M2xUS9h09fEP2k+8dcP3pWSAvOvzdzWP0RMTdDUuI/adM2/NT7nRgqy8JjHSkNGI
+ ZWe/hP400eefHhh0=
+X-Received: by 2002:ac8:5711:0:b0:3b8:6788:bf25 with SMTP id
+ 17-20020ac85711000000b003b86788bf25mr35877082qtw.23.1675687612548; 
+ Mon, 06 Feb 2023 04:46:52 -0800 (PST)
+X-Received: by 2002:ac8:5711:0:b0:3b8:6788:bf25 with SMTP id
+ 17-20020ac85711000000b003b86788bf25mr35877052qtw.23.1675687612305; 
+ Mon, 06 Feb 2023 04:46:52 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ s184-20020ae9dec1000000b006fcaa1eab0esm7260423qkf.123.2023.02.06.04.46.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Feb 2023 04:46:51 -0800 (PST)
+Message-ID: <e6732349-efa8-afbf-6c69-498643250bfc@redhat.com>
+Date: Mon, 6 Feb 2023 13:46:47 +0100
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-2106383846-1675441223=:20219"
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.1
+Subject: Re: [PATCH v5 1/3] arm/virt: don't try to spell out the accelerator
+Content-Language: en-US
+To: Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20230203134433.31513-1-cohuck@redhat.com>
+ <20230203134433.31513-2-cohuck@redhat.com>
+From: Eric Auger <eauger@redhat.com>
+In-Reply-To: <20230203134433.31513-2-cohuck@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.148, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -91,69 +139,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dnTFOu/6Hi6M
+X-TUID: LpRTRACQeOXZ
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Hi Connie,
 
---3866299591-2106383846-1675441223=:20219
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+On 2/3/23 14:44, Cornelia Huck wrote:
+> Just use current_accel_name() directly.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-On Fri, 3 Feb 2023, Philippe Mathieu-Daudé wrote:
-> Since now PCI and SysBus properties are identical, unify them.
->
-> Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Thanks
 
-Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
-
+Eric
 > ---
-> hw/display/sm501.c | 11 +++--------
-> 1 file changed, 3 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index efebd93f1e..98375138b2 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -1975,7 +1975,7 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
->     /* TODO : chain irq to IRL */
-> }
->
-> -static Property sm501_sysbus_properties[] = {
-> +static Property sm501_common_properties[] = {
->     DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
->     DEFINE_PROP_END_OF_LIST(),
-> };
-> @@ -2004,7 +2004,7 @@ static void sm501_sysbus_class_init(ObjectClass *klass, void *data)
->     dc->realize = sm501_realize_sysbus;
->     set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
->     dc->desc = "SM501 Multimedia Companion";
-> -    device_class_set_props(dc, sm501_sysbus_properties);
-> +    device_class_set_props(dc, sm501_common_properties);
->     dc->reset = sm501_reset_sysbus;
->     dc->vmsd = &vmstate_sm501_sysbus;
-> }
-> @@ -2062,11 +2062,6 @@ static void sm501_realize_pci(PCIDevice *dev, Error **errp)
->                      &s->state.mmio_region);
-> }
->
-> -static Property sm501_pci_properties[] = {
-> -    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size, 64 * MiB),
-> -    DEFINE_PROP_END_OF_LIST(),
-> -};
-> -
-> static void sm501_reset_pci(DeviceState *dev)
-> {
->     SM501PCIState *s = PCI_SM501(dev);
-> @@ -2098,7 +2093,7 @@ static void sm501_pci_class_init(ObjectClass *klass, void *data)
->     k->class_id = PCI_CLASS_DISPLAY_OTHER;
->     set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
->     dc->desc = "SM501 Display Controller";
-> -    device_class_set_props(dc, sm501_pci_properties);
-> +    device_class_set_props(dc, sm501_common_properties);
->     dc->reset = sm501_reset_pci;
->     dc->hotpluggable = false;
->     dc->vmsd = &vmstate_sm501_pci;
->
---3866299591-2106383846-1675441223=:20219--
+>  hw/arm/virt.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ea2413a0bad7..bdc297a4570c 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2123,21 +2123,21 @@ static void machvirt_init(MachineState *machine)
+>      if (vms->secure && (kvm_enabled() || hvf_enabled())) {
+>          error_report("mach-virt: %s does not support providing "
+>                       "Security extensions (TrustZone) to the guest CPU",
+> -                     kvm_enabled() ? "KVM" : "HVF");
+> +                     current_accel_name());
+>          exit(1);
+>      }
+>  
+>      if (vms->virt && (kvm_enabled() || hvf_enabled())) {
+>          error_report("mach-virt: %s does not support providing "
+>                       "Virtualization extensions to the guest CPU",
+> -                     kvm_enabled() ? "KVM" : "HVF");
+> +                     current_accel_name());
+>          exit(1);
+>      }
+>  
+>      if (vms->mte && (kvm_enabled() || hvf_enabled())) {
+>          error_report("mach-virt: %s does not support providing "
+>                       "MTE to the guest CPU",
+> -                     kvm_enabled() ? "KVM" : "HVF");
+> +                     current_accel_name());
+>          exit(1);
+>      }
+>  
+

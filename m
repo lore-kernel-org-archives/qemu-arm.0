@@ -1,145 +1,178 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4459543ejb;
-        Mon, 6 Feb 2023 10:27:22 -0800 (PST)
-X-Google-Smtp-Source: AK7set+lxetV3ZiodjcrXJuZAmWWs1tuuohUTLNmjedvpMO8zWx9Um90vmSKdUYFrPOhs2m+k+zB
-X-Received: by 2002:a50:d492:0:b0:4aa:a4f0:2c17 with SMTP id s18-20020a50d492000000b004aaa4f02c17mr544711edi.4.1675708042070;
-        Mon, 06 Feb 2023 10:27:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675708042; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp4362314ejb;
+        Mon, 6 Feb 2023 08:42:34 -0800 (PST)
+X-Google-Smtp-Source: AK7set9+7XUZkCAsUM/jmYvyCiYg1fPfotqHkssvAh7er3CGOpUbjRDhOOCqlsV822T1Qr+jbOD+
+X-Received: by 2002:a17:906:53d5:b0:88c:8c2e:af17 with SMTP id p21-20020a17090653d500b0088c8c2eaf17mr19034704ejo.2.1675701754669;
+        Mon, 06 Feb 2023 08:42:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675701754; cv=none;
         d=google.com; s=arc-20160816;
-        b=mP4/iSOqJlLWqH/JWDeAJC2c6O8rRPer8qwAF5eQDT6VyPukPAJaY2U/RW/C0XJDS3
-         Vw+rmHn/7HFWGldI0RdstSHEz9QUYoDfk3lM5UZJAAxSPRk8FD6U33oJYOltWQ1kV8mZ
-         apLbWumGPgDjW553P0Bd8RCu9nzl/VmyVUYSrH8KbDhFi2CbGnnRkYBdrXBibO2sTpEq
-         nmaJoIFyYp/JIXa/WwjThBzHjdJJdKI4HjsE+pJLfgv8zetcYiqhCeR2e58SuTJqt7o+
-         lapHqyX8uuFo8jSg17VlMdZ93ht2WWDgCYPWmuObQyjpTuxijMD6ny2xe4UVW71jzNgL
-         kwOw==
+        b=spPxQ3XruuafN7+ssF23jHYJJ+1npLdGqkDEr61qAtcQtgAjf0WvL6vXFzxpVpiiQt
+         uariWvGg9vIBNMboEoHXRuEA3b1SiYB/2KDRBjpmkoBc6E22apzAEYnGCFppHvI2L3Sk
+         yQMvbWbvuKsnj346dLpQbHwQ6CTh21EKweOIC5DMftFCMkMrogTEapOhljF0nYdbVJeZ
+         /oj9aN+56rclBNJAhq8KSyT0g9ihbL/c7MM5t50vVtkSaLZnh6VdPXx2FQ1yN6r7eqwK
+         lESTHlPe8magoNIkwYHuFVBX8qikin5K6vIpL49v/X1i+u3xKUX6JZKsD7kKLwW6CYVA
+         PmNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=pf3wpo98ocpZojzJUra9uZGXeOuH5mXdt8yWg6RtZZY=;
-        b=O/RvBBClBVkI0uc7T/PjIZNdooJZSztUrAgwyMWmS5ai7Q0HMOTxeUldMgGfAjGuvn
-         8y2YDi5QOK4TYg88e6QGXbQV+3Ws0uIA/BEUecPYa4J3PBSQ9CQgE/nd1SzcgXV11Xs2
-         BkWAaW0oQPPG6FiALmR/B1YmlGSlhSeeC6+6wls4LoYBYV3v/hb8+RmsvkGI6wzId10C
-         EWzxb75W7oDH6MMvCgT5VB9vnTYvcEX3+F/p424BY+/JxrDMhLhFqvWfyq4ExehlNHDm
-         y5dghC4dH1FzPGY59HiHhU50WMvP+ilXlcNuUPB1gMKSo5CdVZqjRVne2hOJs2LpduPd
-         XHgQ==
+        h=list-id:precedence:mime-version:message-id:date:user-agent
+         :references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=3ZLYf3PX0CAzEdb+eEBhMmy2mWJ/blmVpnhmvUTfE2M=;
+        b=FVRlmTbxRWhC3xpR5a8uMtJlhNG9sVaZI+QymQ270wtUCH34ybWM4EkHR4c8sMieW5
+         hbgHhQhuyyCwt7NfBZJPsczD+Y0Xp8KjzqozBMqUiPQZsYnMcRW2onHbiViYytTZAvVZ
+         yDnVzhEvqVKmzeWKriTV5DDQL56XoRbBBn9QpDM/Z2CMfQXfQ9tPkPuz10sbrcZOVr6+
+         qg8oHtJV/ZlIwP8G0q3H+wjC4zFcP3EM+064Dlg84BWSTCOgA6VxKCLkSwTet/yPMYeG
+         Sjaj1hNmUP8j1vMVp3amlYuJOavOCwBvFloJgn3cAVdAEn3RU86TtvfiFjOSbQ9AB0nS
+         j9fQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TJa6TnxH;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UZ+uT6Fi;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id p13-20020a056402500d00b00499c63cd389si14696811eda.442.2023.02.06.10.27.21;
-        Mon, 06 Feb 2023 10:27:22 -0800 (PST)
+        by mx.google.com with ESMTP id ge14-20020a170907908e00b00888768d4d0fsi11392340ejb.110.2023.02.06.08.42.34;
+        Mon, 06 Feb 2023 08:42:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TJa6TnxH;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UZ+uT6Fi;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229680AbjBFS1U (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 3 others); Mon, 6 Feb 2023 13:27:20 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:44178 "EHLO
+        id S230216AbjBFQmd (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 3 others); Mon, 6 Feb 2023 11:42:33 -0500
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:49716 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229490AbjBFS1T (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 6 Feb 2023 13:27:19 -0500
-Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com [IPv6:2607:f8b0:4864:20::102d])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id A356028D2D
-        for <kvm@vger.kernel.org>; Mon,  6 Feb 2023 10:27:18 -0800 (PST)
-Received: by mail-pj1-x102d.google.com with SMTP id n20-20020a17090aab9400b00229ca6a4636so16074716pjq.0
-        for <kvm@vger.kernel.org>; Mon, 06 Feb 2023 10:27:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=pf3wpo98ocpZojzJUra9uZGXeOuH5mXdt8yWg6RtZZY=;
-        b=TJa6TnxHhKEivNxKOKlklAu07cnRPG9dR4+Vw049IqSz+IB19WXwQ28/Yu9cIhxXmQ
-         ONaj2y6stdJFY0CSIclSQIaecIyQuc715Xo+hGpFA8QnC3M3ADFiBsA5K4Pb/8cF0qxr
-         mbur5/9ZpMurib/WRaylfqSDFo/ceJsL3J4C+NTGRbeLUAR4Ep5MC07ddrEw3Cu7byQo
-         +PNlFliuR2ETEoWN2NZJcI6ihtmxjLS3itkX24UeuTbNEqQC0jitw7wlulG3fkSx/jUE
-         JQM8Si6whQ1qEg07McP2zXmyI5iVS+f90F+5KV36gyG7qenqPSS4X9e4LROtQa2v5hCf
-         XaNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pf3wpo98ocpZojzJUra9uZGXeOuH5mXdt8yWg6RtZZY=;
-        b=bzt3OnW80i4rwpJCIErIsAc9QTjyARd2zCSPf2FK4hFxN6fExHsJxRsfR6ucbmJQ0P
-         TX8+gANZL7RBFtGzxHz1CWFQT3XOF3HwuIvYg+reuVp6oGEJJ/qhtDLo+1R4gOG044+L
-         Fgbc+n6F+E4HRq6AkHc/l0Y5Z5YD7N/oIt04QPuUCkpO+lXYzKidP2Ha9/SJJqcCSpa1
-         t9sdFjqWZMadFsPAZj7J0c2R5IoGXuRAg3Wzv5InEtt4LwtddZRNu8SwrvsRicdqq3bg
-         XWKMEqq9s26dvYPQR/+0TEXbywSWunA4DIph7U0howrHjnNA6lS5q9vCXzlL+AN4b0Xq
-         op0A==
-X-Gm-Message-State: AO0yUKVU/uNhnPfGJ+Rzptivu7kCU+RLKwDQ5Avfxz4OB7GddU4dZl5Z
-        bWMbincppIZMwg/y5k1cQBYBmQ==
-X-Received: by 2002:a17:90b:3b4e:b0:230:acb2:e3e8 with SMTP id ot14-20020a17090b3b4e00b00230acb2e3e8mr417696pjb.23.1675708038115;
-        Mon, 06 Feb 2023 10:27:18 -0800 (PST)
-Received: from [192.168.101.227] (rrcs-74-87-59-234.west.biz.rr.com. [74.87.59.234])
-        by smtp.gmail.com with ESMTPSA id j12-20020a17090a31cc00b0022c35f1c576sm2865846pjf.57.2023.02.06.10.27.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 06 Feb 2023 10:27:17 -0800 (PST)
-Message-ID: <14188fd3-6e97-3e00-7d54-7f76e53eeb22@linaro.org>
-Date:   Mon, 6 Feb 2023 08:27:13 -1000
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v5 2/3] arm/kvm: add support for MTE
-Content-Language: en-US
-To:     Eric Auger <eauger@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+        with ESMTP id S230214AbjBFQmc (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 6 Feb 2023 11:42:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 026AE279AF
+        for <kvm@vger.kernel.org>; Mon,  6 Feb 2023 08:41:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1675701706;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references;
+        bh=3ZLYf3PX0CAzEdb+eEBhMmy2mWJ/blmVpnhmvUTfE2M=;
+        b=UZ+uT6FifBR6tMy7lbIPrAxFn9AQk98LU9eLU5zbIIVZ80kT/d/lJoTJ5/cGJqgzXGn///
+        ov2oiFqgdvEUC034QAVEmbmrz5iTotqr2HJEMMnXQ5Kn0RqBbjhPPU4zj1awOFXQCECrtj
+        yHK3dOKeXh6cgR5RC8GGMqhFZDVeDlA=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-149-3JBlDAU1OuedaV-ApOxlIg-1; Mon, 06 Feb 2023 11:41:42 -0500
+X-MC-Unique: 3JBlDAU1OuedaV-ApOxlIg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8261F3847980;
+        Mon,  6 Feb 2023 16:41:41 +0000 (UTC)
+Received: from localhost (dhcp-192-239.str.redhat.com [10.33.192.239])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 237B940CF8E2;
+        Mon,  6 Feb 2023 16:41:35 +0000 (UTC)
+From:   Cornelia Huck <cohuck@redhat.com>
+To:     Richard Henderson <richard.henderson@linaro.org>,
         Peter Maydell <peter.maydell@linaro.org>,
         Thomas Huth <thuth@redhat.com>,
         Laurent Vivier <lvivier@redhat.com>
 Cc:     qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        Eric Auger <eauger@redhat.com>,
         "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
         Juan Quintela <quintela@redhat.com>,
         Gavin Shan <gshan@redhat.com>,
-        =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH v5 2/3] arm/kvm: add support for MTE
+In-Reply-To: <da118de5-adcd-ec0c-9870-454c3741a4ab@linaro.org>
+Organization: Red Hat GmbH
 References: <20230203134433.31513-1-cohuck@redhat.com>
  <20230203134433.31513-3-cohuck@redhat.com>
- <ecddd3a1-f4e4-4cc8-3294-8c94aca28ed0@redhat.com>
-From:   Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <ecddd3a1-f4e4-4cc8-3294-8c94aca28ed0@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-3.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
+ <da118de5-adcd-ec0c-9870-454c3741a4ab@linaro.org>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date:   Mon, 06 Feb 2023 17:41:33 +0100
+Message-ID: <874jryn3uq.fsf@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        RCVD_IN_MSPIKE_H2,SPF_HELO_NONE,SPF_NONE autolearn=ham
+        autolearn_force=no version=3.4.6
 X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
         lindbergh.monkeyblade.net
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: pcIUvkrQaZZW
+X-TUID: 1C4C1k/oWAQI
 
-On 2/6/23 03:32, Eric Auger wrote:
->> +void kvm_arm_enable_mte(Error **errp)
+On Fri, Feb 03 2023, Richard Henderson <richard.henderson@linaro.org> wrote:
+
+> On 2/3/23 03:44, Cornelia Huck wrote:
+>> +static inline bool arm_machine_has_tag_memory(void)
 >> +{
->> +    static bool tried_to_enable = false;
->> +    Error *mte_migration_blocker = NULL;
-> can't you make the mte_migration_blocker static instead?
-> 
->> +    int ret;
+>> +#ifndef CONFIG_USER_ONLY
+>> +    Object *obj = object_dynamic_cast(qdev_get_machine(), TYPE_VIRT_MACHINE);
 >> +
->> +    if (tried_to_enable) {
->> +        /*
->> +         * MTE on KVM is enabled on a per-VM basis (and retrying doesn't make
->> +         * sense), and we only want a single migration blocker as well.
->> +         */
->> +        return;
->> +    }
->> +    tried_to_enable = true;
->> +
->> +    if ((ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0))) {
->> +        error_setg_errno(errp, -ret, "Failed to enable KVM_CAP_ARM_MTE");
->> +        return;
->> +    }
->> +
->> +    /* TODO: add proper migration support with MTE enabled */
->> +    error_setg(&mte_migration_blocker,
->> +               "Live migration disabled due to MTE enabled");
+>> +    /* so far, only the virt machine has support for tag memory */
+>> +    if (obj) {
+>> +        VirtMachineState *vms = VIRT_MACHINE(obj);
+>
+> VIRT_MACHINE() does object_dynamic_cast_assert, and we've just done that.
+>
+> As this is startup, it's not the speed that matters.  But it does look unfortunate.  Not 
+> for this patch set, but perhaps we ought to add TRY_OBJ_NAME to DECLARE_INSTANCE_CHECKER?
 
-Making the blocker static wouldn't stop multiple errors from kvm_vm_enable_cap.
+Instead of the pattern above, we could also do
+
+VirtMachineState *vms = (VirtMachineState *) object_dynamic_cast(...);
+if (vms) {
+(...)
 
 
-r~
+>
+>> +void arm_cpu_mte_finalize(ARMCPU *cpu, Error **errp)
+>> +{
+>> +    bool enable_mte;
+>> +
+>> +    switch (cpu->prop_mte) {
+>> +    case ON_OFF_AUTO_OFF:
+>> +        enable_mte = false;
+>> +        break;
+>> +    case ON_OFF_AUTO_ON:
+>> +        if (tcg_enabled()) {
+>> +            if (cpu_isar_feature(aa64_mte, cpu)) {
+>> +                if (!arm_machine_has_tag_memory()) {
+>> +                    error_setg(errp, "mte=on requires tag memory");
+>> +                    return;
+>> +                }
+>> +            } else {
+>> +                error_setg(errp, "mte not supported by this CPU type");
+>> +                return;
+>> +            }
+>> +        }
+>> +        if (kvm_enabled() && !kvm_arm_mte_supported()) {
+>> +            error_setg(errp, "mte not supported by kvm");
+>> +            return;
+>> +        }
+>> +        enable_mte = true;
+>> +        break;
+>
+> What's here is not wrong, but maybe better structured as
+>
+> 	enable_mte = true;
+>          if (qtest_enabled()) {
+>              break;
+>          }
+>          if (tcg_enabled()) {
+>              if (arm_machine_tag_mem) {
+>                  break;
+>              }
+>              error;
+>              return;
+>          }
+>          if (kvm_enabled() && kvm_arm_mte_supported) {
+>              break;
+>          }
+>          error("mte not supported by %s", current_accel_type());
+>          return;
+
+That's indeed better, as we also see what's going on for the different
+accelarators.
+
+> We only add the property for tcg via -cpu max, so the isar check is redundant.

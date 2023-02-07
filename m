@@ -1,273 +1,164 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5750057ejb;
-        Tue, 7 Feb 2023 12:36:13 -0800 (PST)
-X-Google-Smtp-Source: AK7set+gDLvWhIqayjG2CAC4L2XtMeQmvhpIINuVrDD67aERse84MSG5lnHQG0i2T1xcS5SaqUyp
-X-Received: by 2002:a05:6214:20e9:b0:56b:f307:4e3f with SMTP id 9-20020a05621420e900b0056bf3074e3fmr6351995qvk.32.1675802173578;
-        Tue, 07 Feb 2023 12:36:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675802173; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5869494ejb;
+        Tue, 7 Feb 2023 14:59:37 -0800 (PST)
+X-Google-Smtp-Source: AK7set/r5WkHrMa7rt9Geg/1zOOPhrDcUg+0NriqOpxdcmxpznXcrSfixh7FXQV59M4/IuZMrEpS
+X-Received: by 2002:a05:6214:766:b0:56b:f0d8:d4ce with SMTP id f6-20020a056214076600b0056bf0d8d4cemr7158834qvz.0.1675810777546;
+        Tue, 07 Feb 2023 14:59:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675810777; cv=none;
         d=google.com; s=arc-20160816;
-        b=QdZm58qiXJHGt/aRuSbZf8RvBAope/lQH8lw2lkwUPDdTZ7utk4ktii3vgxldrxJ1B
-         E+Sj+VUdG69i//OobCqNk56iGT1//KOd2etXMxfFhIBhj/O2mjaxinicN07zA2+9doyh
-         znOJgeXNLhQ2IGL+C3/8DLiJbV7B7xkYIHpbqdrX2fKDhJA8V6K/v47hD+suOWWskLNI
-         A8pjBt1+69d0bTMSrI02G3lrYj+x5HOuZ2rO6WIJx0US5ZkL/uFleB99dTBGgMQeYqL8
-         WxtIJHqL/CujlNxLNIhB23M61Nq/pZXoa2slhYRKfdgV39YlmD8fD006jFKt1GCbvgNX
-         r7dA==
+        b=ybu9ciYmj1Z/jPJEkgoafxeh+15zjrYHh4qt+Cb5M/99VUpMJlLLaVtyhyclNJ0VeK
+         Llu32Ku6189o1h0OSUivIUcm52VII+BCAHdNllcV9OP1QIGRpksR4FNFt4j8i7GPGkC9
+         tDPuWUiHFqR9Nvif05SQzV6DiIOqFHCKGQGA/7CPlhoodpVusKM+6ev2DUKOu4ZeQHoq
+         sBNMZUHe9gasgKXKmrMQCWvAuQ0gx/4fbmU4Y5NsXiWhTBfDqWtH79qHHy9ZZjtP2LN1
+         LF/Lxp04atv4ICEe2+2JIZRHQ0ytOR0Y7AeVd05PNEZorRL3FfSOS5QjeGjeglY+HgEg
+         9S7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=82HfK06DVh/agahlCdYtPK0dP+W5l5Q5YLeIizLH6ko=;
-        b=ihLTm4zTGHMbGQWv/m4LMTo73FygFcggAww+XHCEq7BzW1eZryvBhLz3ozaK0a3cg1
-         BeyNUpYpy4zBAh3tkHDsj5JCFLB6cxPPKguXGzWB0m5FTDGAx601z562ubmKNdsN7Bk7
-         vt/q9nMeVZeebPJSeFlyy4Cc8mKyUEq4hi1SzVqFJaWkC5nZ3LRb9bX/U7X0MdrfLVuh
-         DlaZzmQYy47lZ1zcMJiVrAL2IIRqmeRdzh2ubtLjGuJeCDI8AkymXRpQjVlHzTWGYIsk
-         GJvYIvaOgkczZ4b0FUu5TpjDgdmQOfNrpt89Dqc343C77ZRiwxeGHb7o6ss4w4XVT42e
-         dbhw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=iEeW3DoEK3Lc8rA9gJUYXTwtZDjS/pFE4Wh2Y06imIA=;
+        b=X9vfAnt10NeEqzauGnMVQDM67z5EIu6agsEceX5ipnB3+/PvBSt9bFsXIJoIJYGzJk
+         py+xL18Rczd0zDJUNEpQq6WsC7Ie7EcfsbXEviZ4sZ1wFkelGKgYp53SCod7rrZnTjac
+         hWtONRsiKnvan7vHngnjgaWvWkQme51nHPzfkPmdN/e492U0q83at2smblileSHTkWBW
+         gUseMJAI8sCbp8IOzxle1DhFZCCcczXzu7mgW/W8M8wDiBbhtvVFOFhd7Uzrr7bH49oY
+         fzWUNCTrdfqnVLFWUMLo1Wy6QYzJmwq1kIZHeIU/h7zB+M0/JINbbsxgdMKB0ZgJP9vp
+         pUIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="BkY/UiZp";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=znR4twCx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n129-20020a37bd87000000b0071344a79784si10572982qkf.585.2023.02.07.12.36.13
+        by mx.google.com with ESMTPS id m1-20020a0ce6e1000000b005387b6749d5si10246396qvn.542.2023.02.07.14.59.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Feb 2023 12:36:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Feb 2023 14:59:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="BkY/UiZp";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dkim=pass header.i=@linaro.org header.s=google header.b=znR4twCx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pPUgm-0007Yt-DV; Tue, 07 Feb 2023 15:35:40 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pPWvy-0007Fx-Iq; Tue, 07 Feb 2023 17:59:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pPUgk-0007YR-96; Tue, 07 Feb 2023 15:35:38 -0500
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pPUgi-000411-3N; Tue, 07 Feb 2023 15:35:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=82HfK06DVh/agahlCdYtPK0dP+W5l5Q5YLeIizLH6ko=; b=BkY/UiZpu+i7YontJdzIk78PAl
- IZ9ErgjwrtpxT/2plP+KYPJJUrddOIPlTZ9bJtJbZXEVE7ecva/zdimEdEdT3OXMWBTkfY6CulbG/
- 9tSHcG4WQzMVSiE4HiPNscCxm2RC1dNjuzj4ImMNmXH95s47Y7u4PtjcPIRcY975H9b8IkHc/cQxy
- CRp/lBL5nw9CV+txW/+jDds+ohui0YkDDKlG7p2G63FbxyiWwg4VS2RxgMDRm02oh1ANXkTVB0FH6
- OY3TAI51VDfRe8HYpJMcOgJWYHFNF2MBMtn9RifuDOTEdsyEhZzrkeNCZT0cjPIn2kyWULn0zoWEy
- oC29f0f7SfCggpdvJcCwrN5k53k9hE+9rrTyBDpGorVEsZzSe8ENOjpQNvPCHJNM4dRKBYc8UIFSP
- C3N+HcEtf1+iPXXDQ8DlKOrwz+5loyA9cKFRkKjyoVaXjrqnJXO6gu/bWPxy/Dkp+xj9rY82wsCDm
- +6vRwEccWRIO6GpjPiZ9hNeb+L7jJZYt2AVG6bc1T/GnBzN6o4ok7gVxHLa442Jr37A/VmVqvIRMA
- WNgpz+IMniOan1TKs+A18MjTKmg1Cq43EZKXD8zMP1L7odYRPLilHRyEcnWMWpdhX572U9TE/EDNG
- 4vS6M5ZSf0O678PWNb2JrXjxdF1UA7iz7iB2RI3vU=;
-Received: from [2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pPUgA-000Aig-LA; Tue, 07 Feb 2023 20:35:03 +0000
-Message-ID: <47615329-9ae4-f9e0-117d-f7d4300bfdf1@ilande.co.uk>
-Date: Tue, 7 Feb 2023 20:35:31 +0000
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pPWvr-0007Dy-ME
+ for qemu-arm@nongnu.org; Tue, 07 Feb 2023 17:59:25 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pPWvq-00049c-4z
+ for qemu-arm@nongnu.org; Tue, 07 Feb 2023 17:59:23 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id mi9so16549066pjb.4
+ for <qemu-arm@nongnu.org>; Tue, 07 Feb 2023 14:59:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=iEeW3DoEK3Lc8rA9gJUYXTwtZDjS/pFE4Wh2Y06imIA=;
+ b=znR4twCxDhylk+Co7F5rLi50GXYsniUbI645+m7DEFCK3md2Ve4F3xVLq4QA5tPlU6
+ HWmL0OXcsNGg0pODz3nHIVBn8nhiWfOBXj9l4QdtpVNDt8XadSSlNZwhuZ+SN14j7Tpl
+ vA3dEdIAw0J+7VKgdkKulyT1MNbu+jpfU2ngPAwA9+s+kwVTgg+ze/OVXisM8fgzCFvo
+ iwJtHx1X1kuFq3j+eH/9KWO0xCOP//3WJBzKMZLjU5LwuLEHpv28W/WEor9siPNeI0Uv
+ bf0iT8r4p/J5qpj2dSJNYemJ4Z67jrMkpY6WV+8skzn+TiENKVn76hJuiQnGnlPrfaaC
+ H9Tg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=iEeW3DoEK3Lc8rA9gJUYXTwtZDjS/pFE4Wh2Y06imIA=;
+ b=lQLzM3lKhqHcafOuNusBGpAV9ZdiFRuE5krJImLtBp94qWNMK4/f9GXQBJIKkpRdWF
+ 8Kwhv5yxwBmW/wdxbYhGhq75qa5Qrhk0XebIBC0KMN7e3fBMTJ0HmSZLy/4KSDku26KR
+ xNXBj7lrqkS4vKCTkfRHn6h6IpcBkCi8vWkwVU40hKJmjjwhqzfTEztqCvL9fAc1kdey
+ RgxkADk2qjjFKkBrymXKtiII+cTfJPRyl9XgYNE+Lb9QH2LdBdF7kSS9km+QkMuWv4l9
+ 0mVpBFRkfd0EumcsksT6tEl1SXLbZYGozZN1Au/3XfRzvV4D1dtpM1sQhs9eS3nBXfol
+ Qxng==
+X-Gm-Message-State: AO0yUKU3iuw5EXHfFrE8Ki0kzjBcRG+KIQJVdthE/0bKPmOGxLHelteY
+ cq7UKmKefnGTfgYUmcvG19Iz0g==
+X-Received: by 2002:a05:6a20:3ca6:b0:bf:9f83:2374 with SMTP id
+ b38-20020a056a203ca600b000bf9f832374mr6164895pzj.52.1675810760538; 
+ Tue, 07 Feb 2023 14:59:20 -0800 (PST)
+Received: from [192.168.101.227] (rrcs-74-87-59-234.west.biz.rr.com.
+ [74.87.59.234]) by smtp.gmail.com with ESMTPSA id
+ q25-20020a639819000000b004dadeb4decasm8402765pgd.53.2023.02.07.14.59.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 07 Feb 2023 14:59:19 -0800 (PST)
+Message-ID: <0dfe9a93-e593-82bf-0a00-59223c943fef@linaro.org>
+Date: Tue, 7 Feb 2023 12:59:14 -1000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v2 01/11] hw/intc/armv7m_nvic: Use
+ OBJECT_DECLARE_SIMPLE_TYPE() macro
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, Eduardo Habkost
- <eduardo@habkost.net>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20230203113650.78146-1-philmd@linaro.org>
- <e30899d3-06b5-645e-3f42-c99631b5a53a@ilande.co.uk>
- <46f52043-368c-e153-2d02-ba30220685dd@linaro.org>
- <8c7cfd90-e2aa-a6ff-506d-f3a5d24622b6@ilande.co.uk>
- <8b79daf4-28de-86f7-8f84-32f7d3f7ce56@linaro.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <8b79daf4-28de-86f7-8f84-32f7d3f7ce56@linaro.org>
+Cc: qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20230206223502.25122-1-philmd@linaro.org>
+ <20230206223502.25122-2-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230206223502.25122-2-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 0/9] hw: Use QOM alias properties and few QOM/QDev cleanups
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4KyDEtMH/0LI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lAl1Jew/skYg
 
-On 06/02/2023 23:04, Philippe Mathieu-Daudé wrote:
+On 2/6/23 12:34, Philippe Mathieu-Daudé wrote:
+> Manually convert to OBJECT_DECLARE_SIMPLE_TYPE() macro,
+> similarly to automatic conversion from commit 8063396bf3
+> ("Use OBJECT_DECLARE_SIMPLE_TYPE when possible").
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/intc/armv7m_nvic.h | 5 +----
+>   1 file changed, 1 insertion(+), 4 deletions(-)
 
-> On 6/2/23 22:54, Mark Cave-Ayland wrote:
->> On 06/02/2023 15:27, Philippe Mathieu-Daudé wrote:
->>
->>> On 6/2/23 00:29, Mark Cave-Ayland wrote:
->>>> On 03/02/2023 11:36, Philippe Mathieu-Daudé wrote:
->>>>
->>>>> These patches are extracted from a QOM/QDev refactor series,
->>>>> so they are preliminary cleanups noticed while working on it:
->>>>>
->>>>> - Use correct type when calling qdev_prop_set_xxx()
->>>>> - Unify some qdev properties in MIPS models
->>>>> - Replace intermediate properties by link properties
->>>>> - Remove DEFINE_PROP_DMAADDR() macro which is used one time
->>>>> - Use qdev_realize_and_unref() instead of open-coding it
-> 
-> 
->>>> I must admit to being slightly nervous about using QOM alias properties in this 
->>>> way, simply because you start creating implicit dependencies between QOM objects. 
->>>> How would this work when trying to build machines from configuration files and/or 
->>>> the monitor? Or are the changes restricted to container devices i.e. those which 
->>>> consist of in-built child devices?
->>>
->>> The latter. All parents forward a property to a contained child.
->>>
->>> The parent forwarding property is replaced by a link into the child,
->>> so accessing the parent property transparently access the child one.
->>>
->>> The dependencies are already explicit. We can not create a parent
->>> without its children (the children creation is implicit when we
->>> create the parent object).
->>>
->>> I thought this was the canonical QOM alias properties use. What is
->>> the normal use then?
->>
->> The problem I've found with this approach in the past is that it fails when you 
->> have more than one child device of the same type.
->>
->> For example imagine the scenario where there is a QEMU device that contains 2 child 
->> UARTs and each UART has a property to disable hardware handshaking: if you add a 
->> property alias to the container device, it can only map to a single child UART. 
->> Furthermore if you then try to alias the UART IRQs onto the container device using 
->> qdev_pass_gpios(), then that also fails with 2 UARTs because the gpios from each 
->> UART have the same property name.
-> 
-> I noticed some qdev gpio namespace issues. Thanks for pointing that
-> qdev_pass_gpios() restriction.
-> 
->> You could then think about solving that problem by using 
->> object_property_add_alias() directly to specify a different property name for each 
->> UART's mapped property on the container device, but then you end up accessing the 
->> child UART properties with different names, but only when using that particular 
->> parent container device(!).
->>
->> For this reason I've tended to avoid aliases and setup child objects from the 
->> container like this:
->>
->>     static void container_init(Object *obj)
->>     {
->>         object_initialize_child(obj, "uart0", &s->uart0, TYPE_UART);
->>         object_initialize_child(obj, "uart1", &s->uart1, TYPE_UART);
->>     }
-> 
-> Hmm OK, this is the approach used in IMX:
-> 
-> @@ -120,8 +120,12 @@ static void fsl_imx6ul_init(Object *obj)
->        * Ethernet
->        */
->       for (i = 0; i < FSL_IMX6UL_NUM_ETHS; i++) {
-> +        g_autofree gchar *propname = g_strdup_printf("fec%d-phy-num", i + 1);
->           snprintf(name, NAME_SIZE, "eth%d", i);
->           object_initialize_child(obj, name, &s->eth[i], TYPE_IMX_ENET);
-> +        qdev_prop_set_uint32(DEVICE(&s->eth[i]), "phy-num", i);
-> +        object_property_add_alias(obj, propname,
-> +                                  OBJECT(&s->eth[i]), "phy-num");
->       }
-> 
-> But then this is how it is used today:
-> 
->   static Property fsl_imx6ul_properties[] = {
-> -    DEFINE_PROP_UINT32("fec1-phy-num", FslIMX6ULState, phy_num[0], 0),
-> -    DEFINE_PROP_UINT32("fec2-phy-num", FslIMX6ULState, phy_num[1], 1),
->       DEFINE_PROP_END_OF_LIST(),
->   };
-> 
-> What do you mean by "you end up accessing the child UART properties with
-> different names, but only when using that particular parent container
-> device(!)."? I tend to see QOM modelling as matching hardware design,
-> so if a container is used, there is a similar relationship / hierarchy
-> in the hardware, then accessing the children via a particular parent
-> container path sounds the correct way. QOM indexed child must have the
-> same meaning in the hardware layout.
-> 
->> And then when configuring the board it is possible to obtain the UART references 
->> like this:
->>
->>     uart0 = UART(object_resolve_path_component(OBJECT(container), "uart0"));
->>     irq0 = qdev_connect_gpio_out(DEVICE(uart0), 0, ... );
->>
->>     uart1 = UART(object_resolve_path_component(OBJECT(container), "uart1"));
->>     irq1 = qdev_connect_gpio_out(DEVICE(uart1), 0, ... );
->>
->> This allows all UART configuration to be done in the same way regardless of the 
->> parent container device and number of child devices, and without having to think 
->> about using different property names depending upon the container device.
-> 
-> OK I think this is the same explanation as what I just wrote earlier.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Yes indeed, I think we're on the same page here now.
+r~
 
->> One place where it could conceivably be useful is where you have a chip modelled as 
->> a device and you want to expose the memory regions and IRQs to an interface such as 
->> ISA, but often even that doesn't work (think PCI IRQs for example).
 > 
-> IRQ wiring is an unsolved problem in my TODO, in particular when a bus
-> is involved...
-> 
->> The only valid use cases I can think of are the /rtc property (which is an alias to 
->> the RTC device, regardless of where it exists in the QOM tree) and perhaps in 
->> future adding similar array aliases to the root of the machine that can point to 
->> things like block devices, network devices, chardevs and audio devices (i.e. 
->> anything that has a corresponding QEMU backend).
-> 
-> Hmm I see, but this seems a very restrictive use of QOM link property
-> concept IMHO. For me a QOM link allows to share pointer to any QOM
-> object (with the QOM type checked). Am I abusing the concept?
-> 
-> BTW DEFINE_PROP_xxx() macros are a QDev concept. In particular
-> DEFINE_PROP_LINK(). The 'realize' step is also a QDev concept...
+> diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
+> index 0180c7b0ca..07f9c21a5f 100644
+> --- a/include/hw/intc/armv7m_nvic.h
+> +++ b/include/hw/intc/armv7m_nvic.h
+> @@ -16,10 +16,7 @@
+>   #include "qom/object.h"
+>   
+>   #define TYPE_NVIC "armv7m_nvic"
+> -
+> -typedef struct NVICState NVICState;
+> -DECLARE_INSTANCE_CHECKER(NVICState, NVIC,
+> -                         TYPE_NVIC)
+> +OBJECT_DECLARE_SIMPLE_TYPE(NVICState, NVIC)
+>   
+>   /* Highest permitted number of exceptions (architectural limit) */
+>   #define NVIC_MAX_VECTORS 512
 
-I thought we were talking alias properties here? I'm sure I replied separately to the 
-RFC thread containing qdev_set_prop_link() - nothing wrong with link properties at 
-all, but exposing them via qdev was only done recently by Markus (to avoid around 
-passing opaques IIRC) and I'm not sure how that would be represented/parsed on the 
-command line, if indeed that is still considered to be the way forward.
-
-> Markus suggested I watch Paolo's QOM talk to use the standard
-> terminology from the expert. I suppose this is "QOM exegesis and
-> apocalypse" from 2014.
-> 
-> Thanks for the brainstorming and clarifications!
-
-No problem, hopefully by starting to document some of these issues it will help 
-decided the future direction as to how this should all work.
-
-
-ATB,
-
-Mark.

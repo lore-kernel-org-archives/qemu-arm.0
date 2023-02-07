@@ -1,109 +1,109 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5048378ejb;
-        Mon, 6 Feb 2023 23:18:30 -0800 (PST)
-X-Google-Smtp-Source: AK7set9DG2wzmu+sKRgGDI2N+PgM99ENiY1vgAIXwbr9rRuAHGFTq0EENrN7PlX2UUVyvc/JSuLQ
-X-Received: by 2002:a05:6214:2b05:b0:56b:f9bd:c076 with SMTP id jx5-20020a0562142b0500b0056bf9bdc076mr3953836qvb.4.1675754310493;
-        Mon, 06 Feb 2023 23:18:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675754310; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5048498ejb;
+        Mon, 6 Feb 2023 23:18:37 -0800 (PST)
+X-Google-Smtp-Source: AK7set9+MY5qyZbe7FwRolH3DX5OQ1m3Fdvwhs2O9I1ozlNLYMW0+Oh5VNE4TgppjstXLJ1vOuoD
+X-Received: by 2002:a05:6214:202b:b0:56b:c6b3:e574 with SMTP id 11-20020a056214202b00b0056bc6b3e574mr3696535qvf.23.1675754317675;
+        Mon, 06 Feb 2023 23:18:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675754317; cv=none;
         d=google.com; s=arc-20160816;
-        b=MPkUNnVasxAR21uBnyE5tEDl1JLMzm94vRICVzr7pHdrb+BXPI7Z1IVwrfKdvW2ZDF
-         /eWGTaSuDpRV3n0ErvQugSk6yk0eTo1zKypV8SCEEwFiXWMpjO/kNGb3i25StkoupYBx
-         V3kaQa7u4bR0ifqiRq0pNpL6m27oHd9GSXyjgYo8y0glsFDo98Mi9uuUW3Sca+IYIXdW
-         ouQlx0jWYmb5xiFsHK2E3dG4KOIBxbFmavNtwNhwW+/8+uBHBCM5iAsjfYO9QwcbZwNE
-         iFZuYHOc+XaUKKd3XL0/gubPGEGKzbQLgisQ9okVq3QbP3ZALUeq8G5dkSpEYfIC8KXb
-         Eqtw==
+        b=YQfPjwfkstsJNrSpBf2TcfmtTIBRX4gnzZTk419znu6pF4qhm9FAT89sy6PYndJW/E
+         Ka2xGS7uFVmaadM1YJ5hyHo8lJ5RHL2q1SFqDBlmZOS+2Ywcwu9YgEFqj1sgvZ1PtyOn
+         wcfOQ7SgZacIPkk+T/jVLIfjOn0VEsnAO3YBMN6CjDr6W1f4GtFrwQ05HWRubjW8p3pk
+         CapwsexdEgi1ZMSRR/X+20C1TvTj1jY/SNDP4A9peNEi2o8nXj0IkBYWLuZlBOPuSTzf
+         KVyRL2QBpNT7QtkyKtxE859BtKwagP1qNZV8CvZVsqnIWORNuwB4BVqYFhpBEcQQoI09
+         OTLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=5qDd63j+Z60WdwRzJL1tU/BVjMZ0HIClw7obz4DE6Qw=;
-        b=xIoiM1l7aC5wRJWYefB1bNXmdlXPemCkDIQ45KtW7pMNVawUXdRtmBngf2hBEOpa4I
-         otr6o/NWGkkx/UsBrnThkf0S/6Dl0UTdrYW8vUIk66PiaCgRnHB/ownTUtWwBvVx39iX
-         MTK+cxeUKzh6Ovpdbe3eZFVJ/RXjaFgRylUOsX9hKmCVQEl/OpyaUHBp2A2pTxmC46N5
-         L9a8cavyxb46t7dN/L7EldbpXWnMv05ffwDrflUp2a+65t1tsitSSJSxsczQGhXEjJ0z
-         F9t4ggjHRzJ7l4UQpl2CSxq6X9gjhwU+9qAxCsRECZiwR3LdCHnmOs7uFOJuo/3ksiRa
-         +FLw==
+        bh=aoJp/X2qeP4aHLRK+qPZEOY34PqbOLhVAXlhXswFXQ4=;
+        b=FIS0IJId0p0UN5b5XBgBh3IoAI3Ki+OK0+ru8E1gPV3ZHk19H2+4aWJQQquUJ86a4U
+         eBnP9XJpSENXk0CqsGzxRBTs/uloBTSib3bjjlRsSnZFgxzHQg/qxl2vkYyDg82yRTLf
+         AwUossSMJkIkkN2tHZ96ZR242KqdMO4Ul0EwIxhrzjDmbjCLtPDfdhE3xi0NwqiSzeVp
+         rE46AOciqqxIPASD4xfGE47cJzFzJ/F77wSte7dW3YTTUQarr8co7LGqvUys00m+NMNj
+         FA4aqv/Ov0dts5wkh+HXyT8iWcmFwYxge64Iy0gALO97oyJVSSeFKxlCKF7G+IbQLYXd
+         06uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cst1J3D6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PNVPVYZF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e5-20020a0cf345000000b0056bf672dab3si4035912qvm.10.2023.02.06.23.18.30
+        by mx.google.com with ESMTPS id 15-20020a05620a040f00b00731114e2182si6538382qkp.236.2023.02.06.23.18.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Feb 2023 23:18:30 -0800 (PST)
+        Mon, 06 Feb 2023 23:18:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cst1J3D6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PNVPVYZF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pPIAj-0006Ba-8R; Tue, 07 Feb 2023 02:13:45 -0500
+	id 1pPIFN-0000IF-D4; Tue, 07 Feb 2023 02:18:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pPIAg-000656-RM
- for qemu-arm@nongnu.org; Tue, 07 Feb 2023 02:13:42 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pPIFK-0008S1-JN
+ for qemu-arm@nongnu.org; Tue, 07 Feb 2023 02:18:30 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pPIAe-00017K-Qu
- for qemu-arm@nongnu.org; Tue, 07 Feb 2023 02:13:42 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- j32-20020a05600c1c2000b003dc4fd6e61dso12420357wms.5
- for <qemu-arm@nongnu.org>; Mon, 06 Feb 2023 23:13:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pPIFI-0002FJ-BK
+ for qemu-arm@nongnu.org; Tue, 07 Feb 2023 02:18:29 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ bg13-20020a05600c3c8d00b003d9712b29d2so12448625wmb.2
+ for <qemu-arm@nongnu.org>; Mon, 06 Feb 2023 23:18:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=5qDd63j+Z60WdwRzJL1tU/BVjMZ0HIClw7obz4DE6Qw=;
- b=Cst1J3D68wlWl8ezALluwKcQImuHATA9/SGQDw0On4HhBKsP22C13OES4+FVv2deDA
- utQ6fcFkvIUjD1yBG2ltqyARvzT1zbT41RNkme7nVgDvBQAkpLT0kDck4Vo+WmEd4XvY
- k82ndRJObEz9UBa+BYFubSuEeiy201/SQAQHiPr2qUNFT/WBmF8BGm++D1+NNtj6+tPw
- AIZSxQsgaG0KwjZKfsGLiRKkUJKRsTzOn/kn/dubQqeDfAw7dtxPL1GZBe0rg8LV6Y6p
- u6IOpnMzMW84/G146YZiXHFmR0KzvDsP0KbQ77g8l2azQaIteOIaqYLpuqa3FhHlFXW8
- lb9Q==
+ bh=aoJp/X2qeP4aHLRK+qPZEOY34PqbOLhVAXlhXswFXQ4=;
+ b=PNVPVYZFcqQo0+NAGYZBBOEXAgAS6KmW4hOHJNuwd2Qz8cp89ZN0T11A+TmvXDLSi3
+ zNWA+D8W0TUnulEcTetk0PMvZD0oUZro68XqnSR6I34R5y+m8RMfmsMFdEZSH/sG48G5
+ IdyCU45a9x/I66/+RcRtpb44i918iDmG3LRoW+g5yLG0C2xrZMtJ/CAUJkIBvPiOreDu
+ 6MAh1TY6A8mbLjEjKtrXHF+F1gkcmmN/9poLkYkqKVuET+4ILyJH2ef950k3JH+1f9Gn
+ fYc8AfeC5gRPHQKsBYVpXT5D+kIRreSNzyma7XeF4Y0oeGd8is9j0zhmkOlCESTemYov
+ UZtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=5qDd63j+Z60WdwRzJL1tU/BVjMZ0HIClw7obz4DE6Qw=;
- b=gY7OkMrcGya5DYvg9XS5p3Q/5s94v7/hvQG2pzyVFouTu7pnQqfNE3uEU2Nj3lrQqc
- FYI+mYlrdY959miaOrrSsyHmII7Z9V4bSF0mR56TEZovqUN9dqJiXpJidhFz37RTEb7Q
- XN+23twEVyfKMyBtT6swyOE+iUsuMEhtNCSYGJjLsTk4BV8SajFQlreGxqSeEuuaApt2
- S+PNus+RHsQtqSIKyVQcIc9YGz3Y/6qbHYUwQ58HEnFJrYJupYonRsOlBxtHKhyB85S/
- cfEoqB0za5ulfnJ0nLX4rjD7qIoIba2MawmqN7/9nbSnNXSTkc5HyONBqy9i7Xz4eNyS
- FXlA==
-X-Gm-Message-State: AO0yUKV3wzJS2QP8CoMN30GsOYqiX+LDa15xRf9SQX6DTA2sOXL4Vwvc
- jblCVaimKgayGInPJDbafkHvxQ==
-X-Received: by 2002:a05:600c:a287:b0:3df:fff4:5f6f with SMTP id
- hu7-20020a05600ca28700b003dffff45f6fmr2139486wmb.36.1675754018821; 
- Mon, 06 Feb 2023 23:13:38 -0800 (PST)
+ bh=aoJp/X2qeP4aHLRK+qPZEOY34PqbOLhVAXlhXswFXQ4=;
+ b=r1/4jC0TcbmUbtsF7Wgp7YxNoxn1AUF5iPLNdWtjtjAMUBZXAhDPAKArmSQLmCcOjT
+ lUMxABgHRdfpgM5tqv+3Vx0YQjlUNSiW/ix9slE7YL933EzX2EUCpKr3Ih/4o8ZZVyou
+ //JdCitfPnMDP49sS51JB7gbZS2BM3GaKhFFBGIrisC9+TybFQ1Jn0qPnVImm6O0/isj
+ IetbyEhN/4GAEMmqyQJm3n1Y0JeQpAGvHqoluaqXyiRJWtchfaazqlXW4LYYys3f2mpL
+ Cf6z3EC6ms8jzcKU8L7o/uj8HQ/NSh6wxc0m2cAMvR8xjSQHWY9HivCt3Jsfnsc8gLlk
+ TBzw==
+X-Gm-Message-State: AO0yUKVfBiVGFqR5o6Eo6FSPVQUuDNzcOf1IwExPVohHxBYQp//A02vI
+ HA3KNo+DYXZc0hjK2YdiWyltpQ==
+X-Received: by 2002:a05:600c:331a:b0:3d2:392e:905f with SMTP id
+ q26-20020a05600c331a00b003d2392e905fmr2045055wmp.24.1675754306899; 
+ Mon, 06 Feb 2023 23:18:26 -0800 (PST)
 Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- q14-20020a05600c46ce00b003dc47d458cdsm13570487wmo.15.2023.02.06.23.13.36
+ s22-20020a1cf216000000b003dffe312925sm6177018wmc.15.2023.02.06.23.18.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Feb 2023 23:13:37 -0800 (PST)
-Message-ID: <de4b4eb1-0f77-fb20-5e8e-be751f4a32a5@linaro.org>
-Date: Tue, 7 Feb 2023 08:13:36 +0100
+ Mon, 06 Feb 2023 23:18:26 -0800 (PST)
+Message-ID: <084f4fed-5646-d30b-21c9-0402063ae5bf@linaro.org>
+Date: Tue, 7 Feb 2023 08:18:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH 2/3] hw/ssi: Add Nuvoton PSPI Module
+Subject: Re: [PATCH 3/3] hw/arm: Attach PSPI module to NPCM7XX SoC
 Content-Language: en-US
 To: Hao Wu <wuhaotsh@google.com>, peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com,
  Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com,
- titusr@google.com, Chris Rauer <crauer@google.com>
+ titusr@google.com
 References: <20230206233428.2772669-1-wuhaotsh@google.com>
- <20230206233428.2772669-3-wuhaotsh@google.com>
+ <20230206233428.2772669-4-wuhaotsh@google.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230206233428.2772669-3-wuhaotsh@google.com>
+In-Reply-To: <20230206233428.2772669-4-wuhaotsh@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
@@ -125,86 +125,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rhR4Mf7hL9NJ
+X-TUID: R3MQCvoCG0+r
 
 On 7/2/23 00:34, Hao Wu wrote:
-> Nuvoton's PSPI is a general purpose SPI module which enables
-> connections to SPI-based peripheral devices.
-> 
 > Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> Reviewed-by: Chris Rauer <crauer@google.com>
+> Reviewed-by: Titus Rwantare <titusr@google.com>
 > ---
->   MAINTAINERS                |   6 +-
->   hw/ssi/meson.build         |   2 +-
->   hw/ssi/npcm_pspi.c         | 216 +++++++++++++++++++++++++++++++++++++
->   hw/ssi/trace-events        |   5 +
->   include/hw/ssi/npcm_pspi.h |  53 +++++++++
->   5 files changed, 278 insertions(+), 4 deletions(-)
->   create mode 100644 hw/ssi/npcm_pspi.c
->   create mode 100644 include/hw/ssi/npcm_pspi.h
+>   docs/system/arm/nuvoton.rst |  2 +-
+>   hw/arm/npcm7xx.c            | 25 +++++++++++++++++++++++--
+>   include/hw/arm/npcm7xx.h    |  2 ++
+>   3 files changed, 26 insertions(+), 3 deletions(-)
 
-
-> +static const MemoryRegionOps npcm_pspi_ctrl_ops = {
-> +    .read = npcm_pspi_ctrl_read,
-> +    .write = npcm_pspi_ctrl_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid = {
-> +        .min_access_size = 1,
-> +        .max_access_size = 2,
-
-I'm not sure about ".max_access_size = 2". The datasheet does
-not seem public. Does that mean the CPU bus can not do a 32-bit
-access to read two consecutive 16-bit registers? (these fields
-restrict the guest accesses to the device).
-
-> +        .unaligned = false,
-> +    },
-
-You might want instead (which is how you implemented the r/w
-handlers):
-
-     .impl.min_access_size = 2,
-     .impl.max_access_size = 2,
-
-> +};
-
-
-> +static void npcm_pspi_realize(DeviceState *dev, Error **errp)
-> +{
-> +    NPCMPSPIState *s = NPCM_PSPI(dev);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> +    Object *obj = OBJECT(dev);
-> +
-> +    s->spi = ssi_create_bus(dev, "pspi");
-
-FYI there is an ongoing discussion about how to model QOM tree. If
-this bus isn't shared with another controller, the "embed QOM child
-in parent" style could be preferred. If so, the bus would be created
-as:
-
-       object_initialize_child(obj, "pspi", &s->spi, TYPE_SSI_BUS);
-
-> +    memory_region_init_io(&s->mmio, obj, &npcm_pspi_ctrl_ops, s,
-> +                          "mmio", 4 * KiB);
-> +    sysbus_init_mmio(sbd, &s->mmio);
-> +    sysbus_init_irq(sbd, &s->irq);
-> +}
-
-
-> diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-> index c707d4aaba..16ea9954c4 100644
-> --- a/hw/ssi/trace-events
-> +++ b/hw/ssi/trace-events
-
-> +# npcm_pspi.c
-> +npcm_pspi_enter_reset(const char *id, int reset_type) "%s reset type: %d"
-> +npcm_pspi_ctrl_read(const char *id, uint64_t addr, uint16_t data) "%s offset: 0x%04" PRIx64 " value: 0x%08" PRIx16
-> +npcm_pspi_ctrl_write(const char *id, uint64_t addr, uint16_t data) "%s offset: 0x%04" PRIx64 " value: 0x%08" PRIx16
-
-Since the region is 4KiB and the implementation is 16-bit, the formats
-could be simplified as offset 0x%03 and value 0x%04. The traces will
-then be more digestible to human eyes.
-
-Modulo the impl.access_size change:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

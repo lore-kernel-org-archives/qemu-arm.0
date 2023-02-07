@@ -1,101 +1,103 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5667506ejb;
-        Tue, 7 Feb 2023 10:47:35 -0800 (PST)
-X-Google-Smtp-Source: AK7set+l//2BSBUyJnQF/zIK9snCfNfV+fmb1MCjsIQ477Bw0umACZmybG21DeC8zM47kDArL9ad
-X-Received: by 2002:ac8:4e51:0:b0:3b9:b260:1e76 with SMTP id e17-20020ac84e51000000b003b9b2601e76mr7756933qtw.1.1675795655356;
-        Tue, 07 Feb 2023 10:47:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675795655; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5690706ejb;
+        Tue, 7 Feb 2023 11:21:55 -0800 (PST)
+X-Google-Smtp-Source: AK7set8NXUtHZaeonsPR5kwHQKx/idBMlLWNd5WZxOhvzREEFyQqdzA5nvVWxilrmZX5WwxGICgF
+X-Received: by 2002:a05:6214:2525:b0:56c:965:da79 with SMTP id gg5-20020a056214252500b0056c0965da79mr4955553qvb.22.1675797715705;
+        Tue, 07 Feb 2023 11:21:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675797715; cv=none;
         d=google.com; s=arc-20160816;
-        b=FA4Ktzt+2bXFK11GWqkvOshYST+Rihg3sHdq6ZAs33H7D4QFvtYtqZn9EfrdF+UYJO
-         skOZHihHhPvi95iJlWW1/tQvwv891BfCioOLc+9WllOtpZxTR8iIUUsoFPz6+42zFADl
-         pJhy0wuUE4xn4bPIn7Vvu4OtDqd1x81kFHlisji4Ns7l+Zqe9U5qg21+FNJl8/9FLooU
-         GeVLZM2InGlFn9ZVD0d2QtK0y6nkDVEEeFjrtuJJNSZ1png1V2weDxR4j93TW8CPVFDr
-         D8t3SlQ0o+QnCIZXsEByAl+/WjBaY850ndYd6uf5i+GIrMllobDLv3Wm24fhcZFx4g00
-         Vlew==
+        b=U+d8ckMf9XK30/I9KS+4WHwfiL64F/+350kUZAR/yrEa44jrK0HHyz/tuMTIPCRTTc
+         3eX+1YdI5ALB1xM9MmSTVfm9YBvLIsIK4x/rrD9WZcFiJODOk2KNL/wZTyqLGHC+1/Z2
+         jdclB2BeUHDy+K1r9itPEo0qfafUKxNizJCsAHCBj9oQLlal5g+DLYRhDoxXwriSF9hc
+         r7c06pk+X3+nhR2yrWYChg7qq4hfyZGI/lUQ3eYXyvrozHZAi7Zdsn3bYdOfi9+NpgvF
+         in+/REBNQ5uvbyNF5Ol3JD6r4/Lw1HgaKWktvw4a4Izo6ZW5V+UljPomPZ4RSnLbQ66f
+         Cu9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=TD9VzaCZrk3UFQmiBQTAfArwgVdU4Bug+eDP42kybu0=;
-        b=MJ22PnT8+0WrXX0pT9r+d8G96TmIIlNToA1rjUyh2FIIOv1dGrSZzZlWFv6UIgkzcY
-         6CaGNg5lMrZJSoyVlNOWB79fmWuYemWr0Hhyo0u7ELE0KWl9fvlLMUsa/VyimXmbcXdo
-         GFKfjLT8aRfth033/OAAuWpatX9nZ+SU9FJU0j+uilXEF3bvBPt9alI24AKNXGfqmi93
-         y74M6smj/2jrfzlHQefHF5D6W5AkgmvAwGn3d2t0i/hhwY/zPaNKOLyHbOer7uk1CIMJ
-         P45ophwCP48DfPFBJVurmb8+hrJSselHAfdEZL4QBshpb+lDgy27kw2kYRov3zm7J2W9
-         meMQ==
+        bh=mLqXn/LlfcMwf4LMPpskGKbQWRj+C8qtdVq1ht52hiI=;
+        b=OqF5XM2JGgi5aukXtx1LSumC8iJrdRDe/PSMqD/TS0gXsguNwkPeHl3Qo2/MwIp0F4
+         AkE8D7M1AYOKIhn4pCUNQ6x6BeYD+rOuZadKDrf+FCpTX/VoUseJz1UyJuffFR5Qql/4
+         PiUR1zGN2E4Avpw6SylnNHIeb8HxYGqfCMBj3D8TMDZ/RXXk9ytTlRxcHTGbLxjLexfJ
+         ZSnB1peA6QEQ8BG1unyhWYi9396UBaZdrSyy6boNz8CAx1ko7i/+IgpvCZRGPpMgG3nA
+         PCRAL4Wff0cIyNgrTlqqvRpNFuQk5iEskoePu5uqsvQxRS26XKkB+rm5E3H/AXFVJ7fn
+         hZ1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=orcRa7ez;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Q118mYL7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay44-20020a05620a17ac00b0072e6bf285dbsi11679434qkb.336.2023.02.07.10.47.35
+        by mx.google.com with ESMTPS id m125-20020a375883000000b006f9ff8a8905si11115221qkb.424.2023.02.07.11.21.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Feb 2023 10:47:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Feb 2023 11:21:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=orcRa7ez;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Q118mYL7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pPSzr-00019L-RB; Tue, 07 Feb 2023 13:47:16 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pPTX7-0000nO-PI; Tue, 07 Feb 2023 14:21:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1pPSzk-00017d-OM
- for qemu-devel@nongnu.org; Tue, 07 Feb 2023 13:47:10 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1pPTX5-0000kz-Q5
+ for qemu-arm@nongnu.org; Tue, 07 Feb 2023 14:21:35 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1pPSzi-0000tB-DD
- for qemu-devel@nongnu.org; Tue, 07 Feb 2023 13:47:08 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id g6so6541380wrv.1
- for <qemu-devel@nongnu.org>; Tue, 07 Feb 2023 10:47:05 -0800 (PST)
+ id 1pPTX3-00073S-2t
+ for qemu-arm@nongnu.org; Tue, 07 Feb 2023 14:21:35 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ az4-20020a05600c600400b003dff767a1f1so7012670wmb.2
+ for <qemu-arm@nongnu.org>; Tue, 07 Feb 2023 11:21:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=TD9VzaCZrk3UFQmiBQTAfArwgVdU4Bug+eDP42kybu0=;
- b=orcRa7ezZSFOWEzYm/4L6p1R1C7BorNhyYo6klZZgqZwgY34cV2ADhBRgLJjErQgzP
- T48qei6SRfmrLt6KM+vpq6GcOCE4nSibxbXgQtRfgfVEPs8vW66lfFO26zI9CRTTQgnh
- im8EsQeoW5x7WW4ooHG2E8Bwul4a+n+Nx3HiDpK+OzLn42CAw/ktqDKtxY6HtR8g4F/2
- W+V0knSIUoHuEDozUtUjW9bQo1fa+ExfNFb5H6JqFT3sKRkuP6GseDWaiLeXTJqJMc/W
- vbEANAG8L1BnrdsKm/0LfQH7uwVoiqrQBzb+Lf3xZE2FDuBEMTnSJymLAkVFDkF7dC4G
- m7bQ==
+ bh=mLqXn/LlfcMwf4LMPpskGKbQWRj+C8qtdVq1ht52hiI=;
+ b=Q118mYL7FuX+ai0x0CXiI/aLq6QjG9HYD4Rr3HvEK3CTreOkypJUzlZhYsK5lpbOaz
+ pX3d5FikUx8jP7mC+cHsOFX+L7GPz7236bA3T/Ul0K2mgzfC+APknUoFly1brd97agf9
+ 4RPfc59e4YzyVbpABSDZmF3iremlRJ4JafjQIziFA7T5Qf5Iw82lg79IrOxihTBGHkBE
+ DqcALnje6BRMpFpO0YptcKQnDPf2YEbZuAkcyXjDW+Ku4k2NcYuVxmaDAaV4PmT0rX5O
+ faXU+RIphsG+BBEIL6HRkLAi55Fr8J4jVoLar+m8YI068qDVDZNgjiO2+Uxwjgq1upGx
+ KjbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=TD9VzaCZrk3UFQmiBQTAfArwgVdU4Bug+eDP42kybu0=;
- b=ZdYEei3uDB6o9vi4GpZWDOQNJl9VfvX80PUiDSUFgp3IlynHID0zzymnA8KUQAbWr/
- HTbfnFohEdbR+CNEZYdFbcHpfL9VBe7Ge4wkIyXyOd+RTIJhV/PDn0MIAFpW/T/78i8D
- 8R/5B8PRmNmYEFjbS9s7HoRkr2KMwjgECONT+y6qUuzlmPUMYRnhjcPXnloKTZ+zPrIe
- Am+ZqdTNlwkfH1ym86ZwJorzS64XEQArTiNhwSVPPdYXyq+gu+3jJWYv3mLHZnuRl+xS
- gRHdusocuQc4/bLY4hCUKxm7yvWRAGpXcBsKDbuCFWz6b/6dHC3FVXRBTf7aYUgbWuII
- /OBQ==
-X-Gm-Message-State: AO0yUKU+auRB3GKaWEncjB4zytt8ohtPGELq6R3MJr/6GwZLjxxz04AZ
- O4e6a27MN0W6sJfNbbACvgx7vUuniNxafdWb2F6q4w==
-X-Received: by 2002:a5d:5003:0:b0:2c3:e6b8:8cee with SMTP id
- e3-20020a5d5003000000b002c3e6b88ceemr182802wrt.47.1675795624186; Tue, 07 Feb
- 2023 10:47:04 -0800 (PST)
+ bh=mLqXn/LlfcMwf4LMPpskGKbQWRj+C8qtdVq1ht52hiI=;
+ b=bVOm+zTNafbTafWjtk9PjMldgleRH3dAXcIOl7LgCjqp3XdbavjYx5V5JZ6KuQx9tD
+ DdbSTWTZRxloXcTCw/pkMQe8tGlx1kqK1t3WKQJSd/tf/NHbTzyhTEOazTBaRd+hfaZe
+ Uew+oKI+P3rVTbmjFCo+y5JUahunVBpr1kNAcSu738AMH8oO1S8fWvzQyykNLSOBHf34
+ yFLTU6a8uf6msvrMRvCdxlTyQ06IBK947A5srn2KJHkZTe54j32lgNCu5DT5cmrpQiJO
+ pPRuoSy/WXobgbu0rjWI/VK281D5I108La8XI2pNXRVp3BgdxbB+lFKFO7SNzOsqaE+V
+ yh5g==
+X-Gm-Message-State: AO0yUKUGQI3jBfX2/PItVOtAB/x/wpoKgCsNM9RqvceBdR65P0++ny++
+ v7slHhzzQeq4s66Wnc7s9UyN0wV2OJnzcJTRjhF+Ng==
+X-Received: by 2002:a05:600c:2045:b0:3dc:5ad2:86ed with SMTP id
+ p5-20020a05600c204500b003dc5ad286edmr7997wmg.33.1675797690466; Tue, 07 Feb
+ 2023 11:21:30 -0800 (PST)
 MIME-Version: 1.0
 References: <20230206233428.2772669-1-wuhaotsh@google.com>
  <20230206233428.2772669-3-wuhaotsh@google.com>
  <de4b4eb1-0f77-fb20-5e8e-be751f4a32a5@linaro.org>
-In-Reply-To: <de4b4eb1-0f77-fb20-5e8e-be751f4a32a5@linaro.org>
+ <CAGcCb13Asc1GztkXEVwMPmh=7Ty1XGyeL9j=hO652uVYnyWNUg@mail.gmail.com>
+In-Reply-To: <CAGcCb13Asc1GztkXEVwMPmh=7Ty1XGyeL9j=hO652uVYnyWNUg@mail.gmail.com>
 From: Hao Wu <wuhaotsh@google.com>
-Date: Tue, 7 Feb 2023 10:46:52 -0800
-Message-ID: <CAGcCb13Asc1GztkXEVwMPmh=7Ty1XGyeL9j=hO652uVYnyWNUg@mail.gmail.com>
+Date: Tue, 7 Feb 2023 11:21:18 -0800
+Message-ID: <CAGcCb12jxNqFW096UBcfs=aiQgEY5Jeo6=76wZu6-42wV8r2rQ@mail.gmail.com>
 Subject: Re: [PATCH 2/3] hw/ssi: Add Nuvoton PSPI Module
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
  hskinnemoen@google.com, titusr@google.com, Chris Rauer <crauer@google.com>
-Content-Type: multipart/alternative; boundary="000000000000e5c26c05f420926a"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=wuhaotsh@google.com; helo=mail-wr1-x42c.google.com
+Content-Type: multipart/alternative; boundary="0000000000000ebc2d05f4210e3e"
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=wuhaotsh@google.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -105,140 +107,163 @@ X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
  USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EyRxzIP4aF/X
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iX98eJsgJ1AY
 
---000000000000e5c26c05f420926a
+--0000000000000ebc2d05f4210e3e
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Thanks for your review!
+On Tue, Feb 7, 2023 at 10:46 AM Hao Wu <wuhaotsh@google.com> wrote:
 
-On Mon, Feb 6, 2023 at 11:13 PM Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
-org>
-wrote:
+> Thanks for your review!
+>
+> On Mon, Feb 6, 2023 at 11:13 PM Philippe Mathieu-Daud=C3=A9 <philmd@linar=
+o.org>
+> wrote:
+>
+>> On 7/2/23 00:34, Hao Wu wrote:
+>> > Nuvoton's PSPI is a general purpose SPI module which enables
+>> > connections to SPI-based peripheral devices.
+>> >
+>> > Signed-off-by: Hao Wu <wuhaotsh@google.com>
+>> > Reviewed-by: Chris Rauer <crauer@google.com>
+>> > ---
+>> >   MAINTAINERS                |   6 +-
+>> >   hw/ssi/meson.build         |   2 +-
+>> >   hw/ssi/npcm_pspi.c         | 216 +++++++++++++++++++++++++++++++++++=
+++
+>> >   hw/ssi/trace-events        |   5 +
+>> >   include/hw/ssi/npcm_pspi.h |  53 +++++++++
+>> >   5 files changed, 278 insertions(+), 4 deletions(-)
+>> >   create mode 100644 hw/ssi/npcm_pspi.c
+>> >   create mode 100644 include/hw/ssi/npcm_pspi.h
+>>
+>>
+>> > +static const MemoryRegionOps npcm_pspi_ctrl_ops =3D {
+>> > +    .read =3D npcm_pspi_ctrl_read,
+>> > +    .write =3D npcm_pspi_ctrl_write,
+>> > +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+>> > +    .valid =3D {
+>> > +        .min_access_size =3D 1,
+>> > +        .max_access_size =3D 2,
+>>
+>> I'm not sure about ".max_access_size =3D 2". The datasheet does
+>> not seem public. Does that mean the CPU bus can not do a 32-bit
+>> access to read two consecutive 16-bit registers? (these fields
+>> restrict the guest accesses to the device).
+>>
+>> > +        .unaligned =3D false,
+>> > +    },
+>>
+>> You might want instead (which is how you implemented the r/w
+>> handlers):
+>>
+>>      .impl.min_access_size =3D 2,
+>>      .impl.max_access_size =3D 2,
+>>
+> Thanks for the reminder. The datasheet suggests it's either 8-bit or
+> 16-bit accesses. But I think using your suggestion makes sense
+> and will be more widely adapted.
+>
+>>
+>> > +};
+>>
+>>
+>> > +static void npcm_pspi_realize(DeviceState *dev, Error **errp)
+>> > +{
+>> > +    NPCMPSPIState *s =3D NPCM_PSPI(dev);
+>> > +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>> > +    Object *obj =3D OBJECT(dev);
+>> > +
+>> > +    s->spi =3D ssi_create_bus(dev, "pspi");
+>>
+>> FYI there is an ongoing discussion about how to model QOM tree. If
+>> this bus isn't shared with another controller, the "embed QOM child
+>> in parent" style could be preferred. If so, the bus would be created
+>> as:
+>>
+>>        object_initialize_child(obj, "pspi", &s->spi, TYPE_SSI_BUS);
+>>
+> I was just following some existing code here. I think I can use the new
+> style.
+>
+I've tried to use this and got the following error:
+**
+ERROR:../qom/object.c:511:object_initialize_with_type: assertion failed:
+(size >=3D type->instance_size)
+Bail out! ERROR:../qom/object.c:511:object_initialize_with_type: assertion
+failed: (size >=3D type->instance_size)
 
-> On 7/2/23 00:34, Hao Wu wrote:
-> > Nuvoton's PSPI is a general purpose SPI module which enables
-> > connections to SPI-based peripheral devices.
-> >
-> > Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> > Reviewed-by: Chris Rauer <crauer@google.com>
-> > ---
-> >   MAINTAINERS                |   6 +-
-> >   hw/ssi/meson.build         |   2 +-
-> >   hw/ssi/npcm_pspi.c         | 216 ++++++++++++++++++++++++++++++++++++=
-+
-> >   hw/ssi/trace-events        |   5 +
-> >   include/hw/ssi/npcm_pspi.h |  53 +++++++++
-> >   5 files changed, 278 insertions(+), 4 deletions(-)
-> >   create mode 100644 hw/ssi/npcm_pspi.c
-> >   create mode 100644 include/hw/ssi/npcm_pspi.h
->
->
-> > +static const MemoryRegionOps npcm_pspi_ctrl_ops =3D {
-> > +    .read =3D npcm_pspi_ctrl_read,
-> > +    .write =3D npcm_pspi_ctrl_write,
-> > +    .endianness =3D DEVICE_LITTLE_ENDIAN,
-> > +    .valid =3D {
-> > +        .min_access_size =3D 1,
-> > +        .max_access_size =3D 2,
->
-> I'm not sure about ".max_access_size =3D 2". The datasheet does
-> not seem public. Does that mean the CPU bus can not do a 32-bit
-> access to read two consecutive 16-bit registers? (these fields
-> restrict the guest accesses to the device).
->
-> > +        .unaligned =3D false,
-> > +    },
->
-> You might want instead (which is how you implemented the r/w
-> handlers):
->
->      .impl.min_access_size =3D 2,
->      .impl.max_access_size =3D 2,
->
-Thanks for the reminder. The datasheet suggests it's either 8-bit or
-16-bit accesses. But I think using your suggestion makes sense
-and will be more widely adapted.
-
->
-> > +};
->
->
-> > +static void npcm_pspi_realize(DeviceState *dev, Error **errp)
-> > +{
-> > +    NPCMPSPIState *s =3D NPCM_PSPI(dev);
-> > +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-> > +    Object *obj =3D OBJECT(dev);
-> > +
-> > +    s->spi =3D ssi_create_bus(dev, "pspi");
->
-> FYI there is an ongoing discussion about how to model QOM tree. If
-> this bus isn't shared with another controller, the "embed QOM child
-> in parent" style could be preferred. If so, the bus would be created
-> as:
->
->        object_initialize_child(obj, "pspi", &s->spi, TYPE_SSI_BUS);
->
-I was just following some existing code here. I think I can use the new
-style.
-
->
-> > +    memory_region_init_io(&s->mmio, obj, &npcm_pspi_ctrl_ops, s,
-> > +                          "mmio", 4 * KiB);
-> > +    sysbus_init_mmio(sbd, &s->mmio);
-> > +    sysbus_init_irq(sbd, &s->irq);
-> > +}
->
->
-> > diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-> > index c707d4aaba..16ea9954c4 100644
-> > --- a/hw/ssi/trace-events
-> > +++ b/hw/ssi/trace-events
->
-> > +# npcm_pspi.c
-> > +npcm_pspi_enter_reset(const char *id, int reset_type) "%s reset type:
-> %d"
-> > +npcm_pspi_ctrl_read(const char *id, uint64_t addr, uint16_t data) "%s
-> offset: 0x%04" PRIx64 " value: 0x%08" PRIx16
-> > +npcm_pspi_ctrl_write(const char *id, uint64_t addr, uint16_t data) "%s
-> offset: 0x%04" PRIx64 " value: 0x%08" PRIx16
->
-> Since the region is 4KiB and the implementation is 16-bit, the formats
-> could be simplified as offset 0x%03 and value 0x%04. The traces will
-> then be more digestible to human eyes.
->
-I'll do this.
+I think the problem is that we define s->spi as SSIBus* instead of SSIBus.
+But if we define it as SSIBus, we'll
+get an incomplete type error. Fixing it will require refactoring
+hw/ssi/ssi.c which I'm not sure if we want to do
+it right now. This code is consistent with other code in hw/ssi so I guess
+we can leave it here for now and wait
+for a future refactor.
 
 >
-> Modulo the impl.access_size change:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>> > +    memory_region_init_io(&s->mmio, obj, &npcm_pspi_ctrl_ops, s,
+>> > +                          "mmio", 4 * KiB);
+>> > +    sysbus_init_mmio(sbd, &s->mmio);
+>> > +    sysbus_init_irq(sbd, &s->irq);
+>> > +}
+>>
+>>
+>> > diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+>> > index c707d4aaba..16ea9954c4 100644
+>> > --- a/hw/ssi/trace-events
+>> > +++ b/hw/ssi/trace-events
+>>
+>> > +# npcm_pspi.c
+>> > +npcm_pspi_enter_reset(const char *id, int reset_type) "%s reset type:
+>> %d"
+>> > +npcm_pspi_ctrl_read(const char *id, uint64_t addr, uint16_t data) "%s
+>> offset: 0x%04" PRIx64 " value: 0x%08" PRIx16
+>> > +npcm_pspi_ctrl_write(const char *id, uint64_t addr, uint16_t data) "%=
+s
+>> offset: 0x%04" PRIx64 " value: 0x%08" PRIx16
+>>
+>> Since the region is 4KiB and the implementation is 16-bit, the formats
+>> could be simplified as offset 0x%03 and value 0x%04. The traces will
+>> then be more digestible to human eyes.
+>>
+> I'll do this.
 >
->
+>>
+>> Modulo the impl.access_size change:
+>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>>
+>>
 
---000000000000e5c26c05f420926a
+--0000000000000ebc2d05f4210e3e
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Thanks for your review!</div><br><div cla=
-ss=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Feb 6, 202=
-3 at 11:13 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@lina=
-ro.org">philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex">On 7/2/23 00:34, Hao Wu wrote:<br>
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 7, 2023 at 10:46 AM Hao W=
+u &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@google.com</a>&gt; wr=
+ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D=
+"ltr"><div dir=3D"ltr">Thanks for your review!</div><br><div class=3D"gmail=
+_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Feb 6, 2023 at 11:13 =
+PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org" tar=
+get=3D"_blank">philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">On 7/2/23 00:34, Hao Wu wrote:<br>
 &gt; Nuvoton&#39;s PSPI is a general purpose SPI module which enables<br>
 &gt; connections to SPI-based peripheral devices.<br>
 &gt; <br>
@@ -310,9 +335,22 @@ as:<br>
 <br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0object_initialize_child(obj, &quot;pspi&quot;, &=
 amp;s-&gt;spi, TYPE_SSI_BUS);<br></blockquote><div>I was just following som=
-e existing code here. I think I can use the new style.=C2=A0</div><blockquo=
-te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
-solid rgb(204,204,204);padding-left:1ex">
+e existing code here. I think I can use the new style.=C2=A0</div></div></d=
+iv></blockquote><div>I&#39;ve tried to use this and got the following error=
+:</div>**<br>ERROR:../qom/object.c:511:object_initialize_with_type: asserti=
+on failed: (size &gt;=3D type-&gt;instance_size)<br><div>Bail out! ERROR:..=
+/qom/object.c:511:object_initialize_with_type: assertion failed: (size &gt;=
+=3D type-&gt;instance_size)</div><div><br></div><div>I think the problem is=
+ that we define s-&gt;spi as SSIBus* instead of SSIBus. But if we define it=
+ as SSIBus, we&#39;ll</div><div>get an incomplete type error. Fixing it wil=
+l require refactoring hw/ssi/ssi.c which I&#39;m not sure if we want to do<=
+/div><div>it right now. This code is consistent with other code in hw/ssi s=
+o I guess we can leave it here for now and wait</div><div>for a future refa=
+ctor.</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
+8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"lt=
+r"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">
 <br>
 &gt; +=C2=A0 =C2=A0 memory_region_init_io(&amp;s-&gt;mmio, obj, &amp;npcm_p=
 spi_ctrl_ops, s,<br>
@@ -347,5 +385,6 @@ Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linar=
 o.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
 <br>
 </blockquote></div></div>
+</blockquote></div></div>
 
---000000000000e5c26c05f420926a--
+--0000000000000ebc2d05f4210e3e--

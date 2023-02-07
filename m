@@ -1,288 +1,152 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5653568ejb;
-        Tue, 7 Feb 2023 10:31:35 -0800 (PST)
-X-Google-Smtp-Source: AK7set/rKa4ka7hT+DX8BkElRmG+OgLZljRk32iCjOs5gcN/YBXuNfMKmPG/aMTz/HMIPa8j6xNW
-X-Received: by 2002:a05:6902:521:b0:866:654a:2a24 with SMTP id y1-20020a056902052100b00866654a2a24mr3418138ybs.28.1675794694988;
-        Tue, 07 Feb 2023 10:31:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675794694; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5829274ejb;
+        Tue, 7 Feb 2023 14:11:26 -0800 (PST)
+X-Google-Smtp-Source: AK7set+VpvZxbIdJSSEwVaCSJOJUFOiGiMEm5FBxfliNbMPQZklCkwXpTDCDJxBSiVyvFYfinJvq
+X-Received: by 2002:ac8:5e11:0:b0:3b4:79f8:26c3 with SMTP id h17-20020ac85e11000000b003b479f826c3mr8582198qtx.33.1675807886257;
+        Tue, 07 Feb 2023 14:11:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675807886; cv=none;
         d=google.com; s=arc-20160816;
-        b=IQBWK97lz0RUxnI9pN2z5pSqSvhXMlicYm7vD6NpyQ5W12atcnq+at2c8ynPHHKINv
-         CjbXZXm932PLbTbGC4crT6Sr9TumHRrkdZGnmb3vJn4RpN5B3q5JpAtwDxsxv3NMkqTs
-         hnCmwouDqDpk9072rcINarAb8cUlMb6orRWUM3sVi/5kTicJEJrUhpl7TVfo6vptfD2P
-         Xz4QqYsTwHwOzGgvwcwR3nmVsG3kiE489wHP1+NbW8LTqRro7airH1GjtBhqMP215Mpq
-         d2nePHKJwMaTuUvcMgAyMQPXEl9et4lvOtutxUME0PRQRwRkwjOuzMRYv8rsmcBW3WVX
-         qy0w==
+        b=0EnKgxPNWXr0Qzk5MZoOHtQiIxoDlB28kZc/mkAd3Hzk0rWfj8uwt60mntknZr3ibM
+         ZimMP3Y2VIwm9P1pyegM7vSyxoB09ZDFi/MQlNK0fK61w5WbM+kTm6A9eRSXhAiAmjQO
+         f7wg0qFU9efADRYODELKJKV81rZgrLJEQNpLTbvwjeHFo3L++IiPntwzOLKJ35v1pudf
+         IsS5wlaeRBkZDPliWmqYmWf6ryiILy1lXoiKX7I8KtAo10zkkdZOgCi19phy5sIqN8Ev
+         zSzMVwaFYG4wlaRdmoG0nrZy6MuyjOlEc2c5rAbNZTTLGfoQuz7qLGQ5/gAw10XS0x0D
+         X5qQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=4G9XaiL6wCx1dnLD1jFtzKBnip0VoAfb6+PfWU81E8M=;
-        b=JNrv9zj/saOODZfmU+mGF65dZMla/XlOnvTqjH30FxEyO6x/N4OTgk3wYXhOyOnkld
-         nCLqI85EGe/IyczM87cRZwWh1SyytVN3V2eXlpo25yO+IVwgJLMGjDVgGZ7X1aDgPtoU
-         1Nupszq2jfJWkpBibhXJjkyjSHhS0wMsvwvlyF0uDKhUtddBgaC+S2oGozuW6w8JV3vu
-         WAIWmigz0sDEnbyJtqz83fmdF9vRB7RjChEcMg5iJ7AHzu+fBD1OODFruV6zn0MiWL4z
-         /RvvjXO/XN9293bS/Z5nZGk0i/ZPd99Cvo+2vWOZx6ZR0e2Uk6+RPn9iFxq1vKbVz0vx
-         zZzw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=gRKnaWz2seEzH+vZ1Vks165VGrnQpRizTdVClwYbdoQ=;
+        b=uye/uXVQwGqfpirCXuOwSLgBtr6XuyWhUOTH6r3ZLTKtSlBWxogb0AsOpL/jqrA2+Y
+         Ucfu6FNcyCz4DZe7sInAZ3bvPep+vVStt+CmR5yksT90up2u3RWzpTVXnAPb/QXLUch9
+         NAVOmG3VXrGUt6QrF4VovfGH+4N3uaShn7RK5tzQwcZ1ZbQ1Rl0yQujzkyBZUW/J/NKI
+         7wl6F4ETqowurwy7pcOM/sx0OVwBYOE9LQuJ3rT5wIxiMTYcm6Xo3vVgEm2lPxXE1RP/
+         hYNGbmm+CLMV49RUbKnoPOwL4bjTDlTjnYgqRl0Uv6g5yLFkLLGZCqz1bOcEF6T+/sLb
+         zo/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=eVCe8QwY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=lKd+E6Zz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b64-20020a379943000000b0070685691bb2si11504875qke.46.2023.02.07.10.31.34
+        by mx.google.com with ESMTPS id n5-20020ac85a05000000b003b63b1ee8d1si11122524qta.179.2023.02.07.14.11.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Feb 2023 10:31:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Feb 2023 14:11:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=eVCe8QwY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=lKd+E6Zz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pPSkS-0007Ew-2b; Tue, 07 Feb 2023 13:31:20 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pPWAu-00071E-QT; Tue, 07 Feb 2023 17:10:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <36JjiYwgKCsk71378pupv33v0t.r315t19-stAt0232v29.36v@flex--smostafa.bounces.google.com>)
- id 1pPSkJ-0007AM-6V
- for qemu-devel@nongnu.org; Tue, 07 Feb 2023 13:31:11 -0500
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pPWAq-000702-FO
+ for qemu-arm@nongnu.org; Tue, 07 Feb 2023 17:10:48 -0500
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <36JjiYwgKCsk71378pupv33v0t.r315t19-stAt0232v29.36v@flex--smostafa.bounces.google.com>)
- id 1pPSkF-00069B-4N
- for qemu-devel@nongnu.org; Tue, 07 Feb 2023 13:31:10 -0500
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-50e79ffba49so150649487b3.9
- for <qemu-devel@nongnu.org>; Tue, 07 Feb 2023 10:31:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=4G9XaiL6wCx1dnLD1jFtzKBnip0VoAfb6+PfWU81E8M=;
- b=eVCe8QwY/gKUcsstmndjwTKmxm06GdiYoog2/D/0h7mtF5YoEtYsr9DqW58NTL9S20
- /hj9u9QkPvZJCoNicpX9ZNF7LvcOVWAc8ZSAHtTQCA4q5x+lNRMNpYawzzPTXdn4FZRi
- hZLY+ALCHKRWicPql9s0jPIiDdzCc0TI1tx5ZmRnV7LU0LJRrQl9xx0TcPzp9sAA0m1Z
- d79TdeVMIWu2cDF2t9s4PYca25iT+1UWrHhZpv+PUYGr9xRUvSwycFFgWF0x077AiMET
- ok5SpEkEuJKA8BFi7pdmVDiBjxiZRNjlN6AXzSsnJXzsBbC3uAQaTHUR23nR33s09ZSX
- 1uAA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pPWAm-0003ta-TB
+ for qemu-arm@nongnu.org; Tue, 07 Feb 2023 17:10:47 -0500
+Received: by mail-pg1-x52f.google.com with SMTP id s8so9321574pgg.11
+ for <qemu-arm@nongnu.org>; Tue, 07 Feb 2023 14:10:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=gRKnaWz2seEzH+vZ1Vks165VGrnQpRizTdVClwYbdoQ=;
+ b=lKd+E6ZzjmhNb8xROguQwe9m3nM0ck3pHRMaQQ87fzZVES+UXwVO2E8YxAuRP2RHkY
+ ilcucr/NDLs58aVRfksruYoLWKEP+sDcBip3LhZJv+jgUXg+UczAhXvgVFtAGk1f7FV9
+ WoVpokork2XJPZ2ABT6B1JUlNE4Lp1hGgrCYUWAcMMwLkgtOLDRD1fd5YRVe6iIQZU+f
+ fUHMVzqpAArBXgVGdHENJvzl96KqFDox4ruRBQDP+HpI7FL+IKEQbxFgXDbGrlVsV24J
+ gibA9Hty7ak92l4+nkr+D+u0eKnThQdyyM6ecNexNv30LRv0SlhWDVNe6KqtdfSoGFko
+ gMdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4G9XaiL6wCx1dnLD1jFtzKBnip0VoAfb6+PfWU81E8M=;
- b=QYPOpCva8K7ZIBmHrDqWiyCBZl7J4eveOAY2PyrLCA70vkBk71cYIHO9BQ36L28PTw
- Xznt2YTUc7mLGckEYxwyQjEO7W113+G/VrlvML05o7QIIpMBVne2//og/GddhJLdQMXB
- D0feBaxbYJkDKrwVePUq8wZK9EzkSMWlZVifWYqLHBaRgdqmFQHPZjHMyuvmJnyW2IsF
- 1JyKpiXshsrS4xOt3M5eH7ArsuLXF5308z3XJoVNRi3SmL0k3Gm/PCNTf2rEEiUEPvJq
- ypfr+VMPWJRBAuYkxNnuo4TAmS7M8iu/IEW5q8fElP7mpmmjCW33PrTigwz7y/n/J2yI
- 2LOw==
-X-Gm-Message-State: AO0yUKWLxlDaTvk5YnL5/nzXeh6fKLKfPo01k/olT6yAveBaw+Z6mIjk
- 61s4c0CzoEVMm7IvlsxJGKfIZy8mmY/8u65zCSnueh/YFIQF7KwBnv7NkATy1kL5Ys+lBRt2nPy
- yMDlmbjEU11NxU2sHvAwDDEHPglF3RfyTY4gJCTjiASZgTfxb0N3m+XNiIC/fpLhLwA==
-X-Received: from mostafa.c.googlers.com
- ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
- (user=smostafa job=sendgmr) by 2002:a5b:28f:0:b0:888:4819:456a with SMTP id
- x15-20020a5b028f000000b008884819456amr434765ybl.151.1675794664879; Tue, 07
- Feb 2023 10:31:04 -0800 (PST)
-Date: Tue,  7 Feb 2023 18:19:34 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.39.1.519.gcb327c4b5f-goog
-Message-ID: <20230207181933.1999817-1-smostafa@google.com>
-Subject: [PATCH v3] hw/arm/smmuv3: Add GBPA register
-From: Mostafa Saleh <smostafa@google.com>
-To: qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
- qemu-arm@nongnu.org, Mostafa Saleh <smostafa@google.com>
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=gRKnaWz2seEzH+vZ1Vks165VGrnQpRizTdVClwYbdoQ=;
+ b=4835dLNP7BZNU3CP5zujL3Kmi+TOAe0783sY4X+xND0U9pxL8MAvGxYEo6NYEn53gv
+ Uy2pemlSHBjXTReK+YptWXybeCKWJr7dgPjRrACw75+Kip94jMvBdZ2yE4iqalptn218
+ cEb3DVmc1tXOh6gwhGWCAHvkZPSZSNulUE4E+JqvCMu/BnT4r9WaO6+SS/MqNOS0wAbr
+ GQd+93dmPMXu1KBBKeCnctqjOFjFEEdVLexizeVPnG3+k8RC8UXZO5XjziLqFvWekIdD
+ cx9SKqlqC+bIuoinEM/d75g91LrmHdQzQgLJe1504hJw4pl8ldlfdhQX2fS4tTUm4CXf
+ aPuA==
+X-Gm-Message-State: AO0yUKW0LttiZOhTOGBJOU/T9NaK94tf6L0RglYW1x3CyjU5u6jXHtZE
+ lYY3RdhzIH013d9NnakaFaFxGvJ1Y8Zm61eOAsxtzg==
+X-Received: by 2002:a63:7207:0:b0:4fa:b562:f29a with SMTP id
+ n7-20020a637207000000b004fab562f29amr906238pgc.120.1675807840185; Tue, 07 Feb
+ 2023 14:10:40 -0800 (PST)
+MIME-Version: 1.0
+References: <20230207100744.698694-1-clg@kaod.org>
+In-Reply-To: <20230207100744.698694-1-clg@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 Feb 2023 22:10:28 +0000
+Message-ID: <CAFEAcA8rejLeXarhqgpymV82-1GwKhy72cPERQTvi6PQKbOHSA@mail.gmail.com>
+Subject: Re: [PULL 00/25] aspeed queue
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=36JjiYwgKCsk71378pupv33v0t.r315t19-stAt0232v29.36v@flex--smostafa.bounces.google.com;
- helo=mail-yw1-x1149.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x52f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y0i9+7+CS0vH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zmCC7Jqb5Y2f
 
-GBPA register can be used to globally abort all
-transactions.
+On Tue, 7 Feb 2023 at 10:07, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> The following changes since commit 6661b8c7fe3f8b5687d2d90f7b4f3f23d70e3e=
+8b:
+>
+>   Merge tag 'pull-ppc-20230205' of https://gitlab.com/danielhb/qemu into =
+staging (2023-02-05 16:49:09 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/legoater/qemu/ tags/pull-aspeed-20230207
+>
+> for you to fetch changes up to bf81b8f8acda4f1f774adc5f8e76225d472c6ae5:
+>
+>   aspeed/sdmc: Drop unnecessary scu include (2023-02-07 09:02:05 +0100)
+>
+> ----------------------------------------------------------------
+> aspeed queue:
+>
+> * various small cleanups and fixes
+> * new variant of the supermicrox11-bmc machine using an ast2500-a1 SoC
+> * at24c_eeprom extension to define eeprom contents with static arrays
+> * ast10x0 model and test improvements
+> * avocado update of images to use the latest
 
-It is described in the SMMU manual in "6.3.14 SMMU_GBPA".
-ABORT reset value is IMPLEMENTATION DEFINED, it is chosen to
-be zero(Do not abort incoming transactions).
 
-Other fields have default values of Use Incoming.
+Applied, thanks.
 
-If UPDATE is not set, the write is ignored. This is the only permitted
-behavior in SMMUv3.2 and later.(6.3.14.1 Update procedure)
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.0
+for any user-visible changes.
 
-As this patch adds a new state to the SMMU (GBPA), it is added
-in a new subsection for forward migration compatibility.
-GBPA is only migrated when GBPA.ABORT is set from SW at the time of
-migration, to avoid inconsistencies where a qemu instance is aborting
-transactions and it is migrated to another older instance bypassing
-them.
-
-Signed-off-by: Mostafa Saleh <smostafa@google.com>
----
-
-Changes in v3:
-- Remove migrate_gbpa property as it was unnecessary.
-
-Changes in v2:
-- GBPA is effective only when SMMU is not enabled.
-- Ignore GBPA write when UPDATE is not set.
-- Default value for SHCFG is "Use Incoming".
-- Support migration.
-
- hw/arm/smmuv3-internal.h |  5 ++++
- hw/arm/smmuv3.c          | 52 +++++++++++++++++++++++++++++++++++++++-
- include/hw/arm/smmuv3.h  |  1 +
- 3 files changed, 57 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index bce161870f..3ff704248d 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -79,6 +79,11 @@ REG32(CR0ACK,              0x24)
- REG32(CR1,                 0x28)
- REG32(CR2,                 0x2c)
- REG32(STATUSR,             0x40)
-+REG32(GBPA,                0x44)
-+    FIELD(GBPA, SHCFG,        12, 2)
-+    FIELD(GBPA, ABORT,        20, 1)
-+    FIELD(GBPA, UPDATE,       31, 1)
-+
- REG32(IRQ_CTRL,            0x50)
-     FIELD(IRQ_CTRL, GERROR_IRQEN,        0, 1)
-     FIELD(IRQ_CTRL, PRI_IRQEN,           1, 1)
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 955b89c8d5..a184665181 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -285,6 +285,8 @@ static void smmuv3_init_regs(SMMUv3State *s)
-     s->gerror = 0;
-     s->gerrorn = 0;
-     s->statusr = 0;
-+    /* Use incoming as other fields. */
-+    s->gbpa = FIELD_DP32(s->gbpa, GBPA, SHCFG, 1);
- }
- 
- static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
-@@ -659,7 +661,11 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-     qemu_mutex_lock(&s->mutex);
- 
-     if (!smmu_enabled(s)) {
--        status = SMMU_TRANS_DISABLE;
-+        if (FIELD_EX32(s->gbpa, GBPA, ABORT)) {
-+            status = SMMU_TRANS_ABORT;
-+        } else {
-+            status = SMMU_TRANS_DISABLE;
-+        }
-         goto epilogue;
-     }
- 
-@@ -1170,6 +1176,16 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-     case A_GERROR_IRQ_CFG2:
-         s->gerror_irq_cfg2 = data;
-         return MEMTX_OK;
-+    case A_GBPA:
-+        /*
-+         * If UPDATE is not set, the write is ignored. This is the only
-+         * permitted behavior in SMMUv3.2 and later.
-+         */
-+        if (data & R_GBPA_UPDATE_MASK) {
-+            /* Ignore update bit as write is synchronous. */
-+            s->gbpa = data & ~R_GBPA_UPDATE_MASK;
-+        }
-+        return MEMTX_OK;
-     case A_STRTAB_BASE: /* 64b */
-         s->strtab_base = deposit64(s->strtab_base, 0, 32, data);
-         return MEMTX_OK;
-@@ -1318,6 +1334,9 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
-     case A_STATUSR:
-         *data = s->statusr;
-         return MEMTX_OK;
-+    case A_GBPA:
-+        *data = s->gbpa;
-+        return MEMTX_OK;
-     case A_IRQ_CTRL:
-     case A_IRQ_CTRL_ACK:
-         *data = s->irq_ctrl;
-@@ -1482,6 +1501,33 @@ static const VMStateDescription vmstate_smmuv3_queue = {
-     },
- };
- 
-+static bool smmuv3_gbpa_needed(void *opaque)
-+{
-+    SMMUv3State *s = opaque;
-+
-+    /*
-+     * Only migrate GBPA if ABORT set from SW to 1, which is different from
-+     * default behaviour. This allows maximum compatibility with old qemu
-+     * instances while being forward compatible.
-+     */
-+    if (FIELD_EX32(s->gbpa, GBPA, ABORT)) {
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
-+static const VMStateDescription vmstate_gbpa = {
-+    .name = "smmuv3/gbpa",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = smmuv3_gbpa_needed,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(gbpa, SMMUv3State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_smmuv3 = {
-     .name = "smmuv3",
-     .version_id = 1,
-@@ -1512,6 +1558,10 @@ static const VMStateDescription vmstate_smmuv3 = {
- 
-         VMSTATE_END_OF_LIST(),
-     },
-+    .subsections = (const VMStateDescription * []) {
-+        &vmstate_gbpa,
-+        NULL
-+    }
- };
- 
- static void smmuv3_instance_init(Object *obj)
-diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-index f1921fdf9e..9899fa1860 100644
---- a/include/hw/arm/smmuv3.h
-+++ b/include/hw/arm/smmuv3.h
-@@ -46,6 +46,7 @@ struct SMMUv3State {
-     uint32_t cr[3];
-     uint32_t cr0ack;
-     uint32_t statusr;
-+    uint32_t gbpa;
-     uint32_t irq_ctrl;
-     uint32_t gerror;
-     uint32_t gerrorn;
--- 
-2.39.1.519.gcb327c4b5f-goog
-
+-- PMM

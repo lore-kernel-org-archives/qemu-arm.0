@@ -1,280 +1,125 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5660373ejb;
-        Tue, 7 Feb 2023 10:39:16 -0800 (PST)
-X-Received: by 2002:a05:6402:4025:b0:4aa:bc53:be32 with SMTP id d37-20020a056402402500b004aabc53be32mr125063eda.0.1675795156444;
-        Tue, 07 Feb 2023 10:39:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675795156; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5372752ejb;
+        Tue, 7 Feb 2023 05:45:23 -0800 (PST)
+X-Google-Smtp-Source: AK7set+TO74zKEg+Ryfkv65o+LpEvvmi71oeWyJXdSpAbKzjTZKq0rYloaayCqn/1twhMKFP0R6X
+X-Received: by 2002:adf:e749:0:b0:2c3:e5f5:9faa with SMTP id c9-20020adfe749000000b002c3e5f59faamr2963325wrn.58.1675777523543;
+        Tue, 07 Feb 2023 05:45:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675777523; cv=none;
         d=google.com; s=arc-20160816;
-        b=xzkxH9xZ3WXgjSnB8gbwzsePbhF+hyHc83T/KrEv9x9/CVRjbc0ZHZphnt+HbjmqTx
-         8gLPiLXseFLUl6I6lh+E8NkY8ooWLXOkDeoC31ZcGygFJtU9+jUtGVmL0Jxo0XHIEyKB
-         OWGGzd3iBEs395oEkunNYSu5Z0iIBHpN14Q8Vy+wCAAmJAietmbb/MNlrm+2Kc/OAr7T
-         xafUpy+FxP3PRtuAdrUzWJ+b8ZZYku5yqjzt1Q+9msyPcXtYRsMNxB6zSse4mKLtAvdU
-         764roSF3lSKAA/F6NT3/oqGNXEy4PxvUcMcXLDQAy9iAGGBLrTd2zgOgiPFZBJbWmkFa
-         UoUQ==
+        b=W5WPvdWalr6Yd8GSY3HEpjXInOjL24D0S0EFqP6NGooH++W/vxzZZqHZEiHFbeYrkx
+         pBHAWOX3Wk8l6qgtsmDDFNco/yv0a7RVvJDbFoKHMi2tw8AXgr8qU7lcAJFinkIS4+La
+         ciUlW8oylminiVOkKOfpMHYvPJy4Q1LbjEsZHFY164MRCIVVGyXDgCcB/vXetHKyoe/j
+         24s/Tp/CFm0tN2Nx4Gjwzb/p82LiwUFm4hf4Lmg/j7cnLHxC56kmP6WwMwN4HPtQdcUm
+         vYToMnl+dkDxo7yuVwP0ZiCGScTsclE7L+5NNxdreAVhoqhscbGNC7OetGM138/gd6Ij
+         ZVDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=fax4aN08i6kSsZVPwRJazT1HzLAtFm2+q0cy8FAyIzc=;
-        b=MuLuupgQuQISToIEUVA3b87F90JFsmYKxWanM0AEXJ1oNXPQatdfWKS6S7sqeFe5dX
-         DM80zQ2koRrtxdT61X1fZCEjrU70sdACJmJoYk0hQtmMA0CrZ62QkjKDn3/xkqdEOwSI
-         52TwMOl6rZMHNxHJ6rwhIMMHz7XL6ZqGIykCfu0W6Z4YKrAssWwGP10/BiPVMutjABCq
-         ecnTQiCOLvVcPJ7+qZ4hi4doSDiehfaVvA9qaqWDsZ/1EYudV14TX+pg/SE21n2+Es2+
-         4cLVlJxZppQ9Cj4klZ/p6K6wtC21KnfiwCgN1PosCuLvbtzbNpOolJMNGgfPWTEPIdw8
-         dzdA==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=lV+K3kPtNhC/p8IGUSrKR6VGBaVMLoXYdz3X4AnBffs=;
+        b=MCgJHmgmdpovTx5d5bmv+wdnR2LIfDjdtdmVetD68TSH7L+eKXoJGS1bHOEwZEHYvR
+         KAFwE6nSD4dqY0FHv882472vSmFWjYHJ+r43/xO44ihxN3U5osXUWc1+aj0JkpLX9M+r
+         H8j3rAwFA3AZwMM9Rx8b2SkH+Qz+bQt9bJWVTYpKBbNaLHq/oKMtoHhxB0UcqhrUrPjg
+         sJWYTXYw4GHKXCKCN+wYz1HvA05ZwBJlLN5RLKTLZCXIarOjerz4F90sB63z2U4GMN7G
+         As/jN3Ft/5KSsczUNDlywHls1VgtZOXkDL1hgglJhY3608DXcdwXRl7RfOKNf/nEFyQL
+         FxNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=C1lJL3nh;
-       spf=pass (google.com: domain of sjg@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=sjg@google.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Return-Path: <sjg@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b102-20020a509f6f000000b004aac3fd9112sor2610047edf.18.2023.02.07.10.39.16
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 07 Feb 2023 10:39:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of sjg@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ZjgCf07Q;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="E/1TZG4j";
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id v14-20020a056000144e00b002bfc14eca1bsi16995267wrx.342.2023.02.07.05.45.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Feb 2023 05:45:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=C1lJL3nh;
-       spf=pass (google.com: domain of sjg@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=sjg@google.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fax4aN08i6kSsZVPwRJazT1HzLAtFm2+q0cy8FAyIzc=;
-        b=C1lJL3nhNVtk0w5Kl5F/pL+alLk344tErc25Y5fsNRuUt9T93Lhg0l4vVlhFRGJxb5
-         rHauev0zg+dxMVOmZaNGeDI+iJyx56BK9KwtlsvMzeji5sHTIjY5d1Gx86VUMwrdaKrR
-         vDPSHnMpTducuFwnII7+e1IA7PCS6CwtEKCrM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=fax4aN08i6kSsZVPwRJazT1HzLAtFm2+q0cy8FAyIzc=;
-        b=3ETKCwTDD9fYmO2KAe8F1YLq6EUn0NV9NpjfGR6gM+7qZzwcCetsoQjmBUijJP7U9j
-         ba/2chXBsOqhES0sNRaj8YU8hQBW+xL9lPOYy+dRxsqYG5OSsu8AtPO0GMgjT4w6RDmO
-         dPtQIPU9rrxSCiMdYApbnIA6uBK22LyTLa7WMx1EJdDqzaZX6hAsn3lPTbK5vZeJdtIE
-         8hvnsQnBIJWUSNDGfcVRKbaohYYvvm0DfLC3tq7n265+t0LZKyWxyoeghSXhI6Zuj3xk
-         o834/wavi7varpOtcQOMW7+f0cepi+CYdeWcbc06xStoMXkRinqsMbuOggQRrsxDxOdp
-         xyzg==
-X-Gm-Message-State: AO0yUKV5/KVPevdWQUouSc0W/R8LkjGnIuUY7jSiuG29M5MBE0M9mhKJ
-	ucvRDQFu5weVveA0gBpqv3lftoCq6dBjvKT7DC0Ohw==
-X-Google-Smtp-Source: AK7set9Mg2j6Jdbfglm1MMBAWowdbQi/Ke+Gnn0ffkDfxZeFNh5WXcjA83QqjOv3ggHn8GHg4pbz7SwcC3V5L2EaSvA=
-X-Received: by 2002:a50:950b:0:b0:4a1:c6e2:b6c2 with SMTP id
- u11-20020a50950b000000b004a1c6e2b6c2mr1145530eda.33.1675795155920; Tue, 07
- Feb 2023 10:39:15 -0800 (PST)
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ZjgCf07Q;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="E/1TZG4j";
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 1801E3F29E;
+	Tue,  7 Feb 2023 13:45:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1675777523; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=lV+K3kPtNhC/p8IGUSrKR6VGBaVMLoXYdz3X4AnBffs=;
+	b=ZjgCf07QrD4r7ttu2zXVAo7+vY/b2ME9xbC51AaZyoemwqsHUekGgX2xiFoN4IYR74bUes
+	McdOf/pE/WjaYY4X0ra4roi2jCi63qu2p1sSOjGCQFPmi1Y5GDXkwom1JabubXqb8vitm4
+	Ho8e/oZhmaBQoJASK+5eNaBWl9oEHWk=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1675777523;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=lV+K3kPtNhC/p8IGUSrKR6VGBaVMLoXYdz3X4AnBffs=;
+	b=E/1TZG4jpDeavK83icDrcSd4/R6Z6SvO8eGcHK1R6K/M8euciI5LRLe+pFgiWYplTNoODa
+	5tlXqb7avZIe5eCw==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 9D4C3139ED;
+	Tue,  7 Feb 2023 13:45:22 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id kT2eGfJV4mPIeQAAMHmgww
+	(envelope-from <farosas@suse.de>); Tue, 07 Feb 2023 13:45:22 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Ilias
+ Apalodimas <ilias.apalodimas@linaro.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+Subject: Re: [RFC PATCH] target/arm: disable FEAT_SME if we turn off SVE
+In-Reply-To: <20230203100551.2445547-1-alex.bennee@linaro.org>
+References: <20230203100551.2445547-1-alex.bennee@linaro.org>
+Date: Tue, 07 Feb 2023 10:45:20 -0300
+Message-ID: <87cz6loahb.fsf@suse.de>
 MIME-Version: 1.0
-References: <20210926183410.256484-1-sjg@chromium.org> <CAFEAcA8S2=7rOKxeqcW+kw0BVPO3PUJGSUH-ioN7=c=U7zQxvg@mail.gmail.com>
- <CAPnjgZ2NCRVxKULWR1JjZU+D9saJ7fbZ=yHmWTSr3ufHxLYg-g@mail.gmail.com>
- <CAFEAcA9n+2JDFv8BezeEMA4e2Zhr0ENAvzLjBS6YXRoW9P-JXQ@mail.gmail.com>
- <CAPnjgZ1AO8575LYbwmuouNR5=dgNam6EFDC1_bai=8xAHdw7-Q@mail.gmail.com>
- <CAFEAcA8FsPcBELEZxiRMuFbKtmKTFgDHABePQ33hdxYRq0C0ig@mail.gmail.com>
- <87ilx9jw7t.fsf@linaro.org> <CAHFG_=VYK3=bCfiFW9aYZRMbHApPzg3+Zj4NDbArmjs0uzFvvQ@mail.gmail.com>
- <CAHFG_=W8HbZ9DSSBQiVORUsMF2NxNdzNMXtKX=FyYsd+5RnRxA@mail.gmail.com>
-In-Reply-To: <CAHFG_=W8HbZ9DSSBQiVORUsMF2NxNdzNMXtKX=FyYsd+5RnRxA@mail.gmail.com>
-From: Simon Glass <sjg@chromium.org>
-Date: Tue, 7 Feb 2023 11:39:04 -0700
-Message-ID: <CAPnjgZ38V1bu0k_6hAUUS6y6Xev07ssXwnDnf2ULBjKgfV=3iQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/virt: Allow additions to the generated device tree
-To: =?UTF-8?Q?Fran=C3=A7ois_Ozog?= <francois.ozog@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	QEMU Developers <qemu-devel@nongnu.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: VbUKbeHwmJgs
+X-TUID: HbSiRORq8OPo
 
-Hi,
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-On Fri, 5 Nov 2021 at 09:51, Fran=C3=A7ois Ozog <francois.ozog@linaro.org> =
-wrote:
+> Before this change booting a -cpu max,sve=3Doff would trigger and
+> assert:
 >
-> Hi,
+>   qemu-system-aarch64: ../../target/arm/helper.c:6647: sve_vqm1_for_el_sm=
+: Assertion `sm' failed.
 >
-> On Wed, 3 Nov 2021 at 14:17, Fran=C3=A7ois Ozog <francois.ozog@linaro.org=
-> wrote:
->>
->> Hi,
->>
->> Thanks Alex to patch me in.
->>
->> I'd like to present another perspective on the motivation as I can't rea=
-lly comment on the actual "how".
->>
->> On real Arm boards, firmware is often assembled into a FIP.
->> That FIP can contain quite a good deal of things, including an NT_FW_CON=
-FIG, NonTrusted_FirmWare_CONFIGuration (NT_FW =3D BL33 which is U-Boot in o=
-ur case).
->> So the expected typical content for that section is a DT fragment/overla=
-y.
->> That section is to be used in different ways but one is https://trustedf=
-irmware-a.readthedocs.io/en/latest/components/fconf/index.html.
->> For SystemReady systems we will almost inevitably put a device tree frag=
-ment in this section and have BL2 merge it with the board DT before handing=
- it over to BL33 (U-Boot is one of them).
->> In some real world examples based on carrier board + som for instance, i=
-t may contain SerDes configuration for U-Boot that will result in appropria=
-te PCI lanes or MDIO lanes for the booted OS.
->>
->> So I could say there is precedence in Simon's effort.
->>
->> In any case, when we will have made the changes in TFA for the SystemRea=
-dy boards we work on, booting the full SystemReady stack (TFA, OP-TEE, U-Bo=
-ot) on Qemu will allow that late merge based through the FIP.
->>
->> Other boot flows such as VBE (without TFA but with TPL/SPL/U-Boot proper=
-) need a similar facility.
->>
->>
->> Hence I am supporting Simon's proposal at least on the intent. On the ho=
-w exactly, that is outside my skillset.
+> when the guest attempts to write to SMCR which shouldn't even exist if
+> SVE has been turned off.
 >
-> Responding to my own comment:
-> As the boot flow TFA+U-Boot works, it looks like a cleaner option is to l=
-eave QEMU alone and have
-> U-Boot SPL do the same work as with TFA: use a section for the FIT for th=
-e DT to be merged.
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+> ---
+>  target/arm/cpu64.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
 >
->
->>
->>
->> future comments below
->>
->>
->> On Wed, 3 Nov 2021 at 12:48, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
->>>
->>>
->>> Peter Maydell <peter.maydell@linaro.org> writes:
->>>
->>> > On Mon, 27 Sept 2021 at 16:18, Simon Glass <sjg@chromium.org> wrote:
->>> >> On Mon, 27 Sept 2021 at 02:48, Peter Maydell <peter.maydell@linaro.o=
-rg> wrote:
->>> >> > So what is missing in the QEMU-provided DTB that it needs?
->>> >>
->>> >> Quite a lot. Here are some examples:
->>> >>
->>> >> U-Boot has limited pre-relocation memory so tries to avoid
->>> >> binding/probing devices that are not used before relocation:
->>> >>
->>> >> https://u-boot.readthedocs.io/en/latest/develop/driver-model/design.=
-html#pre-relocation-support
->>> >
->>> > It's up to u-boot to decide what it wants to touch and
->>> > what it does not. QEMU tells u-boot what all the available
->>> > devices are; I don't think we should have extra stuff saying
->>> > "and if you are u-boot, do something odd".
->>> >
->>> >> There is a configuration node (which is likely to change form in
->>> >> future releases, but will still be there)
->>> >>
->>> >> https://github.com/u-boot/u-boot/blob/master/doc/device-tree-binding=
-s/config.txt
->>> >
->>> > I think u-boot should be storing this kind of thing somewhere
->>> > else (e.g. as part of the binary blob that is u-boot itself,
->>> > or stored in flash or RAM as a separate blob).
->>> >
->>> >> Then there are various features which put things in U-Boot's control
->>> >> dtb, such as verified boot, which adds public keys during signing:
->>> >>
->>> >> https://github.com/u-boot/u-boot/blob/master/doc/uImage.FIT/signatur=
-e.txt#L135
->>> >>
->>> >> More generally, the U-Boot tree has hundreds of files which add
->>> >> properties for each board, since we try to keep the U-Boot-specific
->>> >> things out of the Linux tree:
->>> >>
->>> >> $ find . -name *u-boot.dtsi |wc -l
->>> >> 398
->>> >
->>> > If any of this is actual information about the hardware then you
->>> > should sort out getting the bindings documented officially
->>> > (which I think is still in the Linux tree), and then QEMU can
->>> > provide them.
->>> >
->>> >> Quite a bit of this is to do with SPL and so far it seems that QEMU
->>> >> mostly runs U-Boot proper only, although I see that SPL is starting =
-to
->>> >> creep in too in the U-Boot CI.
->>> >>
->>> >> So at present QEMU is not able to support U-Boot fully.
->>> >
->>> > My take is that this is u-boot doing weird custom things with
->>> > the DTB that aren't "describe the hardware". You should be able
->>> > to boot u-boot by putting those custom DTB extra things in a
->>> > separate blob and having u-boot combine that with the
->>> > actual DTB when it starts.
->>>
->>> It's not entirely without precedent - for SPL (which I hope is secondar=
-y
->>> program loading) we have things like the guest loader which expands the
->>> plain HW DTB with some information needed by the bootloader and the
->>> primary OS to load additional blobs which have been put into memory.
->>>
->>> In effect the DTB is being expanded as a signalling mechanism similar t=
-o
->>> things like fw_cfg and other things we use to control boot up. Whether
->>> this affects the "purity" of DTB as a "just the HW" description is
->>> probably a philosophical question.
->>>
->> More than a philosophical question: a key aspect of supply chain that ne=
-ed change from
->> quite inflexible and tightly coupled to loosely coupled.
->>  A key aspect of it is to maintain "pure" hardware description DTBs at r=
-est.
->> Composition of DTBs at build time (for products) or runtime (for develop=
-ment boards) should be a simple thing.
->> Another aspect to take into account is System Device Trees. U-Boot only =
-deal with Cortex-As on a platform,
->> so there are multiple device trees for each compute domain. Communities =
-are working on System Device Tree
->> to define the overall platform with its power and clock domains. A tool =
-"lopper" is being developed to slide the SDT into diverse domain DTs.
->> One of them being included into the FIP as the basis for the computing e=
-lement (Carrier, SoM...).
->> Those attempts to cleanup passed DTBs from configuration data (drivers, =
-bootloaders...) is not incompatible
->> with merging fragments at runtime (for dev boards) or build time (for pr=
-oducts).
->>>
->>> I agree with Peter that just allowing the merging of arbitrary data int=
-o
->>> the QEMU generated DTB is going to lead to confusion and breakages.
->>> Indeed I wrote the guest-loader because instructions for booting Xen up
->>> until that point involved dumpdtb and hand hacking the data which was
->>> silly because this is stuff QEMU already knew about.
->>>
->>> >
->>> > -- PMM
->>>
->>>
->>> --
->>> Alex Benn=C3=A9e
->>
->>
->>
->> --
->> Fran=C3=A7ois-Fr=C3=A9d=C3=A9ric Ozog | Director Business Development
->> T: +33.67221.6485
->> francois.ozog@linaro.org | Skype: ffozog
->>
->
->
-> --
-> Fran=C3=A7ois-Fr=C3=A9d=C3=A9ric Ozog | Director Business Development
-> T: +33.67221.6485
-> francois.ozog@linaro.org | Skype: ffozog
->
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 0e021960fb..a38d43421a 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -409,6 +409,13 @@ static void cpu_arm_set_sve(Object *obj, bool value,=
+ Error **errp)
+>      t =3D cpu->isar.id_aa64pfr0;
+>      t =3D FIELD_DP64(t, ID_AA64PFR0, SVE, value);
+>      cpu->isar.id_aa64pfr0 =3D t;
+> +
+> +    /* FEAT_SME requires SVE, so disable it if no SVE */
+> +    if (!value) {
+> +        t =3D cpu->isar.id_aa64pfr1;
+> +        t =3D FIELD_DP64(t, ID_AA64PFR1, SME, 0);
+> +        cpu->isar.id_aa64pfr1 =3D t;
+> +    }
 
-I am pinging this thread again as it has come up on the U-Boot mailing list=
-[1].
-
-Please can you reconsider this patch. It would greatly help the
-collaboration between QEMU and U-Boot.
-
-Regards,
-Simon
-
-[1] https://lore.kernel.org/u-boot/CAFEAcA-TH96CG1gi4toAQXpnxs4kxsPCSSfZrXb=
-o2QF8CoE=3DXA@mail.gmail.com/T/#m1b41b54e3ca5dda1fcb8fdd189ac472ec7e4a96d
+What about -cpu max,sve=3Doff,sme=3Don ?

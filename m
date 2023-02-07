@@ -1,73 +1,73 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5183591ejb;
-        Tue, 7 Feb 2023 02:11:19 -0800 (PST)
-X-Google-Smtp-Source: AK7set+uv1CoT/kUZxZ9k9sMkbhVaj7UL251d1ewDxvcOq/iii7GZm0LTsUbs6W56onNweItF50g
-X-Received: by 2002:ac8:7dc7:0:b0:3b8:3a7c:d204 with SMTP id c7-20020ac87dc7000000b003b83a7cd204mr4516798qte.58.1675764679525;
-        Tue, 07 Feb 2023 02:11:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675764679; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5184353ejb;
+        Tue, 7 Feb 2023 02:12:07 -0800 (PST)
+X-Google-Smtp-Source: AK7set+6SJr4rLXHMrN16lvwGRzEhLixE/SKaQbuTcJi2EYPhZy2IPJcK4TDl/EnTUmDTGxq6zvF
+X-Received: by 2002:a05:6214:e81:b0:537:649f:747c with SMTP id hf1-20020a0562140e8100b00537649f747cmr3711725qvb.11.1675764727728;
+        Tue, 07 Feb 2023 02:12:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675764727; cv=none;
         d=google.com; s=arc-20160816;
-        b=DMnddqzgTS3SQW4M1weaZ+RtBwWGa1LiYJi7tdmpwpaDprjXUi/St22II3pk00w42E
-         Q+Gswy0EqOYKiLOgZGFt9X0ekt7YJdfHwqXljCiTbTjoewhML5o7kqvGG2WZGmN+z2Zz
-         XCwGIAFWpgE1UIE5/lGrd99FqCTD1hpD9F2eeZxvqzFghgCcJCiDmwJ8yQ1WECcxsoho
-         YtVoZzFsrbm6cOUfdfG4nXUjyfi+kg50LMb+CYZWe/CNbm4pTl5UPojKK0UvdUieVd7q
-         oU3VsRijzCayhdxc3NFrjuy9wT7Qfl+qSkxl76vqrSg0to1lHzi7WTrTIuBA5tJTU/MI
-         G0DA==
+        b=mBS4Hsy7CWjAvFZTskxgz3HBKDMJDsv6LBeEAg0+s84Z3yVd3R+Vhhn5xUgvAYBGAG
+         uDwrbz8IowQZSTzeAwCxRqeJYw/+XjPpR2260R4k06HOCnHcy71InOhhRBZUq4AfC+0/
+         hds/RB/G9C3R0Rt/E8YYqVPcJkQ9/+q0xonwmnCzOG59N8/gXSlED69OmcAN1uaJ5lxA
+         NtRvzphoJwCyVyAFMOgmmCq+jDMBjSCzhwnm4mILWPFKIerCrUMekRQjTN0tpirRkE5o
+         R2R289+CrqU8HlsX+p73E7D94UVdylalAsZX9EuckNKxX2658eg69y/8CjdLM01sv/Mw
+         Ryxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=+rbLGTkHJy0KFq0mSeipkj+n8nbs9Vm6si5uv8DnaR8=;
-        b=o4Z95hXo2/5Mce6xu0KEqR3ULpSWPD4QndFmzgYbAZcycHMRXA7TfXvITtQTCalEo+
-         uC5jVEaiwAywfRIUEAhl4r/kIK8jDjilyo3LfKDLD1h7Fdkt9Z4J9yFAZZHwOve1x4Ho
-         S8cKw7FoSN1xnJHCCR5BNm4zx2hTr9VSHejhpAXE8TqDlV3AzMDbx5AVl3PpgR5Pj/gS
-         Zggf6ZmX5QRl3F+XYv62L3ApKIj1rphCR2qbbz+Knbf1CBlC2+gy7waWTh0+ZvOTe+YD
-         0Ze/D02Y6KmD4LZTexUYVw/NjhWY3kpmdSkka9ky9elShSXe7v9t7UL96C/6sacP9egr
-         U+VQ==
+        bh=U0tPq/MgJ1p49vSmMiZfr6foh16b/XnXScyGLcLtr8o=;
+        b=h3T60GIHFRoBLEsU3hKj5GzyWWZB1ow7SnLrk0ppQQfQM/0k+Cl0ARdvk1sUc2xa2M
+         KJF5Fu0yE7lCYZmdNG9XaJEGS+cG9m7V1X2e5yQdVtSPRfGuc3rW+0fF+PhH7FNUtzfp
+         lTt/HjOURxow9GV4yO8+ododzWPiy7M1cqT0vnKUp5nLaokQdU4goIVm7fQ3+SbM13TM
+         8ml1Navg442yqmdGaHk4v9aYqLGiPq79eGMOpqk9qTmPvtWNROYvy1EyfmvR+3rtzJyU
+         HFKqdri2Ilk5KPCvmLMbriHC7mGea4IwUBf1X3p6yLKl9aLM865FlmTmNb/m4104OR3E
+         S8VA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s4-20020a37a904000000b007207da73be2si9721470qke.460.2023.02.07.02.11.19
+        by mx.google.com with ESMTPS id a16-20020a0ce390000000b0056bf1e34c8esi5496869qvl.165.2023.02.07.02.12.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Feb 2023 02:11:19 -0800 (PST)
+        Tue, 07 Feb 2023 02:12:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pPKuF-0000ou-Op; Tue, 07 Feb 2023 05:08:55 -0500
+	id 1pPKuC-0000kN-T0; Tue, 07 Feb 2023 05:08:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=a43c=6D=kaod.org=clg@ozlabs.org>)
- id 1pPKu8-0000bP-Vr; Tue, 07 Feb 2023 05:08:49 -0500
+ id 1pPKtu-0000V2-0X; Tue, 07 Feb 2023 05:08:35 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=a43c=6D=kaod.org=clg@ozlabs.org>)
- id 1pPKu6-0002Uw-2z; Tue, 07 Feb 2023 05:08:48 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4P9zNq62vNz4xyf;
- Tue,  7 Feb 2023 21:08:43 +1100 (AEDT)
+ id 1pPKts-0002Sb-1E; Tue, 07 Feb 2023 05:08:33 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4P9zNb00rSz4xyj;
+ Tue,  7 Feb 2023 21:08:31 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4P9zNn47TXz4xyB;
- Tue,  7 Feb 2023 21:08:41 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4P9zNX5Dl2z4xyF;
+ Tue,  7 Feb 2023 21:08:28 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Delevoryas <peter@pjd.dev>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Delevoryas <peter@pjd.dev>,
+ Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Subject: [PULL 19/25] hw/arm/aspeed_ast10x0: Add various unimplemented
- peripherals
-Date: Tue,  7 Feb 2023 11:07:38 +0100
-Message-Id: <20230207100744.698694-20-clg@kaod.org>
+ Corey Minyard <cminyard@mvista.com>
+Subject: [PULL 14/25] hw/nvram/eeprom_at24c: Make reset behavior more like
+ hardware
+Date: Tue,  7 Feb 2023 11:07:33 +0100
+Message-Id: <20230207100744.698694-15-clg@kaod.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230207100744.698694-1-clg@kaod.org>
 References: <20230207100744.698694-1-clg@kaod.org>
@@ -96,139 +96,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PSI/ewE4o6Yk
+X-TUID: EoHhZgBjEOjf
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Peter Delevoryas <peter@pjd.dev>
 
-Based on booting Zephyr demo from [1] running QEMU with
-'-d unimp' and checking missing devices in [2].
+EEPROM's are a form of non-volatile memory. After power-cycling an EEPROM,
+I would expect the I2C state machine to be reset to default values, but I
+wouldn't really expect the memory to change at all.
 
-[1] https://github.com/AspeedTech-BMC/zephyr/releases/tag/v00.01.07
-[2] https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/dts/arm/aspeed/ast10x0.dtsi
+The current implementation of the at24c EEPROM resets its internal memory on
+reset. This matches the specification in docs/devel/reset.rst:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Peter Delevoryas <peter@pjd.dev>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+  Cold reset is supported by every resettable object. In QEMU, it means we reset
+  to the initial state corresponding to the start of QEMU; this might differ
+  from what is a real hardware cold reset. It differs from other resets (like
+  warm or bus resets) which may keep certain parts untouched.
+
+But differs from my intuition. For example, if someone writes some information
+to an EEPROM, then AC power cycles their board, they would expect the EEPROM to
+retain that information. It's very useful to be able to test things like this
+in QEMU as well, to verify software instrumentation like determining the cause
+of a reboot.
+
+Fixes: 5d8424dbd3e8 ("nvram: add AT24Cx i2c eeprom")
+Signed-off-by: Peter Delevoryas <peter@pjd.dev>
 Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
+Link: https://lore.kernel.org/r/20230128060543.95582-6-peter@pjd.dev
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/arm/aspeed_soc.h | 11 +++++++++++
- hw/arm/aspeed_ast10x0.c     | 35 +++++++++++++++++++++++++++++++++++
- 2 files changed, 46 insertions(+)
+ hw/nvram/eeprom_at24c.c | 22 ++++++++++------------
+ 1 file changed, 10 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 8389200b2d..9a5e3c0bac 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -44,6 +44,7 @@
- #define ASPEED_CPUS_NUM  2
- #define ASPEED_MACS_NUM  4
- #define ASPEED_UARTS_NUM 13
-+#define ASPEED_JTAG_NUM  2
+diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
+index 05598699dc..3328c32814 100644
+--- a/hw/nvram/eeprom_at24c.c
++++ b/hw/nvram/eeprom_at24c.c
+@@ -184,18 +184,6 @@ static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
+     }
  
- struct AspeedSoCState {
-     /*< private >*/
-@@ -87,6 +88,11 @@ struct AspeedSoCState {
-     UnimplementedDeviceState video;
-     UnimplementedDeviceState emmc_boot_controller;
-     UnimplementedDeviceState dpmcu;
-+    UnimplementedDeviceState pwm;
-+    UnimplementedDeviceState espi;
-+    UnimplementedDeviceState udc;
-+    UnimplementedDeviceState sgpiom;
-+    UnimplementedDeviceState jtag[ASPEED_JTAG_NUM];
- };
+     ee->mem = g_malloc0(ee->rsize);
+-
+-}
+-
+-static
+-void at24c_eeprom_reset(DeviceState *state)
+-{
+-    EEPROMState *ee = AT24C_EE(state);
+-
+-    ee->changed = false;
+-    ee->cur = 0;
+-    ee->haveaddr = 0;
+-
+     memset(ee->mem, 0, ee->rsize);
  
- #define TYPE_ASPEED_SOC "aspeed-soc"
-@@ -174,6 +180,11 @@ enum {
-     ASPEED_DEV_DPMCU,
-     ASPEED_DEV_DP,
-     ASPEED_DEV_I3C,
-+    ASPEED_DEV_ESPI,
-+    ASPEED_DEV_UDC,
-+    ASPEED_DEV_SGPIOM,
-+    ASPEED_DEV_JTAG0,
-+    ASPEED_DEV_JTAG1,
- };
- 
- qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index b483735dc2..b970a5ea58 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -27,10 +27,15 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
-     [ASPEED_DEV_FMC]       = 0x7E620000,
-     [ASPEED_DEV_SPI1]      = 0x7E630000,
-     [ASPEED_DEV_SPI2]      = 0x7E640000,
-+    [ASPEED_DEV_UDC]       = 0x7E6A2000,
-     [ASPEED_DEV_SCU]       = 0x7E6E2000,
-+    [ASPEED_DEV_JTAG0]     = 0x7E6E4000,
-+    [ASPEED_DEV_JTAG1]     = 0x7E6E4100,
-     [ASPEED_DEV_ADC]       = 0x7E6E9000,
-+    [ASPEED_DEV_ESPI]      = 0x7E6EE000,
-     [ASPEED_DEV_SBC]       = 0x7E6F2000,
-     [ASPEED_DEV_GPIO]      = 0x7E780000,
-+    [ASPEED_DEV_SGPIOM]    = 0x7E780500,
-     [ASPEED_DEV_TIMER1]    = 0x7E782000,
-     [ASPEED_DEV_UART1]     = 0x7E783000,
-     [ASPEED_DEV_UART2]     = 0x7E78D000,
-@@ -78,12 +83,17 @@ static const int aspeed_soc_ast1030_irqmap[] = {
-     [ASPEED_DEV_LPC]       = 35,
-     [ASPEED_DEV_PECI]      = 38,
-     [ASPEED_DEV_FMC]       = 39,
-+    [ASPEED_DEV_ESPI]      = 42,
-     [ASPEED_DEV_PWM]       = 44,
-     [ASPEED_DEV_ADC]       = 46,
-     [ASPEED_DEV_SPI1]      = 65,
-     [ASPEED_DEV_SPI2]      = 66,
-     [ASPEED_DEV_I2C]       = 110, /* 110 ~ 123 */
-     [ASPEED_DEV_KCS]       = 138, /* 138 -> 142 */
-+    [ASPEED_DEV_UDC]       = 9,
-+    [ASPEED_DEV_SGPIOM]    = 51,
-+    [ASPEED_DEV_JTAG0]     = 27,
-+    [ASPEED_DEV_JTAG1]     = 53,
- };
- 
- static qemu_irq aspeed_soc_ast1030_get_irq(AspeedSoCState *s, int dev)
-@@ -154,6 +164,15 @@ static void aspeed_soc_ast1030_init(Object *obj)
-     object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
-     object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemented,
-                             TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize_child(obj, "sgpiom", &s->sgpiom,
-+                            TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize_child(obj, "jtag[0]", &s->jtag[0],
-+                            TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize_child(obj, "jtag[1]", &s->jtag[1],
-+                            TYPE_UNIMPLEMENTED_DEVICE);
+     if (ee->init_rom) {
+@@ -213,6 +201,16 @@ void at24c_eeprom_reset(DeviceState *state)
+     }
  }
  
- static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-@@ -336,6 +355,22 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-                     sc->memmap[ASPEED_DEV_GPIO]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
++static
++void at24c_eeprom_reset(DeviceState *state)
++{
++    EEPROMState *ee = AT24C_EE(state);
 +
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->pwm), "aspeed.pwm",
-+                                  sc->memmap[ASPEED_DEV_PWM], 0x100);
++    ee->changed = false;
++    ee->cur = 0;
++    ee->haveaddr = 0;
++}
 +
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->espi), "aspeed.espi",
-+                                  sc->memmap[ASPEED_DEV_ESPI], 0x800);
-+
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->udc), "aspeed.udc",
-+                                  sc->memmap[ASPEED_DEV_UDC], 0x1000);
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->sgpiom), "aspeed.sgpiom",
-+                                  sc->memmap[ASPEED_DEV_SGPIOM], 0x100);
-+
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->jtag[0]), "aspeed.jtag",
-+                                  sc->memmap[ASPEED_DEV_JTAG0], 0x20);
-+    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->jtag[1]), "aspeed.jtag",
-+                                  sc->memmap[ASPEED_DEV_JTAG1], 0x20);
- }
- 
- static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
+ static Property at24c_eeprom_props[] = {
+     DEFINE_PROP_UINT32("rom-size", EEPROMState, rsize, 0),
+     DEFINE_PROP_BOOL("writable", EEPROMState, writable, true),
 -- 
 2.39.1
 

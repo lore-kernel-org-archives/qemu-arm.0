@@ -1,125 +1,92 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5180681ejb;
-        Tue, 7 Feb 2023 02:08:16 -0800 (PST)
-X-Google-Smtp-Source: AK7set8A5pdiH7u0L1EGO1b3VwwB9YmkXcAB+F8nwSNFSe/8GJsSAD5gnLQMdBEHlsSfJd2BYL03
-X-Received: by 2002:ac8:59c1:0:b0:3b9:b6e3:c78e with SMTP id f1-20020ac859c1000000b003b9b6e3c78emr4775586qtf.8.1675764496336;
-        Tue, 07 Feb 2023 02:08:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675764496; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5180704ejb;
+        Tue, 7 Feb 2023 02:08:17 -0800 (PST)
+X-Google-Smtp-Source: AK7set/j+ehkliGxQBfjqeBVqWOz+7B72wemrF/ndehl4FC6dv1h02HpH7NAQLLn3kUKaOB7wYzL
+X-Received: by 2002:a17:902:dcc5:b0:199:4d:40d1 with SMTP id t5-20020a170902dcc500b00199004d40d1mr1750264pll.46.1675764497711;
+        Tue, 07 Feb 2023 02:08:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675764497; cv=none;
         d=google.com; s=arc-20160816;
-        b=vHI4CCOEQV3yXFZXTZB3Z2E6C6vEou2uXCw1B3aScikeZGe6wsdY3wFVrECeqqh6jb
-         FsQnTXdeogH7kCDGOOK1kK0YH525eRIAJB5H+jgm1Ifv1ocUyTzMXA28lqtErUZqTry4
-         m9U5X3nqtpfghprOq24XHj7y3XsG0k7CmkZUhh2bmGwhIy5cI8rZEZevubg6d/jjCvWL
-         UROLfO3RB7iwi9E0v0eeUAOsE5xID5keDo41V0fz3p5/l1FQHpRWO1+4vcSlC6o3h1mF
-         kBh03G0PB9hJa/P5UehC4m/BLoWypnuDiOL9TYwWtjFGXyxqAQiwDQAY1hxi55bbsn38
-         UGPw==
+        b=f5LYxCZQ75tdkOjjWzXWrIIfF7zByZIjEPCLchG4iOvP9fJDI7Co4/2Idoh6WF3uoo
+         PdFnNMUf2lJkIGM8THpJHfn0NPgzv/0yigOLVO1+qAXWamNbrQNXr0fEUvXUdx4pvOW6
+         M4LnTra4zCvAGcQ1/mEmPRYOEZzXZDKHkBt7qP3AFBI7wR8VXNblqLdRLQNFw8kAh9L/
+         kJUEf9NIyw5KL3nc/3UwM6R+tumQNQAGPfu7qPOBBlh+OmLXPRtH/H5DSwSLuDoEgjc9
+         GdeCzQ5To/cbrSgA22MxlgKNU/oNeVjgtpLmgfE1a9cw99+ABymkg+C2fOyQjK9IO19H
+         g6Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=TyYCKwrZnDpgNZ4syhoxxhohuXTd9EgetizyUrRIrHA=;
-        b=L60i3BBFszmX4ugqQvPAiMUwvXcGX+ULvZmeO/qWI/n+vTnRd4JnoXEliBb3Yqh4EW
-         xjiBG1hkcsUGqSUv9IO++kaEspSFH4aDf2Xu7GAhEk+JBNKyKw/uN1Al1btjq03/0vkm
-         hBgsSCsDDznez7x2zz6xHcgnldJ+0yWQdvBTKDm1MmowfByUNFOwC5gkt734C7Uy8pQ0
-         OjXXajed61N7ORWOSaSaTMDchmY/IPeCeYFXKj66eaOD7eiQ3MRr+aYBJhSSNFEAmNob
-         wIncucgsuAk7c0L4uMXP0uvYLHtEDzocJCrVdOVSVbqkBkRyrKhx3A+MCJSx+vLVkqOW
-         ONXQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=3CNPUtAJvLIsuCbOAZaEy6XuPlCz2Q3U6/ytvqunPCU=;
+        b=euf4JMjcT37Qg7A+uZCCaj6yQg/BTgrHFRyqFbE3KLHvA4AezGzzI4qvc2GR2dwNX5
+         fSdqLrPD3VqiuNxDtVOzGczQW/biWAL2oudZCelme5WP7JemSr8r3a0AzhyMb0cXgxaJ
+         X2etVXjOVBVvHOfVKNh/N1V3dC7S5zbJui0dG9PMLyjxq+Ur84Knza7YSgbxS+rrDDS/
+         msIf+dGwClWfx3AXTUmxm6lLWxaz/XushaRYEJ0XRVsp2nZx9k9zBt4Oq4wulrnRzvUI
+         QYwes1xg5bkIcjb2hBOtrLUGBw4Z6ICIxSzZX8Xsap6TlrD+edNVAbdgXbSAAyU965Fn
+         T5kQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1-20020a05620a248100b00720263e936dsi12196725qkn.60.2023.02.07.02.08.16
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Feb 2023 02:08:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of srs0=a43c=6d=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=a43c=6D=kaod.org=clg@ozlabs.org"
+Return-Path: <SRS0=a43c=6D=kaod.org=clg@ozlabs.org>
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
+        by mx.google.com with ESMTPS id bc11-20020a170902930b00b0019894a59c08si12941071plb.524.2023.02.07.02.08.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Feb 2023 02:08:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=a43c=6d=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pPKtY-0000Pv-Qo; Tue, 07 Feb 2023 05:08:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=a43c=6D=kaod.org=clg@ozlabs.org>)
- id 1pPKtS-0000Oz-Az; Tue, 07 Feb 2023 05:08:06 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=a43c=6D=kaod.org=clg@ozlabs.org>)
- id 1pPKtQ-0002Lo-Hn; Tue, 07 Feb 2023 05:08:06 -0500
+       spf=pass (google.com: domain of srs0=a43c=6d=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=a43c=6D=kaod.org=clg@ozlabs.org"
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4P9zMt49ZPz4xwl;
- Tue,  7 Feb 2023 21:07:54 +1100 (AEDT)
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4P9zNH5kNYz4xwy;
+	Tue,  7 Feb 2023 21:08:15 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4P9zMr5jwKz4wgv;
- Tue,  7 Feb 2023 21:07:52 +1100 (AEDT)
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4P9zNF0FnDz4xwl;
+	Tue,  7 Feb 2023 21:08:12 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 01/25] tests/avocado: Introduce file_truncate()
-Date: Tue,  7 Feb 2023 11:07:20 +0100
-Message-Id: <20230207100744.698694-2-clg@kaod.org>
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Joel Stanley <joel@jms.id.au>
+Subject: [PULL 09/25] hw/core/loader: Remove declarations of option_rom_has_mr/rom_file_has_mr
+Date: Tue,  7 Feb 2023 11:07:28 +0100
+Message-Id: <20230207100744.698694-10-clg@kaod.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230207100744.698694-1-clg@kaod.org>
 References: <20230207100744.698694-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=a43c=6D=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EGBVTrJsykpz
+X-TUID: ad/TJK7oFfz4
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+These globals were moved to MachineClass by commit 71ae9e94d9 ("pc: Move
+option_rom_has_mr/rom_file_has_mr globals to MachineClass"). Finish cleanup.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Link: https://lore.kernel.org/r/20230120134314.81956-2-philmd@linaro.org
-[ clg: remove image_pow2ceil_expand() factoring ]
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Marcel Apfelbaum <marcel@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- tests/avocado/boot_linux_console.py | 5 +++++
- 1 file changed, 5 insertions(+)
+ include/hw/loader.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 8c1d981586..13e6688624 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -30,6 +30,11 @@
- def pow2ceil(x):
-     return 1 if x == 0 else 2**(x - 1).bit_length()
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 70248e0da7..1384796a4b 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -251,9 +251,6 @@ void pstrcpy_targphys(const char *name,
+                       hwaddr dest, int buf_size,
+                       const char *source);
  
-+def file_truncate(path, size):
-+    if size != os.path.getsize(path):
-+        with open(path, 'ab+') as fd:
-+            fd.truncate(size)
-+
- """
- Expand file size to next power of 2
- """
+-extern bool option_rom_has_mr;
+-extern bool rom_file_has_mr;
+-
+ ssize_t rom_add_file(const char *file, const char *fw_dir,
+                      hwaddr addr, int32_t bootindex,
+                      bool option_rom, MemoryRegion *mr, AddressSpace *as);
 -- 
 2.39.1
-

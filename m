@@ -1,60 +1,62 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5181634ejb;
-        Tue, 7 Feb 2023 02:09:20 -0800 (PST)
-X-Google-Smtp-Source: AK7set8HxjD8e3pbnmSo7PbrccQTV5nsLRsBO+bsdByKrRKouVOQeXgj++IxVSA4JpeYJs6biPfs
-X-Received: by 2002:a05:6214:2688:b0:56b:bc8d:14d1 with SMTP id gm8-20020a056214268800b0056bbc8d14d1mr4279483qvb.17.1675764559851;
-        Tue, 07 Feb 2023 02:09:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675764559; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5181677ejb;
+        Tue, 7 Feb 2023 02:09:23 -0800 (PST)
+X-Google-Smtp-Source: AK7set+BZx/GbTSJUnpppYc0NTL7OtPjvSapdx0lBDqP2cmSoYQEHavNqPPuH/So6JoyZcq52LqO
+X-Received: by 2002:a05:622a:13c7:b0:3b9:bf83:d5de with SMTP id p7-20020a05622a13c700b003b9bf83d5demr4378778qtk.26.1675764563705;
+        Tue, 07 Feb 2023 02:09:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675764563; cv=none;
         d=google.com; s=arc-20160816;
-        b=jVv7Q2FZt4iOkXOq+nzrBnHC2hKWDI36OSnVNc6eEuISZfPqDHsCZfiDOzU/xOPuhy
-         +GKxA59/fUdLHP/inA4IldXlwUpZybgJgBMiSNwsPodqnhfAKtOPC2PPOw42nCrA+sEb
-         gX5SJ1o6GeOdGdjfG8i2fohY6XB8k/KQRbe/cIeH6kfUrtcFVTAbmO5jtcmLPjpBQYJz
-         ZGNUjim5mQEJPCUUZJPyZPF0JAXdraZvXLtQzagcH8mSQSwty7m4i5pVDqYs5MXi8HsP
-         zIZe0XMqjrSZdEesAoxQqgHj85+ley0+1kH9LZKW+tbwpbsANBih1ZkhKV3DvZGM3x5E
-         Wz0w==
+        b=unrd+rgKgBiCNM80Ed80n+wwW/FPI0XEPOTXlF1w6FS0YFu/zJF/y0nVpNW3Ke8Wyv
+         Vs6IIq3Ur1q9aCVOWIkN3yNveyFKWrdNr/s0IKbFcu/wlIM1KITzQ2kWVq5WeECyQ47q
+         RpaPVMA/IvmCp+9qemwO+orl2JttnP8HWY9ocBzHJHV052YjGUteJ/3dvfjL09gVidGn
+         ENiZpl5KZdcUXPb9H+bWdBGsb4B+pd+TPeiwYvGfgIbYIIJV25J/Pi8lUP94bOuErh+0
+         a5PMtsTkvrrtyH1ZzRwWQ4GDzvLBtN33GpqVM+nbFyWwyIJdF0IHhCBOui6Jq6tbnqmt
+         ac6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=UriI/mF2PsUKRbCjMZNmsiaz4+04J1KW8crTF5bBbCc=;
-        b=tTepdZ0IGxlgJRe6tsCBz2eygMhxb/qoCn28DPBV83whyK327B7nGW9vu30CNQkHLw
-         Lr4u+KaEybrcz/AplcYYN6960KWtiepBSEOS0RNFOe7J4rJEXYURbyFMmEje0eE56RfP
-         gXQQGGrGpQ9N4lLqy/w2vDP8+h3irS0fUrl+7Q91Wq0uEhd0WKfjftXN50wOjBInwYjT
-         pjDgOOuanAbHMxTeM8sr2Z/+d4snbTq6YtpZ9UDPvEsHKzbWUlg+2ijEIySLO9MPSB3L
-         C8+M8r6/QkQuXMslyvq6Recur/zrrzVdTKcBwN16Olrz9Za6aYGIOgAoCP0btH2ewmfD
-         CrEA==
+        bh=I5o3roGFkzrG8ecnQC8N0HMsota4EuvCXmLOj9GDIMI=;
+        b=VEJ3p7eCOCFSpxwC/4OLpgbpz0o0JJwdMZmsq1RHsK5/ctwKayK+C245ceU58Fxyc0
+         zdEXAnASowrtCGeLqls8M+26jSJi8wm2FIVH5djyLS2oN89fFxzpW7owcwfbL5qIIHzO
+         TrNbPjDuWcZmqI5XI7EzLP5EiPmO5q28ChCb1XBSV7cqXNyXPJ98US1NgnXZXTX/SvpK
+         w/xKd6OP/POuEnW2wkBP8TYuwnlALNG7eS31YKBad0RHl2ZK73AbfrL/oKO7qOeySH0j
+         hryR9t6pV3xiVQqtVckH4pK9WoYA30qakf8yff1pefWZxVkLNE5IXkEllK8C6DhY2mvq
+         0yew==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7-20020a0cf007000000b00568c5e3a0cfsi9950919qvk.125.2023.02.07.02.09.19
+        by mx.google.com with ESMTPS id w6-20020a05622a134600b003b86da41d4bsi8918841qtk.99.2023.02.07.02.09.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Feb 2023 02:09:19 -0800 (PST)
+        Tue, 07 Feb 2023 02:09:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pPKuG-0000pL-Dh; Tue, 07 Feb 2023 05:08:56 -0500
+	id 1pPKuE-0000nN-RT; Tue, 07 Feb 2023 05:08:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=a43c=6D=kaod.org=clg@ozlabs.org>)
- id 1pPKu1-0000Xt-0a; Tue, 07 Feb 2023 05:08:45 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1pPKu3-0000Y0-4d; Tue, 07 Feb 2023 05:08:45 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=a43c=6D=kaod.org=clg@ozlabs.org>)
- id 1pPKty-0002UP-Oa; Tue, 07 Feb 2023 05:08:40 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4P9zNh0Gc4z4wgv;
- Tue,  7 Feb 2023 21:08:36 +1100 (AEDT)
+ id 1pPKu1-0002Uw-8C; Tue, 07 Feb 2023 05:08:42 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4P9zNk3yXnz4xxJ;
+ Tue,  7 Feb 2023 21:08:38 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4P9zNf0986z4xyf;
- Tue,  7 Feb 2023 21:08:33 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4P9zNh3rblz4xyd;
+ Tue,  7 Feb 2023 21:08:36 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -62,24 +64,24 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Delevoryas <peter@pjd.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 16/25] hw/watchdog/wdt_aspeed: Extend MMIO range to cover more
- registers
-Date: Tue,  7 Feb 2023 11:07:35 +0100
-Message-Id: <20230207100744.698694-17-clg@kaod.org>
+Subject: [PULL 17/25] hw/watchdog/wdt_aspeed: Log unimplemented registers as
+ UNIMP level
+Date: Tue,  7 Feb 2023 11:07:36 +0100
+Message-Id: <20230207100744.698694-18-clg@kaod.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230207100744.698694-1-clg@kaod.org>
 References: <20230207100744.698694-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=a43c=6D=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,90 +96,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jO45LPtld/dU
+X-TUID: HtASH3KtaQqA
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-When booting the Zephyr demo in [1] we get:
+Add more Aspeed watchdog registers from [*].
 
-  aspeed.io: unimplemented device write (size 4, offset 0x185128, value 0x030f1ff1) <--
-  aspeed.io: unimplemented device write (size 4, offset 0x18512c, value 0x03fffff1)
+Since guests can righteously access them, log the access at
+'unimplemented' level instead of 'guest-errors'.
 
-This corresponds to this Zephyr code [2]:
+[*] https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/drivers/watchdog/wdt_aspeed.c#L31
 
-  static int aspeed_wdt_init(const struct device *dev)
-  {
-    const struct aspeed_wdt_config *config = dev->config;
-    struct aspeed_wdt_data *const data = dev->data;
-    uint32_t reg_val;
-
-    /* disable WDT by default */
-    reg_val = sys_read32(config->ctrl_base + WDT_CTRL_REG);
-    reg_val &= ~WDT_CTRL_ENABLE;
-    sys_write32(reg_val, config->ctrl_base + WDT_CTRL_REG);
-
-    sys_write32(data->rst_mask1,
-                config->ctrl_base + WDT_SW_RESET_MASK1_REG);   <------
-    sys_write32(data->rst_mask2,
-                config->ctrl_base + WDT_SW_RESET_MASK2_REG);
-
-    return 0;
-  }
-
-The register definitions are [3]:
-
-  #define WDT_RELOAD_VAL_REG          0x0004
-  #define WDT_RESTART_REG             0x0008
-  #define WDT_CTRL_REG                0x000C
-  #define WDT_TIMEOUT_STATUS_REG      0x0010
-  #define WDT_TIMEOUT_STATUS_CLR_REG  0x0014
-  #define WDT_RESET_MASK1_REG         0x001C
-  #define WDT_RESET_MASK2_REG         0x0020
-  #define WDT_SW_RESET_MASK1_REG      0x0028   <------
-  #define WDT_SW_RESET_MASK2_REG      0x002C
-  #define WDT_SW_RESET_CTRL_REG       0x0024
-
-Currently QEMU only cover a MMIO region of size 0x20:
-
-  #define ASPEED_WDT_REGS_MAX        (0x20 / 4)
-
-Change to map the whole 'iosize' which might be bigger, covering
-the other registers. The MemoryRegionOps read/write handlers will
-report the accesses as out-of-bounds guest-errors, but the next
-commit will report them as unimplemented.
-
-[1] https://github.com/AspeedTech-BMC/zephyr/releases/tag/v00.01.07
-[2] https://github.com/AspeedTech-BMC/zephyr/commit/2e99f10ac27b
-[3] https://github.com/AspeedTech-BMC/zephyr/blob/v00.01.08/drivers/watchdog/wdt_aspeed.c#L31
-
-Reviewed-by: Peter Delevoryas <peter@pjd.dev>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Delevoryas <peter@pjd.dev>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/watchdog/wdt_aspeed.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/hw/watchdog/wdt_aspeed.h |  2 +-
+ hw/watchdog/wdt_aspeed.c         | 13 +++++++++++++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
 
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index db91ee6b51..e90ef86651 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -21,7 +21,7 @@ OBJECT_DECLARE_TYPE(AspeedWDTState, AspeedWDTClass, ASPEED_WDT)
+ #define TYPE_ASPEED_2600_WDT TYPE_ASPEED_WDT "-ast2600"
+ #define TYPE_ASPEED_1030_WDT TYPE_ASPEED_WDT "-ast1030"
+ 
+-#define ASPEED_WDT_REGS_MAX        (0x20 / 4)
++#define ASPEED_WDT_REGS_MAX        (0x30 / 4)
+ 
+ struct AspeedWDTState {
+     /*< private >*/
 diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 958725a1b5..eefca31ae4 100644
+index eefca31ae4..d267aa185c 100644
 --- a/hw/watchdog/wdt_aspeed.c
 +++ b/hw/watchdog/wdt_aspeed.c
-@@ -260,6 +260,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
- {
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     AspeedWDTState *s = ASPEED_WDT(dev);
-+    AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(dev);
+@@ -42,6 +42,11 @@
+ #define     WDT_PUSH_PULL_MAGIC         (0xA8 << 24)
+ #define     WDT_OPEN_DRAIN_MAGIC        (0x8A << 24)
+ #define WDT_RESET_MASK1                 (0x1c / 4)
++#define WDT_RESET_MASK2                 (0x20 / 4)
++
++#define WDT_SW_RESET_CTRL               (0x24 / 4)
++#define WDT_SW_RESET_MASK1              (0x28 / 4)
++#define WDT_SW_RESET_MASK2              (0x2c / 4)
  
-     assert(s->scu);
+ #define WDT_TIMEOUT_STATUS              (0x10 / 4)
+ #define WDT_TIMEOUT_CLEAR               (0x14 / 4)
+@@ -83,6 +88,10 @@ static uint64_t aspeed_wdt_read(void *opaque, hwaddr offset, unsigned size)
+         return s->regs[WDT_RESET_MASK1];
+     case WDT_TIMEOUT_STATUS:
+     case WDT_TIMEOUT_CLEAR:
++    case WDT_RESET_MASK2:
++    case WDT_SW_RESET_CTRL:
++    case WDT_SW_RESET_MASK1:
++    case WDT_SW_RESET_MASK2:
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: uninmplemented read at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
+@@ -190,6 +199,10 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
  
-@@ -271,7 +272,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
-     s->pclk_freq = PCLK_HZ;
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_wdt_ops, s,
--                          TYPE_ASPEED_WDT, ASPEED_WDT_REGS_MAX * 4);
-+                          TYPE_ASPEED_WDT, awc->iosize);
-     sysbus_init_mmio(sbd, &s->iomem);
- }
- 
+     case WDT_TIMEOUT_STATUS:
+     case WDT_TIMEOUT_CLEAR:
++    case WDT_RESET_MASK2:
++    case WDT_SW_RESET_CTRL:
++    case WDT_SW_RESET_MASK1:
++    case WDT_SW_RESET_MASK2:
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: uninmplemented write at offset 0x%" HWADDR_PRIx "\n",
+                       __func__, offset);
 -- 
 2.39.1
 

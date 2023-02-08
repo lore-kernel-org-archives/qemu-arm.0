@@ -1,147 +1,195 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp5881997ejb;
-        Tue, 7 Feb 2023 15:12:07 -0800 (PST)
-X-Google-Smtp-Source: AK7set9crb4F/tVyX+Mw+5XtqYud89rZQG/NByKyIfU4PZp+XKNi1LzNNi9ODsyPM2O+7taRKLab
-X-Received: by 2002:ad4:4ee9:0:b0:537:6902:cddb with SMTP id dv9-20020ad44ee9000000b005376902cddbmr9069477qvb.28.1675811527715;
-        Tue, 07 Feb 2023 15:12:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675811527; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp6273147ejb;
+        Tue, 7 Feb 2023 23:46:48 -0800 (PST)
+X-Google-Smtp-Source: AK7set8h3jCmLcZpPJ8fXaSh78J1Q8C/l2UgNgHykR+s6uDZKe2gLhqNnhjkQPUAitJVnONJZOxa
+X-Received: by 2002:a05:622a:1456:b0:3ba:2066:58dc with SMTP id v22-20020a05622a145600b003ba206658dcmr11433132qtx.11.1675842408630;
+        Tue, 07 Feb 2023 23:46:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675842408; cv=none;
         d=google.com; s=arc-20160816;
-        b=LFZdAj2HgVQwFELJJfQbagCY06Fr8eeUy23x1lCDZvwzFHF3HmbGHma49fttcJwoCk
-         MWdsSTMontenUbPHdoavXFHjAqs+ErKp8yP4PGG3tekkRnqZDfXv9XgRMnPXc2DQ1D8z
-         Vh4GRV29Y9lsk+zW/R5SQ+Fon+MK5zklB1E3Rq2KYqfvLuBf2FKEi1AGt4VpQyO0pPPv
-         GQ16HnP4x1NCiyKAUtF7IjSQohgHA/JNH6G0ixRQ/XCM4FPgEMLDQIO6xwbAijXv0aN9
-         m26lSBgrcrbQpF31RfSG8iFFRSVr9Z4T8bw42XqHSAyzPdGyLRxLNnslOSNDeTMn161a
-         Bcww==
+        b=dOVCZQRdKrGEkrqj043K4xb0TSBWYsS4TMIamam7b3Zjt/ehS6o7BrhSp1MFffGCBB
+         GMrTr//iwOIZWsv//t8I5xcUNjWLCj/kvDlrbw5/8QYCqRYaIgjDibpl2QREltGhJRx3
+         KF3AUIF5JVPd5u8bls1fBxeuR07R4uYXpghfstZxLXBw6oYd3EYzb6DSNepSxKfQ+OaH
+         DWLCjKnwkOwsjEXnoHTEPx3SGnPfo0NrCeOHdug+1bCawAXlJNmg46sqKI8NE+eiief6
+         ErDutag59hyH6hRvhCb5/wyDi9fX52OgbeCDvu2xxmpHzVeV3I3yns7d1MzKKO3lie/f
+         vCAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=jOOZzh5Ci9Ei4n4xLpnlthYOFYDuHNJ+ZZ5LYvGAIxQ=;
-        b=lWRPs8WdgMtfQUjNu2bsS9C7w53NMZPq6+RT3U73P7Xtfj19XJ4s7G0JTgVxpk1AkW
-         B7qPi2lQfIpFrQ4ZXuUWSMm/qzFiZ/pSkCfybUWgsvsmi+guNxWqGwlplWaLqKeczK8G
-         rZX65h9cL6A9D1ZYRHdMhjqVYfAy3jtoadwLC0kQ9eRSmuze9cANiTnWYjYDtkyHsxgc
-         5EtV/hx+H6lhqgV0UQchQ31v1FKQdqZfCEUieQpTELFvX20LJyhsf4Uu4lUPvZGlpleS
-         fMYAHNkqKt/fSSFlc2jjvu6nhazlCstPSGQwAz0jy9NLLqMIYferHu3bNUB3wMnMg2Ji
-         jdSQ==
+        bh=IwAd/EadbU/3VrxY5KTRR2ocWA1dv38fzY46Pt05W64=;
+        b=BrJSXc/tChdeIs6hwz/Per+I1SUQBXWuko3mNUQvtFwy1IWvzM+INb0d6rOKX03u8R
+         4ka0fLd74sUgL0CfeM0iDANSgt0BVGY/+YEMn75FLzaWZpw5KpgiwxZaeCqoaPnuVZpq
+         EKpCfO32LCth9eXl5JG7bpulEIr+z9/15Wr1OjIRNZDaW0dGrtunmVAbU9J46QDrJPSY
+         I5BUBUQIXIH9PLu+fvMmZxZ+i399ybgxIUDs1YuIqkOX9MMSMyIlEhmT+8WuNPN42MYx
+         VHOz3r5y4RpRx/dlcRXPmzlQNkMVcQ9iQxYzBiszqdPNKMv5nQbaoIkWlPHDZLeYECrl
+         aLzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="EPaA/DOC";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jD2UMDOP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fi20-20020a0562141a5400b0056a817bd192si10217870qvb.291.2023.02.07.15.12.07
+        by mx.google.com with ESMTPS id a30-20020aed279e000000b003b9f6168f55si10805075qtd.682.2023.02.07.23.46.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Feb 2023 15:12:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Feb 2023 23:46:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="EPaA/DOC";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jD2UMDOP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pPX83-00042f-Ja; Tue, 07 Feb 2023 18:11:59 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pPfA6-00069S-9u; Wed, 08 Feb 2023 02:46:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pPX82-00042L-FD
- for qemu-devel@nongnu.org; Tue, 07 Feb 2023 18:11:58 -0500
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pPf9d-00060W-Dr
+ for qemu-arm@nongnu.org; Wed, 08 Feb 2023 02:46:11 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pPX80-00074a-Uz
- for qemu-devel@nongnu.org; Tue, 07 Feb 2023 18:11:58 -0500
-Received: by mail-pj1-x102d.google.com with SMTP id
- o16-20020a17090ad25000b00230759a8c06so385399pjw.2
- for <qemu-devel@nongnu.org>; Tue, 07 Feb 2023 15:11:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pPf9U-0001Af-9i
+ for qemu-arm@nongnu.org; Wed, 08 Feb 2023 02:46:07 -0500
+Received: by mail-wr1-x433.google.com with SMTP id g6so7837206wrv.1
+ for <qemu-arm@nongnu.org>; Tue, 07 Feb 2023 23:45:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=jOOZzh5Ci9Ei4n4xLpnlthYOFYDuHNJ+ZZ5LYvGAIxQ=;
- b=EPaA/DOCMEdxNpboaxaaTKVpoPCbhuD68YvExdQj75r7UAIvx9azdisJkfj0uRhwGk
- w0VDkxXd0mhFIV981h92+o0xNN1xOuefdJt6YognVEyXgTzQLRK5a4XyttAh6GITiQeR
- 9ZKg9CR1X/zYI8wS6flTvKnZjNBa+qhhGLxlIiTx8fngcVP7lvekOaEOEwJKO3apMuFa
- pHpQ86PWETpUllWC5DDsPcIAluIM4EEd7854gzh+7ugR1OYElx/0hWLEeXV4CKrROqab
- m7vcBW72K71IdHX2zQK4x0Ru/ets3DoHauzzZI448UoQvwyUsE+f4ifgh475wJmdzR3l
- VzeQ==
+ bh=IwAd/EadbU/3VrxY5KTRR2ocWA1dv38fzY46Pt05W64=;
+ b=jD2UMDOP54i6PrSMXMjjMncgebrDNIANMYkBDq0RfP15mEGd1lFtcNqWlONnBFU0zR
+ fV2qknoIEpIBTIJr9V3tEFE2ldTcoqP0u2RjUIv70sdfduspTplNu9clobnizeVmIM9L
+ kpjf9gmJwnA5CAfaOgzdFj2FpmfSa4LXHgIZ6GmeELlEnc2JVJPUCWzerDT/9RJ4oyDC
+ 5Zbxg9bctSw9+4f1Z0ZGF/8zNPZO0Y6cn12kVGFA8eoTi3iZmZsEj4Uka2OMioXhdRYV
+ NAcyNLIeb7F9ry/stOiYP/rk2sDuXjolipGanOEqDnAJr9DClipVNkFo0HKss3iczSd8
+ qETw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=jOOZzh5Ci9Ei4n4xLpnlthYOFYDuHNJ+ZZ5LYvGAIxQ=;
- b=R69ZKPxIaNDriDP+bAbSP7oLlpJE4w/g1VK5x74ibW6lLIYXY1HvyTWveYkNcuddo4
- q53PqI22oJz44cNn9c8uXMYlOw/qI3w1ZHdnSWdyHUkXAyu+C4luRmFjOFYoB+miptJE
- 0DrEx2N9SaNpIBrPFV8VMYusjM4zIdgDNbKT/lSnJB5OgCAtWcNhIJsZDdx8Fq9hn5iq
- 334iML7a8YYVTXRCmXA3SXJRXsoRdBj3pBRZXJBtdfZamrMwHwTzoJArs8HUth2gyMAo
- GeymD2Jupe6xt7xw+MbQZr0VloQ4X0q8TRNlJn2pjOmPoWZi5b6y+waW01M5//7GCDdP
- TVUw==
-X-Gm-Message-State: AO0yUKX/ze/N/8TghXDe9ARBdR5re3ZadgO6cQnPN2oJTkqauDUWvxNV
- adchomzNUHXO8qwlefk6KZBFCA==
-X-Received: by 2002:a17:90b:3b4e:b0:230:a39f:4992 with SMTP id
- ot14-20020a17090b3b4e00b00230a39f4992mr6021357pjb.11.1675811515617; 
- Tue, 07 Feb 2023 15:11:55 -0800 (PST)
-Received: from [192.168.101.227] (rrcs-74-87-59-234.west.biz.rr.com.
- [74.87.59.234]) by smtp.gmail.com with ESMTPSA id
- hg8-20020a17090b300800b0022335f1dae2sm78473pjb.22.2023.02.07.15.11.54
+ bh=IwAd/EadbU/3VrxY5KTRR2ocWA1dv38fzY46Pt05W64=;
+ b=Awy/66+yS/ZQkJC1PdG05RZUDCu9c+I9GyZJdbXcFSAlLLvk2h9uuJvosAKCEDCwBm
+ j1UYKwF0d/q01RGFG02i5j+xtJdRvx5gG5SxUPxgjs5nDrs2oCWWnEMalbrX65qPzuQQ
+ OZQ5t3xdZ2+pu08LdfB0ZrLrCsGZ+hDKgPpZ96h0imrR15ekh3jy+zgOMjbdk04IMfHa
+ zjPc+Lth/o1+DD7SPT8WxTtlWWE0oN8a3fuZnjZYmfzaqx0HB0jl7NmQufnpza56f55B
+ b5vPwuGf9f5GJiVKwuAmbWAGocWEc0mKDNkSC6oT9pQZS38r1F5UDtPAfn32FXfxT+2p
+ zd6A==
+X-Gm-Message-State: AO0yUKUJ6nTV9QaNVOp+fympbH4ng8xaJI0JFeYXWLTo/5a3I2o9s4ba
+ j5ND9Ucw2pygPasjUGfIVB0+sg==
+X-Received: by 2002:a5d:6e8b:0:b0:2bf:c753:573f with SMTP id
+ k11-20020a5d6e8b000000b002bfc753573fmr5140207wrz.24.1675842357319; 
+ Tue, 07 Feb 2023 23:45:57 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ q12-20020adff94c000000b002c405e19010sm85971wrr.11.2023.02.07.23.45.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Feb 2023 15:11:55 -0800 (PST)
-Message-ID: <b3d8a0c6-5c39-2c85-3bc1-b56309587822@linaro.org>
-Date: Tue, 7 Feb 2023 13:11:51 -1000
+ Tue, 07 Feb 2023 23:45:56 -0800 (PST)
+Message-ID: <1e078434-bd53-9f27-3b66-5ca9215fad05@linaro.org>
+Date: Wed, 8 Feb 2023 08:45:54 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2 10/11] target/arm: Store CPUARMState::nvic as NVICState*
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH 2/3] hw/ssi: Add Nuvoton PSPI Module
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20230206223502.25122-1-philmd@linaro.org>
- <20230206223502.25122-11-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230206223502.25122-11-philmd@linaro.org>
+To: Hao Wu <wuhaotsh@google.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com,
+ hskinnemoen@google.com, titusr@google.com, Chris Rauer <crauer@google.com>
+References: <20230206233428.2772669-1-wuhaotsh@google.com>
+ <20230206233428.2772669-3-wuhaotsh@google.com>
+ <de4b4eb1-0f77-fb20-5e8e-be751f4a32a5@linaro.org>
+ <CAGcCb13Asc1GztkXEVwMPmh=7Ty1XGyeL9j=hO652uVYnyWNUg@mail.gmail.com>
+ <CAGcCb12jxNqFW096UBcfs=aiQgEY5Jeo6=76wZu6-42wV8r2rQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <CAGcCb12jxNqFW096UBcfs=aiQgEY5Jeo6=76wZu6-42wV8r2rQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hfNCaKWjcMKg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: X13H22ZsA2oP
 
-On 2/6/23 12:35, Philippe Mathieu-Daudé wrote:
-> There is no point in using a void pointer to access the NVIC.
-> Use the real type to avoid casting it while debugging.
+On 7/2/23 20:21, Hao Wu wrote:
+> On Tue, Feb 7, 2023 at 10:46 AM Hao Wu <wuhaotsh@google.com 
+> <mailto:wuhaotsh@google.com>> wrote:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   hw/intc/armv7m_nvic.c | 38 ++++++++++++-----------------------
->   target/arm/cpu.c      |  1 +
->   target/arm/cpu.h      | 46 ++++++++++++++++++++++---------------------
->   target/arm/m_helper.c |  2 +-
->   4 files changed, 39 insertions(+), 48 deletions(-)
+>     Thanks for your review!
+> 
+>     On Mon, Feb 6, 2023 at 11:13 PM Philippe Mathieu-Daudé
+>     <philmd@linaro.org <mailto:philmd@linaro.org>> wrote:
+> 
+>         On 7/2/23 00:34, Hao Wu wrote:
+>          > Nuvoton's PSPI is a general purpose SPI module which enables
+>          > connections to SPI-based peripheral devices.
+>          >
+>          > Signed-off-by: Hao Wu <wuhaotsh@google.com
+>         <mailto:wuhaotsh@google.com>>
+>          > Reviewed-by: Chris Rauer <crauer@google.com
+>         <mailto:crauer@google.com>>
+>          > ---
+>          >   MAINTAINERS                |   6 +-
+>          >   hw/ssi/meson.build         |   2 +-
+>          >   hw/ssi/npcm_pspi.c         | 216
+>         +++++++++++++++++++++++++++++++++++++
+>          >   hw/ssi/trace-events        |   5 +
+>          >   include/hw/ssi/npcm_pspi.h |  53 +++++++++
+>          >   5 files changed, 278 insertions(+), 4 deletions(-)
+>          >   create mode 100644 hw/ssi/npcm_pspi.c
+>          >   create mode 100644 include/hw/ssi/npcm_pspi.h
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-r~
+>          > +static void npcm_pspi_realize(DeviceState *dev, Error **errp)
+>          > +{
+>          > +    NPCMPSPIState *s = NPCM_PSPI(dev);
+>          > +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>          > +    Object *obj = OBJECT(dev);
+>          > +
+>          > +    s->spi = ssi_create_bus(dev, "pspi");
+> 
+>         FYI there is an ongoing discussion about how to model QOM tree. If
+>         this bus isn't shared with another controller, the "embed QOM child
+>         in parent" style could be preferred. If so, the bus would be created
+>         as:
+> 
+>                 object_initialize_child(obj, "pspi", &s->spi, TYPE_SSI_BUS);
+> 
+>     I was just following some existing code here. I think I can use the
+>     new style. 
+> 
+> I've tried to use this and got the following error:
+> **
+> ERROR:../qom/object.c:511:object_initialize_with_type: assertion failed: 
+> (size >= type->instance_size)
+> Bail out! ERROR:../qom/object.c:511:object_initialize_with_type: 
+> assertion failed: (size >= type->instance_size)
+> 
+> I think the problem is that we define s->spi as SSIBus* instead of 
+> SSIBus. But if we define it as SSIBus, we'll
+> get an incomplete type error. Fixing it will require refactoring 
+> hw/ssi/ssi.c which I'm not sure if we want to do
+> it right now. This code is consistent with other code in hw/ssi so I 
+> guess we can leave it here for now and wait
+> for a future refactor.
+Sorry, I was just mumbling alone thinking about what would need to be
+done, not asking you to change it yet :/ I should have been
+more explicit.

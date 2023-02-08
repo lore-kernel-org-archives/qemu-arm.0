@@ -1,96 +1,96 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp133832ejb;
-        Wed, 8 Feb 2023 15:55:30 -0800 (PST)
-X-Google-Smtp-Source: AK7set84CuXcrMzlusl5I3Gl/e9f9I2VZ2MRmmcrQDGWlKKnTU6qkmZT8PsXDbJCG53QDIh1TnI5
-X-Received: by 2002:ad4:5ae8:0:b0:56c:234d:dfd2 with SMTP id c8-20020ad45ae8000000b0056c234ddfd2mr4584784qvh.24.1675900530008;
-        Wed, 08 Feb 2023 15:55:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675900529; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp133983ejb;
+        Wed, 8 Feb 2023 15:55:44 -0800 (PST)
+X-Google-Smtp-Source: AK7set8nKpMMQAxoeWYDrqcO/ar0X2yM6VOrzNW2OlWZKWeJ07mtHRzKoBjvLqmdzihs6K+2F9mS
+X-Received: by 2002:a05:622a:148c:b0:3b6:2f22:75bd with SMTP id t12-20020a05622a148c00b003b62f2275bdmr16317465qtx.28.1675900544808;
+        Wed, 08 Feb 2023 15:55:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675900544; cv=none;
         d=google.com; s=arc-20160816;
-        b=eJOxJPauvWsXVlFUMaAZ547YTP4LeTGFCo/U1XFXnrkydSFQUfkLjaaWeuyaaN5RjH
-         gT7RWEo+JuuUg9n76UapftYFTb+AkVDSRj0SldXQGKr7OjGObjcogt6iPs37snQVlxiF
-         BU4YXukrfGX+YxbiuV66Hq4CTFRI6AQjzdMqCA2UYQH9jCXCVN+HCgDc7S/0q+dOnKYc
-         MIivUuUHfg3riRcKhbe4cXtrnCJrB1J6SNRZGeiV12oBmHgtDpRYOmAlum8aKP8XZO7v
-         /HyJlMXuGb396tcomHdiJ4NE1tESJfClC/t1zLfTTYN6og6X5m5Qxj4Y9kd0JClLlIB6
-         xzxA==
+        b=jrR1c6z36qtlQ8CBlrKrloumgpLTv9UCkhWeZiRX3AuLTKpEA5jqJOhC0zoUQt8mN8
+         ANHSI5jMNqNN5Z9iigXm3YctZ8Vehc9IOrHC9UwyAuCk/hAuCCs3wg79dsDslYJ3OMRR
+         s1vzbL8gUnpQ52YhCZT8tH8hxpkUgmYvQe9kmUJsUaVsjbLTcejR3LCng6shlU2CJulW
+         sviV+V0RFHTsjRU7rSGurKZBPSQi/NRB7zuYkx8u1W1bbAy6eoj0Ld7OmduzsB5pHBoJ
+         ZkvnPR+as55KFIQwUy10Egz/PJSruj7ZkSZl/n1QVgVNPKIIuSt1k0c8Pm55h2W0Uwyq
+         R30g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=nH4HQe+MV9tjbVXhRgWQajwGe2OH3uEMzVPFxvxzzdQ=;
-        b=sKouA7Y2NRogzIiIMLbLSS8/dcsLY69Mk7GgJsczeUq+08FRHQrS95EOLMiNp53S3F
-         8dWFbZ2kIlsV57c5qPmTxCg34X2F+zdCH1/0MHkAs511L/nkoFyQEEkLPgCXheF8s512
-         4A4y2GiTTadJqaooRKB2uSKFxd+UQmA6DAXiL8QkTLo4BqHrTUer8fFZEml7VDvup+mI
-         c34NO7bYY+QacaVSd3towJZownMQwUFMUzmqUjqXW/prmjsTXmXLrErJbuxADJzIxqbu
-         i0wPJ7q8av6tPhlP8dmFYdwiOcF3nluv+5sIKbLPDXn4LCnH6VoIBXJWeQA2HAbvGiq7
-         aoGg==
+        bh=0+NgHraPggD1/G/0Zic2rQg5R0ycbmNyiemBx69rPPw=;
+        b=0+IX0fAwf6kQ1HO9vrzMAHEWtLVNQGaOyzQpPCvWOQNmrTlnTYS+jEU+2bgW5KDe0K
+         Go8PSUDR1/sYP7ZJNxi+mPQX9PHj0iSv01DpTKuX74UXbtx1I7OWaVNYywdxJmE2c2Qk
+         e4wIR/ANXfjwf5zhGGODDdYI6Ouh7TLfNVSaVZUhgqqLyp0wFGKMEpXa6o3UB49LkS4Q
+         hpDeXbCbgAOa7BV+AyTx1EYReAHMWwTbf3JMsLOJmc5FrVrsVAYAz8vSaM38qQD2v3fr
+         vR0fIbPuK0rzpZwD/E2n5LGR9r8+J8PTprck+W/a15vbbS1jsx5I0YqrK/Uc7SzYU608
+         myGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=Prrb+UmJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=TGqzduTX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c9-20020a0ce149000000b0056c23509ee1si96263qvl.222.2023.02.08.15.55.29
+        by mx.google.com with ESMTPS id r6-20020a05620a298600b0072f4f72667bsi204730qkp.664.2023.02.08.15.55.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Feb 2023 15:55:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 Feb 2023 15:55:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=Prrb+UmJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20210112 header.b=TGqzduTX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pPuH2-0002UJ-3t; Wed, 08 Feb 2023 18:54:48 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pPuH6-0002Ut-V6; Wed, 08 Feb 2023 18:54:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3PjbkYwgKCGEVTG9NSRGFNNFKD.BNLPDLT-9QLMNMFMT.NQF@flex--wuhaotsh.bounces.google.com>)
- id 1pPuGy-0002Rv-G1
- for qemu-arm@nongnu.org; Wed, 08 Feb 2023 18:54:45 -0500
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ <3QjbkYwgKCmUZXKDRWVKJRRJOH.FRPTHPX-GHYHOQRQJQX.RUJ@flex--wuhaotsh.bounces.google.com>)
+ id 1pPuH1-0002U7-Sm
+ for qemu-devel@nongnu.org; Wed, 08 Feb 2023 18:54:47 -0500
+Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3PjbkYwgKCGEVTG9NSRGFNNFKD.BNLPDLT-9QLMNMFMT.NQF@flex--wuhaotsh.bounces.google.com>)
- id 1pPuGw-0003UY-9K
- for qemu-arm@nongnu.org; Wed, 08 Feb 2023 18:54:43 -0500
-Received: by mail-yb1-xb49.google.com with SMTP id
- o131-20020a25d789000000b00859dddecf8eso287712ybg.17
- for <qemu-arm@nongnu.org>; Wed, 08 Feb 2023 15:54:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ <3QjbkYwgKCmUZXKDRWVKJRRJOH.FRPTHPX-GHYHOQRQJQX.RUJ@flex--wuhaotsh.bounces.google.com>)
+ id 1pPuH0-0003X7-16
+ for qemu-devel@nongnu.org; Wed, 08 Feb 2023 18:54:47 -0500
+Received: by mail-pf1-x449.google.com with SMTP id
+ s8-20020a056a00178800b00593e2189278so110986pfg.19
+ for <qemu-devel@nongnu.org>; Wed, 08 Feb 2023 15:54:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20210112; t=1675900483;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=nH4HQe+MV9tjbVXhRgWQajwGe2OH3uEMzVPFxvxzzdQ=;
- b=Prrb+UmJo0o9gbFleRCCDtP+rIh8YSy6uG2BxNvcKEoXncxY+nhpGLrK3o7E2wRuXK
- 0RHMfmNcTLVOsJ+KlfoN2+bZMqBAt4TwYopKi/Jk1cqR+p3+qD+A2IQe/FuR61GHuxK+
- V9TIqjpq/F0WMzxHd3KsfGIVOYz/o5lQMAUJsz5MT99zwUEKcg0QQGs4lYiJR1vSimEu
- nRdTLpideJbs977ZUAPNevIj5bQs35wG2smAKrmwHXnY9DV726ux04Edt/8+gyiuit7u
- 2Qo9DFq61dljrUYo0btpbsHW6xSOhN8zMAoa16HEj5SNEbdxm1dqYBsIEM7Q037nh6wi
- onBw==
+ bh=0+NgHraPggD1/G/0Zic2rQg5R0ycbmNyiemBx69rPPw=;
+ b=TGqzduTXpM4UcqOd9A9Fd8NwGd2CGYTtAhHKkgCE0F+vCNnVqUNakxa3xxk8PZRmw/
+ kAyxu/dUHRYK4zOnqmsm0zUMyWzN2nmNVPKhaUyqxVG5Ky4jVrE11kztbxgXyaEf+miA
+ oK6WOT6u7Dop7k8P2L1+8O0r08ilBMgjI0VP+AU+692Qf4zk1fPny1Y0U+ZulawShBgN
+ QD2OTu15kC3naQ3SZGDFTifH75HmnopIXWrVpjgnrG/pzoeMSogqn4NvrQ8PtIq4BA4A
+ b5X9wEDVveRmpVwL6AZi6soJ/Cz+0CyhLpT3+Clcg25B60MAaNmeDxrgrXKHWOktv42C
+ ZxmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
+ d=1e100.net; s=20210112; t=1675900483;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nH4HQe+MV9tjbVXhRgWQajwGe2OH3uEMzVPFxvxzzdQ=;
- b=demVlF3TYSnw1LNdNhQ68kb8RUiRHo2OsD9V36k0hIpuFmSY2r9r/nzt2lPJmbGMq4
- PtrkpqRZwcma+PCLnHTl9eDF0etNNsbifot6KqYNFEgYMwuhdY+5QtTI4UwOAKjvpsJv
- mK2Mpqaygrr6/jiCRp1RbCWA5PvjnykupL24CUp9g+ie0x1GDdQRIAG32/Q1LWAR7d14
- AHeRG0MmzozFLfPV5hmjOK69gvxLP0CK5YHNSgAL5NDdn7HS/8nOk0wIOcsXebcE4Ul2
- Dy+lJZD8q+y+G2AfRava59U5pdBkn06zs1vH/rjVYD/X83PDmosT82GPJ3aia7OMUgO5
- WaMw==
-X-Gm-Message-State: AO0yUKX3FBfNBXw0WtH7Y8i4Kug7/Emm7xoMWJf1YbzzJwqCY2wThKpe
- LRi1THZWieXn13/OY85qJX6kP+Xe8yz7Vw==
+ bh=0+NgHraPggD1/G/0Zic2rQg5R0ycbmNyiemBx69rPPw=;
+ b=h4dHK4spGA7/62baAiMdCG98lhk0i1/rPk0SM01EbOWVFfSeZh7wbuO5Xv+myTidZz
+ Ne7a6qcn4pN5PnIz6afYvfffKBN6kmUfjrjkLPc2xofiXLblZKE9eZywA4gnki1POZ5e
+ 5OJpf3uGCIHTKiGuqO7sFlqT/QS6THVwpUofHzpAPusUw2n3JTVmxcYAYmDPZhE8+tgS
+ NhzzQhZCeypwjLqS5kLeL0V+lUtHFipI4McXvUp1IODGOHn2U/TfhP3BYG6NaRqxW68b
+ UhGYqXuiHzAgsfaPxhu1c3dB4c2tCqg26XnlT/hiCUueBsv/n3XhLbKQY40wViaocItt
+ 0agQ==
+X-Gm-Message-State: AO0yUKXrq9M6zeL/VLNIurGNOBxz+IlFvrWRXtVMzPM+2HwOtIO4rAZm
+ 6c+FnPiv5qqH1tfc5GhRirXIOr/HH1bqog==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a81:ee06:0:b0:526:859e:8b16 with SMTP id
- l6-20020a81ee06000000b00526859e8b16mr3ywm.8.1675900478836; Wed, 08 Feb 2023
- 15:54:38 -0800 (PST)
-Date: Wed,  8 Feb 2023 15:54:31 -0800
+ (user=wuhaotsh job=sendgmr) by 2002:a62:4e93:0:b0:5a2:d581:efe1 with SMTP id
+ c141-20020a624e93000000b005a2d581efe1mr2225919pfb.28.1675900482733; Wed, 08
+ Feb 2023 15:54:42 -0800 (PST)
+Date: Wed,  8 Feb 2023 15:54:33 -0800
 In-Reply-To: <20230208235433.3989937-1-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20230208235433.3989937-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.39.1.519.gcb327c4b5f-goog
-Message-ID: <20230208235433.3989937-2-wuhaotsh@google.com>
-Subject: [PATCH v3 1/3] MAINTAINERS: Add myself to maintainers and remove
- Havard
+Message-ID: <20230208235433.3989937-4-wuhaotsh@google.com>
+Subject: [PATCH v3 3/3] hw/arm: Attach PSPI module to NPCM7XX SoC
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
@@ -98,9 +98,9 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com,
  hskinnemoen@google.com, titusr@google.com, 
  Philippe Mathieu-Daude <philmd@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3PjbkYwgKCGEVTG9NSRGFNNFKD.BNLPDLT-9QLMNMFMT.NQF@flex--wuhaotsh.bounces.google.com;
- helo=mail-yb1-xb49.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::449;
+ envelope-from=3QjbkYwgKCmUZXKDRWVKJRRJOH.FRPTHPX-GHYHOQRQJQX.RUJ@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pf1-x449.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -109,46 +109,134 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bTH2GOXU4IQO
-
-Havard is no longer working on the Nuvoton systems for a while
-and won't be able to do any work on it in the future. So I'll
-take over maintaining the Nuvoton system from him.
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KIQ7HfJOIJrQ
 
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Acked-by: Havard Skinnemoen <hskinnemoen@google.com>
+Reviewed-by: Titus Rwantare <titusr@google.com>
 Reviewed-by: Philippe Mathieu-Daude <philmd@linaro.org>
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/system/arm/nuvoton.rst |  2 +-
+ hw/arm/npcm7xx.c            | 25 +++++++++++++++++++++++--
+ include/hw/arm/npcm7xx.h    |  2 ++
+ 3 files changed, 26 insertions(+), 3 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index fa10ecaeb9..347936e41c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -799,8 +799,8 @@ F: include/hw/net/mv88w8618_eth.h
- F: docs/system/arm/musicpal.rst
+diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
+index c38df32bde..0424cae4b0 100644
+--- a/docs/system/arm/nuvoton.rst
++++ b/docs/system/arm/nuvoton.rst
+@@ -49,6 +49,7 @@ Supported devices
+  * SMBus controller (SMBF)
+  * Ethernet controller (EMC)
+  * Tachometer
++ * Peripheral SPI controller (PSPI)
  
- Nuvoton NPCM7xx
--M: Havard Skinnemoen <hskinnemoen@google.com>
- M: Tyrone Ting <kfting@nuvoton.com>
-+M: Hao Wu <wuhaotsh@google.com>
- L: qemu-arm@nongnu.org
- S: Supported
- F: hw/*/npcm7xx*
+ Missing devices
+ ---------------
+@@ -64,7 +65,6 @@ Missing devices
+ 
+  * Ethernet controller (GMAC)
+  * USB device (USBD)
+- * Peripheral SPI controller (PSPI)
+  * SD/MMC host
+  * PECI interface
+  * PCI and PCIe root complex and bridges
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index d85cc02765..15ff21d047 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -86,6 +86,8 @@ enum NPCM7xxInterrupt {
+     NPCM7XX_EMC1RX_IRQ          = 15,
+     NPCM7XX_EMC1TX_IRQ,
+     NPCM7XX_MMC_IRQ             = 26,
++    NPCM7XX_PSPI2_IRQ           = 28,
++    NPCM7XX_PSPI1_IRQ           = 31,
+     NPCM7XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
+     NPCM7XX_TIMER1_IRQ,
+     NPCM7XX_TIMER2_IRQ,
+@@ -220,6 +222,12 @@ static const hwaddr npcm7xx_emc_addr[] = {
+     0xf0826000,
+ };
+ 
++/* Register base address for each PSPI Module */
++static const hwaddr npcm7xx_pspi_addr[] = {
++    0xf0200000,
++    0xf0201000,
++};
++
+ static const struct {
+     hwaddr regs_addr;
+     uint32_t unconnected_pins;
+@@ -444,6 +452,10 @@ static void npcm7xx_init(Object *obj)
+         object_initialize_child(obj, "emc[*]", &s->emc[i], TYPE_NPCM7XX_EMC);
+     }
+ 
++    for (i = 0; i < ARRAY_SIZE(s->pspi); i++) {
++        object_initialize_child(obj, "pspi[*]", &s->pspi[i], TYPE_NPCM_PSPI);
++    }
++
+     object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
+ }
+ 
+@@ -715,6 +727,17 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc), 0,
+             npcm7xx_irq(s, NPCM7XX_MMC_IRQ));
+ 
++    /* PSPI */
++    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_pspi_addr) != ARRAY_SIZE(s->pspi));
++    for (i = 0; i < ARRAY_SIZE(s->pspi); i++) {
++        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->pspi[i]);
++        int irq = (i == 0) ? NPCM7XX_PSPI1_IRQ : NPCM7XX_PSPI2_IRQ;
++
++        sysbus_realize(sbd, &error_abort);
++        sysbus_mmio_map(sbd, 0, npcm7xx_pspi_addr[i]);
++        sysbus_connect_irq(sbd, 0, npcm7xx_irq(s, irq));
++    }
++
+     create_unimplemented_device("npcm7xx.shm",          0xc0001000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.vdmx",         0xe0800000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.pcierc",       0xe1000000,  64 * KiB);
+@@ -724,8 +747,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("npcm7xx.peci",         0xf0100000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.siox[1]",      0xf0101000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.siox[2]",      0xf0102000,   4 * KiB);
+-    create_unimplemented_device("npcm7xx.pspi1",        0xf0200000,   4 * KiB);
+-    create_unimplemented_device("npcm7xx.pspi2",        0xf0201000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.ahbpci",       0xf0400000,   1 * MiB);
+     create_unimplemented_device("npcm7xx.mcphy",        0xf05f0000,  64 * KiB);
+     create_unimplemented_device("npcm7xx.gmac1",        0xf0802000,   8 * KiB);
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index f1b7e4a48d..72c7722096 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -32,6 +32,7 @@
+ #include "hw/nvram/npcm7xx_otp.h"
+ #include "hw/timer/npcm7xx_timer.h"
+ #include "hw/ssi/npcm7xx_fiu.h"
++#include "hw/ssi/npcm_pspi.h"
+ #include "hw/usb/hcd-ehci.h"
+ #include "hw/usb/hcd-ohci.h"
+ #include "target/arm/cpu.h"
+@@ -104,6 +105,7 @@ struct NPCM7xxState {
+     NPCM7xxFIUState     fiu[2];
+     NPCM7xxEMCState     emc[2];
+     NPCM7xxSDHCIState   mmc;
++    NPCMPSPIState       pspi[2];
+ };
+ 
+ #define TYPE_NPCM7XX    "npcm7xx"
 -- 
 2.39.1.519.gcb327c4b5f-goog
 

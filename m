@@ -1,275 +1,167 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp569106ejb;
-        Thu, 9 Feb 2023 01:44:00 -0800 (PST)
-X-Google-Smtp-Source: AK7set9i0Mn0kAoZxNgxM/wXCBY/6z7j+Gwrb1QkwGa3KnrlUg24jhNWNI+Rex1PRS/m904K5Neu
-X-Received: by 2002:a05:6000:18ca:b0:2c3:db9e:4b06 with SMTP id w10-20020a05600018ca00b002c3db9e4b06mr9747932wrq.45.1675935840621;
-        Thu, 09 Feb 2023 01:44:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675935840; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1104421ejb;
+        Thu, 9 Feb 2023 11:48:53 -0800 (PST)
+X-Google-Smtp-Source: AK7set/klmTLiV5mHt4NfwUc67gOeL7BPv4aXZRefGdl87zLwSp1K86l2GUkB0CMgKlEAfrOWRWc
+X-Received: by 2002:a05:6214:27ed:b0:552:9c08:7c9a with SMTP id jt13-20020a05621427ed00b005529c087c9amr20007715qvb.15.1675972132905;
+        Thu, 09 Feb 2023 11:48:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675972132; cv=none;
         d=google.com; s=arc-20160816;
-        b=ATcBobFgFUjd5Fs1BDjCK5t25G9CCgmcvFiKleQcMlhJcY789K0xvLPA7PCxyfKQhP
-         YYdQ1fJrBYdty9b9SkyMxFqsmPu4woWeLW6LHP9D5/wzzHUTweCQuHoVyYzVHxD5cnuE
-         YByj0OsK/Z8T9uZy80yXUPGVtmn0MJiFEWPB8vR2s1wiW5ANmL5BowglMGWb3PM5izhf
-         QfDVLYhjK7PPKANo8GdBLzTUwN406n7siLAQhT+/FwadlpIyvyvss0joW1ra0xcggjAr
-         hIGC9cJBjubixDXdaRNTqDDaAKHt4zRZ6J8q++aYoN92kpa/3/Dcy0/fcnvm9xzIj5b8
-         A+ng==
+        b=xmbIEOcwfb8nqanGpEwF9mt/1no6UYXXRyvWRYkDgZOc3Pynr/Jt/+NTX57dpyf0Nx
+         zqRHj5duiUjbkGtG89Ms6WSHYvsyCX6kLDVZ7AhZgJsalLULBavKvyCJYYNcFQcbNjrv
+         uHVIhv3Wtuf8TyzoyrL9O4WnArAqJbHO9EIPcnpx1LORK7Fz6FaZ1bNAkDpTGhDIPVCs
+         1+YD7xVnnkabtNkKNk85TpgamaIif6hhIYWq7P8vK7vOun3sz8tczhd0qchdSptjmRLT
+         dOCMt/J5xE1Jyk66D7fkacnt04z5ifEVQURXsPOBaVH/wye/6kjpdkOOcWXpe5wAyBYI
+         aY2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=MWtLfqresRJkSR+Kcb+oiHNBguaF8+Ha78+fV2jhMGU=;
-        b=KtRTAbBJD0S9EycMaVIlwtEXwsuQNoyzaehy0fGRGR6riBThweOz0WJl+zj/FOljvM
-         UjOU8aKYvoARS28Dd0bDo/YkSJlrY7z0mRuIsD3Xc9BGZTEtG4uqK55ktyTM9m+G63Aw
-         0KTJglDQLsOBVCShKyVvM4mDRq86s+iPUeWTLNDkv3gT5os7feXmmyEhuGJY1v20Y/zW
-         kyqMwD/Xxus/gz5YPqhAZy0Vl/FRbt5kzapijZHy3zQYCTpG9hgOzNqdcECj1IqutBI9
-         C6Mn3ldxix3MN28hwYaAW0iAJsXmobotihwPcxgqUBiiAlv6f2ZwYEpHJf0E/9yEwT4+
-         dp3g==
+        bh=49k5dHSfFHAuH+GfZp3woB7SltOb5x6HuuT9s9fP7AQ=;
+        b=SO2XtWSTswNG+3DG1iXXTRpJLxXesRjSerPZFgVV1tkJ8aOQtu0DuLEYUTLcPNq7uf
+         LfwNMIv9tEMjaBU8kfNbnV8DFr65IEIUJt7AXFmH/L7z4lIqkKMjlqciGD8+GKt5Wjkl
+         ZszgNzuZi/1UJ6d8oucUKGTpPFQaLx7puTseLZXAzEdtDNFByq5kE2QT0NRuExqN7ON1
+         WAkQfaPvqA3EYhOWoldnz3aAzkzbEPlrY2loFmbhgo6c0KOl1zIgL+b0w489GFGKiIqz
+         b2sNWBsO6FgkgBjdbI1tndCDvmbDZaQrIKKo3CMbJw7mN8bNwNwP10JYRxkDMPcAJymf
+         5Elg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dN84PUvg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KJNwx0q/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18-20020a5d4a92000000b002c3e93bf0e5si1280695wrq.278.2023.02.09.01.44.00
+        by mx.google.com with ESMTPS id v64-20020a37dc43000000b00720263e936dsi2147528qki.60.2023.02.09.11.48.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Feb 2023 01:44:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 09 Feb 2023 11:48:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dN84PUvg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="KJNwx0q/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pQ3T4-0001rH-1Q; Thu, 09 Feb 2023 04:43:50 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pQCuD-0005wh-OD; Thu, 09 Feb 2023 14:48:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pQ3T2-0001pL-II
- for qemu-devel@nongnu.org; Thu, 09 Feb 2023 04:43:48 -0500
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1pQCu6-0005vN-0f
+ for qemu-arm@nongnu.org; Thu, 09 Feb 2023 14:48:23 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pQ3Sz-0000IE-Qh
- for qemu-devel@nongnu.org; Thu, 09 Feb 2023 04:43:48 -0500
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1pQCu4-0004ku-3k
+ for qemu-arm@nongnu.org; Thu, 09 Feb 2023 14:48:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675935825;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ s=mimecast20190719; t=1675972098;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=MWtLfqresRJkSR+Kcb+oiHNBguaF8+Ha78+fV2jhMGU=;
- b=dN84PUvgfFDRFFLENocl8VFwy1lwuIQS+PDftizyGuj4cLTUgqtgnwHsLJKzguaZHHZtiR
- /KRI8K3021IcCNSjUqNscRfRIDEiQCgdqvML/nTReT5OrcwStLbPiSka2tw4P/DMEyuf2l
- XgP9xg/zqpVPtPYYdvYvkHAQcIaqlOM=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-433-zkef0L5cMZWw_D7J0fYyoQ-1; Thu, 09 Feb 2023 04:43:42 -0500
-X-MC-Unique: zkef0L5cMZWw_D7J0fYyoQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8FCF085CCE0;
- Thu,  9 Feb 2023 09:43:41 +0000 (UTC)
-Received: from [10.64.54.63] (vpn2-54-63.bne.redhat.com [10.64.54.63])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BC10518EC5;
- Thu,  9 Feb 2023 09:43:36 +0000 (UTC)
-Subject: Re: [PATCH RFCv1 6/8] kvm: Add helper kvm_dirty_ring_init()
-To: quintela@redhat.com
+ bh=49k5dHSfFHAuH+GfZp3woB7SltOb5x6HuuT9s9fP7AQ=;
+ b=KJNwx0q/LPLDuy5KzfBWGVJPEbZ7tAC5/A8zOcxNtZV8CedOF30cWZE+FS97I8K5WkBaAw
+ EO2SziBT2TYlY/DCC2UkMvTWsq0x1aqq2sJGDvWHb2mOZbfFOzvkIcMnMm/4a3M9x7aPYN
+ Ln3oA1u9aShhY1G+5+t+/DMp+zJgN7c=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-245-mAoYx3QMNbeu-xJTozOgSg-1; Thu, 09 Feb 2023 14:48:17 -0500
+X-MC-Unique: mAoYx3QMNbeu-xJTozOgSg-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ s7-20020a05620a0bc700b006e08208eb31so1936301qki.3
+ for <qemu-arm@nongnu.org>; Thu, 09 Feb 2023 11:48:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=49k5dHSfFHAuH+GfZp3woB7SltOb5x6HuuT9s9fP7AQ=;
+ b=IHNWX5asrPfIgOc6lUPtf/g1++XZy9xoU1AvUoHd85B4apJO/lYBIBoRcdVp3/kVI6
+ B6fh7K4+ikpwFqeQo3QKGgx84PAWeB6ruYyKXfcZ73R7RUlJjFPabCMzShmdTtjlU51j
+ N9T17Qw2cUeN9j3NpgOoovM8IG9e4+iNM4Fq86R2YEWxJvUBUAd+X4J5MpZdOBpNjjlK
+ kNMVOkRv+fxTluTn88e3/ps4ZueA5npL3Nhzc1yvT9fI+qCDjXgcg6WcLqMx31M0qMfi
+ XrqmMQ0LuF37l17KhbfqSaoOypClm/uNk8PPYv9AzB00IXpqATaL9CPF9O3qxQH4ibOA
+ KGUQ==
+X-Gm-Message-State: AO0yUKVSpd5j7/nPJfq/krBWm/rhCH8sp1j0BdYa7vPYxP8sPdJfv2P3
+ 2RmqpMi8XkyzkNQ5bPCDtQf8e7GwtVV2diOXBbMxDDXyVUnEWYyD03/enGOgYgtyCy2BLXewo0n
+ PpNkNtsN5BWdF
+X-Received: by 2002:ac8:4e8d:0:b0:3ba:1ace:8bae with SMTP id
+ 13-20020ac84e8d000000b003ba1ace8baemr22355152qtp.0.1675972096499; 
+ Thu, 09 Feb 2023 11:48:16 -0800 (PST)
+X-Received: by 2002:ac8:4e8d:0:b0:3ba:1ace:8bae with SMTP id
+ 13-20020ac84e8d000000b003ba1ace8baemr22355117qtp.0.1675972096257; 
+ Thu, 09 Feb 2023 11:48:16 -0800 (PST)
+Received: from x1n (bras-base-aurron9127w-grc-56-70-30-145-63.dsl.bell.ca.
+ [70.30.145.63]) by smtp.gmail.com with ESMTPSA id
+ e6-20020ac81306000000b003b8484fdfccsm1879077qtj.42.2023.02.09.11.48.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 09 Feb 2023 11:48:15 -0800 (PST)
+Date: Thu, 9 Feb 2023 14:48:14 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com,
- peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
- philmd@linaro.org, mst@redhat.com, cohuck@redhat.com, dgilbert@redhat.com,
- maz@kernel.org, zhenyzha@redhat.com, shan.gavin@gmail.com
+ peter.maydell@linaro.org, david@redhat.com, philmd@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, quintela@redhat.com,
+ dgilbert@redhat.com, maz@kernel.org, zhenyzha@redhat.com,
+ shan.gavin@gmail.com
+Subject: Re: [PATCH RFCv1 2/8] memory: Add last stage indicator to global
+ dirty log synchronization
+Message-ID: <Y+VN/vWvdO2IxL3C@x1n>
 References: <20230206112010.99871-1-gshan@redhat.com>
- <20230206112010.99871-7-gshan@redhat.com> <87bkm39592.fsf@secure.mitica>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <2c41f643-3a49-962f-db5e-bb325fcb00fb@redhat.com>
-Date: Thu, 9 Feb 2023 20:43:34 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ <20230206112010.99871-3-gshan@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87bkm39592.fsf@secure.mitica>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+In-Reply-To: <20230206112010.99871-3-gshan@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.146, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wFdeHAbByxkl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lRp23vjZHdvP
 
-On 2/9/23 9:11 AM, Juan Quintela wrote:
-> Gavin Shan <gshan@redhat.com> wrote:
->> Due to multiple capabilities associated with the dirty ring for different
->> architectures: KVM_CAP_DIRTY_{LOG_RING, LOG_RING_ACQ_REL} for x86 and
->> arm64 separately. There will be more to be done in order to support the
->> dirty ring for arm64.
->>
->> Lets add helper kvm_dirty_ring_init() to enable the dirty ring. With this,
->> the code looks a bit clean.
->>
->> No functional change intended.
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   accel/kvm/kvm-all.c | 73 ++++++++++++++++++++++++++++-----------------
->>   1 file changed, 46 insertions(+), 27 deletions(-)
->>
->> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
->> index 9ec117c441..399ef0f7e6 100644
->> --- a/accel/kvm/kvm-all.c
->> +++ b/accel/kvm/kvm-all.c
->> @@ -1476,6 +1476,49 @@ static int kvm_dirty_ring_reaper_init(KVMState *s)
->>       return 0;
->>   }
->>   
->> +static int kvm_dirty_ring_init(KVMState *s)
->> +{
->> +    uint64_t ring_bytes;
->> +    int ret;
->> +
->> +    /*
->> +     * Read the max supported pages. Fall back to dirty logging mode
->> +     * if the dirty ring isn't supported.
->> +     */
->> +    ret = kvm_vm_check_extension(s, KVM_CAP_DIRTY_LOG_RING);
->> +    if (ret <= 0) {
->> +        warn_report("KVM dirty ring not available, using bitmap method");
->> +        s->kvm_dirty_ring_size = 0;
->> +        return 0;
->> +    }
->> +
->> +    ring_bytes = s->kvm_dirty_ring_size * sizeof(struct kvm_dirty_gfn);
->> +    if (ring_bytes > ret) {
->> +        error_report("KVM dirty ring size %" PRIu32 " too big "
->> +                     "(maximum is %ld).  Please use a smaller value.",
->> +                     s->kvm_dirty_ring_size,
->> +                     (long)ret / sizeof(struct kvm_dirty_gfn));
->> +        ret = -EINVAL;
->> +        goto out;
->> +    }
->> +
->> +    ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING, 0, ring_bytes);
->> +    if (ret) {
->> +        error_report("Enabling of KVM dirty ring failed: %s. "
->> +                     "Suggested minimum value is 1024.", strerror(-ret));
->> +        ret = -EIO;
->> +    }
->> +
->> +out:
->> +    if (ret) {
->> +        s->kvm_dirty_ring_size = 0;
->> +    } else {
->> +        s->kvm_dirty_ring_bytes = ring_bytes;
->> +    }
->> +
->> +    return ret;
->> +}
+On Mon, Feb 06, 2023 at 07:20:04PM +0800, Gavin Shan wrote:
+> The global dirty log synchronization is used when KVM and dirty ring
+> are enabled. There is a particularity for ARM64 where the backup
+> bitmap is used to track dirty pages in non-running-vcpu situations.
+> It means the dirty ring works with the combination of ring buffer
+> and backup bitmap. The dirty bits in the backup bitmap needs to
+> collected in the last stage of live migration.
 > 
-> If you split it, you don't need the goto.
+> In order to identify the last stage of live migration and pass it
+> down, an extra parameter is added to the relevant functions and
+> callback. This last stage information isn't used yet.
 > 
-> static int kvm_dirty_ring_init(KVMState *s)
-> {
->      s->kvm_dirty_ring_size = 0;
->      /*
->       * Read the max supported pages. Fall back to dirty logging mode
->       * if the dirty ring isn't supported.
->       */
->      int ret = kvm_vm_check_extension(s, KVM_CAP_DIRTY_LOG_RING);
->      if (ret <= 0) {
->          warn_report("KVM dirty ring not available, using bitmap method");
->          return 0;
->      }
+> No functional change intended.
 > 
->      uint64_t ring_bytes = s->kvm_dirty_ring_size * sizeof(struct kvm_dirty_gfn);
->      if (ring_bytes > ret) {
->          error_report("KVM dirty ring size %" PRIu32 " too big "
->                       "(maximum is %ld).  Please use a smaller value.",
->                       s->kvm_dirty_ring_size,
->                       (long)ret / sizeof(struct kvm_dirty_gfn));
->          return -EINVAL;
->      }
-> 
->      ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING, 0, ring_bytes);
->      if (ret) {
->          error_report("Enabling of KVM dirty ring failed: %s. "
->                       "Suggested minimum value is 1024.", strerror(-ret));
->          return -EIO;
->      }
-> 
->      s->kvm_dirty_ring_bytes = ring_bytes;
->      return ret;
-> }
-> 
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+>  accel/kvm/kvm-all.c   |  2 +-
+>  include/exec/memory.h |  5 +++--
+>  migration/dirtyrate.c |  4 ++--
+>  migration/ram.c       |  6 +++---
 
-Ok, thanks for your review. The goto will be removed in next revision.
+Better move the migration/ changes into the next patch.
 
-> 
-> 
->> +
->>   static void kvm_region_add(MemoryListener *listener,
->>                              MemoryRegionSection *section)
->>   {
->> @@ -2545,33 +2588,9 @@ static int kvm_init(MachineState *ms)
->>        * dirty logging mode
->>        */
->>       if (s->kvm_dirty_ring_size > 0) {
->> -        uint64_t ring_bytes;
->> -
->> -        ring_bytes = s->kvm_dirty_ring_size * sizeof(struct kvm_dirty_gfn);
->> -
->> -        /* Read the max supported pages */
->> -        ret = kvm_vm_check_extension(s, KVM_CAP_DIRTY_LOG_RING);
->> -        if (ret > 0) {
->> -            if (ring_bytes > ret) {
->> -                error_report("KVM dirty ring size %" PRIu32 " too big "
->> -                             "(maximum is %ld).  Please use a smaller value.",
->> -                             s->kvm_dirty_ring_size,
->> -                             (long)ret / sizeof(struct kvm_dirty_gfn));
->> -                ret = -EINVAL;
->> -                goto err;
->> -            }
->> -
->> -            ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING, 0, ring_bytes);
->> -            if (ret) {
->> -                error_report("Enabling of KVM dirty ring failed: %s. "
->> -                             "Suggested minimum value is 1024.", strerror(-ret));
->> -                goto err;
->> -            }
->> -
->> -            s->kvm_dirty_ring_bytes = ring_bytes;
->> -         } else {
->> -             warn_report("KVM dirty ring not available, using bitmap method");
->> -             s->kvm_dirty_ring_size = 0;
->> +        ret = kvm_dirty_ring_init(s);
->> +        if (ret < 0) {
->> +            goto err;
->>           }
->>       }
-> 
 Thanks,
-Gavin
+
+-- 
+Peter Xu
 

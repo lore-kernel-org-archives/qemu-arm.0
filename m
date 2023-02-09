@@ -1,109 +1,116 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp129858ejb;
-        Wed, 8 Feb 2023 15:49:57 -0800 (PST)
-X-Google-Smtp-Source: AK7set/RGH+1cuElgL0YL3S33VX3lBMy4FlFYPiF7pMWd+Ciyb0qtoJJpEiRzrFfsdj7L5L8NSQd
-X-Received: by 2002:a05:6214:1d24:b0:56b:f308:caab with SMTP id f4-20020a0562141d2400b0056bf308caabmr16724413qvd.13.1675900197160;
-        Wed, 08 Feb 2023 15:49:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675900197; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp463828ejb;
+        Wed, 8 Feb 2023 23:17:58 -0800 (PST)
+X-Google-Smtp-Source: AK7set92RblYfeigA7ENJ0Ex6TaegCC4PoPPQw8aNn6m4Hyepj454XAdivlkfpgBXrhmmDa8+OIW
+X-Received: by 2002:a05:6214:5013:b0:56b:ed80:6bec with SMTP id jo19-20020a056214501300b0056bed806becmr18842789qvb.20.1675927078147;
+        Wed, 08 Feb 2023 23:17:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675927078; cv=none;
         d=google.com; s=arc-20160816;
-        b=OvIXLOhMSIwAIxbYNEcxt5Rw7Fy/tmalFrtyuOWYQG8AqY1UQEC8viFumYhPjy3v5H
-         QpE6yrRaJTz7Dhy+z71RNcJxf/tDaeGaQbr4MzfXNc2VIxp+qWXDPXc882Jj0cjKN6TT
-         wGVR/E+6yVSwQ1rzuiKjjUfiscGNXso2MLpk9GhhFWqFSQ7AtGYh+bgrVyhrszpC0676
-         3bHL59HSfP06ub52Xm6MtSigwUJ/YhGVyETv4t1D/UJp/E3hok94jhALWFSeGWnFpJe2
-         L1/rmxFCPakoX4UrGVe77IixqcZxXty/lOsWWjE3HZFoDy5lfKS/x4LckZTH4hxzYmPu
-         da4g==
+        b=VfFDNkkZBgeBt429nnPAjJ0UaJv/EH5Ny1Ye1JNza9CLGfK9dJdq2csVFQlJXfNWcN
+         1ss5CmmmWhgPcjngD5DVXSqZCOn8Jo4KJ9kyeJ8S2EQrKfdK7Mb+FGwWC9SxQkphISJX
+         hkDxQk874t0YLryMiz6FogFEEPSnS8TA8Q8cijMlKUA4DxswaqfXc+pNK65QbVuoD97b
+         fvJpkU0feP9MsjKpTx2hUJyUnzhc0GLR1Ry/n/4IydYxehJMzNGJjirt2GESB50te+8F
+         vgdksC0+6PcGoKTqfbXGUPHBXRdRlKZqw7PTlJFh155Fry9d3kmfe40WLDu3xORC018L
+         ooaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=w0hQq1ySmzPc8UBWIB1gi+7WRd42sqo+KtTWeK4Fxfk=;
-        b=DfJnLWQiDoWelSAH7hwXbV7AfgVI71dgDl8w8i9gep9pVqCh3PPTmvk3t7R9WEYYjF
-         9uS2cw6UsuuRtj4eOm0l3R1ta/YHnZRoJW3iqq4mwUtyTYQkhj7hn9KTzi10Pg49RTnd
-         Tq9rq/U5gFDGuMLX1sNH3vZy47ZddygE6URKKzKvgNwVaNVjccp+pMpRjy8nEato7hY1
-         UZ7RhnESsLpH4tV1bbJEASxj9oE0Qo/19eUvWC/H6p+J5E46q1lz8ps8u5nl5jS1ZvU7
-         IAXcdvpu9h95r2orxO1uqZdreJosLehAxh2+TObV/eoEIVtueOimbbgIF2y3s4kwwrxB
-         B00w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=tbbPjDnPudgU1eF55ucotaUlTyYhWOp9K1zYbcU8oc0=;
+        b=jqjWxfejEgU3b2IXk08Y4NYRgQ2ESZpJznNW6mwevSwj9WyO/7dZF+gZy64fTi0540
+         dOnmekTsR8pe2UB0Ra1NtvsY3SOXlkMhHrKHu0ogO0L1t1aihYiwFJTmHdB5geA3iJzo
+         GisEmAxasy8e6uQtH6URW/imehdZLB3k5rqHr+KKfpb2Q61UsEXMGaZYN3tnRjzfYnvh
+         yo3hE+GJuPf687gbpBuZLhzaMKDIvKvYq3Lc7afz1KLC60VaPdy0NEJPM8FMYY4uOQMq
+         ggzQQIebisF76B61CZBk0Z4pXaJgMoxUFc2WoEvuLMfjFkEkXv+8ZbOfyjRnKqZ5VrTp
+         pc/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=TSUodEpX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bzQ+6tCv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a27-20020a0cb35b000000b0056bf0a34009si94432qvf.142.2023.02.08.15.49.56
+        by mx.google.com with ESMTPS id dm30-20020a05620a1d5e00b0073321bd11f6si1023782qkb.306.2023.02.08.23.17.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Feb 2023 15:49:57 -0800 (PST)
+        Wed, 08 Feb 2023 23:17:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=TSUodEpX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bzQ+6tCv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pPuC6-0001MG-9U; Wed, 08 Feb 2023 18:49:42 -0500
+	id 1pQ1Bg-0002vA-Ru; Thu, 09 Feb 2023 02:17:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1pPuC5-0001Lb-C7
- for qemu-arm@nongnu.org; Wed, 08 Feb 2023 18:49:41 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pQ1BS-0002sM-Pp
+ for qemu-arm@nongnu.org; Thu, 09 Feb 2023 02:17:32 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1pPuC3-0001rn-Eo
- for qemu-arm@nongnu.org; Wed, 08 Feb 2023 18:49:41 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id d14so159089wrr.9
- for <qemu-arm@nongnu.org>; Wed, 08 Feb 2023 15:49:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=w0hQq1ySmzPc8UBWIB1gi+7WRd42sqo+KtTWeK4Fxfk=;
- b=TSUodEpXRKylu/j+boTTg445LVEt1Ms6wg9DJFF0S6Ap/bZz1m08RtznNwxA+Epn+A
- dkC0N8bskz0bZNknh0qR4DWhYAYgn0UIoSW/xx1P7GD6jXtJgcsc3gGvVwIFWjXjlbVN
- lmPivKYYxc1w1N/OrSM3zDhj7Fnb6aD3CW460YEfSWMhE3T2EjRjfpJAFOLXVXuki1+w
- FM5LnmQsNvhhMweLfwAFVDnoYSvRsxBI0zQt1S7Vf50dbXER7if7V4JcvLk0yiKVip49
- bG8ceMKMHr2t+Wgtdt7H7nwetjB+n3JL7BIkuCyDoA0cKv0ORqGIIFiVFi7PX8qE2rWQ
- tpwQ==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pQ1BR-0008Fn-5I
+ for qemu-arm@nongnu.org; Thu, 09 Feb 2023 02:17:30 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id r2so788161wrv.7
+ for <qemu-arm@nongnu.org>; Wed, 08 Feb 2023 23:17:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=tbbPjDnPudgU1eF55ucotaUlTyYhWOp9K1zYbcU8oc0=;
+ b=bzQ+6tCvcqkCZ9gO0jBBCZ+kk6uMXObFuidSSx/94OiNYYBy271TbOfWY/Ayyy01hn
+ US5Si3OiPIG49IGrBN+WZjcEfWBrBEdWimSWF0xQEoyZtTYn0D7ScUkSrJRqjqAo9vdJ
+ 5rlODSQoD8QHGCp11fWCWcKd7wNvJhZiMlcpDmBX1J1owg3vJ6SdwHRVs4CW5FU6euBB
+ Omm3YthlffCQzV0rE9g8GwuEe0GjZGypWYp/ntebpaFOokEzttApuUhmB1AGvLR4wcIj
+ YuZ6vVeMvrG1CPZUTH1MwPRkFF6gHpYt/FoiIfayXICjlisA/XemGTaa3Z4u7ustqBY/
+ XfxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=w0hQq1ySmzPc8UBWIB1gi+7WRd42sqo+KtTWeK4Fxfk=;
- b=5/H70hu/rk3kbHVFzIJllU+vp73EnFExC2OhsuoSgaIujJOEbIHXQcwJCQWarFJZay
- dDEhfYVbCq8I2ou3z/ktJ/qZjQpt7jA9RoMPGuXSHQZspGX9zdXxa0wHjTQRvhRCI4BB
- DCZ3tMBPPSyCuvgJFyaHGKV7nhCAewHKMPggok7P4gcILTv1eePfdQ8iFoT0Y7Pg9bCO
- /DDEyQFS6x7Ien294eDYQviz8p2WZyyCGdCyl2eMc9ECfEo7CghMDbQlz7AMWt7g4cS1
- H6DGOamkmqRxppbVyZnvpgPsl/K84yVVAet+I5eIeukzz/np59bnGxK8CgeZSPfEuPpb
- mGww==
-X-Gm-Message-State: AO0yUKVdXdb/1n69MO2E1NgaKBbI6jICNvNuJnt8JiFV5Op8u+78SifY
- HlvP6hvTLwlrr1pOmNUvXw8y/ll8pMf56Mm/FdZegw==
-X-Received: by 2002:a05:6000:50e:b0:2c3:e35a:19cd with SMTP id
- a14-20020a056000050e00b002c3e35a19cdmr213309wrf.364.1675900176386; Wed, 08
- Feb 2023 15:49:36 -0800 (PST)
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=tbbPjDnPudgU1eF55ucotaUlTyYhWOp9K1zYbcU8oc0=;
+ b=BR5O88GxyAVro8IQ68gbrqjQpzEhBTovQHya5WB6f/2VMOlxIthye8TefR5v1n3kCH
+ 5dGlkwR+VLufEa4MMFsJf6kk7yTjpYozgbYDDs/cnzayqNLZi5AOU32wJNFvYQVqnqwp
+ 2PMptuEmp1o/XLprR/aS1hkoXFfILIVJ5EUDxqzfeF5RS76g1aIv4vTf2cwFI2obhL6D
+ gmITOITMJ1oy4i3zw+D4PLCkZobbgVjP+zqQiZNp/zxcr1EE+EjLw70E/KSVj7QjHD1J
+ hiaFwWVPrNevHrSr8xiCufcE9gtRj4zm5B2WxRzGinQh6eYQsDPsnZA6fZ1B1e4kDxR1
+ x7aQ==
+X-Gm-Message-State: AO0yUKW2PPpGAUfZH2qIyLL6ELhpqVyb1xbb1IP62AbXezWeqOdwN/Ka
+ jz4Nhz8TcgXIBcUeINxtVdimZg==
+X-Received: by 2002:adf:f287:0:b0:2c5:3d1c:efda with SMTP id
+ k7-20020adff287000000b002c53d1cefdamr258774wro.31.1675927045297; 
+ Wed, 08 Feb 2023 23:17:25 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ c63-20020a1c3542000000b003df14531724sm4186729wma.21.2023.02.08.23.17.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Feb 2023 23:17:24 -0800 (PST)
+Message-ID: <08bdc197-7f4e-7fa4-05d5-d05934662dbe@linaro.org>
+Date: Thu, 9 Feb 2023 08:17:23 +0100
 MIME-Version: 1.0
-References: <20230207194556.3262708-1-wuhaotsh@google.com>
- <20230207194556.3262708-3-wuhaotsh@google.com>
- <ce5472bb-253b-5b8b-7a79-dbd6717af16b@linaro.org>
-In-Reply-To: <ce5472bb-253b-5b8b-7a79-dbd6717af16b@linaro.org>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Wed, 8 Feb 2023 15:49:23 -0800
-Message-ID: <CAGcCb13DQS2YQasMDMBj=iiQxnV6=fOgt7YUkff3A9s7fCs-ag@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] hw/ssi: Add Nuvoton PSPI Module
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com, titusr@google.com, Chris Rauer <crauer@google.com>
-Content-Type: multipart/alternative; boundary="000000000000b1e24405f438ea77"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=wuhaotsh@google.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.7.2
+Subject: Re: [PATCH 1/3] hw/gpio: add PCA6414 i2c GPIO expander
+Content-Language: en-US
+To: Titus Rwantare <titusr@google.com>, Thomas Huth <thuth@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Hao Wu <wuhaotsh@google.com>
+References: <20230206194936.168843-1-titusr@google.com>
+ <20230206194936.168843-2-titusr@google.com>
+ <3863220f-08b2-6cf2-20e7-eb67691d525b@linaro.org>
+ <CAMvPwGqsB3vMRhdMLiBJs51Xhy7izQ_wVUWu6UfL=8Q2UGHmLA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <CAMvPwGqsB3vMRhdMLiBJs51Xhy7izQ_wVUWu6UfL=8Q2UGHmLA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.146,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,116 +125,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BnlPWOBZ1n5e
+X-TUID: Z1bitapULsUD
 
---000000000000b1e24405f438ea77
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 8/2/23 23:40, Titus Rwantare wrote:
+> On Mon, 6 Feb 2023 at 13:38, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> Hi Titus,
+>>
+>> On 6/2/23 20:49, Titus Rwantare wrote:
+>>> This is a simple i2c device that allows i2c capable devices to have
+>>> GPIOs.
+>>>
+>>> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+>>> Signed-off-by: Titus Rwantare <titusr@google.com>
+>>> ---
+>>>    hw/arm/Kconfig                  |   1 +
+>>>    hw/gpio/meson.build             |   1 +
+>>>    hw/gpio/pca_i2c_gpio.c          | 362 ++++++++++++++++++++++++++++++++
+>>>    hw/gpio/trace-events            |   5 +
+>>>    hw/i2c/Kconfig                  |   4 +
+>>>    include/hw/gpio/pca_i2c_gpio.h  |  72 +++++++
+>>>    tests/qtest/meson.build         |   1 +
+>>>    tests/qtest/pca_i2c_gpio-test.c | 169 +++++++++++++++
+>>>    8 files changed, 615 insertions(+)
+>>>    create mode 100644 hw/gpio/pca_i2c_gpio.c
+>>>    create mode 100644 include/hw/gpio/pca_i2c_gpio.h
+>>>    create mode 100644 tests/qtest/pca_i2c_gpio-test.c
 
-Thanks for pointing that out. I'll send another version to fix that.
+>>> +#define PCA6416_INPUT_PORT_0                 0x00 /* read */
+>>> +#define PCA6416_INPUT_PORT_1                 0x01 /* read */
+>>> +#define PCA6416_OUTPUT_PORT_0                0x02 /* read/write */
+>>> +#define PCA6416_OUTPUT_PORT_1                0x03 /* read/write */
+>>> +#define PCA6416_POLARITY_INVERSION_PORT_0    0x04 /* read/write */
+>>> +#define PCA6416_POLARITY_INVERSION_PORT_1    0x05 /* read/write */
+>>> +#define PCA6416_CONFIGURATION_PORT_0         0x06 /* read/write */
+>>> +#define PCA6416_CONFIGURATION_PORT_1         0x07 /* read/write */
+>>> +
+>>> +#define PCA6416_OUTPUT_DEFAULT               0xFFFF
+>>> +#define PCA6416_CONFIG_DEFAULT               0xFFFF
+>>> +
+>>> +#define PCA_I2C_OUTPUT_DEFAULT               0xFFFF
+>>> +#define PCA_I2C_CONFIG_DEFAULT               0xFFFF
+>>
+>> (These register definitions could be kept internal in pca_i2c_gpio.c).
+> 
+> I put these here to use them in the qtests.
 
-On Tue, Feb 7, 2023 at 11:48 PM Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
-org>
-wrote:
+Oh right, I missed that.
 
-> On 7/2/23 20:45, Hao Wu wrote:
-> > Nuvoton's PSPI is a general purpose SPI module which enables
-> > connections to SPI-based peripheral devices.
-> >
-> > Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> > Reviewed-by: Chris Rauer <crauer@google.com>
-> > Reviewed-by: Philippe Mathieu-Daude <philmd@linaro.org>
-> > ---
-> >   MAINTAINERS                |   6 +-
-> >   hw/ssi/meson.build         |   2 +-
-> >   hw/ssi/npcm_pspi.c         | 221 ++++++++++++++++++++++++++++++++++++=
-+
-> >   hw/ssi/trace-events        |   5 +
-> >   include/hw/ssi/npcm_pspi.h |  53 +++++++++
-> >   5 files changed, 283 insertions(+), 4 deletions(-)
-> >   create mode 100644 hw/ssi/npcm_pspi.c
-> >   create mode 100644 include/hw/ssi/npcm_pspi.h
->
->
-> > +static const MemoryRegionOps npcm_pspi_ctrl_ops =3D {
-> > +    .read =3D npcm_pspi_ctrl_read,
-> > +    .write =3D npcm_pspi_ctrl_write,
-> > +    .endianness =3D DEVICE_LITTLE_ENDIAN,
-> > +    .valid =3D {
-> > +        .min_access_size =3D 1,
-> > +        .max_access_size =3D 4,
->
-> You said in v1 "The datasheet suggests it's either 8-bit or
-> 16-bit accesses.", so we want max_access_size =3D 2 here, right?
->
-> > +        .unaligned =3D false,
-> > +    },
-> > +    .impl =3D {
-> > +        .min_access_size =3D 2,
-> > +        .max_access_size =3D 2,
-> > +        .unaligned =3D false,
-> > +    },
-> > +};
->
->
->
-
---000000000000b1e24405f438ea77
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Thanks for pointing that out. I&#39;ll send another versio=
-n to fix that.</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
-=3D"gmail_attr">On Tue, Feb 7, 2023 at 11:48 PM Philippe Mathieu-Daud=C3=A9=
- &lt;<a href=3D"mailto:philmd@linaro.org">philmd@linaro.org</a>&gt; wrote:<=
-br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 7/2/23 20:45,=
- Hao Wu wrote:<br>
-&gt; Nuvoton&#39;s PSPI is a general purpose SPI module which enables<br>
-&gt; connections to SPI-based peripheral devices.<br>
-&gt; <br>
-&gt; Signed-off-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" targe=
-t=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
-&gt; Reviewed-by: Chris Rauer &lt;<a href=3D"mailto:crauer@google.com" targ=
-et=3D"_blank">crauer@google.com</a>&gt;<br>
-&gt; Reviewed-by: Philippe Mathieu-Daude &lt;<a href=3D"mailto:philmd@linar=
-o.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 |=C2=A0 =C2=A06 +-<br>
-&gt;=C2=A0 =C2=A0hw/ssi/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
-=A0 =C2=A02 +-<br>
-&gt;=C2=A0 =C2=A0hw/ssi/npcm_pspi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 221 =
-+++++++++++++++++++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A0hw/ssi/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=
-=A05 +<br>
-&gt;=C2=A0 =C2=A0include/hw/ssi/npcm_pspi.h |=C2=A0 53 +++++++++<br>
-&gt;=C2=A0 =C2=A05 files changed, 283 insertions(+), 4 deletions(-)<br>
-&gt;=C2=A0 =C2=A0create mode 100644 hw/ssi/npcm_pspi.c<br>
-&gt;=C2=A0 =C2=A0create mode 100644 include/hw/ssi/npcm_pspi.h<br>
-<br>
-<br>
-&gt; +static const MemoryRegionOps npcm_pspi_ctrl_ops =3D {<br>
-&gt; +=C2=A0 =C2=A0 .read =3D npcm_pspi_ctrl_read,<br>
-&gt; +=C2=A0 =C2=A0 .write =3D npcm_pspi_ctrl_write,<br>
-&gt; +=C2=A0 =C2=A0 .endianness =3D DEVICE_LITTLE_ENDIAN,<br>
-&gt; +=C2=A0 =C2=A0 .valid =3D {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .min_access_size =3D 1,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .max_access_size =3D 4,<br>
-<br>
-You said in v1 &quot;The datasheet suggests it&#39;s either 8-bit or<br>
-16-bit accesses.&quot;, so we want max_access_size =3D 2 here, right?<br>
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .unaligned =3D false,<br>
-&gt; +=C2=A0 =C2=A0 },<br>
-&gt; +=C2=A0 =C2=A0 .impl =3D {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .min_access_size =3D 2,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .max_access_size =3D 2,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .unaligned =3D false,<br>
-&gt; +=C2=A0 =C2=A0 },<br>
-&gt; +};<br>
-<br>
-<br>
-</blockquote></div>
-
---000000000000b1e24405f438ea77--
+>>> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+>>> index e97616d327..49f406af6b 100644
+>>> --- a/tests/qtest/meson.build
+>>> +++ b/tests/qtest/meson.build
+>>> @@ -241,6 +241,7 @@ qos_test_ss.add(
+>>>      'ne2000-test.c',
+>>>      'tulip-test.c',
+>>>      'nvme-test.c',
+>>> +  'pca_i2c_gpio-test.c',
+>>
+>> Should this be conditional to
+>> config_all_devices.has_key('CONFIG_PCA_I2C_GPIO')?
+> 
+> Is that the guidance for qos tests? All these tests would also need to
+> be separated out.
+This is not clear to me, adding Thomas.

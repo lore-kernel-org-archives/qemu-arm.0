@@ -1,110 +1,107 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1867164ejb;
-        Fri, 10 Feb 2023 05:43:50 -0800 (PST)
-X-Google-Smtp-Source: AK7set+zHmRGVv2xDWTZexZUhf0pnYXKCDqEatsiVJMKfewbqP3hP8FYTPP6VHEJsUOhUH51BIwx
-X-Received: by 2002:ac8:5e08:0:b0:3b9:beca:8d8b with SMTP id h8-20020ac85e08000000b003b9beca8d8bmr24917272qtx.28.1676036629799;
-        Fri, 10 Feb 2023 05:43:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676036629; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1762074ejb;
+        Fri, 10 Feb 2023 03:37:28 -0800 (PST)
+X-Google-Smtp-Source: AK7set+lxfEAH5z6OJOzg68ehWDBYh+CWDDiky+J3UhE2+QHN/sABIhU56Wobh8Orei5zlwXEnlI
+X-Received: by 2002:ac8:5aca:0:b0:3b8:2ea9:a08d with SMTP id d10-20020ac85aca000000b003b82ea9a08dmr26996457qtd.52.1676029048775;
+        Fri, 10 Feb 2023 03:37:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676029048; cv=none;
         d=google.com; s=arc-20160816;
-        b=nmnboT3F1302atScBvDMuA3ES0qolOPL7EfIjYfpJAOnWGO9GTzUrdf88ImKE88BJC
-         srKq2WEtX6oKQq/QujikLBAHfJ9/v1USueNMD2wWDQtCLSijg8/3WzCNdRBGrVKKveUP
-         V3dFh1phstDYy5PXXhOJpR1ezmGcOpfaNIVZQ5d5qvIT5+1Ad2MadvaO1KM4vtt5wBak
-         19Zjdd4T6mc/SaZ5uSHLwsUuc+oIM8woID5KJpFWP9hE6J7s2+W36vYe3fvlM33Lfnze
-         V/ZB3I3Gwyh5Tj0B6Hjf6+FXZHSbDG++9O9Wa5vXXVFX7O6zS/eUDLRDmeKaLVKrsbBa
-         HdfQ==
+        b=sf1G3XU/JVOK23RstfxQ/UwAXUZbj1FrwKvrGNekyojtWX8Wp9czTfC6yoGZ1BXm3y
+         LlajGiocHEy7ba1Zle4bETYk6Vo2qcxJt7dZb5F6uXkGmc7PsBtsXN1kMyDRLSXQmvmC
+         hK9vZ3A7jFaLQwZpuqkcwmCZKvPXcihpOy2i4b432A3/XXxs3nrHU2LSFcDJ2HFYfocm
+         L7QDS2T8HjP+CapIe7wbMPuhcy8IMeBEuzUi5j6Tlq0JElLHBSrr15f2S5J+Dv5OiopL
+         YQY4JX2+b+IM+yo9808ov/IfBNel8dvmKzYYyNhQcsOOAZ+R7h5N/O3ttOJ32urUroLr
+         MqSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8L7H/6QJCXJg3ajtUMRvItZ/TPKzQzJOf82w8gkPTbs=;
-        b=PrUljoJyyAwuXYye4H2nODvSqbe4X02/lVfl5xFOdFqBIr7CvsIYAmbiOuHcqkOO+q
-         1X8wX4fKNwf9n90hH5pGP68U4o+tU9kmgN5hXLa7nrDyIt2sBq8ltdPv3lM1TyhyrL16
-         6sEBte6ClrxJyWDCk0VdlaNOPbNeOHAVXyw+sgfLIEfLrBj8ye1zsnSSmIPrE+Zz0k3w
-         eNTnHaIRbX2Fmk6RzbMTyFJHfJZKiiZJ5uYVtjl0XAotUYPM0FhqRdKdFX5NYXwRfr1r
-         N+fUT6lkJpmZq5VD/7WqIkv5qy3msyGSZEPYlyE3FkecICltQDWAGbvN+Hn3vR1zeJMR
-         RIcA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=ip7UkIHts0+zQA/dQ3VZu7KHBdu0EYIXCjbxhc6k/5A=;
+        b=ZwvTg+zRaE1Pgk5SRPI3h+1fZC06NUNQB2aqYPk2TtJy8Uj5y8D8ibmON7dqe6PoEO
+         Dh6MGaJD4HhfuetdSXVCCHjw6U3ux2PY4luZCfKYTYF64IZiqwG3vG1kqF3YjfKd1B0E
+         6AGtgBFrx8AyJP2BNqdEIBM5C5yuxysHTcRaBYw8lRC1SAxQMnKsrzOeKjAlz8NIJTqn
+         3g2TUEvCvanfoZ36ToV4pqBMowuC7a8D+kyhSW2E37zXn7QpEhgroWCQPhNsKsd6BxPV
+         mPXJO9bvn9hQ4VKTLVkjA0Oikev76t3wMCdXnHRN2EYlFv4fMf4O7jWuR4+NqSpSI90C
+         1D0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Vt5YUPeB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bAyjyQCk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1-20020a05620a298100b007339c51143dsi4017466qkp.697.2023.02.10.05.43.49
+        by mx.google.com with ESMTPS id v21-20020a05622a145500b003b86a41c347si3586233qtx.160.2023.02.10.03.37.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Feb 2023 05:43:49 -0800 (PST)
+        Fri, 10 Feb 2023 03:37:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Vt5YUPeB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bAyjyQCk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pQTgT-0007ek-Bm; Fri, 10 Feb 2023 08:43:25 -0500
+	id 1pQRi3-0006zV-Gb; Fri, 10 Feb 2023 06:36:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
- id 1pQSVP-0000Vo-Ic; Fri, 10 Feb 2023 07:27:55 -0500
-Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pQRi2-0006zE-Rn
+ for qemu-arm@nongnu.org; Fri, 10 Feb 2023 06:36:54 -0500
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
- id 1pQSVO-0001Xl-1l; Fri, 10 Feb 2023 07:27:55 -0500
-Received: by mail-io1-xd2a.google.com with SMTP id j4so1853143iog.8;
- Fri, 10 Feb 2023 04:27:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=8L7H/6QJCXJg3ajtUMRvItZ/TPKzQzJOf82w8gkPTbs=;
- b=Vt5YUPeB0/6FgFau2fouDONMa4s9MIwj+nLCbvZjhrQBVWz1V+BWP5QW5uydnn5jnA
- bC3jOltFH5GGsPlWPcq0PkaWGtMN+Sqaj1eVzIqKloOI+ZCS5VcXvNIMG426CEhtYvYJ
- X7sBNNOHcxwRG5UGT88I9BW8x3Nf3GvtA1FfqpFCt9EnzYJljlfZlE9TIuzreuaceY0S
- 1GuQfyow/uvlSfJorg5T8K+3GhWOXpSHGwtYrltM0/ZDuDjfgkg3CNMmZlqvLMTxTm7f
- /QLM0kDuGC00RTNrHOdtgnD2U6+G+9dRn8g8uuCz2ErirJSpDb//FbDN03XrBZq7oEEL
- k7bQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pQRhz-0005Na-Mz
+ for qemu-arm@nongnu.org; Fri, 10 Feb 2023 06:36:54 -0500
+Received: by mail-pg1-x52b.google.com with SMTP id r18so3493792pgr.12
+ for <qemu-arm@nongnu.org>; Fri, 10 Feb 2023 03:36:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=ip7UkIHts0+zQA/dQ3VZu7KHBdu0EYIXCjbxhc6k/5A=;
+ b=bAyjyQCkvb5jdMFWxMLDDggqQKiFYyaQ6uq3yNPuz9bf5nzJv6y86KsmK2sfwS0NRc
+ TvuZXFjWdul2CWGurmKRden7GhdbLrJRYhgKLI255VZ9csSHsnSNceahnvEPT1pDZf7f
+ BJH2BmUau8GlwhQuuIm7OVOWn+iD95JAkDazmpM26S76nvkbSwAeHoVrMi9Z9lYzjJOi
+ 68SeAFuAaD2Ij+V4i7MAjj/iOUefPAby+BPKVEi6xaXlytAAwwdEjbIbd7uGC6wHH7GX
+ lFUm7l3pTuGhWESibYyFCX2cabezs0p+XUTE62R/W/1VMt1D+jGyfhsZVpQjKJqIev5e
+ iJjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=8L7H/6QJCXJg3ajtUMRvItZ/TPKzQzJOf82w8gkPTbs=;
- b=2Xf9sEsB8YyWt+4ofWe62SCrvZUb36TgZluRKeeXJxQjcavv/Up9LyIan/dST4bwVb
- tlkD3SK30562akiVW85sNeSHh3zGD5W4JvPn6b6CP+0ilbTPRYfk6G1VzAqfXGvKa+lX
- PNXyVtWle7QgVUglBvu6yMro7nQLGHJmVo3dm1/KX580F5Wzibkvp2lzgWi+7P1JAvXW
- yaYDrAaqyV1B10US8JEKvYe+UvL45ObQJG07pAv5bKdq+TTZTQg2YVLIL5Fs8qHy2C1r
- 1+fB+moBNDPK+CGPTeySUxy+EzFIh/fIXHjpDOPoap8O9P56BMsls77FJjlKUjzujBBT
- 5v+Q==
-X-Gm-Message-State: AO0yUKW2EJxXz6MCKwlyd42vaskPi5UosA82dySZRDZYmu1OHzyk6aAw
- mUfPVpb0QKJSOiPxZ7UdTeg=
-X-Received: by 2002:a5d:8751:0:b0:71b:d76c:fadd with SMTP id
- k17-20020a5d8751000000b0071bd76cfaddmr11024599iol.3.1676032072076; 
- Fri, 10 Feb 2023 04:27:52 -0800 (PST)
-Received: from hcl-ThinkPad-T495.hclt.corp.hcl.in ([192.8.226.44])
- by smtp.gmail.com with ESMTPSA id
- c6-20020a6bcc06000000b00724768be183sm1291523iog.13.2023.02.10.04.27.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Feb 2023 04:27:51 -0800 (PST)
-From: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-To: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-Subject: [PATCH v1] Adding new machine Tiogapass in QEMU
-Date: Fri, 10 Feb 2023 17:56:42 +0530
-Message-Id: <20230210122641.837614-1-pkarthikeyan1509@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ bh=ip7UkIHts0+zQA/dQ3VZu7KHBdu0EYIXCjbxhc6k/5A=;
+ b=p375ae8XS0cefNV7MK5YjRDqAO4XBjDxvQBkKSu1fYuH3pgWyjxQY15O/miwFvW90T
+ n95BHuGuEEvPweX1bKtNXYfBcXnPB8b5+juu++g/zG0/oD0CzjiHfRyB9KAF1fXcT+PW
+ bMNwwLTve6yRpVtq0WAfReBEA3O8md5mXj0EhVAhRKoc0VHXhBReGLMJg5Ymv1l9X3ci
+ 1wg+BiunNMG0HydG6tYs3FOoc2qeujKENlLznjSKPGTvpxNcC9xajpnm9keUEUoNIKzK
+ oJbWiLoq6Lg72+eDd8tRSqhrGc1dCYAmfhAQjbpXeOePL+pRP6d4sSxD8iQ+3Y8P96rV
+ woCw==
+X-Gm-Message-State: AO0yUKURC2igovt0VDj01WNOcvTQiRO7Pt95wl7yx/SqejHXC7qmglvd
+ GB5BKNKJ5XAooM2/X80YlN0Ij/nWBehwzhzzdhTSPg==
+X-Received: by 2002:a62:53c6:0:b0:58d:a84a:190b with SMTP id
+ h189-20020a6253c6000000b0058da84a190bmr3256174pfb.48.1676029009493; Fri, 10
+ Feb 2023 03:36:49 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2a;
- envelope-from=pkarthikeyan1509@gmail.com; helo=mail-io1-xd2a.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20230124000027.3565716-1-richard.henderson@linaro.org>
+ <20230124000027.3565716-13-richard.henderson@linaro.org>
+In-Reply-To: <20230124000027.3565716-13-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Feb 2023 11:36:38 +0000
+Message-ID: <CAFEAcA_wApEJEweyoGc_oSmyt6xcTKKRPW1X8xYkFO3agjS8jA@mail.gmail.com>
+Subject: Re: [PATCH 12/22] target/arm: NSTable is RES0 for the RME EL3 regime
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, yier.jin@huawei.com, 
+ jonathan.cameron@huawei.com, leonardo.garcia@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 10 Feb 2023 08:43:24 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,71 +115,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: k5G+gdW8DmMs
+X-TUID: v0MJzm7BcZY3
 
-This patch support tiogapass in QEMU environment.
+On Tue, 24 Jan 2023 at 00:01, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Test in_space instead of in_secure so that we don't switch
+> out of Root space.  Handle the output space change immediately,
+> rather than try and combine the NSTable and NS bits later.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/ptw.c | 31 ++++++++++++++-----------------
+>  1 file changed, 14 insertions(+), 17 deletions(-)
+>
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index c1b0b8e610..ddafb1f329 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -1240,7 +1240,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>  {
+>      ARMCPU *cpu = env_archcpu(env);
+>      ARMMMUIdx mmu_idx = ptw->in_mmu_idx;
+> -    bool is_secure = ptw->in_secure;
+>      int32_t level;
+>      ARMVAParameters param;
+>      uint64_t ttbr;
+> @@ -1256,7 +1255,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>      uint64_t descaddrmask;
+>      bool aarch64 = arm_el_is_aa64(env, el);
+>      uint64_t descriptor, new_descriptor;
+> -    bool nstable;
+>
+>      /* TODO: This code does not support shareability levels. */
+>      if (aarch64) {
+> @@ -1417,29 +1415,29 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>          descaddrmask = MAKE_64BIT_MASK(0, 40);
+>      }
+>      descaddrmask &= ~indexmask_grainsize;
+> -
+> -    /*
+> -     * Secure accesses start with the page table in secure memory and
+> -     * can be downgraded to non-secure at any step. Non-secure accesses
+> -     * remain non-secure. We implement this by just ORing in the NSTable/NS
+> -     * bits at each step.
+> -     */
+> -    tableattrs = is_secure ? 0 : (1 << 4);
+> +    tableattrs = 0;
+>
+>   next_level:
+>      descaddr |= (address >> (stride * (4 - level))) & indexmask;
+>      descaddr &= ~7ULL;
+> -    nstable = extract32(tableattrs, 4, 1);
+> -    if (nstable && ptw->in_secure) {
+> -        /*
+> -         * Stage2_S -> Stage2 or Phys_S -> Phys_NS
+> -         * Assert that the non-secure idx are even, and relative order.
+> -         */
+> +
+> +    /*
+> +     * Process the NSTable bit from the previous level.  This changes
+> +     * the table address space and the output space from Secure to
+> +     * NonSecure.  With RME, the EL3 translation regime does not change
+> +     * from Root to NonSecure.
+> +     */
 
-Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
----
- hw/arm/aspeed.c | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+To check my understanding, this means that the bit that the spec
+describes as FEAT_RME changing the behaviour of NSTable in the EL3
+stage 1 translation regime is implemented by us by having the
+in_space for EL3 be different for FEAT_RME and not-FEAT_RME ?
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 27dda58338..279ba60743 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -521,6 +521,14 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
-                      TYPE_TMP105, 0x4d);
- }
- 
-+static void fb_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+
-+    /* The FB board AST2500 compatible with ds1338 */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
-+}
-+
- static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-@@ -1174,6 +1182,25 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
- 
-+static void aspeed_machine_tp_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Facebook Tiogapass BMC (ARM1176)";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
-+    amc->hw_strap2 = 0;
-+    amc->fmc_model = "n25q256a";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 2;
-+    amc->i2c_init  = fb_bmc_i2c_init;
-+    mc->default_ram_size       = 1 * GiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1562,6 +1589,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_ast2600_evb_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("tp-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_tp_class_init,
-     }, {
-         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
--- 
-2.25.1
+> +    if (extract32(tableattrs, 4, 1) && ptw->in_space == ARMSS_Secure) {
+> +        /* Stage2_S -> Stage2 or Phys_S -> Phys_NS */
+>          QEMU_BUILD_BUG_ON(ARMMMUIdx_Phys_S + 1 != ARMMMUIdx_Phys_NS);
+>          QEMU_BUILD_BUG_ON(ARMMMUIdx_Stage2_S + 1 != ARMMMUIdx_Stage2);
+>          ptw->in_ptw_idx += 1;
+>          ptw->in_secure = false;
+> +        ptw->in_space = ARMSS_NonSecure;
+> +        result->f.attrs.secure = false;
+> +        result->f.attrs.space = ARMSS_NonSecure;
+>      }
+> +
+>      if (!S1_ptw_translate(env, ptw, descaddr, fi)) {
+>          goto do_fault;
+>      }
+> @@ -1542,7 +1540,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>       */
+>      attrs = new_descriptor & (MAKE_64BIT_MASK(2, 10) | MAKE_64BIT_MASK(50, 14));
+>      if (!regime_is_stage2(mmu_idx)) {
+> -        attrs |= nstable << 5; /* NS */
 
+This removes the code where we copy the NSTable bit across to attrs,
+but there's still code below here that assumes it can get the combined
+NS bit from bit 5 of attrs, isn't there? (It passes it to get_S1prot().)
+
+thanks
+-- PMM

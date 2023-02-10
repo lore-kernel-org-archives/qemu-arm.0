@@ -1,140 +1,91 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp99061ejb;
-        Mon, 13 Feb 2023 02:58:19 -0800 (PST)
-X-Google-Smtp-Source: AK7set+t7PyO8mUakeooW+fRHc2KUvjcFIxx8lgEJ+9GUbe8iEkPIFjaKlwccOHskzV6bD0hAiRl
-X-Received: by 2002:ad4:5ca9:0:b0:56e:9dd8:4803 with SMTP id q9-20020ad45ca9000000b0056e9dd84803mr15527965qvh.7.1676285899041;
-        Mon, 13 Feb 2023 02:58:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676285899; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1914804ejb;
+        Fri, 10 Feb 2023 06:39:35 -0800 (PST)
+X-Received: by 2002:a05:6a20:cf57:b0:be:940d:84b4 with SMTP id hz23-20020a056a20cf5700b000be940d84b4mr12375261pzb.44.1676039975284;
+        Fri, 10 Feb 2023 06:39:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676039975; cv=none;
         d=google.com; s=arc-20160816;
-        b=aozdeOGniW+UpDfqv27NDdWkIe70ujlmLlavfimjubmSuhsqbpsXJWj/JgeV1l/CBv
-         OjxdcpblWxmMfMh0laEKXauO7MykLngIA1CwPZrzCLph/oey8yOE9937Ibguf3X12X8F
-         9OaIu5iX6x2Dg2ys8BpdvnPJ2J3L+g0ElUOZwmSHhzV/1JlzRtKJsjoUICS3MRcBqdrA
-         rFNBq5xM01k6HzlxZ2Fk93GA1ocbK6nd3UGKCkVyywOj26zMhTa3Qu6oPDZGUjl60BUa
-         wVOFTsakJomaPLXKwg73DO/SNguuDQw1Rp07qHU6wBA85T5M+MD2p2g5SMNW0neZVJ4/
-         GNiA==
+        b=w59vlW/4cqeUEJfLji7J1vXc50sxeJ2gwivxI6IoAndiYGj19ske8VZvUg1psFH29Y
+         r22CQGhdS5KJRWch70FjvOpPoGfxwGlzTTkSsmLuMpPyXPd/7OkH5wc2DJcDSr5nexQY
+         4AOm3gVg88+EYYgwa7hlzcI/6C2QzIvxCEJHAPN/FOx8vVcW+IeH+Dfy4IPP/Ji8cLKu
+         yb9136qYwS+lwNR0ykjxcBlgbxnlw7vAY2qV0CkdobrWytlZwrowBGn9Ak732s8rOs+s
+         h9FK5MOsnHOHuk7+GbjxEW98QVL+TdmZyMdwirnLwNb5eetJG7IvJnN6QI0m68FKcHSm
+         9orw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=tRDWDjmG7UqYnK4/S3DiaKX/55SL64JbhGOEM/5Ri00=;
-        b=MDPtHQfUKNrmYUDbpLrHQxinPdZJl0KjAReFSmOYV/oDm/Ub+MpY9/6PNCy1aWZqFE
-         Tf+DHkJgHzq7tppogS68mXuahBq1CjBUiNDNKRBDHb1Lemv0lf3x11ZrvJDVz/1sIyg2
-         IlRz8t6jAYCyZNjPVGjkxON5YYa/2uMbEtSXEWBraSenjq81He4+78pzHTEoQ/epw4KK
-         z78ujJG/wSiApLi+kcrx9sAfcVR3LhNsMtXcL164pc/5KqOthavHuZINGuPzOafgQEEX
-         ti3b/zhWsudUW/QHmCduOxBzY9rBzPBrIpn2ol7yeGN6aOORKNwowHPVSx5XtWha6ZGT
-         WNzQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ZeS6cET6lOBNmWTRydZpAT15MUwnqq2DFp3U3yxTmic=;
+        b=tGQG/uMQytNVE4ssHJ0MWV1cOfAXuxejdgxfBsROvuDHhGdbipMidBm+yync1h1SMu
+         KGTOQhPMU7+ajbqDn8cPk7N+9E0hmAzoOxJanTNCo9CbqkJFb1MpE4i20ZFoU6ZP/szm
+         dramWmr6hxlopR9TaXlDs9gFBKZzFYhb+G9GXUl2m5b6KUQDM5TEAjXQVc7qJJMk98K2
+         Ivh/yDoKtWDVsjysdaPYN+60EFSvhw4WWjnb+oGaiahgzhStgDi6dGN4jFRoOrUkHu9C
+         hUReqqJmES4b9usRGPiD42+U8du3q1sr0SzS8MbfbZQ4QKS9b9UJj84V/solECkmAArF
+         0jdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GV2jFpiU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=FDQshhIL;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y14-20020a05622a164e00b003b62fcc1cf8si10209100qtj.699.2023.02.13.02.58.18
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id h9-20020a63b009000000b004774c8e0dbdsor2503619pgf.34.2023.02.10.06.39.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Feb 2023 02:58:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 10 Feb 2023 06:39:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GV2jFpiU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=FDQshhIL;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pRWX5-0001gf-Tl; Mon, 13 Feb 2023 05:58:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pRWX4-0001fb-FC
- for qemu-arm@nongnu.org; Mon, 13 Feb 2023 05:58:02 -0500
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pRWX2-0003vO-Ub
- for qemu-arm@nongnu.org; Mon, 13 Feb 2023 05:58:02 -0500
-Received: by mail-pj1-x102a.google.com with SMTP id gd1so756873pjb.1
- for <qemu-arm@nongnu.org>; Mon, 13 Feb 2023 02:58:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=tRDWDjmG7UqYnK4/S3DiaKX/55SL64JbhGOEM/5Ri00=;
- b=GV2jFpiUF7/Sf7lBaEvH0+vNdjjJ3LpPwGm4aQnmFdrtb/a9WEQhx4Fu2+mBXCvtgT
- KD9oYQoycG0k8o4JOSRZfAOZ6g1846ZWwzSMR/Ts7IgS6a8dSnmjsPRSK0z68gR1xDb7
- l17WzJHb3jhOiIkMQgQ8ul1QloJGPkDp97jNlrVNsItpgfcL24FHtK87KEGiM+STk+0b
- UOFX/MrtvH5A6adk0eRJUdqcIm3Y9+wg+NkQ967RFgWEb4nuqz0lYnJkm/rLOuBB6gP1
- SF3kSVZ1iyTGbbFMzWGaAn6Y/JWEvgjjCXih9QOsi/14ceiGHWgVSuABT4EkvSvRfGeP
- Y+Nw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZeS6cET6lOBNmWTRydZpAT15MUwnqq2DFp3U3yxTmic=;
+        b=FDQshhILE9b20GQrNCJzdZE6HsoXMeOUMzyvFrll0+sE9xdqwhWTJWefYeXU0PgzG/
+         q0e9KwCO7rUBwuzqcDTIaMO0bxQ+Gzq/3LttiKI36NRZVGihaG0C9kJykrSEESo2LZOi
+         ST9Oyxskq0ypVke1M8LxTLyzIIT//rxQIr18tSfXhCY19I2d3BVwgmTUC2QgIv1qR0p8
+         3lkD/MVXkz2pmfBGgTgM+umFDu8KpzYaeUFa2NrnXQ4pgYi2+rLIVKcKypxeXoxiAp3W
+         ffOqHHEt/st7atNyQrdk2cr5iYlbcBeePnEo30ng8F67l/AFVk/4Zu6kBnug2DnBjT6F
+         zykw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=tRDWDjmG7UqYnK4/S3DiaKX/55SL64JbhGOEM/5Ri00=;
- b=2JroPSOrzk86qsTa//I5t4wk+m+CeaQLaWYNujYNrTztNUarBmJf0t7nQck/gF7axJ
- sDkkTL2FPhc7JZxEhWo/Ov8S21G3+F0/8X2gLb81b/b1Tje/fgP2zP2ydmqEYpI4Wxjd
- 6dMiqYMXQ3b38I9jd0aZWKuHLVmLMGssW36RsRHVkehmad4AoAe03lKdMl2Wb15xP78e
- BoQqQSHgf85rM1LZH7FOyQpdCsl34gZfSY5d5BNkBK9Yq9dvFEqD4bfo8FTY/Ubz+lQQ
- qVG3ri+tCwkAdUGqELaKo3NCTFg9x4ncBNXE9eqpYx5F2NW95SAcxuJFlUP1dsv6uS+y
- 0h/w==
-X-Gm-Message-State: AO0yUKVBUiPzN3dLn/pTmvXdfADgMyG+PWPlr2ZvIGFxUNTVTMhHZzXf
- njIegKczrvy0GoC0WoZ3smjrgbyKjcfF3WziUHkTbQ==
-X-Received: by 2002:a17:90a:108:b0:233:cee2:343 with SMTP id
- b8-20020a17090a010800b00233cee20343mr1326094pjb.53.1676285878929; Mon, 13 Feb
- 2023 02:57:58 -0800 (PST)
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZeS6cET6lOBNmWTRydZpAT15MUwnqq2DFp3U3yxTmic=;
+        b=AeQNWSqtvIqN9uR1oMxg2+QP7XPIGeLDbdN4qYSXoSGbMKxDeHpM+04jirB7P26cJg
+         5xRpYiH/wJF6doBItxd7zgRhQ9O+fL4D0XEEIcFHH3wEpkzSGuj5UPB1IGhDzXdKkJ44
+         mTB6jUhK83RowUCI68BnoB7zrr9ujCO3S3C+uM16XoobylR1xH6aVOX++xh8n3/0LIdl
+         N58XW4hlx9/80oP907Mm9cfb0rtI9F5sSar11gfj/+aCTg9EBudnPOaqZHI6p12kqhGZ
+         gp+CL4VE8s9DMOpa0UL8Whxh4lBBdaHyqQ6NPthtC8HXnL0dLBfo76vEoObTf2F/yYqR
+         Jy6A==
+X-Gm-Message-State: AO0yUKXLFG43M7KPuSADTNFvBbFxihBavjs/FH7wtKjS30+dS3lFOW2P
+	AMP6J0yeG2hVjDCX3vl5fV/+T07Hjy7CbIhqCxZrXuFI
+X-Google-Smtp-Source: AK7set++hAX+p9VxQkTSHomt7MF1bLHB/7TRAzo488FVHK5B0WSN9MTq0droGOHxnmnBF0YtW5o+vRpcP4D9r6LqE9c=
+X-Received: by 2002:a63:9356:0:b0:4db:3747:ff55 with SMTP id
+ w22-20020a639356000000b004db3747ff55mr2993399pgm.110.1676039974836; Fri, 10
+ Feb 2023 06:39:34 -0800 (PST)
 MIME-Version: 1.0
-References: <20230210221951.1298668-1-smostafa@google.com>
- <9619db1f-5595-b95b-7643-ae345759a59c@linaro.org>
-In-Reply-To: <9619db1f-5595-b95b-7643-ae345759a59c@linaro.org>
+References: <20230203100551.2445547-1-alex.bennee@linaro.org>
+ <87cz6loahb.fsf@suse.de> <877cwtpl1v.fsf@linaro.org> <87k00p7gwt.fsf@pond.sub.org>
+In-Reply-To: <87k00p7gwt.fsf@pond.sub.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Feb 2023 10:57:47 +0000
-Message-ID: <CAFEAcA9iBui4zHCo+4b6o6rTXgQ=VpNzWUUTZmv_CR=cxWV3gw@mail.gmail.com>
-Subject: Re: [PATCH v4] hw/arm/smmuv3: Add GBPA register
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Mostafa Saleh <smostafa@google.com>, qemu-devel@nongnu.org,
- jean-philippe@linaro.org, eric.auger@redhat.com, qemu-arm@nongnu.org
+Date: Fri, 10 Feb 2023 14:39:23 +0000
+Message-ID: <CAFEAcA_tRKUpBXkrzaZneX4NUgzvE3P1Kb8roGYRVHbjEkLNkg@mail.gmail.com>
+Subject: Re: [RFC PATCH] target/arm: disable FEAT_SME if we turn off SVE
+To: Markus Armbruster <armbru@redhat.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	Ilias Apalodimas <ilias.apalodimas@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WJEyCOlG37Bc
+X-TUID: 5Dd3yBpFpAM9
 
-On Sat, 11 Feb 2023 at 23:49, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 2/10/23 12:19, Mostafa Saleh wrote:
-> > @@ -1512,6 +1553,10 @@ static const VMStateDescription vmstate_smmuv3 = {
-> >
-> >           VMSTATE_END_OF_LIST(),
-> >       },
-> > +    .subsections = (const VMStateDescription * []) {
-> > +        &vmstate_gbpa,
-> > +        NULL
-> > +    }
->
-> Actually, I suspect that you need a pre_load hook that resets gbpa, which will then be
-> overwritten if and only if the saved value != reset value.
+On Fri, 10 Feb 2023 at 14:07, Markus Armbruster <armbru@redhat.com> wrote:
+> cpu_arm_set_sve() is the setter for property "sve".  Checking the value
+> of another property in such a setter is usually wrong, as Fabiano
+> pointed out for this case.  Check in the realize() method instead.
 
-VM loads are guaranteed to start from a VM state which is freshly
-reset, so the device's reset method is sufficient for this.
+Yep. Compare what we do with the "must have both VFP and Neon or neither"
+check on those two properties, for instance.
 
 thanks
 -- PMM

@@ -1,88 +1,110 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp940505ejb;
-        Thu, 9 Feb 2023 08:50:19 -0800 (PST)
-X-Google-Smtp-Source: AK7set+bUhMPCez6/ZQNrq+82nG7j3q/1pL+xBFSjGRgVlxSjSkqlVAAXZZSxWXvW1tbeCN2r8Tk
-X-Received: by 2002:ac8:5c02:0:b0:3b8:2b4e:cbca with SMTP id i2-20020ac85c02000000b003b82b4ecbcamr20383489qti.14.1675961419575;
-        Thu, 09 Feb 2023 08:50:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1675961419; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1867164ejb;
+        Fri, 10 Feb 2023 05:43:50 -0800 (PST)
+X-Google-Smtp-Source: AK7set+zHmRGVv2xDWTZexZUhf0pnYXKCDqEatsiVJMKfewbqP3hP8FYTPP6VHEJsUOhUH51BIwx
+X-Received: by 2002:ac8:5e08:0:b0:3b9:beca:8d8b with SMTP id h8-20020ac85e08000000b003b9beca8d8bmr24917272qtx.28.1676036629799;
+        Fri, 10 Feb 2023 05:43:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676036629; cv=none;
         d=google.com; s=arc-20160816;
-        b=ztGC/NaS1aEEWiZOHmCcWH9zbKdF9HQ6LajHxmK8I1qOH1DDZGlD7h5znzq7aAH3oT
-         gHWVz85PEnWpqs6Gzbnycacmw4qHs1dX6/g65d5g5H3qlFNqw8gbU6fa7VIoD1TPPGmi
-         IElHoB+7Ndk0FxL1NBFrEl/MmH5DHwfnQ9TiLf9/YExJihTSILxj38YpInkqa7EPbR/6
-         wGiWZIesOVSGpb5FRBimT+/lmKjQAZ1I3Uc7ObsyyCmOaBJo6miGSG1uIPqHldklUnsK
-         zdflKq5yheI+fjk024suMbeBnfISvgiZplQMvGO7F8mZZ0LsoqHzhjLG1eTeaZeircZB
-         Cz5A==
+        b=nmnboT3F1302atScBvDMuA3ES0qolOPL7EfIjYfpJAOnWGO9GTzUrdf88ImKE88BJC
+         srKq2WEtX6oKQq/QujikLBAHfJ9/v1USueNMD2wWDQtCLSijg8/3WzCNdRBGrVKKveUP
+         V3dFh1phstDYy5PXXhOJpR1ezmGcOpfaNIVZQ5d5qvIT5+1Ad2MadvaO1KM4vtt5wBak
+         19Zjdd4T6mc/SaZ5uSHLwsUuc+oIM8woID5KJpFWP9hE6J7s2+W36vYe3fvlM33Lfnze
+         V/ZB3I3Gwyh5Tj0B6Hjf6+FXZHSbDG++9O9Wa5vXXVFX7O6zS/eUDLRDmeKaLVKrsbBa
+         HdfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=I9Hb5BF1KC2ah0Zh26IGWeffXxuVYRjonUctSqXyQHI=;
-        b=KRx2PElcWMDwJH4bXf3OHuvYYPJd4bzJfuFe4YMdeczmKcvyOemSLALOkhyBNyi5Uk
-         K4TxlFGeyJfNaelmzByhKO9jMjPVqvlnovoeikNbQ+qDLKL+jLmGSvIcu0JeudLwbAIl
-         uSZGgKYpEY+Fou2Ph5q0NPdRq0Ro2lNb9b3dIpmGyLo1dnlcvDZO83NyRl0/Ux13zxLq
-         mDj6yAXv73JBM/ahtFzJ01DEQ5qCOWByjQoQ1Y4yNfa6LWx5ynDzzsu0viGefcB+lfLh
-         0AZX3gjkBXFIOPoqxrpMx1LzPIHYIBkQ6bbqv6/uMgzV2hIIjbI2MBUEk7XkLfZSlK7b
-         F20Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8L7H/6QJCXJg3ajtUMRvItZ/TPKzQzJOf82w8gkPTbs=;
+        b=PrUljoJyyAwuXYye4H2nODvSqbe4X02/lVfl5xFOdFqBIr7CvsIYAmbiOuHcqkOO+q
+         1X8wX4fKNwf9n90hH5pGP68U4o+tU9kmgN5hXLa7nrDyIt2sBq8ltdPv3lM1TyhyrL16
+         6sEBte6ClrxJyWDCk0VdlaNOPbNeOHAVXyw+sgfLIEfLrBj8ye1zsnSSmIPrE+Zz0k3w
+         eNTnHaIRbX2Fmk6RzbMTyFJHfJZKiiZJ5uYVtjl0XAotUYPM0FhqRdKdFX5NYXwRfr1r
+         N+fUT6lkJpmZq5VD/7WqIkv5qy3msyGSZEPYlyE3FkecICltQDWAGbvN+Hn3vR1zeJMR
+         RIcA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Vt5YUPeB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1-20020ac85c01000000b003b9ed70ec36si1963269qti.202.2023.02.09.08.50.19
+        by mx.google.com with ESMTPS id r1-20020a05620a298100b007339c51143dsi4017466qkp.697.2023.02.10.05.43.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Feb 2023 08:50:19 -0800 (PST)
+        Fri, 10 Feb 2023 05:43:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Vt5YUPeB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pQA7S-0002kv-Of; Thu, 09 Feb 2023 11:49:58 -0500
+	id 1pQTgT-0007ek-Bm; Fri, 10 Feb 2023 08:43:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1pQA7R-0002kP-CS; Thu, 09 Feb 2023 11:49:57 -0500
-Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1pQA7O-0001f1-Ur; Thu, 09 Feb 2023 11:49:57 -0500
-Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id A076C260241;
- Thu,  9 Feb 2023 17:49:51 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
-Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
- by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gMc70V6Gu04z; Thu,  9 Feb 2023 17:49:49 +0100 (CET)
-Received: from puchatek.com (83.11.36.13.ipv4.supernova.orange.pl
- [83.11.36.13])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 6E808260096;
- Thu,  9 Feb 2023 17:49:48 +0100 (CET)
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-To: Radoslaw Biernacki <rad@semihalf.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>
-Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Shashi Mallela <shashi.mallela@linaro.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH] tests/avocado: Add set of boot tests on SBSA-ref
-Date: Thu,  9 Feb 2023 17:49:24 +0100
-Message-Id: <20230209164924.976571-1-marcin.juszkiewicz@linaro.org>
-X-Mailer: git-send-email 2.39.1
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pQSVP-0000Vo-Ic; Fri, 10 Feb 2023 07:27:55 -0500
+Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pQSVO-0001Xl-1l; Fri, 10 Feb 2023 07:27:55 -0500
+Received: by mail-io1-xd2a.google.com with SMTP id j4so1853143iog.8;
+ Fri, 10 Feb 2023 04:27:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=8L7H/6QJCXJg3ajtUMRvItZ/TPKzQzJOf82w8gkPTbs=;
+ b=Vt5YUPeB0/6FgFau2fouDONMa4s9MIwj+nLCbvZjhrQBVWz1V+BWP5QW5uydnn5jnA
+ bC3jOltFH5GGsPlWPcq0PkaWGtMN+Sqaj1eVzIqKloOI+ZCS5VcXvNIMG426CEhtYvYJ
+ X7sBNNOHcxwRG5UGT88I9BW8x3Nf3GvtA1FfqpFCt9EnzYJljlfZlE9TIuzreuaceY0S
+ 1GuQfyow/uvlSfJorg5T8K+3GhWOXpSHGwtYrltM0/ZDuDjfgkg3CNMmZlqvLMTxTm7f
+ /QLM0kDuGC00RTNrHOdtgnD2U6+G+9dRn8g8uuCz2ErirJSpDb//FbDN03XrBZq7oEEL
+ k7bQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8L7H/6QJCXJg3ajtUMRvItZ/TPKzQzJOf82w8gkPTbs=;
+ b=2Xf9sEsB8YyWt+4ofWe62SCrvZUb36TgZluRKeeXJxQjcavv/Up9LyIan/dST4bwVb
+ tlkD3SK30562akiVW85sNeSHh3zGD5W4JvPn6b6CP+0ilbTPRYfk6G1VzAqfXGvKa+lX
+ PNXyVtWle7QgVUglBvu6yMro7nQLGHJmVo3dm1/KX580F5Wzibkvp2lzgWi+7P1JAvXW
+ yaYDrAaqyV1B10US8JEKvYe+UvL45ObQJG07pAv5bKdq+TTZTQg2YVLIL5Fs8qHy2C1r
+ 1+fB+moBNDPK+CGPTeySUxy+EzFIh/fIXHjpDOPoap8O9P56BMsls77FJjlKUjzujBBT
+ 5v+Q==
+X-Gm-Message-State: AO0yUKW2EJxXz6MCKwlyd42vaskPi5UosA82dySZRDZYmu1OHzyk6aAw
+ mUfPVpb0QKJSOiPxZ7UdTeg=
+X-Received: by 2002:a5d:8751:0:b0:71b:d76c:fadd with SMTP id
+ k17-20020a5d8751000000b0071bd76cfaddmr11024599iol.3.1676032072076; 
+ Fri, 10 Feb 2023 04:27:52 -0800 (PST)
+Received: from hcl-ThinkPad-T495.hclt.corp.hcl.in ([192.8.226.44])
+ by smtp.gmail.com with ESMTPSA id
+ c6-20020a6bcc06000000b00724768be183sm1291523iog.13.2023.02.10.04.27.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Feb 2023 04:27:51 -0800 (PST)
+From: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+To: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+Subject: [PATCH v1] Adding new machine Tiogapass in QEMU
+Date: Fri, 10 Feb 2023 17:56:42 +0530
+Message-Id: <20230210122641.837614-1-pkarthikeyan1509@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: softfail client-ip=213.251.184.221;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
-X-Spam_score_int: -11
-X-Spam_score: -1.2
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2a;
+ envelope-from=pkarthikeyan1509@gmail.com; helo=mail-io1-xd2a.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 10 Feb 2023 08:43:24 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,201 +116,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: 20221213155025.40920-1-philmd@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: duA3SkGegwRT
+X-TUID: k5G+gdW8DmMs
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+This patch support tiogapass in QEMU environment.
 
-This change adds set of boot tests on SBSA-ref machine:
-
-1. boot TF-A up to the EDK2 banner
-2. boot Linux kernel/initrd up to Busybox shell
-
-Prebuilt flash volumes are included, built using upstream documentation.
-EDK2 and TF-A are updated to have SVE/SME properly enabled for 'max'
-cpu.
-
-Linux kernel/initrd are from Debian 'bookworm' installer with
-"init=/bin/sh" kernel argument.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
 ---
- MAINTAINERS                              |   1 +
- tests/avocado/machine_aarch64_sbsaref.py | 150 +++++++++++++++++++++++
- 2 files changed, 151 insertions(+)
- create mode 100644 tests/avocado/machine_aarch64_sbsaref.py
+ hw/arm/aspeed.c | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 96e25f62ac..84cbcfd0bf 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -911,6 +911,7 @@ L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/sbsa-ref.c
- F: docs/system/arm/sbsa.rst
-+F: tests/avocado/machine_aarch64_sbsaref.py
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 27dda58338..279ba60743 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -521,6 +521,14 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+                      TYPE_TMP105, 0x4d);
+ }
  
- Sharp SL-5500 (Collie) PDA
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-new file mode 100644
-index 0000000000..e36e53d4d5
---- /dev/null
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -0,0 +1,150 @@
-+# Functional test that boots a Linux kernel and checks the console
-+#
-+# SPDX-FileCopyrightText: 2023 Linaro Ltd.
-+# SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
-+# SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
++static void fb_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = &bmc->soc;
 +
-+import os
-+import shutil
++    /* The FB board AST2500 compatible with ds1338 */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
++}
 +
-+from avocado.utils import archive
+ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = &bmc->soc;
+@@ -1174,6 +1182,25 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
++static void aspeed_machine_tp_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+from avocado_qemu import QemuSystemTest
-+from avocado_qemu import wait_for_console_pattern
-+from avocado_qemu import interrupt_interactive_console_until_pattern
++    mc->desc       = "Facebook Tiogapass BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
++    amc->hw_strap2 = 0;
++    amc->fmc_model = "n25q256a";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 2;
++    amc->i2c_init  = fb_bmc_i2c_init;
++    mc->default_ram_size       = 1 * GiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
++        aspeed_soc_num_cpus(amc->soc_name);
++};
 +
-+
-+class Aarch64SbsarefMachine(QemuSystemTest):
-+    """
-+    :avocado: tags=arch:aarch64
-+    :avocado: tags=machine:sbsa-ref
-+    """
-+
-+    def fetch_firmware(self):
-+        """
-+        Flash volumes generated using:
-+
-+        - Fedora GNU Toolchain version 12.2.1 20220819 (Red Hat Cross 12.2.1-2)
-+
-+        - Trusted Firmware-A
-+          https://github.com/ARM-software/arm-trusted-firmware/tree/6264643a
-+
-+        - Tianocore EDK II
-+          https://github.com/tianocore/edk2/tree/f6ce1a5c
-+          https://github.com/tianocore/edk2-non-osi/tree/74d4da60
-+          https://github.com/tianocore/edk2-platforms/tree/0540e1a2
-+        """
-+
-+        # Secure BootRom (TF-A code)
-+        fs0_xz_url = ('https://fileserver.linaro.org/s/sZay4ZCCfHSXPKj/'
-+                      'download/SBSA_FLASH0.fd.xz')
-+        fs0_xz_hash = 'e74778cbb8e1aa0b77f8883565b9a18db638f6bb'
-+        tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
-+        archive.extract(tar_xz_path, self.workdir)
-+        fs0_path = os.path.join(self.workdir, 'SBSA_FLASH0.fd')
-+
-+        # Non-secure rom (UEFI and EFI variables)
-+        fs1_xz_url = ('https://fileserver.linaro.org/s/osHNaypByLa9xDK/'
-+                      'download/SBSA_FLASH1.fd.xz')
-+        fs1_xz_hash = '7d9f1a6b8964b8b99144f7e905a4083f31e31ad3'
-+        tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
-+        archive.extract(tar_xz_path, self.workdir)
-+        fs1_path = os.path.join(self.workdir, 'SBSA_FLASH1.fd')
-+
-+        for path in [fs0_path, fs1_path]:
-+            with open(path, 'ab+') as fd:
-+                fd.truncate(256 << 20)  # Expand volumes to 256MiB
-+
-+        self.vm.set_console()
-+        self.vm.add_args('-drive', f'if=pflash,file={fs0_path},format=raw',
-+                         '-drive', f'if=pflash,file={fs1_path},format=raw')
-+
-+    def test_sbsaref_tfa_v2_8(self):
-+        """
-+        :avocado: tags=cpu:cortex-a57
-+        """
-+
-+        self.fetch_firmware()
-+        self.vm.launch()
-+
-+        # TF-A boot sequence:
-+        #
-+        # https://github.com/ARM-software/arm-trusted-firmware/blob/v2.8.0/\
-+        #     docs/design/trusted-board-boot.rst#trusted-board-boot-sequence
-+        # https://trustedfirmware-a.readthedocs.io/en/v2.8/\
-+        #     design/firmware-design.html#cold-boot
-+
-+        # AP Trusted ROM
-+        wait_for_console_pattern(self, 'Booting Trusted Firmware')
-+        wait_for_console_pattern(self, 'BL1: v2.8(release):v2.8')
-+        wait_for_console_pattern(self, 'BL1: Booting BL2')
-+
-+        # Trusted Boot Firmware
-+        wait_for_console_pattern(self, 'BL2: v2.8(release)')
-+        wait_for_console_pattern(self, 'Booting BL31')
-+
-+        # EL3 Runtime Software
-+        wait_for_console_pattern(self, 'BL31: v2.8(release)')
-+
-+        # Non-trusted Firmware
-+        wait_for_console_pattern(self, 'UEFI firmware (version 1.0')
-+        interrupt_interactive_console_until_pattern(self,
-+                                                    'QEMU SBSA-REF Machine')
-+
-+    def boot_linux(self, cpu='cortex-a57'):
-+        """
-+        :avocado: tags=cpu:cortex-a57
-+        """
-+        self.fetch_firmware()
-+
-+        os.makedirs(f'{self.workdir}/vfat/efi/boot')
-+
-+        # UEFI shell binary
-+        shell_url = ('https://fileserver.linaro.org/s/SGoyRrEzkmW8C8Y/'
-+                     'download/bootaa64.efi')
-+        shell_sha1 = '5a8791eb130406d1a659e538b1a194a604a29a78'
-+        shell_path = self.fetch_asset(shell_url, shell_sha1)
-+        shutil.copyfile(shell_path,
-+                        f'{self.workdir}/vfat/efi/boot/bootaa64.efi')
-+
-+        # Debian 'bookworm' d-i kernel from 8th Feb 2023
-+        linux_url = ('https://fileserver.linaro.org/s/L8JMwEZQK8SDR39/'
-+                     'download/linux')
-+        linux_sha1 = '39a75284783ab63626642228fbac1863492d30b5'
-+        linux_path = self.fetch_asset(linux_url, linux_sha1)
-+        shutil.copyfile(linux_path, f'{self.workdir}/vfat/linux')
-+
-+        # Debian 'bookworm' d-i initrd.gz from 8th Feb 2023
-+        initrd_url = ('https://fileserver.linaro.org/s/NmYTxezZNKGF5P4/'
-+                      'download/initrd.gz')
-+        initrd_sha1 = '1404d0129cbd0bff7aaa589ddbea3cdb7c0d4c1d'
-+        initrd_path = self.fetch_asset(initrd_url, initrd_sha1)
-+        shutil.copyfile(initrd_path, f'{self.workdir}/vfat/initrd.gz')
-+
-+        with open(f'{self.workdir}/vfat/startup.nsh', 'w') as script:
-+            script.write('fs0:\\linux initrd=\\initrd.gz init=/bin/sh')
-+
-+        self.vm.add_args('-cpu', cpu,
-+                         '-drive',
-+                         f'file=fat:rw:{self.workdir}/vfat/,format=raw')
-+        self.vm.launch()
-+
-+        # Exit UEFI
-+        wait_for_console_pattern(self, 'EFI stub: Exiting boot services...')
-+
-+        # init=/bin/sh started
-+        wait_for_console_pattern(self, 'BusyBox v1.35.0 (Debian')
-+
-+    def test_sbsaref_linux_a57(self):
-+        """
-+        :avocado: tags=cpu:cortex-a57
-+        """
-+        self.boot_linux('cortex-a57')
-+
-+    def test_sbsaref_linux_max(self):
-+        """
-+        :avocado: tags=cpu:max
-+        """
-+        self.boot_linux('max')
+ static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1562,6 +1589,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_ast2600_evb_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("tp-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_tp_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
 -- 
-2.39.1
+2.25.1
 

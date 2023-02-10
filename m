@@ -1,235 +1,122 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp2026350ejb;
-        Fri, 10 Feb 2023 08:40:04 -0800 (PST)
-X-Google-Smtp-Source: AK7set/qLgM2SreVsLrOYZvRmivUuveasWYqcWTkbNSyoAG5v5OXcDlv7QHAKDSMJNydKhrgG+qr
-X-Received: by 2002:a05:6214:b6d:b0:56e:9801:362e with SMTP id ey13-20020a0562140b6d00b0056e9801362emr3721920qvb.14.1676047203993;
-        Fri, 10 Feb 2023 08:40:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676047203; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp2027859ejb;
+        Fri, 10 Feb 2023 08:41:57 -0800 (PST)
+X-Received: by 2002:a17:903:2441:b0:196:3088:5dd6 with SMTP id l1-20020a170903244100b0019630885dd6mr18814732pls.13.1676047317558;
+        Fri, 10 Feb 2023 08:41:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676047317; cv=none;
         d=google.com; s=arc-20160816;
-        b=Biut62UzQAfRV+Ow6ljJKF8KWdNVNtvgW07tN/Os9VnUZPxyCHxS+vg6EygW8AnEq6
-         y5ZdEIU1Tb4wf5OX1CnBPIcAxhpGfehRES4QiPyRHibMS+U1rQrUkH3vrqP3jnaJnbX7
-         IrvDVEk5hmisbhXf9dL8C6Np7HIt7sg9nwRigoSoKqYcfbk5xjVNgR4LKhybkpfoSMdb
-         hQXykqtvCQ1yx9hIIFgYNaxfTv4OcPfDelaRZzilRSuL81hlg/oso736EI0cPuAzyI6v
-         l/XTX4I8B0jQkNuQRA19VduTmDLHCg00tetNkUUqANpAW06ChVHZV1eTpO/0WCqqda22
-         gZ7w==
+        b=nyh+q6LhInY8akVeFwMZFEfCNRQycdD2HNYHDlG0KxHQjJpNVDBDQ76JK2YAZJxOiY
+         fW7lXfH3+udA9WZfb7dC91Dd3E9w2fUv51NfomYToutBQFoJkMn1BII6Nngln034b4uS
+         J6dDJRJXBx7jdXtGJW5pTHHQLcGbeqJIfYWsN+7b+ecZe6LHOGvt1xRcH6UPk2Iyzc52
+         yKC/NXWH3XUyMfnoAtMu2Orfx6J+c+87n5aqqwFT7EQa13C+MCeLzTatWYOUDUDXtZay
+         5Q8evDnjDk0hrMVSvEN9KX//O1nnKNbMp1bWkcWSURWKrb2mR3KZuecosYMVrYwle41/
+         Kfqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=usy+gvwS+JxR9gEW4rdKIjKndc55aNyj2tFUAGWHkSo=;
-        b=o4SY4uBfgSVtn2/WyBJH2oTWtONVQLmMqcAacHPaPCbvhrhK1jVSYRdHgo9RHi5wwI
-         +nAtHMVxjcJ5/7/S7x1KUrpgnZol/NpK3fRJVBrEgvZO0bibPkU48z3/wVmanL5Gc4IT
-         xfGHRaw3OId4J00mRvfUrqAqfxNJ3DjqRHS4xSk7DszHsdHAfHanejjEezFrREPwXCAD
-         vFQaRVtNlw9duQPIa6G82fnOgj/lwuPGknflBGuQ/+ETBHeGj6+AnvoNRrWZLhgpCE6h
-         pCamLZhVeZ3RcOtrJ7gucPiM9WDoio9WjixBgvZj+Vk5mH2G8Z9e3u8Zmnzvt38GZe8r
-         3n4g==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=X+qGC5SWOOoLk1GEHeJ2me9it/52x7tT3pbTxhNtiV4=;
+        b=ZZ+8zCxfisaVpbvX7KDYvJWBqmoPwA+2dHSoSpynxjmbr313zujvlfEcg6wBYInzM5
+         cFU2YTHxKZ7SeILLNlhu/xkrZRDtzIZHP3FlBYNnxQ0OXJHbdO4+AxzY2067vm0EsNmS
+         v3AKy/JPNbpZGkxXi/8zxhwERJGbPmZ/KtDvPan2M+oUQOFBPBI9AuVTYbUCX6MTPK+i
+         3vtUxLRsmIDJtbgb+Sm+y03AlJrF43G7w1FEPMHmouVgtHK08rTG5yFFlBJVft8duVv6
+         MfCc3iuO8UzPibbk2TYMoL7XXe7EMjREaVF/nXY0EbAq9JZ1ts3aS/iWC9kKZLZGJ/72
+         N8JQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x9N9jFju;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=f8K7cPY5;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c18-20020a0ca9d2000000b0056e5eca8577si3015178qvb.277.2023.02.10.08.40.03
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p13-20020a170902780d00b0019a73322bcfsor1023354pll.3.2023.02.10.08.41.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Feb 2023 08:40:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 10 Feb 2023 08:41:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x9N9jFju;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=f8K7cPY5;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pQWR8-0006ri-DY; Fri, 10 Feb 2023 11:39:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1pQWR6-0006U1-9g
- for qemu-arm@nongnu.org; Fri, 10 Feb 2023 11:39:44 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1pQWR4-0000UB-5I
- for qemu-arm@nongnu.org; Fri, 10 Feb 2023 11:39:43 -0500
-Received: by mail-wm1-x331.google.com with SMTP id o36so4253512wms.1
- for <qemu-arm@nongnu.org>; Fri, 10 Feb 2023 08:39:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=usy+gvwS+JxR9gEW4rdKIjKndc55aNyj2tFUAGWHkSo=;
- b=x9N9jFjug6CynwRuwkXCHfbmzOxpXYLc+dJdMrWTjdIRw3HhXJ6E5Pcjxstq5FF7gT
- 5mBwiCl+sMpYZ6mvzprOmVAhXFblo64VWEfl+gKyPu0b7vft+M09XJMjNh0IUkFExE6l
- UwW/i68WxR0y3J1d0dc2SHAVX+tMisjmx+5C5qpXg8qshNNZZB/gyzqNvFTg4DkSpfw+
- 0dk5XCJRAd+SHMuQ8XOz30H3NOgfkc5wIlUQF07mkJfDu/zOAuu1UNOk+1aC4Jtni7vl
- UVczrnxJmIZU8h79CrpJKdup1RvL9Tko9+XGNoXX9gZQBrMyyglUf4iX60b9XP29IML5
- qKhw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1676047317;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=X+qGC5SWOOoLk1GEHeJ2me9it/52x7tT3pbTxhNtiV4=;
+        b=f8K7cPY5lj6EO/ZQCg35x4lWI5uwE1chXDPmm00knBwGQ7w7hhFpwdz96LNKO7V9BY
+         Q8Q62u5aBs07/Y7ATEwBVE6w9T/FHsb38rEz/d9TzE5xKKGhKNYCIcmp5LrGxb0JHD0t
+         uW+YW7XGamIALaAXdCMEi/e67EMRa1WpIm9iw75ThDRq68sh7dvM5aKq3wMgpwCzd4B8
+         yVir3InolkDeBnZoFf/g+Wb1X46RD43TCa1ZGKMyYJKvsR3po0EMd72gMLx1/DXHnMRS
+         MeT9nMVMUovX6tlruOPQSvMpXYtk2zMpCvGyYyN5qJNHmnJWlrOSoy0R2oDdU6Vf0jmb
+         RLBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=usy+gvwS+JxR9gEW4rdKIjKndc55aNyj2tFUAGWHkSo=;
- b=J0kjRMPEG8RzN2x+XWig+Dry/ggbCYslVpNkJ186M7NHe0gzixMLcA+NM64NwE6zQe
- JSxlmSHyMTr+mHa7ssZQryV2cRAql7nhPXH6a0xaxjralf2ySFKTgwX5HyTF3L4Gh8lK
- xbK6hRu/dT1okQ6jeVQZp48DDPyFPawF0ZUVFcVFNb/Yvz7FlqYkh1ewylsQc4hBY/01
- JTemQLShj9RnoeVtPWjrIME/3/XuRVfJC74kfjFUBm3cbF/E4sGtAjf6NNh8MliDNVb8
- 6/n2Uo7nAejna4fupDAyXiysZ1XMoV6YqoT/5TLESqveejjTGswzVg/HodRG1GenWIKu
- RLIw==
-X-Gm-Message-State: AO0yUKUjhp8ClW2A6txxRTPJj1MmhLIHYv6EcvWrRDEUMJc8IaGYr8HA
- 9HlLDfHi5eZ8B1yI/9dziBcLLQ==
-X-Received: by 2002:a05:600c:4919:b0:3df:a04a:1a7 with SMTP id
- f25-20020a05600c491900b003dfa04a01a7mr13488556wmp.22.1676047178494; 
- Fri, 10 Feb 2023 08:39:38 -0800 (PST)
-Received: from localhost.localdomain (054592b0.skybroadband.com.
- [5.69.146.176]) by smtp.gmail.com with ESMTPSA id
- f8-20020a05600c4e8800b003da28dfdedcsm6312144wmq.5.2023.02.10.08.39.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Feb 2023 08:39:37 -0800 (PST)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: eric.auger@redhat.com
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- ola.hugosson@arm.com, Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH 0/2] hw/arm/smmu: Fixes for TTB1
-Date: Fri, 10 Feb 2023 16:37:30 +0000
-Message-Id: <20230210163731.970130-1-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.39.0
+        d=1e100.net; s=20210112; t=1676047317;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=X+qGC5SWOOoLk1GEHeJ2me9it/52x7tT3pbTxhNtiV4=;
+        b=vOTMJ+CaHN/exN79E5oeCjh9Mtmro6LBa0bCmJbRlmDnOpApcyxgQOxM26pq2HBJjM
+         C/qDaxu2GYAxYxdLIvkvxQbQNDsR6RwNOhuJwIL/jHEf5NQaOT1CpG6HOCvemM9nhDCf
+         p3FOa/FYvcR2XNrJq2ltVmi8ByX1Gf3F/L9m+veFiRqKUvSippmbpHevYZNIM4baL/pC
+         yJExU77oSmRPf6MqFgyKRXn22KhMprBiCmZQ1AedR72Dp8oiRO76Wsbq0VPDkcgChPVg
+         IGHZlLC8vO9rpXcvPDv0hd2DIG+CfhqqsRthemX6RhpPeB98rmOeB7Wl5JkJHV3Z2j7e
+         nIEA==
+X-Gm-Message-State: AO0yUKWZGxerQyyXOpv8C/gEaXy1jyDGJFNNNkRJqVgKHaDgMTtWO4Qt
+	5VbHlUHeXTdROzEeZmr4S5JhvBLsNwy6BT7F32xPRLoX
+X-Google-Smtp-Source: AK7set++LG2FX8h+40bUEiyItImiVzPvFV3KtY39ysDXOPtVv81YH86qbOwfq/bCCOR/AUC7arNkjbc3rzRX7F/kC9s=
+X-Received: by 2002:a17:902:6b88:b0:199:1458:6c67 with SMTP id
+ p8-20020a1709026b8800b0019914586c67mr4094867plk.28.1676047317057; Fri, 10 Feb
+ 2023 08:41:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NKib4DGbi+TU
+References: <20230114161302.94595-1-fcagnin@quarkslab.com> <20230114161302.94595-2-fcagnin@quarkslab.com>
+In-Reply-To: <20230114161302.94595-2-fcagnin@quarkslab.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Feb 2023 16:41:46 +0000
+Message-ID: <CAFEAcA8cOKCDF5_oxNLDd7JzvwUCC4_g_8RRmwPK3C2axLHuAg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/3] arm: move KVM breakpoints helpers
+To: francesco.cagnin@gmail.com
+Cc: qemu-devel@nongnu.org, mads@ynddal.dk, dirty@apple.com, 
+	qemu-arm@nongnu.org, agraf@csgraf.de, pbonzini@redhat.com, 
+	alex.bennee@linaro.org, Francesco Cagnin <fcagnin@quarkslab.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: KQKxawU3+WRj
 
-Two small changes to support TTB1. Note that I had to modify the Linux
-driver in order to test this (see below), but other OSes might use TTB1.
+On Sat, 14 Jan 2023 at 16:13, <francesco.cagnin@gmail.com> wrote:
+>
+> From: Francesco Cagnin <fcagnin@quarkslab.com>
+>
+> These helpers will be also used for HVF. Aside from reformatting a
+> couple of comments for 'checkpatch.pl' and updating meson to compile
+> 'hyp_gdbstub.c', this is just code motion.
+>
+> Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
+> ---
+>  target/arm/hyp_gdbstub.c | 242 ++++++++++++++++++++++++++++++++++
+>  target/arm/internals.h   |  50 +++++++
+>  target/arm/kvm64.c       | 276 ---------------------------------------
+>  target/arm/meson.build   |   3 +-
+>  4 files changed, 294 insertions(+), 277 deletions(-)
+>  create mode 100644 target/arm/hyp_gdbstub.c
+>
+> diff --git a/target/arm/hyp_gdbstub.c b/target/arm/hyp_gdbstub.c
+> new file mode 100644
+> index 0000000000..22b2b7de7b
+> --- /dev/null
+> +++ b/target/arm/hyp_gdbstub.c
+> @@ -0,0 +1,242 @@
+> +#include "qemu/osdep.h"
+> +#include "cpu.h"
+> +#include "internals.h"
+> +#include "exec/gdbstub.h"
 
-Jean-Philippe Brucker (2):
-  hw/arm/smmu-common: Support 64-bit addresses
-  hw/arm/smmu-common: Fix TTB1 handling
+New files must all start with the usual boilerplate
+comment stating the license and copyright. Sorry I didn't
+notice this in previous rounds of review.
 
- hw/arm/smmu-common.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+(which means "if you make this change in the next version of
+the patchset, you should put this Reviewed-by: tag into the
+commit message, so that reviewers know it's already been
+reviewed".)
 
---- 8< --- Linux hacks:
-diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h
-index 8d772ea8a583..bf0ff699b64b 100644
---- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h
-+++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h
-@@ -276,6 +276,11 @@
- #define CTXDESC_CD_0_TCR_IRGN0		GENMASK_ULL(9, 8)
- #define CTXDESC_CD_0_TCR_ORGN0		GENMASK_ULL(11, 10)
- #define CTXDESC_CD_0_TCR_SH0		GENMASK_ULL(13, 12)
-+#define CTXDESC_CD_0_TCR_T1SZ		GENMASK_ULL(21, 16)
-+#define CTXDESC_CD_0_TCR_TG1		GENMASK_ULL(23, 22)
-+#define CTXDESC_CD_0_TCR_IRGN1		GENMASK_ULL(25, 24)
-+#define CTXDESC_CD_0_TCR_ORGN1		GENMASK_ULL(27, 26)
-+#define CTXDESC_CD_0_TCR_SH1		GENMASK_ULL(29, 28)
- #define CTXDESC_CD_0_TCR_EPD0		(1ULL << 14)
- #define CTXDESC_CD_0_TCR_EPD1		(1ULL << 30)
-
-@@ -293,6 +298,7 @@
- #define CTXDESC_CD_0_ASID		GENMASK_ULL(63, 48)
-
- #define CTXDESC_CD_1_TTB0_MASK		GENMASK_ULL(51, 4)
-+#define CTXDESC_CD_2_TTB1_MASK		GENMASK_ULL(51, 4)
-
- /*
-  * When the SMMU only supports linear context descriptor tables, pick a
-diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-index f2425b0f0cd6..3a4343e60a54 100644
---- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-+++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-@@ -1075,8 +1075,8 @@ int arm_smmu_write_ctx_desc(struct arm_smmu_domain *smmu_domain, int ssid,
- 		 * this substream's traffic
- 		 */
- 	} else { /* (1) and (2) */
--		cdptr[1] = cpu_to_le64(cd->ttbr & CTXDESC_CD_1_TTB0_MASK);
--		cdptr[2] = 0;
-+		cdptr[1] = 0;
-+		cdptr[2] = cpu_to_le64(cd->ttbr & CTXDESC_CD_2_TTB1_MASK);
- 		cdptr[3] = cpu_to_le64(cd->mair);
-
- 		/*
-@@ -2108,13 +2108,13 @@ static int arm_smmu_domain_finalise_s1(struct arm_smmu_domain *smmu_domain,
-
- 	cfg->cd.asid	= (u16)asid;
- 	cfg->cd.ttbr	= pgtbl_cfg->arm_lpae_s1_cfg.ttbr;
--	cfg->cd.tcr	= FIELD_PREP(CTXDESC_CD_0_TCR_T0SZ, tcr->tsz) |
--			  FIELD_PREP(CTXDESC_CD_0_TCR_TG0, tcr->tg) |
--			  FIELD_PREP(CTXDESC_CD_0_TCR_IRGN0, tcr->irgn) |
--			  FIELD_PREP(CTXDESC_CD_0_TCR_ORGN0, tcr->orgn) |
--			  FIELD_PREP(CTXDESC_CD_0_TCR_SH0, tcr->sh) |
-+	cfg->cd.tcr	= FIELD_PREP(CTXDESC_CD_0_TCR_T1SZ, tcr->tsz) |
-+			  FIELD_PREP(CTXDESC_CD_0_TCR_TG1, tcr->tg) |
-+			  FIELD_PREP(CTXDESC_CD_0_TCR_IRGN1, tcr->irgn) |
-+			  FIELD_PREP(CTXDESC_CD_0_TCR_ORGN1, tcr->orgn) |
-+			  FIELD_PREP(CTXDESC_CD_0_TCR_SH1, tcr->sh) |
- 			  FIELD_PREP(CTXDESC_CD_0_TCR_IPS, tcr->ips) |
--			  CTXDESC_CD_0_TCR_EPD1 | CTXDESC_CD_0_AA64;
-+			  CTXDESC_CD_0_TCR_EPD0 | CTXDESC_CD_0_AA64;
- 	cfg->cd.mair	= pgtbl_cfg->arm_lpae_s1_cfg.mair;
-
- 	/*
-@@ -2212,6 +2212,7 @@ static int arm_smmu_domain_finalise(struct iommu_domain *domain,
- 		.pgsize_bitmap	= smmu->pgsize_bitmap,
- 		.ias		= ias,
- 		.oas		= oas,
-+		.quirks		= IO_PGTABLE_QUIRK_ARM_TTBR1,
- 		.coherent_walk	= smmu->features & ARM_SMMU_FEAT_COHERENCY,
- 		.tlb		= &arm_smmu_flush_ops,
- 		.iommu_dev	= smmu->dev,
-diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-index 38434203bf04..3fe154c9782d 100644
---- a/drivers/iommu/dma-iommu.c
-+++ b/drivers/iommu/dma-iommu.c
-@@ -677,6 +677,10 @@ static int dma_info_to_prot(enum dma_data_direction dir, bool coherent,
- 	}
- }
-
-+/* HACK */
-+#define VA_SIZE		39
-+#define VA_MASK		(~0ULL << VA_SIZE)
-+
- static dma_addr_t iommu_dma_alloc_iova(struct iommu_domain *domain,
- 		size_t size, u64 dma_limit, struct device *dev)
- {
-@@ -706,7 +710,7 @@ static dma_addr_t iommu_dma_alloc_iova(struct iommu_domain *domain,
- 		iova = alloc_iova_fast(iovad, iova_len, dma_limit >> shift,
- 				       true);
-
--	return (dma_addr_t)iova << shift;
-+	return (dma_addr_t)iova << shift | VA_MASK;
- }
-
- static void iommu_dma_free_iova(struct iommu_dma_cookie *cookie,
-@@ -714,6 +718,7 @@ static void iommu_dma_free_iova(struct iommu_dma_cookie *cookie,
- {
- 	struct iova_domain *iovad = &cookie->iovad;
-
-+	iova &= ~VA_MASK;
- 	/* The MSI case is only ever cleaning up its most recent allocation */
- 	if (cookie->type == IOMMU_DMA_MSI_COOKIE)
- 		cookie->msi_iova -= size;
-
-
+thanks
+-- PMM

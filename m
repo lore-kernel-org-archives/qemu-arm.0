@@ -1,91 +1,91 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3595204ejb;
-        Sun, 12 Feb 2023 04:42:47 -0800 (PST)
-X-Google-Smtp-Source: AK7set9wgwHTscQN5n0i2zlWFN8mpeSAz5YL5jiJDAgTuf6SIjjYUFnHnnqoh7Mbdm50vQ2U5L60
-X-Received: by 2002:ad4:5b83:0:b0:56b:ff68:7ae1 with SMTP id 3-20020ad45b83000000b0056bff687ae1mr36483983qvp.26.1676205767346;
-        Sun, 12 Feb 2023 04:42:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676205767; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3595810ejb;
+        Sun, 12 Feb 2023 04:43:51 -0800 (PST)
+X-Google-Smtp-Source: AK7set+LlrPG8e1eR5qSuu6+tDGl62E2yFD3ivYM/91Rj3qxp5XMIt+E8xqCaacLuuCxWa17cJwj
+X-Received: by 2002:a05:6214:246b:b0:56c:2301:8ebf with SMTP id im11-20020a056214246b00b0056c23018ebfmr28971880qvb.24.1676205831347;
+        Sun, 12 Feb 2023 04:43:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676205831; cv=none;
         d=google.com; s=arc-20160816;
-        b=O9e9bq3AdfzRiKdyb4UII5Pbu1ZtpOJy+agHCE9H6Xyq/C14CYep0ZXkybuLi5GU2G
-         lHIQ+FkVgUf/mcJkv62HfHbTBZYMbjatrUrqrBc/1D8Bm3i46LXrZCkGwmFcECxzk5Su
-         kMJaYHLDX/crPSTp6KMZXQDTFGhZM8XGTjTkkkwbkDlkBB6dxTPoLtKvxeNLSdHMldVC
-         B28JbI1TuRP9vk2QjW37tV48NGNW4rwmyVOpyWaFQyG6VjNPNb05ohJgpkQQBtGkMrFZ
-         YF+geEcCdpQtnZH7eyZl3Yu6yLjdFjgRyKkW+LrhN+nrjVlOr6FM3Z8IJgBSj7mk+K7r
-         OrAQ==
+        b=X2Vyq90CZbM/pgi+uuS0laciA39HSatZFrzUGAp+C1ffXMhICzQ+/Rf9lK02zOgs4O
+         EvIr8UeoutaY07foip8TIVXkuWWCyj9JhOg+BC3PSxEPOKiI2sHha8glz62JT2ywXufJ
+         ELIKtHcvvTklzOvuqn/+6nnYha5rfKmOB3WWYhxIok3iED8MKxrbXVqeVDVInJLJHDyc
+         nSJUCjNBt3sPaWINKCV448nSPlSiQ/ORcrkTJcfoLOdJtRgWiA+MlAWLKTB0YG1DauLV
+         x3B/QUkbFTAQGVPOGTRmtF93WCelci+AbuQHq22E5fytH/T0Om+D8UxMpo9Hg6jz7E5s
+         x/rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Q5BAqb4NSt5JyGYzPVIU20MjmxdB3dJtY4VU4Q5VqfA=;
-        b=aJQj1Df0CP87lBXPDW/FV7nl3D+/sibYiKpWUOrjeKJDMEiQPSNx71DEsRp6HHozVt
-         nW4vf/PEBM858FrQFOH9srqadkwSCCvKqzPF2U3svjtEw36Lq95RBMWGi6zQjBO55XYQ
-         s8ZSJrmDP6d/FNvWC473gzlEHZm+Z+aG6RM2h83i7iGkO4exXqQnPbUkwmoBchpvUzY6
-         +GZzs/i/Ym11c7WEZx5btoGMDJLa9TtUCstD3fXDuIb/ho1Co2kFr0cRap3sK8wCnqox
-         n13BCE5A1ToZOKZVNZh96yZ03J74JMO7dq7ltni+PHJEYNYkp/FZ5RK4zW97S3zPJAz2
-         baKw==
+        bh=9DMnqIZ6sTmwSGDqUqDMuqivSx4G+Su8MihdmqvlWkc=;
+        b=wVv3W+YOsc4IDzxeNUp9s1MtVoaPMcWDXGidYHOydIiMQ5jr1BO1MUnK+MaLNbeohM
+         cbDHoJOwQfglDukQaV/McPKZSjqwBWJj5YaW5tFinq34DTAUkAAcd6zGYrV4STqeGo+0
+         tlNztrWPlbdktAareYs0uP1drjj4lJA/IumU3qLjRPnKDrwd2fM/q7mWAyCdKBlwvVmS
+         36ZuxC0TcjdR+lZq0e0jnk2Xkz6uoy5gxCKKWPm1y1jmdVd9NJ+UBn0bALqrIRcyirIn
+         KmgRJqaKN75u6fZLePqFijb2RIsh7GveKZyqW0ZnrA6Y/SyZat0tQud5U8kGNLijQNJT
+         gyvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ot+SRUV6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Z02a6dpU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b3-20020a0ccd03000000b0053563989a54si7122889qvm.557.2023.02.12.04.42.47
+        by mx.google.com with ESMTPS id d10-20020a0cdb0a000000b00538f98687bdsi1360214qvk.150.2023.02.12.04.43.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Feb 2023 04:42:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 12 Feb 2023 04:43:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ot+SRUV6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Z02a6dpU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pRBdP-0007la-8J; Sun, 12 Feb 2023 07:39:11 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pRBdT-0007pX-2c; Sun, 12 Feb 2023 07:39:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pRBcz-0007ZN-4e; Sun, 12 Feb 2023 07:38:46 -0500
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ id 1pRBd2-0007ZT-8l; Sun, 12 Feb 2023 07:38:49 -0500
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pRBcw-0001Ip-S5; Sun, 12 Feb 2023 07:38:44 -0500
-Received: by mail-ej1-x62d.google.com with SMTP id c26so21081160ejz.10;
- Sun, 12 Feb 2023 04:38:41 -0800 (PST)
+ id 1pRBcz-0001Je-Do; Sun, 12 Feb 2023 07:38:47 -0500
+Received: by mail-ej1-x634.google.com with SMTP id lu11so25897144ejb.3;
+ Sun, 12 Feb 2023 04:38:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Q5BAqb4NSt5JyGYzPVIU20MjmxdB3dJtY4VU4Q5VqfA=;
- b=ot+SRUV6qEUZzRY5VZhUdyt4fnxW+p2Eow+7+9LS8JW7aXSExGsx3NT40w28g6AfIL
- 3PpdqgQU3soOXJvaPP08q4feP7Otjw6lmUMR2KOTBkHdDpy1utLAZdCuALrWK+j1wxbg
- 2C1VLQaZCh/LGCkY7KuMl7Y8YLjtiP/qmt6GklDTQbvB4rBj1F7DzIL247AT12I7JDc2
- zXun6RGV5Wj9EBR2bCKb9KpaGPLCQz4fY60RULAnCQNB0wSzwgZ272Ek50S4v9Eme+ZU
- EMRh/cFsFNgqTy230OMjB6TZUgW7pQFL70fowXR5R4ttmYo6YbJEqBfLAamUW/UFQOk5
- b31Q==
+ bh=9DMnqIZ6sTmwSGDqUqDMuqivSx4G+Su8MihdmqvlWkc=;
+ b=Z02a6dpUvvw8vsF3eXQaVeI2ofbqQKAPut1jJaDCBpOgLWEl/vryICkFoQo+vuxDyp
+ 0cySAMVmc/Z6rx+p6oDwNYRn/VW8veC2zcxkpGlJZR0SXtvPn6E1hxdmkWGzeAYQNxRC
+ ikKiZ0aKnnADGendSmuajrF6BdxS1+lqyJ8/hMuomXtnCwgj4MSv1OAYdKl2Hl3OJ8JJ
+ Js0AL0KwL4fCPQacJbUBWuHzplvAW6/rSH+HAyHe6o4983JOfOw3j9MPb1NVQWpcGgw6
+ T1pe7roy73/cs7QxFuDJlOoPHhGviE07yF1C0nPaWxmf4I2mzc4ChuaiIAG746tenmoO
+ tAvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Q5BAqb4NSt5JyGYzPVIU20MjmxdB3dJtY4VU4Q5VqfA=;
- b=LFbSEMHZxahYXGwBJqWSXly6MnO5GgE74Bm1BClqivY7LPCvSMnUI28237v0Mmml6v
- 2CzAAaxCjvwdBVYCITLwLbwUQ2YCUmTICP+z6f6CQgKcRwsWxuzFuZBkv7MlQKiVDvLG
- DXM8UheLBFEBNylTNWd9sK1pM0YJi3XAN7wvkadatGsOlmNwdBvdbY13I+Z9SaBegV7z
- 5MKP6LFQ/eCn8+wXuhbmx5qNJsmfI1brFGbUW1Xu3DJs9Z/J1oBTs9tQTmZp3DYoDdmx
- 8VkmmzdAIbalaxLT6cPTWDFCEAwRaBAbM/rnlVGrnUHVqJ5xSZ60+83EDnqkAbi6AAdo
- MqAA==
-X-Gm-Message-State: AO0yUKX0HKimYjap//6hm3sUJDTBu+b9MKA9cS8ZiFZtmmm6Wun5Fm9U
- EB7eUu7N1ImVopSDkljG6OHbZJYMClU=
-X-Received: by 2002:a17:906:3ecf:b0:879:9c05:f5e8 with SMTP id
- d15-20020a1709063ecf00b008799c05f5e8mr20603658ejj.62.1676205519669; 
- Sun, 12 Feb 2023 04:38:39 -0800 (PST)
+ bh=9DMnqIZ6sTmwSGDqUqDMuqivSx4G+Su8MihdmqvlWkc=;
+ b=l3kkCtv18gQho04mqBSw9NLgsRc61n4Iq2Ju942etPJLXOcrR906pHKg0/sqGXPFPx
+ euW6I7NGsneX4/cr7vyidg8p+5gsrjqXZFH4GiMChVClwFkx+s6CBoz8u7fQoyrTAJW+
+ y68USRYyp01zJN6Dk3xBieiMveKOV8KZTmZLYgPDsIV8muFFY9UndvF2DmDqNG6eEYLp
+ qGeihLU9FdV6Hrk+aEb7AUyeemAiZT6HOYnxyCX+gP6zW8z8ISGW2S4UcV5EkBJrgflO
+ 0ZH/qsg2lUrFumca460NfPyjnqapGH9eRMBhpvBxbqNNUYp1xxeQ2ZjSkGXbrMZ1hCzR
+ dOuQ==
+X-Gm-Message-State: AO0yUKVK0NXn4fxztNb0orodcX1/hRda0/7vDuULoXxw1kDeHWo60xeC
+ SfQtyfOf3ApkYaGZxFcOEH0NBvy9oqY=
+X-Received: by 2002:a17:907:6e8f:b0:88a:d760:19ac with SMTP id
+ sh15-20020a1709076e8f00b0088ad76019acmr29313051ejc.1.1676205522727; 
+ Sun, 12 Feb 2023 04:38:42 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-077-011-172-153.77.11.pool.telefonica.de. [77.11.172.153])
  by smtp.gmail.com with ESMTPSA id
- qw14-20020a170906fcae00b008af1f1bee79sm5233164ejb.9.2023.02.12.04.38.38
+ qw14-20020a170906fcae00b008af1f1bee79sm5233164ejb.9.2023.02.12.04.38.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Feb 2023 04:38:39 -0800 (PST)
+ Sun, 12 Feb 2023 04:38:42 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
@@ -105,19 +105,17 @@ Cc: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>,
  John G Johnson <john.g.johnson@oracle.com>,
- Bernhard Beschow <shentey@gmail.com>, Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v7 02/23] hw/i386/pc: No need for rtc_state to be an
- out-parameter
-Date: Sun, 12 Feb 2023 13:37:44 +0100
-Message-Id: <20230212123805.30799-3-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v7 04/23] hw/isa/piix3: Create USB controller in host device
+Date: Sun, 12 Feb 2023 13:37:46 +0100
+Message-Id: <20230212123805.30799-5-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230212123805.30799-1-shentey@gmail.com>
 References: <20230212123805.30799-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,112 +124,158 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 498LLCUrnfOz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: C4oNd2Nhyom8
 
-Now that the RTC is created as part of the southbridges it doesn't need
-to be an out-parameter any longer.
+The USB controller is an integral part of PIIX3 (function 2). So create
+it as part of the south bridge.
+
+Note that the USB function is optional in QEMU. This is why it gets
+object_initialize_child()'ed in realize rather than in instance_init.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20221022150508.26830-12-shentey@gmail.com>
+Message-Id: <20221022150508.26830-13-shentey@gmail.com>
 ---
- include/hw/i386/pc.h |  2 +-
- hw/i386/pc.c         | 12 ++++++------
- hw/i386/pc_piix.c    |  2 +-
- hw/i386/pc_q35.c     |  2 +-
- 4 files changed, 9 insertions(+), 9 deletions(-)
+ include/hw/southbridge/piix.h |  4 ++++
+ hw/i386/pc_piix.c             |  7 ++-----
+ hw/isa/piix3.c                | 17 +++++++++++++++++
+ hw/isa/Kconfig                |  1 +
+ 4 files changed, 24 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 66e3d059ef..5ba814aca6 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -168,7 +168,7 @@ uint64_t pc_pci_hole64_start(void);
- DeviceState *pc_vga_init(ISABus *isa_bus, PCIBus *pci_bus);
- void pc_basic_device_init(struct PCMachineState *pcms,
-                           ISABus *isa_bus, qemu_irq *gsi,
--                          ISADevice **rtc_state,
-+                          ISADevice *rtc_state,
-                           bool create_fdctrl,
-                           uint32_t hpet_irqs);
- void pc_cmos_init(PCMachineState *pcms,
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 44daa36338..16b7bd40ef 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1251,7 +1251,7 @@ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl,
+diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
+index b06d26fa11..762709f2fd 100644
+--- a/include/hw/southbridge/piix.h
++++ b/include/hw/southbridge/piix.h
+@@ -15,6 +15,7 @@
+ #include "hw/pci/pci_device.h"
+ #include "qom/object.h"
+ #include "hw/rtc/mc146818rtc.h"
++#include "hw/usb/hcd-uhci.h"
  
- void pc_basic_device_init(struct PCMachineState *pcms,
-                           ISABus *isa_bus, qemu_irq *gsi,
--                          ISADevice **rtc_state,
-+                          ISADevice *rtc_state,
-                           bool create_fdctrl,
-                           uint32_t hpet_irqs)
- {
-@@ -1306,17 +1306,17 @@ void pc_basic_device_init(struct PCMachineState *pcms,
-     }
+ /* PIRQRC[A:D]: PIRQx Route Control Registers */
+ #define PIIX_PIRQCA 0x60
+@@ -54,12 +55,15 @@ struct PIIXState {
+     int32_t pci_irq_levels_vmstate[PIIX_NUM_PIRQS];
  
-     if (rtc_irq) {
--        qdev_connect_gpio_out(DEVICE(*rtc_state), 0, rtc_irq);
-+        qdev_connect_gpio_out(DEVICE(rtc_state), 0, rtc_irq);
-     } else {
--        uint32_t irq = object_property_get_uint(OBJECT(*rtc_state),
-+        uint32_t irq = object_property_get_uint(OBJECT(rtc_state),
-                                                 "irq",
-                                                 &error_fatal);
--        isa_connect_gpio_out(*rtc_state, 0, irq);
-+        isa_connect_gpio_out(rtc_state, 0, irq);
-     }
--    object_property_add_alias(OBJECT(pcms), "rtc-time", OBJECT(*rtc_state),
-+    object_property_add_alias(OBJECT(pcms), "rtc-time", OBJECT(rtc_state),
-                               "date");
+     RTCState rtc;
++    UHCIState uhci;
  
--    qemu_register_boot_set(pc_boot_set, *rtc_state);
-+    qemu_register_boot_set(pc_boot_set, rtc_state);
+     /* Reset Control Register contents */
+     uint8_t rcr;
  
-     if (!xen_enabled() &&
-         (x86ms->pit == ON_OFF_AUTO_AUTO || x86ms->pit == ON_OFF_AUTO_ON)) {
+     /* IO memory region for Reset Control Register (PIIX_RCR_IOPORT) */
+     MemoryRegion rcr_mem;
++
++    bool has_usb;
+ };
+ typedef struct PIIXState PIIX3State;
+ 
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 8f894714e5..a577ea2f4e 100644
+index 37afc01d30..61d8152078 100644
 --- a/hw/i386/pc_piix.c
 +++ b/hw/i386/pc_piix.c
-@@ -276,7 +276,7 @@ static void pc_init1(MachineState *machine,
+@@ -52,7 +52,6 @@
+ #include "exec/memory.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/piix4.h"
+-#include "hw/usb/hcd-uhci.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/xen.h"
+@@ -236,6 +235,8 @@ static void pc_init1(MachineState *machine,
+         pcms->bus = pci_bus;
+ 
+         pci_dev = pci_new_multifunction(-1, true, type);
++        object_property_set_bool(OBJECT(pci_dev), "has-usb",
++                                 machine_usb(machine), &error_abort);
+         pci_realize_and_unref(pci_dev, pci_bus, &error_fatal);
+         piix3 = PIIX3_PCI_DEVICE(pci_dev);
+         piix3->pic = x86ms->gsi;
+@@ -314,10 +315,6 @@ static void pc_init1(MachineState *machine,
      }
+ #endif
  
-     /* init basic PC hardware */
--    pc_basic_device_init(pcms, isa_bus, x86ms->gsi, &rtc_state, true,
-+    pc_basic_device_init(pcms, isa_bus, x86ms->gsi, rtc_state, true,
-                          0x4);
+-    if (pcmc->pci_enabled && machine_usb(machine)) {
+-        pci_create_simple(pci_bus, piix3_devfn + 2, TYPE_PIIX3_USB_UHCI);
+-    }
+-
+     if (pcmc->pci_enabled && x86_machine_is_acpi_enabled(X86_MACHINE(pcms))) {
+         PCIDevice *piix4_pm;
  
-     pc_nic_init(pcmc, isa_bus, pci_bus);
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 3b1a0d0cfd..ade8c26bfd 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -294,7 +294,7 @@ static void pc_q35_init(MachineState *machine)
+diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
+index f9103ea45a..7ae031f2c5 100644
+--- a/hw/isa/piix3.c
++++ b/hw/isa/piix3.c
+@@ -288,6 +288,7 @@ static const MemoryRegionOps rcr_ops = {
+ static void pci_piix3_realize(PCIDevice *dev, Error **errp)
+ {
+     PIIX3State *d = PIIX3_PCI_DEVICE(dev);
++    PCIBus *pci_bus = pci_get_bus(dev);
+     ISABus *isa_bus;
+ 
+     isa_bus = isa_bus_new(DEVICE(d), pci_address_space(dev),
+@@ -308,6 +309,16 @@ static void pci_piix3_realize(PCIDevice *dev, Error **errp)
+     if (!qdev_realize(DEVICE(&d->rtc), BUS(isa_bus), errp)) {
+         return;
      }
++
++    /* USB */
++    if (d->has_usb) {
++        object_initialize_child(OBJECT(dev), "uhci", &d->uhci,
++                                TYPE_PIIX3_USB_UHCI);
++        qdev_prop_set_int32(DEVICE(&d->uhci), "addr", dev->devfn + 2);
++        if (!qdev_realize(DEVICE(&d->uhci), BUS(pci_bus), errp)) {
++            return;
++        }
++    }
+ }
  
-     /* init basic PC hardware */
--    pc_basic_device_init(pcms, isa_bus, x86ms->gsi, &rtc_state, !mc->no_floppy,
-+    pc_basic_device_init(pcms, isa_bus, x86ms->gsi, rtc_state, !mc->no_floppy,
-                          0xff0104);
+ static void build_pci_isa_aml(AcpiDevAmlIf *adev, Aml *scope)
+@@ -338,6 +349,11 @@ static void pci_piix3_init(Object *obj)
+     object_initialize_child(obj, "rtc", &d->rtc, TYPE_MC146818_RTC);
+ }
  
-     /* connect pm stuff to lpc */
++static Property pci_piix3_props[] = {
++    DEFINE_PROP_BOOL("has-usb", PIIX3State, has_usb, true),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void pci_piix3_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -357,6 +373,7 @@ static void pci_piix3_class_init(ObjectClass *klass, void *data)
+      * pc_piix.c's pc_init1()
+      */
+     dc->user_creatable = false;
++    device_class_set_props(dc, pci_piix3_props);
+     adevc->build_dev_aml = build_pci_isa_aml;
+ }
+ 
+diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
+index c10cbc5fc1..f01bc0dff3 100644
+--- a/hw/isa/Kconfig
++++ b/hw/isa/Kconfig
+@@ -36,6 +36,7 @@ config PIIX3
+     select I8257
+     select ISA_BUS
+     select MC146818RTC
++    select USB_UHCI
+ 
+ config PIIX4
+     bool
 -- 
 2.39.1
 

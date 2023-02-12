@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3883838ejb;
-        Sun, 12 Feb 2023 12:51:31 -0800 (PST)
-X-Google-Smtp-Source: AK7set8k9cuj6TFW/4q211T8ZEMwDgfkwYPmvfmp7X57xKEzyVBqTr7Uu+N+kesAPXE48H7mxZdR
-X-Received: by 2002:a05:622a:164e:b0:3b9:b6e8:8670 with SMTP id y14-20020a05622a164e00b003b9b6e88670mr43438472qtj.51.1676235091548;
-        Sun, 12 Feb 2023 12:51:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676235091; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3883845ejb;
+        Sun, 12 Feb 2023 12:51:32 -0800 (PST)
+X-Google-Smtp-Source: AK7set8QZwPOZ8+GEKGwWvOXKceJPOVfuNm9kdY3+vpRfN6IVhVobvHkHhzc709+eLhke7r9+9Cg
+X-Received: by 2002:ac8:5b89:0:b0:3b9:c0e8:610c with SMTP id a9-20020ac85b89000000b003b9c0e8610cmr37814780qta.60.1676235092390;
+        Sun, 12 Feb 2023 12:51:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676235092; cv=none;
         d=google.com; s=arc-20160816;
-        b=LmWicYf+3ekpD0mC9rnH3ZzAW1MBaNkpFCc9RgsU5n0co6uXG71H8b2x+oql6fUSSe
-         Qx90COPHngATtXc+GzvRDply++ewmTnZeX0X+5VV575QsOh6iSzm3tm5beH4LXpqLy5Z
-         UP8XU9/tp9jK3UJLfKJ//PmhVDKM53hDMPwXKw0WVNH+CwOiNlWle9EKl5Pn194/aTFF
-         eK+KEuH+FCeFWAQZSeHwyNJCB7Jk8h6zOmIKbAKEajtz8warRLGOhGYHYrowiK25VCW1
-         0CMoWwQPlSx4EFqHPII93MZD2w40BoKh5Zz7KVe+AIB0qhiQBze9VqVt7PDV+JW7CS2b
-         v+3Q==
+        b=FVpoSx74w61ip37YM4K3qWgaGMaqKS9pbXyGHv1jKJD+TTZT2vnZG6GEz3BtbWd+PC
+         7+cRQasWDU4GQ8/jAn77vmcgsIFpfi/szii4TWrNFIXQrYBOsa/akTvvsjwBhG5MJChU
+         TPBkZESkzf576RgghFvA7kE5B9TpoPI/ZqtC8R9aNEo8lmEIl9zfST/qqYd6i2pyNF4/
+         PQkRvhyZLk8Zdl9Agvj9tr5JkMPlfn3Fm3hZKohLr3aM+qkuarmLnOZSeprHuaJc3Oic
+         nIOZN4NUs8sCoHiqRUlb5u89fFfwtiUX0LMhxwWAqxBka7k8Q5FhnFWqh7NinLbXoMoh
+         ptlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3pJ5iRRQglwGjgFqTu7IRkpDZuwu6Z4zyssyU6K71Ng=;
-        b=tB3p/Vh9d2w8roV0jXm/mVS09yWTHkFjapDJx6Hkv0pkXZiXZtT1YDPWZp3WqWRrLh
-         OYHdCB3xf6flX4x6LP9CZRZLiZvpm/P06lb47pBAk/cw7QV4TSrmntV4Ml88vRT0oDCY
-         weoAlaRTBD5sIvq4e99KJfM06onHHvrU/KHugae9MVHuBsLJrjorSCbJcBkzMtNVAwRV
-         A/2rlhjBsp7Fxm7bUfOnOZWjeel8ZhcJ+CA7BqlgcZPt+1DuZkubV5mob5B1FW0fsi0X
-         /O3t/GG83/HXDQNCDIwcfFPCc1C6czx9pZ6J/m1Vbl4EOBlB5sOvrHLCRaM20pSQwSmc
-         WtbQ==
+        bh=NfCpQ24VnaDsbMJsvnpcwQdy4D0AoKUoiSA/11MsIic=;
+        b=Voe5ka+v3sekPH4hYle5O8bm/FXEopIH6ZaVu66yhn2+hmXZU+UhG1QwJ7Spv18kIZ
+         0AMOzVbWomDmxAhS3HUvqyz9tjeuokIn2si8IsSBbAD0X6oZ6uB21+5AiSnOpRCsuAca
+         +aYLuS10TzP8ieIPkiRr5GYBnX+lvtiCy9pploh0RVpnAHrxf65uDVhdeSideaRI7DNW
+         6kzRq2sQz0ueDCoH9CAGkHUp5ezhzE+PPdzQXencBG2tCLCqCoHw+B1BXDxy6sbMGM9d
+         DAL7M3lflto8AyRT426xRqpAqVQPNeXWkIum1UnFVTacdm3okF6F9MhXYie7zKnDl9fH
+         E/Hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IAHY6M8C;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YVx7EftK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w15-20020ac857cf000000b003b86cef433esi8213574qta.544.2023.02.12.12.51.31
+        by mx.google.com with ESMTPS id c1-20020ac85a81000000b003b9a4c0a48csi8183642qtc.232.2023.02.12.12.51.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Feb 2023 12:51:31 -0800 (PST)
+        Sun, 12 Feb 2023 12:51:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IAHY6M8C;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YVx7EftK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pRJJ2-00050v-5C; Sun, 12 Feb 2023 15:50:40 -0500
+	id 1pRJJ2-0004zl-2L; Sun, 12 Feb 2023 15:50:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pRJIR-0004Sn-Bp
- for qemu-devel@nongnu.org; Sun, 12 Feb 2023 15:50:03 -0500
+ id 1pRJIX-0004W8-Qf
+ for qemu-devel@nongnu.org; Sun, 12 Feb 2023 15:50:17 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pRJIP-0001x4-8g
- for qemu-devel@nongnu.org; Sun, 12 Feb 2023 15:50:02 -0500
+ id 1pRJIV-0002Av-1D
+ for qemu-devel@nongnu.org; Sun, 12 Feb 2023 15:50:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676235000;
+ s=mimecast20190719; t=1676235005;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3pJ5iRRQglwGjgFqTu7IRkpDZuwu6Z4zyssyU6K71Ng=;
- b=IAHY6M8C8/w3dNAGwVSwsmOl8PblFOd9SXVIWnqpUgL043iSnHdmqvSvZkyaEid3aOyT+/
- lVwiBWUHOzHjdswwF7umd9gsNpYKFqeEW2y6fug3Ik9GmeootejE55Zcm3VmqrgTBArWT4
- +20MlfFpax/oFI0q/IuSKn1r8RYqxoc=
+ bh=NfCpQ24VnaDsbMJsvnpcwQdy4D0AoKUoiSA/11MsIic=;
+ b=YVx7EftKi5EmoyW6YihMtNTpO9b9ofly14lSuZtWv4ez8fhV+s1gddWm9sD7fVKivkeNUh
+ aJuzpSGy0ae4Wsaz1ZaNT0dXE7pHXZ7a7kbokmLyDRDtItrd8uTe3Y4h5s9fw0B6RCjFku
+ hu1I8V15jpXAbX52KCVaOUGIdXm7t3U=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-516-9TaKZNZ6MHmbMEeVlU-EvA-1; Sun, 12 Feb 2023 15:49:57 -0500
-X-MC-Unique: 9TaKZNZ6MHmbMEeVlU-EvA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
+ us-mta-260-TmhRSAs8MhK_-rRmCus71Q-1; Sun, 12 Feb 2023 15:50:02 -0500
+X-MC-Unique: TmhRSAs8MhK_-rRmCus71Q-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 69CE7811E6E;
- Sun, 12 Feb 2023 20:49:55 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 53EB885A588;
+ Sun, 12 Feb 2023 20:50:00 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.2])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 676C5140EBF4;
- Sun, 12 Feb 2023 20:49:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 90121492B15;
+ Sun, 12 Feb 2023 20:49:58 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
@@ -85,15 +85,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
  Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
  Stefan Berger <stefanb@linux.vnet.ibm.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH 2/4] io: use closesocket()
-Date: Mon, 13 Feb 2023 00:49:40 +0400
-Message-Id: <20230212204942.1905959-3-marcandre.lureau@redhat.com>
+Subject: [PATCH 3/4] win32: stop mixing SOCKET and file descriptor space
+Date: Mon, 13 Feb 2023 00:49:41 +0400
+Message-Id: <20230212204942.1905959-4-marcandre.lureau@redhat.com>
 In-Reply-To: <20230212204942.1905959-1-marcandre.lureau@redhat.com>
 References: <20230212204942.1905959-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -103,7 +103,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,48 +118,425 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aymI+U0PIgXu
+X-TUID: kHvlGGiT1hUG
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Because they are actually sockets...
+Until now, a win32 SOCKET handle is often cast to an int file
+descriptor, as this is what other OS use for sockets. When necessary,
+QEMU eventually queries whether it's a socket with the help of
+fd_is_socket(). However, there is no guarantee of conflict between the
+fd and SOCKET space. Such conflict would have surprising consequences,
+we shouldn't mix them.
+
+Also, it is often forgotten that SOCKET must be closed with
+closesocket(), and not close().
+
+Instead, let's make the win32 socket wrapper functions return and take a
+file descriptor, and let util/ wrappers do the fd/SOCKET conversion as
+necessary. A bit of adaptation is necessary in io/ as well.
+
+Unfortunately, we can't drop closesocket() usage, despite
+_open_osfhandle() documentation claiming transfer of ownership, testing
+shows bad behaviour if you forget to call closesocket().
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- io/channel-socket.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ io/channel-socket.c |  18 +++--
+ io/channel-watch.c  |  17 +++--
+ util/oslib-win32.c  | 164 ++++++++++++++++++++++++++++++++++++++------
+ 3 files changed, 165 insertions(+), 34 deletions(-)
 
 diff --git a/io/channel-socket.c b/io/channel-socket.c
-index 7aca84f61a..2040297d2b 100644
+index 2040297d2b..18cc062431 100644
 --- a/io/channel-socket.c
 +++ b/io/channel-socket.c
-@@ -159,7 +159,7 @@ int qio_channel_socket_connect_sync(QIOChannelSocket *ioc,
+@@ -426,6 +426,14 @@ static void qio_channel_socket_init(Object *obj)
+     ioc->fd = -1;
+ }
  
-     trace_qio_channel_socket_connect_complete(ioc, fd);
-     if (qio_channel_socket_set_fd(ioc, fd, errp) < 0) {
--        close(fd);
-+        closesocket(fd);
-         return -1;
++static void wsa_event_clear(int sockfd)
++{
++#ifdef WIN32
++    SOCKET s = _get_osfhandle(sockfd);
++    WSAEventSelect(s, NULL, 0);
++#endif
++}
++
+ static void qio_channel_socket_finalize(Object *obj)
+ {
+     QIOChannelSocket *ioc = QIO_CHANNEL_SOCKET(obj);
+@@ -441,9 +449,7 @@ static void qio_channel_socket_finalize(Object *obj)
+                 err = NULL;
+             }
+         }
+-#ifdef WIN32
+-        WSAEventSelect(ioc->fd, NULL, 0);
+-#endif
++        wsa_event_clear(ioc->fd);
+         closesocket(ioc->fd);
+         ioc->fd = -1;
      }
+@@ -845,9 +851,7 @@ qio_channel_socket_close(QIOChannel *ioc,
+     Error *err = NULL;
  
-@@ -233,7 +233,7 @@ int qio_channel_socket_listen_sync(QIOChannelSocket *ioc,
+     if (sioc->fd != -1) {
+-#ifdef WIN32
+-        WSAEventSelect(sioc->fd, NULL, 0);
+-#endif
++        wsa_event_clear(sioc->fd);
+         if (qio_channel_has_feature(ioc, QIO_CHANNEL_FEATURE_LISTEN)) {
+             socket_listen_cleanup(sioc->fd, errp);
+         }
+@@ -899,7 +903,7 @@ static void qio_channel_socket_set_aio_fd_handler(QIOChannel *ioc,
+                                                   void *opaque)
+ {
+     QIOChannelSocket *sioc = QIO_CHANNEL_SOCKET(ioc);
+-    aio_set_fd_handler(ctx, sioc->fd, false,
++    aio_set_fd_handler(ctx, _get_osfhandle(sioc->fd), false,
+                        io_read, io_write, NULL, NULL, opaque);
+ }
  
-     trace_qio_channel_socket_listen_complete(ioc, fd);
-     if (qio_channel_socket_set_fd(ioc, fd, errp) < 0) {
--        close(fd);
-+        closesocket(fd);
-         return -1;
+diff --git a/io/channel-watch.c b/io/channel-watch.c
+index ad7c568a84..8c1c24008f 100644
+--- a/io/channel-watch.c
++++ b/io/channel-watch.c
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "io/channel-watch.h"
+ 
+ typedef struct QIOChannelFDSource QIOChannelFDSource;
+@@ -275,15 +276,21 @@ GSource *qio_channel_create_fd_watch(QIOChannel *ioc,
+ 
+ #ifdef CONFIG_WIN32
+ GSource *qio_channel_create_socket_watch(QIOChannel *ioc,
+-                                         int socket,
++                                         int sockfd,
+                                          GIOCondition condition)
+ {
++    SOCKET s = _get_osfhandle(sockfd);
+     GSource *source;
+     QIOChannelSocketSource *ssource;
+ 
+-    WSAEventSelect(socket, ioc->event,
+-                   FD_READ | FD_ACCEPT | FD_CLOSE |
+-                   FD_CONNECT | FD_WRITE | FD_OOB);
++    if (s == -1 ||
++        WSAEventSelect(s, ioc->event,
++                       FD_READ | FD_ACCEPT | FD_CLOSE |
++                       FD_CONNECT | FD_WRITE | FD_OOB) == SOCKET_ERROR) {
++        g_autofree gchar *emsg = g_win32_error_message(GetLastError());
++        error_printf("error creating socket watch: %s", emsg);
++        return NULL;
++    }
+ 
+     source = g_source_new(&qio_channel_socket_source_funcs,
+                           sizeof(QIOChannelSocketSource));
+@@ -293,7 +300,7 @@ GSource *qio_channel_create_socket_watch(QIOChannel *ioc,
+     object_ref(OBJECT(ioc));
+ 
+     ssource->condition = condition;
+-    ssource->socket = socket;
++    ssource->socket = s;
+     ssource->revents = 0;
+ 
+     ssource->fd.fd = (gintptr)ioc->event;
+diff --git a/util/oslib-win32.c b/util/oslib-win32.c
+index 07ade41800..78fab521cf 100644
+--- a/util/oslib-win32.c
++++ b/util/oslib-win32.c
+@@ -180,7 +180,8 @@ static int socket_error(void)
+ void qemu_socket_set_block(int fd)
+ {
+     unsigned long opt = 0;
+-    WSAEventSelect(fd, NULL, 0);
++    SOCKET s = _get_osfhandle(fd);
++    WSAEventSelect(s, NULL, 0);
+     ioctlsocket(fd, FIONBIO, &opt);
+ }
+ 
+@@ -297,7 +298,13 @@ int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
+                       socklen_t addrlen)
+ {
+     int ret;
+-    ret = connect(sockfd, addr, addrlen);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = connect(s, addr, addrlen);
+     if (ret < 0) {
+         if (WSAGetLastError() == WSAEWOULDBLOCK) {
+             errno = EINPROGRESS;
+@@ -313,7 +320,13 @@ int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
+ int qemu_listen_wrap(int sockfd, int backlog)
+ {
+     int ret;
+-    ret = listen(sockfd, backlog);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = listen(s, backlog);
+     if (ret < 0) {
+         errno = socket_error();
      }
-     qio_channel_set_feature(QIO_CHANNEL(ioc), QIO_CHANNEL_FEATURE_LISTEN);
-@@ -310,7 +310,7 @@ int qio_channel_socket_dgram_sync(QIOChannelSocket *ioc,
- 
-     trace_qio_channel_socket_dgram_complete(ioc, fd);
-     if (qio_channel_socket_set_fd(ioc, fd, errp) < 0) {
--        close(fd);
-+        closesocket(fd);
-         return -1;
+@@ -326,7 +339,13 @@ int qemu_bind_wrap(int sockfd, const struct sockaddr *addr,
+                    socklen_t addrlen)
+ {
+     int ret;
+-    ret = bind(sockfd, addr, addrlen);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = bind(s, addr, addrlen);
+     if (ret < 0) {
+         errno = socket_error();
      }
+@@ -337,12 +356,22 @@ int qemu_bind_wrap(int sockfd, const struct sockaddr *addr,
+ #undef socket
+ int qemu_socket_wrap(int domain, int type, int protocol)
+ {
+-    int ret;
+-    ret = socket(domain, type, protocol);
+-    if (ret < 0) {
++    SOCKET s;
++    int fd;
++
++    s = socket(domain, type, protocol);
++    if (s == -1) {
+         errno = socket_error();
++        return -1;
+     }
+-    return ret;
++
++    fd = _open_osfhandle(s, _O_BINARY);
++    if (fd < 0) {
++        closesocket(s);
++        errno = ENOMEM;
++    }
++
++    return fd;
+ }
  
+ 
+@@ -350,10 +379,22 @@ int qemu_socket_wrap(int domain, int type, int protocol)
+ int qemu_accept_wrap(int sockfd, struct sockaddr *addr,
+                      socklen_t *addrlen)
+ {
+-    int ret;
+-    ret = accept(sockfd, addr, addrlen);
+-    if (ret < 0) {
++    int ret = -1;
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    s = accept(s, addr, addrlen);
++    if (s == -1) {
+         errno = socket_error();
++    } else {
++        ret = _open_osfhandle(s, _O_BINARY);
++        if (ret < 0) {
++            closesocket(s);
++            errno = ENOMEM;
++        }
+     }
+     return ret;
+ }
+@@ -363,7 +404,13 @@ int qemu_accept_wrap(int sockfd, struct sockaddr *addr,
+ int qemu_shutdown_wrap(int sockfd, int how)
+ {
+     int ret;
+-    ret = shutdown(sockfd, how);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = shutdown(s, how);
+     if (ret < 0) {
+         errno = socket_error();
+     }
+@@ -375,7 +422,13 @@ int qemu_shutdown_wrap(int sockfd, int how)
+ int qemu_ioctlsocket_wrap(int fd, int req, void *val)
+ {
+     int ret;
+-    ret = ioctlsocket(fd, req, val);
++    SOCKET s = _get_osfhandle(fd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = ioctlsocket(s, req, val);
+     if (ret < 0) {
+         errno = socket_error();
+     }
+@@ -387,10 +440,28 @@ int qemu_ioctlsocket_wrap(int fd, int req, void *val)
+ int qemu_closesocket_wrap(int fd)
+ {
+     int ret;
+-    ret = closesocket(fd);
++    SOCKET s = _get_osfhandle(fd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++
++    /*
++     * close() must be called before closesocket(), otherwise close() returns an
++     * error and sets EBADF.
++     */
++    ret = close(fd);
++    if (ret < 0) {
++        return ret;
++    }
++
++    /* closesocket() is required, event after close()! */
++    ret = closesocket(s);
+     if (ret < 0) {
+         errno = socket_error();
+     }
++
+     return ret;
+ }
+ 
+@@ -400,7 +471,14 @@ int qemu_getsockopt_wrap(int sockfd, int level, int optname,
+                          void *optval, socklen_t *optlen)
+ {
+     int ret;
+-    ret = getsockopt(sockfd, level, optname, optval, optlen);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++
++    ret = getsockopt(s, level, optname, optval, optlen);
+     if (ret < 0) {
+         errno = socket_error();
+     }
+@@ -413,7 +491,13 @@ int qemu_setsockopt_wrap(int sockfd, int level, int optname,
+                          const void *optval, socklen_t optlen)
+ {
+     int ret;
+-    ret = setsockopt(sockfd, level, optname, optval, optlen);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = setsockopt(s, level, optname, optval, optlen);
+     if (ret < 0) {
+         errno = socket_error();
+     }
+@@ -426,7 +510,13 @@ int qemu_getpeername_wrap(int sockfd, struct sockaddr *addr,
+                           socklen_t *addrlen)
+ {
+     int ret;
+-    ret = getpeername(sockfd, addr, addrlen);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = getpeername(s, addr, addrlen);
+     if (ret < 0) {
+         errno = socket_error();
+     }
+@@ -439,7 +529,13 @@ int qemu_getsockname_wrap(int sockfd, struct sockaddr *addr,
+                           socklen_t *addrlen)
+ {
+     int ret;
+-    ret = getsockname(sockfd, addr, addrlen);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = getsockname(s, addr, addrlen);
+     if (ret < 0) {
+         errno = socket_error();
+     }
+@@ -451,7 +547,13 @@ int qemu_getsockname_wrap(int sockfd, struct sockaddr *addr,
+ ssize_t qemu_send_wrap(int sockfd, const void *buf, size_t len, int flags)
+ {
+     int ret;
+-    ret = send(sockfd, buf, len, flags);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = send(s, buf, len, flags);
+     if (ret < 0) {
+         errno = socket_error();
+     }
+@@ -464,7 +566,13 @@ ssize_t qemu_sendto_wrap(int sockfd, const void *buf, size_t len, int flags,
+                          const struct sockaddr *addr, socklen_t addrlen)
+ {
+     int ret;
+-    ret = sendto(sockfd, buf, len, flags, addr, addrlen);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = sendto(s, buf, len, flags, addr, addrlen);
+     if (ret < 0) {
+         errno = socket_error();
+     }
+@@ -476,7 +584,13 @@ ssize_t qemu_sendto_wrap(int sockfd, const void *buf, size_t len, int flags,
+ ssize_t qemu_recv_wrap(int sockfd, void *buf, size_t len, int flags)
+ {
+     int ret;
+-    ret = recv(sockfd, buf, len, flags);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = recv(s, buf, len, flags);
+     if (ret < 0) {
+         errno = socket_error();
+     }
+@@ -489,7 +603,13 @@ ssize_t qemu_recvfrom_wrap(int sockfd, void *buf, size_t len, int flags,
+                            struct sockaddr *addr, socklen_t *addrlen)
+ {
+     int ret;
+-    ret = recvfrom(sockfd, buf, len, flags, addr, addrlen);
++    SOCKET s = _get_osfhandle(sockfd);
++
++    if (s == -1) {
++        errno = EINVAL;
++        return -1;
++    }
++    ret = recvfrom(s, buf, len, flags, addr, addrlen);
+     if (ret < 0) {
+         errno = socket_error();
+     }
 -- 
 2.39.1
 

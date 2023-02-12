@@ -1,124 +1,121 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp2935802ejb;
-        Sat, 11 Feb 2023 08:24:11 -0800 (PST)
-X-Google-Smtp-Source: AK7set+EcuaIUnjjiepZbVyUFFgZM8MTB5k2ay18mkqR5rDWL95caZpfzJhvrRSVGSrjvZn5eIZn
-X-Received: by 2002:a05:622a:1447:b0:3b8:6c80:c113 with SMTP id v7-20020a05622a144700b003b86c80c113mr35107718qtx.66.1676132651300;
-        Sat, 11 Feb 2023 08:24:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676132651; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3593424ejb;
+        Sun, 12 Feb 2023 04:39:34 -0800 (PST)
+X-Google-Smtp-Source: AK7set9PbkChTFH2OGODECd04YeopGylEDmYYXrhAhLN9AuK2H+t961Px9CFMDR1PLNZ5cO7+I12
+X-Received: by 2002:a05:6214:29e6:b0:56b:f500:923b with SMTP id jv6-20020a05621429e600b0056bf500923bmr23612033qvb.34.1676205574534;
+        Sun, 12 Feb 2023 04:39:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676205574; cv=none;
         d=google.com; s=arc-20160816;
-        b=rN6zPFZOYeIgfkfOh5bryVQEeJM0kqW9Ps73B7eA/d0yuPI6aCcNmZQh2sajCZtQs7
-         yfcvd48yC/+nTRufDnsFyr0ihU4W/OWX6rFcUGaT2s7FW5myin/NHOtFGd2WLZvSMAy/
-         YRgfWeeQI0lbFX5LzcFrxVDJ5fdd865G0rez0MhLueH92JyFV8SxIcP4QjKdAyfEOq6c
-         t6IdTVLdVni7UfVgX2sM1Aqc5iIhCJT9u1EdHS8r5xsL0T3Ef8Glw0u0kNOViQ340jwA
-         s8Mp6T5GCjpVvkjKbd6Yqi+8mxzv3Q4Afg5P8g08QwNZBuJpUw79LU8KtUx0Js/m9lWk
-         9p7g==
+        b=oJlB4xh3AMccmT0Jmyp9WVYmOVF2sF+ppH+gx8UL7NbChVX+04hzMrcj3lvjmzuuY8
+         UaB9AhqUM1fbBKLdfAIe7oYvYGxNjT6h+a3+7GXuThuE5y2Gfk8zfGknBrz7urKzzZ5i
+         MG/jPlDD0xJdTVlEhMIfUVMb04NhiO+Kg/5m95NdIsT/yeR48xoLK7PfvFaM8MZsk5/1
+         lxWONWc8Hm4truGvgg9FiPdPnWLtgyw/jMftsD5dbjzW3dU//UvhWbOB5Tox5riWf/E/
+         gtxSKxxaalLiH63wPoCIS26FGYZwyeigPHtzLRoSDYV2XQIIDjRpTN6fY+8zl8e2sYqg
+         9E+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=e0LWcciV7eEwJQzvAUGSu/I7aDprqRhWVIotoi+Jf58=;
-        b=yFIRErDDuoQY0nJ3Ff7xeOnMp4Gk+kjvyzzjsKAT1g3wEvwqezX1r3sm5HQVfCdmgD
-         QmqgZKH8SozKDFm/frmxBQVUr1hfVvdog8f7EMmTzreGa8FKAbCt2KwnBYtTiWVvHo96
-         iUp5cFP0pdUoOfLrzFdIbKLlWEB3ZWLKJw7UNO8NARA7O6oWgVXnykojYEzNvTaLaVSv
-         5a5mSdK5Sw0RV0r3AMX7yt+3SmyGWzBouF4uRly8HyQ7vbUp6X5Bzeasy/+Y73fYLTBq
-         g6gbZW55fg+jE0wxG4X7qpeemQr42h4zm/X0TRUP5e+tUH2WPb73FAkqm6uEy18MQnTu
-         +Htg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=c1Na9cciasVrkgG2lgTIflwBSXkta5QHNZUnEEg6Lr4=;
+        b=yAUR82KjlFZ0Dpp05Nc8qYiqm2HXWScncTXIbC0yI1pxE2rDKKtm9POZxAUIydKcGA
+         hIwEn/qwDbV9bB3oFiu9ukdYolDuOVkZItee4DOys3zSh9xFOU8y/09ZT4FPuuA5Yox2
+         8nyv0oeFEhA6DhP54x/eWxynvBoVZFr0f8N1Qo8oh8qnIE87hv+PukN12UAuQyCUibS3
+         ow5X35CagE0lbpfsL0UVOPsRumnlbASRd62G07g6D+q7qTAxMfQ6m8nxfirRyY0hSVNm
+         hah8X40FP2EE0iDmLyJ+Fiii2vuOqLfp18yxFlYF+8kv7kh2CLWd9z3YHW7Ac72Any1M
+         2umw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=WpQmci1D;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Hsj6EKOm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5-20020a05622a008500b003b86a606052si5798939qtw.383.2023.02.11.08.24.11
+        by mx.google.com with ESMTPS id l19-20020a05620a28d300b006fc29969febsi7968225qkp.145.2023.02.12.04.39.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Feb 2023 08:24:11 -0800 (PST)
+        Sun, 12 Feb 2023 04:39:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=WpQmci1D;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Hsj6EKOm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pQseq-00050r-MY; Sat, 11 Feb 2023 11:23:24 -0500
+	id 1pRBd6-0007Zi-H3; Sun, 12 Feb 2023 07:38:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pQsep-0004zp-3H; Sat, 11 Feb 2023 11:23:23 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1pRBcx-0007Z1-Ej; Sun, 12 Feb 2023 07:38:43 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pQsen-0008Gt-2G; Sat, 11 Feb 2023 11:23:22 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id s11so132647edd.10;
- Sat, 11 Feb 2023 08:23:17 -0800 (PST)
+ id 1pRBcu-0001IU-Qn; Sun, 12 Feb 2023 07:38:43 -0500
+Received: by mail-ej1-x633.google.com with SMTP id ml19so26032170ejb.0;
+ Sun, 12 Feb 2023 04:38:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=e0LWcciV7eEwJQzvAUGSu/I7aDprqRhWVIotoi+Jf58=;
- b=WpQmci1DZASSYRo5et0YwcrXbU12hkdG04TxQZQ7ERoyOr4p53SuEKRjGCWIKVqB38
- vYec+AaSzV50EUVT+EHGOc42V3nAWqG3b4vGQvdSQJFi0DMlpaYCb+RhRqF7ohBVLipf
- y2oNAnrDTnwOSnj+/cYl13ZoOEuap6tDlKmRiK0d80bf7pxjERwt8mjtUL9//Rjl0FX9
- 9ZdMcfyxfYuSG/kN7NHSR6KJ0qO4SKI/+CCGilvi2H/Zf82EkAuIaq2Ium8OGH9p2Kz8
- I3zq0QZ6I/lqQtzYXEQfEGSv5Avt3jPhFEbUNmIpbfZToJ5L8JGxuNzI1CBRbQy63sm3
- P5rw==
+ bh=c1Na9cciasVrkgG2lgTIflwBSXkta5QHNZUnEEg6Lr4=;
+ b=Hsj6EKOmeK+R+VkIueD8UrBgAiiEgkHDEcS+O564iF3qBnC7enNZ4IMb10t8j+YQud
+ +9iv3NRS0j+CI4IUg17xkeYhDGqaab4PQxMy2IDUYtbRTBYWiLi1UKTCN3x7uZDqPPXE
+ YkBxT9QkoSIxwg/HWW98X6Ynj5HCQbwI/MUA5Voku0gUqykF28CFSozM6OobMCd1MD0P
+ 4W/LhPNCdGhjKfhpynepFfxxZzRytYbpegKJLm632UlXQ977U0rgt7rbsSzaOUXgf4TJ
+ dhQQxDNI0TgGA8huPeBQTvv94+fJNoOn7PEnmRh6vUslaThbfuRFgvIVV0mGM4PvIF4a
+ h9Aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=e0LWcciV7eEwJQzvAUGSu/I7aDprqRhWVIotoi+Jf58=;
- b=WpSn1E5BuPHTyZPHNvBHeKHfHek8bFvBFH62/udZeKZMOMnFnbmMKOWO/Jx0XvGUGi
- wSQw1BBWoO4XDPTBF/gGLg2uNcgICQKX+1haZoLdghoQUjBNWUJHa0lvIdy8cYnQQNvW
- 7pT7OZ19Olf1mN/kDyvDcU+A9l/IM7DA6rd+Jaw367vDwwSMp8h03aRcNVo7Ec6hASDw
- 9a7v4K9eN8BZVDOJfNFL9ZSWr1g60nXnN4eXzm9cXkfrtUqcL8OYlcFh6mUduzI27Ibi
- o1qhkV+UHSBSRqz3lATopWka7VMPrXKtSCQ7AUDleISN9XRzWYrgVDNTEkAhcsoVdzv8
- ej5A==
-X-Gm-Message-State: AO0yUKXAq22ntTn8N0e+yX5Yty4wTIucpdqzaeLJ1WkFVmbMG+oXPnos
- j1vWvMnRLcjKpniM/aBSzI4=
-X-Received: by 2002:a05:6402:268a:b0:4a3:43c1:843f with SMTP id
- w10-20020a056402268a00b004a343c1843fmr2356191edd.19.1676132595787; 
- Sat, 11 Feb 2023 08:23:15 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-089-014-099-074.89.14.pool.telefonica.de.
- [89.14.99.74]) by smtp.gmail.com with ESMTPSA id
- l7-20020a056402254700b0049dc0123f29sm3855872edb.61.2023.02.11.08.23.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 11 Feb 2023 08:23:15 -0800 (PST)
-Date: Sat, 11 Feb 2023 16:23:10 +0000
+ bh=c1Na9cciasVrkgG2lgTIflwBSXkta5QHNZUnEEg6Lr4=;
+ b=M5sB2p2VmZNQW/hvmPkqrqTkcr+wyqhaKYAR4OTmRrvZl6l0WbiQ2ZuJ4FU05OOb27
+ zS2k9XDMvnZVj5W9PfuRuTcqo84tmyxB9QHBKmJhZKpbDwggHARk6rxjRgj+N1Frlc05
+ kTgTkUCMvBWcuT1UiwlQ6ut3xCI401Bi+tlRb9ZbIhPVQepw/daTFGlHZc2V0PwMHRHf
+ GYc22mFHlzbVH0v6kXTs1dkYNm8/FiycbWmUHL67FLk59lpbZR/oXzZKtoAHEyL/hXmU
+ UGK4SM9ySyombHnyNJ+/zxEDxDQFyIEj2tLjvKw7KmcGwsOHeSWfi6iIuDwbLuvtlkSi
+ g4wA==
+X-Gm-Message-State: AO0yUKVks5r4IHFM4vZvXjEL45wS8lKAH2Wm9hA/wyySbxX2bTwSoH/2
+ bddcoCEfp8rtmDx/PtXP9soxOlJ6g+I=
+X-Received: by 2002:a17:907:8b8b:b0:8aa:f2f2:7543 with SMTP id
+ tb11-20020a1709078b8b00b008aaf2f27543mr23772244ejc.29.1676205518129; 
+ Sun, 12 Feb 2023 04:38:38 -0800 (PST)
+Received: from localhost.localdomain
+ (dynamic-077-011-172-153.77.11.pool.telefonica.de. [77.11.172.153])
+ by smtp.gmail.com with ESMTPSA id
+ qw14-20020a170906fcae00b008af1f1bee79sm5233164ejb.9.2023.02.12.04.38.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 12 Feb 2023 04:38:37 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: John G Johnson <john.g.johnson@oracle.com>,
- Richard Henderson <richard.henderson@linaro.org>,
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ qemu-arm@nongnu.org, Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ qemu-block@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ John Snow <jsnow@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Jagannathan Raman <jag.raman@oracle.com>, qemu-ppc@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, Ani Sinha <ani@anisinha.ca>,
- Eduardo Habkost <eduardo@habkost.net>, Gerd Hoffmann <kraxel@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>
-Subject: Re: [PATCH v6 00/33] Consolidate PIIX south bridges
-In-Reply-To: <6f97d406-ff70-07b2-2477-c69420bff2a7@linaro.org>
-References: <20230109172347.1830-1-shentey@gmail.com>
- <211e791a-9d37-9655-ca93-9e3bda2e21c3@linaro.org>
- <6D8095E7-E540-4D7E-B976-D71522F8664A@gmail.com>
- <752135A6-44DC-4504-8E16-C2E71EC76872@gmail.com>
- <9578e7ca-5f3d-2d00-7288-16ae486fb8c0@linaro.org>
- <36BB4E64-8163-44BA-B622-8943E1C1DCE8@gmail.com>
- <50FA07E9-C8DA-4D6E-9A87-F40BB9C2D324@gmail.com>
- <6f97d406-ff70-07b2-2477-c69420bff2a7@linaro.org>
-Message-ID: <75F7CD0D-1E37-41FF-B938-75D625537C6F@gmail.com>
+ John G Johnson <john.g.johnson@oracle.com>,
+ Bernhard Beschow <shentey@gmail.com>, Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v7 01/23] hw/i386/pc: Create RTC controllers in south bridges
+Date: Sun, 12 Feb 2023 13:37:43 +0100
+Message-Id: <20230212123805.30799-2-shentey@gmail.com>
+X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20230212123805.30799-1-shentey@gmail.com>
+References: <20230212123805.30799-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52c.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -140,126 +137,223 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DR8yLiIOe5Nx
+X-TUID: 9shaX1ZG4S1w
 
+Just like in the real hardware (and in PIIX4), create the RTC
+controllers in the south bridges.
 
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20221022150508.26830-11-shentey@gmail.com>
+---
+ include/hw/i386/ich9.h        |  2 ++
+ include/hw/southbridge/piix.h |  4 ++++
+ hw/i386/pc.c                  | 12 +++++++++++-
+ hw/i386/pc_piix.c             |  8 ++++++++
+ hw/i386/pc_q35.c              |  1 +
+ hw/isa/lpc_ich9.c             |  8 ++++++++
+ hw/isa/piix3.c                | 15 +++++++++++++++
+ hw/isa/Kconfig                |  2 ++
+ 8 files changed, 51 insertions(+), 1 deletion(-)
 
-Am 10=2E Februar 2023 17:11:06 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <=
-philmd@linaro=2Eorg>:
->On 10/2/23 17:27, Bernhard Beschow wrote:
->>=20
->>=20
->> Am 23=2E Januar 2023 15:51:49 UTC schrieb Bernhard Beschow <shentey@gma=
-il=2Ecom>:
->>>=20
->>>=20
->>> Am 23=2E Januar 2023 09:25:51 UTC schrieb "Philippe Mathieu-Daud=C3=A9=
-" <philmd@linaro=2Eorg>:
->>>> On 20/1/23 13:22, Bernhard Beschow wrote:
->>>>> Am 13=2E Januar 2023 17:39:45 UTC schrieb Bernhard Beschow <shentey@=
-gmail=2Ecom>:
->>>>>> Am 13=2E Januar 2023 08:46:53 UTC schrieb "Philippe Mathieu-Daud=C3=
-=A9" <philmd@linaro=2Eorg>:
->>>>>>> On 9/1/23 18:23, Bernhard Beschow wrote:
->>>>>>>> This series consolidates the implementations of the PIIX3 and PII=
-X4 south
->>>>>>>> bridges and is an extended version of [1]=2E The motivation is to=
- share as much
->>>>>>>> code as possible and to bring both device models to feature parit=
-y such that
->>>>>>>> perhaps PIIX4 can become a drop-in-replacement for PIIX3 in the p=
-c machine=2E This
->>>>>>>> could resolve the "Frankenstein" PIIX4-PM problem in PIIX3 discus=
-sed on this
->>>>>>>> list before=2E
->>>>>>>=20
->>>>>>>> Bernhard Beschow (30):
->>>>>>>>      hw/pci/pci: Factor out pci_bus_map_irqs() from pci_bus_irqs(=
-)
->>>>>>>>      hw/isa/piix3: Decouple INTx-to-LNKx routing which is board-s=
-pecific
->>>>>>>>      hw/isa/piix4: Decouple INTx-to-LNKx routing which is board-s=
-pecific
->>>>>>>>      hw/mips/Kconfig: Track Malta's PIIX dependencies via Kconfig
->>>>>>>>      hw/usb/hcd-uhci: Introduce TYPE_ defines for device models
->>>>>>>>      hw/intc/i8259: Make using the isa_pic singleton more type-sa=
-fe
->>>>>>>>      hw/intc/i8259: Introduce i8259 proxy TYPE_ISA_PIC
->>>>>>>>      hw/i386/pc: Create RTC controllers in south bridges
->>>>>>>>      hw/i386/pc: No need for rtc_state to be an out-parameter
->>>>>>>>      hw/i386/pc_piix: Allow for setting properties before realizi=
-ng PIIX3
->>>>>>>>        south bridge
->>>>>>>>      hw/isa/piix3: Create USB controller in host device
->>>>>>>>      hw/isa/piix3: Create power management controller in host dev=
-ice
->>>>>>>>      hw/isa/piix3: Create TYPE_ISA_PIC in host device
->>>>>>>>      hw/isa/piix3: Create IDE controller in host device
->>>>>>>>      hw/isa/piix3: Wire up ACPI interrupt internally
->>>>>>>>      hw/isa/piix3: Resolve redundant PIIX_NUM_PIC_IRQS
->>>>>>>>      hw/isa/piix3: Rename pci_piix3_props for sharing with PIIX4
->>>>>>>>      hw/isa/piix3: Rename piix3_reset() for sharing with PIIX4
->>>>>>>>      hw/isa/piix3: Drop the "3" from PIIX base class
->>>>>>>>      hw/isa/piix4: Make PIIX4's ACPI and USB functions optional
->>>>>>>>      hw/isa/piix4: Remove unused inbound ISA interrupt lines
->>>>>>>>      hw/isa/piix4: Use TYPE_ISA_PIC device
->>>>>>>>      hw/isa/piix4: Reuse struct PIIXState from PIIX3
->>>>>>>>      hw/isa/piix4: Rename reset control operations to match PIIX3
->>>>>>>>      hw/isa/piix3: Merge hw/isa/piix4=2Ec
->>>>>>>>      hw/isa/piix: Harmonize names of reset control memory regions
->>>>>>>>      hw/isa/piix: Reuse PIIX3 base class' realize method in PIIX4
->>>>>>>>      hw/isa/piix: Rename functions to be shared for interrupt tri=
-ggering
->>>>>>>>      hw/isa/piix: Consolidate IRQ triggering
->>>>>>>>      hw/isa/piix: Share PIIX3's base class with PIIX4
->>>>>>>>=20
->>>>>>>> Philippe Mathieu-Daud=C3=A9 (3):
->>>>>>>>      hw/mips/malta: Introduce PIIX4_PCI_DEVFN definition
->>>>>>>>      hw/mips/malta: Set PIIX4 IRQ routes in embedded bootloader
->>>>>>>>      hw/isa/piix4: Correct IRQRC[A:D] reset values
->>>>>>>=20
->>>>>>> I'm queuing the first 10 patches for now to alleviate the size of =
-this
->>>>>>> series, and I'll respin a v7 with the rest to avoid making you suf=
-fer
->>>>>>> any longer :/ Thanks for insisting in this effort and I apologize =
-it
->>>>>>> is taking me so long=2E=2E=2E
->>>>>>=20
->>>>>> Okay=2E=2E=2E What's the further plan? Is there anything missing?
->>>>>=20
->>>>> Ping
->>>>=20
->>>> The plan is "I'll respin a v7 with the rest"=2E
->>>=20
->>> I understood that part=2E I wonder what the blocking issue is/was=2E
->>=20
->> The first part of this series contains piix3 changes such as the ISA pr=
-oxy pic and movement of rtc=2E This seems the riskier part of the series to=
- me which I'd like to get feedback on from the field rather sooner than lat=
-er=2E The reason is that I can't currently forsee how fast I could react if=
- these changes were merged during (soft) freeze=2E
->
->What bugs me is the i8259 proxy=2E
+diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
+index 222781e8b9..dab309d5e3 100644
+--- a/include/hw/i386/ich9.h
++++ b/include/hw/i386/ich9.h
+@@ -7,6 +7,7 @@
+ #include "hw/isa/apm.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/ich9.h"
++#include "hw/rtc/mc146818rtc.h"
+ #include "qom/object.h"
+ 
+ void ich9_lpc_set_irq(void *opaque, int irq_num, int level);
+@@ -35,6 +36,7 @@ struct ICH9LPCState {
+     */
+     uint8_t irr[PCI_SLOT_MAX][PCI_NUM_PINS];
+ 
++    RTCState rtc;
+     APMState apm;
+     ICH9LPCPMRegs pm;
+     uint32_t sci_level; /* track sci level */
+diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
+index 0bf48e936d..b06d26fa11 100644
+--- a/include/hw/southbridge/piix.h
++++ b/include/hw/southbridge/piix.h
+@@ -13,6 +13,8 @@
+ #define HW_SOUTHBRIDGE_PIIX_H
+ 
+ #include "hw/pci/pci_device.h"
++#include "qom/object.h"
++#include "hw/rtc/mc146818rtc.h"
+ 
+ /* PIRQRC[A:D]: PIRQx Route Control Registers */
+ #define PIIX_PIRQCA 0x60
+@@ -51,6 +53,8 @@ struct PIIXState {
+     /* This member isn't used. Just for save/load compatibility */
+     int32_t pci_irq_levels_vmstate[PIIX_NUM_PIRQS];
+ 
++    RTCState rtc;
++
+     /* Reset Control Register contents */
+     uint8_t rcr;
+ 
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 6e592bd969..44daa36338 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1304,7 +1304,17 @@ void pc_basic_device_init(struct PCMachineState *pcms,
+         pit_alt_irq = qdev_get_gpio_in(hpet, HPET_LEGACY_PIT_INT);
+         rtc_irq = qdev_get_gpio_in(hpet, HPET_LEGACY_RTC_INT);
+     }
+-    *rtc_state = mc146818_rtc_init(isa_bus, 2000, rtc_irq);
++
++    if (rtc_irq) {
++        qdev_connect_gpio_out(DEVICE(*rtc_state), 0, rtc_irq);
++    } else {
++        uint32_t irq = object_property_get_uint(OBJECT(*rtc_state),
++                                                "irq",
++                                                &error_fatal);
++        isa_connect_gpio_out(*rtc_state, 0, irq);
++    }
++    object_property_add_alias(OBJECT(pcms), "rtc-time", OBJECT(*rtc_state),
++                              "date");
+ 
+     qemu_register_boot_set(pc_boot_set, *rtc_state);
+ 
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index df64dd8dcc..8f894714e5 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -32,6 +32,7 @@
+ #include "hw/i386/pc.h"
+ #include "hw/i386/apic.h"
+ #include "hw/pci-host/i440fx.h"
++#include "hw/rtc/mc146818rtc.h"
+ #include "hw/southbridge/piix.h"
+ #include "hw/display/ramfb.h"
+ #include "hw/firmware/smbios.h"
+@@ -239,10 +240,17 @@ static void pc_init1(MachineState *machine,
+         piix3->pic = x86ms->gsi;
+         piix3_devfn = piix3->dev.devfn;
+         isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix3), "isa.0"));
++        rtc_state = ISA_DEVICE(object_resolve_path_component(OBJECT(pci_dev),
++                                                             "rtc"));
+     } else {
+         pci_bus = NULL;
+         isa_bus = isa_bus_new(NULL, get_system_memory(), system_io,
+                               &error_abort);
++
++        rtc_state = isa_new(TYPE_MC146818_RTC);
++        qdev_prop_set_int32(DEVICE(rtc_state), "base_year", 2000);
++        isa_realize_and_unref(rtc_state, isa_bus, &error_fatal);
++
+         i8257_dma_init(isa_bus, 0);
+         pcms->hpet_enabled = false;
+     }
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 66cd718b70..3b1a0d0cfd 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -239,6 +239,7 @@ static void pc_q35_init(MachineState *machine)
+     lpc = pci_create_simple_multifunction(host_bus, PCI_DEVFN(ICH9_LPC_DEV,
+                                           ICH9_LPC_FUNC), true,
+                                           TYPE_ICH9_LPC_DEVICE);
++    rtc_state = ISA_DEVICE(object_resolve_path_component(OBJECT(lpc), "rtc"));
+ 
+     object_property_add_link(OBJECT(machine), PC_MACHINE_ACPI_DEVICE_PROP,
+                              TYPE_HOTPLUG_HANDLER,
+diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+index 1fba3c210c..b9efae0797 100644
+--- a/hw/isa/lpc_ich9.c
++++ b/hw/isa/lpc_ich9.c
+@@ -663,6 +663,8 @@ static void ich9_lpc_initfn(Object *obj)
+     static const uint8_t acpi_enable_cmd = ICH9_APM_ACPI_ENABLE;
+     static const uint8_t acpi_disable_cmd = ICH9_APM_ACPI_DISABLE;
+ 
++    object_initialize_child(obj, "rtc", &lpc->rtc, TYPE_MC146818_RTC);
++
+     object_property_add_uint8_ptr(obj, ACPI_PM_PROP_SCI_INT,
+                                   &lpc->sci_gsi, OBJ_PROP_FLAG_READ);
+     object_property_add_uint8_ptr(OBJECT(lpc), ACPI_PM_PROP_ACPI_ENABLE_CMD,
+@@ -728,6 +730,12 @@ static void ich9_lpc_realize(PCIDevice *d, Error **errp)
+     isa_bus_irqs(isa_bus, lpc->gsi);
+ 
+     i8257_dma_init(isa_bus, 0);
++
++    /* RTC */
++    qdev_prop_set_int32(DEVICE(&lpc->rtc), "base_year", 2000);
++    if (!qdev_realize(DEVICE(&lpc->rtc), BUS(isa_bus), errp)) {
++        return;
++    }
+ }
+ 
+ static bool ich9_rst_cnt_needed(void *opaque)
+diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
+index a9cb39bf21..f9103ea45a 100644
+--- a/hw/isa/piix3.c
++++ b/hw/isa/piix3.c
+@@ -28,6 +28,7 @@
+ #include "hw/dma/i8257.h"
+ #include "hw/southbridge/piix.h"
+ #include "hw/irq.h"
++#include "hw/qdev-properties.h"
+ #include "hw/isa/isa.h"
+ #include "hw/xen/xen.h"
+ #include "sysemu/runstate.h"
+@@ -301,6 +302,12 @@ static void pci_piix3_realize(PCIDevice *dev, Error **errp)
+                                         PIIX_RCR_IOPORT, &d->rcr_mem, 1);
+ 
+     i8257_dma_init(isa_bus, 0);
++
++    /* RTC */
++    qdev_prop_set_int32(DEVICE(&d->rtc), "base_year", 2000);
++    if (!qdev_realize(DEVICE(&d->rtc), BUS(isa_bus), errp)) {
++        return;
++    }
+ }
+ 
+ static void build_pci_isa_aml(AcpiDevAmlIf *adev, Aml *scope)
+@@ -324,6 +331,13 @@ static void build_pci_isa_aml(AcpiDevAmlIf *adev, Aml *scope)
+     qbus_build_aml(bus, scope);
+ }
+ 
++static void pci_piix3_init(Object *obj)
++{
++    PIIX3State *d = PIIX3_PCI_DEVICE(obj);
++
++    object_initialize_child(obj, "rtc", &d->rtc, TYPE_MC146818_RTC);
++}
++
+ static void pci_piix3_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -350,6 +364,7 @@ static const TypeInfo piix3_pci_type_info = {
+     .name = TYPE_PIIX3_PCI_DEVICE,
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PIIX3State),
++    .instance_init = pci_piix3_init,
+     .abstract = true,
+     .class_init = pci_piix3_class_init,
+     .interfaces = (InterfaceInfo[]) {
+diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
+index 0156a66889..c10cbc5fc1 100644
+--- a/hw/isa/Kconfig
++++ b/hw/isa/Kconfig
+@@ -35,6 +35,7 @@ config PIIX3
+     bool
+     select I8257
+     select ISA_BUS
++    select MC146818RTC
+ 
+ config PIIX4
+     bool
+@@ -79,3 +80,4 @@ config LPC_ICH9
+     select I8257
+     select ISA_BUS
+     select ACPI_ICH9
++    select MC146818RTC
+-- 
+2.39.1
 
-I agree that it smells like a workaround for some problem elsewhere=2E
-
-The patch introducing the proxy to piix3 could be replaced by a patch movi=
-ng:
-- isa_bus_irqs() into piix3's realize method and
-- `piix3->pic =3D x86ms->gsi;` in front of the realize call of piix3=2E
-
-Would that work for you? I could respin then=2E
-
-A first test run with the pc machine seems promising=2E The Malta machine =
-would need similar treatment=2E
-
-Best regards,
-Bernhard
-
->I applied your patches locally, and am
->trying to rework to avoid using it=2E I amend a 'Co-developed-by' tag
->to patches modified:
->https://docs=2Ekernel=2Eorg/process/submitting-patches=2Ehtml#when-to-use=
--acked-by-cc-and-co-developed-by
->

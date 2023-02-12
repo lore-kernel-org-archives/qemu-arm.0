@@ -1,91 +1,91 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3596331ejb;
-        Sun, 12 Feb 2023 04:44:41 -0800 (PST)
-X-Google-Smtp-Source: AK7set/U2GipfNV20EDQ8R4vwmS+8sZCtONDECw/qi44afF04fNzyFXHXq3Dp0yl29dm0FXPXNKS
-X-Received: by 2002:a05:622a:18a8:b0:3b8:6a41:c329 with SMTP id v40-20020a05622a18a800b003b86a41c329mr38791716qtc.21.1676205881104;
-        Sun, 12 Feb 2023 04:44:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676205881; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3596520ejb;
+        Sun, 12 Feb 2023 04:45:02 -0800 (PST)
+X-Google-Smtp-Source: AK7set/dyuKbRI2HPog9dV7w0SKzBkOWhQ3fES9dKYLscK67SjCwdoiOk1hE+baijFmYqEjNO8TA
+X-Received: by 2002:ad4:5b88:0:b0:56e:a630:2626 with SMTP id 8-20020ad45b88000000b0056ea6302626mr5265692qvp.45.1676205901726;
+        Sun, 12 Feb 2023 04:45:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676205901; cv=none;
         d=google.com; s=arc-20160816;
-        b=dmyECq1a6Wx8PLD9307ExKMQkAcR0vQ6tST3RiJ4q5cXhnQC/NHJTSrhB2p0lP/r7p
-         0WnfQtHPROlJ4pvpmsq/apuAUiyzZBQkRB8YIReCe9/v3MXHi5KZyjUAn+LgMUMXSTUB
-         wrDnKsq+Ry9PsYLSORn1IqGjxFiwC68TpZi0sGoxu06JiBiDPZOVNgFTB9P4oTwwgJdP
-         Ttvhm5XFZbvceVCbq6Dzr0CrDN6iQkDzgKnYf12Ue60cVpY1Dcf+U+GwaId0HYMFNtvy
-         TQE4C9y0bCaVU9VE3t0peqymGEedAC4zl16MDWZ+kbSt3Qi3nX1TaBkw85D6H9EcghfS
-         Nbaw==
+        b=BOE9gXgyGJUqYFJV5zOS7c1Da6eUNKLg22efHWD+i6n40Jre57/cXnlEwGPP8ZQepb
+         uJtY8USACjDnTsstLAFb/OocC2iXz0dc+hXdIv/7ViZUYU7XGtT39RadOkoeEW5X9us5
+         PU/EgOTQUUYWd++d9IDgfPWZTSbOQjRdeSMJz7jeW2pvhxZVLX3aSZ8wbqOJjvnAe988
+         ewNfKm/woxjzEybq1bqrKvp6uxKBb9wYT8mwy3FA0xBIMk+i2F4cdZsl1vzENuwPAT+a
+         KTOMlGUfP+OGKT2cdeBLnpqGYPVrJ79HH0U/Xy0NIUnZx6/lAzRnAFzJkr45Pg/uu6TG
+         4BvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=9mhZDnYM8cxjE+RfZ9PrvkpKgKDGSsRAMZZjS//lOxM=;
-        b=t+pOB5KQwrMs0RCBjsC2vVey3u4RvggGiCwFSVtKw3fhUXWyn7UDyr4+UUQlXiCUPa
-         LpoqVAwSkXDc2DMtKKCx04ksr6BRqNcp0Uilfbk9x+CMOI01sEbm9UFGo/5TBGaT9mdO
-         F3uo9nonk9kWiV7/M4WwoMqEZNmgwBuFXK5G2c8YpFzSlGenpCdmKd13TCd5qqbAcxmw
-         SUPJKOljC87faQ1kieo1IyNUiqGTzFE+yagGUsCg29YUOs/eDuZuGEmkP3fucNnn1vr4
-         hfpg4hcY+vPWrccNC5cNqESNiF8x+N9oYPfWi0YUh6E/X799m7r3wV6z32w0Hg2UVx5b
-         FaSw==
+        bh=uJKX+iHDZZxUElS601grp2c7YsdwIFko9wLSh73qHuo=;
+        b=PxZt4zmzmLC2hfemOUJvJDioW+R9t/Tmbz+obA/3j15+vmYoOecrn0C4VhmxXXjxs+
+         fhAcocxePLMJGa+7e3wCFKsMpRXLQAj36QlWzVWDyNstEG+zMdvOSgEA0hPQbjMrTGUs
+         PJdk6Qyc6OQ3S4RhQgmTjorsKE5LJTj7pynSmN66emgCZGoty0OT0wO66B6b4++pOxy/
+         BEd/KpI1+opCjGx9SpY0/8fAx44/zxwLHFEK1g0oqx1EpQTaEGLiBqwrxED21z285cA5
+         Co+xje70I76kpaj79io106oW/RhVHbZ6F8NjKW0QiDLd8rLcrUhxFGRXk6AH5JkluHtP
+         lhRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dMsqVVoy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bUWDIuQ1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bi18-20020a05620a319200b00731114e2183si7948514qkb.77.2023.02.12.04.44.40
+        by mx.google.com with ESMTPS id h29-20020a0cab1d000000b004c791803422si5971245qvb.5.2023.02.12.04.45.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Feb 2023 04:44:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 12 Feb 2023 04:45:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dMsqVVoy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=bUWDIuQ1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pRBih-0006TF-8j; Sun, 12 Feb 2023 07:44:39 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pRBiY-0005ah-QI; Sun, 12 Feb 2023 07:44:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pRBdD-0007bv-9c; Sun, 12 Feb 2023 07:39:00 -0500
+ id 1pRBdO-0007lI-5d; Sun, 12 Feb 2023 07:39:10 -0500
 Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pRBdA-0001MC-2M; Sun, 12 Feb 2023 07:38:58 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id p26so25803028ejx.13;
- Sun, 12 Feb 2023 04:38:52 -0800 (PST)
+ id 1pRBdM-0001QS-9F; Sun, 12 Feb 2023 07:39:09 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id jg8so25874725ejc.6;
+ Sun, 12 Feb 2023 04:39:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9mhZDnYM8cxjE+RfZ9PrvkpKgKDGSsRAMZZjS//lOxM=;
- b=dMsqVVoyQKMMcPWSAXdJi/CcTowL5l0OpEpaiLddlJKH8AcqsiPYAdTmzDVBRftn79
- WVgfxp5YmNK5mY0+WhECiHaF4gNnYpOMH9mJ3aw7MWmoqcbZJK9l0cXvnZMVq0rX8g7B
- EaNQe6e8u/JSR7kvdZ2W3T2uYzo2fcmrZ+r+k7dTMfFj5IKv+1+cptTw8MCaIrTQheBk
- myy90xa1if6bvLFeZglq8iTBTz6OALak63ST5o0jEE5rUUBPqvt9AumNJG+xgcP3TTlP
- jYdI9gkWuBfGfyd949KNlnRNwzA4DNJTUHWLn+p/99p8aH75bWiRHHSCcFNyNSojuiAj
- gx7Q==
+ bh=uJKX+iHDZZxUElS601grp2c7YsdwIFko9wLSh73qHuo=;
+ b=bUWDIuQ1XkIeu2xP6zC6iU8fxx1Ajw1Og1tMbsjXgD6jwGOWRP74wLjLOvbeMAp8sR
+ 7APi1Iz4HCObfmJWPjEzN6fgvn2aHKSKAD1BI/lIHwQCCaXXYjmbUAeUfBXt5tgyBHSP
+ Qm8IoAnQ0mKXxbN3rSYunHb6MruthXoqA0Wp89iDR2sv8s9kY2RDwuObC3rXrJ0tFn4n
+ AEYTq9v2UJagsPS7RAJdX9ZAWxr2Eh2uOO0+dUiuBxJIzwfI06OOzLY9pQTa9nag3u//
+ n/dVaDrkDDReYoavXdQV7S9NhWdK08B0eDYQwKytdd6a/1a+kRepbjv1oRW3U4Z/mO/A
+ qb9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9mhZDnYM8cxjE+RfZ9PrvkpKgKDGSsRAMZZjS//lOxM=;
- b=6txkv6qs70FLexiLhnXh/WQs/8Y+qDLW0kjKVJMugI+wzmJRfOihmvqUtOxyIkMzmJ
- m7AjTDGETX4vgTAeIWwEeTaMaLH4HfRppZ8jURAvRxCrfZnFE8Ix9vnbkjbEfALRMD8S
- KBsVBZW8wmN/UpDzeG4rWJ0QRVgotyekAXN+LSJbmELm1bmzhVgq9oPGxJRe/CKCcsLO
- cOwLaWeul10tJmk+2iY5q91F9RbYJjwA+BOPReACx4sfNW+4HmyjA4cSKU/xq/KjXg1O
- ts1NB5VMqtVMTLtUq1s76JyQ1685+g6nA+7BussDwrqG8+8KL/zWSE04zeoEO30Y9a1v
- N7iA==
-X-Gm-Message-State: AO0yUKUgp1A8WUHM3apKdH8MxunZ3xnrmfKL2V1kIVcLlYF39bxlp3Ac
- IbRyWy0pN6+DYIT55z5bpIpRPuBDX2w=
-X-Received: by 2002:a17:906:380d:b0:879:2a5:dc3c with SMTP id
- v13-20020a170906380d00b0087902a5dc3cmr20968916ejc.40.1676205531856; 
- Sun, 12 Feb 2023 04:38:51 -0800 (PST)
+ bh=uJKX+iHDZZxUElS601grp2c7YsdwIFko9wLSh73qHuo=;
+ b=M058HQnvB0aB8k9UdhqP7irYnjaNNu1N0CfhR+3thCUT0+R+sPn6/m3VNdnEqRg4Pa
+ SvNCapaXJdJXjzyOUFbxVxcxeuB78sKcmOqj3IPmejHEjvZcBkQXTG0IAE8wBiVzRE7k
+ edReUSGwCcMZ81m30QTUmR10W4Zj508lvB2CVk3F8kh83QIYp+LcD1h2xF9FSWntxl6s
+ 2/CYno0LBSHvGls+EJY0FdfZe5TnfZ/Zn5QYE1gnRkDv5HbjY3WNXb2+47zggNvRZRkq
+ d8yBny5MQ/DMOoU0WIRVH7Q6W0O+BKFCnxf4WGSr+sofQGH1DJHNrgmo28Zcqgx2Lei0
+ R6YA==
+X-Gm-Message-State: AO0yUKV51u5+3sFZZ0TFG2RVJOz/GhHgIzTJg/ekzWWveJaqDPPpzDdo
+ IJBNtDRnAf/edmK9pNQ5E0vzQ4fTMLg=
+X-Received: by 2002:a17:906:69c6:b0:881:f614:44ed with SMTP id
+ g6-20020a17090669c600b00881f61444edmr24813537ejs.30.1676205544114; 
+ Sun, 12 Feb 2023 04:39:04 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-077-011-172-153.77.11.pool.telefonica.de. [77.11.172.153])
  by smtp.gmail.com with ESMTPSA id
- qw14-20020a170906fcae00b008af1f1bee79sm5233164ejb.9.2023.02.12.04.38.50
+ qw14-20020a170906fcae00b008af1f1bee79sm5233164ejb.9.2023.02.12.04.39.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Feb 2023 04:38:51 -0800 (PST)
+ Sun, 12 Feb 2023 04:39:03 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
@@ -106,10 +106,10 @@ Cc: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  Igor Mammedov <imammedo@redhat.com>,
  John G Johnson <john.g.johnson@oracle.com>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v7 10/23] hw/isa/piix3: Rename pci_piix3_props for sharing
- with PIIX4
-Date: Sun, 12 Feb 2023 13:37:52 +0100
-Message-Id: <20230212123805.30799-11-shentey@gmail.com>
+Subject: [PATCH v7 17/23] hw/isa/piix4: Rename reset control operations to
+ match PIIX3
+Date: Sun, 12 Feb 2023 13:37:59 +0100
+Message-Id: <20230212123805.30799-18-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230212123805.30799-1-shentey@gmail.com>
 References: <20230212123805.30799-1-shentey@gmail.com>
@@ -126,51 +126,76 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5nKA4xeKlV6M
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uh0MON5tiObp
+
+Both implementations are the same and will be shared upon merging.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20221022150508.26830-22-shentey@gmail.com>
+Message-Id: <20221022150508.26830-35-shentey@gmail.com>
 ---
- hw/isa/piix3.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/isa/piix4.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
-index 55835912b8..cf7daf29ab 100644
---- a/hw/isa/piix3.c
-+++ b/hw/isa/piix3.c
-@@ -371,7 +371,7 @@ static void pci_piix3_init(Object *obj)
-     object_initialize_child(obj, "ide", &d->ide, TYPE_PIIX3_IDE);
+diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
+index 7d4a66af49..4538676ea5 100644
+--- a/hw/isa/piix4.c
++++ b/hw/isa/piix4.c
+@@ -133,8 +133,8 @@ static void piix4_request_i8259_irq(void *opaque, int irq, int level)
+     qemu_set_irq(s->cpu_intr, level);
  }
  
--static Property pci_piix3_props[] = {
-+static Property pci_piix_props[] = {
-     DEFINE_PROP_UINT32("smb_io_base", PIIX3State, smb_io_base, 0),
-     DEFINE_PROP_BOOL("has-acpi", PIIX3State, has_acpi, true),
-     DEFINE_PROP_BOOL("has-usb", PIIX3State, has_usb, true),
-@@ -398,7 +398,7 @@ static void pci_piix3_class_init(ObjectClass *klass, void *data)
-      * pc_piix.c's pc_init1()
-      */
-     dc->user_creatable = false;
--    device_class_set_props(dc, pci_piix3_props);
-+    device_class_set_props(dc, pci_piix_props);
-     adevc->build_dev_aml = build_pci_isa_aml;
+-static void piix4_rcr_write(void *opaque, hwaddr addr, uint64_t val,
+-                            unsigned int len)
++static void rcr_write(void *opaque, hwaddr addr, uint64_t val,
++                      unsigned int len)
+ {
+     PIIXState *s = opaque;
+ 
+@@ -146,16 +146,16 @@ static void piix4_rcr_write(void *opaque, hwaddr addr, uint64_t val,
+     s->rcr = val & 2; /* keep System Reset type only */
  }
  
+-static uint64_t piix4_rcr_read(void *opaque, hwaddr addr, unsigned int len)
++static uint64_t rcr_read(void *opaque, hwaddr addr, unsigned int len)
+ {
+     PIIXState *s = opaque;
+ 
+     return s->rcr;
+ }
+ 
+-static const MemoryRegionOps piix4_rcr_ops = {
+-    .read = piix4_rcr_read,
+-    .write = piix4_rcr_write,
++static const MemoryRegionOps rcr_ops = {
++    .read = rcr_read,
++    .write = rcr_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
+     .impl = {
+         .min_access_size = 1,
+@@ -176,7 +176,7 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
+         return;
+     }
+ 
+-    memory_region_init_io(&s->rcr_mem, OBJECT(dev), &piix4_rcr_ops, s,
++    memory_region_init_io(&s->rcr_mem, OBJECT(dev), &rcr_ops, s,
+                           "reset-control", 1);
+     memory_region_add_subregion_overlap(pci_address_space_io(dev),
+                                         PIIX_RCR_IOPORT, &s->rcr_mem, 1);
 -- 
 2.39.1
 

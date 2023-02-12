@@ -1,114 +1,118 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3619721ejb;
-        Sun, 12 Feb 2023 05:24:11 -0800 (PST)
-X-Google-Smtp-Source: AK7set+5Ls86DTYx6AItv8sXBkKsVG5iBfrPixR1JYcwc4Qrs1LQIhZONrtIz6y5swt29Z/eMtNX
-X-Received: by 2002:a05:6214:2522:b0:56e:99f2:1b91 with SMTP id gg2-20020a056214252200b0056e99f21b91mr12447813qvb.23.1676208251598;
-        Sun, 12 Feb 2023 05:24:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676208251; cv=none;
+Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp3691089ejb;
+        Sun, 12 Feb 2023 07:18:55 -0800 (PST)
+X-Google-Smtp-Source: AK7set+4mLu8CFeDB7BjU0k0/+L3wAvJd9VnrpKWEWzVpph5+KYABThXMzDKS6evCyfvCofDZfLU
+X-Received: by 2002:a05:622a:1828:b0:3ba:2b4:7b39 with SMTP id t40-20020a05622a182800b003ba02b47b39mr40822537qtc.46.1676215134851;
+        Sun, 12 Feb 2023 07:18:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676215134; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wxk1qHPfMQOFy80sXw8vr189qknc8UU5/vyH96yDXejtcqQQBwWg+OzFts82SU2kxP
-         yJfe/XpjJzHiI8wlbSvawNL3tLft5BEBOK3DfGNQ0m/ZlX+aoOuQWqtVhIJ3dmX/4fZn
-         NV+HfZhuYrHU6/sBDDcIiSmO8FRC9YsKJilRF5Dhj9NgOqaYyWys+UunTDkENfEdmv/X
-         cFnAXujM0VBkpWsUs+1/LnzuHpFvdrjodBUjQNLLhsF+LJdQpMx4HA5Lt8I1bXICdOUR
-         jLlSwdjEVBv+Fp5Y4+szsrJxvDTgmCpMlHwp0sfbCGRf1JHjTV0n+EhE35QsnCdB+0Lt
-         jimg==
+        b=LqTEVUuSBxQuDPglSJVMRS0/9lXuT39F7T2wZ4voMRVbnHwKgSUkosB9zsSE2CRxTF
+         SMxCC1a2HBEmfgEXcv9upHcIIE3pqgvFQW/eQ/ABy2lcciFjm0JvZDfIkqBpJMujVF8Y
+         UGgDF405TdPuVT12MJwsIcxDBuMnwzjBS4xNsiewkee/88OVe7z1GkXQkS8ALgqwzpJl
+         iKyV21/3WJLp8unI9i2JfEXz0BDCzsFXHQYjouudT/qyHv9DO9tCNmzO8fUHLqzbrnwg
+         SbZPzwEb/kqkiu7Byi/ew19G7AeAEGckqRSTC/ryaLjM2H6n42Ix5wYNbruOG/K4CDzb
+         DyMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:from:date
-         :dkim-signature;
-        bh=N27fPuB3jlFdibuLChm0kDRCfgTLPmc4/wRlsVMHL6w=;
-        b=kmXaf1xWmsFvZVKOy83zav+CvUF3u0a5ymKNt6mQSs2wgYG2G1hc96YeIn0vgynRn4
-         96PrOHENDKsfObqsJsxG6xSPgrQuZlunhLLxHJI6NxGkh9syDozW77aKde/SK3bFQQ/H
-         N/u3f2xBwd8suO1Uc4VD7JOVWLoDsMaXGRZRWhLpLkYgRzj6jvnWZJ6SmrroNvsllVSt
-         23G46FHPTqZNdy11EwBfdO8OA2gTG58cYOvbV5BpnKC3dMwkvzo7GCR+SPMDtHtZCBLC
-         dE5ouemZd0Nkdvrx2fpEoQDDIeraR34PF03rSI1zSTx1qMGp0yLF+xZvTKrzVbhLBwyO
-         gHhQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=mQr+ntmI4/lwq9bLSqAKH0XQE2Ljg2VTPyjKdUOb6wI=;
+        b=vkjm954rXtuNRna51SSAP+AHATNNgYXKQikMi6VcgV8PxKv5I7xKMNfpqF+w4QBKKq
+         hCaYRVc4NC9f4opqKtixWDiAXupKFTPdHFGryD+ECEqybDtvFrenCeFzb9nVwAV/x8xn
+         YIxgX7TVVfscILkEcX8sQoBBenjmNlMT+cPHKoMa0VH5bJR0IzU6gpjctVRFuEHqS9nk
+         IJb5hsXijPpGvBYN6e44oE3Xss4Go1kMCkfRtKxM8VOrm1fyjcaWyJ3kqdby/P4mNkfS
+         1Dkb7AUrvgsgGfFTzA2jw3TygSB7KZLQUeKDxAJy8j3kbfa4NcvISSwIZu8n0afX5oHz
+         xQsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=tETpUDrK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=URtxRHSK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g17-20020a0cf091000000b005355c76d48bsi7658694qvk.537.2023.02.12.05.24.11
+        by mx.google.com with ESMTPS id j13-20020a05622a038d00b003b635a1f190si8117104qtx.251.2023.02.12.07.18.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Feb 2023 05:24:11 -0800 (PST)
+        Sun, 12 Feb 2023 07:18:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=tETpUDrK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=URtxRHSK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pRCKi-0003oQ-8r; Sun, 12 Feb 2023 08:23:56 -0500
+	id 1pRE7q-0002sr-GD; Sun, 12 Feb 2023 10:18:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1pRCKg-0003oB-RD
- for qemu-arm@nongnu.org; Sun, 12 Feb 2023 08:23:54 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pRE7m-0002sW-HV
+ for qemu-arm@nongnu.org; Sun, 12 Feb 2023 10:18:43 -0500
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1pRCKf-0003s5-4a
- for qemu-arm@nongnu.org; Sun, 12 Feb 2023 08:23:54 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- j29-20020a05600c1c1d00b003dc52fed235so7176464wms.1
- for <qemu-arm@nongnu.org>; Sun, 12 Feb 2023 05:23:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=N27fPuB3jlFdibuLChm0kDRCfgTLPmc4/wRlsVMHL6w=;
- b=tETpUDrK6v1J1FgB0IPw+vV5p3eXlGyo7BEntipAuU9QURgjMcnLLTZxNJCBVdwbUM
- S7B+VYifzqdwTxGNcvFQaxxToy+x9/NvxF7FYUabR3QgkwWjtQARM54511p2jAM1CkVA
- Vy91z0THXTu6/3438Nfbl26Q1LTPrbhqhlkeCIjxBLoh+baLSTx2XThFHsbuxgn+U/Dh
- UbqPjCyfDXdxoezBCFELrHE7pibxfwLGeFzgcMR6SjbUDhQ6P83z+c7nm/WjxPc4rvgJ
- y5YJJqM2kEry3YSjCfa8gbvWTqkIer+ivkQpYUBLpIMKbb6uCTSUnjQjnydADVRnPgQB
- ldjQ==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pRE7k-0007YI-Tm
+ for qemu-arm@nongnu.org; Sun, 12 Feb 2023 10:18:42 -0500
+Received: by mail-pf1-x434.google.com with SMTP id g9so6408631pfo.5
+ for <qemu-arm@nongnu.org>; Sun, 12 Feb 2023 07:18:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mQr+ntmI4/lwq9bLSqAKH0XQE2Ljg2VTPyjKdUOb6wI=;
+ b=URtxRHSKiixIMIZ9OfDeAWt/RZ0MEjlAOGrZKd6DFq4AhPrYx0uyz26g1cIM7E9zaK
+ gnuVujcLhkKzo5OjhEsDNFKxbcawu3xKd0UwnjRIHQ1dkjlmwDq6eDxX9qGD6behwC+7
+ NFXDqiDxGRs5G2xGJE5s4OsylxpJ262itjeZ5Wb1AYlf3AKIvFqYFbArfVWFUoougvW5
+ t1SwyUTB/bUouHBLpUr1x80iV8KbXkh0DLrD2bPxfTYtnR+hX/iP5nfnCv+NuJDPPgE+
+ tRcLp1PoOrdpE6KNADZg9XXWrvlO5ZB8FtXDSUnEXEXXM6wGxcPB7dCws68Z7c87+xD9
+ 3Tyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=N27fPuB3jlFdibuLChm0kDRCfgTLPmc4/wRlsVMHL6w=;
- b=pv3Jv8hhnuE1clmV4RNx8k1q/CaSrGxPd+eZFkl8ScRBIdsMJ2NCUkxdj5VUrGSE1R
- GrRZGgZxjh+ZeLXi/knk+I6/JfjwD7XBdQOBFbTSYuGOIJrMO2YK/tnD/PNlgYH8jJ0J
- oX6olluaLGKOnbE0mthyyX80JJOyYDH16lHJT1zlyrojj874wmJBREfkdA3+YyNV4Lp/
- 5aMYFDtJ3rGMu51Dp/DCGUU7u32k2NSI7hMwV3acP68qsSJhIRDVrar++y9usXq7aoDA
- kouVz7cwZ44QoVh0QpdDbFvnh+DR8ef58qbcyuhesrTZPG2xOHAcYSAjHclTEsE1yL5o
- b6UQ==
-X-Gm-Message-State: AO0yUKX6GYPDb4IfRk49SmYscPnnoIsg1Kq6pjEsNUGFbWYrz7y67Dcc
- h4A9qBoQesS9nhYFk8e9O10u1Q==
-X-Received: by 2002:a05:600c:3c90:b0:3dc:37b4:7983 with SMTP id
- bg16-20020a05600c3c9000b003dc37b47983mr331441wmb.0.1676208231041; 
- Sun, 12 Feb 2023 05:23:51 -0800 (PST)
-Received: from google.com (44.232.78.34.bc.googleusercontent.com.
- [34.78.232.44]) by smtp.gmail.com with ESMTPSA id
- e1-20020adfe381000000b002c54f39d34csm3608806wrm.111.2023.02.12.05.23.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Feb 2023 05:23:50 -0800 (PST)
-Date: Sun, 12 Feb 2023 13:23:46 +0000
-From: Mostafa Saleh <smostafa@google.com>
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mQr+ntmI4/lwq9bLSqAKH0XQE2Ljg2VTPyjKdUOb6wI=;
+ b=ufyzE4H9Yk11bpMRsP0iSonL65S/zLedCGQMVlTfFcorBe4l6VQ8D4X0G4loldIFlB
+ mbjan7VdkAcYdFS1H4ec2da62pn/BFZjnSfbZcpMKOH4N9zTF2W+wy8kH0/P6BU8YBHU
+ OX65KB1h+zpBXj2o1GAXJoYF8PxF/L7Z4QUv8g4JkBV3/5YOhFhZBCMdI7Ke+Ob4tLxe
+ xEu+KYaYzIl1zQdTJlPzZws5BWFJ/KPPFskD+BVehFAOvqz89th3hiBoBpcwJmqmzfqC
+ EwV1Et6KmTrfskLDaPz3juNtP3+7SzIxlgjXjntoGg1KB0EImQRYHPPN2RfmMqYmzCts
+ XFuA==
+X-Gm-Message-State: AO0yUKXQgDLtf6XwrJ+TC1MQI8IFkn4dxEl3bgRmZiIGFteYbDxBjPiC
+ VWtTKjBzjyIlisX3bQ7QBeliFw==
+X-Received: by 2002:a62:7b4b:0:b0:5a8:ab7c:981c with SMTP id
+ w72-20020a627b4b000000b005a8ab7c981cmr1942477pfc.29.1676215119222; 
+ Sun, 12 Feb 2023 07:18:39 -0800 (PST)
+Received: from [192.168.101.227] (rrcs-74-87-59-234.west.biz.rr.com.
+ [74.87.59.234]) by smtp.gmail.com with ESMTPSA id
+ a9-20020aa78649000000b005a817ff3903sm917252pfo.3.2023.02.12.07.18.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 12 Feb 2023 07:18:38 -0800 (PST)
+Message-ID: <e920aa91-c153-0898-d2d3-da141233d60d@linaro.org>
+Date: Sun, 12 Feb 2023 05:18:33 -1000
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v4] hw/arm/smmuv3: Add GBPA register
+Content-Language: en-US
+To: Mostafa Saleh <smostafa@google.com>
 Cc: qemu-devel@nongnu.org, jean-philippe@linaro.org, eric.auger@redhat.com,
  peter.maydell@linaro.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v4] hw/arm/smmuv3: Add GBPA register
-Message-ID: <Y+joYrG4aKC5cje5@google.com>
 References: <20230210221951.1298668-1-smostafa@google.com>
  <9619db1f-5595-b95b-7643-ae345759a59c@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9619db1f-5595-b95b-7643-ae345759a59c@linaro.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=smostafa@google.com; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -165
-X-Spam_score: -16.6
-X-Spam_bar: ----------------
-X-Spam_report: (-16.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, MISSING_HEADERS=1.021, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
+ <Y+joYrG4aKC5cje5@google.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <Y+joYrG4aKC5cje5@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.348,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,35 +127,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OcFg6oyuT7Z3
+X-TUID: xljXQ6/2okXW
 
-On Sat, Feb 11, 2023 at 01:48:57PM -1000, Richard Henderson wrote:
-
-> Just "return s->gbpa != SMMU_GBPA_RESET_VAL;".
-
-I will update it.
-
-> > @@ -1512,6 +1553,10 @@ static const VMStateDescription vmstate_smmuv3 = {
-> >           VMSTATE_END_OF_LIST(),
-> >       },
-> > +    .subsections = (const VMStateDescription * []) {
-> > +        &vmstate_gbpa,
-> > +        NULL
-> > +    }
+On 2/12/23 03:23, Mostafa Saleh wrote:
+> On Sat, Feb 11, 2023 at 01:48:57PM -1000, Richard Henderson wrote:
 > 
-> Actually, I suspect that you need a pre_load hook that resets gbpa, which
-> will then be overwritten if and only if the saved value != reset value.
+>> Just "return s->gbpa != SMMU_GBPA_RESET_VAL;".
 > 
+> I will update it.
+> 
+>>> @@ -1512,6 +1553,10 @@ static const VMStateDescription vmstate_smmuv3 = {
+>>>            VMSTATE_END_OF_LIST(),
+>>>        },
+>>> +    .subsections = (const VMStateDescription * []) {
+>>> +        &vmstate_gbpa,
+>>> +        NULL
+>>> +    }
+>>
+>> Actually, I suspect that you need a pre_load hook that resets gbpa, which
+>> will then be overwritten if and only if the saved value != reset value.
+>>
+> 
+> Please correct me if I am wrong. From what I see, the initial for value
+> GBPA will be set from smmu_reset_hold which is called from context of
+> qemu_system_reset from qemu_init context.
+> And migration will start after that in migration_incoming_process from
+> qemu_main_loop context.
+> 
+> I validated that also by printing the value of GBPA from vmstate_smmuv3
+> pre_load at migration without GPBA, and it is the same as
+> SMMU_GBPA_RESET_VAL.
 
-Please correct me if I am wrong. From what I see, the initial for value
-GBPA will be set from smmu_reset_hold which is called from context of
-qemu_system_reset from qemu_init context.
-And migration will start after that in migration_incoming_process from
-qemu_main_loop context.
+Is that from -loadvm on the command-line, or the loadvm command from the monitor?  It's 
+the latter that I suspect requires the pre_load.
 
-I validated that also by printing the value of GBPA from vmstate_smmuv3
-pre_load at migration without GPBA, and it is the same as
-SMMU_GBPA_RESET_VAL.
 
-Thanks,
-Mostafa
+r~
+

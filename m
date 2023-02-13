@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp547207ejb;
-        Mon, 13 Feb 2023 12:32:35 -0800 (PST)
-X-Google-Smtp-Source: AK7set9P1fuXwVeckeWT6S0k7KgULMbTAQ74eNLC9YVzPeegTcBM0FzgAZrZO0fGTCODH2UvqWxn
-X-Received: by 2002:a17:906:11d5:b0:873:1b57:b27f with SMTP id o21-20020a17090611d500b008731b57b27fmr233269eja.61.1676320355335;
-        Mon, 13 Feb 2023 12:32:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676320355; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp547251ejb;
+        Mon, 13 Feb 2023 12:32:39 -0800 (PST)
+X-Google-Smtp-Source: AK7set/uDZUHk7YP0GUaN7gGd7XH+gCXgrmalZWxPUjAF65DWHRGtZgmA5vTIYsw2iKf44TJLE1c
+X-Received: by 2002:a17:906:5342:b0:88a:a09d:e650 with SMTP id j2-20020a170906534200b0088aa09de650mr155358ejo.58.1676320359489;
+        Mon, 13 Feb 2023 12:32:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676320359; cv=none;
         d=google.com; s=arc-20160816;
-        b=dtNhI/kiq/xhTVePATmLuj2+lChL60EUrlbJiiiSPdkR43g8FPNJFT9nsNn41j2KCQ
-         BJsZ1DuO84GljokUkURvhET4V4E+bHMKespsF8zkQzHW0ZjoVu/o/uN+zhos6xbQsHY1
-         FSoQjh8PBubC8ynMN5TMZ8LNJcD/+FUqAklbh8MEwyAihJzYj9UjyWOBYpLgFt4nGsuC
-         woOYt3KcIkc8uTRjJPWVP6k/9hMwfptNGrSD/zthBa8Mg1opBxVLs95hLdGlt1N8na8O
-         D9smmKWI61zKtPYW8e7YRZb8xX3StO9sqQVd9h5iirZ3t3UPK3ga6ZdoWJkJfwZao8dh
-         yxRA==
+        b=IPWRdIr5e24CoruCRux01BRhFXdkfvfOZvxe9nx9lbi8zodErYZQxNzkjoAf8LSrdE
+         d5ejFz3uy21Kd0fPWCQFrjN3R8Cd7h7+rSHlMQYmUhL6vmpof9lQ1STC+b+z74BQn5iH
+         83aqfE6gXny18Ao1Ug+9x6Z5GimCfRRFyEyVh7IfaxysbOixeJj2b2QVn0GZjfZqosik
+         dsWWAkKSBknK5lEmCsnIGThRgtMoWxpogjtIP11nEt2vU7lGlrBVI4ZfAqrwE4O/+4y4
+         qQqxHi6ANknoBipYPCYClzhKiPrFWWZb9AT4lSv2/MASMJOREsl/JWwcf9yf863iJSuK
+         Y1uA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=4XzzodKBsGzrYFspMDcPIgSWpTJgznrOCzup1UA6o7o=;
-        b=k+HLiAPCNeIPFlWuDLHMFuaSkbHoBfdybh1RqSiMk+UkZDt4Ko0NJjNfQEQrmPvmx3
-         qS8kOm4ii95izzEdnUlHRcQhh9I2ZqrMGDz3cXoYYQmskQdNQHThSmi9klCPxJ8H9kV5
-         VO6G59DRnAc9ZmWXUvSTry+M+6sKhnaZ158oZTu0/E5v23OXS7Lkk8xErhBzg9UufgLT
-         lhv0Ah6tkGNrq6ndwHshRPOKliCMfDlErEQN3hcJjyetnb5L8HdajpKyxxfkfm5p+2X2
-         jeKOLgzPn62IVADIYaLoKOEGvr8rNKiH31y9Mz+hkJi8viikQSJoZITPYVdcku+sBzEe
-         88XA==
+        bh=FooQIYNRpaG7p/4mjdUizDlxlIhcISAOHW7u6JUqYUI=;
+        b=OsGAXoZzKlLJLYAOzCaZpkztPyh/06ers8CeybYYLmYXYMBLOwOYC9tyByO1KNpOsC
+         TIwzc+BCa/u9ppqpVWGGtc7SbdHnJwYYSPAGMQW4f8azgHLUwdQ8mKRNroqk//QH8WUY
+         TVWHjOO5PSd/Nt6AUpPF6CsTZw4JZp8m3xahwfdvwWfP+aOf1E6gUtCxzkMBnyvSH3m1
+         hQOt5P3tFZypLCMgJJoVHmwoKdOFK+PdO29R5ReEfIR7W/PFytWpA3ujBfQaZBBl4zyQ
+         PN/YyM80AsGO39xk49k8+Vbe9nYhKssPweWxLX8Wj/2MMHrPf4WwXwGpS2StjGEagK3w
+         Iwrw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="Ha/TWBvZ";
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=qo9SmwXJ;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=h7H9DFby;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id ew20-20020a170907951400b0084d33614fd0si10924989ejc.784.2023.02.13.12.32.35
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id j12-20020a170906104c00b008af39315aeesi15992659ejj.72.2023.02.13.12.32.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Feb 2023 12:32:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Mon, 13 Feb 2023 12:32:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="Ha/TWBvZ";
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=qo9SmwXJ;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=h7H9DFby;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id DF68A1FDEA;
-	Mon, 13 Feb 2023 20:32:34 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 2607422348;
+	Mon, 13 Feb 2023 20:32:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1676320354; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1676320359; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=4XzzodKBsGzrYFspMDcPIgSWpTJgznrOCzup1UA6o7o=;
-	b=Ha/TWBvZgFmKIMBfZAVa0pNWZNB9oMuOvtL6TWQH8vi2AgM4rLsaePf0oed2ZOw32V3m8H
-	739nVviiGK7LzqxfsSU/IYEiL0b9y0vLC7baALclwbpXRR3hneX6FH/XxunVynpNMvkPOK
-	GIAQG8iyL6JqlvEn672U0BxG1qiwlHE=
+	bh=FooQIYNRpaG7p/4mjdUizDlxlIhcISAOHW7u6JUqYUI=;
+	b=qo9SmwXJadDYB8WBLqy3E4zb4S0AHGshRsQP/q8LFWZJYZUALXyu2fEODuY1MnSNaJwMG7
+	yBBq4B2TqNeKFDQzgiuJmDdkNIrKpD6EUvsS984XDQvlH2WiHkDzLxr4ZeFCne5tCWNWEw
+	NE23MGXwtiD6xcgQjEz4GFXoaer0c+A=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1676320354;
+	s=susede2_ed25519; t=1676320359;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=4XzzodKBsGzrYFspMDcPIgSWpTJgznrOCzup1UA6o7o=;
-	b=wZXbaY9x8AfJBYil8lZhCFd86guJS1Vy09kwpDxZ33TGKOP+ya2sbvSR7q6pd13PMvw2SY
-	/bEyQ+ajV3M0rqCQ==
+	bh=FooQIYNRpaG7p/4mjdUizDlxlIhcISAOHW7u6JUqYUI=;
+	b=h7H9DFbyZ3jfx2YiFnHIr8RoHgE5phvUWxFd/RPH/SM3uoEP1IQx8j3/Iay8BITHqICeT3
+	HTK31t+pUTavHGCw==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D8AF11391B;
-	Mon, 13 Feb 2023 20:32:31 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 61C061391B;
+	Mon, 13 Feb 2023 20:32:35 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id WMgIJ1+e6mOVMwAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 13 Feb 2023 20:32:31 +0000
+	id wF8XCmOe6mOVMwAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 13 Feb 2023 20:32:35 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,212 +82,48 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH RESEND v5 17/28] target/arm: Move cortex sysregs into cpregs.c
-Date: Mon, 13 Feb 2023 17:29:16 -0300
-Message-Id: <20230213202927.28992-18-farosas@suse.de>
+	Cornelia Huck <cohuck@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>
+Subject: [PATCH RESEND v5 18/28] tests/avocado: Skip tests that require a missing accelerator
+Date: Mon, 13 Feb 2023 17:29:17 -0300
+Message-Id: <20230213202927.28992-19-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230213202927.28992-1-farosas@suse.de>
 References: <20230213202927.28992-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: I5KAirO0QB8/
+X-TUID: Ru7TL1CWIGJb
 
-The file cpu_tcg.c is about to be moved into the tcg/ directory, so
-move the register definitions into cpregs.c along with all the others.
+If a test was tagged with the "accel" tag and the specified
+accelerator it not present in the qemu binary, cancel the test.
+
+We can now write tests without explicit calls to require_accelerator,
+just the tag is enough.
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/cpregs.c    | 59 ++++++++++++++++++++++++++++++++++++++++++
- target/arm/cpregs.h    |  6 +++++
- target/arm/cpu64.c     |  1 +
- target/arm/cpu_tcg.c   | 59 ------------------------------------------
- target/arm/internals.h |  6 -----
- 5 files changed, 66 insertions(+), 65 deletions(-)
+ tests/avocado/avocado_qemu/__init__.py | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/target/arm/cpregs.c b/target/arm/cpregs.c
-index 4b8fbeb7e9..c617125b91 100644
---- a/target/arm/cpregs.c
-+++ b/target/arm/cpregs.c
-@@ -9764,3 +9764,62 @@ void arm_cp_reset_ignore(CPUARMState *env, const ARMCPRegInfo *opaque)
- {
-     /* Helper coprocessor reset function for do-nothing-on-reset registers */
- }
+diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
+index 25a546842f..a313e88c07 100644
+--- a/tests/avocado/avocado_qemu/__init__.py
++++ b/tests/avocado/avocado_qemu/__init__.py
+@@ -274,6 +274,10 @@ def setUp(self):
+ 
+         super().setUp('qemu-system-')
+ 
++        accel_required = self._get_unique_tag_val('accel')
++        if accel_required:
++            self.require_accelerator(accel_required)
 +
-+#ifndef CONFIG_USER_ONLY
-+static uint64_t l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    ARMCPU *cpu = env_archcpu(env);
-+
-+    /* Number of cores is in [25:24]; otherwise we RAZ */
-+    return (cpu->core_count - 1) << 24;
-+}
-+
-+static const ARMCPRegInfo cortex_a72_a57_a53_cp_reginfo[] = {
-+    { .name = "L2CTLR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 1, .crn = 11, .crm = 0, .opc2 = 2,
-+      .access = PL1_RW, .readfn = l2ctlr_read,
-+      .writefn = arm_cp_write_ignore },
-+    { .name = "L2CTLR",
-+      .cp = 15, .opc1 = 1, .crn = 9, .crm = 0, .opc2 = 2,
-+      .access = PL1_RW, .readfn = l2ctlr_read,
-+      .writefn = arm_cp_write_ignore },
-+    { .name = "L2ECTLR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 1, .crn = 11, .crm = 0, .opc2 = 3,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "L2ECTLR",
-+      .cp = 15, .opc1 = 1, .crn = 9, .crm = 0, .opc2 = 3,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "L2ACTLR", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 0, .opc2 = 0,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUACTLR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 0,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUACTLR",
-+      .cp = 15, .opc1 = 0, .crm = 15,
-+      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
-+    { .name = "CPUECTLR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 1,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUECTLR",
-+      .cp = 15, .opc1 = 1, .crm = 15,
-+      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
-+    { .name = "CPUMERRSR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 2,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUMERRSR",
-+      .cp = 15, .opc1 = 2, .crm = 15,
-+      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
-+    { .name = "L2MERRSR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 3,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "L2MERRSR",
-+      .cp = 15, .opc1 = 3, .crm = 15,
-+      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
-+};
-+
-+void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu)
-+{
-+    define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
-+}
-+#endif /* !CONFIG_USER_ONLY */
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 1ee64e99de..b04d344a9f 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -1071,4 +1071,10 @@ static inline bool arm_cpreg_in_idspace(const ARMCPRegInfo *ri)
-                                       ri->crn, ri->crm);
- }
+         self.machine = self.params.get('machine',
+                                        default=self._get_unique_tag_val('machine'))
  
-+#ifdef CONFIG_USER_ONLY
-+static inline void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu) { }
-+#else
-+void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu);
-+#endif
-+
- #endif /* TARGET_ARM_CPREGS_H */
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 4066950da1..9f193927d8 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -29,6 +29,7 @@
- #include "qapi/visitor.h"
- #include "hw/qdev-properties.h"
- #include "internals.h"
-+#include "cpregs.h"
- 
- static void aarch64_a35_initfn(Object *obj)
- {
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-index ccde5080eb..64d5a785c1 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/cpu_tcg.c
-@@ -90,65 +90,6 @@ void aa32_max_features(ARMCPU *cpu)
-     cpu->isar.id_dfr0 = t;
- }
- 
--#ifndef CONFIG_USER_ONLY
--static uint64_t l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *ri)
--{
--    ARMCPU *cpu = env_archcpu(env);
--
--    /* Number of cores is in [25:24]; otherwise we RAZ */
--    return (cpu->core_count - 1) << 24;
--}
--
--static const ARMCPRegInfo cortex_a72_a57_a53_cp_reginfo[] = {
--    { .name = "L2CTLR_EL1", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 1, .crn = 11, .crm = 0, .opc2 = 2,
--      .access = PL1_RW, .readfn = l2ctlr_read,
--      .writefn = arm_cp_write_ignore },
--    { .name = "L2CTLR",
--      .cp = 15, .opc1 = 1, .crn = 9, .crm = 0, .opc2 = 2,
--      .access = PL1_RW, .readfn = l2ctlr_read,
--      .writefn = arm_cp_write_ignore },
--    { .name = "L2ECTLR_EL1", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 1, .crn = 11, .crm = 0, .opc2 = 3,
--      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "L2ECTLR",
--      .cp = 15, .opc1 = 1, .crn = 9, .crm = 0, .opc2 = 3,
--      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "L2ACTLR", .state = ARM_CP_STATE_BOTH,
--      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 0, .opc2 = 0,
--      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "CPUACTLR_EL1", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 0,
--      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "CPUACTLR",
--      .cp = 15, .opc1 = 0, .crm = 15,
--      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
--    { .name = "CPUECTLR_EL1", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 1,
--      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "CPUECTLR",
--      .cp = 15, .opc1 = 1, .crm = 15,
--      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
--    { .name = "CPUMERRSR_EL1", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 2,
--      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "CPUMERRSR",
--      .cp = 15, .opc1 = 2, .crm = 15,
--      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
--    { .name = "L2MERRSR_EL1", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 3,
--      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
--    { .name = "L2MERRSR",
--      .cp = 15, .opc1 = 3, .crm = 15,
--      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
--};
--
--void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu)
--{
--    define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
--}
--#endif /* !CONFIG_USER_ONLY */
--
- /* CPU models. These are not needed for the AArch64 linux-user build. */
- #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
- 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 4aa3bf974e..ea752edc10 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1366,12 +1366,6 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
- void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
- #endif
- 
--#ifdef CONFIG_USER_ONLY
--static inline void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu) { }
--#else
--void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu);
--#endif
--
- bool el_is_in_host(CPUARMState *env, int el);
- 
- void aa32_max_features(ARMCPU *cpu);
 -- 
 2.35.3

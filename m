@@ -1,139 +1,353 @@
-Received: by 2002:a17:906:dac7:b0:886:babc:7eeb with SMTP id xi7csp1902499ejb;
-        Fri, 10 Feb 2023 06:24:37 -0800 (PST)
-X-Google-Smtp-Source: AK7set/0aMtYw/rdhhoo6ljk6O72qFoFSschg3tv/PY1D3o+jUNxyFF+DY3dA57aDpCsfs8Y+DwH
-X-Received: by 2002:a05:6214:260f:b0:56b:fe6a:df87 with SMTP id gu15-20020a056214260f00b0056bfe6adf87mr28690897qvb.52.1676039077094;
-        Fri, 10 Feb 2023 06:24:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676039077; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp228716ejb;
+        Mon, 13 Feb 2023 06:04:46 -0800 (PST)
+X-Google-Smtp-Source: AK7set8R7aytl2W9jlxUyPRXcDWnUlkRM5fAizQfTu646HNtze9ciUYERxWbnh+GclduGJg2FCNi
+X-Received: by 2002:a2e:2202:0:b0:293:4fe6:57b with SMTP id i2-20020a2e2202000000b002934fe6057bmr743715lji.33.1676297086090;
+        Mon, 13 Feb 2023 06:04:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676297086; cv=none;
         d=google.com; s=arc-20160816;
-        b=M+7z0PygN5PztGAoZPIkw27aP88Nj1zOPmJskUdx8F6DsdTglnwcJt51hsZq2h6d2T
-         psBKavV0jXCaedq3MqkRE0p5yNvsweZC5FCDy7ttkN1KLumkJMGmP2VMmioR5wMI/+TX
-         Q9PhRBjSoJQbK2OBwilUz1wd5E8SSGs/p0cCAH7q8CzGdX9D0FK0ZjxFvkEs0AoN8cFx
-         lWqHjdXJxC/Nlrgd0YVYgk3FcDUU3NmS4PgqMxNhmuNhdmzqOnlk+tLIZwIuTwjBdlsq
-         DIBfSAU2qTO0p9JLULjHBqUq78lV5FKqezbpvUzXCgknXmsUp6zV6GWTMUatDfn71fi1
-         hOjQ==
+        b=sQwvYBySibKL+1X6021+kyMLwaK1LNxvedE+AYE96xRgos3uU0LqOXZgsjVN5aFS3W
+         lMlD8uIfnDwEZYO8D+Gl2FjD88sfbO3y5nCYg0oxu+mwfTd155IyC7NXjnrPhjiJfH2K
+         A3qDwi3ba42kciUDbSiZcsMRBWhF2MR6MHM3KI8gB4GiZT/8RezuC69YEb/ffSGcCl4i
+         cQJf2cfif8whuQZtMqx7bursYsL3CnlEr+ALB3RRlgDcIJu9QumJSH196kfZpnPIJjZ4
+         V8pPy9rLAlQFPE8xJM68sv+rv+wyKGKmOK/CHDuTXoz3CJccel2bGG3HLFJrYusxMB7w
+         wlwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=h5CTwu82D4llRMqd0n/PsY1zh98gMrZarjEsHM/uAng=;
-        b=N0lr0cQ+UH+3CDdieHdB+YEZUFKBm9aNn2+0LRgzKiaQalPOzx1ih3pW811m0Y2/C/
-         3eZq1S2EecqPBBWtYU6DRsi/KVvLm3o9uyIOdXB9jo45G+p3uex29jjZAY6iXlGVCHk4
-         2JjqQSTg5X1/7zzj88dvglhLJlJiY+5q3Rq4UmqeYETfhq9A+35qbTRjFoVwCzgd+EPO
-         0ynSIOsjzERHfKZp7S9tr4DlLkzlmgl4v59VAP+ov7B8p2CkjDisRZuj+8KHuTAyY30h
-         Aez9G8HTuvsId5P7rN3KtZfeuIfWng2MMSzUff4iEOutMDlZkLD28W0iC6pNx94Z2SoI
-         7ybA==
+         :list-unsubscribe:list-id:precedence:to:references:message-id
+         :content-transfer-encoding:cc:date:in-reply-to:from:subject
+         :mime-version:feedback-id:dkim-signature:dkim-signature;
+        bh=JxYKsfAGn1jvYvsEvF89yijVLdPx7EbvqkOtZH6Tnqc=;
+        b=kWv//RhmHKld0LLh47PE26w4oY4b6e7+CnU/QZ0QTPSgyfZ+TvR8R3fJ/qMtcqx1OX
+         xRVJoWj0vaAPR9W10YTD2TkIiAKolZVEMQDiGSDBNSWAXja+jsIyrLbhetHLARvnAPFb
+         R24siXacPl1xKLOpwknj9hH3MO6UNDtGfb1VsQZPdWu4cGS0CKQXRnaS3jH8v2lH85dS
+         4yX7hTy4Uk8GbeT/zh8MlvrTCucIoGHsiwJjLpOmoXOYsQVFBRwXReuYAbL0MxUu3AOQ
+         4hYf3BVMSn5MmTvi7LKdRVshy8Vs9/H/YuDc+aOF//lEDklZN3aiG+DA++0SyXTFx3Vx
+         ao2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T9GK9rTf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@flygoat.com header.s=fm2 header.b=HgSdlDeK;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=CYlendfA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=flygoat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 18-20020a370812000000b00708eb13b241si3727287qki.211.2023.02.10.06.24.36
+        by mx.google.com with ESMTPS id s15-20020a2e83cf000000b002906127d5a9si6004274ljh.185.2023.02.13.06.04.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Feb 2023 06:24:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Feb 2023 06:04:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T9GK9rTf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@flygoat.com header.s=fm2 header.b=HgSdlDeK;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=CYlendfA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=flygoat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pQUK6-0007lA-Md; Fri, 10 Feb 2023 09:24:22 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pRZPM-0007BI-1p; Mon, 13 Feb 2023 09:02:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pQUK4-0007kL-PQ
- for qemu-devel@nongnu.org; Fri, 10 Feb 2023 09:24:20 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pQUK3-0007rR-92
- for qemu-devel@nongnu.org; Fri, 10 Feb 2023 09:24:20 -0500
-Received: by mail-pl1-x635.google.com with SMTP id d8so5403766plr.10
- for <qemu-devel@nongnu.org>; Fri, 10 Feb 2023 06:24:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1676039057;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=h5CTwu82D4llRMqd0n/PsY1zh98gMrZarjEsHM/uAng=;
- b=T9GK9rTfLF9/aVp5NjAgBIcLeYh9fUYSdrmNrQk9+J52Era89QXPnYmp/ZKjDqdeuH
- AVzSxE0HwERqeNKGucpD83Cn3JBMyRjIVK6Asy0XKG2wJHZXfFPJ5UZSI3Ixu9gzJarR
- GpBjrnb6Z7Y7LQpeVI1aeq99aqyAKhTXeEhX+0xHZcYfcnSWlS8WUxfPg/Cout9ccSqH
- KhUI4kSnjKDeshqyNKk1YPbdlW1FW71tPIJJ1Tt1RPr4jRhAxhUzigEmyBJWClGJpre/
- s6iLfv5Ex2gS9P5gMrz1t52oh+tMNKN8o29UlRiHgYzXcGm1xdsK5FV91hkhAxtdjr66
- vOOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1676039057;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=h5CTwu82D4llRMqd0n/PsY1zh98gMrZarjEsHM/uAng=;
- b=UnLJpYwVNIaOkOVrjTNpsPLRKFMnP/N75bEdO6KH2rrirrjs045JLzV6b6ATHa3FHn
- m2RoYXJEvtQiGbPUHa2FhV8KJZ1FFOKjqc1r1gled+RC/4DAIaFysgMjmyntvjk2CnEx
- VRzfQ1VFg1i1K3Xhe/k/O8VWu2UlUrJ4j9JnUk0TZmjjr2YhWYTL+oBLcdJ/xpJOktsX
- bY9rvpV4jbDeRGYlNz2kDwBJKSegOy2ZwPcSabx8JRCgTRsdu1U+Q4Zi5l/jn42wBckc
- JmgYugH7lsiguEJBW4fkenqYYlXSRQEMBfweDBu60wqQjnveDviVUJJVy1uBQe1rvWBe
- aGGA==
-X-Gm-Message-State: AO0yUKV4y7feyKvAOIByDYc4A7n1oNB3gZIUfyFkc8WIUf9bZLxOWphO
- hhesAspVcUhzF+MCT8Mo1rmlbS7zAH8UZrW9jYyByQ==
-X-Received: by 2002:a17:902:9a87:b0:199:5374:b831 with SMTP id
- w7-20020a1709029a8700b001995374b831mr2116762plp.11.1676039057667; Fri, 10 Feb
- 2023 06:24:17 -0800 (PST)
-MIME-Version: 1.0
-References: <20230124000027.3565716-1-richard.henderson@linaro.org>
- <20230124000027.3565716-23-richard.henderson@linaro.org>
-In-Reply-To: <20230124000027.3565716-23-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Feb 2023 14:24:05 +0000
-Message-ID: <CAFEAcA8wha00jzsGFEXAQ5eMe+68=u_gce3D80jxPs=RKaQe3A@mail.gmail.com>
-Subject: Re: [RFC PATCH 22/22] hw/arm/virt: Add some memory for Realm
- Management Monitor
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, yier.jin@huawei.com, 
- jonathan.cameron@huawei.com, leonardo.garcia@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <jiaxun.yang@flygoat.com>)
+ id 1pRZOu-0006ga-OY; Mon, 13 Feb 2023 09:01:51 -0500
+Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jiaxun.yang@flygoat.com>)
+ id 1pRZOm-0005v0-Ku; Mon, 13 Feb 2023 09:01:44 -0500
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.west.internal (Postfix) with ESMTP id B6152320091C;
+ Mon, 13 Feb 2023 09:01:21 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute3.internal (MEProxy); Mon, 13 Feb 2023 09:01:22 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=flygoat.com; h=
+ cc:cc:content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1676296881; x=
+ 1676383281; bh=JxYKsfAGn1jvYvsEvF89yijVLdPx7EbvqkOtZH6Tnqc=; b=H
+ gSdlDeKhIV4QbRpbG59CX6OghFrfQPYf3l01EHa9owWrgPg+KbJT4eeb70n/ak3+
+ OrvJySdyhIJw4k7vGFVJAGNsYdVvhD6lbl9wfPLWHs56r5FT1GNGaap2F5MNAWln
+ WYUX2HUBOQ8MKol3UOHaY2HIiBpn1izuxbNOrIx0uxVVH4K15X3GQbH6VTJyJ5qf
+ +YRVLZKdUjVkWD9tjkhZJ2lsFrqwB8rwPiD4uxjYNs+hxD+vdSNTLoZ/O1H4jEii
+ VlfOpKqg9MagkSlm7rYjDAxj8JlmMZwxENh3h4TGzpYDCUB60KCqzBAq0dAoGKaS
+ SYVrXy07Y5kdJi7b/PfYw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1676296881; x=
+ 1676383281; bh=JxYKsfAGn1jvYvsEvF89yijVLdPx7EbvqkOtZH6Tnqc=; b=C
+ YlendfAR6JtVOOuSxTgv/KnXk49NZeajorttohdG2JJE3TVpDhgTgDMQsa5ixIW2
+ M3s1GMc70WZ/jTQkmskn7jcskOLpYVS0ynGoErBWw8FSbnZnuzsT+oMf99Cb1ZSb
+ NlRaQd+FG43Fh9/+LSMnNYeyY5Wj5f3ZtkR9Nbsq8jVQ37JU5HnhxsGX8tz2nQxd
+ sTrnCpDHWqgtOE28LQxsqmuTqU/jEXlFN9sjfGpI/TIRYK6m40kxeuM2/QH7UiMe
+ /yWI5yBbtF6Wu8v6RnV9tZ2NA0QbjAl0Igsm0eesie6JiFZfGFWg9pCIQqgM4g7s
+ UjzCvCbnFCVFrZr1FpNfw==
+X-ME-Sender: <xms:sULqY_HD4_D21q4ETXpG381j8ScEXLza0bFbY7XzuJ81ljnYtkdBZQ>
+ <xme:sULqY8UPJxuUQbznt4f1jgxnEQ2equB7z3OhhMJLGgRE8qsNJjNG7R3zXUAzS4HLo
+ 2Fyta5cD7MiCDpc5VI>
+X-ME-Received: <xmr:sULqYxINyf7U2lfxb-RGEi821xvYTQ5R_TBOS5KZjdeD9Ih6TsetoQDqkxEE04adAwm7Nw1OrE7Knm5dx_p4OzwJk23HlkuQ8yk>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudeiuddgheejucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurheptggguffhjgffvefgkfhfvffosehtqhhmtdhhtdejnecuhfhrohhmpeflihgr
+ gihunhcujggrnhhguceojhhirgiguhhnrdihrghnghesfhhlhihgohgrthdrtghomheqne
+ cuggftrfgrthhtvghrnhepuddtjeffteetfeekjeeiheefueeigeeutdevieejveeihfff
+ ledvgfduiefhvddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
+ hfrhhomhepjhhirgiguhhnrdihrghnghesfhhlhihgohgrthdrtghomh
+X-ME-Proxy: <xmx:sULqY9Eo1ApSkv5-H36OoSkh9IpSYNNNblEFUUl_pJ0tKE8tKeefow>
+ <xmx:sULqY1Xr8FN-kXtC8E4EdcQSiu0ahu5FdE3WhIlEOOKU53MJqRmM1Q>
+ <xmx:sULqY4MtRVoyLD1-d7oTM36dGeJ3BIbpXvdGf9lmsve47zfpM0t4tw>
+ <xmx:sULqY7yPDMOQWTKpCZQdN7gKZJ5Iz4LEkZWHsvLg7TDhR3t_JLQRBQ>
+Feedback-ID: ifd894703:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 13 Feb 2023 09:01:20 -0500 (EST)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.300.101.1.3\))
+Subject: Re: [RFC PATCH 9/9] hw/mips/itu: Pass SAAR using QOM link property
+From: Jiaxun Yang <jiaxun.yang@flygoat.com>
+In-Reply-To: <20230203113650.78146-10-philmd@linaro.org>
+Date: Mon, 13 Feb 2023 14:01:07 +0000
+Cc: BALATON Zoltan via <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <90C61816-46A7-4A42-95A8-D207065CB200@flygoat.com>
+References: <20230203113650.78146-1-philmd@linaro.org>
+ <20230203113650.78146-10-philmd@linaro.org>
+To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+X-Mailer: Apple Mail (2.3731.300.101.1.3)
+Received-SPF: pass client-ip=64.147.123.24;
+ envelope-from=jiaxun.yang@flygoat.com; helo=wout1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GsJLmkfxTQUN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mafOmxTyL7IL
 
-On Tue, 24 Jan 2023 at 00:02, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> This is arbitrary, but used by the Huawei TF-A test code.
 
-I guess we should look at how TF-A expects this to work in
-real-hardware setups. Presumably the idea is that TF-A
-carves out the RAM it wants to use for the RMM and
-modifies the device tree / ACPI tables accordingly ?
 
-Also, are we going to want to have more link properties
-for the board to be able to pass in MemoryRegions corresponding
-to the different physical address spaces, the way we do
-today for Secure vs NonSecure ? Or do we think we can
-create suitable board models with "just" a lot of MMUs?
+> 2023=E5=B9=B42=E6=9C=883=E6=97=A5 11:36=EF=BC=8CPhilippe =
+Mathieu-Daud=C3=A9 <philmd@linaro.org> =E5=86=99=E9=81=93=EF=BC=9A
+>=20
+> QOM objects shouldn't access each other internals fields
+> except using the QOM API.
+>=20
+> mips_cps_realize() instantiates a TYPE_MIPS_ITU object, and
+> directly sets the 'saar' pointer:
+>=20
+>   if (saar_present) {
+>       s->itu.saar =3D &env->CP0_SAAR;
+>   }
+>=20
+> In order to avoid that, pass the MIPS_CPU object via a QOM
+> link property, and set the 'saar' pointer in mips_itu_realize().
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-thanks
--- PMM
+Tested-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
+Reviewed-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
+
+Tested with ITU cases.
+
+> ---
+> RFC because not tested.
+> ---
+> hw/mips/cps.c              | 23 ++++++-----------------
+> hw/misc/mips_itu.c         | 26 ++++++++++++++++++--------
+> include/hw/misc/mips_itu.h |  5 ++---
+> 3 files changed, 26 insertions(+), 28 deletions(-)
+>=20
+> diff --git a/hw/mips/cps.c b/hw/mips/cps.c
+> index 38acc57468..2b5269ebf1 100644
+> --- a/hw/mips/cps.c
+> +++ b/hw/mips/cps.c
+> @@ -66,20 +66,17 @@ static bool cpu_mips_itu_supported(CPUMIPSState =
+*env)
+> static void mips_cps_realize(DeviceState *dev, Error **errp)
+> {
+>     MIPSCPSState *s =3D MIPS_CPS(dev);
+> -    CPUMIPSState *env;
+> -    MIPSCPU *cpu;
+> -    int i;
+>     target_ulong gcr_base;
+>     bool itu_present =3D false;
+> -    bool saar_present =3D false;
+>=20
+>     if (!clock_get(s->clock)) {
+>         error_setg(errp, "CPS input clock is not connected to an =
+output clock");
+>         return;
+>     }
+>=20
+> -    for (i =3D 0; i < s->num_vp; i++) {
+> -        cpu =3D MIPS_CPU(object_new(s->cpu_type));
+> +    for (int i =3D 0; i < s->num_vp; i++) {
+> +        MIPSCPU *cpu =3D MIPS_CPU(object_new(s->cpu_type));
+> +        CPUMIPSState *env =3D &cpu->env;
+>=20
+>         /* All VPs are halted on reset. Leave powering up to CPC. */
+>         if (!object_property_set_bool(OBJECT(cpu), =
+"start-powered-off", true,
+> @@ -97,7 +94,6 @@ static void mips_cps_realize(DeviceState *dev, Error =
+**errp)
+>         cpu_mips_irq_init_cpu(cpu);
+>         cpu_mips_clock_init(cpu);
+>=20
+> -        env =3D &cpu->env;
+>         if (cpu_mips_itu_supported(env)) {
+>             itu_present =3D true;
+>             /* Attach ITC Tag to the VP */
+> @@ -107,22 +103,15 @@ static void mips_cps_realize(DeviceState *dev, =
+Error **errp)
+>         qemu_register_reset(main_cpu_reset, cpu);
+>     }
+>=20
+> -    cpu =3D MIPS_CPU(first_cpu);
+> -    env =3D &cpu->env;
+> -    saar_present =3D (bool)env->saarp;
+> -
+>     /* Inter-Thread Communication Unit */
+>     if (itu_present) {
+>         object_initialize_child(OBJECT(dev), "itu", &s->itu, =
+TYPE_MIPS_ITU);
+> +        object_property_set_link(OBJECT(&s->itu), "cpu[0]",
+> +                                 OBJECT(first_cpu), &error_abort);
+>         object_property_set_uint(OBJECT(&s->itu), "num-fifo", 16,
+>                                 &error_abort);
+>         object_property_set_uint(OBJECT(&s->itu), "num-semaphores", =
+16,
+>                                 &error_abort);
+> -        object_property_set_bool(OBJECT(&s->itu), "saar-present", =
+saar_present,
+> -                                 &error_abort);
+> -        if (saar_present) {
+> -            s->itu.saar =3D &env->CP0_SAAR;
+> -        }
+>         if (!sysbus_realize(SYS_BUS_DEVICE(&s->itu), errp)) {
+>             return;
+>         }
+> @@ -158,7 +147,7 @@ static void mips_cps_realize(DeviceState *dev, =
+Error **errp)
+>                             =
+sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gic), 0));
+>=20
+>     /* Global Configuration Registers */
+> -    gcr_base =3D env->CP0_CMGCRBase << 4;
+> +    gcr_base =3D MIPS_CPU(first_cpu)->env.CP0_CMGCRBase << 4;
+>=20
+>     object_initialize_child(OBJECT(dev), "gcr", &s->gcr, =
+TYPE_MIPS_GCR);
+>     object_property_set_uint(OBJECT(&s->gcr), "num-vp", s->num_vp,
+> diff --git a/hw/misc/mips_itu.c b/hw/misc/mips_itu.c
+> index a06cdd10ea..0eda302db4 100644
+> --- a/hw/misc/mips_itu.c
+> +++ b/hw/misc/mips_itu.c
+> @@ -93,10 +93,10 @@ void itc_reconfigure(MIPSITUState *tag)
+>     uint64_t size =3D (1 * KiB) + (am[1] & ITC_AM1_ADDR_MASK_MASK);
+>     bool is_enabled =3D (am[0] & ITC_AM0_EN_MASK) !=3D 0;
+>=20
+> -    if (tag->saar_present) {
+> -        address =3D ((*(uint64_t *) tag->saar) & 0xFFFFFFFFE000ULL) =
+<< 4;
+> -        size =3D 1ULL << ((*(uint64_t *) tag->saar >> 1) & 0x1f);
+> -        is_enabled =3D *(uint64_t *) tag->saar & 1;
+> +    if (tag->saar) {
+> +        address =3D (tag->saar[0] & 0xFFFFFFFFE000ULL) << 4;
+> +        size =3D 1ULL << ((tag->saar[0] >> 1) & 0x1f);
+> +        is_enabled =3D tag->saar[0] & 1;
+>     }
+>=20
+>     memory_region_transaction_begin();
+> @@ -157,7 +157,7 @@ static inline ITCView get_itc_view(hwaddr addr)
+> static inline int get_cell_stride_shift(const MIPSITUState *s)
+> {
+>     /* Minimum interval (for EntryGain =3D 0) is 128 B */
+> -    if (s->saar_present) {
+> +    if (s->saar) {
+>         return 7 + ((s->icr0 >> ITC_ICR0_BLK_GRAIN) &
+>                     ITC_ICR0_BLK_GRAIN_MASK);
+>     } else {
+> @@ -515,6 +515,7 @@ static void mips_itu_init(Object *obj)
+> static void mips_itu_realize(DeviceState *dev, Error **errp)
+> {
+>     MIPSITUState *s =3D MIPS_ITU(dev);
+> +    CPUMIPSState *env;
+>=20
+>     if (s->num_fifo > ITC_FIFO_NUM_MAX) {
+>         error_setg(errp, "Exceed maximum number of FIFO cells: %d",
+> @@ -526,6 +527,15 @@ static void mips_itu_realize(DeviceState *dev, =
+Error **errp)
+>                    s->num_semaphores);
+>         return;
+>     }
+> +    if (!s->cpu0) {
+> +        error_setg(errp, "Missing 'cpu[0]' property");
+> +        return;
+> +    }
+> +
+> +    env =3D &s->cpu0->env;
+> +    if (env->saarp) {
+> +        s->saar =3D env->CP0_SAAR;
+> +    }
+>=20
+>     s->cell =3D g_new(ITCStorageCell, get_num_cells(s));
+> }
+> @@ -534,8 +544,8 @@ static void mips_itu_reset(DeviceState *dev)
+> {
+>     MIPSITUState *s =3D MIPS_ITU(dev);
+>=20
+> -    if (s->saar_present) {
+> -        *(uint64_t *) s->saar =3D 0x11 << 1;
+> +    if (s->saar) {
+> +        s->saar[0] =3D 0x11 << 1;
+>         s->icr0 =3D get_num_cells(s) << ITC_ICR0_CELL_NUM;
+>     } else {
+>         s->ITCAddressMap[0] =3D 0;
+> @@ -553,7 +563,7 @@ static Property mips_itu_properties[] =3D {
+>                       ITC_FIFO_NUM_MAX),
+>     DEFINE_PROP_UINT32("num-semaphores", MIPSITUState, num_semaphores,
+>                       ITC_SEMAPH_NUM_MAX),
+> -    DEFINE_PROP_BOOL("saar-present", MIPSITUState, saar_present, =
+false),
+> +    DEFINE_PROP_LINK("cpu[0]", MIPSITUState, cpu0, TYPE_MIPS_CPU, =
+MIPSCPU *),
+>     DEFINE_PROP_END_OF_LIST(),
+> };
+>=20
+> diff --git a/include/hw/misc/mips_itu.h b/include/hw/misc/mips_itu.h
+> index ab6d286c38..35218b2d14 100644
+> --- a/include/hw/misc/mips_itu.h
+> +++ b/include/hw/misc/mips_itu.h
+> @@ -72,9 +72,8 @@ struct MIPSITUState {
+>     uint64_t icr0;
+>=20
+>     /* SAAR */
+> -    bool saar_present;
+> -    void *saar;
+> -
+> +    uint64_t *saar;
+> +    MIPSCPU *cpu0;
+> };
+>=20
+> /* Get ITC Configuration Tag memory region. */
+> --=20
+> 2.38.1
+>=20
+

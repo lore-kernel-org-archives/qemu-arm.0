@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp547430ejb;
-        Mon, 13 Feb 2023 12:32:55 -0800 (PST)
-X-Google-Smtp-Source: AK7set/VZIMub3JgqgvBP4P7ng1ut1NqWSxoHyYYKunzTn51hyD8g1B/dplMWBpCv1veTxTk3LM/
-X-Received: by 2002:a17:906:4406:b0:8b0:2397:8003 with SMTP id x6-20020a170906440600b008b023978003mr245097ejo.29.1676320375299;
-        Mon, 13 Feb 2023 12:32:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676320375; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp547473ejb;
+        Mon, 13 Feb 2023 12:32:59 -0800 (PST)
+X-Google-Smtp-Source: AK7set/8UP2AWgXbWX6cfQNtdY+RW2dgWRrJEcXKan4gr/da4tHxW34rHFad0elaEXbibF9nfMaV
+X-Received: by 2002:a5d:6791:0:b0:2bf:963a:f266 with SMTP id v17-20020a5d6791000000b002bf963af266mr20854593wru.27.1676320379236;
+        Mon, 13 Feb 2023 12:32:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676320379; cv=none;
         d=google.com; s=arc-20160816;
-        b=OFRJ8KTZAV+0f80m+UXIJvKRctn1GIE7ACxbxKFTO4JPCH90WBhvRXt2Z3cwL5NLgl
-         GxYe+1reOBMnJ4lhhk+BOkHaa/4cgBti9X5AwH6/SIhFaOuJkb7mTu5+F061XClTS9sZ
-         7nx/1tY2lmcLb1B4QF63YMug44Xjm5UuWTD5Haahr12cWB2eLHyho1kV10bdkdGmAsDq
-         mAMFQ07wKgZ2G4blO8QuPDJIHQnHocnoyOwx5B1U+tZnhY6Bhf+jRjAv2FAqfKKonN3S
-         pMUUZVUZpZUu7DUU7JtLqeY+r+IKA0stV51h/klFs4oJk4ZOTaXC7IAcy2wbVsugq0J/
-         +Jrw==
+        b=B4EsgxmBn2Dt374Sen4tqfLqitkKjMzBfaDHMe2VDyPEYwkKM4zoHBclATzqlwIVVT
+         4CxyeNm7fwr/SDJIH5pmc/WCRsr3Et8qzEnywxCQxjY/KuKyoJMO8Id8bXSCrLXq7HTg
+         CTFCDxIrq+wy2b4fT1hPZQgC8mA77pkI9vqiHXN7BQ0U67b6pis3XTz6szBGkJLa7vsI
+         Kt2Jqx0LIqN0WeG3ZwVyosg/NsIuR6F4dSkFHrPw2k/hSpMnIYzLk1cNPCBa3pP19g/9
+         fmqp8bZAalBhpy5z70EG3DVzw6FrWSVRoNTBkS+t/GcYdn//0YhB80s7GuMjSsz3aXhh
+         JpDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=3zSBNK/x2PCz3ddU5zb6WO8TpdG7txZJwJv/m5PJvtE=;
-        b=AbXgIESfTBqsT05dLKw8mnyN724qK8x6BlBygkQycDBySRgCTrKMMNrJumpXZ9dwKN
-         pyJJ5mI8UIJ7y3nPh+jR5XOTlRVphXHCWAQ3ffHt6sBGByAdTQN9+xrVwqayJoL/Me8n
-         /ud7t2IQvCCbi/GedBb9mVv6eOrRSSUVdPoVYCKFPBm8Cf+N2wK5aPtsj61HoIvJyfCl
-         /5I8T/efH/1+061vioFA2v3ds0gz5uc8F5VmeMDVuMi5cwCgKMw/4ofDNPsiudmxLWFp
-         rXxFPFQxYTk+Pio5c0EF9skMb5mobwepL1hOyV+v111HWX98pKo3OE5okBCRo6O7d3Bl
-         NkTg==
+        bh=P2wIshjuiSQLiuLTFO2x8NqskzvrsEhNu8VusTOC9K4=;
+        b=OXybtKctkSZVIQobJxjLMrlUsvGQJPXpCXSuCujrQ0h8DBK/QUXflugl5WN3Q+f32c
+         otLubsr9+J/ra2C6JxnHWVZyVeZsbLNBKlKtKbYb1SqlvOn4EO5iiZelHXT2OaoKtKcs
+         mhEt+BK4l6l7xf/2BEpgIDBdVetO7IDnBSJgnTZJaHN3EDO0uCIjVUbXsztvkEcjWlGH
+         bUq2mWLL5YQ1S0BqMmPIwzUrg/XjRBD5NuvLkcEmEIVQTjbb8/tHX06FawC/XRjGaRFG
+         dE1UoK2+97sQeKiNthV9Lwvm3j3wsWZfJgjgg3bZLztx1QrNkdES0lsxhY20z6gCPJvl
+         0MzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=SKWLvzJ3;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=P8LA1Q6m;
+       dkim=neutral (no key) header.i=@suse.de header.b=l76pd1Hi;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id n3-20020a17090673c300b00878562dbf66si17704914ejl.848.2023.02.13.12.32.55
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id f18-20020a5d50d2000000b002c3e41013ddsi10777640wrt.922.2023.02.13.12.32.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Feb 2023 12:32:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+        Mon, 13 Feb 2023 12:32:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=SKWLvzJ3;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=P8LA1Q6m;
+       dkim=neutral (no key) header.i=@suse.de header.b=l76pd1Hi;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id E0D8720287;
-	Mon, 13 Feb 2023 20:32:54 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id D5FB122353;
+	Mon, 13 Feb 2023 20:32:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1676320374; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1676320378; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=3zSBNK/x2PCz3ddU5zb6WO8TpdG7txZJwJv/m5PJvtE=;
-	b=SKWLvzJ3yF6YfF5cCskMGcu0lqpLIf0yi4qPiUxMzJSVWo1Q8zlW/x7D1zmicDVWNJwJ1k
-	Je2M1ul6q2CHOaAjNxN1kef82his3MgStb/ytNYLoXEBOKalF1sf7qNS+L44CNz4rkBopp
-	dIfWcSbmh7LUtkOwExeXKJKt8ngJn1c=
+	bh=P2wIshjuiSQLiuLTFO2x8NqskzvrsEhNu8VusTOC9K4=;
+	b=P8LA1Q6muj4rsV3jZTokEZoOjTgfgXRDFSj6teA/FTPaFgQAtm/YS0q1uerqv7w2sL6QG3
+	Lg1gXiu6BQst8VSvZD86uxvwM3MtXkQm+o3Gq7WYHB8H4WfRHIGkKeCGZoFIJYRyFwXMuW
+	+zorDIy19qzH8AeqPrIeT3n7u53PvOs=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1676320374;
+	s=susede2_ed25519; t=1676320378;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=3zSBNK/x2PCz3ddU5zb6WO8TpdG7txZJwJv/m5PJvtE=;
-	b=xwd75gIVbeAIn1Ahk1SbzBgmC4KM/EyNxdguYU2d/pEFWpZl5F1i+EgjTQd5pmK1ogP+rX
-	n2lBRgrcMwLfZ/DQ==
+	bh=P2wIshjuiSQLiuLTFO2x8NqskzvrsEhNu8VusTOC9K4=;
+	b=l76pd1HiXD1/GmcqpxvwSYvUAUUwFaCoYGCbnLjLsSdKJjuGuDGjjFDmsaThu7RdMeATVX
+	ovnrL8NE6aq2dXCw==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 9F0921391B;
-	Mon, 13 Feb 2023 20:32:51 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 5F0C71391B;
+	Mon, 13 Feb 2023 20:32:55 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id ME4sGXOe6mOVMwAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 13 Feb 2023 20:32:51 +0000
+	id IOCCCXee6mOVMwAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 13 Feb 2023 20:32:55 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,46 +83,83 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH RESEND v5 22/28] target/arm: Use "max" as default cpu for the virt machine with KVM
-Date: Mon, 13 Feb 2023 17:29:21 -0300
-Message-Id: <20230213202927.28992-23-farosas@suse.de>
+	Thomas Huth <thuth@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH RESEND v5 23/28] tests/qtest: arm-cpu-features: Match tests to required accelerators
+Date: Mon, 13 Feb 2023 17:29:22 -0300
+Message-Id: <20230213202927.28992-24-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230213202927.28992-1-farosas@suse.de>
 References: <20230213202927.28992-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: CG/o7k7T76wT
-
-Now that the cortex-a15 is under CONFIG_TCG, use as default CPU for a
-KVM-only build the 'max' cpu.
-
-Note that we cannot use 'host' here because the qtests can run without
-any other accelerator (than qtest) and 'host' depends on KVM being
-enabled.
+X-TUID: U/vv1MvBKW/g
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Acked-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/arm/virt.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ tests/qtest/arm-cpu-features.c | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index fbeeed115d..cc6b8ff85f 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3015,7 +3015,11 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->minimum_page_bits = 12;
-     mc->possible_cpu_arch_ids = virt_possible_cpu_arch_ids;
-     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
-+#ifdef CONFIG_TCG
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
-+#else
-+    mc->default_cpu_type = ARM_CPU_TYPE_NAME("max");
-+#endif
-     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-     mc->kvm_type = virt_kvm_type;
-     assert(!mc->get_hotplug_handler);
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 4ff2014bea..1555b0bab8 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -21,7 +21,7 @@
+ #define SVE_MAX_VQ 16
+ 
+ #define MACHINE     "-machine virt,gic-version=max -accel tcg "
+-#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
++#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm "
+ #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
+                     "  'arguments': { 'type': 'full', "
+ #define QUERY_TAIL  "}}"
+@@ -613,31 +613,39 @@ int main(int argc, char **argv)
+ {
+     g_test_init(&argc, &argv, NULL);
+ 
+-    qtest_add_data_func("/arm/query-cpu-model-expansion",
+-                        NULL, test_query_cpu_model_expansion);
++    if (qtest_has_accel("tcg")) {
++        qtest_add_data_func("/arm/query-cpu-model-expansion",
++                            NULL, test_query_cpu_model_expansion);
++    }
++
++    if (!g_str_equal(qtest_get_arch(), "aarch64")) {
++        goto out;
++    }
+ 
+     /*
+      * For now we only run KVM specific tests with AArch64 QEMU in
+      * order avoid attempting to run an AArch32 QEMU with KVM on
+      * AArch64 hosts. That won't work and isn't easy to detect.
+      */
+-    if (g_str_equal(qtest_get_arch(), "aarch64") && qtest_has_accel("kvm")) {
++    if (qtest_has_accel("kvm")) {
+         /*
+          * This tests target the 'host' CPU type, so register it only if
+          * KVM is available.
+          */
+         qtest_add_data_func("/arm/kvm/query-cpu-model-expansion",
+                             NULL, test_query_cpu_model_expansion_kvm);
++
++        qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
++                            NULL, sve_tests_sve_off_kvm);
+     }
+ 
+-    if (g_str_equal(qtest_get_arch(), "aarch64")) {
++    if (qtest_has_accel("tcg")) {
+         qtest_add_data_func("/arm/max/query-cpu-model-expansion/sve-max-vq-8",
+                             NULL, sve_tests_sve_max_vq_8);
+         qtest_add_data_func("/arm/max/query-cpu-model-expansion/sve-off",
+                             NULL, sve_tests_sve_off);
+-        qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
+-                            NULL, sve_tests_sve_off_kvm);
+     }
+ 
++out:
+     return g_test_run();
+ }
 -- 
 2.35.3

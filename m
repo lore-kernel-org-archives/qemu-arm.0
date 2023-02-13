@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp546665ejb;
-        Mon, 13 Feb 2023 12:31:47 -0800 (PST)
-X-Google-Smtp-Source: AK7set8gDgyCScagLoXv9Gt7x+MD4C5yos0cfyhz+VSl/skF1WpZejGCF8b6k2+xzEZpQQaQSiGD
-X-Received: by 2002:a17:906:1e45:b0:8b1:ff:7588 with SMTP id i5-20020a1709061e4500b008b100ff7588mr262881ejj.13.1676320307829;
-        Mon, 13 Feb 2023 12:31:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676320307; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp546696ejb;
+        Mon, 13 Feb 2023 12:31:51 -0800 (PST)
+X-Google-Smtp-Source: AK7set/5qVcYchzpuWTwiWalt33qbaXYIoLddkC9PYVJ7aubrEBnrVvKmc82nkYvLaZ/zfeC6m0p
+X-Received: by 2002:a17:906:fc06:b0:894:acbe:7a97 with SMTP id ov6-20020a170906fc0600b00894acbe7a97mr241085ejb.13.1676320311430;
+        Mon, 13 Feb 2023 12:31:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676320311; cv=none;
         d=google.com; s=arc-20160816;
-        b=No8u/3B1pw+x9sFF3UWf8CzcY75ulfSfGh2kHMlnt7rLHMvX/Wmt7vlfgOAqlscaS+
-         a+MZvzCW2wLuqyyUrjk3eqWijCYrV32Yzp7fMR5rBF9LYCYexDcDOkpLdUafym+1iwK3
-         vNRsZKrMUpaN9jOHXZhWO1qoXUbFQ61ZI3GVILO81Ka8oxKqAV1cnCwNtYDiK2BOmQmN
-         1ObIkXmkia+MBbljJX/tWNQeuPB4vMnYH7kWHfMCKhh5oIf8fvqxHmQXRAIuWdNw9xAw
-         sK7W/RsbkN6EAqRa22SEjPFdqVegWFQcwm+iUjO2vp/+BqyFBvgqfDBLUuCj73Bzg/DY
-         4cGw==
+        b=v0/TvUHCe4L0580GeXK7V3qvjGKquZJPiWwweMjwAbsz2VGMPqYszyaHrkGYwUrGgr
+         +Mk3vI6ZtKdZaAlFcr4uiUBBKDRaTAgUsFTDcCRe0xJ3dYtXK6m7ANuzhYZLGi1VqQuq
+         QOlimchKRYcmjsz8nZZVjxpSn9opZhAD7kR1P7aMkFR4FPCaMU1oTJ1+sgossuFRV7Ui
+         BRIpYsuYVHAfXGBHaJM0FEgfnufo39mwN22WDcWaehI1XdDHniEXXNyTqMLNb+9ujmRB
+         ki+qHv6F4f5UcWtia3DOL66XUp+Jd2Pmo5W/IbBhm2H7IoDrmKk5dzEpC0Ncf9VN4/4t
+         4LQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=Vmu/tZEOvDxJsSgDXhKLFroXqmMIraIq6twXvpPip20=;
-        b=dTpiug1Uz99wrFFLq7yTeniM2bsELAwIHy9qTX1n2xsKXt0NfXUaPX9s+AkLlni+WJ
-         hOholtgKvInD71afaYHCtMtox8m4oMP3+dweliHcBtDtlJiTDYON8FpAnVMjJ5IxWvep
-         LcRa/VnO7jZjswAwCkyPj4YIoKhN4CGmh+eP1rQpQQ6zfnA2SqDj/DMQES3PpCYgps/j
-         ZwNdOYWrOpu2IcNOjtxIkEvxCTxra430KZMTp8BHT+2zmvDWeI59Ka7Vqd0dKdtzFMoD
-         mOOIjPubSYpRUGj5tosrwQxSuCm+PihFkkuBJeqXqZyIC2Nt9hHIldm+SWS7xkuea4DQ
-         Q7LA==
+        bh=pRXEAJI1jnhHZqXBSNTBSrxJuIrP6vE92++nhV6fyUM=;
+        b=iCFl2PCVRKEwjdVnHtFl4qkUN7oZ24OyhGsBPbzCRE1WzI60wRSg4n0SjnbdyOtnka
+         6vjwQGHpr2AHfodsIa5R5UL7/JCOYeBqUwqSTR62qnaJJ7NQCmZaQx1yufKb1+F6HUPK
+         ve4Jj4DLZQWCAsk+2g16kJD9V6m+hyz3jU8Q4R8C8tcNulJXVTTU2kygBGGQymbBg843
+         cN16HIz9jWgyXp339eGGXC1F/jAo3aZdTzd+6K2ciNMCO5PbiYs5puTu1IZLB4yoSYgW
+         8BgcB+mouHQ4Z+ZaUa0xPMsKVEis68HLni6Ls8t4+I2qS08i9tDG42xoUZQnZqyDgA+E
+         6H5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=1BGn45h4;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="E/vUcfJm";
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=D0zQsVBr;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id j23-20020a170906535700b0087f5eb7d738si18887591ejo.618.2023.02.13.12.31.47
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id h18-20020a50ed92000000b004acc28218e7si5576097edr.581.2023.02.13.12.31.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Feb 2023 12:31:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+        Mon, 13 Feb 2023 12:31:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=1BGn45h4;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="E/vUcfJm";
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=D0zQsVBr;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 7853220193;
-	Mon, 13 Feb 2023 20:31:47 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 04CD12233D;
+	Mon, 13 Feb 2023 20:31:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1676320307; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1676320311; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Vmu/tZEOvDxJsSgDXhKLFroXqmMIraIq6twXvpPip20=;
-	b=1BGn45h4uK6sn5zqg9iLZFishd9mGQF6E/luDlOM/fRbX6mIEi0MTqvl8gCXcWka9dsNjh
-	O4rHW5xp3TkcWes/BmUAVf6X51X+SqL8FEbhM249ioPsUr+WP2RIX57oLZQnu3KyuMFqiA
-	zTjlY2m2M+v05vzC4kN8JYWE8eojLQE=
+	bh=pRXEAJI1jnhHZqXBSNTBSrxJuIrP6vE92++nhV6fyUM=;
+	b=D0zQsVBrj/Ktu4rh4TzUdEN7fzLO5oqXwDNaDEk8oZA8RZzJGvmy095ftKWFKauLEzixCd
+	TSwaIHPTig+lbky6LhfwHnpI6XmX154ma7uByCnvvRBCxgx3gtdybY1DSZ+Wmbu5deJ8MT
+	BoyOoUO+35tWL8qFEEhoZeOSp46B1mo=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1676320307;
+	s=susede2_ed25519; t=1676320311;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Vmu/tZEOvDxJsSgDXhKLFroXqmMIraIq6twXvpPip20=;
-	b=E/vUcfJmrwqS+BlbMKHfAb2Viv/+2UNM0fHA/8rujxSQuxFOLuBw8fXlahU9sEkoruEfs8
-	pLHbTiDC383J5lBw==
+	bh=pRXEAJI1jnhHZqXBSNTBSrxJuIrP6vE92++nhV6fyUM=;
+	b=LlTXiX4VESCaUzsCuUBi9suaNcPKkdTpo/MMF5Os5ERXkA+yNSx6z3dBBOV7TDRkjlxucW
+	joXxaaxcdTROHpAA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6E1751391B;
-	Mon, 13 Feb 2023 20:31:44 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id EE27F1391B;
+	Mon, 13 Feb 2023 20:31:47 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id EMMVDTCe6mOVMwAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 13 Feb 2023 20:31:44 +0000
+	id WPhfLDOe6mOVMwAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 13 Feb 2023 20:31:47 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,64 +83,241 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH RESEND v5 04/28] target/arm: Move PC alignment check
-Date: Mon, 13 Feb 2023 17:29:03 -0300
-Message-Id: <20230213202927.28992-5-farosas@suse.de>
+Subject: [PATCH RESEND v5 05/28] target/arm: Move cpregs code out of cpu.h
+Date: Mon, 13 Feb 2023 17:29:04 -0300
+Message-Id: <20230213202927.28992-6-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230213202927.28992-1-farosas@suse.de>
 References: <20230213202927.28992-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 58rIvYCxAtzM
+X-TUID: 6yg1/ZUQSSv1
 
-Move this earlier to make the next patch diff cleaner. While here
-update the comment slightly to not give the impression that the
-misalignment affects only TCG.
+Since commit cf7c6d1004 ("target/arm: Split out cpregs.h") we now have
+a cpregs.h header which is more suitable for this code.
 
+Code moved verbatim.
+
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/machine.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ target/arm/cpregs.h | 98 +++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.h    | 91 -----------------------------------------
+ 2 files changed, 98 insertions(+), 91 deletions(-)
 
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 5f26152652..b4c3850570 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -839,6 +839,15 @@ static int cpu_post_load(void *opaque, int version_id)
-         }
-     }
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index efcf9181b9..1ee64e99de 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -120,6 +120,104 @@ enum {
+     ARM_CP_SME                   = 1 << 19,
+ };
  
-+    /*
-+     * Misaligned thumb pc is architecturally impossible. Fail the
-+     * incoming migration. For TCG it would trigger the assert in
-+     * thumb_tr_translate_insn().
-+     */
-+    if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
-+        return -1;
-+    }
++/*
++ * Interface for defining coprocessor registers.
++ * Registers are defined in tables of arm_cp_reginfo structs
++ * which are passed to define_arm_cp_regs().
++ */
 +
-     hw_breakpoint_update_all(cpu);
-     hw_watchpoint_update_all(cpu);
++/*
++ * When looking up a coprocessor register we look for it
++ * via an integer which encodes all of:
++ *  coprocessor number
++ *  Crn, Crm, opc1, opc2 fields
++ *  32 or 64 bit register (ie is it accessed via MRC/MCR
++ *    or via MRRC/MCRR?)
++ *  non-secure/secure bank (AArch32 only)
++ * We allow 4 bits for opc1 because MRRC/MCRR have a 4 bit field.
++ * (In this case crn and opc2 should be zero.)
++ * For AArch64, there is no 32/64 bit size distinction;
++ * instead all registers have a 2 bit op0, 3 bit op1 and op2,
++ * and 4 bit CRn and CRm. The encoding patterns are chosen
++ * to be easy to convert to and from the KVM encodings, and also
++ * so that the hashtable can contain both AArch32 and AArch64
++ * registers (to allow for interprocessing where we might run
++ * 32 bit code on a 64 bit core).
++ */
++/*
++ * This bit is private to our hashtable cpreg; in KVM register
++ * IDs the AArch64/32 distinction is the KVM_REG_ARM/ARM64
++ * in the upper bits of the 64 bit ID.
++ */
++#define CP_REG_AA64_SHIFT 28
++#define CP_REG_AA64_MASK (1 << CP_REG_AA64_SHIFT)
++
++/*
++ * To enable banking of coprocessor registers depending on ns-bit we
++ * add a bit to distinguish between secure and non-secure cpregs in the
++ * hashtable.
++ */
++#define CP_REG_NS_SHIFT 29
++#define CP_REG_NS_MASK (1 << CP_REG_NS_SHIFT)
++
++#define ENCODE_CP_REG(cp, is64, ns, crn, crm, opc1, opc2)   \
++    ((ns) << CP_REG_NS_SHIFT | ((cp) << 16) | ((is64) << 15) |   \
++     ((crn) << 11) | ((crm) << 7) | ((opc1) << 3) | (opc2))
++
++#define ENCODE_AA64_CP_REG(cp, crn, crm, op0, op1, op2) \
++    (CP_REG_AA64_MASK |                                 \
++     ((cp) << CP_REG_ARM_COPROC_SHIFT) |                \
++     ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
++     ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
++     ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
++     ((crm) << CP_REG_ARM64_SYSREG_CRM_SHIFT) |         \
++     ((op2) << CP_REG_ARM64_SYSREG_OP2_SHIFT))
++
++/*
++ * Convert a full 64 bit KVM register ID to the truncated 32 bit
++ * version used as a key for the coprocessor register hashtable
++ */
++static inline uint32_t kvm_to_cpreg_id(uint64_t kvmid)
++{
++    uint32_t cpregid = kvmid;
++    if ((kvmid & CP_REG_ARCH_MASK) == CP_REG_ARM64) {
++        cpregid |= CP_REG_AA64_MASK;
++    } else {
++        if ((kvmid & CP_REG_SIZE_MASK) == CP_REG_SIZE_U64) {
++            cpregid |= (1 << 15);
++        }
++
++        /*
++         * KVM is always non-secure so add the NS flag on AArch32 register
++         * entries.
++         */
++         cpregid |= 1 << CP_REG_NS_SHIFT;
++    }
++    return cpregid;
++}
++
++/*
++ * Convert a truncated 32 bit hashtable key into the full
++ * 64 bit KVM register ID.
++ */
++static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
++{
++    uint64_t kvmid;
++
++    if (cpregid & CP_REG_AA64_MASK) {
++        kvmid = cpregid & ~CP_REG_AA64_MASK;
++        kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM64;
++    } else {
++        kvmid = cpregid & ~(1 << 15);
++        if (cpregid & (1 << 15)) {
++            kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM;
++        } else {
++            kvmid |= CP_REG_SIZE_U32 | CP_REG_ARM;
++        }
++    }
++    return kvmid;
++}
++
+ /*
+  * Valid values for ARMCPRegInfo state field, indicating which of
+  * the AArch32 and AArch64 execution states this register is visible in.
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 7bc97fece9..9d4573c53c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2680,97 +2680,6 @@ static inline bool armv7m_nvic_neg_prio_requested(void *opaque, bool secure)
+ }
+ #endif
  
-@@ -856,15 +865,6 @@ static int cpu_post_load(void *opaque, int version_id)
-         }
-     }
- 
--    /*
--     * Misaligned thumb pc is architecturally impossible.
--     * We have an assert in thumb_tr_translate_insn to verify this.
--     * Fail an incoming migrate to avoid this assert.
--     */
--    if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
--        return -1;
--    }
+-/* Interface for defining coprocessor registers.
+- * Registers are defined in tables of arm_cp_reginfo structs
+- * which are passed to define_arm_cp_regs().
+- */
 -
-     if (!kvm_enabled()) {
-         pmu_op_finish(&cpu->env);
-     }
+-/* When looking up a coprocessor register we look for it
+- * via an integer which encodes all of:
+- *  coprocessor number
+- *  Crn, Crm, opc1, opc2 fields
+- *  32 or 64 bit register (ie is it accessed via MRC/MCR
+- *    or via MRRC/MCRR?)
+- *  non-secure/secure bank (AArch32 only)
+- * We allow 4 bits for opc1 because MRRC/MCRR have a 4 bit field.
+- * (In this case crn and opc2 should be zero.)
+- * For AArch64, there is no 32/64 bit size distinction;
+- * instead all registers have a 2 bit op0, 3 bit op1 and op2,
+- * and 4 bit CRn and CRm. The encoding patterns are chosen
+- * to be easy to convert to and from the KVM encodings, and also
+- * so that the hashtable can contain both AArch32 and AArch64
+- * registers (to allow for interprocessing where we might run
+- * 32 bit code on a 64 bit core).
+- */
+-/* This bit is private to our hashtable cpreg; in KVM register
+- * IDs the AArch64/32 distinction is the KVM_REG_ARM/ARM64
+- * in the upper bits of the 64 bit ID.
+- */
+-#define CP_REG_AA64_SHIFT 28
+-#define CP_REG_AA64_MASK (1 << CP_REG_AA64_SHIFT)
+-
+-/* To enable banking of coprocessor registers depending on ns-bit we
+- * add a bit to distinguish between secure and non-secure cpregs in the
+- * hashtable.
+- */
+-#define CP_REG_NS_SHIFT 29
+-#define CP_REG_NS_MASK (1 << CP_REG_NS_SHIFT)
+-
+-#define ENCODE_CP_REG(cp, is64, ns, crn, crm, opc1, opc2)   \
+-    ((ns) << CP_REG_NS_SHIFT | ((cp) << 16) | ((is64) << 15) |   \
+-     ((crn) << 11) | ((crm) << 7) | ((opc1) << 3) | (opc2))
+-
+-#define ENCODE_AA64_CP_REG(cp, crn, crm, op0, op1, op2) \
+-    (CP_REG_AA64_MASK |                                 \
+-     ((cp) << CP_REG_ARM_COPROC_SHIFT) |                \
+-     ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
+-     ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
+-     ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
+-     ((crm) << CP_REG_ARM64_SYSREG_CRM_SHIFT) |         \
+-     ((op2) << CP_REG_ARM64_SYSREG_OP2_SHIFT))
+-
+-/* Convert a full 64 bit KVM register ID to the truncated 32 bit
+- * version used as a key for the coprocessor register hashtable
+- */
+-static inline uint32_t kvm_to_cpreg_id(uint64_t kvmid)
+-{
+-    uint32_t cpregid = kvmid;
+-    if ((kvmid & CP_REG_ARCH_MASK) == CP_REG_ARM64) {
+-        cpregid |= CP_REG_AA64_MASK;
+-    } else {
+-        if ((kvmid & CP_REG_SIZE_MASK) == CP_REG_SIZE_U64) {
+-            cpregid |= (1 << 15);
+-        }
+-
+-        /* KVM is always non-secure so add the NS flag on AArch32 register
+-         * entries.
+-         */
+-         cpregid |= 1 << CP_REG_NS_SHIFT;
+-    }
+-    return cpregid;
+-}
+-
+-/* Convert a truncated 32 bit hashtable key into the full
+- * 64 bit KVM register ID.
+- */
+-static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+-{
+-    uint64_t kvmid;
+-
+-    if (cpregid & CP_REG_AA64_MASK) {
+-        kvmid = cpregid & ~CP_REG_AA64_MASK;
+-        kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM64;
+-    } else {
+-        kvmid = cpregid & ~(1 << 15);
+-        if (cpregid & (1 << 15)) {
+-            kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM;
+-        } else {
+-            kvmid |= CP_REG_SIZE_U32 | CP_REG_ARM;
+-        }
+-    }
+-    return kvmid;
+-}
+-
+ /* Return the highest implemented Exception Level */
+ static inline int arm_highest_el(CPUARMState *env)
+ {
 -- 
 2.35.3

@@ -1,295 +1,181 @@
-Received: by 2002:a17:906:a84b:b0:7c1:2a22:dc39 with SMTP id dx11csp691414ejb;
-        Thu, 5 Jan 2023 16:47:13 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsxWrZsG83zDkrNpneLw6hBJr+AzU76hQkx9A9ahF05XRXTGBKDmmfGKeXFo12e+56hdPIW
-X-Received: by 2002:a0c:f792:0:b0:531:801d:8ef2 with SMTP id s18-20020a0cf792000000b00531801d8ef2mr54457633qvn.29.1672966033016;
-        Thu, 05 Jan 2023 16:47:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1672966033; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp259768ejb;
+        Mon, 13 Feb 2023 06:42:54 -0800 (PST)
+X-Google-Smtp-Source: AK7set985PREWuWplgluQ6sDjPR1p2yHVVgJg/vbTlUCAXfI1prd2AYOGXD9XfCXBs15EbG28fnE
+X-Received: by 2002:a05:6214:da1:b0:56e:9551:196a with SMTP id h1-20020a0562140da100b0056e9551196amr23406793qvh.1.1676299374767;
+        Mon, 13 Feb 2023 06:42:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676299374; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z8ZWmDjkY/B0FsDSmhS5q7RtkLK+nCGlhpJQBQdP7OYFgxSc7Ce92CMdRklk7lAD39
-         v5Kmdw7M3mzb6yU1Q6fjj+UpWJY9NSjrTOlofy3p/sziWufV/KmmFRmcB68N2CPEsGHc
-         hoqEFNvRrTinJ0k5IUhjWqxe6jYVyHNq577MQfwFGgHjgtVrTPxBeOGL39yBUUnV5/rF
-         P64rVTBpi1kyO4MSV4of9kibSfkzbIDMtFoLDqDMu66YI5nOnne1l7nUXPUcTGM5JPSj
-         gggGFgoAKz4SKHemqvu/K7cFpj8y9/SGJHeuKYOLjEeAGx3lFTmW3PXsAZNLv+/JG7yC
-         nGQQ==
+        b=bMr5l8dh7UhXun3rI0bAj6DKs2INs+Kr/92nwjMMDdq7qLdBHOW3wJlF2f69L0xIse
+         QhHnQ84smSxvwSTCgxTinPGbz0peMMdJsNpZ2pI7qOly4KyEN1lVa7VcaxD664fl32tR
+         nnoTWoZDl7vtUkD8iS3sXd0rfWJMLYOPhjeocy9RuypB/muZ+fJoWXk5F9YP8CGSnKAK
+         uTqga7wXQGn5NQ6nsErjabv/I12QrS/dIgeiP+Td4utlhsxRwjxA93uBDXHlY87y5dN0
+         G3lLse3JivGzhHfQL4DGJto+UavNo+m+nZx/35oOJKnzlKiDFehlF2MG1T349iaBchlI
+         nZfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=0l41fp31veQi/wynlTsSf5TodSUaRGNpBOlsPbWp4fI=;
-        b=0mi22emF88Oe97t3Z67if2Aw0J5M40z0c1k9NxNzJCYBaycY91cbJ2QVflqK/wNrdZ
-         mYzDrPUBQ4/gH/OErj0IvdqrlaxfnUVIT32IoG3ZuooxOGFOarYhSNv/ZIXNjsGGYWQx
-         seiEfoJ2yTSr8R3PI7A/M4JqR/6umwX88APsZe4Kh6sUf8391Xj6tlQionsh/yf6JYY9
-         EOyWZXFyNisB8W9z1+yfbz1iAOJfRfQEFkVwKIvDJfoc1N3CbmMYFVSFfjGa02q2HkkB
-         HbNRohElbwVJhIrCKWL5gHFdASXRC3hh5dcz50vQ3Fur5LjKXvqX93oWmRskpFH8J/Kn
-         LcTA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=u2rdAY72ubcEfGMqLpKt2lTeVI7nIjOxisBX9PwvecE=;
+        b=o15oxd+0sHmKc5DY4+NWPScyPhLFNTPpD7MD6nMHMF85PJEwDYFr4iNSxQmu6y2mOL
+         e3JsfEDATdavBwNlMCpzDjFRY1xcq8yu9ZzljTwIKODOE+NCVi8l4m1HpQUSlKxH27r8
+         tmbcyUQ9SBUYNBx+zKGz7r1793UG0TFeEXOTdSS48WXGJ2xidRn9VtfP7FrQ2Td+3YgK
+         B1cUwOXsIyt4D2HMq5CRPivHW0v0A76vN55Lw5oSE1ds1pV1MfeD4CX0AVXbRYUvRGDG
+         phRMqnsAIZWdk21cL5C2a1ZWXxFnla12h4lfDtEmUrfp/uRKaEoAlYr7n+y32xm7QaEu
+         USuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=USCz2Mof;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=XWiZnPxB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 12-20020a0562140d0c00b005271a37a448si5957075qvh.61.2023.01.05.16.47.12
+        by mx.google.com with ESMTPS id d7-20020a0cdb07000000b0056ebc103ec6si954957qvk.200.2023.02.13.06.42.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jan 2023 16:47:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Feb 2023 06:42:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=USCz2Mof;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=XWiZnPxB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pDasv-0005Jl-6j; Thu, 05 Jan 2023 19:47:01 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pRa2S-00038f-Fd; Mon, 13 Feb 2023 09:42:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1pDast-0005JS-9K; Thu, 05 Jan 2023 19:46:59 -0500
-Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pRa2R-00033g-47
+ for qemu-devel@nongnu.org; Mon, 13 Feb 2023 09:42:39 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1pDasr-0008L0-2L; Thu, 05 Jan 2023 19:46:58 -0500
-Received: by mail-ua1-x929.google.com with SMTP id d14so7210968uak.12;
- Thu, 05 Jan 2023 16:46:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=0l41fp31veQi/wynlTsSf5TodSUaRGNpBOlsPbWp4fI=;
- b=USCz2MofJgwYIqn+bYZu61PN2T7R/Y44nyuAoHWiFOlzbejoVENj1/N2LuN9r1GMRo
- 2iBbx+QztNWpSZGbTeUfhNQLu628jD+zbgjOe1P99s+oTbrObGqbI/emgzCkmOdj9lnI
- h05t503Q5XaPrqWSdZJ+XCNvcoIiJNThxS/uBymLYTo4zTwagrQieYbQJwKd5LmIGFUW
- niwzjxTZneX3n2PEHuYhuUO0nDFHlqCvhjPw6vnrSZFg+zsGYFZrp0iErI8sL/VNihYy
- 3mfeDxli/JAqevpAdgb+GdjXMZcNqQ3NS+xgCdx4paul6/kaxYQG1ehOKYOMAFBn+te3
- fP4w==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pRa2P-0005mc-0M
+ for qemu-devel@nongnu.org; Mon, 13 Feb 2023 09:42:38 -0500
+Received: by mail-wr1-x432.google.com with SMTP id h16so12451174wrz.12
+ for <qemu-devel@nongnu.org>; Mon, 13 Feb 2023 06:42:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=u2rdAY72ubcEfGMqLpKt2lTeVI7nIjOxisBX9PwvecE=;
+ b=XWiZnPxBEbdrs3uQ36EFfkB7lzi03ty7UjDPjAoGY/0+NZFEBWCtN5g2ggoP2AcYw5
+ 6RAjvFnwc2+CXv3ybdYLARObW0Z4NMDWmPIYzRhlwJnx5eM8fMdeRUYE0gbJTY62xH8L
+ 5jaEQODu69v0C3dVrIAiZxb4ou0aGVqLFoSWTPVlgRCX9hIw5ZYPioPFDT5svYGZYAAp
+ 11xhtvXt9XoKRA3VhfSWZ2j7o0F/VQmU/6/s+GzCskbCZyisRjH2K0K3PV/QrAVu3wdo
+ +mVvllhisnA+6VAUIydTcZ8cXgdEsXEHIfACalpFg9fKfgmQYK98XXSfdYwKTcCtncZc
+ rinQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=0l41fp31veQi/wynlTsSf5TodSUaRGNpBOlsPbWp4fI=;
- b=X0ntePxBWP1fmn4eZ+2j6wMS9a5WHAgl3r+SAk2dJW5vLcGLR9sBW9MAu7js64PdyP
- ZHYZ2jkEA9cgNOuRlMmQvCe1q8cHbVI9CXixIrYlMFMY6a3/NG38GXdwQAQy6qUY24dZ
- uY50doUC+rjJQSPAA1dAsP9L1+HvxnqLZAaoJqY9mDjobWq3CQT0MouLk4UrsvnH4ZII
- dTIM1c36dF7+ZOyC9H3yaxPi0iuo1jitX+ugGKvwwqRVDYO5RuMP94Pzi9mSWkrCKMnT
- x1+DdT9j9yVPN6wouHi7EC65jJyD4HWF02dmq0SJzSQkEsm5fKr0pWEqf7nV7+gKuXxC
- 5Uxg==
-X-Gm-Message-State: AFqh2kpk3YYVy6nZKVz37RM2FOmiF6u+MAf2+/Sg3goQhjCRRPRUE8Mb
- x0zpnHtG9g3734dcjSaTMIU0wPvLWxPGpjQhJEc=
-X-Received: by 2002:ab0:1547:0:b0:418:f948:259f with SMTP id
- p7-20020ab01547000000b00418f948259fmr4800321uae.38.1672966015122; Thu, 05 Jan
- 2023 16:46:55 -0800 (PST)
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=u2rdAY72ubcEfGMqLpKt2lTeVI7nIjOxisBX9PwvecE=;
+ b=qpyNAKFTQ7WxsGkrgFkHGygyK2BvnfZd1YfwWD7WMdLkyfIrIOGIWCavlQgN7glXH8
+ +N33SL1USx+L+qPVq1YS/B23QDqDbSMXNBVASM/rE31Ti/bELObVFebiV7eLp5srTfWo
+ ENCTJgm27nel4AKf4KdN+5GJiBBPwUesWd1QqtWUUU8Hs8ueWkK71hiOxzXjzPYJR3/Q
+ h2GZ0j1Mh/BYucgeWZEE9yEm0cWCl47mBk7K83fO+s6rHIWUUZ751cEKQ8c9UW9nb5Kz
+ 5oZwmmT5wPobYYEYaNFw0I4aCZlOzk25Czt1eVbnGWp9N/YzulyWQAk852OdHZ3e+mYa
+ K8Fw==
+X-Gm-Message-State: AO0yUKX7bU3xWNbcF2aDPwY7oko4/xOOqjxT1fC94XUWnzi/cANLHwx2
+ Rn9XnRDB6oc5068ICu6daOYdMw==
+X-Received: by 2002:a5d:4812:0:b0:2c5:557a:d7d3 with SMTP id
+ l18-20020a5d4812000000b002c5557ad7d3mr3810574wrq.18.1676299355253; 
+ Mon, 13 Feb 2023 06:42:35 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ t8-20020a7bc3c8000000b003e00c9888besm17175778wmj.30.2023.02.13.06.42.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Feb 2023 06:42:34 -0800 (PST)
+Message-ID: <dad95290-fef9-2b4a-7c62-14dbe3853289@linaro.org>
+Date: Mon, 13 Feb 2023 15:42:33 +0100
 MIME-Version: 1.0
-References: <20221230145733.200496-1-balbi@kernel.org>
- <20221230145733.200496-3-balbi@kernel.org>
-In-Reply-To: <20221230145733.200496-3-balbi@kernel.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 6 Jan 2023 10:46:29 +1000
-Message-ID: <CAKmqyKPx5ed-uvT3VQ5k=DL3KWd0cYDie_fJzhPFb5pW-U5Y2Q@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] hw/arm: Add Olimex H405
-To: Felipe Balbi <balbi@kernel.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, 
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::929;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x929.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.7.2
+Subject: Re: [RFC PATCH] Do not include "qemu/error-report.h" in headers that
+ do not need it
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Coiby Xu <Coiby.Xu@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20230210111931.1115489-1-thuth@redhat.com>
+ <87zg9lpre8.fsf@pond.sub.org>
+ <383a2e03-7ee9-cc93-72d5-7f039314f932@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <383a2e03-7ee9-cc93-72d5-7f039314f932@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.345,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lnfRMojQ2VKT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cvQY5BqCl4+i
 
-On Sat, Dec 31, 2022 at 1:01 AM Felipe Balbi <balbi@kernel.org> wrote:
->
-> Olimex makes a series of low-cost STM32 boards. This commit introduces
-> the minimum setup to support SMT32-H405. See [1] for details
->
-> [1] https://www.olimex.com/Products/ARM/ST/STM32-H405/
->
-> Signed-off-by: Felipe Balbi <balbi@kernel.org>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
-> ---
->
-> Changes since v1:
->         - Add a note in stm32.rst
->         - Initialize default_cpu_type to cortex-m4
->         - 0-initialize default_ram_size
->
->  MAINTAINERS                             |  6 +++
->  configs/devices/arm-softmmu/default.mak |  1 +
->  docs/system/arm/stm32.rst               |  1 +
->  hw/arm/Kconfig                          |  4 ++
->  hw/arm/meson.build                      |  1 +
->  hw/arm/olimex-stm32-h405.c              | 69 +++++++++++++++++++++++++
->  6 files changed, 82 insertions(+)
->  create mode 100644 hw/arm/olimex-stm32-h405.c
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 3bd433b65a55..e37846df0071 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1026,6 +1026,12 @@ L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/arm/netduinoplus2.c
->
-> +Olimex STM32 H405
-> +M: Felipe Balbi <balbi@kernel.org>
-> +L: qemu-arm@nongnu.org
-> +S: Maintained
-> +F: hw/arm/olimex-stm32-h405.c
-> +
->  SmartFusion2
->  M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->  M: Peter Maydell <peter.maydell@linaro.org>
-> diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-> index 6985a25377a0..1b49a7830c7e 100644
-> --- a/configs/devices/arm-softmmu/default.mak
-> +++ b/configs/devices/arm-softmmu/default.mak
-> @@ -30,6 +30,7 @@ CONFIG_COLLIE=y
->  CONFIG_ASPEED_SOC=y
->  CONFIG_NETDUINO2=y
->  CONFIG_NETDUINOPLUS2=y
-> +CONFIG_OLIMEX_STM32_H405=y
->  CONFIG_MPS2=y
->  CONFIG_RASPI=y
->  CONFIG_DIGIC=y
-> diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
-> index 508b92cf862b..d7265b763d47 100644
-> --- a/docs/system/arm/stm32.rst
-> +++ b/docs/system/arm/stm32.rst
-> @@ -20,6 +20,7 @@ The STM32F4 series is based on ARM Cortex-M4F core. This series is pin-to-pin
->  compatible with STM32F2 series. The following machines are based on this chip :
->
->  - ``netduinoplus2``     Netduino Plus 2 board with STM32F405RGT6 microcontroller
-> +- ``olimex-stm32-h405`` Olimex STM32 H405 board with STM32F405RGT6 microcontroller
->
->  There are many other STM32 series that are currently not supported by QEMU.
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 17fcde8e1ccc..9143533ef792 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -119,6 +119,10 @@ config NETDUINOPLUS2
->      bool
->      select STM32F405_SOC
->
-> +config OLIMEX_STM32_H405
-> +    bool
-> +    select STM32F405_SOC
-> +
->  config NSERIES
->      bool
->      select OMAP
-> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index 92f9f6e000ea..76d4d650e42e 100644
-> --- a/hw/arm/meson.build
-> +++ b/hw/arm/meson.build
-> @@ -12,6 +12,7 @@ arm_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
->  arm_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
->  arm_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
->  arm_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'))
-> +arm_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
->  arm_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
->  arm_ss.add(when: 'CONFIG_NSERIES', if_true: files('nseries.c'))
->  arm_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
-> diff --git a/hw/arm/olimex-stm32-h405.c b/hw/arm/olimex-stm32-h405.c
-> new file mode 100644
-> index 000000000000..3aa61c91b759
-> --- /dev/null
-> +++ b/hw/arm/olimex-stm32-h405.c
-> @@ -0,0 +1,69 @@
-> +/*
-> + * ST STM32VLDISCOVERY machine
-> + * Olimex STM32-H405 machine
-> + *
-> + * Copyright (c) 2022 Felipe Balbi <balbi@kernel.org>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "hw/boards.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/qdev-clock.h"
+On 13/2/23 15:24, Thomas Huth wrote:
+> On 10/02/2023 14.43, Markus Armbruster wrote:
+>> Thomas Huth <thuth@redhat.com> writes:
+>>
+>>> Include it in the .c files instead that use the error reporting
+>>> functions.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>   RFC since it's more lines of code - but I think it's still cleaner
+>>>   this way.
+>>
+>> Yes, please!
+>>
+>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> 
+> FWIW, I just noticed (thanks to the gitlab CI) that I was missing two 
+> more hunks:
+> 
+> diff --git a/ui/dbus-console.c b/ui/dbus-console.c
+> --- a/ui/dbus-console.c
+> +++ b/ui/dbus-console.c
+> @@ -22,6 +22,7 @@
+>    * THE SOFTWARE.
+>    */
+>   #include "qemu/osdep.h"
 > +#include "qemu/error-report.h"
-> +#include "hw/arm/stm32f405_soc.h"
-> +#include "hw/arm/boot.h"
-> +
-> +/* olimex-stm32-h405 implementation is derived from netduinoplus2 */
-> +
-> +/* Main SYSCLK frequency in Hz (168MHz) */
-> +#define SYSCLK_FRQ 168000000ULL
-> +
-> +static void olimex_stm32_h405_init(MachineState *machine)
-> +{
-> +    DeviceState *dev;
-> +    Clock *sysclk;
-> +
-> +    /* This clock doesn't need migration because it is fixed-frequency */
-> +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
-> +    clock_set_hz(sysclk, SYSCLK_FRQ);
-> +
-> +    dev = qdev_new(TYPE_STM32F405_SOC);
-> +    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
-> +    qdev_connect_clock_in(dev, "sysclk", sysclk);
-> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> +
-> +    armv7m_load_kernel(ARM_CPU(first_cpu),
-> +                       machine->kernel_filename,
-> +                       0, FLASH_SIZE);
-> +}
-> +
-> +static void olimex_stm32_h405_machine_init(MachineClass *mc)
-> +{
-> +    mc->desc = "Olimex STM32-H405 (Cortex-M4)";
-> +    mc->init = olimex_stm32_h405_init;
-> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
-> +
-> +    /* SRAM pre-allocated as part of the SoC instantiation */
-> +    mc->default_ram_size = 0;
-> +}
-> +
-> +DEFINE_MACHINE("olimex-stm32-h405", olimex_stm32_h405_machine_init)
-> --
-> 2.39.0
->
->
+>   #include "qapi/error.h"
+>   #include "ui/input.h"
+>   #include "ui/kbd-state.h"
+> diff --git a/ui/gtk.c b/ui/gtk.c
+> --- a/ui/gtk.c
+> +++ b/ui/gtk.c
+> @@ -36,6 +36,7 @@
+>   #include "qapi/qapi-commands-machine.h"
+>   #include "qapi/qapi-commands-misc.h"
+>   #include "qemu/cutils.h"
+> +#include "qemu/error-report.h"
+>   #include "qemu/main-loop.h"
+
+Uses without include:
+
+$ git grep -L qemu/error-report.h \
+   $(git grep -wEl 
+'(error_report|error_report_once|error_report_once_cond)')
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+

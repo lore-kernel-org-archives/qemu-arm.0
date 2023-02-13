@@ -1,109 +1,94 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp324907ejb;
-        Mon, 13 Feb 2023 08:03:21 -0800 (PST)
-X-Received: by 2002:a17:902:ec82:b0:199:2f0a:697 with SMTP id x2-20020a170902ec8200b001992f0a0697mr26186768plg.33.1676304201189;
-        Mon, 13 Feb 2023 08:03:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676304201; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp331850ejb;
+        Mon, 13 Feb 2023 08:10:36 -0800 (PST)
+X-Received: by 2002:a17:902:e808:b0:19a:a5c4:afe9 with SMTP id u8-20020a170902e80800b0019aa5c4afe9mr3012176plg.31.1676304636471;
+        Mon, 13 Feb 2023 08:10:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676304636; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mci11tW0jO/nepTg8BDa3mT0ywoVKCYBIenpY+WDrncY0ZuzEFJlmYlpNoi0E4oP0z
-         cA+yVG9wTdeCLlSsCNUr1YOVISHuevIq6or7SVFzVE0sKGIMTOay7c11jz9HTKBH9oIn
-         o5JJGvOcNed2j4VXGxzCP9LDQmtxwoNlswxygvsQfL3mDpm5Tt97UTks6kqJMby2O4fr
-         6XFukTTy28hfLjIYM33OaMXqpOKnWkJzBGCqQvfWgEXvB8cehzJMAdiV+yhpW6yWEia0
-         r7TkAwWAafd94z9k4c2ykYDZkCi5Y4kkZkMC69qL7cNpQaVr53wHf1ZDZbD9Z1QAbqNU
-         hwfQ==
+        b=HqPJcOpc8ecvY7Wi8aG1uhgCrVBRjCiDAAhTYFDgwNY+QGVRBM58N50ihL2WmlG/Vl
+         R4ID/+Teq92KnLWJ+U1hME5FjRC2CUucgsFmkpczU4dt6sfr23aWGFbgWghp4wQV00xg
+         uPGgvA86KQQVn9CW/HpTzrZJMT8UI+JU1Z4bv0UjDVoE/bQ1n9trlPL9fF9gujdZg+Jt
+         0cTRLHTzDqvIP5Kc0HCUPnoIinjX/4txNYftecFPVC9OEdnIzE4/6KXfKS/a5KNNMdaq
+         Yv4KXtTdASQkrC738SZpAdg1R4Knx7N3IegRkFt/raIF1FOAOmJ27bqkP9v4vlCeXm4e
+         iMGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=X80PbizfnDoldN/bOQ71iNj5f/kcVkBtU3toBDbvYEg=;
-        b=XMWsvBIdM79c9SK2PVm2lKmxBcK6v0MxjJ9LuGipbCRbjcmPMY+7Pzm3Z04D+1v3xG
-         AddyfzZh4cb+/p9H08xPMc4xkzJQdZOvmmX/xJMrFK0AgrIbE/rkOjqgjSTDdFIc8X5O
-         7flltQm8pHQ2TbehclagVP1oXjnrwU/UudHNASihm2G1zJfpWHLrs5ffWyQtHY7sWlhC
-         nU0u2pK1z5cVswp3TG/SslILD/mTlObT08fMTc4VeEwWNSnmcsQSi+9+mkFJRJ3J6hdI
-         7EcH1qd1GwszQf6lRY8an1Ag/gB826rwOHn1e9zjWKcgXCqEY+6YaQlceyLXrQKi0P1a
-         rQ7A==
+        bh=Do+616PQhElMf57hM1MZQYkSUipV+Xi8qUc12DjFbSg=;
+        b=KE96yeQlcfXOV/c07JsrgFnNXhzaE7KUU+RiG3d1Vy29oAUhWzxuYUE4c89KT9L/0D
+         jolY6Thq5cCzOEXGbjP6Bm6dJjO2AXGV3GWQeeFkX5Hl1NjUvl2yk6J1NKOt/rU39IVx
+         Fo7nt/8kY2UopZbiV7oCrtjuyDokDGMueycJLqvC9zly2ZMXQl8yTGNb+83ynX6OdDZ6
+         KgBEgREaIVBuGsrkEZErrAHcyNbXBnXCUY4ke7gVLTec1UkyedF/PwIBnESwFPIGf3ty
+         GydgNUJyQwNFx0+OsTs9iog01gtRLVX6IgJ0VFAEsoE+0D6X9mlT5c1sFjDl4F0zShVN
+         XTLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jo33h4Dk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cOe5rdXY;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id w16-20020a1709026f1000b0019309dc5befsor5499782plk.133.2023.02.13.08.03.21
+        by mx.google.com with SMTPS id l15-20020a170903120f00b001992aa80a42sor5370336plh.67.2023.02.13.08.10.36
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 13 Feb 2023 08:03:21 -0800 (PST)
+        Mon, 13 Feb 2023 08:10:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jo33h4Dk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cOe5rdXY;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1676304201;
+        d=linaro.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=X80PbizfnDoldN/bOQ71iNj5f/kcVkBtU3toBDbvYEg=;
-        b=jo33h4Dk+4JXqeI5hn2Qr1xrN3Me03Tc3YBGo39/JoIsg4jyRiCWZ7z94BLa/N6fL7
-         bEvi0GPN+pCJiY6BAcYWjCgKFvYH22qpOC+7fcjpqhEFQ20zW5PuDgCShqHCVZ5q9GmZ
-         se5Cx3czy8wwuCTkVQQC5TwOjrJmx2clg3HBZ8Mg3JhzX0Gb9FSIZ04QUOl/PyOpCFmX
-         CGUfVpQJ0kLamV8jAupOFWsHjvQCda6MZPzW4ekWtiK6MNQrT565Z7TcF2lPaRvhB33D
-         aoi+CACj54iWF7DIV0U75O/kgfz/4D58q4XPc/720m/TJFP/0pVcsYx6IxEMjNeH1C5K
-         Y1cQ==
+        bh=Do+616PQhElMf57hM1MZQYkSUipV+Xi8qUc12DjFbSg=;
+        b=cOe5rdXYWLX3XCwHx7/Ne8egMNTm4dRXSg+CHvPvIo6Ej+4wMVr2mknoHjzVg5RJJf
+         Ta8zYZf5jKf2Dw2NVvC9OozLzRUmNR6vPswlNcYbkvleP7cmZMWbk1my/wFqACCHXNHM
+         fu8opu0TxcOuDJ3C9JYaeOwL/px/kDeTdvPPvrCQtY+QEksd1wFaLhywHsbAJKFntc/x
+         +dk/9UBIEFCYUCmcGvI0xvIqsHlhw0FQ9ga4dhQwfBEzTNoSYpNLFdnUBvtgPVrzYQO3
+         gM29uZeh9E0d80o/06ihfuzFRC+Y8cpxh3mfFXaqtxo60g5v6Gm6IwhxjM9q063TyzOT
+         C8Pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1676304201;
+        d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=X80PbizfnDoldN/bOQ71iNj5f/kcVkBtU3toBDbvYEg=;
-        b=FD2kT9hrMlJQykxCgl29Nx1vov+RYFSO2OiqTiQ1BnI2jpW/CpBuZLB1+I49wcxHV5
-         kH+9idA8JLskC+0bYJi3zwyoSvusXc7A0w3ALReBDBpOFxdFTf0CnGN7P3z3zX2hNkWZ
-         cBnVjPmyEMs/iIs7V6HlpVOcfYf5vm1znJcvj3u8rrwbbvNSrXpqFjWbMZUbKwHlKX9w
-         2nqJRRqiB+3xnO+PS6tyLupgqREW1kyxciWNHI9xz3m4UwgvVaQzA3Im2mR0aDUs5CKU
-         AetryC6XAoXAqnql6cHSwgn4laVUdqXMQ2d4tpoPMYFKEVqySUxwEB/oUhB1ryTc6B59
-         548A==
-X-Gm-Message-State: AO0yUKUB2hKWAT1FuGvYTOXnVs66E8VI406nyeK/6cMdrk8yWd1qZDXO
-	22dyyMTmAx0/ph2tBNABAt46+7ZfhOe+D0k+x2MHDLIT
-X-Google-Smtp-Source: AK7set98ERjw/vRTBKXftGE4gBcuia4g58eCT/cvcClGMfRVrL6i5+hqO9u4Xo0E6MJ0ZjRswl5fgLLzp1paZI+8VRU=
-X-Received: by 2002:a17:902:7c8e:b0:198:ef8f:4d89 with SMTP id
- y14-20020a1709027c8e00b00198ef8f4d89mr5799614pll.15.1676304200737; Mon, 13
- Feb 2023 08:03:20 -0800 (PST)
+        bh=Do+616PQhElMf57hM1MZQYkSUipV+Xi8qUc12DjFbSg=;
+        b=HOSuxrQQ9rbAgJD9mdb7mb/aRxeBe2L1t0jXBFIUeSVaYHnlUvUn2phAeRlcDr/9n+
+         JvhKFtQ2OKOxqt0pyX0cQ65z5EmL9DuWMRg2nHulz0uMENdQgLNJiuLrGouu8PkwKy2T
+         cKrm8eIUO+JYSJmLvfrAGHmjt81+czX0gsg7Eub1XYu9VkHUosdZbyM+lVGkbkDIOmoK
+         z2Y1y9BnuCXV4+s4XOt1pj7KUHBWUbXN+Gj/aSfX1Gr3sgMCocOqBnBhf93uAgjYDMuB
+         UpDPKThDwd3uee4MgZv4FwY0dTEdaoWOhEvQMmKIFdCrz7Y/+jpn1Xohi7nxLSEV/Zv0
+         Vcew==
+X-Gm-Message-State: AO0yUKVO6qRqQ5r3NyPBPvYSHLlhTDy+h8gt/D3ZrNF3+K3f2bzXi4bI
+	OxmHY4pYRGDugfyxcGnU6L9pYAtbi6Ti/scSPYmEMtvr
+X-Google-Smtp-Source: AK7set/vVoK6jwoKI98v+VrMQ0aaxHGmoeHlD+tkRZ9Bmpy+qc8/h4wnv13Gki6jj3hShdtqkPn/GW5xLhiOwuk9b6o=
+X-Received: by 2002:a17:90a:15d6:b0:233:dcb5:ee15 with SMTP id
+ w22-20020a17090a15d600b00233dcb5ee15mr1391459pjd.92.1676304636004; Mon, 13
+ Feb 2023 08:10:36 -0800 (PST)
 MIME-Version: 1.0
-References: <20230202211129.984060-1-aaron@os.amperecomputing.com> <20230202211129.984060-2-aaron@os.amperecomputing.com>
-In-Reply-To: <20230202211129.984060-2-aaron@os.amperecomputing.com>
+References: <20230202211129.984060-1-aaron@os.amperecomputing.com> <20230202211129.984060-3-aaron@os.amperecomputing.com>
+In-Reply-To: <20230202211129.984060-3-aaron@os.amperecomputing.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Feb 2023 16:03:09 +0000
-Message-ID: <CAFEAcA88sBjZFVzw_cChm18nXLJd4DA0QbadvaAPAJMQNJm1iw@mail.gmail.com>
-Subject: Re: [PATCH 1/7] target/arm: v8.3 PAC ID_AA64ISAR[12] feature-detection
+Date: Mon, 13 Feb 2023 16:10:24 +0000
+Message-ID: <CAFEAcA_nmodWa=t8Y8Othq0K_x8ZBe1R5o_iyVjR_JHJ2V3kMw@mail.gmail.com>
+Subject: Re: [PATCH 2/7] target/arm: Implement v8.3 QARMA3 PAC cipher
 To: Aaron Lindsay <aaron@os.amperecomputing.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
 	Richard Henderson <richard.henderson@linaro.org>, Vincent Dehors <vincent.dehors@smile.fr>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: XQbRbRClWV9P
+X-TUID: Yj+5VqS0oYpY
 
 On Thu, 2 Feb 2023 at 21:13, Aaron Lindsay <aaron@os.amperecomputing.com> wrote:
 >
 > Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
+> ---
+>  target/arm/pauth_helper.c | 48 +++++++++++++++++++++++++++++++--------
+>  1 file changed, 39 insertions(+), 9 deletions(-)
 
+If you move the stray bit from patch 1 that should be in this patch
+into here, then
 
-> diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
-> index d0483bf051..a0c9bea06b 100644
-> --- a/target/arm/pauth_helper.c
-> +++ b/target/arm/pauth_helper.c
-> @@ -282,8 +282,8 @@ static uint64_t pauth_computepac_impdef(uint64_t data, uint64_t modifier,
->  static uint64_t pauth_computepac(CPUARMState *env, uint64_t data,
->                                   uint64_t modifier, ARMPACKey key)
->  {
-> -    if (cpu_isar_feature(aa64_pauth_arch, env_archcpu(env))) {
-> -        return pauth_computepac_architected(data, modifier, key);
-> +    if (cpu_isar_feature(aa64_pauth_arch_qarma5, env_archcpu(env))) {
-> +        return pauth_computepac_architected(data, modifier, key, false);
->      } else {
->          return pauth_computepac_impdef(data, modifier, key);
->      }
-> --
-> 2.25.1
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Just noticed -- this should I guess be in a later patch, because
-it's added an extra argument to the function call without changing
-the function definition or declaration, so I think this patch
-won't compile as-is.
-
+thanks
 -- PMM

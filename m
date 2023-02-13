@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp546625ejb;
-        Mon, 13 Feb 2023 12:31:44 -0800 (PST)
-X-Google-Smtp-Source: AK7set/doqXe37FInQuEcgdZf8IojBAkkItNtQj6xFdSunVTtEwozXLUx5/wFxRIU3qapCs9GkI4
-X-Received: by 2002:a50:8e41:0:b0:4a2:6573:5c35 with SMTP id 1-20020a508e41000000b004a265735c35mr25842383edx.21.1676320304398;
-        Mon, 13 Feb 2023 12:31:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676320304; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp546665ejb;
+        Mon, 13 Feb 2023 12:31:47 -0800 (PST)
+X-Google-Smtp-Source: AK7set8gDgyCScagLoXv9Gt7x+MD4C5yos0cfyhz+VSl/skF1WpZejGCF8b6k2+xzEZpQQaQSiGD
+X-Received: by 2002:a17:906:1e45:b0:8b1:ff:7588 with SMTP id i5-20020a1709061e4500b008b100ff7588mr262881ejj.13.1676320307829;
+        Mon, 13 Feb 2023 12:31:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676320307; cv=none;
         d=google.com; s=arc-20160816;
-        b=B1Dr1aQ8y/Q3Yn/xBB2npjO2vFiOHXXZqdKqgMyIbTwkD39QP+tIITfnOYZWr0Vp8F
-         Z/uz56yAzFYkdGQtlDs/JvvUL6wrTeUf1ktgKLYXR2WCYRpD35hQ2NyHICOYhw/Lsa7Z
-         Xc2mB6dnatpvvmlJXeWfgOLog/xBj+8kaJhGPSwNU242OrNIiSM/9FC2KKPWM0u0TmZk
-         M+hXabOBCtB5mALKoHo6i02zqncmJ+UxQZ7yFRNmJUONxCceSU7bKI8wuP1BMBBYhS+S
-         zSKNpFbdQpFHZwnZr3rNMjdQ2GbwbJIzELggQW1fHknSlIXrmxtBF2+7gWtJFFSt0kDj
-         kYhg==
+        b=No8u/3B1pw+x9sFF3UWf8CzcY75ulfSfGh2kHMlnt7rLHMvX/Wmt7vlfgOAqlscaS+
+         a+MZvzCW2wLuqyyUrjk3eqWijCYrV32Yzp7fMR5rBF9LYCYexDcDOkpLdUafym+1iwK3
+         vNRsZKrMUpaN9jOHXZhWO1qoXUbFQ61ZI3GVILO81Ka8oxKqAV1cnCwNtYDiK2BOmQmN
+         1ObIkXmkia+MBbljJX/tWNQeuPB4vMnYH7kWHfMCKhh5oIf8fvqxHmQXRAIuWdNw9xAw
+         sK7W/RsbkN6EAqRa22SEjPFdqVegWFQcwm+iUjO2vp/+BqyFBvgqfDBLUuCj73Bzg/DY
+         4cGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=IneoIjeaaItZ9WFIdyjktzS9t1bCTfcOcWOa6rg90xU=;
-        b=HDWWcatKNgYA4WrzVZQUm6MWDBqVYXTZhS3gAaxWdkXFOMJwyBI4wwbkEfOfbmArWj
-         urSatlY4qZyEpB8qdZoqaPqv0m+tvm403E3GiMnqArTPcWVj/0M1c+eQ/Vc1kZ36JKFH
-         YZ5utUjDfUYoU+mb8OtCLAam39FwXky8IfRstH3OWy8aWf0bk74Mwgeb3E+/qHy0onLL
-         ehpmPzbWetQ6dSrQfu57+zCKQkNFV9CGuSPNuhPL0NqxWvGB+bDRvMe+4v1+Wu6hEEBS
-         SfheW+0tIjlsB1sqescsvnbmhRFXfKH9Sz8049B/o4GTbFxXAoS9/6GcKm/QGyVbLrlh
-         HuPw==
+        bh=Vmu/tZEOvDxJsSgDXhKLFroXqmMIraIq6twXvpPip20=;
+        b=dTpiug1Uz99wrFFLq7yTeniM2bsELAwIHy9qTX1n2xsKXt0NfXUaPX9s+AkLlni+WJ
+         hOholtgKvInD71afaYHCtMtox8m4oMP3+dweliHcBtDtlJiTDYON8FpAnVMjJ5IxWvep
+         LcRa/VnO7jZjswAwCkyPj4YIoKhN4CGmh+eP1rQpQQ6zfnA2SqDj/DMQES3PpCYgps/j
+         ZwNdOYWrOpu2IcNOjtxIkEvxCTxra430KZMTp8BHT+2zmvDWeI59Ka7Vqd0dKdtzFMoD
+         mOOIjPubSYpRUGj5tosrwQxSuCm+PihFkkuBJeqXqZyIC2Nt9hHIldm+SWS7xkuea4DQ
+         Q7LA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="IaJ6vp0/";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=4A3cEk7o;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=1BGn45h4;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="E/vUcfJm";
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id p17-20020aa7cc91000000b004a7670bdaf3si14761532edt.447.2023.02.13.12.31.44
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id j23-20020a170906535700b0087f5eb7d738si18887591ejo.618.2023.02.13.12.31.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Feb 2023 12:31:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+        Mon, 13 Feb 2023 12:31:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="IaJ6vp0/";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=4A3cEk7o;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=1BGn45h4;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b="E/vUcfJm";
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id EBB3F2233D;
-	Mon, 13 Feb 2023 20:31:43 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 7853220193;
+	Mon, 13 Feb 2023 20:31:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1676320303; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1676320307; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=IneoIjeaaItZ9WFIdyjktzS9t1bCTfcOcWOa6rg90xU=;
-	b=IaJ6vp0/NLVwoFwKwXgRb1EzIUXcq0ICWyXcFPJ4dqp1x2W/JuPr3PSzzoJmfduB84Oe13
-	tGccUewKytDNUHQDEj45xQQRj20RDR5b+RiNhhcvIKHIBydOYiP5zGGQpHWfiP0VLoKSVZ
-	1Cuv/wtKlLjNtQjA5xBljCL5r8Ob/SQ=
+	bh=Vmu/tZEOvDxJsSgDXhKLFroXqmMIraIq6twXvpPip20=;
+	b=1BGn45h4uK6sn5zqg9iLZFishd9mGQF6E/luDlOM/fRbX6mIEi0MTqvl8gCXcWka9dsNjh
+	O4rHW5xp3TkcWes/BmUAVf6X51X+SqL8FEbhM249ioPsUr+WP2RIX57oLZQnu3KyuMFqiA
+	zTjlY2m2M+v05vzC4kN8JYWE8eojLQE=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1676320303;
+	s=susede2_ed25519; t=1676320307;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=IneoIjeaaItZ9WFIdyjktzS9t1bCTfcOcWOa6rg90xU=;
-	b=4A3cEk7on+NDArmGFnW/RXSkNstd1Nqcom8Zi3s/f5mch21NN+pNMXb6VKwvM1KODT4v8k
-	15/SqnrpKZvJFHAQ==
+	bh=Vmu/tZEOvDxJsSgDXhKLFroXqmMIraIq6twXvpPip20=;
+	b=E/vUcfJmrwqS+BlbMKHfAb2Viv/+2UNM0fHA/8rujxSQuxFOLuBw8fXlahU9sEkoruEfs8
+	pLHbTiDC383J5lBw==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id E07A31391B;
-	Mon, 13 Feb 2023 20:31:40 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6E1751391B;
+	Mon, 13 Feb 2023 20:31:44 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id eM/zKCye6mOVMwAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 13 Feb 2023 20:31:40 +0000
+	id EMMVDTCe6mOVMwAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 13 Feb 2023 20:31:44 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,49 +83,64 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH RESEND v5 03/28] target/arm: wrap call to aarch64_sve_change_el in tcg_enabled()
-Date: Mon, 13 Feb 2023 17:29:02 -0300
-Message-Id: <20230213202927.28992-4-farosas@suse.de>
+Subject: [PATCH RESEND v5 04/28] target/arm: Move PC alignment check
+Date: Mon, 13 Feb 2023 17:29:03 -0300
+Message-Id: <20230213202927.28992-5-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230213202927.28992-1-farosas@suse.de>
 References: <20230213202927.28992-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8gP/6Ep2g6bT
+X-TUID: 58rIvYCxAtzM
 
-From: Claudio Fontana <cfontana@suse.de>
+Move this earlier to make the next patch diff cleaner. While here
+update the comment slightly to not give the impression that the
+misalignment affects only TCG.
 
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/helper.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ target/arm/machine.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1fc860e039..bd704396e0 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10819,11 +10819,13 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-     unsigned int cur_el = arm_current_el(env);
-     int rt;
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 5f26152652..b4c3850570 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -839,6 +839,15 @@ static int cpu_post_load(void *opaque, int version_id)
+         }
+     }
+ 
++    /*
++     * Misaligned thumb pc is architecturally impossible. Fail the
++     * incoming migration. For TCG it would trigger the assert in
++     * thumb_tr_translate_insn().
++     */
++    if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
++        return -1;
++    }
++
+     hw_breakpoint_update_all(cpu);
+     hw_watchpoint_update_all(cpu);
+ 
+@@ -856,15 +865,6 @@ static int cpu_post_load(void *opaque, int version_id)
+         }
+     }
  
 -    /*
--     * Note that new_el can never be 0.  If cur_el is 0, then
--     * el0_a64 is is_a64(), else el0_a64 is ignored.
+-     * Misaligned thumb pc is architecturally impossible.
+-     * We have an assert in thumb_tr_translate_insn to verify this.
+-     * Fail an incoming migrate to avoid this assert.
 -     */
--    aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
-+    if (tcg_enabled()) {
-+        /*
-+         * Note that new_el can never be 0.  If cur_el is 0, then
-+         * el0_a64 is is_a64(), else el0_a64 is ignored.
-+         */
-+        aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
-+    }
- 
-     if (cur_el < new_el) {
-         /*
+-    if (!is_a64(env) && env->thumb && (env->regs[15] & 1)) {
+-        return -1;
+-    }
+-
+     if (!kvm_enabled()) {
+         pmu_op_finish(&cpu->env);
+     }
 -- 
 2.35.3

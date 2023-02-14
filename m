@@ -1,62 +1,62 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1465749ejb;
-        Tue, 14 Feb 2023 09:19:05 -0800 (PST)
-X-Google-Smtp-Source: AK7set88f/I0kMb1X10N6XVH4w0vkVHwf9WOz8rdoylI2o4q0dFRfzGQ/+nC2y8texxexNYhsccO
-X-Received: by 2002:ac8:580f:0:b0:3ba:19e5:3e47 with SMTP id g15-20020ac8580f000000b003ba19e53e47mr5492199qtg.65.1676395144778;
-        Tue, 14 Feb 2023 09:19:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676395144; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1466391ejb;
+        Tue, 14 Feb 2023 09:19:44 -0800 (PST)
+X-Google-Smtp-Source: AK7set8NYKEzBzRi2/mAwHlUb+yQIU2JEz+GYIZ5Yy3QK+pkUhIzGQBBiMfioG0O/2EgeIg24BHE
+X-Received: by 2002:ac8:5704:0:b0:3b8:6d57:939c with SMTP id 4-20020ac85704000000b003b86d57939cmr5624180qtw.0.1676395183778;
+        Tue, 14 Feb 2023 09:19:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676395183; cv=none;
         d=google.com; s=arc-20160816;
-        b=vmd1peoqQ8v9N+mfZXXtK33AWoYLiI4Q6z3MCupAquVNdNByNLS1QbyRm9rlbmnBVg
-         WV20+igsfaKK/aiJt0l+ET6ptJd0eJP0HZ1TH4Wvz/FYU6/6sT+5adoUIYtaxnKsCWFK
-         OJ4d5wKzf11nMT4I+65AhSplt7+5e9taWKJHXjrqJ0VoHGKtmFD59t02nNHnzdeATKvF
-         h/vIcxRZox03X0iYxAVMuHJbVRufNAgAmyfDpEHXvWhQV81zYLaOOhyq7nZPCmr1d3zn
-         NNQtpb67BbFnWKzjf/hY132qAJ9XfqpzAu6u/vdmU+hSi9K90fD8bOQuFz+OmUpal5bu
-         7mTQ==
+        b=ClI063Tz6IKD2ZcAQY0fDkgNINCeV9ty3pagwZRsKwuIDY3LV3hbQkB4UrgTUVPxwi
+         2eYvFEnQA3dpc2tXKmbG41N+txHk/lo0tMcOS8T4jG3liIPOWC1EYkZEdTUYd2lGqEMQ
+         zlpG2Uv/2MrvEG8L24LQWKCeg7inwJR7PZn0EBwYYyPOkM4RD/LssdwjRhRb82FjS963
+         4/p6NQ6eBVypXBGh2/If/KSGlGV498A0xGZ5tAhaezlasxnqKjDJmBwx/BxxJiS14Qc/
+         JZy+28zKgy8EhP9xNgkty/0y90DW6WjOoRXowEbjaGW/NwUFVd7owbbJWymMrLNw+YT9
+         kpHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=XWEHcp/c+951lrTiO9SjVlNWZ2XblIqVhgJ4o/lWGw8=;
-        b=fGPEikDszK+t4Z5h+b3KpXXm50188mjSTzJfbYbZZWLExihBpvxBf9Z+Tviy2rrsPF
-         nvJ9ClN3PpjaG7y6O1TtoU0iReZijJjpmP3/kD6u9WTwsYhS/Ry6pcUyO5shaNKr8mUw
-         iZYQIlQR8q+s5bw2AZ4whp0rUIqWniVYJELbA9Kx9sxVGFDp7Kab41ov7EhaVHg+yaXp
-         Ga5Ti1Jgd1zqbMYlzb7I5efjH+JcC8AXu+K37QgmT0j7wb0e0om4qW1Y/a6zEyEUjq5k
-         3k6YD6OvbPLYXJyiYtjUXGivRIjymh32adx6HQfp4W37RZIpF5dHfDFKQs1c6aeoRd5H
-         M8Gw==
+        bh=BjpRnsTU78SKF+QJvXHnKtO0ErVldNmBZYYNytpmS6U=;
+        b=gtO7QRH4We3+s9F6EpirIHCSpqPoAmE0bsw7nrpuVCz03f2E84+2w9ARAo+81XRYC3
+         x1EvsECdeFNL2Yk3ESjxmQ+vmSbVb0bQhbL+J95wcRYcQcP0Rp0JlzkSJAZ82RzzN9ZL
+         yJbbOSGuqucmCodu86wd2cilj/+FZS3alMeIJqSwWdK+s/xLbOzo9SRLpMBJBZ0/rRM4
+         fZ662fTgOJjS47Pd8ATaQRer+PFUgnNhpdeLWUQH3/lbBPPUSgii8B+K43daPUUHFyjv
+         jmzSTmlhCVkv8t7IHqIV2i/ow+/au4/0BvtUCWiIODfcqmp4HTq9P29baDblKQymOiBF
+         gRBA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 189-20020a3706c6000000b006feb9d4e1efsi11396347qkg.254.2023.02.14.09.19.04
+        by mx.google.com with ESMTPS id m21-20020a05622a119500b003ba10333aa9si13004762qtk.522.2023.02.14.09.19.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Feb 2023 09:19:04 -0800 (PST)
+        Tue, 14 Feb 2023 09:19:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pRyxH-0001iL-1X; Tue, 14 Feb 2023 12:18:59 -0500
+	id 1pRyxQ-0001lV-9e; Tue, 14 Feb 2023 12:19:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ZGUx=6K=kaod.org=clg@ozlabs.org>)
- id 1pRyxG-0001hm-2D; Tue, 14 Feb 2023 12:18:58 -0500
+ id 1pRyxO-0001kp-Cr; Tue, 14 Feb 2023 12:19:06 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ZGUx=6K=kaod.org=clg@ozlabs.org>)
- id 1pRyxD-0004r3-QQ; Tue, 14 Feb 2023 12:18:57 -0500
+ id 1pRyxM-0004s3-N4; Tue, 14 Feb 2023 12:19:06 -0500
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4PGSbw61njz4x88;
- Wed, 15 Feb 2023 04:18:52 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4PGSc336rkz4x8C;
+ Wed, 15 Feb 2023 04:18:59 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4PGSbs5Vn8z4x83;
- Wed, 15 Feb 2023 04:18:49 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4PGSc04cCHz4x83;
+ Wed, 15 Feb 2023 04:18:56 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -64,11 +64,10 @@ Cc: qemu-block@nongnu.org, Joel Stanley <joel@jms.id.au>,
  Andrew Jeffery <andrew@aj.id.au>, Markus Armbruster <armbru@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Klaus Jensen <k.jensen@samsung.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 3/8] hw/misc: add a toy i2c echo device
-Date: Tue, 14 Feb 2023 18:18:25 +0100
-Message-Id: <20230214171830.681594-4-clg@kaod.org>
+Subject: [PATCH 5/8] aspeed/smc: Replace SysBus IRQs with GPIO lines
+Date: Tue, 14 Feb 2023 18:18:27 +0100
+Message-Id: <20230214171830.681594-6-clg@kaod.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230214171830.681594-1-clg@kaod.org>
 References: <20230214171830.681594-1-clg@kaod.org>
@@ -97,205 +96,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RbgO4RmgfCk8
+X-TUID: o2uqSQ4Msnhq
 
-From: Klaus Jensen <k.jensen@samsung.com>
+It's cleaner and removes the curious '+ 1' required to skip the DMA
+IRQ line of the controller.
 
-Add an example I2C device to demonstrate how a slave may master the bus
-and send data asynchronously to another slave.
-
-The device will echo whatever it is sent to the device identified by the
-first byte received.
-
-Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-[ clg: - Changed to build to use CONFIG_ASPEED_SOC since only supported
-         on such SoCs
-       - folded in these fixes :
-       	 https://lore.kernel.org/qemu-devel/Y3yMKAhOkYGtnkOp@cormorant.local/
-]
-Message-Id: <20220601210831.67259-7-its@irrelevant.dk>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/misc/i2c-echo.c  | 156 ++++++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build |   2 +
- 2 files changed, 158 insertions(+)
- create mode 100644 hw/misc/i2c-echo.c
+ hw/arm/aspeed.c     | 2 +-
+ hw/ssi/aspeed_smc.c | 5 +----
+ 2 files changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/hw/misc/i2c-echo.c b/hw/misc/i2c-echo.c
-new file mode 100644
-index 0000000000..5705ab5d73
---- /dev/null
-+++ b/hw/misc/i2c-echo.c
-@@ -0,0 +1,156 @@
-+#include "qemu/osdep.h"
-+#include "qemu/timer.h"
-+#include "qemu/main-loop.h"
-+#include "block/aio.h"
-+#include "hw/i2c/i2c.h"
-+
-+#define TYPE_I2C_ECHO "i2c-echo"
-+OBJECT_DECLARE_SIMPLE_TYPE(I2CEchoState, I2C_ECHO)
-+
-+enum i2c_echo_state {
-+    I2C_ECHO_STATE_IDLE,
-+    I2C_ECHO_STATE_START_SEND,
-+    I2C_ECHO_STATE_ACK,
-+};
-+
-+typedef struct I2CEchoState {
-+    I2CSlave parent_obj;
-+
-+    I2CBus *bus;
-+
-+    enum i2c_echo_state state;
-+    QEMUBH *bh;
-+
-+    unsigned int pos;
-+    uint8_t data[3];
-+} I2CEchoState;
-+
-+static void i2c_echo_bh(void *opaque)
-+{
-+    I2CEchoState *state = opaque;
-+
-+    switch (state->state) {
-+    case I2C_ECHO_STATE_IDLE:
-+        return;
-+
-+    case I2C_ECHO_STATE_START_SEND:
-+        if (i2c_start_send_async(state->bus, state->data[0])) {
-+            goto release_bus;
-+        }
-+
-+        state->pos++;
-+        state->state = I2C_ECHO_STATE_ACK;
-+        return;
-+
-+    case I2C_ECHO_STATE_ACK:
-+        if (state->pos > 2) {
-+            break;
-+        }
-+
-+        if (i2c_send_async(state->bus, state->data[state->pos++])) {
-+            break;
-+        }
-+
-+        return;
-+    }
-+
-+
-+    i2c_end_transfer(state->bus);
-+release_bus:
-+    i2c_bus_release(state->bus);
-+
-+    state->state = I2C_ECHO_STATE_IDLE;
-+}
-+
-+static int i2c_echo_event(I2CSlave *s, enum i2c_event event)
-+{
-+    I2CEchoState *state = I2C_ECHO(s);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        state->pos = 0;
-+
-+        break;
-+
-+    case I2C_START_SEND:
-+        state->pos = 0;
-+
-+        break;
-+
-+    case I2C_FINISH:
-+        state->pos = 0;
-+        state->state = I2C_ECHO_STATE_START_SEND;
-+        i2c_bus_master(state->bus, state->bh);
-+
-+        break;
-+
-+    case I2C_NACK:
-+        break;
-+
-+    default:
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+
-+static uint8_t i2c_echo_recv(I2CSlave *s)
-+{
-+    I2CEchoState *state = I2C_ECHO(s);
-+
-+    if (state->pos > 2) {
-+        return 0xff;
-+    }
-+
-+    return state->data[state->pos++];
-+}
-+
-+static int i2c_echo_send(I2CSlave *s, uint8_t data)
-+{
-+    I2CEchoState *state = I2C_ECHO(s);
-+
-+    if (state->pos > 2) {
-+        return -1;
-+    }
-+
-+    state->data[state->pos++] = data;
-+
-+    return 0;
-+}
-+
-+static void i2c_echo_realize(DeviceState *dev, Error **errp)
-+{
-+    I2CEchoState *state = I2C_ECHO(dev);
-+    BusState *bus = qdev_get_parent_bus(dev);
-+
-+    state->bus = I2C_BUS(bus);
-+    state->bh = qemu_bh_new(i2c_echo_bh, state);
-+
-+    return;
-+}
-+
-+static void i2c_echo_class_init(ObjectClass *oc, void *data)
-+{
-+    I2CSlaveClass *sc = I2C_SLAVE_CLASS(oc);
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = i2c_echo_realize;
-+
-+    sc->event = i2c_echo_event;
-+    sc->recv = i2c_echo_recv;
-+    sc->send = i2c_echo_send;
-+}
-+
-+static const TypeInfo i2c_echo = {
-+    .name = TYPE_I2C_ECHO,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(I2CEchoState),
-+    .class_init = i2c_echo_class_init,
-+};
-+
-+static void register_types(void)
-+{
-+    type_register_static(&i2c_echo);
-+}
-+
-+type_init(register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 448e14b531..3eb1bda710 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -129,6 +129,8 @@ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 27dda58338..7c28546d7f 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -293,7 +293,7 @@ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+         qdev_realize_and_unref(dev, BUS(s->spi), &error_fatal);
  
- softmmu_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_ahb_apb_pnp.c'))
+         cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
+-        sysbus_connect_irq(SYS_BUS_DEVICE(s), i + 1, cs_line);
++        qdev_connect_gpio_out_named(DEVICE(s), "cs", i, cs_line);
+     }
+ }
  
-+softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('i2c-echo.c'))
-+
- specific_ss.add(when: 'CONFIG_AVR_POWER', if_true: files('avr_power.c'))
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 22df4be528..7281169322 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -1134,10 +1134,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
  
- specific_ss.add(when: 'CONFIG_MAC_VIA', if_true: files('mac_via.c'))
+     /* Setup cs_lines for peripherals */
+     s->cs_lines = g_new0(qemu_irq, asc->cs_num_max);
+-
+-    for (i = 0; i < asc->cs_num_max; ++i) {
+-        sysbus_init_irq(sbd, &s->cs_lines[i]);
+-    }
++    qdev_init_gpio_out_named(DEVICE(s), s->cs_lines, "cs", asc->cs_num_max);
+ 
+     /* The memory region for the controller registers */
+     memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_ops, s,
 -- 
 2.39.1
 

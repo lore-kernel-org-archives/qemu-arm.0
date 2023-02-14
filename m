@@ -1,107 +1,105 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1424778ejb;
-        Tue, 14 Feb 2023 08:31:42 -0800 (PST)
-X-Google-Smtp-Source: AK7set/3t5SSukuNsROijCNwnmr3qAdl5RaYxoyp1YAg35bmP7fD8Udi1fFfM07xxZwENHpwy9jq
-X-Received: by 2002:ac8:5f10:0:b0:3b9:dd01:6f1f with SMTP id x16-20020ac85f10000000b003b9dd016f1fmr4738230qta.39.1676392302286;
-        Tue, 14 Feb 2023 08:31:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676392302; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1424970ejb;
+        Tue, 14 Feb 2023 08:31:54 -0800 (PST)
+X-Google-Smtp-Source: AK7set+mEjZ2ycGTWRDmymqRlstwBZAu/7ugpaHUbZ+KRH2Y0OCKVC/h86aniTZbqGv2TI4scMk5
+X-Received: by 2002:a05:6214:234c:b0:56c:22d7:3928 with SMTP id hu12-20020a056214234c00b0056c22d73928mr6525440qvb.11.1676392314654;
+        Tue, 14 Feb 2023 08:31:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676392314; cv=none;
         d=google.com; s=arc-20160816;
-        b=PUx1EPAObQWSXjIabSNuCOOod0RXGbk+XQD7hW6GnnjJumnKzTzWsHuchy+qna6Ptk
-         G9fzLc/4mmbUZW/3CclmdntIs3IcNbX1iHEO5vTbbCkW1R2JN6iW75Qp8hfmJBar+JzE
-         3dqZA6V0LpM2UwUcVVm6Y9o8y2hSz9huQ3EHpuRpxm0A+4OknRKPn9NEZzDK92QaY1bn
-         j/ldkKikb5dmgk/udh9076mivLwQlyPNS7qCy3wUB+1ZsUtHTX1WOjMnSFYhYhLKjP4z
-         kHQljVWyT/46MaU+r79fUYywCb8CGYumtxkiLHKsNtkdE+ZQ+6ptD7NxwOM90z5ncxKq
-         fTsw==
+        b=MJNld/gq5lIYXA5zjK2JFMFaxs5mXkL9v+zIoOooXtPOIcJ3CDa/a0aMO1I79StsEb
+         IgxkBwiaVup+x8IHmg/Bsm/GVGvZz3h4p8itZiPqskZ5y79eLRTILrtlBundap09mRS1
+         QNQkZ3/vvqh1l5k5M3ncYvvJSsCf9+3ww/K3iE6SwrictrLWctG31GrZ6A5sosuqBRzs
+         3Bsz3SNZpvHrKNEShbhae7uSO40IgDmbH2EaFQi7x534yjKu4KzTXK6n5zVQql3cwUUY
+         o25dy4N/BoNKut7aAb1CuIr74MfNxssRx5/tCk8QswQE2uiL97d9xhDuwpvDfFRqUgQe
+         b3Uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=GY8+XZXt1WwhGHNe4w41pwNJufQrqsV0Unpbj9QQTJg=;
-        b=p9KJeg+/TGhIPQU4X6LpeehGImPgiVpnmLV/AWorWIHydIlSvUKeuRi8sLsUranh37
-         K2/zLAoQtvQjL1Vv1DgWAP+UEPkuv4mSpevNZJN9W+8zU2jGo0wBg7sea/z7+8qg6S6m
-         lzlddIJ0rAJmq4KsY2gDbOSazmflwl4Nvs39B7lhx2tlZLQ9FNfCM/CIHv4l7t0GprM/
-         OXascREZkxGADpcVlP8q1Qg2+qxzARUzqgzFl5zJHtkBTrL/FlP3daf3i/BAobDaq5ui
-         h2y9HoIovXsaX5+vTzfE84behCEEJxFFAAgzCgcDvJeaXcyycViqTWvi+PrgRLfAKvtz
-         szOQ==
+        bh=Grnio/H04PPuIGiRb3nIsuzzYqUqwsUO7rkz9vUiKr8=;
+        b=sCD3qbJWPJ6nVDEUp6tdAlhBDpoBmjhdR6yjhHs1U/psjoUgol2Ruzt2HW+FvK8FUR
+         H7cCOFhsBsjum6D25+lJX+nPc6or88HIsE/a2fSiEmEghOUIdlossu5Z3/lmTgJdOdNj
+         HmAprZ7j1nV77iXYUm6HtXxpyP2WxqvGJkf4KK6k53sIvrne2gVhyUh69+rLwzSN7Uwi
+         iV0M783HMYBbTGx3LfGY9iDl0VCqZJ7wEuJF6v1RyK+LfFuC8DweJIEXGqUPdFLB3meN
+         sYRQj84nEsXqk2cFe7iPvSzLUA2ZMB8YcGbXwXY4QajW0hzt396UpaNY2Wp4Z4nts87p
+         0wKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AAXYLp84;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KR5SR2gM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1-20020ac85c81000000b003b827400cbdsi13212590qta.508.2023.02.14.08.31.42
+        by mx.google.com with ESMTPS id y25-20020a0c9a99000000b0056ea65c4e95si6931061qvd.169.2023.02.14.08.31.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Feb 2023 08:31:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Feb 2023 08:31:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AAXYLp84;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KR5SR2gM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pRyDC-0006yf-KG; Tue, 14 Feb 2023 11:31:22 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pRyD1-0006Zq-Tq; Tue, 14 Feb 2023 11:31:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pRyD6-0006kO-3n
- for qemu-devel@nongnu.org; Tue, 14 Feb 2023 11:31:16 -0500
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1pRyCs-0006Rb-Vr
+ for qemu-arm@nongnu.org; Tue, 14 Feb 2023 11:31:04 -0500
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pRyD3-00028X-VV
- for qemu-devel@nongnu.org; Tue, 14 Feb 2023 11:31:15 -0500
-Received: by mail-pf1-x435.google.com with SMTP id bd35so5540285pfb.6
- for <qemu-devel@nongnu.org>; Tue, 14 Feb 2023 08:31:13 -0800 (PST)
+ id 1pRyCq-00027R-Ob
+ for qemu-arm@nongnu.org; Tue, 14 Feb 2023 11:31:02 -0500
+Received: by mail-pg1-x535.google.com with SMTP id c29so6474045pgm.5
+ for <qemu-arm@nongnu.org>; Tue, 14 Feb 2023 08:30:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GY8+XZXt1WwhGHNe4w41pwNJufQrqsV0Unpbj9QQTJg=;
- b=AAXYLp84X55v1PCIKEBERUmfIlyxGUSALhz8UOrF/T8CniZEX1VHLyQAwuAkueLI6c
- QfnsN2Br7mQxaRXboBU2iSAUBz2ogo/loYjjVx05p6clJNlSiglTvpTjdQ/bhaH8J9K/
- YwTokqCjq4EleEzelBi/ee8L9tf44hFcuVGw6DWzMNpfOuT+53W/p0R5+HLdvi54CE07
- V9eA7UKsvTJL/bOtC2K8BtARV0Ap8ZZ2aoNkAvUPHEevULO4iTwvtqWywb5XWeiZCv8m
- zUCoUSfnArlMGhzATOZYYiIaO0jOBFSdBRBjaHU9rZcuWppuoAG3Gfz8aT3wkPJF5gCD
- eH9g==
+ bh=Grnio/H04PPuIGiRb3nIsuzzYqUqwsUO7rkz9vUiKr8=;
+ b=KR5SR2gMQ2Q4nPkyvqJSrcqclkF32K46fkHwU5XrT1mC/jHjg56ECTqpH4qCKp2N2h
+ Ja11as9yTO1ir0YTUd7+IUgxkDCr97ao/trMNVYvDx/Suq77DcAubp+zoTwM+V/OD1xc
+ /Pest5Non4iwpkWRjW57gb8U9QtqLiMcj4Q0kurid2KCRoNjF0Zy7KWHM2hc8+16srXi
+ SPhcx/fGl9DdR+5J4wg0J4X01P2R05AanV5racMvcZOvAMzu/wZwdtsmo6VsMOfrlAnG
+ k5+OKna+IUCcYiPay/0miHFUKa69ftRD43BS7nM5f2LfL+055pbocRd9oLjBMS18c3J/
+ 3S/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=GY8+XZXt1WwhGHNe4w41pwNJufQrqsV0Unpbj9QQTJg=;
- b=YyCJNvCBqEaei5C69Bitnpo3wZa8Q3favSGwR5x9ep3AlkpjPZVyDBGJYqghye0pBd
- VnJwrkovvGc4zg55qgykuXx0/Bk/cj4VHxJVjDWRqlKKtxIHIUPlCIAwEknbs5yNPtse
- BhDoK/N0AzB2+UfFwunuLXTVkhEtkSYpImyJTAw1dvlZ2qqBKpbPJjhjIP3JWssDtQ5k
- 3esfmW2zN1bFx31FCn08VL6itJbDyATsp60+rs61U7qmi//LveIb+lCqFWaX3/M8wKoI
- rpUGamkoAQepmmUmaOWICEWx2PxMuf77E8M+nT5AN0Kk0UJd8z/uJEgVJEa9BHpfj6TZ
- MxMA==
-X-Gm-Message-State: AO0yUKVJsTu0BhoX8kPjtNLTukS+FWWvJdDc32h4qxjaj9WyVqNdn/S5
- xOHMeWRCgBAYSszVuSi8bMAy1TUXKGywXft4/hM=
-X-Received: by 2002:a62:848e:0:b0:5a8:4de2:e94e with SMTP id
- k136-20020a62848e000000b005a84de2e94emr2560366pfd.33.1676392273135; 
- Tue, 14 Feb 2023 08:31:13 -0800 (PST)
+ bh=Grnio/H04PPuIGiRb3nIsuzzYqUqwsUO7rkz9vUiKr8=;
+ b=IViYDY4jLULzxdbobl659W6YJU8LLLOkt0albRK6d/2Pilt7VfsOcR/JkC3r+a48xx
+ 9/+/KenWJgwdLPS3N3kupQbfN2JMxnuBLcY9ZWaIIx3xqlPBVS2eEwiRo7MY2x1OquWO
+ yPV2+pZx97GeqLFiOOvorOqd1FXI4TlbtuxmqRhYjLSW6yirC6z47rYtnC8LiwpfJ1WT
+ BAM/3ovsP/vDKVLK9MZWLlh/r5ix3uBbXOdwGg0AeSzM0a3FQTI98OTh/n4yA1+FPyZt
+ M2Ch3F/xtY/ajzYL3TOO0qYyCCDMt0tKxhuzCwCgkr+6eEdOn8oYFqVhUOzd9vP1ty3v
+ 3e9g==
+X-Gm-Message-State: AO0yUKVxXvnffJ/t3UVabk8bHQK2Ch/ADxbBbzYzY8Zl27Gq8on42k2h
+ pR660spsix307rvGL1P0ur3xTg==
+X-Received: by 2002:aa7:9842:0:b0:594:15fd:895e with SMTP id
+ n2-20020aa79842000000b0059415fd895emr2277535pfq.31.1676392257746; 
+ Tue, 14 Feb 2023 08:30:57 -0800 (PST)
 Received: from stoup.. (rrcs-74-87-59-234.west.biz.rr.com. [74.87.59.234])
  by smtp.gmail.com with ESMTPSA id
- d17-20020aa78691000000b0058d99337381sm10337011pfo.172.2023.02.14.08.31.11
+ d17-20020aa78691000000b0058d99337381sm10337011pfo.172.2023.02.14.08.30.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Feb 2023 08:31:12 -0800 (PST)
+ Tue, 14 Feb 2023 08:30:57 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	David Reiss <dreiss@meta.com>
-Subject: [PATCH 14/14] target/arm: Support reading m-profile system registers
- from gdb
-Date: Tue, 14 Feb 2023 06:30:48 -1000
-Message-Id: <20230214163048.903964-15-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 04/14] target/arm: Split out output_vector_union_type
+Date: Tue, 14 Feb 2023 06:30:38 -1000
+Message-Id: <20230214163048.903964-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230214163048.903964-1-richard.henderson@linaro.org>
 References: <20230214163048.903964-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,242 +108,143 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M50jiseXWDlS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: M0XL0fDA2cYH
 
-From: David Reiss <dreiss@meta.com>
+Create a subroutine for creating the union of unions
+of the various type sizes that a vector may contain.
 
-Follows a fairly similar pattern to the existing special register
-debug support.  Only reading is implemented, but it should be
-possible to implement writes.
-
-Signed-off-by: David Reiss <dreiss@meta.com>
-[rth: Split out from two other patches;
- Use an enumeration to locally number the registers.
- Use a structure to list and control runtime visibility.
- Handle security extension with the same code.]
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h     |   1 +
- target/arm/gdbstub.c | 169 +++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 170 insertions(+)
+ target/arm/gdbstub64.c | 83 +++++++++++++++++++++++-------------------
+ 1 file changed, 45 insertions(+), 38 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c9f768f945..536e60d48c 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -867,6 +867,7 @@ struct ArchCPU {
- 
-     DynamicGDBXMLInfo dyn_sysreg_xml;
-     DynamicGDBXMLInfo dyn_svereg_xml;
-+    DynamicGDBXMLInfo dyn_m_systemreg_xml;
- 
-     /* Timers used by the generic (architected) timer */
-     QEMUTimer *gt_timer[NUM_GTIMERS];
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 062c8d447a..a8848c7fee 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -322,6 +322,167 @@ static int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
-     return cpu->dyn_sysreg_xml.num;
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 59fb5465d5..811833d8de 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -210,44 +210,39 @@ int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg)
+     return 0;
  }
  
-+enum {
-+    M_SYSREG_MSP        = 0,
-+    M_SYSREG_PSP        = 1,
-+    M_SYSREG_PRIMASK    = 2,
-+    M_SYSREG_CONTROL    = 3,
-+    M_SYSREG_BASEPRI    = 4,
-+    M_SYSREG_FAULTMASK  = 5,
-+    M_SYSREG_MSPLIM     = 6,
-+    M_SYSREG_PSPLIM     = 7,
-+    M_SYSREG_REG_MASK   = 7,
+-struct TypeSize {
+-    const char *gdb_type;
+-    short size;
+-    char sz, suffix;
+-};
+-
+-static const struct TypeSize vec_lanes[] = {
+-    /* quads */
+-    { "uint128", 128, 'q', 'u' },
+-    { "int128", 128, 'q', 's' },
+-    /* 64 bit */
+-    { "ieee_double", 64, 'd', 'f' },
+-    { "uint64", 64, 'd', 'u' },
+-    { "int64", 64, 'd', 's' },
+-    /* 32 bit */
+-    { "ieee_single", 32, 's', 'f' },
+-    { "uint32", 32, 's', 'u' },
+-    { "int32", 32, 's', 's' },
+-    /* 16 bit */
+-    { "ieee_half", 16, 'h', 'f' },
+-    { "uint16", 16, 'h', 'u' },
+-    { "int16", 16, 'h', 's' },
+-    /* bytes */
+-    { "uint8", 8, 'b', 'u' },
+-    { "int8", 8, 'b', 's' },
+-};
+-
+-int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
++static void output_vector_union_type(GString *s, int reg_width)
+ {
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    GString *s = g_string_new(NULL);
+-    DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
++    struct TypeSize {
++        const char *gdb_type;
++        short size;
++        char sz, suffix;
++    };
 +
-+    /*
-+     * NOTE: MSP, PSP, MSPLIM, PSPLIM technically don't exist if the
-+     * secure extension is present (replaced by MSP_S, MSP_NS, et al).
-+     * However, the MRS instruction is still allowed to read from MSP and PSP,
-+     * and will return the value associated with the current security state.
-+     * We replicate this behavior for the convenience of users, who will see
-+     * GDB behave similarly to their assembly code, even if they are oblivious
-+     * to the security extension.
-+     */
-+    M_SYSREG_CURRENT    = 0 << 3,
-+    M_SYSREG_NONSECURE  = 1 << 3,
-+    M_SYSREG_SECURE     = 2 << 3,
-+    M_SYSREG_MODE_MASK  = 3 << 3,
-+};
++    static const struct TypeSize vec_lanes[] = {
++        /* quads */
++        { "uint128", 128, 'q', 'u' },
++        { "int128", 128, 'q', 's' },
++        /* 64 bit */
++        { "ieee_double", 64, 'd', 'f' },
++        { "uint64", 64, 'd', 'u' },
++        { "int64", 64, 'd', 's' },
++        /* 32 bit */
++        { "ieee_single", 32, 's', 'f' },
++        { "uint32", 32, 's', 'u' },
++        { "int32", 32, 's', 's' },
++        /* 16 bit */
++        { "ieee_half", 16, 'h', 'f' },
++        { "uint16", 16, 'h', 'u' },
++        { "int16", 16, 'h', 's' },
++        /* bytes */
++        { "uint8", 8, 'b', 'u' },
++        { "int8", 8, 'b', 's' },
++    };
 +
-+static const struct {
-+    const char *name;
-+    int feature;
-+} m_systemreg_def[] = {
-+    [M_SYSREG_MSP] = { "msp", ARM_FEATURE_M },
-+    [M_SYSREG_PSP] = { "psp", ARM_FEATURE_M },
-+    [M_SYSREG_PRIMASK] = { "primask", ARM_FEATURE_M },
-+    [M_SYSREG_CONTROL] = { "control", ARM_FEATURE_M },
-+    [M_SYSREG_BASEPRI] = { "basepri", ARM_FEATURE_M_MAIN },
-+    [M_SYSREG_FAULTMASK] = { "faultmask", ARM_FEATURE_M_MAIN },
-+    [M_SYSREG_MSPLIM] = { "msplim", ARM_FEATURE_V8 },
-+    [M_SYSREG_PSPLIM] = { "psplim", ARM_FEATURE_V8 },
-+};
++    static const char suf[] = { 'q', 'd', 's', 'h', 'b' };
 +
-+static int arm_gdb_get_m_systemreg(CPUARMState *env, GByteArray *buf, int reg)
-+{
-+    int mode = reg & M_SYSREG_MODE_MASK;
-+    bool secure;
-+    uint32_t val;
-+
-+    switch (mode) {
-+    case M_SYSREG_CURRENT:
-+        secure = env->v7m.secure;
-+        break;
-+    case M_SYSREG_NONSECURE:
-+        secure = false;
-+        break;
-+    case M_SYSREG_SECURE:
-+        secure = true;
-+        break;
-+    default:
-+        return 0;
-+    }
-+
-+    reg &= M_SYSREG_REG_MASK;
-+    if (reg >= ARRAY_SIZE(m_systemreg_def)) {
-+        return 0;
-+    }
-+    if (!arm_feature(env, m_systemreg_def[reg].feature)) {
-+        return 0;
-+    }
-+
-+    /* NOTE: This implementation shares a lot of logic with v7m_mrs. */
-+    switch (reg) {
-+    case M_SYSREG_MSP:
-+        val = *arm_v7m_get_sp_ptr(env, secure, false, true);
-+        break;
-+    case M_SYSREG_PSP:
-+        val = *arm_v7m_get_sp_ptr(env, secure, true, true);
-+        break;
-+    case M_SYSREG_MSPLIM:
-+        val = env->v7m.msplim[secure];
-+        break;
-+    case M_SYSREG_PSPLIM:
-+        val = env->v7m.psplim[secure];
-+        break;
-+    case M_SYSREG_PRIMASK:
-+        val = env->v7m.primask[secure];
-+        break;
-+    case M_SYSREG_BASEPRI:
-+        val = env->v7m.basepri[secure];
-+        break;
-+    case M_SYSREG_FAULTMASK:
-+        val = env->v7m.faultmask[secure];
-+        break;
-+    case M_SYSREG_CONTROL:
-+        /*
-+         * NOTE: CONTROL has a mix of banked and non-banked bits.
-+         * For "current", we emulate the MRS instruction.
-+         * Unfortunately, this gives GDB no way to read the SFPA bit
-+         * when the CPU is in a non-secure state.
-+         */
-+        if (mode == M_SYSREG_CURRENT) {
-+            val = arm_v7m_mrs_control(env, secure);
-+        } else {
-+            val = env->v7m.control[secure];
-+        }
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    return gdb_get_reg32(buf, val);
+     g_autoptr(GString) ts = g_string_new("");
+-    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
+-    info->num = 0;
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
++    int i, j, bits;
+ 
+     /* First define types and totals in a whole VL */
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+@@ -263,7 +258,6 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+      * 8 bits.
+      */
+     for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+-        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
+         g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
+         for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
+             if (vec_lanes[j].size == bits) {
+@@ -277,11 +271,24 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+     /* And now the final union of unions */
+     g_string_append(s, "<union id=\"svev\">");
+     for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+-        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
+         g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
+                                suf[i], suf[i]);
+     }
+     g_string_append(s, "</union>");
 +}
 +
-+static int arm_gdb_set_m_systemreg(CPUARMState *env, uint8_t *buf, int reg)
-+{
-+    /* TODO: Implement. */
-+    return 0;
-+}
-+
-+static int arm_gen_dynamic_m_systemreg_xml(CPUState *cs, int base_reg)
++int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
 +{
 +    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
 +    GString *s = g_string_new(NULL);
-+    int i, ret;
-+
++    DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
++    int i, reg_width = (cpu->sve_max_vq * 128);
++    info->num = 0;
 +    g_string_printf(s, "<?xml version=\"1.0\"?>");
 +    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
-+    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.m-system\">\n");
++    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
 +
-+    QEMU_BUILD_BUG_ON(M_SYSREG_CURRENT != 0);
-+    ret = ARRAY_SIZE(m_systemreg_def);
-+
-+    for (i = 0; i < ret; i++) {
-+        if (arm_feature(env, m_systemreg_def[i].feature)) {
-+            g_string_append_printf(s,
-+                "<reg name=\"%s\" bitsize=\"32\" regnum=\"%d\"/>\n",
-+                m_systemreg_def[i].name, base_reg + i);
-+        }
-+    }
-+
-+    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+        for (i = 0; i < ret; i++) {
-+            g_string_append_printf(s,
-+                "<reg name=\"%s_ns\" bitsize=\"32\" regnum=\"%d\"/>\n",
-+                m_systemreg_def[i].name, base_reg + (i | M_SYSREG_NONSECURE));
-+        }
-+        for (i = 0; i < ret; i++) {
-+            g_string_append_printf(s,
-+                "<reg name=\"%s_s\" bitsize=\"32\" regnum=\"%d\"/>\n",
-+                m_systemreg_def[i].name, base_reg + (i | M_SYSREG_SECURE));
-+        }
-+        QEMU_BUILD_BUG_ON(M_SYSREG_SECURE < M_SYSREG_NONSECURE);
-+        ret |= M_SYSREG_SECURE;
-+    }
-+
-+    g_string_append_printf(s, "</feature>");
-+
-+    cpu->dyn_m_systemreg_xml.desc = g_string_free(s, false);
-+    cpu->dyn_m_systemreg_xml.num = ret;
-+    return ret;
-+}
-+
- const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-@@ -330,6 +491,8 @@ const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
-         return cpu->dyn_sysreg_xml.desc;
-     } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
-         return cpu->dyn_svereg_xml.desc;
-+    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
-+        return cpu->dyn_m_systemreg_xml.desc;
-     }
-     return NULL;
- }
-@@ -389,4 +552,10 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
-                              arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
-                              "system-registers.xml", 0);
++    output_vector_union_type(s, reg_width);
  
-+    if (arm_feature(env, ARM_FEATURE_M)) {
-+        gdb_register_coprocessor(cs,
-+            arm_gdb_get_m_systemreg, arm_gdb_set_m_systemreg,
-+            arm_gen_dynamic_m_systemreg_xml(cs, cs->gdb_num_regs),
-+            "arm-m-system.xml", 0);
-+    }
- }
+     /* Finally the sve prefix type */
+     g_string_append_printf(s,
 -- 
 2.34.1
 

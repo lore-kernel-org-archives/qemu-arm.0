@@ -1,152 +1,129 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp547725ejb;
-        Mon, 13 Feb 2023 12:33:18 -0800 (PST)
-X-Google-Smtp-Source: AK7set9Htbx5ARchYyB4HLKpSAjmYyWQSjIy9KowM79T8n7t8FC/fI0LuxCnVerWI/gt8BaL+Hru
-X-Received: by 2002:a5d:58c2:0:b0:2c5:4fb2:7c72 with SMTP id o2-20020a5d58c2000000b002c54fb27c72mr6672377wrf.26.1676320398743;
-        Mon, 13 Feb 2023 12:33:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676320398; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp969709ejb;
+        Mon, 13 Feb 2023 23:06:27 -0800 (PST)
+X-Google-Smtp-Source: AK7set+pwYXYpdQ7rij42yIfRPMKoqh6lrKBVesu7qDn3H3/zoHmLXIPS3kgMlnYGAaHmzL5Rg7l
+X-Received: by 2002:a05:6214:250b:b0:53c:f76f:2e3c with SMTP id gf11-20020a056214250b00b0053cf76f2e3cmr3392970qvb.46.1676358387621;
+        Mon, 13 Feb 2023 23:06:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676358387; cv=none;
         d=google.com; s=arc-20160816;
-        b=B33poX+sjsWSiQ1+38oBthYEss9ZuiIqio6neTUccyNcacwgAlUvRbYn8MNxXXwgMY
-         8V24KQOHC8Qk90rwPhQq17THXcaUUeXhUeoxPlGsGip0zeLYtLJttJf8OqLYTzJ2mfww
-         GkS0AhOVacqQG4uApSBXfy9tFvQyOxOqWMDnxiu3mWIG1WbukFSdEuVOlbsnZVPZ5+E1
-         3MMDMWR1QcSkNdNmORQs2WWOMZVD1Lnb3EbJ+V3vMaRd8QBvDzAm0Mnjn/+fxkF+9Rhi
-         ubJ5u5U2zJ98s41gngVcvSDoXBLQmojkYT7h5dLmjks1pb5wX+wxgMB4jTM5k/IOqCTX
-         HaNg==
+        b=RbTa2OZCntOzCDMb76NWNs2V9AsUOpmPKt10u700HhlCKpB4hnYWYgetxxvGo9Hd6G
+         Y7XORWzjxs/Nx87TH1+kdH8dXNfx1atY/X+EK+7CtIphEs+UFvbNSnqBrXQTwYiTP1TN
+         KttGtlS6LWsXpmv5rQbpo5kFKbXO0OlOsR1B7QgQSp7ok39iSv/hiWR9WV0c81MC5In/
+         EWyF021TZEhJiuJeZ/4mR4neHqN7z6Gv0mnjnaqC+vV8ZGvU09Ts4nHTlEv1KMmkEvhf
+         7lRkn2UjnxWiGR0wFchn9sM2KnLW8wOBnBfobFALHjR+KgAiiNSBvzGldOXWRhfGFwyE
+         H7sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=cVx99/M6Pp/qfxaNig6cBB81qvBwVS7AO0drF/iWRns=;
-        b=qicC+YARGncygd+ixhlpybn3X3zAgC493FYNaewy35Qv/EZ3XYZ3xwFPGeXFiuLn48
-         0Z4+4a7eNF9Ci43RsLVpv4NWhSNM6vMBh2Y9pGq/ql2FrqnuwuEj97/lvqV0sH6PDipu
-         0LzXfE1YlvzBs3lKHAEfaf5MnSBKDmIgCmvqUUvAC6/lQLksBB42xin1E54FQzVFEOVy
-         xJuDQiyLVVWEd11wlDgXIb0TVhEa1UDB/qGK0kANHQoiPBVXCBy+zl2nVobEc5maAFDS
-         ayMnvKvpATQZM1Yr2EWagzW7Ls2QgYDgVNISSSAJMHZNiIqB/3fsf74xgmH5WM2YxhRy
-         9axg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=rj4PP39EaY/fvTRMb0SoJhqoiO+oPoRJpmZtDeXXdRE=;
+        b=BV7yXDQhN9q6qX8XFx4n5V9ypgSZMLZjudgRWlEDGep4RAyOuTdZVMRr6Rnbv/Wakq
+         /IMSCwOhYZEbGijgF36ktQBDgSDY8yiVjBaqzju9tFf9qqcyRvBn3RtH0WliFsO5GEhf
+         neSmk1uQJwGiRqUoDZiPma/4iE9YXw6r40S34238OtQxWL55c1GirCc7xFrmO+szE0kQ
+         jUU3fjNcm3hmxcjTZ/ZqPg2uO8FnXwVP8vA3exy7/KhvBL+mw9j8O2KJINB01uVbD4XE
+         Jl78TMDoWGYBqeZQDQKpIWs1m5232RzYtitm7TpQyhuyTBJXezjfhBcTb7ID9eSlHz/g
+         qN/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="TUO8p//F";
-       dkim=neutral (no key) header.i=@suse.de header.b=0bOg2h9f;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id l9-20020a5d6749000000b002c3f9b91d6bsi10415156wrw.619.2023.02.13.12.33.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Feb 2023 12:33:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y18-20020a05620a25d200b00738e9df500bsi11848182qko.50.2023.02.13.23.06.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 13 Feb 2023 23:06:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="TUO8p//F";
-       dkim=neutral (no key) header.i=@suse.de header.b=0bOg2h9f;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 5B81F2021C;
-	Mon, 13 Feb 2023 20:33:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1676320398; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cVx99/M6Pp/qfxaNig6cBB81qvBwVS7AO0drF/iWRns=;
-	b=TUO8p//FxjTYAzST8ZqhadGS6TfE1RaW030RBCQkfJKnd9fGKr53F1lmNAX9jZ1mfLDiiB
-	1KgDoCtkH9XPdKKU2JbdXyiKzbkg2BycARPUFGrMv1MVbNJhjot1sots0t3AdG3wgnftr4
-	vbhRKkqjFPiRYOIKtrdLLPC4DT4DwcY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1676320398;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cVx99/M6Pp/qfxaNig6cBB81qvBwVS7AO0drF/iWRns=;
-	b=0bOg2h9fx/GvVPV6K72QTKL7hYeHAs84B95Ic9OBOcSVGeVsMGxl7qE+Bp/vshZ2MrACos
-	yC15CL5L7ZAkjHAQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 9C50D1391B;
-	Mon, 13 Feb 2023 20:33:14 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id AKhOGIqe6mOVMwAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 13 Feb 2023 20:33:14 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH RESEND v5 28/28] gitlab-ci: Check building KVM-only aarch64 target
-Date: Mon, 13 Feb 2023 17:29:27 -0300
-Message-Id: <20230213202927.28992-29-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230213202927.28992-1-farosas@suse.de>
-References: <20230213202927.28992-1-farosas@suse.de>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pRpO4-0004XE-Bt; Tue, 14 Feb 2023 02:06:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1pRpO2-0004SF-QR; Tue, 14 Feb 2023 02:05:58 -0500
+Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1pRpO0-00051Y-Pv; Tue, 14 Feb 2023 02:05:58 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.179])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id AD60820440;
+ Tue, 14 Feb 2023 07:05:53 +0000 (UTC)
+Received: from kaod.org (37.59.142.96) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.17; Tue, 14 Feb
+ 2023 08:05:53 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R0010c9539f3-d58f-4d8a-bc41-54843a0f243a,
+ D27BB99F68B8EC7888E3647E3ED2C6CF660736DE) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <7589543a-f108-fe88-489b-1f0bba896c5f@kaod.org>
+Date: Tue, 14 Feb 2023 08:05:52 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: KHuUoiTu2sQk
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v1] Adding new machine Yosemitev2 in QEMU
+Content-Language: en-US
+To: karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>, QEMU Developers
+ <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+References: <20230210125028.839131-1-pkarthikeyan1509@gmail.com>
+ <e16436c5-585d-1a9b-1d62-249922e924c6@kaod.org>
+ <CA+ezb7ifqiE-WJnBfDpn6-F17ukkarqnXTmMsSTNRGAHEnp0mA@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CA+ezb7ifqiE-WJnBfDpn6-F17ukkarqnXTmMsSTNRGAHEnp0mA@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 54f00da6-d1a8-439a-ba31-cf389094681e
+X-Ovh-Tracer-Id: 3661707972486859741
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrudeivddguddtvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfhfhfgjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpefgfefgfeetjeffteffjeehteeugefhieduteefjedtgfefudejteffveejheefgeenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphhkrghrthhhihhkvgihrghnudehtdelsehgmhgrihhlrdgtohhmpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehgeekpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
+ helo=9.mo548.mail-out.ovh.net
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.345,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1hY7/pNXVWfC
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+Hello,
 
-Add a manual new job to cross-build the aarch64 target with
-only the KVM accelerator enabled (in particular, no TCG).
+[ adding the lists ]
 
-Re-enable running the similar job on the project Aarch64
-custom runner.
+>      > +static void fb_bmc_i2c_init(AspeedMachineState *bmc)
+> 
+>     The same routine name is proposed in the tiogapass patch :
+> 
+>     https://lore.kernel.org/qemu-devel/20230210122641.837614-1-pkarthikeyan1509@gmail.com/ <https://lore.kernel.org/qemu-devel/20230210122641.837614-1-pkarthikeyan1509@gmail.com/>
+> 
+>     Do you have plans to populate the I2C buses differently ?
+> 
+> 
+> This is an initial patch we have been working on adding more specific configurations in the future.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- .gitlab-ci.d/crossbuilds.yml                         | 11 +++++++++++
- .gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml |  4 ----
- 2 files changed, 11 insertions(+), 4 deletions(-)
+OK. Then please rename the routine with a "yosemite" like prefix.
 
-diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
-index 74d6259b90..80269a3656 100644
---- a/.gitlab-ci.d/crossbuilds.yml
-+++ b/.gitlab-ci.d/crossbuilds.yml
-@@ -212,3 +212,14 @@ cross-arm64-xen-only:
-     IMAGE: debian-arm64-cross
-     ACCEL: xen
-     EXTRA_CONFIGURE_OPTS: --disable-tcg --disable-kvm
-+
-+# Similar job is run by qemu-project's custom runner by default
-+cross-arm64-kvm-only:
-+  extends: .cross_accel_build_job
-+  needs:
-+    job: arm64-debian-cross-container
-+  variables:
-+    QEMU_JOB_OPTIONAL: 1
-+    IMAGE: debian-arm64-cross
-+    ACCEL: kvm
-+    EXTRA_CONFIGURE_OPTS: --disable-tcg --disable-xen --without-default-devices
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-index 8ba85be440..770e596242 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-@@ -115,11 +115,7 @@ ubuntu-22.04-aarch64-notcg:
-  - aarch64
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--   when: manual
--   allow_failure: true
-  - if: "$AARCH64_RUNNER_AVAILABLE"
--   when: manual
--   allow_failure: true
-  script:
-  - mkdir build
-  - cd build
--- 
-2.35.3
+Thanks,
+
+C.
+
+

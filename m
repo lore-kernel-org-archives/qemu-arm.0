@@ -1,101 +1,102 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1546896ejb;
-        Tue, 14 Feb 2023 10:57:33 -0800 (PST)
-X-Google-Smtp-Source: AK7set8/ghZUBFAT4SEP0FYCRBKZzgfeHBECkYZmLiJ6DtuORAyXSSxOCpmGF4dW9oDoI/N/FCZ0
-X-Received: by 2002:a05:622a:40b:b0:3ae:189c:7455 with SMTP id n11-20020a05622a040b00b003ae189c7455mr5260763qtx.47.1676401052980;
-        Tue, 14 Feb 2023 10:57:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676401052; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1556691ejb;
+        Tue, 14 Feb 2023 11:09:26 -0800 (PST)
+X-Google-Smtp-Source: AK7set97/0olhEHN/VdgQNoJ/5RkhhI/o6eg4QNVcCo1CZaG4lR5aOubIAIum/Svh3xBB6HtRmf5
+X-Received: by 2002:ad4:5def:0:b0:534:e0c4:226d with SMTP id jn15-20020ad45def000000b00534e0c4226dmr7683227qvb.16.1676401766435;
+        Tue, 14 Feb 2023 11:09:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676401766; cv=none;
         d=google.com; s=arc-20160816;
-        b=NRHKG2k/v2BVv7u3toO+LxByJ7q1WCtLX265joR9cjNnc8cgiRrrmgzpm1oOcbNenQ
-         EYu2LfYeMCgY1R4hcze6DU0vAKSlnd8jVjF4blO2HXWtd4+qUChEVx3glfMJCj1WwVfW
-         ITA/nw7Jpl5G9Ztkcv4+pwcL9S5WVLEQ8G64EIVSU8Hed2iuIvOJYJK/5CSdFTXMUPso
-         QrK+5h8wqswDO9pvznjcWBrYEdPh+nUjTG2RfTkqLG8ahRDo5z8cbyC1rawFMb1C2NNr
-         iLBAPPxgnrOnV8Ol/DwVJJy5OotnV1kGc9darcFtA2PXR86Jh+41t8968kDybE1ZnXYs
-         4IaA==
+        b=ErGMKG4tgx+HmjoAgyS/5ypFMFxpnGW/NQ30TiKc6jE5jG4fpfS9u4ebJsNqIXzf0L
+         mKgGf1KzrEcg8sIWHN8z/caWBCiRoB0mSowLYHDHCTI5R5wRYAeIsaoRmxa0rwH0WKY6
+         s6PhevOI8Gt75+L2UCvaxCMOoS0FvQHrCuRn36v1KDNrKqhmlzV+bwEVmdWzxaafw70H
+         ESO9tP6JAFaa8sp4diUniOLPmMMF/+CoYj8yIbnDqvZpyoKI7Dd3FxrXye8Gsn/pq5Pb
+         a2SI3N/8PMCqzvQc13KjXr1KUjtc46yQaQpymVDv4Bxkhy+YzWB4jR4Ml8GYl3a4SdTZ
+         AaZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:message-id:date
          :references:in-reply-to:subject:cc:to:from:dkim-signature
          :dkim-signature;
-        bh=Xh8q8U51OTjqJ8ndW59AQ6lWCOSUnBSo/ns6ECZcyrk=;
-        b=uVKKAV/mA7iDtcDtIqK0+/+4qYIvgKUJVQs63KsTEf0DxNFrjpNUg9ThQ1lrWQeiqt
-         lOpqBaVpLjHpRF930sGdAAVJAcl7c8YVLPECA4mXNcWeTox8a4Q+YQ/WQAyAtiHaudXc
-         VzcXoZev35J4Ej871qPZW72hYwUewhCSbr7DAjUB89tllq6GCtyvkQOP/ZzeMfHUea9c
-         CuD5aFl/pv2qmeOrQU9XlmXhsBiWRSVbzv9bRHQv83UofJA6wTDtmsxzkKX0cyhy7wH6
-         iBed7dMWCK5zgX52k6UaUkOT0BmJDbAkYeIv07Zsxt5OzIwQogdPROhFYmb4/fvNHfJH
-         UpRQ==
+        bh=j1tf9YlItdMNvA7SRdZYLkGdvlLbUpNFYRCasPTqO70=;
+        b=HwLYLB7xgYBulOBIxprm1Nxi2fbC6wr9K185M9sMsxFYzzH6qtj6pINUFsKZZ70rD7
+         t6zANP/jVdqLZ1qYluZ7hJm8PZAob6DvMwTg750Hn6YdBYsr3tONbR2MEG07oy8+aZTr
+         wUWIEDeFlDpRrMHc0pbpuBySqybIqPp4HvgptsUd4tnebFDK+6J4yD5qIRJdFOE5NhD6
+         tKW+4d02mAfhFPb69kWWtoLkbW+owBCBKe577gY71IMr6oBnCFxB+MO76w95yXX01tJl
+         biZXP5W8ruL44d/Nbva/Zz6Cs5aZj9kJX+JjIMa3clDLyPexZDVR3HO4rXCCSUzvgnq9
+         Ms0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=luguT8iE;
-       dkim=neutral (no key) header.i=@nongnu.org;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="QmXa7/c6";
+       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519 header.b=1B3QqB9r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j5-20020a05620a288500b0071b56f043a5si11809355qkp.163.2023.02.14.10.57.32
+        by mx.google.com with ESMTPS id r22-20020a0cb296000000b0056bf9b4f42fsi12633273qve.390.2023.02.14.11.09.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Feb 2023 10:57:32 -0800 (PST)
+        Tue, 14 Feb 2023 11:09:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=luguT8iE;
-       dkim=neutral (no key) header.i=@nongnu.org;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="QmXa7/c6";
+       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519 header.b=1B3QqB9r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pS0UL-0003RB-56; Tue, 14 Feb 2023 13:57:13 -0500
+	id 1pS0fr-0006ML-4a; Tue, 14 Feb 2023 14:09:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1pS0UI-0003Qi-QX; Tue, 14 Feb 2023 13:57:10 -0500
-Received: from smtp-out1.suse.de ([195.135.220.28])
+ id 1pS0fn-0006DB-Uw; Tue, 14 Feb 2023 14:09:03 -0500
+Received: from smtp-out2.suse.de ([2001:67c:2178:6::1d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1pS0UH-0005ge-9E; Tue, 14 Feb 2023 13:57:10 -0500
+ id 1pS0fm-00046I-EU; Tue, 14 Feb 2023 14:09:03 -0500
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
  (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 9F83A2187C;
- Tue, 14 Feb 2023 18:57:07 +0000 (UTC)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 87F501F37E;
+ Tue, 14 Feb 2023 19:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1676401027; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1676401740; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=Xh8q8U51OTjqJ8ndW59AQ6lWCOSUnBSo/ns6ECZcyrk=;
- b=luguT8iEAXV2xizX2vN6fhUkYRjsDo0HeNBegiRu0LcGTPeQ18uLjynlUg63PRToGBKHUz
- i67ZBiF/9X81rMhwZNM6oEu+KK+L0znGR6khxZvY/xJNoQhacFz4NbDJGilydTM/oASnyO
- wiVmm+e0OMxoIUNwvb/4SMRd9/AkFMI=
+ bh=j1tf9YlItdMNvA7SRdZYLkGdvlLbUpNFYRCasPTqO70=;
+ b=QmXa7/c6PTErWRHl8Ez4EtxCNKvrCP49p7x9KGg0k9QJw5sZas7Nuo+aUJNCCtxcwgSS0P
+ JYd2Wad/LbRrsW8Ad8vv0NhgZOeQ8Z91m1nUhDArVMtjdQ/q0Fqvq9BzYbRsF3jla8ZR07
+ fHpYJkjgxNiApTyznm82Muk66OVpSHo=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1676401027;
+ s=susede2_ed25519; t=1676401740;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=Xh8q8U51OTjqJ8ndW59AQ6lWCOSUnBSo/ns6ECZcyrk=;
- b=onwdZsO8bZgMowP8xbUTrm980x9dfHgS8I1amO96NtnqYfuvsBqcLqOvZqKkylSzDyGVdS
- 42tmB0ELZAvBy5Cg==
+ bh=j1tf9YlItdMNvA7SRdZYLkGdvlLbUpNFYRCasPTqO70=;
+ b=1B3QqB9rnQJQFvOcYJMvv09NUQKyDA8FKCQnVIt6mGDfefIIJwa7YGP2nR5ToXD69ulRwI
+ J3pko1wtyhSeDGCw==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
  (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 126F813A21;
- Tue, 14 Feb 2023 18:57:06 +0000 (UTC)
+ by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 03DB013A21;
+ Tue, 14 Feb 2023 19:08:59 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id gNrsMoLZ62MRTQAAMHmgww
- (envelope-from <farosas@suse.de>); Tue, 14 Feb 2023 18:57:06 +0000
+ by imap2.suse-dmz.suse.de with ESMTPSA id nVIAMEvc62NsUQAAMHmgww
+ (envelope-from <farosas@suse.de>); Tue, 14 Feb 2023 19:08:59 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: Re: [PATCH 02/14] target/arm: Unexport arm_gen_dynamic_sysreg_xml
-In-Reply-To: <20230214163048.903964-3-richard.henderson@linaro.org>
+Subject: Re: [PATCH 03/14] target/arm: Move arm_gen_dynamic_svereg_xml to
+ gdbstub64.c
+In-Reply-To: <20230214163048.903964-4-richard.henderson@linaro.org>
 References: <20230214163048.903964-1-richard.henderson@linaro.org>
- <20230214163048.903964-3-richard.henderson@linaro.org>
-Date: Tue, 14 Feb 2023 15:57:04 -0300
-Message-ID: <87edqskrcv.fsf@suse.de>
+ <20230214163048.903964-4-richard.henderson@linaro.org>
+Date: Tue, 14 Feb 2023 16:08:57 -0300
+Message-ID: <87bklwkqt2.fsf@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain
-Received-SPF: pass client-ip=195.135.220.28; envelope-from=farosas@suse.de;
- helo=smtp-out1.suse.de
+Received-SPF: pass client-ip=2001:67c:2178:6::1d; envelope-from=farosas@suse.de;
+ helo=smtp-out2.suse.de
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -117,11 +118,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4MmlLIqreA5b
+X-TUID: +0TwBtHxmwJ+
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
-> This function is not used outside gdbstub.c.
+> The function is only used for aarch64, so move it to the
+> file that has the other aarch64 gdbstub stuff.  Move the
+> declaration to internals.h.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 

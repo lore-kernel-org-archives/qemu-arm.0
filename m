@@ -1,115 +1,87 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1468052ejb;
-        Tue, 14 Feb 2023 09:21:26 -0800 (PST)
-X-Google-Smtp-Source: AK7set+MswJB5MN24uCL9yxAHyADuh5S+jkBCGf9h4x47gGv0vVVz4j+L3662OOAzVeFsXCo8/GT
-X-Received: by 2002:ac8:4e92:0:b0:3b8:4adb:c604 with SMTP id 18-20020ac84e92000000b003b84adbc604mr5249614qtp.14.1676395286272;
-        Tue, 14 Feb 2023 09:21:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676395286; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1468256ejb;
+        Tue, 14 Feb 2023 09:21:40 -0800 (PST)
+X-Google-Smtp-Source: AK7set9VTkyFnwRNoyRqhe6mG8LHOpl9NdOWE6FeGP34gEPtCwW4386slA8Fm0hebVGjYcpD5TSh
+X-Received: by 2002:ac8:5dd3:0:b0:3b9:b750:2547 with SMTP id e19-20020ac85dd3000000b003b9b7502547mr5987349qtx.37.1676395300101;
+        Tue, 14 Feb 2023 09:21:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676395300; cv=none;
         d=google.com; s=arc-20160816;
-        b=ChjYYHUEpCD53r0b0yvXVeMLoJyAK1XcUSHbqGozpBY3f5IjaLkrw/jITQYDnH6Ds5
-         sHWOa9bj3heXu26AoRvbpr+UBtFk5asvZCzDsT6Z1lSNhCwMPnPQYRQyA6O7W2gZjqS6
-         gAOtuYYszS59cJO2Wy08azhxcuD/jQrM3WwrZa0kwdKV2gGJBahammWq9XaSfHaMlkAI
-         EOkVpILvBImAL88C4GWBAKFYMcHXy9LrFYgOp2DdlsFQtO1CbV/oD4Iyu9ebwFHCiZCZ
-         etmcIcBuNHWm82gLaBWjcY0G97/MH+Scv6d2i4BpeHQLT4Stj1PIrI7XKqcHDTIxa3sb
-         Dffg==
+        b=hl4W+o7mH/xbceAn1AhjhozTq2twtk6dTgEyOY+XMs6N67HgC+EESflhOWvWpPVLRx
+         LtWHtDD/saQ0QubWmWG4OqSMyOOPzkWDUW7FNT7NqqBC6g+5r4GqbTy1u57A+KVNul23
+         eLJ1ky+iSYtwKiMWtiBcUeqTnQ1HjkV4dh2wQJrQurs/Ewiysznxs4A0zzRl4dGMc/Ai
+         dkPtcfmq13nCVxFDF9WwsObweLHrvDsd6m0q2iVd4WP7Lh5apD4c+FHOZQosQEvFBqpm
+         +xruE3loOOEdhT8SiI2ECH+Siwei68ezEcp4db1NJM8ExVOG5VBm0MAN/yzAPGDKTF05
+         R9zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=66XA5ahpF0JyhWAENDY8GXWO+QQO86mvJCTuMdEgvN4=;
-        b=hU0C5CGFtOJyZydF/Eo33ouH4RvdfPq99fw7XKY++BsTRb6YkIklNPnAZPvOFfCYtr
-         /ai+VumVKnfSfIOc/MvciaeWsDwqW47JgbjDEX8JYpoYMOpYx4ZdGd3ZL96dw84UScha
-         +sUQSkfA2Rn1Q1gQh+UAvgu8kKrhUBNLGRoZInRNML3AEslFXfjAfSDNuuNTYYLPBPk1
-         eQHbkipFJME+MG/nGW6u0RAgHtQLHJdbbg6NNu1pwSySgkTkb9++bJjxZLpr+4uelRsh
-         +2ygJMoW8o7MByjqE/d1+2ydG5vdTDLQxbMK4OLMDVmlICruScbn/iOTaCGYghEFHW20
-         qoWw==
+         :from;
+        bh=kqDcILC5H8LYWTp/9o3RjnpT7shPA5MHVHZMiYlQPnI=;
+        b=MxiBwpBuqynAP3HFNzmDBCvTmxdlQg/GQ0wEl7WpledccJdT2jWhhIgra7kRrZUphS
+         NhrBODMGWogmb8jYDn4cfeWrHgI8ItBF/APw5J79k+CcUERQOAYRPcNh9KYQZw4xJnub
+         wdVjlabdbnup49I9/Gku1AMACtISrQeTsfysfzamho2FyQhnF8tSFemybYp14WCgrBGW
+         V6iFC7TXS2cPwPCqap0QtD8hgRnBcFjHWwH0cAZ3OgY5cGpOIseGmiHhUPkp6588FFfg
+         Ye24vpVT83DQJcjh86reAyqnzCDKk2jJ2+zTL0WOs+ZR0Oyd2DaMaN4sLJTA+CMjzBRB
+         4Avw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YgE7oD7S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l8-20020a05622a174800b003b8328e179asi12300802qtk.561.2023.02.14.09.21.26
+        by mx.google.com with ESMTPS id w13-20020a05620a424d00b0071a6778dd61si12859837qko.538.2023.02.14.09.21.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Feb 2023 09:21:26 -0800 (PST)
+        Tue, 14 Feb 2023 09:21:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YgE7oD7S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pRyzR-0006aJ-UT; Tue, 14 Feb 2023 12:21:13 -0500
+	id 1pRyxE-0001h1-Sw; Tue, 14 Feb 2023 12:18:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1pRyzP-0006NV-K0
- for qemu-devel@nongnu.org; Tue, 14 Feb 2023 12:21:11 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1pRyzM-0005e6-59
- for qemu-devel@nongnu.org; Tue, 14 Feb 2023 12:21:11 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- l37-20020a05600c1d2500b003dfe46a9801so12198210wms.0
- for <qemu-devel@nongnu.org>; Tue, 14 Feb 2023 09:21:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=66XA5ahpF0JyhWAENDY8GXWO+QQO86mvJCTuMdEgvN4=;
- b=YgE7oD7SHqQ3eerD475aiMyNvYC4r5ytIxvJPGQQsEPpV5JW9ml/JRmpDL6ahfNWKf
- 4GmEvT08epRMMJVlG7aJhZeo3NLxxBYAP+29OBi7r9lGBwotmEAtRLMnyBQJObZH1oLA
- w1d+wWqHwSGJMet3bEki9b4wvqwMtotHuYItfiXgbzZ6GqAy+tjlNOKlfzs+bUu0FZ3A
- kBYJPADHFY6uupdlWGsEEN592v1lFBpG05bZ4HGGA1oiUzcXyuel6UUtOEDFOnZtZ07r
- Qn+zQ9QOPGCtslKrlVVZCaBTK9NESExjNmLdNKHi+zLfsluPOM5tNIr8/UmykoMwQZA5
- wRJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=66XA5ahpF0JyhWAENDY8GXWO+QQO86mvJCTuMdEgvN4=;
- b=4ROcwOaH1WpGc3IKn/77dodazMo8hSBvdtpKM9OGm8Z3DqUapCx7F/nS21NKhxkfRW
- MO9RgSwJH4w3iU1PUSADqRxS4hOQmhejYugRIaGBR1Fh/6I+ETg+6OA7+BauYbVfi4tP
- bYyOB8/Lfd0eCZJ1A0Jt6QMjeDNFVzAYUQAemCjCi51+wfXTh7S58yvU3FiNKacXZL3s
- k7Fe4FYhnBdf1Bp9BAzv1uwPVOsTtvb7TX39qrl4mRAJPoU0htXx7O3w9hsO+DGAfKR9
- 12f1LN7waWSLfCHQhQmdinWtJmhdZXO/xnMOPZA+Wzd02PV2wH2zt8Gvqdro8qEVE+/9
- 09Jw==
-X-Gm-Message-State: AO0yUKUjfsybizFeCPETrSxWn4EGFwEeDk1rday2bL+g2iBC9qF4QLd7
- 31cprsud4gsOxvHVvVzolT7r+A==
-X-Received: by 2002:a05:600c:a39e:b0:3dc:4c4f:6dc5 with SMTP id
- hn30-20020a05600ca39e00b003dc4c4f6dc5mr2698765wmb.9.1676395266785; 
- Tue, 14 Feb 2023 09:21:06 -0800 (PST)
-Received: from localhost.localdomain (054592b0.skybroadband.com.
- [5.69.146.176]) by smtp.gmail.com with ESMTPSA id
- p24-20020a05600c1d9800b003dd1bd0b915sm20636570wms.22.2023.02.14.09.21.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Feb 2023 09:21:06 -0800 (PST)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: eric.auger@redhat.com
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, ola.hugosson@arm.com,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 1/2] hw/arm/smmu-common: Support 64-bit addresses
-Date: Tue, 14 Feb 2023 17:19:21 +0000
-Message-Id: <20230214171921.1917916-2-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230214171921.1917916-1-jean-philippe@linaro.org>
-References: <20230214171921.1917916-1-jean-philippe@linaro.org>
+ (Exim 4.90_1) (envelope-from <SRS0=ZGUx=6K=kaod.org=clg@ozlabs.org>)
+ id 1pRyxC-0001et-DS; Tue, 14 Feb 2023 12:18:54 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=ZGUx=6K=kaod.org=clg@ozlabs.org>)
+ id 1pRyxA-0004qb-9q; Tue, 14 Feb 2023 12:18:54 -0500
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4PGSbs1x72z4x5Z;
+ Wed, 15 Feb 2023 04:18:49 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4PGSbn1jM0z4x82;
+ Wed, 15 Feb 2023 04:18:44 +1100 (AEDT)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>, Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Klaus Jensen <k.jensen@samsung.com>, Corey Minyard <cminyard@mvista.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH 2/8] hw/i2c: only schedule pending master when bus is idle
+Date: Tue, 14 Feb 2023 18:18:24 +0100
+Message-Id: <20230214171830.681594-3-clg@kaod.org>
+X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20230214171830.681594-1-clg@kaod.org>
+References: <20230214171830.681594-1-clg@kaod.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=ZGUx=6K=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,44 +96,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0aoTmESEImkr
+X-TUID: z60/8ihFWdNQ
 
-Addresses targeting the second translation table (TTB1) in the SMMU have
-all upper bits set. Ensure the IOMMU region covers all 64 bits.
+From: Klaus Jensen <k.jensen@samsung.com>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+It is not given that the current master will release the bus after a
+transfer ends. Only schedule a pending master if the bus is idle.
+
+Fixes: 37fa5ca42623 ("hw/i2c: support multiple masters")
+Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+Acked-by: Corey Minyard <cminyard@mvista.com>
+Message-Id: <20221116084312.35808-2-its@irrelevant.dk>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/arm/smmu-common.h | 2 --
- hw/arm/smmu-common.c         | 2 +-
- 2 files changed, 1 insertion(+), 3 deletions(-)
+ include/hw/i2c/i2c.h |  2 ++
+ hw/i2c/aspeed_i2c.c  |  2 ++
+ hw/i2c/core.c        | 37 ++++++++++++++++++++++---------------
+ 3 files changed, 26 insertions(+), 15 deletions(-)
 
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index c5683af07d..9fcff26357 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -27,8 +27,6 @@
- #define SMMU_PCI_DEVFN_MAX    256
- #define SMMU_PCI_DEVFN(sid)   (sid & 0xFF)
- 
--#define SMMU_MAX_VA_BITS      48
--
- /*
-  * Page table walk error types
+diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+index 9b9581d230..2a3abacd1b 100644
+--- a/include/hw/i2c/i2c.h
++++ b/include/hw/i2c/i2c.h
+@@ -141,6 +141,8 @@ int i2c_start_send(I2CBus *bus, uint8_t address);
   */
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 733c964778..2b8c67b9a1 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -439,7 +439,7 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
+ int i2c_start_send_async(I2CBus *bus, uint8_t address);
  
-         memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-                                  s->mrtypename,
--                                 OBJECT(s), name, 1ULL << SMMU_MAX_VA_BITS);
-+                                 OBJECT(s), name, UINT64_MAX);
-         address_space_init(&sdev->as,
-                            MEMORY_REGION(&sdev->iommu), name);
-         trace_smmu_add_mr(name);
++void i2c_schedule_pending_master(I2CBus *bus);
++
+ void i2c_end_transfer(I2CBus *bus);
+ void i2c_nack(I2CBus *bus);
+ void i2c_ack(I2CBus *bus);
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index c166fd20fa..1f071a3811 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -550,6 +550,8 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
+         }
+         SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_STOP_CMD, 0);
+         aspeed_i2c_set_state(bus, I2CD_IDLE);
++
++        i2c_schedule_pending_master(bus->bus);
+     }
+ 
+     if (aspeed_i2c_bus_pkt_mode_en(bus)) {
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index d4ba8146bf..bed594fe59 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -185,22 +185,39 @@ int i2c_start_transfer(I2CBus *bus, uint8_t address, bool is_recv)
+ 
+ void i2c_bus_master(I2CBus *bus, QEMUBH *bh)
+ {
+-    if (i2c_bus_busy(bus)) {
+-        I2CPendingMaster *node = g_new(struct I2CPendingMaster, 1);
+-        node->bh = bh;
++    I2CPendingMaster *node = g_new(struct I2CPendingMaster, 1);
++    node->bh = bh;
++
++    QSIMPLEQ_INSERT_TAIL(&bus->pending_masters, node, entry);
++}
++
++void i2c_schedule_pending_master(I2CBus *bus)
++{
++    I2CPendingMaster *node;
+ 
+-        QSIMPLEQ_INSERT_TAIL(&bus->pending_masters, node, entry);
++    if (i2c_bus_busy(bus)) {
++        /* someone is already controlling the bus; wait for it to release it */
++        return;
++    }
+ 
++    if (QSIMPLEQ_EMPTY(&bus->pending_masters)) {
+         return;
+     }
+ 
+-    bus->bh = bh;
++    node = QSIMPLEQ_FIRST(&bus->pending_masters);
++    bus->bh = node->bh;
++
++    QSIMPLEQ_REMOVE_HEAD(&bus->pending_masters, entry);
++    g_free(node);
++
+     qemu_bh_schedule(bus->bh);
+ }
+ 
+ void i2c_bus_release(I2CBus *bus)
+ {
+     bus->bh = NULL;
++
++    i2c_schedule_pending_master(bus);
+ }
+ 
+ int i2c_start_recv(I2CBus *bus, uint8_t address)
+@@ -234,16 +251,6 @@ void i2c_end_transfer(I2CBus *bus)
+         g_free(node);
+     }
+     bus->broadcast = false;
+-
+-    if (!QSIMPLEQ_EMPTY(&bus->pending_masters)) {
+-        I2CPendingMaster *node = QSIMPLEQ_FIRST(&bus->pending_masters);
+-        bus->bh = node->bh;
+-
+-        QSIMPLEQ_REMOVE_HEAD(&bus->pending_masters, entry);
+-        g_free(node);
+-
+-        qemu_bh_schedule(bus->bh);
+-    }
+ }
+ 
+ int i2c_send(I2CBus *bus, uint8_t data)
 -- 
-2.39.0
+2.39.1
 

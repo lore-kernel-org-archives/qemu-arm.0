@@ -1,105 +1,101 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1424970ejb;
-        Tue, 14 Feb 2023 08:31:54 -0800 (PST)
-X-Google-Smtp-Source: AK7set+mEjZ2ycGTWRDmymqRlstwBZAu/7ugpaHUbZ+KRH2Y0OCKVC/h86aniTZbqGv2TI4scMk5
-X-Received: by 2002:a05:6214:234c:b0:56c:22d7:3928 with SMTP id hu12-20020a056214234c00b0056c22d73928mr6525440qvb.11.1676392314654;
-        Tue, 14 Feb 2023 08:31:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676392314; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1425138ejb;
+        Tue, 14 Feb 2023 08:32:05 -0800 (PST)
+X-Google-Smtp-Source: AK7set+3DsTbfCK7yvBaRsNUP24ynjUuFaxOLu7dYB//Zl8j7d68d11VQJ/FFjwAd2dJt0r47Nzw
+X-Received: by 2002:a05:6214:da2:b0:56e:9f19:71f9 with SMTP id h2-20020a0562140da200b0056e9f1971f9mr186994qvh.17.1676392325635;
+        Tue, 14 Feb 2023 08:32:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676392325; cv=none;
         d=google.com; s=arc-20160816;
-        b=MJNld/gq5lIYXA5zjK2JFMFaxs5mXkL9v+zIoOooXtPOIcJ3CDa/a0aMO1I79StsEb
-         IgxkBwiaVup+x8IHmg/Bsm/GVGvZz3h4p8itZiPqskZ5y79eLRTILrtlBundap09mRS1
-         QNQkZ3/vvqh1l5k5M3ncYvvJSsCf9+3ww/K3iE6SwrictrLWctG31GrZ6A5sosuqBRzs
-         3Bsz3SNZpvHrKNEShbhae7uSO40IgDmbH2EaFQi7x534yjKu4KzTXK6n5zVQql3cwUUY
-         o25dy4N/BoNKut7aAb1CuIr74MfNxssRx5/tCk8QswQE2uiL97d9xhDuwpvDfFRqUgQe
-         b3Uw==
+        b=DpiI6s+3fCzeaTCnKrGZ39APCB8Ief3fGdSXJSAZ2Oe7ezo+esvEBFpjF9GeBGLH55
+         sYwaOUEC5eJELCg+l00iTEyYY8zhG/sq71S2eT2NLODBy6B8yEcs46BhWVanbtjsORvN
+         RbS6gxPKcnP2OeFzB4KT2PqaMO72oDN1oJ3UKZJOFzI/0Vj83E2fM10WHVl2HlGPUtgl
+         7Ww3SvGkflioqafyx6AB/wkZWkV7UlEVtLeoY0KhLmjUB2ceX2DKeK+qBX+q/IursdeU
+         PunWDwAdlTss6Lwa/fy53YIGFU66CeBCQi2V8qEY2AsVWWbOqIYtXJAFCBLCED48Bhfx
+         wXcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Grnio/H04PPuIGiRb3nIsuzzYqUqwsUO7rkz9vUiKr8=;
-        b=sCD3qbJWPJ6nVDEUp6tdAlhBDpoBmjhdR6yjhHs1U/psjoUgol2Ruzt2HW+FvK8FUR
-         H7cCOFhsBsjum6D25+lJX+nPc6or88HIsE/a2fSiEmEghOUIdlossu5Z3/lmTgJdOdNj
-         HmAprZ7j1nV77iXYUm6HtXxpyP2WxqvGJkf4KK6k53sIvrne2gVhyUh69+rLwzSN7Uwi
-         iV0M783HMYBbTGx3LfGY9iDl0VCqZJ7wEuJF6v1RyK+LfFuC8DweJIEXGqUPdFLB3meN
-         sYRQj84nEsXqk2cFe7iPvSzLUA2ZMB8YcGbXwXY4QajW0hzt396UpaNY2Wp4Z4nts87p
-         0wKA==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=XPjfx2KfYL2ddUZpoHPW9GkaTnvkl4j+odd05Yy+n3c=;
+        b=yAdzUmHWP2Doc8G3BobFPzaJTvZwrVCUBALc1ubzPUqD/ycm3IqlrGzprieq3qimHm
+         WVkRizgnvUjNDlStrUhjwkkFs4VgCYir3Brq3wFwsmJaMP4VgA2QI9H05tF6M1FliOO9
+         GMHCE3Qly1Bm/R5fFc4/4x4mWdFdJ2/8Y/G3uG/MIYjwr+OMq2ZpWx7GLDU+mBEARwrx
+         gRRmohIjsZTyUIaCuGV8URwbeYeYSr5y7KJsr2WM9ApRUSMClPxVgwIVpz+3y0/rAeKW
+         R53L/IJzvSGRilyZCuSVbfXistesb+AGOHVSC8DkFvgNt5Tb/ldFeKsvqOJBzYNAN3aU
+         RIYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KR5SR2gM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JACeXZ15;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y25-20020a0c9a99000000b0056ea65c4e95si6931061qvd.169.2023.02.14.08.31.54
+        by mx.google.com with ESMTPS id 204-20020a370ad5000000b0071017f8baaesi11454516qkk.9.2023.02.14.08.32.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Feb 2023 08:31:54 -0800 (PST)
+        Tue, 14 Feb 2023 08:32:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KR5SR2gM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JACeXZ15;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pRyD1-0006Zq-Tq; Tue, 14 Feb 2023 11:31:11 -0500
+	id 1pRyCy-0006Uy-NC; Tue, 14 Feb 2023 11:31:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pRyCs-0006Rb-Vr
- for qemu-arm@nongnu.org; Tue, 14 Feb 2023 11:31:04 -0500
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+ id 1pRyCn-0006Pa-0g
+ for qemu-arm@nongnu.org; Tue, 14 Feb 2023 11:30:59 -0500
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pRyCq-00027R-Ob
- for qemu-arm@nongnu.org; Tue, 14 Feb 2023 11:31:02 -0500
-Received: by mail-pg1-x535.google.com with SMTP id c29so6474045pgm.5
- for <qemu-arm@nongnu.org>; Tue, 14 Feb 2023 08:30:58 -0800 (PST)
+ id 1pRyCl-00024m-91
+ for qemu-arm@nongnu.org; Tue, 14 Feb 2023 11:30:56 -0500
+Received: by mail-pf1-x430.google.com with SMTP id g9so10536027pfo.5
+ for <qemu-arm@nongnu.org>; Tue, 14 Feb 2023 08:30:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Grnio/H04PPuIGiRb3nIsuzzYqUqwsUO7rkz9vUiKr8=;
- b=KR5SR2gMQ2Q4nPkyvqJSrcqclkF32K46fkHwU5XrT1mC/jHjg56ECTqpH4qCKp2N2h
- Ja11as9yTO1ir0YTUd7+IUgxkDCr97ao/trMNVYvDx/Suq77DcAubp+zoTwM+V/OD1xc
- /Pest5Non4iwpkWRjW57gb8U9QtqLiMcj4Q0kurid2KCRoNjF0Zy7KWHM2hc8+16srXi
- SPhcx/fGl9DdR+5J4wg0J4X01P2R05AanV5racMvcZOvAMzu/wZwdtsmo6VsMOfrlAnG
- k5+OKna+IUCcYiPay/0miHFUKa69ftRD43BS7nM5f2LfL+055pbocRd9oLjBMS18c3J/
- 3S/g==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=XPjfx2KfYL2ddUZpoHPW9GkaTnvkl4j+odd05Yy+n3c=;
+ b=JACeXZ15qEShF/YeMVMnXpO9nCir/MbfwzZe7lhZLi/m78ntOHs6nYnz6qJ0mk549F
+ vFfpcd0sH+gD6j6nS1C3KTDEMgFlC4M6LAdHncmN3p4+5NAswM1m54+D/Mwu3Pw29nbT
+ /L6YtaQQI/sdsF+heXCTvB3VwxX9AwVvpJoLlkMoZGr/kXRxn2zUj+uFdT9sHhmqhwRu
+ e23LCAkeeIEb2fei+pvCIVpndaIzpfJTxqzSEsugFcyChfgL7lfyJW1mGXW3tUj6mVTL
+ thRyLFHd5dMmmXkCd9QjKbhcgcN+clM9tjAwpW3MUp2PfLvCZfrxRuSKEkgSS4HZu6q2
+ qjWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Grnio/H04PPuIGiRb3nIsuzzYqUqwsUO7rkz9vUiKr8=;
- b=IViYDY4jLULzxdbobl659W6YJU8LLLOkt0albRK6d/2Pilt7VfsOcR/JkC3r+a48xx
- 9/+/KenWJgwdLPS3N3kupQbfN2JMxnuBLcY9ZWaIIx3xqlPBVS2eEwiRo7MY2x1OquWO
- yPV2+pZx97GeqLFiOOvorOqd1FXI4TlbtuxmqRhYjLSW6yirC6z47rYtnC8LiwpfJ1WT
- BAM/3ovsP/vDKVLK9MZWLlh/r5ix3uBbXOdwGg0AeSzM0a3FQTI98OTh/n4yA1+FPyZt
- M2Ch3F/xtY/ajzYL3TOO0qYyCCDMt0tKxhuzCwCgkr+6eEdOn8oYFqVhUOzd9vP1ty3v
- 3e9g==
-X-Gm-Message-State: AO0yUKVxXvnffJ/t3UVabk8bHQK2Ch/ADxbBbzYzY8Zl27Gq8on42k2h
- pR660spsix307rvGL1P0ur3xTg==
-X-Received: by 2002:aa7:9842:0:b0:594:15fd:895e with SMTP id
- n2-20020aa79842000000b0059415fd895emr2277535pfq.31.1676392257746; 
- Tue, 14 Feb 2023 08:30:57 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XPjfx2KfYL2ddUZpoHPW9GkaTnvkl4j+odd05Yy+n3c=;
+ b=wLb6HadZQTjFaL+YVEEkyXnTMyWYOjklX/oQ/mUltlw6+455XBSJwOb3wN1m2+ROoF
+ 91UntTlRmq8oHNIGtDfaFxV+OBfngVgVyde7B/+TQhu4cEdtSFN0WiDlDaCRjlQbsA1Y
+ avCUaMObMQWR20Y7R7lFbHV+FTU8pXRsKQSbHQmMtMPFtY68jVo+i6vo4uLWBX9CSSye
+ tkNVEQxFCGtljC9Mik0WvLUWX4j8P9voTdmnxlHoGyfWIPZ6Mf1wMpCdHxA8BOjcWw2q
+ HUIk0lg+dPKvOs6vU0UkU2G81Pm441cvL83uxJbHiXuQ1JFg9oA48QZrHgqfYgTw1Ez6
+ t+4Q==
+X-Gm-Message-State: AO0yUKXVLPu6r/UTb1hfDN4wfVweWbjGYuN3W4Gf8nomoBURbeNBxAty
+ WcocGYCFksbBbH9e1TTOGE2LVw==
+X-Received: by 2002:aa7:96ad:0:b0:5a8:16b7:ce6e with SMTP id
+ g13-20020aa796ad000000b005a816b7ce6emr12433pfk.10.1676392251609; 
+ Tue, 14 Feb 2023 08:30:51 -0800 (PST)
 Received: from stoup.. (rrcs-74-87-59-234.west.biz.rr.com. [74.87.59.234])
  by smtp.gmail.com with ESMTPSA id
- d17-20020aa78691000000b0058d99337381sm10337011pfo.172.2023.02.14.08.30.56
+ d17-20020aa78691000000b0058d99337381sm10337011pfo.172.2023.02.14.08.30.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Feb 2023 08:30:57 -0800 (PST)
+ Tue, 14 Feb 2023 08:30:51 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 04/14] target/arm: Split out output_vector_union_type
-Date: Tue, 14 Feb 2023 06:30:38 -1000
-Message-Id: <20230214163048.903964-5-richard.henderson@linaro.org>
+Subject: [PATCH 00/14] target/arm: gdbstub cleanups and additions
+Date: Tue, 14 Feb 2023 06:30:34 -1000
+Message-Id: <20230214163048.903964-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230214163048.903964-1-richard.henderson@linaro.org>
-References: <20230214163048.903964-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,130 +117,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M0XL0fDA2cYH
+X-TUID: Wg3/Q3V6bzy4
 
-Create a subroutine for creating the union of unions
-of the various type sizes that a vector may contain.
+This is my pauth enhancements from last year, the corresponding gdb
+patches for which are nearing merge.  If lore and patchew are to be
+believed, I never posted this to the list, only pushed a branch so
+that issue #1105 could see it.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/gdbstub64.c | 83 +++++++++++++++++++++++-------------------
- 1 file changed, 45 insertions(+), 38 deletions(-)
+Since the cleanups there conflict with the recent m-profile gdbstub
+patch set, I set about to resolve those.  In the process, I merged
+the secure extension code with the sysregs, since they're simply
+presenting different views of the same registers.
 
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index 59fb5465d5..811833d8de 100644
---- a/target/arm/gdbstub64.c
-+++ b/target/arm/gdbstub64.c
-@@ -210,44 +210,39 @@ int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg)
-     return 0;
- }
- 
--struct TypeSize {
--    const char *gdb_type;
--    short size;
--    char sz, suffix;
--};
--
--static const struct TypeSize vec_lanes[] = {
--    /* quads */
--    { "uint128", 128, 'q', 'u' },
--    { "int128", 128, 'q', 's' },
--    /* 64 bit */
--    { "ieee_double", 64, 'd', 'f' },
--    { "uint64", 64, 'd', 'u' },
--    { "int64", 64, 'd', 's' },
--    /* 32 bit */
--    { "ieee_single", 32, 's', 'f' },
--    { "uint32", 32, 's', 'u' },
--    { "int32", 32, 's', 's' },
--    /* 16 bit */
--    { "ieee_half", 16, 'h', 'f' },
--    { "uint16", 16, 'h', 'u' },
--    { "int16", 16, 'h', 's' },
--    /* bytes */
--    { "uint8", 8, 'b', 'u' },
--    { "int8", 8, 'b', 's' },
--};
--
--int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
-+static void output_vector_union_type(GString *s, int reg_width)
- {
--    ARMCPU *cpu = ARM_CPU(cs);
--    GString *s = g_string_new(NULL);
--    DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
-+    struct TypeSize {
-+        const char *gdb_type;
-+        short size;
-+        char sz, suffix;
-+    };
-+
-+    static const struct TypeSize vec_lanes[] = {
-+        /* quads */
-+        { "uint128", 128, 'q', 'u' },
-+        { "int128", 128, 'q', 's' },
-+        /* 64 bit */
-+        { "ieee_double", 64, 'd', 'f' },
-+        { "uint64", 64, 'd', 'u' },
-+        { "int64", 64, 'd', 's' },
-+        /* 32 bit */
-+        { "ieee_single", 32, 's', 'f' },
-+        { "uint32", 32, 's', 'u' },
-+        { "int32", 32, 's', 's' },
-+        /* 16 bit */
-+        { "ieee_half", 16, 'h', 'f' },
-+        { "uint16", 16, 'h', 'u' },
-+        { "int16", 16, 'h', 's' },
-+        /* bytes */
-+        { "uint8", 8, 'b', 'u' },
-+        { "int8", 8, 'b', 's' },
-+    };
-+
-+    static const char suf[] = { 'q', 'd', 's', 'h', 'b' };
-+
-     g_autoptr(GString) ts = g_string_new("");
--    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
--    info->num = 0;
--    g_string_printf(s, "<?xml version=\"1.0\"?>");
--    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
--    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
-+    int i, j, bits;
- 
-     /* First define types and totals in a whole VL */
-     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
-@@ -263,7 +258,6 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
-      * 8 bits.
-      */
-     for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
--        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
-         g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
-         for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
-             if (vec_lanes[j].size == bits) {
-@@ -277,11 +271,24 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
-     /* And now the final union of unions */
-     g_string_append(s, "<union id=\"svev\">");
-     for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
--        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
-         g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
-                                suf[i], suf[i]);
-     }
-     g_string_append(s, "</union>");
-+}
-+
-+int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    GString *s = g_string_new(NULL);
-+    DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
-+    int i, reg_width = (cpu->sve_max_vq * 128);
-+    info->num = 0;
-+    g_string_printf(s, "<?xml version=\"1.0\"?>");
-+    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
-+    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
-+
-+    output_vector_union_type(s, reg_width);
- 
-     /* Finally the sve prefix type */
-     g_string_append_printf(s,
+
+r~
+
+
+David Reiss (3):
+  target/arm: Export arm_v7m_mrs_control
+  target/arm: Export arm_v7m_get_sp_ptr
+  target/arm: Support reading m-profile system registers from gdb
+
+Richard Henderson (11):
+  target/arm: Normalize aarch64 gdbstub get/set function names
+  target/arm: Unexport arm_gen_dynamic_sysreg_xml
+  target/arm: Move arm_gen_dynamic_svereg_xml to gdbstub64.c
+  target/arm: Split out output_vector_union_type
+  target/arm: Simplify register counting in arm_gen_dynamic_svereg_xml
+  target/arm: Hoist pred_width in arm_gen_dynamic_svereg_xml
+  target/arm: Fix svep width in arm_gen_dynamic_svereg_xml
+  target/arm: Add name argument to output_vector_union_type
+  target/arm: Simplify iteration over bit widths
+  target/arm: Create pauth_ptr_mask
+  target/arm: Implement gdbstub pauth extension
+
+ configs/targets/aarch64-linux-user.mak    |   2 +-
+ configs/targets/aarch64-softmmu.mak       |   2 +-
+ configs/targets/aarch64_be-linux-user.mak |   2 +-
+ target/arm/cpu.h                          |   8 +-
+ target/arm/internals.h                    |  34 ++-
+ target/arm/gdbstub.c                      | 287 +++++++++++++---------
+ target/arm/gdbstub64.c                    | 171 ++++++++++++-
+ target/arm/m_helper.c                     |  90 ++++---
+ target/arm/pauth_helper.c                 |  26 +-
+ gdb-xml/aarch64-pauth.xml                 |  15 ++
+ 10 files changed, 453 insertions(+), 184 deletions(-)
+ create mode 100644 gdb-xml/aarch64-pauth.xml
+
 -- 
 2.34.1
 

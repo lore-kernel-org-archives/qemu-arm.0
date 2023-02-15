@@ -1,132 +1,111 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp845182ejb;
-        Wed, 15 Feb 2023 12:47:50 -0800 (PST)
-X-Received: by 2002:adf:dd90:0:b0:2c3:e142:5fd0 with SMTP id x16-20020adfdd90000000b002c3e1425fd0mr2471521wrl.49.1676494070679;
-        Wed, 15 Feb 2023 12:47:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676494070; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp37058ejb;
+        Wed, 15 Feb 2023 18:05:54 -0800 (PST)
+X-Google-Smtp-Source: AK7set9u6By0pUqlKytVeujGQLIGPtW6fD0xP1XXYDw5IKZdD1jHHINhIJ3FefnJXnkZVMI697GK
+X-Received: by 2002:a05:622a:2c7:b0:3bb:7702:97f5 with SMTP id a7-20020a05622a02c700b003bb770297f5mr7588070qtx.15.1676513154713;
+        Wed, 15 Feb 2023 18:05:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676513154; cv=none;
         d=google.com; s=arc-20160816;
-        b=r5zF9LXRXF/P05+5TpQ+GMPCip5DK0TyGlYFOV6jJsEvTVpLofMCiDi0HJzhi+NU9T
-         /mrmjorQegJgn1aNNv9SAlgH0bzVbkLYqS8HrWqSG4FevDGk1aNBmmz06Ksr6e4H1a5B
-         EwEPZ2RSBmYd7G/Uygruwqe6VBh3ig9zzjXVssfUSw/u79ahEENeidH/k7DLxYZKSC07
-         APt47W1M+JR/aOwhRZWCiWQrXRE+/V/7uvPkYgY+xbz9N9MmZ4Eajw4EsfsI2LPbRjHN
-         NS7QjyXq8OSVBD0dJCj9kVfaNHabvtAn0kq3wSxfmHVY6u3qc+TFH0b646DQobpD73wC
-         pMcQ==
+        b=S0NTT/n3TDaT7CGvktFPVnZ8f5z001C21tjz1UR2q96WpySq/BGAOdD5w9qocU+DL5
+         ek5YyIL2u8DQXXUfPcU64UkSEKI6hyK8q+YjOsKDdeG38/EY7Ue7rWhsAE4Hmj9Z2xaT
+         x5C9XRKnM2+UHRkBW2A68V1ouzEM+CL9PjlCl0WFVva1wURAJ/GnlAr04m9QXrF3SpWQ
+         u7TFkVObmCrJ3nMtpASkDDTVAj+KdCMvKumdaL9MTLFs5zorlFpowyXTchX8qJUqP+6V
+         N6j0swaVNw2D9ritCd1KEMgNzr66MYErZGz+uPrppl1p7APOVBB+w7yrtQxCuXber+yU
+         mqSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=XRuaB8/vPk6Sla2dXDUKLD2EFURy/RJZh1AC5WFlsT4=;
-        b=AX9D/T2pi12ifRrLNDceLqOqjzzOtILs49SMjSD1XWV6yNOycaDZgCx2Y4fpJ9EYDa
-         9DpbsZvELt54DmuzZ6v5HZQYL1ObYy8PgrP/EgMYjq1iiNL20M+7QmMzdpJwHLirKhah
-         qW3nLGiI7fUbMGZe0LOQjq7qNC9Tj3EQMCXIiLaquvMpiRYN/Wnm602gswBGfL89yzWq
-         i+vNcEkTe14gLCh/5F06hhC+XixlMxuVEVnLgyOIlIYzn3Bw/o7EMg+h54FeDxjQ+5fm
-         RhmXrnhBioZzss8VcL2tYrYX9bxG28r+JyUal77An2LXQwZSS1g7Wb55nq7Z2Zhf0kov
-         nPDg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:content-disposition
+         :mime-version:mail-followup-to:message-id:subject:to:from:date;
+        bh=Qf2evU4qHgxA92P6yrcybedYnppIHsCkoFc/87HvnVk=;
+        b=LDP/t/7BJSz/VgNpotZzLaY3fusRIjVF8wIJZOgnv5/erhBLuU1XJaEIis6ykbJfYj
+         hxCafl+kJ4q6p1VEEUYJZe3zfoGAzKIvmBrM0iVHfMYW6zOKhfeVZ/32b5xD+mkKrFsk
+         NQliA73iwdCbzK7nozsS7Ztz5pEa20OvyyoIz/eDIWrJrrL7PsjdFXlHVesvV5rrFl6u
+         E1sxKbzw+OpcdrEmsVm2vK7nrFW4/3VsHmZ8MSPcAwEu/Bp1mdzB41GK/9DyyDiD0lD5
+         p71XdsuAtXuv7g+sOg7mvk+sflO5+LwOkCIRrdjQP14UaIj1xgg7ijoXoYT0gMveP7pe
+         qEYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=coHp6VM2;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d13-20020a5d4f8d000000b002c5739bccebsor967682wru.40.2023.02.15.12.47.50
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d16-20020a05622a05d000b003b9a3e7e113si409238qtb.87.2023.02.15.18.05.54
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 15 Feb 2023 12:47:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 15 Feb 2023 18:05:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=coHp6VM2;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=XRuaB8/vPk6Sla2dXDUKLD2EFURy/RJZh1AC5WFlsT4=;
-        b=coHp6VM2/PVem4s/WbbcYLOJ6o5TTbuB4K2euBJj9dd8B4dljL9Xzc6QdSq8S+X5mb
-         gVVvDfARsAiO7yZw1Hoi0Wg6f1Di7XCK0FMfzpC+gx4Bb7BYp5oOzfpv8WbQ/SwZsZr4
-         Ce//e8hdkKw/xZw8coD9JJaVUZEPn0ei2iPhZG1KiLRCjVESD9pFDeV3BOkdiJIHAIUK
-         jcXhMzg/m7YRbQXtPD1q0apd64x9LYpDZ3Lde5QmAQK87JZ8Zp1mjqgiY5f/UcPE7bYe
-         2s8+PSgP/vIytAodhAoNqrbIPLhmg7qSgerFRlei2G6vWtgAciISe9WBpxhwlG67rK/m
-         U4hQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XRuaB8/vPk6Sla2dXDUKLD2EFURy/RJZh1AC5WFlsT4=;
-        b=cGoqlKRxFTNClq3/kzhj3sYfSZv3N35Z/wV0nSLIMkaxW1fd24KdZQOxLBlEaBi/b4
-         yRVTTojuSbrsVfWpkci5xFaB6K89zqWXDMsVkbV8lM6Mv34h3oTgKv2I+NNJlXORPTx/
-         cgYJEn4XZ5S97PYWh5rBFWNjhgv/sS78uJcrwHiY5AzJIkZ1wg+v3YExPig6Gt5TOYes
-         sC68OOrErZMePOOr0sqTf7xaP+vo+wmNC6XqONoTz7UChfg9TqnSbUK9xhsEvodM3Q+i
-         IrKLdr71fKQ55ljw7kU2NNbdqrsB3aKRBOUfTtt7Rvalt7dOBMO2dxHJ9i9CB8NLV9xj
-         iwUA==
-X-Gm-Message-State: AO0yUKXvQlgLxsv86r/J43hBjEo21Ou/mbZG0hdkgzvhXbedDiPN+QUA
-	5usTnBXFCVHSLuyZt3ykhMdNED7BRHOlRTlXi5U=
-X-Google-Smtp-Source: AK7set/MS246tyonJIbJt9p/td7O+OIlC75gp5hM608FDqTVzU3VZlqteoKR/MXjrclRjfJZ4OArYg==
-X-Received: by 2002:adf:e707:0:b0:2c5:550e:fad0 with SMTP id c7-20020adfe707000000b002c5550efad0mr2823553wrm.17.1676494070126;
-        Wed, 15 Feb 2023 12:47:50 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.1.115] ([185.126.107.38])
-        by smtp.gmail.com with ESMTPSA id z17-20020adff751000000b002c57c555010sm70335wrp.28.2023.02.15.12.47.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Feb 2023 12:47:49 -0800 (PST)
-Message-ID: <791c5a86-09e9-8208-6d71-93bb0eec4d52@linaro.org>
-Date: Wed, 15 Feb 2023 21:47:47 +0100
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pSTeY-0001T1-HV; Wed, 15 Feb 2023 21:05:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jmg@gold.funkthat.com>)
+ id 1pSRwc-0004Lv-Dg; Wed, 15 Feb 2023 19:16:14 -0500
+Received: from gold.funkthat.com ([2001:470:800b::2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jmg@gold.funkthat.com>)
+ id 1pSRwX-0001qd-1M; Wed, 15 Feb 2023 19:16:14 -0500
+Received: from gold.funkthat.com (localhost [127.0.0.1])
+ by gold.funkthat.com (8.15.2/8.15.2) with ESMTPS id 31FNmkqk025715
+ (version=TLSv1.2 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Wed, 15 Feb 2023 15:48:46 -0800 (PST)
+ (envelope-from jmg@gold.funkthat.com)
+Received: (from jmg@localhost)
+ by gold.funkthat.com (8.15.2/8.15.2/Submit) id 31FNmkJg025714;
+ Wed, 15 Feb 2023 15:48:46 -0800 (PST) (envelope-from jmg)
+Date: Wed, 15 Feb 2023 15:48:46 -0800
+From: John-Mark Gurney <jmg@funkthat.com>
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Detecting qemu from guest on arm/hvf (apple arm)
+Message-ID: <20230215234846.GJ95670@funkthat.com>
+Mail-Followup-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.7.2
-Subject: Re: [PATCH 10/12] tests/docker: Use binaries for debian-tricore-cross
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Michael Roth <michael.roth@amd.com>, Alexander Bulekov <alxndr@bu.edu>,
- Qiuhao Li <Qiuhao.Li@outlook.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, John Snow <jsnow@redhat.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Darren Kenny <darren.kenny@oracle.com>, Stefan Hajnoczi
- <stefanha@redhat.com>, Bandan Das <bsd@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Yonggang Luo <luoyonggang@gmail.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Beraldo Leal <bleal@redhat.com>,
- Ed Maste <emaste@freebsd.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
-References: <20230215192530.299263-1-alex.bennee@linaro.org>
- <20230215192530.299263-11-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230215192530.299263-11-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: kYy9xnZT78qY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-Operating-System: FreeBSD 11.3-STABLE amd64
+X-PGP-Fingerprint: D87A 235F FB71 1F3F 55B7  ED9B D5FF 5A51 C0AC 3D65
+X-Files: The truth is out there
+X-URL: https://www.funkthat.com/
+X-Resume: https://www.funkthat.com/~jmg/resume.html
+X-TipJar: bitcoin:13Qmb6AeTgQecazTWph4XasEsP7nGRbAPE
+X-to-the-FBI-CIA-and-NSA: HI! HOW YA DOIN? can i haz chizburger?
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.4.3
+ (gold.funkthat.com [127.0.0.1]); Wed, 15 Feb 2023 15:48:46 -0800 (PST)
+Received-SPF: none client-ip=2001:470:800b::2;
+ envelope-from=jmg@gold.funkthat.com; helo=gold.funkthat.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 15 Feb 2023 21:05:40 -0500
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5nnrSLbd+Tl3
 
-On 15/2/23 20:25, Alex Bennée wrote:
-> From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-> 
-> since binutils is pretty old, it fails our CI repeatedly during the
-> compilation of tricore-binutils. We created a precompiled version using
-> the debian docker image and download it instead of building it ourself.
-> 
-> We also updated the package to include a newer version of binutils, gcc,
-> and newlib. The default TriCore ISA version used by tricore-as changed
-> from the old version, so we have to specify it now. If we don't
-> 'test_fadd' fails with 'unknown opcode'.
-> 
-> The new assembler also picks a new encoding in ld.h which fails the
-> 'test_ld_h' test. We fix that by using the newest TriCore CPU for QEMU.
-> 
-> The old assembler accepted an extra ')' in 'test_imask'. The new one
-> does not, so lets remove it.
-> 
-> Signed-off-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-> Message-Id: <20230209145812.46730-1-kbastian@mail.uni-paderborn.de>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   tests/tcg/tricore/macros.h                           |  2 +-
->   tests/docker/dockerfiles/debian-tricore-cross.docker | 10 +++-------
->   tests/tcg/tricore/Makefile.softmmu-target            |  6 +++---
->   3 files changed, 7 insertions(+), 11 deletions(-)
+Hello,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+I was wondering what the best way to detect that FreeBSD is running
+under qemu/hvf on Apple ARM?  FreeBSD doesn't see the ACPI FADT table,
+so I'm wondering if keying off of something like the QEMU0002 device
+in ACPI is the best way?  Or is there another option?
+
+Thanks for your help.
+
+-- 
+  John-Mark Gurney				Voice: +1 415 225 5579
+
+     "All that I will do, has been done, All that I have, has not."

@@ -1,113 +1,132 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp801349ejb;
-        Wed, 15 Feb 2023 11:47:50 -0800 (PST)
-X-Google-Smtp-Source: AK7set+TdOpvqeH/hNSztDl71roHbkabfRQvb/iNCjtxKQqepArLLh1wS99POwWkaJ9BrBUrN4Wn
-X-Received: by 2002:a05:6214:2481:b0:56e:a918:a4ed with SMTP id gi1-20020a056214248100b0056ea918a4edmr7323987qvb.1.1676490469879;
-        Wed, 15 Feb 2023 11:47:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676490469; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp804336ejb;
+        Wed, 15 Feb 2023 11:52:56 -0800 (PST)
+X-Google-Smtp-Source: AK7set85tg2DA/qitx9HHfJLuFqe+IqZ2olfmlnHlL8Bik/4flc3jRFD6gNHltzqkFi8EbP6nPm4
+X-Received: by 2002:ad4:5961:0:b0:56e:90d3:9f17 with SMTP id eq1-20020ad45961000000b0056e90d39f17mr5791097qvb.33.1676490776786;
+        Wed, 15 Feb 2023 11:52:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676490776; cv=none;
         d=google.com; s=arc-20160816;
-        b=pD0Fgzu4kRSxmyLf6WvSiqLgrVCR0bF3l41tSxiq8YDvCsEgs647eFNe6lfEJfasHB
-         IpDEK08Jaw08SyXDe7RZpKctGlx43OypFCNXAihvQXR93BgBFeb8aG1k8zhmWn1AckHb
-         zfdJ9cgYELpoUyNUJq5qx/W4ikbpNX+iKYNk6pZ+SjhcuBQ1AH1APWzz7AtABu7+bXMg
-         LDWgMGZxbD/MDDnbX9hhyeSfUkCsLxnSwKMOubqL1dt68EgtkjUVBlR7PqrWJDZSiLHT
-         IFb9aYw2bFg+ZswVtT1f6H4rMBFbUNKtmW1q5+SzEvLJwZ6pL4Bb++pOKL2f5aEOtCrI
-         43jg==
+        b=Dp1bsI//HPerD7oQI9tOUmYQn1dgOqIE7O1zoFayQC3+By1jq4Kas7TQUPSU33Boqq
+         twARcrTn/Gpkp8yAtNCu3hEqhZ9SkufDnayWenoUDVgA1SRFBrlX9yR4+HPBdnc576yW
+         iRd8ddJiEJTUx7haB2moDXmfj8JGc1RIw5oU5FL9OypsHhXl+MP06+oNMl8fM9j2Nidk
+         3l+w+B+FXijhQXp+p7dln/wf0tCrQdesfb3/vOleDxCM/nn4uxKOM567h3Gc/kJgJBGa
+         HrlP3PbQ3h9mr2V3nWxbn+xd2Id1uf42eWDi+bc6VTiJ8hXVOn0Sq8l7rSGCIMeIFTW7
+         D8Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=biYTv1KrIOn/rRnd6jYNDAxXi6lHTwPVoYtJhDKMIpw=;
-        b=uYUGletkQ1E6bAgFcep5l4yrYG/m/k6EQPzXOz0k0zN66t94TkaeONZYrZ4rXQWUPP
-         olCJsVk+b743E4WwxIPqb5UgZpAra3yxVWCbyP4IoxnfbmZPYxf09j5lGq4xO8e+H8L3
-         htJ+5IIymeyKOeff0JwwCxoKW2kduYk/mp3cSPxC3OG8PjUedbaP2LE4crkWVgPbPnsv
-         xEBift72nYIHzJkZSssMbilx65WxsUC5G5z/9tbh3mycYS0UGLZzmKHKjMH1H/e9hDlo
-         kY6iIiacJmLjHe/kN9tOL6UTSa7HOa8DMG1wdA2lBbyXhSmSs0XveHosWWGi1hfo5wu+
-         tLBA==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=J7JNshNTxlN/ZL+pKTpHmHpmNSBYqop6px+qKOVQ0ps=;
+        b=V3QF/GiSKrvIaUzeurmkmjcHxMh6uOHHZTM/bVMvCAgBwMgAXVn8aKSbqMTxlZSAEr
+         qBYY6/piYh2Xs1WdiH38C/FrKiwSzujgfK+VjPbJAx0pOga6o0hFORoKv7N3QBmEp4D5
+         5CXD3Su6gy81Q86hmwxj8wZBiFiK3JJvPVsoAdqzaWH3cOGLFHXZWmMMKthP0/d9HNgb
+         bb9TorWBFVS+oz52zLATkOGsgeWJB2YT+EX56PkZ32jB0yXTqSgMUp5GupHe9XPciNPc
+         AcxauHsADY3ScOKxzwifrgUf8ImGWfMu6uscbCO3WllgMCmvXkUb5wIFpig3fQZwlurJ
+         RoNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iJF2YJcR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=n7r3WbMs;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=d89nD0UD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3-20020a0c8e83000000b0056bf9b6b0f5si14516401qvb.251.2023.02.15.11.47.49
+        by mx.google.com with ESMTPS id dt17-20020a05620a479100b0073318c59dc2si14158224qkb.385.2023.02.15.11.52.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Feb 2023 11:47:49 -0800 (PST)
+        Wed, 15 Feb 2023 11:52:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iJF2YJcR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@pjd.dev header.s=fm2 header.b=n7r3WbMs;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=d89nD0UD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSNkT-0007O6-UW; Wed, 15 Feb 2023 14:47:25 -0500
+	id 1pSNpM-00032h-Vc; Wed, 15 Feb 2023 14:52:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1pSNkR-0007LK-DM
- for qemu-arm@nongnu.org; Wed, 15 Feb 2023 14:47:24 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1pSNkP-00059v-Mg
- for qemu-arm@nongnu.org; Wed, 15 Feb 2023 14:47:23 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id o15so16986449wrc.9
- for <qemu-arm@nongnu.org>; Wed, 15 Feb 2023 11:47:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=biYTv1KrIOn/rRnd6jYNDAxXi6lHTwPVoYtJhDKMIpw=;
- b=iJF2YJcR5FO6uIiQtECdmfsf7lsCPg41fUrQTnvWqSyLXfUKj8ejsTS42SH1XFK+Vv
- vJXcDfOTBy+hL8wpSD4WrrOwpUIpby5wUL3I3gS1Ahlg4n/pLx/Eyfqg3k1Rrqa9iA5Y
- o7JCWFuOLZTqu5Y+udqasAlp6egBo1Qgbv/whk0z1JubUr2NXnr1XIO8/xPUnbkSx0JA
- AbWFaYxuca9juYqF/DvNgN9WC4tV+zX23TNXIgPWtLFikDr9mnYgYPW4TgDnTbeh8NAL
- Js/H22rMjCjeyPs+DX+04KIxAS0ZKdczIGsai2CB3QPM258OZTJgNyWhQJoOZGKkEyss
- eENQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=biYTv1KrIOn/rRnd6jYNDAxXi6lHTwPVoYtJhDKMIpw=;
- b=4coNHKbXmhXxRn3M1rowF/6soQgmhI4HpVK3IGrq3gya/V1vja0159Ay/U7iafWy7J
- rachR3meN28xkc+PB+uVEnpih24fhdv2xdV4T8yE/lazRamomzNAlpgcF4p80XMIAxcd
- e1OkftwSLDneg+N4UoHhYrSPqGmOQzguA3o2eTJl8cUZ5gUMulsQxsqhvGTodA8tRt10
- Ep5oIbZssTXgBkYnccSsHs9LBD1SvAemZhS+O6Wt3IWqMsdsQKCxUJiu+MI+oA02uZaK
- GWiNA98dkx/yGijr0aksjdqZbaJ6S6twqYw2CcDBYab72BbSWErwEhc5vm13QDi8ZumM
- IMjQ==
-X-Gm-Message-State: AO0yUKX0n4U2snpxnXgKjVNk6rD5iFpYyEd9t+ua5+vkrPb9j7AKBelk
- pNWVpd313RrH8J/ZfZIFYYO1hg==
-X-Received: by 2002:a05:6000:1c0c:b0:2c5:4c9f:cf3b with SMTP id
- ba12-20020a0560001c0c00b002c54c9fcf3bmr342407wrb.7.1676490439501; 
- Wed, 15 Feb 2023 11:47:19 -0800 (PST)
-Received: from myrica (054592b0.skybroadband.com. [5.69.146.176])
- by smtp.gmail.com with ESMTPSA id
- h10-20020adfe98a000000b002c5501a5803sm11406478wrm.65.2023.02.15.11.47.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Feb 2023 11:47:18 -0800 (PST)
-Date: Wed, 15 Feb 2023 19:47:18 +0000
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Mostafa Saleh <smostafa@google.com>
-Cc: qemu-devel@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
- qemu-arm@nongnu.org
-Subject: Re: [RFC PATCH 12/16] hw/arm/smmuv3: Add VMID to tlb tagging
-Message-ID: <Y+02xgL5RhO3vh6S@myrica>
-References: <20230205094411.793816-1-smostafa@google.com>
- <20230205094411.793816-13-smostafa@google.com>
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1pSNpK-00030Q-AX; Wed, 15 Feb 2023 14:52:26 -0500
+Received: from out1-smtp.messagingengine.com ([66.111.4.25])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
+ id 1pSNpI-0006A2-Mt; Wed, 15 Feb 2023 14:52:26 -0500
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+ by mailout.nyi.internal (Postfix) with ESMTP id F27765C010C;
+ Wed, 15 Feb 2023 14:52:20 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute6.internal (MEProxy); Wed, 15 Feb 2023 14:52:20 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
+ :content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1676490740; x=
+ 1676577140; bh=J7JNshNTxlN/ZL+pKTpHmHpmNSBYqop6px+qKOVQ0ps=; b=n
+ 7r3WbMsljNbgA91NcfJK+Py4E3DWARq66vbIKApK/5HIHcssj4sKygdQhE83ePVI
+ 8ieDZMa/aBJxp5GvAzv9/gjvQmHvqZ+HtEJ5FYhtirLA9Ash0j8/rgoaQadXyWba
+ c2qObHwvmYdE4era+Y77RVdM3MhXhzCvXPK5ydgL4BEmQbCgWYSj2Tr71R0bJ5Ml
+ 1Tc1GVHMGB48Hsf45ApiBNeeq+nz5BNpB0We9zEkC/7nbQ+uFBOF8IXTJUxVQPSp
+ 9bHgk/O4KEAIqDomugK73t8ArGIr5HxzsdW98iYZyK0yNlocDScgWn8SMQsq6wN+
+ gsj9VP93Gw3SR3CLU8E8Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1676490740; x=
+ 1676577140; bh=J7JNshNTxlN/ZL+pKTpHmHpmNSBYqop6px+qKOVQ0ps=; b=d
+ 89nD0UDoTsWaB5vO1CMCKHhrM2vKY6ms/eSF6hxq05y+ETIYAnTrkAuhcPbSoYCB
+ 7aNYi2Fqe4XWyO4/IS6d3e3qyL0+lv5XDSNXkwFI4qPez/H/+NY0cg3IiYozUCbb
+ 1r0x3riOImgkDW7Z+az/Dxc3ARH101YwrpDhvQIWqdygM673xpisxhXMPLVQWdCx
+ gbU71mxSZal4l/49oOsUw1dCtpocDMzdKYdEIJfwoChqqOMQC7JQTOJh81QY2HKD
+ L6s9kZqbGzYg7Uu7LO4yEenbJ9C2O8osWqhJSUUbvp6fBK3FXl3h2GNx/O/h8hXv
+ bH+RXigu/lZi2i/ZVb2Fw==
+X-ME-Sender: <xms:9DftYxntmgiEB4F9ym_x0uZxiVHzbwUtm2VkHbJgF8StrUro_-IrCA>
+ <xme:9DftY82F_WPaudIyuiN3t6_3zbcuv50KwK1IVr8V9DyBmnLshGYCKTIBZS_tzNiHs
+ WfGCoaPuJYjZwtq35s>
+X-ME-Received: <xmr:9DftY3p-hG8H1jUo5ebdqZj0tRZBwrxKHnIHgMnSPhc4nydHjzWa9-CXk437zyv9l-LNRQ5aR9XPwbpW2hOfHwKi>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudeihedguddvfecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvvefukfhfgggtugfgjgesthekredttddtudenucfhrhhomheprfgv
+ thgvrhcuffgvlhgvvhhorhihrghsuceophgvthgvrhesphhjugdruggvvheqnecuggftrf
+ grthhtvghrnhephfegffevudefveetgeekteeijefhhfduueejvdegvdehffehjeevtefh
+ hffffeeunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+ epphgvthgvrhesphhjugdruggvvh
+X-ME-Proxy: <xmx:9DftYxniZi4O7bkB2k8cN9YljRhJEPM3a61G1JfCcpSbQGc1VOcOWQ>
+ <xmx:9DftY_1-QIqSKE6R1SO7BtT0tJ72k9pxEt0K23wOlRm4VNrQ2MTC2w>
+ <xmx:9DftYwv8r8fe18sSNOaPeUSU9JuwNbqq0nuRmZ-lI3W3ZziRS3AvKA>
+ <xmx:9DftY4L5l6AfkRf1VVK9bWY5FWJTN85S7daO0azojfJjdnBHo87mPA>
+Feedback-ID: i9e814621:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 15 Feb 2023 14:52:19 -0500 (EST)
+Date: Wed, 15 Feb 2023 11:52:17 -0800
+From: Peter Delevoryas <peter@pjd.dev>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: Re: [PATCH 1/8] m25p80: Improve error when the backend file size
+ does not match the device
+Message-ID: <Y+038bMA0BaPLUr8@pdel-mbp.dhcp.thefacebook.com>
+References: <20230214171830.681594-1-clg@kaod.org>
+ <20230214171830.681594-2-clg@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20230205094411.793816-13-smostafa@google.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230214171830.681594-2-clg@kaod.org>
+Received-SPF: pass client-ip=66.111.4.25; envelope-from=peter@pjd.dev;
+ helo=out1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,34 +141,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CzHoEGwbVxNz
+X-TUID: DfI4Nv1Ha1lU
 
-Hi Mostafa,
-
-On Sun, Feb 05, 2023 at 09:44:07AM +0000, Mostafa Saleh wrote:
-> Allow TLB to be tagged with VMID.
+On Tue, Feb 14, 2023 at 06:18:23PM +0100, Cédric Le Goater wrote:
+> Currently, when a block backend is attached to a m25p80 device and the
+> associated file size does not match the flash model, QEMU complains
+> with the error message "failed to read the initial flash content".
+> This is confusing for the user.
 > 
-> If stage-1 is only supported, VMID is set to -1 and ignored from STE
-> and CMD_TLBI_NH* cmds.
+> Use blk_check_size_and_read_all() instead of blk_pread() to improve
+> the reported error.
 > 
-> Signed-off-by: Mostafa Saleh <smostafa@google.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Peter Delevoryas <peter@pjd.dev>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Message-Id: <20221115151000.2080833-1-clg@kaod.org>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->  hw/arm/smmu-common.c         | 24 +++++++++++++++---------
->  hw/arm/smmu-internal.h       |  2 ++
->  hw/arm/smmuv3.c              | 12 +++++++++---
->  include/hw/arm/smmu-common.h |  5 +++--
->  4 files changed, 29 insertions(+), 14 deletions(-)
 > 
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 541c427684..028a60949a 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -56,10 +56,11 @@ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
->             (k1->level == k2->level) && (k1->tg == k2->tg);
+>   breakage with commit a4b15a8b9e ("pflash: Only read non-zero parts
+>   of backend image") when using -snaphot.
 
-I'm getting some aliasing in the TLB, because smmu_iotlb_key_equal() is
-missing the VMID comparison. With that fixed my handful of tests pass
 
-Thanks,
-Jean
+I guess it's not obvious to me, what broke?
 
+1. BlockBackend *blk = -drive file=blob.mtd,format=raw,if=mtd,snapshot=on
+2. uint8_t *storage = malloc(...)
+3. blk_check_size_and_read_all(blk, storage, size)
+4. commit a4b15a8b9e 
+    for sector in blk:
+        if any(b != 0 for b in sector):
+            memcpy(&storage[...], sector, sizeof(sector))
+        else:
+            # Skip memcpy of zeroes
+
+But this is probably a regression for us because we actually expect the zeroes
+to be copied?
+
+- Peter
+
+> 
+>  hw/block/m25p80.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 802d2eb021..dc5ffbc4ff 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -24,6 +24,7 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu/units.h"
+>  #include "sysemu/block-backend.h"
+> +#include "hw/block/block.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/qdev-properties-system.h"
+>  #include "hw/ssi/ssi.h"
+> @@ -1615,8 +1616,7 @@ static void m25p80_realize(SSIPeripheral *ss, Error **errp)
+>          trace_m25p80_binding(s);
+>          s->storage = blk_blockalign(s->blk, s->size);
+>  
+> -        if (blk_pread(s->blk, 0, s->size, s->storage, 0) < 0) {
+> -            error_setg(errp, "failed to read the initial flash content");
+> +        if (!blk_check_size_and_read_all(s->blk, s->storage, s->size, errp)) {
+>              return;
+>          }
+>      } else {
+> -- 
+> 2.39.1
+> 

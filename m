@@ -1,138 +1,185 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp540208ejb;
-        Thu, 16 Feb 2023 06:23:41 -0800 (PST)
-X-Received: by 2002:adf:f40b:0:b0:2c5:5ff8:93e5 with SMTP id g11-20020adff40b000000b002c55ff893e5mr4454982wro.44.1676557421008;
-        Thu, 16 Feb 2023 06:23:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676557420; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp220855ejb;
+        Wed, 15 Feb 2023 22:54:40 -0800 (PST)
+X-Google-Smtp-Source: AK7set8nZ25xrDLF0EUrkldAZxHvWRwqelvohbbKMG991/G0vE0wknaD/+iNvaiRq1qdSQZvwzxb
+X-Received: by 2002:a05:622a:1a12:b0:3b9:bcac:725b with SMTP id f18-20020a05622a1a1200b003b9bcac725bmr9026736qtb.22.1676530480531;
+        Wed, 15 Feb 2023 22:54:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676530480; cv=none;
         d=google.com; s=arc-20160816;
-        b=SYAa2Xm9caSs4RbGg4KGkNWhvc9tj6Xxcg7oZ7oYLdzm1XQ0PGMX5Ovb3uX0GS7ggB
-         semZpfHJvObcVKhXI/aVrbtnIukjGvNGr2UE4IqGftEAh3/2VyHvHb0/GCQKMQzOxVK1
-         S/m4KH5sj+nR0uhVWfc5F+sCrb+24F9sPlxalUOzHkIT886H6PyKPDuYQnG2k102zCaJ
-         z05G92Njph+7v4PgLQlj/P5aUeTi2JGgAhFn16JyFN6vW7LnvmP9ttxaV6ofVnrDzpFX
-         sGYXcuQnVbCxdlTrQNK2jhhi2AQbAs0FhXvbRllX7Ghb2T123D2qSxgyAWU3Up4lSPMw
-         sMDA==
+        b=JlHyguIjGSjubFY6N5IlRiSYh7P99t5AWmVqoNmxt4p/Tmxz5fXGpQmd/NyXAwrOtf
+         WLZ0i1PVpqImbj/FsAstSs5miO1W/eC4ZesTumNCA8vqBeu5xD7rexEpmTF1gdidTpKr
+         +jf9KweuqonuZbFLMp4ArGd6F5a8l1rLDsDuKke45UwKZsirFEka7WjJqufg/vMbCR9I
+         MxvYsAhuztdhF5D42FwMKr1Mkl7kr3igCg3n+C6b0TpcdNe6HsD8f7uMNdLLS61gi7Ru
+         VCOj/ye53u4uYQvACpuuT7gRHJKnYu10hdBbzUCODz2ct4hB7L/LP/m+V2n/3Psi4ADb
+         t3DA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=L/pc4xY0KkVf5b//iMesTSo8MZ4ZxBt4DNYQN+C1HdI=;
-        b=VddPoTQP/uAUaUKbSnLkd1eqM/fI1q7fCEYZ2rY+58Y+kpHZTOmQMz0W0MEoP4Hm8w
-         4vuRmXUV88DkYYGn8u1L01NK3CntiJfPtHCFR6R/9DB+aDoOKMsi6vx9H1rneyTyZNGe
-         ztF9dxjDMUQ3RXIxfqAH/s3Qp5mp30TUGKQrYUKjdby9HpfzNPeqXCgyTOeYpEQIx0K0
-         rdeNR7ML1mDStyllQgx5yimPLBTAMuZ9N0SMvslkk5TuBacsWuQmXI75Fr3ObEkUUxCf
-         +NponlpdvzEEbVIulj5QoPz8rFtOVSPgqC96GGTbE4PM+/BF5ODNmNSIUBe6wPsCIli4
-         tyjw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:references:cc:to:from:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Pp6gz1kUyNZkuHAGZwAD9E51lDzY6E8wd3YDJ3dUFDU=;
+        b=0uAk7IKf3gZoV/iOLyQkPdaFCr6JZWAHovrrxGgLOqNzmpFZpbEU723zpRaP3bTw78
+         8fH0gqJXSyYoZ796yMsxvC3f2XzWpEQi39sWudqtoDOkxkKKYFm00LFxognYYstYLiQt
+         m3APolO9myYke7b9bTwoR86ml6F/4DvX7Palr3Jzm8IAfowMhdZ+hC8cHrHlRmn89nNF
+         eLfZYlsiNRYJ3TwEWSL8F6EMbAxDrcy8I/1dsHMKo5T3/NzFL2K8NFtgqPJvvcSNsHfJ
+         fQEVwZNRsNao9vLiC0gJjoTqqh4GDJQFPU12k8a923LoFhvxXjiCjWBGjj2XX0BXwAus
+         01uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xm3UKzv2;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WMte8tLj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v5-20020adfe4c5000000b002c55ff3c06fsor678557wrm.69.2023.02.16.06.23.40
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e6-20020ac84e46000000b003b9ee04dfc0si975463qtw.533.2023.02.15.22.54.40
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 16 Feb 2023 06:23:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 15 Feb 2023 22:54:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xm3UKzv2;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WMte8tLj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=L/pc4xY0KkVf5b//iMesTSo8MZ4ZxBt4DNYQN+C1HdI=;
-        b=xm3UKzv2yzNgXUm886BkUe+/i+rHCY1Y6F94hYT5BZTDPkAK8FtiOU35Or0qKMpuHS
-         oCwe4GFTO5IOR2cBJbV4GfPitMufN5Ofmx7g8EoIcSZqh8OsySUoL+UO+OX70VX9NEvS
-         tgqixgsMLUQfsW+myb52ZJhXWYmVsJTbObv397qLE6y47/4MF0sgyyaABCubASK/Ax8F
-         K1LwoTs9Err8cIvhrZyHYjHk9xPWX5iwzPxEH8txuvlGvcmV7vZyk6CL6OVbLoOuriC4
-         tCQtuSF8v6pI6Q+yQOuutoI6THlPXHBhAP6WOvgNhWOPRykFRmGh8ld3BBA4z08VpD2D
-         P8DA==
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pSY9q-0006nX-Bb; Thu, 16 Feb 2023 01:54:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pSY9p-0006n6-2F
+ for qemu-devel@nongnu.org; Thu, 16 Feb 2023 01:54:17 -0500
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pSY9m-00008r-Qf
+ for qemu-devel@nongnu.org; Thu, 16 Feb 2023 01:54:16 -0500
+Received: by mail-pj1-x1029.google.com with SMTP id
+ fu4-20020a17090ad18400b002341fadc370so4886950pjb.1
+ for <qemu-devel@nongnu.org>; Wed, 15 Feb 2023 22:54:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Pp6gz1kUyNZkuHAGZwAD9E51lDzY6E8wd3YDJ3dUFDU=;
+ b=WMte8tLjaasOYw//hcUcCXr65yeJ8FCE242xJcWH0jXh/olntWnCXDOazZ2FY2sBeo
+ TGW22/FSh1HJsARkfXH0QuD8p3C5ie5OottFTm+llrQHfNY9WjoiB7sEEJ/Ivazyp5ZG
+ IHjkLYSsfepaN7B2c1bAo5dhTzUf0paHHlK+/BrMlX0tNWb5X54Lle0XRdnNstjcppc0
+ I3O8ZlkqUTtKnF5jUUuVt+NCyZ5xa1GSbksH6YAQ8z7S7CllKHh8aJ3duM4zT8IDJIf/
+ BEjB2ZiNls2W6DK0DsicYJO+E7IPKt/RspIMgtTs0lh5ir5DXAl0h/xJqW+XNl6+RjE4
+ B0xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=L/pc4xY0KkVf5b//iMesTSo8MZ4ZxBt4DNYQN+C1HdI=;
-        b=vUjUylW+k9bJ8pL+lc/8iF1rmoLl1wKmjNeKrJRCt60+FlBIkMwy6yQ/f8Rkzk+hFH
-         zWXLAIMzxeu2TQIeVD/YiCqKpvVnTwSB+EzGWMDfcyj2QNr+XWSlJwBFsfPi+u4R1tRI
-         kRLyncWeQQJ4ehfF9v9xWidqjZWvEqpD06ZlKSn4scO0Ujd8kLJiSCbyUTa4EHIlRstX
-         jW5KuGgvQ1ikEaNhG/6pq1cS0bpg9Z/FS2OoGIkYz+XQ4XoO/Z7nqR55oogveWiHC5kT
-         Gdw0hDVF3okBgEYfX9MNgagTFSGCtrhmjiUFl+vqFilnbJO5i3qwPT72YyI0SvLwkO1i
-         WNNg==
-X-Gm-Message-State: AO0yUKWyoI9esSPmvMi3XEXtjA4iMb0GWfszuIrFaCC5ESSpsPllG7qb
-	+Q3tdvbOILK4YUg06yAVKt4jSukpmHiT9H4Tksk=
-X-Google-Smtp-Source: AK7set/fvHUqzq36NUA0q8wFFrhcs/+/abFpUQKRqYYLu+LTVZovh29pUc0cOK3fa5jW3o7YE0SzzA==
-X-Received: by 2002:a5d:4a52:0:b0:2c5:530b:7d6d with SMTP id v18-20020a5d4a52000000b002c5530b7d6dmr4818693wrs.24.1676557420715;
-        Thu, 16 Feb 2023 06:23:40 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id o3-20020a05600c510300b003e2052bad94sm5484942wms.33.2023.02.16.06.23.39
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 16 Feb 2023 06:23:40 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	Dapeng Mi <dapeng1.mi@intel.com>,
-	Sean Christopherson <seanjc@google.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Zhuocheng Ding <zhuocheng.ding@intel.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	qemu-riscv@nongnu.org,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Robert Hoo <robert.hu@linux.intel.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Like Xu <like.xu.linux@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Zhao Liu <zhao1.liu@linux.intel.com>,
-	Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH 0/5] hw/cpu/cluster: Restrict CPU cluster to a particular CPU type
-Date: Thu, 16 Feb 2023 15:23:33 +0100
-Message-Id: <20230216142338.82982-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Pp6gz1kUyNZkuHAGZwAD9E51lDzY6E8wd3YDJ3dUFDU=;
+ b=D2VHQ52FZHPfi9AJjH5paupt2WKQNF4jEYeyPu+R4w2I5Gajxyw7nGbfVv5hA2SsQo
+ UqwSGJlaRk6CE9nqScaH2vevHnStPs8a3HrGL9KpwViiWK+NugNhz5mdLAHKgxNd+/Cd
+ MHcNfVw8n2GgOWzckoAbar69BTK3IDd01y+nKzxFyH2pwAY7GYsqlB1nVQnhsHntDwCn
+ UVga2YAcU8x3b9eFW9Aei1BOuewmHZ0kpyYQdGYI6KtVvuY6d0eb7l5ZTWGHSPdWvCDr
+ vm5oP8qbo6uTE2+2DbabYYJnIrQs/NuipI+5M1g7Tj9ykxBtux7fqA8urEjgSqOfYC9J
+ pGfQ==
+X-Gm-Message-State: AO0yUKWnYGOi4S86DMJwoFexFFOAGJgFiNhR5A1hMHhkOiWABUmfoH/N
+ QFdeNucfd0i5DaSUiAhkZTWqDydrXF/N8NcD/Jk=
+X-Received: by 2002:a17:902:f548:b0:19a:7479:c14f with SMTP id
+ h8-20020a170902f54800b0019a7479c14fmr6413286plf.65.1676530453227; 
+ Wed, 15 Feb 2023 22:54:13 -0800 (PST)
+Received: from [192.168.192.227] (rrcs-74-87-59-234.west.biz.rr.com.
+ [74.87.59.234]) by smtp.gmail.com with ESMTPSA id
+ jb14-20020a170903258e00b0019468fe44d3sm500399plb.25.2023.02.15.22.54.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 Feb 2023 22:54:12 -0800 (PST)
+Message-ID: <6e33fe85-c914-6e08-7154-749bb57c5c56@linaro.org>
+Date: Wed, 15 Feb 2023 20:54:09 -1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-TUID: lFjKfc6tsNs2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH 0/4] target/arm: Cache ARMVAParameters
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: anders.roxell@linaro.org, qemu-arm@nongnu.org
+References: <20230202075242.260793-1-richard.henderson@linaro.org>
+In-Reply-To: <20230202075242.260793-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.257,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jttf20Dh4myr
 
-Following Alex's comment [1] on "Introduce hybrid CPU topology"
-RFC [2], this series strengthen a bit the CPU cluster by
-restricting it to a particular CPU type.
+Ping.
 
-We'd rather have a single way of creating heterogeneous (hybrid)
-CPU topology. Note the CPU cluster is not user-creatable, so few
-more work is required in this area.
+r~
 
-Based-on: <20230216122524.67212-1-philmd@linaro.org>
-  [3] "Have object_child_foreach() take Error* and return boolean"
+On 2/1/23 21:52, Richard Henderson wrote:
+> Hi Anders,
+> 
+> I'm not well versed on tuxrun, and how to make that work with a qemu
+> binary outside of the container, so I'm not sure if I'm comparing
+> apples to bananas.  Can you look and see if this fixes the kselftest
+> slowdown you reported?
+> 
+> Anyway, for a boot and shutdown of your rootfs, I see:
+> 
+> Before:
+>      11.13%  [.] aa64_va_parameters
+>       8.38%  [.] helper_lookup_tb_ptr
+>       7.37%  [.] pauth_computepac
+>       3.79%  [.] qht_lookup_custom
+> 
+> After:
+>       9.17%  [.] helper_lookup_tb_ptr
+>       8.05%  [.] pauth_computepac
+>       4.22%  [.] qht_lookup_custom
+>       3.68%  [.] pauth_addpac
+>       ...
+>       1.67%  [.] aa64_va_parameters
+> 
+> 
+> This is all due to the heavy use pauth makes of aa64_va_parameters.
+> It "only" needs 2 parameters, tsz and tbi, but tsz is probably the
+> most expensive part of aa64_va_parameters -- do anything about that
+> and we might as well cache the whole thing.
+> 
+> The change from struct+bitfields to uint32_t+FIELD is meant to combat
+> some really ugly code that gcc produced.  Seems like they should have
+> compiled to the same thing, more or less, but alas.
+> 
+> 
+> r~
+> 
+> 
+> Richard Henderson (4):
+>    target/arm: Flush only required tlbs for TCR_EL[12]
+>    target/arm: Store tbi for both insns and data in ARMVAParameters
+>    target/arm: Use FIELD for ARMVAParameters
+>    target/arm: Cache ARMVAParameters
+> 
+>   target/arm/cpu.h          |  30 +++++++
+>   target/arm/internals.h    |  21 +----
+>   target/arm/helper.c       | 177 ++++++++++++++++++++++++++++----------
+>   target/arm/pauth_helper.c |  39 +++++----
+>   target/arm/ptw.c          |  57 ++++++------
+>   5 files changed, 217 insertions(+), 107 deletions(-)
+> 
 
-[1] https://lore.kernel.org/qemu-devel/87y1p1c18a.fsf@linaro.org/
-[2] https://lore.kernel.org/qemu-devel/20230213095035.158240-1-zhao1.liu@linux.intel.com/
-[3] https://lore.kernel.org/qemu-devel/20230216122524.67212-1-philmd@linaro.org/
-
-Philippe Mathieu-Daudé (5):
-  hw/cpu: Extend CPUState::cluster_index documentation
-  hw/cpu/cluster: Only add CPU objects to CPU cluster
-  hw/cpu/cluster: Restrict CPU cluster to a particular CPU type
-  hw/arm: Restrict CPU clusters to the expected type
-  hw/riscv: Restrict CPU clusters to the expected type
-
- accel/tcg/tcg-accel-ops.c  | 13 ++++++++++++-
- hw/arm/armsse.c            |  1 +
- hw/arm/xlnx-zynqmp.c       |  4 ++++
- hw/cpu/cluster.c           | 33 +++++++++++++++++++++++++++------
- hw/riscv/microchip_pfsoc.c |  4 ++++
- hw/riscv/sifive_u.c        |  2 ++
- include/hw/core/cpu.h      |  2 ++
- include/hw/cpu/cluster.h   |  1 +
- 8 files changed, 53 insertions(+), 7 deletions(-)
-
--- 
-2.38.1

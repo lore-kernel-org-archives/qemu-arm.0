@@ -1,90 +1,89 @@
-Received: by 2002:a05:7022:221:b0:5e:6ea8:9f07 with SMTP id 33csp202812dll;
-        Wed, 15 Feb 2023 23:39:15 -0800 (PST)
-X-Google-Smtp-Source: AK7set+ASWTiW4nqVJ+598JAqevX0DrPdtq1uJv2fG5Q4zkudcOC3tKBitCRhaRxr6dxxkcQXl2i
-X-Received: by 2002:a05:6214:f26:b0:56e:b690:9bc5 with SMTP id iw6-20020a0562140f2600b0056eb6909bc5mr9977932qvb.19.1676533155811;
-        Wed, 15 Feb 2023 23:39:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676533155; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp251020ejb;
+        Wed, 15 Feb 2023 23:55:41 -0800 (PST)
+X-Google-Smtp-Source: AK7set84p+pmKOGo9r+bv6iuO8n6AZpZONEmi6GOmt9uXqjK6NbMbB/kxs23A3gNVT4guahMGXYK
+X-Received: by 2002:a0d:f243:0:b0:533:4b0:1a15 with SMTP id b64-20020a0df243000000b0053304b01a15mr1413185ywf.45.1676534141230;
+        Wed, 15 Feb 2023 23:55:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676534141; cv=none;
         d=google.com; s=arc-20160816;
-        b=AYp1w7R1wGnLK5m3G608A147xuixh2+mWUZ/3djFbiemZFRakcK6hOOMqRkZ15NhjX
-         cga3H+vBzl3gE6CJghV5ZUamPRIrioWS7HdSOsxiLygXq2KRlIgMGZN946z1C5p7pdaL
-         RAEGCd9CiB0+R3zUzhUBF6rs9M5V+Wcpa5jh+Xkkqxfi5hclnYOVj7KSYNvarWSea07C
-         w977VzcOtMlaOAjYyt7DTbVyB/FNaZiNm2ZN2j5zhp/2gG4VKHaClQrM7+/TuWH67nug
-         H4VxklUbtiytTY80/hTFaX/K29s5yiWyD7Lr75mW/t5KG7blgw9pbsTLoFFBLXORm8TM
-         G0OA==
+        b=ZQ4Ws/OO9Dz9rLpp45auEAKIinypPynv/mJ/hvr6uQlOqfhcjzpuOZ/8ngdp/BQmRp
+         r3O+VTFY1y5cW/XVqV4fWV1JdO3kyw62c9GtmKK+aNGEP5HknbGJ2LREOHXU5ltTZ5bY
+         qpNoDoode3QCqd2/60T87LSQjzBOn/TdtGsCTqKn67ofjsoKQ8GL3Hikv1Dy92kzoi+v
+         cOF9qOC1AjsfrS1LJAA9OOpsleHUt6gW0XKfW9VJ5sA/RPUv611WC4AqSNftjsy4V582
+         OqYfDfBDIoibsswdUhCuKT2RB+alv2YEjR5dKYYvcAWgEjjPm1nwMex0V5lzeWzudLo0
+         OB6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=SmIYwqtS5racSw6UEcuF5eYcwsYcc6j4GjLr01RvMYo=;
-        b=ORdhGjCQx9bFcI+p77mvG8h7Xg1tM7UlLjibNDxjpqpQvz0xf6UOJLcjKKMlUvbkp6
-         PT8cIMTsib5tJeVjI7E5LqMcJMpz1FFuDTOwgQ2cPGLw06hhVBKeOO6UnW0zvSgng6dr
-         sv9gpCY2yA+ZhfA+fp26xTk3uFlXlDeqwyvN6cm1ftb+3oaX8ZxDGhk9XD34DJ1pJrRM
-         SwKqVn+UWXkXphRl94+/8aM5M1fWTBzT5oZkmRVEa8lCm2JSKzVWk1uVUoRdKQNHM1fn
-         dVCnQAKvMvKAcZMxdxvIDoi7H9IqLHAurv0nmN0pVW+c7TcIuugcJGdhT/HcBum9UZfs
-         zWzw==
+        bh=XP5lTNS9M/3hu499TdM2vrS4F1Z+ZwVJAD2BS995kX0=;
+        b=uuyULxzAisA/ctzmgbCjulamkaMxH4POftT0QjQ5Cou4n57SMzXpfCwTWML65qsEyQ
+         yTny66tB1PEL18pSYf/ykXy+CaxCpI7AlvOC5CP32dM+kxhKShsBBHnYLuSqZUDglIK4
+         q26RiMLVpkzAgTgArdvXqBMwglgroiUT8KwKPi9ZTFnhf7lidDE4AsrZO2xqiVC1roCI
+         fvjwVcvgxuFDZh9OVSHzylyUOToyNB43PzcmZQfpTSoE6hFdnK6PQAtMVMV0vtd+1xIh
+         Ij5rTaOAKeQUQf6c8aW7gioJe0BBEqE4rW3CvRrCnQTdgFcZvy6NZentm9GEPierns4N
+         mO0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BpJd0ar7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HstIW1dC;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id o4-20020a0c8c44000000b0056e9470eaa9si602377qvb.546.2023.02.15.23.39.15
+        by mx.google.com with ESMTPS id i4-20020a819104000000b00510285bdef1si1139219ywg.359.2023.02.15.23.55.40
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Feb 2023 23:39:15 -0800 (PST)
+        Wed, 15 Feb 2023 23:55:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BpJd0ar7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HstIW1dC;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1676533155;
+	s=mimecast20190719; t=1676534140;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=SmIYwqtS5racSw6UEcuF5eYcwsYcc6j4GjLr01RvMYo=;
-	b=BpJd0ar7ym0dFOSWpQ7uG7bOLyD3VMfUSLU3NnHsxVR98VY6/cFnockwbrTkmTEckBZm81
-	dewqQ9ik6Y0lu8Mbd1io4IIUyMitr+Bu9MLbAPJ8r7LRwuS6mq/Zj/B1uwaNPgeqKqaexQ
-	qcqySOXgd4yN3VrQCHdAWE3e2Pl/iHg=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=XP5lTNS9M/3hu499TdM2vrS4F1Z+ZwVJAD2BS995kX0=;
+	b=HstIW1dC+dsCnd3JmkJhKCo7tC0BDcQuU5ze1nO09FitU5QUhCtV17qSxZlQ78ihY80c0b
+	T6j5g847vQwKIAGFkJH99c8qvE1l+9Ky24hBEl11NtqGYKFLJTS2ZAo0gqSEiz6L+txTpH
+	ZKAXLbvnNOQa7HM4ApA251lBDj4oblk=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-357-SQFTPvLiNVS2MLr2BhmLpg-1; Thu, 16 Feb 2023 02:39:14 -0500
-X-MC-Unique: SQFTPvLiNVS2MLr2BhmLpg-1
-Received: by mail-qv1-f70.google.com with SMTP id ob12-20020a0562142f8c00b004c6c72bf1d0so658698qvb.9
-        for <alex.bennee@linaro.org>; Wed, 15 Feb 2023 23:39:14 -0800 (PST)
+ us-mta-645-nRbIsO5-M5WZXQIAo8tU3Q-1; Thu, 16 Feb 2023 02:55:38 -0500
+X-MC-Unique: nRbIsO5-M5WZXQIAo8tU3Q-1
+Received: by mail-qt1-f197.google.com with SMTP id g9-20020ac80709000000b003ba266c0c2bso799938qth.5
+        for <alex.bennee@linaro.org>; Wed, 15 Feb 2023 23:55:38 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SmIYwqtS5racSw6UEcuF5eYcwsYcc6j4GjLr01RvMYo=;
-        b=qIY/llLsH9tBrHbBtEUSwawnCh4VGmnP86ugfOuQqq/6I5eKJuaVYEEh3kFiXsfeph
-         9Sf2/d1Mt15MiGmK9EtLDOtzRulmvn9leTlVjPYC3UrCOM588KEAtjavXpdy2h/TgXMM
-         Mv6B23OhjX0K/8ZqZ7/LdiquE3Jxc/f5T/s/1u3lZGIiI6mfjAFHgYehepTJXGVa/9yF
-         VypOXX5UCu8pAjejk+SWeLbKzVRPyPnMC2R3i2GFPegZ7P/9oaiLEjPF6/K0WFHXVZUl
-         MYPThqUQmEL6G74u9GDsAbW8h524xosmhJ1L1KCAQ4BxuqVKJF5WHiW+0f2dbV1BAZC3
-         0pgw==
-X-Gm-Message-State: AO0yUKWDd1SCCw3X+eex6MFI3kr+blBGuaRbFFJ+nGiHSUsBQmwiE0oB
-	hBgZ3/6ibCcpfm6zyi8XsPgqPcow1Wem+oj7JchndhnlSZKYydy03RpPBgFHraWfUUrcb0x95Sa
-	p864Pk+yLVzy4kMJC276cazuCZMV+23ln3c/THD2azsTOpQmzPFOeVWFDFMxkc6qooc7KHsWH
-X-Received: by 2002:a05:622a:118b:b0:3b9:a372:e456 with SMTP id m11-20020a05622a118b00b003b9a372e456mr8872449qtk.57.1676533153831;
-        Wed, 15 Feb 2023 23:39:13 -0800 (PST)
-X-Received: by 2002:a05:622a:118b:b0:3b9:a372:e456 with SMTP id m11-20020a05622a118b00b003b9a372e456mr8872409qtk.57.1676533153545;
-        Wed, 15 Feb 2023 23:39:13 -0800 (PST)
+        bh=XP5lTNS9M/3hu499TdM2vrS4F1Z+ZwVJAD2BS995kX0=;
+        b=dlv8T0/bkej40Rh4r0jLmYWCdgu+x8gT1oGrvv4oEiPeuMtiA83iG9R8fmqcaNQ5d/
+         7W36B3YB0YCavVNz9SmSIo1hc0c+efRoBkW9baHI4AJObhnfhf/wYWqvn8/dSCQ8REya
+         Umw/impSEFTBiJvqZrwrf11izSU/rCyEy6ANIanzgs0iL8VExPu/jjXFJfxvs+gpwi64
+         La/ywYY8iFCrTVSUuPwo58+5czDS1unZdp6sMS+nLhQaq9g5cNJsMsGLWR5kWqxjSjdH
+         WssQLLUxrDCuK3xgOPcOidVXq+SxvDmLrs0220sdsOhOo8tPwqzOnim4UhS08FkSjgT8
+         hP0g==
+X-Gm-Message-State: AO0yUKWfiWskbtE/+9SIO1fPOAWH13AcUKp0T7hTlSdlznnIhOEUtB0x
+	a6JmBpKLFTU36pWO3JeIyxi64/sq3j6EzPLc6geEa0QK6YDs41BWq71p7EKJoAiM1CJd0Jet2AA
+	idGeyv8nQVp/b+NplQ0ZG1uEr/l84KKjSI5vRxXNofUlc4hZI4psS9HLvfHywLsaAj3w/xvXP
+X-Received: by 2002:a05:6214:d84:b0:56e:b13f:fea0 with SMTP id e4-20020a0562140d8400b0056eb13ffea0mr8532157qve.46.1676534138312;
+        Wed, 15 Feb 2023 23:55:38 -0800 (PST)
+X-Received: by 2002:a05:6214:d84:b0:56e:b13f:fea0 with SMTP id e4-20020a0562140d8400b0056eb13ffea0mr8532112qve.46.1676534137946;
+        Wed, 15 Feb 2023 23:55:37 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.2] (ip-109-43-176-144.web.vodafone.de. [109.43.176.144])
-        by smtp.gmail.com with ESMTPSA id t68-20020ae9df47000000b0073b8459d221sm684900qkf.31.2023.02.15.23.39.09
+        by smtp.gmail.com with ESMTPSA id o185-20020a375ac2000000b007339c5114a9sm686881qkb.103.2023.02.15.23.55.33
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Feb 2023 23:39:13 -0800 (PST)
-Message-ID: <bdc45bcc-c29e-6da8-9474-0444cdb14988@redhat.com>
-Date: Thu, 16 Feb 2023 08:39:08 +0100
+        Wed, 15 Feb 2023 23:55:37 -0800 (PST)
+Message-ID: <3f0d1adf-369b-2ccb-b13f-e9e5670c8c32@redhat.com>
+Date: Thu, 16 Feb 2023 08:55:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
-Subject: Re: [PATCH 06/12] gitlab: extend custom runners with
- base_job_template
+Subject: Re: [PATCH 07/12] testing: update ubuntu2004 to ubuntu2204
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Michael Roth <michael.roth@amd.com>, Alexander Bulekov <alxndr@bu.edu>,
@@ -103,27 +102,30 @@ Cc: Michael Roth <michael.roth@amd.com>, Alexander Bulekov <alxndr@bu.edu>,
  Beraldo Leal <bleal@redhat.com>, Ed Maste <emaste@freebsd.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>
 References: <20230215192530.299263-1-alex.bennee@linaro.org>
- <20230215192530.299263-7-alex.bennee@linaro.org>
+ <20230215192530.299263-8-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230215192530.299263-7-alex.bennee@linaro.org>
+In-Reply-To: <20230215192530.299263-8-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: tXCwXX5lQWsZ
+X-TUID: JssyJzB0Ghhg
 
 On 15/02/2023 20.25, Alex Bennée wrote:
-> The base job template is responsible for controlling how we kick off
-> testing on our various branches. Rename and extend the
-> custom_runner_template so we can take advantage of all that control.
+> The 22.04 LTS release has been out for almost a year now so its time
+> to update all the remaining images to the current LTS. We can also
+> drop some hacks we need for older clang TSAN support.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   .gitlab-ci.d/custom-runners.yml                      |  3 ++-
->   .gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml   | 10 +++++-----
->   .gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml |  2 +-
->   .gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml | 10 +++++-----
->   4 files changed, 13 insertions(+), 12 deletions(-)
+>   docs/devel/testing.rst                        |  4 ++--
+>   .gitlab-ci.d/buildtest.yml                    | 22 +++++++++----------
+>   .gitlab-ci.d/containers.yml                   |  4 ++--
+>   .../{ubuntu2004.docker => ubuntu2204.docker}  | 16 +++++---------
+>   tests/docker/test-tsan                        |  2 +-
+>   tests/lcitool/refresh                         | 10 +--------
+>   6 files changed, 23 insertions(+), 35 deletions(-)
+>   rename tests/docker/dockerfiles/{ubuntu2004.docker => ubuntu2204.docker} (91%)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>

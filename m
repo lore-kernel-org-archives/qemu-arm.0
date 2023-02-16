@@ -1,121 +1,110 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp438677ejb;
-        Thu, 16 Feb 2023 04:26:01 -0800 (PST)
-X-Google-Smtp-Source: AK7set/cXQCSzRSuHb3I8i8eVRRJRMoFCB76pGzX3di6we0nPm1ZpZAYMSAuscqP98aCou+Z3NCq
-X-Received: by 2002:a05:622a:14d4:b0:3ba:26a0:d0ee with SMTP id u20-20020a05622a14d400b003ba26a0d0eemr9056020qtx.52.1676550361531;
-        Thu, 16 Feb 2023 04:26:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676550361; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp438965ejb;
+        Thu, 16 Feb 2023 04:26:25 -0800 (PST)
+X-Google-Smtp-Source: AK7set9g1i/pan+TJ8G5nMdigoCXcPOfM66eRLscXcKtuAJSWWKcoaoZcW/ku+MmM3eiJbds8Jvy
+X-Received: by 2002:ac8:5cd0:0:b0:3b9:bb27:e11a with SMTP id s16-20020ac85cd0000000b003b9bb27e11amr9645107qta.0.1676550385290;
+        Thu, 16 Feb 2023 04:26:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676550385; cv=none;
         d=google.com; s=arc-20160816;
-        b=R23XlbGAWHZ4gC7S+q5i/9UtzFyiBtzAlb2qvg8TgpcZTETKsB2q/iwY+eHHSfZtzr
-         CDh2ld0/LfZFDTcF/2Ep0lZa2T/4F3vQBQVj4VYOPjehKvZGdVOv/gG7f2GE81f6s7Wv
-         DpHgcWwrJimwQUlYJQxO+lsWKAnOb7JIum/S+BxCzyxx2FFO6xrHUWqO+5xvcvbhL4Nr
-         /RdGkhBvQ9hcFWlZ1yhkqHDI9vkzyVAGm8X0bakCyvzdSMEIxWLSOis4dKor4CequXB6
-         qfFuqG/ZBMN3MgBqp0gQmEyYB2fBMJXebseSO3nDLye9jYf/6475xA9bN8b5vKpQ8f1H
-         HLMg==
+        b=B6Y+yt47/+VhgdIIAWgVNI51Wdw+0522B6iC/WYe85VU2SAYb92RUbVww/31F6P74M
+         QJi49zzyHkyPUhV218bbt8KHC5XTyv8s7eCCFqCV1lNDXVVJOXG6+eqcc7veqFfIPzwP
+         ScGlKCpCIVpj9a02FrDStgNzr5PrptYsDs7/YL+Wxwyg+wM1pdU5lnsad4JNVoXCItOB
+         xvEFMjTKxDh+dYDAkTy8Qbgp6ei+xMq+i5rDSAYsSr68Ru8vI9ltAdgYiRLw0XBU0LJn
+         5Ecva++EjXzPKHvipj5rvbMF7G0y1kW1Yoz4E/c/Nz9tqJn1HZujbghyQ6kS/ToH+yAV
+         Dc2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=AcG5UdzDyIGyRqR706CT/5ZNP7noXX1ZENMA65+7uwQ=;
-        b=hmE5RJJVcZpY5FPPlQcSHlUVlyPiu5SmJ3B2KI93hA6xOYSVDhN2vHhRrfhV00Tge+
-         sWUwqtClyDi0I0DNXex6H61hHyN1MoRh6Mu27IDa7+wVBnKjM0CEQt+T8irSJfytvlVs
-         kVAFX6OCIpsUquF8hvCmCsFlDYzMFdqYlfjR1Fy4YlrO76dfNsIl9OVoZ6lEH4bN3dgh
-         7jLTBY8YIyWbTe8qXh5C6YDH1hDrqoOWAmM9ccZ+OiE/kEtEs1+qEplE6Ki/j2XFxTQV
-         u2GcHamATcvyHdtVIbQ2romPEJA/nXixGcBmvs+WkJto5t26cqQfT+v6CSTpGCZBPave
-         bHHQ==
+        bh=azFU279GWo7BPVVCK+2+IWX9+aBI1DPIFAzGgVCRi9Y=;
+        b=TE5N7yDt80MwwQCRsRc7O5y6WvV5du85TZEIdQ6Es2Wn40ecH1EJrCus50/kLuqvVd
+         T+KyBUv8sLaIMc5vLtoEcBM7nqg+mBbmakU9IufegEBoW8nbfoYL1fLkjNoe5DWfSlgQ
+         OQapyGQ8f4FGWWvC1XM9qtKA7QGpZ16FXKuXbsypx2m9pBo0CM6t7WGqGOVPfEnaWi2s
+         fj68zjLSt/0lfzdxHwnGs5TjRgUYGX2uCG3MKj46nQi93PLmdN2YKooZyEpGrYa9t3cj
+         VhpwzTFAoTc2VoyOgqhPNpZqe1glcN460hFkVtZatKbpiwAh73GO3GMWVVdHO9lDsahX
+         rpbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NUvOs9FV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vd5N9rIF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u22-20020a05622a011600b003b85f98c10fsi1615372qtw.456.2023.02.16.04.26.01
+        by mx.google.com with ESMTPS id w3-20020ac87e83000000b003b9f2bffbbasi1609904qtj.327.2023.02.16.04.26.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 04:26:01 -0800 (PST)
+        Thu, 16 Feb 2023 04:26:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NUvOs9FV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vd5N9rIF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pSdKi-0002k2-R3; Thu, 16 Feb 2023 07:25:53 -0500
+	id 1pSdKk-0002mh-P0; Thu, 16 Feb 2023 07:25:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pSdKW-0002eO-VB
- for qemu-devel@nongnu.org; Thu, 16 Feb 2023 07:25:41 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pSdKY-0002eq-Rc
+ for qemu-devel@nongnu.org; Thu, 16 Feb 2023 07:25:46 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pSdKQ-00083Y-Rl
- for qemu-devel@nongnu.org; Thu, 16 Feb 2023 07:25:40 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id y1so1691763wru.2
- for <qemu-devel@nongnu.org>; Thu, 16 Feb 2023 04:25:33 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pSdKV-00086W-P1
+ for qemu-devel@nongnu.org; Thu, 16 Feb 2023 07:25:41 -0500
+Received: by mail-wr1-x434.google.com with SMTP id m14so1637035wrg.13
+ for <qemu-devel@nongnu.org>; Thu, 16 Feb 2023 04:25:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AcG5UdzDyIGyRqR706CT/5ZNP7noXX1ZENMA65+7uwQ=;
- b=NUvOs9FVMECdGx0qUNazGoGwxFLBjyvFnCsfTwUlLQKTDU+KSxqYwUNbwvtLz/T25f
- CphCPPpH9n2hh9UBC5w28+UPviYzP8b6RldflAEu5neTdKt070gyv0s/CJDbZkEgnjLp
- CzBTKnh5CWrjjvReCs/aI/iB+rYDEWMb6544x1wQ6LWKpusoUv2U+sS84oWOqkhfRftV
- XZhed8JBcL3/QrgaCPgcqTgVOy6am1Tn4KOUrc6uj4/X3Lv6ZTSAuK0rCOKFiZGqhJvG
- vNIBLMb6z1fgEYTvCLwS1LMisGmFLu5vmltyGUWMSdKC+52kLdP7gKJrVnnrw8X2bqj1
- tCKg==
+ bh=azFU279GWo7BPVVCK+2+IWX9+aBI1DPIFAzGgVCRi9Y=;
+ b=Vd5N9rIFTUN4lL7afOng9/FS9+bWJw/PpNzRDG9GM5kG4frg9CMFwswubzn/qPQBWX
+ /Jce+/tOVDUKMzyQKUEo/t5oEUWJJSOdORmIIAd4BGENn8cqeDQPQARLZIJfl/5kk0yA
+ 9hr8HLxyeg1+ZnQUH1h5J3p67kE0alQjq9Ok++bwG8hZoI1+WSSwBgLRBMQfmfFXZQeI
+ kEZYSrV4HvEZJmclq03wEb9SHccU/Dhaik0HkVs1iRoKCLE+dhhKcBFch9+785vG6TIA
+ JOYNErdVF69kM3pypOZUAtW4wRNwokMjXKg6qm/KFyFisTt3a+MSMjr4HsdIEN34hHf5
+ W7jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AcG5UdzDyIGyRqR706CT/5ZNP7noXX1ZENMA65+7uwQ=;
- b=T7d7gruNxPXv1SywINxVDtGxrZ4cnYq3wG9PQHIJ0Fg9/TEjokF1r06NLtS/8Qya4F
- f5icFaxrr5YC88kuIL4j3XIayz3rm3DBBuzhBSPlio9FPe1d3vzEBAIXVBQ2BSY08l44
- JbzWWpODITRY1pbWnrkkN6h1xFL/iGUi/v3NxVGJNaN+VG/C1E1E4UzglK9OSaXgMkUJ
- MWOLd/sVMrvuUAVLXG2PJQIX29fFkGzRhuWGak+dH83/QPjVu5mSXgfl8En0mdMOmQVe
- qJmkx3v8iM/u8txGaOPDzWlZOrxdF90tA59mo6sGjTXU9c3PiMKraGnU9nVugrssyQs8
- uRCA==
-X-Gm-Message-State: AO0yUKWsyJ+Pi1+xOtRbYrzbLOTNA3H1OiaLGfT57hKVMlm5MGQ8MVrJ
- pAIlUKCszOgiCRmusufrB3Wsi6aYftZymcMa
-X-Received: by 2002:a5d:6882:0:b0:2c3:fb3e:ae85 with SMTP id
- h2-20020a5d6882000000b002c3fb3eae85mr5542920wru.44.1676550332076; 
- Thu, 16 Feb 2023 04:25:32 -0800 (PST)
+ bh=azFU279GWo7BPVVCK+2+IWX9+aBI1DPIFAzGgVCRi9Y=;
+ b=7hEjq1qzhwklJ7YqS6cvwdFNBib8IxBnaQwZIGqFDFcQdVuqYJ2SjK60z6Ei+IVvTs
+ 7bSBk+cmigVBB1qEdTP9a+4Zkq6VqvGeuya2AhQhEV7XpCDrFNffaZdOAB47bs1EscDa
+ bPYQ05tsEKZWnof7uhUe+0jOeZKQqr3fRF5vxdA5j1YF7XNlt1Sxdl0ido7t/OWVvepT
+ xQs6ZTRYJMAkUk9fuRYfnv257pfAW4rszARWKpuK/qT49SDoNzYZDA8oY9yXj+mst62q
+ gtxzOS4Px6E3/ABhFJdVSUpk/xNmWw2MSYSiwDtQfovRSlmBL97xksRsXhr+zvvV6cfb
+ DCNw==
+X-Gm-Message-State: AO0yUKWYy1IeWyJckIzCKuafr0e8J9XIG3B5d2s5mlpjDWEqujwJ9N4e
+ uW3/5zAv2JqRnhISEooDlGSPkFidJ36SJVSD
+X-Received: by 2002:adf:f54e:0:b0:2c5:8613:8b41 with SMTP id
+ j14-20020adff54e000000b002c586138b41mr1316511wrp.42.1676550337510; 
+ Thu, 16 Feb 2023 04:25:37 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- l9-20020a05600c4f0900b003dff870ce0esm5859047wmq.2.2023.02.16.04.25.30
+ a9-20020a5d5709000000b002c59e001631sm206448wrv.77.2023.02.16.04.25.36
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 16 Feb 2023 04:25:31 -0800 (PST)
+ Thu, 16 Feb 2023 04:25:37 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>, Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>
-Subject: [PATCH 1/5] hw/nmi: Have nmi_monitor_handler() return a boolean
- indicating error
-Date: Thu, 16 Feb 2023 13:25:20 +0100
-Message-Id: <20230216122524.67212-2-philmd@linaro.org>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>
+Subject: [PATCH 2/5] spapr/ddw: Remove confuse return value in
+ spapr_phb_get_free_liobn()
+Date: Thu, 16 Feb 2023 13:25:21 +0100
+Message-Id: <20230216122524.67212-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230216122524.67212-1-philmd@linaro.org>
 References: <20230216122524.67212-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -137,211 +126,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8OzvTZqGHFfn
+X-TUID: beVPKpnlzZlf
 
-Following the example documented since commit e3fe3988d7 ("error:
-Document Error API usage rules"), have the nmi_monitor_handler
-return a boolean indicating whether an error is set or not and
-convert its implementations.
+The '1' returned value isn't used because
+spapr_phb_get_free_liobn_cb() isn't called recursively
+(it is only called once in spapr_phb_get_free_liobn()).
+
+The next commit will convert object_child_foreach()
+handlers to return a boolean indicating error.
+Remove this value to avoid confusion.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/core/nmi.c              | 3 +--
- hw/hppa/machine.c          | 3 ++-
- hw/i386/x86.c              | 3 ++-
- hw/intc/m68k_irqc.c        | 4 +++-
- hw/m68k/q800.c             | 4 +++-
- hw/misc/macio/gpio.c       | 4 +++-
- hw/ppc/pnv.c               | 3 ++-
- hw/ppc/spapr.c             | 3 ++-
- hw/s390x/s390-virtio-ccw.c | 4 +++-
- include/hw/nmi.h           | 3 ++-
- 10 files changed, 23 insertions(+), 11 deletions(-)
+ hw/ppc/spapr_rtas_ddw.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/core/nmi.c b/hw/core/nmi.c
-index 481c4b3c7e..76cb3ba3b0 100644
---- a/hw/core/nmi.c
-+++ b/hw/core/nmi.c
-@@ -43,8 +43,7 @@ static int do_nmi(Object *o, void *opaque)
-         NMIClass *nc = NMI_GET_CLASS(n);
- 
-         ns->handled = true;
--        nc->nmi_monitor_handler(n, ns->cpu_index, &ns->err);
--        if (ns->err) {
-+        if (!nc->nmi_monitor_handler(n, ns->cpu_index, &ns->err)) {
-             return -1;
-         }
+diff --git a/hw/ppc/spapr_rtas_ddw.c b/hw/ppc/spapr_rtas_ddw.c
+index 7ba11382bc..98f1310c6e 100644
+--- a/hw/ppc/spapr_rtas_ddw.c
++++ b/hw/ppc/spapr_rtas_ddw.c
+@@ -51,7 +51,6 @@ static int spapr_phb_get_free_liobn_cb(Object *child, void *opaque)
+     tcet = (SpaprTceTable *) object_dynamic_cast(child, TYPE_SPAPR_TCE_TABLE);
+     if (tcet && !tcet->nb_table) {
+         *(uint32_t *)opaque = tcet->liobn;
+-        return 1;
      }
-diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-index 7ac68c943f..da7c36c554 100644
---- a/hw/hppa/machine.c
-+++ b/hw/hppa/machine.c
-@@ -437,13 +437,14 @@ static void hppa_machine_reset(MachineState *ms, ShutdownCause reason)
-     cpu[0]->env.gr[19] = FW_CFG_IO_BASE;
+     return 0;
  }
- 
--static void hppa_nmi(NMIState *n, int cpu_index, Error **errp)
-+static bool hppa_nmi(NMIState *n, int cpu_index, Error **errp)
- {
-     CPUState *cs;
- 
-     CPU_FOREACH(cs) {
-         cpu_interrupt(cs, CPU_INTERRUPT_NMI);
-     }
-+    return true;
- }
- 
- static void hppa_machine_init_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index eaff4227bd..8bd0691705 100644
---- a/hw/i386/x86.c
-+++ b/hw/i386/x86.c
-@@ -501,7 +501,7 @@ const CPUArchIdList *x86_possible_cpu_arch_ids(MachineState *ms)
-     return ms->possible_cpus;
- }
- 
--static void x86_nmi(NMIState *n, int cpu_index, Error **errp)
-+static bool x86_nmi(NMIState *n, int cpu_index, Error **errp)
- {
-     /* cpu index isn't used */
-     CPUState *cs;
-@@ -515,6 +515,7 @@ static void x86_nmi(NMIState *n, int cpu_index, Error **errp)
-             apic_deliver_nmi(cpu->apic_state);
-         }
-     }
-+    return true;
- }
- 
- static long get_file_size(FILE *f)
-diff --git a/hw/intc/m68k_irqc.c b/hw/intc/m68k_irqc.c
-index 0c515e4ecb..e05083e756 100644
---- a/hw/intc/m68k_irqc.c
-+++ b/hw/intc/m68k_irqc.c
-@@ -70,9 +70,11 @@ static void m68k_irqc_instance_init(Object *obj)
-     qdev_init_gpio_in(DEVICE(obj), m68k_set_irq, M68K_IRQC_LEVEL_NUM);
- }
- 
--static void m68k_nmi(NMIState *n, int cpu_index, Error **errp)
-+static bool m68k_nmi(NMIState *n, int cpu_index, Error **errp)
- {
-     m68k_set_irq(n, M68K_IRQC_LEVEL_7, 1);
-+
-+    return true;
- }
- 
- static const VMStateDescription vmstate_m68k_irqc = {
-diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
-index 9d52ca6613..8631a226cd 100644
---- a/hw/m68k/q800.c
-+++ b/hw/m68k/q800.c
-@@ -227,13 +227,15 @@ static void glue_auxmode_set_irq(void *opaque, int irq, int level)
-     s->auxmode = level;
- }
- 
--static void glue_nmi(NMIState *n, int cpu_index, Error **errp)
-+static bool glue_nmi(NMIState *n, int cpu_index, Error **errp)
- {
-     GLUEState *s = GLUE(n);
- 
-     /* Hold NMI active for 100ms */
-     GLUE_set_irq(s, GLUE_IRQ_IN_NMI, 1);
-     timer_mod(s->nmi_release, qemu_clock_get_ms(QEMU_CLOCK_VIRTUAL) + 100);
-+
-+    return true;
- }
- 
- static void glue_nmi_release(void *opaque)
-diff --git a/hw/misc/macio/gpio.c b/hw/misc/macio/gpio.c
-index c8ac5633b2..0a7214421c 100644
---- a/hw/misc/macio/gpio.c
-+++ b/hw/misc/macio/gpio.c
-@@ -182,10 +182,12 @@ static void macio_gpio_reset(DeviceState *dev)
-     macio_set_gpio(s, 1, true);
- }
- 
--static void macio_gpio_nmi(NMIState *n, int cpu_index, Error **errp)
-+static bool macio_gpio_nmi(NMIState *n, int cpu_index, Error **errp)
- {
-     macio_set_gpio(MACIO_GPIO(n), 9, true);
-     macio_set_gpio(MACIO_GPIO(n), 9, false);
-+
-+    return true;
- }
- 
- static void macio_gpio_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index 44b1fbbc93..38e69f3b39 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -2309,13 +2309,14 @@ static void pnv_cpu_do_nmi_on_cpu(CPUState *cs, run_on_cpu_data arg)
-     }
- }
- 
--static void pnv_nmi(NMIState *n, int cpu_index, Error **errp)
-+static bool pnv_nmi(NMIState *n, int cpu_index, Error **errp)
- {
-     CPUState *cs;
- 
-     CPU_FOREACH(cs) {
-         async_run_on_cpu(cs, pnv_cpu_do_nmi_on_cpu, RUN_ON_CPU_NULL);
-     }
-+    return true;
- }
- 
- static void pnv_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 4921198b9d..d298068169 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3464,13 +3464,14 @@ void spapr_do_system_reset_on_cpu(CPUState *cs, run_on_cpu_data arg)
-     }
- }
- 
--static void spapr_nmi(NMIState *n, int cpu_index, Error **errp)
-+static bool spapr_nmi(NMIState *n, int cpu_index, Error **errp)
- {
-     CPUState *cs;
- 
-     CPU_FOREACH(cs) {
-         async_run_on_cpu(cs, spapr_do_system_reset_on_cpu, RUN_ON_CPU_NULL);
-     }
-+    return true;
- }
- 
- int spapr_lmb_dt_populate(SpaprDrc *drc, SpaprMachineState *spapr,
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index f22f61b8b6..af7e6c632a 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -570,11 +570,13 @@ static HotplugHandler *s390_get_hotplug_handler(MachineState *machine,
-     return NULL;
- }
- 
--static void s390_nmi(NMIState *n, int cpu_index, Error **errp)
-+static bool s390_nmi(NMIState *n, int cpu_index, Error **errp)
- {
-     CPUState *cs = qemu_get_cpu(cpu_index);
- 
-     s390_cpu_restart(S390_CPU(cs));
-+
-+    return true;
- }
- 
- static ram_addr_t s390_fixup_ram_size(ram_addr_t sz)
-diff --git a/include/hw/nmi.h b/include/hw/nmi.h
-index fff41bebc6..3e827a254a 100644
---- a/include/hw/nmi.h
-+++ b/include/hw/nmi.h
-@@ -37,7 +37,8 @@ typedef struct NMIState NMIState;
- struct NMIClass {
-     InterfaceClass parent_class;
- 
--    void (*nmi_monitor_handler)(NMIState *n, int cpu_index, Error **errp);
-+    /** Returns: %true on success, %false on error. */
-+    bool (*nmi_monitor_handler)(NMIState *n, int cpu_index, Error **errp);
- };
- 
- void nmi_monitor_handle(int cpu_index, Error **errp);
 -- 
 2.38.1
 

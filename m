@@ -1,105 +1,134 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp580579ejb;
-        Thu, 16 Feb 2023 07:05:11 -0800 (PST)
-X-Google-Smtp-Source: AK7set9G8W5YZB2BkLh0oaqsueIb1IXmetL9yhhULimwzQ2mLudvdMwzNNrSfxcE0BCJ9BQuhPdS
-X-Received: by 2002:ac8:7f4d:0:b0:3ba:18e2:7de8 with SMTP id g13-20020ac87f4d000000b003ba18e27de8mr10383397qtk.38.1676559911231;
-        Thu, 16 Feb 2023 07:05:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676559911; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp676938ejb;
+        Thu, 16 Feb 2023 08:51:43 -0800 (PST)
+X-Google-Smtp-Source: AK7set8n2GIXU8Ny2hf8rhL9/1zra7EuQ05CkGWY0UNxAd7RcMJ9qmoKTxV4rz2qNQNXh4chD2MO
+X-Received: by 2002:a5d:5191:0:b0:2c5:a6c4:7fd3 with SMTP id k17-20020a5d5191000000b002c5a6c47fd3mr217387wrv.8.1676566302997;
+        Thu, 16 Feb 2023 08:51:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676566302; cv=none;
         d=google.com; s=arc-20160816;
-        b=f8TnVG5Pb2KNPjywpjAGZJId+nJVcGDvA2LTM6H1+JzyAFodrDcJhZv6mxYmUp48a+
-         iIOwOeMa43BDaPukWL+DWYac9n0uDm/P6K1p3+sWGVbrvdC8AzBP6RxrvjvfRkK0/w/9
-         ki4XbU8YFCygY/sWh4J1AQ2rJcK1FEnvkYqef/NVb1dl2iMphTt9nlkjsXhH1Ah8ETYY
-         ZTallVDoFXyer1XsYrpDbkr/b9Pf2jY1NHqFnQt7MAErOw7Qz7qWI+izd0sJ1QW+Wgx7
-         7+H5XBsnpRgwDZnNPk4at5TKUbslsLv7RczRZA7LKqN1Scd3sGZEMM02GMLEP7vzjQew
-         S5JQ==
+        b=1GFMZDo/GWnXObwZQp6ViUqd5NAMzOa+oYqGKOv5HlimMEt9ih15QrMmfWhDFirjsv
+         S+Q3uOo3PVR728NvJxJ79X3mKT/HcoDGbKdgbNTJSchglD60M88a4q7pkwH8sKxpc/5I
+         GQvazwbJ1x4ub6ffkdydV4f/kLkEfpIOtRwG1UXSKXOXJ9gujFkN7aev3ZaMid3lFNdX
+         27hjECrPgzaJei0dsdCHrvKdB68EbmrZ+nkybvYoIiuadZZ3Sij9i/SOzIOylxtwx13Q
+         5NWM0zNPnUFv57XuiD8WsmFCg3T7+/Giq6Ghc6VnaA02jaZywDKzF5fLznrLbays3A0e
+         um6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=vdnqnv11/k8IPNC5YHenEjTBuU30ug4qQLofMMWs+jE=;
-        b=LRj54z+UPlNNHhKD7sikh3RdxGPmHJnPXtXU2n1p0mKGgt7Wp8yzIGk//mYuUDQJyM
-         oZe8JcqFde01iIvOPSLhaexpniqhKCdcJXjW9A0EmAymYdUyXVxhj8f23D1hfiSpd0/u
-         CK1fXqwSG14BDc8czjsidLU46zrxQSi9Ew6xzgUE6OePiZSL5lj7CYyo+Ruq1weBsBRX
-         2Y3vazLkcdbvsXhHaCJ4rO1upX1saQ6NZ0ou1mwuEJZKlx6PasbJGPWU5hpWKjEuuS/p
-         pLGxC8wjuIKy/kRX57npVm/RX96cuitIPKu58MIW2P2SCtqTxYUnM5jHR12ucd1HjA3y
-         fWhA==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=n8KsWrEz7/lDVeWmi5VtQequBjBFbkqoGjfsEL1wfrY=;
+        b=N2o20s8Fix929pchT7EaP39ulGPip37cgKm4DrDXMk2m1wU70+I72HR+cafMLZ3OuG
+         E7gbCnIOFg68PJGjz5lkRTtNYGq4y+A0uoUnaR4UcbhBT+mPkKlwUFtLTGdnUxIilk2l
+         yTLsbE42EoOffjs/f/8p1AowfnTdB2hrsfbgV5Hz2LcYK6ZU0eJu9C1pUxvx6ebPjssP
+         1Ufa9Uz7YmKjo7NF7FYhC1Py4o+3ADlRCG1rseLsbS5fPUhx6CdL3FU5l5i6REl6dBig
+         XMlGG7SbD4wFriVLilWflIJrPXFfe/i6CEPgGoxZzLEn471C9wk4yLWxGzT3QPWh8kEN
+         OWRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IznZ5xYa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RL9hMimX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s64-20020a372c43000000b0073b7761b271si1375395qkh.724.2023.02.16.07.05.11
+        by mx.google.com with ESMTPS id c3-20020adfef43000000b002c54dbb8a0asi2057516wrp.48.2023.02.16.08.51.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 07:05:11 -0800 (PST)
+        Thu, 16 Feb 2023 08:51:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IznZ5xYa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RL9hMimX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSfoH-0000xo-FA; Thu, 16 Feb 2023 10:04:33 -0500
+	id 1pShTS-0001Ti-5K; Thu, 16 Feb 2023 11:51:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
- id 1pSfoF-0000wG-7s; Thu, 16 Feb 2023 10:04:31 -0500
-Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
- id 1pSfoB-0001W4-Ru; Thu, 16 Feb 2023 10:04:29 -0500
-Received: by mail-vs1-xe2f.google.com with SMTP id k6so2211385vsk.1;
- Thu, 16 Feb 2023 07:04:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=vdnqnv11/k8IPNC5YHenEjTBuU30ug4qQLofMMWs+jE=;
- b=IznZ5xYazWUcW3EkQxZ0rFBi2jo1Bllss/FtI+KFg83PeVer0tDUxP00ZOlxMoqPay
- SGWLetr6OnNz1zt0vnLv0KRqqr/aC4BHNlpn87PCjmIkcWTgH/6BEDLfHiR3cD0clMtZ
- pJ/8SkHKmL9DVf54Aky8tckwMDUAuqMo/3QWNtPe2BzKF8qlpTerN73tvh0U5ikEFSDq
- Fc7LMxbpXRWRWES5JUGf+Ct65ewFwjXVW/QTeisgDViRhSI/LAEmnfSeikJQR0WJQ40/
- Pf+JBvEfBDlGdkQrHCcgTRmJZD5INKO6qxgQkhROqJGj+FiG221OTFem6EvYt6WntnK9
- 9+wg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1pShTQ-0001Rv-LP
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 11:51:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1pShTM-0005ji-Ck
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 11:51:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1676566263;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=n8KsWrEz7/lDVeWmi5VtQequBjBFbkqoGjfsEL1wfrY=;
+ b=RL9hMimXSFI5/JEfafK9IvXWfsZcceH/v6wLrQnc+ymiLUJi0bFuryU0gm9SSB7pc4NKtH
+ 7UoOUQdDy01A7RlGjvo+FEfSffNI6AKekxIp6FbCAO/5mslxfrPEovmTIEj/0DW77/eZt9
+ Kx062dT14wKol24cT5n9CdhZUI/VGOs=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-379-2scsZi74NEGpDT2Sha1wOA-1; Thu, 16 Feb 2023 11:51:01 -0500
+X-MC-Unique: 2scsZi74NEGpDT2Sha1wOA-1
+Received: by mail-qv1-f72.google.com with SMTP id
+ gu10-20020a056214260a00b0056c2005684aso1385418qvb.23
+ for <qemu-arm@nongnu.org>; Thu, 16 Feb 2023 08:51:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=vdnqnv11/k8IPNC5YHenEjTBuU30ug4qQLofMMWs+jE=;
- b=fY7yR5RHxxveJqbhDTISzpnPPJavyW4fnDihGFYjicTIkELFPzDf/6TRfUoM57SMwh
- H0fgXFVZpDFByD5eCBmsP/uZhInjYs9m7tYmfsuxWMKgyYbixU598uqJa3LJyomgXCM+
- OgphHXQUVDCOAGRHM6l2Ml5Hpn9YEsfepexURH0y2mEp38EBi6W2XcGxL/aXJOivkCJb
- w8f/htUwRbFklRBYPSAz5r8sTRPdOxuGXXLk9X9S8yQ9TWQZxdWF4ytGLuk8jvSLuJXF
- KK6x4V0BgIH0Sr54zkPguJ8r/bRhCq+cnB23v5fRWkChvmf2EdcnRt6kxSDr9qUZDo+G
- xTlg==
-X-Gm-Message-State: AO0yUKVHqQeg0AXvPiWmPaPwSnZKZX4YXeoXwGoWFwhwtld/gr+cwleJ
- FHF1cy+IQuNuB+6PfeWT122GWGZX7yFvLAyTDfE=
-X-Received: by 2002:a05:6102:2751:b0:3fe:b46c:7889 with SMTP id
- p17-20020a056102275100b003feb46c7889mr1034233vsu.78.1676559866202; Thu, 16
- Feb 2023 07:04:26 -0800 (PST)
+ bh=n8KsWrEz7/lDVeWmi5VtQequBjBFbkqoGjfsEL1wfrY=;
+ b=375dy4aruJO2PzKLALFFVBSMH0ryXr85ZfQe8d7VLxbIGG5yXez//5kDDFp/n6ZzYY
+ SwHU0tzXwsBUrEnoL3pU8gGb+s9g7+QC8fqC0nb6P3HctfkQHerNcYBHc+UBWfvXK//3
+ 5cFKfHwPkqqy4XpoRi0rRRTX5bLjBBJEwQ+7UFAXl5obg4NAWMwrTgY0aYhE5crQ2YFV
+ UJREcglHp/sbCi4e3xOBveeh9i14x9ToBcgsSSlfI2mnU7pbB++TBjpy/2BsWPyWZSn0
+ tLR4D9Iiy6WC5+R2NrSyvziLSv+uTe3x7T9EnzrBqEu9SCWdlR0fENQYiGtuU1zKR2q0
+ JM7w==
+X-Gm-Message-State: AO0yUKUtd3zIWQhBBlaeQnJKhgQVIblFFjBJvxBMGq2otnUruY9gCe8L
+ mI++jdXZaJpbhJYiNKH8XFJJlwxO+FYDqqmaT8fe5X5OPyxKzYdG1ObrLXnidmDT9JIKiU+UV9e
+ METugxoGoUINC
+X-Received: by 2002:a05:622a:1911:b0:3b9:bf43:fccd with SMTP id
+ w17-20020a05622a191100b003b9bf43fccdmr11300125qtc.10.1676566261449; 
+ Thu, 16 Feb 2023 08:51:01 -0800 (PST)
+X-Received: by 2002:a05:622a:1911:b0:3b9:bf43:fccd with SMTP id
+ w17-20020a05622a191100b003b9bf43fccdmr11300104qtc.10.1676566261180; 
+ Thu, 16 Feb 2023 08:51:01 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ d17-20020ac800d1000000b003b9b8ec742csm1560040qtg.14.2023.02.16.08.50.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 16 Feb 2023 08:51:00 -0800 (PST)
+Message-ID: <bb8081f2-d816-c198-02cf-cf00d3b54fcd@redhat.com>
+Date: Thu, 16 Feb 2023 17:50:58 +0100
 MIME-Version: 1.0
-References: <20230216133326.216017-1-pkarthikeyan1509@gmail.com>
- <2e46db2f-d48b-bc6e-85d8-1fa80ef4082c@linaro.org>
-In-Reply-To: <2e46db2f-d48b-bc6e-85d8-1fa80ef4082c@linaro.org>
-From: karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-Date: Thu, 16 Feb 2023 20:34:13 +0530
-Message-ID: <CA+ezb7hfKoaa6wQDQZpipzjOcJx9vWTXLT6cfOu7agG1iMD4SA@mail.gmail.com>
-Subject: Re: [PATCH v3] Adding new machine Yosemitev2 in QEMU
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000450da705f4d2836f"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e2f;
- envelope-from=pkarthikeyan1509@gmail.com; helo=mail-vs1-xe2f.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.1
+Subject: Re: [RFC PATCH 05/16] hw/arm/smmuv3: Add page table walk for stage-2
+To: Mostafa Saleh <smostafa@google.com>
+Cc: qemu-devel@nongnu.org, jean-philippe@linaro.org,
+ peter.maydell@linaro.org, qemu-arm@nongnu.org
+References: <20230205094411.793816-1-smostafa@google.com>
+ <20230205094411.793816-6-smostafa@google.com>
+ <4e248ff8-3032-0697-d50c-d3b62b072a82@redhat.com>
+ <Y+4rDVGJdhnN+p9z@google.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <Y+4rDVGJdhnN+p9z@google.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.351, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,123 +141,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QwTZoTjrIJvu
+X-TUID: 1dfjQdPFsjKN
 
---000000000000450da705f4d2836f
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Ok, thanks.
 
-On Thu, Feb 16, 2023 at 7:57 PM Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
-org>
-wrote:
+On 2/16/23 14:09, Mostafa Saleh wrote:
+> Hi Eric,
+>
+> On Wed, Feb 15, 2023 at 05:52:39PM +0100, Eric Auger wrote:
+>>> In preparation for adding stage-2 support. Add Stage-2 PTW code.
+>>> Only Aarch64 fromat is supported as stage-1.
+>> format
+> I will update it.
+>
+>>> +        uint64_t subpage_size = 1ULL << level_shift(level, granule_sz);
+>>> +        uint64_t mask = subpage_size - 1;
+>>> +        uint32_t offset = iova_level_offset(iova, inputsize, level, granule_sz);
+>>> +        uint64_t pte, gpa;
+>>> +        dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
+>>> +        uint8_t ap;
+>>> +
+>>> +        if (get_pte(baseaddr, offset, &pte, info)) {
+>>> +                goto error;
+>>> +        }
+>>> +        trace_smmu_ptw_level(level, iova, subpage_size,
+>>> +                             baseaddr, offset, pte);
+>> I can the trace point names should be updated as well (and
+>> differentiated between S1/S2)
+> I was thinking we could leave those with stage argument, and only
+> update trace_smmu_ptw_level to have stage argument as the others.
+yes as far as the stage is properly populated that's fine.
+>
+>>> +        if (is_permission_fault_s2(ap, perm)) {
+>>> +            info->type = SMMU_PTW_ERR_PERMISSION;
+>> don't we have to different S1 versus S2 faults?
+> Yes, I missed that, I see setting info->u.f_walk_eabt.s2 should be
+> enough, this will set the S2 field in the fault event.
+>
+>>>  int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+>>>               SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+>>>  {
+>>> -    if (!cfg->aa64) {
+>>> -        /*
+>>> -         * This code path is not entered as we check this while decoding
+>>> -         * the configuration data in the derived SMMU model.
+>>> -         */
+>>> -        g_assert_not_reached();
+>> if that's still true for S2, maybe keep that check here upfront?
+> Stage-2 is checked in STE parsing and throws BAD_STE if not aa64,
+> which I believe is not correct, however I think we can just call
+> g_assert_not_reached() during STE parsing, I don’t see added value for
+> saving this field in SMMUTransCfg if we don’t use it.
+I agree. I guess we provisionned for this field in the prospect of
+completing the emulation but I don't think we care.
+> I am not sure why this check exists for stage-1 as it is hardcoded in
+> decode_cd anyway.
+>
+>>> +{
+>>> +    uint64_t ret;
+>>> +    /*
+>>> +     * Get the number of bits handled by next levels, then any extra bits in
+>>> +     * the address should index the concatenated tables. This relation can
+>>> +     * deduced from tables in ARM ARM: D8.2.7-9
+>>> +     */
+>>> +    int shift = (SMMU_MAX_LEVELS - start_level) * (granule - 3) + granule;
+>> can't we factorize anything with the S1 PTW?
+>> indexmask = (1ULL << (inputsize - (stride * (4 - level)))) - 1;
+> Yes, I think we can refactor some of these in common functions/macros, I
+> will do that in v2.
+I guess that's a trade-off between beeing close enough to the spec and
+maybe its pseudo-code and having both S1/S2 codes looking similar.
 
-> On 16/2/23 14:33, Karthikeyan Pasupathi wrote:
-> > This patch support Yosemitev2 in QEMU environment.
-> > and introduced EEPROM BMC FRU data support "add fbyv2_bmc_fruid data"
-> > along with the machine support.
-> >
-> >
-> > Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-> > ---
-> >   hw/arm/aspeed.c        | 31 +++++++++++++++++++++++++++++++
-> >   hw/arm/aspeed_eeprom.c | 23 +++++++++++++++++++++++
-> >   hw/arm/aspeed_eeprom.h |  3 +++
-> >   3 files changed, 57 insertions(+)
+Eric
 >
-> > +static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, void
-> *data)
-> > +{
-> > +    MachineClass *mc =3D MACHINE_CLASS(oc);
-> > +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-> > +
-> > +    mc->desc       =3D "Facebook YosemiteV2 BMC (ARM1176)";
-> > +    amc->soc_name  =3D "ast2500-a1";
-> > +    amc->hw_strap1 =3D AST2500_EVB_HW_STRAP1;
-> > +    amc->hw_strap2 =3D 0;
-> > +    amc->fmc_model =3D "n25q256a";
-> > +    amc->spi_model =3D "mx25l25635e";
-> > +    amc->num_cs    =3D 2;
-> > +    amc->i2c_init  =3D yosemitev2_bmc_i2c_init;
-> > +    mc->default_ram_size       =3D 512 * MiB;
 >
-> Odd indentation
+>>> @@ -28,6 +28,7 @@
+>>>  #define SMMU_PCI_DEVFN(sid)   (sid & 0xFF)
+>>>  
+>>>  #define SMMU_MAX_VA_BITS      48
+>>> +#define SMMU_MAX_LEVELS       4
+>> can't this be reused as well with S1 PTW?
+> I believe yes, I will update it.
 >
-> > +    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
-> > +        aspeed_soc_num_cpus(amc->soc_name);
->
-> Here too. What about:
->
->         mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus
->                          =3D aspeed_soc_num_cpus(amc->soc_name);
->
-> I suppose C=C3=A9dric can fix when applying, no need for v4.
->
+> Thanks,
+> Mostafa
 >
 
---000000000000450da705f4d2836f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Ok, thanks. <br></div><br><div class=3D"gmail_quote"><div =
-dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb 16, 2023 at 7:57 PM Philippe M=
-athieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">philmd@linaro.or=
-g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->On 16/2/23 14:33, Karthikeyan Pasupathi wrote:<br>
-&gt; This patch support Yosemitev2 in QEMU environment.<br>
-&gt; and introduced EEPROM BMC FRU data support &quot;add fbyv2_bmc_fruid d=
-ata&quot;<br>
-&gt; along with the machine support.<br>
-&gt; <br>
-&gt; <br>
-&gt; Signed-off-by: Karthikeyan Pasupathi &lt;<a href=3D"mailto:pkarthikeya=
-n1509@gmail.com" target=3D"_blank">pkarthikeyan1509@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0hw/arm/aspeed.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 31 ++++++++++=
-+++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A0hw/arm/aspeed_eeprom.c | 23 +++++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A0hw/arm/aspeed_eeprom.h |=C2=A0 3 +++<br>
-&gt;=C2=A0 =C2=A03 files changed, 57 insertions(+)<br>
-<br>
-&gt; +static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, voi=
-d *data)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);<br>
-&gt; +=C2=A0 =C2=A0 AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);<b=
-r>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 mc-&gt;desc=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D &quot;Faceboo=
-k YosemiteV2 BMC (ARM1176)&quot;;<br>
-&gt; +=C2=A0 =C2=A0 amc-&gt;soc_name=C2=A0 =3D &quot;ast2500-a1&quot;;<br>
-&gt; +=C2=A0 =C2=A0 amc-&gt;hw_strap1 =3D AST2500_EVB_HW_STRAP1;<br>
-&gt; +=C2=A0 =C2=A0 amc-&gt;hw_strap2 =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 amc-&gt;fmc_model =3D &quot;n25q256a&quot;;<br>
-&gt; +=C2=A0 =C2=A0 amc-&gt;spi_model =3D &quot;mx25l25635e&quot;;<br>
-&gt; +=C2=A0 =C2=A0 amc-&gt;num_cs=C2=A0 =C2=A0 =3D 2;<br>
-&gt; +=C2=A0 =C2=A0 amc-&gt;i2c_init=C2=A0 =3D yosemitev2_bmc_i2c_init;<br>
-&gt; +=C2=A0 =C2=A0 mc-&gt;default_ram_size=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 5=
-12 * MiB;<br>
-<br>
-Odd indentation<br>
-<br>
-&gt; +=C2=A0 =C2=A0 mc-&gt;default_cpus =3D mc-&gt;min_cpus =3D mc-&gt;max_=
-cpus =3D<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 aspeed_soc_num_cpus(amc-&gt;soc_name);<br=
->
-<br>
-Here too. What about:<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 mc-&gt;default_cpus =3D mc-&gt;min_cpus =3D mc-=
-&gt;max_cpus<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0=3D aspeed_soc_num_cpus(amc-&gt;soc_name);<br>
-<br>
-I suppose C=C3=A9dric can fix when applying, no need for v4.<br>
-<br>
-</blockquote></div>
-
---000000000000450da705f4d2836f--

@@ -1,174 +1,106 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp544937ejb;
-        Thu, 16 Feb 2023 06:29:57 -0800 (PST)
-X-Google-Smtp-Source: AK7set/Boscdm6bTjxgBEGmOm4bxuScCvdSunAwfHp02Hb6QnHFaM8DM/T+c1MARmKdfmRDq6Hz7
-X-Received: by 2002:ac8:660f:0:b0:3ba:13dd:f255 with SMTP id c15-20020ac8660f000000b003ba13ddf255mr7100816qtp.59.1676557796881;
-        Thu, 16 Feb 2023 06:29:56 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1676557796; cv=pass;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp580579ejb;
+        Thu, 16 Feb 2023 07:05:11 -0800 (PST)
+X-Google-Smtp-Source: AK7set9G8W5YZB2BkLh0oaqsueIb1IXmetL9yhhULimwzQ2mLudvdMwzNNrSfxcE0BCJ9BQuhPdS
+X-Received: by 2002:ac8:7f4d:0:b0:3ba:18e2:7de8 with SMTP id g13-20020ac87f4d000000b003ba18e27de8mr10383397qtk.38.1676559911231;
+        Thu, 16 Feb 2023 07:05:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676559911; cv=none;
         d=google.com; s=arc-20160816;
-        b=Au/FjQsz+/+PL35P7u8uvPUa9kshHuWW5RSLWcupqaXdXxl1848cwOzOpF61pNREob
-         75exKij1KCmMV8hj8VncIH55e4UZiRb58UaMOsatA5zqVk/iPzf8CUxSJ5h0R8o+Qs6E
-         5jcc3whs/snRDh2rvD94ZHlx0xRIWbxMOfWoSU6OjJDhS8a8u7iaH0jWzZspARYU4pID
-         axBeRRK6/ns+uuoMLceJrMz3ZiLI/6XdOs9/LBvANxo44R+lWMKB59SeuPS7Srlg1s8v
-         ZxUP7RLGs6EAUunSZoJgBJH6VYHnrkA/GDSnTfzMhkoegs5JpvUjM/Dt29ShPk6QkHzh
-         +gUw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=f8TnVG5Pb2KNPjywpjAGZJId+nJVcGDvA2LTM6H1+JzyAFodrDcJhZv6mxYmUp48a+
+         iIOwOeMa43BDaPukWL+DWYac9n0uDm/P6K1p3+sWGVbrvdC8AzBP6RxrvjvfRkK0/w/9
+         ki4XbU8YFCygY/sWh4J1AQ2rJcK1FEnvkYqef/NVb1dl2iMphTt9nlkjsXhH1Ah8ETYY
+         ZTallVDoFXyer1XsYrpDbkr/b9Pf2jY1NHqFnQt7MAErOw7Qz7qWI+izd0sJ1QW+Wgx7
+         7+H5XBsnpRgwDZnNPk4at5TKUbslsLv7RczRZA7LKqN1Scd3sGZEMM02GMLEP7vzjQew
+         S5JQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:date:message-id:dkim-signature;
-        bh=/V4rGUcOKG3ErsOoVgyZ/Qyb+zzMNlF7eWUfjoZpYo0=;
-        b=zZwjcoouGvONgzo4AEohMn8+qyvRhzrt5QHO05G9p3aiL8q2Wj3AFsayJfwDU7+Pey
-         kpHYJ1ho9XCRM1JNERNVbvMZ8L76lO1IFxiZ08RpZIaBBxaNVGoBX2zsh3fFTVOu298n
-         Q5mZrflccS+pITpZEqVKj184ohz/lC1DUZ0Dw3m0R+F+ADwB8f80WdCIfGZA6cRRO8Z/
-         Eu4mWlPaRy10JZbxugfkz2IQqQFHKc1lJP5sbUgkeV8osclfqEA7izlzPXCg4Av+XLgp
-         AWAwz9Bet4OLqnytqujI8hP7S43H0LJJ1taqsAEtNtyzssTJd/LbCGDrA2c2QGXX9X13
-         TwYQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=nfiddxqZ;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=vdnqnv11/k8IPNC5YHenEjTBuU30ug4qQLofMMWs+jE=;
+        b=LRj54z+UPlNNHhKD7sikh3RdxGPmHJnPXtXU2n1p0mKGgt7Wp8yzIGk//mYuUDQJyM
+         oZe8JcqFde01iIvOPSLhaexpniqhKCdcJXjW9A0EmAymYdUyXVxhj8f23D1hfiSpd0/u
+         CK1fXqwSG14BDc8czjsidLU46zrxQSi9Ew6xzgUE6OePiZSL5lj7CYyo+Ruq1weBsBRX
+         2Y3vazLkcdbvsXhHaCJ4rO1upX1saQ6NZ0ou1mwuEJZKlx6PasbJGPWU5hpWKjEuuS/p
+         pLGxC8wjuIKy/kRX57npVm/RX96cuitIPKu58MIW2P2SCtqTxYUnM5jHR12ucd1HjA3y
+         fWhA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IznZ5xYa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o24-20020a05620a229800b0073b795b03desi1411087qkh.669.2023.02.16.06.29.56
+        by mx.google.com with ESMTPS id s64-20020a372c43000000b0073b7761b271si1375395qkh.724.2023.02.16.07.05.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 06:29:56 -0800 (PST)
+        Thu, 16 Feb 2023 07:05:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=nfiddxqZ;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IznZ5xYa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSfGU-0006Db-Jn; Thu, 16 Feb 2023 09:29:38 -0500
+	id 1pSfoH-0000xo-FA; Thu, 16 Feb 2023 10:04:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
- id 1pSaYV-00005L-0p; Thu, 16 Feb 2023 04:27:55 -0500
-Received: from mail-co1nam11on20614.outbound.protection.outlook.com
- ([2a01:111:f400:7eab::614]
- helo=NAM11-CO1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
- id 1pSaYS-0007iQ-Qf; Thu, 16 Feb 2023 04:27:54 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Cam5RRPJ8iJXppJk4sn5257NsorAdKrmlJIEwo9/UsqMrKsvQIwmvqQAZyXJth6CDKYj120QOHQgG546/0HawHAdEKQgJMyAR5YPXJn2Hb3vENj6jCXL6y2umEiyn2sfwPn0Tv5I9Rx26aKz4Qpus7fIcQiWFX6wAN9focoOwcDkVS/E5bfUkaEqdw6O1K1R4WEYvq+MQ22USFUfQH8z/JKiLMgftMJin3cSozumbQkXqTTfMjKfF70OglY7uNtzWT4DF5TW9MIuKLMOJFf7Vb693vHWplfrxjGBQTuuSxwrm5EvTaP4DVvFnlfwq5Qk0CwAHDia5fUBXlimdty2Bg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/V4rGUcOKG3ErsOoVgyZ/Qyb+zzMNlF7eWUfjoZpYo0=;
- b=QpBfTtTdWh6cghfS2X2Ol9tExgZNErzO4NIvWMVptjdJlD9jv088zErrilSsk/4fXf6j4H60lU4srxR7fEn88kY0YlDtfYjDtVLrjt646qZ/CHqbKL8TlAJG9Njy04dbZD1dco9XUQE8WWmDJ2RnzrYFbnh7fgRwSCvvZILAZxBIGJd5AEAFCvJAb04jd73c6xJhNXNsE1deuyAte69YRDeDKMvUKMdds47D9BwmUUepYDEw5estmXE9sgV+ruehZ6B7Ucfcyv9Z9pqA/tMjQ9gM0hEgSNSdq1QfU0JmMV/P5S5Yv3PXNGKJe3XWxDLgWr2d8VZbNTwkyzkMg+1cfA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/V4rGUcOKG3ErsOoVgyZ/Qyb+zzMNlF7eWUfjoZpYo0=;
- b=nfiddxqZ3TEK/ene0PB5JDBX6UfqmnVfWf8Yh0BUcMNys7pUNdSxeT4FNyOSvLucRR9a5O5OvOMs2kr2joTMKLmdAu0Jdmz4Oqc0PL+6PgG4ycvzFljAb4/MVEOgiUMM3Tl+jmpRNERjSULfK8w/QnUSMaA46Dxbh+Iv+e6Ky9I=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from DM5PR12MB1130.namprd12.prod.outlook.com (2603:10b6:3:75::19) by
- DM4PR12MB6495.namprd12.prod.outlook.com (2603:10b6:8:bc::19) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6086.26; Thu, 16 Feb 2023 09:27:46 +0000
-Received: from DM5PR12MB1130.namprd12.prod.outlook.com
- ([fe80::234:3b1c:70ba:9a1d]) by DM5PR12MB1130.namprd12.prod.outlook.com
- ([fe80::234:3b1c:70ba:9a1d%4]) with mapi id 15.20.6086.026; Thu, 16 Feb 2023
- 09:27:39 +0000
-Message-ID: <332905e0-3428-8e0b-7222-ed503a5b116a@amd.com>
-Date: Thu, 16 Feb 2023 10:27:32 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] hw/arm: Add missing ZynqMP ZCU102 -> USB_DWC3 Kconfig
- dependency
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
-References: <20230216092327.2203-1-philmd@linaro.org>
-From: Francisco Iglesias <francisco.iglesias@amd.com>
-In-Reply-To: <20230216092327.2203-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: LO2P265CA0025.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:61::13) To DM5PR12MB1130.namprd12.prod.outlook.com
- (2603:10b6:3:75::19)
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pSfoF-0000wG-7s; Thu, 16 Feb 2023 10:04:31 -0500
+Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pSfoB-0001W4-Ru; Thu, 16 Feb 2023 10:04:29 -0500
+Received: by mail-vs1-xe2f.google.com with SMTP id k6so2211385vsk.1;
+ Thu, 16 Feb 2023 07:04:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=vdnqnv11/k8IPNC5YHenEjTBuU30ug4qQLofMMWs+jE=;
+ b=IznZ5xYazWUcW3EkQxZ0rFBi2jo1Bllss/FtI+KFg83PeVer0tDUxP00ZOlxMoqPay
+ SGWLetr6OnNz1zt0vnLv0KRqqr/aC4BHNlpn87PCjmIkcWTgH/6BEDLfHiR3cD0clMtZ
+ pJ/8SkHKmL9DVf54Aky8tckwMDUAuqMo/3QWNtPe2BzKF8qlpTerN73tvh0U5ikEFSDq
+ Fc7LMxbpXRWRWES5JUGf+Ct65ewFwjXVW/QTeisgDViRhSI/LAEmnfSeikJQR0WJQ40/
+ Pf+JBvEfBDlGdkQrHCcgTRmJZD5INKO6qxgQkhROqJGj+FiG221OTFem6EvYt6WntnK9
+ 9+wg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vdnqnv11/k8IPNC5YHenEjTBuU30ug4qQLofMMWs+jE=;
+ b=fY7yR5RHxxveJqbhDTISzpnPPJavyW4fnDihGFYjicTIkELFPzDf/6TRfUoM57SMwh
+ H0fgXFVZpDFByD5eCBmsP/uZhInjYs9m7tYmfsuxWMKgyYbixU598uqJa3LJyomgXCM+
+ OgphHXQUVDCOAGRHM6l2Ml5Hpn9YEsfepexURH0y2mEp38EBi6W2XcGxL/aXJOivkCJb
+ w8f/htUwRbFklRBYPSAz5r8sTRPdOxuGXXLk9X9S8yQ9TWQZxdWF4ytGLuk8jvSLuJXF
+ KK6x4V0BgIH0Sr54zkPguJ8r/bRhCq+cnB23v5fRWkChvmf2EdcnRt6kxSDr9qUZDo+G
+ xTlg==
+X-Gm-Message-State: AO0yUKVHqQeg0AXvPiWmPaPwSnZKZX4YXeoXwGoWFwhwtld/gr+cwleJ
+ FHF1cy+IQuNuB+6PfeWT122GWGZX7yFvLAyTDfE=
+X-Received: by 2002:a05:6102:2751:b0:3fe:b46c:7889 with SMTP id
+ p17-20020a056102275100b003feb46c7889mr1034233vsu.78.1676559866202; Thu, 16
+ Feb 2023 07:04:26 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM5PR12MB1130:EE_|DM4PR12MB6495:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7e50b3eb-1a1c-4c1a-3076-08db10000be4
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 3Vl1kDxIObhqLOea4Stqz1LU7gJd8HDipFvc8N5STfvoSxqWBMSylCMyfH8ztg68OLSPxfuSnMexoQjiY4ee6aQL4X9B7b+Gv0WG3S3meLPHet74r/insMYrHZbm+/49jzfJcxCMglzkRi1YyyIzZfCfukJnA90CZERw+X2D3tutA2EkSOd0UluHIHlra0h7k6IeCWQgYM/lqUCxjUYuAN7yL7Sm92W/8D2J8JK3F6MzHhM7boOI38mSLuwKMyeDOl+WZ8fox5er8qFwShJMr7bT8W7y5Y0mY2c5bD7nighcGEilCpZpJNrOaTF1PJFPVSBijT9Ka2TcBKNPje8xC3vgxVIvZBXuPEOMClDVpCqKiG4A1rhP2yfvULZigBoLBJMD3kPtbDLZhC23J0T6gPTY1vj/RYEcxZYAXdaTRPrA1WCyVgcA2+sJUM2He4VNoEFr4ZAbWZsdKbXjMIgIR4gdDR+xafwwZC9Vmyi/32QDzJD2ycKnLLeI8JLiZjq0zv4Y98XgWizxCJGAhyhQ0KAeLGgEbq/9uZ6wvXEYEIDM5gW5vx8uZjHZDzg/j5N6roGA4tK4REII80jl1JtEobjCw4C6vjhggKA32dETD3bKQf5zCOhoLURKhkOR/n6GztdfBX/aba4G9n2Fyd8oJ5mU0GDm6+VDb4SP63wlb1jdCrs/Wq+d9Tq0ksIppJJlcBgO+iv26eIFidMB8e/5g6SzPe+g/IB603c3yxvJ0y8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM5PR12MB1130.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(39860400002)(366004)(396003)(136003)(346002)(376002)(451199018)(31686004)(2616005)(2906002)(86362001)(31696002)(36756003)(66476007)(41300700001)(44832011)(5660300002)(66946007)(66556008)(38100700002)(8676002)(6486002)(478600001)(6512007)(54906003)(4326008)(186003)(4744005)(8936002)(53546011)(6506007)(26005)(6666004)(316002)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YkpNcWVydHd4TWNIWHVXQUlLeEJaT1dVSFcva1QrUWJSU2xZV0sxWW5Bbm4z?=
- =?utf-8?B?K0tEK3dzMnpOaUQzaWx4MGdXMWpnbjV0ZGxPcXJ6dHFsMEx3d2J0ZWpJV0gy?=
- =?utf-8?B?NTZmK2c4UjRBaGllZGVIL0FGWTd3VlJta25rb05vOXVycWkzVVduRjJwVEtS?=
- =?utf-8?B?c3JVdng5SXI3dkxIelE5ZlVKdTBMYXRKaVlLR044UklOK2xPOXIyOXl2V3py?=
- =?utf-8?B?UWhnT0ZZaUl6VjFnSWJoTmZMTVJwQkdGUzl2djN3bU82bkY5L2lNRFRWVisy?=
- =?utf-8?B?bC9TUXZqUHMvbnlkdERjVmUwSHFHWnRhQUdqNnlrVTNLWkJpTEprNzBQMmEw?=
- =?utf-8?B?YzNSYkxzQVYzTWJYVTgwQWR6N0x0QXBQUjRxVE9xNWtuV3RrQjQ2TlpVNk4x?=
- =?utf-8?B?a2lrRnpleWJZUVAwR1hodnhDUUxLdVNwWFlxdU52TDJMN1pVOHVWalJ4UjB4?=
- =?utf-8?B?VjJPUTVGUm1ISXZyU2pNZ09KZ0hoajQ5c0ZjYVhKUlo4eUhrWk83WnBmUE8v?=
- =?utf-8?B?Y25Cb0o2VEtwaHp3L0QzZTlaRzg5S2RjK1BiUkZjZzNWYkMvd2ExcXFsdTFH?=
- =?utf-8?B?cGw0Ny9vMzllMGhJa2xMbmlHcDlDK3BLbTdhdUdIMkRwcis1YnhDd1YxNWRr?=
- =?utf-8?B?L1BGQ2RuK1IvaFJSUHZRTDFDQXQzQTVYUjRyVTVGR1dsN2NtSEhiYS85QzI4?=
- =?utf-8?B?VDdMWVJTYWpWQk05eWtScC9aRUQyM3FOclJQaTZzRWYxb0RsQmxKdlFMYzcz?=
- =?utf-8?B?SVNib2h5UXVKQzFXT1RmQWwvZ0NkNjU2U2h0bm1ENElDeEM5cTRVL3l3d3Rr?=
- =?utf-8?B?ajJqUkJ6dTRseW94QnVWTUtKMnBaRlF2MUE5Z1pwTWtWSWplT3hWQVVCaXd3?=
- =?utf-8?B?M2xXbFNwOXFER1pxYVpEakVsYUpGV2d3d2k5SGVlNDk1SEFyOW12K3RyZ1Rn?=
- =?utf-8?B?Z1BXbkEyVTRTU3JZRkVGam5qQ0lQWnorNmczNVdOeVpUYXcyYUNSS3NUcXlo?=
- =?utf-8?B?dDdlSDd3UEZLUUlyRFM3R2NUOHYvenAwYlNYbi9EMWV5c0dvM2pkdi9DSldI?=
- =?utf-8?B?OXBwRUx2R2JIeDh0a1luRUFoRjVqVjJyZ3RtM2UxTGFVR0tDaEsvTXlRYTRu?=
- =?utf-8?B?Q2FtMnV4WDE2UmpYb09LZmQ5QkRKRHYrdUJGSU5xNElsRXhvTGpqb1MxVVFH?=
- =?utf-8?B?UVpBeXdSOEFNamdLcnYwbGd0c0ptNyt0OVQyUzZ5UlhUaE9NMEY3RGJ1N0VO?=
- =?utf-8?B?TXUvbThDc2RlKytKL3FLU2ZSQ0NqSndQbjBpTUJNMVR4MXpCbVk5SHRmMVEz?=
- =?utf-8?B?alV0Q1Y5dE1DZUIxeXFzS3gzM1hET3FoM0R3bHNzUWxkV2pwYmE3ektZV0hY?=
- =?utf-8?B?WnJXNmJuVlZXMUlpUitLYUtlVW9iOFZuVGN4bGY4WW1BNmdJR1ZUR05teGZJ?=
- =?utf-8?B?TmppN1VNSmlpcysrd2dvK0xEUnJCR2VCTGdDSUNNaW1oOGdlYXA2akh6UGNN?=
- =?utf-8?B?ODRhRmplSDFJWm52V01vVUR6KysrcWNrczBibG45ekxqR2JNaVVBd05RTkJC?=
- =?utf-8?B?ZEJCMjVxYXdGTWNRTGZZdmFMcklDMEpuSHJZbkpQV3ZuUTI4UFU1ajQ4M2NY?=
- =?utf-8?B?UVhqNjJ0WnNtZ2M0bk5LMmRIMldqak1pYldwQ3d5cFllSWdnS25tdEJtYUU3?=
- =?utf-8?B?bHdIWTRRZG5NR1lVOGpxekRuTWxQQ1BObkxkNDlTWXJJckw0YmM2ZTBiUmhS?=
- =?utf-8?B?VkZudVhzNG41L1FDVXpJTlNnVXRNb2l5b1J2dnNyblBub0FWUSsxSm1VSm15?=
- =?utf-8?B?Vi9adzlmclZoV3cxbkNvNjdLbVE3MjZlaEJtRkpqZGFxL21lMmNvaDVMSW9Y?=
- =?utf-8?B?SGlRQmhla3pOMnpZTEJ5cEtYd2IvaDVsMW9sb3lBLzRMRHUyT0Vya0lRRm04?=
- =?utf-8?B?djJ3alNmSzQvcEFIUzQvMGhLS21NRHVBYWx4azZ6RW95a0hUM0JRTFBGRFVR?=
- =?utf-8?B?cEo5QXRROWpYb09QRERaVlRsd2p6cDEyc2JwRWhqb056Z25uMUVjZlJadVRj?=
- =?utf-8?B?WFdZNk5nRmEyYWZWZWpMZVc4NVFvdnpvMklNa3M0S3lLZmtDaU1LQlgzWCtu?=
- =?utf-8?Q?HK70zeaLRQNZCbZIsRkn+wXBR?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7e50b3eb-1a1c-4c1a-3076-08db10000be4
-X-MS-Exchange-CrossTenant-AuthSource: DM5PR12MB1130.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Feb 2023 09:27:39.1417 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: lBOw452thXWLlF98NbBGe7mj3UMlAQc1XZFEP7q1aCitWKDjKb1OSQfrRZkuxm6lmCNCkt4b/kr0orv6G1KC8Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6495
-Received-SPF: softfail client-ip=2a01:111:f400:7eab::614;
- envelope-from=francisco.iglesias@amd.com;
- helo=NAM11-CO1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.257,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20230216133326.216017-1-pkarthikeyan1509@gmail.com>
+ <2e46db2f-d48b-bc6e-85d8-1fa80ef4082c@linaro.org>
+In-Reply-To: <2e46db2f-d48b-bc6e-85d8-1fa80ef4082c@linaro.org>
+From: karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+Date: Thu, 16 Feb 2023 20:34:13 +0530
+Message-ID: <CA+ezb7hfKoaa6wQDQZpipzjOcJx9vWTXLT6cfOu7agG1iMD4SA@mail.gmail.com>
+Subject: Re: [PATCH v3] Adding new machine Yosemitev2 in QEMU
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au, 
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000450da705f4d2836f"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e2f;
+ envelope-from=pkarthikeyan1509@gmail.com; helo=mail-vs1-xe2f.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 16 Feb 2023 09:29:37 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -182,38 +114,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7xP1NDIpXoTc
+X-TUID: QwTZoTjrIJvu
 
+--000000000000450da705f4d2836f
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+Ok, thanks.
 
-On 2023-02-16 10:23, Philippe Mathieu-Daudé wrote:
-> Since commit acc0b8b05a when running the ZynqMP ZCU102 board with
-> a QEMU configured using --without-default-devices, we get:
-> 
->    $ qemu-system-aarch64 -M xlnx-zcu102
->    qemu-system-aarch64: missing object type 'usb_dwc3'
->    Abort trap: 6
-> 
-> Fix by adding the missing Kconfig dependency.
-> 
-> Fixes: acc0b8b05a ("hw/arm/xlnx-zynqmp: Connect ZynqMP's USB controllers")
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Thu, Feb 16, 2023 at 7:57 PM Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
+org>
+wrote:
 
-Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+> On 16/2/23 14:33, Karthikeyan Pasupathi wrote:
+> > This patch support Yosemitev2 in QEMU environment.
+> > and introduced EEPROM BMC FRU data support "add fbyv2_bmc_fruid data"
+> > along with the machine support.
+> >
+> >
+> > Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+> > ---
+> >   hw/arm/aspeed.c        | 31 +++++++++++++++++++++++++++++++
+> >   hw/arm/aspeed_eeprom.c | 23 +++++++++++++++++++++++
+> >   hw/arm/aspeed_eeprom.h |  3 +++
+> >   3 files changed, 57 insertions(+)
+>
+> > +static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, void
+> *data)
+> > +{
+> > +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> > +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
+> > +
+> > +    mc->desc       =3D "Facebook YosemiteV2 BMC (ARM1176)";
+> > +    amc->soc_name  =3D "ast2500-a1";
+> > +    amc->hw_strap1 =3D AST2500_EVB_HW_STRAP1;
+> > +    amc->hw_strap2 =3D 0;
+> > +    amc->fmc_model =3D "n25q256a";
+> > +    amc->spi_model =3D "mx25l25635e";
+> > +    amc->num_cs    =3D 2;
+> > +    amc->i2c_init  =3D yosemitev2_bmc_i2c_init;
+> > +    mc->default_ram_size       =3D 512 * MiB;
+>
+> Odd indentation
+>
+> > +    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+> > +        aspeed_soc_num_cpus(amc->soc_name);
+>
+> Here too. What about:
+>
+>         mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus
+>                          =3D aspeed_soc_num_cpus(amc->soc_name);
+>
+> I suppose C=C3=A9dric can fix when applying, no need for v4.
+>
+>
 
-> ---
->   hw/arm/Kconfig | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 2d157de9b8..b5aed4aff5 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -389,6 +389,7 @@ config XLNX_ZYNQMP_ARM
->       select XLNX_CSU_DMA
->       select XLNX_ZYNQMP
->       select XLNX_ZDMA
-> +    select USB_DWC3
->   
->   config XLNX_VERSAL
->       bool
+--000000000000450da705f4d2836f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Ok, thanks. <br></div><br><div class=3D"gmail_quote"><div =
+dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb 16, 2023 at 7:57 PM Philippe M=
+athieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">philmd@linaro.or=
+g</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
+>On 16/2/23 14:33, Karthikeyan Pasupathi wrote:<br>
+&gt; This patch support Yosemitev2 in QEMU environment.<br>
+&gt; and introduced EEPROM BMC FRU data support &quot;add fbyv2_bmc_fruid d=
+ata&quot;<br>
+&gt; along with the machine support.<br>
+&gt; <br>
+&gt; <br>
+&gt; Signed-off-by: Karthikeyan Pasupathi &lt;<a href=3D"mailto:pkarthikeya=
+n1509@gmail.com" target=3D"_blank">pkarthikeyan1509@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0hw/arm/aspeed.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 31 ++++++++++=
++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0hw/arm/aspeed_eeprom.c | 23 +++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0hw/arm/aspeed_eeprom.h |=C2=A0 3 +++<br>
+&gt;=C2=A0 =C2=A03 files changed, 57 insertions(+)<br>
+<br>
+&gt; +static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, voi=
+d *data)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);<br>
+&gt; +=C2=A0 =C2=A0 AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);<b=
+r>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;desc=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D &quot;Faceboo=
+k YosemiteV2 BMC (ARM1176)&quot;;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;soc_name=C2=A0 =3D &quot;ast2500-a1&quot;;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;hw_strap1 =3D AST2500_EVB_HW_STRAP1;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;hw_strap2 =3D 0;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;fmc_model =3D &quot;n25q256a&quot;;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;spi_model =3D &quot;mx25l25635e&quot;;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;num_cs=C2=A0 =C2=A0 =3D 2;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;i2c_init=C2=A0 =3D yosemitev2_bmc_i2c_init;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;default_ram_size=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 5=
+12 * MiB;<br>
+<br>
+Odd indentation<br>
+<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;default_cpus =3D mc-&gt;min_cpus =3D mc-&gt;max_=
+cpus =3D<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 aspeed_soc_num_cpus(amc-&gt;soc_name);<br=
+>
+<br>
+Here too. What about:<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 mc-&gt;default_cpus =3D mc-&gt;min_cpus =3D mc-=
+&gt;max_cpus<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0=3D aspeed_soc_num_cpus(amc-&gt;soc_name);<br>
+<br>
+I suppose C=C3=A9dric can fix when applying, no need for v4.<br>
+<br>
+</blockquote></div>
+
+--000000000000450da705f4d2836f--

@@ -1,190 +1,246 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp680043ejb;
-        Thu, 16 Feb 2023 08:55:34 -0800 (PST)
-X-Google-Smtp-Source: AK7set8JPP3Lz86Ak/fVYIA8QhdUv0Wzug+WXRYpdZVmgT3xq+oaSQcb9m2f9iCwNQQlOreYCRxX
-X-Received: by 2002:a05:600c:715:b0:3dc:438a:c381 with SMTP id i21-20020a05600c071500b003dc438ac381mr5698957wmn.28.1676566534066;
-        Thu, 16 Feb 2023 08:55:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676566534; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp774812ejb;
+        Thu, 16 Feb 2023 10:46:45 -0800 (PST)
+X-Google-Smtp-Source: AK7set9+MEcfDQYM+Hxjan71lJlOdLxL9ORDJjPmwxTMcipFrXO2BFUwlhJ43sZZtoIMmEZZiRVO
+X-Received: by 2002:a05:622a:118b:b0:3b9:a372:e456 with SMTP id m11-20020a05622a118b00b003b9a372e456mr12374003qtk.57.1676573205305;
+        Thu, 16 Feb 2023 10:46:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676573205; cv=none;
         d=google.com; s=arc-20160816;
-        b=gH6huf0yGnkfukkV1jLNRSK/BBAnGguDn8INA8/my6Wvv9CDWJTVal7vup8Brang/I
-         Ub7KDE3A4x2ij1/+tPLum+NXkMbCGufARpKIsLxxv7IBZmmiiTttItGwRZeqxV4T75gD
-         wUsWtdSH2vhYwGMEvNugY8v6fUn+6m0UORiHgmwOWmJVGh2VBkUfOKOH/kHFRXBz+BL3
-         1dgsGWwD9Of3+WBXPR/WrYffRxX2WMWuLpqhkkVDYt7iilG7IlN/SAysq6xvFARb44uZ
-         NeHR6frYWYZn43pIQAFAq0hZiVanSNf0mAfGMDwWvaCRWu8H5sqRBMAACGFAAKTqvklg
-         NpBw==
+        b=U5dkg9OBSsXqd2wHn/lXXKNohDLdD+6qfr2oizLaTUJGprGD2iDuXCJOKP/VKzVjSM
+         J7JKYInL68JwNqHjscET8OxAS/UxqWoEelkP7B9NawJBa5RpwM9zxCXEaBj1pQ6naKD4
+         E5jB9lVHiuXHESCxRH0mxaB17pACy5yjmwOk+LMaC9+xpjxyMHgxt1ujWH7utol/P9eR
+         HVaT5/9QJA0uQVuBfahOYrGALbazLm5zkOorjC8KDxyVv2Sp45+ubEcLhIxL9gw+cIyC
+         n6XL2xIJ3at5QYHPTyay8BN7RlbsPT6Df8JphWabae+LEcZICFY/VhQq8YNVZz/kYxTf
+         VPHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Q3EZUe8V3OvtV4dlnAAOu4AQEHMcgV8VbWADzJqqvqQ=;
-        b=c82Enl2quFbRun0XlfDgvgId776UiUYIdNjduqM51CKwwnllVAjIoHebAjP9axtwsr
-         H79unLgxQ3VAHcGkqGq/1GOjRQgZNV6ss6erPLZvNRELpn+4aZGQb5R0oN4bTI12kD8K
-         xXe2oV9OpNZASMFwjh/KfsTyhSpbKw1XAbNTKvKOOrj5VS4xQfij6kvV/HjSQS4vz7Q8
-         aXSbWyGB5owa2ADnoNRMlZDIM3uKVOELW/Z+7s6tfFLc+Vn3nGWHQNXk5nHpNRBB+ao/
-         efCU3/6+PmRCMQL0SMCbm+29goqKoHDP9fVmpEtasLOM1Mm7a5idi3D9BpIqKFCxKNUD
-         r7XQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=kDGCNgP/HqriguoJrv1lH0CH349ASjBLevBqGlZM65w=;
+        b=H+PLapJbSuom1zNSE0vBiBtAkJlg3Xp+OIE4laraIdWxVTodzZ6F5D/xyjQDZZllJW
+         TwMhae1LuaNE0MLl86nK+hKoZ02t4WL9vwipRvHGOyRRsKT3VRHq+4/m2H2YSWJZwjCj
+         wfyQLLEC9EqqEwF3bzpZQ8a0+XhARHbVds9P2a1YrkJLTfhxwpdAhA2UtFfcRhEipl5C
+         4iaiqvVrZlx2d/RuYYRMaHT1jbutYLhH+SOPQgMxw5FMqreAO0qS4ddEBAY/gZ8UAJss
+         6ja60CDBlK9t6kmAwg5zkKN4kG1H1Cct0cxhyw/aQqjhnEC45Z21Ang8GrCgqUsZ1XJ+
+         RA3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XwdGz6mU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=iZQRaCb6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t1-20020a05600c2f8100b003e20f702767si2544048wmn.89.2023.02.16.08.55.34
+        by mx.google.com with ESMTPS id q22-20020a05620a2a5600b0073b7033b3ddsi1933210qkp.475.2023.02.16.10.46.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 08:55:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Feb 2023 10:46:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XwdGz6mU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=iZQRaCb6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pShX0-0003Dy-SG; Thu, 16 Feb 2023 11:54:50 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pSjH2-0006FU-3Z; Thu, 16 Feb 2023 13:46:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pShWy-0003DN-NS
- for qemu-devel@nongnu.org; Thu, 16 Feb 2023 11:54:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pShWu-0006E6-IV
- for qemu-devel@nongnu.org; Thu, 16 Feb 2023 11:54:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676566483;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Q3EZUe8V3OvtV4dlnAAOu4AQEHMcgV8VbWADzJqqvqQ=;
- b=XwdGz6mUdeIoT4kD1hEzbbt/SOhRTLiWR3N5cTAfZ69MoXKWKE0cP2HhC00suNe1uTsiFN
- /ZFTse56dOeqBRTNVw5TowlrSeOR390nGAt11VpMgLIRbyF7M6jbrYVAXRrctX2zBcVffN
- oiUsrXzuH4c0fSj7uoJp+DJcZcnSczU=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-147-6xJFmuT8No-e9i2CPF-uGA-1; Thu, 16 Feb 2023 11:54:42 -0500
-X-MC-Unique: 6xJFmuT8No-e9i2CPF-uGA-1
-Received: by mail-qt1-f197.google.com with SMTP id
- n1-20020ac85a01000000b003ba2a2c50f9so1525253qta.23
- for <qemu-devel@nongnu.org>; Thu, 16 Feb 2023 08:54:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pSjGx-0006F5-9c; Thu, 16 Feb 2023 13:46:23 -0500
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pSjGv-00084i-ED; Thu, 16 Feb 2023 13:46:22 -0500
+Received: by mail-pg1-x530.google.com with SMTP id e1so1853422pgg.9;
+ Thu, 16 Feb 2023 10:46:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=kDGCNgP/HqriguoJrv1lH0CH349ASjBLevBqGlZM65w=;
+ b=iZQRaCb6TZVfsiwcpWqZ9ohScte29U9y/wH9CawUajX+/5CQwyvS722ArowVCeByEe
+ AErQjE5/pPb5MfjjsRaa73orChm39tuooNfhD6NQiYdbxwySgCYl/Hg+66HUtyzjz6If
+ bzWIwz/Qj10gugJQZQwTcHGlskNcfMCrRmS2uUG2c0a4Vu4eul1dd8VNRThZc+qGAyKz
+ LfE6t6NYFonYUy5IPEI8EoLeLXLDLp7ccD5K2OXJCOdLkJ0vrwjWx1/hEsN7eJjYX/5b
+ rYmiJ9w33g4rvX+cgtCAYZjU7Kmg7Jad9C9riMXgYqZuamm02cbfp8J9e7I+m+CZ+Aw9
+ zbKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Q3EZUe8V3OvtV4dlnAAOu4AQEHMcgV8VbWADzJqqvqQ=;
- b=YYOhluzcjpNgCltEdvK96Oruow4s3cNfBV9D8iPp+gWtcEfAvRHUXl/z/V9FqlVrET
- vBlotz3uvZQ7BEu1M0FBMjbwcADRGwW3XLGi1G1keMs/lrH4wmouu6wLRKpHwtZml+Wq
- TpMey/gKtPBs7TPozS7T5Z1jndlRVYgV3HLdwsFmr+/5rXl36kC6kd5dRKZEfeIZwRw5
- PgOnETpqYYCEE3n5+LfmRzdlwbYW5/TPUTYcfoVhxLkrGctLZCIRm5BitUtll9NFPry/
- vyOGTWaU2ctraevQVO5vt9SQWyWTiXvsFJaVGvMTwOLhVgmOYh1wa91JjkITHcxUi/lZ
- PPzg==
-X-Gm-Message-State: AO0yUKUFk+kB12IaMf/BNwT9sE5O8uKvUdBmLehN+/CxF536KZx3+ZjG
- fEHvwDabSTo4H280omCxn21NFdv2Mgz6Htna4WTe8tAJd8rgJoVD8Ozm1xeaudtUvGR0M6drxvC
- UUhUhG3FG6ETogOU=
-X-Received: by 2002:ac8:5784:0:b0:3b9:bc8c:c204 with SMTP id
- v4-20020ac85784000000b003b9bc8cc204mr5051873qta.15.1676566481954; 
- Thu, 16 Feb 2023 08:54:41 -0800 (PST)
-X-Received: by 2002:ac8:5784:0:b0:3b9:bc8c:c204 with SMTP id
- v4-20020ac85784000000b003b9bc8cc204mr5051850qta.15.1676566481711; 
- Thu, 16 Feb 2023 08:54:41 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ bh=kDGCNgP/HqriguoJrv1lH0CH349ASjBLevBqGlZM65w=;
+ b=2H/ApToUwSzQE3JQ1nnd6df/rEiSPzOD2e7jUCpDTwjnDEVvj9u6qnnIzote8+o1zc
+ 2owvU6swBGE14t8pRXwsMeN/H3Rl6G0oJLcMGNeTh8WSyGUhYGOCVTlN/wYEMfoxMs7f
+ B9smvvMNYNSiMTlf9BOuwKyUFktmdXBgSKLLu6EwPSVeivacAYPLeUfejEW/qbc09Mi0
+ Wo1NaIScJEwCRuUMnbjCiV/gswRKViEJ9d81vu5I+vR6UG7HB24pjxOWO1Qc7ar425NK
+ g5LYxDxHt5B0YVBiDFVwEIOboeO7UdVmElQGyW1VBcC5I7f9qwGV7/2AyLMoOwZZiWiU
+ hZGA==
+X-Gm-Message-State: AO0yUKXPTNJbA6daqnea9iVS2ysLzcjQL0M0U1nJowZKnE+ZF+j3KqAl
+ 0Odgf3q81/4CUtWJYbJYcaY=
+X-Received: by 2002:aa7:9e1a:0:b0:58d:d546:8012 with SMTP id
+ y26-20020aa79e1a000000b0058dd5468012mr5576226pfq.0.1676573179525; 
+ Thu, 16 Feb 2023 10:46:19 -0800 (PST)
+Received: from localhost.localdomain ([2409:40f4:b:d40d:3893:4d65:38b4:e3e6])
  by smtp.gmail.com with ESMTPSA id
- x78-20020a376351000000b006bb82221013sm1130705qkb.0.2023.02.16.08.54.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Feb 2023 08:54:41 -0800 (PST)
-Message-ID: <83f5fbff-b30b-901a-f7fc-5f487de8cc69@redhat.com>
-Date: Thu, 16 Feb 2023 17:54:38 +0100
+ h6-20020a62b406000000b00580cc63dce8sm1630311pfn.77.2023.02.16.10.46.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Feb 2023 10:46:19 -0800 (PST)
+From: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+To: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+Subject: [PATCH v2] Adding new machine Tiogapass in QEMU
+Date: Fri, 17 Feb 2023 00:13:43 +0530
+Message-Id: <20230216184342.253868-1-pkarthikeyan1509@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [RFC PATCH 13/16] hw/arm/smmuv3: Add CMDs related to stage 2
-Content-Language: en-US
-To: Mostafa Saleh <smostafa@google.com>
-Cc: qemu-devel@nongnu.org, jean-philippe@linaro.org,
- peter.maydell@linaro.org, qemu-arm@nongnu.org
-References: <20230205094411.793816-1-smostafa@google.com>
- <20230205094411.793816-14-smostafa@google.com>
- <7ebe5091-54ae-d5a2-09c4-0ae1e8276cb8@redhat.com>
- <Y+42e9PE9g7JpBuq@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <Y+42e9PE9g7JpBuq@google.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.351, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=pkarthikeyan1509@gmail.com; helo=mail-pg1-x530.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NisyMHdG2VUB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0xJBC6cWUJGO
 
+This patch support Tiogapass in QEMU environment.
+and introduced EEPROM BMC FRU data support "add tiogapass_bmc_fruid data"
+along with the machine support.
 
+Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+---
+ hw/arm/aspeed.c        | 32 ++++++++++++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.c | 22 ++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.h |  3 +++
+ 3 files changed, 57 insertions(+)
 
-On 2/16/23 14:58, Mostafa Saleh wrote:
-> Hi Eric,
->
-> On Thu, Feb 16, 2023 at 12:56:52PM +0100, Eric Auger wrote:
->>> @@ -1174,14 +1174,35 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>>          case SMMU_CMD_TLBI_NH_VA:
->>>              smmuv3_s1_range_inval(bs, &cmd);
->>>              break;
->>> +        case SMMU_CMD_TLBI_S12_VMALL:
->>> +            uint16_t vmid = CMD_VMID(&cmd);
->>> +
->>> +            if (!STAGE2_SUPPORTED(s->features)) {
->> if you add such checks for S2, may you should consider adding similar
->> ones for existing S1?
-> Yes, I will go through the other commands and do the same for stage-1
-> only commands.
->
->>> +            smmu_inv_notifiers_all(&s->smmu_state);
->>> +            smmu_iotlb_inv_vmid(bs, vmid);
->>> +            break;
->>> +        case SMMU_CMD_TLBI_S2_IPA:
->>> +            if (!STAGE2_SUPPORTED(s->features)) {
->>> +                cmd_error = SMMU_CERROR_ILL;
->>> +                break;
->>> +            }
->>> +            /*
->>> +             * As currently only either s1 or s2 are supported
->>> +             * we can reuse same function for s2.
->>> +             */
->>> +            smmuv3_s1_range_inval(bs, &cmd);
->> Shouldn't we rename the function then?
-> I guess we can rename it smmuv3_s1_s2_range_inval, we will have to
-> revisit this when nesting is supported.
-or simply smmuv3_range_inval, adding a comment specifying its is usable
-for both stages
-
-Eric
->
-> Thanks,
-> Mostafa
->
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 27dda58338..d12164420d 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -530,6 +530,15 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
+ }
+ 
++static void tiogapass_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = &bmc->soc;
++
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54, 128 * KiB);
++    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 6), 0x54, 128 * KiB, tiogapass_bmc_fruid,
++                          tiogapass_bmc_fruid_len);
++}
++
+ static void create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+ {
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+@@ -1191,6 +1200,25 @@ static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
++static void aspeed_machine_tiogapass_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Facebook Tiogapass BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
++    amc->hw_strap2 = 0;
++    amc->fmc_model = "n25q256a";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 2;
++    amc->i2c_init  = tiogapass_bmc_i2c_init;
++    mc->default_ram_size       = 1 * GiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
++        aspeed_soc_num_cpus(amc->soc_name);
++};
++
+ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1566,6 +1594,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_tacoma_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("tiogapass-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_tiogapass_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("g220a-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+index 04463acc9d..f937a6ceaa 100644
+--- a/hw/arm/aspeed_eeprom.c
++++ b/hw/arm/aspeed_eeprom.c
+@@ -6,6 +6,27 @@
+ 
+ #include "aspeed_eeprom.h"
+ 
++/* Tiogapass BMC FRU */
++const uint8_t tiogapass_bmc_fruid[] = {
++    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
++    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
++    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
++    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
++    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x54, 0x69, 0x6f, 0x67, 0x61,
++    0x20, 0x50, 0x61, 0x73, 0x73, 0x20, 0x53, 0x69, 0x6e, 0x67, 0x6c, 0x65,
++    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0xc4, 0x58, 0x58, 0x58, 0x32, 0xcd, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
++    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
++};
++
+ const uint8_t fby35_nic_fruid[] = {
+     0x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0xcf, 0x01, 0x0e, 0x19, 0xd7,
+     0x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xdd,
+@@ -77,6 +98,7 @@ const uint8_t fby35_bmc_fruid[] = {
+     0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+ };
+ 
++const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
+ const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
+ const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
+ const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
+diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+index a0f848fa6e..69db103c83 100644
+--- a/hw/arm/aspeed_eeprom.h
++++ b/hw/arm/aspeed_eeprom.h
+@@ -9,6 +9,9 @@
+ 
+ #include "qemu/osdep.h"
+ 
++extern const uint8_t tiogapass_bmc_fruid[];
++extern const size_t tiogapass_bmc_fruid_len;
++
+ extern const uint8_t fby35_nic_fruid[];
+ extern const uint8_t fby35_bb_fruid[];
+ extern const uint8_t fby35_bmc_fruid[];
+-- 
+2.25.1
 

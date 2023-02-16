@@ -1,245 +1,113 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp367977ejb;
-        Thu, 16 Feb 2023 02:51:02 -0800 (PST)
-X-Google-Smtp-Source: AK7set+h6/DJd1PFKk/rxxXUzdKJeOMeV80Qa6KY5k9ojkfdDXybtHGmtMv6c7xumVaDFRmgXSCc
-X-Received: by 2002:a05:6214:ca6:b0:56e:957f:dd5f with SMTP id s6-20020a0562140ca600b0056e957fdd5fmr10565159qvs.50.1676544662805;
-        Thu, 16 Feb 2023 02:51:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676544662; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp404708ejb;
+        Thu, 16 Feb 2023 03:41:13 -0800 (PST)
+X-Google-Smtp-Source: AK7set+TVqIVZB3NX8zGg/oejYlaAJzL6co26QLGzP3SX0LnRhfSpyJ+fDDZzGhTDnJc9b04SGp4
+X-Received: by 2002:a17:906:5a6e:b0:8b1:3483:b825 with SMTP id my46-20020a1709065a6e00b008b13483b825mr5166257ejc.51.1676547673759;
+        Thu, 16 Feb 2023 03:41:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676547673; cv=none;
         d=google.com; s=arc-20160816;
-        b=wh/3e+sT2l1cpkdxZDRurMw5DTujeRI7j+q6Fe9jr29JdO/OD03swck5ba3dwcqfyM
-         imRReMoD1+LMpKNBFhn6Jrr8w7D0pgB3/De6vdbMzFU97l5iHjuDhNB0GbQl7YbReReW
-         +xmJvrjV3DeegayZFuUlp2jHRpxCeqtSLJT7d8FjpSuSQN3T4/wz6OBAURlfnvlYDWYm
-         /fWmayT4L08bAV4xO/oZbTShHtRY4cTjkWFluNcJHJLpdRD3bkkkCyRn3UjopHZw0itw
-         cUpchExSRe4OFLP3al8olnHdXsnGqer032j2m5HtTnBsJ/1V8myeARsFI39lXZEC4qyt
-         F5bQ==
+        b=OBI5gamxg5EPfmNYlSSJSQh84pawgyrPTkWj6BqkdPQMnLQAgBgMW5lcskMm40CXtu
+         i/YODoUzvg9LDvnlT8sHzEI6T3W3LPTleXpZiszGSFCY8NMPF73+nURhl0jlBCQw1Lij
+         ygwA2nUZLmZke4cO3HR8BoKYlPy1lhnhkFNutpn+ncOv5jI89ZnX/JKeyBD2y4lY4TsF
+         W5ORaC+LCHlbGszCL0CyarX1dsc3ZupCmf6+kQ7oL5oCdtzoLDrEGRlHg8xyghdOzPW5
+         h2eZ+qiBPrcY+qOAMXZCgLQ1bZ/ZUkqAqCxrW6K3gLShhv7Z/t438XrQph/dr0EGZNuq
+         JDmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=r2McuxgyDdy+pIfq2cCai2mR/uIJsTTitJRkORgh4d8=;
-        b=y7BUp8g0rPy00T3MriDcqBx+PdwPllchJ8hj1/2fo7Yj3+IbdYDhwEcsLWUaV092Yx
-         dDbFDe3iXfCNoKI+vyN9H5I6bLqVqOh5y32CR+NFvR851W0ORItoIJ0olwkZDOFeyxhQ
-         5MRC6czT3obLt6M79fMs69JvdSfrAw1kN8PN1FxruBDQXLqeEMPzw5Sfja/GUuq2bf1s
-         WsDAgivdWCo2YB44s6Ue7j+00MIZ+0Ycj6NuigEwynVEwb2nPZ2lttfndVbFSjVZ/ZGF
-         68gV0GeRvr1p1g7+hXR7TXpYo75gFrwQNhuByGA825ttZJOtLrnPy4B85Rc0N5ufbCFG
-         N8uQ==
+        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=HcDU0QdDBp6Yu8TjFSb3VmDDKlCY+rGLjdYpbDC/h1Q=;
+        b=n/w81iCz/e6UqwjC9gRtDm8CcHRu0IoHKvRSGxtyKVwsHB2sZTTOn7GAcggAABEZbD
+         o8irn8+Geplno6Z540GDq5sEauEj3VAqEVYeha1xD9KznAxTPtXT5VIAFa8uS1qKpYwS
+         WMrpaYt2p23evZxmcNtAqafOT1PHNdwAXfzTm399EPtZKdCQpEechtTyLHBJAihKWGFq
+         RyaziftnyhEfegfPnO89sNkS5EdePZ664h/pc7rBNqEzUHqiUSVjx6VRlvgYEgx7mg0H
+         vqYmaCIkp2Mie/JPWBOwNIFh+pBT9EPZH08CDuEmgTavc5sxi8yx34lRauuvdd5o1aK3
+         ep0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GZdbxcyr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2-20020a0ca682000000b0056c21051f0fsi895403qva.592.2023.02.16.02.51.02
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 02:51:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nWxQNRUA;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id v9-20020a17090610c900b008b103d47371si1586164ejv.858.2023.02.16.03.41.13;
+        Thu, 16 Feb 2023 03:41:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GZdbxcyr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pSbqW-0002Y3-RC; Thu, 16 Feb 2023 05:50:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
- id 1pSbqV-0002Xm-5u; Thu, 16 Feb 2023 05:50:35 -0500
-Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
- id 1pSbqT-0001GC-F4; Thu, 16 Feb 2023 05:50:34 -0500
-Received: by mail-oa1-x2a.google.com with SMTP id
- 586e51a60fabf-16ab8581837so2081343fac.4; 
- Thu, 16 Feb 2023 02:50:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=r2McuxgyDdy+pIfq2cCai2mR/uIJsTTitJRkORgh4d8=;
- b=GZdbxcyr79NCmH55WT5fp5J/m5w1z6MZli4ApF2h5Og+zxjWpO1PA77JtX/Vp6+/eg
- eMqkVXS2fpgItdOp70uway7nPCsFpimEc4qR+UGO948gwXZIVE0g2MtdOUdXg7a98N8D
- 6cxvTSofyrpV+r2iNqZXKUr0lnEM3hr7ZuDujA79tgOyOxByQsgQusZuw8Lg2mFUMAar
- 3btANb6nYYCV8899GfbH5fdmtSdYVDTOX9meKFFignL2d5sfq9VezGCFZrm0RT+STZii
- OHXNVvqGZvxq0Hk1u3HJPvmVnEwfChz72HyBDKRiPArIxzyMM/pTTHCEMUy88E2qNuzM
- OAHQ==
+       dkim=pass header.i=@linaro.org header.s=google header.b=nWxQNRUA;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S229973AbjBPLlM (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Thu, 16 Feb 2023 06:41:12 -0500
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:59050 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229741AbjBPLlK (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 16 Feb 2023 06:41:10 -0500
+Received: from mail-pj1-x1029.google.com (mail-pj1-x1029.google.com [IPv6:2607:f8b0:4864:20::1029])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 0E2331ADD1
+        for <kvm@vger.kernel.org>; Thu, 16 Feb 2023 03:41:05 -0800 (PST)
+Received: by mail-pj1-x1029.google.com with SMTP id v6-20020a17090ad58600b00229eec90a7fso6010110pju.0
+        for <kvm@vger.kernel.org>; Thu, 16 Feb 2023 03:41:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=HcDU0QdDBp6Yu8TjFSb3VmDDKlCY+rGLjdYpbDC/h1Q=;
+        b=nWxQNRUADSRrTp10zKdldphEMLCx+zS3gH4e3q/aVxeOW/9OaGMeNWh07jHq14aRgw
+         6sOvq6u+xvxPeYHta9pQxQjD9z+ZaCinL0defWRx2jpCywuC8oSqYgY61XMU01YM4MB8
+         WvdHjFgFwEuIuP6OqPkaTE8SLmrmxXECj2GP01cLrZbWlpjQHYnJULMXuCX3WXDPJguJ
+         OHCwk8eYJcwAE07fY1TDOalYtMstM9Dr+vx5d3RVSN4k8fSiD9GNZiSj1EyoWLPusyn8
+         4mugDd95LDrs0Yl/hPko7nuC/0s4YIIKks6Rpxh4C5waGUazeafo0Kg6acx3uAEnLgS8
+         wV6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=r2McuxgyDdy+pIfq2cCai2mR/uIJsTTitJRkORgh4d8=;
- b=jrwZBy5PCRRE1dNKegX0OC+hHGR6NYd4QRxEaWFgxc1Kil6eryHG+WLFxqmvqfZyCw
- kcZ7DqPGi+WsPkdyDjFd+kFTcPCmG0DXXihji7YtxXGZq74eiJNkX29XV/lokQzPdaRR
- Rp6PX2VDEsGaoq9iCX9IeZapu9Rnn8cf2ZG9rnNWVhVO1tZ3fakQSjlTt5pAtOFmDM7N
- BlSyu3uz7UFyUxoako1ViKJXt43ynKU+dWWwrRUNvE7oSLYYIrt9TsD10oKRRSboRTWc
- N2rnzssRd7Z8iqGZ0FuOiwAKh9enSQhuSH5md20RnH60w9SgU7gmohA3+VuR9wQ3tX6w
- Ql6w==
-X-Gm-Message-State: AO0yUKW8+XAHqGUU8jniJuu4OAbauV8k3PN9XpsQaaQYTBNofMDypSY8
- bP3TS3o6ymJq3MfqNe9wQdM=
-X-Received: by 2002:a05:6870:808b:b0:16d:cd55:a4ae with SMTP id
- q11-20020a056870808b00b0016dcd55a4aemr3062599oab.44.1676544632102; 
- Thu, 16 Feb 2023 02:50:32 -0800 (PST)
-Received: from hcl-ThinkPad-T495.hclt.corp.hcl.in ([192.8.226.44])
- by smtp.gmail.com with ESMTPSA id
- o5-20020a05687072c500b0016a79d94885sm423264oak.27.2023.02.16.02.50.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Feb 2023 02:50:31 -0800 (PST)
-From: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-To: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-Subject: [PATCH v2] Adding new machine Yosemitev2 in QEMU
-Date: Thu, 16 Feb 2023 16:19:36 +0530
-Message-Id: <20230216104934.192713-1-pkarthikeyan1509@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HcDU0QdDBp6Yu8TjFSb3VmDDKlCY+rGLjdYpbDC/h1Q=;
+        b=musBPQIEe0UdNsn39i0zyM1njvxYKHCISAx2Yu3cUR4+ByQ7fXD3KWCc1z492thB1M
+         g7ar+IJiiedt1Jt7nw1i9M/6CBBylQjAdnGrCnwWHGel/iz8sLbwohWPchZyy8HeNfH7
+         l/Kz3LnrX3HYRVwiUJ/uryKsDSPpF6G7PmizqTrAiXaotIwa3mff96GiqBNPnCwz5A6o
+         5GJr2xmvjdu+2N+QrAhskSBOqyEma3S21T/HTlwzzVtqpbCCmPR0QB/SgRfPUUO/fAdn
+         aZUuM9zwtxaWcrFEBU5A5bZcIc/KX1KB3P06xJn7bYZSh4HwsohqlYzHgcreZAL5KHQ6
+         m2og==
+X-Gm-Message-State: AO0yUKWLSDpjFACvEptl8MgdeFvyxe1o+25bAw6ri7ncjHeAh8imHtR0
+        uJawMtrZTs0/w365zkQkVBPA2+NI0VkXWkuFT8K5mw==
+X-Received: by 2002:a17:90b:5109:b0:233:dcb5:ee15 with SMTP id
+ sc9-20020a17090b510900b00233dcb5ee15mr523032pjb.92.1676547664551; Thu, 16 Feb
+ 2023 03:41:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2a;
- envelope-from=pkarthikeyan1509@gmail.com; helo=mail-oa1-x2a.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BWH/qGmziQGZ
+References: <20230203134433.31513-1-cohuck@redhat.com>
+In-Reply-To: <20230203134433.31513-1-cohuck@redhat.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Thu, 16 Feb 2023 11:40:53 +0000
+Message-ID: <CAFEAcA_QiVe=ZZ1VTVwUiGh6EL8F7qXT=3dnEb+xzUZORO_4Dw@mail.gmail.com>
+Subject: Re: [PATCH v5 0/3] arm: enable MTE for QEMU + kvm
+To:     Cornelia Huck <cohuck@redhat.com>
+Cc:     Thomas Huth <thuth@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        Eric Auger <eauger@redhat.com>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        Juan Quintela <quintela@redhat.com>,
+        Gavin Shan <gshan@redhat.com>,
+        =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>,
+        Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 8FgPIxDKj4R5
 
-This patch support Yosemitev2 in QEMU environment.
-and introduced EEPROM BMC FRU data support "add fbyv2_bmc_fruid data"
-along with the machine support.
+On Fri, 3 Feb 2023 at 13:44, Cornelia Huck <cohuck@redhat.com> wrote:
+>
+> Respin of my kvm mte series; tested via check + check-tcg and on FVP.
 
-Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
----
- hw/arm/aspeed.c        | 38 ++++++++++++++++++++++++++++++++++++++
- hw/arm/aspeed_eeprom.c | 23 +++++++++++++++++++++++
- hw/arm/aspeed_eeprom.h |  3 +++
- 3 files changed, 64 insertions(+)
+I've taken patch 1 into target-arm.next since it's a simple
+cleanup.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 27dda58338..35ff29b752 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -521,6 +521,22 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
-                      TYPE_TMP105, 0x4d);
- }
- 
-+static void yosemitev2_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+
-+    I2CBus *i2c[16];
-+
-+    for (int i = 0; i < 16; i++) {
-+        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
-+    }
-+
-+    at24c_eeprom_init(i2c[4], 0x51, 128 * KiB);
-+
-+    at24c_eeprom_init_rom(i2c[8], 0x51, 128 * KiB, fbyv2_bmc_fruid,
-+                          fbyv2_bmc_fruid_len);
-+}
-+
- static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-@@ -1174,6 +1190,24 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
- 
-+static void aspeed_machine_fbyv2_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Facebook YosemiteV2 BMC (ARM1176)";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
-+    amc->hw_strap2 = 0;
-+    amc->fmc_model = "n25q256a";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 2;
-+    amc->i2c_init  = yosemitev2_bmc_i2c_init;
-+    mc->default_ram_size       = 512 * MiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1562,6 +1596,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_ast2600_evb_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("yosemitev2-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_fbyv2_class_init,
-     }, {
-         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
-index 04463acc9d..807036d416 100644
---- a/hw/arm/aspeed_eeprom.c
-+++ b/hw/arm/aspeed_eeprom.c
-@@ -77,6 +77,29 @@ const uint8_t fby35_bmc_fruid[] = {
-     0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
- };
- 
-+// Yosemite V2 BMC FRU
-+const uint8_t fbyv2_bmc_fruid[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
-+    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
-+    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
-+    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
-+    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
-+    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x2e, 0x30, 0x20, 0x45, 0x56, 0x54,
-+    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
-+    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
-+};
-+
- const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
- const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
- const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
-+
-+const size_t fbyv2_bmc_fruid_len = sizeof(fbyv2_bmc_fruid);
-diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
-index a0f848fa6e..14d2533a28 100644
---- a/hw/arm/aspeed_eeprom.h
-+++ b/hw/arm/aspeed_eeprom.h
-@@ -16,4 +16,7 @@ extern const size_t fby35_nic_fruid_len;
- extern const size_t fby35_bb_fruid_len;
- extern const size_t fby35_bmc_fruid_len;
- 
-+extern const uint8_t fbyv2_bmc_fruid[];
-+extern const size_t fbyv2_bmc_fruid_len;
-+
- #endif
--- 
-2.25.1
-
+thanks
+-- PMM

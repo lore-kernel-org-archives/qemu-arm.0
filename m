@@ -1,187 +1,371 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp746939ejb;
-        Thu, 16 Feb 2023 10:12:43 -0800 (PST)
-X-Google-Smtp-Source: AK7set/sybSMXcqYsFVarQV6Uuhx61i7OBXDjQOyZUGVvqElIG8uVr6cl1ANMzQ5gitQyt96O8js
-X-Received: by 2002:a05:622a:1aa0:b0:3b4:7efb:36a7 with SMTP id s32-20020a05622a1aa000b003b47efb36a7mr5328917qtc.27.1676571163415;
-        Thu, 16 Feb 2023 10:12:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676571163; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp749647ejb;
+        Thu, 16 Feb 2023 10:15:44 -0800 (PST)
+X-Google-Smtp-Source: AK7set+ojmSdNbpwianmuCpJpRam10d9NjLdaUdYAoNcbsS2UUijomw/lLlffPiP4UK85riLNiva
+X-Received: by 2002:a0d:e6d1:0:b0:533:a231:2cf with SMTP id p200-20020a0de6d1000000b00533a23102cfmr1037339ywe.4.1676571344507;
+        Thu, 16 Feb 2023 10:15:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676571344; cv=none;
         d=google.com; s=arc-20160816;
-        b=cQhDZkknPaoHp6Cwiag0IhjMt2sillf5vNqkudd/zqKTWfxzBXqKA0Vg9mmdIRWLvJ
-         tlqrtbS+sE0KVkL1B0eDSkC7euSwonUvo+UsNM6bI4BJ6/HjM5gjA4cJAI/hPeYhXOzh
-         YhqKya8tRDDVrOH/C3ZtG8amnrQra2MOsMLQSvyr56qQ3Z2G6nCO0d+Kya1sRQGVo2K/
-         1Ch2VRVNwxKFmygKwl2LPisr7RZGZ66l+XYh/8i6ZQ8E2lnX56tTVgmuWhwa3Y9Kajuv
-         W95xsevudyCnR+Ls+EN1GaWtngQu4/ZrZwVbdfTNTE39dhK8YXab4DkuTSH6Rvd5HncK
-         m3pA==
+        b=vp4cOn9m6CJlzeSKstagFuXO5H6NqJXYdYKt36Y8VNhxXBM+zqqSEXApJuCnFl+qDr
+         ba+K228MzNwc2wgZ4uWS4pyNBOQ8P2QuY8hKNE/Wn5YYY8/PtH7D8mGV50Ka16qVYoIz
+         WLqcEqVkm57OJOmw0dpOhxiNTy9Vm6cR4KKOPKF940ceYk7Lz3YHiPjQ62cFFHDB9R+f
+         SETEDoiGI9+rNtli6OKhr2xPu5P1hwgzt6839AKdUMiDgNK6QRpiFwGW+7xttcNTnGQ2
+         BsTH6RAnYNfmS2BhE8zafq8a28dMTgm/Y28urX/bK+cKp7rD8hRkc9jIlORuirbyiykF
+         qJ+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=H5zqsdeUxXswGDdriB2mt9f1ZTEDRRth9BMApg21obs=;
-        b=PMPp3nLX6f8Njojyyy/YdgbR1dLYpzrfUOR+KB4uXoRzi4N3PAQRTil9M2fy6OxM+7
-         T6mj+qWFIJKbakouDklnhsmSptJmmZv7rVh2sJoFYMcaJXympbedADzCglmRsBqv6gPi
-         2uTppatENZGTWWtqMDUaxo2IOvLQsWv7+Hovnk8GJg7Vu5TTn9yguYOhrM78QV4IqQPR
-         rPPnL1RQOfXSM/JwqQALjZL6G5JVKHGoX5rQg0enkQwcyriN4f79WpddUqLuB56LRvf1
-         rl4nz4dXw3qXb6KYx02zxSPR0Et13ynYS8FNn+e8noHH8lJRcGJ7DFWp4V5KHegH8+ux
-         Oj5Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=xjJwynRfvNz7g9of3OCkXWEXMKlAcX5hWWmY2P+c+DE=;
+        b=pK4ik8VO+rH8ujSTVq3g6RdsCkKcGYvsrkbhnr9RvrlgBZnJjGwTwYxLxYUw+PZ3YJ
+         m/4zhMU7W3wHBK4dMNq22p7G3L1dmeN/Z2wQcMcjbL/fz0TtZ4ScBb+qvjqiEBpCvDsA
+         ztIr5u8yPGkcTksUHioFSca4fPR/l0MhgHvSGJq5S4lZV5FqxkNvvSP1nX4K3vKysFcu
+         rJT80zSt5nTOu2Cpm30BE/acgHbZp31pjv1T5McuTaUtBA8WlNMy40dWftTxm9lzJtdF
+         2ErbqA5T1Lu4X3I71ZSk2PY5mgz1ZDapJsBnKOYuX9qKvfkS9iASHk7gWGHUmERtLqbF
+         Ihzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j2-20020ac84042000000b003ba0a929839si1859104qtl.104.2023.02.16.10.12.43
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BLgjmmCF;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <jsnow@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id o8-20020a817308000000b0052bfe6f2970si2616786ywc.10.2023.02.16.10.15.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 10:12:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Feb 2023 10:15:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSijs-00083i-K4; Thu, 16 Feb 2023 13:12:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1pSijr-0007zy-Eb; Thu, 16 Feb 2023 13:12:11 -0500
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1pSijn-00029s-Ma; Thu, 16 Feb 2023 13:12:09 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.48])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 5E80F206BF;
- Thu, 16 Feb 2023 18:12:04 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21; Thu, 16 Feb
- 2023 19:12:03 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006c3d769c1-1982-4562-ab08-f9211698d00d,
- 6472B0FD1AC4FAE7C483658EB00F62ED22160684) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <e4e0217e-9bd3-1bb7-c91c-0686cf67fc02@kaod.org>
-Date: Thu, 16 Feb 2023 19:12:03 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BLgjmmCF;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1676571344;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xjJwynRfvNz7g9of3OCkXWEXMKlAcX5hWWmY2P+c+DE=;
+	b=BLgjmmCFunVRVP3UcO6TRV1mK4nMP+ZRYlJeVwU8ggQYmyoTMq8mgdW5nQEpjIhEHd5tQb
+	YD9gr1HCsoOiRU+nDF6XfmCu+zv8Fhahk0il9nhDCmQZN2IFJB6YcnHmEx0khmFLnKEuxO
+	CNKGbkrSzdtNjVTnmtcGDKJmL23JNtI=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-589-dkqzIZ4COYeDiz9lT6Sotg-1; Thu, 16 Feb 2023 13:15:43 -0500
+X-MC-Unique: dkqzIZ4COYeDiz9lT6Sotg-1
+Received: by mail-pl1-f198.google.com with SMTP id i3-20020a170902cf0300b00198bc9ba4edso1438967plg.21
+        for <alex.bennee@linaro.org>; Thu, 16 Feb 2023 10:15:43 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xjJwynRfvNz7g9of3OCkXWEXMKlAcX5hWWmY2P+c+DE=;
+        b=1tKdZOvOTi+QLsBcMCG/hBsWq+6o0YvXgYOeEAqcNHCTGN9TyQeXjru2mQntf3gf1e
+         rXt8kgTxoInJpwY0txyKLQc2dmOLSNq0jM784nvPsjnYOC5W7QxW8IQYnZi8mIfmLrZ/
+         LbFtUJHP1RKVWm9K3hiesG8cvPK1vcqN14jwDeTJFfKqadJxyHhqmdplCv6/lB8qSOnE
+         4dV6AT3GevpvwRDdjmolLU5WWKguYI24+rhQKP0DIlgj/4701aTo9yJtdJYBCoKbTv53
+         Sm60XE2ALp2ZWeFoj827/gpUMrl8gE1TbjIKl1AxYufmtsfDVft+qSV2Ujdx5/w65GDT
+         K5hA==
+X-Gm-Message-State: AO0yUKXS+r1MNmvOUgbmxsEOnZc7oAYuIGZWFVazePbhbcNnPEFSFb12
+	f5iazncPZMILVOGk8vXqRNPkX5O3iY/JcEljm6u36xPp4WCouNiWtsgKQ+zUk0/0yTmNE1uv8i9
+	2GmIeS7HS0Ux/9JB675J0OZ4uvdTyWRCVWkQqEg==
+X-Received: by 2002:a17:90b:3906:b0:234:2592:efbe with SMTP id ob6-20020a17090b390600b002342592efbemr702131pjb.131.1676571341804;
+        Thu, 16 Feb 2023 10:15:41 -0800 (PST)
+X-Received: by 2002:a17:90b:3906:b0:234:2592:efbe with SMTP id
+ ob6-20020a17090b390600b002342592efbemr702122pjb.131.1676571341490; Thu, 16
+ Feb 2023 10:15:41 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.2
-Subject: Re: [RFC PATCH 5/5] hw/ppc/pnv_bmc: Simplify pnv_bmc_find()
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- <qemu-devel@nongnu.org>
-CC: Markus Armbruster <armbru@redhat.com>, <qemu-arm@nongnu.org>,
- <qemu-s390x@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-block@nongnu.org>
-References: <20230216122524.67212-1-philmd@linaro.org>
- <20230216122524.67212-6-philmd@linaro.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230216122524.67212-6-philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: af17be2c-659b-4256-a52d-3d65338c1a49
-X-Ovh-Tracer-Id: 8211188022095940457
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrudeijedguddtjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffdufeeliedujeeffffhjeffiefghffhhfdvkeeijeehledvueffhfejtdehgeegnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrddutdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehphhhilhhmugeslhhinhgrrhhordhorhhgpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdgrrhhmsghruhesrhgvughhrghtrdgtohhmpdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhqvghmuhdqshefledtgiesnhhonhhgnhhurdhorhhgpdhqvghmuhdqphhptgesnhhonhhgnhhurdhorhhgpdhqvghmuhdqsghlohgtkhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdelpdhmohguvgepshhmthhpohhuth
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.351,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U3mR9f1vT+dz
+References: <20230215192530.299263-1-alex.bennee@linaro.org> <20230215192530.299263-8-alex.bennee@linaro.org>
+In-Reply-To: <20230215192530.299263-8-alex.bennee@linaro.org>
+From: John Snow <jsnow@redhat.com>
+Date: Thu, 16 Feb 2023 13:15:30 -0500
+Message-ID: <CAFn=p-b18P0oOhiYPkoQvVzQfqVu4XLprp4-JMbPRF4y72-svQ@mail.gmail.com>
+Subject: Re: [PATCH 07/12] testing: update ubuntu2004 to ubuntu2204
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Michael Roth <michael.roth@amd.com>, 
+	Alexander Bulekov <alxndr@bu.edu>, Qiuhao Li <Qiuhao.Li@outlook.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, Darren Kenny <darren.kenny@oracle.com>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Bandan Das <bsd@redhat.com>, Cleber Rosa <crosa@redhat.com>, 
+	Peter Maydell <peter.maydell@linaro.org>, 
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Yonggang Luo <luoyonggang@gmail.com>, 
+	Li-Wen Hsu <lwhsu@freebsd.org>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Thomas Huth <thuth@redhat.com>, Beraldo Leal <bleal@redhat.com>, Ed Maste <emaste@freebsd.org>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: B2lI0+W2+MmX
 
-On 2/16/23 13:25, Philippe Mathieu-Daudé wrote:
-> ForeachArgs::name is only used once as TYPE_IPMI_BMC.
-> Since the penultimate commit, object_child_foreach_recursive()'s
-> handler takes an Error* argument and return a boolean.
-> We can directly pass ForeachArgs::obj as context, removing the
-> ForeachArgs structure.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Wed, Feb 15, 2023 at 2:25 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
 >
+> The 22.04 LTS release has been out for almost a year now so its time
+> to update all the remaining images to the current LTS. We can also
+> drop some hacks we need for older clang TSAN support.
+
+We still support Ubuntu 20.04 until 2024 though, don't we? Is it safe
+to not test this platform?
+
+I've long been uncertain about what our policy actually is for docker
+tests, if we want to test every platform we support or only some of
+them; and if it's only some of them, when do we choose the older and
+when do we choose the newer?
+
+
+
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > ---
-> RFC: please double-check...
+>  docs/devel/testing.rst                        |  4 ++--
+>  .gitlab-ci.d/buildtest.yml                    | 22 +++++++++----------
+>  .gitlab-ci.d/containers.yml                   |  4 ++--
+>  .../{ubuntu2004.docker =3D> ubuntu2204.docker}  | 16 +++++---------
+>  tests/docker/test-tsan                        |  2 +-
+>  tests/lcitool/refresh                         | 10 +--------
+>  6 files changed, 23 insertions(+), 35 deletions(-)
+>  rename tests/docker/dockerfiles/{ubuntu2004.docker =3D> ubuntu2204.docke=
+r} (91%)
 >
-> 
->   hw/ppc/pnv_bmc.c | 25 +++++++++----------------
->   1 file changed, 9 insertions(+), 16 deletions(-)
-> 
-> diff --git a/hw/ppc/pnv_bmc.c b/hw/ppc/pnv_bmc.c
-> index 05acc88a55..566284469f 100644
-> --- a/hw/ppc/pnv_bmc.c
-> +++ b/hw/ppc/pnv_bmc.c
-> @@ -278,36 +278,29 @@ IPMIBmc *pnv_bmc_create(PnvPnor *pnor)
->       return IPMI_BMC(obj);
->   }
->   
-> -typedef struct ForeachArgs {
-> -    const char *name;
-> -    Object *obj;
-> -} ForeachArgs;
+> diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+> index e10c47b5a7..309a575abe 100644
+> --- a/docs/devel/testing.rst
+> +++ b/docs/devel/testing.rst
+> @@ -574,13 +574,13 @@ https://github.com/google/sanitizers/wiki/ThreadSan=
+itizerCppManual
+>
+>  Thread Sanitizer in Docker
+>  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+> -TSan is currently supported in the ubuntu2004 docker.
+> +TSan is currently supported in the ubuntu2204 docker.
+>
+>  The test-tsan test will build using TSan and then run make check.
+>
+>  .. code::
+>
+> -  make docker-test-tsan@ubuntu2004
+> +  make docker-test-tsan@ubuntu2204
+>
+>  TSan warnings under docker are placed in files located at build/tsan/.
+>
+> diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+> index 8f332fc36f..be319ab2d0 100644
+> --- a/.gitlab-ci.d/buildtest.yml
+> +++ b/.gitlab-ci.d/buildtest.yml
+> @@ -38,9 +38,9 @@ avocado-system-alpine:
+>  build-system-ubuntu:
+>    extends: .native_build_job_template
+>    needs:
+> -    job: amd64-ubuntu2004-container
+> +    job: amd64-ubuntu2204-container
+>    variables:
+> -    IMAGE: ubuntu2004
+> +    IMAGE: ubuntu2204
+>      CONFIGURE_ARGS: --enable-docs --enable-fdt=3Dsystem --enable-capston=
+e
+>      TARGETS: aarch64-softmmu alpha-softmmu cris-softmmu hppa-softmmu
+>        microblazeel-softmmu mips64el-softmmu
+> @@ -56,7 +56,7 @@ check-system-ubuntu:
+>      - job: build-system-ubuntu
+>        artifacts: true
+>    variables:
+> -    IMAGE: ubuntu2004
+> +    IMAGE: ubuntu2204
+>      MAKE_CHECK_ARGS: check
+>
+>  avocado-system-ubuntu:
+> @@ -65,7 +65,7 @@ avocado-system-ubuntu:
+>      - job: build-system-ubuntu
+>        artifacts: true
+>    variables:
+> -    IMAGE: ubuntu2004
+> +    IMAGE: ubuntu2204
+>      MAKE_CHECK_ARGS: check-avocado
+>
+>  build-system-debian:
+> @@ -459,10 +459,10 @@ avocado-cfi-x86_64:
+>  tsan-build:
+>    extends: .native_build_job_template
+>    needs:
+> -    job: amd64-ubuntu2004-container
+> +    job: amd64-ubuntu2204-container
+>    variables:
+> -    IMAGE: ubuntu2004
+> -    CONFIGURE_ARGS: --enable-tsan --cc=3Dclang-10 --cxx=3Dclang++-10
+> +    IMAGE: ubuntu2204
+> +    CONFIGURE_ARGS: --enable-tsan --cc=3Dclang --cxx=3Dclang++
+>            --enable-trace-backends=3Dust --enable-fdt=3Dsystem --disable-=
+slirp
+>      TARGETS: x86_64-softmmu ppc64-softmmu riscv64-softmmu x86_64-linux-u=
+ser
+>      MAKE_CHECK_ARGS: bench V=3D1
+> @@ -471,10 +471,10 @@ tsan-build:
+>  gcov:
+>    extends: .native_build_job_template
+>    needs:
+> -    job: amd64-ubuntu2004-container
+> +    job: amd64-ubuntu2204-container
+>    timeout: 80m
+>    variables:
+> -    IMAGE: ubuntu2004
+> +    IMAGE: ubuntu2204
+>      CONFIGURE_ARGS: --enable-gcov
+>      TARGETS: aarch64-softmmu ppc64-softmmu s390x-softmmu x86_64-softmmu
+>      MAKE_CHECK_ARGS: check
+> @@ -539,9 +539,9 @@ build-tci:
+>  build-coroutine-sigaltstack:
+>    extends: .native_build_job_template
+>    needs:
+> -    job: amd64-ubuntu2004-container
+> +    job: amd64-ubuntu2204-container
+>    variables:
+> -    IMAGE: ubuntu2004
+> +    IMAGE: ubuntu2204
+>      CONFIGURE_ARGS: --with-coroutine=3Dsigaltstack --disable-tcg
+>                      --enable-trace-backends=3Dftrace
+>      MAKE_CHECK_ARGS: check-unit
+> diff --git a/.gitlab-ci.d/containers.yml b/.gitlab-ci.d/containers.yml
+> index 96d2a3b58b..8637a13d86 100644
+> --- a/.gitlab-ci.d/containers.yml
+> +++ b/.gitlab-ci.d/containers.yml
+> @@ -13,10 +13,10 @@ amd64-debian-container:
+>    variables:
+>      NAME: debian-amd64
+>
+> -amd64-ubuntu2004-container:
+> +amd64-ubuntu2204-container:
+>    extends: .container_job_template
+>    variables:
+> -    NAME: ubuntu2004
+> +    NAME: ubuntu2204
+>
+>  amd64-opensuse-leap-container:
+>    extends: .container_job_template
+> diff --git a/tests/docker/dockerfiles/ubuntu2004.docker b/tests/docker/do=
+ckerfiles/ubuntu2204.docker
+> similarity index 91%
+> rename from tests/docker/dockerfiles/ubuntu2004.docker
+> rename to tests/docker/dockerfiles/ubuntu2204.docker
+> index f34d88d33d..30b9e56793 100644
+> --- a/tests/docker/dockerfiles/ubuntu2004.docker
+> +++ b/tests/docker/dockerfiles/ubuntu2204.docker
+> @@ -1,10 +1,10 @@
+>  # THIS FILE WAS AUTO-GENERATED
+>  #
+> -#  $ lcitool dockerfile --layers all ubuntu-2004 qemu
+> +#  $ lcitool dockerfile --layers all ubuntu-2204 qemu
+>  #
+>  # https://gitlab.com/libvirt/libvirt-ci
+>
+> -FROM docker.io/library/ubuntu:20.04
+> +FROM docker.io/library/ubuntu:22.04
+>
+>  RUN export DEBIAN_FRONTEND=3Dnoninteractive && \
+>      apt-get update && \
+> @@ -14,7 +14,7 @@ RUN export DEBIAN_FRONTEND=3Dnoninteractive && \
+>                        bash \
+>                        bc \
+>                        bison \
+> -                      bsdmainutils \
+> +                      bsdextrautils \
+>                        bzip2 \
+>                        ca-certificates \
+>                        ccache \
+> @@ -36,6 +36,7 @@ RUN export DEBIAN_FRONTEND=3Dnoninteractive && \
+>                        libasan5 \
+>                        libasound2-dev \
+>                        libattr1-dev \
+> +                      libbpf-dev \
+>                        libbrlapi-dev \
+>                        libbz2-dev \
+>                        libc6-dev \
+> @@ -90,6 +91,7 @@ RUN export DEBIAN_FRONTEND=3Dnoninteractive && \
+>                        libtasn1-6-dev \
+>                        libubsan1 \
+>                        libudev-dev \
+> +                      liburing-dev \
+>                        libusb-1.0-0-dev \
+>                        libusbredirhost-dev \
+>                        libvdeplug-dev \
+> @@ -100,6 +102,7 @@ RUN export DEBIAN_FRONTEND=3Dnoninteractive && \
+>                        llvm \
+>                        locales \
+>                        make \
+> +                      meson \
+>                        multipath-tools \
+>                        ncat \
+>                        nettle-dev \
+> @@ -111,11 +114,9 @@ RUN export DEBIAN_FRONTEND=3Dnoninteractive && \
+>                        python3-opencv \
+>                        python3-pillow \
+>                        python3-pip \
+> -                      python3-setuptools \
+>                        python3-sphinx \
+>                        python3-sphinx-rtd-theme \
+>                        python3-venv \
+> -                      python3-wheel \
+>                        python3-yaml \
+>                        rpm2cpio \
+>                        sed \
+> @@ -139,13 +140,8 @@ RUN export DEBIAN_FRONTEND=3Dnoninteractive && \
+>      ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
+>      ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
+>
+> -RUN /usr/bin/pip3 install meson=3D=3D0.56.0
 > -
->   static bool bmc_find(Object *child, void *opaque, Error **errp)
->   {
-> -    ForeachArgs *args = opaque;
-> +    Object **obj = opaque;
->   
-> -    if (object_dynamic_cast(child, args->name)) {
-> -        if (args->obj) {
-> -            return false;
-
-The purpose of this test was to catch multiple bmc devices and it's removed
-now.
-  
-> +    if (object_dynamic_cast(child, TYPE_IPMI_BMC)) {
-> +        if (*obj) {
-> +            return true;
->           }
-> -        args->obj = child;
-> +        *obj = child;
->       }
->       return true;
->   }
->   
->   IPMIBmc *pnv_bmc_find(Error **errp)
->   {
-> -    ForeachArgs args = { TYPE_IPMI_BMC, NULL };
-> -    int ret;
-> +    Object *obj = NULL;
->   
-> -    ret = object_child_foreach_recursive(object_get_root(), bmc_find,
-> -                                         &args, NULL);
-> -    if (ret) {
-> +    if (!object_child_foreach_recursive(object_get_root(), bmc_find, &obj,
-> +                                        NULL)) {
->           error_setg(errp, "machine should have only one BMC device. "
->                      "Use '-nodefaults'");>           return NULL;
->       }
-
-We don't test obj against NULL any more. This could break the QOM cast below.
-
-Thanks,
-
-
-C.
-
-
->   
-> -    return args.obj ? IPMI_BMC(args.obj) : NULL;
-> +    return IPMI_BMC(obj);
->   }
-
+>  ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
+>  ENV LANG "en_US.UTF-8"
+>  ENV MAKE "/usr/bin/make"
+>  ENV NINJA "/usr/bin/ninja"
+>  ENV PYTHON "/usr/bin/python3"
+> -# Apply patch https://reviews.llvm.org/D75820
+> -# This is required for TSan in clang-10 to compile with QEMU.
+> -RUN sed -i 's/^const/static const/g' /usr/lib/llvm-10/lib/clang/10.0.0/i=
+nclude/sanitizer/tsan_interface.h
+> diff --git a/tests/docker/test-tsan b/tests/docker/test-tsan
+> index 53d90d2f79..f6d6590e39 100755
+> --- a/tests/docker/test-tsan
+> +++ b/tests/docker/test-tsan
+> @@ -21,7 +21,7 @@ setup_tsan()
+>      tsan_log_dir=3D"/tmp/qemu-test/build/tsan"
+>      mkdir -p $tsan_log_dir > /dev/null || true
+>      EXTRA_CONFIGURE_OPTS=3D"${EXTRA_CONFIGURE_OPTS} --enable-tsan \
+> -                          --cc=3Dclang-10 --cxx=3Dclang++-10 \
+> +                          --cc=3Dclang --cxx=3Dclang++ \
+>                            --disable-werror --extra-cflags=3D-O0"
+>      # detect deadlocks is false currently simply because
+>      # TSan crashes immediately with deadlock detector enabled.
+> diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+> index a5ea0efc3b..eeee9a7b34 100755
+> --- a/tests/lcitool/refresh
+> +++ b/tests/lcitool/refresh
+> @@ -69,13 +69,6 @@ def generate_cirrus(target, trailer=3DNone):
+>      generate(filename, cmd, trailer)
+>
+>
+> -ubuntu2004_tsanhack =3D [
+> -    "# Apply patch https://reviews.llvm.org/D75820\n",
+> -    "# This is required for TSan in clang-10 to compile with QEMU.\n",
+> -    "RUN sed -i 's/^const/static const/g' /usr/lib/llvm-10/lib/clang/10.=
+0.0/include/sanitizer/tsan_interface.h\n"
+> -]
+> -
+> -
+>  # Netmap still needs to be manually built as it is yet to be packaged
+>  # into a distro. We also add cscope and gtags which are used in the CI
+>  # test
+> @@ -113,8 +106,7 @@ try:
+>                          trailer=3D"".join(debian11_extras))
+>      generate_dockerfile("fedora", "fedora-37")
+>      generate_dockerfile("opensuse-leap", "opensuse-leap-153")
+> -    generate_dockerfile("ubuntu2004", "ubuntu-2004",
+> -                        trailer=3D"".join(ubuntu2004_tsanhack))
+> +    generate_dockerfile("ubuntu2204", "ubuntu-2204")
+>
+>      #
+>      # Cross compiling builds
+> --
+> 2.39.1
+>

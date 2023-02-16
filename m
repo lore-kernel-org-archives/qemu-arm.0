@@ -1,112 +1,91 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp439873ejb;
-        Thu, 16 Feb 2023 04:27:35 -0800 (PST)
-X-Google-Smtp-Source: AK7set9JlN8pAAkKe9CAPQ8ofuYq1uGjLabZBkf/bJ6R00ZJfnq6eSg3YlhRIr4a+oYHegiUFGbn
-X-Received: by 2002:a05:622a:412:b0:3b8:525f:f0a7 with SMTP id n18-20020a05622a041200b003b8525ff0a7mr8853433qtx.56.1676550455054;
-        Thu, 16 Feb 2023 04:27:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676550455; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp510478ejb;
+        Thu, 16 Feb 2023 05:50:34 -0800 (PST)
+X-Google-Smtp-Source: AK7set+WH2G9MVbtnLYZ+ff6a7x2zCKDE4ZY5qN5KAg19e5nj6hArrInS1KUr8TriiIeQ6ZVO4QO
+X-Received: by 2002:ac8:7d4e:0:b0:3bd:e77:fabe with SMTP id h14-20020ac87d4e000000b003bd0e77fabemr1986087qtb.26.1676555433896;
+        Thu, 16 Feb 2023 05:50:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676555433; cv=none;
         d=google.com; s=arc-20160816;
-        b=yR4jEuOP9f6wDL3y985Bp/beHrFL5Li0tMXrIBC/RVMkZ3WwAIxzfZn6YuThnB02OG
-         47a9LX07MFgBk9Ca3a4glgU7p0I78Fo1gmA/zoU0vaWXMZp0dm+SStVs6DHmfqZYsV5c
-         8+AyJPnzH/gmySpkvmxUfKmCny/ugkaBbteWsIvy0p9FPugGse2HqWhOkr6Ha1at62oJ
-         Ie/VvCqtBOn+iwefmIq1j43SqDoadXpu5TjaueQcq4Piq+quLX8rgH/hHgaoHqXTsUHC
-         4wyluuhc+jNKoSsNcrrRChj2HVYqxY0dIRD4H42J45KEb2qNP9YRFVk17oCOGoEWlGuM
-         ur8g==
+        b=sGqHLOkqE7pTIBQe0NhYaK6ToAJv7QIVPIt6S+wrPmGoYl/3UY70U+JV0Wt8ojN4Kj
+         09CItJg8AcEIzvTxY03rokELJIH/57vbRBnTrfbXg3eE6l0d4NshJosX0Zf7DRxW/Fnh
+         mFR6e60hpiLQtzjYxM/Sem6bi+sqMY/2SfUK7WW7phbWqzHu7+nyT4j4Qt24lk36Xakh
+         z+8VDYTTvREjZbMj3qYj5A9nyl0Vt+gYAX4DcOEZe1RzlzIAl06KiT6HzbE6RxQO5epb
+         MWnW6TuFWqTv8hLsbsJQyxLntm5Fh3wBlYkBrSMwL2YcyN2qV40a7Bm+QcZPo//xd8ZA
+         SIKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=J9tFPN4rdCw1nxfX8ah3wia3JiRf2r85XcvwPt3k03s=;
-        b=xThocR49RI/4zNSj7quBi4jUin+JfIgZhD0CpKpRafi1ugRXm5g4/Ocoxj2USuFleX
-         LJahf7NcfzqNLVE8kapkgFzrroLyUV9b29QcIut64aK1fvEdNFTSmRT/fDHbWMNptf9t
-         pQTfS/56VZXrmQxAsfw60xSTCrxwqdaOu8+ewdynkrhMqeDLzwPbYFQmUrt5Y5I57k0P
-         umgBmBOhmbLiQ3iD+vRmWSO1PHGnv91hgD0JjPvlTY4jbqa87hQFiSJqYdxVH+JPUY6K
-         kE8DnqEr8RRyBWY7yPjnF6+7dlMzL5mOafZ9zT6Jlb3A/CEjj1SDeJIccoEKQjzGwztN
-         WjVA==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=0O6p15bxB6LJZfRjLjxTjfKcqBYUDpw80K1DB0i9hvg=;
+        b=Stm1o6IPRMszpFSRbGzwm/PnvZEohqWWJ9Sc3Pbdkf93g1gdWCg5absno63MsV/oqA
+         WLE27Uo1Fds5siamGzNePO7gFDmSn9H6B+MYbh7fnO8EG2Lpkb9OQL44Qvf80ylbh7U4
+         wtzd4733bt+610tHsQHzUrmeMduH1dZZvP2rThytRvJxtJpvWZ+D8PdFZqaP7Z+wKoJw
+         kLoPIfkTfcMeVQGnpB/ilEsNnLzCBAAoFC7p1baY3OHhM0hOvSY3GGolUwbQ750BugUo
+         wQ/bhIJOF8U/AzIHgAfzO2kpp0i0Zd5DM8Ah6mIriq/izrJ9Qwe7hSbsAhWi4cmKcJju
+         VF9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VSStNVY4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w14-20020ac857ce000000b0039534ccd9casi1617888qta.355.2023.02.16.04.27.34
+        by mx.google.com with ESMTPS id f31-20020a05622a1a1f00b003b9bad5160csi1638810qtb.291.2023.02.16.05.50.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 04:27:35 -0800 (PST)
+        Thu, 16 Feb 2023 05:50:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VSStNVY4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSdKn-0002ov-Su; Thu, 16 Feb 2023 07:25:57 -0500
+	id 1pSeeV-0004G6-3K; Thu, 16 Feb 2023 08:50:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pSdKm-0002oM-Ly
- for qemu-arm@nongnu.org; Thu, 16 Feb 2023 07:25:56 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pSdKk-00088j-WE
- for qemu-arm@nongnu.org; Thu, 16 Feb 2023 07:25:56 -0500
-Received: by mail-wm1-x332.google.com with SMTP id he5so1427503wmb.3
- for <qemu-arm@nongnu.org>; Thu, 16 Feb 2023 04:25:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=J9tFPN4rdCw1nxfX8ah3wia3JiRf2r85XcvwPt3k03s=;
- b=VSStNVY4wyoxHRBnEZUdC/a8liXCq2B5GZbeXSvysmyHNULFGw+ueEaWQGs4PvMtTp
- BtAJFnhU8mgmmKZbCpdrD+K6Yz8chWrE/g5p/ixc9rV4356aizfYaru6I6a7YmUWc+Re
- tiAulQGM2prRHTZGoPyTyfbZR+Gu5fF+MmQYRGb0CGLeIK3DfTcOjOMHrQSjfNO20ogk
- NYx+QP3pg9ADZnZQ21CXeouaw3wNxOTV6LSrlpG9l5sN7cIpuxwj0KAPyz56cNXvLwvq
- 0UhX/88uibER7N484m2RI29YOi6GDy1kff1htF9xxDAKJuSZpq189dDcE6UlZCc2u8+E
- X5Rg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=J9tFPN4rdCw1nxfX8ah3wia3JiRf2r85XcvwPt3k03s=;
- b=E+RZxirmFUFBQ32CU0oan5zba4ksv1Zd+qEHT6GqVzC4FtilEwV6GPdNo98+hOWiMG
- w5lM766KGLei7iiHVRnnv4bZQ1QMyviCMUDZrqWjPdvo1rKhPI94FmqRMpbn+ZoT+QSK
- aIfMEbBWUoUuocekDk4RMHinPzzFbAyuxi9i9Jp58ILVvm4geZUWMj//rDP2tcFi1Fjl
- v0dIcYD+aDE1t12q33cNB33238YxwyRI8xbiMOsc7GYhxhiuO06sZlWPjXuMCXrJjtVF
- UnwlJJYtLDHInneDMHqpJdUuB2AE9U0VP3K6kWjvkpWX3MDyOZWZoVzbST/FhGT4UVRm
- HCkQ==
-X-Gm-Message-State: AO0yUKVd1r22jfFjAHLPZd89Fd2/6Lm1BmO5kkW161wCz3uxxUg8Cday
- cFrHYbYk2x+xSKhrLFtPwYuRag==
-X-Received: by 2002:a05:600c:4d12:b0:3e2:1636:766a with SMTP id
- u18-20020a05600c4d1200b003e21636766amr655997wmp.9.1676550354304; 
- Thu, 16 Feb 2023 04:25:54 -0800 (PST)
-Received: from localhost.localdomain ([81.0.6.76])
- by smtp.gmail.com with ESMTPSA id
- e1-20020a05600c4e4100b003e0015c8618sm5280146wmq.6.2023.02.16.04.25.53
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 16 Feb 2023 04:25:53 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [RFC PATCH 5/5] hw/ppc/pnv_bmc: Simplify pnv_bmc_find()
-Date: Thu, 16 Feb 2023 13:25:24 +0100
-Message-Id: <20230216122524.67212-6-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230216122524.67212-1-philmd@linaro.org>
-References: <20230216122524.67212-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pSeeI-00042d-Ok
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 08:50:12 -0500
+Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pSeeG-0002gC-Dx
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 08:50:10 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.174])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 27B8C20B2C;
+ Thu, 16 Feb 2023 13:50:03 +0000 (UTC)
+Received: from kaod.org (37.59.142.103) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21; Thu, 16 Feb
+ 2023 14:50:02 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G0055998b8ad-dfee-4c31-a215-d884ac20c00c,
+ 6472B0FD1AC4FAE7C483658EB00F62ED22160684) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <69176363-525b-9909-2c01-e2f61d4c233d@kaod.org>
+Date: Thu, 16 Feb 2023 14:50:01 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.2
+Subject: Re: [PATCH v3] Adding new machine Yosemitev2 in QEMU
+Content-Language: en-US
+To: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>,
+ <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+References: <20230216133326.216017-1-pkarthikeyan1509@gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230216133326.216017-1-pkarthikeyan1509@gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 1b176618-7322-49c2-aac2-73dfffe9f9d8
+X-Ovh-Tracer-Id: 3785838440758086438
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrudeijedgheeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepteeghedugeeiffekfedtlefftdejleefgeegteelgfdujeeggfefieevuedtffehnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehpkhgrrhhthhhikhgvhigrnhduhedtleesghhmrghilhdrtghomhdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdgrnhgurhgvfiesrghjrdhiugdrrghupdhjohgvlhesjhhmshdrihgurdgruhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheegkedpmhhouggvpehsmhhtphhouhht
+Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
+ helo=9.mo548.mail-out.ovh.net
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.351,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -123,71 +102,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iVxnbfl7URnc
+X-TUID: QDUqTNSAoyMW
 
-ForeachArgs::name is only used once as TYPE_IPMI_BMC.
-Since the penultimate commit, object_child_foreach_recursive()'s
-handler takes an Error* argument and return a boolean.
-We can directly pass ForeachArgs::obj as context, removing the
-ForeachArgs structure.
+On 2/16/23 14:33, Karthikeyan Pasupathi wrote:
+> This patch support Yosemitev2 in QEMU environment.
+> and introduced EEPROM BMC FRU data support "add fbyv2_bmc_fruid data"
+> along with the machine support.
+> 
+> 
+> Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
-RFC: please double-check...
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
- hw/ppc/pnv_bmc.c | 25 +++++++++----------------
- 1 file changed, 9 insertions(+), 16 deletions(-)
+Thanks,
 
-diff --git a/hw/ppc/pnv_bmc.c b/hw/ppc/pnv_bmc.c
-index 05acc88a55..566284469f 100644
---- a/hw/ppc/pnv_bmc.c
-+++ b/hw/ppc/pnv_bmc.c
-@@ -278,36 +278,29 @@ IPMIBmc *pnv_bmc_create(PnvPnor *pnor)
-     return IPMI_BMC(obj);
- }
- 
--typedef struct ForeachArgs {
--    const char *name;
--    Object *obj;
--} ForeachArgs;
--
- static bool bmc_find(Object *child, void *opaque, Error **errp)
- {
--    ForeachArgs *args = opaque;
-+    Object **obj = opaque;
- 
--    if (object_dynamic_cast(child, args->name)) {
--        if (args->obj) {
--            return false;
-+    if (object_dynamic_cast(child, TYPE_IPMI_BMC)) {
-+        if (*obj) {
-+            return true;
-         }
--        args->obj = child;
-+        *obj = child;
-     }
-     return true;
- }
- 
- IPMIBmc *pnv_bmc_find(Error **errp)
- {
--    ForeachArgs args = { TYPE_IPMI_BMC, NULL };
--    int ret;
-+    Object *obj = NULL;
- 
--    ret = object_child_foreach_recursive(object_get_root(), bmc_find,
--                                         &args, NULL);
--    if (ret) {
-+    if (!object_child_foreach_recursive(object_get_root(), bmc_find, &obj,
-+                                        NULL)) {
-         error_setg(errp, "machine should have only one BMC device. "
-                    "Use '-nodefaults'");
-         return NULL;
-     }
- 
--    return args.obj ? IPMI_BMC(args.obj) : NULL;
-+    return IPMI_BMC(obj);
- }
--- 
-2.38.1
+C.
+
+> ---
+>   hw/arm/aspeed.c        | 31 +++++++++++++++++++++++++++++++
+>   hw/arm/aspeed_eeprom.c | 23 +++++++++++++++++++++++
+>   hw/arm/aspeed_eeprom.h |  3 +++
+>   3 files changed, 57 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 27dda58338..3f992fea46 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -521,6 +521,15 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+>                        TYPE_TMP105, 0x4d);
+>   }
+>   
+> +static void yosemitev2_bmc_i2c_init(AspeedMachineState *bmc)
+> +{
+> +    AspeedSoCState *soc = &bmc->soc;
+> +
+> +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x51, 128 * KiB);
+> +    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 128 * KiB,
+> +                          yosemitev2_bmc_fruid, yosemitev2_bmc_fruid_len);
+> +}
+> +
+>   static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+>   {
+>       AspeedSoCState *soc = &bmc->soc;
+> @@ -1174,6 +1183,24 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
+>           aspeed_soc_num_cpus(amc->soc_name);
+>   };
+>   
+> +static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc       = "Facebook YosemiteV2 BMC (ARM1176)";
+> +    amc->soc_name  = "ast2500-a1";
+> +    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
+> +    amc->hw_strap2 = 0;
+> +    amc->fmc_model = "n25q256a";
+> +    amc->spi_model = "mx25l25635e";
+> +    amc->num_cs    = 2;
+> +    amc->i2c_init  = yosemitev2_bmc_i2c_init;
+> +    mc->default_ram_size       = 512 * MiB;
+> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
+> +        aspeed_soc_num_cpus(amc->soc_name);
+> +};
+> +
+>   static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
+>   {
+>       MachineClass *mc = MACHINE_CLASS(oc);
+> @@ -1562,6 +1589,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>           .name          = MACHINE_TYPE_NAME("ast2600-evb"),
+>           .parent        = TYPE_ASPEED_MACHINE,
+>           .class_init    = aspeed_machine_ast2600_evb_class_init,
+> +    }, {
+> +        .name          = MACHINE_TYPE_NAME("yosemitev2-bmc"),
+> +        .parent        = TYPE_ASPEED_MACHINE,
+> +        .class_init    = aspeed_machine_yosemitev2_class_init,
+>       }, {
+>           .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
+>           .parent        = TYPE_ASPEED_MACHINE,
+> diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+> index 04463acc9d..7006794654 100644
+> --- a/hw/arm/aspeed_eeprom.c
+> +++ b/hw/arm/aspeed_eeprom.c
+> @@ -77,6 +77,29 @@ const uint8_t fby35_bmc_fruid[] = {
+>       0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+>   };
+>   
+> +/* Yosemite V2 BMC FRU */
+> +const uint8_t yosemitev2_bmc_fruid[] = {
+> +    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
+> +    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
+> +    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
+> +    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
+> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
+> +    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
+> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
+> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
+> +    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x2e, 0x30, 0x20, 0x45, 0x56, 0x54,
+> +    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> +    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
+> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
+> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
+> +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
+> +    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+> +};
+> +
+>   const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
+>   const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
+>   const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
+> +
+> +const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
+> diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+> index a0f848fa6e..edf18e9685 100644
+> --- a/hw/arm/aspeed_eeprom.h
+> +++ b/hw/arm/aspeed_eeprom.h
+> @@ -16,4 +16,7 @@ extern const size_t fby35_nic_fruid_len;
+>   extern const size_t fby35_bb_fruid_len;
+>   extern const size_t fby35_bmc_fruid_len;
+>   
+> +extern const uint8_t yosemitev2_bmc_fruid[];
+> +extern const size_t yosemitev2_bmc_fruid_len;
+> +
+>   #endif
 

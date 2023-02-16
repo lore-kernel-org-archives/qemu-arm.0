@@ -1,109 +1,116 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp498697ejb;
-        Thu, 16 Feb 2023 05:34:49 -0800 (PST)
-X-Google-Smtp-Source: AK7set9q3TrQknX3SA/rf3Vg88mUQNLKEN1E5ZKILeS0JNvcYpPWe7x1alFJzRb6cVK4E8OmepHX
-X-Received: by 2002:a05:6214:768:b0:56f:6ba:af98 with SMTP id f8-20020a056214076800b0056f06baaf98mr639932qvz.1.1676554489070;
-        Thu, 16 Feb 2023 05:34:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676554489; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp492980ejb;
+        Thu, 16 Feb 2023 05:27:56 -0800 (PST)
+X-Google-Smtp-Source: AK7set/zaxcIUKp7hxEddyHKhJFH07WSE+k3PMpVTi9D6orBgRGDlKDfvexmhMuMN33gPGcmDb3z
+X-Received: by 2002:a05:622a:1889:b0:3bb:995c:424c with SMTP id v9-20020a05622a188900b003bb995c424cmr3867202qtc.22.1676554076140;
+        Thu, 16 Feb 2023 05:27:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676554076; cv=none;
         d=google.com; s=arc-20160816;
-        b=D8HW+XsiQJCdxPwnlGe+adzjaQxZdnl81sjiOHp2d7FSS/NTN7uQ70t6z0mVx6bATi
-         ycYTbGhgDT+Ohdda235CifmUqQVJIx0GIrScJzLtMAFAMUF7OxPMFuiaD6EH0dwgBdQc
-         ZB1krFAwNpVEEJ105o2SjDCA9poddA5JfK+szM2v3bHNPQjUU4pJABgJyK/G9c0SJ5IK
-         HNJVm+ii15t6DUImF7a7BV/ULfwLqvDoECOnFoYFhJwNz5yPjbZBKHQmlBAQ7+khqLzd
-         79wXJW39pwXbxcHzCkUDNaxIEXCA8Y0Whj7yPOKhiSxCovpvbrxgFZ2HuHGBmhqGUX0x
-         BbsA==
+        b=qgsa2r71bqVue2FQMqclglnehH/4mFArbrWTjYPv0l1pheKX/1r/fuFHUKZWFp4Aq4
+         egQJXGIlI3D0f5c0QnlMucDH25E1BGGcV0VEnEBGYtJW8O6I6LwDaOqslml8W/sfObkS
+         iOpmu5JiAR09CDAr9T+yx8d+PY8L2RwITTzriaJ1NHFVJLbT5r9zVIUTcE7kI+rJ7MLm
+         WSMaRyGdUjQWQfOLRcD87hKWd83ug7P1igtuHrp0vNA2CDySmfu64rJE+XAWPr/vZoIA
+         542m/o1wtGETLCU7PJZLAGgoH5e0TpEGT7QkifkK3phb/uoGHSgr+ipLwqwPR2S/70Ew
+         kZrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=svjEy34QPlzgcv4d79+QyBP93GUMkprBPITaoIxwpeo=;
-        b=a6z6eL0Wp5NCSridP1PS7dIp1wcjp+sIzfViy1yjnDzggX0ou3teHPk9nAuDDvH1g6
-         5+aopR9tVEwubmeVAK7wo9+C1WpFrlvj/GM0FNLFeKaZvWe2QjiW17fqx3X1asvtqUbJ
-         XXlNKyOPVV7u6QNS2gt+EaceVuXfsRZ3LIiKPZxhKJEJ1lUZLjVrAlGx5fEywoZOoLkP
-         4j8yKt/PZiOP45GtOuiS+ySeUndNe0V4BuFJELYjq3Tm2+LoEFZATsJa2K79nmUrlElY
-         IODOMFcoIV3RprOZC0j1UeidyWxg5AWNcCwh5+tC3EZxZ5G7/Sj6i2n56Pb46Et81ENC
-         /GsA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=Xa29WhiHgsKNKOOaEkGY+UmjKxSvIsu7Et0upEMMDuU=;
+        b=hpyZsZoi7hcVRnY6Ek64yh1MODkGheysRDcpoYthO+0m2qVg+uV7rxge8/IpL3IF+Y
+         AZf5zzmyIvPYnEy/cHu1ZvDA0G32LoZWNpMrRwhJe7on407rvWXnw7csj2ekfKeqgkqw
+         4fsFs3AJZdIGRPU9ekn/sI+TIlCWIDlkT7l0NrI5stxj9QJBytncajSiS9QMthxcZy8g
+         L5DSwemlKnfNEB/jh/f0gCMC4cVYSxZBxW+1K4A+okezOqymtr48fVr5cr/G8vSNJXGc
+         p1sRlTXQ+H4BGu7aeTiVpwjKaga0Zq/8o0YCwpvMG7OUUzhpPR2916vxQQKEoZcsCia4
+         VQDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ibq7Ja41;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=duqMpugt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1-20020a0cb541000000b0056f079ac110si60765qvd.124.2023.02.16.05.34.48
+        by mx.google.com with ESMTPS id 21-20020ac85955000000b003b9c4961c87si1649182qtz.228.2023.02.16.05.27.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 05:34:49 -0800 (PST)
+        Thu, 16 Feb 2023 05:27:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ibq7Ja41;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=duqMpugt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSePG-0006r1-2R; Thu, 16 Feb 2023 08:34:38 -0500
+	id 1pSeID-0001Se-5L; Thu, 16 Feb 2023 08:27:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
- id 1pSePE-0006qX-44; Thu, 16 Feb 2023 08:34:36 -0500
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1pSeI6-0001IT-2r
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 08:27:14 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
- id 1pSePC-0003TP-6P; Thu, 16 Feb 2023 08:34:35 -0500
-Received: by mail-ot1-x32c.google.com with SMTP id
- 70-20020a9d084c000000b0068bccf754f1so586386oty.7; 
- Thu, 16 Feb 2023 05:34:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=svjEy34QPlzgcv4d79+QyBP93GUMkprBPITaoIxwpeo=;
- b=ibq7Ja41hBbaQvk9GBRR8oDsY+Jb1Zcj2fXTiS7SsKAaifAv+ocPBsJuCP1Ct4MDIH
- wpFPiW9lAkuamIQaSYAWadwC3zYdbnDCwHerOBGQFiJJQ0l5CYsDv338G3tl/UBH8vx9
- GYxnka8kHKTuE6QJ42iua4EalLDD52OXxQgm5Alc4XO/fgjWq2uIZI+O8LEJnDO4LT62
- V6CcsU9kL9shCKE8d+xGQjSrH7zn8Sl5EAe1I4nYR6NxqTwkAagLJitQj16dHsrwgRJz
- fy45mQFzdWX1fKBGytEtwUkZJNqk9VYV3TTcgAM06FLX0BJWV8jAX46dPZhtLEBvJPro
- wNbQ==
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1pSeI4-0006Tn-KD
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 08:27:13 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ bg5-20020a05600c3c8500b003e00c739ce4so1628443wmb.5
+ for <qemu-arm@nongnu.org>; Thu, 16 Feb 2023 05:27:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=Xa29WhiHgsKNKOOaEkGY+UmjKxSvIsu7Et0upEMMDuU=;
+ b=duqMpugt+xYqKE73yw2kOVRIrs69J7u48dp1kcb1WC0scLapyVo+iuYA7S6migJekJ
+ CwlSKTnntFsneapKFAfZW5x7JEmSnyB6HdsOB3BMJij9/JQJ7eTMkF1VT9tG7Ek8kEwL
+ jYxMUrW+q6RGymwi/yRi3uNo2DHq9IOlFucG2ZgviTK4u53Lf5p74Dfq6Q87cE1BPUY8
+ XId/TEmga4nDEVK2zIiAJhqLKpz3ZaApMxnsRg3w8JjnPGjlqQQgu5WBMKD3uqEUplCr
+ kYQvPWSwEJk+RPi+1Iec4hnSu++lUSXyQmJotgdvvQFz8ohnqB75Y1nK44Zaa4MVStiw
+ 0f2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=svjEy34QPlzgcv4d79+QyBP93GUMkprBPITaoIxwpeo=;
- b=uw1+Psr41w0PDd3/PAn4hd6OY+JTEBxTeL8W5mXNE6U7A8djBMdFxA1qrpCXLxyuVh
- 0jxUJCC78BKl9STgMag6Mwi31HOCwKUmKwTdY2JVo6PBO2WlSzfly+L61mjqQbEZZpD5
- GYJvOTQIKMwyx/nQ30Br9AW+dxdaGOMKwEo26QlpNN3kC2b5N93aZK9CAnePxpRRJX9Z
- 933tXXBt/cAnQe+WmoMzqNJu3+PujcpDb2gNtHvIhCkaiFmafkABsZOBaZCHTmB7Kh6k
- HkHqQM8uRvVZ2Zt0ni8Lr2mti5C3dCij92KIdsAlJUzqM5Sog63GzxBfNYWhG5aB9wn8
- h+Uw==
-X-Gm-Message-State: AO0yUKVT64LWPX8e5d6D0Q5iUYInT26YL03Y6czVyjZloBhPkQ+zF1UZ
- zpDiMdFFlve8vcMH+2h0Vf0=
-X-Received: by 2002:a9d:7f0b:0:b0:68d:b8d9:f976 with SMTP id
- j11-20020a9d7f0b000000b0068db8d9f976mr2585773otq.27.1676554472326; 
- Thu, 16 Feb 2023 05:34:32 -0800 (PST)
-Received: from hcl-ThinkPad-T495.hclt.corp.hcl.in ([192.8.226.44])
- by smtp.gmail.com with ESMTPSA id
- f6-20020a9d5f06000000b0068bd6cf405dsm658102oti.1.2023.02.16.05.34.28
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Xa29WhiHgsKNKOOaEkGY+UmjKxSvIsu7Et0upEMMDuU=;
+ b=YIrQi87THVXhzjwoiVusJS+6Z1ZTTMIQqt6QEOIp3TMgIUvlRnM/HIoqGOh+dPGOCT
+ BA92x22Xrde8jAj9TWdVzjWXaynJzmGuZC8085OLrS6DM+U/ZBOBFTG0E666BGa5oh60
+ IJB++tnGA+/+1dg8FmmVcx9lS5M91ihxQKHNXfNV0sXAnKQUf7CAUXOHlN9jsEGKCLI4
+ ojq7HRaz5C5VyQgTwvIjeACpjMO2VLfmsiJJfKIDm7PbzJGnjiZsT8z/b1ONfUmGeQh2
+ /B3JDGR7dZABKR4/95Y4z7knzrl//oTSc2yN/E2MzNQZXQrYAHOhVnV2v76w6sd33R2E
+ yszA==
+X-Gm-Message-State: AO0yUKUrluXR3HO+x3d7IgNLX62bErAB53BE/WbWONdQzmi7MafG0UOd
+ NTYs0yaocKZlQjpS6g/SjrTLTQ==
+X-Received: by 2002:a05:600c:1d81:b0:3df:f3ce:be45 with SMTP id
+ p1-20020a05600c1d8100b003dff3cebe45mr219810wms.4.1676554030886; 
+ Thu, 16 Feb 2023 05:27:10 -0800 (PST)
+Received: from google.com (44.232.78.34.bc.googleusercontent.com.
+ [34.78.232.44]) by smtp.gmail.com with ESMTPSA id
+ c1-20020adfe701000000b002c5526234d2sm1547500wrm.8.2023.02.16.05.27.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Feb 2023 05:34:31 -0800 (PST)
-From: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-To: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-Subject: [PATCH v3] Adding new machine Yosemitev2 in QEMU
-Date: Thu, 16 Feb 2023 19:03:27 +0530
-Message-Id: <20230216133326.216017-1-pkarthikeyan1509@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ Thu, 16 Feb 2023 05:27:10 -0800 (PST)
+Date: Thu, 16 Feb 2023 13:27:05 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-devel@nongnu.org, jean-philippe@linaro.org,
+ peter.maydell@linaro.org, qemu-arm@nongnu.org
+Subject: Re: [RFC PATCH 08/16] hw/arm/smmuv3: Support S2AFFD
+Message-ID: <Y+4vKVWenRF5ALcb@google.com>
+References: <20230205094411.793816-1-smostafa@google.com>
+ <20230205094411.793816-9-smostafa@google.com>
+ <7fa87a34-48ad-5b7d-a034-44b925f0d1c1@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
- envelope-from=pkarthikeyan1509@gmail.com; helo=mail-ot1-x32c.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7fa87a34-48ad-5b7d-a034-44b925f0d1c1@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,122 +125,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F15MPSR0GeAf
+X-TUID: bA9OoZKSv14V
 
-This patch support Yosemitev2 in QEMU environment.
-and introduced EEPROM BMC FRU data support "add fbyv2_bmc_fruid data"
-along with the machine support.
+Hi Eric,
+
+On Wed, Feb 15, 2023 at 07:37:52PM +0100, Eric Auger wrote:
+> > Parse S2AFFD from STE and use it in stage-2 translation.
+> >
+> > This is described in the SMMUv3 manual "5.2. Stream Table Entry" in
+> > "[181] S2AFFD".
+> 
+> from a patch structure pov, to me it would make more sense to add the
+> STE field decoding in
+> [RFC PATCH 06/16] hw/arm/smmuv3: Parse STE config for stage-2 and use it
+> in hw/arm/smmuv3: Add page table walk for stage-2
+Yes, as all STE parsing will be in the same patch, it make sense to
+remove this one and AFFD in stage-2 PTW.
+
+> > +         * An Access fault takes priority over a Permission fault.
+> > +         */
+> > +        if (!PTE_AF(pte) && !cfg->s2cfg.affd) {
+> > +            info->type = SMMU_PTW_ERR_ACCESS;
+> Wondering how you are going to differentiate page faults at S1 versus
+> page faults at S2.
+> Event number #10 differentiates both and recorded fields are different.
+> 
+> Do you handle that somewhere?
+Yes, this is missing, similar to F_TRANSLATION, we can set
+info->u.f_walk_eabt.s2 which would set S2[103] bit in the fault event.
 
 
-Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
----
- hw/arm/aspeed.c        | 31 +++++++++++++++++++++++++++++++
- hw/arm/aspeed_eeprom.c | 23 +++++++++++++++++++++++
- hw/arm/aspeed_eeprom.h |  3 +++
- 3 files changed, 57 insertions(+)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 27dda58338..3f992fea46 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -521,6 +521,15 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
-                      TYPE_TMP105, 0x4d);
- }
- 
-+static void yosemitev2_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x51, 128 * KiB);
-+    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 128 * KiB,
-+                          yosemitev2_bmc_fruid, yosemitev2_bmc_fruid_len);
-+}
-+
- static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-@@ -1174,6 +1183,24 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
- 
-+static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Facebook YosemiteV2 BMC (ARM1176)";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
-+    amc->hw_strap2 = 0;
-+    amc->fmc_model = "n25q256a";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 2;
-+    amc->i2c_init  = yosemitev2_bmc_i2c_init;
-+    mc->default_ram_size       = 512 * MiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1562,6 +1589,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_ast2600_evb_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("yosemitev2-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_yosemitev2_class_init,
-     }, {
-         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
-index 04463acc9d..7006794654 100644
---- a/hw/arm/aspeed_eeprom.c
-+++ b/hw/arm/aspeed_eeprom.c
-@@ -77,6 +77,29 @@ const uint8_t fby35_bmc_fruid[] = {
-     0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
- };
- 
-+/* Yosemite V2 BMC FRU */
-+const uint8_t yosemitev2_bmc_fruid[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
-+    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
-+    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
-+    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
-+    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
-+    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x2e, 0x30, 0x20, 0x45, 0x56, 0x54,
-+    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
-+    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
-+};
-+
- const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
- const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
- const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
-+
-+const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
-diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
-index a0f848fa6e..edf18e9685 100644
---- a/hw/arm/aspeed_eeprom.h
-+++ b/hw/arm/aspeed_eeprom.h
-@@ -16,4 +16,7 @@ extern const size_t fby35_nic_fruid_len;
- extern const size_t fby35_bb_fruid_len;
- extern const size_t fby35_bmc_fruid_len;
- 
-+extern const uint8_t yosemitev2_bmc_fruid[];
-+extern const size_t yosemitev2_bmc_fruid_len;
-+
- #endif
--- 
-2.25.1
-
+Thanks,
+Mostafa

@@ -1,131 +1,116 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp415304ejb;
-        Thu, 16 Feb 2023 03:57:54 -0800 (PST)
-X-Google-Smtp-Source: AK7set8XLAtcin/o253JqDHNlDsI/xH2QH3Cz9ug7kuyb78g5CzuvvgoLBtPl/vbIfhaK/y+Vf+K
-X-Received: by 2002:ac8:5f07:0:b0:3b6:a1c2:f63c with SMTP id x7-20020ac85f07000000b003b6a1c2f63cmr9062368qta.33.1676548673896;
-        Thu, 16 Feb 2023 03:57:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676548673; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp465893ejb;
+        Thu, 16 Feb 2023 04:56:37 -0800 (PST)
+X-Google-Smtp-Source: AK7set/MJiveE4T3DIBQl2qtSUvAKB5A8WkJejGD6Te+QESro+ISVrJ70lFx0f/Fh5Qy71Yqpo0F
+X-Received: by 2002:a05:6214:27ee:b0:56e:aeaa:95b2 with SMTP id jt14-20020a05621427ee00b0056eaeaa95b2mr9610696qvb.9.1676552197060;
+        Thu, 16 Feb 2023 04:56:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676552197; cv=none;
         d=google.com; s=arc-20160816;
-        b=D1paW3LmaUjHoEYw19ipReZmnr7qSjntoYXG08oThLJedaUhclT5F3m/zDnjeLri5y
-         eM6nPu1S+CBT7dKMaXPkGXmgY4gpIcsXspBWIwzpzXUTCvTESIcbx64LNgdmN6McMhIN
-         rPL8lH3G20G7L25ltgEz3jzITAK2ahfLn6uc4U+/qYR5RxC3HQ8y+Dv60ZUKJNoxFeza
-         XQDBctBUzXDzCD0bDIOHh307ef3hdIJp300wQRjVD4Uu+vctjpWpxBbJQ2q9pYOCnKUr
-         1LCDIr3Fh2nc8xcYG8woSso3+TOqTfNq7LA5Xlwv4H0HINXw+P6XmGmFdCCz4txbm92R
-         k6Ag==
+        b=c8/7DXqbiHJGaqjF5ia70U6pZdDG/v/evs/udW08TdD9h7IwUYPkXzehU2VhU15C5v
+         qhQVD/NjhdTA9qPTXNBSaF62+cOR6+ei7cK3DO2stUIeKHqvGL0hQ+W7lXo1uMQWtwJ0
+         5ykLCA5csMVSqNEorVKn81M+gNjGbma+iYQBfFDgxmnno6XFJvP+UsdxnLZDa1ZdV2Pe
+         6zusUGTp2hZcggeAyhPrZGHMc9EY3lRSpatGgOLxRPGSuwKmdxYaVJmaILiqzX2fSQFw
+         pZY3L1AM5pTnZUNtwNfMoS2OoRMRdEprXOxcMSXq1k9xUd2A3JNiWxUKwpHcTTuJA+rL
+         /5vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=qnSewl5Hv1dJ2NRZNJuGLKjQF2/JIyjwP8/rW4Jpoaw=;
-        b=B+QQeQWrZ4aZplbfPIw4qf6ND7PV5TLXF6pId+XA0c0nQxBId3GLST9j75OnnX7vwg
-         CH6Z800Paefjyi/Gh+Y8vnNpPXiGEW1MejBIftvEbG5LCZ2h3wg6py7pf0scHsVf2aqX
-         xlz6gawctwjR8lBoa7E3Iiw84pioyo1FDP5czeUQpBbn6iSnZBzsd6Yt84V/XWHVR3fi
-         5OUihjLUk0cnBJSF3sia5OwrJ3fyOSCUPihQArnB9P2Z9iO+CQcCsj0TwnZVAgyGhP9s
-         K980qlut2R9oW+Ahxw4klrlWruH5EItm5T7FDmQNhkLcFA8D4vOp9DFZ63g3MgAAgsvX
-         x7hg==
+        bh=DWNzeXDYa5Q+N3xw5nFPU0mYbAvIsHA93QjIHPil1d8=;
+        b=BhAj2L+GH7fayfJc043SZNVowPkMnbDoyVAREetiwFCUKhM/FFDC0UVO48A/QEpSsJ
+         r3sngtZjAyv5as8qs0Cansz10CqNOmE9KXP3ykf2pxJQp+Yfl5C6izZBbr+QjmORgW/r
+         TJh0Rxg55Kh5db2vB6W1hWymlejMTKmYuSvLEan0Dt18n5ZM0jXFMtJdtohVv5UeLaMP
+         cHznh0PDvldzj2qSpOJCxBJpd0mzXvE/V6Q/1uUv7L50HovThbMYkp/Pf+vzB9MPpDw7
+         KmNYVK+FgvBxYKkEmJ4GTC5Piy9U9hV+14SFjdXdj4dON7EQ7/zfchmlvM2/5S3EUp7v
+         k0KA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vk9xYM6P;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=mDXNpzK3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3-20020a376403000000b00706b15a6e8fsi1291576qkb.578.2023.02.16.03.57.53
+        by mx.google.com with ESMTPS id b17-20020a0ccd11000000b0056ee5ebb3c5si1172882qvm.284.2023.02.16.04.56.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 03:57:53 -0800 (PST)
+        Thu, 16 Feb 2023 04:56:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vk9xYM6P;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=mDXNpzK3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSctB-000712-C1; Thu, 16 Feb 2023 06:57:25 -0500
+	id 1pSdoJ-0005UW-QK; Thu, 16 Feb 2023 07:56:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pSct6-00070g-9M
- for qemu-arm@nongnu.org; Thu, 16 Feb 2023 06:57:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pSct4-0007Qx-20
- for qemu-arm@nongnu.org; Thu, 16 Feb 2023 06:57:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676548618;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qnSewl5Hv1dJ2NRZNJuGLKjQF2/JIyjwP8/rW4Jpoaw=;
- b=Vk9xYM6PKM4wCf4kITqGB7IPB4wLxH6knRNXT6iQqkPPDdN+XOoNgCViIwu7nsoeeJ9oO0
- fC6R+Sectqaw6KcaiVf5rPn1nJZLwrGf3MWXlbK7Khz6vPyZc9wYPP0SOKGeOYwlKmgETu
- xDJvVVFnqLKgyNkuSoaM85L3n4hjNeA=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-324-4tp4V9l5N12EOyxxe6J-jg-1; Thu, 16 Feb 2023 06:56:56 -0500
-X-MC-Unique: 4tp4V9l5N12EOyxxe6J-jg-1
-Received: by mail-qt1-f198.google.com with SMTP id
- p6-20020a05622a048600b003b9a3ab9153so1066132qtx.8
- for <qemu-arm@nongnu.org>; Thu, 16 Feb 2023 03:56:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1pSdoI-0005Sf-7R
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 07:56:26 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1pSdoG-0006Tg-5y
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 07:56:25 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ bg5-20020a05600c3c8500b003e00c739ce4so1554937wmb.5
+ for <qemu-arm@nongnu.org>; Thu, 16 Feb 2023 04:56:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=DWNzeXDYa5Q+N3xw5nFPU0mYbAvIsHA93QjIHPil1d8=;
+ b=mDXNpzK3YMMWLmQ5Y/tQ2W+6rze0y1afl9wY7IVw/D1GGk4+lg/Lec9a+fAbukKj1H
+ lro1DKDlTySKPxoQ727wz4mPSU6BeFOVBpw4X+mMSXYcTHg0q20wCT4i11VoTdoVC2CA
+ bRRBv/HIjH+wRK+NgV8oYwUjG8jIswXjyWJD5tqb5KRZjviFjQb4FfjxzT6PBiKiZY62
+ briwK5KxD5VsTtmXE6RzBPo1RALFWANEHJux19taPMiO6Mo7VRzXeEMmFZRtW0RjULKq
+ hA9OKbAQ2zhU6xsyA1QBOYxSU8vBAWPLHC41ITm20wrE5XoqSV3dcpRrRzWuGdiMHvBo
+ APEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=qnSewl5Hv1dJ2NRZNJuGLKjQF2/JIyjwP8/rW4Jpoaw=;
- b=YJ0AR9bKNJWRCtI7b0PtNghiDpb3M+Skav2QK/19cyd+jfGRTXwlL9P4hHWUBsq/L4
- C34bilMtaB9bbUVJiUHdqokovfUb1/E2enTPgbLbSt8PLdtEZvSZejLZdoi8Y42o3edk
- paoHpi9GvT4RzVwg9wFRCZzV1Mj2L+KHIe7FDqt1Rj79BT7TF1H+cksE6133DZ+3k/K9
- HS41nyxYhWU+1ZJQYVI71SG60CtLW9N/9Bd1jPm1O8fF2fZWlKu+Q89qFFx8CVBdahGu
- zO1eYhVb8Z0JFFs1vj5jjkhxvCQzm4nIIqH/gwQi3wEm3z/DGL+RjG0ZE7wuwRTn3tGm
- 2pFA==
-X-Gm-Message-State: AO0yUKXXAF0J8pC90TqyPuFmSOk3lsvhAB1GQTUQqlgUM3d9cHDH/JYY
- NF1ud6M6sbDu8dHkyKULpcOeieyiZJcOwdzh5Pf0y3lNBihkEA/DrRXpAjx5QmvH8AbUo5onrGc
- Yox3TcPMxaGy6
-X-Received: by 2002:ac8:5fd0:0:b0:3b0:e83e:4331 with SMTP id
- k16-20020ac85fd0000000b003b0e83e4331mr9336427qta.44.1676548616241; 
- Thu, 16 Feb 2023 03:56:56 -0800 (PST)
-X-Received: by 2002:ac8:5fd0:0:b0:3b0:e83e:4331 with SMTP id
- k16-20020ac85fd0000000b003b0e83e4331mr9336408qta.44.1676548615923; 
- Thu, 16 Feb 2023 03:56:55 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- o62-20020a374141000000b0073b676274e7sm1026674qka.94.2023.02.16.03.56.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Feb 2023 03:56:55 -0800 (PST)
-Message-ID: <7ebe5091-54ae-d5a2-09c4-0ae1e8276cb8@redhat.com>
-Date: Thu, 16 Feb 2023 12:56:52 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [RFC PATCH 13/16] hw/arm/smmuv3: Add CMDs related to stage 2
-To: Mostafa Saleh <smostafa@google.com>, qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DWNzeXDYa5Q+N3xw5nFPU0mYbAvIsHA93QjIHPil1d8=;
+ b=knzKulQpRFlp9qq1jRfhr74D0iKXr9N6lTmXBf0kI3EN+uXW+c7Md5lEUUKeyV6DS6
+ U+jmLsVVkeQfIc+M5BSLWSvdugBgo84tANY2yUsl6CK05qm0WYxevVVK9/ISTxkJI6Sy
+ D/y9BogDdNiVON5oc9qsPy659fHOuR8kPOZ4ofxutQhp8aF2j7IdURzjKdzZbfqqoJRH
+ d2Bc6V9poobqFQkOJSX1cLwrbR8Py2q6ercPzB/ermdrPfpe+4lQavi2VTgyQKvDIe2N
+ M37y5x6kDDxUXrfURyVoH/3q8ESN4f7V2NDsHIzh7QGbbdK7lD1M5i7ecvNzQVUUFpZu
+ 5L8w==
+X-Gm-Message-State: AO0yUKWD8xvQBeBv/W96i3DBvdcPWgk9U2Nih2bHeJZOjfHGPKOFLCOi
+ VDNLiL7J3ROvfDROiKLnoW7V8w==
+X-Received: by 2002:a05:600c:1d25:b0:3dd:c896:d2b1 with SMTP id
+ l37-20020a05600c1d2500b003ddc896d2b1mr219883wms.0.1676552182336; 
+ Thu, 16 Feb 2023 04:56:22 -0800 (PST)
+Received: from google.com (44.232.78.34.bc.googleusercontent.com.
+ [34.78.232.44]) by smtp.gmail.com with ESMTPSA id
+ b7-20020a5d5507000000b002c550eb062fsm1498474wrv.14.2023.02.16.04.56.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Feb 2023 04:56:21 -0800 (PST)
+Date: Thu, 16 Feb 2023 12:56:17 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-devel@nongnu.org, jean-philippe@linaro.org,
+ peter.maydell@linaro.org, qemu-arm@nongnu.org
+Subject: Re: [RFC PATCH 03/16] hw/arm/smmuv3: Rename smmu_ptw_64
+Message-ID: <Y+4n8aJkQu/479Ir@google.com>
 References: <20230205094411.793816-1-smostafa@google.com>
- <20230205094411.793816-14-smostafa@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20230205094411.793816-14-smostafa@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ <20230205094411.793816-4-smostafa@google.com>
+ <608e2401-83f1-e7c6-af17-25da22df76a6@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <608e2401-83f1-e7c6-af17-25da22df76a6@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.257, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,138 +123,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pFGqzK09SGhX
+X-TUID: 6kkYpNssbIo7
 
-Hi Mostafa,
+On Wed, Feb 15, 2023 at 05:53:23PM +0100, Eric Auger wrote:
+> > +                          SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+> >  {
+> >      dma_addr_t baseaddr, indexmask;
+> >      int stage = cfg->stage;
+> > @@ -384,7 +384,7 @@ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+> >          g_assert_not_reached();
+> >      }
+> >  
+> > -    return smmu_ptw_64(cfg, iova, perm, tlbe, info);
+> > +    return smmu_ptw_64_s1(cfg, iova, perm, tlbe, info);
+> May need to rename the trace points as well
+> 
+All PTW trace points have a stage argument which is set correctly
+from stage-1/stage-2 ptw functions:
+trace_smmu_ptw_page_pte
+trace_smmu_ptw_block_pte
+trace_smmu_ptw_invalid_pte
 
-On 2/5/23 10:44, Mostafa Saleh wrote:
-> CMD_TLBI_S2_IPA: As S1+S2 is not enabled, for now this can be the
-> same as CMD_TLBI_NH_VAA.
->
-> CMD_TLBI_S12_VMALL: Added new function to invalidate TLB by VMID.
->
-> Signed-off-by: Mostafa Saleh <smostafa@google.com>
-> ---
->  hw/arm/smmu-common.c         | 16 ++++++++++++++++
->  hw/arm/smmuv3.c              | 25 +++++++++++++++++++++++--
->  hw/arm/trace-events          |  2 ++
->  include/hw/arm/smmu-common.h |  1 +
->  4 files changed, 42 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 028a60949a..28089d94a6 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -133,6 +133,16 @@ static gboolean smmu_hash_remove_by_asid(gpointer key, gpointer value,
->  
->      return SMMU_IOTLB_ASID(*iotlb_key) == asid;
->  }
-> +
-> +static gboolean smmu_hash_remove_by_vmid(gpointer key, gpointer value,
-> +                                         gpointer user_data)
-> +{
-> +    uint16_t vmid = *(uint16_t *)user_data;
-> +    SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
-> +
-> +    return SMMU_IOTLB_VMID(*iotlb_key) == vmid;
-> +}
-> +
->  static gboolean smmu_hash_remove_by_asid_vmid_iova(gpointer key, gpointer value,
->                                                gpointer user_data)
->  {
-> @@ -185,6 +195,12 @@ void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
->      g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid, &asid);
->  }
->  
-> +inline void smmu_iotlb_inv_vmid(SMMUState *s, uint16_t vmid)
-> +{
-> +    trace_smmu_iotlb_inv_vmid(vmid);
-> +    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid, &vmid);
-> +}
-> +
->  /* VMSAv8-64 Translation */
->  
->  /**
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 8b070f6bb5..2b563a5b1b 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1174,14 +1174,35 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->          case SMMU_CMD_TLBI_NH_VA:
->              smmuv3_s1_range_inval(bs, &cmd);
->              break;
-> +        case SMMU_CMD_TLBI_S12_VMALL:
-> +            uint16_t vmid = CMD_VMID(&cmd);
-> +
-> +            if (!STAGE2_SUPPORTED(s->features)) {
-if you add such checks for S2, may you should consider adding similar
-ones for existing S1?
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
-> +
-> +            trace_smmuv3_cmdq_tlbi_s12_vmid(vmid);
-> +            smmu_inv_notifiers_all(&s->smmu_state);
-> +            smmu_iotlb_inv_vmid(bs, vmid);
-> +            break;
-> +        case SMMU_CMD_TLBI_S2_IPA:
-> +            if (!STAGE2_SUPPORTED(s->features)) {
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
-> +            /*
-> +             * As currently only either s1 or s2 are supported
-> +             * we can reuse same function for s2.
-> +             */
-> +            smmuv3_s1_range_inval(bs, &cmd);
-Shouldn't we rename the function then?
+trace_smmu_ptw_level is the only one that had no stage argument, I can
+change it to be consistent with the others.
 
-Eric
-> +            break;
->          case SMMU_CMD_TLBI_EL3_ALL:
->          case SMMU_CMD_TLBI_EL3_VA:
->          case SMMU_CMD_TLBI_EL2_ALL:
->          case SMMU_CMD_TLBI_EL2_ASID:
->          case SMMU_CMD_TLBI_EL2_VA:
->          case SMMU_CMD_TLBI_EL2_VAA:
-> -        case SMMU_CMD_TLBI_S12_VMALL:
-> -        case SMMU_CMD_TLBI_S2_IPA:
->          case SMMU_CMD_ATC_INV:
->          case SMMU_CMD_PRI_RESP:
->          case SMMU_CMD_RESUME:
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 2dee296c8f..61e2ffade5 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -12,6 +12,7 @@ smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, ui
->  smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
->  smmu_iotlb_inv_all(void) "IOTLB invalidate all"
->  smmu_iotlb_inv_asid(uint16_t asid) "IOTLB invalidate asid=%d"
-> +smmu_iotlb_inv_vmid(uint16_t vmid) "IOTLB invalidate vmid=%d"
->  smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
->  smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
->  smmu_iotlb_lookup_hit(uint16_t asid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-> @@ -48,6 +49,7 @@ smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t
->  smmuv3_s1_range_inval(int vmid, int asid, uint64_t addr, uint8_t tg, uint64_t num_pages, uint8_t ttl, bool leaf) "vmid=%d asid=%d addr=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" ttl=%d leaf=%d"
->  smmuv3_cmdq_tlbi_nh(void) ""
->  smmuv3_cmdq_tlbi_nh_asid(uint16_t asid) "asid=%d"
-> +smmuv3_cmdq_tlbi_s12_vmid(uint16_t vmid) "vmid=%d"
->  smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid=0x%x"
->  smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
->  smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 5cca1c17f5..46ba1f6329 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -181,6 +181,7 @@ SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint16_t vmid, uint64_t iova,
->                                  uint8_t tg, uint8_t level);
->  void smmu_iotlb_inv_all(SMMUState *s);
->  void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
-> +void smmu_iotlb_inv_vmid(SMMUState *s, uint16_t vmid);
->  void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->                           uint8_t tg, uint64_t num_pages, uint8_t ttl);
->  
-
+Thanks,
+Mostafa

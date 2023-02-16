@@ -1,108 +1,107 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp492980ejb;
-        Thu, 16 Feb 2023 05:27:56 -0800 (PST)
-X-Google-Smtp-Source: AK7set/zaxcIUKp7hxEddyHKhJFH07WSE+k3PMpVTi9D6orBgRGDlKDfvexmhMuMN33gPGcmDb3z
-X-Received: by 2002:a05:622a:1889:b0:3bb:995c:424c with SMTP id v9-20020a05622a188900b003bb995c424cmr3867202qtc.22.1676554076140;
-        Thu, 16 Feb 2023 05:27:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676554076; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp511863ejb;
+        Thu, 16 Feb 2023 05:52:31 -0800 (PST)
+X-Google-Smtp-Source: AK7set/NU/7AUQOg1CrZNpbGNrmwcQgbebT/IHEUYsxp8SeG0zt3ZgqFZpEHwYP433Chm2rAIuiP
+X-Received: by 2002:a05:6214:2587:b0:56e:fb4c:c1c4 with SMTP id fq7-20020a056214258700b0056efb4cc1c4mr3613648qvb.14.1676555551085;
+        Thu, 16 Feb 2023 05:52:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676555551; cv=none;
         d=google.com; s=arc-20160816;
-        b=qgsa2r71bqVue2FQMqclglnehH/4mFArbrWTjYPv0l1pheKX/1r/fuFHUKZWFp4Aq4
-         egQJXGIlI3D0f5c0QnlMucDH25E1BGGcV0VEnEBGYtJW8O6I6LwDaOqslml8W/sfObkS
-         iOpmu5JiAR09CDAr9T+yx8d+PY8L2RwITTzriaJ1NHFVJLbT5r9zVIUTcE7kI+rJ7MLm
-         WSMaRyGdUjQWQfOLRcD87hKWd83ug7P1igtuHrp0vNA2CDySmfu64rJE+XAWPr/vZoIA
-         542m/o1wtGETLCU7PJZLAGgoH5e0TpEGT7QkifkK3phb/uoGHSgr+ipLwqwPR2S/70Ew
-         kZrg==
+        b=IunXN1wgL4JyMJVd7uHtYz6oJ3lveXbLzuSJR4JUwIRkIfbUDU+9Sv8Fx1VJkuwLrF
+         umJSkMYJSGKTC5/KLQLMhxmpjM6JKGQRxkhdwIpqtdh60xU4JAfZyJ9EMkyLgSjUyKtB
+         Q4ak/MVtbRc3sOm3apwnYKUOBdd+vmKWsCyGqLofKvLcP/CWMonmUSrtQGA5H2fpqxE1
+         fygk804rwo5Fba4mJqq5Sr64Nl3d1S0uZ4vkZCpaq+/w4Sz+sndbl4EUZAF1JmSGxyfB
+         Iakh2RSBvYuB/pGvOMSnOVVAmKLovAEqwFuCNIr/QbHxxJuai1gcxfr3QS0alOKRv6Az
+         1l3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=Xa29WhiHgsKNKOOaEkGY+UmjKxSvIsu7Et0upEMMDuU=;
-        b=hpyZsZoi7hcVRnY6Ek64yh1MODkGheysRDcpoYthO+0m2qVg+uV7rxge8/IpL3IF+Y
-         AZf5zzmyIvPYnEy/cHu1ZvDA0G32LoZWNpMrRwhJe7on407rvWXnw7csj2ekfKeqgkqw
-         4fsFs3AJZdIGRPU9ekn/sI+TIlCWIDlkT7l0NrI5stxj9QJBytncajSiS9QMthxcZy8g
-         L5DSwemlKnfNEB/jh/f0gCMC4cVYSxZBxW+1K4A+okezOqymtr48fVr5cr/G8vSNJXGc
-         p1sRlTXQ+H4BGu7aeTiVpwjKaga0Zq/8o0YCwpvMG7OUUzhpPR2916vxQQKEoZcsCia4
-         VQDg==
+        bh=2/13tiYI81FpDKKddFvA7ILvHfUZPvmt2iXRLFgT3x4=;
+        b=vmn3yIU8ief9Ht+ZAUBqWK9UccYy1w/3qWlJvIILvCfayevSj9MiY9oC0pFPiMQt7V
+         IYsrbggkWbDMOiuZfc8oARsLvJwubusn5u/UygOGjDZvQDAQBO7BJyXQV19ba3H+Yiqc
+         uFYn/8Wp63EI+D0JYNQeVG3wuk0mcOHahLhFnuxluJNkkdOG6hejW80PHGtG0zHVY2/W
+         BAS+78v6majD7/SSHZvgC7h3GwVHPtf7z0CtF4a7cj3QDf5ePfZFbPuWVRGTjsqfdvTh
+         WKV+UsalgKW6SpGPgGnpYXRk4SCr5QT+kH3axFABwY6kAvcN9rN82Q3hu3sFjRtiFtj+
+         OeqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=duqMpugt;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=h7VGCGcA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 21-20020ac85955000000b003b9c4961c87si1649182qtz.228.2023.02.16.05.27.56
+        by mx.google.com with ESMTPS id b17-20020a0ccd11000000b0056ec0727a45si1264139qvm.285.2023.02.16.05.52.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 05:27:56 -0800 (PST)
+        Thu, 16 Feb 2023 05:52:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=duqMpugt;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=h7VGCGcA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSeID-0001Se-5L; Thu, 16 Feb 2023 08:27:21 -0500
+	id 1pSegJ-0007KZ-GB; Thu, 16 Feb 2023 08:52:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1pSeI6-0001IT-2r
- for qemu-arm@nongnu.org; Thu, 16 Feb 2023 08:27:14 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1pSegH-0007Dh-9V
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 08:52:13 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1pSeI4-0006Tn-KD
- for qemu-arm@nongnu.org; Thu, 16 Feb 2023 08:27:13 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- bg5-20020a05600c3c8500b003e00c739ce4so1628443wmb.5
- for <qemu-arm@nongnu.org>; Thu, 16 Feb 2023 05:27:12 -0800 (PST)
+ id 1pSegF-0006TB-FR
+ for qemu-arm@nongnu.org; Thu, 16 Feb 2023 08:52:12 -0500
+Received: by mail-wm1-x332.google.com with SMTP id n36so895952wmr.1
+ for <qemu-arm@nongnu.org>; Thu, 16 Feb 2023 05:52:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=Xa29WhiHgsKNKOOaEkGY+UmjKxSvIsu7Et0upEMMDuU=;
- b=duqMpugt+xYqKE73yw2kOVRIrs69J7u48dp1kcb1WC0scLapyVo+iuYA7S6migJekJ
- CwlSKTnntFsneapKFAfZW5x7JEmSnyB6HdsOB3BMJij9/JQJ7eTMkF1VT9tG7Ek8kEwL
- jYxMUrW+q6RGymwi/yRi3uNo2DHq9IOlFucG2ZgviTK4u53Lf5p74Dfq6Q87cE1BPUY8
- XId/TEmga4nDEVK2zIiAJhqLKpz3ZaApMxnsRg3w8JjnPGjlqQQgu5WBMKD3uqEUplCr
- kYQvPWSwEJk+RPi+1Iec4hnSu++lUSXyQmJotgdvvQFz8ohnqB75Y1nK44Zaa4MVStiw
- 0f2w==
+ bh=2/13tiYI81FpDKKddFvA7ILvHfUZPvmt2iXRLFgT3x4=;
+ b=h7VGCGcAdZB5bW9dXaQVi4uXOdPLZwq4zcwLhIdRpwd4uJrBCSdxiWJTeb30W6m1Bo
+ P3viYnWPa/WUsm2gCm/p0YMyMJJAakrbyrwvoVei4o1aPNoMHxMtV3PhdEMtdYIardZ1
+ Z1HnRg/4ICUYZbu6y1Ddjev2/YxdyqCnyVt1CJRL0198qKUP1UsgoO3+Xjxe7GIuCtjS
+ r41qJQMCmxjf+iOrsF9Hkk9uV9CNs4yZ/Ed+auyXbxRZuSWXeGynH5w2nWevrehlnwdN
+ RiHZmnLrGvaggE3Rg6bCQFKhWZubylhV6j6Qer6+LB0S/WGMVKHc01VFx1YCB8r2OPnG
+ Hx9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Xa29WhiHgsKNKOOaEkGY+UmjKxSvIsu7Et0upEMMDuU=;
- b=YIrQi87THVXhzjwoiVusJS+6Z1ZTTMIQqt6QEOIp3TMgIUvlRnM/HIoqGOh+dPGOCT
- BA92x22Xrde8jAj9TWdVzjWXaynJzmGuZC8085OLrS6DM+U/ZBOBFTG0E666BGa5oh60
- IJB++tnGA+/+1dg8FmmVcx9lS5M91ihxQKHNXfNV0sXAnKQUf7CAUXOHlN9jsEGKCLI4
- ojq7HRaz5C5VyQgTwvIjeACpjMO2VLfmsiJJfKIDm7PbzJGnjiZsT8z/b1ONfUmGeQh2
- /B3JDGR7dZABKR4/95Y4z7knzrl//oTSc2yN/E2MzNQZXQrYAHOhVnV2v76w6sd33R2E
- yszA==
-X-Gm-Message-State: AO0yUKUrluXR3HO+x3d7IgNLX62bErAB53BE/WbWONdQzmi7MafG0UOd
- NTYs0yaocKZlQjpS6g/SjrTLTQ==
-X-Received: by 2002:a05:600c:1d81:b0:3df:f3ce:be45 with SMTP id
- p1-20020a05600c1d8100b003dff3cebe45mr219810wms.4.1676554030886; 
- Thu, 16 Feb 2023 05:27:10 -0800 (PST)
+ bh=2/13tiYI81FpDKKddFvA7ILvHfUZPvmt2iXRLFgT3x4=;
+ b=EfdAJ0gEcEUoTSSKkTK6Vr30CjPj2yAgZSl8f+Bh+5xhNwQ5ftGoQ+lp/e/9s7aRNs
+ g/jz+kIFbkVxW4swiK3kXdjDcD2e9zTIH6bwJoyuF6uYJjBJf+ANlVPxmpE6l4htgYwk
+ 50sSTNM4SCE4j72+t41UvfuWzKxYhvw0uxOEpcfhJZDeh8FyscgQm+A5LJap90Mfh9pZ
+ jQbXvfauz7ay+i/+D92eJSLrzm+bkUm9wYH0dUpNe9h0o2rL/DdhmAdug+5miymXhhnr
+ axxSkzkY0sTqtWDk437LFIX4p8U41F8yrtjXndqzB8loouraXe4MlhkPWHTS0rMpXP0Y
+ YZWg==
+X-Gm-Message-State: AO0yUKVBmTgZ1P41KaS//iR7No3i4RyZ2pQDUwQeEx0WTAFJ0jrL0Mtl
+ NgyWHoDy65beIbBX41+fOL4iM72pLVU8GM50vmI=
+X-Received: by 2002:a05:600c:1d8c:b0:3df:f3cb:e8cd with SMTP id
+ p12-20020a05600c1d8c00b003dff3cbe8cdmr224199wms.6.1676555530100; 
+ Thu, 16 Feb 2023 05:52:10 -0800 (PST)
 Received: from google.com (44.232.78.34.bc.googleusercontent.com.
  [34.78.232.44]) by smtp.gmail.com with ESMTPSA id
- c1-20020adfe701000000b002c5526234d2sm1547500wrm.8.2023.02.16.05.27.10
+ a8-20020a5d5088000000b002c567881dbcsm1569703wrt.48.2023.02.16.05.52.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Feb 2023 05:27:10 -0800 (PST)
-Date: Thu, 16 Feb 2023 13:27:05 +0000
+ Thu, 16 Feb 2023 05:52:09 -0800 (PST)
+Date: Thu, 16 Feb 2023 13:52:05 +0000
 From: Mostafa Saleh <smostafa@google.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: qemu-devel@nongnu.org, jean-philippe@linaro.org,
- peter.maydell@linaro.org, qemu-arm@nongnu.org
-Subject: Re: [RFC PATCH 08/16] hw/arm/smmuv3: Support S2AFFD
-Message-ID: <Y+4vKVWenRF5ALcb@google.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: qemu-devel@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org
+Subject: Re: [RFC PATCH 12/16] hw/arm/smmuv3: Add VMID to tlb tagging
+Message-ID: <Y+41BbcL2WxCfbTk@google.com>
 References: <20230205094411.793816-1-smostafa@google.com>
- <20230205094411.793816-9-smostafa@google.com>
- <7fa87a34-48ad-5b7d-a034-44b925f0d1c1@redhat.com>
+ <20230205094411.793816-13-smostafa@google.com>
+ <Y+02xgL5RhO3vh6S@myrica>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7fa87a34-48ad-5b7d-a034-44b925f0d1c1@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=smostafa@google.com; helo=mail-wm1-x336.google.com
+In-Reply-To: <Y+02xgL5RhO3vh6S@myrica>
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -110,7 +109,7 @@ X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,35 +124,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bA9OoZKSv14V
+X-TUID: UndKqurE8lYo
 
-Hi Eric,
+Hi Jean,
 
-On Wed, Feb 15, 2023 at 07:37:52PM +0100, Eric Auger wrote:
-> > Parse S2AFFD from STE and use it in stage-2 translation.
-> >
-> > This is described in the SMMUv3 manual "5.2. Stream Table Entry" in
-> > "[181] S2AFFD".
+Thanks for taking the time to check the patches.
+
+On Wed, Feb 15, 2023 at 07:47:18PM +0000, Jean-Philippe Brucker wrote:
+> > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> > index 541c427684..028a60949a 100644
+> > --- a/hw/arm/smmu-common.c
+> > +++ b/hw/arm/smmu-common.c
+> > @@ -56,10 +56,11 @@ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
+> >             (k1->level == k2->level) && (k1->tg == k2->tg);
 > 
-> from a patch structure pov, to me it would make more sense to add the
-> STE field decoding in
-> [RFC PATCH 06/16] hw/arm/smmuv3: Parse STE config for stage-2 and use it
-> in hw/arm/smmuv3: Add page table walk for stage-2
-Yes, as all STE parsing will be in the same patch, it make sense to
-remove this one and AFFD in stage-2 PTW.
-
-> > +         * An Access fault takes priority over a Permission fault.
-> > +         */
-> > +        if (!PTE_AF(pte) && !cfg->s2cfg.affd) {
-> > +            info->type = SMMU_PTW_ERR_ACCESS;
-> Wondering how you are going to differentiate page faults at S1 versus
-> page faults at S2.
-> Event number #10 differentiates both and recorded fields are different.
+> I'm getting some aliasing in the TLB, because smmu_iotlb_key_equal() is
+> missing the VMID comparison. With that fixed my handful of tests pass
 > 
-> Do you handle that somewhere?
-Yes, this is missing, similar to F_TRANSLATION, we can set
-info->u.f_walk_eabt.s2 which would set S2[103] bit in the fault event.
-
+Oh, I missed that, I will update it in v2.
 
 Thanks,
 Mostafa

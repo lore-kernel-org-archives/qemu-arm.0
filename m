@@ -1,111 +1,151 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp37058ejb;
-        Wed, 15 Feb 2023 18:05:54 -0800 (PST)
-X-Google-Smtp-Source: AK7set9u6By0pUqlKytVeujGQLIGPtW6fD0xP1XXYDw5IKZdD1jHHINhIJ3FefnJXnkZVMI697GK
-X-Received: by 2002:a05:622a:2c7:b0:3bb:7702:97f5 with SMTP id a7-20020a05622a02c700b003bb770297f5mr7588070qtx.15.1676513154713;
-        Wed, 15 Feb 2023 18:05:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676513154; cv=none;
+Received: by 2002:a05:7022:221:b0:5e:6ea8:9f07 with SMTP id 33csp200100dll;
+        Wed, 15 Feb 2023 23:32:48 -0800 (PST)
+X-Google-Smtp-Source: AK7set9WhJJTIOL+5V+zmXIkMHSjH3l/a3tC4hmNxPkasUI9kr0SD+LqgRLfEJSQ7vCoWHHzotHk
+X-Received: by 2002:a05:622a:5c9:b0:3bc:d0de:6adf with SMTP id d9-20020a05622a05c900b003bcd0de6adfmr8201829qtb.31.1676532767970;
+        Wed, 15 Feb 2023 23:32:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676532767; cv=none;
         d=google.com; s=arc-20160816;
-        b=S0NTT/n3TDaT7CGvktFPVnZ8f5z001C21tjz1UR2q96WpySq/BGAOdD5w9qocU+DL5
-         ek5YyIL2u8DQXXUfPcU64UkSEKI6hyK8q+YjOsKDdeG38/EY7Ue7rWhsAE4Hmj9Z2xaT
-         x5C9XRKnM2+UHRkBW2A68V1ouzEM+CL9PjlCl0WFVva1wURAJ/GnlAr04m9QXrF3SpWQ
-         u7TFkVObmCrJ3nMtpASkDDTVAj+KdCMvKumdaL9MTLFs5zorlFpowyXTchX8qJUqP+6V
-         N6j0swaVNw2D9ritCd1KEMgNzr66MYErZGz+uPrppl1p7APOVBB+w7yrtQxCuXber+yU
-         mqSQ==
+        b=Tt7JE8u/oCD/OapwDwI+K/je2Hjg7gMiSYCGEwl20ddazY4ipXkLozdI8IhB87zDgR
+         BZLcbNsLn55AgtOsqllPHdwOdRkqYrnHERU0rUUE+U0x90Ljo2KHZ+5Sh1PAY0CSR8w4
+         x9rh8P+uuqgrtKE3Uwhjbsp9hC7MYlYkpyNok6CixDEmK8ca0+D2zbqJeGGTo/SLFilh
+         vXA+TJXnUpBiqOBvT5PLT+07Wt7ej3FB11l6NKSNOe7swJqcr/ErRQqQnEc4tGRlIrSl
+         k57TNK7S/kfz+vnhXr8yRuDR6+uDefTIJnJqaMo0LTyYan4s8LbzBo2TFLoQgne4OwJG
+         g61g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:content-disposition
-         :mime-version:mail-followup-to:message-id:subject:to:from:date;
-        bh=Qf2evU4qHgxA92P6yrcybedYnppIHsCkoFc/87HvnVk=;
-        b=LDP/t/7BJSz/VgNpotZzLaY3fusRIjVF8wIJZOgnv5/erhBLuU1XJaEIis6ykbJfYj
-         hxCafl+kJ4q6p1VEEUYJZe3zfoGAzKIvmBrM0iVHfMYW6zOKhfeVZ/32b5xD+mkKrFsk
-         NQliA73iwdCbzK7nozsS7Ztz5pEa20OvyyoIz/eDIWrJrrL7PsjdFXlHVesvV5rrFl6u
-         E1sxKbzw+OpcdrEmsVm2vK7nrFW4/3VsHmZ8MSPcAwEu/Bp1mdzB41GK/9DyyDiD0lD5
-         p71XdsuAtXuv7g+sOg7mvk+sflO5+LwOkCIRrdjQP14UaIj1xgg7ijoXoYT0gMveP7pe
-         qEYg==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=vpYWYfCv9xvpyVMbEw/vB0QdfPlqAFjQcuseLsJL8RI=;
+        b=ryA7+0k39EkSARF6+L6SWnBlwv91Ig4oHnR5Dq9zHXYpRWAkU22W4qC9+vouRVM6hp
+         b7kdnSLKHioibI15kf8J1Rr/K3g7VQLPHeQIiqAVAOvxLsP0NTWGuwlw6M2i0HtJ7RTI
+         mMtNbxPsYLTANmsCCIxd95y/OVBCSERQKS3RLCQVkWhtKUL/rg/OwhFmqqFA8JKS7ws4
+         xrHoFcptj3m/r7Yr5eEns9sqITYSzcG0fZgFhyi1UqDq3Ot05I5iOiWS1UBu3EV+k27M
+         AGJxeLGbtj9bztNCPn92miLc1Jm/tNwUkKhBSynoYTX6tFMWi87uT2d/keYpcAzf2dyK
+         JLyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d16-20020a05622a05d000b003b9a3e7e113si409238qtb.87.2023.02.15.18.05.54
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UM7WJ4pU;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id t16-20020ac85890000000b003b9a5397c6fsi1087166qta.308.2023.02.15.23.32.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Feb 2023 18:05:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Feb 2023 23:32:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSTeY-0001T1-HV; Wed, 15 Feb 2023 21:05:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jmg@gold.funkthat.com>)
- id 1pSRwc-0004Lv-Dg; Wed, 15 Feb 2023 19:16:14 -0500
-Received: from gold.funkthat.com ([2001:470:800b::2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jmg@gold.funkthat.com>)
- id 1pSRwX-0001qd-1M; Wed, 15 Feb 2023 19:16:14 -0500
-Received: from gold.funkthat.com (localhost [127.0.0.1])
- by gold.funkthat.com (8.15.2/8.15.2) with ESMTPS id 31FNmkqk025715
- (version=TLSv1.2 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 15 Feb 2023 15:48:46 -0800 (PST)
- (envelope-from jmg@gold.funkthat.com)
-Received: (from jmg@localhost)
- by gold.funkthat.com (8.15.2/8.15.2/Submit) id 31FNmkJg025714;
- Wed, 15 Feb 2023 15:48:46 -0800 (PST) (envelope-from jmg)
-Date: Wed, 15 Feb 2023 15:48:46 -0800
-From: John-Mark Gurney <jmg@funkthat.com>
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Detecting qemu from guest on arm/hvf (apple arm)
-Message-ID: <20230215234846.GJ95670@funkthat.com>
-Mail-Followup-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UM7WJ4pU;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1676532767;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vpYWYfCv9xvpyVMbEw/vB0QdfPlqAFjQcuseLsJL8RI=;
+	b=UM7WJ4pUUOxYJKPTwikEqb+K9poICv7RwO+0R0oFbiriFqsGz5BzasiCcqYZEDayAKKxwU
+	1zHbMVKejyPZBbmWpvR6yK7MG3RQviOx6K3JJAf9kuxA+/SMI1xEEmFL17+0BeAW6PV96b
+	AiqQ73lWMjg1p9pltXeJ3B8oqF/ZIl8=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-624-ifAqTfthP7KbMxK088nqvw-1; Thu, 16 Feb 2023 02:32:44 -0500
+X-MC-Unique: ifAqTfthP7KbMxK088nqvw-1
+Received: by mail-qk1-f198.google.com with SMTP id c9-20020a05620a11a900b0072a014ecc4aso686757qkk.18
+        for <alex.bennee@linaro.org>; Wed, 15 Feb 2023 23:32:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=vpYWYfCv9xvpyVMbEw/vB0QdfPlqAFjQcuseLsJL8RI=;
+        b=1D4+DsiOojZGF2/VABGWN4XRYrxh5sPPa3v/swZObv4gctnWtIyfuSP3awPjMqqXmP
+         83Kk5V+5Di0IFY3t/2XGF9YBoY0Ydlg9D24WM5ISZM1RXbiN/UCr7OgzhP03SRTneHfW
+         LR+4auRwDetIYkN56AKYO8TaeG3T4b4DoGlwPsKan9r4lwqhIrV8L5zIjxTkPo79qnG7
+         SfB3SyU6gmr/2zeJAZcye3+sFjhqAEgN5WAph+Zp3kaeYJUBVGjVsGJpF8uvdSt9yRFN
+         hmgJSnXc+ipMPJ5gP9IcE7xGKtDxIrFur08YirA4Ema2caON4wIldiQqyJ5+RFY6EIOW
+         E1RQ==
+X-Gm-Message-State: AO0yUKXAvmA253byKZPSHjzbedaO8DtYrO8l7r6taFlk3xyVUtJPk5qh
+	zFN99ksdLoYgQ6MEyXe2Dc9R36rShIoVL6q4KztisgyWbTiTT/7zEO+q9P9JyJ/C6RJwXp9YLkE
+	hU3ca+MCWGvYsvKBtSTJJDxzeyBpO8Q+LxN/qyVJ1fbdk1evkyMKcuQ4vhOxhKuwufc8zs0Ka
+X-Received: by 2002:ac8:570f:0:b0:3b9:abfb:61cd with SMTP id 15-20020ac8570f000000b003b9abfb61cdmr8301777qtw.26.1676532763853;
+        Wed, 15 Feb 2023 23:32:43 -0800 (PST)
+X-Received: by 2002:ac8:570f:0:b0:3b9:abfb:61cd with SMTP id 15-20020ac8570f000000b003b9abfb61cdmr8301728qtw.26.1676532763497;
+        Wed, 15 Feb 2023 23:32:43 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.2] (ip-109-43-176-144.web.vodafone.de. [109.43.176.144])
+        by smtp.gmail.com with ESMTPSA id e4-20020ac84e44000000b003b9bca1e093sm814019qtw.27.2023.02.15.23.32.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Feb 2023 23:32:43 -0800 (PST)
+Message-ID: <9d47c51d-07bb-d951-0656-688abb625062@redhat.com>
+Date: Thu, 16 Feb 2023 08:32:38 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-Operating-System: FreeBSD 11.3-STABLE amd64
-X-PGP-Fingerprint: D87A 235F FB71 1F3F 55B7  ED9B D5FF 5A51 C0AC 3D65
-X-Files: The truth is out there
-X-URL: https://www.funkthat.com/
-X-Resume: https://www.funkthat.com/~jmg/resume.html
-X-TipJar: bitcoin:13Qmb6AeTgQecazTWph4XasEsP7nGRbAPE
-X-to-the-FBI-CIA-and-NSA: HI! HOW YA DOIN? can i haz chizburger?
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.4.3
- (gold.funkthat.com [127.0.0.1]); Wed, 15 Feb 2023 15:48:46 -0800 (PST)
-Received-SPF: none client-ip=2001:470:800b::2;
- envelope-from=jmg@gold.funkthat.com; helo=gold.funkthat.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 15 Feb 2023 21:05:40 -0500
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5nnrSLbd+Tl3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 01/12] gitlab: tweak and filter ninja output to reduce
+ build noise
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Michael Roth <michael.roth@amd.com>, Alexander Bulekov <alxndr@bu.edu>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, John Snow <jsnow@redhat.com>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Darren Kenny <darren.kenny@oracle.com>, Stefan Hajnoczi
+ <stefanha@redhat.com>, Bandan Das <bsd@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Yonggang Luo <luoyonggang@gmail.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Ed Maste <emaste@freebsd.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
+References: <20230215192530.299263-1-alex.bennee@linaro.org>
+ <20230215192530.299263-2-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230215192530.299263-2-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 3/pZeWDh5PRV
 
-Hello,
+On 15/02/2023 20.25, Alex Bennée wrote:
+> A significant portion of our CI logs are just enumerating each
+> successfully built object file. The current widespread versions of
+> ninja don't have a quiet option so we use NINJA_STATUS to add a fixed
+> string to the ninja output which we then filter with grep. If there
+> are any errors in the output we get them from the compiler.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   .gitlab-ci.d/buildtest-template.yml | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
+> index 73ecfabb8d..3af51846cd 100644
+> --- a/.gitlab-ci.d/buildtest-template.yml
+> +++ b/.gitlab-ci.d/buildtest-template.yml
+> @@ -21,7 +21,7 @@
+>         then
+>           ../meson/meson.py configure . -Dbackend_max_links="$LD_JOBS" ;
+>         fi || exit 1;
+> -    - make -j"$JOBS"
+> +    - env NINJA_STATUS="[ninja][%f/%t] " make -j"$JOBS" | grep -v "\[ninja\]\[.*[123456789]/"
+>       - if test -n "$MAKE_CHECK_ARGS";
+>         then
+>           make -j"$JOBS" $MAKE_CHECK_ARGS ;
 
-I was wondering what the best way to detect that FreeBSD is running
-under qemu/hvf on Apple ARM?  FreeBSD doesn't see the ACPI FADT table,
-so I'm wondering if keying off of something like the QEMU0002 device
-in ACPI is the best way?  Or is there another option?
+Not meant as a veto, but just for the records: I still don't like the idea. 
+Having a log of the files that got compiled is still sometimes useful for 
+me, e.g. when I want to check whether a certain file has been compiled at 
+all or not (when e.g. debugging meson.build problems). So I'm still in 
+favour of dropping this patch.
 
-Thanks for your help.
+IMHO if you want to shorten the build log in the CI, please get those chatty 
+softfloat tests fixed instead.
 
--- 
-  John-Mark Gurney				Voice: +1 415 225 5579
-
-     "All that I will do, has been done, All that I have, has not."
+  Thomas

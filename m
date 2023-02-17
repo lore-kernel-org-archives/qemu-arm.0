@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp127558ejb;
-        Fri, 17 Feb 2023 12:14:02 -0800 (PST)
-X-Google-Smtp-Source: AK7set+LQ+2vYlYSg0mJk6jeC5ldYdr1D/+k7evzHzoML8ADmzFor3LZNSsmUim3U5VGDxchgMFX
-X-Received: by 2002:adf:df0c:0:b0:2c5:58fb:fa8e with SMTP id y12-20020adfdf0c000000b002c558fbfa8emr885849wrl.32.1676664842656;
-        Fri, 17 Feb 2023 12:14:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676664842; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp127619ejb;
+        Fri, 17 Feb 2023 12:14:06 -0800 (PST)
+X-Google-Smtp-Source: AK7set8i3ZpFg0li5la4BlsS+9T8X8s5BOUeKpSNGrdfEplW01V0BqrapsE/+TXpoQVF89nsuJM1
+X-Received: by 2002:a5d:65c7:0:b0:2c5:5ca4:ef14 with SMTP id e7-20020a5d65c7000000b002c55ca4ef14mr2302518wrw.9.1676664845950;
+        Fri, 17 Feb 2023 12:14:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676664845; cv=none;
         d=google.com; s=arc-20160816;
-        b=tZlekXbOJqJNAxI1BPyaYYaA7HxqovKPXcC/+BZ2yGS1rpqQMQgu4xsUO5NkizzhCB
-         HW5puiR13IdYgQgBZ4lxqB2h39ogh6EgX3jfinYjjb6iWaPLxqS5cNxP4qkq+MKRUKW2
-         NMyATX6J37FiEXY0oT/dgM8LxRXksW+W1QuPdRiPK0ScExky0BUpbUtJOYXOa/RVjY2J
-         3m2c/qpZmN87fmoz2QwluaO5lsyDIsrFhYgSqi+c0TL8LnJS6ZZ7/jPAlNkfENifuOxk
-         Tyw7/8VbROD02F4sDGscK7GQTf08uwcqSysvKT6R7a9YjqdE2zbKYVYby5DiaWdKwYYU
-         nQdQ==
+        b=tmjGRgEQZmduXN+be4hzB4yt+/ETHVaeSP9dCdmVYapiJbbA6pPQ8JSu45OHpEsX/v
+         nKzVNzD00lNdMy0TxwquVmuIWnI5N3i2g4nqa4Nu7l509gWOuS5SSSjNWLdioNum+RQL
+         YMWpFwVH4vtG/iCOYm0kpeGXOYm5kJn8rrpyjRtxAi+Xm015CJ856SmMDsyrNYtmpTJn
+         UsaUXGiCLutqMfTxk9jGwj+PcBrcc1g7LMz3LtpP5DhXnPk0f+bR2LavM1nOwckEZlmd
+         XfWcs6W/tfWwjkAoJwMdmWV84pJ2sY4ogbzA2e0kq7OWPz+6qgYLsfScABapfaCJ9shM
+         XKCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=XRSaU42EJuvkn9pnSLpVvyMLr2VRhkEQPYljGo21NaY=;
-        b=adKH6ZEeIn5ACEd6dgeJBfKZj9LGCQW+a4rD2OEDWhNKGo3+RZwZpKHhNYdnb085Zp
-         8/SarDxUgfF0SZDkAExwDacXv0WIp1m+veu5FjW37K+cUpsuGF7AztXajXiBBhWGpvSF
-         mrv+n00TOXDBOrnNF6G8V0+RaCBj++/qNw/u9bdBFL1HeJMoMFSVUCdv9/5QWoqy77dC
-         AOOoow2pOCJpnqZ9OxlDZcYJqeFCibUeQecGM9ZOaV7fmAGLoUtHG+dG8fjOMcr3hoBM
-         2rao8f+pIuthWJva+y9H+Ms1k8lWKHrX/027w2Ve27f++a1ejP9DWuAuOjogX0PIgff3
-         pSNw==
+        bh=IneoIjeaaItZ9WFIdyjktzS9t1bCTfcOcWOa6rg90xU=;
+        b=GPZNcgiaXFjoNu4polhb62RZ2NhM+WjcOk9S6TdCu3EAFN9/wUtbw4WJ+rEd0DgGwp
+         q1mhPSxF+i6EpklllW4H+PY0gyR6mGj5yrvAoqDlQiMpsPzsTj3Z8vu7MOAE3BJzdQqb
+         K2q/eLZazqypup/CB3ohItatoaQyzEarcniyWz1yrHt+yPvc3FNta+5s+jpSNb2ioDQm
+         BxE0v48LUC9Vtuy7Sv96CfW9vLG9W4Oj6a/EGvVtcVwmFtMHu9pbRmPEUkLtprWaQ6Qw
+         4x8aJWxz7Pzc7uGXdDSU/Xf2WOJXj0gcT6rphwFPMijDR9UDOJjQZBvVaE9K/jSMwCp3
+         ucGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OZxUxAbf;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=GhUjd+8e;
        dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id x2-20020adfdcc2000000b002c54cd4fa9bsi5737072wrm.126.2023.02.17.12.14.02
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id b9-20020adff249000000b002c576bc6c11si5856154wrp.121.2023.02.17.12.14.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Feb 2023 12:14:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Fri, 17 Feb 2023 12:14:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OZxUxAbf;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=GhUjd+8e;
        dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 4A49720FAA;
-	Fri, 17 Feb 2023 20:14:02 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 94F5B20FB3;
+	Fri, 17 Feb 2023 20:14:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1676664842; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1676664845; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=XRSaU42EJuvkn9pnSLpVvyMLr2VRhkEQPYljGo21NaY=;
-	b=OZxUxAbfS8kwpUUT88u+mZT+Osx8j6Gp9m8qatkB7D+kNyqKb1fPu6KnGGwgW1s+dhJtM5
-	npJ4hoSucHUFa33DMMhg4+5DJwpxKQt+knxp9m9XGp/P/X/2rPCYtkEM0aer6RpILqcVmk
-	bgndtZkFJIrOtmA7UEhUA7GxM0AtXJA=
+	bh=IneoIjeaaItZ9WFIdyjktzS9t1bCTfcOcWOa6rg90xU=;
+	b=GhUjd+8e67kPR0dZq3k0OsNpqv6Oxm2du4YQj48G6s36mUzFiL1YD9WVFaYlm448zcW5/J
+	beVhtBbstC17sWPz1sCJDjP5RhzOV0Em0g5oeU0WpXpmsK75F3JVGci8gCXnTGYUNUKuWH
+	lw5g1vjOXryT7CpnjvZK/NSLxoWLEm4=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1676664842;
+	s=susede2_ed25519; t=1676664845;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=XRSaU42EJuvkn9pnSLpVvyMLr2VRhkEQPYljGo21NaY=;
-	b=XIJnwO7b0SxRSQVU2gePv+OLBK5BKoGebSQD/WT5K3UHCJwgAY0B9W5mwIquuNFyTVIiht
-	PHZbTMHtPP4xR4Ag==
+	bh=IneoIjeaaItZ9WFIdyjktzS9t1bCTfcOcWOa6rg90xU=;
+	b=pyNQCG3NXVXOzeJ9Y/tiupouWgvGAIkQNUaGXrYj3sOoYut3fMNSXbsuGnTy/QT0YSROX8
+	V4Fh4nVxUAtPhNCA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6A783138E3;
-	Fri, 17 Feb 2023 20:13:59 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id B737B139BC;
+	Fri, 17 Feb 2023 20:14:02 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id yFj/DAfg72MwIAAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 17 Feb 2023 20:13:59 +0000
+	id sADGHwrg72MwIAAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 17 Feb 2023 20:14:02 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,50 +83,49 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH v6 02/29] target/arm: wrap psci call with tcg_enabled
-Date: Fri, 17 Feb 2023 17:11:23 -0300
-Message-Id: <20230217201150.22032-3-farosas@suse.de>
+Subject: [PATCH v6 03/29] target/arm: wrap call to aarch64_sve_change_el in tcg_enabled()
+Date: Fri, 17 Feb 2023 17:11:24 -0300
+Message-Id: <20230217201150.22032-4-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230217201150.22032-1-farosas@suse.de>
 References: <20230217201150.22032-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 1ATREdDrMXV+
+X-TUID: 82Qx/gaggVdj
 
 From: Claudio Fontana <cfontana@suse.de>
-
-for "all" builds (tcg + kvm), we want to avoid doing
-the psci check if tcg is built-in, but not enabled.
 
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/helper.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/helper.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 190be1a64d..1fc860e039 100644
+index 1fc860e039..bd704396e0 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -22,6 +22,7 @@
- #include "hw/irq.h"
- #include "sysemu/cpu-timers.h"
- #include "sysemu/kvm.h"
-+#include "sysemu/tcg.h"
- #include "qapi/qapi-commands-machine-target.h"
- #include "qapi/error.h"
- #include "qemu/guest-random.h"
-@@ -11055,7 +11056,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-                       env->exception.syndrome);
-     }
+@@ -10819,11 +10819,13 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+     unsigned int cur_el = arm_current_el(env);
+     int rt;
  
--    if (arm_is_psci_call(cpu, cs->exception_index)) {
-+    if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
-         arm_handle_psci_call(cpu);
-         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-         return;
+-    /*
+-     * Note that new_el can never be 0.  If cur_el is 0, then
+-     * el0_a64 is is_a64(), else el0_a64 is ignored.
+-     */
+-    aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
++    if (tcg_enabled()) {
++        /*
++         * Note that new_el can never be 0.  If cur_el is 0, then
++         * el0_a64 is is_a64(), else el0_a64 is ignored.
++         */
++        aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
++    }
+ 
+     if (cur_el < new_el) {
+         /*
 -- 
 2.35.3

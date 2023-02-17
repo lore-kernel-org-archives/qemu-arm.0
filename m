@@ -1,388 +1,330 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp782739ejb;
-        Sat, 18 Feb 2023 07:04:47 -0800 (PST)
-X-Google-Smtp-Source: AK7set9H2wnh+FF4Dhp/jQ0d4Jx3WBo7xv/3nfO8jDXwkATm0iMb8tmzFs76R/kUIAta8AgqAVxZ
-X-Received: by 2002:a05:622a:120a:b0:3bb:8c08:dfb0 with SMTP id y10-20020a05622a120a00b003bb8c08dfb0mr8033120qtx.12.1676732687071;
-        Sat, 18 Feb 2023 07:04:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676732687; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp127456ejb;
+        Fri, 17 Feb 2023 12:13:56 -0800 (PST)
+X-Google-Smtp-Source: AK7set9anvJiuZroNblNBOdBGlHrR95Oiv/AcMpCDJxcrsNZywnINVatzYIeOs1syB87xaFG2yZI
+X-Received: by 2002:a5d:4945:0:b0:2c5:9599:6ef6 with SMTP id r5-20020a5d4945000000b002c595996ef6mr4556003wrs.58.1676664836335;
+        Fri, 17 Feb 2023 12:13:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676664836; cv=none;
         d=google.com; s=arc-20160816;
-        b=oOAjaNUQRPYfWsUql5+5p2BK7M7QK2QrThGIdLmXywMzdWM/aemnw3t7FY/hqtIb1s
-         MNW62vXrdQ+D3IFYSolI5TDjGctxJY/3tzlgE26FbvAgYI0fg4I6wOfCIVfXRxY6FYMB
-         JmAfs5adTlbBnkrO9OOUEuHqJYt78j0lhx2YuK4BAXYypo36EiKUm4ASFxJU8Wk5WFwq
-         kaL1HbJKbqn1375XSXzrk8qMV+kNOuM6ktXd2JyXOCiT+fyVwQUVj71+7MbnleGzJSFw
-         0glQsLaSoX3o8hQYvdRLoWrnNOtpCE5BHzVSmCI1GL3uUJgX0abt6oGJDA+KTYfSxLz0
-         0iNw==
+        b=BW8pgHis/OhaYC8ViQToNGdLIXAjqWEB6Nw0W/K0rD0fEXcOIYU+sKrX4kmQGVCeD4
+         oa51oNOBMx1KvybLWBJebf6T6VvM8LpiJxMi/8JwRdgRo1/XhzU9BtaNQKWTVFfswLfd
+         zPxka3HOhcjyy3YYttO+CdbY7bzP7afY9oQWvHcTToKF87xfiiT5biurmpBp+sM0WVkI
+         4t4rJez3GrJ/NAn6tpQtWHe/cqgfioaHopz0EkctTPj82/bDZlkNFav7YsAwpxNqM9BP
+         97TNHkK87dx77oTA3BFSe605E1WQJNeSKWnw7EEus7yFZ+n4symA5L68pAYwau5sC2fy
+         ET7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=XfXtFmzi0kMOJLbeMeUvFwUEwvvYgSBkN5tm5CHTWHc=;
-        b=Vbl2x6+qZcj2f0yDG0Cnsda3K4h89N3xHxSohwvwlyk+vMZ3VpMADJRMLk4eHZup9g
-         h8tFU10WhmFpYD7Usf1hxHoEgd7tPudU/bp+h8NuailI1CvBeSVLb8SijUBzBlARsUzh
-         X0U5GsD8sln0LLxgTTsiDpS08VCyo7chw44p7JriMBvOYEmw3vZABb83AqFbfDCdGWwN
-         Hk7A7Ll5qk4lF2cbO69xojeMvSXievocUPMpweRGJHG9DoHLLOgKOCMM+AyCDLlfVol2
-         UmLbU0hPxie9+W8X9jh8E9BkCbyVw41Y69/hJnFjTf014TGxIhiu0oM0Y+LjW48/tPOW
-         5wzA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature:dkim-signature;
+        bh=CUnkFs6ZZHikdqJXlbnqHuzgRuMNhocLYh99enkg1eE=;
+        b=fU400s8USnlqoN7QIjMKm/Rmkl0FqoeiwIW8TwWYsk+lCPaLsmizNoO8XEMxbjzxK3
+         rievYbqGDS11/OjVeC+jB5g79XxnZXGQevFaTN5sHLH1L7vUKMNxg4hyIN2FmngjT1no
+         LzePHBIT/3HZoXvEGu2EnXQf+l9bDt6Lb1gowxTjhhkgt65EbDiKt16vYWiZXAkqYhts
+         GrKbIADbnHxF+BdIfaa3ZWwtiuSUifPJp4p0l1wFiuBIc5DcDVvv5YDSq+ne9A9E3QVX
+         rwtGre73xVcDrFn1MhkkX1D2QEjw/IoKv9F+ZruaIu8oHkxvTIayZ2X/eMXpVe4ZwpVv
+         zi7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kXVfTrOn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c23-20020a05620a269700b00706674af640si6229122qkp.403.2023.02.18.07.04.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Feb 2023 07:04:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=G7Ruh2CM;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=BAHDipwr;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
+        by mx.google.com with ESMTPS id n17-20020a5d4c51000000b002c548f18314si5343380wrt.214.2023.02.17.12.13.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Feb 2023 12:13:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kXVfTrOn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pTOlU-0003US-4Z; Sat, 18 Feb 2023 10:04:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pTOlS-0003U6-7m; Sat, 18 Feb 2023 10:04:38 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pTOlP-0001yg-VG; Sat, 18 Feb 2023 10:04:37 -0500
-Received: by mail-ed1-x534.google.com with SMTP id i28so2832197eda.8;
- Sat, 18 Feb 2023 07:04:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XfXtFmzi0kMOJLbeMeUvFwUEwvvYgSBkN5tm5CHTWHc=;
- b=kXVfTrOn8AeHNb+kcHlivN/pjjZ5YRlbyM6T4THP9Pc2cOG4F3ZyO4G73Mn/NpNJsm
- 34m+0cZaOCUv5fjdn7QAVQgUHDfvVvcvXCIpuWDdtjNY8HnXUV/3RxFBQjXB18mYOJ9s
- j9bidhsJk5aVa1sy9CX0XSlgrNp6FBKmqOMs3XTq9DY/eg7LwnBZygReMwLmIWcUeBdK
- +NoM6RLYPXIk5gwxl+0nMUjmyi2fagPE0Z0/C3sTMk4uTNTKKbsS7SvdrJTDff0ZNCX9
- 5e+sGoAAqEUaePdXZDveDCyv8PaIFyL7bvwzm7qisiFPy7eQXXHiimX88y2qE2BKuZbI
- 7ifw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=XfXtFmzi0kMOJLbeMeUvFwUEwvvYgSBkN5tm5CHTWHc=;
- b=mmpzEzrf/fTqxhsOBqAWfD6BdALrVc4McVXjYLU5NCVH6mXq8TBEItbiW4m0WGTkeo
- yGBUo/dmU8Wi8GHqYZTzkPrwDjQzPNCwMoVo6sPvYOb7eUdwdePYqHhMG4GJjQF4IgKa
- A0UH4JujGpsw+GHhN78awHgCd+vMZDV9ZifVgb4qEIDHyARC3W8bKA2z1FDVUYk6DeXj
- JPK56WPwdSsZm4IJo6cLGvZ6wHE4OkdhFkmEI0T3F36CtyYv5NqPK9eoyoNZvY4dMw1R
- IFfRKhBv40BsJrUE2RIfSY4dYQpa3wZgJp4zxc4T+5YXwE9hA0UanacCbg5CTAwFAIW+
- C0Hg==
-X-Gm-Message-State: AO0yUKU8+ML/LhAL9+gD5ngpZnOhLNsHawFBpknXXXsDwvBCL6y2dZwv
- nsYXRi8rAVzH53n8HhnIcnmy+i+/huB9EQBIcsI=
-X-Received: by 2002:a50:d086:0:b0:4ac:bb4e:c38c with SMTP id
- v6-20020a50d086000000b004acbb4ec38cmr229122edd.0.1676732673731; Sat, 18 Feb
- 2023 07:04:33 -0800 (PST)
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=G7Ruh2CM;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=BAHDipwr;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id AD24F20FAA;
+	Fri, 17 Feb 2023 20:13:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1676664835; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=CUnkFs6ZZHikdqJXlbnqHuzgRuMNhocLYh99enkg1eE=;
+	b=G7Ruh2CMeY+Sc8EbcEFcDho1S1bOt+EkO8bl0M0DCnIk1Ez//Ba9KoSofJ41Ehno6GDaTw
+	QxYgjBHsfnX8cK7yDzmYhgJNg6b4eZceV2xnr9oZ3jxIo+dMRK0A83d2ZzSsPbouKuXKnI
+	PUCjOHA9+XINj950prN7mBblnSL7dqs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1676664835;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=CUnkFs6ZZHikdqJXlbnqHuzgRuMNhocLYh99enkg1eE=;
+	b=BAHDipwre2ghYVKvfzK4gnZQ0i6n9fQ59Pr31Mwzu9Hh0vDxqKaYYNIuNcOXAGLbM3a3mN
+	dD+z0JJDaRxZxdAQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id BB1E7138E3;
+	Fri, 17 Feb 2023 20:13:52 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id 1tmVIADg72MwIAAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 17 Feb 2023 20:13:52 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v6 00/29] target/arm: Allow CONFIG_TCG=n builds
+Date: Fri, 17 Feb 2023 17:11:21 -0300
+Message-Id: <20230217201150.22032-1-farosas@suse.de>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-References: <20230217094207.16882-1-qianfanguijin@163.com>
- <20230217094207.16882-2-qianfanguijin@163.com>
- <CABtshVQ5SBxiFmLa-LaYqsivkUQwPPciVP+5DSuozy3P9dfgpA@mail.gmail.com>
- <23b35298-2c3b-6a9f-af20-9712c5fc959c@163.com>
-In-Reply-To: <23b35298-2c3b-6a9f-af20-9712c5fc959c@163.com>
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Sat, 18 Feb 2023 16:04:22 +0100
-Message-ID: <CABtshVSoWaW+X+dmPnYmrGtm03eqCR70BHNggnrvwPN6BM2LNg@mail.gmail.com>
-Subject: Re: [PATCH v1 2/2] hw: allwinner-i2c: Fix TWI_CNTR_INT_FLAG
-To: qianfan <qianfanguijin@163.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IK1yYGF916I7
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Ne5maV345SjN
 
-Hi,
+Addressed Peter's comments and dropped the cpregs change which is not
+related to fixing the --disable-tcg build. This unblocks the xenpvh
+series and I can tackle the regs split without holding up the build
+work.
 
-Yes, that would explain why this happened.
+changes:
+- debug regs: I left debug_helper.c out of the movement to tcg/ along
+  with the other files that still are somewhat coupled to tcg. We
+  don't need to do this right now, but I propose that after the cpregs
+  split we define something like:
 
-On Sat, Feb 18, 2023 at 3:13 AM qianfan <qianfanguijin@163.com> wrote:
->
->
->
-> =E5=9C=A8 2023/2/18 0:54, Strahinja Jankovic =E5=86=99=E9=81=93:
-> > Hi,
-> >
-> > I tried running Avocado tests for cubieboard with following command:
-> >
-> > ARMBIAN_ARTIFACTS_CACHED=3Dyes  AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avoca=
-do
-> > --show=3Dapp,console run    -t machine:cubieboard
-> > tests/avocado/boot_linux_console.py
-> >
-> > Without this patch all tests pass:
-> > RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0
-> > | CANCEL 0
-> > JOB TIME   : 53.15 s
-> >
-> > However, if I apply this patch, all tests fail. This is part of the
-> > log that captures the failure:
-> >
-> > axp20x-i2c 1-0034: AXP20x variant AXP209 found
-> > console: random: crng init done
-> > console: irq 43: nobody cared (try booting with the "irqpoll" option)
-> > console: CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.10.16-sunxi #21.02=
-.2
-> > console: Hardware name: Allwinner sun4i/sun5i Families
-> > console: [<c010ca1d>] (unwind_backtrace) from [<c010951d>]
-> > (show_stack+0x11/0x14)
-> > console: [<c010951d>] (show_stack) from [<c096eb27>] (dump_stack+0x77/0=
-x84)
-> > console: [<c096eb27>] (dump_stack) from [<c0969147>]
-> > (__report_bad_irq+0x37/0x94)
-> > console: [<c0969147>] (__report_bad_irq) from [<c016618b>]
-> > (note_interrupt+0xfb/0x1f4)
-> > console: [<c016618b>] (note_interrupt) from [<c0163aeb>]
-> > (handle_irq_event_percpu+0x4f/0x54)
-> > console: [<c0163aeb>] (handle_irq_event_percpu) from [<c0163b29>]
-> > (handle_irq_event+0x39/0x50)
-> > console: [<c0163b29>] (handle_irq_event) from [<c0166d93>]
-> > (handle_fasteoi_irq+0x67/0xbc)
-> > console: [<c0166d93>] (handle_fasteoi_irq) from [<c0162eed>]
-> > (generic_handle_irq+0x29/0x34)
-> > console: [<c0162eed>] (generic_handle_irq) from [<c01633a7>]
-> > (__handle_domain_irq+0x43/0x84)
-> > console: [<c01633a7>] (__handle_domain_irq) from [<c05937d7>]
-> > (sun4i_handle_irq+0x3b/0x4c)
-> > console: [<c05937d7>] (sun4i_handle_irq) from [<c0100b65>] (__irq_svc+0=
-x65/0x94)
-> > console: Exception stack(0xc1517950 to 0xc1517998)
-> > console: 7940:                                     c1701ca0 60000153
-> > 000000e4 00000001
-> > console: 7960: c1701c40 00000002 60000153 c1517a1c c1701ca0 00000000
-> > c0f03d00 fffede04
-> > console: 7980: 00000000 c15179a0 c075ebb7 c09785d4 00000173 ffffffff
-> > console: [<c0100b65>] (__irq_svc) from [<c09785d4>]
-> > (_raw_spin_unlock_irqrestore+0x1c/0x20)
-> > console: [<c09785d4>] (_raw_spin_unlock_irqrestore) from [<c075ebb7>]
-> > (mv64xxx_i2c_xfer+0x5b/0x13c)
-> > console: [<c075ebb7>] (mv64xxx_i2c_xfer) from [<c075951d>]
-> > (__i2c_transfer+0x145/0x4c0)
-> > console: [<c075951d>] (__i2c_transfer) from [<c07598f3>]
-> > (i2c_transfer+0x5b/0xbc)
-> > console: [<c07598f3>] (i2c_transfer) from [<c06674e9>]
-> > (regmap_i2c_read+0x49/0x68)
-> > console: [<c06674e9>] (regmap_i2c_read) from [<c0664241>]
-> > (_regmap_raw_read+0x99/0x1d8)
-> > console: [<c0664241>] (_regmap_raw_read) from [<c06643a9>]
-> > (_regmap_bus_read+0x29/0x40)
-> > console: [<c06643a9>] (_regmap_bus_read) from [<c066358d>]
-> > (_regmap_read+0x3d/0xe8)
-> > console: [<c066358d>] (_regmap_read) from [<c0663989>]
-> > (_regmap_update_bits+0x75/0xb0)
-> > console: [<c0663989>] (_regmap_update_bits) from [<c0664745>]
-> > (regmap_update_bits_base+0x39/0x50)
-> > console: [<c0664745>] (regmap_update_bits_base) from [<c06683ef>]
-> > (regmap_irq_update_bits+0x2f/0x34)
-> > console: [<c06683ef>] (regmap_irq_update_bits) from [<c0668df7>]
-> > (regmap_add_irq_chip_fwnode+0x56f/0x72c)
-> > console: [<c0668df7>] (regmap_add_irq_chip_fwnode) from [<c0668fe3>]
-> > (regmap_add_irq_chip+0x2f/0x34)
-> > console: [<c0668fe3>] (regmap_add_irq_chip) from [<c066e53b>]
-> > (axp20x_device_probe+0x3f/0x368)
-> > console: [<c066e53b>] (axp20x_device_probe) from [<c0758b93>]
-> > (i2c_device_probe+0x1d3/0x1e4)
-> > console: [<c0758b93>] (i2c_device_probe) from [<c064fe3b>]
-> > (really_probe+0xb7/0x378)
-> > console: [<c064fe3b>] (really_probe) from [<c06502c1>]
-> > (driver_probe_device+0xa9/0x16c)
-> > console: [<c06502c1>] (driver_probe_device) from [<c064e93d>]
-> > (bus_for_each_drv+0x4d/0x78)
-> > console: [<c064e93d>] (bus_for_each_drv) from [<c064fd17>]
-> > (__device_attach+0x8f/0xf0)
-> > console: [<c064fd17>] (__device_attach) from [<c064f29b>]
-> > (bus_probe_device+0x5b/0x60)
-> > console: [<c064f29b>] (bus_probe_device) from [<c064c6b7>]
-> > (device_add+0x2e7/0x564)
-> > console: [<c064c6b7>] (device_add) from [<c0759b1f>]
-> > (i2c_new_client_device+0xdf/0x1bc)
-> > console: [<c0759b1f>] (i2c_new_client_device) from [<c075c541>]
-> > (of_i2c_register_device+0x71/0x90)
-> > console: [<c075c541>] (of_i2c_register_device) from [<c075c771>]
-> > (of_i2c_register_devices+0x59/0xc4)
-> > console: [<c075c771>] (of_i2c_register_devices) from [<c075a2a9>]
-> > (i2c_register_adapter+0x195/0x53c)
-> > console: [<c075a2a9>] (i2c_register_adapter) from [<c075ee31>]
-> > (mv64xxx_i2c_probe+0x199/0x440)
-> > console: [<c075ee31>] (mv64xxx_i2c_probe) from [<c0651a7b>]
-> > (platform_drv_probe+0x33/0x68)
-> > console: [<c0651a7b>] (platform_drv_probe) from [<c064fe3b>]
-> > (really_probe+0xb7/0x378)
-> > console: [<c064fe3b>] (really_probe) from [<c06502c1>]
-> > (driver_probe_device+0xa9/0x16c)
-> > console: [<c06502c1>] (driver_probe_device) from [<c0650501>]
-> > (device_driver_attach+0x3d/0x40)
-> > console: [<c0650501>] (device_driver_attach) from [<c0650561>]
-> > (__driver_attach+0x5d/0xe0)
-> > console: [<c0650561>] (__driver_attach) from [<c064e8b1>]
-> > (bus_for_each_dev+0x41/0x68)
-> > console: [<c064e8b1>] (bus_for_each_dev) from [<c064f453>]
-> > (bus_add_driver+0xe7/0x154)
-> > console: [<c064f453>] (bus_add_driver) from [<c0650c8d>]
-> > (driver_register+0x39/0xa0)
-> > console: [<c0650c8d>] (driver_register) from [<c0101c99>]
-> > (do_one_initcall+0x39/0x1b0)
-> > console: [<c0101c99>] (do_one_initcall) from [<c0e00ee9>]
-> > (kernel_init_freeable+0x1c1/0x20c)
-> > console: [<c0e00ee9>] (kernel_init_freeable) from [<c0973ba9>]
-> > (kernel_init+0xd/0xe0)
-> > console: [<c0973ba9>] (kernel_init) from [<c0100159>] (ret_from_fork+0x=
-11/0x38)
-> > console: Exception stack(0xc1517fb0 to 0xc1517ff8)
-> > console: 7fa0:                                     00000000 00000000
-> > 00000000 00000000
-> > console: 7fc0: 00000000 00000000 00000000 00000000 00000000 00000000
-> > 00000000 00000000
-> > console: 7fe0: 00000000 00000000 00000000 00000000 00000013 00000000
-> > console: handlers:
-> > console: [<(ptrval)>] mv64xxx_i2c_intr
-> > console: Disabling IRQ #43
-> >
-> > RESULTS    : PASS 0 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 3
-> > | CANCEL 0
-> > JOB TIME   : 94.23 s
-> >
-> >
-> > I also tried looking into the A10/A20/H3 specification, and I could
-> > not find information about this register being W1C when TWI is used in
-> > master mode. Can you share where that information is stated?
-> >
-> > I can see in Linux kernel that "allwinner,sun6i-a31-i2c" compatible
-> > devices have the "irq_clear_inverted" boolean set to true, but I also
-> > looked at A31 spec and I could not find the W1C information for master
-> > mode.
->
-> Hi:
->
-> I had checked the datasheet and linux source code. Not all of the sunxi S=
-oC
-> has W1C feature. Only the devices compatible with 'allwinner-sun6i-a31-i2=
-c'
-> has irq_clear_inverted feature.
->
->
-> ```c
-> if(of_device_is_compatible(np, "allwinner,sun6i-a31-i2c"))
-> drv_data->irq_clear_inverted=3D true;
-> ```
->
-> cubieboard is based A10 SoC, the irq flag is cleared when write 0, so thi=
-s
-> patch make it failed. I will try fix it and send new patch later.
+  target/arm/
+    cpregs.c - generic code and uncategorized registers
+    debug_regs.c - debug registers
+    pmu_regs.c - PMU registers
+    gtimer_regs.c - Generic Timer registers
+    *_regs.c - <other groups of registers>
 
-I guess you can take a similar approach to the one taken in
-`allwinner-sdhost.c` or `allwinner-rtc.c`, to create separate classes
-for sun4i and sun6i. I am available if you need any help.
+    tcg/helper.c - generic helpers
+    tcg/debug_helper.c - TCG helpers
+    tcg/*_helper.c - <other TCG helpers>
 
->
-> >
-> > Also, can you share how you ran QEMU so I can try to reproduce the
-> > hang that you encountered?
->
-> I am portting allwinner r40 device and you can read it from my github rep=
-o:
-> https://github.com/qianfan-Zhao/qemu/tree/allwinner-r40
-> R40 is compatible with sun6i-a31-i2c and you can find the W1C flag on it'=
-s
-> datasheet.
+- cortex regs: these were _not_ related to the 32-bit cpus in
+  cpu_tcg.c, they were related to 64-bit cpus in cpu64.c and only used
+  to borrow some registers for the 32-bit "max" cpu. I moved them into
+  cpu64.c.
 
-That sounds great!
+- avocado migration test: rewrote it in a more generic fashion and
+  stopped using defaults for the major (by some definition of major)
+  architectures (let me know if I missed any).
 
-Best regards,
-Strahinja
+- new avocado patch that fixes version.py for aarch64. This was lost
+  in the ml.
 
->
-> (DRAMC is not impl on my github repo, so the u-boot code can't work)
->
-> >
-> > Best regards,
-> > Strahinja
-> >
-> >
-> > On Fri, Feb 17, 2023 at 10:42 AM <qianfanguijin@163.com> wrote:
-> >> From: qianfan Zhao <qianfanguijin@163.com>
-> >>
-> >> TWI_CNTR_INT_FLAG is W1C(write 1 to clear and write 0 has non-effect)
-> >> register, we should lower interrupt when the guest write this bit.
-> >>
-> >> The linux kernel will hang in irq handler(mv64xxx_i2c_intr) if no
-> >> device connected on the i2c bus, next is the trace log:
-> >>
-> >> [    7.004130] axp20x-i2c 0-0034: AXP20x variant AXP221 found
-> >> allwinner_i2c_rw write   CNTR[0x0c]: e4 { A_ACK M_STA BUS_EN INT_EN  }
-> >> allwinner_i2c_rw  read   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN=
- }
-> >> allwinner_i2c_rw  read   STAT[0x10]: 08 { STAT_M_STA_TX }
-> >> allwinner_i2c_rw write   DATA[0x08]: 68
-> >> allwinner_i2c_rw write   CNTR[0x0c]: c4 { A_ACK BUS_EN INT_EN  }
-> >> allwinner_i2c_rw write   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN=
- }
-> >> allwinner_i2c_rw  read   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN=
- }
-> >> allwinner_i2c_rw  read   STAT[0x10]: 20 { STAT_M_ADDR_WR_NACK }
-> >> allwinner_i2c_rw write   CNTR[0x0c]: 54 { A_ACK M_STP BUS_EN  }
-> >> allwinner_i2c_rw write   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
-> >> allwinner_i2c_rw  read   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
-> >> allwinner_i2c_rw  read   STAT[0x10]: f8 { STAT_IDLE }
-> >> allwinner_i2c_rw write   CNTR[0x0c]: 54 { A_ACK M_STP BUS_EN  }
-> >> allwinner_i2c_rw write   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
-> >> allwinner_i2c_rw  read   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
-> >> allwinner_i2c_rw  read   STAT[0x10]: f8 { STAT_IDLE }
-> >>
-> >> Fix it.
-> >>
-> >> Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
-> >> ---
-> >>   hw/i2c/allwinner-i2c.c | 5 +++--
-> >>   1 file changed, 3 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/hw/i2c/allwinner-i2c.c b/hw/i2c/allwinner-i2c.c
-> >> index 36b387520f..86a77d4a59 100644
-> >> --- a/hw/i2c/allwinner-i2c.c
-> >> +++ b/hw/i2c/allwinner-i2c.c
-> >> @@ -443,8 +443,9 @@ static void allwinner_i2c_write(void *opaque, hwad=
-dr offset,
-> >>                   s->stat =3D STAT_FROM_STA(STAT_IDLE);
-> >>                   s->cntr &=3D ~TWI_CNTR_M_STP;
-> >>               }
-> >> -            if ((s->cntr & TWI_CNTR_INT_FLAG) =3D=3D 0) {
-> >> -                /* Interrupt flag cleared */
-> >> +            if (s->cntr & TWI_CNTR_INT_FLAG) {
-> >> +                /* Write 1 to clear this flag */
-> >> +                s->cntr &=3D ~TWI_CNTR_INT_FLAG;
-> >>                   qemu_irq_lower(s->irq);
-> >>               }
-> >>               if ((s->cntr & TWI_CNTR_A_ACK) =3D=3D 0) {
-> >> --
-> >> 2.25.1
-> >>
->
+- new patch to fix the tests that break due to Xen pulling in
+  non-native QEMU targets
+
+Thanks!
+
+v5 resend:
+https://lore.kernel.org/r/20230213202927.28992-1-farosas@suse.de
+
+v5:
+https://lore.kernel.org/r/20230120184825.31626-1-farosas@suse.de
+
+This series makes the necessary changes to allow the use of
+--disable-tcg for arm.
+
+- Used "max" as the default CPU for KVM-only builds. This allows me to
+  drop all the clunky qtest changes and it keeps disabling TCG
+  separate from changing cpu defaults.
+
+  I'm neutral towards removing the defaults for arm. We can do that in a
+  separate series. It would be nice to make the TCG default equal to the
+  non-TCG one. Otherwise we're bound to get reports that "this command
+  line used to work" if users switch from: 'CONFIG_TCG=n -accel kvm' to
+  'CONFIG_TCG=y -accel kvm' (the latter would try to use the cortex-a15
+  as default).
+
+- Move the ifdef around valid_cpus into the patches that move the
+  respective cpus. Patches 1 & 2.
+
+v5 was based on "target/arm: CONFIG_TCG=n part 1":
+https://lore.kernel.org/r/20230118193518.26433-1-farosas@suse.de
+
+v4:
+https://lore.kernel.org/r/20230119135424.5417-1-farosas@suse.de
+
+v3:
+https://lore.kernel.org/r/20230113140419.4013-1-farosas@suse.de
+
+v2:
+https://lore.kernel.org/r/20230109224232.11661-1-farosas@suse.de
+
+v1:
+https://lore.kernel.org/r/20230104215835.24692-1-farosas@suse.de
+
+Claudio Fontana (6):
+  target/arm: rename handle_semihosting to tcg_handle_semihosting
+  target/arm: wrap psci call with tcg_enabled
+  target/arm: wrap call to aarch64_sve_change_el in tcg_enabled()
+  target/arm: move helpers to tcg/
+  target/arm: Move psci.c into the tcg directory
+  target/arm: move cpu_tcg to tcg/cpu32.c
+
+Fabiano Rosas (22):
+  target/arm: Move PC alignment check
+  target/arm: Move cpregs code out of cpu.h
+  target/arm: Wrap breakpoint/watchpoint updates with tcg_enabled
+  target/arm: Wrap TCG-only code in debug_helper.c
+  target/arm: move translate modules to tcg/
+  target/arm: Wrap arm_rebuild_hflags calls with tcg_enabled
+  target/arm: Move hflags code into the tcg directory
+  target/arm: Move regime_using_lpae_format into internal.h
+  target/arm: Don't access TCG code when debugging with KVM
+  cpu-defs.h: Expose CPUTLBEntryFull to non-TCG code
+  target/arm: Move cortex sysregs into cpu64.c
+  tests/avocado: Skip tests that require a missing accelerator
+  tests/avocado: Tag TCG tests with accel:tcg
+  target/arm: Move 64-bit TCG CPUs into tcg/
+  target/arm: Use "max" as default cpu for the virt machine with KVM
+  tests/qtest: arm-cpu-features: Match tests to required accelerators
+  tests/qtest: Restrict tpm-tis-devices-{swtpm}-test to CONFIG_TCG
+  target/avocado: Pass parameters to migration test
+  tests/avocado: add machine:none tag to version.py
+  arm/Kconfig: Always select SEMIHOSTING when TCG is present
+  arm/Kconfig: Do not build TCG-only boards on a KVM-only build
+  tests/qtest: Fix tests when no KVM or TCG are present
+
+Philippe Mathieu-Daudé (1):
+  gitlab-ci: Check building KVM-only aarch64 target
+
+ .gitlab-ci.d/crossbuilds.yml                  |  11 +
+ .../custom-runners/ubuntu-22.04-aarch64.yml   |   4 -
+ MAINTAINERS                                   |   1 +
+ configs/devices/aarch64-softmmu/default.mak   |   4 -
+ configs/devices/arm-softmmu/default.mak       |  39 -
+ hw/arm/Kconfig                                |  43 +-
+ hw/arm/boot.c                                 |   6 +-
+ hw/arm/virt.c                                 |  10 +-
+ hw/intc/armv7m_nvic.c                         |  20 +-
+ include/exec/cpu-defs.h                       |   6 +
+ target/arm/Kconfig                            |   7 +
+ target/arm/arm-powerctl.c                     |   7 +-
+ target/arm/cpregs.h                           | 104 +++
+ target/arm/cpu.c                              |   9 +-
+ target/arm/cpu.h                              |  91 ---
+ target/arm/cpu64.c                            | 686 ++----------------
+ target/arm/debug_helper.c                     | 490 +++++++------
+ target/arm/helper.c                           | 430 +----------
+ target/arm/internals.h                        |  33 +-
+ target/arm/machine.c                          |  30 +-
+ target/arm/meson.build                        |  49 +-
+ target/arm/ptw.c                              |   4 +
+ target/arm/tcg-stubs.c                        |  27 +
+ target/arm/{ => tcg}/a32-uncond.decode        |   0
+ target/arm/{ => tcg}/a32.decode               |   0
+ target/arm/{cpu_tcg.c => tcg/cpu32.c}         |  72 +-
+ target/arm/tcg/cpu64.c                        | 655 +++++++++++++++++
+ target/arm/{ => tcg}/crypto_helper.c          |   0
+ target/arm/{ => tcg}/helper-a64.c             |   0
+ target/arm/tcg/hflags.c                       | 403 ++++++++++
+ target/arm/{ => tcg}/iwmmxt_helper.c          |   0
+ target/arm/{ => tcg}/m-nocp.decode            |   0
+ target/arm/{ => tcg}/m_helper.c               |   0
+ target/arm/tcg/meson.build                    |  52 ++
+ target/arm/{ => tcg}/mte_helper.c             |   0
+ target/arm/{ => tcg}/mve.decode               |   0
+ target/arm/{ => tcg}/mve_helper.c             |   0
+ target/arm/{ => tcg}/neon-dp.decode           |   0
+ target/arm/{ => tcg}/neon-ls.decode           |   0
+ target/arm/{ => tcg}/neon-shared.decode       |   0
+ target/arm/{ => tcg}/neon_helper.c            |   0
+ target/arm/{ => tcg}/op_helper.c              |   0
+ target/arm/{ => tcg}/pauth_helper.c           |   0
+ target/arm/{ => tcg}/psci.c                   |   0
+ target/arm/{ => tcg}/sme-fa64.decode          |   0
+ target/arm/{ => tcg}/sme.decode               |   0
+ target/arm/{ => tcg}/sme_helper.c             |   0
+ target/arm/{ => tcg}/sve.decode               |   0
+ target/arm/{ => tcg}/sve_helper.c             |   0
+ target/arm/{ => tcg}/t16.decode               |   0
+ target/arm/{ => tcg}/t32.decode               |   0
+ target/arm/{ => tcg}/tlb_helper.c             |  18 -
+ target/arm/{ => tcg}/translate-a64.c          |   0
+ target/arm/{ => tcg}/translate-a64.h          |   0
+ target/arm/{ => tcg}/translate-m-nocp.c       |   0
+ target/arm/{ => tcg}/translate-mve.c          |   0
+ target/arm/{ => tcg}/translate-neon.c         |   0
+ target/arm/{ => tcg}/translate-sme.c          |   0
+ target/arm/{ => tcg}/translate-sve.c          |   0
+ target/arm/{ => tcg}/translate-vfp.c          |   0
+ target/arm/{ => tcg}/translate.c              |   0
+ target/arm/{ => tcg}/translate.h              |   0
+ target/arm/{ => tcg}/vec_helper.c             |   0
+ target/arm/{ => tcg}/vec_internal.h           |   0
+ target/arm/{ => tcg}/vfp-uncond.decode        |   0
+ target/arm/{ => tcg}/vfp.decode               |   0
+ tests/avocado/avocado_qemu/__init__.py        |   4 +
+ tests/avocado/boot_linux_console.py           |   1 +
+ tests/avocado/migration.py                    |  83 ++-
+ tests/avocado/reverse_debugging.py            |   8 +
+ tests/avocado/version.py                      |   1 +
+ tests/qtest/arm-cpu-features.c                |  34 +-
+ tests/qtest/bios-tables-test.c                |   4 +
+ tests/qtest/boot-serial-test.c                |  10 +
+ tests/qtest/meson.build                       |   4 +-
+ tests/qtest/migration-test.c                  |   5 +
+ tests/qtest/pxe-test.c                        |   6 +
+ tests/qtest/vmgenid-test.c                    |   6 +
+ 78 files changed, 1894 insertions(+), 1583 deletions(-)
+ create mode 100644 target/arm/tcg-stubs.c
+ rename target/arm/{ => tcg}/a32-uncond.decode (100%)
+ rename target/arm/{ => tcg}/a32.decode (100%)
+ rename target/arm/{cpu_tcg.c => tcg/cpu32.c} (93%)
+ create mode 100644 target/arm/tcg/cpu64.c
+ rename target/arm/{ => tcg}/crypto_helper.c (100%)
+ rename target/arm/{ => tcg}/helper-a64.c (100%)
+ create mode 100644 target/arm/tcg/hflags.c
+ rename target/arm/{ => tcg}/iwmmxt_helper.c (100%)
+ rename target/arm/{ => tcg}/m-nocp.decode (100%)
+ rename target/arm/{ => tcg}/m_helper.c (100%)
+ create mode 100644 target/arm/tcg/meson.build
+ rename target/arm/{ => tcg}/mte_helper.c (100%)
+ rename target/arm/{ => tcg}/mve.decode (100%)
+ rename target/arm/{ => tcg}/mve_helper.c (100%)
+ rename target/arm/{ => tcg}/neon-dp.decode (100%)
+ rename target/arm/{ => tcg}/neon-ls.decode (100%)
+ rename target/arm/{ => tcg}/neon-shared.decode (100%)
+ rename target/arm/{ => tcg}/neon_helper.c (100%)
+ rename target/arm/{ => tcg}/op_helper.c (100%)
+ rename target/arm/{ => tcg}/pauth_helper.c (100%)
+ rename target/arm/{ => tcg}/psci.c (100%)
+ rename target/arm/{ => tcg}/sme-fa64.decode (100%)
+ rename target/arm/{ => tcg}/sme.decode (100%)
+ rename target/arm/{ => tcg}/sme_helper.c (100%)
+ rename target/arm/{ => tcg}/sve.decode (100%)
+ rename target/arm/{ => tcg}/sve_helper.c (100%)
+ rename target/arm/{ => tcg}/t16.decode (100%)
+ rename target/arm/{ => tcg}/t32.decode (100%)
+ rename target/arm/{ => tcg}/tlb_helper.c (94%)
+ rename target/arm/{ => tcg}/translate-a64.c (100%)
+ rename target/arm/{ => tcg}/translate-a64.h (100%)
+ rename target/arm/{ => tcg}/translate-m-nocp.c (100%)
+ rename target/arm/{ => tcg}/translate-mve.c (100%)
+ rename target/arm/{ => tcg}/translate-neon.c (100%)
+ rename target/arm/{ => tcg}/translate-sme.c (100%)
+ rename target/arm/{ => tcg}/translate-sve.c (100%)
+ rename target/arm/{ => tcg}/translate-vfp.c (100%)
+ rename target/arm/{ => tcg}/translate.c (100%)
+ rename target/arm/{ => tcg}/translate.h (100%)
+ rename target/arm/{ => tcg}/vec_helper.c (100%)
+ rename target/arm/{ => tcg}/vec_internal.h (100%)
+ rename target/arm/{ => tcg}/vfp-uncond.decode (100%)
+ rename target/arm/{ => tcg}/vfp.decode (100%)
+
+-- 
+2.35.3

@@ -1,37 +1,37 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1109302ejb;
-        Thu, 16 Feb 2023 19:43:57 -0800 (PST)
-X-Google-Smtp-Source: AK7set9FKchernajp8BVNSUThv6jN573HSQkoLMULKg/QU0/sFKn/bARx/mf6rGYYSfPpm+pb2QL
-X-Received: by 2002:a05:6214:2522:b0:56e:aa8b:9100 with SMTP id gg2-20020a056214252200b0056eaa8b9100mr8037886qvb.20.1676605437483;
-        Thu, 16 Feb 2023 19:43:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676605437; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1109381ejb;
+        Thu, 16 Feb 2023 19:44:06 -0800 (PST)
+X-Google-Smtp-Source: AK7set8z+NizeT3kae9i1JJKnKlrTWDEm1MvCnpb8yHxA07ip/ROy6qIymuU0Qwc4MULC+ne7b4Z
+X-Received: by 2002:a05:622a:1487:b0:3bb:88e2:7625 with SMTP id t7-20020a05622a148700b003bb88e27625mr14824404qtx.24.1676605446703;
+        Thu, 16 Feb 2023 19:44:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676605446; cv=none;
         d=google.com; s=arc-20160816;
-        b=jJgpPyMEi6C+I9xJmEqvh4L4o2auAPNNhar4eq/a1Xb9LtnSWMVjHBJ0wNR/hr1wrt
-         dPBkwhzLtUJ9UwSFPUB5KAj94pcJ8k9ViMVhdg8x43UFKd/nSLL2r1v4E4gAwOLfuLmn
-         74yjOlEyLsqsd7d/hV079PllhTJR3V45AqvDWJzvg1GPnELjzS4K+a8ICkPGgd/mdLv6
-         uRILUZH814K0DgPWYRfVShGNCz7M5Jdyx3arCvq8LUWt92LkuoKwe/+8DGAX5HFTcq52
-         2n2VcaknB3I2PfG4t4o6hLK2hGt5u63S5q4kxq2t6Lo2ORPcgaMQ3wYpc9xWidQzDwV8
-         z+ZA==
+        b=Ec3tDRmrjOp/OCFEvrGjRVMCyJhni4NgTgev8O6YvFKilTm11PXlEruOg3D5/WaaWz
+         TF2uMyL5Flg6HJOT2nIFwOM/RNGix3u+tM/TdTfFDW12KPY9oJjcgvAe89ij/qZew2H/
+         lWSC5u9Wxiz+tDxJKoKNeOpxigzmEnwFz7X7+l9fWvXgVgXM2A3Z5r0Wv7PJ1lKwyX73
+         CY1zPxCh3BMP6VUDATgUycuxGztIfN3Nx0vegpxVlAS1smEyu1FX0LQh3n7NrXJSsBF+
+         Zf9uEyL/Amt+zBq2Bc1Opn9ZlsXZIcrJ8tVqMwoVTHmSjPuHi+zaXdyIe3m4QvCy8uCR
+         m2Tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
          :from;
-        bh=gNbJKhUkN62441bv6i7ua4wyT3NEEYVb4pMqPI4t014=;
-        b=HZAT4BDv7PwEMYaVZ03hhplfVW/6/9lGSYEwRCaKnYwZB2EbsZ9krUTaX0Ve0yfm9z
-         71VptENit0Ptyd9FyxS1t7fMblD6mxSHmmRuO7IYVosxnsITv2ZQatvHghtQcT6Kckof
-         d5uqW009555xHwcR+u7uTN94jh/gzlQIWLl5QcX/r8xw6lmfirJMhYrbyJ0zPa8uzCio
-         u56b/ulNe1vaDpx3EXv28mNrmUKgThSgQ9t/eTuKAvA9j1DgQRAuyRyqafLstymhmmsA
-         CT/JQJUcRieQvqzaF51bMnEIlnl+3SHYxWtoz6hboCUbZp1IJEUEgF0J2ZP6OrJZReZJ
-         Becg==
+        bh=OP/Aaoth54IJnjgx0bNTPEQpOZNwWUzZas8kSSj0IYw=;
+        b=k8kwMbJstZbNYwaDPp/BIGfR8QRDbiVqU3hDAqX8lKTlEaWzSG+cQ5aNByO9JlwjgY
+         DH6tskYfUPjnzSFe1Tu3yipbKVp9LO1VjB7MTDzUDEDNu8l6aSuu2xNuGsMyFviZfyHN
+         HdKtIuAd9jAU0wJ+Pf08NX4vd27UTAwzWC059gzqVSLyVe82IYpBuuZ1uhZTR8/J56/J
+         fR7nsKHVF7z1Af9uNv6XhZHIL+tc8lYibw7d3SKgIEEe4LyAd1nM7J29kEF5TaBMTB5c
+         CZfRAb5o70M2gXbhWLz/ELuR/oSjpBTexj9TbX/+Hj4XpcSX/juqoldANmuVNCCXuZJg
+         qEHw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16-20020a0cda10000000b0053770dc10d8si2489633qvj.75.2023.02.16.19.43.57
+        by mx.google.com with ESMTPS id x15-20020a05622a000f00b003b69e89c572si1057967qtw.576.2023.02.16.19.44.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 19:43:57 -0800 (PST)
+        Thu, 16 Feb 2023 19:44:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -39,24 +39,23 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pSreY-0005YT-0q; Thu, 16 Feb 2023 22:43:18 -0500
+	id 1pSreY-0005Yv-Qq; Thu, 16 Feb 2023 22:43:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pSreW-0005Xq-HT; Thu, 16 Feb 2023 22:43:16 -0500
+ id 1pSreX-0005YK-Il; Thu, 16 Feb 2023 22:43:17 -0500
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pSreV-0007At-1P; Thu, 16 Feb 2023 22:43:16 -0500
+ id 1pSreV-0007B1-CT; Thu, 16 Feb 2023 22:43:17 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 3DD5911F055;
+ by mail-b.sr.ht (Postfix) with ESMTPSA id BFF2411F104;
  Fri, 17 Feb 2023 03:43:13 +0000 (UTC)
 From: ~ssinprem <ssinprem@git.sr.ht>
-Date: Fri, 17 Feb 2023 10:31:27 +0700
-Subject: [PATCH qemu v3 1/2] hw/at24c : modify at24c to support 1 byte address
- mode
-Message-ID: <167660539263.10409.9736070122710923479-1@git.sr.ht>
+Date: Fri, 17 Feb 2023 09:59:53 +0700
+Subject: [PATCH qemu v3 2/2] aspeed/fuji : correct the eeprom size
+Message-ID: <167660539263.10409.9736070122710923479-2@git.sr.ht>
 X-Mailer: git.sr.ht
 In-Reply-To: <167660539263.10409.9736070122710923479-0@git.sr.ht>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
@@ -64,7 +63,7 @@ Cc: qemu-stable@nongnu.org, ssinprem@celestica.com, ssumet@celestica.com,
  srikanth@celestica.com, kgengan@celestica.com, clg@kaod.org,
  peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 MIME-Version: 1.0
 Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
  helo=mail-b.sr.ht
@@ -72,7 +71,7 @@ X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,86 +87,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Reply-To: ~ssinprem <ssinprem@celestica.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AbgFzAaJihWY
+X-TUID: E537z1HkUbtr
 
 From: Sittisak Sinprem <ssinprem@celestica.com>
 
+Device 24C64 the size is 64 kilobits = 8kilobyte
+Device 24C02 the size is 2 kilobits = 256byte
+
 Signed-off-by: Sittisak Sinprem <ssinprem@celestica.com>
 ---
- hw/nvram/eeprom_at24c.c | 28 +++++++++++++++++++++++++---
- 1 file changed, 25 insertions(+), 3 deletions(-)
+ hw/arm/aspeed.c | 36 ++++++++++++++++++++----------------
+ 1 file changed, 20 insertions(+), 16 deletions(-)
 
-diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-index 3328c32814..64259cde67 100644
---- a/hw/nvram/eeprom_at24c.c
-+++ b/hw/nvram/eeprom_at24c.c
-@@ -41,6 +41,12 @@ struct EEPROMState {
-     uint16_t cur;
-     /* total size in bytes */
-     uint32_t rsize;
-+    /* address byte number=20
-+     *  for  24c01, 24c02 size <=3D 256 byte, use only 1 byte
-+     *  otherwise size > 256, use 2 byte
-+     */
-+    uint8_t asize;
-+
-     bool writable;
-     /* cells changed since last START? */
-     bool changed;
-@@ -91,7 +97,10 @@ uint8_t at24c_eeprom_recv(I2CSlave *s)
-     EEPROMState *ee =3D AT24C_EE(s);
-     uint8_t ret;
-=20
--    if (ee->haveaddr =3D=3D 1) {
-+    /* If got the byte address but not completely with address size
-+     *  will return the invalid value
-+     */
-+    if (ee->haveaddr > 0 && ee->haveaddr < ee->asize) {
-         return 0xff;
-     }
-=20
-@@ -108,11 +117,11 @@ int at24c_eeprom_send(I2CSlave *s, uint8_t data)
- {
-     EEPROMState *ee =3D AT24C_EE(s);
-=20
--    if (ee->haveaddr < 2) {
-+    if (ee->haveaddr < ee->asize) {
-         ee->cur <<=3D 8;
-         ee->cur |=3D data;
-         ee->haveaddr++;
--        if (ee->haveaddr =3D=3D 2) {
-+        if (ee->haveaddr =3D=3D ee->asize) {
-             ee->cur %=3D ee->rsize;
-             DPRINTK("Set pointer %04x\n", ee->cur);
-         }
-@@ -199,6 +208,18 @@ static void at24c_eeprom_realize(DeviceState *dev, Error=
- **errp)
-         }
-         DPRINTK("Reset read backing file\n");
-     }
-+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 27dda58338..40f6076b44 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -840,42 +840,46 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
+     i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
+ 
+-    at24c_eeprom_init(i2c[19], 0x52, 64 * KiB);
+-    at24c_eeprom_init(i2c[20], 0x50, 2 * KiB);
+-    at24c_eeprom_init(i2c[22], 0x52, 2 * KiB);
 +    /*
-+     * If address size didn't define with property set
-+     *   value is 0 as default, setting it by Rom size detecting.
-+     */
-+    if (ee->asize =3D=3D 0) {
-+        if (ee->rsize <=3D 256) {
-+            ee->asize =3D 1;
-+        } else {
-+            ee->asize =3D 2;
-+        }
-+    }
- }
-=20
- static
-@@ -213,6 +234,7 @@ void at24c_eeprom_reset(DeviceState *state)
-=20
- static Property at24c_eeprom_props[] =3D {
-     DEFINE_PROP_UINT32("rom-size", EEPROMState, rsize, 0),
-+    DEFINE_PROP_UINT8("address-size", EEPROMState, asize, 0),
-     DEFINE_PROP_BOOL("writable", EEPROMState, writable, true),
-     DEFINE_PROP_DRIVE("drive", EEPROMState, blk),
-     DEFINE_PROP_END_OF_LIST()
---=20
++    * EEPROM 24c64 size is 64Kbits or 8 Kbytes
++    *        24c02 size is 2Kbits or 256 bytes
++    */
++    at24c_eeprom_init(i2c[19], 0x52, 8 * KiB);
++    at24c_eeprom_init(i2c[20], 0x50, 256);
++    at24c_eeprom_init(i2c[22], 0x52, 256);
+ 
+     i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
+     i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
+     i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
+     i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
+ 
+-    at24c_eeprom_init(i2c[8], 0x51, 64 * KiB);
++    at24c_eeprom_init(i2c[8], 0x51, 8 * KiB);
+     i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
+ 
+     i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
+-    at24c_eeprom_init(i2c[50], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[50], 0x52, 8 * KiB);
+     i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
+     i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
+ 
+     i2c_slave_create_simple(i2c[59], TYPE_TMP75, 0x48);
+     i2c_slave_create_simple(i2c[60], TYPE_TMP75, 0x49);
+ 
+-    at24c_eeprom_init(i2c[65], 0x53, 64 * KiB);
++    at24c_eeprom_init(i2c[65], 0x53, 8 * KiB);
+     i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x49);
+     i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x48);
+-    at24c_eeprom_init(i2c[68], 0x52, 64 * KiB);
+-    at24c_eeprom_init(i2c[69], 0x52, 64 * KiB);
+-    at24c_eeprom_init(i2c[70], 0x52, 64 * KiB);
+-    at24c_eeprom_init(i2c[71], 0x52, 64 * KiB);
++    at24c_eeprom_init(i2c[68], 0x52, 8 * KiB);
++    at24c_eeprom_init(i2c[69], 0x52, 8 * KiB);
++    at24c_eeprom_init(i2c[70], 0x52, 8 * KiB);
++    at24c_eeprom_init(i2c[71], 0x52, 8 * KiB);
+ 
+-    at24c_eeprom_init(i2c[73], 0x53, 64 * KiB);
++    at24c_eeprom_init(i2c[73], 0x53, 8 * KiB);
+     i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x49);
+     i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x48);
+-    at24c_eeprom_init(i2c[76], 0x52, 64 * KiB);
+-    at24c_eeprom_init(i2c[77], 0x52, 64 * KiB);
+-    at24c_eeprom_init(i2c[78], 0x52, 64 * KiB);
+-    at24c_eeprom_init(i2c[79], 0x52, 64 * KiB);
+-    at24c_eeprom_init(i2c[28], 0x50, 2 * KiB);
++    at24c_eeprom_init(i2c[76], 0x52, 8 * KiB);
++    at24c_eeprom_init(i2c[77], 0x52, 8 * KiB);
++    at24c_eeprom_init(i2c[78], 0x52, 8 * KiB);
++    at24c_eeprom_init(i2c[79], 0x52, 8 * KiB);
++    at24c_eeprom_init(i2c[28], 0x50, 256);
+ 
+     for (int i = 0; i < 8; i++) {
+         at24c_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
+-- 
 2.34.6
-

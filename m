@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp129019ejb;
-        Fri, 17 Feb 2023 12:15:35 -0800 (PST)
-X-Google-Smtp-Source: AK7set9qmBM/yU7ahZ39rkUuhEkleABcDL4wlAjITk3TD6l+wwvSK2Ie9fPteEISRNg66MO/ACx+
-X-Received: by 2002:adf:e4c5:0:b0:2c5:843e:7c4 with SMTP id v5-20020adfe4c5000000b002c5843e07c4mr6040868wrm.33.1676664934893;
-        Fri, 17 Feb 2023 12:15:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676664934; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp129126ejb;
+        Fri, 17 Feb 2023 12:15:39 -0800 (PST)
+X-Google-Smtp-Source: AK7set+AevpmZNN7voAVojA7lFP9XtsWB4g0KApzjMSHjzyYxs/R7FrPeLwDuWfM5NZXjZmvEj7J
+X-Received: by 2002:a5d:5012:0:b0:2c5:5878:e5a6 with SMTP id e18-20020a5d5012000000b002c55878e5a6mr8653257wrt.61.1676664939785;
+        Fri, 17 Feb 2023 12:15:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676664939; cv=none;
         d=google.com; s=arc-20160816;
-        b=esb67o87QHCk1h8q7KkPfjuRV8WdW9j8fcqcWC1jeejUjy8w4qtETjf8WO/cOYwumx
-         BSlHBIPOYIgjRRZWw82rzbEWq9cKDkNbZtdwQKyIPbpp/Fpae/0QCM4FDi+Y//RS1Fdr
-         M+sOLfoGjxPwpT6rC2URHVb08gFuU9MdTG1iMXW7LGWcIrGY29AA2LVBaCy2FN7TgoMB
-         QHguil7+yo1A0IS9riVCn3sBRGvwxY/d1kPK9Yzaq4zJe36s+AwsyjZ2AS/sPOlWY1AU
-         Pulg7TVyUODwiYaKui2XJ3sQ3tmTYafahgTLCGt3JteXTzb9D21DkStdCyFHZ5gHyQDd
-         muVA==
+        b=bTCIkFaekhOmEeasLl6wtsaWnQX4Isr15JuGwxWVbwKSZfJsmTThWvdK/z40EjVwo6
+         zWBKww3THRCt0y+KD9PkdUnSOnsoTgvcsZ/4xB8IM0dmUab2NTobUQCFDwaRts2BGBBP
+         IpxZ+IxFoDuyh4tkokuZNKI4id2c1h2/ANSuNv8HH7OVOEYp2vfImG5yZ45HKdn0sr3V
+         7obi4rcg+jJDvlL5FLdteS2gqntkK0NglaC5mkOZgJMqZes1s8Z15F2kfpWPejA/IM0H
+         k9Ec1wDT8j0iRpMxNX7o2qSNqRluuQCwqnVbBoTVBFtttfMCXOAU2twitHw+UJwshfn0
+         1TZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=cVx99/M6Pp/qfxaNig6cBB81qvBwVS7AO0drF/iWRns=;
-        b=isG0mjG91vUcXTsbXb1hCPQlRQA6nZ6ue5nVSpdOiD46/R5ZwZWmIloNBbrdo6E+xe
-         ypRIqn0OAVwrU88TBLYjCu181YP8g7dJk4TD538Z4U/u6MqLvgI6s8XipfqtcshXZRqA
-         aJgweZyx5P7LjUaUTPcZ5VWBz2jlODA2euJUJXrGV7SM24V8tSlzQ3UPODTzECaIp5pz
-         gfeFSHoN/nHITIFLVs9Wl5TnGwmHTbZKwDV/z/jk6ZcLIXFxuzloTeclSTzQxDUUl6V7
-         IPQRz3eK1DUCVZm7S3RmuQQGJVBNlp8Nhb/VKw0Sv/sYN2zRZqKhXcdGaDiuVjdecw4d
-         VxpQ==
+        bh=IZIy8Z3iGPcCgRkuMHF+6DkhbdLUaHXoLVg5l0Z77Vk=;
+        b=aCKnh8Iqdx8Ad/m465SSsuTMPjWDZ4zzBPMYeF0GHgHKeO1iDb/N7U5I7btpHphdUN
+         FuJzze+QEasWjb0AmTbni7pbowFYorXheQk6NU+MKpG7/PymLKf6Y7dSPNZZCuRvFhIB
+         zac+TNeGvfqUjy7pHVW9j5yBQhuayXNYj5F8fGZtRisBLNCCM2JlD9YAYGMXyme5BurH
+         YYAe5ZB2iwKSTPoUbZucYi+6zecGfkdw8FAxOYz9BXg16Zl7Jy4kcvfW0TWPL9zwFolS
+         JzK2sXYaa7c81iNcuiBzVnl7OjAAmNDLAhJDdrlyjyGGfkV15Ao/QrElH2TK0hTpFbut
+         pNoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=SXxmiihZ;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=IaNCMTsB;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="o3/db6s7";
+       dkim=neutral (no key) header.i=@suse.de;
        spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
 Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id z16-20020adfdf90000000b002c552f43445si5220552wrl.369.2023.02.17.12.15.34
+        by mx.google.com with ESMTPS id j3-20020adff003000000b002c553335a09si5838902wro.1026.2023.02.17.12.15.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Feb 2023 12:15:34 -0800 (PST)
+        Fri, 17 Feb 2023 12:15:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=SXxmiihZ;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=IaNCMTsB;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="o3/db6s7";
+       dkim=neutral (no key) header.i=@suse.de;
        spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 7F8E334657;
-	Fri, 17 Feb 2023 20:15:34 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 5FB7E21B85;
+	Fri, 17 Feb 2023 20:15:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1676664934; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	t=1676664939; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=cVx99/M6Pp/qfxaNig6cBB81qvBwVS7AO0drF/iWRns=;
-	b=SXxmiihZzhJTmC+smHpEC76qJiAqYy7U/uPUqdw9vlWVRyd+MMMpJZH545nA6mQcHGyB95
-	N8pFHnzjaRnERWTy32baFIywBKKDNBhLlUO6hV8UUKEEzGpNYgKT3ugHb5FsP0hYfkNwFv
-	1+MOoOtC/0RObiaVj6TKL6T9g9DkLVs=
+	bh=IZIy8Z3iGPcCgRkuMHF+6DkhbdLUaHXoLVg5l0Z77Vk=;
+	b=o3/db6s78brkhwLwQxg4nwW6bHaUHHmrW9pigJI/BpA3gWn6hCYTNRpR9QBW2jp5eR1d8T
+	T4ss9hq2SayiQWscmDC/t3aiR0D0/esNYj3H0L8bZJKj1xGwr3e+IxvQS46bUIYkN+Ac++
+	xaBFQdjC+MzlwKW581f/eYvWcI3XkjE=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1676664934;
+	s=susede2_ed25519; t=1676664939;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=cVx99/M6Pp/qfxaNig6cBB81qvBwVS7AO0drF/iWRns=;
-	b=IaNCMTsBCynRUQ6dYgFxqLDyTbCeCXJb9MQylhZSOGZuyGGxKwnq247LIxKviHEQW7gMSM
-	NQLrGI3SRThskKCQ==
+	bh=IZIy8Z3iGPcCgRkuMHF+6DkhbdLUaHXoLVg5l0Z77Vk=;
+	b=YLNGxPgTlzYUZQsxHY7zIfiIY+p4i0vZ0lZf/Mfk3AMYXn8UAA0T71kWlJ72VZpqO8vECk
+	0GY9yS3bxbNlkiBw==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id E9C54138E3;
-	Fri, 17 Feb 2023 20:15:30 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id F365F138E3;
+	Fri, 17 Feb 2023 20:15:34 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id gGcALGLg72MwIAAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 17 Feb 2023 20:15:30 +0000
+	id SK1ZLmbg72MwIAAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 17 Feb 2023 20:15:34 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,70 +83,142 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Ani Sinha <ani@anisinha.ca>,
 	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH v6 28/29] gitlab-ci: Check building KVM-only aarch64 target
-Date: Fri, 17 Feb 2023 17:11:49 -0300
-Message-Id: <20230217201150.22032-29-farosas@suse.de>
+	Laurent Vivier <lvivier@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Subject: [PATCH v6 29/29] tests/qtest: Fix tests when no KVM or TCG are present
+Date: Fri, 17 Feb 2023 17:11:50 -0300
+Message-Id: <20230217201150.22032-30-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230217201150.22032-1-farosas@suse.de>
 References: <20230217201150.22032-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: wKHIhnEoe0iz
+X-TUID: oC5U5IcrxTew
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+It is possible to have a build with both TCG and KVM disabled due to
+Xen requiring the i386 and x86_64 binaries to be present in an aarch64
+host.
 
-Add a manual new job to cross-build the aarch64 target with
-only the KVM accelerator enabled (in particular, no TCG).
+If we build with --disable-tcg on the aarch64 host, we will end-up
+with a QEMU binary (x86) that does not support TCG nor KVM.
 
-Re-enable running the similar job on the project Aarch64
-custom runner.
+Fix tests that crash or hang in the above scenario. Do not include any
+test cases if TCG and KVM are missing.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- .gitlab-ci.d/crossbuilds.yml                         | 11 +++++++++++
- .gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml |  4 ----
- 2 files changed, 11 insertions(+), 4 deletions(-)
+This currently affects Arm, but will also affect x86 after the xenpvh
+series gets merged. This patch fixes both scenarios.
+---
+ tests/qtest/bios-tables-test.c |  4 ++++
+ tests/qtest/boot-serial-test.c | 10 ++++++++++
+ tests/qtest/migration-test.c   |  5 +++++
+ tests/qtest/pxe-test.c         |  6 ++++++
+ tests/qtest/vmgenid-test.c     |  6 ++++++
+ 5 files changed, 31 insertions(+)
 
-diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
-index 74d6259b90..80269a3656 100644
---- a/.gitlab-ci.d/crossbuilds.yml
-+++ b/.gitlab-ci.d/crossbuilds.yml
-@@ -212,3 +212,14 @@ cross-arm64-xen-only:
-     IMAGE: debian-arm64-cross
-     ACCEL: xen
-     EXTRA_CONFIGURE_OPTS: --disable-tcg --disable-kvm
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index d29a4e47af..f6c2a010d2 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -2114,6 +2114,10 @@ int main(int argc, char *argv[])
+     char *v_env = getenv("V");
+     int ret;
+ 
++    if (!has_tcg && !has_kvm) {
++        return 0;
++    }
 +
-+# Similar job is run by qemu-project's custom runner by default
-+cross-arm64-kvm-only:
-+  extends: .cross_accel_build_job
-+  needs:
-+    job: arm64-debian-cross-container
-+  variables:
-+    QEMU_JOB_OPTIONAL: 1
-+    IMAGE: debian-arm64-cross
-+    ACCEL: kvm
-+    EXTRA_CONFIGURE_OPTS: --disable-tcg --disable-xen --without-default-devices
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-index 8ba85be440..770e596242 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-@@ -115,11 +115,7 @@ ubuntu-22.04-aarch64-notcg:
-  - aarch64
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--   when: manual
--   allow_failure: true
-  - if: "$AARCH64_RUNNER_AVAILABLE"
--   when: manual
--   allow_failure: true
-  script:
-  - mkdir build
-  - cd build
+     if (v_env) {
+         verbosity_level = atoi(v_env);
+     }
+diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+index 3aef3a97a9..45490f5931 100644
+--- a/tests/qtest/boot-serial-test.c
++++ b/tests/qtest/boot-serial-test.c
+@@ -17,6 +17,9 @@
+ #include "libqtest.h"
+ #include "libqos/libqos-spapr.h"
+ 
++static bool has_tcg;
++static bool has_kvm;
++
+ static const uint8_t bios_avr[] = {
+     0x88, 0xe0,             /* ldi r24, 0x08   */
+     0x80, 0x93, 0xc1, 0x00, /* sts 0x00C1, r24 ; Enable tx */
+@@ -285,6 +288,13 @@ int main(int argc, char *argv[])
+     const char *arch = qtest_get_arch();
+     int i;
+ 
++    has_tcg = qtest_has_accel("tcg");
++    has_kvm = qtest_has_accel("kvm");
++
++    if (!has_tcg && !has_kvm) {
++        return 0;
++    }
++
+     g_test_init(&argc, &argv, NULL);
+ 
+     for (i = 0; tests[i].arch != NULL; i++) {
+diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+index 109bc8e7b1..a6e3ca9f7d 100644
+--- a/tests/qtest/migration-test.c
++++ b/tests/qtest/migration-test.c
+@@ -2460,11 +2460,16 @@ static bool kvm_dirty_ring_supported(void)
+ int main(int argc, char **argv)
+ {
+     const bool has_kvm = qtest_has_accel("kvm");
++    const bool has_tcg = qtest_has_accel("tcg");
+     const bool has_uffd = ufd_version_check();
+     const char *arch = qtest_get_arch();
+     g_autoptr(GError) err = NULL;
+     int ret;
+ 
++    if (!has_tcg && !has_kvm) {
++        return 0;
++    }
++
+     g_test_init(&argc, &argv, NULL);
+ 
+     /*
+diff --git a/tests/qtest/pxe-test.c b/tests/qtest/pxe-test.c
+index 62b6eef464..05575f7687 100644
+--- a/tests/qtest/pxe-test.c
++++ b/tests/qtest/pxe-test.c
+@@ -130,6 +130,12 @@ int main(int argc, char *argv[])
+ {
+     int ret;
+     const char *arch = qtest_get_arch();
++    bool has_tcg = qtest_has_accel("tcg");
++    bool has_kvm = qtest_has_accel("kvm");
++
++    if (!has_tcg && !has_kvm) {
++        return 0;
++    }
+ 
+     ret = boot_sector_init(disk);
+     if(ret)
+diff --git a/tests/qtest/vmgenid-test.c b/tests/qtest/vmgenid-test.c
+index efba76e716..8045d3d706 100644
+--- a/tests/qtest/vmgenid-test.c
++++ b/tests/qtest/vmgenid-test.c
+@@ -164,6 +164,12 @@ static void vmgenid_query_monitor_test(void)
+ int main(int argc, char **argv)
+ {
+     int ret;
++    bool has_tcg = qtest_has_accel("tcg");
++    bool has_kvm = qtest_has_accel("kvm");
++
++    if (!has_tcg && !has_kvm) {
++        return 0;
++    }
+ 
+     ret = boot_sector_init(disk);
+     if (ret) {
 -- 
 2.35.3

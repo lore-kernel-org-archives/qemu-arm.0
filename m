@@ -1,93 +1,106 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1535084ejb;
-        Fri, 17 Feb 2023 06:18:57 -0800 (PST)
-X-Google-Smtp-Source: AK7set+lSfU2VdPESi1OwiLLozYk1HQ2+FCE3BeoNADfAsYJkFpG5dVGtQ4hTCwAzBHWyEJBTL6w
-X-Received: by 2002:a05:622a:548:b0:3bd:16cf:2f10 with SMTP id m8-20020a05622a054800b003bd16cf2f10mr5983778qtx.35.1676643536990;
-        Fri, 17 Feb 2023 06:18:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676643536; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1350861ejb;
+        Fri, 17 Feb 2023 02:10:07 -0800 (PST)
+X-Google-Smtp-Source: AK7set+Q9jSCQYNbnLGS6nqseyqCfnOXEmneRodvPhaM8waF6+qkh57sSVhh2OwKd/B6LPqiqL39
+X-Received: by 2002:a05:622a:1812:b0:3b6:9736:2e9b with SMTP id t18-20020a05622a181200b003b697362e9bmr14168816qtc.26.1676628607600;
+        Fri, 17 Feb 2023 02:10:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676628607; cv=none;
         d=google.com; s=arc-20160816;
-        b=zlX4kefOyjckiKcHIutOIE/MrWTAbPmbkcpta8ryHDbVLkbL6k05DMtb1JEhl86rG3
-         L2P9Uh+wBiH9FeC8I7aWTTmgYF5bUZ1qiu087LIq7Jmc/s4SdfPWyLAHE4UUb9DX1sWb
-         rr8i/tbIKWqKKQYL0ucLbET8B0vC2ihkF82jc4nid3GxJkpxbIun99LsnVmAzE2twsep
-         5i+jiX0PPy887A/oFJW8ANjfAsVpYxlGKnKgIMSKLgOyAMx6qWh+jLGpy6RGSsq7sVlK
-         rP6S/CP/tu7mTlbSwQ0yM22OF9ourx64y6PkonjgPEaZLYQVu0EJgjiB/qe/Ib2Grc1f
-         HQwA==
+        b=NGtdSXAvEI2Cy2itFglgDXTFR9G5sdAFLbkKIEU02J9bpUSI0XaghXfmxgBJZYEt49
+         V4ZGImYvQg9ROGGti+VYlPTJH8xwWALM9/IGBxs67DV2c12CvvEAwVZqRJcdrNR92X+k
+         YJcsfOLOiI1GcU0G200yP/+eu3arh7dmcS8Kwyti85vhZ1i0rntV/6qc1sNDBx6r3dV9
+         f/AZSyyJs16vtEYd33Xm5DvWUtnRgrLsaobKzG7Ni5bsNkFSQGL2sFWP8lnjkh0FJ0KC
+         H/QvHE+5fugUfdYDmXfdDcpULfZji9/CKVAc4CtIepM7t/JBCaQFFF2S4iV3RRY5qy2N
+         DE5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=RjdDodn6okK5s7aO7117Qvyuzzh/B0SLO+sTBQ/Rvlo=;
-        b=Yh2RGQOulnf4SgtVe9W7OQ91iMgoBA73vvhOHduw5dqBgiuRDLr/ticwoWJL79wHHw
-         peNnOBcVxlwnJF/xGBz6e0lDpNmAo8eeAleFa8OVhx6DSdnjKcN40I5jWrqzsVgF6i2F
-         j1mbvfBqTVtnz0ygSq/LXK+65BcCRyEljCLzwCqnO56hcsCTIIVxMCOj7JY6LUid/wQd
-         cRayzZc5C5LlREVGIS2PWuQn58JhsE9cByYkKJUlu8G5ABIPg6Rz6Q51B/Zt47IWCXxW
-         AFI8XPab+fiBDxAwpnayG9/sdUA2R0AFdKozWJSNRk2IerLwtifKzc7Qhyo4o7DEAX2I
-         c8YQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=01m2VTCy7/bETX9LWCeH+us6j/sW0qHrdyZq4V7D6ow=;
+        b=cz6Y6bob7tctWi1AgVm699ZGjXPkdXy1YuM05+zoLL8mdHfGT7jAH14ZoV0sPY2Hd5
+         Pdzt4dyUOE7726qDl2mW/9mRsIFVSl8FXRo7W0dh3cBtleb0oRbLqo7+ah+/Sq9vbV6M
+         CPMZdEQKKq0wV80oVj4gQ+a5HPC29qfGlopZ6PLCjWKjcHEwtjq6cKmIaRvVQFaBz6c2
+         u84vvu43eFvGa9Vq/r4FhptUiRedtZv0ANDTecRZKJTdxzpyklr8mbqOS+TzUJ6NY5eM
+         AM1LaLiADx2ALsi18P9RfwDshduOW+4HedY2UeR2Ik9kt3v5qR2nmxvD1QKQPpksEqDY
+         94dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b="iNHWOi/2";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=H2t2Snus;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f9-20020a05620a280900b00708f55b1be2si3823082qkp.54.2023.02.17.06.18.56
+        by mx.google.com with ESMTPS id h13-20020a05620a284d00b0071eb8581636si3496457qkp.666.2023.02.17.02.10.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Feb 2023 06:18:56 -0800 (PST)
+        Fri, 17 Feb 2023 02:10:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b="iNHWOi/2";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=H2t2Snus;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pT1ZB-0004Pf-Lj; Fri, 17 Feb 2023 09:18:25 -0500
+	id 1pSxgI-0005lF-Tr; Fri, 17 Feb 2023 05:09:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1pSxGN-0003r2-9M; Fri, 17 Feb 2023 04:42:47 -0500
-Received: from m12.mail.163.com ([220.181.12.217])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <qianfanguijin@163.com>)
- id 1pSxGG-0000ba-TR; Fri, 17 Feb 2023 04:42:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=RjdDo
- dn6okK5s7aO7117Qvyuzzh/B0SLO+sTBQ/Rvlo=; b=iNHWOi/2Q7Q4lefkYrYi0
- uNzWHxLMcYXIThiCRer0cVJcVkLBuj9elf1IJUjgAf++7/LmgjXGM4y+yleCinMa
- avXCSv8wC2QiizIlMzmjERA5rxrS3e+Qpmc/E0GY6kxs+AKzNgAq3TGJk3gsQzJn
- vAh1kiUgbv7UjkHm6vX+Yc=
-Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.20])
- by zwqz-smtp-mta-g0-0 (Coremail) with SMTP id _____wBnbAHwS+9jgz5zAA--.48578S2;
- Fri, 17 Feb 2023 17:42:08 +0800 (CST)
-From: qianfanguijin@163.com
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v1 1/2] hw: allwinner-i2c: Make the trace message more readable
-Date: Fri, 17 Feb 2023 17:42:06 +0800
-Message-Id: <20230217094207.16882-1-qianfanguijin@163.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pSxgI-0005kv-5T; Fri, 17 Feb 2023 05:09:30 -0500
+Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pSxgF-0002sw-SD; Fri, 17 Feb 2023 05:09:29 -0500
+Received: by mail-ua1-x92c.google.com with SMTP id n23so10286ual.2;
+ Fri, 17 Feb 2023 02:09:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=01m2VTCy7/bETX9LWCeH+us6j/sW0qHrdyZq4V7D6ow=;
+ b=H2t2SnusJCR+8ezH9HS0dCpAjgM9ug8aUjxOTM/KQg2hXmmjNCVCURQrBhnmsu4mnQ
+ DD7mnvIAoFN5uMDjchmrozn++fcdi8PI7wRCrJUyshYGIA1pAialTrk176YHpfroGNPZ
+ 3jVb9dA7uiln8pu8xl/Ne7Cr8bpsoITwxXWEdxeEEQvbd4CaZejKRSLvoiwYrpjrDhTc
+ Gb0Im7HAbh3WbtZ9LQkkproCFvE8Wqhn7rDl/ugG0JBAFzR+FMrtqPXFi72F9Ps31BDx
+ 96LU5E5c+UECB2E+HkZAjtR09PGmfFR6KYs3VKf4n+0s8db/m+8uV2iEmdfFeVvAkoOV
+ T+tA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=01m2VTCy7/bETX9LWCeH+us6j/sW0qHrdyZq4V7D6ow=;
+ b=C+xdkbJtu3Pw0TkP4lHOem07qQqH6xbr7kUSgrx6zWWKJciWt13NR3QxBB+rHhXpm/
+ bPJgmRawUMI2LuhJUADyAWWhkjwVMlusftbm3lT7fpv4BPZwM9BVtD2Q54aB5KnuQMwt
+ lXqmUXEdc+z8+lGTguDBUOwIFzEU+/FDRfJW2JzHt7K/lxWCTQjwMYJPwIp2cXdbezwD
+ 0lCShFb9YZ7co4JDq5LkAMQFT/ZLRbnIP+5dmwNrLPDsilybfgQ54AattMRMxo0PnNy6
+ MKoOwJ6055yVphuY5Z8TS6kL84qZjFsxsgIlZQtEGFou0xAQmg0UUT55jw8sJbRG+CrK
+ LJuw==
+X-Gm-Message-State: AO0yUKX6XeLdkSt500JWHxuKvPxXG9pA37Me5TIo0ZtDOSzfzeADxVo6
+ BBBctUx2gjhciT3hAx6vKPxfulSIpPv2b1/iP1A0i8rWWehtHQ==
+X-Received: by 2002:ab0:104b:0:b0:68b:94c5:7683 with SMTP id
+ g11-20020ab0104b000000b0068b94c57683mr650312uab.0.1676628566161; Fri, 17 Feb
+ 2023 02:09:26 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBnbAHwS+9jgz5zAA--.48578S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW3Ar1Duw1UJF1fZw4UAr13Arb_yoW7GrykpF
- ZIkrsIgFy5Kas0vr1SkF1DJF1rJrykCr1Iyw47J347ZFyUG3W3ZF95JF4rt390k347trW5
- CFW5ZFy2gFZ0ya7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRqLviUUUUU=
-X-Originating-IP: [218.201.129.20]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/xtbBugUZ7V+GuN3OiwAAsy
-Received-SPF: pass client-ip=220.181.12.217;
- envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20230216184342.253868-1-pkarthikeyan1509@gmail.com>
+ <245aedfe-c5c4-2e99-ac8f-726665f954ce@kaod.org>
+In-Reply-To: <245aedfe-c5c4-2e99-ac8f-726665f954ce@kaod.org>
+From: karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+Date: Fri, 17 Feb 2023 15:39:14 +0530
+Message-ID: <CA+ezb7g_RpWqVh1LGrTo_9s8PRtbdWc+=EdfWK1svCL47_-2gg@mail.gmail.com>
+Subject: Re: [PATCH v2] Adding new machine Tiogapass in QEMU
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au, 
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000001b3d0805f4e2828b"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92c;
+ envelope-from=pkarthikeyan1509@gmail.com; helo=mail-ua1-x92c.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 17 Feb 2023 09:18:22 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,160 +114,389 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IH3mxtB/gEDK
+X-TUID: BVr+OF1IMCCK
 
-From: qianfan Zhao <qianfanguijin@163.com>
+--0000000000001b3d0805f4e2828b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Next is an example when allwinner_i2c_rw enabled:
+Noted.
 
-allwinner_i2c_rw write   CNTR[0x0c]: 50 { M_STP BUS_EN  }
-allwinner_i2c_rw write   CNTR[0x0c]: e4 { A_ACK M_STA BUS_EN INT_EN  }
-allwinner_i2c_rw  read   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN }
-allwinner_i2c_rw  read   STAT[0x10]: 08 { STAT_M_STA_TX }
+Thanks,
+C=C3=A9dric
 
-Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
----
- hw/i2c/allwinner-i2c.c | 90 +++++++++++++++++++++++++++++++++++++++++-
- hw/i2c/trace-events    |  4 +-
- 2 files changed, 89 insertions(+), 5 deletions(-)
 
-diff --git a/hw/i2c/allwinner-i2c.c b/hw/i2c/allwinner-i2c.c
-index a435965836..36b387520f 100644
---- a/hw/i2c/allwinner-i2c.c
-+++ b/hw/i2c/allwinner-i2c.c
-@@ -129,6 +129,39 @@ enum {
-     STAT_IDLE = 0x1f
- } TWI_STAT_STA;
- 
-+#define TWI_STAT_STA_DESC(sta)  [sta] = #sta
-+static const char *twi_stat_sta_descriptors[] = {
-+    TWI_STAT_STA_DESC(STAT_BUS_ERROR),
-+    TWI_STAT_STA_DESC(STAT_M_STA_TX),
-+    TWI_STAT_STA_DESC(STAT_M_RSTA_TX),
-+    TWI_STAT_STA_DESC(STAT_M_ADDR_WR_ACK),
-+    TWI_STAT_STA_DESC(STAT_M_ADDR_WR_NACK),
-+    TWI_STAT_STA_DESC(STAT_M_DATA_TX_ACK),
-+    TWI_STAT_STA_DESC(STAT_M_DATA_TX_NACK),
-+    TWI_STAT_STA_DESC(STAT_M_ARB_LOST),
-+    TWI_STAT_STA_DESC(STAT_M_ADDR_RD_ACK),
-+    TWI_STAT_STA_DESC(STAT_M_ADDR_RD_NACK),
-+    TWI_STAT_STA_DESC(STAT_M_DATA_RX_ACK),
-+    TWI_STAT_STA_DESC(STAT_M_DATA_RX_NACK),
-+    TWI_STAT_STA_DESC(STAT_S_ADDR_WR_ACK),
-+    TWI_STAT_STA_DESC(STAT_S_ARB_LOST_AW_ACK),
-+    TWI_STAT_STA_DESC(STAT_S_GCA_ACK),
-+    TWI_STAT_STA_DESC(STAT_S_ARB_LOST_GCA_ACK),
-+    TWI_STAT_STA_DESC(STAT_S_DATA_RX_SA_ACK),
-+    TWI_STAT_STA_DESC(STAT_S_DATA_RX_SA_NACK),
-+    TWI_STAT_STA_DESC(STAT_S_DATA_RX_GCA_ACK),
-+    TWI_STAT_STA_DESC(STAT_S_DATA_RX_GCA_NACK),
-+    TWI_STAT_STA_DESC(STAT_S_STP_RSTA),
-+    TWI_STAT_STA_DESC(STAT_S_ADDR_RD_ACK),
-+    TWI_STAT_STA_DESC(STAT_S_ARB_LOST_AR_ACK),
-+    TWI_STAT_STA_DESC(STAT_S_DATA_TX_ACK),
-+    TWI_STAT_STA_DESC(STAT_S_DATA_TX_NACK),
-+    TWI_STAT_STA_DESC(STAT_S_LB_TX_ACK),
-+    TWI_STAT_STA_DESC(STAT_M_2ND_ADDR_WR_ACK),
-+    TWI_STAT_STA_DESC(STAT_M_2ND_ADDR_WR_NACK),
-+    TWI_STAT_STA_DESC(STAT_IDLE),
-+};
-+
- static const char *allwinner_i2c_get_regname(unsigned offset)
+On Fri, Feb 17, 2023 at 1:19 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+
+> Hello Karthikeyan,
+>
+> On 2/16/23 19:43, Karthikeyan Pasupathi wrote:
+> > This patch support Tiogapass in QEMU environment.
+> > and introduced EEPROM BMC FRU data support "add tiogapass_bmc_fruid dat=
+a"
+> > along with the machine support.
+> >
+> > Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+>
+> There are a couple of coding style issues that I will fix. This is minor.
+> (./scripts/checkpatch.pl is a good tool to run before sending.)
+>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>
+> Thanks,
+>
+> C.
+>
+> > ---
+> >   hw/arm/aspeed.c        | 32 ++++++++++++++++++++++++++++++++
+> >   hw/arm/aspeed_eeprom.c | 22 ++++++++++++++++++++++
+> >   hw/arm/aspeed_eeprom.h |  3 +++
+> >   3 files changed, 57 insertions(+)
+> >
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index 27dda58338..d12164420d 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -530,6 +530,15 @@ static void romulus_bmc_i2c_init(AspeedMachineStat=
+e
+> *bmc)
+> >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11),
+> "ds1338", 0x32);
+> >   }
+> >
+> > +static void tiogapass_bmc_i2c_init(AspeedMachineState *bmc)
+> > +{
+> > +    AspeedSoCState *soc =3D &bmc->soc;
+> > +
+> > +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54, 128 *
+> KiB);
+> > +    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 6), 0x54, 128 =
+*
+> KiB, tiogapass_bmc_fruid,
+> > +                          tiogapass_bmc_fruid_len);
+> > +}
+> > +
+> >   static void create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+> >   {
+> >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+> > @@ -1191,6 +1200,25 @@ static void
+> aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
+> >           aspeed_soc_num_cpus(amc->soc_name);
+> >   };
+> >
+> > +static void aspeed_machine_tiogapass_class_init(ObjectClass *oc, void
+> *data)
+> > +{
+> > +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> > +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
+> > +
+> > +    mc->desc       =3D "Facebook Tiogapass BMC (ARM1176)";
+> > +    amc->soc_name  =3D "ast2500-a1";
+> > +    amc->hw_strap1 =3D AST2500_EVB_HW_STRAP1;
+> > +    amc->hw_strap2 =3D 0;
+> > +    amc->fmc_model =3D "n25q256a";
+> > +    amc->spi_model =3D "mx25l25635e";
+> > +    amc->num_cs    =3D 2;
+> > +    amc->i2c_init  =3D tiogapass_bmc_i2c_init;
+> > +    mc->default_ram_size       =3D 1 * GiB;
+> > +    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+> > +        aspeed_soc_num_cpus(amc->soc_name);
+> > +        aspeed_soc_num_cpus(amc->soc_name);
+> > +};
+> > +
+> >   static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, voi=
+d
+> *data)
+> >   {
+> >       MachineClass *mc =3D MACHINE_CLASS(oc);
+> > @@ -1566,6 +1594,10 @@ static const TypeInfo aspeed_machine_types[] =3D=
  {
-     switch (offset) {
-@@ -155,6 +188,59 @@ static const char *allwinner_i2c_get_regname(unsigned offset)
-     }
- }
- 
-+static const char *twi_cntr_reg_bits[] = {
-+    [2] = "A_ACK",
-+    [3] = "INT_FLAG",
-+    [4] = "M_STP",
-+    [5] = "M_STA",
-+    [6] = "BUS_EN",
-+    [7] = "INT_EN",
-+};
-+
-+static void trace_buffer_append_bit_descriptors(char *s, size_t sz,
-+                                                unsigned int value,
-+                                                unsigned int start,
-+                                                unsigned int end,
-+                                                const char **desc_arrays)
-+{
-+    for (; start <= end; start++) {
-+        if (value & (1 << start)) {
-+            strncat(s, desc_arrays[start], sz - 1);
-+            strncat(s, " ", sz - 1);
-+        }
-+    }
-+}
-+
-+static void allwinner_i2c_trace_rw(int is_write, unsigned int offset,
-+                                   unsigned int value)
-+{
-+    char s[256] = { 0 };
-+
-+    snprintf(s, sizeof(s), "%s %6s[0x%02x]: %02x ",
-+             is_write ? "write": " read",
-+             allwinner_i2c_get_regname(offset), offset,
-+             value);
-+
-+    switch (offset) {
-+    case TWI_CNTR_REG:
-+        strncat(s, "{ ", sizeof(s) - 1);
-+        trace_buffer_append_bit_descriptors(s, sizeof(s), value,
-+                                            2, 7, twi_cntr_reg_bits);
-+        strncat(s, " }", sizeof(s) - 1);
-+        break;
-+    case TWI_STAT_REG:
-+        if (STAT_TO_STA(value) <= STAT_IDLE) {
-+            strncat(s, "{ ", sizeof(s) - 1);
-+            strncat(s, twi_stat_sta_descriptors[STAT_TO_STA(value)],
-+                    sizeof(s) - 1);
-+            strncat(s, " }", sizeof(s) - 1);
-+        }
-+        break;
-+    }
-+
-+    trace_allwinner_i2c_rw(s);
-+}
-+
- static inline bool allwinner_i2c_is_reset(AWI2CState *s)
- {
-     return s->srst & TWI_SRST_MASK;
-@@ -271,7 +357,7 @@ static uint64_t allwinner_i2c_read(void *opaque, hwaddr offset,
-         break;
-     }
- 
--    trace_allwinner_i2c_read(allwinner_i2c_get_regname(offset), offset, value);
-+    allwinner_i2c_trace_rw(0, (unsigned int)offset, (unsigned int)value);
- 
-     return (uint64_t)value;
- }
-@@ -283,7 +369,7 @@ static void allwinner_i2c_write(void *opaque, hwaddr offset,
- 
-     value &= 0xff;
- 
--    trace_allwinner_i2c_write(allwinner_i2c_get_regname(offset), offset, value);
-+    allwinner_i2c_trace_rw(1, (unsigned int)offset, (unsigned int)value);
- 
-     switch (offset) {
-     case TWI_ADDR_REG:
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index 8e88aa24c1..fa5e8d5021 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -16,9 +16,7 @@ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
- i2c_ack(void) ""
- 
- # allwinner_i2c.c
--
--allwinner_i2c_read(const char* reg_name, uint64_t offset, uint64_t value) "read %s [0x%" PRIx64 "]: -> 0x%" PRIx64
--allwinner_i2c_write(const char* reg_name, uint64_t offset, uint64_t value) "write %s [0x%" PRIx64 "]: <- 0x%" PRIx64
-+allwinner_i2c_rw(const char *s) "%s"
- 
- # aspeed_i2c.c
- 
--- 
-2.25.1
+> >           .name          =3D MACHINE_TYPE_NAME("tacoma-bmc"),
+> >           .parent        =3D TYPE_ASPEED_MACHINE,
+> >           .class_init    =3D aspeed_machine_tacoma_class_init,
+> > +    }, {
+> > +        .name          =3D MACHINE_TYPE_NAME("tiogapass-bmc"),
+> > +        .parent        =3D TYPE_ASPEED_MACHINE,
+> > +        .class_init    =3D aspeed_machine_tiogapass_class_init,
+> >       }, {
+> >           .name          =3D MACHINE_TYPE_NAME("g220a-bmc"),
+> >           .parent        =3D TYPE_ASPEED_MACHINE,
+> > diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+> > index 04463acc9d..f937a6ceaa 100644
+> > --- a/hw/arm/aspeed_eeprom.c
+> > +++ b/hw/arm/aspeed_eeprom.c
+> > @@ -6,6 +6,27 @@
+> >
+> >   #include "aspeed_eeprom.h"
+> >
+> > +/* Tiogapass BMC FRU */
+> > +const uint8_t tiogapass_bmc_fruid[] =3D {
+> > +    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00,
+> 0x36,
+> > +    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42,
+> 0x4d,
+> > +    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d,
+> 0x6f,
+> > +    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58,
+> 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31,
+> 0x2e,
+> > +    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> 0xd2,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00,
+> 0xc6,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x54, 0x69, 0x6f, 0x67,
+> 0x61,
+> > +    0x20, 0x50, 0x61, 0x73, 0x73, 0x20, 0x53, 0x69, 0x6e, 0x67, 0x6c,
+> 0x65,
+> > +    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0xc4, 0x58, 0x58, 0x58, 0x32, 0xcd, 0x58,
+> 0x58,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> 0xc7,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30,
+> 0xc9,
+> > +    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43,
+> 0x6f,
+> > +    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+> > +};
+> > +
+> >   const uint8_t fby35_nic_fruid[] =3D {
+> >       0x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0xcf, 0x01, 0x0e, 0x19,
+> 0xd7,
+> >       0x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> 0xdd,
+> > @@ -77,6 +98,7 @@ const uint8_t fby35_bmc_fruid[] =3D {
+> >       0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+> >   };
+> >
+> > +const size_t tiogapass_bmc_fruid_len =3D sizeof(tiogapass_bmc_fruid);
+> >   const size_t fby35_nic_fruid_len =3D sizeof(fby35_nic_fruid);
+> >   const size_t fby35_bb_fruid_len =3D sizeof(fby35_bb_fruid);
+> >   const size_t fby35_bmc_fruid_len =3D sizeof(fby35_bmc_fruid);
+> > diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+> > index a0f848fa6e..69db103c83 100644
+> > --- a/hw/arm/aspeed_eeprom.h
+> > +++ b/hw/arm/aspeed_eeprom.h
+> > @@ -9,6 +9,9 @@
+> >
+> >   #include "qemu/osdep.h"
+> >
+> > +extern const uint8_t tiogapass_bmc_fruid[];
+> > +extern const size_t tiogapass_bmc_fruid_len;
+> > +
+> >   extern const uint8_t fby35_nic_fruid[];
+> >   extern const uint8_t fby35_bb_fruid[];
+> >   extern const uint8_t fby35_bmc_fruid[];
+>
+>
 
+--0000000000001b3d0805f4e2828b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Noted. <br></div><div><br></div><div>Thanks,</div><di=
+v>C=C3=A9dric</div><div><br></div></div><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Fri, Feb 17, 2023 at 1:19 PM C=C3=A9dr=
+ic Le Goater &lt;<a href=3D"mailto:clg@kaod.org">clg@kaod.org</a>&gt; wrote=
+:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
+8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Hello Karthike=
+yan,<br>
+<br>
+On 2/16/23 19:43, Karthikeyan Pasupathi wrote:<br>
+&gt; This patch support Tiogapass in QEMU environment.<br>
+&gt; and introduced EEPROM BMC FRU data support &quot;add tiogapass_bmc_fru=
+id data&quot;<br>
+&gt; along with the machine support.<br>
+&gt; <br>
+&gt; Signed-off-by: Karthikeyan Pasupathi &lt;<a href=3D"mailto:pkarthikeya=
+n1509@gmail.com" target=3D"_blank">pkarthikeyan1509@gmail.com</a>&gt;<br>
+<br>
+There are a couple of coding style issues that I will fix. This is minor.<b=
+r>
+(./scripts/<a href=3D"http://checkpatch.pl" rel=3D"noreferrer" target=3D"_b=
+lank">checkpatch.pl</a> is a good tool to run before sending.)<br>
+<br>
+Reviewed-by: C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.org" targ=
+et=3D"_blank">clg@kaod.org</a>&gt;<br>
+<br>
+Thanks,<br>
+<br>
+C.<br>
+<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0hw/arm/aspeed.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 32 ++++++++++=
+++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0hw/arm/aspeed_eeprom.c | 22 ++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0hw/arm/aspeed_eeprom.h |=C2=A0 3 +++<br>
+&gt;=C2=A0 =C2=A03 files changed, 57 insertions(+)<br>
+&gt; <br>
+&gt; diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c<br>
+&gt; index 27dda58338..d12164420d 100644<br>
+&gt; --- a/hw/arm/aspeed.c<br>
+&gt; +++ b/hw/arm/aspeed.c<br>
+&gt; @@ -530,6 +530,15 @@ static void romulus_bmc_i2c_init(AspeedMachineSta=
+te *bmc)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_simple(aspeed_i2c_get_bus(&=
+amp;soc-&gt;i2c, 11), &quot;ds1338&quot;, 0x32);<br>
+&gt;=C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +static void tiogapass_bmc_i2c_init(AspeedMachineState *bmc)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 AspeedSoCState *soc =3D &amp;bmc-&gt;soc;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, =
+4), 0x54, 128 * KiB);<br>
+&gt; +=C2=A0 =C2=A0 at24c_eeprom_init_rom(aspeed_i2c_get_bus(&amp;soc-&gt;i=
+2c, 6), 0x54, 128 * KiB, tiogapass_bmc_fruid,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 tiogapass_bmc_fruid_len);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0static void create_pca9552(AspeedSoCState *soc, int bus_id=
+, int addr)<br>
+&gt;=C2=A0 =C2=A0{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_simple(aspeed_i2c_get_bus(&=
+amp;soc-&gt;i2c, bus_id),<br>
+&gt; @@ -1191,6 +1200,25 @@ static void aspeed_machine_romulus_class_init(O=
+bjectClass *oc, void *data)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0aspeed_soc_num_cpus(amc-&gt;so=
+c_name);<br>
+&gt;=C2=A0 =C2=A0};<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +static void aspeed_machine_tiogapass_class_init(ObjectClass *oc, void=
+ *data)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);<br>
+&gt; +=C2=A0 =C2=A0 AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);<b=
+r>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;desc=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D &quot;Faceboo=
+k Tiogapass BMC (ARM1176)&quot;;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;soc_name=C2=A0 =3D &quot;ast2500-a1&quot;;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;hw_strap1 =3D AST2500_EVB_HW_STRAP1;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;hw_strap2 =3D 0;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;fmc_model =3D &quot;n25q256a&quot;;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;spi_model =3D &quot;mx25l25635e&quot;;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;num_cs=C2=A0 =C2=A0 =3D 2;<br>
+&gt; +=C2=A0 =C2=A0 amc-&gt;i2c_init=C2=A0 =3D tiogapass_bmc_i2c_init;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;default_ram_size=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 1=
+ * GiB;<br>
+&gt; +=C2=A0 =C2=A0 mc-&gt;default_cpus =3D mc-&gt;min_cpus =3D mc-&gt;max_=
+cpus =3D<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 aspeed_soc_num_cpus(amc-&gt;soc_name);<br=
+>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 aspeed_soc_num_cpus(amc-&gt;soc_name);<br=
+>
+&gt; +};<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0static void aspeed_machine_sonorapass_class_init(ObjectCla=
+ss *oc, void *data)<br>
+&gt;=C2=A0 =C2=A0{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0MachineClass *mc =3D MACHINE_CLASS(oc);<br>
+&gt; @@ -1566,6 +1594,10 @@ static const TypeInfo aspeed_machine_types[] =
+=3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =3D MACHINE_TYPE_NAME(&quot;tacoma-bmc&quot;),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =3D TYPE_ASPEED_MACHINE,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =3D a=
+speed_machine_tacoma_class_init,<br>
+&gt; +=C2=A0 =C2=A0 }, {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=3D MACHINE_TYPE_NAME(&quot;tiogapass-bmc&quot;),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TY=
+PE_ASPEED_MACHINE,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D aspeed_machi=
+ne_tiogapass_class_init,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}, {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =3D MACHINE_TYPE_NAME(&quot;g220a-bmc&quot;),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =3D TYPE_ASPEED_MACHINE,<br>
+&gt; diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c<br>
+&gt; index 04463acc9d..f937a6ceaa 100644<br>
+&gt; --- a/hw/arm/aspeed_eeprom.c<br>
+&gt; +++ b/hw/arm/aspeed_eeprom.c<br>
+&gt; @@ -6,6 +6,27 @@<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0#include &quot;aspeed_eeprom.h&quot;<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +/* Tiogapass BMC FRU */<br>
+&gt; +const uint8_t tiogapass_bmc_fruid[] =3D {<br>
+&gt; +=C2=A0 =C2=A0 0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0=
+x0c, 0x00, 0x36,<br>
+&gt; +=C2=A0 =C2=A0 0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0=
+xd2, 0x42, 0x4d,<br>
+&gt; +=C2=A0 =C2=A0 0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0=
+x20, 0x4d, 0x6f,<br>
+&gt; +=C2=A0 =C2=A0 0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0=
+x58, 0x58, 0x58,<br>
+&gt; +=C2=A0 =C2=A0 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0=
+x58, 0x58, 0x58,<br>
+&gt; +=C2=A0 =C2=A0 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0=
+xc3, 0x31, 0x2e,<br>
+&gt; +=C2=A0 =C2=A0 0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0=
+x58, 0x58, 0xd2,<br>
+&gt; +=C2=A0 =C2=A0 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0=
+x58, 0x58, 0x58,<br>
+&gt; +=C2=A0 =C2=A0 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0=
+x0c, 0x00, 0xc6,<br>
+&gt; +=C2=A0 =C2=A0 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x54, 0x69, 0=
+x6f, 0x67, 0x61,<br>
+&gt; +=C2=A0 =C2=A0 0x20, 0x50, 0x61, 0x73, 0x73, 0x20, 0x53, 0x69, 0x6e, 0=
+x67, 0x6c, 0x65,<br>
+&gt; +=C2=A0 =C2=A0 0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0=
+x58, 0x58, 0x58,<br>
+&gt; +=C2=A0 =C2=A0 0x58, 0x58, 0x58, 0x58, 0xc4, 0x58, 0x58, 0x58, 0x32, 0=
+xcd, 0x58, 0x58,<br>
+&gt; +=C2=A0 =C2=A0 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0=
+x58, 0x58, 0xc7,<br>
+&gt; +=C2=A0 =C2=A0 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0=
+x2e, 0x30, 0xc9,<br>
+&gt; +=C2=A0 =C2=A0 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0=
+xc8, 0x43, 0x6f,<br>
+&gt; +=C2=A0 =C2=A0 0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,<br>
+&gt; +};<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0const uint8_t fby35_nic_fruid[] =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A00x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0x=
+cf, 0x01, 0x0e, 0x19, 0xd7,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A00x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x=
+58, 0x58, 0x58, 0x58, 0xdd,<br>
+&gt; @@ -77,6 +98,7 @@ const uint8_t fby35_bmc_fruid[] =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A00x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x=
+45,<br>
+&gt;=C2=A0 =C2=A0};<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +const size_t tiogapass_bmc_fruid_len =3D sizeof(tiogapass_bmc_fruid);=
+<br>
+&gt;=C2=A0 =C2=A0const size_t fby35_nic_fruid_len =3D sizeof(fby35_nic_frui=
+d);<br>
+&gt;=C2=A0 =C2=A0const size_t fby35_bb_fruid_len =3D sizeof(fby35_bb_fruid)=
+;<br>
+&gt;=C2=A0 =C2=A0const size_t fby35_bmc_fruid_len =3D sizeof(fby35_bmc_frui=
+d);<br>
+&gt; diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h<br>
+&gt; index a0f848fa6e..69db103c83 100644<br>
+&gt; --- a/hw/arm/aspeed_eeprom.h<br>
+&gt; +++ b/hw/arm/aspeed_eeprom.h<br>
+&gt; @@ -9,6 +9,9 @@<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0#include &quot;qemu/osdep.h&quot;<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +extern const uint8_t tiogapass_bmc_fruid[];<br>
+&gt; +extern const size_t tiogapass_bmc_fruid_len;<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0extern const uint8_t fby35_nic_fruid[];<br>
+&gt;=C2=A0 =C2=A0extern const uint8_t fby35_bb_fruid[];<br>
+&gt;=C2=A0 =C2=A0extern const uint8_t fby35_bmc_fruid[];<br>
+<br>
+</blockquote></div>
+
+--0000000000001b3d0805f4e2828b--

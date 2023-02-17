@@ -1,127 +1,115 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1535268ejb;
-        Fri, 17 Feb 2023 06:19:12 -0800 (PST)
-X-Google-Smtp-Source: AK7set9+mIhzCzfv/r0tI4Kh+t8h7TMy1YuCWjmYxHdvUolEXuYiFikjt/Cq90N6toXPfZVEQLWB
-X-Received: by 2002:a05:622a:18a2:b0:3b8:2033:78e3 with SMTP id v34-20020a05622a18a200b003b8203378e3mr439894qtc.55.1676643552639;
-        Fri, 17 Feb 2023 06:19:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676643552; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1535818ejb;
+        Fri, 17 Feb 2023 06:20:04 -0800 (PST)
+X-Google-Smtp-Source: AK7set+CP7iGKDjMwC3x+11q06h0IBqJZPwqCG/9Qy4NqyR0j5HIsqEQamk3AIA2jZIjaPQjTSdn
+X-Received: by 2002:ac8:7dc9:0:b0:3b9:a60f:b2bb with SMTP id c9-20020ac87dc9000000b003b9a60fb2bbmr986810qte.56.1676643603808;
+        Fri, 17 Feb 2023 06:20:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676643603; cv=none;
         d=google.com; s=arc-20160816;
-        b=tjYp9dJeVwyLRbGR6X6MwzdVVbNtedOO5/l8ZNnMUCkP3iIn07bencqRC8+0L5pWom
-         WymSgqaV29mNB1hL+Ew7wFbWl1hnHP5NnvEm4A0b37Y3YYjxnoRWb6XbZj8NQU9efQZg
-         7U/2nCLTpl3sTuiXvP348nb+ad+OfFawilIXKv562DiaNEMnrm8mbkyCyVFAD2lKufyE
-         ZcQZfsHt46TaHEGEQMbEe7NmIr3aON9kcCVwkM8rSEZQyv5dC7b5dlDbXK3MExeATQt8
-         pDC9yVh0jQRhMGfyIHKwUEOP1TPeHTj8ExcIMk05mJ1f6nMUWdaZW6bUXR+iDRJu0sZ0
-         yJ7w==
+        b=n6nGgRsuJnWXTZ25xTP0Yabw7dwefsFGJOa1iyamQ27eUOgn2TQioUMoeJPM14Hh2u
+         ZLgxCi79E5y56zTgHMJAEWjXwmzJVvSM0VelUtfHMRqi3eG54I8qQLc2lAAux6i+9KyP
+         BhGnxGJAq3DWszRLV/N6lh7DYuyMTG3KFjj7/UzNwHERrqGbOnAs3+ipPdrwPRdUl2Oz
+         cLe2uvUIwNNxGKB/qEq0r5SvySjq/2EwpVx7c3ym51RNa/Ndv242GAgOQPVcuXD8m/a7
+         ACLVQwosR0z2B4li476CAlE7CP6xhvXDtEahXH2bANGdqZZAM8jHGujWbQaFgcMPVkg4
+         qEgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=DCCPE7r2euKSyBUC8DVFJ0uB3bn50uLLJ1J1YYpZfwY=;
-        b=pfrPuhBZCes9cGPbq6jvMNOA4LijnnTqS7xptrKiZMGWBEapsQIqhDUkl+DGCmC8rw
-         O5lLxT7gxWG7Q3SkT3l0iQvEvVi+Msp4x1zXz6CjQkNFiK4xOdYRpfz/jE03vJ9WJfC4
-         y842mqFWRhqqcbGnN6N/mQTBdmNLNsb20FhCwLRWLWH3sI0k6r15aqRlUWDaOIt8nlVT
-         QRks4wz7Z6BovkcowaFeV6igVnL6qyJozBjt3om/t6cU8R/hrz0ER5BMguaWbDAO8P03
-         gkuEXLOGe6Db2dBry5c8j1j7157sJXxwdCsDxFXrO4NVGED9zyVSS17T+ksmddL3vXQZ
-         4+0A==
+        bh=AmdraG6wSunb7ZlzZqyn0FBRFU3it2FPZJFh0CF4PdM=;
+        b=H9WBtY6iOb+T4VuFyjdHn7w69zcC9eTEc8GthKjfVemQSqHVP23C+jUt9TCVeT2aGs
+         xyTkU7Ga0A6TIaiYF1bv6MTpTHezQCZ+Da2M/HHv3zkq5vVaujW6qezgQtFR3Kklhqke
+         Z8Abjy+lBe6nr8BbB0QGRwEw7+f19qVZeeUmoIlGapuUVS/z0HBBCKgMx3B1osFtXqyQ
+         /XvHfjIVizQqvJy3Xq7TP72b/THc8R10hJhl59wnUzoblAKlAUp61oQ2notXI2wj0ZZ9
+         Ym9bGuXJ0pO/GTvAGFG+JBjLVQeTQdxa4zLj1HdTOYSHMWKD8LIJn+T9NT1ghHqRXvRl
+         t+sQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jgGdMQ0K;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xwfHSGzJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t6-20020a05620a450600b0070620b5d07bsi4008144qkp.127.2023.02.17.06.19.12
+        by mx.google.com with ESMTPS id j12-20020a05620a288c00b0073b6ee15dc2si3634906qkp.317.2023.02.17.06.20.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Feb 2023 06:19:12 -0800 (PST)
+        Fri, 17 Feb 2023 06:20:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jgGdMQ0K;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xwfHSGzJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pT1Zs-00052b-W2; Fri, 17 Feb 2023 09:19:09 -0500
+	id 1pT1Zs-0004z5-Ep; Fri, 17 Feb 2023 09:19:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pT1Ze-0004ki-6H
- for qemu-arm@nongnu.org; Fri, 17 Feb 2023 09:18:56 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pT1ZT-0004Ze-OZ
+ for qemu-arm@nongnu.org; Fri, 17 Feb 2023 09:18:46 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pT1ZY-0005Wm-Ls
- for qemu-arm@nongnu.org; Fri, 17 Feb 2023 09:18:51 -0500
-Received: by mail-wr1-x434.google.com with SMTP id i15so906228wry.8
- for <qemu-arm@nongnu.org>; Fri, 17 Feb 2023 06:18:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pT1ZR-0005UZ-KA
+ for qemu-arm@nongnu.org; Fri, 17 Feb 2023 09:18:43 -0500
+Received: by mail-wm1-x336.google.com with SMTP id p5so1075481wmg.4
+ for <qemu-arm@nongnu.org>; Fri, 17 Feb 2023 06:18:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DCCPE7r2euKSyBUC8DVFJ0uB3bn50uLLJ1J1YYpZfwY=;
- b=jgGdMQ0Kq7t1U5JJ7sdZVGI8/iKScCD72zBl7YXlmXFbFx1xcpGqiuwWTfqU9nIeP0
- 8dq3vHW8xSSk4r3oNiIOZ4JcGFFVxkQBG+EAgi8IlpYeiH/cjljN7JpVTu4c6OG/0oza
- dyeEeCYnjV53Ggv+xtGqwDOztQXIRgC4b9H0uoq1p//D8lohqv3Q129e8Pk65UYlyAMc
- tMb3O+f9PDAdGBy0liqrUA5ebSU1SUPgp48yzVxZI6ORXuttM09jpAzuwSxxw5h6nAFv
- evfFXT6WG9sJDaIQhfHDAVnYfHy2q8OTWzfWDdqYiyxQu2g/I6FHT0+psI5gQDL6GF9g
- ZWLg==
+ bh=AmdraG6wSunb7ZlzZqyn0FBRFU3it2FPZJFh0CF4PdM=;
+ b=xwfHSGzJNDhMKANmdgxutSeNW6nER18v9Kq4VVOVjXfogo878eiPUKNmJb7y/BU6Bq
+ k669jq4sWZo1QXeM5hzkg9tK2yxvZulQeN7RkFf4CRpE1cjXFOgUT3HxEKPt8L8Xcsqf
+ P+EKN5C8BljcTZZI3aEsEV2jXQn66sCtOmmMkA++Ac9SiSoA1c/zEiRFuW5xM5ZQYNLH
+ R6NIR63JpdoPfzO4leifcCP/AUz9zUd7rIZ4YBhXw/+2unZwGLYVum7z13162T9o/c2u
+ uksKF5NRAoPDGncZ6+z2oLRHqep+nzy0D5mWyWT1/EfYDdzgwv7zXVS8SpDTVwWATI4o
+ kXkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=DCCPE7r2euKSyBUC8DVFJ0uB3bn50uLLJ1J1YYpZfwY=;
- b=tfXXjP5UMlgNOObkbSMjDOKGlhJiiYEXXfzatC4VMXfZAtoPIwbwb0BzmcSnbsUsfA
- oNRYVPXoVFbQUzgFWA42S2ysTNgQsnae0Z+6bI5VtUGFC3CFSou/ekCljpAdTK+gMmqq
- 9KH9hPLoBtC6hcQ5DtYWFouYHF6b6/TK/f2NqDye2smSlWWoa6qs+utXgI2+rkGGxwz9
- A7Fj5gkS9czsqyv2Xpyoha0aC4WcI9TN51fYGjvt0aGz0trxBBl+BbK33VtGShZ2BGRK
- Fk2NbfZrqySdhSmcGmUKE6+GY+31zrYRcWL12D4jevyunKeugnKCdM5ej13JyEPyIT9q
- SKyg==
-X-Gm-Message-State: AO0yUKU0LhCSGQxwTDLfhyiy3+h1s+BODSeSbi3Xd7tt9OqJ2WNuqt/I
- u4uHX4svN3NJHpZOQcclqeesHQ==
-X-Received: by 2002:a5d:4bc5:0:b0:2c5:579e:1a2c with SMTP id
- l5-20020a5d4bc5000000b002c5579e1a2cmr7306724wrt.48.1676643526724; 
- Fri, 17 Feb 2023 06:18:46 -0800 (PST)
+ bh=AmdraG6wSunb7ZlzZqyn0FBRFU3it2FPZJFh0CF4PdM=;
+ b=dSkGXk7Ns7afviVvIaHegGOBVEKORBRzjVSaf7eglPaS3Lyj+w5CGA0+kHXBiFDUMx
+ pWFme7SRo2jqLbHAwXjAmBWitFoVb6VtmghMAhHE8eI+y4cam7/bpoCXIXmY5h8joWx9
+ 8uzPlBemR1kWFM5vr6Xs8I70Wyy5s+P4yzoMnKMi/iP5yWKr4LK5t0PHS2MmPs5rZ00w
+ 2pIDJWnB3C71y6LHLGCtoDyybUm7xIOkOGacIWP6aArrmu6yqkMLoBwEZp+65Rhbx1/9
+ iV/eRGyjZ+4nEk3F7Ugn0xzby5KEHqFJC8Lk5/l76S/pYrEihA2lnR2QRKDGiKY3HOwP
+ ec5Q==
+X-Gm-Message-State: AO0yUKUIR+AoUHFWECCYDYHii5Rg3Au9gXjI3wUbrpRv33mLNJjnLdM5
+ nO2qCgiZN6KmVbyeGjMVLrsmYQ==
+X-Received: by 2002:a05:600c:181a:b0:3e1:f8b3:6333 with SMTP id
+ n26-20020a05600c181a00b003e1f8b36333mr616746wmp.27.1676643519998; 
+ Fri, 17 Feb 2023 06:18:39 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- f2-20020adffcc2000000b002c5691f13eesm4511725wrs.50.2023.02.17.06.18.44
+ m17-20020a7bce11000000b003e209b45f6bsm5682410wmc.29.2023.02.17.06.18.38
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 17 Feb 2023 06:18:46 -0800 (PST)
+ Fri, 17 Feb 2023 06:18:39 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
  "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Vikram Garhwal <vikram.garhwal@amd.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>, Jason Wang <jasowang@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Antony Pavlov <antonynpavlov@gmail.com>
-Subject: [PATCH 2/2] hw/timer: Reduce 'hw/ptimer.h' inclusion
-Date: Fri, 17 Feb 2023 15:18:32 +0100
-Message-Id: <20230217141832.24777-3-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 1/2] qemu/typedefs: Sort in case-insensitive alphabetical
+ order (again)
+Date: Fri, 17 Feb 2023 15:18:31 +0100
+Message-Id: <20230217141832.24777-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230217141832.24777-1-philmd@linaro.org>
 References: <20230217141832.24777-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,473 +124,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1w+APIU3tBmx
+X-TUID: xUy99pk2u8Z8
 
-"hw/ptimer.h" API is mostly used by timer / watchdog device
-models. Since the SoC / machines only access the ptimer via
-reference, they don't need its definition: the declartion is
-enough.
-
-On order to reduce the inclusion on the source files,
-forward-declare 'ptimer_state' in "qemu/typedefs.h".
-Use the typedef in few place instead of the structure.
+Following the recommendation added in commit a98c370c46
+("typedefs: (Re-)sort entries alphabetically"), and similarly
+to commit 64baadc272 ("Sort include/qemu/typedefs.h"), sort
+again the type definitions (in case-insensitive alphabetical
+order, using 'sort --ignore-case').
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
-"30 files changed"... but since this is trivial, there is
-no point in splitting per subsystem IMO.
----
- hw/display/xlnx_dp.c                     | 1 +
- hw/net/can/xlnx-zynqmp-can.c             | 1 +
- hw/net/fsl_etsec/etsec.h                 | 3 +--
- hw/timer/allwinner-a10-pit.c             | 1 +
- hw/timer/arm_mptimer.c                   | 4 ++--
- hw/timer/armv7m_systick.c                | 1 +
- hw/timer/cmsdk-apb-dualtimer.c           | 1 +
- hw/timer/cmsdk-apb-timer.c               | 1 +
- hw/timer/grlib_gptimer.c                 | 2 +-
- hw/timer/imx_epit.c                      | 1 +
- hw/timer/imx_gpt.c                       | 1 +
- hw/timer/mss-timer.c                     | 1 +
- hw/watchdog/cmsdk-apb-watchdog.c         | 1 +
- hw/watchdog/wdt_imx2.c                   | 1 +
- include/hw/display/xlnx_dp.h             | 1 -
- include/hw/dma/xlnx_csu_dma.h            | 1 -
- include/hw/net/xlnx-zynqmp-can.h         | 1 -
- include/hw/ptimer.h                      | 1 -
- include/hw/timer/allwinner-a10-pit.h     | 1 -
- include/hw/timer/arm_mptimer.h           | 2 +-
- include/hw/timer/armv7m_systick.h        | 1 -
- include/hw/timer/cmsdk-apb-dualtimer.h   | 3 +--
- include/hw/timer/cmsdk-apb-timer.h       | 3 +--
- include/hw/timer/digic-timer.h           | 1 -
- include/hw/timer/imx_epit.h              | 1 -
- include/hw/timer/imx_gpt.h               | 1 -
- include/hw/timer/mss-timer.h             | 1 -
- include/hw/watchdog/cmsdk-apb-watchdog.h | 3 +--
- include/hw/watchdog/wdt_imx2.h           | 5 ++---
- include/qemu/typedefs.h                  | 1 +
- 30 files changed, 22 insertions(+), 25 deletions(-)
+ include/qemu/typedefs.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index b0828d65aa..d3e7696134 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -29,6 +29,7 @@
- #include "qemu/module.h"
- #include "hw/display/xlnx_dp.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "migration/vmstate.h"
- 
- #ifndef DEBUG_DP
-diff --git a/hw/net/can/xlnx-zynqmp-can.c b/hw/net/can/xlnx-zynqmp-can.c
-index e93e6c5e19..28b9db78d4 100644
---- a/hw/net/can/xlnx-zynqmp-can.c
-+++ b/hw/net/can/xlnx-zynqmp-can.c
-@@ -33,6 +33,7 @@
- #include "hw/sysbus.h"
- #include "hw/register.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "qapi/error.h"
- #include "qemu/bitops.h"
- #include "qemu/log.h"
-diff --git a/hw/net/fsl_etsec/etsec.h b/hw/net/fsl_etsec/etsec.h
-index 3c625c955c..9321a2f9a0 100644
---- a/hw/net/fsl_etsec/etsec.h
-+++ b/hw/net/fsl_etsec/etsec.h
-@@ -27,7 +27,6 @@
- 
- #include "hw/sysbus.h"
- #include "net/net.h"
--#include "hw/ptimer.h"
- #include "qom/object.h"
- 
- /* Buffer Descriptors */
-@@ -142,7 +141,7 @@ struct eTSEC {
-     uint16_t phy_control;
- 
-     /* Polling */
--    struct ptimer_state *ptimer;
-+    ptimer_state *ptimer;
- 
-     /* Whether we should flush the rx queue when buffer becomes available. */
-     bool need_flush;
-diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c
-index 971f78462a..7cce098508 100644
---- a/hw/timer/allwinner-a10-pit.c
-+++ b/hw/timer/allwinner-a10-pit.c
-@@ -17,6 +17,7 @@
- 
- #include "qemu/osdep.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
- #include "hw/timer/allwinner-a10-pit.h"
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index cdfca3000b..104c3d8af8 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -65,7 +65,7 @@ static inline uint32_t timerblock_scale(uint32_t control)
- }
- 
- /* Must be called within a ptimer transaction block */
--static inline void timerblock_set_count(struct ptimer_state *timer,
-+static inline void timerblock_set_count(ptimer_state *timer,
-                                         uint32_t control, uint64_t *count)
- {
-     /* PTimer would trigger interrupt for periodic timer when counter set
-@@ -78,7 +78,7 @@ static inline void timerblock_set_count(struct ptimer_state *timer,
- }
- 
- /* Must be called within a ptimer transaction block */
--static inline void timerblock_run(struct ptimer_state *timer,
-+static inline void timerblock_run(ptimer_state *timer,
-                                   uint32_t control, uint32_t load)
- {
-     if ((control & 1) && ((control & 0xff00) || load != 0)) {
-diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
-index 5dfe39afe3..36fba84f15 100644
---- a/hw/timer/armv7m_systick.c
-+++ b/hw/timer/armv7m_systick.c
-@@ -13,6 +13,7 @@
- #include "hw/timer/armv7m_systick.h"
- #include "migration/vmstate.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "hw/sysbus.h"
- #include "hw/qdev-clock.h"
- #include "qemu/timer.h"
-diff --git a/hw/timer/cmsdk-apb-dualtimer.c b/hw/timer/cmsdk-apb-dualtimer.c
-index d4a509c798..c967988035 100644
---- a/hw/timer/cmsdk-apb-dualtimer.c
-+++ b/hw/timer/cmsdk-apb-dualtimer.c
-@@ -23,6 +23,7 @@
- #include "qemu/module.h"
- #include "hw/sysbus.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "hw/qdev-properties.h"
- #include "hw/registerfields.h"
- #include "hw/qdev-clock.h"
-diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
-index 68aa1a7636..cce9135eb1 100644
---- a/hw/timer/cmsdk-apb-timer.c
-+++ b/hw/timer/cmsdk-apb-timer.c
-@@ -34,6 +34,7 @@
- #include "trace.h"
- #include "hw/sysbus.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "hw/registerfields.h"
- #include "hw/qdev-clock.h"
- #include "hw/timer/cmsdk-apb-timer.h"
-diff --git a/hw/timer/grlib_gptimer.c b/hw/timer/grlib_gptimer.c
-index 5c4923c1e0..8347e3047f 100644
---- a/hw/timer/grlib_gptimer.c
-+++ b/hw/timer/grlib_gptimer.c
-@@ -61,7 +61,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(GPTimerUnit, GRLIB_GPTIMER)
- typedef struct GPTimer     GPTimer;
- 
- struct GPTimer {
--    struct ptimer_state *ptimer;
-+    ptimer_state *ptimer;
- 
-     qemu_irq     irq;
-     int          id;
-diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index 3a869782bc..6fab1be5cf 100644
---- a/hw/timer/imx_epit.c
-+++ b/hw/timer/imx_epit.c
-@@ -17,6 +17,7 @@
- #include "hw/timer/imx_epit.h"
- #include "migration/vmstate.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "hw/misc/imx_ccm.h"
- #include "qemu/module.h"
- #include "qemu/log.h"
-diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
-index 7222b1b387..ab2e13d3a0 100644
---- a/hw/timer/imx_gpt.c
-+++ b/hw/timer/imx_gpt.c
-@@ -14,6 +14,7 @@
- 
- #include "qemu/osdep.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "hw/timer/imx_gpt.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
-diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
-index ee7438f168..18174d0b8d 100644
---- a/hw/timer/mss-timer.c
-+++ b/hw/timer/mss-timer.c
-@@ -27,6 +27,7 @@
- #include "qemu/module.h"
- #include "qemu/log.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "hw/qdev-properties.h"
- #include "hw/timer/mss-timer.h"
- #include "migration/vmstate.h"
-diff --git a/hw/watchdog/cmsdk-apb-watchdog.c b/hw/watchdog/cmsdk-apb-watchdog.c
-index 5a2cd46eb7..e30da55101 100644
---- a/hw/watchdog/cmsdk-apb-watchdog.c
-+++ b/hw/watchdog/cmsdk-apb-watchdog.c
-@@ -28,6 +28,7 @@
- #include "sysemu/watchdog.h"
- #include "hw/sysbus.h"
- #include "hw/irq.h"
-+#include "hw/ptimer.h"
- #include "hw/qdev-properties.h"
- #include "hw/registerfields.h"
- #include "hw/qdev-clock.h"
-diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
-index e776a2fbd4..316a959beb 100644
---- a/hw/watchdog/wdt_imx2.c
-+++ b/hw/watchdog/wdt_imx2.c
-@@ -15,6 +15,7 @@
- #include "sysemu/watchdog.h"
- #include "migration/vmstate.h"
- #include "hw/qdev-properties.h"
-+#include "hw/ptimer.h"
- 
- #include "hw/watchdog/wdt_imx2.h"
- 
-diff --git a/include/hw/display/xlnx_dp.h b/include/hw/display/xlnx_dp.h
-index e86a87f235..f859da66f9 100644
---- a/include/hw/display/xlnx_dp.h
-+++ b/include/hw/display/xlnx_dp.h
-@@ -35,7 +35,6 @@
- #include "hw/dma/xlnx_dpdma.h"
- #include "audio/audio.h"
- #include "qom/object.h"
--#include "hw/ptimer.h"
- 
- #define AUD_CHBUF_MAX_DEPTH                 (32 * KiB)
- #define MAX_QEMU_BUFFER_SIZE                (4 * KiB)
-diff --git a/include/hw/dma/xlnx_csu_dma.h b/include/hw/dma/xlnx_csu_dma.h
-index 922ab80eb6..2b3a52c58b 100644
---- a/include/hw/dma/xlnx_csu_dma.h
-+++ b/include/hw/dma/xlnx_csu_dma.h
-@@ -23,7 +23,6 @@
- 
- #include "hw/sysbus.h"
- #include "hw/register.h"
--#include "hw/ptimer.h"
- #include "hw/stream.h"
- 
- #define TYPE_XLNX_CSU_DMA "xlnx.csu_dma"
-diff --git a/include/hw/net/xlnx-zynqmp-can.h b/include/hw/net/xlnx-zynqmp-can.h
-index fd2aa77760..2cacaf6181 100644
---- a/include/hw/net/xlnx-zynqmp-can.h
-+++ b/include/hw/net/xlnx-zynqmp-can.h
-@@ -35,7 +35,6 @@
- #include "net/can_emu.h"
- #include "net/can_host.h"
- #include "qemu/fifo32.h"
--#include "hw/ptimer.h"
- #include "hw/qdev-clock.h"
- 
- #define TYPE_XLNX_ZYNQMP_CAN "xlnx.zynqmp-can"
-diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-index 4dc02b0de4..30b7eac7ad 100644
---- a/include/hw/ptimer.h
-+++ b/include/hw/ptimer.h
-@@ -94,7 +94,6 @@
- #define PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT (1 << 5)
- 
- /* ptimer.c */
--typedef struct ptimer_state ptimer_state;
- typedef void (*ptimer_cb)(void *opaque);
- 
- /**
-diff --git a/include/hw/timer/allwinner-a10-pit.h b/include/hw/timer/allwinner-a10-pit.h
-index 8435758ad6..31054b231c 100644
---- a/include/hw/timer/allwinner-a10-pit.h
-+++ b/include/hw/timer/allwinner-a10-pit.h
-@@ -1,7 +1,6 @@
- #ifndef ALLWINNER_A10_PIT_H
- #define ALLWINNER_A10_PIT_H
- 
--#include "hw/ptimer.h"
- #include "hw/sysbus.h"
- #include "qom/object.h"
- 
-diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
-index 65a96e2a0d..339cb9fe4b 100644
---- a/include/hw/timer/arm_mptimer.h
-+++ b/include/hw/timer/arm_mptimer.h
-@@ -30,7 +30,7 @@
- typedef struct {
-     uint32_t control;
-     uint32_t status;
--    struct ptimer_state *timer;
-+    ptimer_state *timer;
-     qemu_irq irq;
-     MemoryRegion iomem;
- } TimerBlock;
-diff --git a/include/hw/timer/armv7m_systick.h b/include/hw/timer/armv7m_systick.h
-index ee09b13881..deb1d66a51 100644
---- a/include/hw/timer/armv7m_systick.h
-+++ b/include/hw/timer/armv7m_systick.h
-@@ -14,7 +14,6 @@
- 
- #include "hw/sysbus.h"
- #include "qom/object.h"
--#include "hw/ptimer.h"
- #include "hw/clock.h"
- 
- #define TYPE_SYSTICK "armv7m_systick"
-diff --git a/include/hw/timer/cmsdk-apb-dualtimer.h b/include/hw/timer/cmsdk-apb-dualtimer.h
-index f3ec86c00b..5d8450eda1 100644
---- a/include/hw/timer/cmsdk-apb-dualtimer.h
-+++ b/include/hw/timer/cmsdk-apb-dualtimer.h
-@@ -27,7 +27,6 @@
- #define CMSDK_APB_DUALTIMER_H
- 
- #include "hw/sysbus.h"
--#include "hw/ptimer.h"
- #include "hw/clock.h"
- #include "qom/object.h"
- 
-@@ -38,7 +37,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(CMSDKAPBDualTimer, CMSDK_APB_DUALTIMER)
- /* One of the two identical timer modules in the dual-timer module */
- typedef struct CMSDKAPBDualTimerModule {
-     CMSDKAPBDualTimer *parent;
--    struct ptimer_state *timer;
-+    ptimer_state *timer;
-     qemu_irq timerint;
-     /*
-      * We must track the guest LOAD and VALUE register state by hand
-diff --git a/include/hw/timer/cmsdk-apb-timer.h b/include/hw/timer/cmsdk-apb-timer.h
-index c4c7eae849..b61e254d4d 100644
---- a/include/hw/timer/cmsdk-apb-timer.h
-+++ b/include/hw/timer/cmsdk-apb-timer.h
-@@ -14,7 +14,6 @@
- 
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
--#include "hw/ptimer.h"
- #include "hw/clock.h"
- #include "qom/object.h"
- 
-@@ -34,7 +33,7 @@ struct CMSDKAPBTimer {
-     /*< public >*/
-     MemoryRegion iomem;
-     qemu_irq timerint;
--    struct ptimer_state *timer;
-+    ptimer_state *timer;
-     Clock *pclk;
- 
-     uint32_t ctrl;
-diff --git a/include/hw/timer/digic-timer.h b/include/hw/timer/digic-timer.h
-index da82fb4663..6c422a8451 100644
---- a/include/hw/timer/digic-timer.h
-+++ b/include/hw/timer/digic-timer.h
-@@ -19,7 +19,6 @@
- #define HW_TIMER_DIGIC_TIMER_H
- 
- #include "hw/sysbus.h"
--#include "hw/ptimer.h"
- #include "qom/object.h"
- 
- #define TYPE_DIGIC_TIMER "digic-timer"
-diff --git a/include/hw/timer/imx_epit.h b/include/hw/timer/imx_epit.h
-index 79aff0cec2..55f2611f79 100644
---- a/include/hw/timer/imx_epit.h
-+++ b/include/hw/timer/imx_epit.h
-@@ -30,7 +30,6 @@
- #define IMX_EPIT_H
- 
- #include "hw/sysbus.h"
--#include "hw/ptimer.h"
- #include "hw/misc/imx_ccm.h"
- #include "qom/object.h"
- 
-diff --git a/include/hw/timer/imx_gpt.h b/include/hw/timer/imx_gpt.h
-index 5a1230da35..d5743778e0 100644
---- a/include/hw/timer/imx_gpt.h
-+++ b/include/hw/timer/imx_gpt.h
-@@ -30,7 +30,6 @@
- #define IMX_GPT_H
- 
- #include "hw/sysbus.h"
--#include "hw/ptimer.h"
- #include "hw/misc/imx_ccm.h"
- #include "qom/object.h"
- 
-diff --git a/include/hw/timer/mss-timer.h b/include/hw/timer/mss-timer.h
-index da38512904..783cec30e3 100644
---- a/include/hw/timer/mss-timer.h
-+++ b/include/hw/timer/mss-timer.h
-@@ -26,7 +26,6 @@
- #define HW_MSS_TIMER_H
- 
- #include "hw/sysbus.h"
--#include "hw/ptimer.h"
- #include "qom/object.h"
- 
- #define TYPE_MSS_TIMER     "mss-timer"
-diff --git a/include/hw/watchdog/cmsdk-apb-watchdog.h b/include/hw/watchdog/cmsdk-apb-watchdog.h
-index c6b3e78731..d02bfd0dd7 100644
---- a/include/hw/watchdog/cmsdk-apb-watchdog.h
-+++ b/include/hw/watchdog/cmsdk-apb-watchdog.h
-@@ -32,7 +32,6 @@
- #define CMSDK_APB_WATCHDOG_H
- 
- #include "hw/sysbus.h"
--#include "hw/ptimer.h"
- #include "hw/clock.h"
- #include "qom/object.h"
- 
-@@ -53,7 +52,7 @@ struct CMSDKAPBWatchdog {
-     MemoryRegion iomem;
-     qemu_irq wdogint;
-     bool is_luminary;
--    struct ptimer_state *timer;
-+    ptimer_state *timer;
-     Clock *wdogclk;
- 
-     uint32_t control;
-diff --git a/include/hw/watchdog/wdt_imx2.h b/include/hw/watchdog/wdt_imx2.h
-index 600a552d2e..d4cddac352 100644
---- a/include/hw/watchdog/wdt_imx2.h
-+++ b/include/hw/watchdog/wdt_imx2.h
-@@ -15,7 +15,6 @@
- #include "qemu/bitops.h"
- #include "hw/sysbus.h"
- #include "hw/irq.h"
--#include "hw/ptimer.h"
- #include "qom/object.h"
- 
- #define TYPE_IMX2_WDT "imx2.wdt"
-@@ -71,8 +70,8 @@ struct IMX2WdtState {
-     MemoryRegion mmio;
-     qemu_irq irq;
- 
--    struct ptimer_state *timer;
--    struct ptimer_state *itimer;
-+    ptimer_state *timer;
-+    ptimer_state *itimer;
- 
-     bool pretimeout_support;
-     bool wicr_locked;
 diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index df4b55ac65..effcba4bca 100644
+index c7c8a85315..df4b55ac65 100644
 --- a/include/qemu/typedefs.h
 +++ b/include/qemu/typedefs.h
-@@ -104,6 +104,7 @@ typedef struct PICCommonState PICCommonState;
- typedef struct PostcopyDiscardState PostcopyDiscardState;
- typedef struct Property Property;
- typedef struct PropertyInfo PropertyInfo;
-+typedef struct ptimer_state ptimer_state;
- typedef struct QBool QBool;
+@@ -49,6 +49,7 @@ typedef struct DeviceState DeviceState;
+ typedef struct DirtyBitmapSnapshot DirtyBitmapSnapshot;
+ typedef struct DisplayChangeListener DisplayChangeListener;
+ typedef struct DriveInfo DriveInfo;
++typedef struct DumpState DumpState;
+ typedef struct Error Error;
+ typedef struct EventNotifier EventNotifier;
+ typedef struct FlatView FlatView;
+@@ -56,6 +57,7 @@ typedef struct FWCfgEntry FWCfgEntry;
+ typedef struct FWCfgIoState FWCfgIoState;
+ typedef struct FWCfgMemState FWCfgMemState;
+ typedef struct FWCfgState FWCfgState;
++typedef struct GraphicHwOps GraphicHwOps;
+ typedef struct HostMemoryBackend HostMemoryBackend;
+ typedef struct I2CBus I2CBus;
+ typedef struct I2SCodec I2SCodec;
+@@ -90,10 +92,10 @@ typedef struct PCIDevice PCIDevice;
+ typedef struct PCIEAERErr PCIEAERErr;
+ typedef struct PCIEAERLog PCIEAERLog;
+ typedef struct PCIEAERMsg PCIEAERMsg;
+-typedef struct PCIESriovPF PCIESriovPF;
+-typedef struct PCIESriovVF PCIESriovVF;
+ typedef struct PCIEPort PCIEPort;
+ typedef struct PCIESlot PCIESlot;
++typedef struct PCIESriovPF PCIESriovPF;
++typedef struct PCIESriovVF PCIESriovVF;
+ typedef struct PCIExpressDevice PCIExpressDevice;
+ typedef struct PCIExpressHost PCIExpressHost;
+ typedef struct PCIHostDeviceAddress PCIHostDeviceAddress;
+@@ -106,6 +108,7 @@ typedef struct QBool QBool;
  typedef struct QDict QDict;
  typedef struct QEMUBH QEMUBH;
+ typedef struct QemuConsole QemuConsole;
++typedef struct QEMUCursor QEMUCursor;
+ typedef struct QEMUFile QEMUFile;
+ typedef struct QemuLockable QemuLockable;
+ typedef struct QemuMutex QemuMutex;
+@@ -132,9 +135,6 @@ typedef struct VirtIODevice VirtIODevice;
+ typedef struct Visitor Visitor;
+ typedef struct VMChangeStateEntry VMChangeStateEntry;
+ typedef struct VMStateDescription VMStateDescription;
+-typedef struct DumpState DumpState;
+-typedef struct GraphicHwOps GraphicHwOps;
+-typedef struct QEMUCursor QEMUCursor;
+ 
+ /*
+  * Pointer types
 -- 
 2.38.1
 

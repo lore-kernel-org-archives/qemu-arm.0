@@ -1,113 +1,118 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1535818ejb;
-        Fri, 17 Feb 2023 06:20:04 -0800 (PST)
-X-Google-Smtp-Source: AK7set+CP7iGKDjMwC3x+11q06h0IBqJZPwqCG/9Qy4NqyR0j5HIsqEQamk3AIA2jZIjaPQjTSdn
-X-Received: by 2002:ac8:7dc9:0:b0:3b9:a60f:b2bb with SMTP id c9-20020ac87dc9000000b003b9a60fb2bbmr986810qte.56.1676643603808;
-        Fri, 17 Feb 2023 06:20:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676643603; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1366245ejb;
+        Fri, 17 Feb 2023 02:32:23 -0800 (PST)
+X-Google-Smtp-Source: AK7set98Lro3iucu92j3CrJMNLUNtaCKs6rlqrv7TiCCrhSQ5sLWxSFAOzsoSNtK4jYuCPTcSWVq
+X-Received: by 2002:ac8:5c07:0:b0:3b6:5fc7:f554 with SMTP id i7-20020ac85c07000000b003b65fc7f554mr8761137qti.7.1676629942997;
+        Fri, 17 Feb 2023 02:32:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676629942; cv=none;
         d=google.com; s=arc-20160816;
-        b=n6nGgRsuJnWXTZ25xTP0Yabw7dwefsFGJOa1iyamQ27eUOgn2TQioUMoeJPM14Hh2u
-         ZLgxCi79E5y56zTgHMJAEWjXwmzJVvSM0VelUtfHMRqi3eG54I8qQLc2lAAux6i+9KyP
-         BhGnxGJAq3DWszRLV/N6lh7DYuyMTG3KFjj7/UzNwHERrqGbOnAs3+ipPdrwPRdUl2Oz
-         cLe2uvUIwNNxGKB/qEq0r5SvySjq/2EwpVx7c3ym51RNa/Ndv242GAgOQPVcuXD8m/a7
-         ACLVQwosR0z2B4li476CAlE7CP6xhvXDtEahXH2bANGdqZZAM8jHGujWbQaFgcMPVkg4
-         qEgQ==
+        b=zJgYXNns7gHqMeL2nirC8HbsHr3vu1jjLmCvZPpsM2J6MBeHCa3jhzhLlRu/GgyWWc
+         3z0/SS4dJWDkrccfbk7rtklTxwxiEHAxqmVsa8DfVkWtMCM/FyxsoDvnsFbnlt0t9WdN
+         lA+5DQUYU7fl3HdCnZlu9sTM19mzU718eEz52VK9f1hmW7eKdZX3Oh9W9xk1PdPYV/gV
+         035RuGlUFrVeUhCXmUsWZk1SAk2Ofa9rQf5rnDqKKFIl9OjrOki3Co4/LTSu55eLA9sa
+         /1AuwAgWSr8kRat0MaUfd21sGjLno6FtzZ0shikkGMYrDug2yBo6INPyTOo/9zhxY2kE
+         2low==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=AmdraG6wSunb7ZlzZqyn0FBRFU3it2FPZJFh0CF4PdM=;
-        b=H9WBtY6iOb+T4VuFyjdHn7w69zcC9eTEc8GthKjfVemQSqHVP23C+jUt9TCVeT2aGs
-         xyTkU7Ga0A6TIaiYF1bv6MTpTHezQCZ+Da2M/HHv3zkq5vVaujW6qezgQtFR3Kklhqke
-         Z8Abjy+lBe6nr8BbB0QGRwEw7+f19qVZeeUmoIlGapuUVS/z0HBBCKgMx3B1osFtXqyQ
-         /XvHfjIVizQqvJy3Xq7TP72b/THc8R10hJhl59wnUzoblAKlAUp61oQ2notXI2wj0ZZ9
-         Ym9bGuXJ0pO/GTvAGFG+JBjLVQeTQdxa4zLj1HdTOYSHMWKD8LIJn+T9NT1ghHqRXvRl
-         t+sQ==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=kCTlagYfWgLEiXnsIz5tTMEmvqpOXp/IYE2XzsBlc6E=;
+        b=SrPZRtbKBtAjmy8oi/r6/OIJLrAbujItgPnLH265DRDIb0YKSUxCt4xHMWVS7s/MPP
+         JS9xzvcQyxA9BshnN8w1x/Ute89cH2t5/uyFRfk8Iwc7O/p/ewPlhVvrx2hABNYZdFjx
+         8z3qriS0OlZfrjQvj1GKfa7UmELUObRKyZnio7tK4rOuG+jNU4nNpBM2Ojmko54+JpCr
+         2ISf8ln4/rpLNKS5gsNCXEVY/QjOE4aBxpGSwAiM957dr7NYJbsdIjKdvG4JesiS7rov
+         wMRg6QTv9YCThL86ODM3ILKEit2Vcme0E5KyJ1+fe/0Gsyrf3Hc88TXdFwrYZ33B9D80
+         P8ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xwfHSGzJ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AlLNmN8a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j12-20020a05620a288c00b0073b6ee15dc2si3634906qkp.317.2023.02.17.06.20.03
+        by mx.google.com with ESMTPS id z13-20020a05622a060d00b003b9a61a45a9si3073333qta.470.2023.02.17.02.32.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Feb 2023 06:20:03 -0800 (PST)
+        Fri, 17 Feb 2023 02:32:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xwfHSGzJ;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AlLNmN8a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pT1Zs-0004z5-Ep; Fri, 17 Feb 2023 09:19:08 -0500
+	id 1pSy1g-00022H-BP; Fri, 17 Feb 2023 05:31:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pT1ZT-0004Ze-OZ
- for qemu-arm@nongnu.org; Fri, 17 Feb 2023 09:18:46 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1pSy1e-00020Z-Om; Fri, 17 Feb 2023 05:31:34 -0500
+Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pT1ZR-0005UZ-KA
- for qemu-arm@nongnu.org; Fri, 17 Feb 2023 09:18:43 -0500
-Received: by mail-wm1-x336.google.com with SMTP id p5so1075481wmg.4
- for <qemu-arm@nongnu.org>; Fri, 17 Feb 2023 06:18:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=AmdraG6wSunb7ZlzZqyn0FBRFU3it2FPZJFh0CF4PdM=;
- b=xwfHSGzJNDhMKANmdgxutSeNW6nER18v9Kq4VVOVjXfogo878eiPUKNmJb7y/BU6Bq
- k669jq4sWZo1QXeM5hzkg9tK2yxvZulQeN7RkFf4CRpE1cjXFOgUT3HxEKPt8L8Xcsqf
- P+EKN5C8BljcTZZI3aEsEV2jXQn66sCtOmmMkA++Ac9SiSoA1c/zEiRFuW5xM5ZQYNLH
- R6NIR63JpdoPfzO4leifcCP/AUz9zUd7rIZ4YBhXw/+2unZwGLYVum7z13162T9o/c2u
- uksKF5NRAoPDGncZ6+z2oLRHqep+nzy0D5mWyWT1/EfYDdzgwv7zXVS8SpDTVwWATI4o
- kXkQ==
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1pSy1d-0002CI-8Q; Fri, 17 Feb 2023 05:31:34 -0500
+Received: by mail-oi1-x229.google.com with SMTP id bg20so262646oib.9;
+ Fri, 17 Feb 2023 02:31:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=kCTlagYfWgLEiXnsIz5tTMEmvqpOXp/IYE2XzsBlc6E=;
+ b=AlLNmN8aRlcCmfxD2qlxPQK4T996KOWzUxmjO+Y1rcUgL4nCrjytYIqP0n0P0VfxCB
+ ygKe4YLRSRUhU7LfXx8XBxqovHazVIFDlC9s14b7RhopUmP12yBgTiLb3iisl5Efsjjx
+ mtB+Y2DQnx1tklad9ba08gxRUNw+Y6fNDQIAc7JAh14e+3nGI66v61V6rkegTXS3nOn9
+ d7ko5oLG4enhMNb4Bsn1a0FR08QR3rHbcy9M/TR3g2ypBHtulovQyYaM926xRq1iPeiI
+ AUNA2Mp2vnJgSJSHCTBSKqI6uPc8graTh27EuCx3eFzA7BInAaXjGSagHJb4cPJ85WPR
+ CHHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=AmdraG6wSunb7ZlzZqyn0FBRFU3it2FPZJFh0CF4PdM=;
- b=dSkGXk7Ns7afviVvIaHegGOBVEKORBRzjVSaf7eglPaS3Lyj+w5CGA0+kHXBiFDUMx
- pWFme7SRo2jqLbHAwXjAmBWitFoVb6VtmghMAhHE8eI+y4cam7/bpoCXIXmY5h8joWx9
- 8uzPlBemR1kWFM5vr6Xs8I70Wyy5s+P4yzoMnKMi/iP5yWKr4LK5t0PHS2MmPs5rZ00w
- 2pIDJWnB3C71y6LHLGCtoDyybUm7xIOkOGacIWP6aArrmu6yqkMLoBwEZp+65Rhbx1/9
- iV/eRGyjZ+4nEk3F7Ugn0xzby5KEHqFJC8Lk5/l76S/pYrEihA2lnR2QRKDGiKY3HOwP
- ec5Q==
-X-Gm-Message-State: AO0yUKUIR+AoUHFWECCYDYHii5Rg3Au9gXjI3wUbrpRv33mLNJjnLdM5
- nO2qCgiZN6KmVbyeGjMVLrsmYQ==
-X-Received: by 2002:a05:600c:181a:b0:3e1:f8b3:6333 with SMTP id
- n26-20020a05600c181a00b003e1f8b36333mr616746wmp.27.1676643519998; 
- Fri, 17 Feb 2023 06:18:39 -0800 (PST)
-Received: from localhost.localdomain ([81.0.6.76])
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=kCTlagYfWgLEiXnsIz5tTMEmvqpOXp/IYE2XzsBlc6E=;
+ b=6rMLODSu5t1EKmr+BmHsEkaGxdgzWhElUAwn+So2yxnhSQlN/UdEQmGXlC81n24eDF
+ 9ChI3FhLTPEIzdfqeGEFC/yPu/tCQeSmKawucyhQ9P19tbYp2HdBUQQUFURTKm5l+oIx
+ Qu4+c+KnsIOfuXO6evXPRO7mZn0SeR/LerEmSprFlQdtAHOntvXx4y9he6ypL+CSnamF
+ 8XyEMKjSbG8Yfz/SSvs1OXUzs/7kLX2YXFy968R42g/lOP2IKxHuMwNNQQV3JGeWKoz3
+ j+w/Bq7lb3mkrrvtEPOMf/I3ofRBFzceLR0lF6eJ7HsEfRg6X2MwZdPlnJQGqWqRpX7H
+ ywGw==
+X-Gm-Message-State: AO0yUKWaRuWAmjmeb6osDWvBCLftxIXkdd9tSRTbQbbWBvXmtoEsAQ01
+ Y6JV1SAy3Ahb8CjnS08AI7I=
+X-Received: by 2002:a05:6808:bcd:b0:37f:523e:1da6 with SMTP id
+ o13-20020a0568080bcd00b0037f523e1da6mr2685885oik.11.1676629890314; 
+ Fri, 17 Feb 2023 02:31:30 -0800 (PST)
+Received: from [192.168.68.107] ([191.19.40.109])
  by smtp.gmail.com with ESMTPSA id
- m17-20020a7bce11000000b003e209b45f6bsm5682410wmc.29.2023.02.17.06.18.38
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 17 Feb 2023 06:18:39 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/2] qemu/typedefs: Sort in case-insensitive alphabetical
- order (again)
-Date: Fri, 17 Feb 2023 15:18:31 +0100
-Message-Id: <20230217141832.24777-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230217141832.24777-1-philmd@linaro.org>
-References: <20230217141832.24777-1-philmd@linaro.org>
+ b65-20020aca3444000000b0037f879e46b9sm1602280oia.3.2023.02.17.02.31.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Feb 2023 02:31:29 -0800 (PST)
+Message-ID: <8a573926-42d8-4e7f-7c8e-9c2b39e32bd7@gmail.com>
+Date: Fri, 17 Feb 2023 07:31:26 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.2
+Subject: Re: [PATCH 2/5] spapr/ddw: Remove confuse return value in
+ spapr_phb_get_free_liobn()
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>
+References: <20230216122524.67212-1-philmd@linaro.org>
+ <20230216122524.67212-3-philmd@linaro.org>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20230216122524.67212-3-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=2607:f8b0:4864:20::229;
+ envelope-from=danielhb413@gmail.com; helo=mail-oi1-x229.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.351,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -124,70 +129,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xUy99pk2u8Z8
+X-TUID: 1rfh757FWm1M
 
-Following the recommendation added in commit a98c370c46
-("typedefs: (Re-)sort entries alphabetically"), and similarly
-to commit 64baadc272 ("Sort include/qemu/typedefs.h"), sort
-again the type definitions (in case-insensitive alphabetical
-order, using 'sort --ignore-case').
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/qemu/typedefs.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index c7c8a85315..df4b55ac65 100644
---- a/include/qemu/typedefs.h
-+++ b/include/qemu/typedefs.h
-@@ -49,6 +49,7 @@ typedef struct DeviceState DeviceState;
- typedef struct DirtyBitmapSnapshot DirtyBitmapSnapshot;
- typedef struct DisplayChangeListener DisplayChangeListener;
- typedef struct DriveInfo DriveInfo;
-+typedef struct DumpState DumpState;
- typedef struct Error Error;
- typedef struct EventNotifier EventNotifier;
- typedef struct FlatView FlatView;
-@@ -56,6 +57,7 @@ typedef struct FWCfgEntry FWCfgEntry;
- typedef struct FWCfgIoState FWCfgIoState;
- typedef struct FWCfgMemState FWCfgMemState;
- typedef struct FWCfgState FWCfgState;
-+typedef struct GraphicHwOps GraphicHwOps;
- typedef struct HostMemoryBackend HostMemoryBackend;
- typedef struct I2CBus I2CBus;
- typedef struct I2SCodec I2SCodec;
-@@ -90,10 +92,10 @@ typedef struct PCIDevice PCIDevice;
- typedef struct PCIEAERErr PCIEAERErr;
- typedef struct PCIEAERLog PCIEAERLog;
- typedef struct PCIEAERMsg PCIEAERMsg;
--typedef struct PCIESriovPF PCIESriovPF;
--typedef struct PCIESriovVF PCIESriovVF;
- typedef struct PCIEPort PCIEPort;
- typedef struct PCIESlot PCIESlot;
-+typedef struct PCIESriovPF PCIESriovPF;
-+typedef struct PCIESriovVF PCIESriovVF;
- typedef struct PCIExpressDevice PCIExpressDevice;
- typedef struct PCIExpressHost PCIExpressHost;
- typedef struct PCIHostDeviceAddress PCIHostDeviceAddress;
-@@ -106,6 +108,7 @@ typedef struct QBool QBool;
- typedef struct QDict QDict;
- typedef struct QEMUBH QEMUBH;
- typedef struct QemuConsole QemuConsole;
-+typedef struct QEMUCursor QEMUCursor;
- typedef struct QEMUFile QEMUFile;
- typedef struct QemuLockable QemuLockable;
- typedef struct QemuMutex QemuMutex;
-@@ -132,9 +135,6 @@ typedef struct VirtIODevice VirtIODevice;
- typedef struct Visitor Visitor;
- typedef struct VMChangeStateEntry VMChangeStateEntry;
- typedef struct VMStateDescription VMStateDescription;
--typedef struct DumpState DumpState;
--typedef struct GraphicHwOps GraphicHwOps;
--typedef struct QEMUCursor QEMUCursor;
- 
- /*
-  * Pointer types
--- 
-2.38.1
+On 2/16/23 09:25, Philippe Mathieu-Daudé wrote:
+> The '1' returned value isn't used because
+> spapr_phb_get_free_liobn_cb() isn't called recursively
+> (it is only called once in spapr_phb_get_free_liobn()).
+> 
+> The next commit will convert object_child_foreach()
+> handlers to return a boolean indicating error.
+> Remove this value to avoid confusion.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
 
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+
+>   hw/ppc/spapr_rtas_ddw.c | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/hw/ppc/spapr_rtas_ddw.c b/hw/ppc/spapr_rtas_ddw.c
+> index 7ba11382bc..98f1310c6e 100644
+> --- a/hw/ppc/spapr_rtas_ddw.c
+> +++ b/hw/ppc/spapr_rtas_ddw.c
+> @@ -51,7 +51,6 @@ static int spapr_phb_get_free_liobn_cb(Object *child, void *opaque)
+>       tcet = (SpaprTceTable *) object_dynamic_cast(child, TYPE_SPAPR_TCE_TABLE);
+>       if (tcet && !tcet->nb_table) {
+>           *(uint32_t *)opaque = tcet->liobn;
+> -        return 1;
+>       }
+>       return 0;
+>   }

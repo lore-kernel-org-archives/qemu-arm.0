@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp128840ejb;
-        Fri, 17 Feb 2023 12:15:24 -0800 (PST)
-X-Google-Smtp-Source: AK7set++McMMGfG5SRt/eK0FKCO5DMMHm5oWYCgDb6I3nKh5dBFZHMWJq1uSQGAgzg6gEZfyiw/t
-X-Received: by 2002:a05:600c:2e83:b0:3e0:6c4:6a38 with SMTP id p3-20020a05600c2e8300b003e006c46a38mr1191281wmn.33.1676664924150;
-        Fri, 17 Feb 2023 12:15:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676664924; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp128888ejb;
+        Fri, 17 Feb 2023 12:15:27 -0800 (PST)
+X-Google-Smtp-Source: AK7set/JPJhZTZO27Z8Ahh7HwsbCEuyQ81gLZkah2CdooStPI7pJF2FDbaKhx/LHuzB1iSvmcn8G
+X-Received: by 2002:adf:d084:0:b0:2c5:99bf:18d2 with SMTP id y4-20020adfd084000000b002c599bf18d2mr4348776wrh.67.1676664927584;
+        Fri, 17 Feb 2023 12:15:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676664927; cv=none;
         d=google.com; s=arc-20160816;
-        b=wBX6qtLDLO4JceN4l+3hBqqw25MqNjzKNfuqUSVmZcYagTjen65sPgOZ0I3HGrwvtc
-         e2lmM5ihyQt+bUT1DixqaLMpZdzgv+gXhv+pX7nWdDu7/IiBiaDL5O09LeLX68rcNTzQ
-         iPua7Y5aKyP2+qy3muDr0e25u+30ychQoIrXdJSDKkhnlQqyeA9Kx1c5BGVzD9/Eg2ED
-         RlPMEv/udhFLcRb35Ek8DHPlfzt01HZIEjpb/bOC9dzTDuadZhuCouLlCbmozlTCBu/u
-         xi8bkuLYM/KSw0YIpIXaP0HaEsQOQWbeSmKYYTh2ZLYMhxUPA0RIKa/ZTZ6aWPY6AEWo
-         Ly+A==
+        b=Gw52OeZVojPKvClhsC+RPpLiy6z0ijzU/Rru0whWIbO4+xiaOXvq4mH6RPzfsDoQCQ
+         QOgJDHxxhNi6q8tf9fUYbj3AcQil3/c6mIX8sohhWoowRrzkoXn2kW7ahKAJPlEzg4ZT
+         thFaML1xZ1SyjQPEkl3/T4G5yu56mjyzqJRsLU4DSMNxF3PMsK6PcYWAhe7fNhEThext
+         9uaz/oXNqlPxAi43nKV98g+VhjW+yDuNzBRudidiumVhUIqt6GqCrB5+Mu1GObq0shTR
+         LA3VHiSWY9RVuXa4BoZ2yZgXSZQHKspS/YpQBwxDoYAzr69In54A0M0mGARPzFYa+76g
+         8gGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=YZq8lMRctNgZk9sWCbt1LBIQIow6pNjQpnkRoo98og4=;
-        b=OYT8y4keoXEPV0dsverG5dbJBQjc7JyE0/rVkZTDNzQYeaYpwvfrWlM72Qqqyms2kn
-         n+ij2slkSNGjCH1xi3l/6sH1aN4QPCs+cLxt1rwp9ljzrfWVG9gdFzRbjmE2Ftxj0zWP
-         DD6TxkZz83fFFjO91E5rK9+8URYzFAtglK7bohO6C42oBxaoixLAG4wVZ3I4ig9R+LEy
-         Mzh6mvNLxeNQBb9gQ5d6ol/GwMIgp7iXXS/285Sv/pAAqdaPdsQ3859EmQiWfnI8CKNp
-         ogfOLGA6pCyo3mU+ekmrrN//j5T6znMK9LxRQBzdKgKcbMBxGLrIeXMRF6z34Leiwt1q
-         pqLA==
+        bh=e5tfxhz0XLT506HPN6j8wnNQmjG3RMFDcTBo7NMv6Wg=;
+        b=L8ePRvyP/8LOf6MYdgTpxDdpaaJTTYSbtB83swKabzkcasiawSHseginzmDRn5yS7Y
+         8jUOIJUM7kuI38sk1BeoRdgvhdbCTA2L+7Id90HK2lXRpdBY+w2aRhb+grAifNozYkY/
+         af5DDBhfiyl2DkN5i+25ygKiYnIPaijk/LB5Ndc4aLCiOpNRz9Zn4UQdCr0GwUYmDlU4
+         T7PAPg7O9m35NLhrfnOLrFFZNhfBqd7hFBHZxIKgs5U2IRibCTEr0z4p17+tlTxrzNSn
+         WZ3q4OvVuzkV1vuF+Nh7mpzEHzLdypuPRyRZks1sZtnASOVdaIBjA7i1vSlzpxk9rRI1
+         eZsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=1Hut9i51;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ZVPacfZF;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=VlB7WAhr;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id m17-20020a7bca51000000b003dff7adac19si7859633wml.103.2023.02.17.12.15.23
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id g16-20020a056000119000b002c54fe4a0cfsi5540555wrx.163.2023.02.17.12.15.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Feb 2023 12:15:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+        Fri, 17 Feb 2023 12:15:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=1Hut9i51;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ZVPacfZF;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=VlB7WAhr;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id C101434657;
-	Fri, 17 Feb 2023 20:15:23 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 2784220FBF;
+	Fri, 17 Feb 2023 20:15:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1676664923; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	t=1676664927; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=YZq8lMRctNgZk9sWCbt1LBIQIow6pNjQpnkRoo98og4=;
-	b=1Hut9i51JKlbNKG3xv96tqEgPSIEzH+6WA3LRVTqCBB48orTq75pL2u58c/VqdvGb1QLhj
-	DVTngyhv8HNpMJXjoQx+fk75jcigEULXfPrWMiXd0w54gRD5jm5K2M5bzCjhxvdbvDDjnL
-	Tcd0v7q+SZ0IbUyIW3/59IRaGJsztYQ=
+	bh=e5tfxhz0XLT506HPN6j8wnNQmjG3RMFDcTBo7NMv6Wg=;
+	b=ZVPacfZFnu4oxlvetE0D6ZQjX8Ro14H7cVW3nrneYGYSBUTOyqPBcOCtBncf2sjRb9Bcwp
+	I1lDDfbGwtZGPbqKpaNN3Iy6mAwNs/hcBB4skIPj62rYJpm1IL8n0KU83u3jjXC1v4xebZ
+	AnfRPrUYVyC8xsvQ5SC4u4MGH62x+AM=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1676664923;
+	s=susede2_ed25519; t=1676664927;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=YZq8lMRctNgZk9sWCbt1LBIQIow6pNjQpnkRoo98og4=;
-	b=L3oVKCsLV406C55lqnaX2SMzBXnr2W/VA/CT23FBH36N3OLbxADn9lZ6ZwDA3ks5iTdfU7
-	ifeGB2mTasRCjNAw==
+	bh=e5tfxhz0XLT506HPN6j8wnNQmjG3RMFDcTBo7NMv6Wg=;
+	b=VlB7WAhrj32IYnGxdHa6538HLAXTX8dwYgdsUhRnP+SQuy0c35i5agrIWL7CgTtpRy9HrW
+	zxApPkeoavCwZCDg==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 31767138E3;
-	Fri, 17 Feb 2023 20:15:19 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 3CB78138E3;
+	Fri, 17 Feb 2023 20:15:24 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id cP+bOlfg72MwIAAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 17 Feb 2023 20:15:19 +0000
+	id WKezAVzg72MwIAAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 17 Feb 2023 20:15:24 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,44 +82,73 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH v6 25/29] tests/avocado: add machine:none tag to version.py
-Date: Fri, 17 Feb 2023 17:11:46 -0300
-Message-Id: <20230217201150.22032-26-farosas@suse.de>
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v6 26/29] arm/Kconfig: Always select SEMIHOSTING when TCG is present
+Date: Fri, 17 Feb 2023 17:11:47 -0300
+Message-Id: <20230217201150.22032-27-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230217201150.22032-1-farosas@suse.de>
 References: <20230217201150.22032-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Fh6y/Rffonxm
+X-TUID: hCT+8o3XAg4G
 
-This test currently fails when run on a host for which the QEMU target
-has no default machine set:
+We are about to enable the build without TCG, so CONFIG_SEMIHOSTING
+and CONFIG_ARM_COMPATIBLE_SEMIHOSTING cannot be unconditionally set in
+default.mak anymore. So reflect the change in a Kconfig.
 
-ERROR| Output: qemu-system-aarch64: No machine specified, and there is
-no default
+Instead of using semihosting/Kconfig, use a target-specific file, so
+that the change doesn't affect other architectures which might
+implement semihosting in a way compatible with KVM.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+The selection from ARM_v7M needs to be removed to avoid a cycle during
+parsing.
+
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/avocado/version.py | 1 +
- 1 file changed, 1 insertion(+)
+ configs/devices/arm-softmmu/default.mak | 2 --
+ hw/arm/Kconfig                          | 1 -
+ target/arm/Kconfig                      | 7 +++++++
+ 3 files changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/tests/avocado/version.py b/tests/avocado/version.py
-index ded7f039c1..dd775955eb 100644
---- a/tests/avocado/version.py
-+++ b/tests/avocado/version.py
-@@ -15,6 +15,7 @@
- class Version(QemuSystemTest):
-     """
-     :avocado: tags=quick
-+    :avocado: tags=machine:none
-     """
-     def test_qmp_human_info_version(self):
-         self.vm.add_args('-nodefaults')
+diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
+index 1b49a7830c..cb3e5aea65 100644
+--- a/configs/devices/arm-softmmu/default.mak
++++ b/configs/devices/arm-softmmu/default.mak
+@@ -40,6 +40,4 @@ CONFIG_MICROBIT=y
+ CONFIG_FSL_IMX25=y
+ CONFIG_FSL_IMX7=y
+ CONFIG_FSL_IMX6UL=y
+-CONFIG_SEMIHOSTING=y
+-CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+ CONFIG_ALLWINNER_H3=y
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 2d157de9b8..ef518c1f1d 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -316,7 +316,6 @@ config ARM_V7M
+     # currently v7M must be included in a TCG build due to translate.c
+     default y if TCG && (ARM || AARCH64)
+     select PTIMER
+-    select ARM_COMPATIBLE_SEMIHOSTING
+ 
+ config ALLWINNER_A10
+     bool
+diff --git a/target/arm/Kconfig b/target/arm/Kconfig
+index 3f3394a22b..39f05b6420 100644
+--- a/target/arm/Kconfig
++++ b/target/arm/Kconfig
+@@ -4,3 +4,10 @@ config ARM
+ config AARCH64
+     bool
+     select ARM
++
++# This config exists just so we can make SEMIHOSTING default when TCG
++# is selected without also changing it for other architectures.
++config ARM_SEMIHOSTING
++    bool
++    default y if TCG && ARM
++    select ARM_COMPATIBLE_SEMIHOSTING
 -- 
 2.35.3

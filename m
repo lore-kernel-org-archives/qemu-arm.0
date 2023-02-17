@@ -1,141 +1,97 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp70144ejb;
-        Fri, 17 Feb 2023 10:53:09 -0800 (PST)
-X-Google-Smtp-Source: AK7set+4IxYEEyPcs4WaEJqP0P65qzAkuZPLYCO4lDY1Be87dMdNmCZbk/4mZA3LJYWxBa/LRu28
-X-Received: by 2002:a05:6214:c66:b0:56e:af8a:a872 with SMTP id t6-20020a0562140c6600b0056eaf8aa872mr1890812qvj.11.1676659989770;
-        Fri, 17 Feb 2023 10:53:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676659989; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1535026ejb;
+        Fri, 17 Feb 2023 06:18:50 -0800 (PST)
+X-Google-Smtp-Source: AK7set+1nyTUjV4v8tlH8s+ORIku7pPddEnmPJ9veKM190On097qhZuXuO4qvLRD4nPL1y3PKXp2
+X-Received: by 2002:a05:622a:44f:b0:3a8:fdf:8ff8 with SMTP id o15-20020a05622a044f00b003a80fdf8ff8mr15441281qtx.36.1676643530772;
+        Fri, 17 Feb 2023 06:18:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676643530; cv=none;
         d=google.com; s=arc-20160816;
-        b=F5y//pqWVFazLmSJtyF8Iu335ygr3EfslbX2oTxiiuOpy2uz6S3bngqxImlv95E2/P
-         iXMUzhJVNMYxrWkTVwIbmSchGjWUbAShoZ7pV4saghkmXqL9OvHJM2qZ+viE2hDeddOV
-         DbUY20miAhemJ2R4WSk0L9amF+mOv0ZsQwoKU3NiY16eJ98/Ae0V04FTEUQtD9zksp1Q
-         4zTuXAHE6jCW/S3HINpdQdOH4j1XRIJcNDc5d1OKFPTyT8NWzoyD+hh5ZhSzFadqRXjI
-         DKfKDpY0n6LIcZQ1XDpWRli95kGx48RIjLlnolblHnQ+omg8L7u+UFBzWsksHO+nerhD
-         0wOQ==
+        b=YJ5AaVIia5U1n7dliAMKbZQIPHsFvIK8EmrnRTIHLSxcJuNjtz95NK+nj60MUCkaQk
+         WNXt4LCuvhFv356nQO4Ch9WIfOQZYgSCC5T2WUXp5F8lqRFsSOOE3tMl45Yew9MKSNaM
+         vyyHrhSD+C3au5h9/UzeKGup4GBY/ByYNyRV59jrt14QuLfMawYezhAvU4eS87ysSf9U
+         GLCCuHpg5/IaY3sMZIGn1mDfPFhvdcUYUh0US8r/Wm6nb6bK/m4plhAwmhnGsjywjnyT
+         bCZ0ewD8kE8WDscgn4F/kymtgMfnMIVWm6HbvGaJQFB5CNodvaa+dJc+02JfFntlI4qE
+         IsEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=/Zcl86PmhB0FNxDkWkIGFOBkJRHcxrG0wbwem6jZgFc=;
-        b=PCKHBg1oQsNp7rVIHK2qXn9yKrqKOVeiCBhm2Q33dk6H0UeGEuvniKzqbhkYhcLx9f
-         Q1HmZd0aEOvQN3Nv0GH2mdYuy97pEDthTBmKlN8iulJ1gFV8e9gaRw6h3h5GiAO8qlLA
-         +WEIEPtGybaOaCnpOYSx0rjxGxyJ1BBoWJS0Fm7PMTeGgOrAhC9/v5Rz1t2gR4mKOYEn
-         NuhpnGfF5gmPYhdedmNwRYIeFoTo0ZJDkEjpvFa+H5+Ymxu6nK38zOgQoxAxP7hTI4AC
-         9A+mkAJC05q3byzAa11iYlUd8/ONAW4LBaMBgHHiNQxu6jyouLcQFwOQDOV2VZCvM+7G
-         epsg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Jmj+DkxKlXQx+ze+c/Skb1A7l3kxqAfEA4I248QEw48=;
+        b=W5Ts7U+ZcKHe/XDUXepeJ+GbFXfr3i7M8MG4gtr8Et77URrSDzCxJHhED2AhSQ8WJw
+         EHrK4Z1ISwqJuCd4D2Gx4DXqji8pZEL5jboD4ZEO1bkXXteXBWf5jIHP0Yaf/L28Lg9S
+         mTk2BlnxHzvMmcvfbOfmkzV1bRKPfQc3C9Nhtljs99ec1EMHnuShWNHMuptX5kt7hstJ
+         uSsxo07indR4aZXFfNWeuAOOQeuDfW8okyobSMS6l3sc7i4Ejzxm3ovQ7EFHyiK/I3ZB
+         rY3TlZLUKUBbfr/IeLxHFGkjMoXjcZarEiCY8Ex9e802x9JGwB/HGOuDqM3g6OM6AzzZ
+         gjpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fWYRDEBt;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=A1BWiOLg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r6-20020a0ce286000000b0056b8269da68si3546320qvl.259.2023.02.17.10.53.09
+        by mx.google.com with ESMTPS id e18-20020ac85992000000b003b05130768bsi3820257qte.61.2023.02.17.06.18.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Feb 2023 10:53:09 -0800 (PST)
+        Fri, 17 Feb 2023 06:18:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fWYRDEBt;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=A1BWiOLg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pT5r1-00067B-0j; Fri, 17 Feb 2023 13:53:07 -0500
+	id 1pT1ZB-0004Ph-Lv; Fri, 17 Feb 2023 09:18:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pT5qz-00066q-HC
- for qemu-arm@nongnu.org; Fri, 17 Feb 2023 13:53:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pT5qy-00076n-6O
- for qemu-arm@nongnu.org; Fri, 17 Feb 2023 13:53:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676659982;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/Zcl86PmhB0FNxDkWkIGFOBkJRHcxrG0wbwem6jZgFc=;
- b=fWYRDEBtu8h9HXJdTPHHxIi7sTYRBxy6pndpTeNHN+wy8n173b6pGwC7mVB2pkTaoiId2/
- AM+MtxN2W4dF7P3JGvvmkCRa2/4/AXDqYpUNVzVWFsW85UPF+mlkIx71m1RCmteYswtiLf
- AYDP5eb+ZDOSo8Jof3hEeJpbSHSlb9w=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-553-CwQ72LjPMU-swF-rOG1eOQ-1; Fri, 17 Feb 2023 13:53:01 -0500
-X-MC-Unique: CwQ72LjPMU-swF-rOG1eOQ-1
-Received: by mail-wm1-f72.google.com with SMTP id
- bg7-20020a05600c3c8700b003e21a3f4e84so713483wmb.8
- for <qemu-arm@nongnu.org>; Fri, 17 Feb 2023 10:53:01 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/Zcl86PmhB0FNxDkWkIGFOBkJRHcxrG0wbwem6jZgFc=;
- b=RV0P/Ur02b4BBW0Oh/uo/PzPgwF3bY/XFONQtdhOXg91nXE61gP4JjtUAfZWFgLoau
- SEwBcGqUGnfpjtDec/vshDRcrtQPNjqh4ZA6l+kiTlParRxB2x3Fhpsp7ZU2oQJHwRF9
- xCWLPzxbQnp0sS9IYAYqY9+ucUWZ558bTJcKkoa3CyqrKILUlJRm93/bfeLHe9Wij23b
- L2oDrR4n2Grs8z1oLxJ1NDqqtYwUKCX+d5/+vB8xKRyz7yF/SuF3R53Kiw+R8LZ3l51Q
- afJqTgM+d79ZIsdqZbTcSxq8u0C+tkHOlznTLETnlKlCwtEgmRloQ1xi5cRJqKxrvb5t
- S8Lg==
-X-Gm-Message-State: AO0yUKXkrXmCNDCO0W7p/ccw1bXfkJk79cgKyGhzEH1DTe8L8zl+VeKf
- QwBufLaKlvpLhp/E/vS+c/KZO9RFDIZ0vL9PdrKjLX7PwmXRJgoTNNaQWvjRmIee/0zc1c94FCH
- 7jHvLfyvEUKTB
-X-Received: by 2002:adf:eac9:0:b0:2c5:5878:8fb7 with SMTP id
- o9-20020adfeac9000000b002c558788fb7mr763871wrn.13.1676659980600; 
- Fri, 17 Feb 2023 10:53:00 -0800 (PST)
-X-Received: by 2002:adf:eac9:0:b0:2c5:5878:8fb7 with SMTP id
- o9-20020adfeac9000000b002c558788fb7mr763850wrn.13.1676659980303; 
- Fri, 17 Feb 2023 10:53:00 -0800 (PST)
-Received: from [192.168.8.104] (tmo-110-21.customers.d1-online.com.
- [80.187.110.21]) by smtp.gmail.com with ESMTPSA id
- b11-20020adfe30b000000b002c573a6216fsm5123870wrj.37.2023.02.17.10.52.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Feb 2023 10:52:59 -0800 (PST)
-Message-ID: <8daaae78-c773-af8c-de6d-c3b0a45d4253@redhat.com>
-Date: Fri, 17 Feb 2023 19:52:56 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH 2/2] hw/timer: Reduce 'hw/ptimer.h' inclusion
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
+ id 1pSxGR-0003sv-7d; Fri, 17 Feb 2023 04:42:47 -0500
+Received: from m12.mail.163.com ([220.181.12.197])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <qianfanguijin@163.com>)
+ id 1pSxGL-0000ds-Sh; Fri, 17 Feb 2023 04:42:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=Jmj+D
+ kxKlXQx+ze+c/Skb1A7l3kxqAfEA4I248QEw48=; b=A1BWiOLgoKLNGBaxyd+Co
+ 27oJvkx2TDdOwoT3W2C227ZRuxF0ScU0TKzA4ExBKbtUbc+96UdzHCzv5KgkM09t
+ ZSsfoY5MbyCsXiG/iXl9vujSRCcO7/X6+no7Yn1kwvcrG6c6SD5CCapsEcc6Zfad
+ O9puvNA4IqEGZd2ZXZc750=
+Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.20])
+ by zwqz-smtp-mta-g0-0 (Coremail) with SMTP id _____wBnbAHwS+9jgz5zAA--.48578S3;
+ Fri, 17 Feb 2023 17:42:08 +0800 (CST)
+From: qianfanguijin@163.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Vikram Garhwal <vikram.garhwal@amd.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>, Jason Wang <jasowang@redhat.com>,
  Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Antony Pavlov <antonynpavlov@gmail.com>
-References: <20230217141832.24777-1-philmd@linaro.org>
- <20230217141832.24777-3-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230217141832.24777-3-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ qianfan Zhao <qianfanguijin@163.com>
+Subject: [PATCH v1 2/2] hw: allwinner-i2c: Fix TWI_CNTR_INT_FLAG
+Date: Fri, 17 Feb 2023 17:42:07 +0800
+Message-Id: <20230217094207.16882-2-qianfanguijin@163.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230217094207.16882-1-qianfanguijin@163.com>
+References: <20230217094207.16882-1-qianfanguijin@163.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+X-CM-TRANSID: _____wBnbAHwS+9jgz5zAA--.48578S3
+X-Coremail-Antispam: 1Uf129KBjvJXoW7AFW7ArWDtw43Xw13try5Arb_yoW8uF43p3
+ 4DKr45Kw15t34vgr1qva98WF18CryUJ3yIkwsFyF17urn8W3ZF9ryrAr4rKr98u3y5Jw4F
+ yFWYyFyxGF15taDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zi_-P8UUUUU=
+X-Originating-IP: [218.201.129.20]
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiGhcZ7VaEESo2QwAAsl
+Received-SPF: pass client-ip=220.181.12.197;
+ envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.256, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 17 Feb 2023 09:18:22 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -149,35 +105,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m/m789lPiF3B
+X-TUID: 1RSwJrPLUF9O
 
-On 17/02/2023 15.18, Philippe Mathieu-Daudé wrote:
-> "hw/ptimer.h" API is mostly used by timer / watchdog device
-> models. Since the SoC / machines only access the ptimer via
-> reference, they don't need its definition: the declartion is
-> enough.
-> 
-> On order to reduce the inclusion on the source files,
-> forward-declare 'ptimer_state' in "qemu/typedefs.h".
-> Use the typedef in few place instead of the structure.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-> "30 files changed"... but since this is trivial, there is
-> no point in splitting per subsystem IMO.
-> ---
-...
-> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-> index df4b55ac65..effcba4bca 100644
-> --- a/include/qemu/typedefs.h
-> +++ b/include/qemu/typedefs.h
-> @@ -104,6 +104,7 @@ typedef struct PICCommonState PICCommonState;
->   typedef struct PostcopyDiscardState PostcopyDiscardState;
->   typedef struct Property Property;
->   typedef struct PropertyInfo PropertyInfo;
-> +typedef struct ptimer_state ptimer_state;
+From: qianfan Zhao <qianfanguijin@163.com>
 
-Would it make sense to properly CamelCase the type while you're at it anyway?
+TWI_CNTR_INT_FLAG is W1C(write 1 to clear and write 0 has non-effect)
+register, we should lower interrupt when the guest write this bit.
 
-  Thomas
+The linux kernel will hang in irq handler(mv64xxx_i2c_intr) if no
+device connected on the i2c bus, next is the trace log:
+
+[    7.004130] axp20x-i2c 0-0034: AXP20x variant AXP221 found
+allwinner_i2c_rw write   CNTR[0x0c]: e4 { A_ACK M_STA BUS_EN INT_EN  }
+allwinner_i2c_rw  read   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN }
+allwinner_i2c_rw  read   STAT[0x10]: 08 { STAT_M_STA_TX }
+allwinner_i2c_rw write   DATA[0x08]: 68
+allwinner_i2c_rw write   CNTR[0x0c]: c4 { A_ACK BUS_EN INT_EN  }
+allwinner_i2c_rw write   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN }
+allwinner_i2c_rw  read   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN }
+allwinner_i2c_rw  read   STAT[0x10]: 20 { STAT_M_ADDR_WR_NACK }
+allwinner_i2c_rw write   CNTR[0x0c]: 54 { A_ACK M_STP BUS_EN  }
+allwinner_i2c_rw write   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
+allwinner_i2c_rw  read   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
+allwinner_i2c_rw  read   STAT[0x10]: f8 { STAT_IDLE }
+allwinner_i2c_rw write   CNTR[0x0c]: 54 { A_ACK M_STP BUS_EN  }
+allwinner_i2c_rw write   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
+allwinner_i2c_rw  read   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
+allwinner_i2c_rw  read   STAT[0x10]: f8 { STAT_IDLE }
+
+Fix it.
+
+Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+---
+ hw/i2c/allwinner-i2c.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/hw/i2c/allwinner-i2c.c b/hw/i2c/allwinner-i2c.c
+index 36b387520f..86a77d4a59 100644
+--- a/hw/i2c/allwinner-i2c.c
++++ b/hw/i2c/allwinner-i2c.c
+@@ -443,8 +443,9 @@ static void allwinner_i2c_write(void *opaque, hwaddr offset,
+                 s->stat = STAT_FROM_STA(STAT_IDLE);
+                 s->cntr &= ~TWI_CNTR_M_STP;
+             }
+-            if ((s->cntr & TWI_CNTR_INT_FLAG) == 0) {
+-                /* Interrupt flag cleared */
++            if (s->cntr & TWI_CNTR_INT_FLAG) {
++                /* Write 1 to clear this flag */
++                s->cntr &= ~TWI_CNTR_INT_FLAG;
+                 qemu_irq_lower(s->irq);
+             }
+             if ((s->cntr & TWI_CNTR_A_ACK) == 0) {
+-- 
+2.25.1
 

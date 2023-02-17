@@ -1,114 +1,77 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1099158ejb;
-        Thu, 16 Feb 2023 19:21:53 -0800 (PST)
-X-Google-Smtp-Source: AK7set+fDHY4TqJPrgPSS/BDrKVFyYVFsbswY+dD7cMkrjtPG4Tlt4PkcrHEK5wPqdZNrGMwYGT6
-X-Received: by 2002:a05:622a:18a6:b0:3b6:3c39:916e with SMTP id v38-20020a05622a18a600b003b63c39916emr14217623qtc.45.1676604113215;
-        Thu, 16 Feb 2023 19:21:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676604113; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1109302ejb;
+        Thu, 16 Feb 2023 19:43:57 -0800 (PST)
+X-Google-Smtp-Source: AK7set9FKchernajp8BVNSUThv6jN573HSQkoLMULKg/QU0/sFKn/bARx/mf6rGYYSfPpm+pb2QL
+X-Received: by 2002:a05:6214:2522:b0:56e:aa8b:9100 with SMTP id gg2-20020a056214252200b0056eaa8b9100mr8037886qvb.20.1676605437483;
+        Thu, 16 Feb 2023 19:43:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676605437; cv=none;
         d=google.com; s=arc-20160816;
-        b=UE5XhH+HGDiSMHyASHBfvp5iYXQ26Ji7DpCUJ1Az9F4lHqfpfVXJrHSGtEj/aaiELG
-         LAuXIfEukpkduNrtTGc4jjnh27yfSeSgWdzWJCZxgQ6PG6/gT+exB9LJTgePRXJrd81y
-         UMpSzXGITqJYwNHyMqbT8hK70Oeg5evEnlRYeKXR4IYRkhHilfVhp3uSdZJujTfydyNK
-         MCIO5CzD6skt360kjoCinsgbMevtlU7BqVaXBWi79A8yV2u0TQz+pOaWglJrbTfHQr2y
-         /xsY5DBFVaY3OcyzfpU121pQeo8h3fgsh7wDWeYz/4A7Xb9ptmMVd7WDdpBOJUdqccNt
-         KRmQ==
+        b=jJgpPyMEi6C+I9xJmEqvh4L4o2auAPNNhar4eq/a1Xb9LtnSWMVjHBJ0wNR/hr1wrt
+         dPBkwhzLtUJ9UwSFPUB5KAj94pcJ8k9ViMVhdg8x43UFKd/nSLL2r1v4E4gAwOLfuLmn
+         74yjOlEyLsqsd7d/hV079PllhTJR3V45AqvDWJzvg1GPnELjzS4K+a8ICkPGgd/mdLv6
+         uRILUZH814K0DgPWYRfVShGNCz7M5Jdyx3arCvq8LUWt92LkuoKwe/+8DGAX5HFTcq52
+         2n2VcaknB3I2PfG4t4o6hLK2hGt5u63S5q4kxq2t6Lo2ORPcgaMQ3wYpc9xWidQzDwV8
+         z+ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ArA0yzn9T/K0ktsahgHG1b2O+YxddgAWZ1PYJkxRj9o=;
-        b=hQscf9fOshGeQBU+s27iP3DiGop5NXVTrD3KIe7AqbBEovFl/8CtGHUMcvACYqh5Oi
-         +o5avLupzKQMlMBXry+ho9aJlIP8D5xOjHKIlsnsYQR6UnNXQY19m+dJ/VqPeY34+qRz
-         kS9dmZOK8M+Y78dCfb+SgylRCSnR/S/evd/MbQhS8S8notB3sgF7jedSO1nbACYbnN22
-         c6Lx39IcI1QD//BMKbLbJ82sd3DRS3qTScKAwTLSg8YSYE3lVHFO2OnEolcx57qt9bd/
-         qtJzzk/QI/tpIbki5QRotrYmmjtHHVKN1MFmArCmD5uLVBhh9EPRjYkn1Q+aNFz+PZWO
-         J7jw==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
+         :from;
+        bh=gNbJKhUkN62441bv6i7ua4wyT3NEEYVb4pMqPI4t014=;
+        b=HZAT4BDv7PwEMYaVZ03hhplfVW/6/9lGSYEwRCaKnYwZB2EbsZ9krUTaX0Ve0yfm9z
+         71VptENit0Ptyd9FyxS1t7fMblD6mxSHmmRuO7IYVosxnsITv2ZQatvHghtQcT6Kckof
+         d5uqW009555xHwcR+u7uTN94jh/gzlQIWLl5QcX/r8xw6lmfirJMhYrbyJ0zPa8uzCio
+         u56b/ulNe1vaDpx3EXv28mNrmUKgThSgQ9t/eTuKAvA9j1DgQRAuyRyqafLstymhmmsA
+         CT/JQJUcRieQvqzaF51bMnEIlnl+3SHYxWtoz6hboCUbZp1IJEUEgF0J2ZP6OrJZReZJ
+         Becg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@celestica.com header.s=google-201810 header.b=RXftt0np;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=celestica.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v4-20020a05622a130400b003bd01d33a48si2651265qtk.260.2023.02.16.19.21.53
+        by mx.google.com with ESMTPS id x16-20020a0cda10000000b0053770dc10d8si2489633qvj.75.2023.02.16.19.43.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Feb 2023 19:21:53 -0800 (PST)
+        Thu, 16 Feb 2023 19:43:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@celestica.com header.s=google-201810 header.b=RXftt0np;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=celestica.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pSrJI-0007ng-0W; Thu, 16 Feb 2023 22:21:20 -0500
+	id 1pSreY-0005YT-0q; Thu, 16 Feb 2023 22:43:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ssinprem@celestica.com>)
- id 1pSrJG-0007kf-Bh
- for qemu-devel@nongnu.org; Thu, 16 Feb 2023 22:21:18 -0500
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ssinprem@celestica.com>)
- id 1pSrJE-0006LD-EK
- for qemu-devel@nongnu.org; Thu, 16 Feb 2023 22:21:17 -0500
-Received: by mail-pl1-x62a.google.com with SMTP id l9so1680386plk.3
- for <qemu-devel@nongnu.org>; Thu, 16 Feb 2023 19:21:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=celestica.com; s=google-201810;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ArA0yzn9T/K0ktsahgHG1b2O+YxddgAWZ1PYJkxRj9o=;
- b=RXftt0npEbrFc3djodl4BrqeaUnAWfW47FIHD97ALpS/QN4y3Vl1PMTQ1JF7BxWUM3
- 8VD4yWxjnksn8WvL5leEkSak1vZXNq4r/JwWfstEvI/QLkx4Zi35RCb81gm8YnTvbGmF
- L6MapJ8c4SrCx0bTlh94cYnZZsgkzfDU8uUqJNFffdrRDYJh53gGirXryDKawQxftMPB
- u2HInkuiSG5As5MjbhJPZcqN+G3zvsLnWQWVQ3ySwkIwPZ2P50Uzt2pDa6gQsaI+bYKF
- q3mo9rDC7kX0JDIInZfY7gGaZZTznePI5YxSRvldAEwfkJQNpeCvD+s4PZvxg+QPVY9D
- EITg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ArA0yzn9T/K0ktsahgHG1b2O+YxddgAWZ1PYJkxRj9o=;
- b=QTjzYq2BgQv2A97zLJ7RWytjkTBsB7m64C4nIFwbb2bj/cUJNzzYqNJCxWrM6cBwey
- YCWjfPI3r8Nj88HebKV68JDfRVXlTjXihPcc5Mzf4vQFFBz3b5iN7G6gVe2la+PCPsgc
- W7q8n0K0bhk/mwIejAHzbzpaBTLM81wMHBadSZQC4ioiUUw20xwEN8uchxyguFU9wT6o
- uAhoOwK3xLHzuh5P8sVDhV5MsWiylnPJAeR76g32luI8AHFab/o7IvT72ZMMjtuNz2//
- dCD1paaiT4nppRi992EjgU2b+T4mSu6mw5aY0hX/0i6DcM0N45Uxmdq2c2r4p/iaju0e
- dZig==
-X-Gm-Message-State: AO0yUKWnlZarrUyemAJ+thIG4yMpZYfcozKjpvQJy6fICWG89kKuuVfa
- w7fFhvRN7DCMrSavBIseCzlqASbUekRbtf6y4hukc4fYfXRvxJEnHNYhHlm+DHLzhBzSi90mnC6
- j+4zumBAe7N05rOC6E6EX+r5lnz9L53eu2MIhrHfFBkWnEWrvOkZyxWbdNbn1Opa+kiD+xL8ZcY
- 8K4WqWFBhaHeXtKhMMyjqALx8mBhlHZ3m69w==
-X-Received: by 2002:a17:903:1ce:b0:19a:e90d:b102 with SMTP id
- e14-20020a17090301ce00b0019ae90db102mr841801plh.0.1676604074796; Thu, 16 Feb
- 2023 19:21:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1pSreW-0005Xq-HT; Thu, 16 Feb 2023 22:43:16 -0500
+Received: from mail-b.sr.ht ([173.195.146.151])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1pSreV-0007At-1P; Thu, 16 Feb 2023 22:43:16 -0500
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 3DD5911F055;
+ Fri, 17 Feb 2023 03:43:13 +0000 (UTC)
+From: ~ssinprem <ssinprem@git.sr.ht>
+Date: Fri, 17 Feb 2023 10:31:27 +0700
+Subject: [PATCH qemu v3 1/2] hw/at24c : modify at24c to support 1 byte address
+ mode
+Message-ID: <167660539263.10409.9736070122710923479-1@git.sr.ht>
+X-Mailer: git.sr.ht
+In-Reply-To: <167660539263.10409.9736070122710923479-0@git.sr.ht>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: qemu-stable@nongnu.org, ssinprem@celestica.com, ssumet@celestica.com,
+ srikanth@celestica.com, kgengan@celestica.com, clg@kaod.org,
+ peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <167660357595.26523.10278976309538219635-0@git.sr.ht>
-In-Reply-To: <167660357595.26523.10278976309538219635-0@git.sr.ht>
-From: Sittisak Sinprem <ssinprem@celestica.com>
-Date: Fri, 17 Feb 2023 10:20:48 +0700
-Message-ID: <CAE+aGtUnhdKUQUtg8MTgjfDCL2OqtTcNeRJNupeFnu2SNUnXoA@mail.gmail.com>
-Subject: Re: [PATCH qemu v2 1/2] hw/at24c : modify at24c to support 1 byte
- address mode
-To: "~ssinprem" <ssinprem@celestica.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-stable@nongnu.org, 
- ssumet@celestica.com, srikanth@celestica.com, kgengan@celestica.com, 
- clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au
-Content-Type: text/plain; charset="UTF-8"
-X-CLS-Gapps: True
-X-CLOUD-SEC-AV-Sent: true
-X-CLOUD-SEC-AV-Info: celesticainc,google_mail,monitor
-X-Gm-Spam: 0
-X-Gm-Phishy: 0
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=ssinprem@celestica.com; helo=mail-pl1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -122,111 +85,89 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: ~ssinprem <ssinprem@celestica.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: N8kspx7KQ1Iu
+X-TUID: AbgFzAaJihWY
 
-the rebase auto merge failure, I will resend patches again.
+From: Sittisak Sinprem <ssinprem@celestica.com>
 
-On Fri, Feb 17, 2023 at 10:12 AM ~ssinprem <ssinprem@git.sr.ht> wrote:
->
-> From: Sittisak Sinprem <ssinprem@celestica.com>
->
-> Signed-off-by: Sittisak Sinprem <ssinprem@celestica.com>
-> ---
->  hw/nvram/eeprom_at24c.c | 46 +++++++++++++++++++++++++++++------------
->  1 file changed, 33 insertions(+), 13 deletions(-)
->
-> diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-> index 3328c32814..0cb650d635 100644
-> --- a/hw/nvram/eeprom_at24c.c
-> +++ b/hw/nvram/eeprom_at24c.c
-> @@ -41,6 +41,12 @@ struct EEPROMState {
->      uint16_t cur;
->      /* total size in bytes */
->      uint32_t rsize;
-> +    /* address byte number
-> +     *  for  24c01, 24c02 size <= 256 byte, use only 1 byte
-> +     *  otherwise size > 256, use 2 byte
-> +     */
-> +    uint8_t asize;
-> +
->      bool writable;
->      /* cells changed since last START? */
->      bool changed;
-> @@ -91,7 +97,7 @@ uint8_t at24c_eeprom_recv(I2CSlave *s)
->      EEPROMState *ee = AT24C_EE(s);
->      uint8_t ret;
->
-> -    if (ee->haveaddr == 1) {
-> +    if (ee->haveaddr > 0 && ee->haveaddr < ee->asize) {
->          return 0xff;
->      }
->
-> @@ -108,11 +114,11 @@ int at24c_eeprom_send(I2CSlave *s, uint8_t data)
->  {
->      EEPROMState *ee = AT24C_EE(s);
->
-> -    if (ee->haveaddr < 2) {
-> +    if (ee->haveaddr < ee->asize) {
->          ee->cur <<= 8;
->          ee->cur |= data;
->          ee->haveaddr++;
-> -        if (ee->haveaddr == 2) {
-> +        if (ee->haveaddr == ee->asize) {
->              ee->cur %= ee->rsize;
->              DPRINTK("Set pointer %04x\n", ee->cur);
->          }
-> @@ -184,6 +190,29 @@ static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
->      }
->
->      ee->mem = g_malloc0(ee->rsize);
-> +
-> +    /*
-> +     * If address size didn't define with property set
-> +     *  setting it from Rom size
-> +     */
-> +    if (ee->asize == 0) {
-> +        if (ee->rsize <= 256) {
-> +            ee->asize = 1;
-> +        } else {
-> +            ee->asize = 2;
-> +        }
-> +    }
-> +}
-> +
-> +static
-> +void at24c_eeprom_reset(DeviceState *state)
-> +{
-> +    EEPROMState *ee = AT24C_EE(state);
-> +
-> +    ee->changed = false;
-> +    ee->cur = 0;
-> +    ee->haveaddr = 0;
-> +
->      memset(ee->mem, 0, ee->rsize);
->
->      if (ee->init_rom) {
-> @@ -201,18 +230,9 @@ static void at24c_eeprom_realize(DeviceState *dev, Error **errp)
->      }
->  }
->
-> -static
-> -void at24c_eeprom_reset(DeviceState *state)
-> -{
-> -    EEPROMState *ee = AT24C_EE(state);
-> -
-> -    ee->changed = false;
-> -    ee->cur = 0;
-> -    ee->haveaddr = 0;
-> -}
-> -
->  static Property at24c_eeprom_props[] = {
->      DEFINE_PROP_UINT32("rom-size", EEPROMState, rsize, 0),
-> +    DEFINE_PROP_UINT8("address-size", EEPROMState, asize, 0),
->      DEFINE_PROP_BOOL("writable", EEPROMState, writable, true),
->      DEFINE_PROP_DRIVE("drive", EEPROMState, blk),
->      DEFINE_PROP_END_OF_LIST()
-> --
-> 2.34.6
->
+Signed-off-by: Sittisak Sinprem <ssinprem@celestica.com>
+---
+ hw/nvram/eeprom_at24c.c | 28 +++++++++++++++++++++++++---
+ 1 file changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
+index 3328c32814..64259cde67 100644
+--- a/hw/nvram/eeprom_at24c.c
++++ b/hw/nvram/eeprom_at24c.c
+@@ -41,6 +41,12 @@ struct EEPROMState {
+     uint16_t cur;
+     /* total size in bytes */
+     uint32_t rsize;
++    /* address byte number=20
++     *  for  24c01, 24c02 size <=3D 256 byte, use only 1 byte
++     *  otherwise size > 256, use 2 byte
++     */
++    uint8_t asize;
++
+     bool writable;
+     /* cells changed since last START? */
+     bool changed;
+@@ -91,7 +97,10 @@ uint8_t at24c_eeprom_recv(I2CSlave *s)
+     EEPROMState *ee =3D AT24C_EE(s);
+     uint8_t ret;
+=20
+-    if (ee->haveaddr =3D=3D 1) {
++    /* If got the byte address but not completely with address size
++     *  will return the invalid value
++     */
++    if (ee->haveaddr > 0 && ee->haveaddr < ee->asize) {
+         return 0xff;
+     }
+=20
+@@ -108,11 +117,11 @@ int at24c_eeprom_send(I2CSlave *s, uint8_t data)
+ {
+     EEPROMState *ee =3D AT24C_EE(s);
+=20
+-    if (ee->haveaddr < 2) {
++    if (ee->haveaddr < ee->asize) {
+         ee->cur <<=3D 8;
+         ee->cur |=3D data;
+         ee->haveaddr++;
+-        if (ee->haveaddr =3D=3D 2) {
++        if (ee->haveaddr =3D=3D ee->asize) {
+             ee->cur %=3D ee->rsize;
+             DPRINTK("Set pointer %04x\n", ee->cur);
+         }
+@@ -199,6 +208,18 @@ static void at24c_eeprom_realize(DeviceState *dev, Error=
+ **errp)
+         }
+         DPRINTK("Reset read backing file\n");
+     }
++
++    /*
++     * If address size didn't define with property set
++     *   value is 0 as default, setting it by Rom size detecting.
++     */
++    if (ee->asize =3D=3D 0) {
++        if (ee->rsize <=3D 256) {
++            ee->asize =3D 1;
++        } else {
++            ee->asize =3D 2;
++        }
++    }
+ }
+=20
+ static
+@@ -213,6 +234,7 @@ void at24c_eeprom_reset(DeviceState *state)
+=20
+ static Property at24c_eeprom_props[] =3D {
+     DEFINE_PROP_UINT32("rom-size", EEPROMState, rsize, 0),
++    DEFINE_PROP_UINT8("address-size", EEPROMState, asize, 0),
+     DEFINE_PROP_BOOL("writable", EEPROMState, writable, true),
+     DEFINE_PROP_DRIVE("drive", EEPROMState, blk),
+     DEFINE_PROP_END_OF_LIST()
+--=20
+2.34.6
+

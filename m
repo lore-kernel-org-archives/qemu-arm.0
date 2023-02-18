@@ -1,119 +1,97 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1366245ejb;
-        Fri, 17 Feb 2023 02:32:23 -0800 (PST)
-X-Google-Smtp-Source: AK7set98Lro3iucu92j3CrJMNLUNtaCKs6rlqrv7TiCCrhSQ5sLWxSFAOzsoSNtK4jYuCPTcSWVq
-X-Received: by 2002:ac8:5c07:0:b0:3b6:5fc7:f554 with SMTP id i7-20020ac85c07000000b003b65fc7f554mr8761137qti.7.1676629942997;
-        Fri, 17 Feb 2023 02:32:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676629942; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp346723ejb;
+        Fri, 17 Feb 2023 18:13:38 -0800 (PST)
+X-Google-Smtp-Source: AK7set/bFG+q1iwfCACvgtROB2GIWK8HBMdjk29o+NuKFjMVjf8nwyWBC3QaRi79wGP1kLWc0+t+
+X-Received: by 2002:a05:6214:623:b0:56e:ab08:670b with SMTP id a3-20020a056214062300b0056eab08670bmr2408819qvx.34.1676686418162;
+        Fri, 17 Feb 2023 18:13:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676686418; cv=none;
         d=google.com; s=arc-20160816;
-        b=zJgYXNns7gHqMeL2nirC8HbsHr3vu1jjLmCvZPpsM2J6MBeHCa3jhzhLlRu/GgyWWc
-         3z0/SS4dJWDkrccfbk7rtklTxwxiEHAxqmVsa8DfVkWtMCM/FyxsoDvnsFbnlt0t9WdN
-         lA+5DQUYU7fl3HdCnZlu9sTM19mzU718eEz52VK9f1hmW7eKdZX3Oh9W9xk1PdPYV/gV
-         035RuGlUFrVeUhCXmUsWZk1SAk2Ofa9rQf5rnDqKKFIl9OjrOki3Co4/LTSu55eLA9sa
-         /1AuwAgWSr8kRat0MaUfd21sGjLno6FtzZ0shikkGMYrDug2yBo6INPyTOo/9zhxY2kE
-         2low==
+        b=M2eKy+Q23Tm/yBscYoTH1g89hztsTuEbwaumSbjU2VJsyyJPHHo3AoCQrz56DAxZ+6
+         XXf25O4qj5Y++Z+i9vPIrZEA0R7YW78PQKzpncJFeEprppoMjnf3dqNboJ8AJeVKyezt
+         2gWdS7IELE+WYTXOT+TB1suyazzw8e+rvBR17kGU2r813+lg0gq5Gxo7N2VrhHv5s26D
+         dMPARSYW0Pcan1eyFAjAlvlWKXxisYfCNyIjFmQKeTdAnkf7yqfGtR0YZE9ios2NTNze
+         PYUv0YsZ7o4eSbpSBwYHQYoNZ3hyZSniBuKBdWnyCdjEo2sGncH+7HFeboMhsGSgyzIW
+         RWFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
+         :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=kCTlagYfWgLEiXnsIz5tTMEmvqpOXp/IYE2XzsBlc6E=;
-        b=SrPZRtbKBtAjmy8oi/r6/OIJLrAbujItgPnLH265DRDIb0YKSUxCt4xHMWVS7s/MPP
-         JS9xzvcQyxA9BshnN8w1x/Ute89cH2t5/uyFRfk8Iwc7O/p/ewPlhVvrx2hABNYZdFjx
-         8z3qriS0OlZfrjQvj1GKfa7UmELUObRKyZnio7tK4rOuG+jNU4nNpBM2Ojmko54+JpCr
-         2ISf8ln4/rpLNKS5gsNCXEVY/QjOE4aBxpGSwAiM957dr7NYJbsdIjKdvG4JesiS7rov
-         wMRg6QTv9YCThL86ODM3ILKEit2Vcme0E5KyJ1+fe/0Gsyrf3Hc88TXdFwrYZ33B9D80
-         P8ug==
+        bh=+7jNDAV/MH9P/w9VPYH5IUPDdMRHBXqRFZmJKq8rUVE=;
+        b=v4NKZ2bUPOipU7BX1sjssPJJowyHx1xtSDpOX5//QkgH4JnPrHPo5YRwpVqWR0bxX2
+         zKm986g0vXojJh9Y0yYmdko2cZ5CYp/6IFMdzO4fEPkrh5f8O4g0eSoYaegAM02WvLuT
+         QwoDUdGVz8PoQQeh4JqS8nq7Y4iKLbkopvD5KHwJagW5KkuLAWLCkxxHIrf27Hn/H1j/
+         bV5UwpBNT1dfV3XmWikGymcLKGAfBgIui/7QoSw9pM4NzCFUvvzk0F/u3TVwQ59nvT+0
+         uidiPTfzH2BOk49CYxQsYQa/3vc5vMF5edFqUMqhyq0h5TxLrH26jP27lEON8MvUcpML
+         h6lA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AlLNmN8a;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=U9RDl1oj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z13-20020a05622a060d00b003b9a61a45a9si3073333qta.470.2023.02.17.02.32.22
+        by mx.google.com with ESMTPS id e21-20020a0caa55000000b0057049fa63cesi2368532qvb.570.2023.02.17.18.13.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Feb 2023 02:32:22 -0800 (PST)
+        Fri, 17 Feb 2023 18:13:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AlLNmN8a;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=U9RDl1oj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pSy1g-00022H-BP; Fri, 17 Feb 2023 05:31:36 -0500
+	id 1pTCin-0000Kw-3T; Fri, 17 Feb 2023 21:13:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pSy1e-00020Z-Om; Fri, 17 Feb 2023 05:31:34 -0500
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pSy1d-0002CI-8Q; Fri, 17 Feb 2023 05:31:34 -0500
-Received: by mail-oi1-x229.google.com with SMTP id bg20so262646oib.9;
- Fri, 17 Feb 2023 02:31:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=kCTlagYfWgLEiXnsIz5tTMEmvqpOXp/IYE2XzsBlc6E=;
- b=AlLNmN8aRlcCmfxD2qlxPQK4T996KOWzUxmjO+Y1rcUgL4nCrjytYIqP0n0P0VfxCB
- ygKe4YLRSRUhU7LfXx8XBxqovHazVIFDlC9s14b7RhopUmP12yBgTiLb3iisl5Efsjjx
- mtB+Y2DQnx1tklad9ba08gxRUNw+Y6fNDQIAc7JAh14e+3nGI66v61V6rkegTXS3nOn9
- d7ko5oLG4enhMNb4Bsn1a0FR08QR3rHbcy9M/TR3g2ypBHtulovQyYaM926xRq1iPeiI
- AUNA2Mp2vnJgSJSHCTBSKqI6uPc8graTh27EuCx3eFzA7BInAaXjGSagHJb4cPJ85WPR
- CHHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kCTlagYfWgLEiXnsIz5tTMEmvqpOXp/IYE2XzsBlc6E=;
- b=6rMLODSu5t1EKmr+BmHsEkaGxdgzWhElUAwn+So2yxnhSQlN/UdEQmGXlC81n24eDF
- 9ChI3FhLTPEIzdfqeGEFC/yPu/tCQeSmKawucyhQ9P19tbYp2HdBUQQUFURTKm5l+oIx
- Qu4+c+KnsIOfuXO6evXPRO7mZn0SeR/LerEmSprFlQdtAHOntvXx4y9he6ypL+CSnamF
- 8XyEMKjSbG8Yfz/SSvs1OXUzs/7kLX2YXFy968R42g/lOP2IKxHuMwNNQQV3JGeWKoz3
- j+w/Bq7lb3mkrrvtEPOMf/I3ofRBFzceLR0lF6eJ7HsEfRg6X2MwZdPlnJQGqWqRpX7H
- ywGw==
-X-Gm-Message-State: AO0yUKWaRuWAmjmeb6osDWvBCLftxIXkdd9tSRTbQbbWBvXmtoEsAQ01
- Y6JV1SAy3Ahb8CjnS08AI7I=
-X-Received: by 2002:a05:6808:bcd:b0:37f:523e:1da6 with SMTP id
- o13-20020a0568080bcd00b0037f523e1da6mr2685885oik.11.1676629890314; 
- Fri, 17 Feb 2023 02:31:30 -0800 (PST)
-Received: from [192.168.68.107] ([191.19.40.109])
- by smtp.gmail.com with ESMTPSA id
- b65-20020aca3444000000b0037f879e46b9sm1602280oia.3.2023.02.17.02.31.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Feb 2023 02:31:29 -0800 (PST)
-Message-ID: <8a573926-42d8-4e7f-7c8e-9c2b39e32bd7@gmail.com>
-Date: Fri, 17 Feb 2023 07:31:26 -0300
+ (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
+ id 1pTCij-0000Kg-Ue; Fri, 17 Feb 2023 21:13:01 -0500
+Received: from m12.mail.163.com ([220.181.12.198])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <qianfanguijin@163.com>)
+ id 1pTCia-0005RN-PS; Fri, 17 Feb 2023 21:13:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
+ Content-Type; bh=+7jNDAV/MH9P/w9VPYH5IUPDdMRHBXqRFZmJKq8rUVE=;
+ b=U9RDl1ojDPMgCoIo58zFaeKiMNSpjugpuh7OK7L4+JCXMm+/kXpf9pKyP059jj
+ IqnlW+WVtK5XhnrISStJQaiZMhI72NIQ9kwAXmZwW9C4AWc4c0JwJVodZLYrqJEQ
+ nVXd6ozKt1M5MaUYSRnDxgyMtJmGmezBRut8CqlCL+hBM=
+Received: from [172.21.25.67] (unknown [144.123.156.254])
+ by zwqz-smtp-mta-g2-3 (Coremail) with SMTP id _____wCHZdoGNPBjOcLLAA--.40379S2;
+ Sat, 18 Feb 2023 10:12:22 +0800 (CST)
+Message-ID: <23b35298-2c3b-6a9f-af20-9712c5fc959c@163.com>
+Date: Sat, 18 Feb 2023 10:12:22 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.2
-Subject: Re: [PATCH 2/5] spapr/ddw: Remove confuse return value in
- spapr_phb_get_free_liobn()
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v1 2/2] hw: allwinner-i2c: Fix TWI_CNTR_INT_FLAG
+To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>
+References: <20230217094207.16882-1-qianfanguijin@163.com>
+ <20230217094207.16882-2-qianfanguijin@163.com>
+ <CABtshVQ5SBxiFmLa-LaYqsivkUQwPPciVP+5DSuozy3P9dfgpA@mail.gmail.com>
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>
-References: <20230216122524.67212-1-philmd@linaro.org>
- <20230216122524.67212-3-philmd@linaro.org>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20230216122524.67212-3-philmd@linaro.org>
+From: qianfan <qianfanguijin@163.com>
+In-Reply-To: <CABtshVQ5SBxiFmLa-LaYqsivkUQwPPciVP+5DSuozy3P9dfgpA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::229;
- envelope-from=danielhb413@gmail.com; helo=mail-oi1-x229.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-CM-TRANSID: _____wCHZdoGNPBjOcLLAA--.40379S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW3Cr4DJFW5Jr4fJw17Kw1kAFb_yoWDCr1xpr
+ 98CFyYkr4rJa4YvrW7t3W8tF1rtr4jy3WFyrs7Jrn7uFs8WwnY9wnrJ3yYy3yjgr45JanY
+ yFyDtayxtF1jqaUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRO_-PUUUUU=
+X-Originating-IP: [144.123.156.254]
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXAga7VXl5pz9pgAAsy
+Received-SPF: pass client-ip=220.181.12.198;
+ envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.351,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.256, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,36 +107,239 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1rfh757FWm1M
+X-TUID: osclQw05pJZk
 
 
 
-On 2/16/23 09:25, Philippe Mathieu-Daudé wrote:
-> The '1' returned value isn't used because
-> spapr_phb_get_free_liobn_cb() isn't called recursively
-> (it is only called once in spapr_phb_get_free_liobn()).
-> 
-> The next commit will convert object_child_foreach()
-> handlers to return a boolean indicating error.
-> Remove this value to avoid confusion.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
+在 2023/2/18 0:54, Strahinja Jankovic 写道:
+> Hi,
+>
+> I tried running Avocado tests for cubieboard with following command:
+>
+> ARMBIAN_ARTIFACTS_CACHED=yes  AVOCADO_ALLOW_LARGE_STORAGE=yes avocado
+> --show=app,console run    -t machine:cubieboard
+> tests/avocado/boot_linux_console.py
+>
+> Without this patch all tests pass:
+> RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0
+> | CANCEL 0
+> JOB TIME   : 53.15 s
+>
+> However, if I apply this patch, all tests fail. This is part of the
+> log that captures the failure:
+>
+> axp20x-i2c 1-0034: AXP20x variant AXP209 found
+> console: random: crng init done
+> console: irq 43: nobody cared (try booting with the "irqpoll" option)
+> console: CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.10.16-sunxi #21.02.2
+> console: Hardware name: Allwinner sun4i/sun5i Families
+> console: [<c010ca1d>] (unwind_backtrace) from [<c010951d>]
+> (show_stack+0x11/0x14)
+> console: [<c010951d>] (show_stack) from [<c096eb27>] (dump_stack+0x77/0x84)
+> console: [<c096eb27>] (dump_stack) from [<c0969147>]
+> (__report_bad_irq+0x37/0x94)
+> console: [<c0969147>] (__report_bad_irq) from [<c016618b>]
+> (note_interrupt+0xfb/0x1f4)
+> console: [<c016618b>] (note_interrupt) from [<c0163aeb>]
+> (handle_irq_event_percpu+0x4f/0x54)
+> console: [<c0163aeb>] (handle_irq_event_percpu) from [<c0163b29>]
+> (handle_irq_event+0x39/0x50)
+> console: [<c0163b29>] (handle_irq_event) from [<c0166d93>]
+> (handle_fasteoi_irq+0x67/0xbc)
+> console: [<c0166d93>] (handle_fasteoi_irq) from [<c0162eed>]
+> (generic_handle_irq+0x29/0x34)
+> console: [<c0162eed>] (generic_handle_irq) from [<c01633a7>]
+> (__handle_domain_irq+0x43/0x84)
+> console: [<c01633a7>] (__handle_domain_irq) from [<c05937d7>]
+> (sun4i_handle_irq+0x3b/0x4c)
+> console: [<c05937d7>] (sun4i_handle_irq) from [<c0100b65>] (__irq_svc+0x65/0x94)
+> console: Exception stack(0xc1517950 to 0xc1517998)
+> console: 7940:                                     c1701ca0 60000153
+> 000000e4 00000001
+> console: 7960: c1701c40 00000002 60000153 c1517a1c c1701ca0 00000000
+> c0f03d00 fffede04
+> console: 7980: 00000000 c15179a0 c075ebb7 c09785d4 00000173 ffffffff
+> console: [<c0100b65>] (__irq_svc) from [<c09785d4>]
+> (_raw_spin_unlock_irqrestore+0x1c/0x20)
+> console: [<c09785d4>] (_raw_spin_unlock_irqrestore) from [<c075ebb7>]
+> (mv64xxx_i2c_xfer+0x5b/0x13c)
+> console: [<c075ebb7>] (mv64xxx_i2c_xfer) from [<c075951d>]
+> (__i2c_transfer+0x145/0x4c0)
+> console: [<c075951d>] (__i2c_transfer) from [<c07598f3>]
+> (i2c_transfer+0x5b/0xbc)
+> console: [<c07598f3>] (i2c_transfer) from [<c06674e9>]
+> (regmap_i2c_read+0x49/0x68)
+> console: [<c06674e9>] (regmap_i2c_read) from [<c0664241>]
+> (_regmap_raw_read+0x99/0x1d8)
+> console: [<c0664241>] (_regmap_raw_read) from [<c06643a9>]
+> (_regmap_bus_read+0x29/0x40)
+> console: [<c06643a9>] (_regmap_bus_read) from [<c066358d>]
+> (_regmap_read+0x3d/0xe8)
+> console: [<c066358d>] (_regmap_read) from [<c0663989>]
+> (_regmap_update_bits+0x75/0xb0)
+> console: [<c0663989>] (_regmap_update_bits) from [<c0664745>]
+> (regmap_update_bits_base+0x39/0x50)
+> console: [<c0664745>] (regmap_update_bits_base) from [<c06683ef>]
+> (regmap_irq_update_bits+0x2f/0x34)
+> console: [<c06683ef>] (regmap_irq_update_bits) from [<c0668df7>]
+> (regmap_add_irq_chip_fwnode+0x56f/0x72c)
+> console: [<c0668df7>] (regmap_add_irq_chip_fwnode) from [<c0668fe3>]
+> (regmap_add_irq_chip+0x2f/0x34)
+> console: [<c0668fe3>] (regmap_add_irq_chip) from [<c066e53b>]
+> (axp20x_device_probe+0x3f/0x368)
+> console: [<c066e53b>] (axp20x_device_probe) from [<c0758b93>]
+> (i2c_device_probe+0x1d3/0x1e4)
+> console: [<c0758b93>] (i2c_device_probe) from [<c064fe3b>]
+> (really_probe+0xb7/0x378)
+> console: [<c064fe3b>] (really_probe) from [<c06502c1>]
+> (driver_probe_device+0xa9/0x16c)
+> console: [<c06502c1>] (driver_probe_device) from [<c064e93d>]
+> (bus_for_each_drv+0x4d/0x78)
+> console: [<c064e93d>] (bus_for_each_drv) from [<c064fd17>]
+> (__device_attach+0x8f/0xf0)
+> console: [<c064fd17>] (__device_attach) from [<c064f29b>]
+> (bus_probe_device+0x5b/0x60)
+> console: [<c064f29b>] (bus_probe_device) from [<c064c6b7>]
+> (device_add+0x2e7/0x564)
+> console: [<c064c6b7>] (device_add) from [<c0759b1f>]
+> (i2c_new_client_device+0xdf/0x1bc)
+> console: [<c0759b1f>] (i2c_new_client_device) from [<c075c541>]
+> (of_i2c_register_device+0x71/0x90)
+> console: [<c075c541>] (of_i2c_register_device) from [<c075c771>]
+> (of_i2c_register_devices+0x59/0xc4)
+> console: [<c075c771>] (of_i2c_register_devices) from [<c075a2a9>]
+> (i2c_register_adapter+0x195/0x53c)
+> console: [<c075a2a9>] (i2c_register_adapter) from [<c075ee31>]
+> (mv64xxx_i2c_probe+0x199/0x440)
+> console: [<c075ee31>] (mv64xxx_i2c_probe) from [<c0651a7b>]
+> (platform_drv_probe+0x33/0x68)
+> console: [<c0651a7b>] (platform_drv_probe) from [<c064fe3b>]
+> (really_probe+0xb7/0x378)
+> console: [<c064fe3b>] (really_probe) from [<c06502c1>]
+> (driver_probe_device+0xa9/0x16c)
+> console: [<c06502c1>] (driver_probe_device) from [<c0650501>]
+> (device_driver_attach+0x3d/0x40)
+> console: [<c0650501>] (device_driver_attach) from [<c0650561>]
+> (__driver_attach+0x5d/0xe0)
+> console: [<c0650561>] (__driver_attach) from [<c064e8b1>]
+> (bus_for_each_dev+0x41/0x68)
+> console: [<c064e8b1>] (bus_for_each_dev) from [<c064f453>]
+> (bus_add_driver+0xe7/0x154)
+> console: [<c064f453>] (bus_add_driver) from [<c0650c8d>]
+> (driver_register+0x39/0xa0)
+> console: [<c0650c8d>] (driver_register) from [<c0101c99>]
+> (do_one_initcall+0x39/0x1b0)
+> console: [<c0101c99>] (do_one_initcall) from [<c0e00ee9>]
+> (kernel_init_freeable+0x1c1/0x20c)
+> console: [<c0e00ee9>] (kernel_init_freeable) from [<c0973ba9>]
+> (kernel_init+0xd/0xe0)
+> console: [<c0973ba9>] (kernel_init) from [<c0100159>] (ret_from_fork+0x11/0x38)
+> console: Exception stack(0xc1517fb0 to 0xc1517ff8)
+> console: 7fa0:                                     00000000 00000000
+> 00000000 00000000
+> console: 7fc0: 00000000 00000000 00000000 00000000 00000000 00000000
+> 00000000 00000000
+> console: 7fe0: 00000000 00000000 00000000 00000000 00000013 00000000
+> console: handlers:
+> console: [<(ptrval)>] mv64xxx_i2c_intr
+> console: Disabling IRQ #43
+>
+> RESULTS    : PASS 0 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 3
+> | CANCEL 0
+> JOB TIME   : 94.23 s
+>
+>
+> I also tried looking into the A10/A20/H3 specification, and I could
+> not find information about this register being W1C when TWI is used in
+> master mode. Can you share where that information is stated?
+>
+> I can see in Linux kernel that "allwinner,sun6i-a31-i2c" compatible
+> devices have the "irq_clear_inverted" boolean set to true, but I also
+> looked at A31 spec and I could not find the W1C information for master
+> mode.
 
-Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+Hi:
 
->   hw/ppc/spapr_rtas_ddw.c | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/hw/ppc/spapr_rtas_ddw.c b/hw/ppc/spapr_rtas_ddw.c
-> index 7ba11382bc..98f1310c6e 100644
-> --- a/hw/ppc/spapr_rtas_ddw.c
-> +++ b/hw/ppc/spapr_rtas_ddw.c
-> @@ -51,7 +51,6 @@ static int spapr_phb_get_free_liobn_cb(Object *child, void *opaque)
->       tcet = (SpaprTceTable *) object_dynamic_cast(child, TYPE_SPAPR_TCE_TABLE);
->       if (tcet && !tcet->nb_table) {
->           *(uint32_t *)opaque = tcet->liobn;
-> -        return 1;
->       }
->       return 0;
->   }
+I had checked the datasheet and linux source code. Not all of the sunxi SoC
+has W1C feature. Only the devices compatible with 'allwinner-sun6i-a31-i2c'
+has irq_clear_inverted feature.
+
+
+```c
+if(of_device_is_compatible(np, "allwinner,sun6i-a31-i2c"))
+drv_data->irq_clear_inverted= true;
+```
+
+cubieboard is based A10 SoC, the irq flag is cleared when write 0, so this
+patch make it failed. I will try fix it and send new patch later.
+
+>
+> Also, can you share how you ran QEMU so I can try to reproduce the
+> hang that you encountered?
+
+I am portting allwinner r40 device and you can read it from my github repo:
+https://github.com/qianfan-Zhao/qemu/tree/allwinner-r40
+R40 is compatible with sun6i-a31-i2c and you can find the W1C flag on it's
+datasheet.
+
+(DRAMC is not impl on my github repo, so the u-boot code can't work)
+
+>
+> Best regards,
+> Strahinja
+>
+>
+> On Fri, Feb 17, 2023 at 10:42 AM <qianfanguijin@163.com> wrote:
+>> From: qianfan Zhao <qianfanguijin@163.com>
+>>
+>> TWI_CNTR_INT_FLAG is W1C(write 1 to clear and write 0 has non-effect)
+>> register, we should lower interrupt when the guest write this bit.
+>>
+>> The linux kernel will hang in irq handler(mv64xxx_i2c_intr) if no
+>> device connected on the i2c bus, next is the trace log:
+>>
+>> [    7.004130] axp20x-i2c 0-0034: AXP20x variant AXP221 found
+>> allwinner_i2c_rw write   CNTR[0x0c]: e4 { A_ACK M_STA BUS_EN INT_EN  }
+>> allwinner_i2c_rw  read   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN }
+>> allwinner_i2c_rw  read   STAT[0x10]: 08 { STAT_M_STA_TX }
+>> allwinner_i2c_rw write   DATA[0x08]: 68
+>> allwinner_i2c_rw write   CNTR[0x0c]: c4 { A_ACK BUS_EN INT_EN  }
+>> allwinner_i2c_rw write   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN }
+>> allwinner_i2c_rw  read   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN }
+>> allwinner_i2c_rw  read   STAT[0x10]: 20 { STAT_M_ADDR_WR_NACK }
+>> allwinner_i2c_rw write   CNTR[0x0c]: 54 { A_ACK M_STP BUS_EN  }
+>> allwinner_i2c_rw write   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
+>> allwinner_i2c_rw  read   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
+>> allwinner_i2c_rw  read   STAT[0x10]: f8 { STAT_IDLE }
+>> allwinner_i2c_rw write   CNTR[0x0c]: 54 { A_ACK M_STP BUS_EN  }
+>> allwinner_i2c_rw write   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
+>> allwinner_i2c_rw  read   CNTR[0x0c]: 4c { A_ACK INT_FLAG BUS_EN  }
+>> allwinner_i2c_rw  read   STAT[0x10]: f8 { STAT_IDLE }
+>>
+>> Fix it.
+>>
+>> Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+>> ---
+>>   hw/i2c/allwinner-i2c.c | 5 +++--
+>>   1 file changed, 3 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/i2c/allwinner-i2c.c b/hw/i2c/allwinner-i2c.c
+>> index 36b387520f..86a77d4a59 100644
+>> --- a/hw/i2c/allwinner-i2c.c
+>> +++ b/hw/i2c/allwinner-i2c.c
+>> @@ -443,8 +443,9 @@ static void allwinner_i2c_write(void *opaque, hwaddr offset,
+>>                   s->stat = STAT_FROM_STA(STAT_IDLE);
+>>                   s->cntr &= ~TWI_CNTR_M_STP;
+>>               }
+>> -            if ((s->cntr & TWI_CNTR_INT_FLAG) == 0) {
+>> -                /* Interrupt flag cleared */
+>> +            if (s->cntr & TWI_CNTR_INT_FLAG) {
+>> +                /* Write 1 to clear this flag */
+>> +                s->cntr &= ~TWI_CNTR_INT_FLAG;
+>>                   qemu_irq_lower(s->irq);
+>>               }
+>>               if ((s->cntr & TWI_CNTR_A_ACK) == 0) {
+>> --
+>> 2.25.1
+>>
+

@@ -1,130 +1,114 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp198478ejb;
-        Fri, 17 Feb 2023 14:00:32 -0800 (PST)
-X-Google-Smtp-Source: AK7set9ivojZWHengWNv6v54qaigDWlbhp1XsfuJSqP9PmtqytdW41AFoiy0nQGhO8VYdPjYofqA
-X-Received: by 2002:a05:6214:19e6:b0:56e:b251:a8e1 with SMTP id q6-20020a05621419e600b0056eb251a8e1mr3964128qvc.4.1676671232237;
-        Fri, 17 Feb 2023 14:00:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676671232; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp297419ejb;
+        Fri, 17 Feb 2023 16:47:47 -0800 (PST)
+X-Google-Smtp-Source: AK7set/PnoT7lxiQxO5MOvcJz03vhFiwVGAt5GNH9LkDS1WCPmPsp4wtjBQ9/sNfXtnEGXsWcOO4
+X-Received: by 2002:ac8:5b4d:0:b0:3b8:3c0b:6332 with SMTP id n13-20020ac85b4d000000b003b83c0b6332mr5514007qtw.28.1676681267222;
+        Fri, 17 Feb 2023 16:47:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676681267; cv=none;
         d=google.com; s=arc-20160816;
-        b=BNxMHEFz+xzfvb7f6Y1r6b3hdnbcQS6f8RiG/RJyprzNDFsONZyJDPjI5+pkGy980+
-         xHA3U5u4CX87/Yzsj/13jjHdgIvf6DPO9T39CEprjXqRGXA14d2vlH+8KefxaA8zSGep
-         8fvnlfQ+VOMUrIqM73drB7vwt8oFLjX4BcEjnqf3IpOmLPRBwVfkxOaGXuuX3Vw4CtR2
-         w2My4DFTIQgCdJ5J+bu8O4WGkRJ9Ld3VnQyNpt1LtEW2qEuI/mmi9rs1r6EZSgLN6L+T
-         Q7OkYKkGpVo5ofU29CVdvNwqAXcU34KcRESIeON+ke8Ny48DfGaycRrcTodJhkP+ChJv
-         k7VA==
+        b=rtMHexoVMnyeY86PL512UhatZt+WWmVCNBa03l9IvyCHsZ3ajRCHCb3hKYS12SkRDA
+         jYr0nqRR+tlfohbZSfjxRDvD7J5CxR96GkYE0RaGpaPk7y3hkgUWYNzGcYyrdMmo83rb
+         ttjGh4no0zCU9M8awcnPNz0S9fvFNh/R24FBj49c6m1RwIVLSx3NrpAMHTpe1lJXS3Ab
+         rJHsEscdeyIhearvEgoc9WeeoEfGQmP87TK5fVkChb4AQWZmFGY9YcM/te3VjEIAbEFg
+         vqzrAohplXkEcbSg3LUoz2X/AnhYPLaPIoZZOyWsLd5YUfsB1oFBGNGIPRfTN0zD1FNR
+         TIrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=i+w+Dcsqbsw/jsO7u1Bm2nAId84YIJDMk2FJbPBfsoU=;
-        b=aP1mxatnbHwxUXjdzIV+XeJsrliQTdlDO6gxLr/HtK/Wgawd0E2WtzuUES83jAj/0r
-         BT9SB48djGrnsQTqVXMHfcty4i6EOHEEuhcUKCELkaA3wOPg2IFWT958xi8YnBS1AUQK
-         5bOz0DjLjB5Tk5iuHqGLHRiDjT8jJkAVRcrfkx9Ki6d8qmCAsmk1z0nWBpH5FKrcpPM3
-         2arYIRTEk1/053n/RgkBmp4000jvIJo/4vinqUxXWo1hN+Hl8BhbaT6XrF611U9Qg5hy
-         qnsHHo/o5Cx5/wHehyFSSY8gAqtYUddrZ33Sq8c96sKCn/qR8C24lWqbXlP2+EkYNiE1
-         ikhg==
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=NEHK813y4oEUqCf2Y89xf5DDxDT8iVyjNz4gG827eZQ=;
+        b=u2B6RQG1qLSfs9B52IprcWPeMbalLbsxhTFr97ubJ/s84PMz4bXpn6kd5hTc4P2/ua
+         UAo9kmaCSwtXnI4EnCLA/tsfpBZQpWqpLREP6uNhSGLsoW5Zq2QzKcpztOz4SkjjMiMt
+         I6QZ+FRuqb+UP9UH4YaolzoEQ3Wu1Ig6vVMYJ5TPQTH4ilpGmzGoqbBc+GO4v/in5EZ+
+         O5Lcgs5sAmWkofAaVEN3t4Cka/Bov5H4pJ8ZSZSfieo2Tz4lx0fSEfbbMH1fU9C/dBW1
+         vNYL4LIu1Hr8wQCW6UhFMPTdbUn2WWO5RzohwKFRFYee0uo/jK8FjPQEeL2sNyrXSmjR
+         pJoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vArJ3BEN;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dyC4PhEG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1-20020a05620a24c100b0071dec9ab3fcsi4783557qkn.16.2023.02.17.14.00.32
+        by mx.google.com with ESMTPS id z13-20020ac87f8d000000b003b86c4f10ecsi2948540qtj.83.2023.02.17.16.47.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Feb 2023 14:00:32 -0800 (PST)
+        Fri, 17 Feb 2023 16:47:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vArJ3BEN;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=dyC4PhEG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pT8le-0004dJ-9j; Fri, 17 Feb 2023 16:59:46 -0500
+	id 1pTBNt-0000CH-7C; Fri, 17 Feb 2023 19:47:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pT8lc-0004cd-Hw
- for qemu-arm@nongnu.org; Fri, 17 Feb 2023 16:59:44 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pTBNr-0000Bm-Ey; Fri, 17 Feb 2023 19:47:23 -0500
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pT8lZ-0000TZ-4V
- for qemu-arm@nongnu.org; Fri, 17 Feb 2023 16:59:44 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- k14-20020a05600c1c8e00b003e22107b7ccso44340wms.0
- for <qemu-arm@nongnu.org>; Fri, 17 Feb 2023 13:59:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pTBNp-0004Qu-OF; Fri, 17 Feb 2023 19:47:23 -0500
+Received: by mail-ed1-x52a.google.com with SMTP id eg30so10337153edb.7;
+ Fri, 17 Feb 2023 16:47:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=i+w+Dcsqbsw/jsO7u1Bm2nAId84YIJDMk2FJbPBfsoU=;
- b=vArJ3BENvA//jLHEl/1JHS684jxNLsw6fGkmB0wHYCIoTrxxb/c4u5qCqk0LOuqHRI
- BnHv0USqvfktxa+IGDt9Xtei6kUlkTygMp3FuPnjgEz1j2P+bKaqs1TmajzVDLqoeCg+
- OMXkR1DaWCri+IIknrTcyIBIh4Bv6STuTCAUbQv2jP4Zf+eho5G01EuXhuN6mPAUmVD9
- yMW9azwbwSkfyYy3GTy2CVkgxgfBkfUc214gTB9KGWrAfBo/fXp9e4eZgawMSHCh0/jD
- dchu4JpTk5IY+HChe/NKr0CT9cQgG8ohNHfl0/wrfqPIEDg8lXtlI/fx7VpWRBtpRr+Z
- oeMw==
+ bh=NEHK813y4oEUqCf2Y89xf5DDxDT8iVyjNz4gG827eZQ=;
+ b=dyC4PhEG2Bpl+s0AkexmfyZOANf2QyZlbK0HkO7ILGRgFneTbutCdBv1b92LD4o1hr
+ wHM1ICId1spZwO8uA/+U6ppqIwshXo4fGQe6ou/B1yQYcKIyTOWEbXNqlBSXNhjP70Sk
+ vVlfc9LQ0ikuwFaNXKdRk58Gxx41FzPcvmdrPp5wOBsS9g0kKp27cozwdj1n9ftFYjkM
+ xhi8YFmU6gDWQrHgje5edFk2QBCg8JvGDa7HFzMWsz65tHG3LT4NQUiVSXRkWhMIAxHq
+ 2OZP+t/ZRso5rHSV4n2CzGkgdryo7FIL/7oUjDnHgYgXjDj1yMKnlKkpflDKFGQpgyOP
+ 7NRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=i+w+Dcsqbsw/jsO7u1Bm2nAId84YIJDMk2FJbPBfsoU=;
- b=3B02jlgaHZ218MA6Jcw6W1WC+gOgdFv555KwqZA+mH3Vw5Gbuu/pJbmAtKRymsgkd7
- BDVcfk+SZp57C5RHcO53eLjwklJEwTumZsG0bHG0cqm7jeYps/XZBUKypb/aMOne5qn9
- 5ywelAts70PouhbB/HB4WlDAUpqVMB2hKhh4D9uJ++UA36EZZ6hxYJghNf6ztMOrpTi6
- LjJVcVmi1/Tq43AhVk0yusaTYK/YtC16NLe469WEYCjQVzM2Ghpjv0MHQZrDhosTE/vO
- A0OU8M66Ck+BMpAZCSldrv08QlVMGbynaPPwn01YObFOSNZq/ShKsUgefTyaWkVwwjy2
- 4B0Q==
-X-Gm-Message-State: AO0yUKWaqfzs5UUm2mTaU296PNME/mNOoOIeODdBaY3A6kkS536ppKsJ
- N6ZBwqpS2K+gn58iqy6Tx7w3xg==
-X-Received: by 2002:a05:600c:2b46:b0:3e0:1ab:cf2a with SMTP id
- e6-20020a05600c2b4600b003e001abcf2amr1581683wmf.39.1676671178021; 
- Fri, 17 Feb 2023 13:59:38 -0800 (PST)
-Received: from localhost.localdomain
- (201.red-88-29-176.dynamicip.rima-tde.net. [88.29.176.201])
- by smtp.gmail.com with ESMTPSA id
- b4-20020a05600c4e0400b003d1d5a83b2esm2713746wmq.35.2023.02.17.13.59.12
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 17 Feb 2023 13:59:37 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Jan Kiszka <jan.kiszka@web.de>, Vikram Garhwal <vikram.garhwal@amd.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-ppc@nongnu.org,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Thomas Huth <huth@tuxfamily.org>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Jason Wang <jasowang@redhat.com>, Beniamino Galvani <b.galvani@gmail.com>,
- Thomas Huth <thuth@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Magnus Damm <magnus.damm@gmail.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 3/2] hw/timer: Rename ptimer_state -> PTimer
-Date: Fri, 17 Feb 2023 22:58:36 +0100
-Message-Id: <20230217215836.40328-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230217141832.24777-1-philmd@linaro.org>
+ bh=NEHK813y4oEUqCf2Y89xf5DDxDT8iVyjNz4gG827eZQ=;
+ b=X5ucccVEO38KKfKWATU1uG9h5zVqamjgBzfcepXzj3gYhIPe6kmi19j1k4YbzMTaFk
+ bro5JOYHkMNdn+HX3kbvDqHbaWlk2vGDxosJpRYdR0ohVQSBkyPg5s/irewWLyyIWKHI
+ 7G5pnCyDQZcVFbERezNQce+irM9ijVQ+9PjyBa+zohKZ+unCrcu4feRmBkdwzKc0g6c7
+ BzI5dZmG0LLO93scEPVGDbwP8D+/ttGg7A59fvQ2Ijkqja//6Z/dBWgWeOYRWl77MWR0
+ 48rD0JeDIdQ+pKZwZ6YMdVNqiX1JIsAa2BFv6NSwBYwPL49Qve1uB1iQTNqtohSXQS4D
+ 2JwA==
+X-Gm-Message-State: AO0yUKXd0hHXZyjVVIXxkBHsoMxpSeUwBdBzJyVxn1e21LMBfriL7PtC
+ YLs4Vl3lkIETsJz8L6lADuD0xIDofqI=
+X-Received: by 2002:a17:906:4e90:b0:8a5:8620:575 with SMTP id
+ v16-20020a1709064e9000b008a586200575mr3160821eju.3.1676681238484; 
+ Fri, 17 Feb 2023 16:47:18 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-077-011-045-171.77.11.pool.telefonica.de.
+ [77.11.45.171]) by smtp.gmail.com with ESMTPSA id
+ j11-20020a170906474b00b0088f8a61eb48sm2720015ejs.154.2023.02.17.16.47.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Feb 2023 16:47:18 -0800 (PST)
+Date: Sat, 18 Feb 2023 00:47:09 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+CC: qemu-ppc@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_1/2=5D_qemu/typedefs=3A_Sort_in_ca?=
+ =?US-ASCII?Q?se-insensitive_alphabetical_order_=28again=29?=
+In-Reply-To: <20230217141832.24777-2-philmd@linaro.org>
 References: <20230217141832.24777-1-philmd@linaro.org>
+ <20230217141832.24777-2-philmd@linaro.org>
+Message-ID: <7120D9B2-2ED1-4D06-A98B-9FB2CB95C6CE@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -141,960 +125,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RnWEHmmGblb5
+X-TUID: Ji5MKxY5F11K
 
-Remove a pointless cast in ptimer_tick() and rename 'ptimer_state'
-as 'PTimer' to follow the Structure naming convention.
 
-See docs/devel/style.rst:
 
-  Variables are lower_case_with_underscores; easy to type and
-  read.  Structured type names are in CamelCase; harder to type
-  but standing out.  Enum type names and function type names
-  should also be in CamelCase.  Scalar type names are
-  lower_case_with_underscores_ending_with_a_t, like the POSIX
-  uint64_t and family.
+Am 17=2E Februar 2023 14:18:31 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <=
+philmd@linaro=2Eorg>:
+>Following the recommendation added in commit a98c370c46
+>("typedefs: (Re-)sort entries alphabetically"), and similarly
+>to commit 64baadc272 ("Sort include/qemu/typedefs=2Eh"), sort
+>again the type definitions (in case-insensitive alphabetical
+>order, using 'sort --ignore-case')=2E
 
-Mechanical change doing:
+Since it can be done mechanically: Maybe add a checkpach check?
 
-  $ sed -i -e s/ptimer_state/PTimer/g \
-      $(git grep -l ptimer_state)
-
-Suggested-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/arm/musicpal.c                        |  2 +-
- hw/core/ptimer.c                         | 56 ++++++++++++------------
- hw/dma/xilinx_axidma.c                   |  2 +-
- hw/m68k/mcf5206.c                        |  2 +-
- hw/m68k/mcf5208.c                        |  2 +-
- hw/net/fsl_etsec/etsec.h                 |  2 +-
- hw/net/lan9118.c                         |  2 +-
- hw/rtc/exynos4210_rtc.c                  |  4 +-
- hw/timer/altera_timer.c                  |  2 +-
- hw/timer/arm_mptimer.c                   |  4 +-
- hw/timer/arm_timer.c                     |  2 +-
- hw/timer/etraxfs_timer.c                 |  8 ++--
- hw/timer/exynos4210_mct.c                |  8 ++--
- hw/timer/exynos4210_pwm.c                |  2 +-
- hw/timer/grlib_gptimer.c                 |  2 +-
- hw/timer/sh_timer.c                      |  2 +-
- hw/timer/slavio_timer.c                  |  2 +-
- hw/timer/xilinx_timer.c                  |  2 +-
- include/hw/display/xlnx_dp.h             |  2 +-
- include/hw/dma/xlnx_csu_dma.h            |  2 +-
- include/hw/net/xlnx-zynqmp-can.h         |  2 +-
- include/hw/ptimer.h                      | 34 +++++++-------
- include/hw/timer/allwinner-a10-pit.h     |  2 +-
- include/hw/timer/arm_mptimer.h           |  2 +-
- include/hw/timer/armv7m_systick.h        |  2 +-
- include/hw/timer/cmsdk-apb-dualtimer.h   |  2 +-
- include/hw/timer/cmsdk-apb-timer.h       |  2 +-
- include/hw/timer/digic-timer.h           |  2 +-
- include/hw/timer/imx_epit.h              |  4 +-
- include/hw/timer/imx_gpt.h               |  2 +-
- include/hw/timer/mss-timer.h             |  2 +-
- include/hw/watchdog/cmsdk-apb-watchdog.h |  2 +-
- include/hw/watchdog/wdt_imx2.h           |  4 +-
- include/qemu/typedefs.h                  |  2 +-
- tests/unit/ptimer-test.c                 | 22 +++++-----
- 35 files changed, 98 insertions(+), 98 deletions(-)
-
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 89b66606c3..63e0bbda95 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -435,7 +435,7 @@ static const TypeInfo mv88w8618_pic_info = {
- #define MP_BOARD_RESET_MAGIC    0x10000
- 
- typedef struct mv88w8618_timer_state {
--    ptimer_state *ptimer;
-+    PTimer *ptimer;
-     uint32_t limit;
-     int freq;
-     qemu_irq irq;
-diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-index eb5ba1aff7..3ff49a0a04 100644
---- a/hw/core/ptimer.c
-+++ b/hw/core/ptimer.c
-@@ -19,7 +19,7 @@
- #define DELTA_ADJUST     1
- #define DELTA_NO_ADJUST -1
- 
--struct ptimer_state
-+struct PTimer
- {
-     uint8_t enabled; /* 0 = disabled, 1 = periodic, 2 = oneshot.  */
-     uint64_t limit;
-@@ -43,12 +43,12 @@ struct ptimer_state
- };
- 
- /* Use a bottom-half routine to avoid reentrancy issues.  */
--static void ptimer_trigger(ptimer_state *s)
-+static void ptimer_trigger(PTimer *s)
- {
-     s->callback(s->callback_opaque);
- }
- 
--static void ptimer_reload(ptimer_state *s, int delta_adjust)
-+static void ptimer_reload(PTimer *s, int delta_adjust)
- {
-     uint32_t period_frac;
-     uint64_t period;
-@@ -73,7 +73,7 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
-     /*
-      * Note that ptimer_trigger() might call the device callback function,
-      * which can then modify timer state, so we must not cache any fields
--     * from ptimer_state until after we have called it.
-+     * from PTimer state until after we have called it.
-      */
-     delta = s->delta;
-     period = s->period;
-@@ -154,7 +154,7 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
- 
- static void ptimer_tick(void *opaque)
- {
--    ptimer_state *s = (ptimer_state *)opaque;
-+    PTimer *s = opaque;
-     bool trigger = true;
- 
-     /*
-@@ -198,7 +198,7 @@ static void ptimer_tick(void *opaque)
-     ptimer_transaction_commit(s);
- }
- 
--uint64_t ptimer_get_count(ptimer_state *s)
-+uint64_t ptimer_get_count(PTimer *s)
- {
-     uint64_t counter;
- 
-@@ -294,7 +294,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
-     return counter;
- }
- 
--void ptimer_set_count(ptimer_state *s, uint64_t count)
-+void ptimer_set_count(PTimer *s, uint64_t count)
- {
-     assert(s->in_transaction);
-     s->delta = count;
-@@ -303,7 +303,7 @@ void ptimer_set_count(ptimer_state *s, uint64_t count)
-     }
- }
- 
--void ptimer_run(ptimer_state *s, int oneshot)
-+void ptimer_run(PTimer *s, int oneshot)
- {
-     bool was_disabled = !s->enabled;
- 
-@@ -323,7 +323,7 @@ void ptimer_run(ptimer_state *s, int oneshot)
- 
- /* Pause a timer.  Note that this may cause it to "lose" time, even if it
-    is immediately restarted.  */
--void ptimer_stop(ptimer_state *s)
-+void ptimer_stop(PTimer *s)
- {
-     assert(s->in_transaction);
- 
-@@ -337,7 +337,7 @@ void ptimer_stop(ptimer_state *s)
- }
- 
- /* Set counter increment interval in nanoseconds.  */
--void ptimer_set_period(ptimer_state *s, int64_t period)
-+void ptimer_set_period(PTimer *s, int64_t period)
- {
-     assert(s->in_transaction);
-     s->delta = ptimer_get_count(s);
-@@ -349,7 +349,7 @@ void ptimer_set_period(ptimer_state *s, int64_t period)
- }
- 
- /* Set counter increment interval from a Clock */
--void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clk,
-+void ptimer_set_period_from_clock(PTimer *s, const Clock *clk,
-                                   unsigned int divisor)
- {
-     /*
-@@ -382,7 +382,7 @@ void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clk,
- }
- 
- /* Set counter frequency in Hz.  */
--void ptimer_set_freq(ptimer_state *s, uint32_t freq)
-+void ptimer_set_freq(PTimer *s, uint32_t freq)
- {
-     assert(s->in_transaction);
-     s->delta = ptimer_get_count(s);
-@@ -395,7 +395,7 @@ void ptimer_set_freq(ptimer_state *s, uint32_t freq)
- 
- /* Set the initial countdown value.  If reload is nonzero then also set
-    count = limit.  */
--void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
-+void ptimer_set_limit(PTimer *s, uint64_t limit, int reload)
- {
-     assert(s->in_transaction);
-     s->limit = limit;
-@@ -406,19 +406,19 @@ void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
-     }
- }
- 
--uint64_t ptimer_get_limit(ptimer_state *s)
-+uint64_t ptimer_get_limit(PTimer *s)
- {
-     return s->limit;
- }
- 
--void ptimer_transaction_begin(ptimer_state *s)
-+void ptimer_transaction_begin(PTimer *s)
- {
-     assert(!s->in_transaction);
-     s->in_transaction = true;
-     s->need_reload = false;
- }
- 
--void ptimer_transaction_commit(ptimer_state *s)
-+void ptimer_transaction_commit(PTimer *s)
- {
-     assert(s->in_transaction);
-     /*
-@@ -442,27 +442,27 @@ const VMStateDescription vmstate_ptimer = {
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT8(enabled, ptimer_state),
--        VMSTATE_UINT64(limit, ptimer_state),
--        VMSTATE_UINT64(delta, ptimer_state),
--        VMSTATE_UINT32(period_frac, ptimer_state),
--        VMSTATE_INT64(period, ptimer_state),
--        VMSTATE_INT64(last_event, ptimer_state),
--        VMSTATE_INT64(next_event, ptimer_state),
--        VMSTATE_TIMER_PTR(timer, ptimer_state),
-+        VMSTATE_UINT8(enabled, PTimer),
-+        VMSTATE_UINT64(limit, PTimer),
-+        VMSTATE_UINT64(delta, PTimer),
-+        VMSTATE_UINT32(period_frac, PTimer),
-+        VMSTATE_INT64(period, PTimer),
-+        VMSTATE_INT64(last_event, PTimer),
-+        VMSTATE_INT64(next_event, PTimer),
-+        VMSTATE_TIMER_PTR(timer, PTimer),
-         VMSTATE_END_OF_LIST()
-     }
- };
- 
--ptimer_state *ptimer_init(ptimer_cb callback, void *callback_opaque,
-+PTimer *ptimer_init(ptimer_cb callback, void *callback_opaque,
-                           uint8_t policy_mask)
- {
--    ptimer_state *s;
-+    PTimer *s;
- 
-     /* The callback function is mandatory. */
-     assert(callback);
- 
--    s = g_new0(ptimer_state, 1);
-+    s = g_new0(PTimer, 1);
-     s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, ptimer_tick, s);
-     s->policy_mask = policy_mask;
-     s->callback = callback;
-@@ -478,7 +478,7 @@ ptimer_state *ptimer_init(ptimer_cb callback, void *callback_opaque,
-     return s;
- }
- 
--void ptimer_free(ptimer_state *s)
-+void ptimer_free(PTimer *s)
- {
-     timer_free(s->timer);
-     g_free(s);
-diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-index 6030c76435..5710192da3 100644
---- a/hw/dma/xilinx_axidma.c
-+++ b/hw/dma/xilinx_axidma.c
-@@ -102,7 +102,7 @@ enum {
- 
- struct Stream {
-     struct XilinxAXIDMA *dma;
--    ptimer_state *ptimer;
-+    PTimer *ptimer;
-     qemu_irq irq;
- 
-     int nr;
-diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
-index 2ab1b4f059..61ed70f2b1 100644
---- a/hw/m68k/mcf5206.c
-+++ b/hw/m68k/mcf5206.c
-@@ -24,7 +24,7 @@ typedef struct {
-     uint16_t trr;
-     uint16_t tcr;
-     uint16_t ter;
--    ptimer_state *timer;
-+    PTimer *timer;
-     qemu_irq irq;
-     int irq_state;
- } m5206_timer_state;
-diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-index be1033f84f..006a1ee5c5 100644
---- a/hw/m68k/mcf5208.c
-+++ b/hw/m68k/mcf5208.c
-@@ -43,7 +43,7 @@
- typedef struct {
-     MemoryRegion iomem;
-     qemu_irq irq;
--    ptimer_state *timer;
-+    PTimer *timer;
-     uint16_t pcsr;
-     uint16_t pmr;
-     uint16_t pcntr;
-diff --git a/hw/net/fsl_etsec/etsec.h b/hw/net/fsl_etsec/etsec.h
-index 9321a2f9a0..947dd063d8 100644
---- a/hw/net/fsl_etsec/etsec.h
-+++ b/hw/net/fsl_etsec/etsec.h
-@@ -141,7 +141,7 @@ struct eTSEC {
-     uint16_t phy_control;
- 
-     /* Polling */
--    ptimer_state *ptimer;
-+    PTimer *ptimer;
- 
-     /* Whether we should flush the rx queue when buffer becomes available. */
-     bool need_flush;
-diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
-index f1cba55967..6356ab49d5 100644
---- a/hw/net/lan9118.c
-+++ b/hw/net/lan9118.c
-@@ -201,7 +201,7 @@ struct lan9118_state {
-     NICConf conf;
-     qemu_irq irq;
-     MemoryRegion mmio;
--    ptimer_state *timer;
-+    PTimer *timer;
- 
-     uint32_t irq_cfg;
-     uint32_t int_sts;
-diff --git a/hw/rtc/exynos4210_rtc.c b/hw/rtc/exynos4210_rtc.c
-index 2b8a38a296..95a44be7a8 100644
---- a/hw/rtc/exynos4210_rtc.c
-+++ b/hw/rtc/exynos4210_rtc.c
-@@ -105,8 +105,8 @@ struct Exynos4210RTCState {
-     uint32_t    reg_almyear;
-     uint32_t    reg_curticcnt;
- 
--    ptimer_state    *ptimer;        /* tick timer */
--    ptimer_state    *ptimer_1Hz;    /* clock timer */
-+    PTimer      *ptimer;        /* tick timer */
-+    PTimer      *ptimer_1Hz;    /* clock timer */
-     uint32_t        freq;
- 
-     qemu_irq        tick_irq;   /* Time Tick Generator irq */
-diff --git a/hw/timer/altera_timer.c b/hw/timer/altera_timer.c
-index 0f1f54206a..5f2e411358 100644
---- a/hw/timer/altera_timer.c
-+++ b/hw/timer/altera_timer.c
-@@ -52,7 +52,7 @@ struct AlteraTimer {
-     MemoryRegion  mmio;
-     qemu_irq      irq;
-     uint32_t      freq_hz;
--    ptimer_state *ptimer;
-+    PTimer       *ptimer;
-     uint32_t      regs[R_MAX];
- };
- 
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index 104c3d8af8..124eb43215 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -65,7 +65,7 @@ static inline uint32_t timerblock_scale(uint32_t control)
- }
- 
- /* Must be called within a ptimer transaction block */
--static inline void timerblock_set_count(ptimer_state *timer,
-+static inline void timerblock_set_count(PTimer *timer,
-                                         uint32_t control, uint64_t *count)
- {
-     /* PTimer would trigger interrupt for periodic timer when counter set
-@@ -78,7 +78,7 @@ static inline void timerblock_set_count(ptimer_state *timer,
- }
- 
- /* Must be called within a ptimer transaction block */
--static inline void timerblock_run(ptimer_state *timer,
-+static inline void timerblock_run(PTimer *timer,
-                                   uint32_t control, uint32_t load)
- {
-     if ((control & 1) && ((control & 0xff00) || load != 0)) {
-diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
-index 69c8863472..06063a8fb1 100644
---- a/hw/timer/arm_timer.c
-+++ b/hw/timer/arm_timer.c
-@@ -30,7 +30,7 @@
- #define TIMER_CTRL_ENABLE       (1 << 7)
- 
- typedef struct {
--    ptimer_state *timer;
-+    PTimer *timer;
-     uint32_t control;
-     uint32_t limit;
-     int freq;
-diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
-index 2d6d92ef93..e3c8eb51d6 100644
---- a/hw/timer/etraxfs_timer.c
-+++ b/hw/timer/etraxfs_timer.c
-@@ -61,9 +61,9 @@ struct ETRAXTimerState {
-     qemu_irq irq;
-     qemu_irq nmi;
- 
--    ptimer_state *ptimer_t0;
--    ptimer_state *ptimer_t1;
--    ptimer_state *ptimer_wd;
-+    PTimer *ptimer_t0;
-+    PTimer *ptimer_t1;
-+    PTimer *ptimer_wd;
- 
-     uint32_t wd_hits;
- 
-@@ -151,7 +151,7 @@ static void update_ctrl(ETRAXTimerState *t, int tnum)
-     unsigned int div;
-     uint32_t ctrl;
- 
--    ptimer_state *timer;
-+    PTimer *timer;
- 
-     if (tnum == 0) {
-         ctrl = t->rw_tmr0_ctrl;
-diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-index c17b247da3..53206d697f 100644
---- a/hw/timer/exynos4210_mct.c
-+++ b/hw/timer/exynos4210_mct.c
-@@ -201,7 +201,7 @@ typedef struct {
-     uint64_t count;            /* Value FRC was armed with */
-     int32_t curr_comp;             /* Current comparator FRC is running to */
- 
--    ptimer_state *ptimer_frc;                   /* FRC timer */
-+    PTimer *ptimer_frc;        /* FRC timer */
- 
- } Exynos4210MCTGT;
- 
-@@ -224,12 +224,12 @@ typedef struct {
-         uint64_t    progress;       /* progress when counting by steps */
-         uint64_t    count;          /* count to arm timer with */
- 
--        ptimer_state *ptimer_tick;  /* timer for tick counter */
-+        PTimer *ptimer_tick;        /* timer for tick counter */
-     } tick_timer;
- 
-     /* use ptimer.c to represent count down timer */
- 
--    ptimer_state *ptimer_frc;   /* timer for free running counter */
-+    PTimer *ptimer_frc;             /* timer for free running counter */
- 
-     /* registers */
-     struct lregs {
-@@ -981,7 +981,7 @@ static void exynos4210_ltick_event(void *opaque)
-     exynos4210_ltick_int_start(&s->tick_timer);
- }
- 
--static void tx_ptimer_set_freq(ptimer_state *s, uint32_t freq)
-+static void tx_ptimer_set_freq(PTimer *s, uint32_t freq)
- {
-     /*
-      * callers of exynos4210_mct_update_freq() never do anything
-diff --git a/hw/timer/exynos4210_pwm.c b/hw/timer/exynos4210_pwm.c
-index 3528d0f33a..4895a7770f 100644
---- a/hw/timer/exynos4210_pwm.c
-+++ b/hw/timer/exynos4210_pwm.c
-@@ -92,7 +92,7 @@ typedef struct {
-     uint32_t    freq;           /* timer frequency */
- 
-     /* use ptimer.c to represent count down timer */
--    ptimer_state *ptimer;       /* timer  */
-+    PTimer     *ptimer;         /* timer  */
- 
-     /* registers */
-     uint32_t    reg_tcntb;      /* counter register buffer */
-diff --git a/hw/timer/grlib_gptimer.c b/hw/timer/grlib_gptimer.c
-index 8347e3047f..50963def2e 100644
---- a/hw/timer/grlib_gptimer.c
-+++ b/hw/timer/grlib_gptimer.c
-@@ -61,7 +61,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(GPTimerUnit, GRLIB_GPTIMER)
- typedef struct GPTimer     GPTimer;
- 
- struct GPTimer {
--    ptimer_state *ptimer;
-+    PTimer *ptimer;
- 
-     qemu_irq     irq;
-     int          id;
-diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
-index 7788939766..713151b9a0 100644
---- a/hw/timer/sh_timer.c
-+++ b/hw/timer/sh_timer.c
-@@ -34,7 +34,7 @@
- #define OFFSET_TCPR   3
- 
- typedef struct {
--    ptimer_state *timer;
-+    PTimer *timer;
-     uint32_t tcnt;
-     uint32_t tcor;
-     uint32_t tcr;
-diff --git a/hw/timer/slavio_timer.c b/hw/timer/slavio_timer.c
-index 8c4f6eb06b..569d590e4e 100644
---- a/hw/timer/slavio_timer.c
-+++ b/hw/timer/slavio_timer.c
-@@ -52,7 +52,7 @@
- 
- typedef struct CPUTimerState {
-     qemu_irq irq;
--    ptimer_state *timer;
-+    PTimer *timer;
-     uint32_t count, counthigh, reached;
-     /* processor only */
-     uint32_t run;
-diff --git a/hw/timer/xilinx_timer.c b/hw/timer/xilinx_timer.c
-index 32a9df69e0..359c1fad6e 100644
---- a/hw/timer/xilinx_timer.c
-+++ b/hw/timer/xilinx_timer.c
-@@ -52,7 +52,7 @@
- 
- struct xlx_timer
- {
--    ptimer_state *ptimer;
-+    PTimer *ptimer;
-     void *parent;
-     int nr; /* for debug.  */
- 
-diff --git a/include/hw/display/xlnx_dp.h b/include/hw/display/xlnx_dp.h
-index f859da66f9..e50c955700 100644
---- a/include/hw/display/xlnx_dp.h
-+++ b/include/hw/display/xlnx_dp.h
-@@ -108,7 +108,7 @@ struct XlnxDPState {
-     DPCDState *dpcd;
-     I2CDDCState *edid;
- 
--    ptimer_state *vblank;
-+    PTimer *vblank;
- };
- 
- #define TYPE_XLNX_DP "xlnx.v-dp"
-diff --git a/include/hw/dma/xlnx_csu_dma.h b/include/hw/dma/xlnx_csu_dma.h
-index 2b3a52c58b..84a7aac892 100644
---- a/include/hw/dma/xlnx_csu_dma.h
-+++ b/include/hw/dma/xlnx_csu_dma.h
-@@ -37,7 +37,7 @@ typedef struct XlnxCSUDMA {
-     AddressSpace dma_as;
-     qemu_irq irq;
-     StreamSink *tx_dev; /* Used as generic StreamSink */
--    ptimer_state *src_timer;
-+    PTimer *src_timer;
- 
-     uint16_t width;
-     bool is_dst;
-diff --git a/include/hw/net/xlnx-zynqmp-can.h b/include/hw/net/xlnx-zynqmp-can.h
-index 2cacaf6181..88eb849d8d 100644
---- a/include/hw/net/xlnx-zynqmp-can.h
-+++ b/include/hw/net/xlnx-zynqmp-can.h
-@@ -72,7 +72,7 @@ typedef struct XlnxZynqMPCANState {
-     Fifo32              tx_fifo;
-     Fifo32              txhpb_fifo;
- 
--    ptimer_state        *can_timer;
-+    PTimer              *can_timer;
- } XlnxZynqMPCANState;
- 
- #endif
-diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-index 30b7eac7ad..baa38aa987 100644
---- a/include/hw/ptimer.h
-+++ b/include/hw/ptimer.h
-@@ -124,9 +124,9 @@ typedef void (*ptimer_cb)(void *opaque);
-  * the ptimer state such that another ptimer expiry is triggered, then
-  * the callback will be called a second time after the first call returns.
-  */
--ptimer_state *ptimer_init(ptimer_cb callback,
--                          void *callback_opaque,
--                          uint8_t policy_mask);
-+PTimer *ptimer_init(ptimer_cb callback,
-+                    void *callback_opaque,
-+                    uint8_t policy_mask);
- 
- /**
-  * ptimer_free - Free a ptimer
-@@ -134,7 +134,7 @@ ptimer_state *ptimer_init(ptimer_cb callback,
-  *
-  * Free a ptimer created using ptimer_init().
-  */
--void ptimer_free(ptimer_state *s);
-+void ptimer_free(PTimer *s);
- 
- /**
-  * ptimer_transaction_begin() - Start a ptimer modification transaction
-@@ -146,7 +146,7 @@ void ptimer_free(ptimer_state *s);
-  * It is an error to call this function for a BH-based ptimer;
-  * attempting to do this will trigger an assert.
-  */
--void ptimer_transaction_begin(ptimer_state *s);
-+void ptimer_transaction_begin(PTimer *s);
- 
- /**
-  * ptimer_transaction_commit() - Commit a ptimer modification transaction
-@@ -156,7 +156,7 @@ void ptimer_transaction_begin(ptimer_state *s);
-  * ptimer state now means that we should trigger the timer expiry
-  * callback, it will be called directly.
-  */
--void ptimer_transaction_commit(ptimer_state *s);
-+void ptimer_transaction_commit(PTimer *s);
- 
- /**
-  * ptimer_set_period - Set counter increment interval in nanoseconds
-@@ -170,7 +170,7 @@ void ptimer_transaction_commit(ptimer_state *s);
-  * This function will assert if it is called outside a
-  * ptimer_transaction_begin/commit block.
-  */
--void ptimer_set_period(ptimer_state *s, int64_t period);
-+void ptimer_set_period(PTimer *s, int64_t period);
- 
- /**
-  * ptimer_set_period_from_clock - Set counter increment from a Clock
-@@ -191,7 +191,7 @@ void ptimer_set_period(ptimer_state *s, int64_t period);
-  * This function will assert if it is called outside a
-  * ptimer_transaction_begin/commit block.
-  */
--void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clock,
-+void ptimer_set_period_from_clock(PTimer *s, const Clock *clock,
-                                   unsigned int divisor);
- 
- /**
-@@ -208,7 +208,7 @@ void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clock,
-  * This function will assert if it is called outside a
-  * ptimer_transaction_begin/commit block.
-  */
--void ptimer_set_freq(ptimer_state *s, uint32_t freq);
-+void ptimer_set_freq(PTimer *s, uint32_t freq);
- 
- /**
-  * ptimer_get_limit - Get the configured limit of the ptimer
-@@ -223,7 +223,7 @@ void ptimer_set_freq(ptimer_state *s, uint32_t freq);
-  * and set limit functions rather than needing to also track it
-  * in their own state structure.
-  */
--uint64_t ptimer_get_limit(ptimer_state *s);
-+uint64_t ptimer_get_limit(PTimer *s);
- 
- /**
-  * ptimer_set_limit - Set the limit of the ptimer
-@@ -238,7 +238,7 @@ uint64_t ptimer_get_limit(ptimer_state *s);
-  * This function will assert if it is called outside a
-  * ptimer_transaction_begin/commit block.
-  */
--void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload);
-+void ptimer_set_limit(PTimer *s, uint64_t limit, int reload);
- 
- /**
-  * ptimer_get_count - Get the current value of the ptimer
-@@ -248,7 +248,7 @@ void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload);
-  * return the correct value whether the counter is enabled or
-  * disabled.
-  */
--uint64_t ptimer_get_count(ptimer_state *s);
-+uint64_t ptimer_get_count(PTimer *s);
- 
- /**
-  * ptimer_set_count - Set the current value of the ptimer
-@@ -262,7 +262,7 @@ uint64_t ptimer_get_count(ptimer_state *s);
-  * This function will assert if it is called outside a
-  * ptimer_transaction_begin/commit block.
-  */
--void ptimer_set_count(ptimer_state *s, uint64_t count);
-+void ptimer_set_count(PTimer *s, uint64_t count);
- 
- /**
-  * ptimer_run - Start a ptimer counting
-@@ -279,7 +279,7 @@ void ptimer_set_count(ptimer_state *s, uint64_t count);
-  * This function will assert if it is called outside a
-  * ptimer_transaction_begin/commit block.
-  */
--void ptimer_run(ptimer_state *s, int oneshot);
-+void ptimer_run(PTimer *s, int oneshot);
- 
- /**
-  * ptimer_stop - Stop a ptimer counting
-@@ -294,15 +294,15 @@ void ptimer_run(ptimer_state *s, int oneshot);
-  * This function will assert if it is called outside a
-  * ptimer_transaction_begin/commit block.
-  */
--void ptimer_stop(ptimer_state *s);
-+void ptimer_stop(PTimer *s);
- 
- extern const VMStateDescription vmstate_ptimer;
- 
- #define VMSTATE_PTIMER(_field, _state) \
--    VMSTATE_STRUCT_POINTER_V(_field, _state, 1, vmstate_ptimer, ptimer_state)
-+    VMSTATE_STRUCT_POINTER_V(_field, _state, 1, vmstate_ptimer, PTimer)
- 
- #define VMSTATE_PTIMER_ARRAY(_f, _s, _n)                                \
-     VMSTATE_ARRAY_OF_POINTER_TO_STRUCT(_f, _s, _n, 0,                   \
--                                       vmstate_ptimer, ptimer_state)
-+                                       vmstate_ptimer, PTimer)
- 
- #endif
-diff --git a/include/hw/timer/allwinner-a10-pit.h b/include/hw/timer/allwinner-a10-pit.h
-index 31054b231c..939fb103c8 100644
---- a/include/hw/timer/allwinner-a10-pit.h
-+++ b/include/hw/timer/allwinner-a10-pit.h
-@@ -47,7 +47,7 @@ struct AwA10PITState {
-     SysBusDevice parent_obj;
-     /*< public >*/
-     qemu_irq irq[AW_A10_PIT_TIMER_NR];
--    ptimer_state * timer[AW_A10_PIT_TIMER_NR];
-+    PTimer *timer[AW_A10_PIT_TIMER_NR];
-     AwA10TimerContext timer_context[AW_A10_PIT_TIMER_NR];
-     MemoryRegion iomem;
-     uint32_t clk_freq[4];
-diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
-index 339cb9fe4b..174fbe6c88 100644
---- a/include/hw/timer/arm_mptimer.h
-+++ b/include/hw/timer/arm_mptimer.h
-@@ -30,7 +30,7 @@
- typedef struct {
-     uint32_t control;
-     uint32_t status;
--    ptimer_state *timer;
-+    PTimer *timer;
-     qemu_irq irq;
-     MemoryRegion iomem;
- } TimerBlock;
-diff --git a/include/hw/timer/armv7m_systick.h b/include/hw/timer/armv7m_systick.h
-index deb1d66a51..074efb5fb2 100644
---- a/include/hw/timer/armv7m_systick.h
-+++ b/include/hw/timer/armv7m_systick.h
-@@ -39,7 +39,7 @@ struct SysTickState {
-     uint32_t control;
-     uint32_t reload;
-     int64_t tick;
--    ptimer_state *ptimer;
-+    PTimer *ptimer;
-     MemoryRegion iomem;
-     qemu_irq irq;
-     Clock *refclk;
-diff --git a/include/hw/timer/cmsdk-apb-dualtimer.h b/include/hw/timer/cmsdk-apb-dualtimer.h
-index 5d8450eda1..1bab7e7961 100644
---- a/include/hw/timer/cmsdk-apb-dualtimer.h
-+++ b/include/hw/timer/cmsdk-apb-dualtimer.h
-@@ -37,7 +37,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(CMSDKAPBDualTimer, CMSDK_APB_DUALTIMER)
- /* One of the two identical timer modules in the dual-timer module */
- typedef struct CMSDKAPBDualTimerModule {
-     CMSDKAPBDualTimer *parent;
--    ptimer_state *timer;
-+    PTimer *timer;
-     qemu_irq timerint;
-     /*
-      * We must track the guest LOAD and VALUE register state by hand
-diff --git a/include/hw/timer/cmsdk-apb-timer.h b/include/hw/timer/cmsdk-apb-timer.h
-index b61e254d4d..c3d68f1154 100644
---- a/include/hw/timer/cmsdk-apb-timer.h
-+++ b/include/hw/timer/cmsdk-apb-timer.h
-@@ -33,7 +33,7 @@ struct CMSDKAPBTimer {
-     /*< public >*/
-     MemoryRegion iomem;
-     qemu_irq timerint;
--    ptimer_state *timer;
-+    PTimer *timer;
-     Clock *pclk;
- 
-     uint32_t ctrl;
-diff --git a/include/hw/timer/digic-timer.h b/include/hw/timer/digic-timer.h
-index 6c422a8451..38e363faf4 100644
---- a/include/hw/timer/digic-timer.h
-+++ b/include/hw/timer/digic-timer.h
-@@ -36,7 +36,7 @@ struct DigicTimerState {
-     /*< public >*/
- 
-     MemoryRegion iomem;
--    ptimer_state *ptimer;
-+    PTimer *ptimer;
- 
-     uint32_t control;
-     uint32_t relvalue;
-diff --git a/include/hw/timer/imx_epit.h b/include/hw/timer/imx_epit.h
-index 55f2611f79..351af8dbdb 100644
---- a/include/hw/timer/imx_epit.h
-+++ b/include/hw/timer/imx_epit.h
-@@ -64,8 +64,8 @@ struct IMXEPITState {
-     SysBusDevice parent_obj;
- 
-     /*< public >*/
--    ptimer_state *timer_reload;
--    ptimer_state *timer_cmp;
-+    PTimer *timer_reload;
-+    PTimer *timer_cmp;
-     MemoryRegion  iomem;
-     IMXCCMState  *ccm;
- 
-diff --git a/include/hw/timer/imx_gpt.h b/include/hw/timer/imx_gpt.h
-index d5743778e0..377ce42611 100644
---- a/include/hw/timer/imx_gpt.h
-+++ b/include/hw/timer/imx_gpt.h
-@@ -91,7 +91,7 @@ struct IMXGPTState {
-     SysBusDevice parent_obj;
- 
-     /*< public >*/
--    ptimer_state *timer;
-+    PTimer *timer;
-     MemoryRegion  iomem;
-     IMXCCMState  *ccm;
- 
-diff --git a/include/hw/timer/mss-timer.h b/include/hw/timer/mss-timer.h
-index 783cec30e3..48098e336c 100644
---- a/include/hw/timer/mss-timer.h
-+++ b/include/hw/timer/mss-timer.h
-@@ -45,7 +45,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(MSSTimerState, MSS_TIMER)
- #define R_TIM1_MAX        6
- 
- struct Msf2Timer {
--    ptimer_state *ptimer;
-+    PTimer *ptimer;
- 
-     uint32_t regs[R_TIM1_MAX];
-     qemu_irq irq;
-diff --git a/include/hw/watchdog/cmsdk-apb-watchdog.h b/include/hw/watchdog/cmsdk-apb-watchdog.h
-index d02bfd0dd7..74bea181dd 100644
---- a/include/hw/watchdog/cmsdk-apb-watchdog.h
-+++ b/include/hw/watchdog/cmsdk-apb-watchdog.h
-@@ -52,7 +52,7 @@ struct CMSDKAPBWatchdog {
-     MemoryRegion iomem;
-     qemu_irq wdogint;
-     bool is_luminary;
--    ptimer_state *timer;
-+    PTimer *timer;
-     Clock *wdogclk;
- 
-     uint32_t control;
-diff --git a/include/hw/watchdog/wdt_imx2.h b/include/hw/watchdog/wdt_imx2.h
-index d4cddac352..de1b73c752 100644
---- a/include/hw/watchdog/wdt_imx2.h
-+++ b/include/hw/watchdog/wdt_imx2.h
-@@ -70,8 +70,8 @@ struct IMX2WdtState {
-     MemoryRegion mmio;
-     qemu_irq irq;
- 
--    ptimer_state *timer;
--    ptimer_state *itimer;
-+    PTimer *timer;
-+    PTimer *itimer;
- 
-     bool pretimeout_support;
-     bool wicr_locked;
-diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index effcba4bca..e687ffe5fc 100644
---- a/include/qemu/typedefs.h
-+++ b/include/qemu/typedefs.h
-@@ -104,7 +104,7 @@ typedef struct PICCommonState PICCommonState;
- typedef struct PostcopyDiscardState PostcopyDiscardState;
- typedef struct Property Property;
- typedef struct PropertyInfo PropertyInfo;
--typedef struct ptimer_state ptimer_state;
-+typedef struct PTimer PTimer;
- typedef struct QBool QBool;
- typedef struct QDict QDict;
- typedef struct QEMUBH QEMUBH;
-diff --git a/tests/unit/ptimer-test.c b/tests/unit/ptimer-test.c
-index 04b5f4e3d0..907fe75996 100644
---- a/tests/unit/ptimer-test.c
-+++ b/tests/unit/ptimer-test.c
-@@ -66,7 +66,7 @@ static void qemu_clock_step(uint64_t ns)
- static void check_set_count(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
- 
-     triggered = false;
- 
-@@ -81,7 +81,7 @@ static void check_set_count(gconstpointer arg)
- static void check_set_limit(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
- 
-     triggered = false;
- 
-@@ -104,7 +104,7 @@ static void check_set_limit(gconstpointer arg)
- static void check_oneshot(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-     bool no_round_down = (*policy & PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
- 
-     triggered = false;
-@@ -222,7 +222,7 @@ static void check_oneshot(gconstpointer arg)
- static void check_periodic(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-     bool wrap_policy = (*policy & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD);
-     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
-     bool no_immediate_reload = (*policy & PTIMER_POLICY_NO_IMMEDIATE_RELOAD);
-@@ -408,7 +408,7 @@ static void check_periodic(gconstpointer arg)
- static void check_on_the_fly_mode_change(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-     bool wrap_policy = (*policy & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD);
-     bool no_round_down = (*policy & PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
- 
-@@ -460,7 +460,7 @@ static void check_on_the_fly_mode_change(gconstpointer arg)
- static void check_on_the_fly_period_change(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-     bool no_round_down = (*policy & PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
- 
-     triggered = false;
-@@ -496,7 +496,7 @@ static void check_on_the_fly_period_change(gconstpointer arg)
- static void check_on_the_fly_freq_change(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-     bool no_round_down = (*policy & PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
- 
-     triggered = false;
-@@ -532,7 +532,7 @@ static void check_on_the_fly_freq_change(gconstpointer arg)
- static void check_run_with_period_0(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
- 
-     triggered = false;
- 
-@@ -551,7 +551,7 @@ static void check_run_with_period_0(gconstpointer arg)
- static void check_run_with_delta_0(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-     bool wrap_policy = (*policy & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD);
-     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
-     bool no_immediate_reload = (*policy & PTIMER_POLICY_NO_IMMEDIATE_RELOAD);
-@@ -664,7 +664,7 @@ static void check_run_with_delta_0(gconstpointer arg)
- static void check_periodic_with_load_0(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-     bool continuous_trigger = (*policy & PTIMER_POLICY_CONTINUOUS_TRIGGER);
-     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
-     bool trig_only_on_dec = (*policy & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT);
-@@ -729,7 +729,7 @@ static void check_periodic_with_load_0(gconstpointer arg)
- static void check_oneshot_with_load_0(gconstpointer arg)
- {
-     const uint8_t *policy = arg;
--    ptimer_state *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-+    PTimer *ptimer = ptimer_init(ptimer_trigger, NULL, *policy);
-     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
-     bool trig_only_on_dec = (*policy & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT);
- 
--- 
-2.38.1
-
+>
+>Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
+>---
+> include/qemu/typedefs=2Eh | 10 +++++-----
+> 1 file changed, 5 insertions(+), 5 deletions(-)
+>
+>diff --git a/include/qemu/typedefs=2Eh b/include/qemu/typedefs=2Eh
+>index c7c8a85315=2E=2Edf4b55ac65 100644
+>--- a/include/qemu/typedefs=2Eh
+>+++ b/include/qemu/typedefs=2Eh
+>@@ -49,6 +49,7 @@ typedef struct DeviceState DeviceState;
+> typedef struct DirtyBitmapSnapshot DirtyBitmapSnapshot;
+> typedef struct DisplayChangeListener DisplayChangeListener;
+> typedef struct DriveInfo DriveInfo;
+>+typedef struct DumpState DumpState;
+> typedef struct Error Error;
+> typedef struct EventNotifier EventNotifier;
+> typedef struct FlatView FlatView;
+>@@ -56,6 +57,7 @@ typedef struct FWCfgEntry FWCfgEntry;
+> typedef struct FWCfgIoState FWCfgIoState;
+> typedef struct FWCfgMemState FWCfgMemState;
+> typedef struct FWCfgState FWCfgState;
+>+typedef struct GraphicHwOps GraphicHwOps;
+> typedef struct HostMemoryBackend HostMemoryBackend;
+> typedef struct I2CBus I2CBus;
+> typedef struct I2SCodec I2SCodec;
+>@@ -90,10 +92,10 @@ typedef struct PCIDevice PCIDevice;
+> typedef struct PCIEAERErr PCIEAERErr;
+> typedef struct PCIEAERLog PCIEAERLog;
+> typedef struct PCIEAERMsg PCIEAERMsg;
+>-typedef struct PCIESriovPF PCIESriovPF;
+>-typedef struct PCIESriovVF PCIESriovVF;
+> typedef struct PCIEPort PCIEPort;
+> typedef struct PCIESlot PCIESlot;
+>+typedef struct PCIESriovPF PCIESriovPF;
+>+typedef struct PCIESriovVF PCIESriovVF;
+> typedef struct PCIExpressDevice PCIExpressDevice;
+> typedef struct PCIExpressHost PCIExpressHost;
+> typedef struct PCIHostDeviceAddress PCIHostDeviceAddress;
+>@@ -106,6 +108,7 @@ typedef struct QBool QBool;
+> typedef struct QDict QDict;
+> typedef struct QEMUBH QEMUBH;
+> typedef struct QemuConsole QemuConsole;
+>+typedef struct QEMUCursor QEMUCursor;
+> typedef struct QEMUFile QEMUFile;
+> typedef struct QemuLockable QemuLockable;
+> typedef struct QemuMutex QemuMutex;
+>@@ -132,9 +135,6 @@ typedef struct VirtIODevice VirtIODevice;
+> typedef struct Visitor Visitor;
+> typedef struct VMChangeStateEntry VMChangeStateEntry;
+> typedef struct VMStateDescription VMStateDescription;
+>-typedef struct DumpState DumpState;
+>-typedef struct GraphicHwOps GraphicHwOps;
+>-typedef struct QEMUCursor QEMUCursor;
+>=20
+> /*
+>  * Pointer types

@@ -1,81 +1,79 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2645270ejb;
-        Mon, 20 Feb 2023 13:50:02 -0800 (PST)
-X-Google-Smtp-Source: AK7set+nzpGlik4jBg66tgvT/x95NKw8ZFm6Ghr/lcOEwZVq4roh9G91gI3cXybeQY0QWi9W3Bo7
-X-Received: by 2002:a05:6214:dc7:b0:56e:b25f:3602 with SMTP id 7-20020a0562140dc700b0056eb25f3602mr6778356qvt.43.1676929802474;
-        Mon, 20 Feb 2023 13:50:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676929802; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2645505ejb;
+        Mon, 20 Feb 2023 13:50:26 -0800 (PST)
+X-Google-Smtp-Source: AK7set/ZecKU7NEhgfVqh6PgPDsntc9O+FYENz7WJnZzccPE9oTvxRiGZPPOK5VSYHUKO+VBHgOL
+X-Received: by 2002:a05:622a:548:b0:3bd:16cf:2f10 with SMTP id m8-20020a05622a054800b003bd16cf2f10mr23436197qtx.35.1676929826787;
+        Mon, 20 Feb 2023 13:50:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676929826; cv=none;
         d=google.com; s=arc-20160816;
-        b=VP7lQm0w/P6I6LOsuwJXxTulUn58yN204FqMHl6v4dFzHS5p0+dyx8LoOpen2u5em2
-         BMj5/Ynm7/WZPglSxc9H+b0J51ExWmrBq32pFEqOgMOxk3cw20AklMfHe/2qVQXr54iT
-         3dblojL4mYCcy5J9QK78KmWjFcvWNyuYrYUbpS1D35LB2Z/PKwnLhyUrvs70Vz31Ry7m
-         pzmWcGSx9GnwJvbYxuLo0Q5YPtEkZw32I4cOyVBaMMEZpJc9M0g4yEq4gM1HQnyk2Ch9
-         eZNNqDmT1+zsr7lOOyq0Q9UGim6CcOhjaSpJ9886jYtOIOA7Ol1/LlQVQrDaKPsYYb4L
-         HfFA==
+        b=cn7MkXyjVGtqzaJo32fkkFNfGvckcewxDWjfsr9Gqamxg/f8B1pWNxMJIHxUngR3fc
+         Zs0G7klekfJmPxE3oV6QrxvJwEL2ji5n8PVhoqH3sAMIutSncTIjDOAl/lffkXwiIPU8
+         3tDF5VNTJ7auQFlnaXRQGCLC1T6o7NYSPM8RfHpLZu+CNDUM4rW06YOLMWs0g9IBFNFw
+         6qNl7O/mmO9o7LCHoDONP0knxKDmGk4T9B5ba8yD/cnyn4ruaF3mvTHfmw3qiaFq4Im8
+         OoRL4bK61zubm7k7br+f1dcUh2WEoMkFAqqcCwfIDSMBFhNJGiF647WArv14/amS7xe9
+         SNsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=tjjwd784Y94WrzQQX5HuuQunV9l5Ak3IUG0XDnxdkl4=;
-        b=jIbk+5s9VWjRlJMnWlLfDBAyTGlyIdrOcgZXpIN9aevI0EhmBkPZqiq7mVJsyU9a/X
-         O8BuLI8OafaLSxb/F9IwICv9ByJpRhLpp8bO+d1EGZtKOGt5mZ1L1KvitXXFR/mvKdzD
-         FkZnNjhSELra1Zb5RGkBeacFu6RrEZFbNTITgYUQpwjXgDei6ZWvZjMzFgDafHoPsW04
-         4Y8fYA5Cfli1Xvo+m7cxtLRqfmL9SWhLnC/CcVRhhTCBBMTq4FcybOST2d/BzSldNvAq
-         roITjyiCKeXPk6BYU0J2ybKpdgCJf0iGulfWNChQacQG5HUGJJxCtk67QQyYdBn4iRy+
-         nCCw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8XBtvi3wPEbn04OfSm75RT2PhGLFcN17qJlhJD1pomg=;
+        b=iwfUhTLSEY0S12dBVm+HdlxmzV7b3V+nqUdUfrjx7AKodn9DNGEpde3HEyrKQM+T+H
+         C0+chPDDXTIzRP/8S8Ip9mC7y1uPKOOmeJJZvrXijOGccWS51/zDaE1U3PVLMmncdyYZ
+         VmyikqyXWJAZHr8kCLOEWQDBi4+HvdKXBide+urvDJv9Hp3Xj+rU4woTyDcDMPPiHqoi
+         YATuXrwkcwgixyXrHqvNfljjgIan15S63GZfQuONj5XpWxoeiE7fa+CrGXGyP/HB+w63
+         lXtRE3kFeQtPxBx8CuQuWkKqE1vqBA/5+FJf3l0OyFDoYGxbwqbi1NblP+bPYzmKi+FW
+         Rm9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AFx6aFrA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SxYYX4CQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ef14-20020a05620a808e00b0073913032996si10337654qkb.506.2023.02.20.13.50.01
+        by mx.google.com with ESMTPS id f18-20020a05620a409200b0073b6a31f0e0si10923703qko.160.2023.02.20.13.50.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 13:50:01 -0800 (PST)
+        Mon, 20 Feb 2023 13:50:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AFx6aFrA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SxYYX4CQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUE2A-0003Ox-OX; Mon, 20 Feb 2023 16:49:18 -0500
+	id 1pUE2A-0003Ow-7Q; Mon, 20 Feb 2023 16:49:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUE29-0003Oh-08
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 16:49:17 -0500
+ id 1pUE27-0003OL-Dh
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 16:49:16 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUE25-0007vn-9U
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 16:49:15 -0500
+ id 1pUE23-0007vg-Hg
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 16:49:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676929752;
+ s=mimecast20190719; t=1676929750;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tjjwd784Y94WrzQQX5HuuQunV9l5Ak3IUG0XDnxdkl4=;
- b=AFx6aFrA5IP4h5HxknAqsTuBenfPcWkFe80s8rAya+9kFEyxvqlJXoHm2ugkDq6R+X9FxL
- BpaK7r/LhnrvvTQa7+uvOPkUpBVJdqulwOHGLLj8m8dGsU2BY/oEEBbETER84BHZdSEcuY
- TfV4SI2DSGbMaQCwDKNqKa/MNTHLU88=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding;
+ bh=8XBtvi3wPEbn04OfSm75RT2PhGLFcN17qJlhJD1pomg=;
+ b=SxYYX4CQY9gg/InAXQeAgGdD0wNoG0SfkLA3cxkA/NWYXBchtnTOm4EQy1S/dkr9yCjHKG
+ FQ0KKhAfdoKmE5WVF5y3FP4hBaskVe5BOv5IrvxuEOOzM7Kx73CjhZfKNG9zX7IpZkfNkq
+ mwu+iENcYrrt+0m+8qSVRPW4fYWz3GQ=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-191-aV9EnTwiNJWc9AUkPnL0Fw-1; Mon, 20 Feb 2023 16:49:08 -0500
-X-MC-Unique: aV9EnTwiNJWc9AUkPnL0Fw-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
+ us-mta-625-erBcdkLyPaignqBUXDOQ2Q-1; Mon, 20 Feb 2023 16:49:04 -0500
+X-MC-Unique: erBcdkLyPaignqBUXDOQ2Q-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 01AD3802D19;
- Mon, 20 Feb 2023 21:49:08 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B02B42A5956F;
+ Mon, 20 Feb 2023 21:49:03 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.3])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7C7D7492B04;
- Mon, 20 Feb 2023 21:49:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7C87040B40D7;
+ Mon, 20 Feb 2023 21:49:02 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Michael Roth <michael.roth@amd.com>,
@@ -91,15 +89,13 @@ Cc: Michael Roth <michael.roth@amd.com>,
  Hanna Reitz <hreitz@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v2 01/15] util: drop qemu_fork()
-Date: Tue, 21 Feb 2023 01:48:45 +0400
-Message-Id: <20230220214859.3792171-2-marcandre.lureau@redhat.com>
-In-Reply-To: <20230220214859.3792171-1-marcandre.lureau@redhat.com>
-References: <20230220214859.3792171-1-marcandre.lureau@redhat.com>
+Subject: [PATCH v2 00/15] win32: do not mix SOCKET and fd space
+Date: Tue, 21 Feb 2023 01:48:44 +0400
+Message-Id: <20230220214859.3792171-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -124,147 +120,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n75Svv1qi6is
+X-TUID: Gi7eEbWL3ad7
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Fortunately, qemu_fork() is no longer used since commit
-a95570e3e4d6 ("io/command: use glib GSpawn, instead of open-coding
-fork/exec"). (GSpawn uses posix_spawn() whenever possible instead)
+Hi,
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- include/qemu/osdep.h | 14 ---------
- util/oslib-posix.c   | 70 --------------------------------------------
- util/oslib-win32.c   |  9 ------
- 3 files changed, 93 deletions(-)
+A win32 SOCKET handle is often cast to an int file descriptor, as this is what
+other OS use for sockets. When necessary, QEMU eventually queries whether it's a
+socket with the help of fd_is_socket(). However, there is no guarantee of
+conflict between the fd and SOCKET space. Such conflict would have surprising
+consequences. We can fix this by using FDs only.
 
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 88c9facbf2..f68b5d8708 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -665,20 +665,6 @@ void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-  */
- char *qemu_get_pid_name(pid_t pid);
- 
--/**
-- * qemu_fork:
-- *
-- * A version of fork that avoids signal handler race
-- * conditions that can lead to child process getting
-- * signals that are otherwise only expected by the
-- * parent. It also resets all signal handlers to the
-- * default settings.
-- *
-- * Returns 0 to child process, pid number to parent
-- * or -1 on failure.
-- */
--pid_t qemu_fork(Error **errp);
--
- /* Using intptr_t ensures that qemu_*_page_mask is sign-extended even
-  * when intptr_t is 32-bit and we are aligning a long long.
-  */
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 77d882e681..760390b31e 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -583,76 +583,6 @@ char *qemu_get_pid_name(pid_t pid)
- }
- 
- 
--pid_t qemu_fork(Error **errp)
--{
--    sigset_t oldmask, newmask;
--    struct sigaction sig_action;
--    int saved_errno;
--    pid_t pid;
--
--    /*
--     * Need to block signals now, so that child process can safely
--     * kill off caller's signal handlers without a race.
--     */
--    sigfillset(&newmask);
--    if (pthread_sigmask(SIG_SETMASK, &newmask, &oldmask) != 0) {
--        error_setg_errno(errp, errno,
--                         "cannot block signals");
--        return -1;
--    }
--
--    pid = fork();
--    saved_errno = errno;
--
--    if (pid < 0) {
--        /* attempt to restore signal mask, but ignore failure, to
--         * avoid obscuring the fork failure */
--        (void)pthread_sigmask(SIG_SETMASK, &oldmask, NULL);
--        error_setg_errno(errp, saved_errno,
--                         "cannot fork child process");
--        errno = saved_errno;
--        return -1;
--    } else if (pid) {
--        /* parent process */
--
--        /* Restore our original signal mask now that the child is
--         * safely running. Only documented failures are EFAULT (not
--         * possible, since we are using just-grabbed mask) or EINVAL
--         * (not possible, since we are using correct arguments).  */
--        (void)pthread_sigmask(SIG_SETMASK, &oldmask, NULL);
--    } else {
--        /* child process */
--        size_t i;
--
--        /* Clear out all signal handlers from parent so nothing
--         * unexpected can happen in our child once we unblock
--         * signals */
--        sig_action.sa_handler = SIG_DFL;
--        sig_action.sa_flags = 0;
--        sigemptyset(&sig_action.sa_mask);
--
--        for (i = 1; i < NSIG; i++) {
--            /* Only possible errors are EFAULT or EINVAL The former
--             * won't happen, the latter we expect, so no need to check
--             * return value */
--            (void)sigaction(i, &sig_action, NULL);
--        }
--
--        /* Unmask all signals in child, since we've no idea what the
--         * caller's done with their signal mask and don't want to
--         * propagate that to children */
--        sigemptyset(&newmask);
--        if (pthread_sigmask(SIG_SETMASK, &newmask, NULL) != 0) {
--            Error *local_err = NULL;
--            error_setg_errno(&local_err, errno,
--                             "cannot unblock signals");
--            error_report_err(local_err);
--            _exit(1);
--        }
--    }
--    return pid;
--}
--
- void *qemu_alloc_stack(size_t *sz)
- {
-     void *ptr, *guardpage;
-diff --git a/util/oslib-win32.c b/util/oslib-win32.c
-index 07ade41800..528c9ee156 100644
---- a/util/oslib-win32.c
-+++ b/util/oslib-win32.c
-@@ -283,15 +283,6 @@ char *qemu_get_pid_name(pid_t pid)
- }
- 
- 
--pid_t qemu_fork(Error **errp)
--{
--    errno = ENOSYS;
--    error_setg_errno(errp, errno,
--                     "cannot fork child process");
--    return -1;
--}
--
--
- #undef connect
- int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
-                       socklen_t addrlen)
+After fixing a few missed closesocket(), this patch series makes the win32
+socket API wrappers take FDs. It finally get rid of closesocket() usage by using
+a close() wrapper instead. (note that fdopen/fclose would not be enough either
+to close the underlying socket appropriately)
+
+v2:
+- add clean up patch "util: drop qemu_fork()"
+- add a "&error_warn", to help with basic error reporting
+- fix errno handling after _get_osfhandle()
+- introduce qemu_socket_(un)select() helpers
+- add patch "aio_set_fd_handler() only supports SOCKET"
+- add meson slirp.wrap RFC
+- various misc cleanups
+- add r-b tags
+
+Marc-André Lureau (15):
+  util: drop qemu_fork()
+  tests: use closesocket()
+  io: use closesocket()
+  error: add global &error_warn destination
+  win32/socket: introduce qemu_socket_select() helper
+  win32/socket: introduce qemu_socket_unselect() helper
+  aio: make aio_set_fd_poll() static to aio-posix.c
+  aio/win32: aio_set_fd_handler() only supports SOCKET
+  RFC: build-sys: add slirp.wrap
+  main-loop: remove qemu_fd_register(), win32/slirp/socket specific
+  slirp: unregister the win32 SOCKET
+  slirp: open-code qemu_socket_(un)select()
+  win32: avoid mixing SOCKET and file descriptor space
+  os-posix: remove useless ioctlsocket() define
+  win32: replace closesocket() with close() wrapper
+
+ include/block/aio.h         |   8 --
+ include/qapi/error.h        |   6 ++
+ include/qemu/main-loop.h    |   2 -
+ include/qemu/osdep.h        |  14 ---
+ include/sysemu/os-posix.h   |   3 -
+ include/sysemu/os-win32.h   |  15 ++-
+ backends/tpm/tpm_emulator.c |   6 +-
+ crypto/afalg.c              |   6 +-
+ hw/hyperv/syndbg.c          |   4 +-
+ io/channel-socket.c         |   8 +-
+ io/channel-watch.c          |  10 +-
+ net/dgram.c                 |  14 +--
+ net/slirp.c                 |  16 ++-
+ net/socket.c                |  22 ++--
+ tests/qtest/libqtest.c      |   8 +-
+ tests/qtest/microbit-test.c |   2 +-
+ tests/qtest/netdev-socket.c |  10 +-
+ tests/unit/socket-helpers.c |   2 +-
+ util/aio-posix.c            |   6 +-
+ util/aio-win32.c            |  23 ++--
+ util/error.c                |  10 +-
+ util/main-loop.c            |  11 --
+ util/oslib-posix.c          |  70 -------------
+ util/oslib-win32.c          | 202 ++++++++++++++++++++++++++++++------
+ util/qemu-sockets.c         |  22 ++--
+ .gitignore                  |   2 +
+ subprojects/slirp.wrap      |   6 ++
+ 27 files changed, 289 insertions(+), 219 deletions(-)
+ create mode 100644 subprojects/slirp.wrap
+
 -- 
 2.39.1
 

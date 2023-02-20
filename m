@@ -1,111 +1,111 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2184064ejb;
-        Mon, 20 Feb 2023 03:28:59 -0800 (PST)
-X-Google-Smtp-Source: AK7set9chs4ZHnvFeK7YKg+YjDaEfU1jhta/46mdpEYQetdmfe8BVYIIMWDVzd+8/uP5tXjQSvH4
-X-Received: by 2002:a05:6214:1d0c:b0:56f:72c5:e085 with SMTP id e12-20020a0562141d0c00b0056f72c5e085mr3040606qvd.52.1676892538853;
-        Mon, 20 Feb 2023 03:28:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676892538; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2232162ejb;
+        Mon, 20 Feb 2023 04:39:11 -0800 (PST)
+X-Google-Smtp-Source: AK7set/+eQBdbD9PJVZd6zts1SSrcSzrinNlgYkoqafliJcWUzodU7gVC9swLWkKRjMNSRgijcRl
+X-Received: by 2002:a05:6214:5010:b0:56e:a301:70f9 with SMTP id jo16-20020a056214501000b0056ea30170f9mr4305075qvb.39.1676896751376;
+        Mon, 20 Feb 2023 04:39:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676896751; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bigv2Re7YHjwadJCWqBAiKA4A9D7nz4Nb8GNwcXCJAMo/NOgFAJBdNcfKio4OnbaE5
-         AUjbhEfru/C84pbzWWg1jRAm6nQrTs/avS9IO5XVtkauOg1xqbNzxVlEZfLxSOyl2crc
-         EQ4IdNxsCD0ZLJvXa6hK7NI8ZzjISzh+tvjXHQ8xYp/Sy0ql7TJ08baAinjj1Tj7WZ8x
-         REDxv7j/q6jL61FZYRfU44PMHXS5VgF3CzdSATERFMJQY1gXrjjpW4/L2ekunlI+fx6i
-         ea5+i0aZxorMjXbzqAZUkXrNh4xxbOENvPTQb6B3HNqxo7qwTVdME/HkR90nP8o9aHrc
-         FY5A==
+        b=1AgJ6loH1yf4v4vjLat6N3fZeKGq5jOkgJMPG2gQhWCqGrkGsKLTIzQt3oXSJv++js
+         IHmfdyW+wQ67TvJ+uWxV1cPv9N0owLq3wm/xbqCk47Kg3MNqDGVXjzxLGSZ6IFW1ySyz
+         SsV9tzNVw8K9lPcJzR01r6gO6mzaFny+lc6Dky3jH+/QylLuv+BBK6RrRaBEXV6EOvK6
+         8FKRc18ZUoZANM+uPenm+CkzT+I97cTaVOb/PNJWakte6cgSRni4z2EVNjRTx71OcdFI
+         T1k9F73+qJhudDWtaNtnkcjeHyuuuPrLkBboOIk7VKSxByriarNcMQ3coWe3HaZHsx8G
+         RRNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=+wG3S28bbn6lnyJyqxwMLr0SJDA0sll2D1Vt5e6a5Cw=;
-        b=ZA7w9n+OS4GdeAfTvcvzpA+HEKjXgWdTee91YAqa457H9kKZ4/l1mGbGhO37hnfrr7
-         D64se9T/Ilsmu3VRCi7gPpwLL0NrshGSlTYtkU/JBmlxi1H9SQTIiNphPboZ0AyaIeFl
-         a7GyARgDl3MjItvKmMp1eCsh3PbkRqcYD/Qjkbe7jMsv54idfvQPWRj9iYBXDCD0RBpN
-         +7V6lIfcRNblXaLrbHDVbF09KRjfwNv9olyaqGC8+ooBbA3XzbHbXPI6jMxrH59JbT0j
-         Gzr+rz9qZdPPBN6YCb2p3O1brKI3LU1yNzA8n48SPg1Gv066gMskkx5HCgdcLujmAw+d
-         LDtA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=BSf74cTUjnd8sQTueyoxUZpvfVCxNglttNrzkxwe/og=;
+        b=WUn2QHtc0CPShxlPNro8gKEh0AnJPV/ljlXT7anViFi5xc0UJQ6uzqUNkGRmICovmP
+         Kqmr9uSLsHE/6A4Vxsim6+bzLWGgfAaNFtliw8/PmEAclCd5sO1Xn/xNhyEhh9mUvdTR
+         n12Weomh0UYcVcvbS4GgDRznucHFDru3QUeh9WgMHnydjG83BgvOzCMsBVkbyYAIgMMH
+         tIgszBBJ81j8l/YH35ULO3uR0fYHpXDikp057xylqmKZBEl7/3vWph/PQUeqGk15pFo1
+         JJVSQT2v+V6S8FrwwxtmdvsFtTkI8sFFWINC6nQJ4yRhZx1RxvpLRi3AysbwkXeKELB2
+         StIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gpm1mjxi;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TxexDSek;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r12-20020ae9d60c000000b0073bb5996ed8si5858637qkk.684.2023.02.20.03.28.58
+        by mx.google.com with ESMTPS id z1-20020a0cf001000000b0056c18ff8509si9176025qvk.188.2023.02.20.04.39.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 03:28:58 -0800 (PST)
+        Mon, 20 Feb 2023 04:39:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=gpm1mjxi;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TxexDSek;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pU4LC-0004WR-0q; Mon, 20 Feb 2023 06:28:18 -0500
+	id 1pU5Rb-00080y-KL; Mon, 20 Feb 2023 07:38:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1pU4L9-0004VZ-8q; Mon, 20 Feb 2023 06:28:15 -0500
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1pU4L6-0001AV-Tk; Mon, 20 Feb 2023 06:28:14 -0500
-Received: by mail-lj1-x22c.google.com with SMTP id j17so993663ljq.11;
- Mon, 20 Feb 2023 03:28:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+wG3S28bbn6lnyJyqxwMLr0SJDA0sll2D1Vt5e6a5Cw=;
- b=gpm1mjxi9YkeGSiq8y5zaiImmS87lj+dUVjdJ+qs1pVWRYe5eY1AAx+3FF5TM+TRWY
- qekpW5dZmKJACpcDo3GpuDwbUN1a1e83vXnQz6C47KRTkRtQ7PsWNsob7brpMa+ygX/h
- n897iF2Vjl/+EzdPrOQcwTgGgVQiy6GJc1SCPqZuQI9zLuhOjtzemC7DZOlhkW0YYl2y
- f5mhn0HA6Bgn+XJ8nKYZEU5lyR5CgpZ6vy4AcTGFIpzdPZndjpkE+wi8HZAXvHF+Xbb5
- ws6dZrSBkVuLWqPmuwKFrHa3giCjqHLhr6PsnX6971BAAo4UKU4YYax/HH9IO04g5qtX
- bYyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+wG3S28bbn6lnyJyqxwMLr0SJDA0sll2D1Vt5e6a5Cw=;
- b=2U3yd2fI2CaiA7eNXV5IlbfDMGZ2GIn9K/jHpMbDGrnxTV1YBdLRBx/44kg6PquZwO
- hvWH5klv8P9BdJgD/Vl/2eTxyUiZWXCADflRNe7/DRadMD2DTDhpzxlX2ZPe2B0rlSGS
- 8mjRuvl+EEtpDIHZ1whoo+Oub3S8wdfVc8LfQzuBWgEggAkNRAxFiY89BhDpSIxAl3CL
- Qcq2taU51uJ1UNsx+ZE8z27WrNtFFrDIhZKx5WeQsM12evl2sT7nXBUpB23nH/XkjRd0
- jWEkRQiv8kyBI+vai/5YBF6h7a0ylDw5L1LlL2jj78MJJeU+qthEpDhX0T7L8elgeMRw
- 2nEA==
-X-Gm-Message-State: AO0yUKXontNgMxHYjMcVIn7zpbWiOeIC0Z03ZOjhtYAzvUMVGcORhWBY
- oFXdAiNPl4oF4MlQJaI3oLxA8bfubipvcjV8D5uINEnxIYY=
-X-Received: by 2002:a2e:a4b7:0:b0:293:535a:c1 with SMTP id
- g23-20020a2ea4b7000000b00293535a00c1mr529875ljm.0.1676892490182; 
- Mon, 20 Feb 2023 03:28:10 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pU5Ra-000807-6r
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 07:38:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pU5RX-0005h2-U4
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 07:38:57 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1676896735;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BSf74cTUjnd8sQTueyoxUZpvfVCxNglttNrzkxwe/og=;
+ b=TxexDSek3kiN2F9Lzk3sjbvRjY8MzExmwCQsmEru3qhxHPNdXdIqMwvLFAPI6TF8whNYBW
+ B9KklkmdACwnHm4fs9foYByk3GH4fTsZ52j722f1hrGY2nf3JSdhypRW4eMJJDZN+QJvir
+ nYV8QXD5Snabt66+5ChakPViOdkiYTY=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-588-650qXDoFMLKFJ5_XMTzbZA-1; Mon, 20 Feb 2023 07:38:52 -0500
+X-MC-Unique: 650qXDoFMLKFJ5_XMTzbZA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A5D0A29AA2C5;
+ Mon, 20 Feb 2023 12:38:51 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 496F72166B26;
+ Mon, 20 Feb 2023 12:38:51 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 335F821E6A1F; Mon, 20 Feb 2023 13:38:50 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: marcandre.lureau@redhat.com
+Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Weil <sw@weilnetz.de>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,  Joel Stanley <joel@jms.id.au>,
+ Laurent Vivier <lvivier@redhat.com>,  Thomas Huth <thuth@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,  qemu-arm@nongnu.org,  Stefan Berger
+ <stefanb@linux.vnet.ibm.com>
+Subject: Re: [PATCH 3/4] win32: stop mixing SOCKET and file descriptor space
 References: <20230212204942.1905959-1-marcandre.lureau@redhat.com>
  <20230212204942.1905959-4-marcandre.lureau@redhat.com>
-In-Reply-To: <20230212204942.1905959-4-marcandre.lureau@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Mon, 20 Feb 2023 15:27:58 +0400
-Message-ID: <CAJ+F1CLV_JY94XT28nYuXn99BVBxq3WpphRb5vfQ7Hd0fgJ6kQ@mail.gmail.com>
-Subject: Re: [PATCH 3/4] win32: stop mixing SOCKET and file descriptor space
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>, 
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Jason Wang <jasowang@redhat.com>, 
- qemu-arm@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>
-Content-Type: text/plain; charset="UTF-8"
+Date: Mon, 20 Feb 2023 13:38:50 +0100
+In-Reply-To: <20230212204942.1905959-4-marcandre.lureau@redhat.com> (marcandre
+ lureau's message of "Mon, 13 Feb 2023 00:49:41 +0400")
+Message-ID: <87r0ukbjfp.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-lj1-x22c.google.com
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,24 +120,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EQpOrVu36awU
+X-TUID: foaV+s7kBt9O
 
-Hi
+marcandre.lureau@redhat.com writes:
 
-On Mon, Feb 13, 2023 at 12:51 AM <marcandre.lureau@redhat.com> wrote:
->
 > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 >
 > Until now, a win32 SOCKET handle is often cast to an int file
-> descriptor, as this is what other OS use for sockets. When necessary,
+> descriptor, as this is what other OS use for sockets.
+
+Brief recap, to refamiliarize myself with the way this stuff works under
+Windows:
+
+1. Both POSIX and Windows use small integer file descriptors.
+
+2. With POSIX, these are an OS thing.  With Windows, these are a CRT
+   thing, wrapping a HANDLE, which is the OS thing.
+
+3. A Windows HANDLE is to be treated as an abstract data type.
+
+4. _get_osfhandle() returns a CRT file descriptor's HANDLE.
+
+5. _open_osfhandle() creates a CRT file descriptor that wraps around a
+   HANDLE.
+
+6. Closing a CRT file descriptor also closes the wrapped HANDLE.
+
+7. A Windows SOCKET is also a HANDLE.  Maybe.  I guess.  Docs are
+   confusing.
+
+8. There's merry confusion between int, intptr_t, HANDLE, SOCKET, and
+   who knows what else.
+
+>                                                       When necessary,
 > QEMU eventually queries whether it's a socket with the help of
 > fd_is_socket(). However, there is no guarantee of conflict between the
 > fd and SOCKET space. Such conflict would have surprising consequences,
 > we shouldn't mix them.
->
+
+True.
+
+However, if conflicts were an issue in practice, conflating the two
+wouldn't be so common, don't you think?  File descriptors start at zero.
+Perhaps SOCKETs are much bigger when interpreted as int?  Not really
+relevant, because:
+
 > Also, it is often forgotten that SOCKET must be closed with
 > closesocket(), and not close().
->
+
+Yup.  After the next patch, we don't have to remember anymore outside
+oslib-win32.c, and that's a fairly compelling argument for this patch.
+
 > Instead, let's make the win32 socket wrapper functions return and take a
 > file descriptor, and let util/ wrappers do the fd/SOCKET conversion as
 > necessary. A bit of adaptation is necessary in io/ as well.
@@ -145,7 +178,11 @@ On Mon, Feb 13, 2023 at 12:51 AM <marcandre.lureau@redhat.com> wrote:
 > Unfortunately, we can't drop closesocket() usage, despite
 > _open_osfhandle() documentation claiming transfer of ownership, testing
 > shows bad behaviour if you forget to call closesocket().
->
+
+I figure this refers to your patch to qemu_closesocket_wrap().  Correct?
+
+What bad behavior did you observe in testing?
+
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
 >  io/channel-socket.c |  18 +++--
@@ -160,7 +197,7 @@ On Mon, Feb 13, 2023 at 12:51 AM <marcandre.lureau@redhat.com> wrote:
 > @@ -426,6 +426,14 @@ static void qio_channel_socket_init(Object *obj)
 >      ioc->fd =3D -1;
 >  }
->
+>=20=20
 > +static void wsa_event_clear(int sockfd)
 > +{
 > +#ifdef WIN32
@@ -185,7 +222,7 @@ On Mon, Feb 13, 2023 at 12:51 AM <marcandre.lureau@redhat.com> wrote:
 >      }
 > @@ -845,9 +851,7 @@ qio_channel_socket_close(QIOChannel *ioc,
 >      Error *err =3D NULL;
->
+>=20=20
 >      if (sioc->fd !=3D -1) {
 > -#ifdef WIN32
 > -        WSAEventSelect(sioc->fd, NULL, 0);
@@ -194,6 +231,10 @@ On Mon, Feb 13, 2023 at 12:51 AM <marcandre.lureau@redhat.com> wrote:
 >          if (qio_channel_has_feature(ioc, QIO_CHANNEL_FEATURE_LISTEN)) {
 >              socket_listen_cleanup(sioc->fd, errp);
 >          }
+
+Factoring out wsa_event_clear() could be a separate patch.  Observation,
+not demand.
+
 > @@ -899,7 +903,7 @@ static void qio_channel_socket_set_aio_fd_handler(QIO=
 Channel *ioc,
 >                                                    void *opaque)
@@ -201,28 +242,24 @@ Channel *ioc,
 >      QIOChannelSocket *sioc =3D QIO_CHANNEL_SOCKET(ioc);
 > -    aio_set_fd_handler(ctx, sioc->fd, false,
 > +    aio_set_fd_handler(ctx, _get_osfhandle(sioc->fd), false,
-
-My bad, this breaks compilation on !win32, fixing. (ah, if only it was
-a gitlab MR with CI..)
-
 >                         io_read, io_write, NULL, NULL, opaque);
 >  }
->
+>=20=20
 > diff --git a/io/channel-watch.c b/io/channel-watch.c
 > index ad7c568a84..8c1c24008f 100644
 > --- a/io/channel-watch.c
 > +++ b/io/channel-watch.c
 > @@ -19,6 +19,7 @@
 >   */
->
+>=20=20
 >  #include "qemu/osdep.h"
 > +#include "qemu/error-report.h"
 >  #include "io/channel-watch.h"
->
+>=20=20
 >  typedef struct QIOChannelFDSource QIOChannelFDSource;
 > @@ -275,15 +276,21 @@ GSource *qio_channel_create_fd_watch(QIOChannel *io=
 c,
->
+>=20=20
 >  #ifdef CONFIG_WIN32
 >  GSource *qio_channel_create_socket_watch(QIOChannel *ioc,
 > -                                         int socket,
@@ -230,9 +267,13 @@ c,
 >                                           GIOCondition condition)
 >  {
 > +    SOCKET s =3D _get_osfhandle(sockfd);
+
+_get_osfhandle() returns a HANDLE as intptr_t.  Is a HANDLE that refers
+to a socket also a SOCKET?  The docs I found so far are confusing...
+
 >      GSource *source;
 >      QIOChannelSocketSource *ssource;
->
+>=20=20
 > -    WSAEventSelect(socket, ioc->event,
 > -                   FD_READ | FD_ACCEPT | FD_CLOSE |
 > -                   FD_CONNECT | FD_WRITE | FD_OOB);
@@ -241,23 +282,29 @@ c,
 > +                       FD_READ | FD_ACCEPT | FD_CLOSE |
 > +                       FD_CONNECT | FD_WRITE | FD_OOB) =3D=3D SOCKET_ERR=
 OR) {
-> +        g_autofree gchar *emsg =3D g_win32_error_message(GetLastError())=
-;
+> +        g_autofree gchar *emsg =3D g_win32_error_message(GetLastError());
 > +        error_printf("error creating socket watch: %s", emsg);
+
+Uh, why is printing an error appropriate here?  Shouldn't we leave error
+handling to callers?
+
+Also, does GetLastError() do the right thing after _get_osfhandle()
+failure?  _get_osfhandle() is documented to set errno...
+
 > +        return NULL;
 > +    }
->
+>=20=20
 >      source =3D g_source_new(&qio_channel_socket_source_funcs,
 >                            sizeof(QIOChannelSocketSource));
 > @@ -293,7 +300,7 @@ GSource *qio_channel_create_socket_watch(QIOChannel *=
 ioc,
 >      object_ref(OBJECT(ioc));
->
+>=20=20
 >      ssource->condition =3D condition;
 > -    ssource->socket =3D socket;
 > +    ssource->socket =3D s;
 >      ssource->revents =3D 0;
->
+>=20=20
 >      ssource->fd.fd =3D (gintptr)ioc->event;
 > diff --git a/util/oslib-win32.c b/util/oslib-win32.c
 > index 07ade41800..78fab521cf 100644
@@ -272,7 +319,7 @@ ioc,
 > +    WSAEventSelect(s, NULL, 0);
 >      ioctlsocket(fd, FIONBIO, &opt);
 >  }
->
+>=20=20
 > @@ -297,7 +298,13 @@ int qemu_connect_wrap(int sockfd, const struct socka=
 ddr *addr,
 >                        socklen_t addrlen)
@@ -283,6 +330,13 @@ ddr *addr,
 > +
 > +    if (s =3D=3D -1) {
 > +        errno =3D EINVAL;
+
+_get_osfhandle() is documented to set errno to EBADF in this case.  If
+true, you change errno from EBADF to EINVAL.  Doesn't seem like an
+improvement :)
+
+More of the same below, not pointing it out there.
+
 > +        return -1;
 > +    }
 > +    ret =3D connect(s, addr, addrlen);
@@ -343,12 +397,18 @@ r *addr,
 > +    if (fd < 0) {
 > +        closesocket(s);
 > +        errno =3D ENOMEM;
+
+_open_osfhandle() is not documented to set errno, unlike
+_get_osfhandle().  So, okay, I guess.
+
+Similar uses below, also okay.
+
 > +    }
 > +
 > +    return fd;
 >  }
->
->
+>=20=20
+>=20=20
 > @@ -350,10 +379,22 @@ int qemu_socket_wrap(int domain, int type, int prot=
 ocol)
 >  int qemu_accept_wrap(int sockfd, struct sockaddr *addr,
@@ -431,6 +491,25 @@ turns an
 > +    }
 > +
 > +    /* closesocket() is required, event after close()! */
+
+As you mention in the commit message, this contradicts _open_osfhandle()
+documentation, which claims close() is enough.  I think the comment here
+should mention it, too.
+
+Found in an old Stackoverflow reply:
+
+    open() returns CRT file descriptors which is different from the
+    Win32 handle. You can create a CRT file descriptor using
+    _open_osfhandle(). But this is not recommened for sockets because
+    you cannot close the file in a clean way. You either use close()
+    which will leak the Winsock user-mode state, or closesocket() which
+    will leak the CRT descriptor.
+
+https://stackoverflow.com/questions/4676256/whats-the-difference-between-so=
+cket-and-handle-in-windows
+
+How can we be sure this is not an issue here?
+
 > +    ret =3D closesocket(s);
 >      if (ret < 0) {
 >          errno =3D socket_error();
@@ -438,142 +517,7 @@ turns an
 > +
 >      return ret;
 >  }
->
-> @@ -400,7 +471,14 @@ int qemu_getsockopt_wrap(int sockfd, int level, int =
-optname,
->                           void *optval, socklen_t *optlen)
->  {
->      int ret;
-> -    ret =3D getsockopt(sockfd, level, optname, optval, optlen);
-> +    SOCKET s =3D _get_osfhandle(sockfd);
-> +
-> +    if (s =3D=3D -1) {
-> +        errno =3D EINVAL;
-> +        return -1;
-> +    }
-> +
-> +    ret =3D getsockopt(s, level, optname, optval, optlen);
->      if (ret < 0) {
->          errno =3D socket_error();
->      }
-> @@ -413,7 +491,13 @@ int qemu_setsockopt_wrap(int sockfd, int level, int =
-optname,
->                           const void *optval, socklen_t optlen)
->  {
->      int ret;
-> -    ret =3D setsockopt(sockfd, level, optname, optval, optlen);
-> +    SOCKET s =3D _get_osfhandle(sockfd);
-> +
-> +    if (s =3D=3D -1) {
-> +        errno =3D EINVAL;
-> +        return -1;
-> +    }
-> +    ret =3D setsockopt(s, level, optname, optval, optlen);
->      if (ret < 0) {
->          errno =3D socket_error();
->      }
-> @@ -426,7 +510,13 @@ int qemu_getpeername_wrap(int sockfd, struct sockadd=
-r *addr,
->                            socklen_t *addrlen)
->  {
->      int ret;
-> -    ret =3D getpeername(sockfd, addr, addrlen);
-> +    SOCKET s =3D _get_osfhandle(sockfd);
-> +
-> +    if (s =3D=3D -1) {
-> +        errno =3D EINVAL;
-> +        return -1;
-> +    }
-> +    ret =3D getpeername(s, addr, addrlen);
->      if (ret < 0) {
->          errno =3D socket_error();
->      }
-> @@ -439,7 +529,13 @@ int qemu_getsockname_wrap(int sockfd, struct sockadd=
-r *addr,
->                            socklen_t *addrlen)
->  {
->      int ret;
-> -    ret =3D getsockname(sockfd, addr, addrlen);
-> +    SOCKET s =3D _get_osfhandle(sockfd);
-> +
-> +    if (s =3D=3D -1) {
-> +        errno =3D EINVAL;
-> +        return -1;
-> +    }
-> +    ret =3D getsockname(s, addr, addrlen);
->      if (ret < 0) {
->          errno =3D socket_error();
->      }
-> @@ -451,7 +547,13 @@ int qemu_getsockname_wrap(int sockfd, struct sockadd=
-r *addr,
->  ssize_t qemu_send_wrap(int sockfd, const void *buf, size_t len, int flag=
-s)
->  {
->      int ret;
-> -    ret =3D send(sockfd, buf, len, flags);
-> +    SOCKET s =3D _get_osfhandle(sockfd);
-> +
-> +    if (s =3D=3D -1) {
-> +        errno =3D EINVAL;
-> +        return -1;
-> +    }
-> +    ret =3D send(s, buf, len, flags);
->      if (ret < 0) {
->          errno =3D socket_error();
->      }
-> @@ -464,7 +566,13 @@ ssize_t qemu_sendto_wrap(int sockfd, const void *buf=
-, size_t len, int flags,
->                           const struct sockaddr *addr, socklen_t addrlen)
->  {
->      int ret;
-> -    ret =3D sendto(sockfd, buf, len, flags, addr, addrlen);
-> +    SOCKET s =3D _get_osfhandle(sockfd);
-> +
-> +    if (s =3D=3D -1) {
-> +        errno =3D EINVAL;
-> +        return -1;
-> +    }
-> +    ret =3D sendto(s, buf, len, flags, addr, addrlen);
->      if (ret < 0) {
->          errno =3D socket_error();
->      }
-> @@ -476,7 +584,13 @@ ssize_t qemu_sendto_wrap(int sockfd, const void *buf=
-, size_t len, int flags,
->  ssize_t qemu_recv_wrap(int sockfd, void *buf, size_t len, int flags)
->  {
->      int ret;
-> -    ret =3D recv(sockfd, buf, len, flags);
-> +    SOCKET s =3D _get_osfhandle(sockfd);
-> +
-> +    if (s =3D=3D -1) {
-> +        errno =3D EINVAL;
-> +        return -1;
-> +    }
-> +    ret =3D recv(s, buf, len, flags);
->      if (ret < 0) {
->          errno =3D socket_error();
->      }
-> @@ -489,7 +603,13 @@ ssize_t qemu_recvfrom_wrap(int sockfd, void *buf, si=
-ze_t len, int flags,
->                             struct sockaddr *addr, socklen_t *addrlen)
->  {
->      int ret;
-> -    ret =3D recvfrom(sockfd, buf, len, flags, addr, addrlen);
-> +    SOCKET s =3D _get_osfhandle(sockfd);
-> +
-> +    if (s =3D=3D -1) {
-> +        errno =3D EINVAL;
-> +        return -1;
-> +    }
-> +    ret =3D recvfrom(s, buf, len, flags, addr, addrlen);
->      if (ret < 0) {
->          errno =3D socket_error();
->      }
-> --
-> 2.39.1
->
->
+>=20=20
 
+[...]
 
---=20
-Marc-Andr=C3=A9 Lureau

@@ -1,134 +1,284 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2099845ejb;
-        Mon, 20 Feb 2023 01:16:01 -0800 (PST)
-X-Received: by 2002:a05:600c:1652:b0:3e0:ffd4:bfb2 with SMTP id o18-20020a05600c165200b003e0ffd4bfb2mr427998wmn.4.1676884561148;
-        Mon, 20 Feb 2023 01:16:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676884561; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2100427ejb;
+        Mon, 20 Feb 2023 01:16:46 -0800 (PST)
+X-Google-Smtp-Source: AK7set/Foyp+8AT3xV+JBd0CqtsdP21lP2Uitfo3771d0g0fqaUIkpPpxGzrGKaKmpKzriuZ3gWe
+X-Received: by 2002:ad4:594a:0:b0:56e:ace7:6a03 with SMTP id eo10-20020ad4594a000000b0056eace76a03mr3594353qvb.6.1676884606278;
+        Mon, 20 Feb 2023 01:16:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676884606; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZDZp7kKWL+dDHfsPVY6auL+sqzrwdWoY/CFZzDyvky4g4pPMziFoGcHcdbEzicBEiH
-         8tipLpgtNVV4nleDB88vut99HNetsUsIZ8Q6Hswc87PpiAj3u1c1aU7de+1ZR7pWgITV
-         urf1BF+F3zq5ZlNoczSehJUw/UXOZztsWL7V1XXevCTBxodXVgue4cp7aLLMEbr+Hilv
-         mln6OY9PBw5z3fut35nMc3rPtfdAknzF4kgyecSDtmnkx/6AJkMp2OTStImhD/AJmVAA
-         dpic270tpq12tIscbhXqsqlQWsxUIcq3otuqbtf9j7vCzUKQBVsnOhwhskn7tcFbpAjl
-         Ofsg==
+        b=tF4Ow2l69V16imDkEqmhx5mZ524chnrrPOZ+70uCplCDT0eeM8EmT52628yqlKNnYD
+         /mfrh16B3XXfRSdBWg/r1HVougQsu9cIriqhWkbmruIHdNTF/vH7R4Z4obDGyrvdT9ri
+         yE2wh/xXR0yn/lhpI3GR6wLxn+jN8ZshV6goGTsEqVf+MGML5Bj54Nz1M9qGDAvPyEHq
+         VjfBHzmecvxV/UjamX+mEsf2fPQm3COK6jcHzamj+ug9F7UG2v9XPzYojyJLgVZ0rqSp
+         xnQWH1yIIgbywbfekmfWPtlPx1/OhJkCfKMCPYs2J+Tu3ig2pByP0atdQb+Sfe2QBbq8
+         jOKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jeXuk3DN5Mx4yuY9/PXaV3cLllgNC2UqEL9auJG1ah4=;
-        b=EhilBUglK2Q92L9XlgD+vR8vVwJ4xX8xSJEDVGYlUmGlN43QEA8qAdM5uMp3C5LLpe
-         IOnV+rftMDY2bleoln4us17PXpOjC+lOsU6lQHRSx5ZEhACvl27Yjzw8aiU+Mm4roghg
-         rhLc4mVdt7JF8fKv9pL+9ucO9XOWUBQMVgUxiVrnoW+IiUsk1g4Vr/v6ncsY/SdvlFCO
-         2t/BeL1Y+deBhGUKM8ytgFnPjJzOon81xtxLUVDkO8sb5x44nrJUCItqs5YinpJyX+Tx
-         mesd4xgIA8EAJJviN6nFGEGa5CI7mdEH3fTyAZxyygttEtFwFOiymljQmEmw6yM+yF+A
-         PBLQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=MmvmyViEw30a3ByZFiHCey1CNg7krVr0VebVR7rY4oU=;
+        b=OSwRubYuIYppCViYJhTlNlFROQpXx1M2lcLpYsBn+EissjvsUQmrZzsoclQPrDEKOF
+         rKlrsJbV/u937nhs9nrOXVwhX9PTjzDmMtAYmWjgEuI2GMkaLUfuuQzhrYpHmasyqhr1
+         FVYBcvTWmEH0ptizuHnxufFzjT6Wl2+2Ukgs1EvnNdkQK2f0W/a4oZF3IhgpayHiX2Bj
+         AqY1aZR3QMsN+eRrxSWKDDLJMvfhAMFgCe7J7BTEoFkTd7ouLEaFMMx1pRI3Ff9sOxS6
+         ZcRYFo5057JrXahxeTmgluau63abVd/p9LVeNfzCFmngkXzOS3QxjDnrCJMPsMeB4tHu
+         WnMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X9HI8cuK;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pgpHNnMb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o10-20020a1c750a000000b003dc46388648sor24218wmc.42.2023.02.20.01.16.01
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 68-20020a370a47000000b0073ba5323d3csi86155qkk.703.2023.02.20.01.16.46
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 20 Feb 2023 01:16:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 20 Feb 2023 01:16:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X9HI8cuK;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pgpHNnMb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jeXuk3DN5Mx4yuY9/PXaV3cLllgNC2UqEL9auJG1ah4=;
-        b=X9HI8cuKVoc6cu7Gy/gd0haTMRShy2N0X6gMidIQHR+XvCNefLGAOjD2DoeYj6tURQ
-         SuH5B2BqI9h3Yncex8mygXrjRLxzVGKJK1uaxwS3C+/EOAQZntxDApkjaBy2+kFm3zuY
-         6tgr8/NeeTG8RfYV4LD+hUK/EvRctLyFUj6w2dICzyrce0LbbrF/IJ57iHPdjR+4b+gk
-         SGFuFwSj6x5YmUW3yKsojCUJt3F4bwIxuvY2Sg1O7AYGqSgFEBN3oqCrM+8FCrar7Z1Z
-         vJGM2kOTRw1Xmkun6xa+K3Hxdo7VqSAZJicduCAxIq9p6H8+B+jkuiuBijw50TEAIZBq
-         lvjg==
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pU2GP-0006co-2q; Mon, 20 Feb 2023 04:15:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2GI-0006ZY-Gn
+ for qemu-devel@nongnu.org; Mon, 20 Feb 2023 04:15:07 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2GF-0003ur-Rv
+ for qemu-devel@nongnu.org; Mon, 20 Feb 2023 04:15:06 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ l2-20020a05600c1d0200b003e1f6dff952so376544wms.1
+ for <qemu-devel@nongnu.org>; Mon, 20 Feb 2023 01:15:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MmvmyViEw30a3ByZFiHCey1CNg7krVr0VebVR7rY4oU=;
+ b=pgpHNnMbA+dBPOgBLlntf5WYgXAiAB0Zsmb1Z1/L6PVQwhc+qR1XI3esNvMxOcYL8G
+ 6oA7p0kAL2h3Sf7OQcB3F3JPPATVs7TbScehmgjShJqYYQYDZRW6tZ9hkpY+pZqKMPBK
+ NuXtP5pSXUP4qxE31orF2KkJ164G2fZ9KMkiYu9talOlaMy9JWirY2Ja3bEDemcR2S7/
+ Hg6XwIDnYr2aSg7Fyoq9+pX5NkEzesMezLy58Ah1l75K9d7Lkr0pi6C+jHpjfhXgx9to
+ YLAPcZe0JDpOTzCBFdaLUWw4UbxHcFHGAqlZJHIyGBO43HVvkSutWFBM7IkFO/ev/8/i
+ 42aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=jeXuk3DN5Mx4yuY9/PXaV3cLllgNC2UqEL9auJG1ah4=;
-        b=HPPlXHpWWKAhMPMNrSZFqvjeqUyxXS1aba2V/UfIlwo6/NQakyeIz/aEInBCdz6uz7
-         czilN4a4opJdCQ2+a0Kofpkhkm5dp4xdi9mfKvhDMRVXVLVWOmglBYcuygl77g+y5WB8
-         pFRPbbbEODBFQlrObHWH9D5I9ir0sgeH6KgxBDj0uc5ZryuAGBC7XslV3v6wRMPTOnmF
-         k99G77GWGlD33ZM9IcEXym5wlxc7sk6hKsorbISrsC4mjZDJPac0QN8Z3witLWEV2Nnb
-         3uOuvZT6fSAgbrfWfB+nYwTOmo6cc0K2cp/ElaJOBTOd1Rw0mGd0z5rnkbyamUy+ZqXj
-         1VCg==
-X-Gm-Message-State: AO0yUKVhUjJXlvCdk8RWEM30WnOi9Jd++UIho8Oe/iHc9+1wofC2xtGh
-	wpUwZhFdbfeVzuc0z3yc7zYS4/JQY9PBtdV8mVs=
-X-Google-Smtp-Source: AK7set+EGk4RIxEK3u8rvk4rYNXk/VvC9GfsIIBZ07UHPXuFDZWcrs2zIi6feXHhDMfzIvBHlcM67Q==
-X-Received: by 2002:a05:600c:984:b0:3e1:fff7:e970 with SMTP id w4-20020a05600c098400b003e1fff7e970mr82721wmp.30.1676884560915;
-        Mon, 20 Feb 2023 01:16:00 -0800 (PST)
-Return-Path: <philmd@linaro.org>
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=MmvmyViEw30a3ByZFiHCey1CNg7krVr0VebVR7rY4oU=;
+ b=1OvzhjRI8TzxOhWSN8XQcGYHpMVK2qh2tszd6I0PeohT9OvezpPg05kgha6cwKyilY
+ U5T/Swg1zgr9/bJr3sJNDb/upBm0v7BI7iW+0tjfncjqjFAyF7Tl1cyelFFaTq+AZfLs
+ vZRAXiZ6aFODZlhkwKJ6KRTSX57f1F5Kummlgqz3mg910gVLP2F3Yp2AmC6NbL9NOM+p
+ TyJ9KYa9ofyXMOeY/aUrGeF5p9qHQ/tqIy4g4VaVaLsob+Gkc92SmKUBJnU+XTh5CVYN
+ dBFZbUQDp+X9h6ERWPMsUwKq5htMLybY7RmX0gtPiyxJ69/z2fcc5EvmoJHA5pNty9L0
+ WTwg==
+X-Gm-Message-State: AO0yUKXbLsQhx3bCJKC553bJU5DUKECpQrrh2STlQarUw6JANdqG2YhO
+ 6/lNdAs8aDZati+D8mBZxvbi2JB7bYCUUeTl
+X-Received: by 2002:a05:600c:32a7:b0:3db:15b1:fb28 with SMTP id
+ t39-20020a05600c32a700b003db15b1fb28mr40296wmp.19.1676884501502; 
+ Mon, 20 Feb 2023 01:15:01 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id n9-20020a05600c500900b003daffc2ecdesm9573572wmr.13.2023.02.20.01.15.59
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 20 Feb 2023 01:16:00 -0800 (PST)
+ by smtp.gmail.com with ESMTPSA id
+ w18-20020a05600c475200b003e220998b6bsm1013732wmo.17.2023.02.20.01.15.00
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 20 Feb 2023 01:15:01 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org,
-	John Snow <jsnow@redhat.com>,
-	qemu-block@nongnu.org,
-	qemu-arm@nongnu.org,
-	Fiona Ebner <f.ebner@proxmox.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 24/24] hw/ide/ahci: trace ncq write command as write instead of read
-Date: Mon, 20 Feb 2023 10:13:58 +0100
-Message-Id: <20230220091358.17038-25-philmd@linaro.org>
+Cc: qemu-ppc@nongnu.org, John Snow <jsnow@redhat.com>, qemu-block@nongnu.org,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>
+Subject: [PATCH v2 12/24] hw/ide: Rename ide_create_drive() ->
+ ide_bus_create_drive()
+Date: Mon, 20 Feb 2023 10:13:46 +0100
+Message-Id: <20230220091358.17038-13-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230220091358.17038-1-philmd@linaro.org>
 References: <20230220091358.17038-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 6IeWBbsgmC16
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xwwACsbJvc8m
 
-From: Fiona Ebner <f.ebner@proxmox.com>
+ide_create_drive() operates on a IDEBus; rename it as
+ide_bus_create_drive() to emphasize its first argument
+is a IDEBus.
 
-Fixes: e4baa9f00b ("AHCI: Replace DPRINTF with trace-events")
-Signed-off-by: Fiona Ebner <f.ebner@proxmox.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: John Snow <jsnow@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230217103130.42077-1-f.ebner@proxmox.com>
+Mechanical change using:
+
+  $ sed -i -e 's/ide_create_drive/ide_bus_create_drive/g' \
+        $(git grep -wl ide_create_drive)
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230215112712.23110-12-philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/ide/ahci.c       | 4 ++--
- hw/ide/trace-events | 1 +
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ hw/arm/sbsa-ref.c         | 2 +-
+ hw/ide/ahci.c             | 2 +-
+ hw/ide/isa.c              | 4 ++--
+ hw/ide/macio.c            | 2 +-
+ hw/ide/microdrive.c       | 2 +-
+ hw/ide/mmio.c             | 4 ++--
+ hw/ide/pci.c              | 2 +-
+ hw/ide/qdev.c             | 2 +-
+ include/hw/ide/internal.h | 2 +-
+ 9 files changed, 11 insertions(+), 11 deletions(-)
 
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index f778cb6d09..0b93558dde 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -554,7 +554,7 @@ static void create_ahci(const SBSAMachineState *sms)
+         if (hd[i] == NULL) {
+             continue;
+         }
+-        ide_create_drive(&ahci->dev[i].port, 0, hd[i]);
++        ide_bus_create_drive(&ahci->dev[i].port, 0, hd[i]);
+     }
+ }
+ 
 diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index d79b70d8c5..55902e1df7 100644
+index 3e21f607fe..90fea5d059 100644
 --- a/hw/ide/ahci.c
 +++ b/hw/ide/ahci.c
-@@ -1086,8 +1086,8 @@ static void execute_ncq_command(NCQTransferState *ncq_tfs)
-                                       ncq_cb, ncq_tfs);
-         break;
-     case WRITE_FPDMA_QUEUED:
--        trace_execute_ncq_command_read(ad->hba, port, ncq_tfs->tag,
--                                       ncq_tfs->sector_count, ncq_tfs->lba);
-+        trace_execute_ncq_command_write(ad->hba, port, ncq_tfs->tag,
-+                                        ncq_tfs->sector_count, ncq_tfs->lba);
-         dma_acct_start(ide_state->blk, &ncq_tfs->acct,
-                        &ncq_tfs->sglist, BLOCK_ACCT_WRITE);
-         ncq_tfs->aiocb = dma_blk_write(ide_state->blk, &ncq_tfs->sglist,
-diff --git a/hw/ide/trace-events b/hw/ide/trace-events
-index a394c05710..57042cafdd 100644
---- a/hw/ide/trace-events
-+++ b/hw/ide/trace-events
-@@ -91,6 +91,7 @@ ahci_populate_sglist_short_map(void *s, int port) "ahci(%p)[%d]: mapped less tha
- ahci_populate_sglist_bad_offset(void *s, int port, int off_idx, int64_t off_pos) "ahci(%p)[%d]: Incorrect offset! off_idx: %d, off_pos: %"PRId64
- ncq_finish(void *s, int port, uint8_t tag) "ahci(%p)[%d][tag:%d]: NCQ transfer finished"
- execute_ncq_command_read(void *s, int port, uint8_t tag, int count, int64_t lba) "ahci(%p)[%d][tag:%d]: NCQ reading %d sectors from LBA %"PRId64
-+execute_ncq_command_write(void *s, int port, uint8_t tag, int count, int64_t lba) "ahci(%p)[%d][tag:%d]: NCQ writing %d sectors to LBA %"PRId64
- execute_ncq_command_unsup(void *s, int port, uint8_t tag, uint8_t cmd) "ahci(%p)[%d][tag:%d]: error: unsupported NCQ command (0x%02x) received"
- process_ncq_command_mismatch(void *s, int port, uint8_t tag, uint8_t slot) "ahci(%p)[%d][tag:%d]: Warning: NCQ slot (%d) did not match the given tag"
- process_ncq_command_aux(void *s, int port, uint8_t tag) "ahci(%p)[%d][tag:%d]: Warn: Attempt to use NCQ auxiliary fields"
+@@ -1842,7 +1842,7 @@ void ahci_ide_create_devs(PCIDevice *dev, DriveInfo **hd)
+         if (hd[i] == NULL) {
+             continue;
+         }
+-        ide_create_drive(&ahci->dev[i].port, 0, hd[i]);
++        ide_bus_create_drive(&ahci->dev[i].port, 0, hd[i]);
+     }
+ 
+ }
+diff --git a/hw/ide/isa.c b/hw/ide/isa.c
+index ad47e0899e..74f7b43137 100644
+--- a/hw/ide/isa.c
++++ b/hw/ide/isa.c
+@@ -93,10 +93,10 @@ ISADevice *isa_ide_init(ISABus *bus, int iobase, int iobase2, int irqnum,
+ 
+     s = ISA_IDE(dev);
+     if (hd0) {
+-        ide_create_drive(&s->bus, 0, hd0);
++        ide_bus_create_drive(&s->bus, 0, hd0);
+     }
+     if (hd1) {
+-        ide_create_drive(&s->bus, 1, hd1);
++        ide_bus_create_drive(&s->bus, 1, hd1);
+     }
+     return isadev;
+ }
+diff --git a/hw/ide/macio.c b/hw/ide/macio.c
+index 24fb7a3f9d..7efbbc720a 100644
+--- a/hw/ide/macio.c
++++ b/hw/ide/macio.c
+@@ -501,7 +501,7 @@ void macio_ide_init_drives(MACIOIDEState *s, DriveInfo **hd_table)
+ 
+     for (i = 0; i < 2; i++) {
+         if (hd_table[i]) {
+-            ide_create_drive(&s->bus, i, hd_table[i]);
++            ide_bus_create_drive(&s->bus, i, hd_table[i]);
+         }
+     }
+ }
+diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
+index b9822b939b..08504b499f 100644
+--- a/hw/ide/microdrive.c
++++ b/hw/ide/microdrive.c
+@@ -566,7 +566,7 @@ PCMCIACardState *dscm1xxxx_init(DriveInfo *dinfo)
+     qdev_realize(DEVICE(md), NULL, &error_fatal);
+ 
+     if (dinfo != NULL) {
+-        ide_create_drive(&md->bus, 0, dinfo);
++        ide_bus_create_drive(&md->bus, 0, dinfo);
+     }
+     md->bus.ifs[0].drive_kind = IDE_CFATA;
+     md->bus.ifs[0].mdata_size = METADATA_SIZE;
+diff --git a/hw/ide/mmio.c b/hw/ide/mmio.c
+index 8b2ba604c5..d650dcee4d 100644
+--- a/hw/ide/mmio.c
++++ b/hw/ide/mmio.c
+@@ -174,10 +174,10 @@ void mmio_ide_init_drives(DeviceState *dev, DriveInfo *hd0, DriveInfo *hd1)
+     MmioIdeState *s = MMIO_IDE(dev);
+ 
+     if (hd0 != NULL) {
+-        ide_create_drive(&s->bus, 0, hd0);
++        ide_bus_create_drive(&s->bus, 0, hd0);
+     }
+     if (hd1 != NULL) {
+-        ide_create_drive(&s->bus, 1, hd1);
++        ide_bus_create_drive(&s->bus, 1, hd1);
+     }
+ }
+ 
+diff --git a/hw/ide/pci.c b/hw/ide/pci.c
+index ae638dee0d..4223f5e64d 100644
+--- a/hw/ide/pci.c
++++ b/hw/ide/pci.c
+@@ -489,7 +489,7 @@ void pci_ide_create_devs(PCIDevice *dev)
+     ide_drive_get(hd_table, ARRAY_SIZE(hd_table));
+     for (i = 0; i < 4; i++) {
+         if (hd_table[i]) {
+-            ide_create_drive(d->bus + bus[i], unit[i], hd_table[i]);
++            ide_bus_create_drive(d->bus + bus[i], unit[i], hd_table[i]);
+         }
+     }
+ }
+diff --git a/hw/ide/qdev.c b/hw/ide/qdev.c
+index 6f6c7462f3..1b3b4da01d 100644
+--- a/hw/ide/qdev.c
++++ b/hw/ide/qdev.c
+@@ -124,7 +124,7 @@ static void ide_qdev_realize(DeviceState *qdev, Error **errp)
+     dc->realize(dev, errp);
+ }
+ 
+-IDEDevice *ide_create_drive(IDEBus *bus, int unit, DriveInfo *drive)
++IDEDevice *ide_bus_create_drive(IDEBus *bus, int unit, DriveInfo *drive)
+ {
+     DeviceState *dev;
+ 
+diff --git a/include/hw/ide/internal.h b/include/hw/ide/internal.h
+index 7b4b71d0b0..ccfe064643 100644
+--- a/include/hw/ide/internal.h
++++ b/include/hw/ide/internal.h
+@@ -645,7 +645,7 @@ void ide_atapi_cmd_reply_end(IDEState *s);
+ /* hw/ide/qdev.c */
+ void ide_bus_init(IDEBus *idebus, size_t idebus_size, DeviceState *dev,
+                   int bus_id, int max_units);
+-IDEDevice *ide_create_drive(IDEBus *bus, int unit, DriveInfo *drive);
++IDEDevice *ide_bus_create_drive(IDEBus *bus, int unit, DriveInfo *drive);
+ 
+ int ide_handle_rw_error(IDEState *s, int error, int op);
+ 
 -- 
 2.38.1
+

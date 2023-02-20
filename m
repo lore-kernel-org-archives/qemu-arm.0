@@ -1,315 +1,214 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2006445ejb;
-        Sun, 19 Feb 2023 22:36:38 -0800 (PST)
-X-Google-Smtp-Source: AK7set8IwA2v86hBBrQ8SRw4055k+NYvT7FvU5cLIGaxNI1K91Y6mAlfN6SX3nFY6/opbxncQ2bz
-X-Received: by 2002:a05:622a:1a24:b0:3b6:a1c2:f63c with SMTP id f36-20020a05622a1a2400b003b6a1c2f63cmr14548117qtb.33.1676874997927;
-        Sun, 19 Feb 2023 22:36:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676874997; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2061969ejb;
+        Mon, 20 Feb 2023 00:13:30 -0800 (PST)
+X-Google-Smtp-Source: AK7set8vpKH2W3/I8vD/OqJHfN6ZjAwjARik9d/GZi9UuIcd+Da94OFmRWoKTMYRFMNJllsz2dRl
+X-Received: by 2002:ac8:5c92:0:b0:3b8:6442:2575 with SMTP id r18-20020ac85c92000000b003b864422575mr16086472qta.49.1676880810161;
+        Mon, 20 Feb 2023 00:13:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676880810; cv=none;
         d=google.com; s=arc-20160816;
-        b=AijRyZG8Xwm9kVBkFqP0RiNmzPTGOX+z4hK6CAIF4arh+Dv0kx90UMaUoutP++9KBw
-         Mx6LoNQYjSkxNouRKSX8mVOGGgeW7+sClaNt3tbm83lu7n73yA5vXU0dR010gsnrIjsF
-         zlnxj8TQIDZh0I8R4+9uNGlIOMTOrTER3jD7g5bxee4EpbSnBABvtC5dMXWsB7cZcdfG
-         HJbrkicW1k81j9J42Oan1RcldZLUTJUh8SFEJvjUQJnLIoZfXvq1JYBZeY4i1W1UNLvB
-         X9BTKUNNC/+km/hCuFTiV/2BlYkzcyYqP7kduD/JEXfziV1LNE8upaSrzn3wRS8F9wVj
-         9bdQ==
+        b=HLT4XEWFtGMELewV2ayEoQTVIp6f3dvGKLh9GllzW23nlPv+bKbCbqmhr2fy/CO6Dr
+         vipaBccymVxQhyLw8vIMNDIlSkfq1FY8TzlynnWvDHpjF1qzgTjwWNmYElMbtw8nMFsn
+         syycE5dCsiciKdmq/OfXsLQbtnNAfZKRmOI0KLTFlEueIzMWzky+/tgYy/8jwEKSTrnP
+         g46RSLyQsbmS9L2hVvQUbrYpOj/TlWzElSWbbJa6jKlRfguPcIvn3U5NhVwOOe3GQDPG
+         6L8m6Xcf2qQ/2neTHVRScCWb1SSaQPw9jJcQY5KmeikKNKbbw3hSgWXxJLy+jKMMTKa6
+         3Cvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:subject:from:references:cc:to
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8MLx2+rnNctmUvlbrAQiG3fA5GIkOmb98UUo/wH6si0=;
-        b=VF4s6Sq+ofA0+rm+FNvel54FcSszz8pZSD1P85sESBgmZe8J1JdlcQ33HX3DQK1DgY
-         47Tm4NTIj76OUIbel+0fIIxkSB6aFfAh2FShxRfhlsr58kS0/xaTDo5hgJ/5ygMb20la
-         QEan06DYiTuyMSon2fsqVlyGXT3IsaM5gidc0TS4KWP0Q2O729GboKTOVFlx6ihIFMjE
-         mneajHogvPzLtroyEMDfPuJq+JXGaod8Py3DG7bOezNBZ9zMiWXUSwkmQF2cGAKq/1NG
-         uFyOQspkrx/jPYP7wmiRIDEC2R9oshq6fp54bg1X+Y3PgdOsStkGH/44ZiU/9ADXa7b5
-         9jXg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=W8oseXLLoGmg6ep9d/aMwd6HC+YABeP2tHYrtdkhkk4=;
+        b=WnUNehAISno+7uwZ3nA+g3iZR4c4Nm3nbpEyQO1zdOdzZfNJ7dr+bkiLHvX8Z9vf/p
+         ykiXQXU19VnN2LiPN0M8aG2+1YVjp+o1hT9oCRRVv6YkKMp2xuMgj+w/31EGOJ931dNy
+         qKl7PjJX+h0aeAtmtOzc46dQM7+F7UX+L4j0GYRcTUR5cHGHjF4bU5SiQbb+ACloyAM7
+         O+ZLpJ3r3XpwYn9L2OOyMLpTBdyhN3aAVBRYsFkLadrKgu7K2HklFyhaHzatsJyjQEU+
+         VBHXGRnXh8HsW7x4wI/dd050HgblYS8P0XQkGwQ5au7MGTaCqqSsXun4AHayGmPGlksf
+         Ijkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="LeGYi/y4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@163.com header.s=s110527 header.b=ohAa7LQi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b12-20020ac87fcc000000b003b9a5ba03c0si9285572qtk.65.2023.02.19.22.36.37
+        by mx.google.com with ESMTPS id s64-20020a372c43000000b0073b7761b271si8451554qkh.724.2023.02.20.00.13.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 19 Feb 2023 22:36:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Feb 2023 00:13:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="LeGYi/y4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@163.com header.s=s110527 header.b=ohAa7LQi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pTzmP-0004xq-Rn; Mon, 20 Feb 2023 01:36:05 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pU1IV-00028z-Qs; Mon, 20 Feb 2023 03:13:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pTzmJ-0004xM-HJ
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 01:36:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pTzmH-00016F-UN
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 01:35:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676874956;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8MLx2+rnNctmUvlbrAQiG3fA5GIkOmb98UUo/wH6si0=;
- b=LeGYi/y4yeeCV6pLpkcWM+UtqCe253QXr4nI5/hxAz6hPH8WoLHyqWj4MkDQW6jignh1SY
- aRJk3tixdR5wZ5RdeK+yRclwLWWRNujlQgm61WDPsCEGUwpydJ1gpiUS6MwlCVa2aQ41dT
- yzn+PICLN+tWpzm5XAmV7bcmrxBIYhg=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-656-Diz9SCaAMFCcDfj8wPQt5Q-1; Mon, 20 Feb 2023 01:35:42 -0500
-X-MC-Unique: Diz9SCaAMFCcDfj8wPQt5Q-1
-Received: by mail-wr1-f70.google.com with SMTP id
- c2-20020a056000184200b002c54a27803cso122970wri.22
- for <qemu-arm@nongnu.org>; Sun, 19 Feb 2023 22:35:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
- :content-language:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8MLx2+rnNctmUvlbrAQiG3fA5GIkOmb98UUo/wH6si0=;
- b=yLXbpxeXsP2f7yRfGxfg98xyhSgRRVcpH/oIQrayRI6+jz50r64xRcP6tvZXl0esPd
- OxAvm0MuOEqSoDC77trciW4X66obmXNsxVWzd6qFuti2qBeB26W2mgXBlLo4BeicEzXb
- lXgJFUmS2ytU8cOuXRkizTYdnX5YITyn8qej9Troo/4MQxJ+JbvzcPMIrhJCARv49FE8
- QGh6jVQ0LarVc+EffOE1o+2mU1+2N+J9UtGArxQwsNlmC4hIsubWuDx8BlfaYSjHJ/YI
- uAum/HCJv2BoT8sf8PfkABvD5gZJyU1OiyOttj9QIrVK3kxmld5xcGvj5CnYWCsncb4W
- aWGw==
-X-Gm-Message-State: AO0yUKUA+0Lb4fBRw/dPYBILmjSV1sI/pn7WMnM7vh6B8wCtOOL/B5oa
- 3qQFBwVIIBIyrVAtx7Dn+35AfXOuhYtfFAZyknGNV6iNhr/Dr0jloYCm+25KH4ASmGZllj7OjHJ
- Yy+Ctq7vpXAi2
-X-Received: by 2002:a05:600c:4393:b0:3e2:8f1:7684 with SMTP id
- e19-20020a05600c439300b003e208f17684mr10993198wmn.33.1676874941479; 
- Sun, 19 Feb 2023 22:35:41 -0800 (PST)
-X-Received: by 2002:a05:600c:4393:b0:3e2:8f1:7684 with SMTP id
- e19-20020a05600c439300b003e208f17684mr10993183wmn.33.1676874941179; 
- Sun, 19 Feb 2023 22:35:41 -0800 (PST)
-Received: from [192.168.8.104] (tmo-100-40.customers.d1-online.com.
- [80.187.100.40]) by smtp.gmail.com with ESMTPSA id
- e1-20020a05600c4e4100b003e1fee8baacsm9214780wmq.25.2023.02.19.22.35.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 19 Feb 2023 22:35:40 -0800 (PST)
-Message-ID: <45496628-6a2b-cdfd-666f-a7a9dca887bd@redhat.com>
-Date: Mon, 20 Feb 2023 07:35:38 +0100
+ (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
+ id 1pU1IU-00028W-0M; Mon, 20 Feb 2023 03:13:18 -0500
+Received: from m12.mail.163.com ([220.181.12.198])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <qianfanguijin@163.com>)
+ id 1pU1IQ-0001Nc-HI; Mon, 20 Feb 2023 03:13:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=W8ose
+ XLLoGmg6ep9d/aMwd6HC+YABeP2tHYrtdkhkk4=; b=ohAa7LQiIqyZWS7ptb9pr
+ fnA21EDWonHq6gAurDSixsD3WAF9Gsqs2KQG7HkaE/1oQOgdjUZ7xJyV95tx/7Xr
+ DfZ2LspzPsBUvGP47SaAtgRZVQtXVQ7AnVkAGZAKJKVPoOfUEsKwMxDwv5xpokah
+ NWXBM1r1/CXtzoKwOJADCM=
+Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.20])
+ by zwqz-smtp-mta-g2-4 (Coremail) with SMTP id _____wCnPYyDK_NjSU3yAQ--.59158S3;
+ Mon, 20 Feb 2023 16:12:52 +0800 (CST)
+From: qianfanguijin@163.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ qianfan Zhao <qianfanguijin@163.com>
+Subject: [PATCH v2 2/3] hw: allwinner-i2c: Fix TWI_CNTR_INT_FLAG on SUN6i SoCs
+Date: Mon, 20 Feb 2023 16:12:51 +0800
+Message-Id: <20230220081252.25348-2-qianfanguijin@163.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230220081252.25348-1-qianfanguijin@163.com>
+References: <20230220081252.25348-1-qianfanguijin@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Jan Kiszka <jan.kiszka@web.de>, Vikram Garhwal <vikram.garhwal@amd.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-ppc@nongnu.org,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Thomas Huth
- <huth@tuxfamily.org>, Francisco Iglesias <francisco.iglesias@amd.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Jason Wang
- <jasowang@redhat.com>, Beniamino Galvani <b.galvani@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Magnus Damm <magnus.damm@gmail.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>
-References: <20230217141832.24777-1-philmd@linaro.org>
- <20230217215836.40328-1-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 3/2] hw/timer: Rename ptimer_state -> PTimer
-In-Reply-To: <20230217215836.40328-1-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-CM-TRANSID: _____wCnPYyDK_NjSU3yAQ--.59158S3
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGFyxCFW3KFyrAFWUWF43Awb_yoW5Kw4rpF
+ Wqgr45KF4Yqa97WrnIqFn8GF18Jry8C3y8Krsa9FyIvFnrW3ZFqr1ktrWakrn8GrWrJw43
+ tFs8tFyxWFn0qaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRcVy7UUUUU=
+X-Originating-IP: [218.201.129.20]
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiGgYc7VaEEUbKKAABsL
+Received-SPF: pass client-ip=220.181.12.198;
+ envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DNjYb0KD2vWT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RULEVCb2ks0X
 
-On 17/02/2023 22.58, Philippe Mathieu-Daudé wrote:
-> Remove a pointless cast in ptimer_tick() and rename 'ptimer_state'
-> as 'PTimer' to follow the Structure naming convention.
-> 
-> See docs/devel/style.rst:
-> 
->    Variables are lower_case_with_underscores; easy to type and
->    read.  Structured type names are in CamelCase; harder to type
->    but standing out.  Enum type names and function type names
->    should also be in CamelCase.  Scalar type names are
->    lower_case_with_underscores_ending_with_a_t, like the POSIX
->    uint64_t and family.
-> 
-> Mechanical change doing:
-> 
->    $ sed -i -e s/ptimer_state/PTimer/g \
->        $(git grep -l ptimer_state)
-> 
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
+From: qianfan Zhao <qianfanguijin@163.com>
+
+TWI_CNTR_INT_FLAG is W1C(write 1 to clear and write 0 has non-effect)
+register on SUN6i based SoCs, we should lower interrupt when the guest
+set this bit.
+
+The linux kernel will hang in irq handler(mv64xxx_i2c_intr) if no
+device connected on the i2c bus, next is the trace log:
+
+allwinner_i2c_write write   CNTR(0x0c): 0xc4 A_ACK BUS_EN INT_EN
+allwinner_i2c_write write   CNTR(0x0c): 0xcc A_ACK INT_FLAG BUS_EN INT_EN
+allwinner_i2c_read  read    CNTR(0x0c): 0xcc A_ACK INT_FLAG BUS_EN INT_EN
+allwinner_i2c_read  read    STAT(0x10): 0x20 STAT_M_ADDR_WR_NACK
+allwinner_i2c_write write   CNTR(0x0c): 0x54 A_ACK M_STP BUS_EN
+allwinner_i2c_write write   CNTR(0x0c): 0x4c A_ACK INT_FLAG BUS_EN
+allwinner_i2c_read  read    CNTR(0x0c): 0x4c A_ACK INT_FLAG BUS_EN
+allwinner_i2c_read  read    STAT(0x10): 0xf8 STAT_IDLE
+allwinner_i2c_write write   CNTR(0x0c): 0x54 A_ACK M_STP BUS_EN
+allwinner_i2c_write write   CNTR(0x0c): 0x4c A_ACK INT_FLAG BUS_EN
+allwinner_i2c_read  read    CNTR(0x0c): 0x4c A_ACK INT_FLAG BUS_EN
+allwinner_i2c_read  read    STAT(0x10): 0xf8 STAT_IDLE
 ...
-> @@ -154,7 +154,7 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
->   
->   static void ptimer_tick(void *opaque)
->   {
-> -    ptimer_state *s = (ptimer_state *)opaque;
-> +    PTimer *s = opaque;
 
-I like that you also removed the useless cast here.
+Fix it.
 
->       bool trigger = true;
->   
->       /*
-> @@ -198,7 +198,7 @@ static void ptimer_tick(void *opaque)
->       ptimer_transaction_commit(s);
->   }
->   
-> -uint64_t ptimer_get_count(ptimer_state *s)
-> +uint64_t ptimer_get_count(PTimer *s)
->   {
->       uint64_t counter;
->   
-> @@ -294,7 +294,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
->       return counter;
->   }
->   
-> -void ptimer_set_count(ptimer_state *s, uint64_t count)
-> +void ptimer_set_count(PTimer *s, uint64_t count)
->   {
->       assert(s->in_transaction);
->       s->delta = count;
-> @@ -303,7 +303,7 @@ void ptimer_set_count(ptimer_state *s, uint64_t count)
->       }
->   }
->   
-> -void ptimer_run(ptimer_state *s, int oneshot)
-> +void ptimer_run(PTimer *s, int oneshot)
->   {
->       bool was_disabled = !s->enabled;
->   
-> @@ -323,7 +323,7 @@ void ptimer_run(ptimer_state *s, int oneshot)
->   
->   /* Pause a timer.  Note that this may cause it to "lose" time, even if it
->      is immediately restarted.  */
-> -void ptimer_stop(ptimer_state *s)
-> +void ptimer_stop(PTimer *s)
->   {
->       assert(s->in_transaction);
->   
-> @@ -337,7 +337,7 @@ void ptimer_stop(ptimer_state *s)
->   }
->   
->   /* Set counter increment interval in nanoseconds.  */
-> -void ptimer_set_period(ptimer_state *s, int64_t period)
-> +void ptimer_set_period(PTimer *s, int64_t period)
->   {
->       assert(s->in_transaction);
->       s->delta = ptimer_get_count(s);
-> @@ -349,7 +349,7 @@ void ptimer_set_period(ptimer_state *s, int64_t period)
->   }
->   
->   /* Set counter increment interval from a Clock */
-> -void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clk,
-> +void ptimer_set_period_from_clock(PTimer *s, const Clock *clk,
->                                     unsigned int divisor)
->   {
->       /*
-> @@ -382,7 +382,7 @@ void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clk,
->   }
->   
->   /* Set counter frequency in Hz.  */
-> -void ptimer_set_freq(ptimer_state *s, uint32_t freq)
-> +void ptimer_set_freq(PTimer *s, uint32_t freq)
->   {
->       assert(s->in_transaction);
->       s->delta = ptimer_get_count(s);
-> @@ -395,7 +395,7 @@ void ptimer_set_freq(ptimer_state *s, uint32_t freq)
->   
->   /* Set the initial countdown value.  If reload is nonzero then also set
->      count = limit.  */
-> -void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
-> +void ptimer_set_limit(PTimer *s, uint64_t limit, int reload)
->   {
->       assert(s->in_transaction);
->       s->limit = limit;
-> @@ -406,19 +406,19 @@ void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
->       }
->   }
->   
-> -uint64_t ptimer_get_limit(ptimer_state *s)
-> +uint64_t ptimer_get_limit(PTimer *s)
->   {
->       return s->limit;
->   }
->   
-> -void ptimer_transaction_begin(ptimer_state *s)
-> +void ptimer_transaction_begin(PTimer *s)
->   {
->       assert(!s->in_transaction);
->       s->in_transaction = true;
->       s->need_reload = false;
->   }
->   
-> -void ptimer_transaction_commit(ptimer_state *s)
-> +void ptimer_transaction_commit(PTimer *s)
->   {
->       assert(s->in_transaction);
->       /*
-> @@ -442,27 +442,27 @@ const VMStateDescription vmstate_ptimer = {
->       .version_id = 1,
->       .minimum_version_id = 1,
->       .fields = (VMStateField[]) {
-> -        VMSTATE_UINT8(enabled, ptimer_state),
-> -        VMSTATE_UINT64(limit, ptimer_state),
-> -        VMSTATE_UINT64(delta, ptimer_state),
-> -        VMSTATE_UINT32(period_frac, ptimer_state),
-> -        VMSTATE_INT64(period, ptimer_state),
-> -        VMSTATE_INT64(last_event, ptimer_state),
-> -        VMSTATE_INT64(next_event, ptimer_state),
-> -        VMSTATE_TIMER_PTR(timer, ptimer_state),
-> +        VMSTATE_UINT8(enabled, PTimer),
-> +        VMSTATE_UINT64(limit, PTimer),
-> +        VMSTATE_UINT64(delta, PTimer),
-> +        VMSTATE_UINT32(period_frac, PTimer),
-> +        VMSTATE_INT64(period, PTimer),
-> +        VMSTATE_INT64(last_event, PTimer),
-> +        VMSTATE_INT64(next_event, PTimer),
-> +        VMSTATE_TIMER_PTR(timer, PTimer),
->           VMSTATE_END_OF_LIST()
->       }
->   };
->   
-> -ptimer_state *ptimer_init(ptimer_cb callback, void *callback_opaque,
-> +PTimer *ptimer_init(ptimer_cb callback, void *callback_opaque,
->                             uint8_t policy_mask)
+Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+---
+ hw/i2c/allwinner-i2c.c         | 26 ++++++++++++++++++++++++--
+ include/hw/i2c/allwinner-i2c.h |  6 ++++++
+ 2 files changed, 30 insertions(+), 2 deletions(-)
 
-Just a nit: In case you respin, please adjust the indentation here.
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+diff --git a/hw/i2c/allwinner-i2c.c b/hw/i2c/allwinner-i2c.c
+index fa650e7e02..819638d740 100644
+--- a/hw/i2c/allwinner-i2c.c
++++ b/hw/i2c/allwinner-i2c.c
+@@ -463,10 +463,16 @@ static void allwinner_i2c_write(void *opaque, hwaddr offset,
+                 s->stat = STAT_FROM_STA(STAT_IDLE);
+                 s->cntr &= ~TWI_CNTR_M_STP;
+             }
+-            if ((s->cntr & TWI_CNTR_INT_FLAG) == 0) {
+-                /* Interrupt flag cleared */
++
++            if (!s->irq_clear_inverted && !(s->cntr & TWI_CNTR_INT_FLAG)) {
++                /* Write 0 to clear this flag */
++                qemu_irq_lower(s->irq);
++            } else if (s->irq_clear_inverted && (s->cntr & TWI_CNTR_INT_FLAG)) {
++                /* Write 1 to clear this flag */
++                s->cntr &= ~TWI_CNTR_INT_FLAG;
+                 qemu_irq_lower(s->irq);
+             }
++
+             if ((s->cntr & TWI_CNTR_A_ACK) == 0) {
+                 if (STAT_TO_STA(s->stat) == STAT_M_DATA_RX_ACK) {
+                     s->stat = STAT_FROM_STA(STAT_M_DATA_RX_NACK);
+@@ -557,9 +563,25 @@ static const TypeInfo allwinner_i2c_type_info = {
+     .class_init = allwinner_i2c_class_init,
+ };
+ 
++static void allwinner_i2c_sun6i_init(Object *obj)
++{
++    AWI2CState *s = AW_I2C(obj);
++
++    s->irq_clear_inverted = true;
++}
++
++static const TypeInfo allwinner_i2c_sun6i_type_info = {
++    .name = TYPE_AW_I2C_SUN6I,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AWI2CState),
++    .instance_init = allwinner_i2c_sun6i_init,
++    .class_init = allwinner_i2c_class_init,
++};
++
+ static void allwinner_i2c_register_types(void)
+ {
+     type_register_static(&allwinner_i2c_type_info);
++    type_register_static(&allwinner_i2c_sun6i_type_info);
+ }
+ 
+ type_init(allwinner_i2c_register_types)
+diff --git a/include/hw/i2c/allwinner-i2c.h b/include/hw/i2c/allwinner-i2c.h
+index 4f378b86ba..0e325d265e 100644
+--- a/include/hw/i2c/allwinner-i2c.h
++++ b/include/hw/i2c/allwinner-i2c.h
+@@ -28,6 +28,10 @@
+ #include "qom/object.h"
+ 
+ #define TYPE_AW_I2C "allwinner.i2c"
++
++/** Allwinner I2C sun6i family and newer (A31, H2+, H3, etc) */
++#define TYPE_AW_I2C_SUN6I    TYPE_AW_I2C "-sun6i"
++
+ OBJECT_DECLARE_SIMPLE_TYPE(AWI2CState, AW_I2C)
+ 
+ #define AW_I2C_MEM_SIZE         0x24
+@@ -50,6 +54,8 @@ struct AWI2CState {
+     uint8_t srst;
+     uint8_t efr;
+     uint8_t lcr;
++
++    bool irq_clear_inverted;
+ };
+ 
+ #endif /* ALLWINNER_I2C_H */
+-- 
+2.25.1
 

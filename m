@@ -1,116 +1,114 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2101057ejb;
-        Mon, 20 Feb 2023 01:17:37 -0800 (PST)
-X-Google-Smtp-Source: AK7set/2lQrZiX+79u6fsV+3G9PYJZXWEbdfLULOwfqP0EeZqMZg47KNG/er9WLMoxGv5VZQTRbP
-X-Received: by 2002:a05:622a:1052:b0:3b8:ea00:7021 with SMTP id f18-20020a05622a105200b003b8ea007021mr14554653qte.28.1676884656938;
-        Mon, 20 Feb 2023 01:17:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676884656; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2101472ejb;
+        Mon, 20 Feb 2023 01:18:15 -0800 (PST)
+X-Google-Smtp-Source: AK7set/AMS0OWturGCmvyBpDhBKXngv69KsTVmltonvfdm4cJA6oegBfhVm6yi339QpV+gRI4knS
+X-Received: by 2002:a05:622a:204:b0:3b9:b2c3:9d2e with SMTP id b4-20020a05622a020400b003b9b2c39d2emr13256250qtx.10.1676884695477;
+        Mon, 20 Feb 2023 01:18:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676884695; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ag9s0RITSqUfPS8Ko7S7HSO11M2nAfYi+UXD1Wl1xSfzCWlWl/NK9ykP7rbhJHwXfu
-         XrCfQnzck8EjQJ4DtRvd5iuDX6zzr++W5IRHWdvvEAoeIRVAS7LgFJ1eJafHgpNH+k0c
-         DjZghXm1+eQEoJQqnDILI1C9pMfduKHQ0bz9ir6NUYdekZ5Iro4xmRQ059vxq4x0zN5G
-         FD1uHWumUEm7UESNo/WOeCd6IabRY6q9Raw54IUwbY/AG6yOM/rX7BxQwnyw5VpIQFBa
-         WXlAuLsaM3uYHgVVlPQSb5A74vexymQfZ6T8OFYonhu17lHnhThPcLtiSezfiHSkWcjS
-         yDyQ==
+        b=XduCC3ashQTp4PHC0KSFIvAXoxIDDAOiT0ARBt5IsG7DH65smGMwgv6xJ2fP4ATEVL
+         1z4L+JndXUQggaDYdNwZUoxL/2RZykMZm8OPkkC5yM1ZlpsSjvDqdY9nM1/1xDCnbknf
+         9bCZ2jBdAT9mFn5PAWGFlgt+egDXVIcYqUfPfa3J1fJByB6q1OdhPdgrx5p81d07eBZt
+         sO86AlJE1SxTDA8FJmjLY57YFg0ljhXdhm/mSsQMnuO2OAM825au2pdLfRvTVKF6xyWG
+         6Vzju1FJnvtBBCoX+GtFf7lNY4cviDyMza2JDc2pkmkQH9U+ahl15qTRkPQMMqbfCSY4
+         Y8vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Vt6PhkOauBmS4s+Hk5XyQ3elHoYvUAOplun9HCHnuMI=;
-        b=sf5PhLSWITJAYWGDF3/CHSipTjJ8jzbgsLIA6FWncpkj3jO7wAPhJMVmTfZoG9smJK
-         Pd2OnB6p80m2mdk5l+0YfPPDVfnl/T+dKX5Rt4vIJ1+PG104E5HWOONIblGc+xj9GR/g
-         MGGfH0ZjUo3FuQ0bOPJ3oReJBiVTGpOpDyQdEkuhv0Yz9GdllkXJ+vPCYMN82zi/ut9u
-         g5BHNA7AYm+zFrUR49h9F20xBHkaiZvnT9x1NGAxsieRCROjyhyzYlE6I35fXVyvallb
-         2vkxPL5L52VrTGKFAafzBUIHzXHKJ49mXlaMGFh/Pk+ke30s69bvGsAXFj1+xom3Xhe1
-         O4cQ==
+        bh=6KPs6QzBVbeld/TzCnm7LDXOq9GMzfPGQoiYYFroMT8=;
+        b=GnMp7F6GoBfbpHs6yiZfu59KLE9RG7ho3E5id/tQDIij/zLUfpudfZ588sd+sng+hu
+         M4/F6aCwkpZlusimAR5iefEDfB2jwD1UBmMpIw1zura+zPGriBBC4kE8TwXvmekmSSSG
+         gt4QblTaM98NlX+HRWyXdRcbFGUw3SYdXpdbKLdywTF4eGhGsz38+tKGIo4O+lR1L0/o
+         d7rz28/PxMbyAv+yTkXzXJCfiT3RJV/hRNMlOJtw/WlZpSNmmGqNwguoJSKrthIYd2WS
+         7IGxWWNPn+e39sKKABL64soaAVJBqaW2L5BcCAgyn9jXpiMS8nRdT7ij9i4M1URmvT6b
+         0JJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mAf4yQ1E;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y40nzJTu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k8-20020a0cf288000000b0056e9dd2cf29si3126101qvl.530.2023.02.20.01.17.36
+        by mx.google.com with ESMTPS id a3-20020a05620a438300b007259df947f8si9445580qkp.504.2023.02.20.01.18.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 01:17:36 -0800 (PST)
+        Mon, 20 Feb 2023 01:18:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mAf4yQ1E;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y40nzJTu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pU2GY-0006oX-7d; Mon, 20 Feb 2023 04:15:22 -0500
+	id 1pU2Hw-0000pl-GR; Mon, 20 Feb 2023 04:16:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2GM-0006cI-6k
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 04:15:11 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2Gq-00073V-T0
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 04:15:43 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2GJ-0003s6-QH
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 04:15:09 -0500
-Received: by mail-wr1-x434.google.com with SMTP id c5so1025651wrr.5
- for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 01:15:06 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2Go-0004DN-9x
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 04:15:39 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id o4so340988wrs.4
+ for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 01:15:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Vt6PhkOauBmS4s+Hk5XyQ3elHoYvUAOplun9HCHnuMI=;
- b=mAf4yQ1EFe4goLXMf3Kt0pImswORQT+N+ywdHHMHH0eDdUsdtIB0r02y2H1OiOdvnV
- D6EHUXd8JSc2UEL9yq7M2qSLOZMVtQfN4MjdQ41nyZ1/KNFQWKQMNfqctbKe2kpS9hvH
- AgBDxfymYk2J+GPjDrMqkcOP+ebIeYX2D6SKSLwskB0IDObxrBYkQyh60HuK3fu4QkvO
- LeBAGp0vXk3XaGNy/SukF6c9xR5liehR4fE6VquP7qZqZp28leAzTFOjFZjpnOsf7+3C
- 7aD/+vpcyqTNiheBgWonIwUhTMTgvAEuFdAcFJB9sTQw+nnKUdNJ8POk3eAT1VtKZuZf
- Tyjg==
+ bh=6KPs6QzBVbeld/TzCnm7LDXOq9GMzfPGQoiYYFroMT8=;
+ b=y40nzJTu9YqYn48V52PzwvKykjR4DTUGi4ggJGcN2sgTXDOAjXkcRKvnblnjA91Ybl
+ xWqRYLABhjv34K8fIZch8l63qnDN7qnYaCKWFMkKnYfKbv2Y5+xIZEImCPBeRAAOUTQY
+ TNfaRnD9uMSvtUzzKdTdPj/pKiBT1NIWPMDypUQtyhv9tioSfbeyTE5J9Qs8TbMrzrw9
+ pxNByejeorB88qFLv3irmLl9QmlHrCa9RJ/xyZ6PA5zicby3nbbTPb4yNZB8/RpU1ZJ4
+ yRHHlXZWCnuBpsJ6ENrqGAsFxe/ygPmSqlr0XeBCDnDi7jxB9zPQCzEcowVnFuSA5sd0
+ 8zuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Vt6PhkOauBmS4s+Hk5XyQ3elHoYvUAOplun9HCHnuMI=;
- b=mpOXKcDQYIy+blNLgRZ3lkyZuwtgKOI/Vp/aHJs6kCYyKlDPNpAkZ74rVKBdrqEaSG
- UtIx15TDaJ8qlxKR5L3UxCs0o3taErVbjQkPEi5uimkS+Dw6aj9i+lfGR6OTtqOwOWEG
- KVWfEzAHbf8cYUnzEmIGih1M1GAv8DBoxlvzCYK/AOaC4z/QnFZ3OTV07p4Stv5M4Fan
- GFRYdqV6PhK8dDqsT10Zs97s2Jmg63E/+EBIGEj3Cda+HrZ32ii3mJ7fBSXV5E0RWRRr
- FdVdZPHi9FvZK0pDqohJy8BzttLSt8LN2jgr1MA4Y/tKfqgU2LuXcp+pIWDmfBjeAnky
- 8yow==
-X-Gm-Message-State: AO0yUKWe0Pu3bAdnWFQzactGf41CLPEOzGigylwtCokku3dnHkHsbeN0
- cpo5WQfQmCS9lImzjAUElLEQhQ==
-X-Received: by 2002:adf:e811:0:b0:2c5:61ef:7b37 with SMTP id
- o17-20020adfe811000000b002c561ef7b37mr1251045wrm.10.1676884506582; 
- Mon, 20 Feb 2023 01:15:06 -0800 (PST)
+ bh=6KPs6QzBVbeld/TzCnm7LDXOq9GMzfPGQoiYYFroMT8=;
+ b=YdW7TaTjP497900S+W5OAXWrdkICKJUL0zumSU82NpmgMgJTvbDmn4FF16i1ARP6N/
+ C/+fAaup+QwjSCLFJySzYKLdzJC3IeCS0InY6CMSDkVPgjH3XN9Sd/XGJY6XSjysNWrm
+ EYAXV494qi3Xa7enRtC3J2aE03YioH3osIVjexdNwdWglSDnFQ1n5oZW61ksqQLNnPyi
+ 135ILePfUVedZkJyjpyM9DRBsA+7CgvO6T8Nv1dbSwsT9EFBBGXj0gjPHUQ++pXo+cRj
+ iVDqj5iYIPefANzX0eSdiLX8d92E1a9CsjNit/9kuVjqidf6cYzK2r4QKj2/MmLu4gMr
+ 6R9g==
+X-Gm-Message-State: AO0yUKXSlgYB5GNEVB0LZM6y4UXIlJnaMp+vRa765NWgoVfdJMgUPOmq
+ GbUXnfaOXnT6xwo1cWIrttbxGml98EGN7RDX
+X-Received: by 2002:a5d:66d2:0:b0:2c5:9cb8:d314 with SMTP id
+ k18-20020a5d66d2000000b002c59cb8d314mr2155152wrw.56.1676884536405; 
+ Mon, 20 Feb 2023 01:15:36 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- d9-20020a5d5389000000b002c6eb1fc07asm1262627wrv.31.2023.02.20.01.15.05
+ v17-20020a5d6111000000b002c559def236sm4013038wrt.57.2023.02.20.01.15.35
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 20 Feb 2023 01:15:06 -0800 (PST)
+ Mon, 20 Feb 2023 01:15:36 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, John Snow <jsnow@redhat.com>, qemu-block@nongnu.org,
  qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH v2 13/24] hw/ide: Rename ide_register_restart_cb ->
- ide_bus_register_restart_cb
-Date: Mon, 20 Feb 2023 10:13:47 +0100
-Message-Id: <20230220091358.17038-14-philmd@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v2 19/24] hw/ide/ioport: Remove unnecessary includes
+Date: Mon, 20 Feb 2023 10:13:53 +0100
+Message-Id: <20230220091358.17038-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230220091358.17038-1-philmd@linaro.org>
 References: <20230220091358.17038-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,135 +123,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YqBioq7lu2FU
-
-ide_register_restart_cb() operates on a IDEBus; rename it as
-ide_bus_register_restart_cb() to emphasize its first argument
-is a IDEBus.
-
-Mechanical change using:
-
-  $ sed -i -e 's/ide_register_restart_cb/ide_bus_register_restart_cb/g' \
-    $(git grep -l ide_register_restart_cb)
+X-TUID: 4KDgWH23ixYD
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230215112712.23110-13-philmd@linaro.org>
+Message-Id: <20230215112712.23110-17-philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/ide/ahci.c             | 2 +-
- hw/ide/cmd646.c           | 2 +-
- hw/ide/core.c             | 2 +-
- hw/ide/isa.c              | 2 +-
- hw/ide/piix.c             | 2 +-
- hw/ide/sii3112.c          | 2 +-
- hw/ide/via.c              | 2 +-
- include/hw/ide/internal.h | 2 +-
- 8 files changed, 8 insertions(+), 8 deletions(-)
+ hw/ide/ioport.c | 10 ----------
+ 1 file changed, 10 deletions(-)
 
-diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index 90fea5d059..430961d73b 100644
---- a/hw/ide/ahci.c
-+++ b/hw/ide/ahci.c
-@@ -1560,7 +1560,7 @@ void ahci_realize(AHCIState *s, DeviceState *qdev, AddressSpace *as, int ports)
-         ad->port_no = i;
-         ad->port.dma = &ad->dma;
-         ad->port.dma->ops = &ahci_dma_ops;
--        ide_register_restart_cb(&ad->port);
-+        ide_bus_register_restart_cb(&ad->port);
-     }
-     g_free(irqs);
- }
-diff --git a/hw/ide/cmd646.c b/hw/ide/cmd646.c
-index 94c576262c..2865bc25fc 100644
---- a/hw/ide/cmd646.c
-+++ b/hw/ide/cmd646.c
-@@ -298,7 +298,7 @@ static void pci_cmd646_ide_realize(PCIDevice *dev, Error **errp)
+diff --git a/hw/ide/ioport.c b/hw/ide/ioport.c
+index 7156c465da..d869f8018a 100644
+--- a/hw/ide/ioport.c
++++ b/hw/ide/ioport.c
+@@ -25,16 +25,6 @@
  
-         bmdma_init(&d->bus[i], &d->bmdma[i], d);
-         d->bmdma[i].bus = &d->bus[i];
--        ide_register_restart_cb(&d->bus[i]);
-+        ide_bus_register_restart_cb(&d->bus[i]);
-     }
- }
- 
-diff --git a/hw/ide/core.c b/hw/ide/core.c
-index 117e26cef1..5897411b95 100644
---- a/hw/ide/core.c
-+++ b/hw/ide/core.c
-@@ -2759,7 +2759,7 @@ static void ide_restart_cb(void *opaque, bool running, RunState state)
-     }
- }
- 
--void ide_register_restart_cb(IDEBus *bus)
-+void ide_bus_register_restart_cb(IDEBus *bus)
- {
-     if (bus->dma->ops->restart_dma) {
-         bus->vmstate = qemu_add_vm_change_state_handler(ide_restart_cb, bus);
-diff --git a/hw/ide/isa.c b/hw/ide/isa.c
-index 74f7b43137..f8ed26b587 100644
---- a/hw/ide/isa.c
-+++ b/hw/ide/isa.c
-@@ -74,7 +74,7 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
-     ide_init_ioport(&s->bus, isadev, s->iobase, s->iobase2);
-     ide_init2(&s->bus, isa_get_irq(isadev, s->irqnum));
-     vmstate_register(VMSTATE_IF(dev), 0, &vmstate_ide_isa, s);
--    ide_register_restart_cb(&s->bus);
-+    ide_bus_register_restart_cb(&s->bus);
- }
- 
- ISADevice *isa_ide_init(ISABus *bus, int iobase, int iobase2, int irqnum,
-diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-index 267dbf37db..daeb9b605d 100644
---- a/hw/ide/piix.c
-+++ b/hw/ide/piix.c
-@@ -149,7 +149,7 @@ static int pci_piix_init_ports(PCIIDEState *d)
- 
-         bmdma_init(&d->bus[i], &d->bmdma[i], d);
-         d->bmdma[i].bus = &d->bus[i];
--        ide_register_restart_cb(&d->bus[i]);
-+        ide_bus_register_restart_cb(&d->bus[i]);
-     }
- 
-     return 0;
-diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
-index 46204f10d7..c918370220 100644
---- a/hw/ide/sii3112.c
-+++ b/hw/ide/sii3112.c
-@@ -288,7 +288,7 @@ static void sii3112_pci_realize(PCIDevice *dev, Error **errp)
- 
-         bmdma_init(&s->bus[i], &s->bmdma[i], s);
-         s->bmdma[i].bus = &s->bus[i];
--        ide_register_restart_cb(&s->bus[i]);
-+        ide_bus_register_restart_cb(&s->bus[i]);
-     }
- }
- 
-diff --git a/hw/ide/via.c b/hw/ide/via.c
-index e1a429405d..fd398226d4 100644
---- a/hw/ide/via.c
-+++ b/hw/ide/via.c
-@@ -195,7 +195,7 @@ static void via_ide_realize(PCIDevice *dev, Error **errp)
- 
-         bmdma_init(&d->bus[i], &d->bmdma[i], d);
-         d->bmdma[i].bus = &d->bus[i];
--        ide_register_restart_cb(&d->bus[i]);
-+        ide_bus_register_restart_cb(&d->bus[i]);
-     }
- }
- 
-diff --git a/include/hw/ide/internal.h b/include/hw/ide/internal.h
-index ccfe064643..cc95cd47a0 100644
---- a/include/hw/ide/internal.h
-+++ b/include/hw/ide/internal.h
-@@ -620,7 +620,7 @@ void ide_init2(IDEBus *bus, qemu_irq irq);
- void ide_exit(IDEState *s);
- int ide_init_ioport(IDEBus *bus, ISADevice *isa, int iobase, int iobase2);
- void ide_bus_set_irq(IDEBus *bus);
--void ide_register_restart_cb(IDEBus *bus);
-+void ide_bus_register_restart_cb(IDEBus *bus);
- 
- void ide_exec_cmd(IDEBus *bus, uint32_t val);
- 
+ #include "qemu/osdep.h"
+ #include "hw/isa/isa.h"
+-#include "qemu/error-report.h"
+-#include "qemu/timer.h"
+-#include "sysemu/blockdev.h"
+-#include "sysemu/dma.h"
+-#include "hw/block/block.h"
+-#include "sysemu/block-backend.h"
+-#include "qapi/error.h"
+-#include "qemu/cutils.h"
+-#include "sysemu/replay.h"
+-
+ #include "hw/ide/isa.h"
+ #include "hw/ide/internal.h"
+ #include "trace.h"
 -- 
 2.38.1
 

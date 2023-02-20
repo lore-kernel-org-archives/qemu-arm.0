@@ -1,110 +1,174 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2480209ejb;
-        Mon, 20 Feb 2023 09:38:00 -0800 (PST)
-X-Google-Smtp-Source: AK7set+6ildk/lTEhvwqtDRP4BpeatigBVSaZn/47yXD1v6DKV6xyuS7feIKhWHkhVcAVqc7emSe
-X-Received: by 2002:a05:622a:1356:b0:3b8:4951:57b7 with SMTP id w22-20020a05622a135600b003b8495157b7mr3127235qtk.20.1676914680146;
-        Mon, 20 Feb 2023 09:38:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676914680; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ilvU2vvaclbAXqUCgxSbfZr3sPp9r9H98XdmO+b22FEtPh3KyWqfcV1pJ5YdV5kSSo
-         N4mI3kNg3DCunDYkqCMkcZTrtOlmLszMQhUBF6jLq/AY05ZbSttZ0iPCa/BUrFpzF5Ck
-         nMOxQl70UGSCjR/SQVN+IhD7v4EzY2ooUArrcjlLzvqqGZCSdNDcR7nfuIOdkhbF8dOT
-         GwEkInrOFuLHQlhPN5iDHrG42Tr97AjagEgt8a5Augz4GL7Lbq6yyvNH9tfLlkt/PIaD
-         Dc+fhTobweveJktKSjVSG74JgSrtStP36tL/GG98wh4kcYSKeM9gj7qMHCbnmgnCOLzA
-         bWKw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=2bohxXLr1BfTy/poubrVhXXEy8MGhXoKryYmKOezeZY=;
-        b=RPf1W7bd1KEVYLR15mI/sFj0b/7WsW9XEuxzZwedC97+9EGesZkuoEFdZZ3AdtOg9x
-         W4yP4Zc87leY+d5LSZGXlpg2qlcZ/SkSxtp4ENpylaI6FRhASamrhbNXUUnB+hTkDDox
-         J2FuhyWDpuChVCrbiPx7fJ16m5R1ngS1NRMHcZe/A/yRe0NSJcGHg1TLOrBAaBz+YkMf
-         ZqJvqiPil/+1TC6AYGcBPrQyjmsR8BlUzHoE6lAytEPcHc1J+PdX2Nf1JZWo5MH1m5wI
-         5+sIynGHRIM4oDkAZ3Pw0rgyVtf7FKWU1DTjlbdmwwngBN0REYKq07NKnIebwvCKQwfh
-         nJOg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hY1CmKcG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2594358ejb;
+        Mon, 20 Feb 2023 12:39:56 -0800 (PST)
+X-Google-Smtp-Source: AK7set85XX5tbgUy4hZ1PjCdJMsJj8fYtgr8zuNZ0aZ79bYgkibdBp0BMCVd+o+50tyx4eEBAd6s
+X-Received: by 2002:ac8:5cca:0:b0:3b9:bd05:bde1 with SMTP id s10-20020ac85cca000000b003b9bd05bde1mr16466991qta.8.1676925596241;
+        Mon, 20 Feb 2023 12:39:56 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 4-20020a05620a040400b0073b64657be0si9559937qkp.137.2023.02.20.09.37.59
+        by mx.google.com with ESMTPS id g17-20020a05620a40d100b0073a8ce4ed57si10996481qko.598.2023.02.20.12.39.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 09:38:00 -0800 (PST)
+        Mon, 20 Feb 2023 12:39:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hY1CmKcG;
+       dkim=pass header.i=@armh.onmicrosoft.com header.s=selector2-armh-onmicrosoft-com header.b="PvQ78z/R";
+       dkim=pass header.i=@armh.onmicrosoft.com header.s=selector2-armh-onmicrosoft-com header.b="PvQ78z/R";
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=arm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUA6l-00005i-Hm; Mon, 20 Feb 2023 12:37:47 -0500
+	id 1pUCwn-0004LP-NA; Mon, 20 Feb 2023 15:39:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pUA6k-00005Y-Tl
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 12:37:46 -0500
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pUA6j-0000gw-5e
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 12:37:46 -0500
-Received: by mail-pl1-x62a.google.com with SMTP id ko13so2957046plb.13
- for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 09:37:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=2bohxXLr1BfTy/poubrVhXXEy8MGhXoKryYmKOezeZY=;
- b=hY1CmKcGhb/t3/2y8ZzmDkMfG9fqiX/Z09aXGBzXO50DDqRh/iX4LKkQlaY3+BxUjk
- r94/KNimiOWvN/U0ypZ0V8s2L8F9aY1jJEsz8F1XJJzftDusYGgjS6dODXHdjD5O9s6/
- 7TEAsYomA+D78zc8OaXUu8LP9c/B9sYwhw9RDJBaWK7sUeaza0agNcr5B0/UG/ctb9oo
- XSPPWIxmHnSXlBRiA7+O+vg6FT75UjVxEzwVP/mQqZbmB/jHeiLLZrUvS9doH1VEVRO7
- 8X5OoqpWlsnuiInhamhksJVwMtBZZcQlFMzUCPGDge/8K8LL+bVC912JSo5JgTz3xOFr
- Dkog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=2bohxXLr1BfTy/poubrVhXXEy8MGhXoKryYmKOezeZY=;
- b=UQ5Fw9nTlV0daArqafa5z2YDF+isdW/S4ishO9dyJepJ8V40Dq5YdTBBihgKZ29xEp
- TxzKTsvxrchFPowNobjYeRALmnzymbfSWKp4skk9Kexjbmk/3XpN5O8znnTt286weDC6
- Kgno4q7lJjv74rDbKXVYQ1c0MR9RQ4ftAElDNbUjWhtIx1bVXCNRL6IQlpcJxfBquDyh
- +oi/wvSuYFntqAyF++HqdPIMWQ+DxhdBAS1L+jsk4ViWNdouGE0IW4lZp9MrHPTWr/yR
- Vt1XNXsUkveBTwzwsadM0wAavc6CvPs/0yhHpibrKZgo0AmdoLrDacdUJ9q1E19xwWoo
- d3QA==
-X-Gm-Message-State: AO0yUKXDth8IzmBZZeHQnXf67ES4sKDLC/0D775LkwBfqnuhevtZ6F3w
- 2gQ7PwkvbddNuPWp4x1bK8dsckoiIyJEZHbnw1th1A==
-X-Received: by 2002:a17:90b:5109:b0:233:dcb5:ee15 with SMTP id
- sc9-20020a17090b510900b00233dcb5ee15mr1051728pjb.92.1676914663817; Mon, 20
- Feb 2023 09:37:43 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <Luis.Machado@arm.com>)
+ id 1pUAta-0001oH-BF; Mon, 20 Feb 2023 13:28:14 -0500
+Received: from mail-vi1eur04on060f.outbound.protection.outlook.com
+ ([2a01:111:f400:fe0e::60f]
+ helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Luis.Machado@arm.com>)
+ id 1pUAtX-0001cT-DI; Mon, 20 Feb 2023 13:28:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com; 
+ s=selector2-armh-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JjI2po/sXvvJ3s/Tph7Jkhx8j+r2SW0zgmalq85aoyc=;
+ b=PvQ78z/RfgD6r4EDJSTYC8yPIRVozRhYAtdxt9yj8VoK2lKJvDtYIG17bS46gdGhpHuZTVtKhIsvhZ27mOC807SZJ/WquGIZvJCqBr+k7cUmOYjjK0bQ+aAmhciCPPhu/et+NAw/0cDB1mmpT9rYptZEpHUuvaYZdqm+8rkmcGg=
+Received: from AS4P195CA0027.EURP195.PROD.OUTLOOK.COM (2603:10a6:20b:5d6::16)
+ by DU0PR08MB9396.eurprd08.prod.outlook.com (2603:10a6:10:423::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6111.19; Mon, 20 Feb
+ 2023 18:28:03 +0000
+Received: from AM7EUR03FT044.eop-EUR03.prod.protection.outlook.com
+ (2603:10a6:20b:5d6:cafe::c) by AS4P195CA0027.outlook.office365.com
+ (2603:10a6:20b:5d6::16) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6111.19 via Frontend
+ Transport; Mon, 20 Feb 2023 18:28:03 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 63.35.35.123)
+ smtp.mailfrom=arm.com; dkim=pass (signature was verified)
+ header.d=armh.onmicrosoft.com;dmarc=pass action=none header.from=arm.com;
+Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
+ 63.35.35.123 as permitted sender) receiver=protection.outlook.com;
+ client-ip=63.35.35.123; helo=64aa7808-outbound-1.mta.getcheckrecipient.com;
+ pr=C
+Received: from 64aa7808-outbound-1.mta.getcheckrecipient.com (63.35.35.123) by
+ AM7EUR03FT044.mail.protection.outlook.com (100.127.140.169) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6111.20 via Frontend Transport; Mon, 20 Feb 2023 18:28:03 +0000
+Received: ("Tessian outbound 43b0faad5a68:v132");
+ Mon, 20 Feb 2023 18:28:03 +0000
+X-CheckRecipientChecked: true
+X-CR-MTA-CID: 5844ecb058f48aa9
+X-CR-MTA-TID: 64aa7808
+Received: from de74ae73c3ab.1
+ by 64aa7808-outbound-1.mta.getcheckrecipient.com id
+ 6B97135B-40B0-4C81-AE27-79678568435F.1; 
+ Mon, 20 Feb 2023 18:27:55 +0000
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com
+ by 64aa7808-outbound-1.mta.getcheckrecipient.com with ESMTPS id de74ae73c3ab.1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384);
+ Mon, 20 Feb 2023 18:27:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ZnqpkzhX+6pvWd2P1RoTnkG0/QDTQPPjEN4WMzZmU4jnaKyGAbeTU4MfIFJFAkbBwu+bnOMP9aF+9zTmh7iEQsnv2XIU8lnY5vG9jBqCkiQ43zFuBhWOfc43Woma8C2xUV1IKdOPNLQFrPpjnGqjSps09SQka39lU7fE12OPeVDzKsc8KiTeplm+lSmRXsjlel9htcxEDpYxWxQT27gU49jfVPNRXH6bgqAM0y2gs+poKZwg1CA3tbc/EZTaU8Y5Dj1EPtvawibtu3wQzDwUFjB255iprxV0HY8W5zdLlfDyr8YPaIdIyBtn6LFyCm3sSrMOQ9792YJEGUgrvjpYeA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=JjI2po/sXvvJ3s/Tph7Jkhx8j+r2SW0zgmalq85aoyc=;
+ b=DDRapwtCBFcEndRt1ZHgRjOIuuyyx90YOkc1sszID0pewQd3P5Yve0SE2GiDI5qYCldSbvigr15SjYykfaZm7x6Uu+WQqZanEoUPVN3NzyU+5mXVc16rGahaEYEB45yeuir2iJt80W6yP+I0RRgauflHHhcxk9PxQRkDGuM3m9gyMU8Ga0aqA5gQnhxRGG7qjvL7pLYc4ipUlMiN5s5Y2XXrpBfjxZ+QCs4wX0JODchG+Yv6hsW/DPl7xHdB1+Kb5LDzOHHFmnrTbSG/Bzrg1m9v13pH7nTjvmDoVrpQMcDo4aLDrA0EQtTwzaSXeozOIolHWRIeRhf9x38o157fyg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=arm.com; dmarc=pass action=none header.from=arm.com; dkim=pass
+ header.d=arm.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com; 
+ s=selector2-armh-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JjI2po/sXvvJ3s/Tph7Jkhx8j+r2SW0zgmalq85aoyc=;
+ b=PvQ78z/RfgD6r4EDJSTYC8yPIRVozRhYAtdxt9yj8VoK2lKJvDtYIG17bS46gdGhpHuZTVtKhIsvhZ27mOC807SZJ/WquGIZvJCqBr+k7cUmOYjjK0bQ+aAmhciCPPhu/et+NAw/0cDB1mmpT9rYptZEpHUuvaYZdqm+8rkmcGg=
+Authentication-Results-Original: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=arm.com;
+Received: from VI1PR08MB3919.eurprd08.prod.outlook.com (2603:10a6:803:c4::31)
+ by PAWPR08MB8935.eurprd08.prod.outlook.com (2603:10a6:102:33f::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6111.19; Mon, 20 Feb
+ 2023 18:27:52 +0000
+Received: from VI1PR08MB3919.eurprd08.prod.outlook.com
+ ([fe80::bced:32a3:b77e:90a6]) by VI1PR08MB3919.eurprd08.prod.outlook.com
+ ([fe80::bced:32a3:b77e:90a6%4]) with mapi id 15.20.6111.019; Mon, 20 Feb 2023
+ 18:27:51 +0000
+Message-ID: <d2c5c041-f4ec-2c96-50c2-b97dc9a302f2@arm.com>
+Date: Mon, 20 Feb 2023 18:27:47 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH 14/14] target/arm: Support reading m-profile system
+ registers from gdb
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, David Reiss
+ <dreiss@meta.com>, Torbjorn SVENSSON <torbjorn.svensson@foss.st.com>,
+ Yvan ROUX - foss <yvan.roux@foss.st.com>
 References: <20230214163048.903964-1-richard.henderson@linaro.org>
  <20230214163048.903964-15-richard.henderson@linaro.org>
  <CAFEAcA96L2V0dvnrygnr00PsKkAcko30h+RCKUMcAJGv0utH4A@mail.gmail.com>
  <c6d768e4-6f48-b68d-26f0-227d70bce82e@linaro.org>
-In-Reply-To: <c6d768e4-6f48-b68d-26f0-227d70bce82e@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Feb 2023 17:37:32 +0000
-Message-ID: <CAFEAcA8sfvQFFArnkm8aGXSvhB6t+vg52bdQCPvLu26VXRkNtQ@mail.gmail.com>
-Subject: Re: [PATCH 14/14] target/arm: Support reading m-profile system
- registers from gdb
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, David Reiss <dreiss@meta.com>, 
- Luis Machado <luis.machado@arm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <CAFEAcA8sfvQFFArnkm8aGXSvhB6t+vg52bdQCPvLu26VXRkNtQ@mail.gmail.com>
+Content-Language: en-US
+From: Luis Machado <luis.machado@arm.com>
+In-Reply-To: <CAFEAcA8sfvQFFArnkm8aGXSvhB6t+vg52bdQCPvLu26VXRkNtQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-ClientProxiedBy: LO4P123CA0272.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:600:195::7) To VI1PR08MB3919.eurprd08.prod.outlook.com
+ (2603:10a6:803:c4::31)
+MIME-Version: 1.0
+X-MS-TrafficTypeDiagnostic: VI1PR08MB3919:EE_|PAWPR08MB8935:EE_|AM7EUR03FT044:EE_|DU0PR08MB9396:EE_
+X-MS-Office365-Filtering-Correlation-Id: 99f3bf76-1aa2-4996-57d2-08db137033ff
+x-checkrecipientrouted: true
+NoDisclaimer: true
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam-Untrusted: BCL:0;
+X-Microsoft-Antispam-Message-Info-Original: pOE2u5s5AF31oXIiulNqwsZZyqM8gJDQHRFgDo5y5EHL6HKzqnNUVETvgNsLvH657MN3p+a7AMJoW3l3fxotfTE4+vGZbQTdSWTmFfjVGCf/euChkut8nvdJfy0Z7gja8yZCgitlEJ/CRZs0mb2uN8FRHOcBpMCVOk8er8YaEP0jrQdMWhmnKdUCxYNDxr7H5GweNUhtQZRaiL87sjWfuXx8Shd7XODrV0ZD47Iy+tkhazbgRKPEov+/qMPvzRO1diChZXtGSu1YOvhYGHmvndOInAgyFI3W52qwGGivD2AcMaLEHKXS08EszycLeAi7QmSqV9Od6rkyDr4KJ7nWyz4YzaqVri8kIk3kFf7gZZ0n2ZxCjE0EtFGBqNg622w2zlp8Y2pXU0BLpHyMBK7jAieaR1BxAaFjLcW6u+82QUGSY0yafzQBPPDLlSi8PoNrnm6MM65T25ptQjvOkV/TSgRh0ASRgXBh/izqhWP4e9wA68I13LkK3imH9ZaI6yZHwJ4GvuA8xRix8JHBoU+O05F3LZGvr/PICwOMQQ/ZrjeVvZDLN8Ev1aMLSmCP0mT7MerQicuIgeaLgbNYZUmLuTKoUcHD0zh8J3TTBQdAUU4BaRECJDn+sl4mhQUymTPF3PI/HhJM8kchQ/5an9yf1CouvsRanTeFq6Go2pqRQ6tgkcZIhqJHIpyDDS7zbKkGTswe9aLEc8/k06arg4R3yvXCoWQ2zRQQWamfEQ0Ym7U=
+X-Forefront-Antispam-Report-Untrusted: CIP:255.255.255.255; CTRY:; LANG:en;
+ SCL:1; SRV:; IPV:NLI; SFV:NSPM; H:VI1PR08MB3919.eurprd08.prod.outlook.com;
+ PTR:; CAT:NONE;
+ SFS:(13230025)(4636009)(366004)(396003)(376002)(346002)(136003)(39860400002)(451199018)(31686004)(186003)(26005)(53546011)(966005)(66556008)(66476007)(4326008)(8676002)(6666004)(8936002)(2616005)(83380400001)(6486002)(66899018)(66946007)(6506007)(6512007)(36756003)(5660300002)(41300700001)(66574015)(478600001)(110136005)(54906003)(316002)(38100700002)(86362001)(44832011)(31696002)(2906002)(43740500002)(45980500001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAWPR08MB8935
+Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=arm.com;
+X-EOPAttributedMessage: 0
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: AM7EUR03FT044.eop-EUR03.prod.protection.outlook.com
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id-Prvs: 4dd1759f-2d4a-4ded-0afa-08db13702cc2
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: JtXOGjpSrBPe7HwcssMv6+SqVWVS1a4KuckQJk1X80tHX4ywJSocBbnkBwj/evzDmhvVCOqH7ziby+ZJj9f7qBUrtJ0LPEfUn6uKkVqIdyPKVwurg4LOhSCF4KFln+XSztpnlb+zwguZBIsVEXISuHfIAwNXlhDyEXyi2pBsVynTM1CRZvdXVSmr1krsrEdhVsgNKxt/sVpV5UG5I7aKgGpK0n0Sl7oEFzqK50p+SIAgjiO4tncv8FIOTdhggDjcoQFAxfCLucMysjiVT1xdlQ1/Fo8frpeP6nlkaQE5ne2M1Ri5kGC4LHjQL9Q4e+cKbgeIfjRvQdQfmDY2QfzKmP3qj1XpoQu6cuv6TnKiKcC0aBYkmzhUb1RbuXkM8NSpEbYd6+iXgcHWPaYCiAUALjjSCn/Mq85zb1kriKD6C04mRaf8wbhNxIOJucupJ0pOL3CwuUgl3hjwIuujhMdfUxzrfMxd5hj7SSEmk0stIg9IYCPkA/Y6lYEf7wbQgtr27fKrZiMo7Sq5dykfBTg8c363i/a2qTItePu4ENsFx9Xjy99YN40xVRYj0e2EAt8iPYu6fr5I1OakSzvjmYftV0Vzng7gUcIddFBbZFMZceMmLwz/eoPgYqATWxHACos5CE266dbZpOrBLoLzRvSfgG9iSjTW6QiPQj6WHQJ/0SOgcelbWUpRosP/5ajZerjDmT1XA8R77rzZnmPIlREMiXiFilGDy3VmyBmscQ02Szg=
+X-Forefront-Antispam-Report: CIP:63.35.35.123; CTRY:IE; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:64aa7808-outbound-1.mta.getcheckrecipient.com;
+ PTR:ec2-63-35-35-123.eu-west-1.compute.amazonaws.com; CAT:NONE;
+ SFS:(13230025)(4636009)(376002)(396003)(136003)(39860400002)(346002)(451199018)(36840700001)(40470700004)(46966006)(66899018)(31686004)(4326008)(70206006)(356005)(70586007)(8676002)(6486002)(110136005)(316002)(966005)(54906003)(8936002)(41300700001)(450100002)(5660300002)(86362001)(36756003)(40460700003)(31696002)(26005)(6506007)(53546011)(66574015)(186003)(6666004)(336012)(6512007)(44832011)(478600001)(2616005)(47076005)(81166007)(82310400005)(82740400003)(40480700001)(2906002)(83380400001)(36860700001)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: arm.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Feb 2023 18:28:03.2069 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 99f3bf76-1aa2-4996-57d2-08db137033ff
+X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d; Ip=[63.35.35.123];
+ Helo=[64aa7808-outbound-1.mta.getcheckrecipient.com]
+X-MS-Exchange-CrossTenant-AuthSource: AM7EUR03FT044.eop-EUR03.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR08MB9396
+Received-SPF: pass client-ip=2a01:111:f400:fe0e::60f;
+ envelope-from=Luis.Machado@arm.com;
+ helo=EUR04-VI1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, NICE_REPLY_A=-0.09, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 20 Feb 2023 15:39:40 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,38 +182,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cnkKLhpQspA/
+X-TUID: Q3mKZlI7zcl0
 
-On Mon, 20 Feb 2023 at 17:00, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+Hi,
+
+On 2/20/23 17:37, Peter Maydell wrote:
+> On Mon, 20 Feb 2023 at 17:00, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> On 2/20/23 06:02, Peter Maydell wrote:
+>>>> +    g_string_printf(s, "<?xml version=3D\"1.0\"?>");
+>>>> +    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.d=
+td\">");
+>>>> +    g_string_append_printf(s, "<feature name=3D\"org.gnu.gdb.arm.m-sy=
+stem\">\n");
+>>>
+>>> Half of these need to be in org.gnu.gdb.arm.secext.
+>>> These aren't our own XML features we're making up (if they
+>>> were then they would be in org.qemu.something), so we should
+>>> follow the existing precedent about what registers go in them.
+>>
+>> Now that you point it out (and I should have checked myself), we are kin=
+da making them up.
+>>    The only registers within upstream gdb m-system and secext are MSP, P=
+SP, MSP_NS, MSP_S,
+>> PSP_NS, PSP_S.  All the others are our own addition.
 >
-> On 2/20/23 06:02, Peter Maydell wrote:
-> >> +    g_string_printf(s, "<?xml version=\"1.0\"?>");
-> >> +    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
-> >> +    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.m-system\">\n");
-> >
-> > Half of these need to be in org.gnu.gdb.arm.secext.
-> > These aren't our own XML features we're making up (if they
-> > were then they would be in org.qemu.something), so we should
-> > follow the existing precedent about what registers go in them.
+> I think OpenOCD's implementation includes more than that:
+> https://openocd.org/doc-release/doxygen/armv7m_8c_source.html
 >
-> Now that you point it out (and I should have checked myself), we are kinda making them up.
->   The only registers within upstream gdb m-system and secext are MSP, PSP, MSP_NS, MSP_S,
-> PSP_NS, PSP_S.  All the others are our own addition.
+>> Should all the rest be in a third bit of xml?
+>
+> Luis, do you have the specs for what the existing implementations
+> are doing here ?
 
-I think OpenOCD's implementation includes more than that:
-https://openocd.org/doc-release/doxygen/armv7m_8c_source.html
+Support for the extra stack pointers was contributed by ST (Torbj=C3=B6rn a=
+nd Yvan cc-ed), so I'd say ST-Link was the debugging stub the GDB changes w=
+ere based on (to my knowledge). This support includes the org.gnu.gdb.arm.m=
+-system and org.gnu.gdb.arm.secext features.
 
-> Should all the rest be in a third bit of xml?
+The org.gnu.gdb.arm.m-system feature contains msp and psp (gdb/features/arm=
+/arm-m-system.xml) and the org.gnu.gdb.arm.secext feature contains the msp_=
+ns, msp_s, psp_ns and psp_s registers (gdb/features/arm/arm-secext.xml).
 
-Luis, do you have the specs for what the existing implementations
-are doing here ?
+All of the registers should be 32-bit in size. There could be extra registe=
+rs in those two features, but gdb only cares about the 6 registers listed a=
+bove. It is meant for gdb to detect if the additional stack pointer registe=
+rs are available and, if so, track their values.
 
-Ideally gdb should document for every bit of XML it is the
-official owner of (ie in the org.gnu.gdb namespace) what the
-required and optional register values are, including details
-like the register width (which I think the two existing
-implementations that output m-system disagree on).
+Adding the stack pointers to other features should be OK, but gdb needs to =
+know about that so it can go looking for them. The most convenient way to d=
+o it is to follow the original features we modeled things from. In this cas=
+e, the XML layout from ST's contributions.
+>
+> Ideally gdb should document for every bit of XML it is the
+> official owner of (ie in the org.gnu.gdb namespace) what the
+> required and optional register values are, including details
+> like the register width (which I think the two existing
+> implementations that output m-system disagree on).
 
-thanks
--- PMM
+I went through the OpenOCD code and it seems it has additional registers in=
+ the m-system category. That should be fine, as long as gdb sees msp and ps=
+p.
+
+Of course, all of this would be much better if properly documented in the g=
+db manual, which unfortunately it isn't (in much or any detail). Apologies =
+for that.
+
+I'll set some time aside to get the documentation updated / written for the=
+se features.
+
+In the mean time, feel free to ping me if something needs to be clarified.
+
+>
+> thanks
+> -- PMM
+
+IMPORTANT NOTICE: The contents of this email and any attachments are confid=
+ential and may also be privileged. If you are not the intended recipient, p=
+lease notify the sender immediately and do not disclose the contents to any=
+ other person, use it for any purpose, or store or copy the information in =
+any medium. Thank you.

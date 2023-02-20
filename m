@@ -1,112 +1,109 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2100850ejb;
-        Mon, 20 Feb 2023 01:17:22 -0800 (PST)
-X-Google-Smtp-Source: AK7set81EsKKax98kXc72BRj1J75ipwX9QlWUd8vrxM1u0whU5fLRzRKgNkgBurVFK/hggiCAnww
-X-Received: by 2002:a05:622a:4ca:b0:3b8:2a6c:d1e4 with SMTP id q10-20020a05622a04ca00b003b82a6cd1e4mr271145qtx.23.1676884641907;
-        Mon, 20 Feb 2023 01:17:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676884641; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2100948ejb;
+        Mon, 20 Feb 2023 01:17:29 -0800 (PST)
+X-Google-Smtp-Source: AK7set9uboEb9eeAoBTr6nu/1LLFma5f15sn/G/FfxwhbWGLtK51TPdICu53s7fxCILihhXWRGJv
+X-Received: by 2002:a05:6214:1c09:b0:537:6416:fc2b with SMTP id u9-20020a0562141c0900b005376416fc2bmr2836882qvc.52.1676884649121;
+        Mon, 20 Feb 2023 01:17:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676884649; cv=none;
         d=google.com; s=arc-20160816;
-        b=VAuZuxOsOL+Xo5mieLV534YJtn3eUbtj97dDPoD5hwqJ/E3ZPZLUMHhY3GMTdhQyJG
-         1fkkSFVJaYvcXTrMABQYcEcvf0tA+8UCICSnlrj7GZE6mynhLP0es1ti2MlMPn2ie1HF
-         4Zy0iUfjYRHa/m8G3IUuLmaED+4QRuUxX4cmM/H/ZVlWwq8STR/o5hrVaQowqVsiXko+
-         M1KCJJbII/HD+76gOLBc6dlBtUfkUiSTNfVyD2di0vs9xDLUp4/00p/054Ou4RTicHm+
-         ia2pW9KaZE/gb1mox3GlNKrhCF25DFqEhKa7mGsOaNt5oMPAGI7MuBm4MfrD/dN9Xb6e
-         VtWg==
+        b=PKBJidnI1B6106aFWri+oKBt3cxrbhDSALckf2CVx0kAQjEgBcBDeuABmhY7v9E1D/
+         cMngPpnblJWpipHPEVFK31XILFAhb9c6RBb366dAL125h7Mtw/QEtk9n0+lJwnVjnDnT
+         LBkLLZkNPpvRvAfKmg7A9inS8o3jmUMQvvKMcaYnVqcR5esO+1/vMQrFQWisfEy+bLXI
+         HPB1I3CyjENMtkMmw47t0/y1IMZkaevtyQjWz7tC+WAfI0W/ZSIDvt5Ke/qQWu6R/OlF
+         66kAzyItucuxFmfQcT7MCyv+kzpU1A7kplQPkySLSH1gsb4bM4FgVwlo+wSN1yBQwPHY
+         3d9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=l+kQmnueqHR1/7y+7KCNnDEw+Oe5smCTiQ+KK+3S1XU=;
-        b=wP07CGlKwhdhML660nVAGgOcwDdOAhNWl77zFmPwTrWmvQv2+kLRtRHObCE4rwoKjK
-         v71sEekgAJ3JWxyR85NOFbKh4pOFLji6xpvNX4pOuqmZuaXYMLFpbhzlfa7j8JO9aS/p
-         1IGsjaJyKriukKp8eoRIbaUCDnBV44+xJykApT1Oh1iU+jutvB3oFEuZrx7FOf0tNj/A
-         EqrPn2KrANX+kjvUz7YGwqQVIMVLp9daja4ny8yftNx/uUfEXl2aB45MfReNG7l7MsYq
-         ePFJhBN/ane+GkcN889cYU2BEqV2n9/ewJ74x7ZmVZ1E9Xe99gK+xuVnUxYu2Q2OreI2
-         lTzw==
+        bh=GmYjWCEsiUBPMCRPive1LnJSR/mOAyhsLDC4dgmpYdk=;
+        b=WpWuhSrYvMzZtpN6ytE5I/fGfW9/p1GF+u60NLppc25wceIJOYGjjglx5pYCcAKSO3
+         tugKo5havf5qL1+NBFqWE6UzKvuLtGJ6WFlXuW2edv642JS/DdRkdItjp6plqtR5uhKO
+         ZD0GCvzlSgupqziIUuLW8t9WLzSuPWJl2AmkET+gcZZPw3SZEh/EPu2RtTNuPToMyZ0Z
+         DJ8L5NBmiAn1oXdAICSqf/cIwkNgRL8KuEXiwAbFBI5gIs8/2PR1ZzJotT5Od1F9OChm
+         5sBfW98otVQokOmW6ueWbhxirgF+QhUO/+7wkxdc37ZLvRhgX8Q0bJz6+UPYgSP31FzF
+         M9Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wj2U1p9M;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uxV3NkPg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f31-20020a05622a1a1f00b003b9bad5160csi10054412qtb.291.2023.02.20.01.17.21
+        by mx.google.com with ESMTPS id a19-20020a0ce393000000b0056e98badddesi1122359qvl.178.2023.02.20.01.17.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 01:17:21 -0800 (PST)
+        Mon, 20 Feb 2023 01:17:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wj2U1p9M;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uxV3NkPg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pU2HR-0008F8-Aq; Mon, 20 Feb 2023 04:16:17 -0500
+	id 1pU2HN-00086y-Dk; Mon, 20 Feb 2023 04:16:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2Gg-00071P-2K
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 04:15:34 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2Ga-0006rJ-PV
+ for qemu-devel@nongnu.org; Mon, 20 Feb 2023 04:15:25 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2Gd-0003kI-CN
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 04:15:29 -0500
-Received: by mail-wr1-x434.google.com with SMTP id c12so338853wrw.1
- for <qemu-devel@nongnu.org>; Mon, 20 Feb 2023 01:15:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2GY-0003uk-DJ
+ for qemu-devel@nongnu.org; Mon, 20 Feb 2023 04:15:24 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ bg37-20020a05600c3ca500b003e21e018039so1198492wmb.3
+ for <qemu-devel@nongnu.org>; Mon, 20 Feb 2023 01:15:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=l+kQmnueqHR1/7y+7KCNnDEw+Oe5smCTiQ+KK+3S1XU=;
- b=wj2U1p9MxWJrb5KdACVC1CO7lBVcGMa/jKfn4/kdF4CVhh2IgYRbk+IqQL9KQuxJ4R
- liYRI9rU4um1J38EVAeI+a6CAsVww73tuD6rY/qzigXqTFHUpL9XEPprikbm0gHT/jvf
- 6wjMWVC4t+7l7yE1LpMkbBz5o3aVcwK95XsYp3zAQ914d5Ugh6739RX8fFITV3Iluzq4
- nCz5Wi46gqluryzoiQeX1ff7X/OpNsAmboAtCFU9JLOyZpNB+WHOng9S5FsqFoG0i6ME
- ZMa3oXQi7p5YLKIgSiM3JwuPErwRXZ4jr38J+dFwPH1jFET9STHj+KP/+u65uKReLcA4
- 7wkA==
+ bh=GmYjWCEsiUBPMCRPive1LnJSR/mOAyhsLDC4dgmpYdk=;
+ b=uxV3NkPgzWR3OQk197UP9a8Jm0cd0Qu8tV4e65IeXsa0ZLY69qO9Zz0lH/dhZeSicL
+ AgDsrlYPtGm5MpiER0jzg3AVBuglYvG5002GjTP3CMyQedT7VkMGXLdrfe989oFYliTY
+ P1xv82A87ca8aFxYH+e0lbvZ+u8cXFs+aBEebxfXQuTk2zgKvEC6hQ+qmWn4NyzZH3vO
+ KfRYAtkZKunZ6mp3bp836zr0s33j8s7Vm4WDVJXi2dWRMOEwbRMSi+lw86FU82NqXqq6
+ BYixRaSrvMu8YlIwit9cd3zy9xQyJyFE0du1r8Gk4YO4rhHeqh9YOO5EvzYSsmclCnjz
+ 1ouQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=l+kQmnueqHR1/7y+7KCNnDEw+Oe5smCTiQ+KK+3S1XU=;
- b=TCFbC03/vwXlKjPLgyJIeHORr9BfIMjbI5TmDqBBxc6ieqc79G1CIEcvthaRRAOEQH
- 2YmU3RpBpBLPnAa/CJRWuQ8eXx7Br3GK96z0JgaOTfz+PDF8B+5OFYzjeCgdlH6nFwd4
- LGX+DtFY5P96On6I+oIh2qHzAwhFObaQeE7LMjE1OB5uoR5hUfhDC8TifYctNjpclSvO
- BKtTq8Vm2rvUrL/4YtBgiOAGDxIZQboufe7vByGHf5w1xjD9AMqnaD5MvF+c6eCk4OTJ
- dklJoVlTcFs1ORomL+y28ErxPJth5JrhXSbsiOiDt6Hgkwej9/PXhd9XNfyMKDNZ6qko
- 8BZg==
-X-Gm-Message-State: AO0yUKXs7ZAKEnFs1ZXuON91XoAxZ7wxqP1kTg/cT2qyknmz60SYMXgy
- 9KofFSVs3NXJjEb+q/yC5RITu4wyDdMuuUal
-X-Received: by 2002:adf:e255:0:b0:2c5:52ef:61c5 with SMTP id
- bl21-20020adfe255000000b002c552ef61c5mr136594wrb.41.1676884526496; 
- Mon, 20 Feb 2023 01:15:26 -0800 (PST)
+ bh=GmYjWCEsiUBPMCRPive1LnJSR/mOAyhsLDC4dgmpYdk=;
+ b=LKAR8cDHltRQQzvJjv9lBScaicO5c2B5Ip0wjmwdO52SK3OrSfbE+mKkSnYbK3orjq
+ QVbYL9j2HNtbh6wc8gyWDR/xE695YKJVOdgG7P0qXG/EiOg9jTpvd8tJdI3xxBtHwiTq
+ p0F7GnFYPUyDmBAicNuUZ0la7dZUO5s4qrO97VtgNm4AwMsQusNoOi1xKvR8iAUUCXix
+ 3T6cG/Xa6/8nrEOqDapx8AG85dyPut0EsbYxCBSIMoc7pia1aLWQEjMkntzpZPqJ9wgW
+ acOqXfLwZBcPSp55dy9treuj5m4Q1Dhnw1tyNUtgmayPcsV4MAfFjwt2+hfUaUUWoZ/T
+ JXzg==
+X-Gm-Message-State: AO0yUKVlRTJC19Mm0gjwhNsopd1+gwr5l9PoF6QGUz68upVUIgwaMPPX
+ ckVicOohhs5IB8t1T8fQRBWXnfyrRqtMmUpN
+X-Received: by 2002:a05:600c:2b46:b0:3e0:1ab:cf2a with SMTP id
+ e6-20020a05600c2b4600b003e001abcf2amr226474wmf.39.1676884521495; 
+ Mon, 20 Feb 2023 01:15:21 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- m6-20020a05600c4f4600b003df245cd853sm1048184wmq.44.2023.02.20.01.15.25
+ n21-20020a1c7215000000b003df7b40f99fsm8152060wmc.11.2023.02.20.01.15.20
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 20 Feb 2023 01:15:26 -0800 (PST)
+ Mon, 20 Feb 2023 01:15:21 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, John Snow <jsnow@redhat.com>, qemu-block@nongnu.org,
  qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH v2 17/24] hw/ide: Declare ide_get_[geometry/bios_chs_trans] in
- 'hw/ide/internal.h'
-Date: Mon, 20 Feb 2023 10:13:51 +0100
-Message-Id: <20230220091358.17038-18-philmd@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v2 16/24] hw/ide: Rename idebus_active_if() ->
+ ide_bus_active_if()
+Date: Mon, 20 Feb 2023 10:13:50 +0100
+Message-Id: <20230220091358.17038-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230220091358.17038-1-philmd@linaro.org>
 References: <20230220091358.17038-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,65 +125,200 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jUn/WBf+s8lp
+X-TUID: y2jKUj0Rbvvt
 
-ide_get_geometry() and ide_get_bios_chs_trans() are only
-used by the TYPE_PC_MACHINE.
-"hw/ide.h" is a mixed bag of lost IDE declarations. In order
-to remove this (almost) pointless header soon, move these
-declarations to "hw/ide/internal.h".
+idebus_active_if() operates on a IDEBus; rename it as
+ide_bus_active_if() to emphasize its first argument
+is a IDEBus.
+
+Mechanical change using:
+
+  $ sed -i -e 's/idebus_active_if/ide_bus_active_if/g' \
+        $(git grep -l idebus_active_if)
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230215112712.23110-16-philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/i386/pc.c              | 3 ++-
- include/hw/ide.h          | 4 ----
- include/hw/ide/internal.h | 4 ++++
- 3 files changed, 6 insertions(+), 5 deletions(-)
+ hw/ide/core.c             | 18 +++++++++---------
+ hw/ide/macio.c            |  8 ++++----
+ hw/ide/microdrive.c       |  4 ++--
+ hw/ide/pci.c              |  2 +-
+ include/hw/ide/internal.h |  2 +-
+ 5 files changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 6e592bd969..79297a6ecd 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -34,7 +34,8 @@
- #include "hw/i386/vmport.h"
- #include "sysemu/cpus.h"
- #include "hw/block/fdc.h"
--#include "hw/ide.h"
-+#include "hw/ide/internal.h"
-+#include "hw/ide/isa.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_bus.h"
- #include "hw/pci-bridge/pci_expander_bridge.h"
-diff --git a/include/hw/ide.h b/include/hw/ide.h
-index 24a7aa2925..db963bdb77 100644
---- a/include/hw/ide.h
-+++ b/include/hw/ide.h
-@@ -3,10 +3,6 @@
+diff --git a/hw/ide/core.c b/hw/ide/core.c
+index fd2215c506..2d034731cf 100644
+--- a/hw/ide/core.c
++++ b/hw/ide/core.c
+@@ -1265,7 +1265,7 @@ const char *ATA_IOPORT_WR_lookup[ATA_IOPORT_WR_NUM_REGISTERS] = {
+ void ide_ioport_write(void *opaque, uint32_t addr, uint32_t val)
+ {
+     IDEBus *bus = opaque;
+-    IDEState *s = idebus_active_if(bus);
++    IDEState *s = ide_bus_active_if(bus);
+     int reg_num = addr & 7;
  
- #include "exec/memory.h"
+     trace_ide_ioport_write(addr, ATA_IOPORT_WR_lookup[reg_num], val, bus, s);
+@@ -2128,7 +2128,7 @@ void ide_bus_exec_cmd(IDEBus *bus, uint32_t val)
+     IDEState *s;
+     bool complete;
  
--int ide_get_geometry(BusState *bus, int unit,
--                     int16_t *cyls, int8_t *heads, int8_t *secs);
--int ide_get_bios_chs_trans(BusState *bus, int unit);
--
- /* ide/core.c */
- void ide_drive_get(DriveInfo **hd, int max_bus);
+-    s = idebus_active_if(bus);
++    s = ide_bus_active_if(bus);
+     trace_ide_bus_exec_cmd(bus, s, val);
  
+     /* ignore commands to non existent slave */
+@@ -2195,7 +2195,7 @@ const char *ATA_IOPORT_RR_lookup[ATA_IOPORT_RR_NUM_REGISTERS] = {
+ uint32_t ide_ioport_read(void *opaque, uint32_t addr)
+ {
+     IDEBus *bus = opaque;
+-    IDEState *s = idebus_active_if(bus);
++    IDEState *s = ide_bus_active_if(bus);
+     uint32_t reg_num;
+     int ret, hob;
+ 
+@@ -2281,7 +2281,7 @@ uint32_t ide_ioport_read(void *opaque, uint32_t addr)
+ uint32_t ide_status_read(void *opaque, uint32_t addr)
+ {
+     IDEBus *bus = opaque;
+-    IDEState *s = idebus_active_if(bus);
++    IDEState *s = ide_bus_active_if(bus);
+     int ret;
+ 
+     if ((!bus->ifs[0].blk && !bus->ifs[1].blk) ||
+@@ -2370,7 +2370,7 @@ static bool ide_is_pio_out(IDEState *s)
+ void ide_data_writew(void *opaque, uint32_t addr, uint32_t val)
+ {
+     IDEBus *bus = opaque;
+-    IDEState *s = idebus_active_if(bus);
++    IDEState *s = ide_bus_active_if(bus);
+     uint8_t *p;
+ 
+     trace_ide_data_writew(addr, val, bus, s);
+@@ -2406,7 +2406,7 @@ void ide_data_writew(void *opaque, uint32_t addr, uint32_t val)
+ uint32_t ide_data_readw(void *opaque, uint32_t addr)
+ {
+     IDEBus *bus = opaque;
+-    IDEState *s = idebus_active_if(bus);
++    IDEState *s = ide_bus_active_if(bus);
+     uint8_t *p;
+     int ret;
+ 
+@@ -2444,7 +2444,7 @@ uint32_t ide_data_readw(void *opaque, uint32_t addr)
+ void ide_data_writel(void *opaque, uint32_t addr, uint32_t val)
+ {
+     IDEBus *bus = opaque;
+-    IDEState *s = idebus_active_if(bus);
++    IDEState *s = ide_bus_active_if(bus);
+     uint8_t *p;
+ 
+     trace_ide_data_writel(addr, val, bus, s);
+@@ -2472,7 +2472,7 @@ void ide_data_writel(void *opaque, uint32_t addr, uint32_t val)
+ uint32_t ide_data_readl(void *opaque, uint32_t addr)
+ {
+     IDEBus *bus = opaque;
+-    IDEState *s = idebus_active_if(bus);
++    IDEState *s = ide_bus_active_if(bus);
+     uint8_t *p;
+     int ret;
+ 
+@@ -2711,7 +2711,7 @@ static void ide_restart_bh(void *opaque)
+         return;
+     }
+ 
+-    s = idebus_active_if(bus);
++    s = ide_bus_active_if(bus);
+     is_read = (bus->error_status & IDE_RETRY_READ) != 0;
+ 
+     /* The error status must be cleared before resubmitting the request: The
+diff --git a/hw/ide/macio.c b/hw/ide/macio.c
+index 6be29e44bc..dca1cc9efc 100644
+--- a/hw/ide/macio.c
++++ b/hw/ide/macio.c
+@@ -60,7 +60,7 @@ static void pmac_ide_atapi_transfer_cb(void *opaque, int ret)
+ {
+     DBDMA_io *io = opaque;
+     MACIOIDEState *m = io->opaque;
+-    IDEState *s = idebus_active_if(&m->bus);
++    IDEState *s = ide_bus_active_if(&m->bus);
+     int64_t offset;
+ 
+     MACIO_DPRINTF("pmac_ide_atapi_transfer_cb\n");
+@@ -136,7 +136,7 @@ static void pmac_ide_transfer_cb(void *opaque, int ret)
+ {
+     DBDMA_io *io = opaque;
+     MACIOIDEState *m = io->opaque;
+-    IDEState *s = idebus_active_if(&m->bus);
++    IDEState *s = ide_bus_active_if(&m->bus);
+     int64_t offset;
+ 
+     MACIO_DPRINTF("pmac_ide_transfer_cb\n");
+@@ -220,7 +220,7 @@ done:
+ static void pmac_ide_transfer(DBDMA_io *io)
+ {
+     MACIOIDEState *m = io->opaque;
+-    IDEState *s = idebus_active_if(&m->bus);
++    IDEState *s = ide_bus_active_if(&m->bus);
+ 
+     MACIO_DPRINTF("\n");
+ 
+@@ -251,7 +251,7 @@ static void pmac_ide_transfer(DBDMA_io *io)
+ static void pmac_ide_flush(DBDMA_io *io)
+ {
+     MACIOIDEState *m = io->opaque;
+-    IDEState *s = idebus_active_if(&m->bus);
++    IDEState *s = ide_bus_active_if(&m->bus);
+ 
+     if (s->bus->dma->aiocb) {
+         blk_drain(s->blk);
+diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
+index 84452ae4ef..f1017f7333 100644
+--- a/hw/ide/microdrive.c
++++ b/hw/ide/microdrive.c
+@@ -250,14 +250,14 @@ static uint16_t md_common_read(PCMCIACardState *card, uint32_t at)
+     case 0xd:	/* Error */
+         return ide_ioport_read(&s->bus, 0x1);
+     case 0xe:	/* Alternate Status */
+-        ifs = idebus_active_if(&s->bus);
++        ifs = ide_bus_active_if(&s->bus);
+         if (ifs->blk) {
+             return ifs->status;
+         } else {
+             return 0;
+         }
+     case 0xf:	/* Device Address */
+-        ifs = idebus_active_if(&s->bus);
++        ifs = ide_bus_active_if(&s->bus);
+         return 0xc2 | ((~ifs->select << 2) & 0x3c);
+     default:
+         return ide_ioport_read(&s->bus, at);
+diff --git a/hw/ide/pci.c b/hw/ide/pci.c
+index 4223f5e64d..2ddcb49b27 100644
+--- a/hw/ide/pci.c
++++ b/hw/ide/pci.c
+@@ -296,7 +296,7 @@ void bmdma_cmd_writeb(BMDMAState *bm, uint32_t val)
+     /* Ignore writes to SSBM if it keeps the old value */
+     if ((val & BM_CMD_START) != (bm->cmd & BM_CMD_START)) {
+         if (!(val & BM_CMD_START)) {
+-            ide_cancel_dma_sync(idebus_active_if(bm->bus));
++            ide_cancel_dma_sync(ide_bus_active_if(bm->bus));
+             bm->status &= ~BM_STATUS_DMAING;
+         } else {
+             bm->cur_addr = bm->addr;
 diff --git a/include/hw/ide/internal.h b/include/hw/ide/internal.h
-index c2b794150f..d9f1f77dd5 100644
+index c687282a78..c2b794150f 100644
 --- a/include/hw/ide/internal.h
 +++ b/include/hw/ide/internal.h
-@@ -647,6 +647,10 @@ void ide_bus_init(IDEBus *idebus, size_t idebus_size, DeviceState *dev,
-                   int bus_id, int max_units);
- IDEDevice *ide_bus_create_drive(IDEBus *bus, int unit, DriveInfo *drive);
+@@ -566,7 +566,7 @@ static inline uint8_t ide_dma_cmd_to_retry(uint8_t dma_cmd)
+     return 0;
+ }
  
-+int ide_get_geometry(BusState *bus, int unit,
-+                     int16_t *cyls, int8_t *heads, int8_t *secs);
-+int ide_get_bios_chs_trans(BusState *bus, int unit);
-+
- int ide_handle_rw_error(IDEState *s, int error, int op);
- 
- #endif /* HW_IDE_INTERNAL_H */
+-static inline IDEState *idebus_active_if(IDEBus *bus)
++static inline IDEState *ide_bus_active_if(IDEBus *bus)
+ {
+     return bus->ifs + bus->unit;
+ }
 -- 
 2.38.1
 

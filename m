@@ -1,191 +1,174 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2105767ejb;
-        Mon, 20 Feb 2023 01:24:40 -0800 (PST)
-X-Google-Smtp-Source: AK7set8w+gMXqGyhZ/hqZgVjMQnq5NPVXisuG/0/uAUQZqwjjeNVHobgiMTrr7zKhwDuNLDRZxSv
-X-Received: by 2002:ac8:58c4:0:b0:3b6:2b5c:97e5 with SMTP id u4-20020ac858c4000000b003b62b5c97e5mr15190500qta.17.1676885080689;
-        Mon, 20 Feb 2023 01:24:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676885080; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2106122ejb;
+        Mon, 20 Feb 2023 01:25:09 -0800 (PST)
+X-Google-Smtp-Source: AK7set8yIYmEE945wRWOqdUPpPRKP6CA+eFXvw5pHQhqPfCVIXgdU6Fxw6D6qmVYQg4ISEHl4b5i
+X-Received: by 2002:a05:622a:1818:b0:3b8:588c:40e9 with SMTP id t24-20020a05622a181800b003b8588c40e9mr15264237qtc.19.1676885109445;
+        Mon, 20 Feb 2023 01:25:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676885109; cv=none;
         d=google.com; s=arc-20160816;
-        b=DY1CMcC82ORkorUhikoT9fKZ+5KvZ2j5y0QKlnddPDrehW9YnKwn2sys/d7SHFnlli
-         DX6+WwRrrzItNl1Z/+fKEOn/lARMkYHZ3BK54+KVQ3wBiygGyi5qHlpzUb/ALPxiA/JL
-         Z6HrzdtgJzZbnu7YY1+qYaLMS9/Q7J00e3Oe0LcVU7ywVo4i24ybHOcFCHwZd+KBSgE+
-         u5cpd9mgOVCHMuGhBYatp6I6MH934AjrVBFpxkxx+4Q9JeIhkQF/ORQe93ruIgYQ25IR
-         MBM+UVJ5eq2HGWJHzzrLlytNKT7JFrhM8WrVgk0cZKcW8IJwskDulaftfH/O5NoSlh3C
-         UUuQ==
+        b=Hp4+ClWognzNMIphf8cooV2Cg62GZK9xK5MHZt+kOyqg4IrFg2x8EX90/srgjRUTUj
+         epPfPDkZyWRImiBwjOv6V+SpdNp+gXIm8vT0On5TYVvWMuzceADT42VAVJgnm0rZT7rc
+         ulPGb4bP217X916yGwGsZ0AO7PZcE88eRpABe1D8/Ogyn6szP3+JMJVNVTIY410GdiDH
+         BTAgLpaPUCQ+jki+rYgKmzDpmDiQ6imnlBg4nSxqODTUvRnAB/EXF6iZa0vK09fb7oOC
+         N5RjAJPS3WfFiADwkZyqQbemo4S3iqkNlHUiyNnrWZbjMnVfMytocqbUsODAoVbhZeSG
+         ltJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=OKzBr2qnyWx4EHsQiRdE7a+Dj3wNarZUSazoPOYlSfI=;
-        b=qynfjmeGif4A22Xw8n4MryPC8riegw0YKwy5Ttrg1JtKOE/FMZlYfUR/jbaKo1U9ml
-         eSgo12FblZfPnoo58qluWPrDl73OaEny2QJja3xuRVJG8X+2Zz+sqN8HIdaOgjwMrhLW
-         7nxTI3cuv2y2du6dsPjOBV7lex1JUajjrLM1hF9Y4WSCUG+M9e/0HTK06xQ1KvlHEnRY
-         ykAVPFcL2eBpjLg/nLj5uumRhDzyBG8r4ifj++T36V6msbShet0E44WEIhq01+/n3MSg
-         H03fFLcp3BxbRICyA0k8D/tnnwh6W1eFpog2vs8i7qSQw7gfXeFqcBulBVtL/v3WOwno
-         B93Q==
+        bh=4M2DzovwtGl/lACfMl2//Pyf/dMcjW1q/+QzA0NgGAA=;
+        b=zXX3BY6gys8UJNsCcBuNE7WTnALlAf0XG1alhqGhd7osOtaXEoqI6Xf5j1I+Jj1Ht+
+         A7u+emKNwpgKywqAGf+UITFRRRnEy5Q+e7uiV2OFNdq17MU6B87tNV0greqHrsJPS6Xi
+         txSd71LtXit0fMH5+GQDDbdrjckTbpGsNe8CxtQiWBt/v8xQQJsnYF0DcEAcAL9GvwWa
+         eSsD6T2/BlTcKoO+l7UZfvJl1sALp4kvSG7zyPMXng2vWLlwts8Z9t7WTti5I7dLdtyc
+         PAPppGtYbUbXBTICR+0glpmpQBpO77FMNSSO5qM5ow6Y9EU3PYFtKg3f3XRWZbNts5ro
+         HVJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fd/O7waE";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iMKuljpn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a3-20020a05620a438300b0073b6328d9b3si9640408qkp.667.2023.02.20.01.24.40
+        by mx.google.com with ESMTPS id l30-20020ac8459e000000b003b860983963si216398qtn.207.2023.02.20.01.25.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 01:24:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Feb 2023 01:25:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fd/O7waE";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=iMKuljpn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pU2Hn-0000SZ-BY; Mon, 20 Feb 2023 04:16:39 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pU2Hl-0000GW-6A; Mon, 20 Feb 2023 04:16:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2H3-0007K0-QL
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 04:15:54 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2Gt-00079p-Kx
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 04:15:44 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2H1-0003s6-UQ
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 04:15:53 -0500
-Received: by mail-wr1-x434.google.com with SMTP id c5so1027793wrr.5
- for <qemu-devel@nongnu.org>; Mon, 20 Feb 2023 01:15:51 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pU2Gs-0003nx-1H
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 04:15:43 -0500
+Received: by mail-wr1-x432.google.com with SMTP id p8so470815wrt.12
+ for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 01:15:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OKzBr2qnyWx4EHsQiRdE7a+Dj3wNarZUSazoPOYlSfI=;
- b=fd/O7waEqStVVMsRHrOf5+NtZVlvPNKiHVweW33qIRYx30+9GnXhs90IGgj9YsE5yF
- k0hYsmUsLENpZhfeBJTAGLy2K1u/PJ6dEjBz6TWvfRjg/7L7xey3VVMfdME6UhEo3RHY
- HCheWGrEdA8gdTw2BADuJ95qPjrRUbxRKY+ced1XHRDUPE+2iTrAP5jrebl/JEKX6Qdg
- g28X2/sFCpJ/8OGhc5+6qQcGWW7m504f2+kZf6Z6lbpK0vL2Tz1Z6WzbOat7rbr+z4Zl
- stYrF0ByRDAtt5Uo4e7uxembIVpvhYkiYHIgfZKKrFog8nqGnErbBm1PHRSqouh7dM/0
- q4Lg==
+ bh=4M2DzovwtGl/lACfMl2//Pyf/dMcjW1q/+QzA0NgGAA=;
+ b=iMKuljpnZBJ7a/EDsmZR4NisF1RKjfx4bI6aAVBclwO6/ZEGdJ2XasXkRfdhlE3Tmi
+ TWWM4iXx96COyPQZLyTeMeVj5R35MlqIgPGc3S68NtjLqUrEiCk0/A5af9w+51UWlHwl
+ jO45PJK99CbH5QdiMz3GDKxHXMlyFOg+hzK6rk+O3FOlOR3hLbz3h6SX0oh1aygo8HE7
+ cLhFpqSypDd8KPG38NXtCtvm5fIJ2eOqcRC8BLltwCHokiaTaqH5cMxPLTtJqWEYXeIN
+ Vf1MRk57fSsr5wxDGKPwJc6/6pjM+TfxrPx05v+P/rg5PoxhQMOG5/73ryeOmze3gXG7
+ s2Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=OKzBr2qnyWx4EHsQiRdE7a+Dj3wNarZUSazoPOYlSfI=;
- b=tiSp0au9fpPvC4TFhgAsgQ8Cm/mtlEir6XSxr9TqhyGjl2aUus3V/4gkSu+TBdo377
- nlKxjS2EM96RMM9coUtKVpe8B65L1FJG/WVNW9m2wb/UL9NXWpkk8aCnBTO3z/XPf4Si
- pZt4GQw2huHhtB1Wf/3k7FQs7MKQTgQNPGcDDJAngkQ+Hh9upKlh+bq8Ow3nlBnmB9LN
- j1HLqdXVasHA7JgawzxPAJON74hYdHyez9esY2ouGQkwcOVWvDzpwJFuZJAxBgRsOzc3
- ETjnQ0nA6DFbojVOjCHTVbw0uvv8IfXPDKBPhmFj/A5O2HkN769Thl4+bArPTJvttkZ1
- uwgA==
-X-Gm-Message-State: AO0yUKURvVWgg1mVGggLuPnSAvDwC95t9dgwM9Ud65d2xFUTtJW4Q7I3
- ZvouZuh6nKZnWCyczCdkQ3Cde5E0HKXhgr+2
-X-Received: by 2002:a5d:5607:0:b0:2c3:dc42:525d with SMTP id
- l7-20020a5d5607000000b002c3dc42525dmr1841452wrv.36.1676884551066; 
- Mon, 20 Feb 2023 01:15:51 -0800 (PST)
+ bh=4M2DzovwtGl/lACfMl2//Pyf/dMcjW1q/+QzA0NgGAA=;
+ b=fvdAgrAxPON6uKBxhxOyfkoftLVeFlPeytafl1SQAQEh9rySYW1nLeRT8XBm4b5fNd
+ xe3G/DJ3ZnVYk4y6BkOtQ6JO5a+Gekkfnw1JJO3Wgo1x5l1ZCLIio9d0+vN0VwYwJiqL
+ m3dlU9pe90I2PREorSoDo1GDaLa+x4dQdV3tOphHRP5rKLuz8fsRZs2IOmWclA991UT4
+ EXHTWwMFLL6FHD8yUdU1BIOVIeP997gFLDHP2QtSqbZE+Igqr/FHYMI4b1/Z7YT06/zo
+ GEUcpZ3Th3Yv6A9UVq61bfDht1usvmilp0wqogvDb4eFyuz9XY52zP7k+RKrO4p9jhLC
+ rbwg==
+X-Gm-Message-State: AO0yUKWIrmyq91i+i3iSw0V2VtuKovsAAvRD9IMN2+HQkqFDTtC4MmKX
+ aFFtse8plxtI+0Ta8ajqvk9sXA==
+X-Received: by 2002:adf:e255:0:b0:2c5:52ef:61c5 with SMTP id
+ bl21-20020adfe255000000b002c552ef61c5mr137090wrb.41.1676884541203; 
+ Mon, 20 Feb 2023 01:15:41 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- t14-20020adfe10e000000b002c56af32e8csm3265644wrz.35.2023.02.20.01.15.50
+ x17-20020adff651000000b002c563b124basm1028706wrp.103.2023.02.20.01.15.40
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 20 Feb 2023 01:15:50 -0800 (PST)
+ Mon, 20 Feb 2023 01:15:40 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, John Snow <jsnow@redhat.com>, qemu-block@nongnu.org,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 22/24] hw/ide/piix: Pass Error* to pci_piix_init_ports()
- for better error msg
-Date: Mon, 20 Feb 2023 10:13:56 +0100
-Message-Id: <20230220091358.17038-23-philmd@linaro.org>
+ qemu-arm@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 20/24] hw/ide/pci: Unexport bmdma_active_if()
+Date: Mon, 20 Feb 2023 10:13:54 +0100
+Message-Id: <20230220091358.17038-21-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230220091358.17038-1-philmd@linaro.org>
 References: <20230220091358.17038-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XWRLsg2nx5Ay
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ppOn0ffX6yLG
 
+From: Bernhard Beschow <shentey@gmail.com>
+
+The function is only used inside ide/pci.c, so doesn't need to be exported.
+
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230215112712.23110-20-philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/ide/piix.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ hw/ide/pci.c         | 6 ++++++
+ include/hw/ide/pci.h | 6 ------
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-index 5b1455e232..b74f1c77c4 100644
---- a/hw/ide/piix.c
-+++ b/hw/ide/piix.c
-@@ -122,7 +122,7 @@ static void piix_ide_reset(DeviceState *dev)
-     pci_set_byte(pci_conf + 0x20, 0x01);  /* BMIBA: 20-23h */
- }
+diff --git a/hw/ide/pci.c b/hw/ide/pci.c
+index 2ddcb49b27..fc9224bbc9 100644
+--- a/hw/ide/pci.c
++++ b/hw/ide/pci.c
+@@ -104,6 +104,12 @@ const MemoryRegionOps pci_ide_data_le_ops = {
+     .endianness = DEVICE_LITTLE_ENDIAN,
+ };
  
--static int pci_piix_init_ports(PCIIDEState *d)
-+static bool pci_piix_init_ports(PCIIDEState *d, Error **errp)
++static IDEState *bmdma_active_if(BMDMAState *bmdma)
++{
++    assert(bmdma->bus->retry_unit != (uint8_t)-1);
++    return bmdma->bus->ifs + bmdma->bus->retry_unit;
++}
++
+ static void bmdma_start_dma(const IDEDMA *dma, IDEState *s,
+                             BlockCompletionFunc *dma_cb)
  {
-     static const struct {
-         int iobase;
-@@ -139,7 +139,9 @@ static int pci_piix_init_ports(PCIIDEState *d)
-         ret = ide_bus_init_ioport_isa(&d->bus[i], NULL, port_info[i].iobase,
-                                       port_info[i].iobase2);
-         if (ret) {
--            return ret;
-+            error_setg_errno(errp, -ret, "Failed to realize %s port %u",
-+                             object_get_typename(OBJECT(d)), i);
-+            return false;
-         }
-         ide_bus_init_output_irq(&d->bus[i],
-                                 isa_get_irq(NULL, port_info[i].isairq));
-@@ -149,14 +151,13 @@ static int pci_piix_init_ports(PCIIDEState *d)
-         ide_bus_register_restart_cb(&d->bus[i]);
-     }
+diff --git a/include/hw/ide/pci.h b/include/hw/ide/pci.h
+index 2a6284acac..7b5e3f6e1c 100644
+--- a/include/hw/ide/pci.h
++++ b/include/hw/ide/pci.h
+@@ -55,12 +55,6 @@ struct PCIIDEState {
+     MemoryRegion data_bar[2];
+ };
  
--    return 0;
-+    return true;
- }
- 
- static void pci_piix_ide_realize(PCIDevice *dev, Error **errp)
- {
-     PCIIDEState *d = PCI_IDE(dev);
-     uint8_t *pci_conf = dev->config;
--    int rc;
- 
-     pci_conf[PCI_CLASS_PROG] = 0x80; // legacy ATA mode
- 
-@@ -165,10 +166,8 @@ static void pci_piix_ide_realize(PCIDevice *dev, Error **errp)
- 
-     vmstate_register(VMSTATE_IF(dev), 0, &vmstate_ide_pci, d);
- 
--    rc = pci_piix_init_ports(d);
--    if (rc) {
--        error_setg_errno(errp, -rc, "Failed to realize %s",
--                         object_get_typename(OBJECT(dev)));
-+    if (!pci_piix_init_ports(d, errp)) {
-+        return;
-     }
- }
- 
+-static inline IDEState *bmdma_active_if(BMDMAState *bmdma)
+-{
+-    assert(bmdma->bus->retry_unit != (uint8_t)-1);
+-    return bmdma->bus->ifs + bmdma->bus->retry_unit;
+-}
+-
+ void bmdma_init(IDEBus *bus, BMDMAState *bm, PCIIDEState *d);
+ void bmdma_cmd_writeb(BMDMAState *bm, uint32_t val);
+ extern MemoryRegionOps bmdma_addr_ioport_ops;
 -- 
 2.38.1
 

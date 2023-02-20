@@ -1,115 +1,119 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2647120ejb;
-        Mon, 20 Feb 2023 13:52:56 -0800 (PST)
-X-Google-Smtp-Source: AK7set8lyy9MQQLsGP9ea7IH7x3zjkhtsJDohNN6UBMuttJcO+LMnlg6jRbwboho0YJm42drXsy5
-X-Received: by 2002:a05:622a:1755:b0:3b8:6b30:7e30 with SMTP id l21-20020a05622a175500b003b86b307e30mr3855242qtk.54.1676929976539;
-        Mon, 20 Feb 2023 13:52:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676929976; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2662880ejb;
+        Mon, 20 Feb 2023 14:15:59 -0800 (PST)
+X-Google-Smtp-Source: AK7set9Zx1jNmSZCtpT2NYm0zsWb2Z7TOYgedqPeey0gtaPynFxw46l0zf8cbuQiEzjUxpA1tk83
+X-Received: by 2002:a05:622a:1348:b0:3b8:2dac:b5e1 with SMTP id w8-20020a05622a134800b003b82dacb5e1mr2479482qtk.37.1676931359802;
+        Mon, 20 Feb 2023 14:15:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676931359; cv=none;
         d=google.com; s=arc-20160816;
-        b=nlVggotKfBZgj89XPCJvJl3SjZZKmBahlspWQqHor9EEtJhjjVPWiiyBMXjqoidEFn
-         vlx1zWF2X4lwDHl0rknglXfmviVxQJo6hEfd6yyjWzQCN2Y4fHTn2t9TN3CY7Zj3cWUP
-         5X5bUyevaaNFPtV+59C4ZXp25PJQ1keNcGgdTGSlvjRo/V8jNOQYspn3fMNBtKkXQb2g
-         MO4N3Wfl+MrI2AVfhMWt5SxC/JEyc0GtPCDeIZR2XY13EPueZuGGX6EVdZkxZcFKwo1o
-         cyXFAm2MMQn21qQRlxkAgX6IbsTOs/taQz6Zs3zNAMq6FHh2lUqlcEOpkHrDclsuskco
-         UTQQ==
+        b=iwMqj8LyF7Nuh7baAqiJyh1KBuYh/SWSbONMkjRw25WDDkdJB2lGqH5gBDzRsf9tLQ
+         A/8cElUJZCi85o+J7FAg3unrLymY74zBDzQ3I/4/Z3ysaBca0SZCTwYJnKNY4SrVg4aG
+         8BX5au1T+c8UN1QSx+3Pb23SQChGEi8947ApwfRu8B8fmt/oU/EA6v59iqpDCE3+sYFn
+         TAvNJMuNw7QJQnt7nN/fHb8vwI2aglRwS0v+DKpBNIMb3lpvAzLzXT9xTAmibXJSfWeW
+         BFXVt8IZg9Vww76WP7OhYRjHptZ92VoTx4kLIKXCUvisxZZUjiD9TGPVtZnKqw45rS9w
+         lVjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ByXpJfj4Mf0HELban587NU1aljZ6ECTLm575DZB8NRw=;
-        b=GSWx5x6sa3DdjrhGQUzWmp0zsigjfk4lyFzLWGZ851/Q/4NQ2ZIHzvwdt7pkasPBbu
-         7+U3D/2Q7ezjxJInJ6FplA1YI2ZgFT2K0/wMgmEzIHmuyxYwXePe3TKGTMlYwcXjCZdj
-         K6cZtWYI7zoX1z1MsT+CU46cQ/pYkTZrWJQcpJNsBFJ65DA4xCYd+wMn5B/872nXO4sS
-         i+C+7/r1wlP84PwUAHjM2EJJyEJjEvjoxjWAqe/Ayt4xo5qcUlcZVQMTacvx4OsCiKiq
-         0HNJyDVRork5viextcSjnmijyB/eUn3RQyh1Yabs+d6IP+gi9tY7S+ochyja7QIMQ2Hv
-         /dgQ==
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=oGYK1kEwDOGBP0QTQgXqiJT/6f3zfaM5MoyEKoSQgpE=;
+        b=j3tRPyqa/LSbNmzeZ96I08Bo7QTOyf8j+5XjOH8K9ZTbX628Kt1SQyfDsGLSyUoQDa
+         HW3crUQMfeg3bYLkeW3K8FwWiwreYrCr+okqwugfUyhpiqYlhlG0E7s9S9Gd1KYfatUT
+         JbBK+hLJFBDTNxz0ioWbUC8dEQd4PlccoptCJLqzHq38qDhVCowHZKwKUL1XClrlaFQu
+         lq1t0V3JHAKp6v3FI9HhSTZw6FXqhADX8XZP0fdSrln7PNJ4I+Yj3joJPamNkJJty95q
+         hfF1vmZkVJsM7uAnGv6bGln1/L9b1PSFz3R5852Y/Kox24VzNXtG1snnbVzCDi+l5+p7
+         X4zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OHRaJ9Z2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WMIehveH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m66-20020a375845000000b007050f63d946si9576797qkb.716.2023.02.20.13.52.56
+        by mx.google.com with ESMTPS id s37-20020a05622a1aa500b003b9b4028d7csi10865492qtc.403.2023.02.20.14.15.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 13:52:56 -0800 (PST)
+        Mon, 20 Feb 2023 14:15:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OHRaJ9Z2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WMIehveH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUE4M-0006E6-FP; Mon, 20 Feb 2023 16:51:34 -0500
+	id 1pUERj-0003O9-9F; Mon, 20 Feb 2023 17:15:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUE3t-0005Am-Ux
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 16:51:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUE3q-0008Rx-RB
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 16:51:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676929861;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ByXpJfj4Mf0HELban587NU1aljZ6ECTLm575DZB8NRw=;
- b=OHRaJ9Z2O5I1lBRLnqqBp7wrWPbXa7rEuTjwD/x4a6GJ+qzgXaGTpqvP76G+d4E9kkZmUm
- KonimTuW6Wo9aMqNXrtW5cu3ZAg5eg+yinFWF02ws4TFFZeUqDWrXwvadCvlRt42+qLi2g
- UTdxMCVOz5zg1t1g+qFAWx5iakPR7Hk=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-650-OTqOFaU5O3CYIUFJWbDfaw-1; Mon, 20 Feb 2023 16:49:25 -0500
-X-MC-Unique: OTqOFaU5O3CYIUFJWbDfaw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A00953C0E44D;
- Mon, 20 Feb 2023 21:49:24 +0000 (UTC)
-Received: from localhost (unknown [10.39.208.3])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4F10B404CD84;
- Mon, 20 Feb 2023 21:49:23 +0000 (UTC)
-From: marcandre.lureau@redhat.com
-To: qemu-devel@nongnu.org
-Cc: Michael Roth <michael.roth@amd.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Jason Wang <jasowang@redhat.com>,
- qemu-block@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Laurent Vivier <lvivier@redhat.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Stefan Weil <sw@weilnetz.de>, Fam Zheng <fam@euphon.net>,
- Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v2 05/15] win32/socket: introduce qemu_socket_select() helper
-Date: Tue, 21 Feb 2023 01:48:49 +0400
-Message-Id: <20230220214859.3792171-6-marcandre.lureau@redhat.com>
-In-Reply-To: <20230220214859.3792171-1-marcandre.lureau@redhat.com>
-References: <20230220214859.3792171-1-marcandre.lureau@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pUERZ-0003Io-Pm
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 17:15:39 -0500
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pUERW-0004kq-9f
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 17:15:33 -0500
+Received: by mail-pj1-x102e.google.com with SMTP id
+ v3-20020a17090a6b0300b002341a2656e5so2655368pjj.1
+ for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 14:15:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=oGYK1kEwDOGBP0QTQgXqiJT/6f3zfaM5MoyEKoSQgpE=;
+ b=WMIehveHFbOsyYv3HOlMy44chuCYQC/TmnoQZa7w8g9CLchxn94Iw5WI3j5m8ETHC8
+ VGV890bHGn/dsIXZGbKmQC+36xXQHt+0TxA+TWlPXcktH8KB7buUKuM9Sgovyze5RDgy
+ 6DPyl6VQbgUcPS8R+i1ky06H/hwexcolrcNt/JeiU8E9misoQT8BkjIkVwq9vDI9C/tA
+ FNyougrbDcEJ9uDIDlRJnY1lvm8OXT/y1BAJLlT8nR6oEJzIYoOBkGlznRb6bjqaE46i
+ Rf5UcsogePpcyOLKulIc0qsdjhGChAT2AjLPqAulCBR0tejZ1Mz2B/NijFzi4d+Fj/N6
+ emsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=oGYK1kEwDOGBP0QTQgXqiJT/6f3zfaM5MoyEKoSQgpE=;
+ b=Wen1YAp4/DimdfuUBZYyO0L7Ld4Y7lIux2+Zo86TKdtNxLyX4qce0hZ+nozsdrxr0R
+ G/Cq/oZ6zeqAt5W7dDnpznUOltHv4M+DDpynEEapOcNPKPP3CJnzRmUUG6C+H77KLi3Y
+ UAxsmmNjh0PeClY/1ZZ5FC+fnEcs4iP7Tfd29WK+5jkiArfPV0Xpuk9DDP0ZfMlfQ01Q
+ /Icmo9r7DIXPrOrAtNTI3rfTTKDf52oqx0ibOXP+HmkjgylnqdMq5UVtB+apEXUPGjAu
+ Rr5sTeyWndRX0XmhiWpCWVD23AkF4KAGRedrDupooZzrMed/2iAdfyCtdx5uapzPIcMI
+ TBxg==
+X-Gm-Message-State: AO0yUKVYeNOLRIy/oI57ibt5utQfz7zkffIzH4S/oLSkob2fzf1omgKX
+ +gaACZ43UHALz3lMSO8QwPhyYQ==
+X-Received: by 2002:a05:6a20:1587:b0:be:9478:55ba with SMTP id
+ h7-20020a056a20158700b000be947855bamr3919606pzj.60.1676931328359; 
+ Mon, 20 Feb 2023 14:15:28 -0800 (PST)
+Received: from [192.168.6.128] (rrcs-173-198-77-218.west.biz.rr.com.
+ [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
+ bk3-20020a17090b080300b00230b572e90csm666359pjb.35.2023.02.20.14.15.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 20 Feb 2023 14:15:27 -0800 (PST)
+Message-ID: <38422576-703c-7955-2f55-b9c8de922902@linaro.org>
+Date: Mon, 20 Feb 2023 12:15:20 -1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH 17/22] target/arm: Use get_phys_addr_with_struct for stage2
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, yier.jin@huawei.com,
+ jonathan.cameron@huawei.com, leonardo.garcia@linaro.org
+References: <20230124000027.3565716-1-richard.henderson@linaro.org>
+ <20230124000027.3565716-18-richard.henderson@linaro.org>
+ <CAFEAcA9-ufibbm_Fp0spGK+iQKLgGcJfED=+c__q37mQFwAWxw@mail.gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA9-ufibbm_Fp0spGK+iQKLgGcJfED=+c__q37mQFwAWxw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,151 +128,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: K3ooAC6lSa5t
+X-TUID: Em/p4z6mo5L+
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+On 2/10/23 03:28, Peter Maydell wrote:
+> On Tue, 24 Jan 2023 at 00:01, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> This fixes a bug in which we failed to initialize
+>> the result attributes properly after the memset.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/ptw.c | 13 +------------
+>>   1 file changed, 1 insertion(+), 12 deletions(-)
+>>
+>> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+>> index eaa47f6b62..3205339957 100644
+>> --- a/target/arm/ptw.c
+>> +++ b/target/arm/ptw.c
+>> @@ -32,12 +32,6 @@ typedef struct S1Translate {
+>>       void *out_host;
+>>   } S1Translate;
+>>
+>> -static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>> -                               uint64_t address,
+>> -                               MMUAccessType access_type,
+>> -                               GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+>> -    __attribute__((nonnull));
+> 
+> The definition of the function doesn't have the __attribute__,
+> so if we drop this forward declaration we need to move the attribute.
 
-This is a wrapper for WSAEventSelect, with Error handling. By default,
-it will produce a warning, so callers don't have to be modified
-now, and yet we can spot potential mis-use.
+Eh.  It was useful as an intermediary during one of the ptw reorgs, but now that we've 
+eliminated the use case in which NULL had been passed, it can go away.  I assume you'd 
+prefer that as a separate patch?
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- include/sysemu/os-win32.h |  5 +++++
- io/channel-socket.c       |  4 ++--
- io/channel-watch.c        |  6 +++---
- util/aio-win32.c          |  2 +-
- util/main-loop.c          |  6 +++---
- util/oslib-win32.c        | 17 ++++++++++++++++-
- 6 files changed, 30 insertions(+), 10 deletions(-)
+>> @@ -2854,12 +2848,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
+>>       cacheattrs1 = result->cacheattrs;
+>>       memset(result, 0, sizeof(*result));
+>>
+>> -    if (arm_feature(env, ARM_FEATURE_PMSA)) {
+>> -        ret = get_phys_addr_pmsav8(env, ipa, access_type,
+>> -                                   ptw->in_mmu_idx, s2walk_secure, result, fi);
+>> -    } else {
+>> -        ret = get_phys_addr_lpae(env, ptw, ipa, access_type, result, fi);
+>> -    }
+>> +    ret = get_phys_addr_with_struct(env, ptw, ipa, access_type, result, fi);
+>>       fi->s2addr = ipa;
+>>
+>>       /* Combine the S1 and S2 perms.  */
+> 
+> Does this do the right thing for PMSAv8 ? The code in get_phys_addr_twostage
+> sets up various things in ptw based on s2walk_secure, which (per previous
+> patch) is not really well defined for PMSA.
 
-diff --git a/include/sysemu/os-win32.h b/include/sysemu/os-win32.h
-index 5b38c7bd04..0afb79cc2e 100644
---- a/include/sysemu/os-win32.h
-+++ b/include/sysemu/os-win32.h
-@@ -29,6 +29,7 @@
- #include <winsock2.h>
- #include <windows.h>
- #include <ws2tcpip.h>
-+#include "qemu/typedefs.h"
- 
- #ifdef HAVE_AFUNIX_H
- #include <afunix.h>
-@@ -144,6 +145,10 @@ static inline void qemu_funlockfile(FILE *f)
- #endif
- }
- 
-+/* Helper for WSAEventSelect, to report errors */
-+bool qemu_socket_select(SOCKET s, WSAEVENT hEventObject,
-+                        long lNetworkEvents, Error **errp);
-+
- /* We wrap all the sockets functions so that we can
-  * set errno based on WSAGetLastError()
-  */
-diff --git a/io/channel-socket.c b/io/channel-socket.c
-index 2040297d2b..0bc29c4808 100644
---- a/io/channel-socket.c
-+++ b/io/channel-socket.c
-@@ -442,7 +442,7 @@ static void qio_channel_socket_finalize(Object *obj)
-             }
-         }
- #ifdef WIN32
--        WSAEventSelect(ioc->fd, NULL, 0);
-+        qemu_socket_select(ioc->fd, NULL, 0, NULL);
- #endif
-         closesocket(ioc->fd);
-         ioc->fd = -1;
-@@ -846,7 +846,7 @@ qio_channel_socket_close(QIOChannel *ioc,
- 
-     if (sioc->fd != -1) {
- #ifdef WIN32
--        WSAEventSelect(sioc->fd, NULL, 0);
-+        qemu_socket_select(sioc->fd, NULL, 0, NULL);
- #endif
-         if (qio_channel_has_feature(ioc, QIO_CHANNEL_FEATURE_LISTEN)) {
-             socket_listen_cleanup(sioc->fd, errp);
-diff --git a/io/channel-watch.c b/io/channel-watch.c
-index ad7c568a84..6ac41009fa 100644
---- a/io/channel-watch.c
-+++ b/io/channel-watch.c
-@@ -281,9 +281,9 @@ GSource *qio_channel_create_socket_watch(QIOChannel *ioc,
-     GSource *source;
-     QIOChannelSocketSource *ssource;
- 
--    WSAEventSelect(socket, ioc->event,
--                   FD_READ | FD_ACCEPT | FD_CLOSE |
--                   FD_CONNECT | FD_WRITE | FD_OOB);
-+    qemu_socket_select(socket, ioc->event,
-+                       FD_READ | FD_ACCEPT | FD_CLOSE |
-+                       FD_CONNECT | FD_WRITE | FD_OOB, NULL);
- 
-     source = g_source_new(&qio_channel_socket_source_funcs,
-                           sizeof(QIOChannelSocketSource));
-diff --git a/util/aio-win32.c b/util/aio-win32.c
-index 80cfe012ad..be5136e486 100644
---- a/util/aio-win32.c
-+++ b/util/aio-win32.c
-@@ -115,7 +115,7 @@ void aio_set_fd_handler(AioContext *ctx,
- 
-         QLIST_INSERT_HEAD_RCU(&ctx->aio_handlers, node, node);
-         event = event_notifier_get_handle(&ctx->notifier);
--        WSAEventSelect(node->pfd.fd, event, bitmask);
-+        qemu_socket_select(node->pfd.fd, event, bitmask, NULL);
-     }
-     if (old_node) {
-         aio_remove_fd_handler(ctx, old_node);
-diff --git a/util/main-loop.c b/util/main-loop.c
-index 3c0f525192..16e837fb12 100644
---- a/util/main-loop.c
-+++ b/util/main-loop.c
-@@ -416,9 +416,9 @@ void qemu_del_wait_object(HANDLE handle, WaitObjectFunc *func, void *opaque)
- 
- void qemu_fd_register(int fd)
- {
--    WSAEventSelect(fd, event_notifier_get_handle(&qemu_aio_context->notifier),
--                   FD_READ | FD_ACCEPT | FD_CLOSE |
--                   FD_CONNECT | FD_WRITE | FD_OOB);
-+    qemu_socket_select(fd, event_notifier_get_handle(&qemu_aio_context->notifier),
-+                       FD_READ | FD_ACCEPT | FD_CLOSE |
-+                       FD_CONNECT | FD_WRITE | FD_OOB, NULL);
- }
- 
- static int pollfds_fill(GArray *pollfds, fd_set *rfds, fd_set *wfds,
-diff --git a/util/oslib-win32.c b/util/oslib-win32.c
-index 528c9ee156..df752fc762 100644
---- a/util/oslib-win32.c
-+++ b/util/oslib-win32.c
-@@ -180,7 +180,7 @@ static int socket_error(void)
- void qemu_socket_set_block(int fd)
- {
-     unsigned long opt = 0;
--    WSAEventSelect(fd, NULL, 0);
-+    qemu_socket_select(fd, NULL, 0, NULL);
-     ioctlsocket(fd, FIONBIO, &opt);
- }
- 
-@@ -283,6 +283,21 @@ char *qemu_get_pid_name(pid_t pid)
- }
- 
- 
-+bool qemu_socket_select(SOCKET s, WSAEVENT hEventObject,
-+                        long lNetworkEvents, Error **errp)
-+{
-+    if (errp == NULL) {
-+        errp = &error_warn;
-+    }
-+
-+    if (WSAEventSelect(s, hEventObject, lNetworkEvents) != 0) {
-+        error_setg_win32(errp, WSAGetLastError(), "failed to WSAEventSelect()");
-+        return false;
-+    }
-+
-+    return true;
-+}
-+
- #undef connect
- int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
-                       socklen_t addrlen)
--- 
-2.39.1
+As far as I can tell, yes, since as you say current PMSAv8 is all NonSecure.
+
+
+r~
 

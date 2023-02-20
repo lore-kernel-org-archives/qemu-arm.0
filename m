@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2646089ejb;
-        Mon, 20 Feb 2023 13:51:22 -0800 (PST)
-X-Google-Smtp-Source: AK7set9frSUx0yYuKo55DD3GkDqIIp3pM25WkzLix1Cw/PuowkGD23ABIDBuGUQUZTxpf8BTAE2L
-X-Received: by 2002:a05:622a:138b:b0:3b9:d185:d13f with SMTP id o11-20020a05622a138b00b003b9d185d13fmr3224344qtk.54.1676929882330;
-        Mon, 20 Feb 2023 13:51:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676929882; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2646189ejb;
+        Mon, 20 Feb 2023 13:51:33 -0800 (PST)
+X-Google-Smtp-Source: AK7set97LiZPSS5jpIEtr9QrlFi1M/six8fizVLUCQqvA6upty4iqFcvxpgvk1DyUeoQNop6bUSB
+X-Received: by 2002:ac8:7d10:0:b0:3ba:101e:88c6 with SMTP id g16-20020ac87d10000000b003ba101e88c6mr3058065qtb.48.1676929892898;
+        Mon, 20 Feb 2023 13:51:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676929892; cv=none;
         d=google.com; s=arc-20160816;
-        b=BCmcOy64e/N26WbP64zJkkYVQwXaWM2J9Q/tzI/kHhUsBGGDxY+SdiRYJ95YQB9g3s
-         zXAZJ/aVoJzY9A1iw/5iko7MId9ZQ08aGXnS+fffArAwO6WlrTh78zDF4Lvq3yqwKrXc
-         ZS74l1BdYylI5GBCDHh90sfUwcq+iqdYJVXDT0H1XQKGKcXDs7zGidlGqi8izaWNdLii
-         pDqjbmmj5cILP6qrFS/6OxiamXJGMdmWsMwXD2KRNK5DS3pyXpDdE6Lce/hPG5LEIek+
-         vonckJO43XzJkoF1gDXom4pxNobQjNrQQX52GIdkHkITpIxul26gID4+j7UHJhktuobl
-         2+lw==
+        b=TmkJ6Fefv8S9EObeZZEJUOQUjD35Nr+ANQDPKovdB5QOnT7Qky6+nLBCFd/M0Jr9JQ
+         3nmW4VYVhZRuXvqtpT6OsySeP3Ck1uqWul8gv5P1MfquhqkS34kQkxcdjLBTB9OTJ+rD
+         tf4IF29HkVA+JL2LrCSHd5elyZwBvd1yjQW9Ig4uiAi7QgLsLy7pY7/gsDjmoCxr0yX0
+         A1zw39BwWzHC9hctPAg9pCgFDy3xsQFDHoclzI0xgc/Fjsf/Cwlj7KYDmGy9vKFuIVDd
+         pq7P1Ra6P8qW9peFtAG/QPz14Sfdo8gV9ThuIePWczKw2v7PDxHhG0gpMNv/0qtg/C6+
+         ohnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=6t78gip3pYgzakIX8ENotQcatY8fq+DphycSZqeNo6Q=;
-        b=yhBpPfaHZIAnjO5DdK5zOlbc8hmpoU71FlDaVSu6C/FEgv3bAD8xCUEr8qwepT713Y
-         OvU8sWgPPitfB8DfEWuMaMJnjoNiAVIS95O3QOTQ9AWvuQsOq7n5awoNeS39Bujd4HUn
-         D04aNdveEfLkyzfXQVp8zs7XAZwY/KLDssfzVVuKzRKdNx0jwrgjP/idwgr65XAf/be3
-         oWuoWrfFaUFjshNKa/9e28W1c5miGlNVp3+94qluzFQiHvWZOXRYdR0XPzq3Z8stVYnW
-         EEYk5ZscvOtiHf5d2zYMLxz08soUCVGY1PK4bQZ2vEHE47TmfHXGENH8FoADNFqQVrNL
-         pmtQ==
+        bh=bFh4zbH63W7dVwqfPMudp53HSWUhyBLZxkdDaHKss5c=;
+        b=IClo8Xv/Nz6PQK7LhtUhKBKmtAfD2N5gZQwDL16WzjGYX/ZYZSnbvHPGuNee+2QIEp
+         XbVDZlFI02yJjrkKAaJnpAWSoj073XmWXJposEinHTt9LeCX0vmT27a7ixske3ZZN919
+         G0g3keqdSK+krqxKatySAMEBK8/igfpYvsKCdWBSNe5cRwIbQy12sAmHPh1SAKFVlpCO
+         p/nCEKhJUpN0K8Lzce/A6Nw1CAM6HZkAWfFiTOXHLJzwOKLKqy/w+NsawQWh8N6MCk+E
+         glcRa/1guyO6Pe7fAp0FlbcDeO/tjuufFvhuE6Odsb6bN3cm145FggWsXVmdwuSPPsok
+         V09w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bnW6vYr1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LMmoVIGz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x15-20020a05622a000f00b003b69e89c572si8969233qtw.576.2023.02.20.13.51.22
+        by mx.google.com with ESMTPS id s19-20020a05622a179300b003b855d7adeesi10749683qtk.676.2023.02.20.13.51.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 13:51:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Feb 2023 13:51:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bnW6vYr1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LMmoVIGz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pUE3x-00054A-CN; Mon, 20 Feb 2023 16:51:09 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pUE4J-0005g6-An; Mon, 20 Feb 2023 16:51:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUE2w-0003dd-Ja
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 16:50:06 -0500
+ id 1pUE34-0003xE-95
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 16:50:15 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUE2r-00081a-HM
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 16:50:06 -0500
+ id 1pUE31-0008G4-I5
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 16:50:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676929800;
+ s=mimecast20190719; t=1676929811;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6t78gip3pYgzakIX8ENotQcatY8fq+DphycSZqeNo6Q=;
- b=bnW6vYr1f74KpXf5hMO9EvBpSgMAJC1GCoX2Fo1gPO8Wr0amo7u7URnLb7YWcJ6hoT/els
- n9B8tpURoBkLOy6gz3EK05GXEsiBruaIgFj5FnsevuLRoOV1PPfa8a/Oq/UaLZxLDBee5E
- JxmVPWcSLZFiio+DcDyZfoFBdDEcjlQ=
+ bh=bFh4zbH63W7dVwqfPMudp53HSWUhyBLZxkdDaHKss5c=;
+ b=LMmoVIGzDpuMt0fyKX9xAYIMVslEsmKhC2wi+/XsCBjZGs2gHdLHsJSRKyx8bFgATTzIea
+ LGeZ8Nr8YdpolTNl5IAw07Xx+6VuCPoskuTMz1+5cJuOLRupIdHuY1GTy13dAaCSZZvG1k
+ 451onO4j5jddkytMWyRPjmKUTzrhPCo=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-636-VX3hvrABM0qtrXGjWf95Og-1; Mon, 20 Feb 2023 16:49:57 -0500
-X-MC-Unique: VX3hvrABM0qtrXGjWf95Og-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
+ us-mta-300-lXDtmEOoPw-Cdcz6f-mfZw-1; Mon, 20 Feb 2023 16:50:07 -0500
+X-MC-Unique: lXDtmEOoPw-Cdcz6f-mfZw-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C258E101A52E;
- Mon, 20 Feb 2023 21:49:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1CACD101A52E;
+ Mon, 20 Feb 2023 21:50:07 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.3])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 35FC61121314;
- Mon, 20 Feb 2023 21:49:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8DFAD492B00;
+ Mon, 20 Feb 2023 21:50:05 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Michael Roth <michael.roth@amd.com>,
@@ -91,15 +91,15 @@ Cc: Michael Roth <michael.roth@amd.com>,
  Hanna Reitz <hreitz@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v2 13/15] win32: avoid mixing SOCKET and file descriptor space
-Date: Tue, 21 Feb 2023 01:48:57 +0400
-Message-Id: <20230220214859.3792171-14-marcandre.lureau@redhat.com>
+Subject: [PATCH v2 15/15] win32: replace closesocket() with close() wrapper
+Date: Tue, 21 Feb 2023 01:48:59 +0400
+Message-Id: <20230220214859.3792171-16-marcandre.lureau@redhat.com>
 In-Reply-To: <20230220214859.3792171-1-marcandre.lureau@redhat.com>
 References: <20230220214859.3792171-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -109,461 +109,624 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bSmEWCVO0dJG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ufNTGr5CE9EX
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Until now, a win32 SOCKET handle is often cast to an int file
-descriptor, as this is what other OS use for sockets. When necessary,
-QEMU eventually queries whether it's a socket with the help of
-fd_is_socket(). However, there is no guarantee of conflict between the
-fd and SOCKET space. Such conflict would have surprising consequences,
-we shouldn't mix them.
-
-Also, it is often forgotten that SOCKET must be closed with
-closesocket(), and not close().
-
-Instead, let's make the win32 socket wrapper functions return and take a
-file descriptor, and let util/ wrappers do the fd/SOCKET conversion as
-necessary. A bit of adaptation is necessary in io/ as well.
-
-Unfortunately, we can't drop closesocket() usage, despite
-_open_osfhandle() documentation claiming transfer of ownership, testing
-shows bad behaviour if you forget to call closesocket().
+Use a close() wrapper instead, so that we don't need to worry about
+closesocket() vs close() anymore, let's hope.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/sysemu/os-win32.h |   4 +-
- io/channel-watch.c        |   6 +-
- util/aio-win32.c          |   9 +-
- util/oslib-win32.c        | 178 ++++++++++++++++++++++++++++++++------
- 4 files changed, 164 insertions(+), 33 deletions(-)
+ include/sysemu/os-posix.h   |  2 --
+ include/sysemu/os-win32.h   |  8 ++++----
+ backends/tpm/tpm_emulator.c |  6 +++---
+ crypto/afalg.c              |  6 +++---
+ hw/hyperv/syndbg.c          |  4 ++--
+ io/channel-socket.c         | 10 +++++-----
+ net/dgram.c                 | 14 +++++++-------
+ net/socket.c                | 22 +++++++++++-----------
+ tests/qtest/libqtest.c      |  8 ++++----
+ tests/qtest/microbit-test.c |  2 +-
+ tests/qtest/netdev-socket.c | 10 +++++-----
+ tests/unit/socket-helpers.c |  8 ++++----
+ util/oslib-win32.c          | 21 +++++++++++----------
+ util/qemu-sockets.c         | 22 +++++++++++-----------
+ 14 files changed, 71 insertions(+), 72 deletions(-)
 
+diff --git a/include/sysemu/os-posix.h b/include/sysemu/os-posix.h
+index 378213fc86..1030d39904 100644
+--- a/include/sysemu/os-posix.h
++++ b/include/sysemu/os-posix.h
+@@ -51,8 +51,6 @@ void os_daemonize(void);
+ void os_setup_post(void);
+ int os_mlock(void);
+ 
+-#define closesocket(s) close(s)
+-
+ int os_set_daemonize(bool d);
+ bool is_daemonized(void);
+ 
 diff --git a/include/sysemu/os-win32.h b/include/sysemu/os-win32.h
-index ae0c9a3659..d440f4e03e 100644
+index d440f4e03e..f9a6f71b5a 100644
 --- a/include/sysemu/os-win32.h
 +++ b/include/sysemu/os-win32.h
-@@ -146,10 +146,10 @@ static inline void qemu_funlockfile(FILE *f)
+@@ -155,6 +155,10 @@ bool qemu_socket_unselect(int sockfd, Error **errp);
+  * set errno based on WSAGetLastError()
+  */
+ 
++#undef close
++#define close qemu_close_wrap
++int qemu_close_wrap(int fd);
++
+ #undef connect
+ #define connect qemu_connect_wrap
+ int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
+@@ -186,10 +190,6 @@ int qemu_shutdown_wrap(int sockfd, int how);
+ #define ioctlsocket qemu_ioctlsocket_wrap
+ int qemu_ioctlsocket_wrap(int fd, int req, void *val);
+ 
+-#undef closesocket
+-#define closesocket qemu_closesocket_wrap
+-int qemu_closesocket_wrap(int fd);
+-
+ #undef getsockopt
+ #define getsockopt qemu_getsockopt_wrap
+ int qemu_getsockopt_wrap(int sockfd, int level, int optname,
+diff --git a/backends/tpm/tpm_emulator.c b/backends/tpm/tpm_emulator.c
+index d18144b92e..402a2d6312 100644
+--- a/backends/tpm/tpm_emulator.c
++++ b/backends/tpm/tpm_emulator.c
+@@ -573,13 +573,13 @@ static int tpm_emulator_prepare_data_fd(TPMEmulator *tpm_emu)
+         goto err_exit;
+     }
+ 
+-    closesocket(fds[1]);
++    close(fds[1]);
+ 
+     return 0;
+ 
+ err_exit:
+-    closesocket(fds[0]);
+-    closesocket(fds[1]);
++    close(fds[0]);
++    close(fds[1]);
+     return -1;
  }
  
- /* Helper for WSAEventSelect, to report errors */
--bool qemu_socket_select(SOCKET s, WSAEVENT hEventObject,
-+bool qemu_socket_select(int sockfd, WSAEVENT hEventObject,
-                         long lNetworkEvents, Error **errp);
+diff --git a/crypto/afalg.c b/crypto/afalg.c
+index 10046bb0ae..348301e703 100644
+--- a/crypto/afalg.c
++++ b/crypto/afalg.c
+@@ -59,7 +59,7 @@ qcrypto_afalg_socket_bind(const char *type, const char *name,
  
--bool qemu_socket_unselect(SOCKET s, Error **errp);
-+bool qemu_socket_unselect(int sockfd, Error **errp);
+     if (bind(sbind, (const struct sockaddr *)&salg, sizeof(salg)) != 0) {
+         error_setg_errno(errp, errno, "Failed to bind socket");
+-        closesocket(sbind);
++        close(sbind);
+         return -1;
+     }
  
- /* We wrap all the sockets functions so that we can
-  * set errno based on WSAGetLastError()
-diff --git a/io/channel-watch.c b/io/channel-watch.c
-index 6ac41009fa..64b486e378 100644
---- a/io/channel-watch.c
-+++ b/io/channel-watch.c
-@@ -275,13 +275,13 @@ GSource *qio_channel_create_fd_watch(QIOChannel *ioc,
+@@ -105,11 +105,11 @@ void qcrypto_afalg_comm_free(QCryptoAFAlg *afalg)
+     }
  
- #ifdef CONFIG_WIN32
- GSource *qio_channel_create_socket_watch(QIOChannel *ioc,
--                                         int socket,
-+                                         int sockfd,
-                                          GIOCondition condition)
- {
-     GSource *source;
-     QIOChannelSocketSource *ssource;
+     if (afalg->tfmfd != -1) {
+-        closesocket(afalg->tfmfd);
++        close(afalg->tfmfd);
+     }
  
--    qemu_socket_select(socket, ioc->event,
-+    qemu_socket_select(sockfd, ioc->event,
-                        FD_READ | FD_ACCEPT | FD_CLOSE |
-                        FD_CONNECT | FD_WRITE | FD_OOB, NULL);
+     if (afalg->opfd != -1) {
+-        closesocket(afalg->opfd);
++        close(afalg->opfd);
+     }
  
-@@ -293,7 +293,7 @@ GSource *qio_channel_create_socket_watch(QIOChannel *ioc,
-     object_ref(OBJECT(ioc));
- 
-     ssource->condition = condition;
--    ssource->socket = socket;
-+    ssource->socket = _get_osfhandle(sockfd);
-     ssource->revents = 0;
- 
-     ssource->fd.fd = (gintptr)ioc->event;
-diff --git a/util/aio-win32.c b/util/aio-win32.c
-index 08e8f5615d..6bded009a4 100644
---- a/util/aio-win32.c
-+++ b/util/aio-win32.c
-@@ -73,15 +73,18 @@ void aio_set_fd_handler(AioContext *ctx,
- {
-     AioHandler *old_node;
-     AioHandler *node = NULL;
-+    SOCKET s;
- 
-     if (!fd_is_socket(fd)) {
-         error_report("fd=%d is not a socket, AIO implementation is missing", fd);
+     g_free(afalg);
+diff --git a/hw/hyperv/syndbg.c b/hw/hyperv/syndbg.c
+index 94fe1b534b..065e12fb1e 100644
+--- a/hw/hyperv/syndbg.c
++++ b/hw/hyperv/syndbg.c
+@@ -340,7 +340,7 @@ static void hv_syndbg_realize(DeviceState *dev, Error **errp)
+     syndbg->servaddr.sin_family = AF_INET;
+     if (connect(syndbg->socket, (struct sockaddr *)&syndbg->servaddr,
+                 sizeof(syndbg->servaddr)) < 0) {
+-        closesocket(syndbg->socket);
++        close(syndbg->socket);
+         error_setg(errp, "%s failed to connect to socket", TYPE_HV_SYNDBG);
          return;
      }
+@@ -357,7 +357,7 @@ static void hv_syndbg_unrealize(DeviceState *dev)
  
-+    s = _get_osfhandle(fd);
-+
-     qemu_lockcnt_lock(&ctx->list_lock);
-     QLIST_FOREACH(old_node, &ctx->aio_handlers, node) {
--        if (old_node->pfd.fd == fd && !old_node->deleted) {
-+        if (old_node->pfd.fd == s && !old_node->deleted) {
-             break;
+     if (syndbg->socket > 0) {
+         qemu_set_fd_handler(syndbg->socket, NULL, NULL, NULL);
+-        closesocket(syndbg->socket);
++        close(syndbg->socket);
+     }
+ }
+ 
+diff --git a/io/channel-socket.c b/io/channel-socket.c
+index 03757c7a7e..b0ea7d48b3 100644
+--- a/io/channel-socket.c
++++ b/io/channel-socket.c
+@@ -159,7 +159,7 @@ int qio_channel_socket_connect_sync(QIOChannelSocket *ioc,
+ 
+     trace_qio_channel_socket_connect_complete(ioc, fd);
+     if (qio_channel_socket_set_fd(ioc, fd, errp) < 0) {
+-        closesocket(fd);
++        close(fd);
+         return -1;
+     }
+ 
+@@ -233,7 +233,7 @@ int qio_channel_socket_listen_sync(QIOChannelSocket *ioc,
+ 
+     trace_qio_channel_socket_listen_complete(ioc, fd);
+     if (qio_channel_socket_set_fd(ioc, fd, errp) < 0) {
+-        closesocket(fd);
++        close(fd);
+         return -1;
+     }
+     qio_channel_set_feature(QIO_CHANNEL(ioc), QIO_CHANNEL_FEATURE_LISTEN);
+@@ -310,7 +310,7 @@ int qio_channel_socket_dgram_sync(QIOChannelSocket *ioc,
+ 
+     trace_qio_channel_socket_dgram_complete(ioc, fd);
+     if (qio_channel_socket_set_fd(ioc, fd, errp) < 0) {
+-        closesocket(fd);
++        close(fd);
+         return -1;
+     }
+ 
+@@ -444,7 +444,7 @@ static void qio_channel_socket_finalize(Object *obj)
+ #ifdef WIN32
+         qemu_socket_unselect(ioc->fd, NULL);
+ #endif
+-        closesocket(ioc->fd);
++        close(ioc->fd);
+         ioc->fd = -1;
+     }
+ }
+@@ -852,7 +852,7 @@ qio_channel_socket_close(QIOChannel *ioc,
+             socket_listen_cleanup(sioc->fd, errp);
          }
+ 
+-        if (closesocket(sioc->fd) < 0) {
++        if (close(sioc->fd) < 0) {
+             sioc->fd = -1;
+             error_setg_errno(&err, errno, "Unable to close socket");
+             error_propagate(errp, err);
+diff --git a/net/dgram.c b/net/dgram.c
+index 9f7bf38376..48f653bceb 100644
+--- a/net/dgram.c
++++ b/net/dgram.c
+@@ -230,7 +230,7 @@ static int net_dgram_mcast_create(struct sockaddr_in *mcastaddr,
+     return fd;
+ fail:
+     if (fd >= 0) {
+-        closesocket(fd);
++        close(fd);
      }
-@@ -92,7 +95,7 @@ void aio_set_fd_handler(AioContext *ctx,
+     return -1;
+ }
+@@ -352,7 +352,7 @@ static int net_dgram_mcast_init(NetClientState *peer,
+             if (convert_host_port(saddr, local->u.inet.host, local->u.inet.port,
+                                   errp) < 0) {
+                 g_free(saddr);
+-                closesocket(fd);
++                close(fd);
+                 return -1;
+             }
  
-         /* Alloc and insert if it's not already there */
-         node = g_new0(AioHandler, 1);
--        node->pfd.fd = fd;
-+        node->pfd.fd = s;
+@@ -360,14 +360,14 @@ static int net_dgram_mcast_init(NetClientState *peer,
+             if (saddr->sin_addr.s_addr == 0) {
+                 error_setg(errp, "can't setup multicast destination address");
+                 g_free(saddr);
+-                closesocket(fd);
++                close(fd);
+                 return -1;
+             }
+             /* clone dgram socket */
+             newfd = net_dgram_mcast_create(saddr, NULL, errp);
+             if (newfd < 0) {
+                 g_free(saddr);
+-                closesocket(fd);
++                close(fd);
+                 return -1;
+             }
+             /* clone newfd to fd, close newfd */
+@@ -494,14 +494,14 @@ int net_init_dgram(const Netdev *netdev, const char *name,
+         if (ret < 0) {
+             error_setg_errno(errp, errno,
+                              "can't set socket option SO_REUSEADDR");
+-            closesocket(fd);
++            close(fd);
+             return -1;
+         }
+         ret = bind(fd, (struct sockaddr *)&laddr_in, sizeof(laddr_in));
+         if (ret < 0) {
+             error_setg_errno(errp, errno, "can't bind ip=%s to socket",
+                              inet_ntoa(laddr_in.sin_addr));
+-            closesocket(fd);
++            close(fd);
+             return -1;
+         }
+         qemu_socket_set_nonblock(fd);
+@@ -548,7 +548,7 @@ int net_init_dgram(const Netdev *netdev, const char *name,
+         if (ret < 0) {
+             error_setg_errno(errp, errno, "can't bind unix=%s to socket",
+                              laddr_un.sun_path);
+-            closesocket(fd);
++            close(fd);
+             return -1;
+         }
+         qemu_socket_set_nonblock(fd);
+diff --git a/net/socket.c b/net/socket.c
+index 2fc5696755..ba6e5b0b00 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -172,7 +172,7 @@ static void net_socket_send(void *opaque)
+         if (s->listen_fd != -1) {
+             qemu_set_fd_handler(s->listen_fd, net_socket_accept, NULL, s);
+         }
+-        closesocket(s->fd);
++        close(s->fd);
  
-         node->pfd.events = 0;
-         if (node->io_read) {
-@@ -120,7 +123,7 @@ void aio_set_fd_handler(AioContext *ctx,
- 
-         QLIST_INSERT_HEAD_RCU(&ctx->aio_handlers, node, node);
-         event = event_notifier_get_handle(&ctx->notifier);
--        qemu_socket_select(node->pfd.fd, event, bitmask, NULL);
-+        qemu_socket_select(fd, event, bitmask, NULL);
-     }
-     if (old_node) {
-         aio_remove_fd_handler(ctx, old_node);
-diff --git a/util/oslib-win32.c b/util/oslib-win32.c
-index dbd32acc98..1efeb2d262 100644
---- a/util/oslib-win32.c
-+++ b/util/oslib-win32.c
-@@ -283,13 +283,20 @@ char *qemu_get_pid_name(pid_t pid)
+         s->fd = -1;
+         net_socket_rs_init(&s->rs, net_socket_rs_finalize, false);
+@@ -299,7 +299,7 @@ static int net_socket_mcast_create(struct sockaddr_in *mcastaddr,
+     return fd;
+ fail:
+     if (fd >= 0)
+-        closesocket(fd);
++        close(fd);
+     return -1;
  }
  
- 
--bool qemu_socket_select(SOCKET s, WSAEVENT hEventObject,
-+bool qemu_socket_select(int sockfd, WSAEVENT hEventObject,
-                         long lNetworkEvents, Error **errp)
- {
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-     if (errp == NULL) {
-         errp = &error_warn;
+@@ -314,7 +314,7 @@ static void net_socket_cleanup(NetClientState *nc)
      }
+     if (s->listen_fd != -1) {
+         qemu_set_fd_handler(s->listen_fd, NULL, NULL, NULL);
+-        closesocket(s->listen_fd);
++        close(s->listen_fd);
+         s->listen_fd = -1;
+     }
+ }
+@@ -399,7 +399,7 @@ static NetSocketState *net_socket_fd_init_dgram(NetClientState *peer,
+     return s;
  
-+    if (s == INVALID_SOCKET) {
-+        error_setg(errp, "invalid socket fd=%d", sockfd);
-+        return false;
-+    }
-+
-     if (WSAEventSelect(s, hEventObject, lNetworkEvents) != 0) {
-         error_setg_win32(errp, WSAGetLastError(), "failed to WSAEventSelect()");
-         return false;
-@@ -298,9 +305,9 @@ bool qemu_socket_select(SOCKET s, WSAEVENT hEventObject,
-     return true;
+ err:
+-    closesocket(fd);
++    close(fd);
+     return NULL;
  }
  
--bool qemu_socket_unselect(SOCKET s, Error **errp)
-+bool qemu_socket_unselect(int sockfd, Error **errp)
- {
--    return qemu_socket_select(s, NULL, 0, errp);
-+    return qemu_socket_select(sockfd, NULL, 0, errp);
+@@ -456,7 +456,7 @@ static NetSocketState *net_socket_fd_init(NetClientState *peer,
+     if(getsockopt(fd, SOL_SOCKET, SO_TYPE, (char *)&so_type,
+         (socklen_t *)&optlen)< 0) {
+         error_setg(errp, "can't get socket option SO_TYPE");
+-        closesocket(fd);
++        close(fd);
+         return NULL;
+     }
+     switch(so_type) {
+@@ -468,7 +468,7 @@ static NetSocketState *net_socket_fd_init(NetClientState *peer,
+     default:
+         error_setg(errp, "socket type=%d for fd=%d must be either"
+                    " SOCK_DGRAM or SOCK_STREAM", so_type, fd);
+-        closesocket(fd);
++        close(fd);
+     }
+     return NULL;
  }
+@@ -526,13 +526,13 @@ static int net_socket_listen_init(NetClientState *peer,
+     if (ret < 0) {
+         error_setg_errno(errp, errno, "can't bind ip=%s to socket",
+                          inet_ntoa(saddr.sin_addr));
+-        closesocket(fd);
++        close(fd);
+         return -1;
+     }
+     ret = listen(fd, 0);
+     if (ret < 0) {
+         error_setg_errno(errp, errno, "can't listen on socket");
+-        closesocket(fd);
++        close(fd);
+         return -1;
+     }
  
- #undef connect
-@@ -308,7 +315,13 @@ int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
-                       socklen_t addrlen)
- {
-     int ret;
--    ret = connect(sockfd, addr, addrlen);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = connect(s, addr, addrlen);
+@@ -579,7 +579,7 @@ static int net_socket_connect_init(NetClientState *peer,
+                 break;
+             } else {
+                 error_setg_errno(errp, errno, "can't connect socket");
+-                closesocket(fd);
++                close(fd);
+                 return -1;
+             }
+         } else {
+@@ -671,14 +671,14 @@ static int net_socket_udp_init(NetClientState *peer,
      if (ret < 0) {
-         if (WSAGetLastError() == WSAEWOULDBLOCK) {
-             errno = EINPROGRESS;
-@@ -324,7 +337,13 @@ int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
- int qemu_listen_wrap(int sockfd, int backlog)
- {
-     int ret;
--    ret = listen(sockfd, backlog);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = listen(s, backlog);
+         error_setg_errno(errp, errno,
+                          "can't set socket option SO_REUSEADDR");
+-        closesocket(fd);
++        close(fd);
+         return -1;
+     }
+     ret = bind(fd, (struct sockaddr *)&laddr, sizeof(laddr));
      if (ret < 0) {
-         errno = socket_error();
+         error_setg_errno(errp, errno, "can't bind ip=%s to socket",
+                          inet_ntoa(laddr.sin_addr));
+-        closesocket(fd);
++        close(fd);
+         return -1;
      }
-@@ -337,7 +356,13 @@ int qemu_bind_wrap(int sockfd, const struct sockaddr *addr,
-                    socklen_t addrlen)
- {
-     int ret;
--    ret = bind(sockfd, addr, addrlen);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = bind(s, addr, addrlen);
-     if (ret < 0) {
-         errno = socket_error();
+     qemu_socket_set_nonblock(fd);
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index 2bfd460531..dee2032331 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -124,7 +124,7 @@ static int socket_accept(int sock)
+                    (void *)&timeout, sizeof(timeout))) {
+         fprintf(stderr, "%s failed to set SO_RCVTIMEO: %s\n",
+                 __func__, strerror(errno));
+-        closesocket(sock);
++        close(sock);
+         return -1;
      }
-@@ -348,12 +373,23 @@ int qemu_bind_wrap(int sockfd, const struct sockaddr *addr,
- #undef socket
- int qemu_socket_wrap(int domain, int type, int protocol)
- {
--    int ret;
--    ret = socket(domain, type, protocol);
--    if (ret < 0) {
-+    SOCKET s;
-+    int fd;
-+
-+    s = socket(domain, type, protocol);
-+    if (s == -1) {
-         errno = socket_error();
-+        return -1;
-     }
--    return ret;
-+
-+    fd = _open_osfhandle(s, _O_BINARY);
-+    if (fd < 0) {
-+        closesocket(s);
-+        /* _open_osfhandle may not set errno, and closesocket() may override it */
-+        errno = ENOMEM;
-+    }
-+
-+    return fd;
- }
  
+@@ -135,7 +135,7 @@ static int socket_accept(int sock)
+     if (ret == -1) {
+         fprintf(stderr, "%s failed: %s\n", __func__, strerror(errno));
+     }
+-    closesocket(sock);
++    close(sock);
  
-@@ -361,12 +397,27 @@ int qemu_socket_wrap(int domain, int type, int protocol)
- int qemu_accept_wrap(int sockfd, struct sockaddr *addr,
-                      socklen_t *addrlen)
- {
--    int ret;
--    ret = accept(sockfd, addr, addrlen);
--    if (ret < 0) {
-+    int fd;
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    s = accept(s, addr, addrlen);
-+    if (s == -1) {
-         errno = socket_error();
-+        return -1;
-     }
--    return ret;
-+
-+    fd = _open_osfhandle(s, _O_BINARY);
-+    if (fd < 0) {
-+        closesocket(s);
-+        /* _open_osfhandle may not set errno, and closesocket() may override it */
-+        errno = ENOMEM;
-+    }
-+
-+    return fd;
- }
- 
- 
-@@ -374,7 +425,13 @@ int qemu_accept_wrap(int sockfd, struct sockaddr *addr,
- int qemu_shutdown_wrap(int sockfd, int how)
- {
-     int ret;
--    ret = shutdown(sockfd, how);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = shutdown(s, how);
-     if (ret < 0) {
-         errno = socket_error();
-     }
-@@ -386,7 +443,13 @@ int qemu_shutdown_wrap(int sockfd, int how)
- int qemu_ioctlsocket_wrap(int fd, int req, void *val)
- {
-     int ret;
--    ret = ioctlsocket(fd, req, val);
-+    SOCKET s = _get_osfhandle(fd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = ioctlsocket(s, req, val);
-     if (ret < 0) {
-         errno = socket_error();
-     }
-@@ -398,10 +461,27 @@ int qemu_ioctlsocket_wrap(int fd, int req, void *val)
- int qemu_closesocket_wrap(int fd)
- {
-     int ret;
--    ret = closesocket(fd);
-+    SOCKET s = _get_osfhandle(fd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    /*
-+     * close() must be called before closesocket(), otherwise close() returns an
-+     * error and sets EBADF.
-+     */
-+    ret = close(fd);
-+    if (ret < 0) {
-+        return ret;
-+    }
-+
-+    /* closesocket() is required, even after close()! */
-+    ret = closesocket(s);
-     if (ret < 0) {
-         errno = socket_error();
-     }
-+
      return ret;
  }
+@@ -564,8 +564,8 @@ void qtest_quit(QTestState *s)
+     qtest_remove_abrt_handler(s);
  
-@@ -411,7 +491,13 @@ int qemu_getsockopt_wrap(int sockfd, int level, int optname,
-                          void *optval, socklen_t *optlen)
- {
-     int ret;
--    ret = getsockopt(sockfd, level, optname, optval, optlen);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = getsockopt(s, level, optname, optval, optlen);
-     if (ret < 0) {
-         errno = socket_error();
+     qtest_kill_qemu(s);
+-    closesocket(s->fd);
+-    closesocket(s->qmp_fd);
++    close(s->fd);
++    close(s->qmp_fd);
+     g_string_free(s->rx, true);
+ 
+     for (GList *it = s->pending_events; it != NULL; it = it->next) {
+diff --git a/tests/qtest/microbit-test.c b/tests/qtest/microbit-test.c
+index 4bc267020b..6022a92b6a 100644
+--- a/tests/qtest/microbit-test.c
++++ b/tests/qtest/microbit-test.c
+@@ -107,7 +107,7 @@ static void test_nrf51_uart(void)
+     g_assert_true(recv(sock_fd, s, 10, 0) == 5);
+     g_assert_true(memcmp(s, "world", 5) == 0);
+ 
+-    closesocket(sock_fd);
++    close(sock_fd);
+ 
+     qtest_quit(qts);
+ }
+diff --git a/tests/qtest/netdev-socket.c b/tests/qtest/netdev-socket.c
+index 1d98dca821..614b9bce28 100644
+--- a/tests/qtest/netdev-socket.c
++++ b/tests/qtest/netdev-socket.c
+@@ -95,7 +95,7 @@ static int inet_get_free_port_multiple(int nb, int *port, bool ipv6)
+ 
+     nb = i;
+     for (i = 0; i < nb; i++) {
+-        closesocket(sock[i]);
++        close(sock[i]);
      }
-@@ -424,7 +510,13 @@ int qemu_setsockopt_wrap(int sockfd, int level, int optname,
-                          const void *optval, socklen_t optlen)
- {
-     int ret;
--    ret = setsockopt(sockfd, level, optname, optval, optlen);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = setsockopt(s, level, optname, optval, optlen);
-     if (ret < 0) {
-         errno = socket_error();
+ 
+     return nb;
+@@ -262,8 +262,8 @@ static void test_stream_fd(void)
+     qtest_quit(qts1);
+     qtest_quit(qts0);
+ 
+-    closesocket(sock[0]);
+-    closesocket(sock[1]);
++    close(sock[0]);
++    close(sock[1]);
+ }
+ #endif
+ 
+@@ -388,8 +388,8 @@ static void test_dgram_fd(void)
+     qtest_quit(qts1);
+     qtest_quit(qts0);
+ 
+-    closesocket(sv[0]);
+-    closesocket(sv[1]);
++    close(sv[0]);
++    close(sv[1]);
+ }
+ #endif
+ 
+diff --git a/tests/unit/socket-helpers.c b/tests/unit/socket-helpers.c
+index 914b3aa0cf..6de27baee2 100644
+--- a/tests/unit/socket-helpers.c
++++ b/tests/unit/socket-helpers.c
+@@ -117,13 +117,13 @@ static int socket_can_bind_connect(const char *hostname, int family)
+ 
+  cleanup:
+     if (afd != -1) {
+-        closesocket(afd);
++        close(afd);
      }
-@@ -437,7 +529,13 @@ int qemu_getpeername_wrap(int sockfd, struct sockaddr *addr,
-                           socklen_t *addrlen)
- {
-     int ret;
--    ret = getpeername(sockfd, addr, addrlen);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = getpeername(s, addr, addrlen);
-     if (ret < 0) {
-         errno = socket_error();
+     if (cfd != -1) {
+-        closesocket(cfd);
++        close(cfd);
      }
-@@ -450,7 +548,13 @@ int qemu_getsockname_wrap(int sockfd, struct sockaddr *addr,
-                           socklen_t *addrlen)
- {
-     int ret;
--    ret = getsockname(sockfd, addr, addrlen);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = getsockname(s, addr, addrlen);
-     if (ret < 0) {
-         errno = socket_error();
+     if (lfd != -1) {
+-        closesocket(lfd);
++        close(lfd);
      }
-@@ -462,7 +566,13 @@ int qemu_getsockname_wrap(int sockfd, struct sockaddr *addr,
- ssize_t qemu_send_wrap(int sockfd, const void *buf, size_t len, int flags)
+     if (res) {
+         freeaddrinfo(res);
+@@ -160,7 +160,7 @@ void socket_check_afunix_support(bool *has_afunix)
+     int fd;
+ 
+     fd = socket(PF_UNIX, SOCK_STREAM, 0);
+-    closesocket(fd);
++    close(fd);
+ 
+ #ifdef _WIN32
+     *has_afunix = (fd != (int)INVALID_SOCKET);
+diff --git a/util/oslib-win32.c b/util/oslib-win32.c
+index 1efeb2d262..d1f65fa7bf 100644
+--- a/util/oslib-win32.c
++++ b/util/oslib-win32.c
+@@ -457,16 +457,15 @@ int qemu_ioctlsocket_wrap(int fd, int req, void *val)
+ }
+ 
+ 
+-#undef closesocket
+-int qemu_closesocket_wrap(int fd)
++#undef close
++int qemu_close_wrap(int fd)
  {
++    SOCKET s = INVALID_SOCKET;
      int ret;
--    ret = send(sockfd, buf, len, flags);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = send(s, buf, len, flags);
-     if (ret < 0) {
-         errno = socket_error();
+-    SOCKET s = _get_osfhandle(fd);
+ 
+-    if (s == INVALID_SOCKET) {
+-        return -1;
++    if (fd_is_socket(fd)) {
++        s = _get_osfhandle(fd);
      }
-@@ -475,7 +585,13 @@ ssize_t qemu_sendto_wrap(int sockfd, const void *buf, size_t len, int flags,
-                          const struct sockaddr *addr, socklen_t addrlen)
- {
-     int ret;
--    ret = sendto(sockfd, buf, len, flags, addr, addrlen);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = sendto(s, buf, len, flags, addr, addrlen);
-     if (ret < 0) {
-         errno = socket_error();
+-
+     /*
+      * close() must be called before closesocket(), otherwise close() returns an
+      * error and sets EBADF.
+@@ -476,10 +475,12 @@ int qemu_closesocket_wrap(int fd)
+         return ret;
      }
-@@ -487,7 +603,13 @@ ssize_t qemu_sendto_wrap(int sockfd, const void *buf, size_t len, int flags,
- ssize_t qemu_recv_wrap(int sockfd, void *buf, size_t len, int flags)
- {
-     int ret;
--    ret = recv(sockfd, buf, len, flags);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = recv(s, buf, len, flags);
-     if (ret < 0) {
-         errno = socket_error();
+ 
+-    /* closesocket() is required, even after close()! */
+-    ret = closesocket(s);
+-    if (ret < 0) {
+-        errno = socket_error();
++    if (s != INVALID_SOCKET) {
++        /* closesocket() is required, even after close()! */
++        ret = closesocket(s);
++        if (ret < 0) {
++            errno = socket_error();
++        }
      }
-@@ -500,7 +622,13 @@ ssize_t qemu_recvfrom_wrap(int sockfd, void *buf, size_t len, int flags,
-                            struct sockaddr *addr, socklen_t *addrlen)
- {
-     int ret;
--    ret = recvfrom(sockfd, buf, len, flags, addr, addrlen);
-+    SOCKET s = _get_osfhandle(sockfd);
-+
-+    if (s == INVALID_SOCKET) {
-+        return -1;
-+    }
-+
-+    ret = recvfrom(s, buf, len, flags, addr, addrlen);
-     if (ret < 0) {
-         errno = socket_error();
+ 
+     return ret;
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index 6538859b87..c06a4dce77 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -326,7 +326,7 @@ static int inet_listen_saddr(InetSocketAddress *saddr,
+              * recover from this situation, so we need to recreate the
+              * socket to allow bind attempts for subsequent ports:
+              */
+-            closesocket(slisten);
++            close(slisten);
+             slisten = -1;
+         }
      }
+@@ -337,7 +337,7 @@ static int inet_listen_saddr(InetSocketAddress *saddr,
+ listen_failed:
+     saved_errno = errno;
+     if (slisten >= 0) {
+-        closesocket(slisten);
++        close(slisten);
+     }
+     freeaddrinfo(res);
+     errno = saved_errno;
+@@ -380,7 +380,7 @@ static int inet_connect_addr(const InetSocketAddress *saddr,
+     if (rc < 0) {
+         error_setg_errno(errp, errno, "Failed to connect to '%s:%s'",
+                          saddr->host, saddr->port);
+-        closesocket(sock);
++        close(sock);
+         return -1;
+     }
+ 
+@@ -483,7 +483,7 @@ int inet_connect_saddr(InetSocketAddress *saddr, Error **errp)
+ 
+         if (ret < 0) {
+             error_setg_errno(errp, errno, "Unable to set KEEPALIVE");
+-            closesocket(sock);
++            close(sock);
+             return -1;
+         }
+     }
+@@ -580,7 +580,7 @@ static int inet_dgram_saddr(InetSocketAddress *sraddr,
+ 
+ err:
+     if (sock != -1) {
+-        closesocket(sock);
++        close(sock);
+     }
+     if (local) {
+         freeaddrinfo(local);
+@@ -777,7 +777,7 @@ static int vsock_connect_addr(const VsockSocketAddress *vaddr,
+     if (rc < 0) {
+         error_setg_errno(errp, errno, "Failed to connect to '%s:%s'",
+                          vaddr->cid, vaddr->port);
+-        closesocket(sock);
++        close(sock);
+         return -1;
+     }
+ 
+@@ -814,13 +814,13 @@ static int vsock_listen_saddr(VsockSocketAddress *vaddr,
+ 
+     if (bind(slisten, (const struct sockaddr *)&svm, sizeof(svm)) != 0) {
+         error_setg_errno(errp, errno, "Failed to bind socket");
+-        closesocket(slisten);
++        close(slisten);
+         return -1;
+     }
+ 
+     if (listen(slisten, num) != 0) {
+         error_setg_errno(errp, errno, "Failed to listen on socket");
+-        closesocket(slisten);
++        close(slisten);
+         return -1;
+     }
+     return slisten;
+@@ -978,7 +978,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
+ 
+ err:
+     g_free(pathbuf);
+-    closesocket(sock);
++    close(sock);
+     return -1;
+ }
+ 
+@@ -1041,7 +1041,7 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
+     return sock;
+ 
+  err:
+-    closesocket(sock);
++    close(sock);
+     return -1;
+ }
+ 
+@@ -1238,7 +1238,7 @@ int socket_listen(SocketAddress *addr, int num, Error **errp)
+          */
+         if (listen(fd, num) != 0) {
+             error_setg_errno(errp, errno, "Failed to listen on fd socket");
+-            closesocket(fd);
++            close(fd);
+             return -1;
+         }
+         break;
 -- 
 2.39.1
 

@@ -1,113 +1,106 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2401521ejb;
-        Mon, 20 Feb 2023 07:59:12 -0800 (PST)
-X-Google-Smtp-Source: AK7set8AGRHqA6w95Sc7BdMZSeRjIsnFEyj4dC5Fu9dDE5ywGOG6tsZ9N96DVGgRQMLuniEV6FfN
-X-Received: by 2002:ad4:5ecc:0:b0:537:7bd7:29d4 with SMTP id jm12-20020ad45ecc000000b005377bd729d4mr1334097qvb.47.1676908752142;
-        Mon, 20 Feb 2023 07:59:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676908752; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2405694ejb;
+        Mon, 20 Feb 2023 08:03:07 -0800 (PST)
+X-Google-Smtp-Source: AK7set/8ACqxpKXpKlYEdxVkPUDue9pVBVK7ntBm/shHNLTrOfnhEiw5ABQW33vPnxgpexWKNSW0
+X-Received: by 2002:a05:7508:3043:b0:4c:cf92:76f7 with SMTP id x3-20020a057508304300b0004ccf9276f7mr44579gbx.11.1676908986719;
+        Mon, 20 Feb 2023 08:03:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676908986; cv=none;
         d=google.com; s=arc-20160816;
-        b=V4m8yp5I+o8kHWiYYuLeADPaM3Jsh5CvgDJ+4aNsb6sOix3qLfh3Z25mGPHn/sSHmu
-         2Oa07gYRozqWuUOXqZUsI53fa7hlIaDMJSiFGycfqrRMsDmyCYyk4sKhySR+r6oBhFWF
-         PWGsXPgedfodLAz/2t/blInE6ctw1uxY/e5QL5xUkkYvWhHB5E48YQRfZ8JwI60UtBF2
-         qeYhxSK5PVM1V0pUx9ubZ9/wGgx0JaWo4extuoA/uBiTIN/pB2WGd+TDJ129xfSo4ipM
-         qGCxKbAjVNuQzxs0++SufFsAwVidtlKE48p714Eq6leT5jFKFxsvzGJjAsaRs+TcCufA
-         3RQA==
+        b=wBLmYgJcc9rI2ns3cKxcdc7KrlURzIonkEZsjRAdBCX3+iiYc5RZpp3MUBu99KSui+
+         OQQRGHY+3WCHWVlQUyTTMOTcjoX5I2yEcswr+b3fltwOSVZc9eZCHNhgBg/aws6fkUgG
+         0YCuweKaSNKbMiX72FwX2O8kXUDJN+cIjHfYD+KmmZXi/Ci876NTIg7tjP+z7NTM55ed
+         Td9wydv/oA12biNzh6hejk7y/VwTYOdf/8k5PDHhaRVlHisVNg3wjaRU2Z8AcckIM8er
+         u5kOqHN4KqrAdl9XlM766wh8sXSJuOdBS1S+RyYUNL4kBTPbgAaNB5QvY3sZQIrdy4cP
+         koYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=r+QivS3Lqe/QkJCdSJdyeSwwLozBpa5YCEg+swkfxas=;
-        b=tvMljBlvpPiQ2COrSIqiI2XcHgTeu2RNxhA92TfcC7NN660KpCu5fV3fJtH9vGEGOt
-         bmbtW1oQbxE2etH+gS4v8n1NgM/DXAYvS/pHbTEibpQwoeMGHDQi2aOKUkptdKnYwk2N
-         XYCZCV5WWYv+THlBtPfXsbqnZ0oI9y3V4OJexwMmwNxmgzKigxvOwAbS/x4y4On4iY8n
-         UpxBVO8Y00c18tCJFJiM140T6vzUCvQeGy8deDBwJRaQA+PsRDnuHgOMEcOma97EJuHg
-         4afHxjmLJvtP/GEI80G4y9FN+vQ2SRQtJcYXTpcPirOWkMHY6znItbjoVGbDpvfWJVd+
-         vn8Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=9eVLBNRtv9eIjAA1E7znGixjnNU7FxMCnxup4oagjgQ=;
+        b=okfH0WiLlQYbiXNUgBdlcX2tT5WPz8NFBKrA51AXF5xiW/6TTyhhRBTrjr+Skpxq2f
+         OEMSVRQtCeRjGwl8kWBtsSqik0q5f2ZjP0bDVLw8WBylhUJGrYibrQMEkAwAlVThDXy7
+         ywBEdR5o+kbfcbl9ozdxQ+Wq1pozi9FHER9IOM8aXHJ7IrBVMJmhxiJXXq+3eFGnReEj
+         bZkgMnmGtyZfGIRDTHjRGN5v8PI4KCer+Fzj8HFHD5WqVx5L1nh0JWJ6osW1a00/bSoJ
+         PcCGNPRFyJxC3gd6CVv35IOWuhNjCOFzB9VeLfHSzZydGEBA7h+9jzIwapsJ6FBqVTfF
+         9ofA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="B+2uT/Ru";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ke0kaQQx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1-20020a0cb341000000b0056eb049a789si10243061qvf.162.2023.02.20.07.59.12
+        by mx.google.com with ESMTPS id 78-20020a370651000000b006fc2467a95esi9748711qkg.337.2023.02.20.08.03.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 07:59:12 -0800 (PST)
+        Mon, 20 Feb 2023 08:03:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="B+2uT/Ru";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ke0kaQQx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pU8Yr-0001QV-4J; Mon, 20 Feb 2023 10:58:41 -0500
+	id 1pU8d2-0003Jd-CV; Mon, 20 Feb 2023 11:03:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1pU8Yp-0001Q2-Ew
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 10:58:39 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1pU8Yn-0004yd-Fo
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 10:58:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676908716;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=r+QivS3Lqe/QkJCdSJdyeSwwLozBpa5YCEg+swkfxas=;
- b=B+2uT/RuYFNxMArukG6QwIC4OWqUbqgEOZ+d/5bnOFJC/8QXoy56hNVMeX9m0qRwbzWCfW
- 7cETweeXywQ8bl/1ZNWOsoeti6TY9ChZOpPle3UCfvJJKLfZOnktJi9pfHfZmevUG9vy+x
- TRoSqKrPYmmt1f6lCx1+FdQA9daWP+A=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-660-mbhaKUzHOz2Qq4fMqgvwnA-1; Mon, 20 Feb 2023 10:58:34 -0500
-X-MC-Unique: mbhaKUzHOz2Qq4fMqgvwnA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 68B5518E0044;
- Mon, 20 Feb 2023 15:58:34 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.52])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 598D02166B26;
- Mon, 20 Feb 2023 15:58:32 +0000 (UTC)
-Date: Mon, 20 Feb 2023 15:58:28 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Stefan Weil <sw@weilnetz.de>, Paolo Bonzini <pbonzini@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Jason Wang <jasowang@redhat.com>,
- qemu-arm@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>
-Subject: Re: [PATCH 3/4] win32: stop mixing SOCKET and file descriptor space
-Message-ID: <Y/OYpB9AAeytSPMP@redhat.com>
-References: <20230212204942.1905959-1-marcandre.lureau@redhat.com>
- <20230212204942.1905959-4-marcandre.lureau@redhat.com>
- <87r0ukbjfp.fsf@pond.sub.org>
- <CAMxuvaxiN1jYr70k2yK0CUSjo4UQF8DqjPX_COvCdtAWhf3zNw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pU8d1-0003FL-2K
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 11:02:59 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pU8cz-00066C-4L
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 11:02:58 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id
+ na9-20020a17090b4c0900b0023058bbd7b2so1805934pjb.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 08:02:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=9eVLBNRtv9eIjAA1E7znGixjnNU7FxMCnxup4oagjgQ=;
+ b=ke0kaQQxqC3gaygsqY2woATUUf3cAEl3WYkiYskhElHugwVoHrmcphXg402AZtglQE
+ 0lWc8H/WpnwpVCc/6R8V+WmWpxszrc9K8QyEFtnKKSvIUbvnKwXB+IvUCMDtSK8K5w1u
+ +JgUYjsZvJ7h2yAbZjp65FK6hZhy7t4Dz1nSthhz6Y/4UvAByMnAfLiMDu4RfDKJ0TcR
+ IYGyfbXXB2vHlR7asu6agYQIFFZTTtaDgFnGhTu2/INRbxqTVo427nYiWq5q5bCvXKLk
+ J7OATC6e2T6k6N+JgRqDfeAf1SHqlX6pnGNH0ErAewMUAksXVfWuZ9H1OlR1gn84EI+Z
+ 2yIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9eVLBNRtv9eIjAA1E7znGixjnNU7FxMCnxup4oagjgQ=;
+ b=h0QBja/h6ep7ydXq+R4s/5wRa5CIfcNVoWItwIK5wVoVj3E/W82Djy8Yg70QyMJPRD
+ ia10iveLSHFWOIFwjTX1zkq5NEeEbg8aY8BYBujIYjFZ5gus7zy/hTwBZ1DM5NfLprIh
+ 8ZU8k6POJ79tz24aYv6GAgzJ9TESd9j8WLZSPeiCzlsVetHVWKBndduUBamSBJ8GLZIm
+ v8gXRmbdqBL1uSpjZwApTdnG76gcj8DN5ed8ON6D+PMmd3HQr7QKjkDyPE32FIXy5zWh
+ 9d/0zwK7F46fgn4XkvZuxhjP7oynCYXrEsKxLa4CgBEX1gZ9Gd1NVB5UBI3kjVEEqtDX
+ nr6A==
+X-Gm-Message-State: AO0yUKXklXcd+wWvHWtdBXCLEiuxrTvayeQiaG6G9pG7Quif21xMH9ZH
+ jwtBMul7mg1yZlsUL1znpP3/3b5zx2bcx7Jhag+XOQ==
+X-Received: by 2002:a17:90b:5109:b0:233:dcb5:ee15 with SMTP id
+ sc9-20020a17090b510900b00233dcb5ee15mr988864pjb.92.1676908975465; Mon, 20 Feb
+ 2023 08:02:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAMxuvaxiN1jYr70k2yK0CUSjo4UQF8DqjPX_COvCdtAWhf3zNw@mail.gmail.com>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20230214163048.903964-1-richard.henderson@linaro.org>
+ <20230214163048.903964-15-richard.henderson@linaro.org>
+In-Reply-To: <20230214163048.903964-15-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Feb 2023 16:02:44 +0000
+Message-ID: <CAFEAcA96L2V0dvnrygnr00PsKkAcko30h+RCKUMcAJGv0utH4A@mail.gmail.com>
+Subject: Re: [PATCH 14/14] target/arm: Support reading m-profile system
+ registers from gdb
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, David Reiss <dreiss@meta.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,85 +114,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y0Ro1iErPFaW
+X-TUID: zDiB0tPCjZZL
 
-On Mon, Feb 20, 2023 at 07:29:11PM +0400, Marc-André Lureau wrote:
-> Hi
-> 
-> On Mon, Feb 20, 2023 at 4:38 PM Markus Armbruster <armbru@redhat.com> wrote:
-> 
-> > marcandre.lureau@redhat.com writes:
-> >
-> > > From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > >
-> > > Until now, a win32 SOCKET handle is often cast to an int file
-> > > descriptor, as this is what other OS use for sockets.
+On Tue, 14 Feb 2023 at 16:31, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> From: David Reiss <dreiss@meta.com>
+>
+> Follows a fairly similar pattern to the existing special register
+> debug support.  Only reading is implemented, but it should be
+> possible to implement writes.
+>
+> Signed-off-by: David Reiss <dreiss@meta.com>
+> [rth: Split out from two other patches;
+>  Use an enumeration to locally number the registers.
+>  Use a structure to list and control runtime visibility.
+>  Handle security extension with the same code.]
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.h     |   1 +
+>  target/arm/gdbstub.c | 169 +++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 170 insertions(+)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index c9f768f945..536e60d48c 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -867,6 +867,7 @@ struct ArchCPU {
+>
+>      DynamicGDBXMLInfo dyn_sysreg_xml;
+>      DynamicGDBXMLInfo dyn_svereg_xml;
+> +    DynamicGDBXMLInfo dyn_m_systemreg_xml;
+>
+>      /* Timers used by the generic (architected) timer */
+>      QEMUTimer *gt_timer[NUM_GTIMERS];
+> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+> index 062c8d447a..a8848c7fee 100644
+> --- a/target/arm/gdbstub.c
+> +++ b/target/arm/gdbstub.c
+> @@ -322,6 +322,167 @@ static int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
+>      return cpu->dyn_sysreg_xml.num;
+>  }
+>
+> +enum {
+> +    M_SYSREG_MSP        = 0,
+> +    M_SYSREG_PSP        = 1,
+> +    M_SYSREG_PRIMASK    = 2,
+> +    M_SYSREG_CONTROL    = 3,
+> +    M_SYSREG_BASEPRI    = 4,
+> +    M_SYSREG_FAULTMASK  = 5,
+> +    M_SYSREG_MSPLIM     = 6,
+> +    M_SYSREG_PSPLIM     = 7,
+> +    M_SYSREG_REG_MASK   = 7,
+> +
+> +    /*
+> +     * NOTE: MSP, PSP, MSPLIM, PSPLIM technically don't exist if the
+> +     * secure extension is present (replaced by MSP_S, MSP_NS, et al).
+> +     * However, the MRS instruction is still allowed to read from MSP and PSP,
+> +     * and will return the value associated with the current security state.
 
+What's "don't exist" based on here? Architecturally MSPLIM, PSPLIM etc
+are banked registers; MRS/MSR let you access the one for the current
+security state, and (if you are Secure) the one for the NS state.
 
-> > > @@ -275,15 +276,21 @@ GSource *qio_channel_create_fd_watch(QIOChannel
-> > *ioc,
-> > >
-> > >  #ifdef CONFIG_WIN32
-> > >  GSource *qio_channel_create_socket_watch(QIOChannel *ioc,
-> > > -                                         int socket,
-> > > +                                         int sockfd,
-> > >                                           GIOCondition condition)
-> > >  {
-> > > +    SOCKET s = _get_osfhandle(sockfd);
-> >
-> > _get_osfhandle() returns a HANDLE as intptr_t.  Is a HANDLE that refers
-> > to a socket also a SOCKET?  The docs I found so far are confusing...
-> >
-> 
-> yes
-> 
-> 
-> >
-> > >      GSource *source;
-> > >      QIOChannelSocketSource *ssource;
-> > >
-> > > -    WSAEventSelect(socket, ioc->event,
-> > > -                   FD_READ | FD_ACCEPT | FD_CLOSE |
-> > > -                   FD_CONNECT | FD_WRITE | FD_OOB);
-> > > +    if (s == -1 ||
-> > > +        WSAEventSelect(s, ioc->event,
-> > > +                       FD_READ | FD_ACCEPT | FD_CLOSE |
-> > > +                       FD_CONNECT | FD_WRITE | FD_OOB) == SOCKET_ERROR)
-> > {
-> > > +        g_autofree gchar *emsg = g_win32_error_message(GetLastError());
-> > > +        error_printf("error creating socket watch: %s", emsg);
-> >
-> > Uh, why is printing an error appropriate here?  Shouldn't we leave error
-> > handling to callers?
-> >
-> 
-> We could, but we would have to modify callers as well, which can go deep. I
-> am considering a &error_warn as a first approach (I am working on something
-> to check other WSA API users). Does that sound reasonable?
+> +     * We replicate this behavior for the convenience of users, who will see
+> +     * GDB behave similarly to their assembly code, even if they are oblivious
+> +     * to the security extension.
+> +     */
+> +    M_SYSREG_CURRENT    = 0 << 3,
+> +    M_SYSREG_NONSECURE  = 1 << 3,
+> +    M_SYSREG_SECURE     = 2 << 3,
+> +    M_SYSREG_MODE_MASK  = 3 << 3,
+> +};
+> +
 
-The caller should also be handling 'NULL' as a return value, as none
-of them expect that. They just carry on calling g_source APIs. "Luckily"
-glib turns them all into no-ops, so it won't crash, but it also means
-the backend is likelyto be non-functional since events won't be
-processed.
+> +static int arm_gen_dynamic_m_systemreg_xml(CPUState *cs, int base_reg)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +    GString *s = g_string_new(NULL);
+> +    int i, ret;
+> +
+> +    g_string_printf(s, "<?xml version=\"1.0\"?>");
+> +    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+> +    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.m-system\">\n");
 
-It isn't clear that there's much of value that a caller can do when it
-gets a NULL source either. The context in wich we call this API does
-not have error propagation either and its non-trival to add in many
-of the callers.
+Half of these need to be in org.gnu.gdb.arm.secext.
+These aren't our own XML features we're making up (if they
+were then they would be in org.qemu.something), so we should
+follow the existing precedent about what registers go in them.
 
-Feels like the realistic choice is between a error_report or an
-assert/abort, whether in this method or the caller doesn't make
-all that much difference.
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+thanks
+-- PMM

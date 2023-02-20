@@ -1,99 +1,141 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp1824928ejb;
-        Sun, 19 Feb 2023 17:02:32 -0800 (PST)
-X-Google-Smtp-Source: AK7set/oSLBhTXahfc+pdUGMk3Dis3tXrDV3pGMdFR2G/CtX3TnCIKm63yZLL1Zr1/lKCXgVQk4l
-X-Received: by 2002:a05:622a:311:b0:3b8:293c:24eb with SMTP id q17-20020a05622a031100b003b8293c24ebmr21451038qtw.30.1676854952605;
-        Sun, 19 Feb 2023 17:02:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676854952; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2006445ejb;
+        Sun, 19 Feb 2023 22:36:38 -0800 (PST)
+X-Google-Smtp-Source: AK7set8IwA2v86hBBrQ8SRw4055k+NYvT7FvU5cLIGaxNI1K91Y6mAlfN6SX3nFY6/opbxncQ2bz
+X-Received: by 2002:a05:622a:1a24:b0:3b6:a1c2:f63c with SMTP id f36-20020a05622a1a2400b003b6a1c2f63cmr14548117qtb.33.1676874997927;
+        Sun, 19 Feb 2023 22:36:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676874997; cv=none;
         d=google.com; s=arc-20160816;
-        b=DgEWRuVh1X6gJpUJJHzXC02nqH5vvgECbLj9kVHaGclcnrG0yehq8wYxRUp9AQUjbt
-         9uz+fCAE8bcr0hb8sTNWO9UTAGsnWXtVRMwiQz9WrYJ0muDrEtPR4osZFYGhfUAK/JQO
-         +Ko6chSNjWTSmDbM465AHn0fhI+87dDmX/UEM4cPCtfAsh8edyscnD5Uzjt1OQbBEZlQ
-         YrekMhCfrXvAcyshTVd8RKYpoD8pnyPIbH11tyPtkb33LK7ARntkVG8Ajy7fGqMY/6qI
-         QvaYmtyqf79cazyOGkrWQ2TaMSMgROY0kYw1MFBo2Si343dgwQYS7kn3HKpCIbgko3m7
-         LOMQ==
+        b=AijRyZG8Xwm9kVBkFqP0RiNmzPTGOX+z4hK6CAIF4arh+Dv0kx90UMaUoutP++9KBw
+         Mx6LoNQYjSkxNouRKSX8mVOGGgeW7+sClaNt3tbm83lu7n73yA5vXU0dR010gsnrIjsF
+         zlnxj8TQIDZh0I8R4+9uNGlIOMTOrTER3jD7g5bxee4EpbSnBABvtC5dMXWsB7cZcdfG
+         HJbrkicW1k81j9J42Oan1RcldZLUTJUh8SFEJvjUQJnLIoZfXvq1JYBZeY4i1W1UNLvB
+         X9BTKUNNC/+km/hCuFTiV/2BlYkzcyYqP7kduD/JEXfziV1LNE8upaSrzn3wRS8F9wVj
+         9bdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
+         :content-language:in-reply-to:subject:from:references:cc:to
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=JDU2jchFSjeFiZv4v3OfI8HcYKm9V0cGLMFE9v6l+dw=;
-        b=P1SMtuo/Ay0z536gy+nAc0UB8/ldtslP/6YEJl4XNL+KdPyTb/IOCHrQ2OUAPjz2VP
-         UFXAZ+VkXgY06TYjNlJp7iJHRh7dp1OJMjXJD5RVacnvdgm1Y5S1Qd8MAO1V+/ZQ4fpA
-         zmWDiARVn46lmf+iKqi/7whkpUyz5Y8tGvgU6MTo7OUvsB36ZuuvFlTskK75UgdBzSyu
-         4Zurhvbv7GzfvVlhhoptsUPzlYm60IUYPVX0/vWJPtK01+2Ej2LVbqtbLwprDuFACOEU
-         FerE9GveXGnK0CBxZrhXREcz0XcCcLRHnqYv2YV/PtzoGtj30m6JCGjEJxrHlaP7OoIi
-         UW/Q==
+        bh=8MLx2+rnNctmUvlbrAQiG3fA5GIkOmb98UUo/wH6si0=;
+        b=VF4s6Sq+ofA0+rm+FNvel54FcSszz8pZSD1P85sESBgmZe8J1JdlcQ33HX3DQK1DgY
+         47Tm4NTIj76OUIbel+0fIIxkSB6aFfAh2FShxRfhlsr58kS0/xaTDo5hgJ/5ygMb20la
+         QEan06DYiTuyMSon2fsqVlyGXT3IsaM5gidc0TS4KWP0Q2O729GboKTOVFlx6ihIFMjE
+         mneajHogvPzLtroyEMDfPuJq+JXGaod8Py3DG7bOezNBZ9zMiWXUSwkmQF2cGAKq/1NG
+         uFyOQspkrx/jPYP7wmiRIDEC2R9oshq6fp54bg1X+Y3PgdOsStkGH/44ZiU/9ADXa7b5
+         9jXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=JIv+ADox;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="LeGYi/y4";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q22-20020a05622a031600b003ba114d6520si8943949qtw.317.2023.02.19.17.02.32
+        by mx.google.com with ESMTPS id b12-20020ac87fcc000000b003b9a5ba03c0si9285572qtk.65.2023.02.19.22.36.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 19 Feb 2023 17:02:32 -0800 (PST)
+        Sun, 19 Feb 2023 22:36:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=JIv+ADox;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="LeGYi/y4";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pTuZG-0004Q7-Av; Sun, 19 Feb 2023 20:02:10 -0500
+	id 1pTzmP-0004xq-Rn; Mon, 20 Feb 2023 01:36:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1pTuZD-0004O4-Dd; Sun, 19 Feb 2023 20:02:07 -0500
-Received: from m12.mail.163.com ([220.181.12.217])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <qianfanguijin@163.com>)
- id 1pTuZ9-0002TT-9s; Sun, 19 Feb 2023 20:02:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
- Content-Type; bh=JDU2jchFSjeFiZv4v3OfI8HcYKm9V0cGLMFE9v6l+dw=;
- b=JIv+ADoxDw9WLDBLTY/gjqTq1+VWWvxntNDl60hTUocPzTyx8SjwwRy9H9Ct/F
- GiDQP1ME87SytMPNmXWN5ZRVspehQC47SN6+qF/dAYvk0+ml+TF/U6enGSO38Xtp
- GUcV6r7YafLHQ3GCg5F78/klev1l/IwIBeDFStY/s9yKM=
-Received: from [172.21.25.67] (unknown [218.201.129.20])
- by zwqz-smtp-mta-g4-2 (Coremail) with SMTP id _____wDnmVxzxvJjKNzEAQ--.32377S2;
- Mon, 20 Feb 2023 09:01:39 +0800 (CST)
-Message-ID: <f0eff552-197c-3f7e-051c-691633ab0b39@163.com>
-Date: Mon, 20 Feb 2023 09:01:41 +0800
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pTzmJ-0004xM-HJ
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 01:36:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pTzmH-00016F-UN
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 01:35:59 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1676874956;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8MLx2+rnNctmUvlbrAQiG3fA5GIkOmb98UUo/wH6si0=;
+ b=LeGYi/y4yeeCV6pLpkcWM+UtqCe253QXr4nI5/hxAz6hPH8WoLHyqWj4MkDQW6jignh1SY
+ aRJk3tixdR5wZ5RdeK+yRclwLWWRNujlQgm61WDPsCEGUwpydJ1gpiUS6MwlCVa2aQ41dT
+ yzn+PICLN+tWpzm5XAmV7bcmrxBIYhg=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-656-Diz9SCaAMFCcDfj8wPQt5Q-1; Mon, 20 Feb 2023 01:35:42 -0500
+X-MC-Unique: Diz9SCaAMFCcDfj8wPQt5Q-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ c2-20020a056000184200b002c54a27803cso122970wri.22
+ for <qemu-arm@nongnu.org>; Sun, 19 Feb 2023 22:35:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+ :content-language:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=8MLx2+rnNctmUvlbrAQiG3fA5GIkOmb98UUo/wH6si0=;
+ b=yLXbpxeXsP2f7yRfGxfg98xyhSgRRVcpH/oIQrayRI6+jz50r64xRcP6tvZXl0esPd
+ OxAvm0MuOEqSoDC77trciW4X66obmXNsxVWzd6qFuti2qBeB26W2mgXBlLo4BeicEzXb
+ lXgJFUmS2ytU8cOuXRkizTYdnX5YITyn8qej9Troo/4MQxJ+JbvzcPMIrhJCARv49FE8
+ QGh6jVQ0LarVc+EffOE1o+2mU1+2N+J9UtGArxQwsNlmC4hIsubWuDx8BlfaYSjHJ/YI
+ uAum/HCJv2BoT8sf8PfkABvD5gZJyU1OiyOttj9QIrVK3kxmld5xcGvj5CnYWCsncb4W
+ aWGw==
+X-Gm-Message-State: AO0yUKUA+0Lb4fBRw/dPYBILmjSV1sI/pn7WMnM7vh6B8wCtOOL/B5oa
+ 3qQFBwVIIBIyrVAtx7Dn+35AfXOuhYtfFAZyknGNV6iNhr/Dr0jloYCm+25KH4ASmGZllj7OjHJ
+ Yy+Ctq7vpXAi2
+X-Received: by 2002:a05:600c:4393:b0:3e2:8f1:7684 with SMTP id
+ e19-20020a05600c439300b003e208f17684mr10993198wmn.33.1676874941479; 
+ Sun, 19 Feb 2023 22:35:41 -0800 (PST)
+X-Received: by 2002:a05:600c:4393:b0:3e2:8f1:7684 with SMTP id
+ e19-20020a05600c439300b003e208f17684mr10993183wmn.33.1676874941179; 
+ Sun, 19 Feb 2023 22:35:41 -0800 (PST)
+Received: from [192.168.8.104] (tmo-100-40.customers.d1-online.com.
+ [80.187.100.40]) by smtp.gmail.com with ESMTPSA id
+ e1-20020a05600c4e4100b003e1fee8baacsm9214780wmq.25.2023.02.19.22.35.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 19 Feb 2023 22:35:40 -0800 (PST)
+Message-ID: <45496628-6a2b-cdfd-666f-a7a9dca887bd@redhat.com>
+Date: Mon, 20 Feb 2023 07:35:38 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v1 1/2] hw: allwinner-i2c: Make the trace message more
- readable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>
-References: <20230217094207.16882-1-qianfanguijin@163.com>
- <1e0cbd22-18c1-dfdc-b3a9-8961903bfa6a@linaro.org>
+ qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>, Vikram Garhwal <vikram.garhwal@amd.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-ppc@nongnu.org,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Thomas Huth
+ <huth@tuxfamily.org>, Francisco Iglesias <francisco.iglesias@amd.com>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Jason Wang
+ <jasowang@redhat.com>, Beniamino Galvani <b.galvani@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Magnus Damm <magnus.damm@gmail.com>,
+ Frederic Konrad <konrad.frederic@yahoo.fr>
+References: <20230217141832.24777-1-philmd@linaro.org>
+ <20230217215836.40328-1-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH 3/2] hw/timer: Rename ptimer_state -> PTimer
+In-Reply-To: <20230217215836.40328-1-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: qianfan <qianfanguijin@163.com>
-In-Reply-To: <1e0cbd22-18c1-dfdc-b3a9-8961903bfa6a@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnmVxzxvJjKNzEAQ--.32377S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW3Ar13uFWUGw45Jw4fZFWkWFg_yoW3Xryfpr
- Z0krsxKF15Ca4qqr1SyF1DJF1rJryDKr12yr4Ik347ZF93CwnxZryfKF4Yk3909w12qr42
- kFW5AFy2gFZ0yaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jbvtZUUUUU=
-X-Originating-IP: [218.201.129.20]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiGhsc7VaEEUIBEAAAsg
-Received-SPF: pass client-ip=220.181.12.217;
- envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.09, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,232 +150,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tGVx81E8McnM
+X-TUID: DNjYb0KD2vWT
 
+On 17/02/2023 22.58, Philippe Mathieu-Daudé wrote:
+> Remove a pointless cast in ptimer_tick() and rename 'ptimer_state'
+> as 'PTimer' to follow the Structure naming convention.
+> 
+> See docs/devel/style.rst:
+> 
+>    Variables are lower_case_with_underscores; easy to type and
+>    read.  Structured type names are in CamelCase; harder to type
+>    but standing out.  Enum type names and function type names
+>    should also be in CamelCase.  Scalar type names are
+>    lower_case_with_underscores_ending_with_a_t, like the POSIX
+>    uint64_t and family.
+> 
+> Mechanical change doing:
+> 
+>    $ sed -i -e s/ptimer_state/PTimer/g \
+>        $(git grep -l ptimer_state)
+> 
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+...
+> @@ -154,7 +154,7 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
+>   
+>   static void ptimer_tick(void *opaque)
+>   {
+> -    ptimer_state *s = (ptimer_state *)opaque;
+> +    PTimer *s = opaque;
 
+I like that you also removed the useless cast here.
 
-在 2023/2/20 6:30, Philippe Mathieu-Daudé 写道:
-> Hi,
->
-> On 17/2/23 10:42, qianfanguijin@163.com wrote:
->> From: qianfan Zhao <qianfanguijin@163.com>
->>
->> Next is an example when allwinner_i2c_rw enabled:
->>
->> allwinner_i2c_rw write   CNTR[0x0c]: 50 { M_STP BUS_EN  }
->> allwinner_i2c_rw write   CNTR[0x0c]: e4 { A_ACK M_STA BUS_EN INT_EN  }
->> allwinner_i2c_rw  read   CNTR[0x0c]: cc { A_ACK INT_FLAG BUS_EN INT_EN }
->> allwinner_i2c_rw  read   STAT[0x10]: 08 { STAT_M_STA_TX }
->>
->> Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
->> ---
->>   hw/i2c/allwinner-i2c.c | 90 +++++++++++++++++++++++++++++++++++++++++-
->>   hw/i2c/trace-events    |  4 +-
->>   2 files changed, 89 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/i2c/allwinner-i2c.c b/hw/i2c/allwinner-i2c.c
->> index a435965836..36b387520f 100644
->> --- a/hw/i2c/allwinner-i2c.c
->> +++ b/hw/i2c/allwinner-i2c.c
->> @@ -129,6 +129,39 @@ enum {
->>       STAT_IDLE = 0x1f
->>   } TWI_STAT_STA;
->>   +#define TWI_STAT_STA_DESC(sta)  [sta] = #sta
->> +static const char *twi_stat_sta_descriptors[] = {
->> +    TWI_STAT_STA_DESC(STAT_BUS_ERROR),
->> +    TWI_STAT_STA_DESC(STAT_M_STA_TX),
->> +    TWI_STAT_STA_DESC(STAT_M_RSTA_TX),
->> +    TWI_STAT_STA_DESC(STAT_M_ADDR_WR_ACK),
->> +    TWI_STAT_STA_DESC(STAT_M_ADDR_WR_NACK),
->> +    TWI_STAT_STA_DESC(STAT_M_DATA_TX_ACK),
->> +    TWI_STAT_STA_DESC(STAT_M_DATA_TX_NACK),
->> +    TWI_STAT_STA_DESC(STAT_M_ARB_LOST),
->> +    TWI_STAT_STA_DESC(STAT_M_ADDR_RD_ACK),
->> +    TWI_STAT_STA_DESC(STAT_M_ADDR_RD_NACK),
->> +    TWI_STAT_STA_DESC(STAT_M_DATA_RX_ACK),
->> +    TWI_STAT_STA_DESC(STAT_M_DATA_RX_NACK),
->> +    TWI_STAT_STA_DESC(STAT_S_ADDR_WR_ACK),
->> +    TWI_STAT_STA_DESC(STAT_S_ARB_LOST_AW_ACK),
->> +    TWI_STAT_STA_DESC(STAT_S_GCA_ACK),
->> +    TWI_STAT_STA_DESC(STAT_S_ARB_LOST_GCA_ACK),
->> +    TWI_STAT_STA_DESC(STAT_S_DATA_RX_SA_ACK),
->> +    TWI_STAT_STA_DESC(STAT_S_DATA_RX_SA_NACK),
->> +    TWI_STAT_STA_DESC(STAT_S_DATA_RX_GCA_ACK),
->> +    TWI_STAT_STA_DESC(STAT_S_DATA_RX_GCA_NACK),
->> +    TWI_STAT_STA_DESC(STAT_S_STP_RSTA),
->> +    TWI_STAT_STA_DESC(STAT_S_ADDR_RD_ACK),
->> +    TWI_STAT_STA_DESC(STAT_S_ARB_LOST_AR_ACK),
->> +    TWI_STAT_STA_DESC(STAT_S_DATA_TX_ACK),
->> +    TWI_STAT_STA_DESC(STAT_S_DATA_TX_NACK),
->> +    TWI_STAT_STA_DESC(STAT_S_LB_TX_ACK),
->> +    TWI_STAT_STA_DESC(STAT_M_2ND_ADDR_WR_ACK),
->> +    TWI_STAT_STA_DESC(STAT_M_2ND_ADDR_WR_NACK),
->> +    TWI_STAT_STA_DESC(STAT_IDLE),
->> +};
->> +
->>   static const char *allwinner_i2c_get_regname(unsigned offset)
->>   {
->>       switch (offset) {
->> @@ -155,6 +188,59 @@ static const char 
->> *allwinner_i2c_get_regname(unsigned offset)
->>       }
->>   }
->>   +static const char *twi_cntr_reg_bits[] = {
->> +    [2] = "A_ACK",
->> +    [3] = "INT_FLAG",
->> +    [4] = "M_STP",
->> +    [5] = "M_STA",
->> +    [6] = "BUS_EN",
->> +    [7] = "INT_EN",
->> +};
->> +
->> +static void trace_buffer_append_bit_descriptors(char *s, size_t sz,
->> +                                                unsigned int value,
->> +                                                unsigned int start,
->> +                                                unsigned int end,
->> +                                                const char 
->> **desc_arrays)
->> +{
->> +    for (; start <= end; start++) {
->
-> You call this once, so no need to pass a desc_arrays[] argument.
-> Directly iterate over twi_cntr_reg_bits[] and its ARRAY_SIZE().
+>       bool trigger = true;
+>   
+>       /*
+> @@ -198,7 +198,7 @@ static void ptimer_tick(void *opaque)
+>       ptimer_transaction_commit(s);
+>   }
+>   
+> -uint64_t ptimer_get_count(ptimer_state *s)
+> +uint64_t ptimer_get_count(PTimer *s)
+>   {
+>       uint64_t counter;
+>   
+> @@ -294,7 +294,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>       return counter;
+>   }
+>   
+> -void ptimer_set_count(ptimer_state *s, uint64_t count)
+> +void ptimer_set_count(PTimer *s, uint64_t count)
+>   {
+>       assert(s->in_transaction);
+>       s->delta = count;
+> @@ -303,7 +303,7 @@ void ptimer_set_count(ptimer_state *s, uint64_t count)
+>       }
+>   }
+>   
+> -void ptimer_run(ptimer_state *s, int oneshot)
+> +void ptimer_run(PTimer *s, int oneshot)
+>   {
+>       bool was_disabled = !s->enabled;
+>   
+> @@ -323,7 +323,7 @@ void ptimer_run(ptimer_state *s, int oneshot)
+>   
+>   /* Pause a timer.  Note that this may cause it to "lose" time, even if it
+>      is immediately restarted.  */
+> -void ptimer_stop(ptimer_state *s)
+> +void ptimer_stop(PTimer *s)
+>   {
+>       assert(s->in_transaction);
+>   
+> @@ -337,7 +337,7 @@ void ptimer_stop(ptimer_state *s)
+>   }
+>   
+>   /* Set counter increment interval in nanoseconds.  */
+> -void ptimer_set_period(ptimer_state *s, int64_t period)
+> +void ptimer_set_period(PTimer *s, int64_t period)
+>   {
+>       assert(s->in_transaction);
+>       s->delta = ptimer_get_count(s);
+> @@ -349,7 +349,7 @@ void ptimer_set_period(ptimer_state *s, int64_t period)
+>   }
+>   
+>   /* Set counter increment interval from a Clock */
+> -void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clk,
+> +void ptimer_set_period_from_clock(PTimer *s, const Clock *clk,
+>                                     unsigned int divisor)
+>   {
+>       /*
+> @@ -382,7 +382,7 @@ void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clk,
+>   }
+>   
+>   /* Set counter frequency in Hz.  */
+> -void ptimer_set_freq(ptimer_state *s, uint32_t freq)
+> +void ptimer_set_freq(PTimer *s, uint32_t freq)
+>   {
+>       assert(s->in_transaction);
+>       s->delta = ptimer_get_count(s);
+> @@ -395,7 +395,7 @@ void ptimer_set_freq(ptimer_state *s, uint32_t freq)
+>   
+>   /* Set the initial countdown value.  If reload is nonzero then also set
+>      count = limit.  */
+> -void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
+> +void ptimer_set_limit(PTimer *s, uint64_t limit, int reload)
+>   {
+>       assert(s->in_transaction);
+>       s->limit = limit;
+> @@ -406,19 +406,19 @@ void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
+>       }
+>   }
+>   
+> -uint64_t ptimer_get_limit(ptimer_state *s)
+> +uint64_t ptimer_get_limit(PTimer *s)
+>   {
+>       return s->limit;
+>   }
+>   
+> -void ptimer_transaction_begin(ptimer_state *s)
+> +void ptimer_transaction_begin(PTimer *s)
+>   {
+>       assert(!s->in_transaction);
+>       s->in_transaction = true;
+>       s->need_reload = false;
+>   }
+>   
+> -void ptimer_transaction_commit(ptimer_state *s)
+> +void ptimer_transaction_commit(PTimer *s)
+>   {
+>       assert(s->in_transaction);
+>       /*
+> @@ -442,27 +442,27 @@ const VMStateDescription vmstate_ptimer = {
+>       .version_id = 1,
+>       .minimum_version_id = 1,
+>       .fields = (VMStateField[]) {
+> -        VMSTATE_UINT8(enabled, ptimer_state),
+> -        VMSTATE_UINT64(limit, ptimer_state),
+> -        VMSTATE_UINT64(delta, ptimer_state),
+> -        VMSTATE_UINT32(period_frac, ptimer_state),
+> -        VMSTATE_INT64(period, ptimer_state),
+> -        VMSTATE_INT64(last_event, ptimer_state),
+> -        VMSTATE_INT64(next_event, ptimer_state),
+> -        VMSTATE_TIMER_PTR(timer, ptimer_state),
+> +        VMSTATE_UINT8(enabled, PTimer),
+> +        VMSTATE_UINT64(limit, PTimer),
+> +        VMSTATE_UINT64(delta, PTimer),
+> +        VMSTATE_UINT32(period_frac, PTimer),
+> +        VMSTATE_INT64(period, PTimer),
+> +        VMSTATE_INT64(last_event, PTimer),
+> +        VMSTATE_INT64(next_event, PTimer),
+> +        VMSTATE_TIMER_PTR(timer, PTimer),
+>           VMSTATE_END_OF_LIST()
+>       }
+>   };
+>   
+> -ptimer_state *ptimer_init(ptimer_cb callback, void *callback_opaque,
+> +PTimer *ptimer_init(ptimer_cb callback, void *callback_opaque,
+>                             uint8_t policy_mask)
 
-create desc_arrays is useful if there has more register need dump. such as
-trace_buffer_append_bit_descriptors(..., twi_cntr_reg_bits)
-or trace_buffer_append_bit_descriptors(..., twi_line_cntr_reg_bits)
+Just a nit: In case you respin, please adjust the indentation here.
 
->
->> +        if (value & (1 << start)) {
->> +            strncat(s, desc_arrays[start], sz - 1);
->
-> Watch out, desc_arrays[start] could be NULL.
-
-if ((value & (1 << start)) && desc_arrays[start]) is better.
-
->
->> +            strncat(s, " ", sz - 1);
->> +        }
->> +    }
->> +}
->> +
->> +static void allwinner_i2c_trace_rw(int is_write, unsigned int offset,
->
-> Please use 'bool' for 'is_write' which is a boolean.
->
->> + unsigned int value)
->> +{
->
-> You can call trace_event_get_state_backends() to check if a
-> trace event is enabled and return early without further processing.
-
-got it.
-
->
->> +    char s[256] = { 0 };
->> +
->> +    snprintf(s, sizeof(s), "%s %6s[0x%02x]: %02x ",
->
-> Please prefix hexadecimal values with 0x.
->
-OK.
-
->> +             is_write ? "write": " read",
->> +             allwinner_i2c_get_regname(offset), offset,
->> +             value);
->
-> We prefer the safer g_autofree ... g_strdup_printf().
-
-The next trace_buffer_append_bit_descriptors will appending to a pre-alloced buffer,
-so I create a buffer. Total 256 bytes seems enough for the trace strings.
-
->
->> +    switch (offset) {
->> +    case TWI_CNTR_REG:
->> +        strncat(s, "{ ", sizeof(s) - 1);
->> +        trace_buffer_append_bit_descriptors(s, sizeof(s), value,
->> +                                            2, 7, twi_cntr_reg_bits);
->> +        strncat(s, " }", sizeof(s) - 1);
->> +        break;
->> +    case TWI_STAT_REG:
->> +        if (STAT_TO_STA(value) <= STAT_IDLE) {
->> +            strncat(s, "{ ", sizeof(s) - 1);
->> +            strncat(s, twi_stat_sta_descriptors[STAT_TO_STA(value)],
->> +                    sizeof(s) - 1);
->> +            strncat(s, " }", sizeof(s) - 1);
->> +        }
->> +        break;
->> +    }
->> +
->> +    trace_allwinner_i2c_rw(s);
->> +}
->> +
->>   static inline bool allwinner_i2c_is_reset(AWI2CState *s)
->>   {
->>       return s->srst & TWI_SRST_MASK;
->> @@ -271,7 +357,7 @@ static uint64_t allwinner_i2c_read(void *opaque, 
->> hwaddr offset,
->>           break;
->>       }
->>   - trace_allwinner_i2c_read(allwinner_i2c_get_regname(offset), 
->> offset, value);
->> +    allwinner_i2c_trace_rw(0, (unsigned int)offset, (unsigned 
->> int)value);
->>         return (uint64_t)value;
->>   }
->> @@ -283,7 +369,7 @@ static void allwinner_i2c_write(void *opaque, 
->> hwaddr offset,
->>         value &= 0xff;
->>   - trace_allwinner_i2c_write(allwinner_i2c_get_regname(offset), 
->> offset, value);
->> +    allwinner_i2c_trace_rw(1, (unsigned int)offset, (unsigned 
->> int)value);
->>         switch (offset) {
->>       case TWI_ADDR_REG:
->> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
->> index 8e88aa24c1..fa5e8d5021 100644
->> --- a/hw/i2c/trace-events
->> +++ b/hw/i2c/trace-events
->> @@ -16,9 +16,7 @@ i2c_recv(uint8_t address, uint8_t data) 
->> "recv(addr:0x%02x) data:0x%02x"
->>   i2c_ack(void) ""
->>     # allwinner_i2c.c
->> -
->> -allwinner_i2c_read(const char* reg_name, uint64_t offset, uint64_t 
->> value) "read %s [0x%" PRIx64 "]: -> 0x%" PRIx64
->> -allwinner_i2c_write(const char* reg_name, uint64_t offset, uint64_t 
->> value) "write %s [0x%" PRIx64 "]: <- 0x%" PRIx64
->> +allwinner_i2c_rw(const char *s) "%s"
->
-> Please do not remove the other events. The tracing framework provides
-> multiple backends. Some can be processed by scripts, and providing
-> integer values are simpler to parse than a string.
->
-> That said, your event would be more useful for other backends as:
->
-> allwinner_i2c_rw(unsigned is_write,
->                  const char *regname,
->                  uing8_t regaddr,
->                  uing8_t value,
->                  const char *desc)
->                  "wr:%u   %s[0x02x]: 0x%02x { %s }"
-
-I am a beginner for qemu and don't know how to use scripts to parse trace strings. Could you please
-give me an example for that? In my opinion the trace string is for humal, not machine, so I convert
-the register value to a humal readable string.
-
-I had merge the allwinner_i2c_read and allwinner_i2c_write to allwinner_i2c_rw, but it is good to
-split them, someone may interested the write events only.
-
-How about this?
-
-allwinner_i2c_read(const char *regname, uint8_t offset, uint8_t value, const char *desc);
-allwinner_i2c_write(const char *regname, uint8_t offset, uint8_t value, const char *desc);
-
-And I had a question: which type is better for offset and value, uint8_t or uint64_t?
-
->
-> Regards,
->
-> Phil.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 

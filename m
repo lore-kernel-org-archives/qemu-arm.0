@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3217461ejb;
-        Tue, 21 Feb 2023 04:50:52 -0800 (PST)
-X-Google-Smtp-Source: AK7set/+VrREPpZQJz3WW5TwRdOiRtZdL8SzQ2Rg/SiuR2TB8UrWMQ2HiQ0c4Kv/UFcW3el2DBNG
-X-Received: by 2002:a05:622a:b:b0:3bc:fa1a:6032 with SMTP id x11-20020a05622a000b00b003bcfa1a6032mr24453609qtw.24.1676983852631;
-        Tue, 21 Feb 2023 04:50:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676983852; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3217500ejb;
+        Tue, 21 Feb 2023 04:50:56 -0800 (PST)
+X-Google-Smtp-Source: AK7set9od/x0Zi6OxHudqGWU1aA7DPrd6X5lDJzAQnGTnUJIsk/+SwSaUcxJaxL14+bnQ7uw9etR
+X-Received: by 2002:a05:622a:11d6:b0:3b8:3a59:6e13 with SMTP id n22-20020a05622a11d600b003b83a596e13mr7357053qtk.62.1676983856354;
+        Tue, 21 Feb 2023 04:50:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676983856; cv=none;
         d=google.com; s=arc-20160816;
-        b=hmSAppA4ALh69iOhLz1A9ZpoJDRQyinCUKr2kHFujCzNdP/tDmTLTreEabSmHDZfL0
-         mWsYGPDf7NB0opBRv1F6+Ha9+canPr4wDZfLLklMmPVswl/mBh6b8Qk57IqpNYr+zIed
-         FnroZQG61Pph4Tg0iHRLAmRA3AwaQ5lZYRJAoRqZZ9ckgIrBjmfgoPcLKMh4t15EZksV
-         80mXuJBBNlisZ/gOZlnV2l6qaJp3ms7npRoM4Fa8uwYZGtOcyFgGYikciUoMMu8ncqAz
-         6e7V8jsl0HJ/zuDoIC/amx+c7ABD6UInc9pJDRy1/4OnqH9GRnHdrqgAx5tdhCdnu3g5
-         ryug==
+        b=vwwmHNrNqKW4JjYiQSQGw+gpaFP17g1QdndenxldfPxM9jrB5kO4SIoO2zp7oyZ6Jk
+         cOeN0oDrbfCxlqZXulYMUMBia8pK5FZXGLMyepDlyz+Ee34WRMCV/VnjTbX0MOp6vHGN
+         0Lzd2NavCDjNJf8poAwzoRKNQBcHhxuhKWP0cWcbJCGy0hyPoo2XL52FlTLutQeSlhFX
+         f1+DK70wRu7L1J3/RNPO0pRWYQ2jUHVz2WxCGRctl5sSX2eYZF3EaW99uoEEoXo3U7Z/
+         4AFRl03baJJ0MmjB0pxa09W9R183JLEEJsewewD42fWx9Ch1RMe8Z1sebgvspKQebifh
+         qkVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Yq3kv8hzjcp9gr0Ec7g4WVQw2n4/K/1xTE48tBGBpBQ=;
-        b=t0VLPxsxUPi+NfMQOUkgh6mQSdB6333hCZp25FZOoyD8XGh+PlsKWlNIXMgXi5uhZx
-         v9xlI7M+kTgkYQUZqaGwYvaG4tiWwBYOPPbbB2mAtNoJkuggp3RIG61373OgRT12X2yb
-         0r6KuYReyoq/e+I4haImZUOfAvGkr5t0xzHJrLbdgA2Y44uRKSM3KQc/lNb9ghl/QDmx
-         EaB7jIBwuqh9bsZiFENrjsVUFmyJOMIbO3Pvpt+DKNB8rAAUzzd5ixRybJeRpzk4xaJ1
-         011/FfBGKupB/M0gvl0mfZAc2STp+zoSL0fVsHaXGmBkByJl6Q78djf+XQtdUGLnYXu5
-         NDnw==
+        bh=NyPsBp7a1Zd/f/PnlYKoqadMjaVEQg/Z5bS9x1n8BZQ=;
+        b=KNaSqJn7X/W085tYr/g9PlziSUhuuK5+nKbhOfnd/Hd3G5nGc7aa2rPm6sQSe/m93P
+         gAW5hCM8HrcrVlnq8ATyZbWvAs0Tj8pzlgV3Lm9+7cg/ah1/k0dZF4iXwOZcIkrFesrW
+         pcNcQLjjpE4VnjIEu8h+KE8ePtsEMnOLtBw3UpYKVyk3D0DVCoIXEmGI5WMB5RN37sbG
+         2PrRE7Mt6iapKGsdC3AzS+4GbjaYBzAehm99j/xmiTKNImcpJbmC7n0w6gkdPqon+Oyp
+         NbGqFqABmMpuMvqOyp04I0FiF7uyWSmqxQyvhljWJsa8CheZJsddM83aWb9UPuGs4iVY
+         2JoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AF1orNNf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OeAwMmvD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k13-20020a05622a03cd00b003b82e37f8b6si12285147qtx.759.2023.02.21.04.50.52
+        by mx.google.com with ESMTPS id b3-20020ac87fc3000000b003b68cf4ae53si12595230qtk.505.2023.02.21.04.50.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 04:50:52 -0800 (PST)
+        Tue, 21 Feb 2023 04:50:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AF1orNNf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OeAwMmvD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUS55-00060B-EY; Tue, 21 Feb 2023 07:49:15 -0500
+	id 1pUS4L-00056f-4r; Tue, 21 Feb 2023 07:48:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUS4f-0005JJ-Cs
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:48:50 -0500
+ id 1pUS4J-00052Y-6l
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:48:27 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUS4d-0007vy-Pz
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:48:49 -0500
+ id 1pUS4H-0007pa-F8
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:48:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676983727;
+ s=mimecast20190719; t=1676983704;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Yq3kv8hzjcp9gr0Ec7g4WVQw2n4/K/1xTE48tBGBpBQ=;
- b=AF1orNNfr6oyk8/nBschJS8ZBHLIwzHePGhsKtxuoQxrncs6y1HWsmqUQex4wkVcGu9QGf
- IbFVE5bBRVebXw42VREGePFy/1U5nIkIsSuihvTluYZN1EyJh+nUzEwd38sCe+FjSgfYKZ
- XMIskh+L3YQCyburX8iiKnhvV6z6azQ=
+ bh=NyPsBp7a1Zd/f/PnlYKoqadMjaVEQg/Z5bS9x1n8BZQ=;
+ b=OeAwMmvDQrIwoMi8xEgDhjYC475CsVYMintx58tRJu48jqmAumy6Qov7hP3/8S6tV1opQ2
+ LlI1FxTbapTVb7Jbeb1M/w+WeELUHil+PXtkom7crPVJyjMuJ/z1BF9jNdHbL7i+Ug9ZZv
+ mpqJZhuapWa5vWn6nKfj0GXRCTh3Ps0=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-369-0UWjF0yXPFGgl6JZDYnaSQ-1; Tue, 21 Feb 2023 07:48:41 -0500
-X-MC-Unique: 0UWjF0yXPFGgl6JZDYnaSQ-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ us-mta-191-ZlPq1Zj1Pr6YlTGZVfZigQ-1; Tue, 21 Feb 2023 07:48:21 -0500
+X-MC-Unique: ZlPq1Zj1Pr6YlTGZVfZigQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 446022A5957F;
- Tue, 21 Feb 2023 12:48:41 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D0BA32A59541;
+ Tue, 21 Feb 2023 12:48:18 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.31])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2149E492B00;
- Tue, 21 Feb 2023 12:48:39 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 957784014CF3;
+ Tue, 21 Feb 2023 12:48:17 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
@@ -90,15 +90,15 @@ Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, Joel Stanley <joel@jms.id.au>,
  Hanna Reitz <hreitz@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v3 08/16] aio: make aio_set_fd_poll() static to aio-posix.c
-Date: Tue, 21 Feb 2023 16:47:53 +0400
-Message-Id: <20230221124802.4103554-9-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 03/16] io: use closesocket()
+Date: Tue, 21 Feb 2023 16:47:48 +0400
+Message-Id: <20230221124802.4103554-4-marcandre.lureau@redhat.com>
 In-Reply-To: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
 References: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -108,7 +108,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,71 +123,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rSIlo/UWAPUw
+X-TUID: GFOkNvKfKY5I
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- include/block/aio.h | 8 --------
- util/aio-posix.c    | 6 +++---
- util/aio-win32.c    | 7 -------
- 3 files changed, 3 insertions(+), 18 deletions(-)
+Because they are actually sockets...
 
-diff --git a/include/block/aio.h b/include/block/aio.h
-index 8fba6a3584..543717f294 100644
---- a/include/block/aio.h
-+++ b/include/block/aio.h
-@@ -482,14 +482,6 @@ void aio_set_fd_handler(AioContext *ctx,
-                         IOHandler *io_poll_ready,
-                         void *opaque);
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+---
+ io/channel-socket.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/io/channel-socket.c b/io/channel-socket.c
+index 7aca84f61a..2040297d2b 100644
+--- a/io/channel-socket.c
++++ b/io/channel-socket.c
+@@ -159,7 +159,7 @@ int qio_channel_socket_connect_sync(QIOChannelSocket *ioc,
  
--/* Set polling begin/end callbacks for a file descriptor that has already been
-- * registered with aio_set_fd_handler.  Do nothing if the file descriptor is
-- * not registered.
-- */
--void aio_set_fd_poll(AioContext *ctx, int fd,
--                     IOHandler *io_poll_begin,
--                     IOHandler *io_poll_end);
--
- /* Register an event notifier and associated callbacks.  Behaves very similarly
-  * to event_notifier_set_handler.  Unlike event_notifier_set_handler, these callbacks
-  * will be invoked when using aio_poll().
-diff --git a/util/aio-posix.c b/util/aio-posix.c
-index 6cc6256d53..a8be940f76 100644
---- a/util/aio-posix.c
-+++ b/util/aio-posix.c
-@@ -180,9 +180,9 @@ void aio_set_fd_handler(AioContext *ctx,
+     trace_qio_channel_socket_connect_complete(ioc, fd);
+     if (qio_channel_socket_set_fd(ioc, fd, errp) < 0) {
+-        close(fd);
++        closesocket(fd);
+         return -1;
      }
- }
  
--void aio_set_fd_poll(AioContext *ctx, int fd,
--                     IOHandler *io_poll_begin,
--                     IOHandler *io_poll_end)
-+static void aio_set_fd_poll(AioContext *ctx, int fd,
-+                            IOHandler *io_poll_begin,
-+                            IOHandler *io_poll_end)
- {
-     AioHandler *node = find_aio_handler(ctx, fd);
+@@ -233,7 +233,7 @@ int qio_channel_socket_listen_sync(QIOChannelSocket *ioc,
  
-diff --git a/util/aio-win32.c b/util/aio-win32.c
-index be5136e486..74d63fa21e 100644
---- a/util/aio-win32.c
-+++ b/util/aio-win32.c
-@@ -125,13 +125,6 @@ void aio_set_fd_handler(AioContext *ctx,
-     aio_notify(ctx);
- }
+     trace_qio_channel_socket_listen_complete(ioc, fd);
+     if (qio_channel_socket_set_fd(ioc, fd, errp) < 0) {
+-        close(fd);
++        closesocket(fd);
+         return -1;
+     }
+     qio_channel_set_feature(QIO_CHANNEL(ioc), QIO_CHANNEL_FEATURE_LISTEN);
+@@ -310,7 +310,7 @@ int qio_channel_socket_dgram_sync(QIOChannelSocket *ioc,
  
--void aio_set_fd_poll(AioContext *ctx, int fd,
--                     IOHandler *io_poll_begin,
--                     IOHandler *io_poll_end)
--{
--    /* Not implemented */
--}
--
- void aio_set_event_notifier(AioContext *ctx,
-                             EventNotifier *e,
-                             bool is_external,
+     trace_qio_channel_socket_dgram_complete(ioc, fd);
+     if (qio_channel_socket_set_fd(ioc, fd, errp) < 0) {
+-        close(fd);
++        closesocket(fd);
+         return -1;
+     }
+ 
 -- 
 2.39.2
 

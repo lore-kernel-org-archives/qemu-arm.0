@@ -1,208 +1,142 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3216425ejb;
-        Tue, 21 Feb 2023 04:48:53 -0800 (PST)
-X-Google-Smtp-Source: AK7set/Dt29jTmP8R5awcaD1+atCCr5Bq8YEdDAHHiAFi1oujybat8tNd/tjX6NcRXpHNEPcGAi1
-X-Received: by 2002:a05:6214:19c7:b0:56e:b1d2:9c39 with SMTP id j7-20020a05621419c700b0056eb1d29c39mr6964203qvc.15.1676983733383;
-        Tue, 21 Feb 2023 04:48:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676983733; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3292615ejb;
+        Tue, 21 Feb 2023 06:17:11 -0800 (PST)
+X-Received: by 2002:a17:902:d506:b0:19a:7e36:f50a with SMTP id b6-20020a170902d50600b0019a7e36f50amr6479634plg.7.1676989031572;
+        Tue, 21 Feb 2023 06:17:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676989031; cv=none;
         d=google.com; s=arc-20160816;
-        b=qwkNLxFqbM9+2hPlaK4bNcxtTle5SzkmYDVqJFV6P0dHUJpXzXhytkmFRXFTKoYxGf
-         M7Vo9uiZLRKEezcbYlavNRqETtGiDDBytU0qQxReyC4cAz/nBU/06r9ah0TUd86XKDeb
-         tALCA2jEos35tNs6D+VSIzIGnHKwqdHD+P5E8L4boPlE+jZ23+FcJxJUGX9ZZ0sTjg6C
-         S0/LQKkogsaXXYDUXr32NTO1wdzwJXHtuhAiThc8G00LtRouddMpaiQiKZInGnHnlEO8
-         6ln8yHWKTGHI+VyfGiOJN/6qU4T/pc5/eZlZDIH5P4Bh+2rRJjgqZUzrNo7vd1jG3ljG
-         VIUw==
+        b=Vr4tJP+De2XwTodRF+lDHPjW9YTaQYuMHRUYfxNgVpdDG2CcKjF5LG938nm2OeK//F
+         jmXIJzae7N7NAYRk1tYM4iAb5IHCum5zEkl6mkyl8/TEyL5MmGBCaoPL1O6rpiWH5pZP
+         diVQf2cXHYomVPP+lgHVBDYY4bu9ABcgRJvES0SiP+diycyaX98R9TVAi7NEYRgzDreo
+         q1Ex7J1FS652uAiRjscLBfiMnjVwVEBekhNVFHx0CsloM2aONZ9PtzES8XN+Z51I2cIG
+         6HcmNgEkD3sS5j0ORVWAxq/bC3g9gRCElqShb7mf19JQloma43r129mLHZsxeb9x6eS5
+         zeXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=TJAvStjeyfXY7Fqu+f5Kq0t0UxLLT01gyELlytjqWtc=;
-        b=DMaXNbEEA749abnk1X0R2ExMaMf89x0ipmgzOCdmzvjzhGBF5fmr3CZBE7z9rx2AYo
-         JeO1ipLxulnXCFKUniw3Tzbp2MhYXN/vmw7/TBg2JO+K4jYjLS256Akr3m4sr2sNnWWq
-         T5mW8nbieOzFyDfQq/QI2F1QCUDmFFRikUFTXMuGRGJkWoeq3I2V/kyppG29GsnHkSYV
-         XcjutOMHDwKPWqgavo/7kJNZckQPVbYhabPanWuYYuaRleWbYt6TWwVXg+xnqrSKxoDa
-         ssO5xlbQq1rDKYYaUOqflqVJTAswZ+QUyaZlZhq/K6EcSJJ1DNDs+PVm4pKN0bX9kGAJ
-         9hfw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=eZaSr6p/WigV9S3zd4nAD9I7Yy+ujBKyZXaSjM8ooak=;
+        b=cgNlMHg2jLgalpquIIOh1wQryVvGSzOR8jSIewJik4ux7Q9EL/Q3hz8JhQM1snXqW9
+         sz+ck0bX5QlnaosaBAfo451E46yvTwAAAQiWoh1tZIJbvHma7CbjHbGBoWoZBPs23Toa
+         dlXwacJauhnb+5u3ETRRkxof/E8SnAXwOjzC3IfVfpFJCi3QJoGLwoXoP+3JjBx6SDYx
+         nap3fi7LKwHlJU7FqMmRHAhuYCOYKAtK3gDYfoy6PGTWm1fV8kgufjPzEi+BF/pLsku3
+         /myrBldTR3e4YoRc0D0GGZa0/ZqM9lMVaT0HgwAmlXrAaEt9TUuE9Nq9lE0onoiyY68v
+         96VQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fSn4rBMa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x2-20020a0ce0c2000000b0056eb136aa91si214240qvk.63.2023.02.21.04.48.53
+       dkim=pass header.i=@linaro.org header.s=google header.b=W12+tKs4;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l12-20020a170903120c00b0019aa7cf68a8sor3166722plh.91.2023.02.21.06.17.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 04:48:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 21 Feb 2023 06:17:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fSn4rBMa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pUS47-0004rX-Ia; Tue, 21 Feb 2023 07:48:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUS44-0004pj-RE
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 07:48:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUS42-0007nP-Md
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 07:48:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676983690;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=TJAvStjeyfXY7Fqu+f5Kq0t0UxLLT01gyELlytjqWtc=;
- b=fSn4rBMaERCbF1aghewmKLIFp8sqDy0MADxN68AHr1wgeEK19fwSHHnIjSuAs6fVzo4mud
- 2O6Gu0TZyBp+Azr4ZJLnsvs6OEIPFhrrL0X6DzWNDEV5nsEtaHM1FQUZcJtVoXFCO9FU8e
- DfOkrJ4buwi/IvuJy77/zJ9WxN6IUXI=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-640-zI2oH7CjPL2ggYhvDzIxUA-1; Tue, 21 Feb 2023 07:48:07 -0500
-X-MC-Unique: zI2oH7CjPL2ggYhvDzIxUA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8A4D385CBF4;
- Tue, 21 Feb 2023 12:48:06 +0000 (UTC)
-Received: from localhost (unknown [10.39.208.31])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C80A5440D9;
- Tue, 21 Feb 2023 12:48:04 +0000 (UTC)
-From: marcandre.lureau@redhat.com
-To: qemu-devel@nongnu.org
-Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Roth <michael.roth@amd.com>, qemu-arm@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org, armbru@redhat.com,
- Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, Fam Zheng <fam@euphon.net>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>, Joel Stanley <joel@jms.id.au>,
- Hanna Reitz <hreitz@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v3 00/16] win32: do not mix SOCKET and fd space
-Date: Tue, 21 Feb 2023 16:47:45 +0400
-Message-Id: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=W12+tKs4;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=eZaSr6p/WigV9S3zd4nAD9I7Yy+ujBKyZXaSjM8ooak=;
+        b=W12+tKs4T0WGCfMlgFz3dSzQNe3rySgr20kK9KX2+XTSXlRn1l6uZPLS3+5nBxM0o5
+         SMiofaXsVbIi7mAYSAF6GUrYLqvSROg9daeQBc4YPZqi63L8CBBvnDYgMz4ZXVKgUwM0
+         IS34kVPgsolDmTTDRyDoDBBTl1D7Boiri6X2vrWNYi8WN5Hd7KxpWv44FITn/PyHPsHI
+         ArL6NtiBfM8p+Db67JXdo2GN5QPIg5REXiW3pyqcNHOf3u42hFKnKez5RxfCPYOqWKXK
+         fOnMNXtn53KKU6nFWQ8NeVLvpaOTrQj8BsBi4npiV16T4fvjv1EWB8S7YlMVw8QnLUh9
+         x8cA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=eZaSr6p/WigV9S3zd4nAD9I7Yy+ujBKyZXaSjM8ooak=;
+        b=sbilH781HiM7oNm8mGLhHBu/P2xv2lCIhFrpRq42w6j+VhMDUtLas7tEqq/TesjUsD
+         xEmaUEZ1JoCqO2GQfVmpcxz2Sgnx2nmR8zXKrUwcPUjDMN4qk7kOp+2Uj8+bxyWExDOs
+         nWBpDpocT8EeZ3evykMdFOb7lGdCzW5w02qF3bmdnhM2N47x/TtYVwuAf8NzMczFQ8OO
+         DU+DhEhYU9hgvwuwxinYoq0OTIO6PAG1ieC9DdoxOgDKwWD2xQK8y8qZaazDG8UpXBJ7
+         oFH8MYk699htQZuhZ7OGbYDHrL/J7LkNLo/eGhqCdYSU1a2HUmPoyvSZjTnA8MsAtIfE
+         WKwg==
+X-Gm-Message-State: AO0yUKVkiSlRYeGKdHiUFqJ6sCJUhJ1YAkZgiNghr4QfPcAQXkuQ2lyR
+	0KPfB/9PS3V51h1D/DKNxX5i4S9icIXmINOkkANJCHhN
+X-Google-Smtp-Source: AK7set8VIGtnBrIYnrw0YIA+QaV0Lh45iuUK/mJru/tdVYAQjQY3OkGE4eJ93tzPaa1CA5AU1xhN6ASPJQqldG66nwQ=
+X-Received: by 2002:a17:90b:5109:b0:233:dcb5:ee15 with SMTP id
+ sc9-20020a17090b510900b00233dcb5ee15mr1776771pjb.92.1676989031048; Tue, 21
+ Feb 2023 06:17:11 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dIUvBaIlsqMM
+References: <20230217201150.22032-1-farosas@suse.de> <20230217201150.22032-20-farosas@suse.de>
+In-Reply-To: <20230217201150.22032-20-farosas@suse.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Feb 2023 14:16:59 +0000
+Message-ID: <CAFEAcA__kyfbPv5tmSTiBJ_O15ND5-QpKpATx856s8XCoUNORw@mail.gmail.com>
+Subject: Re: [PATCH v6 19/29] target/arm: Move 64-bit TCG CPUs into tcg/
+To: Fabiano Rosas <farosas@suse.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>, 
+	Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: yIA2QqAOD54S
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+On Fri, 17 Feb 2023 at 20:15, Fabiano Rosas <farosas@suse.de> wrote:
+>
+> Move the 64-bit CPUs that are TCG-only:
+> - cortex-a35
+> - cortex-a55
+> - cortex-a72
+> - cortex-a76
+> - a64fx
+> - neoverse-n1
+>
+> Keep the CPUs that can be used with KVM:
+> - cortex-a57
+> - cortex-a53
+> - max
+> - host
+>
+> For the special case "max" CPU, there's a nuance that while KVM/HVF
+> use the "host" model instead, we still cannot move all of the TCG code
+> into the tcg directory because the qtests might reach the !kvm && !hvf
+> branch. Keep the cortex_a57_initfn() call to cover that scenario.
+>
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Hi,
 
-A win32 SOCKET handle is often cast to an int file descriptor, as this is what
-other OS use for sockets. When necessary, QEMU eventually queries whether it's a
-socket with the help of fd_is_socket(). However, there is no guarantee of
-conflict between the fd and SOCKET space. Such conflict would have surprising
-consequences. We can fix this by using FDs only.
+> -/* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
+> - * otherwise, a CPU with as many features enabled as our emulation supports.
+> - * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
+> - * this only needs to handle 64 bits.
+> - */
+>  static void aarch64_max_initfn(Object *obj)
+>  {
+> -    ARMCPU *cpu = ARM_CPU(obj);
+> -    uint64_t t;
+> -    uint32_t u;
+> -
+>      if (kvm_enabled() || hvf_enabled()) {
+>          /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
+>          aarch64_host_initfn(obj);
+>          return;
+>      }
+>
+> +    if (tcg_enabled() || qtest_enabled()) {
+> +        aarch64_a57_initfn(obj);
+> +    }
+> +
 
-After fixing a few missed closesocket(), this patch series makes the win32
-socket API wrappers take FDs. It finally get rid of closesocket() usage by using
-a close() wrapper instead. (note that fdopen/fclose would not be enough either
-to close the underlying socket appropriately)
 
-v3:
-- fix closesocket() to prevent CloseHandle() from close()
-- fix direct closesocket() usage (#undef closesocket before)
-- add a test for &error_warn
-- add r-b tags
 
-v2:
-- add clean up patch "util: drop qemu_fork()"
-- add a "&error_warn", to help with basic error reporting
-- fix errno handling after _get_osfhandle()
-- introduce qemu_socket_(un)select() helpers
-- add patch "aio_set_fd_handler() only supports SOCKET"
-- add meson slirp.wrap RFC
-- various misc cleanups
-- add r-b tags
+> +    if (tcg_enabled()) {
+> +        aarch64_max_tcg_initfn(obj);
+> +    }
 
-Marc-André Lureau (16):
-  util: drop qemu_fork()
-  tests: use closesocket()
-  io: use closesocket()
-  tests: add test-error-report
-  error: add global &error_warn destination
-  win32/socket: introduce qemu_socket_select() helper
-  win32/socket: introduce qemu_socket_unselect() helper
-  aio: make aio_set_fd_poll() static to aio-posix.c
-  aio/win32: aio_set_fd_handler() only supports SOCKET
-  RFC: build-sys: add slirp.wrap
-  main-loop: remove qemu_fd_register(), win32/slirp/socket specific
-  slirp: unregister the win32 SOCKET
-  slirp: open-code qemu_socket_(un)select()
-  win32: avoid mixing SOCKET and file descriptor space
-  os-posix: remove useless ioctlsocket() define
-  win32: replace closesocket() with close() wrapper
+Why do this only for TCG, and not qtest ?
 
- include/block/aio.h            |   8 --
- include/qapi/error.h           |   6 +
- include/qemu/main-loop.h       |   2 -
- include/qemu/osdep.h           |  14 --
- include/sysemu/os-posix.h      |   3 -
- include/sysemu/os-win32.h      |  15 ++-
- backends/tpm/tpm_emulator.c    |   6 +-
- crypto/afalg.c                 |   6 +-
- hw/hyperv/syndbg.c             |   4 +-
- io/channel-socket.c            |   8 +-
- io/channel-watch.c             |  10 +-
- net/dgram.c                    |  14 +-
- net/slirp.c                    |  16 ++-
- net/socket.c                   |  22 +--
- tests/qtest/libqtest.c         |   8 +-
- tests/qtest/microbit-test.c    |   2 +-
- tests/qtest/netdev-socket.c    |  10 +-
- tests/unit/socket-helpers.c    |   2 +-
- tests/unit/test-error-report.c | 139 +++++++++++++++++++
- util/aio-posix.c               |   6 +-
- util/aio-win32.c               |  23 ++--
- util/error.c                   |  10 +-
- util/main-loop.c               |  11 --
- util/oslib-posix.c             |  70 ----------
- util/oslib-win32.c             | 240 ++++++++++++++++++++++++++++-----
- util/qemu-sockets.c            |  22 +--
- .gitignore                     |   2 +
- subprojects/slirp.wrap         |   6 +
- tests/unit/meson.build         |   1 +
- 29 files changed, 461 insertions(+), 225 deletions(-)
- create mode 100644 tests/unit/test-error-report.c
- create mode 100644 subprojects/slirp.wrap
+>  }
 
--- 
-2.39.2
-
+thanks
+-- PMM

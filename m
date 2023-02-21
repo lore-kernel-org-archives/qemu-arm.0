@@ -1,238 +1,142 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r26-20020a05600c2f1a00b003db0bb81b6asm5207691wmn.1.2023.02.21.15.01.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Feb 2023 15:01:56 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1E90E1FFCF;
-	Tue, 21 Feb 2023 22:52:31 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-s390x@nongnu.org,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	nicolas.eder@lauterbach.com,
-	Stafford Horne <shorne@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Taylor Simpson <tsimpson@quicinc.com>,
-	mads@ynddal.dk,
-	Marek Vasut <marex@denx.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	qemu-ppc@nongnu.org,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Bin Meng <bin.meng@windriver.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Chris Wulff <crwulff@gmail.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Greg Kurz <groug@kaod.org>,
-	David Hildenbrand <david@redhat.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 22/24] testing: probe gdb for supported architectures ahead of time
-Date: Tue, 21 Feb 2023 22:52:25 +0000
-Message-Id: <20230221225227.3735319-23-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
-References: <20230221225227.3735319-1-alex.bennee@linaro.org>
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3467124ejb;
+        Tue, 21 Feb 2023 09:33:56 -0800 (PST)
+X-Google-Smtp-Source: AK7set917sQkyvfzzHV0kdlPsZXIq6eurMJePmsHVWv3t2mVGkH9BveVMNKRrOe9AHChc/abc8bF
+X-Received: by 2002:a05:6214:19ca:b0:571:6ac:ec8e with SMTP id j10-20020a05621419ca00b0057106acec8emr12104208qvc.13.1677000836128;
+        Tue, 21 Feb 2023 09:33:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677000836; cv=none;
+        d=google.com; s=arc-20160816;
+        b=nbvzzsnfwZgOdzCKBgmSyVpnfDJa96Z1IryyP/79zNIuuZFrlR/xzxKnnaSqFcKEXY
+         CT5h2egpLMBfeGzmKhH0Da8vDgdKdws6tPGd9rVE6b41GKggLI0S1GnQiJr4fpemtC+i
+         2PYCHYUT0/VF78WkqatfffO0Z2dTTgXtmwGhslSUw+AAtf6l/6+Z5Gf9pHF8bKoW4Qi1
+         IWug/Ba6H9DvsEC9Jw6JGGZpRUpju+mw1ZXIMzYp8LzIn/0ZeSsEogc/kWXwLMA2fvqE
+         qzXmnft+InOUtQkxiPhammQqy4wu7SV8obAmw52b8JTd4TeEO2gqe6dRxjOeHfJU9X07
+         EjiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Vd7ChOI1Bgg8685Hw6NtaZOVDOqN2cdUHMRSaf+rP5U=;
+        b=kRp1DfwyhpfDFJekIwMjwMDytmPwVwj/bb36HkGz1y/cKE/HLm3EvH+EGzTLNWuoJJ
+         FfLzn1jhGexSIjfgS8nFeGI560KIfBrwUTDbSj0KC4UgBp5WXgMXZKmyn5DhzbXn1UpC
+         rHLlxxUmvYC1gx3YKlbHLzYhWvKwwlRUDecuiAAUloJK3MU++7XQh9tcgGdy+Fun4wkd
+         3dGhn4tlWkLP9mo843sf1kB3IPhrLhlWY2/ah4ehEgE+HEYJsaMgnu0BgnUS+7Ly+fq7
+         rrqv6wWc3SWRTg/N5+THbV+UvobyRY1TZlzwqB0BtFylAU1qpMFLf2fWihGonsYIlU4D
+         c7QA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aLFPhKPj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v9-20020a0cb189000000b0056eb47532bbsi6311605qvd.583.2023.02.21.09.33.55
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 21 Feb 2023 09:33:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aLFPhKPj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pUWWS-00028e-RV; Tue, 21 Feb 2023 12:33:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pUWWR-00024C-Ap
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 12:33:47 -0500
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pUWWP-0001uY-LT
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 12:33:47 -0500
+Received: by mail-pl1-x635.google.com with SMTP id h14so6001422plf.10
+ for <qemu-arm@nongnu.org>; Tue, 21 Feb 2023 09:33:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Vd7ChOI1Bgg8685Hw6NtaZOVDOqN2cdUHMRSaf+rP5U=;
+ b=aLFPhKPjceMWxWmGh4VKYrYK39uLxsx9YpPVGC0yI4gP42D86KKXtP/22ramGKBViJ
+ bnf6GBpCSAmOZrAVR5H7WlMhNLhS2aFVY5wWDrNf/Dqt4JRD0tt2y8TUi6mI6IUp2Htn
+ S3vvADTDin2669OwS52OThBaogzohl2wnwElCvj25+TX/PwXmySa13u/dbb5wJiBiEo+
+ YCr6JX5jRawt+WPKrb8uv+vFyQdpbE0+xMkHQ3DFEx73Tz+JrKcn7mQ8thzfr/zOHvI1
+ By4RW1D+EQeqolcRLOHhVDQlyzE/WNynlUkEpw9GyA2lzEWordd1CeoYszTpPr1XfGyU
+ PZpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Vd7ChOI1Bgg8685Hw6NtaZOVDOqN2cdUHMRSaf+rP5U=;
+ b=Pi7XkPjU7qRA0jJPj+wm65hkxHBMKO4XNjSJP9PVfl/et1fFKgsANyhiWxQ0y1hXnL
+ gCucD13AWvVlPf7+JQVNqMdFb512FXRjHkLdbpxPHoU6ZtSon5YxqKRGt11CD901lFS/
+ b5ctSsfubNvtZwRkJKgIMeK8OObqEEkR3jMePiN64JG8ShpDTDqz/W9SE2x5fOX6qVFj
+ 4EqtYDHIbHxS1QB0cIc9fBozNbq+FKTrqzCyL8ZmjkOlu2kx6mXfhDibwi00kDrbKUqj
+ 5GCp2HEv4QK4jFvOc4kI0fim6vxNEueK27I7QYQyKdF0fOfzC1vq3HL+EVJXbBwnPOPT
+ pyvQ==
+X-Gm-Message-State: AO0yUKWySIduAeo0qNv+mcwXzQyYXAPHwa8UOweSJsY8AIxh3aNixZj+
+ ErW6SvUdJ5bjJbfKr9JmEbP0xQ==
+X-Received: by 2002:a05:6a20:3d88:b0:c7:6f26:c85 with SMTP id
+ s8-20020a056a203d8800b000c76f260c85mr19490610pzi.36.1677000824026; 
+ Tue, 21 Feb 2023 09:33:44 -0800 (PST)
+Received: from [192.168.6.128] (rrcs-173-198-77-218.west.biz.rr.com.
+ [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
+ z192-20020a6333c9000000b004fbe67bab14sm4486696pgz.0.2023.02.21.09.33.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Feb 2023 09:33:43 -0800 (PST)
+Message-ID: <c7234c83-3e53-6867-55f8-7e9ab97a5c2a@linaro.org>
+Date: Tue, 21 Feb 2023 07:33:40 -1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: OYpAtzchXZYq
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v2 14/14] target/arm: Implement gdbstub m-profile
+ systemreg and secext
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, David Reiss <dreiss@meta.com>
+References: <20230221021951.453601-1-richard.henderson@linaro.org>
+ <20230221021951.453601-15-richard.henderson@linaro.org>
+ <CAFEAcA8nexWsqRKfjR20_OhNr5d54LMHCsGwZHrZmkng2jwgOw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA8nexWsqRKfjR20_OhNr5d54LMHCsGwZHrZmkng2jwgOw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.095,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ILs+L9PJnN/0
 
-Currently when we encounter a gdb that is old or not built with
-multiarch in mind we fail rather messily. Try and improve the
-situation by probing ahead of time and setting
-HOST_GDB_SUPPORTS_ARCH=y in the relevant tcg configs. We can then skip
-and give a more meaningful message if we don't run the test.
+On 2/21/23 07:25, Peter Maydell wrote:
+> You also want to enforce the RES0 bits on registers like
+> PSPLIM, MSPLIM, FAULTMASK, PSP, MSP, if you're going to
+> implement writes. Effectively you really end up wanting to
+> get helper_v7m_msr to do the work for you.
 
-[AJB: we still miss some arches, for example gdb uses s390 which fails
-when we look for s390x. Not sure what the best way to deal with that
-is? Maybe define a gdb_arch as we probe each target?]
+Ho hum.  I should have known it was more complicated than all that.
+I should probably just drop the write portion of the patch again for now.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
----
- configure                                     |  8 +++++
- scripts/probe-gdb-support.sh                  | 36 +++++++++++++++++++
- tests/tcg/aarch64/Makefile.target             |  2 +-
- tests/tcg/multiarch/Makefile.target           |  5 +++
- .../multiarch/system/Makefile.softmmu-target  |  6 +++-
- tests/tcg/s390x/Makefile.target               |  2 +-
- 6 files changed, 56 insertions(+), 3 deletions(-)
- create mode 100755 scripts/probe-gdb-support.sh
 
-diff --git a/configure b/configure
-index cf6db3d551..366a1d8dd2 100755
---- a/configure
-+++ b/configure
-@@ -226,6 +226,7 @@ stack_protector=""
- safe_stack=""
- use_containers="yes"
- gdb_bin=$(command -v "gdb-multiarch" || command -v "gdb")
-+gdb_arches=""
- 
- if test -e "$source_path/.git"
- then
-@@ -2344,6 +2345,7 @@ if test -n "$gdb_bin"; then
-     gdb_version=$($gdb_bin --version | head -n 1)
-     if version_ge ${gdb_version##* } 9.1; then
-         echo "HAVE_GDB_BIN=$gdb_bin" >> $config_host_mak
-+        gdb_arches=$("$source_path/scripts/probe-gdb-support.sh" $gdb_bin)
-     else
-         gdb_bin=""
-     fi
-@@ -2467,6 +2469,12 @@ for target in $target_list; do
-       write_target_makefile "build-tcg-tests-$target" >> "$config_target_mak"
-       echo "BUILD_STATIC=$build_static" >> "$config_target_mak"
-       echo "QEMU=$PWD/$qemu" >> "$config_target_mak"
-+
-+      # will GDB work with these binaries?
-+      if test "${gdb_arches#*$arch}" != "$gdb_arches"; then
-+          echo "HOST_GDB_SUPPORTS_ARCH=y" >> "$config_target_mak"
-+      fi
-+
-       echo "run-tcg-tests-$target: $qemu\$(EXESUF)" >> Makefile.prereqs
-       tcg_tests_targets="$tcg_tests_targets $target"
-   fi
-diff --git a/scripts/probe-gdb-support.sh b/scripts/probe-gdb-support.sh
-new file mode 100755
-index 0000000000..2b09a00a5b
---- /dev/null
-+++ b/scripts/probe-gdb-support.sh
-@@ -0,0 +1,36 @@
-+#!/bin/sh
-+
-+# Probe gdb for supported architectures.
-+#
-+# This is required to support testing of the gdbstub as its hard to
-+# handle errors gracefully during the test. Instead this script when
-+# passed a GDB binary will probe its architecture support and return a
-+# string of supported arches, stripped of guff.
-+#
-+# Copyright 2023 Linaro Ltd
-+#
-+# Author: Alex Bennée <alex.bennee@linaro.org>
-+#
-+# This work is licensed under the terms of the GNU GPL, version 2 or later.
-+# See the COPYING file in the top-level directory.
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+if test -z "$1"; then
-+  echo "Usage: $0 /path/to/gdb"
-+  exit 1
-+fi
-+
-+# Start gdb with a set-architecture and capture the set of valid
-+# options.
-+
-+valid_args=$($1 -ex "set architecture" -ex "quit" 2>&1 >/dev/null)
-+
-+# Strip off the preamble
-+raw_arches=$(echo "${valid_args}" | sed "s/.*Valid arguments are \(.*\)/\1/")
-+
-+# Split into lines, strip everything after :foo and return final
-+# "clean" list of supported arches.
-+final_arches=$(echo "${raw_arches}" | tr ', ' '\n' | sed "s/:.*//" | sort | uniq)
-+
-+echo "$final_arches"
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index db122ab4ff..9e91a20b0d 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -81,7 +81,7 @@ sha512-vector: sha512.c
- 
- TESTS += sha512-vector
- 
--ifneq ($(HAVE_GDB_BIN),)
-+ifeq ($(HOST_GDB_SUPPORTS_ARCH),y)
- GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
- 
- run-gdbstub-sysregs: sysregs
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index ae8b3d7268..373db69648 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -64,6 +64,7 @@ run-test-mmap-%: test-mmap
- 	$(call run-test, test-mmap-$*, $(QEMU) -p $* $<, $< ($* byte pages))
- 
- ifneq ($(HAVE_GDB_BIN),)
-+ifeq ($(HOST_GDB_SUPPORTS_ARCH),y)
- GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
- 
- run-gdbstub-sha1: sha1
-@@ -87,6 +88,10 @@ run-gdbstub-thread-breakpoint: testthread
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-thread-breakpoint.py, \
- 	hitting a breakpoint on non-main thread)
- 
-+else
-+run-gdbstub-%:
-+	$(call skip-test, "gdbstub test $*", "no guest arch support")
-+endif
- else
- run-gdbstub-%:
- 	$(call skip-test, "gdbstub test $*", "need working gdb")
-diff --git a/tests/tcg/multiarch/system/Makefile.softmmu-target b/tests/tcg/multiarch/system/Makefile.softmmu-target
-index 368b64d531..5f432c95f3 100644
---- a/tests/tcg/multiarch/system/Makefile.softmmu-target
-+++ b/tests/tcg/multiarch/system/Makefile.softmmu-target
-@@ -15,6 +15,7 @@ MULTIARCH_TEST_SRCS=$(wildcard $(MULTIARCH_SYSTEM_SRC)/*.c)
- MULTIARCH_TESTS = $(patsubst $(MULTIARCH_SYSTEM_SRC)/%.c, %, $(MULTIARCH_TEST_SRCS))
- 
- ifneq ($(HAVE_GDB_BIN),)
-+ifeq ($(HOST_GDB_SUPPORTS_ARCH),y)
- GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
- 
- run-gdbstub-memory: memory
-@@ -26,7 +27,10 @@ run-gdbstub-memory: memory
- 		"-monitor none -display none -chardev file$(COMMA)path=$<.out$(COMMA)id=output $(QEMU_OPTS)" \
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/memory.py, \
- 	softmmu gdbstub support)
--
-+else
-+run-gdbstub-%:
-+	$(call skip-test, "gdbstub test $*", "no guest arch support")
-+endif
- else
- run-gdbstub-%:
- 	$(call skip-test, "gdbstub test $*", "need working gdb")
-diff --git a/tests/tcg/s390x/Makefile.target b/tests/tcg/s390x/Makefile.target
-index 72ad309b27..b7f576f983 100644
---- a/tests/tcg/s390x/Makefile.target
-+++ b/tests/tcg/s390x/Makefile.target
-@@ -51,7 +51,7 @@ $(Z15_TESTS): CFLAGS+=-march=z15 -O2
- TESTS+=$(Z15_TESTS)
- endif
- 
--ifneq ($(HAVE_GDB_BIN),)
-+ifeq ($(HOST_GDB_SUPPORTS_ARCH),y)
- GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
- 
- run-gdbstub-signals-s390x: signals-s390x
--- 
-2.39.1
+r~

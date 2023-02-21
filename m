@@ -1,89 +1,89 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3136713ejb;
-        Tue, 21 Feb 2023 02:54:21 -0800 (PST)
-X-Google-Smtp-Source: AK7set8/Q/BuOw1je/dmPKCzudl1Sv+9BTujpIenrHkIvMvyEIBDOqe6mtKAhtZEyKbyn1++hUiP
-X-Received: by 2002:a05:6214:e4f:b0:571:cb52:7ee2 with SMTP id o15-20020a0562140e4f00b00571cb527ee2mr1058177qvc.52.1676976861519;
-        Tue, 21 Feb 2023 02:54:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676976861; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3137971ejb;
+        Tue, 21 Feb 2023 02:56:35 -0800 (PST)
+X-Google-Smtp-Source: AK7set8nCtPqmKl0I9LDRmEe9ohJGXuvK+yTdTBA9HYiWI/5WkHRQvH+pCbwB2v3kldWm+U79pwX
+X-Received: by 2002:ac8:5cca:0:b0:3b9:bd05:bde1 with SMTP id s10-20020ac85cca000000b003b9bd05bde1mr19664716qta.8.1676976995107;
+        Tue, 21 Feb 2023 02:56:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676976995; cv=none;
         d=google.com; s=arc-20160816;
-        b=pEcBsU4OHY89gszyLbvpPU3atcPm6a4u0ZXWBTuL9N6sTkZf3ZTWvSG3Ev6z7IjSCu
-         i6ovOhIOVb5UgMjHVo4/vy3f2xE1OmZcQ0icCBDb6mCW+72WYgZPm2d+EYl4rDOlBOLu
-         0jZh2/9qEM+Hd7Ccye/pHYGQ/GHTrgAQnwatJ9AYOxX1j41Bq8Gl/SGYBN/EMKNhbSXJ
-         B0BFaY1pozoF95WNpm46CUQiJsdKQiEYR4HXSPYJrzRvbFdIRSRtlq1A/UtMvUEwfX12
-         8mnhjolif1g6UHNIhSJCXiIMXeWK3AEGeAfhreNH2+SkdqADl/z8AK5s9bRd4qUeiEAZ
-         4DKA==
+        b=usaT3S8jUVIwpIqaooghUXs2uTldq+3LmqktGdycAeWwI6Pf1HALOBj4CVXCdmxq3K
+         6T3GJlML1er256p0U5sscpLemAUPKymQ2whSpI9rSzCYjIUamBVU+sjug+kXX2h0sxcP
+         ugVMfSseJbq0dHrdT+a5b2oIh0tPAVgWuWVY19jugCbU/bvshPGFBXgtMG8Ex540iwIG
+         kKagzzf5rCoQJ5vw7CxTq3Qb9pGABX7PwBw1HDts8porpsP6QHSjHpdgXQkEHrBt4QCw
+         m77xsNUg5xDWzdvaG65J6t8ddcylF9tYRtwnVCU0BPDJDJmdy/Lu6NXo8G0jY6VGTgw4
+         g9eQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=R3YpjBhhQT4ScmvOdNKZrTwBto6NUHRu6NxozrhSlQk=;
-        b=Gr3JjLA/2qxnpct+ZrNy+kWEC8Dbpmb5/Biz7Z8hjUzVr8kRE0cLx4ZHiiaemsXNKE
-         qZSmNamcejkOc12cNACE3tibhP8Tmt/3u0MADEQBCGkLSyGlR4bmSkemhaYMWeAHiNXr
-         Cr4McNKgnvBq80bNKbW8ZkxwLWKPP43afWFOYwqj+ishl9sjjcC934ndS1mOqygJobFQ
-         nSkgQxGGVMLa3J+PD3uFZ5g38zBBGAtY7cxjN1f8TEANirEM+QuSlLkJbVxrmuhZ0jlK
-         JmbUC/aHDsWWhOu9J3U3BkHNW08Sr6fdWoJttup86OU26H3tZ9A24q8sATVjZEvhC2Ab
-         +4Tg==
+        bh=RUy2vNlZo5xe12js8pkQZQ6aHs7wr2RYdU2j7igV2aQ=;
+        b=HEy9CsX1fgwMG7nDBLgI2jJvathGlov5BLfC0PR/6vcbZuyL1IaHehl4OebmnYc+sg
+         /xaHuO1h3RspI+ZifT1+1V3NsTOCrT5AzGvYGuPe33KaxmihInIvemz3k43OQA7pd3L4
+         rq22Oe/jxUYzKU7hpoSQhCY3Agt3qF24AJEsMexZJt5qdbE2LzjikrrnsnTJ1fPUfAsC
+         JfcFMlZoNzYxzEwpbnr4DgycQUPe/mGB2DWYPVM1M+W8l6AS+XsC3JllGCTG/TG/AWue
+         GyRIHoylu57Ceow5HhdxWi8Im9jfqmP+OAKG1QvWHGGr4P5CGpO8BxiOlxSlFKEZMGeK
+         VcuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RKeGyeaa;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GFNsPjiA;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id k26-20020a0c971a000000b0056f2ba3d7c0si9610128qvd.353.2023.02.21.02.54.21
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id a6-20020ac86106000000b003b85beb77d0si2856235qtm.462.2023.02.21.02.56.34
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Feb 2023 02:54:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Tue, 21 Feb 2023 02:56:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RKeGyeaa;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GFNsPjiA;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1676976861;
+	s=mimecast20190719; t=1676976994;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=R3YpjBhhQT4ScmvOdNKZrTwBto6NUHRu6NxozrhSlQk=;
-	b=RKeGyeaadRy6Rr9n9cIEudIvdEYrmXQyqDDzz6pX9j7pvCmwpZ/CLdjEm6/7qd5JG688/r
-	9y+y+k29QwspoXjqy6pjX9bF9a+c7tpaNNS2Vznzeb0oKh1oVEDC0xbLa9JaL4+6mODGF5
-	e46F3VOHeGTdU7ui+tu6QL+8FLTtnQc=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=RUy2vNlZo5xe12js8pkQZQ6aHs7wr2RYdU2j7igV2aQ=;
+	b=GFNsPjiAcl9yGoJJnd0Zi7/pdOo5ZvtqXbRLXwxO/CXizz9/F+NkU3ictfkHoyWcxF4ns8
+	uged9UFH2nRr6CVa7tZ94EZAENqevyHB6CV3uGNKet8tMD4PW/lm9/XJrPF9AnnyubW3bG
+	k8Ieye96Bt1E4piWklobhZC/L0XYQz8=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-164-vOu6UtBpP9u3dY51hpL-cA-1; Tue, 21 Feb 2023 05:54:19 -0500
-X-MC-Unique: vOu6UtBpP9u3dY51hpL-cA-1
-Received: by mail-wm1-f69.google.com with SMTP id z6-20020a7bc7c6000000b003e0107732f4so1895963wmk.1
-        for <alex.bennee@linaro.org>; Tue, 21 Feb 2023 02:54:19 -0800 (PST)
+ us-mta-153-yXOgKTezOuGd8mzSjCNwLw-1; Tue, 21 Feb 2023 05:56:32 -0500
+X-MC-Unique: yXOgKTezOuGd8mzSjCNwLw-1
+Received: by mail-wm1-f70.google.com with SMTP id l20-20020a05600c1d1400b003e10d3e1c23so1815153wms.1
+        for <alex.bennee@linaro.org>; Tue, 21 Feb 2023 02:56:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=R3YpjBhhQT4ScmvOdNKZrTwBto6NUHRu6NxozrhSlQk=;
-        b=VbKWA8q02sL7bgsE9+VbSCdgIaT1IOR9QhiVwv01l9MRD6un+jAZYsNTkOK4cFN68E
-         qekegyQgBWBU7kR1wwZ+qaRMvAZDzanPvE32JhlhRdEODpFIce5ZM5wXgyBA2EYvWU7A
-         16qKCjqDc8DURi5nazwWNL2w4Uoioahw9/TZLc0gFTWB7dp4zpaa7oiokjS98qYruo/p
-         KlZtgMhq2pnP2tp6RnVo3Xk1m+c/4RgNAlNrO/LRkcNPIsbzwnEAAVQdGhg0ovkVJQxi
-         mfxyaSh6wyBisWpM9C2peSKOdMDEc4MfM8AURMzheVe1WXpeelRKuSZ+6n/GJtPX+IiD
-         o9IA==
-X-Gm-Message-State: AO0yUKVLILALsdJrpuBQ0lLZfLC7xCn1cn/HYEtcNRyBFsHkEhTHKHEW
-	42P0feKttWHESSsDytwZjb+0fFoeHbk/eSqVjyj5WObUAcp39E7pOc5N0T2/fM95r383JAhGkbY
-	CUMs6VVAK0mScbI31bO0RWLL77LvB+awHIYOHUvlA7/wVUSoxcNbU8Cs5HZmLVVZwzwUEWLk6
-X-Received: by 2002:adf:e689:0:b0:2c5:5da4:a3b1 with SMTP id r9-20020adfe689000000b002c55da4a3b1mr4648669wrm.69.1676976858771;
-        Tue, 21 Feb 2023 02:54:18 -0800 (PST)
-X-Received: by 2002:adf:e689:0:b0:2c5:5da4:a3b1 with SMTP id r9-20020adfe689000000b002c55da4a3b1mr4648627wrm.69.1676976858454;
-        Tue, 21 Feb 2023 02:54:18 -0800 (PST)
+        bh=RUy2vNlZo5xe12js8pkQZQ6aHs7wr2RYdU2j7igV2aQ=;
+        b=gPceLsCY9XavrLnfPS48zeFA51MtbMSFNeoZ1zgyyuKPB/Y56CC7TjGEiTOhfnClNM
+         k+jSTRhdQo0zVHC5beKWDM07ZE53McMzdUhrg6ZvOC63UICLeMalqRcljcZCH6spMaVh
+         61NDVEzMv34Y8dbtItENiISbC6Wej0TCBKKk0HLjg/7hMcO/9vgKdyWArBMyc1XZxkcO
+         QhZvKjHqblp7byMxlxKiWL4DV9fVQS+P1O4KHurdcWsiN+/rQ5oUhA0NU+5JnoSK6F7O
+         iJ5shx60dQGpnWn6QViexELb9J+OOo7vHdCWxG4XKpGpHVaFgDSQ1xtEIHCgzubDW+1R
+         qaVA==
+X-Gm-Message-State: AO0yUKWemNarEy84ErDBIA37g+7pJmVf4JG3iRwC37P4qNiIv45xZcY2
+	K2VmFiJIQx5pQmw5av5p1n8aCfR7gD/rIomrVXLKQEgjQ1Q8/C6Rtj4mjKE+DouGt91+nU7xSOP
+	jRx0a+AK+zW5NvCq3aJ7W5YUv2NnTq2nbSLE36DZOPN5e7Gh/peimdgPQl7QGsIlI36ELteqR
+X-Received: by 2002:adf:df0d:0:b0:2c6:b7e:e4c0 with SMTP id y13-20020adfdf0d000000b002c60b7ee4c0mr2943914wrl.28.1676976991486;
+        Tue, 21 Feb 2023 02:56:31 -0800 (PST)
+X-Received: by 2002:adf:df0d:0:b0:2c6:b7e:e4c0 with SMTP id y13-20020adfdf0d000000b002c60b7ee4c0mr2943869wrl.28.1676976991185;
+        Tue, 21 Feb 2023 02:56:31 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [10.33.192.205] (nat-pool-str-t.redhat.com. [149.14.88.106])
-        by smtp.gmail.com with ESMTPSA id u9-20020a5d5149000000b002c550eb062fsm2901414wrt.14.2023.02.21.02.54.16
+        by smtp.gmail.com with ESMTPSA id g17-20020a5d6991000000b002c54911f50bsm4849517wru.84.2023.02.21.02.56.28
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Feb 2023 02:54:17 -0800 (PST)
-Message-ID: <d7ab036c-9a0b-5217-32cd-292ca1e55b5d@redhat.com>
-Date: Tue, 21 Feb 2023 11:54:15 +0100
+        Tue, 21 Feb 2023 02:56:30 -0800 (PST)
+Message-ID: <6b363773-5797-ccb8-1089-0bb924705126@redhat.com>
+Date: Tue, 21 Feb 2023 11:56:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
-Subject: Re: [PATCH v2 08/14] tests: don't run benchmarks for the tsan build
+Subject: Re: [PATCH v2 09/14] testing: update ubuntu2004 to ubuntu2204
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
@@ -105,44 +105,25 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  John Snow <jsnow@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
  <berrange@redhat.com>
 References: <20230221094558.2864616-1-alex.bennee@linaro.org>
- <20230221094558.2864616-9-alex.bennee@linaro.org>
+ <20230221094558.2864616-10-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230221094558.2864616-9-alex.bennee@linaro.org>
+In-Reply-To: <20230221094558.2864616-10-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: AXqeArDhDnz2
+X-TUID: RUX6DhtgYEG7
 
 On 21/02/2023 10.45, Alex Bennée wrote:
-> All we are really doing here is checking that TSAN builds compile and are
-> therefor a tool available to developers. The benchmarks are not
-> representative of QEMU's actual threading behaviour and they burn
-> precious CI time. Indeed switching to check-unit reveals many
-> unaddressed issues which have been logged at:
+> The 22.04 LTS release has been out for almost a year now so its time
+> to update all the remaining images to the current LTS. We can also
+> drop some hacks we need for older clang TSAN support.
 > 
->    https://gitlab.com/qemu-project/qemu/-/issues/1496
-> 
-> So for now disable the make check and make this a build only
-> test.
+> We will keep the ubuntu2004 container around for those who wish to
+> test builds on the currently still supported baseline.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   .gitlab-ci.d/buildtest.yml | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-> index 8f332fc36f..e9a67e0191 100644
-> --- a/.gitlab-ci.d/buildtest.yml
-> +++ b/.gitlab-ci.d/buildtest.yml
-> @@ -465,7 +465,6 @@ tsan-build:
->       CONFIGURE_ARGS: --enable-tsan --cc=clang-10 --cxx=clang++-10
->             --enable-trace-backends=ust --enable-fdt=system --disable-slirp
->       TARGETS: x86_64-softmmu ppc64-softmmu riscv64-softmmu x86_64-linux-user
-> -    MAKE_CHECK_ARGS: bench V=1
->   
->   # gcov is a GCC features
->   gcov:
+> Reviewed-by: John Snow <jsnow@redhat.com>
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>

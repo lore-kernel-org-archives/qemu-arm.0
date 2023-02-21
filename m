@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id d18-20020a5d6452000000b002c54f4d0f71sm7003887wrw.38.2023.02.21.14.52.30
+        by smtp.gmail.com with ESMTPSA id fm18-20020a05600c0c1200b003dc1d668866sm6474680wmb.10.2023.02.21.14.52.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 21 Feb 2023 14:52:34 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 627521FFBA;
+	by zen.linaroharston (Postfix) with ESMTP id 1F3E81FFC3;
 	Tue, 21 Feb 2023 22:52:29 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,114 +52,130 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 15/24] gdbstub: introduce gdb_get_max_cpus
-Date: Tue, 21 Feb 2023 22:52:18 +0000
-Message-Id: <20230221225227.3735319-16-alex.bennee@linaro.org>
+Subject: [PATCH v3 13/24] gdbstub: specialise handle_query_attached
+Date: Tue, 21 Feb 2023 22:52:16 +0000
+Message-Id: <20230221225227.3735319-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
 References: <20230221225227.3735319-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: GoP1kh+s/N65
+X-TUID: YP1PtnOzkubP
 
-This is needed for handling vcont packets as the way of calculating
-max cpus vhanges between user and softmmu mode.
+In both user and softmmu cases we are just replying with a constant.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v3
-  - rm out of date comment
+  - remove allusions to possible linker optimisations
 ---
- gdbstub/internals.h |  1 +
- gdbstub/gdbstub.c   | 11 +----------
- gdbstub/softmmu.c   |  9 +++++++++
- gdbstub/user.c      | 17 +++++++++++++++++
- 4 files changed, 28 insertions(+), 10 deletions(-)
+ gdbstub/internals.h |  4 +++-
+ gdbstub/gdbstub.c   | 15 ++-------------
+ gdbstub/softmmu.c   |  5 +++++
+ gdbstub/user.c      |  5 +++++
+ 4 files changed, 15 insertions(+), 14 deletions(-)
 
 diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 9de995ce3a..90069a9415 100644
+index 3912d0de38..3875c6877e 100644
 --- a/gdbstub/internals.h
 +++ b/gdbstub/internals.h
-@@ -127,6 +127,7 @@ bool gdb_got_immediate_ack(void);
- CPUState *gdb_first_attached_cpu(void);
- void gdb_append_thread_id(CPUState *cpu, GString *buf);
- int gdb_get_cpu_index(CPUState *cpu);
-+unsigned int gdb_get_max_cpus(void); /* both */
+@@ -152,7 +152,7 @@ int gdb_continue_partial(char *newstates);
+ void gdb_put_buffer(const uint8_t *buf, int len);
  
- void gdb_create_default_process(GDBState *s);
+ /*
+- * Command handlers - either softmmu or user only
++ * Command handlers - either specialised or softmmu or user only
+  */
+ void gdb_init_gdbserver_state(void);
  
+@@ -181,6 +181,8 @@ void gdb_handle_query_rcmd(GArray *params, void *user_ctx); /* softmmu */
+ void gdb_handle_query_offsets(GArray *params, void *user_ctx); /* user */
+ void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx); /*user */
+ 
++void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
++
+ /*
+  * Break/Watch point support - there is an implementation for softmmu
+  * and user mode.
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 91021859a1..f9950200b8 100644
+index 76c24b7cb6..0d90685c72 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -624,16 +624,7 @@ static int gdb_handle_vcont(const char *p)
-     GDBProcess *process;
-     CPUState *cpu;
-     GDBThreadIdKind kind;
--#ifdef CONFIG_USER_ONLY
--    int max_cpus = 1; /* global variable max_cpus exists only in system mode */
--
--    CPU_FOREACH(cpu) {
--        max_cpus = max_cpus <= cpu->cpu_index ? cpu->cpu_index + 1 : max_cpus;
--    }
--#else
--    MachineState *ms = MACHINE(qdev_get_machine());
--    unsigned int max_cpus = ms->smp.max_cpus;
--#endif
-+    unsigned int max_cpus = gdb_get_max_cpus();
-     /* uninitialised CPUs stay 0 */
-     newstates = g_new0(char, max_cpus);
+@@ -46,12 +46,6 @@
  
+ #include "internals.h"
+ 
+-#ifdef CONFIG_USER_ONLY
+-#define GDB_ATTACHED "0"
+-#else
+-#define GDB_ATTACHED "1"
+-#endif
+-
+ #ifndef CONFIG_USER_ONLY
+ static int phy_memory_mode;
+ #endif
+@@ -1672,11 +1666,6 @@ static void handle_query_xfer_features(GArray *params, void *user_ctx)
+                       gdbserver_state.str_buf->len, true);
+ }
+ 
+-static void handle_query_attached(GArray *params, void *user_ctx)
+-{
+-    gdb_put_packet(GDB_ATTACHED);
+-}
+-
+ static void handle_query_qemu_supported(GArray *params, void *user_ctx)
+ {
+     g_string_printf(gdbserver_state.str_buf, "sstepbits;sstep");
+@@ -1786,12 +1775,12 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
+     },
+ #endif
+     {
+-        .handler = handle_query_attached,
++        .handler = gdb_handle_query_attached,
+         .cmd = "Attached:",
+         .cmd_startswith = 1
+     },
+     {
+-        .handler = handle_query_attached,
++        .handler = gdb_handle_query_attached,
+         .cmd = "Attached",
+     },
+     {
 diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index d9b9ba0a32..65aa2018a7 100644
+index 0232e62ea4..ade0cc366c 100644
 --- a/gdbstub/softmmu.c
 +++ b/gdbstub/softmmu.c
-@@ -433,6 +433,15 @@ int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
-     return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
- }
+@@ -439,6 +439,11 @@ void gdb_handle_query_rcmd(GArray *params, void *user_ctx)
+  * Execution state helpers
+  */
  
-+/*
-+ * cpu helpers
-+ */
-+
-+unsigned int gdb_get_max_cpus(void)
++void gdb_handle_query_attached(GArray *params, void *user_ctx)
 +{
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    return ms->smp.max_cpus;
++    gdb_put_packet("1");
 +}
- 
- /*
-  * Softmmu specific command helpers
++
+ void gdb_continue(void)
+ {
+     if (!runstate_needs_reset()) {
 diff --git a/gdbstub/user.c b/gdbstub/user.c
-index b956c0e297..15ff3ab08d 100644
+index 33a0701cea..90dfe49f27 100644
 --- a/gdbstub/user.c
 +++ b/gdbstub/user.c
-@@ -388,6 +388,23 @@ int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
-     return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
- }
+@@ -340,6 +340,11 @@ void gdbserver_fork(CPUState *cpu)
+  * Execution state helpers
+  */
  
-+/*
-+ * cpu helpers
-+ */
-+
-+unsigned int gdb_get_max_cpus(void)
++void gdb_handle_query_attached(GArray *params, void *user_ctx)
 +{
-+    CPUState *cpu;
-+    unsigned int max_cpus = 1;
-+
-+    CPU_FOREACH(cpu) {
-+        max_cpus = max_cpus <= cpu->cpu_index ? cpu->cpu_index + 1 : max_cpus;
-+    }
-+
-+    return max_cpus;
++    gdb_put_packet("0");
 +}
 +
-+
- /*
-  * Break/Watch point helpers
-  */
+ void gdb_continue(void)
+ {
+     gdbserver_user_state.running_state = 1;
 -- 
 2.39.1

@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3216844ejb;
-        Tue, 21 Feb 2023 04:49:42 -0800 (PST)
-X-Google-Smtp-Source: AK7set9pIgkA7j9LU0u7H8KFzK7TTQBwJuU4a/8GDicEkAWoPJ5H/5IWYPjcEtpM2UxcBTj/pKRA
-X-Received: by 2002:a05:622a:d6:b0:3ae:189c:7455 with SMTP id p22-20020a05622a00d600b003ae189c7455mr23336644qtw.47.1676983781907;
-        Tue, 21 Feb 2023 04:49:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676983781; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3216893ejb;
+        Tue, 21 Feb 2023 04:49:48 -0800 (PST)
+X-Google-Smtp-Source: AK7set9mGY+LC6UIUHvF/uNMEJ1j8+tC+PMQLJ4lAXBAJJhy0fYJ5O2DqAXnRTA53HInYtXRyVx7
+X-Received: by 2002:ac8:5d8d:0:b0:3b6:36a0:adbe with SMTP id d13-20020ac85d8d000000b003b636a0adbemr23174125qtx.6.1676983788037;
+        Tue, 21 Feb 2023 04:49:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676983788; cv=none;
         d=google.com; s=arc-20160816;
-        b=lqF6RtBzwNzUjTuTqXd4Oc0Ox7z1puRRpmqdMcKff5Wp5RP0dmg9FbtC6J6YGNrEl/
-         CiOSnYEhAWnyLuTovZOoVjjiq24vNWONqsmtsDaTcLDSeY6QGwML/z0OgnxTvapMWW+m
-         21DFf7bE5SDi9xDszs4mUVFPCmyY1w44nglbh4Awx9c6H+Ybmfnird1ePOdBuMYqaevR
-         E+3kGINLkDZ+GkvpmL+CAyToA+pKJVqU4e8OI5qnMFXjmOCpL4F/IXcbETNBteKLCB70
-         EntfuGed5eRiUVwExAhTrxXR8SPVhNwhkEpsGK2vjXDe9J1gTvb4xJ7R9Fl8Nn1DBXaS
-         gtmQ==
+        b=dNe/AyQl5aCfCD6D4wjmOby7ZC5U9jMWQTBjkPrVXFV3bNrVcawrd+qIDdmcwtWMFu
+         mzIMLynfBZ8Yl0/tGLdHj20kVsRYR/ZYuMyh2MQxKk1XqejfkLqDpvCIKHpgMh0uz7xh
+         pvmOH8+1WY+qEeU3GvBekTq4xV9l2G3CaNwZo7hn2piiYp89dX7DNicxc+xt5BKXQLUH
+         dWNYsYBELzop7HeYOgVRZ7rctrWl/2SY7AIEzt6lsOKoZWBeQjyxYxDvlGFqy2Dho8WX
+         z3B5X0ci2e5ntlRI+2UlL77V/BoIZV2s5x16ex3Q/P3JhMrfLwenEmOa9renfATNwwqg
+         0s3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=RgHAk8J3WC5f5nCpV9Uu90B+hmnbTcUrHHE7USZDPG4=;
-        b=BIyjukQzlim+79qhrY/9BznI4m3pffOrOEOZ67lwKQHJqaDbEezuxtThqagQ31elht
-         VRtoFxhpPBgxf4nAbWMsT5D8jhGOkR88bxiqnSoZEHIoXZnitojED8MAol97t4GdjRlq
-         yGhlJqsLjnQSXOz/jsgL+nE30yOaDT3/BBoAcqu7v6SYhQSAPV3cNMET6a7FPiXz9+t1
-         ytXLKa7rEZQ0i9LSc81kYz3NuWEZWeAWUNlcpLVRHfax9BA59TKdgToHDBEMX1X4RFMd
-         uwHppwaetJzzdWV7chGRoxctlMI5+ldhzgZ74nUp14c/o5bxNy6tSHTIwv/xCSzzEwik
-         7dSw==
+        bh=00qk0KvUYcOoWfueLW6G26btNgeaeT8RbTKYC62Bk08=;
+        b=N3GsaRpfeKxOhjvp/v786Oec0AHK5sahr8d3FuyLeZOlKuV8VVSMd1iacQn8qViYpD
+         8d+ihLTARk7lYdWFrtuwIIeEPA1Tm1CNii9gniYoVU1xYA6Fp7FsXWMh3rdNCNW/Pgq0
+         YE/lZsSB4GIFgAtJ2tRksnr8WWyc5esrUcFQpAwLZ+5AdXaHzFPrkEpL3dQQIQ0/8g1B
+         OTqua6cBxgQYeUW8DXx8ZiYOMh+GsuV8eP3jzflJUmLrqb+lw1RzLCtH78/HVNSodv79
+         iJkg2buQihCk2eeIzXgoZOW7DnJ/XAVEyEEwcr8bnRapirL+bOOVrJ8q6biS4BRrRgR7
+         w8Ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PD2lejvA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eHdHz2W7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1-20020a05620a290100b0073b50349bbfsi13064083qkp.155.2023.02.21.04.49.41
+        by mx.google.com with ESMTPS id m15-20020a05622a054f00b003b818472c14si2289545qtx.468.2023.02.21.04.49.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 04:49:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Feb 2023 04:49:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PD2lejvA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eHdHz2W7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUS5F-0006iZ-TU; Tue, 21 Feb 2023 07:49:25 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pUS5B-0006IL-Iy; Tue, 21 Feb 2023 07:49:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUS4p-0005Y5-WE
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:49:00 -0500
+ id 1pUS4k-0005QK-Iv
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 07:48:58 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUS4n-0007yv-Kn
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:48:59 -0500
+ id 1pUS4i-0007xQ-Bs
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 07:48:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676983737;
+ s=mimecast20190719; t=1676983731;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RgHAk8J3WC5f5nCpV9Uu90B+hmnbTcUrHHE7USZDPG4=;
- b=PD2lejvAHd0VcLti3nB8AZDyerqiUqDh14oxri6lfIh5YUwayHwm+aSSVSAqonAv6Gnf2f
- +QG8c3xFp2LswXGWnCvZ/GS479q8Y1zm1Z3yRwvFM3UMN8NH121Bv5u6LpBYkYOTOSIwRx
- 64HWVa39liVhjF8+iD+EYhl0LyGEZCg=
+ bh=00qk0KvUYcOoWfueLW6G26btNgeaeT8RbTKYC62Bk08=;
+ b=eHdHz2W7QUbQLnw+fo1Znpyc6o6Tq3JVt2q/ih7VnP7kZaLQ3pYWbc3I6JbJaDEXljPnxP
+ MZUcH25QzIDRJCxHVfdPzI7x2TX3fTttqY+hvVIPJqTxS1alSZdLjnfr/ib3VbCur+MGxr
+ PSe8HaPdbmAht4tsrfwyQk4xFOTISSw=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-329-BCpOJyhtO424FD3niYbKuQ-1; Tue, 21 Feb 2023 07:48:53 -0500
-X-MC-Unique: BCpOJyhtO424FD3niYbKuQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
+ us-mta-575-mBHhjaUcNWSdRaLM0djFbw-1; Tue, 21 Feb 2023 07:48:50 -0500
+X-MC-Unique: mBHhjaUcNWSdRaLM0djFbw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3E1F21C04B64;
- Tue, 21 Feb 2023 12:48:53 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2D1B32A5957E;
+ Tue, 21 Feb 2023 12:48:49 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.31])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 320EB1121314;
- Tue, 21 Feb 2023 12:48:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 514FC2026D38;
+ Tue, 21 Feb 2023 12:48:48 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
@@ -90,16 +90,15 @@ Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, Joel Stanley <joel@jms.id.au>,
  Hanna Reitz <hreitz@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v3 11/16] main-loop: remove qemu_fd_register(),
- win32/slirp/socket specific
-Date: Tue, 21 Feb 2023 16:47:56 +0400
-Message-Id: <20230221124802.4103554-12-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 10/16] RFC: build-sys: add slirp.wrap
+Date: Tue, 21 Feb 2023 16:47:55 +0400
+Message-Id: <20230221124802.4103554-11-marcandre.lureau@redhat.com>
 In-Reply-To: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
 References: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -109,99 +108,63 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Qu/prGFXNYGY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +wRlu+Nv7Ttp
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Open-code the socket registration where it's needed, to avoid
-artificially used or unclear generic interface.
+This allows to build with --enable-slirp / -D slirp=enabled, even when
+libslirp is not installed on the system. Meson will pull it from git in
+that case.
 
-Furthermore, the following patches are going to make socket handling use
-FD-only inside QEMU, but we need to handle win32 SOCKET from libslirp.
+RFC because this is very convenient, for a developper targetting
+different environments, but might not be considered appropriate, as it
+is "a kind of" git submodule (without git submodule integration issues
+though, afaik, experience should tell).
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/qemu/main-loop.h |  2 --
- net/slirp.c              |  8 +++++++-
- util/main-loop.c         | 11 -----------
- 3 files changed, 7 insertions(+), 14 deletions(-)
+ .gitignore             | 2 ++
+ subprojects/slirp.wrap | 6 ++++++
+ 2 files changed, 8 insertions(+)
+ create mode 100644 subprojects/slirp.wrap
 
-diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
-index c25f390696..b3e54e00bc 100644
---- a/include/qemu/main-loop.h
-+++ b/include/qemu/main-loop.h
-@@ -387,8 +387,6 @@ void qemu_cond_timedwait_iothread(QemuCond *cond, int ms);
- 
- /* internal interfaces */
- 
--void qemu_fd_register(int fd);
--
- #define qemu_bh_new(cb, opaque) \
-     qemu_bh_new_full((cb), (opaque), (stringify(cb)))
- QEMUBH *qemu_bh_new_full(QEMUBHFunc *cb, void *opaque, const char *name);
-diff --git a/net/slirp.c b/net/slirp.c
-index 2ee3f1a0d7..0730a935ba 100644
---- a/net/slirp.c
-+++ b/net/slirp.c
-@@ -248,7 +248,13 @@ static void net_slirp_timer_mod(void *timer, int64_t expire_timer,
- 
- static void net_slirp_register_poll_fd(int fd, void *opaque)
- {
--    qemu_fd_register(fd);
-+#ifdef WIN32
-+    AioContext *ctxt = qemu_get_aio_context();
+diff --git a/.gitignore b/.gitignore
+index 61fa39967b..1ea59f4819 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -20,3 +20,5 @@ GTAGS
+ *.swp
+ *.patch
+ *.gcov
 +
-+    qemu_socket_select(fd, event_notifier_get_handle(&ctxt->notifier),
-+                       FD_READ | FD_ACCEPT | FD_CLOSE |
-+                       FD_CONNECT | FD_WRITE | FD_OOB, NULL);
-+#endif
- }
- 
- static void net_slirp_unregister_poll_fd(int fd, void *opaque)
-diff --git a/util/main-loop.c b/util/main-loop.c
-index 16e837fb12..e180c85145 100644
---- a/util/main-loop.c
-+++ b/util/main-loop.c
-@@ -252,10 +252,6 @@ static int max_priority;
- static int glib_pollfds_idx;
- static int glib_n_poll_fds;
- 
--void qemu_fd_register(int fd)
--{
--}
--
- static void glib_pollfds_fill(int64_t *cur_timeout)
- {
-     GMainContext *context = g_main_context_default();
-@@ -414,13 +410,6 @@ void qemu_del_wait_object(HANDLE handle, WaitObjectFunc *func, void *opaque)
-     }
- }
- 
--void qemu_fd_register(int fd)
--{
--    qemu_socket_select(fd, event_notifier_get_handle(&qemu_aio_context->notifier),
--                       FD_READ | FD_ACCEPT | FD_CLOSE |
--                       FD_CONNECT | FD_WRITE | FD_OOB, NULL);
--}
--
- static int pollfds_fill(GArray *pollfds, fd_set *rfds, fd_set *wfds,
-                         fd_set *xfds)
- {
++/subprojects/slirp
+diff --git a/subprojects/slirp.wrap b/subprojects/slirp.wrap
+new file mode 100644
+index 0000000000..87cdd8dcd8
+--- /dev/null
++++ b/subprojects/slirp.wrap
+@@ -0,0 +1,6 @@
++[wrap-git]
++url = https://gitlab.freedesktop.org/slirp/libslirp
++revision = 15c52d69
++
++[provide]
++slirp = libslirp_dep
 -- 
 2.39.2
 

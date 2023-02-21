@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id u14-20020a5d434e000000b002c5a1bd527dsm3303024wrr.96.2023.02.21.01.45.59
+        by smtp.gmail.com with ESMTPSA id a22-20020a05600c225600b003e2058a7109sm4446078wmm.14.2023.02.21.01.45.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 21 Feb 2023 01:45:59 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id DD83B1FFB7;
-	Tue, 21 Feb 2023 09:45:58 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 1BE8A1FFBA;
+	Tue, 21 Feb 2023 09:45:59 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -36,104 +36,53 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	John Snow <jsnow@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 00/14] testing/next: docker, avocado, unit, gitlab
-Date: Tue, 21 Feb 2023 09:45:44 +0000
-Message-Id: <20230221094558.2864616-1-alex.bennee@linaro.org>
+Subject: [PATCH v2 02/14] tests: don't run socat tests on MacOS as well
+Date: Tue, 21 Feb 2023 09:45:46 +0000
+Message-Id: <20230221094558.2864616-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20230221094558.2864616-1-alex.bennee@linaro.org>
+References: <20230221094558.2864616-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: XTXm3ivzWkPi
+X-TUID: 9S/xkuVjrlbc
 
-Since the last posting:
+In preparation for the next patch when we enable socat for our CI
+images we need to disable this part of the test for MacOS. The bug has
+been raised here:
 
-  - included Anton's curl fix (to keep CI green)
-  - split socat MacOS changes across two patches
-  - dropped ninja verbosity patch
-  - reduced chattiness of fp-test
-    - see https://gitlab.com/qemu-project/berkeley-testfloat-3/-/merge_requests/1
-  - usual cleanups bellow the ---
+  https://gitlab.com/qemu-project/qemu/-/issues/1495
 
-The following patches still need review:
+Once that is fixed we should re-enable the test.
 
-tests: ensure we export job results for some cross builds
-tests: add tuxrun baseline test to avocado
-tests: skip the nios2 replay_kernel test
-tests: don't run benchmarks for the tsan build
-gitlab: extend custom runners with base_job_template
-tests: make fp-test less chatty when running from test suite
-tests: be a bit more strict cleaning up fifos
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ tests/unit/test-io-channel-command.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Alex Bennée (10):
-  tests: don't run socat tests on MacOS as well
-  tests: add socat dependency for tests
-  tests: be a bit more strict cleaning up fifos
-  tests: make fp-test less chatty when running from test suite
-  gitlab: extend custom runners with base_job_template
-  tests: don't run benchmarks for the tsan build
-  testing: update ubuntu2004 to ubuntu2204
-  tests: skip the nios2 replay_kernel test
-  tests: add tuxrun baseline test to avocado
-  tests: ensure we export job results for some cross builds
-
-Anton Johansson (1):
-  block: Handle curl 7.55.0, 7.85.0 version changes
-
-Bastian Koppelmann (1):
-  tests/docker: Use binaries for debian-tricore-cross
-
-Thomas Huth (2):
-  gitlab-ci: Use artifacts instead of dumping logs in the Cirrus-CI jobs
-  cirrus.yml: Improve the windows_msys2_task
-
- MAINTAINERS                                   |   1 +
- docs/devel/testing.rst                        |   4 +-
- tests/tcg/tricore/macros.h                    |   2 +-
- block/curl.c                                  |  44 +-
- tests/fp/fp-test.c                            |  19 +-
- tests/unit/test-io-channel-command.c          |  10 +-
- .cirrus.yml                                   |   8 +-
- .gitlab-ci.d/buildtest.yml                    |  23 +-
- .gitlab-ci.d/cirrus/build.yml                 |   7 +-
- .gitlab-ci.d/cirrus/freebsd-12.vars           |   2 +-
- .gitlab-ci.d/cirrus/freebsd-13.vars           |   2 +-
- .gitlab-ci.d/cirrus/macos-12.vars             |   2 +-
- .gitlab-ci.d/containers.yml                   |   4 +-
- .gitlab-ci.d/crossbuild-template.yml          |  11 +
- .gitlab-ci.d/crossbuilds.yml                  |  12 +-
- .gitlab-ci.d/custom-runners.yml               |   3 +-
- .../custom-runners/ubuntu-20.04-s390x.yml     |  10 +-
- .../custom-runners/ubuntu-22.04-aarch32.yml   |   2 +-
- .../custom-runners/ubuntu-22.04-aarch64.yml   |  10 +-
- tests/avocado/replay_kernel.py                |   1 +
- tests/avocado/tuxrun_baselines.py             | 423 ++++++++++++++++++
- tests/docker/dockerfiles/alpine.docker        |   1 +
- tests/docker/dockerfiles/centos8.docker       |   1 +
- .../dockerfiles/debian-amd64-cross.docker     |   1 +
- tests/docker/dockerfiles/debian-amd64.docker  |   1 +
- .../dockerfiles/debian-arm64-cross.docker     |   1 +
- .../dockerfiles/debian-armel-cross.docker     |   1 +
- .../dockerfiles/debian-armhf-cross.docker     |   1 +
- .../dockerfiles/debian-mips64el-cross.docker  |   1 +
- .../dockerfiles/debian-mipsel-cross.docker    |   1 +
- .../dockerfiles/debian-ppc64el-cross.docker   |   1 +
- .../dockerfiles/debian-s390x-cross.docker     |   1 +
- .../dockerfiles/debian-tricore-cross.docker   |  10 +-
- .../dockerfiles/fedora-win32-cross.docker     |   1 +
- .../dockerfiles/fedora-win64-cross.docker     |   1 +
- tests/docker/dockerfiles/fedora.docker        |   1 +
- tests/docker/dockerfiles/opensuse-leap.docker |   1 +
- tests/docker/dockerfiles/ubuntu2004.docker    |   4 +-
- tests/docker/dockerfiles/ubuntu2204.docker    | 147 ++++++
- tests/docker/test-tsan                        |   2 +-
- tests/fp/berkeley-testfloat-3                 |   2 +-
- tests/fp/meson.build                          |   2 +-
- tests/lcitool/projects/qemu.yml               |   1 +
- tests/lcitool/refresh                         |  11 +-
- tests/tcg/tricore/Makefile.softmmu-target     |   6 +-
- 45 files changed, 720 insertions(+), 80 deletions(-)
- create mode 100644 tests/avocado/tuxrun_baselines.py
- create mode 100644 tests/docker/dockerfiles/ubuntu2204.docker
-
+diff --git a/tests/unit/test-io-channel-command.c b/tests/unit/test-io-channel-command.c
+index 425e2f5594..04b75ab3b4 100644
+--- a/tests/unit/test-io-channel-command.c
++++ b/tests/unit/test-io-channel-command.c
+@@ -31,7 +31,7 @@
+ 
+ static char *socat = NULL;
+ 
+-#ifndef _WIN32
++#if !defined(_WIN32) && !defined(CONFIG_DARWIN)
+ static void test_io_channel_command_fifo(bool async)
+ {
+     g_autofree gchar *tmpdir = g_dir_make_tmp("qemu-test-io-channel.XXXXXX", NULL);
+@@ -128,7 +128,7 @@ int main(int argc, char **argv)
+ 
+     socat = g_find_program_in_path("socat");
+ 
+-#ifndef _WIN32
++#if !defined(_WIN32) && !defined(CONFIG_DARWIN)
+     g_test_add_func("/io/channel/command/fifo/sync",
+                     test_io_channel_command_fifo_sync);
+     g_test_add_func("/io/channel/command/fifo/async",
 -- 
 2.39.1

@@ -1,265 +1,325 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3718490ejb;
-        Tue, 21 Feb 2023 15:39:39 -0800 (PST)
-X-Google-Smtp-Source: AK7set9swRDKRwIwWTG0H9yRf3mgF6n1NK1MppIX32UdZRXVKoMA+UjxnPrgyW9Kl0waK7OhTfbq
-X-Received: by 2002:a05:6214:d89:b0:56e:a7d1:4d65 with SMTP id e9-20020a0562140d8900b0056ea7d14d65mr11659290qve.52.1677022778941;
-        Tue, 21 Feb 2023 15:39:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677022778; cv=none;
-        d=google.com; s=arc-20160816;
-        b=hWgtaQ+grt4jf/6ZcHiATAklis/EY09U20qdseFcIvmjCyk8on2GOTSmEPpfGyw8yP
-         efluDXnCFWGkzSVBRVPoI736H+d7bC9Cvx3w90kdEUoh69qZWr8KU+p08swSPGRC3hCv
-         Xnym0XTwBBy8Iy/WM48gH2a8e7fObQFJTFbSvTCqU6j2BLdF3AC+hyGFa5jmtG6lsP17
-         Injt0212oikeEIUEVwYNxWUBttDqxwVXXz3i9rfr8OmP40zg/66EpKR7zoIVW6udkStS
-         eNyczh0RrWjGpTGb6INBrxpBSEQIsB4QKDt3scCKcbot5gzY8R+zfB04CRTKlJKIKXFT
-         BjeQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Hg3oCIWr5UZoAU201d6kZrgeChKADl8g76TDmLEic5Y=;
-        b=E2dBE3SlhUCkRPEKaIss6tiT2hnrqtuMcbmQetEK8eEP/ZrAfL43OP5kBv712X7/xv
-         8uAoguXdKfZDylSb8flfK0UTd+JDFiEeUtR5qsnl3EjZlo7U5QlPgyXKA8OMAOZvJQlk
-         CgqI2WieBuWK5PsFxbSeDIrMyKyyRxrWYGVZzzysFhBSao9E55n/2SQYmz3vyCtVobBW
-         xJKWn8tJ/ah1DEC8Ri9MXulr+QpYyF4FdoeUOLS6Dd/SZm95OS/7t30qROPxN8VM69Fg
-         BnLDgg4VkICZgr58M1KU9EO+qa0fNggmwNH6YRm88dF476dhe7JPbZzUkYKv1cqjnryw
-         dQvw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkO11ZV0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b20-20020ac85bd4000000b003bccff19a72si13395158qtb.486.2023.02.21.15.39.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 15:39:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkO11ZV0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUcE9-0006mh-0p; Tue, 21 Feb 2023 18:39:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pUcE7-0006li-No
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 18:39:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pUcE5-00052g-Ck
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 18:39:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677022751;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Hg3oCIWr5UZoAU201d6kZrgeChKADl8g76TDmLEic5Y=;
- b=JkO11ZV0YbCeVsVNHjrOQG0EKhwsQiVsg894HaRt/5P/6rrdGoAzJuNDV20yK3r2ioR59u
- hJNsyPvNRGfa/Wi3iwnIzdhDpHUBq7ASlcpysuokb+QTeoTH1+nexb6oyoKdglyZyQZ1vW
- iMr0DkahyUQ7kHC4JMf3nnkQvQwjiqQ=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-584-c14ngFAAMoyAYjZlv-S7JA-1; Tue, 21 Feb 2023 18:39:08 -0500
-X-MC-Unique: c14ngFAAMoyAYjZlv-S7JA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C4087802D2F;
- Tue, 21 Feb 2023 23:39:07 +0000 (UTC)
-Received: from [10.72.12.31] (ovpn-12-31.pek2.redhat.com [10.72.12.31])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CE88B440D9;
- Tue, 21 Feb 2023 23:39:01 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/virt: Prevent CPUs in one socket to span mutiple
- NUMA nodes
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, yihyu@redhat.com,
- shan.gavin@gmail.com, Igor Mammedov <imammedo@redhat.com>
-References: <20230221085352.212938-1-gshan@redhat.com>
- <78d887c3-0241-9552-69b2-bd2e9a8fb74b@linaro.org>
- <3e88a2ec-6425-f484-8483-560d511a27ca@redhat.com>
- <b76a1ffa-f9d8-192d-ef65-0fdf43dabaa6@linaro.org>
- <8150f6d9-9c5b-28c5-4744-ee866cf16ca7@redhat.com>
- <d49eb549-9a8f-ad31-9836-cfd7dac78be6@linaro.org>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <5cade5f0-edbd-5d9a-c6d5-e2cb2f73b3b5@redhat.com>
-Date: Wed, 22 Feb 2023 10:38:56 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id l11-20020adff48b000000b002c592535839sm5745321wro.17.2023.02.21.15.01.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Feb 2023 15:01:56 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 40CB41FFC4;
+	Tue, 21 Feb 2023 22:52:29 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org,
+	qemu-s390x@nongnu.org,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	nicolas.eder@lauterbach.com,
+	Stafford Horne <shorne@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Taylor Simpson <tsimpson@quicinc.com>,
+	mads@ynddal.dk,
+	Marek Vasut <marex@denx.de>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	qemu-ppc@nongnu.org,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Bin Meng <bin.meng@windriver.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Chris Wulff <crwulff@gmail.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Greg Kurz <groug@kaod.org>,
+	David Hildenbrand <david@redhat.com>,
+	Song Gao <gaosong@loongson.cn>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH v3 14/24] gdbstub: specialise target_memory_rw_debug
+Date: Tue, 21 Feb 2023 22:52:17 +0000
+Message-Id: <20230221225227.3735319-15-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
+References: <20230221225227.3735319-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <d49eb549-9a8f-ad31-9836-cfd7dac78be6@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.095, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0EsETlVgOmqn
+X-TUID: vZ+XAVXLkl2I
 
-On 2/22/23 10:31 AM, Philippe Mathieu-Daudé wrote:
-> On 22/2/23 00:12, Gavin Shan wrote:
->> On 2/21/23 9:21 PM, Philippe Mathieu-Daudé wrote:
->>> On 21/2/23 10:21, Gavin Shan wrote:
->>>> On 2/21/23 8:15 PM, Philippe Mathieu-Daudé wrote:
->>>>> On 21/2/23 09:53, Gavin Shan wrote:
->>>>>> Linux kernel guest reports warning when two CPUs in one socket have
->>>>>> been associated with different NUMA nodes, using the following command
->>>>>> lines.
->>>>>>
->>>>>>    -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
->>>>>>    -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
->>>>>>    -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
->>>>>>    -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
->>>>>>
->>>>>>    ------------[ cut here ]------------
->>>>>>    WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
->>>>>>    Modules linked in:
->>>>>>    CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
->>>>>>    pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
->>>>>>    pc : build_sched_domains+0x284/0x910
->>>>>>    lr : build_sched_domains+0x184/0x910
->>>>>>    sp : ffff80000804bd50
->>>>>>    x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
->>>>>>    x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
->>>>>>    x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
->>>>>>    x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
->>>>>>    x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
->>>>>>    x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
->>>>>>    x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
->>>>>>    x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
->>>>>>    x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
->>>>>>    x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
->>>>>>    Call trace:
->>>>>>     build_sched_domains+0x284/0x910
->>>>>>     sched_init_domains+0xac/0xe0
->>>>>>     sched_init_smp+0x48/0xc8
->>>>>>     kernel_init_freeable+0x140/0x1ac
->>>>>>     kernel_init+0x28/0x140
->>>>>>     ret_from_fork+0x10/0x20
->>>>>>
->>>>>> Fix it by preventing mutiple CPUs in one socket to be associated with
->>>>>> different NUMA nodes.
->>>>>>
->>>>>> Reported-by: Yihuang Yu <yihyu@redhat.com>
->>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>>>>> ---
->>>>>>   hw/arm/virt.c | 37 +++++++++++++++++++++++++++++++++++++
->>>>>>   1 file changed, 37 insertions(+)
->>>>>>
->>>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>>>>> index ac626b3bef..e0af267c77 100644
->>>>>> --- a/hw/arm/virt.c
->>>>>> +++ b/hw/arm/virt.c
->>>>>> @@ -230,6 +230,39 @@ static bool cpu_type_valid(const char *cpu)
->>>>>>       return false;
->>>>>>   }
->>>>>> +static bool numa_state_valid(MachineState *ms)
->>>>>> +{
->>>>>> +    MachineClass *mc = MACHINE_GET_CLASS(ms);
->>>>>> +    NumaState *state = ms->numa_state;
->>>>>> +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
->>>>>> +    const CPUArchId *cpus = possible_cpus->cpus;
->>>>>> +    int len = possible_cpus->len, i, j;
->>>>>> +
->>>>>> +    if (!state || state->num_nodes <= 1 || len <= 1) {
->>>>>> +        return true;
->>>>>> +    }
->>>>>> +
->>>>>> +    for (i = 0; i < len; i++) {
->>>>>> +        for (j = i + 1; j < len; j++) {
->>>>>> +            if (cpus[i].props.has_socket_id &&
->>>>>> +                cpus[i].props.has_node_id &&
->>>>>> +                cpus[j].props.has_socket_id &&
->>>>>> +                cpus[j].props.has_node_id &&
->>>>>> +                cpus[i].props.socket_id == cpus[j].props.socket_id &&
->>>>>> +                cpus[i].props.node_id != cpus[j].props.node_id) {
->>>>>> +                error_report("CPU-%d and CPU-%d in socket-%ld have been "
->>>>>> +                             "associated with node-%ld and node-%ld",
->>>>>> +                             i, j, cpus[i].props.socket_id,
->>>>>> +                             cpus[i].props.node_id,
->>>>>> +                             cpus[j].props.node_id);
->>>>>> +                return false;
->>>>>> +            }
->>>>>> +        }
->>>>>> +    }
->>>>>> +
->>>>>> +    return true;
->>>>>> +}
->>>>>> +
->>>>>>   static void create_randomness(MachineState *ms, const char *node)
->>>>>>   {
->>>>>>       struct {
->>>>>> @@ -2040,6 +2073,10 @@ static void machvirt_init(MachineState *machine)
->>>>>>           exit(1);
->>>>>>       }
->>>>>> +    if (!numa_state_valid(machine)) {
->>>>>> +        exit(1);
->>>>>> +    }
->>>>>
->>>>> Why restrict to the virt machine?
->>>>>
->>>>
->>>> We tried x86 machines and virt machine, but the issue isn't reproducible on x86 machines.
->>>> So I think it's machine or architecture specific issue. However, I believe RiscV should
->>>> have similar issue because linux/drivers/base/arch_topology.c is shared by ARM64 and RiscV.
->>>> x86 doesn't use the driver to populate its CPU topology.
->>>
->>> Oh, I haven't thought about the other archs, I meant this seem a generic
->>> issue which affects all (ARM) machines, so why restrict to the (ARM)
->>> virt machine?
->>>
->>
->> [Ccing Igor for comments]
->>
->> Well, virt machine is the only concern to us for now. You're right that all ARM64 and ARM machines
->> need this check and limitation. So the check needs to be done in the generic path. The best way
->> I can figure out is like something below. The idea is to introduce a switch to 'struct NumaState'
->> and do the check in the generic path. The switch is turned on by individual machines. Please let me
->> know if you have better ideas
-> 
-> Can't this be done generically in machine_numa_finish_cpu_init()
-> -> numa_validate_initiator()?
-> 
+The two implementations are different enough to encourage having a
+specialisation and we can move some of the softmmu only stuff out of
+gdbstub.
 
-Yes, machine_numa_finish_cpu_init() is better place, before numa_validate_initiator().
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ gdbstub/internals.h | 19 ++++++++++++
+ gdbstub/gdbstub.c   | 73 +++++++--------------------------------------
+ gdbstub/softmmu.c   | 51 +++++++++++++++++++++++++++++++
+ gdbstub/user.c      | 15 ++++++++++
+ 4 files changed, 96 insertions(+), 62 deletions(-)
 
->> - Add 'bool struct NumaState::has_strict_socket_mapping', which is 'false' by default until
->>    machine specific initialization function calls helper set_numa_strict_socket_mapping(), for
->>    example in hw/arm/virt.c::virt_instance_init().
->>
->> - In numa_complete_configuration(), do the check to make sure the socket doesn't cross over
->>    the NUMA node boundary if 'bool struct NumaState::has_strict_socket_mapping' is true.
->>
-
-Thanks,
-Gavin
-
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 3875c6877e..9de995ce3a 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -183,6 +183,10 @@ void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx); /*user */
+ 
+ void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
+ 
++/* softmmu only */
++void gdb_handle_query_qemu_phy_mem_mode(GArray *params, void *user_ctx);
++void gdb_handle_set_qemu_phy_mem_mode(GArray *params, void *user_ctx);
++
+ /*
+  * Break/Watch point support - there is an implementation for softmmu
+  * and user mode.
+@@ -192,4 +196,19 @@ int gdb_breakpoint_insert(CPUState *cs, int type, hwaddr addr, hwaddr len);
+ int gdb_breakpoint_remove(CPUState *cs, int type, hwaddr addr, hwaddr len);
+ void gdb_breakpoint_remove_all(CPUState *cs);
+ 
++/**
++ * gdb_target_memory_rw_debug() - handle debug access to memory
++ * @cs: CPUState
++ * @addr: nominal address, could be an entire physical address
++ * @buf: data
++ * @len: length of access
++ * @is_write: is it a write operation
++ *
++ * This function is specialised depending on the mode we are running
++ * in. For softmmu guests we can switch the interpretation of the
++ * address to a physical address.
++ */
++int gdb_target_memory_rw_debug(CPUState *cs, hwaddr addr,
++                               uint8_t *buf, int len, bool is_write);
++
+ #endif /* GDBSTUB_INTERNALS_H */
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 0d90685c72..91021859a1 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -46,33 +46,6 @@
+ 
+ #include "internals.h"
+ 
+-#ifndef CONFIG_USER_ONLY
+-static int phy_memory_mode;
+-#endif
+-
+-static inline int target_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                                         uint8_t *buf, int len, bool is_write)
+-{
+-    CPUClass *cc;
+-
+-#ifndef CONFIG_USER_ONLY
+-    if (phy_memory_mode) {
+-        if (is_write) {
+-            cpu_physical_memory_write(addr, buf, len);
+-        } else {
+-            cpu_physical_memory_read(addr, buf, len);
+-        }
+-        return 0;
+-    }
+-#endif
+-
+-    cc = CPU_GET_CLASS(cpu);
+-    if (cc->memory_rw_debug) {
+-        return cc->memory_rw_debug(cpu, addr, buf, len, is_write);
+-    }
+-    return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
+-}
+-
+ typedef struct GDBRegisterState {
+     int base_reg;
+     int num_regs;
+@@ -1194,11 +1167,11 @@ static void handle_write_mem(GArray *params, void *user_ctx)
+     }
+ 
+     gdb_hextomem(gdbserver_state.mem_buf, get_param(params, 2)->data,
+-             get_param(params, 1)->val_ull);
+-    if (target_memory_rw_debug(gdbserver_state.g_cpu,
+-                               get_param(params, 0)->val_ull,
+-                               gdbserver_state.mem_buf->data,
+-                               gdbserver_state.mem_buf->len, true)) {
++                 get_param(params, 1)->val_ull);
++    if (gdb_target_memory_rw_debug(gdbserver_state.g_cpu,
++                                   get_param(params, 0)->val_ull,
++                                   gdbserver_state.mem_buf->data,
++                                   gdbserver_state.mem_buf->len, true)) {
+         gdb_put_packet("E14");
+         return;
+     }
+@@ -1222,10 +1195,10 @@ static void handle_read_mem(GArray *params, void *user_ctx)
+     g_byte_array_set_size(gdbserver_state.mem_buf,
+                           get_param(params, 1)->val_ull);
+ 
+-    if (target_memory_rw_debug(gdbserver_state.g_cpu,
+-                               get_param(params, 0)->val_ull,
+-                               gdbserver_state.mem_buf->data,
+-                               gdbserver_state.mem_buf->len, false)) {
++    if (gdb_target_memory_rw_debug(gdbserver_state.g_cpu,
++                                   get_param(params, 0)->val_ull,
++                                   gdbserver_state.mem_buf->data,
++                                   gdbserver_state.mem_buf->len, false)) {
+         gdb_put_packet("E14");
+         return;
+     }
+@@ -1675,30 +1648,6 @@ static void handle_query_qemu_supported(GArray *params, void *user_ctx)
+     gdb_put_strbuf();
+ }
+ 
+-#ifndef CONFIG_USER_ONLY
+-static void handle_query_qemu_phy_mem_mode(GArray *params,
+-                                           void *user_ctx)
+-{
+-    g_string_printf(gdbserver_state.str_buf, "%d", phy_memory_mode);
+-    gdb_put_strbuf();
+-}
+-
+-static void handle_set_qemu_phy_mem_mode(GArray *params, void *user_ctx)
+-{
+-    if (!params->len) {
+-        gdb_put_packet("E22");
+-        return;
+-    }
+-
+-    if (!get_param(params, 0)->val_ul) {
+-        phy_memory_mode = 0;
+-    } else {
+-        phy_memory_mode = 1;
+-    }
+-    gdb_put_packet("OK");
+-}
+-#endif
+-
+ static const GdbCmdParseEntry gdb_gen_query_set_common_table[] = {
+     /* Order is important if has same prefix */
+     {
+@@ -1789,7 +1738,7 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
+     },
+ #ifndef CONFIG_USER_ONLY
+     {
+-        .handler = handle_query_qemu_phy_mem_mode,
++        .handler = gdb_handle_query_qemu_phy_mem_mode,
+         .cmd = "qemu.PhyMemMode",
+     },
+ #endif
+@@ -1805,7 +1754,7 @@ static const GdbCmdParseEntry gdb_gen_set_table[] = {
+     },
+ #ifndef CONFIG_USER_ONLY
+     {
+-        .handler = handle_set_qemu_phy_mem_mode,
++        .handler = gdb_handle_set_qemu_phy_mem_mode,
+         .cmd = "qemu.PhyMemMode:",
+         .cmd_startswith = 1,
+         .schema = "l0"
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index ade0cc366c..d9b9ba0a32 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -406,9 +406,60 @@ void gdb_exit(int code)
+   qemu_chr_fe_deinit(&gdbserver_system_state.chr, true);
+ }
+ 
++/*
++ * Memory access
++ */
++static int phy_memory_mode;
++
++int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
++                               uint8_t *buf, int len, bool is_write)
++{
++    CPUClass *cc;
++
++    if (phy_memory_mode) {
++        if (is_write) {
++            cpu_physical_memory_write(addr, buf, len);
++        } else {
++            cpu_physical_memory_read(addr, buf, len);
++        }
++        return 0;
++    }
++
++    cc = CPU_GET_CLASS(cpu);
++    if (cc->memory_rw_debug) {
++        return cc->memory_rw_debug(cpu, addr, buf, len, is_write);
++    }
++
++    return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
++}
++
++
+ /*
+  * Softmmu specific command helpers
+  */
++
++void gdb_handle_query_qemu_phy_mem_mode(GArray *params,
++                                        void *user_ctx)
++{
++    g_string_printf(gdbserver_state.str_buf, "%d", phy_memory_mode);
++    gdb_put_strbuf();
++}
++
++void gdb_handle_set_qemu_phy_mem_mode(GArray *params, void *user_ctx)
++{
++    if (!params->len) {
++        gdb_put_packet("E22");
++        return;
++    }
++
++    if (!get_param(params, 0)->val_ul) {
++        phy_memory_mode = 0;
++    } else {
++        phy_memory_mode = 1;
++    }
++    gdb_put_packet("OK");
++}
++
+ void gdb_handle_query_rcmd(GArray *params, void *user_ctx)
+ {
+     const guint8 zero = 0;
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index 90dfe49f27..b956c0e297 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -373,6 +373,21 @@ int gdb_continue_partial(char *newstates)
+     return res;
+ }
+ 
++/*
++ * Memory access helpers
++ */
++int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
++                               uint8_t *buf, int len, bool is_write)
++{
++    CPUClass *cc;
++
++    cc = CPU_GET_CLASS(cpu);
++    if (cc->memory_rw_debug) {
++        return cc->memory_rw_debug(cpu, addr, buf, len, is_write);
++    }
++    return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
++}
++
+ /*
+  * Break/Watch point helpers
+  */
+-- 
+2.39.1

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r1-20020adfdc81000000b002c5503a8d21sm3626497wrj.70.2023.02.21.14.52.28
+        by smtp.gmail.com with ESMTPSA id t3-20020a5d4603000000b002bfd524255esm5807542wrq.43.2023.02.21.14.52.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Feb 2023 14:52:28 -0800 (PST)
+        Tue, 21 Feb 2023 14:52:31 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 0D3A51FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id 2B2291FFB7;
 	Tue, 21 Feb 2023 22:52:28 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,220 +52,100 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 06/24] includes: move tb_flush into its own header
-Date: Tue, 21 Feb 2023 22:52:09 +0000
-Message-Id: <20230221225227.3735319-7-alex.bennee@linaro.org>
+Subject: [PATCH v3 07/24] gdbstub: move fromhex/tohex routines to internals
+Date: Tue, 21 Feb 2023 22:52:10 +0000
+Message-Id: <20230221225227.3735319-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
 References: <20230221225227.3735319-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: axA14kvmGddw
+X-TUID: 0DdHn8rJssAF
 
-This aids subsystems (like gdbstub) that want to trigger a flush
-without pulling target specific headers.
+These will be needed from multiple places in the code. They are
+declared as inline so move to the header and fix up to modern coding
+style.
+
+The only other place that messes with hex stuff at the moment is the
+URI handling in utils but that would be more code churn so leave for
+now.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - actually include the header and rename to tb-flush.h
-  - better kerneldoc style comment for the function
----
- include/exec/exec-all.h     |  1 -
- include/exec/tb-flush.h     | 26 ++++++++++++++++++++++++++
- linux-user/user-internals.h |  1 +
- accel/stubs/tcg-stub.c      |  1 +
- accel/tcg/tb-maint.c        |  1 +
- accel/tcg/translate-all.c   |  1 +
- cpu.c                       |  1 +
- gdbstub/gdbstub.c           |  1 +
- hw/ppc/spapr_hcall.c        |  1 +
- plugins/core.c              |  1 +
- plugins/loader.c            |  2 +-
- target/alpha/sys_helper.c   |  1 +
- target/riscv/csr.c          |  1 +
- 13 files changed, 37 insertions(+), 2 deletions(-)
- create mode 100644 include/exec/tb-flush.h
+ gdbstub/internals.h | 27 +++++++++++++++++++++++++++
+ gdbstub/gdbstub.c   | 20 --------------------
+ 2 files changed, 27 insertions(+), 20 deletions(-)
 
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 0e36f4d063..539768dc50 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -687,7 +687,6 @@ void tb_invalidate_phys_addr(target_ulong addr);
- #else
- void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs attrs);
- #endif
--void tb_flush(CPUState *cpu);
- void tb_phys_invalidate(TranslationBlock *tb, tb_page_addr_t page_addr);
- void tb_invalidate_phys_range(tb_page_addr_t start, tb_page_addr_t end);
- void tb_set_jmp_target(TranslationBlock *tb, int n, uintptr_t addr);
-diff --git a/include/exec/tb-flush.h b/include/exec/tb-flush.h
-new file mode 100644
-index 0000000000..d92d06565b
---- /dev/null
-+++ b/include/exec/tb-flush.h
-@@ -0,0 +1,26 @@
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index de56328a2c..6be05fac9f 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -55,6 +55,33 @@ typedef struct GDBState {
+     int supported_sstep_flags;
+ } GDBState;
+ 
++
 +/*
-+ * tb-flush prototype for use by the rest of the system.
-+ *
-+ * Copyright (c) 2022 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Inline utility function, convert from int to hex and back
 + */
-+#ifndef _TB_FLUSH_H_
-+#define _TB_FLUSH_H_
 +
-+/**
-+ * tb_flush() - flush all translation blocks
-+ * @cs: CPUState (must be valid, but treated as anonymous pointer)
-+ *
-+ * Used to flush all the translation blocks in the system. Sometimes
-+ * it is simpler to flush everything than work out which individual
-+ * translations are now invalid and ensure they are not called
-+ * anymore.
-+ *
-+ * tb_flush() takes care of running the flush in an exclusive context
-+ * if it is not already running in one. This means no guest code will
-+ * run until this complete.
-+ */
-+void tb_flush(CPUState *cs);
++static inline int fromhex(int v)
++{
++    if (v >= '0' && v <= '9') {
++        return v - '0';
++    } else if (v >= 'A' && v <= 'F') {
++        return v - 'A' + 10;
++    } else if (v >= 'a' && v <= 'f') {
++        return v - 'a' + 10;
++    } else {
++        return 0;
++    }
++}
 +
-+#endif /* _TB_FLUSH_H_ */
-diff --git a/linux-user/user-internals.h b/linux-user/user-internals.h
-index 3576da413f..9333db4f51 100644
---- a/linux-user/user-internals.h
-+++ b/linux-user/user-internals.h
-@@ -20,6 +20,7 @@
- 
- #include "exec/user/thunk.h"
- #include "exec/exec-all.h"
-+#include "exec/tb-flush.h"
- #include "qemu/log.h"
- 
- extern char *exec_path;
-diff --git a/accel/stubs/tcg-stub.c b/accel/stubs/tcg-stub.c
-index c1b05767c0..e0d371c3a7 100644
---- a/accel/stubs/tcg-stub.c
-+++ b/accel/stubs/tcg-stub.c
-@@ -11,6 +11,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "exec/tb-flush.h"
- #include "exec/exec-all.h"
- 
- void tb_flush(CPUState *cpu)
-diff --git a/accel/tcg/tb-maint.c b/accel/tcg/tb-maint.c
-index b3d6529ae2..97e06c453e 100644
---- a/accel/tcg/tb-maint.c
-+++ b/accel/tcg/tb-maint.c
-@@ -22,6 +22,7 @@
- #include "exec/cputlb.h"
- #include "exec/log.h"
- #include "exec/exec-all.h"
-+#include "exec/tb-flush.h"
- #include "exec/translate-all.h"
- #include "sysemu/tcg.h"
- #include "tcg/tcg.h"
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 9e925c10f3..2e9d430098 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -47,6 +47,7 @@
- #include "exec/cputlb.h"
- #include "exec/translate-all.h"
- #include "exec/translator.h"
-+#include "exec/tb-flush.h"
- #include "qemu/bitmap.h"
- #include "qemu/qemu-print.h"
- #include "qemu/timer.h"
-diff --git a/cpu.c b/cpu.c
-index 21cf809614..ef21a55a23 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -36,6 +36,7 @@
- #include "sysemu/replay.h"
- #include "exec/cpu-common.h"
- #include "exec/exec-all.h"
-+#include "exec/tb-flush.h"
- #include "exec/translate-all.h"
- #include "exec/log.h"
- #include "hw/core/accel-cpu.h"
++static inline int tohex(int v)
++{
++    if (v < 10) {
++        return v + '0';
++    } else {
++        return v - 10 + 'a';
++    }
++}
++
+ /*
+  * Break/Watch point support - there is an implementation for softmmu
+  * and user mode.
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index f419425cb0..d8bf90361e 100644
+index d8bf90361e..4407706aa3 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -46,6 +46,7 @@
- #include "sysemu/runstate.h"
- #include "semihosting/semihost.h"
- #include "exec/exec-all.h"
-+#include "exec/tb-flush.h"
- #include "exec/hwaddr.h"
- #include "sysemu/replay.h"
- 
-diff --git a/hw/ppc/spapr_hcall.c b/hw/ppc/spapr_hcall.c
-index 925ff523cc..ec4def62f8 100644
---- a/hw/ppc/spapr_hcall.c
-+++ b/hw/ppc/spapr_hcall.c
-@@ -8,6 +8,7 @@
- #include "qemu/module.h"
- #include "qemu/error-report.h"
- #include "exec/exec-all.h"
-+#include "exec/tb-flush.h"
- #include "helper_regs.h"
- #include "hw/ppc/ppc.h"
- #include "hw/ppc/spapr.h"
-diff --git a/plugins/core.c b/plugins/core.c
-index e04ffa1ba4..04632886b9 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -24,6 +24,7 @@
- #include "exec/cpu-common.h"
- 
- #include "exec/exec-all.h"
-+#include "exec/tb-flush.h"
- #include "exec/helper-proto.h"
- #include "tcg/tcg.h"
- #include "tcg/tcg-op.h"
-diff --git a/plugins/loader.c b/plugins/loader.c
-index 88c30bde2d..809f3f9b13 100644
---- a/plugins/loader.c
-+++ b/plugins/loader.c
-@@ -29,7 +29,7 @@
- #include "qemu/plugin.h"
- #include "qemu/memalign.h"
- #include "hw/core/cpu.h"
--#include "exec/exec-all.h"
-+#include "exec/tb-flush.h"
- #ifndef CONFIG_USER_ONLY
- #include "hw/boards.h"
+@@ -546,26 +546,6 @@ static void put_buffer(const uint8_t *buf, int len)
  #endif
-diff --git a/target/alpha/sys_helper.c b/target/alpha/sys_helper.c
-index 25f6cb8894..c83c92dd4c 100644
---- a/target/alpha/sys_helper.c
-+++ b/target/alpha/sys_helper.c
-@@ -20,6 +20,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "exec/exec-all.h"
-+#include "exec/tb-flush.h"
- #include "exec/helper-proto.h"
- #include "sysemu/runstate.h"
- #include "sysemu/sysemu.h"
-diff --git a/target/riscv/csr.c b/target/riscv/csr.c
-index fa17d7770c..750b683c55 100644
---- a/target/riscv/csr.c
-+++ b/target/riscv/csr.c
-@@ -25,6 +25,7 @@
- #include "time_helper.h"
- #include "qemu/main-loop.h"
- #include "exec/exec-all.h"
-+#include "exec/tb-flush.h"
- #include "sysemu/cpu-timers.h"
- #include "qemu/guest-random.h"
- #include "qapi/error.h"
+ }
+ 
+-static inline int fromhex(int v)
+-{
+-    if (v >= '0' && v <= '9')
+-        return v - '0';
+-    else if (v >= 'A' && v <= 'F')
+-        return v - 'A' + 10;
+-    else if (v >= 'a' && v <= 'f')
+-        return v - 'a' + 10;
+-    else
+-        return 0;
+-}
+-
+-static inline int tohex(int v)
+-{
+-    if (v < 10)
+-        return v + '0';
+-    else
+-        return v - 10 + 'a';
+-}
+-
+ /* writes 2*len+1 bytes in buf */
+ static void memtohex(GString *buf, const uint8_t *mem, int len)
+ {
 -- 
 2.39.1

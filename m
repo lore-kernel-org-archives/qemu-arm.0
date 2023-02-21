@@ -1,118 +1,113 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3168842ejb;
-        Tue, 21 Feb 2023 03:38:59 -0800 (PST)
-X-Google-Smtp-Source: AK7set/RL3sqKfgWQKavYNG4+b5frbJjCN4eaH7RDOsefcPXwpSPQhp1uUU1RDG5Moy0kSj9OnmQ
-X-Received: by 2002:a05:622a:255:b0:3bf:a5c4:eddb with SMTP id c21-20020a05622a025500b003bfa5c4eddbmr792025qtx.50.1676979539251;
-        Tue, 21 Feb 2023 03:38:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676979539; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3216250ejb;
+        Tue, 21 Feb 2023 04:48:35 -0800 (PST)
+X-Google-Smtp-Source: AK7set8wiP7epdInzexOwVM66iXQFj7JmogrG02tzGw/vsIQyuYAugSaFKlzxfsXzrGNyGiV/wjA
+X-Received: by 2002:a05:622a:60c:b0:3ba:1d8d:f6eb with SMTP id z12-20020a05622a060c00b003ba1d8df6ebmr21239578qta.58.1676983715353;
+        Tue, 21 Feb 2023 04:48:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676983715; cv=none;
         d=google.com; s=arc-20160816;
-        b=s9HutfsowEsCx1nv4zAPV/6lRDkkEgVehhRjjiwsLC4O9kSC5F+xXyFPjHrWtdPeAk
-         uES+AfjBV8TgJ9Ayu5lg6zqFy4id+9ULmzia1tk8BhmQ76P1nGo2wl3r8G81/BWjAOUm
-         cSxfKUV7VA2OYEnfa5speW+tJY9p5ZtSLPtI/7V6Ynh5dvCAtZaOYvZSagsxKmzfx1aj
-         Brg5xFM6jR/8TtgBloNiEKVHfPZfaH3j4Dz65PV57HrU2FFAydba5dHLuI/UYqdNfMfB
-         T6PYT2MNlZcoisoCIJKWbj+ZGZrjK/g+RBq475OFwXXNZdzjltF//O7cUMtugLbtw57e
-         HniQ==
+        b=tjbDMa02F6OsgWUkoI5FMOU1fLZzLEqLoW5c6K5o/mW236owXOc7+bcEgneCsDFLt8
+         HDSpMopG0wUUIuUhb6/pqJQPWVjQy6MyIVAVPduIBoQZ76fpGSzhnd0DEEIMrxTenRBR
+         p/usGjf/DNyH7PbKEAEOIvzxIYCPUmDBxOA6dDktuGsxpLweaVy67j9D/ISSt3Unhi7r
+         8cvWTC0H00TfMG5UdCRPo/HpyIB1iF5iDGpUTh8sN3gjsazPapBBFZL6B40J3GxNHNUP
+         BnjW0GZvLkhQWXB1mxv5B+kpCKcClrGJgHPlvQdnpwcSB2TSbPK4nLi1RTdyvGGeKMDG
+         XbZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=GwascBkMHH3kGWQhH+ps8nqxtQscUT5IKDX2knEM3bE=;
-        b=ONfHUOFfS54uLbzYEMf/ayH0mKQCMnpVcHhJtQiSLF4dSqoDGC143zmfOHv1BBEaTq
-         Qzfot4WgiGd2duUQlBmmZjF2fRzHqNoRB27rebcw1EG7Sp0sP6k/Xc+wuQWD+Ta30ZrC
-         WAWN7bKF6DOSNg7Mhj8k4L5/tV1o0tAEvTDrd675Il0zM5L0q5EoPOYVecdas/eiKEod
-         /Wiw+ZxX/xh+CLFmxCQ+c2Kg6I1LvMGJHxk33V5k8rCUTEgJoreR3cke6LX0t4jM4fz3
-         KaeCu2LM+EI2ZxnoiFa+BKJ8GCIWNKpXtAtxAXysp+9CU35EXHA2ejKKFym43L1Aleio
-         epMw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=nl9rYr1LeoSXQmWX/qOPZeg0gY/F/3CSnvmyxLivaDA=;
+        b=wXFH9szMPSrmg8oEDadc2ud2rjNahIHR/293TcoxGJPS1o/Q2G6MQkyN3u5U/fk8oX
+         9Nsi4MAozWRVtZ1ZhV7wlbbtMPlYwAM1HyRyoMpTuMfYspneJv+MXyM8Ve118NIEzLcJ
+         Ce93QkaQXJeUa+46aMzKEdOG4qVc4w+j43BSbbEo6SidOiXmALqTheXPwH4DjxUs573A
+         pbWjXpACNmpAJOc628OHe/DwLajwdUewk6Iob3O67ozhKZkyK/bR428TMPjwJekAiRug
+         pl3EXgkuWFVaHDB9qwlpPnj/J1ykRFWjj82ed7jzy7N08sDadHOcQJWyfv0m+UkicMoV
+         JpOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XjHJQdLI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cJRwvrI0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1-20020ac85c81000000b003bd1a4f96b4si10502056qta.277.2023.02.21.03.38.59
+        by mx.google.com with ESMTPS id o21-20020ac87c55000000b003b85355c09esi2350667qtv.758.2023.02.21.04.48.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 03:38:59 -0800 (PST)
+        Tue, 21 Feb 2023 04:48:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XjHJQdLI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cJRwvrI0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUQyy-0008V8-DJ; Tue, 21 Feb 2023 06:38:52 -0500
+	id 1pUS4N-0005Ag-Ii; Tue, 21 Feb 2023 07:48:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUQyv-0008SW-Gb
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 06:38:50 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUQyu-0007hP-03
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 06:38:49 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- p3-20020a05600c358300b003e206711347so2883986wmq.0
- for <qemu-arm@nongnu.org>; Tue, 21 Feb 2023 03:38:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=GwascBkMHH3kGWQhH+ps8nqxtQscUT5IKDX2knEM3bE=;
- b=XjHJQdLIkKxVPF9SN70eUtP/qu6pgps3tY15NC3P0dS80MUfej99K6GHRSyb+8/lm0
- 2lBl5zRFozudIbqo5jF7jBObYYtjZTK4Y2QrApWIR0PifFw1Zc/OC84WEAa5XAMXT1KF
- e/kpZxvKnkvR8qFrkwsTd2/4DORV7+0jeiN+EW+t3jh7HVRTxZXbGUz3eW0fIn7M0tSI
- PoMAwRt7N+d9DhjvYbB9dvHGX3fbAKBn/Aihte2SX+h3Kb0n2NBjlZ0MVr0fsRTrBNqv
- CUuS6zeh47kkCCanS8a+aPt2SOEkI7F8B8JHqjLDWqP6rPdOdZfxCvUutlXiML4nOtw5
- Ntew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GwascBkMHH3kGWQhH+ps8nqxtQscUT5IKDX2knEM3bE=;
- b=uFwDHswI2TvPe8QlvOZxRiIpXMD3Oz5BQl/V0wH8MmxPE8r7+hexajh9kxEWmYKAb+
- e7NVkty89d4qYUQXLfm7Qa0tMdwbq9X+8XdXBqR+bU7bGxUqPKY6ReqES9wyudBzM65B
- EWh6KvxZpSK+deVfTMWsXWL3fDY2+QAr7WN9cxMmQOgfF9ABRHSrOk7l6LYG/PJz/xgz
- jeGXyuqwkLnllbBfAxrYGwqWMyhkzoMmXA5KlBlF21uHP/8pRZqAPKWBwONOLYtKBkHa
- fOTPDOoT4qUKfcyQKxzW3I9fXzqDoi6VdvXbTU7/2z5770joop661hwNysO9/yveUZfm
- BQQw==
-X-Gm-Message-State: AO0yUKWHK9WPDq9g07vPrVtYfU2Bmdr5xQ36qV0n6Mv583SASePwqTt1
- aQbvulwSY7rmAwomUa/dlF1VHg==
-X-Received: by 2002:a05:600c:907:b0:3dc:573c:6601 with SMTP id
- m7-20020a05600c090700b003dc573c6601mr3256996wmp.36.1676979526110; 
- Tue, 21 Feb 2023 03:38:46 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- r5-20020a1c2b05000000b003ddf2865aeasm4544557wmr.41.2023.02.21.03.38.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Feb 2023 03:38:45 -0800 (PST)
-Message-ID: <0caee59e-2459-3cc8-1b31-39c54a2a59ed@linaro.org>
-Date: Tue, 21 Feb 2023 12:38:44 +0100
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1pUS4L-000583-NL
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:48:29 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1pUS4K-0007qS-0r
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:48:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1676983707;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nl9rYr1LeoSXQmWX/qOPZeg0gY/F/3CSnvmyxLivaDA=;
+ b=cJRwvrI0Rkmj3pl7kgMH1uF0Hy/NPkNeGUJXjvs2qyItfudsXBMLdAT3Vb4PHrMNj052uf
+ DEJ82wGxsHJY/imB8+pD8c+NePCkIoOWJYG8K0M+FdHBNsJinlfr0+kZJFVDrHu4fCNgeR
+ xLf3gLiVEIf6I/OGt7JG6YZpq2M/IB4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-26-Eb3fgGvAOHmrmYe7D8semA-1; Tue, 21 Feb 2023 07:48:24 -0500
+X-MC-Unique: Eb3fgGvAOHmrmYe7D8semA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BC1C785A588;
+ Tue, 21 Feb 2023 12:48:23 +0000 (UTC)
+Received: from localhost (unknown [10.39.208.31])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8E40B2026D4B;
+ Tue, 21 Feb 2023 12:48:22 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, qemu-arm@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org, armbru@redhat.com,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Fam Zheng <fam@euphon.net>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, Joel Stanley <joel@jms.id.au>,
+ Hanna Reitz <hreitz@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v3 04/16] tests: add test-error-report
+Date: Tue, 21 Feb 2023 16:47:49 +0400
+Message-Id: <20230221124802.4103554-5-marcandre.lureau@redhat.com>
+In-Reply-To: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
+References: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH v2 07/21] include/exec/memattrs: Add two bits of space to
- MemTxAttrs
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20230220232626.429947-1-richard.henderson@linaro.org>
- <20230220232626.429947-8-richard.henderson@linaro.org>
- <b1a5b38a-73ae-9610-676b-b27dd4c7195a@linaro.org>
- <bf06cdce-aa5f-98f3-4544-31d08d6bd55e@linaro.org>
- <ac13c9ce-89e2-cd83-235d-be7bc0544284@linaro.org>
- <14c3e3e0-1b1c-5b32-1bb9-8269e9facb7a@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <14c3e3e0-1b1c-5b32-1bb9-8269e9facb7a@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -128,32 +123,156 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wDlrTaV7TAyt
+X-TUID: rXXsqli28Rsa
 
-On 21/2/23 11:50, Richard Henderson wrote:
-> On 2/21/23 00:42, Philippe Mathieu-Daudé wrote:
->> On 21/2/23 11:01, Richard Henderson wrote:
->>> On 2/20/23 21:56, Philippe Mathieu-Daudé wrote:
->>>> 'secure' & 'user' seem mutually exclusive. If we get short in bits,
->>>> they could be shared.
->>>
->>> They are not.  ARM has Secure EL0, or secure user mode.
->>
->> Oh, I misunderstood this field with user-emulation then (I tried
->> commenting it and my TCG/HVF build succeeded).
->>
-> 
-> target/arm/ptw.c:2853:    result->f.attrs.user = regime_is_user(env, 
-> mmu_idx);
-> 
-> So... it shouldn't have built?
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Eh correct... I guess I wasn't sitting in a directory with ARM target
-selected when I tried that 🤦
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ tests/unit/test-error-report.c | 121 +++++++++++++++++++++++++++++++++
+ tests/unit/meson.build         |   1 +
+ 2 files changed, 122 insertions(+)
+ create mode 100644 tests/unit/test-error-report.c
 
-../../hw/misc/armv7m_ras.c:19:15: error: no member named 'user' in 
-'struct MemTxAttrs'
-     if (attrs.user) {
-         ~~~~~ ^
-
+diff --git a/tests/unit/test-error-report.c b/tests/unit/test-error-report.c
+new file mode 100644
+index 0000000000..b09650687b
+--- /dev/null
++++ b/tests/unit/test-error-report.c
+@@ -0,0 +1,121 @@
++/*
++ * Error reporting test
++ *
++ * Copyright (C) 2022 Red Hat Inc.
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "glib-compat.h"
++#include <locale.h>
++
++#include "qemu/error-report.h"
++
++static void
++test_error_report_simple(void)
++{
++    if (g_test_subprocess()) {
++        error_report("%s", "test error");
++        warn_report("%s", "test warn");
++        info_report("%s", "test info");
++        return;
++    }
++
++    g_test_trap_subprocess(NULL, 0, 0);
++    g_test_trap_assert_passed();
++    g_test_trap_assert_stderr("\
++test-error-report: test error*\
++test-error-report: warning: test warn*\
++test-error-report: info: test info*\
++");
++}
++
++static void
++test_error_report_loc(void)
++{
++    if (g_test_subprocess()) {
++        loc_set_file("some-file.c", 7717);
++        error_report("%s", "test error1");
++        loc_set_none();
++        error_report("%s", "test error2");
++        return;
++    }
++
++    g_test_trap_subprocess(NULL, 0, 0);
++    g_test_trap_assert_passed();
++    g_test_trap_assert_stderr("\
++test-error-report:some-file.c:7717: test error1*\
++test-error-report: test error2*\
++");
++}
++
++static void
++test_error_report_glog(void)
++{
++    if (g_test_subprocess()) {
++        g_message("gmessage");
++        return;
++    }
++
++    g_test_trap_subprocess(NULL, 0, 0);
++    g_test_trap_assert_passed();
++    g_test_trap_assert_stderr("test-error-report: info: gmessage*");
++}
++
++static void
++test_error_report_once(void)
++{
++    int i;
++
++    if (g_test_subprocess()) {
++        for (i = 0; i < 3; i++) {
++            warn_report_once("warn");
++            error_report_once("err");
++        }
++        return;
++    }
++
++    g_test_trap_subprocess(NULL, 0, 0);
++    g_test_trap_assert_passed();
++    g_test_trap_assert_stderr("\
++test-error-report: warning: warn*\
++test-error-report: err*\
++");
++}
++
++static void
++test_error_report_timestamp(void)
++{
++    if (g_test_subprocess()) {
++        message_with_timestamp = true;
++        warn_report("warn");
++        error_report("err");
++        return;
++    }
++
++    g_test_trap_subprocess(NULL, 0, 0);
++    g_test_trap_assert_passed();
++    g_test_trap_assert_stderr("\
++*-*-*:*:* test-error-report: warning: warn*\
++*-*-*:*:* test-error-report: err*\
++");
++}
++
++int
++main(int argc, char *argv[])
++{
++    setlocale(LC_ALL, "");
++
++    g_test_init(&argc, &argv, NULL);
++    error_init("test-error-report");
++
++    g_test_add_func("/error-report/simple", test_error_report_simple);
++    g_test_add_func("/error-report/loc", test_error_report_loc);
++    g_test_add_func("/error-report/glog", test_error_report_glog);
++    g_test_add_func("/error-report/once", test_error_report_once);
++    g_test_add_func("/error-report/timestamp", test_error_report_timestamp);
++
++    return g_test_run();
++}
+diff --git a/tests/unit/meson.build b/tests/unit/meson.build
+index ffa444f432..015e8131df 100644
+--- a/tests/unit/meson.build
++++ b/tests/unit/meson.build
+@@ -11,6 +11,7 @@ tests = {
+   'check-qobject': [],
+   'check-qjson': [],
+   'check-qlit': [],
++  'test-error-report': [],
+   'test-qobject-output-visitor': [testqapi],
+   'test-clone-visitor': [testqapi],
+   'test-qobject-input-visitor': [testqapi],
+-- 
+2.39.2
 

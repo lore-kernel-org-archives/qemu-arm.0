@@ -1,99 +1,93 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3115748ejb;
-        Tue, 21 Feb 2023 02:17:39 -0800 (PST)
-X-Google-Smtp-Source: AK7set9wJ4Wr+L3gsYmZjcdnT02G38korufywSiouZe+C/02uAUfEmMwQ/uSjpeHojBMkkV6iur2
-X-Received: by 2002:a05:6214:1d01:b0:56e:ab08:670d with SMTP id e1-20020a0562141d0100b0056eab08670dmr6964715qvd.42.1676974659768;
-        Tue, 21 Feb 2023 02:17:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676974659; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3126986ejb;
+        Tue, 21 Feb 2023 02:36:58 -0800 (PST)
+X-Received: by 2002:adf:ea8c:0:b0:2c5:4d57:e840 with SMTP id s12-20020adfea8c000000b002c54d57e840mr2502421wrm.71.1676975818257;
+        Tue, 21 Feb 2023 02:36:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676975818; cv=none;
         d=google.com; s=arc-20160816;
-        b=O8rZQTCLhiWG6E8EaFIkmFOcHbzkhsf1EOlHkvgw8y9biWBFxn7mgdkhcl3T2KOokm
-         v4eYifzLonxDMkvFuY6iwJ+E9n2J6cmU+h0HCCoa4bSZZd5oD5glYiSFubc1p1Drz5qB
-         T/kn66Olmxi5slu6fiRyyAPo/rhIud9kLPR2YSCEYhTGexFXbUrKOpzn7FV4K7FeDlPe
-         b35pZTeJJd7O9gdY2lbsfkwtZcNM8ztfhQiuLtMxDo41636dua4QnxeAFxEyB1s3yS0I
-         yv3NO2GPXD8s4iN56nBxsyELrQ6THVsjuuVMc+eApZtBmeROXlJykKTg5KSZZfvlmGEq
-         5g+A==
+        b=d2K7c+8DJpPG2Ug8pdMUiPYGGqyTsnUSVZ4aF2bDRZUvmlZmyRipwLugwojjFmocBj
+         Cc3FuQwSBvBVhfTN2zTGYRDOvOHpqk80wWqSgow2oAjo11HWmnaQFSME0tSwoT381kav
+         XmMedzfu+FxTTV/SWpgfgB7/iW+vELhZp8gmGvLKS/f5TLw87RZdq8KMSTo8jrJPjNuc
+         F+08+DBDAXDOQ8hH6O9sSMyuEf2zGAIj7vztU2f71EXjgs8cPVndbQ5eH71vnkrlCvUV
+         IJIXHuWaN76PvofO3WKFK3wKTWxqGuHaA7daslzxNYDl/GPC1xRHwiqMz1XMUtY+fc3q
+         z6Gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:subject:from
-         :references:cc:to:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=4iEFF/b/QbvZzC3DBwRXJReUoO2iqpzmbxAm+CoJOHE=;
-        b=Nj4ojoahwLQnGq19rxPB6Fw5B4glzWhr4RWJYbTnpV7IlCv4rWfvkl9p/e/CWwXNcY
-         R2oFI0yz2UJLZa5a3bZb2aJxsWkprXseEzO4138dbq26/aGi2pAKr8sdxY08/yNuVHRb
-         GFdhsBurz8LRzoQPJMAEPu8/8xjsChiX+ua8F79bY93dk5WRqJRl1ux22yrS0nWlt2kB
-         u6dxmNpseBBG/kmO2qummaRc8MuI+LCg0SSiLu4PsUB3q2RShcM6i9Fc+r7nu3l2iPK9
-         35KvRsP5xoSfqe+WUXzLp7SgXGR62h1gX336/fy+d7U0R0Sz6D9qlIthg9tdh2sqwB6Q
-         g9HQ==
+        bh=dgSv7ZuWk/DxEc28BEwMqUn8a6ouFhzMgY0nXBMnv3c=;
+        b=Vm79eK3aOZqhNHxXY7cfFHQxogzYpDWnOtueo/fNwnSuHZFCe/opvnuUb7+Na+bpFn
+         /IkoHOB4w4hYvq5OETRut8av5CQi4KtuD6MIcqnhGfqhtaVELhbtN78ziRR9Hij0w/Hg
+         lwkjNZ/otmQ0LbJ36QuOInH1VEUcfhppXipIp3xCujcsicc264EbSZo9n7/jMc5+sH0C
+         vzp3J17dYkqbGtDqknLPNNvWo5FZOChrha/DnFreSouNdsLV0/4+3QPbchuqqqYb5EdX
+         9O9RiW3a64KRPJtNgNrQNZu5LW591uRVG02FO4OCh0mylPNphrqkau/4EO+qcg0Y5vfh
+         BUxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AW3j64Io;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d14-20020a0cf0ce000000b0056b426c8345si11505614qvl.417.2023.02.21.02.17.39
+       dkim=pass header.i=@linaro.org header.s=google header.b=gSD3+QJ6;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m4-20020a5d4a04000000b002be518094a0sor1039310wrq.58.2023.02.21.02.36.58
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Feb 2023 02:17:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Tue, 21 Feb 2023 02:36:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AW3j64Io;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1676974659;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4iEFF/b/QbvZzC3DBwRXJReUoO2iqpzmbxAm+CoJOHE=;
-	b=AW3j64Io5S8edK1FGVEXcRtvGZ+PrHnao3qJvd7cGtndNfNmxJEHv0AC6tdy9g1hve3aRM
-	eXxI1S3ti5fjwmhUdVAMhUFQSdB8WL4L4bk7kmCDgS8xCcicWKO+5tyUWb+RmCWDdUkY8G
-	8Vj+WfRcVx2tPdukhLXpRLGY80pD/VU=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-471-9YufErsqO1q3XAmmojtvQg-1; Tue, 21 Feb 2023 05:17:35 -0500
-X-MC-Unique: 9YufErsqO1q3XAmmojtvQg-1
-Received: by mail-wm1-f71.google.com with SMTP id p22-20020a7bcc96000000b003e2036a1516so1813039wma.7
-        for <alex.bennee@linaro.org>; Tue, 21 Feb 2023 02:17:35 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=gSD3+QJ6;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dgSv7ZuWk/DxEc28BEwMqUn8a6ouFhzMgY0nXBMnv3c=;
+        b=gSD3+QJ6f2d5ZTFGNgKygthUJkM2/5za1YQvOA8fadW/QeOwF8NyauQlmH9vVQsY0P
+         KPZbhFgvi60PRJK/MUgvy0ycHwmHcoeehAlmpqC2mWzazc2iTuuVUiEEeTS4toNvuHtQ
+         swNM/coAl+b0HCUSMJQzBMoHRBIY0cJnQ12XdLDqaD424HQJrGJmB44X0PINcd5sbrMK
+         fIazIpqpWcYaQxYaL8jBAJMkhySzhk1BlrZHWoDfjusH3tvXqHa962uTAcPsyN6lFuKa
+         QJv22QJtNFpYRY+na87qcFcSfwn39sTycN6qHOrK7iIj4pgqYHhUmsotXw3HDKWA7W4i
+         YaCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4iEFF/b/QbvZzC3DBwRXJReUoO2iqpzmbxAm+CoJOHE=;
-        b=Ka68eTFtLq9GRW+/w3nyGKTiuYdyPNHEiIxzlobRMMI9eXNDzHu4DzTZjKOPRQtsvs
-         6tfibllhZJaDqj5GRJoQ0pHmssLVGvXKUolZ9JumXzs5qVOAfmqj6dsXzrIzjrlW4EOl
-         ST2KutKbFZdZ/uBHkNwCge6VqcAaU2GpowsZQohNUmiF7X3f08HG2zmlVx3olNCrKbEg
-         NZQPDNMsEtbsZa/LOr7ZGNa7Lx8BS/OlAuW1ZpObF/bs/n5KrPiNxl90fA3RKI9pNBwO
-         75cuXOrssTpzgiG84VI1F05t0wAFGsukjy8WztVpbmjii6nyonkPgx8kyMtIQqW7M23X
-         IP5w==
-X-Gm-Message-State: AO0yUKXXlCzmHukvixx5FV2nRTJz7v+gFgNVg5ym38iDgAJfRtu308Ji
-	NoJWYChaz+kigi4eBR/5n0IS0HK/TFObBUbveCdFkswYEysv1pxr7u6oMq/DqVEJ1nlgUpGrB/W
-	IJGi73Y1t1ZozXGwUyyYPVk8bHkh4MjTVh1OnTampF+6ZvdAKn9RkiYSswaKsv1qXy+3bIzy4
-X-Received: by 2002:adf:e9c7:0:b0:2c5:7c26:c2cc with SMTP id l7-20020adfe9c7000000b002c57c26c2ccmr3706335wrn.29.1676974654890;
-        Tue, 21 Feb 2023 02:17:34 -0800 (PST)
-X-Received: by 2002:adf:e9c7:0:b0:2c5:7c26:c2cc with SMTP id l7-20020adfe9c7000000b002c57c26c2ccmr3706290wrn.29.1676974654589;
-        Tue, 21 Feb 2023 02:17:34 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [10.33.192.205] (nat-pool-str-t.redhat.com. [149.14.88.106])
-        by smtp.gmail.com with ESMTPSA id u5-20020a05600c210500b003e00c453447sm3928799wml.48.2023.02.21.02.17.30
+        bh=dgSv7ZuWk/DxEc28BEwMqUn8a6ouFhzMgY0nXBMnv3c=;
+        b=OcWz5mej9nXl8euWfrwkk2BzI/pCTa2s+AHsZuZczkGoSlMMomfXn2muBNJtykraav
+         kltIrwT/Wa2bUwdNgLDKVJvlbfDRrfTF62vtHVJbsA0q9BPxqmL0beKBq00fiLCNzenb
+         Dui/W4PEzF8JiXlFyNFdh0Rz7j6jfncmZ0I6lOMESlT30vN2YkGKZX4TRWocua+PPVQb
+         y7knTuwRTsgsLPUKlGO9bXHIaqiY7AZC0yz43gErtDEttdUPHxjs0Tfiyy1IWaxMhPKN
+         9yYmKLRKB5EGEVKX1NYeEUpUbV8UyfFcvvASe7DI2lgCjlL1JKLqXzOFpbw9Ua9r0w5V
+         BHug==
+X-Gm-Message-State: AO0yUKUryAq0XrPAaQGQCwj4kQtC23tWuWGg//UBAbq8X8W4aBFhqUC9
+	+ohqKVjp2qJBYO+tWMoUrKjQXDTUEqrXJHKIhSQ=
+X-Google-Smtp-Source: AK7set9YmpKN15cEB+oZRwiUb+eoHt3T2WuNiHGayxO+4abA4GLG/6GxsNiUVviAJgV0KlInd9vOPA==
+X-Received: by 2002:a5d:55c3:0:b0:2c5:55c6:28f1 with SMTP id i3-20020a5d55c3000000b002c555c628f1mr2792351wrw.19.1676975817711;
+        Tue, 21 Feb 2023 02:36:57 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.30.216] ([81.0.6.76])
+        by smtp.gmail.com with ESMTPSA id v15-20020a5d678f000000b002c6e84cadcbsm2331840wru.72.2023.02.21.02.36.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Feb 2023 02:17:32 -0800 (PST)
-Message-ID: <a182b11b-3f65-9daf-c3fd-f98cb335917a@redhat.com>
-Date: Tue, 21 Feb 2023 11:17:29 +0100
+        Tue, 21 Feb 2023 02:36:57 -0800 (PST)
+Message-ID: <07192b8a-c6e3-6dcb-ada3-35842f800068@linaro.org>
+Date: Tue, 21 Feb 2023 11:36:54 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH v2 04/14] tests: be a bit more strict cleaning up fifos
+Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
+Cc: Markus Armbruster <armbru@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Yonggang Luo <luoyonggang@gmail.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Ed Maste <emaste@freebsd.org>,
- Bandan Das <bsd@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Qiuhao Li <Qiuhao.Li@outlook.com>, qemu-block@nongnu.org,
- Beraldo Leal <bleal@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- qemu-arm@nongnu.org, Michael Roth <michael.roth@amd.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Ed Maste <emaste@freebsd.org>, Bandan Das <bsd@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
+ qemu-block@nongnu.org, Beraldo Leal <bleal@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-arm@nongnu.org,
+ Michael Roth <michael.roth@amd.com>,
  =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, Alexander Bulekov
  <alxndr@bu.edu>, Darren Kenny <darren.kenny@oracle.com>,
@@ -102,45 +96,30 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Stefan Hajnoczi <stefanha@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  John Snow <jsnow@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Anders Roxell <anders.roxell@linaro.org>
+ <berrange@redhat.com>
 References: <20230221094558.2864616-1-alex.bennee@linaro.org>
- <20230221094558.2864616-12-alex.bennee@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v2 11/14] tests: add tuxrun baseline test to avocado
-In-Reply-To: <20230221094558.2864616-12-alex.bennee@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+ <20230221094558.2864616-5-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230221094558.2864616-5-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: PXICBuvwa7Mn
+X-TUID: ljQOeXZFNSW7
 
-On 21/02/2023 10.45, Alex Bennée wrote:
-> The TuxRun project (www.tuxrun.org) uses QEMU to run tests on a wide
-> variety of kernel configurations on wide range of our emulated
-> platforms. They publish a known good set of images at:
+On 21/2/23 10:45, Alex Bennée wrote:
+> When we re-factored we dropped the unlink() step which turns out to be
+> required for rmdir to do its thing. If we had been checking the return
+> value we would have noticed so lets do that with this fix.
 > 
->    https://storage.tuxboot.com/
-> 
-> to help with bisecting regressions in either the kernel, firmware or
-> QEMU itself. The tests are pretty lightweight as they contain just a
-> kernel with a minimal rootfs which boots a lot faster than most of the
-> distros. In time they might be persuaded to version there known good
+> Fixes: 68406d1085 (tests/unit: cleanups for test-io-channel-command)
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   tests/unit/test-io-channel-command.c | 6 +++++-
+>   1 file changed, 5 insertions(+), 1 deletion(-)
 
-"*their* known good baselines" ?
+Per v1
+https://lore.kernel.org/qemu-devel/20230215192530.299263-5-alex.bennee@linaro.org/
 
-> baselines and we can then enable proper checksums.
-> 
-> For a couple of tests we currently skip:
-> 
->    - mips64, a regression against previous stable release
->    - sh4, very unstable with intermittent oops
-> 
-> Total run time: 340s (default) -> 890s (debug)
-> 
-> Overall coverage rate (tested targets + disabled tests):
->    lines......: 16.1% (126894 of 789848 lines)
->    functions..: 20.6% (15954 of 77489 functions)
->    branches...: 9.3% (40727 of 439365 branches)
-
-Acked-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id fm18-20020a05600c0c1200b003dc1d668866sm6474680wmb.10.2023.02.21.14.52.30
+        by smtp.gmail.com with ESMTPSA id b4-20020adff904000000b002c54f39d34csm9059057wrr.111.2023.02.21.14.52.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 21 Feb 2023 14:52:34 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1F3E81FFC3;
-	Tue, 21 Feb 2023 22:52:29 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 6793A1FFD2;
+	Tue, 21 Feb 2023 22:52:31 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -52,130 +52,161 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 13/24] gdbstub: specialise handle_query_attached
-Date: Tue, 21 Feb 2023 22:52:16 +0000
-Message-Id: <20230221225227.3735319-14-alex.bennee@linaro.org>
+Subject: [PATCH v3 24/24] gdbstub: split out softmmu/user specifics for syscall handling
+Date: Tue, 21 Feb 2023 22:52:27 +0000
+Message-Id: <20230221225227.3735319-25-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
 References: <20230221225227.3735319-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: YP1PtnOzkubP
+X-TUID: ppqCxUIlDBpX
 
-In both user and softmmu cases we are just replying with a constant.
+Most of the syscall code is config agnostic aside from the size of
+target_ulong. In preparation for the next patch move the final bits of
+specialisation into the appropriate user and softmmu helpers.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v3
-  - remove allusions to possible linker optimisations
----
- gdbstub/internals.h |  4 +++-
- gdbstub/gdbstub.c   | 15 ++-------------
- gdbstub/softmmu.c   |  5 +++++
- gdbstub/user.c      |  5 +++++
- 4 files changed, 15 insertions(+), 14 deletions(-)
+ gdbstub/internals.h |  5 +++++
+ gdbstub/softmmu.c   | 24 ++++++++++++++++++++++++
+ gdbstub/syscalls.c  | 32 +++++++++++---------------------
+ gdbstub/user.c      | 24 ++++++++++++++++++++++++
+ 4 files changed, 64 insertions(+), 21 deletions(-)
 
 diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 3912d0de38..3875c6877e 100644
+index fe82facaeb..dce7c4f66f 100644
 --- a/gdbstub/internals.h
 +++ b/gdbstub/internals.h
-@@ -152,7 +152,7 @@ int gdb_continue_partial(char *newstates);
- void gdb_put_buffer(const uint8_t *buf, int len);
+@@ -193,6 +193,11 @@ bool gdb_handled_syscall(void);
+ void gdb_disable_syscalls(void);
+ void gdb_syscall_reset(void);
  
- /*
-- * Command handlers - either softmmu or user only
-+ * Command handlers - either specialised or softmmu or user only
-  */
- void gdb_init_gdbserver_state(void);
- 
-@@ -181,6 +181,8 @@ void gdb_handle_query_rcmd(GArray *params, void *user_ctx); /* softmmu */
- void gdb_handle_query_offsets(GArray *params, void *user_ctx); /* user */
- void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx); /*user */
- 
-+void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
++/* user/softmmu specific signal handling */
++void gdb_pre_syscall_handling(void);
++bool gdb_send_syscall_now(void);
++void gdb_post_syscall_handling(void);
 +
  /*
   * Break/Watch point support - there is an implementation for softmmu
   * and user mode.
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 76c24b7cb6..0d90685c72 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -46,12 +46,6 @@
- 
- #include "internals.h"
- 
--#ifdef CONFIG_USER_ONLY
--#define GDB_ATTACHED "0"
--#else
--#define GDB_ATTACHED "1"
--#endif
--
- #ifndef CONFIG_USER_ONLY
- static int phy_memory_mode;
- #endif
-@@ -1672,11 +1666,6 @@ static void handle_query_xfer_features(GArray *params, void *user_ctx)
-                       gdbserver_state.str_buf->len, true);
- }
- 
--static void handle_query_attached(GArray *params, void *user_ctx)
--{
--    gdb_put_packet(GDB_ATTACHED);
--}
--
- static void handle_query_qemu_supported(GArray *params, void *user_ctx)
- {
-     g_string_printf(gdbserver_state.str_buf, "sstepbits;sstep");
-@@ -1786,12 +1775,12 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
-     },
- #endif
-     {
--        .handler = handle_query_attached,
-+        .handler = gdb_handle_query_attached,
-         .cmd = "Attached:",
-         .cmd_startswith = 1
-     },
-     {
--        .handler = handle_query_attached,
-+        .handler = gdb_handle_query_attached,
-         .cmd = "Attached",
-     },
-     {
 diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index 0232e62ea4..ade0cc366c 100644
+index b7e3829ca0..8f3c8ef449 100644
 --- a/gdbstub/softmmu.c
 +++ b/gdbstub/softmmu.c
-@@ -439,6 +439,11 @@ void gdb_handle_query_rcmd(GArray *params, void *user_ctx)
-  * Execution state helpers
-  */
+@@ -101,6 +101,30 @@ static void gdb_chr_event(void *opaque, QEMUChrEvent event)
+     }
+ }
  
-+void gdb_handle_query_attached(GArray *params, void *user_ctx)
++/*
++ * In softmmu mode we stop the VM and wait to send the syscall packet
++ * until notification that the CPU has stopped. This must be done
++ * because if the packet is sent now the reply from the syscall
++ * request could be received while the CPU is still in the running
++ * state, which can cause packets to be dropped and state transition
++ * 'T' packets to be sent while the syscall is still being processed.
++ */
++
++void gdb_pre_syscall_handling(void)
 +{
-+    gdb_put_packet("1");
++    vm_stop(RUN_STATE_DEBUG);
 +}
 +
- void gdb_continue(void)
++bool gdb_send_syscall_now(void)
++{
++    return false;
++}
++
++void gdb_post_syscall_handling(void)
++{
++    qemu_cpu_kick(gdbserver_state.c_cpu);
++}
++
+ static void gdb_vm_state_change(void *opaque, bool running, RunState state)
  {
-     if (!runstate_needs_reset()) {
+     CPUState *cpu = gdbserver_state.c_cpu;
+diff --git a/gdbstub/syscalls.c b/gdbstub/syscalls.c
+index 1b63a1d197..24eee38136 100644
+--- a/gdbstub/syscalls.c
++++ b/gdbstub/syscalls.c
+@@ -102,9 +102,10 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
+     }
+ 
+     gdbserver_syscall_state.current_syscall_cb = cb;
+-#ifndef CONFIG_USER_ONLY
+-    vm_stop(RUN_STATE_DEBUG);
+-#endif
++
++    /* user/softmmu specific handling */
++    gdb_pre_syscall_handling();
++
+     p = &gdbserver_syscall_state.syscall_buf[0];
+     p_end = &gdbserver_syscall_state.syscall_buf[sizeof(gdbserver_syscall_state.syscall_buf)];
+     *(p++) = 'F';
+@@ -138,24 +139,13 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
+         }
+     }
+     *p = 0;
+-#ifdef CONFIG_USER_ONLY
+-    gdb_put_packet(gdbserver_syscall_state.syscall_buf);
+-    /* Return control to gdb for it to process the syscall request.
+-     * Since the protocol requires that gdb hands control back to us
+-     * using a "here are the results" F packet, we don't need to check
+-     * gdb_handlesig's return value (which is the signal to deliver if
+-     * execution was resumed via a continue packet).
+-     */
+-    gdb_handlesig(gdbserver_state.c_cpu, 0);
+-#else
+-    /* In this case wait to send the syscall packet until notification that
+-       the CPU has stopped.  This must be done because if the packet is sent
+-       now the reply from the syscall request could be received while the CPU
+-       is still in the running state, which can cause packets to be dropped
+-       and state transition 'T' packets to be sent while the syscall is still
+-       being processed.  */
+-    qemu_cpu_kick(gdbserver_state.c_cpu);
+-#endif
++
++    if (gdb_send_syscall_now()) { /* true only for *-user */
++        gdb_put_packet(gdbserver_syscall_state.syscall_buf);
++    }
++
++    /* user/softmmu specific handling */
++    gdb_post_syscall_handling();
+ }
+ 
+ void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...)
 diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 33a0701cea..90dfe49f27 100644
+index cc7eeb9afb..a5227e23cf 100644
 --- a/gdbstub/user.c
 +++ b/gdbstub/user.c
-@@ -340,6 +340,11 @@ void gdbserver_fork(CPUState *cpu)
-  * Execution state helpers
-  */
- 
-+void gdb_handle_query_attached(GArray *params, void *user_ctx)
+@@ -467,3 +467,27 @@ void gdb_breakpoint_remove_all(CPUState *cs)
+ {
+     cpu_breakpoint_remove_all(cs, BP_GDB);
+ }
++
++/*
++ * For user-mode syscall support we send the system call immediately
++ * and then return control to gdb for it to process the syscall request.
++ * Since the protocol requires that gdb hands control back to us
++ * using a "here are the results" F packet, we don't need to check
++ * gdb_handlesig's return value (which is the signal to deliver if
++ * execution was resumed via a continue packet).
++ */
++
++void gdb_pre_syscall_handling(void)
 +{
-+    gdb_put_packet("0");
++    return;
 +}
 +
- void gdb_continue(void)
- {
-     gdbserver_user_state.running_state = 1;
++bool gdb_send_syscall_now(void)
++{
++    return true;
++}
++
++void gdb_post_syscall_handling(void)
++{
++    gdb_handlesig(gdbserver_state.c_cpu, 0);
++}
 -- 
 2.39.1

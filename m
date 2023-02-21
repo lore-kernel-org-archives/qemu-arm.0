@@ -1,178 +1,140 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n5-20020adffe05000000b002c5539171d1sm8289828wrr.41.2023.02.21.15.01.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Feb 2023 15:01:56 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id F39C51FFC2;
-	Tue, 21 Feb 2023 22:52:28 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-s390x@nongnu.org,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	nicolas.eder@lauterbach.com,
-	Stafford Horne <shorne@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Taylor Simpson <tsimpson@quicinc.com>,
-	mads@ynddal.dk,
-	Marek Vasut <marex@denx.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	qemu-ppc@nongnu.org,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Bin Meng <bin.meng@windriver.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Chris Wulff <crwulff@gmail.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Greg Kurz <groug@kaod.org>,
-	David Hildenbrand <david@redhat.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 12/24] gdbstub: abstract target specific details from gdb_put_packet_binary
-Date: Tue, 21 Feb 2023 22:52:15 +0000
-Message-Id: <20230221225227.3735319-13-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
-References: <20230221225227.3735319-1-alex.bennee@linaro.org>
+Received: by 2002:a05:7022:221:b0:5e:6ea8:9f07 with SMTP id 33csp2743802dll;
+        Tue, 21 Feb 2023 09:10:53 -0800 (PST)
+X-Google-Smtp-Source: AK7set+e70m0o2HkaIqqIerFBlWMiLuYOLl+H3e+gN0zxO1Ke9TfXe5Qpr9MPnadqT9hQQ2jPlDQ
+X-Received: by 2002:a05:6214:2605:b0:56e:9c91:6cd with SMTP id gu5-20020a056214260500b0056e9c9106cdmr10268077qvb.44.1676999453055;
+        Tue, 21 Feb 2023 09:10:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676999453; cv=none;
+        d=google.com; s=arc-20160816;
+        b=afl4008nq6hPsDJUw0zLVE3Jx30gL/s3KaMUZV26TBvk2dlpVA1miBCHs8/CIBsEY1
+         wdoPqv0BnrEwlBEfRncSN3FxgXXxYwlVQFyUKZKkZxedfSmw8clXNnkfHpnTHe7HxErS
+         wVRgsBdZ92dN3dMb9RU7H7VgpkCNR4EA5BtZYZvNokwXIxmVSyUhnqnA8jta5Uwr39cK
+         2NcLE0lyqN2qbIFoI5LjYZWzg2QtbSqRm8TlnIiqrtzMPDahk1xMQCuyW3yOidcyWQ5p
+         KKHFLq5RG0xIiA8aKsO59LOMLUfNec+OfNCEkzwJ/mFeaTpk4XzGOYpLZteeIJGp/NPJ
+         wvoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=fC+bYCKA2RZbCFhnPCJy/+L/fBt6lLiKEAXLP3VBNnU=;
+        b=BXWw3kinOGJ5x14A+laNYRjcLgE90vV38bzGDGJl3OtljoH/hc1c2u7tVRQgz4eaQM
+         vH84d6+PbOBM0TmLsXI35qcI0+hCfGF2jmKjkUPAayovjZ8jIQoE52Px/K/f+UVQXJH7
+         LmiePq3yJlKkvop/dEkvdLObuMEBTthcIJUZ1OHb9H8YKGSW4qbhuinXp2j8WHudWIad
+         NqFHoqU4Z8kmfyb4x+itgHawkygkO7fhdhrPT6CCBoy6IsuE/7Y/Ou5ojJskc635kKDp
+         4yae7fBQAur8t+su0fTr09RH+TWSkBnnY6fVYOU+B71etXWptBnQwGBDOKLeC7/UDcGz
+         2Y3Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VVjpcJG7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t15-20020a0c8d8f000000b0053232c7565bsi11753550qvb.135.2023.02.21.09.10.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 21 Feb 2023 09:10:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VVjpcJG7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pUWA6-0001rG-EN; Tue, 21 Feb 2023 12:10:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pUWA1-0001no-65
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 12:10:41 -0500
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pUW9y-0005cq-Gn
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 12:10:36 -0500
+Received: by mail-pl1-x631.google.com with SMTP id bh1so5775199plb.11
+ for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 09:10:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=fC+bYCKA2RZbCFhnPCJy/+L/fBt6lLiKEAXLP3VBNnU=;
+ b=VVjpcJG7BpE8w5PFqkp2Db2hNwIaacVT1B1dDZ5gBjQC3Rx+QqOymvLdypT0zNVNrR
+ gS4wBVCK/rpIIbcKP2IPZQqOPLzVU8kkKgn6aGGW+6U6QyFzUm7lLd/n/xHTqFICxiMh
+ bsLGuBZuD4F6uQLNpc2a4RQeStF5DFXbXWHBIY/s4sms8bQQNoR+JDh51Ml6ZG7Llv+d
+ jdxusV5t84IHNWSbgYxi0ypIhcPciATpDpw81blozn57TloQxVQtr+ajNMgkikJdRTKs
+ rasF8avrdSyjBZj/5IjhB7+uEsryFZ1PX1cGpEq3cUrATjk4khKrPBFgEfPIaLsvBvn6
+ j9mw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=fC+bYCKA2RZbCFhnPCJy/+L/fBt6lLiKEAXLP3VBNnU=;
+ b=d1giSxpncB8dJ6kEC+7nEzaIFRlt5JwGReKqFeO+mQw02Mr5Bb2K7yFsgd5h7EPv6l
+ S/yZNRxNo9DPb6fC6Ev2M/L75QTpcHe6VXxtGreRJsWx5WdOhjRnXx15XIFIEQzwMjKR
+ ENFgUCnWJbtivXoIzuTQzRyORLq6TGAJ9favz7fTAWxmxCf/iIL77OhpV7tIUCyzutXo
+ M+OBsESkPQX3wm7xB7OFqxegceI4mlRFN7OPPjs2BCuJx7xIhCXubWc6M2xpxhPkeiKq
+ 6Md8p8jH7uTEpIk4L1gmqMB4ukf5hZ7DpPmf6rCE1kgN+iZ1S99MADnNHSaDvzXmCCxV
+ v8AA==
+X-Gm-Message-State: AO0yUKURamrUOiJPyYdbVAEsN/9BYul1yWlMU9X53YMYv4XJQW2x0Luy
+ wQIfNQvAdw1wpUdYI+LNOZxnGa9CbIRrBJrRlfvt5Q==
+X-Received: by 2002:a17:90b:5109:b0:233:dcb5:ee15 with SMTP id
+ sc9-20020a17090b510900b00233dcb5ee15mr1914885pjb.92.1676999428525; Tue, 21
+ Feb 2023 09:10:28 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 4QdilxilFeS4
+References: <20230221021951.453601-1-richard.henderson@linaro.org>
+ <20230221021951.453601-12-richard.henderson@linaro.org>
+In-Reply-To: <20230221021951.453601-12-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Feb 2023 17:10:17 +0000
+Message-ID: <CAFEAcA9NUuYHMR2XHqJ+dwDYibxo6KzRBKwCwq9AtFYkeSsomw@mail.gmail.com>
+Subject: Re: [PATCH v2 11/14] target/arm: Implement gdbstub pauth extension
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Luis Machado <luis.machado@arm.com>,
+ Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MPbMdC7gcpgN
 
-We unfortunately handle the checking of packet acknowledgement
-differently for user and softmmu modes. Abstract the user mode stuff
-behind gdb_got_immediate_ack with a stub for softmmu.
+On Tue, 21 Feb 2023 at 02:21, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> The extension is primarily defined by the Linux kernel NT_ARM_PAC_MASK
+> ptrace register set.
+>
+> The original gdb feature consists of two masks, data and code, which are
+> used to mask out the authentication code within a pointer.  Following
+> discussion with Luis Machado, add two more masks in order to support
+> pointers within the high half of the address space (i.e. TTBR1 vs TTBR0).
+>
+> Cc: Luis Machado <luis.machado@arm.com>
+> Cc: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1105
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- gdbstub/internals.h | 15 +++++++++++++++
- gdbstub/gdbstub.c   | 10 ++--------
- gdbstub/softmmu.c   |  8 ++++++++
- gdbstub/user.c      | 19 +++++++++++++++++++
- 4 files changed, 44 insertions(+), 8 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index a3dd629ee8..3912d0de38 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -108,6 +108,21 @@ void gdb_memtohex(GString *buf, const uint8_t *mem, int len);
- void gdb_memtox(GString *buf, const char *mem, int len);
- void gdb_read_byte(uint8_t ch);
- 
-+/*
-+ * Packet acknowledgement - we handle this slightly differently
-+ * between user and softmmu mode, mainly to deal with the differences
-+ * between the flexible chardev and the direct fd approaches.
-+ *
-+ * We currently don't support a negotiated QStartNoAckMode
-+ */
-+
-+/**
-+ * gdb_got_immediate_ack() - check ok to continue
-+ *
-+ * Returns true to continue, false to re-transmit for user only, the
-+ * softmmu stub always returns true.
-+ */
-+bool gdb_got_immediate_ack(void);
- /* utility helpers */
- CPUState *gdb_first_attached_cpu(void);
- void gdb_append_thread_id(CPUState *cpu, GString *buf);
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 4bf99783a6..76c24b7cb6 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -239,15 +239,9 @@ int gdb_put_packet_binary(const char *buf, int len, bool dump)
-         gdb_put_buffer(gdbserver_state.last_packet->data,
-                    gdbserver_state.last_packet->len);
- 
--#ifdef CONFIG_USER_ONLY
--        i = gdb_get_char();
--        if (i < 0)
--            return -1;
--        if (i == '+')
-+        if (gdb_got_immediate_ack()) {
-             break;
--#else
--        break;
--#endif
-+        }
-     }
-     return 0;
- }
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index 79674b8bea..0232e62ea4 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -55,6 +55,14 @@ int gdb_get_cpu_index(CPUState *cpu)
-     return cpu->cpu_index + 1;
- }
- 
-+/*
-+ * We check the status of the last message in the chardev receive code
-+ */
-+bool gdb_got_immediate_ack(void)
-+{
-+    return true;
-+}
-+
- /*
-  * GDB Connection management. For system emulation we do all of this
-  * via our existing Chardev infrastructure which allows us to support
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 1c9e070e57..33a0701cea 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -54,6 +54,25 @@ int gdb_get_char(void)
-     return ch;
- }
- 
-+bool gdb_got_immediate_ack(void)
-+{
-+    int i;
-+
-+    i = gdb_get_char();
-+    if (i < 0) {
-+        /* no response, continue anyway */
-+        return true;
-+    }
-+
-+    if (i == '+') {
-+        /* received correctly, continue */
-+        return true;
-+    }
-+
-+    /* anything else, including '-' then try again */
-+    return false;
-+}
-+
- void gdb_put_buffer(const uint8_t *buf, int len)
- {
-     int ret;
--- 
-2.39.1
+thanks
+-- PMM

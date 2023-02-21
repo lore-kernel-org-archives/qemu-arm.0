@@ -1,107 +1,106 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2811852ejb;
-        Mon, 20 Feb 2023 18:21:27 -0800 (PST)
-X-Google-Smtp-Source: AK7set8XWarPeiFmO7h61HeehSY+BUm6I4hYDyU5AVx+6vKdPauKq33Art/FRPIsoxezRH8MgOOg
-X-Received: by 2002:a05:622a:2cd:b0:3b6:30ea:e95 with SMTP id a13-20020a05622a02cd00b003b630ea0e95mr18105727qtx.18.1676946086987;
-        Mon, 20 Feb 2023 18:21:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676946086; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2811864ejb;
+        Mon, 20 Feb 2023 18:21:28 -0800 (PST)
+X-Google-Smtp-Source: AK7set/+8yzTFxVq+h5CiS8GqyKf2UHadOzlQnmq+W3AoXXG718K+uiP9IF3ymrsJck75Lbf/mjq
+X-Received: by 2002:a05:622a:650:b0:3b6:3a16:a19 with SMTP id a16-20020a05622a065000b003b63a160a19mr4248185qtb.54.1676946088294;
+        Mon, 20 Feb 2023 18:21:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676946088; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ga433OQNRD6cm3sivk4T25AJfOO5aARRo7ZEODnQOeJ204dmwrIU4MMw2bUTU11CuY
-         98a2Ja5WM0JwvLOGiK8kbSobapet55SDFi/xNF7Lm8yUE6klHB93A/UuZRa4ZW+QDmrw
-         sxnCjA243xxX/OKVkGY1TCzbB4q1rYAg4rSW+NCI1KtsRqQUQkUiyHiZV91NDCGriEw8
-         +QmqpB0ILgbJbxhFIElsBcGU0PFHH8ruA4RgE7qONV6TNc0AdeIdpFQ143/UYPuOxNh+
-         l8os4PtsO7wVR+3ygjVIOr+xUO5WgRPSRL66McZwBzcwJqrH0QOKBSNcHsP7130+LS5D
-         zeQA==
+        b=JQJos5WvaO4Y1eyLj9sYx46MlXiYxZtoDYr+jbCJ8B/lOjKtt/I6uATelfzk5Ycliz
+         8ykYtaa7lWUN64ibcBEw84mqhMl9t/A5yt1s13Z7psc412ObZUPM7T+5EexAyyi6RBXm
+         mILT54Dt1t95+4b67VjMxsrb+5Cct483YE85JxcvHq4p0ZwTjZOV5/bQxrY9G9OGnLq7
+         dc9nnTAfFwWqkLzG8Hi5jXDty+mBmzLYMnL9oPsuwY1o/HENxs1lUm8p+UZ+gqpzg+Vc
+         vwqbZcR9iDabqcMqF4gUMQ++cYrXQGXlkSQ+Xt7RTWEyI/QwSOpiEx9gh7cO/8oKfDi4
+         okhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KtfS729W8SNygqiwUg2I8CHVdzajfLrBoTMYCRIqeSU=;
-        b=e71sdbmvJ5mnOunRr/82bB7TKFgmu8rjL+fIuJrjoGtXfOq1sY1F4HFbWpV5y1R8C1
-         k0IKW/R2qIcyNCbn9tvwEBukDhzLUQrcJrjj5XOCyZAwpOjfMZKMvKjxuxbKU/6+cfYs
-         0PPOy8wgoRzLCBdIzwZUO5b1qzLQLQq56c6TDPcngGTh3ba2RYXXqF2Vg+Zj3dBI53tO
-         GQCh2exY5DlkE9otDcF6tRS3DihqrN/aGfS+l6goNnkDfXhEvFGKwtNyaJ5Eo1NfTDfi
-         qwCWJbashDFKj5xzZ+9HjhKZxED2KaNEnRPwiAmMFY468vNBKkd26DWNjGf71VTzhuIr
-         Qf5A==
+        bh=djjsEwG4h18wUlaauxZhuGg1KAW+4WF9EJYa6EDlD74=;
+        b=ZjwzZSlVATa78GWp3GPV2OsLeND9N0l6LiqUEDSCNsb1lIiKSbu5Gz0we0QGu7T5/a
+         //bvV3nFOJk7tH3BC3x/eQUP3Hz4HnsR92HbT3Nq19d+2dH5tNRHY2q8RdmElJqpSXFo
+         etv33WnwofHw4boklV7fsGNsa+9bALFQLPp6Ur9+JZyGg9B+M3GkSwajYn2pV0q9KECu
+         djork1IPmsjIMImA0EprUPrbQiHaDHDvIeFIiShPoLbhSpRMqgCIEcHL57mvI3pTLuPo
+         MOWH+BvGb70bzj1Wu1SLQg+YijQIuHsURaokxbmBZK7h3bAf7yoL2/A1KMRI5gi3YgKJ
+         iEdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GgcWGFyF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a7R1as1g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6-20020ac85e46000000b003ba283ac662si11270568qtx.438.2023.02.20.18.21.26
+        by mx.google.com with ESMTPS id x19-20020a376313000000b006fc5ded6d1esi10345460qkb.325.2023.02.20.18.21.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 18:21:26 -0800 (PST)
+        Mon, 20 Feb 2023 18:21:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GgcWGFyF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a7R1as1g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUIGG-0001ct-3P; Mon, 20 Feb 2023 21:20:08 -0500
+	id 1pUIGB-0001aW-I9; Mon, 20 Feb 2023 21:20:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUIGE-0001cI-IT
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 21:20:06 -0500
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ id 1pUIG9-0001Yc-BI
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 21:20:01 -0500
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUIGC-00080h-Te
- for qemu-arm@nongnu.org; Mon, 20 Feb 2023 21:20:06 -0500
-Received: by mail-pj1-x102e.google.com with SMTP id o16so3252483pjp.3
- for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 18:20:04 -0800 (PST)
+ id 1pUIG7-00080z-Mf
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 21:20:01 -0500
+Received: by mail-pj1-x102c.google.com with SMTP id pt11so3808000pjb.1
+ for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 18:19:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KtfS729W8SNygqiwUg2I8CHVdzajfLrBoTMYCRIqeSU=;
- b=GgcWGFyFYNckp3//qU1LAPMmRRlabLwlK6qCYJZOcIQCY0iVDimhnsZRh2K9KRwSIL
- 7u8RSx5LvApsE7aptca1e33092HscbxcYpTlPzfjt/8crr6qt1aiIeU/P6FG1Uai8CV/
- B0PWaGT14b9MCvRRfjsUoRVgVY3Ks3xOn2Npd7i92gS/T1yUEpLACxm+1twh7leOtL3L
- OzlCw/Et5dpGIt3sQvfLHRNtq9IdhW8ULWp0Wi5sMl7wRcdU5UzJClp26KsKHZA/u+Ym
- mGv+SrCiXZcFwRrT/P+WfIlTX3V9RNeM3c7Th30netTZx5UVuJ25b9Hb+HKG/Xc/t/m1
- k/iA==
+ bh=djjsEwG4h18wUlaauxZhuGg1KAW+4WF9EJYa6EDlD74=;
+ b=a7R1as1gcFimzMR/jTl7L58JiPdtSiinpl6AjcYYxQyeo0XPOf7KCNcyV3WbIB97os
+ vx9QaYX4lxhIvmWGlWe8jALAH2prmgrI/ekPjqtr/GwRXpTYkgwBaguY46I3rPBfvYf1
+ XQfPBOp3YnwJXA/8IAJQNGFLBZaDTHmbXeZ6S0BTye9pFuK/gEttwj+dHryNNTuLGliH
+ jWNb0cdnABHy6IKf9Fi3QdhJ3JE6pvIRBxebG2nJpz81WsQ+NArzHkN4eKFta/XvTjzy
+ 2ny0X3ycWvmJyqWQkMnRLsMmwfSt1hjyrcqB08g6HvDTDzaXXYqofs2cey2k40z+ukLG
+ 20ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KtfS729W8SNygqiwUg2I8CHVdzajfLrBoTMYCRIqeSU=;
- b=7csJgO9rHsVnGeQBWnzM+q3bVH/Pu+I13T8yxoG3iieyU+jcF7jGAHXy3P6xzY5wjs
- OnM63Q0A+fIi9nmVVGVJw0kZF5/O4oYsZfQvTzcG/8ttvLP0T5OwDbO//XzJVI6iDyPq
- bmmvEHOr0f40m7d4oMkAkmd1I7kElEVqg/AG+Bkdn6gVsy8CTdh7YohUl5EZlCIyRMJA
- 1RoHRaEHdNuJk2oPQ9nenjxHD14hAcitnTjG9miti8yLV+OYugKOUTi9g7IT25cinSUD
- 9R/uYovKSYCK5qcRDT0JMgEBWVsvN+FL7mkagV56DCnRktmxyXSkiTrrpjiZ6NU0CZZp
- ErgQ==
-X-Gm-Message-State: AO0yUKUJj/3lw2ZUJooD4W/Qs/ywYffu6tpeYaSLt90fdu2QLaMWNDUP
- Fq6nz5NCmE4+NpNYc3aNhU5y1FRVIK13tHuq6Sc=
-X-Received: by 2002:a17:902:fa87:b0:196:7664:39c with SMTP id
- lc7-20020a170902fa8700b001967664039cmr3364688plb.31.1676946004117; 
- Mon, 20 Feb 2023 18:20:04 -0800 (PST)
+ bh=djjsEwG4h18wUlaauxZhuGg1KAW+4WF9EJYa6EDlD74=;
+ b=cZZ0bceXZF9bTSZ/7ihsoTALl8QpZdvPZOsY/3FNSxqCG+sHKdPdbN/XEdGnfGVikB
+ HQptA15oxQ0tbbj6rtg2MwQCsYPOrMYfQOZFPIPQMPRCTVf7iGvO8k8V4Dek0zCVbySM
+ IH1cGE/2B+NPY2X5v3J5XUVWrFUIg98aVxSresBgkK9cT9fe+7pYdWrsp3J5D3NK4bEu
+ SwRigtUmnaMNQjFJ21DdBdU8JbEZoieqH/DX/kMQquCjQWCTbTbMu5tOc6LTAy574Ivi
+ hc0x00pxSqD5FXR6oj66meCGiARJjCKDFnsHCELcUXziGogKggk02h7kN6DfslRhdsj0
+ Iu3A==
+X-Gm-Message-State: AO0yUKV5+RA87GiPGeLGDYGKpl7FlswdcPYtNeiExwTkKvuy1XjAtMdu
+ DJXCXsDlC6oU5OWkEUyAGgtohd9ob8gpVhkq1IY=
+X-Received: by 2002:a17:902:ce89:b0:19a:7548:da25 with SMTP id
+ f9-20020a170902ce8900b0019a7548da25mr5526167plg.17.1676945998336; 
+ Mon, 20 Feb 2023 18:19:58 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- f3-20020a170902e98300b0019141c79b1dsm8559328plb.254.2023.02.20.18.20.02
+ f3-20020a170902e98300b0019141c79b1dsm8559328plb.254.2023.02.20.18.19.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Feb 2023 18:20:03 -0800 (PST)
+ Mon, 20 Feb 2023 18:19:57 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH v2 06/14] target/arm: Hoist pred_width in
- arm_gen_dynamic_svereg_xml
-Date: Mon, 20 Feb 2023 16:19:43 -1000
-Message-Id: <20230221021951.453601-7-richard.henderson@linaro.org>
+Subject: [PATCH v2 02/14] target/arm: Unexport arm_gen_dynamic_sysreg_xml
+Date: Mon, 20 Feb 2023 16:19:39 -1000
+Message-Id: <20230221021951.453601-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230221021951.453601-1-richard.henderson@linaro.org>
 References: <20230221021951.453601-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,42 +122,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TDcRFOpSKBt7
+X-TUID: riQsO/WYhcnV
+
+This function is not used outside gdbstub.c.
 
 Reviewed-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/gdbstub64.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ target/arm/cpu.h     | 1 -
+ target/arm/gdbstub.c | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index 070ba20d99..895e19f084 100644
---- a/target/arm/gdbstub64.c
-+++ b/target/arm/gdbstub64.c
-@@ -283,6 +283,7 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int orig_base_reg)
-     GString *s = g_string_new(NULL);
-     DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
-     int reg_width = cpu->sve_max_vq * 128;
-+    int pred_width = cpu->sve_max_vq * 16;
-     int base_reg = orig_base_reg;
-     int i;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 12b1082537..32ca6c9a0d 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1116,7 +1116,6 @@ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+  * Helpers to dynamically generates XML descriptions of the sysregs
+  * and SVE registers. Returns the number of registers in each set.
+  */
+-int arm_gen_dynamic_sysreg_xml(CPUState *cpu, int base_reg);
+ int arm_gen_dynamic_svereg_xml(CPUState *cpu, int base_reg);
  
-@@ -319,13 +320,13 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int orig_base_reg)
-         g_string_append_printf(s,
-                                "<reg name=\"p%d\" bitsize=\"%d\""
-                                " regnum=\"%d\" type=\"svep\"/>",
--                               i, cpu->sve_max_vq * 16, base_reg++);
-+                               i, pred_width, base_reg++);
+ /* Returns the dynamically generated XML for the gdb stub.
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index cf1c01e3cf..52581e9784 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -305,7 +305,7 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
      }
-     g_string_append_printf(s,
-                            "<reg name=\"ffr\" bitsize=\"%d\""
-                            " regnum=\"%d\" group=\"vector\""
-                            " type=\"svep\"/>",
--                           cpu->sve_max_vq * 16, base_reg++);
-+                           pred_width, base_reg++);
+ }
  
-     /* Define the vector length pseudo-register. */
-     g_string_append_printf(s,
+-int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
++static int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     GString *s = g_string_new(NULL);
 -- 
 2.34.1
 

@@ -1,213 +1,257 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3062129ejb;
-        Tue, 21 Feb 2023 00:54:28 -0800 (PST)
-X-Google-Smtp-Source: AK7set89M4ymhfw3Tmme2jmSChsHjfq7/mI8EfnVTt75PxzzqXZV7f7xiZc0YTlPzEqHpfkBGrYA
-X-Received: by 2002:a05:6214:529a:b0:56e:7bc1:69f2 with SMTP id kj26-20020a056214529a00b0056e7bc169f2mr6181846qvb.5.1676969668116;
-        Tue, 21 Feb 2023 00:54:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676969668; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3075301ejb;
+        Tue, 21 Feb 2023 01:13:19 -0800 (PST)
+X-Google-Smtp-Source: AK7set+3CfuHafkyELEnP8oTp+bY6JgKWOv/V0kjlhXyZdj5UwCfMfefOepENv8m4kVB0wF1i3x/
+X-Received: by 2002:a05:622a:28d:b0:3b8:6a90:ece5 with SMTP id z13-20020a05622a028d00b003b86a90ece5mr17950788qtw.62.1676970799416;
+        Tue, 21 Feb 2023 01:13:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676970799; cv=none;
         d=google.com; s=arc-20160816;
-        b=k/36QN6N1jWIYIuyioR5TTk98Gf9ByuPCcDly72pkG0D+cOl0l/E2T5P/hloaWtD1x
-         rvcv1toXkbwom8q6gQmcksztyp/sIdIvHcB4zLKSCJ3kc8DfU4f3WgW0WMflToMctU8C
-         6e4crYnZXy0DfVfhsGeO+0c4awF3cbkOJLDHpQ+R2bXcr/0kviarjCa7tddnqmDIHLB6
-         7ytSnvmM51gIEebaiI6uMHkwn/Ppj6ryDTvmYPnfnRKufvojvexgO6/XXjs/Ppl3q/qO
-         tdF3+wbTmUT3yxMT0ibvpbCxU8T3eA4KaL77weSg5twKNzXlPQO92xlDFMom6UHwjxzc
-         nxcg==
+        b=vJ5WnBruB59XwIP4Nb7fW5xLPHz3J3vxLwW0c2udBKhSW2zXuTHNRH/wnMDz/LM+Pt
+         GzQWb4d9DYDjuQn6eXCJRtwmzv4Ty8NOuOUONm0ETNveoW6CLgJLfPkASjpQ+XxfVIZI
+         ywy4IFjrEK0ts5l7P3eewy00LC1OhhwkDWNGOWatyqTN877uBURKoXgG5UEVrbUW2O/Q
+         IvwdiAPn6blg365EaUuPDGAFab2ZmlFiOzHVqlhFHp7C0mBAPCNf3YWbY6YQ5K9pnEcc
+         /C8KIiNfiS3ZSaNRJYNYI69hKkzW4lvofzd4wK3MUXCaJE4rB2rZjCL8R+jRzfnRTGS3
+         Mnzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xr5+tqz/VRLGBJ9WLwFbA6SVF7nTObTe8XkY7VTqOC4=;
-        b=JTm56DW9XWavAtBdcycpnrILoPhNRZYs8NDBrr20Cx4HVdeRcF+ZaQbqe6xVBYq64W
-         qLJJQsQIiZN311L2tdp1CkwlHl5hBD8QY3MuO0FUFYAHpJYUqr3ZlXqKRsqGOFNVk3pC
-         Xm2YqD3Q+PCu4v1h04s2wWw/W5EwFLQcUr5BhSvF2fALjH3hR/92k5QyRGt0goJq0LDU
-         kOMcCqFFD/ooFFJSkOyY+Zfa4Wr4PrnPMXwY4ldJLI0rD5MbBQxneCWVKceswbMa6yMm
-         oNKxJp1Xy38jRwVStFUTEJK3gNitszJIY6DTm3K6V49LrbHrTC0DQZWrxa0nah2wUaBF
-         Y06w==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=NR2w0zb7f7zbVIleo3/KORSI4e6TNOfFi6Z8lbL8KS0=;
+        b=qOSC6ZLx3KFgzyzck9u4uvTdVpFNQvJqWndYIvIpHVxN+JNiLLAjxRyG2Q0odOJ9nP
+         rh516o1BuFrusfbOv+K9iKNtG+QCIhJoDPl7UrU8uo4WvOMcjeP4zTz9o1TnfHaBBq7V
+         ROwhPi3lqPXtY4mdGzqm5K05XmSMJuRPRuHpqY08ef8bMi9Dutpjt0sLg7glAsGgUQoI
+         1iphXk9n+/Hb4xjCQtubH9pxIoXlIReq2tZ4ySVEqzte8OGKNe+T76ThU1I3LhdKnpmK
+         0TQtLTxzfY7K+6I6t44HGVMB1y9MKvLDhwWGQ+iOObNmycss5K4b67iPGtC8ISKb64FU
+         JbLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="R/B+F3jM";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VXUoA8Xq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18-20020a0ce192000000b0056c206c3b09si3495397qvl.144.2023.02.21.00.54.27
+        by mx.google.com with ESMTPS id r4-20020ac85c84000000b003b864518237si2308127qta.445.2023.02.21.01.13.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 00:54:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Feb 2023 01:13:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="R/B+F3jM";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VXUoA8Xq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUOPc-00058V-Ka; Tue, 21 Feb 2023 03:54:12 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pUOhx-0003EZ-8m; Tue, 21 Feb 2023 04:13:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pUOPW-00057Z-V7
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 03:54:07 -0500
+ (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
+ id 1pUOhv-0003EJ-87
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 04:13:07 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pUOPV-0003y5-CP
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 03:54:06 -0500
+ (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
+ id 1pUOht-0007iN-Ch
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 04:13:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676969644;
+ s=mimecast20190719; t=1676970784;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=xr5+tqz/VRLGBJ9WLwFbA6SVF7nTObTe8XkY7VTqOC4=;
- b=R/B+F3jMQyh+wqBS3VxQMb/ihwykqlYfYlDCkEI0gpzp6TpMiUa8xOhbSmHNNk7/ennwbz
- puBChncl04QYvbr9zA+x5KIV6iIEq0+0AIrvLSKg92B/QhDXWUt1L3rexOS8HqoGfinh2E
- CzbwPd1kSxqWexH6KxGSMdRx6BZhhco=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-651-kC0b_l9RNd-mWz86QrMDFQ-1; Tue, 21 Feb 2023 03:54:00 -0500
-X-MC-Unique: kC0b_l9RNd-mWz86QrMDFQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 25B1285CCE3;
- Tue, 21 Feb 2023 08:54:00 +0000 (UTC)
-Received: from gshan.redhat.com (vpn2-54-62.bne.redhat.com [10.64.54.62])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1434E40BC781;
- Tue, 21 Feb 2023 08:53:57 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, yihyu@redhat.com,
- shan.gavin@gmail.com
-Subject: [PATCH] hw/arm/virt: Prevent CPUs in one socket to span mutiple NUMA
- nodes
-Date: Tue, 21 Feb 2023 16:53:52 +0800
-Message-Id: <20230221085352.212938-1-gshan@redhat.com>
+ in-reply-to:in-reply-to:references:references;
+ bh=NR2w0zb7f7zbVIleo3/KORSI4e6TNOfFi6Z8lbL8KS0=;
+ b=VXUoA8XqOQ8gB5Fwo/tGZhXJMHxjiHmi2w1TPS5ZlYbyFeADmefJyy4GYVjBTf0h+qAjkk
+ 041ciflv6l2fRi/+cTbWWg4JJxr0mxMh/iQbkGtT/vxxJSSg3XbqFkEGDR3aK5OXMiHw3F
+ 2cgqTZ3vdjus+hNbqx19GPU7Ch5CaVI=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-581-BR_IGDEIOiOOeUD5r6F-SQ-1; Tue, 21 Feb 2023 04:13:01 -0500
+X-MC-Unique: BR_IGDEIOiOOeUD5r6F-SQ-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ cz22-20020a0564021cb600b004a245f58006so5484814edb.12
+ for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 01:13:01 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=NR2w0zb7f7zbVIleo3/KORSI4e6TNOfFi6Z8lbL8KS0=;
+ b=ipd0nt3LguZR6vp8Wu7U1X09E7D6the08KyX/0BNn1hvZz0l/m4jWP1nPJebkHk5rB
+ DfQDTbzaCOqL8Qu6VSf7rfqQT7++asSNDovruussXD7zN8NeLIygQsHDzRj7ERBos3XX
+ 0X0T1Dpw4yf2T+YMjzReVWnkmZOODsR95soTYv2XKfZQsEATrsrSv1FgbKIQhff9hwBb
+ s8UZisInPtXmNMZLi/QSxhMt2KfAHdIItDFvEltaTkv1qgRSO2y5sCKCHC6lhiWL5I6P
+ QqyKu5hWPr6IEt9ge2cJJgfqIHqoX1Hp4NdYdN5+3tgSxoxOK6VQRa4q7hcnMWuFGQG5
+ xuGQ==
+X-Gm-Message-State: AO0yUKVqftX8/GQDDwYBehEAkCH3GA5qzlAim39tBEPAjNTfRCOmY3dD
+ PUE3YT/laaUeHgeVF+De093hOBKedu82soUj7iMnqsaDMgdoCI1ZwdSnCjGynZjKYAydoLl50A3
+ XA3GOogATRyQKw225DUljWq2voUH7hKY=
+X-Received: by 2002:a17:906:b746:b0:88d:64e7:a2be with SMTP id
+ fx6-20020a170906b74600b0088d64e7a2bemr5720614ejb.15.1676970780720; 
+ Tue, 21 Feb 2023 01:13:00 -0800 (PST)
+X-Received: by 2002:a17:906:b746:b0:88d:64e7:a2be with SMTP id
+ fx6-20020a170906b74600b0088d64e7a2bemr5720607ejb.15.1676970780484; Tue, 21
+ Feb 2023 01:13:00 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+References: <20230212204942.1905959-1-marcandre.lureau@redhat.com>
+ <20230212204942.1905959-4-marcandre.lureau@redhat.com>
+ <87r0ukbjfp.fsf@pond.sub.org>
+ <CAMxuvaxiN1jYr70k2yK0CUSjo4UQF8DqjPX_COvCdtAWhf3zNw@mail.gmail.com>
+ <55e488cf-0b5f-f1e9-0a15-5d3e8c155abe@redhat.com>
+In-Reply-To: <55e488cf-0b5f-f1e9-0a15-5d3e8c155abe@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Tue, 21 Feb 2023 13:12:48 +0400
+Message-ID: <CAMxuvayAMEwR29fCs3SkHd8iOiOB+36QZBvEd7qG-sMhPdf2EQ@mail.gmail.com>
+Subject: Re: [PATCH 3/4] win32: stop mixing SOCKET and file descriptor space
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Joel Stanley <joel@jms.id.au>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, 
+ Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>
+Content-Type: multipart/alternative; boundary="000000000000ab759105f5322fb5"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oXzhl8rj9ZRN
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ipHtT0BB2wuh
 
-Linux kernel guest reports warning when two CPUs in one socket have
-been associated with different NUMA nodes, using the following command
-lines.
+--000000000000ab759105f5322fb5
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-  -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
-  -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
-  -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
-  -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
+Hi
 
-  ------------[ cut here ]------------
-  WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
-  Modules linked in:
-  CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
-  pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-  pc : build_sched_domains+0x284/0x910
-  lr : build_sched_domains+0x184/0x910
-  sp : ffff80000804bd50
-  x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
-  x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
-  x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
-  x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
-  x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
-  x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
-  x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
-  x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
-  x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
-  x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
-  Call trace:
-   build_sched_domains+0x284/0x910
-   sched_init_domains+0xac/0xe0
-   sched_init_smp+0x48/0xc8
-   kernel_init_freeable+0x140/0x1ac
-   kernel_init+0x28/0x140
-   ret_from_fork+0x10/0x20
+On Tue, Feb 21, 2023 at 12:18 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
 
-Fix it by preventing mutiple CPUs in one socket to be associated with
-different NUMA nodes.
+> On 2/20/23 16:29, Marc-Andr=C3=A9 Lureau wrote:
+> >> 7. A Windows SOCKET is also a HANDLE.  Maybe.  I guess.  Docs are
+> >>     confusing.
+> >>
+> > Kind of, but not really. I think a HANDLE is a kind of void*. You need =
+to
+> > be careful using it appropriately with the right functions. Sometime, a
+> > HANDLE can work with generic functions, like ReadFile, but you should n=
+ot
+> > use a CloseHandle on SOCKET, or registry key..
+>
+> A Windows SOCKET *is* a file HANDLE except it's always in overlapped
+> mode so Windows provides send()/recv() in case you don't want to deal
+> with overlapped mode.  But you can use it with ReadFile too (Windows API
+> documentation says that is only true sometimes, but Winsock API is 30
+> years old and right now you pretty much always can).
+>
+> However, sockets also has some extra information on the side, so you
+> need to close them with closesocket() and CloseHandle() is not enough.
+>
 
-Reported-by: Yihuang Yu <yihyu@redhat.com>
-Signed-off-by: Gavin Shan <gshan@redhat.com>
----
- hw/arm/virt.c | 37 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+Yeah, the question is "is it safe to call CloseHandle() on a SOCKET, before
+closesocket()". Testing/error checking seems to say it's okay.. I wouldn't
+be surprised if internally the CloseHandle() function does something to
+check if the given handle is a SOCKET and skip it. I wish they would
+document it..
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ac626b3bef..e0af267c77 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -230,6 +230,39 @@ static bool cpu_type_valid(const char *cpu)
-     return false;
- }
- 
-+static bool numa_state_valid(MachineState *ms)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    NumaState *state = ms->numa_state;
-+    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
-+    const CPUArchId *cpus = possible_cpus->cpus;
-+    int len = possible_cpus->len, i, j;
-+
-+    if (!state || state->num_nodes <= 1 || len <= 1) {
-+        return true;
-+    }
-+
-+    for (i = 0; i < len; i++) {
-+        for (j = i + 1; j < len; j++) {
-+            if (cpus[i].props.has_socket_id &&
-+                cpus[i].props.has_node_id &&
-+                cpus[j].props.has_socket_id &&
-+                cpus[j].props.has_node_id &&
-+                cpus[i].props.socket_id == cpus[j].props.socket_id &&
-+                cpus[i].props.node_id != cpus[j].props.node_id) {
-+                error_report("CPU-%d and CPU-%d in socket-%ld have been "
-+                             "associated with node-%ld and node-%ld",
-+                             i, j, cpus[i].props.socket_id,
-+                             cpus[i].props.node_id,
-+                             cpus[j].props.node_id);
-+                return false;
-+            }
-+        }
-+    }
-+
-+    return true;
-+}
-+
- static void create_randomness(MachineState *ms, const char *node)
- {
-     struct {
-@@ -2040,6 +2073,10 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
-     }
- 
-+    if (!numa_state_valid(machine)) {
-+        exit(1);
-+    }
-+
-     possible_cpus = mc->possible_cpu_arch_ids(machine);
- 
-     /*
--- 
-2.23.0
+
+> The problem is that close() of something opened with _open_osfhandle()
+> *does* do that CloseHandle(), so basically you are closing the handle
+> twice.  IIRC there used to be undocumented functions _alloc_osfhnd() and
+> similar, but they don't exist anymore (even Wine does not have them), so
+> we're stuck; unfortunately this is the reason why QEMU is not already
+> doing something like what you have in this patch.
+>
+> Is this a real bug or is it theoretical?  Do file descriptor and socket
+> spaces overlap in practice?
+>
+>
+Yes it likely can, the first SOCKET value starts at 92 in a simple test. It
+looks like it may depend on the system number of opened sockets.
+
+I think the second big issue is that we have many places where we assume a
+fd is a fd, and we simply call close() (which would result in CloseHandle,
+but missing closesocket).
+
+sigh, if the CRT would allow us to steal the handle back..
+
+--000000000000ab759105f5322fb5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi<br></div><br><div class=3D"gmail_quote=
+"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 21, 2023 at 12:18 PM Pa=
+olo Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com">pbonzini@redhat.com<=
+/a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
+px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">O=
+n 2/20/23 16:29, Marc-Andr=C3=A9 Lureau wrote:<br>
+&gt;&gt; 7. A Windows SOCKET is also a HANDLE.=C2=A0 Maybe.=C2=A0 I guess.=
+=C2=A0 Docs are<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0confusing.<br>
+&gt;&gt;<br>
+&gt; Kind of, but not really. I think a HANDLE is a kind of void*. You need=
+ to<br>
+&gt; be careful using it appropriately with the right functions. Sometime, =
+a<br>
+&gt; HANDLE can work with generic functions, like ReadFile, but you should =
+not<br>
+&gt; use a CloseHandle on SOCKET, or registry key..<br>
+<br>
+A Windows SOCKET *is* a file HANDLE except it&#39;s always in overlapped <b=
+r>
+mode so Windows provides send()/recv() in case you don&#39;t want to deal <=
+br>
+with overlapped mode.=C2=A0 But you can use it with ReadFile too (Windows A=
+PI <br>
+documentation says that is only true sometimes, but Winsock API is 30 <br>
+years old and right now you pretty much always can).<br>
+<br>
+However, sockets also has some extra information on the side, so you <br>
+need to close them with closesocket() and CloseHandle() is not enough.<br><=
+/blockquote><div><br></div><div>Yeah, the question is &quot;is it safe to c=
+all CloseHandle() on a SOCKET, before closesocket()&quot;. Testing/error ch=
+ecking seems to say it&#39;s okay.. I wouldn&#39;t be surprised if internal=
+ly the CloseHandle() function does something to check if the given handle i=
+s a SOCKET and skip it. I wish they would document it..<br></div><div><br><=
+/div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
+rder-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+The problem is that close() of something opened with _open_osfhandle() <br>
+*does* do that CloseHandle(), so basically you are closing the handle <br>
+twice.=C2=A0 IIRC there used to be undocumented functions _alloc_osfhnd() a=
+nd <br>
+similar, but they don&#39;t exist anymore (even Wine does not have them), s=
+o <br>
+we&#39;re stuck; unfortunately this is the reason why QEMU is not already <=
+br>
+doing something like what you have in this patch.<br>
+<br>
+Is this a real bug or is it theoretical?=C2=A0 Do file descriptor and socke=
+t <br>
+spaces overlap in practice?<br>
+<br></blockquote><div><br></div><div>Yes it likely can, the first SOCKET va=
+lue starts at 92 in a simple test. It looks like it may depend on the syste=
+m number of opened sockets.<br></div><div><br></div><div>I think the second=
+ big issue is that we have many places where we assume a fd is a fd, and we=
+ simply call close() (which would result in CloseHandle, but missing closes=
+ocket).</div><div><br></div><div>sigh, if the CRT would allow us to steal t=
+he handle back.. <br></div><div><br></div><div><br></div><div>=C2=A0</div><=
+/div></div>
+
+--000000000000ab759105f5322fb5--
 

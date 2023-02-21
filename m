@@ -1,107 +1,108 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2812115ejb;
-        Mon, 20 Feb 2023 18:21:58 -0800 (PST)
-X-Google-Smtp-Source: AK7set+axoc+WQAclYfvi2jnEu8qx4l1dwXLc4jQWPxe3EaTB1076DZMXvVXHiy0oWM+nTswdno/
-X-Received: by 2002:a05:622a:18a2:b0:3b8:2033:78e3 with SMTP id v34-20020a05622a18a200b003b8203378e3mr21054031qtc.55.1676946117863;
-        Mon, 20 Feb 2023 18:21:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676946117; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2812339ejb;
+        Mon, 20 Feb 2023 18:22:27 -0800 (PST)
+X-Google-Smtp-Source: AK7set8Er7ZxGhwKCdg7g9sgPXhJduPtFp07mkUyHSpoP4cuk8z6slUKNTKu361nb5RUeo8ZvdY7
+X-Received: by 2002:a05:6214:1d29:b0:56e:9d24:bd08 with SMTP id f9-20020a0562141d2900b0056e9d24bd08mr3953051qvd.2.1676946147785;
+        Mon, 20 Feb 2023 18:22:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676946147; cv=none;
         d=google.com; s=arc-20160816;
-        b=gDJuoRTPOirWaDOO0VwGE85kNwfZ0F9MKwonM9eChOPXJnQ9npv1Ta+CZGTUChY0Ug
-         m87/ryGSEyPO2Hbhl0V9z5Gq/TzhX5Jmk+LZdkXG7WQWkIZEKtS3K14bp/sNCasCaU8a
-         Yi5+Yh3rZYkVFvVperdBn46w4UDk0SN6f13U8HIczgAYZHiZQlq6x54T0Mz3fjffyZS1
-         uIIrp6nVHkqOSO9KVTiT3VYoyWpShDxeGfUEFauXN+gewNZ2v2c7vgX5+axjxl5aFSKk
-         6G9yFMlJuaDX7cf5LPT0kSSfLGLBNfcjcJ/Q5AwDItn2/gfRUN0MehS/V+L+Gn8h2jhT
-         n20A==
+        b=IoCt2IYYy6ks5p4GE6bXGgwuMK5jK5HNYpif7foqdi9hWvVhjbc5Xwb3jO8Yq2QJ5Z
+         CJuICzB6XigTEyKS2Ttn06VNzj1MrcTBJjLMkZUrmciLtPmwiEDGqp9S7PxAECqs0nD6
+         FUL03ryxTwg1bf8wyp71XKg/Ge4WKgWvfcSbHRqGkg2NlxCNdGMj8TpCHNOk0wrPn6Ih
+         ajBfb5MRLjA/ac6c2nLEntKcVBXl2AOU5f2co+pPunRV+ud8byHR81o6KerHJOZ2tNIt
+         LXjutejPGqGhEJHH31b3fify44opNMPyA81WMmWV6x+ANO81bEXgkeE+rT5Gdo4+qBJs
+         tRfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=IdlPIsbyU63QTH8OjgZ/6X4x7sICRqYPKrZtVtFUFwM=;
-        b=a0OiutV5BRx2iAUpn203YF0iYLmzRecW8DJS9pa1TC79uFP94i2qxnlJxot3CQm5+N
-         H5k42TqD+erPUq5j8lBccCsQOCJbPa1pf75pq769qzybdGeKR0wlX0rqfQuCsJpgmP6w
-         zmmQZ8DDjp6XqMNDX5C9OK0IEuA49zC4wfifDH/oZmi1miqgFWv5gqaJuwUhSAjo1hPU
-         KxP+AEZijstDJvo+rZdiPduGVPuCDziUum7bH9odxPBba4bmYJFsfRCrjWC9E/87ikST
-         KD0VZYAL/NdRpEEb0HTl1rmea7aL2QVCBP7JstWr5TLH4HP08DS00N9v52Y9kSuOD/eb
-         2l/w==
+        bh=atup5JzD1u28pHb0Z+S8hkpRI38cVehaAA91hoO5SKs=;
+        b=qD8d6ATD5W7sBLLcfyDPbBzzGNpIyrOJWWx1JKcUgXjb5oyEyBMRYyOBbZLr6zCwAa
+         RXro8s7R9WCD2YLjdAGuyLghgHWPXUPDIMoNa0SAotK6Qb9yqqei9RlJkn615PAI48UH
+         WbaFF9/7BhAvptRp0apdo5H5/NHD/Pi6bLzxeCPks6XE8CeTIUv4n0Z5XfahTeIkI32q
+         vIP0lXwb9KG67LFbcBXao9mTJuna1gBjdPh46WksV55SUDZ67gUBjxvSNrzgpVAUWQF2
+         XPuqc/crw0TyA0RaUeCYb69RJwgsWDGOkkhNLruiRRXNT0bAljVN0kGNdh7Wda74sLeN
+         /sKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ygWv7Ror;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Knk1M/Jd";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b12-20020ac87fcc000000b003b6836e472bsi10582609qtk.781.2023.02.20.18.21.57
+        by mx.google.com with ESMTPS id n4-20020a0cdc84000000b0056eb33de335si9023844qvk.308.2023.02.20.18.22.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Feb 2023 18:21:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Feb 2023 18:22:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ygWv7Ror;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Knk1M/Jd";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pUIGc-0001kM-SC; Mon, 20 Feb 2023 21:20:30 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pUIGc-0001jF-3h; Mon, 20 Feb 2023 21:20:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUIGT-0001gV-1m
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 21:20:22 -0500
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ id 1pUIGG-0001d1-O0
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 21:20:08 -0500
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUIGO-0008Gx-I7
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 21:20:19 -0500
-Received: by mail-pj1-x102f.google.com with SMTP id
- m3-20020a17090ade0300b00229eec90a7fso2199710pjv.0
- for <qemu-devel@nongnu.org>; Mon, 20 Feb 2023 18:20:15 -0800 (PST)
+ id 1pUIGE-0008En-Vq
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 21:20:08 -0500
+Received: by mail-pj1-x1035.google.com with SMTP id
+ ei9-20020a17090ae54900b002349a303ca5so3220227pjb.4
+ for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 18:20:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IdlPIsbyU63QTH8OjgZ/6X4x7sICRqYPKrZtVtFUFwM=;
- b=ygWv7RorVIYKMA9vAgRqgfHF1CuoVxM5ImvinGKkYG05Ikj3G4mAjh265icXy1xG+9
- JjVlrx89q+gay5bseCkJeQrd3rZLK6nNIPkUSrksFGqkdGa+64qugLaJfsxettvri0M7
- I76pNXcSz9d0D4KFygLISkEYj+NtFlaxCWDl/75Ej5YJc8PgKBayB6H71FZwm5DiWW98
- 7cDyQyBtqOwgmYULYCCVqNNZCU2r62VKEYDPZtwMGOdRJSyKSzswhDz3T35KawXL5w6C
- 3NQ7NTNdgLct+EinNoriOj42M58gjd58hGg2J5OL6sexWzNOocTMWeWIrvkzbtOBc2BV
- h76Q==
+ bh=atup5JzD1u28pHb0Z+S8hkpRI38cVehaAA91hoO5SKs=;
+ b=Knk1M/Jd7wuSWsJ+ikRciTVUjGiojB8MLfIppiI52SRw1FEw+Iq3geY9c3psmc8ADo
+ xgw4z975tkLnuT2ADIltw4uTMIYK7fVpwrOS7TISy7gCjBynAjXwmtACo0fwnn4byQP7
+ fSWLxl31ixs/HzUck+z+gqpTuFJ+STXgfnvKrq2DDg8NcJObepYpTQ19BRFfSB5/vin0
+ VYllOBo92AVu92dy6PMpn31eKfIw3PSemmsUgK3xbOW/x3/LQdsVSxO1p1Ci+U6hlJDu
+ hIV92TA/DW/eR9rgIe48yZrmtKf0ZvPAFhtLqVYJZnoHCSjzwPLfBknom1eHuCg10uMt
+ 1o3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=IdlPIsbyU63QTH8OjgZ/6X4x7sICRqYPKrZtVtFUFwM=;
- b=LvjMGJiDsIMNL7wTP0ojwdPMh5kERjjZg8+4oEnRX8kkM/V6NkgF6LwrJAzRmhxvK3
- jHhfYnAHvnVfSAoAByS6hCdCI2V39xLACU9w8rtMpIofNXZdQq1EydPRtmZ/n6riUdIB
- ZYc6SRM/a7VXyH3zD4HBxCoyHMnlWLoqFpC2BiFV8jxAx1ksLFUV+tdFfFYcLjn/6d4c
- j6iYirDv+lmz+VrS2zcnWS3QmjeAtwOPbTweVJ08Z7Tt0ZglY3WPBIHc0tjdt5uxY3rd
- Lyb0s7Vz8A48Vf9bccg6yLavUnQU142gEwASXyIVfgFk9Z/dP43n8Nb/xhIQ3y+ND3XL
- lLYA==
-X-Gm-Message-State: AO0yUKUNw8tT5E+Nr4XAzctdB5GeohMpMDgbXRwmFlbDeb9GsvQC82Ii
- L2YxIpC8M4nQMqjTZSRFigxSGA5WGf+G0TrApuc=
-X-Received: by 2002:a17:903:2805:b0:196:5839:b36a with SMTP id
- kp5-20020a170903280500b001965839b36amr2925918plb.8.1676946014861; 
- Mon, 20 Feb 2023 18:20:14 -0800 (PST)
+ bh=atup5JzD1u28pHb0Z+S8hkpRI38cVehaAA91hoO5SKs=;
+ b=wjlKVCC3yBXyigxEojsmDbzhzsr1aYhWNwuAfx2UTJ/U9DnsVgiYoLb8VKA/wKxkJN
+ 2+XI23DufT3VvxFiQIxhiLnAUb6ECVrrUtBv0mWJATjOmUIFsLMfdlRMbpYkMBfUpoAx
+ hIaZIeb+HQij6j4IXqB5jQghzDrUKPxeKdxsV7WymH1/zrsdGjlSKRUoaPA1ENgcY+yB
+ meVnYOnINlgSH1VoBbKpiITTAjBROfYfC9w4ev4ZoKhT8ICsX1o4gXBNq7/ObCE0D1cS
+ VQwAajmH/U8UNAmUO8CCZq6UryUaDjbpLqvpxBYVNq6bjXeP51Iz+C/YVuMmyXl6ynVj
+ FwJA==
+X-Gm-Message-State: AO0yUKU0gdgf1QkKNsHyqY6cKw/sngedCjXUl9GooMEIEelh5b5ZumcU
+ iFtoEDK9tbmySy/AbQKJuClwxY0IFINSdbw8yYk=
+X-Received: by 2002:a17:902:ce81:b0:19a:a650:ac55 with SMTP id
+ f1-20020a170902ce8100b0019aa650ac55mr4788618plg.23.1676946005572; 
+ Mon, 20 Feb 2023 18:20:05 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- f3-20020a170902e98300b0019141c79b1dsm8559328plb.254.2023.02.20.18.20.13
+ f3-20020a170902e98300b0019141c79b1dsm8559328plb.254.2023.02.20.18.20.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Feb 2023 18:20:14 -0800 (PST)
+ Mon, 20 Feb 2023 18:20:05 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, David Reiss <dreiss@meta.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 13/14] target/arm: Export arm_v7m_get_sp_ptr
-Date: Mon, 20 Feb 2023 16:19:50 -1000
-Message-Id: <20230221021951.453601-14-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 07/14] target/arm: Fix svep width in
+ arm_gen_dynamic_svereg_xml
+Date: Mon, 20 Feb 2023 16:19:44 -1000
+Message-Id: <20230221021951.453601-8-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230221021951.453601-1-richard.henderson@linaro.org>
 References: <20230221021951.453601-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,177 +111,43 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n0oG/zdUnlRx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZvO2QigSE1nA
 
-From: David Reiss <dreiss@meta.com>
-
-Allow the function to be used outside of m_helper.c.
-Move to be outside of ifndef CONFIG_USER_ONLY block.
-Rename from get_v7m_sp_ptr.
+Define svep based on the size of the predicates,
+not the primary vector registers.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: David Reiss <dreiss@meta.com>
-[rth: Split out of a larger patch]
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 10 +++++
- target/arm/m_helper.c  | 84 +++++++++++++++++++++---------------------
- 2 files changed, 51 insertions(+), 43 deletions(-)
+ target/arm/gdbstub64.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 89052b1c94..523822ac87 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1342,6 +1342,16 @@ void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
- /* Read the CONTROL register as the MRS instruction would. */
- uint32_t arm_v7m_mrs_control(CPUARMState *env, uint32_t secure);
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 895e19f084..d0e1305f6f 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -297,7 +297,7 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int orig_base_reg)
+     /* Create the predicate vector type. */
+     g_string_append_printf(s,
+                            "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
+-                           reg_width / 8);
++                           pred_width / 8);
  
-+/*
-+ * Return a pointer to the location where we currently store the
-+ * stack pointer for the requested security state and thread mode.
-+ * This pointer will become invalid if the CPU state is updated
-+ * such that the stack pointers are switched around (eg changing
-+ * the SPSEL control bit).
-+ */
-+uint32_t *arm_v7m_get_sp_ptr(CPUARMState *env, bool secure,
-+                             bool threadmode, bool spsel);
-+
- #ifdef CONFIG_USER_ONLY
- static inline void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu) { }
- #else
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 03be79e7bf..081fc3f5f7 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -650,42 +650,6 @@ void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
-     arm_rebuild_hflags(env);
- }
- 
--static uint32_t *get_v7m_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
--                                bool spsel)
--{
--    /*
--     * Return a pointer to the location where we currently store the
--     * stack pointer for the requested security state and thread mode.
--     * This pointer will become invalid if the CPU state is updated
--     * such that the stack pointers are switched around (eg changing
--     * the SPSEL control bit).
--     * Compare the v8M ARM ARM pseudocode LookUpSP_with_security_mode().
--     * Unlike that pseudocode, we require the caller to pass us in the
--     * SPSEL control bit value; this is because we also use this
--     * function in handling of pushing of the callee-saves registers
--     * part of the v8M stack frame (pseudocode PushCalleeStack()),
--     * and in the tailchain codepath the SPSEL bit comes from the exception
--     * return magic LR value from the previous exception. The pseudocode
--     * opencodes the stack-selection in PushCalleeStack(), but we prefer
--     * to make this utility function generic enough to do the job.
--     */
--    bool want_psp = threadmode && spsel;
--
--    if (secure == env->v7m.secure) {
--        if (want_psp == v7m_using_psp(env)) {
--            return &env->regs[13];
--        } else {
--            return &env->v7m.other_sp;
--        }
--    } else {
--        if (want_psp) {
--            return &env->v7m.other_ss_psp;
--        } else {
--            return &env->v7m.other_ss_msp;
--        }
--    }
--}
--
- static bool arm_v7m_load_vector(ARMCPU *cpu, int exc, bool targets_secure,
-                                 uint32_t *pvec)
- {
-@@ -810,8 +774,8 @@ static bool v7m_push_callee_stack(ARMCPU *cpu, uint32_t lr, bool dotailchain,
-             !mode;
- 
-         mmu_idx = arm_v7m_mmu_idx_for_secstate_and_priv(env, M_REG_S, priv);
--        frame_sp_p = get_v7m_sp_ptr(env, M_REG_S, mode,
--                                    lr & R_V7M_EXCRET_SPSEL_MASK);
-+        frame_sp_p = arm_v7m_get_sp_ptr(env, M_REG_S, mode,
-+                                        lr & R_V7M_EXCRET_SPSEL_MASK);
-         want_psp = mode && (lr & R_V7M_EXCRET_SPSEL_MASK);
-         if (want_psp) {
-             limit = env->v7m.psplim[M_REG_S];
-@@ -1656,10 +1620,8 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-          * use 'frame_sp_p' after we do something that makes it invalid.
-          */
-         bool spsel = env->v7m.control[return_to_secure] & R_V7M_CONTROL_SPSEL_MASK;
--        uint32_t *frame_sp_p = get_v7m_sp_ptr(env,
--                                              return_to_secure,
--                                              !return_to_handler,
--                                              spsel);
-+        uint32_t *frame_sp_p = arm_v7m_get_sp_ptr(env, return_to_secure,
-+                                                  !return_to_handler, spsel);
-         uint32_t frameptr = *frame_sp_p;
-         bool pop_ok = true;
-         ARMMMUIdx mmu_idx;
-@@ -1965,7 +1927,7 @@ static bool do_v7m_function_return(ARMCPU *cpu)
-         threadmode = !arm_v7m_is_handler_mode(env);
-         spsel = env->v7m.control[M_REG_S] & R_V7M_CONTROL_SPSEL_MASK;
- 
--        frame_sp_p = get_v7m_sp_ptr(env, true, threadmode, spsel);
-+        frame_sp_p = arm_v7m_get_sp_ptr(env, true, threadmode, spsel);
-         frameptr = *frame_sp_p;
- 
-         /*
-@@ -2900,3 +2862,39 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
- }
- 
- #endif /* !CONFIG_USER_ONLY */
-+
-+uint32_t *arm_v7m_get_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
-+                             bool spsel)
-+{
-+    /*
-+     * Return a pointer to the location where we currently store the
-+     * stack pointer for the requested security state and thread mode.
-+     * This pointer will become invalid if the CPU state is updated
-+     * such that the stack pointers are switched around (eg changing
-+     * the SPSEL control bit).
-+     * Compare the v8M ARM ARM pseudocode LookUpSP_with_security_mode().
-+     * Unlike that pseudocode, we require the caller to pass us in the
-+     * SPSEL control bit value; this is because we also use this
-+     * function in handling of pushing of the callee-saves registers
-+     * part of the v8M stack frame (pseudocode PushCalleeStack()),
-+     * and in the tailchain codepath the SPSEL bit comes from the exception
-+     * return magic LR value from the previous exception. The pseudocode
-+     * opencodes the stack-selection in PushCalleeStack(), but we prefer
-+     * to make this utility function generic enough to do the job.
-+     */
-+    bool want_psp = threadmode && spsel;
-+
-+    if (secure == env->v7m.secure) {
-+        if (want_psp == v7m_using_psp(env)) {
-+            return &env->regs[13];
-+        } else {
-+            return &env->v7m.other_sp;
-+        }
-+    } else {
-+        if (want_psp) {
-+            return &env->v7m.other_ss_psp;
-+        } else {
-+            return &env->v7m.other_ss_msp;
-+        }
-+    }
-+}
+     /* Define the vector registers. */
+     for (i = 0; i < 32; i++) {
 -- 
 2.34.1
 

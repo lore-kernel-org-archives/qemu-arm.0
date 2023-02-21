@@ -1,187 +1,214 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3640407ejb;
-        Tue, 21 Feb 2023 13:41:34 -0800 (PST)
-X-Google-Smtp-Source: AK7set/+esDjhltgZYqVc14Jn+J0Wg2hXpMZ/6URFkdrRtu5ZUHPQYK6c6LC155ll/GyEGnSB+sB
-X-Received: by 2002:aa7:d8c1:0:b0:4ad:714e:2372 with SMTP id k1-20020aa7d8c1000000b004ad714e2372mr6935032eds.14.1677015693926;
-        Tue, 21 Feb 2023 13:41:33 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1677015693; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=PKJt0uIMfebC9CI0uq0t5BnQBTOUmtXuh3ul0YlA+C1yZUdJrOQYXuPJaxV2cKVqnD
-         wa1qEj8CC/O2sqXuE+NHcMBXtjR2Dn/NC7jrpT9fyxbVKnULWQzGhvUhrCoaZYeoYprr
-         oCdyJszhKAC6ImNc6Qwu7+JcpodqxYHa7SfhGZaQqEKWGy/oC1NnmsYg4VjurlQE3Y5+
-         qhwcpkbv5K9c4jgkSDt72VbbBNdOyC3y3REbu+vBP8cw+Wr+hPG1Ix0Kdqr2fVvlMpkp
-         YNVjyS5HPI6N+xtZtGsmmb/1z5E1lgKpGpnArZjNu2IGFjr247TZ+2VeKBiag8VDtIAk
-         2kBg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:in-reply-to:content-disposition:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=EviAXVR2RgCeLPAdUCqqAqlDpH55ODeqmoFNcy231LA=;
-        b=Ay31K+K0S0xzHJsxQVIYeOOZzeyeAuJXYaPMMWz3UGbl+gpUadX2SGJZ76rsBp1ZfS
-         Rjw8pFmRrku+Y/enIyWx/NFf0ei/rxTKGsY42dYr8N1vh9NvJyNx7rvww6v1Ou33zclQ
-         FcaOFknMAAa0mV0Rpg1Fy/CudlyioTAXtH5mM771FXE0m93FJ4WwUVtYK8xBtfB3fdzz
-         Q+utAwiPxQO2c7mYnLoLqao4bZ8rkYIBTLvnDER2ICPlUU2rYRr4TIfY7jl7td5OE1zX
-         thJT8AAS9d4URY3ZwaWOIFWorDsHhGIGvxIVdhn3nUW7jlk1UWXzKjGlIwPlHAmJLGYE
-         owVQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=clbV2DHf;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e88::71f as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Return-Path: <aaron@os.amperecomputing.com>
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (mail-dm6nam10on2071f.outbound.protection.outlook.com. [2a01:111:f400:7e88::71f])
-        by mx.google.com with ESMTPS id s16-20020aa7d790000000b004ace203c6c8si2829254edq.202.2023.02.21.13.41.33
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Feb 2023 13:41:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e88::71f as permitted sender) client-ip=2a01:111:f400:7e88::71f;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=clbV2DHf;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e88::71f as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=d7CK7VpdEPcixolb2jhRCM7vE4rgpVG4leLe23nkhcaGeM0EefNoPDX0J2sm6bOem8OtbbfoHtKP8i8/damMi6/iOLVKVWUs6+eF+YcMuyO/bAelGVBV0HA48f6yvUdBhn7+3hBGu5V6SR5pHvjYODBQNmUwGJxPNAPc7xUe1Iz1UPn3d2nbP8jZhvvITZdfQhXSSD3+AqfVBVT7/EEQXoRcj+U/f6OuzYiOplIGi87P/TEwDcwUA0o3GfDJkhI2BKUsDxVETuav9ZKRCysaKeWa7INP38Wye+NlNair5yNhXFjSHCC1MYxez9w3BD3JlL5u0dHgooA/hqf2zObzjA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EviAXVR2RgCeLPAdUCqqAqlDpH55ODeqmoFNcy231LA=;
- b=Tl05g/fXiNMJgy7IU/SrnIIfrpBgOje4ziAq6gdtrFZSqrMFHvuvDMGQ5OzDQBGgNuaXjmIX/a6fNXdnhqb2jkm4CshbSk2FImmDrG7uiws1hAE7KMAFVeqFXUnHc5YwiMtIqy0TUgq/XyZNWe8gYlrI7W7asdG/jmzbHUXIRxxV799Yjv8fgWLJxrzsfuk/wZxMxa++y5dQRSy01IfEOOxOvPXp4GofXOLdIphh9Ds0XURGmMsyQCGIPoY5565jGxeSh9ZPgQOMt9b75TheEkPnnlPBS2J+GTKtzxNXdi0taey8Y7dp++Rz4ATYurg0OSps2NERRFwpF3m3LxFoOw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EviAXVR2RgCeLPAdUCqqAqlDpH55ODeqmoFNcy231LA=;
- b=clbV2DHfTmebh1BQ5jtPnbO6anVygPWahQQChlxdgPG3GfYiux5ux7Ortuvr/cm39ttnkrakCy2XDVN+e2Fuu1esVmU4K6qKR4wexrkD5edQ8qRxvAjYrMEhGV5t42unUN7kHRG92BHuby5dw21h1/5/SFvmXFylQv7oTah88M4=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
-Received: from CH0PR01MB7124.prod.exchangelabs.com (2603:10b6:610:f3::20) by
- SA0PR01MB6220.prod.exchangelabs.com (2603:10b6:806:e2::21) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6111.21; Tue, 21 Feb 2023 21:41:31 +0000
-Received: from CH0PR01MB7124.prod.exchangelabs.com
- ([fe80::c6ce:a93c:6bfa:2ec8]) by CH0PR01MB7124.prod.exchangelabs.com
- ([fe80::c6ce:a93c:6bfa:2ec8%9]) with mapi id 15.20.6111.021; Tue, 21 Feb 2023
- 21:41:31 +0000
-Date: Tue, 21 Feb 2023 16:41:15 -0500
-From: Aaron Lindsay <aaron@os.amperecomputing.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id m6-20020a05600c4f4600b003df245cd853sm7625736wmq.44.2023.02.21.14.52.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Feb 2023 14:52:27 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 4771E1FFB7;
+	Tue, 21 Feb 2023 22:52:27 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org,
+	qemu-s390x@nongnu.org,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	nicolas.eder@lauterbach.com,
+	Stafford Horne <shorne@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Taylor Simpson <tsimpson@quicinc.com>,
+	mads@ynddal.dk,
+	Marek Vasut <marex@denx.de>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	qemu-ppc@nongnu.org,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Bin Meng <bin.meng@windriver.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Vincent Dehors <vincent.dehors@smile.fr>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 1/7] target/arm: v8.3 PAC ID_AA64ISAR[12]
- feature-detection
-Message-ID: <Y/U6eyck3nW3cu3o@strawberry.localdomain>
-References: <20230202211129.984060-1-aaron@os.amperecomputing.com>
- <20230202211129.984060-2-aaron@os.amperecomputing.com>
- <CAFEAcA8uVVCfWwEYVs5ATzi7jNh9--cN+TVQ63M_ZW_bWwqtxg@mail.gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8uVVCfWwEYVs5ATzi7jNh9--cN+TVQ63M_ZW_bWwqtxg@mail.gmail.com>
-X-ClientProxiedBy: CH0PR03CA0352.namprd03.prod.outlook.com
- (2603:10b6:610:11a::21) To CH0PR01MB7124.prod.exchangelabs.com
- (2603:10b6:610:f3::20)
-Return-Path: aaron@os.amperecomputing.com
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Chris Wulff <crwulff@gmail.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Greg Kurz <groug@kaod.org>,
+	David Hildenbrand <david@redhat.com>,
+	Song Gao <gaosong@loongson.cn>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH v3 00/24] gdbstub: re-organise to for better compilation behaviour
+Date: Tue, 21 Feb 2023 22:52:03 +0000
+Message-Id: <20230221225227.3735319-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH0PR01MB7124:EE_|SA0PR01MB6220:EE_
-X-MS-Office365-Filtering-Correlation-Id: 49457f6b-9c16-4c8f-750a-08db1454650c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	8qCFe9zIxO1lyssSdm9ySE4LHV8Vr0AGQuvinTFS+zciyNCFRbdHLf+2pDz5aH54Qx1L9D+HrwhLhq7DrUUhnFl/W582q+AYMgm51d21Nc11G36hZlU9pBlpf4jnd9sS2Ico+a3KSwrZXOwywfXm1YpkyqdaxHV9gDlM1058i5Jq9/QvwaIMps8KUNbqHLmoysdGc5EHW5jSG2HwdbVi1GSNdWE8Cyic188WgAWSSergghW6YYKDMS1JsSFaabZKGT0dzN5xN3Zr0nFIAp1Za4Qj0FX6cH+pvQczllLNYpZBwsgJ/JB3lXyfr9F5CPxuuaWSXY6G4IgvAXHDFuH8+046hMmxupMqc3/onpGH+O/PjX3YsQivmD3z6N/TUJIf0BydOUAKijyI3pdfGnE+AmFMFgYzL9v8sg2TmY2y/5nmauofyMwaNGqD3juZiIM67iLb8WZzoWMbNm7ak14h9egBTW19xLCJieCCJo3TfGP1ox8PY7jGb1BPZg6eORPDp1hZa/Z+keceU+tKv041Dz1DebkbqmbUocQXmdrrZk/CdsysvovfzV//F8sSZ9uRtTSx73hor7eZTVZaNGyLn6SoKRK3xIjnxAZnYkgFs8o4N9B7YNmhRuSZGR20jJyeZFZXdf1ruqkiqgVIl5lOYA==
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR01MB7124.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(366004)(39850400004)(376002)(346002)(136003)(396003)(451199018)(316002)(478600001)(38100700002)(54906003)(2906002)(6916009)(66556008)(66476007)(66946007)(8676002)(86362001)(4326008)(41300700001)(8936002)(5660300002)(6506007)(6512007)(6486002)(66899018)(6666004)(26005)(186003)(9686003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?us-ascii?Q?+8LjjNV7ZhIqx58yE1BU3s8Wm5/VRDOzTaPEvKUkxfQINJL9SU7rT5mEKgxn?=
- =?us-ascii?Q?hyTcdo3diZflB5DTHt2RzduQqod9v+cbRx6pKIaBRW7lMIWCAtIq4BTRCHVh?=
- =?us-ascii?Q?JaeJfU0KQw5wwCA8LmOJO93e6YiGnSWYTwrWWr+FFcz1SMaNZI0U0tr83cKx?=
- =?us-ascii?Q?YUyc84m8wMFwTQWoKt1oztbgE63ZMyuPTZZhXV0Ko8QHAM3EfNxIKv7QARNv?=
- =?us-ascii?Q?OWVPiG1EXHPZ069BnQqqUi1YbRk7OUMWvGJbiaM4m903fudM8LvH6iJncZIl?=
- =?us-ascii?Q?EtYX6C0aQkK+wnxKaq6pTV7XoQoCEuQtTZ0vX7FGlzbw85H0KDEqRuv/+5Hm?=
- =?us-ascii?Q?o93p0xN5miOQZM4q/OYFsf8bhO8SpWeRYM6b4CpyCJc0dBz6xDhriUOtx4X9?=
- =?us-ascii?Q?jBpavwNJRIl8EkiOZxiOh/G2phH3LX/Z4FUiCfbVhK7c1Gvola5UNBoGUlU9?=
- =?us-ascii?Q?4/RwfTbYdTQwzZCLPesEJSJMKNGvPEx1l78x7YwBJT/6G9BhphtR6CB4Ful+?=
- =?us-ascii?Q?fy0jaTFhGK3ElhpdiTbn+iuwHVurHepAeCBEbj9ir1nNUX7u/16CPRRR16aD?=
- =?us-ascii?Q?J70UUJzG87PdbIgkbc+R5dAuD/ALAGUTB3YYxOeX2ACwj6X+pfT30Ty63gO6?=
- =?us-ascii?Q?8a9RoEwsmXwZklk7dZLaXj4c9OtfyH9mP3BN6nCITP1gF+HbeC+HwDRWGQ7y?=
- =?us-ascii?Q?IdBXNzZ1pHsUVdBbtXjEPmkRwpxEP4iLGjhsZNDl8SCeLyP/+sGc0OjoSfEw?=
- =?us-ascii?Q?2MlDg/h+kBv1iUxh0fwsaOQw1z0eugizS66O7PhXD2pVRpDoz4ZiuO2Ogod/?=
- =?us-ascii?Q?MKJtA4agbYAlJ7Sldqjz8YdjQWA6PpKH/GieviaeQ7Qbz8Shuxl6TC45lR5R?=
- =?us-ascii?Q?Vdie6wVM5G0r5RIZHHrk/qqqbhca/CcdsiK8QKjDfa47zzPbXc7VpD9YxPqs?=
- =?us-ascii?Q?n349PF0oKMlaYwSABy2ggN0vxEQl4IH3tzzlNoV1QXG36hSCxY1KKAiXjhsJ?=
- =?us-ascii?Q?BdmoaTDyR8S+/cmYOYEbNAtpWIzNQYCiaB2gdTUGA0AI1R3z907LZJx9yTAX?=
- =?us-ascii?Q?7lYPhl0ZDqzm0pIxWhkROg/dQxFvYwLO85BNq5ahhq5dYGGg7UlmYoMqpEZS?=
- =?us-ascii?Q?z809yNiiulgMqm0LDoDX2siY6+I7x1DRZGtfRCMyKyvj4mi6RuHPdMBqvtL0?=
- =?us-ascii?Q?ScIQeQrrr8g6gU+Of7/lrMjsSF76up1UJ/AHc9jnmU/705Tog9fUJoHXAVbr?=
- =?us-ascii?Q?wIOtMGeqj2GXh6qb25RM25+CAs9sxvqMmq0fbsAylEJa3Y5BAhiy75N9xAkn?=
- =?us-ascii?Q?75X0QrrTKZtnqdLhe9J7pt83JceW/osOj8Pu9OXbJk+uYkyYU88XwAPNn67e?=
- =?us-ascii?Q?Mpvfvwy+ufng9myRSONSAk6T6hx+Wc9d19HtDDFmkjTu2QeDy1D1Ny3KXHjX?=
- =?us-ascii?Q?VbD3rUGzNaj8WBa768EK5oOv4pry3j6gq2ClHbdh8stjmAxl+YFCK8KXbiSL?=
- =?us-ascii?Q?Dsh8ZHDGWydme6lzmluBUftNDjeQbp5r0RcpbKFyBFT/dWElxJMKmS5kDQMJ?=
- =?us-ascii?Q?gK3vD0kaMRkR2k8/miHi3mmmlu8ZuLHofC4erW9A3G+NMFN49ToI4ii5zDyE?=
- =?us-ascii?Q?FK7doZP7r5fDm+hPLaWPdcM=3D?=
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 49457f6b-9c16-4c8f-750a-08db1454650c
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR01MB7124.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Feb 2023 21:41:30.9661
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: AvZRex8c9nApGCVacdDpyN6A/XFqnd0M8QvheHLKmLIpCLA/RjlBXa8WC45O7bGQBbkJb4UZqNurv+QehmfQLQDrxhCRWV37IjdUeejpzMTIH6iIdfk2OqYvkLnMYACw
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR01MB6220
-X-TUID: 6j6NzEiM75J+
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: ciSItMnAUOpX
 
-On Feb 13 16:01, Peter Maydell wrote:
-> On Thu, 2 Feb 2023 at 21:13, Aaron Lindsay <aaron@os.amperecomputing.com> wrote:
-> > +static inline bool isar_feature_aa64_pauth_epac(const ARMISARegisters *id)
-> > +{
-> > +    return isar_feature_pauth_get_features(id) == 0b0010;
-> 
-> This should ideally be ">= 0b0010", but it depends a bit on
-> where we call it.
+I was motivated to sort this out while working on my register API
+which is target agnostic but ran into the weeds when trying to link up
+with the gdbstub. This was due to us building gdbstub for every single
+target we support due to a few ABI sensitive bits that require CPU
+specific information. This series does a bunch of surgery to break the
+monolithic file apart into its constituent parts as well as simplify
+the headers to users can avoid bringing in more dependencies than they
+need.
 
-FYI - I did make this `>= 0b0010` after changing the logic around elsewhere to
-be compatible as you suggested. I'm also planning to add a comment like this:
+I had hoped to go all the way and conditionally compile syscalls only
+for the two ABIs (32 and 64 bit) unfortunately I was unable to the
+appropriate meson-foo to make that happen.
 
- /*
-  * Note that unlike most AArch64 features, EPAC is treated (in the ARM
-  * psedocode, at least) as not being implemented by larger values of this
-  * field. Our usage of '>=' rather than '==' here causes our implementation
-  * of PAC logic to diverge slightly from ARM pseudocode.
-  */
+Other than a minor re-org of the patches and addressing review
+comments (see bellow ---) the only new patches are the ones to split
+target_ulong into its own header and remove the remaining cpu-def
+requirements from syscall handling.
 
+The following patches need review:
 
-> This field, like most ID register fields, follows the "standard
-> scheme", where the value increases and larger numbers always
-> imply "all of the functionality from the lower values, plus
-> some more". In QEMU we implement this by doing a >= type
-> comparison on the field value.
-> 
-> The PAC related ID fields are documented slightly confusingly,
-> but they do work this way. The documentation suggests it might not
-> be quite that way for FEAT_EPAC because it says that
-> HaveEnhancedPAC() returns TRUE for 2 and FALSE for 3 and up.
-> However this is more because the definition of the architectural
-> features means that FEAT_EPAC is irrelevant, and it's an accident
-> of the way the pseudocode was written that means that
-> HaveEnhancedPAC() ever gets called when FEAT_PAuth2 is present.
-> 
-> Other than EPAC, the rest of the values in these fields are
-> straightforward and we can implement the isar_feature functions
-> with a single >= comparison.
+gdbstub: split out softmmu/user specifics for syscall handling
+include: split target_long definition from cpu-defs
+testing: probe gdb for supported architectures ahead of time
+gdbstub: only compile gdbstub twice for whole build
+gdbstub: rationalise signal mapping in softmmu
 
-Thanks for your review!
+Alex Bennée (23):
+  gdbstub/internals.h: clean up include guard
+  gdbstub: fix-up copyright and license files
+  gdbstub: define separate user/system structures
+  gdbstub: move GDBState to shared internals header
+  includes: move tb_flush into its own header
+  gdbstub: move fromhex/tohex routines to internals
+  gdbstub: make various helpers visible to the rest of the module
+  gdbstub: move chunk of softmmu functionality to own file
+  gdbstub: move chunks of user code into own files
+  gdbstub: rationalise signal mapping in softmmu
+  gdbstub: abstract target specific details from gdb_put_packet_binary
+  gdbstub: specialise handle_query_attached
+  gdbstub: specialise target_memory_rw_debug
+  gdbstub: introduce gdb_get_max_cpus
+  gdbstub: specialise stub_can_reverse
+  gdbstub: fix address type of gdb_set_cpu_pc
+  gdbstub: don't use target_ulong while handling registers
+  gdbstub: move register helpers into standalone include
+  gdbstub: move syscall handling to new file
+  gdbstub: only compile gdbstub twice for whole build
+  testing: probe gdb for supported architectures ahead of time
+  include: split target_long definition from cpu-defs
+  gdbstub: split out softmmu/user specifics for syscall handling
 
-I've made a number of your (simpler) suggested changes already, and will
-target getting a new patchset out in the next couple weeks after I spend
-more time withi the the remaining GETPC() changes that need a little
-more thought/rework, and we sort out what the command-line options
-should look like.
+Philippe Mathieu-Daudé (1):
+  gdbstub: Make syscall_complete/[gs]et_reg target-agnostic typedefs
 
--Aaron
+ MAINTAINERS                                   |    1 +
+ configure                                     |    8 +
+ gdbstub/internals.h                           |  214 ++-
+ include/exec/cpu-defs.h                       |   19 +-
+ include/exec/exec-all.h                       |    1 -
+ include/exec/gdbstub.h                        |  208 ---
+ include/exec/target_long.h                    |   42 +
+ include/exec/tb-flush.h                       |   26 +
+ include/gdbstub/helpers.h                     |  103 +
+ include/gdbstub/syscalls.h                    |  124 ++
+ include/gdbstub/user.h                        |   43 +
+ linux-user/user-internals.h                   |    1 +
+ accel/stubs/tcg-stub.c                        |    1 +
+ accel/tcg/tb-maint.c                          |    1 +
+ accel/tcg/translate-all.c                     |    1 +
+ cpu.c                                         |    1 +
+ gdbstub/gdbstub.c                             | 1654 ++---------------
+ gdbstub/softmmu.c                             |  605 +++++-
+ gdbstub/syscalls.c                            |  217 +++
+ gdbstub/user-target.c                         |  281 +++
+ gdbstub/user.c                                |  427 ++++-
+ hw/ppc/spapr_hcall.c                          |    1 +
+ linux-user/exit.c                             |    2 +-
+ linux-user/main.c                             |    1 +
+ linux-user/signal.c                           |    2 +-
+ plugins/core.c                                |    1 +
+ plugins/loader.c                              |    2 +-
+ semihosting/arm-compat-semi.c                 |    1 +
+ semihosting/guestfd.c                         |    2 +-
+ semihosting/syscalls.c                        |    3 +-
+ softmmu/runstate.c                            |    2 +-
+ target/alpha/gdbstub.c                        |    2 +-
+ target/alpha/sys_helper.c                     |    1 +
+ target/arm/gdbstub.c                          |    1 +
+ target/arm/gdbstub64.c                        |    2 +-
+ target/arm/helper-a64.c                       |    2 +-
+ target/arm/m_helper.c                         |    1 +
+ target/avr/gdbstub.c                          |    2 +-
+ target/cris/gdbstub.c                         |    2 +-
+ target/hexagon/gdbstub.c                      |    2 +-
+ target/hppa/gdbstub.c                         |    2 +-
+ target/i386/gdbstub.c                         |    2 +-
+ target/i386/whpx/whpx-all.c                   |    2 +-
+ target/loongarch/gdbstub.c                    |    1 +
+ target/m68k/gdbstub.c                         |    2 +-
+ target/m68k/helper.c                          |    1 +
+ target/m68k/m68k-semi.c                       |    3 +-
+ target/microblaze/gdbstub.c                   |    2 +-
+ target/mips/gdbstub.c                         |    2 +-
+ target/mips/tcg/sysemu/mips-semi.c            |    3 +-
+ target/nios2/cpu.c                            |    2 +-
+ target/nios2/nios2-semi.c                     |    3 +-
+ target/openrisc/gdbstub.c                     |    2 +-
+ target/openrisc/interrupt.c                   |    2 +-
+ target/openrisc/mmu.c                         |    2 +-
+ target/ppc/cpu_init.c                         |    2 +-
+ target/ppc/gdbstub.c                          |    1 +
+ target/riscv/csr.c                            |    1 +
+ target/riscv/gdbstub.c                        |    1 +
+ target/rx/gdbstub.c                           |    2 +-
+ target/s390x/gdbstub.c                        |    1 +
+ target/s390x/helper.c                         |    2 +-
+ target/sh4/gdbstub.c                          |    2 +-
+ target/sparc/gdbstub.c                        |    2 +-
+ target/tricore/gdbstub.c                      |    2 +-
+ target/xtensa/core-dc232b.c                   |    2 +-
+ target/xtensa/core-dc233c.c                   |    2 +-
+ target/xtensa/core-de212.c                    |    2 +-
+ target/xtensa/core-de233_fpu.c                |    2 +-
+ target/xtensa/core-dsp3400.c                  |    2 +-
+ target/xtensa/core-fsf.c                      |    2 +-
+ target/xtensa/core-lx106.c                    |    2 +-
+ target/xtensa/core-sample_controller.c        |    2 +-
+ target/xtensa/core-test_kc705_be.c            |    2 +-
+ target/xtensa/core-test_mmuhifi_c3.c          |    2 +-
+ target/xtensa/gdbstub.c                       |    2 +-
+ target/xtensa/helper.c                        |    2 +-
+ gdbstub/meson.build                           |   33 +-
+ gdbstub/trace-events                          |    4 +-
+ scripts/probe-gdb-support.sh                  |   36 +
+ target/xtensa/import_core.sh                  |    2 +-
+ tests/tcg/aarch64/Makefile.target             |    2 +-
+ tests/tcg/multiarch/Makefile.target           |    5 +
+ .../multiarch/system/Makefile.softmmu-target  |    6 +-
+ tests/tcg/s390x/Makefile.target               |    2 +-
+ 85 files changed, 2375 insertions(+), 1796 deletions(-)
+ create mode 100644 include/exec/target_long.h
+ create mode 100644 include/exec/tb-flush.h
+ create mode 100644 include/gdbstub/helpers.h
+ create mode 100644 include/gdbstub/syscalls.h
+ create mode 100644 include/gdbstub/user.h
+ create mode 100644 gdbstub/syscalls.c
+ create mode 100644 gdbstub/user-target.c
+ create mode 100755 scripts/probe-gdb-support.sh
+
+-- 
+2.39.1

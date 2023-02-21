@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3216250ejb;
-        Tue, 21 Feb 2023 04:48:35 -0800 (PST)
-X-Google-Smtp-Source: AK7set8wiP7epdInzexOwVM66iXQFj7JmogrG02tzGw/vsIQyuYAugSaFKlzxfsXzrGNyGiV/wjA
-X-Received: by 2002:a05:622a:60c:b0:3ba:1d8d:f6eb with SMTP id z12-20020a05622a060c00b003ba1d8df6ebmr21239578qta.58.1676983715353;
-        Tue, 21 Feb 2023 04:48:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676983715; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3216427ejb;
+        Tue, 21 Feb 2023 04:48:53 -0800 (PST)
+X-Google-Smtp-Source: AK7set9Y2h4RTM7NIw+XCREcf1Sd3Ick84wIDE5VBHhZ/kMlXlStgTvukbSm53ODKaB56INF9OPl
+X-Received: by 2002:ac8:7f01:0:b0:3b8:6b6b:28c2 with SMTP id f1-20020ac87f01000000b003b86b6b28c2mr7668107qtk.68.1676983733374;
+        Tue, 21 Feb 2023 04:48:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676983733; cv=none;
         d=google.com; s=arc-20160816;
-        b=tjbDMa02F6OsgWUkoI5FMOU1fLZzLEqLoW5c6K5o/mW236owXOc7+bcEgneCsDFLt8
-         HDSpMopG0wUUIuUhb6/pqJQPWVjQy6MyIVAVPduIBoQZ76fpGSzhnd0DEEIMrxTenRBR
-         p/usGjf/DNyH7PbKEAEOIvzxIYCPUmDBxOA6dDktuGsxpLweaVy67j9D/ISSt3Unhi7r
-         8cvWTC0H00TfMG5UdCRPo/HpyIB1iF5iDGpUTh8sN3gjsazPapBBFZL6B40J3GxNHNUP
-         BnjW0GZvLkhQWXB1mxv5B+kpCKcClrGJgHPlvQdnpwcSB2TSbPK4nLi1RTdyvGGeKMDG
-         XbZA==
+        b=qX0qwEZl5eomEVfqU5wuYeXKSoxwE24QGwfG0yt48Unty3v9BemgOz6oiqOH0zzxrN
+         JNOrAmPD1lwDGKO6ArZcVZCOH+ClBOT+34JfTVxu11a9CpLc2n0VfgBDztOOmEIK/Evd
+         p3MTwL+7OvfCDoCo5NeChV11EyUc4iUtac3Yx12E9OFeifaa5q2CrQW0JGygnjOympig
+         kcejq+Gg0BjM9KBX9px1ETcK0/0bTcJLLhqL75GdcG3LSgHMEIT+ahD5zeDKPvusX/72
+         sflBStxfVFi50UISkD4OjTBsYnrJbPi9g8T3sC1F+vVhPgdKOx7JNx1XkZbLQE9OGZPt
+         c+EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=nl9rYr1LeoSXQmWX/qOPZeg0gY/F/3CSnvmyxLivaDA=;
-        b=wXFH9szMPSrmg8oEDadc2ud2rjNahIHR/293TcoxGJPS1o/Q2G6MQkyN3u5U/fk8oX
-         9Nsi4MAozWRVtZ1ZhV7wlbbtMPlYwAM1HyRyoMpTuMfYspneJv+MXyM8Ve118NIEzLcJ
-         Ce93QkaQXJeUa+46aMzKEdOG4qVc4w+j43BSbbEo6SidOiXmALqTheXPwH4DjxUs573A
-         pbWjXpACNmpAJOc628OHe/DwLajwdUewk6Iob3O67ozhKZkyK/bR428TMPjwJekAiRug
-         pl3EXgkuWFVaHDB9qwlpPnj/J1ykRFWjj82ed7jzy7N08sDadHOcQJWyfv0m+UkicMoV
-         JpOQ==
+        bh=FdBPB+RDG5OUe3X5u5+AagfzlDwHupOC+vr+B897S4c=;
+        b=CYmGIx42WX/Iiaubj10W5pRbGa4cMefp1KxWrJICGlj9nUraeikilOXSeCi2/Slw7A
+         HgPn4cS+aEYoUPKBAUrbrNsZvVVWVn/YjU4grPgqWlw3C68tFEw8eJa+B5yqhu1PuY2R
+         B5pXPDeyhwMt2LLmQcxr5PQb1QbNCUESWNx9waiOS3cwUgPhV7KTwd1qcuWdxmTYYASa
+         aSOSvWV1xVdQkL4s5kDJ5M16e29g8Nwl4D0hZfM7SlFsuBNrqsekRAo0GF1t28IADMTz
+         fVIGBs0/r0AgR6fe5kxIWdEMuA9YpdrZrxomOMnAihwLxMchwY3CUWf472vyvuVF5M3Y
+         GffQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cJRwvrI0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JIUGAQHR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o21-20020ac87c55000000b003b85355c09esi2350667qtv.758.2023.02.21.04.48.35
+        by mx.google.com with ESMTPS id i10-20020ac85e4a000000b003b645e71d97si12702302qtx.287.2023.02.21.04.48.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 04:48:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Feb 2023 04:48:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cJRwvrI0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JIUGAQHR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUS4N-0005Ag-Ii; Tue, 21 Feb 2023 07:48:31 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pUS4C-0004w5-7z; Tue, 21 Feb 2023 07:48:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUS4L-000583-NL
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:48:29 -0500
+ id 1pUS49-0004tk-GF
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 07:48:18 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1pUS4K-0007qS-0r
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 07:48:29 -0500
+ id 1pUS47-0007oI-Nv
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 07:48:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676983707;
+ s=mimecast20190719; t=1676983695;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nl9rYr1LeoSXQmWX/qOPZeg0gY/F/3CSnvmyxLivaDA=;
- b=cJRwvrI0Rkmj3pl7kgMH1uF0Hy/NPkNeGUJXjvs2qyItfudsXBMLdAT3Vb4PHrMNj052uf
- DEJ82wGxsHJY/imB8+pD8c+NePCkIoOWJYG8K0M+FdHBNsJinlfr0+kZJFVDrHu4fCNgeR
- xLf3gLiVEIf6I/OGt7JG6YZpq2M/IB4=
+ bh=FdBPB+RDG5OUe3X5u5+AagfzlDwHupOC+vr+B897S4c=;
+ b=JIUGAQHRFAzwVmqW5yu1KCBTwwCPYtp47WOu5UFf9dHD9pIhb8tpBSZ5z0RsPYvdeoioNq
+ AEdpysKyUUp6x7n470h1tvFcv45j++JgrgqUPuRvpc3D2fQnhqnrrNYqMlEP5fB/ys7SGu
+ QKe77UiGlP+3ZJmEd1225eAajr/HgGA=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-26-Eb3fgGvAOHmrmYe7D8semA-1; Tue, 21 Feb 2023 07:48:24 -0500
-X-MC-Unique: Eb3fgGvAOHmrmYe7D8semA-1
+ us-mta-192-eXnikXA5Nwe8faLO4HubBg-1; Tue, 21 Feb 2023 07:48:11 -0500
+X-MC-Unique: eXnikXA5Nwe8faLO4HubBg-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BC1C785A588;
- Tue, 21 Feb 2023 12:48:23 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C653585A588;
+ Tue, 21 Feb 2023 12:48:10 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.31])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8E40B2026D4B;
- Tue, 21 Feb 2023 12:48:22 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 98C082026D4B;
+ Tue, 21 Feb 2023 12:48:09 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
@@ -90,9 +90,9 @@ Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, Joel Stanley <joel@jms.id.au>,
  Hanna Reitz <hreitz@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v3 04/16] tests: add test-error-report
-Date: Tue, 21 Feb 2023 16:47:49 +0400
-Message-Id: <20230221124802.4103554-5-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 01/16] util: drop qemu_fork()
+Date: Tue, 21 Feb 2023 16:47:46 +0400
+Message-Id: <20230221124802.4103554-2-marcandre.lureau@redhat.com>
 In-Reply-To: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
 References: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
@@ -110,169 +110,161 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rXXsqli28Rsa
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UwC0oqy0O9Gu
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- tests/unit/test-error-report.c | 121 +++++++++++++++++++++++++++++++++
- tests/unit/meson.build         |   1 +
- 2 files changed, 122 insertions(+)
- create mode 100644 tests/unit/test-error-report.c
+Fortunately, qemu_fork() is no longer used since commit
+a95570e3e4d6 ("io/command: use glib GSpawn, instead of open-coding
+fork/exec"). (GSpawn uses posix_spawn() whenever possible instead)
 
-diff --git a/tests/unit/test-error-report.c b/tests/unit/test-error-report.c
-new file mode 100644
-index 0000000000..b09650687b
---- /dev/null
-+++ b/tests/unit/test-error-report.c
-@@ -0,0 +1,121 @@
-+/*
-+ * Error reporting test
-+ *
-+ * Copyright (C) 2022 Red Hat Inc.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "glib-compat.h"
-+#include <locale.h>
-+
-+#include "qemu/error-report.h"
-+
-+static void
-+test_error_report_simple(void)
-+{
-+    if (g_test_subprocess()) {
-+        error_report("%s", "test error");
-+        warn_report("%s", "test warn");
-+        info_report("%s", "test info");
-+        return;
-+    }
-+
-+    g_test_trap_subprocess(NULL, 0, 0);
-+    g_test_trap_assert_passed();
-+    g_test_trap_assert_stderr("\
-+test-error-report: test error*\
-+test-error-report: warning: test warn*\
-+test-error-report: info: test info*\
-+");
-+}
-+
-+static void
-+test_error_report_loc(void)
-+{
-+    if (g_test_subprocess()) {
-+        loc_set_file("some-file.c", 7717);
-+        error_report("%s", "test error1");
-+        loc_set_none();
-+        error_report("%s", "test error2");
-+        return;
-+    }
-+
-+    g_test_trap_subprocess(NULL, 0, 0);
-+    g_test_trap_assert_passed();
-+    g_test_trap_assert_stderr("\
-+test-error-report:some-file.c:7717: test error1*\
-+test-error-report: test error2*\
-+");
-+}
-+
-+static void
-+test_error_report_glog(void)
-+{
-+    if (g_test_subprocess()) {
-+        g_message("gmessage");
-+        return;
-+    }
-+
-+    g_test_trap_subprocess(NULL, 0, 0);
-+    g_test_trap_assert_passed();
-+    g_test_trap_assert_stderr("test-error-report: info: gmessage*");
-+}
-+
-+static void
-+test_error_report_once(void)
-+{
-+    int i;
-+
-+    if (g_test_subprocess()) {
-+        for (i = 0; i < 3; i++) {
-+            warn_report_once("warn");
-+            error_report_once("err");
-+        }
-+        return;
-+    }
-+
-+    g_test_trap_subprocess(NULL, 0, 0);
-+    g_test_trap_assert_passed();
-+    g_test_trap_assert_stderr("\
-+test-error-report: warning: warn*\
-+test-error-report: err*\
-+");
-+}
-+
-+static void
-+test_error_report_timestamp(void)
-+{
-+    if (g_test_subprocess()) {
-+        message_with_timestamp = true;
-+        warn_report("warn");
-+        error_report("err");
-+        return;
-+    }
-+
-+    g_test_trap_subprocess(NULL, 0, 0);
-+    g_test_trap_assert_passed();
-+    g_test_trap_assert_stderr("\
-+*-*-*:*:* test-error-report: warning: warn*\
-+*-*-*:*:* test-error-report: err*\
-+");
-+}
-+
-+int
-+main(int argc, char *argv[])
-+{
-+    setlocale(LC_ALL, "");
-+
-+    g_test_init(&argc, &argv, NULL);
-+    error_init("test-error-report");
-+
-+    g_test_add_func("/error-report/simple", test_error_report_simple);
-+    g_test_add_func("/error-report/loc", test_error_report_loc);
-+    g_test_add_func("/error-report/glog", test_error_report_glog);
-+    g_test_add_func("/error-report/once", test_error_report_once);
-+    g_test_add_func("/error-report/timestamp", test_error_report_timestamp);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index ffa444f432..015e8131df 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -11,6 +11,7 @@ tests = {
-   'check-qobject': [],
-   'check-qjson': [],
-   'check-qlit': [],
-+  'test-error-report': [],
-   'test-qobject-output-visitor': [testqapi],
-   'test-clone-visitor': [testqapi],
-   'test-qobject-input-visitor': [testqapi],
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ include/qemu/osdep.h | 14 ---------
+ util/oslib-posix.c   | 70 --------------------------------------------
+ util/oslib-win32.c   |  9 ------
+ 3 files changed, 93 deletions(-)
+
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index 88c9facbf2..f68b5d8708 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -665,20 +665,6 @@ void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
+  */
+ char *qemu_get_pid_name(pid_t pid);
+ 
+-/**
+- * qemu_fork:
+- *
+- * A version of fork that avoids signal handler race
+- * conditions that can lead to child process getting
+- * signals that are otherwise only expected by the
+- * parent. It also resets all signal handlers to the
+- * default settings.
+- *
+- * Returns 0 to child process, pid number to parent
+- * or -1 on failure.
+- */
+-pid_t qemu_fork(Error **errp);
+-
+ /* Using intptr_t ensures that qemu_*_page_mask is sign-extended even
+  * when intptr_t is 32-bit and we are aligning a long long.
+  */
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 77d882e681..760390b31e 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -583,76 +583,6 @@ char *qemu_get_pid_name(pid_t pid)
+ }
+ 
+ 
+-pid_t qemu_fork(Error **errp)
+-{
+-    sigset_t oldmask, newmask;
+-    struct sigaction sig_action;
+-    int saved_errno;
+-    pid_t pid;
+-
+-    /*
+-     * Need to block signals now, so that child process can safely
+-     * kill off caller's signal handlers without a race.
+-     */
+-    sigfillset(&newmask);
+-    if (pthread_sigmask(SIG_SETMASK, &newmask, &oldmask) != 0) {
+-        error_setg_errno(errp, errno,
+-                         "cannot block signals");
+-        return -1;
+-    }
+-
+-    pid = fork();
+-    saved_errno = errno;
+-
+-    if (pid < 0) {
+-        /* attempt to restore signal mask, but ignore failure, to
+-         * avoid obscuring the fork failure */
+-        (void)pthread_sigmask(SIG_SETMASK, &oldmask, NULL);
+-        error_setg_errno(errp, saved_errno,
+-                         "cannot fork child process");
+-        errno = saved_errno;
+-        return -1;
+-    } else if (pid) {
+-        /* parent process */
+-
+-        /* Restore our original signal mask now that the child is
+-         * safely running. Only documented failures are EFAULT (not
+-         * possible, since we are using just-grabbed mask) or EINVAL
+-         * (not possible, since we are using correct arguments).  */
+-        (void)pthread_sigmask(SIG_SETMASK, &oldmask, NULL);
+-    } else {
+-        /* child process */
+-        size_t i;
+-
+-        /* Clear out all signal handlers from parent so nothing
+-         * unexpected can happen in our child once we unblock
+-         * signals */
+-        sig_action.sa_handler = SIG_DFL;
+-        sig_action.sa_flags = 0;
+-        sigemptyset(&sig_action.sa_mask);
+-
+-        for (i = 1; i < NSIG; i++) {
+-            /* Only possible errors are EFAULT or EINVAL The former
+-             * won't happen, the latter we expect, so no need to check
+-             * return value */
+-            (void)sigaction(i, &sig_action, NULL);
+-        }
+-
+-        /* Unmask all signals in child, since we've no idea what the
+-         * caller's done with their signal mask and don't want to
+-         * propagate that to children */
+-        sigemptyset(&newmask);
+-        if (pthread_sigmask(SIG_SETMASK, &newmask, NULL) != 0) {
+-            Error *local_err = NULL;
+-            error_setg_errno(&local_err, errno,
+-                             "cannot unblock signals");
+-            error_report_err(local_err);
+-            _exit(1);
+-        }
+-    }
+-    return pid;
+-}
+-
+ void *qemu_alloc_stack(size_t *sz)
+ {
+     void *ptr, *guardpage;
+diff --git a/util/oslib-win32.c b/util/oslib-win32.c
+index 07ade41800..528c9ee156 100644
+--- a/util/oslib-win32.c
++++ b/util/oslib-win32.c
+@@ -283,15 +283,6 @@ char *qemu_get_pid_name(pid_t pid)
+ }
+ 
+ 
+-pid_t qemu_fork(Error **errp)
+-{
+-    errno = ENOSYS;
+-    error_setg_errno(errp, errno,
+-                     "cannot fork child process");
+-    return -1;
+-}
+-
+-
+ #undef connect
+ int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
+                       socklen_t addrlen)
 -- 
 2.39.2
 

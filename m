@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id c22-20020a7bc856000000b003e01493b136sm5857812wml.43.2023.02.21.15.01.57
+        by smtp.gmail.com with ESMTPSA id t23-20020a05600c2f9700b003dc521f336esm5381055wmn.14.2023.02.21.15.01.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 21 Feb 2023 15:01:58 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 862381FFC5;
-	Tue, 21 Feb 2023 22:52:29 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id E2FFE1FFCC;
+	Tue, 21 Feb 2023 22:52:30 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -52,115 +52,109 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 16/24] gdbstub: specialise stub_can_reverse
-Date: Tue, 21 Feb 2023 22:52:19 +0000
-Message-Id: <20230221225227.3735319-17-alex.bennee@linaro.org>
+Subject: [PATCH v3 21/24] gdbstub: only compile gdbstub twice for whole build
+Date: Tue, 21 Feb 2023 22:52:24 +0000
+Message-Id: <20230221225227.3735319-22-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
 References: <20230221225227.3735319-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ZYh0+aTucVyJ
+X-TUID: Dqig3C9bQKUi
 
-Currently we only support replay for softmmu mode so it is a constant
-false for user-mode.
+Now we have removed any target specific bits from the core gdbstub
+code we only need to build it twice. We have to jump a few meson hoops
+to manually define the CONFIG_USER_ONLY symbol but it seems to work.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v3
-  - rename gdb_stub_can_revers -> gdb_can_reverse
+  - also include user and softmmu bits in the library
 ---
- gdbstub/internals.h |  1 +
- gdbstub/gdbstub.c   | 13 ++-----------
- gdbstub/softmmu.c   |  5 +++++
- gdbstub/user.c      |  5 +++++
- 4 files changed, 13 insertions(+), 11 deletions(-)
+ gdbstub/gdbstub.c     |  3 +--
+ gdbstub/user-target.c |  2 +-
+ gdbstub/meson.build   | 32 ++++++++++++++++++++++++++------
+ 3 files changed, 28 insertions(+), 9 deletions(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 90069a9415..5f2e24c4f3 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -128,6 +128,7 @@ CPUState *gdb_first_attached_cpu(void);
- void gdb_append_thread_id(CPUState *cpu, GString *buf);
- int gdb_get_cpu_index(CPUState *cpu);
- unsigned int gdb_get_max_cpus(void); /* both */
-+bool gdb_can_reverse(void); /* softmmu, stub for user */
- 
- void gdb_create_default_process(GDBState *s);
- 
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index f9950200b8..e107aa065c 100644
+index a8b321710c..791cb79bf6 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -113,15 +113,6 @@ int use_gdb_syscalls(void)
-     return gdb_syscall_mode == GDB_SYS_ENABLED;
+@@ -39,7 +39,6 @@
+ 
+ #include "sysemu/hw_accel.h"
+ #include "sysemu/runstate.h"
+-#include "exec/exec-all.h"
+ #include "exec/tb-flush.h"
+ #include "exec/hwaddr.h"
+ #include "sysemu/replay.h"
+@@ -1611,7 +1610,7 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
+         .cmd_startswith = 1,
+         .schema = "s:l,l0"
+     },
+-#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX_USER)
++#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
+     {
+         .handler = gdb_handle_query_xfer_auxv,
+         .cmd = "Xfer:auxv:read::",
+diff --git a/gdbstub/user-target.c b/gdbstub/user-target.c
+index e1d9650c1e..a0c10d6e12 100644
+--- a/gdbstub/user-target.c
++++ b/gdbstub/user-target.c
+@@ -233,7 +233,7 @@ static inline int target_memory_rw_debug(CPUState *cpu, target_ulong addr,
  }
  
--static bool stub_can_reverse(void)
--{
--#ifdef CONFIG_USER_ONLY
--    return false;
--#else
--    return replay_mode == REPLAY_MODE_PLAY;
--#endif
--}
--
- /* writes 2*len+1 bytes in buf */
- void gdb_memtohex(GString *buf, const uint8_t *mem, int len)
+ 
+-#if defined(CONFIG_LINUX_USER)
++#if defined(CONFIG_LINUX)
+ void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx)
  {
-@@ -1307,7 +1298,7 @@ static void handle_step(GArray *params, void *user_ctx)
+     TaskState *ts;
+diff --git a/gdbstub/meson.build b/gdbstub/meson.build
+index 56c40c25ef..6abf067afc 100644
+--- a/gdbstub/meson.build
++++ b/gdbstub/meson.build
+@@ -4,13 +4,33 @@
+ # types such as hwaddr.
+ #
  
- static void handle_backward(GArray *params, void *user_ctx)
- {
--    if (!stub_can_reverse()) {
-+    if (!gdb_can_reverse()) {
-         gdb_put_packet("E22");
-     }
-     if (params->len == 1) {
-@@ -1558,7 +1549,7 @@ static void handle_query_supported(GArray *params, void *user_ctx)
-         g_string_append(gdbserver_state.str_buf, ";qXfer:features:read+");
-     }
- 
--    if (stub_can_reverse()) {
-+    if (gdb_can_reverse()) {
-         g_string_append(gdbserver_state.str_buf,
-             ";ReverseStep+;ReverseContinue+");
-     }
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index 65aa2018a7..5363ff066d 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -443,6 +443,11 @@ unsigned int gdb_get_max_cpus(void)
-     return ms->smp.max_cpus;
- }
- 
-+bool gdb_can_reverse(void)
-+{
-+    return replay_mode == REPLAY_MODE_PLAY;
-+}
+-specific_ss.add(files('gdbstub.c'))
++# We need to build the core gdb code via a library to be able to tweak
++# cflags so:
 +
- /*
-  * Softmmu specific command helpers
-  */
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 15ff3ab08d..a716ad05b2 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -404,6 +404,11 @@ unsigned int gdb_get_max_cpus(void)
-     return max_cpus;
- }
++gdb_user_ss = ss.source_set()
++gdb_softmmu_ss = ss.source_set()
++
++# We build two versions of gdbstub, one for each mode
++gdb_user_ss.add(files('gdbstub.c', 'user.c'))
++gdb_softmmu_ss.add(files('gdbstub.c', 'softmmu.c'))
++
++gdb_user_ss = gdb_user_ss.apply(config_host, strict: false)
++gdb_softmmu_ss = gdb_softmmu_ss.apply(config_host, strict: false)
++
++libgdb_user = static_library('gdb_user', gdb_user_ss.sources(),
++                             name_suffix: 'fa',
++                             c_args: '-DCONFIG_USER_ONLY')
++
++libgdb_softmmu = static_library('gdb_softmmu', gdb_softmmu_ss.sources(),
++                                name_suffix: 'fa')
++
++gdb_user = declare_dependency(link_whole: libgdb_user)
++user_ss.add(gdb_user)
++gdb_softmmu = declare_dependency(link_whole: libgdb_softmmu)
++softmmu_ss.add(gdb_softmmu)
  
-+/* replay not supported for user-mode */
-+bool gdb_can_reverse(void)
-+{
-+    return false;
-+}
+ # These have to built to the target ABI
+ specific_ss.add(files('syscalls.c'))
  
- /*
-  * Break/Watch point helpers
+-softmmu_ss.add(files('softmmu.c'))
+-user_ss.add(files('user.c'))
+-
+-# and BSD?
+-specific_ss.add(when: 'CONFIG_LINUX_USER', if_true: files('user-target.c'))
++# The user-target is specialised by the guest
++specific_ss.add(when: 'CONFIG_USER_ONLY', if_true: files('user-target.c'))
 -- 
 2.39.1

@@ -1,189 +1,430 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2812076ejb;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp2812078ejb;
         Mon, 20 Feb 2023 18:21:54 -0800 (PST)
-X-Google-Smtp-Source: AK7set9HjryvTIa2cVA/St0l0F/YV/BBzTkLX4wK9uhWzRMpP84ZnSDeEOMYrNXCQXgH+5Z7N3nN
-X-Received: by 2002:a05:6214:d4d:b0:56b:f4e2:cb21 with SMTP id 13-20020a0562140d4d00b0056bf4e2cb21mr4354916qvr.19.1676946114405;
+X-Google-Smtp-Source: AK7set9Gu4lhEw2xhiOqivxdxfFDH1ujiihAb2vB0HKXzV2Loe64NeOWyolCimOSQweeZf8gDNZg
+X-Received: by 2002:ad4:5fcb:0:b0:53b:aa54:4eea with SMTP id jq11-20020ad45fcb000000b0053baa544eeamr7503808qvb.20.1676946114668;
         Mon, 20 Feb 2023 18:21:54 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1676946114; cv=none;
         d=google.com; s=arc-20160816;
-        b=nF0bwOPekllDptBOyE3t9f6xH3dQaT0CvBd+Obj9jS8TfZwtIgJ87ZmDaESLsz8pCc
-         nXXj33GdpuQHxZvQak5wstTGKoAPRl2UA5JxGT8bRKdfIj4XtyShM/ZVqbbxAQQbVh5Y
-         tU90hy85v/NUInqBKXH0VQpFB5mAWvezWM6biLN7ehM5dMucH3fqLAw53z7LxkHCMAHk
-         1m04DKwhb34A6hpANKNKk8N/4pPjmLMQ8iFhensFfDDJ3cM8mBDqQnKp8wB9JoVWNCqj
-         lTnbkhhuvmCm/Dq1y2w96edS8bWo9UDvYzTNHTo832IMHtXpt5/TjEtJo4mfOmDWwxx/
-         ap/A==
+        b=aUPDmq3WWWlV7ChECYE3Qb0nvrRASPssWW8t4b2JdjaAYW+CKgHjAT/vFjjhil9eEK
+         0Y1/TCXrxg2syfcrqBXoZjxRD4BHYTBOYMKGsPYwb/CAghd6ilTapfUmODJiFKxS5U58
+         Flm3op/ad8xdxeYCFu2TfVlM8+OBbGiuAqhMJ1iuBOWraB6oc7FTJjeZAI92+mi6WzlJ
+         mgYbhBipnS/uEFffbvT5GNDciyVfFcLsgL5J0GuVd1pV8Qb9ITYE0BtAgHoNIrxSmifP
+         stVf9yaXyNz5uZXq9aGBlub2e30hWY+mubMt7hIsTjKU5P+jZFvAMfgIfVH9KZVyzFHl
+         QDfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=i+YvvHaR7YFBJCK+oJ5F1iI+cpvOya9eRF9FOFdF3og=;
-        b=oPCa40lI/X1smbUBw1tsCK/Wlr6jDBDWiawYMoS3n+A13fJ0SuZCJr9MQdoeHrmq/X
-         ykk2zB4qVITwZL6seBothO9LwqR+/I0IQACFXg8IEzgE8N6mFTp5vI6Pf0u3l1TdecCH
-         i9MzAbnh6LfsHyGk73EgZobyJ7DxX+8clmZz5BoIKHV8BO1vzICbhijALrzinaS0ZTXe
-         ayELYKmAq8TWG/7Ax0xY51vnT7S1iQri2iBlR04JbjAQNzjp2Hx1djHL4TnCEvN0a3mr
-         TBzVnvmO9w2zZw3TVxfoE0GhHPrAAfJCxVM0HiXA+yYvXLw/mjOoqLUatjPCzOgkV4nR
-         FCMA==
+        bh=ggdqj3TP81zF9AJLhqzoDLwtgovOZJuMr88Ei9wR7CM=;
+        b=He4JBBvaHmqwEO9SD/swQdPzWWdFtJeQKQXFarQQzm+4nLK7z0/X/UDENXW8dnsk4j
+         FVhCcYPvnRRPxkjpAitQDqGva0NOd2YWMwVPY0PqOqJwo3zcL8zkMHjPpZccGJOs5bCl
+         KpZzLFnQiQ6z8EMIxB7EEQOmhXoeXFI64Hbe1XbJI45UAGK8GjMCfH9gvhljQ5EMHP3f
+         Fer8E3qPlMeO5gl0SX3TETQCyx1iSEfOQAyHgrD4jweqAHSswmMQbOqp1bFBTzxiL8Pk
+         lvJ1hCA9GX/p8Q++ySYUIrN1hP4E0CAdE0QOoGv1KQU1hOSbHjLc9RygI2PeMLD5Xv3/
+         b5sg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vOM+OaLy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bgWpgiDx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m66-20020a375845000000b007050f63d946si10015935qkb.716.2023.02.20.18.21.54
+        by mx.google.com with ESMTPS id j68-20020a378747000000b006f9b019034bsi10001780qkd.259.2023.02.20.18.21.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 20 Feb 2023 18:21:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vOM+OaLy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bgWpgiDx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pUIGc-0001jz-JQ; Mon, 20 Feb 2023 21:20:30 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pUIGD-0001bX-NX; Mon, 20 Feb 2023 21:20:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUIGO-0001fU-Pg
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 21:20:18 -0500
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+ id 1pUIGB-0001aS-Fq
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 21:20:03 -0500
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUIGM-000821-Kd
- for qemu-devel@nongnu.org; Mon, 20 Feb 2023 21:20:15 -0500
-Received: by mail-pj1-x102d.google.com with SMTP id
- nt5-20020a17090b248500b00237161e33f4so1357346pjb.4
- for <qemu-devel@nongnu.org>; Mon, 20 Feb 2023 18:20:13 -0800 (PST)
+ id 1pUIG9-00081O-C0
+ for qemu-arm@nongnu.org; Mon, 20 Feb 2023 21:20:03 -0500
+Received: by mail-pj1-x1032.google.com with SMTP id
+ d1-20020a17090a3b0100b00229ca6a4636so3474459pjc.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Feb 2023 18:20:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=i+YvvHaR7YFBJCK+oJ5F1iI+cpvOya9eRF9FOFdF3og=;
- b=vOM+OaLy67OxZjZ8zTEWTulThlKqQT/rjLIk3R6UDyiK+WrDGymOL+41kPA0K5a8Ly
- y9/va0xEmm7Srh9EaMeV4m69eVrLrmgOHiXtK9okm9z8WqKhSKuzoBlEphkR6iJZFuCx
- K6qZvQ5rcHv6Y+WtX1ne6nzTII0Z5zhG/lu96sfejFayYJCfYi/DX32dEy28afdEzN6U
- niiS6d+zfHI3hW2CzwmKJLqwdRn70OYE0o9IqwjLz4YT+PqNzm0eeb0OrAP/bhTbSirZ
- y53f9LT0wkEl/G1mepKZilGfJn4wd4hFOst6LIutg73hNtnGHjov/1U1iDjvssRFJO8K
- t8Mw==
+ bh=ggdqj3TP81zF9AJLhqzoDLwtgovOZJuMr88Ei9wR7CM=;
+ b=bgWpgiDxVdcYdVCmZ4+b55D9deHVrHWPW1gGXnf8C7e87kk2B4WukbOn+i5+NqggVG
+ 6LD5PrJEy97HOIjfbnl/TzM6jDq/S5WO/jpN2kZvG1T9DovIZBmpirM8Jtf28GadNQMC
+ B9qM5pELBtVPAGA31XR8VgFGjh7iUeM3uI2ed1GzLMJV7JMSVocFRb5e2pg1iTZt/2dz
+ gUcUnYti9ZdBFE/dyNfMnATWwJY/xkLOa4DwaP7lfQxwAsQiJryJeeX5mIe0vrZRH2Zt
+ mZPrMdtYVxh1QlPiXN0hZX12qXK+AHNHmfnVzqtiBtvNi1c8DiCyEcGffbeLR1ZDcEAm
+ BiWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=i+YvvHaR7YFBJCK+oJ5F1iI+cpvOya9eRF9FOFdF3og=;
- b=vrhwkcdcnYtT2xwI1SI+V/7GSMyYtzzEz66piS5/1C6Sw0D5JvMxtEnBlkLI8sNznh
- 8ASgFwo72zpkLX+ySsBnAruA1KEeyhMkmEVkWTuZF1QaxLwXLd/1JTVNDuMSu3k83I+8
- 9jjItg7ZoxpzI4IVkH9Ngm/3puY3iemge+657eOjfaub2YtmWSfkGksr6Om/7Zrq6VeA
- JoP73xGX9eUlqmEayocrs9G/1JsmZWvutN2S17iZHoHWBM8FaWU9SoHBCqPOUhwqq5+J
- iJhLhpNZv4evRDCPohBakmiF77iEqG+mpvyhf15ExqZpFkSghcBafb0zzV1wPOyhuRJE
- JhBg==
-X-Gm-Message-State: AO0yUKV6tZUOXL2nRdrrpux74vy5cT/j4u/nxiJSqtkHUOAd//omwYMw
- 4+/4A3QyaaBcpkkWZMSE3YbBokxpnpaC8Gfw7oY=
-X-Received: by 2002:a17:903:183:b0:19b:33c0:40ab with SMTP id
- z3-20020a170903018300b0019b33c040abmr3504795plg.43.1676946013245; 
- Mon, 20 Feb 2023 18:20:13 -0800 (PST)
+ bh=ggdqj3TP81zF9AJLhqzoDLwtgovOZJuMr88Ei9wR7CM=;
+ b=22zIkvJ9/pao/Fyr1yYdpDbw+z85fKJCWn8IYW3Q2/kBKY6XBf3bDi30tHz71RLrwN
+ gEL5O/kqf5efvVRXTvxElqP5yygEl15mTiysSP1OaZrVvkbI2oJSvCwsC+fJ3GBgdLdy
+ I2ADo0vW7mC4VCE9U/QLmxg3y8Ln/E61HRu1AmNF2BQTG6TFpBBWec0goaCJazaSgweO
+ ZUh5Z39VNxHhdUJM1qOwrjRgaYtFmsRA83MsFnZhZScQOoQg8LhY4l1C96FcWB4+ybEj
+ HhEB3gJnjXFUBzIasXqC1VRfI3QQI8MkAMABDMSH8VAAl7kKEHWWrczK9uq20/8FsJ3T
+ UrgA==
+X-Gm-Message-State: AO0yUKVsnD4BaSIeiafhJt35mbTAcNgqtFpZmCobZ920eaqisUxaW/Mj
+ fFB4+gE1XaPqzT2UwLVJXzHBgQ==
+X-Received: by 2002:a17:903:1cb:b0:198:fc0a:192b with SMTP id
+ e11-20020a17090301cb00b00198fc0a192bmr3593574plh.64.1676945999734; 
+ Mon, 20 Feb 2023 18:19:59 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- f3-20020a170902e98300b0019141c79b1dsm8559328plb.254.2023.02.20.18.20.12
+ f3-20020a170902e98300b0019141c79b1dsm8559328plb.254.2023.02.20.18.19.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Feb 2023 18:20:12 -0800 (PST)
+ Mon, 20 Feb 2023 18:19:59 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, David Reiss <dreiss@meta.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 12/14] target/arm: Export arm_v7m_mrs_control
-Date: Mon, 20 Feb 2023 16:19:49 -1000
-Message-Id: <20230221021951.453601-13-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH v2 03/14] target/arm: Move arm_gen_dynamic_svereg_xml to
+ gdbstub64.c
+Date: Mon, 20 Feb 2023 16:19:40 -1000
+Message-Id: <20230221021951.453601-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230221021951.453601-1-richard.henderson@linaro.org>
 References: <20230221021951.453601-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jcEQSjq++5NF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VFuUB/lesgOl
 
-From: David Reiss <dreiss@meta.com>
+The function is only used for aarch64, so move it to the
+file that has the other aarch64 gdbstub stuff.  Move the
+declaration to internals.h.
 
-Allow the function to be used outside of m_helper.c.
-Rename with an "arm_" prefix.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: David Reiss <dreiss@meta.com>
-[rth: Split out of a larger patch]
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 3 +++
- target/arm/m_helper.c  | 6 +++---
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ target/arm/cpu.h       |   6 ---
+ target/arm/internals.h |   1 +
+ target/arm/gdbstub.c   | 120 -----------------------------------------
+ target/arm/gdbstub64.c | 118 ++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 119 insertions(+), 126 deletions(-)
 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 32ca6c9a0d..059fe62eaa 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1112,12 +1112,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
+ int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+ 
+-/*
+- * Helpers to dynamically generates XML descriptions of the sysregs
+- * and SVE registers. Returns the number of registers in each set.
+- */
+-int arm_gen_dynamic_svereg_xml(CPUState *cpu, int base_reg);
+-
+ /* Returns the dynamically generated XML for the gdb stub.
+  * Returns a pointer to the XML contents for the specified XML file or NULL
+  * if the XML name doesn't match the predefined one.
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index fb88b16579..89052b1c94 100644
+index 121ecd420b..32b8562cbf 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -1339,6 +1339,9 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
- void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
- #endif
- 
-+/* Read the CONTROL register as the MRS instruction would. */
-+uint32_t arm_v7m_mrs_control(CPUARMState *env, uint32_t secure);
-+
- #ifdef CONFIG_USER_ONLY
- static inline void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu) { }
- #else
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index f94e87e728..03be79e7bf 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -56,7 +56,7 @@ static uint32_t v7m_mrs_xpsr(CPUARMState *env, uint32_t reg, unsigned el)
-     return xpsr_read(env) & mask;
+@@ -1326,6 +1326,7 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
  }
  
--static uint32_t v7m_mrs_control(CPUARMState *env, uint32_t secure)
-+uint32_t arm_v7m_mrs_control(CPUARMState *env, uint32_t secure)
- {
-     uint32_t value = env->v7m.control[secure];
+ #ifdef TARGET_AARCH64
++int arm_gen_dynamic_svereg_xml(CPUState *cpu, int base_reg);
+ int aarch64_gdb_get_sve_reg(CPUARMState *env, GByteArray *buf, int reg);
+ int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg);
+ int aarch64_gdb_get_fpu_reg(CPUARMState *env, GByteArray *buf, int reg);
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 52581e9784..bf8aff7824 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -322,126 +322,6 @@ static int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
+     return cpu->dyn_sysreg_xml.num;
+ }
  
-@@ -93,7 +93,7 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
-     case 0 ... 7: /* xPSR sub-fields */
-         return v7m_mrs_xpsr(env, reg, 0);
-     case 20: /* CONTROL */
--        return v7m_mrs_control(env, 0);
-+        return arm_v7m_mrs_control(env, 0);
-     default:
-         /* Unprivileged reads others as zero.  */
-         return 0;
-@@ -2465,7 +2465,7 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
-     case 0 ... 7: /* xPSR sub-fields */
-         return v7m_mrs_xpsr(env, reg, el);
-     case 20: /* CONTROL */
--        return v7m_mrs_control(env, env->v7m.secure);
-+        return arm_v7m_mrs_control(env, env->v7m.secure);
-     case 0x94: /* CONTROL_NS */
-         /*
-          * We have to handle this here because unprivileged Secure code
+-struct TypeSize {
+-    const char *gdb_type;
+-    int  size;
+-    const char sz, suffix;
+-};
+-
+-static const struct TypeSize vec_lanes[] = {
+-    /* quads */
+-    { "uint128", 128, 'q', 'u' },
+-    { "int128", 128, 'q', 's' },
+-    /* 64 bit */
+-    { "ieee_double", 64, 'd', 'f' },
+-    { "uint64", 64, 'd', 'u' },
+-    { "int64", 64, 'd', 's' },
+-    /* 32 bit */
+-    { "ieee_single", 32, 's', 'f' },
+-    { "uint32", 32, 's', 'u' },
+-    { "int32", 32, 's', 's' },
+-    /* 16 bit */
+-    { "ieee_half", 16, 'h', 'f' },
+-    { "uint16", 16, 'h', 'u' },
+-    { "int16", 16, 'h', 's' },
+-    /* bytes */
+-    { "uint8", 8, 'b', 'u' },
+-    { "int8", 8, 'b', 's' },
+-};
+-
+-
+-int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+-{
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    GString *s = g_string_new(NULL);
+-    DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
+-    g_autoptr(GString) ts = g_string_new("");
+-    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
+-    info->num = 0;
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
+-
+-    /* First define types and totals in a whole VL */
+-    for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+-        int count = reg_width / vec_lanes[i].size;
+-        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].suffix);
+-        g_string_append_printf(s,
+-                               "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+-                               ts->str, vec_lanes[i].gdb_type, count);
+-    }
+-    /*
+-     * Now define a union for each size group containing unsigned and
+-     * signed and potentially float versions of each size from 128 to
+-     * 8 bits.
+-     */
+-    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+-        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
+-        g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
+-        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
+-            if (vec_lanes[j].size == bits) {
+-                g_string_append_printf(s, "<field name=\"%c\" type=\"svev%c%c\"/>",
+-                                       vec_lanes[j].suffix,
+-                                       vec_lanes[j].sz, vec_lanes[j].suffix);
+-            }
+-        }
+-        g_string_append(s, "</union>");
+-    }
+-    /* And now the final union of unions */
+-    g_string_append(s, "<union id=\"svev\">");
+-    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+-        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
+-        g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
+-                               suf[i], suf[i]);
+-    }
+-    g_string_append(s, "</union>");
+-
+-    /* Finally the sve prefix type */
+-    g_string_append_printf(s,
+-                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
+-                           reg_width / 8);
+-
+-    /* Then define each register in parts for each vq */
+-    for (i = 0; i < 32; i++) {
+-        g_string_append_printf(s,
+-                               "<reg name=\"z%d\" bitsize=\"%d\""
+-                               " regnum=\"%d\" type=\"svev\"/>",
+-                               i, reg_width, base_reg++);
+-        info->num++;
+-    }
+-    /* fpscr & status registers */
+-    g_string_append_printf(s, "<reg name=\"fpsr\" bitsize=\"32\""
+-                           " regnum=\"%d\" group=\"float\""
+-                           " type=\"int\"/>", base_reg++);
+-    g_string_append_printf(s, "<reg name=\"fpcr\" bitsize=\"32\""
+-                           " regnum=\"%d\" group=\"float\""
+-                           " type=\"int\"/>", base_reg++);
+-    info->num += 2;
+-
+-    for (i = 0; i < 16; i++) {
+-        g_string_append_printf(s,
+-                               "<reg name=\"p%d\" bitsize=\"%d\""
+-                               " regnum=\"%d\" type=\"svep\"/>",
+-                               i, cpu->sve_max_vq * 16, base_reg++);
+-        info->num++;
+-    }
+-    g_string_append_printf(s,
+-                           "<reg name=\"ffr\" bitsize=\"%d\""
+-                           " regnum=\"%d\" group=\"vector\""
+-                           " type=\"svep\"/>",
+-                           cpu->sve_max_vq * 16, base_reg++);
+-    g_string_append_printf(s,
+-                           "<reg name=\"vg\" bitsize=\"64\""
+-                           " regnum=\"%d\" type=\"int\"/>",
+-                           base_reg++);
+-    info->num += 2;
+-    g_string_append_printf(s, "</feature>");
+-    cpu->dyn_svereg_xml.desc = g_string_free(s, false);
+-
+-    return cpu->dyn_svereg_xml.num;
+-}
+-
+-
+ const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index c598cb0375..59fb5465d5 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -209,3 +209,121 @@ int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg)
+ 
+     return 0;
+ }
++
++struct TypeSize {
++    const char *gdb_type;
++    short size;
++    char sz, suffix;
++};
++
++static const struct TypeSize vec_lanes[] = {
++    /* quads */
++    { "uint128", 128, 'q', 'u' },
++    { "int128", 128, 'q', 's' },
++    /* 64 bit */
++    { "ieee_double", 64, 'd', 'f' },
++    { "uint64", 64, 'd', 'u' },
++    { "int64", 64, 'd', 's' },
++    /* 32 bit */
++    { "ieee_single", 32, 's', 'f' },
++    { "uint32", 32, 's', 'u' },
++    { "int32", 32, 's', 's' },
++    /* 16 bit */
++    { "ieee_half", 16, 'h', 'f' },
++    { "uint16", 16, 'h', 'u' },
++    { "int16", 16, 'h', 's' },
++    /* bytes */
++    { "uint8", 8, 'b', 'u' },
++    { "int8", 8, 'b', 's' },
++};
++
++int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    GString *s = g_string_new(NULL);
++    DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
++    g_autoptr(GString) ts = g_string_new("");
++    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
++    info->num = 0;
++    g_string_printf(s, "<?xml version=\"1.0\"?>");
++    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
++    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
++
++    /* First define types and totals in a whole VL */
++    for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
++        int count = reg_width / vec_lanes[i].size;
++        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].suffix);
++        g_string_append_printf(s,
++                               "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
++                               ts->str, vec_lanes[i].gdb_type, count);
++    }
++    /*
++     * Now define a union for each size group containing unsigned and
++     * signed and potentially float versions of each size from 128 to
++     * 8 bits.
++     */
++    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
++        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
++        g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
++        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
++            if (vec_lanes[j].size == bits) {
++                g_string_append_printf(s, "<field name=\"%c\" type=\"svev%c%c\"/>",
++                                       vec_lanes[j].suffix,
++                                       vec_lanes[j].sz, vec_lanes[j].suffix);
++            }
++        }
++        g_string_append(s, "</union>");
++    }
++    /* And now the final union of unions */
++    g_string_append(s, "<union id=\"svev\">");
++    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
++        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
++        g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
++                               suf[i], suf[i]);
++    }
++    g_string_append(s, "</union>");
++
++    /* Finally the sve prefix type */
++    g_string_append_printf(s,
++                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
++                           reg_width / 8);
++
++    /* Then define each register in parts for each vq */
++    for (i = 0; i < 32; i++) {
++        g_string_append_printf(s,
++                               "<reg name=\"z%d\" bitsize=\"%d\""
++                               " regnum=\"%d\" type=\"svev\"/>",
++                               i, reg_width, base_reg++);
++        info->num++;
++    }
++    /* fpscr & status registers */
++    g_string_append_printf(s, "<reg name=\"fpsr\" bitsize=\"32\""
++                           " regnum=\"%d\" group=\"float\""
++                           " type=\"int\"/>", base_reg++);
++    g_string_append_printf(s, "<reg name=\"fpcr\" bitsize=\"32\""
++                           " regnum=\"%d\" group=\"float\""
++                           " type=\"int\"/>", base_reg++);
++    info->num += 2;
++
++    for (i = 0; i < 16; i++) {
++        g_string_append_printf(s,
++                               "<reg name=\"p%d\" bitsize=\"%d\""
++                               " regnum=\"%d\" type=\"svep\"/>",
++                               i, cpu->sve_max_vq * 16, base_reg++);
++        info->num++;
++    }
++    g_string_append_printf(s,
++                           "<reg name=\"ffr\" bitsize=\"%d\""
++                           " regnum=\"%d\" group=\"vector\""
++                           " type=\"svep\"/>",
++                           cpu->sve_max_vq * 16, base_reg++);
++    g_string_append_printf(s,
++                           "<reg name=\"vg\" bitsize=\"64\""
++                           " regnum=\"%d\" type=\"int\"/>",
++                           base_reg++);
++    info->num += 2;
++    g_string_append_printf(s, "</feature>");
++    info->desc = g_string_free(s, false);
++
++    return info->num;
++}
 -- 
 2.34.1
 

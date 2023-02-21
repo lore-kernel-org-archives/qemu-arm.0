@@ -1,99 +1,99 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3469856ejb;
-        Tue, 21 Feb 2023 09:37:22 -0800 (PST)
-X-Google-Smtp-Source: AK7set/f02uS1LxmYgxt6P4xpjlzRobbnLWypssfqLFh/vJtZFV8GEhQTc6YUm0ly9nU1ObgG4SM
-X-Received: by 2002:a05:622a:204:b0:3b9:b2c3:9d2e with SMTP id b4-20020a05622a020400b003b9b2c39d2emr23087070qtx.10.1677001042421;
-        Tue, 21 Feb 2023 09:37:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677001042; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3476718ejb;
+        Tue, 21 Feb 2023 09:46:48 -0800 (PST)
+X-Google-Smtp-Source: AK7set+IPnrGB2toPGJXqhSBdEB6xC1vdor5b18Ge/KFHg/2p1j+u7ez3Tp5INqGB8gKjTUC0D5O
+X-Received: by 2002:a05:622a:1a84:b0:3b8:2b4e:cbca with SMTP id s4-20020a05622a1a8400b003b82b4ecbcamr20743149qtc.14.1677001607919;
+        Tue, 21 Feb 2023 09:46:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677001607; cv=none;
         d=google.com; s=arc-20160816;
-        b=hZ0IDpw3mlsj68+/awjgxxmy/aelVnuWPeVoho0pQ8Glb1E23YVrEyNKyGrEvYaU+a
-         L5TkdVPeTCtFA3j8A39T+CG8rzl/TlXVmwJYX3moogWrZI0uIPyv9PddyKbpUmIChKpt
-         9EQbi+fci7iznd/QJgi2nak3p8xB8hh173Gux5IZlP4M8csdHELCE0+fu7CbdAbnd55W
-         b+EACd9vpJjZmJy5wmyKa8hFyoBS2UDwkh2Fm1zSOn0ViQJlVRB9sK+rBoTCVlMENRh4
-         QGGULVaZKIH+6586P+WrRL1kzNdTl6vPxUjoA9oKRc3udPVz4tXLvdTt/gWNDsrn9KSu
-         8XFg==
+        b=twZe7Mjj2zHn+j4oncfVEZDwpFZogJfKAnBn8NdYhdhBmZRDCcG2oYD6yf0A0q3glX
+         588YdQaoXuSZ//dTp/XMHtgMX6JjCgT3FQhaNPrzzgmollpz1eXFkI5AiIANb38M+oCb
+         MrLiya7i7ANfbUaiE9oRe4hIrYUvszswusJHgixXVVdhbrjSIIA5lwZbuz5QVL2f+c00
+         FsBmN3MJogPgZWCfL5X3w5N1r92PX64mHq5I/PAVELFVEAoJfq7Va8CJjedFWBv0RzPI
+         XXbgX4CGyjgudQ3HRW8BejEGfyQtiTnSvzXbvl/rKc5OGP7MGjax4QQBORI9x9zPGfT+
+         5Pcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=oWgEA+NVopUn3YJ2t7V3m9n4NyH9jT8jIPspVdDe4Z4=;
-        b=qayStDA8UQjIx83U8ZDm707lW//KI6+1oJ1DEGpP8LmWcynVo8EDAeu7pdeAapYTzH
-         WOKYmtYAZVCFaq3yyiGRyE+ar7nNPlykeGoHsvovKqyEJCphP/PeC0Y60CDHDluPCtVv
-         xCidKb6POL7DIpAEkKd0TUKAxkkz5NlmkxthdnANEj0onn0q0bjjou+XMmX+EJxI4blb
-         0ZYpVxNU6gs67yUCR6y8zt46xHFXYjZGHkts263GdytldsdbLTx/e5VZ8Q4M8rIB7/vd
-         6Auao5zmMBQzyDJiTwblfPTiOyT2sG33H4wKsymYjp7gZxsSOqhHTsgO4oPRhyaXPckH
-         YmqQ==
+        bh=ZTnVUzugBbqur6BqfZt1CtTDSK+k3vWZTQvUGOxv7wM=;
+        b=XdcJ5lgrQh+pMOKYU741ivlPIRs2xiV+o2f1aZ/j9qdDFSN4s+xPRK69DtPXUfthSr
+         iqo+8Av79NeEjmqfuFLvMI2W5AAJLfMM5flQ9S2vBxyNRWrsLmrP1Gn8mxrmOMb0UnTQ
+         wY9ADAQAK2om0KIP0AFX4uYiPF8Uiot7GI5usgVlXgpo5+YygX8wVEnIbIdPDSiInUvJ
+         xRRIIjk01LKt8PzohBD1PByUGAmldf+bCXc5B0S7YW8Vd8UMsgX5woiyh+bW/9y4g89x
+         du0IaT+2MsWuW5J1/J1dt3WkcyZc4lmNmcWY0EAT/OoyBFKtyL2JaIoBXT3zHX1hyI+O
+         zRLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EckEW63U;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XvdRjDs3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t38-20020a05622a182600b003bcdf868947si12798025qtc.743.2023.02.21.09.37.22
+        by mx.google.com with ESMTPS id t6-20020a05620a450600b007259083a39esi13945894qkp.69.2023.02.21.09.46.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 09:37:22 -0800 (PST)
+        Tue, 21 Feb 2023 09:46:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EckEW63U;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XvdRjDs3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pUWZl-0004KD-Vl; Tue, 21 Feb 2023 12:37:18 -0500
+	id 1pUWik-0001lt-DA; Tue, 21 Feb 2023 12:46:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1pUWZe-0004Is-84
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 12:37:06 -0500
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1pUWij-0001l4-00
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 12:46:29 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1pUWZa-0002gR-Tr
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 12:37:05 -0500
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1pUWih-0004ap-D1
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 12:46:28 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677001022;
+ s=mimecast20190719; t=1677001586;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=oWgEA+NVopUn3YJ2t7V3m9n4NyH9jT8jIPspVdDe4Z4=;
- b=EckEW63UyXUxtHEhvTjtljUVUi0y2O57AqYEe5TFbnqrAeO+o0CQd7Hid0sSMzys90Zt8F
- cJrAAFJ2s2FSorbiAvs1gpUtS01IVGSj3HhznPQ6Hz/v1JmmOWB1jzKXpb8ZbCThcXDNMt
- G58MdQKKPjHg92Himuzhr8uuPcK76io=
-Received: from mail-ua1-f71.google.com (mail-ua1-f71.google.com
- [209.85.222.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ZTnVUzugBbqur6BqfZt1CtTDSK+k3vWZTQvUGOxv7wM=;
+ b=XvdRjDs3fKcrmzz5olAfUYVgzcp8vFjzww41es4QBWa8nZTUTkCJeufKnS3Awdks0NFuDG
+ fCH0Oeb8F6Oozb8rP8vwHvX7yKSultWnr5YN4aUQzUEj3l42g9pFZnJBIFQTJ6bpaYPofD
+ WHQuPje8hVkUQYC1L2GAfKErZxTHymI=
+Received: from mail-vs1-f71.google.com (mail-vs1-f71.google.com
+ [209.85.217.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-10-GW_8HdKfO9KNrhykgqsbeg-1; Tue, 21 Feb 2023 12:37:00 -0500
-X-MC-Unique: GW_8HdKfO9KNrhykgqsbeg-1
-Received: by mail-ua1-f71.google.com with SMTP id
- n1-20020ab06021000000b0068ba7b4e6edso2654749ual.23
- for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 09:37:00 -0800 (PST)
+ us-mta-46-duE-f1Z6O9KV38l3E4JOmQ-1; Tue, 21 Feb 2023 12:46:25 -0500
+X-MC-Unique: duE-f1Z6O9KV38l3E4JOmQ-1
+Received: by mail-vs1-f71.google.com with SMTP id
+ f26-20020a056102151a00b004177ba1e3c6so1387678vsv.11
+ for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 09:46:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
+ d=1e100.net; s=20210112; t=1677001584;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oWgEA+NVopUn3YJ2t7V3m9n4NyH9jT8jIPspVdDe4Z4=;
- b=jXLEBiFpS1KakYMFfGs7qO5hHjXJ6ebYK11arvN3HxY3EoNEPa5X+yaruLcyC2UGTV
- csahWba+GSTyy8bU8drV1aCogGsH8RnKGTiN/M8VomZ9he46/GZQdUNaNlxpVKT/H5G3
- lKcfX2X4gIKSSOtQgUEi1UuWpMAW9XTWoEuDvwmGm9uLiNHRE/JbLZae+mk+5/7S1Ame
- JS8SbBIKKEhAu0RTYxnibHyDphQ2ssgqcDbBHuqTt3ze+rbnxpF2pJK/GAeF8cgV8t+W
- IkAZXpcpayeeTBacb0KPXsIpKKAYrVAcFrcgilXvxxQtvhqQtndadg0dKCsZis0L0xMN
- OmAw==
-X-Gm-Message-State: AO0yUKVsXVLhNZuGZJIFWdIuPysMYoeOzUZDZiUGvronrhqWYNwI3tYH
- +dWbBm9ZYzEsl3/5sH3iW7IIRYuwzXNWCculufGHKLfBrFGb6BLrtB+QI02Kwq2/cB63TkoftxQ
- uUznk/p5JYXh4P94=
-X-Received: by 2002:a1f:4588:0:b0:410:1410:ac75 with SMTP id
- s130-20020a1f4588000000b004101410ac75mr782786vka.0.1677001020068; 
- Tue, 21 Feb 2023 09:37:00 -0800 (PST)
-X-Received: by 2002:a1f:4588:0:b0:410:1410:ac75 with SMTP id
- s130-20020a1f4588000000b004101410ac75mr782549vka.0.1677001014872; 
- Tue, 21 Feb 2023 09:36:54 -0800 (PST)
+ bh=ZTnVUzugBbqur6BqfZt1CtTDSK+k3vWZTQvUGOxv7wM=;
+ b=UhcX5Bxw7+mbcbh4Dm1ZzP0MZu0oepeaxZZBIrp+1Gj2g4J/1byLPo/U04iZJm/l2M
+ pvuH68hzg+gOj7VYW5UKdwNZG4FHpHJow3Xhflk9RnJWjwQ2HjaLtz0Zxf8V+gpZn/1n
+ G+o/MlIDUnA1QbrZxtGBRwvH22+Aiud891+943h72BtE37D5gYjXwrmAs68zuKN41mQb
+ ou+gsDA6NafIri6CGuxdrkZLQHUHShsYIYTTwHKrj9fUNDWBJ0pq8UBBoEMFM9eRwowz
+ EPMnYgaEDSdrxnIbdPxEAuPi/kkOgmTTSkNQag9ZvEXCo6R2q8GkCZyD5+Ax9zaFGQ11
+ 3CQA==
+X-Gm-Message-State: AO0yUKUaY2AYWwD/NjrsjI5Oi6MLHbuMR5aPAaWVAQt+57tJzpbYs8dN
+ GwBAB6HuWwnGRnds5usfw/kmFy8hMBlo1ChhqqxqsiyRb9kEP9uIjTlM1Ig59XROB4hRw0u62l5
+ AR1pW8t8STGB/t6Y=
+X-Received: by 2002:a67:6102:0:b0:41e:b377:e18c with SMTP id
+ v2-20020a676102000000b0041eb377e18cmr429064vsb.3.1677001584688; 
+ Tue, 21 Feb 2023 09:46:24 -0800 (PST)
+X-Received: by 2002:a67:6102:0:b0:41e:b377:e18c with SMTP id
+ v2-20020a676102000000b0041eb377e18cmr429035vsb.3.1677001584278; 
+ Tue, 21 Feb 2023 09:46:24 -0800 (PST)
 Received: from x1n (bras-base-aurron9127w-grc-56-70-30-145-63.dsl.bell.ca.
  [70.30.145.63]) by smtp.gmail.com with ESMTPSA id
- v185-20020a3793c2000000b0073b9ccb171asm677167qkd.130.2023.02.21.09.36.53
+ 21-20020a370415000000b0073b732803c4sm2553557qke.5.2023.02.21.09.46.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Feb 2023 09:36:54 -0800 (PST)
-Date: Tue, 21 Feb 2023 12:36:53 -0500
+ Tue, 21 Feb 2023 09:46:23 -0800 (PST)
+Date: Tue, 21 Feb 2023 12:46:22 -0500
 From: Peter Xu <peterx@redhat.com>
 To: Gavin Shan <gshan@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com,
@@ -101,15 +101,15 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com,
  mst@redhat.com, cohuck@redhat.com, quintela@redhat.com,
  dgilbert@redhat.com, maz@kernel.org, zhenyzha@redhat.com,
  shan.gavin@gmail.com
-Subject: Re: [PATCH v1 2/6] migration: Add last stage indicator to global
- dirty log synchronization
-Message-ID: <Y/UBNX7ljyTYLa6H@x1n>
+Subject: Re: [PATCH v1 3/6] kvm: Synchronize the backup bitmap in the last
+ stage
+Message-ID: <Y/UDbqyB2N/OWWi5@x1n>
 References: <20230213003925.40158-1-gshan@redhat.com>
- <20230213003925.40158-3-gshan@redhat.com>
+ <20230213003925.40158-4-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20230213003925.40158-3-gshan@redhat.com>
+In-Reply-To: <20230213003925.40158-4-gshan@redhat.com>
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -133,69 +133,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AfJ8KkhhVgo9
+X-TUID: X43tErk+5lZd
 
-On Mon, Feb 13, 2023 at 08:39:21AM +0800, Gavin Shan wrote:
-> The global dirty log synchronization is used when KVM and dirty ring
-> are enabled. There is a particularity for ARM64 where the backup
-> bitmap is used to track dirty pages in non-running-vcpu situations.
-> It means the dirty ring works with the combination of ring buffer
-> and backup bitmap. The dirty bits in the backup bitmap needs to
-> collected in the last stage of live migration.
-> 
-> In order to identify the last stage of live migration and pass it
-> down, an extra parameter is added to the relevant functions and
-> callbacks. This last stage indicator isn't used until the dirty
-> ring is enabled in the subsequent patches.
-> 
-> No functional change intended.
+On Mon, Feb 13, 2023 at 08:39:22AM +0800, Gavin Shan wrote:
+> In the last stage of live migration or memory slot removal, the
+> backup bitmap needs to be synchronized when it has been enabled.
 > 
 > Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+>  accel/kvm/kvm-all.c      | 11 +++++++++++
+>  include/sysemu/kvm_int.h |  1 +
+>  2 files changed, 12 insertions(+)
+> 
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 01a6a026af..b5e12de522 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -1352,6 +1352,10 @@ static void kvm_set_phys_mem(KVMMemoryListener *kml,
+>                   */
+>                  if (kvm_state->kvm_dirty_ring_size) {
+>                      kvm_dirty_ring_reap_locked(kvm_state, NULL);
+> +                    if (kvm_state->kvm_dirty_ring_with_bitmap) {
+> +                        kvm_slot_sync_dirty_pages(mem);
+> +                        kvm_slot_get_dirty_log(kvm_state, mem);
+> +                    }
+>                  } else {
+>                      kvm_slot_get_dirty_log(kvm_state, mem);
+>                  }
+
+IIUC after the memory atomic update changes lands QEMU, we may not need
+this sync at all.
+
+My understanding is that we sync dirty log here only because of non-atomic
+updates happening in the past and we may lose dirty bits unexpectedly.
+Maybe Paolo knows.
+
+But that needs some more justification and history digging, so definitely
+more suitable to leave it for later and separate discussion.
 
 Reviewed-by: Peter Xu <peterx@redhat.com>
 
-One trivial thing to mention below.
-
-> ---
->  accel/kvm/kvm-all.c   |  2 +-
->  include/exec/memory.h |  5 +++--
->  migration/dirtyrate.c |  4 ++--
->  migration/ram.c       | 20 ++++++++++----------
->  softmmu/memory.c      | 10 +++++-----
->  5 files changed, 21 insertions(+), 20 deletions(-)
-> 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index 9b26582655..01a6a026af 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -1554,7 +1554,7 @@ static void kvm_log_sync(MemoryListener *listener,
->      kvm_slots_unlock();
->  }
->  
-> -static void kvm_log_sync_global(MemoryListener *l)
-> +static void kvm_log_sync_global(MemoryListener *l, bool last_stage)
->  {
->      KVMMemoryListener *kml = container_of(l, KVMMemoryListener, listener);
->      KVMState *s = kvm_state;
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index 2e602a2fad..75b2fd9f48 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -929,8 +929,9 @@ struct MemoryListener {
->       * its @log_sync must be NULL.  Vice versa.
->       *
->       * @listener: The #MemoryListener.
-> +     * @last_stage: The last stage to synchronize the log during migration
-
-IMHO it may be important to mention the vcpu status here that the caller
-guarantees to call the last_stage==true only once, only after all vcpus are
-stopped (and vcpus will not be started again if migration succeeded).
-
->       */
-> -    void (*log_sync_global)(MemoryListener *listener);
-> +    void (*log_sync_global)(MemoryListener *listener, bool last_stage);
-
 Thanks,
+
+> @@ -1573,6 +1577,12 @@ static void kvm_log_sync_global(MemoryListener *l, bool last_stage)
+>          mem = &kml->slots[i];
+>          if (mem->memory_size && mem->flags & KVM_MEM_LOG_DIRTY_PAGES) {
+>              kvm_slot_sync_dirty_pages(mem);
+> +
+> +            if (s->kvm_dirty_ring_with_bitmap && last_stage &&
+> +                kvm_slot_get_dirty_log(s, mem)) {
+> +                kvm_slot_sync_dirty_pages(mem);
+> +            }
+> +
+>              /*
+>               * This is not needed by KVM_GET_DIRTY_LOG because the
+>               * ioctl will unconditionally overwrite the whole region.
+> @@ -3701,6 +3711,7 @@ static void kvm_accel_instance_init(Object *obj)
+>      s->kernel_irqchip_split = ON_OFF_AUTO_AUTO;
+>      /* KVM dirty ring is by default off */
+>      s->kvm_dirty_ring_size = 0;
+> +    s->kvm_dirty_ring_with_bitmap = false;
+>      s->notify_vmexit = NOTIFY_VMEXIT_OPTION_RUN;
+>      s->notify_window = 0;
+>  }
+> diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
+> index 60b520a13e..fdd5b1bde0 100644
+> --- a/include/sysemu/kvm_int.h
+> +++ b/include/sysemu/kvm_int.h
+> @@ -115,6 +115,7 @@ struct KVMState
+>      } *as;
+>      uint64_t kvm_dirty_ring_bytes;  /* Size of the per-vcpu dirty ring */
+>      uint32_t kvm_dirty_ring_size;   /* Number of dirty GFNs per ring */
+> +    bool kvm_dirty_ring_with_bitmap;
+>      struct KVMDirtyRingReaper reaper;
+>      NotifyVmexitOption notify_vmexit;
+>      uint32_t notify_window;
+> -- 
+> 2.23.0
+> 
 
 -- 
 Peter Xu

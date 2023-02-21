@@ -1,127 +1,111 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3711075ejb;
-        Tue, 21 Feb 2023 15:27:02 -0800 (PST)
-X-Google-Smtp-Source: AK7set8oi+bfoDHlOKIWIpBtBbAAcHi5n00QLuBbBgIkh5U/9oTY/oVqo46MGvtVDxWf+P0Qjny3
-X-Received: by 2002:a05:622a:13c6:b0:3bd:140c:91fc with SMTP id p6-20020a05622a13c600b003bd140c91fcmr4511558qtk.47.1677022022710;
-        Tue, 21 Feb 2023 15:27:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677022022; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3711408ejb;
+        Tue, 21 Feb 2023 15:27:37 -0800 (PST)
+X-Google-Smtp-Source: AK7set+e7D8/7FzwtkNTfHMfB4Z3FyQixzlMZE1iWq1KADKQMXdcNrQ/QA87V65jnWRIv6K37Pkf
+X-Received: by 2002:a05:6214:27eb:b0:56e:c1da:f68f with SMTP id jt11-20020a05621427eb00b0056ec1daf68fmr11824621qvb.26.1677022056828;
+        Tue, 21 Feb 2023 15:27:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677022056; cv=none;
         d=google.com; s=arc-20160816;
-        b=KPH64rEv3suvTX2ebJxnc2/L32tscZZkZfJXfScmLAuLJQm4Wwan9lk9+kxToZlhTD
-         geGUB22Sc459HV9Pm5txN49qhEmgv+JH9VpO91Hwjc5SxSmj7m4N0OFfxp5kpIHqPqVX
-         oX22Zy9ElCeDtxAblHNuYzRpuhiUSPHigZOB+vMKt6fNC5mDIk7vtintfE/nFNRg1pql
-         qmllfOsg5JE/d1FJCBVTRrUUxYQIwLI1s1YGBDAZ/aSCNrm88BQVDaZUXfwdU9g2eUl2
-         qU90Pcyd2AXabS39q95dVjam0S+TgURwX4xr/UsgbhHcJGkFP7dinqDehJjPbPE/uxuZ
-         4iCw==
+        b=Z260oj/3DkpAlGiJydaKkvrpTzRFNA/eecaHUF1roQ+4y9IBhB5wEiSJfE7CrjrHVt
+         smPtxrGiU+K/DKCMFxvL+vusEKF9ym8kX0e8S4t2VcltoeaThGVwGayvX7Re56/4qbMf
+         ob/blvLCXr+vc9tYyHHBZuUC7LRCwLY698rC8kCISVbdsp/2G6YxIw+lGK+h3Tk1z5qR
+         1lQgQNVPgobIhedx0Yck+yuF9+auGCbNaZCiWYpcNOA39eOJ2+UHhCng6QajTeYyFE+F
+         miBThKrk9VSfrp5jInNWCTxTGrI+WHbO4HMhpxd4ww2zHsKUKTXANXC0yXa3g4mj0vic
+         qoEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8SOiO6SUqRICLIJPyMazSs+K23fbT+t1yx1l1at9jCs=;
-        b=zjkVzdr8/9yL+LIXoRJJeinsU7G1pUV4A1N4hdk5Y5OrrgRqHCTkbubwlY6I9UMKRO
-         P1NW2dVoXcdX5dWKdFTG7E+UATJFddmKMXPp/c2SHrNz+t6qVV7Z9U6YhRp02QlUAj7Z
-         JNMxOriUq5s7gH0T6MQSgH/fD3ZrFnB4cScwA1/rHiGbwfYVzJopXy5TtHjjTXFYVVKN
-         zKrAsgVqRAh1BwjOvUpJ6nVNBTkTynaswLBgOnkHDf6A4ADmd9fmzkBCO5sfZP8JdQs2
-         O4s9ZmPeea3QQixXZvpy4peG9L9PBFB3uVvihMEMyjDW1OLWSW63xe2ov42LOkA7u9cP
-         xbNg==
+        bh=CnNTwGg0MOHmmdkp5WuNV0U9bN887LNmRf50zWb625Q=;
+        b=vLpApd0oq0QUnYvcLi5fIX8EggTmXvYSeDg7O4iE1yZSu9hogPBXZRk7reGGeLMkr0
+         20NaWwgtA9xItOufV/sEEOS0ok9OGgCmF/HtI9jvKjJvf/c1zPkNBswq12EQW1raDxIL
+         Fp+K4SiX2bJ+2JnHgSIrM00NM0IoeNA40XQ5uBVVgg8c/9EjxfeCqS1vdXTzg/cIRHkG
+         D0IVLmRgL+X+TWuemX6yljwrg9/EQKul3SAZoYO+jDNS+eM53w7UvauahzzM7XD2Dkni
+         DfuT38yIenZ862LxWElruRx4WmLnlXK4Dzis1IGGq/38obEes9B5jEAarGs0J2Nzskor
+         YTdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GR0ZEVjf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eFs26vK4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w4-20020a05620a424400b007064a1daba5si12911585qko.133.2023.02.21.15.27.02
+        by mx.google.com with ESMTPS id r26-20020a0c9e9a000000b0056f0669018bsi6603898qvd.35.2023.02.21.15.27.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 15:27:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Feb 2023 15:27:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GR0ZEVjf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eFs26vK4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pUc18-0005HI-0y; Tue, 21 Feb 2023 18:25:50 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pUc11-0005Cr-N6; Tue, 21 Feb 2023 18:25:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUc15-0005FH-0b
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 18:25:47 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUc0r-00058E-Vl
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 18:25:37 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUc10-0002eG-Ba
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 18:25:46 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- o4-20020a05600c4fc400b003e1f5f2a29cso4888384wmq.4
- for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 15:25:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUc0o-0002Yy-Tr
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 18:25:33 -0500
+Received: by mail-wr1-x436.google.com with SMTP id l25so5681406wrb.3
+ for <qemu-arm@nongnu.org>; Tue, 21 Feb 2023 15:25:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8SOiO6SUqRICLIJPyMazSs+K23fbT+t1yx1l1at9jCs=;
- b=GR0ZEVjfnRKb3kLaXpnRUVEpkF+ngvRlSoE6P8NUuMwzMVv5lVCVwy7dg7HcZrr6Ay
- 6pPYsbbc74Db7gPZ/vg80DHZGhOaNHeHnESobJeTuFqyn/w+tMfzdUCMgjrqIu2DsiKO
- eATl/iA15+QMsyqvC3GmzuWMYKUGs/FGyPa58MfHmWMFWPWXMbta8+xn2JzMVQCYCZ8Y
- aRx06cc4zwWZ+IMqR0a7ny3FTJAJFK3UMHrvsyvlo0tmrCGIVqkeFfQ2/m5XOtQsyL7I
- inxeCdU6vsn/gxyrlAXem8APTMeH6r/fLf0IREWfv35ezA2rZc6GTVNTiMs2UqGhK3+1
- MQvQ==
+ bh=CnNTwGg0MOHmmdkp5WuNV0U9bN887LNmRf50zWb625Q=;
+ b=eFs26vK4M22XELInBI1Ob4vSmuZr0/f7PbMlVb0mnYED47WCwhRVkt4YiYll3Rpp2d
+ +ESy2XhVh2vQU8FJka3zULXRf7co5Rdx3hrFwQJJf+0jc29Rpwezhc/Bx8bR9K7rat1g
+ gUxcLQTVN2h+GNGcWllaTp+jPu9qkQI1jjbPcN4xuXTy7IDTLfz0VSjN1sN51FIHDqFw
+ frC0Q7JbbcA+FmFMSLTL/Eq3ARG+BMMerQXqQh1hXd6maPB+TAPNS7/t06zakYwRH3NP
+ A7xqCBJ8QAa7z/zZHzEuMCgTHjkqmFhfqmWtSSSadDBxxcl8uFnHdwH0KMbcJBfJCUrl
+ WkdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8SOiO6SUqRICLIJPyMazSs+K23fbT+t1yx1l1at9jCs=;
- b=eUveOJ/Sv7HRA1bXMRfH3oFPpGc54XHySFFkyannYBABZAA6iuJTJoQB61jkISj/iU
- pBldeqn1Xwncso6qED2IIybSYwSB4mrfPByGnWwmzQbFCZKd3xk5mZvu5FgW9FZFhJiI
- iVALittI4uOZEM0zv4LFXfeoERR2Emj4i5Fn4Z/ZnSz1QLJ5S4bAQglCcozXQF9ThwFr
- GFKKaAKra4D4bG/Qv7cLd8YiStcpIU8Pugc5uOQJ09mvLzR1Ka3vd9AriosXsCMOisw6
- jTWDjiyFCgMlwsH5hrDW9g6Amj2rUPBplpVqqHjGG2/4VlQLH5luRK0VsW6WiGUWJC0M
- Wznw==
-X-Gm-Message-State: AO0yUKUf6lv8zTRoKrMho5PXQ8AuBVnwuwlhc83HyHOfMBe70QWNRzyz
- FVQXuFAhNfALp4Vd10AiJn2Fan3i3BICG8eT
-X-Received: by 2002:a05:600c:1da5:b0:3e2:1dac:b071 with SMTP id
- p37-20020a05600c1da500b003e21dacb071mr5590135wms.13.1677021940513; 
- Tue, 21 Feb 2023 15:25:40 -0800 (PST)
+ bh=CnNTwGg0MOHmmdkp5WuNV0U9bN887LNmRf50zWb625Q=;
+ b=zibUXSWJ75PAB2D/h9uRE91DzyPFgR7Db9qif9JSGg7aJUoavdIjL4x3E8Ywb/B6eC
+ x8X4xTqmy9xfa3GznZ8Jhaz4qeG3/o+hh82VFCBOthKb1JZx42bXfgZIidfmzq5ok114
+ SEtbrn9Y6tmKtjC5lQKWvmBv44xujGoY53lkKkV6diSp2y26YlE9FDI8DWoJA9PfKmLe
+ yhyZSEnNgY+irUr5KaTKjyt0I9oAv5bTPnOoN65F0CaOyF3+YkgqaYHBlaERyQA8xXVH
+ o6wRN73ciV/ZhiQuKXf0aKPat6QfrNEbW8VM0ORmVcRtiCfiwJj5wHBWr8fJzClha3CD
+ W/Tg==
+X-Gm-Message-State: AO0yUKVeJUZX8u6821k3Hd/dPBmsv5FjbU0g8JxdWiva9MTm84D9vDvL
+ yWe+j3ofpNn5r6yCAXdxOd4FEw==
+X-Received: by 2002:a5d:4d50:0:b0:2c6:e7ff:8f17 with SMTP id
+ a16-20020a5d4d50000000b002c6e7ff8f17mr5207912wru.25.1677021928899; 
+ Tue, 21 Feb 2023 15:25:28 -0800 (PST)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- ja13-20020a05600c556d00b003e4326a6d53sm7943109wmb.35.2023.02.21.15.25.38
+ q9-20020adff949000000b002c56a7872f4sm7044564wrr.82.2023.02.21.15.25.27
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 21 Feb 2023 15:25:40 -0800 (PST)
+ Tue, 21 Feb 2023 15:25:28 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
  qemu-ppc@nongnu.org, Eric Blake <eblake@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <ani@anisinha.ca>, Rob Herring <robh@kernel.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>, Jason Wang <jasowang@redhat.com>,
- Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Corey Minyard <minyard@acm.org>, Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH 3/5] bulk: Replace [g_]assert(0) -> g_assert_not_reached()
-Date: Wed, 22 Feb 2023 00:25:18 +0100
-Message-Id: <20230221232520.14480-4-philmd@linaro.org>
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>
+Subject: [PATCH 1/5] target/ppc: fix warning with clang-15
+Date: Wed, 22 Feb 2023 00:25:16 +0100
+Message-Id: <20230221232520.14480-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230221232520.14480-1-philmd@linaro.org>
 References: <20230221232520.14480-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,947 +114,61 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lJkja1bOB4pu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3ttRpd84t58A
 
-In order to avoid warnings such commit c0a6665c3c ("target/i386:
-Remove compilation errors when -Werror=maybe-uninitialized"),
-replace all assert(0) and g_assert(0) by g_assert_not_reached().
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Remove any code following g_assert_not_reached().
+When compiling for windows-arm64 using clang-15, it reports a sometimes
+uninitialized variable. This seems to be a false positive, as a default
+case guards switch expressions, preventing to return an uninitialized
+value, but clang seems unhappy with assert(0) definition.
 
-See previous commit for rationale.
+Change code to g_assert_not_reached() fix the warning.
 
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230221153006.20300-5-pierrick.bouvier@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- docs/spin/aio_notify_accept.promela |   6 +-
- docs/spin/aio_notify_bug.promela    |   6 +-
- hw/acpi/aml-build.c                 |   3 +-
- hw/arm/highbank.c                   |   2 +-
- hw/char/avr_usart.c                 |   2 +-
- hw/core/numa.c                      |   2 +-
- hw/net/i82596.c                     |   2 +-
- hw/watchdog/watchdog.c              |   2 +-
- migration/migration-hmp-cmds.c      |   2 +-
- migration/postcopy-ram.c            |  21 ++----
- migration/ram.c                     |   8 +--
- qobject/qlit.c                      |   2 +-
- qobject/qnum.c                      |  12 ++--
- softmmu/rtc.c                       |   2 +-
- target/mips/sysemu/physaddr.c       |   3 +-
- target/mips/tcg/msa_helper.c        | 104 ++++++++++++++--------------
- target/ppc/dfp_helper.c             |   8 +--
- target/ppc/mmu_helper.c             |   2 +-
- tests/qtest/ipmi-bt-test.c          |   2 +-
- tests/qtest/ipmi-kcs-test.c         |   4 +-
- tests/qtest/rtl8139-test.c          |   2 +-
- 21 files changed, 91 insertions(+), 106 deletions(-)
+ target/ppc/dfp_helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/docs/spin/aio_notify_accept.promela b/docs/spin/aio_notify_accept.promela
-index 9cef2c955d..f929d30328 100644
---- a/docs/spin/aio_notify_accept.promela
-+++ b/docs/spin/aio_notify_accept.promela
-@@ -118,7 +118,7 @@ accept_if_req_not_eventually_false:
-     if
-         :: req -> goto accept_if_req_not_eventually_false;
-     fi;
--    assert(0);
-+    g_assert_not_reached();
- }
- 
- #else
-@@ -141,12 +141,12 @@ accept_if_event_not_eventually_true:
-         :: !event && notifier_done  -> do :: true -> skip; od;
-         :: !event && !notifier_done -> goto accept_if_event_not_eventually_true;
-     fi;
--    assert(0);
-+    g_assert_not_reached();
- 
- accept_if_event_not_eventually_false:
-     if
-         :: event     -> goto accept_if_event_not_eventually_false;
-     fi;
--    assert(0);
-+    g_assert_not_reached();
- }
- #endif
-diff --git a/docs/spin/aio_notify_bug.promela b/docs/spin/aio_notify_bug.promela
-index b3bfca1ca4..ce6f5177ed 100644
---- a/docs/spin/aio_notify_bug.promela
-+++ b/docs/spin/aio_notify_bug.promela
-@@ -106,7 +106,7 @@ accept_if_req_not_eventually_false:
-     if
-         :: req -> goto accept_if_req_not_eventually_false;
-     fi;
--    assert(0);
-+    g_assert_not_reached();
- }
- 
- #else
-@@ -129,12 +129,12 @@ accept_if_event_not_eventually_true:
-         :: !event && notifier_done  -> do :: true -> skip; od;
-         :: !event && !notifier_done -> goto accept_if_event_not_eventually_true;
-     fi;
--    assert(0);
-+    g_assert_not_reached();
- 
- accept_if_event_not_eventually_false:
-     if
-         :: event     -> goto accept_if_event_not_eventually_false;
-     fi;
--    assert(0);
-+    g_assert_not_reached();
- }
- #endif
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index ea331a20d1..97dfdcdd2f 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -534,8 +534,7 @@ void aml_append(Aml *parent_ctx, Aml *child)
-     case AML_NO_OPCODE:
-         break;
-     default:
--        assert(0);
--        break;
-+        g_assert_not_reached();
-     }
-     build_append_array(parent_ctx->buf, buf);
-     build_free_array(buf);
-diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-index f12aacea6b..fc212195ca 100644
---- a/hw/arm/highbank.c
-+++ b/hw/arm/highbank.c
-@@ -198,7 +198,7 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
-         machine->cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     for (n = 0; n < smp_cpus; n++) {
-diff --git a/hw/char/avr_usart.c b/hw/char/avr_usart.c
-index 5bcf9db0b7..e738a2ca97 100644
---- a/hw/char/avr_usart.c
-+++ b/hw/char/avr_usart.c
-@@ -86,7 +86,7 @@ static void update_char_mask(AVRUsartState *usart)
-         usart->char_mask = 0b11111111;
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- }
- 
-diff --git a/hw/core/numa.c b/hw/core/numa.c
-index d8d36b16d8..26ef02792a 100644
---- a/hw/core/numa.c
-+++ b/hw/core/numa.c
-@@ -381,7 +381,7 @@ void parse_numa_hmat_lb(NumaState *numa_state, NumaHmatLBOptions *node,
-         }
-         lb_data.data = node->bandwidth;
-     } else {
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     g_array_append_val(hmat_lb->list, lb_data);
-diff --git a/hw/net/i82596.c b/hw/net/i82596.c
-index ec21e2699a..eda0f586fb 100644
---- a/hw/net/i82596.c
-+++ b/hw/net/i82596.c
-@@ -285,7 +285,7 @@ static void command_loop(I82596State *s)
-         case CmdDump:
-         case CmdDiagnose:
-             printf("FIXME Command %d !!\n", cmd & 7);
--            assert(0);
-+            g_assert_not_reached();
-         }
- 
-         /* update status */
-diff --git a/hw/watchdog/watchdog.c b/hw/watchdog/watchdog.c
-index 955046161b..d0ce3c4ac5 100644
---- a/hw/watchdog/watchdog.c
-+++ b/hw/watchdog/watchdog.c
-@@ -85,7 +85,7 @@ void watchdog_perform_action(void)
-         break;
- 
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- }
- 
-diff --git a/migration/migration-hmp-cmds.c b/migration/migration-hmp-cmds.c
-index ef25bc8929..4e07c95801 100644
---- a/migration/migration-hmp-cmds.c
-+++ b/migration/migration-hmp-cmds.c
-@@ -602,7 +602,7 @@ void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
-                    "through QMP");
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     if (err) {
-diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
-index f54f44d899..59c8032a21 100644
---- a/migration/postcopy-ram.c
-+++ b/migration/postcopy-ram.c
-@@ -1347,49 +1347,42 @@ int postcopy_ram_incoming_init(MigrationIncomingState *mis)
- 
- int postcopy_ram_incoming_cleanup(MigrationIncomingState *mis)
- {
--    assert(0);
--    return -1;
-+    g_assert_not_reached();
- }
- 
- int postcopy_ram_prepare_discard(MigrationIncomingState *mis)
- {
--    assert(0);
--    return -1;
-+    g_assert_not_reached();
- }
- 
- int postcopy_request_shared_page(struct PostCopyFD *pcfd, RAMBlock *rb,
-                                  uint64_t client_addr, uint64_t rb_offset)
- {
--    assert(0);
--    return -1;
-+    g_assert_not_reached();
- }
- 
- int postcopy_ram_incoming_setup(MigrationIncomingState *mis)
- {
--    assert(0);
--    return -1;
-+    g_assert_not_reached();
- }
- 
- int postcopy_place_page(MigrationIncomingState *mis, void *host, void *from,
-                         RAMBlock *rb)
- {
--    assert(0);
--    return -1;
-+    g_assert_not_reached();
- }
- 
- int postcopy_place_page_zero(MigrationIncomingState *mis, void *host,
-                         RAMBlock *rb)
- {
--    assert(0);
--    return -1;
-+    g_assert_not_reached();
- }
- 
- int postcopy_wake_shared(struct PostCopyFD *pcfd,
-                          uint64_t client_addr,
-                          RAMBlock *rb)
- {
--    assert(0);
--    return -1;
-+    g_assert_not_reached();
- }
- #endif
- 
-diff --git a/migration/ram.c b/migration/ram.c
-index 96e8a19a58..93f5a4a416 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -2061,19 +2061,17 @@ bool ram_write_tracking_available(void)
- 
- bool ram_write_tracking_compatible(void)
- {
--    assert(0);
--    return false;
-+    g_assert_not_reached();
- }
- 
- int ram_write_tracking_start(void)
- {
--    assert(0);
--    return -1;
-+    g_assert_not_reached();
- }
- 
- void ram_write_tracking_stop(void)
- {
--    assert(0);
-+    g_assert_not_reached();
- }
- #endif /* defined(__linux__) */
- 
-diff --git a/qobject/qlit.c b/qobject/qlit.c
-index be8332136c..a62865b642 100644
---- a/qobject/qlit.c
-+++ b/qobject/qlit.c
-@@ -118,7 +118,7 @@ QObject *qobject_from_qlit(const QLitObject *qlit)
-     case QTYPE_QBOOL:
-         return QOBJECT(qbool_from_bool(qlit->value.qbool));
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     return NULL;
-diff --git a/qobject/qnum.c b/qobject/qnum.c
-index 2bbeaedc7b..dd8ea49565 100644
---- a/qobject/qnum.c
-+++ b/qobject/qnum.c
-@@ -85,8 +85,7 @@ bool qnum_get_try_int(const QNum *qn, int64_t *val)
-         return false;
-     }
- 
--    assert(0);
--    return false;
-+    g_assert_not_reached();
- }
- 
- /**
-@@ -123,8 +122,7 @@ bool qnum_get_try_uint(const QNum *qn, uint64_t *val)
-         return false;
-     }
- 
--    assert(0);
--    return false;
-+    g_assert_not_reached();
- }
- 
- /**
-@@ -156,8 +154,7 @@ double qnum_get_double(QNum *qn)
-         return qn->u.dbl;
-     }
- 
--    assert(0);
--    return 0.0;
-+    g_assert_not_reached();
- }
- 
- char *qnum_to_string(QNum *qn)
-@@ -172,8 +169,7 @@ char *qnum_to_string(QNum *qn)
-         return g_strdup_printf("%.17g", qn->u.dbl);
-     }
- 
--    assert(0);
--    return NULL;
-+    g_assert_not_reached();
- }
- 
- /**
-diff --git a/softmmu/rtc.c b/softmmu/rtc.c
-index f7114bed7d..a2145da23d 100644
---- a/softmmu/rtc.c
-+++ b/softmmu/rtc.c
-@@ -63,7 +63,7 @@ static time_t qemu_ref_timedate(QEMUClockType clock)
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
-     return value;
- }
-diff --git a/target/mips/sysemu/physaddr.c b/target/mips/sysemu/physaddr.c
-index 2970df8a09..05990aa5bb 100644
---- a/target/mips/sysemu/physaddr.c
-+++ b/target/mips/sysemu/physaddr.c
-@@ -70,8 +70,7 @@ static int is_seg_am_mapped(unsigned int am, bool eu, int mmu_idx)
-         /* is this AM mapped in current execution mode */
-         return ((adetlb_mask << am) < 0);
-     default:
--        assert(0);
--        return TLBRET_BADADDR;
-+        g_assert_not_reached();
-     };
- }
- 
-diff --git a/target/mips/tcg/msa_helper.c b/target/mips/tcg/msa_helper.c
-index 736283e2af..29b31d70fe 100644
---- a/target/mips/tcg/msa_helper.c
-+++ b/target/mips/tcg/msa_helper.c
-@@ -5333,7 +5333,7 @@ void helper_msa_shf_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
-     msa_move_v(pwd, pwx);
- }
-@@ -5368,7 +5368,7 @@ void helper_msa_ ## helper ## _df(CPUMIPSState *env, uint32_t df,       \
-         }                                                               \
-         break;                                                          \
-     default:                                                            \
--        assert(0);                                                      \
-+        g_assert_not_reached();                                         \
-     }                                                                   \
- }
- 
-@@ -5413,7 +5413,7 @@ void helper_msa_ldi_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-        break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- }
- 
-@@ -5461,7 +5461,7 @@ void helper_msa_ ## helper ## _df(CPUMIPSState *env, uint32_t df, uint32_t wd, \
-         }                                                               \
-         break;                                                          \
-     default:                                                            \
--        assert(0);                                                      \
-+        g_assert_not_reached();                                         \
-     }                                                                   \
- }
- 
-@@ -5511,7 +5511,7 @@ void helper_msa_ ## helper ## _df(CPUMIPSState *env, uint32_t df,       \
-         }                                                               \
-         break;                                                          \
-     default:                                                            \
--        assert(0);                                                      \
-+        g_assert_not_reached();                                         \
-     }                                                                   \
- }
- 
-@@ -5557,7 +5557,7 @@ static inline void msa_sld_df(uint32_t df, wr_t *pwd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- }
- 
-@@ -5632,7 +5632,7 @@ void helper_msa_ ## func ## _df(CPUMIPSState *env, uint32_t df,         \
-         pwd->d[1] = msa_ ## func ## _df(df, pws->d[1], pwt->d[1]);      \
-         break;                                                          \
-     default:                                                            \
--        assert(0);                                                      \
-+        g_assert_not_reached();                                         \
-     }                                                                   \
- }
- 
-@@ -5771,7 +5771,7 @@ void helper_msa_ ## func ## _df(CPUMIPSState *env, uint32_t df, uint32_t wd,  \
-         pwd->d[1] = msa_ ## func ## _df(df, pwd->d[1], pws->d[1], pwt->d[1]); \
-         break;                                                                \
-     default:                                                                  \
--        assert(0);                                                            \
-+        g_assert_not_reached();                                               \
-     }                                                                         \
- }
- 
-@@ -5811,7 +5811,7 @@ static inline void msa_splat_df(uint32_t df, wr_t *pwd,
-         }
-        break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- }
- 
-@@ -5869,7 +5869,7 @@ void helper_msa_##FUNC(CPUMIPSState *env, uint32_t df, uint32_t wd, \
-         MSA_LOOP_D;                                                 \
-         break;                                                      \
-     default:                                                        \
--        assert(0);                                                  \
-+        g_assert_not_reached();                                     \
-     }                                                               \
-     msa_move_v(pwd, pwx);                                           \
- }
-@@ -6090,7 +6090,7 @@ void helper_msa_insve_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         pwd->d[n] = (int64_t)pws->d[0];
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- }
- 
-@@ -6150,7 +6150,7 @@ void helper_msa_fill_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-        break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- }
- 
-@@ -6565,7 +6565,7 @@ static inline void compare_af(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6596,7 +6596,7 @@ static inline void compare_un(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6625,7 +6625,7 @@ static inline void compare_eq(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6654,7 +6654,7 @@ static inline void compare_ueq(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6683,7 +6683,7 @@ static inline void compare_lt(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6712,7 +6712,7 @@ static inline void compare_ult(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6741,7 +6741,7 @@ static inline void compare_le(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6770,7 +6770,7 @@ static inline void compare_ule(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6799,7 +6799,7 @@ static inline void compare_or(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6828,7 +6828,7 @@ static inline void compare_une(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -6857,7 +6857,7 @@ static inline void compare_ne(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, retaddr);
-@@ -7107,7 +7107,7 @@ void helper_msa_fadd_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7137,7 +7137,7 @@ void helper_msa_fsub_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7167,7 +7167,7 @@ void helper_msa_fmul_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7198,7 +7198,7 @@ void helper_msa_fdiv_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7245,7 +7245,7 @@ void helper_msa_fmadd_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7280,7 +7280,7 @@ void helper_msa_fmsub_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7317,7 +7317,7 @@ void helper_msa_fexp2_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7371,7 +7371,7 @@ void helper_msa_fexdo_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7417,7 +7417,7 @@ void helper_msa_ftq_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7526,7 +7526,7 @@ void helper_msa_fmin_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
- 
-     } else {
- 
--        assert(0);
-+        g_assert_not_reached();
- 
-     }
- 
-@@ -7555,7 +7555,7 @@ void helper_msa_fmin_a_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         FMAXMIN_A(min, max, pwx->d[0], pws->d[0], pwt->d[0], 64, status);
-         FMAXMIN_A(min, max, pwx->d[1], pws->d[1], pwt->d[1], 64, status);
-     } else {
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7628,7 +7628,7 @@ void helper_msa_fmax_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
- 
-     } else {
- 
--        assert(0);
-+        g_assert_not_reached();
- 
-     }
- 
-@@ -7657,7 +7657,7 @@ void helper_msa_fmax_a_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         FMAXMIN_A(max, min, pwx->d[0], pws->d[0], pwt->d[0], 64, status);
-         FMAXMIN_A(max, min, pwx->d[1], pws->d[1], pwt->d[1], 64, status);
-     } else {
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7681,7 +7681,7 @@ void helper_msa_fclass_df(CPUMIPSState *env, uint32_t df,
-         pwd->d[0] = float_class_d(pws->d[0], status);
-         pwd->d[1] = float_class_d(pws->d[1], status);
-     } else {
--        assert(0);
-+        g_assert_not_reached();
-     }
- }
- 
-@@ -7723,7 +7723,7 @@ void helper_msa_ftrunc_s_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7753,7 +7753,7 @@ void helper_msa_ftrunc_u_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7783,7 +7783,7 @@ void helper_msa_fsqrt_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7832,7 +7832,7 @@ void helper_msa_frsqrt_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7862,7 +7862,7 @@ void helper_msa_frcp_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7892,7 +7892,7 @@ void helper_msa_frint_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7946,7 +7946,7 @@ void helper_msa_flog2_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -7983,7 +7983,7 @@ void helper_msa_fexupl_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -8019,7 +8019,7 @@ void helper_msa_fexupr_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -8046,7 +8046,7 @@ void helper_msa_ffql_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     msa_move_v(pwd, pwx);
-@@ -8072,7 +8072,7 @@ void helper_msa_ffqr_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     msa_move_v(pwd, pwx);
-@@ -8100,7 +8100,7 @@ void helper_msa_ftint_s_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -8130,7 +8130,7 @@ void helper_msa_ftint_u_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -8166,7 +8166,7 @@ void helper_msa_ffint_s_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
-@@ -8196,7 +8196,7 @@ void helper_msa_ffint_u_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
-         }
-         break;
-     default:
--        assert(0);
-+        g_assert_not_reached();
-     }
- 
-     check_msacsr_cause(env, GETPC());
 diff --git a/target/ppc/dfp_helper.c b/target/ppc/dfp_helper.c
-index 5967ea07a9..ecc3f79326 100644
+index cc024316d5..5967ea07a9 100644
 --- a/target/ppc/dfp_helper.c
 +++ b/target/ppc/dfp_helper.c
-@@ -249,7 +249,7 @@ static void dfp_set_FPRF_from_FRT_with_context(struct PPC_DFP *dfp,
-         fprf = 0x05;
-         break;
-     default:
--        assert(0); /* should never get here */
-+        g_assert_not_reached();
+@@ -121,7 +121,7 @@ static void dfp_set_round_mode_from_immediate(uint8_t r, uint8_t rmc,
+         case 3: /* use FPSCR rounding mode */
+             return;
+         default:
+-            assert(0); /* cannot get here */
++            g_assert_not_reached();
+         }
+     } else { /* r == 1 */
+         switch (rmc & 3) {
+@@ -138,7 +138,7 @@ static void dfp_set_round_mode_from_immediate(uint8_t r, uint8_t rmc,
+             rnd = DEC_ROUND_HALF_DOWN;
+             break;
+         default:
+-            assert(0); /* cannot get here */
++            g_assert_not_reached();
+         }
      }
-     dfp->env->fpscr &= ~FP_FPRF;
-     dfp->env->fpscr |= (fprf << FPSCR_FPRF);
-@@ -1243,7 +1243,7 @@ void helper_##op(CPUPPCState *env, ppc_fprp_t *t, ppc_fprp_t *b) \
-         } else if (decNumberIsQNaN(&dfp.b)) {                  \
-             vt.VsrD(1) = -2;                                   \
-         } else {                                               \
--            assert(0);                                         \
-+            g_assert_not_reached();                            \
-         }                                                      \
-         set_dfp64(t, &vt);                                     \
-     } else {                                                   \
-@@ -1252,7 +1252,7 @@ void helper_##op(CPUPPCState *env, ppc_fprp_t *t, ppc_fprp_t *b) \
-         } else if ((size) == 128) {                            \
-             vt.VsrD(1) = dfp.b.exponent + 6176;                \
-         } else {                                               \
--            assert(0);                                         \
-+            g_assert_not_reached();                            \
-         }                                                      \
-         set_dfp64(t, &vt);                                     \
-     }                                                          \
-@@ -1300,7 +1300,7 @@ void helper_##op(CPUPPCState *env, ppc_fprp_t *t, ppc_fprp_t *a,          \
-         raw_inf = 0x1e000;                                                \
-         bias = 6176;                                                      \
-     } else {                                                              \
--        assert(0);                                                        \
-+        g_assert_not_reached();                                           \
-     }                                                                     \
-                                                                           \
-     if (unlikely((exp < 0) || (exp > max_exp))) {                         \
-diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
-index 64e30435f5..b064f3bd04 100644
---- a/target/ppc/mmu_helper.c
-+++ b/target/ppc/mmu_helper.c
-@@ -353,7 +353,7 @@ void ppc_tlb_invalidate_one(CPUPPCState *env, target_ulong addr)
-         break;
-     default:
-         /* Should never reach here with other MMU models */
--        assert(0);
-+        g_assert_not_reached();
-     }
- #else
-     ppc_tlb_invalidate_all(env);
-diff --git a/tests/qtest/ipmi-bt-test.c b/tests/qtest/ipmi-bt-test.c
-index ed431e34e6..5bd6b769d3 100644
---- a/tests/qtest/ipmi-bt-test.c
-+++ b/tests/qtest/ipmi-bt-test.c
-@@ -251,7 +251,7 @@ static void emu_msg_handler(void)
-         msg[msg_len++] = 0xa0;
-         write_emu_msg(msg, msg_len);
-     } else {
--        g_assert(0);
-+        g_assert_not_reached();
-     }
- }
- 
-diff --git a/tests/qtest/ipmi-kcs-test.c b/tests/qtest/ipmi-kcs-test.c
-index afc24dd3e4..3186c6ad64 100644
---- a/tests/qtest/ipmi-kcs-test.c
-+++ b/tests/qtest/ipmi-kcs-test.c
-@@ -145,7 +145,7 @@ static void kcs_cmd(uint8_t *cmd, unsigned int cmd_len,
-         break;
- 
-     default:
--        g_assert(0);
-+        g_assert_not_reached();
-     }
-     *rsp_len = j;
- }
-@@ -184,7 +184,7 @@ static void kcs_abort(uint8_t *cmd, unsigned int cmd_len,
-         break;
- 
-     default:
--        g_assert(0);
-+        g_assert_not_reached();
-     }
- 
-     /* Start the abort here */
-diff --git a/tests/qtest/rtl8139-test.c b/tests/qtest/rtl8139-test.c
-index 8fa3313cc3..37e352c651 100644
---- a/tests/qtest/rtl8139-test.c
-+++ b/tests/qtest/rtl8139-test.c
-@@ -59,7 +59,7 @@ PORT(IntrMask, w, 0x3c)
- PORT(IntrStatus, w, 0x3E)
- PORT(TimerInt, l, 0x54)
- 
--#define fatal(...) do { g_test_message(__VA_ARGS__); g_assert(0); } while (0)
-+#define fatal(...) do { g_test_message(__VA_ARGS__); g_assert_not_reached(); } while (0)
- 
- static void test_timer(void)
- {
+     decContextSetRounding(&dfp->context, rnd);
 -- 
 2.38.1
 

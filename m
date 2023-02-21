@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t3-20020a5d4603000000b002bfd524255esm5807542wrq.43.2023.02.21.14.52.28
+        by smtp.gmail.com with ESMTPSA id s14-20020a5d510e000000b002c569acab1esm5965998wrt.73.2023.02.21.14.52.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 21 Feb 2023 14:52:31 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 2B2291FFB7;
+	by zen.linaroharston (Postfix) with ESMTP id D3A1F1FFC1;
 	Tue, 21 Feb 2023 22:52:28 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,100 +52,57 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 07/24] gdbstub: move fromhex/tohex routines to internals
-Date: Tue, 21 Feb 2023 22:52:10 +0000
-Message-Id: <20230221225227.3735319-8-alex.bennee@linaro.org>
+Subject: [PATCH v3 11/24] gdbstub: rationalise signal mapping in softmmu
+Date: Tue, 21 Feb 2023 22:52:14 +0000
+Message-Id: <20230221225227.3735319-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
 References: <20230221225227.3735319-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 0DdHn8rJssAF
+X-TUID: 3Vumb2mxOOy6
 
-These will be needed from multiple places in the code. They are
-declared as inline so move to the header and fix up to modern coding
-style.
+We don't really need a table for mapping two symbols.
 
-The only other place that messes with hex stuff at the moment is the
-URI handling in utils but that would be more code churn so leave for
-now.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- gdbstub/internals.h | 27 +++++++++++++++++++++++++++
- gdbstub/gdbstub.c   | 20 --------------------
- 2 files changed, 27 insertions(+), 20 deletions(-)
+ gdbstub/softmmu.c | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index de56328a2c..6be05fac9f 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -55,6 +55,33 @@ typedef struct GDBState {
-     int supported_sstep_flags;
- } GDBState;
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index 864ecee38f..79674b8bea 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -499,21 +499,16 @@ enum {
+     TARGET_SIGTRAP = 5
+ };
  
-+
-+/*
-+ * Inline utility function, convert from int to hex and back
-+ */
-+
-+static inline int fromhex(int v)
-+{
-+    if (v >= '0' && v <= '9') {
-+        return v - '0';
-+    } else if (v >= 'A' && v <= 'F') {
-+        return v - 'A' + 10;
-+    } else if (v >= 'a' && v <= 'f') {
-+        return v - 'a' + 10;
-+    } else {
-+        return 0;
+-static int gdb_signal_table[] = {
+-    -1,
+-    -1,
+-    TARGET_SIGINT,
+-    -1,
+-    -1,
+-    TARGET_SIGTRAP
+-};
+-
+ int gdb_signal_to_target (int sig)
+ {
+-    if (sig < ARRAY_SIZE (gdb_signal_table))
+-        return gdb_signal_table[sig];
+-    else
++    switch (sig) {
++    case 2:
++        return TARGET_SIGINT;
++    case 5:
++        return TARGET_SIGTRAP;
++    default:
+         return -1;
 +    }
-+}
-+
-+static inline int tohex(int v)
-+{
-+    if (v < 10) {
-+        return v + '0';
-+    } else {
-+        return v - 10 + 'a';
-+    }
-+}
-+
- /*
-  * Break/Watch point support - there is an implementation for softmmu
-  * and user mode.
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index d8bf90361e..4407706aa3 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -546,26 +546,6 @@ static void put_buffer(const uint8_t *buf, int len)
- #endif
  }
  
--static inline int fromhex(int v)
--{
--    if (v >= '0' && v <= '9')
--        return v - '0';
--    else if (v >= 'A' && v <= 'F')
--        return v - 'A' + 10;
--    else if (v >= 'a' && v <= 'f')
--        return v - 'a' + 10;
--    else
--        return 0;
--}
--
--static inline int tohex(int v)
--{
--    if (v < 10)
--        return v + '0';
--    else
--        return v - 10 + 'a';
--}
--
- /* writes 2*len+1 bytes in buf */
- static void memtohex(GString *buf, const uint8_t *mem, int len)
- {
+ /*
 -- 
 2.39.1

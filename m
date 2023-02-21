@@ -1,119 +1,100 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3105554ejb;
-        Tue, 21 Feb 2023 02:02:22 -0800 (PST)
-X-Google-Smtp-Source: AK7set9wTHxl8mJRUROwgCSzKcqAM19KqH6D7X7ENHnVgLxg/yFkjXt+Og0gDXWyIxROuFKUV0nM
-X-Received: by 2002:a05:622a:253:b0:3b8:5199:f84a with SMTP id c19-20020a05622a025300b003b85199f84amr19696426qtx.3.1676973741858;
-        Tue, 21 Feb 2023 02:02:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676973741; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3108818ejb;
+        Tue, 21 Feb 2023 02:06:56 -0800 (PST)
+X-Google-Smtp-Source: AK7set/n2pkNY0/jgIQybCLAEWDsGertj/k1TWZlrR5KF8q/eyjsV5wZy2C9PVhndjqMjn96txeD
+X-Received: by 2002:a05:6214:301d:b0:537:7484:8d1c with SMTP id ke29-20020a056214301d00b0053774848d1cmr7520141qvb.30.1676974016570;
+        Tue, 21 Feb 2023 02:06:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1676974016; cv=none;
         d=google.com; s=arc-20160816;
-        b=mbBIW5ioflGnvCdWTIJY5lcmFuzmahITU2A4F8sVUXrD35Hd2E5Nl7TbTXYSPUFjz/
-         SP5C9OwOIjU00nZv95cDek2AXpkqouRfqV5Gzwt3ik0UfDAVc8p5mIgEZN8YJe3GSp3z
-         ApJMT+Px6lgetkseVRYBI+jzPEXu8mGCm+ghcQJi2wdo1B9cfswzhsTsEkgRMShhJl0m
-         P3ntVUZwUUTe7KsN8l4SXTO7qLvJoklRPP3yaI/srnpOrUyWVHjH9q5WvNmPyVZE/hcz
-         aBPWtE4eqTriRq+B0EE+dNSTvovtam7Dq0ib3oShmQO+7MpwA51JO7hgKTVTZJYOHr7O
-         elbA==
+        b=s+OPbty/GvqWYtU5GEOzk2V5h9KeF3UuTwpQYo0Bc41UGDQINjf6Fw9qSUmegPKKvl
+         A45Bd3kxaKZW5GJ2J4pfq+TVgk6FkefIq7skDpkPlWamyB9dPRXaFvUe7D88i4mJ2WnV
+         c6gIhooLBB6ARbv69RJoZISdZU3zRmKhuDoVXxp89s6w7pzorC/Y8G+n7/doW9J7MEr+
+         iLagbcv7cUQNk7B/JMDDZUaFkINJ9OJ228ply2scQB3E3GCZczifFl9gP9LmAwUEauYy
+         2RJz64LE72rFBrXl2MnQwwUsUVavrzyVxsViF3wqLfw8OrPo8opTiG5XBWTgEbYYur5f
+         f+Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ID2wM3HB9kWA3khqrfFXEgHQhC/o4a1L9oSoq9Y1Peo=;
-        b=zXGD6Kw+c8D4E9ItXKwnmLWDSEbVBudokUycVRIeavhP/pi+mmbG+MacC5rUnT2ZXT
-         yjKR5trgnQCSk91vQvwf7aALWk20qcUAK5fTuLRNN9gQZVqU6c/DjtZTwP4Thlvb9eMg
-         MoPL0tKz4OWz7SDzZ5ukHkPp6VO80OUXN7u3XyT1Ysjn1MyAevtXwx5jKWBsez8F7GI/
-         dv6+NjiqaVe6onmdmw1tDRoD3N2VQMmr9Ikc/fXX24z9G5UIPCqXagTa2G1WsJ+8jeZN
-         zx6XOiKMyNXs6wVQTGB766hrrqgzTAg0HteNbBwHt2wrfHxLTSAdYBd4onkny1rHxc1d
-         G+MQ==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=H7EaGnMEI02WRh0sPDME1v5xdwxansD5J6eyouc+hlQ=;
+        b=jA/fKe7aet56PJOzVqj0JAGMNIB5e3GvtUpEFpA9IaPRIcNf0xwTvJwGg+1IgAFsYv
+         giZks7ELHcHZCXG8Lr9mCOy9EXF5Rj0ks3Ku4oBThsGSHx81+IxNe7o4OQRrwokKpfWv
+         AZUP/0Bj5hqoY6tC3mronMyhcfyxIWd2XPOl2iZEnnzSf/db9vYQYI3nji7VBXqFcGcD
+         cdmeNW/vDR9f98JNrcdRcP4tOnYPwbBFwrcFYvuoY/v2LxOEOeR1UsPM1Kqa/ls9qaad
+         XF2ZViXQNsv9rC0rmQTK6exqUtV7BxXyKoa75nFqtghlOnu21VAJhZMD22laEGcPG5dM
+         DglA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EugatnyQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DFliF8kA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bp35-20020a05622a1ba300b003b62eb6b10csi99659qtb.333.2023.02.21.02.02.21
+        by mx.google.com with ESMTPS id f20-20020a0cf3d4000000b00570bc9840dasi9510465qvm.479.2023.02.21.02.06.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 02:02:21 -0800 (PST)
+        Tue, 21 Feb 2023 02:06:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EugatnyQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DFliF8kA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUPTI-00056b-TP; Tue, 21 Feb 2023 05:02:05 -0500
+	id 1pUPXo-0007n6-GP; Tue, 21 Feb 2023 05:06:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUPTD-000566-Gh
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 05:01:59 -0500
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUPTB-0000YY-0N
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 05:01:59 -0500
-Received: by mail-pj1-x1031.google.com with SMTP id
- b14-20020a17090a8c8e00b002349579949aso4130237pjo.5
- for <qemu-arm@nongnu.org>; Tue, 21 Feb 2023 02:01:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ID2wM3HB9kWA3khqrfFXEgHQhC/o4a1L9oSoq9Y1Peo=;
- b=EugatnyQo5GqAlexHTridYaSIi78Htqb+FJ+uTL7Uwth23/7zH/xNivXHv+qf3GaUg
- ZMaKutSAkInXN9qh+ZqyN5nUzFNcyiy0/8B1hzs7lTNBjOTD4QuU9kOSWkvWo4ZeA06J
- 29Rxad9gBF446sPo/Asgu+jxpB85HYjIx5HyJgmAbUBC+d7+RHwqFSGkPZ8TDpX488ps
- yuWpzUYZK5l888X7Gnfj5+Ai/Tb8EoDF/BxX/xbjPGmRMO9OhTsJtvXeHKxBxOasCHxg
- WPRy7z9W0rZgopJ7t2HxSEz/5gBRsIxr59lZMq5oZysjSen1HJ+c/+UaHXuNEPB8py1T
- hD4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ID2wM3HB9kWA3khqrfFXEgHQhC/o4a1L9oSoq9Y1Peo=;
- b=tOZzgeKVvdbkDG2RZeba674psgVvPc+yFZ44ylDCvVSsGNmClZrJbY+Azyl9UvWcVP
- hx659Z7pMxiPVuBGNxv0DrXz2r8NHVvwbg4MvxOjH8GAxAGd7dkDJB9Qgy9FjpMnN9v9
- eZlTb3hCNu6dlRbsThmLdJIUz9vgkD5+s5UZD9zBbpJ6uWLRB8ci9XpEVxx7BJr2EFQm
- zDAfPk+hOKYUyxSvDkpsYA9DNfusDUoezqJzdIi/ua0O5cHnvMEWTzLxrE3ShFGte96C
- g1ac5eXfVTFdINVu163qbWpuVu/6bxz9/zn3ZiY0a+/bRMna+qSW3KYyJhusLY/LAOsk
- VM4w==
-X-Gm-Message-State: AO0yUKVMS3qsgDZdLAsFmItvENNEwr4VyYFWPFInD49scun7w2kFG2/U
- UszeiRhok+O268ahQmcdxiNTgA==
-X-Received: by 2002:a05:6a20:6a0e:b0:c7:6c6f:76f5 with SMTP id
- p14-20020a056a206a0e00b000c76c6f76f5mr4283426pzk.51.1676973714407; 
- Tue, 21 Feb 2023 02:01:54 -0800 (PST)
-Received: from [192.168.6.128] (rrcs-173-198-77-218.west.biz.rr.com.
- [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
- b2-20020a170902ed0200b0019c919bccf8sm1150953pld.86.2023.02.21.02.01.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Feb 2023 02:01:53 -0800 (PST)
-Message-ID: <bf06cdce-aa5f-98f3-4544-31d08d6bd55e@linaro.org>
-Date: Tue, 21 Feb 2023 00:01:50 -1000
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1pUPXl-0007mI-9F
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 05:06:42 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1pUPXj-0001Jm-Hy
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 05:06:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1676973998;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=H7EaGnMEI02WRh0sPDME1v5xdwxansD5J6eyouc+hlQ=;
+ b=DFliF8kAYVeOEKsjcgUTFU+fzoInDRpZFyztwfmgEJ8+FubF029AQndqN527+idyaPVir0
+ Wz1iEyTy3WqjcEwkCBsZmtgY6DyiimAMR/2jL7ZM67J3LJFe7wq7FNK9neKaic00PEEdUK
+ 3J0dlMI4BvWB9oBmrW5hMPDElxXIt3Y=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-178-HYjLLf6OPoGqHC0XzqInxw-1; Tue, 21 Feb 2023 05:06:36 -0500
+X-MC-Unique: HYjLLf6OPoGqHC0XzqInxw-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E2D5629AA384;
+ Tue, 21 Feb 2023 10:06:35 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.72])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5DD51492B02;
+ Tue, 21 Feb 2023 10:06:35 +0000 (UTC)
+Date: Tue, 21 Feb 2023 10:06:32 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: Detecting qemu from guest on arm/hvf (apple arm)
+Message-ID: <Y/SXqGGZhN0OJu7V@redhat.com>
+References: <20230215234846.GJ95670@funkthat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v2 07/21] include/exec/memattrs: Add two bits of space to
- MemTxAttrs
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20230220232626.429947-1-richard.henderson@linaro.org>
- <20230220232626.429947-8-richard.henderson@linaro.org>
- <b1a5b38a-73ae-9610-676b-b27dd4c7195a@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <b1a5b38a-73ae-9610-676b-b27dd4c7195a@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230215234846.GJ95670@funkthat.com>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -127,15 +108,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kUiuc3QjanCZ
+X-TUID: t01JBErhbeie
 
-On 2/20/23 21:56, Philippe Mathieu-Daudé wrote:
-> 'secure' & 'user' seem mutually exclusive. If we get short in bits,
-> they could be shared.
+On Wed, Feb 15, 2023 at 03:48:46PM -0800, John-Mark Gurney wrote:
+> Hello,
+> 
+> I was wondering what the best way to detect that FreeBSD is running
+> under qemu/hvf on Apple ARM?  FreeBSD doesn't see the ACPI FADT table,
+> so I'm wondering if keying off of something like the QEMU0002 device
+> in ACPI is the best way?  Or is there another option?
 
-They are not.  ARM has Secure EL0, or secure user mode.
+Aside from Peter's suggestion to check for actual features that
+matter, if you genuinely need to detect a specific platform,
+the virt-what tool is generally what I point people to. It has
+loads of checks in it. It can detect QEMU on aarch64, but doesn't
+distinguish KVM unless SMBIOS is present too. The 'virt' machine
+type will include SMBIOS, so I expect the KVM check will probably
+trigger for HVF too.
 
+  http://git.annexia.org/?p=virt-what.git;a=blob;f=virt-what.in;h=01e9acaf689416d9bff6eaca1b849dc4e798a0af;hb=HEAD#l340
 
-r~
+This is wrong from virt-what POV, but I presume for your needs,
+you'd be happy to detect *any* hypervisor as you'll want to tweak
+the clock frequency for both HVF and KVM VMs
+
+If you do come up with any tweaks to it, patches would be welcome.
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a22-20020a05600c225600b003e2058a7109sm4446078wmm.14.2023.02.21.01.45.59
+        by smtp.gmail.com with ESMTPSA id q2-20020adff502000000b002c573a6216fsm2427049wro.37.2023.02.21.01.45.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Feb 2023 01:45:59 -0800 (PST)
+        Tue, 21 Feb 2023 01:46:00 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1BE8A1FFBA;
+	by zen.linaroharston (Postfix) with ESMTP id 98CEE1FFBD;
 	Tue, 21 Feb 2023 09:45:59 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,53 +36,105 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	John Snow <jsnow@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 02/14] tests: don't run socat tests on MacOS as well
-Date: Tue, 21 Feb 2023 09:45:46 +0000
-Message-Id: <20230221094558.2864616-3-alex.bennee@linaro.org>
+Subject: [PATCH v2 05/14] tests: make fp-test less chatty when running from test suite
+Date: Tue, 21 Feb 2023 09:45:49 +0000
+Message-Id: <20230221094558.2864616-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221094558.2864616-1-alex.bennee@linaro.org>
 References: <20230221094558.2864616-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 9S/xkuVjrlbc
+X-TUID: SHapPAT8PWjN
 
-In preparation for the next patch when we enable socat for our CI
-images we need to disable this part of the test for MacOS. The bug has
-been raised here:
+As we like to run tests under CI with V=1 flags the softfloat tests
+can add up to a fair amount of extra log lines. With an update to the
+testfloat library we can now call fp-test with the -q flag and reduce
+the output to a terse one line per function tested.
 
-  https://gitlab.com/qemu-project/qemu/-/issues/1495
-
-Once that is fixed we should re-enable the test.
+  make check-softfloat V=1 | wc -l
+  759
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/unit/test-io-channel-command.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/fp/fp-test.c            | 19 ++++++++++++++-----
+ tests/fp/berkeley-testfloat-3 |  2 +-
+ tests/fp/meson.build          |  2 +-
+ 3 files changed, 16 insertions(+), 7 deletions(-)
 
-diff --git a/tests/unit/test-io-channel-command.c b/tests/unit/test-io-channel-command.c
-index 425e2f5594..04b75ab3b4 100644
---- a/tests/unit/test-io-channel-command.c
-+++ b/tests/unit/test-io-channel-command.c
-@@ -31,7 +31,7 @@
+diff --git a/tests/fp/fp-test.c b/tests/fp/fp-test.c
+index 35829ad5f7..36b5712cda 100644
+--- a/tests/fp/fp-test.c
++++ b/tests/fp/fp-test.c
+@@ -106,7 +106,8 @@ static const char commands_string[] =
+     " -l = thoroughness level (1 (default), 2)\n"
+     " -r = rounding mode (even (default), zero, down, up, tieaway, odd)\n"
+     "      Set to 'all' to test all rounding modes, if applicable\n"
+-    " -s = stop when a test fails";
++    " -s = stop when a test fails\n"
++    " -q = minimise noise when testing, just show each function being tested";
  
- static char *socat = NULL;
- 
--#ifndef _WIN32
-+#if !defined(_WIN32) && !defined(CONFIG_DARWIN)
- static void test_io_channel_command_fifo(bool async)
+ static void usage_complete(int argc, char *argv[])
  {
-     g_autofree gchar *tmpdir = g_dir_make_tmp("qemu-test-io-channel.XXXXXX", NULL);
-@@ -128,7 +128,7 @@ int main(int argc, char **argv)
+@@ -190,9 +191,11 @@ static void do_testfloat(int op, int rmode, bool exact)
+     ab_f128M_z_bool true_ab_f128M_z_bool;
+     ab_f128M_z_bool subj_ab_f128M_z_bool;
  
-     socat = g_find_program_in_path("socat");
+-    fputs(">> Testing ", stderr);
+-    verCases_writeFunctionName(stderr);
+-    fputs("\n", stderr);
++    if (verCases_verbosity) {
++        fputs(">> Testing ", stderr);
++        verCases_writeFunctionName(stderr);
++        fputs("\n", stderr);
++    }
  
--#ifndef _WIN32
-+#if !defined(_WIN32) && !defined(CONFIG_DARWIN)
-     g_test_add_func("/io/channel/command/fifo/sync",
-                     test_io_channel_command_fifo_sync);
-     g_test_add_func("/io/channel/command/fifo/async",
+     if (!is_allowed(op, rmode)) {
+         not_implemented();
+@@ -837,7 +840,7 @@ static void parse_args(int argc, char *argv[])
+     int c;
+ 
+     for (;;) {
+-        c = getopt(argc, argv, "he:f:l:r:s");
++        c = getopt(argc, argv, "he:f:l:r:sq");
+         if (c < 0) {
+             break;
+         }
+@@ -874,9 +877,15 @@ static void parse_args(int argc, char *argv[])
+                 }
+             }
+             break;
++        /*
++         * The following flags are declared in testfloat/source/verCases_common.c
++         */
+         case 's':
+             verCases_errorStop = true;
+             break;
++        case 'q':
++            verCases_verbosity = 0;
++            break;
+         case '?':
+             /* invalid option or missing argument; getopt prints error info */
+             exit(EXIT_FAILURE);
+diff --git a/tests/fp/berkeley-testfloat-3 b/tests/fp/berkeley-testfloat-3
+index 5a59dcec19..40619cbb3b 160000
+--- a/tests/fp/berkeley-testfloat-3
++++ b/tests/fp/berkeley-testfloat-3
+@@ -1 +1 @@
+-Subproject commit 5a59dcec19327396a011a17fd924aed4fec416b3
++Subproject commit 40619cbb3bf32872df8c53cc457039229428a263
+diff --git a/tests/fp/meson.build b/tests/fp/meson.build
+index 312a4d301f..f9ca6a93b4 100644
+--- a/tests/fp/meson.build
++++ b/tests/fp/meson.build
+@@ -609,7 +609,7 @@ softfloat_tests = {
+ # The full test suite can take a bit of time, default to a quick run
+ # "-l 2 -r all" can take more than a day for some operations and is best
+ # run manually
+-fptest_args = ['-s', '-l', '1']
++fptest_args = ['-q', '-s', '-l', '1']
+ fptest_rounding_args = ['-r', 'all']
+ 
+ # Conversion Routines:
 -- 
 2.39.1

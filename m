@@ -1,1001 +1,1076 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 18-20020a05600c231200b003e20fa01a86sm5340865wmo.13.2023.02.21.15.01.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Feb 2023 15:01:56 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C05271FFBD;
-	Tue, 21 Feb 2023 22:52:30 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3711075ejb;
+        Tue, 21 Feb 2023 15:27:02 -0800 (PST)
+X-Google-Smtp-Source: AK7set8oi+bfoDHlOKIWIpBtBbAAcHi5n00QLuBbBgIkh5U/9oTY/oVqo46MGvtVDxWf+P0Qjny3
+X-Received: by 2002:a05:622a:13c6:b0:3bd:140c:91fc with SMTP id p6-20020a05622a13c600b003bd140c91fcmr4511558qtk.47.1677022022710;
+        Tue, 21 Feb 2023 15:27:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677022022; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KPH64rEv3suvTX2ebJxnc2/L32tscZZkZfJXfScmLAuLJQm4Wwan9lk9+kxToZlhTD
+         geGUB22Sc459HV9Pm5txN49qhEmgv+JH9VpO91Hwjc5SxSmj7m4N0OFfxp5kpIHqPqVX
+         oX22Zy9ElCeDtxAblHNuYzRpuhiUSPHigZOB+vMKt6fNC5mDIk7vtintfE/nFNRg1pql
+         qmllfOsg5JE/d1FJCBVTRrUUxYQIwLI1s1YGBDAZ/aSCNrm88BQVDaZUXfwdU9g2eUl2
+         qU90Pcyd2AXabS39q95dVjam0S+TgURwX4xr/UsgbhHcJGkFP7dinqDehJjPbPE/uxuZ
+         4iCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=8SOiO6SUqRICLIJPyMazSs+K23fbT+t1yx1l1at9jCs=;
+        b=zjkVzdr8/9yL+LIXoRJJeinsU7G1pUV4A1N4hdk5Y5OrrgRqHCTkbubwlY6I9UMKRO
+         P1NW2dVoXcdX5dWKdFTG7E+UATJFddmKMXPp/c2SHrNz+t6qVV7Z9U6YhRp02QlUAj7Z
+         JNMxOriUq5s7gH0T6MQSgH/fD3ZrFnB4cScwA1/rHiGbwfYVzJopXy5TtHjjTXFYVVKN
+         zKrAsgVqRAh1BwjOvUpJ6nVNBTkTynaswLBgOnkHDf6A4ADmd9fmzkBCO5sfZP8JdQs2
+         O4s9ZmPeea3QQixXZvpy4peG9L9PBFB3uVvihMEMyjDW1OLWSW63xe2ov42LOkA7u9cP
+         xbNg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GR0ZEVjf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w4-20020a05620a424400b007064a1daba5si12911585qko.133.2023.02.21.15.27.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 21 Feb 2023 15:27:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GR0ZEVjf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pUc18-0005HI-0y; Tue, 21 Feb 2023 18:25:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUc15-0005FH-0b
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 18:25:47 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUc10-0002eG-Ba
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 18:25:46 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ o4-20020a05600c4fc400b003e1f5f2a29cso4888384wmq.4
+ for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 15:25:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=8SOiO6SUqRICLIJPyMazSs+K23fbT+t1yx1l1at9jCs=;
+ b=GR0ZEVjfnRKb3kLaXpnRUVEpkF+ngvRlSoE6P8NUuMwzMVv5lVCVwy7dg7HcZrr6Ay
+ 6pPYsbbc74Db7gPZ/vg80DHZGhOaNHeHnESobJeTuFqyn/w+tMfzdUCMgjrqIu2DsiKO
+ eATl/iA15+QMsyqvC3GmzuWMYKUGs/FGyPa58MfHmWMFWPWXMbta8+xn2JzMVQCYCZ8Y
+ aRx06cc4zwWZ+IMqR0a7ny3FTJAJFK3UMHrvsyvlo0tmrCGIVqkeFfQ2/m5XOtQsyL7I
+ inxeCdU6vsn/gxyrlAXem8APTMeH6r/fLf0IREWfv35ezA2rZc6GTVNTiMs2UqGhK3+1
+ MQvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=8SOiO6SUqRICLIJPyMazSs+K23fbT+t1yx1l1at9jCs=;
+ b=eUveOJ/Sv7HRA1bXMRfH3oFPpGc54XHySFFkyannYBABZAA6iuJTJoQB61jkISj/iU
+ pBldeqn1Xwncso6qED2IIybSYwSB4mrfPByGnWwmzQbFCZKd3xk5mZvu5FgW9FZFhJiI
+ iVALittI4uOZEM0zv4LFXfeoERR2Emj4i5Fn4Z/ZnSz1QLJ5S4bAQglCcozXQF9ThwFr
+ GFKKaAKra4D4bG/Qv7cLd8YiStcpIU8Pugc5uOQJ09mvLzR1Ka3vd9AriosXsCMOisw6
+ jTWDjiyFCgMlwsH5hrDW9g6Amj2rUPBplpVqqHjGG2/4VlQLH5luRK0VsW6WiGUWJC0M
+ Wznw==
+X-Gm-Message-State: AO0yUKUf6lv8zTRoKrMho5PXQ8AuBVnwuwlhc83HyHOfMBe70QWNRzyz
+ FVQXuFAhNfALp4Vd10AiJn2Fan3i3BICG8eT
+X-Received: by 2002:a05:600c:1da5:b0:3e2:1dac:b071 with SMTP id
+ p37-20020a05600c1da500b003e21dacb071mr5590135wms.13.1677021940513; 
+ Tue, 21 Feb 2023 15:25:40 -0800 (PST)
+Received: from localhost.localdomain ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ ja13-20020a05600c556d00b003e4326a6d53sm7943109wmb.35.2023.02.21.15.25.38
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 21 Feb 2023 15:25:40 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-s390x@nongnu.org,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	nicolas.eder@lauterbach.com,
-	Stafford Horne <shorne@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Taylor Simpson <tsimpson@quicinc.com>,
-	mads@ynddal.dk,
-	Marek Vasut <marex@denx.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	qemu-ppc@nongnu.org,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Bin Meng <bin.meng@windriver.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Chris Wulff <crwulff@gmail.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Greg Kurz <groug@kaod.org>,
-	David Hildenbrand <david@redhat.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 20/24] gdbstub: move syscall handling to new file
-Date: Tue, 21 Feb 2023 22:52:23 +0000
-Message-Id: <20230221225227.3735319-21-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
-References: <20230221225227.3735319-1-alex.bennee@linaro.org>
+Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-ppc@nongnu.org, Eric Blake <eblake@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <ani@anisinha.ca>, Rob Herring <robh@kernel.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Helge Deller <deller@gmx.de>, Jason Wang <jasowang@redhat.com>,
+ Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ Corey Minyard <minyard@acm.org>, Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH 3/5] bulk: Replace [g_]assert(0) -> g_assert_not_reached()
+Date: Wed, 22 Feb 2023 00:25:18 +0100
+Message-Id: <20230221232520.14480-4-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230221232520.14480-1-philmd@linaro.org>
+References: <20230221232520.14480-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: FQr7bAV0fcLY
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lJkja1bOB4pu
 
-Our GDB syscall support is the last chunk of code that needs target
-specific support so move it to a new file. We take the opportunity to
-move the syscall state into its own singleton instance and add in a
-few helpers for the main gdbstub to interact with the module.
+In order to avoid warnings such commit c0a6665c3c ("target/i386:
+Remove compilation errors when -Werror=maybe-uninitialized"),
+replace all assert(0) and g_assert(0) by g_assert_not_reached().
 
-I also moved the gdb_exit() declaration into syscalls.h as it feels
-pretty related and most of the callers of it treat it as such.
+Remove any code following g_assert_not_reached().
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+See previous commit for rationale.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- gdbstub/internals.h                |   8 +-
- include/exec/gdbstub.h             | 102 -------------
- include/gdbstub/syscalls.h         | 124 ++++++++++++++++
- gdbstub/gdbstub.c                  | 177 +---------------------
- gdbstub/softmmu.c                  |   7 +-
- gdbstub/syscalls.c                 | 227 +++++++++++++++++++++++++++++
- gdbstub/user.c                     |   1 +
- linux-user/exit.c                  |   2 +-
- semihosting/arm-compat-semi.c      |   1 +
- semihosting/guestfd.c              |   2 +-
- semihosting/syscalls.c             |   2 +-
- softmmu/runstate.c                 |   2 +-
- target/m68k/m68k-semi.c            |   2 +-
- target/mips/tcg/sysemu/mips-semi.c |   2 +-
- target/nios2/nios2-semi.c          |   2 +-
- gdbstub/meson.build                |   4 +
- 16 files changed, 377 insertions(+), 288 deletions(-)
- create mode 100644 include/gdbstub/syscalls.h
- create mode 100644 gdbstub/syscalls.c
+ docs/spin/aio_notify_accept.promela |   6 +-
+ docs/spin/aio_notify_bug.promela    |   6 +-
+ hw/acpi/aml-build.c                 |   3 +-
+ hw/arm/highbank.c                   |   2 +-
+ hw/char/avr_usart.c                 |   2 +-
+ hw/core/numa.c                      |   2 +-
+ hw/net/i82596.c                     |   2 +-
+ hw/watchdog/watchdog.c              |   2 +-
+ migration/migration-hmp-cmds.c      |   2 +-
+ migration/postcopy-ram.c            |  21 ++----
+ migration/ram.c                     |   8 +--
+ qobject/qlit.c                      |   2 +-
+ qobject/qnum.c                      |  12 ++--
+ softmmu/rtc.c                       |   2 +-
+ target/mips/sysemu/physaddr.c       |   3 +-
+ target/mips/tcg/msa_helper.c        | 104 ++++++++++++++--------------
+ target/ppc/dfp_helper.c             |   8 +--
+ target/ppc/mmu_helper.c             |   2 +-
+ tests/qtest/ipmi-bt-test.c          |   2 +-
+ tests/qtest/ipmi-kcs-test.c         |   4 +-
+ tests/qtest/rtl8139-test.c          |   2 +-
+ 21 files changed, 91 insertions(+), 106 deletions(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 5f2e24c4f3..fe82facaeb 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -59,8 +59,6 @@ typedef struct GDBState {
-     bool multiprocess;
-     GDBProcess *processes;
-     int process_num;
--    char syscall_buf[256];
--    gdb_syscall_complete_cb current_syscall_cb;
-     GString *str_buf;
-     GByteArray *mem_buf;
-     int sstep_flags;
-@@ -189,6 +187,12 @@ void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
- void gdb_handle_query_qemu_phy_mem_mode(GArray *params, void *user_ctx);
- void gdb_handle_set_qemu_phy_mem_mode(GArray *params, void *user_ctx);
+diff --git a/docs/spin/aio_notify_accept.promela b/docs/spin/aio_notify_accept.promela
+index 9cef2c955d..f929d30328 100644
+--- a/docs/spin/aio_notify_accept.promela
++++ b/docs/spin/aio_notify_accept.promela
+@@ -118,7 +118,7 @@ accept_if_req_not_eventually_false:
+     if
+         :: req -> goto accept_if_req_not_eventually_false;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ }
  
-+/* sycall handling */
-+void gdb_handle_file_io(GArray *params, void *user_ctx);
-+bool gdb_handled_syscall(void);
-+void gdb_disable_syscalls(void);
-+void gdb_syscall_reset(void);
-+
- /*
-  * Break/Watch point support - there is an implementation for softmmu
-  * and user mode.
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index bb8a3928dd..7d743fe1e9 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -10,98 +10,6 @@
- #define GDB_WATCHPOINT_READ      3
- #define GDB_WATCHPOINT_ACCESS    4
+ #else
+@@ -141,12 +141,12 @@ accept_if_event_not_eventually_true:
+         :: !event && notifier_done  -> do :: true -> skip; od;
+         :: !event && !notifier_done -> goto accept_if_event_not_eventually_true;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
  
--/* For gdb file i/o remote protocol open flags. */
--#define GDB_O_RDONLY  0
--#define GDB_O_WRONLY  1
--#define GDB_O_RDWR    2
--#define GDB_O_APPEND  8
--#define GDB_O_CREAT   0x200
--#define GDB_O_TRUNC   0x400
--#define GDB_O_EXCL    0x800
--
--/* For gdb file i/o remote protocol errno values */
--#define GDB_EPERM           1
--#define GDB_ENOENT          2
--#define GDB_EINTR           4
--#define GDB_EBADF           9
--#define GDB_EACCES         13
--#define GDB_EFAULT         14
--#define GDB_EBUSY          16
--#define GDB_EEXIST         17
--#define GDB_ENODEV         19
--#define GDB_ENOTDIR        20
--#define GDB_EISDIR         21
--#define GDB_EINVAL         22
--#define GDB_ENFILE         23
--#define GDB_EMFILE         24
--#define GDB_EFBIG          27
--#define GDB_ENOSPC         28
--#define GDB_ESPIPE         29
--#define GDB_EROFS          30
--#define GDB_ENAMETOOLONG   91
--#define GDB_EUNKNOWN       9999
--
--/* For gdb file i/o remote protocol lseek whence. */
--#define GDB_SEEK_SET  0
--#define GDB_SEEK_CUR  1
--#define GDB_SEEK_END  2
--
--/* For gdb file i/o stat/fstat. */
--typedef uint32_t gdb_mode_t;
--typedef uint32_t gdb_time_t;
--
--struct gdb_stat {
--  uint32_t    gdb_st_dev;     /* device */
--  uint32_t    gdb_st_ino;     /* inode */
--  gdb_mode_t  gdb_st_mode;    /* protection */
--  uint32_t    gdb_st_nlink;   /* number of hard links */
--  uint32_t    gdb_st_uid;     /* user ID of owner */
--  uint32_t    gdb_st_gid;     /* group ID of owner */
--  uint32_t    gdb_st_rdev;    /* device type (if inode device) */
--  uint64_t    gdb_st_size;    /* total size, in bytes */
--  uint64_t    gdb_st_blksize; /* blocksize for filesystem I/O */
--  uint64_t    gdb_st_blocks;  /* number of blocks allocated */
--  gdb_time_t  gdb_st_atime;   /* time of last access */
--  gdb_time_t  gdb_st_mtime;   /* time of last modification */
--  gdb_time_t  gdb_st_ctime;   /* time of last change */
--} QEMU_PACKED;
--
--struct gdb_timeval {
--  gdb_time_t tv_sec;  /* second */
--  uint64_t tv_usec;   /* microsecond */
--} QEMU_PACKED;
--
--typedef void (*gdb_syscall_complete_cb)(CPUState *cpu, uint64_t ret, int err);
--
--/**
-- * gdb_do_syscall:
-- * @cb: function to call when the system call has completed
-- * @fmt: gdb syscall format string
-- * ...: list of arguments to interpolate into @fmt
-- *
-- * Send a GDB syscall request. This function will return immediately;
-- * the callback function will be called later when the remote system
-- * call has completed.
-- *
-- * @fmt should be in the 'call-id,parameter,parameter...' format documented
-- * for the F request packet in the GDB remote protocol. A limited set of
-- * printf-style format specifiers is supported:
-- *   %x  - target_ulong argument printed in hex
-- *   %lx - 64-bit argument printed in hex
-- *   %s  - string pointer (target_ulong) and length (int) pair
-- */
--void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...);
--/**
-- * gdb_do_syscallv:
-- * @cb: function to call when the system call has completed
-- * @fmt: gdb syscall format string
-- * @va: arguments to interpolate into @fmt
-- *
-- * As gdb_do_syscall, but taking a va_list rather than a variable
-- * argument list.
-- */
--void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va);
--int use_gdb_syscalls(void);
+ accept_if_event_not_eventually_false:
+     if
+         :: event     -> goto accept_if_event_not_eventually_false;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ }
+ #endif
+diff --git a/docs/spin/aio_notify_bug.promela b/docs/spin/aio_notify_bug.promela
+index b3bfca1ca4..ce6f5177ed 100644
+--- a/docs/spin/aio_notify_bug.promela
++++ b/docs/spin/aio_notify_bug.promela
+@@ -106,7 +106,7 @@ accept_if_req_not_eventually_false:
+     if
+         :: req -> goto accept_if_req_not_eventually_false;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ }
  
- /* Get or set a register.  Returns the size of the register.  */
- typedef int (*gdb_get_reg_cb)(CPUArchState *env, GByteArray *buf, int reg);
-@@ -120,16 +28,6 @@ void gdb_register_coprocessor(CPUState *cpu,
-  */
- int gdbserver_start(const char *port_or_device);
+ #else
+@@ -129,12 +129,12 @@ accept_if_event_not_eventually_true:
+         :: !event && notifier_done  -> do :: true -> skip; od;
+         :: !event && !notifier_done -> goto accept_if_event_not_eventually_true;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
  
--/**
-- * gdb_exit: exit gdb session, reporting inferior status
-- * @code: exit code reported
-- *
-- * This closes the session and sends a final packet to GDB reporting
-- * the exit status of the program. It also cleans up any connections
-- * detritus before returning.
-- */
--void gdb_exit(int code);
--
- void gdb_set_stop_cpu(CPUState *cpu);
+ accept_if_event_not_eventually_false:
+     if
+         :: event     -> goto accept_if_event_not_eventually_false;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ }
+ #endif
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index ea331a20d1..97dfdcdd2f 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -534,8 +534,7 @@ void aml_append(Aml *parent_ctx, Aml *child)
+     case AML_NO_OPCODE:
+         break;
+     default:
+-        assert(0);
+-        break;
++        g_assert_not_reached();
+     }
+     build_append_array(parent_ctx->buf, buf);
+     build_free_array(buf);
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index f12aacea6b..fc212195ca 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -198,7 +198,7 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
+         machine->cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     for (n = 0; n < smp_cpus; n++) {
+diff --git a/hw/char/avr_usart.c b/hw/char/avr_usart.c
+index 5bcf9db0b7..e738a2ca97 100644
+--- a/hw/char/avr_usart.c
++++ b/hw/char/avr_usart.c
+@@ -86,7 +86,7 @@ static void update_char_mask(AVRUsartState *usart)
+         usart->char_mask = 0b11111111;
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ }
+ 
+diff --git a/hw/core/numa.c b/hw/core/numa.c
+index d8d36b16d8..26ef02792a 100644
+--- a/hw/core/numa.c
++++ b/hw/core/numa.c
+@@ -381,7 +381,7 @@ void parse_numa_hmat_lb(NumaState *numa_state, NumaHmatLBOptions *node,
+         }
+         lb_data.data = node->bandwidth;
+     } else {
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     g_array_append_val(hmat_lb->list, lb_data);
+diff --git a/hw/net/i82596.c b/hw/net/i82596.c
+index ec21e2699a..eda0f586fb 100644
+--- a/hw/net/i82596.c
++++ b/hw/net/i82596.c
+@@ -285,7 +285,7 @@ static void command_loop(I82596State *s)
+         case CmdDump:
+         case CmdDiagnose:
+             printf("FIXME Command %d !!\n", cmd & 7);
+-            assert(0);
++            g_assert_not_reached();
+         }
+ 
+         /* update status */
+diff --git a/hw/watchdog/watchdog.c b/hw/watchdog/watchdog.c
+index 955046161b..d0ce3c4ac5 100644
+--- a/hw/watchdog/watchdog.c
++++ b/hw/watchdog/watchdog.c
+@@ -85,7 +85,7 @@ void watchdog_perform_action(void)
+         break;
+ 
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ }
+ 
+diff --git a/migration/migration-hmp-cmds.c b/migration/migration-hmp-cmds.c
+index ef25bc8929..4e07c95801 100644
+--- a/migration/migration-hmp-cmds.c
++++ b/migration/migration-hmp-cmds.c
+@@ -602,7 +602,7 @@ void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
+                    "through QMP");
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     if (err) {
+diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
+index f54f44d899..59c8032a21 100644
+--- a/migration/postcopy-ram.c
++++ b/migration/postcopy-ram.c
+@@ -1347,49 +1347,42 @@ int postcopy_ram_incoming_init(MigrationIncomingState *mis)
+ 
+ int postcopy_ram_incoming_cleanup(MigrationIncomingState *mis)
+ {
+-    assert(0);
+-    return -1;
++    g_assert_not_reached();
+ }
+ 
+ int postcopy_ram_prepare_discard(MigrationIncomingState *mis)
+ {
+-    assert(0);
+-    return -1;
++    g_assert_not_reached();
+ }
+ 
+ int postcopy_request_shared_page(struct PostCopyFD *pcfd, RAMBlock *rb,
+                                  uint64_t client_addr, uint64_t rb_offset)
+ {
+-    assert(0);
+-    return -1;
++    g_assert_not_reached();
+ }
+ 
+ int postcopy_ram_incoming_setup(MigrationIncomingState *mis)
+ {
+-    assert(0);
+-    return -1;
++    g_assert_not_reached();
+ }
+ 
+ int postcopy_place_page(MigrationIncomingState *mis, void *host, void *from,
+                         RAMBlock *rb)
+ {
+-    assert(0);
+-    return -1;
++    g_assert_not_reached();
+ }
+ 
+ int postcopy_place_page_zero(MigrationIncomingState *mis, void *host,
+                         RAMBlock *rb)
+ {
+-    assert(0);
+-    return -1;
++    g_assert_not_reached();
+ }
+ 
+ int postcopy_wake_shared(struct PostCopyFD *pcfd,
+                          uint64_t client_addr,
+                          RAMBlock *rb)
+ {
+-    assert(0);
+-    return -1;
++    g_assert_not_reached();
+ }
+ #endif
+ 
+diff --git a/migration/ram.c b/migration/ram.c
+index 96e8a19a58..93f5a4a416 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -2061,19 +2061,17 @@ bool ram_write_tracking_available(void)
+ 
+ bool ram_write_tracking_compatible(void)
+ {
+-    assert(0);
+-    return false;
++    g_assert_not_reached();
+ }
+ 
+ int ram_write_tracking_start(void)
+ {
+-    assert(0);
+-    return -1;
++    g_assert_not_reached();
+ }
+ 
+ void ram_write_tracking_stop(void)
+ {
+-    assert(0);
++    g_assert_not_reached();
+ }
+ #endif /* defined(__linux__) */
+ 
+diff --git a/qobject/qlit.c b/qobject/qlit.c
+index be8332136c..a62865b642 100644
+--- a/qobject/qlit.c
++++ b/qobject/qlit.c
+@@ -118,7 +118,7 @@ QObject *qobject_from_qlit(const QLitObject *qlit)
+     case QTYPE_QBOOL:
+         return QOBJECT(qbool_from_bool(qlit->value.qbool));
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     return NULL;
+diff --git a/qobject/qnum.c b/qobject/qnum.c
+index 2bbeaedc7b..dd8ea49565 100644
+--- a/qobject/qnum.c
++++ b/qobject/qnum.c
+@@ -85,8 +85,7 @@ bool qnum_get_try_int(const QNum *qn, int64_t *val)
+         return false;
+     }
+ 
+-    assert(0);
+-    return false;
++    g_assert_not_reached();
+ }
  
  /**
-diff --git a/include/gdbstub/syscalls.h b/include/gdbstub/syscalls.h
-new file mode 100644
-index 0000000000..5851a2c706
---- /dev/null
-+++ b/include/gdbstub/syscalls.h
-@@ -0,0 +1,124 @@
-+/*
-+ * GDB Syscall support
-+ *
-+ * Copyright (c) 2023 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: LGPL-2.0+
-+ */
-+
-+#ifndef _SYSCALLS_H_
-+#define _SYSCALLS_H_
-+
-+/* For gdb file i/o remote protocol open flags. */
-+#define GDB_O_RDONLY  0
-+#define GDB_O_WRONLY  1
-+#define GDB_O_RDWR    2
-+#define GDB_O_APPEND  8
-+#define GDB_O_CREAT   0x200
-+#define GDB_O_TRUNC   0x400
-+#define GDB_O_EXCL    0x800
-+
-+/* For gdb file i/o remote protocol errno values */
-+#define GDB_EPERM           1
-+#define GDB_ENOENT          2
-+#define GDB_EINTR           4
-+#define GDB_EBADF           9
-+#define GDB_EACCES         13
-+#define GDB_EFAULT         14
-+#define GDB_EBUSY          16
-+#define GDB_EEXIST         17
-+#define GDB_ENODEV         19
-+#define GDB_ENOTDIR        20
-+#define GDB_EISDIR         21
-+#define GDB_EINVAL         22
-+#define GDB_ENFILE         23
-+#define GDB_EMFILE         24
-+#define GDB_EFBIG          27
-+#define GDB_ENOSPC         28
-+#define GDB_ESPIPE         29
-+#define GDB_EROFS          30
-+#define GDB_ENAMETOOLONG   91
-+#define GDB_EUNKNOWN       9999
-+
-+/* For gdb file i/o remote protocol lseek whence. */
-+#define GDB_SEEK_SET  0
-+#define GDB_SEEK_CUR  1
-+#define GDB_SEEK_END  2
-+
-+/* For gdb file i/o stat/fstat. */
-+typedef uint32_t gdb_mode_t;
-+typedef uint32_t gdb_time_t;
-+
-+struct gdb_stat {
-+  uint32_t    gdb_st_dev;     /* device */
-+  uint32_t    gdb_st_ino;     /* inode */
-+  gdb_mode_t  gdb_st_mode;    /* protection */
-+  uint32_t    gdb_st_nlink;   /* number of hard links */
-+  uint32_t    gdb_st_uid;     /* user ID of owner */
-+  uint32_t    gdb_st_gid;     /* group ID of owner */
-+  uint32_t    gdb_st_rdev;    /* device type (if inode device) */
-+  uint64_t    gdb_st_size;    /* total size, in bytes */
-+  uint64_t    gdb_st_blksize; /* blocksize for filesystem I/O */
-+  uint64_t    gdb_st_blocks;  /* number of blocks allocated */
-+  gdb_time_t  gdb_st_atime;   /* time of last access */
-+  gdb_time_t  gdb_st_mtime;   /* time of last modification */
-+  gdb_time_t  gdb_st_ctime;   /* time of last change */
-+} QEMU_PACKED;
-+
-+struct gdb_timeval {
-+  gdb_time_t tv_sec;  /* second */
-+  uint64_t tv_usec;   /* microsecond */
-+} QEMU_PACKED;
-+
-+typedef void (*gdb_syscall_complete_cb)(CPUState *cpu, uint64_t ret, int err);
-+
-+/**
-+ * gdb_do_syscall:
-+ * @cb: function to call when the system call has completed
-+ * @fmt: gdb syscall format string
-+ * ...: list of arguments to interpolate into @fmt
-+ *
-+ * Send a GDB syscall request. This function will return immediately;
-+ * the callback function will be called later when the remote system
-+ * call has completed.
-+ *
-+ * @fmt should be in the 'call-id,parameter,parameter...' format documented
-+ * for the F request packet in the GDB remote protocol. A limited set of
-+ * printf-style format specifiers is supported:
-+ *   %x  - target_ulong argument printed in hex
-+ *   %lx - 64-bit argument printed in hex
-+ *   %s  - string pointer (target_ulong) and length (int) pair
-+ */
-+void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...);
-+
-+/**
-+ * gdb_do_syscallv:
-+ * @cb: function to call when the system call has completed
-+ * @fmt: gdb syscall format string
-+ * @va: arguments to interpolate into @fmt
-+ *
-+ * As gdb_do_syscall, but taking a va_list rather than a variable
-+ * argument list.
-+ */
-+void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va);
-+
-+/**
-+ * use_gdb_syscalls() - report if GDB should be used for syscalls
-+ *
-+ * This is mostly driven by the semihosting mode the user configures
-+ * but assuming GDB is allowed by that we report true if GDB is
-+ * connected to the stub.
-+ */
-+int use_gdb_syscalls(void);
-+
-+/**
-+ * gdb_exit: exit gdb session, reporting inferior status
-+ * @code: exit code reported
-+ *
-+ * This closes the session and sends a final packet to GDB reporting
-+ * the exit status of the program. It also cleans up any connections
-+ * detritus before returning.
-+ */
-+void gdb_exit(int code);
-+
-+#endif /* _SYSCALLS_H_ */
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 7ae3ff52b3..a8b321710c 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -29,6 +29,7 @@
- #include "qemu/module.h"
- #include "trace.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #ifdef CONFIG_USER_ONLY
- #include "gdbstub/user.h"
+@@ -123,8 +122,7 @@ bool qnum_get_try_uint(const QNum *qn, uint64_t *val)
+         return false;
+     }
+ 
+-    assert(0);
+-    return false;
++    g_assert_not_reached();
+ }
+ 
+ /**
+@@ -156,8 +154,7 @@ double qnum_get_double(QNum *qn)
+         return qn->u.dbl;
+     }
+ 
+-    assert(0);
+-    return 0.0;
++    g_assert_not_reached();
+ }
+ 
+ char *qnum_to_string(QNum *qn)
+@@ -172,8 +169,7 @@ char *qnum_to_string(QNum *qn)
+         return g_strdup_printf("%.17g", qn->u.dbl);
+     }
+ 
+-    assert(0);
+-    return NULL;
++    g_assert_not_reached();
+ }
+ 
+ /**
+diff --git a/softmmu/rtc.c b/softmmu/rtc.c
+index f7114bed7d..a2145da23d 100644
+--- a/softmmu/rtc.c
++++ b/softmmu/rtc.c
+@@ -63,7 +63,7 @@ static time_t qemu_ref_timedate(QEMUClockType clock)
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+     return value;
+ }
+diff --git a/target/mips/sysemu/physaddr.c b/target/mips/sysemu/physaddr.c
+index 2970df8a09..05990aa5bb 100644
+--- a/target/mips/sysemu/physaddr.c
++++ b/target/mips/sysemu/physaddr.c
+@@ -70,8 +70,7 @@ static int is_seg_am_mapped(unsigned int am, bool eu, int mmu_idx)
+         /* is this AM mapped in current execution mode */
+         return ((adetlb_mask << am) < 0);
+     default:
+-        assert(0);
+-        return TLBRET_BADADDR;
++        g_assert_not_reached();
+     };
+ }
+ 
+diff --git a/target/mips/tcg/msa_helper.c b/target/mips/tcg/msa_helper.c
+index 736283e2af..29b31d70fe 100644
+--- a/target/mips/tcg/msa_helper.c
++++ b/target/mips/tcg/msa_helper.c
+@@ -5333,7 +5333,7 @@ void helper_msa_shf_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+     msa_move_v(pwd, pwx);
+ }
+@@ -5368,7 +5368,7 @@ void helper_msa_ ## helper ## _df(CPUMIPSState *env, uint32_t df,       \
+         }                                                               \
+         break;                                                          \
+     default:                                                            \
+-        assert(0);                                                      \
++        g_assert_not_reached();                                         \
+     }                                                                   \
+ }
+ 
+@@ -5413,7 +5413,7 @@ void helper_msa_ldi_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+        break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -5461,7 +5461,7 @@ void helper_msa_ ## helper ## _df(CPUMIPSState *env, uint32_t df, uint32_t wd, \
+         }                                                               \
+         break;                                                          \
+     default:                                                            \
+-        assert(0);                                                      \
++        g_assert_not_reached();                                         \
+     }                                                                   \
+ }
+ 
+@@ -5511,7 +5511,7 @@ void helper_msa_ ## helper ## _df(CPUMIPSState *env, uint32_t df,       \
+         }                                                               \
+         break;                                                          \
+     default:                                                            \
+-        assert(0);                                                      \
++        g_assert_not_reached();                                         \
+     }                                                                   \
+ }
+ 
+@@ -5557,7 +5557,7 @@ static inline void msa_sld_df(uint32_t df, wr_t *pwd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -5632,7 +5632,7 @@ void helper_msa_ ## func ## _df(CPUMIPSState *env, uint32_t df,         \
+         pwd->d[1] = msa_ ## func ## _df(df, pws->d[1], pwt->d[1]);      \
+         break;                                                          \
+     default:                                                            \
+-        assert(0);                                                      \
++        g_assert_not_reached();                                         \
+     }                                                                   \
+ }
+ 
+@@ -5771,7 +5771,7 @@ void helper_msa_ ## func ## _df(CPUMIPSState *env, uint32_t df, uint32_t wd,  \
+         pwd->d[1] = msa_ ## func ## _df(df, pwd->d[1], pws->d[1], pwt->d[1]); \
+         break;                                                                \
+     default:                                                                  \
+-        assert(0);                                                            \
++        g_assert_not_reached();                                               \
+     }                                                                         \
+ }
+ 
+@@ -5811,7 +5811,7 @@ static inline void msa_splat_df(uint32_t df, wr_t *pwd,
+         }
+        break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -5869,7 +5869,7 @@ void helper_msa_##FUNC(CPUMIPSState *env, uint32_t df, uint32_t wd, \
+         MSA_LOOP_D;                                                 \
+         break;                                                      \
+     default:                                                        \
+-        assert(0);                                                  \
++        g_assert_not_reached();                                     \
+     }                                                               \
+     msa_move_v(pwd, pwx);                                           \
+ }
+@@ -6090,7 +6090,7 @@ void helper_msa_insve_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         pwd->d[n] = (int64_t)pws->d[0];
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -6150,7 +6150,7 @@ void helper_msa_fill_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+        break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -6565,7 +6565,7 @@ static inline void compare_af(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6596,7 +6596,7 @@ static inline void compare_un(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6625,7 +6625,7 @@ static inline void compare_eq(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6654,7 +6654,7 @@ static inline void compare_ueq(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6683,7 +6683,7 @@ static inline void compare_lt(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6712,7 +6712,7 @@ static inline void compare_ult(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6741,7 +6741,7 @@ static inline void compare_le(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6770,7 +6770,7 @@ static inline void compare_ule(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6799,7 +6799,7 @@ static inline void compare_or(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6828,7 +6828,7 @@ static inline void compare_une(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -6857,7 +6857,7 @@ static inline void compare_ne(CPUMIPSState *env, wr_t *pwd, wr_t *pws,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, retaddr);
+@@ -7107,7 +7107,7 @@ void helper_msa_fadd_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7137,7 +7137,7 @@ void helper_msa_fsub_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7167,7 +7167,7 @@ void helper_msa_fmul_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7198,7 +7198,7 @@ void helper_msa_fdiv_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7245,7 +7245,7 @@ void helper_msa_fmadd_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7280,7 +7280,7 @@ void helper_msa_fmsub_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7317,7 +7317,7 @@ void helper_msa_fexp2_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7371,7 +7371,7 @@ void helper_msa_fexdo_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7417,7 +7417,7 @@ void helper_msa_ftq_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7526,7 +7526,7 @@ void helper_msa_fmin_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+ 
+     } else {
+ 
+-        assert(0);
++        g_assert_not_reached();
+ 
+     }
+ 
+@@ -7555,7 +7555,7 @@ void helper_msa_fmin_a_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         FMAXMIN_A(min, max, pwx->d[0], pws->d[0], pwt->d[0], 64, status);
+         FMAXMIN_A(min, max, pwx->d[1], pws->d[1], pwt->d[1], 64, status);
+     } else {
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7628,7 +7628,7 @@ void helper_msa_fmax_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+ 
+     } else {
+ 
+-        assert(0);
++        g_assert_not_reached();
+ 
+     }
+ 
+@@ -7657,7 +7657,7 @@ void helper_msa_fmax_a_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         FMAXMIN_A(max, min, pwx->d[0], pws->d[0], pwt->d[0], 64, status);
+         FMAXMIN_A(max, min, pwx->d[1], pws->d[1], pwt->d[1], 64, status);
+     } else {
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7681,7 +7681,7 @@ void helper_msa_fclass_df(CPUMIPSState *env, uint32_t df,
+         pwd->d[0] = float_class_d(pws->d[0], status);
+         pwd->d[1] = float_class_d(pws->d[1], status);
+     } else {
+-        assert(0);
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -7723,7 +7723,7 @@ void helper_msa_ftrunc_s_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7753,7 +7753,7 @@ void helper_msa_ftrunc_u_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7783,7 +7783,7 @@ void helper_msa_fsqrt_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7832,7 +7832,7 @@ void helper_msa_frsqrt_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7862,7 +7862,7 @@ void helper_msa_frcp_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7892,7 +7892,7 @@ void helper_msa_frint_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7946,7 +7946,7 @@ void helper_msa_flog2_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -7983,7 +7983,7 @@ void helper_msa_fexupl_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -8019,7 +8019,7 @@ void helper_msa_fexupr_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -8046,7 +8046,7 @@ void helper_msa_ffql_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     msa_move_v(pwd, pwx);
+@@ -8072,7 +8072,7 @@ void helper_msa_ffqr_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     msa_move_v(pwd, pwx);
+@@ -8100,7 +8100,7 @@ void helper_msa_ftint_s_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -8130,7 +8130,7 @@ void helper_msa_ftint_u_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -8166,7 +8166,7 @@ void helper_msa_ffint_s_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+@@ -8196,7 +8196,7 @@ void helper_msa_ffint_u_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
+         }
+         break;
+     default:
+-        assert(0);
++        g_assert_not_reached();
+     }
+ 
+     check_msacsr_cause(env, GETPC());
+diff --git a/target/ppc/dfp_helper.c b/target/ppc/dfp_helper.c
+index 5967ea07a9..ecc3f79326 100644
+--- a/target/ppc/dfp_helper.c
++++ b/target/ppc/dfp_helper.c
+@@ -249,7 +249,7 @@ static void dfp_set_FPRF_from_FRT_with_context(struct PPC_DFP *dfp,
+         fprf = 0x05;
+         break;
+     default:
+-        assert(0); /* should never get here */
++        g_assert_not_reached();
+     }
+     dfp->env->fpscr &= ~FP_FPRF;
+     dfp->env->fpscr |= (fprf << FPSCR_FPRF);
+@@ -1243,7 +1243,7 @@ void helper_##op(CPUPPCState *env, ppc_fprp_t *t, ppc_fprp_t *b) \
+         } else if (decNumberIsQNaN(&dfp.b)) {                  \
+             vt.VsrD(1) = -2;                                   \
+         } else {                                               \
+-            assert(0);                                         \
++            g_assert_not_reached();                            \
+         }                                                      \
+         set_dfp64(t, &vt);                                     \
+     } else {                                                   \
+@@ -1252,7 +1252,7 @@ void helper_##op(CPUPPCState *env, ppc_fprp_t *t, ppc_fprp_t *b) \
+         } else if ((size) == 128) {                            \
+             vt.VsrD(1) = dfp.b.exponent + 6176;                \
+         } else {                                               \
+-            assert(0);                                         \
++            g_assert_not_reached();                            \
+         }                                                      \
+         set_dfp64(t, &vt);                                     \
+     }                                                          \
+@@ -1300,7 +1300,7 @@ void helper_##op(CPUPPCState *env, ppc_fprp_t *t, ppc_fprp_t *a,          \
+         raw_inf = 0x1e000;                                                \
+         bias = 6176;                                                      \
+     } else {                                                              \
+-        assert(0);                                                        \
++        g_assert_not_reached();                                           \
+     }                                                                     \
+                                                                           \
+     if (unlikely((exp < 0) || (exp > max_exp))) {                         \
+diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
+index 64e30435f5..b064f3bd04 100644
+--- a/target/ppc/mmu_helper.c
++++ b/target/ppc/mmu_helper.c
+@@ -353,7 +353,7 @@ void ppc_tlb_invalidate_one(CPUPPCState *env, target_ulong addr)
+         break;
+     default:
+         /* Should never reach here with other MMU models */
+-        assert(0);
++        g_assert_not_reached();
+     }
  #else
-@@ -38,7 +39,6 @@
- 
- #include "sysemu/hw_accel.h"
- #include "sysemu/runstate.h"
--#include "semihosting/semihost.h"
- #include "exec/exec-all.h"
- #include "exec/tb-flush.h"
- #include "exec/hwaddr.h"
-@@ -78,41 +78,6 @@ void gdb_init_gdbserver_state(void)
- 
- bool gdb_has_xml;
- 
--/*
-- * Return true if there is a GDB currently connected to the stub
-- * and attached to a CPU
-- */
--static bool gdb_attached(void)
--{
--    return gdbserver_state.init && gdbserver_state.c_cpu;
--}
--
--static enum {
--    GDB_SYS_UNKNOWN,
--    GDB_SYS_ENABLED,
--    GDB_SYS_DISABLED,
--} gdb_syscall_mode;
--
--/* Decide if either remote gdb syscalls or native file IO should be used. */
--int use_gdb_syscalls(void)
--{
--    SemihostingTarget target = semihosting_get_target();
--    if (target == SEMIHOSTING_TARGET_NATIVE) {
--        /* -semihosting-config target=native */
--        return false;
--    } else if (target == SEMIHOSTING_TARGET_GDB) {
--        /* -semihosting-config target=gdb */
--        return true;
--    }
--
--    /* -semihosting-config target=auto */
--    /* On the first call check if gdb is connected and remember. */
--    if (gdb_syscall_mode == GDB_SYS_UNKNOWN) {
--        gdb_syscall_mode = gdb_attached() ? GDB_SYS_ENABLED : GDB_SYS_DISABLED;
--    }
--    return gdb_syscall_mode == GDB_SYS_ENABLED;
--}
--
- /* writes 2*len+1 bytes in buf */
- void gdb_memtohex(GString *buf, const uint8_t *mem, int len)
- {
-@@ -922,7 +887,7 @@ static void handle_detach(GArray *params, void *user_ctx)
- 
-     if (!gdbserver_state.c_cpu) {
-         /* No more process attached */
--        gdb_syscall_mode = GDB_SYS_DISABLED;
-+        gdb_disable_syscalls();
-         gdb_continue();
+     ppc_tlb_invalidate_all(env);
+diff --git a/tests/qtest/ipmi-bt-test.c b/tests/qtest/ipmi-bt-test.c
+index ed431e34e6..5bd6b769d3 100644
+--- a/tests/qtest/ipmi-bt-test.c
++++ b/tests/qtest/ipmi-bt-test.c
+@@ -251,7 +251,7 @@ static void emu_msg_handler(void)
+         msg[msg_len++] = 0xa0;
+         write_emu_msg(msg, msg_len);
+     } else {
+-        g_assert(0);
++        g_assert_not_reached();
      }
-     gdb_put_packet("OK");
-@@ -1234,60 +1199,6 @@ static void handle_read_all_regs(GArray *params, void *user_ctx)
-     gdb_put_strbuf();
  }
  
--static void handle_file_io(GArray *params, void *user_ctx)
--{
--    if (params->len >= 1 && gdbserver_state.current_syscall_cb) {
--        uint64_t ret;
--        int err;
--
--        ret = get_param(params, 0)->val_ull;
--        if (params->len >= 2) {
--            err = get_param(params, 1)->val_ull;
--        } else {
--            err = 0;
--        }
--
--        /* Convert GDB error numbers back to host error numbers. */
--#define E(X)  case GDB_E##X: err = E##X; break
--        switch (err) {
--        case 0:
--            break;
--        E(PERM);
--        E(NOENT);
--        E(INTR);
--        E(BADF);
--        E(ACCES);
--        E(FAULT);
--        E(BUSY);
--        E(EXIST);
--        E(NODEV);
--        E(NOTDIR);
--        E(ISDIR);
--        E(INVAL);
--        E(NFILE);
--        E(MFILE);
--        E(FBIG);
--        E(NOSPC);
--        E(SPIPE);
--        E(ROFS);
--        E(NAMETOOLONG);
--        default:
--            err = EINVAL;
--            break;
--        }
--#undef E
--
--        gdbserver_state.current_syscall_cb(gdbserver_state.c_cpu, ret, err);
--        gdbserver_state.current_syscall_cb = NULL;
--    }
--
--    if (params->len >= 3 && get_param(params, 2)->opcode == (uint8_t)'C') {
--        gdb_put_packet("T02");
--        return;
--    }
--
--    gdb_continue();
--}
+diff --git a/tests/qtest/ipmi-kcs-test.c b/tests/qtest/ipmi-kcs-test.c
+index afc24dd3e4..3186c6ad64 100644
+--- a/tests/qtest/ipmi-kcs-test.c
++++ b/tests/qtest/ipmi-kcs-test.c
+@@ -145,7 +145,7 @@ static void kcs_cmd(uint8_t *cmd, unsigned int cmd_len,
+         break;
  
- static void handle_step(GArray *params, void *user_ctx)
- {
-@@ -1893,7 +1804,7 @@ static int gdb_handle_packet(const char *line_buf)
-     case 'F':
-         {
-             static const GdbCmdParseEntry file_io_cmd_desc = {
--                .handler = handle_file_io,
-+                .handler = gdb_handle_file_io,
-                 .cmd = "F",
-                 .cmd_startswith = 1,
-                 .schema = "L,L,o0"
-@@ -2061,88 +1972,6 @@ void gdb_set_stop_cpu(CPUState *cpu)
-     gdbserver_state.g_cpu = cpu;
+     default:
+-        g_assert(0);
++        g_assert_not_reached();
+     }
+     *rsp_len = j;
  }
+@@ -184,7 +184,7 @@ static void kcs_abort(uint8_t *cmd, unsigned int cmd_len,
+         break;
  
--/* Send a gdb syscall request.
--   This accepts limited printf-style format specifiers, specifically:
--    %x  - target_ulong argument printed in hex.
--    %lx - 64-bit argument printed in hex.
--    %s  - string pointer (target_ulong) and length (int) pair.  */
--void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
--{
--    char *p;
--    char *p_end;
--    target_ulong addr;
--    uint64_t i64;
--
--    if (!gdb_attached()) {
--        return;
--    }
--
--    gdbserver_state.current_syscall_cb = cb;
--#ifndef CONFIG_USER_ONLY
--    vm_stop(RUN_STATE_DEBUG);
--#endif
--    p = &gdbserver_state.syscall_buf[0];
--    p_end = &gdbserver_state.syscall_buf[sizeof(gdbserver_state.syscall_buf)];
--    *(p++) = 'F';
--    while (*fmt) {
--        if (*fmt == '%') {
--            fmt++;
--            switch (*fmt++) {
--            case 'x':
--                addr = va_arg(va, target_ulong);
--                p += snprintf(p, p_end - p, TARGET_FMT_lx, addr);
--                break;
--            case 'l':
--                if (*(fmt++) != 'x')
--                    goto bad_format;
--                i64 = va_arg(va, uint64_t);
--                p += snprintf(p, p_end - p, "%" PRIx64, i64);
--                break;
--            case 's':
--                addr = va_arg(va, target_ulong);
--                p += snprintf(p, p_end - p, TARGET_FMT_lx "/%x",
--                              addr, va_arg(va, int));
--                break;
--            default:
--            bad_format:
--                error_report("gdbstub: Bad syscall format string '%s'",
--                             fmt - 1);
--                break;
--            }
--        } else {
--            *(p++) = *(fmt++);
--        }
--    }
--    *p = 0;
--#ifdef CONFIG_USER_ONLY
--    gdb_put_packet(gdbserver_state.syscall_buf);
--    /* Return control to gdb for it to process the syscall request.
--     * Since the protocol requires that gdb hands control back to us
--     * using a "here are the results" F packet, we don't need to check
--     * gdb_handlesig's return value (which is the signal to deliver if
--     * execution was resumed via a continue packet).
--     */
--    gdb_handlesig(gdbserver_state.c_cpu, 0);
--#else
--    /* In this case wait to send the syscall packet until notification that
--       the CPU has stopped.  This must be done because if the packet is sent
--       now the reply from the syscall request could be received while the CPU
--       is still in the running state, which can cause packets to be dropped
--       and state transition 'T' packets to be sent while the syscall is still
--       being processed.  */
--    qemu_cpu_kick(gdbserver_state.c_cpu);
--#endif
--}
--
--void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...)
--{
--    va_list va;
--
--    va_start(va, fmt);
--    gdb_do_syscallv(cb, fmt, va);
--    va_end(va);
--}
--
- void gdb_read_byte(uint8_t ch)
+     default:
+-        g_assert(0);
++        g_assert_not_reached();
+     }
+ 
+     /* Start the abort here */
+diff --git a/tests/qtest/rtl8139-test.c b/tests/qtest/rtl8139-test.c
+index 8fa3313cc3..37e352c651 100644
+--- a/tests/qtest/rtl8139-test.c
++++ b/tests/qtest/rtl8139-test.c
+@@ -59,7 +59,7 @@ PORT(IntrMask, w, 0x3c)
+ PORT(IntrStatus, w, 0x3E)
+ PORT(TimerInt, l, 0x54)
+ 
+-#define fatal(...) do { g_test_message(__VA_ARGS__); g_assert(0); } while (0)
++#define fatal(...) do { g_test_message(__VA_ARGS__); g_assert_not_reached(); } while (0)
+ 
+ static void test_timer(void)
  {
-     uint8_t reply;
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index 5363ff066d..b7e3829ca0 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -15,6 +15,7 @@
- #include "qemu/error-report.h"
- #include "qemu/cutils.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #include "exec/hwaddr.h"
- #include "exec/tb-flush.h"
- #include "sysemu/cpus.h"
-@@ -111,9 +112,9 @@ static void gdb_vm_state_change(void *opaque, bool running, RunState state)
-     if (running || gdbserver_state.state == RS_INACTIVE) {
-         return;
-     }
-+
-     /* Is there a GDB syscall waiting to be sent?  */
--    if (gdbserver_state.current_syscall_cb) {
--        gdb_put_packet(gdbserver_state.syscall_buf);
-+    if (gdb_handled_syscall()) {
-         return;
-     }
- 
-@@ -377,7 +378,7 @@ int gdbserver_start(const char *device)
-     }
-     gdbserver_state.state = chr ? RS_IDLE : RS_INACTIVE;
-     gdbserver_system_state.mon_chr = mon_chr;
--    gdbserver_state.current_syscall_cb = NULL;
-+    gdb_syscall_reset();
- 
-     return 0;
- }
-diff --git a/gdbstub/syscalls.c b/gdbstub/syscalls.c
-new file mode 100644
-index 0000000000..1b63a1d197
---- /dev/null
-+++ b/gdbstub/syscalls.c
-@@ -0,0 +1,227 @@
-+/*
-+ * GDB Syscall Handling
-+ *
-+ * GDB can execute syscalls on the guests behalf, currently used by
-+ * the various semihosting extensions. As this interfaces with a guest
-+ * ABI we need to build it per-guest (although in reality its a 32 or
-+ * 64 bit target_ulong that is the only difference).
-+ *
-+ * Copyright (c) 2003-2005 Fabrice Bellard
-+ * Copyright (c) 2023 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: LGPL-2.0+
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "cpu.h"
-+#include "semihosting/semihost.h"
-+#include "sysemu/runstate.h"
-+#include "gdbstub/user.h"
-+#include "gdbstub/syscalls.h"
-+#include "trace.h"
-+#include "internals.h"
-+
-+/* Syscall specific state */
-+typedef struct {
-+    char syscall_buf[256];
-+    gdb_syscall_complete_cb current_syscall_cb;
-+} GDBSyscallState;
-+
-+static GDBSyscallState gdbserver_syscall_state;
-+
-+/*
-+ * Return true if there is a GDB currently connected to the stub
-+ * and attached to a CPU
-+ */
-+static bool gdb_attached(void)
-+{
-+    return gdbserver_state.init && gdbserver_state.c_cpu;
-+}
-+
-+static enum {
-+    GDB_SYS_UNKNOWN,
-+    GDB_SYS_ENABLED,
-+    GDB_SYS_DISABLED,
-+} gdb_syscall_mode;
-+
-+/* Decide if either remote gdb syscalls or native file IO should be used. */
-+int use_gdb_syscalls(void)
-+{
-+    SemihostingTarget target = semihosting_get_target();
-+    if (target == SEMIHOSTING_TARGET_NATIVE) {
-+        /* -semihosting-config target=native */
-+        return false;
-+    } else if (target == SEMIHOSTING_TARGET_GDB) {
-+        /* -semihosting-config target=gdb */
-+        return true;
-+    }
-+
-+    /* -semihosting-config target=auto */
-+    /* On the first call check if gdb is connected and remember. */
-+    if (gdb_syscall_mode == GDB_SYS_UNKNOWN) {
-+        gdb_syscall_mode = gdb_attached() ? GDB_SYS_ENABLED : GDB_SYS_DISABLED;
-+    }
-+    return gdb_syscall_mode == GDB_SYS_ENABLED;
-+}
-+
-+/* called when the stub detaches */
-+void gdb_disable_syscalls(void)
-+{
-+    gdb_syscall_mode = GDB_SYS_DISABLED;
-+}
-+
-+void gdb_syscall_reset(void)
-+{
-+    gdbserver_syscall_state.current_syscall_cb = NULL;
-+}
-+
-+bool gdb_handled_syscall(void)
-+{
-+    if (gdbserver_syscall_state.current_syscall_cb) {
-+        gdb_put_packet(gdbserver_syscall_state.syscall_buf);
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
-+/* Send a gdb syscall request.
-+   This accepts limited printf-style format specifiers, specifically:
-+    %x  - target_ulong argument printed in hex.
-+    %lx - 64-bit argument printed in hex.
-+    %s  - string pointer (target_ulong) and length (int) pair.  */
-+void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
-+{
-+    char *p;
-+    char *p_end;
-+    target_ulong addr;
-+    uint64_t i64;
-+
-+    if (!gdb_attached()) {
-+        return;
-+    }
-+
-+    gdbserver_syscall_state.current_syscall_cb = cb;
-+#ifndef CONFIG_USER_ONLY
-+    vm_stop(RUN_STATE_DEBUG);
-+#endif
-+    p = &gdbserver_syscall_state.syscall_buf[0];
-+    p_end = &gdbserver_syscall_state.syscall_buf[sizeof(gdbserver_syscall_state.syscall_buf)];
-+    *(p++) = 'F';
-+    while (*fmt) {
-+        if (*fmt == '%') {
-+            fmt++;
-+            switch (*fmt++) {
-+            case 'x':
-+                addr = va_arg(va, target_ulong);
-+                p += snprintf(p, p_end - p, TARGET_FMT_lx, addr);
-+                break;
-+            case 'l':
-+                if (*(fmt++) != 'x')
-+                    goto bad_format;
-+                i64 = va_arg(va, uint64_t);
-+                p += snprintf(p, p_end - p, "%" PRIx64, i64);
-+                break;
-+            case 's':
-+                addr = va_arg(va, target_ulong);
-+                p += snprintf(p, p_end - p, TARGET_FMT_lx "/%x",
-+                              addr, va_arg(va, int));
-+                break;
-+            default:
-+            bad_format:
-+                error_report("gdbstub: Bad syscall format string '%s'",
-+                             fmt - 1);
-+                break;
-+            }
-+        } else {
-+            *(p++) = *(fmt++);
-+        }
-+    }
-+    *p = 0;
-+#ifdef CONFIG_USER_ONLY
-+    gdb_put_packet(gdbserver_syscall_state.syscall_buf);
-+    /* Return control to gdb for it to process the syscall request.
-+     * Since the protocol requires that gdb hands control back to us
-+     * using a "here are the results" F packet, we don't need to check
-+     * gdb_handlesig's return value (which is the signal to deliver if
-+     * execution was resumed via a continue packet).
-+     */
-+    gdb_handlesig(gdbserver_state.c_cpu, 0);
-+#else
-+    /* In this case wait to send the syscall packet until notification that
-+       the CPU has stopped.  This must be done because if the packet is sent
-+       now the reply from the syscall request could be received while the CPU
-+       is still in the running state, which can cause packets to be dropped
-+       and state transition 'T' packets to be sent while the syscall is still
-+       being processed.  */
-+    qemu_cpu_kick(gdbserver_state.c_cpu);
-+#endif
-+}
-+
-+void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...)
-+{
-+    va_list va;
-+
-+    va_start(va, fmt);
-+    gdb_do_syscallv(cb, fmt, va);
-+    va_end(va);
-+}
-+
-+/*
-+ * GDB Command Handlers
-+ */
-+
-+void gdb_handle_file_io(GArray *params, void *user_ctx)
-+{
-+    if (params->len >= 1 && gdbserver_syscall_state.current_syscall_cb) {
-+        uint64_t ret;
-+        int err;
-+
-+        ret = get_param(params, 0)->val_ull;
-+        if (params->len >= 2) {
-+            err = get_param(params, 1)->val_ull;
-+        } else {
-+            err = 0;
-+        }
-+
-+        /* Convert GDB error numbers back to host error numbers. */
-+#define E(X)  case GDB_E##X: err = E##X; break
-+        switch (err) {
-+        case 0:
-+            break;
-+        E(PERM);
-+        E(NOENT);
-+        E(INTR);
-+        E(BADF);
-+        E(ACCES);
-+        E(FAULT);
-+        E(BUSY);
-+        E(EXIST);
-+        E(NODEV);
-+        E(NOTDIR);
-+        E(ISDIR);
-+        E(INVAL);
-+        E(NFILE);
-+        E(MFILE);
-+        E(FBIG);
-+        E(NOSPC);
-+        E(SPIPE);
-+        E(ROFS);
-+        E(NAMETOOLONG);
-+        default:
-+            err = EINVAL;
-+            break;
-+        }
-+#undef E
-+
-+        gdbserver_syscall_state.current_syscall_cb(gdbserver_state.c_cpu, ret, err);
-+        gdbserver_syscall_state.current_syscall_cb = NULL;
-+    }
-+
-+    if (params->len >= 3 && get_param(params, 2)->opcode == (uint8_t)'C') {
-+        gdb_put_packet("T02");
-+        return;
-+    }
-+
-+    gdb_continue();
-+}
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index a716ad05b2..cc7eeb9afb 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -15,6 +15,7 @@
- #include "exec/hwaddr.h"
- #include "exec/tb-flush.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #include "gdbstub/user.h"
- #include "hw/core/cpu.h"
- #include "trace.h"
-diff --git a/linux-user/exit.c b/linux-user/exit.c
-index 607b6da9fc..fd49d76f45 100644
---- a/linux-user/exit.c
-+++ b/linux-user/exit.c
-@@ -18,7 +18,7 @@
-  */
- #include "qemu/osdep.h"
- #include "accel/tcg/perf.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #include "qemu.h"
- #include "user-internals.h"
- #ifdef CONFIG_GPROF
-diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index 62d8bae97f..564fe17f75 100644
---- a/semihosting/arm-compat-semi.c
-+++ b/semihosting/arm-compat-semi.c
-@@ -34,6 +34,7 @@
- #include "qemu/osdep.h"
- #include "qemu/timer.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #include "semihosting/semihost.h"
- #include "semihosting/console.h"
- #include "semihosting/common-semi.h"
-diff --git a/semihosting/guestfd.c b/semihosting/guestfd.c
-index b05c52f26f..acb86b50dd 100644
---- a/semihosting/guestfd.c
-+++ b/semihosting/guestfd.c
-@@ -9,7 +9,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #include "semihosting/semihost.h"
- #include "semihosting/guestfd.h"
- #ifdef CONFIG_USER_ONLY
-diff --git a/semihosting/syscalls.c b/semihosting/syscalls.c
-index d69078899a..42080ffdda 100644
---- a/semihosting/syscalls.c
-+++ b/semihosting/syscalls.c
-@@ -7,8 +7,8 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "exec/gdbstub.h"
- #include "cpu.h"
-+#include "gdbstub/syscalls.h"
- #include "semihosting/guestfd.h"
- #include "semihosting/syscalls.h"
- #include "semihosting/console.h"
-diff --git a/softmmu/runstate.c b/softmmu/runstate.c
-index f9ad88e6a7..6ee622841d 100644
---- a/softmmu/runstate.c
-+++ b/softmmu/runstate.c
-@@ -30,7 +30,7 @@
- #include "crypto/cipher.h"
- #include "crypto/init.h"
- #include "exec/cpu-common.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #include "hw/boards.h"
- #include "migration/misc.h"
- #include "migration/postcopy-ram.h"
-diff --git a/target/m68k/m68k-semi.c b/target/m68k/m68k-semi.c
-index f753710d7d..88ad9ba814 100644
---- a/target/m68k/m68k-semi.c
-+++ b/target/m68k/m68k-semi.c
-@@ -20,7 +20,7 @@
- #include "qemu/osdep.h"
- 
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #include "gdbstub/helpers.h"
- #include "semihosting/syscalls.h"
- #include "semihosting/softmmu-uaccess.h"
-diff --git a/target/mips/tcg/sysemu/mips-semi.c b/target/mips/tcg/sysemu/mips-semi.c
-index 4e6e759057..f3735df7b9 100644
---- a/target/mips/tcg/sysemu/mips-semi.c
-+++ b/target/mips/tcg/sysemu/mips-semi.c
-@@ -20,7 +20,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "qemu/log.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #include "gdbstub/helpers.h"
- #include "semihosting/softmmu-uaccess.h"
- #include "semihosting/semihost.h"
-diff --git a/target/nios2/nios2-semi.c b/target/nios2/nios2-semi.c
-index 113b3f22aa..3738774976 100644
---- a/target/nios2/nios2-semi.c
-+++ b/target/nios2/nios2-semi.c
-@@ -23,7 +23,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/syscalls.h"
- #include "gdbstub/helpers.h"
- #include "semihosting/syscalls.h"
- #include "semihosting/softmmu-uaccess.h"
-diff --git a/gdbstub/meson.build b/gdbstub/meson.build
-index 827f062af6..56c40c25ef 100644
---- a/gdbstub/meson.build
-+++ b/gdbstub/meson.build
-@@ -5,6 +5,10 @@
- #
- 
- specific_ss.add(files('gdbstub.c'))
-+
-+# These have to built to the target ABI
-+specific_ss.add(files('syscalls.c'))
-+
- softmmu_ss.add(files('softmmu.c'))
- user_ss.add(files('user.c'))
- 
 -- 
-2.39.1
+2.38.1
+

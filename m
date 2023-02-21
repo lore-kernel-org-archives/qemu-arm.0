@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q6-20020a05600c46c600b003dc47d458cdsm6451600wmo.15.2023.02.21.14.52.31
+        by smtp.gmail.com with ESMTPSA id d18-20020a5d6452000000b002c54f4d0f71sm7003887wrw.38.2023.02.21.14.52.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 21 Feb 2023 14:52:34 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 40D6A1FFD1;
-	Tue, 21 Feb 2023 22:52:31 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 627521FFBA;
+	Tue, 21 Feb 2023 22:52:29 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -52,105 +52,114 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 23/24] include: split target_long definition from cpu-defs
-Date: Tue, 21 Feb 2023 22:52:26 +0000
-Message-Id: <20230221225227.3735319-24-alex.bennee@linaro.org>
+Subject: [PATCH v3 15/24] gdbstub: introduce gdb_get_max_cpus
+Date: Tue, 21 Feb 2023 22:52:18 +0000
+Message-Id: <20230221225227.3735319-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
 References: <20230221225227.3735319-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: sFA6iuVqwraG
+X-TUID: GoP1kh+s/N65
 
-While we will continue to include this via cpu-defs it is useful to be
-able to define this separately for 32 and 64 bit versions of an
-otherwise target independent compilation unit.
+This is needed for handling vcont packets as the way of calculating
+max cpus vhanges between user and softmmu mode.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/exec/cpu-defs.h    | 19 +----------------
- include/exec/target_long.h | 42 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 43 insertions(+), 18 deletions(-)
- create mode 100644 include/exec/target_long.h
 
-diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
-index 21309cf567..98605dfba2 100644
---- a/include/exec/cpu-defs.h
-+++ b/include/exec/cpu-defs.h
-@@ -58,24 +58,7 @@
- # define TARGET_TB_PCREL 0
- #endif
+---
+v3
+  - rm out of date comment
+---
+ gdbstub/internals.h |  1 +
+ gdbstub/gdbstub.c   | 11 +----------
+ gdbstub/softmmu.c   |  9 +++++++++
+ gdbstub/user.c      | 17 +++++++++++++++++
+ 4 files changed, 28 insertions(+), 10 deletions(-)
+
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 9de995ce3a..90069a9415 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -127,6 +127,7 @@ bool gdb_got_immediate_ack(void);
+ CPUState *gdb_first_attached_cpu(void);
+ void gdb_append_thread_id(CPUState *cpu, GString *buf);
+ int gdb_get_cpu_index(CPUState *cpu);
++unsigned int gdb_get_max_cpus(void); /* both */
  
--#define TARGET_LONG_SIZE (TARGET_LONG_BITS / 8)
+ void gdb_create_default_process(GDBState *s);
+ 
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 91021859a1..f9950200b8 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -624,16 +624,7 @@ static int gdb_handle_vcont(const char *p)
+     GDBProcess *process;
+     CPUState *cpu;
+     GDBThreadIdKind kind;
+-#ifdef CONFIG_USER_ONLY
+-    int max_cpus = 1; /* global variable max_cpus exists only in system mode */
 -
--/* target_ulong is the type of a virtual address */
--#if TARGET_LONG_SIZE == 4
--typedef int32_t target_long;
--typedef uint32_t target_ulong;
--#define TARGET_FMT_lx "%08x"
--#define TARGET_FMT_ld "%d"
--#define TARGET_FMT_lu "%u"
--#elif TARGET_LONG_SIZE == 8
--typedef int64_t target_long;
--typedef uint64_t target_ulong;
--#define TARGET_FMT_lx "%016" PRIx64
--#define TARGET_FMT_ld "%" PRId64
--#define TARGET_FMT_lu "%" PRIu64
+-    CPU_FOREACH(cpu) {
+-        max_cpus = max_cpus <= cpu->cpu_index ? cpu->cpu_index + 1 : max_cpus;
+-    }
 -#else
--#error TARGET_LONG_SIZE undefined
+-    MachineState *ms = MACHINE(qdev_get_machine());
+-    unsigned int max_cpus = ms->smp.max_cpus;
 -#endif
-+#include "exec/target_long.h"
++    unsigned int max_cpus = gdb_get_max_cpus();
+     /* uninitialised CPUs stay 0 */
+     newstates = g_new0(char, max_cpus);
  
- #if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index d9b9ba0a32..65aa2018a7 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -433,6 +433,15 @@ int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
+     return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
+ }
  
-diff --git a/include/exec/target_long.h b/include/exec/target_long.h
-new file mode 100644
-index 0000000000..93c9472971
---- /dev/null
-+++ b/include/exec/target_long.h
-@@ -0,0 +1,42 @@
 +/*
-+ * Target Long Definitions
-+ *
-+ * Copyright (c) 2003 Fabrice Bellard
-+ * Copyright (c) 2023 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * cpu helpers
 + */
 +
-+#ifndef _TARGET_LONG_H_
-+#define _TARGET_LONG_H_
-+
++unsigned int gdb_get_max_cpus(void)
++{
++    MachineState *ms = MACHINE(qdev_get_machine());
++    return ms->smp.max_cpus;
++}
+ 
+ /*
+  * Softmmu specific command helpers
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index b956c0e297..15ff3ab08d 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -388,6 +388,23 @@ int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
+     return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
+ }
+ 
 +/*
-+ * Usually this should only be included via cpu-defs.h however for
-+ * certain cases where we want to build only two versions of a binary
-+ * object we can include directly. However the build-system must
-+ * ensure TARGET_LONG_BITS is defined directly.
++ * cpu helpers
 + */
-+#ifndef TARGET_LONG_BITS
-+#error TARGET_LONG_BITS not defined
-+#endif
 +
-+#define TARGET_LONG_SIZE (TARGET_LONG_BITS / 8)
++unsigned int gdb_get_max_cpus(void)
++{
++    CPUState *cpu;
++    unsigned int max_cpus = 1;
 +
-+/* target_ulong is the type of a virtual address */
-+#if TARGET_LONG_SIZE == 4
-+typedef int32_t target_long;
-+typedef uint32_t target_ulong;
-+#define TARGET_FMT_lx "%08x"
-+#define TARGET_FMT_ld "%d"
-+#define TARGET_FMT_lu "%u"
-+#elif TARGET_LONG_SIZE == 8
-+typedef int64_t target_long;
-+typedef uint64_t target_ulong;
-+#define TARGET_FMT_lx "%016" PRIx64
-+#define TARGET_FMT_ld "%" PRId64
-+#define TARGET_FMT_lu "%" PRIu64
-+#else
-+#error TARGET_LONG_SIZE undefined
-+#endif
++    CPU_FOREACH(cpu) {
++        max_cpus = max_cpus <= cpu->cpu_index ? cpu->cpu_index + 1 : max_cpus;
++    }
 +
-+#endif /* _TARGET_LONG_H_ */
++    return max_cpus;
++}
++
++
+ /*
+  * Break/Watch point helpers
+  */
 -- 
 2.39.1

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id u7-20020a05600c19c700b003e21f20b646sm6996506wmq.21.2023.02.21.15.01.56
+        by smtp.gmail.com with ESMTPSA id c22-20020a7bc856000000b003e01493b136sm5857812wml.43.2023.02.21.15.01.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 21 Feb 2023 15:01:58 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C04BE1FFC6;
+	by zen.linaroharston (Postfix) with ESMTP id 862381FFC5;
 	Tue, 21 Feb 2023 22:52:29 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,20 +52,19 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v3 18/24] gdbstub: don't use target_ulong while handling registers
-Date: Tue, 21 Feb 2023 22:52:21 +0000
-Message-Id: <20230221225227.3735319-19-alex.bennee@linaro.org>
+Subject: [PATCH v3 16/24] gdbstub: specialise stub_can_reverse
+Date: Tue, 21 Feb 2023 22:52:19 +0000
+Message-Id: <20230221225227.3735319-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221225227.3735319-1-alex.bennee@linaro.org>
 References: <20230221225227.3735319-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: A2UbxLgSbLVt
+X-TUID: ZYh0+aTucVyJ
 
-This is a hangover from the original code. addr is misleading as it is
-only really a register id. While len will never exceed
-MAX_PACKET_LENGTH I've used size_t as that is what strlen returns.
+Currently we only support replay for softmmu mode so it is a constant
+false for user-mode.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
@@ -73,59 +72,95 @@ Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v3
-  - fix commit message
-  - use unsigned for regid
+  - rename gdb_stub_can_revers -> gdb_can_reverse
 ---
- gdbstub/gdbstub.c | 17 ++++++++++-------
- 1 file changed, 10 insertions(+), 7 deletions(-)
+ gdbstub/internals.h |  1 +
+ gdbstub/gdbstub.c   | 13 ++-----------
+ gdbstub/softmmu.c   |  5 +++++
+ gdbstub/user.c      |  5 +++++
+ 4 files changed, 13 insertions(+), 11 deletions(-)
 
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 90069a9415..5f2e24c4f3 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -128,6 +128,7 @@ CPUState *gdb_first_attached_cpu(void);
+ void gdb_append_thread_id(CPUState *cpu, GString *buf);
+ int gdb_get_cpu_index(CPUState *cpu);
+ unsigned int gdb_get_max_cpus(void); /* both */
++bool gdb_can_reverse(void); /* softmmu, stub for user */
+ 
+ void gdb_create_default_process(GDBState *s);
+ 
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 4814e8fbf3..7ae3ff52b3 100644
+index f9950200b8..e107aa065c 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -1192,7 +1192,8 @@ static void handle_read_mem(GArray *params, void *user_ctx)
+@@ -113,15 +113,6 @@ int use_gdb_syscalls(void)
+     return gdb_syscall_mode == GDB_SYS_ENABLED;
+ }
  
- static void handle_write_all_regs(GArray *params, void *user_ctx)
+-static bool stub_can_reverse(void)
+-{
+-#ifdef CONFIG_USER_ONLY
+-    return false;
+-#else
+-    return replay_mode == REPLAY_MODE_PLAY;
+-#endif
+-}
+-
+ /* writes 2*len+1 bytes in buf */
+ void gdb_memtohex(GString *buf, const uint8_t *mem, int len)
  {
--    target_ulong addr, len;
-+    unsigned int reg_id;
-+    size_t len;
-     uint8_t *registers;
-     int reg_size;
+@@ -1307,7 +1298,7 @@ static void handle_step(GArray *params, void *user_ctx)
  
-@@ -1204,9 +1205,10 @@ static void handle_write_all_regs(GArray *params, void *user_ctx)
-     len = strlen(get_param(params, 0)->data) / 2;
-     gdb_hextomem(gdbserver_state.mem_buf, get_param(params, 0)->data, len);
-     registers = gdbserver_state.mem_buf->data;
--    for (addr = 0; addr < gdbserver_state.g_cpu->gdb_num_g_regs && len > 0;
--         addr++) {
--        reg_size = gdb_write_register(gdbserver_state.g_cpu, registers, addr);
-+    for (reg_id = 0;
-+         reg_id < gdbserver_state.g_cpu->gdb_num_g_regs && len > 0;
-+         reg_id++) {
-+        reg_size = gdb_write_register(gdbserver_state.g_cpu, registers, reg_id);
-         len -= reg_size;
-         registers += reg_size;
-     }
-@@ -1215,15 +1217,16 @@ static void handle_write_all_regs(GArray *params, void *user_ctx)
- 
- static void handle_read_all_regs(GArray *params, void *user_ctx)
+ static void handle_backward(GArray *params, void *user_ctx)
  {
--    target_ulong addr, len;
-+    int reg_id;
-+    size_t len;
- 
-     cpu_synchronize_state(gdbserver_state.g_cpu);
-     g_byte_array_set_size(gdbserver_state.mem_buf, 0);
-     len = 0;
--    for (addr = 0; addr < gdbserver_state.g_cpu->gdb_num_g_regs; addr++) {
-+    for (reg_id = 0; reg_id < gdbserver_state.g_cpu->gdb_num_g_regs; reg_id++) {
-         len += gdb_read_register(gdbserver_state.g_cpu,
-                                  gdbserver_state.mem_buf,
--                                 addr);
-+                                 reg_id);
+-    if (!stub_can_reverse()) {
++    if (!gdb_can_reverse()) {
+         gdb_put_packet("E22");
      }
-     g_assert(len == gdbserver_state.mem_buf->len);
+     if (params->len == 1) {
+@@ -1558,7 +1549,7 @@ static void handle_query_supported(GArray *params, void *user_ctx)
+         g_string_append(gdbserver_state.str_buf, ";qXfer:features:read+");
+     }
  
+-    if (stub_can_reverse()) {
++    if (gdb_can_reverse()) {
+         g_string_append(gdbserver_state.str_buf,
+             ";ReverseStep+;ReverseContinue+");
+     }
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index 65aa2018a7..5363ff066d 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -443,6 +443,11 @@ unsigned int gdb_get_max_cpus(void)
+     return ms->smp.max_cpus;
+ }
+ 
++bool gdb_can_reverse(void)
++{
++    return replay_mode == REPLAY_MODE_PLAY;
++}
++
+ /*
+  * Softmmu specific command helpers
+  */
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index 15ff3ab08d..a716ad05b2 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -404,6 +404,11 @@ unsigned int gdb_get_max_cpus(void)
+     return max_cpus;
+ }
+ 
++/* replay not supported for user-mode */
++bool gdb_can_reverse(void)
++{
++    return false;
++}
+ 
+ /*
+  * Break/Watch point helpers
 -- 
 2.39.1

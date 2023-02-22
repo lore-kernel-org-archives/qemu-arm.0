@@ -1,155 +1,123 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp4310216ejb;
-        Wed, 22 Feb 2023 05:58:46 -0800 (PST)
-X-Google-Smtp-Source: AK7set9PThsOA7m1O9ejdPDmGyiaGgUj8pal2KN5EH4TAx4zL0tSfBv9xPzA8el42bYopfDH+dzN
-X-Received: by 2002:a5d:6804:0:b0:2c5:96d4:1dfa with SMTP id w4-20020a5d6804000000b002c596d41dfamr6681729wru.22.1677074326242;
-        Wed, 22 Feb 2023 05:58:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677074326; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp4403573ejb;
+        Wed, 22 Feb 2023 07:32:27 -0800 (PST)
+X-Received: by 2002:a5d:4ccd:0:b0:2c3:eaff:aae7 with SMTP id c13-20020a5d4ccd000000b002c3eaffaae7mr7981087wrt.17.1677079947092;
+        Wed, 22 Feb 2023 07:32:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677079947; cv=none;
         d=google.com; s=arc-20160816;
-        b=lCE37E6vZpUxmnVTVDEE71V5wQ3IeyFWbqv2NoDGC4X55eFieNpI4BSjLZOEflaDDs
-         rch+BPfTP/NWs33ecgbM2NNpiH4ubLNs7fMF8mm9yEncZfgrLwyd9pRDijoq941utIU4
-         aJHh4Dyv/OIt4iRnon/nfCcb/w6AdZRaAw+soNUpjGV/0AiFMs3tfhnoT2feN9fAxWqw
-         suxcOIR7d7Vl5P3Ft8cMdvfUCg7GBpXV0rxstNfgVEuY7wfBcT7sij25kG2NP37Bo/7p
-         Wzi/kQ0UsztCJpkB9E6uNlKwlEcBcAS6A7SKyuG7VA0hwhcdD3DEVNr+jFVO53BqPYOn
-         IE3g==
+        b=tRYemzztTKQjQdUfpQckq4ICemYjkNf4UV3lv2HWkPYM5f7owi1AWJqBTMpgj2gcZZ
+         3sB3V0AdwCYH5sMtEAzAED5MLPHoUlGws6hp7bznA6QXRiyZcb8Hixu4ZlM8oybKwekY
+         mRnqN08rSWpNuzRBV7zAdT6g8MIjr/NeIwRgnSgRqtSx5ji23LKqAyyX6eEi9i+zkoLK
+         ZgoRZeW2Lzb0jCvcK3ZKlajGkotN6GaAVN7Bj5uXCEkPCOUehrV5W28poNg5bL9dpmfb
+         BjdJG5FlpB0FYSjAZQEuJDrF3qMlnBW8izGp5Btb5quO+lt42dvMR2Smx6np/AAsnDsh
+         QU1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=MgLoWDV7twra41hKGjkyZA+PYex7B29ScxcYPwlSsb4=;
-        b=TiBbt0z4yLLyNxTOX+rc1QHFIuxQ86kLn/dZfaL+rvPjpMCYolcFjdbpUekntrkUgM
-         ek7XwK39Sgg3IH3FemruClhxvdhRwZbkYhS9nRgzk9qpd7X/T1RM1Tac6oKS9FDnbXuk
-         wJG0lrVE5Fac0ZvEbtvE7BXg8++jz2oizDLRBIbHYCZ/cZ95J4XeqrwTqdh8Sd4cTeAG
-         uSB2iE5krPH62WcawWI8S7dTzPx9Qt2txHwQc1O8X0Vy5wKI6qhnzO2njrroqSE9rFr5
-         U1cEvUJJm4Yg/sQy2O0lue6TV6osYixEpPmF17dFLBfRofi8SCbuhivIRs6RZ6HG4LF7
-         ejQA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=uIbFvWNDHnPaFylbidVLmz6XVkELdfBovcJNelCol2E=;
+        b=pXD3v1qrf/+GtRmC90ygPUGG3S3hc75e80LAOJ5yctlm0qwnHN9n6q2wBTLGQbUivn
+         Nt0LB/JAKl2EQRXumsnLcwKc9xk2uVXvEWi7k10iufhMvIWgsMpSfcIljb7G1dMKJ2jL
+         Z+lIWQ0SYzTzezgxSsbm1qkFrEtYu0+wAlQ44e/onFR+FiPBydW7XWCNmiv9W8uE2C5j
+         NsbFRvMl8NGfrXhBQSbh5uoewzkOZL1XiZ1raRh6hxxdvNoP4UDHFWvNme5pvBiyz6X/
+         +ZgGuh3CvCyQAmZDZOVEf6U9/cN4aNIT/Q90/RG3xEc/avg+Q+MFM5lvU3+494sgl9D7
+         u8CQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=jAZ85MBH;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id c4-20020a5d63c4000000b002c57c63a1d7si10109762wrw.63.2023.02.22.05.58.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Feb 2023 05:58:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PTs+17la;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b3-20020a5d6343000000b002c54ef1b8bfsor3043764wrw.32.2023.02.22.07.32.27
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 22 Feb 2023 07:32:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=jAZ85MBH;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id B40511FF7D;
-	Wed, 22 Feb 2023 13:58:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1677074325; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=MgLoWDV7twra41hKGjkyZA+PYex7B29ScxcYPwlSsb4=;
-	b=jAZ85MBHtGxbhwMilSwbczavNxu0ghSF08CT3FnVS2HGhJE1eyW4GtuEV2dHIt+Jz6/KM7
-	4zIvDF15vOGO7QTw7V86epLclBQ++YsK1mV0e1unv6aV3Qc2XzVt9SE4WteRu5HwP4LCDO
-	HDCSyLlzTcAYr6zPswqSPjpXPjtEfEI=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1677074325;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=MgLoWDV7twra41hKGjkyZA+PYex7B29ScxcYPwlSsb4=;
-	b=3YWl0stPRmybYFYrpde78RCdUBWGnVHtp9cWpjLoeD8Tggqxi9b75llG0/gRAHlfiqHcvS
-	V5nSgxGipV7U/vDQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 428BE139DB;
-	Wed, 22 Feb 2023 13:58:45 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id UvJ1A5Uf9mOAdgAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 22 Feb 2023 13:58:45 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu?=
- =?utf-8?Q?-Daud=C3=A9?=
- <philmd@linaro.org>, Richard Henderson <richard.henderson@linaro.org>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>,
- Claudio Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>
-Subject: Re: [PATCH v6 19/29] target/arm: Move 64-bit TCG CPUs into tcg/
-In-Reply-To: <CAFEAcA__kyfbPv5tmSTiBJ_O15ND5-QpKpATx856s8XCoUNORw@mail.gmail.com>
-References: <20230217201150.22032-1-farosas@suse.de>
- <20230217201150.22032-20-farosas@suse.de>
- <CAFEAcA__kyfbPv5tmSTiBJ_O15ND5-QpKpATx856s8XCoUNORw@mail.gmail.com>
-Date: Wed, 22 Feb 2023 10:58:42 -0300
-Message-ID: <87356xol7x.fsf@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=PTs+17la;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uIbFvWNDHnPaFylbidVLmz6XVkELdfBovcJNelCol2E=;
+        b=PTs+17lauGbM125UBgXuaR7EXxcZhFpv9Kdixnreo33ckupwV/zmQn4gbUFAg0XNtH
+         aBLFAgbOYXA00MHg9TmcdFUs6XevE6vbKispkrPyOfygbAy6yWvs09b8rDkotyER4OGd
+         cJfd/soFA1Q2cgopOHK+8/y9Tgbu7lBkoEdIGJRCzrhvT+PBuL1GRR7GCZL+Wflk/pYu
+         Q0srKSopSPIhPACYY6pYZUSZh51ar4irbDOMACQI8VZfmOAJyZTiQU3RMkkvEwuPkhK2
+         SE7Q5mFjyMzmXzxz69iPcoRT5zJi8vnKBOKYeGvhrJ1C+nQLz82BFnjKgB0/SB42+XpT
+         2sdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uIbFvWNDHnPaFylbidVLmz6XVkELdfBovcJNelCol2E=;
+        b=RGgp740kD4Wklm0J9mBh6k/pu4PdCzzy8EuFHFjNTWBSOATT0G+5kElkuzgTc/nEK3
+         vezQ+EcF9bfy8gUlw2WBL4iGGfkMOlQgO+23uoDwmL/twdoPf6H/RHNrbNI6juSjKLe4
+         Z9RMiBJcYYavGokWGQIN/ZtjrjvoSNhoPCIUgreb3Dcm98W1pwrMhcMCIDuzK2362yNx
+         Lhfjf/G5Tr6HYeD1ZSIHF6GieDwKuKhpdOxYPoj3kWPe6ulNKO+BjLj0rNbJlKyA/gL4
+         hl9QNS1gTq2dJGUjBscvjnmx9woU9WaZ+z4y5mNKVL15eiM1RSDCkJ2KmhXYC/vv/j/N
+         LnbQ==
+X-Gm-Message-State: AO0yUKWOm8Rez4Wci8LGp8qgQ/SgSpvXfXUG/M99/FjKGLU4UPzv2C4C
+	hEx/NYlxbWvH5oevEJP4VEu5/pNFws9uxqiOWFE=
+X-Google-Smtp-Source: AK7set9xry5pKwEERDtiDpmYh408Zdqn7AMHMW8pdDdaumUH6tXMrZl5S9wvxJBU1793FlqRJM71qQ==
+X-Received: by 2002:a5d:4dce:0:b0:2c4:503:7afc with SMTP id f14-20020a5d4dce000000b002c405037afcmr8454637wru.7.1677079946521;
+        Wed, 22 Feb 2023 07:32:26 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.1.115] ([185.126.107.38])
+        by smtp.gmail.com with ESMTPSA id g4-20020a056000118400b002c5544b3a69sm4489460wrx.89.2023.02.22.07.32.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 22 Feb 2023 07:32:26 -0800 (PST)
+Message-ID: <9d198d55-d28c-e710-edfe-ff67dd88a461@linaro.org>
+Date: Wed, 22 Feb 2023 16:32:23 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: ATM/ZWrj8Vpw
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH 11/12] cirrus.yml: Improve the windows_msys2_task
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Michael Roth <michael.roth@amd.com>, Alexander Bulekov <alxndr@bu.edu>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, John Snow <jsnow@redhat.com>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Darren Kenny <darren.kenny@oracle.com>, Stefan Hajnoczi
+ <stefanha@redhat.com>, Bandan Das <bsd@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Yonggang Luo <luoyonggang@gmail.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ Ed Maste <emaste@freebsd.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
+References: <20230215192530.299263-1-alex.bennee@linaro.org>
+ <20230215192530.299263-12-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230215192530.299263-12-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: gJLKueDjJCWE
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On 15/2/23 20:25, Alex Bennée wrote:
+> From: Thomas Huth <thuth@redhat.com>
+> 
+> There's no need to run a full-blown bash just to create a directory.
+> And we can skip the "cd build" each time by doing it once at the
+> beginning.
+> 
+> Additionally, let's exclude some targets (that we already compile-test
+> with MinGW in the gitlab jobs) from the build, since the build time of
+> this task is very long already (between 80 and 90 minutes).
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Message-Id: <20230208103046.618154-1-thuth@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   .cirrus.yml | 8 +++++---
+>   1 file changed, 5 insertions(+), 3 deletions(-)
 
-> On Fri, 17 Feb 2023 at 20:15, Fabiano Rosas <farosas@suse.de> wrote:
->>
->> Move the 64-bit CPUs that are TCG-only:
->> - cortex-a35
->> - cortex-a55
->> - cortex-a72
->> - cortex-a76
->> - a64fx
->> - neoverse-n1
->>
->> Keep the CPUs that can be used with KVM:
->> - cortex-a57
->> - cortex-a53
->> - max
->> - host
->>
->> For the special case "max" CPU, there's a nuance that while KVM/HVF
->> use the "host" model instead, we still cannot move all of the TCG code
->> into the tcg directory because the qtests might reach the !kvm && !hvf
->> branch. Keep the cortex_a57_initfn() call to cover that scenario.
->>
->> Signed-off-by: Fabiano Rosas <farosas@suse.de>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->
->
->> -/* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
->> - * otherwise, a CPU with as many features enabled as our emulation supports.
->> - * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
->> - * this only needs to handle 64 bits.
->> - */
->>  static void aarch64_max_initfn(Object *obj)
->>  {
->> -    ARMCPU *cpu = ARM_CPU(obj);
->> -    uint64_t t;
->> -    uint32_t u;
->> -
->>      if (kvm_enabled() || hvf_enabled()) {
->>          /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
->>          aarch64_host_initfn(obj);
->>          return;
->>      }
->>
->> +    if (tcg_enabled() || qtest_enabled()) {
->> +        aarch64_a57_initfn(obj);
->> +    }
->> +
->
->
->
->> +    if (tcg_enabled()) {
->> +        aarch64_max_tcg_initfn(obj);
->> +    }
->
-> Why do this only for TCG, and not qtest ?
-
-I was trying to give qtest a minimum set of features, since it shouldn't
-require any to begin with.
-
-I could probably revert to the old behavior of having this code for
-qtest as well without breaking the build. It's just a matter of moving
-some stuff back from the tcg-only land.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

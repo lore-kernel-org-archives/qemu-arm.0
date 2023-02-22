@@ -1,106 +1,107 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3827636ejb;
-        Tue, 21 Feb 2023 18:35:54 -0800 (PST)
-X-Google-Smtp-Source: AK7set9rFh5EOGTTwwoFO1qZO9NllaL3VK1dEFfg4RW80/z3B8XkmkUDz1jg0+a/JhWmCapIwSZz
-X-Received: by 2002:a05:622a:592:b0:3bd:7a6:67b9 with SMTP id c18-20020a05622a059200b003bd07a667b9mr10854250qtb.29.1677033353851;
-        Tue, 21 Feb 2023 18:35:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677033353; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3827732ejb;
+        Tue, 21 Feb 2023 18:36:04 -0800 (PST)
+X-Google-Smtp-Source: AK7set8305dVP3/icmug46Iqmj6aEKWEcHi5cbxUDdBcG37rhP/rgOT4B2l7BkgZaWY5Fa4e7Un8
+X-Received: by 2002:ac8:7d49:0:b0:3b8:6d3a:5ed4 with SMTP id h9-20020ac87d49000000b003b86d3a5ed4mr11486326qtb.67.1677033364346;
+        Tue, 21 Feb 2023 18:36:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677033364; cv=none;
         d=google.com; s=arc-20160816;
-        b=PHtR0nMXHucTHRI/CGQGK1C/GwpbwuceNGsu90XGBQ8ZKC3/xUiOTqMX+8LghLKJ48
-         U4bXAjEao4FLh2RjX1Ear4RvS8ePWkZMOBgLDwnPfUunURMxYWtKhp1tHaURHRTKSoN0
-         7af6CarxNJuAjof+DZ0GbVjVSUy4D6ttnnimO6h93rhcwKh9EF+ntn598kcDA/Rc3fmz
-         H3Nisr3Vy8wp1P73/MpAApKi2l7bxVfhE5JyHLidDVDwOGUb5du7CQo0FvKO7fUKwvnU
-         H26aY6ZRrsSsChh7VwuHGTFGtLfO03XEoIfgJVgHr2Y9DjVwchqAkgu5B/IKYgkFcmnJ
-         RHAg==
+        b=d9knGDx8BBwS8vmCJkL7kfPWEhMLv6Ah0JnLYpkWee2lbr8ZNjHKYRTGdzdl+75dsr
+         0Zij5UfOhJA+osuvqdRGu33p872GYWGS0Y993s3D5t2B0xrL5wrREn51ypFHrTebDl0K
+         X8ImmQNjw/QSiG2Dy8FUrXqs3uYTp37BYKBnaD8ItolSNtPptN5CJ9tz4iTa7KfQey7w
+         YevAfno1hDHiVj2hJXWpUexADQfs6jqY8wW+pSlkd7YApviw6QiQ+ewu5ma0g2Si+z9c
+         51tTaiRJ6JT1uxtbASrMKpkKIuKeFZzeYdSyFcUqgtsAW5nQCokMPc6IyXGMC5kFjWfA
+         8Q7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jhdYZZcA+QihWdoYLAkQ3l5owX/qDX7C/pLuLVYgynI=;
-        b=bXpvVBXA66Fs0h1yzg0lE/8zRXkVxCFzgXEbxzGcS259wAtJXWo+gbUO8y9W0+nwyO
-         LCxQSeIg6d+GCE2eCqwJQEuA5VXGCX7fK+/GYc2mBb3yJrw5rswbDokkwUxYjBzyF4ff
-         uQqMjYoW+fzz6KZFG8yygkcl1HN3idpRK8UkJfoHdbAUAhlUMI/Lw51KaylJs4yDCQE3
-         76sTQ4spThIeCj9LWb9g/C5wyvpvJ1/No7MStw9/1GVHF/UIpcrGtldV6eSEcOPsGjtF
-         aKK+YMwyu21ksNN9FWGUaZt9LGOpKz23IaiweIOOZBta6SebXcJ6h7zky9S3/tjVH2sS
-         /cGQ==
+        bh=OvOoJ884ZN5PW2Z4ZXukQZSOfuuCRAHBihmEoUNUOLo=;
+        b=UHf+ngfjvKuN4nuXbSiXnt4YyPrjsuUR1wO5cflCslqtvYBpyQKxgBPbwW27hDxHZf
+         m+ftBUwVi6h+YKmTFibEIDHFFLJ0Py8tojt6cDbeohEo7XhRcdn6ZlXXu/J031uhkDcD
+         kO3MkHeAgbNTcCkw75DoL4QpG0VAFQEbmuU2VadUi1SLxGvvFg7JnHPzguKOiA449t3I
+         45BKCj9FZsAev4Wkud60DJmhtGV6pgIYvz7U4hhpItZmGnPe1QfCyL4vs+Z6XgPn7WOx
+         JZolwbxCGu7aUU/PH3Qcnf+TdRnLS8twqhbwJwCFcJmyqdtNvcbn1xi3BDciIstVWxge
+         kVWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sFuMbbqK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=N6jHqZ4a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m17-20020a05620a24d100b007389c641884si13899926qkn.396.2023.02.21.18.35.53
+        by mx.google.com with ESMTPS id a18-20020a05622a02d200b003acc2b8001bsi2556658qtx.198.2023.02.21.18.36.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 18:35:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Feb 2023 18:36:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sFuMbbqK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=N6jHqZ4a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pUexN-0007U7-1v; Tue, 21 Feb 2023 21:34:09 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pUexW-0007ih-EQ; Tue, 21 Feb 2023 21:34:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUex3-0007JH-GO
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:33:50 -0500
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
+ id 1pUexR-0007cy-Ip
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 21:34:13 -0500
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUex1-0001aS-Uo
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:33:49 -0500
-Received: by mail-pj1-x1041.google.com with SMTP id pt11so7906699pjb.1
- for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 18:33:47 -0800 (PST)
+ id 1pUexP-0001j8-Fb
+ for qemu-arm@nongnu.org; Tue, 21 Feb 2023 21:34:13 -0500
+Received: by mail-pj1-x1033.google.com with SMTP id
+ nw10-20020a17090b254a00b00233d7314c1cso7208516pjb.5
+ for <qemu-arm@nongnu.org>; Tue, 21 Feb 2023 18:34:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jhdYZZcA+QihWdoYLAkQ3l5owX/qDX7C/pLuLVYgynI=;
- b=sFuMbbqKDsHUnhkyXGAU36DJ5Z8J6UCbNI4zZrm/FEGgyBm8lXkxW30ErX5QoUWAiC
- Gh20cwwJFl76iDDcqbLRJ6Q8oErdAYhF00UhfBjUnvppAFvqXp1GsrnLx4No7yBVcZi0
- 6JIYFrGqo9/B/ZTDl8osPtF3IkJ8WA5PNWTgOduMjTY0RdTLp6PgqZEYQpya0LCx2Wqi
- GS+xTSWXpwjNkmXAJm7mGaXJ9pvmDSoqYR70wRhj18gkwkYk3lyyJYX93jDDkm1fJqxx
- Yw56EJWCx7nd4Nufjs9LVeCPdGSAXv6X7dTdPfWlpOJz3Kyzy5deEdR24B73+4TL8C9P
- b6xg==
+ bh=OvOoJ884ZN5PW2Z4ZXukQZSOfuuCRAHBihmEoUNUOLo=;
+ b=N6jHqZ4aZDKf3nxPsVs+hE4snZTvXqicPTWd6nIP+SlqH5PVVluW/KeQre+PFG+gLf
+ nvy/jj8XyO4p3qe2pwzMHmEqqNxVr2s6vZ7dwlhq74ggoUsNjRMp90EdVvonTHMnUYYW
+ vQKuu3vMxgLTjclfYYcITA7Yg/0ptvK6MxJGevmPkSj4IRabFGiFmRtJpE2YyEPET9Jy
+ ZIbYCviFcSqe7UeGwpWnVQXBSuA8vaDFC5mmxOtlqAlQOCXxhQXa0FdNcfFmIg/cE+3h
+ k5vSkkf4XrNi5DznIqxQejcs/fmmCGqV45kTc+WWqCwjCYrqxNhOzFQzxyf0hI0RwKr4
+ X9gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jhdYZZcA+QihWdoYLAkQ3l5owX/qDX7C/pLuLVYgynI=;
- b=pFwud1eFFhcghnwiFyu9/uHEKniujuwipAY2vjSsmXPy3JHnxrh8m/dBjq3WC4up/X
- 01nCKEc1nHknmMLlJZPBbyix9oOGl2Lgs0u8RJCnN3GsGuN/4hQHYkMaIlES6bK2qN5f
- Gm8VZE6TDzXaTZO0FYKGetXiQJCugce9SPvP9uTgUjHJx6ENOX5jmwIkE4ZxEtJPdVif
- C9LkdTwDlKjaUYnCZVAFm4VU2OgL7AOXX4UzKH3ZOuShd0b711ptbim9ew2x6xJGiEZV
- bPKiyFY+aKB4MqfzMtbtYja7yC8rsOEwbKCZFlasDDpxStbXI93SRGiYA+BR6tivnq5Z
- zxkw==
-X-Gm-Message-State: AO0yUKWjJOPRnV3pubaiUPpoICfDGDT9UehlK+Jh9aNSM0JHLTqolZ77
- zTXQon1ID6086MJL7Svx+xQB9pMtI23uC6KkyElk8g==
-X-Received: by 2002:a17:903:11cd:b0:19c:32a6:a362 with SMTP id
- q13-20020a17090311cd00b0019c32a6a362mr9723313plh.6.1677033226573; 
- Tue, 21 Feb 2023 18:33:46 -0800 (PST)
+ bh=OvOoJ884ZN5PW2Z4ZXukQZSOfuuCRAHBihmEoUNUOLo=;
+ b=Ff11OLUFqEiqV5Nv7ROOuzPDMx5g869FWGjOHw+dlCvlY0PZ6P3dYfhRQI014d70AA
+ XB44cziWFKOcTK+4shnSmcAhPWR7g1o2+T0j4HwJmbLfJGftcGp6TEQZNEbAAZfkutLD
+ zWEuvTlHFLqF0hfqqJQ2frvmgvG4XPVJWk4x5b4BebVinxtno4TThr3MrvMd/CKK2qXT
+ iwED16N7tbFuf1Ax0lj+hemgN6P0p5HN7rKCgPaobLM9k+BzDNL+WG4EaS8NajQdWvpA
+ xf0QSAFyzxSzi8NgLRzxqeocSuMGeAXRjVHkZZetdz5v0RLZSPP/NA3r0gzik8hGeLKy
+ Hl+Q==
+X-Gm-Message-State: AO0yUKWQYC+i4BMH5PZY8HyTmPrV/vQfmlebmr4a3R0VJOWwbWoDEvae
+ ksSBUf3GhZ2WZI+pAWSekliCFw==
+X-Received: by 2002:a17:902:c404:b0:19a:81cd:a385 with SMTP id
+ k4-20020a170902c40400b0019a81cda385mr7309733plk.19.1677033250115; 
+ Tue, 21 Feb 2023 18:34:10 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- k3-20020a170902e90300b00198fde9178csm10520112pld.197.2023.02.21.18.33.45
+ k3-20020a170902e90300b00198fde9178csm10520112pld.197.2023.02.21.18.34.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Feb 2023 18:33:46 -0800 (PST)
+ Tue, 21 Feb 2023 18:34:09 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 05/25] target/arm: Add isar_feature_aa64_rme
-Date: Tue, 21 Feb 2023 16:33:16 -1000
-Message-Id: <20230222023336.915045-6-richard.henderson@linaro.org>
+Subject: [PATCH v3 22/25] target/arm: Implement GPC exceptions
+Date: Tue, 21 Feb 2023 16:33:33 -1000
+Message-Id: <20230222023336.915045-23-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230222023336.915045-1-richard.henderson@linaro.org>
 References: <20230222023336.915045-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1041.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,70 +110,261 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LhKItKKJLora
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gBrK7lliaqhl
 
-Add the missing field for ID_AA64PFR0, and the predicate.
-Disable it if EL3 is forced off by the board or command-line.
+Handle GPC Fault types in arm_deliver_fault, reporting as
+either a GPC exception at EL3, or falling through to insn
+or data aborts at various exception levels.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h | 6 ++++++
- target/arm/cpu.c | 4 ++++
- 2 files changed, 10 insertions(+)
+ target/arm/cpu.h        |  1 +
+ target/arm/internals.h  | 27 ++++++++++++
+ target/arm/helper.c     |  5 +++
+ target/arm/tlb_helper.c | 96 +++++++++++++++++++++++++++++++++++++++--
+ 4 files changed, 126 insertions(+), 3 deletions(-)
 
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index cb4e405f04..b046f96e4e 100644
+index 05fd6e61aa..b189efadf8 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -2190,6 +2190,7 @@ FIELD(ID_AA64PFR0, SEL2, 36, 4)
- FIELD(ID_AA64PFR0, MPAM, 40, 4)
- FIELD(ID_AA64PFR0, AMU, 44, 4)
- FIELD(ID_AA64PFR0, DIT, 48, 4)
-+FIELD(ID_AA64PFR0, RME, 52, 4)
- FIELD(ID_AA64PFR0, CSV2, 56, 4)
- FIELD(ID_AA64PFR0, CSV3, 60, 4)
+@@ -57,6 +57,7 @@
+ #define EXCP_UNALIGNED      22   /* v7M UNALIGNED UsageFault */
+ #define EXCP_DIVBYZERO      23   /* v7M DIVBYZERO UsageFault */
+ #define EXCP_VSERR          24
++#define EXCP_GPC            25   /* v9 Granule Protection Check Fault */
+ /* NB: add new EXCP_ defines to the array in arm_log_exception() too */
  
-@@ -3808,6 +3809,11 @@ static inline bool isar_feature_aa64_sel2(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SEL2) != 0;
- }
+ #define ARMV7M_EXCP_RESET   1
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 759b70c646..5e88649fea 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -352,14 +352,27 @@ typedef enum ARMFaultType {
+     ARMFault_ICacheMaint,
+     ARMFault_QEMU_NSCExec, /* v8M: NS executing in S&NSC memory */
+     ARMFault_QEMU_SFault, /* v8M: SecureFault INVTRAN, INVEP or AUVIOL */
++    ARMFault_GPCFOnWalk,
++    ARMFault_GPCFOnOutput,
+ } ARMFaultType;
  
-+static inline bool isar_feature_aa64_rme(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, RME) != 0;
-+}
++typedef enum ARMGPCF {
++    GPCF_None,
++    GPCF_AddressSize,
++    GPCF_Walk,
++    GPCF_EABT,
++    GPCF_Fail,
++} ARMGPCF;
 +
- static inline bool isar_feature_aa64_vh(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, VH) != 0;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 876ab8f3bf..83685ed247 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1947,6 +1947,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         cpu->isar.id_dfr0 = FIELD_DP32(cpu->isar.id_dfr0, ID_DFR0, COPSDBG, 0);
-         cpu->isar.id_aa64pfr0 = FIELD_DP64(cpu->isar.id_aa64pfr0,
-                                            ID_AA64PFR0, EL3, 0);
-+
-+        /* Disable the realm management extension, which requires EL3. */
-+        cpu->isar.id_aa64pfr0 = FIELD_DP64(cpu->isar.id_aa64pfr0,
-+                                           ID_AA64PFR0, RME, 0);
+ /**
+  * ARMMMUFaultInfo: Information describing an ARM MMU Fault
+  * @type: Type of fault
++ * @gpcf: Subtype of ARMFault_GPCFOn{Walk,Output}.
+  * @level: Table walk level (for translation, access flag and permission faults)
+  * @domain: Domain of the fault address (for non-LPAE CPUs only)
+  * @s2addr: Address that caused a fault at stage 2
++ * @paddr: physical address that caused a fault for gpc
++ * @paddr_space: physical address space that caused a fault for gpc
+  * @stage2: True if we faulted at stage 2
+  * @s1ptw: True if we faulted at stage 2 while doing a stage 1 page-table walk
+  * @s1ns: True if we faulted on a non-secure IPA while in secure state
+@@ -368,7 +381,10 @@ typedef enum ARMFaultType {
+ typedef struct ARMMMUFaultInfo ARMMMUFaultInfo;
+ struct ARMMMUFaultInfo {
+     ARMFaultType type;
++    ARMGPCF gpcf;
+     target_ulong s2addr;
++    target_ulong paddr;
++    ARMSecuritySpace paddr_space;
+     int level;
+     int domain;
+     bool stage2;
+@@ -542,6 +558,17 @@ static inline uint32_t arm_fi_to_lfsc(ARMMMUFaultInfo *fi)
+     case ARMFault_Exclusive:
+         fsc = 0x35;
+         break;
++    case ARMFault_GPCFOnWalk:
++        assert(fi->level >= -1 && fi->level <= 3);
++        if (fi->level < 0) {
++            fsc = 0b100011;
++        } else {
++            fsc = 0b100100 | fi->level;
++        }
++        break;
++    case ARMFault_GPCFOnOutput:
++        fsc = 0b101000;
++        break;
+     default:
+         /* Other faults can't occur in a context that requires a
+          * long-format status code.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 9e1c1ed6d8..dc97dc120b 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10238,6 +10238,7 @@ void arm_log_exception(CPUState *cs)
+             [EXCP_UNALIGNED] = "v7M UNALIGNED UsageFault",
+             [EXCP_DIVBYZERO] = "v7M DIVBYZERO UsageFault",
+             [EXCP_VSERR] = "Virtual SERR",
++            [EXCP_GPC] = "Granule Protection Check",
+         };
+ 
+         if (idx >= 0 && idx < ARRAY_SIZE(excnames)) {
+@@ -10966,6 +10967,10 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
      }
  
-     if (!cpu->has_el2) {
+     switch (cs->exception_index) {
++    case EXCP_GPC:
++        qemu_log_mask(CPU_LOG_INT, "...with MFAR 0x%" PRIx64 "\n",
++                      env->cp15.mfar_el3);
++        /* fall through */
+     case EXCP_PREFETCH_ABORT:
+     case EXCP_DATA_ABORT:
+         /*
+diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+index 60abcbebe6..aa03d3f8dc 100644
+--- a/target/arm/tlb_helper.c
++++ b/target/arm/tlb_helper.c
+@@ -109,17 +109,106 @@ static uint32_t compute_fsr_fsc(CPUARMState *env, ARMMMUFaultInfo *fi,
+     return fsr;
+ }
+ 
++static bool report_as_gpc_exception(ARMCPU *cpu, int current_el,
++                                    ARMMMUFaultInfo *fi)
++{
++    bool ret;
++
++    switch (fi->gpcf) {
++    case GPCF_None:
++        return false;
++    case GPCF_AddressSize:
++    case GPCF_Walk:
++    case GPCF_EABT:
++        /* R_PYTGX: GPT faults are reported as GPC. */
++        ret = true;
++        break;
++    case GPCF_Fail:
++        /*
++         * R_BLYPM: A GPF at EL3 is reported as insn or data abort.
++         * R_VBZMW, R_LXHQR: A GPF at EL[0-2] is reported as a GPC
++         * if SCR_EL3.GPF is set, otherwise an insn or data abort.
++         */
++        ret = (cpu->env.cp15.scr_el3 & SCR_GPF) && current_el != 3;
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    assert(cpu_isar_feature(aa64_rme, cpu));
++    assert(fi->type == ARMFault_GPCFOnWalk ||
++           fi->type == ARMFault_GPCFOnOutput);
++    if (fi->gpcf == GPCF_AddressSize) {
++        assert(fi->level == 0);
++    } else {
++        assert(fi->level >= 0 && fi->level <= 1);
++    }
++
++    return ret;
++}
++
++static unsigned encode_gpcsc(ARMMMUFaultInfo *fi)
++{
++    static uint8_t const gpcsc[] = {
++        [GPCF_AddressSize] = 0b000000,
++        [GPCF_Walk]        = 0b000100,
++        [GPCF_Fail]        = 0b001100,
++        [GPCF_EABT]        = 0b010100,
++    };
++
++    /* Note that we've validated fi->gpcf and fi->level above. */
++    return gpcsc[fi->gpcf] | fi->level;
++}
++
+ static G_NORETURN
+ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+                        MMUAccessType access_type,
+                        int mmu_idx, ARMMMUFaultInfo *fi)
+ {
+     CPUARMState *env = &cpu->env;
+-    int target_el;
++    int target_el = exception_target_el(env);
++    int current_el = arm_current_el(env);
+     bool same_el;
+     uint32_t syn, exc, fsr, fsc;
+ 
+-    target_el = exception_target_el(env);
++    if (report_as_gpc_exception(cpu, current_el, fi)) {
++        target_el = 3;
++
++        fsr = compute_fsr_fsc(env, fi, target_el, mmu_idx, &fsc);
++
++        syn = syn_gpc(fi->stage2 && fi->type == ARMFault_GPCFOnWalk,
++                      access_type == MMU_INST_FETCH,
++                      encode_gpcsc(fi), 0, fi->s1ptw,
++                      access_type == MMU_DATA_STORE, fsc);
++
++        env->cp15.mfar_el3 = fi->paddr;
++        switch (fi->paddr_space) {
++        case ARMSS_Secure:
++            break;
++        case ARMSS_NonSecure:
++            env->cp15.mfar_el3 |= R_MFAR_NS_MASK;
++            break;
++        case ARMSS_Root:
++            env->cp15.mfar_el3 |= R_MFAR_NSE_MASK;
++            break;
++        case ARMSS_Realm:
++            env->cp15.mfar_el3 |= R_MFAR_NSE_MASK | R_MFAR_NS_MASK;
++            break;
++        default:
++            g_assert_not_reached();
++        }
++
++        exc = EXCP_GPC;
++        goto do_raise;
++    }
++
++    /* If SCR_EL3.GPF is unset, GPF may still be routed to EL2. */
++    if (fi->gpcf == GPCF_Fail && target_el < 2) {
++        if (arm_hcr_el2_eff(env) & HCR_GPF) {
++            target_el = 2;
++        }
++    }
++
+     if (fi->stage2) {
+         target_el = 2;
+         env->cp15.hpfar_el2 = extract64(fi->s2addr, 12, 47) << 4;
+@@ -127,8 +216,8 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+             env->cp15.hpfar_el2 |= HPFAR_NS;
+         }
+     }
+-    same_el = (arm_current_el(env) == target_el);
+ 
++    same_el = current_el == target_el;
+     fsr = compute_fsr_fsc(env, fi, target_el, mmu_idx, &fsc);
+ 
+     if (access_type == MMU_INST_FETCH) {
+@@ -146,6 +235,7 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+         exc = EXCP_DATA_ABORT;
+     }
+ 
++ do_raise:
+     env->exception.vaddress = addr;
+     env->exception.fsr = fsr;
+     raise_exception(env, exc, syn, target_el);
 -- 
 2.34.1
 

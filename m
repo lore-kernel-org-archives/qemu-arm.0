@@ -1,166 +1,172 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp4427753ejb;
-        Wed, 22 Feb 2023 07:54:55 -0800 (PST)
-X-Google-Smtp-Source: AK7set8DsmwWLMkSVpAFhIfsnnLkOTHtXmWLmlVsc8mdivrXMj2XuNQnsgIoApfMmZSeBcR69uCe
-X-Received: by 2002:a05:622a:1495:b0:3b8:6c4d:488a with SMTP id t21-20020a05622a149500b003b86c4d488amr14636089qtx.37.1677081295030;
-        Wed, 22 Feb 2023 07:54:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677081295; cv=none;
+Received: by 2002:a17:906:3a98:b0:8ec:972f:f46a with SMTP id y24csp57456ejd;
+        Wed, 22 Feb 2023 11:36:10 -0800 (PST)
+X-Google-Smtp-Source: AK7set9Fod16m08yX7DRqWv9KodB0C22bTj91HPJ/1ethft8jZeTsWl0wSMaq+bw43LotbjBW1Hd
+X-Received: by 2002:a17:907:d50c:b0:889:ed81:dff7 with SMTP id wb12-20020a170907d50c00b00889ed81dff7mr16558450ejc.9.1677094570695;
+        Wed, 22 Feb 2023 11:36:10 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1677094570; cv=pass;
         d=google.com; s=arc-20160816;
-        b=G4CNNuPqaYNx/WaZmXqtv0RKUqu49x09uzaxKp1ajtg1ejoWRr+kHwCPh6CyMkTVmZ
-         v9AJuUpMNo9mbGtZ3W+pBwC76K1w1yPNlg6TGacmRb8B7bDhR7gZ1zFucYohGOT4CAzW
-         lreftqgSN0N5sp+zWlq3lEEjDlRLrQUSRaTN9n41WlpehvBg8Jr5ld4cL2jE+kQxyeQH
-         ZknGZJ6oLsILzxOZex/BcrVzyWfbp/Xo456gozDlBkuKOXYKn6B0ATNuhU8F1erOVMlV
-         vZtTXTUl2+f25Lw2yHyz3IuyIvTBwbMX7OQPA+YND6rrd7l2VqmjCddCuShpQRMgXSY5
-         dl4g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=fNw59v5D97ShWX01chUaQiZTxCzNg+317r/ICoKXqv8=;
-        b=RegCeqAvpuUnDudn4C3IcUB9xFqiSqScjJAUAd3xCjoRBmy87lhLNJEMAHahFju3Qf
-         CWPCo/m0CUMWkJ2dDR3pwCTR4nniXG9djvrjs6L2rJ6h3NiMKwRTAoEbyurU2Vd9aMIs
-         VChDNVMq0UvXa2uVyU9ST+yU+q9/gTA/zXWh/WPGAbWUTx44RnNP7zo6CFnZFEVlADwy
-         6/UFE7h5jxoTQBOUu/MlqtCZ68mnW1gPBG2c1+EwUeDNnocxOMYkWfhb/DXi1xKof2SV
-         5g8J9+dqtj0/paNxSrML8zg86jI2F9oD9/dvNdxevt+TBPMJR4XpUEqSQieBtJPALHXO
-         xQdA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gdn4VJyq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c14-20020ac87d8e000000b003b62d91fc84si4532470qtd.62.2023.02.22.07.54.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Feb 2023 07:54:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=mDVBSHLpkEMoTtr8WFU51QCD5vtMVD2iJEKLZZVTAL1WQfiL78SEAHDVzSBFQVZSMs
+         Y56B3AB9rBj09cUfns4A3nauqx3JI/bZnwrtbY15gyYUEhzg7gQMuXqGE8mr3gmwmgOX
+         skijGH0EEv/unnNAoweAv+IQaC54A7M54uKP8oYYlpa2bBo6ehx/E9Q9rTkYFMa2oIL+
+         2lv9+ZW5ktV7vUFWDIp9kKW/TpZtHjLhdDoGRNi+cGLJT7SuaXkC8PPKrQdmZBYkYyHK
+         vrcZotpS30WJooQEkL1qcX+ikNOKX1pXVYeWgWpNGC4eEa9DS0DVEcNDSmYa8gHk40Ss
+         BOqw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7Us8yGBQQo2+X7GcbXo32ObTU+IRgTK5fx26SfEsyVE=;
+        b=Wg6HyyUd2RgmDzgljen6Xpae2jSr1MTl4NLLeqTWxrU9+8sLO6LEUA+Bj880+2BZvm
+         kcPJ2x3MfAhh+uWe7APH8DRxKAI4wTsFpCVCDFlDQYIGcUpMQOn9LywJ5H/qTkXKhUe9
+         XQF99szfkdYFGz4P78VDTPi60WxKnqxpsUaVPmwUNm8L3em800vS0iPAUm5kX6D67w+Y
+         zJwDyHOb5Xy5SEvI1YmazL0NwFcimkKQjFHcD2BIfd+d3uQ22Nzwgctiva8kDFgQQqcA
+         HkW64DkrbhIsgcyTeMYONsRDo6rwq4suwxJUF2ItzWz+zHaVJ4PUvUWUNzmNe413o28E
+         vFTA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=RX5SWzGo;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e8c::70c as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+Return-Path: <aaron@os.amperecomputing.com>
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (mail-mw2nam04on2070c.outbound.protection.outlook.com. [2a01:111:f400:7e8c::70c])
+        by mx.google.com with ESMTPS id wi6-20020a170906fd4600b008df5a5088e4si6029467ejb.631.2023.02.22.11.36.10
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 22 Feb 2023 11:36:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e8c::70c as permitted sender) client-ip=2a01:111:f400:7e8c::70c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gdn4VJyq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUrRq-0005Ff-RM; Wed, 22 Feb 2023 10:54:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pUrRo-0005Ey-PC
- for qemu-arm@nongnu.org; Wed, 22 Feb 2023 10:54:24 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pUrRn-0007zT-01
- for qemu-arm@nongnu.org; Wed, 22 Feb 2023 10:54:24 -0500
-Received: by mail-pl1-x635.google.com with SMTP id e5so10286308plg.8
- for <qemu-arm@nongnu.org>; Wed, 22 Feb 2023 07:54:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=fNw59v5D97ShWX01chUaQiZTxCzNg+317r/ICoKXqv8=;
- b=gdn4VJyq/yX7iBxe0EZfXMWPRqkGLhDfSMzY1fkpNrCwNcDyiVMlr+bVXtznuWGJc9
- tLzTjN3S7DKVrwnTyGkzlYXniXCTjPyqiIw/BeTBOnATTIvmQfPQnNFzJ4tz83H8/3Xc
- JMJ7PufP3rud8VCR7X1QmUjhFKUxTmWf+48SNqssCGq/7PwUkpyVr++U8Uf7KJy8HZJ+
- D2C7HD/evBqj5v38oPZTpP5HctUVmrMnaLwSTQTcO5MC+UNr8BFlF5UeWgw9/EYnUvIe
- g+w/DCM5ReHxk2Y2HSNqA99nYQ55V9voSBkSrXOZXEjfb+ntrlP1SrGLZvaVOWUPgSnX
- +0tQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=fNw59v5D97ShWX01chUaQiZTxCzNg+317r/ICoKXqv8=;
- b=UCQQAngifkg9w/YyscSrIlHllTd69bR3WTsS5oR5TYa/2ToOwlylX3o7PAJgCGgf66
- seVe8xqoUpWSqnMcGQF8X4l2wqv11PyiC8WWv9kWEX4XR/BoaUeSCuSThzB7+QTuVbNm
- g/7eDtSZSbt6dQBmWTspEFFD3SVK4YwnSA6htA1J+N8bRBGkYCaS9m1FsqAY8ZNSuXU0
- hEPeVP45H4BGitYB8Rt2QwyWmACH0qRUlJDCHAvaGFKs/NoBh1hAmSwgikV7eP/TqKkl
- oMry+HW9zXqgGo5ijCXv/plbskIpTnFI9nWamqyWZAZ6ysTaewAhv+lLeBRdaWAPYarl
- BFsQ==
-X-Gm-Message-State: AO0yUKXUXEcIU5IYIrcM+qPcT+0IKL1eO/6VZOJz+O/uexBkxGY1F3jJ
- FQMolJlNcsx9P7HrW0NFRbqTFolD/gqIoYBCVTE9sw==
-X-Received: by 2002:a17:903:2684:b0:19a:9580:7130 with SMTP id
- jf4-20020a170903268400b0019a95807130mr1133679plb.13.1677081261054; Wed, 22
- Feb 2023 07:54:21 -0800 (PST)
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=RX5SWzGo;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e8c::70c as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=a9X1U0geQyXFMUlMxOEEbPRNxZpOow+3UtuvAstKfP94jxblEz8QoH0xXq09TfwRFwkocASpOe1ujFp/WxEYGxoRV+zvzyDzE+q0z5Eol2XOaZPw8Yk41xC0F7R+2M9/YUmYLEfqe7RlXAmMgR7v49GBYZL6Q6qFhpJXd7q/9PI08WJqS+vrvVebcaO/T0y3w1D3pH04c5Z+4mk6UlCXHS+eDMNf+sjslUXhedodegg1uHhW2yPoS1e2CB4zvJBMYb83dCz07bwRY6NACitVzAWyS7MQWhs+9Wevp3i9V9Ly46H0PBhfrXc/aFRF2NfF8Dgis9t8+tb/SFuh3Xnq8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=7Us8yGBQQo2+X7GcbXo32ObTU+IRgTK5fx26SfEsyVE=;
+ b=oO+Eli+D25GqXL3aA4KDlv3gqHOJBVtqon339xU4wLjSTHerj5EzVNd+mqmMg4lqEEscylit6vCobPN8GM7zUNUTNBVOMOzSxlPuwCn+R1hVALnkHsEOHU8tmnRo2tYqzzOcbunU5A3kMYWL98wEtKkjq7ZHYVz8Gyv9JihV3cq1XHbKPLho0Qbddd7/Sjx/l6boiusmPDeruKo41M0SYasxFRYS3IHc6O99hEM5zpO+BZ1p2NfYXZ/fPr/HTlJFiWNcJWJSQ4UoeulXKpXUty5uE5zm6YDZo2yd64um5VKeRfO1iZRpMq2T/vmm4RUrwNb/rXiYi8jYOkxWjdL/ow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=os.amperecomputing.com; dkim=pass
+ header.d=os.amperecomputing.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=7Us8yGBQQo2+X7GcbXo32ObTU+IRgTK5fx26SfEsyVE=;
+ b=RX5SWzGoONSQRGZCcn/j/4NFU133LMVee3sfl1hMnI60JlUQkZfA8Nt6kEMi3WDLyhOdLbq0MyebuTP9F0w9kwroX8LkulW6/1VKpeEQZJ7562tEco7TD15hGXPX8Tldj0LGhbr3r49AoH6TV/w2cdpGk2+WPuzmsKR5+aPcx28=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
+Received: from CH0PR01MB7124.prod.exchangelabs.com (2603:10b6:610:f3::20) by
+ SJ0PR01MB6448.prod.exchangelabs.com (2603:10b6:a03:29a::13) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6111.20; Wed, 22 Feb 2023 19:36:07 +0000
+Received: from CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::c6ce:a93c:6bfa:2ec8]) by CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::c6ce:a93c:6bfa:2ec8%9]) with mapi id 15.20.6134.019; Wed, 22 Feb 2023
+ 19:36:07 +0000
+From: Aaron Lindsay <aaron@os.amperecomputing.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Vincent Dehors <vincent.dehors@smile.fr>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
+Subject: [PATCH v2 3/7] target/arm: Implement v8.3 EnhancedPAC
+Date: Wed, 22 Feb 2023 14:35:40 -0500
+Message-Id: <20230222193544.3392713-4-aaron@os.amperecomputing.com>
+X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20230222193544.3392713-1-aaron@os.amperecomputing.com>
+References: <20230222193544.3392713-1-aaron@os.amperecomputing.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: CH2PR08CA0016.namprd08.prod.outlook.com
+ (2603:10b6:610:5a::26) To CH0PR01MB7124.prod.exchangelabs.com
+ (2603:10b6:610:f3::20)
+Return-Path: aaron@os.amperecomputing.com
 MIME-Version: 1.0
-References: <20230213003925.40158-1-gshan@redhat.com>
- <20230213003925.40158-6-gshan@redhat.com>
- <CAFEAcA_6pYvot1AGKfOQA89M9tdH-e6+9jkd3RtXJkGhSLdihA@mail.gmail.com>
- <0db2764b-7d27-ee6a-c7e4-7d7821986c16@redhat.com>
-In-Reply-To: <0db2764b-7d27-ee6a-c7e4-7d7821986c16@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 22 Feb 2023 15:54:09 +0000
-Message-ID: <CAFEAcA_WjugivvOWxH-bVSNakPWyhX=j5pWydQQpweDVDYd2jw@mail.gmail.com>
-Subject: Re: [PATCH v1 5/6] hw/arm/virt: Enable backup bitmap for dirty ring
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com, 
- peterx@redhat.com, david@redhat.com, philmd@linaro.org, mst@redhat.com, 
- cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com, maz@kernel.org, 
- zhenyzha@redhat.com, shan.gavin@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jqOqG019PjcL
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH0PR01MB7124:EE_|SJ0PR01MB6448:EE_
+X-MS-Office365-Filtering-Correlation-Id: 099aca07-15c0-47d6-44bb-08db150c0b20
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	/o3ODln4r+nwouZQTHJPemu/3ERanqmo7/No8PrVqmZRVlm9OMZUEswvF5hc5QMimq5eE6pIW8fRbXd4pHz+DhceFradImnaZ8pfWE1J98IZxZK0fqFzyFj4Hkhn0a32B41k9F4nq4gCvX2zWBHV4bH0GGkRDNBQBw77ifLMzIpmnQSAv3kglyNOxRBK6L+7f+Grdjf1oQxodvSmxmv1eSgVV17jbu0qB1S4Udy3z7T6GcnLAhVhtIkUJinkkdnxBTGz7Q3f3hNDhVMmF2DA7pKUDk7QpCo0kUH8C+qBhVsL4UD3QEKjpm7ItDZCu2tnV6PGXyxvGo0FrIALWgtmKfR7/DR87UDDUVb7py21/GcFR+cAtCFgM2GEi2QjsWEw1aoN1yJSgF1cre22WmU4o4BWUO0Uew2F7K23SaeSDQPs2wyg3IuPLGxhi8ULI8synKy6N+odyMsBGkxZcxggCsQamOZtfupjv6QqWkjU+3vKcx2lgQYdjUdSqoxzWYNE5OsVCQP1y0XY1i0xpBOWbJ+5OgBm/ZLCBmoGVDcNLJ+IADsGy3kc1MlYB5b6Avuo6uuZtzxgaTSyN6ApqGJ9OgAHkv5YF6ELZzNYcH0fejiw16sBokoQxZi+Hwn+IFEu/VuRdM40xhiwWfaPqwi7KsG1ciAL6eEIF/znhmHKA08g+CSUUouLSGNP0Sy4IEavyD+dhKKwTdYEivVtZspTHA==
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR01MB7124.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(376002)(136003)(39850400004)(396003)(366004)(346002)(451199018)(8676002)(66556008)(66946007)(66476007)(5660300002)(316002)(4326008)(41300700001)(86362001)(107886003)(2616005)(83380400001)(26005)(38350700002)(6506007)(6486002)(186003)(6512007)(1076003)(6666004)(52116002)(110136005)(2906002)(38100700002)(4744005)(478600001)(8936002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?us-ascii?Q?HjPId5w9GWDblZOQLlKbGkHRmnB2b8egIFB11AD9mUv7IG+T3hwFGIpU2SIn?=
+ =?us-ascii?Q?q2Zo9F2Dv9Bi7JAmlfwzfrQoO96W18Ti1YY557tWmqz15h5sSTTGyeqToclM?=
+ =?us-ascii?Q?gO2yLNv2HnlQMZmLgPpG9x20CmzqpxchL/ByNAYCJBRcgV+RDWWFlYTnwHmb?=
+ =?us-ascii?Q?884/Wr1BulF5WnvK3mv9J5j96HCh83HDEf4NegG26aYYPHV8pXyzk/ytIrx4?=
+ =?us-ascii?Q?PeqwwwXc3UNlcLeGxslvJW7z0Rz1Q1FqhnWZz7sInJaloNI6b4GVyO3Cak0M?=
+ =?us-ascii?Q?uDLPp1KKT+Sixhjf2g4vDEgAcv+w5yuJEEMAaizJfvkHI55iu+qJJSejp1Zy?=
+ =?us-ascii?Q?EuYZXOW/oodjHnPllICclIr/QE/1U48cMVv+XPAYmiBjwJNGmaHUvre4+SgU?=
+ =?us-ascii?Q?WGTXvQfIpUpf9lV/CAF4mCP8DUxACMN5q6+IK8VWOmMD2Wc/K2wS1JIMvFCU?=
+ =?us-ascii?Q?fTiPpAPourk+9pdMtN3srgvhN38Ux8aRSEAOLbGoILOl/mumiLso2dQ//RGW?=
+ =?us-ascii?Q?rwUY0yEdiZrdw5CzbLA8Eg6C874qbdN5XoIIxPu6AltYzS3ImEUd1FCr9f6o?=
+ =?us-ascii?Q?qbY2hEmbVjY16CzZqQh7TuW3XNL9Sskd2KW8Qxu/OGf11/QEC/5wVDgLhr8t?=
+ =?us-ascii?Q?JTwGvsu2I4f3GwARytio5t8Uu+ajVOPr61Jc8ST5L4KJNtAPJwDVM2ibg7Ax?=
+ =?us-ascii?Q?0xauHSNhrBgl6sF6elE1cqYKBTMiUCgDviPCRUzpct5hVa0Uscp35F1PSGb3?=
+ =?us-ascii?Q?BVs3B4oe5K3RtwA0blEld4oKgJ/6EPyi0ZmQd5P7B/nW9HnrCMuFdY0EjcAj?=
+ =?us-ascii?Q?f1i4dqXXPOhgCaT0alFFRH6hFxYpbx62pH8Qjp9rh6Trgdr6MND1C6cAXEff?=
+ =?us-ascii?Q?6w0KiRhDTv4GAoDFU0RW0Gap1JtxinDl/om5eNrSmUzZKY3+Lh1zApjrm7ax?=
+ =?us-ascii?Q?eAEpXxv4+1T7Ghhxudfu9WAfNuv7eVTzh3OCcR2J9qTu0W5aFSn/B+fF7pKN?=
+ =?us-ascii?Q?H714NEyCBQrFtB+4osbZar6eS7VWxvFULvhahvUkgFC5pINIbB3FiePZNjbM?=
+ =?us-ascii?Q?7By9SHVsK1kvLfFZRkTssycdycNtzNACzR+QtmhoJcyN7eNGlEMYioE2mkbT?=
+ =?us-ascii?Q?hlG9XD3FZLv2Y4P9BCEjaWDJqL9rqjTk8JAtyYvD+/Eila/CHBDzdT0+h8f0?=
+ =?us-ascii?Q?Tmobi5mkoO2X72QzoRvLYMMnOR9SXTNvW6aiQ5F8Pdm6k+kCfrnHbbEDMyZM?=
+ =?us-ascii?Q?GS3/oc0jUJZfsKdGJZ7Hx+j0PluLt2nbZM5kPDSxryd7qaEWtw7pvhdijoup?=
+ =?us-ascii?Q?mP2Kq3yEX3TgLkSFONIi2N5tUvvbd33qn6apsjEVqlk2gNWV7B+KzJ+y0ujU?=
+ =?us-ascii?Q?hSGWFOVRT/bJ5OdsXs+7wW8aGoVxcQmTQZN/YmO5HwiA5NqS97uboPS6sZc5?=
+ =?us-ascii?Q?jxDHCR9k2KEp+0vntvpoQIFCMTuRa49hes5WNL2f4ObFIY1G+vg+TKzVuB1E?=
+ =?us-ascii?Q?1Vi18kU95IrnnY+Ys0rcGra+li2sIG3PGhmjdwDznS69fFoeOcylyjK1gQ0f?=
+ =?us-ascii?Q?XxenrL9ePvT3XQmLPFeV37w3kZq2vCXvBXvcjJPXz+UiK+LsImT/PNKPgy4K?=
+ =?us-ascii?Q?ZFCLE6k5XyeeDXeVqI1Ws0I=3D?=
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 099aca07-15c0-47d6-44bb-08db150c0b20
+X-MS-Exchange-CrossTenant-AuthSource: CH0PR01MB7124.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Feb 2023 19:36:07.5074
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: fG7zziWmw1VJXdmplpZG1J/lmE5jxVVV+0cAoo9xLiP48dLIocwbFkDNZ3t3tLrW76fiSRi5KsscmazAjsUhSPvKM2JS7JAxOqWnR+B+n3yj8DuEunT+ERvNSkZhN5dX
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR01MB6448
+X-TUID: gL0exzRr5cor
 
-On Wed, 22 Feb 2023 at 04:36, Gavin Shan <gshan@redhat.com> wrote:
->
-> On 2/22/23 3:27 AM, Peter Maydell wrote:
-> > Why does this need to be board-specific code? Is there
-> > some way we can just do the right thing automatically?
-> > Why does the GIC/ITS matter?
-> >
-> > The kernel should already know whether we have asked it
-> > to do something that needs this extra extension, so
-> > I think we ought to be able in the generic "enable the
-> > dirty ring" code say "if the kernel says we need this
-> > extra thing, also enable this extra thing". Or if that's
-> > too early, we can do the extra part in a generic hook a
-> > bit later.
-> >
-> > In the future there might be other things, presumably,
-> > that need the backup bitmap, so it would be more future
-> > proof not to need to also change QEMU to add extra
-> > logic checks that duplicate the logic the kernel already has.
-> >
->
-> When the dirty ring is enabled, a per-vcpu buffer is used to track the dirty pages.
-> The prerequisite to use the per-vcpu buffer is existing running VCPU context. There
-> are two cases where no running VCPU context exists and the backup bitmap extension
-> is needed, as we know until now: (a) save/restore GICv3 tables; (b) save/restore ITS
-> tables; These two cases are related to KVM device "kvm-arm-gicv3" and "arm-its-kvm",
-> which are only needed by virt machine at present. So we needn't the backup bitmap
-> extension for other boards.
+Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/pauth_helper.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-But we might have to for other boards we add later. We shouldn't
-put code in per-board if it's not really board specific.
-
-Moreover, I think "we need the backup bitmap if the kernel is
-using its GICv3 or ITS implementation" is a kernel implementation
-detail. It seems to me that it would be cleaner if QEMU didn't
-have to hardcode "we happen to know that these are the situations
-when we need to do that". A better API would be "ask the kernel
-'do we need this?' and enable it if it says 'yes'". The kernel
-knows what its implementations of ITS and GICv3 (and perhaps
-future in-kernel memory-using devices) require, after all.
-
-thanks
--- PMM
+diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
+index f525ef7fad..a83956652f 100644
+--- a/target/arm/pauth_helper.c
++++ b/target/arm/pauth_helper.c
+@@ -347,11 +347,15 @@ static uint64_t pauth_addpac(CPUARMState *env, uint64_t ptr, uint64_t modifier,
+      */
+     test = sextract64(ptr, bot_bit, top_bit - bot_bit);
+     if (test != 0 && test != -1) {
+-        /*
+-         * Note that our top_bit is one greater than the pseudocode's
+-         * version, hence "- 2" here.
+-         */
+-        pac ^= MAKE_64BIT_MASK(top_bit - 2, 1);
++        if (cpu_isar_feature(aa64_pauth_epac, env_archcpu(env))) {
++            pac = 0;
++        } else {
++            /*
++             * Note that our top_bit is one greater than the pseudocode's
++             * version, hence "- 2" here.
++             */
++            pac ^= MAKE_64BIT_MASK(top_bit - 2, 1);
++        }
+     }
+ 
+     /*
+-- 
+2.25.1

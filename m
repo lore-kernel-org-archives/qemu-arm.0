@@ -1,334 +1,187 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3827063ejb;
-        Tue, 21 Feb 2023 18:34:50 -0800 (PST)
-X-Google-Smtp-Source: AK7set9O9f6HA3McyXE3Jvr5orYxaMhx4oCb4R4icfu/LilMDsmJId/GAq2/Qt/4f8UT1UHlBY0J
-X-Received: by 2002:a05:6214:625:b0:56e:bbd9:1c10 with SMTP id a5-20020a056214062500b0056ebbd91c10mr11596256qvx.7.1677033290301;
-        Tue, 21 Feb 2023 18:34:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677033290; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3827073ejb;
+        Tue, 21 Feb 2023 18:34:51 -0800 (PST)
+X-Google-Smtp-Source: AK7set/RwvelIMn8u+qKALhyO4CBe/ypV00b09it4tONDkFtPdINLLCmIKCnYKP7XHF2oXlG6yxQ
+X-Received: by 2002:ac8:5c48:0:b0:3a8:e35:258f with SMTP id j8-20020ac85c48000000b003a80e35258fmr10125114qtj.31.1677033291201;
+        Tue, 21 Feb 2023 18:34:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677033291; cv=none;
         d=google.com; s=arc-20160816;
-        b=QJuufsXNmkRYogF984eDR68qp63/ixnyQdKoWTDtqs8K6M6bc7/M8aleHuT5id7bUS
-         RADueC99dak/BX5qWMRjT/luJrGOyr/OcZF7mXWVpdHaj9qEzDEB+5R3Y1inyCxNneYD
-         kR5V62jwGBsDXKvetfsEwulS5XOk5tHKaqKYRbmA67dN/ISXmnECTrmFbbxEhtYbGRnC
-         u3fmtIbB+O8JDXJiVbnBpxW8lVfBGVKo8XUvPSzsQDEeZvTD6Q+Xz4RZs8vaBx+VXnSA
-         QkHVP29ys/Aa4OOD5Ax4AghcschQbz6uKpPgvCcbCsUSNhFnRQYeC/OaeXmYjbuAlzJ3
-         8GTw==
+        b=q46D4AgeyzH07DCZs6nsSn2XGljtxeJd7miyCx5qTGPzxAukERRKewGAY4DlNNVVgL
+         MEqpMYCNGuCvQnTwgvHLW2iTNHkPZB9Gjn/V9bbDysmALI2HzmWY4QMV91AT/yNYnPrb
+         2VQdQ1dXns0aqf5SptCkfvxTbr+1jhRBkPUglHxOSycqrbhteFmGXqs//ZxJtlUgPgzA
+         HOvzKbbLcdlrcEvwBxG9RqNVyT1xSfcRKjUQbGpVnTqvawhhAn4UvELO8WJOCXdDOXy4
+         deecIpoSXIepPSCaLwVRm8eyUA6Xwz3whAt10PI/I4ERHZ5apjs6snwy3Y6h8T21cxB+
+         CKFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LCT/fSAV3XnG4vQxoADZTo0VUdiQb+WSD16G+rIZbRY=;
-        b=I99vbkMOk30cJMFR312e8+Rc9LLHqXWDHihcp+RG1QhNwABfndDc8cfLuf+1VNXvrP
-         7TAgPRsYgJWLSAQS/HYB8IWRj2m0pmavZ07vf5wcKgtK/7jNAWdxpH4qZ8MbTeb2e80J
-         WPsUilkpSwhDc5tY/ao6xf5GxXK2owlSX9RQbb3ia6IcXTr2m9ZHOwX7FwTv8YphBheZ
-         k7M6Q8at22sKSle+6ME+H3Z+ufoyNbeuukP+trl3TXfucwTcC/cd2zXY4R8f1+AbAzXm
-         fJiAYFkBQK3bPEsn2OHSB5eAJ2s3UUB7Z6QWzm4hD5aNT/rr8hpDL3jqQvdYmmOeRj3E
-         JhvQ==
+        bh=Q+0eq15fAwExTOnJJP3OmVXwymVtdfUriRFeQ7/we5Q=;
+        b=cFHzGOHSulBfFAU2SBm5f1ng17g6v+3jMdyp0+8nUA8p+PFTSrtOrh0JB/ujavFAxC
+         enKLO/q0azx/SBOOE711Bg+tZjJ8bDQv45RywH7xq21q5WF9u0EGVP9NV74wZ0Aa2wec
+         EeQNt3ou7Qn7D8ev9YdcrA7op68hPaQeDIrN1d1WtmcTSlyLuqOVp3cxwOIwGZh+kQZJ
+         D8J3kXta1HN7JkKTOm7mK5BTJHBM5PG9chBlaAlcdDcIEHzBKHw8XNJgeMyC5fcspoHf
+         egljuvmVcaCAHvRBzSxjPQg7kYu4qX7jH0NXhDsNHtesUvOPtcgaHvKJsDzE0Kqs1OTU
+         A0qQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="pyy/9X+A";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QOrSOeJq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x14-20020a0c8e8e000000b005710844e0fbsi5181732qvb.553.2023.02.21.18.34.50
+        by mx.google.com with ESMTPS id t21-20020a05622a149500b003b9a4eebe00si539474qtx.649.2023.02.21.18.34.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 18:34:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Feb 2023 18:34:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="pyy/9X+A";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QOrSOeJq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUexP-0007Yp-Ab; Tue, 21 Feb 2023 21:34:11 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pUexT-0007gU-Gb; Tue, 21 Feb 2023 21:34:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUex9-0007KW-NK
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 21:33:55 -0500
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ id 1pUexO-0007XK-M5
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:34:10 -0500
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUex7-0001cv-IB
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 21:33:55 -0500
-Received: by mail-pj1-x102c.google.com with SMTP id
- co23-20020a17090afe9700b002341fadc370so7073972pjb.1
- for <qemu-arm@nongnu.org>; Tue, 21 Feb 2023 18:33:53 -0800 (PST)
+ id 1pUexL-0001hW-5l
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:34:10 -0500
+Received: by mail-pl1-x62b.google.com with SMTP id z2so7364134plf.12
+ for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 18:34:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LCT/fSAV3XnG4vQxoADZTo0VUdiQb+WSD16G+rIZbRY=;
- b=pyy/9X+Av7g82uHRt7KodaVmZa36WGarxM/R3ow/7ZtUNUlCbcXE60WBoPyoqbnl3J
- 3ZcwtgdqSpEW2ouC+amzTDUFWy8a0SnZ1y1Wot6cYZwbSUebCOiG6jc9PTJ6GIOl1md5
- eFbhRRuUoLrobdPqx3XcsbGS1wRUymTdV5d9BWtZqIl3/kvX4AzsUFsNIfuy66DdrTYe
- 2ZyFtDpfsqhTQEPjHKO2gmBda64EIP7M0nEB5MKPnpuvabbr7dtSRtYsMhuGkGj7x2KH
- phJhmco64BIqqctO34oH0NCZx3soJxhn3+aE+qCfoMTYHknnA9qR7zue6nH+uG2v2HPO
- 9aPA==
+ bh=Q+0eq15fAwExTOnJJP3OmVXwymVtdfUriRFeQ7/we5Q=;
+ b=QOrSOeJq/rkXq46oJl7o3x/XrDMyw7N7OEO5LBmI4fmYu+zyGt9vFUcgdnjDtK5VaR
+ flXTgYpiAAGF7jaoMZvIqmgyMtx69rBzQpTlwoh438PQKKnTh5m+OK8w8SOcsCckv6sP
+ EGxwYN8tRdcgn/9VmRctLzD/celBjtgn0bbRiFOY8LxVN7Ep9N3JIGDCnTS9+h6sC5zq
+ pSpI/YdJ/ckTc1DAn1dMrODrfFFgaE4yxiTASMZu6FKFdRUKoPKssZ6dMvPiOTvUCmdD
+ AS/OvDjT2NCLUoAVe6OwDA2LyN3eMTLHf9oQyVAVwgdKdJBmMEqca9bxTTV7PeTdUl2u
+ JPqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LCT/fSAV3XnG4vQxoADZTo0VUdiQb+WSD16G+rIZbRY=;
- b=mfc0zw3wrNZR13pDRO9Hx7r71WvuDOdHunuPF35fxmDZ/DzExN8HTYHVe9IKzCddzE
- DNh8g2hPiL0+yi8N0rcOaUqsL9wcgaF6XKRYnSvLGBU5FZOfjyLyoOo1qBxmNQOFmMlP
- /3S36DQTG8+E0e/24EeV+ddBeXGhi/6yFWQkAOlsB5980t1uTzv6R09aLCIBqZZljyJ5
- YSWBrkvAhey99+RySC1xw7GgMiowfPq6qOB8Ci0FUes6SXbbUmyCysT9564E6TuVs3gn
- p0o6iIHbOjvaYjeqHv9JAnkwRAT1vVrFxlUs+sYH89ZIy/61kBngiAcvoj25EwJUCAGl
- hcXw==
-X-Gm-Message-State: AO0yUKXHKaIPQG12hKGsXkym61nQ7lauXTM9zuGVaAaUIV+d/DgIwVGG
- M5GmRlnNNNQxVNrW2e/v7x0G4A==
-X-Received: by 2002:a17:902:d2c3:b0:19a:80c9:2cd7 with SMTP id
- n3-20020a170902d2c300b0019a80c92cd7mr7661147plc.47.1677033232182; 
- Tue, 21 Feb 2023 18:33:52 -0800 (PST)
+ bh=Q+0eq15fAwExTOnJJP3OmVXwymVtdfUriRFeQ7/we5Q=;
+ b=HczJuvl5I/vF/UBqQVoEXeyarhrdqjGg2bY1K1akDF6WCyh3TTO2byFdaKHndNY33H
+ JGKySMR/NfqKlzhnkhvfanqCjfI+z4lqkIHWpjqw5wVXGnoXw4sF5AUxfpakXG8ewJwl
+ QNRh4AfTDuBS5mk5fyCxsha0gXDYUQa724CdAHDMA+D1swtZ2j5dOWeXcwz9y+kCtXBI
+ +DH3U0XSthiAB1fks7mJUCm2+wcXZxmWJHcYSf2MghM+yoG8hmWwM8OHZJCGUyShomAs
+ 4WlUhq8fuQ06pETBUQe5imvCnQ4Vkt186kUsyRA/fgxJEFI+gEo5u8SnfmBL/T8brY7n
+ sXmg==
+X-Gm-Message-State: AO0yUKVOMA++udgWtQoAYXCJV4KshyykjYqDQNi9ANiamf55/10+p5YL
+ J6ShSjbDbXTZ5PN1HzMRnEwGOSR3RC/7uHMCZB8=
+X-Received: by 2002:a17:903:2804:b0:196:1c45:6fc8 with SMTP id
+ kp4-20020a170903280400b001961c456fc8mr7074025plb.60.1677033244687; 
+ Tue, 21 Feb 2023 18:34:04 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- k3-20020a170902e90300b00198fde9178csm10520112pld.197.2023.02.21.18.33.50
+ k3-20020a170902e90300b00198fde9178csm10520112pld.197.2023.02.21.18.34.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Feb 2023 18:33:51 -0800 (PST)
+ Tue, 21 Feb 2023 18:34:04 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 09/25] target/arm: Introduce ARMSecuritySpace
-Date: Tue, 21 Feb 2023 16:33:20 -1000
-Message-Id: <20230222023336.915045-10-richard.henderson@linaro.org>
+Subject: [PATCH v3 18/25] target/arm: Use get_phys_addr_with_struct in
+ S1_ptw_translate
+Date: Tue, 21 Feb 2023 16:33:29 -1000
+Message-Id: <20230222023336.915045-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230222023336.915045-1-richard.henderson@linaro.org>
 References: <20230222023336.915045-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UIt2fLvM/tvq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sewqiUNAVfDr
 
-Introduce both the enumeration and functions to retrieve
-the current state, and state outside of EL3.
+Do not provide a fast-path for physical addresses,
+as those will need to be validated for GPC.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h    | 89 ++++++++++++++++++++++++++++++++++-----------
- target/arm/helper.c | 60 ++++++++++++++++++++++++++++++
- 2 files changed, 127 insertions(+), 22 deletions(-)
+ target/arm/ptw.c | 35 ++++++++++++++---------------------
+ 1 file changed, 14 insertions(+), 21 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8d18d98350..203a3e0046 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2409,25 +2409,53 @@ static inline int arm_feature(CPUARMState *env, int feature)
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index fc4c1ccf54..8a31af60c9 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -232,29 +232,22 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
+          * From gdbstub, do not use softmmu so that we don't modify the
+          * state of the cpu at all, including softmmu tlb contents.
+          */
+-        if (regime_is_stage2(s2_mmu_idx)) {
+-            S1Translate s2ptw = {
+-                .in_mmu_idx = s2_mmu_idx,
+-                .in_ptw_idx = arm_space_to_phys(space),
+-                .in_space = space,
+-                .in_secure = is_secure,
+-                .in_debug = true,
+-            };
+-            GetPhysAddrResult s2 = { };
++        S1Translate s2ptw = {
++            .in_mmu_idx = s2_mmu_idx,
++            .in_ptw_idx = arm_space_to_phys(space),
++            .in_space = space,
++            .in_secure = is_secure,
++            .in_debug = true,
++        };
++        GetPhysAddrResult s2 = { };
  
- void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp);
- 
--#if !defined(CONFIG_USER_ONLY)
- /*
-+ * ARM v9 security states.
-+ * The ordering of the enumeration corresponds to the low 2 bits
-+ * of the GPI value, and (except for Root) the concat of NSE:NS.
-+ */
-+
-+typedef enum ARMSecuritySpace {
-+    ARMSS_Secure     = 0,
-+    ARMSS_NonSecure  = 1,
-+    ARMSS_Root       = 2,
-+    ARMSS_Realm      = 3,
-+} ARMSecuritySpace;
-+
-+/* Return true if @space is secure, in the pre-v9 sense. */
-+static inline bool arm_space_is_secure(ARMSecuritySpace space)
-+{
-+    return space == ARMSS_Secure || space == ARMSS_Root;
-+}
-+
-+/* Return the ARMSecuritySpace for @secure, assuming !RME or EL[0-2]. */
-+static inline ARMSecuritySpace arm_secure_to_space(bool secure)
-+{
-+    return secure ? ARMSS_Secure : ARMSS_NonSecure;
-+}
-+
-+#if !defined(CONFIG_USER_ONLY)
-+/**
-+ * arm_security_space_below_el3:
-+ * @env: cpu context
-+ *
-+ * Return the security space of exception levels below EL3, following
-+ * an exception return to those levels.  Unlike arm_security_space,
-+ * this doesn't care about the current EL.
-+ */
-+ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env);
-+
-+/**
-+ * arm_is_secure_below_el3:
-+ * @env: cpu context
-+ *
-  * Return true if exception levels below EL3 are in secure state,
-- * or would be following an exception return to that level.
-- * Unlike arm_is_secure() (which is always a question about the
-- * _current_ state of the CPU) this doesn't care about the current
-- * EL or mode.
-+ * or would be following an exception return to those levels.
-  */
- static inline bool arm_is_secure_below_el3(CPUARMState *env)
- {
--    assert(!arm_feature(env, ARM_FEATURE_M));
--    if (arm_feature(env, ARM_FEATURE_EL3)) {
--        return !(env->cp15.scr_el3 & SCR_NS);
--    } else {
--        /* If EL3 is not supported then the secure state is implementation
--         * defined, in which case QEMU defaults to non-secure.
--         */
--        return false;
--    }
-+    ARMSecuritySpace ss = arm_security_space_below_el3(env);
-+    return ss == ARMSS_Secure;
- }
- 
- /* Return true if the CPU is AArch64 EL3 or AArch32 Mon */
-@@ -2447,16 +2475,23 @@ static inline bool arm_is_el3_or_mon(CPUARMState *env)
-     return false;
- }
- 
--/* Return true if the processor is in secure state */
-+/**
-+ * arm_security_space:
-+ * @env: cpu context
-+ *
-+ * Return the current security space of the cpu.
-+ */
-+ARMSecuritySpace arm_security_space(CPUARMState *env);
-+
-+/**
-+ * arm_is_secure:
-+ * @env: cpu context
-+ *
-+ * Return true if the processor is in secure state.
-+ */
- static inline bool arm_is_secure(CPUARMState *env)
- {
--    if (arm_feature(env, ARM_FEATURE_M)) {
--        return env->v7m.secure;
--    }
--    if (arm_is_el3_or_mon(env)) {
--        return true;
--    }
--    return arm_is_secure_below_el3(env);
-+    return arm_space_is_secure(arm_security_space(env));
- }
- 
- /*
-@@ -2475,11 +2510,21 @@ static inline bool arm_is_el2_enabled(CPUARMState *env)
- }
- 
- #else
-+static inline ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env)
-+{
-+    return ARMSS_NonSecure;
-+}
-+
- static inline bool arm_is_secure_below_el3(CPUARMState *env)
- {
-     return false;
- }
- 
-+static inline ARMSecuritySpace arm_security_space(CPUARMState *env)
-+{
-+    return ARMSS_NonSecure;
-+}
-+
- static inline bool arm_is_secure(CPUARMState *env)
- {
-     return false;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index eff109f83c..9e1c1ed6d8 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -12538,3 +12538,63 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
-     }
- }
- #endif
-+
-+#ifndef CONFIG_USER_ONLY
-+ARMSecuritySpace arm_security_space(CPUARMState *env)
-+{
-+    if (arm_feature(env, ARM_FEATURE_M)) {
-+        return arm_secure_to_space(env->v7m.secure);
-+    }
-+
-+    /*
-+     * If EL3 is not supported then the secure state is implementation
-+     * defined, in which case QEMU defaults to non-secure.
-+     */
-+    if (!arm_feature(env, ARM_FEATURE_EL3)) {
-+        return ARMSS_NonSecure;
-+    }
-+
-+    /* Check for AArch64 EL3 or AArch32 Mon. */
-+    if (is_a64(env)) {
-+        if (extract32(env->pstate, 2, 2) == 3) {
-+            if (cpu_isar_feature(aa64_rme, env_archcpu(env))) {
-+                return ARMSS_Root;
-+            } else {
-+                return ARMSS_Secure;
-+            }
-+        }
-+    } else {
-+        if ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_MON) {
-+            return ARMSS_Secure;
-+        }
-+    }
-+
-+    return arm_security_space_below_el3(env);
-+}
-+
-+ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env)
-+{
-+    assert(!arm_feature(env, ARM_FEATURE_M));
-+
-+    /*
-+     * If EL3 is not supported then the secure state is implementation
-+     * defined, in which case QEMU defaults to non-secure.
-+     */
-+    if (!arm_feature(env, ARM_FEATURE_EL3)) {
-+        return ARMSS_NonSecure;
-+    }
-+
-+    /*
-+     * Note NSE cannot be set without RME, and NSE & !NS is Reserved.
-+     * Ignoring NSE when !NS retains consistency without having to
-+     * modify other predicates.
-+     */
-+    if (!(env->cp15.scr_el3 & SCR_NS)) {
-+        return ARMSS_Secure;
-+    } else if (env->cp15.scr_el3 & SCR_NSE) {
-+        return ARMSS_Realm;
-+    } else {
-+        return ARMSS_NonSecure;
-+    }
-+}
-+#endif /* !CONFIG_USER_ONLY */
+-            if (get_phys_addr_lpae(env, &s2ptw, addr, MMU_DATA_LOAD,
+-                                   false, &s2, fi)) {
+-                goto fail;
+-            }
+-            ptw->out_phys = s2.f.phys_addr;
+-            pte_attrs = s2.cacheattrs.attrs;
+-            pte_secure = s2.f.attrs.secure;
+-        } else {
+-            /* Regime is physical. */
+-            ptw->out_phys = addr;
+-            pte_attrs = 0;
+-            pte_secure = is_secure;
++        if (get_phys_addr_with_struct(env, &s2ptw, addr,
++                                      MMU_DATA_LOAD, &s2, fi)) {
++            goto fail;
+         }
++        ptw->out_phys = s2.f.phys_addr;
++        pte_attrs = s2.cacheattrs.attrs;
++        pte_secure = s2.f.attrs.secure;
+         ptw->out_host = NULL;
+         ptw->out_rw = false;
+     } else {
 -- 
 2.34.1
 

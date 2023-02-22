@@ -1,264 +1,179 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3890856ejb;
-        Tue, 21 Feb 2023 20:06:39 -0800 (PST)
-X-Google-Smtp-Source: AK7set//zK6GS8ZfW24uyDG1hi4dKz2fIchjaNGSO/sqSNwmIlBs33MqTl1XkB8BQKbOhlL8wmVA
-X-Received: by 2002:ad4:5f05:0:b0:56b:f7fd:1cb4 with SMTP id fo5-20020ad45f05000000b0056bf7fd1cb4mr12841579qvb.18.1677038799038;
-        Tue, 21 Feb 2023 20:06:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677038799; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp4447139ejb;
+        Wed, 22 Feb 2023 08:12:15 -0800 (PST)
+X-Google-Smtp-Source: AK7set/cZk6SsPMoYdPWVafjrtDifrd9kTeZLxgo4LvnpVkEILIXOTX0Jx2ZRL1ungzCHJKW0jot
+X-Received: by 2002:a05:6214:1c49:b0:56e:9d06:730d with SMTP id if9-20020a0562141c4900b0056e9d06730dmr18857288qvb.49.1677082335596;
+        Wed, 22 Feb 2023 08:12:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677082335; cv=none;
         d=google.com; s=arc-20160816;
-        b=PNtavP1ARHrXc2tLS/dhhtGLwpPSxNR62Ti9B//0W+H2+AfU3+Z8B0xytcX4P5PPJC
-         V7r2b8dOqjbIZU74qLiB1vbUrKRE1dOfApQyQjVuldA0PWs5PKZDKwyqJvo1s1nsbwTQ
-         +26MmkC2IevtmQdM1eRwHO+igEtfB+J6Z7dR5RKKopy+S65C7N9Dw360j00b1bY9t52f
-         q634oI+42VI+IpUHwrVJ4Q4uQ2yH6vV+09ayjRutrT6GEyxHAcKutnIUtjIVt6sIHOgr
-         bSHvSN/WY81eL39JXRURhG6ucQJm5HnJGdVb21l+cwZdQGRpbs1HdcIWYf9ewrkXh/3h
-         vM4Q==
+        b=0Wp2NYKGy4hyayKgofJDznuepOjExd9r9yc84Et747NpqkILxB4eypdaF55ChYlO+T
+         Eu6MokdRyCAHvoANin44DSjKNoeI9q2XijJBXJIIaBGsnzKVXyQ3SO3BmbG92zagR+Dp
+         1ir/PyO7Ucidage6o2Bu+ivPCqXrAE3HSjD7DWCKLVvgqVCV+yrw8aYuzpS5R6zsf0Zm
+         lxki9Gv6GAelBGsIWRV8a3o53gelBTsh8yktozMFLaz4V6JOWlAKWrPVjtltu9s7f5Yb
+         CyfXUkzDbuZ7ttqbL+Pw+BHcmiSw4r1+KQ++xg67E9s+Fc/j8Ijb0oMmcMVsFsaE0T7p
+         Q4rA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:subject:from:references:cc:to:content-language
+         :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=sfOru1lyx2dBtpuIzTxh2cJUllvvHTvgeoyGJ168de8=;
-        b=P/GjTRT77CzPky6pIuf+g6jVqgQMnYapWoJfeDQcr59zLd3z+Rv+UbAEu7KIpP/ZSY
-         sbRzUQDhA2msQ7fwazBDdHP8ntOG+4kGPyca3WpL49ULMXopy3EiASkdcnjAJOChZ45W
-         yhZ8KrRauPc/L2GdLL+hqijmbNHtAvkmggMWTdXe1sMHPhsxl+SGXf36pNdVDxAnXPgE
-         Zd74OSHYS7va/wPT/A60EysNKQpqTZghA0xF7Ic1Poq/YbQshek6TfAv/xteBFe42lLD
-         y/giFwdtOSVS1ewEUuQ2Sztc6imzev2aN5+LnnSYmL2CfovERi1WDeMaJBicJwXnO7zZ
-         E4JA==
+        bh=E/XA2y/70mfsuEWrV6iHpFct0yC4BbmOCAUV1cf92Ug=;
+        b=s/EYZeaUqHUNACDQp1a2bsJ4uxAhRC8P4jmmzLlemc8UFxkAMx1Ty5B741fNV0HV8/
+         7eNTRd6FzC8bwrZT3GZfr48zCGlf7AzpmVXYOxx2w5eVskw5LUK7UiGB3XZR1tYvxdLL
+         GC3LxrlBdYnIE7TVByoOWHck0X58Tc27tRmdjVCs+cckfoPu3iKY0U8NbTWEtA+zZY1Z
+         Q+vEHUQjPnfLUeyQWniPi0ZuFNmp+li5BUrbpwNS5kH9qU1erb8LHaLMyELkx2TleAG2
+         5dtJG5DEL2dVw35ar3OYnRRaNxaThApYGgFjD/lqXbgGSIT7h+FPt49V/YA6LMv7ZPjK
+         Ef0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fH4UYV54;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=YGShkIRK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l25-20020a0c9799000000b0053426d91114si6446487qvd.281.2023.02.21.20.06.38
+        by mx.google.com with ESMTPS id h2-20020a05620a244200b006fbdef09390si4520968qkn.96.2023.02.22.08.12.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 20:06:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Feb 2023 08:12:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fH4UYV54;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=YGShkIRK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pUgOY-0004zg-T5; Tue, 21 Feb 2023 23:06:18 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pUria-0006Ae-Ck; Wed, 22 Feb 2023 11:11:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pUgOW-0004yQ-LU
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 23:06:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pUgOT-0003ZS-VG
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 23:06:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677038772;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sfOru1lyx2dBtpuIzTxh2cJUllvvHTvgeoyGJ168de8=;
- b=fH4UYV54/fj1Z0+Kh+2oIXyl393Q2cMj88HG9VxpXNnmPp3ZHfRX6uAXvgTJh+aO+7xUgM
- MtlZn51UmS6QC+YSGOZWjCXVNsIS1q0ueVc4DhRj/JAXBq3Osc/97OmqsV7TQSerR88ARA
- 2w9fkBHC1kesybZ4hlmBpe5yuOM5+aM=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-614-Sh2pAt3RN5GfF9kDRooPGg-1; Tue, 21 Feb 2023 23:06:10 -0500
-X-MC-Unique: Sh2pAt3RN5GfF9kDRooPGg-1
-Received: by mail-ed1-f71.google.com with SMTP id
- q13-20020a5085cd000000b004af50de0bcfso6264657edh.15
- for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 20:06:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUriY-00069u-Ma
+ for qemu-arm@nongnu.org; Wed, 22 Feb 2023 11:11:43 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUriV-0006er-U0
+ for qemu-arm@nongnu.org; Wed, 22 Feb 2023 11:11:42 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ d41-20020a05600c4c2900b003e9e066550fso338042wmp.4
+ for <qemu-arm@nongnu.org>; Wed, 22 Feb 2023 08:11:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=E/XA2y/70mfsuEWrV6iHpFct0yC4BbmOCAUV1cf92Ug=;
+ b=YGShkIRKsqFjkcWm4+l03lhWXkJucdZxbj63eS0GB0kY5SY29eB4riEthtkct8Vf1K
+ Ix7WpjtaO3af8ftH1pItJPOE5GmHeWF1nKr3eOiMDbCjc7diX4WW21lRw6cBiwNmNdpW
+ 66rWZ0RVdUVK3lIVUvOSratP0QYX2pmNf+wYzwZhr2hK2GJPlD/OBRUlRDPyEu+h473K
+ utOR3QT/GQPWnxLiO/jMwGHdbHmqGJwVfI55vL18iywG+vlQ6cdZJKBN8FMBu74MEI8K
+ iKVC0F+aw+kPLHVY4gzOPKrVWqfdiqxQVy8ZxxXF6REqe4B7pbtX7qFFRI7sxo0W3J1r
+ iUtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
- :content-language:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sfOru1lyx2dBtpuIzTxh2cJUllvvHTvgeoyGJ168de8=;
- b=sCJphsjfytcrat5eMu/hMUgMD6GwWc+z+OCVcu63RcxH5++Ys3Lykqyvts6O1VAidO
- J5j+ylQQGeGdtoPRDmQhF4kBhuX4C2iRA0nKZhgPSHfsnAwrrDB61f5NBw3QsdVEgvhG
- wM2hf1Y49slB+L86gCCeYinjuxngbDM35G7krYCzyfP+cD660+Cm3FJXtZUIacewgn49
- O3l/MilSvsqNl/BEhyDUUcOiD3AJcl8xQo70f2ar66GG4RKsH315e2PV953ZvQm272xb
- IWZWyRWXdFmMs3AhTjBYJTmBHjEuWpVx2tukTNlPo47WlHfhTcbibejLHZ8yl+RbUN/a
- 5tQw==
-X-Gm-Message-State: AO0yUKVmtlhRjkEKpZFldGP8nwUBmiBQ3sLHt+aqCbu/0IG+baFh24nC
- EM1PZwfcSmBx4p6ADxw4Z7sZUJr+wSHMLZVtQ5pb3OP6t43rfzb6qCCSvFq8Ykp99Ur0ntZBTFY
- M3q8cZvmYp3rvTxo=
-X-Received: by 2002:aa7:dd51:0:b0:4ad:7af2:a2ce with SMTP id
- o17-20020aa7dd51000000b004ad7af2a2cemr5894775edw.6.1677038769285; 
- Tue, 21 Feb 2023 20:06:09 -0800 (PST)
-X-Received: by 2002:aa7:dd51:0:b0:4ad:7af2:a2ce with SMTP id
- o17-20020aa7dd51000000b004ad7af2a2cemr5894747edw.6.1677038769009; 
- Tue, 21 Feb 2023 20:06:09 -0800 (PST)
-Received: from [192.168.8.104] (tmo-100-40.customers.d1-online.com.
- [80.187.100.40]) by smtp.gmail.com with ESMTPSA id
- q21-20020a50aa95000000b004ab4db9be14sm2585046edc.81.2023.02.21.20.06.05
+ bh=E/XA2y/70mfsuEWrV6iHpFct0yC4BbmOCAUV1cf92Ug=;
+ b=s83MVWGB154k7jlk/XCPSAGj4/j0OIN5iwS7Wwk5Dcvs7E08xrjklH8HbnVML3ZxOW
+ rYAMoJ7iDY++kbkLaRToNJG414sjdb9XRsNlcrhK4UTohiAc5uXwRYMrUAaYfckSpH2k
+ V0jcZY+D0jSeGmp4LAHGogeDQARgNui8ZWx/T12lin9fnfLPg47OzBq+UjvEs6+RXxts
+ 56N3OviYHiuFciQfQHpQE2wL9XXuZmcKzjrHl/M40fa6qhdYN6fFblJf8BKjyXPGvtxQ
+ Il3zaRn3abaIqnbQL6M4XBF+4s5Ed3PRfn59xUZAY73BT9tZzi5xaxKqU5tp0HlqfGVI
+ /VbA==
+X-Gm-Message-State: AO0yUKUHFCBCyhkHPyP4rEn5Ds6NtbSvAKfQ7ZHDH856ttk4qMcmWWXV
+ DWTJU6pyHmLjJFqCkYLsIt4uyg==
+X-Received: by 2002:a05:600c:54ee:b0:3dc:4356:533c with SMTP id
+ jb14-20020a05600c54ee00b003dc4356533cmr6092270wmb.5.1677082298194; 
+ Wed, 22 Feb 2023 08:11:38 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ z16-20020a1c4c10000000b003e2096da239sm7992324wmf.7.2023.02.22.08.11.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Feb 2023 20:06:08 -0800 (PST)
-Message-ID: <f0eb7a7c-8505-ee8d-af5f-259c2627958b@redhat.com>
-Date: Wed, 22 Feb 2023 05:06:04 +0100
+ Wed, 22 Feb 2023 08:11:37 -0800 (PST)
+Message-ID: <3544bf56-4d5c-174d-5bfd-a67c9689ca37@linaro.org>
+Date: Wed, 22 Feb 2023 17:11:36 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH 5/5] hw: Remove mentions of NDEBUG
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Eric Blake <eblake@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Rob Herring <robh@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>, Jason Wang <jasowang@redhat.com>,
- Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang
- <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Corey Minyard <minyard@acm.org>, Laurent Vivier <lvivier@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, qemu-ppc@nongnu.org,
+ Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Fam Zheng <fam@euphon.net>
 References: <20230221232520.14480-1-philmd@linaro.org>
- <20230221232520.14480-4-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 3/5] bulk: Replace [g_]assert(0) -> g_assert_not_reached()
-In-Reply-To: <20230221232520.14480-4-philmd@linaro.org>
+ <20230221232520.14480-6-philmd@linaro.org>
+ <20230222070529-mutt-send-email-mst@kernel.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230222070529-mutt-send-email-mst@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.095, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.102,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PnMB7db1rJpS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GWbqQTgPg7o5
 
-On 22/02/2023 00.25, Philippe Mathieu-Daudé wrote:
-> In order to avoid warnings such commit c0a6665c3c ("target/i386:
-> Remove compilation errors when -Werror=maybe-uninitialized"),
-> replace all assert(0) and g_assert(0) by g_assert_not_reached().
+On 22/2/23 13:05, Michael S. Tsirkin wrote:
+> On Wed, Feb 22, 2023 at 12:25:20AM +0100, Philippe Mathieu-Daudé wrote:
+>> Since commit 262a69f428 ("osdep.h: Prohibit disabling
+>> assert() in supported builds") 'NDEBUG' can not be defined.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > 
-> Remove any code following g_assert_not_reached().
+> this exactly says NDEBUG is not allowed. why are you removing this?
+
+The project can not be built with NDEBUG. There is no point in
+mentioning it in each individual function.
+
+>> ---
+>>   hw/scsi/mptsas.c   | 2 --
+>>   hw/virtio/virtio.c | 2 --
+>>   2 files changed, 4 deletions(-)
+>>
+>> diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
+>> index c485da792c..5b373d3ed6 100644
+>> --- a/hw/scsi/mptsas.c
+>> +++ b/hw/scsi/mptsas.c
+>> @@ -1240,8 +1240,6 @@ static void *mptsas_load_request(QEMUFile *f, SCSIRequest *sreq)
+>>       n = qemu_get_be32(f);
+>>       /* TODO: add a way for SCSIBusInfo's load_request to fail,
+>>        * and fail migration instead of asserting here.
+>> -     * This is just one thing (there are probably more) that must be
+>> -     * fixed before we can allow NDEBUG compilation.
+>>        */
+>>       assert(n >= 0);
+>>
+>> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+>> index f35178f5fc..c6b3e3fb08 100644
+>> --- a/hw/virtio/virtio.c
+>> +++ b/hw/virtio/virtio.c
+>> @@ -1898,8 +1898,6 @@ void *qemu_get_virtqueue_element(VirtIODevice *vdev, QEMUFile *f, size_t sz)
+>>   
+>>       /* TODO: teach all callers that this can fail, and return failure instead
+>>        * of asserting here.
+>> -     * This is just one thing (there are probably more) that must be
+>> -     * fixed before we can allow NDEBUG compilation.
+>>        */
+>>       assert(ARRAY_SIZE(data.in_addr) >= data.in_num);
+>>       assert(ARRAY_SIZE(data.out_addr) >= data.out_num);
+>> -- 
+>> 2.38.1
 > 
-> See previous commit for rationale.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-> 
-> diff --git a/docs/spin/aio_notify_accept.promela b/docs/spin/aio_notify_accept.promela
-> index 9cef2c955d..f929d30328 100644
-> --- a/docs/spin/aio_notify_accept.promela
-> +++ b/docs/spin/aio_notify_accept.promela
-> @@ -118,7 +118,7 @@ accept_if_req_not_eventually_false:
->       if
->           :: req -> goto accept_if_req_not_eventually_false;
->       fi;
-> -    assert(0);
-> +    g_assert_not_reached();
->   }
-
-This does not look like C code ... is it safe to replace the statement here?
-
-> diff --git a/docs/spin/aio_notify_bug.promela b/docs/spin/aio_notify_bug.promela
-> index b3bfca1ca4..ce6f5177ed 100644
-> --- a/docs/spin/aio_notify_bug.promela
-> +++ b/docs/spin/aio_notify_bug.promela
-> @@ -106,7 +106,7 @@ accept_if_req_not_eventually_false:
->       if
->           :: req -> goto accept_if_req_not_eventually_false;
->       fi;
-> -    assert(0);
-> +    g_assert_not_reached();
->   }
-
-dito
-
-> diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
-> index f54f44d899..59c8032a21 100644
-> --- a/migration/postcopy-ram.c
-> +++ b/migration/postcopy-ram.c
-> @@ -1347,49 +1347,42 @@ int postcopy_ram_incoming_init(MigrationIncomingState *mis)
->   
->   int postcopy_ram_incoming_cleanup(MigrationIncomingState *mis)
->   {
-> -    assert(0);
-> -    return -1;
-> +    g_assert_not_reached();
->   }
->   
->   int postcopy_ram_prepare_discard(MigrationIncomingState *mis)
->   {
-> -    assert(0);
-> -    return -1;
-> +    g_assert_not_reached();
->   }
->   
->   int postcopy_request_shared_page(struct PostCopyFD *pcfd, RAMBlock *rb,
->                                    uint64_t client_addr, uint64_t rb_offset)
->   {
-> -    assert(0);
-> -    return -1;
-> +    g_assert_not_reached();
->   }
->   
->   int postcopy_ram_incoming_setup(MigrationIncomingState *mis)
->   {
-> -    assert(0);
-> -    return -1;
-> +    g_assert_not_reached();
->   }
->   
->   int postcopy_place_page(MigrationIncomingState *mis, void *host, void *from,
->                           RAMBlock *rb)
->   {
-> -    assert(0);
-> -    return -1;
-> +    g_assert_not_reached();
->   }
->   
->   int postcopy_place_page_zero(MigrationIncomingState *mis, void *host,
->                           RAMBlock *rb)
->   {
-> -    assert(0);
-> -    return -1;
-> +    g_assert_not_reached();
->   }
->   
->   int postcopy_wake_shared(struct PostCopyFD *pcfd,
->                            uint64_t client_addr,
->                            RAMBlock *rb)
->   {
-> -    assert(0);
-> -    return -1;
-> +    g_assert_not_reached();
->   }
->   #endif
-
-If we ever reconsider to allow compiling with G_DISABLE_ASSERT again, this 
-will fail to compile since the return is missing now, so this is kind of 
-ugly ... would it make sense to replace this with g_assert_true(0) instead? 
-Or use abort() directly?
-
-  Thomas
 

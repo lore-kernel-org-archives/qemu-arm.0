@@ -1,105 +1,106 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3827104ejb;
-        Tue, 21 Feb 2023 18:34:53 -0800 (PST)
-X-Google-Smtp-Source: AK7set8amDzHolAsSPwsumJtUGXg2q+imUo6z9GUxHixzUCxln1kvzhyxJVwdXqzs/oUui0kV2Sx
-X-Received: by 2002:a05:622a:1348:b0:3b8:2dac:b5e1 with SMTP id w8-20020a05622a134800b003b82dacb5e1mr10249351qtk.37.1677033293452;
-        Tue, 21 Feb 2023 18:34:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677033293; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3827127ejb;
+        Tue, 21 Feb 2023 18:34:55 -0800 (PST)
+X-Google-Smtp-Source: AK7set8CnJaJe6img+pJHv4aZPM/e9y/Fi9Z5XxDwoXV2IfE2tUmv6Ogidrsja8nMLjsqeCx5qYe
+X-Received: by 2002:a05:622a:4c7:b0:3b8:6b25:88bf with SMTP id q7-20020a05622a04c700b003b86b2588bfmr12129045qtx.51.1677033295349;
+        Tue, 21 Feb 2023 18:34:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677033295; cv=none;
         d=google.com; s=arc-20160816;
-        b=nvC03lt0z+fDp46VtMI37cjewLsRzgWsmYtYwC2QpzNX2LvhAFAac2AeDDDI1BQjnH
-         jJnRZagd0I0J2kujioz6qQXMn8viErGn5/+8en8vI1L7M+VuEUEcvyIg2IXAAnHMnmck
-         GUjZwHL/ZQlADQS88De0ctTrEuGFaVHb9k/2yIjl9V3O5GI70JhrltBs8Z28y7n2R+a+
-         YQMQ/nv3c1WAA69/Hc1FKmeTOuFcs9+VUtNBn1WY/PrDWZwdvyEjJMfGlMt+4GvBCIkN
-         7ByivZOWHzkb26ld2Mfubpj0Z3l2WyEDujLsZKpV+rMOB3EokKfRkxrBPVbUhf6Nh6Kn
-         Pl/A==
+        b=JFbELjgoVt/zzmbmvgrVCfrZ6Lr9Z7nhWCmn1IS1MtkviGoNn5thiuIa63a9KNTrkv
+         RyqaEWzsDQKhjb3f95eTHI+282QVOQ0Ye7SmbzPcuR9Y0uDyvWiL+0GDryOmBWkHevSl
+         HqaGF4Z1MquaTNrstfcg/nz/e96UUXIsNMVHiRG1SLTjrBLPgymYGB8k/GoGD67izLjG
+         4eHnMB7fUAWG+eGkp5sAyX8jenVElRRVikNzs51/p6Smk5L+lWPJ9orSDSeZLd/S9R1O
+         PzTT5ThdFyQ9A2ONgNpsXkulH4Lj4ehyOXbjJ3OOn1+HnThYQU0EMq+2N2Doo4Lna2iC
+         PIRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Hddjs2iU8lgJmQnwAvhIIZw97YOfc6Ski+WodJ2W4+A=;
-        b=hHLrxdp2FoNaZG7epvxjyiecGlBhYUidVcSn17cCBxknct3tFtU/rw4Ulup2OFLB6/
-         SpjmjqlXWzNxiyAQ6BCtSPPGp/+1cpPYn63uTJdjWBYguayEQ2SfmtM2JKGiRnixYaOd
-         2GI9LLJoMuwO7g5eiFp/bjrRZzDk7y6qX2pqSLOVPIR1eAEJdVOfcs/Ue673+W1vODvv
-         JuquAWyu+NdQdd2ZfSpxbTBCw7u3x1Z608W08KNsc5PYQWQ/ES68mdsNm8AuwpgdC0PG
-         1MS2G/RiOwHpChFCtnTbPWUtBJP3FifP3y+wk6dGqUzHnbJnW42RpnRtjBCqdMJA2dfR
-         RKAQ==
+        bh=oqSxlFeqnksS26HlRcUCdvEjkW4madPTcppYBetzNJs=;
+        b=bAGztu3fONvZUmep54RtnNvnZn/TXd9/jne72KxvGiZneHUJioZjkzuPKpIJmXAWQ/
+         Go64Xo3n1FnKxcrno4UHcR+4t+mOJjazUSpXBeN71AlU7HS72z3tk54ftybY29iGHS07
+         tXxAmCtUaVlKELI8hABgqS1+Ba+yErhPz4MdnRAW5GQ5ciYgQBxxWQaUMBRST3TUYuRx
+         7VLuWnhJnpA8QxbENXu6yopeijFbuzz0+l2Vq/r1NvB7GYvmhJApUV1ICDMEeQ82AEkc
+         gH1zEVakC1TwUPIeeXwdjU9xYiZeDFdLkLdG7g8p1AYrBfy1E8FAahnfma2kcrfUOfwB
+         T6jA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SROkWP7x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DI223kiD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r19-20020ac85c93000000b003b7ec1b1facsi14108020qta.5.2023.02.21.18.34.53
+        by mx.google.com with ESMTPS id d20-20020a05622a05d400b003b676a1b5edsi1518048qtb.421.2023.02.21.18.34.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 18:34:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Feb 2023 18:34:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SROkWP7x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DI223kiD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pUexL-0007NP-EC; Tue, 21 Feb 2023 21:34:07 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pUexV-0007iW-VG; Tue, 21 Feb 2023 21:34:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUex3-0007JG-6V
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 21:33:50 -0500
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+ id 1pUexT-0007gL-B5
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:34:15 -0500
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUex1-0001YT-7u
- for qemu-arm@nongnu.org; Tue, 21 Feb 2023 21:33:48 -0500
-Received: by mail-pl1-x641.google.com with SMTP id z2so7363515plf.12
- for <qemu-arm@nongnu.org>; Tue, 21 Feb 2023 18:33:46 -0800 (PST)
+ id 1pUexR-0001k3-2B
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:34:15 -0500
+Received: by mail-pl1-x643.google.com with SMTP id u14so3298475ple.7
+ for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 18:34:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Hddjs2iU8lgJmQnwAvhIIZw97YOfc6Ski+WodJ2W4+A=;
- b=SROkWP7xABQfwPhAkR5n+ne6j8I64FnaMwmyfz2VxyA0+hwBBVFXdFZzyWAuWXXhLU
- 2VNufgp8zyZ4SbTjlvnP2s2Y4pcSl0OfD+Kctvg+SdGsZJQmawFVPeyIcPYDAXJy2W5A
- Y/O6iEa0AaL08H0YdicxgTpOIXtzUqI2VUb+hzdznxMWxL2eFveayOiI1qE5hcbI1ECQ
- k1caLhiEUZmpS4gjnS/L2zFiPGEI0m8nNNoa9sXqoS1ubnVej94BRiV64kP69w+msN1X
- 39d69W+OLXlc87cBWEVWuWcTpCTYIKo8L6JMemyUemKM4vbCajr1KTyyK2Doj5PB3Gn0
- bwPg==
+ bh=oqSxlFeqnksS26HlRcUCdvEjkW4madPTcppYBetzNJs=;
+ b=DI223kiD+93tF49qXoPYwZyOnIFs3CKSXx8QELIZv4F4A+6yR3JlyZiw8Po5HNx4Ph
+ Q4rZ0wVLXyWYB6AHBjsXtcfpQBAuobgdGm7O9Mf0qJXLsBBNxE7sUjdg/ejif3ygejHG
+ 6lt1Pb+vNJg3Cb2esS/M2Kk/y1wP7KIZDEVxOJZzQJiPosZhosfxVPn+iwCdiETufOFb
+ YkXfSSzHqm/lxezxxKdakKQNdz6BP314ojqSRxVDGlPbcriduFI3kc3nGwcJNL3zTLor
+ 0k3vwHqPitjNKrOF28Ttacx0gLN2Mf9/s17FPomkOXEPVM2KfG0dTIDk0Q5nqc8qS8KE
+ N8bQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Hddjs2iU8lgJmQnwAvhIIZw97YOfc6Ski+WodJ2W4+A=;
- b=mT8O4WXBCN6QRKUknFpuS6UU/10vXrR8/bDLLxM2ReJHkcm7KYoFDb8M2Y/d5DJ7W6
- XCVp7f9rvXfGF1LJtZB7pPyrUpCkNI+UHZ++L94AYOOM9R31qg/5j6TJMbmh7Jgxjp4e
- 2dtS0ZAXqC+K3ky7s9NvZxseY24IAnXWj7n1i8IA7WjTXCDXC44mVLRaj5eS7x6l16Uu
- yt2tCJ+UAl7bJuYbd8uK8aoMgoU4FefCAnpSlWgI5ESI3aMHdQ98z7LYAKjdoc2nUAH1
- 9AFUeFAtIvBu+NGaYJgWwm0Zqa5TjrkImESzVBY2Hw41T7XM/uhkLQ46A4iplF8jS+Uu
- Awww==
-X-Gm-Message-State: AO0yUKUphssN7mkn3nu2cpt3gj0KBPd3sBMY59W9+YlXR/ongFhbG+Ny
- m4134DW+QR3dTt4vDRLWsxZ3Ww==
-X-Received: by 2002:a17:902:f68e:b0:196:7bfb:f0d1 with SMTP id
- l14-20020a170902f68e00b001967bfbf0d1mr10084978plg.34.1677033225221; 
- Tue, 21 Feb 2023 18:33:45 -0800 (PST)
+ bh=oqSxlFeqnksS26HlRcUCdvEjkW4madPTcppYBetzNJs=;
+ b=3EplBhy94DHPD8+JyO1WYu17nIb692Ms8Alw952lcf4WU1k8EAJGyqJGSB5ybKQQpa
+ tQDVIJe9CDB9cnzP8tlpGhZKeiq4DtdVdh+RL4V6BonMl+GLdP2dxMgP9vnGdoYFsKix
+ Vo105RTX+QCbPCD1EChOfwBWmNg6L9fpHHK+EWlqEKsNe8wgWirYk8d7N0Fa12OjGnMx
+ YUHzYs08DXqgLgQvYEZRH0u/8QhWLjqN7Y+AivJIPNe2fifYWrsDqg54wgznghNzEZD3
+ 3yfR4YBaBy73T5BtBRzsNoXkMUwQHLkIklc96vxstTktOhVb0P/TRO9+pUNaqhLuI79i
+ KqeA==
+X-Gm-Message-State: AO0yUKVoghQZ34W+lO5MwmVeuwYHSxCVP6s4Y2cXTxI95nELv8XpIk00
+ EJlt3OlSJyGkbReCPuhbphfsgXMP4aaWb7aJ+MZVUQ==
+X-Received: by 2002:a17:903:247:b0:19a:80fe:1f4 with SMTP id
+ j7-20020a170903024700b0019a80fe01f4mr10994329plh.12.1677033251713; 
+ Tue, 21 Feb 2023 18:34:11 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- k3-20020a170902e90300b00198fde9178csm10520112pld.197.2023.02.21.18.33.43
+ k3-20020a170902e90300b00198fde9178csm10520112pld.197.2023.02.21.18.34.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Feb 2023 18:33:44 -0800 (PST)
+ Tue, 21 Feb 2023 18:34:11 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 04/25] target/arm: Rewrite check_s2_mmu_setup
-Date: Tue, 21 Feb 2023 16:33:15 -1000
-Message-Id: <20230222023336.915045-5-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 23/25] target/arm: Implement the granule protection check
+Date: Tue, 21 Feb 2023 16:33:34 -1000
+Message-Id: <20230222023336.915045-24-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230222023336.915045-1-richard.henderson@linaro.org>
 References: <20230222023336.915045-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,247 +109,376 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lqi1/q7saK7t
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eprMRi+Li3cH
 
-Integrate neighboring code from get_phys_addr_lpae which computed
-starting level, as it is easier to validate when doing both at the
-same time.  Mirror the checks at the start of AArch{64,32}.S2Walk,
-especially S2InvalidSL and S2InconsistentSL.
+Place the check at the end of get_phys_addr_with_struct,
+so that we check all physical results.
 
-This reverts 49ba115bb74, which was incorrect -- there is nothing
-in the ARM pseudocode that depends on TxSZ, i.e. outputsize; the
-pseudocode is consistent in referencing PAMax.
-
-Fixes: 49ba115bb74 ("target/arm: Pass outputsize down to check_s2_mmu_setup")
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 173 ++++++++++++++++++++++++++---------------------
- 1 file changed, 97 insertions(+), 76 deletions(-)
+ target/arm/ptw.c | 249 +++++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 232 insertions(+), 17 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 2b125fff44..6fb72fb086 100644
+index 7e1aa34d24..8fa4849aaa 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -1077,70 +1077,119 @@ static ARMVAParameters aa32_va_parameters(CPUARMState *env, uint32_t va,
-  * check_s2_mmu_setup
-  * @cpu:        ARMCPU
-  * @is_aa64:    True if the translation regime is in AArch64 state
-- * @startlevel: Suggested starting level
-- * @inputsize:  Bitsize of IPAs
-+ * @tcr:        VTCR_EL2 or VSTCR_EL2
-+ * @ds:         Effective value of TCR.DS.
-+ * @iasize:     Bitsize of IPAs
-  * @stride:     Page-table stride (See the ARM ARM)
-  *
-- * Returns true if the suggested S2 translation parameters are OK and
-- * false otherwise.
-+ * Decode the starting level of the S2 lookup, returning INT_MIN if
-+ * the configuration is invalid.
-  */
--static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
--                               int inputsize, int stride, int outputsize)
-+static int check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, uint64_t tcr,
-+                              bool ds, int iasize, int stride)
- {
--    const int grainsize = stride + 3;
--    int startsizecheck;
--
--    /*
--     * Negative levels are usually not allowed...
--     * Except for FEAT_LPA2, 4k page table, 52-bit address space, which
--     * begins with level -1.  Note that previous feature tests will have
--     * eliminated this combination if it is not enabled.
--     */
--    if (level < (inputsize == 52 && stride == 9 ? -1 : 0)) {
--        return false;
--    }
--
--    startsizecheck = inputsize - ((3 - level) * stride + grainsize);
--    if (startsizecheck < 1 || startsizecheck > stride + 4) {
--        return false;
--    }
-+    int sl0, sl2, startlevel, granulebits, levels;
-+    int s1_min_iasize, s1_max_iasize;
+@@ -37,11 +37,17 @@ typedef struct S1Translate {
+     void *out_host;
+ } S1Translate;
  
-+    sl0 = extract32(tcr, 6, 2);
-     if (is_aa64) {
-+        /*
-+         * AArch64.S2InvalidTxSZ: While we checked tsz_oob near the top of
-+         * get_phys_addr_lpae, that used aa64_va_parameters which apply
-+         * to aarch64.  If Stage1 is aarch32, the min_txsz is larger.
-+         * See AArch64.S2MinTxSZ, where min_tsz is 24, translated to
-+         * inputsize is 64 - 24 = 40.
-+         */
-+        if (iasize < 40 && !arm_el_is_aa64(&cpu->env, 1)) {
-+            goto fail;
-+        }
+-static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
+-                                      target_ulong address,
+-                                      MMUAccessType access_type,
+-                                      GetPhysAddrResult *result,
+-                                      ARMMMUFaultInfo *fi);
++static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
++                                target_ulong address,
++                                MMUAccessType access_type,
++                                GetPhysAddrResult *result,
++                                ARMMMUFaultInfo *fi);
 +
-+        /*
-+         * AArch64.S2InvalidSL: Interpretation of SL depends on the page size,
-+         * so interleave AArch64.S2StartLevel.
-+         */
-         switch (stride) {
--        case 13: /* 64KB Pages.  */
--            if (level == 0 || (level == 1 && outputsize <= 42)) {
--                return false;
-+        case 9: /* 4KB */
-+            /* SL2 is RES0 unless DS=1 & 4KB granule. */
-+            sl2 = extract64(tcr, 33, 1);
-+            if (ds && sl2) {
-+                if (sl0 != 0) {
-+                    goto fail;
-+                }
-+                startlevel = -1;
-+            } else {
-+                startlevel = 2 - sl0;
-+                switch (sl0) {
-+                case 2:
-+                    if (arm_pamax(cpu) < 44) {
-+                        goto fail;
-+                    }
-+                    break;
-+                case 3:
-+                    if (!cpu_isar_feature(aa64_st, cpu)) {
-+                        goto fail;
-+                    }
-+                    startlevel = 3;
-+                    break;
-+                }
-             }
-             break;
--        case 11: /* 16KB Pages.  */
--            if (level == 0 || (level == 1 && outputsize <= 40)) {
--                return false;
-+        case 11: /* 16KB */
-+            switch (sl0) {
-+            case 2:
-+                if (arm_pamax(cpu) < 42) {
-+                    goto fail;
-+                }
-+                break;
-+            case 3:
-+                if (!ds) {
-+                    goto fail;
-+                }
-+                break;
-             }
-+            startlevel = 3 - sl0;
-             break;
--        case 9: /* 4KB Pages.  */
--            if (level == 0 && outputsize <= 42) {
--                return false;
-+        case 13: /* 64KB */
-+            switch (sl0) {
-+            case 2:
-+                if (arm_pamax(cpu) < 44) {
-+                    goto fail;
-+                }
-+                break;
-+            case 3:
-+                goto fail;
-             }
-+            startlevel = 3 - sl0;
-             break;
-         default:
-             g_assert_not_reached();
-         }
--
--        /* Inputsize checks.  */
--        if (inputsize > outputsize &&
--            (arm_el_is_aa64(&cpu->env, 1) || inputsize > 40)) {
--            /* This is CONSTRAINED UNPREDICTABLE and we choose to fault.  */
--            return false;
--        }
-     } else {
--        /* AArch32 only supports 4KB pages. Assert on that.  */
-+        /*
-+         * Things are simpler for AArch32 EL2, with only 4k pages.
-+         * There is no separate S2InvalidSL function, but AArch32.S2Walk
-+         * begins with walkparms.sl0 in {'1x'}.
-+         */
-         assert(stride == 9);
--
--        if (level == 0) {
--            return false;
-+        if (sl0 >= 2) {
-+            goto fail;
-         }
-+        startlevel = 2 - sl0;
-     }
--    return true;
-+
-+    /* AArch{64,32}.S2InconsistentSL are functionally equivalent.  */
-+    levels = 3 - startlevel;
-+    granulebits = stride + 3;
-+
-+    s1_min_iasize = levels * stride + granulebits + 1;
-+    s1_max_iasize = s1_min_iasize + (stride - 1) + 4;
-+
-+    if (iasize >= s1_min_iasize && iasize <= s1_max_iasize) {
-+        return startlevel;
-+    }
-+
-+ fail:
-+    return INT_MIN;
++static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
++                              target_ulong address,
++                              MMUAccessType access_type,
++                              GetPhysAddrResult *result,
++                              ARMMMUFaultInfo *fi);
+ 
+ /* This mapping is common between ID_AA64MMFR0.PARANGE and TCR_ELx.{I}PS. */
+ static const uint8_t pamax_map[] = {
+@@ -197,6 +203,197 @@ static bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx,
+     return (regime_sctlr(env, mmu_idx) & SCTLR_M) == 0;
  }
  
- /**
-@@ -1296,38 +1345,10 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-          */
-         level = 4 - (inputsize - 4) / stride;
-     } else {
--        /*
--         * For stage 2 translations the starting level is specified by the
--         * VTCR_EL2.SL0 field (whose interpretation depends on the page size)
--         */
--        uint32_t sl0 = extract32(tcr, 6, 2);
--        uint32_t sl2 = extract64(tcr, 33, 1);
--        int32_t startlevel;
--        bool ok;
--
--        /* SL2 is RES0 unless DS=1 & 4kb granule. */
--        if (param.ds && stride == 9 && sl2) {
--            if (sl0 != 0) {
--                level = 0;
--                goto do_translation_fault;
--            }
--            startlevel = -1;
--        } else if (!aarch64 || stride == 9) {
--            /* AArch32 or 4KB pages */
--            startlevel = 2 - sl0;
--
--            if (cpu_isar_feature(aa64_st, cpu)) {
--                startlevel &= 3;
--            }
--        } else {
--            /* 16KB or 64KB pages */
--            startlevel = 3 - sl0;
--        }
--
--        /* Check that the starting level is valid. */
--        ok = check_s2_mmu_setup(cpu, aarch64, startlevel,
--                                inputsize, stride, outputsize);
--        if (!ok) {
-+        int startlevel = check_s2_mmu_setup(cpu, aarch64, tcr, param.ds,
-+                                            inputsize, stride);
-+        if (startlevel == INT_MIN) {
-+            level = 0;
-             goto do_translation_fault;
++static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
++                                     ARMSecuritySpace pspace,
++                                     ARMMMUFaultInfo *fi)
++{
++    MemTxAttrs attrs = {
++        .secure = true,
++        .space = ARMSS_Root,
++    };
++    ARMCPU *cpu = env_archcpu(env);
++    uint64_t gpccr = env->cp15.gpccr_el3;
++    unsigned pps, pgs, l0gptsz, level = 0;
++    uint64_t tableaddr, pps_mask, align, entry, index;
++    AddressSpace *as;
++    MemTxResult result;
++    int gpi;
++
++    if (!FIELD_EX64(gpccr, GPCCR, GPC)) {
++        return true;
++    }
++
++    /*
++     * GPC Priority 1 (R_GMGRR):
++     * R_JWCSM: If the configuration of GPCCR_EL3 is invalid,
++     * the access fails as GPT walk fault at level 0.
++     */
++
++    /*
++     * Configuration of PPS to a value exceeding the implemented
++     * physical address size is invalid.
++     */
++    pps = FIELD_EX64(gpccr, GPCCR, PPS);
++    if (pps > FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE)) {
++        goto fault_walk;
++    }
++    pps = pamax_map[pps];
++    pps_mask = MAKE_64BIT_MASK(0, pps);
++
++    switch (FIELD_EX64(gpccr, GPCCR, SH)) {
++    case 0b10: /* outer shareable */
++        break;
++    case 0b00: /* non-shareable */
++    case 0b11: /* inner shareable */
++        /* Inner and Outer non-cacheable requires Outer shareable. */
++        if (FIELD_EX64(gpccr, GPCCR, ORGN) == 0 &&
++            FIELD_EX64(gpccr, GPCCR, IRGN) == 0) {
++            goto fault_walk;
++        }
++        break;
++    default:   /* reserved */
++        goto fault_walk;
++    }
++
++    switch (FIELD_EX64(gpccr, GPCCR, PGS)) {
++    case 0b00: /* 4KB */
++        pgs = 12;
++        break;
++    case 0b01: /* 64KB */
++        pgs = 16;
++        break;
++    case 0b10: /* 16KB */
++        pgs = 14;
++        break;
++    default: /* reserved */
++        goto fault_walk;
++    }
++
++    /* Note this field is read-only and fixed at reset. */
++    l0gptsz = 30 + FIELD_EX64(gpccr, GPCCR, L0GPTSZ);
++
++    /*
++     * GPC Priority 2: Secure, Realm or Root address exceeds PPS.
++     * R_CPDSB: A NonSecure physical address input exceeding PPS
++     * does not experience any fault.
++     */
++    if (paddress & ~pps_mask) {
++        if (pspace == ARMSS_NonSecure) {
++            return true;
++        }
++        goto fault_size;
++    }
++
++    /* GPC Priority 3: the base address of GPTBR_EL3 exceeds PPS. */
++    tableaddr = env->cp15.gptbr_el3 << 12;
++    if (tableaddr & ~pps_mask) {
++        goto fault_size;
++    }
++
++    /*
++     * BADDR is aligned per a function of PPS and L0GPTSZ.
++     * These bits of GPTBR_EL3 are RES0, but are not a configuration error,
++     * unlike the RES0 bits of the GPT entries (R_XNKFZ).
++     */
++    align = MAX(pps - l0gptsz + 3, 12);
++    align = MAKE_64BIT_MASK(0, align);
++    tableaddr &= ~align;
++
++    as = arm_addressspace(env_cpu(env), attrs);
++
++    /* Level 0 lookup. */
++    index = extract64(paddress, l0gptsz, pps - l0gptsz);
++    tableaddr += index * 8;
++    entry = address_space_ldq_le(as, tableaddr, attrs, &result);
++    if (result != MEMTX_OK) {
++        goto fault_eabt;
++    }
++
++    switch (extract32(entry, 0, 4)) {
++    case 1: /* block descriptor */
++        if (entry >> 8) {
++            goto fault_walk; /* RES0 bits not 0 */
++        }
++        gpi = extract32(entry, 4, 4);
++        goto found;
++    case 3: /* table descriptor */
++        tableaddr = entry & ~0xf;
++        align = MAX(l0gptsz - pgs - 1, 12);
++        align = MAKE_64BIT_MASK(0, align);
++        if (tableaddr & (~pps_mask | align)) {
++            goto fault_walk; /* RES0 bits not 0 */
++        }
++        break;
++    default: /* invalid */
++        goto fault_walk;
++    }
++
++    /* Level 1 lookup */
++    level = 1;
++    index = extract64(paddress, pgs + 4, l0gptsz - pgs - 4);
++    tableaddr += index * 8;
++    entry = address_space_ldq_le(as, tableaddr, attrs, &result);
++    if (result != MEMTX_OK) {
++        goto fault_eabt;
++    }
++
++    switch (extract32(entry, 0, 4)) {
++    case 1: /* contiguous descriptor */
++        if (entry >> 10) {
++            goto fault_walk; /* RES0 bits not 0 */
++        }
++        /*
++         * Because the softmmu tlb only works on units of TARGET_PAGE_SIZE,
++         * and because we cannot invalidate by pa, and thus will always
++         * flush entire tlbs, we don't actually care about the range here
++         * and can simply extract the GPI as the result.
++         */
++        if (extract32(entry, 8, 2) == 0) {
++            goto fault_walk; /* reserved contig */
++        }
++        gpi = extract32(entry, 4, 4);
++        break;
++    default:
++        index = extract64(paddress, pgs, 4);
++        gpi = extract64(entry, index * 4, 4);
++        break;
++    }
++
++ found:
++    switch (gpi) {
++    case 0b0000: /* no access */
++        break;
++    case 0b1111: /* all access */
++        return true;
++    case 0b1000:
++    case 0b1001:
++    case 0b1010:
++    case 0b1011:
++        if (pspace == (gpi & 3)) {
++            return true;
++        }
++        break;
++    default:
++        goto fault_walk; /* reserved */
++    }
++
++    fi->gpcf = GPCF_Fail;
++    goto fault_common;
++ fault_eabt:
++    fi->gpcf = GPCF_EABT;
++    goto fault_common;
++ fault_size:
++    fi->gpcf = GPCF_AddressSize;
++    goto fault_common;
++ fault_walk:
++    fi->gpcf = GPCF_Walk;
++ fault_common:
++    fi->level = level;
++    fi->paddr = paddress;
++    fi->paddr_space = pspace;
++    return false;
++}
++
+ static bool S2_attrs_are_device(uint64_t hcr, uint8_t attrs)
+ {
+     /*
+@@ -242,10 +439,10 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
+         };
+         GetPhysAddrResult s2 = { };
+ 
+-        if (get_phys_addr_with_struct(env, &s2ptw, addr,
+-                                      MMU_DATA_LOAD, &s2, fi)) {
++        if (get_phys_addr_gpc(env, &s2ptw, addr, MMU_DATA_LOAD, &s2, fi)) {
+             goto fail;
          }
-         level = startlevel;
++
+         ptw->out_phys = s2.f.phys_addr;
+         pte_attrs = s2.cacheattrs.attrs;
+         pte_secure = s2.f.attrs.secure;
+@@ -304,6 +501,9 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
+ 
+  fail:
+     assert(fi->type != ARMFault_None);
++    if (fi->type == ARMFault_GPCFOnOutput) {
++        fi->type = ARMFault_GPCFOnWalk;
++    }
+     fi->s2addr = addr;
+     fi->stage2 = true;
+     fi->s1ptw = true;
+@@ -2731,7 +2931,7 @@ static bool get_phys_addr_disabled(CPUARMState *env, target_ulong address,
+                                    ARMMMUFaultInfo *fi)
+ {
+     uint8_t memattr = 0x00;    /* Device nGnRnE */
+-    uint8_t shareability = 0;  /* non-sharable */
++    uint8_t shareability = 0;  /* non-shareable */
+     int r_el;
+ 
+     switch (mmu_idx) {
+@@ -2790,7 +2990,7 @@ static bool get_phys_addr_disabled(CPUARMState *env, target_ulong address,
+             } else {
+                 memattr = 0x44;  /* Normal, NC, No */
+             }
+-            shareability = 2; /* outer sharable */
++            shareability = 2; /* outer shareable */
+         }
+         result->cacheattrs.is_s2_format = false;
+         break;
+@@ -2818,7 +3018,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
+     ARMSecuritySpace ipa_space, s2walk_space;
+     uint64_t hcr;
+ 
+-    ret = get_phys_addr_with_struct(env, ptw, address, access_type, result, fi);
++    ret = get_phys_addr_nogpc(env, ptw, address, access_type, result, fi);
+ 
+     /* If S1 fails, return early.  */
+     if (ret) {
+@@ -2855,7 +3055,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
+     cacheattrs1 = result->cacheattrs;
+     memset(result, 0, sizeof(*result));
+ 
+-    ret = get_phys_addr_with_struct(env, ptw, ipa, access_type, result, fi);
++    ret = get_phys_addr_nogpc(env, ptw, ipa, access_type, result, fi);
+     fi->s2addr = ipa;
+ 
+     /* Combine the S1 and S2 perms.  */
+@@ -2915,7 +3115,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
+     return false;
+ }
+ 
+-static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
++static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+                                       target_ulong address,
+                                       MMUAccessType access_type,
+                                       GetPhysAddrResult *result,
+@@ -3039,6 +3239,23 @@ static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
+     }
+ }
+ 
++static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
++                              target_ulong address,
++                              MMUAccessType access_type,
++                              GetPhysAddrResult *result,
++                              ARMMMUFaultInfo *fi)
++{
++    if (get_phys_addr_nogpc(env, ptw, address, access_type, result, fi)) {
++        return true;
++    }
++    if (!granule_protection_check(env, result->f.phys_addr,
++                                  result->f.attrs.space, fi)) {
++        fi->type = ARMFault_GPCFOnOutput;
++        return true;
++    }
++    return false;
++}
++
+ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
+                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
+                                bool is_secure, GetPhysAddrResult *result,
+@@ -3049,8 +3266,7 @@ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
+         .in_secure = is_secure,
+         .in_space = arm_secure_to_space(is_secure),
+     };
+-    return get_phys_addr_with_struct(env, &ptw, address, access_type,
+-                                     result, fi);
++    return get_phys_addr_gpc(env, &ptw, address, access_type, result, fi);
+ }
+ 
+ bool get_phys_addr(CPUARMState *env, target_ulong address,
+@@ -3120,8 +3336,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+ 
+     ptw.in_space = ss;
+     ptw.in_secure = arm_space_is_secure(ss);
+-    return get_phys_addr_with_struct(env, &ptw, address, access_type,
+-                                     result, fi);
++    return get_phys_addr_gpc(env, &ptw, address, access_type, result, fi);
+ }
+ 
+ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+@@ -3141,7 +3356,7 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+     ARMMMUFaultInfo fi = {};
+     bool ret;
+ 
+-    ret = get_phys_addr_with_struct(env, &ptw, addr, MMU_DATA_LOAD, &res, &fi);
++    ret = get_phys_addr_gpc(env, &ptw, addr, MMU_DATA_LOAD, &res, &fi);
+     *attrs = res.f.attrs;
+ 
+     if (ret) {
 -- 
 2.34.1
 

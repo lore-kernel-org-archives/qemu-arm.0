@@ -1,106 +1,107 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3827127ejb;
-        Tue, 21 Feb 2023 18:34:55 -0800 (PST)
-X-Google-Smtp-Source: AK7set8CnJaJe6img+pJHv4aZPM/e9y/Fi9Z5XxDwoXV2IfE2tUmv6Ogidrsja8nMLjsqeCx5qYe
-X-Received: by 2002:a05:622a:4c7:b0:3b8:6b25:88bf with SMTP id q7-20020a05622a04c700b003b86b2588bfmr12129045qtx.51.1677033295349;
-        Tue, 21 Feb 2023 18:34:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677033295; cv=none;
+Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp3827249ejb;
+        Tue, 21 Feb 2023 18:35:10 -0800 (PST)
+X-Google-Smtp-Source: AK7set98ToIud6sLUL6fHp1rL/WOdOAyv0BNfB4MCYXhXtHZYwXWMqD1Tu6Mpo1XtOZW3GS4jkVh
+X-Received: by 2002:ac8:7f95:0:b0:3b8:33b5:a7ec with SMTP id z21-20020ac87f95000000b003b833b5a7ecmr10006385qtj.22.1677033310328;
+        Tue, 21 Feb 2023 18:35:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677033310; cv=none;
         d=google.com; s=arc-20160816;
-        b=JFbELjgoVt/zzmbmvgrVCfrZ6Lr9Z7nhWCmn1IS1MtkviGoNn5thiuIa63a9KNTrkv
-         RyqaEWzsDQKhjb3f95eTHI+282QVOQ0Ye7SmbzPcuR9Y0uDyvWiL+0GDryOmBWkHevSl
-         HqaGF4Z1MquaTNrstfcg/nz/e96UUXIsNMVHiRG1SLTjrBLPgymYGB8k/GoGD67izLjG
-         4eHnMB7fUAWG+eGkp5sAyX8jenVElRRVikNzs51/p6Smk5L+lWPJ9orSDSeZLd/S9R1O
-         PzTT5ThdFyQ9A2ONgNpsXkulH4Lj4ehyOXbjJ3OOn1+HnThYQU0EMq+2N2Doo4Lna2iC
-         PIRA==
+        b=IDbbY0Zr/qTDghE0B1+EPdO0lXZgXWLEW+jrl9YhzdnDHM0sQ9gnN0nA129O13HfO7
+         ooW5wu0lPZ/scMbe81kg4vt/Z+xbzX9fgON/5N7cpYKGTMx1t+WzvE23D9jtY3gluuau
+         DR3tEbuLIN80OMzBqD+qp305CaNbEbU3wL4FAsom4CQMYVvZDxeOkB4n4Vj0TJGlHLiY
+         3TiVFAxBbT6pXd+YwDnp74FyMHW7LjlIID85Q+UIJW71rlz90q7aqrUN9XWPn6L+opYI
+         oYeWP/qXVn8mEIaK1WxcZUc76vSwxENIKIxZap5hZjkfKEKcnsqQut3eKmtAKRN0TKS8
+         pNuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=oqSxlFeqnksS26HlRcUCdvEjkW4madPTcppYBetzNJs=;
-        b=bAGztu3fONvZUmep54RtnNvnZn/TXd9/jne72KxvGiZneHUJioZjkzuPKpIJmXAWQ/
-         Go64Xo3n1FnKxcrno4UHcR+4t+mOJjazUSpXBeN71AlU7HS72z3tk54ftybY29iGHS07
-         tXxAmCtUaVlKELI8hABgqS1+Ba+yErhPz4MdnRAW5GQ5ciYgQBxxWQaUMBRST3TUYuRx
-         7VLuWnhJnpA8QxbENXu6yopeijFbuzz0+l2Vq/r1NvB7GYvmhJApUV1ICDMEeQ82AEkc
-         gH1zEVakC1TwUPIeeXwdjU9xYiZeDFdLkLdG7g8p1AYrBfy1E8FAahnfma2kcrfUOfwB
-         T6jA==
+        bh=BxdGjf2oqnzrJHeRZJSywTpPyzmxqXK2LnQoNrr8F7g=;
+        b=ReTw/GTb1mzBPKXLHpNYzkGQTdzOcEYESUOoJq+ur3zVyqKgAnq6Q6bahGs1upUVL/
+         gPx8Ok5MBaqroh8IaPzKtD/O+NWuTXkuUCNze6z57b6NtbTalHzJIn2QEEE5Oj45eB8u
+         ne3aZUkcvpXF6S9RDQtrl5fp0cIqWErwJbfoWEnrd0oGa6H8yA21Nucu9zzC5ZrbWTwB
+         HRgyjSX/5x/oFPKlQYTVuNOg1aejtrZhbncYCHN7RPBWskZXwJDxN2aT2ShaX/tZmaJc
+         pC1u5FVMhJTdmYS+UirRfXzdtl48/JSpQm7IYcNaMDTfNdLsRJucEq8dS/xaOlkMZ7qI
+         sCxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DI223kiD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hSFH0qMY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d20-20020a05622a05d400b003b676a1b5edsi1518048qtb.421.2023.02.21.18.34.55
+        by mx.google.com with ESMTPS id b20-20020a05622a021400b003a9861da69esi4532463qtx.239.2023.02.21.18.35.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Feb 2023 18:34:55 -0800 (PST)
+        Tue, 21 Feb 2023 18:35:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DI223kiD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hSFH0qMY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pUexV-0007iW-VG; Tue, 21 Feb 2023 21:34:18 -0500
+	id 1pUexP-0007Zc-O7; Tue, 21 Feb 2023 21:34:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUexT-0007gL-B5
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:34:15 -0500
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+ id 1pUex8-0007KT-37
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:33:55 -0500
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pUexR-0001k3-2B
- for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:34:15 -0500
-Received: by mail-pl1-x643.google.com with SMTP id u14so3298475ple.7
- for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 18:34:12 -0800 (PST)
+ id 1pUex6-0001cU-Ah
+ for qemu-devel@nongnu.org; Tue, 21 Feb 2023 21:33:53 -0500
+Received: by mail-pj1-x102f.google.com with SMTP id
+ d1-20020a17090a3b0100b00229ca6a4636so7324057pjc.0
+ for <qemu-devel@nongnu.org>; Tue, 21 Feb 2023 18:33:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oqSxlFeqnksS26HlRcUCdvEjkW4madPTcppYBetzNJs=;
- b=DI223kiD+93tF49qXoPYwZyOnIFs3CKSXx8QELIZv4F4A+6yR3JlyZiw8Po5HNx4Ph
- Q4rZ0wVLXyWYB6AHBjsXtcfpQBAuobgdGm7O9Mf0qJXLsBBNxE7sUjdg/ejif3ygejHG
- 6lt1Pb+vNJg3Cb2esS/M2Kk/y1wP7KIZDEVxOJZzQJiPosZhosfxVPn+iwCdiETufOFb
- YkXfSSzHqm/lxezxxKdakKQNdz6BP314ojqSRxVDGlPbcriduFI3kc3nGwcJNL3zTLor
- 0k3vwHqPitjNKrOF28Ttacx0gLN2Mf9/s17FPomkOXEPVM2KfG0dTIDk0Q5nqc8qS8KE
- N8bQ==
+ bh=BxdGjf2oqnzrJHeRZJSywTpPyzmxqXK2LnQoNrr8F7g=;
+ b=hSFH0qMYkVQ/qCWSDKNo6IZuZi+hiMsb6woGHdpGBHb9bfIYLzjxP9BlXU/MVWyJNT
+ XiVl8w72fBFnbs/2OZzgr0PPdG/GAArgdOfany4RTizTQjmuIGJCTCcmr6/0QBuDH0Cb
+ 3bI59LR7V9uWtRtXZoqyR6T7FzUAqudo/DRJHfrLn7xAP+0FrZM/GLEc2Q5P3+kJ2AjQ
+ tiATiMTSNXw3lrny6QauYPomFSByTVi5yVnckg3u8YqmRFMXIC0jD2dmc7tIspRDjyx0
+ idU8ygn2ORlNVHeiubhtp7pxdg25OgdamPfoG+Lx5Jr0XWtN9llPNpGgRHapBfJE0t7r
+ BRlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=oqSxlFeqnksS26HlRcUCdvEjkW4madPTcppYBetzNJs=;
- b=3EplBhy94DHPD8+JyO1WYu17nIb692Ms8Alw952lcf4WU1k8EAJGyqJGSB5ybKQQpa
- tQDVIJe9CDB9cnzP8tlpGhZKeiq4DtdVdh+RL4V6BonMl+GLdP2dxMgP9vnGdoYFsKix
- Vo105RTX+QCbPCD1EChOfwBWmNg6L9fpHHK+EWlqEKsNe8wgWirYk8d7N0Fa12OjGnMx
- YUHzYs08DXqgLgQvYEZRH0u/8QhWLjqN7Y+AivJIPNe2fifYWrsDqg54wgznghNzEZD3
- 3yfR4YBaBy73T5BtBRzsNoXkMUwQHLkIklc96vxstTktOhVb0P/TRO9+pUNaqhLuI79i
- KqeA==
-X-Gm-Message-State: AO0yUKVoghQZ34W+lO5MwmVeuwYHSxCVP6s4Y2cXTxI95nELv8XpIk00
- EJlt3OlSJyGkbReCPuhbphfsgXMP4aaWb7aJ+MZVUQ==
-X-Received: by 2002:a17:903:247:b0:19a:80fe:1f4 with SMTP id
- j7-20020a170903024700b0019a80fe01f4mr10994329plh.12.1677033251713; 
- Tue, 21 Feb 2023 18:34:11 -0800 (PST)
+ bh=BxdGjf2oqnzrJHeRZJSywTpPyzmxqXK2LnQoNrr8F7g=;
+ b=dOBtSNi/vy30VoZZDElzggfkQgtbN9gIpr/CWSzFN1iEl/lGRlGWAhqcA2Xaz8djtV
+ giA9N17kZOBr+3mEFingAo1RhgnXfynE42Yd//7QMrbCOvyyzmHiAr5pKENv38SAiwsz
+ WA+6mRriYBjyxzmqafvq8Bz342guzeO03HijGiia78GKHuZdWSQGZEuouNlkvE3EUaoa
+ 17mYwISQW28NriMCOC3mF2LfEvCFNfexRxPO1YLahumudX48WhTvDzjFh/RHseHEbANB
+ XF3FZKGrAwGKcP7wtLsAHNbC5IvDGHrwtIZyN2U3H4Y5s/Ayto2yk2/h5nat9vd1owhV
+ li/A==
+X-Gm-Message-State: AO0yUKWI2I0VAeZBYefBp6mdHxCXGhnpwktxaNFM/72JkvMXnZ2jMmxx
+ 1fYAz9x1L7oUuM3IwvAQp0KTJR6AAB0qwWR8BrU=
+X-Received: by 2002:a17:902:c40d:b0:19a:b312:bf3f with SMTP id
+ k13-20020a170902c40d00b0019ab312bf3fmr11739291plk.47.1677033230638; 
+ Tue, 21 Feb 2023 18:33:50 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- k3-20020a170902e90300b00198fde9178csm10520112pld.197.2023.02.21.18.34.10
+ k3-20020a170902e90300b00198fde9178csm10520112pld.197.2023.02.21.18.33.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Feb 2023 18:34:11 -0800 (PST)
+ Tue, 21 Feb 2023 18:33:50 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 23/25] target/arm: Implement the granule protection check
-Date: Tue, 21 Feb 2023 16:33:34 -1000
-Message-Id: <20230222023336.915045-24-richard.henderson@linaro.org>
+Subject: [PATCH v3 08/25] target/arm: Add RME cpregs
+Date: Tue, 21 Feb 2023 16:33:19 -1000
+Message-Id: <20230222023336.915045-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230222023336.915045-1-richard.henderson@linaro.org>
 References: <20230222023336.915045-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,363 +123,163 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eprMRi+Li3cH
+X-TUID: gezXWmDYkM79
 
-Place the check at the end of get_phys_addr_with_struct,
-so that we check all physical results.
+This includes GPCCR, GPTBR, MFAR, the TLB flush insns PAALL, PAALLOS,
+RPALOS, RPAOS, and the cache flush insns CIPAPA and CIGDPAPA.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 249 +++++++++++++++++++++++++++++++++++++++++++----
- 1 file changed, 232 insertions(+), 17 deletions(-)
+ target/arm/cpu.h    | 19 +++++++++++
+ target/arm/helper.c | 83 +++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 102 insertions(+)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 7e1aa34d24..8fa4849aaa 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -37,11 +37,17 @@ typedef struct S1Translate {
-     void *out_host;
- } S1Translate;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 230241cf93..8d18d98350 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -541,6 +541,11 @@ typedef struct CPUArchState {
+         uint64_t fgt_read[2]; /* HFGRTR, HDFGRTR */
+         uint64_t fgt_write[2]; /* HFGWTR, HDFGWTR */
+         uint64_t fgt_exec[1]; /* HFGITR */
++
++        /* RME registers */
++        uint64_t gpccr_el3;
++        uint64_t gptbr_el3;
++        uint64_t mfar_el3;
+     } cp15;
  
--static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
--                                      target_ulong address,
--                                      MMUAccessType access_type,
--                                      GetPhysAddrResult *result,
--                                      ARMMMUFaultInfo *fi);
-+static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
-+                                target_ulong address,
-+                                MMUAccessType access_type,
-+                                GetPhysAddrResult *result,
-+                                ARMMMUFaultInfo *fi);
-+
-+static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
-+                              target_ulong address,
-+                              MMUAccessType access_type,
-+                              GetPhysAddrResult *result,
-+                              ARMMMUFaultInfo *fi);
+     struct {
+@@ -1043,6 +1048,7 @@ struct ArchCPU {
+     uint64_t reset_cbar;
+     uint32_t reset_auxcr;
+     bool reset_hivecs;
++    uint8_t reset_l0gptsz;
  
- /* This mapping is common between ID_AA64MMFR0.PARANGE and TCR_ELx.{I}PS. */
- static const uint8_t pamax_map[] = {
-@@ -197,6 +203,197 @@ static bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx,
-     return (regime_sctlr(env, mmu_idx) & SCTLR_M) == 0;
- }
- 
-+static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
-+                                     ARMSecuritySpace pspace,
-+                                     ARMMMUFaultInfo *fi)
-+{
-+    MemTxAttrs attrs = {
-+        .secure = true,
-+        .space = ARMSS_Root,
-+    };
-+    ARMCPU *cpu = env_archcpu(env);
-+    uint64_t gpccr = env->cp15.gpccr_el3;
-+    unsigned pps, pgs, l0gptsz, level = 0;
-+    uint64_t tableaddr, pps_mask, align, entry, index;
-+    AddressSpace *as;
-+    MemTxResult result;
-+    int gpi;
-+
-+    if (!FIELD_EX64(gpccr, GPCCR, GPC)) {
-+        return true;
-+    }
-+
-+    /*
-+     * GPC Priority 1 (R_GMGRR):
-+     * R_JWCSM: If the configuration of GPCCR_EL3 is invalid,
-+     * the access fails as GPT walk fault at level 0.
-+     */
-+
-+    /*
-+     * Configuration of PPS to a value exceeding the implemented
-+     * physical address size is invalid.
-+     */
-+    pps = FIELD_EX64(gpccr, GPCCR, PPS);
-+    if (pps > FIELD_EX64(cpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE)) {
-+        goto fault_walk;
-+    }
-+    pps = pamax_map[pps];
-+    pps_mask = MAKE_64BIT_MASK(0, pps);
-+
-+    switch (FIELD_EX64(gpccr, GPCCR, SH)) {
-+    case 0b10: /* outer shareable */
-+        break;
-+    case 0b00: /* non-shareable */
-+    case 0b11: /* inner shareable */
-+        /* Inner and Outer non-cacheable requires Outer shareable. */
-+        if (FIELD_EX64(gpccr, GPCCR, ORGN) == 0 &&
-+            FIELD_EX64(gpccr, GPCCR, IRGN) == 0) {
-+            goto fault_walk;
-+        }
-+        break;
-+    default:   /* reserved */
-+        goto fault_walk;
-+    }
-+
-+    switch (FIELD_EX64(gpccr, GPCCR, PGS)) {
-+    case 0b00: /* 4KB */
-+        pgs = 12;
-+        break;
-+    case 0b01: /* 64KB */
-+        pgs = 16;
-+        break;
-+    case 0b10: /* 16KB */
-+        pgs = 14;
-+        break;
-+    default: /* reserved */
-+        goto fault_walk;
-+    }
-+
-+    /* Note this field is read-only and fixed at reset. */
-+    l0gptsz = 30 + FIELD_EX64(gpccr, GPCCR, L0GPTSZ);
-+
-+    /*
-+     * GPC Priority 2: Secure, Realm or Root address exceeds PPS.
-+     * R_CPDSB: A NonSecure physical address input exceeding PPS
-+     * does not experience any fault.
-+     */
-+    if (paddress & ~pps_mask) {
-+        if (pspace == ARMSS_NonSecure) {
-+            return true;
-+        }
-+        goto fault_size;
-+    }
-+
-+    /* GPC Priority 3: the base address of GPTBR_EL3 exceeds PPS. */
-+    tableaddr = env->cp15.gptbr_el3 << 12;
-+    if (tableaddr & ~pps_mask) {
-+        goto fault_size;
-+    }
-+
-+    /*
-+     * BADDR is aligned per a function of PPS and L0GPTSZ.
-+     * These bits of GPTBR_EL3 are RES0, but are not a configuration error,
-+     * unlike the RES0 bits of the GPT entries (R_XNKFZ).
-+     */
-+    align = MAX(pps - l0gptsz + 3, 12);
-+    align = MAKE_64BIT_MASK(0, align);
-+    tableaddr &= ~align;
-+
-+    as = arm_addressspace(env_cpu(env), attrs);
-+
-+    /* Level 0 lookup. */
-+    index = extract64(paddress, l0gptsz, pps - l0gptsz);
-+    tableaddr += index * 8;
-+    entry = address_space_ldq_le(as, tableaddr, attrs, &result);
-+    if (result != MEMTX_OK) {
-+        goto fault_eabt;
-+    }
-+
-+    switch (extract32(entry, 0, 4)) {
-+    case 1: /* block descriptor */
-+        if (entry >> 8) {
-+            goto fault_walk; /* RES0 bits not 0 */
-+        }
-+        gpi = extract32(entry, 4, 4);
-+        goto found;
-+    case 3: /* table descriptor */
-+        tableaddr = entry & ~0xf;
-+        align = MAX(l0gptsz - pgs - 1, 12);
-+        align = MAKE_64BIT_MASK(0, align);
-+        if (tableaddr & (~pps_mask | align)) {
-+            goto fault_walk; /* RES0 bits not 0 */
-+        }
-+        break;
-+    default: /* invalid */
-+        goto fault_walk;
-+    }
-+
-+    /* Level 1 lookup */
-+    level = 1;
-+    index = extract64(paddress, pgs + 4, l0gptsz - pgs - 4);
-+    tableaddr += index * 8;
-+    entry = address_space_ldq_le(as, tableaddr, attrs, &result);
-+    if (result != MEMTX_OK) {
-+        goto fault_eabt;
-+    }
-+
-+    switch (extract32(entry, 0, 4)) {
-+    case 1: /* contiguous descriptor */
-+        if (entry >> 10) {
-+            goto fault_walk; /* RES0 bits not 0 */
-+        }
-+        /*
-+         * Because the softmmu tlb only works on units of TARGET_PAGE_SIZE,
-+         * and because we cannot invalidate by pa, and thus will always
-+         * flush entire tlbs, we don't actually care about the range here
-+         * and can simply extract the GPI as the result.
-+         */
-+        if (extract32(entry, 8, 2) == 0) {
-+            goto fault_walk; /* reserved contig */
-+        }
-+        gpi = extract32(entry, 4, 4);
-+        break;
-+    default:
-+        index = extract64(paddress, pgs, 4);
-+        gpi = extract64(entry, index * 4, 4);
-+        break;
-+    }
-+
-+ found:
-+    switch (gpi) {
-+    case 0b0000: /* no access */
-+        break;
-+    case 0b1111: /* all access */
-+        return true;
-+    case 0b1000:
-+    case 0b1001:
-+    case 0b1010:
-+    case 0b1011:
-+        if (pspace == (gpi & 3)) {
-+            return true;
-+        }
-+        break;
-+    default:
-+        goto fault_walk; /* reserved */
-+    }
-+
-+    fi->gpcf = GPCF_Fail;
-+    goto fault_common;
-+ fault_eabt:
-+    fi->gpcf = GPCF_EABT;
-+    goto fault_common;
-+ fault_size:
-+    fi->gpcf = GPCF_AddressSize;
-+    goto fault_common;
-+ fault_walk:
-+    fi->gpcf = GPCF_Walk;
-+ fault_common:
-+    fi->level = level;
-+    fi->paddr = paddress;
-+    fi->paddr_space = pspace;
-+    return false;
-+}
-+
- static bool S2_attrs_are_device(uint64_t hcr, uint8_t attrs)
- {
      /*
-@@ -242,10 +439,10 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-         };
-         GetPhysAddrResult s2 = { };
+      * Intermediate values used during property parsing.
+@@ -2336,6 +2342,19 @@ FIELD(MVFR1, SIMDFMAC, 28, 4)
+ FIELD(MVFR2, SIMDMISC, 0, 4)
+ FIELD(MVFR2, FPMISC, 4, 4)
  
--        if (get_phys_addr_with_struct(env, &s2ptw, addr,
--                                      MMU_DATA_LOAD, &s2, fi)) {
-+        if (get_phys_addr_gpc(env, &s2ptw, addr, MMU_DATA_LOAD, &s2, fi)) {
-             goto fail;
-         }
++FIELD(GPCCR, PPS, 0, 3)
++FIELD(GPCCR, IRGN, 8, 2)
++FIELD(GPCCR, ORGN, 10, 2)
++FIELD(GPCCR, SH, 12, 2)
++FIELD(GPCCR, PGS, 14, 2)
++FIELD(GPCCR, GPC, 16, 1)
++FIELD(GPCCR, GPCP, 17, 1)
++FIELD(GPCCR, L0GPTSZ, 20, 4)
 +
-         ptw->out_phys = s2.f.phys_addr;
-         pte_attrs = s2.cacheattrs.attrs;
-         pte_secure = s2.f.attrs.secure;
-@@ -304,6 +501,9 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
++FIELD(MFAR, FPA, 12, 40)
++FIELD(MFAR, NSE, 62, 1)
++FIELD(MFAR, NS, 63, 1)
++
+ QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
  
-  fail:
-     assert(fi->type != ARMFault_None);
-+    if (fi->type == ARMFault_GPCFOnOutput) {
-+        fi->type = ARMFault_GPCFOnWalk;
-+    }
-     fi->s2addr = addr;
-     fi->stage2 = true;
-     fi->s1ptw = true;
-@@ -2731,7 +2931,7 @@ static bool get_phys_addr_disabled(CPUARMState *env, target_ulong address,
-                                    ARMMMUFaultInfo *fi)
- {
-     uint8_t memattr = 0x00;    /* Device nGnRnE */
--    uint8_t shareability = 0;  /* non-sharable */
-+    uint8_t shareability = 0;  /* non-shareable */
-     int r_el;
- 
-     switch (mmu_idx) {
-@@ -2790,7 +2990,7 @@ static bool get_phys_addr_disabled(CPUARMState *env, target_ulong address,
-             } else {
-                 memattr = 0x44;  /* Normal, NC, No */
-             }
--            shareability = 2; /* outer sharable */
-+            shareability = 2; /* outer shareable */
-         }
-         result->cacheattrs.is_s2_format = false;
-         break;
-@@ -2818,7 +3018,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
-     ARMSecuritySpace ipa_space, s2walk_space;
-     uint64_t hcr;
- 
--    ret = get_phys_addr_with_struct(env, ptw, address, access_type, result, fi);
-+    ret = get_phys_addr_nogpc(env, ptw, address, access_type, result, fi);
- 
-     /* If S1 fails, return early.  */
-     if (ret) {
-@@ -2855,7 +3055,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
-     cacheattrs1 = result->cacheattrs;
-     memset(result, 0, sizeof(*result));
- 
--    ret = get_phys_addr_with_struct(env, ptw, ipa, access_type, result, fi);
-+    ret = get_phys_addr_nogpc(env, ptw, ipa, access_type, result, fi);
-     fi->s2addr = ipa;
- 
-     /* Combine the S1 and S2 perms.  */
-@@ -2915,7 +3115,7 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
-     return false;
- }
- 
--static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
-+static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
-                                       target_ulong address,
-                                       MMUAccessType access_type,
-                                       GetPhysAddrResult *result,
-@@ -3039,6 +3239,23 @@ static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
-     }
- }
- 
-+static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
-+                              target_ulong address,
-+                              MMUAccessType access_type,
-+                              GetPhysAddrResult *result,
-+                              ARMMMUFaultInfo *fi)
+ /* If adding a feature bit which corresponds to a Linux ELF
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index ae8b3f6a48..eff109f83c 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6935,6 +6935,83 @@ static const ARMCPRegInfo sme_reginfo[] = {
+       .access = PL2_RW, .accessfn = access_esm,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+ };
++
++static void tlbi_aa64_paall_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                                  uint64_t value)
 +{
-+    if (get_phys_addr_nogpc(env, ptw, address, access_type, result, fi)) {
-+        return true;
-+    }
-+    if (!granule_protection_check(env, result->f.phys_addr,
-+                                  result->f.attrs.space, fi)) {
-+        fi->type = ARMFault_GPCFOnOutput;
-+        return true;
-+    }
-+    return false;
++    CPUState *cs = env_cpu(env);
++
++    tlb_flush(cs);
 +}
 +
- bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
-                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                                bool is_secure, GetPhysAddrResult *result,
-@@ -3049,8 +3266,7 @@ bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
-         .in_secure = is_secure,
-         .in_space = arm_secure_to_space(is_secure),
-     };
--    return get_phys_addr_with_struct(env, &ptw, address, access_type,
--                                     result, fi);
-+    return get_phys_addr_gpc(env, &ptw, address, access_type, result, fi);
- }
++static void gpccr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                        uint64_t value)
++{
++    /* L0GPTSZ is RO; other bits not mentioned are RES0. */
++    uint64_t rw_mask = R_GPCCR_PPS_MASK | R_GPCCR_IRGN_MASK |
++        R_GPCCR_ORGN_MASK | R_GPCCR_SH_MASK | R_GPCCR_PGS_MASK |
++        R_GPCCR_GPC_MASK | R_GPCCR_GPCP_MASK;
++
++    env->cp15.gpccr_el3 = (value & rw_mask) | (env->cp15.gpccr_el3 & ~rw_mask);
++}
++
++static void gpccr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    env->cp15.gpccr_el3 = FIELD_DP64(0, GPCCR, L0GPTSZ,
++                                     env_archcpu(env)->reset_l0gptsz);
++}
++
++static void tlbi_aa64_paallos_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                                    uint64_t value)
++{
++    CPUState *cs = env_cpu(env);
++
++    tlb_flush_all_cpus_synced(cs);
++}
++
++static const ARMCPRegInfo rme_reginfo[] = {
++    { .name = "GPCCR_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 1, .opc2 = 6,
++      .access = PL3_RW, .writefn = gpccr_write, .resetfn = gpccr_reset,
++      .fieldoffset = offsetof(CPUARMState, cp15.gpccr_el3) },
++    { .name = "GPTBR_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 1, .opc2 = 4,
++      .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.gptbr_el3) },
++    { .name = "MFAR_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 6, .crm = 0, .opc2 = 5,
++      .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.mfar_el3) },
++    { .name = "TLBI_PAALL", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 7, .opc2 = 4,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_paall_write },
++    { .name = "TLBI_PAALLOS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 4,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_paallos_write },
++    /*
++     * QEMU does not have a way to invalidate by physical address, thus
++     * invalidating a range of physical addresses is accomplished by
++     * flushing all tlb entries in the outer sharable domain,
++     * just like PAALLOS.
++     */
++    { .name = "TLBI_RPALOS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 4, .opc2 = 7,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_paallos_write },
++    { .name = "TLBI_RPAOS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 4, .opc2 = 3,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_paallos_write },
++    { .name = "DC_CIPAPA", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 7, .crm = 14, .opc2 = 1,
++      .access = PL3_W, .type = ARM_CP_NOP },
++};
++
++static const ARMCPRegInfo rme_mte_reginfo[] = {
++    { .name = "DC_CIGDPAPA", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 7, .crm = 14, .opc2 = 5,
++      .access = PL3_W, .type = ARM_CP_NOP },
++};
+ #endif /* TARGET_AARCH64 */
  
- bool get_phys_addr(CPUARMState *env, target_ulong address,
-@@ -3120,8 +3336,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
- 
-     ptw.in_space = ss;
-     ptw.in_secure = arm_space_is_secure(ss);
--    return get_phys_addr_with_struct(env, &ptw, address, access_type,
--                                     result, fi);
-+    return get_phys_addr_gpc(env, &ptw, address, access_type, result, fi);
- }
- 
- hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
-@@ -3141,7 +3356,7 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
-     ARMMMUFaultInfo fi = {};
-     bool ret;
- 
--    ret = get_phys_addr_with_struct(env, &ptw, addr, MMU_DATA_LOAD, &res, &fi);
-+    ret = get_phys_addr_gpc(env, &ptw, addr, MMU_DATA_LOAD, &res, &fi);
-     *attrs = res.f.attrs;
- 
-     if (ret) {
+ static void define_pmu_regs(ARMCPU *cpu)
+@@ -9126,6 +9203,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_tlbios, cpu)) {
+         define_arm_cp_regs(cpu, tlbios_reginfo);
+     }
++    if (cpu_isar_feature(aa64_rme, cpu)) {
++        define_arm_cp_regs(cpu, rme_reginfo);
++        if (cpu_isar_feature(aa64_mte, cpu)) {
++            define_arm_cp_regs(cpu, rme_mte_reginfo);
++        }
++    }
+ #ifndef CONFIG_USER_ONLY
+     /* Data Cache clean instructions up to PoP */
+     if (cpu_isar_feature(aa64_dcpop, cpu)) {
 -- 
 2.34.1
 

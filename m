@@ -1,107 +1,105 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1086006ejc;
-        Thu, 23 Feb 2023 12:44:23 -0800 (PST)
-X-Google-Smtp-Source: AK7set8sJxCdGKsB0N4su/8vgqZhggwEG2oyK/CRb8yXMPdVdw/J/p4Fy+8TXoIuuEGB3hq/xj3S
-X-Received: by 2002:ac8:7dca:0:b0:3bf:b0c6:499b with SMTP id c10-20020ac87dca000000b003bfb0c6499bmr6531829qte.48.1677185063540;
-        Thu, 23 Feb 2023 12:44:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677185063; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1086206ejc;
+        Thu, 23 Feb 2023 12:44:42 -0800 (PST)
+X-Google-Smtp-Source: AK7set/iRZw7o6mmEMSi07CndOkkkPMMdJ0qs0duWFmijMdxJBf6arkedMkbUninGY1GeWBQ3OsJ
+X-Received: by 2002:ad4:5ba5:0:b0:56e:f05c:9c47 with SMTP id 5-20020ad45ba5000000b0056ef05c9c47mr18275166qvq.47.1677185082293;
+        Thu, 23 Feb 2023 12:44:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677185082; cv=none;
         d=google.com; s=arc-20160816;
-        b=kzgUt1gSDU06KRkohp2cxh2wEiHjeaTQ3MBX7BVst2qRQrbBT6SFaCk2Y767QHmVxK
-         39mrRLMapiPTlLlUbUEXn+iXZgNJdNaNghGOu7tXFC08HUxpfhrx5oOhONL6E6fqkBTy
-         SybHXc1hrBvacPddZ5T2h5aBIhEO4T2zSWL+KetTZemkHcozUPPrJTW+EVc+UVVa5lRk
-         GWj3aL4t5KL0V8KpjWy4oz691vSs14XZzlTpKMvQsKKcMHb7MRD3/TT+31HCpz7PmpT+
-         tWLr/Nc9Ay4sU9O7vlbYAPXzt8ypdvhmYCC67ijOexp9anMPB7BHshgPUDJIlQ1u+jlM
-         PraA==
+        b=i2rUjjjXBfHM4giCHzxpzRukHvxaNphvim+233xCRzohDpAqcQ8MqC0gcnMYuUxfGV
+         eUPz/1dM3dXtkC//ZVtAK2D5o0y2PXCTkfdmpPvzqvF1YjeqaPzyEQq/vKyeqtykzpNM
+         I7q/wP9svhysCPIAG5HOhcI8tSrzox/fT2SxwlmDWO2S3Z0xRmwrZGFrtKWxtkaDtc5X
+         io/XRb6e5tqIHRJP6rrbpY7MH7gevdC6VUGCFP1273XhPM/6mS+D163OrBbU9oEyxSXI
+         vtCOxbxUH6KccxWwJcySrMKh9yfZhij2t98X1AohTJAZ3z0vbuxJx2QjGc53v5xk5eZZ
+         6/Tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=4VpqcMOXVlrjqv2u2QyFnc/vNdrKfYNKBg4oxbaB+0Q=;
-        b=rJEMjEhoQYpBCpJWGFFUSODbOd/75rJxWTpaKeW3Jq/3T6xVF8FfYvktpTVsSkIHcT
-         S/MfwiUjrv757s+74JgomnhI8pnJH3WFXaLidVhjWGox6Wm2SiSBpnuO15rF+i59FkTn
-         8NifqEvxRxD2n6wDLdQi0/OsJ6PKxozomTml48X5bN7MwhvCM6HWBGbHNTAGK5ksogE3
-         WYWwHLpjnd/vJ7vVBBQQ2zH0fNE5zvj/Ou21KjfVdaFsWz36bpWxLqXEfNUWb9PdZCeR
-         SUkwawRWxwrGtK5WpOHKCf6zs2OOsvTmXIIw1ivQegqIaBuWq1vfrKAILdDICQYBoFDS
-         921w==
+        bh=yTc8B4JFMt2BP2s8OFGRKyLxOfXJWkbz6vP1/iv9tl8=;
+        b=Z6td4ktQvxvbp68BNce3UmMd2keJnYQyw+ZvrpNSedULWqW7wJFSfkD3yC62PrqS5a
+         MyU6w1Y64zh/mTWcpTUC79AZtWuSAMeY1q3AyESpqvdKB3XYZ4lSGNv+SOoc/K8egZ/z
+         +58C402Ew0nVN8ZViE0/1wYjgrTH0T7b6aNsyE6SPu4J18QUuyB68KviH8WGmzzfmcjt
+         Zo0Hi8Zf1rTuYbwSnUnKJmx8vkg1qx7BU3ALabqZLgHjrXWq53I2nyx09fvtfx6l1XCl
+         Te+Vre7Np1RfFXFHM8Vsl8cmHQvqRQG0feVh71we3d2pwtCZ7ubpnQ2AM2Gv0buI8YT7
+         Nz2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="AeF+e/q1";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KtMMPbbn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17-20020a05622a111100b003bfa09edb7csi8166790qty.633.2023.02.23.12.44.23
+        by mx.google.com with ESMTPS id d10-20020a0cf0ca000000b005710976d3d8si2899923qvl.233.2023.02.23.12.44.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 12:44:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Feb 2023 12:44:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="AeF+e/q1";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KtMMPbbn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pVIRn-0002ys-3b; Thu, 23 Feb 2023 15:44:11 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pVIRk-0002wa-QV; Thu, 23 Feb 2023 15:44:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVIRl-0002yF-S4
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 15:44:09 -0500
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+ id 1pVIRj-0002ti-GP
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 15:44:07 -0500
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVIRj-0007UX-W0
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 15:44:09 -0500
-Received: by mail-pl1-x641.google.com with SMTP id z2so14645625plf.12
- for <qemu-arm@nongnu.org>; Thu, 23 Feb 2023 12:44:07 -0800 (PST)
+ id 1pVIRh-0007PT-Rc
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 15:44:07 -0500
+Received: by mail-pl1-x632.google.com with SMTP id e5so15563839plg.8
+ for <qemu-devel@nongnu.org>; Thu, 23 Feb 2023 12:44:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4VpqcMOXVlrjqv2u2QyFnc/vNdrKfYNKBg4oxbaB+0Q=;
- b=AeF+e/q1u6JXtK32KfD1tGeD3rTzWOTE9LnYz4oGELCJM5mBGEI71BjB61EQKWLjTu
- GhaWy0x0Bugy1WnUIv7T7ixAT/3e4biWSymK2/bkfvPn2SbIa0rFcYKOtFv9JJTHUr6j
- 4MkdEkLBrZwLlEnxyV3aWx0WvofrodjuGgb8JnP8snXqf5XM9I5r2gynqw4NIOzOzj56
- T/KZ5oeLtK+0r6hSe9uuZfBGKPsYOp5GQ5W1RXKHSP1aJMOkJgBxcjm71pvgClGFihXp
- opjHUO/9Hi5x5lCDOTqXJuOCGHw0ygw3uBVr7b5/vlnpLwxhoc+eXzsugl2sMwDsn/Sx
- Efkw==
+ bh=yTc8B4JFMt2BP2s8OFGRKyLxOfXJWkbz6vP1/iv9tl8=;
+ b=KtMMPbbnac41HdsjB0iPOxFkQMHlwQmJNk4nxVGxYUcUd0k5e0ViKo4Y6DNICfbS3H
+ sQsmSgF8Lawd5ijlnks0Vuut6+4xtZa1cdW2yqkGu9HJRVN/uXy07qrbZVyA+GEHG9og
+ 5TSc7K6JLFVR/OnTWetN8b+xCqbFwd2QHYhPKTzFSXVh+398ARvZLlDJVNq5QCMTJjOA
+ cn7Yh8ayd62xc57krVEXwgjxXR3SuFRgPE+/bAZrZerMPtruWI8iYNvr/0SbGnTFhH+x
+ frvjzSfyTlk2A9ZelIu5jfC5sMzyJ9P+9Ky9DhnLcj2GCvrG3xLNsu1ohIfe2CX1VuXH
+ 0GKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4VpqcMOXVlrjqv2u2QyFnc/vNdrKfYNKBg4oxbaB+0Q=;
- b=x/mR5oRWb8YO7oWLv0bHMx7tOLKAhWDGK2Kaq8FnY25W6WrTF+sBAOIRrajvNP3bjo
- hctB5FKWchsPYCqqMlI6/uwVBBxq6aEbZsd+5fE4auCD+I2zrsHHcpa85JygmBjNtNmH
- j2YSL6RKaRqRO8rj0SvWIuNc0n3l2xv9Ry/iienmH8Su8xflElsJ19tzHSdeUjpeumQ7
- ta0UUiO5HXlEYO3W9X7TTp6j93mB9iSfcQMmVVhWWqVkhVFzKJvfOw8CKUl8JGN1JsJd
- 4EVTUignvUxVVlg1oX7LLi20YRgani89nY19+gcxY9THk5F5gcUPXLp/IwKujV87GFVd
- xJNQ==
-X-Gm-Message-State: AO0yUKXPfq5aBBeHriSpEbMFmpwA5GHDBrRpDNzsC6iq3Zrz1chI0srO
- yhFr3GpLpTmZN31tTWcjaflUKA==
-X-Received: by 2002:a05:6a20:6530:b0:cc:59a7:65ae with SMTP id
- n48-20020a056a20653000b000cc59a765aemr625929pzg.24.1677185046622; 
- Thu, 23 Feb 2023 12:44:06 -0800 (PST)
+ bh=yTc8B4JFMt2BP2s8OFGRKyLxOfXJWkbz6vP1/iv9tl8=;
+ b=10owN3+nyKau4jS42EKzJsVWXDykoSsRxmMRtL/cBRNqzsYhFmJV4FYRVl84dvnW98
+ 7LbpfFMtAPqASB0wW2WYY1I5Qt6HeW3D3TxjOHHi3GRcb3O6eJXigk/OT8FoqSEZVwyp
+ ll/3se5CuovpM9G3haxA5rwkMeTCv6X+Ff6u3igOQNkVnTNalcEU61bzR8Yv/rDsjfPP
+ 1VlS0EIDwXu7GxC3yyNukL/k2Yvwr4MFPCmLVPmojYxu87fQMCFc9F/2DqVyysKfF6Uy
+ ZzwE1FsVSg3CvK85BW99p3m9lAjM71T3hKsC/YGRmx+g5z8QzYqe8NwSgnLevYG8zwNK
+ +ZbQ==
+X-Gm-Message-State: AO0yUKU5J2SEtHs7euG3aBontdCZhOQRmeftXgZ1+BlPUksmrG575XYZ
+ VbEoqH+Gij1I1l1/HTQ5oe8ueNbrsE9I5U+FQts=
+X-Received: by 2002:a17:90b:3847:b0:233:e426:6501 with SMTP id
+ nl7-20020a17090b384700b00233e4266501mr13056943pjb.19.1677185045020; 
+ Thu, 23 Feb 2023 12:44:05 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- e187-20020a6369c4000000b004b1fef0bf16sm5992850pgc.73.2023.02.23.12.44.05
+ e187-20020a6369c4000000b004b1fef0bf16sm5992850pgc.73.2023.02.23.12.44.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Feb 2023 12:44:06 -0800 (PST)
+ Thu, 23 Feb 2023 12:44:04 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Idan Horowitz <idan.horowitz@gmail.com>
-Subject: [PATCH 12/13] target/arm: Do memory type alignment check when
- translation disabled
-Date: Thu, 23 Feb 2023 10:43:41 -1000
-Message-Id: <20230223204342.1093632-13-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 11/13] accel/tcg: Add TLB_CHECK_ALIGNED
+Date: Thu, 23 Feb 2023 10:43:40 -1000
+Message-Id: <20230223204342.1093632-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230223204342.1093632-1-richard.henderson@linaro.org>
 References: <20230223204342.1093632-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,93 +108,87 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sj0ty9FNe/Om
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /vptpvfKdACC
 
-If translation is disabled, the default memory type is Device,
-which requires alignment checking.  This is more optimially done
-early via the MemOp given to the TCG memory operation.
+This creates a per-page method for checking of alignment.
 
-Reported-by: Idan Horowitz <idan.horowitz@gmail.com>
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1204
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 36 ++++++++++++++++++++++++++++++++++--
- 1 file changed, 34 insertions(+), 2 deletions(-)
+ include/exec/cpu-all.h |  4 +++-
+ accel/tcg/cputlb.c     | 25 ++++++++++++++++++++++++-
+ 2 files changed, 27 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 07d4100365..b1b664e0ad 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -11867,6 +11867,37 @@ static inline bool fgt_svc(CPUARMState *env, int el)
-         FIELD_EX64(env->cp15.fgt_exec[FGTREG_HFGITR], HFGITR_EL2, SVC_EL1);
- }
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index f3b2f4229c..5bb04782ba 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -399,8 +399,10 @@ CPUArchState *cpu_copy(CPUArchState *env);
+ #define TLB_BSWAP            (1 << 0)
+ /* Set if TLB entry contains a watchpoint.  */
+ #define TLB_WATCHPOINT       (1 << 1)
++/* Set if TLB entry requires aligned accesses.  */
++#define TLB_CHECK_ALIGNED    (1 << 2)
  
-+/*
-+ * Return true if memory alignment should be enforced.
-+ */
-+static bool aprofile_require_alignment(CPUARMState *env, int el, uint64_t sctlr)
-+{
-+#ifdef CONFIG_USER_ONLY
-+    return false;
-+#else
-+    /* Check the alignment enable bit. */
-+    if (sctlr & SCTLR_A) {
-+        return true;
-+    }
-+
+-#define TLB_SLOW_FLAGS_MASK  (TLB_BSWAP | TLB_WATCHPOINT)
++#define TLB_SLOW_FLAGS_MASK  (TLB_BSWAP | TLB_WATCHPOINT | TLB_CHECK_ALIGNED)
+ 
+ /* The two sets of flags must not overlap. */
+ QEMU_BUILD_BUG_ON(TLB_FLAGS_MASK & TLB_SLOW_FLAGS_MASK);
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index a90688ac30..c692e71766 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1546,7 +1546,7 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
+     flags |= full->slow_flags[access_type];
+ 
+     /* Fold all "mmio-like" bits into TLB_MMIO.  This is not RAM.  */
+-    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
++    if (flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY | TLB_CHECK_ALIGNED)) {
+         *phost = NULL;
+         return TLB_MMIO;
+     }
+@@ -1885,6 +1885,29 @@ static bool mmu_lookup(CPUArchState *env, target_ulong addr, MemOpIdx oi,
+         tcg_debug_assert((flags & TLB_BSWAP) == 0);
+     }
+ 
 +    /*
-+     * If translation is disabled, then the default memory type is
-+     * Device(-nGnRnE) instead of Normal, which requires that alignment
-+     * be enforced.  Since this affects all ram, it is most efficient
-+     * to handle this during translation.
++     * This alignment check differs from the one above, in that this is
++     * based on the atomicity of the operation. The intended use case is
++     * the ARM memory type field of each PTE, where access to pages with
++     * Device memory type require alignment.
 +     */
-+    if (sctlr & SCTLR_M) {
-+        /* Translation enabled: memory type in PTE via MAIR_ELx. */
-+        return false;
-+    }
-+    if (el < 2 && (arm_hcr_el2_eff(env) & (HCR_DC | HCR_VM))) {
-+        /* Stage 2 translation enabled: memory type in PTE. */
-+        return false;
-+    }
-+    return true;
-+#endif
-+}
++    if (unlikely(flags & TLB_CHECK_ALIGNED)) {
++        MemOp atmax = l->memop & MO_ATMAX_MASK;
++        MemOp atom = l->memop & MO_ATOM_MASK;
++        MemOp size = l->memop & MO_SIZE;
 +
- static CPUARMTBFlags rebuild_hflags_common(CPUARMState *env, int fp_el,
-                                            ARMMMUIdx mmu_idx,
-                                            CPUARMTBFlags flags)
-@@ -11936,8 +11967,9 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
- {
-     CPUARMTBFlags flags = {};
-     int el = arm_current_el(env);
-+    uint64_t sctlr = arm_sctlr(env, el);
- 
--    if (arm_sctlr(env, el) & SCTLR_A) {
-+    if (aprofile_require_alignment(env, el, sctlr)) {
-         DP_TBFLAG_ANY(flags, ALIGN_MEM, 1);
-     }
- 
-@@ -12037,7 +12069,7 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
- 
-     sctlr = regime_sctlr(env, stage1);
- 
--    if (sctlr & SCTLR_A) {
-+    if (aprofile_require_alignment(env, el, sctlr)) {
-         DP_TBFLAG_ANY(flags, ALIGN_MEM, 1);
-     }
++        if (size != MO_8 && atom != MO_ATOM_NONE) {
++            if (atmax == MO_ATMAX_SIZE) {
++                a_bits = size;
++            } else {
++                a_bits = atmax >> MO_ATMAX_SHIFT;
++            }
++            if (addr & ((1 << a_bits) - 1)) {
++                cpu_unaligned_access(env_cpu(env), addr, type, l->mmu_idx, ra);
++            }
++        }
++    }
++
+     return crosspage;
+ }
  
 -- 
 2.34.1

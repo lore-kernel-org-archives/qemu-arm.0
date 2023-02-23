@@ -1,146 +1,360 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp824874ejc;
-        Thu, 23 Feb 2023 07:25:22 -0800 (PST)
-X-Google-Smtp-Source: AK7set+xbvsdZU8bRgMyi666JpDyEeY9SppJ5/XUsuHKLUuery38ToVi1CRtckd4B03IcErLS7z6
-X-Received: by 2002:ac8:5714:0:b0:3b9:bd1f:1de6 with SMTP id 20-20020ac85714000000b003b9bd1f1de6mr21696413qtw.40.1677165922502;
-        Thu, 23 Feb 2023 07:25:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677165922; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp826174ejc;
+        Thu, 23 Feb 2023 07:26:50 -0800 (PST)
+X-Google-Smtp-Source: AK7set8Ixl+hePd3xVXRFcXx+BcOP6NgYiabHflkr5bGzedls+C6xm4U7o89d5OfAj24YEKfPpp1
+X-Received: by 2002:ac8:7dca:0:b0:3bf:b0c6:499b with SMTP id c10-20020ac87dca000000b003bfb0c6499bmr4609494qte.48.1677166009820;
+        Thu, 23 Feb 2023 07:26:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677166009; cv=none;
         d=google.com; s=arc-20160816;
-        b=ArATZNSLYai/QkTuHGpMjjyjXU6Ec3c4khQMsBzuTCUMiPSMZ/EEp6iGqYVdkIdnLq
-         /5UQM8AaukdU7YNHWhnJTMdfFQcxLqFE2/86bLTHqCWs43HZ+OUZFnoNDBgOUjBroUig
-         K+uBR4zAyCSKVab7dGlmfdSCnTausDgvOos1cJokBvf8zXuNwXuHY8bXPF8E9AspqP2V
-         ko1wSTcIlGY6B5leuO4+o8Ocscm4WYtgoQCjM0PyqSgyRFGoZGaUWtRUfvlXZT4IdKdi
-         2MZhh8KEvSuk242wHYz3fbGHg4FuZNZ71T6abJHi7bsCTaD0jQZTHDO2I94+nbFSkxoW
-         U82Q==
+        b=eeYxKRnJyIxDfJq4tkauANvUDlewjGgbEMMHnYQbBsWRmyGKq2ko80UVU/Pp2y02DU
+         mO2AEvXhY6xfdpUbsyKYX1pQAIW1zw55wqCYruLqKVK7ZJt8pmsja7BB5f+oHanIjVy4
+         DhtLbpmXaZR7gDzp+7kLGDqIk3el+O8g68xm/C2DE5/+DyoCuAghllPJsM+I4bgr0eo1
+         DhoLumsV4Ud8gWlQ79V0n23VnGy5r20WAvACAh8gU1/aAxRZ9zKm/CgwlKOx+a9pSooT
+         os7mMpgqsfyhtKdhnjw/WQFawJlPvEXXqxKEJy0/dSuRFuRniHGwqnCro2s9iokvy/a8
+         /4WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=zbAdwnMghSTWFEpuJewSk+X+0/bwV0RXTWu2NdcKuko=;
-        b=tOSXNIJ73MZQ9vCEIZ6PXD2FURTe/eNh1hU9tJLZOeu5Hm3EvjQ8AKWzoYZOtXDqpH
-         CftJzLtLWBVFTEfnZctJZCuxaFpS9K6P1cQ4SDkRQ+ykffSv2g0G79hPKbcA6bJYSuYU
-         4m0eXedlLgZ9xweQYCxXuL1EX6TVgFvLzptowBPmFxPUANq8f6LWap+bnFqicJMpiEr+
-         6eJR2vDNhsSZZ2GBG4cEA90bJt1FUnQyFX44AqWV7pnsFOeu7hVNgUYpUROFxFpsRLjS
-         Pj0FKeXYlRd9XWTi4QS80MKLzibdSMiil3We4RKPaVxzbKfW5/BQk473/nhl5rN7lD2/
-         td+w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=fSfquKNTBKcHa/7F9yDnw6DG4zUDcjKkWKA+FmxIBzs=;
+        b=C0UHa+DNtoLY74EnrDtWqF3c6+mly+2zmIU6YHQyCm3VSDU72U8UxxIbuJVrEDwX9t
+         kblrroHSaZ3s5BDgkUCoacD94ZHOMLx9uIveMHdNeayTR7C4IrW73EZRB9YWEi+5lJ/s
+         4igx3n4LBnh3DphxxbIEavLfMvGFhvMnLVNnmXSJEPUoMOu2/cmdy2t37lrXk1NCt+nQ
+         ky1e/7xbFqtYwMOPHDeSZbtpfIbIz9ZwkaIrcUpp4fZ6UEDfkCQsSnY7V2TOpCv3OtRm
+         xXaUpVuN+EeHkPQExUK79VTPwhhOnDBYkaPdeJIPb6bCkz1jQISar92KC9l+oyaE8ZmQ
+         HZkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="avE4yRU/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Bf/UK5my";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m16-20020a05620a24d000b0073911cf01f9si9389424qkn.705.2023.02.23.07.25.22
+        by mx.google.com with ESMTPS id i15-20020a05620a248f00b00728325a3e28si18287642qkn.516.2023.02.23.07.26.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 07:25:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Feb 2023 07:26:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="avE4yRU/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Bf/UK5my";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pVDT7-0004mB-6f; Thu, 23 Feb 2023 10:25:13 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pVDUG-0007iz-CD; Thu, 23 Feb 2023 10:26:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pVDT5-0004fY-Io
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 10:25:11 -0500
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pVDT3-00020k-7X
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 10:25:11 -0500
-Received: by mail-pg1-x52f.google.com with SMTP id q189so5709149pga.9
- for <qemu-arm@nongnu.org>; Thu, 23 Feb 2023 07:25:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=zbAdwnMghSTWFEpuJewSk+X+0/bwV0RXTWu2NdcKuko=;
- b=avE4yRU/mLWkWihxLB5mBI9Y/V4VhzTnVMzq4dduz8IfsEKDF6esBLGekYg58tCd6m
- 5rSDWWnmXp/zQ8mf5ALlgCoVHdVsPxsGVuoh+DVn3iU8X8tRhCIn3Cd+dFIn2o6FMJKL
- abCcSiLyKS2wnLAzyFtAs/oihHJI4+g7SIilEvCg9We2nazlZm3SuNvj1TsJqRsMSPjq
- /B92D1mH1BgK/cRNPoBi0P9ov59DTXeilEnbGfzaKeuhdo/f4Ow7sZ/oSmYEXEBCFwdv
- OEvZJZA2Q0uCbg6jWHueutQ0iL4MzSqzfzWAP5nm9sRgoBJGceAmHaTdgRmPLKTWmL6y
- gjhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zbAdwnMghSTWFEpuJewSk+X+0/bwV0RXTWu2NdcKuko=;
- b=ot7JahDKuYWhtR/jtAGcrsgu9ye1Lz5umrnT+ulXQ45MzK/yURx8i56cz4b7t6Jiuq
- YaOKD+CJsFHUUim/70PjRMc4V2MIB4RqLCXhnnYTsMa7xsQWPZqNJayC1g6BfrcP/vZF
- I2GKExInPcVvHmqMXIWUXeh5D018zpjgMrqWHv+8N7wMWCxeBf9fCObpE2CoZR0PDWuO
- Ab7kErAKCWXcpv0+VQCg01QdxYTEjopxSTjAGe1d21LtOA3w+ycoZgA5l7wiTkCt3bOD
- seKc7L49SOVPYjIQ8D/ye9eI7x0GDB7d+uyW4dlu/47ZDKxwMBWLWtm5iNAr+/GFAhB5
- pAFA==
-X-Gm-Message-State: AO0yUKW3ltWNDYCs2CrAFPlPG0G+La+Y3E4pMhtifMFnJajGnQ2Rb3Fh
- WHsxGz1Z9zSb6p6b7Km7eBM26HcbQ7nfNpMmt5mSw7yn3lpFog==
-X-Received: by 2002:a62:8387:0:b0:593:974c:cba7 with SMTP id
- h129-20020a628387000000b00593974ccba7mr1871546pfe.5.1677165907200; Thu, 23
- Feb 2023 07:25:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pVDUE-0007iZ-QJ
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 10:26:22 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pVDUC-0002Qr-Sb
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 10:26:22 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677165979;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fSfquKNTBKcHa/7F9yDnw6DG4zUDcjKkWKA+FmxIBzs=;
+ b=Bf/UK5myDg8ei2B5WLganCuUeU8FmKv7RSZcXuRGTUV492Crsw6TouVLDtdIuuoDY16yra
+ so30juoUczHZSiOzLBK64BgII+aVYmFgIuAuM04fkpga/MC3dpWIoWmSzHoKtmp/0cuQf9
+ O2Yyhy/Pb41s/N5JjImAa/ZI1LIsMn0=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-36-aoFly8FnMV62LOY73HtHHA-1; Thu, 23 Feb 2023 10:26:17 -0500
+X-MC-Unique: aoFly8FnMV62LOY73HtHHA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EA2F5101AA5F;
+ Thu, 23 Feb 2023 15:26:15 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 722A8492C14;
+ Thu, 23 Feb 2023 15:26:15 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 3FE7B21E6A1F; Thu, 23 Feb 2023 16:26:14 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-s390x@nongnu.org,
+ qemu-ppc@nongnu.org,  qemu-block@nongnu.org,  Richard Henderson
+ <richard.henderson@linaro.org>,  Helge Deller <deller@gmx.de>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,  Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,  Laurent Vivier <laurent@vivier.eu>,  Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  =?utf-8?Q?C=C3=A9dric?= Le
+ Goater
+ <clg@kaod.org>,  Daniel Henrique Barboza <danielhb413@gmail.com>,  David
+ Gibson <david@gibson.dropbear.id.au>,  Greg Kurz <groug@kaod.org>,  Thomas
+ Huth <thuth@redhat.com>,  David Hildenbrand <david@redhat.com>,  Ilya
+ Leoshkevich <iii@linux.ibm.com>,  Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,  Eric Farman
+ <farman@linux.ibm.com>
+Subject: Re: [PATCH 1/5] hw/nmi: Have nmi_monitor_handler() return a boolean
+ indicating error
+References: <20230216122524.67212-1-philmd@linaro.org>
+ <20230216122524.67212-2-philmd@linaro.org>
+Date: Thu, 23 Feb 2023 16:26:14 +0100
+In-Reply-To: <20230216122524.67212-2-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 16 Feb 2023 13:25:20
+ +0100")
+Message-ID: <87a614s8rt.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20230216030854.1212208-1-richard.henderson@linaro.org>
- <20230216030854.1212208-5-richard.henderson@linaro.org>
-In-Reply-To: <20230216030854.1212208-5-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 23 Feb 2023 15:24:56 +0000
-Message-ID: <CAFEAcA9RGYhU3wryevfPQcn1xKSQk6MVaCgfhGpPUXq=L5=_LA@mail.gmail.com>
-Subject: Re: [PATCH v1 04/19] target/arm: Use tcg_gen_qemu_st_i128 for STZG,
- STZ2G
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x52f.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rkRnb9rQLRNz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: W335oStiMW2m
 
-On Thu, 16 Feb 2023 at 03:10, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+
+> Following the example documented since commit e3fe3988d7 ("error:
+> Document Error API usage rules"), have the nmi_monitor_handler
+> return a boolean indicating whether an error is set or not and
+> convert its implementations.
 >
-> This fixes a bug in that these two insns should have been using atomic
-> 16-byte stores, since MTE is ARMv8.5 and LSE2 is mandatory from ARMv8.4.
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/core/nmi.c              | 3 +--
+>  hw/hppa/machine.c          | 3 ++-
+>  hw/i386/x86.c              | 3 ++-
+>  hw/intc/m68k_irqc.c        | 4 +++-
+>  hw/m68k/q800.c             | 4 +++-
+>  hw/misc/macio/gpio.c       | 4 +++-
+>  hw/ppc/pnv.c               | 3 ++-
+>  hw/ppc/spapr.c             | 3 ++-
+>  hw/s390x/s390-virtio-ccw.c | 4 +++-
+>  include/hw/nmi.h           | 3 ++-
+>  10 files changed, 23 insertions(+), 11 deletions(-)
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> diff --git a/hw/core/nmi.c b/hw/core/nmi.c
+> index 481c4b3c7e..76cb3ba3b0 100644
+> --- a/hw/core/nmi.c
+> +++ b/hw/core/nmi.c
+> @@ -43,8 +43,7 @@ static int do_nmi(Object *o, void *opaque)
+>          NMIClass *nc =3D NMI_GET_CLASS(n);
+>=20=20
+>          ns->handled =3D true;
+> -        nc->nmi_monitor_handler(n, ns->cpu_index, &ns->err);
+> -        if (ns->err) {
+> +        if (!nc->nmi_monitor_handler(n, ns->cpu_index, &ns->err)) {
+>              return -1;
+>          }
+>      }
+> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+> index 7ac68c943f..da7c36c554 100644
+> --- a/hw/hppa/machine.c
+> +++ b/hw/hppa/machine.c
+> @@ -437,13 +437,14 @@ static void hppa_machine_reset(MachineState *ms, Sh=
+utdownCause reason)
+>      cpu[0]->env.gr[19] =3D FW_CFG_IO_BASE;
+>  }
+>=20=20
+> -static void hppa_nmi(NMIState *n, int cpu_index, Error **errp)
+> +static bool hppa_nmi(NMIState *n, int cpu_index, Error **errp)
+>  {
+>      CPUState *cs;
+>=20=20
+>      CPU_FOREACH(cs) {
+>          cpu_interrupt(cs, CPU_INTERRUPT_NMI);
+>      }
+> +    return true;
+>  }
+>=20=20
+>  static void hppa_machine_init_class_init(ObjectClass *oc, void *data)
+> diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+> index eaff4227bd..8bd0691705 100644
+> --- a/hw/i386/x86.c
+> +++ b/hw/i386/x86.c
+> @@ -501,7 +501,7 @@ const CPUArchIdList *x86_possible_cpu_arch_ids(Machin=
+eState *ms)
+>      return ms->possible_cpus;
+>  }
+>=20=20
+> -static void x86_nmi(NMIState *n, int cpu_index, Error **errp)
+> +static bool x86_nmi(NMIState *n, int cpu_index, Error **errp)
+>  {
+>      /* cpu index isn't used */
+>      CPUState *cs;
+> @@ -515,6 +515,7 @@ static void x86_nmi(NMIState *n, int cpu_index, Error=
+ **errp)
+>              apic_deliver_nmi(cpu->apic_state);
+>          }
+>      }
+> +    return true;
+>  }
+>=20=20
+>  static long get_file_size(FILE *f)
+> diff --git a/hw/intc/m68k_irqc.c b/hw/intc/m68k_irqc.c
+> index 0c515e4ecb..e05083e756 100644
+> --- a/hw/intc/m68k_irqc.c
+> +++ b/hw/intc/m68k_irqc.c
+> @@ -70,9 +70,11 @@ static void m68k_irqc_instance_init(Object *obj)
+>      qdev_init_gpio_in(DEVICE(obj), m68k_set_irq, M68K_IRQC_LEVEL_NUM);
+>  }
+>=20=20
+> -static void m68k_nmi(NMIState *n, int cpu_index, Error **errp)
+> +static bool m68k_nmi(NMIState *n, int cpu_index, Error **errp)
+>  {
+>      m68k_set_irq(n, M68K_IRQC_LEVEL_7, 1);
+> +
+> +    return true;
+>  }
+>=20=20
+>  static const VMStateDescription vmstate_m68k_irqc =3D {
+> diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+> index 9d52ca6613..8631a226cd 100644
+> --- a/hw/m68k/q800.c
+> +++ b/hw/m68k/q800.c
+> @@ -227,13 +227,15 @@ static void glue_auxmode_set_irq(void *opaque, int =
+irq, int level)
+>      s->auxmode =3D level;
+>  }
+>=20=20
+> -static void glue_nmi(NMIState *n, int cpu_index, Error **errp)
+> +static bool glue_nmi(NMIState *n, int cpu_index, Error **errp)
+>  {
+>      GLUEState *s =3D GLUE(n);
+>=20=20
+>      /* Hold NMI active for 100ms */
+>      GLUE_set_irq(s, GLUE_IRQ_IN_NMI, 1);
+>      timer_mod(s->nmi_release, qemu_clock_get_ms(QEMU_CLOCK_VIRTUAL) + 10=
+0);
+> +
+> +    return true;
+>  }
+>=20=20
+>  static void glue_nmi_release(void *opaque)
+> diff --git a/hw/misc/macio/gpio.c b/hw/misc/macio/gpio.c
+> index c8ac5633b2..0a7214421c 100644
+> --- a/hw/misc/macio/gpio.c
+> +++ b/hw/misc/macio/gpio.c
+> @@ -182,10 +182,12 @@ static void macio_gpio_reset(DeviceState *dev)
+>      macio_set_gpio(s, 1, true);
+>  }
+>=20=20
+> -static void macio_gpio_nmi(NMIState *n, int cpu_index, Error **errp)
+> +static bool macio_gpio_nmi(NMIState *n, int cpu_index, Error **errp)
+>  {
+>      macio_set_gpio(MACIO_GPIO(n), 9, true);
+>      macio_set_gpio(MACIO_GPIO(n), 9, false);
+> +
+> +    return true;
+>  }
+>=20=20
+>  static void macio_gpio_class_init(ObjectClass *oc, void *data)
+> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+> index 44b1fbbc93..38e69f3b39 100644
+> --- a/hw/ppc/pnv.c
+> +++ b/hw/ppc/pnv.c
+> @@ -2309,13 +2309,14 @@ static void pnv_cpu_do_nmi_on_cpu(CPUState *cs, r=
+un_on_cpu_data arg)
+>      }
+>  }
+>=20=20
+> -static void pnv_nmi(NMIState *n, int cpu_index, Error **errp)
+> +static bool pnv_nmi(NMIState *n, int cpu_index, Error **errp)
+>  {
+>      CPUState *cs;
+>=20=20
+>      CPU_FOREACH(cs) {
+>          async_run_on_cpu(cs, pnv_cpu_do_nmi_on_cpu, RUN_ON_CPU_NULL);
+>      }
+> +    return true;
+>  }
+>=20=20
+>  static void pnv_machine_class_init(ObjectClass *oc, void *data)
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 4921198b9d..d298068169 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -3464,13 +3464,14 @@ void spapr_do_system_reset_on_cpu(CPUState *cs, r=
+un_on_cpu_data arg)
+>      }
+>  }
+>=20=20
+> -static void spapr_nmi(NMIState *n, int cpu_index, Error **errp)
+> +static bool spapr_nmi(NMIState *n, int cpu_index, Error **errp)
+>  {
+>      CPUState *cs;
+>=20=20
+>      CPU_FOREACH(cs) {
+>          async_run_on_cpu(cs, spapr_do_system_reset_on_cpu, RUN_ON_CPU_NU=
+LL);
+>      }
+> +    return true;
+>  }
+>=20=20
+>  int spapr_lmb_dt_populate(SpaprDrc *drc, SpaprMachineState *spapr,
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index f22f61b8b6..af7e6c632a 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -570,11 +570,13 @@ static HotplugHandler *s390_get_hotplug_handler(Mac=
+hineState *machine,
+>      return NULL;
+>  }
+>=20=20
+> -static void s390_nmi(NMIState *n, int cpu_index, Error **errp)
+> +static bool s390_nmi(NMIState *n, int cpu_index, Error **errp)
+>  {
+>      CPUState *cs =3D qemu_get_cpu(cpu_index);
+>=20=20
+>      s390_cpu_restart(S390_CPU(cs));
+> +
+> +    return true;
+>  }
+>=20=20
+>  static ram_addr_t s390_fixup_ram_size(ram_addr_t sz)
+> diff --git a/include/hw/nmi.h b/include/hw/nmi.h
+> index fff41bebc6..3e827a254a 100644
+> --- a/include/hw/nmi.h
+> +++ b/include/hw/nmi.h
+> @@ -37,7 +37,8 @@ typedef struct NMIState NMIState;
+>  struct NMIClass {
+>      InterfaceClass parent_class;
+>=20=20
+> -    void (*nmi_monitor_handler)(NMIState *n, int cpu_index, Error **errp=
+);
+> +    /** Returns: %true on success, %false on error. */
+> +    bool (*nmi_monitor_handler)(NMIState *n, int cpu_index, Error **errp=
+);
+>  };
+>=20=20
+>  void nmi_monitor_handle(int cpu_index, Error **errp);
 
-> diff --git a/tests/tcg/aarch64/mte-7.c b/tests/tcg/aarch64/mte-7.c
-> index a981de62d4..04974f9ebb 100644
-> --- a/tests/tcg/aarch64/mte-7.c
-> +++ b/tests/tcg/aarch64/mte-7.c
-> @@ -19,8 +19,7 @@ int main(int ac, char **av)
->      p = (void *)((unsigned long)p | (1ul << 56));
->
->      /* Store tag in sequential granules. */
-> -    asm("stg %0, [%0]" : : "r"(p + 0x0ff0));
-> -    asm("stg %0, [%0]" : : "r"(p + 0x1000));
-> +    asm("stz2g %0, [%0]" : : "r"(p + 0x0ff0));
+None of the handlers can actually fail.  Evidence: you add only return
+true, never return false.  Correct (I checked).
 
-Why did we need to change the test program ?
+I think I'd make it official and drop the handler's Error ** parameter
+instead of changing its return type.
 
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+You decide.
 
-thanks
--- PMM
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+

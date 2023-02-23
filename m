@@ -1,107 +1,104 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp840457ejc;
-        Thu, 23 Feb 2023 07:42:30 -0800 (PST)
-X-Google-Smtp-Source: AK7set/ALfiT4WFeG5r+hTGhpTodo4wet9eEBqF5bVyju9GBe7mqkNrKrpxkf17m6e9EFN28oKPE
-X-Received: by 2002:a05:622a:1713:b0:3bf:a15e:a898 with SMTP id h19-20020a05622a171300b003bfa15ea898mr17369824qtk.18.1677166950645;
-        Thu, 23 Feb 2023 07:42:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677166950; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp841836ejc;
+        Thu, 23 Feb 2023 07:44:05 -0800 (PST)
+X-Google-Smtp-Source: AK7set+19lbpIYI8cIF9tsXHeFo7Erc6ajIZGkJ6pSMmdq45goWzEDV2/x9lwiTj7K1gQYKWObX6
+X-Received: by 2002:a05:622a:3cc:b0:3bd:140c:91ed with SMTP id k12-20020a05622a03cc00b003bd140c91edmr20978668qtx.52.1677167045396;
+        Thu, 23 Feb 2023 07:44:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677167045; cv=none;
         d=google.com; s=arc-20160816;
-        b=CtEPiZDNAEsTi2uL4Mg5wFxR0Awgtw0bbVgJdWwTQIw8B6dZzmI1Tr8v7oVNbUukb9
-         6iwzObM8Ejf4BQO1MBWCjDRGJPdjNIp5OkDKs+bSkazkyEhv5adGc5Aywx/o0YBtoTdR
-         QQIfTHJTqPNUV8N9YiEbw+wtTG5ynpL3YeUo41uJZE6igau+q6kW+kj2I6KaMKIb4TG2
-         05B515E0P12oETI2EvyELsZ11enkOaPBJofDVvsOCh4H+FRKFUxow0Mh/LnhE51DhiNe
-         7jC69cSigqA8Ib2/0h58v/GCcWmnJWfREwdImG6Wt4OVwMkqc5zIhBmpw+uKW6dg4ZLl
-         G7iA==
+        b=sqtyrluJATir6QldQsDzl0WCRP0VYxjshO7xY+QEcNe6zOTWsV8SfxhEQmkEaCBpRe
+         NdnU5Bqy1mRBeCevkk7NiFexIKkEvyOh3yEhT2NsHuzigFWQFIbtxNg0n0n481INwrEs
+         lXzvkGolTd+Vlp4GxWkICTB9Pf/0BH0Bsr8VmpVYY/lDtHJZmUIyDABJ1c31EVm26tsZ
+         wV11q2WmRfKr4nikEP+8EtGLT84xQJxi3v6mbUdggjqTC8tDh2w1T/1z1fdUSEG3jKBX
+         6txjtr4ho8OxXhvZEFzXrcMZpZqsWnGbgZV9I54NwRLCF/4EuKRRnV61tRlKBm6Q+JzJ
+         OaCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=Lryqtoi9kh4TElrlW23sYG/Tq/mjqxDg7fz7Tt0q534=;
-        b=0sMJyabZ7BnyzPrlEJH0PEZHPxSNqk7H6ACDVcmXu07n1g9ozsamgMmgKc+8SFSjBt
-         G8kQS/KzrZvzWOBgqoGGJtVBm8kACFj9NpFhLJyApS9xxHhEzsmX4bIgGllrXK6kKYY+
-         szjK4V49oZIFDG57rzKKCZFFAcAwjxwg4guAsEPGdiTiBNSOIA2l17B5lcoScUS2rCc6
-         L+WybNmyMDJ9IXl8o01iLFzB8jY8Jln2iK8qBXC9nwcRhpkEzUSJrOrYbfB01mgMF0R6
-         ybhiy+tu+lSmI02jNCtx9cV4g3zKYdHl4vM6CDwRI7vxNxaG0y+vEqhzkVRwLRVU5aIZ
-         le+A==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=vN9wbXaS5AKRfx7O49+9tm8CSWhH7WZBdTXsOBDoOLA=;
+        b=vrRzsUt/gkdZGuArF5wax6ZZLEDAFtMBRWRWgwEZJYu48hyeKZKHYnYYofrzBiEh02
+         hebsoLr0Xvcrv29f/+diONaDzOaBDko4Rcgo4ui42tsUrLpAV52fTm7GT38Zmv9u8bFv
+         dUWs+MMCAVzUcDbT75J7FfYFEI0NBmexHDtbkj3vDS51uRQoadWvOzCvtAm3XprY48ku
+         0yn9Kk/pW9WHscHqHPflj0VgikdzbqMTBQ7dZTnJ6s6wrQKSNPadchLjETFO27s0GYwH
+         Eh38uki2jz/AHwS0cev07vFzlexgChspYS4Dwr6pxSRodK5KYgN+EWgduzMyrEQIdILp
+         j6Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="JMa/t7og";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MfuOR1TH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11-20020a05622a144b00b003b96ffcbb43si6524928qtx.673.2023.02.23.07.42.30
+        by mx.google.com with ESMTPS id l17-20020a05622a051100b003ba260b32efsi5188754qtx.786.2023.02.23.07.44.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 07:42:30 -0800 (PST)
+        Thu, 23 Feb 2023 07:44:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="JMa/t7og";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MfuOR1TH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pVDjh-0003tu-0c; Thu, 23 Feb 2023 10:42:21 -0500
+	id 1pVDlH-0006LS-3p; Thu, 23 Feb 2023 10:43:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pVDjf-0003sa-JP
- for qemu-devel@nongnu.org; Thu, 23 Feb 2023 10:42:19 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pVDje-0007Y0-3P
- for qemu-devel@nongnu.org; Thu, 23 Feb 2023 10:42:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677166936;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Lryqtoi9kh4TElrlW23sYG/Tq/mjqxDg7fz7Tt0q534=;
- b=JMa/t7ogynNXx8OiFHzhgz2qLTqBQnNElM3m+c2Q6XBp/NM/+YxBVbcXBvtlq15apiLKZl
- 1UHoPywUWmIBw0f8v3dB3LnsKKFXX8bwiyRrtkwQ+BUGPWMVV7jft5XTLxYZ/YytEf8pua
- wpz+J1agJ/YTRN1iVeQIkhOKwzAmeRE=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-511-XT2M0A4CMHiqdkgAwv2cAQ-1; Thu, 23 Feb 2023 10:42:13 -0500
-X-MC-Unique: XT2M0A4CMHiqdkgAwv2cAQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 14E4F1C05EA2;
- Thu, 23 Feb 2023 15:42:13 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E5683C15BAD;
- Thu, 23 Feb 2023 15:42:12 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id B919121E6A1F; Thu, 23 Feb 2023 16:42:11 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-s390x@nongnu.org,
- qemu-ppc@nongnu.org,  qemu-block@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le
- Goater <clg@kaod.org>
-Subject: Re: [RFC PATCH 5/5] hw/ppc/pnv_bmc: Simplify pnv_bmc_find()
-References: <20230216122524.67212-1-philmd@linaro.org>
- <20230216122524.67212-6-philmd@linaro.org>
-Date: Thu, 23 Feb 2023 16:42:11 +0100
-In-Reply-To: <20230216122524.67212-6-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 16 Feb 2023 13:25:24
- +0100")
-Message-ID: <871qmgs818.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pVDlF-0006Kk-3C
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 10:43:57 -0500
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pVDlD-0007yN-Nf
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 10:43:56 -0500
+Received: by mail-pl1-x630.google.com with SMTP id i3so2937479plg.6
+ for <qemu-devel@nongnu.org>; Thu, 23 Feb 2023 07:43:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=vN9wbXaS5AKRfx7O49+9tm8CSWhH7WZBdTXsOBDoOLA=;
+ b=MfuOR1THyLa7p+KtzCci5uYxkVrmJCkXhYY9OI7GchxhxTtw7Y42+686NiYh6EzqBW
+ 1uTlJ2KM7/EE1CHVBgsvLFKKf2JkerH3J20L+5LqWeSPmFUlQFQS91PCYKHw0V/fBRmn
+ l/dbrhFupNiCaxzHaBWIVcEYx40ogmVihAN3yXYepUyN/itkbGy2Fc+WKFWIprLU0y4a
+ RNriV6Qe+9kABM8I4CBhO3pTJHEsohfcO1jogCrfh7BJFf/Lt02j/3qJ8zuaFQiwMOpo
+ AEfi1Q4JpNBkfVpCTGeFJsCmAHLRwzWA7bH5+AeGji78zlgClZv0PZPfYtFep3eyykUy
+ QiKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vN9wbXaS5AKRfx7O49+9tm8CSWhH7WZBdTXsOBDoOLA=;
+ b=v/V2otXMObL+pjRa2tSkFnMIxtn1oigWO5noVc9JUVtP5ZXRvlZ1sKMKFWTa0UUZEQ
+ e/PM7rcoYRxx6pBoIPigfQmNLhcDuvo7WyBSk2qdkRnICFWMyThmCBmwJ/OeY9RUOfG1
+ f2isaasgGtKwoissGN67lOdfP6sRwLW4n0NzJZvi5s4DaNdS0/G/I6W9clpOeZYsc3az
+ VaCdaq0gNw5m6h12eAREEIxn4DJ51FGn0cs6p0jzrINZkBQ2ZJaaxnGzV2vgSs1q1Tiv
+ CSww2BT2xOHqtN7rtIIzLNIEcks3sumRMYZR51dLrquDBZKam4hb9+CwbpJ61lH8VUcP
+ 18sA==
+X-Gm-Message-State: AO0yUKVNOaeWflBcX+JpLoLK9TWHXwiUhzVB9DbeQc2qE/7zacsGTInh
+ mZxFGDWqiXu5CpdN7ybFGSyLCqsM0Txu2IZlaFmSuw==
+X-Received: by 2002:a17:90b:4d04:b0:237:50b6:984c with SMTP id
+ mw4-20020a17090b4d0400b0023750b6984cmr1222650pjb.137.1677167034220; Thu, 23
+ Feb 2023 07:43:54 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20230216030854.1212208-1-richard.henderson@linaro.org>
+ <20230216030854.1212208-8-richard.henderson@linaro.org>
+In-Reply-To: <20230216030854.1212208-8-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Feb 2023 15:43:43 +0000
+Message-ID: <CAFEAcA8LWyeGB7FyKEXO=Ww7VZOxvEUbQtGCF=dFz4_iAkjp=A@mail.gmail.com>
+Subject: Re: [PATCH v1 07/19] target/arm: Add feature test for FEAT_LSE2
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -117,75 +114,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: W7p63OeDvUbd
+X-TUID: I8zFzaDotAKa
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
-
-> ForeachArgs::name is only used once as TYPE_IPMI_BMC.
-> Since the penultimate commit, object_child_foreach_recursive()'s
-> handler takes an Error* argument and return a boolean.
-> We can directly pass ForeachArgs::obj as context, removing the
-> ForeachArgs structure.
+On Thu, 16 Feb 2023 at 03:10, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> RFC: please double-check...
+>  target/arm/cpu.h | 5 +++++
+>  1 file changed, 5 insertions(+)
 >
->  hw/ppc/pnv_bmc.c | 25 +++++++++----------------
->  1 file changed, 9 insertions(+), 16 deletions(-)
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 7bc97fece9..2108caf753 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -4049,6 +4049,11 @@ static inline bool isar_feature_aa64_st(const ARMISARegisters *id)
+>      return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, ST) != 0;
+>  }
 >
-> diff --git a/hw/ppc/pnv_bmc.c b/hw/ppc/pnv_bmc.c
-> index 05acc88a55..566284469f 100644
-> --- a/hw/ppc/pnv_bmc.c
-> +++ b/hw/ppc/pnv_bmc.c
-> @@ -278,36 +278,29 @@ IPMIBmc *pnv_bmc_create(PnvPnor *pnor)
->      return IPMI_BMC(obj);
->  }
->=20=20
-> -typedef struct ForeachArgs {
-> -    const char *name;
-> -    Object *obj;
-> -} ForeachArgs;
-> -
->  static bool bmc_find(Object *child, void *opaque, Error **errp)
->  {
-> -    ForeachArgs *args =3D opaque;
-> +    Object **obj =3D opaque;
->=20=20
-> -    if (object_dynamic_cast(child, args->name)) {
-> -        if (args->obj) {
-> -            return false;
-> +    if (object_dynamic_cast(child, TYPE_IPMI_BMC)) {
-> +        if (*obj) {
-> +            return true;
+> +static inline bool isar_feature_aa64_lse2(const ARMISARegisters *id)
+> +{
+> +    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, AT) != 0;
+> +}
+> +
 
-Looks like you're changing return false to return true.  Intendional?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
->          }
-> -        args->obj =3D child;
-> +        *obj =3D child;
->      }
->      return true;
->  }
->=20=20
->  IPMIBmc *pnv_bmc_find(Error **errp)
->  {
-> -    ForeachArgs args =3D { TYPE_IPMI_BMC, NULL };
-> -    int ret;
-> +    Object *obj =3D NULL;
->=20=20
-> -    ret =3D object_child_foreach_recursive(object_get_root(), bmc_find,
-> -                                         &args, NULL);
-> -    if (ret) {
-> +    if (!object_child_foreach_recursive(object_get_root(), bmc_find, &ob=
-j,
-> +                                        NULL)) {
->          error_setg(errp, "machine should have only one BMC device. "
->                     "Use '-nodefaults'");
->          return NULL;
->      }
->=20=20
-> -    return args.obj ? IPMI_BMC(args.obj) : NULL;
-> +    return IPMI_BMC(obj);
->  }
-
+thanks
+-- PMM

@@ -1,135 +1,120 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp743044ejc;
-        Thu, 23 Feb 2023 05:49:37 -0800 (PST)
-X-Google-Smtp-Source: AK7set+35yC+a/NBYCZsu0vZpBu/vF4HdHk2ehWzdodLv6mWXKS/h4Hpwf6LhstvNUwpFn0Lyh9a
-X-Received: by 2002:a05:6214:c22:b0:56e:a06f:d1d2 with SMTP id a2-20020a0562140c2200b0056ea06fd1d2mr21161889qvd.30.1677160177304;
-        Thu, 23 Feb 2023 05:49:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677160177; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp753509ejc;
+        Thu, 23 Feb 2023 06:02:21 -0800 (PST)
+X-Received: by 2002:a17:902:c403:b0:19a:880b:bfd1 with SMTP id k3-20020a170902c40300b0019a880bbfd1mr14224319plk.40.1677160941590;
+        Thu, 23 Feb 2023 06:02:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677160941; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y4bzPY+xLP0gTYeaolMW1N33RSBYHZJCS0HAHeHiI0sbzqBCJjYGsaszieQJajPpdf
-         IA+xEeDzvwmOy9dALuU1vyHRZhfXPIxlShpsLh3PhGwbsJUVbF97zB34AUGIFr3rL0DF
-         nbH2+vwvjRyh8ofObMS7JC5JjaYabzu6LW2ipzZeXeXrJk2/kmBg33AnBksaNyH1bNEd
-         Vt6aoKag5WLHg/J7zniNZIZYj9OOT++37SkuxJzg0K0yGfUvyUlduTAdlWyJiRF6kPqC
-         GRoGYKXNa8B2D95FdKptVkPXw+0/NwwgD4/NHJheRmJOAbR/aVscfzop2U/aqhiVXP9X
-         DJng==
+        b=ZCUjeiV5aLitU5h9KYhh+O2fz5JD2G4kDKkS5XAc5rxJB+KVlsODJDAXkNnRMSnou0
+         /49rJQdNDJBHgrr+3TaJIklFvBCWc47EQ4DTQ9bu0LA7U70ehjLax/AMXqKig9kwBvKR
+         7dOJXWsO1eF8BonCxgbeghoFpxSOnJzMRukzUzes+J4KxVM4dMg6Zx9584yNG4EJ1lGe
+         7XRsaz1OPC1CON5apn1aW0TIwlYxa6HzSlFHkvlmyJXqUJC7p5sALsNe8jbzyVUcKErx
+         JTG0LwyilFDCz7gxgcNj2ZB2EOuhKm0gtAR1sPoBILF7IRsUeAtonVGet5z4JvzntIas
+         ZWnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=RiCVBuS//4Buc56xfpkG1kf7HgIdIOY+ZPGt22R6RW4=;
-        b=WI1liX9/MazSion5oqzyga6JUBwR3wVHbEStsJJ273GEZt20O3ZCwilKosgbvLBg6A
-         Eacx+rCl6/kUN+NuFIwSh55tkMp5jAvf9xB3/TFFWI7N77RwM3EB2SNT3d9S8IDXy6nD
-         g/mT56s4DyOOTMGRheVkdq2sq7YAn6A+w1ZY/274TCfN+88dXGXa/IctFp1XMOWF+sUn
-         WJvIWi3926kw8EadQziIN67x89K1Wz/wnkhsMFnM3y0iSb/uLviL26aDYbG2wWsKNYB0
-         jb4KPbfhgyI5fWAsE9mCfEz3XeO9unl1AHiy80fOs+GMs/exYTWmvGKCcfO0nsVXIJoH
-         sEXg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=4rLBpaBId70U1KNxGgyttP7w8pr2e6fzXdrSWAqUoas=;
+        b=eZ0hD3az+GNoX5hSHaGh+XHJ6Z5q9jV8z+bQik5g9ldSbD54vkD6oZgw+8PTxMA9Wy
+         U9BmZDo0CQhIaxve92J10uuxGTOUQV/DkukpDjANc4AY00QLZFVwOG3bzaJ8vWvYv+42
+         OVTCWWByhccK5AoDJmtFccaTUQImK2wLptmn3/+0cGGgKtMAl8ffB18CAjuYGkcVnYx7
+         m8dCYd5RojtLXaWWdjcH6Fm8zHappeTJsRyq1EXTsEO71Hp13Z+xuZT4lCVrkKarSKiO
+         wmO8FI9EwdRJ9TasnRE/GSHmDGZHU0z0krAzocN0Mo/LuWBoLh/0mZN5uyEM6E/PjW4J
+         iyKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gv+bRiLc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i15-20020a05620a404f00b0071ab9598fd0si4770592qko.330.2023.02.23.05.49.37
+       dkim=pass header.i=@linaro.org header.s=google header.b=aTzuvWwy;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p5-20020a17090ad30500b00228e5d8a8fdsor2960661pju.15.2023.02.23.06.02.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 05:49:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 23 Feb 2023 06:02:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gv+bRiLc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pVByV-0002Qe-7A; Thu, 23 Feb 2023 08:49:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pVByS-0002Pw-FT
- for qemu-devel@nongnu.org; Thu, 23 Feb 2023 08:49:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pVByQ-0001m5-Sn
- for qemu-devel@nongnu.org; Thu, 23 Feb 2023 08:49:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677160166;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RiCVBuS//4Buc56xfpkG1kf7HgIdIOY+ZPGt22R6RW4=;
- b=gv+bRiLceFD+wgiFT/Dq/yl8+THOTREe0mcIhVjqUkuseqCm8COFn0cSYR4pObi7MHCoB+
- R7tjWW6prnMVmxXMHKy5vInd06xyfcOxxEgaGOE+njHBk4vH313mUua+BpilB+tG5icmUU
- U8z5aB0SvXU4XkjBxB9PKO/d5WY1w5s=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-564-eXK77pqXN62O7fiYWC1GzA-1; Thu, 23 Feb 2023 08:49:22 -0500
-X-MC-Unique: eXK77pqXN62O7fiYWC1GzA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 58DCD1C05AEF;
- Thu, 23 Feb 2023 13:49:22 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 350A42026D38;
- Thu, 23 Feb 2023 13:49:22 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 19D8D21E6A1F; Thu, 23 Feb 2023 14:49:20 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-ppc@nongnu.org,  David Gibson
- <david@gibson.dropbear.id.au>,  Greg Kurz <groug@kaod.org>,
- qemu-arm@nongnu.org,  Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- =?utf-8?Q?C=C3=A9dric?=
- Le Goater <clg@kaod.org>,  Peter Maydell <peter.maydell@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,  Song Gao
- <gaosong@loongson.cn>
-Subject: Re: [PATCH v3 0/4] target: Restrict 'qapi-commands-machine.h' to
- system emulation
-References: <20230223124340.95367-1-philmd@linaro.org>
-Date: Thu, 23 Feb 2023 14:49:20 +0100
-In-Reply-To: <20230223124340.95367-1-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 23 Feb 2023 13:43:36
- +0100")
-Message-ID: <87sfew331b.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+       dkim=pass header.i=@linaro.org header.s=google header.b=aTzuvWwy;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=4rLBpaBId70U1KNxGgyttP7w8pr2e6fzXdrSWAqUoas=;
+        b=aTzuvWwysxT3PqnoUP2CJMXTzHSYNJgBcmzG0JzeweTXHR/nXC7+fTy63vrLzRymUd
+         IX9NmF8dY7yipHomWfcH8zAss/K8x2uyqtmiZahk6NVgwuzWaw0EyFXwDYEh7gHMXIAk
+         E6gAJu7Nhex3zRnEpGTqLUi2OF7NvMI5lXweUdjfJm91U1lOFnGqHzgb3EMw288+ZxPa
+         W8OVfHxy8EiDDYbP3wwBxrxqddfC0Vq7B/n4hEDi3pZhgXiNe0B3nMU9shzxdfH9gmEx
+         dmzmU1lkIbvJbm/+pBpRCKur217OIyAlyaWRS0ezXj1T70rCAaXQko27bn040Mt8f/Dx
+         H0pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4rLBpaBId70U1KNxGgyttP7w8pr2e6fzXdrSWAqUoas=;
+        b=coAekU9kFcDR2J2Aqv0v5i8sKgIrULFWWs3qlU3asiL2K1hq9sIfY1Na3JSshBxaAi
+         x7ZE2uK5k6bIqyAaz3HdrTa7Co4a9NikQ58ETi5FXYcBlpEp2FALGZiYrMbRniLJTKwZ
+         2+qiEFaJawLVBxaBCfnAGId5HcuQ6kt7zy+RbIdIAWMpRdxE/5R9FEdQT/1DRu3sT8OG
+         rZw3aWf6SjuVcDhxV48cdDTgSqhLpozAG/ctRRhxvl/1IJhVsbMNC1mXErYYu+GCarIK
+         ooHe8nKjxokOQk89DA9fX3JWhH6mOeYE9ymx0+OT72gsuzldOoEfRL7zYi7Af17MQSkB
+         Fv2g==
+X-Gm-Message-State: AO0yUKVf/S3xc4q8mXOjtMsg9summeFbmD5rExJkPeLFRZkxopbosjzg
+	jjwy+hLfzwR+frX3VXlLj2GlF+y27rpLRdJSpZq9cB4h
+X-Google-Smtp-Source: AK7set9riwq1WEWdxD8If0BjBYSxehbAV6VKwD8PSWbiRW59GK277M/pXpi7iBlTC7OnJbcNK+qPgagJIz0bOekQi14=
+X-Received: by 2002:a17:90b:4d04:b0:237:50b6:984c with SMTP id
+ mw4-20020a17090b4d0400b0023750b6984cmr1127182pjb.137.1677160940968; Thu, 23
+ Feb 2023 06:02:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NKEOAFjKDspy
+References: <20230222193544.3392713-1-aaron@os.amperecomputing.com>
+ <20230222193544.3392713-2-aaron@os.amperecomputing.com> <82e90bc7-8883-62f2-a6a1-9b90e032c667@linaro.org>
+In-Reply-To: <82e90bc7-8883-62f2-a6a1-9b90e032c667@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Feb 2023 14:02:09 +0000
+Message-ID: <CAFEAcA_aX_rebT5jwiOUAQLTz9u9Ps607twYeeWT13voQswV7Q@mail.gmail.com>
+Subject: Re: [PATCH v2 1/7] target/arm: v8.3 PAC ID_AA64ISAR[12] feature-detection
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>, qemu-devel@nongnu.org, 
+	qemu-arm@nongnu.org, Vincent Dehors <vincent.dehors@smile.fr>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: EHI3Z/3NDOI+
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+On Wed, 22 Feb 2023 at 20:27, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 2/22/23 09:35, Aaron Lindsay wrote:
+> > +static inline bool isar_feature_aa64_pauth_epac(const ARMISARegisters *id)
+> > +{
+> > +    /*
+> > +     * Note that unlike most AArch64 features, EPAC is treated (in the ARM
+> > +     * psedocode, at least) as not being implemented by larger values of this
+> > +     * field. Our usage of '>=' rather than '==' here causes our implementation
+> > +     * of PAC logic to diverge slightly from ARM pseudocode.
+> > +     */
+>
+> I find this comment scary -- "diverge slightly"?
+>
+> All I need is once sentence to indicate how this is mitigated (by testing pauth2 first
+> where required?), or "See function_foo" (where there is more commentary), or something.
 
-> All series reviewed, can patches be picked by corresponding
-> maintainers, or should I include them in on of my PRs?
+Yeah, we structure the one place the check is used (patch 4) so that
+we only check the pauth_epac feature if we already tested pauth2:
 
-I'm sitting on a lonely patch for the monitor subsystem.  Want me to
-throw in your series, so my PR is a less complete waste of CI minutes?
++        if (cpu_isar_feature(aa64_pauth2, env_archcpu(env))) {
++            /* No action required */
++        } else if (cpu_isar_feature(aa64_pauth_epac, env_archcpu(env))) {
+             pac = 0;
+         } else {
 
-[...]
+where the pseudocode currently has:
+         if HaveEnhancedPAC() then
+             pac = 0;
+         elsif !HaveEnhancedPAC2() then
+             old stuff;
+and is relying on anything with PAuth2 not returning true for HaveEnhancedPAC().
 
+It is of course possible that the pseudocode might be rephrased in future;
+I think the way they've done it at the moment is kind of confusing.
+
+thanks
+-- PMM

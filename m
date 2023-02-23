@@ -1,79 +1,79 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp475545ejc;
-        Thu, 23 Feb 2023 00:15:09 -0800 (PST)
-X-Google-Smtp-Source: AK7set/0PL4HDbF76zIBg+l7R87+1VraH3MNK/TNzWzh1jOTs50ZPLMRYBDz3UXrQayTL/V1mTxe
-X-Received: by 2002:ac8:59c8:0:b0:3b8:6a20:675e with SMTP id f8-20020ac859c8000000b003b86a20675emr4379435qtf.29.1677140109798;
-        Thu, 23 Feb 2023 00:15:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677140109; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp475995ejc;
+        Thu, 23 Feb 2023 00:15:53 -0800 (PST)
+X-Google-Smtp-Source: AK7set+nBlDmav26sY96+iK9lOgvHhPXoYK9LCLsfhpwZwkeUVTlSuR8Doau+gNdc3dlafys5LFn
+X-Received: by 2002:ac8:5990:0:b0:3b8:6b0c:9fd with SMTP id e16-20020ac85990000000b003b86b0c09fdmr4441157qte.44.1677140153776;
+        Thu, 23 Feb 2023 00:15:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677140153; cv=none;
         d=google.com; s=arc-20160816;
-        b=pyWZqOb1mYR2WPwCnmpFZTV82maavLwIMWvsy/FWgNXxWZhWX9BTnEnJpfBw33XQwj
-         bNraPeBu5E+6ngZnh9Kq9J8B94oel7LabngpW5owOdORGkOyMFaEisnS5kHwLFyrHIyD
-         aIIxhK6Aj7sfUS4wMe/vbV/WKtdjM9IDDRmT/HgnnnFBeX+V/T0JnJJTqq/hZk9dM8xP
-         x3+8tXoijnwClKgmDXrweMxAyQhtzzmbdec5LQFhp1OiEFPsK+BQYbJe6ZRX6GYvniaG
-         B8jA4xqT7v1H6U7fSFqf359p3oiJ9vaDZ3p2dwcu5M2QFMPLXruE7bbiriujeHg89x8t
-         /Lbw==
+        b=Gv1imzDBnbCofDNvXgLViWRjYVVtO31E07Q7N5e61Gl8KyYUfp1biUKLdCL993EsB3
+         g7UFEe2j4yqF/l9tzrMaYPHSnRzE2f2iOEzt5r14IOLP3ubSFV/C78DP4A2ZgbKAmJkJ
+         nN9BrwjPgs79JHeHKmKdCPVucxaF8iFcygWk4oB5ZN4/de0PsWB49AhaA0/c7Ap0LqUj
+         ZZkdp/p9OvLtXIW7KOKMg+L/wYgWDbV2meXxlHCvRHDLF3jBtSQplhJEAZdJrbjcHpaY
+         iLwIXgS6WizLV3fgX2IR3xXWJYMRbUT60nxDrNJEKxq9LdyvYrtxlj8HEozq8vhsJ5Bd
+         XB5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=g92Td8QRvrVk+sq1KWvUB3XXi6JuTsKzLd866Am/PBk=;
-        b=wrUSIAyITn96ctjYYIqKL53NAgxw6cMv1nfK9RD9HLzZg0I1sm7EXWV4AY+aVVt1sh
-         QphnK+j476qPxdJwj5EQ5KlBNrejcYnrO+HqjsqOFSBxeLB5vCioXq45dwNWn5zw2JFu
-         uCl5BYIZOys8phRQv407T0AT9p8ZOtVb7cjFUgg7BysA9yBdU+b1cOtqjc3sGfgiPMP3
-         iT1TQFoRH2PuqCgHGcbtVS/NDoe+ER3oFGEOiecHjAlRrDsJZT61v9iT7D+3yWUuJV7V
-         M1oxYtChAiv/l03Taukfr4gsoALA1PLwLFvH0oUu7W63kQ6IRP4LE5Ui9h/lzFNKpcuE
-         25kg==
+        bh=N93heQF4SVVlaYuxobhHpAFpD9Mv4hw0bmrbFiLSBLo=;
+        b=hrmW3R3LBl9mYuCJ7MQogn5HxKyhvmvj7LK6JkXW4Rv5DoKSoid+pjRuc9+zfd5Vr0
+         jxUSGLMTjJFXnwfzWsL91GtQUzN8SnEyLdx+vI3T0lSZuUa7J2Id6jKSe1X+ZULsFcBt
+         FMOIR1lwlcJOwMST9VXiUxRWvVSaGc41TYw/eQ7NJMrqTufXDVHNKQIh2N3cfkhx9oVP
+         D5YkN4DvrDzcLntHO38Y6KidW0UD+xYTePTpanc9SdfQHM3Mkj7rmbtmYKEFE3Q//2m6
+         PMPO4Ur1rRZorJWnChqEg5FRQL/GW3IXEIS9xD2MqmkjO00p+cxiFcX/eYbY8iuz3fmW
+         Qjwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NE6RVDDQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BEiXGKQ0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u9-20020ac858c9000000b003b86d5731b8si16581826qta.760.2023.02.23.00.15.09
+        by mx.google.com with ESMTPS id t1-20020ae9df01000000b0072dcddbd03asi55180qkf.755.2023.02.23.00.15.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 00:15:09 -0800 (PST)
+        Thu, 23 Feb 2023 00:15:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NE6RVDDQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BEiXGKQ0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pV6kU-0003Yk-Vi; Thu, 23 Feb 2023 03:14:43 -0500
+	id 1pV6kQ-0003XQ-EQ; Thu, 23 Feb 2023 03:14:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pV6kT-0003Y4-IU
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 03:14:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pV6kO-0003Wp-KW
+ for qemu-arm@nongnu.org; Thu, 23 Feb 2023 03:14:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pV6kR-0001FE-JZ
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 03:14:41 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pV6kN-0001EW-6w
+ for qemu-arm@nongnu.org; Thu, 23 Feb 2023 03:14:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677140078;
+ s=mimecast20190719; t=1677140074;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=g92Td8QRvrVk+sq1KWvUB3XXi6JuTsKzLd866Am/PBk=;
- b=NE6RVDDQ4Msyi3PqkZv6AOa58SuQpdYry2w6X8jlD+6yXPvbuUmrRjsLBFe3tM+us8Pz6M
- M/9hc2QRvrc8joTxXtcnVF9NaQghWhpIYCt4vKs+ZkiQoVcR6pKP4xxfHl8g9tVFSfAd0M
- dqyFueKTvvI1MsXyP7+fC6d+Y3MY4ow=
+ bh=N93heQF4SVVlaYuxobhHpAFpD9Mv4hw0bmrbFiLSBLo=;
+ b=BEiXGKQ0Aj7ZImlPAnhQtqp8puvAXWRHXDPzyT6Y1iyEVv8BBaqoWSnFciu92k6VTubgiQ
+ 86NuDgbW3dBKTZgCb1TePRnawmLtTTwUwdBDC35yn2UG6GLCf7Yktl6eVQoOB8MqYgGBMj
+ vZubgUTnK7krxG69quZ8Q3V01witvmQ=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-571-11eOUpCuMGidHF106ejm6g-1; Thu, 23 Feb 2023 03:14:37 -0500
-X-MC-Unique: 11eOUpCuMGidHF106ejm6g-1
+ us-mta-570-Br5-GpZlNDG1AeyYhnmSMg-1; Thu, 23 Feb 2023 03:14:28 -0500
+X-MC-Unique: Br5-GpZlNDG1AeyYhnmSMg-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
  [10.11.54.5])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D1298101A521;
- Thu, 23 Feb 2023 08:14:35 +0000 (UTC)
-Received: from gshan.redhat.com (vpn2-54-168.bne.redhat.com [10.64.54.168])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 96CF118EC1;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 08A23101A55E;
  Thu, 23 Feb 2023 08:14:28 +0000 (UTC)
+Received: from gshan.redhat.com (vpn2-54-168.bne.redhat.com [10.64.54.168])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 40CDC440DC;
+ Thu, 23 Feb 2023 08:14:21 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, rad@semihalf.com,
@@ -82,17 +82,17 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, rad@semihalf.com,
  palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
  thuth@redhat.com, lvivier@redhat.com, pbonzini@redhat.com,
  imammedo@redhat.com, yihyu@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v2 2/4] numa: Validate socket and NUMA node boundary if
- required
-Date: Thu, 23 Feb 2023 16:13:59 +0800
-Message-Id: <20230223081401.248835-3-gshan@redhat.com>
+Subject: [PATCH v2 1/4] qtest/numa-test: Follow socket-NUMA-node boundary for
+ aarch64
+Date: Thu, 23 Feb 2023 16:13:58 +0800
+Message-Id: <20230223081401.248835-2-gshan@redhat.com>
 In-Reply-To: <20230223081401.248835-1-gshan@redhat.com>
 References: <20230223081401.248835-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -100,7 +100,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,148 +115,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hnRG3vjIzHdO
+X-TUID: 1lfcfUHS6i35
 
-For some architectures like ARM64, multiple CPUs in one socket can't be
-associated with different NUMA nodes. Otherwise, the guest kernel is confused
-about the CPU topology. For example, the following warning message is observed
-from linux guest with the below command lines.
-
-  -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
-  -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
-  -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
-  -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
-
-  ------------[ cut here ]------------
-  WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
-  Modules linked in:
-  CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
-  pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-  pc : build_sched_domains+0x284/0x910
-  lr : build_sched_domains+0x184/0x910
-  sp : ffff80000804bd50
-  x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
-  x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
-  x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
-  x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
-  x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
-  x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
-  x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
-  x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
-  x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
-  x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
-  Call trace:
-   build_sched_domains+0x284/0x910
-   sched_init_domains+0xac/0xe0
-   sched_init_smp+0x48/0xc8
-   kernel_init_freeable+0x140/0x1ac
-   kernel_init+0x28/0x140
-   ret_from_fork+0x10/0x20
-
-Improve the sitation to reject the configuration where multiple CPUs
-in one socket have been associated with different NUMA nodes. The
-newly introduced helper set_numa_socket_boundary() is expected to
-called by specific machines (boards) where the boundary is required.
+After socket-to-NUMA-node boundary is applied to aarch64 in the subsequent
+patches, we need to explicitly specify 'smp.sockets=2' for 'test_mon_explicit'
+and 'test_query_cpus' test cases. Besides, 'test_mon_partial' isn't applied
+to aarch64 any more.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- hw/core/machine.c     | 34 ++++++++++++++++++++++++++++++++++
- hw/core/numa.c        |  7 +++++++
- include/sysemu/numa.h |  4 ++++
- 3 files changed, 45 insertions(+)
+ tests/qtest/numa-test.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index f73fc4c45c..875a3fe6c4 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1174,6 +1174,36 @@ static char *cpu_slot_to_string(const CPUArchId *cpu)
-     return g_string_free(s, false);
- }
+diff --git a/tests/qtest/numa-test.c b/tests/qtest/numa-test.c
+index c5eb13f349..ebfd522af3 100644
+--- a/tests/qtest/numa-test.c
++++ b/tests/qtest/numa-test.c
+@@ -25,7 +25,8 @@ static void test_mon_explicit(const void *data)
+     g_autofree char *s = NULL;
+     g_autofree char *cli = NULL;
  
-+static void numa_validate_socket_boundary(MachineState *ms)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    NumaState *state = ms->numa_state;
-+    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
-+    const CPUArchId *cpus = possible_cpus->cpus;
-+    int len = possible_cpus->len, i, j;
+-    cli = make_cli(data, "-machine smp.cpus=8 -numa node,nodeid=0,memdev=ram,cpus=0-3 "
++    cli = make_cli(data, "-machine smp.cpus=8,smp.sockets=2 "
++                         "-numa node,nodeid=0,memdev=ram,cpus=0-3 "
+                          "-numa node,nodeid=1,cpus=4-7");
+     qts = qtest_init(cli);
+ 
+@@ -87,7 +88,8 @@ static void test_query_cpus(const void *data)
+     QTestState *qts;
+     g_autofree char *cli = NULL;
+ 
+-    cli = make_cli(data, "-machine smp.cpus=8 -numa node,memdev=ram,cpus=0-3 "
++    cli = make_cli(data, "-machine smp.cpus=8,smp.sockets=2 "
++                         "-numa node,memdev=ram,cpus=0-3 "
+                          "-numa node,cpus=4-7");
+     qts = qtest_init(cli);
+     cpus = get_cpus(qts, &resp);
+@@ -565,7 +567,12 @@ int main(int argc, char **argv)
+ 
+     qtest_add_data_func("/numa/mon/cpus/default", args, test_def_cpu_split);
+     qtest_add_data_func("/numa/mon/cpus/explicit", args, test_mon_explicit);
+-    qtest_add_data_func("/numa/mon/cpus/partial", args, test_mon_partial);
 +
-+    if (state->num_nodes <= 1 || len <= 1) {
-+        return;
++    if (!strcmp(arch, "i386") || !strcmp(arch, "x86_64") ||
++        !strcmp(arch, "ppc64")) {
++        qtest_add_data_func("/numa/mon/cpus/partial", args, test_mon_partial);
 +    }
 +
-+    for (i = 0; i < len; i++) {
-+        for (j = i + 1; j < len; j++) {
-+            if (cpus[i].props.has_socket_id &&
-+                cpus[i].props.has_node_id &&
-+                cpus[j].props.has_socket_id &&
-+                cpus[j].props.has_node_id &&
-+                cpus[i].props.socket_id == cpus[j].props.socket_id &&
-+                cpus[i].props.node_id != cpus[j].props.node_id) {
-+                error_report("CPU-%d and CPU-%d in socket-%ld have been "
-+                             "associated with node-%ld and node-%ld "
-+                             "respectively", i, j, cpus[i].props.socket_id,
-+                             cpus[i].props.node_id, cpus[j].props.node_id);
-+                exit(1);
-+            }
-+        }
-+    }
-+}
-+
- static void numa_validate_initiator(NumaState *numa_state)
- {
-     int i;
-@@ -1239,6 +1269,10 @@ static void machine_numa_finish_cpu_init(MachineState *machine)
-         }
-     }
+     qtest_add_data_func("/numa/qmp/cpus/query-cpus", args, test_query_cpus);
  
-+    if (machine->numa_state->have_socket_boundary) {
-+        numa_validate_socket_boundary(machine);
-+    }
-+
-     if (machine->numa_state->hmat_enabled) {
-         numa_validate_initiator(machine->numa_state);
-     }
-diff --git a/hw/core/numa.c b/hw/core/numa.c
-index d8d36b16d8..ebdd964ec8 100644
---- a/hw/core/numa.c
-+++ b/hw/core/numa.c
-@@ -460,6 +460,13 @@ void parse_numa_hmat_cache(MachineState *ms, NumaHmatCacheOptions *node,
-     ms->numa_state->hmat_cache[node->node_id][node->level] = hmat_cache;
- }
- 
-+void set_numa_socket_boundary(MachineState *ms)
-+{
-+    if (ms->numa_state) {
-+        ms->numa_state->have_socket_boundary = true;
-+    }
-+}
-+
- void set_numa_options(MachineState *ms, NumaOptions *object, Error **errp)
- {
-     if (!ms->numa_state) {
-diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-index 4173ef2afa..160008fff4 100644
---- a/include/sysemu/numa.h
-+++ b/include/sysemu/numa.h
-@@ -86,6 +86,9 @@ struct NumaState {
-     /* Detect if HMAT support is enabled. */
-     bool hmat_enabled;
- 
-+    /* CPUs in one socket can't break socket boundary */
-+    bool have_socket_boundary;
-+
-     /* NUMA nodes information */
-     NodeInfo nodes[MAX_NODES];
- 
-@@ -97,6 +100,7 @@ struct NumaState {
- };
- typedef struct NumaState NumaState;
- 
-+void set_numa_socket_boundary(MachineState *ms);
- void set_numa_options(MachineState *ms, NumaOptions *object, Error **errp);
- void parse_numa_opts(MachineState *ms);
- void parse_numa_hmat_lb(NumaState *numa_state, NumaHmatLBOptions *node,
+     if (!strcmp(arch, "i386") || !strcmp(arch, "x86_64")) {
 -- 
 2.23.0
 

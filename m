@@ -1,197 +1,222 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp590514ejc;
-        Thu, 23 Feb 2023 02:44:40 -0800 (PST)
-X-Google-Smtp-Source: AK7set+FWBF5A4kQ6QYI95xBNAiZCc3hXxX0tW/HnxaoNuUHqypoNiBL/G1TvQLGW0g1PrMZoUTf
-X-Received: by 2002:ad4:5c85:0:b0:56b:fc7c:e57c with SMTP id o5-20020ad45c85000000b0056bfc7ce57cmr23317988qvh.51.1677149080467;
-        Thu, 23 Feb 2023 02:44:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677149080; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp590593ejc;
+        Thu, 23 Feb 2023 02:44:47 -0800 (PST)
+X-Google-Smtp-Source: AK7set8ISY+vl1z0u0TgfKcCni0ah3ObPpdeNsq57mr93usSpdASy4LDcgjQlA+2UCQabdgikYkv
+X-Received: by 2002:ad4:5d65:0:b0:537:4b09:670f with SMTP id fn5-20020ad45d65000000b005374b09670fmr22831784qvb.25.1677149087099;
+        Thu, 23 Feb 2023 02:44:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677149087; cv=none;
         d=google.com; s=arc-20160816;
-        b=YHXrQNBotXiQEBHDjAY9UfZW7zekns8qGYrJ6M1gA6QW72h75lCSXqo0W+E8z/mLSl
-         cbJ6hergnmJLx/0B5sxLATc9ow7vr3WOc7+htvhQceARyQICWamlvoQrr1CMC21pmnuL
-         //xt4DJbwMs+HdkH9akLu89kWsbLVrJaMAjuqi2URueq7CqoR0ldF4Mp2Vg+P4RLxLAW
-         c0tVIrpiOgsjPDfdMd76Hs6/SFclNh/e0JKwZQU2uux9wFSUVmc27tZyZtpbvBMkMuP7
-         dDY+EkxbJ3BKyUaPsHezt6avyxFHXvstT6Zsun+pSJ4MOgsDlOme8epShiz5TTuCWmwR
-         o5IA==
+        b=DWtmG4i9qUJ/mj1522oEvwdWeZsdlH2GImJtXgYqwQJdhwTBQB187T/6PUD7Xrn5nN
+         Oy0r0hBObEZRZppLVjtRRTr5YS30/qdFBvvowqWo5VLA1rzWIF75dUqF3sfRpUzadzO9
+         1cf4MR/7J44yiWh5eik+BLNhThY1zWaBQyXcbJM5VSuxfA3WMoE+spopU2YsVk7Hp6Se
+         3xdXMVWXFXKtO29xGRztJNDa2zkgi5/ckE6r7eqSpg0ReQnRxAVTcX81A1hpNoNHeUG1
+         hui/l+h9Zck/IcFWkO94WqY5McOW1tZpuHMDFmrha5+2LZeAIyWThv4p+jZTQTDD8VGW
+         dI/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:references:cc:to:from:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=KH5ae43t3jJw3x6HhgXb+WcFFYVJzpx3FgCotj8tCnk=;
-        b=Bq9HlFsd+N5UkozKO3tStxCrAvy2befyTwFgLJK6mRKk19tozBYr57h4fYbQYiS+X+
-         LTWfafCDNnhnDBSIN4EDwRQO392meqwIxTmCHHO+KrpBFFxaldln03UE30V3cRuGYmU3
-         6tL/2UZeLLc+d/9zZlwjb22qPFy+VSbDwA7WVwS8OZLMKe93yGeoQ26Ed1G3zMdskzvw
-         fzgevPav7lWPAc5SWpPGMrBz6jTBz0rVurAFKyx1MhIPVKElPQOI5rVIKlxlnRRVHAJ7
-         Lpe26gNreV1L3EPSBXIGEJ0cCqlodls9ofsKv+mC5UyN5sxBLogqVrN9znFk/RhZflZC
-         hx0g==
+        bh=SImOkEqmDdEkwhMjhXOR0F510uW6Vxv8G6En62JaJkI=;
+        b=SKERDDeioKSC3Iat1g5uzoliwmLemi3+kvvEZK2BDrs/aAIkm8fVTEbIFBCnyZZcvh
+         YllNJgGk/Yx9S107Vzm5HdZ68k4/ri2Xua2Kpo8KLwxPWExoyyq5QJoa8rzGD5DPQ+/r
+         m05K2sMt50ZGJfPNjqAyhSmTzutm4sVpbYA8lcK1ESQSfz+1QGNwVCxfo54+OXCluDEB
+         TBvNkOtrF2T8hgygjEuprzPOau8ZO8gRcbOMyF/D60z9tpNIJ3R9E1W6BvlGeVFTEt0m
+         +sNagw0AgRJykrmr5u4GHnj38XrSIObFkupX4v5I4SR9Yy3AFThJEd8MUnl3QjEjbEGJ
+         XENw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KvpEs1Fj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="wx4x7yu/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a23-20020a0ca997000000b0056eb1aa8734si10623767qvb.405.2023.02.23.02.44.40
+        by mx.google.com with ESMTPS id q11-20020a0cf5cb000000b0056c23bb1597si7933406qvm.88.2023.02.23.02.44.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 02:44:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Feb 2023 02:44:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KvpEs1Fj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="wx4x7yu/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pV95B-0002in-KM; Thu, 23 Feb 2023 05:44:13 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pV95W-0002ny-0k; Thu, 23 Feb 2023 05:44:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pV959-0002i4-EF
- for qemu-devel@nongnu.org; Thu, 23 Feb 2023 05:44:11 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pV95P-0002mH-9j
+ for qemu-arm@nongnu.org; Thu, 23 Feb 2023 05:44:29 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pV957-0007z7-Ln
- for qemu-devel@nongnu.org; Thu, 23 Feb 2023 05:44:11 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id h14so1647766wru.4
- for <qemu-devel@nongnu.org>; Thu, 23 Feb 2023 02:44:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pV95N-000887-0z
+ for qemu-arm@nongnu.org; Thu, 23 Feb 2023 05:44:27 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ o4-20020a05600c4fc400b003e1f5f2a29cso9869307wmq.4
+ for <qemu-arm@nongnu.org>; Thu, 23 Feb 2023 02:44:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=KH5ae43t3jJw3x6HhgXb+WcFFYVJzpx3FgCotj8tCnk=;
- b=KvpEs1FjRB59fnKdnyLfXYiyF7ogGU06v/EEm5BvMYbpcLLRhB3VT3V8JQdH4r+OXc
- E66B1meD/qwVsYPTMb/nuDtIl0kVLyt7hWbNnQQEIB9hHbAkgW8tBkTg48IxVwbH4Gka
- po8KA8rIESo8Wgmuj0UFJPg98D/aijfid4ehv5goT1DMDADWlC37PY2O3Rmr0dFZg8es
- PztjNUOf+9ZW2cFRf6tYKbE8szkITw7it5Yu75LRzpJlVF6dnjIqZyK1FRQmq5fTTEJ1
- R1MufPwzETR1vy0w6qFJiLZgeNFtZRf45RysNQBc3t3o/2V/IH3FlrFLjL23dkSD72uX
- 15Kw==
+ bh=SImOkEqmDdEkwhMjhXOR0F510uW6Vxv8G6En62JaJkI=;
+ b=wx4x7yu/A1lmheTqE1uuvt/BGNAx0w3nBgIlgO8lz6gT/4AdGbqTL2I4iQV5xIipQ1
+ tcEQv65DEFVQRqdjeL90ynscsL7IlnAagbQMliQfj0BHcNnlhqpnC15DZ0QF1m1Yp9Hr
+ dpJHy8CgBNBg1gfKFzZ+1rPBXlTND50VbbQvRGcaUVYJTG3CuOYPaIJzjX6d5ZXnIzZP
+ nDOL4YHvNQHJgGOTF5Kq8x5aSwbXuPeILDiEEYEEybb5sAZyTKuixanTQ4TH34sK0YmR
+ dGwam3yGRdkk3+KIyqfGE4SdYYgFyuFO15fDOixADUm1DRW168/TOo/WvKec8rdJgrQV
+ ebbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KH5ae43t3jJw3x6HhgXb+WcFFYVJzpx3FgCotj8tCnk=;
- b=NEGXYpHA/ezYqJCVtf3ARSQRJQXLIQkXf3KtXdNHTOeFO3pgZpuR0SM5Z129Z2pkjJ
- VBiE73rebS3GH30UIBIBZN/IGCSZxY1Fq+IxogbjLHtmW2l5rpgzfs9HOcvDjUaZjtU+
- hSFkDlA9ilnY57F5ZmDZngMNELLQxsiSUijg0hi7Rdo3dBIE/QIyShyuATE0i7t6PklH
- SZit3HMCZbnqahaYXOP04R6o32XtmSdUWS3I0YX9cWIt1AaHYQEk0esevTEcDVNZrXOI
- oJJmcoGl92v7/H42acOlZ2CWyOT0ONl+cKpEjH/sL5EdGk51OVGOzbcA2fzu2T7A8kVQ
- qnzA==
-X-Gm-Message-State: AO0yUKV+CUHgdrPfoCJjq6Z3vS8+KXcgtcb55alQwliQr8Sv2ViQaDa0
- +sbypBP9W/bDbfgWz1bbfgHTeA==
-X-Received: by 2002:adf:e543:0:b0:236:695b:82d4 with SMTP id
- z3-20020adfe543000000b00236695b82d4mr10771954wrm.30.1677149047817; 
- Thu, 23 Feb 2023 02:44:07 -0800 (PST)
+ bh=SImOkEqmDdEkwhMjhXOR0F510uW6Vxv8G6En62JaJkI=;
+ b=XafycS4sxP2wY5vBx7DtdnccDS56oXlO/W7GS7aLBOBe8RKOVyPa9MsxyBkqQ9VyPt
+ TPjDX9Bub+SU3R8jpV7EHUYgaFE1U6izkcW/+2QSyeCj18KgkXUFkfgr4ceehBwxH1Nb
+ E0Ecq7ovZwoHa0hiCvUsnO0w/hBRLKfKQaSK8Su9v+dUon3BL2Hgopz2CrTjWKITlxaL
+ zNluFnhwjlLYaLFcS2by/GYlF467Dc51nxyvY88jS8NjK0BOZh/LfrEv7sXIUzEQTLRl
+ ZU4VLnoK0R+vmb6D5bfHbh+yWmzJSSB7wPWpvTMYy15ttJqOwr5/eAPu7reObuznnwVN
+ XR/w==
+X-Gm-Message-State: AO0yUKVk+LICYbEU2V0hvSZHvo8WO4PczVeYFN4NnzuAyulRvYlHneJy
+ 0ApbcMS3ClL7lENAzxlL3uloXQ==
+X-Received: by 2002:a05:600c:3b20:b0:3df:db20:b0ae with SMTP id
+ m32-20020a05600c3b2000b003dfdb20b0aemr9844135wms.17.1677149061140; 
+ Thu, 23 Feb 2023 02:44:21 -0800 (PST)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- c22-20020a7bc856000000b003e01493b136sm10901155wml.43.2023.02.23.02.44.06
+ 15-20020a05600c22cf00b003e11f280b8bsm11597260wmg.44.2023.02.23.02.44.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Feb 2023 02:44:07 -0800 (PST)
-Message-ID: <656c0b73-5cc2-874f-28c3-3dabf86039e7@linaro.org>
-Date: Thu, 23 Feb 2023 11:44:05 +0100
+ Thu, 23 Feb 2023 02:44:20 -0800 (PST)
+Message-ID: <a7bc04e9-a3e8-1210-976e-f166b25cbc8e@linaro.org>
+Date: Thu, 23 Feb 2023 11:44:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH v5 7/9] aspeed/soc : Add AST1030 support
+Subject: Re: [PATCH v9 08/14] hw/nvram: NPCM7xx OTP device model
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: steven_lee@aspeedtech.com, troy_lee@aspeedtech.com
-References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
- <20220401083850.15266-8-jamin_lin@aspeedtech.com>
- <0c4810ae-edee-41df-7609-a3c6577a9ed3@linaro.org>
-In-Reply-To: <0c4810ae-edee-41df-7609-a3c6577a9ed3@linaro.org>
+To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com,
+ kfting@nuvoton.com, Alexander Bulekov <alxndr@bu.edu>,
+ Shengtan Mao <stmao@google.com>, Hao Wu <wuhaotsh@google.com>,
+ Chris Rauer <crauer@google.com>
+References: <20200911052101.2602693-1-hskinnemoen@google.com>
+ <20200911052101.2602693-9-hskinnemoen@google.com>
+ <6ccd925d-b965-4da0-13f2-365bd75abe88@linaro.org>
+In-Reply-To: <6ccd925d-b965-4da0-13f2-365bd75abe88@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.102,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U3QP6SJQKT03
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EUtVTwx8zSKC
 
-ping
+Tyrone, Hao, ping?
 
-On 29/12/22 12:16, Philippe Mathieu-Daudé wrote:
+On 22/12/22 16:03, Philippe Mathieu-Daudé wrote:
 > Hi,
 > 
-> On 1/4/22 10:38, Jamin Lin wrote:
->> From: Steven Lee <steven_lee@aspeedtech.com>
+> (old patch)
+> 
+> On 11/9/20 07:20, Havard Skinnemoen wrote:
+>> This supports reading and writing OTP fuses and keys. Only fuse reading
+>> has been tested. Protection is not implemented.
 >>
->> The embedded core of AST1030 SoC is ARM Coretex M4.
->> It is hard to be integrated in the common Aspeed Soc framework.
->> We introduce a new ast1030 class with instance_init and realize
->> handlers.
->>
->> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
->> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
->> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>> Reviewed-by: Avi Fishman <avi.fishman@nuvoton.com>
+>> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> Tested-by: Alexander Bulekov <alxndr@bu.edu>
+>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 >> ---
->>   hw/arm/aspeed_ast10xx.c     | 299 ++++++++++++++++++++++++++++++++++++
->>   hw/arm/meson.build          |   6 +-
->>   include/hw/arm/aspeed_soc.h |   3 +
->>   3 files changed, 307 insertions(+), 1 deletion(-)
->>   create mode 100644 hw/arm/aspeed_ast10xx.c
+>>   include/hw/arm/npcm7xx.h       |   3 +
+>>   include/hw/nvram/npcm7xx_otp.h |  79 ++++++
+>>   hw/arm/npcm7xx.c               |  29 +++
+>>   hw/nvram/npcm7xx_otp.c         | 440 +++++++++++++++++++++++++++++++++
+>>   hw/nvram/meson.build           |   1 +
+>>   5 files changed, 552 insertions(+)
+>>   create mode 100644 include/hw/nvram/npcm7xx_otp.h
+>>   create mode 100644 hw/nvram/npcm7xx_otp.c
 > 
+>> +/**
+>> + * npcm7xx_otp_array_write - ECC encode and write data to OTP array.
+>> + * @s: OTP module.
+>> + * @data: Data to be encoded and written.
+>> + * @offset: Offset of first byte to be written in the OTP array.
+>> + * @len: Number of bytes before ECC encoding.
+>> + *
+>> + * Each nibble of data is encoded into a byte, so the number of bytes 
+>> written
+>> + * to the array will be @len * 2.
+>> + */
+>> +extern void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void 
+>> *data,
+>> +                                    unsigned int offset, unsigned int 
+>> len);
 > 
->> +static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error 
->> **errp)
+>> +static void npcm7xx_init_fuses(NPCM7xxState *s)
 >> +{
->> +    AspeedSoCState *s = ASPEED_SOC(dev_soc);
->> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->> +    MemoryRegion *system_memory = get_system_memory();
->> +    DeviceState *armv7m;
->> +    Error *err = NULL;
->> +    int i;
+>> +    NPCM7xxClass *nc = NPCM7XX_GET_CLASS(s);
+>> +    uint32_t value;
 >> +
->> +    if (!clock_has_source(s->sysclk)) {
->> +        error_setg(errp, "sysclk clock must be wired up by the board 
->> code");
->> +        return;
->> +    }
->> +
->> +    /* General I/O memory space to catch all unimplemented device */
->> +    create_unimplemented_device("aspeed.sbc",
->> +                                sc->memmap[ASPEED_DEV_SBC],
->> +                                0x40000);
->> +    create_unimplemented_device("aspeed.io",
->> +                                sc->memmap[ASPEED_DEV_IOMEM],
->> +                                ASPEED_SOC_IOMEM_SIZE);
->> +
->> +    /* AST1030 CPU Core */
->> +    armv7m = DEVICE(&s->armv7m);
->> +    qdev_prop_set_uint32(armv7m, "num-irq", 256);
+>> +    /*
+>> +     * The initial mask of disabled modules indicates the chip 
+>> derivative (e.g.
+>> +     * NPCM750 or NPCM730).
+>> +     */
+>> +    value = tswap32(nc->disabled_modules);
 > 
-> Can you confirm this SoC has 256 and not 240 IRQs?
+> In which endianness do you want this 32-bit fuse value to be written?
 > 
->> +    qdev_prop_set_string(armv7m, "cpu-type", sc->cpu_type);
->> +    qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
->> +    object_property_set_link(OBJECT(&s->armv7m), "memory",
->> +                             OBJECT(system_memory), &error_abort);
->> +    sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
+> I suppose you used a little-endian host, so we want it big-endian in
+> the OTP? In that case it would be better to use cpu_to_be32(), to
+> be able to use the OTP on a big-endian host such s390x.
 > 
+>> +    npcm7xx_otp_array_write(&s->fuse_array, &value, 
+>> NPCM7XX_FUSE_DERIVATIVE,
+>> +                            sizeof(value));
+>> +}
+> 
+> For completeness:
+> 
+>  > +static void npcm730_class_init(ObjectClass *oc, void *data)
+>  > +{
+>  > +    NPCM7xxClass *nc = NPCM7XX_CLASS(oc);
+>  > +
+>  > +    /* NPCM730 is optimized for data center use, so no graphics, 
+> etc. */
+>  > +    nc->disabled_modules = 0x00300395;
+>  > +    nc->num_cpus = 2;
+>  > +}
+>  > +
+>  > +static void npcm750_class_init(ObjectClass *oc, void *data)
+>  > +{
+>  > +    NPCM7xxClass *nc = NPCM7XX_CLASS(oc);
+>  > +
+>  > +    /* NPCM750 has 2 cores and a full set of peripherals */
+>  > +    nc->disabled_modules = 0x00000000;
+>  > +    nc->num_cpus = 2;
+>  > +}
+> 
+> Thanks,
+> 
+> Phil.
 

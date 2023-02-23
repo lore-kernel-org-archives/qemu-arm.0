@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp709559ejc;
-        Thu, 23 Feb 2023 05:11:17 -0800 (PST)
-X-Google-Smtp-Source: AK7set9xpY4uc0AdyvOkrPcZ5q0BfvAJ/dQ4C+Bs8OyGLW8/UWKtx6dY9JaVItIyirR9N3LZxUmI
-X-Received: by 2002:a5d:5106:0:b0:2c5:a742:5721 with SMTP id s6-20020a5d5106000000b002c5a7425721mr9444783wrt.34.1677157877372;
-        Thu, 23 Feb 2023 05:11:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677157877; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp709617ejc;
+        Thu, 23 Feb 2023 05:11:20 -0800 (PST)
+X-Google-Smtp-Source: AK7set8pdTzRH1d18n/ugBYziZd6aVF07Nfk9ugucX++yM1e7rR7aRc+nlmM7yiTlm8GXGogjiSJ
+X-Received: by 2002:a05:600c:3420:b0:3dc:16d2:ae5e with SMTP id y32-20020a05600c342000b003dc16d2ae5emr8878166wmp.32.1677157880668;
+        Thu, 23 Feb 2023 05:11:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677157880; cv=none;
         d=google.com; s=arc-20160816;
-        b=IkUUxlF0HxJBIvuD8ibaXHNSp5sZqB+JZ7b0MJUXAHSlUqLCgpbfKxVYI9GWdtaPIY
-         Gz7PFUHpqvjO6iZCLhbuQpxDZfPVnqmb9/ww6ioALMBBnvpuKgfydeOc8AjFE/wajzy9
-         Vmy03GanR8GvbNjora6H5HLGFqKC2AF5kCyTJPAMuCgi5wFOiOf54EpxXybld1AEVQBP
-         W7kbBV4lq7/0m32GAbhL5ZM2k7lckNOA593L6YaUQL3JMICryrp2v+scWFNGDnxzXFuc
-         k2idE7+Q9qL7sCkhYwd+0vncZ0/ktZMpvMvujsyPAGhy18ph4qxdIU+B0BvY+SKYhJ+q
-         751Q==
+        b=B5bSIm93ZU8mqtpmm5GmsxgzOq2CxcYILoSBmnNt0O0bitnnvWhh5wmJ55M4k647ql
+         lZvYBF/dOOwoUj2W2hnRoJOPPaWdA0ihzeK7fHAgm5iaEnW36C84KuMEt/gWkp6JJ8yx
+         wAeuUrmIYzmOHKUP8/CDteHK6Dypmzda5p4mZ2vQBWZra0MjslbbFls+XBtQBFDKjtli
+         +vBe9Ox+LLnlBTdu/kvEPTzHlvp7k5RE6ELO+KoiGVSzUyXyJWNDIOBn12nzNdo/gIEz
+         aErztKNP7LMQ0CgoNKNYQC34pSX5kpFZlOV84YSkgn9rt42eQWaQAPBXZDzKT9HwNQM3
+         1Vrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=zVRXNM0AgsWsO2zpgPZaekbf//B8pg0/noEILVOS+ac=;
-        b=RGuy8SXSZ5XPW5FmIPe+9gngTMkwD/35ZAH6mnM3QhUZJDLwNeWs4AYfnKp5gYpW1e
-         2sGSCIxiXoSDfpZUIBCKrNO1ohss5DaOIAVJVvpuXVeW3PU4at2GyOW2xRQ3dxSv61TS
-         LKqi9i55z1qhhzi296BOEsc0UmWSaMrIBSa2wIvni+jIY1bLF17qA//wuAGPxSA+6nDV
-         T4z5WUfvKepTlokOPLZiDqts0uxJEWzg7njmnHWUtCP4BZgFabp5bJIgE2At1HVHUHjX
-         uJQufSjTsacXLll2kT2QJICHNsmSpsgqJTBiZmbiChJqLYOSPG3qp80mzCzgzy+GzcEi
-         3ojA==
+        bh=8/PDkUrAPEsO7n+jaOxTqdYZW41mc81Im0qLDWNhc1k=;
+        b=IJ5P4OZILiYsd8ATzIreGUjX7wPAytpfArf480MG2P2c8YvB6XMPd2JuF7NAMBEhkQ
+         PRayChQscP/nVVvRqrl9Bn2avrTS5pUaPdtUx5UrhRwThruEzIQc+JscltcUxSLvbtyw
+         81FhqRvrjRx2Nmp3T+6sbpm+C4Q7koI8xK8fe5zjY5t0HwB72z0GWzzXgVQCwtWpq8Vr
+         Wfj9uCWQ/ob1M+TKrzfFI+HM7BX373haJDUMt7MoaM5WePft7wO7WQmlEYMc398EOPA/
+         qJ6kGsQoTSmqidRUjd7ZVac+NXgYqjYxQ8oOT4bLaBeG41LV3sfoy2juAiRf4Osy0GFA
+         clGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ac16KWGB;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=qKWm3JGv;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=uuubCfo3;
+       dkim=neutral (no key) header.i=@suse.de header.b=un2FdEUB;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id j16-20020a056000125000b002c5512a60a7si8046382wrx.39.2023.02.23.05.11.17
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id m20-20020a05600c161400b003e00c4b18easi3717343wmn.40.2023.02.23.05.11.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Feb 2023 05:11:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+        Thu, 23 Feb 2023 05:11:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ac16KWGB;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=qKWm3JGv;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=uuubCfo3;
+       dkim=neutral (no key) header.i=@suse.de header.b=un2FdEUB;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 0033120529;
-	Thu, 23 Feb 2023 13:11:17 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 4D3E233830;
+	Thu, 23 Feb 2023 13:11:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1677157877; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1677157880; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=zVRXNM0AgsWsO2zpgPZaekbf//B8pg0/noEILVOS+ac=;
-	b=ac16KWGBE+P+hSRCbIhxbKe60xrKBDiVBq7capRP9IWtiz71AAeF5hJmTDpgJqWo9mOPd6
-	bVVpuDWdqRYx9tgU38Quqb+RJnb7Cmoe++ghatt2tHQzMd0G2MgiXrarH3U1XR6dTuWdaA
-	L2sdyCcvoghNGAHVUcY00WW8tq960hc=
+	bh=8/PDkUrAPEsO7n+jaOxTqdYZW41mc81Im0qLDWNhc1k=;
+	b=uuubCfo3GrKGTYHSAlc/LBLToGiWaImbshq/JV357VBMGDBo6oOQcej8n+5+OOtQkQQs18
+	KKUB5c6Vvq7tEDVPTMsdpklBSEpUSgWKYrO++X90P+aioo23t2QsQSILDwp3fAyyo4aAWr
+	pnIU/oPJlcacOjceUcpKwNEXte878bY=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1677157877;
+	s=susede2_ed25519; t=1677157880;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=zVRXNM0AgsWsO2zpgPZaekbf//B8pg0/noEILVOS+ac=;
-	b=qKWm3JGvBn1TYOpKNVGVtPNW62WPveBI9Xtk4PCZ8UWuoQKpsnwdhTeaUaU7/xH8s4oSuq
-	dqVc9f/TTMFgCSBA==
+	bh=8/PDkUrAPEsO7n+jaOxTqdYZW41mc81Im0qLDWNhc1k=;
+	b=un2FdEUBViexnQfDThbIRHEtxzzmBaV6Xj6+HbScY7hXG+/XtcHmBeN1MWjn2TZlk5PNat
+	N0FsQSTXKyZM58Bw==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 1F8E1139B5;
-	Thu, 23 Feb 2023 13:11:13 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6D30D139B5;
+	Thu, 23 Feb 2023 13:11:17 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id +M9WNvFl92MLawAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 23 Feb 2023 13:11:13 +0000
+	id gHqiDfVl92MLawAAMHmgww
+	(envelope-from <farosas@suse.de>); Thu, 23 Feb 2023 13:11:17 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,48 +83,55 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH v7 09/20] target/arm: Don't access TCG code when debugging with KVM
-Date: Thu, 23 Feb 2023 10:08:30 -0300
-Message-Id: <20230223130841.25916-10-farosas@suse.de>
+Subject: [PATCH v7 10/20] cpu-defs.h: Expose CPUTLBEntryFull to non-TCG code
+Date: Thu, 23 Feb 2023 10:08:31 -0300
+Message-Id: <20230223130841.25916-11-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230223130841.25916-1-farosas@suse.de>
 References: <20230223130841.25916-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: eBzrFWxoFaWP
+X-TUID: 2vU3GdLV8Oqi
 
-When TCG is disabled this part of the code should not be reachable, so
-wrap it with an ifdef for now.
+This struct has no dependencies on TCG code and it is being used in
+target/arm/ptw.c to simplify the passing around of page table walk
+results. Those routines can be reached by KVM code via the gdbstub
+breakpoint code, so take the structure out of CONFIG_TCG to make it
+visible when building with --disable-tcg.
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/ptw.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ include/exec/cpu-defs.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 2b125fff44..be0cc6bc15 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -254,6 +254,7 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-         ptw->out_host = NULL;
-         ptw->out_rw = false;
-     } else {
-+#ifdef CONFIG_TCG
-         CPUTLBEntryFull *full;
-         int flags;
+diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
+index 21309cf567..d5a4f30717 100644
+--- a/include/exec/cpu-defs.h
++++ b/include/exec/cpu-defs.h
+@@ -135,6 +135,10 @@ typedef struct CPUTLBEntry {
  
-@@ -270,6 +271,9 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-         ptw->out_rw = full->prot & PAGE_WRITE;
-         pte_attrs = full->pte_attrs;
-         pte_secure = full->attrs.secure;
-+#else
-+        g_assert_not_reached();
-+#endif
-     }
+ QEMU_BUILD_BUG_ON(sizeof(CPUTLBEntry) != (1 << CPU_TLB_ENTRY_BITS));
  
-     if (regime_is_stage2(s2_mmu_idx)) {
++
++#endif  /* !CONFIG_USER_ONLY && CONFIG_TCG */
++
++#if !defined(CONFIG_USER_ONLY)
+ /*
+  * The full TLB entry, which is not accessed by generated TCG code,
+  * so the layout is not as critical as that of CPUTLBEntry. This is
+@@ -176,7 +180,9 @@ typedef struct CPUTLBEntryFull {
+     TARGET_PAGE_ENTRY_EXTRA
+ #endif
+ } CPUTLBEntryFull;
++#endif  /* !CONFIG_USER_ONLY */
+ 
++#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+ /*
+  * Data elements that are per MMU mode, minus the bits accessed by
+  * the TCG fast path.
 -- 
 2.35.3

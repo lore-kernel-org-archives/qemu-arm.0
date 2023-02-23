@@ -1,222 +1,227 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp590593ejc;
-        Thu, 23 Feb 2023 02:44:47 -0800 (PST)
-X-Google-Smtp-Source: AK7set8ISY+vl1z0u0TgfKcCni0ah3ObPpdeNsq57mr93usSpdASy4LDcgjQlA+2UCQabdgikYkv
-X-Received: by 2002:ad4:5d65:0:b0:537:4b09:670f with SMTP id fn5-20020ad45d65000000b005374b09670fmr22831784qvb.25.1677149087099;
-        Thu, 23 Feb 2023 02:44:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677149087; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp675335ejc;
+        Thu, 23 Feb 2023 04:25:37 -0800 (PST)
+X-Google-Smtp-Source: AK7set9gfAY3ITjdMmxoLOvqVNC4K91X+t3A8JIxw0zBWJ2TbH9BNnvKVAbhf5nzCZWhP7PlWNLU
+X-Received: by 2002:a05:622a:8c:b0:3b9:a43e:b7cb with SMTP id o12-20020a05622a008c00b003b9a43eb7cbmr23003979qtw.28.1677155137385;
+        Thu, 23 Feb 2023 04:25:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677155137; cv=none;
         d=google.com; s=arc-20160816;
-        b=DWtmG4i9qUJ/mj1522oEvwdWeZsdlH2GImJtXgYqwQJdhwTBQB187T/6PUD7Xrn5nN
-         Oy0r0hBObEZRZppLVjtRRTr5YS30/qdFBvvowqWo5VLA1rzWIF75dUqF3sfRpUzadzO9
-         1cf4MR/7J44yiWh5eik+BLNhThY1zWaBQyXcbJM5VSuxfA3WMoE+spopU2YsVk7Hp6Se
-         3xdXMVWXFXKtO29xGRztJNDa2zkgi5/ckE6r7eqSpg0ReQnRxAVTcX81A1hpNoNHeUG1
-         hui/l+h9Zck/IcFWkO94WqY5McOW1tZpuHMDFmrha5+2LZeAIyWThv4p+jZTQTDD8VGW
-         dI/Q==
+        b=LTNePFy3JDi1b+wyMaHdLwqiic8xV5h8EYpI6SllbGVhn5//gVsjqbVAyoccp9D8f+
+         GCOsxWdCfXjOMkqRKztzwJ/h7fnwOpPRAy9XXSjGX0tyRPP6gwIH9FsiPYElR37ySfm5
+         V4cWvuCPxYBSdu84+pQb2vNraal+xTXsdKtJ1uHbG59J5l5k/KQKVRLAJiX1bHER7Ob9
+         GFvVDvk3DYbTa6s9zxIUlVUpj0XB5VfQXujs93jkYnwbipmZSFPmNyX/aB0AjkeVq9zS
+         6PhNl1w9jc2ftPeFCS/OSgm7Ba2X1mTq3/JhvWWIisuzMcrdY4JYPF9oWI7H1VOyHawY
+         cbgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:cc:to:from:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=SImOkEqmDdEkwhMjhXOR0F510uW6Vxv8G6En62JaJkI=;
-        b=SKERDDeioKSC3Iat1g5uzoliwmLemi3+kvvEZK2BDrs/aAIkm8fVTEbIFBCnyZZcvh
-         YllNJgGk/Yx9S107Vzm5HdZ68k4/ri2Xua2Kpo8KLwxPWExoyyq5QJoa8rzGD5DPQ+/r
-         m05K2sMt50ZGJfPNjqAyhSmTzutm4sVpbYA8lcK1ESQSfz+1QGNwVCxfo54+OXCluDEB
-         TBvNkOtrF2T8hgygjEuprzPOau8ZO8gRcbOMyF/D60z9tpNIJ3R9E1W6BvlGeVFTEt0m
-         +sNagw0AgRJykrmr5u4GHnj38XrSIObFkupX4v5I4SR9Yy3AFThJEd8MUnl3QjEjbEGJ
-         XENw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=ncC5ooy40CC39l8bHyxplq7KILeASe2yLT2R4a0BRCg=;
+        b=oKVM7spCObwEUUjP7rMSFWUwDslZKpyYnvtYaU2yvAQq5c4AMp11JEYFcfMxELG8Uo
+         qexrNmLPfZyyIBeYErholaltblx9313DPUmVKBG9dV/rnVWP62EOc3OJWMmMevMtGXdr
+         /lV3/XNLDga+ymBR34ByA5qGWDlhlenFRL0QlNns/fcZWP27UYksr5maTMnLbeXo1lql
+         TEVeznAl+rlNAJNFw4e8WBL0XFZtShTZ34Qdb5Xr79seu941+7OCzn4ZnGANd6U3NOWc
+         a1GougUp3whQinQvE2CInsEySo6BWMgLF+JDtaBveaDgnB4USqsW8WXdKxv4gp3gWEwm
+         tYVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="wx4x7yu/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FaOIVFeq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11-20020a0cf5cb000000b0056c23bb1597si7933406qvm.88.2023.02.23.02.44.46
+        by mx.google.com with ESMTPS id g17-20020ac842d1000000b003a816004c41si3739282qtm.89.2023.02.23.04.25.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 02:44:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Feb 2023 04:25:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="wx4x7yu/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FaOIVFeq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pV95W-0002ny-0k; Thu, 23 Feb 2023 05:44:34 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pVAfE-0007Tf-Sq; Thu, 23 Feb 2023 07:25:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pV95P-0002mH-9j
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 05:44:29 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
+ id 1pVAf3-00076d-CD
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 07:25:23 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pV95N-000887-0z
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 05:44:27 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- o4-20020a05600c4fc400b003e1f5f2a29cso9869307wmq.4
- for <qemu-arm@nongnu.org>; Thu, 23 Feb 2023 02:44:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=SImOkEqmDdEkwhMjhXOR0F510uW6Vxv8G6En62JaJkI=;
- b=wx4x7yu/A1lmheTqE1uuvt/BGNAx0w3nBgIlgO8lz6gT/4AdGbqTL2I4iQV5xIipQ1
- tcEQv65DEFVQRqdjeL90ynscsL7IlnAagbQMliQfj0BHcNnlhqpnC15DZ0QF1m1Yp9Hr
- dpJHy8CgBNBg1gfKFzZ+1rPBXlTND50VbbQvRGcaUVYJTG3CuOYPaIJzjX6d5ZXnIzZP
- nDOL4YHvNQHJgGOTF5Kq8x5aSwbXuPeILDiEEYEEybb5sAZyTKuixanTQ4TH34sK0YmR
- dGwam3yGRdkk3+KIyqfGE4SdYYgFyuFO15fDOixADUm1DRW168/TOo/WvKec8rdJgrQV
- ebbQ==
+ (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
+ id 1pVAf1-0004JY-1C
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 07:25:20 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ m14-20020a7bce0e000000b003e00c739ce4so8033414wmc.5
+ for <qemu-devel@nongnu.org>; Thu, 23 Feb 2023 04:25:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=ncC5ooy40CC39l8bHyxplq7KILeASe2yLT2R4a0BRCg=;
+ b=FaOIVFeqVHhIVI/G7Zd9ifDd9MZq+3+jb/8y4tq5cZx4MCEMG+XUSkhWJ3HO3W7RNI
+ bSXgJ0pLw3JVaIBVwA3XYmQTtzeLl3csQMOC4tLP1/cvF1QbRWMXX94GmBrlg+r9QQKP
+ fw9oTyTiFxLAhXFOw00+XjHhqB9BsPIrmn/kLk/u/iIyHrYt3/WtXo8fc/s8VFl89Qxn
+ 3TWfTT6PNmWUjrfnANW9M9vgpMljlX3NAZDxf4XP/qt4RH8pmbdRenrouQ0gSzh2B1TM
+ tJV7zLFOy5Bn1l3nyJxhJQEot3cvGiWSkAp6mTf022wu8KKykmivSOv4+IN54K2mBUAL
+ bW4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=SImOkEqmDdEkwhMjhXOR0F510uW6Vxv8G6En62JaJkI=;
- b=XafycS4sxP2wY5vBx7DtdnccDS56oXlO/W7GS7aLBOBe8RKOVyPa9MsxyBkqQ9VyPt
- TPjDX9Bub+SU3R8jpV7EHUYgaFE1U6izkcW/+2QSyeCj18KgkXUFkfgr4ceehBwxH1Nb
- E0Ecq7ovZwoHa0hiCvUsnO0w/hBRLKfKQaSK8Su9v+dUon3BL2Hgopz2CrTjWKITlxaL
- zNluFnhwjlLYaLFcS2by/GYlF467Dc51nxyvY88jS8NjK0BOZh/LfrEv7sXIUzEQTLRl
- ZU4VLnoK0R+vmb6D5bfHbh+yWmzJSSB7wPWpvTMYy15ttJqOwr5/eAPu7reObuznnwVN
- XR/w==
-X-Gm-Message-State: AO0yUKVk+LICYbEU2V0hvSZHvo8WO4PczVeYFN4NnzuAyulRvYlHneJy
- 0ApbcMS3ClL7lENAzxlL3uloXQ==
-X-Received: by 2002:a05:600c:3b20:b0:3df:db20:b0ae with SMTP id
- m32-20020a05600c3b2000b003dfdb20b0aemr9844135wms.17.1677149061140; 
- Thu, 23 Feb 2023 02:44:21 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ncC5ooy40CC39l8bHyxplq7KILeASe2yLT2R4a0BRCg=;
+ b=DC9P+0yvnMIzrXYAeU+KDOqPsZjwSVNy7OfaSGMzDnKgz2hX2yoMFBvnzhehZNok4u
+ yy3T8eo7ygAptyZYYlyrISNT0TeYsJF5l7yABzIaEk0BJQHm05W9dk3VcpDibUlDSXjL
+ /VI/ym7Tp7BJ/2x/w5pqBAsKaiWXI+Wg5C3qxVUvcymJwBu91DoJQVyObmKiNeQpIL2b
+ YJKe56fcSFmmia2eX/CEPxhTNbLFQVe6l8vWw5dgtMhbBPfUEMyX9TdaG7qLfxeUisF8
+ m8mbBtrGSQZvwXae+QJHtt9xlBNkCyrePsWL5vYXTA979XdwZHuupjbvGBY7npFFsPbj
+ Po+Q==
+X-Gm-Message-State: AO0yUKVcfYotJM8Y9X4iCfNo1mgkZ/oMycBuDRGXdT8jNF2QKzRddUXn
+ W9mcTQjGT+FEc0yylnl9mYoUAA==
+X-Received: by 2002:a05:600c:201:b0:3ea:d601:976f with SMTP id
+ 1-20020a05600c020100b003ead601976fmr153919wmi.23.1677155117215; 
+ Thu, 23 Feb 2023 04:25:17 -0800 (PST)
+Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz.
+ [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
  by smtp.gmail.com with ESMTPSA id
- 15-20020a05600c22cf00b003e11f280b8bsm11597260wmg.44.2023.02.23.02.44.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Feb 2023 02:44:20 -0800 (PST)
-Message-ID: <a7bc04e9-a3e8-1210-976e-f166b25cbc8e@linaro.org>
-Date: Thu, 23 Feb 2023 11:44:19 +0100
+ j7-20020a05600c42c700b003db012d49b7sm5399139wme.2.2023.02.23.04.25.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Feb 2023 04:25:16 -0800 (PST)
+Date: Thu, 23 Feb 2023 13:25:15 +0100
+From: Andrew Jones <ajones@ventanamicro.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ rad@semihalf.com, peter.maydell@linaro.org,
+ quic_llindhol@quicinc.com, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, philmd@linaro.org,
+ wangyanan55@huawei.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, thuth@redhat.com,
+ lvivier@redhat.com, pbonzini@redhat.com, imammedo@redhat.com,
+ yihyu@redhat.com, shan.gavin@gmail.com
+Subject: Re: [PATCH v2 0/4] NUMA: Apply socket-NUMA-node boundary for aarch64
+ and RiscV machines
+Message-ID: <20230223122515.mzsubkwv3mgrcvhl@orel>
+References: <20230223081401.248835-1-gshan@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH v9 08/14] hw/nvram: NPCM7xx OTP device model
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com,
- kfting@nuvoton.com, Alexander Bulekov <alxndr@bu.edu>,
- Shengtan Mao <stmao@google.com>, Hao Wu <wuhaotsh@google.com>,
- Chris Rauer <crauer@google.com>
-References: <20200911052101.2602693-1-hskinnemoen@google.com>
- <20200911052101.2602693-9-hskinnemoen@google.com>
- <6ccd925d-b965-4da0-13f2-365bd75abe88@linaro.org>
-In-Reply-To: <6ccd925d-b965-4da0-13f2-365bd75abe88@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230223081401.248835-1-gshan@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=ajones@ventanamicro.com; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.102,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EUtVTwx8zSKC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: d32Z4aZYJMci
 
-Tyrone, Hao, ping?
+On Thu, Feb 23, 2023 at 04:13:57PM +0800, Gavin Shan wrote:
+> For arm64 and RiscV architecture, the driver (/base/arch_topology.c) is
+> used to populate the CPU topology in the Linux guest. It's required that
+> the CPUs in one socket can't span mutiple NUMA nodes. Otherwise, the Linux
+> scheduling domain can't be sorted out, as the following warning message
+> indicates. To avoid the unexpected confusion, this series attempts to
+> rejects such kind of insane configurations.
 
-On 22/12/22 16:03, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> (old patch)
-> 
-> On 11/9/20 07:20, Havard Skinnemoen wrote:
->> This supports reading and writing OTP fuses and keys. Only fuse reading
->> has been tested. Protection is not implemented.
->>
->> Reviewed-by: Avi Fishman <avi.fishman@nuvoton.com>
->> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> Tested-by: Alexander Bulekov <alxndr@bu.edu>
->> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->> ---
->>   include/hw/arm/npcm7xx.h       |   3 +
->>   include/hw/nvram/npcm7xx_otp.h |  79 ++++++
->>   hw/arm/npcm7xx.c               |  29 +++
->>   hw/nvram/npcm7xx_otp.c         | 440 +++++++++++++++++++++++++++++++++
->>   hw/nvram/meson.build           |   1 +
->>   5 files changed, 552 insertions(+)
->>   create mode 100644 include/hw/nvram/npcm7xx_otp.h
->>   create mode 100644 hw/nvram/npcm7xx_otp.c
-> 
->> +/**
->> + * npcm7xx_otp_array_write - ECC encode and write data to OTP array.
->> + * @s: OTP module.
->> + * @data: Data to be encoded and written.
->> + * @offset: Offset of first byte to be written in the OTP array.
->> + * @len: Number of bytes before ECC encoding.
->> + *
->> + * Each nibble of data is encoded into a byte, so the number of bytes 
->> written
->> + * to the array will be @len * 2.
->> + */
->> +extern void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void 
->> *data,
->> +                                    unsigned int offset, unsigned int 
->> len);
-> 
->> +static void npcm7xx_init_fuses(NPCM7xxState *s)
->> +{
->> +    NPCM7xxClass *nc = NPCM7XX_GET_CLASS(s);
->> +    uint32_t value;
->> +
->> +    /*
->> +     * The initial mask of disabled modules indicates the chip 
->> derivative (e.g.
->> +     * NPCM750 or NPCM730).
->> +     */
->> +    value = tswap32(nc->disabled_modules);
-> 
-> In which endianness do you want this 32-bit fuse value to be written?
-> 
-> I suppose you used a little-endian host, so we want it big-endian in
-> the OTP? In that case it would be better to use cpu_to_be32(), to
-> be able to use the OTP on a big-endian host such s390x.
-> 
->> +    npcm7xx_otp_array_write(&s->fuse_array, &value, 
->> NPCM7XX_FUSE_DERIVATIVE,
->> +                            sizeof(value));
->> +}
-> 
-> For completeness:
-> 
->  > +static void npcm730_class_init(ObjectClass *oc, void *data)
->  > +{
->  > +    NPCM7xxClass *nc = NPCM7XX_CLASS(oc);
->  > +
->  > +    /* NPCM730 is optimized for data center use, so no graphics, 
-> etc. */
->  > +    nc->disabled_modules = 0x00300395;
->  > +    nc->num_cpus = 2;
->  > +}
->  > +
->  > +static void npcm750_class_init(ObjectClass *oc, void *data)
->  > +{
->  > +    NPCM7xxClass *nc = NPCM7XX_CLASS(oc);
->  > +
->  > +    /* NPCM750 has 2 cores and a full set of peripherals */
->  > +    nc->disabled_modules = 0x00000000;
->  > +    nc->num_cpus = 2;
->  > +}
-> 
-> Thanks,
-> 
-> Phil.
+Hi Gavin,
 
+I'm not sure 'insane' is the right word, maybe 'irregular'. I've never
+seen, and don't really expect to find, specifications stating that arm
+and/or riscv must have 1:1 mappings for numa nodes and sockets. But, as
+QEMU machine types can choose certain configurations to support, if
+everyone is in agreement to restrict sbsa-ref and arm/riscv virt to 1:1
+mappings, then why not. However, I suggest stating that this is simply a
+choice being made for these boards, since the expectation of needing
+"irregular" configurations is low. We should not be trying to use Linux
+assumptions as rationale, since other OSes may cope better with irregular
+configurations.
+
+Also, I suggest adding a comment to the boards, which adopt this
+restriction, which explains that it's only a platform choice, not
+something specified by the architecture.
+
+Thanks,
+drew
+
+> 
+>    -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
+>    -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
+>    -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
+>    -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
+>  
+>    ------------[ cut here ]------------
+>    WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
+>    Modules linked in:
+>    CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
+>    pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+>    pc : build_sched_domains+0x284/0x910
+>    lr : build_sched_domains+0x184/0x910
+>    sp : ffff80000804bd50
+>    x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
+>    x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
+>    x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
+>    x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
+>    x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
+>    x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
+>    x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
+>    x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
+>    x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
+>    x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
+>    Call trace:
+>     build_sched_domains+0x284/0x910
+>     sched_init_domains+0xac/0xe0
+>     sched_init_smp+0x48/0xc8
+>     kernel_init_freeable+0x140/0x1ac
+>     kernel_init+0x28/0x140
+>     ret_from_fork+0x10/0x20
+> 
+> PATCH[1] Improves numa/test for aarch64 to follow socket-to-NUMA-node boundary
+> PATCH[2] Validate the configuration if required in the NUMA subsystem
+> PATCH[3] Enable the validation for aarch64 machines
+> PATCH[4] Enable the validation for RiscV machines
+> 
+> v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00886.html
+> 
+> Changelog
+> =========
+> v2:
+>   * Fix socket-NUMA-node boundary issues in qtests/numa-test  (Gavin)
+>   * Add helper set_numa_socket_boundary() and validate the
+>     boundary in the generic path                              (Philippe)
+> 
+> Gavin Shan (4):
+>   qtest/numa-test: Follow socket-NUMA-node boundary for aarch64
+>   numa: Validate socket and NUMA node boundary if required
+>   hw/arm: Validate socket and NUMA node boundary
+>   hw/riscv: Validate socket and NUMA node boundary
+> 
+>  hw/arm/sbsa-ref.c       |  2 ++
+>  hw/arm/virt.c           |  2 ++
+>  hw/core/machine.c       | 34 ++++++++++++++++++++++++++++++++++
+>  hw/core/numa.c          |  7 +++++++
+>  hw/riscv/spike.c        |  1 +
+>  hw/riscv/virt.c         |  1 +
+>  include/sysemu/numa.h   |  4 ++++
+>  tests/qtest/numa-test.c | 13 ++++++++++---
+>  8 files changed, 61 insertions(+), 3 deletions(-)
+> 
+> -- 
+> 2.23.0
+> 
+> 

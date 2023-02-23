@@ -1,105 +1,107 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1086206ejc;
-        Thu, 23 Feb 2023 12:44:42 -0800 (PST)
-X-Google-Smtp-Source: AK7set/iRZw7o6mmEMSi07CndOkkkPMMdJ0qs0duWFmijMdxJBf6arkedMkbUninGY1GeWBQ3OsJ
-X-Received: by 2002:ad4:5ba5:0:b0:56e:f05c:9c47 with SMTP id 5-20020ad45ba5000000b0056ef05c9c47mr18275166qvq.47.1677185082293;
-        Thu, 23 Feb 2023 12:44:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677185082; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1086280ejc;
+        Thu, 23 Feb 2023 12:44:48 -0800 (PST)
+X-Google-Smtp-Source: AK7set+8j4SBBdSECWhfpbyMs/KIhYrvnj4orxJ3JS2NQLaxXZDI+jR3eGdpomdFyxjzYjl+t6pM
+X-Received: by 2002:a05:6214:27e3:b0:56e:98a1:fff1 with SMTP id jt3-20020a05621427e300b0056e98a1fff1mr23546213qvb.7.1677185088457;
+        Thu, 23 Feb 2023 12:44:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677185088; cv=none;
         d=google.com; s=arc-20160816;
-        b=i2rUjjjXBfHM4giCHzxpzRukHvxaNphvim+233xCRzohDpAqcQ8MqC0gcnMYuUxfGV
-         eUPz/1dM3dXtkC//ZVtAK2D5o0y2PXCTkfdmpPvzqvF1YjeqaPzyEQq/vKyeqtykzpNM
-         I7q/wP9svhysCPIAG5HOhcI8tSrzox/fT2SxwlmDWO2S3Z0xRmwrZGFrtKWxtkaDtc5X
-         io/XRb6e5tqIHRJP6rrbpY7MH7gevdC6VUGCFP1273XhPM/6mS+D163OrBbU9oEyxSXI
-         vtCOxbxUH6KccxWwJcySrMKh9yfZhij2t98X1AohTJAZ3z0vbuxJx2QjGc53v5xk5eZZ
-         6/Tg==
+        b=nl9TtSunIcHIGmlfgqgRq+MGAW6S5JJHMRS2O/NF+jzoyX+Rb9nbRtq7n7xrS42Dvp
+         3WIUsY5yFuw3k5lBunVl3EantVbmRm8pKbjPHRjo1Uuk5GBuLzPOTT6sfi3NFzgQIJCQ
+         5ankthgAaUKVU37jmPBhB9r8PDCaMBx5fMTPDpBecy7KoozYw8/0kSbyLWxdyFDkXkDS
+         pUu+iJN+vG7I9O7pMr/UwXZUJuq06XWNnj9Gy/8CjUJCfx6y5sWYTDlorc/xcHpXozTW
+         Mzxv15VW7eQSDSy06P+cXGpY3dKuX+irBomWK5odp59jUlCBGw4aiFLuvrxpS31dXRyV
+         KMSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=yTc8B4JFMt2BP2s8OFGRKyLxOfXJWkbz6vP1/iv9tl8=;
-        b=Z6td4ktQvxvbp68BNce3UmMd2keJnYQyw+ZvrpNSedULWqW7wJFSfkD3yC62PrqS5a
-         MyU6w1Y64zh/mTWcpTUC79AZtWuSAMeY1q3AyESpqvdKB3XYZ4lSGNv+SOoc/K8egZ/z
-         +58C402Ew0nVN8ZViE0/1wYjgrTH0T7b6aNsyE6SPu4J18QUuyB68KviH8WGmzzfmcjt
-         Zo0Hi8Zf1rTuYbwSnUnKJmx8vkg1qx7BU3ALabqZLgHjrXWq53I2nyx09fvtfx6l1XCl
-         Te+Vre7Np1RfFXFHM8Vsl8cmHQvqRQG0feVh71we3d2pwtCZ7ubpnQ2AM2Gv0buI8YT7
-         Nz2w==
+        bh=uCfgSwaCWGjVH4XmiAS5xzTjPaTu2Mc57Kv2qaU5lRM=;
+        b=RRIt2F2PZqgIWq4GALxRhnQ9Myib3zn8BDEzvbWAzTFe4BujhVTOzZaAaaJecTrR5l
+         OyPtsEdK/px3wDjGlh6KThoRKfzL3Rtz0SYWnPbTOE1QSssay+waRE+ennHLNAXxh+5e
+         rt17Rad+s4VwvFD5BZIav18iwapQHABe+HGIhpE9Q4PlxrTnHIVw+gKlwohKNWOE66yB
+         wI7/z1BzpWgK6dKt0Pv8iYtFPNYKq4UoxbHUZ4BHX6n3nvQDYtAjd+2Kri46u4AVPaWS
+         06uhzPjnK/X9OLs0Wb2VpINTR+/TnVTi4RvnUcgyz3KS+mq7bmO236Fkw5AE9AzFwvtN
+         rZhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KtMMPbbn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="n89/wfw9";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10-20020a0cf0ca000000b005710976d3d8si2899923qvl.233.2023.02.23.12.44.42
+        by mx.google.com with ESMTPS id r10-20020a0c9e8a000000b0056ea7cac144si2114009qvd.376.2023.02.23.12.44.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 12:44:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Feb 2023 12:44:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KtMMPbbn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="n89/wfw9";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pVIRk-0002wa-QV; Thu, 23 Feb 2023 15:44:08 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pVIRb-0002oX-NJ; Thu, 23 Feb 2023 15:43:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVIRj-0002ti-GP
- for qemu-devel@nongnu.org; Thu, 23 Feb 2023 15:44:07 -0500
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ id 1pVIRa-0002nk-N0
+ for qemu-arm@nongnu.org; Thu, 23 Feb 2023 15:43:58 -0500
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVIRh-0007PT-Rc
- for qemu-devel@nongnu.org; Thu, 23 Feb 2023 15:44:07 -0500
-Received: by mail-pl1-x632.google.com with SMTP id e5so15563839plg.8
- for <qemu-devel@nongnu.org>; Thu, 23 Feb 2023 12:44:05 -0800 (PST)
+ id 1pVIRZ-0007RJ-51
+ for qemu-arm@nongnu.org; Thu, 23 Feb 2023 15:43:58 -0500
+Received: by mail-pj1-x102c.google.com with SMTP id
+ z20-20020a17090a8b9400b002372d7f823eso554081pjn.4
+ for <qemu-arm@nongnu.org>; Thu, 23 Feb 2023 12:43:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=yTc8B4JFMt2BP2s8OFGRKyLxOfXJWkbz6vP1/iv9tl8=;
- b=KtMMPbbnac41HdsjB0iPOxFkQMHlwQmJNk4nxVGxYUcUd0k5e0ViKo4Y6DNICfbS3H
- sQsmSgF8Lawd5ijlnks0Vuut6+4xtZa1cdW2yqkGu9HJRVN/uXy07qrbZVyA+GEHG9og
- 5TSc7K6JLFVR/OnTWetN8b+xCqbFwd2QHYhPKTzFSXVh+398ARvZLlDJVNq5QCMTJjOA
- cn7Yh8ayd62xc57krVEXwgjxXR3SuFRgPE+/bAZrZerMPtruWI8iYNvr/0SbGnTFhH+x
- frvjzSfyTlk2A9ZelIu5jfC5sMzyJ9P+9Ky9DhnLcj2GCvrG3xLNsu1ohIfe2CX1VuXH
- 0GKg==
+ bh=uCfgSwaCWGjVH4XmiAS5xzTjPaTu2Mc57Kv2qaU5lRM=;
+ b=n89/wfw9eZdbECZlYDz5DfRTWcaLs9CRGk61ZLnt0wYLe7RkvzUXWZxy/qVdfS/xMx
+ jhsvJk5jAkHNTzM81PI0a2bQQTbAZvfnVX8sAfjjaNeQsDs4wj0zY/cwXWeHTiefiCab
+ LKLWuP/9XG+VMZ4JnJ5xrnl5S+WFM3XgAXMW3c/f8WuxGqF5jLknWA8HkHqCRJpRw/wJ
+ fF0P+VrmAlNGpOZI5BCoMTEDk5mXgU4pN+OP5Sdrd9UUPfchmR81q3hbglvMBN5bOSUy
+ cV1N3zw+lSJPnew/CiLPXvFrEaqiZDMYaQLK2t4Hy0JAmDl6ATXosa0QSXk15skr8h/R
+ R/Vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=yTc8B4JFMt2BP2s8OFGRKyLxOfXJWkbz6vP1/iv9tl8=;
- b=10owN3+nyKau4jS42EKzJsVWXDykoSsRxmMRtL/cBRNqzsYhFmJV4FYRVl84dvnW98
- 7LbpfFMtAPqASB0wW2WYY1I5Qt6HeW3D3TxjOHHi3GRcb3O6eJXigk/OT8FoqSEZVwyp
- ll/3se5CuovpM9G3haxA5rwkMeTCv6X+Ff6u3igOQNkVnTNalcEU61bzR8Yv/rDsjfPP
- 1VlS0EIDwXu7GxC3yyNukL/k2Yvwr4MFPCmLVPmojYxu87fQMCFc9F/2DqVyysKfF6Uy
- ZzwE1FsVSg3CvK85BW99p3m9lAjM71T3hKsC/YGRmx+g5z8QzYqe8NwSgnLevYG8zwNK
- +ZbQ==
-X-Gm-Message-State: AO0yUKU5J2SEtHs7euG3aBontdCZhOQRmeftXgZ1+BlPUksmrG575XYZ
- VbEoqH+Gij1I1l1/HTQ5oe8ueNbrsE9I5U+FQts=
-X-Received: by 2002:a17:90b:3847:b0:233:e426:6501 with SMTP id
- nl7-20020a17090b384700b00233e4266501mr13056943pjb.19.1677185045020; 
- Thu, 23 Feb 2023 12:44:05 -0800 (PST)
+ bh=uCfgSwaCWGjVH4XmiAS5xzTjPaTu2Mc57Kv2qaU5lRM=;
+ b=zItnExvz1x8RIro7hsSOFhS6IplVu8VGTRHWXlvk+hCmzfV+Ts045DhAFNurzXub+n
+ SBsFwbaPaqPJLjgx1kbHpUKm6zziOtV5lL+EhV6ma8Ru3FywZcjY8G1x0Yl66pzdbBMo
+ n6DReF+YFmpGq0DQSy30ENXB+Ig3YT4nENYryqTy++7M4mWiOeOxMTj09B3tuGW6tj94
+ vuNCfQCPOVjTfbHKn/q2aR4qnjMURT6jeyQD25w7sWNMg0io1pksVUJlwtmjV7kftME1
+ 2jE25ccqeIhViHtX3Nb+Mb5+M24afYpz5u3nuHplvTDEopFfD5mVvny8ODzM+rEq4JNT
+ E4Gg==
+X-Gm-Message-State: AO0yUKWgQ+Awsl2fJK8eXbM0XRR1CrN8E82g9O/CCRRXdgIZFp8J4tWd
+ LHj8LNkGuCz4b9OzlPe3FY39VF/IlkdeLXRCNfQ=
+X-Received: by 2002:a17:90b:38c7:b0:234:a88e:d67e with SMTP id
+ nn7-20020a17090b38c700b00234a88ed67emr14757191pjb.34.1677185035744; 
+ Thu, 23 Feb 2023 12:43:55 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- e187-20020a6369c4000000b004b1fef0bf16sm5992850pgc.73.2023.02.23.12.44.03
+ e187-20020a6369c4000000b004b1fef0bf16sm5992850pgc.73.2023.02.23.12.43.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Feb 2023 12:44:04 -0800 (PST)
+ Thu, 23 Feb 2023 12:43:55 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 11/13] accel/tcg: Add TLB_CHECK_ALIGNED
-Date: Thu, 23 Feb 2023 10:43:40 -1000
-Message-Id: <20230223204342.1093632-12-richard.henderson@linaro.org>
+Subject: [PATCH 05/13] softmmu/physmem: Check watchpoints for read+write at
+ once
+Date: Thu, 23 Feb 2023 10:43:34 -1000
+Message-Id: <20230223204342.1093632-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230223204342.1093632-1-richard.henderson@linaro.org>
 References: <20230223204342.1093632-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,88 +110,92 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /vptpvfKdACC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XH6fPO4lp2SQ
 
-This creates a per-page method for checking of alignment.
+Atomic operations are read-modify-write, and we'd like to
+be able to test both read and write with one call.  This is
+easy enough, with BP_MEM_READ | BP_MEM_WRITE.
+
+Add BP_HIT_SHIFT to make it easy to set BP_WATCHPOINT_HIT_*.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/cpu-all.h |  4 +++-
- accel/tcg/cputlb.c     | 25 ++++++++++++++++++++++++-
- 2 files changed, 27 insertions(+), 2 deletions(-)
+ include/hw/core/cpu.h |  7 ++++---
+ softmmu/physmem.c     | 19 ++++++++++---------
+ 2 files changed, 14 insertions(+), 12 deletions(-)
 
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index f3b2f4229c..5bb04782ba 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -399,8 +399,10 @@ CPUArchState *cpu_copy(CPUArchState *env);
- #define TLB_BSWAP            (1 << 0)
- /* Set if TLB entry contains a watchpoint.  */
- #define TLB_WATCHPOINT       (1 << 1)
-+/* Set if TLB entry requires aligned accesses.  */
-+#define TLB_CHECK_ALIGNED    (1 << 2)
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 2417597236..2f85ba14b3 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -921,9 +921,10 @@ void cpu_single_step(CPUState *cpu, int enabled);
+ #define BP_GDB                0x10
+ #define BP_CPU                0x20
+ #define BP_ANY                (BP_GDB | BP_CPU)
+-#define BP_WATCHPOINT_HIT_READ 0x40
+-#define BP_WATCHPOINT_HIT_WRITE 0x80
+-#define BP_WATCHPOINT_HIT (BP_WATCHPOINT_HIT_READ | BP_WATCHPOINT_HIT_WRITE)
++#define BP_HIT_SHIFT          6
++#define BP_WATCHPOINT_HIT_READ  (BP_MEM_READ << BP_HIT_SHIFT)
++#define BP_WATCHPOINT_HIT_WRITE (BP_MEM_WRITE << BP_HIT_SHIFT)
++#define BP_WATCHPOINT_HIT       (BP_MEM_ACCESS << BP_HIT_SHIFT)
  
--#define TLB_SLOW_FLAGS_MASK  (TLB_BSWAP | TLB_WATCHPOINT)
-+#define TLB_SLOW_FLAGS_MASK  (TLB_BSWAP | TLB_WATCHPOINT | TLB_CHECK_ALIGNED)
- 
- /* The two sets of flags must not overlap. */
- QEMU_BUILD_BUG_ON(TLB_FLAGS_MASK & TLB_SLOW_FLAGS_MASK);
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index a90688ac30..c692e71766 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -1546,7 +1546,7 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
-     flags |= full->slow_flags[access_type];
- 
-     /* Fold all "mmio-like" bits into TLB_MMIO.  This is not RAM.  */
--    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
-+    if (flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY | TLB_CHECK_ALIGNED)) {
-         *phost = NULL;
-         return TLB_MMIO;
+ int cpu_breakpoint_insert(CPUState *cpu, vaddr pc, int flags,
+                           CPUBreakpoint **breakpoint);
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index cb998cdf23..c4f62dee60 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -915,9 +915,12 @@ void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+         /* this is currently used only by ARM BE32 */
+         addr = cc->tcg_ops->adjust_watchpoint_address(cpu, addr, len);
      }
-@@ -1885,6 +1885,29 @@ static bool mmu_lookup(CPUArchState *env, target_ulong addr, MemOpIdx oi,
-         tcg_debug_assert((flags & TLB_BSWAP) == 0);
-     }
- 
-+    /*
-+     * This alignment check differs from the one above, in that this is
-+     * based on the atomicity of the operation. The intended use case is
-+     * the ARM memory type field of each PTE, where access to pages with
-+     * Device memory type require alignment.
-+     */
-+    if (unlikely(flags & TLB_CHECK_ALIGNED)) {
-+        MemOp atmax = l->memop & MO_ATMAX_MASK;
-+        MemOp atom = l->memop & MO_ATOM_MASK;
-+        MemOp size = l->memop & MO_SIZE;
 +
-+        if (size != MO_8 && atom != MO_ATOM_NONE) {
-+            if (atmax == MO_ATMAX_SIZE) {
-+                a_bits = size;
-+            } else {
-+                a_bits = atmax >> MO_ATMAX_SHIFT;
-+            }
-+            if (addr & ((1 << a_bits) - 1)) {
-+                cpu_unaligned_access(env_cpu(env), addr, type, l->mmu_idx, ra);
-+            }
-+        }
-+    }
++    assert((flags & ~BP_MEM_ACCESS) == 0);
+     QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
+-        if (watchpoint_address_matches(wp, addr, len)
+-            && (wp->flags & flags)) {
++        int hit_flags = wp->flags & flags;
 +
-     return crosspage;
- }
++        if (hit_flags && watchpoint_address_matches(wp, addr, len)) {
+             if (replay_running_debug()) {
+                 /*
+                  * replay_breakpoint reads icount.
+@@ -936,16 +939,14 @@ void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+                 replay_breakpoint();
+                 return;
+             }
+-            if (flags == BP_MEM_READ) {
+-                wp->flags |= BP_WATCHPOINT_HIT_READ;
+-            } else {
+-                wp->flags |= BP_WATCHPOINT_HIT_WRITE;
+-            }
++
++            wp->flags |= hit_flags << BP_HIT_SHIFT;
+             wp->hitaddr = MAX(addr, wp->vaddr);
+             wp->hitattrs = attrs;
  
+-            if (wp->flags & BP_CPU && cc->tcg_ops->debug_check_watchpoint &&
+-                !cc->tcg_ops->debug_check_watchpoint(cpu, wp)) {
++            if (wp->flags & BP_CPU
++                && cc->tcg_ops->debug_check_watchpoint
++                && !cc->tcg_ops->debug_check_watchpoint(cpu, wp)) {
+                 wp->flags &= ~BP_WATCHPOINT_HIT;
+                 continue;
+             }
 -- 
 2.34.1
 

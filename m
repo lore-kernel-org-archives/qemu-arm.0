@@ -1,262 +1,186 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp688240ejc;
-        Thu, 23 Feb 2023 04:45:13 -0800 (PST)
-X-Google-Smtp-Source: AK7set+9+zMXJGMfqYkBSPj/aZwbSiqFJdTUhKahS3SoYp+qrizZuzags3qmPAG6e9/YWKpxm6Wf
-X-Received: by 2002:ac8:7d01:0:b0:3bf:a031:9519 with SMTP id g1-20020ac87d01000000b003bfa0319519mr16334786qtb.14.1677156313381;
-        Thu, 23 Feb 2023 04:45:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677156313; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp697218ejc;
+        Thu, 23 Feb 2023 04:59:30 -0800 (PST)
+X-Google-Smtp-Source: AK7set8eQbdRouSnJmqIl0KJPpAPEInmPjdOFV4rA5qLoxI9EW0RBX+5vsYOmnfWyUlKAWcFUn79
+X-Received: by 2002:ad4:5aec:0:b0:56e:a791:37c6 with SMTP id c12-20020ad45aec000000b0056ea79137c6mr21736432qvh.16.1677157170465;
+        Thu, 23 Feb 2023 04:59:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677157170; cv=none;
         d=google.com; s=arc-20160816;
-        b=s67TtCjtZrnzMJplycQziwl5+BcHlkTkuQlromFBkIL/dQ05Y4Y0D8z72jLxs2SwRl
-         fMclLM4hCEjdc0eoVe8zqzn135kelWMHgy1DLazv0tkMyWbJK6pKEfGa2RJkZ4DAvE2A
-         bzbg2F/s+5teYRpZ69rCPFdR405ZlT8fOeYNcxnjmRYTB9GIdmZ8/HdV0oZTD1bk7UkP
-         omTCQ6dHdE+d8QkyN5Klso39+Mohf59AzmnGpdYnJ++07rlbLrckBuzxzbR3zOdmJC46
-         Ny+3decC+LeIYlwoxKL2Z3jSFq6jl84WemJW6z2RRsSvh7PblkTFvosDQw2UWL0tIluC
-         F4Hw==
+        b=Lvxuy/5ODZTFYkdBAtHPX6nmxvulgUKCFag5bdjK5e8E/yAdUUrU+W96vO1YTcRzNK
+         dmn+TUQoWXB8movR08iyQ7v5IgkysjBcUyGrx07d1YvBWX56fsaUFdM3YJsd6HnzUNTi
+         UaPcfn+8Nz6zrhbe8bcaQwMOUObvATq6793IvVsZjR4gsRhcPkfo67xPgxmwR2mIr/9N
+         UlRmaHXyjgqk2n2eupTb0trThW+4ov0BhLVTlO6b/WsWB3aqAcjpWzwrRwhWzCMOQ/Ci
+         2YDtch0gQOyLERoD3FVG9jG1HN79hllTMlV5aFKty5NKgFol+nXt5AvDsfpGdTcdaTbI
+         oXeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=UieqvLMYtzXamcR/EnTubGkk6CG/pA9dzjTw8XpqXso=;
-        b=BvqDsQmLSmMsNGkoU9fBb9Hq6IbixQRVwZaoIotqMtnlfRT1kAkKfQOqm5b+CmwCfY
-         EJoG8KKCn1fDxITso1xyCcA93pWyisV6rtXYP7ERvFVAcktCqj71B0veLK4KYyngTMeo
-         yk0kUdMdWMch/fsBW/rG+X4B/cawXxQKDO2YFDAAFStMM3sZOsuEYzomdCu0RvQhe2sz
-         7g1WVd6ssSRSOA6ps4XLXB7P6OdwRx8kFJYE3PsSXqwZ5i7kfcBjmNCWWWTRa3j40gf2
-         3ACT7hblLF866MraA+qpPdQXKviAp/Z2cBhW6r+NnlCAnsnx7ZrK2T6UnynnqF5uZlhZ
-         5jXw==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=AnL0fZO3IgEYdXjPIllGPxgyMFIATdQdlXCyFht6XPA=;
+        b=ZkX61VuTkexYRa5fcGKZgAlvhED84TcUGuPut+Rzc/lwCoD58JEgwxSF76I3xwximK
+         G25VIwG+od+06FCYWS4x4XT4eOm+jyri8kipITHKqjiRlGTSmMac9g8RB/GsTa7Oe2Jh
+         FSFpZdSHIzjGnH+54gym2XiQLIUGh12365xGAuJqGLwV6WsIxC5ZWLPgxpGaexGHrhI9
+         czj9rq2yV6sSSb48LsCLz59mbuwKc2os8kgWQ7GXB6GZbUT6+WPxyGMHT1HCxsv9lN5b
+         loWQUz/9MUN6Uin4ARRZ4C6pDZecEge2wv0qxDnItJIOfuLZeCML0q3a91L+MGKZ6fHo
+         ZuBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JJnuX4dT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IIdJZ+AX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h17-20020ac85e11000000b003b86a673061si2319433qtx.128.2023.02.23.04.45.13
+        by mx.google.com with ESMTPS id z9-20020a376509000000b00730f6f37883si5473990qkb.223.2023.02.23.04.59.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 04:45:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Feb 2023 04:59:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JJnuX4dT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IIdJZ+AX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pVAx6-0007bS-9h; Thu, 23 Feb 2023 07:44:00 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pVBAI-0001WD-8G; Thu, 23 Feb 2023 07:57:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVAx4-0007b1-PF
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 07:43:58 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVAx1-00032x-P8
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 07:43:58 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- ay29-20020a05600c1e1d00b003e9f4c2b623so3698736wmb.3
- for <qemu-arm@nongnu.org>; Thu, 23 Feb 2023 04:43:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UieqvLMYtzXamcR/EnTubGkk6CG/pA9dzjTw8XpqXso=;
- b=JJnuX4dTA2N3L180fA0KX5m9j1rbgos4BmjcPIetUoy2apXAg3vVhrkQbsCgYmCr9w
- ciIMPCKSO1vtAuNqpHkxTttzI7Pap3aIV2gE6MeuZ5uIurX9F2bIxCCAkeJn5LtEqCT1
- vhx41Hzx2JEYGcP7E8zSZRKr2YKeLYWTkl9eKqMzUSb6cxz3p3jSaYZoi/3fN9bNQz5W
- amHDqzIL3dbI7/TOSPyT6X5rM5IMxjaxYXQLPaz1bfuaN1xPSY+g5kTUg3qJdrGN5x/o
- 2TFOhXXCcVGSXlYMaYd+vwzPO6z5hbas+rSAeLwRk3BBwCCJsE9JpOLC3eDKRYMJ45yq
- +7Bw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=UieqvLMYtzXamcR/EnTubGkk6CG/pA9dzjTw8XpqXso=;
- b=go3vDLySvaQSjOneo93o4vG/xBlzyp3w/i0ZGC1IEdYlyF6E9ySWdiAtj8Ra1LQUxi
- adT/xkES0F9Fm7SChyQ02s5LyNtbVwmK8wiuA5zgC12G2T8ewbpzGyNBGwVT1JxMVE+A
- 7qteWVvg4jrxnMDsPSz40po2HBuXSwHNdffozA3copkbFbnjF3zfAMcCoaq/gUBy2kuS
- v6LZWu6mvv9cGoQ5G0hscwjf5W5t8CRPLFJjq+NScuAUlCJ8o1nQDhK8x62NnL7xqJFI
- qJcLjJq4A2ETR86zRUzxe9qtcwFI31Qbs0fXBPyguqOkueCPL3w6vaJb0s9QgsuNiZBv
- q0Hw==
-X-Gm-Message-State: AO0yUKUeBGyHbxs1zImsHUc4MPgxrf6JrktqtIm0ljsqh1N2uOmKWJtQ
- Hs1dVWTwR/judZYSI1DiPPSkHQ==
-X-Received: by 2002:a05:600c:1da5:b0:3e2:1dac:b071 with SMTP id
- p37-20020a05600c1da500b003e21dacb071mr10813211wms.13.1677156234252; 
- Thu, 23 Feb 2023 04:43:54 -0800 (PST)
-Received: from localhost.localdomain ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- d9-20020a056000114900b002c5584d0e3dsm9976086wrx.24.2023.02.23.04.43.52
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Feb 2023 04:43:53 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Markus Armbruster <armbru@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
- Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Song Gao <gaosong@loongson.cn>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v3 2/4] target/i386: Restrict 'qapi-commands-machine.h' to
- system emulation
-Date: Thu, 23 Feb 2023 13:43:38 +0100
-Message-Id: <20230223124340.95367-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230223124340.95367-1-philmd@linaro.org>
-References: <20230223124340.95367-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1pVBAG-0001F8-Ht
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 07:57:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1pVBAE-0000vu-BP
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 07:57:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677157053;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=AnL0fZO3IgEYdXjPIllGPxgyMFIATdQdlXCyFht6XPA=;
+ b=IIdJZ+AXjm9CtVxB0qc4hkeu4jImapz7urfdUzPRmOTRxZPvrhUcESGVc8VRlfwDpzuH3t
+ 9fSdXZHDBgC3uqQ+50lGd7bhYKMHbAzRgdoqqCx7lCOYNDCy+Bj66MsJMcmaR+J+3VrFvM
+ 3NdEKAYk0r8RVLjRdTavwmULYOE6u/U=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-314-6cVXNoeQNVK6LpRd8OjtSw-1; Thu, 23 Feb 2023 07:57:29 -0500
+X-MC-Unique: 6cVXNoeQNVK6LpRd8OjtSw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 23C77800B23;
+ Thu, 23 Feb 2023 12:57:29 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.113])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 55D5C40C1423;
+ Thu, 23 Feb 2023 12:57:25 +0000 (UTC)
+Date: Thu, 23 Feb 2023 12:57:22 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ rad@semihalf.com, peter.maydell@linaro.org,
+ quic_llindhol@quicinc.com, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, philmd@linaro.org,
+ wangyanan55@huawei.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, thuth@redhat.com,
+ lvivier@redhat.com, pbonzini@redhat.com, imammedo@redhat.com,
+ yihyu@redhat.com, shan.gavin@gmail.com
+Subject: Re: [PATCH v2 0/4] NUMA: Apply socket-NUMA-node boundary for aarch64
+ and RiscV machines
+Message-ID: <Y/disinKmr6gLby1@redhat.com>
+References: <20230223081401.248835-1-gshan@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230223081401.248835-1-gshan@redhat.com>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YLXo9WGkFY9x
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Hcwu6vwRi282
 
-Since commit a0e61807a3 ("qapi: Remove QMP events and commands from
-user-mode builds") we don't generate the "qapi-commands-machine.h"
-header in a user-emulation-only build.
+On Thu, Feb 23, 2023 at 04:13:57PM +0800, Gavin Shan wrote:
+> For arm64 and RiscV architecture, the driver (/base/arch_topology.c) is
+> used to populate the CPU topology in the Linux guest. It's required that
+> the CPUs in one socket can't span mutiple NUMA nodes. Otherwise, the Linux
+> scheduling domain can't be sorted out, as the following warning message
+> indicates. To avoid the unexpected confusion, this series attempts to
+> rejects such kind of insane configurations.
+> 
+>    -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
+>    -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
+>    -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
+>    -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
 
-Guard qmp_query_cpu_definitions() within CONFIG_USER_ONLY; move
-x86_cpu_class_check_missing_features() closer since it is only used
-by this QMP command handler.
+This is somewhat odd as a config, because core 2 is in socket 0
+and core 3 is in socket 1, so it wouldn't make much conceptual
+sense to have them in the same NUMA node, while other cores within
+the same socket are in different NUMA nodes. Basically the split
+of NUMA nodes is not aligned with any level in the topology.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/i386/cpu.c | 74 +++++++++++++++++++++++++----------------------
- 1 file changed, 39 insertions(+), 35 deletions(-)
+This series, however, also rejects configurations that I would
+normally consider to be reasonable. I've not tested linux kernel
+behaviour though, but as a user I would expect to be able to
+ask for:
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 4d2b8d0444..c8da082b4f 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -31,11 +31,11 @@
- #include "qapi/error.h"
- #include "qapi/qapi-visit-machine.h"
- #include "qapi/qmp/qerror.h"
--#include "qapi/qapi-commands-machine-target.h"
- #include "standard-headers/asm-x86/kvm_para.h"
- #include "hw/qdev-properties.h"
- #include "hw/i386/topology.h"
- #ifndef CONFIG_USER_ONLY
-+#include "qapi/qapi-commands-machine-target.h"
- #include "exec/address-spaces.h"
- #include "hw/boards.h"
- #include "hw/i386/sgx-epc.h"
-@@ -4713,40 +4713,6 @@ static void x86_cpu_get_unavailable_features(Object *obj, Visitor *v,
-     visit_type_strList(v, "unavailable-features", &result, errp);
- }
- 
--/* Check for missing features that may prevent the CPU class from
-- * running using the current machine and accelerator.
-- */
--static void x86_cpu_class_check_missing_features(X86CPUClass *xcc,
--                                                 strList **list)
--{
--    strList **tail = list;
--    X86CPU *xc;
--    Error *err = NULL;
--
--    if (xcc->host_cpuid_required && !accel_uses_host_cpuid()) {
--        QAPI_LIST_APPEND(tail, g_strdup("kvm"));
--        return;
--    }
--
--    xc = X86_CPU(object_new_with_class(OBJECT_CLASS(xcc)));
--
--    x86_cpu_expand_features(xc, &err);
--    if (err) {
--        /* Errors at x86_cpu_expand_features should never happen,
--         * but in case it does, just report the model as not
--         * runnable at all using the "type" property.
--         */
--        QAPI_LIST_APPEND(tail, g_strdup("type"));
--        error_free(err);
--    }
--
--    x86_cpu_filter_features(xc, false);
--
--    x86_cpu_list_feature_names(xc->filtered_features, tail);
--
--    object_unref(OBJECT(xc));
--}
--
- /* Print all cpuid feature names in featureset
-  */
- static void listflags(GList *features)
-@@ -4875,6 +4841,42 @@ void x86_cpu_list(void)
-     g_list_free(names);
- }
- 
-+#ifndef CONFIG_USER_ONLY
-+
-+/* Check for missing features that may prevent the CPU class from
-+ * running using the current machine and accelerator.
-+ */
-+static void x86_cpu_class_check_missing_features(X86CPUClass *xcc,
-+                                                 strList **list)
-+{
-+    strList **tail = list;
-+    X86CPU *xc;
-+    Error *err = NULL;
-+
-+    if (xcc->host_cpuid_required && !accel_uses_host_cpuid()) {
-+        QAPI_LIST_APPEND(tail, g_strdup("kvm"));
-+        return;
-+    }
-+
-+    xc = X86_CPU(object_new_with_class(OBJECT_CLASS(xcc)));
-+
-+    x86_cpu_expand_features(xc, &err);
-+    if (err) {
-+        /* Errors at x86_cpu_expand_features should never happen,
-+         * but in case it does, just report the model as not
-+         * runnable at all using the "type" property.
-+         */
-+        QAPI_LIST_APPEND(tail, g_strdup("type"));
-+        error_free(err);
-+    }
-+
-+    x86_cpu_filter_features(xc, false);
-+
-+    x86_cpu_list_feature_names(xc->filtered_features, tail);
-+
-+    object_unref(OBJECT(xc));
-+}
-+
- static void x86_cpu_definition_entry(gpointer data, gpointer user_data)
- {
-     ObjectClass *oc = data;
-@@ -4915,6 +4917,8 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
-     return cpu_list;
- }
- 
-+#endif /* !CONFIG_USER_ONLY */
-+
- uint64_t x86_cpu_get_supported_feature_word(FeatureWord w,
-                                             bool migratable_only)
- {
+    -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
+    -numa node,nodeid=0,cpus=0,memdev=ram0                \
+    -numa node,nodeid=1,cpus=1,memdev=ram1                \
+    -numa node,nodeid=2,cpus=2,memdev=ram2                \
+    -numa node,nodeid=3,cpus=3,memdev=ram3                \
+    -numa node,nodeid=4,cpus=4,memdev=ram4                \
+    -numa node,nodeid=5,cpus=5,memdev=ram5                \
+
+ie, every core gets its own NUMA node
+
+Or to aask for every cluster as a numa node:
+
+    -smp 6,maxcpus=6,sockets=2,clusters=3,cores=1,threads=1 \
+    -numa node,nodeid=0,cpus=0,memdev=ram0                \
+    -numa node,nodeid=1,cpus=1,memdev=ram1                \
+    -numa node,nodeid=2,cpus=2,memdev=ram2                \
+    -numa node,nodeid=3,cpus=3,memdev=ram3                \
+    -numa node,nodeid=4,cpus=4,memdev=ram4                \
+    -numa node,nodeid=5,cpus=5,memdev=ram5                \
+
+In both cases the NUMA split is aligned with a given level
+in the topology, which was not the case with your example.
+
+Rejecting these feels overly strict to me, and may risk breaking
+existing valid deployments, unless we can demonstrate those
+scenarios were unambiguously already broken ?
+
+If there was something in the hardware specs that requires
+this, then it is more valid to do, than if it is merely an
+specific guest kernel limitation that might be fixed any day.
+
+With regards,
+Daniel
 -- 
-2.38.1
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

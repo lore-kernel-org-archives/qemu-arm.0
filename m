@@ -1,224 +1,220 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp710294ejc;
-        Thu, 23 Feb 2023 05:11:58 -0800 (PST)
-X-Google-Smtp-Source: AK7set9C8rDZbikaaiVD6tKsVfp3M6t0iZWrZDAGoOORWo9p9YXlHz662o9kJ+oRFdG46JST420m
-X-Received: by 2002:a5d:5608:0:b0:2bf:b199:c7ef with SMTP id l8-20020a5d5608000000b002bfb199c7efmr11123102wrv.12.1677157918291;
-        Thu, 23 Feb 2023 05:11:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677157918; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp717823ejc;
+        Thu, 23 Feb 2023 05:19:43 -0800 (PST)
+X-Google-Smtp-Source: AK7set/Vp+BFut0S6R/nn//TfXvAxpxoT2aWxeip9EJrH8FBJzqYGE0OifUEh0cLY8XCAYCKDJTI
+X-Received: by 2002:a05:6214:1c4c:b0:56e:a2cb:574e with SMTP id if12-20020a0562141c4c00b0056ea2cb574emr23877763qvb.5.1677158383143;
+        Thu, 23 Feb 2023 05:19:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677158383; cv=none;
         d=google.com; s=arc-20160816;
-        b=dDlFdZ4yii2coF8hpGMOOGtIJWJ2AyIimhHIt671QbDCQGD9B+lE7GxMrByjN/pIrH
-         kC8/UwJiBpdEvjOHxO84h/LUl+VmbDKRVxvh9pcCqnaQJ3uShD9b9ad0WMuMrCtetsU3
-         jA554Dfv+HAV8Her8hc68z80i6aOKOGplM7VCvijkbBP3b65pSChCicjwVXgOXS7v+h/
-         hDHyyYTo3LhOiqU0i757cU5+cFaoJrNcufAa5glFIIfVNoJuH+OTXYRFCGjp8ppGaRCK
-         plm/iyHXHuL6q7zzf62bDkFoKDbkETli9qMuHT6LB08rGjN/p7SsP0KyhrkiqgLNzljo
-         9amQ==
+        b=HJUbD/ugsvJwceR7QSXOn8ublHdpkRMdS9kW9KnVsbSqQrdQgxUQq2jgUvyADLpwpo
+         NNj3YEVMyZkerbN+ZhhAIZi1/ebTH+38glFJS6HXvTtQwTiuFGpXxD09Kw9qlkXa6WI6
+         j/JF3ovNbK7Alstl7pKY1UdVPewe6LVE9ZOTt9WctKFr6mmSWge/Vt04yD6trATwNj6b
+         FsxH8ZMHsHFoVnfFEFe2O9leG0+OE0bU/iDsygAT8HFLi3nVRHZVF0NhxV9Xd3qIGALY
+         eSmS2ABuN2UHaNg7LiUxPJiTE7Zxx47BvTwWbyIeUMmp7pXqmstGV1k1CriLi7K3tYXJ
+         NjUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=IZIy8Z3iGPcCgRkuMHF+6DkhbdLUaHXoLVg5l0Z77Vk=;
-        b=VzGoZyQooqnL+GXIPNGlHtnxhvyJ9NfhN0vs1Ulf8OVBW5RnmE02lVzEjb9JRMI8MD
-         tCr4dG7RH9jKQ6oX3q2m98dcn9NsPoQPn7elMx7nWGz9+JWa4pDwlRN7yTF2wVxr+pud
-         U+pIYz+dcP5HYyZ75OfYXxc9WwWslYW9YR7adNThuyOSrq80GQiwjs81AJSSVOyOT4Pu
-         nlujE8145PdTtq0JCrGH7Ty37mn+/zyFBWt6ReJn/dcs85o7aOhYR1kRYCmVerkyKOl7
-         dWOfdV0LPQ+IVN287pBhF0MhYI8c2LSqybQDGmmOmCeC4X4J2Q8kmNbMeGfIH84lfwze
-         Dt/g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=sMRsPnOqXIfsHumeg62yfqXE5GIZUf9e0d/Tu/JBZVQ=;
+        b=jqMqIrQsNrBPDmY6364LJ2Np8hW/SZsq7UjilUv+bpq0xxDMh98y4q0A0QHABTzPgJ
+         AvyoXIMC15OKxbZ00lX1Svv9+kPbGHlncDIV3SwhZOVQKoT3Brykq8tHyNomanaCb4EJ
+         lP423Sy7wKSvV4MyjagAZXN38M1LcPZZHG9wmPSQvazfYwVRv/6BQHo2MUOYs4RtcCE9
+         KyM0sj/qqk1VIFanIJCxt9Do+bbHKaEhVpZOdRhYhyTY/sm4e4wbxuQTuEp81AsNVaKg
+         X3LFyUwlL7Lhf0nYZIpcOtyAR9Ke9bgfBawzTkpqWAhqWz4drhKGgKN71ZCYur5UWBIv
+         ajuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="lzPbStt/";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=mZlk7TzV;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id u15-20020adfdd4f000000b002c4061f53efsi8266697wrm.860.2023.02.23.05.11.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Feb 2023 05:11:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Eryxm0HN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id do23-20020a05620a2b1700b0073baf97bb4dsi3374667qkb.101.2023.02.23.05.19.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Feb 2023 05:19:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="lzPbStt/";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=mZlk7TzV;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id E595E33817;
-	Thu, 23 Feb 2023 13:11:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1677157917; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=IZIy8Z3iGPcCgRkuMHF+6DkhbdLUaHXoLVg5l0Z77Vk=;
-	b=lzPbStt/VPiI/HPwSyX1NZavXSU0LLE4kepV81oyNrHF+mhXZwTmR1baa2osjEGxsEmU7b
-	ftETgRTsxAXOmYcSX2fYQ4ipLoYjPZYmXIR4TbazyEyfu+dvkcV0rtYOn/9NHZWA9qhrg/
-	3HCGaYnU98P3ilUVC6YrP8a2ukpls5M=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1677157917;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=IZIy8Z3iGPcCgRkuMHF+6DkhbdLUaHXoLVg5l0Z77Vk=;
-	b=mZlk7TzV5f4IKE+ED2eaBUk8hNFtH0s3g7Qt1u5nMj0JR7bBsB60ztrkeTNqpako4EoMR+
-	ESf2N8UZsw1G3XBw==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 8173C139B5;
-	Thu, 23 Feb 2023 13:11:53 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id uMOZEhlm92MLawAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 23 Feb 2023 13:11:53 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Ani Sinha <ani@anisinha.ca>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Subject: [PATCH v7 20/20] tests/qtest: Fix tests when no KVM or TCG are present
-Date: Thu, 23 Feb 2023 10:08:41 -0300
-Message-Id: <20230223130841.25916-21-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230223130841.25916-1-farosas@suse.de>
-References: <20230223130841.25916-1-farosas@suse.de>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Eryxm0HN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pVBVA-0007bT-6a; Thu, 23 Feb 2023 08:19:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1pVBV5-0007W4-J9
+ for qemu-arm@nongnu.org; Thu, 23 Feb 2023 08:19:08 -0500
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1pVBV3-00077X-9f
+ for qemu-arm@nongnu.org; Thu, 23 Feb 2023 08:19:06 -0500
+Received: by mail-ot1-x329.google.com with SMTP id
+ v17-20020a0568301bd100b0068dc615ee44so2226116ota.10
+ for <qemu-arm@nongnu.org>; Thu, 23 Feb 2023 05:19:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=sMRsPnOqXIfsHumeg62yfqXE5GIZUf9e0d/Tu/JBZVQ=;
+ b=Eryxm0HNsASqxRxVvo7FiNM6nPf4BJSLdAogNxK1qgvxFAEU6QmEnZpnOtySEuAcq4
+ V6Xo3sqP3esT5/T+p42VrjakmCqDdDgqNNmuCSxFeLMuZwcM0lhP3cqRQCXpylCFT0I7
+ 1Klaqrb5niFt8FEg1AIBFV6GmRexyomzkLAPKY48ObZDgN9xIZtyWxN+5o3VsKl7qoee
+ v1HxHdrDPrNlj60xEKJpR1DNqr/PlfjZpwLMLM46A/dMaf/1OgAOMO9IaAYw6U0s8rp9
+ 809madeC/YdVSAOJseAgYJmjWJq1Trwe5+i7TAjPtHrdlWRukE9J/EZoy7jHHB0vm/ls
+ DaMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sMRsPnOqXIfsHumeg62yfqXE5GIZUf9e0d/Tu/JBZVQ=;
+ b=Ag5z1If6uL+v/ExTc5hJh+wLHxiy0VUWqJgpZRxVI6FSCccTIVMwlYA7YOF/yZRSTb
+ BPG6LAu1+xTpLcU9tNgkwjfYNL5Bz3SjRyVM1qZrPG16Ry71X2xsHsPslH+Xty4T6cZB
+ PNcIWvaFJBSv+04AEX8vT0mP0W4t5+jjMXEpLjkFKzApPB3n90A8bI8cLEoH4i46xSGy
+ HZUKN1daiSEZ4Ku9BdJwTHXWbMLNBdytpoeFi2zgxcDtgRY1JgXjrkdMSDRXV1A+aDPC
+ JCal4Bf12lEK0PTAcPtwWMNiz1mRUSvhDm6LCu2SrXVaOmk8Hd3z5veSAE+puZsglHA6
+ luDA==
+X-Gm-Message-State: AO0yUKXiupF908JPKSujSeGdQtHJuYUFYlWV4J3u5qLkz3NmNaanApJa
+ cuPWf046rBmIdPbj+JPpuw1i0Q==
+X-Received: by 2002:a05:6830:2b09:b0:68b:d03b:5105 with SMTP id
+ l9-20020a0568302b0900b0068bd03b5105mr8596145otv.8.1677158343118; 
+ Thu, 23 Feb 2023 05:19:03 -0800 (PST)
+Received: from [192.168.68.107] ([189.110.112.117])
+ by smtp.gmail.com with ESMTPSA id
+ r21-20020a9d7cd5000000b0068bce6239a3sm2231852otn.38.2023.02.23.05.18.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 23 Feb 2023 05:19:02 -0800 (PST)
+Message-ID: <2d37d157-12a1-07aa-4c70-974ac1503283@ventanamicro.com>
+Date: Thu, 23 Feb 2023 10:18:55 -0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: e6fRsBydczhJ
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.2
+Subject: Re: [PATCH v2 0/4] NUMA: Apply socket-NUMA-node boundary for aarch64
+ and RiscV machines
+Content-Language: en-US
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, rad@semihalf.com,
+ peter.maydell@linaro.org, quic_llindhol@quicinc.com, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ thuth@redhat.com, lvivier@redhat.com, pbonzini@redhat.com,
+ imammedo@redhat.com, yihyu@redhat.com, shan.gavin@gmail.com
+References: <20230223081401.248835-1-gshan@redhat.com>
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20230223081401.248835-1-gshan@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::329;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-ot1-x329.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iJ8f077C7E8d
 
-It is possible to have a build with both TCG and KVM disabled due to
-Xen requiring the i386 and x86_64 binaries to be present in an aarch64
-host.
 
-If we build with --disable-tcg on the aarch64 host, we will end-up
-with a QEMU binary (x86) that does not support TCG nor KVM.
 
-Fix tests that crash or hang in the above scenario. Do not include any
-test cases if TCG and KVM are missing.
+On 2/23/23 05:13, Gavin Shan wrote:
+> For arm64 and RiscV architecture, the driver (/base/arch_topology.c) is
+> used to populate the CPU topology in the Linux guest. It's required that
+> the CPUs in one socket can't span mutiple NUMA nodes. Otherwise, the Linux
+> scheduling domain can't be sorted out, as the following warning message
+> indicates. To avoid the unexpected confusion, this series attempts to
+> rejects such kind of insane configurations.
+> 
+>     -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
+>     -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
+>     -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
+>     -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
 
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
-This currently affects Arm, but will also affect x86 after the xenpvh
-series gets merged. This patch fixes both scenarios.
----
- tests/qtest/bios-tables-test.c |  4 ++++
- tests/qtest/boot-serial-test.c | 10 ++++++++++
- tests/qtest/migration-test.c   |  5 +++++
- tests/qtest/pxe-test.c         |  6 ++++++
- tests/qtest/vmgenid-test.c     |  6 ++++++
- 5 files changed, 31 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index d29a4e47af..f6c2a010d2 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -2114,6 +2114,10 @@ int main(int argc, char *argv[])
-     char *v_env = getenv("V");
-     int ret;
- 
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
-+
-     if (v_env) {
-         verbosity_level = atoi(v_env);
-     }
-diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
-index 3aef3a97a9..45490f5931 100644
---- a/tests/qtest/boot-serial-test.c
-+++ b/tests/qtest/boot-serial-test.c
-@@ -17,6 +17,9 @@
- #include "libqtest.h"
- #include "libqos/libqos-spapr.h"
- 
-+static bool has_tcg;
-+static bool has_kvm;
-+
- static const uint8_t bios_avr[] = {
-     0x88, 0xe0,             /* ldi r24, 0x08   */
-     0x80, 0x93, 0xc1, 0x00, /* sts 0x00C1, r24 ; Enable tx */
-@@ -285,6 +288,13 @@ int main(int argc, char *argv[])
-     const char *arch = qtest_get_arch();
-     int i;
- 
-+    has_tcg = qtest_has_accel("tcg");
-+    has_kvm = qtest_has_accel("kvm");
-+
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
-+
-     g_test_init(&argc, &argv, NULL);
- 
-     for (i = 0; tests[i].arch != NULL; i++) {
-diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-index 109bc8e7b1..a6e3ca9f7d 100644
---- a/tests/qtest/migration-test.c
-+++ b/tests/qtest/migration-test.c
-@@ -2460,11 +2460,16 @@ static bool kvm_dirty_ring_supported(void)
- int main(int argc, char **argv)
- {
-     const bool has_kvm = qtest_has_accel("kvm");
-+    const bool has_tcg = qtest_has_accel("tcg");
-     const bool has_uffd = ufd_version_check();
-     const char *arch = qtest_get_arch();
-     g_autoptr(GError) err = NULL;
-     int ret;
- 
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
-+
-     g_test_init(&argc, &argv, NULL);
- 
-     /*
-diff --git a/tests/qtest/pxe-test.c b/tests/qtest/pxe-test.c
-index 62b6eef464..05575f7687 100644
---- a/tests/qtest/pxe-test.c
-+++ b/tests/qtest/pxe-test.c
-@@ -130,6 +130,12 @@ int main(int argc, char *argv[])
- {
-     int ret;
-     const char *arch = qtest_get_arch();
-+    bool has_tcg = qtest_has_accel("tcg");
-+    bool has_kvm = qtest_has_accel("kvm");
-+
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
- 
-     ret = boot_sector_init(disk);
-     if(ret)
-diff --git a/tests/qtest/vmgenid-test.c b/tests/qtest/vmgenid-test.c
-index efba76e716..8045d3d706 100644
---- a/tests/qtest/vmgenid-test.c
-+++ b/tests/qtest/vmgenid-test.c
-@@ -164,6 +164,12 @@ static void vmgenid_query_monitor_test(void)
- int main(int argc, char **argv)
- {
-     int ret;
-+    bool has_tcg = qtest_has_accel("tcg");
-+    bool has_kvm = qtest_has_accel("kvm");
-+
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
- 
-     ret = boot_sector_init(disk);
-     if (ret) {
--- 
-2.35.3
+And why is this a QEMU problem? This doesn't hurt ACPI.
+
+Also, this restriction impacts breaks ARM guests in the wild that are running
+non-Linux OSes. I don't see why we should impact use cases that has nothing to
+do with Linux Kernel feelings about sockets - NUMA nodes exclusivity.
+
+
+Thanks,
+
+
+Daniel
+
+
+>   
+>     ------------[ cut here ]------------
+>     WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
+>     Modules linked in:
+>     CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
+>     pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+>     pc : build_sched_domains+0x284/0x910
+>     lr : build_sched_domains+0x184/0x910
+>     sp : ffff80000804bd50
+>     x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
+>     x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
+>     x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
+>     x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
+>     x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
+>     x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
+>     x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
+>     x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
+>     x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
+>     x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
+>     Call trace:
+>      build_sched_domains+0x284/0x910
+>      sched_init_domains+0xac/0xe0
+>      sched_init_smp+0x48/0xc8
+>      kernel_init_freeable+0x140/0x1ac
+>      kernel_init+0x28/0x140
+>      ret_from_fork+0x10/0x20
+> 
+> PATCH[1] Improves numa/test for aarch64 to follow socket-to-NUMA-node boundary
+> PATCH[2] Validate the configuration if required in the NUMA subsystem
+> PATCH[3] Enable the validation for aarch64 machines
+> PATCH[4] Enable the validation for RiscV machines
+> 
+> v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00886.html
+> 
+> Changelog
+> =========
+> v2:
+>    * Fix socket-NUMA-node boundary issues in qtests/numa-test  (Gavin)
+>    * Add helper set_numa_socket_boundary() and validate the
+>      boundary in the generic path                              (Philippe)
+> 
+> Gavin Shan (4):
+>    qtest/numa-test: Follow socket-NUMA-node boundary for aarch64
+>    numa: Validate socket and NUMA node boundary if required
+>    hw/arm: Validate socket and NUMA node boundary
+>    hw/riscv: Validate socket and NUMA node boundary
+> 
+>   hw/arm/sbsa-ref.c       |  2 ++
+>   hw/arm/virt.c           |  2 ++
+>   hw/core/machine.c       | 34 ++++++++++++++++++++++++++++++++++
+>   hw/core/numa.c          |  7 +++++++
+>   hw/riscv/spike.c        |  1 +
+>   hw/riscv/virt.c         |  1 +
+>   include/sysemu/numa.h   |  4 ++++
+>   tests/qtest/numa-test.c | 13 ++++++++++---
+>   8 files changed, 61 insertions(+), 3 deletions(-)
+> 

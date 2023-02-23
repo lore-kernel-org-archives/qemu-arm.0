@@ -1,201 +1,162 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp597433ejc;
-        Thu, 23 Feb 2023 02:53:25 -0800 (PST)
-X-Google-Smtp-Source: AK7set+wPyPG3dDnSsTZPXrojj+kq+WfnqyChTUgGTQbQWXvyCMDQGSZNspT0CYE5sgB6gDRgsfl
-X-Received: by 2002:a05:6830:630a:b0:693:d7bf:dbe8 with SMTP id cg10-20020a056830630a00b00693d7bfdbe8mr21710otb.10.1677149605220;
-        Thu, 23 Feb 2023 02:53:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677149605; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp732606ejc;
+        Thu, 23 Feb 2023 05:37:03 -0800 (PST)
+X-Google-Smtp-Source: AK7set/O0sAANbEcMQjUOpJVefnk2R0vkgfEZRCX1hl8WzrEYKbAWB9b7bM0SOV13idPnKPVMSDH
+X-Received: by 2002:ac8:5883:0:b0:3bd:11a5:c12b with SMTP id t3-20020ac85883000000b003bd11a5c12bmr13917882qta.5.1677159423239;
+        Thu, 23 Feb 2023 05:37:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677159423; cv=none;
         d=google.com; s=arc-20160816;
-        b=tdO8nppWn9WwfjqSkr+yg1MT4zQVz0ixJuq2o1MNrLkdiL07a+VTrXCtMJrAnzub3F
-         W7mK3ETmDIDbcOjs9aB2w5qW+9lCn2//pyvCCyGQj2q47xAdwoMaPqPzb573wTVqEV2w
-         kuwt09K5anq0VYG4PBlCmR/kv6R92BwoA1gBJMmjiqVOD8JUVqagrFTym2vE4lONuTqK
-         u/7tf+LmXpjKXzi05B56gpTE65c/j2SUMzhEeX0F4c3+Rj6RmFzfKy6Mv8bgyZZRUTbO
-         S4xdkQte2Itz4LWs3ZFQskNQ+661Eju/lHSPiiNHJqQTh1MVV/QnW+pQZmvTUhJuYf6S
-         oVaA==
+        b=e+DGZ+2K8le2LaiAgKftuxzlbJJqpbwInT++GYeCfbw0xjWry3STp4VRHA9tX16lZR
+         hH9b0k+w0IfBBf+3vysI6V2gZYmJT402O7grKNC8j1+Vp+MhfPEPHoerA9jD/Siw/TBk
+         k6hT+ET4oO3/e2WcnNQ+u0BxH8LFiuA9hK9gdGuxo+VCPNcYDUG0x48bu9fihSRuyEGt
+         8cWsmjWtXK7AWgSenmTbnvgIOlxNTW7uZdQBKJxiIe+11fL8ynQZphWHBwqZFctT53yF
+         p2cvn064sCPDE7T8QgshVE6u6ifXNJPwTzVq43z9JqEbsA4ApIhYUnmv27lK3K4Kaebb
+         x4pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=mu6hUZu3u7BeAHUhXWrNFc9rMrnVG1fD1oPbldB9OFs=;
-        b=m/6YtKo7CrS518uZH8+GcNc8ac8eQ5b5HwODU4CAi3WA9KVihicmnKQnshow3s1XC7
-         K+wQc7MbuWIUjqIV0n2dK87PHDHzvwilG2EmGzkLnhFAJd4TWg3H6ibOXjfdG0DEYirW
-         DT6Q6Vw2XV0ITmQMj3fqAfpBqInFA1dIiOvqfrB4nk4yKlS62cTmi0gNWzHfDcYcyVU+
-         Mlru4KWD64uQaR477VJG7kob+oFh6bpQ1GKxpmnaG+3m0T6B/NQNBcOkQceqVz8jPiX4
-         u1Fk28Z1oVfbBi8+ECGWfU+X+acvC8P/8QjBf54lKDJvdRhD3e6UALw6VYmZZS7AtgJE
-         /qLw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=ziMLKydJTay/BmNLV1+TS3AzWc2BBP9B0nqwN7+xrP4=;
+        b=x/YjsEqieOyVkHkoAR5hkOVocUnIKSpTrNB5TsCpWEUaPyLWqp9o6Untlr8K2bqpsR
+         JB1zG5qwwm8K0Dz1RDsnoFP7/uNZaPrUhFogcNxCzD/gl7qi0+tZOO2N/p3rKAhr2/TA
+         w57DmawvCuiF2XoxGhK2qEqu8hKaaeEwmXCwFZVrGrzVLweNI/JwaMmQKGt7d9bBHUcR
+         VeSJv4VINpaGW/gEdi+1HOT0VGkmn7AYvXAjDbAWqoX+yTaY2KAukRuZNBFuM0tX2f5v
+         XoPI21u6uQ2QxexumacgELAtTqCAXbnKQQWgSnk6C4O4T3KJPaZyysUoBd6651Z9rDNw
+         s84Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=M+zMr+3r;
-       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <ardb@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
-        by mx.google.com with ESMTPS id do22-20020a0568300e1600b0066c72f09b5bsi3681071otb.71.2023.02.23.02.53.25
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2023 02:53:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BtTRyxb7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i21-20020a05620a249500b007293ca24c3csi6762726qkn.24.2023.02.23.05.37.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Feb 2023 05:37:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=M+zMr+3r;
-       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E7B7F616BD;
-	Thu, 23 Feb 2023 10:53:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0D7BC433D2;
-	Thu, 23 Feb 2023 10:53:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677149604;
-	bh=4ElqaZOtVO/Q4aOwdIjJ/5dEgXMMGUtQbm9GfpQMHYk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=M+zMr+3r6Z8IDZr9mrkyxyKk4I05FAbL/sOD1lnwoU+fLWNAby9Pwc7Yt0UftgSen
-	 RR6SM4jpHScpalPN6qOtZltPRZS2V6LFXWMYcCAgV2nyXQ1UaWr3AktnsNhXojtuUl
-	 NEu948OQWa/scIUlwZNVKBlkFTv3Rufclwgf2GBAhu/yoUHkEHz1SOuHGGw7YXfvDA
-	 tGwaDjWJCd7LFZxYA8yaAKY97gJK/symBCQ5X8yg4wQ2YdOq25Cc1feDtIOI5wjusH
-	 lQhirjTXIy+Yw8bRqABOvtIl6PRP4qvDi+Xiagfw7+gFaa0DeW+ivgGUiqiikltV9m
-	 uJFVv1JfD8Q+Q==
-From: Ard Biesheuvel <ardb@kernel.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Ard Biesheuvel <ardb@kernel.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [RFC PATCH] hw: arm: Support direct boot for Linux/arm64 EFI zboot images
-Date: Thu, 23 Feb 2023 11:53:08 +0100
-Message-Id: <20230223105308.559632-1-ardb@kernel.org>
-X-Mailer: git-send-email 2.39.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=BtTRyxb7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pVBlq-0007s6-R2; Thu, 23 Feb 2023 08:36:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pVBll-0007pl-Qf
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 08:36:21 -0500
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pVBli-000765-77
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 08:36:20 -0500
+Received: by mail-pf1-x431.google.com with SMTP id a26so6040471pfo.9
+ for <qemu-devel@nongnu.org>; Thu, 23 Feb 2023 05:36:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ziMLKydJTay/BmNLV1+TS3AzWc2BBP9B0nqwN7+xrP4=;
+ b=BtTRyxb7+dy2VMgw01VMpL1Hj91WrdUv/6B6g9evbk6SILXPsC8eFz0fB8OrhCdI5t
+ RLDZOu5CZa+Esyp20IdmUDx+vj5xIpzcLbusF2E2rv3xJZMRAVsWdAv1DHZrJueI0SsZ
+ 8tJuaMsr/YIDQ2FzKTu+e7bBKsdxfRVezbwrOy9zLndZuY6V7XCAb+DXLSh5MGuBXrlo
+ fXg51bQ7L6zc4JYMV51nvwD7hINgqPyMLW54ekjJoPHPCtkYlHzLC+p7MnITo05wkxGy
+ tdroeb1sFaGqf5Lfz/l3siJtM2mccO2XxUrG5BxXKHg63Jvnc0r2HMoVH5dghDORy+dw
+ xDMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ziMLKydJTay/BmNLV1+TS3AzWc2BBP9B0nqwN7+xrP4=;
+ b=5g58u6po1ZmIM/TmAMT1xWzQq8gUwxtLj1rYu1bomF1sYHvgpUVRz0UyLKxaxOUfH+
+ EO5KG05veywwT5ldWy20QSrEf9SHQzP3zT2QSzahz3Wjd7YaRMV4PhmAnNSp13NewmI5
+ Bwpz+A5cSOlvkpJn/b/h3jZmIAhMjGhTaNPMKdiLYS8YbDn/zg4MB1898SI1pzb++we9
+ d8dlEqZePXijfNP1wctz9dnF9up3vboTXLHPmneqkutq3OYDHtAkCrxJakBV//mjHJJV
+ mxZ/axVqi8G9xEsULr29Pl6GE2HlCh5ig1LCdgWtcJnLM890HRqlbr3bGPcsV6mNjob2
+ xAVQ==
+X-Gm-Message-State: AO0yUKV8/CThL0Gw39I0z700aFsGY/FCQkcXtfABE6kG0kjyEmIDLMfs
+ BXL+WHcj/7xIB0UDVYLUN94ZdQ7MxNgz+/ucU9dQxg==
+X-Received: by 2002:a63:7555:0:b0:4fd:4602:1b9a with SMTP id
+ f21-20020a637555000000b004fd46021b9amr1833686pgn.9.1677159376680; Thu, 23 Feb
+ 2023 05:36:16 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: RgunO2R9vvVH
+References: <20230113200138.52869-1-philmd@linaro.org>
+ <f8a83363-ce88-e424-4db5-2fead70e4ec4@linaro.org>
+In-Reply-To: <f8a83363-ce88-e424-4db5-2fead70e4ec4@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Feb 2023 13:36:05 +0000
+Message-ID: <CAFEAcA_xqTmYHqv+4QZqouAYtFYRz=PrZNAk6y4arRPHjNrsug@mail.gmail.com>
+Subject: Re: [PATCH 0/4] hw: QOM housekeeping around IOTHREAD / IRQ types
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ qemu-arm@nongnu.org, 
+ qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PEWUNL/Df2+i
 
-Fedora 39 will ship its arm64 kernels in the new generic EFI zboot
-format, using gzip compression for the payload.
+On Tue, 7 Feb 2023 at 09:17, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+>
+> Hi Peter,
+>
+> On 13/1/23 21:01, Philippe Mathieu-Daud=C3=A9 wrote:
+> > - remove unused code
+> > - use recent QOM macros
+> > - use CamelCase typedef
+> >
+> > Philippe Mathieu-Daud=C3=A9 (4):
+> >    iothread: Remove unused IOThreadClass / IOTHREAD_CLASS
+> >    hw/irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
+> >    hw/or-irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
+> >    hw: Replace qemu_or_irq typedef by OrIRQState
+> >
+> >   hw/arm/exynos4210.c                  |  4 ++--
+> >   hw/arm/mps2-tz.c                     |  2 +-
+> >   hw/core/irq.c                        |  9 ++++-----
+> >   hw/core/or-irq.c                     | 18 +++++++++---------
+> >   hw/pci-host/raven.c                  |  2 +-
+> >   include/hw/arm/armsse.h              |  6 +++---
+> >   include/hw/arm/bcm2835_peripherals.h |  2 +-
+> >   include/hw/arm/exynos4210.h          |  4 ++--
+> >   include/hw/arm/stm32f205_soc.h       |  2 +-
+> >   include/hw/arm/stm32f405_soc.h       |  2 +-
+> >   include/hw/arm/xlnx-versal.h         |  6 +++---
+> >   include/hw/arm/xlnx-zynqmp.h         |  2 +-
+> >   include/hw/or-irq.h                  |  5 +----
+> >   iothread.c                           |  4 ----
+> >   14 files changed, 30 insertions(+), 38 deletions(-)
+>
+> Since most changes concern ARM machines, can this (reviewed)
+> series go via your tree?
 
-For doing EFI boot in QEMU, this is completely transparent, as the
-firmware or bootloader will take care of this. However, for direct
-kernel boot without firmware, we will lose the ability to boot such
-distro kernels unless we deal with the new format directly.
+Sure; applied to target-arm.next, thanks.
 
-EFI zboot images contain metadata in the header regarding the placement
-of the compressed payload inside the image, and the type of compression
-used. This means we can wire up the existing gzip support without too
-much hassle, by parsing the header and grabbing the payload from inside
-the loaded zboot image.
-
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Alex Bennée <alex.bennee@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
----
- hw/arm/boot.c       |  4 ++
- hw/core/loader.c    | 64 ++++++++++++++++++++
- include/hw/loader.h |  2 +
- 3 files changed, 70 insertions(+)
-
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 3d7d11f782feb5da..dc10a0788227443e 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -924,6 +924,10 @@ static uint64_t load_aarch64_image(const char *filename, hwaddr mem_base,
-         size = len;
-     }
- 
-+    if (unpack_efi_zboot_image(&buffer, &size)) {
-+        return -1;
-+    }
-+
-     /* check the arm64 magic header value -- very old kernels may not have it */
-     if (size > ARM64_MAGIC_OFFSET + 4 &&
-         memcmp(buffer + ARM64_MAGIC_OFFSET, "ARM\x64", 4) == 0) {
-diff --git a/hw/core/loader.c b/hw/core/loader.c
-index 173f8f67f6e3e79c..7e7f49261a309012 100644
---- a/hw/core/loader.c
-+++ b/hw/core/loader.c
-@@ -857,6 +857,70 @@ ssize_t load_image_gzipped(const char *filename, hwaddr addr, uint64_t max_sz)
-     return bytes;
- }
- 
-+// The Linux header magic number for a EFI PE/COFF
-+// image targetting an unspecified architecture.
-+#define LINUX_EFI_PE_MAGIC        "\xcd\x23\x82\x81"
-+
-+struct linux_efi_zboot_header {
-+    uint8_t     msdos_magic[4];         // PE/COFF 'MZ' magic number
-+    uint8_t     zimg[4];                // "zimg" for Linux EFI zboot images
-+    uint32_t    payload_offset;         // LE offset to the compressed payload
-+    uint32_t    payload_size;           // LE size of the compressed payload
-+    uint8_t     reserved[8];
-+    char        compression_type[32];   // Compression type, e.g., "gzip"
-+    uint8_t     linux_magic[4];         // Linux header magic
-+    uint32_t    pe_header_offset;       // LE offset to the PE header
-+};
-+
-+/*
-+ * Check whether *buffer points to a Linux EFI zboot image in memory.
-+ *
-+ * If it does, attempt to decompress it to a new buffer, and free the old one.
-+ * If any of this fails, return an error to the caller.
-+ *
-+ * If the image is not a Linux EFI zboot image, do nothing and return success.
-+ */
-+int unpack_efi_zboot_image(uint8_t **buffer, int *size)
-+{
-+    const struct linux_efi_zboot_header *header;
-+    uint8_t *data = NULL;
-+    ssize_t bytes;
-+
-+    /* ignore if this is too small to be a EFI zboot image */
-+    if (*size < sizeof(*header)) {
-+        return 0;
-+    }
-+
-+    header = (struct linux_efi_zboot_header *)*buffer;
-+
-+    /* ignore if this is not a Linux EFI zboot image */
-+    if (memcmp(&header->zimg, "zimg", 4) != 0 ||
-+        memcmp(&header->linux_magic, LINUX_EFI_PE_MAGIC, 4) != 0) {
-+        return 0;
-+    }
-+
-+    if (strncmp(header->compression_type, "gzip", 4) != 0) {
-+        fprintf(stderr, "unable to handle EFI zboot image with \"%s\" compression\n",
-+                header->compression_type);
-+        return -1;
-+    }
-+
-+    data = g_malloc(LOAD_IMAGE_MAX_GUNZIP_BYTES);
-+    bytes = gunzip(data, LOAD_IMAGE_MAX_GUNZIP_BYTES,
-+                   *buffer + le32_to_cpu(header->payload_offset),
-+                   le32_to_cpu(header->payload_size));
-+    if (bytes < 0) {
-+        fprintf(stderr, "failed to decompress EFI zboot image\n");
-+        g_free(data);
-+        return -1;
-+    }
-+
-+    g_free(*buffer);
-+    *buffer = g_realloc(data, bytes);
-+    *size = bytes;
-+    return 0;
-+}
-+
- /*
-  * Functions for reboot-persistent memory regions.
-  *  - used for vga bios and option roms.
-diff --git a/include/hw/loader.h b/include/hw/loader.h
-index 70248e0da77908c1..d1092c8bfbd903c7 100644
---- a/include/hw/loader.h
-+++ b/include/hw/loader.h
-@@ -86,6 +86,8 @@ ssize_t load_image_gzipped_buffer(const char *filename, uint64_t max_sz,
-                                   uint8_t **buffer);
- ssize_t load_image_gzipped(const char *filename, hwaddr addr, uint64_t max_sz);
- 
-+int unpack_efi_zboot_image(uint8_t **buffer, int *size);
-+
- #define ELF_LOAD_FAILED       -1
- #define ELF_LOAD_NOT_ELF      -2
- #define ELF_LOAD_WRONG_ARCH   -3
--- 
-2.39.1
+-- PMM

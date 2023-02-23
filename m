@@ -1,222 +1,197 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp577209ejc;
-        Thu, 23 Feb 2023 02:27:54 -0800 (PST)
-X-Google-Smtp-Source: AK7set9o6NSKrOPVQZH1cQCtv2f2GpoI0DmfRLjMLiSspwixx50Pq0F0KqrtJGivE3hOSw1jzNMR
-X-Received: by 2002:a05:6214:d83:b0:56a:b623:9b09 with SMTP id e3-20020a0562140d8300b0056ab6239b09mr16225566qve.14.1677148074685;
-        Thu, 23 Feb 2023 02:27:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677148074; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp590514ejc;
+        Thu, 23 Feb 2023 02:44:40 -0800 (PST)
+X-Google-Smtp-Source: AK7set+FWBF5A4kQ6QYI95xBNAiZCc3hXxX0tW/HnxaoNuUHqypoNiBL/G1TvQLGW0g1PrMZoUTf
+X-Received: by 2002:ad4:5c85:0:b0:56b:fc7c:e57c with SMTP id o5-20020ad45c85000000b0056bfc7ce57cmr23317988qvh.51.1677149080467;
+        Thu, 23 Feb 2023 02:44:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677149080; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cfab0MOsNAgz9yLv7+t++06dBWhvUA/0h3m0iX0DJ+OCgDoHIRHyi1goCNtC1IhuUc
-         HXg7/bEquVfNcZxfG7Sy9DFtOXUtwgZJUqW13m9cvyTtv89nOgh7UctDlVyMQphAvBv/
-         4dcvfDWYYJ+HxlQvndhq80R2aUBSOtRkBcScD/ZYpiqL+cceJkNtszGphCI8+z0qCEPi
-         cDmTlmSNiH78p1GrcYVNQ7h9h9F0dAEE0TdwhYIcdmrghbzF98M+sUBFoAZ/3yjfNbGF
-         6NYDlzxFA2Jl3SObdwxHqpQYkffEVWr+XhzXIQKIOxzTQX4c1l3sdpjfbCOiGjGbvbqO
-         Vnxg==
+        b=YHXrQNBotXiQEBHDjAY9UfZW7zekns8qGYrJ6M1gA6QW72h75lCSXqo0W+E8z/mLSl
+         cbJ6hergnmJLx/0B5sxLATc9ow7vr3WOc7+htvhQceARyQICWamlvoQrr1CMC21pmnuL
+         //xt4DJbwMs+HdkH9akLu89kWsbLVrJaMAjuqi2URueq7CqoR0ldF4Mp2Vg+P4RLxLAW
+         c0tVIrpiOgsjPDfdMd76Hs6/SFclNh/e0JKwZQU2uux9wFSUVmc27tZyZtpbvBMkMuP7
+         dDY+EkxbJ3BKyUaPsHezt6avyxFHXvstT6Zsun+pSJ4MOgsDlOme8epShiz5TTuCWmwR
+         o5IA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=YJRwTGv2UP/uEuY9Pvhkxxlf3gJzYAz7jifALb2+4O4=;
-        b=eCzgXJyfu1rRaOnxw920HVGVTvNtlnNamoO+qb164tYbt10Z7qmCkJtuKmmmrs7y+j
-         swGL/ff+aSYoSsszmlOX3dL+ZNuUC07h50yqPpvd6gwLlCPSqc/JWFd7s+jqyTuRE4N+
-         j3spCxYgX3HVaa79o/C5kUcHGOoIeAEc2Y6R25TnloB8s6DRDjC+PGa+TvVYHzVWhUnf
-         OFvXAQ8suvPzgpqct384UXPrfeyMxRNN7D81qtnb6hhwMe8ZcHDwJ4eOWGdEfuB9rydL
-         63fImb1/Uj76ADckyrrk72mrQbf2TF6uSDQntuOf36BD7h0+FDuHKut+8DO6N66RRRBS
-         vhSg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:references:cc:to:from:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=KH5ae43t3jJw3x6HhgXb+WcFFYVJzpx3FgCotj8tCnk=;
+        b=Bq9HlFsd+N5UkozKO3tStxCrAvy2befyTwFgLJK6mRKk19tozBYr57h4fYbQYiS+X+
+         LTWfafCDNnhnDBSIN4EDwRQO392meqwIxTmCHHO+KrpBFFxaldln03UE30V3cRuGYmU3
+         6tL/2UZeLLc+d/9zZlwjb22qPFy+VSbDwA7WVwS8OZLMKe93yGeoQ26Ed1G3zMdskzvw
+         fzgevPav7lWPAc5SWpPGMrBz6jTBz0rVurAFKyx1MhIPVKElPQOI5rVIKlxlnRRVHAJ7
+         Lpe26gNreV1L3EPSBXIGEJ0cCqlodls9ofsKv+mC5UyN5sxBLogqVrN9znFk/RhZflZC
+         hx0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EcTr4Xxe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=KvpEs1Fj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n18-20020a0ce492000000b00534843fe343si5584711qvl.180.2023.02.23.02.27.54
+        by mx.google.com with ESMTPS id a23-20020a0ca997000000b0056eb1aa8734si10623767qvb.405.2023.02.23.02.44.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Feb 2023 02:27:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Feb 2023 02:44:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EcTr4Xxe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=KvpEs1Fj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pV8pE-0003uh-33; Thu, 23 Feb 2023 05:27:46 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pV95B-0002in-KM; Thu, 23 Feb 2023 05:44:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pV8ox-0003gO-MR
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 05:27:31 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pV8ou-0003xI-5v
- for qemu-arm@nongnu.org; Thu, 23 Feb 2023 05:27:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677148040;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YJRwTGv2UP/uEuY9Pvhkxxlf3gJzYAz7jifALb2+4O4=;
- b=EcTr4XxenOACZmKY22VjwJeFysWYFe1DBXcwHEhdaw+pu4TyRz2CO679WJJhlHgYAV6vH+
- W5hol+76VygeeZzMsznQjr13sIehr4MdK5p2z+2Lk+8NQeQiKf2p34lNHk1TuX5Vv/Juhw
- AhmCSeV0ZAYfJhtYQwhqnkQ9PRDR/qk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-482-uS8___QyPRSYKMf4Hcps4w-1; Thu, 23 Feb 2023 05:27:16 -0500
-X-MC-Unique: uS8___QyPRSYKMf4Hcps4w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 65E5485A588;
- Thu, 23 Feb 2023 10:27:15 +0000 (UTC)
-Received: from [10.64.54.168] (vpn2-54-168.bne.redhat.com [10.64.54.168])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5CEA2404BEC0;
- Thu, 23 Feb 2023 10:27:07 +0000 (UTC)
-Subject: Re: [PATCH v2 2/4] numa: Validate socket and NUMA node boundary if
- required
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, rad@semihalf.com,
- peter.maydell@linaro.org, quic_llindhol@quicinc.com, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, thuth@redhat.com,
- lvivier@redhat.com, pbonzini@redhat.com, imammedo@redhat.com,
- yihyu@redhat.com, shan.gavin@gmail.com
-References: <20230223081401.248835-1-gshan@redhat.com>
- <20230223081401.248835-3-gshan@redhat.com>
- <1fd1606c-3dde-b780-14f7-d8a9ae4dedf5@linaro.org>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <da57ead6-6a15-414b-4992-337a5d6dd932@redhat.com>
-Date: Thu, 23 Feb 2023 21:27:05 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pV959-0002i4-EF
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 05:44:11 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pV957-0007z7-Ln
+ for qemu-devel@nongnu.org; Thu, 23 Feb 2023 05:44:11 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id h14so1647766wru.4
+ for <qemu-devel@nongnu.org>; Thu, 23 Feb 2023 02:44:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=KH5ae43t3jJw3x6HhgXb+WcFFYVJzpx3FgCotj8tCnk=;
+ b=KvpEs1FjRB59fnKdnyLfXYiyF7ogGU06v/EEm5BvMYbpcLLRhB3VT3V8JQdH4r+OXc
+ E66B1meD/qwVsYPTMb/nuDtIl0kVLyt7hWbNnQQEIB9hHbAkgW8tBkTg48IxVwbH4Gka
+ po8KA8rIESo8Wgmuj0UFJPg98D/aijfid4ehv5goT1DMDADWlC37PY2O3Rmr0dFZg8es
+ PztjNUOf+9ZW2cFRf6tYKbE8szkITw7it5Yu75LRzpJlVF6dnjIqZyK1FRQmq5fTTEJ1
+ R1MufPwzETR1vy0w6qFJiLZgeNFtZRf45RysNQBc3t3o/2V/IH3FlrFLjL23dkSD72uX
+ 15Kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=KH5ae43t3jJw3x6HhgXb+WcFFYVJzpx3FgCotj8tCnk=;
+ b=NEGXYpHA/ezYqJCVtf3ARSQRJQXLIQkXf3KtXdNHTOeFO3pgZpuR0SM5Z129Z2pkjJ
+ VBiE73rebS3GH30UIBIBZN/IGCSZxY1Fq+IxogbjLHtmW2l5rpgzfs9HOcvDjUaZjtU+
+ hSFkDlA9ilnY57F5ZmDZngMNELLQxsiSUijg0hi7Rdo3dBIE/QIyShyuATE0i7t6PklH
+ SZit3HMCZbnqahaYXOP04R6o32XtmSdUWS3I0YX9cWIt1AaHYQEk0esevTEcDVNZrXOI
+ oJJmcoGl92v7/H42acOlZ2CWyOT0ONl+cKpEjH/sL5EdGk51OVGOzbcA2fzu2T7A8kVQ
+ qnzA==
+X-Gm-Message-State: AO0yUKV+CUHgdrPfoCJjq6Z3vS8+KXcgtcb55alQwliQr8Sv2ViQaDa0
+ +sbypBP9W/bDbfgWz1bbfgHTeA==
+X-Received: by 2002:adf:e543:0:b0:236:695b:82d4 with SMTP id
+ z3-20020adfe543000000b00236695b82d4mr10771954wrm.30.1677149047817; 
+ Thu, 23 Feb 2023 02:44:07 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ c22-20020a7bc856000000b003e01493b136sm10901155wml.43.2023.02.23.02.44.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 23 Feb 2023 02:44:07 -0800 (PST)
+Message-ID: <656c0b73-5cc2-874f-28c3-3dabf86039e7@linaro.org>
+Date: Thu, 23 Feb 2023 11:44:05 +0100
 MIME-Version: 1.0
-In-Reply-To: <1fd1606c-3dde-b780-14f7-d8a9ae4dedf5@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH v5 7/9] aspeed/soc : Add AST1030 support
 Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: steven_lee@aspeedtech.com, troy_lee@aspeedtech.com
+References: <20220401083850.15266-1-jamin_lin@aspeedtech.com>
+ <20220401083850.15266-8-jamin_lin@aspeedtech.com>
+ <0c4810ae-edee-41df-7609-a3c6577a9ed3@linaro.org>
+In-Reply-To: <0c4810ae-edee-41df-7609-a3c6577a9ed3@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.102, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.102,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EpHm7cGqLv36
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: U3QP6SJQKT03
 
-On 2/23/23 8:05 PM, Philippe Mathieu-Daudé wrote:
-> On 23/2/23 09:13, Gavin Shan wrote:
->> For some architectures like ARM64, multiple CPUs in one socket can't be
->> associated with different NUMA nodes. Otherwise, the guest kernel is confused
->> about the CPU topology. For example, the following warning message is observed
->> from linux guest with the below command lines.
->>
->>    -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
->>    -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
->>    -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
->>    -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
->>
->>    ------------[ cut here ]------------
->>    WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
->>    Modules linked in:
->>    CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
->>    pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
->>    pc : build_sched_domains+0x284/0x910
->>    lr : build_sched_domains+0x184/0x910
->>    sp : ffff80000804bd50
->>    x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
->>    x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
->>    x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
->>    x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
->>    x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
->>    x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
->>    x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
->>    x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
->>    x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
->>    x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
->>    Call trace:
->>     build_sched_domains+0x284/0x910
->>     sched_init_domains+0xac/0xe0
->>     sched_init_smp+0x48/0xc8
->>     kernel_init_freeable+0x140/0x1ac
->>     kernel_init+0x28/0x140
->>     ret_from_fork+0x10/0x20
->>
->> Improve the sitation to reject the configuration where multiple CPUs
+ping
+
+On 29/12/22 12:16, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
-> Typo "situation".
-> 
-
-Yes, I will fix it up in next revision.
-
->> in one socket have been associated with different NUMA nodes. The
->> newly introduced helper set_numa_socket_boundary() is expected to
->> called by specific machines (boards) where the boundary is required.
+> On 1/4/22 10:38, Jamin Lin wrote:
+>> From: Steven Lee <steven_lee@aspeedtech.com>
 >>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> The embedded core of AST1030 SoC is ARM Coretex M4.
+>> It is hard to be integrated in the common Aspeed Soc framework.
+>> We introduce a new ast1030 class with instance_init and realize
+>> handlers.
+>>
+>> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
 >> ---
->>   hw/core/machine.c     | 34 ++++++++++++++++++++++++++++++++++
->>   hw/core/numa.c        |  7 +++++++
->>   include/sysemu/numa.h |  4 ++++
->>   3 files changed, 45 insertions(+)
+>>   hw/arm/aspeed_ast10xx.c     | 299 ++++++++++++++++++++++++++++++++++++
+>>   hw/arm/meson.build          |   6 +-
+>>   include/hw/arm/aspeed_soc.h |   3 +
+>>   3 files changed, 307 insertions(+), 1 deletion(-)
+>>   create mode 100644 hw/arm/aspeed_ast10xx.c
 > 
 > 
->> diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
->> index 4173ef2afa..160008fff4 100644
->> --- a/include/sysemu/numa.h
->> +++ b/include/sysemu/numa.h
->> @@ -86,6 +86,9 @@ struct NumaState {
->>       /* Detect if HMAT support is enabled. */
->>       bool hmat_enabled;
->> +    /* CPUs in one socket can't break socket boundary */
->> +    bool have_socket_boundary;
+>> +static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error 
+>> **errp)
+>> +{
+>> +    AspeedSoCState *s = ASPEED_SOC(dev_soc);
+>> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+>> +    MemoryRegion *system_memory = get_system_memory();
+>> +    DeviceState *armv7m;
+>> +    Error *err = NULL;
+>> +    int i;
+>> +
+>> +    if (!clock_has_source(s->sysclk)) {
+>> +        error_setg(errp, "sysclk clock must be wired up by the board 
+>> code");
+>> +        return;
+>> +    }
+>> +
+>> +    /* General I/O memory space to catch all unimplemented device */
+>> +    create_unimplemented_device("aspeed.sbc",
+>> +                                sc->memmap[ASPEED_DEV_SBC],
+>> +                                0x40000);
+>> +    create_unimplemented_device("aspeed.io",
+>> +                                sc->memmap[ASPEED_DEV_IOMEM],
+>> +                                ASPEED_SOC_IOMEM_SIZE);
+>> +
+>> +    /* AST1030 CPU Core */
+>> +    armv7m = DEVICE(&s->armv7m);
+>> +    qdev_prop_set_uint32(armv7m, "num-irq", 256);
 > 
-> This field belong to MachineClass, please add it as
-> numa_have_socket_boundary just after to numa_mem_supported.
+> Can you confirm this SoC has 256 and not 240 IRQs?
 > 
-> Next patches become:
+>> +    qdev_prop_set_string(armv7m, "cpu-type", sc->cpu_type);
+>> +    qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+>> +    object_property_set_link(OBJECT(&s->armv7m), "memory",
+>> +                             OBJECT(system_memory), &error_abort);
+>> +    sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_abort);
 > 
-> ---
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index f778cb6d09..a48f1b2329 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -864,6 +864,7 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
->       mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
->       mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
->       mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
-> +    mc->numa_have_socket_boundary = true;
->   }
-> ---
-> 
-> Otherwise LGTM :)
-> 
-
-Thanks, Philippe. It makes sense to have the field in MachineClass and the
-changes will be included in next revision.
-
-Thanks,
-Gavin
 

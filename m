@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id p13-20020a1c544d000000b003e208cec49bsm8971006wmi.3.2023.02.24.10.08.57
+        by smtp.gmail.com with ESMTPSA id i16-20020adfefd0000000b002c552c6c8c2sm11391333wrp.87.2023.02.24.10.08.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 24 Feb 2023 10:08:58 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 98F121FFB7;
+	by zen.linaroharston (Postfix) with ESMTP id B05E51FFB8;
 	Fri, 24 Feb 2023 18:08:57 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,78 +36,53 @@ Cc: Li-Wen Hsu <lwhsu@freebsd.org>,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
-Subject: [PATCH 0/7] testing/next: docker.py removal and kaniko updates
-Date: Fri, 24 Feb 2023 18:08:50 +0000
-Message-Id: <20230224180857.1050220-1-alex.bennee@linaro.org>
+Subject: [PATCH 1/7] configure: expose the direct container command
+Date: Fri, 24 Feb 2023 18:08:51 +0000
+Message-Id: <20230224180857.1050220-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20230224180857.1050220-1-alex.bennee@linaro.org>
+References: <20230224180857.1050220-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Alz2G04lpN5b
+X-TUID: DXS2rbbxXDCh
 
-This series attempts to remove our dependence on the docker.py script
-and build things directly with the appropriate tool. I've been
-noodling around with how we build images on gitlab to see if they can
-cache better because the normal case should be we don't need to
-rebuild everything if the upstream distro hasn't updated its package
-list.
+In the process of migrating away from using docker.py to build our
+containers we need to expose the command to the build environment. The
+script is still a useful way to probe which command works though.
 
-Anyway what do people think?
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ configure | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Alex Bennée (7):
-  configure: expose the direct container command
-  tests/dockerfiles: unify debian-toolchain references
-  tests/lcitool: append user setting stanza to dockerfiles
-  tests/docker: add USER stanzas to non-lci images
-  tests/docker: use direct RUNC call to build containers
-  tests/docker: use direct RUNC call to run test jobs
-  tests/gitlab: use kaniko to build images
-
- configure                                     |  3 +++
- .gitlab-ci.d/cirrus/freebsd-12.vars           |  5 ++++
- .gitlab-ci.d/cirrus/freebsd-13.vars           |  5 ++++
- .gitlab-ci.d/cirrus/macos-12.vars             |  5 ++++
- .gitlab-ci.d/container-template.yml           | 23 +++++++---------
- tests/docker/Makefile.include                 | 27 +++++++++++--------
- tests/docker/dockerfiles/alpine.docker        |  5 ++++
- tests/docker/dockerfiles/centos8.docker       |  5 ++++
- .../dockerfiles/debian-all-test-cross.docker  |  5 ++++
- .../dockerfiles/debian-alpha-cross.docker     |  5 ++++
- .../dockerfiles/debian-amd64-cross.docker     |  5 ++++
- tests/docker/dockerfiles/debian-amd64.docker  |  5 ++++
- .../dockerfiles/debian-arm64-cross.docker     |  5 ++++
- .../dockerfiles/debian-armel-cross.docker     |  5 ++++
- .../dockerfiles/debian-armhf-cross.docker     |  5 ++++
- .../dockerfiles/debian-hexagon-cross.docker   |  5 ++++
- .../dockerfiles/debian-hppa-cross.docker      |  5 ++++
- .../dockerfiles/debian-loongarch-cross.docker |  5 ++++
- .../dockerfiles/debian-m68k-cross.docker      |  5 ++++
- .../dockerfiles/debian-mips-cross.docker      |  5 ++++
- .../dockerfiles/debian-mips64-cross.docker    |  5 ++++
- .../dockerfiles/debian-mips64el-cross.docker  |  5 ++++
- .../dockerfiles/debian-mipsel-cross.docker    |  5 ++++
- tests/docker/dockerfiles/debian-native.docker |  5 ++++
- .../debian-powerpc-test-cross.docker          |  6 ++++-
- .../dockerfiles/debian-ppc64el-cross.docker   |  5 ++++
- .../dockerfiles/debian-riscv64-cross.docker   |  5 ++++
- .../debian-riscv64-test-cross.docker          |  5 ++++
- .../dockerfiles/debian-s390x-cross.docker     |  5 ++++
- .../dockerfiles/debian-sh4-cross.docker       |  5 ++++
- .../dockerfiles/debian-sparc64-cross.docker   |  5 ++++
- .../dockerfiles/debian-toolchain.docker       |  9 +++++--
- .../dockerfiles/debian-tricore-cross.docker   |  5 ++++
- .../dockerfiles/debian-xtensa-cross.docker    |  5 ++++
- .../dockerfiles/fedora-cris-cross.docker      |  5 ++++
- .../dockerfiles/fedora-i386-cross.docker      |  5 ++++
- .../dockerfiles/fedora-win32-cross.docker     |  5 ++++
- .../dockerfiles/fedora-win64-cross.docker     |  5 ++++
- tests/docker/dockerfiles/fedora.docker        |  5 ++++
- tests/docker/dockerfiles/opensuse-leap.docker |  5 ++++
- tests/docker/dockerfiles/python.docker        |  5 ++++
- tests/docker/dockerfiles/ubuntu2004.docker    |  5 ++++
- tests/docker/dockerfiles/ubuntu2204.docker    |  5 ++++
- tests/lcitool/refresh                         | 11 +++++++-
- 44 files changed, 240 insertions(+), 29 deletions(-)
-
+diff --git a/configure b/configure
+index cf6db3d551..b6a1cebad9 100755
+--- a/configure
++++ b/configure
+@@ -1744,6 +1744,7 @@ fi
+ # functions to probe cross compilers
+ 
+ container="no"
++runc=""
+ if test $use_containers = "yes" && (has "docker" || has "podman"); then
+     case $($python "$source_path"/tests/docker/docker.py probe) in
+         *docker) container=docker ;;
+@@ -1752,6 +1753,7 @@ if test $use_containers = "yes" && (has "docker" || has "podman"); then
+     esac
+     if test "$container" != "no"; then
+         docker_py="$python $source_path/tests/docker/docker.py --engine $container"
++        runc=$($python "$source_path"/tests/docker/docker.py probe)
+     fi
+ fi
+ 
+@@ -2351,6 +2353,7 @@ fi
+ 
+ if test "$container" != no; then
+     echo "ENGINE=$container" >> $config_host_mak
++    echo "RUNC=$runc" >> $config_host_mak
+ fi
+ echo "ROMS=$roms" >> $config_host_mak
+ echo "MAKE=$make" >> $config_host_mak
 -- 
 2.39.1

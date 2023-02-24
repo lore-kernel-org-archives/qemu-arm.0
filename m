@@ -1,140 +1,113 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2224181ejc;
-        Fri, 24 Feb 2023 14:23:59 -0800 (PST)
-X-Google-Smtp-Source: AK7set+GwrL846t/5VKL6JOxH4L7Vdmkhk56OBF236hmlR8P9ocnU0Pa67ljyHII5JBsNhu3CjMF
-X-Received: by 2002:a05:6214:246d:b0:56e:9210:e34c with SMTP id im13-20020a056214246d00b0056e9210e34cmr2235712qvb.23.1677277439646;
-        Fri, 24 Feb 2023 14:23:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677277439; cv=none;
-        d=google.com; s=arc-20160816;
-        b=as21Y8N5jNhdbrSYcXmWO8o/iGOEAYAGqmuFM4j4PVpXcDQlEP8DO4mC5qFE9AXfHS
-         81nuYh2XIRKTMejw5w0Kmsxh0lgIr1qkSOR8IQW+1UJlajJJuA6W5ZFRqXmycd/BRiFx
-         A9An0pdUavnAfIIpQOj8IfddeIVTVaCl1F+UzSQaK8nAJT+T8z1mc6kN094Ybh4IDlgL
-         nYlB1I0bFFQ4EDFKzFT9pRvGB8oLGeJPYLPqtfVRuXYBGAeCSxtqqEnT1XhxIy6I2vtH
-         bNKfTKAjI3S5vWk+oHIGj/8doihFr9lvfAQqNqQh2yeu1WS7acOuD+J2kc1236HZO+Ol
-         8aLA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=/OGhX04bm3n/OF7eQLQqMBAZjPMUQ1JzfCAv2X/SsAc=;
-        b=hel98McVel9CDMt0yoDqtiNgZAgEW6UyPaTrTqgJ94w0LQFA02zcg4S3SrVb8oUuI/
-         8sg5X+kaLQi7gP8hL7uDqD70xK7H3RdMw3cUtwIiqXKnDwcPjzc5XOs12cyKPcSPe9TL
-         ZkqHVVevw1IbnMcB9eyX5+6ROVxqWm3yts0zYy6Ec4C5fl7ezGW08fH9eTSCJ7nOYgMb
-         7RSj+sP6FvX+BRFPvwT3WTURXRgnprWHCJbBiN71E+9aGOjDuHgMvg2Sjf6w0DOWiG18
-         IcR2kthpKYQwn9kFrUzYyi1lOs8RSOpHwSFqGvZaSqQD86UK80pj5l1Yc4E1vsQDPfVH
-         2/uA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iYrtMVD2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i21-20020a05620a249500b006fa57ff8d78si257175qkn.67.2023.02.24.14.23.59
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Feb 2023 14:23:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iYrtMVD2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pVgT6-0004GL-U1; Fri, 24 Feb 2023 17:23:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVgT5-0004FJ-QH
- for qemu-arm@nongnu.org; Fri, 24 Feb 2023 17:23:07 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVgT3-0004Oq-5Y
- for qemu-arm@nongnu.org; Fri, 24 Feb 2023 17:23:07 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id bo30so698825wrb.0
- for <qemu-arm@nongnu.org>; Fri, 24 Feb 2023 14:23:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=/OGhX04bm3n/OF7eQLQqMBAZjPMUQ1JzfCAv2X/SsAc=;
- b=iYrtMVD2Qy/U/pvzf4zNOCP+y2JoMMLIcsfquq4pmRdWV0Zpqned9LH6mI7AIBVNZt
- IEMTpYiDkG6Fhb8+EWi9UNjR+EtAf3Xcy3FWYsAYr3L4aVvEcAHars2W1OteTv/LNC5o
- VxGvUQ0Ho6nhE76MBkcBnUZXlxqcvwuGoZ/+OtJr6SplZIo/qym34ZESxyQQgl5gJ3Fs
- DcqtrPnOUpcpZ3KaKiV1WTl/MIcUqJjDYLe3PeAR/WpHdGc3roZzbomyMnCYhcZq7Ig/
- EToQ48IlyP7iE8LjNDGImSybMX3LgqH1mr7prU1K0vBQuX/HW1pJ3UyZM8XBgHUpZURD
- e2xQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/OGhX04bm3n/OF7eQLQqMBAZjPMUQ1JzfCAv2X/SsAc=;
- b=douILinUAcPjXVhNBgRk4rqs6eKOzoAW1FBMVnYuuCKtV99whT3/awRIKYAir5QBEJ
- j6GXc8I53CWplbzc5WbP6dRb03B0BuLBDfgicgderWVwW9FYRU9Wn8cugO5pahbqV7vs
- 7+eLli6SOy7uTFHC+LRVrIvPmHkepQbeR8W6/yDyITgyUtmeQyrnvybgjlwR8fNFQHyN
- fu2koDYrDu9xbgRaf90g1897plVyO87XubSIki2jcUE8/7rzjL/YDvsbLjEYD/yA7XFM
- L4ydGudswVWI/2k7rBpmTncodM64IQ+WoRqqrJYAUqTGwDdv6cjCUejikMdmvTa7MX90
- 9wEw==
-X-Gm-Message-State: AO0yUKVEgg9k5zx0dBTpLcnQSLgYzT8XKI9+DQumTwtMMJ6yPMJ/6RFR
- LX+euXiQJ6jXZG0fcafB1v/AvA==
-X-Received: by 2002:adf:f5d2:0:b0:2c7:bbe:456e with SMTP id
- k18-20020adff5d2000000b002c70bbe456emr8289169wrp.56.1677277383502; 
- Fri, 24 Feb 2023 14:23:03 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- j14-20020a5d464e000000b002c558869934sm20859wrs.81.2023.02.24.14.23.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Feb 2023 14:23:02 -0800 (PST)
-Message-ID: <b5fa57d6-cab4-3f81-d941-0de38783bec3@linaro.org>
-Date: Fri, 24 Feb 2023 23:23:01 +0100
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id p13-20020a1c544d000000b003e208cec49bsm8971006wmi.3.2023.02.24.10.08.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Feb 2023 10:08:58 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 98F121FFB7;
+	Fri, 24 Feb 2023 18:08:57 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Li-Wen Hsu <lwhsu@freebsd.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Qiuhao Li <Qiuhao.Li@outlook.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Yonggang Luo <luoyonggang@gmail.com>,
+	Ed Maste <emaste@freebsd.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	qemu-block@nongnu.org,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	John Snow <jsnow@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Alexander Bulekov <alxndr@bu.edu>,
+	Hanna Reitz <hreitz@redhat.com>,
+	Bandan Das <bsd@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Darren Kenny <darren.kenny@oracle.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
+Subject: [PATCH 0/7] testing/next: docker.py removal and kaniko updates
+Date: Fri, 24 Feb 2023 18:08:50 +0000
+Message-Id: <20230224180857.1050220-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH v2 00/24] hw/ide: QOM/QDev housekeeping
-Content-Language: en-US
-To: qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>
-Cc: qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org
-References: <20230220091358.17038-1-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230220091358.17038-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ye0AN4CnK4QG
+X-TUID: Alz2G04lpN5b
 
-ping for 3 patches :)
+This series attempts to remove our dependence on the docker.py script
+and build things directly with the appropriate tool. I've been
+noodling around with how we build images on gitlab to see if they can
+cache better because the normal case should be we don't need to
+rebuild everything if the upstream distro hasn't updated its package
+list.
 
-On 20/2/23 10:13, Philippe Mathieu-Daudé wrote:
-> Missing review: 2, 17, 20
-> 
-> Since v1:
-> - addressed review comments
-> 
-> John, can I get your formal Ack?
-> 
-> Thanks,
-> 
-> Phil.
+Anyway what do people think?
 
+Alex Bennée (7):
+  configure: expose the direct container command
+  tests/dockerfiles: unify debian-toolchain references
+  tests/lcitool: append user setting stanza to dockerfiles
+  tests/docker: add USER stanzas to non-lci images
+  tests/docker: use direct RUNC call to build containers
+  tests/docker: use direct RUNC call to run test jobs
+  tests/gitlab: use kaniko to build images
+
+ configure                                     |  3 +++
+ .gitlab-ci.d/cirrus/freebsd-12.vars           |  5 ++++
+ .gitlab-ci.d/cirrus/freebsd-13.vars           |  5 ++++
+ .gitlab-ci.d/cirrus/macos-12.vars             |  5 ++++
+ .gitlab-ci.d/container-template.yml           | 23 +++++++---------
+ tests/docker/Makefile.include                 | 27 +++++++++++--------
+ tests/docker/dockerfiles/alpine.docker        |  5 ++++
+ tests/docker/dockerfiles/centos8.docker       |  5 ++++
+ .../dockerfiles/debian-all-test-cross.docker  |  5 ++++
+ .../dockerfiles/debian-alpha-cross.docker     |  5 ++++
+ .../dockerfiles/debian-amd64-cross.docker     |  5 ++++
+ tests/docker/dockerfiles/debian-amd64.docker  |  5 ++++
+ .../dockerfiles/debian-arm64-cross.docker     |  5 ++++
+ .../dockerfiles/debian-armel-cross.docker     |  5 ++++
+ .../dockerfiles/debian-armhf-cross.docker     |  5 ++++
+ .../dockerfiles/debian-hexagon-cross.docker   |  5 ++++
+ .../dockerfiles/debian-hppa-cross.docker      |  5 ++++
+ .../dockerfiles/debian-loongarch-cross.docker |  5 ++++
+ .../dockerfiles/debian-m68k-cross.docker      |  5 ++++
+ .../dockerfiles/debian-mips-cross.docker      |  5 ++++
+ .../dockerfiles/debian-mips64-cross.docker    |  5 ++++
+ .../dockerfiles/debian-mips64el-cross.docker  |  5 ++++
+ .../dockerfiles/debian-mipsel-cross.docker    |  5 ++++
+ tests/docker/dockerfiles/debian-native.docker |  5 ++++
+ .../debian-powerpc-test-cross.docker          |  6 ++++-
+ .../dockerfiles/debian-ppc64el-cross.docker   |  5 ++++
+ .../dockerfiles/debian-riscv64-cross.docker   |  5 ++++
+ .../debian-riscv64-test-cross.docker          |  5 ++++
+ .../dockerfiles/debian-s390x-cross.docker     |  5 ++++
+ .../dockerfiles/debian-sh4-cross.docker       |  5 ++++
+ .../dockerfiles/debian-sparc64-cross.docker   |  5 ++++
+ .../dockerfiles/debian-toolchain.docker       |  9 +++++--
+ .../dockerfiles/debian-tricore-cross.docker   |  5 ++++
+ .../dockerfiles/debian-xtensa-cross.docker    |  5 ++++
+ .../dockerfiles/fedora-cris-cross.docker      |  5 ++++
+ .../dockerfiles/fedora-i386-cross.docker      |  5 ++++
+ .../dockerfiles/fedora-win32-cross.docker     |  5 ++++
+ .../dockerfiles/fedora-win64-cross.docker     |  5 ++++
+ tests/docker/dockerfiles/fedora.docker        |  5 ++++
+ tests/docker/dockerfiles/opensuse-leap.docker |  5 ++++
+ tests/docker/dockerfiles/python.docker        |  5 ++++
+ tests/docker/dockerfiles/ubuntu2004.docker    |  5 ++++
+ tests/docker/dockerfiles/ubuntu2204.docker    |  5 ++++
+ tests/lcitool/refresh                         | 11 +++++++-
+ 44 files changed, 240 insertions(+), 29 deletions(-)
+
+-- 
+2.39.1

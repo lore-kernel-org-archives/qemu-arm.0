@@ -1,653 +1,150 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2638856ejc;
-        Sat, 25 Feb 2023 01:22:54 -0800 (PST)
-X-Google-Smtp-Source: AK7set8gpTcEX1xMwlOvXF8tCzuwsBvE41nh0nTqDYOhemrCvX8HgKcQIWeqxZYqUnsRPbvgrUVc
-X-Received: by 2002:a05:6214:d49:b0:56f:8a99:1a64 with SMTP id 9-20020a0562140d4900b0056f8a991a64mr36643802qvr.4.1677316974105;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2638863ejc;
+        Sat, 25 Feb 2023 01:22:55 -0800 (PST)
+X-Google-Smtp-Source: AK7set+cJlFEqtk4sKEjd084pNve2GAao9cgPwDXdJbPQ/Jmi2NBpcZHZEvHTPZ2PFqDSIgd5W1A
+X-Received: by 2002:ac8:7d49:0:b0:3a7:ef31:a07b with SMTP id h9-20020ac87d49000000b003a7ef31a07bmr30172750qtb.11.1677316974890;
         Sat, 25 Feb 2023 01:22:54 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1677316974; cv=none;
         d=google.com; s=arc-20160816;
-        b=WisQtjuvPxEarlUJRt22kTJS88XcXWhc+pGd0gcCxnd6Ca2KWDAuPmuS9cYb+ld/Et
-         sah/VaqqlBeRyOZEXpIWwzYfONkbkHNeslwZdB+rBlJscf00LGiVUQAvhbf/JVYHAj9U
-         o4FcI12OofoHbaTY5yetW5xHVnh5dvDCT1ytO//AwYAxxE/udpUDfCSkPmww89MpUusH
-         UB6xPafEHibyrI1FTSgVJZwUNJZoLnWJ/ZXRTJrUht/pL1tKGo4+wDlffwhKEch1A92m
-         j4CZDqOZzG9t5S/9p9gyRt6mfDu1YojjPu2p8Zg4NQoepReBS4en4sZWEuzUbyyRbn6S
-         MuBQ==
+        b=olyRpBb3EEJHl69Mu9J1mg1drln7cp5HUeHb/TzljId+MVRedFyIhOCndTVMbrxy6n
+         s7TQyhcIjxFE5BZ90yurnnwmJbicgf/d4ObYmFO8GqpfJzCmWA5iZb8i8JBi64PdTVnJ
+         Yo4/L36R1EDfFgv/Orw2WN4D7LxDxABFca7aWzrcQWV33a41HB334vzVa0dydmpmUpEZ
+         55dhBteq00RUPbp73zjnF6EAb1YsFB3gCD45B3MjLlHtpQ7CwSFRqI9Jhtv7K47jE5zx
+         JHPyMf8Di/Bnuq8XV8nV4Yc2k4YeCxTPseLk2rMhUk/+iOo00VHrdN5rkwnhuIJHOP1n
+         WPgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=OzenRWt+IW0b4GMVE6YHj3uhLXPgLUDQLxr6mseKj2c=;
-        b=UeoXDZfQp91OTOVDVFgGoLd15ZSQNNOD8KN52sDrQfyg2tOFwmFShInikUxU/jCXg7
-         BlGnWDTEtfy8U8fNaHmwtDEMsvXTdaqJXNN5293sV/MqVPjYrnFyrhvHXmPH50osUR9E
-         vcB5KUbMxgf25wHZI5M7dA89ZYNMDiKvcbf26rtAwxo+IxmBrLJPQLJNqL/2DH4vOZmz
-         OsxoblMfiDKf/m1CBkjY7X9URajjeqt8bf6sjEvzndXAnzo2Jbz/1i60+FlvYbg52dN/
-         deRD6J8rxpKPw9XhYBE7cFAxLMoXaVsAneOMJO/5XR65aWLibruE7E9exLArXg8vFUDu
-         4vUA==
+         :in-reply-to:content-language:references:cc:to:from:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Z9o8lSNDVgDzgK+zbye3s+P1topoY4svJSWTC0b8hC4=;
+        b=VoPYwRPLw48miVjpUX9FVsTVXZYShoKMC11aam5hWIi0FNiOKBkozJSB7A7YCFPnj7
+         xapPKdgDS42aoIYe+3Y+kpIo69gq2UN1s2XtBi0SU3PqBTkjjbwrRP4d/AB5MunMUmkJ
+         o5SqJHjBmqRuYv6APBZE+Ic55drMs8T+vY8MHPraJrvfZAp3DTOBoaV5jUg56wlwf1qi
+         Rn7qRlkzW4/DjSU85hp2bkfkc2Cjj2PWXw3zH60PLCP2ytclqDaAnanRc24qVuLsin/n
+         Ff+j+eLpRt86b8SsHFAyzHWA53CWOOCJlhF+5DJwGJPCrHdfOiEaDoOceVuGiK2SzeFR
+         srVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ay93M9Ia;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kmjKp1WH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b15-20020a0cf04f000000b0056eb7b22128si1528648qvl.288.2023.02.25.01.22.53
+        by mx.google.com with ESMTPS id y17-20020a05622a165100b003ba0207ca7fsi1540368qtj.709.2023.02.25.01.22.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sat, 25 Feb 2023 01:22:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ay93M9Ia;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kmjKp1WH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pVqiP-000477-V1; Sat, 25 Feb 2023 04:19:38 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pVqgp-0006yi-Vp; Sat, 25 Feb 2023 04:18:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVqiD-0003kD-Me
- for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:19:26 -0500
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+ id 1pVqgo-0006m6-Kr
+ for qemu-arm@nongnu.org; Sat, 25 Feb 2023 04:17:58 -0500
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVqi9-0002rH-7e
- for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:19:25 -0500
-Received: by mail-pg1-x541.google.com with SMTP id h31so921136pgl.6
- for <qemu-devel@nongnu.org>; Sat, 25 Feb 2023 01:19:20 -0800 (PST)
+ id 1pVqgl-0002f3-Gu
+ for qemu-arm@nongnu.org; Sat, 25 Feb 2023 04:17:58 -0500
+Received: by mail-pj1-x1034.google.com with SMTP id
+ nw10-20020a17090b254a00b00233d7314c1cso5185339pjb.5
+ for <qemu-arm@nongnu.org>; Sat, 25 Feb 2023 01:17:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=OzenRWt+IW0b4GMVE6YHj3uhLXPgLUDQLxr6mseKj2c=;
- b=ay93M9IapCP7xN89EFUt0FM3crr8hXNy8MvT4UKVS4mqv5333G58c0NmJ3ib3WDqew
- dDYFokHgeSyf2a2s4tyvod7d51lUQVSEgvebUDTzamRj0stHG28UVbqxWL1NTjuQNP2e
- lSD1Yhk201+rVnsUZT51qNzORxAKzhM1KlS5x/jWcPj7205FTTbQkUPkDCVudzy5Pnsq
- a4VF6lDzkOGqDLMUoZfmpa5ZQefFbnO/P/w1qASxuwXH1Rfz48+0tznuawK72MYYf0by
- fchNfB6D4WL6PNQZl2FtJfHq8tMGOEcQruhZj8K3nTY35SPQwiCABReT2UrFysNos8mT
- cy6g==
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=Z9o8lSNDVgDzgK+zbye3s+P1topoY4svJSWTC0b8hC4=;
+ b=kmjKp1WH/jLiioaCCjMJJAuhcz0xbnPp4hyDOgiQ3GXpLcCBpJXRdgK8okeBFwEFV3
+ jhQXVCIWCh2pneNnf/gBZnNL1NAe3O+Q4JkCDNTe5yFHCnYKMZuZyZLH75jKVbKoyE/K
+ dH4K8CG1l+UB4nxB0U/+B9LqrQcOXoFbsZIkZrK1VaK3F092HveWz5couWfFxnUU0dhe
+ dqb56xs5KDNYQrGAOiOnhT/IcQYEti8lw7sA1PDme5yLB272vppiHUk/53xui235jGjm
+ +FvrVbebvTyhACBlSnHDCYVD/kgQfU2ymyS0E5PtCtCyAi9+q3ExvawRbRXO74yhorm1
+ Nplw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=OzenRWt+IW0b4GMVE6YHj3uhLXPgLUDQLxr6mseKj2c=;
- b=RcLLn5PwTYQqpfDQFW9fcXh1pb3JsQvGtDPYmkMpQEfSaN/rG3o6ZmQF0kC0Lv7ytu
- oYK8i3z0mY4puLa89kFRfnwRmVNA9QeGORVbr/+1bPtvPLASnt+g7KUpyeMtwdmeixzh
- bwxl5ZWWn2MktSDH6NET5VRRy+r+vgFYmNgqdPTEwhDGNys/ITv8w+5ldMO+HZql/rY8
- vg/pvXPCAeFntOBB1DhpIRuVralS+Y44OvSvROmKwiMc/RS1J3FlspdnYe8CwF2Xs8Ex
- nMox2TIl0rgib6eHjW+7ZEIAOk7cssw6tuAD2L7DgavvIQlRbHqCIB4u8XfUID80DvX0
- WGIA==
-X-Gm-Message-State: AO0yUKVMh3/q9MwUbpUgQ7kuL+7ksjOdPFZhrvS+a8ylJgy3Cn7TfBPx
- m9QgmMIcRjpWvB9R2DyGIY2KJAa//XWkUyuZzkrVGw==
-X-Received: by 2002:aa7:96ee:0:b0:5dc:6ddd:878f with SMTP id
- i14-20020aa796ee000000b005dc6ddd878fmr7310046pfq.2.1677316759522; 
- Sat, 25 Feb 2023 01:19:19 -0800 (PST)
-Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
- by smtp.gmail.com with ESMTPSA id
- 26-20020aa7921a000000b00592417157f2sm843114pfo.148.2023.02.25.01.19.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 25 Feb 2023 01:19:19 -0800 (PST)
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Z9o8lSNDVgDzgK+zbye3s+P1topoY4svJSWTC0b8hC4=;
+ b=O5xBVagkQcR3VF+rweV3X/zMLSS9D3FIkHO6UKO6753vlPAxgdPEwn/bmImblojDk8
+ jfIvz30sdtZUyel0z+JVFgggvtkoOKz30CKdGG1CMqtT+BQAjqqdAPvAbQoERQQHoitq
+ 5iS8PbUIYntyF2G/x2Z0bZ638DpScbhm67m8xnbMu7DtPE22BqGSfzP2OIXFTQhSt3Ey
+ jHRyrIU/ocdAktJCJ3QCWq/ibwWBTb4pQGnnmgY2elGt1s8M9X16RfvPVCHgeBpGFtzJ
+ 2Sh1CTHmwXEwzw9CkSve5bRrlK10krWzwC4EwrNOOgJiNAuWXkkdjgPWnFww66n93uuh
+ TKaw==
+X-Gm-Message-State: AO0yUKUyU1VQe+0EW01CDd15PyFnBNOzliZzkycIfFhx4ZCsKAOZihR0
+ fMwwrA9zlurogoUzCOfkKvTqow==
+X-Received: by 2002:a05:6a20:6909:b0:cc:f39:5094 with SMTP id
+ q9-20020a056a20690900b000cc0f395094mr13291962pzj.30.1677316673704; 
+ Sat, 25 Feb 2023 01:17:53 -0800 (PST)
+Received: from [192.168.6.128] (rrcs-173-198-77-218.west.biz.rr.com.
+ [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
+ 13-20020aa7910d000000b005a8173829d5sm828694pfh.66.2023.02.25.01.17.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 25 Feb 2023 01:17:53 -0800 (PST)
+Message-ID: <4f6f45fd-5f97-b7dd-ebc9-e2e72570c7d3@linaro.org>
+Date: Fri, 24 Feb 2023 23:17:49 -1000
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH 25/76] target/cris: Drop tcg_temp_free from C code
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
- edgar.iglesias@gmail.com
-Subject: [PATCH 41/76] target/mips: Drop tcg_temp_free from
- nanomips_translate.c.inc
-Date: Fri, 24 Feb 2023 23:13:52 -1000
-Message-Id: <20230225091427.1817156-42-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230225091427.1817156-1-richard.henderson@linaro.org>
+ tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
 References: <20230225091427.1817156-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x541.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20230225091427.1817156-26-richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20230225091427.1817156-26-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZT3PZV0D0c3r
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sSDtlDyqJOeZ
 
-Translators are no longer required to free tcg temporaries.
+On 2/24/23 23:13, Richard Henderson wrote:
+> Translators are no longer required to free tcg temporaries.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/hexagon/gen_tcg.h     | 29 ------------------
+>   target/hexagon/gen_tcg_hvx.h | 15 ----------
+>   target/hexagon/macros.h      |  7 -----
+>   target/hexagon/genptr.c      | 58 ------------------------------------
+>   target/hexagon/translate.c   |  7 -----
+>   target/hexagon/README        |  5 ----
+>   6 files changed, 121 deletions(-)
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/mips/tcg/nanomips_translate.c.inc | 127 ++---------------------
- 1 file changed, 10 insertions(+), 117 deletions(-)
+Bah.  s/cris/hexagon/ in $SUBJECT.
 
-diff --git a/target/mips/tcg/nanomips_translate.c.inc b/target/mips/tcg/nanomips_translate.c.inc
-index faf6d679bd..b3df7fec40 100644
---- a/target/mips/tcg/nanomips_translate.c.inc
-+++ b/target/mips/tcg/nanomips_translate.c.inc
-@@ -1005,13 +1005,9 @@ static void gen_llwp(DisasContext *ctx, uint32_t base, int16_t offset,
-         tcg_gen_extr_i64_tl(tmp1, tmp2, tval);
-     }
-     gen_store_gpr(tmp1, reg1);
--    tcg_temp_free(tmp1);
-     gen_store_gpr(tmp2, reg2);
--    tcg_temp_free(tmp2);
-     tcg_gen_st_i64(tval, cpu_env, offsetof(CPUMIPSState, llval_wp));
--    tcg_temp_free_i64(tval);
-     tcg_gen_st_tl(taddr, cpu_env, offsetof(CPUMIPSState, lladdr));
--    tcg_temp_free(taddr);
- }
- 
- static void gen_scwp(DisasContext *ctx, uint32_t base, int16_t offset,
-@@ -1084,9 +1080,6 @@ static void gen_save(DisasContext *ctx, uint8_t rt, uint8_t count,
- 
-     /* adjust stack pointer */
-     gen_adjust_sp(ctx, -u);
--
--    tcg_temp_free(t0);
--    tcg_temp_free(va);
- }
- 
- static void gen_restore(DisasContext *ctx, uint8_t rt, uint8_t count,
-@@ -1110,9 +1103,6 @@ static void gen_restore(DisasContext *ctx, uint8_t rt, uint8_t count,
- 
-     /* adjust stack pointer */
-     gen_adjust_sp(ctx, u);
--
--    tcg_temp_free(t0);
--    tcg_temp_free(va);
- }
- 
- static void gen_compute_branch_nm(DisasContext *ctx, uint32_t opc,
-@@ -1232,8 +1222,6 @@ static void gen_compute_branch_nm(DisasContext *ctx, uint32_t opc,
-     if (insn_bytes == 2) {
-         ctx->hflags |= MIPS_HFLAG_B16;
-     }
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
- }
- 
- static void gen_pool16c_nanomips_insn(DisasContext *ctx)
-@@ -1358,7 +1346,6 @@ static void gen_pool32a0_nanomips_insn(CPUMIPSState *env, DisasContext *ctx)
-                 }
-                 break;
-             }
--            tcg_temp_free(t0);
- #endif
-         } else {
-             gen_slt(ctx, OPC_SLTU, rd, rs, rt);
-@@ -1381,10 +1368,6 @@ static void gen_pool32a0_nanomips_insn(CPUMIPSState *env, DisasContext *ctx)
-             /* operands of same sign, result different sign */
-             tcg_gen_setcondi_tl(TCG_COND_LT, t0, t1, 0);
-             gen_store_gpr(t0, rd);
--
--            tcg_temp_free(t0);
--            tcg_temp_free(t1);
--            tcg_temp_free(t2);
-         }
-         break;
-     case NM_MUL:
-@@ -1427,7 +1410,6 @@ static void gen_pool32a0_nanomips_insn(CPUMIPSState *env, DisasContext *ctx)
- 
-             gen_load_gpr(t0, rt);
-             gen_mtc0(ctx, t0, rs, extract32(ctx->opcode, 11, 3));
--            tcg_temp_free(t0);
-         }
-         break;
-     case NM_D_E_MT_VPE:
-@@ -1467,8 +1449,6 @@ static void gen_pool32a0_nanomips_insn(CPUMIPSState *env, DisasContext *ctx)
-                 }
-                 break;
-             }
--
--            tcg_temp_free(t0);
-         }
-         break;
-     case NM_FORK:
-@@ -1480,8 +1460,6 @@ static void gen_pool32a0_nanomips_insn(CPUMIPSState *env, DisasContext *ctx)
-             gen_load_gpr(t0, rt);
-             gen_load_gpr(t1, rs);
-             gen_helper_fork(t0, t1);
--            tcg_temp_free(t0);
--            tcg_temp_free(t1);
-         }
-         break;
-     case NM_MFTR:
-@@ -1508,7 +1486,6 @@ static void gen_pool32a0_nanomips_insn(CPUMIPSState *env, DisasContext *ctx)
-             gen_load_gpr(t0, rs);
-             gen_helper_yield(t0, cpu_env, t0);
-             gen_store_gpr(t0, rt);
--            tcg_temp_free(t0);
-         }
-         break;
- #endif
-@@ -1557,11 +1534,6 @@ static void gen_pool32axf_1_5_nanomips_insn(DisasContext *ctx, uint32_t opc,
-         gen_reserved_instruction(ctx);
-         break;
-     }
--
--    tcg_temp_free_i32(t0);
--
--    tcg_temp_free(v0_t);
--    tcg_temp_free(v1_t);
- }
- 
- 
-@@ -1682,10 +1654,6 @@ static void gen_pool32axf_1_nanomips_insn(DisasContext *ctx, uint32_t opc,
-         gen_reserved_instruction(ctx);
-         break;
-     }
--
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
--    tcg_temp_free(v0_t);
- }
- 
- static void gen_pool32axf_2_multiply(DisasContext *ctx, uint32_t opc,
-@@ -1802,8 +1770,6 @@ static void gen_pool32axf_2_multiply(DisasContext *ctx, uint32_t opc,
-         gen_reserved_instruction(ctx);
-         break;
-     }
--
--    tcg_temp_free_i32(t0);
- }
- 
- static void gen_pool32axf_2_nanomips_insn(DisasContext *ctx, uint32_t opc,
-@@ -1855,10 +1821,8 @@ static void gen_pool32axf_2_nanomips_insn(DisasContext *ctx, uint32_t opc,
-                 tcg_gen_mul_i64(t2, t2, t3);
-                 tcg_gen_concat_tl_i64(t3, cpu_LO[acc], cpu_HI[acc]);
-                 tcg_gen_add_i64(t2, t2, t3);
--                tcg_temp_free_i64(t3);
-                 gen_move_low32(cpu_LO[acc], t2);
-                 gen_move_high32(cpu_HI[acc], t2);
--                tcg_temp_free_i64(t2);
-             }
-             break;
-         case NM_MULT:
-@@ -1878,8 +1842,6 @@ static void gen_pool32axf_2_nanomips_insn(DisasContext *ctx, uint32_t opc,
-                 tcg_gen_muls2_i32(t2, t3, t2, t3);
-                 tcg_gen_ext_i32_tl(cpu_LO[acc], t2);
-                 tcg_gen_ext_i32_tl(cpu_HI[acc], t3);
--                tcg_temp_free_i32(t2);
--                tcg_temp_free_i32(t3);
-             }
-             break;
-         case NM_EXTRV_W:
-@@ -1915,10 +1877,8 @@ static void gen_pool32axf_2_nanomips_insn(DisasContext *ctx, uint32_t opc,
-                 tcg_gen_mul_i64(t2, t2, t3);
-                 tcg_gen_concat_tl_i64(t3, cpu_LO[acc], cpu_HI[acc]);
-                 tcg_gen_add_i64(t2, t2, t3);
--                tcg_temp_free_i64(t3);
-                 gen_move_low32(cpu_LO[acc], t2);
-                 gen_move_high32(cpu_HI[acc], t2);
--                tcg_temp_free_i64(t2);
-             }
-             break;
-         case NM_MULTU:
-@@ -1938,8 +1898,6 @@ static void gen_pool32axf_2_nanomips_insn(DisasContext *ctx, uint32_t opc,
-                 tcg_gen_mulu2_i32(t2, t3, t2, t3);
-                 tcg_gen_ext_i32_tl(cpu_LO[acc], t2);
-                 tcg_gen_ext_i32_tl(cpu_HI[acc], t3);
--                tcg_temp_free_i32(t2);
--                tcg_temp_free_i32(t3);
-             }
-             break;
-         case NM_EXTRV_R_W:
-@@ -1982,10 +1940,8 @@ static void gen_pool32axf_2_nanomips_insn(DisasContext *ctx, uint32_t opc,
-                 tcg_gen_mul_i64(t2, t2, t3);
-                 tcg_gen_concat_tl_i64(t3, cpu_LO[acc], cpu_HI[acc]);
-                 tcg_gen_sub_i64(t2, t3, t2);
--                tcg_temp_free_i64(t3);
-                 gen_move_low32(cpu_LO[acc], t2);
-                 gen_move_high32(cpu_HI[acc], t2);
--                tcg_temp_free_i64(t2);
-             }
-             break;
-         case NM_EXTRV_RS_W:
-@@ -2027,10 +1983,8 @@ static void gen_pool32axf_2_nanomips_insn(DisasContext *ctx, uint32_t opc,
-                 tcg_gen_mul_i64(t2, t2, t3);
-                 tcg_gen_concat_tl_i64(t3, cpu_LO[acc], cpu_HI[acc]);
-                 tcg_gen_sub_i64(t2, t3, t2);
--                tcg_temp_free_i64(t3);
-                 gen_move_low32(cpu_LO[acc], t2);
-                 gen_move_high32(cpu_HI[acc], t2);
--                tcg_temp_free_i64(t2);
-             }
-             break;
-         case NM_EXTRV_S_H:
-@@ -2045,12 +1999,6 @@ static void gen_pool32axf_2_nanomips_insn(DisasContext *ctx, uint32_t opc,
-         gen_reserved_instruction(ctx);
-         break;
-     }
--
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
--
--    tcg_temp_free(v0_t);
--    tcg_temp_free(v1_t);
- }
- 
- static void gen_pool32axf_4_nanomips_insn(DisasContext *ctx, uint32_t opc,
-@@ -2162,7 +2110,6 @@ static void gen_pool32axf_4_nanomips_insn(DisasContext *ctx, uint32_t opc,
-             gen_load_gpr(tv0, rt);
-             gen_helper_insv(v0_t, cpu_env, v0_t, tv0);
-             gen_store_gpr(v0_t, ret);
--            tcg_temp_free(tv0);
-         }
-         break;
-     case NM_RADDU_W_QB:
-@@ -2188,9 +2135,6 @@ static void gen_pool32axf_4_nanomips_insn(DisasContext *ctx, uint32_t opc,
-         gen_reserved_instruction(ctx);
-         break;
-     }
--
--    tcg_temp_free(v0_t);
--    tcg_temp_free(t0);
- }
- 
- static void gen_pool32axf_7_nanomips_insn(DisasContext *ctx, uint32_t opc,
-@@ -2243,8 +2187,6 @@ static void gen_pool32axf_7_nanomips_insn(DisasContext *ctx, uint32_t opc,
-         gen_reserved_instruction(ctx);
-         break;
-     }
--    tcg_temp_free(t0);
--    tcg_temp_free(rs_t);
- }
- 
- 
-@@ -2304,7 +2246,6 @@ static void gen_pool32axf_nanomips_insn(CPUMIPSState *env, DisasContext *ctx)
-                 gen_store_gpr(t0, rt);
-             /* Stop translation as we may have switched the execution mode */
-                 ctx->base.is_jmp = DISAS_STOP;
--                tcg_temp_free(t0);
-             }
-             break;
-         case NM_EI:
-@@ -2317,7 +2258,6 @@ static void gen_pool32axf_nanomips_insn(CPUMIPSState *env, DisasContext *ctx)
-                 gen_store_gpr(t0, rt);
-             /* Stop translation as we may have switched the execution mode */
-                 ctx->base.is_jmp = DISAS_STOP;
--                tcg_temp_free(t0);
-             }
-             break;
-         case NM_RDPGPR:
-@@ -2374,7 +2314,7 @@ static void gen_compute_imm_branch(DisasContext *ctx, uint32_t opc,
-             /* Unconditional branch */
-         } else if (rt == 0 && imm != 0) {
-             /* Treat as NOP */
--            goto out;
-+            return;
-         } else {
-             cond = TCG_COND_EQ;
-         }
-@@ -2384,12 +2324,12 @@ static void gen_compute_imm_branch(DisasContext *ctx, uint32_t opc,
-         check_nms(ctx);
-         if (imm >= 32 && !(ctx->hflags & MIPS_HFLAG_64)) {
-             gen_reserved_instruction(ctx);
--            goto out;
-+            return;
-         } else if (rt == 0 && opc == NM_BBEQZC) {
-             /* Unconditional branch */
-         } else if (rt == 0 && opc == NM_BBNEZC) {
-             /* Treat as NOP */
--            goto out;
-+            return;
-         } else {
-             tcg_gen_shri_tl(t0, t0, imm);
-             tcg_gen_andi_tl(t0, t0, 1);
-@@ -2404,7 +2344,7 @@ static void gen_compute_imm_branch(DisasContext *ctx, uint32_t opc,
-     case NM_BNEIC:
-         if (rt == 0 && imm == 0) {
-             /* Treat as NOP */
--            goto out;
-+            return;
-         } else if (rt == 0 && imm != 0) {
-             /* Unconditional branch */
-         } else {
-@@ -2434,7 +2374,7 @@ static void gen_compute_imm_branch(DisasContext *ctx, uint32_t opc,
-     default:
-         MIPS_INVAL("Immediate Value Compact branch");
-         gen_reserved_instruction(ctx);
--        goto out;
-+        return;
-     }
- 
-     /* branch completion */
-@@ -2455,10 +2395,6 @@ static void gen_compute_imm_branch(DisasContext *ctx, uint32_t opc,
- 
-         gen_goto_tb(ctx, 0, ctx->base.pc_next + 4);
-     }
--
--out:
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
- }
- 
- /* P.BALRSC type nanoMIPS R6 branches: BALRSC and BRSC */
-@@ -2488,9 +2424,6 @@ static void gen_compute_nanomips_pbalrsc_branch(DisasContext *ctx, int rs,
-     /* unconditional branch to register */
-     tcg_gen_mov_tl(cpu_PC, btarget);
-     tcg_gen_lookup_and_goto_ptr();
--
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
- }
- 
- /* nanoMIPS Branches */
-@@ -2540,14 +2473,12 @@ static void gen_compute_compact_branch_nm(DisasContext *ctx, uint32_t opc,
-             gen_load_gpr(tbase, rt);
-             tcg_gen_movi_tl(toffset, offset);
-             gen_op_addr_add(ctx, btarget, tbase, toffset);
--            tcg_temp_free(tbase);
--            tcg_temp_free(toffset);
-         }
-         break;
-     default:
-         MIPS_INVAL("Compact branch/jump");
-         gen_reserved_instruction(ctx);
--        goto out;
-+        return;
-     }
- 
-     if (bcond_compute == 0) {
-@@ -2559,7 +2490,7 @@ static void gen_compute_compact_branch_nm(DisasContext *ctx, uint32_t opc,
-         default:
-             MIPS_INVAL("Compact branch/jump");
-             gen_reserved_instruction(ctx);
--            goto out;
-+            return;
-         }
-     } else {
-         /* Conditional compact branch */
-@@ -2620,7 +2551,7 @@ static void gen_compute_compact_branch_nm(DisasContext *ctx, uint32_t opc,
-         default:
-             MIPS_INVAL("Compact conditional branch/jump");
-             gen_reserved_instruction(ctx);
--            goto out;
-+            return;
-         }
- 
-         /* branch completion */
-@@ -2633,10 +2564,6 @@ static void gen_compute_compact_branch_nm(DisasContext *ctx, uint32_t opc,
- 
-         gen_goto_tb(ctx, 0, ctx->base.pc_next + 4);
-     }
--
--out:
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
- }
- 
- 
-@@ -2664,15 +2591,12 @@ static void gen_compute_branch_cp1_nm(DisasContext *ctx, uint32_t op,
-     default:
-         MIPS_INVAL("cp1 cond branch");
-         gen_reserved_instruction(ctx);
--        goto out;
-+        return;
-     }
- 
-     tcg_gen_trunc_i64_tl(bcond, t0);
- 
-     ctx->btarget = btarget;
--
--out:
--    tcg_temp_free_i64(t0);
- }
- 
- 
-@@ -2709,7 +2633,7 @@ static void gen_p_lsx(DisasContext *ctx, int rd, int rs, int rt)
-             break;
-         default:
-             gen_reserved_instruction(ctx);
--            goto out;
-+            return;
-         }
-     }
-     gen_op_addr_add(ctx, t0, t0, t1);
-@@ -2799,10 +2723,6 @@ static void gen_p_lsx(DisasContext *ctx, int rd, int rs, int rt)
-         gen_reserved_instruction(ctx);
-         break;
-     }
--
--out:
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
- }
- 
- static void gen_pool32f_nanomips_insn(DisasContext *ctx)
-@@ -3443,7 +3363,6 @@ static void gen_pool32a5_nanomips_insn(DisasContext *ctx, int opc,
-                 gen_helper_precr_sra_ph_w(v1_t, sa_t, v1_t,
-                                           cpu_gpr[rt]);
-                 gen_store_gpr(v1_t, rt);
--                tcg_temp_free_i32(sa_t);
-             }
-             break;
-         case 1:
-@@ -3453,7 +3372,6 @@ static void gen_pool32a5_nanomips_insn(DisasContext *ctx, int opc,
-                 gen_helper_precr_sra_r_ph_w(v1_t, sa_t, v1_t,
-                                             cpu_gpr[rt]);
-                 gen_store_gpr(v1_t, rt);
--                tcg_temp_free_i32(sa_t);
-             }
-             break;
-        }
-@@ -3536,8 +3454,6 @@ static void gen_pool32a5_nanomips_insn(DisasContext *ctx, int opc,
-             tcg_gen_movi_tl(tv0, rd >> 3);
-             tcg_gen_movi_tl(tv1, imm);
-             gen_helper_shilo(tv0, tv1, cpu_env);
--            tcg_temp_free(tv1);
--            tcg_temp_free(tv0);
-         }
-         break;
-     case NM_MULEQ_S_W_PHL:
-@@ -3652,10 +3568,6 @@ static void gen_pool32a5_nanomips_insn(DisasContext *ctx, int opc,
-         gen_reserved_instruction(ctx);
-         break;
-     }
--
--    tcg_temp_free(v2_t);
--    tcg_temp_free(v1_t);
--    tcg_temp_free(t0);
- }
- 
- static int decode_nanomips_32_48_opc(CPUMIPSState *env, DisasContext *ctx)
-@@ -3827,7 +3739,6 @@ static int decode_nanomips_32_48_opc(CPUMIPSState *env, DisasContext *ctx)
- 
-                     tcg_gen_movi_tl(t0, addr);
-                     tcg_gen_qemu_ld_tl(cpu_gpr[rt], t0, ctx->mem_idx, MO_TESL);
--                    tcg_temp_free(t0);
-                 }
-                 break;
-             case NM_SWPC48:
-@@ -3844,9 +3755,6 @@ static int decode_nanomips_32_48_opc(CPUMIPSState *env, DisasContext *ctx)
-                     gen_load_gpr(t1, rt);
- 
-                     tcg_gen_qemu_st_tl(t1, t0, ctx->mem_idx, MO_TEUL);
--
--                    tcg_temp_free(t0);
--                    tcg_temp_free(t1);
-                 }
-                 break;
-             default:
-@@ -3908,8 +3816,6 @@ static int decode_nanomips_32_48_opc(CPUMIPSState *env, DisasContext *ctx)
-                 gen_load_gpr(t0, rs);
-                 tcg_gen_setcondi_tl(TCG_COND_EQ, t0, t0, imm);
-                 gen_store_gpr(t0, rt);
--
--                tcg_temp_free(t0);
-             }
-             break;
-         case NM_ADDIUNEG:
-@@ -3965,11 +3871,6 @@ static int decode_nanomips_32_48_opc(CPUMIPSState *env, DisasContext *ctx)
- 
-                 gen_load_gpr(t0, rs);
-                 gen_helper_rotx(cpu_gpr[rt], t0, shift, shiftx, stripe);
--                tcg_temp_free(t0);
--
--                tcg_temp_free_i32(shift);
--                tcg_temp_free_i32(shiftx);
--                tcg_temp_free_i32(stripe);
-             }
-             break;
-         case NM_P_INS:
-@@ -4239,8 +4140,6 @@ static int decode_nanomips_32_48_opc(CPUMIPSState *env, DisasContext *ctx)
-                                                MO_UNALN);
-                             break;
-                         }
--                        tcg_temp_free(t0);
--                        tcg_temp_free(t1);
-                     }
-                     break;
-                 case NM_P_LL:
-@@ -4432,8 +4331,6 @@ static int decode_nanomips_32_48_opc(CPUMIPSState *env, DisasContext *ctx)
-                         }
-                         counter++;
-                     }
--                    tcg_temp_free(va);
--                    tcg_temp_free(t1);
-                 }
-                 break;
-             default:
-@@ -4454,7 +4351,6 @@ static int decode_nanomips_32_48_opc(CPUMIPSState *env, DisasContext *ctx)
-             gen_load_gpr(t0, rt);
-             tcg_gen_mov_tl(cpu_gpr[rd], t0);
-             gen_compute_branch_nm(ctx, OPC_BGEZAL, 4, 0, 0, s);
--            tcg_temp_free(t0);
-         }
-         break;
-     case NM_P_BAL:
-@@ -4606,7 +4502,6 @@ static int decode_isa_nanomips(CPUMIPSState *env, DisasContext *ctx)
-     if (ctx->base.pc_next & 0x1) {
-         TCGv tmp = tcg_const_tl(ctx->base.pc_next);
-         tcg_gen_st_tl(tmp, cpu_env, offsetof(CPUMIPSState, CP0_BadVAddr));
--        tcg_temp_free(tmp);
-         generate_exception_end(ctx, EXCP_AdEL);
-         return 2;
-     }
-@@ -4941,8 +4836,6 @@ static int decode_isa_nanomips(CPUMIPSState *env, DisasContext *ctx)
-             gen_load_gpr(t1, rt);
-             tcg_gen_mov_tl(cpu_gpr[rd], t0);
-             tcg_gen_mov_tl(cpu_gpr[re], t1);
--            tcg_temp_free(t0);
--            tcg_temp_free(t1);
-         }
-         break;
-     default:
--- 
-2.34.1
 
+r~

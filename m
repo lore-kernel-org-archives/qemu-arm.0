@@ -1,92 +1,93 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2635656ejc;
-        Sat, 25 Feb 2023 01:17:49 -0800 (PST)
-X-Google-Smtp-Source: AK7set+RPGy6v3rWSz59apLsWZAG+w7LpnzPGpxeawcYuGyQdsOzixcJIEC2VHRRyvYZYZk9choF
-X-Received: by 2002:a05:622a:13ce:b0:3a9:86dd:3c60 with SMTP id p14-20020a05622a13ce00b003a986dd3c60mr35863620qtk.47.1677316669117;
-        Sat, 25 Feb 2023 01:17:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677316669; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2639388ejc;
+        Sat, 25 Feb 2023 01:23:44 -0800 (PST)
+X-Google-Smtp-Source: AK7set/tj1ZorpB5mKtDOzY6ehJ0KqxsT/8Ql6fPsk4qyaDhLSZDnXI0VsDue74/7pJN/s7AFRDK
+X-Received: by 2002:a05:6214:f2d:b0:56b:4e51:acd5 with SMTP id iw13-20020a0562140f2d00b0056b4e51acd5mr40670366qvb.12.1677317024608;
+        Sat, 25 Feb 2023 01:23:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677317024; cv=none;
         d=google.com; s=arc-20160816;
-        b=jJJad06429ys2ektYvRkRRFEOQy+vumt4Lj8HQqg1eTV58n7nZgheGsSs6wJRXgLFe
-         5L4XXVR+Q8SA1fjcRrAZ/ZzsUmDxXVe3Jk4v5tg3M3Fe+CvHpyup5KUV8fNXV/aYU58H
-         Bn+v01tq3FlQJlpmDl0u40DjXxn++F7d+IoFRsCcSKTJEBgokfd7qwC7OAYLmuM/6s5E
-         st0UGIIEJ1Bg5giqACEEeoCrszic8yjn3LNuoQfRlPACuf/eWk+T6dAGKHE7xqtGivaV
-         vjbRQkWcZdQn3KogCx2JD/kJSW+HXPwWFxf3btp3ISHOy9mQExtqj3Yu9I1KPRXU+Uhh
-         FO1g==
+        b=K6oin4odbu9zj8Z2/Te+3009BKiUImTr2QA/MunuIqXJAlzbobYCGBUpwOTFuBKbAZ
+         YtienALfecDU0yqq5aaiBz8+7OEM9zlCxA8KXW4+nLQOKOf7k8C89onMlDqbt59uumWK
+         fUej8DLAOS7x8h2a+DDe3CrJ2XFcCQg6wDA5uLG+GgHRUDMKJ29SWmviQ5NZs1/CsQ6A
+         hplOmC+vFSMJs/dUa2Pt1b6Ju4iGFyzvmBsnS9mtKD8THzh1SnM8z3898dsT7b6FmFDh
+         Q57YVRA2OUUP5kLNfvHVr9GmJ9AMlPGkrrGlimr0znykx+8+QvKXL6OWhH4hYMCDNQsq
+         WWCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+qBc9vHr7iMJiuvhm33sJS22hD/SEU2q8VFJIqFm9Qw=;
-        b=nRDs8bZqXDNP4ZDN3rrFTzm2ff+xZsF0ukuWUMquoATff/o5in85CP5rm63TIGGdVi
-         XRC9sfSYoHaPWZSFjb2m2H/7LVHpaiwqLhjlzG7Qz/fS7KgUILSZthECCQvNI6BSR5p4
-         OIvD9CJuaof/+e3Kziu3rB+Ld6yZVyTesWGdtynVREI9XG54597gR2K9+rThj4PP6lk5
-         OdKuqXdL7UcW8YblccXalkvX4CUQghqKvJhyHjNUOXM6Xx0iJ7eiZS89gqkg2Gr7gbI3
-         a62Ugh8Fq2gPkbMQy7O9M/nclz/MLAzgwdzqMro1fw6JnCc3y1qz2LD8/kkC1k88Pmjh
-         ytvQ==
+        bh=kCS1rL10+CIKqmoLW6jSTzgoiAWGrByH8UqPxDNVxjM=;
+        b=prJxEND81aqmV1mwcirxmymgRyl3Q1LqdMR2CiUJeZ+wLwkgvltN0YbumYO626HhkZ
+         15fFctkaSi7YZTxZ8hY1IaKVknxjCVdPInqtzLl5soUXFLJfowSpP1hilgFSSZdcLfu0
+         tICjTKpQYfHqVV+zWKMFjqU8hg+ekHoBw59T8T09BH/4EauSMBHfB2/q70T6eO31UdoL
+         /Yp7OTenDfLjqE7hgsTAp7PhmSF64fTcnNTrSwzllrYWjm/LWhicBrzQCr4PX5M4qciB
+         Y4/tSOg9Wbm66WvvlSFsNUV6q+pQi3wW1lY+CPhZidbPY2ZfW5Ht7hrSBY62gydMXKYF
+         AckQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A83V4+VP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WBpVyPYB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m13-20020a05622a054d00b003bcf4b363ecsi1649448qtx.765.2023.02.25.01.17.48
+        by mx.google.com with ESMTPS id 73-20020a370c4c000000b0073b866a0f49si1213839qkm.533.2023.02.25.01.23.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 25 Feb 2023 01:17:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 25 Feb 2023 01:23:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A83V4+VP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WBpVyPYB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pVqg2-0001OK-Mm; Sat, 25 Feb 2023 04:17:10 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pVqkO-0001eV-6d; Sat, 25 Feb 2023 04:21:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVqeu-0006d0-5O
- for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:16:00 -0500
+ id 1pVqjb-0007UL-4b
+ for qemu-arm@nongnu.org; Sat, 25 Feb 2023 04:20:51 -0500
 Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVqeq-0002Gd-LT
- for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:15:59 -0500
-Received: by mail-pj1-x102d.google.com with SMTP id y2so1415730pjg.3
- for <qemu-devel@nongnu.org>; Sat, 25 Feb 2023 01:15:56 -0800 (PST)
+ id 1pVqjW-00039b-4A
+ for qemu-arm@nongnu.org; Sat, 25 Feb 2023 04:20:50 -0500
+Received: by mail-pj1-x102d.google.com with SMTP id
+ k21-20020a17090aaa1500b002376652e160so1649772pjq.0
+ for <qemu-arm@nongnu.org>; Sat, 25 Feb 2023 01:20:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+qBc9vHr7iMJiuvhm33sJS22hD/SEU2q8VFJIqFm9Qw=;
- b=A83V4+VPXi/Qofq6zX/G2ZfHoeOwJrXWEh2ZsxESbFVis3aSUTSmgMkAAA0EV2m1OS
- /kRiU3F2qc0ntBtM0LsgOFC/wOCpw2XtY68uOPTRhXZps31fBgCI54GU4xDeHHwbHFzO
- 3JsuYqlr484gcGO8abfb/gUnpTEfSdmfKSkdOyoh9dfh/P/tj9jrtqEfquU0Xv4QowEa
- NPpsw3ETnrVb4w8Wa/HHZ+ivyn3sr/XaYdvZD7GRMQGZXs6/p5987vO6tfz0alpn4MhD
- Q8g4WwRwb3ax+UMIZIqoHAO7nKcx3Lc/+OCKsqLSs4Gh7/8Ibu90GYS3YyFx0Rg7cZK6
- PAvg==
+ bh=kCS1rL10+CIKqmoLW6jSTzgoiAWGrByH8UqPxDNVxjM=;
+ b=WBpVyPYBqpNgiZWj+9+HvdqfjNyb3r3u6T9buUrPVd0JCkABBfNK7T3M3Q10THLGn4
+ waiJFusn2ahjTkDA9Wiib5TAYE8ClDa40oUqIxmPHVp9oy7zkCgXJK/wH2vYy1Vqjfma
+ MVq/hup/gDyFPGUZhl0bYlVftd+64m3daTUORnfl1RRVdskoaC7CiUlvneyySyvdvgqe
+ M2ZdoA9Q2brykutrCuteQFeyS8phHbsZsSPgm0qJcG7YYgwyWnZen18BTGEpZnx5jrIx
+ zKEullfKWeZO31zyHt2mCMOe4EVXYJxx1P66e2ce4KFvGVYQXGelUD3lcCztOQnxxK7/
+ n0yA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+qBc9vHr7iMJiuvhm33sJS22hD/SEU2q8VFJIqFm9Qw=;
- b=sXR12o8erY6+OvQo8fN3ukvpGeYRCSwhlCXR0/T/VYqwaKqFV9vxXWacP4Y9aWMKMT
- glZHNbv5GmR6gFE4i3KSjOvrxcUvESTH+cwf8gvx9rNnbY5hBZpHC79aUL5gSiH6QERt
- YPBRSIUky7a3Pibxq89kmd80PtltEEaZ48YAM8Zx9qvtyttDsKnnxWWz+KHFFpwhKJgN
- lq4iQ2WFbwA3RVT24vE100EZSG1MfrScy0kk87YgsN3TUG7ZLrGRNnB3b6lBm/oOGEcH
- UTJdWFcbk703JXkdeud9V5OXS6aOBoHhcF/d4zU/RbEXU0KC4UwfRsiNdED34ar+MWjG
- zowg==
-X-Gm-Message-State: AO0yUKURvrm9m2/FzZWCmm4YOPpg5xYvybsZFeaUw7E1Pcxsj8pEr00J
- 6drXw0aE9BvI8LUgwzgoJkE1mV6Y4yB5l5v4LUI=
-X-Received: by 2002:a17:903:2903:b0:19c:d550:803e with SMTP id
- lh3-20020a170903290300b0019cd550803emr3763911plb.57.1677316555278; 
- Sat, 25 Feb 2023 01:15:55 -0800 (PST)
+ bh=kCS1rL10+CIKqmoLW6jSTzgoiAWGrByH8UqPxDNVxjM=;
+ b=5W9hcmZGnlNgqnyL7BKPl2AGxQ4iDFqzYlSQRUj0+P1N5vIhdSkV5dHrqg0iI15oZs
+ zAWanhl3ybmNyYxOOrBQkE82efewMKZ29gQ31Y9vxjH4647hUuL8MrrXLOZ8cLY+MK1g
+ VRt2kje4Bfz8G7TpIC3duaplVZnprsYFk6/2wAPD4bRgGrA7wBDBTmGxeUPNkiQyvWEI
+ kdUrRClJfpDHKYM4jk2rvq++PrL7S6lCrY15vH3HbL+LK88xTrDBKU/CCSNXAZXQCmZi
+ W/VxGjgWY16PugdEdmUNSMS54oILo+9ljdaotOGy499wOaD9WLFvz18p4FVXDWAd8i0D
+ znFg==
+X-Gm-Message-State: AO0yUKXSCzyloChAPcFS89HauBy/WXxMv5bbqtsie/KdKU5wa9L0S1+L
+ WT2EcbinPVXhSr971IUBfjmTsg==
+X-Received: by 2002:a05:6a20:9151:b0:cc:5917:c4ee with SMTP id
+ x17-20020a056a20915100b000cc5917c4eemr7601955pzc.35.1677316845149; 
+ Sat, 25 Feb 2023 01:20:45 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- je12-20020a170903264c00b0019607aeda8bsm831101plb.73.2023.02.25.01.15.53
+ 26-20020aa7921a000000b00592417157f2sm843114pfo.148.2023.02.25.01.20.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 25 Feb 2023 01:15:54 -0800 (PST)
+ Sat, 25 Feb 2023 01:20:44 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -94,13 +95,14 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com
-Subject: [PATCH 32/76] target/loongarch: Drop tcg_temp_free
-Date: Fri, 24 Feb 2023 23:13:43 -1000
-Message-Id: <20230225091427.1817156-33-richard.henderson@linaro.org>
+Subject: [PATCH 74/76] tracing: remove transform.py
+Date: Fri, 24 Feb 2023 23:14:25 -1000
+Message-Id: <20230225091427.1817156-75-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230225091427.1817156-1-richard.henderson@linaro.org>
 References: <20230225091427.1817156-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
  envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
@@ -110,541 +112,220 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gHj/FhGWOOvO
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hnLdY7W8GyjM
 
-Translators are no longer required to free tcg temporaries.
+This file got left behind when the tcg stuff was
+removed from tracetool.
 
+Fixes: 126d4123c50a ("tracing: excise the tcg related from tracetool")
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/loongarch/insn_trans/trans_arith.c.inc | 12 -------
- .../loongarch/insn_trans/trans_atomic.c.inc   |  3 --
- target/loongarch/insn_trans/trans_bit.c.inc   | 12 -------
- target/loongarch/insn_trans/trans_fcmp.c.inc  |  3 --
- .../loongarch/insn_trans/trans_fmemory.c.inc  | 20 ++---------
- target/loongarch/insn_trans/trans_fmov.c.inc  |  6 ----
- .../loongarch/insn_trans/trans_memory.c.inc   | 34 +++----------------
- .../insn_trans/trans_privileged.c.inc         |  4 ---
- target/loongarch/insn_trans/trans_shift.c.inc | 11 ------
- 9 files changed, 6 insertions(+), 99 deletions(-)
+ meson.build                    |   1 -
+ scripts/tracetool/transform.py | 168 ---------------------------------
+ 2 files changed, 169 deletions(-)
+ delete mode 100644 scripts/tracetool/transform.py
 
-diff --git a/target/loongarch/insn_trans/trans_arith.c.inc b/target/loongarch/insn_trans/trans_arith.c.inc
-index 8e45eadbc8..43d6cf261d 100644
---- a/target/loongarch/insn_trans/trans_arith.c.inc
-+++ b/target/loongarch/insn_trans/trans_arith.c.inc
-@@ -100,14 +100,12 @@ static void gen_mulh_d(TCGv dest, TCGv src1, TCGv src2)
- {
-     TCGv discard = tcg_temp_new();
-     tcg_gen_muls2_tl(discard, dest, src1, src2);
--    tcg_temp_free(discard);
- }
+diff --git a/meson.build b/meson.build
+index 6cb2b1a42f..275399b8c2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2861,7 +2861,6 @@ tracetool_depends = files(
+   'scripts/tracetool/format/log_stap.py',
+   'scripts/tracetool/format/stap.py',
+   'scripts/tracetool/__init__.py',
+-  'scripts/tracetool/transform.py',
+   'scripts/tracetool/vcpu.py'
+ )
  
- static void gen_mulh_du(TCGv dest, TCGv src1, TCGv src2)
- {
-     TCGv discard = tcg_temp_new();
-     tcg_gen_mulu2_tl(discard, dest, src1, src2);
--    tcg_temp_free(discard);
- }
- 
- static void prep_divisor_d(TCGv ret, TCGv src1, TCGv src2)
-@@ -129,9 +127,6 @@ static void prep_divisor_d(TCGv ret, TCGv src1, TCGv src2)
-     tcg_gen_and_tl(ret, ret, t0);
-     tcg_gen_or_tl(ret, ret, t1);
-     tcg_gen_movcond_tl(TCG_COND_NE, ret, ret, zero, ret, src2);
+diff --git a/scripts/tracetool/transform.py b/scripts/tracetool/transform.py
+deleted file mode 100644
+index ea8b27799d..0000000000
+--- a/scripts/tracetool/transform.py
++++ /dev/null
+@@ -1,168 +0,0 @@
+-# -*- coding: utf-8 -*-
 -
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
- }
- 
- static void prep_divisor_du(TCGv ret, TCGv src2)
-@@ -152,7 +147,6 @@ static void gen_div_d(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     prep_divisor_d(t0, src1, src2);
-     tcg_gen_div_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_rem_d(TCGv dest, TCGv src1, TCGv src2)
-@@ -160,7 +154,6 @@ static void gen_rem_d(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     prep_divisor_d(t0, src1, src2);
-     tcg_gen_rem_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_div_du(TCGv dest, TCGv src1, TCGv src2)
-@@ -168,7 +161,6 @@ static void gen_div_du(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     prep_divisor_du(t0, src2);
-     tcg_gen_divu_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_rem_du(TCGv dest, TCGv src1, TCGv src2)
-@@ -176,7 +168,6 @@ static void gen_rem_du(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     prep_divisor_du(t0, src2);
-     tcg_gen_remu_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_div_w(TCGv dest, TCGv src1, TCGv src2)
-@@ -185,7 +176,6 @@ static void gen_div_w(TCGv dest, TCGv src1, TCGv src2)
-     /* We need not check for integer overflow for div_w. */
-     prep_divisor_du(t0, src2);
-     tcg_gen_div_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_rem_w(TCGv dest, TCGv src1, TCGv src2)
-@@ -194,7 +184,6 @@ static void gen_rem_w(TCGv dest, TCGv src1, TCGv src2)
-     /* We need not check for integer overflow for rem_w. */
-     prep_divisor_du(t0, src2);
-     tcg_gen_rem_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_alsl(TCGv dest, TCGv src1, TCGv src2, target_long sa)
-@@ -202,7 +191,6 @@ static void gen_alsl(TCGv dest, TCGv src1, TCGv src2, target_long sa)
-     TCGv t0 = tcg_temp_new();
-     tcg_gen_shli_tl(t0, src1, sa);
-     tcg_gen_add_tl(dest, t0, src2);
--    tcg_temp_free(t0);
- }
- 
- static bool trans_lu32i_d(DisasContext *ctx, arg_lu32i_d *a)
-diff --git a/target/loongarch/insn_trans/trans_atomic.c.inc b/target/loongarch/insn_trans/trans_atomic.c.inc
-index 6763c1c301..612709f2a7 100644
---- a/target/loongarch/insn_trans/trans_atomic.c.inc
-+++ b/target/loongarch/insn_trans/trans_atomic.c.inc
-@@ -14,7 +14,6 @@ static bool gen_ll(DisasContext *ctx, arg_rr_i *a, MemOp mop)
-     tcg_gen_st_tl(t0, cpu_env, offsetof(CPULoongArchState, lladdr));
-     tcg_gen_st_tl(dest, cpu_env, offsetof(CPULoongArchState, llval));
-     gen_set_gpr(a->rd, dest, EXT_NONE);
--    tcg_temp_free(t0);
- 
-     return true;
- }
-@@ -43,8 +42,6 @@ static bool gen_sc(DisasContext *ctx, arg_rr_i *a, MemOp mop)
-     tcg_gen_setcond_tl(TCG_COND_EQ, dest, t0, cpu_llval);
-     gen_set_label(done);
-     gen_set_gpr(a->rd, dest, EXT_NONE);
--    tcg_temp_free(t0);
--    tcg_temp_free(val);
- 
-     return true;
- }
-diff --git a/target/loongarch/insn_trans/trans_bit.c.inc b/target/loongarch/insn_trans/trans_bit.c.inc
-index b01e4aeb23..25b4d7858b 100644
---- a/target/loongarch/insn_trans/trans_bit.c.inc
-+++ b/target/loongarch/insn_trans/trans_bit.c.inc
-@@ -122,9 +122,6 @@ static void gen_revb_2h(TCGv dest, TCGv src1)
-     tcg_gen_and_tl(t1, src1, mask);
-     tcg_gen_shli_tl(t1, t1, 8);
-     tcg_gen_or_tl(dest, t0, t1);
+-"""
+-Type-transformation rules.
+-"""
 -
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
- }
- 
- static void gen_revb_4h(TCGv dest, TCGv src1)
-@@ -138,9 +135,6 @@ static void gen_revb_4h(TCGv dest, TCGv src1)
-     tcg_gen_and_tl(t1, src1, mask);
-     tcg_gen_shli_tl(t1, t1, 8);
-     tcg_gen_or_tl(dest, t0, t1);
+-__author__     = "Lluís Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  = "Copyright 2012-2016, Lluís Vilanova <vilanova@ac.upc.edu>"
+-__license__    = "GPL version 2 or (at your option) any later version"
 -
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
- }
- 
- static void gen_revh_2w(TCGv dest, TCGv src1)
-@@ -154,9 +148,6 @@ static void gen_revh_2w(TCGv dest, TCGv src1)
-     tcg_gen_and_i64(t0, t0, mask);
-     tcg_gen_shli_i64(t1, t1, 16);
-     tcg_gen_or_i64(dest, t1, t0);
+-__maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@redhat.com"
 -
--    tcg_temp_free_i64(t0);
--    tcg_temp_free_i64(t1);
- }
- 
- static void gen_revh_d(TCGv dest, TCGv src1)
-@@ -171,9 +162,6 @@ static void gen_revh_d(TCGv dest, TCGv src1)
-     tcg_gen_shli_tl(t0, t0, 16);
-     tcg_gen_or_tl(t0, t0, t1);
-     tcg_gen_rotri_tl(dest, t0, 32);
 -
--    tcg_temp_free(t0);
--    tcg_temp_free(t1);
- }
- 
- static void gen_maskeqz(TCGv dest, TCGv src1, TCGv src2)
-diff --git a/target/loongarch/insn_trans/trans_fcmp.c.inc b/target/loongarch/insn_trans/trans_fcmp.c.inc
-index 2ccf646ccb..3b0da2b9f4 100644
---- a/target/loongarch/insn_trans/trans_fcmp.c.inc
-+++ b/target/loongarch/insn_trans/trans_fcmp.c.inc
-@@ -38,7 +38,6 @@ static bool trans_fcmp_cond_s(DisasContext *ctx, arg_fcmp_cond_s *a)
-     fn(var, cpu_env, cpu_fpr[a->fj], cpu_fpr[a->fk], tcg_constant_i32(flags));
- 
-     tcg_gen_st8_tl(var, cpu_env, offsetof(CPULoongArchState, cf[a->cd]));
--    tcg_temp_free(var);
-     return true;
- }
- 
-@@ -57,7 +56,5 @@ static bool trans_fcmp_cond_d(DisasContext *ctx, arg_fcmp_cond_d *a)
-     fn(var, cpu_env, cpu_fpr[a->fj], cpu_fpr[a->fk], tcg_constant_i32(flags));
- 
-     tcg_gen_st8_tl(var, cpu_env, offsetof(CPULoongArchState, cf[a->cd]));
+-def _transform_type(type_, trans):
+-    if isinstance(trans, str):
+-        return trans
+-    elif isinstance(trans, dict):
+-        if type_ in trans:
+-            return _transform_type(type_, trans[type_])
+-        elif None in trans:
+-            return _transform_type(type_, trans[None])
+-        else:
+-            return type_
+-    elif callable(trans):
+-        return trans(type_)
+-    else:
+-        raise ValueError("Invalid type transformation rule: %s" % trans)
 -
--    tcg_temp_free(var);
-     return true;
- }
-diff --git a/target/loongarch/insn_trans/trans_fmemory.c.inc b/target/loongarch/insn_trans/trans_fmemory.c.inc
-index 3025a1d3e9..0d11843873 100644
---- a/target/loongarch/insn_trans/trans_fmemory.c.inc
-+++ b/target/loongarch/insn_trans/trans_fmemory.c.inc
-@@ -13,12 +13,11 @@ static void maybe_nanbox_load(TCGv freg, MemOp mop)
- static bool gen_fload_i(DisasContext *ctx, arg_fr_i *a, MemOp mop)
- {
-     TCGv addr = gpr_src(ctx, a->rj, EXT_NONE);
--    TCGv temp = NULL;
- 
-     CHECK_FPE;
- 
-     if (a->imm) {
--        temp = tcg_temp_new();
-+        TCGv temp = tcg_temp_new();
-         tcg_gen_addi_tl(temp, addr, a->imm);
-         addr = temp;
-     }
-@@ -26,31 +25,22 @@ static bool gen_fload_i(DisasContext *ctx, arg_fr_i *a, MemOp mop)
-     tcg_gen_qemu_ld_tl(cpu_fpr[a->fd], addr, ctx->mem_idx, mop);
-     maybe_nanbox_load(cpu_fpr[a->fd], mop);
- 
--    if (temp) {
--        tcg_temp_free(temp);
+-
+-def transform_type(type_, *trans):
+-    """Return a new type transformed according to the given rules.
+-
+-    Applies each of the transformation rules in trans in order.
+-
+-    If an element of trans is a string, return it.
+-
+-    If an element of trans is a function, call it with type_ as its only
+-    argument.
+-
+-    If an element of trans is a dict, search type_ in its keys. If type_ is
+-    a key, use the value as a transformation rule for type_. Otherwise, if
+-    None is a key use the value as a transformation rule for type_.
+-
+-    Otherwise, return type_.
+-
+-    Parameters
+-    ----------
+-    type_ : str
+-        Type to transform.
+-    trans : list of function or dict
+-        Type transformation rules.
+-    """
+-    if len(trans) == 0:
+-        raise ValueError
+-    res = type_
+-    for t in trans:
+-        res = _transform_type(res, t)
+-    return res
+-
+-
+-##################################################
+-# tcg -> host
+-
+-def _tcg_2_host(type_):
+-    if type_ == "TCGv":
+-        # force a fixed-size type (target-independent)
+-        return "uint64_t"
+-    else:
+-        return type_
+-
+-TCG_2_HOST = {
+-    "TCGv_i32": "uint32_t",
+-    "TCGv_i64": "uint64_t",
+-    "TCGv_ptr": "void *",
+-    None: _tcg_2_host,
 -    }
 -
-     return true;
- }
- 
- static bool gen_fstore_i(DisasContext *ctx, arg_fr_i *a, MemOp mop)
- {
-     TCGv addr = gpr_src(ctx, a->rj, EXT_NONE);
--    TCGv temp = NULL;
- 
-     CHECK_FPE;
- 
-     if (a->imm) {
--        temp = tcg_temp_new();
-+        TCGv temp = tcg_temp_new();
-         tcg_gen_addi_tl(temp, addr, a->imm);
-         addr = temp;
-     }
- 
-     tcg_gen_qemu_st_tl(cpu_fpr[a->fd], addr, ctx->mem_idx, mop);
 -
--    if (temp) {
--        tcg_temp_free(temp);
--    }
-     return true;
- }
- 
-@@ -66,7 +56,6 @@ static bool gen_floadx(DisasContext *ctx, arg_frr *a, MemOp mop)
-     tcg_gen_add_tl(addr, src1, src2);
-     tcg_gen_qemu_ld_tl(cpu_fpr[a->fd], addr, ctx->mem_idx, mop);
-     maybe_nanbox_load(cpu_fpr[a->fd], mop);
--    tcg_temp_free(addr);
- 
-     return true;
- }
-@@ -82,7 +71,6 @@ static bool gen_fstorex(DisasContext *ctx, arg_frr *a, MemOp mop)
-     addr = tcg_temp_new();
-     tcg_gen_add_tl(addr, src1, src2);
-     tcg_gen_qemu_st_tl(cpu_fpr[a->fd], addr, ctx->mem_idx, mop);
--    tcg_temp_free(addr);
- 
-     return true;
- }
-@@ -100,7 +88,6 @@ static bool gen_fload_gt(DisasContext *ctx, arg_frr *a, MemOp mop)
-     tcg_gen_add_tl(addr, src1, src2);
-     tcg_gen_qemu_ld_tl(cpu_fpr[a->fd], addr, ctx->mem_idx, mop);
-     maybe_nanbox_load(cpu_fpr[a->fd], mop);
--    tcg_temp_free(addr);
- 
-     return true;
- }
-@@ -117,7 +104,6 @@ static bool gen_fstore_gt(DisasContext *ctx, arg_frr *a, MemOp mop)
-     gen_helper_asrtgt_d(cpu_env, src1, src2);
-     tcg_gen_add_tl(addr, src1, src2);
-     tcg_gen_qemu_st_tl(cpu_fpr[a->fd], addr, ctx->mem_idx, mop);
--    tcg_temp_free(addr);
- 
-     return true;
- }
-@@ -135,7 +121,6 @@ static bool gen_fload_le(DisasContext *ctx, arg_frr *a, MemOp mop)
-     tcg_gen_add_tl(addr, src1, src2);
-     tcg_gen_qemu_ld_tl(cpu_fpr[a->fd], addr, ctx->mem_idx, mop);
-     maybe_nanbox_load(cpu_fpr[a->fd], mop);
--    tcg_temp_free(addr);
- 
-     return true;
- }
-@@ -152,7 +137,6 @@ static bool gen_fstore_le(DisasContext *ctx, arg_frr *a, MemOp mop)
-     gen_helper_asrtle_d(cpu_env, src1, src2);
-     tcg_gen_add_tl(addr, src1, src2);
-     tcg_gen_qemu_st_tl(cpu_fpr[a->fd], addr, ctx->mem_idx, mop);
--    tcg_temp_free(addr);
- 
-     return true;
- }
-diff --git a/target/loongarch/insn_trans/trans_fmov.c.inc b/target/loongarch/insn_trans/trans_fmov.c.inc
-index 8e5106db4e..069c941665 100644
---- a/target/loongarch/insn_trans/trans_fmov.c.inc
-+++ b/target/loongarch/insn_trans/trans_fmov.c.inc
-@@ -18,7 +18,6 @@ static bool trans_fsel(DisasContext *ctx, arg_fsel *a)
-     tcg_gen_ld8u_tl(cond, cpu_env, offsetof(CPULoongArchState, cf[a->ca]));
-     tcg_gen_movcond_tl(TCG_COND_EQ, cpu_fpr[a->fd], cond, zero,
-                        cpu_fpr[a->fj], cpu_fpr[a->fk]);
--    tcg_temp_free(cond);
- 
-     return true;
- }
-@@ -82,9 +81,6 @@ static bool trans_movgr2fcsr(DisasContext *ctx, arg_movgr2fcsr *a)
-         tcg_gen_andi_i32(fcsr0, fcsr0, ~mask);
-         tcg_gen_or_i32(fcsr0, fcsr0, temp);
-         tcg_gen_st_i32(fcsr0, cpu_env, offsetof(CPULoongArchState, fcsr0));
+-##################################################
+-# host -> host compatible with tcg sizes
 -
--        tcg_temp_free_i32(temp);
--        tcg_temp_free_i32(fcsr0);
-     }
- 
-     /*
-@@ -134,7 +130,6 @@ static bool trans_movfr2cf(DisasContext *ctx, arg_movfr2cf *a)
-     t0 = tcg_temp_new();
-     tcg_gen_andi_tl(t0, cpu_fpr[a->fj], 0x1);
-     tcg_gen_st8_tl(t0, cpu_env, offsetof(CPULoongArchState, cf[a->cd & 0x7]));
--    tcg_temp_free(t0);
- 
-     return true;
- }
-@@ -157,7 +152,6 @@ static bool trans_movgr2cf(DisasContext *ctx, arg_movgr2cf *a)
-     t0 = tcg_temp_new();
-     tcg_gen_andi_tl(t0, gpr_src(ctx, a->rj, EXT_NONE), 0x1);
-     tcg_gen_st8_tl(t0, cpu_env, offsetof(CPULoongArchState, cf[a->cd & 0x7]));
--    tcg_temp_free(t0);
- 
-     return true;
- }
-diff --git a/target/loongarch/insn_trans/trans_memory.c.inc b/target/loongarch/insn_trans/trans_memory.c.inc
-index d5eb31147c..75cfdf59ad 100644
---- a/target/loongarch/insn_trans/trans_memory.c.inc
-+++ b/target/loongarch/insn_trans/trans_memory.c.inc
-@@ -7,21 +7,15 @@ static bool gen_load(DisasContext *ctx, arg_rr_i *a, MemOp mop)
- {
-     TCGv dest = gpr_dst(ctx, a->rd, EXT_NONE);
-     TCGv addr = gpr_src(ctx, a->rj, EXT_NONE);
--    TCGv temp = NULL;
- 
-     if (a->imm) {
--        temp = tcg_temp_new();
-+        TCGv temp = tcg_temp_new();
-         tcg_gen_addi_tl(temp, addr, a->imm);
-         addr = temp;
-     }
- 
-     tcg_gen_qemu_ld_tl(dest, addr, ctx->mem_idx, mop);
-     gen_set_gpr(a->rd, dest, EXT_NONE);
--
--    if (temp) {
--        tcg_temp_free(temp);
+-HOST_2_TCG_COMPAT = {
+-    "uint8_t": "uint32_t",
+-    "uint16_t": "uint32_t",
 -    }
 -
-     return true;
- }
- 
-@@ -29,20 +23,14 @@ static bool gen_store(DisasContext *ctx, arg_rr_i *a, MemOp mop)
- {
-     TCGv data = gpr_src(ctx, a->rd, EXT_NONE);
-     TCGv addr = gpr_src(ctx, a->rj, EXT_NONE);
--    TCGv temp = NULL;
- 
-     if (a->imm) {
--        temp = tcg_temp_new();
-+        TCGv temp = tcg_temp_new();
-         tcg_gen_addi_tl(temp, addr, a->imm);
-         addr = temp;
-     }
- 
-     tcg_gen_qemu_st_tl(data, addr, ctx->mem_idx, mop);
 -
--    if (temp) {
--        tcg_temp_free(temp);
+-##################################################
+-# host/tcg -> tcg
+-
+-def _host_2_tcg(type_):
+-    if type_.startswith("TCGv"):
+-        return type_
+-    raise ValueError("Don't know how to translate '%s' into a TCG type\n" % type_)
+-
+-HOST_2_TCG = {
+-    "uint32_t": "TCGv_i32",
+-    "uint64_t": "TCGv_i64",
+-    "void *"  : "TCGv_ptr",
+-    "CPUArchState *": "TCGv_env",
+-    None: _host_2_tcg,
 -    }
 -
-     return true;
- }
- 
-@@ -56,7 +44,6 @@ static bool gen_loadx(DisasContext *ctx, arg_rrr *a, MemOp mop)
-     tcg_gen_add_tl(addr, src1, src2);
-     tcg_gen_qemu_ld_tl(dest, addr, ctx->mem_idx, mop);
-     gen_set_gpr(a->rd, dest, EXT_NONE);
--    tcg_temp_free(addr);
- 
-     return true;
- }
-@@ -70,7 +57,6 @@ static bool gen_storex(DisasContext *ctx, arg_rrr *a, MemOp mop)
- 
-     tcg_gen_add_tl(addr, src1, src2);
-     tcg_gen_qemu_st_tl(data, addr, ctx->mem_idx, mop);
--    tcg_temp_free(addr);
- 
-     return true;
- }
-@@ -146,21 +132,15 @@ static bool gen_ldptr(DisasContext *ctx, arg_rr_i *a, MemOp mop)
- {
-     TCGv dest = gpr_dst(ctx, a->rd, EXT_NONE);
-     TCGv addr = gpr_src(ctx, a->rj, EXT_NONE);
--    TCGv temp = NULL;
- 
-     if (a->imm) {
--        temp = tcg_temp_new();
-+        TCGv temp = tcg_temp_new();
-         tcg_gen_addi_tl(temp, addr, a->imm);
-         addr = temp;
-     }
- 
-     tcg_gen_qemu_ld_tl(dest, addr, ctx->mem_idx, mop);
-     gen_set_gpr(a->rd, dest, EXT_NONE);
 -
--    if (temp) {
--        tcg_temp_free(temp);
+-##################################################
+-# tcg -> tcg helper definition
+-
+-def _tcg_2_helper_def(type_):
+-    if type_ == "TCGv":
+-        return "target_ulong"
+-    else:
+-        return type_
+-
+-TCG_2_TCG_HELPER_DEF = {
+-    "TCGv_i32": "uint32_t",
+-    "TCGv_i64": "uint64_t",
+-    "TCGv_ptr": "void *",
+-    None: _tcg_2_helper_def,
 -    }
 -
-     return true;
- }
- 
-@@ -168,20 +148,14 @@ static bool gen_stptr(DisasContext *ctx, arg_rr_i *a, MemOp mop)
- {
-     TCGv data = gpr_src(ctx, a->rd, EXT_NONE);
-     TCGv addr = gpr_src(ctx, a->rj, EXT_NONE);
--    TCGv temp = NULL;
- 
-     if (a->imm) {
--        temp = tcg_temp_new();
-+        TCGv temp = tcg_temp_new();
-         tcg_gen_addi_tl(temp, addr, a->imm);
-         addr = temp;
-     }
- 
-     tcg_gen_qemu_st_tl(data, addr, ctx->mem_idx, mop);
 -
--    if (temp) {
--        tcg_temp_free(temp);
+-##################################################
+-# tcg -> tcg helper declaration
+-
+-def _tcg_2_tcg_helper_decl_error(type_):
+-    raise ValueError("Don't know how to translate type '%s' into a TCG helper declaration type\n" % type_)
+-
+-TCG_2_TCG_HELPER_DECL = {
+-    "TCGv"    : "tl",
+-    "TCGv_ptr": "ptr",
+-    "TCGv_i32": "i32",
+-    "TCGv_i64": "i64",
+-    "TCGv_env": "env",
+-    None: _tcg_2_tcg_helper_decl_error,
 -    }
 -
-     return true;
- }
- 
-diff --git a/target/loongarch/insn_trans/trans_privileged.c.inc b/target/loongarch/insn_trans/trans_privileged.c.inc
-index 56f4c45e09..5a04352b01 100644
---- a/target/loongarch/insn_trans/trans_privileged.c.inc
-+++ b/target/loongarch/insn_trans/trans_privileged.c.inc
-@@ -291,10 +291,6 @@ static bool trans_csrxchg(DisasContext *ctx, arg_csrxchg *a)
-         tcg_gen_st_tl(newv, cpu_env, csr->offset);
-     }
-     gen_set_gpr(a->rd, oldv, EXT_NONE);
 -
--    tcg_temp_free(temp);
--    tcg_temp_free(newv);
--    tcg_temp_free(oldv);
-     return true;
- }
- 
-diff --git a/target/loongarch/insn_trans/trans_shift.c.inc b/target/loongarch/insn_trans/trans_shift.c.inc
-index 5260af2337..bf5428a2ba 100644
---- a/target/loongarch/insn_trans/trans_shift.c.inc
-+++ b/target/loongarch/insn_trans/trans_shift.c.inc
-@@ -8,7 +8,6 @@ static void gen_sll_w(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     tcg_gen_andi_tl(t0, src2, 0x1f);
-     tcg_gen_shl_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_srl_w(TCGv dest, TCGv src1, TCGv src2)
-@@ -16,7 +15,6 @@ static void gen_srl_w(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     tcg_gen_andi_tl(t0, src2, 0x1f);
-     tcg_gen_shr_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_sra_w(TCGv dest, TCGv src1, TCGv src2)
-@@ -24,7 +22,6 @@ static void gen_sra_w(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     tcg_gen_andi_tl(t0, src2, 0x1f);
-     tcg_gen_sar_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_sll_d(TCGv dest, TCGv src1, TCGv src2)
-@@ -32,7 +29,6 @@ static void gen_sll_d(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     tcg_gen_andi_tl(t0, src2, 0x3f);
-     tcg_gen_shl_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_srl_d(TCGv dest, TCGv src1, TCGv src2)
-@@ -40,7 +36,6 @@ static void gen_srl_d(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     tcg_gen_andi_tl(t0, src2, 0x3f);
-     tcg_gen_shr_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_sra_d(TCGv dest, TCGv src1, TCGv src2)
-@@ -48,7 +43,6 @@ static void gen_sra_d(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     tcg_gen_andi_tl(t0, src2, 0x3f);
-     tcg_gen_sar_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static void gen_rotr_w(TCGv dest, TCGv src1, TCGv src2)
-@@ -64,10 +58,6 @@ static void gen_rotr_w(TCGv dest, TCGv src1, TCGv src2)
- 
-     tcg_gen_rotr_i32(t1, t1, t2);
-     tcg_gen_ext_i32_tl(dest, t1);
+-##################################################
+-# host/tcg -> tcg temporal constant allocation
 -
--    tcg_temp_free_i32(t1);
--    tcg_temp_free_i32(t2);
--    tcg_temp_free(t0);
- }
- 
- static void gen_rotr_d(TCGv dest, TCGv src1, TCGv src2)
-@@ -75,7 +65,6 @@ static void gen_rotr_d(TCGv dest, TCGv src1, TCGv src2)
-     TCGv t0 = tcg_temp_new();
-     tcg_gen_andi_tl(t0, src2, 0x3f);
-     tcg_gen_rotr_tl(dest, src1, t0);
--    tcg_temp_free(t0);
- }
- 
- static bool trans_srai_w(DisasContext *ctx, arg_srai_w *a)
+-def _host_2_tcg_tmp_new(type_):
+-    if type_.startswith("TCGv"):
+-        return "tcg_temp_new_nop"
+-    raise ValueError("Don't know how to translate type '%s' into a TCG temporal allocation" % type_)
+-
+-HOST_2_TCG_TMP_NEW = {
+-    "uint32_t": "tcg_const_i32",
+-    "uint64_t": "tcg_const_i64",
+-    "void *"  : "tcg_const_ptr",
+-    None: _host_2_tcg_tmp_new,
+-    }
+-
+-
+-##################################################
+-# host/tcg -> tcg temporal constant deallocation
+-
+-def _host_2_tcg_tmp_free(type_):
+-    if type_.startswith("TCGv"):
+-        return "tcg_temp_free_nop"
+-    raise ValueError("Don't know how to translate type '%s' into a TCG temporal deallocation" % type_)
+-
+-HOST_2_TCG_TMP_FREE = {
+-    "uint32_t": "tcg_temp_free_i32",
+-    "uint64_t": "tcg_temp_free_i64",
+-    "void *"  : "tcg_temp_free_ptr",
+-    None: _host_2_tcg_tmp_free,
+-    }
 -- 
 2.34.1
 

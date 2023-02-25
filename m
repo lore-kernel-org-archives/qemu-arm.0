@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2644460ejc;
-        Sat, 25 Feb 2023 01:32:03 -0800 (PST)
-X-Google-Smtp-Source: AK7set+GZkc+88inBNxC01UIFDl1J/olY0NL4ABV/EpoKZocS3VUWk0UbiXymyx7Uijed1QB0bIe
-X-Received: by 2002:a05:6214:c69:b0:56e:c04e:c486 with SMTP id t9-20020a0562140c6900b0056ec04ec486mr35036876qvj.37.1677317523234;
-        Sat, 25 Feb 2023 01:32:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677317523; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2644528ejc;
+        Sat, 25 Feb 2023 01:32:07 -0800 (PST)
+X-Google-Smtp-Source: AK7set/uqrlrucCaZ9OQmFHuc5hNhs4QILJDIDsuHUsrIrG/4PCaWF+CIMcdhgr+P0LqQXaqNARK
+X-Received: by 2002:a05:6214:2aaa:b0:56e:a3a2:1a1c with SMTP id js10-20020a0562142aaa00b0056ea3a21a1cmr33444098qvb.33.1677317527755;
+        Sat, 25 Feb 2023 01:32:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677317527; cv=none;
         d=google.com; s=arc-20160816;
-        b=UybDuznRq7uSj6XyXOjr3DebwX+FB9K+77NMrOqJ01O8jpcCUgpz1oK1UTCv/xrjTw
-         N+Dw0dDrpPc3kSHPbqT+MVgNrBhytsNrYtF/DVh/OZGuQ/wNwJudzhV09Qft/ov89BXI
-         1xT3q9NhUFqZ/czYFSso6kKwrpKpPGkzeYon8QQfzmh3laU4S8JKMl88+3rlYrAJpY4A
-         Vldjt7KTJagF5yJyIJs2YaCVlKDJLc8UBIGoCBOrdxsBcGm+jenAEEGc+5LX7O3HXgc0
-         xa0J8nyAX4NpSRAt1Y5yOtgtDdOQVy26TEgCarMv3AUrEwXqeviHKyT1qPdFYTRtCwwS
-         uwdw==
+        b=vnf5we5/hfGSDf6ATHckarsP2HNpFGr1Eq/dYfuhe0cmtE7SSYxJGZ20bFgRD52Mls
+         lnq8+Q74z9pDFDaI6mEDXwX17N67LGjbERF12XSJNUC+ZgPFlDEvybnINRxDviDi5qDR
+         /iqMVXcoVVp/bRAiy+MY0ruBw7P71Cvect0AgUEPbsHxnvnzwscaE1coKnS3m4utwyUY
+         aX4rMDp1Eo5zku2HVK2o9TcBEqFn5bQ9ZbIRr5q4E7eJoz6crPaSCtDR9m5LOxY7wcsq
+         4ieWrXHHOXJkHC1VKOAuXn50GfDkJ1181JOHmAC8eLmhO7WyU2c1+Rde+d2ySfb82x0Z
+         zwJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=RUHY2yKH2nPTR6QE7c2gu4MGXp/9B0MeleLyAh2d26U=;
-        b=bk/wMTEBmQvdr8LsKGGKmTxd0Zx7IDDG1hI1LAg1ItYQ98WjVTgTVirn2lqTec477g
-         +5mq5s4UlHF/cM2pyarYrCvFvtDFT02PSuCDXZbbFflO/ZJnHBT1N+Gc9cJX1ZwUsTve
-         LkF/u8t10DiSNNycZ0UZjfo/SNxbwS16+bt6Ox3JSWnLlq6yzpQNbywU7esgK4vVXw7r
-         TS+pLnkogK3QFen1BCQGlMetuJzr8E/ZFB4I8CZxImC9DuZfI1UO/OeF0oFl4iJsqHtS
-         iNwPM8g+/JSeauDJ79WuIagv98KSEIe5Uo9RLlWvzP7eKyub+OcV+TF76kBu4di9yqKI
-         QsiA==
+        bh=3xD3332A5fN0eYGPtHoDr+aMR0gWS2xzRXeUPrBfjiY=;
+        b=Sxz5jLJoYLo4YMtun8wtEYFGUUOy8vbBot8qTMJAOQigDptXaBYXLBSb0IvkAiEHsa
+         6RtEBqvcGUwbzja8eXTtMJUwpvJJ+eAWVAtwaFFU+7QWfktL9BAVIRBVq2MVCOqGxBgx
+         cObpW6llGa799KpdD4n6D3oVR9zfKkIvoCzOWIkBLG9WB7mZKvLpdMV15lgr2CyMbvga
+         N1ceN9LrQmmUca1w+l6mbGp/0BdKO1qgUSUzl/Gl3KBtYKmXnOaySmJ06TYTfiP+C66n
+         h72kPOLbjyf2gPhuBjjYkKtZow1JHcMBCF86DHMJsVL9aqKwwLFwAbIuAF47dBXIQy0H
+         uJKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BGabFMm2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xzuSi8Df;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k6-20020a0cf586000000b0056ec161bbecsi1429378qvm.550.2023.02.25.01.32.03
+        by mx.google.com with ESMTPS id c1-20020a0cf2c1000000b0056ddaaaccf6si1528723qvm.347.2023.02.25.01.32.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 25 Feb 2023 01:32:03 -0800 (PST)
+        Sat, 25 Feb 2023 01:32:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BGabFMm2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xzuSi8Df;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pVqij-0005F7-3o; Sat, 25 Feb 2023 04:19:57 -0500
+	id 1pVqf0-000756-37; Sat, 25 Feb 2023 04:16:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVqiI-0003uU-5x
- for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:19:34 -0500
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ id 1pVqej-0006Ak-8v
+ for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:15:50 -0500
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVqiG-0002vm-Fg
- for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:19:29 -0500
-Received: by mail-pj1-x102f.google.com with SMTP id
- 6-20020a17090a190600b00237c5b6ecd7so712980pjg.4
- for <qemu-devel@nongnu.org>; Sat, 25 Feb 2023 01:19:27 -0800 (PST)
+ id 1pVqee-0002Bm-Qm
+ for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:15:47 -0500
+Received: by mail-pj1-x1042.google.com with SMTP id
+ gi3-20020a17090b110300b0023762f642dcso1564834pjb.4
+ for <qemu-devel@nongnu.org>; Sat, 25 Feb 2023 01:15:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RUHY2yKH2nPTR6QE7c2gu4MGXp/9B0MeleLyAh2d26U=;
- b=BGabFMm2CVQ3HIsRf1Y4bJmKh1C5VO0rFM9RRNcNn+xeR2GTMMzoVjaPJb6djCmwqV
- DgHeUVe4ebHp7goPA2+yV1BB52LlDxYgvNk5rbyKArRrOuZEuw6buZ3GR1NAZMEXE5PC
- 8Y4cB3lpufqOA+gQ/pXvG5r8ix/w15VMPjyjxErD2VDumlj89BRP6F/978d4CHEawOZ/
- Eos6yTYknsXGdp5AFS4OFBQ2AEOA8IL+mTHVGdYx9nYGn2DQU62V/11xH/Hp9Cuz9RKS
- DC5ENLusQgpbBa6sED0B+4v3lA3EZFAa2jB1Od762qgdeD9y06wSJMkBphDEyKgDO4ET
- di7g==
+ bh=3xD3332A5fN0eYGPtHoDr+aMR0gWS2xzRXeUPrBfjiY=;
+ b=xzuSi8DfLMTM1u6mCgxyulLgi0HEbFlI8YFDkKlwDHqZt9qEJd3woqwGHVrX7DTjha
+ Cr4dkeAY3yS64icGVnrDrswHyUjCLk79qxsui3uScQv+looy9IRpfTvt1FnMc4soeBAc
+ xDESbNwRYi2/oE//r+ONU7BlWuwzyCRlG0fDmZ9q5zaN3EGqpuFLqKAzhOptgdOn16db
+ KRYmwIAnPTJDsZVM3th4UEIUgz9Yat/lLIUyynnSpNIZx+c0iQhFFkao+vxjUjwTmUZ3
+ YEmLxiPT3u2iE/kiMjFAYbyr1MjCfw2PR3sW9E6VCF21Oy1ZjfpyEwSBnZidowNCQmCi
+ iNFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RUHY2yKH2nPTR6QE7c2gu4MGXp/9B0MeleLyAh2d26U=;
- b=ZU4PxTISpwjbxyKLkKMcysCx8VEW5aXimPDsLRKD3pLJ9f8QHcRf9nlW/IcycY5LZ8
- 12RNzB/HEcZJfNenv4UdfsCVN/nV5iRK8DvX0vvavyVURUkBpl+rkBalyHPynVFPz5E0
- yexnof7twW5EYSKjbK5IysU9ZPUdQPkBvqenjf2RAY7qWSd/5HjzN3Mm0AQnUZgtHqWa
- EIgZdhQQqvRks9zLg8s5Ou6PyFU/oYhw98jcHIUXyR8JncpUY/f8GrVRCim5emvZ8R/j
- zEgZrUuzN80usHLb2bKfgF2ztioBRSvLRQLljNFjeKpzNIpnaDy2GhOO2eN6u5FF1D2I
- frJA==
-X-Gm-Message-State: AO0yUKUKMYRvBtVP/Fx2nvJk2UZFF5wAfbW9+G15FxNu+3WjrAp42MKC
- /UwWNkPxRfyqvsnoHMxYQGAyWDL/klzPJ8518DA=
-X-Received: by 2002:a05:6a20:431b:b0:cc:9f59:4562 with SMTP id
- h27-20020a056a20431b00b000cc9f594562mr3948772pzk.53.1677316767069; 
- Sat, 25 Feb 2023 01:19:27 -0800 (PST)
+ bh=3xD3332A5fN0eYGPtHoDr+aMR0gWS2xzRXeUPrBfjiY=;
+ b=tOMXhdVIBqnbq/ThbstPj1qW9Yx7LyzYDU9lLZLKCCrK+UP8YU6jZXqxC4Nm1qeRfv
+ iIyozvdfzP11R68u1H4EzQW+z9BPj2Gm5zdlEMfZ57bOeDwlDoFQ4Xnxs+fh6pMtqbDg
+ C5qErdVyyQKi9K2gFvv9sFhRVQUsPGQrNlcQrRNAOdAqNs10hLCBFCGnExtvOGP6bbhz
+ QiPAxyWbc2N+JxecBYsBwBQRAiV5NeGpiNE6UctHkm1LQ6qOiTCKwKpyrsVvhpLPZdpM
+ l3bUKIRNk5p7kQDKBpEnfS09yh7tH+32bhUvTrE1hPtw0t3/kEyigsMeS8f//521up8V
+ Utxg==
+X-Gm-Message-State: AO0yUKXtmw8FtWDBKzKIHOCWS33XTYJB1oxaIxmu6A05hlNqSlfeJw0J
+ qMxs6gUjRdhDMM9njAWrx0d2/CCWTC7/54Hzfbdoag==
+X-Received: by 2002:a17:902:d50e:b0:19c:65bd:d44b with SMTP id
+ b14-20020a170902d50e00b0019c65bdd44bmr20956517plg.60.1677316542811; 
+ Sat, 25 Feb 2023 01:15:42 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- 26-20020aa7921a000000b00592417157f2sm843114pfo.148.2023.02.25.01.19.24
+ je12-20020a170903264c00b0019607aeda8bsm831101plb.73.2023.02.25.01.15.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 25 Feb 2023 01:19:26 -0800 (PST)
+ Sat, 25 Feb 2023 01:15:42 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -95,16 +95,16 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com
-Subject: [PATCH 44/76] target/mips: Drop tcg_temp_free from tx79_translate.c
-Date: Fri, 24 Feb 2023 23:13:55 -1000
-Message-Id: <20230225091427.1817156-45-richard.henderson@linaro.org>
+Subject: [PATCH 27/76] target/hexagon/idef-parser: Drop tcg_temp_free
+Date: Fri, 24 Feb 2023 23:13:38 -1000
+Message-Id: <20230225091427.1817156-28-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230225091427.1817156-1-richard.henderson@linaro.org>
 References: <20230225091427.1817156-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1042.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,122 +126,604 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wMeT9+nLdvYz
+X-TUID: XwDo7iluIQ5+
 
 Translators are no longer required to free tcg temporaries.
+This removes gen_rvalue_free, gen_rvalue_free_manual and
+free_variables, whose only purpose was to emit tcg_temp_free.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/mips/tcg/tx79_translate.c | 41 --------------------------------
- 1 file changed, 41 deletions(-)
+ target/hexagon/idef-parser/README.rst       |   8 --
+ target/hexagon/idef-parser/parser-helpers.h |   4 -
+ target/hexagon/idef-parser/parser-helpers.c | 142 --------------------
+ target/hexagon/idef-parser/idef-parser.y    |  10 --
+ 4 files changed, 164 deletions(-)
 
-diff --git a/target/mips/tcg/tx79_translate.c b/target/mips/tcg/tx79_translate.c
-index 4e479c2d10..d46bc73972 100644
---- a/target/mips/tcg/tx79_translate.c
-+++ b/target/mips/tcg/tx79_translate.c
-@@ -138,10 +138,6 @@ static bool trans_parallel_arith(DisasContext *ctx, arg_r *a,
-     gen_load_gpr_hi(ax, a->rs);
-     gen_load_gpr_hi(bx, a->rt);
-     gen_logic_i64(cpu_gpr_hi[a->rd], ax, bx);
+diff --git a/target/hexagon/idef-parser/README.rst b/target/hexagon/idef-parser/README.rst
+index c230fec124..debeddfde5 100644
+--- a/target/hexagon/idef-parser/README.rst
++++ b/target/hexagon/idef-parser/README.rst
+@@ -31,7 +31,6 @@ idef-parser will compile the above code into the following code:
+        TCGv_i32 tmp_0 = tcg_temp_new_i32();
+        tcg_gen_add_i32(tmp_0, RsV, RtV);
+        tcg_gen_mov_i32(RdV, tmp_0);
+-       tcg_temp_free_i32(tmp_0);
+    }
+ 
+ The output of the compilation process will be a function, containing the
+@@ -102,12 +101,6 @@ The result of the addition is now stored in the temporary, we move it into the
+ correct destination register. This code may seem inefficient, but QEMU will
+ perform some optimizations on the tinycode, reducing the unnecessary copy.
+ 
+-::
 -
--    tcg_temp_free(bx);
--    tcg_temp_free(ax);
+-   tcg_temp_free_i32(tmp_0);
 -
-     return true;
+-Finally, we free the temporary we used to hold the addition result.
+-
+ Parser Input
+ ------------
+ 
+@@ -524,7 +517,6 @@ instruction,
+         TCGv_i32 tmp_0 = tcg_temp_new_i32();
+         tcg_gen_add_i32(tmp_0, RsV, RsV);
+         tcg_gen_mov_i32(RdV, tmp_0);
+-        tcg_temp_free_i32(tmp_0);
+     }
+ 
+ Here the bug, albeit hard to spot, is in ``tcg_gen_add_i32(tmp_0, RsV, RsV);``
+diff --git a/target/hexagon/idef-parser/parser-helpers.h b/target/hexagon/idef-parser/parser-helpers.h
+index 2766296417..4c89498f5b 100644
+--- a/target/hexagon/idef-parser/parser-helpers.h
++++ b/target/hexagon/idef-parser/parser-helpers.h
+@@ -169,8 +169,6 @@ HexValue gen_imm_value(Context *c __attribute__((unused)),
+ HexValue gen_imm_qemu_tmp(Context *c, YYLTYPE *locp, unsigned bit_width,
+                           HexSignedness signedness);
+ 
+-void gen_rvalue_free(Context *c, YYLTYPE *locp, HexValue *rvalue);
+-
+ HexValue rvalue_materialize(Context *c, YYLTYPE *locp, HexValue *rvalue);
+ 
+ HexValue gen_rvalue_extend(Context *c, YYLTYPE *locp, HexValue *rvalue);
+@@ -365,8 +363,6 @@ void emit_footer(Context *c);
+ 
+ void track_string(Context *c, GString *s);
+ 
+-void free_variables(Context *c, YYLTYPE *locp);
+-
+ void free_instruction(Context *c);
+ 
+ void assert_signedness(Context *c,
+diff --git a/target/hexagon/idef-parser/parser-helpers.c b/target/hexagon/idef-parser/parser-helpers.c
+index dfb9c65b52..59d3e52728 100644
+--- a/target/hexagon/idef-parser/parser-helpers.c
++++ b/target/hexagon/idef-parser/parser-helpers.c
+@@ -418,25 +418,10 @@ HexValue gen_imm_qemu_tmp(Context *c, YYLTYPE *locp, unsigned bit_width,
+     return rvalue;
  }
  
-@@ -273,15 +269,6 @@ static bool trans_parallel_compare(DisasContext *ctx, arg_r *a,
-         tcg_gen_movcond_i64(cond, t2, t1, t0, c1, c0);
-         tcg_gen_deposit_i64(cpu_gpr_hi[a->rd], cpu_gpr_hi[a->rd], t2, wlen * i, wlen);
+-void gen_rvalue_free(Context *c, YYLTYPE *locp, HexValue *rvalue)
+-{
+-    if (rvalue->type == TEMP && !rvalue->is_manual) {
+-        const char *bit_suffix = (rvalue->bit_width == 64) ? "i64" : "i32";
+-        OUT(c, locp, "tcg_temp_free_", bit_suffix, "(", rvalue, ");\n");
+-    }
+-}
+-
+-static void gen_rvalue_free_manual(Context *c, YYLTYPE *locp, HexValue *rvalue)
+-{
+-    rvalue->is_manual = false;
+-    gen_rvalue_free(c, locp, rvalue);
+-}
+-
+ HexValue rvalue_materialize(Context *c, YYLTYPE *locp, HexValue *rvalue)
+ {
+     if (rvalue->type == IMMEDIATE) {
+         HexValue res = gen_tmp_value_from_imm(c, locp, rvalue);
+-        gen_rvalue_free(c, locp, rvalue);
+         return res;
+     }
+     return *rvalue;
+@@ -465,7 +450,6 @@ HexValue gen_rvalue_extend(Context *c, YYLTYPE *locp, HexValue *rvalue)
+         const char *sign_suffix = is_unsigned ? "u" : "";
+         OUT(c, locp, "tcg_gen_ext", sign_suffix,
+             "_i32_i64(", &res, ", ", rvalue, ");\n");
+-        gen_rvalue_free(c, locp, rvalue);
+         return res;
+     }
+ }
+@@ -480,7 +464,6 @@ HexValue gen_rvalue_truncate(Context *c, YYLTYPE *locp, HexValue *rvalue)
+         if (rvalue->bit_width == 64) {
+             HexValue res = gen_tmp(c, locp, 32, rvalue->signedness);
+             OUT(c, locp, "tcg_gen_trunc_i64_tl(", &res, ", ", rvalue, ");\n");
+-            gen_rvalue_free(c, locp, rvalue);
+             return res;
+         }
+     }
+@@ -607,11 +590,6 @@ HexValue gen_bin_cmp(Context *c,
+         fprintf(stderr, "Error in evalutating immediateness!");
+         abort();
      }
 -
--    tcg_temp_free(t2);
--    tcg_temp_free(t1);
--    tcg_temp_free(t0);
--    tcg_temp_free(bx);
--    tcg_temp_free(ax);
--    tcg_temp_free(c1);
--    tcg_temp_free(c0);
+-    /* Free operands */
+-    gen_rvalue_free(c, locp, &op1_m);
+-    gen_rvalue_free(c, locp, &op2_m);
 -
-     return true;
+     return res;
  }
  
-@@ -362,10 +349,6 @@ static bool trans_LQ(DisasContext *ctx, arg_i *a)
-     tcg_gen_addi_i64(addr, addr, 8);
-     tcg_gen_qemu_ld_i64(t0, addr, ctx->mem_idx, MO_TEUQ);
-     gen_store_gpr_hi(t0, a->rt);
--
--    tcg_temp_free(t0);
--    tcg_temp_free(addr);
--
-     return true;
+@@ -647,8 +625,6 @@ static void gen_simple_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+             "(", res, ", ", op1, ", ", op2, ");\n");
+         break;
+     }
+-    gen_rvalue_free(c, locp, op1);
+-    gen_rvalue_free(c, locp, op2);
  }
  
-@@ -389,10 +372,6 @@ static bool trans_SQ(DisasContext *ctx, arg_i *a)
-     tcg_gen_addi_i64(addr, addr, 8);
-     gen_load_gpr_hi(t0, a->rt);
-     tcg_gen_qemu_st_i64(t0, addr, ctx->mem_idx, MO_TEUQ);
--
--    tcg_temp_free(addr);
--    tcg_temp_free(t0);
--
-     return true;
+ static void gen_sub_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+@@ -678,8 +654,6 @@ static void gen_sub_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+             "(", res, ", ", op1, ", ", op2, ");\n");
+     } break;
+     }
+-    gen_rvalue_free(c, locp, op1);
+-    gen_rvalue_free(c, locp, op2);
  }
  
-@@ -458,11 +437,6 @@ static bool trans_PPACW(DisasContext *ctx, arg_r *a)
- 
-     gen_load_gpr_hi(t0, a->rs); /* a1 */
-     tcg_gen_deposit_i64(cpu_gpr_hi[a->rd], a0, t0, 32, 32);
--
--    tcg_temp_free(t0);
--    tcg_temp_free(b0);
--    tcg_temp_free(a0);
--
-     return true;
+ static void gen_asl_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+@@ -731,10 +705,7 @@ static void gen_asl_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+         OUT(c, locp, "tcg_gen_movcond_i", &bit_width);
+         OUT(c, locp, "(TCG_COND_GEU, ", res, ", ", &op2_m, ", ", &edge);
+         OUT(c, locp, ", ", &zero, ", ", res, ");\n");
+-        gen_rvalue_free(c, locp, &edge);
+     }
+-    gen_rvalue_free(c, locp, &op1_m);
+-    gen_rvalue_free(c, locp, &op2_m);
  }
  
-@@ -506,10 +480,6 @@ static bool trans_PEXTLx(DisasContext *ctx, arg_r *a, unsigned wlen)
-         tcg_gen_shri_i64(bx, bx, wlen);
-         tcg_gen_shri_i64(ax, ax, wlen);
+ static void gen_asr_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+@@ -789,11 +760,7 @@ static void gen_asr_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+         OUT(c, locp, "tcg_gen_movcond_i", &bit_width);
+         OUT(c, locp, "(TCG_COND_GEU, ", res, ", ", &op2_m, ", ", &edge);
+         OUT(c, locp, ", ", &tmp, ", ", res, ");\n");
+-        gen_rvalue_free(c, locp, &edge);
+-        gen_rvalue_free(c, locp, &tmp);
+     }
+-    gen_rvalue_free(c, locp, &op1_m);
+-    gen_rvalue_free(c, locp, &op2_m);
+ }
+ 
+ static void gen_lsr_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+@@ -835,10 +802,7 @@ static void gen_lsr_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+         OUT(c, locp, "tcg_gen_movcond_i", &bit_width);
+         OUT(c, locp, "(TCG_COND_GEU, ", res, ", ", &op2_m, ", ", &edge);
+         OUT(c, locp, ", ", &zero, ", ", res, ");\n");
+-        gen_rvalue_free(c, locp, &edge);
+     }
+-    gen_rvalue_free(c, locp, &op1_m);
+-    gen_rvalue_free(c, locp, &op2_m);
+ }
+ 
+ /*
+@@ -867,9 +831,6 @@ static void gen_andl_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+         tmp2 = gen_bin_cmp(c, locp, TCG_COND_NE, op2, &zero);
+         OUT(c, locp, "tcg_gen_and_", bit_suffix,
+             "(", res, ", ", &tmp1, ", ", &tmp2, ");\n");
+-        gen_rvalue_free_manual(c, locp, &zero);
+-        gen_rvalue_free(c, locp, &tmp1);
+-        gen_rvalue_free(c, locp, &tmp2);
+         break;
+     }
+ }
+@@ -912,8 +873,6 @@ static void gen_minmax_op(Context *c, YYLTYPE *locp, unsigned bit_width,
+         OUT(c, locp, res, ", ", op1, ", ", &op2_m, ");\n");
+         break;
+     }
+-    gen_rvalue_free(c, locp, &op1_m);
+-    gen_rvalue_free(c, locp, &op2_m);
+ }
+ 
+ /* Code generation functions */
+@@ -1075,7 +1034,6 @@ HexValue gen_cast_op(Context *c,
+                     &res, ", ", src, ");\n");
+             }
+         }
+-        gen_rvalue_free(c, locp, src);
+         return res;
+     }
+ }
+@@ -1135,8 +1093,6 @@ static HexValue gen_extend_imm_width_op(Context *c,
+         if (need_guarding) {
+             OUT(c, locp, "}\n");
+         }
+-
+-        gen_rvalue_free(c, locp, value);
+         return res;
+     } else {
+         /*
+@@ -1161,8 +1117,6 @@ static HexValue gen_extend_imm_width_op(Context *c,
+                 ", 0);\n");
+             OUT(c, locp, "}\n");
+         }
+-
+-        gen_rvalue_free(c, locp, value);
+         return res;
+     }
+ }
+@@ -1202,7 +1156,6 @@ static HexValue gen_extend_tcg_width_op(Context *c,
+             &mask, ", ", &mask, ", ", &shift, ");\n");
+         OUT(c, locp, "tcg_gen_and_i", &dst_width, "(",
+             &res, ", ", value, ", ", &mask, ");\n");
+-        gen_rvalue_free(c, locp, &mask);
+     } else {
+         OUT(c, locp, "tcg_gen_shl_i", &dst_width, "(",
+             &res, ", ", value, ", ", &shift, ");\n");
+@@ -1214,10 +1167,6 @@ static HexValue gen_extend_tcg_width_op(Context *c,
+     OUT(c, locp, &src_width_m, ", ", &zero, ", ", &zero, ", ", &res,
+         ");\n");
+ 
+-    gen_rvalue_free(c, locp, &src_width_m);
+-    gen_rvalue_free(c, locp, value);
+-    gen_rvalue_free(c, locp, &shift);
+-
+     return res;
+ }
+ 
+@@ -1336,9 +1285,6 @@ void gen_rdeposit_op(Context *c,
+         dst);
+     OUT(c, locp, ", ", &width_m, ", ", &zero, ", ", &res, ", ", dst,
+         ");\n");
+-
+-    gen_rvalue_free(c, locp, width);
+-    gen_rvalue_free(c, locp, &res);
+ }
+ 
+ void gen_deposit_op(Context *c,
+@@ -1372,8 +1318,6 @@ void gen_deposit_op(Context *c,
+     value_m = rvalue_materialize(c, locp, &value_m);
+     OUT(c, locp, "tcg_gen_deposit_i", &bit_width, "(", dst, ", ", dst, ", ");
+     OUT(c, locp, &value_m, ", ", index, " * ", &width, ", ", &width, ");\n");
+-    gen_rvalue_free(c, locp, index);
+-    gen_rvalue_free(c, locp, &value_m);
+ }
+ 
+ HexValue gen_rextract_op(Context *c,
+@@ -1386,7 +1330,6 @@ HexValue gen_rextract_op(Context *c,
+     HexValue res = gen_tmp(c, locp, bit_width, UNSIGNED);
+     OUT(c, locp, "tcg_gen_extract_i", &bit_width, "(", &res);
+     OUT(c, locp, ", ", src, ", ", &begin, ", ", &width, ");\n");
+-    gen_rvalue_free(c, locp, src);
+     return res;
+ }
+ 
+@@ -1419,12 +1362,8 @@ HexValue gen_extract_op(Context *c,
+         const char *sign_suffix = (extract->signedness == UNSIGNED) ? "u" : "";
+         OUT(c, locp, "tcg_gen_ext", sign_suffix, "_i32_i64(",
+             &tmp, ", ", &res, ");\n");
+-        gen_rvalue_free(c, locp, &res);
+         res = tmp;
      }
 -
--    tcg_temp_free(bx);
--    tcg_temp_free(ax);
--
-     return true;
+-    gen_rvalue_free(c, locp, src);
+-    gen_rvalue_free(c, locp, index);
+     return res;
  }
  
-@@ -541,10 +511,6 @@ static bool trans_PEXTLW(DisasContext *ctx, arg_r *a)
-     gen_load_gpr(ax, a->rs);
-     gen_load_gpr(bx, a->rt);
-     gen_pextw(cpu_gpr[a->rd], cpu_gpr_hi[a->rd], ax, bx);
--
--    tcg_temp_free(bx);
--    tcg_temp_free(ax);
--
-     return true;
+@@ -1442,8 +1381,6 @@ void gen_write_reg(Context *c, YYLTYPE *locp, HexValue *reg, HexValue *value)
+         locp,
+         "ctx_log_reg_write(ctx, ", &reg->reg.id,
+         ");\n");
+-    gen_rvalue_free(c, locp, reg);
+-    gen_rvalue_free(c, locp, &value_m);
  }
  
-@@ -564,10 +530,6 @@ static bool trans_PEXTUW(DisasContext *ctx, arg_r *a)
-     gen_load_gpr_hi(ax, a->rs);
-     gen_load_gpr_hi(bx, a->rt);
-     gen_pextw(cpu_gpr[a->rd], cpu_gpr_hi[a->rd], ax, bx);
+ void gen_assign(Context *c,
+@@ -1478,8 +1415,6 @@ void gen_assign(Context *c,
+     const char *imm_suffix = (value_m.type == IMMEDIATE) ? "i" : "";
+     OUT(c, locp, "tcg_gen_mov", imm_suffix, "_i", &bit_width,
+         "(", dst, ", ", &value_m, ");\n");
 -
--    tcg_temp_free(bx);
--    tcg_temp_free(ax);
--
-     return true;
+-    gen_rvalue_free(c, locp, &value_m);
  }
  
-@@ -678,8 +640,5 @@ static bool trans_PROT3W(DisasContext *ctx, arg_r *a)
+ HexValue gen_convround(Context *c,
+@@ -1504,12 +1439,6 @@ HexValue gen_convround(Context *c,
+     OUT(c, locp, ", ", &and, ", ", &mask, ", ");
+     OUT(c, locp, &src_p1, ", ", &src_m, ");\n");
  
-     tcg_gen_deposit_i64(cpu_gpr[a->rd], cpu_gpr[a->rt], ax, 0, 32);
-     tcg_gen_rotri_i64(cpu_gpr[a->rd], cpu_gpr[a->rd], 32);
+-    /* Free src but use the original `is_manual` value */
+-    gen_rvalue_free(c, locp, src);
 -
--    tcg_temp_free(ax);
+-    /* Free the rest of the values */
+-    gen_rvalue_free(c, locp, &src_p1);
 -
-     return true;
+     return res;
  }
+ 
+@@ -1535,9 +1464,6 @@ static HexValue gen_convround_n_b(Context *c,
+     OUT(c, locp, "tcg_gen_add_i64(", &res);
+     OUT(c, locp, ", ", &res, ", ", &tmp_64, ");\n");
+ 
+-    gen_rvalue_free(c, locp, &tmp);
+-    gen_rvalue_free(c, locp, &tmp_64);
+-
+     return res;
+ }
+ 
+@@ -1560,10 +1486,6 @@ static HexValue gen_convround_n_c(Context *c,
+     OUT(c, locp, "tcg_gen_add_i64(", &res);
+     OUT(c, locp, ", ", &res, ", ", &tmp_64, ");\n");
+ 
+-    gen_rvalue_free(c, locp, &one);
+-    gen_rvalue_free(c, locp, &tmp);
+-    gen_rvalue_free(c, locp, &tmp_64);
+-
+     return res;
+ }
+ 
+@@ -1634,18 +1556,6 @@ HexValue gen_convround_n(Context *c,
+     OUT(c, locp, "tcg_gen_shr_i64(", &res);
+     OUT(c, locp, ", ", &res, ", ", &n_64, ");\n");
+ 
+-    gen_rvalue_free(c, locp, &src_casted);
+-    gen_rvalue_free(c, locp, &pos_casted);
+-
+-    gen_rvalue_free(c, locp, &r1);
+-    gen_rvalue_free(c, locp, &r2);
+-    gen_rvalue_free(c, locp, &r3);
+-
+-    gen_rvalue_free(c, locp, &cond);
+-    gen_rvalue_free(c, locp, &cond_64);
+-    gen_rvalue_free(c, locp, &mask);
+-    gen_rvalue_free(c, locp, &n_64);
+-
+     res = gen_rvalue_truncate(c, locp, &res);
+     return res;
+ }
+@@ -1691,10 +1601,6 @@ HexValue gen_round(Context *c,
+     OUT(c, locp, "(TCG_COND_EQ, ", &res, ", ", &b, ", ", &zero);
+     OUT(c, locp, ", ", &a, ", ", &sum, ");\n");
+ 
+-    gen_rvalue_free_manual(c, locp, &a);
+-    gen_rvalue_free_manual(c, locp, &b);
+-    gen_rvalue_free(c, locp, &sum);
+-
+     return res;
+ }
+ 
+@@ -1720,9 +1626,6 @@ void gen_circ_op(Context *c,
+         ", ",
+         modifier);
+     OUT(c, locp, ", ", &cs, ");\n");
+-    gen_rvalue_free(c, locp, &increment_m);
+-    gen_rvalue_free(c, locp, modifier);
+-    gen_rvalue_free(c, locp, &cs);
+ }
+ 
+ HexValue gen_locnt_op(Context *c, YYLTYPE *locp, HexValue *src)
+@@ -1738,7 +1641,6 @@ HexValue gen_locnt_op(Context *c, YYLTYPE *locp, HexValue *src)
+         &res, ", ", &src_m, ");\n");
+     OUT(c, locp, "tcg_gen_clzi_i", bit_suffix, "(", &res, ", ", &res, ", ");
+     OUT(c, locp, bit_suffix, ");\n");
+-    gen_rvalue_free(c, locp, &src_m);
+     return res;
+ }
+ 
+@@ -1752,7 +1654,6 @@ HexValue gen_ctpop_op(Context *c, YYLTYPE *locp, HexValue *src)
+     src_m = rvalue_materialize(c, locp, &src_m);
+     OUT(c, locp, "tcg_gen_ctpop_i", bit_suffix,
+         "(", &res, ", ", &src_m, ");\n");
+-    gen_rvalue_free(c, locp, &src_m);
+     return res;
+ }
+ 
+@@ -1771,8 +1672,6 @@ HexValue gen_rotl(Context *c, YYLTYPE *locp, HexValue *src, HexValue *width)
+     amount = rvalue_materialize(c, locp, &amount);
+     OUT(c, locp, "tcg_gen_rotl_", suffix, "(",
+         &res, ", ", src, ", ", &amount, ");\n");
+-    gen_rvalue_free(c, locp, src);
+-    gen_rvalue_free(c, locp, &amount);
+ 
+     return res;
+ }
+@@ -1797,10 +1696,6 @@ HexValue gen_carry_from_add(Context *c,
+     OUT(c, locp, "tcg_gen_add2_i64(", &res, ", ", &cf, ", ", &res, ", ", &cf);
+     OUT(c, locp, ", ", &op2_m, ", ", &zero, ");\n");
+ 
+-    gen_rvalue_free(c, locp, &op1_m);
+-    gen_rvalue_free(c, locp, &op2_m);
+-    gen_rvalue_free(c, locp, &op3_m);
+-    gen_rvalue_free(c, locp, &res);
+     return cf;
+ }
+ 
+@@ -1865,7 +1760,6 @@ void gen_inst_code(Context *c, YYLTYPE *locp)
+                 c->inst.name->str,
+                 c->inst.error_count);
+     } else {
+-        free_variables(c, locp);
+         c->implemented_insn++;
+         fprintf(c->enabled_file, "%s\n", c->inst.name->str);
+         emit_footer(c);
+@@ -1895,10 +1789,7 @@ void gen_pred_assign(Context *c, YYLTYPE *locp, HexValue *left_pred,
+         OUT(c, locp, "gen_log_pred_write(ctx, ", pred_id, ", ", left_pred,
+             ");\n");
+         OUT(c, locp, "ctx_log_pred_write(ctx, ", pred_id, ");\n");
+-        gen_rvalue_free(c, locp, left_pred);
+     }
+-    /* Free temporary value */
+-    gen_rvalue_free(c, locp, &r);
+ }
+ 
+ void gen_cancel(Context *c, YYLTYPE *locp)
+@@ -1948,8 +1839,6 @@ void gen_load(Context *c, YYLTYPE *locp, HexValue *width,
+         OUT(c, locp, "(TCGv) ");
+     }
+     OUT(c, locp, dst, ", ", ea, ", ctx->mem_idx);\n");
+-    /* If the var in EA was truncated it is now a tmp HexValue, so free it. */
+-    gen_rvalue_free(c, locp, ea);
+ }
+ 
+ void gen_store(Context *c, YYLTYPE *locp, HexValue *width, HexValue *ea,
+@@ -1963,9 +1852,6 @@ void gen_store(Context *c, YYLTYPE *locp, HexValue *width, HexValue *ea,
+     src_m = rvalue_materialize(c, locp, &src_m);
+     OUT(c, locp, "gen_store", &mem_width, "(cpu_env, ", ea, ", ", &src_m);
+     OUT(c, locp, ", insn->slot);\n");
+-    gen_rvalue_free(c, locp, &src_m);
+-    /* If the var in ea was truncated it is now a tmp HexValue, so free it. */
+-    gen_rvalue_free(c, locp, ea);
+ }
+ 
+ void gen_sethalf(Context *c, YYLTYPE *locp, HexCast *sh, HexValue *n,
+@@ -2002,11 +1888,6 @@ void gen_setbits(Context *c, YYLTYPE *locp, HexValue *hi, HexValue *lo,
+     OUT(c, locp, "tcg_gen_deposit_i32(", dst, ", ", dst,
+         ", ", &tmp, ", ");
+     OUT(c, locp, lo, ", ", &len, ");\n");
+-
+-    gen_rvalue_free(c, locp, &tmp);
+-    gen_rvalue_free(c, locp, hi);
+-    gen_rvalue_free(c, locp, lo);
+-    gen_rvalue_free(c, locp, value);
+ }
+ 
+ unsigned gen_if_cond(Context *c, YYLTYPE *locp, HexValue *cond)
+@@ -2019,7 +1900,6 @@ unsigned gen_if_cond(Context *c, YYLTYPE *locp, HexValue *cond)
+     bit_suffix = (cond->bit_width == 64) ? "i64" : "i32";
+     OUT(c, locp, "tcg_gen_brcondi_", bit_suffix, "(TCG_COND_EQ, ", cond,
+         ", 0, if_label_", &c->inst.if_count, ");\n");
+-    gen_rvalue_free(c, locp, cond);
+     return c->inst.if_count++;
+ }
+ 
+@@ -2110,7 +1990,6 @@ static inline HexValue gen_rvalue_simple_unary(Context *c, YYLTYPE *locp,
+         res = gen_tmp(c, locp, bit_width, value->signedness);
+         OUT(c, locp, tcg_code, "_i", &bit_width, "(", &res, ", ", value,
+             ");\n");
+-        gen_rvalue_free(c, locp, value);
+     }
+     return res;
+ }
+@@ -2136,7 +2015,6 @@ HexValue gen_rvalue_notl(Context *c, YYLTYPE *locp, HexValue *value)
+         OUT(c, locp, "tcg_gen_movcond_i", &bit_width);
+         OUT(c, locp, "(TCG_COND_EQ, ", &res, ", ", value, ", ", &zero);
+         OUT(c, locp, ", ", &one, ", ", &zero, ");\n");
+-        gen_rvalue_free(c, locp, value);
+     }
+     return res;
+ }
+@@ -2167,7 +2045,6 @@ HexValue gen_rvalue_sat(Context *c, YYLTYPE *locp, HexSat *sat,
+     OUT(c, locp, &ovfl, ", ", &res, ", ", value, ", ", &width->imm.value,
+         ");\n");
+     OUT(c, locp, "gen_set_usr_field_if(USR_OVF,", &ovfl, ");\n");
+-    gen_rvalue_free(c, locp, value);
+ 
+     return res;
+ }
+@@ -2182,9 +2059,6 @@ HexValue gen_rvalue_fscr(Context *c, YYLTYPE *locp, HexValue *value)
+     OUT(c, locp, "tcg_gen_concat_i32_i64(",
+         &key, ", ", &frame_key, ", ", &frame_key, ");\n");
+     OUT(c, locp, "tcg_gen_xor_i64(", &res, ", ", value, ", ", &key, ");\n");
+-    gen_rvalue_free(c, locp, &key);
+-    gen_rvalue_free(c, locp, &frame_key);
+-    gen_rvalue_free(c, locp, value);
+     return res;
+ }
+ 
+@@ -2206,7 +2080,6 @@ HexValue gen_rvalue_brev(Context *c, YYLTYPE *locp, HexValue *value)
+     res = gen_tmp(c, locp, value->bit_width, value->signedness);
+     *value = rvalue_materialize(c, locp, value);
+     OUT(c, locp, "gen_helper_fbrev(", &res, ", ", value, ");\n");
+-    gen_rvalue_free(c, locp, value);
+     return res;
+ }
+ 
+@@ -2218,7 +2091,6 @@ HexValue gen_rvalue_ternary(Context *c, YYLTYPE *locp, HexValue *cond,
+     unsigned bit_width = (is_64bit) ? 64 : 32;
+     HexValue zero = gen_constant(c, locp, "0", bit_width, UNSIGNED);
+     HexValue res = gen_tmp(c, locp, bit_width, UNSIGNED);
+-    Ternary *ternary = NULL;
+ 
+     if (is_64bit) {
+         *cond = gen_rvalue_extend(c, locp, cond);
+@@ -2236,13 +2108,8 @@ HexValue gen_rvalue_ternary(Context *c, YYLTYPE *locp, HexValue *cond,
+     OUT(c, locp, ", ", true_branch, ", ", false_branch, ");\n");
+ 
+     assert(c->ternary->len > 0);
+-    ternary = &g_array_index(c->ternary, Ternary, c->ternary->len - 1);
+-    gen_rvalue_free_manual(c, locp, &ternary->cond);
+     g_array_remove_index(c->ternary, c->ternary->len - 1);
+ 
+-    gen_rvalue_free(c, locp, cond);
+-    gen_rvalue_free(c, locp, true_branch);
+-    gen_rvalue_free(c, locp, false_branch);
+     return res;
+ }
+ 
+@@ -2321,15 +2188,6 @@ void track_string(Context *c, GString *s)
+     g_array_append_val(c->inst.strings, s);
+ }
+ 
+-void free_variables(Context *c, YYLTYPE *locp)
+-{
+-    for (unsigned i = 0; i < c->inst.allocated->len; ++i) {
+-        Var *var = &g_array_index(c->inst.allocated, Var, i);
+-        const char *suffix = var->bit_width == 64 ? "i64" : "i32";
+-        OUT(c, locp, "tcg_temp_free_", suffix, "(", var->name->str, ");\n");
+-    }
+-}
+-
+ void free_instruction(Context *c)
+ {
+     assert(!is_inside_ternary(c));
+diff --git a/target/hexagon/idef-parser/idef-parser.y b/target/hexagon/idef-parser/idef-parser.y
+index c14cb39500..59c93f85b4 100644
+--- a/target/hexagon/idef-parser/idef-parser.y
++++ b/target/hexagon/idef-parser/idef-parser.y
+@@ -269,9 +269,6 @@ statements : statements statement
+ statement : control_statement
+           | var_decl ';'
+           | rvalue ';'
+-            {
+-                gen_rvalue_free(c, &@1, &$1);
+-            }
+           | code_block
+           | ';'
+           ;
+@@ -347,7 +344,6 @@ assign_statement : lvalue '=' rvalue
+                        $3 = gen_rvalue_truncate(c, &@1, &$3);
+                        $3 = rvalue_materialize(c, &@1, &$3);
+                        OUT(c, &@1, "gen_write_new_pc(", &$3, ");\n");
+-                       gen_rvalue_free(c, &@1, &$3); /* Free temporary value */
+                    }
+                  | LOAD '(' IMM ',' IMM ',' SIGN ',' var ',' lvalue ')'
+                    {
+@@ -376,7 +372,6 @@ assign_statement : lvalue '=' rvalue
+                        $3 = gen_rvalue_truncate(c, &@1, &$3);
+                        $3 = rvalue_materialize(c, &@1, &$3);
+                        OUT(c, &@1, "SET_USR_FIELD(USR_LPCFG, ", &$3, ");\n");
+-                       gen_rvalue_free(c, &@1, &$3);
+                    }
+                  | DEPOSIT '(' rvalue ',' rvalue ',' rvalue ')'
+                    {
+@@ -421,10 +416,6 @@ control_statement : frame_check
+                   ;
+ 
+ frame_check : FCHK '(' rvalue ',' rvalue ')' ';'
+-              {
+-                  gen_rvalue_free(c, &@1, &$3);
+-                  gen_rvalue_free(c, &@1, &$5);
+-              }
+             ;
+ 
+ cancel_statement : LOAD_CANCEL
+@@ -774,7 +765,6 @@ rvalue : FAIL
+              @1.last_column = @6.last_column;
+              $$ = gen_tmp(c, &@1, 32, UNSIGNED);
+              OUT(c, &@1, "gen_read_ireg(", &$$, ", ", &$3, ", ", &$6, ");\n");
+-             gen_rvalue_free(c, &@1, &$3);
+          }
+        | CIRCADD '(' rvalue ',' rvalue ',' rvalue ')'
+          {
 -- 
 2.34.1
 

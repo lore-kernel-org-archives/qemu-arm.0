@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2636445ejc;
-        Sat, 25 Feb 2023 01:19:10 -0800 (PST)
-X-Google-Smtp-Source: AK7set9hgk+54ZZjXEhAEFJdu0+N82d0AMDI6a6sJy5gIFJ81fpkAO4ESfKTPH0dwV3b+bQ8hHpj
-X-Received: by 2002:ac8:5f11:0:b0:3bb:760d:9345 with SMTP id x17-20020ac85f11000000b003bb760d9345mr14879996qta.0.1677316750581;
-        Sat, 25 Feb 2023 01:19:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677316750; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2636461ejc;
+        Sat, 25 Feb 2023 01:19:11 -0800 (PST)
+X-Google-Smtp-Source: AK7set8Wl2x9t2wao/JTDTwul9I56nExG3FB5Hk6FT0MOW5rkmx1mVWr+hrxHYjRkIuyTt1Kc/6h
+X-Received: by 2002:ad4:5ccf:0:b0:56f:37a:4563 with SMTP id iu15-20020ad45ccf000000b0056f037a4563mr38566800qvb.42.1677316751297;
+        Sat, 25 Feb 2023 01:19:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677316751; cv=none;
         d=google.com; s=arc-20160816;
-        b=ltLA4tFR5qj/iR4wy5m711lz/kHu9A8FDgAn2LLD8XMyIS+XAoXhAmVKGNrJ8/arSb
-         vhcIXhmMtna1praJzvfzIMRw4uxy/HHrmOet8IhuY2bUASAH7ZKAhQKntpH2iSQ5hbkT
-         7aj3KUJ2CNqFFmGjoiH6k4tUKuqGoLeETbE8IoVNP1YNZnRqzS2RqLrMLXkn1QuXpkk+
-         kzt2IBRMo0vGalkiQSYKhA3ZkOC45lzt1FIRGDA405F2lqmbGIehxilC9tO0WLZbove6
-         +qn142JuFqxIjZGbyIccsnS8o2ssvCuFjpRLJDsKZ4O4B+KDRN0yaNbpajTNcUSmol1j
-         DnZQ==
+        b=bWf5xs9F1MwzaulHW+xMOUX5xSiu5eFBrHCvmfL07Em25Lm47H5hKlK8xohplSesF+
+         nc3llUiPGpFFGveuP+SxqvE0rnpp+R7YCzRcC1DdUMzF2ytQ8b+B4RhfRopqmlbxRPRA
+         1R+5d7Exc+ZM7D+r63pfq0OTgg4zxT2SWOYVcBrn/0/uCVqamXxFR3XF7TuCDQKedYwT
+         JEHVBfa0dBL+oZWW2vU/3HzEdbxnoJnFgmVuwu3QrfbvR5L6x7ejWyEAXyKs3nRwi9n/
+         lLpz39B/52XPLlm0PaphI44fIuXcYWhRSnP8GofonsxsXDRqVMfPoAYO35HH09Gbi1XL
+         TEJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LUdQc0vOWU2ksX0RP7JNSAL2uqNTzPqxOne2f4ZPS34=;
-        b=GiWClhxu7wGyT4/E34u08f6uG6Prmrcjp5a0IeMnGqv32LLHEKu1Qw6K06XVSVO4qv
-         ty3UuH9VGLwfXB9wmsnmnJ1G0h2+VrSx71/ysMHC/BLC0AZa7iJk52WgRU/ngZ2aLYHm
-         7j7Wi523CjltdNpDdJWzQbeadkRibWiY5V5zOBMKU7kCf/0EzgHW6chUmSHBcumsQKd+
-         df6/8oWuw8AsjqtPHOv8cZEDQ9lTYDgiqCCAlQ7mWGRZ9sQKpGeSSE7GAxJLlUx51hmk
-         DEEYOEGIRUMvaeufnogwNF4dpKtf/T3QgADBlKfpdDo+iwQPpvt2ytRm1BcIE+BppFTY
-         QAZA==
+        bh=Gk4H/gx5fzfdthfB0AF4cgfQbvoN/h/04Yaxfs06mIY=;
+        b=wxPzcjPfSGuIOyWydOIS5rw4eJg3xfTKW3TxdpEP5oD+QeMlil3u3+Dh0z3tBvFXQ7
+         MMvTdHkxsFw2YEzhEvicb3zrYs+wzJLKiOK7G/K8sjp9H3KD9ZrrFdhNZMiFkMBwEgJD
+         LhgOmjH1L9TL/L3MijKDUvghaCmox4+tjMapRHlwahrGKtngqGuPhxEHO9D8ShAzmN91
+         xoU6fai5c31FrjAO+fT0ImkobhyjIcl1uUoZOKnDxZ+us9kybKdPOgabcJ/qIohpY6Rp
+         /ZDO1BcdgDHhtetvD6irJD+BDwjzlW838lEnVRRzn0V9L5lv8wgWyna/3cvVLAu9WG+V
+         VDkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iM21ey5e;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=suNpt0pD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r17-20020a05620a299100b007426d8d3815si1536573qkp.237.2023.02.25.01.19.10
+        by mx.google.com with ESMTPS id m6-20020a05620a290600b007427fb5c96dsi1531175qkp.422.2023.02.25.01.19.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 25 Feb 2023 01:19:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 25 Feb 2023 01:19:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iM21ey5e;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=suNpt0pD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pVqeU-0005ep-5d; Sat, 25 Feb 2023 04:15:34 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pVqeM-0005X4-1W; Sat, 25 Feb 2023 04:15:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVqeS-0005dJ-MD
- for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:15:32 -0500
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ id 1pVqeJ-0005PH-4K
+ for qemu-arm@nongnu.org; Sat, 25 Feb 2023 04:15:23 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pVqeQ-0001Rb-RZ
- for qemu-devel@nongnu.org; Sat, 25 Feb 2023 04:15:32 -0500
-Received: by mail-pj1-x102c.google.com with SMTP id
- cp7-20020a17090afb8700b0023756229427so5237273pjb.1
- for <qemu-devel@nongnu.org>; Sat, 25 Feb 2023 01:15:30 -0800 (PST)
+ id 1pVqeH-0001oq-7V
+ for qemu-arm@nongnu.org; Sat, 25 Feb 2023 04:15:22 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id
+ gi3-20020a17090b110300b0023762f642dcso1564355pjb.4
+ for <qemu-arm@nongnu.org>; Sat, 25 Feb 2023 01:15:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LUdQc0vOWU2ksX0RP7JNSAL2uqNTzPqxOne2f4ZPS34=;
- b=iM21ey5e35bnP54CgvxDUU/+HS9+s+u+qNFmJ9XJuZcqr2hC8Uh0RISkxa17LwDLTw
- rGwP3Vaq55GBw3djyRzvS3zojtV/RsIVwK8/cyGlu2N9v5NBCSuw6kXXNvDb8scHwttD
- UdWHh3V7VeAdkTz7nEbIpBVzy7WAeWsEGUXEAmxLl/sZ4SE22x6cxQ1MNFmI/92hS6iY
- BXHKgAtZI8YQkYb7/0p5TRi1BMlluR5gwTvLT9hnVdX0P5dpd6JhgrEfHyb0TVb4LHBV
- wnKChlF+epY15mmXiCzvW9b+OGqopSm9bc5PmUwNhujpYmoqTsSPIs+J8KncphQrYGMW
- JyCg==
+ bh=Gk4H/gx5fzfdthfB0AF4cgfQbvoN/h/04Yaxfs06mIY=;
+ b=suNpt0pDQTMGF2fMldFl0FlVEjPl5/R4AMUOdUWP/WBXW+X1gTEyBndsufG6P+hWNB
+ j5blJpSYmU96kRlwOMApWzjVOAX2uuPr8Z79ZRJlxepdac/7C1q7UgMK7dx/Rfll+eZ4
+ kI3X+aT6/e+ZmAsAVjfTGxiu2JeUD4o4SKjy4Ig91c3i8hsZNp53vReOi9u3pucT0VoP
+ osrXciR1CmjYxOUObtxvaHFmeV4PKdSleSB6tviP5Dj6P/lWGZrh2lcNxHz4oCYwUFyR
+ 5DTFngbNNULSF2DQcG6hIBARPaLz39B3bqDhQjVGAkP8SBzMhFhIe/MdQeNQsHAKklL+
+ WHjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LUdQc0vOWU2ksX0RP7JNSAL2uqNTzPqxOne2f4ZPS34=;
- b=6wX1FWet0asFmV5kK8qfFnyK5JSCC2RQ7eXhFfptwCeOcUTx2qFxFm43VbqgVBMpzr
- rorvpAf64n8pik7lzMUi24KyjWMZSQGyhPQIKADEVFDUZHqilC2SfdubCQe4LNcn/BGf
- 28MSc2GvIFgjWJZrkqzL6zlMi1+04Gzkvo29shgG0SXLDe4Co72TH7N71NhpUphpJVNx
- lgTyeKE+zyiVuXRX9JzgwAo3Ib4byqPz+iwPVn9LOLsN3pRbpwbV09JFmo1z0BqDIbnD
- JU3xA6/ITlVx0Y1I3l7KcyW/c3mnexCjhyCAoOG0ICfHz3q7Gfx2VHqZ75NZH4orVAju
- RnCw==
-X-Gm-Message-State: AO0yUKXEk8oq726eA4uzLaC2npbjamNgVoumJ14Y29oshi25+rgXyRa7
- +ptEdT01B3EnxDk8jgW5Cblc4Xc8Sc9pnIzJeOo=
-X-Received: by 2002:a17:902:ec8f:b0:19c:171a:d346 with SMTP id
- x15-20020a170902ec8f00b0019c171ad346mr21195764plg.44.1677316529983; 
- Sat, 25 Feb 2023 01:15:29 -0800 (PST)
+ bh=Gk4H/gx5fzfdthfB0AF4cgfQbvoN/h/04Yaxfs06mIY=;
+ b=RuvW/V1pi3BHl7WN7W0rhiQlsZzkURGwKzUfHaDW/zX4V8EeIR81ANMTln+wfVwJ93
+ /qEw9URCZHzdPeZhBGgLOqGAXUjjmAKMAG9oFhAzPUmO5EUiiidT9AGcJ0keNeaLSNC3
+ 9HT1svuYVoQn8w0bdBzGzi9Di1m/2Xu6ZyA1YTWdphZDv+mF2zFRq7TDNbD1puZ6MYa1
+ WkwsUzuOc3bk+SiLE5iZd1lnzeEI9R1/GK6yA4POKJMWSvOq5RDHg958GxEUPQKB9DFA
+ SzoPwGbKOidT6u6gg/b1859vXrlGIx3tUxIj+M1b2Y+vcxV5NlwteMGdi8d36OZQBCRO
+ X4Hw==
+X-Gm-Message-State: AO0yUKUgGHmDLdyX6hmfsh0mQPUhETVDza35hlh57+d75hG6tHPTAUI0
+ Wti8lZ3PufKvmAhu1Cd1Dbt7eA==
+X-Received: by 2002:a17:903:187:b0:196:5d8d:2d6f with SMTP id
+ z7-20020a170903018700b001965d8d2d6fmr22917111plg.13.1677316519706; 
+ Sat, 25 Feb 2023 01:15:19 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- je12-20020a170903264c00b0019607aeda8bsm831101plb.73.2023.02.25.01.15.27
+ je12-20020a170903264c00b0019607aeda8bsm831101plb.73.2023.02.25.01.15.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 25 Feb 2023 01:15:29 -0800 (PST)
+ Sat, 25 Feb 2023 01:15:19 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -95,16 +95,16 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com
-Subject: [PATCH 22/76] target/cris: Drop cris_alu_m_free_temps
-Date: Fri, 24 Feb 2023 23:13:33 -1000
-Message-Id: <20230225091427.1817156-23-richard.henderson@linaro.org>
+Subject: [PATCH 18/76] target/avr: Drop DisasContext.free_skip_var0
+Date: Fri, 24 Feb 2023 23:13:29 -1000
+Message-Id: <20230225091427.1817156-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230225091427.1817156-1-richard.henderson@linaro.org>
 References: <20230225091427.1817156-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,204 +113,115 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bVpAMPmVzhFJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: K3eLY6DkP0zg
 
-Translators are no longer required to free tcg temporaries.
+Translators are no longer required to free tcg temporaries,
+therefore there's no need to record for later freeing.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/cris/translate.c         | 23 -----------------------
- target/cris/translate_v10.c.inc |  4 ----
- 2 files changed, 27 deletions(-)
+ target/avr/translate.c | 19 -------------------
+ 1 file changed, 19 deletions(-)
 
-diff --git a/target/cris/translate.c b/target/cris/translate.c
-index 76db745fe2..439af701e6 100644
---- a/target/cris/translate.c
-+++ b/target/cris/translate.c
-@@ -2101,12 +2101,6 @@ static inline void cris_alu_m_alloc_temps(TCGv *t)
-     t[1] = tcg_temp_new();
+diff --git a/target/avr/translate.c b/target/avr/translate.c
+index e40d8e9681..e7f0e2bbe3 100644
+--- a/target/avr/translate.c
++++ b/target/avr/translate.c
+@@ -107,11 +107,6 @@ struct DisasContext {
+      *     tcg_gen_brcond_tl(skip_cond, skip_var0, skip_var1, skip_label);
+      * }
+      *
+-     * if (free_skip_var0) {
+-     *     tcg_temp_free(skip_var0);
+-     *     free_skip_var0 = false;
+-     * }
+-     *
+      * translate(ctx);
+      *
+      * if (skip_label) {
+@@ -121,7 +116,6 @@ struct DisasContext {
+     TCGv skip_var0;
+     TCGv skip_var1;
+     TCGCond skip_cond;
+-    bool free_skip_var0;
+ };
+ 
+ void avr_cpu_tcg_init(void)
+@@ -1375,7 +1369,6 @@ static bool trans_SBRC(DisasContext *ctx, arg_SBRC *a)
+ 
+     ctx->skip_cond = TCG_COND_EQ;
+     ctx->skip_var0 = tcg_temp_new();
+-    ctx->free_skip_var0 = true;
+ 
+     tcg_gen_andi_tl(ctx->skip_var0, Rr, 1 << a->bit);
+     return true;
+@@ -1391,7 +1384,6 @@ static bool trans_SBRS(DisasContext *ctx, arg_SBRS *a)
+ 
+     ctx->skip_cond = TCG_COND_NE;
+     ctx->skip_var0 = tcg_temp_new();
+-    ctx->free_skip_var0 = true;
+ 
+     tcg_gen_andi_tl(ctx->skip_var0, Rr, 1 << a->bit);
+     return true;
+@@ -1410,7 +1402,6 @@ static bool trans_SBIC(DisasContext *ctx, arg_SBIC *a)
+     tcg_gen_andi_tl(temp, temp, 1 << a->bit);
+     ctx->skip_cond = TCG_COND_EQ;
+     ctx->skip_var0 = temp;
+-    ctx->free_skip_var0 = true;
+ 
+     return true;
  }
+@@ -1428,7 +1419,6 @@ static bool trans_SBIS(DisasContext *ctx, arg_SBIS *a)
+     tcg_gen_andi_tl(temp, temp, 1 << a->bit);
+     ctx->skip_cond = TCG_COND_NE;
+     ctx->skip_var0 = temp;
+-    ctx->free_skip_var0 = true;
  
--static inline void cris_alu_m_free_temps(TCGv *t)
--{
--    tcg_temp_free(t[0]);
--    tcg_temp_free(t[1]);
--}
--
- static int dec_movs_m(CPUCRISState *env, DisasContext *dc)
- {
-     TCGv t[2];
-@@ -2124,7 +2118,6 @@ static int dec_movs_m(CPUCRISState *env, DisasContext *dc)
-     cris_alu(dc, CC_OP_MOVE,
-             cpu_R[dc->op2], cpu_R[dc->op2], t[1], 4);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
+     return true;
  }
- 
-@@ -2145,7 +2138,6 @@ static int dec_addu_m(CPUCRISState *env, DisasContext *dc)
-     cris_alu(dc, CC_OP_ADD,
-             cpu_R[dc->op2], cpu_R[dc->op2], t[1], 4);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2165,7 +2157,6 @@ static int dec_adds_m(CPUCRISState *env, DisasContext *dc)
-     cris_cc_mask(dc, CC_MASK_NZVC);
-     cris_alu(dc, CC_OP_ADD, cpu_R[dc->op2], cpu_R[dc->op2], t[1], 4);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2185,7 +2176,6 @@ static int dec_subu_m(CPUCRISState *env, DisasContext *dc)
-     cris_cc_mask(dc, CC_MASK_NZVC);
-     cris_alu(dc, CC_OP_SUB, cpu_R[dc->op2], cpu_R[dc->op2], t[1], 4);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2205,7 +2195,6 @@ static int dec_subs_m(CPUCRISState *env, DisasContext *dc)
-     cris_cc_mask(dc, CC_MASK_NZVC);
-     cris_alu(dc, CC_OP_SUB, cpu_R[dc->op2], cpu_R[dc->op2], t[1], 4);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2225,7 +2214,6 @@ static int dec_movu_m(CPUCRISState *env, DisasContext *dc)
-     cris_cc_mask(dc, CC_MASK_NZ);
-     cris_alu(dc, CC_OP_MOVE, cpu_R[dc->op2], cpu_R[dc->op2], t[1], 4);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2244,7 +2232,6 @@ static int dec_cmpu_m(CPUCRISState *env, DisasContext *dc)
-     cris_cc_mask(dc, CC_MASK_NZVC);
-     cris_alu(dc, CC_OP_CMP, cpu_R[dc->op2], cpu_R[dc->op2], t[1], 4);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2265,7 +2252,6 @@ static int dec_cmps_m(CPUCRISState *env, DisasContext *dc)
-             cpu_R[dc->op2], cpu_R[dc->op2], t[1],
-             memsize_zz(dc));
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2286,7 +2272,6 @@ static int dec_cmp_m(CPUCRISState *env, DisasContext *dc)
-             cpu_R[dc->op2], cpu_R[dc->op2], t[1],
-             memsize_zz(dc));
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2312,7 +2297,6 @@ static int dec_test_m(CPUCRISState *env, DisasContext *dc)
-          cpu_R[dc->op2], t[1], c, memsize_zz(dc));
-     tcg_temp_free(c);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2331,7 +2315,6 @@ static int dec_and_m(CPUCRISState *env, DisasContext *dc)
-     cris_cc_mask(dc, CC_MASK_NZ);
-     cris_alu(dc, CC_OP_AND, cpu_R[dc->op2], t[0], t[1], memsize_zz(dc));
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2351,7 +2334,6 @@ static int dec_add_m(CPUCRISState *env, DisasContext *dc)
-     cris_alu(dc, CC_OP_ADD,
-          cpu_R[dc->op2], t[0], t[1], memsize_zz(dc));
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2370,7 +2352,6 @@ static int dec_addo_m(CPUCRISState *env, DisasContext *dc)
-     cris_cc_mask(dc, 0);
-     cris_alu(dc, CC_OP_ADD, cpu_R[R_ACR], t[0], t[1], 4);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2413,7 +2394,6 @@ static int dec_addc_mr(CPUCRISState *env, DisasContext *dc)
-     cris_cc_mask(dc, CC_MASK_NZVC);
-     cris_alu(dc, CC_OP_ADDC, cpu_R[dc->op2], t[0], t[1], 4);
-     do_postinc(dc, 4);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2432,7 +2412,6 @@ static int dec_sub_m(CPUCRISState *env, DisasContext *dc)
-     cris_cc_mask(dc, CC_MASK_NZVC);
-     cris_alu(dc, CC_OP_SUB, cpu_R[dc->op2], t[0], t[1], memsize);
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2452,7 +2431,6 @@ static int dec_or_m(CPUCRISState *env, DisasContext *dc)
-     cris_alu(dc, CC_OP_OR,
-             cpu_R[dc->op2], t[0], t[1], memsize_zz(dc));
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-@@ -2484,7 +2462,6 @@ static int dec_move_mp(CPUCRISState *env, DisasContext *dc)
-     t_gen_mov_preg_TN(dc, dc->op2, t[1]);
- 
-     do_postinc(dc, memsize);
--    cris_alu_m_free_temps(t);
-     return insn_len;
- }
- 
-diff --git a/target/cris/translate_v10.c.inc b/target/cris/translate_v10.c.inc
-index 9660f28584..5e9d1c0fe8 100644
---- a/target/cris/translate_v10.c.inc
-+++ b/target/cris/translate_v10.c.inc
-@@ -922,9 +922,6 @@ static int dec10_ind_alu(CPUCRISState *env, DisasContext *dc,
-         dc->delayed_branch = 1;
-         return insn_len;
+@@ -2886,10 +2876,6 @@ static bool canonicalize_skip(DisasContext *ctx)
+         ctx->skip_cond = TCG_COND_NE;
+         break;
      }
--
--    cris_alu_m_free_temps(t);
--
-     return insn_len;
+-    if (ctx->free_skip_var0) {
+-        tcg_temp_free(ctx->skip_var0);
+-        ctx->free_skip_var0 = false;
+-    }
+     ctx->skip_var0 = cpu_skip;
+     return true;
  }
- 
-@@ -1058,7 +1055,6 @@ static unsigned int dec10_ind(CPUCRISState *env, DisasContext *dc)
-                 cris_alu(dc, CC_OP_CMP, cpu_R[dc->dst],
-                          t[0], c, size);
-                 tcg_temp_free(c);
--                cris_alu_m_free_temps(t);
-                 break;
-             case CRISV10_IND_ADD:
-                 LOG_DIS("add size=%d op=%d %d\n",  size, dc->src, dc->dst);
+@@ -2944,7 +2930,6 @@ static void avr_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
+              * This ensures that cpu_skip is non-zero after the label
+              * if and only if the skipped insn itself sets a skip.
+              */
+-            ctx->free_skip_var0 = true;
+             ctx->skip_var0 = tcg_temp_new();
+             tcg_gen_mov_tl(ctx->skip_var0, cpu_skip);
+             tcg_gen_movi_tl(cpu_skip, 0);
+@@ -2956,10 +2941,6 @@ static void avr_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
+                               ctx->skip_var1, skip_label);
+             ctx->skip_var1 = NULL;
+         }
+-        if (ctx->free_skip_var0) {
+-            tcg_temp_free(ctx->skip_var0);
+-            ctx->free_skip_var0 = false;
+-        }
+         ctx->skip_cond = TCG_COND_NEVER;
+         ctx->skip_var0 = NULL;
+     }
 -- 
 2.34.1
 

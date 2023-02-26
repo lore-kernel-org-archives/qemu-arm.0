@@ -1,252 +1,238 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp3686732ejc;
-        Sun, 26 Feb 2023 05:01:23 -0800 (PST)
-X-Google-Smtp-Source: AK7set9g2Iq+uOz4pJWc0Ao584xi2ZQp12e5JBL+MyPU2Gi23tjIHBIwh7CorIld/No83C/4A74T
-X-Received: by 2002:ac2:523b:0:b0:4db:384c:bb8 with SMTP id i27-20020ac2523b000000b004db384c0bb8mr6902237lfl.69.1677416483392;
-        Sun, 26 Feb 2023 05:01:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677416483; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4028157ejc;
+        Sun, 26 Feb 2023 14:07:11 -0800 (PST)
+X-Google-Smtp-Source: AK7set8RYvTkUD6pbfunUscNPxKvVIJs9Iyj3K07eZ1mxH+5anWt51bDt7kV/8FAHnf113yFnY5P
+X-Received: by 2002:a05:6214:21a4:b0:56e:b273:fb36 with SMTP id t4-20020a05621421a400b0056eb273fb36mr41792585qvc.51.1677449231617;
+        Sun, 26 Feb 2023 14:07:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677449231; cv=none;
         d=google.com; s=arc-20160816;
-        b=VYRXBzYuzp/09OuDfunsclp0XoNtuUvLpLBG0f805MPwEHTW0qRPO76vaAmvboAg4L
-         kY8X04jrDVzI+SlGRpNWMFb1tcoiRTq1tRWZG9QnA0gJMjYcf2MsEQ2vyYOPOBkqiWCu
-         dPmJmr1qPU6asFAQYkBArrwRYyi4Lve0EbEoXvo0CNppfKY4TgXougj8H/0QA0vFiSP0
-         17h5vsBCf8+WOfAzkfEAotdrvkCNP6R1HKCd9rORQ/4vQSxzJfoIGyCS4fipqkG1Ctxn
-         HRb2KhZNVPOoWEWYwrDq0RCOiuHlizVhTFeCdYqa7vPVJgOfG1k5a40x6MowJomVGCfN
-         Stpw==
+        b=AxAfd6YMnpDNXPY2xH17ZwieITjl7MIOn+8+WMA4H8xAgRRYE+Tr8UI7whybb/7E6k
+         s/cs61TLF9S56VYRfjnjxkXuFWK3HC2QUbceIyDWreGEF2z3MKfFtoQew29QofasPKAy
+         24THmBiiVb+Zbfp8YKadVX4Xyy1Gu7envlgAdKay27EMrP+Q4QiuAuMuIm+X1yxfN+IE
+         MZDN821eHBnrJ/o1flLslFOoGrO6/Clu/RVLWZrpc3JFEW5Up8qSlQWOEPz5M0IyG9p8
+         dQtIs+4Tqpq4wOL/a7qCqMN7x7hxmt1+H6tx6ZljMzVbMi3jUyU1JT3QEH/k4ZFP+M5d
+         zAew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=J3cBKX4dkmbzfdUABrix+EbsCiWIbcHEcEhcl9yIGAI=;
-        b=DqOqWiL4Ewpng8txt0ulfOkNuLfpxz4zYoHjWsEJAq/jCmkY32IPoKUcvbVlqZndG1
-         +220POwYxYxF7EWfEpv01QT//lVt44RL7sfwQa0Km7xzD7pDzbhMwLiwqGd3Pxhr7xJR
-         3IkKyhveCrjWhfwhXrzu04TXC++xwz6M4kvKfEnT02w9mBZnMtu2llLlfn+5+0dlMG8a
-         6f/2vGPecpvjJPXy29QmmiM9dri+JXjrf7E9a4h0t3UFD6huVCatoAorx/X29ut+8cCM
-         iCn8WQJ9LjlA7aboLrnEcWff0KR6YwiJ7AtCpEe+jVgy7fn1uCf8nSyQRFqL7Izm8vry
-         RRpw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :from:subject:message-id:mime-version:date:dkim-signature;
+        bh=F2/xDX6CzykR5IICwGnIbnY5+mn9dO/N2CJD5gFk5AM=;
+        b=l6bj844UYAc4fomPsuGqUnUwlZCbkPcXzEPcUaIG5HtW6yvhd+A1zWcQXvfNVl6kGa
+         ABlE041o4CRf1B+wYgpBBJZSJssXO67sz3ceg+dyW95YdNifi9lR9It+dGdvRXzsHM41
+         9eNaImiZPPJkUv+1qusbS9TM/cVPjtGD9WBL+B1M15Ws72BnDSoBZOXN8RORUaHW0prc
+         N9bHhxlPRqxFPQWredBtxDVzYD+9ovemas7nDW2L3fvVF1a0mS04KHpLS4ll9v93ZfrJ
+         Lgb69fWbG+VXl8XNVbnSu+qFXcyD+o1ppX6+JRZOLmjK9W0hjXsUzQ3NWX0zA+5D5+wu
+         H65w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Fzluh2XW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l17-20020ac25551000000b004db47519cacsi2730184lfk.180.2023.02.26.05.01.23
+        by mx.google.com with ESMTPS id y7-20020a0cd987000000b0056eb4acd2d0si4758452qvj.29.2023.02.26.14.07.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 05:01:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 26 Feb 2023 14:07:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Fzluh2XW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWGeL-0007iN-Rj; Sun, 26 Feb 2023 08:01:09 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pWPAg-0002Nt-LT; Sun, 26 Feb 2023 17:07:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liweiwei@iscas.ac.cn>)
- id 1pWGe0-0007ab-9H; Sun, 26 Feb 2023 08:00:49 -0500
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <liweiwei@iscas.ac.cn>)
- id 1pWGdx-0002Dp-0N; Sun, 26 Feb 2023 08:00:48 -0500
-Received: from [192.168.0.120] (unknown [180.165.240.213])
- by APP-05 (Coremail) with SMTP id zQCowAAnLfHxV_tjXw68CA--.17174S2;
- Sun, 26 Feb 2023 21:00:34 +0800 (CST)
-Message-ID: <fc51998a-f9e5-8e74-f01d-e8567709a01a@iscas.ac.cn>
-Date: Sun, 26 Feb 2023 21:00:33 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 52/76] target/riscv: Drop temp_new
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
- ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
-References: <20230225091427.1817156-1-richard.henderson@linaro.org>
- <20230225091427.1817156-53-richard.henderson@linaro.org>
-From: liweiwei <liweiwei@iscas.ac.cn>
-In-Reply-To: <20230225091427.1817156-53-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: zQCowAAnLfHxV_tjXw68CA--.17174S2
-X-Coremail-Antispam: 1UD129KBjvJXoWxJw1UWF1fZFyktw48Kw1DAwb_yoW7JFyxpr
- 4Ikw429Fy8trWfAa97ZF4DZF1UZF4IkayUK3s5Kwn5GF13XrZ5Ar4kK34YkF40kFyrZrWY
- kFs8Cr1UZa1jqFDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUvKb7Iv0xC_Zr1lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
- 0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
- A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Jr0_JF4l84ACjcxK6xII
- jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwV
- C2z280aVCY1x0267AKxVW8Jr0_Cr1UM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVAC
- Y4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r106r15McIj6I8E87Iv67AKxVWUJV
- W8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41lFIxGxcIEc7CjxVA2Y2ka0xkI
- wI1lc7I2V7IY0VAS07AlzVAYIcxG8wCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbV
- WUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF
- 67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42
- IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF
- 0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxh
- VjvjDU0xZFpf9x07jbrc-UUUUU=
-X-Originating-IP: [180.165.240.213]
-X-CM-SenderInfo: 5olzvxxzhlqxpvfd2hldfou0/
-Received-SPF: pass client-ip=159.226.251.25; envelope-from=liweiwei@iscas.ac.cn;
- helo=cstnet.cn
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3Bdj7YwgKCMo82489qvqw44w1u.s426u2A-q72343w3A.47w@flex--smostafa.bounces.google.com>)
+ id 1pWPAf-0002Na-6m
+ for qemu-arm@nongnu.org; Sun, 26 Feb 2023 17:07:05 -0500
+Received: from mail-wm1-x34a.google.com ([2a00:1450:4864:20::34a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3Bdj7YwgKCMo82489qvqw44w1u.s426u2A-q72343w3A.47w@flex--smostafa.bounces.google.com>)
+ id 1pWPAd-0003tW-AL
+ for qemu-arm@nongnu.org; Sun, 26 Feb 2023 17:07:04 -0500
+Received: by mail-wm1-x34a.google.com with SMTP id
+ k20-20020a05600c1c9400b003e2249bd2b4so1773474wms.5
+ for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 14:07:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=content-transfer-encoding:cc:to:from:subject:message-id
+ :mime-version:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=F2/xDX6CzykR5IICwGnIbnY5+mn9dO/N2CJD5gFk5AM=;
+ b=Fzluh2XWLotWGcxlRZicSo/gmM3DE+YJ+tYEH4kCZaNZKJjYcS+XlCQojOJ2GItBZ0
+ fMGwihOqTNF6xUbipEYLjYGF9AHWkPtFuGyqTksbqJB9YsRmEfEQRwfxlIApoSsPUPzy
+ 9N80QxZcFlCdMvY5jkxBGh96HrimIowuMiYIQD39FFbTcCpwMBChq140M6maRLifxSJx
+ cBh754Y07WsTSbwi+PmbpdmPw3YT6SFArvx6Ax4Iw/dTOjZBc7sbRFAiN2BHQ5exoYTa
+ K9vmZ2tTIt1lFqwGnFsj6tH/Z+r2H4A8LkVzHoTsvaZTwQVJI6dQHGDxkQ9EAynagkid
+ 444g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:from:subject:message-id
+ :mime-version:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=F2/xDX6CzykR5IICwGnIbnY5+mn9dO/N2CJD5gFk5AM=;
+ b=HfnZE/FwzV6dGNgxwhn1/wF5SZYqhdOX/9FyC3g7aGw3JZDbe5hmKELa6TKIWzqILr
+ lMhka42guyqvNTZgAD+qyLEJmYjLPXQadAfsWhhQBiYio526fw0G9TlfbMGWRqQ+na02
+ npGle4kLl+7rvtZHl40AnkI4Vcf8lYEZVlPngPyRi4fuaedB8s9p80zHsfbXcPG4YQG7
+ MolX93hEqwOzz3gnI8KhX6x/Jd1Mh4PSoBR/O74EiNdHLnBv9OjxbtkSeTZgyHBGjCtf
+ get6iFuMxqWigCxEvpaAU+FqFr/vSGhH4267O/PSwZVmlK5oO+EmDI1gY5ltRXKmfNGl
+ atkQ==
+X-Gm-Message-State: AO0yUKWO973vC2u9s3XZ3GnO7t1HjtsKsim+K3j5OMBV+u2wKpAi2puX
+ f0C7JYFD/x4HZIKS4lVG8WGwuHkAMk7kOw==
+X-Received: from mostafa.c.googlers.com
+ ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
+ (user=smostafa job=sendgmr) by 2002:a5d:4dcf:0:b0:2ca:5314:a1cc with SMTP id
+ f15-20020a5d4dcf000000b002ca5314a1ccmr390634wru.1.1677449221093; Sun, 26 Feb
+ 2023 14:07:01 -0800 (PST)
+Date: Sun, 26 Feb 2023 22:06:39 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.39.2.637.g21b0678d19-goog
+Message-ID: <20230226220650.1480786-1-smostafa@google.com>
+Subject: [RFC PATCH v2 00/11] Add stage-2 translation for SMMUv3
+From: Mostafa Saleh <smostafa@google.com>
+To: qemu-devel@nongnu.org
+Cc: jean-philippe@linaro.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
+ qemu-arm@nongnu.org, richard.henderson@linaro.org, 
+ Mostafa Saleh <smostafa@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::34a;
+ envelope-from=3Bdj7YwgKCMo82489qvqw44w1u.s426u2A-q72343w3A.47w@flex--smostafa.bounces.google.com;
+ helo=mail-wm1-x34a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RuE4MaZUh06K
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0qdXUF5JZ7a7
+
+This patch series adds stage-2 translation support for SMMUv3. It is
+controlled by a new system property =E2=80=9Carm-smmuv3.stage=E2=80=9D.
+- When set to =E2=80=9C1=E2=80=9D: Stage-1 only would be advertised and sup=
+ported (default
+behaviour)
+- When set to =E2=80=9C2=E2=80=9D: Stage-2 only would be advertised and sup=
+ported.
+- Value =E2=80=9Call=E2=80=9D is reserved for nesting support. However it i=
+s not
+implemented in this patch series (more about this in the end)
+
+Features implemented in stage-2 are mostly synonymous with stage-1
+- VMID16.
+- Only AArch64 translation tables are supported.
+- Stall is not supported.
+- HTTU is not supported, SW is expected to maintain the Access flag.
+
+To make it easy to support nesting, a new structure(SMMUS2Cfg) is
+embedded within SMMUTransCfg, to hold stage-2 configuration.
+
+TLBs were updated to support VMID, where when stage-2 is used ASID are
+set to -1 and ignored and when stage-1 is used VMID is set to -1 and
+ignored.
+As only one stage is supported at a time at the moment, TLB will
+represent IPA=3D>PA translation with proper attributes(granularity and
+t0sz) parsed from STEs for stage-2, and will represent VA=3D>PA
+translation with proper attributes parsed from the CDs for stage-1.
+
+New commands where added that are used with stage-2
+- CMD_TLBI_S12_VMALL: Invalidate all translations for a VMID.
+- CMD_TLBI_S2_IPA: Invalidate stage-2 by VMID and IPA
+
+These patches update OAS, as it used to be hardcoded to 44 bits, and
+according to user manual =E2=80=9D6.3.6 SMMU_IDR5=E2=80=9D, OAS must match =
+the
+system physical address size, so OAS is updated to be read from CPU
+PARANGE.
+
+This patch series can be used to run Linux pKVM SMMUv3 patches (currently o=
+n the list)
+which controls stage-2 (from EL2) while providing a paravirtualized
+interface the host(EL1)
+https://lore.kernel.org/kvmarm/20230201125328.2186498-1-jean-philippe@linar=
+o.org/
+
+Looking forward, nesting is the next feature to go for, here are some
+thoughts about this:
+
+- TLB would require big changes for this, we can go either for a combined
+implementation or per stage one. This would affect returns from PTW and
+invalidation commands.
+
+- Stage-1 data structures should be translated by stage-2 if enabled (as
+context descriptors and ttb0/ttb1)
+
+- Translated addresses from stage-1 should be translated by stage-2 if
+enabled.
+
+- Record faults should be separated between stage-1 (CD_R) and stage-2
+(S2R).
+
+- Some existing commands(as CMD_TLBI_S2_IPA, CMD_TLBI_NH_ASID =E2=80=A6) wo=
+uld be
+modified and some of those would be based on the design of the TLBs.
+
+- Currently, VMID is ignored when stage-1 is used as it can=E2=80=99t be us=
+ed with
+stage-2. However when nesting is advertised VMID shouldn=E2=80=99t be ignor=
+ed
+even if stage-2 is bypassed.
+
+Changes in v2:
+-Collected Reviewed-by tags
+-Add oas to SMMUS2Cfg, and use it in PTW
+-Add stage member to to SMMUPTWEventInfo to differentiate stage-1 and
+ stage-2 PTW faults
+-Move stage-2 knob to the last patch
+-Add all STE parsing in one patch
+-Pares and use S2PS and S2ENDI
+-Split S2AFF patch over PTW and STE patches.
+-Fix TLB aliasing issue
+-Renaming and refactoring and rewording commits.
+-Populate OAS based on PARANGE
+-Add checks for stage-1 only commands
+-Update trace events to hold translation stage, vmid when possible
+-Remove feature flags for supported stages as they were redundant with IDR0
 
 
-On 2023/2/25 17:14, Richard Henderson wrote:
-> Translators are no longer required to free tcg temporaries,
-> therefore there's no need to record temps for later freeing.
-> Replace the few uses with tcg_temp_new.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Mostafa Saleh (11):
+  hw/arm/smmuv3: Add missing fields for IDR0
+  hw/arm/smmuv3: Update translation config to hold stage-2
+  hw/arm/smmuv3: Refactor stage-1 PTW
+  hw/arm/smmuv3: Add page table walk for stage-2
+  hw/arm/smmuv3: Parse STE config for stage-2
+  hw/arm/smmuv3: Make TLB lookup work for stage-2
+  hw/arm/smmuv3: Add VMID to tlb tagging
+  hw/arm/smmuv3: Add CMDs related to stage-2
+  hw/arm/smmuv3: Add stage-2 support in iova notifier
+  hw/arm/smmuv3: Populate OAS based on CPU PARANGE
+  hw/arm/smmuv3: Add knob to choose translation stage and enable stage-2
 
-Oh. It's here.
+ hw/arm/smmu-common.c         | 212 ++++++++++++++++++---
+ hw/arm/smmu-internal.h       |  41 ++++
+ hw/arm/smmuv3-internal.h     |  21 +--
+ hw/arm/smmuv3.c              | 352 ++++++++++++++++++++++++++++++-----
+ hw/arm/trace-events          |  14 +-
+ include/hw/arm/smmu-common.h |  32 +++-
+ include/hw/arm/smmuv3.h      |   4 +
+ 7 files changed, 577 insertions(+), 99 deletions(-)
 
-Reviewed-by: Weiwei Li <liweiwei@iscas.ac.cn>
-
-Weiwei Li
-
-> ---
->   target/riscv/translate.c                  | 30 +++++------------------
->   target/riscv/insn_trans/trans_rvzfh.c.inc |  2 +-
->   2 files changed, 7 insertions(+), 25 deletions(-)
->
-> diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-> index 273e566d66..b5d8080a6f 100644
-> --- a/target/riscv/translate.c
-> +++ b/target/riscv/translate.c
-> @@ -101,11 +101,8 @@ typedef struct DisasContext {
->       bool cfg_vta_all_1s;
->       target_ulong vstart;
->       bool vl_eq_vlmax;
-> -    uint8_t ntemp;
->       CPUState *cs;
->       TCGv zero;
-> -    /* Space for 3 operands plus 1 extra for address computation. */
-> -    TCGv temp[4];
->       /* PointerMasking extension */
->       bool pm_mask_enabled;
->       bool pm_base_enabled;
-> @@ -312,12 +309,6 @@ static void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
->    *
->    * Further, we may provide an extension for word operations.
->    */
-> -static TCGv temp_new(DisasContext *ctx)
-> -{
-> -    assert(ctx->ntemp < ARRAY_SIZE(ctx->temp));
-> -    return ctx->temp[ctx->ntemp++] = tcg_temp_new();
-> -}
-> -
->   static TCGv get_gpr(DisasContext *ctx, int reg_num, DisasExtend ext)
->   {
->       TCGv t;
-> @@ -332,11 +323,11 @@ static TCGv get_gpr(DisasContext *ctx, int reg_num, DisasExtend ext)
->           case EXT_NONE:
->               break;
->           case EXT_SIGN:
-> -            t = temp_new(ctx);
-> +            t = tcg_temp_new();
->               tcg_gen_ext32s_tl(t, cpu_gpr[reg_num]);
->               return t;
->           case EXT_ZERO:
-> -            t = temp_new(ctx);
-> +            t = tcg_temp_new();
->               tcg_gen_ext32u_tl(t, cpu_gpr[reg_num]);
->               return t;
->           default:
-> @@ -364,7 +355,7 @@ static TCGv get_gprh(DisasContext *ctx, int reg_num)
->   static TCGv dest_gpr(DisasContext *ctx, int reg_num)
->   {
->       if (reg_num == 0 || get_olen(ctx) < TARGET_LONG_BITS) {
-> -        return temp_new(ctx);
-> +        return tcg_temp_new();
->       }
->       return cpu_gpr[reg_num];
->   }
-> @@ -372,7 +363,7 @@ static TCGv dest_gpr(DisasContext *ctx, int reg_num)
->   static TCGv dest_gprh(DisasContext *ctx, int reg_num)
->   {
->       if (reg_num == 0) {
-> -        return temp_new(ctx);
-> +        return tcg_temp_new();
->       }
->       return cpu_gprh[reg_num];
->   }
-> @@ -575,7 +566,7 @@ static void gen_jal(DisasContext *ctx, int rd, target_ulong imm)
->   /* Compute a canonical address from a register plus offset. */
->   static TCGv get_address(DisasContext *ctx, int rs1, int imm)
->   {
-> -    TCGv addr = temp_new(ctx);
-> +    TCGv addr = tcg_temp_new();
->       TCGv src1 = get_gpr(ctx, rs1, EXT_NONE);
->   
->       tcg_gen_addi_tl(addr, src1, imm);
-> @@ -593,7 +584,7 @@ static TCGv get_address(DisasContext *ctx, int rs1, int imm)
->   /* Compute a canonical address from a register plus reg offset. */
->   static TCGv get_address_indexed(DisasContext *ctx, int rs1, TCGv offs)
->   {
-> -    TCGv addr = temp_new(ctx);
-> +    TCGv addr = tcg_temp_new();
->       TCGv src1 = get_gpr(ctx, rs1, EXT_NONE);
->   
->       tcg_gen_add_tl(addr, src1, offs);
-> @@ -1196,8 +1187,6 @@ static void riscv_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
->       ctx->misa_mxl_max = env->misa_mxl_max;
->       ctx->xl = FIELD_EX32(tb_flags, TB_FLAGS, XL);
->       ctx->cs = cs;
-> -    ctx->ntemp = 0;
-> -    memset(ctx->temp, 0, sizeof(ctx->temp));
->       ctx->pm_mask_enabled = FIELD_EX32(tb_flags, TB_FLAGS, PM_MASK_ENABLED);
->       ctx->pm_base_enabled = FIELD_EX32(tb_flags, TB_FLAGS, PM_BASE_ENABLED);
->       ctx->itrigger = FIELD_EX32(tb_flags, TB_FLAGS, ITRIGGER);
-> @@ -1222,18 +1211,11 @@ static void riscv_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
->       DisasContext *ctx = container_of(dcbase, DisasContext, base);
->       CPURISCVState *env = cpu->env_ptr;
->       uint16_t opcode16 = translator_lduw(env, &ctx->base, ctx->base.pc_next);
-> -    int i;
->   
->       ctx->ol = ctx->xl;
->       decode_opc(env, ctx, opcode16);
->       ctx->base.pc_next = ctx->pc_succ_insn;
->   
-> -    for (i = ctx->ntemp - 1; i >= 0; --i) {
-> -        tcg_temp_free(ctx->temp[i]);
-> -        ctx->temp[i] = NULL;
-> -    }
-> -    ctx->ntemp = 0;
-> -
->       /* Only the first insn within a TB is allowed to cross a page boundary. */
->       if (ctx->base.is_jmp == DISAS_NEXT) {
->           if (ctx->itrigger || !is_same_page(&ctx->base, ctx->base.pc_next)) {
-> diff --git a/target/riscv/insn_trans/trans_rvzfh.c.inc b/target/riscv/insn_trans/trans_rvzfh.c.inc
-> index 2ad5716312..5024e6ecab 100644
-> --- a/target/riscv/insn_trans/trans_rvzfh.c.inc
-> +++ b/target/riscv/insn_trans/trans_rvzfh.c.inc
-> @@ -52,7 +52,7 @@ static bool trans_flh(DisasContext *ctx, arg_flh *a)
->       decode_save_opc(ctx);
->       t0 = get_gpr(ctx, a->rs1, EXT_NONE);
->       if (a->imm) {
-> -        TCGv temp = temp_new(ctx);
-> +        TCGv temp = tcg_temp_new();
->           tcg_gen_addi_tl(temp, t0, a->imm);
->           t0 = temp;
->       }
+--=20
+2.39.2.637.g21b0678d19-goog
 

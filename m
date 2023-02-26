@@ -1,56 +1,56 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp3685317ejc;
-        Sun, 26 Feb 2023 05:00:00 -0800 (PST)
-X-Google-Smtp-Source: AK7set8FlPOQf+OYCpu3+XD4qkI+lb9l6ugD+CIBkkLqOAZGrIu28mepPYmHVMXc1L1xyKk89c6i
-X-Received: by 2002:a05:6214:21a3:b0:56e:b966:4089 with SMTP id t3-20020a05621421a300b0056eb9664089mr39126859qvc.23.1677416400312;
-        Sun, 26 Feb 2023 05:00:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677416400; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp3687833ejc;
+        Sun, 26 Feb 2023 05:02:30 -0800 (PST)
+X-Google-Smtp-Source: AK7set8JjeVtXdnBJNGaw6fIkQjBs3M14PZwX/47AEXUJJksCx4UPrDBfLTScdYLbzjADWDfUhOX
+X-Received: by 2002:a2e:6a13:0:b0:295:b0ed:ee8 with SMTP id f19-20020a2e6a13000000b00295b0ed0ee8mr811950ljc.46.1677416550599;
+        Sun, 26 Feb 2023 05:02:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677416550; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nl7f9GJ87s2BX9HrgFZpJwI83W7E9XzoFa+OZAuHS5nTuYImsDbrcPL7fDpTGA1A/B
-         IwrQnfmTDN3P2jDpD1fHERmXzRc3L7Qqv7PRLasyvoU3bvjoa7iCP+0+XsCJa37bchDV
-         x0s1wQJ0F/6XduGCpXuczPIcLhvufIYYKaPKuXjRs+oTkx/cdjVK4MN7Vs9soP0SyoRj
-         znyIDYiYR8jsr8rZTZKF243JkSrTsUlZqcavpTR8buOKsPAGPxc26iVeb7pOamHGcFC7
-         VsfjKlOCDH/gHC8a2fees18xzpnTzcYC32QenrbBrzVWNnta0AnAH0FiTcb6nzgrwm3V
-         STZg==
+        b=TdQJAk4W/weMREyscfhZVWIO6TanUjXQxR/hTskiEDUoRDV6WVpNBMhUbRwIxzZHCS
+         kYCz4EYKnB5pY0VJOdERgTpj6HJZhkBvCMFrSr0EeWgSk2jHUbqYfddXJNI7hePoq7Yt
+         CvbPee7wBlJiSOkYEY4uX2nASp9Y9Jmxe6Nl7EHsAaVv8Zlk6d7esmYDbYSLnV0SVf9j
+         uER9iueJFdVpXP90U0pag7YUwYuIDHvpNoyQTH4pzygMhODin60+OYTqtrpEaaF7j1nm
+         zQEGEX+/88jzQIPBt/mMwjHgJb+wkqexKvnCuUD/nPbsDhvrkVmlj+vPpLiUkzEwQysN
+         /mKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=+bA4yXFYS1VYPgg1jm4Tnc0ICn9PuOPmlWUNl5y13RA=;
-        b=qe4+rroc/o90JxRGssCYa8vBfxQoozBCweFbGMPuYWtVr+FHXlQuMynDbrmiLbt+ZA
-         ZtEub3x1C+v9HYM2sJxjqIdfKL4agDpi87aT6r4yM36XPVrwiLYnBVCREQS3+Pj46VD0
-         Ph1Yj2X06j0mSriQC+0YK8UQO9glTwML0K6uEKH9N6GZCKQeJxNEkP8q2D/hwjtyWk0e
-         VfscWWfzUt7eICQczbUPuADnGhnWZ5tmP6zvk+3rQTRW3YeB9wKoZKMjNMiwgJ/VOXGP
-         pZmoa6oRtxLNOGBRKFsB0p4dA0QP1Ne/Q+BWdbjTM6W/9Su/H1XrRy364Lj7feawgFuN
-         3xjg==
+        bh=xj8R+1zSvLaWQGVi3I0QZqVF748qUkXKd5XlSu7ccqQ=;
+        b=sJJxMGmAte30sZD73LiLVkfiIxIVhJbLY6HeNp/mp4tIxUkxcQQZxRxmEqGR/5TzG8
+         jNTkAlkCkd3ZOyDlqzlWlrcPbhFi/kU+GhXL6lOnmb8D6eRleNUGoGzo3E0/gvjuiilN
+         JxzZlh9hbvr7VUJ47cumQAHNUhXdYeq4Spu+JsIDQUBBEr1qL9P58D25/D8ycJmnRAT1
+         Y+XIDd6VBjzAfJ10lkhgka2juLQyrs3p2X1Ylmf93PrV2EKRtSUXlhRXTSzLVznOWVU8
+         qsGH1h6LPqFp24Uu4z3jbUrAuvyYYTF5d8k9U2alE/dkCrMqAX47vVWECW/59aa6DFwc
+         bcEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dm27-20020a05620a1d5b00b00742834c03b5si3682952qkb.24.2023.02.26.05.00.00
+        by mx.google.com with ESMTPS id e3-20020a2e8ec3000000b002935fd04bbcsi2475445ljl.117.2023.02.26.05.02.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 05:00:00 -0800 (PST)
+        Sun, 26 Feb 2023 05:02:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWGc4-0006Wl-QM; Sun, 26 Feb 2023 07:58:48 -0500
+	id 1pWGfA-0000Jp-65; Sun, 26 Feb 2023 08:02:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liweiwei@iscas.ac.cn>)
- id 1pWGc2-0006Vu-4x; Sun, 26 Feb 2023 07:58:46 -0500
+ id 1pWGf7-0000Cp-Jf; Sun, 26 Feb 2023 08:01:57 -0500
 Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <liweiwei@iscas.ac.cn>)
- id 1pWGbz-0001J5-3t; Sun, 26 Feb 2023 07:58:45 -0500
+ id 1pWGf4-0002i2-Rs; Sun, 26 Feb 2023 08:01:57 -0500
 Received: from [192.168.0.120] (unknown [180.165.240.213])
- by APP-05 (Coremail) with SMTP id zQCowAB3OqBqV_tjFdi7CA--.55403S2;
- Sun, 26 Feb 2023 20:58:19 +0800 (CST)
-Message-ID: <0c1f5d05-9dc3-24d7-af0d-679d8402572e@iscas.ac.cn>
-Date: Sun, 26 Feb 2023 20:58:17 +0800
+ by APP-05 (Coremail) with SMTP id zQCowABnbuo3WPtjQxa8CA--.55575S2;
+ Sun, 26 Feb 2023 21:01:44 +0800 (CST)
+Message-ID: <9f35adf5-c523-646e-f16d-866e515f7b82@iscas.ac.cn>
+Date: Sun, 26 Feb 2023 21:01:43 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
@@ -67,23 +67,23 @@ From: liweiwei <liweiwei@iscas.ac.cn>
 In-Reply-To: <20230225091427.1817156-52-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: zQCowAB3OqBqV_tjFdi7CA--.55403S2
-X-Coremail-Antispam: 1UD129KBjvJXoWxJw1UWF1fJr48Kw1fZw47Jwb_yoW5Zryrpr
- 4Sk342vF1FqrySva9rtw4DZF15Zr4xCF1UK3s0gw48Cr42qr1kJ395K34YvFW09FZ5Zr4Y
+X-CM-TRANSID: zQCowABnbuo3WPtjQxa8CA--.55575S2
+X-Coremail-Antispam: 1UD129KBjvJXoWxJw1UWF13Gw4fKr1kur4rKrg_yoW5ZrWfpr
+ 4Sk342vF1FqrySva9rtw4DZF1UZr4xCF1UK3s0gw48Cr42qr1kJ395K3yYvFW0vFWkZr4Y
  kF4DCry5Aa12qaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
  9KBjDU0xBIdaVrnRJUUUvKb7Iv0xC_tr1lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
  0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
  A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Jr0_JF4l84ACjcxK6xII
  jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwV
  C2z280aVCY1x0267AKxVW8Jr0_Cr1UM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVAC
- Y4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJV
+ Y4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1Y6r17McIj6I8E87Iv67AKxVWUJV
  W8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41lFIxGxcIEc7CjxVA2Y2ka0xkI
  wI1lc7I2V7IY0VAS07AlzVAYIcxG8wCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbV
  WUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF
  67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42
  IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF
  0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxh
- VjvjDU0xZFpf9x07j8GYLUUUUU=
+ VjvjDU0xZFpf9x07j1VbkUUUUU=
 X-Originating-IP: [180.165.240.213]
 X-CM-SenderInfo: 5olzvxxzhlqxpvfd2hldfou0/
 Received-SPF: pass client-ip=159.226.251.25; envelope-from=liweiwei@iscas.ac.cn;
@@ -108,7 +108,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: B4q5jeJPECpu
+X-TUID: A3aaJThj9est
 
 
 On 2023/2/25 17:14, Richard Henderson wrote:
@@ -117,13 +117,9 @@ On 2023/2/25 17:14, Richard Henderson wrote:
 > Replace the few uses with tcg_temp_new_i64.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-How about the temp_new?
-
-Regards,
+Reviewed-by: Weiwei Li <liweiwei@iscas.ac.cn>
 
 Weiwei Li
-
 > ---
 >   target/riscv/translate.c | 24 ++++--------------------
 >   1 file changed, 4 insertions(+), 20 deletions(-)

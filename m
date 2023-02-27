@@ -1,209 +1,129 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5067263ejc;
-        Mon, 27 Feb 2023 13:57:16 -0800 (PST)
-X-Google-Smtp-Source: AK7set/FwZs/vkGkw9Yw0inJHKTyEE544HXnjPnYoB5BAojJTt3hD1vgMLcO4IhSWzU+f/XXiRrk
-X-Received: by 2002:a05:6214:246b:b0:56e:a06f:d1d2 with SMTP id im11-20020a056214246b00b0056ea06fd1d2mr2047173qvb.30.1677535036406;
-        Mon, 27 Feb 2023 13:57:16 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1677535036; cv=pass;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5070347ejc;
+        Mon, 27 Feb 2023 14:01:39 -0800 (PST)
+X-Google-Smtp-Source: AK7set9299wRlW0+FoyTfocD98Lem2gSXeVNEKvIiq2t+pHnxVNmjka5/qX5D4ynfwIuA28fRG+g
+X-Received: by 2002:a05:6214:2388:b0:56e:a899:1614 with SMTP id fw8-20020a056214238800b0056ea8991614mr2103729qvb.0.1677535299445;
+        Mon, 27 Feb 2023 14:01:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677535299; cv=none;
         d=google.com; s=arc-20160816;
-        b=AbzICOP2AaNhkVCRytfwthVf09382OXmgjX6S4ZkNzXyCoZ1CGRWgN+MgA4ey18xGB
-         8CTGWPzxuhnnYGmMuMtDerOsbWsipKToFfeYSaBg7b3/O9dK9zmHAYPAkouAklNJjmoD
-         FDtawlipFlZ8FnJ+DKKqMKFgh16CBW1YhHai9LkFbODqJafst2WbPMN8Btvv6xTxNrxc
-         db9FLX8V3VhlLKu84W7+OQI8jjo9FmvrjDJ9JZ+ytIAwIAI1yg40m3002WLyVUFkuY9x
-         tqXtGj5OL8lmZA57k4WT7ZfND1SabBHvYZ/1qrww0TrKrLqBVZPvciYbtPrQ0JW1X3HF
-         KeVw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=LMMuygS94QN+BK3BncO9cKfdHpQK4lOyNUzhN52NaS2zG4vuXCFaLGMEGUU206J4yN
+         FsK714cfL+vyf+6TAJnbC2fd1TC00vcNOqMvGooBq96dkPy1SFW+I5KCI6VOjeZ5Nauk
+         ibBh8J6RyuNNit5ShxjO1f+bI4qKCraVBfeK7JDmOiXl5unkdwDN1SGK5JCrPL4/FT2s
+         0/mQlcwg98e3+Gj0JOs50jWhPG2MLnhbLfQZhgPHW9xvy4+FeB8mCrxtFypaOODjiFnc
+         xmEjJeDy+QtQKJOMsp4SHzr6UdTRyYbcM7mttJ7pl79Ugj8jgJf0tW3th5qZRwDYs/wI
+         e5Gw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=9jETjSZXUz0JwZTivzAZsowukAIw9j1stqjepqwNU9Q=;
-        b=b+TZY0tP+LAMFSCcCuB4fUYyKz54fGe/uT44YxyX1LteUVzc89SZxXwNk+OBQWK1JQ
-         XGTinK8DydjTLBDsMl0TIFM9wmHDThJLTNqjZIbhRQvMwVjnSKLt7sgQT6oanmYi2vbE
-         +FhKfhKFZZTDq88ghFKDlbhF2q7lYRI3dd9U/gR73HNVZdfts5i0rbMf8WmHJM2M368f
-         bJEwVDmIC3C34s49ejo1PnUBguPPghZhm7yL379xdWMMNwLe5TO6sKoy8/OkmWb5BI/H
-         5wp6+F99JUnDOlPnlZhh3lixr0/IjLbGW6TYTSH/IW68EuzRUAN3kp0cONPyt7BKOT1Q
-         z+bQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=ADjpgaCi;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=4kY2qXRh3ybL8nxlU7ApPM5E+rp6yddmUTu4Cu6SGmI=;
+        b=YtvewJUJi9WLyXH1ZLX5jZUd/G/sgLYCp1E/A1/6egPtf8Wn2Zr8jfI6Qu1hpx1kww
+         vXbRjVChHaZLGS9ba5iDnqkxM0Wxk15/jOk+yXe3pWNyDAPbIqvPJcs0MszxAbDdk9p6
+         Glf8KYoKbJUvLohUCntQoZqOQS5N0kcOruA1mnYF+BtT7egKjmDujRYYDdZw3s5wZ1jU
+         bXzjGblp8CyFO+bMl4CIS2h11bRSVYmB0jREzdJuNafJZ0bhkZ6sMFSwKZt6gWqT6mGy
+         0vqw1c/ke3z41Lh0eWcH66YlGBhMcNCyFHCP+rdXDdBaLhuGoBr1G8EaaqmVIJgcYdtQ
+         IkAA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qmcN3cyA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t12-20020a0cde0c000000b0056eb06029f7si7253882qvk.421.2023.02.27.13.57.16
+        by mx.google.com with ESMTPS id p15-20020a0ce18f000000b00570fa2d0be0si6735071qvl.112.2023.02.27.14.01.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 13:57:16 -0800 (PST)
+        Mon, 27 Feb 2023 14:01:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=ADjpgaCi;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
+       dkim=pass header.i=@linaro.org header.s=google header.b=qmcN3cyA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWlTf-00060H-Kp; Mon, 27 Feb 2023 16:56:11 -0500
+	id 1pWlYM-0003lS-F3; Mon, 27 Feb 2023 17:01:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
- id 1pWlTd-0005yL-Ls; Mon, 27 Feb 2023 16:56:09 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
- id 1pWlTc-0001Ao-0A; Mon, 27 Feb 2023 16:56:09 -0500
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 31RAnHr7000879; Mon, 27 Feb 2023 21:55:51 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=qcppdkim1;
- bh=9jETjSZXUz0JwZTivzAZsowukAIw9j1stqjepqwNU9Q=;
- b=ADjpgaCiCWCTXyaySZNIDVIhrTiOKrO1527PiipsCo12/ZWtsgm9dvwvg4v0H3VapvpU
- bjWrTWKX9qPHOXgjZ0mlCafGD6dfzTJImRa4UWF0fPwoDwIto1jXegJ675qVb4Qp6KQu
- FAW6UXnNH0r6nlQtGGNQODCUpudhbQPR+tPvxKGNuHkHCVVGE1KCdb3h6hNExGUY8a7n
- ZG4qc9q6VExKDwjeIkWLKyFkj5+NN4wBQL9pGxFiLs0p5yzVWgxpqIr/17cJh5nj/3qW
- 6LF822C0iEtcf2tjE+Q/lKRimw159PLFAHurG8nLs9HtABLqWvJ2GuZFC5k3lxbc4UNh 8Q== 
-Received: from nam12-bn8-obe.outbound.protection.outlook.com
- (mail-bn8nam12lp2171.outbound.protection.outlook.com [104.47.55.171])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3p0u3thkgw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 27 Feb 2023 21:55:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iXQjPGxDr4F5r2q3cDOXFolp85gVKiwIMRU485gxuvq8X3vDxywlQ1rYN9r4xTRoizjYm0PR0dqRSbegcyqjASqHCgTwOVFHeZIpgJPWmtOMHw8YTFUbua5r0yZ6KOGg0UcEYsIcKMF4nEdpPpodCOG4mQ2rhFJkOvwi1yasMMpQ9pAd0Bs9x0ligYIQJEaEQJJux7DiHkaxUKrixp6g0uobqa/QUE7YdPSvNnm21G87eLHxZocvtbu0r4i4KACWNLTxCU+1bavNkf6ngqfE/mImtq85qN13tm53MRfd1tOphgUCiTdcwhMGfCC8JidQHUDdfQET/wsnVeEljq+NEg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9jETjSZXUz0JwZTivzAZsowukAIw9j1stqjepqwNU9Q=;
- b=Gpou1qW+IZPa7FUNz6GqS0l4L/ZnWu15S3keUQo4zigr58hdYsz7kFHV8yv7fw3jTG4V7XvCWzS3iNNYrb/uF0UHFois86CBeCuPfHjMHksbNXJhSyuyeEUE7tXoutQC/ZbpgPwROZICtCo59/Eejg8YcXyNWJD5fOzHYQfFQD7Ol5L/9ZA9hKpFp0T72m7eKqhKvVq7mqMvJojMa7KE78m6OtNsMCZRkK9nHPP1SbgngPpoPgUldx7s+o8UX++cd1doWsYk3xwOZIj0toIeeFK0AagFggGOGG/+d59oEodLc66d6onXzD3MPvdakWKq9MzsjjALGOnZRD+XO7X9Fg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
- dkim=pass header.d=quicinc.com; arc=none
-Received: from SN4PR0201MB8808.namprd02.prod.outlook.com
- (2603:10b6:806:203::12) by BY5PR02MB6948.namprd02.prod.outlook.com
- (2603:10b6:a03:23f::8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6134.29; Mon, 27 Feb
- 2023 21:55:49 +0000
-Received: from SN4PR0201MB8808.namprd02.prod.outlook.com
- ([fe80::3e12:c026:afdc:beda]) by SN4PR0201MB8808.namprd02.prod.outlook.com
- ([fe80::3e12:c026:afdc:beda%5]) with mapi id 15.20.6134.027; Mon, 27 Feb 2023
- 21:55:49 +0000
-From: Taylor Simpson <tsimpson@quicinc.com>
-To: Richard Henderson <richard.henderson@linaro.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-ppc@nongnu.org"
- <qemu-ppc@nongnu.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>, "jcmvbkbc@gmail.com"
- <jcmvbkbc@gmail.com>, "kbastian@mail.uni-paderborn.de"
- <kbastian@mail.uni-paderborn.de>, "ysato@users.sourceforge.jp"
- <ysato@users.sourceforge.jp>, "gaosong@loongson.cn" <gaosong@loongson.cn>,
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pWlYF-0003XL-8J
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 17:00:59 -0500
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pWlYD-00029z-1k
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 17:00:54 -0500
+Received: by mail-pj1-x102f.google.com with SMTP id y2so7693580pjg.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Feb 2023 14:00:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=4kY2qXRh3ybL8nxlU7ApPM5E+rp6yddmUTu4Cu6SGmI=;
+ b=qmcN3cyAuN5EgWOw0yGlzKqIp9doylY/r+FqBoxy6Hg7VEEr6lYTsPPPrSVhqLokJF
+ qDQq8QmD6KA05Nk+ORUexLaG6k9Y0PM/QAoozI34YuxTBBHJan2tVXOdoNd2U/7TMYSF
+ NToStwhHJbx6feTHyafl/zXBIVal4F/mmHQYX5nxXtcXY8dvhw1R5AIAzzQ5vGOT9Nlb
+ uDYUdtCHxUBAwMAV6sl2x1OwrMQif71uBESg+MQghyMU36i+eGPTiymXzWQHRtc0W3Mz
+ EGlxDF0lGtWASZ/wpO5XIDps2GIJxOysj5rqUOoFsDdqiNSL9y5ZMqF6Xl+z/nq4kkxt
+ ghgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=4kY2qXRh3ybL8nxlU7ApPM5E+rp6yddmUTu4Cu6SGmI=;
+ b=LeeAXGPeFi8Y+ZzMJ2UIh3YBYlAb+aqjJUTj6tN/kWRm8f6zohnDSP9xkiYXe77dYt
+ Yph34xJkhDCZy7KJprUh2Q+W+y8EBi+JH+Hqqha9P6Fn1EacWmlpKMmsCluUaxRj/aZy
+ 9CXs+WS+WCfwikzSV7sPgv21pdhttRNV/FDoqMZwg6TsEpr6XaJkYlVaKBwbfdS0/Oi9
+ jE7couWY3yUH07LmNNJgx/DV83+61CMba0vRT50DsIUd3s+Pbb2dFyO637SrnM+krxpI
+ orS4aDOybegM1vONwwqioH/zr2pBmvaCnMhDH4/Os9XeB1T3zJqMibVOWuTvpN78bcwF
+ qPqg==
+X-Gm-Message-State: AO0yUKUeR/jslHBh3aoxXdAmiROZHLrHQl3tPhvGNhZChHUsmpcYEYxx
+ Yu2h70H94oaL2Iqsub3RoJODGg==
+X-Received: by 2002:a17:902:ec8a:b0:19c:c8c8:b545 with SMTP id
+ x10-20020a170902ec8a00b0019cc8c8b545mr397981plg.50.1677535249255; 
+ Mon, 27 Feb 2023 14:00:49 -0800 (PST)
+Received: from [192.168.6.128] (rrcs-173-198-77-218.west.biz.rr.com.
+ [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
+ q9-20020a170902bd8900b0019a73faf773sm5084398pls.71.2023.02.27.14.00.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Feb 2023 14:00:48 -0800 (PST)
+Message-ID: <b80bcdd5-d64c-0d90-151c-bc73257744bc@linaro.org>
+Date: Mon, 27 Feb 2023 12:00:43 -1000
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH 19/70] target/hexagon/idef-parser: Use gen_constant for
+ gen_extend_tcg_width_op
+Content-Language: en-US
+To: Taylor Simpson <tsimpson@quicinc.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
+ "kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
+ "ysato@users.sourceforge.jp" <ysato@users.sourceforge.jp>,
+ "gaosong@loongson.cn" <gaosong@loongson.cn>,
  "jiaxun.yang@flygoat.com" <jiaxun.yang@flygoat.com>, "ale@rev.ng"
  <ale@rev.ng>, "mrolnik@gmail.com" <mrolnik@gmail.com>,
  "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>
-Subject: RE: [PATCH 16/70] target/hexagon/idef-parser: Use gen_tmp for LPCFG
-Thread-Topic: [PATCH 16/70] target/hexagon/idef-parser: Use gen_tmp for LPCFG
-Thread-Index: AQHZSm5sF03FsZqMzki+4yS2+RS1+K7jQfoA
-Date: Mon, 27 Feb 2023 21:55:49 +0000
-Message-ID: <SN4PR0201MB88081449FF23093FFE2A5594DEAF9@SN4PR0201MB8808.namprd02.prod.outlook.com>
 References: <20230227054233.390271-1-richard.henderson@linaro.org>
- <20230227054233.390271-17-richard.henderson@linaro.org>
-In-Reply-To: <20230227054233.390271-17-richard.henderson@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SN4PR0201MB8808:EE_|BY5PR02MB6948:EE_
-x-ms-office365-filtering-correlation-id: 7ee3f960-ddf4-461e-7150-08db190d632b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: FSdzGhrC6R6EnQVpy0C6Ys/QEC4l67WDUJNMW0xWwQT89FVdx2wL2mKp9cv8qWgbOEXvYy1Yr9bPqgQ8SG1d49uje/kh5Wam1BMOdal+mocXqH9UWmzCZkciqia61lNvBwERj9jYHXLl4tV9IOAarnhEirB9X6PjUs+whm9rlkP5r2WuGDcfRfxK2/h7yfpeBRQfi4M6iTd+P+SOAi7QrsmgRg6pHyhNEKVS0cXqms1BnBIF2dZDquq0vBQ4/uIrYP423wzJDeefWw10YQAzS2hReuJqbmkf08NsTTaNC4l7zNrVMlAdgEA12GpF5it6negXIkjOMGxJrX3+IH6DyURvoQv9ieUqL4zGnRorItEsqdLPh13JsxAJ/ue5qgW0G1BirDrHzcDG26yvq5ygkdrhXCYKz8DJ8/Y8KlgC44FmBXMqrF759R9/6vk4UmdLPevPd1PHUpRkI0wYYZW5rbU2faj63hPlQ17q1Xk90JVroAxUAiQuaCIjNk+xR/JGdQP722mdjgcVPzzKns9UA4mbARk5rY+jnjs1YsGiHcgz+QiebvK33eyrry1nE6ri4rdY/jwPxKTYgmQsytXS59B0v2yA0tsFG4r4quIZ5a9aIeOM1SL2cDLEgH7pIu9VY4C2fjvRfTESu34C00lhluLXid87ndCbfcxTunqGC160nNsETrIJeGuO9lB2wQL0+606rip8J1XaCG4dFYJ4Xg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN4PR0201MB8808.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(39860400002)(396003)(376002)(346002)(136003)(366004)(451199018)(83380400001)(54906003)(110136005)(316002)(33656002)(4326008)(122000001)(64756008)(66476007)(8676002)(66446008)(38100700002)(53546011)(6506007)(478600001)(186003)(26005)(9686003)(7696005)(71200400001)(7416002)(5660300002)(55016003)(66556008)(76116006)(66946007)(4744005)(52536014)(8936002)(38070700005)(86362001)(2906002)(41300700001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?TIk2pKcd1v81Y1vVbqDIK26Y/cdfYU+zVcIkUqcCXkOgWDMall1pR71bYIRm?=
- =?us-ascii?Q?YYcFQVefcbZnLbHCEYAF2tAU6+bEYrvqqspPPQhomf87QLcBTHMEr8x5L8MF?=
- =?us-ascii?Q?6/mdlhhi6k46hdcyeLMHpX0SRuY83SDKwi5yAPTgL8Ffo+nY1kXBA/4/g8XT?=
- =?us-ascii?Q?oUTQlXfnmCHAz0dnaQv6ZKOeRomKYSIOXUnOTTC/m4BcDuGn6EBLq66gbxIk?=
- =?us-ascii?Q?5WWwfpGAJ+q7Jr9jVSpVYdacEp9Tp057PnCEN35kxNrT4UMZ6xoY9JsVpqLJ?=
- =?us-ascii?Q?DXySrpCIlt2vdMVnqi87iSeuhDCfujdj9OMPmgl1nX4sm5sbh5BT2UaZyri5?=
- =?us-ascii?Q?FOY35SHoGTc9fuYKfhRDEX8p4fD1kLmOdWiU4aoHIPfstLnm/VVN0tcjH7Yw?=
- =?us-ascii?Q?0YhVdDWl4ewsFs9wnCsK8BDGTL8wpGGC1ahLbZtNlsyDcu7Dx6kOfYJ5dhPU?=
- =?us-ascii?Q?5XbbI5Kk4IcB+gmmj7354APIMPVICbL4SYELMh3/ZC7bipWTbCgETeoaONqv?=
- =?us-ascii?Q?xCwtd2AwXTQaTeRtlZ541FlvMy9ecjvIAJTedk0sF5yhMx2NqRlQdfJE4yDb?=
- =?us-ascii?Q?HV1MR3Sm4TzDsHe4eCf5xeI8L7SX0ObTe04ukXyMWKn7PCCsA/NNKbq2N9xz?=
- =?us-ascii?Q?1P7fkPa/iD3kO1a1wZzMDBvMAu6YBimMz2RmEU+GG5qS9JezaUKd8cbzzRMg?=
- =?us-ascii?Q?2vDph5jSnm51spOSQ15+6JCVsDWAsFfHDVDC/3/+gJ4Z/JKcvAl9dLDpc/cf?=
- =?us-ascii?Q?WptVyXObVT/VeY7KDDXp9wsLcK9fr+xn5Vbh4Zst7A1uzueWfjvrFDJZ9iC7?=
- =?us-ascii?Q?B15d2i57I7nykaJRWnEFWk68G6EZ32QifqAHwE3R6CLMYEr8bWanh0q1Hh9V?=
- =?us-ascii?Q?Xeb7EmHUU4eMnhqm8EVINwxFsi5Hu5mZQaCT6l/8FLgd+Io6o53//Z5pNfpt?=
- =?us-ascii?Q?wYToVzww+yo+6qeplqzfGhSe5LR11XJ+n6F4RVzaIYxNDNmQ2jBLTJMxsxc9?=
- =?us-ascii?Q?F/W4dFmJuomlzoabKElVOk4HTZKqSMkUxTMboojWwBPAL+ocEK/2v2UJL1wH?=
- =?us-ascii?Q?emjKXt8pLzNudkskqw94h/P1as67wMGIbgM4aRu+RHrkZ+dcBLQqKKhtJ7pU?=
- =?us-ascii?Q?HJOjYJ8fl+EFYW3oxZKlKcfm7jq3b9zsG1t5hOgx9R06t37qAObDOQAvLLcB?=
- =?us-ascii?Q?Q5wFqITUluijkzGxVZCGBSjaM9h4J3c5jeipaRFI4tbWNaLIf0+5jRieYe0D?=
- =?us-ascii?Q?sUKykjemxHSMTxU9QhGgiU8rLOYypUQU3AxnpuctttHHUL4Rnq2xF6VwsDUH?=
- =?us-ascii?Q?B6Be8si14UsDpTFUNDRNG5FFEnVh/h49zvCFNtMqZkQCZ4SqMTQoVwEcuy+v?=
- =?us-ascii?Q?+0Va1gyB5pVZGOMC4TZhzoy/82LrRxjkGS8vwMhqB9hkxlNEwBI85MifwPcB?=
- =?us-ascii?Q?SVS1L58xvh6wrMFkoqj2dqymuUUDXo/TlR2xuFUoJCG7t9uQXfT9c8PuKsHw?=
- =?us-ascii?Q?v2+DLVhbc7q2vddxWKjmdTkbBgdz7p5ULB8CbZyaPBaL/xi7USHONTA9Mpi5?=
- =?us-ascii?Q?4CTl3G95eUiLH9VMGPTqnPvV4jCAYesnUrelSHa5?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?us-ascii?Q?iHiABuNZqHIEK+qlQV19437DMBL0c9bKg5O/4QuZYNLesgG6DHvKzCRj7H7o?=
- =?us-ascii?Q?7X/kMBk5QrZJ6m+AAyY4x29tT8VjLt1pcHeV1p66OSHyn6f/7c1NcQuZ7+NW?=
- =?us-ascii?Q?jWI33mSk/wgFMs/gYfzdRX0L3NJpDgW+yBrDNW96hV/s5khgIrpm68U2NzHj?=
- =?us-ascii?Q?S8d0xEyVGtq/FSqpftOdY4yDmSA0X4TdmqAkZdj4RGZsoBDdBXPySWp8GU3E?=
- =?us-ascii?Q?jsL4cpE1VCv8tyc3bO2KeaD4rdYn+E+j8D7KN7YTdq0dGaIpSrEI95JpI0d2?=
- =?us-ascii?Q?zaBgbFRdPYEFkIrD3taNxFDSl9v6x1v6bnvDRZOq/7DY/3MUQrAR/hAV871x?=
- =?us-ascii?Q?fTo8jy8S1QLWNd27wFRE1HKKD1yKb6R0httOF4hexYNHZXXb92m+k7/zPbhM?=
- =?us-ascii?Q?guc4EUiy0wqWzw/IelKb5vfuPDotLpUN8mkXHMRP2wMbxMPrekL7l4GKnnsD?=
- =?us-ascii?Q?rtTKIqcQQsjFaPVSkuMSRJ5Yq2VuSTjmm6qlSzdVE9lktKrw26esuBENuMKn?=
- =?us-ascii?Q?SgZM/O8qa63r+kYjJpzsFSMS7iLP9+yZgjc0RO7VpYM+qIEGDnP/MKtWxJoj?=
- =?us-ascii?Q?pv1ydke5ySU/QGv1zkvtxRN4m2oP0YkrNAk3aHjPg5U2JCnFnyChOsJ+HM/A?=
- =?us-ascii?Q?+nCzY1eqly6w6elC10ojYCUJHLmcu6AxAsRN6mXDb9E57xulYnRKMlej8O4l?=
- =?us-ascii?Q?8NAN23WEaF11k3I0DJ0bmHa0EiAdbFwpNOBPbx8vzsG3dMeggoHi9w2us90X?=
- =?us-ascii?Q?i+Kyv5PgX+VWsm8U/9Y1toibYJ+9Jf/zHvTuHBias4IdiEr1/jChfEHn8f2I?=
- =?us-ascii?Q?EW/oEielquBkIN9sZZnVZ2LlAe4ApawtrGe7a1jhnoJSm4hT4b2dL1R2LW4p?=
- =?us-ascii?Q?zw/EJkWFINPXUD5B+GA7+HrLAt4ZtSi+jJltDMYys6HniXOmolxvkPeVDfXR?=
- =?us-ascii?Q?oLy4HzYfxPWa5cbhHknofeF7/giEYOna1CQQRXZ1fIiTb96oT+MMLRwd8yuS?=
- =?us-ascii?Q?B5re/6cxur5Li3y9+SziKvbDuQ=3D=3D?=
-X-OriginatorOrg: quicinc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SN4PR0201MB8808.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7ee3f960-ddf4-461e-7150-08db190d632b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Feb 2023 21:55:49.1492 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Z9FaMezlGnQDTJgcV3lexTTab98ZcSlusBsdHy6ug58LxqHGprK50djLJ/p8I/uk8lCpP7hUQQQ7vcZnSRQXoQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB6948
-X-Proofpoint-GUID: vfj_KRSSRXOvAa57kAz5XKvpCRM-8mir
-X-Proofpoint-ORIG-GUID: vfj_KRSSRXOvAa57kAz5XKvpCRM-8mir
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
- definitions=2023-02-27_17,2023-02-27_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- impostorscore=0 mlxscore=0 adultscore=0 clxscore=1015 phishscore=0
- bulkscore=0 lowpriorityscore=0 mlxlogscore=440 malwarescore=0
- suspectscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2302270174
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=tsimpson@quicinc.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20230227054233.390271-20-richard.henderson@linaro.org>
+ <SN4PR0201MB880877A0320F4E445033484DDEAF9@SN4PR0201MB8808.namprd02.prod.outlook.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <SN4PR0201MB880877A0320F4E445033484DDEAF9@SN4PR0201MB8808.namprd02.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.089,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -218,34 +138,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7KGtrkLic/1V
+X-TUID: bXqp7vBhc/rV
+
+On 2/27/23 11:55, Taylor Simpson wrote:
+>> -        HexValue mask = gen_tmp_value(c, locp, mask_str,
+>> -                                     dst_width, UNSIGNED);
+>> +        HexValue mask = gen_constant(c, locp, "-1", dst_width,
+>> + UNSIGNED);
+>>           OUT(c, locp, "tcg_gen_shr_i", &dst_width, "(",
+>> -            &mask, ", ", &mask, ", ", &shift, ");\n");
+>> +            &res, ", ", &mask, ", ", &shift, ");\n");
+>>           OUT(c, locp, "tcg_gen_and_i", &dst_width, "(",
+>> -            &res, ", ", value, ", ", &mask, ");\n");
+>> +            &res, ", ", &res, ", ", value, ");\n");
+> 
+> What's the advantage of putting the result of the tcg_gen_shr into res instead of mask?  Is there something in TCG code generation that takes advantage?
+
+With this patch, mask is read-only, so a write to it is illegal.
 
 
-
-> -----Original Message-----
-> From: Richard Henderson <richard.henderson@linaro.org>
-> Sent: Sunday, February 26, 2023 10:42 PM
-> To: qemu-devel@nongnu.org
-> Cc: qemu-arm@nongnu.org; qemu-ppc@nongnu.org; qemu-
-> riscv@nongnu.org; qemu-s390x@nongnu.org; jcmvbkbc@gmail.com;
-> kbastian@mail.uni-paderborn.de; ysato@users.sourceforge.jp;
-> gaosong@loongson.cn; jiaxun.yang@flygoat.com; Taylor Simpson
-> <tsimpson@quicinc.com>; ale@rev.ng; mrolnik@gmail.com;
-> edgar.iglesias@gmail.com
-> Subject: [PATCH 16/70] target/hexagon/idef-parser: Use gen_tmp for LPCFG
->=20
-> The GET_USR_FIELD macro initializes the output, so the initial assignment=
- of
-> zero is discarded.  This is the only use of get_tmp_value outside of pars=
-er-
-> helper.c, so make it static.
->=20
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/hexagon/idef-parser/parser-helpers.h | 6 ------
-> target/hexagon/idef-parser/parser-helpers.c | 2 +-
->  target/hexagon/idef-parser/idef-parser.y    | 2 +-
->  3 files changed, 2 insertions(+), 8 deletions(-)
-
-Reviewed-by: Taylor Simpson <tsimpson@quicinc.com>
-
+r~

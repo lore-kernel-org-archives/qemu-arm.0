@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4294177ejc;
-        Sun, 26 Feb 2023 21:37:40 -0800 (PST)
-X-Google-Smtp-Source: AK7set/w9S9rlAdI+ajLZrXuCSE6zZ89k8+KW1n9cLthx3rLC7Hv1uwP1QAklHc4ay57/NUuVuff
-X-Received: by 2002:ac8:7e95:0:b0:3bf:c178:c6ea with SMTP id w21-20020ac87e95000000b003bfc178c6eamr13204172qtj.56.1677476259964;
-        Sun, 26 Feb 2023 21:37:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677476259; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4294761ejc;
+        Sun, 26 Feb 2023 21:38:47 -0800 (PST)
+X-Google-Smtp-Source: AK7set+isbunkTgWU6x+p58nBEykSgmxTkVx3LDbH8iOgkVjPxy9dRZxWSmZKZcWvTNGHOBRj4Aa
+X-Received: by 2002:a05:6214:c22:b0:56e:a06f:d1d2 with SMTP id a2-20020a0562140c2200b0056ea06fd1d2mr42257607qvd.30.1677476327663;
+        Sun, 26 Feb 2023 21:38:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677476327; cv=none;
         d=google.com; s=arc-20160816;
-        b=fiGP2noA+HMmHOfYGRQGysHFb/z8g2ZPFrKkVfIBoCrdHPv7B4xU6Xo6/2snQiLRJL
-         lFxw3kS5F4qYYG5KZgBJZjMbkcadoOhzY9i7dNphihE8DXM3C6tyTmkVqYq2WD4i8sQa
-         6eduXDBwhWPnOk2nOC6dttNyJPIFN87fkEj99nhtV4KmxfvW40GDm+Nob2AK48F+vK0h
-         9SkstO/rij10855q2kN6VSA7cD90tgHzyJREG8GgKvtWXTQZn316xaiB5pefoSNEmt7C
-         zSNt/9bSgEADv4vDhUuIIqkXQZnF7xqrBXJbmvmof9paQW8XaQHtDCfZ2OxuwFmDlCYf
-         UFwA==
+        b=Gxd+THiLJDmnyRTZQxcjwMPBYsiZXwRpyvR23nBE/pXLqfDuiORSI4Ov8UfKWxVupF
+         cnuPhPJ4eyPQviCSpjQfuoT9uqDcTtEHmifEScl4Y4IWDfEsK8Kvh4iAKtzZTNOXtuMb
+         B6WLquSB2fkpW5e51E6iyBagVrrxJDVx7PJGrol32A5LN6gjcKYkc5sCVd1Xd4I4+cKC
+         3k1EZo42sFfNxe6QIKz39NwrnQI/c3KAbZrtP5nyaJDmpwFEr3AFt1U6hcKFMTF8wYTz
+         S293kyb5npA0W8ZSGiFfEyUbuzdrDRGe0iTwoa1xX2ki5J/Mqdo0Q2TMkI9dqBwM8/Wp
+         WXSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gP1FaZV2jwIFaxfD+zljAWbUZCjQNTs1C1nJUdyENMk=;
-        b=w5AfTKORNiXiQJ2wVqSF6r7Igdn9tD8mTKjtG3R4ers3Fg+lG7jA56PuoHKMrc+eQm
-         ylg0KlCDu62Axhc78PQvlwlRyINDvmgYk4/T/YmgibImvmuS9PlzLd77Xab0nkaHnnqc
-         ZQiGrFwPF40vyk9mwA5PchqLBX4SfeJSh5hUlCEXpVJy7GnboK/SpuDYCn08wkumuSqQ
-         A3iKBMiZkv6jg86yAqGYiYjXB+CHRTpIe9UnwkxWbsxB7d3TtppNec25rMBaIqKKF87Q
-         drNVaT/m3BHNY1aTCLNd4AT0YYReTuvcYu1VzCdwgKpNZGCvoWEKHeXq7G5YMw3M3Lgh
-         qLew==
+        bh=agy/u0GMKA+XJZ7eZrr4m/SwvDijeZedhgSDznlTFuI=;
+        b=Yr+KbrWCgTqLsfiRDI9y3BIX2467C9OwwRiCbrUoAyYgFohRUQgMqgpj/HKxzssK65
+         zxjGiugOOIjDh78ZrYy9KuGYRNZcr4Rjz6F44uSTWEXBI8rD5Bx5rF0mf7AsGaIkZv6j
+         eYC/i+Rjd2yrfzBm4xstYdtWYriun713XB9gqRfQIZQ1UNE35dUWhEwETn6DHkeJiqMm
+         1BKu2/q3TItuOn0qRjxWznna0sz0NJyDgv6HNYuMxPgJ1gESn8ha2SpTQvnHyA1GRIFM
+         T+IfuGaHhhEpIcu2QNDUGNrrCwSAELegqJWLlkyz9DZkxcaEZc5H0CGPe/PC3V/8kntu
+         LXgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f4NIbzjl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fuzeETEE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10-20020a05622a120a00b003b86b5b7453si6021678qtx.221.2023.02.26.21.37.39
+        by mx.google.com with ESMTPS id w20-20020a0cdf94000000b0056bf1e3aaf6si5674456qvl.544.2023.02.26.21.38.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 21:37:39 -0800 (PST)
+        Sun, 26 Feb 2023 21:38:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f4NIbzjl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fuzeETEE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWW8b-0005GE-OE; Mon, 27 Feb 2023 00:33:26 -0500
+	id 1pWW8B-0004cv-Ie; Mon, 27 Feb 2023 00:32:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWW70-0000Ga-1u
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:31:47 -0500
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ id 1pWW6q-0008S4-RB
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:31:38 -0500
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWW6x-0000HX-Mo
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:31:45 -0500
-Received: by mail-pj1-x1034.google.com with SMTP id
- me6-20020a17090b17c600b0023816b0c7ceso923419pjb.2
- for <qemu-devel@nongnu.org>; Sun, 26 Feb 2023 21:31:42 -0800 (PST)
+ id 1pWW6l-0000eC-Ta
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:31:36 -0500
+Received: by mail-pj1-x102b.google.com with SMTP id
+ qa18-20020a17090b4fd200b0023750b675f5so8847492pjb.3
+ for <qemu-devel@nongnu.org>; Sun, 26 Feb 2023 21:31:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gP1FaZV2jwIFaxfD+zljAWbUZCjQNTs1C1nJUdyENMk=;
- b=f4NIbzjlpOAYCyVriH3M7UqW19rm5g1zhb8Vg0zjrAq3A/Ny3mUR5FwkHcNn2ZClPO
- iu3zAHqSnQW8QNbrVe93guF0+QqlMC91EKNjVOf16+h7lHI1qw2x+u1DCoMwLSjNprPt
- NdTKomWTAHL8BOMgvsqKAK2OzJSnZlIagSmHIWaFif7l2m5QBnv94WfUQxoWi5Y26LDh
- S0cjIRMjyuW94oTNt4K6HcZthYJZlUTKLcwNV3MhqVJaNYhbGUTCGh2AtT4/TMbUPqMD
- 3RUuepvtxphbahSAkDoGmVD0lTaIfWmogV5BdHEbcFzq0XyO6dH7BD5cifsr02DS2qKH
- 4qiw==
+ bh=agy/u0GMKA+XJZ7eZrr4m/SwvDijeZedhgSDznlTFuI=;
+ b=fuzeETEEiQNzPI/I3KBVJ2gdT9a3y7Fyf1C1b8rQsWfmz46+tqtnXPdBMD9rBztO0s
+ qW5KJLjvnr2Ym7HGWF51s1XPMnN0sybTDOC7v86zLOcZnZrVGvZ4952exU3Lz2vQL6bn
+ BkcfMO5q/XS6qM5lxvLovvw8YYiX6GQARJ/i85DvFDsBjVX6K7ZPQdMWix015b+JZnZX
+ 52sVGZpBAPvNnjPfMVan4GlQq1DSEWBOdVU61rrkUAxYesEp1MGu0vN5GYurR9AsiWZZ
+ de5dD/u2/QGVHGlZRiHTh/+nUUbrSvM+z0STomXVGS9AMOufo7t+VCMCXUfV6J8CICnG
+ 9X7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=gP1FaZV2jwIFaxfD+zljAWbUZCjQNTs1C1nJUdyENMk=;
- b=e2aQEWL6EeLFE065GHnX/PhHhzjph+J0HIi5bUowhpP/+bbVYkbHyyma5Tum5WrUV0
- pN75sq6L4mSeRs+i3cX3wZjqP3VG0VRfBu+VmaPjn0VVqT0muv1mYYoIscRaQGf9kD2Z
- r+8ZhOZOpNbByQToThnU7M3C2yihuzPGoDnRoMQmg+RHt/aoEC39wk4OrFiMSskUKQ7E
- apssET6Q0GopMjmYcivtD4H0GTmgFNqrLISOUy3G2u8zZcRBpQgml+X2imHTQTGR8cWL
- zUgvH0wDgMxTJnzn7lIUuBFlGQ+qaorptk14pwB4lN8NJW8SBc2Mlr7PitekthxH+yGb
- cexQ==
-X-Gm-Message-State: AO0yUKW3UCJ7fzp2WMdd6cSk/jbuGXWYWcpAjLTTrXqCkhVJUgZcWKPc
- +D1wrpXMuZi1S8ViK8buLk2nydHKvREJN0Yoedc=
-X-Received: by 2002:a17:90b:4a03:b0:233:457f:e71c with SMTP id
- kk3-20020a17090b4a0300b00233457fe71cmr26671400pjb.38.1677475901653; 
- Sun, 26 Feb 2023 21:31:41 -0800 (PST)
+ bh=agy/u0GMKA+XJZ7eZrr4m/SwvDijeZedhgSDznlTFuI=;
+ b=AKV8HcBidu5CFNSuokN7p4vosaJvKV2l9EmeJ3WdxpeLruAS5tYz1dYIfai8uyuxfR
+ YbBDIv9lOkLpN+GmcZ4jQJelSj/Em+cQbvxXaIwsTo59R1+gak2/oC6WJAPifh6DVDjU
+ Fk4x5S/8mw5i4//rkx2tG2Hrtu9HhYuyx9NBZbtaHJkgWXQEwFCEy7IwelkyqrmXkeaL
+ A+e/qyLdteW4BxkUP3f8UneIj3RQ3quMsI+nhJD/7VjsPQnwQ9TkYZ/eQK4PEkrBsNgb
+ OE4Z9XxoicpbssuGiBdB/6AgyH84nHL3YPGw6V+cm2FEhbngJ3G2+aJXq8o6GuiYQ4l0
+ dY9g==
+X-Gm-Message-State: AO0yUKXPbofXncXHndbeJMd0ZFWKMhSBNF9yv0sXx8QcNi7LOVF5S9D5
+ jqHPFrc4UlMTIp9q0P4QyiWUe4zKHU+EYi/Vbjk=
+X-Received: by 2002:a17:90b:180c:b0:237:d867:222c with SMTP id
+ lw12-20020a17090b180c00b00237d867222cmr5447629pjb.42.1677475890878; 
+ Sun, 26 Feb 2023 21:31:30 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- v4-20020a17090a520400b002369e16b276sm5172926pjh.32.2023.02.26.21.31.39
+ v4-20020a17090a520400b002369e16b276sm5172926pjh.32.2023.02.26.21.31.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:31:41 -0800 (PST)
+ Sun, 26 Feb 2023 21:31:30 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -95,23 +95,23 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com
-Subject: [PATCH v2 75/76] tcg: Create tcg/tcg-temp-internal.h
-Date: Sun, 26 Feb 2023 19:25:04 -1000
-Message-Id: <20230227052505.352889-76-richard.henderson@linaro.org>
+Subject: [PATCH v2 71/76] target/xtensa: Drop reset_sar_tracker
+Date: Sun, 26 Feb 2023 19:25:00 -1000
+Message-Id: <20230227052505.352889-72-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227052505.352889-1-richard.henderson@linaro.org>
 References: <20230227052505.352889-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
-X-Spam_score_int: 23
-X-Spam_score: 2.3
-X-Spam_bar: ++
-X-Spam_report: (2.3 / 5.0 requ) BAYES_00=-1.9, BITCOIN_OBFU_SUBJ=3.375,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FUZZY_BITCOIN=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,269 +126,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yesl+3KX6aWP
+X-TUID: ZaiGYDoLJY3Q
 
-Move the  tcg_temp_free_* and tcg_temp_ebb_new_* declarations
-and inlines to the new header.  These are private to the
-implementation, and will prevent tcg_temp_free_* from creaping
-back into the guest front ends.
+Translators are no longer required to free tcg temporaries.
+Remove sar_m32_allocated, as sar_m32 non-null is equivalent.
 
+Reviewed-by: Max Filippov <jcmvbkbc@gmail.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/tcg/tcg-temp-internal.h | 83 +++++++++++++++++++++++++++++++++
- include/tcg/tcg.h               | 54 ---------------------
- accel/tcg/plugin-gen.c          |  1 +
- tcg/tcg-op-gvec.c               |  1 +
- tcg/tcg-op-vec.c                |  1 +
- tcg/tcg-op.c                    |  1 +
- tcg/tcg.c                       |  1 +
- 7 files changed, 88 insertions(+), 54 deletions(-)
- create mode 100644 include/tcg/tcg-temp-internal.h
+ target/xtensa/translate.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
-diff --git a/include/tcg/tcg-temp-internal.h b/include/tcg/tcg-temp-internal.h
-new file mode 100644
-index 0000000000..dded2917e5
---- /dev/null
-+++ b/include/tcg/tcg-temp-internal.h
-@@ -0,0 +1,83 @@
-+/*
-+ * TCG internals related to TCG temp allocation
-+ *
-+ * Copyright (c) 2008 Fabrice Bellard
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#ifndef TCG_TEMP_INTERNAL_H
-+#define TCG_TEMP_INTERNAL_H
-+
-+/*
-+ * Allocation and freeing of EBB temps is reserved to TCG internals
-+ */
-+
-+void tcg_temp_free_internal(TCGTemp *);
-+
-+static inline void tcg_temp_free_i32(TCGv_i32 arg)
-+{
-+    tcg_temp_free_internal(tcgv_i32_temp(arg));
-+}
-+
-+static inline void tcg_temp_free_i64(TCGv_i64 arg)
-+{
-+    tcg_temp_free_internal(tcgv_i64_temp(arg));
-+}
-+
-+static inline void tcg_temp_free_i128(TCGv_i128 arg)
-+{
-+    tcg_temp_free_internal(tcgv_i128_temp(arg));
-+}
-+
-+static inline void tcg_temp_free_ptr(TCGv_ptr arg)
-+{
-+    tcg_temp_free_internal(tcgv_ptr_temp(arg));
-+}
-+
-+static inline void tcg_temp_free_vec(TCGv_vec arg)
-+{
-+    tcg_temp_free_internal(tcgv_vec_temp(arg));
-+}
-+
-+static inline TCGv_i32 tcg_temp_ebb_new_i32(void)
-+{
-+    TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_I32, TEMP_EBB);
-+    return temp_tcgv_i32(t);
-+}
-+
-+static inline TCGv_i64 tcg_temp_ebb_new_i64(void)
-+{
-+    TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_I64, TEMP_EBB);
-+    return temp_tcgv_i64(t);
-+}
-+
-+static inline TCGv_i128 tcg_temp_ebb_new_i128(void)
-+{
-+    TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_I128, TEMP_EBB);
-+    return temp_tcgv_i128(t);
-+}
-+
-+static inline TCGv_ptr tcg_temp_ebb_new_ptr(void)
-+{
-+    TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_PTR, TEMP_EBB);
-+    return temp_tcgv_ptr(t);
-+}
-+
-+#endif /* TCG_TEMP_FREE_H */
-diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
-index e8f73115ec..43ce4bfa7d 100644
---- a/include/tcg/tcg.h
-+++ b/include/tcg/tcg.h
-@@ -855,35 +855,9 @@ void tcg_set_frame(TCGContext *s, TCGReg reg, intptr_t start, intptr_t size);
- TCGTemp *tcg_global_mem_new_internal(TCGType, TCGv_ptr,
-                                      intptr_t, const char *);
- TCGTemp *tcg_temp_new_internal(TCGType, TCGTempKind);
--void tcg_temp_free_internal(TCGTemp *);
- TCGv_vec tcg_temp_new_vec(TCGType type);
- TCGv_vec tcg_temp_new_vec_matching(TCGv_vec match);
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index 4af0650deb..910350dec6 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -57,7 +57,6 @@ struct DisasContext {
  
--static inline void tcg_temp_free_i32(TCGv_i32 arg)
--{
--    tcg_temp_free_internal(tcgv_i32_temp(arg));
--}
--
--static inline void tcg_temp_free_i64(TCGv_i64 arg)
--{
--    tcg_temp_free_internal(tcgv_i64_temp(arg));
--}
--
--static inline void tcg_temp_free_i128(TCGv_i128 arg)
--{
--    tcg_temp_free_internal(tcgv_i128_temp(arg));
--}
--
--static inline void tcg_temp_free_ptr(TCGv_ptr arg)
--{
--    tcg_temp_free_internal(tcgv_ptr_temp(arg));
--}
--
--static inline void tcg_temp_free_vec(TCGv_vec arg)
--{
--    tcg_temp_free_internal(tcgv_vec_temp(arg));
--}
--
- static inline TCGv_i32 tcg_global_mem_new_i32(TCGv_ptr reg, intptr_t offset,
-                                               const char *name)
+     bool sar_5bit;
+     bool sar_m32_5bit;
+-    bool sar_m32_allocated;
+     TCGv_i32 sar_m32;
+ 
+     unsigned window;
+@@ -284,14 +283,7 @@ static void init_sar_tracker(DisasContext *dc)
  {
-@@ -891,13 +865,6 @@ static inline TCGv_i32 tcg_global_mem_new_i32(TCGv_ptr reg, intptr_t offset,
-     return temp_tcgv_i32(t);
+     dc->sar_5bit = false;
+     dc->sar_m32_5bit = false;
+-    dc->sar_m32_allocated = false;
+-}
+-
+-static void reset_sar_tracker(DisasContext *dc)
+-{
+-    if (dc->sar_m32_allocated) {
+-        tcg_temp_free(dc->sar_m32);
+-    }
++    dc->sar_m32 = NULL;
  }
  
--/* Used only by tcg infrastructure: tcg-op.c or plugin-gen.c */
--static inline TCGv_i32 tcg_temp_ebb_new_i32(void)
--{
--    TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_I32, TEMP_EBB);
--    return temp_tcgv_i32(t);
--}
--
- static inline TCGv_i32 tcg_temp_new_i32(void)
+ static void gen_right_shift_sar(DisasContext *dc, TCGv_i32 sa)
+@@ -306,9 +298,8 @@ static void gen_right_shift_sar(DisasContext *dc, TCGv_i32 sa)
+ 
+ static void gen_left_shift_sar(DisasContext *dc, TCGv_i32 sa)
  {
-     TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_I32, TEMP_TB);
-@@ -911,26 +878,12 @@ static inline TCGv_i64 tcg_global_mem_new_i64(TCGv_ptr reg, intptr_t offset,
-     return temp_tcgv_i64(t);
- }
- 
--/* Used only by tcg infrastructure: tcg-op.c or plugin-gen.c */
--static inline TCGv_i64 tcg_temp_ebb_new_i64(void)
--{
--    TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_I64, TEMP_EBB);
--    return temp_tcgv_i64(t);
--}
--
- static inline TCGv_i64 tcg_temp_new_i64(void)
+-    if (!dc->sar_m32_allocated) {
++    if (!dc->sar_m32) {
+         dc->sar_m32 = tcg_temp_new_i32();
+-        dc->sar_m32_allocated = true;
+     }
+     tcg_gen_andi_i32(dc->sar_m32, sa, 0x1f);
+     tcg_gen_sub_i32(cpu_SR[SAR], tcg_constant_i32(32), dc->sar_m32);
+@@ -1247,7 +1238,6 @@ static void xtensa_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
  {
-     TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_I64, TEMP_TB);
-     return temp_tcgv_i64(t);
- }
+     DisasContext *dc = container_of(dcbase, DisasContext, base);
  
--/* Used only by tcg infrastructure: tcg-op.c or plugin-gen.c */
--static inline TCGv_i128 tcg_temp_ebb_new_i128(void)
--{
--    TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_I128, TEMP_EBB);
--    return temp_tcgv_i128(t);
--}
--
- static inline TCGv_i128 tcg_temp_new_i128(void)
- {
-     TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_I128, TEMP_TB);
-@@ -944,13 +897,6 @@ static inline TCGv_ptr tcg_global_mem_new_ptr(TCGv_ptr reg, intptr_t offset,
-     return temp_tcgv_ptr(t);
- }
- 
--/* Used only by tcg infrastructure: tcg-op.c or plugin-gen.c */
--static inline TCGv_ptr tcg_temp_ebb_new_ptr(void)
--{
--    TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_PTR, TEMP_EBB);
--    return temp_tcgv_ptr(t);
--}
--
- static inline TCGv_ptr tcg_temp_new_ptr(void)
- {
-     TCGTemp *t = tcg_temp_new_internal(TCG_TYPE_PTR, TEMP_TB);
-diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
-index c42a436c0c..5efb8db258 100644
---- a/accel/tcg/plugin-gen.c
-+++ b/accel/tcg/plugin-gen.c
-@@ -44,6 +44,7 @@
-  */
- #include "qemu/osdep.h"
- #include "tcg/tcg.h"
-+#include "tcg/tcg-temp-internal.h"
- #include "tcg/tcg-op.h"
- #include "exec/exec-all.h"
- #include "exec/plugin-gen.h"
-diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
-index 877b0b659b..f7072b213f 100644
---- a/tcg/tcg-op-gvec.c
-+++ b/tcg/tcg-op-gvec.c
-@@ -19,6 +19,7 @@
- 
- #include "qemu/osdep.h"
- #include "tcg/tcg.h"
-+#include "tcg/tcg-temp-internal.h"
- #include "tcg/tcg-op.h"
- #include "tcg/tcg-op-gvec.h"
- #include "qemu/main-loop.h"
-diff --git a/tcg/tcg-op-vec.c b/tcg/tcg-op-vec.c
-index 966d41d65a..0f023f42c6 100644
---- a/tcg/tcg-op-vec.c
-+++ b/tcg/tcg-op-vec.c
-@@ -19,6 +19,7 @@
- 
- #include "qemu/osdep.h"
- #include "tcg/tcg.h"
-+#include "tcg/tcg-temp-internal.h"
- #include "tcg/tcg-op.h"
- #include "tcg/tcg-mo.h"
- #include "tcg-internal.h"
-diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
-index f2269a1b91..53e96b5b69 100644
---- a/tcg/tcg-op.c
-+++ b/tcg/tcg-op.c
-@@ -25,6 +25,7 @@
- #include "qemu/osdep.h"
- #include "exec/exec-all.h"
- #include "tcg/tcg.h"
-+#include "tcg/tcg-temp-internal.h"
- #include "tcg/tcg-op.h"
- #include "tcg/tcg-mo.h"
- #include "exec/plugin-gen.h"
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index e3c0fa1012..4d3fb6aee2 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -60,6 +60,7 @@
- #include "elf.h"
- #include "exec/log.h"
- #include "tcg/tcg-ldst.h"
-+#include "tcg/tcg-temp-internal.h"
- #include "tcg-internal.h"
- #include "accel/tcg/perf.h"
- 
+-    reset_sar_tracker(dc);
+     if (dc->icount) {
+         tcg_temp_free(dc->next_icount);
+     }
 -- 
 2.34.1
 

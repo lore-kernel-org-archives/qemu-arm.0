@@ -1,113 +1,117 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5117865ejc;
-        Mon, 27 Feb 2023 15:02:23 -0800 (PST)
-X-Google-Smtp-Source: AK7set8BJn4nL4Dw37ohV/yMol8jq+M1gms5zF2Ykf1I+zwhWsYeWqhiMlpZsKZ9q4iv71p5bLpf
-X-Received: by 2002:a05:6214:246c:b0:56e:a4c5:9d82 with SMTP id im12-20020a056214246c00b0056ea4c59d82mr2189715qvb.12.1677538942767;
-        Mon, 27 Feb 2023 15:02:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677538942; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5118082ejc;
+        Mon, 27 Feb 2023 15:02:36 -0800 (PST)
+X-Google-Smtp-Source: AK7set/JV+cW90vSEiqWQoz1X8cKOmmhhGlocqIz6BA8mmsPvyL8apUK/R7r0TJL2AksFuFwSSQO
+X-Received: by 2002:a05:622a:199d:b0:3b8:6ae9:b107 with SMTP id u29-20020a05622a199d00b003b86ae9b107mr1685686qtc.17.1677538956359;
+        Mon, 27 Feb 2023 15:02:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677538956; cv=none;
         d=google.com; s=arc-20160816;
-        b=XaRRN7HXM69/oXpChDHu+0DBCWy2mwHO62lBxiLsp/gdLvIQ8zES3r730coAWyj8u0
-         nWzqWOQDsoOvvp5dzIOsVUSCS6NfzHOoJ5ThWUK2LPT437WHFSO/zNHH8/TmMV0MPmqd
-         LJHyNfcd/wxTtV2hUcBTWNeESOxSyE/zVXGutZA9cSPmIKfp94ETm+LlYp9KEoyvUL4o
-         I1mJRDeyDE+awKtxZeJeUn7cDw8l7O4J0/oeiCA4B5yDBKt6NLYCDH8zU20H+ltv0Nou
-         noVwYWM211JP6zsohJbIklgAH1x43OcUMF3eMS0ceZvlmCXOcDDBG3JlFxiMadjYU6FQ
-         MOqw==
+        b=kWtVzKLpaxcTyxg/mN6wY+VY58Y6Jhw4NkAL6EbRowNdS7XBEEcs8rG7eIJ/q9lG6o
+         vI5PVlrhl2/q+MKKxbqwfXOBWpoR4NkjhxZP4HpNVo3e6UxSa2t9yrC4GDieAlZaco+l
+         MwlpVNPIcJ6cj50ilsk9NY2R4+xdsNMpiFkbVj3u9k/TSxuSd2x4Xp3YLud8x0VLubT+
+         OtqH3mQTU/b89uDi5i9E2tv/BOIVmM2W3He+nou9QwUtR7poj6EGc08ugHkTjvk3cIV4
+         02YXoyGzG7V9yvGlGJeEUnhaa14vdTmBEHEoCyXdxF7jVtxN0GLimfRUzVa0r/r8IWOL
+         2ezg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=H9Qr7wA8wSIkfPgh/j+3hKBpjrPyoBLV3ksLdpb2kIs=;
-        b=FcN+HAiSAgU6USdbEmj18PsEXOMyW1JH6QuddZe7wOOKE/Nt3jSLDeC5PHWGpwE0q0
-         mplRkImfKyrGTyiMkGIVPVQiMA0/bgbfpnPr4U6NvFqOMBEcAKUnxbNCEceCPMMMOCn7
-         dSOSbF/L8Z1DgJFtzLK3o9h48hOhEl5VfQVyUp8KHASSLqQixM9/qvgMxzbAk7pmrS9S
-         XE/I46l36xMl6DrVS97qr+xTpHVk3VDQ/5unthHrfIvo2NdTfsU9duB2gOE0qwpSIc7k
-         jx4/c300MfbEgkzMDulS/+JXikcBKJHOPejb+lkZwi6OIOcmiZ5OxlZW+ZMEqOFcOn9R
-         Aq+w==
+        bh=sfKYqEChfrtTh13e431O8E/j8Wi+d7VSKgI7shCtu0o=;
+        b=WgqLQqXGkFf4Vo1mElBQYEdQD/3R9/dgpwA5JeVroM8bY6BMtjIEOrLiseHr9dywW6
+         TVElKqEfVIpLfRpG+2eoQgMFObHtFwwetfbJABFOos/LpsVEQ9N+k5NhneVN5mgZ4sR+
+         6VjM/5Xl48P2/SsVN932vDvsV6/MmVgxrzXmDLXznbIA9OUvGM8DoyW+P5DjdvEmwoa4
+         +YbVMgE28TTIIMSNAy+o7/+O4nFD/fksrV5/YWQBnLZ9LkwNRbffJFEYKNUGyj31SL/2
+         LA7kJUPaxW0LNFGfKp5OV7WzXfhIXKxvuagmBeE4EGaW6EHZPjTxQ3OX+8EcSsOpuQ0X
+         aMgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SLophdP1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=One1GNUX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m19-20020a0cf193000000b0053543310b13si7478430qvl.181.2023.02.27.15.02.22
+        by mx.google.com with ESMTPS id f8-20020ac840c8000000b003b1b92b7c90si6573522qtm.721.2023.02.27.15.02.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 15:02:22 -0800 (PST)
+        Mon, 27 Feb 2023 15:02:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SLophdP1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=One1GNUX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWmVT-0000A8-PQ; Mon, 27 Feb 2023 18:02:07 -0500
+	id 1pWmVF-0007lP-It; Mon, 27 Feb 2023 18:01:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWmVO-00089L-B1
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 18:02:02 -0500
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ id 1pWmV3-0007jk-2S
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 18:01:41 -0500
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWmVM-00017i-H6
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 18:02:01 -0500
-Received: by mail-pl1-x62a.google.com with SMTP id n6so7116545plf.5
- for <qemu-devel@nongnu.org>; Mon, 27 Feb 2023 15:02:00 -0800 (PST)
+ id 1pWmV1-00011a-Bg
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 18:01:40 -0500
+Received: by mail-pj1-x102d.google.com with SMTP id
+ m20-20020a17090ab79400b00239d8e182efso943683pjr.5
+ for <qemu-devel@nongnu.org>; Mon, 27 Feb 2023 15:01:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=H9Qr7wA8wSIkfPgh/j+3hKBpjrPyoBLV3ksLdpb2kIs=;
- b=SLophdP1kfF7Ksr1o+Kuvk7AIgQlliVoQ9EE8Nojk1Oi63y4v0Mt0YQ4/Sc0T2ogHO
- EXJZsmJB2AoyF/Qu+AZsxt3hfpPu5DeFD7c0gemd5nTj+SrwabnKk6srIthAXSUrk0cN
- ecBbxv+bbDVuOg9FNJj5vJ71jbPlM1VzfWHkD3F7BSSoQPoM7Zzw4ypjm/rPQo00DoYr
- rmkEu9zFx5tHi7fE7qThwvl29fC/RfRgadxCOer+xvJHq97FvRzz87SiaAqDbla94lGO
- LulBnhZDeJNk/JF0HGwPEWINysV6DfysZKIfisoT9YIVNUYWgg4W7iAJDSKQ7oefsQvR
- X5Lw==
+ bh=sfKYqEChfrtTh13e431O8E/j8Wi+d7VSKgI7shCtu0o=;
+ b=One1GNUXbCurN1VIU+A9CbGg4mkih2JLVqr32t0seIYiMHiyhU0Ngj2bw5//jtCtlG
+ hW3eDUC1Zz7VCBQHgxxaigqOqIVcv/LfgWsCHLKDmVLD3XEOpcAhwVqs7f/LwmRc7hQ+
+ NwjMHB8bI0oMTgJEqFllPqUOEU70nphcuPxripcjMcGxXbWkYHgJdjoH+t/wGgaq56dU
+ iLNlV9/EGpNJmPV58QWP1a5uA5A57wA+jkBYHWgNL6fbHcSAEEyfyGrM2L8zYMep6g3O
+ vu/cJmRpvNM3nxtFXhL/jjwEUcTyyB9LrAtDIKerp6/2lXEv8iNjMhsm876UcnYQmdzA
+ sV7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=H9Qr7wA8wSIkfPgh/j+3hKBpjrPyoBLV3ksLdpb2kIs=;
- b=e3+vcEO8hOIzOMBp7A3itJ+cp4wA+K4T4hc7uycePzUNSIBqJ4x0UzDq22w+wk9SVV
- 8rb8OFllc7LjOCRLGW923PDy/ixZikGktyLgV4SRDw+nAJVpq01HSMn/i3Qf3M+fV4jU
- 1nDtfhPqtbXbAl24rfJGS+WYQ28Bsbvp9Kfla9UWKdQTy+HtfeDC8W2G8QvZ/04vFiI6
- RcSBbHKNaWQfIe9U83oqSWWTwkGTERF++beV1Er3ZylP5kojXJr5JmHQXoLQnIHO3vvx
- XT4ZisUeftm0vTAdx6oInsZUtrSiJBi9jzao02JfkgTAqiNA+lWZyS/DvADc5Tl8FQK/
- Y+fQ==
-X-Gm-Message-State: AO0yUKVZTfZy8Yb9EuN8eh/m+MCXvwFcWQ5WnYlIK4NtUt7Uscz74kO5
- D4Agfi9T89O2djFsqqbUwSultZfiemzrAxWSKIU=
-X-Received: by 2002:a05:6a20:a11f:b0:cc:32a8:323d with SMTP id
- q31-20020a056a20a11f00b000cc32a8323dmr7945737pzk.28.1677538918954; 
- Mon, 27 Feb 2023 15:01:58 -0800 (PST)
+ bh=sfKYqEChfrtTh13e431O8E/j8Wi+d7VSKgI7shCtu0o=;
+ b=WvEvbW5pIrLV0rGlWfOgTpME/0O7Z7jvPUs8cHHLmAFbf9jR3LsbixNZeg3rSFXse9
+ kK5ocicqEITegfVES1WK/knE4caq7NpL1nCKTCjRUeIW633YZbS+fCZQNBYXm3cgmvMm
+ mt240yJNqJGZqB1yeFcyvBjylbZygFVFec5LQt1jRQNsKvlEUfIK5qDQ/zD7cP9hYoqK
+ uaRNIbwupS9KNstmr/gPKVb170AIb15/oHvEoKTGJXFbP6dLcXr8JzW0VIbEAD0ZsXXV
+ Yy7AUFeDNJVBJGCf2L2P9JRpa8vOihk49mWcVZT/Txkik+GcxSlPWIIsc7VyFCuQDhac
+ fK3Q==
+X-Gm-Message-State: AO0yUKW3cbtX0D6sxLFeOvOtpOFrSiAPap81gtJgp+2/Mblmwv484Mjc
+ RnaptxVsWpSdLuXnGx/yI+Mex9tzRNeQ5gosdX4=
+X-Received: by 2002:a05:6a20:1610:b0:c0:c429:cbbd with SMTP id
+ l16-20020a056a20161000b000c0c429cbbdmr1067065pzj.6.1677538898075; 
+ Mon, 27 Feb 2023 15:01:38 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- u2-20020a637902000000b0050301745a5dsm4406130pgc.50.2023.02.27.15.01.57
+ u2-20020a637902000000b0050301745a5dsm4406130pgc.50.2023.02.27.15.01.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Feb 2023 15:01:58 -0800 (PST)
+ Mon, 27 Feb 2023 15:01:37 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH for-8.0 v4 21/21] NOTFORMERGE hw/arm/virt: Add some memory for
- Realm Management Monitor
-Date: Mon, 27 Feb 2023 13:01:22 -1000
-Message-Id: <20230227230122.816702-22-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH for-8.0 v4 08/21] target/arm: Introduce ARMMMUIdx_Phys_{Realm,
+ Root}
+Date: Mon, 27 Feb 2023 13:01:09 -1000
+Message-Id: <20230227230122.816702-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227230122.816702-1-richard.henderson@linaro.org>
 References: <20230227230122.816702-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,118 +126,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7bPhpMme8bFe
+X-TUID: qjzNfo1ABmyh
 
-This is arbitrary, but used by the Huawei TF-A test code.
+With FEAT_RME, there are four physical address spaces.
+For now, just define the symbols, and mention them in
+the same spots as the other Phys indexes in ptw.c.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/hw/arm/virt.h |  2 ++
- hw/arm/virt.c         | 43 +++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 45 insertions(+)
+ target/arm/cpu-param.h |  2 +-
+ target/arm/cpu.h       | 23 +++++++++++++++++++++--
+ target/arm/ptw.c       | 10 ++++++++--
+ 3 files changed, 30 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index e1ddbea96b..5c0c8a67e4 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -86,6 +86,7 @@ enum {
-     VIRT_ACPI_GED,
-     VIRT_NVDIMM_ACPI,
-     VIRT_PVTIME,
-+    VIRT_RMM_MEM,
-     VIRT_LOWMEMMAP_LAST,
- };
+diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
+index 53cac9c89b..8dfd7a0bb6 100644
+--- a/target/arm/cpu-param.h
++++ b/target/arm/cpu-param.h
+@@ -47,6 +47,6 @@
+     bool guarded;
+ #endif
  
-@@ -159,6 +160,7 @@ struct VirtMachineState {
-     bool virt;
-     bool ras;
-     bool mte;
-+    bool rmm;
-     bool dtb_randomness;
-     OnOffAuto acpi;
-     VirtGICType gic_version;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ac626b3bef..067f16cd77 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -159,6 +159,7 @@ static const MemMapEntry base_memmap[] = {
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-     [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
-+    [VIRT_RMM_MEM] =            { 0x0f000000, 0x00100000 },
-     [VIRT_PCIE_MMIO] =          { 0x10000000, 0x2eff0000 },
-     [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
-     [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
-@@ -1602,6 +1603,25 @@ static void create_secure_ram(VirtMachineState *vms,
-     g_free(nodename);
- }
+-#define NB_MMU_MODES 12
++#define NB_MMU_MODES 14
  
-+static void create_rmm_ram(VirtMachineState *vms,
-+                           MemoryRegion *sysmem,
-+                           MemoryRegion *tag_sysmem)
+ #endif
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c5fc475cf8..05fd6e61aa 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2865,8 +2865,10 @@ typedef enum ARMMMUIdx {
+     ARMMMUIdx_Stage2    = 9 | ARM_MMU_IDX_A,
+ 
+     /* TLBs with 1-1 mapping to the physical address spaces. */
+-    ARMMMUIdx_Phys_S    = 10 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_Phys_NS   = 11 | ARM_MMU_IDX_A,
++    ARMMMUIdx_Phys_S     = 10 | ARM_MMU_IDX_A,
++    ARMMMUIdx_Phys_NS    = 11 | ARM_MMU_IDX_A,
++    ARMMMUIdx_Phys_Root  = 12 | ARM_MMU_IDX_A,
++    ARMMMUIdx_Phys_Realm = 13 | ARM_MMU_IDX_A,
+ 
+     /*
+      * These are not allocated TLBs and are used only for AT system
+@@ -2930,6 +2932,23 @@ typedef enum ARMASIdx {
+     ARMASIdx_TagS = 3,
+ } ARMASIdx;
+ 
++static inline ARMMMUIdx arm_space_to_phys(ARMSecuritySpace space)
 +{
-+    MemoryRegion *rmm_ram = g_new(MemoryRegion, 1);
-+    hwaddr base = vms->memmap[VIRT_RMM_MEM].base;
-+    hwaddr size = vms->memmap[VIRT_RMM_MEM].size;
++    /* Assert the relative order of the physical mmu indexes. */
++    QEMU_BUILD_BUG_ON(ARMSS_Secure != 0);
++    QEMU_BUILD_BUG_ON(ARMMMUIdx_Phys_NS != ARMMMUIdx_Phys_S + ARMSS_NonSecure);
++    QEMU_BUILD_BUG_ON(ARMMMUIdx_Phys_Root != ARMMMUIdx_Phys_S + ARMSS_Root);
++    QEMU_BUILD_BUG_ON(ARMMMUIdx_Phys_Realm != ARMMMUIdx_Phys_S + ARMSS_Realm);
 +
-+    memory_region_init_ram(rmm_ram, NULL, "virt.rmm-ram", size,
-+                           &error_fatal);
-+    memory_region_add_subregion(sysmem, base, rmm_ram);
-+
-+    /* do not fill in fdt to hide rmm from normal world guest */
-+
-+    if (tag_sysmem) {
-+        create_tag_ram(tag_sysmem, base, size, "mach-virt.rmm-tag");
-+    }
++    return ARMMMUIdx_Phys_S + space;
 +}
 +
- static void *machvirt_dtb(const struct arm_boot_info *binfo, int *fdt_size)
++static inline ARMSecuritySpace arm_phys_to_space(ARMMMUIdx idx)
++{
++    assert(idx >= ARMMMUIdx_Phys_S && idx <= ARMMMUIdx_Phys_Realm);
++    return idx - ARMMMUIdx_Phys_S;
++}
++
+ static inline bool arm_v7m_csselr_razwi(ARMCPU *cpu)
  {
-     const VirtMachineState *board = container_of(binfo, VirtMachineState,
-@@ -2283,6 +2303,10 @@ static void machvirt_init(MachineState *machine)
-                        machine->ram_size, "mach-virt.tag");
-     }
+     /* If all the CLIDR.Ctypem bits are 0 there are no caches, and
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 5aa58c200c..0788c342b8 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -182,8 +182,10 @@ static bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx,
+     case ARMMMUIdx_E3:
+         break;
  
-+    if (vms->rmm) {
-+        create_rmm_ram(vms, sysmem, tag_sysmem);
-+    }
-+
-     vms->highmem_ecam &= (!firmware_loaded || aarch64);
+-    case ARMMMUIdx_Phys_NS:
+     case ARMMMUIdx_Phys_S:
++    case ARMMMUIdx_Phys_NS:
++    case ARMMMUIdx_Phys_Root:
++    case ARMMMUIdx_Phys_Realm:
+         /* No translation for physical address spaces. */
+         return true;
  
-     create_rtc(vms);
-@@ -2562,6 +2586,20 @@ static void virt_set_mte(Object *obj, bool value, Error **errp)
-     vms->mte = value;
- }
+@@ -2636,8 +2638,10 @@ static bool get_phys_addr_disabled(CPUARMState *env, target_ulong address,
+     switch (mmu_idx) {
+     case ARMMMUIdx_Stage2:
+     case ARMMMUIdx_Stage2_S:
+-    case ARMMMUIdx_Phys_NS:
+     case ARMMMUIdx_Phys_S:
++    case ARMMMUIdx_Phys_NS:
++    case ARMMMUIdx_Phys_Root:
++    case ARMMMUIdx_Phys_Realm:
+         break;
  
-+static bool virt_get_rmm(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    return vms->rmm;
-+}
-+
-+static void virt_set_rmm(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    vms->rmm = value;
-+}
-+
- static char *virt_get_gic_version(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -3115,6 +3153,11 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-                                           "guest CPU which implements the ARM "
-                                           "Memory Tagging Extension");
- 
-+    object_class_property_add_bool(oc, "rmm", virt_get_rmm, virt_set_rmm);
-+    object_class_property_set_description(oc, "rmm",
-+                                          "Set on/off to enable/disable ram "
-+                                          "for the Realm Management Monitor");
-+
-     object_class_property_add_bool(oc, "its", virt_get_its,
-                                    virt_set_its);
-     object_class_property_set_description(oc, "its",
+     default:
+@@ -2834,6 +2838,8 @@ static bool get_phys_addr_with_struct(CPUARMState *env, S1Translate *ptw,
+     switch (mmu_idx) {
+     case ARMMMUIdx_Phys_S:
+     case ARMMMUIdx_Phys_NS:
++    case ARMMMUIdx_Phys_Root:
++    case ARMMMUIdx_Phys_Realm:
+         /* Checking Phys early avoids special casing later vs regime_el. */
+         return get_phys_addr_disabled(env, address, access_type, mmu_idx,
+                                       is_secure, result, fi);
 -- 
 2.34.1
 

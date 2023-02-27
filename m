@@ -1,109 +1,112 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4300510ejc;
-        Sun, 26 Feb 2023 21:49:29 -0800 (PST)
-X-Google-Smtp-Source: AK7set8DYMb0hFci68f69ASw4QIg1NrfZnGOb/BgUoJKaMgICjLVBU/2t/l6JrN2IS7L5M38URyh
-X-Received: by 2002:a05:622a:1d6:b0:3bf:e129:856b with SMTP id t22-20020a05622a01d600b003bfe129856bmr29968qtw.61.1677476969424;
-        Sun, 26 Feb 2023 21:49:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677476969; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4300564ejc;
+        Sun, 26 Feb 2023 21:49:35 -0800 (PST)
+X-Google-Smtp-Source: AK7set+PWq2slzkwEP5FZ/03VzvIn+PLEfJ8gkFtBD3opcvAxMUJL1ESmXRtL+qUCUZk1d4jnj6l
+X-Received: by 2002:a05:6214:23c5:b0:574:8ef8:89d1 with SMTP id hr5-20020a05621423c500b005748ef889d1mr458602qvb.5.1677476975064;
+        Sun, 26 Feb 2023 21:49:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677476975; cv=none;
         d=google.com; s=arc-20160816;
-        b=bix+N1RSXFcFm6RAMXynr63TbWUpQjI0CsdRoxzgRKoDxvEty7ImGG5zQOV66eCRDc
-         EUJHBQkyYBmQw1EenABmjJqf4IiZkaF4ZqhL/enp24xqNCtSY+q8BrSdYuK7K0SrOkpt
-         i0FtICDsYMHc4mSahezcKWWxi94QZ0TbbY06DPSi+QrbfO5bZjbIuk7xvyb5EEtYSj6W
-         Z3aRHBTqfSzkegLkjfisR+kTEDWZRp5W+XmPhzznsJQVWOHaSk7sWGmRRU4GATbKlPNT
-         8YWYEPf3t3xhuX8fZBArhhI4bFt4m9+iAR94+2alPsga/FUu/pETbuYlWPduBpWkQcIa
-         GbpQ==
+        b=Z73KS2aglCK3yJ9IMzDXcSC3htKUYIk7a0oH/RLU1P7x9wUEQJz8wRcZa7xRGO4wwr
+         nauPvBPPSAINf/WBaqYaqAh3SgpReBIfQe6DidhzXKTssDG7+Xie1+gv9RMZc3e7XL57
+         My4a8TBurE8rFlSZP5rY7oQN2XFVNIAQ3Znd1fqTE/+CP9TKkjEYonynwP6HNa3DI8Hy
+         lWMfDLHJpO6t3MgBjPfJnJMWPHifgeLwAvRUIDtrDATpvwiVMPmlultfbyjmVFiE39je
+         GEF8l2FiGgs68XIk/lljZl4j+ZeFvAgXCubVPVB14arPFLDRu8nS7GToz71TC0ieEYvX
+         lv2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Yrg+WFYxJya6wAchTB9F/B6YD3KKU7NwvfedNNECx5Y=;
-        b=yozYPPAzQSxts1vNOou4VQsr1FPECaOWz1fDjO7bsvKzAx6AuWbFbwld2gDhhNkzXi
-         BsaXZmbm7jBnEIp8kxHiyTEZcNgUR/hKZKmamrwjEes/kEG8CuyXwEQuJ+BKCs5H60v8
-         KL5cbDRt51a97CjoDJ/a9FW9SlDG7uo41OYeNPFD8YP9BfyP1SrLl+0YaTXRZmEcDo0h
-         nEr1Sf91wP0yylhpQg23Skmyqf1PwDSQ5h/+1HzecDSq4YpbPxW0TsoNM8nT31fJK37C
-         2i2l/QtFMDDlkcm+DdbIDuxXmqZc2BWugbzeUU4+PZSZPKmsq7VfaaYvmgp+W8V1L8l0
-         Rwfg==
+        bh=c/FsI5n4WgHRv66eevhE+xAIN7J7lkFbjUwPoPOuuXQ=;
+        b=M6KuMlCRki4LyogkeCNVTY/YlrUF+gtjdXVj5nBmvFYtJm7MT7qzGf5hMWQ1gMY2LM
+         B30XrcMJof3L1TbH7d0ZHdePN27jS1aHacGb/z4TCpCrRIIQ48qAwKBqNGi/nG6E0hR1
+         CL6u4nmbcs7U6b8TwKzX+1USmcWZTHML/SHh2yuItF/hFqrN/eGIolwx7ashoyI15Df4
+         mN1s7mu1tPR1uHuioh09lvBo4/6f/vH5ZHBKyA8G4Mb68C57R1m5YmMMSf4vgWBvqbt3
+         XETRcglV9NixeTEx6e1zoPuGPFyH1PEuIvtdrdiLHRWcO31rgf9aD+b7DW3azfZUNcDD
+         RoNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ETg8EjBc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vhwm0qvs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a20-20020aed2794000000b003b9f89d2720si5395171qtd.88.2023.02.26.21.49.29
+        by mx.google.com with ESMTPS id d7-20020ae9ef07000000b0073ba7884843si5430686qkg.8.2023.02.26.21.49.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 21:49:29 -0800 (PST)
+        Sun, 26 Feb 2023 21:49:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ETg8EjBc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vhwm0qvs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWWJP-0007J6-Iq; Mon, 27 Feb 2023 00:44:35 -0500
+	id 1pWWER-0000ax-W6; Mon, 27 Feb 2023 00:39:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWJF-0006oo-JL
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:44:25 -0500
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1pWWCz-0003Mg-Pz
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:38:08 -0500
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWJ6-0005Uj-Nj
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:44:25 -0500
-Received: by mail-pl1-x630.google.com with SMTP id n6so4177312plf.5
- for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:44:14 -0800 (PST)
+ id 1pWWCv-0002ow-BI
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:37:56 -0500
+Received: by mail-pj1-x1031.google.com with SMTP id
+ cp7-20020a17090afb8700b0023756229427so8910986pjb.1
+ for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:37:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Yrg+WFYxJya6wAchTB9F/B6YD3KKU7NwvfedNNECx5Y=;
- b=ETg8EjBcG8VzUHqiTwkZGxarGGVloeac7FWVACvw69W4/8bs/PsrRm+tbNqeZXrbXs
- h7PW/O+BmkmFlITBvhH6bs9HstcXNd6A7JdI8tNBp8eGUxv7BW59b3OAFpj2L0VYm3My
- 1zYTyROwqWZ9S0OrlGEZo9YGvgQRRl2iD/cDGCFQu7x2IVW5ONtyCAfS89hq5OU09a02
- aX4lCbcE9amiKE2kxrY9yNpunb9Dl2mGuxCavzyT8FXcQSEYtdoPpS06q6qE5wK/jqWb
- kQrlHHqGdfEaLZfC+/BUKJwbMVKWOl67j0ps4Ohfmxjw2E7GInIqK77hAfY6+SVLUlZF
- 0PKw==
+ bh=c/FsI5n4WgHRv66eevhE+xAIN7J7lkFbjUwPoPOuuXQ=;
+ b=Vhwm0qvsjtsA6wvMpMuv4W6xBYYfrNezIKAp1isoNgu76u1vMp7xhKecNJbXi5PLRj
+ VLnSkrB/UWEuiTxmzawxYjYdYYTuh+vWTBrVED11GTk000z4aQ8V1pOJCHYOcKWvnDTK
+ 4d7qwo5fAjmWH0jE8qWjN7RQVtJK/XKo+1x+knGwuB8xeGNdcgyrjSqr5vcRn3E+BY4w
+ +DUm9Pw1bPw+SsP5ZN3nnD8qBPgLRJy2h3zxyTTaIBDF3ZiIuOU5Ly1x0KMLHIXbcbeK
+ hR56oHByAhBwBh959oqfDl09C5XZFgCLz/hh9tUOkDhLLMwgCwGmmCipHJqlFR7Kn37p
+ NKRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Yrg+WFYxJya6wAchTB9F/B6YD3KKU7NwvfedNNECx5Y=;
- b=t5bg4zTRHBtcRlyPTmN5mjc03HvbIUEBjcrBgIDFE63R0QV340jqENDWjVWScgEhO7
- icnpPXECQqrtVeG+Cr8WBOOqNrs/P9Q0TQsotEMBAXqLpL3FASs65EKDZRfxvc+hiU2z
- bzyfJtJmFYm/ZFyn9lw0a6ZVeq9mR2254AFldx25rcTlIYMoHEeaZYk1hQIX/GXV2BTK
- Hu9U1deQ2yrioeIlC3CrNx7qzqqC6EX8r77GRrUSH+NUGyXZx4eYC1cJj8u8731gVnjI
- tT4pj6ds9F56D2efyiOAb5ChB8OZTdtUpi17y8Zra6J56fx/G3YoYzzjXGEnawHatzti
- 3xBw==
-X-Gm-Message-State: AO0yUKWb4JlHjVj+y1jnhbOZto97LR5BdQJR3d16g6bPMe8PTheU2pIz
- 7zBtT/x9AbfJ4Iuzrpe/mkSQaw==
-X-Received: by 2002:a05:6a20:3b17:b0:cd:1e80:5840 with SMTP id
- c23-20020a056a203b1700b000cd1e805840mr3500794pzh.34.1677476653804; 
- Sun, 26 Feb 2023 21:44:13 -0800 (PST)
+ bh=c/FsI5n4WgHRv66eevhE+xAIN7J7lkFbjUwPoPOuuXQ=;
+ b=v9ZJBHoEeHfhI588xABGd089uWUEvMVUjpcupHSvBcekC0MwctxeOpba6/4RkpMw7F
+ tSSbO5BuJw01qeenB/8oXL9WBmr6UPLY8aqdDp8shKIJny1EjyUbVVTdoETc4aX54BXd
+ gB62AqPpZr6vHEqbW9EhQLfkDJsvdircUs2nFwuErE7iNqAKcXPkBbesH3Vi0m1B/TAF
+ 1lhftvG9EWY8HuE/Ndg2zYDom3H87R1n/x+1ygO9Z++8YAIwJCgnGgHtFJrgNOQAZTlU
+ KFmGkOQNBeE7IgUIxXN5xPPD0gbhwhsZPJfdqOxHTJqGawR2yuQi948RZxU4ZdR6ihdf
+ +YVw==
+X-Gm-Message-State: AO0yUKU8ikGKVSvJgPP7YszYLlXD/cTYzQWlShwF254/C2C1q75OFdC2
+ UefAyqjIDgu6ziU0r4HSPlayJlenRdY9IzKDuBU=
+X-Received: by 2002:a05:6a20:9388:b0:cd:11e3:4105 with SMTP id
+ x8-20020a056a20938800b000cd11e34105mr5068539pzh.27.1677476270706; 
+ Sun, 26 Feb 2023 21:37:50 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- d10-20020aa7868a000000b005cdc64a287dsm3317137pfo.115.2023.02.26.21.44.11
+ k12-20020aa792cc000000b005a7c892b435sm3342137pfa.25.2023.02.26.21.37.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:44:13 -0800 (PST)
+ Sun, 26 Feb 2023 21:37:50 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
- edgar.iglesias@gmail.com
-Subject: [PATCH 34/70] target/ppc: Split out gen_vx_vmul10
-Date: Sun, 26 Feb 2023 19:41:57 -1000
-Message-Id: <20230227054233.390271-35-richard.henderson@linaro.org>
+ edgar.iglesias@gmail.com,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v4 16/31] accel/tcg/plugin: Tidy plugin_gen_disable_mem_helpers
+Date: Sun, 26 Feb 2023 19:36:46 -1000
+Message-Id: <20230227053701.368744-17-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230227054233.390271-1-richard.henderson@linaro.org>
-References: <20230227054233.390271-1-richard.henderson@linaro.org>
+In-Reply-To: <20230227053701.368744-1-richard.henderson@linaro.org>
+References: <20230227053701.368744-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,123 +128,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MVXnEi+Ya+I0
+X-TUID: VXJ+y+HCsCUz
 
-Move the body out of this large macro.
-Use tcg_constant_i64.
+Here we are creating a temp whose value needs to be replaced,
+but always storing NULL into CPUState.plugin_mem_cbs.
+Use tcg_constant_ptr(0) explicitly.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/ppc/translate/vmx-impl.c.inc | 95 +++++++++++++++--------------
- 1 file changed, 49 insertions(+), 46 deletions(-)
+ accel/tcg/plugin-gen.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/target/ppc/translate/vmx-impl.c.inc b/target/ppc/translate/vmx-impl.c.inc
-index 05ba9c9492..ee656d6a44 100644
---- a/target/ppc/translate/vmx-impl.c.inc
-+++ b/target/ppc/translate/vmx-impl.c.inc
-@@ -171,53 +171,56 @@ static void gen_mtvscr(DisasContext *ctx)
-     gen_helper_mtvscr(cpu_env, val);
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index 9b793ac62c..c42a436c0c 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -630,8 +630,6 @@ static void inject_mem_disable_helper(struct qemu_plugin_insn *plugin_insn,
+ /* called before finishing a TB with exit_tb, goto_tb or goto_ptr */
+ void plugin_gen_disable_mem_helpers(void)
+ {
+-    TCGv_ptr ptr;
+-
+     /*
+      * We could emit the clearing unconditionally and be done. However, this can
+      * be wasteful if for instance plugins don't track memory accesses, or if
+@@ -644,10 +642,8 @@ void plugin_gen_disable_mem_helpers(void)
+     if (!tcg_ctx->plugin_tb->mem_helper) {
+         return;
+     }
+-    ptr = tcg_const_ptr(NULL);
+-    tcg_gen_st_ptr(ptr, cpu_env, offsetof(CPUState, plugin_mem_cbs) -
+-                                 offsetof(ArchCPU, env));
+-    tcg_temp_free_ptr(ptr);
++    tcg_gen_st_ptr(tcg_constant_ptr(NULL), cpu_env,
++                   offsetof(CPUState, plugin_mem_cbs) - offsetof(ArchCPU, env));
  }
  
-+static void gen_vx_vmul10(DisasContext *ctx, bool add_cin, bool ret_carry)
-+{
-+    TCGv_i64 t0;
-+    TCGv_i64 t1;
-+    TCGv_i64 t2;
-+    TCGv_i64 avr;
-+    TCGv_i64 ten, z;
-+
-+    if (unlikely(!ctx->altivec_enabled)) {
-+        gen_exception(ctx, POWERPC_EXCP_VPU);
-+        return;
-+    }
-+
-+    t0 = tcg_temp_new_i64();
-+    t1 = tcg_temp_new_i64();
-+    t2 = tcg_temp_new_i64();
-+    avr = tcg_temp_new_i64();
-+    ten = tcg_constant_i64(10);
-+    z = tcg_constant_i64(0);
-+
-+    if (add_cin) {
-+        get_avr64(avr, rA(ctx->opcode), false);
-+        tcg_gen_mulu2_i64(t0, t1, avr, ten);
-+        get_avr64(avr, rB(ctx->opcode), false);
-+        tcg_gen_andi_i64(t2, avr, 0xF);
-+        tcg_gen_add2_i64(avr, t2, t0, t1, t2, z);
-+        set_avr64(rD(ctx->opcode), avr, false);
-+    } else {
-+        get_avr64(avr, rA(ctx->opcode), false);
-+        tcg_gen_mulu2_i64(avr, t2, avr, ten);
-+        set_avr64(rD(ctx->opcode), avr, false);
-+    }
-+
-+    if (ret_carry) {
-+        get_avr64(avr, rA(ctx->opcode), true);
-+        tcg_gen_mulu2_i64(t0, t1, avr, ten);
-+        tcg_gen_add2_i64(t0, avr, t0, t1, t2, z);
-+        set_avr64(rD(ctx->opcode), avr, false);
-+        set_avr64(rD(ctx->opcode), z, true);
-+    } else {
-+        get_avr64(avr, rA(ctx->opcode), true);
-+        tcg_gen_mul_i64(t0, avr, ten);
-+        tcg_gen_add_i64(avr, t0, t2);
-+        set_avr64(rD(ctx->opcode), avr, true);
-+    }
-+}
-+
- #define GEN_VX_VMUL10(name, add_cin, ret_carry)                         \
--static void glue(gen_, name)(DisasContext *ctx)                         \
--{                                                                       \
--    TCGv_i64 t0;                                                        \
--    TCGv_i64 t1;                                                        \
--    TCGv_i64 t2;                                                        \
--    TCGv_i64 avr;                                                       \
--    TCGv_i64 ten, z;                                                    \
--                                                                        \
--    if (unlikely(!ctx->altivec_enabled)) {                              \
--        gen_exception(ctx, POWERPC_EXCP_VPU);                           \
--        return;                                                         \
--    }                                                                   \
--                                                                        \
--    t0 = tcg_temp_new_i64();                                            \
--    t1 = tcg_temp_new_i64();                                            \
--    t2 = tcg_temp_new_i64();                                            \
--    avr = tcg_temp_new_i64();                                           \
--    ten = tcg_const_i64(10);                                            \
--    z = tcg_const_i64(0);                                               \
--                                                                        \
--    if (add_cin) {                                                      \
--        get_avr64(avr, rA(ctx->opcode), false);                         \
--        tcg_gen_mulu2_i64(t0, t1, avr, ten);                            \
--        get_avr64(avr, rB(ctx->opcode), false);                         \
--        tcg_gen_andi_i64(t2, avr, 0xF);                                 \
--        tcg_gen_add2_i64(avr, t2, t0, t1, t2, z);                       \
--        set_avr64(rD(ctx->opcode), avr, false);                         \
--    } else {                                                            \
--        get_avr64(avr, rA(ctx->opcode), false);                         \
--        tcg_gen_mulu2_i64(avr, t2, avr, ten);                           \
--        set_avr64(rD(ctx->opcode), avr, false);                         \
--    }                                                                   \
--                                                                        \
--    if (ret_carry) {                                                    \
--        get_avr64(avr, rA(ctx->opcode), true);                          \
--        tcg_gen_mulu2_i64(t0, t1, avr, ten);                            \
--        tcg_gen_add2_i64(t0, avr, t0, t1, t2, z);                       \
--        set_avr64(rD(ctx->opcode), avr, false);                         \
--        set_avr64(rD(ctx->opcode), z, true);                            \
--    } else {                                                            \
--        get_avr64(avr, rA(ctx->opcode), true);                          \
--        tcg_gen_mul_i64(t0, avr, ten);                                  \
--        tcg_gen_add_i64(avr, t0, t2);                                   \
--        set_avr64(rD(ctx->opcode), avr, true);                          \
--    }                                                                   \
--}                                                                       \
-+    static void glue(gen_, name)(DisasContext *ctx)                     \
-+    { gen_vx_vmul10(ctx, add_cin, ret_carry); }
- 
- GEN_VX_VMUL10(vmul10uq, 0, 0);
- GEN_VX_VMUL10(vmul10euq, 1, 0);
+ static void plugin_gen_tb_udata(const struct qemu_plugin_tb *ptb,
 -- 
 2.34.1
 

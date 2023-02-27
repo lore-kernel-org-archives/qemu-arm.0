@@ -1,497 +1,287 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4404705ejc;
-        Mon, 27 Feb 2023 00:25:17 -0800 (PST)
-X-Google-Smtp-Source: AK7set/pR0XuSzkuX6vQSFyqYTW/o2dPI5ML13GJOb5nSL4UQEfV1Ueu2o9z6N1SQ9j661wG2LWj
-X-Received: by 2002:a05:622a:1902:b0:3bf:a932:5bce with SMTP id w2-20020a05622a190200b003bfa9325bcemr15292498qtc.2.1677486316822;
-        Mon, 27 Feb 2023 00:25:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677486316; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4406495ejc;
+        Mon, 27 Feb 2023 00:27:57 -0800 (PST)
+X-Google-Smtp-Source: AK7set/QWILb/+D+wjC5ZoNo1ovfXM3+gIAuwre2rR1tN6yp0YvYGOF5a4bDcRr/YPL1oPc9cywe
+X-Received: by 2002:a05:622a:14d2:b0:3bc:f954:323a with SMTP id u18-20020a05622a14d200b003bcf954323amr35564733qtx.62.1677486477046;
+        Mon, 27 Feb 2023 00:27:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677486477; cv=none;
         d=google.com; s=arc-20160816;
-        b=VHWHmeXIIO/AnwJffGLFgHI2P2Mwsq8MgoZpqiNbqMPUNYzSb2mErF1MQ+PWV+O1oR
-         Vycl3P3S24xXZm6y6mFyf/oPUvHEMfYirO0VN5HMzV5aBEgNm2iVckCff/oXjCx/IdLT
-         ox10SQsu4wsbsG3wfA2QOyORH9PQDNLOei/IYqO5mjjbpiLFQWlvHAzfyUssUtSdMq/T
-         d6bbTs9SHL1Iza/fvBNwuqMwlXGqtZwtdl6KIH9/2ZothuDd3Q7MNXb5bHz1S++PsotV
-         dMLAc/+p3xrX6nbvemvYjGFZ1W3THGkCHhYVrKz6g4NPbA9zy5Uw5tnpRb4qWeykUtGS
-         tx8g==
+        b=x0Bn+dbNegPSnZZS4JROQj5voYxq7Dg5ucHCscL2zsAHd2EJA1tDvHNjHZ98/J1vvR
+         H/D9d1cUq27b4/MKBwc4KVT7DTOf+Br6W3gf0GhY42qWR3oM8L412l4DHXftXJb3YG2x
+         nu3374CXrvgp+oxY4DFRIFMtAZsz/r0GSV8gsNSUHDVESu1lNQg4A1YGrwx3rEa1RGV2
+         AOsvb+BSTj0sGFCQjPH/A/KihwxDXapDKqnfQOOIhVdBwK++Xc9U2i4dCVpTxePTRiXh
+         26ae4sK4Fit0SXhEIjwOJQMmFvSDJhUb6/ekIclHK1lAKz/1gtCnFe/kREGLHT3L+GSd
+         lVog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=zkW1vaFC0G371o+4EsH00qoff6qPS79ROCERJ+YGb8E=;
-        b=nZCLjF8V+krBtbrJ5WAUlnBZb61rj4YE6a501XLhotcOOxrtuBngYNuhCjcTrt1G8d
-         MREO7KHds9Etpd8WWp+BR4WitTE8b4NqACB9HcSjWkzU8bMVQ+Ewekoecck4Oa2mTEeW
-         divGCTEniXFJGrtcpkruizJsaQ4HMNdORmYBE851wlOhEjew6R2VNMaOUzcorQP5iws7
-         ZLLdPc5ZeldOD17RhzlJOK+giUzhPE05jnnasbmVNwcysGkM0YhPS6hW8CM+Q+goAYYB
-         gwWIDBHzXKWKoRt4B3+ugrPYfrmSGNJJueF9e5AC8ZttDx18kLnoFg3ICPD68J3K3PTx
-         +8vg==
+        bh=0nmZI0+w1F7+8GnTL6IOgNGmXVjRV/sPnzdawMkimPw=;
+        b=YvODwh7dQ4kvAveg64x4warY4ikl3YtfLV31PXRVUvLnrlj1TUa8RUSL5sjxFZKJ1X
+         Ad0cGs2KXFaKkYTnoVXrokeSFBOK33kH5vOJOPGrrdh5/qfOKp8q0mwNj7cUUnqK11cA
+         ZPdKyU4ePmwgurzXm7pA7fjSFr6kifqm39DXZGFYTjnKL6eQIFoD2JTSpDcDyaxZxlhw
+         5nPytnwoUmuNmi04oFFrcOhaZuNg/lwnmed/XMhr+KCpX4GMHxXtN67mPH0uCF8iKk4G
+         LfR5UQIFLMR+lVypzZdszvRhdhJozB9G91TYC6BrJhogyMAQNpNXqj7DxnYJNRRA/TWB
+         cl/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zWvedsiJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="K8J/HxW0";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h15-20020ac87d4f000000b003b855c33ae9si6086060qtb.506.2023.02.27.00.25.16
+        by mx.google.com with ESMTPS id x19-20020ac85f13000000b003bd0a5ef178si6219335qta.339.2023.02.27.00.27.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 00:25:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Feb 2023 00:27:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zWvedsiJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="K8J/HxW0";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWWCK-0001cR-Gn; Mon, 27 Feb 2023 00:37:16 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pWWI5-00030Y-SJ; Mon, 27 Feb 2023 00:43:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWCJ-0001aV-9q
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:37:15 -0500
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+ id 1pWWI3-0002uM-99
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:43:11 -0500
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWCG-0002SP-SL
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:37:14 -0500
-Received: by mail-pg1-x52a.google.com with SMTP id bn17so2827748pgb.10
- for <qemu-devel@nongnu.org>; Sun, 26 Feb 2023 21:37:12 -0800 (PST)
+ id 1pWWHx-0004nL-Vm
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:43:10 -0500
+Received: by mail-pg1-x529.google.com with SMTP id q23so2845664pgt.7
+ for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:43:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=zkW1vaFC0G371o+4EsH00qoff6qPS79ROCERJ+YGb8E=;
- b=zWvedsiJ+09mRVomDBsFdL1z5cbEa+ajs7w69se50ZNMtGEICKnh4LEMgZr+CEiK1M
- IkDZ2YpovJiNUB3NdnpRv8yyj2QFHCiq7uLnQDRwf0p5XEALcCjMN+JEHmWTmjPNO3aA
- TYOLl0jx+2SCDwo0LXD87FLXEJA0w979n11Ottv2vSq7166mqtJlbVCXqv8sUrnOkspn
- pP07/KWmb+Jq6FT+eAJFHlrqUF+UHJLHZpIjbYVvDbPnOFfXJULyc85RGP96StYK+IY8
- 1NdgRDOlU71+e8dm5nsTOcK+jddg/WtiFws3x4V5GR7l4wS+AE+xe5iBt9g/+lGKKmom
- Fqag==
+ bh=0nmZI0+w1F7+8GnTL6IOgNGmXVjRV/sPnzdawMkimPw=;
+ b=K8J/HxW0kYm5MJYbIN1+NHclfSdEHUG7kRD5dK3ljLUzPY/O/eS3zPjZU+6C1MksUe
+ jZXDFI76tpfAUMvXWXMBcmY7+9ZYWk55GyUsveT5VUhhl8MxDy7BkSafu0jgsVH7ytwS
+ A29yeGul3VsuxaAg4Sc8Ng+tkVqjgKDH3HOHx/fQBK6IIFaPRpunAnngWTIH9TtEsc6T
+ t2AxIQoXlQk5I93wYlyXRqyC7HhwPw9MUQHDk4JWgsmYI64owIOpubEgVmKO6y4qQrhe
+ Mbsv9Z7exMhrsI3MLdVRgMKjPG9OdgYTpocZiVrhDqesaU/CEUStYA6urFMfQ7dobHfi
+ i/lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=zkW1vaFC0G371o+4EsH00qoff6qPS79ROCERJ+YGb8E=;
- b=6RXqDvPNsP0Eb+Jab9lE9LfnJe1LYu9rgH4R8zmlxvD67Jf4x+VQNOXKIjjPGSuESr
- hQTc9JpVPne3iKF7jISDISswrpSB8i1X+ybFzwaDfgs914GADbpJYSCVo89jdX+NNkDx
- pfyTP+koayQx8yuwIcuY91D77Bo1ROkA/rSvSegD2VIyfSm9qc25eDtS7KwqA5YQ+5PV
- DNyzX9WXMBS1GgUcJreh8mY0o4oTZjbY1A3Ex6eLkRO+yjmWSOkeXVl/Ja0q4NfAqZec
- /bKSdxfrve6mndayTwC3FRXjCSd9pmhxsao26OIG24IXFBXM5okiFp6fGdI4PLjscFYX
- o3Gw==
-X-Gm-Message-State: AO0yUKU1IWpbXSod/ZMOAk9yTta1E0JHLFD36X/PZ1+o4oVxj7moBJEX
- t5oGNRByYJ/BtUcaBak1bpa5tw1dGeYPc/nN3tM=
-X-Received: by 2002:aa7:888f:0:b0:5a8:c699:3eaa with SMTP id
- z15-20020aa7888f000000b005a8c6993eaamr8269593pfe.9.1677476231486; 
- Sun, 26 Feb 2023 21:37:11 -0800 (PST)
+ bh=0nmZI0+w1F7+8GnTL6IOgNGmXVjRV/sPnzdawMkimPw=;
+ b=ewpL/f7jFswRrLttWCWirIZkb1bn7yIxWDOKX0zvMvYpwQZDPmiCfvHPfKqvanM5or
+ nZl4bYhblSeljpDNwHAUuh7gj4Lohd43l58vvfU7ByeL7YUK8vhnJ9HGDRJG5DdlhluF
+ WXKAL0xNnsNn+dzSht1RvWrTY0KvH03GLP5k0sgNipwK5ebUQAWdG4W97Q2RiMM5ATQw
+ eck81deFP8ZbtOf8IY5qHI+J6jaCYKekznKAVPxYdpnaDLkAu08P3ljMPZ6un7Hp4NMk
+ rtB3B0opH9ywWIokfLcJXpsvyGTzmK3l8targ8Gk6kMkeDlxl2PT2Em3MS9vY+nuxfSH
+ Tvfg==
+X-Gm-Message-State: AO0yUKUr+uFQZFoASbnNqblXdQihX6qvtxpg22eXElBwOrEO0R/KE/K/
+ 5uE4kpPMM7jMWT8W5xNN2cxspg==
+X-Received: by 2002:aa7:96a1:0:b0:5f1:468b:c88 with SMTP id
+ g1-20020aa796a1000000b005f1468b0c88mr3280250pfk.27.1677476585074; 
+ Sun, 26 Feb 2023 21:43:05 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- k12-20020aa792cc000000b005a7c892b435sm3342137pfa.25.2023.02.26.21.37.08
+ d10-20020aa7868a000000b005cdc64a287dsm3317137pfo.115.2023.02.26.21.43.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:37:11 -0800 (PST)
+ Sun, 26 Feb 2023 21:43:04 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
- edgar.iglesias@gmail.com,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v4 02/31] accel/tcg: Pass max_insn to gen_intermediate_code by
- pointer
-Date: Sun, 26 Feb 2023 19:36:32 -1000
-Message-Id: <20230227053701.368744-3-richard.henderson@linaro.org>
+ edgar.iglesias@gmail.com
+Subject: [PATCH 08/70] target/arm: Avoid tcg_const_* in translate-mve.c
+Date: Sun, 26 Feb 2023 19:41:31 -1000
+Message-Id: <20230227054233.390271-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230227053701.368744-1-richard.henderson@linaro.org>
-References: <20230227053701.368744-1-richard.henderson@linaro.org>
+In-Reply-To: <20230227054233.390271-1-richard.henderson@linaro.org>
+References: <20230227054233.390271-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QbIDFnIheVKc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pTxamTKHDpnI
 
-In preparation for returning the number of insns generated
-via the same pointer.  Adjust only the prototypes so far.
+All uses are in the context of an accumulator conditionally
+having a zero input.  Split the rda variable to rda_{i,o},
+and set rda_i to tcg_constant_foo(0) when required.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/translator.h     | 4 ++--
- accel/tcg/translate-all.c     | 2 +-
- accel/tcg/translator.c        | 4 ++--
- target/alpha/translate.c      | 2 +-
- target/arm/translate.c        | 2 +-
- target/avr/translate.c        | 2 +-
- target/cris/translate.c       | 2 +-
- target/hexagon/translate.c    | 2 +-
- target/hppa/translate.c       | 2 +-
- target/i386/tcg/translate.c   | 2 +-
- target/loongarch/translate.c  | 2 +-
- target/m68k/translate.c       | 2 +-
- target/microblaze/translate.c | 2 +-
- target/mips/tcg/translate.c   | 2 +-
- target/nios2/translate.c      | 2 +-
- target/openrisc/translate.c   | 2 +-
- target/ppc/translate.c        | 2 +-
- target/riscv/translate.c      | 2 +-
- target/rx/translate.c         | 2 +-
- target/s390x/tcg/translate.c  | 2 +-
- target/sh4/translate.c        | 2 +-
- target/sparc/translate.c      | 2 +-
- target/tricore/translate.c    | 2 +-
- target/xtensa/translate.c     | 2 +-
- 24 files changed, 26 insertions(+), 26 deletions(-)
+ target/arm/translate-mve.c | 54 ++++++++++++++++++++------------------
+ 1 file changed, 29 insertions(+), 25 deletions(-)
 
-diff --git a/include/exec/translator.h b/include/exec/translator.h
-index af2ff95cd5..8b36690e80 100644
---- a/include/exec/translator.h
-+++ b/include/exec/translator.h
-@@ -37,7 +37,7 @@
-  * This function must be provided by the target, which should create
-  * the target-specific DisasContext, and then invoke translator_loop.
-  */
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc);
- 
- /**
-@@ -146,7 +146,7 @@ typedef struct TranslatorOps {
-  * - When single-stepping is enabled (system-wide or on the current vCPU).
-  * - When too many instructions have been translated.
-  */
--void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+void translator_loop(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-                      target_ulong pc, void *host_pc,
-                      const TranslatorOps *ops, DisasContextBase *db);
- 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 9e925c10f3..b7b361959e 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -281,7 +281,7 @@ static int setjmp_gen_code(CPUArchState *env, TranslationBlock *tb,
-     tcg_func_start(tcg_ctx);
- 
-     tcg_ctx->cpu = env_cpu(env);
--    gen_intermediate_code(env_cpu(env), tb, *max_insns, pc, host_pc);
-+    gen_intermediate_code(env_cpu(env), tb, max_insns, pc, host_pc);
-     assert(tb->size != 0);
-     tcg_ctx->cpu = NULL;
-     *max_insns = tb->icount;
-diff --git a/accel/tcg/translator.c b/accel/tcg/translator.c
-index 1cf404ced0..fac1e8c465 100644
---- a/accel/tcg/translator.c
-+++ b/accel/tcg/translator.c
-@@ -42,7 +42,7 @@ bool translator_use_goto_tb(DisasContextBase *db, target_ulong dest)
-     return ((db->pc_first ^ dest) & TARGET_PAGE_MASK) == 0;
- }
- 
--void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+void translator_loop(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-                      target_ulong pc, void *host_pc,
-                      const TranslatorOps *ops, DisasContextBase *db)
+diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
+index 9744bf3de0..31fb2110f1 100644
+--- a/target/arm/translate-mve.c
++++ b/target/arm/translate-mve.c
+@@ -1150,7 +1150,7 @@ static bool do_long_dual_acc(DisasContext *s, arg_vmlaldav *a,
+                              MVEGenLongDualAccOpFn *fn)
  {
-@@ -55,7 +55,7 @@ void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
-     db->pc_next = pc;
-     db->is_jmp = DISAS_NEXT;
-     db->num_insns = 0;
--    db->max_insns = max_insns;
-+    db->max_insns = *max_insns;
-     db->singlestep_enabled = cflags & CF_SINGLE_STEP;
-     db->host_addr[0] = host_pc;
-     db->host_addr[1] = NULL;
-diff --git a/target/alpha/translate.c b/target/alpha/translate.c
-index f9bcdeb717..716b083f39 100644
---- a/target/alpha/translate.c
-+++ b/target/alpha/translate.c
-@@ -3043,7 +3043,7 @@ static const TranslatorOps alpha_tr_ops = {
-     .disas_log          = alpha_tr_disas_log,
- };
+     TCGv_ptr qn, qm;
+-    TCGv_i64 rda;
++    TCGv_i64 rda_i, rda_o;
+     TCGv_i32 rdalo, rdahi;
  
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
+     if (!dc_isar_feature(aa32_mve, s) ||
+@@ -1177,21 +1177,22 @@ static bool do_long_dual_acc(DisasContext *s, arg_vmlaldav *a,
+      * of an A=0 (no-accumulate) insn which does not execute the first
+      * beat must start with the current rda value, not 0.
+      */
++    rda_o = tcg_temp_new_i64();
+     if (a->a || mve_skip_first_beat(s)) {
+-        rda = tcg_temp_new_i64();
++        rda_i = rda_o;
+         rdalo = load_reg(s, a->rdalo);
+         rdahi = load_reg(s, a->rdahi);
+-        tcg_gen_concat_i32_i64(rda, rdalo, rdahi);
++        tcg_gen_concat_i32_i64(rda_i, rdalo, rdahi);
+     } else {
+-        rda = tcg_const_i64(0);
++        rda_i = tcg_constant_i64(0);
+     }
+ 
+-    fn(rda, cpu_env, qn, qm, rda);
++    fn(rda_o, cpu_env, qn, qm, rda_i);
+ 
+     rdalo = tcg_temp_new_i32();
+     rdahi = tcg_temp_new_i32();
+-    tcg_gen_extrl_i64_i32(rdalo, rda);
+-    tcg_gen_extrh_i64_i32(rdahi, rda);
++    tcg_gen_extrl_i64_i32(rdalo, rda_o);
++    tcg_gen_extrh_i64_i32(rdahi, rda_o);
+     store_reg(s, a->rdalo, rdalo);
+     store_reg(s, a->rdahi, rdahi);
+     mve_update_eci(s);
+@@ -1258,7 +1259,7 @@ static bool trans_VRMLSLDAVH(DisasContext *s, arg_vmlaldav *a)
+ static bool do_dual_acc(DisasContext *s, arg_vmladav *a, MVEGenDualAccOpFn *fn)
  {
-     DisasContext dc;
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index c23a3462bf..92955d505c 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -9970,7 +9970,7 @@ static const TranslatorOps thumb_translator_ops = {
- };
+     TCGv_ptr qn, qm;
+-    TCGv_i32 rda;
++    TCGv_i32 rda_i, rda_o;
  
- /* generate intermediate code for basic block 'tb'.  */
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc = { };
-diff --git a/target/avr/translate.c b/target/avr/translate.c
-index 2bed56f135..e40d8e9681 100644
---- a/target/avr/translate.c
-+++ b/target/avr/translate.c
-@@ -3049,7 +3049,7 @@ static const TranslatorOps avr_tr_ops = {
-     .disas_log          = avr_tr_disas_log,
- };
+     if (!dc_isar_feature(aa32_mve, s) ||
+         !mve_check_qreg_bank(s, a->qn) ||
+@@ -1278,13 +1279,14 @@ static bool do_dual_acc(DisasContext *s, arg_vmladav *a, MVEGenDualAccOpFn *fn)
+      * beat must start with the current rda value, not 0.
+      */
+     if (a->a || mve_skip_first_beat(s)) {
+-        rda = load_reg(s, a->rda);
++        rda_o = rda_i = load_reg(s, a->rda);
+     } else {
+-        rda = tcg_const_i32(0);
++        rda_i = tcg_constant_i32(0);
++        rda_o = tcg_temp_new_i32();
+     }
  
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc = { };
-diff --git a/target/cris/translate.c b/target/cris/translate.c
-index fbc3fd5865..905d01288e 100644
---- a/target/cris/translate.c
-+++ b/target/cris/translate.c
-@@ -3286,7 +3286,7 @@ static const TranslatorOps cris_tr_ops = {
-     .disas_log          = cris_tr_disas_log,
- };
+-    fn(rda, cpu_env, qn, qm, rda);
+-    store_reg(s, a->rda, rda);
++    fn(rda_o, cpu_env, qn, qm, rda_i);
++    store_reg(s, a->rda, rda_o);
  
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
-diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
-index 75f28e08ad..fc3061a540 100644
---- a/target/hexagon/translate.c
-+++ b/target/hexagon/translate.c
-@@ -962,7 +962,7 @@ static const TranslatorOps hexagon_tr_ops = {
-     .disas_log          = hexagon_tr_disas_log,
- };
+     mve_update_eci(s);
+     return true;
+@@ -1396,7 +1398,7 @@ static bool trans_VADDV(DisasContext *s, arg_VADDV *a)
+         { NULL, NULL }
+     };
+     TCGv_ptr qm;
+-    TCGv_i32 rda;
++    TCGv_i32 rda_i, rda_o;
  
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
-diff --git a/target/hppa/translate.c b/target/hppa/translate.c
-index 981f8ee03d..0102cf451b 100644
---- a/target/hppa/translate.c
-+++ b/target/hppa/translate.c
-@@ -4359,7 +4359,7 @@ static const TranslatorOps hppa_tr_ops = {
-     .disas_log          = hppa_tr_disas_log,
- };
+     if (!dc_isar_feature(aa32_mve, s) ||
+         a->size == 3) {
+@@ -1413,15 +1415,16 @@ static bool trans_VADDV(DisasContext *s, arg_VADDV *a)
+      */
+     if (a->a || mve_skip_first_beat(s)) {
+         /* Accumulate input from Rda */
+-        rda = load_reg(s, a->rda);
++        rda_o = rda_i = load_reg(s, a->rda);
+     } else {
+         /* Accumulate starting at zero */
+-        rda = tcg_const_i32(0);
++        rda_i = tcg_constant_i32(0);
++        rda_o = tcg_temp_new_i32();
+     }
  
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
-diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
-index 9d9392b009..a47d60f057 100644
---- a/target/i386/tcg/translate.c
-+++ b/target/i386/tcg/translate.c
-@@ -7158,7 +7158,7 @@ static const TranslatorOps i386_tr_ops = {
- };
+     qm = mve_qreg_ptr(a->qm);
+-    fns[a->size][a->u](rda, cpu_env, qm, rda);
+-    store_reg(s, a->rda, rda);
++    fns[a->size][a->u](rda_o, cpu_env, qm, rda_i);
++    store_reg(s, a->rda, rda_o);
  
- /* generate intermediate code for basic block 'tb'.  */
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
-diff --git a/target/loongarch/translate.c b/target/loongarch/translate.c
-index 72a6275665..2a43ab0201 100644
---- a/target/loongarch/translate.c
-+++ b/target/loongarch/translate.c
-@@ -245,7 +245,7 @@ static const TranslatorOps loongarch_tr_ops = {
-     .disas_log          = loongarch_tr_disas_log,
- };
+     mve_update_eci(s);
+     return true;
+@@ -1436,7 +1439,7 @@ static bool trans_VADDLV(DisasContext *s, arg_VADDLV *a)
+      * No need to check Qm's bank: it is only 3 bits in decode.
+      */
+     TCGv_ptr qm;
+-    TCGv_i64 rda;
++    TCGv_i64 rda_i, rda_o;
+     TCGv_i32 rdalo, rdahi;
  
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 31178c3b1d..157c2cbb8f 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -6393,7 +6393,7 @@ static const TranslatorOps m68k_tr_ops = {
-     .disas_log          = m68k_tr_disas_log,
- };
+     if (!dc_isar_feature(aa32_mve, s)) {
+@@ -1458,28 +1461,29 @@ static bool trans_VADDLV(DisasContext *s, arg_VADDLV *a)
+      * of an A=0 (no-accumulate) insn which does not execute the first
+      * beat must start with the current value of RdaHi:RdaLo, not zero.
+      */
++    rda_o = tcg_temp_new_i64();
+     if (a->a || mve_skip_first_beat(s)) {
+         /* Accumulate input from RdaHi:RdaLo */
+-        rda = tcg_temp_new_i64();
++        rda_i = rda_o;
+         rdalo = load_reg(s, a->rdalo);
+         rdahi = load_reg(s, a->rdahi);
+-        tcg_gen_concat_i32_i64(rda, rdalo, rdahi);
++        tcg_gen_concat_i32_i64(rda_i, rdalo, rdahi);
+     } else {
+         /* Accumulate starting at zero */
+-        rda = tcg_const_i64(0);
++        rda_i = tcg_constant_i64(0);
+     }
  
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
-diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
-index 974f21eb31..037a652cb9 100644
---- a/target/microblaze/translate.c
-+++ b/target/microblaze/translate.c
-@@ -1849,7 +1849,7 @@ static const TranslatorOps mb_tr_ops = {
-     .disas_log          = mb_tr_disas_log,
- };
+     qm = mve_qreg_ptr(a->qm);
+     if (a->u) {
+-        gen_helper_mve_vaddlv_u(rda, cpu_env, qm, rda);
++        gen_helper_mve_vaddlv_u(rda_o, cpu_env, qm, rda_i);
+     } else {
+-        gen_helper_mve_vaddlv_s(rda, cpu_env, qm, rda);
++        gen_helper_mve_vaddlv_s(rda_o, cpu_env, qm, rda_i);
+     }
  
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
-diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
-index aa12bb708a..bd70fcad25 100644
---- a/target/mips/tcg/translate.c
-+++ b/target/mips/tcg/translate.c
-@@ -16159,7 +16159,7 @@ static const TranslatorOps mips_tr_ops = {
-     .disas_log          = mips_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
-diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-index 7aee65a089..140bc31017 100644
---- a/target/nios2/translate.c
-+++ b/target/nios2/translate.c
-@@ -1037,7 +1037,7 @@ static const TranslatorOps nios2_tr_ops = {
-     .disas_log          = nios2_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
-diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
-index 2f3d7c5fd1..b8cd8e0964 100644
---- a/target/openrisc/translate.c
-+++ b/target/openrisc/translate.c
-@@ -1705,7 +1705,7 @@ static const TranslatorOps openrisc_tr_ops = {
-     .disas_log          = openrisc_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
-diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-index 1c17d5a558..5fe6aa641e 100644
---- a/target/ppc/translate.c
-+++ b/target/ppc/translate.c
-@@ -7707,7 +7707,7 @@ static const TranslatorOps ppc_tr_ops = {
-     .disas_log          = ppc_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
-diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-index 772f9d7973..f9d5d1097e 100644
---- a/target/riscv/translate.c
-+++ b/target/riscv/translate.c
-@@ -1309,7 +1309,7 @@ static const TranslatorOps riscv_tr_ops = {
-     .disas_log          = riscv_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
-diff --git a/target/rx/translate.c b/target/rx/translate.c
-index 87a3f54adb..af23876cb3 100644
---- a/target/rx/translate.c
-+++ b/target/rx/translate.c
-@@ -2363,7 +2363,7 @@ static const TranslatorOps rx_tr_ops = {
-     .disas_log          = rx_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
-diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
-index ac5bd98f04..339c1672e9 100644
---- a/target/s390x/tcg/translate.c
-+++ b/target/s390x/tcg/translate.c
-@@ -6759,7 +6759,7 @@ static const TranslatorOps s390x_tr_ops = {
-     .disas_log          = s390x_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc;
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index 7db3468b01..23563024e0 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -2374,7 +2374,7 @@ static const TranslatorOps sh4_tr_ops = {
-     .disas_log          = sh4_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
-diff --git a/target/sparc/translate.c b/target/sparc/translate.c
-index 150aeecd14..3b0044aa66 100644
---- a/target/sparc/translate.c
-+++ b/target/sparc/translate.c
-@@ -5904,7 +5904,7 @@ static const TranslatorOps sparc_tr_ops = {
-     .disas_log          = sparc_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc = {};
-diff --git a/target/tricore/translate.c b/target/tricore/translate.c
-index 7ac34efd76..176ea96b2b 100644
---- a/target/tricore/translate.c
-+++ b/target/tricore/translate.c
-@@ -8881,7 +8881,7 @@ static const TranslatorOps tricore_tr_ops = {
- };
- 
- 
--void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext ctx;
-diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
-index 77bcd71030..8d7bf566de 100644
---- a/target/xtensa/translate.c
-+++ b/target/xtensa/translate.c
-@@ -1279,7 +1279,7 @@ static const TranslatorOps xtensa_translator_ops = {
-     .disas_log          = xtensa_tr_disas_log,
- };
- 
--void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
-+void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-                            target_ulong pc, void *host_pc)
- {
-     DisasContext dc = {};
+     rdalo = tcg_temp_new_i32();
+     rdahi = tcg_temp_new_i32();
+-    tcg_gen_extrl_i64_i32(rdalo, rda);
+-    tcg_gen_extrh_i64_i32(rdahi, rda);
++    tcg_gen_extrl_i64_i32(rdalo, rda_o);
++    tcg_gen_extrh_i64_i32(rdahi, rda_o);
+     store_reg(s, a->rdalo, rdalo);
+     store_reg(s, a->rdahi, rdahi);
+     mve_update_eci(s);
 -- 
 2.34.1
 

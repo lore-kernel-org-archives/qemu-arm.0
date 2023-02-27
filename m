@@ -1,92 +1,92 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4290321ejc;
-        Sun, 26 Feb 2023 21:31:02 -0800 (PST)
-X-Google-Smtp-Source: AK7set8OF+LbTIdiXHQWHgktVMBTjLWYXrFUAMH5hIhlQUhPMWvkez2XI98jB7CG0SH+ztCSlmoN
-X-Received: by 2002:a05:6214:5011:b0:56e:b427:819b with SMTP id jo17-20020a056214501100b0056eb427819bmr41940264qvb.16.1677475862755;
-        Sun, 26 Feb 2023 21:31:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677475862; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4290337ejc;
+        Sun, 26 Feb 2023 21:31:03 -0800 (PST)
+X-Google-Smtp-Source: AK7set8S68QSgz+Wxr/7qLzaHjmOob3LGX9Tc9cF3ona3Y7o1eicdQ4aGSDrKDma+y/kR/1Q2h5/
+X-Received: by 2002:a05:622a:20a:b0:3bd:140c:91f2 with SMTP id b10-20020a05622a020a00b003bd140c91f2mr34189403qtx.29.1677475863698;
+        Sun, 26 Feb 2023 21:31:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677475863; cv=none;
         d=google.com; s=arc-20160816;
-        b=yeXkzAUht6BOr/657AxWxLm3Z3XhBzGgEzjzQGoztQ3zhlUjvk6GXmJGQkK8NXzaST
-         TWGFLO8No76t/ZJHVRfkp8mPi4n2VbxmRH+H2KVJOsjya6qrd7RYmEfFJjNoG0db9v5Q
-         cid0k5DUSDxuNSkE8bsIQ49SxPDEhnNFv//n6ZSPxP2vw3WLj1dOqbGcPS+5tyxi0F6Q
-         VGsZBhCJnPmIwvYmGSH+nGeA2UJ2UX02spQNLSEuWGKUbi2PEjns7n7oPTfe5ECZNFzx
-         yVFkeeC1407/H3+YgzhtSUlcK5THxkhCW7SHSn44wSWK7Euz4Vbg2rItnn6kzUO6YIho
-         Uvyg==
+        b=E1UKmM1uIQ4znFaOVZcgU0jX+YNb9EmzxH5JZwJJbv4UXdol0yowfhRglJNR/Hg8rT
+         +ToFCSYfo5ABugcyGjryMbvaufemVkKgDkBZObDWdMMKc0+Urj3jXz7r5JSZyjb+R17y
+         3V3filD72jgW9TQvtO+eheZMFuQQehuYfdpxkM+SmADQoI9qN8xQxN+KTDu47ermei+S
+         Gt/Mnj28U1HsBDKgABFsFQ9RHr+AIPeGk3e/8+PBUGIiUM+zhWMLQS5/GfzH6M8b3x/U
+         zK7TX3h1LPLtcfXbwxn0IdnzfTVw5/dlpA800ZRXOSmta3b0UJJVoq4fiVhxWzXjfsyX
+         PbGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=PZT9JzGqWNeNM4srg9HjjFaakIhKs3s8GuAgd6TYYaQ=;
-        b=VVIjQyJfXEj/cnkVvei5q40BWlZ6PJiAIAnbpVn9J7Vn//jkvAdWs23a2CIvBb933r
-         dXI5gztbTes0N1mAkE5W22JcK2sw03GAqxG7NfzWG0SG/z0XsMiHMciYvHGlvQPo353N
-         8YXLJzcRcyZpTCHjynprw7xNzMrnYJZbULscrif30gxkhAOSKYiPPYRMOEbRDC5hglWf
-         rZ3740sL71Igm1zZEzrCPUYSkF9yToZAhblYC0dlzFjbzQlmz9mndP2c3KK3/nkLTgVb
-         UV+9nvo/bZ0V8YxC1uKeo86m7RCPJgSTZLx+X1CE9/HRr6sGUcWVFCdkPJ4l1tSVahTL
-         WDYQ==
+        bh=+x4VXTBSHjkJ17E29ZUX+j7Q1yyitgbjfDCvsbqBOhY=;
+        b=fzO67IG8mQl6p03OMwucqS8TC78YuNds6OsOSQPEB7yf6tA1mEeGySAG0GlcOee1Hn
+         4YGxZRvEqeLvREV9hSc8Ps0VNI8zb3HnXRuzEraKBLWhqEYIEIliLrXqmH7dbr+F7IzL
+         Ai2fUU9H8mJrHnxS+K4Cl0NnqxJTCKkI8sDFr51foyimuM5tSo86aTfTji3nEmvBwUh0
+         43jtqOZQnoyk1U87d7aEk1iJug4e+taS69dOam0ZeHtDoo1qCDIK2z3Eb1emCNJFpnHe
+         Ch+ZFSyT8Y+zW4DgVqGqn6IugStaKNqUwiOP9u/nnF5/AQ2pI3ChW3BqxkLP8XlDm0K5
+         fJ1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Qbim//ou";
+       dkim=pass header.i=@linaro.org header.s=google header.b=G6Ie9lLE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9-20020a0ce209000000b005376d8a8e5asi5382278qvl.433.2023.02.26.21.31.02
+        by mx.google.com with ESMTPS id a13-20020a05622a064d00b003bfc3657f6esi5540878qtb.723.2023.02.26.21.31.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 21:31:02 -0800 (PST)
+        Sun, 26 Feb 2023 21:31:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Qbim//ou";
+       dkim=pass header.i=@linaro.org header.s=google header.b=G6Ie9lLE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWW2a-0001qS-Vc; Mon, 27 Feb 2023 00:27:13 -0500
+	id 1pWW1y-0008NZ-L4; Mon, 27 Feb 2023 00:26:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWW29-0000GP-3h
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:26:48 -0500
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ id 1pWW1v-0008It-KK
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:26:31 -0500
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWW26-0007v4-3i
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:26:44 -0500
-Received: by mail-pl1-x631.google.com with SMTP id n6so4146294plf.5
- for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:26:41 -0800 (PST)
+ id 1pWW1s-0007kk-KO
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:26:31 -0500
+Received: by mail-pl1-x643.google.com with SMTP id i3so5530888plg.6
+ for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:26:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PZT9JzGqWNeNM4srg9HjjFaakIhKs3s8GuAgd6TYYaQ=;
- b=Qbim//oujTqfuRONSlXfVji0kPeSbYsrURvV2V1SdFx6VOZI072Gn1sITztlpn3mUU
- h/smZopUdtRDzE7vhzzjBy76s583oiaolQGN2r9Q9cdsiCAQDSEZsE1nB4nTTZVgkBGr
- /FfCBKOPUuCq7GjJDeNvcY2gzeZN1NbVuVGZgP1yjOIKmWzNHAijpYjS8exHoion3e4K
- 6js0cghUQSAsk6ffHPfhGJZsJnG7LRcIn8Mj5hSGudRl+U1S+RNzZweAfwSofVxpgCSN
- B7muJGwMCmaMG5mxa5b2XYJ5QwfR8OlXKYzC5IptNuymvl2YEze0YoCg33yoR9qsnKi0
- g70g==
+ bh=+x4VXTBSHjkJ17E29ZUX+j7Q1yyitgbjfDCvsbqBOhY=;
+ b=G6Ie9lLEX+QUHBlmm7ymdhP0Y+aMant2l8Bg4XYNADDIntSeGH7UYmqlanHsfovo+a
+ LbDaf7xYXnRawbaMmH3nEsPkX7p0H+b+GMg9A8ERcTHpzDpRfdc+zkn6ldSnBGrjePp8
+ t5b1Z1tzm6Owq3jsbOqZVLXY6P4U3kroUTURd1KNJQPiSfFI4sAJTH5AkNCS3adcEA/Y
+ rsUh8BxTjC2+f8/gzKHtd0OXppHcyoDPBk98nOQCFTBKk1nnb7jlsVXGTyprFbiH/lp0
+ agBWM6dMMpjFoJRPyhnASB3LGzWOdhMqyxLhGUGc/Jb5Li48epx/PH7z182N0k1iRNaj
+ MQmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PZT9JzGqWNeNM4srg9HjjFaakIhKs3s8GuAgd6TYYaQ=;
- b=vP/SHYocA81j8k8NDX7INVbC+TlmwhfjOhI26y260ZEEE/WCKvd8aN2y5UrVH9n2ew
- HAFx3trBp+EuTU804d3tRNBOvL8gQWWrGtSHmIEWY/O7MoYXD+Yb5kfdhO7sQgvT1STE
- D9VVNKjPdvnJ6wjaodp6K4LuXEdBBB2jqsu6VmPDVJsIl0/1f/ALFVRcFAUHRvBqv3+4
- IRMUPQzjhvPPpu/GcMu8BHQL5jQcUMTkZSax6OIT1Negw4U/HMJVdA/Z58SueE9wCGf6
- 0KndGhcx+3BuJp+PKRB20pV5+u72FjR1JYKrJJOeUHdlFciZOY7R1mKmodD38q8H/ng2
- Tuaw==
-X-Gm-Message-State: AO0yUKVuRfKSw34dDmDyZHbtLM3YO0941dhu95Mon78mXymOR1/Y7sn/
- tQFykyVIY0IUUB3ebsfNxVeDcA==
-X-Received: by 2002:a17:902:dace:b0:19d:c9f:44f3 with SMTP id
- q14-20020a170902dace00b0019d0c9f44f3mr3452349plx.21.1677475600708; 
- Sun, 26 Feb 2023 21:26:40 -0800 (PST)
+ bh=+x4VXTBSHjkJ17E29ZUX+j7Q1yyitgbjfDCvsbqBOhY=;
+ b=5mRmzQ/CuKvE05W9b2oRHR4ddRCz6BEgAtrge+pg7gDCvpMjy7pAxRR14KBxF92D5N
+ OMEscIJsMgoRmsmr+3GAiIUJXRZhscG0GR3wmfGKX5d0wgjgeKx0Snhe9M/GZ3YXht8a
+ f3hmYnqmLp0jdYYgdzQqUmB+/l4nMqzljyTw9aFKdcskrioJ1ZVErWrln0hknoHJWdnn
+ uDMY6aGpqz7lM5cgB1AeAOp1HKYGAkagM7B1W+SaDpFg/fc3GA5JJKPhKI88HotWrL+7
+ +MEqJFr8R32ufFtu/ZzF/KzXN8jDq7+ouqZ4oYulosUM6aEYJCuKe/OThuGZqz1nPq44
+ UfkQ==
+X-Gm-Message-State: AO0yUKUgUHOCJTCZybaNJEPGkStiUOrPHtKAQEHDPFMy/prXqUAdulzS
+ SUpC97pk4RhBKazCi/QqxPKiBA==
+X-Received: by 2002:a17:903:32cf:b0:19a:8e52:ce0 with SMTP id
+ i15-20020a17090332cf00b0019a8e520ce0mr31213701plr.58.1677475587257; 
+ Sun, 26 Feb 2023 21:26:27 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- a14-20020a170902ecce00b0019a837be977sm3513341plh.271.2023.02.26.21.26.38
+ a14-20020a170902ecce00b0019a837be977sm3513341plh.271.2023.02.26.21.26.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:26:40 -0800 (PST)
+ Sun, 26 Feb 2023 21:26:26 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -94,16 +94,16 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com
-Subject: [PATCH v2 33/76] target/m68k: Drop mark_to_release
-Date: Sun, 26 Feb 2023 19:24:22 -1000
-Message-Id: <20230227052505.352889-34-richard.henderson@linaro.org>
+Subject: [PATCH v2 28/76] target/hexagon/idef-parser: Drop HexValue.is_manual
+Date: Sun, 26 Feb 2023 19:24:17 -1000
+Message-Id: <20230227052505.352889-29-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227052505.352889-1-richard.henderson@linaro.org>
 References: <20230227052505.352889-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,177 +125,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /if9JFYO3e1Y
+X-TUID: 6EmuDycdUX9Y
 
-Translators are no longer required to free tcg temporaries,
-therefore there's no need to record temps for later freeing.
+This field is no longer used.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/m68k/translate.c | 55 ++++++++++-------------------------------
- 1 file changed, 13 insertions(+), 42 deletions(-)
+ target/hexagon/idef-parser/idef-parser.h    |  1 -
+ target/hexagon/idef-parser/parser-helpers.c | 15 ---------------
+ target/hexagon/idef-parser/idef-parser.y    |  2 --
+ 3 files changed, 18 deletions(-)
 
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 157c2cbb8f..b3cd3e87e1 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -121,35 +121,9 @@ typedef struct DisasContext {
-     int done_mac;
-     int writeback_mask;
-     TCGv writeback[8];
--#define MAX_TO_RELEASE 8
--    int release_count;
--    TCGv release[MAX_TO_RELEASE];
-     bool ss_active;
- } DisasContext;
+diff --git a/target/hexagon/idef-parser/idef-parser.h b/target/hexagon/idef-parser/idef-parser.h
+index 5c49d4da3e..17d2ebfaf6 100644
+--- a/target/hexagon/idef-parser/idef-parser.h
++++ b/target/hexagon/idef-parser/idef-parser.h
+@@ -185,7 +185,6 @@ typedef struct HexValue {
+     unsigned bit_width;         /**< Bit width of the rvalue                  */
+     HexSignedness signedness;   /**< Unsigned flag for the rvalue             */
+     bool is_dotnew;             /**< rvalue of predicate type is dotnew?      */
+-    bool is_manual;             /**< Opt out of automatic freeing of params   */
+ } HexValue;
  
--static void init_release_array(DisasContext *s)
--{
--#ifdef CONFIG_DEBUG_TCG
--    memset(s->release, 0, sizeof(s->release));
--#endif
--    s->release_count = 0;
--}
+ /**
+diff --git a/target/hexagon/idef-parser/parser-helpers.c b/target/hexagon/idef-parser/parser-helpers.c
+index bdbb8b6a5f..0b401f7dbe 100644
+--- a/target/hexagon/idef-parser/parser-helpers.c
++++ b/target/hexagon/idef-parser/parser-helpers.c
+@@ -278,7 +278,6 @@ static HexValue gen_constant(Context *c,
+     rvalue.bit_width = bit_width;
+     rvalue.signedness = signedness;
+     rvalue.is_dotnew = false;
+-    rvalue.is_manual = true;
+     rvalue.tmp.index = c->inst.tmp_count;
+     OUT(c, locp, "TCGv_i", &bit_width, " tmp_", &c->inst.tmp_count,
+         " = tcg_constant_i", &bit_width, "(", value, ");\n");
+@@ -299,7 +298,6 @@ HexValue gen_tmp(Context *c,
+     rvalue.bit_width = bit_width;
+     rvalue.signedness = signedness;
+     rvalue.is_dotnew = false;
+-    rvalue.is_manual = false;
+     rvalue.tmp.index = c->inst.tmp_count;
+     OUT(c, locp, "TCGv_i", &bit_width, " tmp_", &c->inst.tmp_count,
+         " = tcg_temp_new_i", &bit_width, "();\n");
+@@ -320,7 +318,6 @@ HexValue gen_tmp_value(Context *c,
+     rvalue.bit_width = bit_width;
+     rvalue.signedness = signedness;
+     rvalue.is_dotnew = false;
+-    rvalue.is_manual = false;
+     rvalue.tmp.index = c->inst.tmp_count;
+     OUT(c, locp, "TCGv_i", &bit_width, " tmp_", &c->inst.tmp_count,
+         " = tcg_const_i", &bit_width, "(", value, ");\n");
+@@ -339,7 +336,6 @@ static HexValue gen_tmp_value_from_imm(Context *c,
+     rvalue.bit_width = value->bit_width;
+     rvalue.signedness = value->signedness;
+     rvalue.is_dotnew = false;
+-    rvalue.is_manual = false;
+     rvalue.tmp.index = c->inst.tmp_count;
+     /*
+      * Here we output the call to `tcg_const_i<width>` in
+@@ -375,7 +371,6 @@ HexValue gen_imm_value(Context *c __attribute__((unused)),
+     rvalue.bit_width = bit_width;
+     rvalue.signedness = signedness;
+     rvalue.is_dotnew = false;
+-    rvalue.is_manual = false;
+     rvalue.imm.type = VALUE;
+     rvalue.imm.value = value;
+     return rvalue;
+@@ -390,7 +385,6 @@ HexValue gen_imm_qemu_tmp(Context *c, YYLTYPE *locp, unsigned bit_width,
+     memset(&rvalue, 0, sizeof(HexValue));
+     rvalue.type = IMMEDIATE;
+     rvalue.is_dotnew = false;
+-    rvalue.is_manual = false;
+     rvalue.bit_width = bit_width;
+     rvalue.signedness = signedness;
+     rvalue.imm.type = QEMU_TMP;
+@@ -1242,15 +1236,12 @@ void gen_rdeposit_op(Context *c,
+      */
+     k64 = gen_bin_op(c, locp, SUB_OP, &k64, &width_m);
+     mask = gen_bin_op(c, locp, LSR_OP, &mask, &k64);
+-    begin_m.is_manual = true;
+     mask = gen_bin_op(c, locp, ASL_OP, &mask, &begin_m);
+-    mask.is_manual = true;
+     value_m = gen_bin_op(c, locp, ASL_OP, &value_m, &begin_m);
+     value_m = gen_bin_op(c, locp, ANDB_OP, &value_m, &mask);
+ 
+     OUT(c, locp, "tcg_gen_not_i", &dst->bit_width, "(", &mask, ", ",
+         &mask, ");\n");
+-    mask.is_manual = false;
+     res = gen_bin_op(c, locp, ANDB_OP, dst, &mask);
+     res = gen_bin_op(c, locp, ORB_OP, &res, &value_m);
+ 
+@@ -1410,8 +1401,6 @@ HexValue gen_convround(Context *c,
+     HexValue and;
+     HexValue src_p1;
+ 
+-    src_m.is_manual = true;
 -
--static void do_release(DisasContext *s)
--{
--    int i;
--    for (i = 0; i < s->release_count; i++) {
--        tcg_temp_free(s->release[i]);
--    }
--    init_release_array(s);
--}
+     and = gen_bin_op(c, locp, ANDB_OP, &src_m, &mask);
+     src_p1 = gen_bin_op(c, locp, ADD_OP, &src_m, &one);
+ 
+@@ -1569,10 +1558,6 @@ HexValue gen_round(Context *c,
+     b = gen_extend_op(c, locp, &src_width, 64, pos, UNSIGNED);
+     b = rvalue_materialize(c, locp, &b);
+ 
+-    /* Disable auto-free of values used more than once */
+-    a.is_manual = true;
+-    b.is_manual = true;
 -
--static TCGv mark_to_release(DisasContext *s, TCGv tmp)
--{
--    g_assert(s->release_count < MAX_TO_RELEASE);
--    return s->release[s->release_count++] = tmp;
--}
--
- static TCGv get_areg(DisasContext *s, unsigned regno)
- {
-     if (s->writeback_mask & (1 << regno)) {
-@@ -396,8 +370,7 @@ static TCGv gen_ldst(DisasContext *s, int opsize, TCGv addr, TCGv val,
-         gen_store(s, opsize, addr, val, index);
-         return store_dummy;
-     } else {
--        return mark_to_release(s, gen_load(s, opsize, addr,
--                                           what == EA_LOADS, index));
-+        return gen_load(s, opsize, addr, what == EA_LOADS, index);
-     }
- }
- 
-@@ -491,7 +464,7 @@ static TCGv gen_lea_indexed(CPUM68KState *env, DisasContext *s, TCGv base)
-         } else {
-             bd = 0;
-         }
--        tmp = mark_to_release(s, tcg_temp_new());
-+        tmp = tcg_temp_new();
-         if ((ext & 0x44) == 0) {
-             /* pre-index */
-             add = gen_addr_index(s, ext, tmp);
-@@ -501,7 +474,7 @@ static TCGv gen_lea_indexed(CPUM68KState *env, DisasContext *s, TCGv base)
-         if ((ext & 0x80) == 0) {
-             /* base not suppressed */
-             if (IS_NULL_QREG(base)) {
--                base = mark_to_release(s, tcg_const_i32(offset + bd));
-+                base = tcg_const_i32(offset + bd);
-                 bd = 0;
-             }
-             if (!IS_NULL_QREG(add)) {
-@@ -517,11 +490,11 @@ static TCGv gen_lea_indexed(CPUM68KState *env, DisasContext *s, TCGv base)
-                 add = tmp;
-             }
-         } else {
--            add = mark_to_release(s, tcg_const_i32(bd));
-+            add = tcg_const_i32(bd);
-         }
-         if ((ext & 3) != 0) {
-             /* memory indirect */
--            base = mark_to_release(s, gen_load(s, OS_LONG, add, 0, IS_USER(s)));
-+            base = gen_load(s, OS_LONG, add, 0, IS_USER(s));
-             if ((ext & 0x44) == 4) {
-                 add = gen_addr_index(s, ext, tmp);
-                 tcg_gen_add_i32(tmp, add, base);
-@@ -546,7 +519,7 @@ static TCGv gen_lea_indexed(CPUM68KState *env, DisasContext *s, TCGv base)
-         }
-     } else {
-         /* brief extension word format */
--        tmp = mark_to_release(s, tcg_temp_new());
-+        tmp = tcg_temp_new();
-         add = gen_addr_index(s, ext, tmp);
-         if (!IS_NULL_QREG(base)) {
-             tcg_gen_add_i32(tmp, add, base);
-@@ -676,7 +649,7 @@ static inline TCGv gen_extend(DisasContext *s, TCGv val, int opsize, int sign)
-     if (opsize == OS_LONG) {
-         tmp = val;
-     } else {
--        tmp = mark_to_release(s, tcg_temp_new());
-+        tmp = tcg_temp_new();
-         gen_ext(tmp, val, opsize, sign);
-     }
- 
-@@ -802,7 +775,7 @@ static TCGv gen_lea_mode(CPUM68KState *env, DisasContext *s,
-             return NULL_QREG;
-         }
-         reg = get_areg(s, reg0);
--        tmp = mark_to_release(s, tcg_temp_new());
-+        tmp = tcg_temp_new();
-         if (reg0 == 7 && opsize == OS_BYTE &&
-             m68k_feature(s->env, M68K_FEATURE_M68K)) {
-             tcg_gen_subi_i32(tmp, reg, 2);
-@@ -812,7 +785,7 @@ static TCGv gen_lea_mode(CPUM68KState *env, DisasContext *s,
-         return tmp;
-     case 5: /* Indirect displacement.  */
-         reg = get_areg(s, reg0);
--        tmp = mark_to_release(s, tcg_temp_new());
-+        tmp = tcg_temp_new();
-         ext = read_im16(env, s);
-         tcg_gen_addi_i32(tmp, reg, (int16_t)ext);
-         return tmp;
-@@ -823,14 +796,14 @@ static TCGv gen_lea_mode(CPUM68KState *env, DisasContext *s,
-         switch (reg0) {
-         case 0: /* Absolute short.  */
-             offset = (int16_t)read_im16(env, s);
--            return mark_to_release(s, tcg_const_i32(offset));
-+            return tcg_const_i32(offset);
-         case 1: /* Absolute long.  */
-             offset = read_im32(env, s);
--            return mark_to_release(s, tcg_const_i32(offset));
-+            return tcg_const_i32(offset);
-         case 2: /* pc displacement  */
-             offset = s->pc;
-             offset += (int16_t)read_im16(env, s);
--            return mark_to_release(s, tcg_const_i32(offset));
-+            return tcg_const_i32(offset);
-         case 3: /* pc index+displacement.  */
-             return gen_lea_indexed(env, s, NULL_QREG);
-         case 4: /* Immediate.  */
-@@ -958,7 +931,7 @@ static TCGv gen_ea_mode(CPUM68KState *env, DisasContext *s, int mode, int reg0,
-             default:
-                 g_assert_not_reached();
-             }
--            return mark_to_release(s, tcg_const_i32(offset));
-+            return tcg_const_i32(offset);
-         default:
-             return NULL_QREG;
-         }
-@@ -6287,7 +6260,6 @@ static void m68k_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cpu)
-     dc->cc_op_synced = 1;
-     dc->done_mac = 0;
-     dc->writeback_mask = 0;
--    init_release_array(dc);
- 
-     dc->ss_active = (M68K_SR_TRACE(env->sr) == M68K_SR_TRACE_ANY_INS);
-     /* If architectural single step active, limit to 1 */
-@@ -6314,7 +6286,6 @@ static void m68k_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
- 
-     opcode_table[insn](env, dc, insn);
-     do_writebacks(dc);
--    do_release(dc);
- 
-     dc->pc_prev = dc->base.pc_next;
-     dc->base.pc_next = dc->pc;
+     n_m1 = gen_bin_op(c, locp, SUB_OP, &b, &one);
+     shifted = gen_bin_op(c, locp, ASL_OP, &one, &n_m1);
+     sum = gen_bin_op(c, locp, ADD_OP, &shifted, &a);
+diff --git a/target/hexagon/idef-parser/idef-parser.y b/target/hexagon/idef-parser/idef-parser.y
+index 59c93f85b4..fae291e5f8 100644
+--- a/target/hexagon/idef-parser/idef-parser.y
++++ b/target/hexagon/idef-parser/idef-parser.y
+@@ -534,7 +534,6 @@ rvalue : FAIL
+              rvalue.imm.type = IMM_CONSTEXT;
+              rvalue.signedness = UNSIGNED;
+              rvalue.is_dotnew = false;
+-             rvalue.is_manual = false;
+              $$ = rvalue;
+          }
+        | var
+@@ -693,7 +692,6 @@ rvalue : FAIL
+          }
+        | rvalue '?'
+          {
+-             $1.is_manual = true;
+              Ternary t = { 0 };
+              t.state = IN_LEFT;
+              t.cond = $1;
 -- 
 2.34.1
 

@@ -1,101 +1,101 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5053355ejc;
-        Mon, 27 Feb 2023 13:35:04 -0800 (PST)
-X-Google-Smtp-Source: AK7set94lF9u5RX1umJPX66Zzm8DIFtA31JajsLszzppjA7T+85FprwcyLhCD2pX2FqEia8hHcLt
-X-Received: by 2002:a05:622a:1101:b0:3bf:ca04:3bc6 with SMTP id e1-20020a05622a110100b003bfca043bc6mr1317375qty.9.1677533704693;
-        Mon, 27 Feb 2023 13:35:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677533704; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5053396ejc;
+        Mon, 27 Feb 2023 13:35:07 -0800 (PST)
+X-Google-Smtp-Source: AK7set+KdOZJ8IjdtINJDhKnYaLSDJ/kfitFtdmkML1i+ntjZBZ3xtulNlkaah8JPm7XTdt8K4xu
+X-Received: by 2002:ac8:5784:0:b0:3b9:b4b5:4b7a with SMTP id v4-20020ac85784000000b003b9b4b54b7amr1680572qta.11.1677533707405;
+        Mon, 27 Feb 2023 13:35:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677533707; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y0GYqlIkIqeahqcRjuY9p9lwGOAxP1W6Wjulf2upyA1rm9rgL/oCnqqhmI8ZgbgIXx
-         4GTaabQmV+lh9WM0Q09ASlBOApThsnpMS/mFI/qBIGeVjTgsXtDmHsBwJGQQ5AKTY7/V
-         vY7/GNyVs+dj5M0i4KFOoY9aJ/lvH+7p+yUsWtuAqCGL0SuBehXNU4PmLA/S+0WMpQbK
-         EBbkFTDFnioWXWisJsPgfsF2pcoDmELdZOPdaPZSFspg9uQD3brc5fBGZjTGq0LyKC2D
-         tEhwUxaqmzLIkX+KsVSlltO2NdgWloN8exuB5oa2cV3XCa0DSgGpKtbF6CtnrDwX73br
-         O+Dw==
+        b=gRhgk5Pu6RbLkar7TMHukY2fDehcDp0JsI/gHZW+nPowuI8B52QIFeJXYdZTj8M5Uz
+         7IE/V5NpgtXBhs66nneg44SaUWds9S96CLSalW7+6DQ60n8xjm0XRNj9R5qbcVo5+fVE
+         A2ds68qmgjBTybRHHqGzwfNZM2YMm8+jzj89tMakRyMp0Kx/7MJLitAoySEXOAXaRT5B
+         UrOPgv6NUyNcOKRbmnvFLLwCDNFL87fqQzSJsv0ZGglpigmcglFqDZpAUeBCJbi6CY99
+         I4EIGC/E2DKCrzXJZUZmvDl7Acc2Fg6XXDCn+5tCZvlA6HguJj5es9hw4KUzGCFdtb0K
+         t0+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=FVJHbUykgOVOv7t67KB4t0GKsC8KJ/J9KiSQxpR45pA=;
-        b=FvjfaKt33uvKOgblASy4EqOjBPhWpxdc1LbDBpdCcjIQ85JUXLaYywCRH37KqNnvNu
-         p9W1fgRXeSScKxDerywPc9mo4uTU6Iwa1ye72tQg7zaxUuriq/w8ynhJV+/XMs5WX3Ph
-         s7lyQr0HvtlTbkeTRR5p3YYheL71fbKgtzlrlLhww5eQ7Bha99a8MtCrtRls1YkXkCzd
-         0TCWWtjYIpSkpqPHWbY9qPRGouyt6J/gnB1FDwuqblF1j7uJ57gPvzzMXox4n2+BSIZe
-         NMHTVDhKyAUEuFs7PJ+Gj61wphUcF94oMfebJXNWEnFwJ1/VGSFAHmbhcPOvk3L/KFX6
-         L/LQ==
+        bh=nOAolGlh8kDAOh/uhG+3SdQD/T+2gl27uDkMfKRTxeI=;
+        b=dFeH0X/v4rh1dTt6uKg2Jl0sqTUSM6E/HHN3EBTojfvuxMTX8rf6JKRGBbGPbDMzji
+         w9AwuRHsiY7Gz6PVd2jMO6qzFHNVkxL77hQ9hAeFJCShJntYs/Ox4fPI9SD6fzzoAsoL
+         fjhsqH3KKDz5pfokFDyyrH2BIPSftIdFvitj97AhPj1zil1bVRjXT2241dOgr/dyNoOQ
+         xn98IJhoJQt6C+vJALab0Vaie8CfDgqldQu6kPahBtWhSG37V+XnH4Aj61XTG4YhhIGu
+         cujqKRpVniYf9Crc68SCSDLgyehJEUo8VoUYZvu9IKNC7lPydOvBcH6W5p7FpX96i2w5
+         sXvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=agjmA4MT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jdfw+yjb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a20-20020a05622a02d400b003ba1d2fd43bsi6914611qtx.195.2023.02.27.13.35.04
+        by mx.google.com with ESMTPS id o13-20020a05622a044d00b003b9a4c0a48csi7871961qtx.232.2023.02.27.13.35.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 13:35:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Feb 2023 13:35:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=agjmA4MT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jdfw+yjb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWl7y-0007Bd-0v; Mon, 27 Feb 2023 16:33:46 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pWl80-0007D4-Lb; Mon, 27 Feb 2023 16:33:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWl7w-0007An-I3
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 16:33:44 -0500
+ id 1pWl7z-0007CL-6S
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 16:33:47 -0500
 Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWl7v-0004IQ-27
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 16:33:44 -0500
+ id 1pWl7x-0004IQ-Ih
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 16:33:46 -0500
 Received: by mail-pj1-x1032.google.com with SMTP id
- qa18-20020a17090b4fd200b0023750b675f5so11496950pjb.3
- for <qemu-arm@nongnu.org>; Mon, 27 Feb 2023 13:33:42 -0800 (PST)
+ qa18-20020a17090b4fd200b0023750b675f5so11497085pjb.3
+ for <qemu-devel@nongnu.org>; Mon, 27 Feb 2023 13:33:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FVJHbUykgOVOv7t67KB4t0GKsC8KJ/J9KiSQxpR45pA=;
- b=agjmA4MTl6QPVFdtv+h+j/a+h+LOiOvFlHgEUAkFoXFsXKwQ3ZNynnfXHz7TIT0Gfc
- 6beifMhdiXEqkRw616tE0MneXazpUZHaMWaepVleODSdcwE51eWvXhNhhA4JBHLCHIJO
- qS4N1U+tLBoxfZRFsU8b1rgTnXrromer0RKeXL7mWVNtJWvgfw80qIPfO6r94RiEytb5
- ooOT1Snvr5O/+uhs2ECK8uHcQ6z++lnGd1vi0hTjFnumEwIfwevMDSXuOJ6hSNAvvwL4
- BBzzcfIlH1z7yXi8k2AnKscKyiMzGbMHo+bQGZh8T9btUqPmPtwLT9vNQflp/Hvz53XO
- cX+g==
+ bh=nOAolGlh8kDAOh/uhG+3SdQD/T+2gl27uDkMfKRTxeI=;
+ b=jdfw+yjb66AmeaUVtJIDV4D+TptUoyq7/qKtaSDpXwdLzKgDXAPjUCqv94lwxJcUwL
+ /8FZiCE92rXtt/PwP5XFmQ/z0adG4B7uSQFiW9/jYHRcqjBAZVUvl/HUNp1q9oiw1PvT
+ NzZ1UZyAvl59Jq/jt2oZzfF+ytcuMdbur6APmPMbjgieL5DHRPw8Dfagi5q7Je8HUs4Z
+ x/qXdolSYfPk+/6VgAqflxYQ1wRKPtL1EfbPDLCPmtx+gwCmls1+JgpmH9TWqlOQZfNL
+ u6kGZQDZ3OVM4JDXCRH4BD7ScGcdzj8cuyr9KJnX5gTbvuxxp1Uf60Lw5lpXSj3ramN3
+ TlcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=FVJHbUykgOVOv7t67KB4t0GKsC8KJ/J9KiSQxpR45pA=;
- b=j9XaznDpUZdD9/xxuhN+9yeTQGjbgup6cvgl4lVuALMEbb3ps6KbtcT6fWXBK+nnI/
- Y6rwUEYe2jkwd40oyJHxzaejQMM3JFwK/IGiYJ2RXwFtqBcQOtdLscpJnzaQ4JSXhNFN
- 1j5DbVBO0GnAZjh10kJGKCq9eDiUUvF4Czo9FMmXDRKK2EvpawQd7wj4hw1ZOLSySbjI
- pTkrfgur29CBmaoTe95WXw26a37/lrrFbfupSE7EoDMY1hb3fqNUTRq8wZVdAin6k5QC
- 4khddGj7RZWO9xU0pt1UkG9TtHeMK5yhYO4zKhwNuuLRcn/KWqQTbJZyicXGOGcH1A/h
- rvxw==
-X-Gm-Message-State: AO0yUKVIIno2Z85OEcTiOrvl7P4dW0NJgWr9O+7yDWrDJ4oGHRLu0jI2
- Brl1Ztj/yE3MMTXCF7Y0Ug6m/6yYzoj5lmS9wqE=
-X-Received: by 2002:a17:90b:390f:b0:236:9eef:e285 with SMTP id
- ob15-20020a17090b390f00b002369eefe285mr608537pjb.35.1677533621792; 
- Mon, 27 Feb 2023 13:33:41 -0800 (PST)
+ bh=nOAolGlh8kDAOh/uhG+3SdQD/T+2gl27uDkMfKRTxeI=;
+ b=neG/QvtocI4BaZNt1V+Wjm95Q2Tl9UOp+JHSwgPVPX73l6Z29L+HxH1oQoCW1zY0c1
+ Ujxm1PeRV9RAVKnTHhxuEKMm/VOdOsYN3/njUmWYyPogmneidhTHNOECtZdlYIRpXD59
+ NuXdH7EGyyCEQqWXvH/a9saJjo44W7bZlkp+OtJzlvWwXwToqLMoeIKzUDxLfgANR4sa
+ 5JQA4yxsNlI+U1rjnxgh4My1RlhEiF+hkfncn++NlfEJDn2QFq98hKeLqMJOpg/3nO/O
+ cHAnfQjOIT+CpQkRWZ6zhQXAabshkjwmM39iDfeys84lhBctLYu4c0DcO1Ckca8NxVyu
+ VSEA==
+X-Gm-Message-State: AO0yUKVvplIgnsw8di2Ydvx02FTPwif5Y8lOeT/mLuUKkfOFfj4yjY27
+ qIneju9QvLvW6b5hAT1t1r9AEm4XJZg8bGRoARE=
+X-Received: by 2002:a05:6a20:6a10:b0:cb:a09e:6941 with SMTP id
+ p16-20020a056a206a1000b000cba09e6941mr964501pzk.61.1677533624770; 
+ Mon, 27 Feb 2023 13:33:44 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- d137-20020a63368f000000b00478c48cf73csm4375262pga.82.2023.02.27.13.33.40
+ d137-20020a63368f000000b00478c48cf73csm4375262pga.82.2023.02.27.13.33.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Feb 2023 13:33:41 -0800 (PST)
+ Mon, 27 Feb 2023 13:33:44 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 06/14] target/arm: Hoist pred_width in
- arm_gen_dynamic_svereg_xml
-Date: Mon, 27 Feb 2023 11:33:21 -1000
-Message-Id: <20230227213329.793795-7-richard.henderson@linaro.org>
+Subject: [PATCH v3 08/14] target/arm: Add name argument to
+ output_vector_union_type
+Date: Mon, 27 Feb 2023 11:33:23 -1000
+Message-Id: <20230227213329.793795-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227213329.793795-1-richard.henderson@linaro.org>
 References: <20230227213329.793795-1-richard.henderson@linaro.org>
@@ -110,57 +110,105 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mFIpENVwbluV
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: G018hzsP+Y1C
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+This will make the function usable between SVE and SME.
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/gdbstub64.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ target/arm/gdbstub64.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
 diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index 070ba20d99..895e19f084 100644
+index d0e1305f6f..36166bf81e 100644
 --- a/target/arm/gdbstub64.c
 +++ b/target/arm/gdbstub64.c
-@@ -283,6 +283,7 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int orig_base_reg)
-     GString *s = g_string_new(NULL);
-     DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
-     int reg_width = cpu->sve_max_vq * 128;
-+    int pred_width = cpu->sve_max_vq * 16;
-     int base_reg = orig_base_reg;
-     int i;
+@@ -210,7 +210,8 @@ int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg)
+     return 0;
+ }
  
-@@ -319,13 +320,13 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int orig_base_reg)
+-static void output_vector_union_type(GString *s, int reg_width)
++static void output_vector_union_type(GString *s, int reg_width,
++                                     const char *name)
+ {
+     struct TypeSize {
+         const char *gdb_type;
+@@ -240,39 +241,38 @@ static void output_vector_union_type(GString *s, int reg_width)
+     };
+ 
+     static const char suf[] = { 'q', 'd', 's', 'h', 'b' };
+-
+-    g_autoptr(GString) ts = g_string_new("");
+     int i, j, bits;
+ 
+     /* First define types and totals in a whole VL */
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+-        int count = reg_width / vec_lanes[i].size;
+-        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].suffix);
          g_string_append_printf(s,
-                                "<reg name=\"p%d\" bitsize=\"%d\""
-                                " regnum=\"%d\" type=\"svep\"/>",
--                               i, cpu->sve_max_vq * 16, base_reg++);
-+                               i, pred_width, base_reg++);
+-                               "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+-                               ts->str, vec_lanes[i].gdb_type, count);
++                               "<vector id=\"%s%c%c\" type=\"%s\" count=\"%d\"/>",
++                               name, vec_lanes[i].sz, vec_lanes[i].suffix,
++                               vec_lanes[i].gdb_type, reg_width / vec_lanes[i].size);
      }
-     g_string_append_printf(s,
-                            "<reg name=\"ffr\" bitsize=\"%d\""
-                            " regnum=\"%d\" group=\"vector\""
-                            " type=\"svep\"/>",
--                           cpu->sve_max_vq * 16, base_reg++);
-+                           pred_width, base_reg++);
++
+     /*
+      * Now define a union for each size group containing unsigned and
+      * signed and potentially float versions of each size from 128 to
+      * 8 bits.
+      */
+     for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+-        g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
++        g_string_append_printf(s, "<union id=\"%sn%c\">", name, suf[i]);
+         for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
+             if (vec_lanes[j].size == bits) {
+-                g_string_append_printf(s, "<field name=\"%c\" type=\"svev%c%c\"/>",
+-                                       vec_lanes[j].suffix,
++                g_string_append_printf(s, "<field name=\"%c\" type=\"%s%c%c\"/>",
++                                       vec_lanes[j].suffix, name,
+                                        vec_lanes[j].sz, vec_lanes[j].suffix);
+             }
+         }
+         g_string_append(s, "</union>");
+     }
++
+     /* And now the final union of unions */
+-    g_string_append(s, "<union id=\"svev\">");
++    g_string_append_printf(s, "<union id=\"%s\">", name);
+     for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+-        g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
+-                               suf[i], suf[i]);
++        g_string_append_printf(s, "<field name=\"%c\" type=\"%sn%c\"/>",
++                               suf[i], name, suf[i]);
+     }
+     g_string_append(s, "</union>");
+ }
+@@ -292,7 +292,7 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int orig_base_reg)
+     g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
  
-     /* Define the vector length pseudo-register. */
+     /* Create the vector union type. */
+-    output_vector_union_type(s, reg_width);
++    output_vector_union_type(s, reg_width, "svev");
+ 
+     /* Create the predicate vector type. */
      g_string_append_printf(s,
 -- 
 2.34.1

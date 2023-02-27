@@ -1,90 +1,88 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4809660ejc;
-        Mon, 27 Feb 2023 08:38:13 -0800 (PST)
-X-Google-Smtp-Source: AK7set+tFyVP0tLkPsCS9JvnBJYMz57fRH8AYFfYGTjd99kqRdUH4/zPF0irWpeew0pzfjWT4ITd
-X-Received: by 2002:ad4:5d69:0:b0:56e:f417:2ac0 with SMTP id fn9-20020ad45d69000000b0056ef4172ac0mr165989qvb.10.1677515893522;
-        Mon, 27 Feb 2023 08:38:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677515893; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4809882ejc;
+        Mon, 27 Feb 2023 08:38:27 -0800 (PST)
+X-Google-Smtp-Source: AK7set/giQZH0OMBlh6aRlZcqvx5h1Us+e/oC+QrQXbjimI19ARkWI2rM4FAEHK56E9xF91nKWwW
+X-Received: by 2002:a05:6214:caf:b0:56b:f061:c3c6 with SMTP id s15-20020a0562140caf00b0056bf061c3c6mr30293qvs.33.1677515907715;
+        Mon, 27 Feb 2023 08:38:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677515907; cv=none;
         d=google.com; s=arc-20160816;
-        b=LyuMjp/G94zxcpLTg18WpYnPJFYRTH5hDQcDmlM1BNqRI/OXBJbZzJeD0iaYjtI5ef
-         QtZHVfbh1JAPYKMONl/pgcNbIh8AnAC2N3O4QeUDIft3582n9XH6LG5SpY2cmUUA+uLi
-         gdBmENV1fazzcK1aYjFGmQh0oKmGmIuS+vRGdCxqTuJMhNBkyJwyogSWDSFmR7RbLP6W
-         BkDwIlLHJnNayDLWr7SV3200cxlMf91w3Kf4na4wDBGHX7nEki0KP1R+Mz1niiCQdENA
-         O37O20xo++6eBEfhtiWY0B5ArsY16w32wGN5johKsMemttW64qjC05zXUhquxibapANl
-         kJtw==
+        b=KNfxi/Zzpe53QP7dBL5yLvI5+imoLqGjjJwXkVIdkfwt/YUuHN+dfUPmqlwHrn63CV
+         jZcxxRQ8XlMAAJuT+jUWrGFb88J7oBrQ/nc1cIzYMSIOswSfOG4OjF5/rvFUSlb3V9Ma
+         2d+gKfQWXrW4PfYtmQDVSlftN+sGCrVJygVYdX6e22h1/Adsw3vIAvkx04XAJ0RChCFt
+         7QzMmys0wmAbATFIOmeD6/iTX/72qXxGP+dqqb/lAvrZqmF/sJBB+p8P8o6AFiHt1CTB
+         rolpxqFM7e7Xypwyp/jBG9w3or6+bWBU/tbVtCZq0bdWQkfTjeB8CmnbzMwqg5Zh0jWl
+         YKPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=c0UG+nEBmzg7tdv9ex8dMP9Qxk+vYCaG2dOlM/WmGfA=;
-        b=XdqNpVE4sz8UgnbQ8agt9g9gPbBV2qVRzSQnsI4QnDyKcxjXYHSLXF2UREq8wVA+Ob
-         /wfKxHF4cUNrn9Dw0MU6OoARql+sRsng2EbG9ySfZipiW53J8N67iZjKUKEA7eFh5z3c
-         ERzDzuJRi0k5rWQ3wmBb7bPlOHSRvDqWV48x0Myq3DtB+sghLBA+PEhF2A/2orQnCGzX
-         Ibhc4UON9ne457meti/1nJkfF2srBBaoOIB++qh6nb6ZliGk0IrZUISKv34Jlxmi/D3B
-         wBeIixRiUR6SbfKwr9fdiSelirVS3i72Zz2B+OC32fen+qLQzZr2I8ObFL+Aofzxcu00
-         0KOQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=D+fZBSHNS95JlBUPkZXChqL0XI8X8MPDGYglEQdUGRI=;
+        b=bfRWlG6F94axUfnNYIj6EusExEgE/xzTAVcZqqFtFBZowei47whwfoDHLF87nMIR0d
+         7oPGt5EoE5oFqX7oIDm1pGMQrnRACDm/PHj+Ql5RuycJxG/+FgeeHoSG5vI7f6VVXa7c
+         Ibu2z1mu3KqDTXn2/b+MHVTd0PNYLtad54LevCMD3BCQ5PjPT5eEt7AaSojpKC1r7t5o
+         Y7jYSIXUcuSP21TRaFjwZ9KLQjNsHdQYKltkhzF2dugovBwgavfhTMw1DQnHlk3EQIF+
+         SuZnxeBhDMbGq12GszbJ9npqPeGGxYVifMJWaYylx53jGFh5JTyyj6XD0uSrje2f8HBd
+         bTfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="tA5m6cL/";
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="HWE384/k";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a2-20020a0ce382000000b0056fa41313cbsi6688551qvl.214.2023.02.27.08.38.13
+        by mx.google.com with ESMTPS id o14-20020a0ce40e000000b0056e96271fe1si7112631qvl.265.2023.02.27.08.38.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 08:38:13 -0800 (PST)
+        Mon, 27 Feb 2023 08:38:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="tA5m6cL/";
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="HWE384/k";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWgVT-0002Ly-Sh; Mon, 27 Feb 2023 11:37:43 -0500
+	id 1pWgVU-0002Bo-0q; Mon, 27 Feb 2023 11:37:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1pWgVN-0001kg-BK; Mon, 27 Feb 2023 11:37:37 -0500
+ id 1pWgVL-0001fH-QS; Mon, 27 Feb 2023 11:37:36 -0500
 Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1pWgVL-000600-Mb; Mon, 27 Feb 2023 11:37:37 -0500
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+ id 1pWgVK-0005wz-0l; Mon, 27 Feb 2023 11:37:35 -0500
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
  by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 31RFwwUw030574; Mon, 27 Feb 2023 16:37:31 GMT
+ 31RFx8j8016994; Mon, 27 Feb 2023 16:37:24 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=corp-2022-7-12;
- bh=c0UG+nEBmzg7tdv9ex8dMP9Qxk+vYCaG2dOlM/WmGfA=;
- b=tA5m6cL/iNSdHvKQspOnVy669Vyyo4eFC18jGqYmdg9Q0b61V5LJzbhg0piA1/57nRSd
- aB84NbPDWZ+SlkZiE8/p8m1bcIQ7utuDLtjPcQJn9SQzEta/ujk/R2iCWcn1WqIc13c5
- j5/emXg1Uhnqfh+p/L2HUe9bI7kDfC+5N1zKj5UwgbLZoWxCMHcN9eBQc5virYDd36kb
- QtnfTnxFbG0zbJCBQuzMsZjbKqI53hmqVD/D3vCDcTm3z8VcKGwXrY7mgeyvpGjDmtGS
- 2tj8lopH40XlXX3b8YIUMhkbtw5F3Fj3ql3rFWYk3oI4BfRxAkFw2MkK/9eCce+xwVf2 yg== 
+ subject : date : message-id : mime-version : content-transfer-encoding;
+ s=corp-2022-7-12; bh=D+fZBSHNS95JlBUPkZXChqL0XI8X8MPDGYglEQdUGRI=;
+ b=HWE384/kzSh+KOX/7nap+Bpx25a4fCDQfshlv1wged+1KtOR73wctxH72MWv40LADbzL
+ eq+O0H2IcZT1p74+Qyb0r1764GXpMxWuDJ+OPr2Uv62fqyrrFC5t3bR/Zp/8Uh1tIatx
+ 78X+oH1mR6xC0adyNRDC/Q5FBkBULFPeBmCWSn8GGUO0GeMMith5p2wACMH6BvymSp5E
+ H+2d5PMqabcpeywZACtREWTXdn0Ve/VFngXO9ndjzjks5S9LuvWeH5XneTjy1Aibrmhy
+ 378dZ2eT5Qt68/SFtOwuItxqMHqOxYU9C1tNDJ+IBXxmwb6ZFSrbA90TMooutnulll5H KA== 
 Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3nyba244dj-1
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3nyb72c0u6-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 27 Feb 2023 16:37:31 +0000
+ Mon, 27 Feb 2023 16:37:23 +0000
 Received: from pps.filterd
  (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
  by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
- with ESMTP id 31RFwRiF015880; Mon, 27 Feb 2023 16:37:30 GMT
+ with ESMTP id 31RGQetb016004; Mon, 27 Feb 2023 16:37:23 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
  by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 3ny8s5sxyr-1
+ 3ny8s5sxtf-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 27 Feb 2023 16:37:30 +0000
+ Mon, 27 Feb 2023 16:37:23 +0000
 Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 31RGbMkI006629;
- Mon, 27 Feb 2023 16:37:29 GMT
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 31RGbMkE006629;
+ Mon, 27 Feb 2023 16:37:22 GMT
 Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-167-110.vpn.oracle.com
  [10.175.167.110])
  by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
- 3ny8s5sxr5-3; Mon, 27 Feb 2023 16:37:29 +0000
+ 3ny8s5sxr5-1; Mon, 27 Feb 2023 16:37:22 +0000
 From: Miguel Luis <miguel.luis@oracle.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -93,13 +91,10 @@ To: Peter Maydell <peter.maydell@linaro.org>,
  Haibo Xu <haibo.xu@linaro.org>, Andrew Jones <drjones@redhat.com>,
  Marc Zyngier <maz@kernel.org>
 Cc: Miguel Luis <miguel.luis@oracle.com>
-Subject: [RFC PATCH 2/5] hw/intc/gicv3: add support for setting KVM vGIC
- maintenance IRQ
-Date: Mon, 27 Feb 2023 15:37:15 -0100
-Message-Id: <20230227163718.62003-3-miguel.luis@oracle.com>
+Subject: [RFC PATCH 0/5] QEMU v7.2.0 aarch64 Nested Virtualization Support
+Date: Mon, 27 Feb 2023 15:37:13 -0100
+Message-Id: <20230227163718.62003-1-miguel.luis@oracle.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230227163718.62003-1-miguel.luis@oracle.com>
-References: <20230227163718.62003-1-miguel.luis@oracle.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Proofpoint-Virus-Version: vendor=baseguard
@@ -110,8 +105,8 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
  mlxlogscore=999 suspectscore=0 phishscore=0 spamscore=0 malwarescore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
  definitions=main-2302270129
-X-Proofpoint-GUID: NSXk4gj8142VNKu4Aw_ymwhIK0c6P9Lr
-X-Proofpoint-ORIG-GUID: NSXk4gj8142VNKu4Aw_ymwhIK0c6P9Lr
+X-Proofpoint-ORIG-GUID: H0vZE8s1oEzHA38X_V8BddUN4dB3rB0P
+X-Proofpoint-GUID: H0vZE8s1oEzHA38X_V8BddUN4dB3rB0P
 Received-SPF: pass client-ip=205.220.177.32;
  envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
 X-Spam_score_int: -27
@@ -135,110 +130,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6BXXnZfz7fy3
+X-TUID: VfqIcunAXduv
 
-From: Haibo Xu <haibo.xu@linaro.org>
+This series adds ARMv8.3/8.4 nested virtualization support in KVM mode.
+    
+To enable nested virtualization for a guest, the host must expose EL2
+support via QEMU command line switches:
 
-Use the VGIC maintenance IRQ if VHE is requested. As per the ARM GIC
-Architecture Specification for GICv3 and GICv4 Arm strongly recommends that
-maintenance interrupts are configured to use INTID 25 matching the
-Server Base System Architecture (SBSA) recomendation.
+-machine virt,accel=kvm,virtualization=on
 
-Ref: https://lore.kernel.org/qemu-devel/49a4944e2f148c56938380b981afe154b7a8b7ee.1617281290.git.haibo.xu@linaro.org/
+Inspired on Haibo Xu's previous work [0][1], Marc Zyngier's kvmtool branch [2]
+and kernel patches [3] on nested virtualization for aarch64, this has been
+tested on an Ampere implementation.
 
-Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
-[Miguel Luis: avoid direct usage of helpers (_check_attr(); _access())]
-Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
----
- hw/arm/virt.c                      |  5 +++++
+This series adapts previous work on top of v7.2.0, it considers comments given
+at the time and preserves authorship of the original patches.
+
+[0]: https://lore.kernel.org/qemu-devel/cover.1616052889.git.haibo.xu@linaro.org/
+[1]: https://lore.kernel.org/qemu-devel/cover.1617281290.git.haibo.xu@linaro.org/
+[2]: https://git.kernel.org/pub/scm/linux/kernel/git/maz/kvmtool.git/log/?h=arm64/nv-5.16
+[3]: https://lore.kernel.org/linux-arm-kernel/20230131092504.2880505-1-maz@kernel.org/
+
+Miguel Luis (5):
+  linux-headers: [kvm,arm64] add the necessary definitions to match host
+    kernel
+  hw/intc/gicv3: add support for setting KVM vGIC maintenance IRQ
+  target/arm/kvm: add helper to detect EL2 when using KVM
+  target/arm: enable feature ARM_FEATURE_EL2 if EL2 is supported
+  arm/virt: provide virtualization extensions to the guest
+
+ hw/arm/virt.c                      |  8 +++++++-
  hw/intc/arm_gicv3_common.c         |  1 +
  hw/intc/arm_gicv3_kvm.c            | 25 +++++++++++++++++++++++++
  include/hw/intc/arm_gicv3_common.h |  1 +
- 4 files changed, 32 insertions(+)
+ linux-headers/asm-arm64/kvm.h      |  2 ++
+ linux-headers/linux/kvm.h          |  1 +
+ target/arm/cpu.h                   |  2 +-
+ target/arm/kvm64.c                 | 21 +++++++++++++++++++++
+ target/arm/kvm_arm.h               | 12 ++++++++++++
+ 9 files changed, 71 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b871350856..377181e009 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -759,6 +759,11 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-             qdev_prop_set_uint32(vms->gic, "redist-region-count[1]",
-                 MIN(smp_cpus - redist0_count, redist1_capacity));
-         }
-+
-+        if (kvm_irqchip_in_kernel()) {
-+            qdev_prop_set_bit(vms->gic, "has-virtualization-extensions",
-+                              vms->virt);
-+        }
-     } else {
-         if (!kvm_irqchip_in_kernel()) {
-             qdev_prop_set_bit(vms->gic, "has-virtualization-extensions",
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 351843db4a..e2a6ff1b49 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -563,6 +563,7 @@ static Property arm_gicv3_common_properties[] = {
-     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
-     DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
-     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
-+    DEFINE_PROP_BOOL("has-virtualization-extensions", GICv3State, virt_extn, 0),
-     /*
-      * Compatibility property: force 8 bits of physical priority, even
-      * if the CPU being emulated should have fewer.
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 3ca643ecba..ce924753bb 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -22,6 +22,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/intc/arm_gicv3_common.h"
-+#include "hw/arm/virt.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
- #include "sysemu/kvm.h"
-@@ -803,6 +804,30 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+
-+    if (s->virt_extn) {
-+        /*
-+         * Arm strongly recommends that maintenance interrupts are configured
-+         * to use INTID 25. For more information, see Server Base System
-+         * Architecture (SBSA)
-+         */
-+        uint32_t maint_irq = PPI(ARCH_GIC_MAINT_IRQ);
-+
-+        struct kvm_device_attr kdevattr = {
-+            .group = KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ,
-+            .addr = (uint64_t)&maint_irq
-+        };
-+
-+        if (!kvm_device_ioctl(s->dev_fd, KVM_GET_DEVICE_ATTR, &kdevattr)) {
-+            error_setg(errp, "VGICv3 setting maintenance IRQ are not "
-+                            "supported by this host kernel");
-+            return;
-+        }
-+
-+        kvm_device_ioctl(s->dev_fd, KVM_SET_DEVICE_ATTR, &kdevattr);
-+    }
-+
-+
-     gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
- 
-     for (i = 0; i < s->num_cpu; i++) {
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index ab5182a28a..91e1c1a45a 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -248,6 +248,7 @@ struct GICv3State {
-     uint32_t revision;
-     bool lpi_enable;
-     bool security_extn;
-+    bool virt_extn;
-     bool force_8bit_prio;
-     bool irq_reset_nonsecure;
-     bool gicd_no_migration_shift_bug;
 -- 
 2.39.2
 

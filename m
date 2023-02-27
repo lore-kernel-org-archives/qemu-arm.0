@@ -1,93 +1,92 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4295323ejc;
-        Sun, 26 Feb 2023 21:39:53 -0800 (PST)
-X-Google-Smtp-Source: AK7set9y5Ip4UXeER56tJlzsiBPcy202RmKJ7LZMNbExDRGKuq5GD3QfU5tJaPltKTWEpNiY1mW3
-X-Received: by 2002:a05:6214:625:b0:56e:b273:fb53 with SMTP id a5-20020a056214062500b0056eb273fb53mr50424236qvx.49.1677476393201;
-        Sun, 26 Feb 2023 21:39:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677476393; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4295908ejc;
+        Sun, 26 Feb 2023 21:40:56 -0800 (PST)
+X-Google-Smtp-Source: AK7set+AAy8ZNM/c4vMnBVri61/9rEGphxBJsH1EeCUMOT5+TG+Z2zTX2LyFLFkk8WVTkVMPO7TR
+X-Received: by 2002:ac8:5f4f:0:b0:3bb:7603:d68e with SMTP id y15-20020ac85f4f000000b003bb7603d68emr30477856qta.10.1677476456613;
+        Sun, 26 Feb 2023 21:40:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677476456; cv=none;
         d=google.com; s=arc-20160816;
-        b=vgwjhQB4oDbNMpxaFzPu1ET3l9kTNZs7ksBQRKa1qb+fJfcG/zqcf1IEjV7X5nEzej
-         1uVUsSK43I7NLKJ6EWJY4J4KQU9WLrcdG0R+0kX+hSzLx5g4QFMWbv5JjbNaITBrAoRS
-         r0iEjO//GYqOHnx9Cqnu/iy9ardvEvtULlU0dDVLROI0ornBKut1IIx0E0bUms3FdBPc
-         CGuhTedH2ljHclAn+R6SP2b17vUYNIDuYeAvJrThKUxyVzE87aDpuo5tZPXn6S6+zWDv
-         PwjnxV869t4NfOqsAeocBsFFaL8+oAuG6IDjS+3E9eEH+69pqpHxraU3UnS2ZfNbaWCs
-         qDNQ==
+        b=HVZY6WU7U+YaOWctLLj1nPFyTd1k+bX57znXMIJJHAW+8YPWu7IOUBK5xWibQRHziM
+         fNM7zQLkU1mzEx5nmG+8lkmlDNmhRjmpxxb2jQWcs7IK/+hYYCIwCHNPcrjHIVezHET7
+         lFMBrSHXv7tEhyUDQLOQOQDJccERQwQQOrD65JWGy1hvM1vYJhXa9VGZ88GO9Qkc/bS+
+         h4BeYsUrNzLq2kf5tCKI8DyU4k6b4gswrp4WTAaihKJG+wFwXLg5ihYDZ5HqBXPzVwgA
+         XkOMhiTI03RLxIWk5YZceTMc3OgFEfN3Mz2DPjFo//WNC7NzkuhBwasyFzh4WDZW6YST
+         rzsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZO7UItfQReoklgOJZJKKMMXCbbFRvVQBOxOhYteWFwg=;
-        b=dhdf3tx0V1aIidi2JRtVyeyWbxqJn4aplPtbj3Wu+BKfj4LJCtsq5enrLylx6IQ2yp
-         2bO1Ao9qYihODnK6sB9MczKX/Z2vAjZqOaCoUbrHFVW+F8UDi42SlMtwAPqHvaXQWHPe
-         8BDn3E3EIfj4utNWsG8+S98mKvRgRLgZxy3jNVJOb61axd89C4oHLB25sUgWxoN2yPuW
-         uoloBmQILylpF2A00TSUMmwi5kEg0eN8CUb4W7T9qnhHGFVBX4hgi6V7EVmI2albOUr/
-         qy+WxpBZYT1l+5heA0IL4H9o73+fLwQPq2+Yazt2tTiih8yQWBHuAUaLYGd0u2BH0vtB
-         7/BQ==
+        bh=x5RhcaUXSQ5MfMxq0C6EBN7haRQoUvmPfbIAZ3PLMW4=;
+        b=LRS55vgcOXIYhhcQAxXpP8sBW3O7n35ot3P5i6xjPmgBQIQ5JQu1LEjzyQJsYG3JBy
+         D9VfVp0tqCoFtVgijrS1MON5lmQsg4bQqYbIkwfsrpo/YTDn1AeJ0BvJVWHFaM8ib7SG
+         lDolMsq5Nedr4dJ1451zgWfyUaUYekU/RSAzo5NmtwPJzk8o69whOb6MQ6HdlZBlqOZR
+         6hMzOQ35cbn/BgTX3AyWVzl+0NdEA4iJrN6zaWjqu9j7SWLWDHaPgjpulGn+5ha+foo1
+         7wRsoRN3fWcrQlnU5Zzi8Uk7eWKGesuTRKda1rxNqBSlTfihhzEeR1vfeXjHbhhlEGA9
+         cZuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x3YWh6Y8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=i2C3OtmD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g9-20020a0cdf09000000b0056e9317ec7bsi5966238qvl.388.2023.02.26.21.39.53
+        by mx.google.com with ESMTPS id 19-20020ac85713000000b003bbd8bdb935si5577882qtw.793.2023.02.26.21.40.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 21:39:53 -0800 (PST)
+        Sun, 26 Feb 2023 21:40:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x3YWh6Y8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=i2C3OtmD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWW2Z-0001dG-18; Mon, 27 Feb 2023 00:27:11 -0500
+	id 1pWW87-0004Kq-3O; Mon, 27 Feb 2023 00:32:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWW2B-0000Mj-OE
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:26:49 -0500
-Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044])
+ id 1pWW6e-0007A7-7z
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:31:24 -0500
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWW29-0007w6-2w
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:26:47 -0500
-Received: by mail-pj1-x1044.google.com with SMTP id
- k21-20020a17090aaa1500b002376652e160so5089906pjq.0
- for <qemu-devel@nongnu.org>; Sun, 26 Feb 2023 21:26:44 -0800 (PST)
+ id 1pWW6b-0000HT-EJ
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:31:23 -0500
+Received: by mail-pl1-x632.google.com with SMTP id i3so5539609plg.6
+ for <qemu-devel@nongnu.org>; Sun, 26 Feb 2023 21:31:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZO7UItfQReoklgOJZJKKMMXCbbFRvVQBOxOhYteWFwg=;
- b=x3YWh6Y8Wl9/jAeHHhmj/GKXBMc51EvKKX4aGi4uIn72yLNZtdWJOVJCCJAptV0Uxo
- r0lQnej5CCFxIhIG6qG3fjPL0npmnXoRPI0kAFti/DkWRHDf+GJCO6ZJaIPQQdCJ8fGg
- sFmZ2CunPaqtp7P5iIEPbQ7Jfm3rxcrV1NOyiuid+xti+A1P5ewJvXM3m4Ly1SjTObcp
- VYaBD1qyS8eg8VYvC9Vnq1O5zr37YA4B8D1bK2zwsVKfkSCJd4qHivfds3RST5WQ3HYR
- rL3qaWmLAoN6cww96aybEDg1T+QBpg8EmWY6AQ53CLotbXzv2lN6+XlrNxjmiqq4RZjP
- HWMg==
+ bh=x5RhcaUXSQ5MfMxq0C6EBN7haRQoUvmPfbIAZ3PLMW4=;
+ b=i2C3OtmDKwgtknA4dBebFr4P1ptXuwnqPyYxCAL15EqXIwP1koYmIBdU/Or2wl8FGI
+ uNKtikxkZlG5OvXoskHROlVznFjXOuqRtBcFqQ+qY5XkzQKftr/0ThoWyCXwweJev6EO
+ sXTn35OAwpnbly+V/pxsfPRkH7YK1tLAbct+bwpI+5cE+wSLjJ4d9AgBAhv1Te/GhcjK
+ s1O+0Lhlt/lJEWLEl9GRNWezin8j+8j2aTNrfXaN/IEyh4oLzGfRI90xGMwqJBuN+I8Y
+ dl1FumtdNQ6xTL6a4Cp4p8F9rt9l8G+nUkYz4oYrFA2q71GfmAzWtNXLecBeguOeCqP0
+ 3M4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZO7UItfQReoklgOJZJKKMMXCbbFRvVQBOxOhYteWFwg=;
- b=IQxckE0uH6usIm80T77npMVIsLZGQUGPV9tPuqC6QGjpgfn+GuiMWgSNcdgFPa2oSM
- epmkgMk0z+arf9hHFfohun6UrokHbbxI0pAwc/OidCgqZEyhVW+JGoatOOC3/b74dJjo
- YJ2r9wWCedg1/fsFpPRPITx/duzGY0x2yBQnw82qtWXNiI0jhlb+CBbskOv3H196C0L1
- aKXM1cccQcHLA862U6sE8OY+eJf2WOfC3b/WZHAJsdGPG2Z75F42IQrbNeOV0zVqCaZY
- mOsPe+vX7lo4dxsFju0dDpjPHp8QGo9DjCBILfFTJ2lYGyRYKbIcnY8bOsy1n7EjehXt
- 45vg==
-X-Gm-Message-State: AO0yUKW3djFm3/aUC5NQN2vNEtdZEnfclshIuf+HeLF/0cl/Ugj38sHr
- vhFFfssUbEFSxEBun2JCJIJKvFqTjQ+P6uz1SkXb/w==
-X-Received: by 2002:a17:902:f544:b0:19d:138b:7c4a with SMTP id
- h4-20020a170902f54400b0019d138b7c4amr3042423plf.3.1677475603333; 
- Sun, 26 Feb 2023 21:26:43 -0800 (PST)
+ bh=x5RhcaUXSQ5MfMxq0C6EBN7haRQoUvmPfbIAZ3PLMW4=;
+ b=dDGSmNRiOeFAukVVXiQroxSUpqdN/nsdxowMlQkh9cDYzHQ15nAETHkHJHGK8WlWXg
+ lGMfhe8gTPPQklJFFvqhBbHY1MuWu21kApzr3YH0WknGxnWqfmTPIWIn3hnZZa1hR3Tt
+ f5IuMO+LYGS9Y9nADVmwgaJsW6zPcE/iX0dX9ZQo+AviB+23bymwWP6aSn1+0Ub9Otyq
+ xqFaEeMYJHWDYixIMZ7CQKhONxL4e1pBleYh9CP4Rz0mMRfDjHdhAS9YqoWSf2ickdu1
+ z7U5O57t0cuhrCDYrcQfjONhIaJk4P2EFND6bdPqfBCpPBHVPTA94JwJOFuV0MNC7rjV
+ H25A==
+X-Gm-Message-State: AO0yUKWEm+dv38foeOuc/hLMEhNa+B/7WoTnGp6bImLIvu+KuBHDanZC
+ ZXvFnMUctrTXLza3YDNuKyB//vgE3fMte6HNOAU=
+X-Received: by 2002:a17:90b:3b4f:b0:233:f394:d83 with SMTP id
+ ot15-20020a17090b3b4f00b00233f3940d83mr23795397pjb.48.1677475880647; 
+ Sun, 26 Feb 2023 21:31:20 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- a14-20020a170902ecce00b0019a837be977sm3513341plh.271.2023.02.26.21.26.40
+ v4-20020a17090a520400b002369e16b276sm5172926pjh.32.2023.02.26.21.31.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:26:42 -0800 (PST)
+ Sun, 26 Feb 2023 21:31:20 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -95,23 +94,23 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com
-Subject: [PATCH v2 34/76] target/m68k: Drop free_cond
-Date: Sun, 26 Feb 2023 19:24:23 -1000
-Message-Id: <20230227052505.352889-35-richard.henderson@linaro.org>
+Subject: [PATCH v2 68/76] target/sparc: Drop free_compare
+Date: Sun, 26 Feb 2023 19:24:57 -1000
+Message-Id: <20230227052505.352889-69-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227052505.352889-1-richard.henderson@linaro.org>
 References: <20230227052505.352889-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,7 +125,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RPsiklQUItDx
+X-TUID: 2EcezDnCAPZG
 
 Translators are no longer required to free tcg temporaries.
 Remove the g1 and g2 members of DisasCompare, as they were
@@ -134,243 +133,172 @@ used to track which temps needed to be freed.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/m68k/translate.c | 40 ----------------------------------------
- 1 file changed, 40 deletions(-)
+ target/sparc/translate.c | 32 --------------------------------
+ 1 file changed, 32 deletions(-)
 
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index b3cd3e87e1..d7237b6a99 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -1249,8 +1249,6 @@ static int gen_ea_fp(CPUM68KState *env, DisasContext *s, uint16_t insn,
- 
+diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+index 560fb32e28..f32f237051 100644
+--- a/target/sparc/translate.c
++++ b/target/sparc/translate.c
+@@ -93,7 +93,6 @@ typedef struct DisasContext {
  typedef struct {
-     TCGCond tcond;
--    bool g1;
--    bool g2;
-     TCGv v1;
-     TCGv v2;
+     TCGCond cond;
+     bool is_bool;
+-    bool g1, g2;
+     TCGv c1, c2;
  } DisasCompare;
-@@ -1263,7 +1261,6 @@ static void gen_cc_cond(DisasCompare *c, DisasContext *s, int cond)
  
-     /* The CC_OP_CMP form can handle most normal comparisons directly.  */
-     if (op == CC_OP_CMPB || op == CC_OP_CMPW || op == CC_OP_CMPL) {
--        c->g1 = c->g2 = 1;
-         c->v1 = QREG_CC_N;
-         c->v2 = QREG_CC_V;
-         switch (cond) {
-@@ -1281,7 +1278,6 @@ static void gen_cc_cond(DisasCompare *c, DisasContext *s, int cond)
-             goto done;
-         case 10: /* PL */
-         case 11: /* MI */
--            c->g1 = c->g2 = 0;
-             c->v2 = tcg_const_i32(0);
-             c->v1 = tmp = tcg_temp_new();
-             tcg_gen_sub_i32(tmp, QREG_CC_N, QREG_CC_V);
-@@ -1298,8 +1294,6 @@ static void gen_cc_cond(DisasCompare *c, DisasContext *s, int cond)
-         }
-     }
- 
--    c->g1 = 1;
--    c->g2 = 0;
-     c->v2 = tcg_const_i32(0);
- 
-     switch (cond) {
-@@ -1383,7 +1377,6 @@ static void gen_cc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 2: /* HI (!C && !Z) -> !(C || Z)*/
-     case 3: /* LS (C || Z) */
-         c->v1 = tmp = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_setcond_i32(TCG_COND_EQ, tmp, QREG_CC_Z, c->v2);
-         tcg_gen_or_i32(tmp, tmp, QREG_CC_C);
-         tcond = TCG_COND_NE;
-@@ -1411,14 +1404,12 @@ static void gen_cc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 12: /* GE (!(N ^ V)) */
-     case 13: /* LT (N ^ V) */
-         c->v1 = tmp = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_xor_i32(tmp, QREG_CC_N, QREG_CC_V);
-         tcond = TCG_COND_LT;
-         break;
-     case 14: /* GT (!(Z || (N ^ V))) */
-     case 15: /* LE (Z || (N ^ V)) */
-         c->v1 = tmp = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_setcond_i32(TCG_COND_EQ, tmp, QREG_CC_Z, c->v2);
-         tcg_gen_neg_i32(tmp, tmp);
-         tmp2 = tcg_temp_new();
-@@ -1436,16 +1427,6 @@ static void gen_cc_cond(DisasCompare *c, DisasContext *s, int cond)
-     c->tcond = tcond;
+@@ -1066,16 +1065,6 @@ static inline void gen_op_next_insn(void)
+     tcg_gen_addi_tl(cpu_npc, cpu_npc, 4);
  }
  
--static void free_cond(DisasCompare *c)
+-static void free_compare(DisasCompare *cmp)
 -{
--    if (!c->g1) {
--        tcg_temp_free(c->v1);
+-    if (!cmp->g1) {
+-        tcg_temp_free(cmp->c1);
 -    }
--    if (!c->g2) {
--        tcg_temp_free(c->v2);
+-    if (!cmp->g2) {
+-        tcg_temp_free(cmp->c2);
 -    }
 -}
 -
- static void gen_jmpcc(DisasContext *s, int cond, TCGLabel *l1)
+ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
+                         DisasContext *dc)
  {
-   DisasCompare c;
-@@ -1453,7 +1434,6 @@ static void gen_jmpcc(DisasContext *s, int cond, TCGLabel *l1)
-   gen_cc_cond(&c, s, cond);
-   update_cc_op(s);
-   tcg_gen_brcond_i32(c.tcond, c.v1, c.v2, l1);
--  free_cond(&c);
- }
- 
- /* Force a TB lookup after an instruction that changes the CPU state.  */
-@@ -1512,7 +1492,6 @@ DISAS_INSN(scc)
- 
-     tmp = tcg_temp_new();
-     tcg_gen_setcond_i32(c.tcond, tmp, c.v1, c.v2);
--    free_cond(&c);
- 
-     tcg_gen_neg_i32(tmp, tmp);
-     DEST_EA(env, insn, OS_BYTE, tmp, NULL);
-@@ -4887,7 +4866,6 @@ static void do_trapcc(DisasContext *s, DisasCompare *c)
-             s->base.is_jmp = DISAS_NEXT;
+@@ -1135,17 +1124,14 @@ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
+         cmp->cond = logic_cond[cond];
+     do_compare_dst_0:
+         cmp->is_bool = false;
+-        cmp->g2 = false;
+         cmp->c2 = tcg_const_tl(0);
+ #ifdef TARGET_SPARC64
+         if (!xcc) {
+-            cmp->g1 = false;
+             cmp->c1 = tcg_temp_new();
+             tcg_gen_ext32s_tl(cmp->c1, cpu_cc_dst);
+             break;
          }
+ #endif
+-        cmp->g1 = true;
+         cmp->c1 = cpu_cc_dst;
+         break;
+ 
+@@ -1167,7 +1153,6 @@ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
+             if (!xcc) {
+                 /* Note that sign-extension works for unsigned compares as
+                    long as both operands are sign-extended.  */
+-                cmp->g1 = cmp->g2 = false;
+                 cmp->c1 = tcg_temp_new();
+                 cmp->c2 = tcg_temp_new();
+                 tcg_gen_ext32s_tl(cmp->c1, cpu_cc_src);
+@@ -1175,7 +1160,6 @@ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
+                 break;
+             }
+ #endif
+-            cmp->g1 = cmp->g2 = true;
+             cmp->c1 = cpu_cc_src;
+             cmp->c2 = cpu_cc_src2;
+             break;
+@@ -1192,7 +1176,6 @@ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
+         /* We're going to generate a boolean result.  */
+         cmp->cond = TCG_COND_NE;
+         cmp->is_bool = true;
+-        cmp->g1 = cmp->g2 = false;
+         cmp->c1 = r_dst = tcg_temp_new();
+         cmp->c2 = tcg_const_tl(0);
+ 
+@@ -1258,7 +1241,6 @@ static void gen_fcompare(DisasCompare *cmp, unsigned int cc, unsigned int cond)
+     /* For now we still generate a straight boolean result.  */
+     cmp->cond = TCG_COND_NE;
+     cmp->is_bool = true;
+-    cmp->g1 = cmp->g2 = false;
+     cmp->c1 = r_dst = tcg_temp_new();
+     cmp->c2 = tcg_const_tl(0);
+ 
+@@ -1342,8 +1324,6 @@ static void gen_cond(TCGv r_dst, unsigned int cc, unsigned int cond,
+     } else {
+         tcg_gen_setcond_tl(cmp.cond, r_dst, cmp.c1, cmp.c2);
      }
--    free_cond(c);
+-
+-    free_compare(&cmp);
  }
  
- DISAS_INSN(trapcc)
-@@ -5383,9 +5361,7 @@ static void gen_fcc_cond(DisasCompare *c, DisasContext *s, int cond)
+ static void gen_fcond(TCGv r_dst, unsigned int cc, unsigned int cond)
+@@ -1357,8 +1337,6 @@ static void gen_fcond(TCGv r_dst, unsigned int cc, unsigned int cond)
+     } else {
+         tcg_gen_setcond_tl(cmp.cond, r_dst, cmp.c1, cmp.c2);
+     }
+-
+-    free_compare(&cmp);
+ }
+ 
+ #ifdef TARGET_SPARC64
+@@ -1378,8 +1356,6 @@ static void gen_compare_reg(DisasCompare *cmp, int cond, TCGv r_src)
  {
-     TCGv fpsr;
- 
--    c->g1 = 1;
-     c->v2 = tcg_const_i32(0);
--    c->g2 = 0;
-     /* TODO: Raise BSUN exception.  */
-     fpsr = tcg_temp_new();
-     gen_load_fcr(s, fpsr, M68K_FPSR);
-@@ -5398,14 +5374,12 @@ static void gen_fcc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 1:  /* EQual Z */
-     case 17: /* Signaling EQual Z */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_Z);
-         c->tcond = TCG_COND_NE;
-         break;
-     case 2:  /* Ordered Greater Than !(A || Z || N) */
-     case 18: /* Greater Than !(A || Z || N) */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr,
-                          FPSR_CC_A | FPSR_CC_Z | FPSR_CC_N);
-         c->tcond = TCG_COND_EQ;
-@@ -5413,7 +5387,6 @@ static void gen_fcc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 3:  /* Ordered Greater than or Equal Z || !(A || N) */
-     case 19: /* Greater than or Equal Z || !(A || N) */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_A);
-         tcg_gen_shli_i32(c->v1, c->v1, ctz32(FPSR_CC_N) - ctz32(FPSR_CC_A));
-         tcg_gen_andi_i32(fpsr, fpsr, FPSR_CC_Z | FPSR_CC_N);
-@@ -5424,7 +5397,6 @@ static void gen_fcc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 4:  /* Ordered Less Than !(!N || A || Z); */
-     case 20: /* Less Than !(!N || A || Z); */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_xori_i32(c->v1, fpsr, FPSR_CC_N);
-         tcg_gen_andi_i32(c->v1, c->v1, FPSR_CC_N | FPSR_CC_A | FPSR_CC_Z);
-         c->tcond = TCG_COND_EQ;
-@@ -5432,7 +5404,6 @@ static void gen_fcc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 5:  /* Ordered Less than or Equal Z || (N && !A) */
-     case 21: /* Less than or Equal Z || (N && !A) */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_A);
-         tcg_gen_shli_i32(c->v1, c->v1, ctz32(FPSR_CC_N) - ctz32(FPSR_CC_A));
-         tcg_gen_andc_i32(c->v1, fpsr, c->v1);
-@@ -5442,35 +5413,30 @@ static void gen_fcc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 6:  /* Ordered Greater or Less than !(A || Z) */
-     case 22: /* Greater or Less than !(A || Z) */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_A | FPSR_CC_Z);
-         c->tcond = TCG_COND_EQ;
-         break;
-     case 7:  /* Ordered !A */
-     case 23: /* Greater, Less or Equal !A */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_A);
-         c->tcond = TCG_COND_EQ;
-         break;
-     case 8:  /* Unordered A */
-     case 24: /* Not Greater, Less or Equal A */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_A);
-         c->tcond = TCG_COND_NE;
-         break;
-     case 9:  /* Unordered or Equal A || Z */
-     case 25: /* Not Greater or Less then A || Z */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_A | FPSR_CC_Z);
-         c->tcond = TCG_COND_NE;
-         break;
-     case 10: /* Unordered or Greater Than A || !(N || Z)) */
-     case 26: /* Not Less or Equal A || !(N || Z)) */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_Z);
-         tcg_gen_shli_i32(c->v1, c->v1, ctz32(FPSR_CC_N) - ctz32(FPSR_CC_Z));
-         tcg_gen_andi_i32(fpsr, fpsr, FPSR_CC_A | FPSR_CC_N);
-@@ -5481,7 +5447,6 @@ static void gen_fcc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 11: /* Unordered or Greater or Equal A || Z || !N */
-     case 27: /* Not Less Than A || Z || !N */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_A | FPSR_CC_Z | FPSR_CC_N);
-         tcg_gen_xori_i32(c->v1, c->v1, FPSR_CC_N);
-         c->tcond = TCG_COND_NE;
-@@ -5489,7 +5454,6 @@ static void gen_fcc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 12: /* Unordered or Less Than A || (N && !Z) */
-     case 28: /* Not Greater than or Equal A || (N && !Z) */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_Z);
-         tcg_gen_shli_i32(c->v1, c->v1, ctz32(FPSR_CC_N) - ctz32(FPSR_CC_Z));
-         tcg_gen_andc_i32(c->v1, fpsr, c->v1);
-@@ -5499,14 +5463,12 @@ static void gen_fcc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 13: /* Unordered or Less or Equal A || Z || N */
-     case 29: /* Not Greater Than A || Z || N */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_A | FPSR_CC_Z | FPSR_CC_N);
-         c->tcond = TCG_COND_NE;
-         break;
-     case 14: /* Not Equal !Z */
-     case 30: /* Signaling Not Equal !Z */
-         c->v1 = tcg_temp_new();
--        c->g1 = 0;
-         tcg_gen_andi_i32(c->v1, fpsr, FPSR_CC_Z);
-         c->tcond = TCG_COND_EQ;
-         break;
-@@ -5526,7 +5488,6 @@ static void gen_fjmpcc(DisasContext *s, int cond, TCGLabel *l1)
-     gen_fcc_cond(&c, s, cond);
-     update_cc_op(s);
-     tcg_gen_brcond_i32(c.tcond, c.v1, c.v2, l1);
--    free_cond(&c);
+     cmp->cond = tcg_invert_cond(gen_tcg_cond_reg[cond]);
+     cmp->is_bool = false;
+-    cmp->g1 = true;
+-    cmp->g2 = false;
+     cmp->c1 = r_src;
+     cmp->c2 = tcg_const_tl(0);
  }
+@@ -1391,8 +1367,6 @@ static inline void gen_cond_reg(TCGv r_dst, int cond, TCGv r_src)
  
- DISAS_INSN(fbcc)
-@@ -5562,7 +5523,6 @@ DISAS_INSN(fscc)
+     /* The interface is to return a boolean in r_dst.  */
+     tcg_gen_setcond_tl(cmp.cond, r_dst, cmp.c1, cmp.c2);
+-
+-    free_compare(&cmp);
+ }
+ #endif
  
-     tmp = tcg_temp_new();
-     tcg_gen_setcond_i32(c.tcond, tmp, c.v1, c.v2);
--    free_cond(&c);
+@@ -3268,7 +3242,6 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                     l1 = gen_new_label();
+                     tcg_gen_brcond_tl(tcg_invert_cond(cmp.cond),
+                                       cmp.c1, cmp.c2, l1);
+-                    free_compare(&cmp);
+                 }
  
-     tcg_gen_neg_i32(tmp, tmp);
-     DEST_EA(env, insn, OS_BYTE, tmp, NULL);
+                 mask = ((dc->def->features & CPU_FEATURE_HYPV) && supervisor(dc)
+@@ -3827,7 +3800,6 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                     cpu_src1 = get_src1(dc, insn);                 \
+                     gen_compare_reg(&cmp, cond, cpu_src1);         \
+                     gen_fmov##sz(dc, &cmp, rd, rs2);               \
+-                    free_compare(&cmp);                            \
+                 } while (0)
+ 
+                 if ((xop & 0x11f) == 0x005) { /* V9 fmovsr */
+@@ -3851,7 +3823,6 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                         cond = GET_FIELD_SP(insn, 14, 17);              \
+                         gen_fcompare(&cmp, fcc, cond);                  \
+                         gen_fmov##sz(dc, &cmp, rd, rs2);                \
+-                        free_compare(&cmp);                             \
+                     } while (0)
+ 
+                     case 0x001: /* V9 fmovscc %fcc0 */
+@@ -3901,7 +3872,6 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                         cond = GET_FIELD_SP(insn, 14, 17);              \
+                         gen_compare(&cmp, xcc, cond, dc);               \
+                         gen_fmov##sz(dc, &cmp, rd, rs2);                \
+-                        free_compare(&cmp);                             \
+                     } while (0)
+ 
+                     case 0x101: /* V9 fmovscc %icc */
+@@ -4713,7 +4683,6 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                             tcg_gen_movcond_tl(cmp.cond, dst,
+                                                cmp.c1, cmp.c2,
+                                                cpu_src2, dst);
+-                            free_compare(&cmp);
+                             gen_store_gpr(dc, rd, dst);
+                             break;
+                         }
+@@ -4745,7 +4714,6 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                             tcg_gen_movcond_tl(cmp.cond, dst,
+                                                cmp.c1, cmp.c2,
+                                                cpu_src2, dst);
+-                            free_compare(&cmp);
+                             gen_store_gpr(dc, rd, dst);
+                             break;
+                         }
 -- 
 2.34.1
 

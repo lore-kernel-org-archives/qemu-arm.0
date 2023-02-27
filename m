@@ -1,112 +1,110 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4297073ejc;
-        Sun, 26 Feb 2023 21:42:58 -0800 (PST)
-X-Google-Smtp-Source: AK7set8+FD2atYxy+I4t9fOsk+wUxXgyJtTmvPFv7Id8Vlt8387NfzmRDTC0TKWvIGXOUES9wLAB
-X-Received: by 2002:ac8:57c4:0:b0:3b8:6555:342c with SMTP id w4-20020ac857c4000000b003b86555342cmr16098757qta.11.1677476578586;
-        Sun, 26 Feb 2023 21:42:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677476578; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4297178ejc;
+        Sun, 26 Feb 2023 21:43:11 -0800 (PST)
+X-Google-Smtp-Source: AK7set8zt4y1gUHBC/mgHYyUq4CsK4EEJyP8Izyyz++2lXsuYuVfT4VZ6bqqr4E+e8CQKdi2me/V
+X-Received: by 2002:a05:622a:1d1:b0:3bf:d310:cc93 with SMTP id t17-20020a05622a01d100b003bfd310cc93mr6374188qtw.35.1677476591131;
+        Sun, 26 Feb 2023 21:43:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677476591; cv=none;
         d=google.com; s=arc-20160816;
-        b=IIeISJOm7hwwDBbIo2fYhEUPuLHqJwiQ+gS0tzHuizCZYk6ZiBXMY8dCtmNvlLzAOr
-         8+U5z7lK/DIdxlMZFqpwp5qgV5c+TxR56EfiZ6vwBrNLS6/+goxbpgUh1RevrsXX9bmv
-         GVksy1rjBBtMcA44njK2fWDYZ8cCn8Zqq8EooS7VDMBvoQNXGpA4EY73/T8/hz9jT1q5
-         Iciltq4rEAwg9NAIFn8Lz5cCwV9wcCTi8wZ5TCmiyhWXzLXtxiGiVOQLos3YalDOAHCT
-         8fwx9wxBFGflcA6lQeabogWd6zaNjW+c6PZIMdezPUMB8QkBR5q9dgwfCulaO1mH+9OZ
-         vTRA==
+        b=PjI7fJak3/yCD2TGp1VYJLhADpuDbGwzYvPU6EUXeUBTtCfix37mXcqN7dOMXIjxcI
+         2bIIdRufV0KCeN5Jg4EEyGZYtO+lagIu9DJuG/btxYBT1goPRrd4ORzXLBnBl0zKHP+b
+         8R/oMi55wYSvcwBPiewl6t+noo7uAs0ArK9Si4B3lbiK2Fq6i38BOxqTDkbKkVfnENKu
+         K+ld9AYDZrJZTqEvVxyDz/gQc+e7yEYQjjhOI+gFhTATxd0XI3HhLbC5l5Wh0+KK3iiX
+         5YH5VZSa13PohLZpvLs1is5Tuhh16+aqoghybuAHFBhtvS/tRzNVctK5BbKXVo2M9sbb
+         /BSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=o/EjYc2nVUGmJDjgiY+6sooQV/WDkGEXpQsAaSq1iFA=;
-        b=u5rRUz26PC8eYrHn9TlilrCgHclO+nRHmk8rjRsHDsI0x4eYjJuH3hgv4CyEwCKBvu
-         KwYwbI/SHwlCPHTRsWu9Hg2iifmed8QL/iUN8dGjg+W+2OY2zAQgzIMiiig3s6GCXOsm
-         3YFFaaptAyuDf0811UsJqc1emRrjRwvN+KNELDooy2rkdIPiROWcbdosByKPtX8rMjlw
-         HFfFP6em85pUdhYdnYZPuvKFzQt0HW/WNKGS49Ik3SqEnILZOkr0lhJtWDdIaYWAxt2n
-         NHayHKdJxBquY4xljvC79is//6iUsFhajt8AEWu70REroYw6QcDFKuFW5bjZv8O5Qpoe
-         izXA==
+        bh=EN6i3124GbzuDzAfWYCmS/x0Jquz/HN39rL+uzxBiIE=;
+        b=JvARuTjYayxIIGZL084KhC5WL/4PvkzMMqXEIcFPWyOLFvh3Od+NSbv7AwMLyG6Qgn
+         QcNQraTjHXPP28M2+l91x6NoenPEOERvWyMcIIy3HnAGtVLaKBA/uySjK0XBy2BBKq4z
+         oguuBLVswi47H+DbSdbHa0CdQPRXVhutgpTpev8q7DeAM53GXpmmaeTub5ER6wBk9PUF
+         xVD5ZCYLFJySF5SOgZAqYTF3k99ATC26asvDPKpJmSw8azTDb/6CXZ8mLC8xZvAKHJNE
+         ur4WqmOFWx/iul3frAZQ+QlEpSh2WLhiWGunGIGRBH/j5JJbS43qKhfrnkRxFttq6lgc
+         +zqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YT6jOUiB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Uxj4uRpC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n18-20020a05622a041200b003b9ee04dfc0si5550461qtx.533.2023.02.26.21.42.58
+        by mx.google.com with ESMTPS id d2-20020a05622a100200b003ba2a171913si5612135qte.578.2023.02.26.21.43.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 21:42:58 -0800 (PST)
+        Sun, 26 Feb 2023 21:43:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YT6jOUiB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Uxj4uRpC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWWDl-00053T-TE; Mon, 27 Feb 2023 00:38:46 -0500
+	id 1pWWEB-00084R-FY; Mon, 27 Feb 2023 00:39:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWCg-00033T-6U
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:37:38 -0500
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ id 1pWWD7-0003Ns-Tq
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:38:09 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWCd-0002by-B3
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:37:37 -0500
-Received: by mail-pf1-x432.google.com with SMTP id bd34so2802685pfb.3
- for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:37:34 -0800 (PST)
+ id 1pWWD3-0002ud-5g
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:38:02 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id
+ nw10-20020a17090b254a00b00233d7314c1cso8856292pjb.5
+ for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:37:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=o/EjYc2nVUGmJDjgiY+6sooQV/WDkGEXpQsAaSq1iFA=;
- b=YT6jOUiBrbX3oGd2PhE4NgjvtF1tNzSZ+O8na1jDHSBxIIAlwb+vXgPI5q/brU8tWd
- Q8ENE7KuwVBGui764pi+f+yD8Qn9FBfmyH2fLQn3x4AFT1L/dWMGrklVkyS8sDaUlR45
- LmnuX9e1UVP7SZqQeJYSwi18UAyzuGwxVStAv6u1hME9oepfyEJGBaSaClUZptaxF377
- mACMe+OLbrS6OoHRHms/jVDG4RXljBrPKvGw1ZXu9NBeOEIbQxp0hocCjujaiz8iXWBD
- Ww6444SnFOuiOK+fCSC+MqbXQ0vxoLjF6yB+8IFqEuDSjt2Mrjr3MwXJj1TUE5eOsdw/
- XXvg==
+ bh=EN6i3124GbzuDzAfWYCmS/x0Jquz/HN39rL+uzxBiIE=;
+ b=Uxj4uRpCpqZL5iI8xx/448eGHU8w2e36Mkh8lGpxZnx+zHg3hUkvE3AKZizAKCrFdq
+ IyX0ueIDuHosRIJtKY1Fildw0KQq5ywVaXP/sE2UisifYHh4z7MbPAn2dLtUfJxA9Gvo
+ g2bv/iEqDfq90WTkjQ2aV7G7GcqH0ZUstjgPUTVQ3KllTAhRURmDqoZfChMfQZ4+MeOv
+ bw4qGO+MKBlRE+75LYBKLp0a1P1jvyUQHq2FIk5tRzgOgdzmsw7ZuypFKhcaMTSUPdOe
+ gO3Yy7RzmkosVbYVgWvyfB40+c91kGsuT6qSi6zgon1Zp+I8hcLIZayoPLZrvsGolnLr
+ oteg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=o/EjYc2nVUGmJDjgiY+6sooQV/WDkGEXpQsAaSq1iFA=;
- b=Sn0kAWowGh8L5c0lsczapE/RMEofqzfaUlmPAeWhNqwpFZjGXXATjzf/lGLiY0d7cg
- YsbbffH6b2XEdFvgJrAodoEGG4bcLu8dNeVWWB8zj3NgKTFyUOblIKcu39HXhg+lyHof
- JNsuoq+xXjTnhN13aNhFI4gwB7lx8Zp7CK2ss/5Alb7jeX0jrG6RJWXoa7rB36zw0zfu
- wKRXr9Q1wJGb3CuwL/dyBGHjIFmjb8xcjQsSksQxu7+BhU2cZMBjRKgz018vn8CUW+HL
- IZPe/ZmqjvDcpOSuHgAFYJEpHOV3YAUOnCQkoVIrFpkRaTwL/+fn0YLSX39LhL/9QvFz
- GPKw==
-X-Gm-Message-State: AO0yUKUFc1Kh6/C3CUaNdLCvXNK9LFZ6Jj1tnlQmQwQZ79gXUpLcV5EL
- 5qUKa3Adj0bPp8hnz4Weq6HkqQ==
-X-Received: by 2002:aa7:8882:0:b0:5a8:e3d5:d7d4 with SMTP id
- z2-20020aa78882000000b005a8e3d5d7d4mr9489088pfe.7.1677476253963; 
- Sun, 26 Feb 2023 21:37:33 -0800 (PST)
+ bh=EN6i3124GbzuDzAfWYCmS/x0Jquz/HN39rL+uzxBiIE=;
+ b=QYHdCjXxocr5IdbCPaUNn+w+X9zFD28+Nr8PbVTn218cTIigNQKhHct24ejxywlznr
+ S9ZGDX1iWreD9HSX5dZxjQ1t9MPNFu9yJ7Qo22EMQjtjYvO8gvSTBbwTsSP3ttb0BiWr
+ 8i15OZTikZkvlQUjPomQwFyahi3UBYUkVdFYAWusk+yL3xqX2Ul6uYtPYY9VVN821HQW
+ SsFPzXzpcHaOjL4BNRGVpIwUgZOhwrDPBRacrBtFJzo3MV7b6HfO/D/m8a3ChhguxT3E
+ 3Vu6AY3R0ofO/WpbdL4+ZP8B0N5fC/aJ8k1jnaxpa8gBtKsK/pHZQWUu1Jj/+afpbyVj
+ dVAA==
+X-Gm-Message-State: AO0yUKXGe39BBl0ZGlkNaBc7ehdtaxekOCs/ttOPc0xHZmhzVDIY2mp3
+ cRDRGIKmzqWk8Fx9nnbBYKJRxA==
+X-Received: by 2002:a05:6a21:3396:b0:cd:1808:87bb with SMTP id
+ yy22-20020a056a21339600b000cd180887bbmr4899219pzb.7.1677476278683; 
+ Sun, 26 Feb 2023 21:37:58 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- k12-20020aa792cc000000b005a7c892b435sm3342137pfa.25.2023.02.26.21.37.31
+ k12-20020aa792cc000000b005a7c892b435sm3342137pfa.25.2023.02.26.21.37.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:37:33 -0800 (PST)
+ Sun, 26 Feb 2023 21:37:58 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
- edgar.iglesias@gmail.com,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Subject: [PATCH v4 10/31] tcg: Use tcg_constant_i32 in tcg_gen_io_start
-Date: Sun, 26 Feb 2023 19:36:40 -1000
-Message-Id: <20230227053701.368744-11-richard.henderson@linaro.org>
+ edgar.iglesias@gmail.com, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v4 19/31] target/arm: Drop copies in gen_sve_{ldr,str}
+Date: Sun, 26 Feb 2023 19:36:49 -1000
+Message-Id: <20230227053701.368744-20-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227053701.368744-1-richard.henderson@linaro.org>
 References: <20230227053701.368744-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,32 +126,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +H+R/NxoRTUg
+X-TUID: VGuROXCFke5f
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Since we now get TEMP_TB temporaries by default, we no longer
+need to make copies across these loops.  These were the only
+uses of new_tmp_a64_local(), so remove that as well.
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/gen-icount.h | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ target/arm/translate-a64.h |  1 -
+ target/arm/translate-a64.c |  6 ------
+ target/arm/translate-sve.c | 32 --------------------------------
+ 3 files changed, 39 deletions(-)
 
-diff --git a/include/exec/gen-icount.h b/include/exec/gen-icount.h
-index c57204ddad..4d8b1f9ae5 100644
---- a/include/exec/gen-icount.h
-+++ b/include/exec/gen-icount.h
-@@ -10,11 +10,9 @@ static TCGOp *icount_start_insn;
+diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
+index ad3762d1ac..ca24c39dbe 100644
+--- a/target/arm/translate-a64.h
++++ b/target/arm/translate-a64.h
+@@ -19,7 +19,6 @@
+ #define TARGET_ARM_TRANSLATE_A64_H
  
- static inline void gen_io_start(void)
- {
--    TCGv_i32 tmp = tcg_const_i32(1);
--    tcg_gen_st_i32(tmp, cpu_env,
-+    tcg_gen_st_i32(tcg_constant_i32(1), cpu_env,
-                    offsetof(ArchCPU, parent_obj.can_do_io) -
-                    offsetof(ArchCPU, env));
--    tcg_temp_free_i32(tmp);
+ TCGv_i64 new_tmp_a64(DisasContext *s);
+-TCGv_i64 new_tmp_a64_local(DisasContext *s);
+ TCGv_i64 new_tmp_a64_zero(DisasContext *s);
+ TCGv_i64 cpu_reg(DisasContext *s, int reg);
+ TCGv_i64 cpu_reg_sp(DisasContext *s, int reg);
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 67e9c4ee79..9da5010fe1 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -436,12 +436,6 @@ TCGv_i64 new_tmp_a64(DisasContext *s)
+     return s->tmp_a64[s->tmp_a64_count++] = tcg_temp_new_i64();
  }
  
- static inline void gen_tb_start(const TranslationBlock *tb)
+-TCGv_i64 new_tmp_a64_local(DisasContext *s)
+-{
+-    assert(s->tmp_a64_count < TMP_A64_MAX);
+-    return s->tmp_a64[s->tmp_a64_count++] = tcg_temp_local_new_i64();
+-}
+-
+ TCGv_i64 new_tmp_a64_zero(DisasContext *s)
+ {
+     TCGv_i64 t = new_tmp_a64(s);
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 621a2abb22..02150d93e8 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -4344,17 +4344,6 @@ void gen_sve_ldr(DisasContext *s, TCGv_ptr base, int vofs,
+         TCGLabel *loop = gen_new_label();
+         TCGv_ptr tp, i = tcg_const_local_ptr(0);
+ 
+-        /* Copy the clean address into a local temp, live across the loop. */
+-        t0 = clean_addr;
+-        clean_addr = new_tmp_a64_local(s);
+-        tcg_gen_mov_i64(clean_addr, t0);
+-
+-        if (base != cpu_env) {
+-            TCGv_ptr b = tcg_temp_local_new_ptr();
+-            tcg_gen_mov_ptr(b, base);
+-            base = b;
+-        }
+-
+         gen_set_label(loop);
+ 
+         t0 = tcg_temp_new_i64();
+@@ -4370,11 +4359,6 @@ void gen_sve_ldr(DisasContext *s, TCGv_ptr base, int vofs,
+ 
+         tcg_gen_brcondi_ptr(TCG_COND_LTU, i, len_align, loop);
+         tcg_temp_free_ptr(i);
+-
+-        if (base != cpu_env) {
+-            tcg_temp_free_ptr(base);
+-            assert(len_remain == 0);
+-        }
+     }
+ 
+     /*
+@@ -4445,17 +4429,6 @@ void gen_sve_str(DisasContext *s, TCGv_ptr base, int vofs,
+         TCGLabel *loop = gen_new_label();
+         TCGv_ptr tp, i = tcg_const_local_ptr(0);
+ 
+-        /* Copy the clean address into a local temp, live across the loop. */
+-        t0 = clean_addr;
+-        clean_addr = new_tmp_a64_local(s);
+-        tcg_gen_mov_i64(clean_addr, t0);
+-
+-        if (base != cpu_env) {
+-            TCGv_ptr b = tcg_temp_local_new_ptr();
+-            tcg_gen_mov_ptr(b, base);
+-            base = b;
+-        }
+-
+         gen_set_label(loop);
+ 
+         t0 = tcg_temp_new_i64();
+@@ -4471,11 +4444,6 @@ void gen_sve_str(DisasContext *s, TCGv_ptr base, int vofs,
+ 
+         tcg_gen_brcondi_ptr(TCG_COND_LTU, i, len_align, loop);
+         tcg_temp_free_ptr(i);
+-
+-        if (base != cpu_env) {
+-            tcg_temp_free_ptr(base);
+-            assert(len_remain == 0);
+-        }
+     }
+ 
+     /* Predicate register stores can be any multiple of 2.  */
 -- 
 2.34.1
 

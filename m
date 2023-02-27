@@ -1,180 +1,189 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4357183ejc;
-        Sun, 26 Feb 2023 23:22:23 -0800 (PST)
-X-Google-Smtp-Source: AK7set+S6FyLi0bssB56vUqOVmrr3oQDrbm0d7bAvNhiHtfvnyaZMcwnO7VqsnSYSD5iXJ+Luh7a
-X-Received: by 2002:a05:6214:b6a:b0:56e:c174:1c88 with SMTP id ey10-20020a0562140b6a00b0056ec1741c88mr47007371qvb.46.1677482542852;
-        Sun, 26 Feb 2023 23:22:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677482542; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4255037ejc;
+        Sun, 26 Feb 2023 20:29:27 -0800 (PST)
+X-Google-Smtp-Source: AK7set+qjIQCuEX3jtWx+4jfEzS5ZRMcvURVTtiHcRfbRhzn2UIQs7GzppGBnwsB4jlXh71GBtfO
+X-Received: by 2002:a05:622a:1b91:b0:3a7:e619:61a with SMTP id bp17-20020a05622a1b9100b003a7e619061amr43323594qtb.37.1677472167172;
+        Sun, 26 Feb 2023 20:29:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677472167; cv=none;
         d=google.com; s=arc-20160816;
-        b=0cuX3DwfDCiDQF+Q4IrN1xRVVFQGir5F/WySed5pwsGjBlQwTCBzXRfvDKCW75aXXk
-         8oJgJsN0Wg8iOZbczsTFLrwDzicZeACwHnQODQzcSthbCz+ZNxTmvnE1HCbRmrfLQgAo
-         mnxg/bDvgVJTU+tRCl3/eWDazItGWpYrQOTY8PU9kLyJDF4OrdewzwUW24JNeo++xsb8
-         3MXggVgjastGBeOo9BJVHOQG5ZjqiKgJ4RxTaANijB3C49+XtHEBV9C4OTVBBZr0Juno
-         YDvf9xiJ/CrrtDSb0S26yi1cSbz3dXUV5At32StXkj51nFHoOZA40wURzqnY5yTMl0ud
-         hnVw==
+        b=kuHT40DcrPI6hUHQdpkIzXR5outzMns74bSPQSb84Fa1Rh72Wcu+ImKrM77mqsxL6h
+         SGgqBjqwgjpdV2pVs68CJL4xcBh8CqXOhICAX+gzvxIb8N1UPWGwnlRuRi1BwdY9Wogi
+         bNPCC5Lj3J5b00vYf8oaK1vyRny1O2KDygRmykTbRqnX8wkPiqT+TypYgnjiaPeSfVml
+         r4As4eYsw19eZPTglBTplvlj9lCPsxFRm/rCNzFWs45aRz3zX7qkt7lbcPQFPWrZSzhC
+         pWYKp2tFcdMDbpun6txbKqFMagl7o4rEpVErp8wCE1aJXHD6DLcTty5XY5JVZm7Rs40q
+         UfrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=HoOc9y4gxns7hXo8hpTTJjZUS2Pw2Ja2akP0DgIEizQ=;
-        b=zkfsIDgQ4YNhyjU6d7vKjvlNU7qMXryW2YATeMjsPBjC/XthlgcIMwmahkWnSTP442
-         CVesHeBX9+KoBTspZLOBsTljf8wV6I98uHNSR2B4uw+t2FtLku520b26xG8rpb2Ysr+V
-         b7mBdgaYd30SvzCRxWJ+9Z/GT5DWBldES47FULx9HsJeX0aWd7qZinxKLEuQoMQsbnyw
-         4Crgy2JbdhZ1mmut8TensgqypYFgDwm+z5jJjaHWAiV9m28RedICz5RoiTsWJ51ZK/Zi
-         8mz7logHIgfluRPhoScKLghEY5L/b/bP0io3Dyak/esG8cT55VLF0GkpPGi8mIesIkCU
-         OfHQ==
+        bh=IEbi1lN0FvpAADEiqnPvO0Blw7g5PUkwtEQIj5AfqEA=;
+        b=kLd6vZjwlWCrSv3GozxYWMyibIAP19z4fAM6o6AH9qbf6NbsabnHjdevMTJVxQ524V
+         56D0jEBWBozx0qtvxWwRSb7fN5wduaiGbzr0NUo5FI+PF5T50B64GS+eieMsC8lBW9pQ
+         rWZ+O2DJ7XdEgkw2iieta61pUKhYBP4m6tg/VGbkFVpQL812TLQwnaLljP3RuXBNiF1N
+         EMoY1nMSEGytzZSdRaYbc2jrz+HLqEp6HFrP5kn65kwR7lpbI1Bb4alJWAiWjsttwbAO
+         ZvJdMJlxJYPmGrdiG2vPh7eAqvJpb0Oi7THaeGwoMTQhNkYJENOwqlROsNvL7/P4APdT
+         oWgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RcIb40jX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HJCRkukw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w4-20020a0cdf84000000b0056e99162fa6si5891311qvl.296.2023.02.26.23.22.21
+        by mx.google.com with ESMTPS id v13-20020a05622a144d00b003b6953fbb9asi5716438qtx.348.2023.02.26.20.29.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 23:22:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 26 Feb 2023 20:29:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RcIb40jX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HJCRkukw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWWO6-0006g5-U1; Mon, 27 Feb 2023 00:49:26 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pWV89-0002jR-D3; Sun, 26 Feb 2023 23:28:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWMu-0002bU-Bo
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:48:12 -0500
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWMr-0007PQ-Gc
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:48:11 -0500
-Received: by mail-pl1-x630.google.com with SMTP id u5so2165712plq.7
- for <qemu-devel@nongnu.org>; Sun, 26 Feb 2023 21:48:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=HoOc9y4gxns7hXo8hpTTJjZUS2Pw2Ja2akP0DgIEizQ=;
- b=RcIb40jX3ohyJrPxeRa/L+yr54MDdd8GW5iJsIQez//BRSURl54EZZHeEEYwv0+KG0
- r+zeSo/LbPte2H3z/leyY5zQhcqfOoPARf84urcN2KeVKiNWRQ/qeEZem6Z7SW3Jy7bL
- 8Grgn5sYE4EPff59FPOCZG99OymZaWGqB0j+GbUWS6WFvI1d5vRWg95JB/6+28E7pd4x
- YB6yhYFaLpQIp9icV2bKavWpb7AiDSp8rEJrvucUzDVY6r2UZKdiZ2IUvsYiY1pYsgbM
- JQI+6PQFbZVTwKbrGlo42SmdSGbMDpptpGu4WM3orG9L2Xn2DMJFcVCYFwey6oRznnyu
- hfhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=HoOc9y4gxns7hXo8hpTTJjZUS2Pw2Ja2akP0DgIEizQ=;
- b=E3VwQ5O+Ho+zgG8rnJ9dsXkmTRN19Ckm3ICKUw3YP7PPK0f2VfGhep0dAg6T09pbuy
- tqCBcaBfnq2hRsER7+UTTXrsMbs87D7GYCU1SLPurlqDSrm/4QllROgjUR4/01kP/EtW
- Cr+EtM61lKdZG7fMoN7H4gC9Vaj3tJoXSiwpRJnhqUyEB++sFn5gbI+jwod61jKKAZTh
- 4kLd/lDTFCePrjoPByWPwTmKxijBAC+jyvDv0IHIVvrre81Q2/t1cbrAw53LLnKkNf5m
- 4Yi+Dc55G/9l7ticALnV3Nn4l7Ex3JgmlJScOogiL9Ljgqg2roGAqQBN1zYqGln2RZgK
- 5BTw==
-X-Gm-Message-State: AO0yUKU5sw86YeO/JgfesTYaz9859uHcb8pBNx9M0pv5L8WqHM5zY2cc
- S4P6kImHMwYB4dGWtfGyOcSjVYZL2ZwtyXo+0lY=
-X-Received: by 2002:a17:903:430f:b0:19c:fc41:2dfd with SMTP id
- jz15-20020a170903430f00b0019cfc412dfdmr4598417plb.29.1677476887880; 
- Sun, 26 Feb 2023 21:48:07 -0800 (PST)
-Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
- by smtp.gmail.com with ESMTPSA id
- im16-20020a170902bb1000b0019a983f0119sm3553986plb.307.2023.02.26.21.48.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:48:07 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
- ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
- edgar.iglesias@gmail.com
-Subject: [PATCH 54/70] tcg/sparc: Avoid tcg_const_tl in gen_edge
-Date: Sun, 26 Feb 2023 19:42:17 -1000
-Message-Id: <20230227054233.390271-55-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230227054233.390271-1-richard.henderson@linaro.org>
-References: <20230227054233.390271-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pWV87-0002ij-Qr
+ for qemu-arm@nongnu.org; Sun, 26 Feb 2023 23:28:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pWV86-0003xi-ET
+ for qemu-arm@nongnu.org; Sun, 26 Feb 2023 23:28:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677472129;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IEbi1lN0FvpAADEiqnPvO0Blw7g5PUkwtEQIj5AfqEA=;
+ b=HJCRkukwXxnlJvGtqrvUw5r2DIcVak8RSsVX/FQwc5dr6ofHgJA4XeoV+cUHZ1lQXBI59o
+ Osc6nSJYteGzKwu6p76rYl9oC9XzEPK3AOheRU2ADmdCoLlRt15hqcX578ZT0NKG0zmYZx
+ AzrEjS4gVWo3ST+8UsszrZpMhwmRc0A=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-413-DFPB52I9PAKpE3hDIYDJEA-1; Sun, 26 Feb 2023 23:28:46 -0500
+X-MC-Unique: DFPB52I9PAKpE3hDIYDJEA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D9D9429AA38B;
+ Mon, 27 Feb 2023 04:28:45 +0000 (UTC)
+Received: from gshan.redhat.com (vpn2-54-58.bne.redhat.com [10.64.54.58])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9B4221121314;
+ Mon, 27 Feb 2023 04:28:39 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
+ peterx@redhat.com, david@redhat.com, philmd@linaro.org, mst@redhat.com,
+ cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com,
+ maz@kernel.org, zhenyzha@redhat.com, shan.gavin@gmail.com
+Subject: [PATCH v2 4/4] kvm: Enable dirty ring for arm64
+Date: Mon, 27 Feb 2023 12:26:29 +0800
+Message-Id: <20230227042629.339747-5-gshan@redhat.com>
+In-Reply-To: <20230227042629.339747-1-gshan@redhat.com>
+References: <20230227042629.339747-1-gshan@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5taNzbgVZfVW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Q0nFSZqKEyZW
 
-Push tcg_constant_tl into the shift argument directly.
-Since t1 no longer exists as a temp, replace with lo1,
-whose last use was just above.
+arm64 has different capability from x86 to enable the dirty ring, which
+is KVM_CAP_DIRTY_LOG_RING_ACQ_REL. Besides, arm64 also needs the backup
+bitmap extension (KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP) when 'kvm-arm-gicv3'
+or 'arm-its-kvm' device is enabled. Here the extension is always enabled
+and the unnecessary overhead to do the last stage of dirty log synchronization
+when those two devices aren't used is introduced, but the overhead should
+be very small and acceptable. The benefit is cover future cases where those
+two devices are used without modifying the code.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Tested-by: Zhenyu Zhang <zhenyzha@redhat.com>
 ---
- target/sparc/translate.c | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
+ accel/kvm/kvm-all.c | 23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
 
-diff --git a/target/sparc/translate.c b/target/sparc/translate.c
-index 814f3f8b1e..925023adef 100644
---- a/target/sparc/translate.c
-+++ b/target/sparc/translate.c
-@@ -2842,7 +2842,7 @@ static inline void gen_load_trap_state_at_tl(TCGv_ptr r_tsptr, TCGv_env cpu_env)
- static void gen_edge(DisasContext *dc, TCGv dst, TCGv s1, TCGv s2,
-                      int width, bool cc, bool left)
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index e5035026c9..d96bca618b 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -1457,6 +1457,7 @@ static int kvm_dirty_ring_init(KVMState *s)
  {
--    TCGv lo1, lo2, t1, t2;
-+    TCGv lo1, lo2;
-     uint64_t amask, tabl, tabr;
-     int shift, imask, omask;
+     uint32_t ring_size = s->kvm_dirty_ring_size;
+     uint64_t ring_bytes = ring_size * sizeof(struct kvm_dirty_gfn);
++    unsigned int capability = KVM_CAP_DIRTY_LOG_RING;
+     int ret;
  
-@@ -2909,10 +2909,8 @@ static void gen_edge(DisasContext *dc, TCGv dst, TCGv s1, TCGv s2,
-     tcg_gen_shli_tl(lo1, lo1, shift);
-     tcg_gen_shli_tl(lo2, lo2, shift);
+     s->kvm_dirty_ring_size = 0;
+@@ -1471,7 +1472,12 @@ static int kvm_dirty_ring_init(KVMState *s)
+      * Read the max supported pages. Fall back to dirty logging mode
+      * if the dirty ring isn't supported.
+      */
+-    ret = kvm_vm_check_extension(s, KVM_CAP_DIRTY_LOG_RING);
++    ret = kvm_vm_check_extension(s, capability);
++    if (ret <= 0) {
++        capability = KVM_CAP_DIRTY_LOG_RING_ACQ_REL;
++        ret = kvm_vm_check_extension(s, capability);
++    }
++
+     if (ret <= 0) {
+         warn_report("KVM dirty ring not available, using bitmap method");
+         return 0;
+@@ -1484,13 +1490,26 @@ static int kvm_dirty_ring_init(KVMState *s)
+         return -EINVAL;
+     }
  
--    t1 = tcg_const_tl(tabl);
--    t2 = tcg_const_tl(tabr);
--    tcg_gen_shr_tl(lo1, t1, lo1);
--    tcg_gen_shr_tl(lo2, t2, lo2);
-+    tcg_gen_shr_tl(lo1, tcg_constant_tl(tabl), lo1);
-+    tcg_gen_shr_tl(lo2, tcg_constant_tl(tabr), lo2);
-     tcg_gen_andi_tl(dst, lo1, omask);
-     tcg_gen_andi_tl(lo2, lo2, omask);
+-    ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING, 0, ring_bytes);
++    ret = kvm_vm_enable_cap(s, capability, 0, ring_bytes);
+     if (ret) {
+         error_report("Enabling of KVM dirty ring failed: %s. "
+                      "Suggested minimum value is 1024.", strerror(-ret));
+         return -EIO;
+     }
  
-@@ -2931,9 +2929,9 @@ static void gen_edge(DisasContext *dc, TCGv dst, TCGv s1, TCGv s2,
-         lo2 |= -(s1 == s2)
-         dst &= lo2
-     */
--    tcg_gen_setcond_tl(TCG_COND_EQ, t1, s1, s2);
--    tcg_gen_neg_tl(t1, t1);
--    tcg_gen_or_tl(lo2, lo2, t1);
-+    tcg_gen_setcond_tl(TCG_COND_EQ, lo1, s1, s2);
-+    tcg_gen_neg_tl(lo1, lo1);
-+    tcg_gen_or_tl(lo2, lo2, lo1);
-     tcg_gen_and_tl(dst, dst, lo2);
- }
++    /* Enable the backup bitmap if it is supported */
++    ret = kvm_vm_check_extension(s, KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP);
++    if (ret > 0) {
++        ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP, 0);
++        if (ret) {
++            error_report("Enabling of KVM dirty ring's backup bitmap failed: "
++                         "%s. ", strerror(-ret));
++            return -EIO;
++        }
++
++        s->kvm_dirty_ring_with_bitmap = true;
++    }
++
+     s->kvm_dirty_ring_size = ring_size;
+     s->kvm_dirty_ring_bytes = ring_bytes;
  
 -- 
-2.34.1
+2.23.0
 

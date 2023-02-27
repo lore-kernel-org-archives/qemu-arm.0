@@ -1,109 +1,107 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5053585ejc;
-        Mon, 27 Feb 2023 13:35:24 -0800 (PST)
-X-Google-Smtp-Source: AK7set+CBFTMrDB60yBI/08ZMVzZL0ICEIFw3mQQZ/hQaJx8m1+LM+P8oghsuiWOS10j+XYhJFPt
-X-Received: by 2002:a05:6214:21e7:b0:56f:6f5:502d with SMTP id p7-20020a05621421e700b0056f06f5502dmr1754484qvj.17.1677533724459;
-        Mon, 27 Feb 2023 13:35:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677533724; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5054840ejc;
+        Mon, 27 Feb 2023 13:37:11 -0800 (PST)
+X-Google-Smtp-Source: AK7set8cqM0fP/89cpaekolnhnSLqp3IBuaY0KgAQioPnYdquU77Ykwji9k1Pjs9o9+4s4YguLqw
+X-Received: by 2002:ad4:5e8c:0:b0:56e:9a34:4eaf with SMTP id jl12-20020ad45e8c000000b0056e9a344eafmr1547885qvb.36.1677533830919;
+        Mon, 27 Feb 2023 13:37:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677533830; cv=none;
         d=google.com; s=arc-20160816;
-        b=z3k+/A4yEBi6bsVcDrFxH13WX13U+JxqXkYrIID3iR+ppkBuBN/No7t5ARhYBA6vFs
-         PG/QPG3pwVW648IL9+6kteW0dmVgTTWBfTe7oVsSgVx9J1YCNw2GQRlFMTUoD+qd1irQ
-         7j9kKDxtY/C+KZJ26MPwyxwiUn60U4ZJWoQ/Pw2ayD2NP9Gu9LBj5q4LcB4jPhq9fqyl
-         EJ+zKAFFD1/c9aJjQ1JsTyNFRytwjKJqvZTrXOOktZVi4y6f+CtNOS+NBnYO+MaeN7Nb
-         o8GHP3Hm+pxOQfjaWA0OiTa+TIH2tE4++QpWXnLU9BMrKkPbhbT3joGAPl18y/e7Vlnk
-         gFEA==
+        b=fE5vEbyQuY1mvy24KcnXnTmhYurBzg6HmBeEtzCucra9r2Qkdc9QASFtjk1FlsUsCA
+         6vT0Hx6NMvgLUb3/Tce0hpQ9Mu8EbTIVr4TKT2YOHfnlCwDV7z4HqtcyVAced7Zp7Byc
+         XECblItAompDVQzdqfkcZoLzmMiDYoU+fbCB7Mp87oNdCN/N8tMU6cKOFcyzA7APNppw
+         zVgXY0gGh/291gBZcksdNiAE7fG0RsTE6LcL8ljNsxcNIml0CaniD9Aa62SuXKuIWI5+
+         mM7YJGr1XIX3fQTa3gqgtxL/JvrDYpvC7ahEXRvjK2r5PI+T4pQROCOM4CcR8zGMQ5V5
+         Q9Tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+GyGNlJdKa3KwsEwlzZ+L9gq2ekV4ImCWMbXLmwTrsw=;
-        b=NP21S/jcDviVqUa2iGkW61FDCRkSD2+ODVjNhdrPYYAveSAv8nmFX1O9EMjH9l9bgG
-         kgO4C0opHTUEqVxMEhryxvEI7zqJsbQ/1VPzTb4Y/tVg4jS5RAd+e0mdIjOJX9NJw0Qx
-         2yzDqKQHLG8BUdp1IytQ0Q0o9Zg+Yu6F4Cqm8qVW2Bp9Ye/+1U9Ep8B9c6H9seIRbrh8
-         uVdGSBmcFl9+IgGwM8KDosINCZUzU4r/qhGGfvtrGb3fUu0mMRQH/ZAlf9hhVWzRIzXa
-         ogiYOn0tzeei2gwy2Gk9CeeLSxFhIfsWC1xdGMdVKB3E7doOr3d6ISCSkSvWlR/Arzmt
-         rHOA==
+        bh=if+lkqRgEYOFjjmMSjmK1jVJBm0kqeclPvBFCVYME/0=;
+        b=ahz98GxL/Clv33oDlOBs9JixMRcSdNOtbNsdliEeNhO7MLV2BXeAMPzMBGPK+8vBGY
+         l+L7gXZq5iGizWrunuVCLDsRW6TmJWonTAlL9zK/Y7nFshh9NLyF5chTzh4ARm4PJT6y
+         ySdA8kewk+PM9hGfvCDiR0iG3jePKt+2bArpVj90GxPPSwmtAXBrVbjfKS5O3OeehlOo
+         +SzFk3z9Jb1VmbAaVcSCUJzfp3MsonMoLDpf5hL2/N1YvkpWp9Q1kugrHfvLEyqxCaBU
+         jdKfyUObx7AXf6j6lj9YRoIbGGQXgSF6MN2jinZD3E82jEqdmgirBFT4n/MdOdIHkwE5
+         DSfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIdA64Rf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CT1ILTAn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a16-20020a0ce350000000b00534e098cb61si6670388qvm.416.2023.02.27.13.35.24
+        by mx.google.com with ESMTPS id u7-20020a0cdd07000000b0056eb47532bbsi7046081qvk.583.2023.02.27.13.37.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 13:35:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Feb 2023 13:37:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIdA64Rf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CT1ILTAn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWl7r-000776-0E; Mon, 27 Feb 2023 16:33:39 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pWl7s-00077X-GP; Mon, 27 Feb 2023 16:33:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWl7p-00075w-67
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 16:33:37 -0500
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ id 1pWl7q-00076K-CR
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 16:33:38 -0500
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWl7n-0004GA-DL
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 16:33:36 -0500
-Received: by mail-pj1-x1029.google.com with SMTP id
- m3-20020a17090ade0300b00229eec90a7fso159047pjv.0
- for <qemu-arm@nongnu.org>; Mon, 27 Feb 2023 13:33:35 -0800 (PST)
+ id 1pWl7o-0004GU-MD
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 16:33:38 -0500
+Received: by mail-pl1-x62a.google.com with SMTP id i10so8243833plr.9
+ for <qemu-devel@nongnu.org>; Mon, 27 Feb 2023 13:33:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+GyGNlJdKa3KwsEwlzZ+L9gq2ekV4ImCWMbXLmwTrsw=;
- b=fIdA64RfihIRamb7j74hmofzWQJVD6FYB2Kip/42Lpf3990NkcEcN8H3MwUvri+vSS
- cgnbSXyNOam8XAVStBvQiAeB/hukLB2YgmYodt17AeS75t8CNfJm5Q3/HNBTwwUyvLaH
- Bpi2xiID73PTkOzNsCk8taW4jNhiKZBrtrz/DV9Tc3dbT1z0TvuKojyb1055pmmGA8HW
- MiUFDjpa6wWC9gafIaC5fOJ9oOA9HKFx1xkCbX3D09Tn9NQNW5NilBW8y43VM9DztwTo
- LOuTumP97TstQL24EPQcgi+U+/WBdKi6/3dknrAERXZf9K54cwMtqnrPevNpR9zN7nNe
- 33nQ==
+ bh=if+lkqRgEYOFjjmMSjmK1jVJBm0kqeclPvBFCVYME/0=;
+ b=CT1ILTAnD1amO22eHK1BQcBgxhXrdu/+lNurgh9Nu2rQHBY/8T/ZN+R4c91nDk4OXB
+ ay8PAvj5ddmYCTuYAWT6nMYdEDl+usUkfQsluGpY+r6olhHUY5OerrHqCYBy4EPF8oo+
+ QHBQmRPaARsstCvW8PtsnRJdMpY3uDdy2vCJ+Jn5ThPa1ZUaqdl1LgbasGrdj8sdkGPy
+ vm+GFMb6its/8wvuJM53B92QqFp/svtfuxyKi7nWa7rXI7jZPESd9NIy5LPDsfvpfgZA
+ GTV0DeRy1Z/EU7LNqaUZh89dNQvQrhvaBi0oJWWManQ1csuu+O6eCgevXjCCY/TJcaMk
+ Q2Ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+GyGNlJdKa3KwsEwlzZ+L9gq2ekV4ImCWMbXLmwTrsw=;
- b=BpsrORJZM0/9GrHXFsdXJw61w+DJTcWtEgzKVmbpsG2FnLr7tcOxykP8p+mVi9mZBf
- 1Zzv3lMFqJede2oNVRrsfFOlcp1JyI6J3sl0LY0hPJheVBQLmUdBzj1zMmk/jUAPGmjR
- 8BPSUse2sT6THdwE0fLtxRBkcnQVSdwOnCYSjOoOf+INT8YDnu/aQubTIU7MsEekplcD
- 41S3Nqs42920eECdP3TOKyVYi0hWLTjI2icRBmRGyRl5diFQeOYgzt8Vm3Iym+4+pLTH
- gHKuFNhhVWiSRP/9yFEn7i49ddpBQdT9WBAQPHEMTH2iuFzWvqWNcnuir1AJsZF9SqsG
- VHmw==
-X-Gm-Message-State: AO0yUKV/oIde6A7OsuKg2DPzrAticJkQp/0oaoH+5uDYzzaxTqn/7RmG
- h99BggaLKOY9wVuV746RRrkZiA==
-X-Received: by 2002:a05:6a20:3d91:b0:cd:3f04:6452 with SMTP id
- s17-20020a056a203d9100b000cd3f046452mr1046310pzi.49.1677533613648; 
- Mon, 27 Feb 2023 13:33:33 -0800 (PST)
+ bh=if+lkqRgEYOFjjmMSjmK1jVJBm0kqeclPvBFCVYME/0=;
+ b=JnIrJMDnCiqSaDrpMXnMuRIODqJGuPJZuoOZQodEktPaWMg7pUYC4j6U76pQElqhwP
+ 7rTQqtFqQLDiwJsWVMJUM7M1AMNgCnPjn2wxuktYSHxf2D80SS8R+WUFt5y/Mm4TMiMv
+ BHeMt6gSl/kfAd+BzTFE3tfMY4vbatawvcVltqcJRRWXeqkc2fI7s2GkVAhYmlOymm9z
+ fmpSeAQKwLZf/tMz1sOs8vaxUCREXneQfcbEFh57haLE0seYawffFm5dO5z10NLDBzvx
+ ps/ICmD3B8VDDpdTBcE2xOBtyZIZvVSG8on6vYPFYiuJG5tAhmUbsdwAc3kBsb3m4b2Q
+ roPQ==
+X-Gm-Message-State: AO0yUKUWirQNzrPLfX4Ad4f4mmnNzWMI+gKFjwtWK/yGBY9TGRZUbOeN
+ PrJS1sFRrCHG1Dt0YYM/Lsz+qqgA6X1xxJa54WE=
+X-Received: by 2002:a17:90b:1e07:b0:235:31e9:e792 with SMTP id
+ pg7-20020a17090b1e0700b0023531e9e792mr624458pjb.20.1677533615337; 
+ Mon, 27 Feb 2023 13:33:35 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- d137-20020a63368f000000b00478c48cf73csm4375262pga.82.2023.02.27.13.33.32
+ d137-20020a63368f000000b00478c48cf73csm4375262pga.82.2023.02.27.13.33.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Feb 2023 13:33:33 -0800 (PST)
+ Mon, 27 Feb 2023 13:33:34 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 01/14] target/arm: Normalize aarch64 gdbstub get/set
- function names
-Date: Mon, 27 Feb 2023 11:33:16 -1000
-Message-Id: <20230227213329.793795-2-richard.henderson@linaro.org>
+Subject: [PATCH v3 02/14] target/arm: Unexport arm_gen_dynamic_sysreg_xml
+Date: Mon, 27 Feb 2023 11:33:17 -1000
+Message-Id: <20230227213329.793795-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227213329.793795-1-richard.henderson@linaro.org>
 References: <20230227213329.793795-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,115 +110,56 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FLSsd00ubc5g
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eLe3+0OT3QNV
 
-Make the form of the function names between fp and sve the same:
-  - arm_gdb_*_svereg -> aarch64_gdb_*_sve_reg.
-  - aarch64_fpu_gdb_*_reg -> aarch64_gdb_*_fpu_reg.
+This function is not used outside gdbstub.c.
 
 Reviewed-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 8 ++++----
- target/arm/gdbstub.c   | 9 +++++----
- target/arm/gdbstub64.c | 8 ++++----
- 3 files changed, 13 insertions(+), 12 deletions(-)
+ target/arm/cpu.h     | 1 -
+ target/arm/gdbstub.c | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 680c574717..fa21393ebc 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1342,10 +1342,10 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
- }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 12b1082537..32ca6c9a0d 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1116,7 +1116,6 @@ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+  * Helpers to dynamically generates XML descriptions of the sysregs
+  * and SVE registers. Returns the number of registers in each set.
+  */
+-int arm_gen_dynamic_sysreg_xml(CPUState *cpu, int base_reg);
+ int arm_gen_dynamic_svereg_xml(CPUState *cpu, int base_reg);
  
- #ifdef TARGET_AARCH64
--int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg);
--int arm_gdb_set_svereg(CPUARMState *env, uint8_t *buf, int reg);
--int aarch64_fpu_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg);
--int aarch64_fpu_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg);
-+int aarch64_gdb_get_sve_reg(CPUARMState *env, GByteArray *buf, int reg);
-+int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg);
-+int aarch64_gdb_get_fpu_reg(CPUARMState *env, GByteArray *buf, int reg);
-+int aarch64_gdb_set_fpu_reg(CPUARMState *env, uint8_t *buf, int reg);
- void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
- void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
- void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
+ /* Returns the dynamically generated XML for the gdb stub.
 diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 2f806512d0..cf1c01e3cf 100644
+index cf1c01e3cf..52581e9784 100644
 --- a/target/arm/gdbstub.c
 +++ b/target/arm/gdbstub.c
-@@ -466,12 +466,13 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
-          */
- #ifdef TARGET_AARCH64
-         if (isar_feature_aa64_sve(&cpu->isar)) {
--            gdb_register_coprocessor(cs, arm_gdb_get_svereg, arm_gdb_set_svereg,
--                                     arm_gen_dynamic_svereg_xml(cs, cs->gdb_num_regs),
-+            int nreg = arm_gen_dynamic_svereg_xml(cs, cs->gdb_num_regs);
-+            gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
-+                                     aarch64_gdb_set_sve_reg, nreg,
-                                      "sve-registers.xml", 0);
-         } else {
--            gdb_register_coprocessor(cs, aarch64_fpu_gdb_get_reg,
--                                     aarch64_fpu_gdb_set_reg,
-+            gdb_register_coprocessor(cs, aarch64_gdb_get_fpu_reg,
-+                                     aarch64_gdb_set_fpu_reg,
-                                      34, "aarch64-fpu.xml", 0);
-         }
- #endif
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index 07a6746944..c598cb0375 100644
---- a/target/arm/gdbstub64.c
-+++ b/target/arm/gdbstub64.c
-@@ -72,7 +72,7 @@ int aarch64_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--int aarch64_fpu_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
-+int aarch64_gdb_get_fpu_reg(CPUARMState *env, GByteArray *buf, int reg)
- {
-     switch (reg) {
-     case 0 ... 31:
-@@ -92,7 +92,7 @@ int aarch64_fpu_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
+@@ -305,7 +305,7 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
      }
  }
  
--int aarch64_fpu_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
-+int aarch64_gdb_set_fpu_reg(CPUARMState *env, uint8_t *buf, int reg)
+-int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
++static int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
  {
-     switch (reg) {
-     case 0 ... 31:
-@@ -116,7 +116,7 @@ int aarch64_fpu_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
-     }
- }
- 
--int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
-+int aarch64_gdb_get_sve_reg(CPUARMState *env, GByteArray *buf, int reg)
- {
-     ARMCPU *cpu = env_archcpu(env);
- 
-@@ -164,7 +164,7 @@ int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
-     return 0;
- }
- 
--int arm_gdb_set_svereg(CPUARMState *env, uint8_t *buf, int reg)
-+int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg)
- {
-     ARMCPU *cpu = env_archcpu(env);
- 
+     ARMCPU *cpu = ARM_CPU(cs);
+     GString *s = g_string_new(NULL);
 -- 
 2.34.1
 

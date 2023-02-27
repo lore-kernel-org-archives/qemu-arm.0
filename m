@@ -1,90 +1,93 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4299388ejc;
-        Sun, 26 Feb 2023 21:47:21 -0800 (PST)
-X-Google-Smtp-Source: AK7set+6ylgC7KFj/eiWnYDMeVCc9LJQGv726GMmrEvFnzaaqQMHF7OpdEcb9ddkRYWXksA67D9I
-X-Received: by 2002:ac8:5b8a:0:b0:3bf:daae:7f24 with SMTP id a10-20020ac85b8a000000b003bfdaae7f24mr2755362qta.34.1677476841672;
-        Sun, 26 Feb 2023 21:47:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677476841; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4299861ejc;
+        Sun, 26 Feb 2023 21:48:14 -0800 (PST)
+X-Google-Smtp-Source: AK7set87lG3Fgu1UkSf/+jenro84MH59UGh4YvD23SMuFbkk8haQ3QmcoQsXPgHdSATCzIu+UYCH
+X-Received: by 2002:a05:622a:646:b0:3bf:c6ec:e960 with SMTP id a6-20020a05622a064600b003bfc6ece960mr11364157qtb.32.1677476894108;
+        Sun, 26 Feb 2023 21:48:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677476894; cv=none;
         d=google.com; s=arc-20160816;
-        b=ajjbHiUPkRE81+ax6eRpD4VDybI+6/HvwVdQL5/MnKg47iIz9RMxcrSlN87m/4ocwa
-         MHk1FkBSJ8uL6qJs3yxPdv3bwR9HHV+WwfisL9zf90LN+JbfH2zpYCEW+0TF2ht7Eg3m
-         n9OqNOjAx+HEpiVxkzWPObffn+WhUbn5Pf7ccTggrPivav/WlF14bWtKMX3AZqGVD554
-         +JNEh1Tznu7ghoc2nQCsmfJG6aks20oQ+ugeorKEIgqsjVX8oz7FQGWPNycS1n5cXkdp
-         stSMEqFVMe0t0uuYxxsT9b33+XTgTBinjWWkePt0ixV9ljsyxEmdpHcIwfW7TylLQ4hT
-         8gGQ==
+        b=qzxQJjnQ46LwPkjKv+B60+eFN9a1TDLgMTr1Pv7fIdySgnL3Aq3G3t3a1s5Ewgk9No
+         Hugxp6OCCSa3H/KZ17yFRUlY5h7rRNkuhjSCqB4MYcyznyF7nAQgFDs4vll0ulG0IL4O
+         I1qdqL7lQgcU+4F5M+Ch1F+Mt+oWa+r6sci62V57JD9xmHW27x6XaLByXPUWE7s9BLM7
+         LF3tV7h4i3bIzqJcn/zgfxode/wyHMPw5ptwA5TFi6UjXtf8y+1VeXrh11c57CleLSQV
+         6cJB3GpAvYU+C/rst0wZWD6yvk5XGMoUlfVvO7q1BJXFn4oE5BACG7e9QpS6iEFqPotQ
+         MMyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=aSdSZoXanzTgHiZ8WDnCFrnwnqhaD0exhElRW6JfOMo=;
-        b=LBJYGEYU2VTz5Pc0fQDPShP9HTJMVzSbctRMsc8UP1M4L/UYFeB386J/xpDk8gTYDC
-         pTWDUd5LaA053a/DlmnEIuybIvAP9ucs7ZGaSetxdC2hRZ+k+Y1roIcK1nWAxAz/Njm5
-         5VPfzxoMWWbh6rdQEit1+WWPjzf/R89a222qhy4/ABYqm5c6uY6HTWQkgoFlNgVu0CxQ
-         /2AuGA5F13rrumu9fPjN34bfXS0MnUowTkhfLHQ0bDcqFsGBUpQl8+zMhJMrIUsNE2my
-         GMKJQ4SJLNzUOr69/kXfL3dO31LTj6gsVSEMW7oZAXp7j040KNpmNvO63+ls6vf9KRIt
-         np2w==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Yzfn6SwReNHYrs90SleSmiPQOxaudqzmn6c62VzQnAs=;
+        b=lcQhJj26Rb+SQ6MNeOmOyvL49aoq0BfG3P901wdAwOwLV369R7zkTzzJPwBbGWkwtv
+         0iCwrq5b16eyEienb9JRL2S3EFvhN4Kc87QkbjJo/0w5lEQ3qhSEivAFy9RNy0v8PLIx
+         eT0NnBqIme8ABxMO1/b0vkvNJb8nwe1B9hcxlzgflvk7xznZgV/nhBYfIgxZx7IA9f1i
+         JPCkT3ZjufbTmBdl7IYB79hUzX5BJ25H3BW0ZA36NfG2owi/571rzF+L0yzfgAI3A9dm
+         8Oy+CyB97HtVJWU4OTLPVikIz+PHUXgBx3CAXovUqtQVnz9J/ui9fzLgOfD6Vz++5eb8
+         i+Gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QytBWJr0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ldr53H7o;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f42-20020a05622a1a2a00b003ba10333b13si6386996qtb.523.2023.02.26.21.47.21
+        by mx.google.com with ESMTPS id q20-20020a37f714000000b00731114e2182si5173615qkj.236.2023.02.26.21.48.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 21:47:21 -0800 (PST)
+        Sun, 26 Feb 2023 21:48:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QytBWJr0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ldr53H7o;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWWHk-0001as-8c; Mon, 27 Feb 2023 00:42:52 -0500
+	id 1pWWDv-00065a-UK; Mon, 27 Feb 2023 00:38:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWHh-0001Pi-LA
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:42:49 -0500
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+ id 1pWWD3-0003NS-JZ
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:38:08 -0500
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWHd-0004jK-TK
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:42:49 -0500
-Received: by mail-pj1-x1043.google.com with SMTP id c23so4876305pjo.4
- for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:42:45 -0800 (PST)
+ id 1pWWCz-0002qR-8c
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:37:59 -0500
+Received: by mail-pj1-x1036.google.com with SMTP id
+ h17-20020a17090aea9100b0023739b10792so5073173pjz.1
+ for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:37:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=aSdSZoXanzTgHiZ8WDnCFrnwnqhaD0exhElRW6JfOMo=;
- b=QytBWJr0549HbrLCw3qW6jVOSfk6pOovCPBzscu6Hf22i+skwzOIUXbDGzpD09uqtn
- PEEcY9xEkDLMmZVOKq9XgRV8u/NxnJur8xBI+bcgcet012d2VA0H6L4vco0j2BoZlkEj
- 1saXzas+h0grkNXR391THlFYqhTpvU44sxkbwxUwlP6XyD7l+g68rAH/q85T8lRXOwI2
- eS9dX2oWDFmbmTX6V54XhNgTHjEa/e+PjiMt+OzYgoJsoYap2o3YokSZCKOWCgBqdxGE
- yPMaC9EyteYb59FRVQA4f6qvbMIcpa3wqAHOIiiyRdfswdFs+u305V+qDO8rjE69Ei3r
- SlsQ==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Yzfn6SwReNHYrs90SleSmiPQOxaudqzmn6c62VzQnAs=;
+ b=ldr53H7oVSDHYuoh0pMMrd9XDW2g1l3KMuEfa6qVejtVsdhog4ySBkAsP0FvK4C784
+ MITsBb9I6wG0H2JfuuwJT3hfN+M+NW/6NrRrq0Dt7N3roU647k4gcm9XPvs5r9LpRwux
+ Dp7cq4h9aD1009OzJFL/drNo+gR+WEKlTmxBGINLgkHiy8xsfc2yHJdEz1CtIJFhdeqQ
+ MXXkDO55kjZQ9H8hNVkw4l3m9IPEV0JzYN8fucy4x9Sem3iavlw+U1YSlIzaN4vLv/k7
+ fYs2O8fiNupqr0vW+xGhjRNetoaiy0W/5vq3eB76FEV2jc+TiMg/G63v7IuVpMjrYekj
+ 8ANA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=aSdSZoXanzTgHiZ8WDnCFrnwnqhaD0exhElRW6JfOMo=;
- b=uTbVhKJXvpUh8pNPFaLfHC7YeWMqxUgL8XEwt1oEGFKuLYQDivao6JqkuwFCDPxMA2
- JmY0DXfEgtiJaI7B4mNG8LRYWRPxKXuO3ferloOWzHS8q+YFp8y05/Zl1PIDuqbupK8Z
- lFswjloqZbdHQV347SxgsVm/TEU5bbSF/tshCRwSImMQJGQRx3IE5SRPV9Y/etxproJD
- iCODd/WJpqV1H+1JIZ/U9fF+u1N9LQccG3qeDZfHLvLZ6B4lgahXaqwp/9pKSI4G0hAU
- eWvzHvKHNCLDAK/zFAYDWfvHfEqB1VUCJ02qCMU5HqlArqlNZsZzJTh9zrtMvBOBaiix
- zkxg==
-X-Gm-Message-State: AO0yUKWXGK692ccfGnt3CG955J+mkjuMebt3csRvwfGIz7T83rPsh3ib
- tWz2Uml2sSdqN6hZGSXv5l5ybw==
-X-Received: by 2002:a05:6a21:329e:b0:b8:a17c:75e4 with SMTP id
- yt30-20020a056a21329e00b000b8a17c75e4mr30276055pzb.48.1677476564139; 
- Sun, 26 Feb 2023 21:42:44 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Yzfn6SwReNHYrs90SleSmiPQOxaudqzmn6c62VzQnAs=;
+ b=mNjMgsSoxKOr2Kr+pMPvmBCp9geRhHwMoNNJujLN4OdU0wk1+h/a+KEzFE7mpIXyza
+ hrZ9trcPsOn4tkXaPiMYIoecVjTqC2heune+w/VN3wWDyutVL2oKFkPXzCVpQ61muD1E
+ tHZBM74/UeaSz1xmH+c+uD5YCoc6P1r2aruc9mXU4sXGsFZlTMcv3WYgBd6ShstYyVzy
+ Ct5JwebYT2dDjq8WbjVWGNmH9mgbO5yjmAn2hZft7MphvRbBebphrJBV07PViurn5bbI
+ yyUUK/cKnJsyGWQ0XL+JOsKrrCMUXGySru+JxaIvsDCHHvldG66l4x0WsIzZE+rjmhnT
+ 4V4w==
+X-Gm-Message-State: AO0yUKU/yFCa+JtxZrcaNtk24yeCveee/WQLWK4XNCfSxuD7cWzfi3Pv
+ hqjKFB8++giENnQclynj/Akdmw==
+X-Received: by 2002:a05:6a20:8ec5:b0:cc:f27d:eb83 with SMTP id
+ m5-20020a056a208ec500b000ccf27deb83mr4868937pzk.53.1677476273331; 
+ Sun, 26 Feb 2023 21:37:53 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- d10-20020aa7868a000000b005cdc64a287dsm3317137pfo.115.2023.02.26.21.42.41
+ k12-20020aa792cc000000b005a7c892b435sm3342137pfa.25.2023.02.26.21.37.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:42:43 -0800 (PST)
+ Sun, 26 Feb 2023 21:37:52 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -92,14 +95,16 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com
-Subject: [PATCH 00/70] tcg: Remove tcg_const_*
-Date: Sun, 26 Feb 2023 19:41:23 -1000
-Message-Id: <20230227054233.390271-1-richard.henderson@linaro.org>
+Subject: [PATCH v4 17/31] tcg: Don't re-use TEMP_TB temporaries
+Date: Sun, 26 Feb 2023 19:36:47 -1000
+Message-Id: <20230227053701.368744-18-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230227053701.368744-1-richard.henderson@linaro.org>
+References: <20230227053701.368744-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1043.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,151 +126,168 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +xS7aDTT+bFF
+X-TUID: i8wVQsWP+msA
 
-This completes the transition from tcg_const_* to
-tcg_constant_* that started in 2020.
+Reusing TEMP_TB interferes with detecting whether the
+temp can be adjusted to TEMP_EBB.
 
-This isn't hard, but non-mechanical.  One must identify when the
-variable is used only for the constant, or if it is also written
-as a general purpose temporary.  For the most part, breaking this
-apart makes the code easier to understand.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/tcg/tcg.h |   2 +-
+ tcg/tcg.c         | 101 ++++++++++++++++++++++++----------------------
+ 2 files changed, 53 insertions(+), 50 deletions(-)
 
-Based-on: 20230227052505.352889-1-richard.henderson@linaro.org
-("[PATCH v2 00/76] tcg: Drop tcg_temp_free from translators")
-
-which I've just realized is actualy based on v4 not v3 of
-
-Message-Id: 20230227053701.368744-1-richard.henderson@linaro.org
-("[PATCH v4 00/31] tcg: Simplify temporary usage")
-
-so for avoidance of doubt:
-
-https://gitlab.com/rth7680/qemu/-/tree/tcg-const (c44933e0)
-
-
-r~
-
-
-Richard Henderson (70):
-  target/arm: Use rmode >= 0 for need_rmode
-  target/arm: Handle FPROUNDING_ODD in arm_rmode_to_sf
-  target/arm: Improve arm_rmode_to_sf
-  target/arm: Consistently use ARMFPRounding during translation
-  target/arm: Create gen_set_rmode, gen_restore_rmode
-  target/arm: Improve trans_BFCI
-  target/arm: Avoid tcg_const_ptr in gen_sve_{ldr,str}
-  target/arm: Avoid tcg_const_* in translate-mve.c
-  target/arm: Avoid tcg_const_ptr in disas_simd_zip_trn
-  target/arm: Avoid tcg_const_ptr in handle_vec_simd_sqshrn
-  target/arm: Avoid tcg_const_ptr in handle_rev
-  target/avr: Avoid use of tcg_const_i32 in SBIC, SBIS
-  target/avr: Avoid use of tcg_const_i32 throughout
-  target/cris: Avoid use of tcg_const_i32 throughout
-  target/hexagon: Use tcg_constant_* for gen_constant_from_imm
-  target/hexagon/idef-parser: Use gen_tmp for LPCFG
-  target/hexagon/idef-parser: Use gen_tmp for gen_pred_assign
-  target/hexagon/idef-parser: Use gen_tmp for gen_rvalue_pred
-  target/hexagon/idef-parser: Use gen_constant for
-    gen_extend_tcg_width_op
-  target/hppa: Avoid tcg_const_i64 in trans_fid_f
-  target/hppa: Avoid use of tcg_const_i32 throughout
-  target/i386: Simplify POPF
-  target/i386: Avoid use of tcg_const_* throughout
-  target/m68k: Reject immediate as destination in gen_ea_mode
-  target/m68k: Use tcg_constant_i32 in gen_ea_mode
-  target/m68k: Avoid tcg_const_i32 when modified
-  target/m68k: Avoid tcg_const_i32 in bfop_reg
-  target/m68k: Avoid tcg_const_* throughout
-  target/microblaze: Avoid tcg_const_* throughout
-  target/mips: Split out gen_lxl
-  target/mips: Split out gen_lxr
-  target/mips: Avoid tcg_const_tl in gen_r6_ld
-  target/mips: Avoid tcg_const_* throughout
-  target/ppc: Split out gen_vx_vmul10
-  target/ppc: Avoid tcg_const_i64 in do_vector_shift_quad
-  target/ppc: Avoid tcg_const_i64 in do_vcntmb
-  target/ppc: Avoid tcg_const_* in vmx-impl.c.inc
-  target/ppc: Avoid tcg_const_* in xxeval
-  target/ppc: Avoid tcg_const_* in vsx-impl.c.inc
-  target/ppc: Avoid tcg_const_* in fp-impl.c.inc
-  target/ppc: Avoid tcg_const_* in power8-pmu-regs.c.inc
-  target/ppc: Rewrite trans_ADDG6S
-  target/ppc: Fix gen_tlbsx_booke206
-  target/ppc: Avoid tcg_const_* in translate.c
-  target/riscv: Avoid tcg_const_*
-  target/rx: Use tcg_gen_abs_i32
-  target/rx: Use cpu_psw_z as temp in flags computation
-  target/rx: Avoid tcg_const_i32 when new temp needed
-  target/rx: Avoid tcg_const_i32
-  target/s390x: Split out gen_ri2
-  target/s390x: Avoid tcg_const_i64
-  target/sh4: Avoid tcg_const_i32 for TAS.B
-  target/sh4: Avoid tcg_const_i32
-  tcg/sparc: Avoid tcg_const_tl in gen_edge
-  target/sparc: Avoid tcg_const_{tl,i32}
-  target/tricore: Split t_n as constant from temp as variable
-  target/tricore: Rename t_off10 and use tcg_constant_i32
-  target/tricore: Use min/max for saturate
-  target/tricore: Use setcondi instead of explicit allocation
-  target/tricore: Drop some temp initialization
-  target/tricore: Avoid tcg_const_i32
-  target/xtensa: Tidy translate_bb
-  target/xtensa: Tidy translate_clamps
-  target/xtensa: Avoid tcg_const_i32 in translate_l32r
-  target/xtensa: Use tcg_gen_subfi_i32 in translate_sll
-  target/xtensa: Split constant in bit shift
-  target/xtensa: Avoid tcg_const_i32
-  tcg: Replace tcg_const_i64 in tcg-op.c
-  tcg: Drop tcg_const_*_vec
-  tcg: Drop tcg_const_*
-
- include/tcg/tcg-op.h                        |   4 -
- include/tcg/tcg.h                           |  10 -
- target/arm/internals.h                      |  12 +-
- target/arm/translate.h                      |  17 +
- target/hexagon/idef-parser/parser-helpers.h |   6 -
- target/arm/translate-a64.c                  | 168 +++----
- target/arm/translate-mve.c                  |  56 +--
- target/arm/translate-sve.c                  |  28 +-
- target/arm/translate-vfp.c                  |  26 +-
- target/arm/translate.c                      |  13 +-
- target/arm/vfp_helper.c                     |  35 +-
- target/avr/translate.c                      |  48 +-
- target/cris/translate.c                     |  46 +-
- target/hexagon/idef-parser/parser-helpers.c |  49 +-
- target/hppa/translate.c                     |  35 +-
- target/i386/tcg/translate.c                 | 138 +++---
- target/m68k/translate.c                     | 235 +++++-----
- target/microblaze/translate.c               |  35 +-
- target/mips/tcg/mxu_translate.c             |   4 +-
- target/mips/tcg/translate.c                 | 282 +++++-------
- target/mips/tcg/tx79_translate.c            |   4 +-
- target/ppc/translate.c                      | 148 +++---
- target/riscv/translate.c                    |   4 +-
- target/rx/translate.c                       |  84 ++--
- target/s390x/tcg/translate.c                |  43 +-
- target/sh4/translate.c                      |  35 +-
- target/sparc/translate.c                    |  94 ++--
- target/tricore/translate.c                  | 476 ++++++++++----------
- target/xtensa/translate.c                   |  50 +-
- tcg/tcg-op-vec.c                            |  34 +-
- tcg/tcg-op.c                                |  12 +-
- tcg/tcg.c                                   |  16 -
- target/cris/translate_v10.c.inc             |  26 +-
- target/mips/tcg/micromips_translate.c.inc   |   4 +-
- target/mips/tcg/nanomips_translate.c.inc    |  16 +-
- target/ppc/power8-pmu-regs.c.inc            |   4 +-
- target/ppc/translate/fixedpoint-impl.c.inc  |  44 +-
- target/ppc/translate/fp-impl.c.inc          |  26 +-
- target/ppc/translate/vmx-impl.c.inc         | 130 +++---
- target/ppc/translate/vsx-impl.c.inc         |  36 +-
- target/riscv/insn_trans/trans_rvv.c.inc     |   4 +-
- target/riscv/insn_trans/trans_rvzfh.c.inc   |   2 +-
- tcg/i386/tcg-target.c.inc                   |   9 +-
- target/hexagon/idef-parser/idef-parser.y    |   2 +-
- 44 files changed, 1158 insertions(+), 1392 deletions(-)
-
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index 0c2041bcf7..6cc6758cd6 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -612,7 +612,7 @@ struct TCGContext {
+ #endif
+ 
+     GHashTable *const_table[TCG_TYPE_COUNT];
+-    TCGTempSet free_temps[TCG_TYPE_COUNT * 2];
++    TCGTempSet free_temps[TCG_TYPE_COUNT];
+     TCGTemp temps[TCG_MAX_TEMPS]; /* globals first, temps after */
+ 
+     QTAILQ_HEAD(, TCGOp) ops, free_ops;
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 437fea2f3c..758b2a3e06 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -1258,63 +1258,66 @@ TCGTemp *tcg_global_mem_new_internal(TCGType type, TCGv_ptr base,
+ TCGTemp *tcg_temp_new_internal(TCGType type, TCGTempKind kind)
+ {
+     TCGContext *s = tcg_ctx;
+-    bool temp_local = kind == TEMP_TB;
+     TCGTemp *ts;
+-    int idx, k;
++    int n;
+ 
+-    k = type + (temp_local ? TCG_TYPE_COUNT : 0);
+-    idx = find_first_bit(s->free_temps[k].l, TCG_MAX_TEMPS);
+-    if (idx < TCG_MAX_TEMPS) {
+-        /* There is already an available temp with the right type.  */
+-        clear_bit(idx, s->free_temps[k].l);
++    if (kind == TEMP_EBB) {
++        int idx = find_first_bit(s->free_temps[type].l, TCG_MAX_TEMPS);
+ 
+-        ts = &s->temps[idx];
+-        ts->temp_allocated = 1;
+-        tcg_debug_assert(ts->base_type == type);
+-        tcg_debug_assert(ts->kind == kind);
+-    } else {
+-        int i, n;
++        if (idx < TCG_MAX_TEMPS) {
++            /* There is already an available temp with the right type.  */
++            clear_bit(idx, s->free_temps[type].l);
+ 
+-        switch (type) {
+-        case TCG_TYPE_I32:
+-        case TCG_TYPE_V64:
+-        case TCG_TYPE_V128:
+-        case TCG_TYPE_V256:
+-            n = 1;
+-            break;
+-        case TCG_TYPE_I64:
+-            n = 64 / TCG_TARGET_REG_BITS;
+-            break;
+-        case TCG_TYPE_I128:
+-            n = 128 / TCG_TARGET_REG_BITS;
+-            break;
+-        default:
+-            g_assert_not_reached();
++            ts = &s->temps[idx];
++            ts->temp_allocated = 1;
++            tcg_debug_assert(ts->base_type == type);
++            tcg_debug_assert(ts->kind == kind);
++            goto done;
+         }
++    } else {
++        tcg_debug_assert(kind == TEMP_TB);
++    }
+ 
+-        ts = tcg_temp_alloc(s);
+-        ts->base_type = type;
+-        ts->temp_allocated = 1;
+-        ts->kind = kind;
++    switch (type) {
++    case TCG_TYPE_I32:
++    case TCG_TYPE_V64:
++    case TCG_TYPE_V128:
++    case TCG_TYPE_V256:
++        n = 1;
++        break;
++    case TCG_TYPE_I64:
++        n = 64 / TCG_TARGET_REG_BITS;
++        break;
++    case TCG_TYPE_I128:
++        n = 128 / TCG_TARGET_REG_BITS;
++        break;
++    default:
++        g_assert_not_reached();
++    }
+ 
+-        if (n == 1) {
+-            ts->type = type;
+-        } else {
+-            ts->type = TCG_TYPE_REG;
++    ts = tcg_temp_alloc(s);
++    ts->base_type = type;
++    ts->temp_allocated = 1;
++    ts->kind = kind;
+ 
+-            for (i = 1; i < n; ++i) {
+-                TCGTemp *ts2 = tcg_temp_alloc(s);
++    if (n == 1) {
++        ts->type = type;
++    } else {
++        ts->type = TCG_TYPE_REG;
+ 
+-                tcg_debug_assert(ts2 == ts + i);
+-                ts2->base_type = type;
+-                ts2->type = TCG_TYPE_REG;
+-                ts2->temp_allocated = 1;
+-                ts2->temp_subindex = i;
+-                ts2->kind = kind;
+-            }
++        for (int i = 1; i < n; ++i) {
++            TCGTemp *ts2 = tcg_temp_alloc(s);
++
++            tcg_debug_assert(ts2 == ts + i);
++            ts2->base_type = type;
++            ts2->type = TCG_TYPE_REG;
++            ts2->temp_allocated = 1;
++            ts2->temp_subindex = i;
++            ts2->kind = kind;
+         }
+     }
+ 
++ done:
+ #if defined(CONFIG_DEBUG_TCG)
+     s->temps_in_use++;
+ #endif
+@@ -1359,7 +1362,6 @@ TCGv_vec tcg_temp_new_vec_matching(TCGv_vec match)
+ void tcg_temp_free_internal(TCGTemp *ts)
+ {
+     TCGContext *s = tcg_ctx;
+-    int k, idx;
+ 
+     switch (ts->kind) {
+     case TEMP_CONST:
+@@ -1383,9 +1385,10 @@ void tcg_temp_free_internal(TCGTemp *ts)
+     s->temps_in_use--;
+ #endif
+ 
+-    idx = temp_idx(ts);
+-    k = ts->base_type + (ts->kind == TEMP_EBB ? 0 : TCG_TYPE_COUNT);
+-    set_bit(idx, s->free_temps[k].l);
++    if (ts->kind == TEMP_EBB) {
++        int idx = temp_idx(ts);
++        set_bit(idx, s->free_temps[ts->base_type].l);
++    }
+ }
+ 
+ TCGTemp *tcg_constant_internal(TCGType type, int64_t val)
 -- 
 2.34.1
 

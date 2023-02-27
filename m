@@ -1,92 +1,92 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4295314ejc;
-        Sun, 26 Feb 2023 21:39:52 -0800 (PST)
-X-Google-Smtp-Source: AK7set8e51Ka+aAddF3IGLFJtj/1nn8+o2ueRwJKPlqX0pWYm0twa3Kb1lxnmc/BdN1tBsXlkjbC
-X-Received: by 2002:ad4:4ee4:0:b0:56e:b4f7:114f with SMTP id dv4-20020ad44ee4000000b0056eb4f7114fmr42144373qvb.21.1677476392466;
-        Sun, 26 Feb 2023 21:39:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677476392; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4295961ejc;
+        Sun, 26 Feb 2023 21:41:01 -0800 (PST)
+X-Google-Smtp-Source: AK7set9tHRspoGkP1uDgWOQB9+md40/ZHU/FDA0V1LnhLqaozEjp0/q5An5InIcfVo/S9J2Uklha
+X-Received: by 2002:ac8:5805:0:b0:3b9:2b0:5e7f with SMTP id g5-20020ac85805000000b003b902b05e7fmr30202798qtg.32.1677476461729;
+        Sun, 26 Feb 2023 21:41:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677476461; cv=none;
         d=google.com; s=arc-20160816;
-        b=WmplHwx2LWmNe8QY8fR/v37s6PV/U2EX6CXq/bdUbmEykkgoCDVzZZ/Ei6S5bphqNP
-         HRaLYX2KuihNJS2nlSsM81+jrQmRUeea7TT6EHsoeKioK/Vx8WysPxaaT1rFSxQtQ7fC
-         JlnSMsqZsSjOXvQ25/db8wEPFq3osVDjax3ARqL36yO04k65vn4L2zgYl24U7pBSAlDG
-         XmDoYl6mDhdRfqYFbAKl/4Fc+6BQf3xXF6GSbGUu46gGOORQRZXqLUR75tgE4TCWoV/e
-         v1NbcXpq/R0khVsFh6ojUtl2pV/qyxU3xaws7W/VUfjvD4ASqpX+KRjlivgFUpwKMcO2
-         j3zg==
+        b=ZG9I76bD5gXSqzuYjwRQkVL2ZtGhC1ndTN/bw9g6eTkCVo58wsF0efVR3BqZaWriGv
+         f+t1uzIu6USgQcf3RPVeFsgaEl/BCNbfK/hNSAJBQNpZ3D5PPdK5kfl6naTaZKGbwcse
+         TbUpnzt64sgZ9gaC/MNNTw8HChNJUnXI7lLcq3efpkZU1UT16y+hTL2FrXSXSvPk8bKT
+         P88tUPd1p9f49SUNi0CqDLND6DEMVxZ7k26vB7PpdVu+4To11hkqwYGBnIxqxE5VFwyB
+         tLmreXwnCkKnxcHOXZF9xTnMdg3Gz9fn/jRREWBIc6ghw/Kpy/B/XdL1G8igRXpWCT0q
+         7RQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Me3y4NGZuYmWF3kVGO2rrjiIggu4967Ajmd6fpL1eaM=;
-        b=YK8GA58T5Hvf+hS3O6THNxBryMbM8MjPm+IPFe6+px5xAg51mHYZD34oLE9KtLVPFi
-         Hkf9R5amChHHNg1LiECb0z90VDS11y3OdWwLw+27yc8J0IPn5TUZSzGGzW4YFxvxDePH
-         KvHjpnQzUhpO1DTTlwA5o7k5QN1w5u0KQ0erLObxWNLAFPQDa5xDrnaXss16IWmXLTlJ
-         JAhhePSnywbo9iGPxUZrZHpRsW1j1tl58pfGWdboBipE4f0XPknLLoXgik+2Jnwh1JkE
-         Z1OI6Z+uza798jOLEY6dt4gNsYRjXd6BkyimqsnKvuO5GCP+ZwakgThNygXifLLUA9HW
-         pKzw==
+        bh=sFtLskBtXQJv7dvYWKC68zyT6F+160XUCfsOjHVKspM=;
+        b=zB8hcrZdagESwrKuoylovUpdadPBJtw/u0eeEuQUTF5UbrlhaZrV9FiXxw3OGjq3fm
+         0DIqP3DaD7si0YBVi2FBskwRScWEgfckTMdxPptVTYt8Uo485BGTBdTqIh0iwHObm3Lj
+         otD8QzeMN2ApSV9BanGaHo2jhdiQ6LBaigu9ClM4/KMoCiQvntpQO9+J1D61SCelXfCz
+         1benGqUhEh/L5kPeerv/8HIyNT4eigrbG5ccBIVyGTJYLMxDlXx4HdmghK6KD4s13PIf
+         /9z+2OmsQtziylSfkw7sbUrxc92oH09wd+LZX9APbhfw87jyaue3x9kN3W8nxNqfe5Rz
+         kz9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eZ1VDAE0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uxkyGAqa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7-20020a05620a0c4700b007429ca20425si3589965qki.463.2023.02.26.21.39.52
+        by mx.google.com with ESMTPS id q13-20020a05620a024d00b006c81aa7656bsi5350096qkn.128.2023.02.26.21.41.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 21:39:52 -0800 (PST)
+        Sun, 26 Feb 2023 21:41:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eZ1VDAE0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uxkyGAqa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWWCV-0002MH-Ey; Mon, 27 Feb 2023 00:37:27 -0500
+	id 1pWWEU-0000wJ-Gl; Mon, 27 Feb 2023 00:39:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWCR-00027W-Ae
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:37:24 -0500
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+ id 1pWWDV-0003yo-5z
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:38:29 -0500
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWCO-0002Oe-L6
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:37:22 -0500
-Received: by mail-pj1-x1036.google.com with SMTP id c23so4866915pjo.4
- for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:37:20 -0800 (PST)
+ id 1pWWDR-0002xk-DQ
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:38:28 -0500
+Received: by mail-pg1-x532.google.com with SMTP id z10so2835958pgr.8
+ for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:38:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Me3y4NGZuYmWF3kVGO2rrjiIggu4967Ajmd6fpL1eaM=;
- b=eZ1VDAE0A4B68/UvZiQsA3HbY5a8VnVVkkO3IvXh9L7Yj+6d7kZT/GB8CvbBXRI/8K
- PQ7k4TgglZPwAq/WeFaKWdUe3cvpvgmmz66Ojsb/weewFhWyvrrlngxjSfZadTgTOl0g
- JjETL/kEFWEFMSZ7T1U5h4ac+3sao2AzuEKSsG3ZhqMGCFW73oTh1LH5Si5h6WDuRRXa
- awL4cxUDpaSSyJ6+2USLEz3TfGcQ3ZwvfXUvaRwQZ0G8oYQf25h8Lo2vrZH++doCPZVt
- hCDKhFPf1lrKNvr6W6DwXpda7ZPs0vFvK2nPSPP35EQjMDiVQ1CkECCJVYNMA6A1hOnp
- AEdA==
+ bh=sFtLskBtXQJv7dvYWKC68zyT6F+160XUCfsOjHVKspM=;
+ b=uxkyGAqaf12UHiHxe3ytgXuVwauNSoeV73dDe/22eNUs07Acfbr404tGEIUEUQjGUn
+ t/qGcJKeCZhu5S45SKD/pZ6M4GNAS/tnxaqq963ch68wJSv3t6R0dukh72teYLYxjg+Q
+ FqFchbIX0LpcYy0S7SNiPt71AULxsN3mLdtSx/DqAygVsZoIQR5JJlXRJOM12aBe35hv
+ Au0uiwaxc4RQnp8e+d1EoUfJzFuO6eUQUNKni7LyeM2psYWZG6by/r3PkPw4DBsQ7pgv
+ Sr9hYIiBriB8iW218B5IUlHVfrxKJ3sjQwvlcebm/+9RKBh5CbxoQGhANOJ9FAhkWlFN
+ JnSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Me3y4NGZuYmWF3kVGO2rrjiIggu4967Ajmd6fpL1eaM=;
- b=Wb01jFlfeCXlTYYEQxLTCLVZ5rYL5JKxREWIubClKEpeQ6SWrqg1+o5YP7Knk23nl8
- UpITCIcuIIk262FRshtqAeiym1Ej9q7EY9khMkmgfJq2JWsrAwv4phsHpWNRCCCSd8Qw
- WtZtjds+OvodWH8aAkzdAVFBsMh6wgyvfFLC8OX/Xo85FwXtaBcdyIPezOpjM4TpWz/d
- qXcXDK16mU2YFsgUhMmzoVsMkI2MxGQ3uSGkW1JxsEaLplr+FXNg1ocom0+dengRC7DB
- RD3Y+za72H4/cbSMLs77ZSUTCajeUs87OzD7Eg5N+zVYho/xO5OzyujCA/XtXdCldKQY
- 0YFg==
-X-Gm-Message-State: AO0yUKVFcGGwilKoIP5yl4QXC6hrafSeLYu7f2rTDKWUhOxddAI9eLPY
- IqLSHwnQNCWJGRBRFnEClTXkYw==
-X-Received: by 2002:a05:6a20:7351:b0:cc:c5db:ea4a with SMTP id
- v17-20020a056a20735100b000ccc5dbea4amr7662597pzc.33.1677476239768; 
- Sun, 26 Feb 2023 21:37:19 -0800 (PST)
+ bh=sFtLskBtXQJv7dvYWKC68zyT6F+160XUCfsOjHVKspM=;
+ b=AJcszUqeTZg/04MXlbsDwl3/c42mMMeX0SHQuFUyoD5hMZ8PQi2KiNjQ/TwZgVyXdT
+ kPa3JZxHsRj+rCL4bOPVJIlW3X7xXc0KA1LTkgDmA70xtnP6jHwiELT2H7Ur8hyVOKIa
+ a2qB8Sf+nujsbwxRZpRuurFuolkz3/v1cXt0fBaZQ7LQR23/ua2e1g5Rp6bg7E5fEugO
+ ZplgV4lRNyJjcpUrvJHLWtMKZ6tkfSI55Ddw6QzL5jt6Qvf7PH9xoXHvdk4KVuiPqa3v
+ HUURe3EP6cu69/uFfXndNiuEgHKzArAchPm9dkC4NK7SbHiX5a7PWSwloKt2Hcn3VbpT
+ qnoQ==
+X-Gm-Message-State: AO0yUKVUMwACyppPcgMS0H0AumkmXMHjDEerisaEVpYOarAxdj7VhKrH
+ kuhTQBZGJ2Q09V9anFukCh2oMw==
+X-Received: by 2002:aa7:9e1b:0:b0:5a8:8535:18b with SMTP id
+ y27-20020aa79e1b000000b005a88535018bmr20937619pfq.11.1677476304392; 
+ Sun, 26 Feb 2023 21:38:24 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- k12-20020aa792cc000000b005a7c892b435sm3342137pfa.25.2023.02.26.21.37.17
+ k12-20020aa792cc000000b005a7c892b435sm3342137pfa.25.2023.02.26.21.38.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:37:19 -0800 (PST)
+ Sun, 26 Feb 2023 21:38:23 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -95,24 +95,24 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v4 05/31] tcg: Rename TEMP_LOCAL to TEMP_TB
-Date: Sun, 26 Feb 2023 19:36:35 -1000
-Message-Id: <20230227053701.368744-6-richard.henderson@linaro.org>
+Subject: [PATCH v4 29/31] exec/gen-icount: Don't use tcg_temp_local_new_i32
+Date: Sun, 26 Feb 2023 19:36:59 -1000
+Message-Id: <20230227053701.368744-30-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227053701.368744-1-richard.henderson@linaro.org>
 References: <20230227053701.368744-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,144 +127,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +XGN/xI2er2L
+X-TUID: R5t3MbV4/0mL
 
-Use TEMP_TB as that is more explicit about the default
-lifetime of the data.  While "global" and "local" used
-to be contrasting, we have more lifetimes than that now.
-
-Do not yet rename tcg_temp_local_new_*, just the enum.
+Since tcg_temp_new_i32 is now identical, use that.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/tcg/tcg.h | 12 ++++++++----
- tcg/optimize.c    |  2 +-
- tcg/tcg.c         | 18 +++++++++---------
- 3 files changed, 18 insertions(+), 14 deletions(-)
+ include/exec/gen-icount.h | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
-index 59854f95b1..2010e746ca 100644
---- a/include/tcg/tcg.h
-+++ b/include/tcg/tcg.h
-@@ -433,11 +433,15 @@ typedef enum TCGTempVal {
- typedef enum TCGTempKind {
-     /* Temp is dead at the end of all basic blocks. */
-     TEMP_NORMAL,
--    /* Temp is live across conditional branch, but dead otherwise. */
-+    /*
-+     * Temp is dead at the end of the extended basic block (EBB),
-+     * the single-entry multiple-exit region that falls through
-+     * conditional branches.
-+     */
-     TEMP_EBB,
--    /* Temp is saved across basic blocks but dead at the end of TBs. */
--    TEMP_LOCAL,
--    /* Temp is saved across both basic blocks and translation blocks. */
-+    /* Temp is live across the entire translation block, but dead at end. */
-+    TEMP_TB,
-+    /* Temp is live across the entire translation block, and between them. */
-     TEMP_GLOBAL,
-     /* Temp is in a fixed register. */
-     TEMP_FIXED,
-diff --git a/tcg/optimize.c b/tcg/optimize.c
-index 763bca9ea6..ce05989c39 100644
---- a/tcg/optimize.c
-+++ b/tcg/optimize.c
-@@ -190,7 +190,7 @@ static TCGTemp *find_better_copy(TCGContext *s, TCGTemp *ts)
-         } else if (i->kind > ts->kind) {
-             if (i->kind == TEMP_GLOBAL) {
-                 g = i;
--            } else if (i->kind == TEMP_LOCAL) {
-+            } else if (i->kind == TEMP_TB) {
-                 l = i;
-             }
-         }
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 0992fb4f31..bf2af8b0fe 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -1258,7 +1258,7 @@ TCGTemp *tcg_global_mem_new_internal(TCGType type, TCGv_ptr base,
- TCGTemp *tcg_temp_new_internal(TCGType type, bool temp_local)
+diff --git a/include/exec/gen-icount.h b/include/exec/gen-icount.h
+index 4d8b1f9ae5..733a2fb228 100644
+--- a/include/exec/gen-icount.h
++++ b/include/exec/gen-icount.h
+@@ -17,13 +17,7 @@ static inline void gen_io_start(void)
+ 
+ static inline void gen_tb_start(const TranslationBlock *tb)
  {
-     TCGContext *s = tcg_ctx;
--    TCGTempKind kind = temp_local ? TEMP_LOCAL : TEMP_NORMAL;
-+    TCGTempKind kind = temp_local ? TEMP_TB : TEMP_NORMAL;
-     TCGTemp *ts;
-     int idx, k;
+-    TCGv_i32 count;
+-
+-    if (tb_cflags(tb) & CF_USE_ICOUNT) {
+-        count = tcg_temp_local_new_i32();
+-    } else {
+-        count = tcg_temp_new_i32();
+-    }
++    TCGv_i32 count = tcg_temp_new_i32();
  
-@@ -1369,7 +1369,7 @@ void tcg_temp_free_internal(TCGTemp *ts)
-          */
-         return;
-     case TEMP_NORMAL:
--    case TEMP_LOCAL:
-+    case TEMP_TB:
-         break;
-     default:
-         g_assert_not_reached();
-@@ -1915,7 +1915,7 @@ static void tcg_reg_alloc_start(TCGContext *s)
-         case TEMP_EBB:
-             val = TEMP_VAL_DEAD;
-             /* fall through */
--        case TEMP_LOCAL:
-+        case TEMP_TB:
-             ts->mem_allocated = 0;
-             break;
-         default:
-@@ -1937,7 +1937,7 @@ static char *tcg_get_arg_str_ptr(TCGContext *s, char *buf, int buf_size,
-     case TEMP_GLOBAL:
-         pstrcpy(buf, buf_size, ts->name);
-         break;
--    case TEMP_LOCAL:
-+    case TEMP_TB:
-         snprintf(buf, buf_size, "loc%d", idx - s->nb_globals);
-         break;
-     case TEMP_EBB:
-@@ -2759,7 +2759,7 @@ static void la_bb_end(TCGContext *s, int ng, int nt)
-         switch (ts->kind) {
-         case TEMP_FIXED:
-         case TEMP_GLOBAL:
--        case TEMP_LOCAL:
-+        case TEMP_TB:
-             state = TS_DEAD | TS_MEM;
-             break;
-         case TEMP_NORMAL:
-@@ -2804,7 +2804,7 @@ static void la_bb_sync(TCGContext *s, int ng, int nt)
-         int state;
- 
-         switch (ts->kind) {
--        case TEMP_LOCAL:
-+        case TEMP_TB:
-             state = ts->state;
-             ts->state = state | TS_MEM;
-             if (state != TS_DEAD) {
-@@ -3497,7 +3497,7 @@ static void temp_free_or_dead(TCGContext *s, TCGTemp *ts, int free_or_dead)
-     case TEMP_FIXED:
-         return;
-     case TEMP_GLOBAL:
--    case TEMP_LOCAL:
-+    case TEMP_TB:
-         new_type = TEMP_VAL_MEM;
-         break;
-     case TEMP_NORMAL:
-@@ -3785,7 +3785,7 @@ static void tcg_reg_alloc_bb_end(TCGContext *s, TCGRegSet allocated_regs)
-         TCGTemp *ts = &s->temps[i];
- 
-         switch (ts->kind) {
--        case TEMP_LOCAL:
-+        case TEMP_TB:
-             temp_save(s, ts, allocated_regs);
-             break;
-         case TEMP_NORMAL:
-@@ -3822,7 +3822,7 @@ static void tcg_reg_alloc_cbranch(TCGContext *s, TCGRegSet allocated_regs)
-          * Keep tcg_debug_asserts for safety.
-          */
-         switch (ts->kind) {
--        case TEMP_LOCAL:
-+        case TEMP_TB:
-             tcg_debug_assert(ts->val_type != TEMP_VAL_REG || ts->mem_coherent);
-             break;
-         case TEMP_NORMAL:
+     tcg_gen_ld_i32(count, cpu_env,
+                    offsetof(ArchCPU, neg.icount_decr.u32) -
 -- 
 2.34.1
 

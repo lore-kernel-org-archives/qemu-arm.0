@@ -1,94 +1,95 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4442694ejc;
-        Mon, 27 Feb 2023 01:24:29 -0800 (PST)
-X-Google-Smtp-Source: AK7set9R5a1CZkG7c6ozEJjgN8Sh2PddcNss2XBJSNhW77CAcx+qgsTYwp4X24ktrHcMexsYLXRj
-X-Received: by 2002:ad4:5966:0:b0:572:636d:626a with SMTP id eq6-20020ad45966000000b00572636d626amr13783328qvb.25.1677489869014;
-        Mon, 27 Feb 2023 01:24:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677489868; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4444100ejc;
+        Mon, 27 Feb 2023 01:26:58 -0800 (PST)
+X-Google-Smtp-Source: AK7set8h+XL+VT9/U/lmNB5DDvfpxCai/XGQ0+6ky1QUitLAjzG6kxR5U4hHLeaF7Es96O7jDKme
+X-Received: by 2002:ac8:7d49:0:b0:3b8:6d3a:5ed4 with SMTP id h9-20020ac87d49000000b003b86d3a5ed4mr41800484qtb.67.1677490018546;
+        Mon, 27 Feb 2023 01:26:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677490018; cv=none;
         d=google.com; s=arc-20160816;
-        b=vorZ+4IjyJ8ZNupa79hWg+G7y/VQi/4+yF06rgryNdrtg7uNiCAUv6gL0fZ/I5DgKf
-         BDmD7WUVEBsumBcRNnnSfC6b0W9yu+EcDNnQh3RcJj9epKo27eQWbGroLY8KXHrgiiGl
-         gzqwPo9JnqCqkxxi6ao9RxWM3SX7gMKNxrC8bDTxP3AO0k6bwUJrXsEPI7TarTS+VbJ5
-         0RDYOpcgeKReMkyCwT5+quy3LDRKXwnScgwpSRS5sOKaqhUGD40eUNnThKguP+D/hjsK
-         ivwZT2bDV08xn9ctpMydadyWnaxevo+W+MlHLsjOZisrFBqGKqWga31RYKjstS2PzXrn
-         5lxg==
+        b=LwGJg3ah8gUA8y1aCQdnDBUeqBab4J8moMVdN/K6cGcDKui/B28atAHSfpLdOXMg96
+         8zsAGTtUBDQIEgqlfhE0vlfTVgpm6htVKds8AP5/Y7Zt8IYmnfAUYj1iY3EIayWgoxq8
+         EGdKPYsncKtE87RqUUmykPbB1sbCsBAHHY7PmQ7Sc7r/yT+wVoUeMC410XHKL4CBZDKu
+         AyOy4gHz21vq1sVS0GrujIf1gDeZIdb1hUdcO7vcZ+hzClMuPw9Up5eZez6NkOXOtfA6
+         KjXdg7d9L8bOQjpT7UPXz8ZOMejjxzolBJ9BB2608QmIGYtRvzfEc1LvXz19bLX9LRX2
+         Peag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=+2JYB7wd0C7G+C0fx/3D6OFcV0BKjr5AqgTZnhw2T7U=;
-        b=tM7bT6PWJ0EUJ5+E5g8Adem4/yQPeVaenul4LP13VDepKxvJ8Wii85zLTLYpMXZ7xr
-         sd1MWlkT9JaJT4wViAT86CgAWQ+IW4yQs404B1olzOgMPMSpIoLn6R/Hve5jmpUK++Cs
-         r3ea956NibEeRynL22Bgl+mGNfiuO8SX6QNWFwqxbeGIoyLmpCt1bw7wgzs2V48levV0
-         5PqIC/fP5ROcerh9wyJJ5ZCC9HG4mEVAJ5oFkfIx+yaI1b8D4tCMGtgK5bV77ZIspLMN
-         /L7SK8+aP11RcXyX+sSsw4CujFTtgC3C1/hJX4zmYXvAOQVVbHetQk5oouk8spuntxEH
-         Bkig==
+        bh=ow081Nz6sbX2x/rwUnRAykh4dqanKarH4JaNrazT8gs=;
+        b=zws9fhGWUpvTW3G6uINRIlk4smPZIYNj8rW4shOhXQ+O8GPWpN0Tp5fFeAapma04xi
+         tCU+eXv2YWYx3DjDkJT5rivL8xCw6I66cAuLGcJVXouJFVnK59fMnoDUseRBMlmADzxA
+         C0V9dy7RoVNmKrAuHjIDXwfpNa5sfgsFxiQsaNoA6DEFKc+89npCYTOQJ5DGlt3S+FYI
+         OwFtyfpu9ozLAIFV+xYp7XA+xkSzqvJF8Ogsz8/3jvBx3zgX3RPvPvxQpbAetkg+kZMc
+         kK26wGhUJoN7LFkn1bOeJ0twwAuUteAsJ+rtuSDZ+eued5kqknKtbxnsKL7vaybv1Mhv
+         1/pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AruuY7Mz;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=D1kc3Z+J;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a19-20020a0ca993000000b0056ea8af4b2csi6329367qvb.303.2023.02.27.01.24.28
+        by mx.google.com with ESMTPS id ef14-20020a05620a808e00b0071cb5762182si5932006qkb.261.2023.02.27.01.26.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 01:24:28 -0800 (PST)
+        Mon, 27 Feb 2023 01:26:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AruuY7Mz;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=D1kc3Z+J;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWZk3-0000dE-9n; Mon, 27 Feb 2023 04:24:21 -0500
+	id 1pWZmL-0004Av-D7; Mon, 27 Feb 2023 04:26:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1pWZjt-0000bV-63; Mon, 27 Feb 2023 04:24:09 -0500
+ id 1pWZm0-000442-Je; Mon, 27 Feb 2023 04:26:21 -0500
 Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1pWZjr-0005dt-Ni; Mon, 27 Feb 2023 04:24:08 -0500
+ id 1pWZly-0005zx-0A; Mon, 27 Feb 2023 04:26:19 -0500
 Received: by mail-pj1-x1032.google.com with SMTP id
- qa18-20020a17090b4fd200b0023750b675f5so9396104pjb.3; 
- Mon, 27 Feb 2023 01:24:05 -0800 (PST)
+ cp7-20020a17090afb8700b0023756229427so9453086pjb.1; 
+ Mon, 27 Feb 2023 01:26:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+2JYB7wd0C7G+C0fx/3D6OFcV0BKjr5AqgTZnhw2T7U=;
- b=AruuY7MzKLZky6suHUxEaAqsti3BypbPJMYKaKjTPjguhRQxp2H0nc7laoCmgam8YR
- 03iTTnYBgtR+GitEupZyoCHdUYDmLfH5ruqZ7sZYxaVyQ8A6hinAJjQBUP/grgnKAU7M
- mpXqTgpIb/n0mbHwLTwQ09CK0dnsD0m7UOVn5K+jl1uFGPb5ywrbYVB+hzMnR5sF2rB8
- hX9l36lrQIWXDPkt1Be6OLve8f5s0mweEb0QJS1UxmuK4cMahoRypEqe/sA6PmRdNXaY
- E82WT4L9V7p8Xhga2+fuhM3rDzaYhWSCG1pgCDwLcGuMBgN+r9ZHc5iAK//rylQC21dk
- 4YTg==
+ bh=ow081Nz6sbX2x/rwUnRAykh4dqanKarH4JaNrazT8gs=;
+ b=D1kc3Z+J6Hg2eZhJ33X6T4jhgrbxfgl1dVHSq5BcRqzxGgonEHk9jUTxRMwLp91mVz
+ ws4/c+zf3ab8pGgLmz3KSuZ7yZjMhtjmXtqGl5kGDEL8T1/fRr78bGb4/Oldn3EEHtPv
+ MrY0/TIvb4MrD2M4A/FFnZ5ajzRyf3Ld+n3oApSd0E+XZiuaq+6SJMdtO+z2RJSD3Kqg
+ TY0xZtuRoCrnpzcspgmS3mclaxpph0vp0EbmrklqscI1Kq/TFaE0U0CwEjD40l3PcRAE
+ OQk1GoocHMJUumFMbsLeWPw8n0RO+pK02wjZfoULUjAHS4NpzeGO9d+nEJXQBn0BZN60
+ k6Ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+2JYB7wd0C7G+C0fx/3D6OFcV0BKjr5AqgTZnhw2T7U=;
- b=KUtw/h8+N6vseCmA0xC+/lu3PPr3IHQeGC5pZl//8Ct8ZU4XRmqA/HusDW/BInT9hV
- 9S74ymPHRArvB/WFc3onnCn6P5Cdg5LITwLGThXtbL2bTO3slxqJy5OASABBe5xjgqrv
- coFduUidHOPIZkSoKNTWr/PVrZALpRmZcdIHYk+07DoxZt34dY/82xhyIU7rAONhA+2Q
- qyBbm9f6cwuyTGDeOJnzmUN3tFEuloGYArewQYOdTDCW85uhzYqZvEaB/fjtIrMRqnln
- gvR2pgb1Oo4ifEi2yEQAScNtwWq4eHI+wXBiaNQNVacgQomtjdpiPrVMuuLNHVXuQCTf
- u5ig==
-X-Gm-Message-State: AO0yUKXjZ4e6ppdoc6a1R1i4825DhcUtHCTYPnjIGhEG13y8gowFTTJs
- t4IJ1EsqZRKQ6KzNvztReCr/yh1Wk2Sr6zu3DIU=
-X-Received: by 2002:a17:903:3307:b0:199:4a4f:9d2a with SMTP id
- jk7-20020a170903330700b001994a4f9d2amr5944050plb.13.1677489844990; Mon, 27
- Feb 2023 01:24:04 -0800 (PST)
+ bh=ow081Nz6sbX2x/rwUnRAykh4dqanKarH4JaNrazT8gs=;
+ b=ImG25hlewHL8Ru9IYhfRb9VZYvSkHGDkgENaxeqBYEcXiptn5CVVqc1aiqGJLTgGXm
+ EMaVeoJedAFfGUS+keGN5A+1sQ3USEZy02NoNbkxOjI1NXkwMFKFZq7RRWIdHHKzoVvO
+ qeKG647avYad8k0TW6DAfATG8l8pTgn2YSr1Oeb5H0mUD+7DYkOQISRMrHwxhACdtJw4
+ KSYN5YQ37zxCgbI0Dnx18lSQikVLiacgNDafPxgCdQoE9gZCELw5dOjNeQoJ3OSYs8+H
+ CGQAerpb/WDKOWh3H1KyHsN2C0RsvsoYllrW65vlMkNMqJ2Ckdwtyn0KNQwuJHxwPNYZ
+ ETEA==
+X-Gm-Message-State: AO0yUKWNiYm5rxnIy8p6LXGdEXqoT7VIIny0D6WeLBs+/8XHOAJI0hrL
+ Tme6zR7rWiBHU0M7cTPDLrSDyALGT4TKhy8k5SY=
+X-Received: by 2002:a17:903:2348:b0:199:6e3:187a with SMTP id
+ c8-20020a170903234800b0019906e3187amr4388087plh.6.1677489975126; Mon, 27 Feb
+ 2023 01:26:15 -0800 (PST)
 MIME-Version: 1.0
 References: <20230227054233.390271-1-richard.henderson@linaro.org>
- <20230227054233.390271-65-richard.henderson@linaro.org>
-In-Reply-To: <20230227054233.390271-65-richard.henderson@linaro.org>
+ <20230227054233.390271-66-richard.henderson@linaro.org>
+In-Reply-To: <20230227054233.390271-66-richard.henderson@linaro.org>
 From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Mon, 27 Feb 2023 01:23:53 -0800
-Message-ID: <CAMo8Bf+fuAoqXgrZsUJj4tZ6dF5Xo8kJDgPP5p0aNWBia01bBA@mail.gmail.com>
-Subject: Re: [PATCH 64/70] target/xtensa: Avoid tcg_const_i32 in translate_l32r
+Date: Mon, 27 Feb 2023 01:26:03 -0800
+Message-ID: <CAMo8Bf+bgL=9JiKPtBP0-LN1sv-oTcQYOjZ=6vPu5mU1uS5M9g@mail.gmail.com>
+Subject: Re: [PATCH 65/70] target/xtensa: Use tcg_gen_subfi_i32 in
+ translate_sll
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, kbastian@mail.uni-paderborn.de, 
@@ -120,17 +121,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4kGdZcS34jE4
+X-TUID: 7g+wlTfgttbB
 
 On Sun, Feb 26, 2023 at 9:48=E2=80=AFPM Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Use addi on the addition side and tcg_constant_i32 on the other.
->
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/xtensa/translate.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  target/xtensa/translate.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
 Reviewed-by: Max Filippov <jcmvbkbc@gmail.com>
 

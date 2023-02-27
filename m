@@ -1,90 +1,90 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4809780ejc;
-        Mon, 27 Feb 2023 08:38:20 -0800 (PST)
-X-Google-Smtp-Source: AK7set9exSrcdgox7SVum87DkJXll4ySsESP37RLizEER0XR3nhoJcfm8k+E5CDhXEjruyK4xnWy
-X-Received: by 2002:a05:622a:4c9:b0:3bf:d35d:98bb with SMTP id q9-20020a05622a04c900b003bfd35d98bbmr9238268qtx.56.1677515900726;
-        Mon, 27 Feb 2023 08:38:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677515900; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4809881ejc;
+        Mon, 27 Feb 2023 08:38:27 -0800 (PST)
+X-Google-Smtp-Source: AK7set/i+od+6gpOhKp7Ba8htLfxtmnA2fYS5E4oI40QKYxKSvF7ON+U33J6iW0parcnGyaSS2p3
+X-Received: by 2002:a05:6214:29c9:b0:56e:ace7:6a03 with SMTP id gh9-20020a05621429c900b0056eace76a03mr16665208qvb.6.1677515907715;
+        Mon, 27 Feb 2023 08:38:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677515907; cv=none;
         d=google.com; s=arc-20160816;
-        b=e342cUUqqk+Jo9pXLByJoAAbiXSWGCfWUDqjjXW8ftO67rPRwJZ6DrkfIFK9OG4nHz
-         jDGIw5gybKJL0drOwlzwZxEcaMuav0M0a9v+TXYUapdUJ5MBIgAqdpe3rI3U4qxBNUqA
-         mHG1W40clIrEJC4LTpl6iRtyYN5tQcf4uKU5c1lH3MGUdxtQRs4TAzJKlp4jIiY15jfy
-         Y1YXVk/LoWBhk/LsML0BEgUOCmHoWSNd0Ei0ZvEHYtkgw8R/nckgHKbM+Dn6jcMSWvy8
-         aknNiXfYo7O1eOrfrG9p8qJWrmppqp36f/ip0MpJfl0EPgHyh3PeoWlJgamBjqIa/GZL
-         leFg==
+        b=GdJUFvG3w0EK1plG3C7+jdCl84LED7gbk/veFPTlOxV8/sIxHHZ7g7/WT5wv1ptHai
+         AfuTjkr6UM5ZfAAKGk1t4vQrr2LWaHKqqVsDF0FynbOWiaboXDNRHMLnTw8TmsnzVetI
+         Zs5wK/sUTc+szjwSPx9UXAk2/5poJVHmMybvhmwMXCkytC7VDXsXwBCfk8Nx1KDjxZV4
+         JxT007Bzl19A6MD5ChAXG4rQ/Z479uGIKVWfwvQ11M0QtW6eYJch+I7n9rKgPnF1uKFH
+         oy2TTarbuIAgMyBsbSxgBM2BvwbssZ6+dVib42eWzQxUp401B24K+RyrtaSsAvGwBpf6
+         8LuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=rTriC+4TYpBpCIaLSrQKJLiKY2LpnU1OrAoDHanWq8M=;
-        b=aXgg1QYZ4Nr1XJ4MwT4ZJpd4RpUpAsaYzJo+YGH1ZhcnteHIyXKbfYMLuD1RDebTrr
-         C0R8w+RKxO47z/MqI8QMF9VwbrqSnGvkiYjbY58WTIfftxBA25vDDfZLIHhpqwA2OjfB
-         e1EZkL9L5JPVYHLa8GcAjnhU41RHBL4IMlkLIivZMMnjQYyCz3LgGHiTHdXDXZTnoDQI
-         lBQh+6eNaxcuneDRis8ie6FoVCLjJ7o5qpTPzH5mawMIxFkdahCG0scOyD8rYR9215Id
-         98JkGJWTWnw/LL4IjD6MZnFRHsR2BK8x53eob9UddKwrB0MQTeTlsbKPN4zTPMi0gZPQ
-         7hmg==
+        bh=MY/Hp75oUkJeqqko38o6PiXQ5XHBs3q3+IV+XABHZfc=;
+        b=U3eWKHuDByclcqbNBwWiyL1ax1VPMff7DlfFmPm8EhkRpsfcVBruaa9KiLeg7axbFp
+         q9S2xhMVYTP2kDzyAvjfV8qh7m1BLnPjmJelb4lnwQtQx2LPjdQXICHFbSyuzMVuh4G9
+         iGfqTfp4JU73wFQpDn80+PZwjBPl8qJIdFybeIm1m8iUnsRq44CD1hx5jJw94xHTve2s
+         gs2NwGHb1xdLFj6kNMBiCDz+Ze/NaE4nG1g/usVR89y/GIaP6LOOTLKfZbgOTu0nYArr
+         mImdFVSG6lYvs20oCbGHCuYMarf2lagLg8aNSnrQr/zlZyoKAi1EQt3eyv1XZZ+ofHG2
+         Kgbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2022-7-12 header.b=H2XAaV5E;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=GXSalOoF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q14-20020a05622a04ce00b003bfb70b224bsi7250431qtx.205.2023.02.27.08.38.20
+        by mx.google.com with ESMTPS id 83-20020a370656000000b0073b8e361f55si6117238qkg.81.2023.02.27.08.38.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 08:38:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Feb 2023 08:38:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2022-7-12 header.b=H2XAaV5E;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=GXSalOoF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWgVU-0002VU-U4; Mon, 27 Feb 2023 11:37:44 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pWgVX-00030l-Gu; Mon, 27 Feb 2023 11:37:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1pWgVM-0001gO-Rt; Mon, 27 Feb 2023 11:37:37 -0500
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ id 1pWgVV-0002j4-Rw; Mon, 27 Feb 2023 11:37:45 -0500
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1pWgVK-0005yE-6n; Mon, 27 Feb 2023 11:37:36 -0500
-Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+ id 1pWgVT-00062f-Tf; Mon, 27 Feb 2023 11:37:45 -0500
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
  by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 31RFx0lT017991; Mon, 27 Feb 2023 16:37:27 GMT
+ 31RG0Hlw016059; Mon, 27 Feb 2023 16:37:38 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding; s=corp-2022-7-12;
- bh=rTriC+4TYpBpCIaLSrQKJLiKY2LpnU1OrAoDHanWq8M=;
- b=H2XAaV5ECKXIbVNRByx5+LztjO8BLkJIhCr+RSteSv4lT2a+GVDK8g17Q0kyxLg9WU+h
- 6hchzacfcSY9HZLDdyFhRgz2t0yNGCdrORAnK5FNPAxbW7u6+eVbNsGDuizdSZ2IgRen
- CsPX8A0K45wChthB7ecR7zMmMqDWOxjxgOBJaj856oYa7NT5jnBnfpfJmkkmRAIlhKCu
- 0/4lkMLirarzB8G21IQ5FQpN668jOk2+Zxg10QbgptTw7W5kcZulsSfzf4T4yKfDs11O
- yas+JJ7nKw7HFnQJA3d3yT37mYL5OLRnUhMxChneIURCeoV3o9popQBOZEG8SKricpkp zw== 
+ bh=MY/Hp75oUkJeqqko38o6PiXQ5XHBs3q3+IV+XABHZfc=;
+ b=GXSalOoF8uocW+TddR2P43MxG08tv0aO36NITY4RLAD8OH9Dd70OyfXJY3sT554FAOpT
+ OD9YBKemyDUHWMmR2VIeuWv8AHi1MqrUdEYvFuwRO1U/OCmlvnPahrM0KoKp+FhXvTPi
+ UBODvnZ1GBl0kDe1gS22LXoQFTbPmv+U72/YvBYFgbWbkF12lhH5V9WsugYoM2z24C23
+ vSIGwcwanPIr2/RAXSQfmmaO09byUG1wfiQ3YKIThtSGAvuWiYQSbgEUYEtnBr8JPVDR
+ Qp8HcEED0eAAks2SOl6H5SUvqVvOf0R7TUcxOP9gWeO34I9HxYkqlBJHF43i0LsVtqJ7 PA== 
 Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3nybakm2pf-1
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3nyb9ac1ap-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 27 Feb 2023 16:37:27 +0000
+ Mon, 27 Feb 2023 16:37:38 +0000
 Received: from pps.filterd
  (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
  by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
- with ESMTP id 31RFLjoZ015922; Mon, 27 Feb 2023 16:37:26 GMT
+ with ESMTP id 31RFbEkh015909; Mon, 27 Feb 2023 16:37:36 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
  by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 3ny8s5sxw1-1
+ 3ny8s5sy54-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 27 Feb 2023 16:37:26 +0000
+ Mon, 27 Feb 2023 16:37:36 +0000
 Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 31RGbMkG006629;
- Mon, 27 Feb 2023 16:37:26 GMT
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 31RGbMkM006629;
+ Mon, 27 Feb 2023 16:37:36 GMT
 Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-167-110.vpn.oracle.com
  [10.175.167.110])
  by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
- 3ny8s5sxr5-2; Mon, 27 Feb 2023 16:37:25 +0000
+ 3ny8s5sxr5-5; Mon, 27 Feb 2023 16:37:35 +0000
 From: Miguel Luis <miguel.luis@oracle.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -93,10 +93,10 @@ To: Peter Maydell <peter.maydell@linaro.org>,
  Haibo Xu <haibo.xu@linaro.org>, Andrew Jones <drjones@redhat.com>,
  Marc Zyngier <maz@kernel.org>
 Cc: Miguel Luis <miguel.luis@oracle.com>
-Subject: [RFC PATCH 1/5] linux-headers: [kvm,
- arm64] add the necessary definitions to match host kernel
-Date: Mon, 27 Feb 2023 15:37:14 -0100
-Message-Id: <20230227163718.62003-2-miguel.luis@oracle.com>
+Subject: [RFC PATCH 4/5] target/arm: enable feature ARM_FEATURE_EL2 if EL2 is
+ supported
+Date: Mon, 27 Feb 2023 15:37:17 -0100
+Message-Id: <20230227163718.62003-5-miguel.luis@oracle.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230227163718.62003-1-miguel.luis@oracle.com>
 References: <20230227163718.62003-1-miguel.luis@oracle.com>
@@ -107,13 +107,13 @@ X-Proofpoint-Virus-Version: vendor=baseguard
  definitions=2023-02-27_13,2023-02-27_01,2023-02-09_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
  bulkscore=0 adultscore=0
- mlxlogscore=999 suspectscore=0 phishscore=0 spamscore=0 malwarescore=0
+ mlxlogscore=848 suspectscore=0 phishscore=0 spamscore=0 malwarescore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
  definitions=main-2302270129
-X-Proofpoint-GUID: Ic64kyM51a6SpWhw5atj_ymbtFzg0klF
-X-Proofpoint-ORIG-GUID: Ic64kyM51a6SpWhw5atj_ymbtFzg0klF
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Proofpoint-GUID: cC2HwgQEuHnTm-r5vJdjVQCFKpTzDoOY
+X-Proofpoint-ORIG-GUID: cC2HwgQEuHnTm-r5vJdjVQCFKpTzDoOY
+Received-SPF: pass client-ip=205.220.165.32;
+ envelope-from=miguel.luis@oracle.com; helo=mx0a-00069f02.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -122,69 +122,97 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: O48aM5P0M01M
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JYBxxyAXtDdz
 
 From: Haibo Xu <haibo.xu@linaro.org>
 
-linux-headers define host properties needed for the VMM to interact with
-KVM, so let's include them *while* they're not available yet on linux
-upstream since aarch64 nested virtualization is still a work in
-progress.
+KVM_CAP_ARM_EL2 must be supported by the cpu to enable ARM_FEATURE_EL2.
+EL2 bits on ID_AA64PFR0 state unsupported on the value 0b0000.
 
-Ref: https://lore.kernel.org/qemu-devel/636b5932e4cf061b6f97516e82d4319c1d29b871.1616052889.git.haibo.xu@linaro.org/
+Ref: https://lore.kernel.org/qemu-devel/b7c2626e6c720ccc43e57197dff3dac72d613640.1616052890.git.haibo.xu@linaro.org/
 
 Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+[Miguel Luis: use of ID_AA64PFR0 for cpu features]
 Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
 ---
- linux-headers/asm-arm64/kvm.h | 2 ++
- linux-headers/linux/kvm.h     | 1 +
- 2 files changed, 3 insertions(+)
+ target/arm/cpu.h   |  2 +-
+ target/arm/kvm64.c | 16 ++++++++++++++++
+ 2 files changed, 17 insertions(+), 1 deletion(-)
 
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
-index 4bf2d7246e..7bbcba7418 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -108,6 +108,7 @@ struct kvm_regs {
- #define KVM_ARM_VCPU_SVE		4 /* enable SVE for this CPU */
- #define KVM_ARM_VCPU_PTRAUTH_ADDRESS	5 /* VCPU uses address authentication */
- #define KVM_ARM_VCPU_PTRAUTH_GENERIC	6 /* VCPU uses generic authentication */
-+#define KVM_ARM_VCPU_HAS_EL2		7 /* Support Nested Virtualization */
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9aeed3c848..de2a88b43e 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3961,7 +3961,7 @@ static inline bool isar_feature_aa64_aa32_el1(const ARMISARegisters *id)
  
- struct kvm_vcpu_init {
- 	__u32 target;
-@@ -379,6 +380,7 @@ enum {
- #define KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS 6
- #define KVM_DEV_ARM_VGIC_GRP_LEVEL_INFO  7
- #define KVM_DEV_ARM_VGIC_GRP_ITS_REGS 8
-+#define KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ  9
- #define KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_SHIFT	10
- #define KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_MASK \
- 			(0x3fffffULL << KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_SHIFT)
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index ebdafa576d..bfd1d73988 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -1175,6 +1175,7 @@ struct kvm_ppc_resize_hpt {
- #define KVM_CAP_VM_DISABLE_NX_HUGE_PAGES 220
- #define KVM_CAP_S390_ZPCI_OP 221
- #define KVM_CAP_S390_CPU_TOPOLOGY 222
-+#define KVM_CAP_ARM_EL2 226
+ static inline bool isar_feature_aa64_aa32_el2(const ARMISARegisters *id)
+ {
+-    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL2) >= 2;
++    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL2) != 0;
+ }
  
- #ifdef KVM_CAP_IRQ_ROUTING
+ static inline bool isar_feature_aa64_ras(const ARMISARegisters *id)
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index be8144a2b5..f7ebd731aa 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -505,6 +505,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+      */
+     int fdarray[3];
+     bool sve_supported;
++    bool el2_supported;
+     bool pmu_supported = false;
+     uint64_t features = 0;
+     int err;
+@@ -535,6 +536,14 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+         init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
+     }
  
++    /*
++     * Ask for EL2 if supported.
++     */
++    el2_supported = kvm_arm_el2_supported();
++    if (el2_supported) {
++        init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
++    }
++
+     /*
+      * Ask for Pointer Authentication if supported, so that we get
+      * the unsanitized field values for AA64ISAR1_EL1.
+@@ -714,6 +723,10 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     features |= 1ULL << ARM_FEATURE_PMU;
+     features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
+ 
++    if (el2_supported) {
++        features |= 1ULL << ARM_FEATURE_EL2;
++    }
++
+     ahcf->features = features;
+ 
+     return true;
+@@ -881,6 +894,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         assert(kvm_arm_sve_supported());
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
+     }
++    if (cpu_isar_feature(aa64_aa32_el2, cpu)) {
++        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
++    }
+     if (cpu_isar_feature(aa64_pauth, cpu)) {
+         cpu->kvm_init_features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
+                                       1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
 -- 
 2.39.2
 

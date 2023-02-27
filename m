@@ -1,116 +1,119 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4403844ejc;
-        Mon, 27 Feb 2023 00:23:58 -0800 (PST)
-X-Google-Smtp-Source: AK7set/DqJizmuHrVJvtUgSLLSwmN5+6bNvlP6l/sSS0wci3vEyv5UEpa81iNvG5Xmj2N/v4CRMS
-X-Received: by 2002:a05:622a:410:b0:3bf:b950:f684 with SMTP id n16-20020a05622a041000b003bfb950f684mr20347105qtx.53.1677486237972;
-        Mon, 27 Feb 2023 00:23:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677486237; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4404705ejc;
+        Mon, 27 Feb 2023 00:25:17 -0800 (PST)
+X-Google-Smtp-Source: AK7set/pR0XuSzkuX6vQSFyqYTW/o2dPI5ML13GJOb5nSL4UQEfV1Ueu2o9z6N1SQ9j661wG2LWj
+X-Received: by 2002:a05:622a:1902:b0:3bf:a932:5bce with SMTP id w2-20020a05622a190200b003bfa9325bcemr15292498qtc.2.1677486316822;
+        Mon, 27 Feb 2023 00:25:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677486316; cv=none;
         d=google.com; s=arc-20160816;
-        b=wxY5k2z8YPZ9Tdt0ab/a4rWl1QSVRQAsLJLRER7SXbf5PxVp9GD7fKMWAjuGkATOQc
-         wtMNvLWtPo+ICx1LZ0db0ufDND0zccB2eUfQV6k5QQJTUs9gm5FZ9J/jkkHl0WHAB9aD
-         ICAc1aNYzR3tGz+RcJjkTU7XKVA/He4fi3z1O1m7YbjikvqaSaGjrDefduyPtxbbfXN4
-         +ZWs025GOHZ3120maGwctbnOlDV3EAS1RtJapQkay6Zfqm7vw3yOvK6mTbh2YA3+M1/N
-         rRj52gIMYCpzBgEm/Q3dJEPeYQbj/vNu3vxe4N7AIN6m+vtcpvaL3nYTuOTc4FhS+uPS
-         37ww==
+        b=VHWHmeXIIO/AnwJffGLFgHI2P2Mwsq8MgoZpqiNbqMPUNYzSb2mErF1MQ+PWV+O1oR
+         Vycl3P3S24xXZm6y6mFyf/oPUvHEMfYirO0VN5HMzV5aBEgNm2iVckCff/oXjCx/IdLT
+         ox10SQsu4wsbsG3wfA2QOyORH9PQDNLOei/IYqO5mjjbpiLFQWlvHAzfyUssUtSdMq/T
+         d6bbTs9SHL1Iza/fvBNwuqMwlXGqtZwtdl6KIH9/2ZothuDd3Q7MNXb5bHz1S++PsotV
+         dMLAc/+p3xrX6nbvemvYjGFZ1W3THGkCHhYVrKz6g4NPbA9zy5Uw5tnpRb4qWeykUtGS
+         tx8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=EkabTtd7DUB+19zLLPs/zHOycE77u2Vk1pv1TbWdLw8=;
-        b=eN4Fbpq8VkYyxmYtC9cGVyYXFfIhFsYE1jzxNfTx6OKh5kEaIG1Wke9xxNOIZrvj3+
-         Zssl60CoM+RnOWj95NcNEUcxYa2VQGxU5iaEPdEZphx1Pc470jq00blJIj3lOdFtAMNU
-         GglP4vOaQ1rGbU+lmyTs8IxSPju185s5Vahxezstq9tqNSsfcpZSU8XaDH4k1Yo1PPp1
-         S1Kymr2rIw4g949GwkzgIeOVx7W5/OzBWsYFM/oDSs4xGbBHqH6Tpg/hAjJ1LX9wIywR
-         Vaim4EURZwyBnui+ZBUJHp9O8mHdcUmw12kaIHQNoMFEGMLSEZlyK0ICWbecJXM+s+EY
-         e7Iw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=zkW1vaFC0G371o+4EsH00qoff6qPS79ROCERJ+YGb8E=;
+        b=nZCLjF8V+krBtbrJ5WAUlnBZb61rj4YE6a501XLhotcOOxrtuBngYNuhCjcTrt1G8d
+         MREO7KHds9Etpd8WWp+BR4WitTE8b4NqACB9HcSjWkzU8bMVQ+Ewekoecck4Oa2mTEeW
+         divGCTEniXFJGrtcpkruizJsaQ4HMNdORmYBE851wlOhEjew6R2VNMaOUzcorQP5iws7
+         ZLLdPc5ZeldOD17RhzlJOK+giUzhPE05jnnasbmVNwcysGkM0YhPS6hW8CM+Q+goAYYB
+         gwWIDBHzXKWKoRt4B3+ugrPYfrmSGNJJueF9e5AC8ZttDx18kLnoFg3ICPD68J3K3PTx
+         +8vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fy5cOHwC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zWvedsiJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 130-20020a370488000000b00729ed548e27si5413455qke.214.2023.02.27.00.23.57
+        by mx.google.com with ESMTPS id h15-20020ac87d4f000000b003b855c33ae9si6086060qtb.506.2023.02.27.00.25.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 00:23:57 -0800 (PST)
+        Mon, 27 Feb 2023 00:25:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fy5cOHwC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zWvedsiJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWXn6-0004s2-Dy; Mon, 27 Feb 2023 02:19:20 -0500
+	id 1pWWCK-0001cR-Gn; Mon, 27 Feb 2023 00:37:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pWXn3-0004pX-1H
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 02:19:17 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pWWCJ-0001aV-9q
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:37:15 -0500
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pWXmz-0005ew-R1
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 02:19:16 -0500
-Received: by mail-wm1-x333.google.com with SMTP id j3so3580197wms.2
- for <qemu-devel@nongnu.org>; Sun, 26 Feb 2023 23:19:13 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pWWCG-0002SP-SL
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 00:37:14 -0500
+Received: by mail-pg1-x52a.google.com with SMTP id bn17so2827748pgb.10
+ for <qemu-devel@nongnu.org>; Sun, 26 Feb 2023 21:37:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=EkabTtd7DUB+19zLLPs/zHOycE77u2Vk1pv1TbWdLw8=;
- b=fy5cOHwCUrL9UkxIJSSolZ8m4lbo9PsUZpKRuYs0a9pbPOpEwudDRnoZuaK6o1cLrH
- 0bprjYHNFlMqrHMkKXR3+ZQC38iiInw4C7k+p3+UZHufxrUGzaurQ6HGAM25PJTI/K2u
- S5nFVmi3SVSGwSGvBtb1PbKYCpWR4om3eAj0YjFIWTQxPGrNR6X1ePFavA4ts8sGF8fs
- vMTMknKvWrruTV+ImWUgnzTGp11qnHggCHS/DcL6iKLNvRBBlOLYr4uKEtWlIIBj2D++
- xZ4X7D9ixqCynIA1OI4QvDmUEh8Wrk0uUYAxUzqbAr/hJIAWbVkZKUit0CoSlXoLL0Nj
- FECA==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=zkW1vaFC0G371o+4EsH00qoff6qPS79ROCERJ+YGb8E=;
+ b=zWvedsiJ+09mRVomDBsFdL1z5cbEa+ajs7w69se50ZNMtGEICKnh4LEMgZr+CEiK1M
+ IkDZ2YpovJiNUB3NdnpRv8yyj2QFHCiq7uLnQDRwf0p5XEALcCjMN+JEHmWTmjPNO3aA
+ TYOLl0jx+2SCDwo0LXD87FLXEJA0w979n11Ottv2vSq7166mqtJlbVCXqv8sUrnOkspn
+ pP07/KWmb+Jq6FT+eAJFHlrqUF+UHJLHZpIjbYVvDbPnOFfXJULyc85RGP96StYK+IY8
+ 1NdgRDOlU71+e8dm5nsTOcK+jddg/WtiFws3x4V5GR7l4wS+AE+xe5iBt9g/+lGKKmom
+ Fqag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EkabTtd7DUB+19zLLPs/zHOycE77u2Vk1pv1TbWdLw8=;
- b=mhjmyhQGXjccvwRejyvvg05CMFqj4/7+Gon0lM7nVfzBYBgN9P92Oa03+nA6osUfTJ
- bV8kN2ZgzO37zON7AxGpgJyu7mrZmtBbDGUK9uIetU0Ct2k9i2MGHUjvUkfvOyvYD+KP
- PrIGWvcpYFHFJFwudsnzoF41geEPut4J8epjXLI699mPNw5hkd32DD19CrQUyLHh6iM2
- j5t19XdDq2+MSdzfDqFs23hsF4mrvKThxM9afM1+mq2jDsBQ5h3GSUhBX+s/3HViEd2d
- tcGgEXwSsYIR5GbZHRDmsMxASawoi86MOCHbM53NEzZnklOn6OKkTZql7/dEL3bd8Mbt
- 1N6g==
-X-Gm-Message-State: AO0yUKXJHUVKsM3nE7VBwPF6MtYTRNlViljzlOUPoRBvcDb0FDpt4l9M
- gY+TXR013CvYvwfBwASfeDKHjg==
-X-Received: by 2002:a05:600c:1609:b0:3eb:3f2d:f22f with SMTP id
- m9-20020a05600c160900b003eb3f2df22fmr2840340wmn.21.1677482346561; 
- Sun, 26 Feb 2023 23:19:06 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- i14-20020a5d55ce000000b002c559405a1csm6169808wrw.20.2023.02.26.23.19.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 26 Feb 2023 23:19:06 -0800 (PST)
-Message-ID: <8aacf5f2-22ca-8905-0187-094e66d1261e@linaro.org>
-Date: Mon, 27 Feb 2023 08:19:03 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH v4 23/31] target/hexagon/idef-parser: Drop gen_tmp_local
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zkW1vaFC0G371o+4EsH00qoff6qPS79ROCERJ+YGb8E=;
+ b=6RXqDvPNsP0Eb+Jab9lE9LfnJe1LYu9rgH4R8zmlxvD67Jf4x+VQNOXKIjjPGSuESr
+ hQTc9JpVPne3iKF7jISDISswrpSB8i1X+ybFzwaDfgs914GADbpJYSCVo89jdX+NNkDx
+ pfyTP+koayQx8yuwIcuY91D77Bo1ROkA/rSvSegD2VIyfSm9qc25eDtS7KwqA5YQ+5PV
+ DNyzX9WXMBS1GgUcJreh8mY0o4oTZjbY1A3Ex6eLkRO+yjmWSOkeXVl/Ja0q4NfAqZec
+ /bKSdxfrve6mndayTwC3FRXjCSd9pmhxsao26OIG24IXFBXM5okiFp6fGdI4PLjscFYX
+ o3Gw==
+X-Gm-Message-State: AO0yUKU1IWpbXSod/ZMOAk9yTta1E0JHLFD36X/PZ1+o4oVxj7moBJEX
+ t5oGNRByYJ/BtUcaBak1bpa5tw1dGeYPc/nN3tM=
+X-Received: by 2002:aa7:888f:0:b0:5a8:c699:3eaa with SMTP id
+ z15-20020aa7888f000000b005a8c6993eaamr8269593pfe.9.1677476231486; 
+ Sun, 26 Feb 2023 21:37:11 -0800 (PST)
+Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
+ by smtp.gmail.com with ESMTPSA id
+ k12-20020aa792cc000000b005a7c892b435sm3342137pfa.25.2023.02.26.21.37.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 26 Feb 2023 21:37:11 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
+ tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
+ edgar.iglesias@gmail.com,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v4 02/31] accel/tcg: Pass max_insn to gen_intermediate_code by
+ pointer
+Date: Sun, 26 Feb 2023 19:36:32 -1000
+Message-Id: <20230227053701.368744-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230227053701.368744-1-richard.henderson@linaro.org>
 References: <20230227053701.368744-1-richard.henderson@linaro.org>
- <20230227053701.368744-24-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230227053701.368744-24-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,15 +128,370 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qtQaxPB9lxME
+X-TUID: QbIDFnIheVKc
 
-On 27/2/23 06:36, Richard Henderson wrote:
-> This is now equivalent to gen_tmp.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/hexagon/idef-parser/parser-helpers.c | 24 ++-------------------
->   1 file changed, 2 insertions(+), 22 deletions(-)
+In preparation for returning the number of insns generated
+via the same pointer.  Adjust only the prototypes so far.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/exec/translator.h     | 4 ++--
+ accel/tcg/translate-all.c     | 2 +-
+ accel/tcg/translator.c        | 4 ++--
+ target/alpha/translate.c      | 2 +-
+ target/arm/translate.c        | 2 +-
+ target/avr/translate.c        | 2 +-
+ target/cris/translate.c       | 2 +-
+ target/hexagon/translate.c    | 2 +-
+ target/hppa/translate.c       | 2 +-
+ target/i386/tcg/translate.c   | 2 +-
+ target/loongarch/translate.c  | 2 +-
+ target/m68k/translate.c       | 2 +-
+ target/microblaze/translate.c | 2 +-
+ target/mips/tcg/translate.c   | 2 +-
+ target/nios2/translate.c      | 2 +-
+ target/openrisc/translate.c   | 2 +-
+ target/ppc/translate.c        | 2 +-
+ target/riscv/translate.c      | 2 +-
+ target/rx/translate.c         | 2 +-
+ target/s390x/tcg/translate.c  | 2 +-
+ target/sh4/translate.c        | 2 +-
+ target/sparc/translate.c      | 2 +-
+ target/tricore/translate.c    | 2 +-
+ target/xtensa/translate.c     | 2 +-
+ 24 files changed, 26 insertions(+), 26 deletions(-)
+
+diff --git a/include/exec/translator.h b/include/exec/translator.h
+index af2ff95cd5..8b36690e80 100644
+--- a/include/exec/translator.h
++++ b/include/exec/translator.h
+@@ -37,7 +37,7 @@
+  * This function must be provided by the target, which should create
+  * the target-specific DisasContext, and then invoke translator_loop.
+  */
+-void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc);
+ 
+ /**
+@@ -146,7 +146,7 @@ typedef struct TranslatorOps {
+  * - When single-stepping is enabled (system-wide or on the current vCPU).
+  * - When too many instructions have been translated.
+  */
+-void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
++void translator_loop(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+                      target_ulong pc, void *host_pc,
+                      const TranslatorOps *ops, DisasContextBase *db);
+ 
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index 9e925c10f3..b7b361959e 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -281,7 +281,7 @@ static int setjmp_gen_code(CPUArchState *env, TranslationBlock *tb,
+     tcg_func_start(tcg_ctx);
+ 
+     tcg_ctx->cpu = env_cpu(env);
+-    gen_intermediate_code(env_cpu(env), tb, *max_insns, pc, host_pc);
++    gen_intermediate_code(env_cpu(env), tb, max_insns, pc, host_pc);
+     assert(tb->size != 0);
+     tcg_ctx->cpu = NULL;
+     *max_insns = tb->icount;
+diff --git a/accel/tcg/translator.c b/accel/tcg/translator.c
+index 1cf404ced0..fac1e8c465 100644
+--- a/accel/tcg/translator.c
++++ b/accel/tcg/translator.c
+@@ -42,7 +42,7 @@ bool translator_use_goto_tb(DisasContextBase *db, target_ulong dest)
+     return ((db->pc_first ^ dest) & TARGET_PAGE_MASK) == 0;
+ }
+ 
+-void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
++void translator_loop(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+                      target_ulong pc, void *host_pc,
+                      const TranslatorOps *ops, DisasContextBase *db)
+ {
+@@ -55,7 +55,7 @@ void translator_loop(CPUState *cpu, TranslationBlock *tb, int max_insns,
+     db->pc_next = pc;
+     db->is_jmp = DISAS_NEXT;
+     db->num_insns = 0;
+-    db->max_insns = max_insns;
++    db->max_insns = *max_insns;
+     db->singlestep_enabled = cflags & CF_SINGLE_STEP;
+     db->host_addr[0] = host_pc;
+     db->host_addr[1] = NULL;
+diff --git a/target/alpha/translate.c b/target/alpha/translate.c
+index f9bcdeb717..716b083f39 100644
+--- a/target/alpha/translate.c
++++ b/target/alpha/translate.c
+@@ -3043,7 +3043,7 @@ static const TranslatorOps alpha_tr_ops = {
+     .disas_log          = alpha_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc;
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index c23a3462bf..92955d505c 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -9970,7 +9970,7 @@ static const TranslatorOps thumb_translator_ops = {
+ };
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc = { };
+diff --git a/target/avr/translate.c b/target/avr/translate.c
+index 2bed56f135..e40d8e9681 100644
+--- a/target/avr/translate.c
++++ b/target/avr/translate.c
+@@ -3049,7 +3049,7 @@ static const TranslatorOps avr_tr_ops = {
+     .disas_log          = avr_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc = { };
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index fbc3fd5865..905d01288e 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -3286,7 +3286,7 @@ static const TranslatorOps cris_tr_ops = {
+     .disas_log          = cris_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc;
+diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
+index 75f28e08ad..fc3061a540 100644
+--- a/target/hexagon/translate.c
++++ b/target/hexagon/translate.c
+@@ -962,7 +962,7 @@ static const TranslatorOps hexagon_tr_ops = {
+     .disas_log          = hexagon_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext ctx;
+diff --git a/target/hppa/translate.c b/target/hppa/translate.c
+index 981f8ee03d..0102cf451b 100644
+--- a/target/hppa/translate.c
++++ b/target/hppa/translate.c
+@@ -4359,7 +4359,7 @@ static const TranslatorOps hppa_tr_ops = {
+     .disas_log          = hppa_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext ctx;
+diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
+index 9d9392b009..a47d60f057 100644
+--- a/target/i386/tcg/translate.c
++++ b/target/i386/tcg/translate.c
+@@ -7158,7 +7158,7 @@ static const TranslatorOps i386_tr_ops = {
+ };
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+-void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc;
+diff --git a/target/loongarch/translate.c b/target/loongarch/translate.c
+index 72a6275665..2a43ab0201 100644
+--- a/target/loongarch/translate.c
++++ b/target/loongarch/translate.c
+@@ -245,7 +245,7 @@ static const TranslatorOps loongarch_tr_ops = {
+     .disas_log          = loongarch_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext ctx;
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index 31178c3b1d..157c2cbb8f 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -6393,7 +6393,7 @@ static const TranslatorOps m68k_tr_ops = {
+     .disas_log          = m68k_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc;
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index 974f21eb31..037a652cb9 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
+@@ -1849,7 +1849,7 @@ static const TranslatorOps mb_tr_ops = {
+     .disas_log          = mb_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc;
+diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
+index aa12bb708a..bd70fcad25 100644
+--- a/target/mips/tcg/translate.c
++++ b/target/mips/tcg/translate.c
+@@ -16159,7 +16159,7 @@ static const TranslatorOps mips_tr_ops = {
+     .disas_log          = mips_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext ctx;
+diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+index 7aee65a089..140bc31017 100644
+--- a/target/nios2/translate.c
++++ b/target/nios2/translate.c
+@@ -1037,7 +1037,7 @@ static const TranslatorOps nios2_tr_ops = {
+     .disas_log          = nios2_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc;
+diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+index 2f3d7c5fd1..b8cd8e0964 100644
+--- a/target/openrisc/translate.c
++++ b/target/openrisc/translate.c
+@@ -1705,7 +1705,7 @@ static const TranslatorOps openrisc_tr_ops = {
+     .disas_log          = openrisc_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext ctx;
+diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+index 1c17d5a558..5fe6aa641e 100644
+--- a/target/ppc/translate.c
++++ b/target/ppc/translate.c
+@@ -7707,7 +7707,7 @@ static const TranslatorOps ppc_tr_ops = {
+     .disas_log          = ppc_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext ctx;
+diff --git a/target/riscv/translate.c b/target/riscv/translate.c
+index 772f9d7973..f9d5d1097e 100644
+--- a/target/riscv/translate.c
++++ b/target/riscv/translate.c
+@@ -1309,7 +1309,7 @@ static const TranslatorOps riscv_tr_ops = {
+     .disas_log          = riscv_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext ctx;
+diff --git a/target/rx/translate.c b/target/rx/translate.c
+index 87a3f54adb..af23876cb3 100644
+--- a/target/rx/translate.c
++++ b/target/rx/translate.c
+@@ -2363,7 +2363,7 @@ static const TranslatorOps rx_tr_ops = {
+     .disas_log          = rx_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc;
+diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
+index ac5bd98f04..339c1672e9 100644
+--- a/target/s390x/tcg/translate.c
++++ b/target/s390x/tcg/translate.c
+@@ -6759,7 +6759,7 @@ static const TranslatorOps s390x_tr_ops = {
+     .disas_log          = s390x_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc;
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index 7db3468b01..23563024e0 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -2374,7 +2374,7 @@ static const TranslatorOps sh4_tr_ops = {
+     .disas_log          = sh4_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext ctx;
+diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+index 150aeecd14..3b0044aa66 100644
+--- a/target/sparc/translate.c
++++ b/target/sparc/translate.c
+@@ -5904,7 +5904,7 @@ static const TranslatorOps sparc_tr_ops = {
+     .disas_log          = sparc_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc = {};
+diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+index 7ac34efd76..176ea96b2b 100644
+--- a/target/tricore/translate.c
++++ b/target/tricore/translate.c
+@@ -8881,7 +8881,7 @@ static const TranslatorOps tricore_tr_ops = {
+ };
+ 
+ 
+-void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext ctx;
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index 77bcd71030..8d7bf566de 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -1279,7 +1279,7 @@ static const TranslatorOps xtensa_translator_ops = {
+     .disas_log          = xtensa_tr_disas_log,
+ };
+ 
+-void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns,
++void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+                            target_ulong pc, void *host_pc)
+ {
+     DisasContext dc = {};
+-- 
+2.34.1
 

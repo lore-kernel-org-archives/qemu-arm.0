@@ -1,371 +1,183 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4029511ejc;
-        Sun, 26 Feb 2023 14:09:17 -0800 (PST)
-X-Google-Smtp-Source: AK7set9pRjIB0DVPq01I5V0fsnZQrHguEBA4XsAZLU8KRvvKB9jG7iqicnQo2S4gngfXfzg1zY5a
-X-Received: by 2002:a05:6214:268c:b0:56f:225:8e2e with SMTP id gm12-20020a056214268c00b0056f02258e2emr46643093qvb.46.1677449357624;
-        Sun, 26 Feb 2023 14:09:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677449357; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4196447ejc;
+        Sun, 26 Feb 2023 19:04:28 -0800 (PST)
+X-Google-Smtp-Source: AK7set+0STiymjMoz2buFmQF+NoZe6KbD2UbJM20UPW7Gp+YQiZrjUoquvCdgdU8N/BNLJhREImY
+X-Received: by 2002:a05:6214:da4:b0:56e:afe2:ebca with SMTP id h4-20020a0562140da400b0056eafe2ebcamr45672197qvh.30.1677467068263;
+        Sun, 26 Feb 2023 19:04:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677467068; cv=none;
         d=google.com; s=arc-20160816;
-        b=AgQIT99Zjba9JG0O9P1PQNW1Uvd6i0viG1V7Ds0DQZPkmG68/ka4FVCFvICWJ2AJHt
-         oNNvPwfxfKhbHXyIgY7XAyWPcvLkqc6tamwgCBlepfWbEHhvtvjiI78WU7Zf7TDYe2kl
-         3dmxeO/rcoBu13yLoGwScAuYiEuBzR8wAoaXp4v0Yi+ffK8P6QENvIK9NVbCenrAUJjQ
-         8hDE9fG0WVXoPqLC2pRsD9zPeeoQbVunYr6+2CoR7T2OZpbqOsKk6TgxIUlchpHEYMNY
-         nlVTg/Vk5sYXPg5dpFTvIWcjBRS937lgUBc7usTId/S9VIge09HMwkWebJF4gzAtzu9c
-         hJ6w==
+        b=W67+UwmCJjW4wV78esTVO9Vq1GH3pm7CzBdX0KoUS8MuSqNCCEykYmVXpkvdWAsBoO
+         7tSKyzcz8/QNbWHKdouvSI/xIcX+Q0PrqRAv8noY74Z6+X0Et5DWBX1q+akeAr9fXWRz
+         hW6J5F4e93IQBy3ZgWi4jvYXoqe1FrdlgCLuvmLkNMvAIzGBq/EIgmMt7+qUAp3LhEEK
+         J2hIWQP7TA9E1gt7PO3P0kDwoaFI/PMkMzrQFw6stN+IfrB8pfca7I4WjDyKEZhPiUDM
+         2nRy40GvQZgnwqZQQM0uaIlo6fVE1D+arGomFIjraagxZ53gMagV2VbwBiaTsHqMPYbJ
+         3XaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=w8gBXvn0nsgqacWJ24f/nJlkTQIB5LOcWqOtQmpTzys=;
-        b=k9N476SI/WRjrQaE17HyHr+aQfggsRUrRtgl7wC4UiyLIe4KW3D01E64XJenGKH1A0
-         2VwH/XX/N9Y6htdsh4QFsmcvEIZIwddec94sjAe+gfztdLI7i+C29n7wz82HyFwVby0G
-         32sZ7EyhGvqwJZ/Mbv/qXTsYvhaSgFKk0X2yGmh1DhK9+/lgI1p+7TBEw/DCnFHP4dUn
-         vPuCHkSat7l9kIIacrCnesXVt6fFl3JZ1vk7mVAtGpjmMGXY2Js6MN1XKBGCfg2miR4a
-         puqamecVjuS2h/y7OrIGHitqnPUgJoI1+wYTiOMj4s0QhTDmg9kyFvGvkY++DWszcAqx
-         abiQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=spwTom70zE+t2Jt2N//F77kIzKuQw8cIDo4eBSzyRMY=;
+        b=pNoVot67moMnhJvVTNf5brH7OXgRD4JVXfQyXAJ4+N96gZxWnj4x2L8X03annGwG0Z
+         KBORFURK/RPI/MtffKEDfgReGBCZJBvBPg50Lp14rhqMg89YtzhLLg9uU2lfRlJ896JA
+         jz7zd9cRsWHVZImVZDU8GFdbxOWzRjTtg2PzKkwKCwC0ClBEeVQacbiTt8Nntzw4i1s7
+         GOKJwi39dWTLYPuQwo9qdpIBH0SI7tBaPG4goXFCIdmsR01DDcNFpSo1D/0C0jrNAxal
+         hUOnoiIDQCpHuuhTXjagN61LhdMkZOV7l3z0XeyloIYMEz4pia5mkm62SPEehksUklY0
+         9wEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=ApflCs8A;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k1-20020a0cf581000000b0056ec16234f8si4734146qvm.350.2023.02.26.14.09.17
+        by mx.google.com with ESMTPS id n16-20020a0cdc90000000b0056ea45b0146si5478655qvk.370.2023.02.26.19.04.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 14:09:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 26 Feb 2023 19:04:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=ApflCs8A;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWPAr-0002Sk-DT; Sun, 26 Feb 2023 17:07:17 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pWTo1-0000kU-7A; Sun, 26 Feb 2023 22:04:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3Dtj7YwgKCtMHBDHIz4z5DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--smostafa.bounces.google.com>)
- id 1pWPAo-0002Qr-SC
- for qemu-devel@nongnu.org; Sun, 26 Feb 2023 17:07:14 -0500
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3Dtj7YwgKCtMHBDHIz4z5DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--smostafa.bounces.google.com>)
- id 1pWPAm-0003uv-UH
- for qemu-devel@nongnu.org; Sun, 26 Feb 2023 17:07:14 -0500
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-536bf649e70so101329107b3.0
- for <qemu-devel@nongnu.org>; Sun, 26 Feb 2023 14:07:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=w8gBXvn0nsgqacWJ24f/nJlkTQIB5LOcWqOtQmpTzys=;
- b=ApflCs8A7SFoSx4FK7hhvBTIoIT/M1+f9EnUc0sF84QEMPkWnB9VF2AzTY47MmWTA5
- tyg63MU67paFA6L5QpnH4ALjnVafS98hOfplo9y7grFUCaxaiRLqa7+UuORlJJ9LnUMk
- 716r2SyHyvxQcSWNjEBmbc0cui75cIEIM9KmAnsXpvei639MJdwhS9rjKK1nXJFBItZk
- nv5JVZCp4fXnNUFZLdWcepJ02hxZnoFXdLyib2Jaut5GDgEKyYJyX3KYOspVqDgpQ8n8
- UDsEIHYKNUqnwAnh2rbZF0bWs0cOT2ZKmidh1tUBdkUi/II6mP9kuvy1mzYLEbv+KEwi
- QSxQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=w8gBXvn0nsgqacWJ24f/nJlkTQIB5LOcWqOtQmpTzys=;
- b=k6SmkadkYSuj8WenqTPKqT26tgVdUqzfYaevm+FhjKHG8CbksMyN8k0HWTQcadw874
- 4j7/e8fIulGsBfsbfxUYxbQJ0G5vc2GmLDoG6GDUhQ/ujda1FpdfJFlmHvo9Wg6TlZ55
- ZqAzI+5sgReVOCy0u2JSOfiWsr3bXL0ZQ0kQ3oIl5xGqH4xpXKdVYY43+zp9yN12cGVR
- YqOedWHXow1xWdzV0PLrx3oNeJdSGAAm+wU30g2K2pXtI8O1J+B7hsK0yF4LpA6pNW/S
- XAFGTtQ7nVFHdu0wldBTwQ1p281kcJzCWAfWzw4NfVJgD9MJmr4gdfJAF2Je0iiq4Z6M
- Ktww==
-X-Gm-Message-State: AO0yUKWsOkPTNobS3p5JzTsjYLnRbwYfZiyeDMAjgtdBGU/QecZoOkf3
- 2zxHBL4+98Q42qeKtMEg21sMdVonUFBDdP/Zpv2kDmRUaqYi8YvtQJompHDNqeLvKER/3NGm0N2
- jc6AVWi5K/VlaRHoyAvpgsxlNOtwn2FoaedZNzf4fg20HRRoUdPHaUOZyhLy+HWbW3Q==
-X-Received: from mostafa.c.googlers.com
- ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
- (user=smostafa job=sendgmr) by 2002:a05:6902:1602:b0:8a3:d147:280b with SMTP
- id bw2-20020a056902160200b008a3d147280bmr5715077ybb.3.1677449230307; Sun, 26
- Feb 2023 14:07:10 -0800 (PST)
-Date: Sun, 26 Feb 2023 22:06:43 +0000
-In-Reply-To: <20230226220650.1480786-1-smostafa@google.com>
-Mime-Version: 1.0
-References: <20230226220650.1480786-1-smostafa@google.com>
-X-Mailer: git-send-email 2.39.2.637.g21b0678d19-goog
-Message-ID: <20230226220650.1480786-5-smostafa@google.com>
-Subject: [RFC PATCH v2 04/11] hw/arm/smmuv3: Add page table walk for stage-2
-From: Mostafa Saleh <smostafa@google.com>
-To: qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
- qemu-arm@nongnu.org, richard.henderson@linaro.org, 
- Mostafa Saleh <smostafa@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=3Dtj7YwgKCtMHBDHIz4z5DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--smostafa.bounces.google.com;
- helo=mail-yw1-x1149.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <gaosong@loongson.cn>)
+ id 1pWTny-0000iz-4C; Sun, 26 Feb 2023 22:03:58 -0500
+Received: from mail.loongson.cn ([114.242.206.163] helo=loongson.cn)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <gaosong@loongson.cn>)
+ id 1pWTnw-0004js-0a; Sun, 26 Feb 2023 22:03:57 -0500
+Received: from loongson.cn (unknown [10.20.42.238])
+ by gateway (Coremail) with SMTP id _____8DxEzSOHfxjm+8FAA--.5615S3;
+ Mon, 27 Feb 2023 11:03:42 +0800 (CST)
+Received: from [10.20.42.238] (unknown [10.20.42.238])
+ by localhost.localdomain (Coremail) with SMTP id
+ AQAAf8Cxf+SNHfxjDjM+AA--.11577S3; 
+ Mon, 27 Feb 2023 11:03:41 +0800 (CST)
+Subject: Re: [PATCH 74/76] tracing: remove transform.py
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
+ ysato@users.sourceforge.jp, jiaxun.yang@flygoat.com, tsimpson@quicinc.com,
+ ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
+References: <20230225091427.1817156-1-richard.henderson@linaro.org>
+ <20230225091427.1817156-75-richard.henderson@linaro.org>
+ <c12cd821-59e5-36c3-0231-f81e3a4e1433@ventanamicro.com>
+ <06a53b69-b58c-168f-7e7d-bf7d028ebccd@linaro.org>
+From: gaosong <gaosong@loongson.cn>
+Message-ID: <46edf7c4-2f46-fc97-588f-a951e57657da@loongson.cn>
+Date: Mon, 27 Feb 2023 11:03:41 +0800
+User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
+MIME-Version: 1.0
+In-Reply-To: <06a53b69-b58c-168f-7e7d-bf7d028ebccd@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-CM-TRANSID: AQAAf8Cxf+SNHfxjDjM+AA--.11577S3
+X-CM-SenderInfo: 5jdr20tqj6z05rqj20fqof0/
+X-Coremail-Antispam: 1Uk129KBjvJXoW7ZF47Ar4UKF43Zr48Xw17Awb_yoW8Kryfpa
+ 4ktasrKryfXFsYyws7u3yDXFyUWF9rJFWUWr18J3WrtFsxZw4jgrW29r1Fg3s8Xws3Xry7
+ CFWYv348GrWjgr7anT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ qI5I8CrVACY4xI64kE6c02F40Ex7xfYxn0WfASr-VFAUDa7-sFnT9fnUUIcSsGvfJTRUUU
+ bfAYFVCjjxCrM7AC8VAFwI0_Jr0_Gr1l1xkIjI8I6I8E6xAIw20EY4v20xvaj40_Wr0E3s
+ 1l1IIY67AEw4v_JrI_Jryl8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxSw2x7M28EF7xv
+ wVC0I7IYx2IY67AKxVW8JVW5JwA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwA2z4
+ x0Y4vEx4A2jsIE14v26r4UJVWxJr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4UJVWxJr1l
+ n4kS14v26r1Y6r17M2AIxVAIcxkEcVAq07x20xvEncxIr21l57IF6xkI12xvs2x26I8E6x
+ ACxx1l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1Y6r17McIj6I8E
+ 87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41lc7I2V7IY0V
+ AS07AlzVAYIcxG8wCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwCFI7km
+ 07C267AKxVWUXVWUAwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r
+ 1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWU
+ JVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2IYs7xG6r
+ 1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Jr0_GrUv
+ cSsGvfC2KfnxnUUI43ZEXa7IU8fsqJUUUUU==
+Received-SPF: pass client-ip=114.242.206.163; envelope-from=gaosong@loongson.cn;
+ helo=loongson.cn
+X-Spam_score_int: 14
+X-Spam_score: 1.4
+X-Spam_bar: +
+X-Spam_report: (1.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uHz4qdr2BAaL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kf3sYfSfs87A
 
-In preparation for adding stage-2 support, add Stage-2 PTW code.
-Only Aarch64 format is supported as stage-1.
 
-Nesting stage-1 and stage-2 is not supported right now.
+在 2023/2/26 上午2:38, Richard Henderson 写道:
+> On 2/25/23 00:22, Daniel Henrique Barboza wrote:
+>> Richard,
+>>
+>> Not sure if I forgot or missed something but this patch breaks my 
+>> build as follows:
+>>
+>> $  make -j
+>>    GIT     ui/keycodemapdb tests/fp/berkeley-testfloat-3 
+>> tests/fp/berkeley-softfloat-3 dtc
+>> [1/885] Generating trace/trace-hw_hyperv.c with a custom command
+>> FAILED: trace/trace-hw_hyperv.c
+>> /usr/bin/python3 ../scripts/tracetool.py --backend=log 
+>> --group=hw_hyperv --format=c 
+>> /home/danielhb/work/qemu/hw/hyperv/trace-events trace/trace-hw_hyperv.c
+>> Traceback (most recent call last):
+>>    File "/home/danielhb/work/qemu/build/../scripts/tracetool.py", 
+>> line 19, in <module>
+>>      from tracetool import error_write, out, out_open
+>>    File "/home/danielhb/work/qemu/scripts/tracetool/__init__.py", 
+>> line 21, in <module>
+>>      import tracetool.transform
+>> ModuleNotFoundError: No module named 'tracetool.transform'
+>
+>
+> I saw the same thing on gitlab, but not on my laptop.  Weird.
+>
+I always get this things.
 
-HTTU is not supported, SW is expected to maintain the Access flag.
-This is described in the SMMUv3 manual "5.2. Stream Table Entry" in
-"[181] S2AFFD".
-This flag determines the behavior on access of a stage-2 page whose
-descriptor has AF == 0:
-- 0b0: An Access flag fault occurs (stall not supported).
-- 0b1: An Access flag fault never occurs.
-An Access fault takes priority over a Permission fault.
 
-Checks for IPA and output PA are done according to the user manual
-"3.4 Address sizes".
+[26/2330] Generating trace/trace-hw_block.h with a custom command
+FAILED: trace/trace-hw_block.h
+/usr/bin/python3 ../scripts/tracetool.py --backend=log --group=hw_block 
+--format=h /root/qemu/hw/block/trace-events trace/trace-hw_block.h
+Traceback (most recent call last):
+   File "/root/qemu/build/../scripts/tracetool.py", line 19, in <module>
+     from tracetool import error_write, out, out_open
+   File "/root/qemu/scripts/tracetool/__init__.py", line 21, in <module>
+     import tracetool.transform
+ModuleNotFoundError: No module named 'tracetool.transform'
 
-Signed-off-by: Mostafa Saleh <smostafa@google.com>
----
-Changes in v2:
-- Squash S2AFF PTW code.
-- Use common functions between stage-1 and stage-2.
-- Add checks for IPA and out PA.
----
- hw/arm/smmu-common.c   | 132 ++++++++++++++++++++++++++++++++++++++++-
- hw/arm/smmu-internal.h |  39 ++++++++++++
- 2 files changed, 170 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index b49c1affdb..3f448bc82e 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -363,6 +363,130 @@ error:
-     return -EINVAL;
- }
- 
-+/**
-+ * smmu_ptw_64_s2 - VMSAv8-64 Walk of the page tables for a given IOVA
-+ * for stage-2.
-+ * @cfg: translation config
-+ * @iova: iova to translate
-+ * @perm: access type
-+ * @tlbe: SMMUTLBEntry (out)
-+ * @info: handle to an error info
-+ *
-+ * Return 0 on success, < 0 on error. In case of error, @info is filled
-+ * and tlbe->perm is set to IOMMU_NONE.
-+ * Upon success, @tlbe is filled with translated_addr and entry
-+ * permission rights.
-+ */
-+static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
-+                          dma_addr_t iova, IOMMUAccessFlags perm,
-+                          SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
-+{
-+    const int stage = 2;
-+    int granule_sz = cfg->s2cfg.granule_sz;
-+    /* ARM ARM: Table D8-7. */
-+    int inputsize = 64 - cfg->s2cfg.tsz;
-+    int level = get_start_level(cfg->s2cfg.sl0, granule_sz);
-+    int stride = SMMU_STRIDE(granule_sz);
-+    int idx = pgd_idx(level, granule_sz, iova);
-+    /*
-+     * Get the ttb from concatenated structure.
-+     * The offset is the idx * size of each ttb(number of ptes * (sizeof(pte))
-+     */
-+    uint64_t baseaddr = extract64(cfg->s2cfg.vttb, 0, 48) + (1 << stride) *
-+                                  idx * sizeof(uint64_t);
-+    dma_addr_t indexmask = SMMU_IDXMSK(inputsize, stride, level);
-+
-+    baseaddr &= ~indexmask;
-+
-+    /*
-+     * If the input address of a transaction exceeds the size of the IAS, a
-+     * stage 1 Address Size fault occurs.
-+     * For AA64, IAS = OAS
-+     */
-+    if (iova >= (1ULL << cfg->s2cfg.oas)) {
-+        info->type = SMMU_PTW_ERR_ADDR_SIZE;
-+        info->stage = 1;
-+        goto error_no_stage;
-+    }
-+
-+    while (level < SMMU_LEVELS) {
-+        uint64_t subpage_size = 1ULL << level_shift(level, granule_sz);
-+        uint64_t mask = subpage_size - 1;
-+        uint32_t offset = iova_level_offset(iova, inputsize, level, granule_sz);
-+        uint64_t pte, gpa;
-+        dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
-+        uint8_t ap;
-+
-+        if (get_pte(baseaddr, offset, &pte, info)) {
-+                goto error;
-+        }
-+        trace_smmu_ptw_level(stage, level, iova, subpage_size,
-+                             baseaddr, offset, pte);
-+        if (is_invalid_pte(pte) || is_reserved_pte(pte, level)) {
-+            trace_smmu_ptw_invalid_pte(stage, level, baseaddr,
-+                                       pte_addr, offset, pte);
-+            break;
-+        }
-+
-+        if (is_table_pte(pte, level)) {
-+            baseaddr = get_table_pte_address(pte, granule_sz);
-+            level++;
-+            continue;
-+        } else if (is_page_pte(pte, level)) {
-+            gpa = get_page_pte_address(pte, granule_sz);
-+            trace_smmu_ptw_page_pte(stage, level, iova,
-+                                    baseaddr, pte_addr, pte, gpa);
-+        } else {
-+            uint64_t block_size;
-+
-+            gpa = get_block_pte_address(pte, level, granule_sz,
-+                                        &block_size);
-+            trace_smmu_ptw_block_pte(stage, level, baseaddr,
-+                                     pte_addr, pte, iova, gpa,
-+                                     block_size >> 20);
-+        }
-+
-+        /*
-+         * If S2AFFD and PTE.AF are 0 => fault. (5.2. Stream Table Entry)
-+         * An Access fault takes priority over a Permission fault.
-+         */
-+        if (!PTE_AF(pte) && !cfg->s2cfg.affd) {
-+            info->type = SMMU_PTW_ERR_ACCESS;
-+            goto error;
-+        }
-+
-+        ap = PTE_AP(pte);
-+        if (is_permission_fault_s2(ap, perm)) {
-+            info->type = SMMU_PTW_ERR_PERMISSION;
-+            goto error;
-+        }
-+
-+        /*
-+         * The address output from the translation causes a stage 2 Address
-+         * Size fault if it exceeds the effective PA output range.
-+         */
-+        if (gpa >= (1ULL << cfg->s2cfg.oas)) {
-+            info->type = SMMU_PTW_ERR_ADDR_SIZE;
-+            goto error;
-+        }
-+
-+        tlbe->entry.translated_addr = gpa;
-+        tlbe->entry.iova = iova & ~mask;
-+        tlbe->entry.addr_mask = mask;
-+        tlbe->entry.perm = ap;
-+        tlbe->level = level;
-+        tlbe->granule = granule_sz;
-+        return 0;
-+    }
-+    info->type = SMMU_PTW_ERR_TRANSLATION;
-+
-+error:
-+    info->stage = 2;
-+error_no_stage:
-+    tlbe->entry.perm = IOMMU_NONE;
-+    return -EINVAL;
-+}
-+
- /**
-  * smmu_ptw - Walk the page tables for an IOVA, according to @cfg
-  *
-@@ -377,7 +501,13 @@ error:
- int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
-              SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
- {
--    return smmu_ptw_64_s1(cfg, iova, perm, tlbe, info);
-+    if (cfg->stage == 1) {
-+        return smmu_ptw_64_s1(cfg, iova, perm, tlbe, info);
-+    } else if (cfg->stage == 2) {
-+        return smmu_ptw_64_s2(cfg, iova, perm, tlbe, info);
-+    }
-+
-+    g_assert_not_reached();
- }
- 
- /**
-diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
-index 2d75b31953..f79c389cd3 100644
---- a/hw/arm/smmu-internal.h
-+++ b/hw/arm/smmu-internal.h
-@@ -66,6 +66,8 @@
- #define PTE_APTABLE(pte) \
-     (extract64(pte, 61, 2))
- 
-+#define PTE_AF(pte) \
-+    (extract64(pte, 10, 1))
- /*
-  * TODO: At the moment all transactions are considered as privileged (EL1)
-  * as IOMMU translation callback does not pass user/priv attributes.
-@@ -73,6 +75,9 @@
- #define is_permission_fault(ap, perm) \
-     (((perm) & IOMMU_WO) && ((ap) & 0x2))
- 
-+#define is_permission_fault_s2(ap, perm) \
-+    (!((ap & perm) == perm))
-+
- #define PTE_AP_TO_PERM(ap) \
-     (IOMMU_ACCESS_FLAG(true, !((ap) & 0x2)))
- 
-@@ -96,6 +101,40 @@ uint64_t iova_level_offset(uint64_t iova, int inputsize,
-             MAKE_64BIT_MASK(0, gsz - 3);
- }
- 
-+#define SMMU_MAX_S2_CONCAT    16
-+
-+/*
-+ * Relies on correctness of gran and sl0 from caller.
-+ * FEAT_LPA2 and FEAT_TTST are not implemented.
-+ */
-+static inline int get_start_level(int sl0 , int gran)
-+{
-+    /* ARM ARM: Table D8-12. */
-+    if (gran == 12) {
-+        return 2 - sl0;
-+    }
-+    /* ARM ARM: Table D8-22 and Table D8-31. */
-+    return 3 - sl0;
-+}
-+
-+/*
-+ * Index in a concatenated first level stage-2 page table.
-+ * ARM ARM: D8.2.2 Concatenated translation tables.
-+ */
-+static inline int pgd_idx(int start_level, int granule, dma_addr_t iova)
-+{
-+    uint64_t ret;
-+    /*
-+     * Get the number of bits handled by next levels, then any extra bits in
-+     * the address should index the concatenated tables. This relation can
-+     * deduced from tables in ARM ARM: D8.2.7-9
-+     */
-+    int shift = (SMMU_LEVELS - start_level) * (granule - 3) + granule;
-+
-+    ret = iova >> shift;
-+    return ret;
-+}
-+
- #define SMMU_IOTLB_ASID(key) ((key).asid)
- 
- typedef struct SMMUIOTLBPageInvInfo {
--- 
-2.39.2.637.g21b0678d19-goog
+>> It seems that tracetool.py is still referring transform. This fixes 
+>> the build
+>> for me:
+>>
+>> $ git diff
+>> diff --git a/scripts/tracetool/__init__.py 
+>> b/scripts/tracetool/__init__.py
+>> index 5393c7fc5c..c361815bc1 100644
+>> --- a/scripts/tracetool/__init__.py
+>> +++ b/scripts/tracetool/__init__.py
+>> @@ -18,7 +18,6 @@
+>>
+>>   import tracetool.format
+>>   import tracetool.backend
+>> -import tracetool.transform
+>
+> I also removed some code below that used these symbols; they 
+> themselves appear to be unused.
+>
+>
+> r~
 

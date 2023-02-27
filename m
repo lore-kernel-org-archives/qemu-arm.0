@@ -1,92 +1,92 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4302219ejc;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4302220ejc;
         Sun, 26 Feb 2023 21:52:38 -0800 (PST)
-X-Google-Smtp-Source: AK7set/e+MOH0Oo/jh+k01kUyoY/WbqJCa0/bKO4tBF1nVgrpii7PN5Tv2XKGK17HcjzBCgiaEG/
-X-Received: by 2002:ac8:5801:0:b0:3bc:dd23:cbb2 with SMTP id g1-20020ac85801000000b003bcdd23cbb2mr13124883qtg.33.1677477158209;
+X-Google-Smtp-Source: AK7set9YRdY9KGucZlsHVRZS1xwhBSC7lyCZ1BuefHvXHR++wruOxNsLefQ3RxAWvj0XaT2EJzlf
+X-Received: by 2002:a05:6214:625:b0:56e:9dd1:45d6 with SMTP id a5-20020a056214062500b0056e9dd145d6mr46640469qvx.28.1677477158241;
         Sun, 26 Feb 2023 21:52:38 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1677477158; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yn2jjwfik29uJ0ud3Jz/rLi/ErbFB8eCublEwlPPuWFTuzSYnW1UBZCKRjmconOHh3
-         shtbDqEg6krptMs4FziO18RsEuqWkW4Q//HgnalKwXp09SM2kqWRSCjT/v6bdpIIMg3O
-         nMwYRqChBvici/P9WxmSYBaJIzhi0C6XE62DPHwXE35TvG4nqQtb8nnz4dCzwKjTijLD
-         OKx/U91j7qYkIBN947p2P6Fc8f4sEECqtQYJySYgMNvK1vdxO2eAwY1AQ7+Rz/+xwX6I
-         bmBEwXJo7rGYH1Zu8BWG51zmoGGc+Nj/Jco1+wJ3oGPq+AeNA3fMlZ6iYum15gsTrJ1u
-         yetA==
+        b=hzxvqM6R2C0iRJwbYk0Cd+oqj9SNspQA8KCt/d5cEAUgoHvVFyZDRQjgyTNScEKcXb
+         LG7nwHesbELLUC/ftjZAeFNv0CViUyvv0vCSvmOJbKUXh02vagJsNEyh8fWPCd4+OHN6
+         Yh1Mhw0MLienUGhpqwCoOSfXkAndo5SeRDP5JdYzSLyzocwedm4fmDDlUjIl8bKaxkLl
+         ypdeFQ7htKjaqoqvQeZR9Ab/kP2gcoBNbEnMThnIDyf4D7yl8dyjGU2loXwvnOSDOoBL
+         aUXZeD0UsE8k6crxT1dkrA/+vTXkcLcf7WO2deMJ5tEVtCvLUpecnU4U7GQjipEhJosD
+         dcvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jyCeX4bwIEzy4e7YtKlgTxEYjmitvX4LaioZWsLyP/4=;
-        b=D5+AoYFMHKq1NRJTAu/h8hcsDlInMWHokwEMDtse9lLq4Ag0NpywSzTW2ytmsbN5ze
-         uR6+/o1EX39p2i4t3VcJEo05fCNhaGmFHvFEHTRaAS+jvd9oJBOTqLKYCphVvSpVqk2e
-         PfoLooPoT/GccpBhh78/2PLKJ55rAH6A9uuXo0xKBPxKoTIW+grBj+Aky1Kjtwrnq+TL
-         srsu940SX0kCScouUC5Ez046lP2afSTxWBf1BnxNEZN/v7uh4AXCxupqFx9Rb+Csadv3
-         tk3wnih3v58BBhyauyASEw/RA7Obx7Gsf8pQ0b34TpvHwec/W5npizlM1DMD6xzDLXGm
-         vxDg==
+        bh=/choyUiuVszNnrsokDt6HTpPjrDSeCtIo9k1KJDgu7s=;
+        b=vQxkPo7Ockvug8oIbVESs6gjHvo2kxKtrLz+vL/iFD7tZdyIZclgfbTiy0MlS7Gf1m
+         Ajt7tz7v4j0YrA092pDVpN0IZQkJW53fXb1CTcGO/KgC1Tg2TTuGn4oa2gAVJuNFy4Qr
+         xeThcdynAtuvfNdI68bD6KERTmceh7/lja3hvdAUdrpAos9ciCnXpjM35L+JAdWrxWvA
+         R/jkKHa2tCCH37oMq/05MIlR+m8cOJ9HgteXahkRhNV6I3b2jSOAgQj0m5YmcL+JJi53
+         aFTzie3ptzyvVdjf/JG19yKvvUneEnN2LeUVXTcJxfbJ4govkI5OPqhuUJ6o+V4yYex1
+         1g4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rNZ0GH8a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AF5C9Lmg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d6-20020ac85d86000000b003b6309f82f2si5938345qtx.627.2023.02.26.21.52.38
+        by mx.google.com with ESMTPS id u19-20020a0cdd13000000b0053428216ed9si5558501qvk.216.2023.02.26.21.52.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 26 Feb 2023 21:52:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rNZ0GH8a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AF5C9Lmg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWWIw-0005gp-MV; Mon, 27 Feb 2023 00:44:08 -0500
+	id 1pWWJU-0007pz-Pw; Mon, 27 Feb 2023 00:44:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWIe-0004nh-66
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:43:48 -0500
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1pWWJO-0007Gl-Nm
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:44:34 -0500
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWWIX-0005Ah-Sz
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:43:45 -0500
-Received: by mail-pf1-x435.google.com with SMTP id b20so2798601pfo.6
- for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:43:41 -0800 (PST)
+ id 1pWWJL-0005dw-KU
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:44:34 -0500
+Received: by mail-pf1-x436.google.com with SMTP id c10so2156275pfv.13
+ for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:44:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jyCeX4bwIEzy4e7YtKlgTxEYjmitvX4LaioZWsLyP/4=;
- b=rNZ0GH8aMlSI7aKARZKSb/9/XbQu4UwWzNY6VQUM5Fb8LSaBKB6+kAH5GNH53hPLn7
- nHDB+SLwrkBLuKxOEzK+aVwp9RdXAvQDh7OfnPBxWOMiMvQAfsrvuabzIANAMTzWd+E4
- RlkvKlN9F0ql/zT8Q+Ti1fSZ95s//C73M/GLa1o4Dy08zHBLYINFDaSvPaRVxSY1knhA
- tuZ8BYNqAFEHqBXfoSkc8ko1lg3EYT4E2qlmN7laK12TnGSpRmzs61HAcv8y9gBLSxfa
- h04HLteuy5uMoWTGedFtgiLRk0iCR4s98BmOU1hAckoH3RQVh2ubH/Gr4N8BFZZ1qlXf
- QgqA==
+ bh=/choyUiuVszNnrsokDt6HTpPjrDSeCtIo9k1KJDgu7s=;
+ b=AF5C9Lmg0UhvnWdbZXvAZ+Lk7hBWs8CNaHQFImgWHxGk3E/5zvqoFakRYm42hjbT5M
+ wqLwDp2G0QzETIHVUl4ILfTHqK7mGXlAaCT0EQ7j2yvEJLZDlaqlRvUMqahy9Oc5B9Gq
+ LEK9etg0nY7f3RGVwiCSI/pix5QTYOBWqj8LYkNa6pSdAOO7H6kA9iBXs715hIfcVCja
+ azdc7Fu2nDPdhGZMU5JwjwIjwjc9cNGOPWPxfemTPFS648vliLnRoPHqFJjKgbV0JHNT
+ TZXmlhiA+l+Lwu/VnlOutczFHtP6AVMN3niAV2ybFJH3HnIbXh0co4e9SY2bb7b8a1H+
+ 7MPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jyCeX4bwIEzy4e7YtKlgTxEYjmitvX4LaioZWsLyP/4=;
- b=suCB1RTRjaur9AVtZZEJqKypCo/yP8nJbWS6+513cHL6QCfpFqqze4OWF0moXB8t9K
- ijVl47n9lcs4OPhyJXMoRY6O8tLnB/69gGpglVy945lbEgbXg7/uHtxdLYFzFiZLYoVf
- WQB7HlGbuad3X2b8LdhIc67KE+yNkuSerqfGav9/YKYQojBwETw208SsYjeoqVmzVyu5
- PnVt7x6C+DlF/EKHcNBCy57e4atQnaDTETyXjZibh0jNNq5h3sh8cqc7HAchwCx/V1mQ
- foHE6UvucMXyquLfi1UpfGVjE3bRO1BzA7EgAy/CRa/hpatvKjssmHgNnJ4Kpv1X6QE3
- FTzg==
-X-Gm-Message-State: AO0yUKUfgo69Jhj9t+t59Xq0Ct9dXG4AfJdo3m0GrckYGRn4kMSnqd9w
- 82SqEksOiDIMwCjtLTFY5pHXNA==
-X-Received: by 2002:a05:6a00:f95:b0:5a8:d3d9:e03a with SMTP id
- ct21-20020a056a000f9500b005a8d3d9e03amr7973139pfb.0.1677476620649; 
- Sun, 26 Feb 2023 21:43:40 -0800 (PST)
+ bh=/choyUiuVszNnrsokDt6HTpPjrDSeCtIo9k1KJDgu7s=;
+ b=yF964JCor9CLYeWVJCZ6sbzF8kdnxjvKD0akNRT3DqemGZ/AnPhuIKOsJtg6tvaVgu
+ JJWB58knas6eNoeAMdd6rj482VAxQ74iq+Ahu1zm5YNgxxi3u/ay8OvSesJCrb7xzzPB
+ pZFMGW4SrKFQ4YYT25knQcjK2vLP6DwCdoYqVlRqGL1jlCmzZooKqbm3U6Y7/+ykt9p3
+ JUDQbkjFeK+XInh8cnhSrwfykgwnWHoQOUabTox9J2dYxhIW04MJU2EAtJHNrYMcyYFH
+ 7Q4OF7Ut7NvscI636QVc5ddix9rXQjjVPU2qEh2XjKjvNfgSW9TQ1WsRcMpuGfakmSyN
+ d95g==
+X-Gm-Message-State: AO0yUKVTLZqeEUwy5Z7uI72LmyTmy2oWNQdUDpPqYH/Cfa78y8QnsrXv
+ UfwtPr3Sp7JXPY9vhYvToOKmhA==
+X-Received: by 2002:aa7:960c:0:b0:5a0:c4b6:edd6 with SMTP id
+ q12-20020aa7960c000000b005a0c4b6edd6mr21247336pfg.0.1677476666887; 
+ Sun, 26 Feb 2023 21:44:26 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- d10-20020aa7868a000000b005cdc64a287dsm3317137pfo.115.2023.02.26.21.43.38
+ d10-20020aa7868a000000b005cdc64a287dsm3317137pfo.115.2023.02.26.21.44.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:43:40 -0800 (PST)
+ Sun, 26 Feb 2023 21:44:26 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -94,16 +94,16 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com
-Subject: [PATCH 21/70] target/hppa: Avoid use of tcg_const_i32 throughout
-Date: Sun, 26 Feb 2023 19:41:44 -1000
-Message-Id: <20230227054233.390271-22-richard.henderson@linaro.org>
+Subject: [PATCH 39/70] target/ppc: Avoid tcg_const_* in vsx-impl.c.inc
+Date: Sun, 26 Feb 2023 19:42:02 -1000
+Message-Id: <20230227054233.390271-40-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227054233.390271-1-richard.henderson@linaro.org>
 References: <20230227054233.390271-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,89 +125,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rvprQcaapFk5
+X-TUID: X1abB6KN5Yxp
 
-All uses were read-write, so replace with a new
-allocation and initialization.
+All remaining uses are strictly read-only.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/hppa/translate.c | 21 +++++++++++----------
- 1 file changed, 11 insertions(+), 10 deletions(-)
+ target/ppc/translate/vsx-impl.c.inc | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/target/hppa/translate.c b/target/hppa/translate.c
-index 3ea50d0cec..6a3154ebc6 100644
---- a/target/hppa/translate.c
-+++ b/target/hppa/translate.c
-@@ -135,8 +135,6 @@
- #define tcg_gen_extract_reg  tcg_gen_extract_i64
- #define tcg_gen_sextract_reg tcg_gen_sextract_i64
- #define tcg_gen_extract2_reg tcg_gen_extract2_i64
--#define tcg_const_reg        tcg_const_i64
--#define tcg_const_local_reg  tcg_const_local_i64
- #define tcg_constant_reg     tcg_constant_i64
- #define tcg_gen_movcond_reg  tcg_gen_movcond_i64
- #define tcg_gen_add2_reg     tcg_gen_add2_i64
-@@ -228,8 +226,6 @@
- #define tcg_gen_extract_reg  tcg_gen_extract_i32
- #define tcg_gen_sextract_reg tcg_gen_sextract_i32
- #define tcg_gen_extract2_reg tcg_gen_extract2_i32
--#define tcg_const_reg        tcg_const_i32
--#define tcg_const_local_reg  tcg_const_local_i32
- #define tcg_constant_reg     tcg_constant_i32
- #define tcg_gen_movcond_reg  tcg_gen_movcond_i32
- #define tcg_gen_add2_reg     tcg_gen_add2_i32
-@@ -574,7 +570,9 @@ static TCGv_i32 load_frw_i32(unsigned rt)
- static TCGv_i32 load_frw0_i32(unsigned rt)
+diff --git a/target/ppc/translate/vsx-impl.c.inc b/target/ppc/translate/vsx-impl.c.inc
+index 9916784e64..0f5b0056f1 100644
+--- a/target/ppc/translate/vsx-impl.c.inc
++++ b/target/ppc/translate/vsx-impl.c.inc
+@@ -154,7 +154,7 @@ static void gen_lxvdsx(DisasContext *ctx)
+ static void gen_bswap16x8(TCGv_i64 outh, TCGv_i64 outl,
+                           TCGv_i64 inh, TCGv_i64 inl)
  {
-     if (rt == 0) {
--        return tcg_const_i32(0);
-+        TCGv_i32 ret = tcg_temp_new_i32();
-+        tcg_gen_movi_i32(ret, 0);
-+        return ret;
-     } else {
-         return load_frw_i32(rt);
-     }
-@@ -582,15 +580,15 @@ static TCGv_i32 load_frw0_i32(unsigned rt)
+-    TCGv_i64 mask = tcg_const_i64(0x00FF00FF00FF00FF);
++    TCGv_i64 mask = tcg_constant_i64(0x00FF00FF00FF00FF);
+     TCGv_i64 t0 = tcg_temp_new_i64();
+     TCGv_i64 t1 = tcg_temp_new_i64();
  
- static TCGv_i64 load_frw0_i64(unsigned rt)
- {
-+    TCGv_i64 ret = tcg_temp_new_i64();
-     if (rt == 0) {
--        return tcg_const_i64(0);
-+        tcg_gen_movi_i64(ret, 0);
-     } else {
--        TCGv_i64 ret = tcg_temp_new_i64();
-         tcg_gen_ld32u_i64(ret, cpu_env,
-                           offsetof(CPUHPPAState, fr[rt & 31])
-                           + (rt & 32 ? LO_OFS : HI_OFS));
--        return ret;
-     }
-+    return ret;
+@@ -825,7 +825,7 @@ static bool trans_XSCVQPDP(DisasContext *ctx, arg_X_tb_rc *a)
+     REQUIRE_INSNS_FLAGS2(ctx, ISA300);
+     REQUIRE_VSX(ctx);
+ 
+-    ro = tcg_const_i32(a->rc);
++    ro = tcg_constant_i32(a->rc);
+ 
+     xt = gen_avr_ptr(a->rt);
+     xb = gen_avr_ptr(a->rb);
+@@ -860,7 +860,7 @@ static void gen_##name(DisasContext *ctx)                                     \
+         gen_exception(ctx, POWERPC_EXCP_VSXU);                                \
+         return;                                                               \
+     }                                                                         \
+-    opc = tcg_const_i32(ctx->opcode);                                         \
++    opc = tcg_constant_i32(ctx->opcode);                                      \
+     gen_helper_##name(cpu_env, opc);                                          \
  }
  
- static void save_frw_i32(unsigned rt, TCGv_i32 val)
-@@ -613,7 +611,9 @@ static TCGv_i64 load_frd(unsigned rt)
- static TCGv_i64 load_frd0(unsigned rt)
- {
-     if (rt == 0) {
--        return tcg_const_i64(0);
-+        TCGv_i64 ret = tcg_temp_new_i64();
-+        tcg_gen_movi_i64(ret, 0);
-+        return ret;
-     } else {
-         return load_frd(rt);
-     }
-@@ -3330,7 +3330,8 @@ static bool do_depw_sar(DisasContext *ctx, unsigned rt, unsigned c,
-     /* Convert big-endian bit numbering in SAR to left-shift.  */
-     tcg_gen_xori_reg(shift, cpu_sar, TARGET_REGISTER_BITS - 1);
+@@ -900,7 +900,7 @@ static void gen_##name(DisasContext *ctx)                                     \
+         gen_exception(ctx, POWERPC_EXCP_VSXU);                                \
+         return;                                                               \
+     }                                                                         \
+-    opc = tcg_const_i32(ctx->opcode);                                         \
++    opc = tcg_constant_i32(ctx->opcode);                                      \
+     xa = gen_vsr_ptr(xA(ctx->opcode));                                        \
+     xb = gen_vsr_ptr(xB(ctx->opcode));                                        \
+     gen_helper_##name(cpu_env, opc, xa, xb);                                  \
+@@ -915,7 +915,7 @@ static void gen_##name(DisasContext *ctx)                                     \
+         gen_exception(ctx, POWERPC_EXCP_VSXU);                                \
+         return;                                                               \
+     }                                                                         \
+-    opc = tcg_const_i32(ctx->opcode);                                         \
++    opc = tcg_constant_i32(ctx->opcode);                                      \
+     xb = gen_vsr_ptr(xB(ctx->opcode));                                        \
+     gen_helper_##name(cpu_env, opc, xb);                                      \
+ }
+@@ -929,7 +929,7 @@ static void gen_##name(DisasContext *ctx)                                     \
+         gen_exception(ctx, POWERPC_EXCP_VSXU);                                \
+         return;                                                               \
+     }                                                                         \
+-    opc = tcg_const_i32(ctx->opcode);                                         \
++    opc = tcg_constant_i32(ctx->opcode);                                      \
+     xt = gen_vsr_ptr(rD(ctx->opcode) + 32);                                   \
+     xa = gen_vsr_ptr(rA(ctx->opcode) + 32);                                   \
+     xb = gen_vsr_ptr(rB(ctx->opcode) + 32);                                   \
+@@ -945,7 +945,7 @@ static void gen_##name(DisasContext *ctx)                                     \
+         gen_exception(ctx, POWERPC_EXCP_VSXU);                                \
+         return;                                                               \
+     }                                                                         \
+-    opc = tcg_const_i32(ctx->opcode);                                         \
++    opc = tcg_constant_i32(ctx->opcode);                                      \
+     xt = gen_vsr_ptr(rD(ctx->opcode) + 32);                                   \
+     xb = gen_vsr_ptr(rB(ctx->opcode) + 32);                                   \
+     gen_helper_##name(cpu_env, opc, xt, xb);                                  \
+@@ -960,7 +960,7 @@ static void gen_##name(DisasContext *ctx)                                     \
+         gen_exception(ctx, POWERPC_EXCP_VSXU);                                \
+         return;                                                               \
+     }                                                                         \
+-    opc = tcg_const_i32(ctx->opcode);                                         \
++    opc = tcg_constant_i32(ctx->opcode);                                      \
+     xa = gen_vsr_ptr(rA(ctx->opcode) + 32);                                   \
+     xb = gen_vsr_ptr(rB(ctx->opcode) + 32);                                   \
+     gen_helper_##name(cpu_env, opc, xa, xb);                                  \
+@@ -1994,8 +1994,8 @@ static void gen_xsxsigdp(DisasContext *ctx)
+     exp = tcg_temp_new_i64();
+     t0 = tcg_temp_new_i64();
+     t1 = tcg_temp_new_i64();
+-    zr = tcg_const_i64(0);
+-    nan = tcg_const_i64(2047);
++    zr = tcg_constant_i64(0);
++    nan = tcg_constant_i64(2047);
  
--    mask = tcg_const_reg(msb + (msb - 1));
-+    mask = tcg_temp_new();
-+    tcg_gen_movi_reg(mask, msb + (msb - 1));
-     tcg_gen_and_reg(tmp, val, mask);
-     if (rs) {
-         tcg_gen_shl_reg(mask, mask, shift);
+     get_cpu_vsr(t1, xB(ctx->opcode), true);
+     tcg_gen_extract_i64(exp, t1, 52, 11);
+@@ -2026,8 +2026,8 @@ static void gen_xsxsigqp(DisasContext *ctx)
+     get_cpu_vsr(xbl, rB(ctx->opcode) + 32, false);
+     exp = tcg_temp_new_i64();
+     t0 = tcg_temp_new_i64();
+-    zr = tcg_const_i64(0);
+-    nan = tcg_const_i64(32767);
++    zr = tcg_constant_i64(0);
++    nan = tcg_constant_i64(32767);
+ 
+     tcg_gen_extract_i64(exp, xbh, 48, 15);
+     tcg_gen_movi_i64(t0, 0x0001000000000000);
+@@ -2193,8 +2193,8 @@ static void gen_xvxsigdp(DisasContext *ctx)
+     get_cpu_vsr(xbl, xB(ctx->opcode), false);
+     exp = tcg_temp_new_i64();
+     t0 = tcg_temp_new_i64();
+-    zr = tcg_const_i64(0);
+-    nan = tcg_const_i64(2047);
++    zr = tcg_constant_i64(0);
++    nan = tcg_constant_i64(2047);
+ 
+     tcg_gen_extract_i64(exp, xbh, 52, 11);
+     tcg_gen_movi_i64(t0, 0x0010000000000000);
 -- 
 2.34.1
 

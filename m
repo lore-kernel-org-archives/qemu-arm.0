@@ -1,157 +1,244 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4517818ejc;
-        Mon, 27 Feb 2023 03:22:56 -0800 (PST)
-X-Received: by 2002:a05:600c:1708:b0:3eb:376e:2b9c with SMTP id c8-20020a05600c170800b003eb376e2b9cmr5096947wmn.36.1677496976505;
-        Mon, 27 Feb 2023 03:22:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677496976; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4809660ejc;
+        Mon, 27 Feb 2023 08:38:13 -0800 (PST)
+X-Google-Smtp-Source: AK7set+tFyVP0tLkPsCS9JvnBJYMz57fRH8AYFfYGTjd99kqRdUH4/zPF0irWpeew0pzfjWT4ITd
+X-Received: by 2002:ad4:5d69:0:b0:56e:f417:2ac0 with SMTP id fn9-20020ad45d69000000b0056ef4172ac0mr165989qvb.10.1677515893522;
+        Mon, 27 Feb 2023 08:38:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677515893; cv=none;
         d=google.com; s=arc-20160816;
-        b=aS3jtPbUFzL9ATOPT+rS522RLNQvMUWA/fAoKWT2O3DYoy38lvnl/TPqoKEjG+rQq4
-         NzTmtqH0Ym9rEyo1bEUhebrYOAAp2rScn6dKvkpefz+6g+NPcaCBH+IvR5YjPJDPxyYY
-         sMkBJMshD5t/mcB6OTLQ6hsiGg+MvPRisrTLyUiv2UizwfOq61ecvURpeLb5XYdy8OKC
-         IxiV74bKbxSY/sqdB7Eh1ImvYGOUZ0FbODq1ooUBGnTcfPVycEFuDBQzPA2JpthE6LUO
-         dNFRvhF+1DiZcNkHM8UGc/SoC6DGiUIzvLH/PmCXYxmldYc7kQVXgq5JzGodULulKlwm
-         SOKg==
+        b=LyuMjp/G94zxcpLTg18WpYnPJFYRTH5hDQcDmlM1BNqRI/OXBJbZzJeD0iaYjtI5ef
+         QtZHVfbh1JAPYKMONl/pgcNbIh8AnAC2N3O4QeUDIft3582n9XH6LG5SpY2cmUUA+uLi
+         gdBmENV1fazzcK1aYjFGmQh0oKmGmIuS+vRGdCxqTuJMhNBkyJwyogSWDSFmR7RbLP6W
+         BkDwIlLHJnNayDLWr7SV3200cxlMf91w3Kf4na4wDBGHX7nEki0KP1R+Mz1niiCQdENA
+         O37O20xo++6eBEfhtiWY0B5ArsY16w32wGN5johKsMemttW64qjC05zXUhquxibapANl
+         kJtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=PSrdR1dRUwL9w62ffoZCzUDOa9PXzM50Oj5+LxZXHRQ=;
-        b=Wko0t2ZxNM4g7RTR5W+ZjCoLFtbCGfogSKYMAkIzcBPYjcv9hzWiWS0G8a5pEEVXvf
-         byqBCfrJ0adYXG8uJ0dFuyBYeZLvpxQZUPfeMVrb/6cVEuXo81fOPiAxEif5MrRmtGnY
-         s8JitvfxPabdR02JBSzSKARv5Yygwg2qSIhePK6EXPoRMHA5C0R+ViWs/+VrZF2xoq3y
-         7OnySflLu0M/YEXQp/edwqLZho8oW4ubk+qjmB+nNbHho3BagUOdJfPsOA1U7p0uJm28
-         6ExFf0ZEvk5KBDFLjODHHSWRvst+pMeAANDNTFDJoWax92cecxKcv5Gz/WT7+qmIW8MC
-         3odA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=c0UG+nEBmzg7tdv9ex8dMP9Qxk+vYCaG2dOlM/WmGfA=;
+        b=XdqNpVE4sz8UgnbQ8agt9g9gPbBV2qVRzSQnsI4QnDyKcxjXYHSLXF2UREq8wVA+Ob
+         /wfKxHF4cUNrn9Dw0MU6OoARql+sRsng2EbG9ySfZipiW53J8N67iZjKUKEA7eFh5z3c
+         ERzDzuJRi0k5rWQ3wmBb7bPlOHSRvDqWV48x0Myq3DtB+sghLBA+PEhF2A/2orQnCGzX
+         Ibhc4UON9ne457meti/1nJkfF2srBBaoOIB++qh6nb6ZliGk0IrZUISKv34Jlxmi/D3B
+         wBeIixRiUR6SbfKwr9fdiSelirVS3i72Zz2B+OC32fen+qLQzZr2I8ObFL+Aofzxcu00
+         0KOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=emWdmmAQ;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id bg35-20020a05600c3ca300b003d99a390c37sor1559428wmb.45.2023.02.27.03.22.56
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="tA5m6cL/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a2-20020a0ce382000000b0056fa41313cbsi6688551qvl.214.2023.02.27.08.38.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 27 Feb 2023 03:22:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 27 Feb 2023 08:38:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=emWdmmAQ;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=PSrdR1dRUwL9w62ffoZCzUDOa9PXzM50Oj5+LxZXHRQ=;
-        b=emWdmmAQW4b447QxjPinR24FL7PEazIWW1yECQX6WaH89iBRcRwRBwi0YSIo3KDxnz
-         pbIGDj219c/7b68nUKuo2F7QKCQ+fthKzhFIunSm99Q7KSHosWgLHdeSWdFjUYRzLa+0
-         UQ1mcfFqxA7nvoZg6DPj8O/i2lysc3QEkjM7dOOfngT5qH3B2ep+LI0OJexWpYI029Ds
-         bq4BRadvOn1sunYn7twPJiyf5WFauwFJMki7zkRTQ5nv2L8fMLfeAnaiYrqyBgsfax5p
-         EyVHfraIt+7buUcMmFMJRz9xSIxqXVkGfZa9t6OicczHiI1DrzD6W76pZ3JxdxUrRrv3
-         JrAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PSrdR1dRUwL9w62ffoZCzUDOa9PXzM50Oj5+LxZXHRQ=;
-        b=CvbDmE/HDc+eVlBfmn1IyGVYVmROKNqtq+n9prJXxxOpr/Cs6PE7VC1Svqxi5wuO6O
-         WT4MhYzkMAweIVVyjlEdIg5gnSIeL2iSusCDTm+JoH5sy3pGyuWgWZlUQKc0KUcKCxhj
-         QVtI88WoZawZD5hkyAtCGtOvY4sLfgd4IlIxh0AtMaibmYMkMcbZh6MTtyE5YlOg6quL
-         +ozIsgGKP9RIF74zZ0lTR9PYzvd+NwwVZjh4NsnyBmCCgSZ/W6RzzeDg2PA1vKvup+Or
-         6hugabYVvtWOAPP8OC64OZrGcJx+OG/XsCePYqvj1Nlz625Zaqr9iqmvTloAPsrtO3Sj
-         8E4Q==
-X-Gm-Message-State: AO0yUKVUWhy/PWM0eR3eSmQkTXykI75kdRL+WO2Fr5CmephryVDfgUsY
-	s5IU7692+rKbauXZwN/gqd8lP5ym3LC/8hRE+Jg=
-X-Google-Smtp-Source: AK7set8zyZYOYZNEe+kb4X0YLJkNFR1SPeTSnK0fxULc7SiMwY610VLrqiBh/MtTOj5L5gIJUlM9Xw==
-X-Received: by 2002:a05:600c:1895:b0:3e2:f80:3df1 with SMTP id x21-20020a05600c189500b003e20f803df1mr18502577wmp.19.1677496975997;
-        Mon, 27 Feb 2023 03:22:55 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id l8-20020a05600c1d0800b003de2fc8214esm9289831wms.20.2023.02.27.03.22.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Feb 2023 03:22:55 -0800 (PST)
-Message-ID: <2b446ce6-0d1b-0745-8e83-75d4cae36057@linaro.org>
-Date: Mon, 27 Feb 2023 12:22:53 +0100
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="tA5m6cL/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pWgVT-0002Ly-Sh; Mon, 27 Feb 2023 11:37:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1pWgVN-0001kg-BK; Mon, 27 Feb 2023 11:37:37 -0500
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1pWgVL-000600-Mb; Mon, 27 Feb 2023 11:37:37 -0500
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 31RFwwUw030574; Mon, 27 Feb 2023 16:37:31 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=corp-2022-7-12;
+ bh=c0UG+nEBmzg7tdv9ex8dMP9Qxk+vYCaG2dOlM/WmGfA=;
+ b=tA5m6cL/iNSdHvKQspOnVy669Vyyo4eFC18jGqYmdg9Q0b61V5LJzbhg0piA1/57nRSd
+ aB84NbPDWZ+SlkZiE8/p8m1bcIQ7utuDLtjPcQJn9SQzEta/ujk/R2iCWcn1WqIc13c5
+ j5/emXg1Uhnqfh+p/L2HUe9bI7kDfC+5N1zKj5UwgbLZoWxCMHcN9eBQc5virYDd36kb
+ QtnfTnxFbG0zbJCBQuzMsZjbKqI53hmqVD/D3vCDcTm3z8VcKGwXrY7mgeyvpGjDmtGS
+ 2tj8lopH40XlXX3b8YIUMhkbtw5F3Fj3ql3rFWYk3oI4BfRxAkFw2MkK/9eCce+xwVf2 yg== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3nyba244dj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Feb 2023 16:37:31 +0000
+Received: from pps.filterd
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
+ with ESMTP id 31RFwRiF015880; Mon, 27 Feb 2023 16:37:30 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3ny8s5sxyr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Feb 2023 16:37:30 +0000
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 31RGbMkI006629;
+ Mon, 27 Feb 2023 16:37:29 GMT
+Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-167-110.vpn.oracle.com
+ [10.175.167.110])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
+ 3ny8s5sxr5-3; Mon, 27 Feb 2023 16:37:29 +0000
+From: Miguel Luis <miguel.luis@oracle.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Haibo Xu <haibo.xu@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Marc Zyngier <maz@kernel.org>
+Cc: Miguel Luis <miguel.luis@oracle.com>
+Subject: [RFC PATCH 2/5] hw/intc/gicv3: add support for setting KVM vGIC
+ maintenance IRQ
+Date: Mon, 27 Feb 2023 15:37:15 -0100
+Message-Id: <20230227163718.62003-3-miguel.luis@oracle.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230227163718.62003-1-miguel.luis@oracle.com>
+References: <20230227163718.62003-1-miguel.luis@oracle.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH v2 17/24] hw/ide: Declare
- ide_get_[geometry/bios_chs_trans] in 'hw/ide/internal.h'
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-ppc@nongnu.org, John Snow <jsnow@redhat.com>, qemu-block@nongnu.org,
- qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org
-References: <20230220091358.17038-1-philmd@linaro.org>
- <20230220091358.17038-18-philmd@linaro.org> <87edqbicfb.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <87edqbicfb.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: B4dW+84gZ+MT
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
+ definitions=2023-02-27_13,2023-02-27_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ bulkscore=0 adultscore=0
+ mlxlogscore=999 suspectscore=0 phishscore=0 spamscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
+ definitions=main-2302270129
+X-Proofpoint-GUID: NSXk4gj8142VNKu4Aw_ymwhIK0c6P9Lr
+X-Proofpoint-ORIG-GUID: NSXk4gj8142VNKu4Aw_ymwhIK0c6P9Lr
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6BXXnZfz7fy3
 
-On 27/2/23 12:17, Alex Bennée wrote:
-> 
-> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
-> 
->> ide_get_geometry() and ide_get_bios_chs_trans() are only
->> used by the TYPE_PC_MACHINE.
->> "hw/ide.h" is a mixed bag of lost IDE declarations. In order
->> to remove this (almost) pointless header soon, move these
->> declarations to "hw/ide/internal.h".
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/i386/pc.c              | 3 ++-
->>   include/hw/ide.h          | 4 ----
->>   include/hw/ide/internal.h | 4 ++++
->>   3 files changed, 6 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
->> index 6e592bd969..79297a6ecd 100644
->> --- a/hw/i386/pc.c
->> +++ b/hw/i386/pc.c
->> @@ -34,7 +34,8 @@
->>   #include "hw/i386/vmport.h"
->>   #include "sysemu/cpus.h"
->>   #include "hw/block/fdc.h"
->> -#include "hw/ide.h"
->> +#include "hw/ide/internal.h"
->> +#include "hw/ide/isa.h"
-> 
-> I do kind of wonder why hw/ide/internal.h isn't in the appropriate
-> subdir (e.g. hw/ide and included as #include "internal.h") rather than
-> the "public" include directory.
+From: Haibo Xu <haibo.xu@linaro.org>
 
-It should be internal but is included by PCI and MacIO:
+Use the VGIC maintenance IRQ if VHE is requested. As per the ARM GIC
+Architecture Specification for GICv3 and GICv4 Arm strongly recommends that
+maintenance interrupts are configured to use INTID 25 matching the
+Server Base System Architecture (SBSA) recomendation.
 
-include/hw/ide/pci.h:4:#include "hw/ide/internal.h"
-include/hw/misc/macio/macio.h:31:#include "hw/ide/internal.h"
+Ref: https://lore.kernel.org/qemu-devel/49a4944e2f148c56938380b981afe154b7a8b7ee.1617281290.git.haibo.xu@linaro.org/
 
-Long term I'd like to split it in internal vs public API.
+Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+[Miguel Luis: avoid direct usage of helpers (_check_attr(); _access())]
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+---
+ hw/arm/virt.c                      |  5 +++++
+ hw/intc/arm_gicv3_common.c         |  1 +
+ hw/intc/arm_gicv3_kvm.c            | 25 +++++++++++++++++++++++++
+ include/hw/intc/arm_gicv3_common.h |  1 +
+ 4 files changed, 32 insertions(+)
 
-> However QEMU isn't super consistent with
-> that:
-> 
->    ➜  find . -iname "internal.h"
->    ./accel/tcg/internal.h
->    ./target/ppc/internal.h
->    ./target/mips/internal.h
->    ./target/hexagon/internal.h
->    ./include/hw/ide/internal.h
->    🕙11:15:58 alex@zen:qemu.git  on  review/qom-housekeeping-v2 [$?] took 7s
->    ➜  find . -iname "internals.h"
->    ./tests/fp/berkeley-softfloat-3/source/include/internals.h
->    ./target/arm/internals.h
->    ./target/riscv/internals.h
->    ./target/loongarch/internals.h
->    ./gdbstub/internals.h
-> 
-> Anyway:
-> 
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b871350856..377181e009 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -759,6 +759,11 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+             qdev_prop_set_uint32(vms->gic, "redist-region-count[1]",
+                 MIN(smp_cpus - redist0_count, redist1_capacity));
+         }
++
++        if (kvm_irqchip_in_kernel()) {
++            qdev_prop_set_bit(vms->gic, "has-virtualization-extensions",
++                              vms->virt);
++        }
+     } else {
+         if (!kvm_irqchip_in_kernel()) {
+             qdev_prop_set_bit(vms->gic, "has-virtualization-extensions",
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 351843db4a..e2a6ff1b49 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -563,6 +563,7 @@ static Property arm_gicv3_common_properties[] = {
+     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
+     DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
+     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
++    DEFINE_PROP_BOOL("has-virtualization-extensions", GICv3State, virt_extn, 0),
+     /*
+      * Compatibility property: force 8 bits of physical priority, even
+      * if the CPU being emulated should have fewer.
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 3ca643ecba..ce924753bb 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -22,6 +22,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "hw/intc/arm_gicv3_common.h"
++#include "hw/arm/virt.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "sysemu/kvm.h"
+@@ -803,6 +804,30 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++
++    if (s->virt_extn) {
++        /*
++         * Arm strongly recommends that maintenance interrupts are configured
++         * to use INTID 25. For more information, see Server Base System
++         * Architecture (SBSA)
++         */
++        uint32_t maint_irq = PPI(ARCH_GIC_MAINT_IRQ);
++
++        struct kvm_device_attr kdevattr = {
++            .group = KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ,
++            .addr = (uint64_t)&maint_irq
++        };
++
++        if (!kvm_device_ioctl(s->dev_fd, KVM_GET_DEVICE_ATTR, &kdevattr)) {
++            error_setg(errp, "VGICv3 setting maintenance IRQ are not "
++                            "supported by this host kernel");
++            return;
++        }
++
++        kvm_device_ioctl(s->dev_fd, KVM_SET_DEVICE_ATTR, &kdevattr);
++    }
++
++
+     gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
+ 
+     for (i = 0; i < s->num_cpu; i++) {
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index ab5182a28a..91e1c1a45a 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -248,6 +248,7 @@ struct GICv3State {
+     uint32_t revision;
+     bool lpi_enable;
+     bool security_extn;
++    bool virt_extn;
+     bool force_8bit_prio;
+     bool irq_reset_nonsecure;
+     bool gicd_no_migration_shift_bug;
+-- 
+2.39.2
 
-Thanks!

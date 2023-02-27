@@ -1,175 +1,140 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4809882ejc;
-        Mon, 27 Feb 2023 08:38:27 -0800 (PST)
-X-Google-Smtp-Source: AK7set/giQZH0OMBlh6aRlZcqvx5h1Us+e/oC+QrQXbjimI19ARkWI2rM4FAEHK56E9xF91nKWwW
-X-Received: by 2002:a05:6214:caf:b0:56b:f061:c3c6 with SMTP id s15-20020a0562140caf00b0056bf061c3c6mr30293qvs.33.1677515907715;
-        Mon, 27 Feb 2023 08:38:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677515907; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4820829ejc;
+        Mon, 27 Feb 2023 08:50:27 -0800 (PST)
+X-Google-Smtp-Source: AK7set+EEsPcvDC0i/gy71W1oyM3wHtA1QnmNhFhW9urEOAkPgQsrVLVBCZg+4waeba+oNB3ms8k
+X-Received: by 2002:ac8:4cd9:0:b0:3b6:93fe:443c with SMTP id l25-20020ac84cd9000000b003b693fe443cmr23509063qtv.32.1677516626792;
+        Mon, 27 Feb 2023 08:50:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677516626; cv=none;
         d=google.com; s=arc-20160816;
-        b=KNfxi/Zzpe53QP7dBL5yLvI5+imoLqGjjJwXkVIdkfwt/YUuHN+dfUPmqlwHrn63CV
-         jZcxxRQ8XlMAAJuT+jUWrGFb88J7oBrQ/nc1cIzYMSIOswSfOG4OjF5/rvFUSlb3V9Ma
-         2d+gKfQWXrW4PfYtmQDVSlftN+sGCrVJygVYdX6e22h1/Adsw3vIAvkx04XAJ0RChCFt
-         7QzMmys0wmAbATFIOmeD6/iTX/72qXxGP+dqqb/lAvrZqmF/sJBB+p8P8o6AFiHt1CTB
-         rolpxqFM7e7Xypwyp/jBG9w3or6+bWBU/tbVtCZq0bdWQkfTjeB8CmnbzMwqg5Zh0jWl
-         YKPQ==
+        b=nsuTEAFRUnIOuEYUy21y7ppgPDYutmRcuCHDuw7PYm9NsylzVHp6ZC1851nxdmyAde
+         MdaBj2RUa54PnVVQu8VVsfMZxZL8KIa/rTnBTGty84uAGtgxJGt1HsJR0lpffQBUn4YH
+         5dHSMr6HdVZXr63WlK3A+Im3I/H/9egypOI4/o/S/NANlSulXHtcUuGDYMrKUhfP9HAL
+         E4Px6+N9hVNGJ/S6giO3p/qx9UI+bsQW/xwNjBF7sgFsHLwlCWO5Cdzf811bdvIq74P3
+         PihlPt+J500R9I7ZBWdfxR3UgaObBrhbm3y9HCmfT9z1Qqrd6KsYSu+TyV660KBdUN3/
+         +tSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=D+fZBSHNS95JlBUPkZXChqL0XI8X8MPDGYglEQdUGRI=;
-        b=bfRWlG6F94axUfnNYIj6EusExEgE/xzTAVcZqqFtFBZowei47whwfoDHLF87nMIR0d
-         7oPGt5EoE5oFqX7oIDm1pGMQrnRACDm/PHj+Ql5RuycJxG/+FgeeHoSG5vI7f6VVXa7c
-         Ibu2z1mu3KqDTXn2/b+MHVTd0PNYLtad54LevCMD3BCQ5PjPT5eEt7AaSojpKC1r7t5o
-         Y7jYSIXUcuSP21TRaFjwZ9KLQjNsHdQYKltkhzF2dugovBwgavfhTMw1DQnHlk3EQIF+
-         SuZnxeBhDMbGq12GszbJ9npqPeGGxYVifMJWaYylx53jGFh5JTyyj6XD0uSrje2f8HBd
-         bTfA==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=l7gAfPxjYy1ZF+2eDrtb7tn+rvsV2iQvicqksHVx7l4=;
+        b=k1f1JmBUq/JckdhoY+fwG7aPxJuz+HHfoNIGtwtiXjQ0ZpdNTHaS0wFCBbfhRqbg2g
+         MUwX/ueCRPTtJe4KaCNBg3FH559wd5nS/C5bQIqzC/V31ArOM0ZFWYuU1+hp9hiaYCn0
+         lxBAgi0N0xzzPR8HYVzqmn1g98VUz4B9n34zxme4lvR8DjKCnfmIDf8jB6OXSE0M4rrk
+         uqEadGbpWIGiLUC6DnKEUABdmq8b1W37q4icKQos4NgNXCynUfhsSejMn26pc9R6wW9c
+         bIPaj3Od/g+gmJNawbMigVEqpTnFLCEcBhyXafNDJvO4jLh099xWVLP3SRlH7UvKHY4C
+         5dtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="HWE384/k";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GIl2DqX7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o14-20020a0ce40e000000b0056e96271fe1si7112631qvl.265.2023.02.27.08.38.27
+        by mx.google.com with ESMTPS id s6-20020a05620a254600b00733f1926964si7040625qko.723.2023.02.27.08.50.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 08:38:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Feb 2023 08:50:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b="HWE384/k";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GIl2DqX7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWgVU-0002Bo-0q; Mon, 27 Feb 2023 11:37:44 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pWghW-0008Er-BS; Mon, 27 Feb 2023 11:50:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1pWgVL-0001fH-QS; Mon, 27 Feb 2023 11:37:36 -0500
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pWghT-0008CK-4V
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 11:50:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1pWgVK-0005wz-0l; Mon, 27 Feb 2023 11:37:35 -0500
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 31RFx8j8016994; Mon, 27 Feb 2023 16:37:24 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : mime-version : content-transfer-encoding;
- s=corp-2022-7-12; bh=D+fZBSHNS95JlBUPkZXChqL0XI8X8MPDGYglEQdUGRI=;
- b=HWE384/kzSh+KOX/7nap+Bpx25a4fCDQfshlv1wged+1KtOR73wctxH72MWv40LADbzL
- eq+O0H2IcZT1p74+Qyb0r1764GXpMxWuDJ+OPr2Uv62fqyrrFC5t3bR/Zp/8Uh1tIatx
- 78X+oH1mR6xC0adyNRDC/Q5FBkBULFPeBmCWSn8GGUO0GeMMith5p2wACMH6BvymSp5E
- H+2d5PMqabcpeywZACtREWTXdn0Ve/VFngXO9ndjzjks5S9LuvWeH5XneTjy1Aibrmhy
- 378dZ2eT5Qt68/SFtOwuItxqMHqOxYU9C1tNDJ+IBXxmwb6ZFSrbA90TMooutnulll5H KA== 
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3nyb72c0u6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 27 Feb 2023 16:37:23 +0000
-Received: from pps.filterd
- (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
- with ESMTP id 31RGQetb016004; Mon, 27 Feb 2023 16:37:23 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 3ny8s5sxtf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 27 Feb 2023 16:37:23 +0000
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 31RGbMkE006629;
- Mon, 27 Feb 2023 16:37:22 GMT
-Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-167-110.vpn.oracle.com
- [10.175.167.110])
- by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
- 3ny8s5sxr5-1; Mon, 27 Feb 2023 16:37:22 +0000
-From: Miguel Luis <miguel.luis@oracle.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Haibo Xu <haibo.xu@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Marc Zyngier <maz@kernel.org>
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pWghR-0000Xv-GW
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 11:50:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677516602;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=l7gAfPxjYy1ZF+2eDrtb7tn+rvsV2iQvicqksHVx7l4=;
+ b=GIl2DqX74UMgU26ve53X2Lb8NnSXg9jDQN9h0ULzZvn0xYQM5KmCFYE+elzsfb3j7q7Bry
+ mQWwcFKGC0AS4g6JpgMMCbBOGQPgddy3/1NgBEvkN9PHdR9LDfvlPSrXg1+WO0HJ/dEfRL
+ r8z3tklgP4ijPr9qkO52vav6crZqh0g=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-663-iXQANjHrMdyknHDWa6E6mw-1; Mon, 27 Feb 2023 11:49:59 -0500
+X-MC-Unique: iXQANjHrMdyknHDWa6E6mw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8DD0610115E1;
+ Mon, 27 Feb 2023 16:49:57 +0000 (UTC)
+Received: from localhost (unknown [10.45.226.217])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3621D4044B30;
+ Mon, 27 Feb 2023 16:49:57 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Miguel Luis <miguel.luis@oracle.com>, Peter Maydell
+ <peter.maydell@linaro.org>, "Michael S . Tsirkin" <mst@redhat.com>, Paolo
+ Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Haibo Xu <haibo.xu@linaro.org>, Andrew Jones <drjones@redhat.com>, Marc
+ Zyngier <maz@kernel.org>
 Cc: Miguel Luis <miguel.luis@oracle.com>
-Subject: [RFC PATCH 0/5] QEMU v7.2.0 aarch64 Nested Virtualization Support
-Date: Mon, 27 Feb 2023 15:37:13 -0100
-Message-Id: <20230227163718.62003-1-miguel.luis@oracle.com>
-X-Mailer: git-send-email 2.39.2
+Subject: Re: [RFC PATCH 1/5] linux-headers: [kvm, arm64] add the necessary
+ definitions to match host kernel
+In-Reply-To: <20230227163718.62003-2-miguel.luis@oracle.com>
+Organization: Red Hat GmbH
+References: <20230227163718.62003-1-miguel.luis@oracle.com>
+ <20230227163718.62003-2-miguel.luis@oracle.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Mon, 27 Feb 2023 17:49:55 +0100
+Message-ID: <87v8jn3vf0.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
- definitions=2023-02-27_13,2023-02-27_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- bulkscore=0 adultscore=0
- mlxlogscore=999 suspectscore=0 phishscore=0 spamscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
- definitions=main-2302270129
-X-Proofpoint-ORIG-GUID: H0vZE8s1oEzHA38X_V8BddUN4dB3rB0P
-X-Proofpoint-GUID: H0vZE8s1oEzHA38X_V8BddUN4dB3rB0P
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VfqIcunAXduv
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hjghDGrYHz/d
 
-This series adds ARMv8.3/8.4 nested virtualization support in KVM mode.
-    
-To enable nested virtualization for a guest, the host must expose EL2
-support via QEMU command line switches:
+On Mon, Feb 27 2023, Miguel Luis <miguel.luis@oracle.com> wrote:
 
--machine virt,accel=kvm,virtualization=on
+> From: Haibo Xu <haibo.xu@linaro.org>
+>
+> linux-headers define host properties needed for the VMM to interact with
+> KVM, so let's include them *while* they're not available yet on linux
+> upstream since aarch64 nested virtualization is still a work in
+> progress.
+>
+> Ref: https://lore.kernel.org/qemu-devel/636b5932e4cf061b6f97516e82d4319c1d29b871.1616052889.git.haibo.xu@linaro.org/
+>
+> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+> ---
+>  linux-headers/asm-arm64/kvm.h | 2 ++
+>  linux-headers/linux/kvm.h     | 1 +
+>  2 files changed, 3 insertions(+)
 
-Inspired on Haibo Xu's previous work [0][1], Marc Zyngier's kvmtool branch [2]
-and kernel patches [3] on nested virtualization for aarch64, this has been
-tested on an Ampere implementation.
-
-This series adapts previous work on top of v7.2.0, it considers comments given
-at the time and preserves authorship of the original patches.
-
-[0]: https://lore.kernel.org/qemu-devel/cover.1616052889.git.haibo.xu@linaro.org/
-[1]: https://lore.kernel.org/qemu-devel/cover.1617281290.git.haibo.xu@linaro.org/
-[2]: https://git.kernel.org/pub/scm/linux/kernel/git/maz/kvmtool.git/log/?h=arm64/nv-5.16
-[3]: https://lore.kernel.org/linux-arm-kernel/20230131092504.2880505-1-maz@kernel.org/
-
-Miguel Luis (5):
-  linux-headers: [kvm,arm64] add the necessary definitions to match host
-    kernel
-  hw/intc/gicv3: add support for setting KVM vGIC maintenance IRQ
-  target/arm/kvm: add helper to detect EL2 when using KVM
-  target/arm: enable feature ARM_FEATURE_EL2 if EL2 is supported
-  arm/virt: provide virtualization extensions to the guest
-
- hw/arm/virt.c                      |  8 +++++++-
- hw/intc/arm_gicv3_common.c         |  1 +
- hw/intc/arm_gicv3_kvm.c            | 25 +++++++++++++++++++++++++
- include/hw/intc/arm_gicv3_common.h |  1 +
- linux-headers/asm-arm64/kvm.h      |  2 ++
- linux-headers/linux/kvm.h          |  1 +
- target/arm/cpu.h                   |  2 +-
- target/arm/kvm64.c                 | 21 +++++++++++++++++++++
- target/arm/kvm_arm.h               | 12 ++++++++++++
- 9 files changed, 71 insertions(+), 2 deletions(-)
-
--- 
-2.39.2
+Can you please mark this explicitly as a placeholder for a proper
+headers update? Just so that it doesn't get lost :)
 

@@ -1,154 +1,201 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4833147ejc;
-        Mon, 27 Feb 2023 09:03:20 -0800 (PST)
-X-Google-Smtp-Source: AK7set/jfaQ6fTU49egi0U7690lUsOoSVNLOfDMkNmvHAzkZYqdIYVgYg+iRqZw5AgxvlswbLgKP
-X-Received: by 2002:a05:6214:5299:b0:56e:7bc1:69f2 with SMTP id kj25-20020a056214529900b0056e7bc169f2mr310632qvb.5.1677517399819;
-        Mon, 27 Feb 2023 09:03:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677517399; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4809767ejc;
+        Mon, 27 Feb 2023 08:38:20 -0800 (PST)
+X-Google-Smtp-Source: AK7set82ITyQXxzVhXJykGXescrwaEmyvvhPn5ZbmRvF/MMwNnd61cVEvBmY8Fc0HOKwafg2aQXU
+X-Received: by 2002:a05:622a:174d:b0:3bd:16cf:2f37 with SMTP id l13-20020a05622a174d00b003bd16cf2f37mr44392456qtk.60.1677515900257;
+        Mon, 27 Feb 2023 08:38:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677515900; cv=none;
         d=google.com; s=arc-20160816;
-        b=u/vs67K+mu0spYDYEelBI9WvwnCPr2AnaHgtt2vphqHqAlVW7OVIEDGNXPPP2MWl7h
-         QSfyDEzrv9/zNaXqrYWk2/r8cGctOIDfTzgUWfiAM9N2PO+uxSJ3xbGaRnCiO/b9pvwF
-         7TzEJm9O6iBwlxFcy/glVjYmPlC4mdoz7QdT9TEuEncujDaQ+Rulm6w994t/R2xfBS3q
-         3p5x7BHTDfvlUEmpVUzonmFqcdSzEA7r/OkKiFRuYrxLFFs5E04kkxrbE+IH19IBBefz
-         L6/UFDGcwymz4pUsGOOY+WONBWY4TB5HI7MfI9oouiPhV9LI4av23PZxEyafPtKvniqz
-         /Yug==
+        b=q3wlD5axxutRsDraDM930rCCnvDW9MHfvV6vECWJFP+TQYu7F/smyfuo3pzQTSNCOk
+         N6+MBbfSU4VOXB1fWA3dPFy/Zcj2nkROOwiEi9LntawSVJF4g7U/wMyG57Ho6tDXm3f9
+         wXFZllnqiEidRW8L/wRX0hxStky6YiOPv69tBMNyf2vPZ55WnsIKJ/tJYFviIgry9r/v
+         y1RB73LPxAS/tLJteCJGP7ehKWLbYZXC08GyLQ7YI2zRdXrg3WQyrti3RNjPv9lBd2ut
+         9jrb3Y3cY4w1speC7NDna5/Rli+/mLYFZFs3odRIrBMvCOrVP9QRnx9bxP2oUB+EEEcA
+         NKYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=dyo8PmwDQclN6NUGtDDfLJ/2UUeRZlzCnxwikLpd6ak=;
-        b=CJH6n9aoam7a5PYC5Cl8sTXax4/HIi8GRONidPt8hLCMoOg232/baF0wUonn2cOlgS
-         T5ziMSLz8IdohRlK6A8ZVRoBVFGeMH3/zAu678/H8mW3i3VywGvNh/GpLfpafNoZstru
-         kUSdax18gVDAYh8PLgZ8MXKeqjqQYKd1wyULwb+0J/JLrV32j7GbtPwPhcWk11iBVVkS
-         6gz8eFaK6j10h57StkWrY52X50S1bfZAgWxpaKjYNPNwr/db3RqDFApP4sZgt8A4OUjV
-         ReywNgHs1yC2KBvXLt05jQmso2RIbQECdAQB3mLZFlgKzunNAze9VnpxuH3K0MC8hQgi
-         LPJg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=4JQ6PQNn79ErCdUPsnXoffGQH61b7ZYmpCNnUkxEU94=;
+        b=X0FeCJPvmfMOLj3r1R3HUzWsjJkrv2FR4bdkNlS9HLdkTWm3vCG+YE38M/sOuzl00Z
+         nasaur5nhubqFQlqpaZ7jRQ1IAOn7dKX+h83Fu/bUVAGUpwT0iV8V/80Ve6uJHLYu9Lk
+         R6dsGp3clBT67paZEx+wEAbHQzkRh18+AdrJbt/qNqJo9Wrtrtjheekm6Vg2QHzlA38J
+         yxnlxgISFH3Rt6RcwkfG8/dbU1VgPSB3SEkTA1Zgdf0DBy7wb01GRu+aAKlXQeax4BPi
+         rbiU20O5o66Do0W6trbybkUgeowS2hQN7F7650WY/3DKTIT8+eRAWZeqw6YI4OYVgxKc
+         6FKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=LBff7X31;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v25-20020a0cb199000000b0056e9fc0d4b9si6948605qvd.286.2023.02.27.09.03.19
+        by mx.google.com with ESMTPS id bp31-20020a05622a1b9f00b003bfc28e411bsi7167268qtb.319.2023.02.27.08.38.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 09:03:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Feb 2023 08:38:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=LBff7X31;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWgsx-0007fh-Gw; Mon, 27 Feb 2023 12:01:59 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pWgVX-0002v7-7G; Mon, 27 Feb 2023 11:37:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1pWgsd-0007Os-Dl; Mon, 27 Feb 2023 12:01:43 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1pWgVQ-0002G9-7d; Mon, 27 Feb 2023 11:37:43 -0500
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1pWgsb-0002b8-QQ; Mon, 27 Feb 2023 12:01:39 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 0E9DF7457E7;
- Mon, 27 Feb 2023 18:01:36 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id CB1C1745720; Mon, 27 Feb 2023 18:01:35 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id C9E65745706;
- Mon, 27 Feb 2023 18:01:35 +0100 (CET)
-Date: Mon, 27 Feb 2023 18:01:35 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>, 
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
- Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH v2 12/15] hw/display/sm501: Unify common QOM properties
-In-Reply-To: <efb25519-b134-e8d0-14ac-58189b39103d@linaro.org>
-Message-ID: <b006d7e3-22fb-54cf-d05e-45f15457032f@eik.bme.hu>
-References: <20230203145536.17585-1-philmd@linaro.org>
- <20230203145536.17585-13-philmd@linaro.org>
- <efb25519-b134-e8d0-14ac-58189b39103d@linaro.org>
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1pWgVO-000617-FY; Mon, 27 Feb 2023 11:37:39 -0500
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 31RFww9l016856; Mon, 27 Feb 2023 16:37:34 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=corp-2022-7-12;
+ bh=4JQ6PQNn79ErCdUPsnXoffGQH61b7ZYmpCNnUkxEU94=;
+ b=LBff7X31vo+J+HXmjLQPftsMHr/9WzCD7Ir7qLaMi7ITUVupXBwjL5b5hLrcRxeB/22J
+ Ffa0OxrfirljJ0mn6TaL9b8ALDER7qaBMjCrC5jP751HXVBkqdcFLO3VaBPu3nvlVhRD
+ ieme5KKSUtGkpamcXT0NGwcWE0u7eIk9s1LI7HGFe36VddeUSVfAbQP90ld0k4mdRd7R
+ OwFgLPZwzJb8xFX7RRASPndchNvnR6NIVPStwZGMeDK/uppr6bLaPD6YRcxFvXPFzA09
+ MBjrUE9AThRgEbc8UjXbICJfUh9521hbmZDgfHXkM4lltunFUvy/8PrIgQ5e5qJk1mgT aQ== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3nyb72c0ur-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Feb 2023 16:37:34 +0000
+Received: from pps.filterd
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
+ with ESMTP id 31RFjdGT015969; Mon, 27 Feb 2023 16:37:33 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3ny8s5sy2n-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Feb 2023 16:37:33 +0000
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 31RGbMkK006629;
+ Mon, 27 Feb 2023 16:37:32 GMT
+Received: from mlluis-mac.uk.oracle.com (dhcp-10-175-167-110.vpn.oracle.com
+ [10.175.167.110])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
+ 3ny8s5sxr5-4; Mon, 27 Feb 2023 16:37:32 +0000
+From: Miguel Luis <miguel.luis@oracle.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Haibo Xu <haibo.xu@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Marc Zyngier <maz@kernel.org>
+Cc: Miguel Luis <miguel.luis@oracle.com>
+Subject: [RFC PATCH 3/5] target/arm/kvm: add helper to detect EL2 when using
+ KVM
+Date: Mon, 27 Feb 2023 15:37:16 -0100
+Message-Id: <20230227163718.62003-4-miguel.luis@oracle.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230227163718.62003-1-miguel.luis@oracle.com>
+References: <20230227163718.62003-1-miguel.luis@oracle.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-284891471-1677517295=:35244"
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
+ definitions=2023-02-27_13,2023-02-27_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ bulkscore=0 adultscore=0
+ mlxlogscore=904 suspectscore=0 phishscore=0 spamscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
+ definitions=main-2302270129
+X-Proofpoint-ORIG-GUID: G84v7qPVAEFCzmeivgg_drLPifMpKJfX
+X-Proofpoint-GUID: G84v7qPVAEFCzmeivgg_drLPifMpKJfX
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0dI0wmgPLhcs
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ptGBuEcg87hf
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+From: Haibo Xu <haibo.xu@linaro.org>
 
---3866299591-284891471-1677517295=:35244
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Introduce query support for KVM_CAP_ARM_EL2.
 
-On Mon, 27 Feb 2023, Philippe Mathieu-Daudé wrote:
-> On 3/2/23 15:55, Philippe Mathieu-Daudé wrote:
->> Since now PCI and SysBus properties are identical, unify them.
->> 
->> Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/display/sm501.c | 11 +++--------
->>   1 file changed, 3 insertions(+), 8 deletions(-)
->> 
->> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
->> index efebd93f1e..98375138b2 100644
->> --- a/hw/display/sm501.c
->> +++ b/hw/display/sm501.c
->> @@ -1975,7 +1975,7 @@ static void sm501_realize_sysbus(DeviceState *dev, 
->> Error **errp)
->>       /* TODO : chain irq to IRL */
->>   }
->>   -static Property sm501_sysbus_properties[] = {
->> +static Property sm501_common_properties[] = {
->>       DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
->>       DEFINE_PROP_END_OF_LIST(),
->>   };
->
->
->> @@ -2062,11 +2062,6 @@ static void sm501_realize_pci(PCIDevice *dev, Error 
->> **errp)
->>                        &s->state.mmio_region);
->>   }
->>   -static Property sm501_pci_properties[] = {
->> -    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size, 64 * MiB),
+Ref: https://lore.kernel.org/qemu-devel/65b8771bfecada08bf02c9cf87c2f0f9cdf943b3.1617281290.git.haibo.xu@linaro.org/
 
-Oops, indeed the defaults are different so maybe just drop this patch for 
-now.
+Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+---
+ target/arm/kvm64.c   |  5 +++++
+ target/arm/kvm_arm.h | 12 ++++++++++++
+ 2 files changed, 17 insertions(+)
 
-Regards,
-BALATON Zoltan
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 1197253d12..be8144a2b5 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -754,6 +754,11 @@ bool kvm_arm_aarch32_supported(void)
+     return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL1_32BIT);
+ }
+ 
++bool kvm_arm_el2_supported(void)
++{
++    return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2);
++}
++
+ bool kvm_arm_sve_supported(void)
+ {
+     return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 99017b635c..86a0cb4308 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -305,6 +305,13 @@ bool kvm_arm_pmu_supported(void);
+  */
+ bool kvm_arm_sve_supported(void);
+ 
++/**
++ * kvm_arm_el2_supported:
++ *
++ * Returns true if KVM can enable EL2 and false otherwise.
++ */
++bool kvm_arm_el2_supported(void);
++
+ /**
+  * kvm_arm_get_max_vm_ipa_size:
+  * @ms: Machine state handle
+@@ -395,6 +402,11 @@ static inline bool kvm_arm_steal_time_supported(void)
+     return false;
+ }
+ 
++static inline bool kvm_arm_el2_supported(void)
++{
++    return false;
++}
++
+ /*
+  * These functions should never actually be called without KVM support.
+  */
+-- 
+2.39.2
 
->
-> Patch is invalid:
->
-> $ ./qemu-system-ppc -S -M sam460ex
-> qemu-system-ppc: Invalid VRAM size, nearest valid size is 2097152
->
->> -    DEFINE_PROP_END_OF_LIST(),
->> -};
->
->
->
->
---3866299591-284891471-1677517295=:35244--
